@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-editable-explainer-animation
 title: Produce an original editable AI explainer animation tutorial with eight foreign languages
-status: in-progress
+status: open
 priority: P2
 area: docs
-owner: codex-ai-video
-claimed_at: 2026-10-25T15:24:22Z
+owner:
+claimed_at:
 created_at: 2026-10-25T15:24:17Z
 completed_at:
 branch: codex/ai-editable-animation-20261025
@@ -27,6 +27,7 @@ The owner requests a new original AI teaching video informed by recent popular f
 - [ ] en/ja/ko/es/pt/id/vi/th titles, descriptions, CC and dubbed audio are produced and checked, with truthful reasons recorded for any blocked part.
 - [ ] The complete upload package is available in the existing review system; publishing stays with the owner.
 - [x] A distinct researched next topic and durable continuation instructions are saved.
+- [ ] Add the official channel intro and outro requested on 2026-10-26, verify shifted CC/chapters/audio, and submit the actual new final for manual review.
 
 ## Steps
 
@@ -44,17 +45,21 @@ Run `node --use-env-proxy /workspace/work/ai-animation-01/cli.mjs status --slug 
 
 ## Notes
 
-### Current checkpoint 2026-10-25T22:17:13.911332+00:00
+### Current checkpoint 2026-10-26T02:07:28.045541+00:00
 
-This is the original continuing codex-ai-video controller, with /root/voice_controller as its sole paid-media delegate. Other hourly watcher runs must read and skip while this task is fresh or the original controller/lease is active. At the present safe boundary no native media process/LEASE is live; the original controller is reviewing the work-only helper before VI/TH start. Do not infer a takeover opportunity or launch duplicate work.
+The original codex-ai-video root controller has no live paid-media delegate, command or project LEASE. It is safely paused; do not resume solely because a defer timer elapsed. The owner's new request is official channel intro/outro, referencing merged PR1860. This is a continuation of the same film, not a second admission. Hourly watchers still skip a fresh task or live holder. No new paid request or video-source change was made for the bookend check.
 
-- Primary zh-TW final+QA+package remain genuinely approved; JA and ES are checked101/101 with flags0. Eight localized thumbnails are rendered and visually checked. The full eight-language package remains incomplete.
-- PT native attempt ended SKIPPED after2retakes/2rewords, solely9e738a: intended `Comente.`, actual `Comenta.`; native Jev did not accept it. Failed track SHAa9f06e392ad9bb04f5d53b1a8a6a7b6ecceb857f2535c1a93db5b4a296d148c1, current translation SHAa64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857. Native counters/marker were not reset. Source-faithful first-reword and five author fixes were actually voiced and checked; full history in research/media-checkpoints/pt-failed-attempt-1.json. The independently reviewed57/58-character `Comenta` owner-retry proposal remains UNAPPLIED and is not audio approval.
-- ID native attempt ended SKIPPED at fit: f576ae/9e738a/ed8308 share a0.4second overrun.101takes exist; NO assembled track or ASR exists. First shortening returned allthree unchanged; native rejected these and gave up after1shorten (this is the actual early exit, not a claim that the configured global cap is1). No retry/reset was performed. Current translation SHA89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a; exact baseline in research/media-checkpoints/id-failed-attempt-1.json. Independently reviewed proactive719e7c drawing instruction was merged BEFORE its first TTS, and is not claimed as passed audio.
-- KO remains native SKIPPED with six flags and unapplied independent repair proposals. Existing actual KO-only pending status review5e926064-2b03-4598-b2f6-c3b9add4fef1 is retained. A three-failure truthful status-only helper is being prepared offline, with NO producer/retry/approval endpoint; it will attach only native unchecked failed tracks and never represent EN/ID as checked.
-- EN remains held on the single unconfirmed17:30:30.393Z speech/transcribe journal0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9. No permission for possible duplicate charging or actual KO panel retry has arrived; repeated watcher messages are not answers. Never run generic step/dub en or clear that journal.
-- Exact work root /workspace/work/ai-animation-01; authoritative receipts/media under media/ai-editable-explainer-animation, source in this branch/PR1852. VI and TH have not started. Next: audit the helper's first-shortening review boundary (same counters and genuine raw answer, no skip/cap bypass), produce VI then TH serially, independently review every final text delta, persist actual proofs, then complete only checked components. Owner-retry handshakes are required for failed KO/PT/ID; never manually clear skips. Do not start the dependent PDF film before this eight-language package is complete.
+- **Actual completed original:** unbranded zh-TW final 589.600s, 17,687 video frames, SHA `ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521`, actual11/11 final QA and old final/publish approvals. Body narration/example remain approved. It is NOT YouTube-published. This original MP4 does not yet satisfy the newly requested bookends.
+- **Actual text/CC/thumbs:** all8 foreign title/description/CC sources freshly reviewed; all9 current native SRT/VTT pass mechanical checks after the real readable-pause fix; 8 thumbnails rendered and visually checked. Full tools tests2727passed/0failed/5skipped, docs-videos236passed. These are source/CC checks, not approval of every voice.
+- **Actual foreign voices:** JA/ES/VI each101 native checks clear, actual tracks589.600s. EN still holds one unknown paid transcription `0bff2c18...fad9` with only49/101 saved ASR; no possible-duplicate-charge retry permission was received. KO/PT/ID remain exact native SKIPPED; real owner-panel retries were not requested as of actualGET02:02Z. ID's3 free text corrections ARE applied (current source261b3c...), but no new ID voice or measured fit exists. KO6/PT1 future author proposals remain unapplied.
+- **TH:** original producer safely paused after4 explicit Gemini OTHER/no-transcript refusals for cab285; native rounds1shorten/1retake/0reword, defer_count4/limit6,8PARTIAL flags, no final skip or voice approval. Saved due00:58:22.470Z is NOT an auto-resume grant. Exact work `voice-final-pause-checkpoint.json`; no paid producer remains alive.
+- **Actual partial materials delivery:** at00:48:20Z, pending languages review `07bc8e82-6ebb-4321-ac5f-a4003042384b`, manifest `dcdcce5d18f05f13719220b348d5d74803b396672246569100f5aaacc8653937`. Actual30 uploaded files:8description TXT+8SRT+8thumb JPG+3checked JA/ES/VI M4A+3QA/manifest JSON. Real readback all8 metadata/CC ready, JA/ES/VI voices ready, exact KO/PT/ID skips, EN/TH voices still working and audio omitted. Full-language-package=false. Work `partial-materials/<manifest>/submitted.json` contains the owner-authenticated ZIP URL, not claimed download-tested. Receipt and manifest now in research/media-checkpoints/partial-language-materials-*-20261026.json. This old package is unbranded and must not be presented as the future revised package.
+- **New bookends blocker, actually tested02:05:27Z (10:05 Taipei):** PR1860 merged `50a073cc...` but native `branding --pull --dry-run` returns404 `video_media_route_unknown` from `/api/video/media/branding`. No official assets downloaded/installed and no film rebuilt. The only other local package is Curio and must not be substituted. Evidence `research/media-checkpoints/branding-pull-probe-20261026.json`; protected final/checks/auto/approvals/ENjournal/skips/THchecks/CC unchanged.
+- **Exact paths:** repo `/workspace/travel_scanner`, source branch `codex/ai-editable-animation-20261025`, draftPR1852 no-auto-merge; external root `/workspace/work/ai-animation-01`, media under `media/ai-editable-explainer-animation`. CLI `--workdir` takes the media BASE and appends the slug. Merged PR1860 runtime extracted without changing this source branch: `runtime-pr1860/tools/video/cli.mjs`. Probe `node --use-env-proxy /workspace/work/ai-animation-01/branding-pull-probe.mjs` only permits official status GET, no paid or review requests.
+- **Next after actual route deployment:** native pull/verify official general-channel150-frame intro+630-frame outro, then exclusive-lease native `assemble --intro-after-condensation` (no force/adopt). Intro belongs after chapter1, body frame934/31.133s. Expected new18,467frames/615.567s is a PLAN, not measured output. Preserve originals and approvals; new bytes require fresh QA/manual final review. Follow the exact safeguards in `bookends-rebuild-audit-20261026.json` before rewrapping checked audio, regenerating CC/chapters or submitting any materials. Generic final review can incorrectly call unfinished source-current EN/TH audio ready, so do not blindly use it. Frozen old partial helpers must fail after source/branding changes, never weaken those guards.
+- **Still outstanding:** legitimate EN single-request payment reconciliation/permission, actual KO/PT/ID owner retries, TH service recovery within native limits, new bookend final plus all current CC/audio/package QA. No language skip/counter/approval reset; no generic step/dub en. Do not start actual next PDF film until the full current eight-language package is genuinely complete. Publishing remains owner-operated.
 
+Historical checkpoints follow; later actual receipts supersede earlier plans, especially ID's old89ed source, the old caption-not-built notes, and the superseded failure reviews.
 
 - 2026-10-25: Primary project /workspace/travel_scanner. Scratch and generated media /workspace/work/ai-animation-01; generated media MUST remain outside git. Source slug ai-editable-explainer-animation.
 - User authorization: decide topics and production without asking, use the eight foreign languages en ja ko es pt id vi th, and continue the next new video after each completed package. Primary zh-TW is additional. No German or French.
@@ -138,3 +143,5 @@ This is the original continuing codex-ai-video controller, with /root/voice_cont
 
 - Original paidproducer safe-stop update2026-10-26T00:21:39Z: fourth nativeTHcheck again gotexplicitGeminiOTHER/no transcript, exited00:18:22Z; realdefer_count4/DEFER_LIMIT6,next_due00:58:22.470Z. Counters1/1/0/check_stoppedtrue and8PARTIALflags persist. cab285 WAV451244bytes,SHA2a80361b9d5bc05219a63221de8f9de5a9818720496d85d57a8d2f076cb6e650,4.7s48kmono, nonzeroRMSsignal only(notvoiceapproval). ProducerhasnowexplicitlyendeditswaitingturnandwillNOTauto-resumeatthedue; noactivecommand/session/LEASE/STOP ornewunknownspeech. OnlyoldENsentholdpersists. Exactcheckpointwork/voice-final-pause-checkpoint.json, reporesearch/media-checkpoints/voice-safe-pause-20261026.json. Rootmustexplicitlycoordinatefollowupafterexistingnativebackoff/guards; don'tstartcompetingorclearlimits. LastactualGET00:19:06Z KOPTIDretry=null/blockersnull.
 - Captionreadable-pause taskisnowDONE afteractualnative9CC0QAandfullrequiredchecks. Five test:tools skipsareunrelateddefault/platform/browseropt-in cases; theyareNOTcalledpasses. Sourcecodeandallactualbefore/afterevidenceareintheexistingdraftPR, originalfullfilm8audio taskremainsunfinished. Rootisfinishingtruepartialmaterialspendingcard/ZIP,beforeendtherewillbenopaidproducerleftalive.
+
+- User bookend request2026-10-26: see current checkpoint and actual404 receipt. The official-current pull is blocked by deployed route availability, not by missing editorial permission. No deployment, paid voice retry or new final approval was performed. PR1860 is merged but a merge is not proof of production deployment.

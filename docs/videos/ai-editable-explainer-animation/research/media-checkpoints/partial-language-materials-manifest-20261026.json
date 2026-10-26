@@ -1,0 +1,2612 @@
+{
+  "schema_version": 1,
+  "kind": "partial-language-materials",
+  "slug": "ai-editable-explainer-animation",
+  "complete_language_package": false,
+  "source": {
+    "publish": {
+      "review_id": "e5b66d53-a355-4578-a429-f237859ba12d",
+      "content_sha256": "79baf4c7a7d4108843f52e8e825dc7ad115601ce3511e6cf1e495543456eac44"
+    },
+    "final": {
+      "review_id": "d1a5872b-b500-409a-a119-ecc825b40040",
+      "content_sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521"
+    },
+    "script": null,
+    "branding_hash": null,
+    "speech_hash": "ab16df144b09176b",
+    "compilation_hash": null
+  },
+  "choice": {
+    "locales": {
+      "en": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "ja": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "ko": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "es": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "pt": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "id": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "vi": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      },
+      "th": {
+        "metadata": true,
+        "captions": true,
+        "dub": true
+      }
+    },
+    "decided_at": "2026-10-25T20:10:41.250623Z"
+  },
+  "locales": {
+    "en": {
+      "metadata": "ready",
+      "captions": "ready"
+    },
+    "ja": {
+      "metadata": "ready",
+      "captions": "ready",
+      "dub": "ready",
+      "file": "ja.m4a",
+      "format": "m4a",
+      "file_role": "dub_ja",
+      "sha256": "fa58e5c10148aaae354ec989422e457588d9402ef47b2159b344e94d4514fc96",
+      "tempo_max": 1.17
+    },
+    "ko": {
+      "metadata": "ready",
+      "captions": "ready",
+      "dub": {
+        "status": "skipped",
+        "reason": "Jev still hears 2c063b, 594e82, 719e7c, 76fc63, 79a96a, de08dd wrong after 2 retakes and 2 rewording rounds"
+      }
+    },
+    "es": {
+      "metadata": "ready",
+      "captions": "ready",
+      "dub": "ready",
+      "file": "es.m4a",
+      "format": "m4a",
+      "file_role": "dub_es",
+      "sha256": "123215f8e381ab05e7310e9b97b95a18734b872b1af895d5b0f75af2e9f6c277",
+      "tempo_max": 1.13
+    },
+    "pt": {
+      "metadata": "ready",
+      "captions": "ready",
+      "dub": {
+        "status": "skipped",
+        "reason": "Jev still hears 9e738a wrong after 2 retakes and 2 rewording rounds"
+      }
+    },
+    "id": {
+      "metadata": "ready",
+      "captions": "ready",
+      "dub": {
+        "status": "skipped",
+        "reason": "f576ae, 9e738a, ed8308 do not fit their windows even at 1.15x after 1 shortening round"
+      }
+    },
+    "vi": {
+      "metadata": "ready",
+      "captions": "ready",
+      "dub": "ready",
+      "file": "vi.m4a",
+      "format": "m4a",
+      "file_role": "dub_vi",
+      "sha256": "1913d2c5360cfcf741536cb37623f9fe8ec38c315598216f62124ddd86aec35c",
+      "tempo_max": 1.15
+    },
+    "th": {
+      "metadata": "ready",
+      "captions": "ready"
+    }
+  },
+  "previous_failure_status": {
+    "review_id": "e21cc268-0855-45f2-8b3b-25a0a39ca81e",
+    "content_sha256": "cea21a881b41e37b04996c38e8f825f595440e280f2111f0aaeb7179520881a5"
+  },
+  "held_parts": {
+    "en.dub": "Unknown paid transcription result; no EN audio is provided, and its native check remains unfinished.",
+    "th.dub": "Original controller safely paused after four explicit known service refusals; TH audio is unfinished, entirely omitted, and is neither skipped nor approved. Due time does not authorize resume."
+  },
+  "native_caption_policy": {
+    "file": "/workspace/travel_scanner/tools/video/core/captions.mjs",
+    "sha256": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+    "validation_modules": {
+      "tools/video/core/stages.mjs": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "tools/video/dubs/plan.mjs": "249dbbce09541ad1f843f39d7355b4de56b283830ff5bee357457e15b9765a2f",
+      "tools/video/tts/check.mjs": "299559cf086283f2b703fbb2c40a4b18607b17fff9cdb6116988b8c862e0affb",
+      "tools/video/package/metadata.mjs": "dcca63b10ae3f88e5905008f87c3065b6fe293ef2268755aa41f5527fa877e2c"
+    },
+    "production_evidence_file": "/workspace/work/ai-animation-01/caption-pause-production-verification.json",
+    "production_evidence_sha256": "77a071d0f75beb0cabeefa782d502f07a9c422c385a76af512348d35d82f1466"
+  },
+  "native_fit_adjustments": {
+    "ja": {
+      "source_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/fit.json",
+      "source_sha256": "14d1b0f69cb6b41b4aaddffe974989dd940eec37ce3cfc0230fe9ce73a01b4a0",
+      "windows": [
+        {
+          "scene": "delivery-three",
+          "state": 0,
+          "start_frame": 1079,
+          "end_frame": 1212,
+          "lines": [
+            "47c7d2"
+          ],
+          "tempo": 1.15,
+          "slack_frames": -5,
+          "over": false,
+          "absorbed": "next-slack",
+          "overrun_seconds": 0.17
+        },
+        {
+          "scene": "build-ask",
+          "state": 1,
+          "start_frame": 5668,
+          "end_frame": 5873,
+          "lines": [
+            "60d6c7"
+          ],
+          "tempo": 1.17,
+          "slack_frames": 0,
+          "over": false,
+          "absorbed": "tempo",
+          "overrun_seconds": 0.13
+        }
+      ],
+      "scope": "Original saved native fitting adjustments, not new tempo/cap changes or a modification of checked audio."
+    },
+    "es": {
+      "source_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/fit.json",
+      "source_sha256": "e478ead45aedc78c5216b3c507bc8c10481552dfe36ed2acfe383779eaa06f98",
+      "windows": [],
+      "scope": "Original saved native fitting adjustments, not new tempo/cap changes or a modification of checked audio."
+    },
+    "vi": {
+      "source_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/fit.json",
+      "source_sha256": "70b346dee5cae83f234cf85c77a777336ed72332e032c13d4d176263bb2441b4",
+      "windows": [],
+      "scope": "Original saved native fitting adjustments, not new tempo/cap changes or a modification of checked audio."
+    }
+  },
+  "native_fit_notes": [
+    "ja 47c7d2: original native next-slack, overrun 0.17s, tempo 1.15x",
+    "ja 60d6c7: original native tempo, overrun 0.13s, tempo 1.17x"
+  ],
+  "historical_caption_timing_limitations": [
+    {
+      "locale": "en",
+      "id": "291f73",
+      "changed": false,
+      "start_ms": 184467,
+      "end_ms": 189300,
+      "old_end_ms": 189300,
+      "hard_end_ms": 188933,
+      "bounds_frames": {
+        "caller_line_end": 5679,
+        "next_line_start": 5679,
+        "total_frames": 17687,
+        "visual_window_end": 5668
+      },
+      "new_crossing_ms": 367,
+      "old_crossing_ms": 367,
+      "caption_times_identical_to_before": true,
+      "native_window_metadata": {
+        "scene": "build-ask",
+        "state": 0,
+        "start_frame": 5534,
+        "end_frame": 5668,
+        "lines": [
+          "291f73"
+        ],
+        "tempo": 1.15,
+        "slack_frames": -6,
+        "over": false,
+        "absorbed": "next-slack",
+        "overrun_seconds": 0.2
+      }
+    },
+    {
+      "locale": "ja",
+      "id": "47c7d2",
+      "changed": false,
+      "start_ms": 35967,
+      "end_ms": 40733,
+      "old_end_ms": 40733,
+      "hard_end_ms": 40400,
+      "bounds_frames": {
+        "caller_line_end": 1222,
+        "next_line_start": 1222,
+        "total_frames": 17687,
+        "visual_window_end": 1212
+      },
+      "new_crossing_ms": 333,
+      "old_crossing_ms": 333,
+      "caption_times_identical_to_before": true,
+      "native_window_metadata": {
+        "scene": "delivery-three",
+        "state": 0,
+        "start_frame": 1079,
+        "end_frame": 1212,
+        "lines": [
+          "47c7d2"
+        ],
+        "tempo": 1.15,
+        "slack_frames": -5,
+        "over": false,
+        "absorbed": "next-slack",
+        "overrun_seconds": 0.17
+      }
+    }
+  ],
+  "limitations": {
+    "package_check_created": false,
+    "sync_ready_metadata_role_included": false,
+    "studio_upload_confirmed": false,
+    "meaning_and_audio_QA_not_waived": true,
+    "owner_download_tested": false,
+    "publication_performed": false
+  },
+  "protected_files": [
+    {
+      "file": "/workspace/travel_scanner/tools/video/core/captions.mjs",
+      "sha256": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+      "size": 32956
+    },
+    {
+      "file": "/workspace/travel_scanner/tools/video/core/stages.mjs",
+      "sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "size": 16456
+    },
+    {
+      "file": "/workspace/travel_scanner/tools/video/dubs/plan.mjs",
+      "sha256": "249dbbce09541ad1f843f39d7355b4de56b283830ff5bee357457e15b9765a2f",
+      "size": 26856
+    },
+    {
+      "file": "/workspace/travel_scanner/tools/video/tts/check.mjs",
+      "sha256": "299559cf086283f2b703fbb2c40a4b18607b17fff9cdb6116988b8c862e0affb",
+      "size": 28626
+    },
+    {
+      "file": "/workspace/travel_scanner/tools/video/package/metadata.mjs",
+      "sha256": "dcca63b10ae3f88e5905008f87c3065b6fe293ef2268755aa41f5527fa877e2c",
+      "size": 14671
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+      "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "size": 47678
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/lexicon.json",
+      "sha256": "9b06e91f344173f30cd415d17184b8346bfde07c81c7a5e55be8f20b9e0b0c05",
+      "size": 6983
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/branding.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/auto.json",
+      "sha256": "19a11f9466676c4970126bece120a4f358727d02f074b35812d81fb47826f3b1",
+      "size": 8587
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json",
+      "sha256": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+      "size": 443
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/timeline.json",
+      "sha256": "d34af3061326998b7b0cc843cf096323a15b39e313f99ad1a52124a1f27d240a",
+      "size": 48423
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/checks.json",
+      "sha256": "47d29b73329991495bc2f7d6b90f6c1b1c43314f45a992606f67915a116b9637",
+      "size": 46108
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/approvals.json",
+      "sha256": "8fefeaec595d5ba964eb6c0712ce9b9c27d8db4f6d4524492027d3b8e3e21106",
+      "size": 1382
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/qa.json",
+      "sha256": "a653adc056a3bf8b1abf4cf4cc9cca8a06efabac5bdb2c3dc95ae08db72be1d1",
+      "size": 1938
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/final.mp4",
+      "sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+      "size": 45859848
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/languages.json",
+      "sha256": "d0a0ee8e8b5f9198e7fd4a633a3d804ab8e98f0ea8ece966e2d637e116e305c9",
+      "size": 746
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/status-handoffs/ko-pt-id-cea21a881b41e37b04996c38e8f825f595440e280f2111f0aaeb7179520881a5/languages-status.json",
+      "sha256": "cea21a881b41e37b04996c38e8f825f595440e280f2111f0aaeb7179520881a5",
+      "size": 27512
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/status-handoffs/ko-pt-id-cea21a881b41e37b04996c38e8f825f595440e280f2111f0aaeb7179520881a5/submitted.json",
+      "sha256": "8fc551b139774982066f1003d6f0cf0008338b2ddd91204cf4b76c3fe70fa368",
+      "size": 5497
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/audit-caption-readiness.mjs",
+      "sha256": "d9d0c4acf3ad8ea34979d9781866e7767f0a95eb239dc73344db4e3d7c18febd",
+      "size": 19009
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/manifest.json",
+      "sha256": "da5fca47a076cc8e9d25ed6065b94a632f83a6c55d00ec2b1cd71121359bad5f",
+      "size": 847
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/zh-TW.srt",
+      "sha256": "38b1829a8304abc84844ca325764c52ddcdaa9f4682784aa577d5b3f256b5c9b",
+      "size": 11449
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/zh-TW.vtt",
+      "sha256": "9d762c626a70dfe8f1f214840ee47febbdd385745a9cabb58c13f27cb62bfba3",
+      "size": 11137
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/en.srt",
+      "sha256": "1e3ab0412b7487af926bd96ecee3dcf9189568de2f4ab0dd2efbd6bbf4fef43f",
+      "size": 12080
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/en.vtt",
+      "sha256": "22964a753ef48ba9c2a7173594c68f59b28cdc6b90ff641bcc83d82ad7f7aaff",
+      "size": 11680
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ja.srt",
+      "sha256": "e20c58bb4115b1aea304e71af6a9cf9bfb2f984fddc69826d325eebb2d30270c",
+      "size": 14945
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ja.vtt",
+      "sha256": "e0d4404d7c10a96b891cb58467bb40ec16c61c41f83e8f6dbb4a6aeb8ad69b10",
+      "size": 14477
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ko.srt",
+      "sha256": "32303cbe9549dc5d2f8d79ec017571ccd9956dddb2eea81ad2252b13c1f857ee",
+      "size": 12590
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ko.vtt",
+      "sha256": "acefe221f320c550f8fa2d8264f78e2f90086ce55efc87063d7f786d779c141c",
+      "size": 12202
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/es.srt",
+      "sha256": "1d38b9798c30a024e95365d0635df4e3a0e526c55c2ca03c5f138eb8f71599e1",
+      "size": 11123
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/es.vtt",
+      "sha256": "a069250fa9cddb2bcc6e35cdc0f4cc5f2f3f9e44e7df8f2458613c8e1899c134",
+      "size": 10771
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/pt.srt",
+      "sha256": "1f7dda75856a9f671d8eea3162b427b7090c95af2a01413f108d57d4c481ef2c",
+      "size": 10076
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/pt.vtt",
+      "sha256": "d52389ebfbf55c9484c6f98b45112340a7130b2f7a86705e61251d28ed14e84e",
+      "size": 9776
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/id.srt",
+      "sha256": "2ba8b3fc8a2867a11d5fbc1e7d36f66636bbc3adafa92f7096f7c4ca32f6f3db",
+      "size": 10790
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/id.vtt",
+      "sha256": "d24b11f2db11aa58c636d0585869881d58417272361e6808479fc62c784239bd",
+      "size": 10450
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/vi.srt",
+      "sha256": "f124aeecf00473d2152974556f02b97114bb1b9a6ccd905377047a69eab559d7",
+      "size": 14032
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/vi.vtt",
+      "sha256": "cc84d961bc58ae4042d0ecfe6d7088955fcc86737fc96a437273cc37ffb77f72",
+      "size": 13672
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/th.srt",
+      "sha256": "8c87a7370873484f3d477f21871f18781de62a50bd48dc499eabd031502f2c17",
+      "size": 20951
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/th.vtt",
+      "sha256": "f38e4fd08f62134965ce86818f4bd0dcfcb3b132a4dcbd602fd4e49f451e6bd4",
+      "size": 20655
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/caption-pause-production-verification.json",
+      "sha256": "77a071d0f75beb0cabeefa782d502f07a9c422c385a76af512348d35d82f1466",
+      "size": 54988
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/caption-pause-production-caption-verification.json",
+      "sha256": "9db46e580fd353252063102403b5de06209c59d7856d0723572d306a3d710b67",
+      "size": 45353
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/caption-pause-production-audio-integrity.json",
+      "sha256": "53aa8ac7aae8b1bda83499b71f0e976ea9053effb2e9b72261389e36c21488a2",
+      "size": 3711
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/en.json",
+      "sha256": "e6f09548e017a669aa6c7d8aa3c1705a318ad4384039ff03c38b5f2f4573ab57",
+      "size": 17848
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/en.final-caption-translation-review.json",
+      "sha256": "65655eb3155ca48bb7989d86c549f241a1ad61453a9e4680305cdb35c1c690ac",
+      "size": 22236
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/en.final-dub-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/en.failed-dub-final-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ja.json",
+      "sha256": "50e547580f142c405a667b426e92a2c7b91fe4b3c9ce7c7487e4444e5144aabd",
+      "size": 20652
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ja.final-caption-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ja.final-dub-translation-review.json",
+      "sha256": "abc3def77509732938670c4c95171cfcf98999c0eb3731f3cd630d943c7e3d68",
+      "size": 13316
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ja.failed-dub-final-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json",
+      "sha256": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+      "size": 18685
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.final-caption-translation-review.json",
+      "sha256": "dde52b44baeb4300c75ae53579167581af27f1eda0759988bbf82a2e54a889da",
+      "size": 31697
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.final-dub-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.failed-dub-final-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/es.json",
+      "sha256": "c14d83d73d72eda075fb16462548c2f07c564f7ce7a13d410ad92683814a2dca",
+      "size": 17450
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.final-caption-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.final-dub-translation-review.json",
+      "sha256": "5bb0d10e0481ce4abdd3bc8c08310c29e3f13be8807d7bf5f8040380d77bc3f4",
+      "size": 19933
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.failed-dub-final-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/pt.json",
+      "sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857",
+      "size": 16809
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.final-caption-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.final-dub-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.failed-dub-final-translation-review.json",
+      "sha256": "71fc1c66636efcb24dc54025d3deeb0546d8117eb9132429db475083ec0e9f5c",
+      "size": 28745
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/id.json",
+      "sha256": "261b3cccc47b5f5d93cf7e5aa53f21b1dc7f73038f72395ef224ddf23ab65801",
+      "size": 17068
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.final-caption-translation-review.json",
+      "sha256": "4826f42cda98e0fd2b279e1120e9e588fc8aaab7fdf7dfbc4220571cce32190e",
+      "size": 24085
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.final-dub-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.failed-dub-final-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/vi.json",
+      "sha256": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+      "size": 20479
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.final-caption-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.final-dub-translation-review.json",
+      "sha256": "87302e0d976da52853d9500cef50b9494a30e96d96aafb1667498728adc9deeb",
+      "size": 29137
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.failed-dub-final-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json",
+      "sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+      "size": 29514
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.final-caption-translation-review.json",
+      "sha256": "43a1dfafc53571f5a41654ddb06e03e70b875df20200d9913ad9d511615aa397",
+      "size": 7707
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.final-dub-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.failed-dub-final-translation-review.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/frames/manifest.json",
+      "sha256": "6b708baa195bbde9724a6259a2d0ada7f4cbfc00693d0868242b15f0d83a3aa0",
+      "size": 92224
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/thumbnail-qa.json",
+      "sha256": "9fde407499986985f80e07d60fc23670b454389f206cc5ca93404b6c95ecfd7b",
+      "size": 4094
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/thumbnails/en.jpg",
+      "sha256": "1239b202a3c42527918595abc255526a8283b3c95371532cfdce54c29e6eeeac",
+      "size": 76097
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/thumbnails/ja.jpg",
+      "sha256": "9402129d49f97c6277449d1478974936ae1f095b61bdc0ef5cc35c3fe60a87c5",
+      "size": 76227
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/thumbnails/ko.jpg",
+      "sha256": "c9ae9ce46c770ca216b04f13733f0ba4597b1100267c8b98145b94edb47a1331",
+      "size": 69057
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/thumbnails/es.jpg",
+      "sha256": "8e566fc7a66320fdfa65e2dbccd36896f5c83506e21e2409c58853a81f9b3855",
+      "size": 77847
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/thumbnails/pt.jpg",
+      "sha256": "a48d83bddc1e0ad4ead325b939367c1ed376d3c8a0585129480af4ff9745b5b8",
+      "size": 78139
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/thumbnails/id.jpg",
+      "sha256": "d5704efa7c52c96edd7b64adcb9e87de3ce8de6559a53d56300df6ff2c75c60e",
+      "size": 75966
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/thumbnails/vi.jpg",
+      "sha256": "7b4dff4c52693e54f953a6b2ce24734d51a1ab9afdce0ed964a1eb8dd6c0767c",
+      "size": 80269
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/thumbnails/th.jpg",
+      "sha256": "13808b4b3a8f44b39fcf06128b53770e1504e606de554accf800affc8b788379",
+      "size": 75417
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/skipped.json",
+      "sha256": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "size": 162
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/status-handoffs/ko-pt-id-cea21a881b41e37b04996c38e8f825f595440e280f2111f0aaeb7179520881a5/ko_skip.json",
+      "sha256": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "size": 162
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/fit.json",
+      "sha256": "33eb6ed4da04ee95e3c3be3422062896054584c19e24081c6a703eb12379a6fd",
+      "size": 22392
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/audio/cache.json",
+      "sha256": "883fa1d54444ec67b32c98802d7b82408dd09c33606478b04c150c99b249d4b2",
+      "size": 3514
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/timeline.json",
+      "sha256": "57c02fe3b314e732d854067314d29f90d8666dab7a0fc6ec055815876235d7d7",
+      "size": 39719
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/skipped.json",
+      "sha256": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+      "size": 122
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/status-handoffs/ko-pt-id-cea21a881b41e37b04996c38e8f825f595440e280f2111f0aaeb7179520881a5/pt_skip.json",
+      "sha256": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+      "size": 122
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/fit.json",
+      "sha256": "d8e6b160960a7dbb330b96c989ac6d167281eb40cd76ed351f9e9c3dcd9c1c8c",
+      "size": 22396
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/audio/cache.json",
+      "sha256": "dc4c0e7eddf678fd35d8d1bd2eb7104441422ab9eb86a1f6125fef49919fc55a",
+      "size": 3514
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/timeline.json",
+      "sha256": "c38ef501c1ed6b0bc6293a4a0cac33847214cf4634a86f88aa5e59f0482b5d21",
+      "size": 39773
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/skipped.json",
+      "sha256": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+      "size": 141
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/status-handoffs/ko-pt-id-cea21a881b41e37b04996c38e8f825f595440e280f2111f0aaeb7179520881a5/id_skip.json",
+      "sha256": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+      "size": 141
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/fit.json",
+      "sha256": "7e7234b1f834add429f1f4be0ab03a39faef829ad72a21df0f275897927b7c5b",
+      "size": 22800
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/audio/cache.json",
+      "sha256": "6b9ff1885643a27b77a8b0731b3a1652811186266dcaae675b39366877ab2b33",
+      "size": 3709
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/timeline.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/source-corrections/id-89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a-6e747daa5477d65c72547c3faed40c8235206a31ab8f7ec8302221e30e6f7bad/application-receipt.json",
+      "sha256": "a670c6800459474cc5e464221dbf6206b76a6c0a63c481826f2dc74590cbbc01",
+      "size": 3854
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/skipped.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/timeline.json",
+      "sha256": "933ead4161566cfb4245ab2e3b8c44c9f5d17d3aa5edf4dc77aba6df69bcf967",
+      "size": 39975
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/fit.json",
+      "sha256": "14d1b0f69cb6b41b4aaddffe974989dd940eec37ce3cfc0230fe9ce73a01b4a0",
+      "size": 22570
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.ja.json",
+      "sha256": "41b10ec4a41173f4139edfb0555bddeb4d601cb79f23225ac839804db2bac026",
+      "size": 175
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.ja.json",
+      "sha256": "c7b53b273ff4c3b94886d7c9510394c258baf47a308c9e9cafbb8cc83947a50d",
+      "size": 54960
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/cache.json",
+      "sha256": "934877490409ca9f178c660be04ffdf81dee1260ad9316c60339223c2e0a75bf",
+      "size": 4489
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/005752.wav",
+      "sha256": "68110bda50d857ca34ec57488ef9d494bd0dac67b07154c15cceeecd216ce8a2",
+      "size": 596204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/00aeec.wav",
+      "sha256": "b56f40d005de7e02407b64d1b0234461b0e22fa4f97c03eeaf5786306e2490c5",
+      "size": 362924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/05bc8a.wav",
+      "sha256": "b497794d545be9dc509ab82befa33bdd2ce7f95420eadf37095306d169590de3",
+      "size": 446444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/066452.wav",
+      "sha256": "beaeafa6bb32ac84c97a9fb043de54bd7f995864af0a694cd032f6aa74101a4b",
+      "size": 461804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/07771e.wav",
+      "sha256": "58c12d6fad1ecbe391cc08163f4b910022e5ef0e6f8fca7e869034f6570c981b",
+      "size": 529964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/0b06d1.wav",
+      "sha256": "5517de9a8855b085696e42e164049676392f970c0b46f53900b2f3e69f71ef9d",
+      "size": 574124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/0c086d.wav",
+      "sha256": "b5344be998d62047732f88e6e9a8650f60f5e9c8b19bc157c9263b873a789f85",
+      "size": 332204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/0dd30b.wav",
+      "sha256": "8370bc53eee004487b7bc2995c15f5228851fa4642587ed0af26aa90b634ebb7",
+      "size": 499244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/1712ce.wav",
+      "sha256": "2d4aa2e9931130da2eb4c3ab241014120ebfb6053c31d8c2949c71e329f97305",
+      "size": 378284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/182fcd.wav",
+      "sha256": "d45361ebc803613f54f9c9f17049bc4d2015536c5432da3a89bbb3b2757f1cec",
+      "size": 608684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/1832d2.wav",
+      "sha256": "5c2c8e40a23559dd90bd19334cf0cb3930ca311305451b336936f0d771e4c844",
+      "size": 403244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/18691a.wav",
+      "sha256": "5ab87b6fb6ffd572059e5c47add9af82c88f3c1a87ca6bd793336cc8166e4686",
+      "size": 560684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/1b4829.wav",
+      "sha256": "8bf9b4bff3bf0899f94a4068bf1daa3b96583f62346b9751061b95441b443b5d",
+      "size": 426284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/1de727.wav",
+      "sha256": "fde8e5f88e65cb4ceed393686d3d6239b74074aa2c2aa2fb2547f882d96e9279",
+      "size": 483884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/1f3f10.wav",
+      "sha256": "d3fafe41df9f327c19d002579296402b42831f25c377144cf00515a239b38c9e",
+      "size": 470444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/1faa10.wav",
+      "sha256": "1d116df99d48dd99f5c273e71492f14b2ed4aa9037df6dba8407b39d70c71923",
+      "size": 396524
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/203f1e.wav",
+      "sha256": "4ffc600e602cc1a89cb2d2217ab6a7eaa155964fb07e03922880ae3e2eb97460",
+      "size": 551084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/21c1bc.wav",
+      "sha256": "627ec6cb7d16b2f37ee9d4a15c32d8ecfd2d003869df0e1e28a556737319aa17",
+      "size": 678764
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/2506eb.wav",
+      "sha256": "4d9863baefb0443c2c1e896d54a6ca3ad9540de06dbe11c62249cf9f6e959a8a",
+      "size": 547244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/28a3eb.wav",
+      "sha256": "586c771ea99f17df323a58236c7d03e15ef956bf2cdf852ed1b525aec48d5e23",
+      "size": 461804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/291f73.wav",
+      "sha256": "4ec846634f931834beaaf02802a26ac2ff6dbb939f604741b7ea2c0bde13bccb",
+      "size": 402284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/2a7dbb.wav",
+      "sha256": "7a8e82ea64f7d4b674f2e7136e03e69b6da9d6677df6b49d2c3cbcd638866321",
+      "size": 412844
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/2c063b.wav",
+      "sha256": "4ac2f5660081f0cadcb3082a1127366856a610f3a218e71bef364bf9060c238f",
+      "size": 465644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/475bb2.wav",
+      "sha256": "5b05821e9a77f615f7869921e8c182dec8ed729b657a174a758199f504d4fefd",
+      "size": 416684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/47c7d2.wav",
+      "sha256": "5a8a7782b2cf7f5380025cb9074880515269a6170037a6357e87955d7f009899",
+      "size": 493484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/481fba.wav",
+      "sha256": "5147fa0667d1a498e913833d996cca32daf5f18f21fcc88df6047aee73232240",
+      "size": 543404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/4a14bd.wav",
+      "sha256": "2432ccbafd94ba3ce6769c961353842f679c77e63c0528500fb690d758d64808",
+      "size": 424364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/4df2bf.wav",
+      "sha256": "6f50a1e35b267ca012f648a8a076686a7a568e0b64b40ede359a64aba24ff9d2",
+      "size": 429164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/520a3b.wav",
+      "sha256": "917449e3f3e2d9e7ba329737800d38e06dbce6a4808f82d342abea3a865dc2d9",
+      "size": 593324
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/52cf29.wav",
+      "sha256": "67a4e4bec82888a16352ca26d34365ab9084d2775209e5ae8e65606c1e5e0613",
+      "size": 795884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/56c197.wav",
+      "sha256": "dbf11798dce675006f43ff0bd2ce6522673b1d68a9e3dcd2e6ecb9249a3aa1fa",
+      "size": 420524
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/56ccfa.wav",
+      "sha256": "dd069f11dec2e5c97e47cfbd0bde68d2416ffa6f91377c038acfe92fac0d57e8",
+      "size": 507884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/594e82.wav",
+      "sha256": "1ec3971e2230a3f19e823eb7429901e9b496e30d8e2d72aa6b35683055735f05",
+      "size": 488684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/5a37fc.wav",
+      "sha256": "6f87955d4d1b7b1c641513898a087731c72abf30c084b25fa770b8d328d9d0f2",
+      "size": 461804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/5d4f54.wav",
+      "sha256": "75a333431e514ffa5ddf2cd72d10257bf719c3b0ff3cf1140196d9b6069c6c90",
+      "size": 397484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/5e5629.wav",
+      "sha256": "68d4c0f8887a7ab33aab8b1ca6807dd065115f122213e845a4bd0b0bb30ad9bb",
+      "size": 409004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/5f446c.wav",
+      "sha256": "56db3e21c5f0ec2d5034285a1be95daec85ebb6df63718ba5cc31e640cbe5946",
+      "size": 545324
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/60d6c7.wav",
+      "sha256": "5298fa4e5dddd2442f6bf243174ce8724ce6707258ea0c8f00ad568c41db6051",
+      "size": 752684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/6b1614.wav",
+      "sha256": "2218bdb52114ac712b2771b5570d1e38332ad7ad166f1053b247662b30b71d5d",
+      "size": 433004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/719e7c.wav",
+      "sha256": "46b0d7722c9ee8483ce6bfb9e0b83de5b1245f42c3d0c336fdbd20834d6ba81d",
+      "size": 475244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/7311eb.wav",
+      "sha256": "6ffee23ce4c0e9a0d22988eacd0aaf4092e878da430bc262416733302d242870",
+      "size": 587564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/74eeac.wav",
+      "sha256": "006a4848762127da99085ed8a0754a8966a2e53e29c8a16f5fb4d4a911188a54",
+      "size": 370604
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/75368c.wav",
+      "sha256": "e5a20c81a5babeaf69524610f86a3df5b87fcf3a27ce95b6724c4b9e6d44ac28",
+      "size": 548204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/76fc63.wav",
+      "sha256": "f645a7da994d277306935fa4e06c387f20443b217564a68bf97eab09c52202ac",
+      "size": 577004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/79a96a.wav",
+      "sha256": "929d53f143ed5121a181447d416b1ee5913c979d37300ab8c36516c111cb53d4",
+      "size": 446444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/7a42ba.wav",
+      "sha256": "27f6818b27c9f4a10703eeb3077e1bb069fa36f8882c92d0c059e3367610109e",
+      "size": 651884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/7b0c6d.wav",
+      "sha256": "5ba4169b4b9f241e5b472527d1882deb9ce6f6de72df4f209f6441705d056668",
+      "size": 476204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/7bf8fb.wav",
+      "sha256": "7d5c242a2f8a93b5e70ade5f9b74da7f30f9df55553778aa1ef2764d5030755b",
+      "size": 623084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/7e3f75.wav",
+      "sha256": "89c29c6a57f46c27b17e505a3c728a1ed988b2da1275cc57bd67602b8bab2a11",
+      "size": 584684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/801093.wav",
+      "sha256": "805c9ce9d48f29856701c2bcb29d09c6396e611136a9508862b245fb5612891b",
+      "size": 739244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/802a26.wav",
+      "sha256": "46b0adf48ea326cc71b0a1c980808723cdc8012ace47303f07e9231196012e28",
+      "size": 579884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/84576e.wav",
+      "sha256": "b511240f74f6d572341d41a5c96f0560dca753aaa65fc43b4b576083f67478d1",
+      "size": 794924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/8a3f5b.wav",
+      "sha256": "1edc3f334af5e67c8b0f4ed18b279ec98547191606143e5ba78ddd51b222a506",
+      "size": 427244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/8c2bc9.wav",
+      "sha256": "b15592c0bfc30ca9f27f7226c32259d376628d9dff64f54e54b78f403a6c0610",
+      "size": 482924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/8eb4eb.wav",
+      "sha256": "107d5a5965b6f58d4c7b54c120ae660cedc50fd70370068afff9380a15e353f3",
+      "size": 491564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/8f5f2e.wav",
+      "sha256": "ccea31362387cf0eb186e937d336f7da3b134e911eba9727fe5bb58ed11252e2",
+      "size": 505964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/976818.wav",
+      "sha256": "c80b12db1102bc778267ade151eb14ffea9b0ca14721e97ceae28a4ca1c198a7",
+      "size": 502124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/9aa7fd.wav",
+      "sha256": "3c933341f1e1cc917c7f7b57326bc83aee61dc01d7d41ea3dd9fa94ea299f40c",
+      "size": 446444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/9d8939.wav",
+      "sha256": "276a66ab4e6efac436ae513ad24f25607dbaf6d7294ac597ea52b8a61b6e592e",
+      "size": 536684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/9dd115.wav",
+      "sha256": "bdfce813beb9fdda1f9ae1ff42195f9b881c9611a2a9604ffff183c4c8e1f1aa",
+      "size": 611564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/9e738a.wav",
+      "sha256": "2cd4b90ed71a5ad09376225b81f6c2057fd8a9644333e760ef833fc235071002",
+      "size": 404204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/a1f88a.wav",
+      "sha256": "2b40d85e56046230eb0a1586225d8ea17a841900e79d6d5899240d30cd32c4d3",
+      "size": 463724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/a2d3d8.wav",
+      "sha256": "c4575f0559f1cb33e7d6dbab93f553af8091fd70668aa64b55fc5989eecf65f1",
+      "size": 610604
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/a49833.wav",
+      "sha256": "e117eba19cb7c64319786c5555649fa39b1359271374efe3c1cfb7757806e276",
+      "size": 491564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/a56276.wav",
+      "sha256": "c9d1ea1963fb20a2890568bd01fa061355584675182c6d84da33dcb22668d42b",
+      "size": 569324
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/a6c28e.wav",
+      "sha256": "d8689be4184841f80563eedade26169781c7aa1386e0882b4c2c268a11d25a0c",
+      "size": 544364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/aa0639.wav",
+      "sha256": "43e89d291132c1e2be844841671e4f93ec191df6b051e7d2eb3b8ac00ac73d70",
+      "size": 421484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/ad1b2c.wav",
+      "sha256": "287ee0184e667e9b2d742c2db51b13073c6b01c8f465a74899ae62f39954b31f",
+      "size": 687404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/b13c3e.wav",
+      "sha256": "e190d4801887a6b3f1bee45f2753b3ae196d74753874df4eede55f050ff0ad65",
+      "size": 590444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/b22122.wav",
+      "sha256": "b98bdd2bba4d68714a9857edb59e8d65bfa03fa6cdeb0de86fa8b04214e47479",
+      "size": 413804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/b4de26.wav",
+      "sha256": "6619f7d588d99158dedde670fadfe9794c1afeedb3c61048a3fb73657ebf7296",
+      "size": 459884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/b69ae1.wav",
+      "sha256": "0c5f0c46d41168bbc6a407fd6f850483eb6fc521ce2b4da292b7424982362189",
+      "size": 419564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/b919e0.wav",
+      "sha256": "71698441f8430a461546cda30ba8586a6514a4cfbdb0eb88efdc78a909c2d854",
+      "size": 480044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/ba0179.wav",
+      "sha256": "4b1590f6867bd95fe9e1ec1bb23c96ab5782ee3b8607240500a1f50aabfad16a",
+      "size": 614444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/bf54ca.wav",
+      "sha256": "5094ef78928d0c01c39da55b49e87658ef34843065780516ad4c28a762a7d2a9",
+      "size": 501164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c141fc.wav",
+      "sha256": "74c21060522b2c6bb1e2136cb4717d6cc800c797d98bb71cd682768b6c100876",
+      "size": 368684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c2d378.wav",
+      "sha256": "2fa5e6355a2c581fc73cad7b39e5f02ebab0a1b9578b590db9c77b5007a73931",
+      "size": 394604
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c30642.wav",
+      "sha256": "48332b6c79c020ff9e79785f318503e0c0ddf2bf191e580d3cb0cc987df118e6",
+      "size": 500204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c38a5e.wav",
+      "sha256": "ab0ac94644985a4894e18fedd9c3aab88a41dd37175c5b7321bda79ba999783d",
+      "size": 601004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c41135.wav",
+      "sha256": "b5ade3e14ab468f4f129b42e48f531ab6fc9040605d13d463ff7366cef9dd864",
+      "size": 489644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c5a4b1.wav",
+      "sha256": "4d9a6e71c42c86883d19801ae27761681b675b328e7c633360ecc8fec2db59da",
+      "size": 307244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c5a99d.wav",
+      "sha256": "83972087da36e9d209772cd8fd4fa36223fa3f9773e784f26e56d1d87c834fa2",
+      "size": 434924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c7b43e.wav",
+      "sha256": "71deace40128fb2a198d52d9691eb7ba746b89ae02aec45262d7b9764ffca3e3",
+      "size": 486764
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/c90844.wav",
+      "sha256": "4c8dbd03f7810b59d4febb6c6ecd638de9ce8bc8a57f24d4a5df9849a8f1984e",
+      "size": 452204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/cab285.wav",
+      "sha256": "64bd4df958bf99739fc39c785437cc7f046e13efd000f04af5a2496ada62dd2e",
+      "size": 560684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/cbba85.wav",
+      "sha256": "4f2fe8d858c296e96ae713e655e360e1eb97f1823e28ac7385599947aacfacd3",
+      "size": 505964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/d27bc5.wav",
+      "sha256": "8e7e4141ee1f487db40b3e6c6bc12fc3f346ec1a38c8035044c931f0686884c4",
+      "size": 613484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/d6ecd3.wav",
+      "sha256": "81d437d79872bdb008a2e14ae9bbed376db396645999a2ae2a6cebc63ef22422",
+      "size": 479084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/d8b2ca.wav",
+      "sha256": "16591690e72d3b7c5b9183de6b3505872ac240ac8d8873e36660ec100bcac44b",
+      "size": 451244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/de08dd.wav",
+      "sha256": "3b1622eff1d2b0e5092f035ad614bdd61712b368f9cde6120fb1caf261282bf9",
+      "size": 548204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/de0fb5.wav",
+      "sha256": "8da1cdfea349e4e688eb7eb03d027eaf8a2e389ae1bdb272262961936aeddbf6",
+      "size": 445484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/e8b327.wav",
+      "sha256": "ce89c3155a6ed0607846e0a4540a70f4caf2e0a8a032984c9ce5e65cbff56087",
+      "size": 371564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/ea140a.wav",
+      "sha256": "3fb4d6731f7d5972e146258ff997f9e1d9c8f05e9df203199e50fc5ef48e97b3",
+      "size": 467564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/ed8308.wav",
+      "sha256": "018c86acfabc6657c8423132c13a58582ac97271efe94b00ac64b0247aee82cb",
+      "size": 558764
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/ee8b7c.wav",
+      "sha256": "a9bea36ab347b8019ca6c44f1a66fb32b4ae1ab9f9a611ed681eae62fe0096e9",
+      "size": 573164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/f064e3.wav",
+      "sha256": "240f41dd65c52e32676548d87f24611c26ba1c586a154a73fdea55ec31fbb390",
+      "size": 679724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/f2c1f3.wav",
+      "sha256": "0242ce9a09f76313e3877fb31f5b42483c6e459f64b1b8039ff77577447087f0",
+      "size": 387884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/f37b7f.wav",
+      "sha256": "52139f2357b2ed5dfb575cdb03215ea421c04abd827e3ef365f056e9416eabd5",
+      "size": 451244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/f576ae.wav",
+      "sha256": "e288a4ef8b02c4816e9afcefcea202a13de8d67601408478dc52fee23a3b10a4",
+      "size": 435884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/f6f6be.wav",
+      "sha256": "e7dd36d49f956eaf36f41019d4593beb2e4d8a2bf18cdd31c3cd17daf8844290",
+      "size": 602924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/f9399e.wav",
+      "sha256": "3a8cacdd2c81b6303f30e0b006ceeb080803f0029b1bcbec6fe1d5ef09871df6",
+      "size": 533804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja.m4a",
+      "sha256": "fa58e5c10148aaae354ec989422e457588d9402ef47b2159b344e94d4514fc96",
+      "size": 16883589
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/ja.json",
+      "sha256": "383269548bf286d546ae9ce83ccbc34325f1dc348f69ed96c4bf6b16eb0041f0",
+      "size": 1367
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/skipped.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/timeline.json",
+      "sha256": "b8c13a9650b42c550bae86a64344ac98d71189b3e823284af62d104d834af3c3",
+      "size": 39787
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/fit.json",
+      "sha256": "e478ead45aedc78c5216b3c507bc8c10481552dfe36ed2acfe383779eaa06f98",
+      "size": 22399
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.es.json",
+      "sha256": "05b13669dbecf7f6033a8befd3f6cc84bcc9c4700b2c92d66fad2b48e8785917",
+      "size": 175
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.es.json",
+      "sha256": "8a066702d7c7af0fa7a7715d7181ee6070e3177910aca2bf3bd959ded8f05917",
+      "size": 66419
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/cache.json",
+      "sha256": "4a9c5bc76f73ed0c03d5ffb58bc51db6f81f151ab29cfe4cc15dc87163e0b92f",
+      "size": 3553
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/005752.wav",
+      "sha256": "c31c258b3808126c0d6411588696713f8269a4c11906fc451fd90f87f746c954",
+      "size": 489644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/00aeec.wav",
+      "sha256": "db8dfa69d5bdb0b700bf861ddfc677936f0eb32bae1f4004b847ee6c32674de8",
+      "size": 371564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/05bc8a.wav",
+      "sha256": "428f9020e202b7c038cab989d96627c6a09c76cf55d299f94284172e71fb92a2",
+      "size": 353324
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/066452.wav",
+      "sha256": "9a8f010722a03659e355a5ed8bdd27b9cdd5d489514ec9dc9dda214c08d07230",
+      "size": 364844
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/07771e.wav",
+      "sha256": "6e496c03cf0a8ac67d942965f14adf0e5060f0642c69a6791c164d8d94ce69bc",
+      "size": 472364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/0b06d1.wav",
+      "sha256": "1b69fda1ada6f69ad4e9119c3baace7032cf1c0928115e781c6cf33636d45104",
+      "size": 430124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/0c086d.wav",
+      "sha256": "442428133ea3e4fdfa9c6880e21c2020b5ec3399e6b9c15756771e53a78ca70d",
+      "size": 312044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/0dd30b.wav",
+      "sha256": "8349a4566dcf882f9e0de52700b81a7f6f843765c0ce78d575cf1787fd8cf733",
+      "size": 372524
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/1712ce.wav",
+      "sha256": "b0f1751a62caf802924487b1bfd93d8d5caff7144caa065b6a264a2aa18a50b0",
+      "size": 291884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/182fcd.wav",
+      "sha256": "a5aec34c7577c9887c5d46eb6a79fff16bd7f95c6155a468c35e5acbcd800bad",
+      "size": 389804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/1832d2.wav",
+      "sha256": "c1a32c7550c97e7d2fb4e448e4cc03ed5faa7e56e3fe4c44d5cb6208aade6dde",
+      "size": 309164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/18691a.wav",
+      "sha256": "e0e33f9c1b15ecb39bccfab9d5473c1e2cc99829abf68988429868de814e9319",
+      "size": 360044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/1b4829.wav",
+      "sha256": "4e2c111747b35cc505d0e51e39ad08f024f4bcc546bae356001cd37615c92770",
+      "size": 340844
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/1de727.wav",
+      "sha256": "6686a41446fbb4aaf6933f7f92aeaeb8704ec83b8c4d9506c84940b062bb7786",
+      "size": 346604
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/1f3f10.wav",
+      "sha256": "de4570e420d620605f8019af3e3109d0b96a1fb0fb0bb9522423ca2125abf457",
+      "size": 314924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/1faa10.wav",
+      "sha256": "99673dd95e4d1743cd8b36d332c3a1dbb5ad7de822275eb871de73225ee848d0",
+      "size": 421484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/203f1e.wav",
+      "sha256": "4ad0b353ea3a0eb5ccb4d4b1f2ba7dbc164ccacc3b7961ae28767506a8292690",
+      "size": 341804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/21c1bc.wav",
+      "sha256": "05cbf5222c18acd8bebb1c6b9fbb4a6e8e425de39e5e5eb1b50e64bce8e94f92",
+      "size": 463724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/2506eb.wav",
+      "sha256": "70d8c36dbcf0141c9bd77e1ea1986aa6201649100ad5e6800fb7b844127f0e77",
+      "size": 334124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/28a3eb.wav",
+      "sha256": "5333d874ad3a271117f5475f261652e2ecf6e82846dd3161a34fb82e54d7cebe",
+      "size": 376364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/291f73.wav",
+      "sha256": "122a929c80d1ace55bdd283afde649e9f1d1b2aba0d18969fdd69754557272b2",
+      "size": 385004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/2a7dbb.wav",
+      "sha256": "e43fa3a3769e1304b89f563a223fa2126195a1503abc4a76caad317d4baf37c4",
+      "size": 418604
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/2c063b.wav",
+      "sha256": "0f2d3862a700e762dd0f743911eea986e976809428caeec9c1bd82d6df939f06",
+      "size": 374444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/475bb2.wav",
+      "sha256": "f12b8d55d25176e5f3620766afe45ff8f53d84b21a193f31c7ab12d8cbef73a1",
+      "size": 297644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/47c7d2.wav",
+      "sha256": "148fcb0a279f174bf86561fc5635fcf15d68b0e15afbfc4dea5e22296757cd8a",
+      "size": 323564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/481fba.wav",
+      "sha256": "bb173173c221704817bb4d09ef429e0c583702bd7195e95d92f6ea61cc8f3655",
+      "size": 393644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/4a14bd.wav",
+      "sha256": "54ae081b67b0c70a441aa312e536c94f78c3bc0ae4ad3d1887972b5cab0af68a",
+      "size": 326444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/4df2bf.wav",
+      "sha256": "a8ba306bd1fb3284018e369750b21f0cc925051109f8d3730df75c81c5910416",
+      "size": 295724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/520a3b.wav",
+      "sha256": "1d694d4aaa1a09959115c8b70fc7f15b649cd1b4b4ee8556ec0c17186935a882",
+      "size": 437804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/52cf29.wav",
+      "sha256": "c4e9cfab39d1afdfb92389cdde7fcddef8fbeec4551ed3d24e7d581998daef60",
+      "size": 618284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/56c197.wav",
+      "sha256": "139277146d63a026bbe3df5c9056e454f3948744e616a9ff4ab0bf02d32d0e3e",
+      "size": 378284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/56ccfa.wav",
+      "sha256": "4e9bd80133b97a2e253c2d7aee60d02a2d5929aeede983dd1c7dd1a5ffec867a",
+      "size": 370604
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/594e82.wav",
+      "sha256": "f7af73ff8e1de05b83bbae80bb57330567225f55a5c160aa038f7bedd16eab17",
+      "size": 345644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/5a37fc.wav",
+      "sha256": "7b70319eb1349fb90f7ed25ea753a76f3d3af29873d5f81b1f892604af0bb880",
+      "size": 360044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/5d4f54.wav",
+      "sha256": "a4006f2d85c53fb3e7f5f098884b435dccbcd95d72ae8a19cfa6134270665126",
+      "size": 353324
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/5e5629.wav",
+      "sha256": "c385c32b1797066123237b358ebc8b25bce2dbfa99c4c1cc3a9f757ee30a1ad2",
+      "size": 291884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/5f446c.wav",
+      "sha256": "b2c93b45abb8b80c55dbfe4594ef20295c5b6ce268a0f54c89d39bb749b573fb",
+      "size": 478124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/60d6c7.wav",
+      "sha256": "3d677f1f33df6e54b2bdece88b6029ef6dc4e3c89c61e749b76335c251cbcc85",
+      "size": 599084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/6b1614.wav",
+      "sha256": "ff6daf4b4aac3c4032d883c886a2c5187e4568f3a81a9226d04d8a14ec2c064d",
+      "size": 341804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/719e7c.wav",
+      "sha256": "4e181b5317cfacc9c4ed1b35f09b84ea39e20046d1a69f09139e1e02d494e77d",
+      "size": 302444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/7311eb.wav",
+      "sha256": "e52093aa43391ba4b7fb21b15f3a4ddd0f0799b97d57a45603a42a09c035c7c0",
+      "size": 479084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/74eeac.wav",
+      "sha256": "bf12d65245a1cd2cc332ebf02a6f6feff824055884c8b2213d4f0eb08749b3eb",
+      "size": 212204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/75368c.wav",
+      "sha256": "22b87f7dd6850ccd69303c3020d7484c0d4f00c6e6fdfcf5039eb30dd8224603",
+      "size": 472364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/76fc63.wav",
+      "sha256": "e2411fd71df49b6f565a18fb9edee05a7c5528e8ec97d4705adfbc6dc4afec1c",
+      "size": 480044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/79a96a.wav",
+      "sha256": "d576cd093d59e327a80abbf6ae35413199ba4a1855e31c839833c3e4e189adf9",
+      "size": 451244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/7a42ba.wav",
+      "sha256": "2d7826d5f764fe8e38cc070a1d0208c28e830ec281bd6e4e994acb5bcf34d01e",
+      "size": 505964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/7b0c6d.wav",
+      "sha256": "351f4729b76bbcffd8c644dae61dfbce20932dedd2024ce072677e03d9a4769e",
+      "size": 392684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/7bf8fb.wav",
+      "sha256": "7cac09b68e6321e2e066d0c1a2ff1b791553c11c2a4451c82a7e11612ebefba8",
+      "size": 583724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/7e3f75.wav",
+      "sha256": "45366136b708efd000de308a7feead453747c272f913a848488bb03d3a2b52de",
+      "size": 489644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/801093.wav",
+      "sha256": "8806e32cde82d63f157eb95757a629226b0433ec80b95354b88bd867005c2c98",
+      "size": 549164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/802a26.wav",
+      "sha256": "10fcfc448562cb51fda6f7f707a2cebc4085d5ea6ca3a7091a9017202adbeb05",
+      "size": 491564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/84576e.wav",
+      "sha256": "63707709e1d44b8719cb479bded1036941b93aab030c63cd902adaf255ff76ba",
+      "size": 453164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/8a3f5b.wav",
+      "sha256": "ccc8ef2e05dab3577eb8a293e0c2772273f636937387913cf1e5cdffb9a88b37",
+      "size": 408044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/8c2bc9.wav",
+      "sha256": "a6ced0f93f9932724491c8ff6f56109f2a073607c38f44e1e5002df63577da71",
+      "size": 367724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/8eb4eb.wav",
+      "sha256": "ca0b9c205b5186a02d0588adaf3192b369fcd18a5a63d1e556be08e4b41144eb",
+      "size": 409964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/8f5f2e.wav",
+      "sha256": "9bfbd3f98c3c5255c46b04ce1d8d0929d939f632ed9b76322a9074026a4c0f85",
+      "size": 408044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/976818.wav",
+      "sha256": "6974962bc4bec10d7e053adb640e6d1e04bf0aef7ad4be779935aba8380b503c",
+      "size": 380204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/9aa7fd.wav",
+      "sha256": "668ea915d25a4eb10071ecadcac673d23515f66e248f0607a43e9514a9a42935",
+      "size": 364844
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/9d8939.wav",
+      "sha256": "47a9a8a70b3ca88278eb41201fcecbadb2e251a8d214ed56325ffb2fd261b2a8",
+      "size": 470444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/9dd115.wav",
+      "sha256": "ec9c0bc8dd77cf3b7c32f57f2d0762dd7bedc98f9012045869c710d3852b68d8",
+      "size": 469484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/9e738a.wav",
+      "sha256": "7894b6917705146761ec90092b4bf9002d86739c204a790952f1d4e38fe241be",
+      "size": 508844
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/a1f88a.wav",
+      "sha256": "c8af8e973ad8cb7eb59d7fa31f409b284f932d45556e95970194a311bb24d42a",
+      "size": 375404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/a2d3d8.wav",
+      "sha256": "f576ec35d2c5c1cc9c4fb1a4fbef1c23b3b9fc63ec6c50a86e93cbfa9e13a02b",
+      "size": 435884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/a49833.wav",
+      "sha256": "01bd4e9cd318faa75772c24594be43a074c1ba46a72f5f2ad2316e850ec0d3d9",
+      "size": 533804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/a56276.wav",
+      "sha256": "136eaadb314822fcb0fdad8357bec9228e411ae6dd7ee1562b6d087d65b36c62",
+      "size": 426284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/a6c28e.wav",
+      "sha256": "2ca6d339bf698f8ef622f4cdb19bb92df54b5b0559122c62dd40cc1da911f454",
+      "size": 319724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/aa0639.wav",
+      "sha256": "65505274f752b0cf999e0dfe5da63169b966ce76c0a956a15e12936d4fe5279e",
+      "size": 366764
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/ad1b2c.wav",
+      "sha256": "e77e041fb202378c338d7750d7385860993f5d5ba3032221c579f23558d632fc",
+      "size": 529004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/b13c3e.wav",
+      "sha256": "bf5365e6e6173e2c79b2cb5b06597ecd1a8411e79d7e39214491e6e306a378c6",
+      "size": 482924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/b22122.wav",
+      "sha256": "e23f6c15de22bfe14931bbb4134d0f93615c2a7162caa6dbc108f65a0eab5ed0",
+      "size": 361964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/b4de26.wav",
+      "sha256": "9385e423c780aedf06af91ca4c865ff8c484c089cb9e4ed98fb60cdf4b6bc46b",
+      "size": 487724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/b69ae1.wav",
+      "sha256": "0675eebf93c8929340127670d31925c65b9175edfb30cccedbeb613b32eac0b7",
+      "size": 348524
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/b919e0.wav",
+      "sha256": "d7be7e208683bf106900599fc79a7d08bf0df82ea5cd474c22880895b526349c",
+      "size": 341804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/ba0179.wav",
+      "sha256": "467613dcf1d35254d5019075f211d440936fba16dadb4295fbcd1eaa77c9079a",
+      "size": 438764
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/bf54ca.wav",
+      "sha256": "fabe6a1bb81f476bf57ac5d7f8b419e11053b6c415bf33cb047533cab91b4d77",
+      "size": 423404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c141fc.wav",
+      "sha256": "a559efbd1c93523161e1a6082c3c3d81eed3653917cb4a7989179752bce42950",
+      "size": 360044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c2d378.wav",
+      "sha256": "f26911605c9b733a9db4dd45b520a28792abe379fa85fe3e85b6e8ac7ba4d351",
+      "size": 292844
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c30642.wav",
+      "sha256": "b7704e49aaa46febf34a178b3dd566d0b288dfb30aa5c28b755ca72a80d70ec3",
+      "size": 381164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c38a5e.wav",
+      "sha256": "d8c1ee3f65eaf37ccedd2f3ac38d4d7506ce8ffee20aa2e35383dd4bc3034476",
+      "size": 464684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c41135.wav",
+      "sha256": "b5d3b4867fd5c33f21289dae6713f01d126d232348f084b89c97a4a56af7ec22",
+      "size": 344684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c5a4b1.wav",
+      "sha256": "cf529f389f440b67a20f8c1359ff782671976a72153ab022eb9fcfc9eb8476a6",
+      "size": 285164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c5a99d.wav",
+      "sha256": "b1ed51d44eb90d6c867b32d69b65598d7a3c13c9e9f3c9a58065b879a81a45a9",
+      "size": 387884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c7b43e.wav",
+      "sha256": "5bc34cd44c07c6f28e4e795e69fed6402750b66af0b5cb65272f3faa24335987",
+      "size": 461804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/c90844.wav",
+      "sha256": "f5a1abf026c1001503ed0b6f46c20f99d08224bf6ad9f4f932081c04001ec6f6",
+      "size": 475244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/cab285.wav",
+      "sha256": "c6aff2dad3c7563b1ecd700567b6a2f38e2a82cafe41583b80e3e33b39a964ae",
+      "size": 424364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/cbba85.wav",
+      "sha256": "742c9b228a6654dabb6f1ebfa363e2771e388819540dff6d8a0e1b7ab2738b3e",
+      "size": 388844
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/d27bc5.wav",
+      "sha256": "39227055b86d46f91d7419a735c0aba21afe00f312d97c547d9d1edadfea38e2",
+      "size": 432044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/d6ecd3.wav",
+      "sha256": "160b81a26bcc78993ff753ea409b4a731ab0b729076d52a0170019360e9f8bb5",
+      "size": 405164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/d8b2ca.wav",
+      "sha256": "50c668f79b0215e8a9a6c266e38703b84433d78e36dd5942c3295fefecf73d6c",
+      "size": 279404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/de08dd.wav",
+      "sha256": "75fbf079900a274f097a29848db42b386d5f5817cb753a4342ee9832271f23a2",
+      "size": 451244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/de0fb5.wav",
+      "sha256": "127bd4b44ef51a0221b2e78cc960080894f36b0cda1b00c7176fae5777c6373c",
+      "size": 363884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/e8b327.wav",
+      "sha256": "7a0059f3149bffdb0918086d307bb8d1c96959e52741c9afbc1362deaa088714",
+      "size": 367724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/ea140a.wav",
+      "sha256": "75f2ae481a70b227657607559f1e3db0483a0cdda3974980fb712d2bb8d0fb38",
+      "size": 324524
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/ed8308.wav",
+      "sha256": "273e6168581cbb9564bcafffbb4a86a6e41f34d9a616c6e033fe36aed0d0d120",
+      "size": 339884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/ee8b7c.wav",
+      "sha256": "ff9ede42623983290e02aa3e2c381c587df8a66da49c8c9a2ab2b8288f65b1a4",
+      "size": 419564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/f064e3.wav",
+      "sha256": "4fe8f8cf874371a450d0fe01d791b5f120e8cf390f253ad8ab14278610255478",
+      "size": 555884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/f2c1f3.wav",
+      "sha256": "c4ea1d841df44a0c96ea9771070b68183a226b35a775600fa2f1fbc26dce788a",
+      "size": 281324
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/f37b7f.wav",
+      "sha256": "f24d4704089e355b0b302d6dce020b64a51d6588156e2f350f8162422d546908",
+      "size": 432044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/f576ae.wav",
+      "sha256": "bbf1077ee8a10b4c6d9588a85a588083f8e87600298901f2f3b60e799c0757a5",
+      "size": 280364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/f6f6be.wav",
+      "sha256": "4deb18dbf2ccf0633d9f32e25a35d1c452f13547e6eb455c04f24ac373549c18",
+      "size": 421484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/f9399e.wav",
+      "sha256": "3fbcaaca7ba59c809b4b767908f4dd1c7387493d378b22b614fd4ec1667f03d5",
+      "size": 419564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es.m4a",
+      "sha256": "123215f8e381ab05e7310e9b97b95a18734b872b1af895d5b0f75af2e9f6c277",
+      "size": 13757029
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/es.json",
+      "sha256": "3f2706d187c30666df454bb6eebaa50f08f2c874c1499d4e620953d5bb2d34cc",
+      "size": 1387
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/skipped.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/timeline.json",
+      "sha256": "b4d5b08e0bbf5c256234613610ade0c36daa190b4baeec202de466505d8a8e0b",
+      "size": 39798
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/fit.json",
+      "sha256": "70b346dee5cae83f234cf85c77a777336ed72332e032c13d4d176263bb2441b4",
+      "size": 22400
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.vi.json",
+      "sha256": "039f58e703754874d6ceaf68436793cd2a4c9429871103258873d15250599746",
+      "size": 175
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.vi.json",
+      "sha256": "6f91d019d7cd28306ab376f25032473ebc3bc10aba6e7ecb1020ae7f0e7e1496",
+      "size": 77603
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/cache.json",
+      "sha256": "b198462b2785c7b6c695833783ca5688f804b87a8abbae62ac4b74d41a3304e8",
+      "size": 3670
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/005752.wav",
+      "sha256": "e1859f080e33465f433f5ccc2e8b130ec56fa853a80de3711cd1a839f7e43005",
+      "size": 469484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/00aeec.wav",
+      "sha256": "8d4eb877f237c8cc7fee4b3cb27bcf5882a8da356111bf9157527e3afd571e44",
+      "size": 343724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/05bc8a.wav",
+      "sha256": "898dc9a6fbe3178d3f31719a2c74a570eca5698cf34c0226c51f5d162e8ca897",
+      "size": 426284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/066452.wav",
+      "sha256": "96c6032b1d6fc0ca782a0445ca382dfed415ef4e60a7552ba05650a719fd6ac8",
+      "size": 393644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/07771e.wav",
+      "sha256": "7d84c2f302a4d300b404e3d54e6a3647a95df906f3bcbc0316cad0b9904aaea1",
+      "size": 330284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/0b06d1.wav",
+      "sha256": "ee1350d872211ac4053cc74713e9fdfa2d5cb8b8647bf7d33868ebe8cdf2ee13",
+      "size": 431084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/0c086d.wav",
+      "sha256": "4044acac2dbefc621472b39fd14bb5dae2b320d609c24df9ea4adb492d3838b6",
+      "size": 292844
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/0dd30b.wav",
+      "sha256": "6f057e6e29ef1fd453c77691e511cfad13080c80fda500546c846328361196e3",
+      "size": 411884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/1712ce.wav",
+      "sha256": "11a73c1ff6691df4421e5731c7f76b1f83463b60e58e07469bdf76349b5f4e6c",
+      "size": 302444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/182fcd.wav",
+      "sha256": "427ae5c73e8df1dcc45c34b4a426824eeeb3ae0e888c76c2f2c62e91c9658054",
+      "size": 450284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/1832d2.wav",
+      "sha256": "fe8c27e6ae63ac4c60fd32d14793d2ce2d4d47691dc5998ab10fcd3b4f420542",
+      "size": 336044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/18691a.wav",
+      "sha256": "7204fc0e6c9ce73938231067ec3e6cd9a96c33e77b5335b1f1a432472b0f3f05",
+      "size": 356204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/1b4829.wav",
+      "sha256": "e75c87678249ad680c4d9f02c6dbde042c0ae127797928582ab0539bb4e0b963",
+      "size": 446444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/1de727.wav",
+      "sha256": "44f3709c069f2a5514cec0c796cf7d32b20567b730411c2f82ae7b37f4291b5b",
+      "size": 382124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/1f3f10.wav",
+      "sha256": "abb3a807ceea1587d491627dbf461f69d0f39bd2459bb7296ff9cd489f4bf994",
+      "size": 291884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/1faa10.wav",
+      "sha256": "d49efcd15c95d1e6d7390baae3816fa57c8aaafb1475833ad7599cae0b40e74d",
+      "size": 334124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/203f1e.wav",
+      "sha256": "f8cb7434feb787ab9e436584ecc627d6aa53ce10907b34ebb1998007841f2951",
+      "size": 282284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/21c1bc.wav",
+      "sha256": "083ca6a9cdf386b7c4eeec9c3641d75bab1dcc851fce7185c41441a31f4c5ca5",
+      "size": 421484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/2506eb.wav",
+      "sha256": "5f4374b0f86191b034f4dac68474fbf1e32a4adfe619b98f010acc0c193cc9b5",
+      "size": 397484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/28a3eb.wav",
+      "sha256": "c7f30e1f6528a025a29e8109a2329056d49d5cf680fb65c011860a5ce7bc7956",
+      "size": 408044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/291f73.wav",
+      "sha256": "cb1d3dfe32a14de0498c0e9f4dccae37c953174e39fcf093c2c188b66e6f00b0",
+      "size": 289964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/2a7dbb.wav",
+      "sha256": "a7df1aa0a16d022d7a90c0db974f99ba5234c86c02f8fc7019bd94df53b28e77",
+      "size": 395564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/2c063b.wav",
+      "sha256": "09479bfe8e44fe524de3afe15b0c9d1e42176b1ded6280a3c068541b508d4697",
+      "size": 392684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/475bb2.wav",
+      "sha256": "d8094531d1da93771abceedef3d4294ca2f6020ccb63ddd5d5d421b831c19853",
+      "size": 327404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/47c7d2.wav",
+      "sha256": "4ceee8fe5a9d96e85d07b85f83d8ea84419406d9253be26a51479f4d8dceaa66",
+      "size": 423404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/481fba.wav",
+      "sha256": "e112d6b43d4387fad003577e963d0e29b2482dd58a23473cc6c3732798dbdb77",
+      "size": 440684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/4a14bd.wav",
+      "sha256": "8858c207e45ec04bb463d778803e86c226f3b16fe1c1e9ac06a188f17988ae0d",
+      "size": 295724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/4df2bf.wav",
+      "sha256": "373e357b0fb8ed0ae730042242155542520006335d8ff07bf429fc8150b1e129",
+      "size": 347564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/520a3b.wav",
+      "sha256": "897fb83304ff6465819374fa17d146f78093572977dcaf2ab8adcea576286572",
+      "size": 421484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/52cf29.wav",
+      "sha256": "5e66d8ce3c6dbef0db3990f375ea9ea55fc00763a81e4c54ad040275f75e19c0",
+      "size": 690284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/56c197.wav",
+      "sha256": "718212c5643e47b3456505c2c8409a5b56e6f5165c2f195cdf25b9e2b6ce2b99",
+      "size": 338924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/56ccfa.wav",
+      "sha256": "533705ba4dcdcbabf20365df5ec97db25347a4166a17b71916bee88fccbaa0ce",
+      "size": 354284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/594e82.wav",
+      "sha256": "7330a0cb2f5ef612ea5a7e09559f24c570211ba084f5e2698ef753c5c6951876",
+      "size": 386924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/5a37fc.wav",
+      "sha256": "4491750614ddafa43d09a08517c8e085c42229dda9a95e66ec12b8f9b801484d",
+      "size": 500204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/5d4f54.wav",
+      "sha256": "31bc045b3a87f05c5043f70697b891dbcaa5cc4848ad86a61790fbce0798dc7e",
+      "size": 313004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/5e5629.wav",
+      "sha256": "7799b28a74093dcaf023abb91af5c5e1ca7c7a8a1708100cc27f60de1af5fa3c",
+      "size": 349484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/5f446c.wav",
+      "sha256": "7197146bbe755a31b86657e36c860c1178f85e832d180fbf208c250446c4a67f",
+      "size": 505004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/60d6c7.wav",
+      "sha256": "edc6b775c50f9566e267a7958d985a5f65fb6e8ca6734976ad16101cb829b060",
+      "size": 463724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/6b1614.wav",
+      "sha256": "0bac522c100557d8eaacf1092346705cea9d80e8a8d49cc4de2ad9027597f9b5",
+      "size": 319724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/719e7c.wav",
+      "sha256": "51c66b68da5243b1beb921c64de5219be4cc9be1048510ef26a06e85db5584e6",
+      "size": 391724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/7311eb.wav",
+      "sha256": "704a44167d05ead2390d3ee9f669a982a577591169b350b839f654b1110b2888",
+      "size": 428204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/74eeac.wav",
+      "sha256": "6b3438677fdfdf3279ea684fed102f87ae9409837aed84f8e440623c3629a18b",
+      "size": 322604
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/75368c.wav",
+      "sha256": "18bc034c67a08366b9242a22d4733d2b39ad746ede17a6b23512c0a7606ac61f",
+      "size": 438764
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/76fc63.wav",
+      "sha256": "de91ca322b79450eaafe13fa9ca2b413246b7fa6b69342c256a8c7009ea5fac8",
+      "size": 389804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/79a96a.wav",
+      "sha256": "de6e868c3f0903c5b067d9f5ea21c1588b6b3d543b7722ed849742c8b2afb347",
+      "size": 474284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/7a42ba.wav",
+      "sha256": "3a3125dfa39918af4ed33a5334d5b5ae04668eefc48d1abad342f03d963eb7f4",
+      "size": 445484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/7b0c6d.wav",
+      "sha256": "7b65d59615bf7b2c58702d6f5d5119026e0b664aa40e015bb42f21d3fa403c2a",
+      "size": 501164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/7bf8fb.wav",
+      "sha256": "7072f471a54e9fd1c69559aec835111cf2afd1e211a7fae8e258320b04928291",
+      "size": 431084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/7e3f75.wav",
+      "sha256": "f3f2a3e5b9242a206b4a5a23f8f896efe60d115102f9c501d400e4f663b76a11",
+      "size": 382124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/801093.wav",
+      "sha256": "eb5ccfdd0ac94659d7fcc985c736f10ab4a3a35395af35709a8965e38f8e77cd",
+      "size": 560684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/802a26.wav",
+      "sha256": "ee1f30df290e5033be704fb2944ca3a8a9743c0bf3e18e1817a92120cdb666c4",
+      "size": 474284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/84576e.wav",
+      "sha256": "1d5be7ef6caa5bed93938311df2d55dda322b1c27ca08382d2f986dd2da2cc1c",
+      "size": 640364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/8a3f5b.wav",
+      "sha256": "fa62ac53032e4624bb14443fd2ead08f1c920898c22cf32e64ca6482e994d860",
+      "size": 354284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/8c2bc9.wav",
+      "sha256": "7f76b0e3705005b1d2abac24dac1318ed86bdbe21764764d82114f39529b6059",
+      "size": 406124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/8eb4eb.wav",
+      "sha256": "9bf089a608f83a942d3b935ebdeb91c7ab4e99308fda402262e397f7b6596569",
+      "size": 344684
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/8f5f2e.wav",
+      "sha256": "f6c65d567f8774ebf24aaacea9559f00f3b90f90d3f2d2dd457ef7db9a7318ea",
+      "size": 367724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/976818.wav",
+      "sha256": "76b66140188b9e5f65f956d6f15c3dad1c796db96c7a8edf596d779c1c1884ce",
+      "size": 357164
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/9aa7fd.wav",
+      "sha256": "4c4538a33f1cd0e2de403207e1b4c36c43b15ad0e90958d4e0397ec6e338f506",
+      "size": 386924
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/9d8939.wav",
+      "sha256": "e1ed2254454a6fe9232efab156754904c8439b7427573a810d2668777e6c0fea",
+      "size": 449324
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/9dd115.wav",
+      "sha256": "eb2a1d41cfae8276e55cd9d2ff6dc815e585155e63f0d8d1063db7bbe933cd4d",
+      "size": 367724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/9e738a.wav",
+      "sha256": "6f8ee5e98fbc4d8b311f651c7732317c83586ce0eb27c7eb7dcab4d715d2dbbf",
+      "size": 385004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/a1f88a.wav",
+      "sha256": "ff4dd664f990f86900b8c85e8745a20ef5083a6fda12d8727072ec4fbb608a32",
+      "size": 313964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/a2d3d8.wav",
+      "sha256": "066911555e6b3868ff777c9971942d8ae36cf9a09dfc87fcb9578486803b63d3",
+      "size": 467564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/a49833.wav",
+      "sha256": "228663bcc5cb67dcbde404edda128214f37c6d78706cdc1e276cb2214e331073",
+      "size": 481964
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/a56276.wav",
+      "sha256": "f51ed6d7d4336fcc6a0daa51eac9afacd2eb267630071097c086d651f0aaea54",
+      "size": 456044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/a6c28e.wav",
+      "sha256": "97dc4f95c56a9c4dd1b9fb8a413c5c4070964f1ff35c3d867d1849ec644a92e7",
+      "size": 330284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/aa0639.wav",
+      "sha256": "494f4826632233bd70635cf049e62c7082cd685e2a217b67bf37a10b264a47f6",
+      "size": 393644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/ad1b2c.wav",
+      "sha256": "038021cc4532c257e5d359543e75d2489ea1c4cec536eac163aa174969a64be2",
+      "size": 528044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/b13c3e.wav",
+      "sha256": "3cad59a8c6f7016b0cb0c7c5c1e292e788b52b33527055d6520159ab1605620e",
+      "size": 378284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/b22122.wav",
+      "sha256": "107c4adf7e712d300389556356d430c655652f73e032c47d69a9b6933ae69290",
+      "size": 376364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/b4de26.wav",
+      "sha256": "b4fbcb99c265c26c7b890de32e4e6389b7bf8d059e0d17ec0fb88a06d4de6597",
+      "size": 409004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/b69ae1.wav",
+      "sha256": "1d184d203ba43a65d1e2d4f9abec566d378071575d4229b5767d55b9055f5d56",
+      "size": 318764
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/b919e0.wav",
+      "sha256": "25540e69bc8d9e52e4c1a689253ea60c9b8ed42387753ee95c56d6e684f7c7a2",
+      "size": 278444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/ba0179.wav",
+      "sha256": "0362a1a2a35e9a0dc3670bbb56345f6cf2f3112d537c9142ca96cf70a25680bb",
+      "size": 424364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/bf54ca.wav",
+      "sha256": "6351c40d00d5351fd85cc9767847dbedea3e40b9c1c614a658b8fe332d27f902",
+      "size": 437804
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c141fc.wav",
+      "sha256": "78b287217d6e9c0706cb4baa0c94e9264296e0676131cf94f03b9191bbaf29fa",
+      "size": 351404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c2d378.wav",
+      "sha256": "5fed4db3fd6811f9cc53eea21031030af0f366775e37f26bede78a6408bcc0a5",
+      "size": 347564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c30642.wav",
+      "sha256": "4805d2bea7fec879937b91bbcda62bb3dac12f9480ab763f3b68a30070b85c76",
+      "size": 423404
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c38a5e.wav",
+      "sha256": "a510c62b2cace3b4d66e39b4658ccc2957a8f1b030e58f2f79a34aed43b98422",
+      "size": 520364
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c41135.wav",
+      "sha256": "0b8eb97bfb76d644005377d73cfa12891e5a4473bec226bb131f83936ad89794",
+      "size": 345644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c5a4b1.wav",
+      "sha256": "5f7ea68c39751c55032719c3fe3edef59474d23cc018408cb98292b1fa08c06b",
+      "size": 260204
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c5a99d.wav",
+      "sha256": "911ae8051884cd72a01432553adacfc9ccce67569c75873088a4a7f8bf92c49e",
+      "size": 345644
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c7b43e.wav",
+      "sha256": "7b4ad12e2434f2620d9f2056de2e03ac5b68a82e0ba465cf315473a724283999",
+      "size": 419564
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/c90844.wav",
+      "sha256": "d10ffad42d784f2954af8877d9c6999f94fc04c3620c7b3ec9dac0adecdaa9a2",
+      "size": 378284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/cab285.wav",
+      "sha256": "8f16435387ff5065e9a5ca583312113c507a6e5cae71b6e44763568989c4b3b9",
+      "size": 378284
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/cbba85.wav",
+      "sha256": "23c4bdf34e3a39d3562a02628d990e2083119c7f81c6535aa337670fef1a6e33",
+      "size": 383084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/d27bc5.wav",
+      "sha256": "87e64ee0aa5e905acabfa32ba6b50ac44bab6a4f92bef8791f9c6374ed088498",
+      "size": 439724
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/d6ecd3.wav",
+      "sha256": "91054b68700bd2fd94d1b3627f811d8570e4388fab03c981dba5b35e71aaf560",
+      "size": 339884
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/d8b2ca.wav",
+      "sha256": "4a79270fb8277004735e60d1089d055905d2cf995e2666d147c9c098049773c4",
+      "size": 350444
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/de08dd.wav",
+      "sha256": "318ae3fb45251806e2595e50fde33b640375373a7abab953bf5fade3decc20ae",
+      "size": 406124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/de0fb5.wav",
+      "sha256": "4bde0ab8a900bed04ec4885d2ac0ab27689d6341f97872d9fccbfeb9a88e9c7a",
+      "size": 361004
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/e8b327.wav",
+      "sha256": "1f16107ee7177c8a7636792b3c64eb43e6c8784c130b61da3c38b13fdfd14e84",
+      "size": 259244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/ea140a.wav",
+      "sha256": "e7a02d9ee699f93c806df4be948f4d05d45516ec2c2e6ea08eba6034f2359fd0",
+      "size": 312044
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/ed8308.wav",
+      "sha256": "ef2609b647fc03f120a8922451808961851b804e6b1f5da5c6e1b3d076ade6c7",
+      "size": 574124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/ee8b7c.wav",
+      "sha256": "9f8267410f255d7805d46e9093c0f78e3665fdb331854ecd33f8c121e0469a84",
+      "size": 358124
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/f064e3.wav",
+      "sha256": "9c18ee270db1c6f7ff2169c3986d70d6f9792d9969eec82a1baf62a53fdc8625",
+      "size": 545324
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/f2c1f3.wav",
+      "sha256": "b2f71b9f82cf4f5ba1c90a8cf61155b0385bed4abcd5dc5bc9499f2a0a2f8207",
+      "size": 276524
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/f37b7f.wav",
+      "sha256": "ff0261c3951898843e3aedfc95e80129f7f8e8b65a13654cd535394b7cec12ca",
+      "size": 349484
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/f576ae.wav",
+      "sha256": "c3ace36dff90fceac8e92efb3db94f544fad84831e3f691796896aa416b7586c",
+      "size": 551084
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/f6f6be.wav",
+      "sha256": "03620ea2334e314efddb394b5520361907773585658ea76d0722547c83598a40",
+      "size": 414764
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/f9399e.wav",
+      "sha256": "11edd004de2b3ad27181130cc8683c0b3f8e48a76e0dd0d74432c00e087a518c",
+      "size": 403244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi.m4a",
+      "sha256": "1913d2c5360cfcf741536cb37623f9fe8ec38c315598216f62124ddd86aec35c",
+      "size": 13341336
+    },
+    {
+      "file": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/vi.json",
+      "sha256": "c2ba3a64ba9cd06d4c0a977a8a044368803102cd6c162a2753fbb1cbaedb382e",
+      "size": 1387
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/skipped.json",
+      "absent": true
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/voice-final-pause-checkpoint.json",
+      "sha256": "63c8567f003da8b6dd65861a410b35f436c69f1fb03e4e6e5555af1d1109efd7",
+      "size": 2886
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.th.json",
+      "sha256": "bba21c8279c989acb6bfeba0f8b0c93a353bd37a009422de66cd5dbc1514b5dc",
+      "size": 2056
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/audio/cab285.wav",
+      "sha256": "2a80361b9d5bc05219a63221de8f9de5a9818720496d85d57a8d2f076cb6e650",
+      "size": 451244
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/fit.json",
+      "sha256": "ad3afb33005e516f4b44dd2bd72ddf52875279b26caef0a69ef441699a5836ba",
+      "size": 22395
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/timeline.json",
+      "sha256": "6bdd053eda196e46e87470da3b15b9f6584212641495c17a37f1ac3dafa2b744",
+      "size": 39815
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/audio/cache.json",
+      "sha256": "af06cffffa2ac255262f30eb7d8538859b793cd0f57895aaa01878a14f08ce35",
+      "size": 3514
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.th.json",
+      "sha256": "17d0d0681a55468028fce1470fcf84121ddf4735d4b4adf78af74e30a1d0bbcc",
+      "size": 76610
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th.m4a",
+      "sha256": "3b1715e1bffe5d71b266de381516ac326b8e0b5d7e1a6fbcabba7ee033a7fb76",
+      "size": 14139847
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/voice-controller-progress.json",
+      "sha256": "defa9076a1126d269c67e4b10919fa5f2b7b65cf486a45e74fc627d4eef253d3",
+      "size": 20103
+    }
+  ],
+  "files": [
+    {
+      "role": "description_en",
+      "sha256": "8767f997374bec926fd331f5a1ff7c88e966315f703625e91bdbc89f81ef0231",
+      "size": 1897,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_en",
+      "sha256": "1e3ab0412b7487af926bd96ecee3dcf9189568de2f4ab0dd2efbd6bbf4fef43f",
+      "size": 12080,
+      "content_type": "application/x-subrip"
+    },
+    {
+      "role": "thumbnail_en",
+      "sha256": "1239b202a3c42527918595abc255526a8283b3c95371532cfdce54c29e6eeeac",
+      "size": 76097,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "description_ja",
+      "sha256": "40cf6a4275c21ab579300e33153ef1500680c06824489c3086c592b1782b6a1f",
+      "size": 2172,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_ja",
+      "sha256": "e20c58bb4115b1aea304e71af6a9cf9bfb2f984fddc69826d325eebb2d30270c",
+      "size": 14945,
+      "content_type": "application/x-subrip"
+    },
+    {
+      "role": "thumbnail_ja",
+      "sha256": "9402129d49f97c6277449d1478974936ae1f095b61bdc0ef5cc35c3fe60a87c5",
+      "size": 76227,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "description_ko",
+      "sha256": "6e3e9727b926fa78770e5ef04bb1cbb1538617af93842cdd91ecf38f950efb4b",
+      "size": 2108,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_ko",
+      "sha256": "32303cbe9549dc5d2f8d79ec017571ccd9956dddb2eea81ad2252b13c1f857ee",
+      "size": 12590,
+      "content_type": "application/x-subrip"
+    },
+    {
+      "role": "thumbnail_ko",
+      "sha256": "c9ae9ce46c770ca216b04f13733f0ba4597b1100267c8b98145b94edb47a1331",
+      "size": 69057,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "description_es",
+      "sha256": "14237c12465ab45c86abe436c1296c9eee687f0e7652c71fadb9fd547daaf88a",
+      "size": 2014,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_es",
+      "sha256": "1d38b9798c30a024e95365d0635df4e3a0e526c55c2ca03c5f138eb8f71599e1",
+      "size": 11123,
+      "content_type": "application/x-subrip"
+    },
+    {
+      "role": "thumbnail_es",
+      "sha256": "8e566fc7a66320fdfa65e2dbccd36896f5c83506e21e2409c58853a81f9b3855",
+      "size": 77847,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "description_pt",
+      "sha256": "bd8f3671835cd74d544bf81e25e0d600eca817faee9570bb7253efd63b7336e9",
+      "size": 1967,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_pt",
+      "sha256": "1f7dda75856a9f671d8eea3162b427b7090c95af2a01413f108d57d4c481ef2c",
+      "size": 10076,
+      "content_type": "application/x-subrip"
+    },
+    {
+      "role": "thumbnail_pt",
+      "sha256": "a48d83bddc1e0ad4ead325b939367c1ed376d3c8a0585129480af4ff9745b5b8",
+      "size": 78139,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "description_id",
+      "sha256": "157e55d6867877082a48cc3a4c142a89db3d7d65f28550a3b17945473b75076e",
+      "size": 1873,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_id",
+      "sha256": "2ba8b3fc8a2867a11d5fbc1e7d36f66636bbc3adafa92f7096f7c4ca32f6f3db",
+      "size": 10790,
+      "content_type": "application/x-subrip"
+    },
+    {
+      "role": "thumbnail_id",
+      "sha256": "d5704efa7c52c96edd7b64adcb9e87de3ce8de6559a53d56300df6ff2c75c60e",
+      "size": 75966,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "description_vi",
+      "sha256": "b9827c4ba87e1cc3c2523d4779b50fec99e12dd3e2bd4d0817cdca57b7db5673",
+      "size": 2191,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_vi",
+      "sha256": "f124aeecf00473d2152974556f02b97114bb1b9a6ccd905377047a69eab559d7",
+      "size": 14032,
+      "content_type": "application/x-subrip"
+    },
+    {
+      "role": "thumbnail_vi",
+      "sha256": "7b4dff4c52693e54f953a6b2ce24734d51a1ab9afdce0ed964a1eb8dd6c0767c",
+      "size": 80269,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "description_th",
+      "sha256": "01dfc2c0fc616d116a8aef9a48647d1defd236a7735c60bec33bede4ddff382c",
+      "size": 3697,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "captions_th",
+      "sha256": "8c87a7370873484f3d477f21871f18781de62a50bd48dc499eabd031502f2c17",
+      "size": 20951,
+      "content_type": "application/x-subrip"
+    },
+    {
+      "role": "thumbnail_th",
+      "sha256": "13808b4b3a8f44b39fcf06128b53770e1504e606de554accf800affc8b788379",
+      "size": 75417,
+      "content_type": "image/jpeg"
+    },
+    {
+      "role": "dub_ja",
+      "sha256": "fa58e5c10148aaae354ec989422e457588d9402ef47b2159b344e94d4514fc96",
+      "size": 16883589,
+      "content_type": "audio/mp4"
+    },
+    {
+      "role": "dub_es",
+      "sha256": "123215f8e381ab05e7310e9b97b95a18734b872b1af895d5b0f75af2e9f6c277",
+      "size": 13757029,
+      "content_type": "audio/mp4"
+    },
+    {
+      "role": "dub_vi",
+      "sha256": "1913d2c5360cfcf741536cb37623f9fe8ec38c315598216f62124ddd86aec35c",
+      "size": 13341336,
+      "content_type": "audio/mp4"
+    },
+    {
+      "role": "component_checks",
+      "sha256": "957729a4671e3fb0243391dc9cd40fd76dc8f7088151146f24399b97d43c831b",
+      "size": 103513,
+      "content_type": "application/json"
+    },
+    {
+      "role": "caption_production_qa",
+      "sha256": "77a071d0f75beb0cabeefa782d502f07a9c422c385a76af512348d35d82f1466",
+      "size": 54988,
+      "content_type": "application/json"
+    }
+  ]
+}

@@ -1,0 +1,49 @@
+{
+  "observed_at_utc": "2026-10-26T02:05:27.200Z",
+  "slug": "ai-editable-explainer-animation",
+  "requested_by_owner": "Add intro and outro; reference PR1860",
+  "runtime_merge_commit": "50a073cced2290ac87eb412e54139aff34a2d384",
+  "command": [
+    "branding",
+    "--pull",
+    "--dry-run",
+    "--workdir",
+    "/workspace/work/ai-animation-01/media"
+  ],
+  "native_exit": 2,
+  "stdout": "",
+  "stderr": "branding --pull: no such video media route\n",
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://mokaair.com/api/video/media/branding",
+      "status": 404,
+      "code": "video_media_route_unknown",
+      "detail": "no such video media route"
+    }
+  ],
+  "protected_files_unchanged": true,
+  "protected_file_sha256": {
+    "auto.json": "19a11f9466676c4970126bece120a4f358727d02f074b35812d81fb47826f3b1",
+    "approvals.json": "8fefeaec595d5ba964eb6c0712ce9b9c27d8db4f6d4524492027d3b8e3e21106",
+    "checks.json": "47d29b73329991495bc2f7d6b90f6c1b1c43314f45a992606f67915a116b9637",
+    "final.mp4": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+    "timeline.json": "d34af3061326998b7b0cc843cf096323a15b39e313f99ad1a52124a1f27d240a",
+    "languages.json": "d0a0ee8e8b5f9198e7fd4a633a3d804ab8e98f0ea8ece966e2d637e116e305c9",
+    "review/qa.json": "a653adc056a3bf8b1abf4cf4cc9cca8a06efabac5bdb2c3dc95ae08db72be1d1",
+    "audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+    "dubs/ko/skipped.json": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+    "dubs/pt/skipped.json": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+    "dubs/id/skipped.json": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+    "review/check.th.json": "17d0d0681a55468028fce1470fcf84121ddf4735d4b4adf78af74e30a1d0bbcc",
+    "review/check-flags.th.json": "bba21c8279c989acb6bfeba0f8b0c93a353bd37a009422de66cd5dbc1514b5dc",
+    "captions/manifest.json": "da5fca47a076cc8e9d25ed6065b94a632f83a6c55d00ec2b1cd71121359bad5f"
+  },
+  "official_assets_downloaded": false,
+  "official_assets_installed": false,
+  "project_lease_present_after": false,
+  "film_reassembled": false,
+  "paid_requests": 0,
+  "review_or_approval_changed": false,
+  "publication_performed": false
+}
