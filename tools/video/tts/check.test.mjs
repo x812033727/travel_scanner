@@ -152,6 +152,17 @@ test("hintTerms lists each English word a line says once, as the script spells i
   assert.equal(hintTerms(many).length, MAX_HINT_TERMS);
 });
 
+test("hintTerms gives a dub written in Latin letters only the dictionary's terms, never fragments of accented words", () => {
+  const lexicon = { schema_version: 1, terms: { PHP: "P H P", Wiz: null, Google: null, Gemini: null, Argon: null, GPT: null, Sol: null, Ryan: null, Austin: null } };
+  const vi = { id: "i6qv", text: "Hai tuần sau, Wiz, công ty bảo mật thuộc Google, dùng Gemini thế hệ 4, tức Argon, cộng thêm GPT-5.6 Sol, độc lập tìm ra cùng lỗ hổng đó," };
+  assert.deepEqual(hintTerms(vi, { locale: "vi", lexicon }), ["Wiz", "Google", "Gemini", "Argon", "GPT-5.6", "Sol"], "Sol is no longer pushed past the 20-word cap");
+  assert.deepEqual(hintTerms({ id: "w9gx", text: "Dùng hosting: hỏi thẳng nhà cung cấp hai điều: PHP bản nào" }, { locale: "vi", lexicon }), ["PHP"], "no D, ng, h, i fragments");
+  const es = { id: "4649", text: "el investigador Ryan Austin presentó un ataque con GPT-5.6 Sol, como el del inicio: una petición y entra." };
+  assert.deepEqual(hintTerms(es, { locale: "es", lexicon }), ["Ryan", "Austin", "GPT-5.6", "Sol"], "Spanish words are not English words");
+  for (const locale of ["pt", "id"]) assert.deepEqual(hintTerms({ id: "x1", text: "a Wiz achou com o Gemini, também" }, { locale, lexicon }), ["Wiz", "Gemini"], locale);
+  assert.deepEqual(hintTerms({ id: "x2", text: "PHP公式告知にこうあります。Linuxディストリと" }, { locale: "ja", lexicon }), ["PHP", "Linux"], "a script without Latin words keeps every Latin word");
+});
+
 test("--locale takes a dub's locale and nothing else", () => {
   assert.deepEqual(DUB_LOCALES, ["en", "ja", "ko", "es", "pt", "id", "vi", "th"]);
   for (const locale of DUB_LOCALES) assert.equal(parseDubLocale(locale), locale);
@@ -612,4 +623,57 @@ test("tts and check-audio run by hand while another producer holds the project s
   assert.deepEqual(server.calls.transcribe, [], "nothing transcribed");
   assert.equal(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"), timeline);
   assert.equal(existsSync(path.join(box.workdir, "review", "check.json")), false);
+});
+
+test("two transcripts that miss a line in different places clear it; a place both miss keeps it flagged", async () => {
+  const { missedInDifferentPlaces } = await import("./check.mjs");
+  const lexicon = { schema_version: 1, terms: {} };
+  const ja = { id: "pmmz", text: "PHP公式告知にこうあります。Linuxディストリと長期サポートベンダーは事前に修正を受け取り、各自、旧バージョンのパッケージに当てたと。" };
+  assert.equal(missedInDifferentPlaces(
+    "PHP公式告知にこうあります。Linuxディストリ等長期サポートベンダーは事前に修正を受け取り、各自旧バージョンのパッケージに当てたと。",
+    "PHP公式告知に甲斐ありますLinuxディストリと長期サポートベンダーは事前に修正を受け取り各自9バージョンのパッケージに当てたと",
+    ja, lexicon, "ja"), true, "Gemini missed と, Whisper missed こう and 旧: no place both missed");
+  const id = { id: "byuv", text: "Request masuk, kodemu belum jalan, serangan sudah terjadi dulu." };
+  assert.equal(missedInDifferentPlaces("Request masuk, kodemu belum jalan, serangan udah terjadi dulu.", "Request masuk, kode mu belum jalan, serangan udah terjadi dulu.", id, lexicon, "id"), false, "both heard udah: the voice said it");
+  const id2 = { id: "4649", text: "11 Agustus, peneliti Ryan Austin dengan GPT-5.6 Sol menyerahkan serangan, seperti di awal: satu request langsung masuk." };
+  assert.equal(missedInDifferentPlaces(
+    "11 Agustus, peneliti Ryan Austin dengan GPT-5.6 Sol, mengarahkan serangan seperti di awal. Satu request langsung masuk.",
+    "11 Agustus peneliti Ryan、Austin dengan GPT-5.6 Solar menyerahkan serangan seperti di awal. Satu request langsung masuk.",
+    id2, lexicon, "id"), true);
+  const es = { id: "7t2j", text: "El post hasta erró el puntaje: dijo un 10 perfecto; PHP la evaluó en 9.2." };
+  assert.equal(missedInDifferentPlaces("El juez hasta erró el puntaje. Dijo un 10 perfecto. PHP la evaluó en 9.2.", "El PUSTA hasta erró el puntaje. Dijo un 10 perfecto. PHP la evaluó en 9.2.", es, lexicon, "es"), false, "both missed post");
+  assert.equal(missedInDifferentPlaces("anything", "", es, lexicon, "es"), false, "an empty second transcript clears nothing");
+  const zh = { id: "z1", text: "修補發布前的那個晚上" };
+  assert.equal(missedInDifferentPlaces("修補發布前的那個完上", "修補發佈前的那個晚上", zh, lexicon), true);
+  assert.equal(missedInDifferentPlaces("修補發布前的這個晚上", "修補發布前的哪個晚上", zh, lexicon), false, "both missed 那");
+});
+
+test("outside Mandarin, a transcript that only spells a loanword in Latin letters says the line; numbers stay Jev's", () => {
+  const lexicon = { schema_version: 1, terms: {} };
+  const th = { id: "3ppu", text: "ไม่ต้องล็อกอิน คำขอเดียวก็รันโค้ดบนเซิร์ฟเวอร์คุณได้" };
+  assert.equal(matchKind("ไม่ต้อง login คำขอเดียวก็ run code บน server คุณได้", th, lexicon, "th"), "spelling");
+  assert.equal(matchKind("ไม่ต้อง login คำขอเดียวก็ run code บน server", th, lexicon, "th"), null, "คุณได้ is missing");
+  assert.equal(matchKind("ตีสามวันที่ 21 Cloudflare เปิดกฎ Firewall ให้ลูกค้าทุกราย", { id: "4eea", text: "ตีสามวันที่ 21 Cloudflare เปิดกฎไฟร์วอลล์ให้ลูกค้าทุกราย" }, lexicon, "th"), "spelling");
+  assert.equal(matchKind("Baris 4 tertulis", { id: "eea5", text: "Baris tiga tertulis" }, lexicon, "id"), null, "a number in digits outside Thai is Jev's: it could be another number");
+  assert.equal(matchKind("Baris tiga tertulis update keamanan", { id: "eea5", text: "Baris 3 tertulis update keamanan" }, lexicon, "id"), null);
+  assert.equal(matchKind("serangan udah terjadi", { id: "byuv", text: "serangan sudah terjadi" }, lexicon, "id"), null, "another word in a Latin-script language is Jev's");
+  assert.equal(matchKind("Porque o pet é cadeia", { id: "w9rt", text: "Porque o patch é cadeia" }, lexicon, "pt"), null);
+  assert.equal(matchKind("セキュリティ更新は Patch です", { id: "j1", text: "セキュリティ更新はパッチです" }, lexicon, "ja"), "spelling");
+  assert.equal(matchKind("修補發布前", { id: "z", text: "修補發布前" }, lexicon), "exact", "Mandarin keeps its own rules");
+});
+
+test("two transcripts that both spell a Thai loanword in Latin letters no longer agree on a miss", async () => {
+  const { missedInDifferentPlaces } = await import("./check.mjs");
+  const lexicon = { schema_version: 1, terms: {} };
+  const line = { id: "vh8a", text: "ทั้งแพตช์ทั้งบรรเทาไม่ทัน ก็พิจารณาปิดระบบ" };
+  assert.equal(missedInDifferentPlaces("ทั้ง patch ทั้งบรรเทาไม่ทัน ก็พิจารณาปิดระบบ", "ทั้งแผดทั้งบันเท้าไม่ทันก็พิจารณะปิดระบบ", line, lexicon, "th"), true);
+});
+
+test("Thai number words and Thai digits line up with the digits a transcriber writes; the value still counts", async () => {
+  const { thaiNumbers } = await import("./check.mjs");
+  assert.equal(thaiNumbers("ตีสามวันที่ ๒๑ ก่อนเวลาหกชั่วโมงกว่า ยี่สิบเอ็ด สิบสอง เก้าสิบเก้า นายกฯ"), "ตี3วันที่ 21 ก่อนเวลา6ชั่วโมงกว่า 21 12 99 นายก");
+  const lexicon = { schema_version: 1, terms: {} };
+  assert.equal(matchKind("ตี 3 วันที่ 21 Cloudflare เปิดกฎ Firewall", { id: "4eea", text: "ตีสามวันที่ 21 Cloudflare เปิดกฎไฟร์วอลล์" }, lexicon, "th"), "spelling");
+  assert.equal(matchKind("ตี 4 วันที่ 21 Cloudflare", { id: "4eea", text: "ตีสามวันที่ 21 Cloudflare" }, lexicon, "th"), null, "another number is another number");
+  assert.equal(matchKind("นายก ซานาเอะ ทาคาอิจิ เขียนบน X ว่า คำขอเร่งด่วน", { id: "nauj", text: "นายกฯ ซานาเอะ ทาคาอิจิ เขียนบน X ว่า \"คำขอเร่งด่วน\"" }, lexicon, "th"), "spelling", "ฯ only marks an abbreviation");
 });

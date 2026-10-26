@@ -577,7 +577,10 @@ test("illustrated slides are measured on their cadence: a picture held too long 
   const shotLines = Object.fromEntries(illustratedFixture().scenes.filter((scene) => scene.template === "shot").flatMap((scene) => scene.lines.map((line) => [line.id, 4])));
   const good = await run(shotLines);
   assert.equal(good.assemble.ok, true, good.assemble.detail);
-  assert.equal(good.assemble.warnings, undefined);
+  // These fixtures install no channel package, so the assemble item also says the cut has no bookends.
+  const pictureWarnings = (warnings) => (warnings ?? []).filter((warning) => !/no channel intro or outro/.test(warning));
+  assert.match(good.assemble.warnings.join("\n"), /final\.mp4 has no channel intro or outro: no branding package is installed under .*_branding/);
+  assert.deepEqual(pictureWarnings(good.assemble.warnings), []);
   assert.equal(good.pace.ok, true, good.pace.detail);
   // Pictures kept with the judge's remarks (keyframes --accept-best) ride on the assemble item as
   // one warning that names them in shot order: the item passes, the cut is of them, and the owner
@@ -586,7 +589,7 @@ test("illustrated slides are measured on their cadence: a picture held too long 
   // (review/sync.mjs accepted_pictures).
   const kept = await run(shotLines, { accepted: { race: ["generated: glossy finish"], desk: ["awkward: the hand", "details: no cup"] } });
   assert.equal(kept.assemble.ok, true, kept.assemble.detail);
-  assert.deepEqual(kept.assemble.warnings, ["2 pictures kept with the judge's remarks after the prompt fixes (desk, race); the owner decides on the cut, and keyframes/manifest.json has what the judge said of each"]);
+  assert.deepEqual(pictureWarnings(kept.assemble.warnings), ["2 pictures kept with the judge's remarks after the prompt fixes (desk, race); the owner decides on the cut, and keyframes/manifest.json has what the judge said of each"]);
   assert.equal(kept.pace.ok, true);
   // Every picture kept, each with nine remarks of 300 characters: still the one line, and none of
   // the 13,500 characters the judge wrote.
@@ -595,8 +598,8 @@ test("illustrated slides are measured on their cadence: a picture held too long 
   const every = await run(shotLines, { accepted: Object.fromEntries(shotIds.map((id) => [id, remarks(id)])) });
   assert.deepEqual(shotIds, ["podium", "desk", "clock", "race", "door"]);
   assert.equal(every.assemble.ok, true, every.assemble.detail);
-  assert.deepEqual(every.assemble.warnings, [keptPicturesWarning(shotIds)]);
-  assert.match(every.assemble.warnings[0], /^5 pictures kept with the judge's remarks after the prompt fixes \(podium, desk, clock, race, door\); /);
+  assert.deepEqual(pictureWarnings(every.assemble.warnings), [keptPicturesWarning(shotIds)]);
+  assert.match(pictureWarnings(every.assemble.warnings)[0], /^5 pictures kept with the judge's remarks after the prompt fixes \(podium, desk, clock, race, door\); /);
   assert.ok(!JSON.stringify(Object.values(every)).includes("the hand bends"), "no remark of the judge's is anywhere in the report");
   assert.match(good.pace.detail, /^\d+ pictures, the longest [\d.]+ s, a new one every [\d.]+ s on average, \d+% of the runtime illustrated \(limits: 8 s, 50%\)$/);
   assert.match(good.disclosure.detail, /^no disclosure needed: illustrated slides: stylised tech-story pictures, a licensed music bed/);

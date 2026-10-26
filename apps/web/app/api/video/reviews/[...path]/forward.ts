@@ -5,7 +5,10 @@ import { problem } from "../../speech/forward";
 /**
  * The local video pipeline reports a video, uploads its previews and submits reviews for
  * /admin/videos through here, with its video tool token; the API is not exposed by nginx.
- * Only the three routes the pipeline uses are forwarded, and only the token, never cookies.
+ * Only the routes the pipeline uses are forwarded, and only the token, never cookies. Since
+ * 2026-10-26 the tool also reads a video's live review attachments back (`review-files`): the
+ * final cut is ~90 MB, so that route streams the API's body and passes byte ranges through, as
+ * the media forwarder does for clips.
  */
 export type Context = { params: Promise<{ path: string[] }> };
 const TOKEN = /^Bearer mkv_[A-Za-z0-9_-]{36,76}$/;
@@ -17,8 +20,10 @@ export const PART_MAX_BYTES = 4 * 1024 * 1024;
 const JSON_MAX_BYTES = 512 * 1024;
 const TIMEOUT_MS = 60_000;
 const PASSED_BACK = ["content-type", "retry-after", "www-authenticate"];
+const FILE_HEADERS = ["content-type", "content-length", "content-range", "accept-ranges", "etag", "last-modified"];
+const RANGE = /^bytes=\d*-\d*$/;
 
-type Route = { kind: "project" | "review" | "file"; maxBytes: number };
+type Route = { kind: "project" | "review" | "file" | "download"; maxBytes: number };
 
 /** Which pipeline route a path and method are, or null for anything else. */
 export function reviewRoute(path: string[], method: string): Route | null {
@@ -27,6 +32,7 @@ export function reviewRoute(path: string[], method: string): Route | null {
   if (rest.length === 0 && (method === "GET" || method === "PUT")) return { kind: "project", maxBytes: JSON_MAX_BYTES };
   if (rest.length === 1 && rest[0] === "reviews" && method === "POST") return { kind: "review", maxBytes: JSON_MAX_BYTES };
   if (rest.length === 2 && rest[0] === "files" && SHA256.test(rest[1]) && method === "PUT") return { kind: "file", maxBytes: PART_MAX_BYTES };
+  if (rest.length === 2 && rest[0] === "files" && SHA256.test(rest[1]) && method === "GET") return { kind: "download", maxBytes: 0 };
   return null;
 }
 
@@ -59,6 +65,7 @@ export async function forward(request: NextRequest, context: Context, method: "G
   }
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), TIMEOUT_MS);
+  if (route.kind === "download") return download(request, path, authorization, controller, timeout);
   try {
     const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
     const suffix = query.size ? `?${query}` : "";
@@ -84,4 +91,40 @@ export async function forward(request: NextRequest, context: Context, method: "G
   } finally {
     clearTimeout(timeout);
   }
+}
+
+/** A review attachment, streamed with its byte range; the deadline covers only the answer's headers. */
+async function download(request: NextRequest, path: string[], authorization: string, controller: AbortController, timeout: ReturnType<typeof setTimeout>) {
+  const headers = new Headers({ Authorization: authorization, Accept: "*/*" });
+  const range = request.headers.get("range");
+  if (range && RANGE.test(range)) headers.set("Range", range);
+  let upstream: Response;
+  try {
+    const base = process.env.API_INTERNAL_URL || "http://localhost:8000";
+    upstream = await fetch(`${base}/api/v1/video/reviews/${path.join("/")}`, {
+      method: "GET",
+      headers,
+      cache: "no-store",
+      redirect: "manual",
+      signal: AbortSignal.any([controller.signal, request.signal]),
+    });
+  } catch {
+    clearTimeout(timeout);
+    return problem(502, "upstream_unavailable", "the API is not answering");
+  }
+  clearTimeout(timeout);
+  const pass = (names: string[]) => {
+    const out = new Headers({ "Cache-Control": "no-store" });
+    for (const name of names) {
+      const value = upstream.headers.get(name);
+      if (value) out.set(name, value);
+    }
+    return out;
+  };
+  // An error answer is small JSON: pass it through, buffered, so the tool sees the code.
+  if (!upstream.ok) return new NextResponse(await upstream.arrayBuffer(), { status: upstream.status, headers: pass(PASSED_BACK) });
+  const out = pass(FILE_HEADERS);
+  out.set("Cache-Control", "private, no-store");
+  out.set("X-Content-Type-Options", "nosniff");
+  return new Response(upstream.body, { status: upstream.status, headers: out });
 }

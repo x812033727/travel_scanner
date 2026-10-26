@@ -15,7 +15,7 @@ import { parseArgs } from "node:util";
 import { AutomationError, automationClient, RUN_UNCERTAIN } from "../automation/client.mjs";
 import { animeRuntimeContext, hasAnimePolicy, runtimePolicyHash } from "../core/anime-policy.mjs";
 import { approvalState, sha256File } from "../core/approvals.mjs";
-import { appliedBranding, brandingCurrent, presentationTimeline, readBranding } from "../core/branding.mjs";
+import { appliedBranding, brandingCurrent, narratedLong, presentationTimeline, readBranding, readDefaultBranding } from "../core/branding.mjs";
 import { compilationChecksCurrent, compilationHash, estimatedCompilationTimeline, isCompilation } from "../core/compilation.mjs";
 import { cadenceProblems, cadenceSummary, illustrationShare, MAX_PICTURE_SECONDS, MIN_ILLUSTRATION_SHARE } from "../core/cadence.mjs";
 import { burnIn, drawnShotScenes, illustrated, isDrama, needsMinimumLength, subtitlesHash } from "../core/drama.mjs";
@@ -274,7 +274,15 @@ export async function run(command, args, ctx) {
   // --accept-best) ride on the assemble item as one warning: the cut is of them, the items are the
   // server's fixed eleven, and the owner decides on the cut (the review goes up for a manual review).
   const acceptedPictures = pictures ? drawnShotScenes(doc).filter((scene) => Array.isArray(keyframes?.shots?.[scene.id]?.accepted_with_problems)).map((scene) => scene.id) : [];
-  items.push(acceptedPictures.length ? { ...assemble, warnings: [...(assemble.warnings ?? []), keptPicturesWarning(acceptedPictures)] } : assemble);
+  // A long video cut where no channel package is installed has no intro or outro at all: on
+  // 2026-10-25 a news video assembled in a cloud container went to the owner that way, and every
+  // check passed (docs/videos/BRANDING.md; the host's work directory has the package).
+  const workBase = resolveWorkBase({ flag: values.workdir, env: ctx.env, root: ctx.root, home: ctx.home });
+  const noBookends = !applied && narratedLong(doc, project.series) && !readBranding(workdir) && !readDefaultBranding(workBase, doc)
+    ? [`final.mp4 has no channel intro or outro: no branding package is installed under ${path.join(workBase, "_branding")}; install it (branding --install, docs/videos/BRANDING.md), then assemble --adopt-branding`]
+    : [];
+  const assembleWarnings = [...(assemble.warnings ?? []), ...(acceptedPictures.length ? [keptPicturesWarning(acceptedPictures)] : []), ...noBookends];
+  items.push(assembleWarnings.length ? { ...assemble, warnings: assembleWarnings } : assemble);
   items.push(renderItem({ manifest: frames, cache, visual, speech, subtitles: drama ? subtitlesHash(doc) : null, burnIn: drama && burnIn(doc), hasThumbnail: Boolean(doc.thumbnail) }));
   items.push(narrationItem({ approval, current: timelineCurrent }));
   if (!timelineCurrent) {

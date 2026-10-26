@@ -152,6 +152,8 @@ node tools/video/assemble/smoke.mjs --workdir <DIR> [--channel msedge]   # 整�
 - **成片核准了，語言面板還沒出現**：面板靠影片清單的 checklist 有「成片核准」；工人核准那一輪會回報一次，最多等一輪（5 分鐘）。本機手動跑的影片用 `review-push --report-only` 登記。
 - **盤點或替既有影片撰稿之前先 `review-pull`**：站主的選擇（選了哪個大綱、核准了什麼）只在站上；曾有六支稿子照大綱 A 寫，站主選的其實是 B／C。
 - **已核准的影片要改寫，開新 slug**，舊專案在後台停掉（站主 2026-10-11 定）：已核准的 slug 換不了內容，它的成片與上架核准會留著。
+- **手動跑長片前先裝頻道片頭片尾**：素材包（`intro.mp4`、`outro.mp4`、`manifest.json`）只在主機與站主的電腦上，Git 沒有；雲端容器的工作目錄沒有 `_branding/`，`assemble` 就做出沒有片頭片尾的成片，其他檢查照樣全過（2026-10-25 一支新聞片因此送審）。`assemble` 之前先 `branding --install <素材包> --workdir <VIDEO_WORKDIR>`（`docs/videos/BRANDING.md`）；已經組好的片用 `assemble --adopt-branding` 重組。`qa` 在這種情況會在 assemble 項目下警告。
+- **手動跑配音檢查一定要有第二個轉寫**：主機的工人有 `VIDEO_SECOND_OPINION`（Whisper），本機或雲端容器手動跑 `check-audio --locale` 時沒有它，Gemini 自己聽錯的（把 GPT-5.6 Sol「更正」成 GPT-3.5、把泰文外來語寫成英文字母）全部算成配音錯；2026-10-25 一支片的八條配音因此有七條被標。先在 scratchpad 建一個 venv 裝 `faster-whisper==1.2.1`，再 `VIDEO_SECOND_OPINION="<venv>/bin/python tools/video/tts/whisper_second_opinion.py" WHISPER_MODEL=medium` 跑（第一次會下載約 1.5 GB 的模型；4 核 CPU 一句約 10–20 秒）。沒有第二個轉寫時，`check-audio` 會在被標的句子後面印一行提醒。
 - **手動跑語言時**：先把站主的選擇寫成 `<VIDEO_WORKDIR>/<SLUG>/languages.json`（`{"locales": {"en": {"metadata": true, "captions": true, "dub": false}}, "decided_at": "<ISO 時間>"}`），`captions`、`package`、`qa`、`review-push --gate languages` 才會只做那些；沒有這個檔就照舊做每個有翻譯的語系。
 - **代理不能碰權杖**：用上面的配對流程，權杖不能出現在對話裡、檔案裡或指令參數裡。替站主開一個終端機分頁讓他打權杖，會被分類器擋成 Credential Leakage。
 - **ffmpeg（除錯 `assemble` 時用得到）**：PNG 的 concat 預設時基是 1/25 秒，每個檔案要加 `option framerate 30`；PNG 沒有色彩資訊，要 `setparams` 加 `-x264-params colorprim/transfer/colormatrix`；單聲道先正規化再轉立體聲會大 3 LU；抽格用場景片段上的 `select=eq(n,N)`，不要對串好的 mp4 用 `-ss`；Noto Sans CJK 單行會「溢出」零點幾個行高，所以版面檢查容許到 0.4 em。

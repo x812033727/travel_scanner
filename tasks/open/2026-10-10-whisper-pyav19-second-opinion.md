@@ -1,17 +1,18 @@
 ---
 id: 2026-10-10-whisper-pyav19-second-opinion
 title: Fix Whisper second opinion compatibility with PyAV 19
-status: open
+status: in-progress
 priority: P1
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-10-25T23:03:46Z
 created_at: 2026-10-10T13:02:23Z
 completed_at:
 branch:
 depends_on: []
 scope:
   - tools/video/tts/whisper_second_opinion.py
+  - tools/video/tts/whisper-second-opinion.test.mjs
 ---
 
 # Fix Whisper second opinion compatibility with PyAV 19
@@ -28,14 +29,14 @@ flags, causing otherwise avoidable paid retakes/rewording and terminal dub skips
 
 ## Definition of done
 
-- [ ] The installed second transcriber decodes real native WAVs with the supported dependency versions.
-- [ ] A regression exercises audio decoding, rather than proving only that faster-whisper imports.
+- [x] The installed second transcriber decodes real native WAVs with the supported dependency versions.
+- [x] A regression exercises audio decoding, rather than proving only that faster-whisper imports.
 - [ ] Normal check-audio records an actual second transcript without changing QA thresholds, paid counters or owner approvals.
 
 ## Steps
 
-- [ ] Reproduce the actual dependency mismatch and choose a compatible decode path or pinned dependency combination.
-- [ ] Verify the native locale/clip/hints interface, offline cached model and unchanged transcription settings.
+- [x] Reproduce the actual dependency mismatch and choose a compatible decode path or pinned dependency combination.
+- [x] Verify the native locale/clip/hints interface, offline cached model and unchanged transcription settings.
 - [ ] Run relevant checks and record guarded post-deploy native readback through the owning release workflow.
 
 ## How to verify
@@ -61,3 +62,11 @@ download. Then run native check-audio and inspect its second-transcriber entries
 - 完整 operational receipt 原始 archive：`tasks/evidence/worktree-cleanup/2026-10-10-production-resume.original.md`；SHA-256 `f1f278888a2a763a3fc5d4455c721baaa533b1ba41896616a1cf776e6edd8a8a`（14616 bytes）。本輪只保全原始收據，不寫入原 owner scope `docs/videos/recovery/2026-10-10-production-resume.md`。原收據的最後更新記錄至 2026-10-10 21:14 Taipei，不代表此刻程序或製作仍在執行。
 - 原票中的「目前」、PR 狀態、claim 衝突及主機狀態都是當時快照。續作前應唯讀核對現有 owner、相同 scope、已知 job / source / review hashes、STOP 與 lease，沿用收據而非重買或重跑未知請求。恢復票不構成 provider / 正式站 / 發布的新授權。
 - 21:05 的私人 PyAV 19 四段相容性 pilot 為 exit 0，SHA-256 `ae10fbf530d91f0e0059feb318f2ca4a7b2c23f032ddbb43e7047b38c95637b3`；此證據僅適用原輸入與私有 per-process shim，沒有證明 installed worker 或其他 campaign 已完成修補。21:14 的 V5 JA/EN 啟動記錄尚不等於正常音訊 QA、owner playback、上傳或公開。
+
+## Notes (2026-10-25, claude-opus-5-5)
+
+- Reproduced in a fresh venv: faster-whisper 1.2.1 pulls PyAV 19.0.2, and `faster_whisper.audio.decode_audio` on a real dub clip raises `TypeError: open() got an unexpected keyword argument 'metadata_errors'`.
+- Fix: `whisper_second_opinion.py` reads the clip itself (stdlib `wave`, 16-bit PCM, channels averaged), resamples to 16 kHz by linear interpolation and hands Whisper a float32 array, so PyAV is never called. Same model, language, beam size and prompt.
+- Verified with Whisper `medium` on the PHP2Shell dub clips (es 4649 heard as written: "GPT-5.6. Sol"), then `check-audio --second-opinion` over all eight dubs of that video (results in the PHP2Shell ticket).
+- Regression: `tools/video/tts/whisper-second-opinion.test.mjs` (48 kHz read and resample, stereo, refusal of non-16-bit, UTF-8 output under cp1252).
+- Left: the production readback after the next video-worker deploy (the image copies `tools/video`, so a rebuild picks the script up; no dependency pin changes).

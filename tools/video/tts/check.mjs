@@ -48,7 +48,7 @@ import { speechLexicon } from "../dubs/plan.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
 import { judgeLines, SpeechError, transcribeClip } from "./client.mjs";
 import { spokenParts } from "./requests.mjs";
-import { secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
+import { SECOND_OPINION_ENV, secondOpinionCommand, secondOpinionName, secondTranscripts } from "./second-opinion.mjs";
 import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { downsample, encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
@@ -145,6 +145,15 @@ const CLOSING_PARTICLES = /[耶餒馁]+$/u;
 const CLAUSE_CLOSING_PARTICLES = /(?<=[\p{L}\p{N}])(?:(?<!好)耶|(?<![氣气])[餒馁])(?=\s*(?:\p{P}|$))/gu;
 // Latin-script words, as the transcriber's hint list takes them: one word each.
 const LATIN_WORD = /[A-Za-z0-9][A-Za-z0-9.+#'_-]*/g;
+// The words of a language written in Latin letters with its own accents ("Dùng", "petición"),
+// joined the way LATIN_WORD joins them, so an accented word is one word and not "D" and "ng".
+const ANY_WORD = /[\p{L}\p{N}][\p{L}\p{N}.+#'_-]*/gu;
+const ASCII_WORD = /^[A-Za-z0-9][A-Za-z0-9.+#'_-]*$/;
+// Languages written in Latin letters: every word of theirs is Latin, so only the dictionary's
+// terms are hinted. In vi, es, pt and id the whole sentence (cut into fragments at each accented
+// letter) went to the transcriber as "English words" until 2026-10-25; the 20-word list filled
+// up before the product names, and Gemini wrote GPT-5.6 Sol as GPT-3.5 and Soho.
+export const LATIN_SCRIPT_LOCALES = new Set(["en", "es", "pt", "id", "vi"]);
 // Mirrors TranscribeIn.terms' max_length in apps/api/app/video_speech/schemas.py.
 export const MAX_HINT_TERMS = 20;
 
@@ -157,15 +166,18 @@ function dictionaryTerm(word, lexicon) {
 }
 
 /**
- * The English words a line says, spelled as the script spells them, for the transcriber. In an
- * English dub every word is Latin, so only the dictionary's terms (the acronyms and product
- * names a transcriber spells its own way) are hinted there.
+ * The English words a line says, spelled as the script spells them, for the transcriber. In a
+ * dub written in Latin letters (LATIN_SCRIPT_LOCALES) every word is Latin, so only the
+ * dictionary's terms (the acronyms and product names a transcriber spells its own way) are
+ * hinted there.
  */
 export function hintTerms(line, { locale = NARRATION_LOCALE, lexicon } = {}) {
-  const words = (spokenText(line).match(LATIN_WORD) ?? [])
+  const latin = LATIN_SCRIPT_LOCALES.has(locale);
+  const found = latin ? (spokenText(line).match(ANY_WORD) ?? []).filter((word) => ASCII_WORD.test(word)) : (spokenText(line).match(LATIN_WORD) ?? []);
+  const words = found
     .map((word) => word.replace(/[.'_-]+$/, ""))
     .filter((word) => /[A-Za-z]/.test(word) && word.length <= 40)
-    .filter((word) => locale !== "en" || dictionaryTerm(word, lexicon));
+    .filter((word) => !latin || dictionaryTerm(word, lexicon));
   return [...new Set(words)].slice(0, MAX_HINT_TERMS);
 }
 
@@ -188,9 +200,18 @@ export function matchKind(heard, line, lexicon, locale = NARRATION_LOCALE) {
   const forms = [line.text, spokenText(line), spokenForm(line, lexicon)];
   const said = comparable(heard, locale);
   if (forms.some((form) => comparable(form, locale) === said)) return "exact";
-  // Same-sound characters and filler particles are Mandarin's; in another language, whatever
-  // differs beyond spelling is Jev's to judge.
-  if (!CHINESE.has(locale)) return null;
+  // Same-sound characters and filler particles are Mandarin's. In another language a transcript
+  // that differs only where it spells a loanword in Latin letters says the same words
+  // ("spelling", sameWordsSpelledOtherwise); whatever else differs is Jev's to judge.
+  if (!CHINESE.has(locale)) {
+    const heardUnits = units(heard, locale);
+    return forms.some((form) => {
+      const { missed, added } = lineUp(units(form, locale), heardUnits, locale);
+      return missed.size === 0 && added.size === 0;
+    })
+      ? "spelling"
+      : null;
+  }
   const bare = (text) => comparable(text).replace(FILLERS, "");
   // A closing particle comes off what was heard only, so a script ending in 氣餒 still needs it.
   const saidBare = [bare(heard), bare(heard).replace(CLOSING_PARTICLES, ""), bare(String(heard).replace(CLAUSE_CLOSING_PARTICLES, ""))];
@@ -221,6 +242,118 @@ export function leakedWord(heard, line) {
     if (next === "" || /^[\s\p{Lu}]$/u.test(next) || /^[^\p{L}\p{N}']$/u.test(next)) return said.slice(0, word.length);
   }
   return null;
+}
+
+// The units a script and its transcripts are lined up in: words where the language spaces them
+// (LATIN_SCRIPT_LOCALES), characters elsewhere (Chinese, Japanese, Korean syllables, Thai).
+// Thai number words up to 99 and Thai digits, as the digits a transcriber writes for them: the
+// Thai dub reads ตีสาม and หกชั่วโมง, and both transcribers write "ตี 3" and "6 ชั่วโมง". The value
+// is kept, so a wrong number still differs. ฯ only marks an abbreviation (นายกฯ), read as the
+// word or not at all.
+const THAI_ONES = { หนึ่ง: 1, เอ็ด: 1, สอง: 2, สาม: 3, สี่: 4, ห้า: 5, หก: 6, เจ็ด: 7, แปด: 8, เก้า: 9 };
+const THAI_ONE = "หนึ่ง|เอ็ด|สอง|สาม|สี่|ห้า|หก|เจ็ด|แปด|เก้า";
+const THAI_NUMBER = new RegExp(`(ยี่|${THAI_ONE})?สิบ(${THAI_ONE})?|(${THAI_ONE})`, "gu");
+export function thaiNumbers(text) {
+  return String(text)
+    .replace(/[\u0E50-\u0E59]/gu, (digit) => String(digit.charCodeAt(0) - 0x0e50))
+    .replace(/\u0E2F/gu, "")
+    .replace(THAI_NUMBER, (match, tens, ones, single) => {
+      if (single) return String(THAI_ONES[single]);
+      const ten = tens === undefined ? 1 : tens === "ยี่" ? 2 : THAI_ONES[tens];
+      return String(ten * 10 + (ones ? THAI_ONES[ones] : 0));
+    });
+}
+
+function units(text, locale) {
+  if (locale === "th") return [...comparable(thaiNumbers(text), locale)];
+  if (!LATIN_SCRIPT_LOCALES.has(locale)) return [...comparable(text, locale)];
+  const folded = locale === "vi" ? foldVietnameseTones(text) : String(text);
+  return folded.normalize("NFKC").toLowerCase().split(/[\p{P}\p{S}\p{Z}\s]+/u).filter(Boolean);
+}
+
+const ASCII_RUN = /^[a-z0-9.+#'_-]+$/;
+const HAS_ASCII_LETTER = /[a-z]/;
+
+/**
+ * Whether a stretch of the script and the stretch of a transcript heard in its place are the same
+ * word written another way: the transcriber wrote a loanword in Latin letters that the script
+ * spells in its own letters (Thai ล็อกอิน as "login", เซิร์ฟเวอร์ as "server"), as the transcription
+ * prompt asks it to, or the other way round. Only outside the languages written in Latin letters,
+ * where a Latin word heard as another Latin word is another word. Numbers are not counted here:
+ * "3" against a number word could be the wrong number, which is Jev's to judge.
+ */
+function sameWordsSpelledOtherwise(script, heard, locale) {
+  if (LATIN_SCRIPT_LOCALES.has(locale) || !script.length || !heard.length) return false;
+  const a = script.join("");
+  const b = heard.join("");
+  // A Latin run in one, none in the other, of a length a transliteration could have (a Thai or
+  // kana spelling of a word runs to about twice the Latin one).
+  const latinFor = (latin, own) => ASCII_RUN.test(latin) && HAS_ASCII_LETTER.test(latin) && !/[a-z0-9]/.test(own) && own.length <= latin.length * 2 + 2 && latin.length <= own.length * 2 + 2;
+  return latinFor(b, a) || latinFor(a, b);
+}
+
+/**
+ * How a transcript lines up with a script, unit by unit (a longest common subsequence): the
+ * script's units it leaves out and the transcript's units it adds, once each stretch between two
+ * matched units that is only the same words spelled otherwise (sameWordsSpelledOtherwise) counts
+ * as matched.
+ */
+function lineUp(script, heard, locale) {
+  const n = script.length;
+  const m = heard.length;
+  const table = Array.from({ length: n + 1 }, () => new Uint16Array(m + 1));
+  for (let i = n - 1; i >= 0; i--) {
+    for (let j = m - 1; j >= 0; j--) table[i][j] = script[i] === heard[j] ? table[i + 1][j + 1] + 1 : Math.max(table[i + 1][j], table[i][j + 1]);
+  }
+  const missed = new Set();
+  const added = new Set();
+  let i = 0;
+  let j = 0;
+  let gap = { i, j };
+  const closeGap = () => {
+    const scriptGap = script.slice(gap.i, i);
+    const heardGap = heard.slice(gap.j, j);
+    if (!sameWordsSpelledOtherwise(scriptGap, heardGap, locale)) {
+      for (let k = gap.i; k < i; k++) missed.add(k);
+      for (let k = gap.j; k < j; k++) added.add(k);
+    }
+  };
+  while (i < n || j < m) {
+    if (i < n && j < m && script[i] === heard[j]) {
+      closeGap();
+      i += 1;
+      j += 1;
+      gap = { i, j };
+    } else if (j < m && (i >= n || table[i][j + 1] >= table[i + 1][j])) j += 1;
+    else i += 1;
+  }
+  closeGap();
+  return { missed, added };
+}
+
+/** The indexes of `script`'s units a transcript leaves out (lineUp). */
+function missedUnits(script, heard, locale) {
+  return lineUp(script, heard, locale).missed;
+}
+
+/**
+ * Whether two transcripts that each differ from a line miss it in different places, so neither
+ * mistake is in the recording: DUBS.md's rule that a line was said wrong only when both
+ * transcribers hear the same place wrong. Each transcript is lined up with the line as written,
+ * as spoken and in its dictionary form; the line passes when, in one of those forms, no unit of
+ * the script is missed by both. A unit both miss (the voice said "udah" for "sudah", or slurred
+ * a word both heard as something else) keeps the line flagged.
+ */
+export function missedInDifferentPlaces(first, second, line, lexicon, locale = NARRATION_LOCALE) {
+  if (typeof first !== "string" || typeof second !== "string" || !first.trim() || !second.trim()) return false;
+  const forms = [line.text, spokenText(line), spokenForm(line, lexicon)];
+  return forms.some((form) => {
+    const script = units(form, locale);
+    if (!script.length) return false;
+    const a = missedUnits(script, units(first, locale), locale);
+    const b = missedUnits(script, units(second, locale), locale);
+    return ![...a].some((index) => b.has(index));
+  });
 }
 
 export function matches(heard, line, lexicon, locale) {
@@ -437,7 +570,14 @@ export async function checkAudio(args, ctx, options) {
       }
     }
   }
-  const clearedBySecond = (entry) => Boolean(entry.second) && (entry.second.match_kind !== null || (typeof entry.second.noul === "number" && entry.second.noul >= threshold));
+  // A second transcript clears a line when it matches the script, when Jev passes it, or when it
+  // misses the line in other places than Gemini did (missedInDifferentPlaces): each transcriber
+  // erred somewhere, but no word was heard wrong by both.
+  const clearedBySecond = (entry, id) =>
+    Boolean(entry.second) &&
+    (entry.second.match_kind !== null ||
+      (typeof entry.second.noul === "number" && entry.second.noul >= threshold) ||
+      missedInDifferentPlaces(entry.heard, entry.second.heard, byLine.get(id), lexicon, locale));
 
   const entries = Object.entries(results);
   const exact = entries.filter(([, entry]) => entry.match_kind === "exact").length;
@@ -448,10 +588,10 @@ export async function checkAudio(args, ctx, options) {
     const word = leakedWord(entry.heard, byLine.get(id));
     return word ? [[id, word]] : [];
   }));
-  const cleared = doubted.filter(([id, entry]) => clearedBySecond(entry) && !leaks.has(id));
+  const cleared = doubted.filter(([id, entry]) => clearedBySecond(entry, id) && !leaks.has(id));
   const doubtedIds = new Set(doubted.map(([id]) => id));
   const leakedOnly = entries.filter(([id]) => leaks.has(id) && !doubtedIds.has(id));
-  const flagged = [...doubted.filter(([id, entry]) => !clearedBySecond(entry) || leaks.has(id)), ...leakedOnly]
+  const flagged = [...doubted.filter(([id, entry]) => !clearedBySecond(entry, id) || leaks.has(id)), ...leakedOnly]
     .sort(([a], [b]) => order.get(a) - order.get(b));
   const judgedFine = entries.length - exact - alike - doubted.length - leakedOnly.length;
   const flagsFile = path.join(workdir, files.flags);
@@ -487,7 +627,7 @@ export async function checkAudio(args, ctx, options) {
   const clearedText = cleared.length ? `, ${cleared.length} cleared by a second transcript` : "";
   const leakText = leaks.size ? `, ${leaks.size} of them for a leaked word` : "";
   ctx.stdout.write(
-    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters or filler words, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold}${leakText})\n`,
+    `${dub ? `${locale} dub: ` : ""}${entries.length} of ${total} lines checked: ${exact} match the script word for word, ${alike} differ only by same-sound characters, filler words or a loanword's spelling, ${judgedFine} judged fine by Jev${clearedText}, ${flagged.length} flagged (below ${threshold}${leakText})\n`,
   );
   ctx.stdout.write(`${transcribed} clips transcribed now, ${jevCalls} Jev calls; details in ${cacheFile}\n`);
   if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
@@ -495,10 +635,18 @@ export async function checkAudio(args, ctx, options) {
     ctx.stdout.write(`  ${id}  is longer than Jev takes: it judged the first ${MAX_INTENDED_CHARACTERS} characters of the script and ${MAX_HEARD_CHARACTERS} of the transcript\n`);
   }
   for (const [id, entry] of cleared) {
-    const how = entry.second.match_kind !== null ? "matches the script" : `Jev ${entry.second.noul.toFixed(2)}`;
+    const how = entry.second.match_kind !== null
+      ? "matches the script"
+      : typeof entry.second.noul === "number" && entry.second.noul >= threshold
+        ? `Jev ${entry.second.noul.toFixed(2)}`
+        : "the two transcripts miss it in different places";
     ctx.stdout.write(`  ${id}  cleared by ${entry.second.by} (${how}); Gemini heard 「${entry.heard}」, ${entry.second.by} heard 「${entry.second.heard}」\n`);
   }
   if (secondFailed) ctx.stdout.write(`the second transcriber failed (${secondFailed}); the flags below stand\n`);
+  // Without a second transcriber, a word Gemini alone mishears (a product name it "corrects", a
+  // loanword it spells in Latin letters) stays flagged: on 2026-10-25 a hand run without one
+  // flagged 7 of 8 dub tracks for transcript noise the voice did not make.
+  if (!second && flagged.length) ctx.stdout.write(`no second transcriber checked these lines (set ${SECOND_OPINION_ENV} or pass --second-opinion, docs/videos/DUBS.md); Gemini's own mishearings stay flagged\n`);
   for (const [id, entry] of flagged) {
     const other = entry.second ? `\n    ${entry.second.by}: ${entry.second.heard}` : "";
     const why = leaks.has(id) ? `leaked word 「${leaks.get(id)}」, ${jevNote(entry)}` : jevNote(entry);
