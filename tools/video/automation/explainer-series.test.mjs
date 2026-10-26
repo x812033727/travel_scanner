@@ -46,7 +46,8 @@ test("the composed instructions of the existing explainer and discussion variant
     [["planner", "drama"], "675c9213407aa771820dc4ae1eb837e33049f5659636135e06d84a624e7f9de9"],
   ];
   for (const [args, digest] of pinned) assert.equal(sha256(instructionsFor(...args)), digest, JSON.stringify(args));
-  assert.equal(Object.keys(VARIANT_INSTRUCTIONS).length, 21, "no existing variant table gained or lost a key");
+  // 22 since 2026-10-26: the translator's title pass ("translator:title") joined the table.
+  assert.equal(Object.keys(VARIANT_INSTRUCTIONS).length, 22, "no existing variant table gained or lost a key");
 });
 
 test("the bible payload and the bible discussion payload of a flat-explainer and of a story one-off are what they were", () => {
