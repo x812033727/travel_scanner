@@ -1,0 +1,266 @@
+{
+  "narrative_hash": "075992825ec0ee49",
+  "script_hash": "f110db8101d143af3b6bab3628b18c70575387efb3fb977ab0983138ead20d6f",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "dd31a2fc85974ad32af42367eccb7e2ce3a9e847da1bbc3029f03e71f6b7a01a",
+  "round": 4,
+  "passed": true,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1h01] 一九六九年，若你花四十五萬日圓買錶，仍可能需要送回調整。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1h06] 而工廠的一座真空爐，又藏著什麼沒被記下的事？",
+      "yes_readers": 1
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1r20] 這一次，得跟著管理者，走到實際加工的地方。",
+      "yes_readers": 1
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1h07] 跟著精工的Astron，從一塊手焊基板，追一支新錶如何走向持續製造。",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1c01] 精工委託美國的Intersil開發低耗電晶片，要替換靠人手焊接的回路。",
+      "yes_readers": 2
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1r14] 那工廠怎麼在出貨前，先把這段變動逼出來？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1f04] 開頭那座真空爐，企業史說，是管理者到現場檢查作業，才找到問題。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1r03] 開頭你擔心的返調，企業史說，許多已經售出的錶，確實又回來調整。",
+      "yes_readers": 1
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[skr1c01] 精工委託美國的Intersil開發低耗電晶片，要替換靠人手焊接的回路。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1d20] 想繼續看日用品如何從做得出來走到交給人用，歡迎訂閱品牌故事。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1h05] 一張價牌，為什麼會讓上市前的準備突然改動？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1d18] 我的答案是：準確要交到下一個人手上，還得把穩定、製造與維修一起做好。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[skr1f12] 不過，振子能更穩定供應，還沒有把手焊回路變得好做。",
+      "yes_readers": 2
+    }
+  ],
+  "failed": [],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": true,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[skr1h01] 一九六九年，若你花四十五萬日圓買錶，仍可能需要送回調整。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[skr1h06] 而工廠的一座真空爐，又藏著什麼沒被記下的事？"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[skr1r20] 這一次，得跟著管理者，走到實際加工的地方。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[skr1h07] 跟著精工的Astron，從一塊手焊基板，追一支新錶如何走向持續製造。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[skr1c01] 精工委託美國的Intersil開發低耗電晶片，要替換靠人手焊接的回路。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[skr1r14] 那工廠怎麼在出貨前，先把這段變動逼出來？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[skr1f04] 開頭那座真空爐，企業史說，是管理者到現場檢查作業，才找到問題。"
+        },
+        {
+          "id": "no_recap",
+          "yes": true,
+          "evidence": "[skr1r03] 開頭你擔心的返調，企業史說，許多已經售出的錶，確實又回來調整。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[skr1c01] 精工委託美國的Intersil開發低耗電晶片，要替換靠人手焊接的回路。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[skr1d20] 想繼續看日用品如何從做得出來走到交給人用，歡迎訂閱品牌故事。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[skr1h05] 一張價牌，為什麼會讓上市前的準備突然改動？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[skr1d18] 我的答案是：準確要交到下一個人手上，還得把穩定、製造與維修一起做好。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[skr1f12] 不過，振子能更穩定供應，還沒有把手焊回路變得好做。"
+        }
+      ],
+      "failed": [],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[skr1h02] 這是精工企業史記下的早期難題；六〇年代末，技能者還在顯微鏡下手焊電路。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": false,
+          "evidence": "[skr1h01] 一九六九年，若你花四十五萬日圓買錶，仍可能需要送回調整。"
+        },
+        {
+          "id": "one_line",
+          "yes": false,
+          "evidence": "[skr1c10] 我想看的是自研這條路：原本做精密機械的人，怎麼開始做半導體？"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[skr1h07] 跟著精工的Astron，從一塊手焊基板，追一支新錶如何走向持續製造。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": true,
+          "evidence": "[skr1c01] 精工委託美國的Intersil開發低耗電晶片，要替換靠人手焊接的回路。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[skr1c17] 可是，設備進門，熟練的方法也會跟著送到嗎？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[skr1d18] 我的答案是：準確要交到下一個人手上，還得把穩定、製造與維修一起做好。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[skr1e03b] 技術史寫，他們試過研磨劑與振動，最後用磨石作出音叉形狀。"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[skr1p16] 工作人員得換價牌、重排印刷物，忙到深夜仍然來不及。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[skr1d20] 想繼續看日用品如何從做得出來走到交給人用，歡迎訂閱品牌故事。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[skr1h05] 一張價牌，為什麼會讓上市前的準備突然改動？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[skr1d18] 我的答案是：準確要交到下一個人手上，還得把穩定、製造與維修一起做好。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[skr1c02] 企業史說，混合回路的生產性太低，成本與耗電，都還需要往下壓。"
+        }
+      ],
+      "failed": [
+        "no_spoiler",
+        "one_line",
+        "no_recap"
+      ],
+      "advisory": []
+    }
+  ]
+}

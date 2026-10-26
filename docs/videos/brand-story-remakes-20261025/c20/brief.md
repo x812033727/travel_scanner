@@ -1,6 +1,6 @@
-# C20 R5｜同一句保證，兩次送修的換與留
+# C20 R6｜同一句保證，兩次送修的換與留
 
-狀態：HOLD_PENDING_INDEPENDENT_SOURCE_AND_NATIVE5。R1全套已封存；R2來源文字PASS/書面HOLD、actualnative2共享三HOLD與A單讀者one_line/no_detour均封存history/r2，原文/輸入/binding/core/freeze/plan及保護檔原SHA保留。R3來源/書面PASS、verify、actualnative3共享no_recap HOLD（A i06/B t10）及raw/input/binding/payload/core/freeze/plan已完整history/r3封存，actualcount3。R4來源/書面PASS、verify、actualnative4共享no_detour HOLD（A t03/B t28）與B單讀者t14 no_recap、raw/input/binding/payload/core/freeze/plan已完整history/r4封存，actualcount4。current無舊verify；R5不沿用批准。新slug story-everyday-zippo-c20-remake-20261025，category story、不重綁舊episode。
+狀態：HOLD_PENDING_INDEPENDENT_SOURCE_AND_NATIVE6。R1全套已封存；R2來源文字PASS/書面HOLD、actualnative2共享三HOLD與A單讀者one_line/no_detour均封存history/r2，原文/輸入/binding/core/freeze/plan及保護檔原SHA保留。R3來源/書面PASS、verify、actualnative3共享no_recap HOLD（A i06/B t10）及raw/input/binding/payload/core/freeze/plan已完整history/r3封存，actualcount3。R4來源/書面PASS、verify、actualnative4共享no_detour HOLD（A t03/B t28）與B單讀者t14 no_recap、raw/input/binding/payload/core/freeze/plan已完整history/r4封存，actualcount4。R5來源/書面PASS、verify、actualnative5兩位共同指o16 no_recap HOLD及raw/input/binding/payload/core/freeze/plan/原runtime hash manifest完整封存history/r5，actualcount5，原round-5不改不重抽。current無舊verify；R6不沿用批准。新slug story-everyday-zippo-c20-remake-20261025，category story、不重綁舊episode。
 
 ## 問題
 
@@ -18,7 +18,7 @@ Zippo終身保證到底修什麼，哪些舊東西會留下？
 
 原日本單案承諾拓寬為兩次送修的功能/保存抉擇。增加Joseph真實零件與寄件行動：舊物來源與刻字/顏色、過去舊修件顧慮、社群交換回顧、先email未等回、不同物件的明確要求、原照片hinge-pin勾選、表格寄件/地址、三月收件出件email與較晚泛答、帶環款看來換pin/補繩/無新焊痕、同包另一只換hinge、回程包裝擔憂但未報新增損傷、未來分寄選擇。再交日本新的內部機件難題，不能把普通款換hinge說成Camden新焊或JP經歷。
 
-R5刪t03綠色款照片旁枝與scene；日本包裹段刪寄出/送達/年末希望/施工時數及回件快慢的列帳，把t27收為整趟往返47天後收到回件，直接接舊內膽預期、開包與新舊同返的新答案。t14只問交出物件範圍、t15直接答外殼/內膽/修理表，不重說故障；移除舊t25等回件時長loop。保每章你我與兩teaser。所有保留scene的原英文prompt/camera、兩組完整imageKey與製片守衛沿R4不動，不用年表/警語/慢播填長。JP表格事件預告撤，當事人未公開完成表，不演勾選或要求退舊。UK僅末尾一段條件，不再開售後百科；美國新購一年客服全刪。
+R6唯一內容變更為刪o16及其scene：該句只重述開場想修又怕添痕，沒有新增行動或答案。o15實際所見的舊修件顧慮，直接接o17在社群貼待修舊物找交換時被問為何不寄回的新事件。其他旁白、來源、render條件、每章你我、27 loops與兩teaser不改；所有保留scene的完整prompt/camera、兩組imageKey沿R5不動。原runtime只讀，免費檢查使用author-r6內同集runtime副本及原immutable三檔，不準備native6盲讀輸入。JP表格事件預告撤，當事人未公開完成表，不演勾選或要求退舊。UK僅末尾一段條件，不再開售後百科；美國新購一年客服全刪。
 
 ## 開場與同圖
 
@@ -26,7 +26,7 @@ R5刪t03綠色款照片旁枝與scene；日本包裹段刪寄出/送達/年末�
 
 ## 字量與媒體
 
-whole 2823 native units（coldopen 182、有聲CTA 57）；13分鐘/約3300–3500仍是規劃，低於3300約477、與3500差677，容量風險如實保留。4–5 units/s算術 564.6–705.8秒，不是音檔實測。官方時長口徑含coldopen及有聲CTA，僅排另外5秒/21秒頻道bookends。未量實聲，不把lint估秒當PASS。
+whole 2794 native units（coldopen 182、有聲CTA 57）；13分鐘、正文720–840秒自然語速與約3300–3500仍是規劃目標，低於3300約506、與3500差706，容量風險如實保留。4–5 units/s算術 558.8–698.5秒，不是音檔實測。官方時長口徑含coldopen及有聲CTA，僅排另外5秒/21秒頻道bookends。未量實聲，不把lint估秒當PASS。
 
 ## 來源／畫面／字典
 
@@ -34,4 +34,4 @@ whole 2823 native units（coldopen 182、有聲CTA 57）；13分鐘/約3300–35
 
 ## 待辦
 
-另一位R5來源/配鏡QA與actualnative5 pending；owner/branding read-only preflight/製片入場/實聲/實圖/成片全待完成。沒有verify、自PASS、owner、Git/backend或付費。
+另一位R6來源/配鏡QA與actualnative6 pending；owner/branding read-only preflight/製片入場/實聲/實圖/成片全待完成。沒有verify、自PASS、owner、Git/backend或付費。

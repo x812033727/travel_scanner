@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-10-25T13:59:52.881858+00:00",
+  "checked_at": "2026-10-26T06:08:20.079798+00:00",
   "source_commit": "2b20c30d359fe5d93a4ea66f013a52fa20a35c05",
   "paid_requests": 0,
   "media_generated": false,
@@ -17,7 +17,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c04",
@@ -26,7 +28,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c05",
@@ -35,7 +39,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c06",
@@ -44,7 +50,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c07",
@@ -53,7 +61,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c08",
@@ -62,7 +72,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c09",
@@ -71,7 +83,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c10",
@@ -80,7 +94,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c11",
@@ -89,7 +105,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c14",
@@ -98,7 +116,9 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     },
     {
       "id": "c15",
@@ -107,12 +127,14 @@
       "protected_live_budget_ledger_readback": "not_exposed_by_current_video_token",
       "actual_narration_seconds": null,
       "music_quote": "requires_actual_native_tts_timeline",
-      "full_film_cap_usd": 25
+      "full_film_cap_usd": 25,
+      "account_exists": null,
+      "account_balance_requires_host_readback": true
     }
   ],
   "blockers": [
-    "Protected C-series history reconciliation and remake-account activation remain required; no slug or guard changes made.",
-    "No operable administrator or production-host session is available in this environment. The existing tool token supports draft review submission."
+    "Exact remake account, full historical/uncertain ledger, reviewed US$25 registration/activation and whole-film quote remain unverified; no slug or guard changes made.",
+    "Production-host CLI/DB access is required; the current video-tool token is valid. No HTTP budget management router exists, and no operable SSH/TCP/VPN connection is configured here."
   ],
   "branding_observed": {
     "state": "FORMAL_CHANNEL_V4_INSTALLED_AV_DECODE_PASS",
@@ -213,5 +235,10 @@
   ],
   "updated_at": "2026-10-26T02:36:37.603611+00:00",
   "actual_c03_tts_attempt": "c03/production-after-approval.json",
-  "eight_language_choice": "c03/backend-language-choice.json"
+  "eight_language_choice": "c03/backend-language-choice.json",
+  "previous_snapshot": "history/production-hold-before-host-metadata-20261026.json",
+  "host_budget_readback": "c03/connection-and-budget-readback.md",
+  "host_readback_executed": false,
+  "latest_token_status": "c03/admission-media-status-20261026.json",
+  "account_absence_inferred_from_hold": false
 }

@@ -4,7 +4,7 @@
 
 正式站全頻道 v4 套件 `mokaair-brand-package-v4-endscreen` 已下載並安裝，package SHA `416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88`。兩檔均1080p30，實SHA、150／630格與完整影音解碼通過：**開場濃縮後5秒片頭、最後21秒片尾**。這是兩份重用製片素材，並非生成故事媒體。[正式取得、影音QA及操作指南](branding-pr1860/README.md)與[必要包規則](branding-pr1860/required-branding.json)已落地；[preflight](branding-pr1860/preflight.mjs)在缺檔、錯包、版本不符或無法比對正式站時停止。每次真正合成前須重跑；尚無逐集production pin、timeline或組片。
 
-C03正式TTS曾執行，在供應商派送前被 `video_budget_preproduction_hold` 拒絕。影片工具權杖有效，不需重貼；仍缺精確新版帳戶、各片US$25上限的受保護啟用、實際歷史帳本及全片報價。正式branding取得已解阻，不能繼續把它列為製片阻塞。[C03入場交接](c03/production-entry.md)與[目前停線](production-hold.json)保存具體待辦；沒有借原slug帳戶、改前綴或移除保護。
+C03正式TTS曾執行，在供應商派送前被 `video_budget_preproduction_hold` 拒絕。影片工具權杖有效，不需重貼；仍缺精確新版帳戶、各片US$25上限的受保護啟用、實際歷史帳本及全片報價。正式branding取得已解阻，不能繼續把它列為製片阻塞。[C03入場交接](c03/production-entry.md)、[正式主機唯讀交接](c03/connection-and-budget-readback.md)與[目前停線](production-hold.json)保存具體待辦；沒有借原slug帳戶、改前綴或移除保護。
 
 | 題目 | 當前來源／書面分鏡／敘事 | 後台與八語文字 |
 | --- | --- | --- |
@@ -20,7 +20,7 @@ C03正式TTS曾執行，在供應商派送前被 `video_budget_preproduction_hol
 | [C14 CamelBak](c14/production-entry.md) | R6來源／共圖計畫及實際第5輪合併PASS | 新企劃／劇本pending；八語TEXT_PASS |
 | [C15 FriXion](c15/production-entry.md) | R5來源／共圖計畫及實際第3輪合併PASS | 新企劃／劇本pending；八語TEXT_PASS |
 | [C19 Seven Bank](c19/preparation-completion-r8.json) | R8來源／書面配鏡及實際第8輪原生合併PASS；歷輪完整保存 | 新企劃／劇本pending；904句八語TEXT_PASS，後台語言選擇仍空 |
-| [C20 Zippo](c20/research-original.md) | R5來源／書面配鏡PASS；實際第5輪盲讀待完成，R1–R4保存 | 未送新卡／翻譯，原68檔保全，實際返還點火不作聲稱 |
+| [C20 Zippo](c20/research-original.md) | R6來源／書面配鏡PASS；實際第6輪HOLD僅共同no_recap，R1–R5保存 | 未送新卡／翻譯，原68檔保全，實際返還點火不作聲稱 |
 
 [原始全批共圖查核](opening-teaser-image-audit.md)保留發現缺口當時的快照；[當前逐稿核對](opening-teaser-plan-reconciliation.json)證明12集22個事件預告已有來源核對的書面共圖計畫。實際圖片尚未生成，不能稱實圖共用已驗收。正常回收圖先做一次，預告呼叫前只讀核對原生cache key與實檔SHA；缺cache停止，不觸發第二次付費生成。每對須獨立驗圖，最終manifest及檔案SHA仍須一致。
 
@@ -36,4 +36,4 @@ C03正式TTS曾執行，在供應商派送前被 `video_budget_preproduction_hol
 
 [prepare-runtime.mjs](prepare-runtime.mjs)僅初始化明列集數的正常字典及官方劇本；已有批准的執行根不可覆寫。受控採用保留原核准、字典、語意校對及失敗回退鏈。[runtime-cli.mjs](runtime-cli.mjs)只交給官方工具，不解除付費保護。來源快取、公共研究影片與正式branding原件在倉庫外，Git只收文字證據。
 
-[C07容量研究](c07/duration-capacity-research.md)與[C11容量研究](c11/duration-capacity-research.md)已完成，新材料仍不足以在目前敘事範圍自然補足13分鐘；現稿與八語保留，後續須明確重定可證敘事範圍再寫，不降低時長標準。Seiko R4、Garmin R2、Dyson R2與Doraemon R2來源／書面配鏡PASS，接續各自真正的新敘事盲讀；輪箱R1來源審查中。五題原件及歷史稿保全，沒有將書面通過當成已生成影片。
+[C07容量研究](c07/duration-capacity-research.md)與[C11容量研究](c11/duration-capacity-research.md)已完成，新材料仍不足以在目前敘事範圍自然補足13分鐘；現稿與八語保留，後續須明確重定可證敘事範圍再寫，不降低時長標準。Seiko R4來源／書面配鏡與actual native4合併PASS，新企劃／劇本pending、八語翻譯中，clean配方metadata獨立PASS。輪箱R2來源PASS／actual native1 HOLD（開場洩結果與重述）；Garmin、Dyson與Doraemon正依各自實際native1 HOLD修稿，舊稿及收據保全。五題原件及歷史稿保全，沒有將書面通過當成已生成影片。

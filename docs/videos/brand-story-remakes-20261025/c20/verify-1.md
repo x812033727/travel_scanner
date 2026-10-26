@@ -1,13 +1,13 @@
-# verify-1: C20 R5 independent source and written visual review
+# verify-1: C20 R6 independent source and written visual review
 
-SOURCE PASS / WRITTEN VISUAL PASS。精確R4完整QA基線，加親核R5三句/六景刪除/兩個不再使用出處連結的收斂。非敘事、owner、實聲、實圖或成片批准。
+SOURCE PASS / WRITTEN VISUAL PASS。R5僅刪o16整景，其餘110列按精確獨立R5完整來源/書面配鏡QA繼承；沒有假稱110列全新重讀。非敘事、owner、實聲、實圖或成片批准。
 
-- `video.json` SHA256 `c1c99df03c20b8fe945fcc8c29c2bf8a3392a3580067b6de62c5e560c3392cff`
-- `script.md` SHA256 `8c008116ce69499bbd5842117ae1762c9b3d24fea2f079ec71baaab383e530fb`
-- `narration-only.json` SHA256 `07380bcb72d6e8ad1d47443bb385484d54b2ee7b193316024343dac5d60a790f`
-- `claims.json` SHA256 `186c324490ae83f508b079228d618bfa84e4c846971b8587382f0c05950b2786`
+- `video.json` SHA256 `c132258339157a5f1bcb4f120de10714d0967aba9e734cca1cf2edd794d1af81`
+- `script.md` SHA256 `166b4e8043e094996bf633514b1048d4f80e11cb6dff1460922d9033d8118227`
+- `narration-only.json` SHA256 `928d74815f3a834cea95563769c50f0f0ef5782fd667a3c946592349daa2efa3`
+- `claims.json` SHA256 `f0429709633dbc81dd92f5a0319cf9029a5af9efcca1d00fc1b2801d8d853f9b`
 
-111真列；108列完整不變，3列新核；存留108個shot prompt/camera均精確相同，27loops無懸空。
+110真列，107存留shot prompt/camera、27loops與兩共圖完整輸入不變。
 
 | ID | 主張 | Scene | Evidence anchors | Verdict |
 | --- | --- | --- | --- | --- |
@@ -33,7 +33,6 @@ SOURCE PASS / WRITTEN VISUAL PASS。精確R4完整QA基線，加親核R5三句/�
 | c20r3o13 | 他甚至怕，有一部分可能會掉走；這是他對繼續使用的顧慮，不是已經弄丟。 | c20r3o13 | E02-Q1 | ATTRIBUTED |
 | c20r3o14 | 但知道廠商說免費修，他就立刻寄回去了嗎？ | c20r3o14 | E03-Q1 | CONFIRMED |
 | c20r3o15 | 他在回顧裡說，自己曾看過一些修過的舊件，鉸鏈歪斜，旁邊留著不好看的痕跡。 | c20r3o15 | E03-Q1 | ATTRIBUTED |
-| c20r3o16 | 所以他一方面想試試這句承諾，另一方面，又不願在舊殼上添那種痕跡。 | c20r3o16 | E03-Q1 | ATTRIBUTED |
 | c20r3o17 | 當他把一批待修舊物的照片，放進社群想找人交換時，有人問他，為什麼不寄回去？ | c20r3o17 | E04-Q1 | ATTRIBUTED |
 | c20r3o18 | 這個提醒，卻沒有先替他回答，這種帶環的鉸鏈，現在還能不能照原樣處理。 | c20r3o18 | E04-Q1, E05-Q1 | CONFIRMED |
 | c20r3o19 | 他先寄了一封電子郵件，問的就是，這只特殊款還能不能恢復原來的樣子。 | c20r3o19 | E05-Q1 | ATTRIBUTED |
@@ -123,8 +122,8 @@ SOURCE PASS / WRITTEN VISUAL PASS。精確R4完整QA基線，加親核R5三句/�
 | c20r3n17 | 如果是你的舊物，你會特別要求留下哪一部分，還是只想讓它繼續陪你？ | c20r3outro |  | OUT OF SCOPE |
 | c20r3n18 | 想繼續看日用品一句承諾，怎麼變成具體的選擇，歡迎訂閱品牌故事。 | c20r3outro |  | OUT OF SCOPE |
 
-47天是JP作者明定「郵送してから手元に戻ってくるまで」的全旅程，非工時或保證時限。外殼/內膽/表是當次送出範圍，不是UK現行寄法。US同包兩件與日本粉紅禮物各自獨立；Camden看來換pin/無新焊痕與普通款換hinge不混。未見JP完成表、退舊要求/原因或回件後成功點火。
+US同包兩件與JP2024粉紅禮物分開；Camden看來換pin/無新焊痕與普通款換hinge各有對象。JP47天是全旅程，非工時或現行保證時限；新舊內膽返還不代表成功點火，未見完成表/退舊要求/原因。UK2026及US當代條款不回推兩案。
 
-兩完整原生key純算相同、cache miss停線、兩端judge及原檔/最終trim檔/assembly同素材SHA計畫已核；actual_same_asset_verified=false。2823units、13分鐘目標及MATERIAL_CAPACITY_RISK保留，實聲/成片秒數未知，不判duration PASS或實聲FAIL。
+兩同圖完整原生key只屬書面純算；實做仍要真設定讀回、cache miss停線、兩端正常judge及原檔/最終trim檔/assembly同素材SHA。actual_same_asset_verified=false。13分鐘目標及2794units的MATERIAL_CAPACITY_RISK保留，實聲/成片秒數未知，不作duration PASS或實聲FAIL。
 
-完整獨立收據：`reviews/source-r5-independent.json`，SHA256 `e80677e122b7a8fa365137fc6d68eabaab5635f848853f1c8c9c6cc1951ad426`。
+完整獨立收據：`reviews/source-r6-independent.json`，SHA256 `bb7758da84b2ff64330f26bebe4875a79714dde4a3b5f67038db4503ac5c7c7f`。

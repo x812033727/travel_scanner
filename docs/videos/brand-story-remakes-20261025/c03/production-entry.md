@@ -28,15 +28,15 @@
 
 ## 主機唯讀檢查與八語預設
 
-在有正式連線的工作階段，以`bash docs/videos/brand-story-remakes-20261025/c03/host-admission-readback.sh`於正式repo執行唯讀檢查。腳本僅使用既有容器的`exec`、無`--action`／`--apply`；帳本詳細結果保存在私有`/tmp`目錄，未修改主機或預算。此環境已做語法檢查與Node片段的三項本機拒絕測試（候選／停用／無效hash），尚未在正式主機執行；見`host-readback-local-check.json`。檢查成功也不是製片授權，仍須讀回帳戶價格、餘額及未明請求。
+請有正式主機連線的操作方依[當前認證／唯讀交接](connection-and-budget-readback.md)執行已獨立複查PASS的`host-budget-metadata-readback.sh`。它先驗DB只讀交易，再直接讀兩個精確slug的帳戶及聚合費用；不變更主機、帳戶或啟用。現有影片權杖有效，網站管理員權杖不能取代主機；此環境尚無SSH及相應網路連線。舊`host-admission-readback.sh`與三項本機拒絕測試保留，但新slug的CLI hold發生於DB查詢前，不能證明帳戶不存在。實際主機尚未執行，檢查通過也不是製片授權。
 
-新slug目前還缺合法額度註冊、獨立帳戶、API與client受審啟用；單加allowlist或新增帳戶均不足，不能把新片改成原slug。
+新slug的獨立DB帳戶是否存在及實際餘額尚未取得主機讀回；合法額度註冊與API／client受審啟用也未確認；單加allowlist或新增帳戶均不足，不能把新片改成原slug。
 
 站主已授權後續用建議設定並預設八語；正式後台也已讀回英、日、韓、西、葡、印尼、越南、泰文的metadata／CC／dub全數選取，決定時間`2026-10-25T14:09:36.202531Z`，見`backend-language-choice.json`。本次無須再套用同一選擇；`language-selection-request.json`保留同一完整payload供後續各集依授權預設。
 
 八語1,144句文字與metadata已完成獨立校對，見`i18n/README.md`，但無實際時間軸／SRT或配音。不要手造`languages.json`的決定時間或假裝語言輪已開始。
 
-配音仍要求實際clean核准成片。建議保留繁中燒錄輸出，再用`variants/clean-master/`從相同已驗主素材本機重新組乾淨主片，重新作真實QA及final審核；舊配方及其獨立收據已精確封存；新配方待獨立metadata重查，原生檢查顯示劇本／旁白／圖像輸入相同，未宣稱影片已生成或關卡已通過。原生八語流程在真正乾淨主片成立後才啟動，不修改eligibility規則或借舊final核准。
+配音仍要求實際clean核准成片。建議保留繁中燒錄輸出，再用`variants/clean-master/`從相同已驗主素材本機重新組乾淨主片，重新作真實QA及final審核；舊配方及其獨立收據已精確封存；新配方的[metadata獨立審查](variants/clean-master/review.json)已通過，原生檢查顯示劇本／旁白／圖像輸入相同，未宣稱影片已生成或關卡已通過。原生八語流程在真正乾淨主片成立後才啟動，不修改eligibility規則或借舊final核准。
 
 
 ## 已採用的預告共圖計畫
@@ -47,7 +47,7 @@
 
 [共圖計畫](image-reuse-plan.json)仍是planned、actual_same_asset_verified=false；runtime與媒體目錄production-handoff已保存相同計畫。原生CLI不強制pair，cache缺失會走新的付費派送；因此正式入場後，須先生成並驗收payoff，預告shot命令之前人工核live cache預期同key、實際已驗檔及SHA、完整參數均一致，缺任一項即停止，不能呼叫預告命令或啟動auto worker。任一端未驗收／seed或修正改變亦停整對；render前兩端選中及裁切後真檔bytes／SHA必須相同，兩context各驗收，帳本沒有重購。
 
-舊clean配方／獨立收據已逐檔精確封存到`history/clean-master-before-teaser-image-plan`；新source只重新衍生純burnflag配方，variant SHA`4349a436af212203b79cdc0bfdc5920673cce2c0dd06442846116b37481c52c4`，待新的獨立metadata審查。沒有實際clean影片、完整QA、final或配音資格。新[免費預檢](preflight-inputs.json)仍不是全片報價；不嘗試真正TTS，所有付費保護維持。
+舊clean配方／獨立收據已逐檔精確封存到`history/clean-master-before-teaser-image-plan`；新source只重新衍生純burnflag配方，variant SHA`4349a436af212203b79cdc0bfdc5920673cce2c0dd06442846116b37481c52c4`，[獨立metadata審查](variants/clean-master/review.json)已通過。沒有實際clean影片、完整QA、final或配音資格。新[免費預檢](preflight-inputs.json)仍不是全片報價；不嘗試真正TTS，所有付費保護維持。
 
 
 ## 正式v4素材已就緒（PR1860）
