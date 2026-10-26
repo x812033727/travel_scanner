@@ -1,7 +1,7 @@
 {
-  "observed_at": "2026-10-26T07:29:19.902839+00:00",
-  "status": "in-progress",
-  "stage": "official_v4_main_4_checked_foreign_M4As_and_5_locale_CC_metadata_delivered_PT_ES_unknown_held",
+  "observed_at": "2026-10-26T08:40:01.586422+00:00",
+  "status": "blocked",
+  "stage": "awaiting_owner_PT3cc1_and_ES9a36_provider_results_step1_no_replay",
   "current_video_sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
   "speech_hash": "c6d70ecaef91a15d",
   "documentation_refresh": {
@@ -638,6 +638,7 @@
     "no_replay_without_real_outcome_even_after_not_before": true
   },
   "pending": [
+    "Owner must supply genuine per-request PT3cc1 and separately ES9a36 completion/charge/usage or recoverable audio facts. Both current owner form fields remain blank; stop at step1.",
     "Resolve PT3cc1 actual upstream usage/outcome or recoverable answer without replay/forget/clearing held journal; elapsed07:50 never settles uncertainty.",
     "Resolve separate older ES9a36/journal3935 unknown request without replay; do not treat PT hold or a successful GET as its resolution.",
     "Only after genuine provider-outcome facts and a separate bounded root release may normal remaining audio production continue. Preserve retake/reword/fit/audio gates.",
@@ -652,5 +653,20 @@
   "main_delivery_dod_complete": true,
   "main_delivery_dod_scope": "Genuine new official-v4 full1080 main delivered to pending manual review; QAfalse10/11 retained.",
   "all_eight_foreign_delivery_dod_complete": false,
-  "overall_complete": false
+  "overall_complete": false,
+  "owner_billing_pause": {
+    "receipt": "receipts/owner-billing-pause-20261026.json",
+    "receipt_sha256": "6c771295245a26e311a8b8849b7dd933f2d5bebca7a15a0d6435537bb9e0b1c3",
+    "observed_at_Asia_Taipei": "2026-10-26T16:40:01.586422+08:00",
+    "stop_step": 1,
+    "PT_3cc1_provider_result": null,
+    "ES_9a36_provider_result": null,
+    "both_owner_form_fields_blank": true,
+    "no_charge_or_usage_inference": true,
+    "owner_and_branch_retained": true,
+    "existing_four_checked_deliveries_unchanged": true,
+    "next_four_audio_production_started": false,
+    "owner_reported_tool_updates_not_integrated_or_run": true,
+    "waiting_for_missing_facts_not_routine_approval": true
+  }
 }
