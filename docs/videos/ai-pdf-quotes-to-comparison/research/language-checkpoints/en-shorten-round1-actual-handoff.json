@@ -1,0 +1,145 @@
+{
+  "recorded_at": "2026-10-26T12:50:11.043805+00:00",
+  "actual_unit_exit_code": 6,
+  "actual_log": "/workspace/work/ai-pdf-01/en-reviewed-dub-native.log",
+  "native_boundary_file": "/workspace/work/ai-pdf-01/author-review-boundaries/en.shorten.round-1.2026-10-26T12-47-12-330Z.json",
+  "native_boundary_sha256": "0ef7251d29feab65eab6f392aa31228e8b8b7e18278486d2acab9b42e66e6452",
+  "native_boundary": {
+    "schema_version": 1,
+    "slug": "ai-pdf-quotes-to-comparison",
+    "locale": "en",
+    "variant": "shorten",
+    "round": 1,
+    "recorded_at": "2026-10-26T12:47:12.330Z",
+    "purpose": "Actual native model answer awaiting independent meaning review; not approval or retry authorization",
+    "native_rounds": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    },
+    "native_result": {
+      "ids": [
+        "vnaq",
+        "trph"
+      ],
+      "problems": []
+    },
+    "original_fit_over": [
+      {
+        "id": "vnaq",
+        "chars": 70,
+        "max_chars": 64,
+        "window_over_seconds": 0.43,
+        "seconds": 4.85
+      },
+      {
+        "id": "trph",
+        "chars": 51,
+        "max_chars": 47,
+        "window_over_seconds": 0.43,
+        "seconds": 6.4
+      }
+    ],
+    "native_answer_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/en-shorten-round-1-meaning-review-2026-10-26T12-47-12-330Z.txt",
+    "native_answer_sha256": "7284be9b3da08f8538809b8308fa2e6a5d150f4a0c9cd6a46d000258d74ce5f4",
+    "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "translation_sha256": "96bf226e0a0f1ad1ec18b2b26b5f66384099b7d1edb508005cf05972bafe117c"
+  },
+  "actual_failed_pre_shorten_fit": {
+    "translation_hash": "6fb3c541cccbb623",
+    "over": [
+      {
+        "id": "vnaq",
+        "chars": 70,
+        "max_chars": 64,
+        "window_over_seconds": 0.43,
+        "seconds": 4.85
+      },
+      {
+        "id": "trph",
+        "chars": 51,
+        "max_chars": 47,
+        "window_over_seconds": 0.43,
+        "seconds": 6.4
+      }
+    ]
+  },
+  "accepted_model_text_changes": [
+    {
+      "id": "vnaq",
+      "before": "Add one to the 20-card request, making 21: can we still get an answer?",
+      "after": "Add one to the 20-card request, making 21: still answerable?"
+    },
+    {
+      "id": "trph",
+      "before": "Keep unit prices for now; recalculate the same way.",
+      "after": "Keep unit prices for now; redo the same method."
+    }
+  ],
+  "other_99_translated_line_records_exact": true,
+  "current_translation_sha256": "96bf226e0a0f1ad1ec18b2b26b5f66384099b7d1edb508005cf05972bafe117c",
+  "native_rounds": {
+    "shorten": 1,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "protected_primary_files": {
+    "approvals.json": {
+      "before_sha256": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "current_sha256": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "unchanged": true
+    },
+    "final.mp4": {
+      "before_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "current_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "unchanged": true
+    },
+    "timeline.json": {
+      "before_sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "current_sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "unchanged": true
+    },
+    "narration.wav": {
+      "before_sha256": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "current_sha256": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "unchanged": true
+    },
+    "review/check.json": {
+      "before_sha256": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "current_sha256": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "unchanged": true
+    },
+    "review/check-flags.json": {
+      "before_sha256": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "current_sha256": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "unchanged": true
+    },
+    "review/qa.json": {
+      "before_sha256": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "current_sha256": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "unchanged": true
+    },
+    "languages.json": {
+      "before_sha256": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "current_sha256": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "unchanged": true
+    }
+  },
+  "lease_present_at_handoff": false,
+  "voice_approved": false,
+  "next": "Independent review of the real2-line model delta and this immutable boundary, then update current source-bound meaning review before exactly one normal continuation. No failed fit/cap/receipt was erased.",
+  "raw_source_line_wavs": 101,
+  "total_audio_wav_files": 108,
+  "additional_native_tempo_cache_files": [
+    "e5gd.x1.15.wav",
+    "e5gd.x1.17.wav",
+    "gy4i.x1.02.wav",
+    "petb.x1.15.wav",
+    "petb.x1.17.wav",
+    "trph.x1.15.wav",
+    "vnaq.x1.15.wav"
+  ],
+  "count_label_clarification_preserved_prior_handoff": "/workspace/work/ai-pdf-01/handoff-history/8db7c82b4321e652f214ec95f6058e3d300da8c1f40df787fc6ffe6496599686.json"
+}
