@@ -10,15 +10,15 @@
 
 R2兩位fresh均12／13且false：reader5必要輸入與減法重用被判no_recap，reader6新聞發布日期脈絡被判no_detour。root依既有使用者委派明記採用這兩項取捨，沒有改原分數／failed／problems或門檻；[本地採用決策](reviews/script-local-adoption.json)不是伺服器核准。沒有auto.json或後臺approve。
 
-[旁白](narration.md)、[scene plan](scene-plan.md)、[聲音計畫](voice-plan.md)保持當前voice/style及未試聽say提案；未改共享lexicon。代表卡靜態預覽僅供版面檢查，不是音訊／全片render／成片QA。繁中TTS及實際8語CC／可下載M4A仍待正常後續製作；目前僅EN文字111句與metadata已經root獨立審查並普通merge，屬文字1/8，不代表字幕／配音已完成。
+[旁白](narration.md)、[scene plan](scene-plan.md)、[聲音計畫](voice-plan.md)保持當前voice/style及未試聽say提案；未改共享lexicon。代表卡靜態預覽僅供版面檢查，不是音訊／全片render／成片QA。繁中TTS及實際8語CC／可下載M4A仍待正常後續製作；目前EN與JA各111句及metadata已經root獨立審查並正常merge，屬外語文字2/8，不代表字幕／配音或後台語言已完成。
 
 視覺修正只移除五欄表重複key並加入原創縮圖subject／credit；111句完整line物件與voice／say均相同，原生speechHash同38cf9292f6945199。64個靜態state＋thumbnail版面問題為零，63個未改state的key與PNG SHA相同；這不是全片render。先前ca1e視覺delta已由獨立[verify3](verify-3.md)確認PASS，7d上的verify2 PASS保持原綁定；完整[視覺差異](reviews/visual-only-source-delta.json)及[素材](assets/README.md)可查。
 
 ## 當前進度與媒體界線
 
-[結果與下一步](result.md)、[逐項progress](production-progress.json)及[安全收據](receipts/README.md)記錄當前source gates。正常script review仍pending；native本地採用與review的content SHA都綁生成的[script.md](script.md)，與video.json SHA分開。TTS dry-run已完成，paid TTS仍0；依root全局Gemini busy／429決策暫緩新合成，不換provider或voice。尚無音檔／M4A／成片／八語完成聲明。
+[結果與下一步](result.md)、[逐項progress](production-progress.json)及[安全收據](receipts/README.md)記錄當前source gates。正常script review仍pending；native本地採用與review的content SHA都綁生成的[script.md](script.md)，與video.json SHA分開。TTS dry-run已完成，paid TTS仍0；依root本對話系列Gemini busy／429決策暫緩新合成，不換provider或voice。尚無音檔／M4A／成片／八語完成聲明。
 
-根層[verify1](verify-1.md)原REVISE、[verify2](verify-2.md)歷史7d PASS、[verify3](verify-3.md)歷史ca1e視覺delta PASS均為scratch原文的精確複本，供native facts讀取；原reviews歷史檔不刪。266檔episode-source-manifest保持歷史source freeze，不改寫；原[receipt index](receipts/index.json)與documentation freeze保留原身份；prepared metadata變更的[原索引](receipts/metadata-public-links-index.json)保持原文；verify4後索引原文保留；當前使用[EN文字採用索引](receipts/en-text-adoption-index.json)。
+根層[verify1](verify-1.md)原REVISE、[verify2](verify-2.md)歷史7d PASS、[verify3](verify-3.md)歷史ca1e視覺delta PASS均為scratch原文的精確複本，供native facts讀取；原reviews歷史檔不刪。266檔episode-source-manifest保持歷史source freeze，不改寫；原[receipt index](receipts/index.json)與documentation freeze保留原身份；prepared metadata變更的[原索引](receipts/metadata-public-links-index.json)保持原文；verify4後索引原文保留；EN文字採用時的[原索引](receipts/en-text-adoption-index.json)保留；當前使用[JA文字採用索引](receipts/ja-text-adoption-index.json)。
 
 公開教材的description只追加兩條固定commit連結：[9條實跑命令與教材資料夾](https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run)、[完整fixtures ZIP](https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip)。根目錄頁本輪未另GET；root proof實際核對的是CSV與42-entry ZIP。111完整line／say／voice／64完整scene物件皆未改，speechHash仍38cf9292f6945199；[delta與反向bytes證明](receipts/metadata-public-links-delta.json)及[原生限制檢查](receipts/metadata-public-links-native-checks.json)可查。重新生成script.md的SHA仍7aac…107b，既有normal gate hash未改，沒有新server批准；root已獨立完成[verify4 JSON](reviews/fifth-verify-4.json)：21項主張沿用逐bytes不變依賴，c17另有已實際公開GET證據；不冒稱重新live查核所有官方來源。
 
@@ -33,6 +33,17 @@ R2兩位fresh均12／13且false：reader5必要輸入與減法重用被判no_rec
 
 Root逐句讀完111組source→English及metadata後採用，僅把標題明寫complete follow-up list、首句改成preview omits rows；111英文targets全未改。[實際native採用](localization/en/actual-native-text-adoption.json)確認[i18n/en.json](i18n/en.json)逐bytes等於root原生純preview的translation，正常`i18n-merge`完成111lines。六章、title／description／tags與縮圖文字皆current，[root獨審](localization/en/root-independent-review.json)範圍只有文字。
 
-這是8種外語中的**EN文字1/8**；沒有actual CC時間軸或SRT／VTT、M4A、fit／meter／ASR或EN後台交付。繁中master paid TTS仍0、raw0、沒有actual timeline。原生估時compose的EN說明2787bytes只證明文字限制，不是fit或音長PASS。
+以下保留EN採用當時的增量範圍：**EN文字1/8**；沒有actual CC時間軸或SRT／VTT、M4A、fit／meter／ASR或EN後台交付。繁中master paid TTS仍0、raw0、沒有actual timeline。原生估時compose的EN說明2787bytes只證明文字限制，不是fit或音長PASS。
 
 作者26檔freeze與完整111[原句／targets／數值否定映射](localization/en/author-complete-source-target-map.json)、[三輪作者檢查](localization/en/author-three-pass-review.json)保留。第一次第三輪因sheetTodo顯示字串期望錯誤中止的[diagnostic](localization/en/author-native-pass3-first-expectation-error.json)與原腳本也保留，修正後才真正通過原生純檢查，未改native程式或門檻。Source40eb、claimscc38、script7aac、speech38cf／voice／data／verify4與敘事12/13 false都不變；更新前[進度／索引快照](history/before-EN-text-adoption-docs/identity.json)先逐bytes封存。沒有新paid／backend／approval或topic6。
+
+
+## 日文已正常採用：外語文字2/8，媒體仍0
+
+Root獨立讀完日文全部111組source→targets、六章與完整metadata／縮圖詞，沒有修改任何target，見[日文獨立文字審查](localization/ja/root/root-independent-review.json)。其後正常原生`i18n-merge`真exit0；[i18n/ja.json](i18n/ja.json) SHA為`324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2`，逐bytes等於原生純preview，見[真實採用收據](localization/ja/actual-native-text-adoption.json)與[執行log](localization/ja/root/native-i18n-merge.log)。
+
+目前為EN＋JA文字2/8；繁中master paid TTS0／raw0／實際timeline無，所有語言的actual CC、M4A、fit／meter／ASR與後台交付仍未完成。JA純metadata組字不用估時或實際時間軸，無時間章節預覽2903 UTF-8 bytes；`ujmc`48字、`3dwp`44字的約40字建議提示仍保留，不能稱配音fit。
+
+[作者21檔freeze](localization/ja/author/FINAL-FREEZE.json)、[完整111對照](localization/ja/author/source-target-complete-111.json)、[第二輪14項修正](localization/ja/author/pass2-critique.json)與[第三輪語義ledger](localization/ja/author/author-pass3-semantic-ledger.json)保持原bytes。作者首次URL抽取器假設錯誤、root首次sheetTodo型別／freeze結構假設錯誤，各自保存原腳本和[獨立診斷](localization/ja/copy-identity.json)；它們在採用前中止，不是音訊失敗或native品質門檻失敗，沒有改譯文、網址或門檻來通過。
+
+更新前全35份EN文件、舊freeze、當時progress／README／result／task與索引已逐bytes[封存](history/before-JA-text-adoption-docs/identity.json)。Source40eb、claimscc38、speech38cf、script7aac、voice／lexicon／data及兩份敘事12/13 false不變。這輪只交文件供root review；不stage／commit／push直到root核對freeze，不merge／deploy／YouTube上傳，也不新增topic6。

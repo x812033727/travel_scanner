@@ -27,4 +27,11 @@ prepared17檔及author freeze的[逐bytes封存](../history/before-root-verify4-
 
 ## 英文文字採用索引
 
-當前使用[en-text-adoption-index.json](en-text-adoption-index.json)，原[verify4索引](root-verify4-adoption-index.json)、[metadata準備freeze](metadata-public-links-freeze.json)與所有舊紀錄不改。新增[EN實際native採用](../localization/en/actual-native-text-adoption.json)只涵蓋111targets／六章／metadata／縮圖詞的本地文字；不是CC檔、M4A、fit、ASR或後台交付。作者原26freeze、第一個pass3期望錯誤、root獨立逐句審查與真native merge log各自保留範圍；原生估時文字限制不代表音訊PASS。更新前doc／task／index及兩個舊freeze在[archive](../history/before-EN-text-adoption-docs/identity.json)有精確bytes／SHA。
+EN文字採用時使用[en-text-adoption-index.json](en-text-adoption-index.json)，原[verify4索引](root-verify4-adoption-index.json)、[metadata準備freeze](metadata-public-links-freeze.json)與所有舊紀錄不改。新增[EN實際native採用](../localization/en/actual-native-text-adoption.json)只涵蓋111targets／六章／metadata／縮圖詞的本地文字；不是CC檔、M4A、fit、ASR或後台交付。作者原26freeze、第一個pass3期望錯誤、root獨立逐句審查與真native merge log各自保留範圍；原生估時文字限制不代表音訊PASS。更新前doc／task／index及兩個舊freeze在[archive](../history/before-EN-text-adoption-docs/identity.json)有精確bytes／SHA。
+
+
+## 當前EN＋JA文字2/8
+
+當前使用[ja-text-adoption-index.json](ja-text-adoption-index.json)。[JA真實採用](../localization/ja/actual-native-text-adoption.json)綁root逐句獨審、正常merge exit0與actual JA file SHA；[當前驗證](ja-text-adoption-validation.json)核對原325檔、前一輪35檔及其[精確封存](../history/before-JA-text-adoption-docs/identity.json)。舊EN index／freeze與所有舊審查保持原文。
+
+JA作者初次URL抽取錯誤、root sheetTodo型別與freeze結構錯誤的診斷和原腳本各自保存，不混作ASR、音訊或native品質關卡失敗；JA作者純merge／compose無時間軸，root正常CLI merge才構成當前文字採用。文字2/8不是actual CC／M4A／fit／ASR／後台交付，繁中paid TTS及raw仍0。

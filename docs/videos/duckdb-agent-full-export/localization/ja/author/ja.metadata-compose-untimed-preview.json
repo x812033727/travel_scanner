@@ -1,0 +1,27 @@
+{
+  "kind": "native_pure_JA_metadata_body_and_sources_preview_without_chapter_timestamps",
+  "title": "40行しか見えない？DuckDB 2.0でフォロー対象を全件出力｜字幕付き",
+  "description": "同じ配送練習データを使い、表示の省略を見分け、フォロー対象を全件そろえて渡します。\nAIでCSVを読むときに、クエリと完全な結果を一緒に渡したい人向けです。\n\n独自に作った架空の配送データと、決まった処理をする作者のプログラムを使います。実在企業の記録、顧客データ、公共統計ではありません。AI製品の応答や、独立したモデルの前後比較でもありません。2026-10-25、同じDuckDB 2.0.0のバイナリで-agentと-no-agentを比較しました。表示の40行は入力1200件のプレビューです。全件を渡す480件は、配達済みで、実際の日数が約束の日数を超える、という明示した条件で絞った結果です。表示の省略は、クエリや保存データから記録が消えたという意味ではありません。\n\nエラーの例では、作者が意図的に列名actual_daysの末尾を落とし、actual_dayと書きました。agentモードのstderrには起動メッセージと正しいJSONの1行が混ざります。メッセージの行を取り出して解析し、出力全体を単一のJSON文書として扱わないことを示します。DuckDBが不正なJSONを生成した、実在の外部プログラムが故障した、とは述べていません。CSV、SQL、COPY、Parquetは以前からある機能で、新しいのはagent向けの出力モードです。トークン数、料金、モデル推論、性能、サーバーモード、既存データベースのアップグレードは測定していません。\n\n教材には独自の入力データ、完全なSQL、再実行用スクリプト、全480件のCSVと同じ内容のParquet、HTML報告書、正確なコマンド、ファイルごとのSHAを収録しています。独自のデータ、コード、報告書はCC0-1.0、DuckDBはMITライセンスです。公式文書の権利は各著者に帰属します。CLIバイナリは教材に再配布していません。\n\n公開教材（実行済みの9コマンド）：https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\n全fixtures ZIP：https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip\n\n📚 参考資料\nDuckDB2.0正式公告：https://duckdb.org/2026/10/21/announcing-duckdb-200\nDuckDB CLI agent模式：https://duckdb.org/2026/10/09/agent-mode.html\nDuckDB2.0 CLI agent模式文件：https://duckdb.org/docs/2.0/clients/cli/agent_mode.html\nDuckDB2.0遷移條件：https://duckdb.org/docs/2.0/operations_manual/migration.html\nDuckDB2.0正式release與套件：https://github.com/duckdb/duckdb/releases/tag/v2.0.0\n\n#DuckDB #AIデータ分析 #AI新聞拆解",
+  "tags": [
+    "DuckDB",
+    "AIデータ分析",
+    "agentモード",
+    "CSV",
+    "SQL",
+    "Parquet",
+    "データ抽出",
+    "全件出力"
+  ],
+  "untimed_chapter_titles": {
+    "parcel-table-start": "配送プレビューの途中が省略される",
+    "input-is-still-there": "元の表はそのまま、応答で省略",
+    "define-the-followup": "3件の荷物、対象になるのは1件",
+    "human-error": "1文字の誤りでクエリが止まる",
+    "read-parquet-back": "ファイルを読み戻して全件照合",
+    "new-requirement-consequence": "予定どおりの荷物も含める新条件"
+  },
+  "problems": [],
+  "actual_timeline_used": false,
+  "estimated_timeline_used": false,
+  "actual_CC_or_audio_claimed": false
+}

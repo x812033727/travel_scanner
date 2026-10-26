@@ -1,0 +1,892 @@
+{
+  "locale": "ja",
+  "slug": "duckdb-agent-full-export",
+  "parts": [
+    "metadata",
+    "captions"
+  ],
+  "note": "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are. `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks. `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.",
+  "title": {
+    "todo": true,
+    "source": "表格只顯示40列？用DuckDB 2.0交出完整跟進清單",
+    "text": "40行しか見えない？DuckDB 2.0でフォロー対象を全件出力"
+  },
+  "description": {
+    "todo": true,
+    "source": "從同一份配送練習表，辨識輸出省略並交出完整跟進清單。\n給會用AI協助讀CSV、希望把查詢與完整結果一起交付的人。\n\n原創虛構配送資料與確定性作者程式，非真實公司／客戶／公共統計；沒有AI產品回應或獨立模型前後測。2026-10-25以同一DuckDB2.0.0二進位比較-agent與-no-agent，40列是1200筆輸入的預覽，480筆是明確條件篩選後的完整交付。顯示省略不代表查詢或儲存遺失資料。\n\n錯誤示範由作者故意少寫欄位名稱，agent stderr含啟動文字和一行合法JSON；需要按訊息行解析，不把混合stream誤認成單一JSON文件。沒有聲稱DuckDB產生壞JSON或真實第三方consumer故障。CSV／SQL／COPY／Parquet是既有能力，新特性是代理輸出模式。沒有測token、費用、模型推理、伺服器模式或既有庫升級。\n\n教材含原創輸入、完整SQL、重做腳本、完整480筆CSV／同內容Parquet、HTML報告、精確指令及逐檔SHA。原創資料／程式／報告為CC0-1.0，DuckDB為MIT；官方文字另屬其作者。\n\n公開教材（9條實跑命令）：https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\n完整fixtures ZIP：https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+    "text": "同じ配送練習データを使い、表示の省略を見分け、フォロー対象を全件そろえて渡します。\nAIでCSVを読むときに、クエリと完全な結果を一緒に渡したい人向けです。\n\n独自に作った架空の配送データと、決まった処理をする作者のプログラムを使います。実在企業の記録、顧客データ、公共統計ではありません。AI製品の応答や、独立したモデルの前後比較でもありません。2026-10-25、同じDuckDB 2.0.0のバイナリで-agentと-no-agentを比較しました。表示の40行は入力1200件のプレビューです。全件を渡す480件は、配達済みで、実際の日数が約束の日数を超える、という明示した条件で絞った結果です。表示の省略は、クエリや保存データから記録が消えたという意味ではありません。\n\nエラーの例では、作者が意図的に列名actual_daysの末尾を落とし、actual_dayと書きました。agentモードのstderrには起動メッセージと正しいJSONの1行が混ざります。メッセージの行を取り出して解析し、出力全体を単一のJSON文書として扱わないことを示します。DuckDBが不正なJSONを生成した、実在の外部プログラムが故障した、とは述べていません。CSV、SQL、COPY、Parquetは以前からある機能で、新しいのはagent向けの出力モードです。トークン数、料金、モデル推論、性能、サーバーモード、既存データベースのアップグレードは測定していません。\n\n教材には独自の入力データ、完全なSQL、再実行用スクリプト、全480件のCSVと同じ内容のParquet、HTML報告書、正確なコマンド、ファイルごとのSHAを収録しています。独自のデータ、コード、報告書はCC0-1.0、DuckDBはMITライセンスです。公式文書の権利は各著者に帰属します。CLIバイナリは教材に再配布していません。\n\n公開教材（実行済みの9コマンド）：https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\n全fixtures ZIP：https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip"
+  },
+  "tags": {
+    "todo": true,
+    "source": [
+      "DuckDB",
+      "AI資料分析",
+      "代理模式",
+      "CSV",
+      "SQL",
+      "Parquet",
+      "資料查詢",
+      "完整清單"
+    ],
+    "text": [
+      "DuckDB",
+      "AIデータ分析",
+      "agentモード",
+      "CSV",
+      "SQL",
+      "Parquet",
+      "データ抽出",
+      "全件出力"
+    ]
+  },
+  "thumbnail": {
+    "todo": true,
+    "source": {
+      "tag": "DuckDB2.0",
+      "headline": "還有\n**省略列**",
+      "sub": "預覽到完整交付"
+    },
+    "text": {
+      "tag": "DuckDB 2.0",
+      "headline": "まだある\n**省略行**",
+      "sub": "プレビュー→全件納品"
+    }
+  },
+  "chapters": [
+    {
+      "scene": "parcel-table-start",
+      "todo": true,
+      "source": "配送預覽中間少了一大段",
+      "text": "配送プレビューの途中が省略される"
+    },
+    {
+      "scene": "input-is-still-there",
+      "todo": true,
+      "source": "原表還在，省略出現在回覆裡",
+      "text": "元の表はそのまま、応答で省略"
+    },
+    {
+      "scene": "define-the-followup",
+      "todo": true,
+      "source": "三筆包裹，只有一筆入選",
+      "text": "3件の荷物、対象になるのは1件"
+    },
+    {
+      "scene": "human-error",
+      "todo": true,
+      "source": "少一個字母，查詢先停了下來",
+      "text": "1文字の誤りでクエリが止まる"
+    },
+    {
+      "scene": "read-parquet-back",
+      "todo": true,
+      "source": "檔案重開後，逐筆對回原表",
+      "text": "ファイルを読み戻して全件照合"
+    },
+    {
+      "scene": "new-requirement-consequence",
+      "todo": true,
+      "source": "準時包裹加入，清單換了需求",
+      "text": "予定どおりの荷物も含める新条件"
+    }
+  ],
+  "glossary": {
+    "terms": [
+      "AI",
+      "HTML",
+      "JSON",
+      "agent",
+      "duckdb-agent-full-export",
+      "no-agent",
+      "stderr",
+      "token"
+    ],
+    "sources": [
+      "DuckDB2.0正式公告",
+      "DuckDB CLI agent模式",
+      "DuckDB2.0 CLI agent模式文件",
+      "DuckDB2.0遷移條件",
+      "DuckDB2.0正式release與套件"
+    ]
+  },
+  "boundaries": {},
+  "lines": [
+    {
+      "id": "dg2i",
+      "scene": "parcel-table-start",
+      "todo": true,
+      "source": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+      "text": "2026年10月25日、このパソコンで配送表を調べました。"
+    },
+    {
+      "id": "c7uh",
+      "scene": "running-followup-task",
+      "todo": true,
+      "source": "查詢要找出需要跟進的包裹，交成一份能重開的清單。",
+      "text": "フォローが必要な荷物を抽出し、開き直せる一覧として渡します。"
+    },
+    {
+      "id": "x6vr",
+      "scene": "forty-visible",
+      "todo": true,
+      "source": "螢幕只留下前後四十列，中間出現省略標記。",
+      "text": "画面には先頭と末尾の計40行だけが残り、中間に省略の印が出ました。"
+    },
+    {
+      "id": "iaiy",
+      "scene": "missing-question",
+      "todo": true,
+      "source": "這份表真的只剩這些紀錄嗎？",
+      "text": "この表の記録は、本当にこれだけになったのでしょうか。"
+    },
+    {
+      "id": "zni4",
+      "scene": "typo-question",
+      "todo": true,
+      "source": "實際天數的欄位，等一下會少一個字母。",
+      "text": "この後、実際にかかった日数の列名から1文字が抜けます。"
+    },
+    {
+      "id": "3zp6",
+      "scene": "export-question",
+      "todo": true,
+      "source": "清單另外存成檔案，又怎麼確認內容完整？",
+      "text": "一覧を別ファイルに保存したら、全件そろっているとどう確かめますか。"
+    },
+    {
+      "id": "a73b",
+      "scene": "input-is-still-there",
+      "todo": true,
+      "source": "那份交付檔必須回查原表；原表仍有一千兩百筆紀錄。",
+      "text": "渡すファイルは元の表と照合します。元の表には今も1200件あります。"
+    },
+    {
+      "id": "8ex8",
+      "scene": "input-is-still-there",
+      "todo": true,
+      "source": "這是原創的虛構配送練習表，可以逐筆回查。",
+      "text": "これは独自に作った架空の配送練習データで、1件ずつ照合できます。"
+    },
+    {
+      "id": "ujmc",
+      "scene": "release-time",
+      "todo": true,
+      "source": "DuckDB的代理模式十月九日介紹，十月二十一日隨二點零正式提供。",
+      "text": "DuckDBのagentモードは10月9日に紹介され、10月21日に2.0で正式提供されました。"
+    },
+    {
+      "id": "m4b3",
+      "scene": "mode-role",
+      "todo": true,
+      "source": "這個新模式把工具回覆排得緊湊，並把省略標記放進結果。",
+      "text": "新モードはツールの応答をコンパクトにし、省略の印を結果に含めます。"
+    },
+    {
+      "id": "6i9g",
+      "scene": "mode-role",
+      "todo": true,
+      "source": "對要讀這份回覆的程式，這些標記就是判讀依據。",
+      "text": "この応答を読むプログラムは、その印を判断の手がかりにします。"
+    },
+    {
+      "id": "msj7",
+      "scene": "existing-file-tools",
+      "todo": true,
+      "source": "讀CSV、寫SQL和匯出完整檔，則是原本就有的能力。",
+      "text": "CSVの読み込み、SQLの記述、全件のファイル出力は、以前からある機能です。"
+    },
+    {
+      "id": "x88h",
+      "scene": "bounded-choice",
+      "todo": true,
+      "source": "這次在新練習目錄，用同版的兩種模式處理這張表。",
+      "text": "新しい練習用フォルダーで、同じバージョンの両モードをこの表に使います。"
+    },
+    {
+      "id": "pskv",
+      "scene": "bounded-choice",
+      "todo": true,
+      "source": "它不帶AI模型；這個對照也不測模型正確率或使用費用。",
+      "text": "AIモデルは内蔵せず、今回の比較でもモデルの正答率や利用料金は測りません。"
+    },
+    {
+      "id": "yqnx",
+      "scene": "input-columns",
+      "todo": true,
+      "source": "每筆都有包裹代號、路線，以及承諾完成的天數。",
+      "text": "各記録には荷物ID、ルート、約束した配達日数があります。"
+    },
+    {
+      "id": "xbqa",
+      "scene": "input-columns",
+      "todo": true,
+      "source": "狀態和實際天數，則是這份跟進需求要用的欄位。",
+      "text": "状態と実際の日数も、今回のフォロー条件に使う列です。"
+    },
+    {
+      "id": "yy8n",
+      "scene": "force-human",
+      "todo": true,
+      "source": "加上一般模式參數，就能指定原本的顯示方式。",
+      "text": "通常モードの引数を付けると、従来の表示方法を指定できます。"
+    },
+    {
+      "id": "9gdj",
+      "scene": "force-human",
+      "todo": true,
+      "source": "命令使用臨時資料庫，並略過個人的初始化檔。",
+      "text": "コマンドでは一時データベースを使い、個人の初期化ファイルを読み飛ばします。"
+    },
+    {
+      "id": "xd25",
+      "scene": "force-agent",
+      "todo": true,
+      "source": "把參數換成代理模式，其他輸入與查詢不變。",
+      "text": "引数をagentモードに替え、他の入力とクエリは変えません。"
+    },
+    {
+      "id": "c6hy",
+      "scene": "force-agent",
+      "todo": true,
+      "source": "明確選模式，就不會把環境自動偵測混進這個對照。",
+      "text": "モードを明示すれば、環境の自動判定が比較に混ざりません。"
+    },
+    {
+      "id": "jm9m",
+      "scene": "find-the-omission",
+      "todo": true,
+      "source": "回到開場的省略標記：這兩份回覆，各把它放在哪裡？",
+      "text": "冒頭の省略の印に戻ります。2つの応答では、それぞれどこに出るでしょうか。"
+    },
+    {
+      "id": "t4hj",
+      "scene": "same-preview",
+      "todo": true,
+      "source": "這條查詢先建立同一張表，再按包裹代號排列。",
+      "text": "このクエリは、まず同じ表を作り、荷物ID順に並べます。"
+    },
+    {
+      "id": "zxhz",
+      "scene": "same-preview",
+      "todo": true,
+      "source": "它沒有加只取少數紀錄的條件，所以能用來辨認顯示範圍。",
+      "text": "件数を絞る条件を加えていないので、表示範囲を見分けられます。"
+    },
+    {
+      "id": "h4gg",
+      "scene": "human-footer",
+      "todo": true,
+      "source": "一般模式底下，已經列出總列數與顯示列數。",
+      "text": "通常モードでも、総行数と表示行数がすでに示されています。"
+    },
+    {
+      "id": "4cr9",
+      "scene": "human-footer",
+      "todo": true,
+      "source": "這一行把查詢結果大小和畫面大小分開了。",
+      "text": "この1行で、クエリ結果の件数と表示件数を区別できます。"
+    },
+    {
+      "id": "uj2p",
+      "scene": "agent-omitted",
+      "todo": true,
+      "source": "代理模式則在中間直接標出，一千一百六十列省略。",
+      "text": "agentモードは中央に、1160行を省略したと直接表示します。"
+    },
+    {
+      "id": "u5mp",
+      "scene": "agent-omitted",
+      "todo": true,
+      "source": "那是沒有顯示的部分，不是查詢或儲存少掉資料。",
+      "text": "表示されていないだけで、クエリや保存データから消えたわけではありません。"
+    },
+    {
+      "id": "jumq",
+      "scene": "same-result-different-view",
+      "todo": true,
+      "source": "開場那段預覽只是讀回覆的入口，還不是可交付的名單。",
+      "text": "冒頭のプレビューは、応答を読む入口であり、渡せる対象一覧ではありません。"
+    },
+    {
+      "id": "7npx",
+      "scene": "same-result-different-view",
+      "todo": true,
+      "source": "現在要從完整原表決定，哪些包裹才該留下？",
+      "text": "では元の表全体から、どの荷物を残すべきでしょうか。"
+    },
+    {
+      "id": "v9hh",
+      "scene": "define-the-followup",
+      "todo": true,
+      "source": "這份跟進清單，只找已送達而且超過承諾天數的包裹。",
+      "text": "フォロー対象は、配達済みで、約束の日数を超えた荷物だけです。"
+    },
+    {
+      "id": "fpcm",
+      "scene": "define-the-followup",
+      "todo": true,
+      "source": "仍在途的紀錄先留在原表，不算進這份需求。",
+      "text": "輸送中の記録は元の表に残し、今回の対象には数えません。"
+    },
+    {
+      "id": "qxv3",
+      "scene": "explicit-input-types",
+      "todo": true,
+      "source": "建立表格時，把代號、路線和狀態讀成文字。",
+      "text": "表を作るとき、ID、ルート、状態は文字列として読み込みます。"
+    },
+    {
+      "id": "abty",
+      "scene": "explicit-input-types",
+      "todo": true,
+      "source": "兩種天數讀成整數，比較大小時才是在比較天數。",
+      "text": "2つの日数は整数で読み込みます。大小比較を日数の比較にするためです。"
+    },
+    {
+      "id": "m3tz",
+      "scene": "inspect-columns",
+      "todo": true,
+      "source": "這條描述命令會列出欄位名稱與型別。",
+      "text": "この表定義の確認コマンドは、列名とデータ型を表示します。"
+    },
+    {
+      "id": "drd5",
+      "scene": "inspect-columns",
+      "todo": true,
+      "source": "另一條查詢按狀態計數，確認這份表有哪些待判斷的紀錄。",
+      "text": "別のクエリで状態別に件数を数え、判定する記録の内訳を確かめます。"
+    },
+    {
+      "id": "6i82",
+      "scene": "input-status-count",
+      "todo": true,
+      "source": "這裡有九百六十筆已送達，兩百四十筆仍在途。",
+      "text": "配達済みが960件、輸送中が240件あります。"
+    },
+    {
+      "id": "ufbq",
+      "scene": "input-status-count",
+      "todo": true,
+      "source": "在途的實際天數是空白，意思是還沒有完成天數。",
+      "text": "輸送中の実際の日数は空欄です。完了までの日数がまだない、という意味です。"
+    },
+    {
+      "id": "y43c",
+      "scene": "apply-both-conditions",
+      "todo": true,
+      "source": "照剛剛的入選規則，這筆已送達包裹會留下嗎？",
+      "text": "さっきの選択条件なら、この配達済みの荷物は残るでしょうか。"
+    },
+    {
+      "id": "jbme",
+      "scene": "read-one-parcel",
+      "todo": true,
+      "source": "這筆包裹已送達，承諾三天，實際用了四天。",
+      "text": "この荷物は配達済みで、約束は3日、実際には4日かかりました。"
+    },
+    {
+      "id": "8wey",
+      "scene": "read-one-parcel",
+      "todo": true,
+      "source": "它超過承諾，所以要進跟進清單。",
+      "text": "約束の日数を超えているので、フォロー対象に入ります。"
+    },
+    {
+      "id": "wg3d",
+      "scene": "compute-days-late",
+      "todo": true,
+      "source": "用四減三，得到晚一天。",
+      "text": "4から3を引くと、1日遅れです。"
+    },
+    {
+      "id": "tqeh",
+      "scene": "compute-days-late",
+      "todo": true,
+      "source": "這個計算會寫成新欄位，接手的人能直接看見差了幾天。",
+      "text": "この計算を新しい列にします。受け取る人が、何日ずれたかすぐ見られます。"
+    },
+    {
+      "id": "5rfa",
+      "scene": "in-transit-example",
+      "todo": true,
+      "source": "把剛剛的狀態條件，套到這筆在途紀錄。",
+      "text": "先ほどの状態の条件を、この輸送中の記録に当てはめます。"
+    },
+    {
+      "id": "e77f",
+      "scene": "in-transit-example",
+      "todo": true,
+      "source": "它先被送達條件排除，空白也不能補成零天。",
+      "text": "配達済みの条件でまず除外されます。空欄を0日に置き換えてはいけません。"
+    },
+    {
+      "id": "ewsi",
+      "scene": "where-is-complete",
+      "todo": true,
+      "source": "把剛剛的入選規則，寫進這一行篩選式。",
+      "text": "さっきの選択条件を、この絞り込み式に書きます。"
+    },
+    {
+      "id": "bhcv",
+      "scene": "where-is-complete",
+      "todo": true,
+      "source": "新欄位的相減式放在選欄部分，不會改寫原始天數。",
+      "text": "差を求める式は列を選ぶ部分に置き、元の日数を書き換えません。"
+    },
+    {
+      "id": "g52d",
+      "scene": "selection-and-order",
+      "todo": true,
+      "source": "交付欄位留下代號、路線、兩種天數和剛算出的差值。",
+      "text": "渡す列には、ID、ルート、2つの日数、計算した差を残します。"
+    },
+    {
+      "id": "evdb",
+      "scene": "selection-and-order",
+      "todo": true,
+      "source": "最後按包裹代號升冪排列，重開檔案便能用同一順序對照。",
+      "text": "最後に荷物IDの昇順に並べれば、開き直しても同じ順序で照合できます。"
+    },
+    {
+      "id": "6r94",
+      "scene": "on-time-example",
+      "todo": true,
+      "source": "這筆承諾與實際都是三天，相減得到零。",
+      "text": "この荷物は約束も実際も3日です。引き算の結果は0です。"
+    },
+    {
+      "id": "s3h7",
+      "scene": "on-time-example",
+      "todo": true,
+      "source": "套回剛剛的大於符號，它不進這張延遲清單。",
+      "text": "さっきの「より大きい」という条件では、この遅延一覧に入りません。"
+    },
+    {
+      "id": "ntfj",
+      "scene": "field-name-question",
+      "todo": true,
+      "source": "同一套條件已寫好，實際天數欄位少個字母，工具會怎麼回覆？",
+      "text": "同じ条件を書けました。実際の日数の列名が1文字欠けると、どう返されますか。"
+    },
+    {
+      "id": "ak3j",
+      "scene": "human-error",
+      "todo": true,
+      "source": "它先回覆找不到這個欄位，沒有產生查詢結果。",
+      "text": "まず、その列は見つからないと返され、クエリ結果は作られません。"
+    },
+    {
+      "id": "s9ca",
+      "scene": "human-error",
+      "todo": true,
+      "source": "一般模式已經能指出這個名稱問題。",
+      "text": "この列名の問題は、通常モードでも指摘できます。"
+    },
+    {
+      "id": "jsui",
+      "scene": "intentional-typo",
+      "todo": true,
+      "source": "開場預告少掉的那個字母，就在實際天數的欄位結尾。",
+      "text": "冒頭で予告した欠けた1文字は、実際の日数の列名の末尾です。"
+    },
+    {
+      "id": "xj3j",
+      "scene": "intentional-typo",
+      "todo": true,
+      "source": "這條查詢只抽出欄位排錯，錯字是我刻意安排，不是AI失誤。",
+      "text": "列名の問題だけのクエリです。誤字は私がわざと入れ、AIのミスではありません。"
+    },
+    {
+      "id": "i2fq",
+      "scene": "stderr-contract",
+      "todo": true,
+      "source": "先略過這次啟動文字，只解析後面那行合法JSON。",
+      "text": "まず今回の起動メッセージを除き、その後の有効なJSONの1行だけを解析します。"
+    },
+    {
+      "id": "yxh7",
+      "scene": "stderr-contract",
+      "todo": true,
+      "source": "整串輸出混有文字，不能當成單一物件。",
+      "text": "出力全体には普通の文字列も混ざるので、単一のオブジェクトとして扱えません。"
+    },
+    {
+      "id": "jngn",
+      "scene": "valid-json-fields",
+      "todo": true,
+      "source": "從物件取出錯字名稱，再從說明文字找候選欄位。",
+      "text": "オブジェクトから誤った列名を取り出し、説明文から候補の列名を探します。"
+    },
+    {
+      "id": "cjm4",
+      "scene": "valid-json-fields",
+      "todo": true,
+      "source": "我把候選名稱對回原表，找到多了結尾字母的正確拼法。",
+      "text": "候補を元の表と照合すると、末尾の1文字が付いた正しい綴りが見つかりました。"
+    },
+    {
+      "id": "7g26",
+      "scene": "repair-the-name",
+      "todo": true,
+      "source": "把剛剛選出的原表欄位，寫回這份查詢。",
+      "text": "今選んだ元の表の列名を、このクエリに書き戻します。"
+    },
+    {
+      "id": "2d84",
+      "scene": "repair-the-name",
+      "todo": true,
+      "source": "再接回原本的條件、選欄與排序，準備匯出同一張單。",
+      "text": "元の条件、列の選択、並び順をつなぎ直し、同じ一覧の出力を準備します。"
+    },
+    {
+      "id": "rw48",
+      "scene": "copy-limit-question",
+      "todo": true,
+      "source": "欄位修好了；剛剛只顯示少數列的回覆，會把存檔也截短嗎？",
+      "text": "列名は直りました。応答の表示件数が少ないと、保存ファイルまで短くなるでしょうか。"
+    },
+    {
+      "id": "epd8",
+      "scene": "copy-csv-whole",
+      "todo": true,
+      "source": "把剛剛那份完整查詢，放進COPY的括號裡。",
+      "text": "完全なクエリを、COPYの括弧の中に入れます。"
+    },
+    {
+      "id": "tdtg",
+      "scene": "copy-csv-whole",
+      "todo": true,
+      "source": "括號保留入選規則與排序，後面才指定交付檔的位置。",
+      "text": "括弧の中には選択条件と並び順を残し、その後に出力先を指定します。"
+    },
+    {
+      "id": "q6db",
+      "scene": "copy-where",
+      "todo": true,
+      "source": "從原表到這個輸出，沒有加入顯示列數限制。",
+      "text": "元の表からこの出力まで、表示件数の制限は加えていません。"
+    },
+    {
+      "id": "n6c9",
+      "scene": "copy-where",
+      "todo": true,
+      "source": "所以要存的是符合條件的結果，不是從回覆上複製幾行。",
+      "text": "保存するのは条件に合う結果であり、応答の数行をコピーしたものではありません。"
+    },
+    {
+      "id": "kabz",
+      "scene": "copy-destination",
+      "todo": true,
+      "source": "這個位置決定CSV寫到哪裡，標題列選項則保留欄名。",
+      "text": "ここでCSVの保存先を決め、ヘッダーの設定で列名も残します。"
+    },
+    {
+      "id": "5qhj",
+      "scene": "copy-destination",
+      "todo": true,
+      "source": "讀回時，把欄位順序對回剛才的選欄，確認代號和路線沒有互換。",
+      "text": "読み戻して選択時の列順と照らし、IDとルートが逆でないか確かめます。"
+    },
+    {
+      "id": "6e4u",
+      "scene": "copy-parquet-whole",
+      "todo": true,
+      "source": "另一份改存Parquet，只換輸出格式與目的檔名。",
+      "text": "もう1つはParquetで保存し、出力形式とファイル名だけを替えます。"
+    },
+    {
+      "id": "nsc3",
+      "scene": "copy-parquet-whole",
+      "todo": true,
+      "source": "同一份選欄與排序仍留在括號內，方便稍後比對。",
+      "text": "括弧の中の列の選択と並び順は同じままにして、後で比較します。"
+    },
+    {
+      "id": "7b9v",
+      "scene": "run-followup",
+      "todo": true,
+      "source": "用這條命令執行完整查詢，兩種格式就寫到剛才指定的位置。",
+      "text": "このコマンドで完全なクエリを実行すると、2つの形式が指定した場所に保存されます。"
+    },
+    {
+      "id": "44a2",
+      "scene": "read-exported-count",
+      "todo": true,
+      "source": "要回答存檔有沒有被截短，這裡直接讀回輸出的CSV。",
+      "text": "保存が途中で切れていないか、出力したCSVを直接読み戻します。"
+    },
+    {
+      "id": "j328",
+      "scene": "read-exported-count",
+      "todo": true,
+      "source": "計數對象是檔案中的資料列，不把標題列算成包裹。",
+      "text": "数えるのはファイル内のデータ行です。ヘッダー行を荷物として数えません。"
+    },
+    {
+      "id": "ubxv",
+      "scene": "actual-export-count",
+      "todo": true,
+      "source": "讀回的完整跟進檔，這次有四百八十筆。",
+      "text": "読み戻した完全なフォロー対象ファイルは、今回は480件でした。"
+    },
+    {
+      "id": "ag8z",
+      "scene": "actual-export-count",
+      "todo": true,
+      "source": "剛剛擔心的預覽截短，沒有跟著這條匯出指令進檔案。",
+      "text": "プレビューの省略は、この出力コマンドで保存ファイルに入りませんでした。"
+    },
+    {
+      "id": "6da2",
+      "scene": "same-version-same-answer",
+      "todo": true,
+      "source": "一般模式執行同一份匯出，也得到相同清單內容。",
+      "text": "通常モードで同じ出力を実行しても、一覧の内容は同じです。"
+    },
+    {
+      "id": "385u",
+      "scene": "same-version-same-answer",
+      "todo": true,
+      "source": "這一步說明新模式改的是回覆，沒有多找出延遲包裹。",
+      "text": "新モードが変えるのは応答で、遅延した荷物を多く見つけるわけではありません。"
+    },
+    {
+      "id": "zdyx",
+      "scene": "handoff-question",
+      "todo": true,
+      "source": "檔案筆數對了就能交嗎，另一種格式也保存同一筆內容嗎？",
+      "text": "件数が合えば渡せますか。もう1つの形式も、同じ内容を保っているでしょうか。"
+    },
+    {
+      "id": "qgqv",
+      "scene": "read-parquet-back",
+      "todo": true,
+      "source": "為了核對另一種格式，把Parquet讀回並按相同代號排序。",
+      "text": "もう1つの形式を確かめるため、Parquetを読み戻して同じID順に並べます。"
+    },
+    {
+      "id": "ineu",
+      "scene": "read-parquet-back",
+      "todo": true,
+      "source": "再存成CSV，兩份完整結果就有一致的逐列比較方式。",
+      "text": "それをCSVに保存すれば、2つの全件データを同じ方法で行ごとに比べられます。"
+    },
+    {
+      "id": "dgc2",
+      "scene": "run-readback",
+      "todo": true,
+      "source": "執行這份讀回查詢，資料來自交付檔，原始配送表不會被改寫。",
+      "text": "この読み戻しクエリは受け渡すファイルを読み、元の配送表は書き換えません。"
+    },
+    {
+      "id": "xqkd",
+      "scene": "first-delivered-late",
+      "todo": true,
+      "source": "還記得剛剛四減三的那筆包裹嗎？",
+      "text": "さっき4から3を引いた荷物を覚えていますか。"
+    },
+    {
+      "id": "xad9",
+      "scene": "first-delivered-late",
+      "todo": true,
+      "source": "完整檔保留了它的路線、原始天數，和晚一天的差值。",
+      "text": "全件ファイルには、そのルート、元の日数、1日遅れの差が残っています。"
+    },
+    {
+      "id": "6u7e",
+      "scene": "tail-of-output",
+      "todo": true,
+      "source": "沿著代號往後，靠近原表末端的符合紀錄也在完整檔。",
+      "text": "IDを後ろへたどると、元の表の末尾近くで条件に合う記録も入っています。"
+    },
+    {
+      "id": "wznc",
+      "scene": "tail-of-output",
+      "todo": true,
+      "source": "抽頭尾能定位內容；全量比對還要檢查中間每筆。",
+      "text": "先頭と末尾で位置を確かめられますが、全件照合では途中も1件ずつ調べます。"
+    },
+    {
+      "id": "h579",
+      "scene": "route-summary-query",
+      "todo": true,
+      "source": "要讓接手者先掌握分布，這裡沿用原規則，按路線分組計數。",
+      "text": "受け取る人が分布をつかめるよう、同じ条件でルート別に件数をまとめます。"
+    },
+    {
+      "id": "jd24",
+      "scene": "route-summary-query",
+      "todo": true,
+      "source": "這個小摘要另列在報告裡，不會取代完整包裹名單。",
+      "text": "この小さな集計は報告書に別記し、対象全件の一覧の代わりにはしません。"
+    },
+    {
+      "id": "rxjg",
+      "scene": "route-summary-result",
+      "todo": true,
+      "source": "剛剛按原規則分組，路線二和路線三各有兩百四十筆。",
+      "text": "元の条件で分けると、ルート2とルート3がそれぞれ240件です。"
+    },
+    {
+      "id": "mavj",
+      "scene": "route-summary-result",
+      "todo": true,
+      "source": "加起來是剛才完整檔的四百八十筆，沒有漏在摘要之外。",
+      "text": "合計は先ほどの全件ファイルと同じ480件で、集計の外に漏れた記録はありません。"
+    },
+    {
+      "id": "3dwp",
+      "scene": "full-content-comparison",
+      "todo": true,
+      "source": "開場問的存檔完整性，現在有逐列答案：兩份內容一致。",
+      "text": "冒頭の保存内容は完全かという問いに、全行を比べて答えが出ました。2つの内容は一致します。"
+    },
+    {
+      "id": "dm84",
+      "scene": "full-content-comparison",
+      "todo": true,
+      "source": "比較的不只筆數，還包括每筆代號、欄位數值和排列順序。",
+      "text": "件数だけでなく、各ID、列の値、並び順も比べています。"
+    },
+    {
+      "id": "ezfg",
+      "scene": "source-predicate-check",
+      "todo": true,
+      "source": "另用簡單程式逐筆讀原表，依原規則產生應入選的代號。",
+      "text": "別の簡単なプログラムでも元の表を1件ずつ読み、元の条件で対象IDを作ります。"
+    },
+    {
+      "id": "ubtk",
+      "scene": "source-predicate-check",
+      "todo": true,
+      "source": "這份代號清單也和匯出結果相符，核對便回到了原始資料。",
+      "text": "そのID一覧も出力と一致し、元データまでさかのぼって照合できました。"
+    },
+    {
+      "id": "g738",
+      "scene": "change-the-requirement",
+      "todo": true,
+      "source": "但若接手者改要包含剛好準時，這張核對過的延遲清單能直接交嗎？",
+      "text": "約束と同じ日数の荷物も求められたら、検証済みの遅延一覧をそのまま渡せますか。"
+    },
+    {
+      "id": "ab37",
+      "scene": "new-requirement-consequence",
+      "todo": true,
+      "source": "不能，剛才被排除的準時包裹，這次也得留下。",
+      "text": "渡せません。先ほど外した、約束と同じ日数の荷物も残す必要があります。"
+    },
+    {
+      "id": "dyhh",
+      "scene": "new-requirement-consequence",
+      "todo": true,
+      "source": "先保留原檔，再把新需求另存一份查詢。",
+      "text": "元ファイルを残し、新しい条件のクエリを別名で保存します。"
+    },
+    {
+      "id": "7th9",
+      "scene": "due-or-late-rule",
+      "todo": true,
+      "source": "篩選式的大於改成大於等於，剛好相等的紀錄就能通過。",
+      "text": "絞り込みの「より大きい」を「以上」に替えると、同じ日数の記録も通ります。"
+    },
+    {
+      "id": "98xj",
+      "scene": "due-or-late-rule",
+      "todo": true,
+      "source": "同時換目的檔名，讓新需求不會蓋掉原本那份清單。",
+      "text": "出力先のファイル名も替え、新しい条件で元の一覧を上書きしないようにします。"
+    },
+    {
+      "id": "g89b",
+      "scene": "run-variant",
+      "todo": true,
+      "source": "用這條命令執行修改後的檔案，新的交付結果就另外保存。",
+      "text": "このコマンドで修正したファイルを実行すると、新しい出力は別に保存されます。"
+    },
+    {
+      "id": "u6gp",
+      "scene": "variant-members-question",
+      "todo": true,
+      "source": "剛剛改的符號，究竟多留下多少包裹，又是哪種紀錄？",
+      "text": "替えた記号によって、何件増えたのでしょうか。どのような記録でしょうか。"
+    },
+    {
+      "id": "mkfw",
+      "scene": "variant-result",
+      "todo": true,
+      "source": "新清單有七百二十筆，其中兩百四十筆的晚到天數是零。",
+      "text": "新しい一覧は720件で、そのうち240件は遅れた日数が0です。"
+    },
+    {
+      "id": "b5i9",
+      "scene": "variant-result",
+      "todo": true,
+      "source": "這組新增紀錄剛好準時，所以整份檔要叫剛好準時或晚到。",
+      "text": "追加分は約束どおりの日数です。全体を「予定どおり、または遅延」の一覧と呼びます。"
+    },
+    {
+      "id": "fqr6",
+      "scene": "on-time-enters-variant",
+      "todo": true,
+      "source": "還記得三天對三天、被留在清單外的那筆嗎？",
+      "text": "約束も実際も3日で、一覧から外した荷物を覚えていますか。"
+    },
+    {
+      "id": "me2p",
+      "scene": "on-time-enters-variant",
+      "todo": true,
+      "source": "它現在入選，正是剛才改成包含相等的結果。",
+      "text": "今度は対象に入ります。「等しい」場合も含めた結果です。"
+    },
+    {
+      "id": "ptfc",
+      "scene": "different-deliveries",
+      "todo": true,
+      "source": "這兩份清單都依各自條件產生，不能互相代交。",
+      "text": "2つの一覧は別々の条件で作ったので、代わりに渡すことはできません。"
+    },
+    {
+      "id": "ha7h",
+      "scene": "different-deliveries",
+      "todo": true,
+      "source": "把新舊檔名和各自查詢一起保留，接手者才能選對需求。",
+      "text": "新旧のファイル名とクエリをセットで残すと、受け取る人が必要な一覧を選べます。"
+    },
+    {
+      "id": "g7bc",
+      "scene": "handoff-pack",
+      "todo": true,
+      "source": "現在交付包裡，有完整資料檔、對應查詢和可讀摘要。",
+      "text": "これで受け渡すセットに、全件データ、対応クエリ、読める要約がそろいました。"
+    },
+    {
+      "id": "s9qr",
+      "scene": "handoff-pack",
+      "todo": true,
+      "source": "接手的人能從報告找到全檔，也能修改條件重新產生名單。",
+      "text": "受け取る人は報告書から全件ファイルを探せて、条件を変えて一覧を作り直せます。"
+    },
+    {
+      "id": "ddtv",
+      "scene": "keep-the-rule",
+      "todo": true,
+      "source": "開場那段預覽，如今有能對回規則的完整交付檔。",
+      "text": "冒頭のプレビューから、条件と照合できる対象全件のファイルにつながりました。"
+    },
+    {
+      "id": "wx5u",
+      "scene": "keep-the-rule",
+      "todo": true,
+      "source": "你最常要交什麼資料清單？",
+      "text": "あなたがよく渡すデータ一覧は、どんなものですか。"
+    },
+    {
+      "id": "v5pw",
+      "scene": "keep-the-rule",
+      "todo": true,
+      "source": "訂閱，用產物讀懂AI工具。",
+      "text": "チャンネル登録して、実際の成果物からAIツールを理解しましょう。"
+    }
+  ]
+}

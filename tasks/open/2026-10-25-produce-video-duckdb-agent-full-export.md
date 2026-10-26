@@ -38,7 +38,7 @@ scope:
 - [x] 正常Jev outline分析、保存raw回覆與分數／失敗原因，送正常hand-pushed pending review後做委派local adopt。
 - [x] 接收六章scratch並導入ca1e／64景111句；verify3當前21項CONFIRMED、視覺修正與完整raw/native歷史保存。
 - [x] 根層verify-1/2/3精確copy供native facts；正常script pending、native本地採用與TTS dry-run實際收據落地。
-- [x] EN完整111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；此為文字1/8，沒有actual CC／M4A／後台交付。
+- [x] EN與JA各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字2/8，沒有actual CC／M4A／後台交付。
 - [ ] root解除provider hold後才啟動bounded付費TTS及當前音訊驗收；其後完整render／QA與八語交付。
 - [x] 首commit／push／PR1861後root實際GET公開CSV／42-entry ZIP，各200且完整bytes／SHA相同；資料夾HTML未另GET。
 
@@ -88,3 +88,12 @@ Root明確委派/root/formal_docs_commit沿用本票codex-duckdb-20261025 claim�
 Root明確委派本docs分工採既有claim更新EN文字狀態。作者完整111source→English mapping與三輪檢查後，root獨立讀全111＋metadata，僅修標題明示complete follow-up list及第一句preview omits rows，111targets不變。正常i18n-merge真exit0，現i18n/en.json等於root nativepurepreview，六章／title／description／tags／縮圖詞current；EN文字1/8，actual CC／M4A／fit／meter／ASR／backend EN均未完成，繁中paid TTS0／raw0／actual timeline無。
 
 Source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data與verify4／R2兩份12/13 false不改。329舊檔在docs變更前全hash相同；舊progress／README／result／receiptREADME／task／index與6eb等freeze先逐bytes封存。作者原26freeze、111mapping、首次native pass3的sheetTodo字串期望錯誤、兩項root metadata delta與真merge log均保留，不以文字或估時冒稱配音fit／音檢。此分工不改英文targets、不付費或寫後台；只在root獨立freeze審查PASS後精確stage／commit／push同branch，PR no-auto-merge，不merge/deploy/YT上傳，也不開topic6。
+
+
+## JA文字本地採用與文件準備
+
+Root另委派/root/formal_branded_main_peer為本輪唯一文件編輯，沿用既有claim／branch75d0，不接管任何paid／媒體producer。日文作者111句／六章／metadata完整三輪後，root獨立讀全部source→target與metadata PASS_TEXT_ONLY，未改任何target。正常CLI i18n-merge真exit0，actual i18n/ja.json SHA324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2等於native pure preview；目前EN＋JA文字2/8，actual CC／配音／fit／meter／ASR／後台JA仍0，繁中master TTS0／raw0／actual timeline無。
+
+完整作者21freeze＋root獨審／merge／初次validator錯誤收據已安全複本保存於localization/ja。作者URL分割假設、root sheetTodo型別與freeze.files結構假設三個錯誤各自保存原腳本／真工具診斷，均非音訊或native品質失敗，沒有改輸入或門檻來過。48／44字的文字建議提示保留，無max_chars或實際fit結論。
+
+修改可變文件前，原325證據及EN35freeze／Git blobs全核相同，舊35份文件、freeze、進度／README／result／task／index已逐bytes封存。Source40eb／claimscc38／speech38cf／script7aac／111 source line objects／voice／lexicon／data及兩份敘事12/13 false全不改，EN／JA target不重寫。本分工只準備文件、檢查及freeze，未stage／commit／push；須root獨立review後才另行授權精確scoped commit／pushPR1861，保持no-auto-merge，不合併／部署／YouTube上傳、不開topic6。

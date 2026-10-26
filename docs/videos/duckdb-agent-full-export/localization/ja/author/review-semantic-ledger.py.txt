@@ -1,0 +1,78 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import json
+import hashlib
+import re
+
+BASE=Path('/workspace/work/ai-tech-next/fifth-ja-translation')
+ROOT=Path('/workspace/work/travel-scanner-duckdb')
+EP=ROOT/'docs/videos/duckdb-agent-full-export'
+read=lambda p:json.loads(p.read_text())
+draft=read(BASE/'ja.draft.v1.todo.json')
+final=read(BASE/'ja.draft.reviewed.todo.json')
+by_id={x['id']:x for x in final['lines']}
+assert len(by_id)==111
+
+numeric_checks=[
+ ('dg2i',['2026','10','25'],'Local demonstration date stays 2026-10-25.'),
+ ('x6vr',['計40行'],'Forty is the combined head-and-tail display, not forty at each end and not the filtered total.'),
+ ('a73b',['1200'],'The original input remains 1200 rows; display omission is not loss.'),
+ ('ujmc',['DuckDB','agent','10月9日','10月21日','2.0'],'Feature introduction Oct9 differs from official 2.0 availability Oct21.'),
+ ('uj2p',['1160'],'1160 omitted input rows; the forty-row display is an input preview.'),
+ ('6i82',['960','240'],'960 delivered plus240 in transit equals1200 input records.'),
+ ('jbme',['配達済み','3日','4日'],'The selected example is delivered, promised3days and actual4days.'),
+ ('wg3d',['4','3','1日遅れ'],'4 minus3 equals1late day.'),
+ ('e77f',['配達済み','除外','0日','いけません'],'In-transit excluded by delivered condition; missing completion is not imputed to zero.'),
+ ('6r94',['3日','0'],'Actual3equals promised3; delay0.'),
+ ('i2fq',['有効なJSON','1行'],'Parse one valid JSON line after startup text, not the mixed stream as one JSON object.'),
+ ('ubxv',['今回は480件'],'480 is the actual complete strictly-late filtered handoff for this fictional run.'),
+ ('rxjg',['ルート2','ルート3','それぞれ240件'],'R2andR3each240 under the original condition.'),
+ ('mavj',['480件'],'The route summary totals the original complete480result, not all1200inputs.'),
+ ('7th9',['より大きい','以上','同じ日数'],'New requirement changes strict greater-than to greater-than-or-equal, including equality.'),
+ ('mkfw',['720件','240件','0'],'720 new-result records include240 with zero lateness; do not call all720late.'),
+ ('b5i9',['追加分','約束どおりの日数','予定どおり、または遅延'],'Name the expanded file on-time-or-late, rather than late-only.'),
+ ('fqr6',['約束も実際も3日'],'The prior excluded equality example becomes eligible only under the new requirement.')
+]
+numbers=[]
+for line_id,required,meaning in numeric_checks:
+    target=by_id[line_id]['text']
+    assert all(x in target for x in required),(line_id,required,target)
+    numbers.append({'id':line_id,'source':by_id[line_id]['source'],'target':target,'required_meaning':meaning,'checked':True})
+
+negation_checks=[
+ ('pskv',['内蔵せず','測りません'],'No embedded AI model; no model correctness or usage-fee test.'),
+ ('u5mp',['消えたわけではありません'],'No claim of query/storage data loss from omitted display.'),
+ ('fpcm',['対象には数えません'],'In-transit rows remain in input, outside the delivered-late requirement.'),
+ ('e77f',['0日','置き換えてはいけません'],'Missing actual days must not be replaced by zero.'),
+ ('bhcv',['元の日数を書き換えません'],'Computed difference does not overwrite raw day fields.'),
+ ('ak3j',['結果は作られません'],'Misspelled-column query produces an error, not a query result.'),
+ ('xj3j',['私がわざと','AIのミスではありません'],'Deliberate author typo; not an AI failure.'),
+ ('yxh7',['単一のオブジェクトとして扱えません'],'Startup plus JSON text is not treated as one JSON object.'),
+ ('q6db',['表示件数の制限は加えていません'],'The export query has no added display-row limit.'),
+ ('n6c9',['応答の数行をコピーしたものではありません'],'Export query result, not copied preview lines.'),
+ ('385u',['多く見つけるわけではありません'],'Output-mode difference does not discover extra late parcels.'),
+ ('dgc2',['元の配送表は書き換えません'],'Reading the delivery artifact does not alter original input.'),
+ ('jd24',['対象全件の一覧の代わりにはしません'],'Summary is not a replacement for complete matching480records.'),
+ ('ab37',['渡せません','同じ日数'],'The verified strict-late file cannot serve the expanded equality-inclusive requirement.'),
+ ('98xj',['上書きしない'],'New filename protects old handoff.'),
+ ('ptfc',['代わりに渡すことはできません'],'Lists produced under different predicates are not interchangeable.')
+]
+negations=[]
+for line_id,required,meaning in negation_checks:
+    target=by_id[line_id]['text'];assert all(x in target for x in required),(line_id,required,target)
+    negations.append({'id':line_id,'source':by_id[line_id]['source'],'target':target,'required_meaning':meaning,'checked':True})
+
+doc=read(EP/'video.json');urls=re.findall(r'https://\S+',doc['youtube']['description'])
+assert len(urls)==2 and all(x in final['description']['text'] for x in urls)
+desc=final['description']['text']
+for phrase in ['2026-10-25','DuckDB 2.0.0','-agent','-no-agent','40行','1200件','480件','actual_days','actual_day','stderr','正しいJSONの1行','不正なJSON','測定していません','トークン数、料金、モデル推論、性能、サーバーモード、既存データベース','CC0-1.0','MIT','再配布していません']:
+    assert phrase in desc,phrase
+progress=read(EP/'production-progress.json')
+readers=progress['native_narrative']['readers'];assert len(readers)==2 and all(x['yes']==12 and x['total']==13 and x['passed']is False for x in readers)
+all_rows=[{'index':i+1,'id':x['id'],'source':x['source'],'target':x['text'],'meaning_clauses_and_order_reviewed_by_author':True,'dates_numbers_conditions_negations_population_reviewed_by_author':True,'Japanese_register_and_terms_reviewed_by_author':True,'independent_or_audio_review_claimed':False}for i,x in enumerate(final['lines'])]
+out={'kind':'author_third_semantic_pass_complete111_not_independent_review','at':datetime.now(timezone.utc).isoformat(),'source_sha256':'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa','locale':'ja','all111_source_target_pairs':all_rows,'critical_numeric_population_condition_checks':numbers,'critical_negations_and_limitations':negations,'public_4106_links_exact':urls,'metadata_source_structure_and_limitations_reviewed':True,'native_narrative_failed_readers_preserved_context':readers,'native_narrative_current_PASS_claimed':False,'source_original_fictional_deterministic_example_not_AI_model_benchmark':True,'actual_audio_or_ASR_or_fit_or_timing_or_backend_or_root_approval_claimed':False,'root_full_independent_review_still_required':True}
+write=lambda n,o:(BASE/n).write_text(json.dumps(o,ensure_ascii=False,indent=2)+'\n')
+write('author-pass3-semantic-ledger.json',out)
+write('author-pass1-draft.json',{'kind':'author_first_full_Japanese_draft','locale':'ja','draft_targets_file':'ja-targets.v1.json','draft_native_sheet_file':'ja.draft.v1.todo.json','all111_lines_complete':len(draft['lines'])==111 and all(x['text']for x in draft['lines']),'six_chapters_complete':len(draft['chapters'])==6,'title_description_tags_and_three_thumbnail_words_complete':True,'source_ID_scene_todo_glossary_and_boundaries_preserved':True,'native_max_chars_available':False,'actual_timed_CC_or_audio_claimed':False,'draft_not_independent_or_root_review':True})
+write('glossary-renderings.json',{'kind':'author_Japanese_rendering_choices_not_mutation_of_native_source_glossary','native_source_glossary':final['glossary'],'renderings':{'AI':'AI','HTML':'HTML','JSON':'JSON','agent':'agent（agentモード）','duckdb-agent-full-export':'duckdb-agent-full-export（URL／slug不変）','no-agent':'-no-agent（引数不変）','stderr':'stderr','token':'トークン','DuckDB':'DuckDB','CSV':'CSV','SQL':'SQL','COPY':'COPY','Parquet':'Parquet','follow-up list':'フォロー対象の一覧／フォロー対象ファイル','route':'ルート','actual days':'実際の日数','promised days':'約束の日数／約束した配達日数','strictly late':'遅延／約束の日数を超えた','exactly on time':'約束と同じ日数／約束どおりの日数'},'source_names':'Native sources[].title remains exactly as supplied; no official source entry is rewritten.'})
+print(json.dumps({'all111_semantic_pairs':len(all_rows),'critical_numeric_checks':len(numbers),'critical_negation_checks':len(negations),'metadata_limits_preserved':True,'failed_readers_unchanged_context':readers},ensure_ascii=False))

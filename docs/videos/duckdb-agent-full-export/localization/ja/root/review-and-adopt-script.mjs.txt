@@ -1,0 +1,44 @@
+// ROOT read all 111 source/JA pairs and the complete six chapters/metadata in chat.
+// Offline acceptance/adoption only; the actual normal CLI merge is a separate step.
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {loadProject} from '/workspace/work/travel-scanner-duckdb/tools/video/core/state.mjs';
+import {mergeSheet,buildSheet,translationContext,sheetTodo} from '/workspace/work/travel-scanner-duckdb/tools/video/i18n/cli.mjs';
+import {metadataStatus,thumbnailStatus} from '/workspace/work/travel-scanner-duckdb/tools/video/core/translations.mjs';
+import {speechHash} from '/workspace/work/travel-scanner-duckdb/tools/video/core/timeline.mjs';
+const b='/workspace/work/ai-tech-next/fifth-ja-translation',out='/workspace/work/ai-tech-next/fifth-ja-root-review',root='/workspace/work/travel-scanner-duckdb',work='/workspace/work/videos/duckdb-agent-full-export';
+const sha=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex'),read=f=>JSON.parse(fs.readFileSync(f));
+assert.equal(sha(b+'/FINAL-FREEZE.json'),'0ecc87820a316cdc8c8d3d57c519826f85ce1dfc67f135c2aa00eba7d41e26af');
+assert.equal(sha(b+'/ja.draft.reviewed.todo.json'),'df025368d62c351ae642fd2ec7121d0ab31b0b35a7bc69b8e10348aa0b43e0cc');
+const freeze=read(b+'/FINAL-FREEZE.json');
+assert.equal(Object.keys(freeze.files).length,21);
+for(const [relative,entry] of Object.entries(freeze.files)){const f=b+'/'+relative;assert.equal(sha(f),entry.sha256);assert.equal(fs.statSync(f).size,entry.bytes);}
+const p=loadProject({root,slug:'duckdb-agent-full-export'}),sheet=read(b+'/ja.draft.reviewed.todo.json');
+assert.equal(sha(p.file),'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa');
+assert.equal(speechHash(p.doc,p.lexicon),'38cf9292f6945199');
+assert.ok(!fs.existsSync(root+'/docs/videos/duckdb-agent-full-export/i18n/ja.json'));
+assert.ok(!fs.existsSync(work+'/timeline.json'));
+assert.ok(!fs.existsSync(out));
+const merged=mergeSheet(p.doc,sheet,null);
+assert.deepEqual(merged.problems,[]);assert.deepEqual(merged.notes,[]);
+assert.equal(Object.keys(merged.translation.lines).length,111);
+assert.deepEqual(merged.translation,read(b+'/ja.native-pure-merge-preview.json'));
+const refreshed=buildSheet(p.doc,merged.translation,'ja',null,['metadata','captions'],translationContext(p.doc,p.lexicon));
+assert.ok(refreshed.lines.every(x=>!x.todo));assert.ok(refreshed.chapters.every(x=>!x.todo));
+for(const key of ['title','description','tags','thumbnail'])assert.equal(refreshed[key].todo,false);
+assert.equal(sheetTodo(refreshed),'0 of 111 lines, 0 of 6 chapters');
+assert.equal(thumbnailStatus(p.doc,merged.translation),'current');
+fs.mkdirSync(out,{recursive:false});
+const write=(n,d)=>fs.writeFileSync(out+'/'+n,JSON.stringify(d,null,2)+'\n',{flag:'wx',mode:0o600});
+write('root-initial-freeze-shape-error.json',{kind:'root_premerge_freeze_schema_assumption_error',actual:'relative-path descriptor object',expected:'descriptor array',error:'TypeError: freeze.files is not iterable',before_any_adoption_or_source_write:true,native_guard_failure:false,original_script_preserved:'/workspace/work/ai-tech-next/review-and-adopt-fifth-ja-text.initial-freeze-shape-error.mjs'});
+write('root-initial-sheetTodo-type-error.json',{kind:'root_premerge_validation_type_assumption_error',actual:'0 of 111 lines, 0 of 6 chapters',expected:0,error:'AssertionError: sheetTodo(refreshed) returns a display string, not numeric zero',before_any_adoption_or_source_write:true,native_guard_failure:false,thresholds_or_inputs_changed_to_pass:false});
+fs.copyFileSync(b+'/ja.draft.reviewed.todo.json',out+'/ja.root-reviewed.todo.json',fs.constants.COPYFILE_EXCL);
+const review={at:new Date().toISOString(),kind:'root_independent_full_fifth_JA_text_semantic_review',verdict:'PASS_TEXT_ONLY',source_sha256:sha(p.file),speech_hash:'38cf9292f6945199',reviewed_author_sheet_sha256:sha(b+'/ja.draft.reviewed.todo.json'),root_sheet_sha256:sha(out+'/ja.root-reviewed.todo.json'),all_111_source_target_pairs_read:true,all_six_chapters_and_complete_title_description_tags_thumbnail_read:true,all_111_targets_preserved_without_root_edits:true,verified_semantics:['2026-10-25 research; Oct9 introduction vs Oct21 2.0 release','1200 original rows;40 preview head/tail;1160 omitted is display only','960 delivered plus240 transit with unfinished days NULL notzero','delivered AND actual>promised;4minus3=1 and3minus3=0 excluded','480 full follow-ups;R2/R3 each240;all-rowID/value/order checks','>= variant720 includes240zero-late;distinct file/query names and purpose','intentional actual_day typo; startup text plus one validJSON line; notbadJSON nor actualconsumerincident','sameversion agent/no-agent oldCSVSQLCOPYParquet;no AImodel/cost/performancebenchmark','CC0/MIT andnoCLIredistribution;exact public4106 immutableURLs'],character_advisories_preserved:[{id:'ujmc',characters:48},{id:'3dwp',characters:44}],actual_max_chars_or_fit_claimed:false,native_pure_merge_problems:merged.problems,native_pure_merge_notes:merged.notes,metadata_status:metadataStatus(p.doc,merged.translation),thumbnail_status:'current',paid_TTS_or_actual_CC_M4A_ASR_backend:false,native_CLI_merge_yet:false,scope:'Complete text acceptance only; actual narration timeline absent and audio fit untested.'};
+write('root-independent-review.json',review);
+write('native-pure-premerge.json',{translation:merged.translation,source_sha256:sha(p.file),problems:merged.problems,notes:merged.notes});
+const sheetFile=work+'/i18n/ja.todo.json';
+if(fs.existsSync(sheetFile)){const old=read(sheetFile);assert.ok(old.lines.every(l=>!l.text?.trim()),'Existing nonemptyJA work requires reconciliation');fs.copyFileSync(sheetFile,out+'/ja.native-empty.before-root-adoption.todo.json',fs.constants.COPYFILE_EXCL);}
+else write('work-sheet-before-adoption.absent.json',{file:sheetFile,existed:false});
+fs.copyFileSync(out+'/ja.root-reviewed.todo.json',sheetFile);
+console.log(JSON.stringify({root_review_sha256:sha(out+'/root-independent-review.json'),root_sheet_sha256:sha(sheetFile),pure_merge_111:true,native_CLI_merge_executed:false},null,2));

@@ -1,6 +1,6 @@
-# 第五片：當前來源複核與英文文字採用完成
+# 第五片：當前來源複核與EN／JA文字採用2/8
 
-當前[video.json](video.json)為40eb4df5…ae58aa（僅description追加教材URL，root獨立[verify4](verify-4.md)已PASS／source連續性已綁定）、[claims](claims.md)為cc38，[完整進度](production-progress.json)與[當前安全收據索引](receipts/en-text-adoption-index.json)記錄實際狀態。Source導入完成不等於音訊、可下載M4A、全片或八語完成。
+當前[video.json](video.json)為40eb4df5…ae58aa（僅description追加教材URL，root獨立[verify4](verify-4.md)已PASS／source連續性已綁定）、[claims](claims.md)為cc38，[完整進度](production-progress.json)與[當前安全收據索引](receipts/ja-text-adoption-index.json)記錄實際狀態。Source導入完成不等於音訊、可下載M4A、全片或八語完成。
 
 - Source SHA：`40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa`；speechHash：`38cf9292f6945199`。
 - 歷史ca1e的[verify3](verify-3.md)確認21項主張的連續證據、三個視覺資料路徑、111完整line物件／voice不變。64state＋縮圖0layout；63個原PNG／keys相同。root已實看全部64contact states、修卡及final thumbnail；獨立fresh static capture亦與frozen bitmap精確相同。
@@ -26,10 +26,21 @@ ca1e source／script7aac／更新前progress／README／result已[封存](histor
 本輪文件更新於2026-10-26T03:46:05.649960+00:00採用root真實verify4：只改description的兩個公開URL，111完整line／64scene／claims及原script7aac不變；21項主張為當前固定依賴連續性CONFIRMED，不冒稱新live全來源查核。prepared17檔與原freeze已[精確封存](history/before-root-verify4-adoption/identity.json)，舊index／freeze及68份審查均原文保留；[新index](receipts/root-verify4-adoption-index.json)、[新validation](receipts/root-verify4-adoption-validation.json)與[新freeze](receipts/root-verify4-adoption-freeze.json)另列此次身份。首個verify4 invocation的estimateTimeline參數錯誤在報告寫出前中止，修正rerun才PASS；[診斷](receipts/root-verify4-initial-invocation-diagnostic.json)明記而不製造raw。本文為commit前文件快照，實際scoped commit／push結果由執行收據另記。沒有paid／media／backend／approval動作；整片維持in-progress。
 
 
-## 當前新增：英文文字1/8，尚無CC或配音成品
+## EN文字採用時的增量紀錄：1/8，當時無CC或配音成品
 
 Root獨立讀完111組source／English targets，確認日期、數字、母體、否定、delivered AND actual大於promised、NULL不是0、720含240準時與JSON錯誤範圍；只修title及說明首句兩項metadata target，原111targets保持原字串。其後普通native`i18n-merge`真exit0，EN JSON等於root原生pure preview translation，見[採用綁定](localization/en/actual-native-text-adoption.json)、[獨審](localization/en/root-independent-review.json)及[真merge log](localization/en/native-i18n-merge.log)。
 
 EN111句完整target、六章、metadata與縮圖詞已current，**文字採用1/8**。Caption targets不是已生成／對時的字幕檔；actual CC files=0、foreign M4A=0、fit／meter／ASR=0、EN backend交付=0。繁中paid TTS0／raw0／actual timeline不存在；Service hold沒有因文字採用解除。EN說明在原生估時計畫compose為2787 UTF-8 bytes，沒有拿估時當真fit或音長。
 
 原author26freeze、作者三輪與111完整source／target映射、初次sheetTodo期望錯誤及root兩項metadata delta都保留原bytes。329個舊episode檔在本輪doc變更前全hash相同；此輪只更新已先[封存](history/before-EN-text-adoption-docs/identity.json)的進度／README／result／receiptREADME，不重寫root剛merge的[i18n/en.json](i18n/en.json)、source、claims、brief、script、voice、lexicon、data或原freeze／verify4。後續同分支scoped commit／push需root獨立freeze審查，PR保持no-auto-merge，不部署／合併／YouTube上傳。
+
+
+## 當前新增：JA採用，EN＋JA文字2/8
+
+日文全部111句、六章、標題說明／tags與縮圖詞經作者三輪及root全量獨審，root未改target。正常native merge完成exit0，當前JA JSON為`324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2`，等於root原生純preview；[採用證據](localization/ja/actual-native-text-adoption.json)與[原始completion](localization/ja/root/native-merge-completion.json)可核。
+
+這是外語文字2/8，不是兩種配音完成。繁中TTS／raw仍0，無actual timeline、SRT／VTT、M4A、fit／meter／ASR或JA後台成品。JA無時間軸metadata預覽2903bytes只驗文字限制；48／44字提示保留，沒有拿估時當實際fit。
+
+[作者URL抽取器診斷](localization/ja/author/semantic-ledger.initial-local-error.json)、[root sheetTodo診斷](localization/ja/root/root-initial-sheetTodo-type-error.json)與[root freeze結構診斷](localization/ja/root/root-initial-freeze-shape-error.json)分開保存；相關首次腳本也保留。這些是本地validator期望錯誤，修正validator後才真正通過，沒有把它們改寫成音訊失敗，也未改source／targets／網址／native guard。
+
+原325份受保護證據、EN35 freeze及其Git blobs在變更前全量核對，全部舊35檔和當時可變文件先[逐bytes封存](history/before-JA-text-adoption-docs/identity.json)，舊index／freeze不覆寫。兩份敘事12/13 false、verify4、source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data皆未修改；[本輪驗證](receipts/ja-text-adoption-validation.json)與[索引](receipts/ja-text-adoption-index.json)只涵蓋真實文字採用及文件。Commit／push需root獨立freeze審查後另行授權，PR1861維持no-auto-merge。
