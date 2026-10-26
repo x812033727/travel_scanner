@@ -1,0 +1,140 @@
+{
+  "locale": "th",
+  "slug": "ai-editable-explainer-animation",
+  "verdict": "ready_for_current_caption_text_if_source_sha_unchanged",
+  "translation_sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+  "reviewed_at_utc": "2026-10-26T00:00:11.254269+00:00",
+  "reviewer": {
+    "agent": "/root/review_id_vi_th/review_th",
+    "identity": "OpenAI Codex agent based on GPT-6; exact deployment identifier is not exposed",
+    "human": false,
+    "authored_applied_47_codepoint_candidate": false
+  },
+  "scope": "Final caption/source meaning of every delta from the PRE dub translation only. This receipt approves neither CC readability nor any audio, voice fit, full track, native READY, final QA or skip state.",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "PRE_sha256": "2849d400e062f2e603989cdae7b91cb325ece9025c55ac77a72c7814743e8ca4",
+  "prior_independent_review_sha256": "ba3a9a55047d29f43ce90c1684c2c207e6bfef05150ee8ecf35febff01ade331",
+  "files": {
+    "translation": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json",
+    "source": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+    "PRE": "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations/th.json",
+    "prior_independent_review": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.one-author-independent-review.json"
+  },
+  "diff_verification": {
+    "line_ids_equal": true,
+    "changed_line_ids": [
+      "291f73"
+    ],
+    "changed_line_count": 1,
+    "other_100_line_records_unchanged": true,
+    "non_line_field_differences": [],
+    "metadata_thumbnail_chapters_source_hashes_unchanged": true,
+    "changed_line_source_hash_unchanged": true
+  },
+  "changed_line_review": {
+    "id": "291f73",
+    "source_exact": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+    "source_text_sha256": "291f73fb2e95ec69e81b872b2cb5dabe3505e7224bf1fb0b115d03b49b2c20c8",
+    "PRE_exact": "อ่านหัวเรื่องกับเป้าจากไฟล์ อย่าใส่เลขแยกแต่ละภาพ",
+    "PRE_codepoints": 49,
+    "PRE_text_sha256": "48c604b59953b2998bf53d1d8cc6ab6961b46dd6e0645ccd16a0c84b55bb779d",
+    "current_exact": "ดึงหัวเรื่องกับเป้าจากไฟล์ อย่าตั้งเลขแยกรายภาพ",
+    "current_codepoints": 47,
+    "current_text_sha256": "45ca8869af3bbeca0102d832b5551727b8efeff9925f2bed24950ed5d2a4a2e7",
+    "matches_prior_independently_reviewed_47_candidate": true,
+    "meaning_verdict": "textpass",
+    "source_meaning_evidence": {
+      "data_file": "ดึง...จากไฟล์ naturally requests fetching fields from the data file established by the current slide and following code sample.",
+      "title": "หัวเรื่อง explicitly preserves 標題.",
+      "target": "เป้า preserves 目標 in this target-sum configuration context.",
+      "per_image_scope": "อย่าตั้งเลขแยกรายภาพ explicitly prohibits setting a separate set of numeric values for each image.",
+      "no_identical_numbers_requirement": "This is a prohibition on setting independent per-image values, not a claim that all images must show the same numbers. Different computed outcomes remain possible.",
+      "source_clause_order": "The fields/file-source clause comes first; the per-image numeric-setting prohibition follows.",
+      "conditions_and_negation": "The source prohibition is retained with อย่า; there is no reversal or additional condition."
+    }
+  },
+  "contexts_directly_reread": {
+    "preceding_source": "核心畫面有了，就請 AI 把它整理成能執行的專案。",
+    "preceding_thai": "ได้ภาพหลักแล้ว ขอ AI จัดเป็นโปรเจกต์ที่รันได้",
+    "current_source_slide": {
+      "title": "把製作要求接在資料後面",
+      "items": [
+        "使用資料檔",
+        "附執行說明",
+        "附獨立檢查"
+      ],
+      "key": "同一個資料來源"
+    },
+    "following_source_JSON": "{\n  \"title\": \"兩顆骰子的總和，機率一樣嗎？\",\n  \"target_sum\": 7,\n  \"locale\": \"zh-TW\"\n}",
+    "following_source": "這份資料檔把標題、目標和色彩集中在同一處，方便你修改。",
+    "following_thai": "ไฟล์ข้อมูลรวมหัวเรื่อง เป้าหมาย และสีไว้ที่เดียว ให้คุณแก้ง่าย"
+  },
+  "hash_guards": {
+    "expected_translation_sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+    "before_read": {
+      "translation": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+      "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "PRE": "2849d400e062f2e603989cdae7b91cb325ece9025c55ac77a72c7814743e8ca4",
+      "prior_review": "ba3a9a55047d29f43ce90c1684c2c207e6bfef05150ee8ecf35febff01ade331"
+    },
+    "after_read_before_write": {
+      "translation": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+      "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "PRE": "2849d400e062f2e603989cdae7b91cb325ece9025c55ac77a72c7814743e8ca4",
+      "prior_review": "ba3a9a55047d29f43ce90c1684c2c207e6bfef05150ee8ecf35febff01ade331"
+    },
+    "source_matches_prior_independent_review": true,
+    "pass_before_write": true,
+    "after_write": {
+      "translation": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+      "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "PRE": "2849d400e062f2e603989cdae7b91cb325ece9025c55ac77a72c7814743e8ca4",
+      "prior_review": "ba3a9a55047d29f43ce90c1684c2c207e6bfef05150ee8ecf35febff01ade331"
+    },
+    "pass_after_write": true
+  },
+  "explicit_limits": {
+    "CC_readability_approved": false,
+    "native_build_check_approved": false,
+    "voice_or_timing_fit_approved": false,
+    "whole_audio_or_fulltrack_accepted": false,
+    "native_READY_claimed": false,
+    "final_QA_completed": false,
+    "final_skip_claimed": false,
+    "new_TTS_authorized": false
+  },
+  "controller_reported_state_not_independently_revalidated": {
+    "native_counters": {
+      "shorten": 1,
+      "retakes": 1,
+      "reword": 0
+    },
+    "partial_flags": 8,
+    "partial_flag_ids": [
+      "e8b327",
+      "719e7c",
+      "8eb4eb",
+      "ee8b7c",
+      "28a3eb",
+      "c38a5e",
+      "ad1b2c",
+      "f064e3"
+    ],
+    "CC_readability": "A previous native CC readability check failed. The controller is separately repairing the scope of the native pause display; build and check0 remain required.",
+    "service": "Gemini OTHER no-transcript 3cab285; further calls deferred until 2026-10-26T00:16:30.814Z. A service defer is not a final QA skip.",
+    "whole_audio": "Not accepted. A physical dubs/th.m4a reportedly exists; file existence does not establish whole-audio acceptance. No absent-track claim is made.",
+    "dub_audio_metadata": "Controller is working to omit the TH dub/audio publication field; this source-only review does not assert that publication edit is complete."
+  },
+  "actions": {
+    "only_this_review_written": true,
+    "source_edited": false,
+    "translation_edited": false,
+    "worksheet_edited": false,
+    "native_state_edited": false,
+    "media_edited": false,
+    "API_calls": 0,
+    "new_audio": false,
+    "flag_clearance": false,
+    "counter_reset": false
+  }
+}

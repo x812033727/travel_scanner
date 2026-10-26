@@ -470,6 +470,51 @@ export function inheritBoundaries(weighted, boundaries, rules = null) {
   return worse ? null : cues;
 }
 
+// Dub timelines have explicit visual windows. Their unmeasured captions may use the quiet
+// tail of the same window when the usual 400 ms linger leaves too little reading time. A
+// raw narration/legacy timeline has no such permission, and measured character starts must
+// stay where they were heard. The caller's line end, next line, content and intro still fence
+// the display: this never borrows time from another picture or speaker line.
+function dubPauseEnd(timeline, line, index, locale) {
+  if (timeline.locale !== locale || typeof timeline.translation_hash !== "string" || !timeline.translation_hash
+    || !Array.isArray(timeline.windows)) return null;
+  const windows = timeline.windows.filter((window) => Array.isArray(window.lines) && window.lines.includes(line.id));
+  if (windows.length !== 1) return null;
+  const window = windows[0];
+  if (!Number.isFinite(window.start_frame) || !Number.isFinite(window.end_frame)
+    || !Number.isFinite(line.start_frame) || !Number.isFinite(line.end_frame)
+    || window.start_frame > line.start_frame || window.end_frame <= line.start_frame
+    || (window.scene !== undefined && window.scene !== line.scene)) return null;
+  const ends = [line.end_frame, window.end_frame];
+  const next = timeline.lines[index + 1];
+  if (Number.isFinite(next?.start_frame)) ends.push(next.start_frame);
+  if (Number.isFinite(timeline.content_end_frame)) ends.push(timeline.content_end_frame);
+  if (Number.isFinite(timeline.total_frames)) ends.push(timeline.total_frames);
+  if (Number.isFinite(timeline.intro_at_frame) && line.start_frame < timeline.intro_at_frame) ends.push(timeline.intro_at_frame);
+  return frameToMs(Math.min(...ends));
+}
+
+function readableDubPause(cues, endMs, locale, rules) {
+  if (endMs === null || !cues.length) return cues;
+  if (cues.some((cue, index) => !Number.isFinite(cue.start_ms) || !Number.isFinite(cue.end_ms)
+    || cue.end_ms <= cue.start_ms || (index > 0 && cue.start_ms !== cues[index - 1].end_ms))) return cues;
+  const durations = cues.map((cue) => Math.max(cue.end_ms - cue.start_ms,
+    Math.ceil(measure(cue.text.replace(/\n/g, ""), rules) * 1000 / rules.maxCps)));
+  if (durations.every((duration, index) => duration === cues[index].end_ms - cues[index].start_ms)) return cues;
+  // Keep the existing cut and the duration of every already-readable piece. Only pieces
+  // needing more reading time grow; later pieces move with them, inside the allocated pause.
+  if (cues[0].start_ms + durations.reduce((sum, duration) => sum + duration, 0) > endMs) return cues;
+  let cursor = cues[0].start_ms;
+  const extended = cues.map((cue, index) => {
+    const next = { ...cue, start_ms: cursor, end_ms: cursor + durations[index] };
+    cursor = next.end_ms;
+    return next;
+  });
+  // Use the actual display text and integer millisecond timings, just as SRT QA does. When
+  // the window cannot make every piece readable, preserve the original warnings instead.
+  return checkCues(extended, locale).length ? cues : extended;
+}
+
 /**
  * Cues for one locale. `texts` maps line id to that locale's text (the narration itself for
  * zh-TW); a line missing from it is skipped and reported. A line whose timeline entry carries
@@ -478,7 +523,8 @@ export function inheritBoundaries(weighted, boundaries, rules = null) {
  * translation keeps its own cut; given `narration` ({ locale, texts }, the narration's texts by
  * line id), its cue changes take their times from the narration's measured ones
  * (inheritBoundaries). Any other text, or a line the narration's times do not fit, shares the
- * line's time by weight.
+ * line's time by weight. An unmeasured dub with explicit visual windows can extend only its
+ * too-fast pieces into the existing quiet tail, without changing the cut or crossing a bound.
  */
 export function buildCues(timeline, texts, locale, narration = null) {
   const rules = LOCALE_RULES[locale];
@@ -486,7 +532,7 @@ export function buildCues(timeline, texts, locale, narration = null) {
   const canFit = canFitFor(rules);
   const cues = [];
   const missing = [];
-  for (const line of timeline.lines) {
+  for (const [index, line] of timeline.lines.entries()) {
     const text = texts[line.id];
     if (typeof text !== "string" || !text.trim()) {
       missing.push(line.id);
@@ -501,9 +547,8 @@ export function buildCues(timeline, texts, locale, narration = null) {
       const boundaries = narrationBoundaries(narration.texts?.[line.id], narration.locale, start, end, chars);
       timedPieces = (boundaries && inheritBoundaries(timedPieces, boundaries, rules)) || timedPieces;
     }
-    for (const cue of timedPieces) {
-      cues.push({ ...cue, line: line.id, text: wrapCue(displayText(cue.text, rules), rules) });
-    }
+    const lineCues = timedPieces.map((cue) => ({ ...cue, line: line.id, text: wrapCue(displayText(cue.text, rules), rules) }));
+    cues.push(...(chars ? lineCues : readableDubPause(lineCues, dubPauseEnd(timeline, line, index, locale), locale, rules)));
   }
   return { cues, missing };
 }

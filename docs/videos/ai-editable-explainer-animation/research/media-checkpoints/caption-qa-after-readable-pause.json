@@ -1,0 +1,653 @@
+{
+  "schema_version": 1,
+  "inspected_at_utc": "2026-10-26T00:02:23.880Z",
+  "slug": "ai-editable-explainer-animation",
+  "read_only": true,
+  "network_requests": 0,
+  "writes": 0,
+  "provider_requests": 0,
+  "source_video_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "primary": {
+    "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/final.mp4",
+    "sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+    "measured_duration_seconds": 589.6
+  },
+  "snapshot_stable": true,
+  "changed_during_inspection": [],
+  "caption_artifact_verdict": "nine_current_caption_artifacts_pass_native_mechanical_checks",
+  "independent_meaning_approval_granted_by_this_tool": false,
+  "full_language_package_ready": false,
+  "semantic_qa_scope": "This is cue/timing/byte consistency and saved native audio-evidence inspection only. It does not approve translation meaning, pronounce a rejected proposal accepted, or certify that captions and an unchecked voice say the same words.",
+  "known_semantic_holds": [],
+  "checked_foreign_dubs_observed": [
+    "ja",
+    "es",
+    "vi"
+  ],
+  "global_problems": [],
+  "chapter_problems": [],
+  "locales": [
+    {
+      "locale": "zh-TW",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/zh-TW.srt",
+          "sha256": "38b1829a8304abc84844ca325764c52ddcdaa9f4682784aa577d5b3f256b5c9b",
+          "bytes": 11449
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/zh-TW.vtt",
+          "sha256": "9d762c626a70dfe8f1f214840ee47febbdd385745a9cabb58c13f27cb62bfba3",
+          "bytes": 11137
+        }
+      },
+      "native_timing": "narration",
+      "expected_native_timing": "narration",
+      "actual_cues": 107,
+      "source_lines": 101,
+      "unicode_codepoints": 2544,
+      "native_rules": {
+        "maxChars": 16,
+        "maxLines": 2,
+        "maxCps": 9,
+        "words": false
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "primary",
+        "native_final_qa_ok": true,
+        "checked_dub": false,
+        "note": "Primary narration is not an additional dub; caption mechanics do not reapprove it."
+      },
+      "independent_meaning_review": {
+        "scope": "Primary meaning/audio/final QA are separate recorded gates; this tool checks caption mechanics."
+      }
+    },
+    {
+      "locale": "en",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/en.srt",
+          "sha256": "1e3ab0412b7487af926bd96ecee3dcf9189568de2f4ab0dd2efbd6bbf4fef43f",
+          "bytes": 12080
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/en.vtt",
+          "sha256": "22964a753ef48ba9c2a7173594c68f59b28cdc6b90ff641bcc83d82ad7f7aaff",
+          "bytes": 11680
+        }
+      },
+      "native_timing": "dub",
+      "expected_native_timing": "dub",
+      "actual_cues": 129,
+      "source_lines": 101,
+      "unicode_codepoints": 6366,
+      "native_rules": {
+        "maxChars": 42,
+        "maxLines": 2,
+        "maxCps": 20,
+        "words": true
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "native_check_unfinished",
+        "native_skip_reason": null,
+        "check_stopped": true,
+        "checked_dub": false,
+        "checked_lines": 49,
+        "literal_or_normalized_match_lines": 46,
+        "native_flags_authoritative": true,
+        "unresolved_flags": null,
+        "actual_wav_vs_saved_asr": {
+          "scope": "Actual WAV SHA256 prefix16 compared with saved native ASR clip ID; no listening, transcription or new judgment is performed.",
+          "compared_lines": 49,
+          "mismatches": []
+        },
+        "timing_warning": "Cues use an unchecked/failed current track timeline; timing does not prove that its spoken words passed QA."
+      },
+      "independent_meaning_review": {
+        "scope": "Evidence inventory only; this inspector does not grant meaning or voice approval.",
+        "current_translation_sha256": "e6f09548e017a669aa6c7d8aa3c1705a318ad4384039ff03c38b5f2f4573ab57",
+        "reports": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/en.final-caption-translation-review.json",
+            "sha256": "65655eb3155ca48bb7989d86c549f241a1ad61453a9e4680305cdb35c1c690ac",
+            "verdict": "ready_for_current_caption_text_if_source_sha_unchanged",
+            "contains_current_translation_sha256": true
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/en.reviewer.json",
+            "sha256": "76835cb6b78a9265a7d551dd99d7b204780404b02e163242607d0d56d91cc286",
+            "verdict": "ready",
+            "contains_current_translation_sha256": false
+          }
+        ]
+      }
+    },
+    {
+      "locale": "ja",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ja.srt",
+          "sha256": "e20c58bb4115b1aea304e71af6a9cf9bfb2f984fddc69826d325eebb2d30270c",
+          "bytes": 14945
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ja.vtt",
+          "sha256": "e0d4404d7c10a96b891cb58467bb40ec16c61c41f83e8f6dbb4a6aeb8ad69b10",
+          "bytes": 14477
+        }
+      },
+      "native_timing": "dub",
+      "expected_native_timing": "dub",
+      "actual_cues": 146,
+      "source_lines": 101,
+      "unicode_codepoints": 3257,
+      "native_rules": {
+        "maxChars": 16,
+        "maxLines": 2,
+        "maxCps": 8,
+        "words": false
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "current",
+        "native_skip_reason": null,
+        "check_stopped": false,
+        "checked_dub": true,
+        "checked_lines": 101,
+        "literal_or_normalized_match_lines": 77,
+        "native_flags_authoritative": true,
+        "unresolved_flags": [],
+        "actual_wav_vs_saved_asr": {
+          "scope": "Actual WAV SHA256 prefix16 compared with saved native ASR clip ID; no listening, transcription or new judgment is performed.",
+          "compared_lines": 101,
+          "mismatches": []
+        },
+        "timing_warning": null
+      },
+      "independent_meaning_review": {
+        "scope": "Evidence inventory only; this inspector does not grant meaning or voice approval.",
+        "current_translation_sha256": "50e547580f142c405a667b426e92a2c7b91fe4b3c9ce7c7487e4444e5144aabd",
+        "reports": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ja.final-dub-translation-review.json",
+            "sha256": "abc3def77509732938670c4c95171cfcf98999c0eb3731f3cd630d943c7e3d68",
+            "verdict": "ready",
+            "contains_current_translation_sha256": true
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ja.reviewer.json",
+            "sha256": "0b1ca216819cebb9e1abdeaccad1520f5653af30aa900ab92b89335e57a74e27",
+            "verdict": "ready",
+            "contains_current_translation_sha256": false
+          }
+        ]
+      }
+    },
+    {
+      "locale": "ko",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ko.srt",
+          "sha256": "32303cbe9549dc5d2f8d79ec017571ccd9956dddb2eea81ad2252b13c1f857ee",
+          "bytes": 12590
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ko.vtt",
+          "sha256": "acefe221f320c550f8fa2d8264f78e2f90086ce55efc87063d7f786d779c141c",
+          "bytes": 12202
+        }
+      },
+      "native_timing": "dub",
+      "expected_native_timing": "dub",
+      "actual_cues": 126,
+      "source_lines": 101,
+      "unicode_codepoints": 2591,
+      "native_rules": {
+        "maxChars": 18,
+        "maxLines": 2,
+        "maxCps": 12,
+        "words": true
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "native_skipped",
+        "native_skip_reason": "Jev still hears 2c063b, 594e82, 719e7c, 76fc63, 79a96a, de08dd wrong after 2 retakes and 2 rewording rounds",
+        "check_stopped": false,
+        "checked_dub": false,
+        "checked_lines": 101,
+        "literal_or_normalized_match_lines": 88,
+        "native_flags_authoritative": true,
+        "unresolved_flags": [
+          "79a96a",
+          "2c063b",
+          "719e7c",
+          "76fc63",
+          "de08dd",
+          "594e82"
+        ],
+        "actual_wav_vs_saved_asr": {
+          "scope": "Actual WAV SHA256 prefix16 compared with saved native ASR clip ID; no listening, transcription or new judgment is performed.",
+          "compared_lines": 101,
+          "mismatches": []
+        },
+        "timing_warning": "Cues use an unchecked/failed current track timeline; timing does not prove that its spoken words passed QA."
+      },
+      "independent_meaning_review": {
+        "scope": "Evidence inventory only; this inspector does not grant meaning or voice approval.",
+        "current_translation_sha256": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+        "reports": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.final-caption-translation-review.json",
+            "sha256": "dde52b44baeb4300c75ae53579167581af27f1eda0759988bbf82a2e54a889da",
+            "verdict": "ready_for_current_caption_text_if_source_sha_unchanged",
+            "contains_current_translation_sha256": true
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.post-fix-review.json",
+            "sha256": "b0715795fc1475a31f0abb3b7f0d2ccb4583f5d6f9266cddbb45ed234a0cf481",
+            "verdict": "ready",
+            "contains_current_translation_sha256": false
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reviewer.json",
+            "sha256": "2d144952ab13202804c260c74fecdffcde57f8fbad7b5b3c1e41b79d4d6fea94",
+            "verdict": "ready after the fixes",
+            "contains_current_translation_sha256": false
+          }
+        ]
+      }
+    },
+    {
+      "locale": "es",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/es.srt",
+          "sha256": "1d38b9798c30a024e95365d0635df4e3a0e526c55c2ca03c5f138eb8f71599e1",
+          "bytes": 11123
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/es.vtt",
+          "sha256": "a069250fa9cddb2bcc6e35cdc0f4cc5f2f3f9e44e7df8f2458613c8e1899c134",
+          "bytes": 10771
+        }
+      },
+      "native_timing": "dub",
+      "expected_native_timing": "dub",
+      "actual_cues": 117,
+      "source_lines": 101,
+      "unicode_codepoints": 5838,
+      "native_rules": {
+        "maxChars": 42,
+        "maxLines": 2,
+        "maxCps": 17,
+        "words": true
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "current",
+        "native_skip_reason": null,
+        "check_stopped": false,
+        "checked_dub": true,
+        "checked_lines": 101,
+        "literal_or_normalized_match_lines": 99,
+        "native_flags_authoritative": true,
+        "unresolved_flags": [],
+        "actual_wav_vs_saved_asr": {
+          "scope": "Actual WAV SHA256 prefix16 compared with saved native ASR clip ID; no listening, transcription or new judgment is performed.",
+          "compared_lines": 101,
+          "mismatches": []
+        },
+        "timing_warning": null
+      },
+      "independent_meaning_review": {
+        "scope": "Evidence inventory only; this inspector does not grant meaning or voice approval.",
+        "current_translation_sha256": "c14d83d73d72eda075fb16462548c2f07c564f7ce7a13d410ad92683814a2dca",
+        "reports": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.final-dub-translation-review.json",
+            "sha256": "5bb0d10e0481ce4abdd3bc8c08310c29e3f13be8807d7bf5f8040380d77bc3f4",
+            "verdict": "ready",
+            "contains_current_translation_sha256": true
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.post-fix-review.json",
+            "sha256": "07cbe0c1e39eafc8439e1b3034c635fa1e3c4decedc0598696c4b124bcf5eb3a",
+            "verdict": "ready",
+            "contains_current_translation_sha256": false
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.reviewer.json",
+            "sha256": "669f4b1fe01d1945799a106a284bf31b9cfee5f62c5026d21eba865a441cd227",
+            "verdict": "ready_after_fixes",
+            "contains_current_translation_sha256": false
+          }
+        ]
+      }
+    },
+    {
+      "locale": "pt",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/pt.srt",
+          "sha256": "1f7dda75856a9f671d8eea3162b427b7090c95af2a01413f108d57d4c481ef2c",
+          "bytes": 10076
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/pt.vtt",
+          "sha256": "d52389ebfbf55c9484c6f98b45112340a7130b2f7a86705e61251d28ed14e84e",
+          "bytes": 9776
+        }
+      },
+      "native_timing": "dub",
+      "expected_native_timing": "dub",
+      "actual_cues": 104,
+      "source_lines": 101,
+      "unicode_codepoints": 5198,
+      "native_rules": {
+        "maxChars": 42,
+        "maxLines": 2,
+        "maxCps": 17,
+        "words": true
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "native_skipped",
+        "native_skip_reason": "Jev still hears 9e738a wrong after 2 retakes and 2 rewording rounds",
+        "check_stopped": false,
+        "checked_dub": false,
+        "checked_lines": 101,
+        "literal_or_normalized_match_lines": 85,
+        "native_flags_authoritative": true,
+        "unresolved_flags": [
+          "9e738a"
+        ],
+        "actual_wav_vs_saved_asr": {
+          "scope": "Actual WAV SHA256 prefix16 compared with saved native ASR clip ID; no listening, transcription or new judgment is performed.",
+          "compared_lines": 101,
+          "mismatches": []
+        },
+        "timing_warning": "Cues use an unchecked/failed current track timeline; timing does not prove that its spoken words passed QA."
+      },
+      "independent_meaning_review": {
+        "scope": "Evidence inventory only; this inspector does not grant meaning or voice approval.",
+        "current_translation_sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857",
+        "reports": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.failed-dub-final-translation-review.json",
+            "sha256": "71fc1c66636efcb24dc54025d3deeb0546d8117eb9132429db475083ec0e9f5c",
+            "verdict": "text_fidelity_pass_audio_QA_failed",
+            "contains_current_translation_sha256": true
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.post-fix-review.json",
+            "sha256": "2054b15da834a44bf3422aa1e9670f555de42c055b9bc8d47a82e7ba178e53f5",
+            "verdict": "ready",
+            "contains_current_translation_sha256": false
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.reviewer.json",
+            "sha256": "a549f9c34b26421b426ea85c1b84792b71a0d4fe3615f842418d15cc99699b68",
+            "verdict": "ready_after_fixes",
+            "contains_current_translation_sha256": false
+          }
+        ]
+      }
+    },
+    {
+      "locale": "id",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/id.srt",
+          "sha256": "2ba8b3fc8a2867a11d5fbc1e7d36f66636bbc3adafa92f7096f7c4ca32f6f3db",
+          "bytes": 10790
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/id.vtt",
+          "sha256": "d24b11f2db11aa58c636d0585869881d58417272361e6808479fc62c784239bd",
+          "bytes": 10450
+        }
+      },
+      "native_timing": "narration",
+      "expected_native_timing": "narration",
+      "actual_cues": 114,
+      "source_lines": 101,
+      "unicode_codepoints": 5861,
+      "native_rules": {
+        "maxChars": 42,
+        "maxLines": 2,
+        "maxCps": 17,
+        "words": true
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "native_skipped",
+        "native_skip_reason": "f576ae, 9e738a, ed8308 do not fit their windows even at 1.15x after 1 shortening round",
+        "check_stopped": false,
+        "checked_dub": false,
+        "checked_lines": 0,
+        "literal_or_normalized_match_lines": 0,
+        "native_flags_authoritative": true,
+        "unresolved_flags": null,
+        "actual_wav_vs_saved_asr": {
+          "scope": "Actual WAV SHA256 prefix16 compared with saved native ASR clip ID; no listening, transcription or new judgment is performed.",
+          "compared_lines": 0,
+          "mismatches": []
+        },
+        "timing_warning": "Cues follow zh-TW narration; no current target dub supplies the timing."
+      },
+      "independent_meaning_review": {
+        "scope": "Evidence inventory only; this inspector does not grant meaning or voice approval.",
+        "current_translation_sha256": "261b3cccc47b5f5d93cf7e5aa53f21b1dc7f73038f72395ef224ddf23ab65801",
+        "reports": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.final-caption-translation-review.json",
+            "sha256": "4826f42cda98e0fd2b279e1120e9e588fc8aaab7fdf7dfbc4220571cce32190e",
+            "verdict": "ready_for_current_caption_text_if_source_sha_unchanged",
+            "contains_current_translation_sha256": true
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.post-fix-review.json",
+            "sha256": "295f97c0c99187bbb18b4ec26d2ab622296a1034ea17d60aec9d49796758b842",
+            "verdict": "ready",
+            "contains_current_translation_sha256": false
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.reviewer.json",
+            "sha256": "37b6ba2f68cc7d6d46c06c8b0ddb0655c3da0c24ac4cb5508a3b9c3c0792a0ec",
+            "verdict": "ready after fixes",
+            "contains_current_translation_sha256": false
+          }
+        ],
+        "known_meaning_hold_applies_to_current_sha256": false,
+        "unresolved_meaning_review": "The 9e738a most-wanted omission belongs to historical ID89edb036..., not automatically to the current source. Root applied a source-only correction to ID261b3cccc...; the old rumit proposal remains rejected. Inventory the exact current final-caption review and application receipt separately. This inspector grants no meaning/audio approval and does not imply captions were built.",
+        "source_only_correction_receipt": {
+          "file": "/workspace/work/ai-animation-01/source-corrections/id-89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a-6e747daa5477d65c72547c3faed40c8235206a31ab8f7ec8302221e30e6f7bad/application-receipt.json",
+          "exists": true,
+          "sha256": "a670c6800459474cc5e464221dbf6206b76a6c0a63c481826f2dc74590cbbc01",
+          "status": "source corrected for CC; native voice still skipped/unattempted",
+          "before_source_sha256": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a",
+          "after_source_sha256": "261b3cccc47b5f5d93cf7e5aa53f21b1dc7f73038f72395ef224ddf23ab65801",
+          "matches_current_translation_sha256": true,
+          "captions_built_by_correction": false,
+          "audio_fit_or_QA_approved_by_correction": false
+        },
+        "held_review_files": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.three-author-independent-review.json",
+            "exists": true,
+            "sha256": "e3d795a8df5ae21ac56f2f1f21cc1d95773e366c159a45d74ab7f52062a7eb5a",
+            "verdict": "not_ready_to_apply_all_three: 9e738a source-meaning condition unresolved"
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.retry-author-fidelity-review.json",
+            "exists": true,
+            "sha256": "db6f107274a6010b16e0d67f831928d9c0b02dcd2813943f2f3a0b83c32580bb",
+            "verdict": "approved_text_only_after_small_grammar_and_register_repairs"
+          }
+        ]
+      }
+    },
+    {
+      "locale": "vi",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/vi.srt",
+          "sha256": "f124aeecf00473d2152974556f02b97114bb1b9a6ccd905377047a69eab559d7",
+          "bytes": 14032
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/vi.vtt",
+          "sha256": "cc84d961bc58ae4042d0ecfe6d7088955fcc86737fc96a437273cc37ffb77f72",
+          "bytes": 13672
+        }
+      },
+      "native_timing": "dub",
+      "expected_native_timing": "dub",
+      "actual_cues": 119,
+      "source_lines": 101,
+      "unicode_codepoints": 5737,
+      "native_rules": {
+        "maxChars": 42,
+        "maxLines": 2,
+        "maxCps": 17,
+        "words": true
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "current",
+        "native_skip_reason": null,
+        "check_stopped": false,
+        "checked_dub": true,
+        "checked_lines": 101,
+        "literal_or_normalized_match_lines": 99,
+        "native_flags_authoritative": true,
+        "unresolved_flags": [],
+        "actual_wav_vs_saved_asr": {
+          "scope": "Actual WAV SHA256 prefix16 compared with saved native ASR clip ID; no listening, transcription or new judgment is performed.",
+          "compared_lines": 101,
+          "mismatches": []
+        },
+        "timing_warning": null
+      },
+      "independent_meaning_review": {
+        "scope": "Evidence inventory only; this inspector does not grant meaning or voice approval.",
+        "current_translation_sha256": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+        "reports": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.final-dub-translation-review.json",
+            "sha256": "87302e0d976da52853d9500cef50b9494a30e96d96aafb1667498728adc9deeb",
+            "verdict": "ready_for_current_text_if_source_sha_unchanged",
+            "contains_current_translation_sha256": true
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.post-fix-review.json",
+            "sha256": "b708d6d7e7b1ac217ed19797d6a9a6e5a65643af7d227d4a32e4f3a8dc0c1c3a",
+            "verdict": "ready",
+            "contains_current_translation_sha256": false
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.reviewer.json",
+            "sha256": "57973a7c1496dcffe86b100e8c71b5cf8d0a1af9c0807c71f7426e99dd90bd26",
+            "verdict": "ready_after_fixes",
+            "contains_current_translation_sha256": false
+          }
+        ]
+      }
+    },
+    {
+      "locale": "th",
+      "files": {
+        "srt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/th.srt",
+          "sha256": "8c87a7370873484f3d477f21871f18781de62a50bd48dc499eabd031502f2c17",
+          "bytes": 20951
+        },
+        "vtt": {
+          "file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/th.vtt",
+          "sha256": "f38e4fd08f62134965ce86818f4bd0dcfcb3b132a4dcbd602fd4e49f451e6bd4",
+          "bytes": 20655
+        }
+      },
+      "native_timing": "dub",
+      "expected_native_timing": "dub",
+      "actual_cues": 103,
+      "source_lines": 101,
+      "unicode_codepoints": 5729,
+      "native_rules": {
+        "maxChars": 35,
+        "maxLines": 2,
+        "maxCps": 15,
+        "words": true,
+        "segmenter": "th"
+      },
+      "mechanical_checks_pass": true,
+      "problems": [],
+      "audio": {
+        "status": "native_check_unfinished",
+        "native_skip_reason": null,
+        "check_stopped": true,
+        "checked_dub": false,
+        "checked_lines": 101,
+        "literal_or_normalized_match_lines": 73,
+        "native_flags_authoritative": true,
+        "unresolved_flags": [
+          "e8b327",
+          "719e7c",
+          "8eb4eb",
+          "ee8b7c",
+          "28a3eb",
+          "c38a5e",
+          "ad1b2c",
+          "f064e3"
+        ],
+        "actual_wav_vs_saved_asr": {
+          "scope": "Actual WAV SHA256 prefix16 compared with saved native ASR clip ID; no listening, transcription or new judgment is performed.",
+          "compared_lines": 101,
+          "mismatches": [
+            {
+              "id": "cab285",
+              "actual_wav_sha256": "2a80361b9d5bc05219a63221de8f9de5a9818720496d85d57a8d2f076cb6e650",
+              "saved_asr_clip": "f0a720634086dde1",
+              "matches": false
+            }
+          ]
+        },
+        "timing_warning": "Cues use an unchecked/failed current track timeline; timing does not prove that its spoken words passed QA."
+      },
+      "independent_meaning_review": {
+        "scope": "Evidence inventory only; this inspector does not grant meaning or voice approval.",
+        "current_translation_sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+        "reports": [
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.final-caption-translation-review.json",
+            "sha256": "43a1dfafc53571f5a41654ddb06e03e70b875df20200d9913ad9d511615aa397",
+            "verdict": "ready_for_current_caption_text_if_source_sha_unchanged",
+            "contains_current_translation_sha256": true
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.post-fix-review.json",
+            "sha256": "56e729f71b09c15dfb5d4aca3e9122d3da469008c4fa819b0b0009e0ee503ca6",
+            "verdict": "ready",
+            "contains_current_translation_sha256": false
+          },
+          {
+            "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.reviewer.json",
+            "sha256": "1cefedc15eb461321ce2fdb65cd7e1c0751b4adc6f208eebb6899624dc3d50ec",
+            "verdict": "ready_after_fixes",
+            "contains_current_translation_sha256": false
+          }
+        ]
+      }
+    }
+  ]
+}

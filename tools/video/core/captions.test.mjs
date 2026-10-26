@@ -621,3 +621,102 @@ test("es, pt, id and vi take 42 characters, two lines and 17 a second; th 35, tw
   assert.deepEqual(checkCues(cues, "th").filter((problem) => /wider|lines/.test(problem)), []);
   assert.match(checkCues(cues, "th").join(), /characters a second, above 15/);
 });
+
+const pauseText = "¿Con voz en otro idioma, la imagen se adelanta?";
+const pauseLine = () => ({ id: "pause1", scene: "example", start_frame: 0, end_frame: 180, audio_samples: 96_000 });
+const dubWithPause = (line = pauseLine()) => ({
+  locale: "es", translation_hash: "current-translation", total_frames: 180,
+  windows: [{ scene: "example", start_frame: 0, end_frame: 180, lines: [line.id] }],
+  lines: [line],
+});
+
+test("an unmeasured dub uses its allocated quiet tail only when the original cue reads too fast", () => {
+  const timeline = dubWithPause();
+  const before = structuredClone(timeline);
+  const texts = { pause1: pauseText };
+  const legacy = buildCues({ lines: timeline.lines }, texts, "es").cues;
+  assert.match(checkCues(legacy, "es").join(), /characters a second, above 17/);
+  const cues = buildCues(timeline, texts, "es").cues;
+  assert.deepEqual(cues.map((cue) => cue.text), legacy.map((cue) => cue.text));
+  assert.equal(cues[0].start_ms, legacy[0].start_ms);
+  assert.ok(cues.at(-1).end_ms > legacy.at(-1).end_ms);
+  assert.ok(cues.at(-1).end_ms <= frameToMs(timeline.windows[0].end_frame));
+  assert.deepEqual(checkCues(parseSrt(toSrt(cues)), "es"), [], "serialized display timings pass the same reading limit");
+  assert.deepEqual(timeline, before, "real audio samples, windows and source timing are not altered");
+  assert.equal(LOCALE_RULES.es.maxCps, 17);
+
+  const easy = { pause1: "El video está listo." };
+  assert.equal(toSrt(buildCues(timeline, easy, "es").cues), toSrt(buildCues({ lines: timeline.lines }, easy, "es").cues), "already-readable cues retain their bytes");
+});
+
+test("readable dub pauses preserve a multi-cue cut and extend only pieces needing reading time", () => {
+  const text = "Chương trình kiểm tra ô lưới, nhưng không đánh giá hộ bạn câu giải thích có dễ hiểu không.";
+  const line = { ...pauseLine(), audio_samples: 184_800, end_frame: 240 };
+  const timeline = { ...dubWithPause(line), locale: "vi", total_frames: 240,
+    windows: [{ scene: "example", start_frame: 0, end_frame: 240, lines: [line.id] }] };
+  const texts = { pause1: text };
+  const legacy = buildCues({ lines: [line] }, texts, "vi").cues;
+  assert.ok(legacy.length > 1);
+  assert.match(checkCues(legacy, "vi").join(), /characters a second, above 17/);
+  const cues = buildCues(timeline, texts, "vi").cues;
+  assert.deepEqual(cues.map((cue) => cue.text), legacy.map((cue) => cue.text), "no new cue split or subtitle wording");
+  assert.equal(cues[0].start_ms, legacy[0].start_ms);
+  for (let index = 0; index < cues.length; index++) {
+    assert.ok(cues[index].end_ms - cues[index].start_ms >= legacy[index].end_ms - legacy[index].start_ms);
+    if (index) assert.equal(cues[index].start_ms, cues[index - 1].end_ms);
+  }
+  assert.deepEqual(checkCues(parseSrt(toSrt(cues)), "vi"), []);
+  assert.ok(cues.at(-1).end_ms <= 8000);
+});
+
+test("a dub pause never clears a warning by crossing its visual, next-line, content or intro bound", () => {
+  const texts = { pause1: pauseText, next1: "Fin." };
+  const baseline = buildCues({ lines: [pauseLine()] }, texts, "es").cues;
+  const cases = [
+    ["visual window", (timeline) => { timeline.windows[0].end_frame = 75; }],
+    ["caller line", (timeline) => { timeline.lines[0].end_frame = 75; }],
+    ["next speaker line", (timeline) => { timeline.lines.push({ id: "next1", scene: "next", start_frame: 75, end_frame: 180, audio_samples: 24_000 }); }],
+    ["content end", (timeline) => { timeline.content_end_frame = 75; }],
+    ["presentation end", (timeline) => { timeline.total_frames = 75; }],
+    ["presentation end earlier than content metadata", (timeline) => { timeline.content_end_frame = 180; timeline.total_frames = 75; }],
+    ["intro starts", (timeline) => { timeline.intro_at_frame = 75; }],
+  ];
+  for (const [why, change] of cases) {
+    const timeline = dubWithPause();
+    change(timeline);
+    const cues = buildCues(timeline, texts, "es").cues.filter((cue) => cue.line === "pause1");
+    assert.deepEqual(cues, baseline, `${why}: insufficient legal pause retains the original cue`);
+    assert.match(checkCues(cues, "es").join(), /characters a second, above 17/, why);
+    assert.ok(cues.at(-1).end_ms <= 2500, why);
+  }
+});
+
+test("only an explicit current-locale dub window permits extra linger, never legacy or measured timing", () => {
+  const line = pauseLine();
+  const texts = { pause1: pauseText };
+  const legacy = buildCues({ lines: [line] }, texts, "es").cues;
+  const cases = [
+    ["another locale", (timeline) => { timeline.locale = "en"; }],
+    ["no translation binding", (timeline) => { delete timeline.translation_hash; }],
+    ["invalid translation binding", (timeline) => { timeline.translation_hash = {}; }],
+    ["no allocated windows", (timeline) => { delete timeline.windows; }],
+    ["ambiguous duplicate windows", (timeline) => { timeline.windows.push({ ...timeline.windows[0] }); }],
+    ["window for another scene", (timeline) => { timeline.windows[0].scene = "other"; }],
+    ["window starts later", (timeline) => { timeline.windows[0].start_frame = 1; }],
+  ];
+  for (const [why, change] of cases) {
+    const timeline = dubWithPause();
+    change(timeline);
+    assert.deepEqual(buildCues(timeline, texts, "es").cues, legacy, why);
+  }
+  const measuredLine = { ...line, timing: { chars: timed(pauseText, (index) => 20 + index * 100) } };
+  const measured = buildCues({ lines: [measuredLine] }, texts, "es").cues;
+  const dubbed = buildCues(dubWithPause(measuredLine), texts, "es").cues;
+  assert.deepEqual(dubbed, measured, "measured onsets and warnings remain untouched even with a dub window");
+  assert.match(checkCues(dubbed, "es").join(), /characters a second, above 17/);
+
+  const invalid = { ...line, audio_samples: -48_000 };
+  const invalidLegacy = buildCues({ lines: [invalid] }, texts, "es").cues;
+  assert.match(checkCues(invalidLegacy, "es").join(), /ends before it starts/);
+  assert.deepEqual(buildCues(dubWithPause(invalid), texts, "es").cues, invalidLegacy, "extra display time must not conceal an invalid original span");
+});

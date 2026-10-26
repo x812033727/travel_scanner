@@ -1,0 +1,34 @@
+{
+  "verified_at_utc": "2026-10-26T00:18:09.683073+00:00",
+  "native_caption_policy_sha256": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+  "tests": {
+    "targeted_caption": {
+      "passed": 50,
+      "failed": 0,
+      "log": "/workspace/work/ai-animation-01/caption-pause-targeted-tests.log"
+    },
+    "tools": {
+      "total": 2732,
+      "passed": 2727,
+      "failed": 0,
+      "skipped": 5,
+      "log": "/workspace/work/ai-animation-01/caption-pause-full-tools-tests.log",
+      "skips": "Unrelated default/platform/browser opt-in cases; no caption production warning was waived."
+    },
+    "docs_videos": {
+      "passed": 236,
+      "failed": 0,
+      "log": "/workspace/work/ai-animation-01/caption-pause-full-docs-video-tests.log"
+    }
+  },
+  "actual_caption_inspection": {
+    "report": "research/media-checkpoints/caption-qa-after-readable-pause.json",
+    "snapshot_stable": true,
+    "locale_count": 9,
+    "global_or_chapter_problems": [],
+    "original_warning_count": 51,
+    "current_warning_count": 0,
+    "complete_language_package": false
+  },
+  "voice_or_publication_approval": false
+}
