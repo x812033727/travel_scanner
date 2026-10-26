@@ -65,5 +65,5 @@ e002-redo1 起「系統」的設定圖審核送上來的是空白光板；若站
 ## 補修（2026-10-26）
 
 - #1855 部署後第一次實戰（e002-redo1）：退件 → `resetSheets` 清空 xitong 的 candidates → 工人**沒重畫就 `review-push`**（作品集 cast 逐字來自設定集，`lookHash` 不變，`pipelineStatus` 只看 hash 就把「look generated」當做完）→ 送出 `options: []` 的審核 → 站主核准沒 choice → `blocked: … waiting for xitong`。
-- 補修 PR（見下方連結）：`state.mjs undrawnCharacters`（空 candidates ＝ look 未完成、下一步回 look）、`flow.mjs lookGate` 開頭守門、`sync.mjs lookSubmissions` 拒送、`admin_service.decision_problem` 拒絕核准沒 options 的 look 審核。測試：state／sync 各一、流程測試改成站主退件不改外觀（hash 不變）仍回 look、api 一個。
+- 補修 PR https://github.com/x812033727/travel_scanner/pull/1869：`state.mjs undrawnCharacters`（空 candidates ＝ look 未完成、下一步回 look）、`flow.mjs lookGate` 開頭守門、`sync.mjs lookSubmissions` 拒送、`admin_service.decision_problem` 拒絕核准沒 options 的 look 審核。測試：state／sync 各一、流程測試改成站主退件不改外觀（hash 不變）仍回 look、api 一個。
 - 觀察：設定集改版不會回填已寫好劇本的集（e002-redo1 的 video.json 23:56 寫好，早於設定集第 6 版 00:23 加 `sheet_prompt`），已寫進 SERIES.md。
