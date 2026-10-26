@@ -1,0 +1,474 @@
+{
+  "self_test": true,
+  "helper_scope": "slides118_branded_v4_zhTW",
+  "tests": [
+    {
+      "name": "valid fixed pin",
+      "passed": true
+    },
+    {
+      "name": "wrong profile",
+      "passed": true
+    },
+    {
+      "name": "wrong locale",
+      "passed": true
+    },
+    {
+      "name": "wrong source_sha256",
+      "passed": true
+    },
+    {
+      "name": "wrong speech_hash",
+      "passed": true
+    },
+    {
+      "name": "wrong final_sha256",
+      "passed": true
+    },
+    {
+      "name": "wrong branding_hash",
+      "passed": true
+    },
+    {
+      "name": "wrong package_hash",
+      "passed": true
+    },
+    {
+      "name": "wrong qa_sha256",
+      "passed": true
+    },
+    {
+      "name": "wrong caption_manifest_sha256",
+      "passed": true
+    },
+    {
+      "name": "wrong checked_audio_sha256",
+      "passed": true
+    },
+    {
+      "name": "wrong main_pin_file",
+      "passed": true
+    },
+    {
+      "name": "wrong main_pin_sha256",
+      "passed": true
+    },
+    {
+      "name": "wrong main_delivery_receipt_file",
+      "passed": true
+    },
+    {
+      "name": "wrong main_delivery_receipt_sha256",
+      "passed": true
+    },
+    {
+      "name": "future root review",
+      "passed": true
+    },
+    {
+      "name": "no fabricated thumb proof",
+      "passed": true
+    },
+    {
+      "name": "foreign extra assets",
+      "passed": true
+    },
+    {
+      "name": "three exact native role spellings",
+      "passed": true
+    },
+    {
+      "name": "three buffers full SHA binding",
+      "passed": true
+    },
+    {
+      "name": "srt changed bytes",
+      "passed": true
+    },
+    {
+      "name": "srt wrong path",
+      "passed": true
+    },
+    {
+      "name": "vtt changed bytes",
+      "passed": true
+    },
+    {
+      "name": "vtt wrong path",
+      "passed": true
+    },
+    {
+      "name": "description changed bytes",
+      "passed": true
+    },
+    {
+      "name": "description wrong path",
+      "passed": true
+    },
+    {
+      "name": "single native presentation",
+      "passed": true
+    },
+    {
+      "name": "bad presentation branding_hash",
+      "passed": true
+    },
+    {
+      "name": "bad presentation total_frames",
+      "passed": true
+    },
+    {
+      "name": "bad presentation body_total_frames",
+      "passed": true
+    },
+    {
+      "name": "bad presentation intro_at_frame",
+      "passed": true
+    },
+    {
+      "name": "bad presentation intro_end_frame",
+      "passed": true
+    },
+    {
+      "name": "bad presentation content_end_frame",
+      "passed": true
+    },
+    {
+      "name": "bad presentation fps",
+      "passed": true
+    },
+    {
+      "name": "incomplete118",
+      "passed": true
+    },
+    {
+      "name": "duplicate118",
+      "passed": true
+    },
+    {
+      "name": "native 118 complete intended cues",
+      "passed": true
+    },
+    {
+      "name": "native metadata title retains CC tag",
+      "passed": true
+    },
+    {
+      "name": "native chapter after splice00:30",
+      "passed": true
+    },
+    {
+      "name": "native exact TXT title blank complete description LF",
+      "passed": true
+    },
+    {
+      "name": "stale unshifted SRT rejected",
+      "passed": true
+    },
+    {
+      "name": "double shifted VTT rejected",
+      "passed": true
+    },
+    {
+      "name": "caption stale source speech",
+      "passed": true
+    },
+    {
+      "name": "caption package is not placed",
+      "passed": true
+    },
+    {
+      "name": "caption wrong timing mode",
+      "passed": true
+    },
+    {
+      "name": "caption truncated intended text",
+      "passed": true
+    },
+    {
+      "name": "append keeps six original refs",
+      "passed": true
+    },
+    {
+      "name": "three blobs five role aliases",
+      "passed": true
+    },
+    {
+      "name": "all original payload values preserved",
+      "passed": true
+    },
+    {
+      "name": "official summary accurate with0of8",
+      "passed": true
+    },
+    {
+      "name": "all supplemental readiness false",
+      "passed": true
+    },
+    {
+      "name": "all roles sameSHA idempotent",
+      "passed": true
+    },
+    {
+      "name": "partial refs corrected without losing originals",
+      "passed": true
+    },
+    {
+      "name": "role SHA collision",
+      "passed": true
+    },
+    {
+      "name": "conflicting prior provenance",
+      "passed": true
+    },
+    {
+      "name": "foreign injected role",
+      "passed": true
+    },
+    {
+      "name": "audio type injection",
+      "passed": true
+    },
+    {
+      "name": "PUT only pinned srt",
+      "passed": true
+    },
+    {
+      "name": "PUT only pinned vtt",
+      "passed": true
+    },
+    {
+      "name": "PUT only pinned description",
+      "passed": true
+    },
+    {
+      "name": "forbidden route PUT/files/c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c",
+      "passed": true
+    },
+    {
+      "name": "forbidden route PUT/files/4a298ebb54e7fc4fca152d12e2b11f9c6871bfb51e577addbce239b2f95f38c7",
+      "passed": true
+    },
+    {
+      "name": "forbidden route POST/approve",
+      "passed": true
+    },
+    {
+      "name": "forbidden route POST/language-batch",
+      "passed": true
+    },
+    {
+      "name": "forbidden route GET/files/5636a6f3c177e463c2a5b95acd89c5907ab0b1d754acdb65ff26e7defd4e7e1e",
+      "passed": true
+    },
+    {
+      "name": "forbidden route DELETE",
+      "passed": true
+    },
+    {
+      "name": "normal GET/POST",
+      "passed": true
+    },
+    {
+      "name": "main native concurrency guard unchanged baseline",
+      "passed": true
+    },
+    {
+      "name": "concurrent owner language choice",
+      "passed": true
+    },
+    {
+      "name": "concurrent file/QA/payload",
+      "passed": true
+    },
+    {
+      "name": "old body QA cannot replace fresh QA",
+      "passed": true
+    },
+    {
+      "name": "package cannot replace placed",
+      "passed": true
+    },
+    {
+      "name": "stale CC/truncated timing byte exact",
+      "passed": true
+    }
+  ],
+  "imported_strict_checked_guards": {
+    "self_test": true,
+    "tests": [
+      "valid explicit complete root pin accepted",
+      "wrong/missing source_sha256 refused",
+      "wrong/missing speech_hash refused",
+      "wrong/missing main_sha256 refused",
+      "wrong/missing audio_proof_sha256 refused",
+      "wrong/missing checked_audio_sha256 refused",
+      "wrong/missing caption_manifest_sha256 refused",
+      "wrong/missing helper_sha256 refused",
+      "unsupported unchecked profile locale refused",
+      "unviewed thumbnail refused",
+      "missing thumbnail must be explicit",
+      "structured actual-view record binds current JPEG and source",
+      "incorrect visual-check profile refused",
+      "incorrect visual-check locale refused",
+      "incorrect visual-check source_sha256 refused",
+      "incorrect visual-check thumbnail_sha256 refused",
+      "incorrect visual-check thumbnail_bytes refused",
+      "incorrect visual-check viewed refused",
+      "incorrect visual-check method refused",
+      "incorrect visual-check viewed_by refused",
+      "incorrect visual-check viewed_at refused",
+      "incorrect visual-check evidence_sha256 refused",
+      "root pin with future reviewed_at refused",
+      "view and pin both in the future refused",
+      "future pin with past view refused by visual validator too",
+      "PNG signature IHDR and matching png suffix accepted",
+      "PNG suffix comparison is case insensitive",
+      "JPEG marker signature and matching jpg suffix accepted",
+      "JPEG marker signature and matching jpeg suffix accepted",
+      "JSON with json suffix cannot stand in for actually viewed PNG/JPEG",
+      "JSON renamed png cannot stand in for actually viewed PNG/JPEG",
+      "JSON renamed jpg cannot stand in for actually viewed PNG/JPEG",
+      "PNG renamed jpg cannot stand in for actually viewed PNG/JPEG",
+      "JPEG renamed png cannot stand in for actually viewed PNG/JPEG",
+      "PNG with unsupported suffix cannot stand in for actually viewed PNG/JPEG",
+      "truncated PNG signature cannot stand in for actually viewed PNG/JPEG",
+      "JPEG without EOI cannot stand in for actually viewed PNG/JPEG",
+      "native exact captions accepted",
+      "truncated full text rejected",
+      "wrong timing precision rejected",
+      "wrong timing source rejected",
+      "wrong VTT rejected",
+      "exact native dub manifest accepted",
+      "narration timing cannot stand in for checked dub timing",
+      "hard caption overlap refused",
+      "native reading-speed advisory retained unchanged",
+      "append requested tiny assets only preserves every old field",
+      "identical role and supplemental evidence are idempotent",
+      "eight sequential locales keep a bounded summary and preserve old provenance",
+      "existing same files without supplemental record still get provenance POST",
+      "role conflict cannot replace history",
+      "audio/video asset injection refused",
+      "remote checked M4A wrong hash cannot receive matching CC",
+      "remote checked M4A missing alias refused",
+      "caption role for another locale refused",
+      "unknown foreign audio role already present refused",
+      "approved final refused",
+      "different frozen final refused",
+      "QA failure refused",
+      "owner choice race refused",
+      "remote review race refused",
+      "normal exact asset routes only",
+      "part receipt cannot fake completion",
+      "asset full SHA and size pin required",
+      "all parent profile counts and original helper SHA pins fixed",
+      "imported independently reviewed audio guards execute unchanged"
+    ],
+    "imported_audio_guards": {
+      "formal_audio": {
+        "self_test": true,
+        "tests": [
+          "append exactly requested two roles and preserve originals",
+          "does not collect a JA role",
+          "same existing role is idempotent",
+          "conflicting requested role cannot replace old file",
+          "owner choice change aborts before POST",
+          "any review change aborts before POST",
+          "approved final is never overwritten",
+          "newest changed final is refused",
+          "unchecked attached dub is refused",
+          "historical QA failure refused",
+          "part indexes and completion checked",
+          "native existing-blob fast path explicit",
+          "only explicit current blob PUT allowed",
+          "no admin choice approval binary GET or extra routes",
+          "valid different ASR Jev retained",
+          "undefined secondary cannot pass",
+          "full intended truncation cannot pass",
+          "every locale needs explicit independent proof and full hash",
+          "requested locale must actually have all105 accepted current clips",
+          "duplicate or flagged independent clip is refused",
+          "known AAC endpoint560.505 with exact PCM560.433333 uses native rule",
+          "container length cannot substitute for exact PCM samples",
+          "unexplained container tail is refused",
+          "shifted stream start is refused",
+          "missing or malformed encoded/container timing is refused",
+          "wrong framecount or fps is refused",
+          "AAC duration beyond unchanged native allowance is refused",
+          "body candidate summary preserves missing official bookends and no package ready"
+        ],
+        "network_calls": 0,
+        "paid_calls": 0,
+        "media_or_source_writes": 0
+      },
+      "forty_audio": {
+        "self_test": true,
+        "tests": [
+          "append exactly requested two roles and preserve originals",
+          "does not collect a JA role",
+          "same existing role is idempotent",
+          "conflicting requested role cannot replace old file",
+          "owner choice change aborts before POST",
+          "any review change aborts before POST",
+          "approved final is never overwritten",
+          "newest changed final is refused",
+          "unchecked attached dub is refused",
+          "historical QA failure refused",
+          "part indexes and completion checked",
+          "native existing-blob fast path explicit",
+          "only explicit current blob PUT allowed",
+          "no admin choice approval binary GET or extra routes",
+          "valid different ASR Jev retained",
+          "undefined secondary cannot pass",
+          "full intended truncation cannot pass"
+        ],
+        "network_calls": 0,
+        "paid_calls": 0,
+        "media_or_source_writes": 0
+      },
+      "slides_main": {
+        "self_test": true,
+        "cases": [
+          "missing/incomplete/wrong-source pin refused",
+          "public body summary must state exactly current118 narration lines",
+          "append only main evidence preserving every payload field",
+          "summary discloses candidate and missing official bookends",
+          "existing identical role is idempotent, conflicting role refused",
+          "any foreign dub or unchecked/evidence role refused across remote reviews",
+          "ready foreign payload refused without file",
+          "non-ready dub payload does not invent ready status",
+          "concurrent choice change aborts before POST",
+          "any concurrent review change aborts before POST",
+          "approved or different newest cut refused",
+          "QA for another file or failed QA refused",
+          "normal parts and native early-complete existing blob",
+          "malformed duplicate missing invalid premature-complete parts refused",
+          "normal routes only and only pinned file upload",
+          "exact video frames with genuine longer AAC/container tail passes",
+          "one missing video frame fails",
+          "wrong video fps fails",
+          "wrong average video fps fails",
+          "one altered video duration tick fails",
+          "wrong reported video duration fails even with correct frame count",
+          "nonzero video start offset fails",
+          "container size mismatch fails",
+          "container padding not explained by an actual stream endpoint fails",
+          "nonzero container start fails",
+          "AAC shorter than complete video/narration fails"
+        ],
+        "network_calls": 0,
+        "paid_calls": 0,
+        "source_media_cache_flags_writes": 0
+      }
+    },
+    "network_calls": 0,
+    "paid_calls": 0,
+    "media_writes": 0,
+    "actual_audio_audit": false
+  },
+  "network_calls": 0,
+  "paid_calls": 0,
+  "media_writes": 0,
+  "actual_preflight": false
+}

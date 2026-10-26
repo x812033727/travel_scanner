@@ -1,0 +1,515 @@
+{
+  "title": "Presentasi AI: tinjau kerangka dulu, ubah PDF publik jadi 4 halaman dengan sumber",
+  "description": "Apa yang perlu diputuskan dalam kerangka sebelum mengubah PDF publik menjadi presentasi 4 halaman?\nUntuk pekerja yang perlu menyerahkan presentasi yang bisa diedit dan ditelusuri sumbernya.\n\nContoh orisinal lokal selesai pada 2026-10-25: kebutuhan penulis, draf dua halaman, kumpulan permintaan perubahan, dan tahap revisi disimpan dalam satu proses pembuatan yang sama. Ini bukan respons produk Notebook atau tinjauan interaktif yang benar-benar berhenti menunggu balasan. Berita resmi 2026-10-19 menjadi latar alur kerja; saya tidak masuk akun atau mencoba produknya.\n\nDatanya adalah statistik 2025 dari bab ekonomi Stanford 2026 AI Index. Nilai uang mengikuti cakupan investasi Quid: total perusahaan mencakup bagian investasi swasta, jadi keduanya tidak dijumlahkan; perbandingan wilayah terbatas pada investasi AI swasta. Angka 88% adalah responden yang melaporkan sendiri bahwa organisasinya memakai AI dalam setidaknya satu fungsi bisnis. Kesamaan pertanyaan dan penyebut untuk 70% dan 79% belum terkonfirmasi; keduanya hanya dicatat sebagai anotasi.\n\nDalam daftar rujukan, halaman 1 adalah rangkuman pertanyaan susunan penulis; halaman 2 sampai 4 mencantumkan lokasi dalam laporan asli.\n\nPDF yang diserahkan terdiri dari gambar halaman; PPTX mempertahankan teks dan bentuk asli. Berkas sudah dibuka ulang untuk memeriksa strukturnya, tetapi belum dirender langsung di PowerPoint.\n\nPrompt lengkap yang bisa dipakai ulang:\nGunakan hanya PDF publik yang saya berikan ini untuk membuat presentasi empat halaman bagi rekan kerja. Target durasi presentasi sekitar tiga menit. Berikan kerangka dulu; jangan buat slide dahulu.\nSetiap halaman hanya menjawab satu pertanyaan dan mencantumkan angka, tahun data, serta satuan yang akan dipakai. Cantumkan populasi responden atau cakupan statistik, nomor halaman tercetak pada laporan, serta urutan halaman dalam PDF. Pisahkan nilai investasi dari persentase pemakaian. Jangan jumlahkan total dengan bagian yang sudah tercakup di dalamnya.\nJika ada bagian sumber yang belum selaras, tandai sebagai perlu dikonfirmasi; jangan pilihkan satu angka untuk saya. Tunggu satu balasan saya yang memuat seluruh perubahan, baru buat presentasi empat halaman. Serahkan sekaligus berkas yang bisa diedit, PDF, dan daftar rujukan per halaman. Angka yang belum dikonfirmasi hanya menjadi catatan, jangan digambarkan sebagai kesimpulan pasti.\n\nPDF empat halaman, PPTX yang bisa diedit, rujukan per halaman, dan paket kebutuhan penulis: https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data",
+  "tags": [
+    "presentasi AI",
+    "Gemini Notebook",
+    "tinjau kerangka",
+    "PDF jadi presentasi",
+    "PPTX bisa diedit",
+    "Stanford AI Index",
+    "sumber presentasi",
+    "alat AI"
+  ],
+  "thumbnail": {
+    "tag": "Kerangka AI",
+    "headline": "**Tinjau**\nlalu buat",
+    "sub": "Kerangka ke berkas siap edit"
+  },
+  "chapters": {
+    "four-page-local-output": "Kebutuhan dari laporan publik",
+    "local-authored-scope": "Catatan memisahkan investasi dan pemakaian",
+    "reusable-full-prompt": "Kebutuhan lengkap, draf penulis masih 2 halaman",
+    "change-page-question": "Revisi serentak, tugas bagi 4 halaman",
+    "citation-record-connects-pages": "Halaman 2–4 kembali ke laporan",
+    "review-position-connection": "Google: tinjau kerangka sebelum membuat"
+  },
+  "source_hashes": {
+    "chapters": {
+      "four-page-local-output": "51b700404134",
+      "local-authored-scope": "2f037e384517",
+      "reusable-full-prompt": "21247e14419c",
+      "change-page-question": "e51fbabb1e17",
+      "citation-record-connects-pages": "3ffbd57a7b4f",
+      "review-position-connection": "360e6cc6c21f"
+    },
+    "title": "b709596fa404",
+    "description": "cdd89bf774a8",
+    "tags": "724e8e4b7864",
+    "thumbnail": "487d403f652f"
+  },
+  "lines": {
+    "2622": {
+      "source_hash": "d8cc05f5bd45",
+      "text": "Buka halaman asli lewat urutan PDF; cek nomor gambar, nilai, satuan."
+    },
+    "tirg": {
+      "source_hash": "a525e97bd4be",
+      "text": "25 Oktober 2026, saya buka laporan dan tulis kebutuhan presentasi."
+    },
+    "iihc": {
+      "source_hash": "d48a51ddb1fd",
+      "text": "Bolehkah dua nilai investasi ini dijumlahkan?"
+    },
+    "dgy5": {
+      "source_hash": "192758eb9527",
+      "text": "Bagaimana membagi kerangka agar tiap halaman punya tugas?"
+    },
+    "dfj8": {
+      "source_hash": "14f59336a3a4",
+      "text": "Usai diserahkan, bisa diedit dan dilacak sumbernya?"
+    },
+    "3vx9": {
+      "source_hash": "ebeb1c83c4ad",
+      "text": "Pada 19 Oktober, Gemini Notebook memperkenalkan tinjauan kerangka sebelum pembuatan."
+    },
+    "7ya8": {
+      "source_hash": "d3273886b7af",
+      "text": "Boleh dijumlahkan? Saya isi cakupan investasi di catatan sumber."
+    },
+    "jyx8": {
+      "source_hash": "d9f95f2462d3",
+      "text": "Contoh orisinal lokal, terinspirasi pengumuman Google; saya tak mencoba Notebook."
+    },
+    "sk7r": {
+      "source_hash": "b983d45cd5ee",
+      "text": "Bahannya bab ekonomi laporan Stanford AI Index."
+    },
+    "45g3": {
+      "source_hash": "5913d5dd4ff9",
+      "text": "PDF publik ini 60 halaman; presentasi hanya perlu data yang relevan."
+    },
+    "fskd": {
+      "source_hash": "b22cb01cd908",
+      "text": "Tugasnya: rekan kerja memahami investasi AI dan pemakaian di organisasi."
+    },
+    "vvp9": {
+      "source_hash": "ea32ebdf79df",
+      "text": "Isi audiens dan tujuan dulu agar tahu isi yang disimpan."
+    },
+    "k3s9": {
+      "source_hash": "971077fedfef",
+      "text": "Catatan memisahkan tahun laporan dan tahun data."
+    },
+    "immj": {
+      "source_hash": "1c42f7f91f82",
+      "text": "Laporannya terbit 2026; data yang dipakai berasal dari 2025."
+    },
+    "p9da": {
+      "source_hash": "7c96629fb0cf",
+      "text": "Jika tidak, judul baru bisa membuat data lama terbaca sebagai survei baru."
+    },
+    "8gv2": {
+      "source_hash": "bc1c315be28b",
+      "text": "Sama-sama AI: nilai investasi dan persen pemakaian boleh satu grafik?"
+    },
+    "sxfi": {
+      "source_hash": "3dba5513987e",
+      "text": "Catat wilayah, jenis investasi, dan satuan dolar."
+    },
+    "b4kb": {
+      "source_hash": "491281adb7b3",
+      "text": "Untuk persen, catat siapa responden dan pemakaian yang dilaporkan."
+    },
+    "rrvd": {
+      "source_hash": "1d67c66b92bb",
+      "text": "Beda pertanyaan; dua indikator saya catat terpisah."
+    },
+    "ghds": {
+      "source_hash": "2ee258b8dfcf",
+      "text": "Catatan menyimpan dua nomor halaman dengan fungsi berbeda."
+    },
+    "pt7x": {
+      "source_hash": "3063293a5842",
+      "text": "Nomor tercetak: angka di kertas laporan."
+    },
+    "q2hz": {
+      "source_hash": "f4079d8b0691",
+      "text": "Urutan PDF: posisi berkas, dihitung dari halaman pertama."
+    },
+    "5s9a": {
+      "source_hash": "c22bef5f9dc4",
+      "text": "Dengan berkas sama, rekan kembali ke halaman lewat urutannya."
+    },
+    "9c7v": {
+      "source_hash": "df2bd0f34193",
+      "text": "Nomor gambar menuntun ke grafik pada halaman asli itu."
+    },
+    "hpdz": {
+      "source_hash": "1506c94e198b",
+      "text": "Bagaimana syarat ini mencegah hanya menerima ringkasan?"
+    },
+    "g7uh": {
+      "source_hash": "8d9332880cfa",
+      "text": "Saya rangkai kebutuhan ini jadi prompt lengkap; kamu bisa mengadaptasi formatnya."
+    },
+    "2ai4": {
+      "source_hash": "bc35fb6487db",
+      "text": "Pakai hanya PDF publik ini dari saya: buat 4 halaman bagi rekan kerja."
+    },
+    "zny3": {
+      "source_hash": "1c6b42d399cd",
+      "text": "Sekitar 3 menit."
+    },
+    "kh9k": {
+      "source_hash": "8dc4ac5ef8e9",
+      "text": "Kerangka dulu; jangan buat slide dahulu."
+    },
+    "zibg": {
+      "source_hash": "bf506d554fa0",
+      "text": "Satu pertanyaan per halaman; tulis angka, tahun data, dan satuan."
+    },
+    "uqnr": {
+      "source_hash": "11e9cae44fbf",
+      "text": "Populasi responden atau cakupan statistik; nomor tercetak laporan dan urutan halaman PDF."
+    },
+    "r3y9": {
+      "source_hash": "9fd4f6ef7fd2",
+      "text": "Pisahkan nilai investasi dan persentase pemakaian."
+    },
+    "bd3z": {
+      "source_hash": "880f33fb3976",
+      "text": "Jangan jumlahkan total dan bagiannya."
+    },
+    "y3nk": {
+      "source_hash": "1fe11e369d41",
+      "text": "Sumber belum selaras: tandai perlu konfirmasi; jangan pilihkan angka bagi saya."
+    },
+    "7g33": {
+      "source_hash": "29b4af0ab4eb",
+      "text": "Tunggu satu balasan berisi semua revisi saya, baru buat 4 halaman."
+    },
+    "2knx": {
+      "source_hash": "48962be73c55",
+      "text": "Serahkan berkas yang bisa diedit, PDF, dan rujukan per halaman sekaligus."
+    },
+    "cht8": {
+      "source_hash": "022d8dda43e4",
+      "text": "Angka belum pasti: hanya catatan, bukan grafik kesimpulan pasti."
+    },
+    "nm8j": {
+      "source_hash": "be3b79d1219f",
+      "text": "Jika tahun data absen di kerangka, di mana ditambah?"
+    },
+    "9h68": {
+      "source_hash": "31540993d989",
+      "text": "Minta isi tahun di kolom tahun data halaman itu."
+    },
+    "fx3e": {
+      "source_hash": "0e127639bc0e",
+      "text": "Kebutuhan lengkap pasti membuat kerangka awal cocok?"
+    },
+    "wy6f": {
+      "source_hash": "3c2fecc68920",
+      "text": "Draf contoh saya: 2 halaman, belum ditata jadi slide."
+    },
+    "kwf8": {
+      "source_hash": "89d7d654529c",
+      "text": "Satu: «Ikhtisar Investasi dan Adopsi AI»; lainnya: «Susun dalam Satu Grafik Ikhtisar»."
+    },
+    "aces": {
+      "source_hash": "675f0f8efbb5",
+      "text": "Keduanya memuat uang, wilayah, persen pemakaian, dan angka belum pasti yang sama."
+    },
+    "gy4m": {
+      "source_hash": "4ab993e594db",
+      "text": "Bahan ada, tetapi belum ada pertanyaan pembaca untuk tiap halaman."
+    },
+    "h58h": {
+      "source_hash": "d4596e33c2bc",
+      "text": "Catatan memuat draf tulisan saya dan semua permintaan revisi."
+    },
+    "z84y": {
+      "source_hash": "7dde88f5606d",
+      "text": "Tahap disimpan dalam satu pembuatan, tanpa benar-benar menunggu balasan saya."
+    },
+    "yrg5": {
+      "source_hash": "1bcc0c0096d6",
+      "text": "Tanpa tugas tiap halaman, keputusan apa yang harus diubah?"
+    },
+    "j4eq": {
+      "source_hash": "669bbb09ff50",
+      "text": "Tadi soal membagi bahan; revisi saya menentukan pertanyaan tiap halaman."
+    },
+    "kmts": {
+      "source_hash": "c40d11281804",
+      "text": "Bagi sesuai kebutuhan: bedakan pertanyaan investasi dan persen pemakaian."
+    },
+    "vyp5": {
+      "source_hash": "b94671358dd6",
+      "text": "Jangan jumlahkan investasi perusahaan global dan bagian swastanya."
+    },
+    "jzkh": {
+      "source_hash": "f9abbb484b34",
+      "text": "Per negara: hanya pendanaan swasta, bukan total belanja AI nasional."
+    },
+    "nx2z": {
+      "source_hash": "88016cc8991d",
+      "text": "Pertahankan tahun data, satuan, populasi atau cakupan, dan kedua nomor halaman."
+    },
+    "b7sd": {
+      "source_hash": "cd8d2c0169f9",
+      "text": "Persen AI generatif belum selaras: catatan dua bagian sumber."
+    },
+    "i8qv": {
+      "source_hash": "98e105f49094",
+      "text": "Terakhir, serahkan semua berkas dan rujukan sesuai daftar tadi."
+    },
+    "8k94": {
+      "source_hash": "760af974b5da",
+      "text": "Di mana revisi harus terlihat agar dianggap selesai?"
+    },
+    "6frs": {
+      "source_hash": "5c70d14d1159",
+      "text": "Halaman 1: berapa uang ditanam, berapa orang melaporkan pemakaian."
+    },
+    "esm2": {
+      "source_hash": "a78b1f92f767",
+      "text": "Uang: cakupan investasi; persen: responden dan organisasi."
+    },
+    "x5tu": {
+      "source_hash": "61074802a302",
+      "text": "Halaman 2 menggrafikkan uang global, memperlihatkan bagian dalam total."
+    },
+    "fpqu": {
+      "source_hash": "d35b50d6bb65",
+      "text": "Investasi AI perusahaan global sebesar 581,69 miliar USD."
+    },
+    "uyre": {
+      "source_hash": "e504c1d1bee5",
+      "text": "Di dalamnya, investasi AI swasta 344,66 dalam satuan yang sama."
+    },
+    "8ddn": {
+      "source_hash": "1d295d4be676",
+      "text": "Tadi soal boleh dijumlahkan; total sudah mencakup bagian itu."
+    },
+    "rzc3": {
+      "source_hash": "3cf95628769b",
+      "text": "Menambah investasi swasta lagi menghitung ulang bagian yang sudah masuk."
+    },
+    "tjqp": {
+      "source_hash": "ee87ba087fd8",
+      "text": "Saya beri «di dalamnya» di batang pendek agar hubungan bagiannya jelas."
+    },
+    "zhzm": {
+      "source_hash": "32cfee0301cb",
+      "text": "Bolehkah perbandingan wilayah ini disebut total belanja AI tiap negara?"
+    },
+    "qa92": {
+      "source_hash": "3b51f072d58a",
+      "text": "Halaman 3: cakupan investasi AI swasta Quid dalam laporan."
+    },
+    "f6fw": {
+      "source_hash": "8329157cf444",
+      "text": "Sama-sama tahun 2025, dalam miliar USD, Amerika Serikat sebesar 285,88."
+    },
+    "hxni": {
+      "source_hash": "a1d031f4ab44",
+      "text": "Tiongkok: 12,41, cakupan dan satuannya sama."
+    },
+    "frra": {
+      "source_hash": "c64f67b7ebb5",
+      "text": "Statistik swasta yang sama, bukan seluruh belanja publik dan swasta kedua negara."
+    },
+    "2bm9": {
+      "source_hash": "9531894d74b2",
+      "text": "Dua batang memakai tahun, satuan, dan jenis investasi yang sama."
+    },
+    "a4ys": {
+      "source_hash": "a4a23dd00784",
+      "text": "Halaman 4 beralih ke pemakaian; satuan dolar tak berlaku."
+    },
+    "9xhq": {
+      "source_hash": "9e4f4b429f99",
+      "text": "Dalam survei, 88% responden melaporkan"
+    },
+    "iswb": {
+      "source_hash": "0281c17ef39e",
+      "text": "organisasinya memakai AI di minimal satu fungsi bisnis."
+    },
+    "dp4j": {
+      "source_hash": "bf2ebaceca72",
+      "text": "Laporan responden sendiri, bukan sensus semua perusahaan dunia."
+    },
+    "gy6e": {
+      "source_hash": "18bab12d0245",
+      "text": "Angka AI generatif belum pasti harus menahan presentasi?"
+    },
+    "g84b": {
+      "source_hash": "dc6ec2ad2579",
+      "text": "Ringkasan: 70%, organisasi memakai di minimal satu fungsi bisnis."
+    },
+    "e9xt": {
+      "source_hash": "3031a9af3a94",
+      "text": "Uraian: 79%, responden melaporkan organisasi sering memakai."
+    },
+    "cwpj": {
+      "source_hash": "3033add5b842",
+      "text": "Keduanya 2025; pertanyaan dan penyebut belum dipastikan sama."
+    },
+    "iek7": {
+      "source_hash": "8506062e2d1b",
+      "text": "Saya tak anggap keduanya tingkat adopsi terkonfirmasi atau laporannya salah."
+    },
+    "aywh": {
+      "source_hash": "f59eba903ebf",
+      "text": "Catat kedua bagian; isi lain yang pasti tetap diserahkan."
+    },
+    "8arj": {
+      "source_hash": "5a6bb12034ac",
+      "text": "Rujukan menghubungkan halaman 2–4 ke laporan; halaman 1 ikhtisar pertanyaan penulis."
+    },
+    "5ytw": {
+      "source_hash": "9d0cfaae234c",
+      "text": "Tadi soal sumber: setelah mendapat presentasi ini, bagaimana kembali ke grafik asli?"
+    },
+    "cuw5": {
+      "source_hash": "f0e3b423b425",
+      "text": "Halaman 2 merujuk halaman tercetak 178, halaman PDF 8."
+    },
+    "u7s7": {
+      "source_hash": "631d89554665",
+      "text": "Nomor gambarnya 4.2.1; kedua nilai uang berasal dari grafik ini."
+    },
+    "a9g4": {
+      "source_hash": "0c14aece95bb",
+      "text": "Saat mengutip ke rekan, simpan juga nomor halaman tercetak laporan."
+    },
+    "thhi": {
+      "source_hash": "4fa4d7588cee",
+      "text": "Halaman 3: tercetak 182, halaman PDF 12."
+    },
+    "z3rg": {
+      "source_hash": "4b44c1ce29cb",
+      "text": "Rujukan menghubungkan grafik investasi swasta yang sama dengan dua wilayah."
+    },
+    "buwe": {
+      "source_hash": "65075afc9f86",
+      "text": "Halaman 4 merujuk halaman tercetak 193, halaman PDF 23."
+    },
+    "m5bu": {
+      "source_hash": "8d874397d032",
+      "text": "Catatan belum pasti juga merujuk ringkasan: halaman tercetak 173, halaman PDF 3."
+    },
+    "j47b": {
+      "source_hash": "c66bd65ea060",
+      "text": "Perbedaan ini hanya di catatan, di luar 5 klaim angka yang dipakai."
+    },
+    "uhev": {
+      "source_hash": "b9c71ba7f304",
+      "text": "Jika rekan mengedit teks, cukupkah gambar yang sudah ditata?"
+    },
+    "mgin": {
+      "source_hash": "19210869def6",
+      "text": "Isi sama, dua versi saya serahkan: untuk dilihat dan diedit."
+    },
+    "eeiu": {
+      "source_hash": "134c6bf2f652",
+      "text": "PDF: 4 gambar halaman untuk melihat tata letak, tanpa teks yang bisa diekstrak."
+    },
+    "hj8r": {
+      "source_hash": "77e1d1a2d638",
+      "text": "Tadi soal bisa mengedit: saya juga menyerahkan PPTX yang bisa diedit."
+    },
+    "t5vz": {
+      "source_hash": "3577c16a8d83",
+      "text": "Teks dan bentuk terpisah; gambar halaman tidak ditanam."
+    },
+    "xxcb": {
+      "source_hash": "32ee29ce450b",
+      "text": "Satuan halaman investasi tetap di kotak teks asli."
+    },
+    "aetd": {
+      "source_hash": "07b66edfa34a",
+      "text": "Dibuka ulang untuk cek struktur, belum dirender di PowerPoint."
+    },
+    "du2s": {
+      "source_hash": "56e181e95269",
+      "text": "Jika dipresentasikan di sana, buka dulu; cek font dan pergantian baris."
+    },
+    "kjrf": {
+      "source_hash": "ebd3c813f84b",
+      "text": "Presentasi, berkas yang bisa diedit, dan sumber per halaman: paket yang bisa diperiksa."
+    },
+    "yu7f": {
+      "source_hash": "2a7d58ab9b06",
+      "text": "Di mana alur lokal ini terhubung ke fitur baru Google?"
+    },
+    "3eg2": {
+      "source_hash": "c06f1fc62d6a",
+      "text": "Tinjauan di berita itu ada di tahap penentuan isi tiap halaman di sini."
+    },
+    "vufg": {
+      "source_hash": "5dcef91c9d9f",
+      "text": "Di Gemini Notebook, pilih format dan gaya, lalu buka Review."
+    },
+    "8ikq": {
+      "source_hash": "0a57200f9fb6",
+      "text": "Untuk slide, tinjau kerangka; untuk video, catatan produksi."
+    },
+    "w72f": {
+      "source_hash": "1a144e75ad42",
+      "text": "Semua revisi sekaligus, lalu tekan Proceed untuk membuat."
+    },
+    "8u6s": {
+      "source_hash": "a1248e5b2d27",
+      "text": "Bisa juga langsung membuat; tinjauan tidak wajib."
+    },
+    "p3j7": {
+      "source_hash": "e1970734575a",
+      "text": "Usai Proceed, kerangka tak bisa diedit."
+    },
+    "63mu": {
+      "source_hash": "3a83d8baa80c",
+      "text": "Pastikan «bagian di dalamnya» dan «investasi swasta» saat ini."
+    },
+    "k3y5": {
+      "source_hash": "94203027c4cd",
+      "text": "Apakah setiap akun sudah melihat opsi ini?"
+    },
+    "cgtw": {
+      "source_hash": "dea898f9de1f",
+      "text": "Workspace: rilis bertahap mulai 16 Oktober, hingga 15 hari."
+    },
+    "yw8i": {
+      "source_hash": "a5e84a0ecf40",
+      "text": "Pengumuman memuat beragam jenis akun; bantuan menyebut kreasi bersama fitur Ultra."
+    },
+    "qtzp": {
+      "source_hash": "f4cc3a0471b0",
+      "text": "Tanpa uji akun yang menjelaskan bedanya, saya tak menjamin akses gratis."
+    },
+    "skdk": {
+      "source_hash": "6afaa621cd1c",
+      "text": "Sebelum memakai produk, cek paketmu dan opsi tinjauan kerangka."
+    },
+    "p2we": {
+      "source_hash": "a9c871c2c963",
+      "text": "Cek opsi akun; di permintaan tadi, ubah audiens dan panjang presentasi."
+    },
+    "cesj": {
+      "source_hash": "b5fbc399effa",
+      "text": "Ganti «rekan kerja» dengan audiensmu yang sebenarnya."
+    },
+    "tkzk": {
+      "source_hash": "664f6fbee020",
+      "text": "Ubah jumlah halaman dan waktu bicara sesuai kebutuhan penyerahan."
+    },
+    "teri": {
+      "source_hash": "5edcdd4c154b",
+      "text": "Minta kerangka dengan pertanyaan dan sumber agar ada isi konkret untuk direvisi."
+    },
+    "8udr": {
+      "source_hash": "f34f22ab1a92",
+      "text": "Pakai kebutuhan ini: tulis pertanyaan yang akan dijawab halaman pertamamu."
+    },
+    "yf5s": {
+      "source_hash": "9bed9f156be2",
+      "text": "Komentar: apa yang ingin kamu jadikan presentasi?"
+    },
+    "umdp": {
+      "source_hash": "489f39b7bb17",
+      "text": "Berlangganan untuk memahami alat AI lewat hasil nyata."
+    }
+  }
+}

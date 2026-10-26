@@ -1,0 +1,214 @@
+{
+  "observed_at": "2026-10-25T23:44:21.641785+00:00",
+  "status": "in-progress",
+  "stage": "current_narration_118of118_PASS_body_candidate_assembly_running",
+  "source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+  "claims_sha256": "2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7",
+  "speech_hash": "a8055d3edb90bcda",
+  "facts": {
+    "targeted_current_verify": "verify-5.md",
+    "result": "PASS",
+    "verify_sha256": "e812c5e1603b74c2d3dc117889df3802b0320e29e01fdffcd94c95258986cac9",
+    "scope": "Three lexical replacements, claims/unchanged dependencies only; not audio or narrative PASS."
+  },
+  "narration": {
+    "lines": 118,
+    "high_level_requests": 103,
+    "current_timing_receipt": "narration-current-timing-snapshot.json",
+    "current_timing_receipt_sha256": "64893a7d0ee1b658143ae726762b6f0fbde1c81b2ccbb5060d012f62d0c38152",
+    "latest_TTS": {
+      "stage": "tts",
+      "at": "2026-10-25T23:22:54.155Z",
+      "requests": 103,
+      "synthesized": 3,
+      "fallbacks": [],
+      "billable": 67,
+      "voice": "Sulafat",
+      "voices": [
+        "gemini:Sulafat"
+      ]
+    },
+    "requests_reused": 100,
+    "seconds": 603.5333333333333,
+    "frames": 18106,
+    "body_before_outro_seconds": 591.3666666666667,
+    "body_excluding_cold_open_and_outro_seconds": 566.1333333333333,
+    "initial_original_flags": 7,
+    "original_text_retake1_flags": 5,
+    "original_text_retake2_flags": 3,
+    "original_text_retake2_accepted": 115,
+    "original_text_retake2_checked": 118,
+    "original_text_retake2_unchecked": 0,
+    "latest_completed_check_belongs_to_previous_speech": null,
+    "latest_completed_check": {
+      "stage": "check-audio",
+      "at": "2026-10-25T23:33:19.815Z",
+      "lines": 118,
+      "exact": 84,
+      "alike": 15,
+      "judged": 19,
+      "cleared": 13,
+      "flagged": 0,
+      "unchecked": 0,
+      "transcribed": 3,
+      "jev_calls": 0
+    },
+    "applied_lexical_ids": [
+      "nm8j",
+      "h58h",
+      "j47b"
+    ],
+    "unchanged_other_source_lines": 115,
+    "current_take_audio_check_complete": true,
+    "current_strict_audio_audit_complete": true,
+    "current_audio_ready": true,
+    "strict_helper": {
+      "original": "/workspace/work/ai-tech-next/verify-slides-narration.mjs",
+      "original_sha256": "4921dbf39faa304de8965de6f45478e2e9b2f8430ab84a0985f8444259c932a1",
+      "new": "/workspace/work/ai-tech-next/verify-slides-narration.listener-reword1.mjs",
+      "new_sha256": "504fe71404cb73a3e19c3830aaab71b7dae564ff3e90b672ff8268ab1decc966",
+      "source_CFG_only": [
+        "5c762406b378be00cfad56936a634399954185aabce05d4b95287fb40e632490",
+        "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f"
+      ],
+      "speech_CFG_only": [
+        "0f1e427877b23e0e",
+        "a8055d3edb90bcda"
+      ],
+      "exact_reverse_to_original": true,
+      "all_other_bytes_identical": true,
+      "saved_selftest_receipt": "/workspace/work/ai-tech-next/verify-slides-narration.listener-reword1.selftest.json",
+      "saved_selftest_receipt_sha256": "552d9aa8e7e0038dddb529e50d24549216b8bb7a412c06eba820d3eeb304e39a",
+      "audit_executed_by_this_reviewer": false,
+      "selftests_rerun_by_this_reviewer": false,
+      "scope": "Read-only exact two-CFG substitution review; no actual audio audit executed by reviewer.",
+      "saved_root_selftest_cases": 14,
+      "all_other_guard_bytes_preserved": true
+    },
+    "latest_completed_check_speech_hash": "a8055d3edb90bcda",
+    "current_checked_wavs": 118,
+    "current_accepted": 118,
+    "current_flags": 0,
+    "current_unchecked": 0,
+    "current_narration_sha256": "4a298ebb54e7fc4fca152d12e2b11f9c6871bfb51e577addbce239b2f95f38c7",
+    "strict_audio_receipt": "narration-listener-reword1-verification.json",
+    "strict_audio_receipt_sha256": "b9ba45c3eeca003fc4e862eae7126e73d39d89ae6de66b22a55f4e4ce32f6d87",
+    "native_process_exit_code": 0
+  },
+  "render": {
+    "completed_pre_reword": true,
+    "source_bound_by_completed_render": "5c762406b378be00cfad56936a634399954185aabce05d4b95287fb40e632490",
+    "visual_hash": "1a6b602366198b99",
+    "current_source_pure_visual_hash_identical": true,
+    "exit_code": 0,
+    "states": 114,
+    "drawn": 114,
+    "reused": 0,
+    "seconds": 477,
+    "identical_to_previously_viewed_preview": 114,
+    "different_stills": 0,
+    "all114_still_hashes_independently_recomputed": true,
+    "receipt": "render-still-binding.json",
+    "receipt_sha256": "010ae3a66023960f7c01e92bda10876c97d584dc8f114f260f891f992566ce99",
+    "scope": "Unchanged stills/transitions/thumbnail only. No encoded film, current-speech timing or final QA approval."
+  },
+  "narrative": {
+    "r2_original_raw_yes": [
+      12,
+      12
+    ],
+    "r2_original_raw_total": 13,
+    "r2_native_after_citation_repair_yes": [
+      12,
+      12
+    ],
+    "r2_native_after_citation_repair_passed": [
+      false,
+      false
+    ],
+    "required_NO": [
+      "no_recap"
+    ],
+    "informed_lexical_delta_review": "narrative-listener-reword1-informed-review.json",
+    "informed_lexical_delta_review_sha256": "6196e150dfd0a9958ba1aae25cc569095dbd70a3bb2952a6597bc377e0e56258",
+    "new_blind_run": false,
+    "new_score": null,
+    "original_results_unchanged": true,
+    "adopted_teaching_tradeoff": "Complete reusable prompt and the real example repeat necessary treatment principles; no forced YES or13/13 claim."
+  },
+  "native_static_checks": {
+    "lint_errors": 0,
+    "lint_warnings": 2,
+    "current_TTS_compose_bytes": 3129,
+    "credits": 1,
+    "credit_bytes": 272,
+    "chapters": 6,
+    "metadata_problems": [],
+    "receipt": "listener-reword1-native-static.json",
+    "receipt_sha256": "8c4a3448dd76717c28fbca00e7947ada389b6dcac4b652d7937c62bf7fe496f7",
+    "scope": "Current TTS-timeline metadata composition, not encoded or caption package QA."
+  },
+  "film": {
+    "encoded_final_produced": false,
+    "core_QA_run": false,
+    "backend_final_delivered": false,
+    "body_candidate_assembly_running": true,
+    "assembly_log": "/workspace/work/ai-tech-next/fourth-assemble-body-initial.log",
+    "scope": "Body candidate only; official channel bookends missing. No actual MP4 result or QA claimed before assembly exit."
+  },
+  "branding": {
+    "formal_bookends_available": false,
+    "branding_json_exists": false,
+    "complete": false,
+    "scope": "Still or static outro is not installed official channel animation."
+  },
+  "local_language_choice": {
+    "locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "parts": [
+      "metadata",
+      "captions",
+      "dub"
+    ],
+    "authority": "Standing user delegation; local record, not remote UI choice change."
+  },
+  "localization": {
+    "foreign_metadata_ready": false,
+    "foreign_caption_sets_ready": 0,
+    "foreign_actual_audio_ready": 0,
+    "foreign_actual_audio_delivered": 0,
+    "all_eight_ready": false,
+    "native_sheets_prepared": 8,
+    "metadata_or_caption_translations_completed": 0,
+    "actual_foreign_audio_completed": 0
+  },
+  "backend": {
+    "page": "https://mokaair.com/zh-TW/admin/videos?video=ai-slides-outline-review",
+    "topic_registered": true,
+    "outline_submitted": true,
+    "last_observed_outline_status": "pending",
+    "last_observed_outline_at": "2026-10-25T20:07:49Z",
+    "remote_status_refetched_in_this_documentation_update": false,
+    "final_delivered": false,
+    "remote_approval_changed": false,
+    "language_batch_submitted": false
+  },
+  "overall_complete": false,
+  "youtube_publication_performed": false,
+  "git_merge_performed": false,
+  "deployment_performed": false,
+  "pending": [
+    "Complete active body candidate assembly, validate actual encoded film/timings/CC/core QA, then normal backend candidate delivery.",
+    "Obtain/verify legally usable official channel bookend assets under guard; do not call missing branding a complete formal final.",
+    "Produce/review all eight metadata/CC/dubs on their actual timings, independently audit current audio, and verify real incremental/backend language delivery.",
+    "Preserve original narrative false, historical facts receipts and actual pending statuses."
+  ]
+}

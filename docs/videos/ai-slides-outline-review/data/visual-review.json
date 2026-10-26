@@ -1,0 +1,13 @@
+{
+  "reviewed_at_utc_date": "2026-10-25",
+  "method": "Actually opened all four rendered PNG slides with the image viewing tool; also opened complete source PDF page 3 and page 23 renders to inspect the 70/79 contexts.",
+  "slides": [
+    {"file": "output/s1.png", "observed": "Two readable question blocks separate investment amounts from respondents reporting organizational use. No visible overlap or clipping; 2026 report versus 2025 data is explicit."},
+    {"file": "output/s2.png", "observed": "581.69 and 344.66 are visible with billion-USD unit and 2025 title; subset warning and printed/PDF page citation visible. No visible overlap or clipping."},
+    {"file": "output/s3.png", "observed": "285.88 and 12.41 visible; same private-financing scope, data year, unit and source page citation visible. Small China bar remains positive. No visible overlap or clipping."},
+    {"file": "output/s4.png", "observed": "88% is the adopted survey value. Red annotation states summary70/detail79 and unresolved question/denominator alignment; neither is presented as an adopted GenAI rate. No visible overlap or clipping."}
+  ],
+  "source_context": "Full source page 3 visibly says 70% in the chapter highlight. Full source page23 body/figure says79%, with respondent/regularly wording. This confirms differing source observations, not identical cohort/question or publisher error.",
+  "product_scope": "Every slide explicitly says local workflow demonstration, not Gemini Notebook product UI; footer discloses no Notebook/Canva generation service was executed.",
+  "limits": "Visual review covers the four PNGs and corresponding PNG-backed PDF layout. Native PowerPoint rendering was not performed; editable PPTX was structurally reopened only. No audience comprehension or mobile-device test was run."
+}

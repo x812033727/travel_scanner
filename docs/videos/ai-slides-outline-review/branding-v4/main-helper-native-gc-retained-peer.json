@@ -1,0 +1,96 @@
+{
+  "observed_at": "2026-10-26T03:41:45.232958+00:00",
+  "self_test": true,
+  "scope": "Pinned native pure kept_files AST extraction plus native ReviewStore.keep_only on temporary tiny synthetic bytes. Known three media hashes are filename labels only. No production upload/media verification is claimed.",
+  "runner_file": "/workspace/work/videos/_ai-tech-bookend-renewal/native-review-history-gc-fixture.py",
+  "runner_sha256": "7f6a9cc701a61bfc09b1019d214aeda730604ed125122d65582c171b07b3891c",
+  "native_service": {
+    "file": "/workspace/work/travel-scanner-slides/apps/api/app/video_reviews/admin_service.py",
+    "sha256": "4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c",
+    "kept_files_start_line": 554,
+    "kept_files_source_sha256": "8d49de535aaef311dc064fb4eb5be1433da98736a4d1a4b980a2fea6c4736d78",
+    "live": [
+      "pending",
+      "approved",
+      "rejected"
+    ],
+    "renewal_key": "_final_renewal",
+    "upload_grace_seconds": 3600.0
+  },
+  "native_storage": {
+    "file": "/workspace/work/travel-scanner-slides/apps/api/app/video_reviews/storage.py",
+    "sha256": "8eadf5e4f765bcae38f08ae20b163e706cb459165ee2dbe891caada4da7614ce",
+    "class": "ReviewStore",
+    "method": "keep_only"
+  },
+  "three_hash_roles": {
+    "evidence_zh_tw_1080p_mp4": "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c",
+    "evidence_history_body_1080p_mp4": "3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea",
+    "evidence_history_body_preview_mp4": "b3f3b2615270439facda449fc24d7f32a2b7d7ae97f8de34bc2a4cbae2be6d31"
+  },
+  "cases": [
+    {
+      "case": "superseded_undecided_old_blobs_pruned_counterexample",
+      "passed": true,
+      "history_refs_on_current_pending": false,
+      "current_pending_file_refs": [
+        {
+          "role": "evidence_zh_tw_1080p_mp4",
+          "sha256": "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c"
+        }
+      ],
+      "keep_hashes": [
+        "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c"
+      ],
+      "removed_hashes": [
+        "3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea",
+        "b3f3b2615270439facda449fc24d7f32a2b7d7ae97f8de34bc2a4cbae2be6d31"
+      ],
+      "remaining_hashes": [
+        "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c"
+      ],
+      "old_review_metadata_unchanged": true,
+      "current_qa_payload_unchanged": true,
+      "all_fixture_mtimes_more_than_one_hour_old": true
+    },
+    {
+      "case": "live_history_refs_preserve_both_old_blobs",
+      "passed": true,
+      "history_refs_on_current_pending": true,
+      "current_pending_file_refs": [
+        {
+          "role": "evidence_zh_tw_1080p_mp4",
+          "sha256": "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c"
+        },
+        {
+          "role": "evidence_history_body_1080p_mp4",
+          "sha256": "3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea"
+        },
+        {
+          "role": "evidence_history_body_preview_mp4",
+          "sha256": "b3f3b2615270439facda449fc24d7f32a2b7d7ae97f8de34bc2a4cbae2be6d31"
+        }
+      ],
+      "keep_hashes": [
+        "3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea",
+        "b3f3b2615270439facda449fc24d7f32a2b7d7ae97f8de34bc2a4cbae2be6d31",
+        "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c"
+      ],
+      "removed_hashes": [],
+      "remaining_hashes": [
+        "3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea",
+        "b3f3b2615270439facda449fc24d7f32a2b7d7ae97f8de34bc2a4cbae2be6d31",
+        "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c"
+      ],
+      "old_review_metadata_unchanged": true,
+      "current_qa_payload_unchanged": true,
+      "all_fixture_mtimes_more_than_one_hour_old": true
+    }
+  ],
+  "temporary_files_removed": true,
+  "network_calls": 0,
+  "paid_calls": 0,
+  "actual_preflight": false,
+  "new_copy_reads": false,
+  "source_or_production_media_writes": 0
+}
