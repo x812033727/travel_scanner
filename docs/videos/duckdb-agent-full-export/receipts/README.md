@@ -23,3 +23,8 @@
 prepared17檔及author freeze的[逐bytes封存](../history/before-root-verify4-adoption/identity.json)另列身份，原68份reviews保持SHA。[當前索引](root-verify4-adoption-index.json)不收自己／mutable progress／validation／freeze以免循環；[文件驗證](root-verify4-adoption-validation.json)和[新freeze](root-verify4-adoption-freeze.json)各自明列範圍。
 
 [首次呼叫診斷](root-verify4-initial-invocation-diagnostic.json)記root先用錯estimateTimeline參數，在寫報告前失敗；原stderr保留tool session，不捏造raw檔。修正後的真實報告才是PASS；本輪沒有重新live GET、付費TTS／ASR、媒體或server核准。
+
+
+## 英文文字採用索引
+
+當前使用[en-text-adoption-index.json](en-text-adoption-index.json)，原[verify4索引](root-verify4-adoption-index.json)、[metadata準備freeze](metadata-public-links-freeze.json)與所有舊紀錄不改。新增[EN實際native採用](../localization/en/actual-native-text-adoption.json)只涵蓋111targets／六章／metadata／縮圖詞的本地文字；不是CC檔、M4A、fit、ASR或後台交付。作者原26freeze、第一個pass3期望錯誤、root獨立逐句審查與真native merge log各自保留範圍；原生估時文字限制不代表音訊PASS。更新前doc／task／index及兩個舊freeze在[archive](../history/before-EN-text-adoption-docs/identity.json)有精確bytes／SHA。

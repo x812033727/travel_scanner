@@ -38,6 +38,7 @@ scope:
 - [x] 正常Jev outline分析、保存raw回覆與分數／失敗原因，送正常hand-pushed pending review後做委派local adopt。
 - [x] 接收六章scratch並導入ca1e／64景111句；verify3當前21項CONFIRMED、視覺修正與完整raw/native歷史保存。
 - [x] 根層verify-1/2/3精確copy供native facts；正常script pending、native本地採用與TTS dry-run實際收據落地。
+- [x] EN完整111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；此為文字1/8，沒有actual CC／M4A／後台交付。
 - [ ] root解除provider hold後才啟動bounded付費TTS及當前音訊驗收；其後完整render／QA與八語交付。
 - [x] 首commit／push／PR1861後root實際GET公開CSV／42-entry ZIP，各200且完整bytes／SHA相同；資料夾HTML未另GET。
 
@@ -80,3 +81,10 @@ Root明確委派/root/formal_docs_commit沿用本票codex-duckdb-20261025 claim�
 當前40eb僅description追加兩個真實immutable URL；root獨立verify4 MD c1b7af46f33dbc6fdd3a36ca562c5531bbdfb53d4dcd2f5a25dbffabd6ac4080、JSON292e77789e9c79a4fd851daf96d574bdb953045c5ff01319c21edaca91bd7afa PASS。完整111line／64scene／claims／voice／speech38cf及生成script7aac全不變，21項為固定依賴連續性CONFIRMED，未冒稱新live全來源或fresh敘事。既有normal script pending／01:48本地採用仍綁7aac，沒有新server/UI/local核准。
 
 首次verify4 invocation用錯estimateTimeline參數、在reports寫出前失敗；修正rerun才產生真實PASS，診斷另記，沒有製造raw stderr。prepared17檔與原freeze逐bytes封存，舊68reviews不動；當前progress／新source-gates／index／validation／freeze各記範圍。paid TTS0、R2兩讀者12/13 false、八語及overall仍未完成；官方5/21 v4素材已取得但第五尚未採用。不merge／deploy／YouTube上傳。
+
+
+## EN文字本地採用（媒體仍0）
+
+Root明確委派本docs分工採既有claim更新EN文字狀態。作者完整111source→English mapping與三輪檢查後，root獨立讀全111＋metadata，僅修標題明示complete follow-up list及第一句preview omits rows，111targets不變。正常i18n-merge真exit0，現i18n/en.json等於root nativepurepreview，六章／title／description／tags／縮圖詞current；EN文字1/8，actual CC／M4A／fit／meter／ASR／backend EN均未完成，繁中paid TTS0／raw0／actual timeline無。
+
+Source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data與verify4／R2兩份12/13 false不改。329舊檔在docs變更前全hash相同；舊progress／README／result／receiptREADME／task／index與6eb等freeze先逐bytes封存。作者原26freeze、111mapping、首次native pass3的sheetTodo字串期望錯誤、兩項root metadata delta與真merge log均保留，不以文字或估時冒稱配音fit／音檢。此分工不改英文targets、不付費或寫後台；只在root獨立freeze審查PASS後精確stage／commit／push同branch，PR no-auto-merge，不merge/deploy/YT上傳，也不開topic6。

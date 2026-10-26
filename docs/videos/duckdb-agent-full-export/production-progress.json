@@ -1,9 +1,9 @@
 {
   "kind": "fifth_episode_production_progress",
   "schema_version": 1,
-  "updated_at_utc": "2026-10-26T03:46:05.649960+00:00",
+  "updated_at_utc": "2026-10-26T04:50:53.620390+00:00",
   "slug": "duckdb-agent-full-export",
-  "stage": "metadata_public_links_independently_verified_source_current_paid_TTS_deferred",
+  "stage": "English_text_adopted_1of8_master_TTS0_actual_CC_audio_and_backend_pending",
   "overall_production_completed": false,
   "source_import_complete": true,
   "source_video_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
@@ -208,7 +208,15 @@
         "metadata_delivered": false,
         "CC_delivered": false,
         "M4A_delivered": false,
-        "backend_readback": false
+        "backend_readback": false,
+        "metadata_local_current": true,
+        "caption_text_targets_current": true,
+        "dub_text_targets_current": true,
+        "CC_files_generated": false,
+        "fit_complete": false,
+        "meter_complete": false,
+        "ASR_complete": false,
+        "text_adoption_proof": "localization/en/actual-native-text-adoption.json"
       },
       "ja": {
         "metadata_delivered": false,
@@ -293,13 +301,14 @@
     "overwritten": false
   },
   "receipts_index": {
-    "file": "receipts/root-verify4-adoption-index.json",
+    "file": "receipts/en-text-adoption-index.json",
     "self_cycle": false,
     "prior_index_preserved": "receipts/index.json",
     "prior_index_sha256": "99ef1d5e810e03e651b2a12e5dd352747215c2add08552564ae0259938c7046f",
     "prepared_metadata_index_preserved": "receipts/metadata-public-links-index.json",
     "prepared_metadata_index_sha256": "edece528b0e19f1e1bc1664bf95ca3677517110f079fba1ac2866dc50aff5771",
-    "sha256": "806aaea80eb43b671f2cae549a3cdc14a74ea02eddfefe7aae3f9d807d7b078c"
+    "previous_current_index_preserved": "receipts/root-verify4-adoption-index.json",
+    "sha256": "231c269047bddda66475487d321f71ff118f0a80ea5595de74a5c894a266968e"
   },
   "task": "2026-10-25-produce-video-duckdb-agent-full-export",
   "task_status": "in-progress",
@@ -314,7 +323,7 @@
     "new_network_calls": 0,
     "scope": "Historical metadata-preparation editor actions; original false git-commit count describes that preparation, not subsequent delegated commit."
   },
-  "checks_receipt": "receipts/root-verify4-adoption-validation.json",
+  "checks_receipt": "receipts/en-text-adoption-validation.json",
   "metadata_only_delta": {
     "path": "/youtube/description",
     "prior_source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
@@ -355,5 +364,51 @@
     "initial_failed_invocation_diagnostic": "receipts/root-verify4-initial-invocation-diagnostic.json",
     "new_paid_media_backend_or_approval_actions": false,
     "routine_scoped_git_commit_push_authorized_by_root": true
+  },
+  "localization_text": {
+    "expected_foreign_locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "adopted_locales": [
+      "en"
+    ],
+    "adopted_count": 1,
+    "required_count": 8,
+    "en": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/en.json",
+      "actual_native_merged_file_sha256": "faf5cb2f1c7fd536e012cd2a8191062ee4069d42ef46b8b8fbf8f10543f2cf4b",
+      "independent_text_review": "localization/en/root-independent-review.json",
+      "adoption_proof": "localization/en/actual-native-text-adoption.json",
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false
+    },
+    "scope": "EN is1/8 text adoption only. Caption targets are not timedSRT/VTT; no actual foreign audio or backendlanguage product isready."
+  },
+  "English_text_documentation_update": {
+    "at": "2026-10-26T04:50:53.620390+00:00",
+    "root_authorized_same_task_team": true,
+    "source329_oldfiles_before_doc_mutation_all_verified": true,
+    "archive": "history/before-EN-text-adoption-docs/identity.json",
+    "original_author26_freeze_sha256": "be6732c5e0260654ba0e966d315f2b434698b29c836ca163a88feb28bb50b06a",
+    "first_pass3_expectation_error_preserved": true,
+    "source_claims_script_voice_lexicon_data_not_modified": true,
+    "i18n_en_already_merged_by_root_not_rewritten_by_docs_editor": true,
+    "new_paid_media_backend_or_approval_calls": 0,
+    "same_branch_scoped_commit_push_only_after_root_review": true
   }
 }

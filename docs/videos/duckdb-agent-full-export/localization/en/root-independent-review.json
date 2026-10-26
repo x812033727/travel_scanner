@@ -1,0 +1,43 @@
+{
+  "reviewed_at": "2026-10-26T04:45:45.692705+00:00",
+  "reviewer": "root independent of draft author",
+  "verdict": "PASS_ALL111_SOURCE_TARGET_SEMANTICS_METADATA_TEXT_ONLY",
+  "source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "author_draft_sha256": "a4ad08ee8749c64a65a71df20c93e9873e67792ded5227b03837b9ca6843c982",
+  "adopted_sheet_sha256": "7452c23da5d6b9c1e69690900dd91a55fb70a5393153f25ce668b2200f2ccd83",
+  "full111_source_objects_and_targets_individually_read": true,
+  "all111_line_targets_unchanged_by_root": true,
+  "metadata_edits": [
+    {
+      "field": "title.text",
+      "before": "Only 40 rows? Export a full list with DuckDB 2.0",
+      "after": "Only 40 rows? Export a complete follow-up list with DuckDB 2.0",
+      "reason": "Name the follow-up list explicitly."
+    },
+    {
+      "field": "description.text.first_sentence",
+      "before": "Identify an omitted preview and hand over a complete follow-up list from the same delivery exercise table.",
+      "after": "Recognize when a preview omits rows and deliver a complete follow-up list from the same delivery exercise table.",
+      "reason": "Clarify that the preview omits rows; the preview itself is present."
+    }
+  ],
+  "independent_findings": {
+    "numbers_conditions_dates": true,
+    "input1200_preview40_omitted1160": true,
+    "complete_filtered480_not_same_preview_query": true,
+    "delivered_AND_actual_greater_than_promised": true,
+    "NULL_not_zero_transit240_excluded": true,
+    "greater_equal_variant720_includes240_ontime_not_all_late": true,
+    "R2_R3_each240": true,
+    "original_data_and_intentional_typo": true,
+    "validJSON_message_inside_mixed_stderr": true,
+    "same2_binary_two_modes_no_model_or_cost_performance_benchmark": true,
+    "SQL_COPY_Parquet_existing_capabilities": true,
+    "public_4106_folder_ZIP_exact": true
+  },
+  "actual_audio_fit_or_ASR": false,
+  "paid_calls": 0,
+  "network_calls": 0,
+  "new_source_or_serverapproval": false,
+  "scope": "Complete text acceptance only; timing has not been measured. Ordinary native merge still required."
+}

@@ -1,0 +1,33 @@
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {loadProject} from '/workspace/work/travel-scanner-duckdb/tools/video/core/state.mjs';
+import {mergeSheet,sheetTodo} from '/workspace/work/travel-scanner-duckdb/tools/video/i18n/cli.mjs';
+import {metadataStatus,thumbnailStatus} from '/workspace/work/travel-scanner-duckdb/tools/video/core/translations.mjs';
+import {speechHash,estimateTimeline} from '/workspace/work/travel-scanner-duckdb/tools/video/core/timeline.mjs';
+import {screenplay} from '/workspace/work/travel-scanner-duckdb/tools/video/core/screenplay.mjs';
+import {composeMetadata} from '/workspace/work/travel-scanner-duckdb/tools/video/package/metadata.mjs';
+const root='/workspace/work/travel-scanner-duckdb',ep=root+'/docs/videos/duckdb-agent-full-export',base='/workspace/work/ai-tech-next/fifth-en-translation';
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8')),sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+const project=loadProject({root,slug:'duckdb-agent-full-export'}),sheet=read(base+'/en.draft.reviewed.todo.json'),empty=read(base+'/en.native-empty.todo.json');
+assert.equal(sha(fs.readFileSync(ep+'/video.json')),'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa');
+assert.equal(speechHash(project.doc,project.lexicon),'38cf9292f6945199');
+assert.equal(sha(Buffer.from(screenplay(project.doc))),'7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b');
+assert.deepEqual(sheet.parts,['metadata','captions']);assert.equal(sheet.lines.length,111);assert.equal(sheet.chapters.length,6);assert.equal(sheetTodo(sheet),'0 lines, 0 chapters');
+assert.deepEqual({...sheet,title:empty.title,description:empty.description,tags:empty.tags,thumbnail:empty.thumbnail,chapters:empty.chapters,lines:empty.lines},empty);
+for(let i=0;i<111;i++){assert.equal(sheet.lines[i].source,empty.lines[i].source);assert.equal(sheet.lines[i].id,empty.lines[i].id);assert.equal(sheet.lines[i].scene,empty.lines[i].scene);assert.ok(sheet.lines[i].text.trim());}
+const merged=mergeSheet(project.doc,sheet,null);assert.deepEqual(merged.problems,[]);assert.deepEqual(merged.notes,[]);assert.equal(Object.keys(merged.translation.lines).length,111);
+const status=metadataStatus(project.doc,merged.translation);assert.equal(status.title,'current');assert.equal(status.description,'current');assert.equal(status.tags,'current');assert.ok(Object.values(status.chapters).every(x=>x==='current'));assert.equal(thumbnailStatus(project.doc,merged.translation),'current');
+const timeline=estimateTimeline(project.doc),composed=composeMetadata({doc:project.doc,timeline,translations:{en:merged.translation},locales:['en']});assert.deepEqual(composed.problems,[]);
+const rawURLs=project.doc.youtube.description.match(/https:\/\/\S+/g);assert.equal(rawURLs.length,2);for(const url of rawURLs)assert.ok(sheet.description.text.includes(url));
+assert.ok(sheet.description.text.includes('not real company data, customer data, public statistics'));
+assert.ok(sheet.description.text.includes('not test tokens, fees, model inference, performance, server mode, or upgrades'));
+assert.ok(sheet.description.text.includes('CLI binary is not redistributed'));
+const original=read(base+'/source-before.json');let protectedCount=0;
+for(const [rel,entry] of Object.entries(original.episode_files)){const b=fs.readFileSync(ep+'/'+rel);assert.equal(sha(b),entry.sha256,rel);assert.equal(b.length,entry.bytes,rel);protectedCount++;}
+assert.equal(sha(fs.readFileSync('/workspace/work/videos/duckdb-agent-full-export/i18n/en.todo.json')),sha(fs.readFileSync(base+'/en.native-empty.todo.json')));
+const report={pass:3,reviewer:'same author /root/slides_branded_docs',kind:'native pure schema/source-binding/metadata-limit validation',at:new Date().toISOString(),source_sha256:'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa',speech_hash:'38cf9292f6945199',native_script_sha256:'7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b',line_count:111,chapter_count:6,metadata_status:status,thumbnail_status:'current',native_merge_problems:merged.problems,native_merge_notes:merged.notes,pure_merge_preview_only_not_applied:true,native_compose_problems:composed.problems,raw_English_description_UTF8_bytes:Buffer.byteLength(sheet.description.text),native_composed_English_description_UTF8_bytes:Buffer.byteLength(composed.metadata.localizations.en.description),raw_title_characters:[...sheet.title.text].length,native_composed_English_title:composed.metadata.localizations.en.title,public4106_links_preserved_exact:rawURLs,source_episode_files_rehashed_unchanged:protectedCount,native_empty_worksheet_preserved:true,actual_narration_timeline_exists:false,dub_fit_or_audio_acceptance_claimed:false,budgets_or_estimated_timing_not_real_fit:true,paid_calls:0,network_calls:0,repo_file_writes:0,native_i18n_merge_command_run:false,source_or_voice_or_lexicon_changes:false,independent_or_Jev_review_claimed:false,scope:'Same-author third pass. Native mergeSheet is called only as a pure in-memory validator; its preview is saved outside repo. Estimated timeline is used only for metadata limits, not actual CC timing, audio duration, fit or production QA.'};
+fs.writeFileSync(base+'/author-pass3-native.json',JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+fs.writeFileSync(base+'/en.pure-merge-preview.json',JSON.stringify(merged.translation,null,2)+'\n',{flag:'wx'});
+fs.writeFileSync(base+'/en.metadata-compose-estimated-preview.json',JSON.stringify(composed,null,2)+'\n',{flag:'wx'});
+process.stdout.write(JSON.stringify(report,null,2)+'\n');

@@ -1,0 +1,68 @@
+{
+  "pass": 2,
+  "reviewer": "same author /root/slides_branded_docs",
+  "kind": "continuous English read and phrasing repair",
+  "at": "2026-10-26T04:33:59.590455+00:00",
+  "read_source": "/workspace/work/ai-tech-next/fifth-en-translation/en.reading-script.v1.md",
+  "line_count": 111,
+  "changes": [
+    {
+      "id": "c7uh",
+      "before": "The query needs to identify parcels to follow up, and deliver a list we can reopen.",
+      "after": "Our task is to find the parcels that need follow-up and deliver a list we can reopen.",
+      "reason": "Natural subject: the task includes delivery; avoid implying an ordinary query automatically exports a file."
+    },
+    {
+      "id": "ufbq",
+      "before": "Actual days is blank for the in-transit records: there is no completed delivery duration yet.",
+      "after": "The actual-days field is blank for in-transit records: there is no completed delivery duration yet.",
+      "reason": "Use an explicit field noun for natural English; blank still does not meanzero."
+    },
+    {
+      "id": "6r94",
+      "before": "The promise is three days, and actual delivery is three days. Their difference is zero.",
+      "after": "This parcel was promised in three days and arrived in three days. The difference is zero.",
+      "reason": "Natural spoken wording retains promised3/actual3/difference0."
+    },
+    {
+      "id": "i2fq",
+      "before": "Skip this run's startup text first, then parse the single valid JSON line that follows.",
+      "after": "Set aside the startup text from this run, then parse the single valid JSON line that follows.",
+      "reason": "Parsing instruction without suggesting rawlogsaredeleted; retainsstartup+onevalidJSONline."
+    },
+    {
+      "id": "7g26",
+      "before": "Put the original table's column name we just selected back into this query.",
+      "after": "Put the correct column name we found in the source table back into this query.",
+      "reason": "Natural word order; the correct name still comes fromthe originaltable."
+    },
+    {
+      "id": "6u7e",
+      "before": "Farther down the IDs, qualifying records near the end of the source table are also in the complete file.",
+      "after": "As we move down the IDs, qualifying records near the end of the source table are also in the full file.",
+      "reason": "Natural transition preservingqualifying-recordscope."
+    },
+    {
+      "id": "mavj",
+      "before": "Their total is the same four hundred eighty as the complete file, so the summary leaves none of those records out.",
+      "after": "Together, that is the same four hundred eighty records in the full file; the summary covers those qualifying records.",
+      "reason": "Keep population explicitly the qualifying480; avoid presenting countaloneas a wholecontentproof."
+    },
+    {
+      "id": "b5i9",
+      "before": "Those newly included parcels were exactly on time, so call this list on-time-or-late.",
+      "after": "The added parcels were exactly on time, so this file is an on-time-or-late list.",
+      "reason": "Natural label; newlyadded240areexactlyontime,notall720late."
+    },
+    {
+      "id": "fqr6",
+      "before": "Remember the parcel with three days promised and three days actual, which we left out?",
+      "after": "Remember the parcel promised in three days and delivered in three days, which we left out?",
+      "reason": "Natural words for promised3/actual3; retainscallbackandprior exclusion."
+    }
+  ],
+  "facts_or_numeric_conditions_changed": false,
+  "voice_provider_or_source_lexicon_changed": false,
+  "actual_timing_budget_or_fit_assumed": false,
+  "scope": "Author text read; no audio or independent/Jev PASS."
+}
