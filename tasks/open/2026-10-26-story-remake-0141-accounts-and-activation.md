@@ -1,7 +1,7 @@
 ---
 id: 2026-10-26-story-remake-0141-accounts-and-activation
 title: Story remake 0141 accounts and activation
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5-5-happy-brahmagupta
@@ -41,3 +41,4 @@ scope:
 - 原稿、八語文字與製作檔在 Codex 分支 `codex/brand-remakes-20261025` 的 `docs/videos/brand-story-remakes-20261025/<cNN>/`。
 - 2026-10-26：#1875 合併為 `aec3c476a`。這版只能在 #1875 **部署之後**合併：同一次部署連跑 0140→0141 的話，回滾映像（0139）不認 0141。PR 先開草稿。
 - 驗證：ruff、mypy app 489／tests 423；全新 PostgreSQL 16 upgrade 到 head（0141 實跑，`migration_guard --status` exact 0141），預算、migration、四支回滾整合測試與影片相關 242 passed、1 skip。
+- PR（草稿，#1875 部署後才合併）：https://github.com/x812033727/travel_scanner/pull/1876
