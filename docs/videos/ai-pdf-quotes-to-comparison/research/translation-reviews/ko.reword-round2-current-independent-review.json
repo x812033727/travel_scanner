@@ -1,0 +1,151 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "ko",
+  "scope": "source-meaning-and-naturalness",
+  "recorded_at_utc": "2026-10-26T19:24:45.996218+00:00",
+  "reviewer": "OpenAI Codex /root/review_pdf_ko_round1",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "independence": {
+    "original_translation_author": false,
+    "native_answer_author": false,
+    "producer": false,
+    "canonical_editor": false,
+    "proposal_author": false
+  },
+  "passed": true,
+  "issues": [],
+  "approval_limits": {
+    "audio_fit": false,
+    "ASR_or_listening": false,
+    "voice": false,
+    "native_execution_or_adoption_eligibility": false,
+    "canonical_adoption": false,
+    "final_QA": false,
+    "publish": false,
+    "paid_or_owner_retry_authorization": false,
+    "caps_or_round_limits_reset_or_expanded": false
+  },
+  "native_round_limit_note": "Two TOTAL reword rounds have already been counted. Current native0shorten/2retakes/2rewords/check_stoppedtrue is preserved. This source review authorizes no round3, counter reset, extra provider call or failed-check waiver.",
+  "kind": "independent-current-source-delta-review-of-actual-native-reword-round2",
+  "translation_sha256": "9bb36db600a713d29113be47f5698a2649788859c644783480b07a1ebd69c3e8",
+  "base_translation_sha256": "898d2f2e3805f63c6ffc9e0bc6282382001aff144c9120bb1eda40ca276e80f6",
+  "review_result": "passed-current-source-meaning-and-naturalness-only",
+  "base_full_review": {
+    "file": "/workspace/work/ai-pdf-01/ko-independent-boundary-review/reword1-current-independent-review.json",
+    "sha256": "e5bc4e91fd7e0150850830ea790629e8503cf44799492e99e6d6f682ce9ceb9e",
+    "reviewed_source_pairs": 101,
+    "source_cards": 62,
+    "scope": "This same reviewer genuinely read all101 source/Korean pairs and62cards in its previous round1 review; this report chains that fixed review and verifies100 unchanged records, rather than claiming a fresh101-line reread."
+  },
+  "reviewed_boundaries": [
+    {
+      "file": "author-review-boundaries/ko.reword.round-1.2026-10-26T17-58-15-289Z.json",
+      "sha256": "d4911737844e1143b66b38d06418552b44e78f9773c9bcc969a8740e92513910"
+    },
+    {
+      "file": "author-review-boundaries/ko.reword.round-2.2026-10-26T19-20-50-323Z.json",
+      "sha256": "10c132d27d02da5dc3ef0f8af5a164ebcca32b61ff0fda0dd7cd3c3738eed7a6"
+    }
+  ],
+  "this_round_actually_read": {
+    "full_101_line_reread": false,
+    "complete_metadata_reread": true,
+    "metadata": [
+      "title",
+      "complete description",
+      "all tags",
+      "all9chapter names",
+      "thumbnail tag/headline/sub"
+    ],
+    "changed_line_ids": [
+      "k75x"
+    ],
+    "rejected_proposal_id": "bnhk",
+    "native_full_raw_round2_answer": true,
+    "native_full_round2_archive": true,
+    "native_log_and_outcome_summary": true,
+    "source_scene_ids": [
+      "missing-no-send",
+      "missing-status",
+      "revision-start",
+      "revision-identity",
+      "revision-diff",
+      "threshold-request12",
+      "threshold-run12",
+      "threshold-request13",
+      "threshold-run13",
+      "threshold-results"
+    ],
+    "prior_own_round1_full_review_reread": true,
+    "raw_WAV_maps_or_listening_not_audited": true
+  },
+  "byte_preserving_baseline_verification": {
+    "method": "In memory only, reverse the unique actual current k75x text to its exact round1 reviewed wording. The resulting complete JSON bytes hash898d, equal to both the independent full round1 report and actual next-unit before receipt. Parse both to verify onlyk75x differs; no baseline file is overwritten.",
+    "reconstructed_base_sha256": "898d2f2e3805f63c6ffc9e0bc6282382001aff144c9120bb1eda40ca276e80f6",
+    "actual_before_receipt": {
+      "file": "/workspace/work/ai-pdf-01/ko-reviewed-reword1-20261026T191816Z-before.json",
+      "sha256": "70e10391096165ad3ce2438e151a3e42d1756f5f7ccaa69f2a66c8c242d2cabe"
+    },
+    "only_changed_line_id": "k75x",
+    "other100_line_records_exact": true,
+    "all_metadata_and_source_hashes_exact": true,
+    "bnhk_canonical_record_unchanged": true
+  },
+  "applied_delta": {
+    "id": "k75x",
+    "source_chinese": "丙補來了修訂版，這時候不要把它當成第四家供應商。",
+    "before_korean": "C 수정본을 네 번째 업체로 취급하면 안 됩니다.",
+    "current_korean": "C 수정본을 네 번째 공급사로 취급하면 안 됩니다.",
+    "native_answer_korean": "C 수정본을 네 번째 공급사로 취급하면 안 됩니다.",
+    "assessment": "Only 업체 changes to 공급사. 공급사 is an exact natural term for supplier; C 수정본 and 네 번째 공급사로 취급하면 안 됩니다 retain that the same supplier’s revision must not be treated as a fourth supplier. Adjacent mbee keeps the old file and replaces C’s row, and revision-identity explicitly replaces the old version. No counterparty, order, condition or amount changes.",
+    "passed": true
+  },
+  "rejected_native_proposal": {
+    "id": "bnhk",
+    "source_chinese": "再複製這份需求，只多加一張，留下另一個檔名。",
+    "current_korean": "요구를 복사해 1장만 늘려 새 파일명으로 저장합니다.",
+    "native_proposal": "이 요구 파일을 복사해 수량만 한 장 늘려 다른 파일명으로 저장합니다.",
+    "native_codepoints": 39,
+    "native_max_chars": 37,
+    "native_actual_rejection": [
+      "bnhk: over its budget (39 characters, at most 37)"
+    ],
+    "canonical_adopted": false,
+    "meaning_assessment": "Semantically faithful: copy the existing requirement file, increase the requested quantity by one postcard, save with another filename. The actual39>37 rejection remains failed; this source judgment does not adopt or waive its budget."
+  },
+  "actual_native_boundary": {
+    "file": "/workspace/work/ai-pdf-01/author-review-boundaries/ko.reword.round-2.2026-10-26T19-20-50-323Z.json",
+    "sha256": "10c132d27d02da5dc3ef0f8af5a164ebcca32b61ff0fda0dd7cd3c3738eed7a6",
+    "raw_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/ko-reword-round-2-meaning-review-2026-10-26T19-20-50-323Z.txt",
+    "raw_sha256": "7b500c0d4a8466a81330f9344b8a9da5e9a78c52acf87e50b13e0775c019b880",
+    "actual_outcome_file": "/workspace/work/ai-pdf-01/ko-reviewed-reword1-20261026T191816Z-actual-outcome.json",
+    "actual_outcome_sha256": "304a16c265c55fc4dfabc3ea82053e2c49b7077a53ac827846a298ff78d63782",
+    "native_rounds": {
+      "shorten": 0,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    },
+    "actual_remaining_flags": [
+      "k75x",
+      "bnhk"
+    ],
+    "voice_pass_claimed": false
+  },
+  "independent_crosscheck": {
+    "reviewer": "/root/review_pdf_ko_round1/ko_delta_crosscheck",
+    "scope": "Read actual current/rejected round2 text and adjacent Chinese/Korean scene context, confirmed semantics and exact raw hashes",
+    "result": "Agrees source-only pass;39>37 actual rejection preserved",
+    "file_written": false
+  },
+  "actions": {
+    "only_new_report_written": "/workspace/work/ai-pdf-01/ko-independent-boundary-review/reword2-current-independent-review.json",
+    "repository_or_canonical_writes": false,
+    "audio_auto_counter_or_approval_writes": false,
+    "lease_or_task_claims": false,
+    "provider_or_network_calls": false,
+    "producer_invocation": false
+  },
+  "next": "Only records the current native-round2 source assessment and its genuine two-boundary chain. Coordinator must separately evaluate any supported native adoption/execution path; this report gives no execution-eligibility or voice approval."
+}

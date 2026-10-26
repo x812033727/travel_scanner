@@ -1,0 +1,526 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "reviewer": "OpenAI Codex independent subagent /root/readonly_animation_status",
+  "completed_at_utc": "2026-10-26T19:40:38.336553+00:00",
+  "status": "Independent actual image visual review passed for these eight pinned localized thumbnails only",
+  "passed": true,
+  "review_scope": {
+    "actual_full_JPEGs_opened": 8,
+    "actual_mobile_cells_viewed": 8,
+    "full_JPEG_view_method": "tools.view_image(detail=original), all eight individual 1280x720 canonical JPEGs, in two calls returning four images each",
+    "mobile_view_method": "tools.view_image(detail=original) on actual 640x720 contact, eight 320x180 cells in declared 2-column/4-row order",
+    "contact_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/all8.mobile320-contact.png",
+    "contact_sha256": "1d645e0076e4b431ba78a4b3178997e076b0ed2ba6cad594107c297455ed8924",
+    "contact_actually_opened": true,
+    "contact_row_order": [
+      [
+        "en",
+        "ja"
+      ],
+      [
+        "ko",
+        "es"
+      ],
+      [
+        "pt",
+        "id"
+      ],
+      [
+        "vi",
+        "th"
+      ]
+    ],
+    "images_inferred_from_native_QA": false,
+    "source_read_scope": [
+      "All eight current i18n thumbnail metadata objects only; not complete translated narration",
+      "Full original diagrams/pdf-quotes-hero.svg",
+      "Full research/lab-comparison.json (three scenarios)",
+      "Materials README relevant original/revised-quantity context, including lines1-6,85-89,108-111",
+      "Brief/claims relevant quantity10 tax/shipping excerpts; no full-film claims audit"
+    ]
+  },
+  "native_evidence_separate_from_visual_judgment": {
+    "outcome_file": "/workspace/work/ai-pdf-01/localized-thumbnail-native-adoption-subline-fix-20261026/actual-outcome.json",
+    "outcome_sha256": "dca8e490f0acbb1bac05462ccdd0dbfaa21a981416050fbef94b5de3dd8064c1",
+    "actual_native_exit_code": 0,
+    "native_guard_passed": true,
+    "native_eight_locale_thumbnail_checks": [
+      {
+        "locale": "en",
+        "ok": true,
+        "detail": "1280x720 JPEG, 80 KB; the headline is about 34 px tall at 320 px wide",
+        "warnings": []
+      },
+      {
+        "locale": "ja",
+        "ok": true,
+        "detail": "1280x720 JPEG, 93 KB; the headline is about 34 px tall at 320 px wide",
+        "warnings": []
+      },
+      {
+        "locale": "ko",
+        "ok": true,
+        "detail": "1280x720 JPEG, 81 KB; the headline is about 27 px tall at 320 px wide",
+        "warnings": []
+      },
+      {
+        "locale": "es",
+        "ok": true,
+        "detail": "1280x720 JPEG, 85 KB; the headline is about 26 px tall at 320 px wide",
+        "warnings": []
+      },
+      {
+        "locale": "pt",
+        "ok": true,
+        "detail": "1280x720 JPEG, 87 KB; the headline is about 28 px tall at 320 px wide",
+        "warnings": []
+      },
+      {
+        "locale": "id",
+        "ok": true,
+        "detail": "1280x720 JPEG, 83 KB; the headline is about 34 px tall at 320 px wide",
+        "warnings": []
+      },
+      {
+        "locale": "vi",
+        "ok": true,
+        "detail": "1280x720 JPEG, 88 KB; the headline is about 26 px tall at 320 px wide",
+        "warnings": []
+      },
+      {
+        "locale": "th",
+        "ok": true,
+        "detail": "1280x720 JPEG, 78 KB; the headline is about 34 px tall at 320 px wide",
+        "warnings": []
+      }
+    ],
+    "note": "Native geometric/font/brand and estimated 24px phone checks are prior actual evidence. This report separately records actual viewed images; native estimates alone are not the visual verdict."
+  },
+  "preview_manifest": {
+    "file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/actual-preview-manifest.json",
+    "sha256": "6e17b35f847d6c490bb936ee273c9ae567457144337338da519e5d19cb3abdac",
+    "all_eight_full_and_mobile_hashes_match_manifest_and_native_captures": true
+  },
+  "source_pins": [
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+      "sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/diagrams/pdf-quotes-hero.svg",
+      "sha256": "e21e0b90a84b24bbd93985ccd964a224a16645a3daa519a0849af389891e6d4f"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/lab-comparison.json",
+      "sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/README.md",
+      "sha256": "590ad5bdc835770c1790c0bcf6ef521e6c5a0b5d87ffe6d92d83dd80ffaa8c27"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/brief.md",
+      "sha256": "e821a2a0bc03c0706061f56f7a05bf8841cd52b712e1bc06c9e0f44761a5ea04"
+    }
+  ],
+  "fact_crosscheck": {
+    "case": "Fictional original-10 quote comparison, not revised quote or quantity20",
+    "source_original_10": [
+      {
+        "supplier": "Aster",
+        "source_file": "aster.pdf",
+        "quantity": 10,
+        "unit_price": "180.00",
+        "unit_tax_mode": "exclusive",
+        "goods_gross": "1890.00",
+        "shipping_gross": "210.00",
+        "delivered_total": "2100.00",
+        "status": "可比較",
+        "comparable": true,
+        "lead_business_days": 7,
+        "price_source": "aster.pdf p.1",
+        "shipping_source": "aster.pdf p.2",
+        "lowest_comparable": false
+      },
+      {
+        "supplier": "Birch",
+        "source_file": "birch.pdf",
+        "quantity": 10,
+        "unit_price": "205.00",
+        "unit_tax_mode": "inclusive",
+        "goods_gross": "2050.00",
+        "shipping_gross": "0.00",
+        "delivered_total": "2050.00",
+        "status": "可比較",
+        "comparable": true,
+        "lead_business_days": 5,
+        "price_source": "birch.pdf p.1",
+        "shipping_source": "birch.pdf p.2",
+        "lowest_comparable": true
+      },
+      {
+        "supplier": "Cedar",
+        "source_file": "cedar.pdf",
+        "quantity": 10,
+        "unit_price": "175.00",
+        "unit_tax_mode": "exclusive",
+        "goods_gross": "1837.50",
+        "shipping_gross": null,
+        "delivered_total": null,
+        "status": "待確認：運費及其稅額未報",
+        "comparable": false,
+        "lead_business_days": 7,
+        "price_source": "cedar.pdf p.1",
+        "shipping_source": "cedar.pdf p.2",
+        "lowest_comparable": false
+      }
+    ],
+    "judgment": "All eight images correctly show PDF10, A2100, B2050 with green check and unknown C. The question mark correctly retains original Cedar unknown shipping and excluded total. Own SVG agrees. No real supplier recommendation is asserted."
+  },
+  "locales": [
+    {
+      "locale": "en",
+      "full_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/thumbnails/en.jpg",
+      "full_sha256": "3bc9a30d8b1ef715bc346400b678da11da50a8d15ae009c638d0f2e836173a3a",
+      "full_dimensions": [
+        1280,
+        720
+      ],
+      "full_image_actually_opened_with_view_image": true,
+      "view_image_detail": "original",
+      "mobile_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/en.320.png",
+      "mobile_sha256": "b85304be3b752e264007b0e424db559ad116b21715797212471afcb5ce0d740b",
+      "mobile_dimensions": [
+        320,
+        180
+      ],
+      "mobile_actually_viewed_as_unscaled_cell_in_contact": true,
+      "individual_mobile_opened": false,
+      "translation_source": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json",
+      "translation_source_sha256": "4958b944504e67e2b0a4eaf8cb946830273de870eabd1305fa6e3039f59dbdb1",
+      "source_thumbnail_metadata": {
+        "tag": "AI PDF Quotes",
+        "headline": "**Total**\n**First**",
+        "sub": "Include tax and shipping"
+      },
+      "observations": "Actually saw Total / First; Include tax and shipping wraps into two readable lines. Tag and brand are separate from text and artwork.",
+      "headline_readable_at_full_and_mobile": true,
+      "subline_legible_as_secondary_text_at_mobile": true,
+      "no_visible_overflow_missing_glyph_or_brand_collision": true,
+      "no_visible_sensitive_information": true,
+      "illustration_observed": {
+        "PDF_quantity": 10,
+        "A": 2100,
+        "B": 2050,
+        "B_green_check": true,
+        "C": "?"
+      },
+      "findings": [],
+      "visual_only_pass": true
+    },
+    {
+      "locale": "ja",
+      "full_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/thumbnails/ja.jpg",
+      "full_sha256": "4dbd5751b64bb92058dd0e06e039abd37a7a9b8f5eddecc22d1e3dd305504605",
+      "full_dimensions": [
+        1280,
+        720
+      ],
+      "full_image_actually_opened_with_view_image": true,
+      "view_image_detail": "original",
+      "mobile_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/ja.320.png",
+      "mobile_sha256": "f8e5f90b0333c7535c8daab015d64eb2afe63229efe60f5bf07ae2622d379a58",
+      "mobile_dimensions": [
+        320,
+        180
+      ],
+      "mobile_actually_viewed_as_unscaled_cell_in_contact": true,
+      "individual_mobile_opened": false,
+      "translation_source": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/ja.json",
+      "translation_source_sha256": "6269e257a86790fe8c293392b9d78c1f2529e208870858894391cf027da6ed71",
+      "source_thumbnail_metadata": {
+        "tag": "AIでPDF見積比較",
+        "headline": "**まずは**\n**総額**",
+        "sub": "税と送料も忘れずに"
+      },
+      "observations": "Actually saw まずは / 総額 and 税と送料も忘れずに. Japanese glyphs are present, with no clipped strokes or tag/headline/subline/brand collision.",
+      "headline_readable_at_full_and_mobile": true,
+      "subline_legible_as_secondary_text_at_mobile": true,
+      "no_visible_overflow_missing_glyph_or_brand_collision": true,
+      "no_visible_sensitive_information": true,
+      "illustration_observed": {
+        "PDF_quantity": 10,
+        "A": 2100,
+        "B": 2050,
+        "B_green_check": true,
+        "C": "?"
+      },
+      "findings": [],
+      "visual_only_pass": true
+    },
+    {
+      "locale": "ko",
+      "full_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/thumbnails/ko.jpg",
+      "full_sha256": "e02aeab1cc40827e6b3bad8dc89c1265b05674d7ad4d80af1100f08b216d5b50",
+      "full_dimensions": [
+        1280,
+        720
+      ],
+      "full_image_actually_opened_with_view_image": true,
+      "view_image_detail": "original",
+      "mobile_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/ko.320.png",
+      "mobile_sha256": "25dc70efade03bf79d3b6d3d81ee19c1621ff704816d4b9b470546df2c592549",
+      "mobile_dimensions": [
+        320,
+        180
+      ],
+      "mobile_actually_viewed_as_unscaled_cell_in_contact": true,
+      "individual_mobile_opened": false,
+      "translation_source": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/ko.json",
+      "translation_source_sha256": "9568b1cb834bd1ce4e3e1ca1849ae30a7e1e1ec6c6eb02d4c9e46fe8e3ffabf6",
+      "source_thumbnail_metadata": {
+        "tag": "AI PDF 견적 비교",
+        "headline": "**총액부터**\n**계산**",
+        "sub": "세금·배송비도 포함"
+      },
+      "observations": "Actually saw 총액부터 / 계산 and 세금·배송비도 포함. The wide first headline line stays within the left text area, separate from the illustration.",
+      "headline_readable_at_full_and_mobile": true,
+      "subline_legible_as_secondary_text_at_mobile": true,
+      "no_visible_overflow_missing_glyph_or_brand_collision": true,
+      "no_visible_sensitive_information": true,
+      "illustration_observed": {
+        "PDF_quantity": 10,
+        "A": 2100,
+        "B": 2050,
+        "B_green_check": true,
+        "C": "?"
+      },
+      "findings": [],
+      "visual_only_pass": true
+    },
+    {
+      "locale": "es",
+      "full_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/thumbnails/es.jpg",
+      "full_sha256": "3e8dfed066fe4e4db7e4070a3e4b3511af1857408bf990eb1fe67e5776da5343",
+      "full_dimensions": [
+        1280,
+        720
+      ],
+      "full_image_actually_opened_with_view_image": true,
+      "view_image_detail": "original",
+      "mobile_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/es.320.png",
+      "mobile_sha256": "4f4ae17283d2cbd02cc26bfc8171b21bc00fae763e1e021a136c94e7328ed6c7",
+      "mobile_dimensions": [
+        320,
+        180
+      ],
+      "mobile_actually_viewed_as_unscaled_cell_in_contact": true,
+      "individual_mobile_opened": false,
+      "translation_source": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/es.json",
+      "translation_source_sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+      "source_thumbnail_metadata": {
+        "tag": "Cotizaciones PDF con AI",
+        "headline": "**Total**\n**primero**",
+        "sub": "Incluye impuesto y envío"
+      },
+      "observations": "Actually saw Total / primero. Cotizaciones PDF con AI tag and Incluye impuesto y envío subline each wrap into two intact lines; all remain separated from brand and artwork.",
+      "headline_readable_at_full_and_mobile": true,
+      "subline_legible_as_secondary_text_at_mobile": true,
+      "no_visible_overflow_missing_glyph_or_brand_collision": true,
+      "no_visible_sensitive_information": true,
+      "illustration_observed": {
+        "PDF_quantity": 10,
+        "A": 2100,
+        "B": 2050,
+        "B_green_check": true,
+        "C": "?"
+      },
+      "findings": [],
+      "visual_only_pass": true
+    },
+    {
+      "locale": "pt",
+      "full_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/thumbnails/pt.jpg",
+      "full_sha256": "09e9cbd2ca33dca4590782a8821d6ee2dbd4a576ab6dd5212a2f0ba9d4d0f8bf",
+      "full_dimensions": [
+        1280,
+        720
+      ],
+      "full_image_actually_opened_with_view_image": true,
+      "view_image_detail": "original",
+      "mobile_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/pt.320.png",
+      "mobile_sha256": "9229d5e198e090abdbb325ffbfdd5620541245bcced3a5f152a61b3f2a5572ad",
+      "mobile_dimensions": [
+        320,
+        180
+      ],
+      "mobile_actually_viewed_as_unscaled_cell_in_contact": true,
+      "individual_mobile_opened": false,
+      "translation_source": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/pt.json",
+      "translation_source_sha256": "3f74c77761514a627781626ecc61bdc5cde3ffec851b7488e723846d6669195d",
+      "source_thumbnail_metadata": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Antes,**\n**o total**",
+        "sub": "Imposto + frete"
+      },
+      "observations": "Actually saw Antes, / o total. Cotações PDF com AI tag wraps into two intact lines; shortened Imposto + frete stays on one line above MOKAAIR with visible separation.",
+      "headline_readable_at_full_and_mobile": true,
+      "subline_legible_as_secondary_text_at_mobile": true,
+      "no_visible_overflow_missing_glyph_or_brand_collision": true,
+      "no_visible_sensitive_information": true,
+      "illustration_observed": {
+        "PDF_quantity": 10,
+        "A": 2100,
+        "B": 2050,
+        "B_green_check": true,
+        "C": "?"
+      },
+      "findings": [],
+      "visual_only_pass": true
+    },
+    {
+      "locale": "id",
+      "full_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/thumbnails/id.jpg",
+      "full_sha256": "c29b6dec01ae05ca4d083798a2212ad118c2ebc3c379a562c79643dc98059eb6",
+      "full_dimensions": [
+        1280,
+        720
+      ],
+      "full_image_actually_opened_with_view_image": true,
+      "view_image_detail": "original",
+      "mobile_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/id.320.png",
+      "mobile_sha256": "85fed8fb921246b4c22d74751e8be008ef419e5956fcaca434084b7240ee528d",
+      "mobile_dimensions": [
+        320,
+        180
+      ],
+      "mobile_actually_viewed_as_unscaled_cell_in_contact": true,
+      "individual_mobile_opened": false,
+      "translation_source": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/id.json",
+      "translation_source_sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+      "source_thumbnail_metadata": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Total**\n**dulu**",
+        "sub": "Pajak + ongkir"
+      },
+      "observations": "Actually saw Total / dulu. AI bandingkan penawaran PDF tag wraps into two intact lines; shortened Pajak + ongkir stays on one line above MOKAAIR with visible separation.",
+      "headline_readable_at_full_and_mobile": true,
+      "subline_legible_as_secondary_text_at_mobile": true,
+      "no_visible_overflow_missing_glyph_or_brand_collision": true,
+      "no_visible_sensitive_information": true,
+      "illustration_observed": {
+        "PDF_quantity": 10,
+        "A": 2100,
+        "B": 2050,
+        "B_green_check": true,
+        "C": "?"
+      },
+      "findings": [],
+      "visual_only_pass": true
+    },
+    {
+      "locale": "vi",
+      "full_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/thumbnails/vi.jpg",
+      "full_sha256": "436bfc4bbc9eb4bbcc20ab64d1b3b37ee22281a162a9d9eed1e429e713809028",
+      "full_dimensions": [
+        1280,
+        720
+      ],
+      "full_image_actually_opened_with_view_image": true,
+      "view_image_detail": "original",
+      "mobile_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/vi.320.png",
+      "mobile_sha256": "5351fd8554c7839b6b053ef48a58159cfab68b02803a93d25800ad756ebdb894",
+      "mobile_dimensions": [
+        320,
+        180
+      ],
+      "mobile_actually_viewed_as_unscaled_cell_in_contact": true,
+      "individual_mobile_opened": false,
+      "translation_source": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/vi.json",
+      "translation_source_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+      "source_thumbnail_metadata": {
+        "tag": "AI so báo giá PDF",
+        "headline": "**Cộng hết**\n**trước**",
+        "sub": "Đừng sót thuế, phí giao"
+      },
+      "observations": "Actually saw Cộng hết / trước, with Vietnamese diacritics intact. Đừng sót thuế, phí giao wraps into two lines; descenders and accents are visible and separate from the brand.",
+      "headline_readable_at_full_and_mobile": true,
+      "subline_legible_as_secondary_text_at_mobile": true,
+      "no_visible_overflow_missing_glyph_or_brand_collision": true,
+      "no_visible_sensitive_information": true,
+      "illustration_observed": {
+        "PDF_quantity": 10,
+        "A": 2100,
+        "B": 2050,
+        "B_green_check": true,
+        "C": "?"
+      },
+      "findings": [],
+      "visual_only_pass": true
+    },
+    {
+      "locale": "th",
+      "full_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/thumbnails/th.jpg",
+      "full_sha256": "8cf8ec29cc60c3e4148e70967e6a50f66c68a8f55017d2b84debf2ab2264dbf0",
+      "full_dimensions": [
+        1280,
+        720
+      ],
+      "full_image_actually_opened_with_view_image": true,
+      "view_image_detail": "original",
+      "mobile_file": "/workspace/work/ai-pdf-01/thumbnail-fixed-visual-review-20261026/th.320.png",
+      "mobile_sha256": "4eec5d441e62a86847181004c0928200b57ce336dbe61e5fa24e354d85e957c7",
+      "mobile_dimensions": [
+        320,
+        180
+      ],
+      "mobile_actually_viewed_as_unscaled_cell_in_contact": true,
+      "individual_mobile_opened": false,
+      "translation_source": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/th.json",
+      "translation_source_sha256": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+      "source_thumbnail_metadata": {
+        "tag": "AI เทียบราคา PDF",
+        "headline": "**รวมยอด**\n**ก่อน**",
+        "sub": "อย่าลืมภาษีกับค่าส่ง"
+      },
+      "observations": "Actually saw รวมยอด / ก่อน and อย่าลืมภาษีกับค่าส่ง. Thai marks and glyphs are present; no visible clipping, missing glyphs, or brand collision.",
+      "headline_readable_at_full_and_mobile": true,
+      "subline_legible_as_secondary_text_at_mobile": true,
+      "no_visible_overflow_missing_glyph_or_brand_collision": true,
+      "no_visible_sensitive_information": true,
+      "illustration_observed": {
+        "PDF_quantity": 10,
+        "A": 2100,
+        "B": 2050,
+        "B_green_check": true,
+        "C": "?"
+      },
+      "findings": [],
+      "visual_only_pass": true
+    }
+  ],
+  "overall_findings": [],
+  "limitations": [
+    "This is a model visual inspection of the pinned JPEGs and the actual generated 320px previews, not a human device study or measured click-through/readability experiment.",
+    "The brand is intentionally small secondary text; the readability verdict concerns the headline and visible secondary subline, not a new minimum-brand-size criterion.",
+    "No visible secrets, email, account UI or private information were seen; this was not an EXIF, steganography or security forensic audit.",
+    "No voice listening, voice flags waiver, complete101-line translation audit, final-film QA, language-pack completion, owner approval, upload or publication is claimed.",
+    "No provider, render, source/index/media/lease/task/Git or owner mutation occurred. Only this new external report was written.",
+    "Previously failed native thumbnail attempts remain historical failures; this visual report does not modify or relabel their outcomes."
+  ],
+  "actions": {
+    "provider_requests": 0,
+    "render_requests": 0,
+    "source_mutations": 0,
+    "media_mutations": 0,
+    "index_mutations": 0,
+    "lease_actions": 0,
+    "owner_requests": 0,
+    "task_mutations": 0,
+    "git_actions": 0,
+    "approval_created": false,
+    "uploaded": false,
+    "published": false
+  }
+}

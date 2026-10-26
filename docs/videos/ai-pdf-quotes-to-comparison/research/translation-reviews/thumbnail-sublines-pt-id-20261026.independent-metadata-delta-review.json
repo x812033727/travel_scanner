@@ -1,0 +1,200 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "recorded_at_utc": "2026-10-26T19:35:29.232297+00:00",
+  "scope": "independent PT/ID proposed thumbnail.sub meaning-and-naturalness delta only",
+  "reviewer": "OpenAI Codex /root/review_pdf_thumbnail_words",
+  "independent_from_root_proposal_author": true,
+  "proposal_file": "/workspace/work/ai-pdf-01/thumbnail-fit-investigation-20261026/root-pt-id-short-subline-proposal.json",
+  "proposal_sha256": "3ed57cde8a14bfcefb8252b5576491adbae319d2400c1c52ffd9fbe6c832f5e4",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "source_context_actually_read": {
+    "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+    "title": "用 AI 比較三份 PDF 報價：最低單價，真的最便宜？",
+    "full_description": "三份 PDF 報價的單價不能直接放在一起排序。跟著同一組原創明信片報價，讓 AI 先整理規格、數量、含稅狀態、運費與來源頁碼，再用明示條件算出可比較的送達總價。收到修訂版、把數量從十張改成二十張後，重新核對結果。\n\n示範使用本次 Codex AI 文件分析、pypdf 文字抽取與精確小數計算，輸出可編輯試算表；不宣稱已實測任何特定商用 AI 產品的上傳介面。供應商、價格及百分之五稅率均是原創練習設定，不是對真實交易的稅務判斷。\n\n資料與實作日期：2026-10-26。本次 PDF 可選取文字；這條抽文流程不做掃描影像 OCR。試算表中的數值由計算工具實際計算，openpyxl 只負責寫檔，不宣稱它會計算公式。\n\n教材包含需求、提示詞、來源 PDF 生成程式、逐頁抽文、可編輯比價表與版本紀錄。\n\n畫面七行提示詞為觀眾任務要求；機讀欄位格式另見 analysis-prompt.txt 的 JSON 契約，本次 AI 分析也讀取了該契約。\n\n原創教材、需求與完整提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+    "source_thumbnail": {
+      "asset": "stock/be673375c05932dd665ca14b79030c1fa69b5705c1d582348b31b0eb89a5c7a2.png",
+      "headline": "**先算總價**",
+      "layout": "a",
+      "sub": "稅與運費別漏算",
+      "tag": "AI 比較 PDF 報價"
+    },
+    "purpose": "Compare each PDF quote on comparable delivered total cost with its stated tax/delivery terms before ranking unit prices."
+  },
+  "passed": true,
+  "issues": [],
+  "locale_reviews": [
+    {
+      "locale": "pt",
+      "passed": true,
+      "scope": "only proposed thumbnail.sub meaning and naturalness in actual full metadata context",
+      "before_translation_sha256": "b9696b6cd76fd261b8aff78f439bba39e8754fdacd9764a0d296dcbf76ff9445",
+      "before_thumbnail": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Antes,**\n**o total**",
+        "sub": "Inclua imposto e frete"
+      },
+      "proposed_thumbnail": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Antes,**\n**o total**",
+        "sub": "Imposto + frete"
+      },
+      "only_proposed_field": "thumbnail.sub",
+      "actual_full_metadata_read": {
+        "title": "3 cotações PDF com AI: o menor preço unitário é mesmo o mais barato?",
+        "description": "Não dá para ordenar diretamente os preços unitários de 3 cotações PDF. Com este mesmo exercício original de cotações de postais, use AI para organizar especificações, quantidade, impostos incluídos ou excluídos, frete e páginas de origem. Depois calcule preços finais comparáveis, com frete e os impostos indicados, com base nas condições explícitas. Confira de novo o resultado ao receber uma revisão e mudar a quantidade de 10 para 20 postais.\n\nA demonstração usa a análise de documentos com Codex AI realizada neste exercício, extração de texto com pypdf e cálculo decimal exato para gerar uma planilha editável. Não afirma ter testado a interface de upload de nenhum produto comercial de AI. Os fornecedores, preços e a alíquota de 5% são dados originais de prática, não uma avaliação tributária de uma transação real.\n\nData dos dados e da prática: 2026-10-26. Estes PDFs têm texto selecionável; este fluxo de extração não faz OCR de imagens digitalizadas. Os valores da planilha foram calculados por uma ferramenta de cálculo. openpyxl só grava o arquivo; não se afirma que calcule fórmulas.\n\nO material inclui requisitos, prompts, o gerador dos PDFs de origem, texto extraído por página, uma tabela comparativa editável e o histórico de versões.\n\nO prompt de 7 linhas na tela traz a tarefa para o espectador. O formato de campos legível por máquina está no contrato JSON de analysis-prompt.txt, que também foi lido nesta análise com AI.\n\nMaterial original, requisitos e prompts completos:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "tutorial AI",
+          "comparar cotações PDF",
+          "comparação de preços",
+          "AI no escritório",
+          "Codex",
+          "pypdf"
+        ],
+        "chapters": {
+          "opening": "Basta o menor preço?",
+          "need-start": "Defina a base da comparação",
+          "extract-start": "Cada campo com sua fonte",
+          "cost-start": "Total com imposto e frete",
+          "missing-start": "Pergunte pelo que falta",
+          "revision-start": "Atualize com a revisão",
+          "quantity-start": "Dobre e confira as condições",
+          "threshold-start": "Quando muda o mais barato?",
+          "range21-request": "Fora da faixa cotada"
+        },
+        "thumbnail": {
+          "tag": "Cotações PDF com AI",
+          "headline": "**Antes,**\n**o total**",
+          "sub": "Inclua imposto e frete"
+        }
+      },
+      "actual_metadata_projection_sha256": "375349cc4f713b6c77039bc7355f0de885da8cb8506496a726f80ab97284f4f4",
+      "assessment": "Imposto + frete is natural compact Portuguese/Brazilian Portuguese thumbnail copy naming tax and freight/shipping. Under the unchanged Antes, o total headline, the plus sign is an inclusion cue for these cost components; it preserves the source reminder not to omit tax and shipping without needing the longer imperative Inclua. The full description still conditions comparable delivered totals on stated inclusive/exclusive tax and shipping terms. The label does not instruct double taxation of tax-inclusive goods or turn an unknown shipping fee into zero.",
+      "issues": [],
+      "headline_tag_and_all_non_sub_fields_proposed_unchanged": true,
+      "fit_or_visual_approval_claimed": false
+    },
+    {
+      "locale": "id",
+      "passed": true,
+      "scope": "only proposed thumbnail.sub meaning and naturalness in actual full metadata context",
+      "before_translation_sha256": "50249accb62db18e6d410192dd44ef807df821c6960283e78fcbe2b6ab24a2e3",
+      "before_thumbnail": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Total**\n**dulu**",
+        "sub": "Pajak dan kirim dihitung"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Total**\n**dulu**",
+        "sub": "Pajak + ongkir"
+      },
+      "only_proposed_field": "thumbnail.sub",
+      "actual_full_metadata_read": {
+        "title": "3 Penawaran PDF dengan AI: Harga Satuan Terendah Pasti Termurah?",
+        "description": "Harga satuan dari tiga penawaran PDF tidak bisa langsung diurutkan bersama. Dengan satu set penawaran kartu pos orisinal yang sama, minta AI merapikan spesifikasi, jumlah, status pajak, biaya kirim, dan nomor halaman sumber, lalu hitung total biaya sampai tujuan yang bisa dibandingkan berdasarkan syarat tertulis. Setelah menerima revisi dan mengubah jumlah dari 10 menjadi 20 lembar, periksa kembali hasilnya.\n\nDemo ini menggunakan analisis dokumen AI oleh Codex pada percobaan ini, ekstraksi teks pypdf, dan perhitungan desimal presisi untuk menghasilkan spreadsheet yang bisa diedit; tidak mengklaim telah menguji antarmuka unggah produk AI komersial tertentu. Pemasok, harga, dan tarif pajak 5% adalah pengaturan latihan orisinal, bukan penilaian pajak untuk transaksi nyata.\n\nTanggal data dan praktik: 2026-10-26. Teks PDF kali ini bisa dipilih; alur ekstraksi ini tidak melakukan OCR gambar pindai. Nilai dalam spreadsheet benar-benar dihitung oleh alat hitung; openpyxl hanya menulis berkas, tanpa klaim bahwa alat itu menghitung rumus.\n\nMateri mencakup kebutuhan, prompt, program pembuat PDF sumber, ekstraksi teks per halaman, tabel perbandingan harga yang bisa diedit, dan riwayat versi.\n\nPrompt tujuh baris di layar berisi persyaratan tugas bagi penonton; format kolom yang dapat dibaca mesin ada dalam kontrak JSON di analysis-prompt.txt, yang juga dibaca dalam analisis AI kali ini.\n\nMateri orisinal, kebutuhan, dan prompt lengkap:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "tutorial AI",
+          "perbandingan harga PDF",
+          "membandingkan penawaran",
+          "AI untuk kantor",
+          "Codex",
+          "PDF"
+        ],
+        "chapters": {
+          "opening": "Harga rendah, langsung pesan?",
+          "need-start": "Tulis dasar perbandingan",
+          "extract-start": "Lacak tiap kolom ke sumber",
+          "cost-start": "Total dengan pajak dan kirim",
+          "missing-start": "Susun pertanyaan soal data",
+          "revision-start": "Ganti syarat yang direvisi",
+          "quantity-start": "Jumlah digandakan, cek syarat",
+          "threshold-start": "Tambah 1, termurah berganti?",
+          "range21-request": "Di luar rentang, tunda pesan"
+        },
+        "thumbnail": {
+          "tag": "AI bandingkan penawaran PDF",
+          "headline": "**Total**\n**dulu**",
+          "sub": "Pajak dan kirim dihitung"
+        }
+      },
+      "actual_metadata_projection_sha256": "a95ee6b0a3a04c6081dfb09d635aa1190ee65d8ad1ac6b3265818b592eaf6733",
+      "assessment": "Pajak + ongkir is natural concise Indonesian thumbnail copy for tax plus shipping cost. Ongkir is the common understood abbreviation of ongkos kirim, not a different cost or an AI feature. Under unchanged Total dulu, this keeps the tax/shipping-in-the-total reminder from Pajak dan kirim dihitung and the Chinese 稅與運費別漏算. Full metadata still limits calculations to stated written conditions. The label does not imply missing shipping is free, merge suppliers, or add an unsupported promise.",
+      "issues": [],
+      "headline_tag_and_all_non_sub_fields_proposed_unchanged": true,
+      "fit_or_visual_approval_claimed": false
+    }
+  ],
+  "actual_read_manifest": [
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/pt.json",
+      "sha256": "b9696b6cd76fd261b8aff78f439bba39e8754fdacd9764a0d296dcbf76ff9445",
+      "actual_read": "complete title/full description/all tags/all chapter names/full thumbnail, excluding spoken lines and source_hashes",
+      "metadata_projection_sha256": "375349cc4f713b6c77039bc7355f0de885da8cb8506496a726f80ab97284f4f4"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/id.json",
+      "sha256": "50249accb62db18e6d410192dd44ef807df821c6960283e78fcbe2b6ab24a2e3",
+      "actual_read": "complete title/full description/all tags/all chapter names/full thumbnail, excluding spoken lines and source_hashes",
+      "metadata_projection_sha256": "a95ee6b0a3a04c6081dfb09d635aa1190ee65d8ad1ac6b3265818b592eaf6733"
+    }
+  ],
+  "prior_meaning_chain_context": [
+    {
+      "locale": "pt",
+      "index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/pt.meaning-review.json",
+      "index_sha256": "8bd391d0b04918e96073eca2f8f31a3e97c0cc42e89450d41ee5e2dd22cb9461",
+      "actual_linked_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/pt.thumbnail-headline-current-source-review-20261026.json",
+      "actual_linked_report_sha256": "d106a0f59732d87a4bbe399243aae6f1a738a9d69258d031cd5bb59c64891201",
+      "index_bound_to_exact_current_translation": true,
+      "report_read_scope": "Full current metadata-headline composite, exact index/source binding, independent prior headline delta and unchanged-spoken-record/fingerprint preservation context; not a fresh 101-line or audio review."
+    },
+    {
+      "locale": "id",
+      "index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.meaning-review.json",
+      "index_sha256": "03b5fe88f4cac87bc580213034fda32542130060498df8c2b6930658dad80a82",
+      "actual_linked_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.thumbnail-headline-current-source-review-20261026.json",
+      "actual_linked_report_sha256": "a47a2ea6cd6f3d1d5ba286f729b72c32195c6ef0856eab46ca5b910380af1356",
+      "index_bound_to_exact_current_translation": true,
+      "report_read_scope": "Full current metadata-headline composite, exact index/source binding, independent prior headline delta and unchanged-spoken-record/fingerprint preservation context; not a fresh 101-line or audio review."
+    }
+  ],
+  "independent_secondary_crosscheck": {
+    "reviewer": "/root/review_pdf_thumbnail_words/pt_vi_phrase_crosscheck",
+    "actual_scope": "Independently read exact proposal, Chinese title/full description/thumbnail, complete current PT/ID metadata; no spoken-line/audio/layout review",
+    "findings": "No substantive meaning/naturalness issue. Imposto + frete is natural tax/freight shorthand; Pajak + ongkir uses the common shipping-cost abbreviation ongkos kirim. Retained total-first headline and full metadata preserve explicit conditions, not zero-for-unknown or double taxation.",
+    "canonical_or_provider_actions": false
+  },
+  "failed_render_preserved": {
+    "file": "/workspace/work/ai-pdf-01/localized-thumbnail-native-adoption-20261026/actual-outcome.json",
+    "sha256": "a3b7a154bc8eee115315cb51277244da8e260f48a5b4e2b30bf1f0d7f0829ee1",
+    "native_exit_code": 0,
+    "guard_passed": false,
+    "actual_canonical_localized_thumbnail_count": 6,
+    "missing_locales": [
+      "pt",
+      "id"
+    ],
+    "root_reported_visual_inspection_not_claimed_by_this_reviewer": true,
+    "outcome_file_unchanged_through_review": true,
+    "failed_native_result_not_relabeled_as_pass": true
+  },
+  "reviewed_boundaries": [],
+  "limitations": {
+    "delta_only": true,
+    "whole_translation_or101_spoken_record_review": false,
+    "native_merge_or_adoption_performed": false,
+    "actual_render_or_fit_or_mobile_visual_QA": false,
+    "audio_ASR_voice_or_fullpackage_approval": false,
+    "owner_approval_upload_or_publication": false,
+    "future_model_boundary_review": false
+  },
+  "actions": {
+    "only_file_written": "/workspace/work/ai-pdf-01/thumbnail-fit-investigation-20261026/pt-id-short-subline-independent-review.json",
+    "repository_canonical_index_task_lease_changes": false,
+    "media_native_control_changes": false,
+    "failed_render_directory_changes": false,
+    "render_provider_paid_or_owner_requests": false
+  },
+  "next": "Root may combine this exact subline delta with the genuine then-current meaning chain only after a real lease-free native metadata merge proves all101 spoken records and every other translation field unchanged. Preserve the consumed failed render. A new actual-source admission and distinct output may run the unchanged native renderer/fit/phone checks, followed by actual full/mobile visual inspection; this text report grants none of those passes."
+}

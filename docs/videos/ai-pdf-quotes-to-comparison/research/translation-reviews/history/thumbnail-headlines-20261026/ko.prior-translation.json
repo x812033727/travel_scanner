@@ -1,0 +1,449 @@
+{
+  "title": "AI로 PDF 견적 3개 비교: 최저 단가가 정말 가장 쌀까요?",
+  "description": "PDF 견적 3개의 단가를 그대로 모아 순위를 매기면 안 됩니다. 직접 만든 엽서 견적 사례로 AI가 사양, 수량, 세금 포함 여부, 배송비와 출처 쪽수를 먼저 정리하게 한 뒤, 명시된 조건에 따라 비교 가능한 배송비 포함 총액을 계산합니다. 수정본을 받고 수량을 10장에서 20장으로 바꾼 뒤에는 결과를 다시 대조합니다.\n\n이번 시연은 Codex AI 문서 분석, pypdf 텍스트 추출과 정확한 소수 계산으로 편집 가능한 스프레드시트를 출력합니다. 특정 상용 AI 제품의 업로드 화면을 실제로 시험했다는 뜻은 아닙니다. 업체 Aster(A), Birch(B), Cedar(C)와 가격, 5% 세율은 모두 직접 만든 연습 설정이며 실제 거래의 세무 판단이 아닙니다.\n\n자료 및 실습 날짜: 2026-10-26. 이번 PDF는 텍스트 선택이 가능합니다. 이 추출 과정에서는 스캔 이미지 OCR을 하지 않습니다. 스프레드시트의 값은 계산 도구로 실제 계산했으며 openpyxl은 파일 작성만 담당합니다. 수식을 계산한다고 주장하지 않습니다.\n\n교재에는 요구 사항, 프롬프트, 원본 PDF 생성 코드, 쪽별 추출 텍스트, 편집 가능한 견적 비교표와 버전 기록이 포함됩니다.\n\n화면의 7줄 프롬프트는 시청자의 작업 요구입니다. 기계가 읽을 필드 형식은 analysis-prompt.txt의 JSON 규약에 따로 적혀 있으며, 이번 AI 분석에서도 이 규약을 읽었습니다.\n\n직접 만든 교재, 요구 사항과 전체 프롬프트:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+  "tags": [
+    "AI 활용법",
+    "PDF 가격 비교",
+    "견적 비교",
+    "사무실 AI"
+  ],
+  "chapters": {
+    "opening": "최저 단가로 바로 주문해도 될까요?",
+    "need-start": "요구 사항을 비교 기준으로 정하기",
+    "extract-start": "모든 항목의 원문 근거 남기기",
+    "cost-start": "세금과 배송비까지 같은 총액 비교",
+    "missing-start": "누락 항목을 문의할 질문으로 만들기",
+    "revision-start": "수정본의 바뀐 조건만 교체하기",
+    "quantity-start": "수량이 2배면 적용 조건 재확인",
+    "threshold-start": "1장 차이로 최저가 업체가 바뀌는 지점",
+    "range21-request": "견적 범위를 넘으면 주문 전 재문의"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "6198bec8fea6",
+      "need-start": "13b3f8bc78bf",
+      "extract-start": "1e08abc4dd35",
+      "cost-start": "03cd0948a886",
+      "missing-start": "2fc8ed124d22",
+      "revision-start": "014694bfda51",
+      "quantity-start": "7b025430bfe0",
+      "threshold-start": "db18134baff1",
+      "range21-request": "2678d2a246fd"
+    },
+    "title": "ea54635dadc1",
+    "description": "82023a597713",
+    "tags": "b04ad22c133c",
+    "thumbnail": "12bdfb50a92a"
+  },
+  "lines": {
+    "3639": {
+      "source_hash": "1d15b826da4e",
+      "text": "AI로 항목을 정리하고 도구로 계산합니다."
+    },
+    "3742": {
+      "source_hash": "3147dae75bbd",
+      "text": "세율은 가정입니다. 실제 거래는 자체 견적 조건을 씁니다."
+    },
+    "6vwc": {
+      "source_hash": "bb864b04f219",
+      "text": "최저 단가를 바로 1위로 둘 수는 없습니다."
+    },
+    "xnrg": {
+      "source_hash": "87b4ff93c8d1",
+      "text": "세 견적의 금액 기준이 서로 다릅니다."
+    },
+    "edfn": {
+      "source_hash": "89bd8ea525c4",
+      "text": "그래서 AI로 편집 가능한 표를 만들고 원문 쪽수도 남깁니다."
+    },
+    "hg9m": {
+      "source_hash": "7fd501513981",
+      "text": "빈 배송비를 무료로 봐도 될까요?"
+    },
+    "ajsk": {
+      "source_hash": "6a14b7251701",
+      "text": "수정 견적이 오면 최저가도 바뀔까요?"
+    },
+    "kv5r": {
+      "source_hash": "79ba69d02368",
+      "text": "수량이 2배가 돼도 기존 답을 쓸 수 있을까요?"
+    },
+    "ddpd": {
+      "source_hash": "7082f51acc01",
+      "text": "엽서 10장 인쇄에 견적 셋 왔습니다."
+    },
+    "9ski": {
+      "source_hash": "c138299c8363",
+      "text": "요구를 따로 저장해 견적에 구매 결정을 맡기지 마세요."
+    },
+    "bv46": {
+      "source_hash": "f8a06c3ad4ae",
+      "text": "종이, 크기, 인쇄 방식이 항목별로 맞아야 합니다."
+    },
+    "hssn": {
+      "source_hash": "b030bf4c1692",
+      "text": "엽서론 부족합니다. 종이별로 값이 다를 수 있습니다."
+    },
+    "d8h7": {
+      "source_hash": "8d1a50a65e49",
+      "text": "배송지와 기한도 같아야 같은 비교입니다."
+    },
+    "jfix": {
+      "source_hash": "8f3e2289792e",
+      "text": "이번 기준은 배송비 포함 총액, 단가는 한 항목입니다."
+    },
+    "d78a": {
+      "source_hash": "4313d111425e",
+      "text": "원본 셋을 보관해 결과는 별도 폴더에 둡니다."
+    },
+    "mjhz": {
+      "source_hash": "83df6da2d82d",
+      "text": "새 버전에도 업체의 변경점을 알 수 있습니다."
+    },
+    "fvzv": {
+      "source_hash": "ee1a7a132bf3",
+      "text": "업체와 거래 조건은 연습용 가상 자료입니다."
+    },
+    "658p": {
+      "source_hash": "526bfd3e70c6",
+      "text": "둘을 나눠야 오류 때 글과 수식 중 볼 곳을 압니다."
+    },
+    "m57n": {
+      "source_hash": "24bcedced7ac",
+      "text": "A 단가는 1쪽, 배송 조건은 2쪽에 있습니다."
+    },
+    "scia": {
+      "source_hash": "edb8257f6553",
+      "text": "첫 쪽만 읽으면 비교표에서 비용 하나가 처음부터 빠집니다."
+    },
+    "nxct": {
+      "source_hash": "9221c8ab1536",
+      "text": "견적마다 두 쪽 원문 전체와 요구사항을 AI에 줍니다."
+    },
+    "7k9u": {
+      "source_hash": "f15e4aaa83ab",
+      "text": "항목마다 원문을 붙이고 유리한 업체만 답하진 말게 합니다."
+    },
+    "ea2e": {
+      "source_hash": "cde3d1893878",
+      "text": "누락은 빈 값으로 두고, 단가와 배송비의 세금도 구분합니다."
+    },
+    "ke2c": {
+      "source_hash": "891115cfc2b9",
+      "text": "세 곳 배치가 달라 공통 항목으로 비교 혼선을 막습니다."
+    },
+    "rgfp": {
+      "source_hash": "a7758d41bf25",
+      "text": "세금 포함은 그대로 두고 모든 숫자를 서둘러 더하지 마세요."
+    },
+    "fd27": {
+      "source_hash": "5ff09a31f891",
+      "text": "A의 두 쪽 단가·배송비는 한 행에 잇되 출처는 각각 둡니다."
+    },
+    "qttz": {
+      "source_hash": "061cae372b28",
+      "text": "원문으로 표의 배송비 누락을 확인합니다."
+    },
+    "indq": {
+      "source_hash": "8d66d4f444a9",
+      "text": "배송비가 B는 0인데 C는 왜 안 될까요?"
+    },
+    "q7x8": {
+      "source_hash": "5944c5607fca",
+      "text": "B 배송비 0은 무료 배송이 명시돼서입니다."
+    },
+    "7hi8": {
+      "source_hash": "d21bdcbcf4ee",
+      "text": "C 2쪽은 배송비 미견적으로 다릅니다."
+    },
+    "cxxm": {
+      "source_hash": "b72f27b689fd",
+      "text": "AI는 차이를 남기고 표를 채우려 0을 넣으면 안 됩니다."
+    },
+    "6pwe": {
+      "source_hash": "44e3cafff427",
+      "text": "총액을 낼 때 프로그램은 이 비어 있는 값을 보고 견적이 아직 미완성임을 압니다."
+    },
+    "eg6v": {
+      "source_hash": "95babb2e9408",
+      "text": "표에서 답을 바꿀 값부터 원문 쪽과 대조합니다."
+    },
+    "g3vp": {
+      "source_hash": "1026f1ccbcbc",
+      "text": "항목별 값과 근거 원문을 대조합니다. 안 맞으면 우선 확인 필요로 표시합니다."
+    },
+    "35fs": {
+      "source_hash": "4be5ecc81557",
+      "text": "단가 오름차순만 보면 C가 가장 싸 보입니다."
+    },
+    "at27": {
+      "source_hash": "37ec3bd1711c",
+      "text": "하지만 이 순위엔 세금과 배송비가 빠졌습니다."
+    },
+    "d2m5": {
+      "source_hash": "380ec942689d",
+      "text": "순위를 남겨 배송비 포함 총액 계산 뒤 순위 차이를 비교합니다."
+    },
+    "xwsj": {
+      "source_hash": "a4e62373497b",
+      "text": "A의 상품·배송비는 세전이라 각각 세금을 계산합니다."
+    },
+    "qagq": {
+      "source_hash": "d092574a9f30",
+      "text": "이를 합쳐야 A 견적의 배송비 포함 총액이 됩니다."
+    },
+    "znv7": {
+      "source_hash": "63a5cf7d3bbb",
+      "text": "B 단가는 상품세 포함, 수량을 곱하면 상품액입니다."
+    },
+    "c49q": {
+      "source_hash": "9d6435969ddc",
+      "text": "C 상품세도 계산되는데 순위에 넣어도 될까요?"
+    },
+    "bcr5": {
+      "source_hash": "fd897961bb71",
+      "text": "배송비 포함 총액은 지금 B가 A보다 쌉니다."
+    },
+    "tnrc": {
+      "source_hash": "48714b501253",
+      "text": "C 총액은 확인 필요라 1위에 둘 수 없습니다."
+    },
+    "cv74": {
+      "source_hash": "1b5d6c5ce376",
+      "text": "소수는 도구로 명시 조건대로 계산 후 금액 형식을 통일합니다."
+    },
+    "8xam": {
+      "source_hash": "11c95498b7af",
+      "text": "단가부터 모델이 반올림해 수량만큼 오차를 키우게 하지 마세요."
+    },
+    "qrv8": {
+      "source_hash": "f6ebe568a766",
+      "text": "시트를 열어 원문·계산 금액을 따로 대조합니다."
+    },
+    "ehby": {
+      "source_hash": "b1633f805e92",
+      "text": "자동 재계산 수식이 아닙니다. 요구가 바뀌면 결과를 다시 생성해야 합니다."
+    },
+    "u7i8": {
+      "source_hash": "2fce9f4c3f9b",
+      "text": "빈 배송비 기억나시죠? C의 순위 포함 여부가 달렸습니다."
+    },
+    "e86a": {
+      "source_hash": "8ed2c9df8dc9",
+      "text": "C 상품이 B보다 싸서 배송비가 높지 않으면 순위가 뒤집힙니다."
+    },
+    "j2ja": {
+      "source_hash": "40796c6ec734",
+      "text": "표는 C의 확인·미확인 값을 나눕니다. 미확인은 배송비, 세금 포함 여부와 세액입니다."
+    },
+    "ehkq": {
+      "source_hash": "d982a65cfa54",
+      "text": "같은 주소까지의 배송비와 세금을 구체적으로 물어봅니다."
+    },
+    "aghq": {
+      "source_hash": "70cbf7ac869a",
+      "text": "수량이 바뀌어도 비용이 같은지 확인해 다음 추측도 막습니다."
+    },
+    "z8x8": {
+      "source_hash": "ca7683a734a3",
+      "text": "AI로 질문을 정리해도 초안은 직접 확인합니다."
+    },
+    "7scz": {
+      "source_hash": "7e2e7627740a",
+      "text": "표의 확인 필요를 업체가 동의한 조건으로 쓰지 마세요."
+    },
+    "w9yq": {
+      "source_hash": "4dd11571123f",
+      "text": "상태 항목을 더해 막힌 곳을 적어도 됩니다."
+    },
+    "pdxs": {
+      "source_hash": "075e20b2797d",
+      "text": "실제 견적의 사양이 다르면 맞출 수 있는지 먼저 묻고, 상향 가격을 지어내지 마세요."
+    },
+    "k75x": {
+      "source_hash": "541c3946496d",
+      "text": "C 수정본을 네 번째 공급사로 취급하면 안 됩니다."
+    },
+    "mbee": {
+      "source_hash": "1b528e2b4b7d",
+      "text": "구본을 남기고 새 조건으로 C 행을 바꿉니다."
+    },
+    "h85p": {
+      "source_hash": "c76fed99e194",
+      "text": "여기 적힌 이전 버전 번호를 먼저 대조하고 해당 이전 파일을 대체됨으로 표시합니다."
+    },
+    "hiqk": {
+      "source_hash": "89dd59ebf23d",
+      "text": "배송비와 그 세금만 바뀌고 상품 단가는 그대로입니다."
+    },
+    "ambg": {
+      "source_hash": "4740d823925e",
+      "text": "이제 C 배송비 포함 총액을 계산하면 공교롭게도 A와 같습니다."
+    },
+    "dyun": {
+      "source_hash": "0e8f2191d09f",
+      "text": "배송비 포함 C는 B에 50 TWD 뒤처집니다."
+    },
+    "benr": {
+      "source_hash": "c9af59c4b3b4",
+      "text": "출처 항목도 해당 수정본인지 확인합니다."
+    },
+    "zqts": {
+      "source_hash": "65b8d6b123e7",
+      "text": "금액만 바꾸고 이전 파일을 연결해 두면 나중에 대조할 때 못 찾습니다."
+    },
+    "q57z": {
+      "source_hash": "27ccf198c6a1",
+      "text": "이후 같은 엽서가 20장 인쇄로 바뀝니다."
+    },
+    "7dp4": {
+      "source_hash": "82ad1f2ea647",
+      "text": "10장 수량 설정 파일부터 화면의 새 파일명으로 저장한 뒤 수량을 20으로 바꿉니다."
+    },
+    "ubke": {
+      "source_hash": "c22c4a780369",
+      "text": "요구 수량을 바꾸며 총액을 2배 하진 않습니다."
+    },
+    "f5gy": {
+      "source_hash": "2ae0a402d113",
+      "text": "시나리오는 수정본 유지, 원본으로 안 돌립니다."
+    },
+    "3eue": {
+      "source_hash": "31ec121f822e",
+      "text": "수량 외 요구는 그대로라고 명시합니다."
+    },
+    "sqqn": {
+      "source_hash": "5e811dc8ed67",
+      "text": "견적 적용 범위 확인 후 금액·출처 갱신과 변경 목록을 남깁니다."
+    },
+    "6wkf": {
+      "source_hash": "3f7f5ae11299",
+      "text": "저장 후 교재 코드 폴더에서 실행합니다."
+    },
+    "74dc": {
+      "source_hash": "fb263d432f38",
+      "text": "새 수량을 읽어 따로 저장해 업체 원본은 덮지 않습니다."
+    },
+    "326u": {
+      "source_hash": "e461e11f751e",
+      "text": "출력 요구 기록에서 새 수량 사용을 확인합니다."
+    },
+    "m5sn": {
+      "source_hash": "311b70e145a7",
+      "text": "업체 목록에서 C는 수정본을 쓴 행 하나만 남아야 합니다."
+    },
+    "sxtz": {
+      "source_hash": "3ad3c0bf760f",
+      "text": "세 견적 모두 이 수량 범위의 단가 유지를 명시합니다."
+    },
+    "rgr9": {
+      "source_hash": "3da467e9ffaf",
+      "text": "배송 조건도 명시돼 이번엔 새 수량으로 재계산됩니다."
+    },
+    "xevg": {
+      "source_hash": "477df56d08f7",
+      "text": "A 상품 금액은 수량대로 늘지만 배송비는 그대로입니다."
+    },
+    "m8sb": {
+      "source_hash": "9776125f547c",
+      "text": "B가 A보다 110 TWD 비싸 역전됐습니다."
+    },
+    "pruf": {
+      "source_hash": "67ee1a53dd66",
+      "text": "C도 넣으면 순위가 또 바뀔까요?"
+    },
+    "gy4i": {
+      "source_hash": "62457f085560",
+      "text": "C는 A보다 52.50 TWD 쌉니다."
+    },
+    "cbe9": {
+      "source_hash": "e987d435ff47",
+      "text": "처음 물었던 수량 2배 기억나시죠? 최저 총액이 정말 C로 바뀝니다."
+    },
+    "nvu3": {
+      "source_hash": "4042e2c8c96e",
+      "text": "누가 갑자기 값을 내린 게 아닙니다. 수량에 따라 고정 배송비의 비중이 달라졌습니다."
+    },
+    "fa3t": {
+      "source_hash": "cafddf6deba4",
+      "text": "몇 장부터 최저가 업체가 바뀔까요?"
+    },
+    "63ek": {
+      "source_hash": "bfdb3434b13a",
+      "text": "인접한 두 수량으로 시험합니다. 모든 수량에 같은 순위를 적용한다고 추측하지 않습니다."
+    },
+    "8fkp": {
+      "source_hash": "4cbd974a0dff",
+      "text": "수정 시나리오를 따로 저장해 수량 12, 나머지는 유지합니다."
+    },
+    "utm2": {
+      "source_hash": "b1d2b608c925",
+      "text": "같은 추출 자료로 실행해 이 요구의 폴더에 결과를 따로 저장합니다."
+    },
+    "bnhk": {
+      "source_hash": "140cf1a645ad",
+      "text": "이 요구사항 파일을 복사해 한 장만 늘려 새 이름으로 저장합니다."
+    },
+    "7udt": {
+      "source_hash": "ab814eaac43c",
+      "text": "출력 위치도 나눠 두 결과를 실제로 나란히 비교합니다."
+    },
+    "6nxr": {
+      "source_hash": "73e5454db3ea",
+      "text": "12장도 B가 C보다 7.5 TWD 쌉니다."
+    },
+    "7jrk": {
+      "source_hash": "4f854db5ecda",
+      "text": "13장은 C가 13.75 TWD 앞서 이때 전환점을 넘습니다."
+    },
+    "e5gd": {
+      "source_hash": "12edf2d26cf4",
+      "text": "C 빼기 B로 구해 양수면 C가 비싸고 음수면 쌉니다."
+    },
+    "petb": {
+      "source_hash": "a22168a8912b",
+      "text": "1장 늘 때마다 C가 B를 21.25 TWD씩 따라잡아 차액이 음수가 됩니다."
+    },
+    "vnaq": {
+      "source_hash": "5255b4e6db78",
+      "text": "20장에서 1장 더해 21장이 돼도 답이 나올까요?"
+    },
+    "trph": {
+      "source_hash": "8c562e47c3ed",
+      "text": "단가는 그대로, 같은 방법으로 재계산합니다."
+    },
+    "cegb": {
+      "source_hash": "3b7ba4d7428d",
+      "text": "요구 파일과 출력 폴더만 바꾸고 나머지 입력은 유지합니다."
+    },
+    "pn4i": {
+      "source_hash": "89db532be9e4",
+      "text": "프로그램은 새 수량과 각 사 명시 범위부터 대조합니다."
+    },
+    "9jiq": {
+      "source_hash": "f0851ddf761b",
+      "text": "계산을 거부하고 새 결과 폴더도 안 만들었습니다."
+    },
+    "egmv": {
+      "source_hash": "a36ddfbd2752",
+      "text": "21장은 세 견적에 명시된 범위를 이미 넘었기 때문입니다."
+    },
+    "92mc": {
+      "source_hash": "d80cea105bc9",
+      "text": "꼭 이 수량이면 업체에 이 조건의 재견적을 요청합니다."
+    },
+    "vee5": {
+      "source_hash": "0698b30c9511",
+      "text": "가장 자주 모호한 견적란을 댓글로 알려주세요."
+    },
+    "9jqz": {
+      "source_hash": "7b87be3cbbdc",
+      "text": "채널을 구독하고 AI로 납품할 업무 결과를 계속 만들어 보세요."
+    }
+  },
+  "thumbnail": {
+    "tag": "AI PDF 견적 비교",
+    "headline": "**총액부터 계산**",
+    "sub": "세금·배송비도 포함"
+  }
+}
