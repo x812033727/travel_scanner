@@ -33,6 +33,18 @@
 
 ## 當前斷點
 
+2026-10-27早上站主重新配對並回覆「完成」，官方login session `46042` 已exit0、權杖正常寫入；連線阻塞已解除，不要再開配對。正式 `check-audio` 已吃入先前31句獨立Whisper：212句檢查完成、16句排除初輪疑慮、15句仍標記。
+
+首次局部重錄 `tts --redo` session `75434` 已exit4，供應商回覆Gemini忙碌／額度限制；逐檔讀回15個WAV均未改變，不把這輪寫成重錄成功，也不啟動新ASR。dry-run277字元、站內月字元額度充足，仍可能是供應商忙碌／每日限制。原15個WAV、原旁白、timeline與兩輪check已先保存 `audio-retake-r1-before/`，沒有改稿或聲音設定。待語音供應商恢復再續同一個有journal的重錄清單，避免立即重送；重錄後的WAV不能用舊Whisper結果。
+
+圖片續作session `98884` 已exit0：consort-basket新提示take1通過，v2-add-037沿用已付take1後按judge修正、take2通過；新生成2張，目前91/129張通過、剩38張，帳本US$0.5265。原89張通過圖與判定均保留。
+
+語音首次重錄清單的退避續作session `25880`（距前次最後429約37分鐘）也已exit4，同樣供應商忙碌／額度限制；15個WAV再次驗SHA全未變。private log `tts-retake-r1-retry-after-backoff.txt`。先暫緩語音，不推測日額重置時間；下次最多一次正常續作不得早於2026-10-27 08:15台北（private `tts-backoff-state.json`），仍429則加長退避，不連續重送，不改供應商／聲音。16個來源URL已用官方相同link checker逐一GET，全部200且無redirect；私人收據 `source-links-preflight-20261027.json`，不取代最終組合說明欄QA。
+
+剩餘圖片將使用已獨立靜態覆核的私有 `curio-media-budget-guard.mjs`，SHA `fb5e96f2f216d395daa3dda97c3092c7ff72bf5f6dd3a7f9d1be2e15f0324bf1`，Node --import在每次images／judge的實際HTTP嘗試前記錄估算費用並以US$6拒絕超額；不改全域設定、核准或judge判定。state `media-budget-guard-state-r6.json` 已初始化：baseline US$0.5265，前段未記錄重試的保守量US$0.17（原US$0.05＋B1三次邏輯judge最多額外4次各US$0.01），attempts空白。**不得重設／rebase這份state以抹掉已記錄嘗試**。這是依工具單價的保守費用控制，不冒充供應商發票實額；等當前語音程序結束及lease釋放後，再以guard續完整keyframes，不用force。
+
+當前製作程序是guarded keyframes session `3593`，log `keyframes-guarded-r6-rest.txt`，已開始剩38景；91張通過圖均顯示kept。先等它正常結束，再讀manifest／jobs／帳本／guard state，處理三次未過景及新鮮SHA-bound完整圖板；不得與它競爭lease。音訊QA仍15flags，後續若先合成中文版，只能記為待音訊修正的預覽，不能核准成片、封完整交付包或開始下一集。
+
 S31 本機工作目錄 `~/mokaair-work/videos/curio-s31-v2/`；外部收據與執行紀錄在 `~/mokaair-work/curio-s31-v2-preflight/`。`tts` 已完成：171請求、4,430計費字元、旁白28,379格／30fps＝15:45.967。212句語音片段合計12:53.440；其餘主要是工具預設句間與換景間隔，發聲語速約在4–5字／秒目標內。
 
 第一輪 `check-audio`（session `73612`）已結束：212句中148逐字一致、29同音／口語差異、4句Jev判通過、31句仍標記；沒有提前核准音訊。31句的原始WAV雜湊及順序已存 `whisper-input-r6.json`。本機session `37037`／Python pid `42156` 已在原生主機首句驗證成功後，只終止本集自有程序；停止與部分輸出收據保留，不再續等該PID。
