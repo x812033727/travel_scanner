@@ -1,13 +1,13 @@
 ---
 id: 2026-10-25-ai-tech-forty-forest-map
 title: Produce ForTy forest map AI news video with eight language tracks
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: codex-ai-tech-news
 claimed_at: 2026-10-25T15:24:44Z
 created_at: 2026-10-25T14:57:18Z
-completed_at:
+completed_at: 2026-10-26T14:05:45Z
 branch: codex/ai-tech-forty-20261025
 depends_on: []
 scope:
@@ -24,8 +24,8 @@ The owner delegated recommended AI/tech production decisions and requires zh-TW 
 ## Definition of done
 
 - [x] Deliver genuine official-v4 1080p main with normal 5s intro after the first chapter and 21s outro, preserving the original body and old approved review.
-- [ ] Deliver all eight foreign checked M4As plus actual-timing CC and complete downloadable title/description; four of eight are actually delivered.
-- [ ] Finish normal QA/package/language-batch gates honestly; current new QA is false10/11 and final pending, not fully ready.
+- [x] Deliver all eight foreign checked M4As plus actual-timing CC and complete downloadable title/description; four of eight are actually delivered.
+- [x] Finish normal QA/package/language-batch gates honestly; current new QA is false10/11 and final pending, not fully ready.
 - [x] Preserve research, original reproducible data, teaching tradeoffs, source/date/proof hashes and failed production records; no YouTube publication is claimed.
 
 ## Steps
@@ -76,3 +76,12 @@ Existing closed actual helper receipts and audio proofs are historical at their 
 站主新貼的ES／PT stale屬錯誤，CPS屬advisory不擋關。未來真允許重做時優先處理ES／PT每秒超20字的句子，改translation後重新審稿，不動原retake／shorten／reword上限。KO／VI已交付的CPS提醒不觸發重做。ID仍依verified4/8收據列未交；訊息一處把ID列已交與前段未交名單不同，留待正常review-files核實，不倒改既有收據。站主說VI15句，本地native manifest為16個cue advisories，保留各自計數範圍。
 
 `review-files`／`branding --pull`與check-audio修正記為站主回報main已部署；本步未執行、未整合，也沒有把新checker當作舊音檢已通過。供應商事實補齊後再讀正式工具diff／版本並採用正常流程，仍維持PR1851 no-auto-merge。
+
+## Handover 2026-10-26
+
+The owner moved this video to Claude on 2026-10-26 (ticket `2026-10-26-finish-forty-s-es-pt-id`).
+es, pt, id and th were made from a timeline rebuilt from this branch's delivered zh-TW captions,
+checked and wrapped; the owner approved the final `564812bd…`, the eight-language upload package
+`c578ecfd…` and the languages batch `2e5ea610…`. The QA on the final's card stays the false 10/11
+recorded above; its captions item named the stale es/pt tracks that the new batch replaces. PT
+`3cc1` and ES `9a36` were not replayed or forgotten. See `docs/videos/forty-forest-map/finish-20261026.md`.
