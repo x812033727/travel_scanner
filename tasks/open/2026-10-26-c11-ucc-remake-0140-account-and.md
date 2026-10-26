@@ -1,7 +1,7 @@
 ---
 id: 2026-10-26-c11-ucc-remake-0140-account-and
 title: C11 UCC remake 0140 account and paid activation
-status: in-progress
+status: review
 priority: P1
 area: api
 owner: claude-opus-5-5-happy-brahmagupta
@@ -56,3 +56,4 @@ scope:
 - `test_c11_remake_budget_rollback_integration.py` 的「舊映像」是今天的程式碼，所以 C11 已放行；真正部署的 0139 映像（#1870）靠它自己的程式碼擋 C11，這裡只再驗 C20 被擋。
 - 站主同時要接著做 C14、C03、C04、C06、C05、C08 remake，並說有問題用建議的做法、不必問。照 C11 的條件各 US$25，新 slug、沒有舊費用、不借原集帳戶。為了不再多兩次部署，把 0141 的相容檢查放進這版；0141 本體與放行在 `2026-10-26-story-remake-0141-accounts-and-activation`。
 - 驗證：ruff、mypy app 489／tests 422；本機 PostgreSQL 16＋Redis 全新資料庫 upgrade 到 head（0140 實跑），預算、migration、三支回滾整合測試與影片相關共 233 passed、1 skip；`node --test` 影片工具 677 tests 0 fail；host-verify 5 pass。
+- PR：https://github.com/x812033727/travel_scanner/pull/1875
