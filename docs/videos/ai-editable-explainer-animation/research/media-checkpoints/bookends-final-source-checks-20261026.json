@@ -1,0 +1,40 @@
+{
+  "recorded_at_utc": "2026-10-26T02:58:18.451062+00:00",
+  "final_source_full_suite": {
+    "tests": 2747,
+    "pass": 2736,
+    "fail": 6,
+    "skipped": 5
+  },
+  "full_suite_pass_claimed": false,
+  "failure_count": 6,
+  "failures_scope": "Unchanged tools/video/a01-capture outside-Git temporary fixtures see managed sandbox synthetic /tmp/.git or /workspace/.git ancestors; actual CAPTURE_INSIDE_REPOSITORY/OUT_INSIDE_REPOSITORY rejection, not a media QA pass/fail.",
+  "affected_tests": [
+    "destination must be new, absolute, outside Git and free of linked ancestors",
+    "GNU tar default uses LongLink, and exact 104-event archive verifies without extraction",
+    "archive verifier rejects traversal, links, duplicates, PAX and changed bytes",
+    "bundle hashes and canonical local path are required",
+    "a complete capture can remain on operational HOLD, but an incomplete report fails",
+    "worker image and runtime tree pins are required"
+  ],
+  "log": "/workspace/work/ai-animation-01/renewal-position-final-full-tools-tests.log",
+  "log_sha256": "6eb77faf6f4b64143c9dc0774f41c562f9a96e8435584ff7743f7b35e6e4970c",
+  "new_native_renewal_targeted_tests": {
+    "total": 114,
+    "passed": 114,
+    "failed": 0,
+    "skipped": 0
+  },
+  "docs_videos": {
+    "total": 236,
+    "passed": 236,
+    "failed": 0,
+    "skipped": 0
+  },
+  "capture_guard_or_sandbox_bypass_performed": false,
+  "new_actual_video_final_QA": {
+    "passed": 11,
+    "total": 11,
+    "source_sha256": "77b542c9c1cb0e75680581d73d926db5f253e6dc5066bcbed26c0a54a061d076"
+  }
+}

@@ -12,7 +12,7 @@ import { captionLocalesOf, localeCues, localeTexts, metadataLocalesOf } from "..
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { dubFingerprint, dubScript, translationHash } from "../dubs/plan.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
-import { bindRenewalSubmission, ownerClient, stageRenewal, submitRenewal, uploadCandidate, validateCandidate } from "./renewal.mjs";
+import { bindRenewalSubmission, ownerClient, renewalPlacement, stageRenewal, submitRenewal, uploadCandidate, validateCandidate } from "./renewal.mjs";
 
 const sha = (bytes) => createHash("sha256").update(bytes).digest("hex");
 const oldId = "11111111-1111-4111-8111-111111111111";
@@ -84,6 +84,64 @@ test("staging snapshots files without reporting, submitting or changing the orig
   assert.equal(readFileSync(path.join(from, "final.mp4"), "utf8"), "new");
   assert.ok(existsSync(path.join(out, "renewal-candidate.json")));
   await assert.rejects(stageRenewal({ from, out, original, body, branding }), /new directory/);
+});
+
+function positionStageFixture(t) {
+  const base = mkdtempSync(path.join(os.tmpdir(), "renewal-position-stage-"));
+  t.after(() => rmSync(base, { recursive: true, force: true }));
+  const from = path.join(base, "candidate"), out = path.join(base, "staged"); mkdirSync(from);
+  const original = path.join(base, "original.mp4"), body = path.join(base, "body.mp4"), branding = path.join(base, "branding.json"), timeline = path.join(base, "timeline.json");
+  for (const [file, bytes] of [[original, "old"], [body, "body"], [path.join(from, "final.mp4"), "new"], [path.join(base, "intro.mp4"), "intro"], [path.join(base, "outro.mp4"), "outro"]]) writeFileSync(file, bytes);
+  json(branding, { schema_version: 1, id: "v2", intro_at: "after_first_chapter", intro_at_frame: 899, intro: { file: "intro.mp4", sha256: sha("intro"), frames: 150 }, outro: { file: "outro.mp4", sha256: sha("outro"), frames: 90 } });
+  json(timeline, { fps: 30, total_frames: 900, chapters: [{ start_frame: 0 }, { start_frame: 300 }], scenes: [{ start_frame: 0 }, { start_frame: 300 }], lines: [{ id: "aaaa", start_frame: 0, end_frame: 300 }, { id: "bbbb", start_frame: 300, end_frame: 900 }] });
+  json(path.join(from, "meta.json"), { slug: "video-one", title: "New final", description: "New final description" });
+  const uploads = [];
+  const config = { from, out, original, body, branding, timeline,
+    client: { site: "https://mokaair.com", project: async () => ({ format: "slides", reviews: [{ id: oldId, gate: "final", status: "approved", content_sha256: sha("old") }] }) },
+    measure: async (file) => ({ probe: { streams: [{ codec_type: "video", codec_name: "h264", width: 1920, height: 1080, r_frame_rate: "30/1", pix_fmt: "yuv420p", duration: file === body ? "30" : "38" }] }, loudness: null }),
+    encode: async (_file, target) => writeFileSync(target, "preview"),
+    upload: async (_site, _slug, file, role) => { uploads.push(role); return fileEntry(file, role, path.extname(file) === ".json" ? "application/json" : "video/mp4"); },
+  };
+  return { ...config, config, uploads };
+}
+
+test("after-first renewal stages the actual body timeline and derives the cut rather than trusting a pin offset", async (t) => {
+  const f = positionStageFixture(t), result = await stageRenewal(f.config);
+  assert.equal(renewalPlacement(JSON.parse(readFileSync(f.branding)), JSON.parse(readFileSync(f.timeline))).intro_at_frame, 300);
+  assert.equal(result.source.body_timeline_sha256, sha(readFileSync(f.timeline)));
+  assert.deepEqual(result.review.payload.renewal_candidate.presentation, { intro_at: "after_first_chapter", intro_at_frame: 300, body_frames: 900 });
+  assert.deepEqual(f.uploads, ["final", "preview", "evidence_body_timeline"]);
+  assert.equal(readFileSync(path.join(f.out, "body-timeline.json"), "utf8"), readFileSync(f.timeline, "utf8"));
+  assert.equal(readFileSync(f.original, "utf8"), "old");
+  const changed = JSON.parse(JSON.stringify(result)); changed.source.body_timeline_sha256 = sha("other");
+  assert.throws(() => validateCandidate(changed, "video-one", "https://mokaair.com"), /receipt source|retained timeline/);
+});
+
+test("after-first staging rejects missing, crossed, unbounded or non-scene source clocks before uploads", async (t) => {
+  const cases = [
+    ["missing", (v) => { delete v.chapters; }],
+    ["crossed line", (v) => { v.lines[0].end_frame = 301; }],
+    ["non-scene", (v) => { v.scenes[1].start_frame = 301; }],
+    ["wrong fps", (v) => { v.fps = 24; }],
+    ["missing first chapter", (v) => { v.chapters[0].start_frame = 1; }],
+    ["presented", (v) => { v.branding_hash = sha("old branding"); }],
+    ["unbounded", (v) => { v.lines[1].end_frame = 901; }],
+  ];
+  for (const [name, change] of cases) await t.test(name, async (child) => {
+    const f = positionStageFixture(child), timeline = JSON.parse(readFileSync(f.timeline)); change(timeline); json(f.timeline, timeline);
+    await assert.rejects(stageRenewal(f.config), /timeline|scene boundary|body lines|second chapter/);
+    assert.equal(f.uploads.length, 0); assert.equal(existsSync(f.out), false);
+  });
+  const f = positionStageFixture(t);
+  await assert.rejects(stageRenewal({ ...f.config, timeline: undefined }), /actual retained body timeline/);
+  assert.equal(f.uploads.length, 0);
+});
+
+test("positioned stage refuses a body-clock mutation during upload and writes no candidate receipt", async (t) => {
+  const f = positionStageFixture(t), send = f.config.upload;
+  f.config.upload = async (...args) => { const row = await send(...args); if (args[3] === "evidence_body_timeline") json(f.timeline, { changed: true }); return row; };
+  await assert.rejects(stageRenewal(f.config), /timeline changed/);
+  assert.equal(existsSync(path.join(f.out, "renewal-candidate.json")), false);
 });
 
 test("candidate file receipt requires confirmed complete storage", async (t) => {

@@ -1,0 +1,119 @@
+{
+  "started_at_utc": "2026-10-26T02:38:38.505Z",
+  "scope": "new isolated candidate native final QA",
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://github.com/x812033727/travel_scanner/tree/00bbe9bb09eb5cf3a8ea52a39570ef9d45b66620/docs/videos/ai-editable-explainer-animation/materials",
+      "sent_at_utc": "2026-10-26T02:38:39.206Z",
+      "http_status": 200,
+      "answered_at_utc": "2026-10-26T02:38:40.663Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://pillow.readthedocs.io/en/stable/",
+      "sent_at_utc": "2026-10-26T02:38:40.666Z",
+      "http_status": 200,
+      "answered_at_utc": "2026-10-26T02:38:40.810Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://github.com/FFmpeg/FFmpeg/blob/master/doc/ffmpeg.texi",
+      "sent_at_utc": "2026-10-26T02:38:41.667Z",
+      "http_status": 200,
+      "answered_at_utc": "2026-10-26T02:38:42.921Z"
+    },
+    {
+      "method": "GET",
+      "url": "https://docs.python.org/3/library/itertools.html#itertools.product",
+      "sent_at_utc": "2026-10-26T02:38:42.922Z",
+      "http_status": 200,
+      "answered_at_utc": "2026-10-26T02:38:43.657Z"
+    },
+    {
+      "method": "POST",
+      "url": "https://mokaair.com/api/video/automation/judge/policy",
+      "sent_at_utc": "2026-10-26T02:38:43.666Z",
+      "http_status": 200,
+      "answered_at_utc": "2026-10-26T02:38:45.846Z"
+    }
+  ],
+  "policy_sends": 1,
+  "finished": true,
+  "finished_at_utc": "2026-10-26T02:38:45.848Z",
+  "native_exit": 0,
+  "final_sha256": "77b542c9c1cb0e75680581d73d926db5f253e6dc5066bcbed26c0a54a061d076",
+  "actual_qa": {
+    "ok": true,
+    "final_sha256": "77b542c9c1cb0e75680581d73d926db5f253e6dc5066bcbed26c0a54a061d076",
+    "items": [
+      {
+        "id": "assemble",
+        "ok": true,
+        "detail": "18467 frames, -14.1 LUFS, 261 frames matched their slides; every check passed"
+      },
+      {
+        "id": "render",
+        "ok": true,
+        "detail": "99 slide states drawn with no layout, glyph or font problem, thumbnail included"
+      },
+      {
+        "id": "narration",
+        "ok": true,
+        "detail": "timeline.json approved at 2026-10-25T16:29:21.190Z"
+      },
+      {
+        "id": "pace",
+        "ok": true,
+        "detail": "99 slide states, the longest 14.4 s; none over 15 s"
+      },
+      {
+        "id": "captions",
+        "ok": true,
+        "detail": "caption files for zh-TW, en, ja, ko, es, pt, id, vi, th, every translation current",
+        "warnings": [
+          "ko: dub track skipped (Jev still hears 2c063b, 594e82, 719e7c, 76fc63, 79a96a, de08dd wrong after 2 retakes and 2 rewording rounds); its captions follow the narration",
+          "pt: dub track skipped (Jev still hears 9e738a wrong after 2 retakes and 2 rewording rounds); its captions follow the narration",
+          "id: dub track skipped (f576ae, 9e738a, ed8308 do not fit their windows even at 1.15x after 1 shortening round); its captions follow the narration"
+        ]
+      },
+      {
+        "id": "metadata",
+        "ok": true,
+        "detail": "title, description and tags within YouTube's limits for zh-TW, en, ja, ko, es, pt, id, vi, th; 8 chapters"
+      },
+      {
+        "id": "facts",
+        "ok": true,
+        "detail": "verify-2.md marks no claim NOT FOUND"
+      },
+      {
+        "id": "links",
+        "ok": true,
+        "detail": "4 links open"
+      },
+      {
+        "id": "thumbnail",
+        "ok": true,
+        "detail": "1280x720 JPEG, 76 KB; the headline is about 34 px tall at 320 px wide; language thumbnails checked: en, ja, ko, es, pt, id, vi, th",
+        "warnings": [
+          "en thumbnail (thumbnails/en.jpg): the headline shrinks to about 23 px at 320 px wide; at least 24 px reads on a phone, so shorten it",
+          "ja thumbnail (thumbnails/ja.jpg): the headline shrinks to about 22 px at 320 px wide; at least 24 px reads on a phone, so shorten it",
+          "es thumbnail (thumbnails/es.jpg): the headline shrinks to about 23 px at 320 px wide; at least 24 px reads on a phone, so shorten it",
+          "pt thumbnail (thumbnails/pt.jpg): the headline shrinks to about 23 px at 320 px wide; at least 24 px reads on a phone, so shorten it",
+          "id thumbnail (thumbnails/id.jpg): the headline shrinks to about 21 px at 320 px wide; at least 24 px reads on a phone, so shorten it"
+        ]
+      },
+      {
+        "id": "policy",
+        "ok": true,
+        "detail": "Jev：符合立場 0.83、有示範 0.88、建議 0.01、業配 0.05，通過"
+      },
+      {
+        "id": "disclosure",
+        "ok": true,
+        "detail": "no disclosure needed: slides read by a stock TTS voice; YouTube's disclosure covers realistic synthetic people, events and places; upload/metadata.json already says so"
+      }
+    ]
+  }
+}
