@@ -1,0 +1,176 @@
+{
+  "rule": "Each required question passes when at least one of two independent fresh readers answers yes with line evidence; every rewrite gets two new readers.",
+  "final_round": 6,
+  "final_passed": true,
+  "rounds": [
+    {
+      "round": 1,
+      "payload_sha256": "16b5393f947b2339fa40b9320c2cc1bf3f6a494d43a83e049f32ac248bf1f129",
+      "reader_files": [
+        "blind-reader-a.json",
+        "blind-reader-b.json"
+      ],
+      "readers": [
+        {
+          "name": "a",
+          "failed": [
+            "chapters_link",
+            "no_recap",
+            "no_detour"
+          ],
+          "advisory": []
+        },
+        {
+          "name": "b",
+          "failed": [
+            "chapters_link",
+            "no_recap"
+          ],
+          "advisory": []
+        }
+      ],
+      "blocking": [
+        "chapters_link",
+        "no_recap"
+      ]
+    },
+    {
+      "round": 2,
+      "payload_sha256": "6b94df1cd74363efe647997149ebafcd72da7c2c4662bd42dfcaec58d1e415f7",
+      "reader_files": [
+        "blind-reader-c.json",
+        "blind-reader-d.json"
+      ],
+      "readers": [
+        {
+          "name": "c",
+          "failed": [
+            "no_recap"
+          ],
+          "advisory": []
+        },
+        {
+          "name": "d",
+          "failed": [
+            "no_recap"
+          ],
+          "advisory": []
+        }
+      ],
+      "blocking": [
+        "no_recap"
+      ]
+    },
+    {
+      "round": 3,
+      "payload_sha256": "91d451d038c92e3cecc8b51037d5b4de6531cd52f45bc29905436c577d750d33",
+      "reader_files": [
+        "blind-reader-e.json",
+        "blind-reader-f.json"
+      ],
+      "readers": [
+        {
+          "name": "e",
+          "failed": [
+            "scene_first",
+            "one_line",
+            "no_recap"
+          ],
+          "advisory": []
+        },
+        {
+          "name": "f",
+          "failed": [
+            "no_recap"
+          ],
+          "advisory": []
+        }
+      ],
+      "blocking": [
+        "no_recap"
+      ]
+    },
+    {
+      "round": 4,
+      "payload_sha256": "0b1fe66a0b938dff24b01d6655310468f34e57425cd92076119edf5eda56842a",
+      "reader_files": [
+        "blind-reader-g.json",
+        "blind-reader-h.json"
+      ],
+      "readers": [
+        {
+          "name": "g",
+          "failed": [
+            "no_recap"
+          ],
+          "advisory": []
+        },
+        {
+          "name": "h",
+          "failed": [
+            "scene_first",
+            "no_recap"
+          ],
+          "advisory": []
+        }
+      ],
+      "blocking": [
+        "no_recap"
+      ]
+    },
+    {
+      "round": 5,
+      "payload_sha256": "bf8b2d7d4555ff387ab9228c93cf244b5d99969b05d7e3a6e799eb72b456284e",
+      "reader_files": [
+        "blind-reader-i.json",
+        "blind-reader-j.json"
+      ],
+      "readers": [
+        {
+          "name": "i",
+          "failed": [
+            "payoffs"
+          ],
+          "advisory": []
+        },
+        {
+          "name": "j",
+          "failed": [
+            "payoffs",
+            "no_recap",
+            "no_detour"
+          ],
+          "advisory": []
+        }
+      ],
+      "blocking": [
+        "payoffs"
+      ]
+    },
+    {
+      "round": 6,
+      "payload_sha256": "7559c15c539e63f982acfb57ca5c86e524516f7a3e0025f7b136ea6b46855265",
+      "reader_files": [
+        "blind-reader-k.json",
+        "blind-reader-l.json"
+      ],
+      "readers": [
+        {
+          "name": "k",
+          "failed": [],
+          "advisory": []
+        },
+        {
+          "name": "l",
+          "failed": [
+            "payoffs"
+          ],
+          "advisory": [
+            "chapters_are_events"
+          ]
+        }
+      ],
+      "blocking": []
+    }
+  ]
+}
