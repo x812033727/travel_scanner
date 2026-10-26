@@ -90,3 +90,26 @@ python3 build_comparison.py \
 
 這個指令重現**本次已保存的 AI 抽取結果**如何產生 20 張比價表；不是重新呼叫 AI。
 換成自己的 PDF 時，須先實際重做抽取與來源檢查，不能沿用這份虛構資料的 AI JSON。
+
+
+## 數量超出報價範圍的負例練習
+
+沿用同一份抽取結果，`request-21-invalid.json` 已把需求改成 21 張。
+在解壓教材的 `materials` 資料夾執行：
+
+```bash
+python3 build_comparison.py \
+  --analysis ../research/lab-ai-extraction.json \
+  --extracted ../research/lab-extracted-pages.json \
+  --request request-21-invalid.json \
+  --out comparison-21
+```
+
+這是**預期失敗**的練習：退出碼為 1，最後一行是
+`ValueError: Quantity outside explicitly quoted range`，不會建立新的 `comparison-21/`。
+請先確認該輸出資料夾不存在，才能觀察「沒有建立」的結果；程式不會刪除你原本已有的資料夾。
+原因是 21 張超出三份報價明示的 10–20 張適用範圍，不能直接沿用單價或運費條件。
+`questions-21.txt` 是可編輯的重新詢價草稿，尚未寄出；供應商重報後才可更新原文與抽取資料。
+
+`research/quantity-21-relative-execution.json` 保留本次已實跑的命令、輸入雜湊、
+退出碼與 stderr；它是這個本機負例的執行證據，不是 AI 服務失敗或新一輪模型呼叫。

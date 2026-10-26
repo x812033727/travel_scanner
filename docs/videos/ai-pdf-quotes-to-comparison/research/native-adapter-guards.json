@@ -1,0 +1,27 @@
+{
+  "recorded_at_utc": "2026-10-26T08:37:13.018091+00:00",
+  "root_reviewed_in_full": [
+    "flow.mjs",
+    "cli.mjs",
+    "languages.mjs",
+    "recover-writer.mjs"
+  ],
+  "external_root": "/workspace/work/ai-pdf-01",
+  "flow_current_sha256": "782a25963e30106354fb6ac45d30bbca5e3d8351de0347a744361fe8b0fd0903",
+  "flow_pending_writer_guard": "Generic step refuses any unadopted writer receipt; exact recovery must take the existing paid result before another panel or writer request.",
+  "exact_recovery_result": "native_fix_saved_lint_clear_needs_reverification",
+  "exact_recovery_transport": [
+    {
+      "at": "2026-10-26T08:29:49.592Z",
+      "route": "/api/video/automation/settings",
+      "method": "GET"
+    },
+    {
+      "at": "2026-10-26T08:29:51.272Z",
+      "route": "/api/video/automation/run/jobs/c04e0dc3-6130-476d-ac35-dd1caeace90f?input_hash=1108ce18c3f7d565e412498f8edd422ed7763fa0a96cb3f4d2631ede8c1a4101",
+      "method": "GET"
+    }
+  ],
+  "new_paid_writer_requests_during_recovery": 0,
+  "failed_quality_checks_bypassed": false
+}

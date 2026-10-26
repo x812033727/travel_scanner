@@ -1,0 +1,205 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_manual_storyline_review",
+  "reviewed_at": "2026-10-26T08:45:24.760153+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex agent",
+    "agent_task_path": "/root/pdf_storyline_audit",
+    "role": "獨立只讀口播主線審稿代理",
+    "human": false
+  },
+  "source": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+    "sha256": "0134ad20b1949d822a904b3c43e3446ada494e6931cae4a733d75cbbb928e3fd",
+    "scene_count": 56,
+    "line_count": 107,
+    "read_scope": "完整解析此 SHA 的 video.json，讀取全部口播及相關字卡、提示詞、命令與說明欄。"
+  },
+  "method": {
+    "independent": true,
+    "read_other_agent_reports": false,
+    "read_prior_reviews": false,
+    "modified_video": false,
+    "paid_operations": false,
+    "native_narrative_gate_executed": false,
+    "human_approval_claimed": false,
+    "limitations": "只評稿面主線與操作銜接；沒有重跑教材、逐頁驗 PDF、試聽或觀看成片，不能據此宣稱重做驗證完成。",
+    "instructions_consulted": [
+      "/workspace/travel_scanner_pdf/AGENTS.md",
+      "/workspace/travel_scanner_pdf/.agents/skills/youtube-video/SKILL.md",
+      "/workspace/travel_scanner_pdf/.agents/skills/youtube-video/references/script-writing.md"
+    ]
+  },
+  "overall_assessment": "同一筆明信片採購完整貫穿十張原版、丙的修訂版、二十張變更與最後交付；沒有換成另一個主案例。建議三個局部修正，不需改寫整條主線。本報告是 Codex 人工判讀，不是原生關卡結果或人類核准。",
+  "storyline_assessment": [
+    {
+      "stage": "十張、原始三家 PDF",
+      "line_ids": [
+        "ddpd",
+        "nxct",
+        "q7x8",
+        "7hi8",
+        "bcr5",
+        "tnrc"
+      ],
+      "assessment": "先定共同規格與送達基準，再讀跨頁條件；乙的免運與丙的未報運費形成可操作差別。十張甲 2100、乙 2050、丙總價未知，是第一次得到的比較結果。"
+    },
+    {
+      "stage": "同一家丙補修訂版，仍為十張",
+      "line_ids": [
+        "k75x",
+        "mbee",
+        "hiqk",
+        "ambg",
+        "dyun",
+        "benr"
+      ],
+      "assessment": "補件來自前段待問條件，版本替代、差異、來源更新都服務同一列資料。丙補齊運費後 2100、與甲同價，乙仍 2050 最低，是新版本的新結果；不能視為前一次排名的無效重講。"
+    },
+    {
+      "stage": "相同規格改為二十張",
+      "line_ids": [
+        "q57z",
+        "sqqn",
+        "6wkf",
+        "326u",
+        "sxtz",
+        "xevg",
+        "pruf",
+        "gy4i",
+        "cbe9"
+      ],
+      "assessment": "沿用三家與丙修訂版，確認 10–20 張適用範圍及固定運費後重算。甲 3990、乙 4100、丙 3937.50，最低換成丙，是需求變更造成的新資訊。三張算式各自回答一家如何重算，應保留。"
+    },
+    {
+      "stage": "交付同一份可接手的比價成果",
+      "line_ids": [
+        "m4vr",
+        "3w92",
+        "jvyr",
+        "kxq4"
+      ],
+      "assessment": "數量、版本、來源、待問與差異都對應前文已發生的工作，不是另起製作流程介紹。"
+    }
+  ],
+  "scope_and_repetition_findings": [
+    {
+      "topic": "可刪的事實重述",
+      "line_ids": [
+        "35fs",
+        "at27",
+        "d8bc"
+      ],
+      "assessment": "cost-start 剛交代只按單價排序會漏稅與送達費用，下一卡 d8bc 又說只排原報單價還不能下單，沒有增加數值、版本或操作。"
+    },
+    {
+      "topic": "局部抽離本筆比較的提醒",
+      "line_ids": [
+        "ajb4",
+        "35s2"
+      ],
+      "assessment": "含稅小計不可再加說明性稅額的原則本身合理，但這一段沒有指回本案哪一家 PDF 的某個含稅小計；本稿已用乙的含稅單價示範避免重複加稅。這是可刪的泛化插段，不構成另一條完整故事線。"
+    },
+    {
+      "topic": "掃描 PDF 與排版限制是否離題",
+      "line_ids": [
+        "6hst",
+        "ctma",
+        "veic",
+        "7xf4"
+      ],
+      "assessment": "可保留。四句集中在同一交付章，界定這張比價表的抽文前提與交付前查法；沒有展開 OCR 操作，也沒有換另一組採購案例。掃描與錯欄是不同失敗狀態，不能因都屬限制就一律算重述。開頭稍偏一般情況，但仍能自然理解為觀眾把這份流程用在自己的報價前所需的交付判斷。"
+    },
+    {
+      "topic": "跨頁與修訂身分的回呼",
+      "line_ids": [
+        "m57n",
+        "26ya",
+        "k75x",
+        "mrmd",
+        "h85p"
+      ],
+      "assessment": "有相近措辭，但跨頁段接著展示實際欄位與原句，修訂身分段接著展示取代舊版的原文，具有證據作用。相較之下，d8bc 的相鄰重述更適合優先刪。"
+    }
+  ],
+  "operation_clarity": {
+    "clear": [
+      {
+        "line_ids": [
+          "9ski",
+          "d78a",
+          "nxct",
+          "7k9u"
+        ],
+        "assessment": "需求另存、原件保留、兩頁都讀、逐欄留原文有交代。"
+      },
+      {
+        "line_ids": [
+          "sd7h",
+          "ea2e"
+        ],
+        "assessment": "完整七行提示詞就在字卡，缺漏、來源及修訂替代規則能看到。"
+      },
+      {
+        "line_ids": [
+          "ehkq",
+          "aghq",
+          "mbee",
+          "benr"
+        ],
+        "assessment": "補問內容、替代同一供應商列、更新來源版本有交代。"
+      },
+      {
+        "line_ids": [
+          "6wkf",
+          "74dc",
+          "326u",
+          "m5sn"
+        ],
+        "assessment": "二十張有完整重建命令與核對新數量、修訂情境及三家清單的可觀察結果。"
+      }
+    ],
+    "clarity_gap": {
+      "line_id": "7dp4",
+      "original": "把需求檔裡的數量改掉，再請 AI 按新數量更新整張表。",
+      "assessment": "前文需求是 requirements.txt，這裡說改需求檔再請 AI 更新，後兩卡實際展示的卻是 request-20.json 與讀既有 analysis/extracted 檔的重建命令。觀眾可能不確定要改哪份檔、要重新分析還是直接重建；應使口播明確對應數量設定檔與命令。"
+    },
+    "boundary": "初次從原始 PDF 取得逐頁文字及機讀分析檔，只以工作流和提示詞概述；本稿未提供完整初次抽文命令。這不破壞同一筆比價的主線，但僅憑本次讀稿，不能背書完整從零重做。"
+  },
+  "author_fixes": [
+    {
+      "priority": 1,
+      "action": "replace_line",
+      "scene_id": "quantity-start",
+      "line_id": "7dp4",
+      "original": "把需求檔裡的數量改掉，再請 AI 按新數量更新整張表。",
+      "replacement": "打開教材的數量設定檔，把數量改成二十，再用命令重新產生比價表。",
+      "reason": "讓動作對準後面的 request-20.json 與重建命令，避免把這一步說成改 requirements.txt 後重新請 AI 分析。"
+    },
+    {
+      "priority": 2,
+      "action": "delete_line",
+      "scene_id": "cost-unit-baseline",
+      "line_id": "d8bc",
+      "original": "好，這張只排了原報單價，還看不出哪一家能直接下單。",
+      "replacement": null,
+      "reason": "前一張 35fs、at27 已說出相同限制；保留本卡的排序表及 d2m5，即可直接把比較基準落到十張送達金額。"
+    },
+    {
+      "priority": 3,
+      "action": "delete_scene",
+      "scene_id": "cost-total-check",
+      "line_ids": [
+        "ajb4",
+        "35s2"
+      ],
+      "originals": [
+        "核對總價時，要留意報價是不是已經給了含稅小計。",
+        "如果小計已含稅，旁邊的稅額只是說明，就不能再加一次。"
+      ],
+      "replacement": null,
+      "reason": "這一整張是未綁回本案欄位的含稅小計提醒，乙段已交代避免重複加稅。刪除這張可直接回到丙待補運費，不刪任何十張、修訂版或二十張實算結果。"
+    }
+  ],
+  "author_fix_count": 3
+}

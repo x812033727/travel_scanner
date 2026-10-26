@@ -1,0 +1,107 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "recorded_at_utc": "2026-10-26T08:30:07.104247+00:00",
+  "scope": "Actual source-only history and static audit for exactly one existing paid writer recovery; not a completed film or QA approval",
+  "helper": "/workspace/work/ai-pdf-01/recover-writer.mjs",
+  "helper_sha256": "8c6e4b208a615c2158c93ce17e8eacc7c35e0c072692463bb26c7ec533a0204c",
+  "first_paid_writer": {
+    "request_sha256": "4608ed31112bd4b764dbb2da5a5772730eb28d48b7f147edc2b4ae3b7c02e367",
+    "job_id": "896e050a-14d6-477c-a00e-1ddb1d74fde8",
+    "native_status_observed": "succeeded",
+    "archived_receipt": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/run-receipts/archive/4608ed31112bd4b764dbb2da5a5772730eb28d48b7f147edc2b4ae3b7c02e367-d6544532-e2db-4348-9b9d-2f3721dc888f.json",
+    "archived_receipt_sha256": "836fe4b1a11afded5d1020f1c2c08fbe9bd417b63d7a9a9c060a56ec3f02051b",
+    "native_archive_reason": "inputs changed; the saved run is terminal",
+    "native_archived_at": "2026-10-26T08:16:54.418Z",
+    "actual_result_text_backup": "/workspace/work/ai-pdf-01/writer-recovery-evidence/first-paid-writer-result-ea54b2dff7ce71160c5b0b5db7aece1d71d07d3fe70ec60888482ea2c0fea189.txt",
+    "actual_result_text_sha256": "ea54b2dff7ce71160c5b0b5db7aece1d71d07d3fe70ec60888482ea2c0fea189",
+    "adopted": false,
+    "cancelled_or_refunded": false
+  },
+  "second_paid_writer": {
+    "request_sha256": "d253a26d360a52891c4e343b1a0ec4114e3e5e3db69fb8f97a6dbf7083efa9c4",
+    "request_key": "b7c769cc-3548-4a0c-a0c9-e6966d76f73f",
+    "job_id": "c04e0dc3-6130-476d-ac35-dd1caeace90f",
+    "input_hash": "1108ce18c3f7d565e412498f8edd422ed7763fa0a96cb3f4d2631ede8c1a4101",
+    "status_at_offline_inspect": "running",
+    "status_is_live_claim": false
+  },
+  "duplicate_cause": {
+    "actual": "After the first narrative rewrite job was pending, the root controller resumed generic advance. It asked another narrative reader before recovering the writer. That reader changed the failed-panel owner_note, so native reconcileStale observed the first job succeeded, archived its unadopted result as terminal input drift, and sent the second writer job.",
+    "root_acknowledged_error": true,
+    "failed_panel_round_1": [
+      "no_recap",
+      "no_detour"
+    ],
+    "failed_panel_round_2": [
+      "no_recap"
+    ],
+    "future_prevention": "Do not call generic advance while this narrative rewrite is pending. Reconstruct the exact saved fixScript owner_note/request and recover that existing job without another reader."
+  },
+  "offline_inspect_observed": {
+    "no_api_calls": true,
+    "no_writes": true,
+    "real_narrative_fix_count": 0,
+    "source_deep_equal_saved_payload": true,
+    "genuine_failed_panel_bound": true,
+    "failed_panel_round": 2,
+    "native_deterministic_line_ids_equal_saved": true,
+    "current_video_sha256": "63cf7a8b591212059ccdd8ffa2f303bb722e3db3c0f9aab3f223d0cb3064b1a9",
+    "state_sha256": "96038281e24b2352aca6651eb3616d918b572f0f74697e278a1556539b722d0b",
+    "failed_narrative_sha256": "14a7eb31e16876e4b4a0f8556d491762e9a1c8d084e7eb2aa173e72ee5d65f27",
+    "saved_second_receipt_sha256": "37850ede31117c26b85870e39ce3eebe3f4c6b0385c427f413ad40402d3bde9b"
+  },
+  "allowed_transport": [
+    "GET https://mokaair.com/api/video/automation/settings",
+    "GET https://mokaair.com/api/video/automation/run/jobs/c04e0dc3-6130-476d-ac35-dd1caeace90f?input_hash=1108ce18c3f7d565e412498f8edd422ed7763fa0a96cb3f4d2631ede8c1a4101"
+  ],
+  "guards": [
+    "Real filesystem lease and STOP/backoff respected",
+    "Actual saved canonical request/source/receipt hash/job/key/input hash checked",
+    "Current source deeply equals the actual paid request input",
+    "Real bound failed second narrative verdict reconstructs the same owner_note",
+    "Pre-TTS artifacts and only actual outline approval; no later media or approval",
+    "api.run rejects any different normalized request before transport",
+    "Only native fixScript/saveAndLint/adopt/settle change source/state/receipt",
+    "No new POST, reader, model job, speech, owner approval, forced archive, cancellation or count reset"
+  ],
+  "truthful_lint_error_conversion": {
+    "root_explicitly_authorized": true,
+    "typed_error_only": "NewRecoveryInputRefused from this helper",
+    "requires": [
+      "Real paid writer result has returned",
+      "The parsed native answer is the same object passed to saveAndLint",
+      "Actual saved source deeply equals native settled(answer.video)",
+      "Actual native lint errors are nonempty"
+    ],
+    "return": "A nonempty truthful failure string listing actual lint errors; never null or fake pass",
+    "native_followthrough": "Native fixScript increments the actual narrative rewrite round and sets verified/listener_done false, then its normal retryLater failure path",
+    "other_errors": "Not swallowed or converted; real answers and receipts are preserved for inspection"
+  },
+  "actual_outcomes": {
+    "pending": "Exit4, same existing native job and request retained; no reader rerun",
+    "adopted_real_candidate_lint_held": "Exit1, actual candidate adopted but actual lint errors remain; native counters/fact-check/listener state recorded",
+    "native_fix_saved_lint_clear_needs_reverification": "Exit0 only after native fixScript plus actual lint0; still requires real verifier/listener/narrative/demo before TTS"
+  },
+  "asset_credit_risk": {
+    "source_code": "tools/video/automation/flow.mjs settle sets assets=[]",
+    "observed_first_result": "The actual first returned writer video has one assets credit and thumbnail.data.asset stock/be673375c05932dd665ca14b79030c1fa69b5705c1d582348b31b0eb89a5c7a2.png",
+    "implication": "If the second returned candidate retains that thumbnail asset reference, native settle clears its credit before lint; actual missing-credit error must be fixed under a real lease. It is not a reason to fake a lint pass or buy another writer automatically.",
+    "second_result_runtime_lint_observed_by_this_audit": false
+  },
+  "verification": {
+    "syntax": "node --check passed",
+    "help": "Offline help executed",
+    "inspect": "Offline actual-state inspection passed",
+    "api_calls_by_preparation": 0,
+    "paid_calls_by_preparation": 0,
+    "source_video_claims_auto_receipts_task_changed_by_preparation": false,
+    "independent_static_review": {
+      "reviewer": "/root/pdf_pipeline_audit/audit_speech_journal",
+      "passed": true,
+      "scope": "Static source/native-interface review only; no API/paid/runtime media test",
+      "findings": []
+    }
+  },
+  "runtime_outcome": "Not executed by preparation agent; read /workspace/work/ai-pdf-01/writer-recovery-last-outcome.json after root actually runs the reviewed helper."
+}

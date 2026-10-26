@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "performed_by": "OpenAI Codex /root/pdf_materials_refresh",
+  "checked_at_utc": "2026-10-26T09:24:56.392817+00:00",
+  "archive": "/workspace/work/ai-pdf-01/lab/ai-pdf-comparison-materials.zip",
+  "archive_sha256": "541234b6bc0f26725e4670339568eb92c122d89caf1b43ea7e2a25ec70fbb1e7",
+  "archive_bytes": 1011175,
+  "fresh_extraction_root": "/workspace/work/ai-pdf-01/materials-replay-20261026T092456Z/unpacked",
+  "manifest_sha256": "fcb88351134ed6da5301d36d6cf141f5ed13547f7eec896105dc1269497a6894",
+  "manifest_entries_verified": 54,
+  "archive_members": 55,
+  "crc_check_passed": true,
+  "all_manifest_names_bytes_hashes_matched": true,
+  "bundled_output_moved_before_replay": "/workspace/work/ai-pdf-01/materials-replay-20261026T092456Z/bundled-comparison-output",
+  "python_version": "Python 3.12.14",
+  "installed_versions": {
+    "openpyxl": "3.1.5",
+    "pypdf": "6.10.0",
+    "reportlab": "4.4.9",
+    "Pillow": "12.3.0"
+  },
+  "input_files": [
+    {
+      "path": "materials/build_comparison.py",
+      "sha256": "35103b82d83b527b897bbc171e8d71e40431ebc0c4412a9c3ce62b898b160ea1",
+      "bytes": 18205
+    },
+    {
+      "path": "materials/fixture-truth.json",
+      "sha256": "ba02380452061fe58abc6a4187566b9d101dce26f9c9242efcf85cda87ad37ee",
+      "bytes": 1648
+    },
+    {
+      "path": "materials/request-20.json",
+      "sha256": "53f882946086d999e5ccbcf14755a176a92907e2c984920c2f3653c10be8eb62",
+      "bytes": 46
+    },
+    {
+      "path": "materials/request-21-invalid.json",
+      "sha256": "0f3f6f5c96284192bfc545f951e9c24f68b3867837f05ec8efa67f213fb99b4e",
+      "bytes": 46
+    },
+    {
+      "path": "research/lab-ai-extraction.json",
+      "sha256": "f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8",
+      "bytes": 22847
+    },
+    {
+      "path": "research/lab-extracted-pages.json",
+      "sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+      "bytes": 6693
+    }
+  ],
+  "commands": [
+    {
+      "executed_at_utc": "2026-10-26T09:24:56.058918+00:00",
+      "cwd": "/workspace/work/ai-pdf-01/materials-replay-20261026T092456Z/unpacked/materials",
+      "argv": [
+        "python3",
+        "build_comparison.py",
+        "--analysis",
+        "../research/lab-ai-extraction.json",
+        "--extracted",
+        "../research/lab-extracted-pages.json",
+        "--request",
+        "request-20.json",
+        "--out",
+        "comparison-output"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"comparison-output\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "output_directory_existed_before": false,
+      "output_directory_created": true,
+      "totals": {
+        "Aster": "3990.00",
+        "Birch": "4100.00",
+        "Cedar": "3937.50"
+      },
+      "checks": 17,
+      "all_checks_passed": true,
+      "selected_json_matches_bundled_result": true,
+      "outputs": [
+        {
+          "name": "baseline-and-normalized-order.json",
+          "bytes": 601,
+          "sha256": "9de1c612ae82e3c4dbdf00abe1aaf2c509a7925cb2e00eecf888f629588eaa2c"
+        },
+        {
+          "name": "change-log.json",
+          "bytes": 573,
+          "sha256": "5eece163997905a316890f7acf8e84bf82e57a3218105b5ddae1c59b716558b9"
+        },
+        {
+          "name": "comparison.json",
+          "bytes": 4304,
+          "sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab"
+        },
+        {
+          "name": "comparison.md",
+          "bytes": 1319,
+          "sha256": "403eb971cacecc3cb83f7c44af857306d72c36a19c8e27c7712abaf348c72800"
+        },
+        {
+          "name": "comparison.xlsx",
+          "bytes": 13525,
+          "sha256": "e9afd9cd419f195b78bd06070ced41923dacadfd32f430a44030ec30d28fa996"
+        },
+        {
+          "name": "headline-unit-sort-baseline.csv",
+          "bytes": 448,
+          "sha256": "4672e1eba5c482d194c250de197e18b4e57a7703be9eb2c5e5185875067edf6a"
+        },
+        {
+          "name": "original-10.csv",
+          "bytes": 531,
+          "sha256": "ce6b009a07c14160dc8c6f632815e9d06cb856018fdc8c129e9dd98d529e8435"
+        },
+        {
+          "name": "questions.txt",
+          "bytes": 504,
+          "sha256": "fa572e87cedfce6246f78cc4f6f773da35ffde32f99a45c4c55cf97a0ef5bab2"
+        },
+        {
+          "name": "revised-10.csv",
+          "bytes": 540,
+          "sha256": "93c64f00c828eb4c8cd168ebdc749f742a9d33a8e2e4ef653072081321d0d6aa"
+        },
+        {
+          "name": "revised-20.csv",
+          "bytes": 540,
+          "sha256": "1161a12d8e5f8a55d3465624bb941dd98c45b4a1d8a97b4891c0ccd5e78916b6"
+        },
+        {
+          "name": "selected-comparison.csv",
+          "bytes": 540,
+          "sha256": "1161a12d8e5f8a55d3465624bb941dd98c45b4a1d8a97b4891c0ccd5e78916b6"
+        },
+        {
+          "name": "selected-comparison.json",
+          "bytes": 1586,
+          "sha256": "aafb2cefc8d163c2631ec55d7d60d95ad3fa195457781a255ddf17d940064a64"
+        },
+        {
+          "name": "verification.json",
+          "bytes": 5311,
+          "sha256": "1f8b6b5f54b6fa169c8b7b6662d3dab9b8341f2d9ef505c5d5c7eefea01231f1"
+        }
+      ]
+    },
+    {
+      "executed_at_utc": "2026-10-26T09:24:56.234822+00:00",
+      "cwd": "/workspace/work/ai-pdf-01/materials-replay-20261026T092456Z/unpacked/materials",
+      "argv": [
+        "python3",
+        "build_comparison.py",
+        "--analysis",
+        "../research/lab-ai-extraction.json",
+        "--extracted",
+        "../research/lab-extracted-pages.json",
+        "--request",
+        "request-21-invalid.json",
+        "--out",
+        "comparison-21"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/workspace/work/ai-pdf-01/materials-replay-20261026T092456Z/unpacked/materials/build_comparison.py\", line 234, in <module>\n    if __name__ == '__main__': main()\n                               ^^^^^^\n  File \"/workspace/work/ai-pdf-01/materials-replay-20261026T092456Z/unpacked/materials/build_comparison.py\", line 196, in main\n    selected_rows = make_rows(quote_map, originals if selected_request['scenario']=='original' else revised, selected_request['quantity'])\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/work/ai-pdf-01/materials-replay-20261026T092456Z/unpacked/materials/build_comparison.py\", line 70, in make_rows\n    result = delivered(fields, qty)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/work/ai-pdf-01/materials-replay-20261026T092456Z/unpacked/materials/build_comparison.py\", line 46, in delivered\n    raise ValueError('Quantity outside explicitly quoted range')\nValueError: Quantity outside explicitly quoted range\n",
+      "output_directory_existed_before": false,
+      "output_directory_created": false,
+      "expected_last_stderr_line": "ValueError: Quantity outside explicitly quoted range",
+      "expected_rejection_observed": true
+    }
+  ],
+  "passed": true,
+  "scope": "Real local replay from the final refreshed ZIP using already-saved actual AI extraction; no API or paid request, no new extraction/OCR/model invocation, no authenticated download verification. Source code and README unchanged during replay."
+}
