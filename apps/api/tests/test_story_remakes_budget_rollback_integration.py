@@ -2,7 +2,8 @@
 
 The test strips the 0141 migration from a disposable copy of the application,
 upgrades that database with the pinned 0141 source, then runs the old 0140
-migration command. The six remakes stay held in the 0140 image.
+migration command. The copy is today's application code, which activates the
+six remakes; the deployed 0140 image (#1875) still held them.
 """
 
 from __future__ import annotations
@@ -200,7 +201,7 @@ PRIOR_OWNERS_QUERY = (
 )
 
 
-def test_reviewed_future_source_is_pinned_and_remakes_stay_held() -> None:
+def test_reviewed_future_source_is_pinned_and_remakes_are_activated() -> None:
     assert hashlib.sha256(FUTURE_SOURCE.encode("utf-8")).hexdigest() == FUTURE_SOURCE_SHA256
     assignments: dict[str, ast.expr] = {}
     for statement in ast.parse(FUTURE_SOURCE).body:
@@ -233,7 +234,9 @@ def test_reviewed_future_source_is_pinned_and_remakes_stay_held() -> None:
         C11_REMAKE_PILOT_SLUG: Decimal("25"),
     }
     assert not is_preproduction_held(C11_REMAKE_PILOT_SLUG)
-    assert all(is_preproduction_held(slug) for slug in (C20_PILOT_SLUG, *REMAKE_PILOT_SLUGS))
+    # Activated with their 0141 accounts (owner decision 2026-10-26).
+    assert not any(is_preproduction_held(slug) for slug in REMAKE_PILOT_SLUGS)
+    assert is_preproduction_held(C20_PILOT_SLUG)
 
 
 def _base_url() -> URL:
@@ -545,7 +548,7 @@ def test_real_0141_remake_accounts_allow_only_reviewed_0140_rollback(
             "import asyncio\nfrom decimal import Decimal\n"
             "from app.db import SessionFactory, engine\n"
             "from app.video_budget import service\n"
-            f"slugs={(C20_PILOT_SLUG, *REMAKE_PILOT_SLUGS)!r}\n"
+            f"slugs=({C20_PILOT_SLUG!r},)\n"
             "async def check():\n"
             " async with SessionFactory() as session:\n"
             "  for slug in slugs:\n"
