@@ -77,3 +77,9 @@
    並用 `node tools/video/cli.mjs narrative --slug curio-s14-v2 --answers panel/reader-1.json` 留一筆紀錄。
 2. 之後照 `curio-episode` skill：旁白 → `check-audio` → 站主聽 → 插圖整集一次報價（110 張，約 US$1.5–3）→ 配樂 → 成片。
 3. 有機會時追直木引的那句「卑怯な謀」的出處（S14.md〈還沒做的〉）。
+
+## 製作紀錄（2026-10-26）
+
+- 旁白：144 句；重配後剩 11 句低於 0.5，另 1 句（mv503）Gemini 以 PROHIBITED_CONTENT 拒絕轉寫，交站主在旁白關卡聽。
+- 插圖：109 張；第一輪 3 張沒過 judge（手沒接手臂、六指、漂浮色塊），改成「一個人做一件事」重畫；巖流島碑第二輪仍因白天配色不合系列（深藍夜色、羊皮紙黃、灰青）沒過，改成黃昏深藍天空後過；整集插圖花 US$1.96。
+- `review-push --gate audio` 與 `--gate storyboard` 已送 /admin/videos。
