@@ -1,0 +1,137 @@
+{
+  "schema_version": 1,
+  "scope": "independent static code/safety review only; no execution authorization or caption/voice/media pass",
+  "recorded_at_utc": "2026-10-26T21:51:27.157498+00:00",
+  "reviewer": "/root/pdf_cc_free_unit_review/caption_state_guard_audit",
+  "candidate_file": "/workspace/work/ai-pdf-01/free-caption-preparation-20261026T2144Z/free-caption-one-use.mjs",
+  "candidate_sha256": "f5ccae34067a1e66e47ba9dc54cd5678b6fd7e5a3d6d70b62ffe4e342d964f34",
+  "static_review_passed": true,
+  "remaining_concrete_blockers": [],
+  "actual_candidate_reads": [
+    {
+      "sha256": "a5d923e701951998af29dd9ef0538ad6c4608841a531f9291025a5db6634d4f8",
+      "coverage": "Entire initial candidate actually read; found optional fit.kept preflight false refusal."
+    },
+    {
+      "sha256": "f66ea8edcfcaf71adfec40ac19b7f34a617cfb000f7261fc5ac29f3997b9c528",
+      "coverage": "Entire patched candidate actually read after the optional kept correction/shared input guards/final audit changes."
+    },
+    {
+      "sha256": "f5ccae34067a1e66e47ba9dc54cd5678b6fd7e5a3d6d70b62ffe4e342d964f34",
+      "coverage": "Actual final changed voiceReadiness/currentAuto/real voicesAfter fields read; exact in-memory reversal of only these changes recreated f66ea8ed SHA, proving all other bytes identical to the fully read candidate. No falsely claimed third entire reread.",
+      "unchanged_bytes_proof_sha256": "f66ea8edcfcaf71adfec40ac19b7f34a617cfb000f7261fc5ac29f3997b9c528"
+    }
+  ],
+  "actual_core_reads": [
+    {
+      "file": "tools/video/core/stages.mjs",
+      "sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "sections_actually_read": [
+        "116-174 currentDub/dubsForUpload",
+        "190-270 localeCues/captionTimelineOf/runCaptions"
+      ]
+    },
+    {
+      "file": "tools/video/core/state.mjs",
+      "sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "sections_actually_read": [
+        "180-197 loadProject shared lexicon",
+        "265-270 recordStage",
+        "380-414 dubsStatus"
+      ]
+    },
+    {
+      "file": "tools/video/core/branding.mjs",
+      "sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+      "sections_actually_read": [
+        "123-155 brandingCurrent/appliedBranding",
+        "237-265 presentationTimeline"
+      ]
+    },
+    {
+      "file": "tools/video/qa/checks.mjs",
+      "sha256": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+      "sections_actually_read": [
+        "110-158 captionsItem warning/failure rules"
+      ]
+    },
+    {
+      "file": "tools/video/qa/cli.mjs",
+      "sha256": "993fc86ad97327368a6ca7db3104b1770a66be9145da60f5c99da54983052f33",
+      "sections_actually_read": [
+        "225-245 actual branding/current context",
+        "303-309 actual captionsItem invocation"
+      ]
+    },
+    {
+      "file": "tools/video/core/schema.mjs",
+      "sha256": "8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b",
+      "sections_actually_read": [
+        "17-40 locale constants"
+      ]
+    },
+    {
+      "file": "tools/video/core/project-lease.mjs",
+      "sha256": "611e9403b68059fdf2bbb475e4795f02813f606b17ae4a5326a420054b434a98",
+      "sections_actually_read": [
+        "160-220 verify/release semantics"
+      ]
+    },
+    {
+      "file": "tools/video/core/paths.mjs",
+      "sha256": "76e19da45a3308e48b2d86f7d95f8d71830c8448183b654c7661e044d09c8e75",
+      "sections_actually_read": [
+        "36-48 resolveWorkdir",
+        "82-92 stopRequested"
+      ]
+    },
+    {
+      "file": "tools/video/core/captions.mjs",
+      "sha256": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+      "sections_actually_read": [
+        "510-526 readable pause check context"
+      ]
+    }
+  ],
+  "concrete_issue_found_and_corrected": {
+    "initial_issue": "Array.isArray(fit.kept) required an absent optional field, falsely making current KO/ES unready.",
+    "actual_readonly_evidence": "The unchanged EN/JA/KO/ES fit.json objects have no kept field and over:[]; timelines also omit kept. Native dubsForUpload treats absent kept as no kept lines.",
+    "final_correction": "Final code defaults fit.kept and dub.kept to [], requires both empty arrays and fit.over empty; voice readiness is freshly read before/after, not cached."
+  },
+  "reviewed_guards": {
+    "explicit_concrete_root_grant_and_helper_hash": true,
+    "fresh_bound_original_task_guard_and_no_actual_controller_LEASE_STOP": true,
+    "preserved_native_defer3_and_PT_EN_JA_limits": true,
+    "matching_primary_SHA_and_local_approval_11QA_exact8_current_meaning_chains": true,
+    "all_network_refused_and_safely_selected_attempt_diagnostics": true,
+    "one_native_main_captions_only_real_lease_STOP_and_consumed_ONE_USE": true,
+    "allowed_mutations_only_nine_SRT_VTT_manifest_and_state_append": true,
+    "state_preserves_all_other_properties_and_old_run_prefix_then_one_exact_caption_run": true,
+    "whole_runtime_movie_source_original14_shared_lexicon_native_input_hashes_protected": true,
+    "currentDub_and_localeCues_reused_without_double_branding_shift": true,
+    "actual_SRT_VTT_native_byte_equality_roundtrip_coverage_intro_outro_bounds_checked": true,
+    "native_caption_component_preserves_reading_speed_warnings_and_fails_other_problems": true,
+    "native_return_code_distinguished_from_throw_and_partial_outputs_preserved": true,
+    "no_full_QA_overwrite_package_push_owner_publish_or_auto_moved_reset": true
+  },
+  "important_interpretations": [
+    "A successful caption-only component would not certify EN/JA audio; native currentDub intentionally permits their current physical failed tracks as timing sources.",
+    "Missing PT/ID/VI/TH dubbing correctly falls back to primary narration timing under unchanged native runCaptions. Such captions are not proof those voice tracks exist or passed.",
+    "parseSrt loses cue.line identifiers, so its diagnostic labels use (?) while expected native manifest diagnostics retain source IDs. Final helper preserves both rather than falsely requiring literal diagnostic equality.",
+    "Global defer3 remains binding for paid speech work; this separate zero-network caption stage must not remove or advance it.",
+    "Execution is contingent on root obtaining the actual released sole writer/idle state and supplying a fresh reviewed grant/commit/task guard; this report cannot establish future runtime preconditions."
+  ],
+  "actions_performed": {
+    "native_or_candidate_execution": false,
+    "syntax_check_by_this_reviewer": false,
+    "model_or_paid_calls": 0,
+    "external_provider_network_calls": 0,
+    "canonical_source_media_task_Git_lease_or_control_writes": false,
+    "only_file_written": "/workspace/work/ai-pdf-01/free-caption-preparation-20261026T2144Z/static-review.json"
+  },
+  "limitations": [
+    "No generated caption files were audited as outputs by this reviewer; none were produced by this task.",
+    "No subtitle semantic translation reread, actual media playback, whole-track listening, fresh official-site GET, source claim verification or provider health/billing assessment was performed.",
+    "Static code review is not proof that a later native caption run or caption QA will pass; preserve any actual refusal, partial output, warning or failure."
+  ]
+}

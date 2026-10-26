@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: blocked
+status: in-progress
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
-claimed_at: 2026-10-26T21:40:00Z
+claimed_at: 2026-10-26T21:49:28Z
 created_at: 2026-10-25T15:36:21Z
 completed_at:
 branch: codex/ai-pdf-comparison-20261026
@@ -39,6 +39,17 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Separate free nine-caption unit admission; paid queue stays stopped — 2026-10-26T21:51:48.365948+00:00
+
+- Root actually verified the prior coordinator's explicit writer return and clean pushed8ad1240a at21:48Z, no PDF/original/Whisper controller orLEASE/STOP. The true PTunit remains exit4/defer3/due22:03:11.200Z with0WAV/ASR, EN/JA remain exhausted, KO+ES2/8checked. This separate FREE written-caption work does not resume the finite paid queue, clear service backoff, or approve any voice. Root ordinary same-owner status/claim now records the active free subtask only.
+- Fresh actual original GitHub task read21:46:13 still0ec/latest17:03:40 (>2hours). Normal configured SDK GET21:47:34/36 again has originaloldfinal/publish approved/pendingmaterials/retries{} and PDFexact346a/934608 primaryapproved+publishapproved/retries{}/panelundecided. Read-only source copies are under `research/caption-qa/free-nine-caption-*`. No original orowner write occurred.
+- Exact candidate helper `/workspace/work/ai-pdf-01/free-caption-preparation-20261026T2144Z/free-caption-one-use.mjs` SHA `f5ccae34067a1e66e47ba9dc54cd5678b6fd7e5a3d6d70b62ffe4e342d964f34` was fully read by root after its actual static corrections; source snapshot in `research/production-helpers/free-caption-one-use-20261026T2144Z.mjs`. New source-identical caption-only grant `research/caption-qa/one-free-nine-caption-grant-20261026T2144Z.json` SHA `3fc3dd2085ebd54c2dd6c9170e9709470b8ecda24577901634bdfee40317590a` requires commit/push and finished independent static review before ONE actual call. It refuses allnetwork, owns a real shortlease/checksSTOP and consumes an exclusive marker; changes may only be nineSRT/VTT pairs,captionmanifest and one native state.json caption-run append. Native auto/paid receipts/raw/failure caps/primary11QA/branding/thumbs/source/sharedlexicon/core remain protected. No actual captions call or ready-caption result is claimed at this admission.
+- Current onlyzh-TWCC exists. Native current failed EN/JA physical tracks will supply their own caption timing while retaining failed/stopped voice status; checked KO/ES follow checked dub timing, and PT/ID/VI/TH use native narration timing until genuinely dubbed. Verify actual101line coverage, native SRT/VTT bytes/roundtrip/manifest, bookend bounds and the unchanged native caption QA component; retain reading-speed warnings and all failures rather than treating CLIexit0 asQA. Optional pure native9metadata composition can make a separately labeled text-only envelope, never a full8uploadpackage.
+- Root alone is source/task/Git writer. Paid next step still requires a separate fresh authorized execution after saved22:03:11.200Z with all original/current/meaning/primary/unknown/budget guards; no automatic due-time retry, EN/JA ordinary retry, panel spoof, full8finalize/push, owner/Studio/publication or new movie from this free grant.
+
+
+- Final independent static helper review genuinely passed for pinnedf5ccae34, source `research/caption-qa/free-nine-caption-static-review.json` SHA94374331; separate feasibility report0fa8f6 is saved beside it. Root personally read the entire f66 helper and actual f5 voice-readiness delta, then verified the final SHA; these are pre-execution code reviews only. Native node syntax check passed; existing optional kept-field guard and actual after-state bookkeeping fixes were made before any unit/marker. Admission task validation2187 and diff passed; latest production-source docs236/236 remains the true unchanged-source result from the preceding stopped checkpoint.
 
 ### Fresh user PT unit truly stopped at third service defer — 2026-10-26T21:45Z
 
