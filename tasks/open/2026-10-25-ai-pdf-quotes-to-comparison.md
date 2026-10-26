@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: blocked
+status: in-progress
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
-claimed_at: 2026-10-26T22:24:19Z
+claimed_at: 2026-10-26T23:36:02Z
 created_at: 2026-10-25T15:36:21Z
 completed_at:
 branch: codex/ai-pdf-comparison-20261026
@@ -40,6 +40,16 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Fresh actual state4 PT admission after genuine saved due — 2026-10-26T23:36:48.934771+00:00
+
+- This is a fresh user execution after real23:10:03.504Z due, with no timer replay. Independent original audit23:34–35Z found actual remote task stillblob0ec/latest17:03:40/head1237/draft/no-auto, no actual controller/LEASE/STOP, original14 unchanged and realSDKGET unchanged approvedfinal/publish/pendingmaterials/retries{}/workerunavailable. Root personally read actual audit11a7de4b. No original source/media/paid/owner action or renewed connection question.
+- ONE new FREE preflight actually ended23:35:50.917Z/exit0/session31953 and released23:35:51.926Z with7/7actual guards PASS. Current2350runtime exactly matches genuine state4 baseline8b595529; its2349NONAUTO files still match completed9CC, without resetting auto3. All445dated source files and457then-current source files, core20/original14/immutabletext28+manifest399c/consumedCCmarker remain exact. All8 actual meaning chains and exact seven historical model archives (EN3/JA2/KO2) are bound; genuine fullPT4b64 written baseline remains current. Unknownspeechjournals0/currenttop-levelunadopted0, terminalarchive836fe retained. Source-only admission evidence is appended after this dated457 snapshot.
+- Actual primary346a/matching11QA/localchat8/nativePT4/due/caps/protections and realbothprojectGETs passed. Native dryrun95newrequests/6112estimatedchars/monthly5743457/14estimatedover plus existing0.13s/1.18x warning remain. This is configured readiness and estimated budget, not real synthesis availability, fit, rawHTTP or billing proof. NineCC1002cues/31retainedwarnings and completed title/description/chapter text remain current because no words/timings changed; KO+ES2/8voices remain genuinely checked, ENJAfailedlimits and PT/ID/VI/THmissing preserved.
+- Root ordinary same-owner status/claim succeeded withoutforce/native change. Final source-identical grant `research/language-checkpoints/remaining-languages-resume-after-PT-defer4-20261026T2334Z.json` SHA `68896d52b37a77fa77d41a14845e1eae12a29ab6bba427bbec64dd17cf65fe76` inherits complete d5f273/b571 safeguards, narrows execution to exactly ONE normalcachedPT and names `/root/pdf_pt_state4_prepare_2334`. Root actually read full frozen38beddFREE helper and d5288b6 ONEdriver, static compiler checks passed; actual grant hashes pin newdriver/preflight/baseline/original evidence. Before explicitGO, root alone writes source/task/Git and no paid unit has run. Activation requires actual appropriate checks/commit/push and root GO_PAID.
+- On any actual exit/defer/unknown/modelboundary, STOP this finite admission and preserve real PID/exit/log/receipts/nativecounters/due/newcurrentruntime snapshot to this same ticket at ended/lease-free boundary; no ID/VI/TH workaround or automatic due resume. Every actual shorten/reword answer needs independent accepted+rejected/raw/context review before changed takes. Do not retryENJA, resetcounters/skip, changeprovider/model/voice/alias/threshold/timing/font/budget, or full8finalize/package/push/owner/publish/newmovie. Any actualPTsource/dubtiming change requires a fresh nativeCC/text rebuild and actual QA; old artifacts remain immutable.
+
+- Actual admission checks passed: taskvalidation2187 with existing unrelated warnings preserved, all8staged current source/index/report/actual-boundary bindings and cached-diff0. Independent fullstaticreview9dfcc090 found no blocker. Receipt `research/language-checkpoints/pt-state4-admission-source-checks-20261026T2334Z.json` pins actual results. No production/core change, so prior docs236 and lint0errors/2warnings remain historical unchanged-input checks, not freshly rerun.
 
 ### Fresh PT unit actually stopped at service defer4; current9CC/text preserved — 2026-10-26T22:34:33.066126+00:00
 
