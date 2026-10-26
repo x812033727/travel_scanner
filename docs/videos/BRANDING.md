@@ -356,12 +356,15 @@ node tools/video/cli.mjs review-files --slug S --out /outside/dir [--gate final]
 
 | 規則 | 做法 |
 | --- | --- |
-| 取哪些 | 只取**待審或已核准**審核列出的檔案；退回、被取代的審核與審核沒列的檔案，API 一律 404 |
+| 取哪些 | 只取**待審或已核准**審核列出的檔案，加上一筆有效換版（待審或已核准的新成片）在 `retained_review_ids` 保留的舊成片、上架包與語言批次，後者放在 `DIR/retained/<gate>/`；其他退回、被取代的審核與審核沒列的檔案，API 一律 404 |
 | 放哪裡 | `DIR/<gate>/<role>.<副檔名>`，例如 `final/final.mp4`、`publish/captions_zh-TW.srt`；同一個 gate 與 role 只取最新那筆審核的 |
 | 怎麼驗 | 每個檔下載完核對審核列的 SHA-256 與大小，不符就刪掉並以結束碼 4 報出；已在 DIR 且相符的不重下載 |
 | 收據 | `DIR/review-files.json` 記下每個檔的 gate、狀態、審核 id、role、SHA-256 與沒取到的檔 |
 | 路由 | `GET /api/video/reviews/<slug>/files/<sha256>`（工具憑證、支援 Range、`no-store`、每小時 600 次） |
 | 不做的事 | 不改站上任何東西；取回的檔只是 `stage` 或 `import --from` 的起點，換版照上面的流程走 |
+
+換版一送出，舊的上架包與語言批次就被標成已取代；2026-10-26 Ollama 換版時語言批次的配音還沒取回，
+當時工具讀不到，因此讀檔路由改成也給換版保留的審核。換版前先取一次也無妨，但不再是必要的。
 
 已上傳的影片照樣不能用換版流程，要重新上傳新版的走新 slug（PHP2Shell 的 `-v2` 即是）。
 

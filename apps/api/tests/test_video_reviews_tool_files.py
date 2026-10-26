@@ -28,10 +28,14 @@ def _put(store: ReviewStore, slug: str, body: bytes) -> str:
     return sha
 
 
-def _review(gate: str, status: str, *files: tuple[str, str, str]) -> Any:
+def _review(
+    gate: str, status: str, *files: tuple[str, str, str], payload: dict[str, Any] | None = None
+) -> Any:
     return SimpleNamespace(
+        id=uuid4(),
         gate=gate,
         status=status,
+        payload=payload or {},
         files=[
             {"role": role, "sha256": sha, "content_type": kind, "size": 1}
             for role, sha, kind in files
@@ -74,6 +78,39 @@ async def test_only_a_pending_or_approved_review_s_files_are_read_back(
         ("languages", "dub_en"),
         ("publish", "final"),
     ]
+
+
+@pytest.mark.asyncio
+async def test_an_owner_renewal_keeps_the_reviews_it_retains_readable(
+    monkeypatch: pytest.MonkeyPatch, store: ReviewStore
+) -> None:
+    old_cut = _put(store, "v", b"old final")
+    old_dub = _put(store, "v", b"old dub")
+    stray = _put(store, "v", b"an unrelated superseded file")
+    old_final = _review("final", "superseded", ("final", old_cut, "video/mp4"))
+    old_languages = _review("languages", "superseded", ("dub_en", old_dub, "audio/mp4"))
+    unrelated = _review("languages", "superseded", ("dub_ja", stray, "audio/mp4"))
+    retained = {"retained_review_ids": [str(old_final.id), str(old_languages.id)]}
+    renewal = _review("final", "pending", payload={admin_service.RENEWAL_KEY: retained})
+    reviews = [renewal, unrelated, old_languages, old_final]
+    monkeypatch.setattr(admin_service, "_project", AsyncMock(return_value=object()))
+    monkeypatch.setattr(admin_service, "_reviews", AsyncMock(return_value=reviews))
+
+    path, kind = await tool_files.file_for_tool(AsyncMock(), store, "v", old_dub)
+    assert (path.read_bytes(), kind) == (b"old dub", "audio/mp4")
+    path, _ = await tool_files.file_for_tool(AsyncMock(), store, "v", old_cut)
+    assert path.read_bytes() == b"old final"
+    with pytest.raises(AppError):
+        await tool_files.file_for_tool(AsyncMock(), store, "v", stray)
+    assert [(row["gate"], row["status"]) for row in tool_files.listing(reviews)] == [
+        ("languages", "superseded"),
+        ("final", "superseded"),
+    ]
+
+    # A rejected renewal retains nothing: its old reviews go back to unreadable.
+    renewal.status = "rejected"
+    with pytest.raises(AppError):
+        await tool_files.file_for_tool(AsyncMock(), store, "v", old_dub)
 
 
 @pytest.mark.asyncio
