@@ -1,0 +1,302 @@
+{
+  "recorded_at_utc": "2026-10-26T14:54:25.612327+00:00",
+  "actual_unit_exit_code": 4,
+  "actual_session": 78469,
+  "actual_log": "/workspace/work/ai-pdf-01/ja-reviewed-first-audio-check.log",
+  "actual_log_sha256": "8ca1aed9966ff7062b1dc5e0a6211aaf19a1775e1bf3b5393fd68f5502323b57",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "JA_translation_sha256": "70a718d2b51e18c57a4e1f2844c2b5ef611c5fd76b2b43dff7ff09f2a869c11c",
+  "EN_translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+  "primary_transcripts_saved": 100,
+  "missing_transcript_line_ids": [
+    "326u"
+  ],
+  "actual_service_failure": "326u: Gemini returned no transcript; refusal finish reason OTHER",
+  "actual_secondary_transcript_count": 23,
+  "actual_partial_flags": [
+    "fvzv",
+    "3742",
+    "nxct",
+    "ea2e",
+    "fd27",
+    "q7x8",
+    "6pwe",
+    "eg6v",
+    "qrv8",
+    "dyun",
+    "zqts",
+    "sxtz",
+    "m8sb",
+    "nvu3",
+    "pn4i"
+  ],
+  "actual_partial_flag_count": 15,
+  "JA_native_rounds": {
+    "shorten": 0,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "EN_native_rounds_preserved": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 2,
+    "check_stopped": true
+  },
+  "defer_count": 1,
+  "deferred_until": "2026-10-26T14:52:00.045Z",
+  "project_lease_present": false,
+  "actual_check_snapshot": "/workspace/work/ai-pdf-01/ja-audio-observed-history/first-audio-unit-actual-ended",
+  "actual_cache_sha256": "f4c3d52056031b789748fb70ddeebd98e896b78f45f2034ad19e34c30953d637",
+  "actual_flags_sha256": "b0acd6afb0ad750cb4b676c7d78931ce497868de9a28b6887a51976c8ccdf0d4",
+  "actual_second_records": {
+    "3742": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "画面の税率は計算上の仮定です。実際の取引では自分の見積もり条件を使います。",
+      "match_kind": null,
+      "noul": 0.34
+    },
+    "d78a": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "3社の原本を残し、出力は別フォルダに保存します。",
+      "match_kind": null,
+      "noul": 0.84
+    },
+    "fvzv": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "この会社等取引条件は練習用の架空データです",
+      "match_kind": null,
+      "noul": 0.23
+    },
+    "nxct": {
+      "by": "whisper_second_opinion.py",
+      "terms": [
+        "AI"
+      ],
+      "heard": "書く見積もりの2ページ分の文章を 要件とともにAIに渡します",
+      "match_kind": null,
+      "noul": 0.13
+    },
+    "7k9u": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "各項目に原文を付けさせどこが得かだけを答えさせません",
+      "match_kind": "exact",
+      "noul": null
+    },
+    "ea2e": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "不明な値は空値のままにし単価と総量それぞれの税も分けます",
+      "match_kind": null,
+      "noul": 0.05
+    },
+    "fd27": {
+      "by": "whisper_second_opinion.py",
+      "terms": [
+        "Aster"
+      ],
+      "heard": "Asterの2ページに分かれた単価塗装料を1行にまとめ、各種手も残します。",
+      "match_kind": null,
+      "noul": 0.05
+    },
+    "qttz": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "この原文で表の送料の抜けを確認できます",
+      "match_kind": "exact",
+      "noul": null
+    },
+    "q7x8": {
+      "by": "whisper_second_opinion.py",
+      "terms": [
+        "Birch"
+      ],
+      "heard": "バーチの送料が0円なのは三森諸に無料配送と名機があるためです",
+      "match_kind": null,
+      "noul": 0.08
+    },
+    "6pwe": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "総額計算時、プログラムはこの空地からまだ完全な見積もりでないって分かります",
+      "match_kind": null,
+      "noul": 0.14
+    },
+    "eg6v": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "表を受け取ったら、答えを変える値から現ページで確認します",
+      "match_kind": null,
+      "noul": 0.13
+    },
+    "at27": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "でもこの順位にはまだ税と配送費が入っていません",
+      "match_kind": "exact",
+      "noul": null
+    },
+    "c49q": {
+      "by": "whisper_second_opinion.py",
+      "terms": [
+        "Cedar"
+      ],
+      "heard": "シーダーの商品税も計算できます 順位に入れられますか",
+      "match_kind": null,
+      "noul": 0.77
+    },
+    "tnrc": {
+      "by": "whisper_second_opinion.py",
+      "terms": [
+        "Cedar"
+      ],
+      "heard": "シェダーの総額はまだ要確認なので1位にはできません",
+      "match_kind": null,
+      "noul": 0.5
+    },
+    "qrv8": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "表を開いて原分の金額と計算金額を別々に確認します",
+      "match_kind": null,
+      "noul": 0.17
+    },
+    "dyun": {
+      "by": "whisper_second_opinion.py",
+      "terms": [
+        "Cedar",
+        "Birch",
+        "TWD"
+      ],
+      "heard": "総量を補うと、CedarはBirchより50TWD高く、まだ追いつけません",
+      "match_kind": null,
+      "noul": 0.08
+    },
+    "zqts": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "金額だけ変えて球盤につないだままでは他の人が後から確認できません",
+      "match_kind": null,
+      "noul": 0.07
+    },
+    "sxtz": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "3車ともこの数量範囲では単価が変わらないって明記しています",
+      "match_kind": null,
+      "noul": 0.21
+    },
+    "m8sb": {
+      "by": "whisper_second_opinion.py",
+      "terms": [
+        "Birch",
+        "Aster",
+        "TWD"
+      ],
+      "heard": "BirchはAsterより110円高く、前の順位が逆転します。",
+      "match_kind": null,
+      "noul": 0.12
+    },
+    "nvu3": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "急な寝下げではなくて、数量によって固定総量の締める割合が変わったためです。",
+      "match_kind": null,
+      "noul": 0.06
+    },
+    "8fkp": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "改定シナリオを別に保存し、数量を12、他の条件は同じにします。",
+      "match_kind": null,
+      "noul": 0.54
+    },
+    "petb": {
+      "by": "whisper_second_opinion.py",
+      "terms": [
+        "Cedar",
+        "Birch",
+        "TWD"
+      ],
+      "heard": "1枚増すごとにシェダーはBirchとの差を21.25TWD縮めるので差額が0をまたぎます",
+      "match_kind": null,
+      "noul": 0.63
+    },
+    "pn4i": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "まず 新数量を各社が明記した適応範囲と称号します",
+      "match_kind": null,
+      "noul": 0.11
+    }
+  },
+  "protected_primary_and_EN_track_files": {
+    "approvals.json": {
+      "before_sha256": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "current_sha256": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "unchanged": true
+    },
+    "final.mp4": {
+      "before_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "current_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "unchanged": true
+    },
+    "timeline.json": {
+      "before_sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "current_sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "unchanged": true
+    },
+    "narration.wav": {
+      "before_sha256": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "current_sha256": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "unchanged": true
+    },
+    "review/check.json": {
+      "before_sha256": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "current_sha256": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "unchanged": true
+    },
+    "review/check-flags.json": {
+      "before_sha256": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "current_sha256": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "unchanged": true
+    },
+    "review/qa.json": {
+      "before_sha256": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "current_sha256": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "unchanged": true
+    },
+    "languages.json": {
+      "before_sha256": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "current_sha256": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "unchanged": true
+    },
+    "dubs/en/timeline.json": {
+      "before_sha256": "170a0056161b6d8f16f38e4c79f9c0abf0adaabedeb2cee18136e0ef5435c52f",
+      "current_sha256": "170a0056161b6d8f16f38e4c79f9c0abf0adaabedeb2cee18136e0ef5435c52f",
+      "unchanged": true
+    },
+    "dubs/en/fit.json": {
+      "before_sha256": "a2c89959888040d20c28bf51348eae2e281b6d0ebf9710ddbe645dcce6ca33dd",
+      "current_sha256": "a2c89959888040d20c28bf51348eae2e281b6d0ebf9710ddbe645dcce6ca33dd",
+      "unchanged": true
+    },
+    "dubs/en.m4a": {
+      "before_sha256": "07ec894a91e3a831cef590ad94236a3b552ed3b2f42403e75b04925013b4865b",
+      "current_sha256": "07ec894a91e3a831cef590ad94236a3b552ed3b2f42403e75b04925013b4865b",
+      "unchanged": true
+    }
+  },
+  "JA_voice_approved": false,
+  "last_root_instruction": "Save this actual result/checkpoint only; do not start a next paid unit even when the due time passes. The original-film watcher matched its recent-owner condition and ended read-only. A separate latest production GET returned502 upstream_unavailable and was not represented as a successful readback or retried.",
+  "pending_EN_unused_reword2_review": {
+    "file": "/workspace/work/ai-pdf-01/en-reword2-unused-boundary-independent-review.json",
+    "sha256": "44085e7533afff70859500006d417c516a560354e7e353ca93a601a7c0fdea0a",
+    "current_source_or_index_adopted_by_this_producer": false
+  },
+  "next": "Root must explicitly hand back continuation after honoring actual14:52 backoff and checking live lease/process plus production availability. Preserve100 current cached primary transcripts and23 second records. For primary transcription, only missing326u should require another response; the remaining15partial flags must still go through the normal native complete-check/retake/review workflow. None of these observations is a voice approval. Keep EN844/three failures/1-2-2; the unused-r2 review does not authorize a canonical/index/cap change."
+}
