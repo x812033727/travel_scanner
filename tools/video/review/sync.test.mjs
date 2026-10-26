@@ -1420,6 +1420,20 @@ test("the look goes up as one review per character, and the owner's picks come b
   assert.match(again.out.stdout, /already recorded/);
 });
 
+test("a look whose character has no sheets yet (sent back, not drawn again) is not pushed: nothing goes up and the owner is told to run look", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const manifest = lookManifest(box, lookHash(doc));
+  manifest.characters.yandi = { name: "炎帝", prompt: "sheet", candidates: [], suggested: null, needs_review: false, redraws: 1, sent_back: [{ at: "2026-10-26T00:36:48Z", said: ["只要一塊空白的淡藍光板"], fixes: ["只要一塊空白的淡藍光板"] }] };
+  writeFileSync(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify(manifest));
+  const server = site();
+  const push = context(box, server.fetchImpl);
+  assert.equal(await main(["review-push", "--slug", box.slug, "--gate", "look"], push.ctx), EXIT.owner);
+  assert.match(push.out.stderr, /the sheets of yandi were sent back and are not drawn again yet; run look first \(nothing was sent\)/);
+  assert.equal(server.state.reviews.length, 0, "not even the drawn character went up: the gate binds to one manifest");
+  assert.equal(server.state.files.size, 0);
+});
+
 /** A site that, as the live one does on every submission, drops the files no review names. */
 function tidySite() {
   const server = site();

@@ -293,6 +293,9 @@ export function lookChosen(manifest, choice, look) {
 
 const needsReview = (manifest) => Object.values(manifest?.shots ?? {}).some((shot) => shot?.needs_review);
 
+/** The characters of a look manifest with no candidate sheet: sent back, not drawn again yet. */
+export const undrawnCharacters = (manifest) => Object.entries(manifest?.characters ?? {}).filter(([, entry]) => !(entry?.candidates ?? []).length).map(([id]) => id);
+
 /**
  * Coverage of the current document's own keyframes, including the bytes of each selected
  * picture and required end frame. Cuts from another shot's clip have no keyframe of their own.
@@ -469,6 +472,7 @@ export async function pipelineStatus({ slug, root, workdir }) {
   // A drama's checks.json always carries a mix hash (of no music, when it has none); slides carry one only with music.
   const mix = valid && (drama || doc.music) && !compilation ? mixHash(doc) : null;
   const chosen = cast ? lookChosen(characters, read(ARTIFACTS.characterChoice), lookNow) : null;
+  const undrawn = cast ? undrawnCharacters(characters) : [];
   const anime = hasAnimePolicy(doc);
   const policyHash = anime && valid ? runtimePolicyHash(doc) : null;
   const timingCurrent = !anime || (Boolean(policyHash) && timeline?.timing_basis === "measured" && timeline.runtime_policy_hash === policyHash);
@@ -525,8 +529,11 @@ export async function pipelineStatus({ slug, root, workdir }) {
       todo: `${cli("script", slug)}, then ${cli("review-push", slug, "--gate script")}; the owner reads the screenplay on /admin/videos; then ${cli("review-pull", slug)}`,
     },
     "look generated": {
-      done: Boolean(lookNow) && characters?.look_hash === lookNow,
-      note: characters && characters.look_hash !== lookNow ? "characters/manifest.json was made for an older look" : undefined,
+      // A character whose sheets were sent back has no candidates until look draws it again
+      // (media/look.mjs resetSheets): the manifest's hash alone would call the look done and
+      // send that character for review with nothing to choose (系統說我是 BUG e002-redo1, 2026-10-26).
+      done: Boolean(lookNow) && characters?.look_hash === lookNow && !undrawn.length,
+      note: characters && characters.look_hash !== lookNow ? "characters/manifest.json was made for an older look" : undrawn.length ? `the sheets of ${undrawn.join(", ")} were sent back and wait to be drawn again` : undefined,
       todo: cli("look", slug),
     },
     "look approved": {

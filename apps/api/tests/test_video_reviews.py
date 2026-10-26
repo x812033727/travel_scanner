@@ -190,6 +190,17 @@ def test_decisions_need_a_pending_review_a_reason_to_reject_and_an_outline_choic
     )
     assert admin_service.decision_problem(_review("audio", "superseded"), approve)
     assert admin_service.decision_problem(_review("publish"), approve) is None
+    # A look review with nothing to choose (the worker pushed a character whose sheets were sent
+    # back before drawing them again, 2026-10-26) cannot be approved; it can be sent back.
+    empty = _review("look", payload={"options": [], "suggested": None})
+    assert "沒有設定圖可選" in (admin_service.decision_problem(empty, approve) or "")
+    assert (
+        admin_service.decision_problem(empty, DecisionIn(decision="reject", note="重畫")) is None
+    )
+    drawn = _review("look", payload={"options": [{"key": "A"}], "suggested": "A"})
+    assert (
+        admin_service.decision_problem(drawn, DecisionIn(decision="approve", choice="A")) is None
+    )
 
 
 def test_a_look_review_needs_one_of_its_sheets_chosen_and_a_storyboard_does_not() -> None:

@@ -2344,9 +2344,13 @@ test("an owner's drama request is planned first, its failed sheets go back to th
     writer: (body) => {
       if (body.payload.fix) {
         const video = structuredClone(body.payload.video);
-        for (const target of body.payload.fix.targets) {
-          const character = video.characters.find((each) => each.id === target.id);
-          if (character) character.appearance = `${character.appearance}, plain bronze crown without gems`;
+        // The judge's fix changes the appearance; the owner's note leaves it (as an episode of a
+        // series does, whose cast is the setting book's), so the look's hash stays the same.
+        if (!body.payload.fix.owner_note) {
+          for (const target of body.payload.fix.targets) {
+            const character = video.characters.find((each) => each.id === target.id);
+            if (character) character.appearance = `${character.appearance}, plain bronze crown without gems`;
+          }
         }
         return { video };
       }
@@ -2504,6 +2508,11 @@ test("an owner's drama request is planned first, its failed sheets go back to th
   assert.deepEqual([reset.characters.yandi.candidates, reset.characters.yandi.suggested, reset.characters.yandi.needs_review, reset.characters.yandi.redraws], [[], null, false, 2]);
   assert.deepEqual(reset.characters.yandi.sent_back.map((each) => [each.said, each.fixes]), [[["wrong crown"], ["wrong crown"]], [["六張都畫了人，只要一塊空白的淡藍光板"], ["六張都畫了人，只要一塊空白的淡藍光板"]]]);
   assert.ok(reset.characters.yandi.sent_back.every((each) => /^2026-09-26T/.test(each.at)));
+  assert.equal(reset.look_hash, lookHash(currentVideo()), "the owner's note changed no appearance: the manifest is still for this look");
+  // So the status, not the hash, has to say the look is not done: the next step draws, it does
+  // not push a review with nothing to choose (e002-redo1, 2026-10-26).
+  assert.equal((await pipelineStatus({ slug, root: box.root, workdir })).next.id, "look generated");
+  assert.equal(runs.filter((run) => run.startsWith("review-push --slug jingwei-fills-the-sea --gate look")).length, 1, "nothing was pushed for the reset manifest");
   assert.equal(reset.characters.jingwei.candidates.length, 1, "the approved character keeps its sheets");
   assert.deepEqual([reset.characters.jingwei.owner_pick, reset.characters.jingwei.suggested], [1, 1]);
   assert.match(await automation.step(), /look done/);

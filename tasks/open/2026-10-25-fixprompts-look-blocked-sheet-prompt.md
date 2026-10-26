@@ -61,3 +61,9 @@ e002-redo1 起「系統」的設定圖審核送上來的是空白光板；若站
 - `flow.mjs`：`lookGate` 退件分支從同輪已核准的審核收集站主的選擇（`choice` → options index，沒選就 `suggested`）傳給 `fixPrompts(..., { picks })`；`fixPrompts` 寫手改完後 `redrawSheets` 呼叫 `resetSheets` 改 manifest（judge 失敗那條路也會清，所以第一次 look 失敗後也是在新 seed 重畫）。沒改 `sync.mjs`：`lookSubmissions` 本來就讀 `entry.suggested`，站主選過的那張會當建議送上去，免關卡作品送達就核准。
 - `series.py`：`_sheet_prompt_problem`（`SHEET_PROMPT_CHARS = 600`；`null` 等於沒給），設定集與故事聖經的 cast 都查。`schemas.py` 沒有 cast 模型（設定集是 body_json），不用改；`castFrom`（`series.mjs`）本來就會把 `character.sheet_prompt` 帶進 `series.json`／`video.json`，沒改。
 - 沒做：企劃模型的設定集提示詞（`prompts.mjs planner:setting`）沒教它在角色層寫 `sheet_prompt`，站主在後台改設定集就能給；品牌故事（`story.mjs fixStoryPrompts`）那條 look 退件路沒改。要驗：部署後退件一張設定圖，看下一輪送上來的是 seed 1001–1003 的新圖、沒被退的角色建議欄是站主選過的那張。
+
+## 補修（2026-10-26）
+
+- #1855 部署後第一次實戰（e002-redo1）：退件 → `resetSheets` 清空 xitong 的 candidates → 工人**沒重畫就 `review-push`**（作品集 cast 逐字來自設定集，`lookHash` 不變，`pipelineStatus` 只看 hash 就把「look generated」當做完）→ 送出 `options: []` 的審核 → 站主核准沒 choice → `blocked: … waiting for xitong`。
+- 補修 PR（見下方連結）：`state.mjs undrawnCharacters`（空 candidates ＝ look 未完成、下一步回 look）、`flow.mjs lookGate` 開頭守門、`sync.mjs lookSubmissions` 拒送、`admin_service.decision_problem` 拒絕核准沒 options 的 look 審核。測試：state／sync 各一、流程測試改成站主退件不改外觀（hash 不變）仍回 look、api 一個。
+- 觀察：設定集改版不會回填已寫好劇本的集（e002-redo1 的 video.json 23:56 寫好，早於設定集第 6 版 00:23 加 `sheet_prompt`），已寫進 SERIES.md。

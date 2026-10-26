@@ -34,7 +34,7 @@ import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinut
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
-import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
+import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
 import { estimateTimeline, FPS, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO, overrunSummary } from "../dubs/plan.mjs";
@@ -3239,6 +3239,9 @@ export class Automation {
     const file = path.join(workdir, ARTIFACTS.characters);
     const manifest = readJson(file, null);
     if (!manifest?.characters) return this.block(state, "characters/manifest.json is gone; run look again");
+    // A character sent back (redrawSheets) has no sheets until look draws it again: the status
+    // routes here only once every character has some (core/state.mjs), and this is the guard.
+    if (undrawnCharacters(manifest).length) return this.media(state, "look");
     const project = await this.api.reviews(state.slug);
     const sha = await sha256File(file);
     const reviews = (project?.reviews ?? []).filter((review) => review.gate === "look" && review.content_sha256 === sha);
