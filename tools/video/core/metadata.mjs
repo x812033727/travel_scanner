@@ -388,7 +388,7 @@ export function seriesHashtag({ category = null, series = null } = {}) {
 export function hashtagsFrom(tags = [], count = HASHTAG_COUNT) {
   const hashtags = [];
   for (const tag of tags) {
-    const word = String(tag).replace(/[^\p{L}\p{N}_]/gu, "");
+    const word = String(tag).replace(/[^\p{L}\p{M}\p{N}_]/gu, "");
     // YouTube treats #ChatGPTGo and #chatgptgo as one hashtag.
     if (word && !hashtags.some((hashtag) => hashtag.toLowerCase() === `#${word}`.toLowerCase())) hashtags.push(`#${word}`);
     if (hashtags.length === count) break;

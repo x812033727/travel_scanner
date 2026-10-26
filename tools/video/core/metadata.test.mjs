@@ -172,6 +172,8 @@ test("the description credits the stock photos after the sources, in the vendors
 test("hashtags drop spaces and punctuation, skip repeats in any case and stop at three", () => {
   assert.deepEqual(hashtagsFrom(["ChatGPT Go", "AI·廣告", "chatgpt-go", "ChatGPTGo", "Plus", "Pro"]), ["#ChatGPTGo", "#AI廣告", "#Plus"]);
   assert.deepEqual(hashtagsFrom(["!!!", ""]), []);
+  // Thai vowels and tone marks are combining marks; dropping them garbles the word.
+  assert.deepEqual(hashtagsFrom(["ซานาดะ ยูกิมูระ", "โนบุชิเงะ"]), ["#ซานาดะยูกิมูระ", "#โนบุชิเงะ"]);
 });
 
 test("a brand story's title says so in its own language before the captions tag, once", async () => {
