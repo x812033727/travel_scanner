@@ -39,6 +39,7 @@ export const AREAS = {
   review: ["review", "2026-09-24-video-assemble-package"],
   "review-push": ["review", "2026-09-25-video-tool-pushes-reviews-and-pulls"],
   "review-pull": ["review", "2026-09-25-video-tool-pushes-reviews-and-pulls"],
+  "review-files": ["review", "2026-10-26-video-tool-token-downloads-a-video"],
   "i18n-sheet": ["i18n", "2026-09-24-video-captions-i18n"],
   "i18n-merge": ["i18n", "2026-09-24-video-captions-i18n"],
   package: ["package", "2026-09-24-video-assemble-package"],
@@ -91,6 +92,9 @@ Usage: node tools/video/cli.mjs <command> [options]
   review-push --slug S [--gate G | --report-only] [--manual-review]
                                                    report and submit; --manual-review requires --gate final and keeps QA from auto-approving it
   review-pull --slug S [--gate G]                  record the owner's decisions made on /admin/videos
+  review-files --slug S (--out D | --dry-run) [--gate G]...
+                                                   copy the files of the video's pending and approved reviews from the site to
+                                                   D/<gate>/<role>.<ext>, each checked against its SHA-256 (docs/videos/IMPORT.md)
   captions --slug S [--workdir D]                  caption files for every current locale
   i18n-sheet --slug S [--locale L,L]               a translation worksheet per locale, in the work directory
   i18n-merge --slug S [--locale L,L]               write i18n/<locale>.json from filled worksheets, hashes included

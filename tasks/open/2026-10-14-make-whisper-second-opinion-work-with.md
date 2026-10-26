@@ -1,11 +1,11 @@
 ---
 id: 2026-10-14-make-whisper-second-opinion-work-with
 title: Make Whisper second opinion work with PyAV 19 on Windows
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5
+claimed_at: 2026-10-25T23:03:47Z
 created_at: 2026-10-14T13:04:54Z
 completed_at:
 branch:
@@ -62,3 +62,7 @@ An external `video-whisper-compat.py` wrapper that strips
 check complete; it is not a repository fix. The model used was cached Whisper
 medium. Do not treat this as a request to re-record the voice or retry a
 speech-journal entry.
+
+## Notes (2026-10-25, claude-opus-5-5)
+
+- Fixed together with `2026-10-10-whisper-pyav19-second-opinion`: the script no longer calls PyAV (it reads the WAV with the standard library), and it writes each line as UTF-8 bytes to `sys.stdout.buffer`, so a cp1252 console prints Japanese, Korean and Thai. The regression is a node test (`tools/video/tts/whisper-second-opinion.test.mjs`) that sets `PYTHONIOENCODING=cp1252`; the Windows run itself was not repeated here (Linux container).
