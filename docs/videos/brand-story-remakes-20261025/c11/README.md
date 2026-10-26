@@ -6,7 +6,7 @@ R6精確稿已通過[獨立來源／書面配鏡與規劃共圖](reviews/source-
 
 企劃 `ee93f101-d27e-4980-82e6-d2f89d07cacc`、劇本 `e57b1958-8d93-44d3-b203-1098c5af4a81` 已由官方CLI送審並在 `2026-10-26T00:20:28.472Z` 真實讀回pending；實際分類story，未綁原集或series，沒有新owner批准。後台stage「outline approved」是下一步名稱，不能當作已批准。[正式卡](https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-ucc-c11-remake-20261025)。
 
-[八語文字](i18n/README.md)目前只有每語80句／6章的原生來源worksheet，未翻譯或審讀；目前後台locales為空、無決定時間。預設八語已授權，[具體設定](protected-admin-settings.json)需要合法content.manage身分套用並讀回，未假造native languages.json。
+[八語文字](i18n/README.md)每語80句／6章與完整metadata已官方合併及獨立校對TEXT_PASS，共640句；目前後台locales為空、無決定時間。預設八語已授權，[具體設定](protected-admin-settings.json)需要合法content.manage身分套用並讀回，未假造native languages.json。
 
 [免費預檢](preflight-inputs.json)：78個TTS請求、2588計費字元；77圖景，每景最多含首次3次，目錄估圖像費US$1.04／最多3.12，非全片報價。原生lint0errors、3個soft warnings保留。付費請求與生成媒體均0。
 

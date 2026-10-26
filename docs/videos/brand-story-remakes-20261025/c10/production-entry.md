@@ -15,7 +15,7 @@
 
 ## 已採用的預告共圖計畫
 
-本次[受控採用](visual-only-runtime-adoption.json)只更新已獨立核對的prompt／camera，source SHA為`637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f`。官方劇本`1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082`及原approvals.json前後SHA完全相同；原native票仍Matches，不重抽、不造批准。八語仍只有118句／6章原生source blanks，未翻譯、未合併亦無獨立TEXT_PASS；config的full source SHA已受控更新，blank來源欄位及bytes不變。 [source rebind收據](i18n/source-rebind-teaser-plan.json)完整保存；實際runtime0errors、2soft、0stale。
+本次[受控採用](visual-only-runtime-adoption.json)只更新已獨立核對的prompt／camera，source SHA為`637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f`。官方劇本`1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082`及原approvals.json前後SHA完全相同；原native票仍Matches，不重抽、不造批准。八語現已完整翻譯、官方合併及獨立語意校對TEXT_PASS，共944句／48章；採用時的source blanks及source欄位SHA證據保留，後續只填text。config的full source SHA已受控更新。 [source rebind收據](i18n/source-rebind-teaser-plan.json)完整保存；實際runtime0errors、2soft、0stale。
 
 [正常report-only實讀](report-only-teaser-plan-readback.json)確認既有後台story、八語與原決定時間不變，沒有提交新審核或寫批准。官方upsert只替未分類影片設定category，不覆寫已有owner選擇；renderer category story與已核來源metadata一致。
 

@@ -1,5 +1,5 @@
-# C10 八語文字準備
+# C10 八語文字
 
-R7精確來源已凍結，原生八語worksheet各118句、6章及metadata已產生；尚未翻譯、合併或獨立文字校對。後台實際語言選擇目前為空，已授權預設八語的具體管理設定見[protected-admin-settings.json](../protected-admin-settings.json)，須合法content.manage連線套用後讀回。
+當前source `637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f` 八語共944句、48章與完整metadata已原生合併並完成獨立語意校對，TEXT_PASS。完整初讀、必要修正、targeted recheck與原譯文保留在reviews及history；純風格advisory不作強制重寫。
 
-此為未定時文字準備，沒有SRT、dub、語言輪或實際clean成片資格。
+這些是未定時文字，沒有真實時間軸、SRT、配音、語言輪或成片QA。預設八語的使用者授權與後台實際受保護選擇分別記錄，請讀[狀態](preparation-status.json)與[後台讀回](../backend-language-choice.json)。

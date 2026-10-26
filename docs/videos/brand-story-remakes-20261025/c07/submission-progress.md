@@ -8,4 +8,4 @@ R10 source SHA `d2c90c26f028b01c3b03ee8c02368f1c35b8e31390643b7d5a71fb6fbc8a2805
 
 whole旁白2123 units僅規劃，低於rough3500，實聲未知，不冒13min PASS。免費TTS預檢84請求／2391計費字元；圖81景最多3次，目錄估US$1.09／3.28，非全片報價。原生0errors、4soft warnings保留。付費與生成媒體0。
 
-八語blanks各84句／6章，未翻譯；clean是純burnflag未執行配方，待獨立metadata審查。共圖計畫已精確搬入runtime handoff，actual_same_asset_verified=false。正式續做、cache miss前停線及帳戶入口見[production-entry.md](production-entry.md)。
+八語各84句／6章與完整metadata已官方合併及獨立校對TEXT_PASS（共672句）；clean純burnflag配方已獨立metadata審查通過，實際clean影片仍未生成。共圖計畫已精確搬入runtime handoff，actual_same_asset_verified=false。正式續做、cache miss前停線及帳戶入口見[production-entry.md](production-entry.md)。

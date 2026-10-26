@@ -4,7 +4,7 @@
 
 Runtime `/workspace/work/brand-story-20261025/c15-submission-root`，media base `/workspace/work/brand-story-20261025/media`；CLI --workdir傳base。自己的不可變字典正常初始化，官方screenplay、精確verify及原native票已核對搬入。runtime brief取[submission/brief.md](submission/brief.md)，來源原brief及其supporting SHA不動；送審後不可用prepare-runtime覆寫brief或之後的批准輸入。
 
-八語意圖全metadata／CC／dub已授權；目前後台locales空白，需[合法管理設定](protected-admin-settings.json)並讀回真決定時間。八語原生worksheet各79句／6章，尚未翻譯、合併與獨立校對；沒有TEXT_PASS、SRT、dub或語言輪。
+八語意圖全metadata／CC／dub已授權；目前後台locales空白，需[合法管理設定](protected-admin-settings.json)並讀回真決定時間。八語各79句／6章與完整metadata已官方合併、獨立語意校對TEXT_PASS；共632句。仍無SRT、dub或語言輪，詳[i18n收據](i18n/preparation-status.json)。
 
 付費入場沿[C03交接](../c03/production-entry.md)：精確新slug合法註冊、獨立帳戶、歷史用量／未結算、含評審／轉寫／配樂／重試的全片最壞報價、受保護啟用。US$25既有停線與C系列hold不變，泛US$200或catalog ready不是新授權，不借舊slug／帳本。
 

@@ -6,7 +6,7 @@ R6精確稿已通過[獨立來源／書面配鏡與規劃共圖](reviews/source-
 
 企劃 `7c6a0b46-a59f-4f4a-8906-d17978369674`、劇本 `31bcfffc-9281-43d3-92cc-332a62165c55` 已由官方CLI送審並在 `2026-10-26T00:20:31.651Z` 真實讀回pending；實際分類story，未綁原集或series，沒有新owner批准。後台stage「outline approved」是下一步名稱，不能當作已批准。[正式卡](https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-camelbak-c14-remake-20261025)。
 
-[八語文字](i18n/README.md)目前只有每語77句／7章的原生來源worksheet，未翻譯或審讀；目前後台locales為空、無決定時間。預設八語已授權，[具體設定](protected-admin-settings.json)需要合法content.manage身分套用並讀回，未假造native languages.json。
+[八語文字](i18n/README.md)每語77句／7章與完整metadata已官方合併及獨立校對TEXT_PASS，共616句；目前後台locales為空、無決定時間。預設八語已授權，[具體設定](protected-admin-settings.json)需要合法content.manage身分套用並讀回，未假造native languages.json。
 
 [免費預檢](preflight-inputs.json)：75個TTS請求、2492計費字元；74圖景，每景最多含首次3次，目錄估圖像費US$1.00／最多3.00，非全片報價。原生lint0errors、3個soft warnings保留。付費請求與生成媒體均0。
 

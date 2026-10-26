@@ -1,0 +1,89 @@
+{
+  "source_video_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+  "reviewer": "c10_eight_text independently reviewing C14",
+  "independent": true,
+  "role_disclosure": "Independent original C14 reviewer; did not author or apply C14 translations. This is a targeted one-leaf recheck per corrected locale, inheriting the frozen full review rather than claiming another full reread.",
+  "initial_review": {
+    "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/review-vi-th.json",
+    "sha256": "c17b915eecdb132b36bd90533a8d9e8a1e6d126cac930f04f8a9e9a45da83b76",
+    "unchanged": true
+  },
+  "applied_fixes": {
+    "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/applied-fixes-vi-th.json",
+    "sha256": "d1bd2c02aec5a81183ebded8752a21cff9943c78c43e4369f284e6902ee1148e"
+  },
+  "locales": [
+    {
+      "locale": "vi",
+      "worksheet_sha256": "029c5671932825b4d5891177725d4129790babe05d9d0d4ea0a8f85edf715c2b",
+      "translation_sha256": "8d3622ae8ab8bdf3db9ddde5b6f377120bd5865c345e188c6bd31215d1f71b3a",
+      "status": "TEXT_PASS",
+      "checked_lines": 1,
+      "checked_chapters": 0,
+      "inherited_full_review_lines": 77,
+      "inherited_full_review_chapters": 7,
+      "checked_fix_targets": [
+        "lines.c14r1b03"
+      ],
+      "recheck_scope": "Fresh semantic reread of one corrected leaf plus exact complete-object difference verification; other 76 lines, seven chapters and all metadata inherit the original full review.",
+      "before_after": [
+        {
+          "target": "lines.c14r1b03",
+          "before": "Tay bạn lại cầm bình, nhưng bên miệng không cần trở lại một miệng bình luôn mở. Chính chỗ ấy khiến tôi dừng xem.",
+          "after": "Tay bạn lại cầm bình, nhưng bên miệng không cần trở lại một miệng bình luôn mở. Chính chỗ ấy khiến tôi dừng lại để xem kỹ.",
+          "matches_initial_required_proposal": true,
+          "matches_native": true,
+          "result": "RESOLVED",
+          "reason": "改後明確表示停下來觀察，已消除停止觀看／停止注意的反向義；前句水瓶與開放瓶口對比保持。"
+        }
+      ],
+      "unchanged_proof": {
+        "worksheet_before": {
+          "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/translation-review-history/vi/worksheet-before.json",
+          "sha256": "2fbd92c85ffbf2ca16e060af199e4fd6d368faf69433c35c6a24fc7d166a2638",
+          "matches_initial_review_sha256": true
+        },
+        "translation_before": {
+          "path": "/workspace/work/brand-story-20261025/c14-audit/text-r6/translation-review-history/vi/translation-before.json",
+          "sha256": "198dab9658a8a74a00a82256a804dcfd314cd773a462f10c865faf429f693193",
+          "matches_initial_review_sha256": true
+        },
+        "recursive_worksheet_changed_paths": [
+          ".lines[31].text"
+        ],
+        "recursive_translation_changed_paths": [
+          ".lines.c14r1b03.text"
+        ],
+        "canonicalization": "UTF-8 JSON ensure_ascii=false sort_keys=true compact separators; only target text masked",
+        "worksheet_without_target_before_sha256": "d9d511f1171d4dd12f7be296c511df8a4fc0917d4cc5cee3c94efd4f82b3a75f",
+        "worksheet_without_target_after_sha256": "d9d511f1171d4dd12f7be296c511df8a4fc0917d4cc5cee3c94efd4f82b3a75f",
+        "translation_without_target_before_sha256": "26eb0f47affc0a34c8ee3a8fc2de9396e5cef866338cd02e85e0ef7ae220e8b5",
+        "translation_without_target_after_sha256": "26eb0f47affc0a34c8ee3a8fc2de9396e5cef866338cd02e85e0ef7ae220e8b5",
+        "other_76_lines_unchanged": true,
+        "seven_chapters_and_all_metadata_unchanged": true,
+        "ids_scenes_sources_todo_boundaries_glossary_source_hashes_unchanged": true,
+        "native_all_text_matches_worksheet": true,
+        "initial_review_status_preserved": "FIXES_REQUIRED"
+      },
+      "findings": []
+    },
+    {
+      "locale": "th",
+      "worksheet_sha256": "00cf0ff9cc895f7bb7bf6606a7d8d967098da0f84219808332b5bf2fe92f88c9",
+      "translation_sha256": "25897f2e9187a2479060a23e7421ffd2d9640a738dc12c7d982a0142aecd4e50",
+      "status": "TEXT_PASS",
+      "checked_lines": 0,
+      "checked_chapters": 0,
+      "inherited_full_review_lines": 77,
+      "inherited_full_review_chapters": 7,
+      "checked_fix_targets": [],
+      "recheck_scope": "Byte/SHA inheritance only; no fresh semantic reread claimed.",
+      "all_text_and_metadata_unchanged": true,
+      "findings": []
+    }
+  ],
+  "protected_source_research_and_other_locales_match_original_snapshot": true,
+  "all_read_input_files_unchanged_during_recheck": true,
+  "actual_timing_srt_dub_video_qa": false,
+  "paid_calls": 0
+}

@@ -6,7 +6,7 @@ R7精確稿已通過[獨立來源／書面配鏡](reviews/source-r7-independent.
 
 企劃 `6de185a0-c301-4ad1-843f-d2cc0d4765ba`、劇本 `1c9895e6-4de2-4ed8-b869-d315efecdba6` 已由官方CLI送審並在 `2026-10-25T23:51:13.968Z` 真實讀回pending；實際分類story，未綁原集或series，沒有新owner批准。後台stage「outline approved」是下一步名稱，不能當作已批准。[後台狀態](backend-status.json)與[正式卡](https://mokaair.com/zh-TW/admin/videos?tab=drama&video=story-everyday-oxo-c10-remake-20261025)可供核對。
 
-[八語文字](i18n/README.md)目前只有每語118句／6章的原生來源worksheet，未翻譯或審讀；目前後台locales為空、無決定時間。預設八語已獲站主授權，[具體設定](protected-admin-settings.json)需要合法content.manage身分套用並讀回；未假造native languages.json或語言決定時間。
+[八語文字](i18n/README.md)每語118句／6章與完整metadata已官方合併及獨立校對TEXT_PASS，共944句；目前後台locales為空、無決定時間。預設八語已獲站主授權，[具體設定](protected-admin-settings.json)需要合法content.manage身分套用並讀回；未假造native languages.json或語言決定時間。
 
 [免費預檢](preflight-inputs.json)：118個TTS請求、3038計費字元；115圖景，每景最多含首次3次，目錄估圖像費US$1.55／最多4.66，這不是全片報價。原生lint0errors、2個soft warnings保留。付費請求與生成媒體均0。
 
