@@ -1,7 +1,7 @@
-# C05 R12 八語文字
+# C05 R13 八語文字delta
 
-當前來源 `1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87`；英／日／韓／西／葡／印尼／越／泰每語108句、6章及metadata，共864句已原生合併與完整獨立TEXT_PASS。葡、印尼各1處化學轉換語意必修後精確重查，原始FIXES_REQUIRED及advisories保留。
+現行來源773836e4…共109句，已由官方i18n-sheet生成八語工作表。每語107句及所有metadata保留原值，只需補c07o04、c05h04b1兩句，共16句。新current TEXT_PASS尚未成立，不把R12的864句批准冒用到R13。
 
-[當前狀態](preparation-status.json)、[完整獨立審核](reviews/r12/)、[本輪初稿／修正與原生首次合併歷史](history/r12-initial/)皆綁精確SHA。另保留[舊BASE776句](../history/baseline-before-length/i18n/)，不將舊批准帶入新稿。
+R12完整文字、原始校對與修正歷史保存於[before-teaser-r13](../history/before-teaser-r13/i18n/preparation-status.json)。R13原生blank snapshots在[本輪歷史](history/r13-initial/source-worksheets/)，runtime工作表與設定位於`/workspace/work/brand-story-20261025/c05-audit/text-r13/text-current.json`所指目錄。只可填允許的text欄，保護source/id/scene/todo結構；補譯後須非譯者獨立差分查核及原生merge，承接不變107句與metadata的精確R12語意審查鏈。
 
-[當前runtime檢查](runtime-rehearsal.json)0errors、7個其餘soft warnings、0過期缺漏。後台八語選擇已讀回保留，但新企劃／劇本仍pending，未開原生語言輪。這是未定時文字，無SRT、配音或dubfit／媒體QA。
+後台實際八語metadata／CC／dub選擇已讀回，原決定時間不變；這不是實際timed SRT、配音、clean final或上傳資格。沒有native languages.json、音訊或語言輪。

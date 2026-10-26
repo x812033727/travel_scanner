@@ -1,6 +1,6 @@
-# C07 R8｜逐句來源與書面概念配鏡索引
+# C07 R10｜逐句來源與書面概念配鏡索引
 
-作者映射，待不同來源reviewer及兩位新讀者；不繼承R7 PASS。
+作者映射，待不同來源reviewer及兩位新讀者；不繼承R9來源PASS與native8判定。
 
 ## 原件來源
 
@@ -26,7 +26,8 @@
 | c7r20101 | 你穿了四年的靴子，底快磨穿了，鞋面還好，現在會想留下哪一半？ | R2_CUSTOMER_6870 | first paragraph, explicitly attributed in next line |
 | c7r20102 | 二〇二五年七月，一位馬汀靴送修者在公開評論裡，寫下這個難題。 | R2_CUSTOMER_6870 | publishedDate 2025-07-11; four years, upper fine, sole almost worn through |
 | c7r20107 | 選修理時，對方還能挑鞋底和縫線的顏色，覺得很有趣。 | R2_CUSTOMER_6870 | Public July review: choose colour of sole/weld/stitching, which was fun; choice appears before parcel packing in original account. No exact selected palette or invented click action. |
-| c7r20104 | 我想跟著它看：修理要拆到哪裡，包裹回來時，又多了什麼？ | T7_repairs_resole, R2_CUSTOMER_6870 | teardown scope; laces surprise withheld |
+| c7r20104 | 我想跟著它看：修理要拆到哪裡？ | T7_repairs_resole, R2_REPAIR_VIDEO | Authorised service lists removal of old sole, welt and stitching; separate demonstration 5–6s shows inverted boot and knife moving along upper outsole edge. Component list is from the page, not a claim that each component is separately identifiable in the film; not the public reviewer’s physical pair. |
+| c7h04b1 | 包裹回來時，又多了什麼？ | R2_CUSTOMER_6870 | Review mentions added new pair of laces and appreciation; no observed discovery order. |
 | c7r20105 | 我們就看這一雙馬汀靴，能不能把主人穿慣的鞋面留下來。 | T7_repairs_resole, R2_CUSTOMER_6870 | One-pair promise and retained-upper question, not a list of future chapters or three components; current repair scope and attributed public case. |
 | c7r20106 | 為了留下你穿慣的鞋面，換掉的到底會有哪些東西？ | T7_repairs_resole, R2_CUSTOMER_6870 | central question |
 | c7r20203 | 選項裡有一條沿條，可是它在鞋上的哪裡？ | T7_repairs_resole, T8_repairs_welted | identification |
@@ -52,8 +53,7 @@
 | c7r20305 | 我會盯著露出的接合位置：師傅接著會把這裡送向哪個工具？ | R2_REPAIR_VIDEO | 6–8s |
 | c7r20307 | 鏡頭接著對準倒過來的靴底，一個噴口靠近露出的底層，師傅用布包住握鞋的手。 | R2_REPAIR_VIDEO | 6–7.5s; nozzle near exposed base and cloth at supporting hand; no inferred temperature |
 | c7r20308 | 鞋底朝上、靴筒朝下，他把上半部整個握在手裡，沒有把皮面拆成一片片。 | R2_REPAIR_VIDEO | 6–8s; intact three-dimensional upper after outsole removal |
-| c7r20309 | 下方要重新接合，上方仍維持著鞋的形狀；接著，這個留下來的部分才被送向機針。 | R2_REPAIR_VIDEO | 7.5–8s transition, retained upper oriented toward sewing machine |
-| c7r20310 | 可是舊底都拿走了，新底要直接縫到這層皮上嗎？ | T3_plc_product | welt first stitched to upper |
+| c7r20310 | 新外底要直接縫到鞋面上嗎？ | T3_plc_product | welt first stitched to upper |
 | c7r20313 | 示範裡，靴子沿機針轉動，先接上新沿條；依原廠工法，這條帶子用的是聚氯乙烯。 | R2_REPAIR_VIDEO, T3_plc_product | 8–12s |
 | c7r20314 | 機器往前車，他的手也跟著調整位置，帶著這隻立體的靴子走過機針。 | R2_REPAIR_VIDEO | 8–12s |
 | c7r20319 | 沿條車好，師傅再把靴底朝向修整工具，轉著鞋身處理邊緣。 | R2_REPAIR_VIDEO | 13.15–14.7s; contact at tool beneath right machine head, belt contact not established; independent r2 13.6s frame readback. |
@@ -108,4 +108,8 @@
 | c7r20620 | 如果是你，會把一雙穿出折痕的鞋留下來換底，還是重新穿一雙新鞋？留言告訴我。 |  | 觀眾邀請 |
 | c7r20621 | 訂閱品牌故事，我們繼續看熟悉的日用品，是怎麼被人做出、用過，再留在生活裡。 |  | 觀眾邀請 |
 
-評論為not-verified公共自述，授權示範為另一雙鞋的獨立工序；20313把機針轉動與另歸因的原廠PVC沿條工法併為一次動作，不由示範外觀辨識材料，不冒稱同實鞋。本作者不給來源或配鏡PASS。
+## 最小修訂與共圖保全
+
+只刪20309狀態橋句，20310直接問新外底是否縫鞋面；20313先接新沿條、後章熱刀接底的既有答案不改。所有存留prompt/camera/cast及兩對原生imageKey保持R9，image-reuse-plan.json只更新版本與本稿SHA。第二命令前必核live cache實檔SHA；miss即停、不買相似第二圖。最終manifest及含trim衍生檔同一實檔SHA待驗，actual_same_asset_verified=false。
+
+兩則not-verified評論、倫敦店與授權示範是不同人／鞋／事件；共用匿名概念圖不證明同一實物、不捏造拆箱順序。材料、範圍及現行工法歸因按原逐句來源，不由圖像辨識PVC或量溫。本作者不給來源或配鏡PASS。

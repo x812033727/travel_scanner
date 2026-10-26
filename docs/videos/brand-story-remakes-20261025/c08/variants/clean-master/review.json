@@ -2,10 +2,10 @@
   "schema_version": 1,
   "review_type": "independent_clean_master_metadata_derivation",
   "status": "METADATA_DERIVATION_PASS",
-  "checked_at": "2026-10-25T23:47:46.680Z",
+  "checked_at": "2026-10-26T02:32:41.621Z",
   "reviewer": "/root",
   "independent": true,
-  "independence_basis": "Coordinator did not author the C08 R9 source or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
+  "independence_basis": "Coordinator did not author the C08 current approved narration and verified teaser plan source or its clean variant/derivation. Reproduced native checks from actual frozen bytes and native snapshot dictionary.",
   "slug": "story-everyday-kikkoman-c08-remake-20261025",
   "scope": {
     "source_fact_qa": false,
@@ -17,15 +17,18 @@
     "paid_requests": 0
   },
   "input_files_sha256": {
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/video.json": "d7302bc853e02f0bd56554d57fc7e697359c640e443cf1bcab01a54f51a0a33b",
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/variants/clean-master/video.json": "d023e1ba573e1ef3cd3e5dbe174fb60ece74cb1f0aa84c9f2e8258c5f4dff753",
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/variants/clean-master/derivation.json": "b8c30fde25ee0e24fab8c7f2ee7f98449d2297f39649fdd5729123dfd5df66f5",
-    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/variants/clean-master/lint.json": "f62691d2d09fc3a14e9d30d003ed74ecda9be2429d7eea760668cc337f004e67",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/video.json": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/variants/clean-master/video.json": "8a588a9595a959e7bfa3f8153759b5032abe3a572ea1ed6b145e12736a8319ff",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/variants/clean-master/derivation.json": "b81c0001197a556087c17fd6884a48f1ee71e9f4cb01a19dc31d5790ece559cd",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c08/variants/clean-master/lint.json": "aebfa14c022f21208b5840c2ac748cc7b50c622d074f022dd5d6e2fd4264296f",
     "/workspace/work/brand-story-20261025/c08-submission-root/docs/videos/story-everyday-kikkoman-c08-remake-20261025/script.md": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
     "/workspace/work/brand-story-20261025/c08-submission-root/docs/videos/story-everyday-kikkoman-c08-remake-20261025/story-lexicon/current.json": "c021024818b41f264e01c907c2c17a594a19bbe9e35208c8c4c37bf9ca8bfc3e"
   },
   "immutable_lexicon": {
     "mode": "snapshot",
+    "lexicon_sha256": "3186c568c970ed7a3efba2c32599bda6b117ad541c1d890371938e36b033c59d",
+    "head_event_sha256": "f73f696a7407a78246d07bc8d0a2a8f99629bbaed9af4d979482898e89e87416",
+    "sequence": 1,
     "actual_snapshot_read_by_native_reader": true
   },
   "deep_diff": [
@@ -47,8 +50,8 @@
       "equal": true
     },
     "picturesHash": {
-      "source": "c0c2d825694e32e6",
-      "variant": "c0c2d825694e32e6",
+      "source": "a7ab63a52e59d075",
+      "variant": "a7ab63a52e59d075",
       "equal": true
     },
     "lookHash": {
@@ -72,7 +75,7 @@
   "lint": {
     "reproduced_from_actual_dictionary": true,
     "errors": 0,
-    "warnings": 5,
+    "warnings": 12,
     "saved_lint_exactly_matches": true
   },
   "same_new_remake_budget_identity": true,

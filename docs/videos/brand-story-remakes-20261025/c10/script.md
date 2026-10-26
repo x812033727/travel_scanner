@@ -150,3 +150,20 @@
 | c10l19 | 我的答案是：要交給另一雙手，握柄得先替人讓出能自己控制工具的位置。 | N01, N05, N26；final_answer |
 | c10l20 | 也請你留言分享，想替家裡哪件小工具換個握柄，以及最卡手的那個動作。 | ；viewer_cta |
 | c10l21 | 想繼續看設計怎麼改變你每天做的事，歡迎訂閱這個頻道。 | 作者互動／CTA；channel_cta |
+
+## 開場共圖製作註解（非旁白、非實圖驗收）
+
+本段只記錄素材規劃，不加入有聲劇本。所有旁白、scene／line IDs、章序、情緒、loops與metadata均不變。現有來源PASS只屬封存輸入，新圖像prompt／camera須由獨立來源與書面分鏡查核。
+
+- `c10r1-h06` ↔ `c10r1-o06`：同一張已驗still，兩端同prompt與camera。
+  - English prompt: Macro shot of anonymous hands poised above a small lump of clay beside an unmarked thin metal vegetable peeler on a plain workbench, soft side light.
+  - Camera: pull back
+  - Boundaries: Uses the existing attributed clay-model accounts only. It does not claim that a clay prototype, a museum object, a trade-show sample and a retail peeler are the same physical artifact.
+  - Opening: The clay has not been shaped into a handle and the hands have not completed a prototype. The same neutral pre-action context may accompany the later attributed making action without revealing its resulting shape in the opening.
+- `c10r1-h07` ↔ `c10r5-s04`：同一張已驗still，兩端同prompt與camera。
+  - English prompt: Close-up of an unmarked black-handled vegetable peeler linked by a short plain chain to a bowl of carrots on a shop table, an anonymous hand held just above the handle, soft indoor light.
+  - Camera: tilt down
+  - Boundaries: Retains the one attributed Lechters carrot-bowl trial already in the script. It does not make this the clay prototype, an identified store or shopper, a second event, a first sale, or a quantified sales cause.
+  - Opening: The hand is poised before trying the tool. The picture does not reveal any shopper response, purchase, sales result, measured improvement or the outcome of the demonstration.
+
+實檔尚不存在；詳見 `image-reuse-plan.json`。正式操作前先核既有payoff快取與實檔SHA，快取缺失就停，不能用第二次派送當快取探測。兩端仍各需judge，任何retake／裁切後須再核最終manifest與實檔SHA完全相同。不得以兩張近似圖代替同一資產。

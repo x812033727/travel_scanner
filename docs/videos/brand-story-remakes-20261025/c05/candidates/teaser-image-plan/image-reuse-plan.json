@@ -1,0 +1,203 @@
+{
+  "schema_version": 1,
+  "revision": "c05-teaser-r13",
+  "status": "WRITTEN_REUSE_PLAN_PENDING_INDEPENDENT_REVIEW_AND_REAL_ASSET_VERIFICATION",
+  "candidate_not_adopted": true,
+  "not_a_video_schema_extension": true,
+  "not_a_keyframes_manifest": true,
+  "rule": {
+    "file": ".agents/skills/youtube-video/references/script-writing.md",
+    "quote": "每一個預告句用回收它的那一章的畫面（同一張圖）",
+    "sha256": "bbb1fe37e8ae9458a961324d6a13e512eab6c5d07493954338ecc2bf2c1f0392"
+  },
+  "source_files_sha256": {
+    "video.json": "773836e4a9c63770afbd6900014cbd57e6b123df44a22dca5987afaf9488d546",
+    "script.md": "b1b675ba987c2f98bd6fa65ac7bd17bd5315feaa6422778140a50f4c042a8f33",
+    "narration-only.json": "b27cf9dc86de6b6deea9af9b25a606dd1d821c74f9b223e76035e4ed85271468",
+    "claims.json": "31d46a9707edb27f2ecbbe5c24a7686e7fae35be30bb7f7de8db2da518f2530f",
+    "claims.md": "1fb5513e8a83f3e08b4676995d33ef4e8e5033939f680098bb994d25ae16e062",
+    "brief.md": "1f528e3cfef213a3231b6d743830073a1491266a5ed919d8ca98e8a8896851bb",
+    "series.json": "946b1391734d8e04de261fe9890c25a769f1d513dd8b6e394d3b5b0d08fab8fa"
+  },
+  "code_files_sha256": {
+    "tools/video/media/keyframes.mjs": "c9e80d93d91d349699446f04edc56906edf552d5225d3c25c2795c7459cef6a6",
+    "tools/video/media/stages.mjs": "94c3608376402477dc98d4664316df7723128bd25b4e6da7bc8c889ee3a517df",
+    "tools/video/media/cache.mjs": "df1eb83a26e4cbe756047a4f9d920cfac048ad9b93e6729d657bdd45da6c288d",
+    "tools/video/media/trim.mjs": "37e3b9fd6b9c30cb058447588232e769357b628b3d6bff69db905e37e238ad1b",
+    "tools/video/media/prompt-budget.mjs": "f7010c3a252336b6fd7ea0c8615a628005645e4364e89242698bc9f6e7e80404",
+    "tools/video/core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1"
+  },
+  "pairs": [
+    {
+      "asset_plan_id": "rain-flower-context",
+      "source_scene_id": "c07d08",
+      "source_line_id": "c07d08",
+      "reuse_scene_id": "c07o04",
+      "reuse_line_id": "c07o04",
+      "source_prompt": "Wide shot in a simple room, an anonymous worker holding a shallow basket of picked flowers beside an empty raised bamboo mat, rain outside a small window, soft daylight.",
+      "reuse_prompt": "Wide shot in a simple room, an anonymous worker holding a shallow basket of picked flowers beside an empty raised bamboo mat, rain outside a small window, soft daylight.",
+      "prompt_sha256": "3a0ef0e187ff4824e2af08fd4c12a47eb57c8f9dd7862d676a9372e6a5ab6d3a",
+      "camera": "drift",
+      "composed_prompt": "Wide shot in a simple room, an anonymous worker holding a shallow basket of picked flowers beside an empty raised bamboo mat, rain outside a small window, soft daylight.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: drift",
+      "composed_prompt_sha256": "3c0f214e4dba03a6e10a80207714e4fc9094201b2efb26c5942ac69480761538",
+      "pure_local_native_key_rehearsal": {
+        "provider": "minimax",
+        "model": "image-01",
+        "seed": 1,
+        "seed_offset": 0,
+        "fixes": [],
+        "references": [],
+        "image_selection_version": 0,
+        "by_size": {
+          "1K": {
+            "source_key": "98e47ab24869b55c",
+            "reuse_key": "98e47ab24869b55c",
+            "equal": true
+          },
+          "2K": {
+            "source_key": "c73e18448620b667",
+            "reuse_key": "c73e18448620b667",
+            "equal": true
+          }
+        },
+        "example_parameters_not_backend_status": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false
+    },
+    {
+      "asset_plan_id": "burning-coil-context",
+      "source_scene_id": "c07u04",
+      "source_line_id": "c07u04",
+      "reuse_scene_id": "c05h04b1",
+      "reuse_line_id": "c05h04b1",
+      "source_prompt": "Macro view at a plain worktable, the glowing tip and adjacent intact portion of an unmarked incense coil resting on a simple holder, soft neutral light.",
+      "reuse_prompt": "Macro view at a plain worktable, the glowing tip and adjacent intact portion of an unmarked incense coil resting on a simple holder, soft neutral light.",
+      "prompt_sha256": "ef0a95cf6c5f628990253581105c78fbb6557b09ac43ae09d210f202bdbed2f1",
+      "camera": "pan right",
+      "composed_prompt": "Macro view at a plain worktable, the glowing tip and adjacent intact portion of an unmarked incense coil resting on a simple holder, soft neutral light.. Style: cute Taiwanese YouTube explainer cartoon: chibi characters with big round heads, large expressive eyes and exaggerated comic expressions, thick clean dark outlines, flat colours with soft cel shading, a limited palette of deep navy night, parchment yellow, muted teal and one warning-red accent, subtle paper grain, simple clear backgrounds, one subject in the centre third, playful and friendly, 16:9. Camera: pan right",
+      "composed_prompt_sha256": "ac06368e8fd057c276ad1a8e155cb4355abb79c770279293ef819d7ed3fef2e6",
+      "pure_local_native_key_rehearsal": {
+        "provider": "minimax",
+        "model": "image-01",
+        "seed": 1,
+        "seed_offset": 0,
+        "fixes": [],
+        "references": [],
+        "image_selection_version": 0,
+        "by_size": {
+          "1K": {
+            "source_key": "d472af5fd279a402",
+            "reuse_key": "d472af5fd279a402",
+            "equal": true
+          },
+          "2K": {
+            "source_key": "172e4e635db21895",
+            "reuse_key": "172e4e635db21895",
+            "equal": true
+          }
+        },
+        "example_parameters_not_backend_status": true,
+        "no_provider_call": true
+      },
+      "actual_source_file": null,
+      "actual_source_sha256": null,
+      "actual_reused_file": null,
+      "actual_reused_sha256": null,
+      "actual_same_asset_verified": false
+    }
+  ],
+  "production_handoff": {
+    "preconditions": [
+      "Candidate must first pass new exact source/written-visual and fresh native12 reviews, controlled adoption, exact owner narrative/outline approval and legitimate production admission. The current R12 project must never be overwritten or used as if this candidate were approved.",
+      "Use the same workdir, model/selection version, look, cast/reference hashes, composed prompt, negative, size, seed=1/offset=0 and empty corrections at both ends.",
+      "Generate and pass each payoff once, then read the live native cache index and independently hash its selected real file before invoking the teaser command. A missing, stale or different cached file stops the pair: do not let a cache miss dispatch another image."
+    ],
+    "official_recipe_only": [
+      {
+        "purpose": "admitted payoff first, exact take 1 only",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-kincho-c05-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c07d08",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "only after the live-cache/file-SHA precondition has been positively checked; must reuse that actual file",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-kincho-c05-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c07o04",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "admitted payoff first, exact take 1 only",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-kincho-c05-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c07u04",
+          "--takes",
+          "1"
+        ]
+      },
+      {
+        "purpose": "only after the live-cache/file-SHA precondition has been positively checked; must reuse that actual file",
+        "argv": [
+          "node",
+          "docs/videos/brand-story-remakes-20261025/runtime-cli.mjs",
+          "/workspace/work/brand-story-20261025/submission-root",
+          "keyframes",
+          "--slug",
+          "story-everyday-kincho-c05-remake-20261025",
+          "--workdir",
+          "/workspace/work/brand-story-20261025/media",
+          "--shot",
+          "c05h04b1",
+          "--takes",
+          "1"
+        ]
+      }
+    ],
+    "on_failure": "Stop the pair. Each endpoint still receives its own native scene judge. No force, accept-best, independent retake/correction, look-alike purchase, invented still alias or edited manifest can establish reuse. Correct both ends together, repeat exact source/visual binding and stay inside the ordinary account/take caps.",
+    "actual_verification_required": [
+      "Read both real keyframes manifest entries, require both native judges to pass and require the same selected actual file path and SHA256; independently hash the bytes.",
+      "After trim/crop, compare the final referenced derived files and their actual SHA256, not just the original generated-file hash. If they differ, stop and resolve through the ordinary workflow.",
+      "Retain real cache/job/ledger and scene-judge receipts. The CLI does not enforce this pair and may dispatch on a cache miss; the caller must perform the stated pre-command stop check."
+    ],
+    "actual_same_asset_verified": false,
+    "executed": false
+  },
+  "paid_requests": 0,
+  "media_files_generated": 0,
+  "backend_writes": 0,
+  "approvals_created": 0
+}

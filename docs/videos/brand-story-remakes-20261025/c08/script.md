@@ -395,3 +395,20 @@
 [c8r10632] 訂閱品牌故事，我們繼續看日用品怎麼把看不見的取捨，放進你的每一個動作。
 來源：觀眾問題／訂閱邀請；anchors：無事實主張
 
+
+## 開場共圖製作註解（非旁白、非實圖驗收）
+
+本段只記錄素材規劃，不加入有聲劇本。所有旁白、scene／line IDs、章序、情緒、loops與metadata均不變。現有來源PASS只屬封存輸入，新圖像prompt／camera須由獨立來源與書面分鏡查核。
+
+- `c08r1-01-05` ↔ `c08r1-05-03`：同一張已驗still，兩端同prompt與camera。
+  - English prompt: Close-up of anonymous hands holding a plain flexible condiment bottle upright above a small empty dish on a kitchen counter, soft side light.
+  - Camera: push in
+  - Boundaries: K6 2011 announcement remains the source for the two-layer squeeze container and air entering between outer bottle and inner pouch. This anonymous external concept is not a marketed-product cutaway, the separate 500mL soft-film patent prototype, the 1961 glass dispenser or a claim that all later PET variants are one physical bottle.
+  - Opening: Only the neutral closed exterior is shown. No cross-section, airflow arrows, shrinking pouch, valve action or oxygen-exclusion result appears in the opening. The body narration supplies the attributed 2011 double-container mechanism.
+- `c08r1-01-06` ↔ `c08r1-06-21`：同一張已驗still，兩端同prompt與camera。
+  - English prompt: Close-up of anonymous fingers poised around the broad closed cap of a plain nearly empty condiment bottle on a kitchen counter, diffuse side light.
+  - Camera: pan left
+  - Boundaries: Uses the current complete F6 FAQ scope only. It does not turn the current cap-removal option into routine resealing, the 1961 refill bottle, the separate prototype trial or an assertion about an exact commercial cap thread or all product sizes.
+  - Opening: The whole cap is still closed and the fingers are poised before turning it. There is no directional arrow, removed cap, recovered residue or storage result in the opening. The later narration supplies the clockwise removal and the following lines retain refrigeration after breaking the seal.
+
+實檔尚不存在；詳見 `image-reuse-plan.json`。正式操作前先核既有payoff快取與實檔SHA，快取缺失就停，不能用第二次派送當快取探測。兩端仍各需judge，任何retake／裁切後須再核最終manifest與實檔SHA完全相同。不得以兩張近似圖代替同一資產。

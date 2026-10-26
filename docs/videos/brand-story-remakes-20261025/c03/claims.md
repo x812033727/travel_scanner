@@ -166,3 +166,15 @@ PDF仍標reviewer_only；頁碼是原件定位，不代表主機工人可讀。S
 - D’Ieteren 2026 Half-Year Results：https://dieterengroup.imgix.net/press-releases/20260909_Press-release_H1-2026-results_EN_FV-with-appendix.pdf
 - S6B 2016活動報告：https://dieterengroup.imgix.net/annual-reports/3_moleskine.pdf
 - S10B 2017完整年報：https://dieterengroup.imgix.net/annual-reports/annualreport2017_en_0-1.pdf
+
+## 開場預告共圖（作者製片規劃，待獨立覆核）
+
+此節只規劃兩端共用同一張已驗收實圖。旁白、ID、scene順序、loops及原件主張未改；尚無實圖、實際共用SHA、來源新PASS或媒體驗收。具體request/key與停止條件見 `image-reuse-plan.json`。
+
+| 配對 | 預告scene／line | 回收章共圖scene／line | 未提前揭示結果的中性內容 |
+| --- | --- | --- | --- |
+| authors-old-notebook-context | c03r-h04／r3h041 | c03r-p04s02／r304021 | Anonymous library reading context depicts neither a named author nor a modern branded notebook used by historical writers. |
+| financial-remeasurement-context | c03r-h05／r3h051 | c03r-n04／r3n041 | Blank forecast folder and plain ledger do not reveal the impairment amount. The numeric stats card remains unchanged; the shared still is the actual payoff chapter context. |
+
+同prompt/camera只是可執行的快取規劃。正式製片仍需有效全片帳戶與各既有關卡，先生成並驗收回收景單一take；預告指令前查live cache及實檔SHA，cache miss不得直接派送另一張圖。兩端仍各自通過judge；retake、修圖或裁切改了任一實檔則停止配對共同重查。最終manifest、實檔與組片引用SHA相同後才可記實際共圖通過。
+

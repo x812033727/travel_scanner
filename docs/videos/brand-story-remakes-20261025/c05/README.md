@@ -1,11 +1,13 @@
-# C05 金鳥材料旅程 R12
+# C05 金鳥 R13 新規則重製
 
-目前採用來源video SHA `1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87`。故事跟著花粉、乾燥、成形、出貨與燃燒端的材料工作推進；1897手冊、1911–1914留存直條、1950年代資料及現行製程各有明確歸屬，不拼成同一工廠批次。
+已採用[109句R13](video.json)，來源、書面配鏡／共圖計畫及兩位全新讀者的原生第12輪合併均PASS；讀者A單人one_line/no_recap意見完整保留，讀者B13yes，不改成一致同意。實際字典情境lint0errors，16個拆句翻譯過期／缺漏提示仍屬本輪真實待辦。
 
-[來源／書面配鏡](reviews/source-length-r12-independent.json)及[原生兩讀者合併](reviews/narrative-final.json)PASS。作者R12對應actualpanel11；一位13項yes，另一位對1957重複保留no_recap，真實答案未刪，依原生兩位皆no才失敗規則合併。所有歷史HOLD及精確版本在候選history。108句、105插圖景與1片尾卡；完整旁白3041 native units含coldopen及有聲CTA，**實聲仍未量測**，不能由規劃分項或字數判通過／失敗。
+原c07o04拆為兩個未揭結果預告，其餘107句原話與史實不變。[同圖計畫](image-reuse-plan.json)只記完整request/cache/實檔SHA後驗流程，尚無生成圖。source、正式劇本與舊批准的[採用收據](adoption-r13.json)分別綁定：來源773836e4…；官方劇本3f2f19c4…。原批准檔SHA ef6e1cae…原封保留，不適用新canonical。
 
-[新的後台審核](backend-status.json)：官方劇本SHA `67bd2b41ef681d77f32d6fec1bf7074215811b5d6cd6cb0d6a673227246c3321`；劇本 `4a1620bc-1036-47f0-acf1-f62df23ec197`、企劃 `00e14875-adef-47e0-b91f-e5f764a3dcfb` 均已讀回pending。舊核准與776句舊八語保存在[基底封存](history/baseline-before-length/)，不適用新稿。
+[新版企劃與劇本](backend-status.json)已透過正式工具免費送審並讀回pending，分別為3f9e948c-8a95-43de-bbb9-d06d45a4cb2a、7eda9d94-62a3-4cd2-9bfe-5cdc48341126。送審format使用[submission/brief.md](submission/brief.md)，原來源綁定brief不改；原R12在送R13之前已讀到script approved，該決定只屬67bd2b41…而不能借給R13。R12完整來源、官方劇本、864句八語、審查與clean舊配方在[完整封存](history/before-teaser-r13/)。
 
-[新版八語文字](i18n/preparation-status.json)各108句、6章與metadata已官方合併並完整獨立校對，共864句全TEXT_PASS。葡文／印尼文各1處化學轉換語意修正後獨立重查，初次結果及原件保留。當前runtime0errors、7個其餘soft warnings、無過期缺漏譯文；後台八語選擇保留，無定時SRT、配音或語言輪。
+現行[八語文字](i18n/README.md)待每語2句delta，其餘107句與metadata完整承接，但未宣稱109句已全current TEXT_PASS。已存正式八語三parts原選擇與原決定時戳，不是實際配音資格。
 
-本輪免費預檢106個TTS請求、3454計費字元；105圖每景最多3次，圖像階段約US$1.42／4.25，**不是全片報價或製片授權**。正式製作仍依[入場交接](production-entry.md)，包括新稿批准、精確帳戶及費用讀回、正式v4、實際聲音與圖像驗收。clean-master只是未執行衍生配方，沒有媒體QA、final或實際配音資格。
+[製片交接](production-entry.md)仍被精確新版預算帳戶、歷史費用／全片報價及受保護啟用、正式v4來源等入場要求擋住。實聲正文720–840秒未量測，3041 spokenUnits不是時長PASS。免費預檢107 TTS請求／3454字元，106圖景的目錄估價US$1.43／最多3次US$4.29，不是全片報價或泛US$200授權。clean-master只有未執行配方，尚待獨立metadata覆核及正式生成後的完整QA／final。
+
+本輪不重綁原episode、不修改budget guard、不自批准、不建立auto.json。付費、生成音訊／插圖／配樂／影片與YouTube變更均0。父層build-candidate.py為舊稿歷史入口，勿重跑覆寫；目前凍結producer在candidates/teaser-image-plan/build-candidate.mjs，重建候選後仍要按精確SHA受控採用。

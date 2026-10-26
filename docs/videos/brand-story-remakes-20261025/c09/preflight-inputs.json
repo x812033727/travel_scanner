@@ -1,32 +1,91 @@
 {
-  "performed_at": "2026-10-25T20:54:17.350564+00:00",
-  "source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+  "performed_at": "2026-10-26T01:27:47.526Z",
+  "source_video_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+  "video_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+  "baseline_source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
   "canonical_script_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+  "actual_dictionary_content_sha256": "c45d0c9b68792f6bab39819a0a91de4e6123649b7fd7f15b732d8b855cab228a",
+  "prior_preflight_preserved": "history/preflight-before-controlled-visual-adoption/preflight-inputs.json",
+  "paid_calls": 0,
+  "duration_measured": false,
+  "actual_duration_measured": false,
   "lint": {
-    "log": "lint-final.json",
-    "log_sha256": "ec066241e1c7058ef286c9be63d1070c3c40e70e00863a1999372f84b99cb95c",
+    "log": "reviews/runtime-lint-teaser-plan.json",
+    "log_sha256": "262357b26ce2b87033faed2e28bb818ad95bde0facd91c58ecb17897ebc7c8e8",
+    "exit_code": 0,
     "errors": 0,
-    "scope": "Exact canonical script immediately after adoption, before refreshed translations"
+    "soft_warnings": 12,
+    "stale_or_missing_translation_warnings": 0
   },
   "tts": {
     "log": "tts-dry-run.txt",
-    "log_sha256": "de5ae30d7bb2115f95dd4652f5485a6c68f6d4c856a7105e042e724f5ada0bdd",
+    "log_sha256": "c8337560a3833ee498de282888d8a15d9f65625bc8a35915fedecc127b35fb22",
     "exit_code": 0,
     "requests": 102,
     "billable_characters": 3298
   },
   "keyframes": {
     "log": "keyframes-dry-run.txt",
-    "log_sha256": "4e8757b4f2be4c76865234af92c6472db108e5ef6a23f7fc5642f6f54cdb2e18",
+    "log_sha256": "3ad94a3f25e9e9fbc3d979e80df247b8571f3c9ea803f0fee38617ac4622890d",
     "exit_code": 0,
     "shots": 101,
     "max_takes_per_shot": 3,
-    "one_take_usd": 1.36,
-    "stage_max_usd": 4.09
+    "one_take_catalogue_estimate_usd": 1.36,
+    "max_three_takes_catalogue_estimate_usd": 4.09
+  },
+  "music": {
+    "status": "NOT_REQUOTED_NO_ACTUAL_TIMELINE",
+    "historical_hold_preserved": true
   },
   "whole_film_quote_complete": false,
-  "actual_duration_measured": false,
   "actual_audio_generated": false,
   "actual_images_generated": false,
-  "paid_provider_requests": 0
+  "actual_same_asset_verified": false,
+  "image_reuse_plan": "image-reuse-plan.json",
+  "image_reuse_plan_sha256": "8485f2ecc10fb5a168bfb25c0579bce0814faec5264ea0e4b786e0225acf10c3",
+  "note": "Current catalog/status dry-run only; not an all-in price, new budget authorization or actual narration timing. USD200 generic display does not override existing USD25 stop.",
+  "branding_handoff": {
+    "state": "FORMAL_V4_DOWNLOADED_INSTALLED_FULL_AV_DECODE_PASS",
+    "required_policy": "../branding-pr1860/required-branding.json",
+    "authority_readme": "../branding-pr1860/README.md",
+    "package_id": "mokaair-brand-package-v4-endscreen",
+    "package_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "placed_hash_is_selection_not_production_pin": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "media_qa_receipt": "../branding-pr1860/media-qa.json",
+    "media_qa_receipt_sha256": "8b1af7a724ff34d5fde2ed5c128369390106a8629694aba6e5a25e2813781fd6",
+    "project_preflight_snapshot": "../branding-pr1860/project-preflights.json",
+    "snapshot_observed_at": "2026-10-26T02:23:38.286Z",
+    "snapshot_source_sha256": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+    "current_source_sha256_at_handoff": "1912082c8c1ecc0d2bab399903bde0e6f2a203cc3aac7487519ec3bbc26cc222",
+    "snapshot_matches_current_source": true,
+    "source_specific_status": "PASS_FOR_RECORDED_CURRENT_SOURCE_SNAPSHOT_RECHECK_BEFORE_ASSEMBLY",
+    "fresh_readonly_preflight_required_before_assembly": true,
+    "intro_frames": 150,
+    "intro_seconds": 5,
+    "outro_frames": 630,
+    "outro_seconds": 21,
+    "assembly_required_option": "--intro-after-condensation",
+    "assembly_order": [
+      "cold_open",
+      "intro",
+      "remaining_body_and_voiced_CTA",
+      "outro"
+    ],
+    "body_narration_seconds_required": [
+      720,
+      840
+    ],
+    "body_includes_cold_open_and_voiced_CTA": true,
+    "bookends_excluded_from_body_seconds": true,
+    "bookends_extra_seconds": 26,
+    "bookends_extra_frames": 780,
+    "fail_on_missing_disabled_wrong_package_or_unreadable_remote": true,
+    "production_pin_written": false,
+    "timeline_created": false,
+    "assembly_executed": false,
+    "generated_story_media": 0,
+    "paid_requests": 0,
+    "budget_or_admission_authorization_changed": false,
+    "owner_decisions_written": 0
+  }
 }

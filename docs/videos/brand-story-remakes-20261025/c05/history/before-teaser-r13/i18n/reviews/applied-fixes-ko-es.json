@@ -1,0 +1,28 @@
+{
+  "source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
+  "review_file_sha256": "4b59fb1c7d9454de11929f36a8b2ad79cdeb473bc2ab6649d291ca3d793b1eb9",
+  "locales": [
+    {
+      "locale": "ko",
+      "previous_worksheet_sha256": "c4062b9797fce898109a63bc1c0d3353e3af76f112a710e886f66f6709f09204",
+      "previous_translation_sha256": "60a8afba7d45d7132777dbf221bc4e1a3a3d2c3680b20b62e645f471b0afd82d",
+      "new_worksheet_sha256": "9e33996690ab8825b2c8181522ed203b0dac52919aea6b0b2ffb9609e9ad33f0",
+      "changes": [
+        {
+          "target": "lines.c05r010",
+          "before": "이듬해 미국 식물상이 보내온 씨앗에 제충국이 들어 있었습니다. 그제야 새 재료를 손에 넣었습니다.",
+          "after": "이듬해 미국의 식물 상인이 보내온 씨앗에 제충국이 들어 있었습니다. 그제야 새 재료를 손에 넣었습니다.",
+          "reason": "The source means a plant dealer who sent seeds. 식물상 is normally read as flora, and is not a natural clear label for the merchant here. Use 식물 상인 so the sender remains a person; retain the following-year timing and pyrethrum seeds."
+        },
+        {
+          "target": "lines.c05r028",
+          "before": "회사 연표는 그해에 구상 제안과 시제품 제작 시작을 기록합니다. 이는 회사가 훗날 정리한 귀속입니다.",
+          "after": "회사 연표는 그해에 구상 제안과 시제품 제작 시작을 기록합니다. 이는 회사가 훗날 구상의 출처를 그렇게 기록한 것입니다.",
+          "reason": "정리한 귀속 is unnatural Korean and 귀속 can suggest ownership or allocation. The source is qualifying the origin attribution as the company’s later account, without establishing ownership rights or a contemporary independent record. State that retrospective attribution plainly while keeping the chronology first."
+        }
+      ]
+    }
+  ],
+  "independent_targeted_recheck": "pending",
+  "paid_calls": 0
+}

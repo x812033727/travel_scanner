@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "source_video_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+  "source_renderer_category": "story",
+  "series_kind": "story",
+  "backend_category_before": "story",
+  "backend_category_after": "story",
+  "normal_official_report_only": true,
+  "optional_category_omission_required": false,
+  "new_reviews_submitted": 0,
+  "protected_admin_called": false,
+  "locales_and_decision_time_unchanged": true,
+  "code_contract_evidence": [
+    {
+      "ref": "HEAD",
+      "commit": "26090b0c2c58829e7c965d3565b41b6c2f2df9fc",
+      "path": "tools/video/review/sync.mjs",
+      "sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "contract": "Report assigns category only when existing backend category is None; existing owner story is preserved."
+    },
+    {
+      "ref": "HEAD",
+      "commit": "26090b0c2c58829e7c965d3565b41b6c2f2df9fc",
+      "path": "apps/api/app/video_reviews/admin_service.py",
+      "sha256": "4ba7c84bf025238cd72ae3a89d6be26514b18ba5db94b1b29e794e11065d1c3c",
+      "contract": "Report assigns category only when existing backend category is None; existing owner story is preserved."
+    },
+    {
+      "ref": "origin/main",
+      "commit": "444835b3da80f8e5356c497f7ea4e000a2969410",
+      "path": "tools/video/review/sync.mjs",
+      "sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "contract": "Report assigns category only when existing backend category is None; existing owner story is preserved."
+    },
+    {
+      "ref": "origin/main",
+      "commit": "444835b3da80f8e5356c497f7ea4e000a2969410",
+      "path": "apps/api/app/video_reviews/admin_service.py",
+      "sha256": "d5ae4b273efdb679fa51a3086479f6d68d0a8182acf86051e11c3c441cc56053",
+      "contract": "Report assigns category only when existing backend category is None; existing owner story is preserved."
+    }
+  ],
+  "readback": "report-only-teaser-plan-readback.json",
+  "source_category_delta_review": "reviews/source-teaser-story-category-independent.json",
+  "actual_clean_master_verified": false,
+  "actual_dub_eligibility": false,
+  "paid_calls": 0
+}

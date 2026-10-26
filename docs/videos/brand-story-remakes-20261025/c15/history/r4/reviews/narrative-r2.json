@@ -1,0 +1,271 @@
+{
+  "narrative_hash": "b95ec69ec3ff298a",
+  "script_hash": "0464037a9d640091b8e52dcf9578426dc5782e6397d95cfebb5d309eac8ea2b1",
+  "panel_rules_sha256": "f46a3e7ed0366033e199204e20b2dc5199b873654a0a4cccc1d8bcdde300a628",
+  "panel_narration_sha256": "df96331765c61a2d59a6ba7ff9b9dd71a05bdb67ed5d2c41749fcd1f96415222",
+  "round": 2,
+  "passed": false,
+  "answers": [
+    {
+      "id": "scene_first",
+      "question": "前四句（約 15 秒）是否已經在一個具體的時刻裡：有年份或地點，有人（或一艘船、一份文件）在做一件事，而不是在介紹主題、打招呼或預告？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1h02] PILOT的營業人員後來回憶，日本一家文具專門店試賣時，顧客親手寫，接著拿膠擦去擦。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_spoiler",
+      "question": "開場（第一章）是否沒有講掉任何後面章節才揭曉的結果：化驗或調查的結果、最後的答案、結局？（開場預告後面的時刻是第 11 題要的：只要停在結果之前，就不算講掉。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1h04] 它的背後，還有等著離開小燒杯的一批膠囊。",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_line",
+      "question": "全片是否只有一條故事線，照事情發生或被查出來的順序往前走，沒有回頭把同一段再講一次？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1b16] 但要把這些材料交到你寫字的那一端，光把溫度範圍拉開，還過不了筆尖。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_toc",
+      "question": "是否沒有任何一句在宣告「接下來要怎麼講」：接下來、先講、這一章回答、第一…第二…、回到清單、打開第一頁，或把後面的內容排成清單（排成一張表、前四個、剩下的兩個、還沒解釋的是這四件事）？（「先記住這個數字，等一下它會回來」是第 6 題要的前向鉤子，它講的是故事裡的一件事會回來，不是在講這支片的結構，不算宣告。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1h05] 跟著FriXion的一筆修改，追過三十多年的變色研究，看它怎麼走到你手裡。",
+      "yes_readers": 2
+    },
+    {
+      "id": "chapters_link",
+      "question": "每一章第一句是否接住上一章留下的具體疑問、動作或物件，讓事情往前走？預告式開場之後可以回到更早的故事起點，但第一句要讓觀眾聽懂它從哪裡接上開場的問題；其餘章首應是上一章的後果或答案。標籤、總結、重述剛問過的話，以及沒有來源支持卻硬說兩件事有因果，都不算銜接；隔了幾分鐘的掛鉤才需要點名回呼。",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c15r1d01] 二〇〇四年，公司決定商品化，專案正式啟動；研究室與工廠開始追同一個品質。；讀者二：[c15r1d01] 二〇〇四年，公司決定商品化，專案正式啟動；研究室與工廠開始追同一個品質。",
+      "yes_readers": 0
+    },
+    {
+      "id": "open_loops",
+      "question": "正文是否每 90 秒內至少有一個掛著沒回答的問題：前向（等一下會回來）、升級（但這還不是最怪的）、收著不講原因、或轉折？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1a10] 但如果只是把顏色藏起來，為什麼你放開手之後，舊線沒有立刻再冒出來？",
+      "yes_readers": 2
+    },
+    {
+      "id": "payoffs",
+      "question": "每一個掛著的問題後來是否都有清楚的新答案？緊鄰的問答可以直接回答，不必再用「還記得」點名；隔了幾分鐘才回收的問題，須點名原先具體的人、物或疑問，再給出新的事實或結果。只重複問題、換句話說，或回答另一件事，都不算回收。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1d03] 開場那批等著離開燒杯的膠囊，到了千賀的量產回憶裡，數量是五百公斤。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_recap",
+      "question": "同一個數字或事實是否沒有講超過一次（用「還記得」「剛剛那」點名的回呼除外；開場預告過的時刻，正文講到時點名接回來，也不算）？",
+      "required": true,
+      "yes": false,
+      "evidence": "讀者一：[c15r1c17] FriXion要接下原位重寫，但有色轉無色要站得住，還得經得起哪段日常溫差？；讀者二：[c15r1b12] 你這筆修改要留成無色，得把變色與回色隔開；早期記憶型曾把兩端隔開多遠？",
+      "yes_readers": 0
+    },
+    {
+      "id": "chapters_are_events",
+      "question": "章名是不是「發生了什麼」（一件事或一個揭曉），而不是功能（背景、流傳的版本、檔案裡有什麼、結論）？",
+      "required": false,
+      "yes": true,
+      "evidence": "[c15r1e07] 原廠明示，重疊寫過的內容，會一起回色；先前擦掉的舊筆跡，也可能夾在新內容裡。",
+      "yes_readers": 2
+    },
+    {
+      "id": "outro_no_next",
+      "question": "片尾是否沒有提到下一支影片、下一集或下一份檔案？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1ct2] 想看熟悉的物品，怎麼把材料的取捨交到你手裡，歡迎訂閱品牌故事。",
+      "yes_readers": 2
+    },
+    {
+      "id": "opening_hooks",
+      "question": "開場（第一章）在第一個場景之後，是否還丟出至少三個後面才會揭曉的時刻（一件具體的事停在結果之前，或一個問題），讓人想把整支片看完？（「接下來我們會看到」這種宣告不算時刻。）",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1h01] 你剛改好的一頁筆記，若紙張到了六十度，還能留下哪一版？",
+      "yes_readers": 2
+    },
+    {
+      "id": "one_thread",
+      "question": "是否有一個可辨認的主角或具體難題，從開場一路帶到結尾，每一章都讓它往前走？主角可以是一個人、團隊、物件或專案；跨年代的產品故事可以追同一個使用難題，但要逐步說出上一種用法留下什麼困難、下一個做法如何回應。只因同屬一類商品就連續換例子，不算同一條線；也不能沒有來源就聲稱不同發明者彼此承襲或互相啟發。",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1e15] 開頭那個問題，我的答案是：這支筆把顏色的狀態交給溫度，留給你的，是能修改、也得選用途的一頁。",
+      "yes_readers": 2
+    },
+    {
+      "id": "no_detour",
+      "question": "是否沒有岔出去的段落：每一段都在推進開場那個問題，沒有整段在講跟它無關的事，也沒有一口氣念出產品、分數或誰說了什麼的清單？",
+      "required": true,
+      "yes": true,
+      "evidence": "[c15r1c11] 可是，如果你想改掉一個錯字，換一種顏色，還是把舊筆跡留在原來的位置。",
+      "yes_readers": 2
+    }
+  ],
+  "failed": [
+    "chapters_link",
+    "no_recap"
+  ],
+  "advisory": [],
+  "readers": [
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c15r1h02] PILOT的營業人員後來回憶，日本一家文具專門店試賣時，顧客親手寫，接著拿膠擦去擦。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c15r1h04] 它的背後，還有等著離開小燒杯的一批膠囊。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c15r1b16] 但要把這些材料交到你寫字的那一端，光把溫度範圍拉開，還過不了筆尖。"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c15r1h05] 跟著FriXion的一筆修改，追過三十多年的變色研究，看它怎麼走到你手裡。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[c15r1d01] 二〇〇四年，公司決定商品化，專案正式啟動；研究室與工廠開始追同一個品質。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c15r1a10] 但如果只是把顏色藏起來，為什麼你放開手之後，舊線沒有立刻再冒出來？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c15r1d03] 開場那批等著離開燒杯的膠囊，到了千賀的量產回憶裡，數量是五百公斤。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c15r1c17] FriXion要接下原位重寫，但有色轉無色要站得住，還得經得起哪段日常溫差？"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c15r1e07] 原廠明示，重疊寫過的內容，會一起回色；先前擦掉的舊筆跡，也可能夾在新內容裡。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c15r1ct2] 想看熟悉的物品，怎麼把材料的取捨交到你手裡，歡迎訂閱品牌故事。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c15r1h01] 你剛改好的一頁筆記，若紙張到了六十度，還能留下哪一版？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c15r1e15] 開頭那個問題，我的答案是：這支筆把顏色的狀態交給溫度，留給你的，是能修改、也得選用途的一頁。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c15r1c11] 可是，如果你想改掉一個錯字，換一種顏色，還是把舊筆跡留在原來的位置。"
+        }
+      ],
+      "failed": [
+        "chapters_link",
+        "no_recap"
+      ],
+      "advisory": []
+    },
+    {
+      "passed": false,
+      "answers": [
+        {
+          "id": "scene_first",
+          "yes": true,
+          "evidence": "[c15r1h02] PILOT的營業人員後來回憶，日本一家文具專門店試賣時，顧客親手寫，接著拿膠擦去擦。"
+        },
+        {
+          "id": "no_spoiler",
+          "yes": true,
+          "evidence": "[c15r1h04] 它的背後，還有等著離開小燒杯的一批膠囊。"
+        },
+        {
+          "id": "one_line",
+          "yes": true,
+          "evidence": "[c15r1c12] 歐洲子公司的行銷人員看見這支筆後，向開發負責人提出：能不能從有色，變成透明？"
+        },
+        {
+          "id": "no_toc",
+          "yes": true,
+          "evidence": "[c15r1h05] 跟著FriXion的一筆修改，追過三十多年的變色研究，看它怎麼走到你手裡。"
+        },
+        {
+          "id": "chapters_link",
+          "yes": false,
+          "evidence": "[c15r1d01] 二〇〇四年，公司決定商品化，專案正式啟動；研究室與工廠開始追同一個品質。"
+        },
+        {
+          "id": "open_loops",
+          "yes": true,
+          "evidence": "[c15r1a10] 但如果只是把顏色藏起來，為什麼你放開手之後，舊線沒有立刻再冒出來？"
+        },
+        {
+          "id": "payoffs",
+          "yes": true,
+          "evidence": "[c15r1d10] 開場那次寫與擦的試賣，重點正是親手體驗；營業的鈴木直之回憶，顧客看見消色，接著有人購買。"
+        },
+        {
+          "id": "no_recap",
+          "yes": false,
+          "evidence": "[c15r1b12] 你這筆修改要留成無色，得把變色與回色隔開；早期記憶型曾把兩端隔開多遠？"
+        },
+        {
+          "id": "chapters_are_events",
+          "yes": true,
+          "evidence": "[c15r1b10] 開發接著轉向記憶型：加熱變過色，必須再冷到另一個更低的設定溫度，才會回色。"
+        },
+        {
+          "id": "outro_no_next",
+          "yes": true,
+          "evidence": "[c15r1ct2] 想看熟悉的物品，怎麼把材料的取捨交到你手裡，歡迎訂閱品牌故事。"
+        },
+        {
+          "id": "opening_hooks",
+          "yes": true,
+          "evidence": "[c15r1h01] 你剛改好的一頁筆記，若紙張到了六十度，還能留下哪一版？"
+        },
+        {
+          "id": "one_thread",
+          "yes": true,
+          "evidence": "[c15r1e15] 開頭那個問題，我的答案是：這支筆把顏色的狀態交給溫度，留給你的，是能修改、也得選用途的一頁。"
+        },
+        {
+          "id": "no_detour",
+          "yes": true,
+          "evidence": "[c15r1c17] FriXion要接下原位重寫，但有色轉無色要站得住，還得經得起哪段日常溫差？"
+        }
+      ],
+      "failed": [
+        "chapters_link",
+        "no_recap"
+      ],
+      "advisory": []
+    }
+  ]
+}

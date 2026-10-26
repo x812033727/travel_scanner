@@ -1,147 +1,167 @@
-# C10 OXO R7｜獨立來源與書面配鏡查核
+# C10 OXO｜開場共圖文字計畫獨立查核
 
-查核者：`/root/c10_r7_source`；未參與作者或研究。**SOURCE PASS／WRITTEN VISUAL PASS。** 無必要修正。
+查核者：/root/c09_c10_visual_source；未參與作者稿、研究或共圖計畫。
 
-source_video_sha256: `bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176`
+**SOURCE PASS／WRITTEN VISUAL PASS。** 只核文字來源、書面畫面與共圖程序；不是實圖QA、runtime採用、13分鐘實測或owner批准。
+
+## 當前綁定
 
 | 檔案 | SHA-256 |
 | --- | --- |
-| video.json | `bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176` |
-| script.md | `ae93803b514aa6e0272c3563f69d10497953c24b5b0dd483ec41821603cfacb7` |
-| narration-only.json | `c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c` |
-| claims.json | `8ccc4bacc1b03163caa0ec069b476262e0d6093012dfbab72b50332b3f708fcc` |
-| claims.md | `d1ba00883e3d7022c8dc129f0de887729cd43923f6638470f8c78b607bc8d7d0` |
-| reviews/source-r7-independent.json | `3ddf8ae9f2afcf5d2fd5bffe1ea378cf57f0ddae4f21d7074ec5ac1b8db7d64f` |
+| video.json | 637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f |
+| script.md | 91719c5b7d3915393a97d5681256973927cc312e4e1b961d6247b9c68ca76c48 |
+| narration-only.json | c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c |
+| claims.json | e76dd9ef35d4eacbf79b8c7b5a81ccd1f2cafae595da064fa0b7230f64c364b3 |
+| image-reuse-plan.json | 6fc61e8c4b91fe6152eeb3c8ee427de5e695c2e6fcb08998de86ec67c7a87c68 |
 
-R6來源報告SHA `fa98b7984b03e1fbc61b95affd952c7932ba81d519bbbe2e5c2a3c4e60022434`；R6 verify SHA `9c9c822c94bcea1338d979227dc51b96ba417c64f01daf0d4afed432076f9dd9`。五個輸入與R5 proof鏈均實際重hash；116筆完整claim、115個prompt/camera data及27 loops未變，依逐SHA證據繼承R6未改部分。全部118句與115 prompts/cameras本輪親讀，video／script／narration-only／claims投影一致。
+R7原來源收據：history/before-teaser-image-plan/reviews/source-r7-independent.json；SHA 3ddf8ae9f2afcf5d2fd5bffe1ea378cf57f0ddae4f21d7074ec5ac1b8db7d64f。舊verify SHA dabdcb9f8bf958d6de39e796d00b3665ead4d175bad15319ecebc316a6ce83b4。全部82封存檔、75現保護檔（含2份i18n準備檔）、357個歷史raw/cache/protected bytes、73 source nodes及184現行evidence instances皆實核SHA／excerpt／完整物件。原始四檔亦按batch紀錄核同。
 
-R7只改v5s04回叫開場黑柄試用、l20直接邀請留言及其emotion/claim界線。直接重開PBS DOCX原件（SHA `039a86fca7e227719721bf3e0bce16197ac951606cd8251b3986a23af0683dfe`）第38段：Lechters進貨慢後，Sam提議胡蘿蔔碗與鏈條拴削皮器，讓顧客店內試。2017品牌原HTML另支持黑柄與胡蘿蔔桌情境。只回叫h07另一張店內桌，未把黏土、館藏1990原型、展會samples與零售工具當同件實物，亦無新日期、心理或測量結果；後一句快銷仍明說是回憶。l20為明示觀眾CTA，不作史實。
+118句、所有facts/source/evidence/limits/material_refs、旁白ID、scene順序、loops、emotion、metadata、voice、look、字幕與分類不變。114完整claim、112完整scene可繼承；只四景prompt/camera及必要written_visual投影改變。claims頂層僅revision/scope/input-hash更新，script與claims.md舊prefix逐bytes保留。新default builder五輸出僅memory攔寫重播逐bytes同值，未跑歷史producer。
 
-Teacher PDF p.11/印刷p.9直接重抽，SHA `3d8d8789ee02605c8acae3cced7f9dc97f3bceb9b66e2cf1a01f09e743145b0c`；只支持不同原型交給列明群體試用，不代表人人成功或clinical結果。o11與v5o01仍隔11句，真payoff在o20之後。1990館藏原型、PBS後來回憶、2001文章談被棄泡狀方案、1997刊文中的Alben家庭記述仍有事件與日期界線。
+## 新書面畫面與原件
 
-所有115英文prompts/cameras匿名、無品牌/真人/產品專名、可讀字或logo要求；look嚴格為`{"preset":"cute-mystery"}`，燒字幕true。正文115插圖scene、0卡，書面比例100%、連卡0；實際付費生成圖像與其比例未知，文字PASS不是像素驗收。15組舊原件、20增補收件、184證據實例/73獨立錨點與各快取SHA均重綁；236保留檔和原28檔hash未變。
+h06 ↔ o06：匿名手懸在未成形clay與金屬削皮器上方，camera pull back；teaser不展示做成的握柄，body由Stowell後來回憶的原句交代動作。親讀Gastropod原HTML153及Cooper Hewitt原PDF27（printed52–53），Betsey參與及不同prototype材料界線不動。
 
-| 句ID | 判定 | 場景 | 審查方式 |
-| --- | --- | --- | --- |
-| c10h01 | PLAN | c10r1-h01 | R6完整claim／原件SHA重綁 |
-| c10h02 | ATTRIBUTED | c10r1-h02 | R6完整claim／原件SHA重綁 |
-| c10h03 | PLAN | c10r1-h03 | R6完整claim／原件SHA重綁 |
-| c10h04 | PLAN | c10r1-h04 | R6完整claim／原件SHA重綁 |
-| c10h05 | PLAN | c10r1-h05 | R6完整claim／原件SHA重綁 |
-| c10h06 | PLAN | c10r1-h06 | R6完整claim／原件SHA重綁 |
-| c10h07 | PLAN | c10r1-h07 | R6完整claim／原件SHA重綁 |
-| c10h08 | PLAN | c10r1-h08 | R6完整claim／原件SHA重綁 |
-| c10h09 | PLAN | c10r1-h09 | R6完整claim／原件SHA重綁 |
-| c10o01 | ATTRIBUTED | c10r1-o01 | R6完整claim／原件SHA重綁 |
-| c10o02 | ATTRIBUTED | c10r1-o02 | R6完整claim／原件SHA重綁 |
-| c10o03 | ATTRIBUTED | c10r1-o03 | R6完整claim／原件SHA重綁 |
-| c10o04 | ATTRIBUTED | c10r1-o04 | R6完整claim／原件SHA重綁 |
-| c10o05 | PLAN | c10r1-o05 | R6完整claim／原件SHA重綁 |
-| c10o06 | ATTRIBUTED | c10r1-o06 | R6完整claim／原件SHA重綁 |
-| c10o07 | ATTRIBUTED | c10r1-o07 | R6完整claim／原件SHA重綁 |
-| c10o08 | PLAN | c10r1-o08 | R6完整claim／原件SHA重綁 |
-| c10o09 | PLAN | c10r1-o09 | R6完整claim／原件SHA重綁 |
-| c10o11 | PLAN | c10r1-o11 | R6完整claim／原件SHA重綁 |
-| c10o12a | ATTRIBUTED | c10r1-o12a | R6完整claim／原件SHA重綁 |
-| c10o12b | ATTRIBUTED | c10r1-o12b | R6完整claim／原件SHA重綁 |
-| c10o13 | ATTRIBUTED | c10r1-o13 | R6完整claim／原件SHA重綁 |
-| c10o14 | ATTRIBUTED | c10r1-o14 | R6完整claim／原件SHA重綁 |
-| c10o15 | ATTRIBUTED | c10r1-o15 | R6完整claim／原件SHA重綁 |
-| c10o16 | ATTRIBUTED | c10r1-o16 | R6完整claim／原件SHA重綁 |
-| c10o17 | PLAN | c10r1-o17 | R6完整claim／原件SHA重綁 |
-| c10v5o02 | ATTRIBUTED | c10r5-o02 | R6完整claim／原件SHA重綁 |
-| c10v5o03 | ATTRIBUTED | c10r5-o03 | R6完整claim／原件SHA重綁 |
-| c10o19 | ATTRIBUTED | c10r1-o19 | R6完整claim／原件SHA重綁 |
-| c10o20 | ATTRIBUTED | c10r1-o20 | R6完整claim／原件SHA重綁 |
-| c10v5o01 | ATTRIBUTED | c10r5-o01 | R6完整claim／原件SHA重綁 |
-| c10o22 | PLAN | c10r1-o22 | R6完整claim／原件SHA重綁 |
-| c10r01 | ATTRIBUTED | c10r1-r01 | R6完整claim／原件SHA重綁 |
-| c10r02 | ATTRIBUTED | c10r1-r02 | R6完整claim／原件SHA重綁 |
-| c10r03 | PLAN | c10r1-r03 | R6完整claim／原件SHA重綁 |
-| c10r05 | ATTRIBUTED | c10r1-r05 | R6完整claim／原件SHA重綁 |
-| c10r08 | PLAN | c10r1-r08 | R6完整claim／原件SHA重綁 |
-| c10r09 | PLAN | c10r1-r09 | R6完整claim／原件SHA重綁 |
-| c10r10 | PLAN | c10r1-r10 | R6完整claim／原件SHA重綁 |
-| c10r11 | ATTRIBUTED | c10r1-r11 | R6完整claim／原件SHA重綁 |
-| c10r13 | PLAN | c10r1-r13 | R6完整claim／原件SHA重綁 |
-| c10r14 | PLAN | c10r1-r14 | R6完整claim／原件SHA重綁 |
-| c10r16 | PLAN | c10r1-r16 | R6完整claim／原件SHA重綁 |
-| c10v5b01 | ATTRIBUTED | c10r5-b01 | R6完整claim／原件SHA重綁 |
-| c10v5b02 | ATTRIBUTED | c10r5-b02 | R6完整claim／原件SHA重綁 |
-| c10v5b03 | ATTRIBUTED | c10r5-b03 | R6完整claim／原件SHA重綁 |
-| c10v5b05 | PLAN | c10r5-b05 | R6完整claim／原件SHA重綁 |
-| c10r18 | ATTRIBUTED | c10r1-r18 | R6完整claim／原件SHA重綁 |
-| c10r19 | ATTRIBUTED | c10r1-r19 | R6完整claim／原件SHA重綁 |
-| c10r21 | PLAN | c10r1-r21 | R6完整claim／原件SHA重綁 |
-| c10m01 | ATTRIBUTED | c10r1-m01 | R6完整claim／原件SHA重綁 |
-| c10m01a | ATTRIBUTED | c10r1-m01a | R6完整claim／原件SHA重綁 |
-| c10m02 | ATTRIBUTED | c10r1-m02 | R6完整claim／原件SHA重綁 |
-| c10m03 | ATTRIBUTED | c10r1-m03 | R6完整claim／原件SHA重綁 |
-| c10m05 | PLAN | c10r1-m05 | R6完整claim／原件SHA重綁 |
-| c10m06 | PLAN | c10r1-m06 | R6完整claim／原件SHA重綁 |
-| c10m08 | ATTRIBUTED | c10r1-m08 | R6完整claim／原件SHA重綁 |
-| c10m09 | ATTRIBUTED | c10r1-m09 | R6完整claim／原件SHA重綁 |
-| c10m10a | ATTRIBUTED | c10r1-m10a | R6完整claim／原件SHA重綁 |
-| c10m11 | PLAN | c10r1-m11 | R6完整claim／原件SHA重綁 |
-| c10m13 | PLAN | c10r1-m13 | R6完整claim／原件SHA重綁 |
-| c10m14 | ATTRIBUTED | c10r1-m14 | R6完整claim／原件SHA重綁 |
-| c10m15 | PLAN | c10r1-m15 | R6完整claim／原件SHA重綁 |
-| c10m17 | ATTRIBUTED | c10r1-m17 | R6完整claim／原件SHA重綁 |
-| c10m18 | PLAN | c10r1-m18 | R6完整claim／原件SHA重綁 |
-| c10m19 | PLAN | c10r1-m19 | R6完整claim／原件SHA重綁 |
-| c10a01 | ATTRIBUTED | c10r1-a01 | R6完整claim／原件SHA重綁 |
-| c10a02 | ATTRIBUTED | c10r1-a02 | R6完整claim／原件SHA重綁 |
-| c10a03 | PLAN | c10r1-a03 | R6完整claim／原件SHA重綁 |
-| c10a05 | ATTRIBUTED | c10r1-a05 | R6完整claim／原件SHA重綁 |
-| c10a07 | PLAN | c10r1-a07 | R6完整claim／原件SHA重綁 |
-| c10a08 | ATTRIBUTED | c10r1-a08 | R6完整claim／原件SHA重綁 |
-| c10a10 | PLAN | c10r1-a10 | R6完整claim／原件SHA重綁 |
-| c10a11 | ATTRIBUTED | c10r1-a11 | R6完整claim／原件SHA重綁 |
-| c10a12 | ATTRIBUTED | c10r1-a12 | R6完整claim／原件SHA重綁 |
-| c10a15 | PLAN | c10r1-a15 | R6完整claim／原件SHA重綁 |
-| c10a16 | ATTRIBUTED | c10r1-a16 | R6完整claim／原件SHA重綁 |
-| c10a18 | PLAN | c10r1-a18 | R6完整claim／原件SHA重綁 |
-| c10a18x | ATTRIBUTED | c10r1-a18x | R6完整claim／原件SHA重綁 |
-| c10a18a | ATTRIBUTED | c10r1-a18a | R6完整claim／原件SHA重綁 |
-| c10a18b | PLAN | c10r1-a18b | R6完整claim／原件SHA重綁 |
-| c10v5p01 | ATTRIBUTED | c10r5-p01 | R6完整claim／原件SHA重綁 |
-| c10v5p02 | ATTRIBUTED | c10r5-p02 | R6完整claim／原件SHA重綁 |
-| c10v5p03 | ATTRIBUTED | c10r5-p03 | R6完整claim／原件SHA重綁 |
-| c10v5f01 | PLAN | c10r5-f01 | R6完整claim／原件SHA重綁 |
-| c10v5f02 | ATTRIBUTED | c10r5-f02 | R6完整claim／原件SHA重綁 |
-| c10v5f03 | ATTRIBUTED | c10r5-f03 | R6完整claim／原件SHA重綁 |
-| c10v5f04 | ATTRIBUTED | c10r5-f04 | R6完整claim／原件SHA重綁 |
-| c10v5f05 | PLAN | c10r5-f05 | R6完整claim／原件SHA重綁 |
-| c10v5f06 | ATTRIBUTED | c10r5-f06 | R6完整claim／原件SHA重綁 |
-| c10v5f07 | ATTRIBUTED | c10r5-f07 | R6完整claim／原件SHA重綁 |
-| c10v5f08 | ATTRIBUTED | c10r5-f08 | R6完整claim／原件SHA重綁 |
-| c10v5f09 | PLAN | c10r5-f09 | R6完整claim／原件SHA重綁 |
-| c10v5s01 | ATTRIBUTED | c10r5-s01 | R6完整claim／原件SHA重綁 |
-| c10v5s02 | ATTRIBUTED | c10r5-s02 | R6完整claim／原件SHA重綁 |
-| c10v5s03 | ATTRIBUTED | c10r5-s03 | R6完整claim／原件SHA重綁 |
-| c10v5s04 | ATTRIBUTED | c10r5-s04 | R7原件與前後文重核 |
-| c10l06 | PLAN | c10r1-l06 | R6完整claim／原件SHA重綁 |
-| c10l07 | PLAN | c10r1-l07 | R6完整claim／原件SHA重綁 |
-| c10v5s05 | ATTRIBUTED | c10r5-s05 | R6完整claim／原件SHA重綁 |
-| c10v5s06 | ATTRIBUTED | c10r5-s06 | R6完整claim／原件SHA重綁 |
-| c10v5s07 | ATTRIBUTED | c10r5-s07 | R6完整claim／原件SHA重綁 |
-| c10v5u01 | ATTRIBUTED | c10r5-u01 | R6完整claim／原件SHA重綁 |
-| c10v5u02 | ATTRIBUTED | c10r5-u02 | R6完整claim／原件SHA重綁 |
-| c10v5u03 | ATTRIBUTED | c10r5-u03 | R6完整claim／原件SHA重綁 |
-| c10v5u04 | ATTRIBUTED | c10r5-u04 | R6完整claim／原件SHA重綁 |
-| c10v5u06 | PLAN | c10r5-u06 | R6完整claim／原件SHA重綁 |
-| c10v5u07 | ATTRIBUTED | c10r5-u07 | R6完整claim／原件SHA重綁 |
-| c10v5u08 | ATTRIBUTED | c10r5-u08 | R6完整claim／原件SHA重綁 |
-| c10v5u09 | PLAN | c10r5-u09 | R6完整claim／原件SHA重綁 |
-| c10v5u10 | ATTRIBUTED | c10r5-u10 | R6完整claim／原件SHA重綁 |
-| c10v5u11 | ATTRIBUTED | c10r5-u11 | R6完整claim／原件SHA重綁 |
-| c10v5u12 | ATTRIBUTED | c10r5-u12 | R6完整claim／原件SHA重綁 |
-| c10v5u13 | ATTRIBUTED | c10r5-u13 | R6完整claim／原件SHA重綁 |
-| c10v5u14 | ATTRIBUTED | c10r5-u14 | R6完整claim／原件SHA重綁 |
-| c10l19 | PLAN | c10r1-outro | R6完整claim／原件SHA重綁 |
-| c10l20 | PLAN | c10r1-outro | R7原件與前後文重核 |
-| c10l21 | PLAN | c10r1-outro | R6完整claim／原件SHA重綁 |
+h07 ↔ r5-s04：黑柄削皮器以短鏈連carrot bowl，匿名手尚未試用，camera tilt down；不畫顧客反應、購買或銷售結果。親讀PBS原DOCX，Stowell將Lechters、展會後銷慢及chain-to-bowl試用置於同一回憶；不採另一來源chain-to-table當此事件細節。clay prototype、館藏物件、展會samples及retail工具仍各自分清，不冒同一實體。
 
-實聲未生成/未量，720–840秒未知；2,670規劃spokenUnits不是實聲時長通過。未付費、無provider/後台/Git操作。未授予owner、預算、canonical、讀音、字典、TTS、媒體、字幕/配音QA、打包或發布核准。
+## 原生純本機驗綁
 
-隔離揭露：機械查看R6 archive-manifest前段以了解hash schema時，意外看到native狀態摘要；沒有打開任何native/blind/narrative投票檔，沒有用摘要作本判定，已告知root。來源與書面配鏡依上述原件和逐SHA證據決定。
+resolveLook／shotCast／shotAppearancePrompt／composeShotPrompt／Stage.imageKey等實算兩pair完整image input相等，MiniMax image-01、1920×1080、1K、seed1、offset0、takes1、空cast/reference/correction及同look；selection v0。literal HTTP只shot_id場景欄不同，judge context仍各別，不能推定judge stamps相同。
+
+| pair | composed SHA-256 | native image key |
+| --- | --- | --- |
+| clay-pre-action-shared-still | 91145ec4ed21a1aeaa08ca42cf9345023ce0eed3c4b70fb49b8d7550212c2278 | f81d8106c2586e61 |
+| shop-trial-pre-action-shared-still | 66df03ab0a1b11989af0d5f82e8cb6a2ea21ecdf61dfaa6c807824b8a27adb45 | 7652b5e24753d7c0 |
+
+新舊native screenplay／runtime／backend-script逐bytes同SHA 1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082。narrative f1c1a609840063ff、speech3899ca6484b93ccf（現runtime字典亦同）、look/mix/subtitles不變；pictures改642c2e38f5e1a565。既有native record SHA ade38a1b35362b8189ffae1a78ac42d4dd979fda35b9723538065aaec1de27e9，僅選四hash欄做narrativeReviewMatches新舊皆true，未讀投票或重judge。
+
+## 實資產仍待驗
+
+現live media/cache.json與keyframes/manifest.json均缺；無provider/backend/producer呼叫。每個第二teaser命令前先核已接受payoff cache與實檔SHA、exact current request。missing/cache miss即停，不能派購探cache。兩端judge／retake／trim選擇不同即停pair；最終manifest與實檔須同SHA才能render。actual_same_asset_verified=false；實圖、成片與無重購ledger均未驗。
+
+## 逐句來源結果
+
+以下118句保留R7原分類、歸屬與來源；完整source-node／limits及逐物件證明見新JSON。
+
+| 句ID | 結果 | 材料／來源 |
+| --- | --- | --- |
+| c10h01 | PLAN | N01；S1 |
+| c10h02 | ATTRIBUTED | A09, N01；S3, S1 |
+| c10h03 | PLAN | N02；S2 |
+| c10h04 | PLAN | N01；S1 |
+| c10h05 | PLAN | N01；S1 |
+| c10h06 | PLAN | N06；C1, I4 |
+| c10h07 | PLAN | N26；S4 |
+| c10h08 | PLAN | N01, N26；S1, S4 |
+| c10h09 | PLAN | N01, N05, N26；S1, S2, S4 |
+| c10o01 | ATTRIBUTED | N01；S1 |
+| c10o02 | ATTRIBUTED | N01；S1 |
+| c10o03 | ATTRIBUTED | N02；S2 |
+| c10o04 | ATTRIBUTED | N02；S2 |
+| c10o05 | PLAN | N06；C1, I4 |
+| c10o06 | ATTRIBUTED | N06；C1, I4 |
+| c10o07 | ATTRIBUTED | N06；C1, I4 |
+| c10o08 | PLAN | N06；C1, I4 |
+| c10o09 | PLAN | N06；C1, I4 |
+| c10o11 | PLAN | C10X15；X05_TEACHER_PACKET |
+| c10o12a | ATTRIBUTED | A01；I4 |
+| c10o12b | ATTRIBUTED | A01；I4 |
+| c10o13 | ATTRIBUTED | N04, N05, N24；S7, S2, I5 |
+| c10o14 | ATTRIBUTED | N05；S2 |
+| c10o15 | ATTRIBUTED | N24；I5 |
+| c10o16 | ATTRIBUTED | N05；S2 |
+| c10o17 | PLAN | N05, N09；S2, I4 |
+| c10v5o02 | ATTRIBUTED | A10；X02_HANDLES |
+| c10v5o03 | ATTRIBUTED | A10；X02_HANDLES |
+| c10o19 | ATTRIBUTED | N07；C1 |
+| c10o20 | ATTRIBUTED | N07；C1 |
+| c10v5o01 | ATTRIBUTED | C10X15；X05_TEACHER_PACKET |
+| c10o22 | PLAN | N08, N09；M6, M5, I4 |
+| c10r01 | ATTRIBUTED | N08；M6, M5 |
+| c10r02 | ATTRIBUTED | N08；M6, M5 |
+| c10r03 | PLAN | N08；M6, M5 |
+| c10r05 | ATTRIBUTED | N09；I4 |
+| c10r08 | PLAN | N09, N12；I4, P0 |
+| c10r09 | PLAN | N09；I4 |
+| c10r10 | PLAN | N09, N12；I4, P0 |
+| c10r11 | ATTRIBUTED | N09；I4 |
+| c10r13 | PLAN | N09；I4 |
+| c10r14 | PLAN | N09, N12；I4, P0 |
+| c10r16 | PLAN | N10, N12；I4, P0 |
+| c10v5b01 | ATTRIBUTED | C10X01；X02_HANDLES |
+| c10v5b02 | ATTRIBUTED | A11；X02_HANDLES |
+| c10v5b03 | ATTRIBUTED | C10X02；X02_HANDLES |
+| c10v5b05 | PLAN | ； |
+| c10r18 | ATTRIBUTED | N10；I4 |
+| c10r19 | ATTRIBUTED | N10；I4 |
+| c10r21 | PLAN | N10, N12；I4, P0 |
+| c10m01 | ATTRIBUTED | N11, N12；P0 |
+| c10m01a | ATTRIBUTED | A08；P0 |
+| c10m02 | ATTRIBUTED | N12；P0 |
+| c10m03 | ATTRIBUTED | N12；P0 |
+| c10m05 | PLAN | N12；P0 |
+| c10m06 | PLAN | N12, N17, N18；P0, C3, M4 |
+| c10m08 | ATTRIBUTED | N17；C3, M4 |
+| c10m09 | ATTRIBUTED | N17, N18；C3, M4 |
+| c10m10a | ATTRIBUTED | A02；S4 |
+| c10m11 | PLAN | A03, N17, N18；C3, M4 |
+| c10m13 | PLAN | N20；S4 |
+| c10m14 | ATTRIBUTED | N20；S4 |
+| c10m15 | PLAN | N20；S4 |
+| c10m17 | ATTRIBUTED | N20；S4 |
+| c10m18 | PLAN | N20；S4 |
+| c10m19 | PLAN | N13, N17；P0, C3, M4 |
+| c10a01 | ATTRIBUTED | N13；P0 |
+| c10a02 | ATTRIBUTED | N13；P0 |
+| c10a03 | PLAN | N13；P0 |
+| c10a05 | ATTRIBUTED | N13；P0 |
+| c10a07 | PLAN | N14；P0 |
+| c10a08 | ATTRIBUTED | N14；P0 |
+| c10a10 | PLAN | N14；P0 |
+| c10a11 | ATTRIBUTED | N14；P0 |
+| c10a12 | ATTRIBUTED | N14；P0 |
+| c10a15 | PLAN | N15；P0 |
+| c10a16 | ATTRIBUTED | N15；P0 |
+| c10a18 | PLAN | N15；P0 |
+| c10a18x | ATTRIBUTED | N15；P0 |
+| c10a18a | ATTRIBUTED | N15；P0 |
+| c10a18b | PLAN | N15；P0 |
+| c10v5p01 | ATTRIBUTED | C10X03；X16_BLADE_PROTOTYPE |
+| c10v5p02 | ATTRIBUTED | C10X03；X16_BLADE_PROTOTYPE |
+| c10v5p03 | ATTRIBUTED | C10X03；X16_BLADE_PROTOTYPE |
+| c10v5f01 | PLAN | C10X04； |
+| c10v5f02 | ATTRIBUTED | C10X04；X09_PBS_TRANSCRIPT |
+| c10v5f03 | ATTRIBUTED | C10X04；X09_PBS_TRANSCRIPT |
+| c10v5f04 | ATTRIBUTED | C10X05；X09_PBS_TRANSCRIPT |
+| c10v5f05 | PLAN | ； |
+| c10v5f06 | ATTRIBUTED | C10X06；X09_PBS_TRANSCRIPT |
+| c10v5f07 | ATTRIBUTED | C10X06；X09_PBS_TRANSCRIPT |
+| c10v5f08 | ATTRIBUTED | C10X07；X09_PBS_TRANSCRIPT |
+| c10v5f09 | PLAN | ； |
+| c10v5s01 | ATTRIBUTED | C10X07；X09_PBS_TRANSCRIPT |
+| c10v5s02 | ATTRIBUTED | C10X07；X09_PBS_TRANSCRIPT |
+| c10v5s03 | ATTRIBUTED | C10X08；X09_PBS_TRANSCRIPT |
+| c10v5s04 | ATTRIBUTED | C10X08；X09_PBS_TRANSCRIPT |
+| c10l06 | PLAN | N26；S4 |
+| c10l07 | PLAN | N26；S4 |
+| c10v5s05 | ATTRIBUTED | C10X08；X09_PBS_TRANSCRIPT |
+| c10v5s06 | ATTRIBUTED | C10X09；X02_HANDLES |
+| c10v5s07 | ATTRIBUTED | C10X09；X02_HANDLES |
+| c10v5u01 | ATTRIBUTED | C10X10；X20_INTERACTION_ESSAY |
+| c10v5u02 | ATTRIBUTED | C10X10；X20_INTERACTION_ESSAY |
+| c10v5u03 | ATTRIBUTED | C10X11；X20_INTERACTION_ESSAY |
+| c10v5u04 | ATTRIBUTED | C10X11, C10X12；X20_INTERACTION_ESSAY |
+| c10v5u06 | PLAN | ； |
+| c10v5u07 | ATTRIBUTED | C10X12；X20_INTERACTION_ESSAY |
+| c10v5u08 | ATTRIBUTED | C10X12；X20_INTERACTION_ESSAY |
+| c10v5u09 | PLAN | ； |
+| c10v5u10 | ATTRIBUTED | C10X13；X20_INTERACTION_ESSAY |
+| c10v5u11 | ATTRIBUTED | C10X13；X20_INTERACTION_ESSAY |
+| c10v5u12 | ATTRIBUTED | C10X14；X20_INTERACTION_ESSAY |
+| c10v5u13 | ATTRIBUTED | C10X14；X20_INTERACTION_ESSAY |
+| c10v5u14 | ATTRIBUTED | C10X14；X20_INTERACTION_ESSAY |
+| c10l19 | PLAN | N01, N05, N26；S1, S2, S4 |
+| c10l20 | PLAN | ； |
+| c10l21 | PLAN | ； |
+
+本輪必修：無。只寫本獨立報告與verify；未改runtime、media、approval、字典、backend或Git。

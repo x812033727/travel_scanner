@@ -1,0 +1,247 @@
+{
+  "schema_version": 1,
+  "review_type": "independent_clean_master_metadata_derivation",
+  "status": "METADATA_DERIVATION_PASS",
+  "checked_at": "2026-10-25T21:01:29.580Z",
+  "reviewer": "/root/c06_translate_en_ja",
+  "independent": true,
+  "independence_basis": "Reviewer authored C10 OXO R1 and did not author the C09 source recipe, clean-master recipe, or derivation record.",
+  "slug": "story-everyday-patagonia-c09-remake-20261025",
+  "scope": {
+    "read_document_bytes": [
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/video.json",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/variants/clean-master/video.json",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/variants/clean-master/derivation.json",
+      "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/variants/clean-master/lint.json",
+      "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/script.md",
+      "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/story-lexicon/current.json",
+      "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/story-lexicon/versions/39c6c02c81b802c1dd4f362a75fa45d76615847cdd68fabccad8e4bf4f896bc3.json",
+      "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/story-lexicon/events/16048029510bd2e8b906ddd7da31452313333fbd3e1583d4e5d39e14620d40ed.json"
+    ],
+    "native_code_read_for_reproduction": true,
+    "media_filesystem_inventory_only": true,
+    "translations_read": false,
+    "source_fact_qa": false,
+    "written_visual_qa": false,
+    "media_qa": false,
+    "owner_approval": false,
+    "backend_calls": 0,
+    "provider_calls": 0,
+    "paid_requests": 0,
+    "git_actions": 0,
+    "mutated_files": [
+      "variants/clean-master/review.json"
+    ]
+  },
+  "inputs": {
+    "source": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/video.json",
+      "sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6"
+    },
+    "variant": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/variants/clean-master/video.json",
+      "sha256": "0d0b52812c3da06ee405ec69da1e9296ab587dc970bab6af212b4cca2b2f6c5e"
+    },
+    "derivation": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/variants/clean-master/derivation.json",
+      "sha256": "c16da7ce49594592a2f6ee761582ea8cdd63b08e9910c0d19344cd4aeeb91e4e"
+    },
+    "saved_lint": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/variants/clean-master/lint.json",
+      "sha256": "ec066241e1c7058ef286c9be63d1070c3c40e70e00863a1999372f84b99cb95c"
+    },
+    "official_script": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/script.md",
+      "sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de"
+    },
+    "lexicon_current": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/story-lexicon/current.json",
+      "sha256": "53c765ef19710b65d12d9b194649f01965ae9e3fc58328631af90c1812a0b6f2"
+    },
+    "lexicon_version": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/story-lexicon/versions/39c6c02c81b802c1dd4f362a75fa45d76615847cdd68fabccad8e4bf4f896bc3.json",
+      "sha256": "39c6c02c81b802c1dd4f362a75fa45d76615847cdd68fabccad8e4bf4f896bc3"
+    },
+    "lexicon_event": {
+      "path": "/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025/story-lexicon/events/16048029510bd2e8b906ddd7da31452313333fbd3e1583d4e5d39e14620d40ed.json",
+      "sha256": "16048029510bd2e8b906ddd7da31452313333fbd3e1583d4e5d39e14620d40ed"
+    }
+  },
+  "immutable_lexicon": {
+    "mode": "snapshot",
+    "sequence": 1,
+    "lexicon_sha256": "39c6c02c81b802c1dd4f362a75fa45d76615847cdd68fabccad8e4bf4f896bc3",
+    "head_event_sha256": "16048029510bd2e8b906ddd7da31452313333fbd3e1583d4e5d39e14620d40ed",
+    "native_reader": "readStoryLexicon",
+    "speech_filter": "speechLexicon(snapshot.lexicon, source.narration_locale)",
+    "narration_locale": "zh-TW",
+    "full_event_chain_and_version_bytes_verified": true
+  },
+  "deep_diff": [
+    {
+      "path": "subtitles.burn_in",
+      "source": true,
+      "variant": false
+    }
+  ],
+  "budget_identity": {
+    "source_slug": "story-everyday-patagonia-c09-remake-20261025",
+    "variant_slug": "story-everyday-patagonia-c09-remake-20261025",
+    "same_new_remake_slug": true,
+    "separate_paid_ledger_created": false,
+    "ledger_or_host_admission_tested": false,
+    "old_0547_approval_reused": false
+  },
+  "native_input_hashes": {
+    "narrativeHash": {
+      "source": "22e4b5a76555fa87",
+      "variant": "22e4b5a76555fa87",
+      "equal": true
+    },
+    "speechHash": {
+      "source": "e5fd2a0eb8489dbd",
+      "variant": "e5fd2a0eb8489dbd",
+      "equal": true
+    },
+    "picturesHash": {
+      "source": "027d845d336cb7a8",
+      "variant": "027d845d336cb7a8",
+      "equal": true
+    },
+    "lookHash": {
+      "source": "98a370ae40badbaf",
+      "variant": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "source": "71ecdd098c551254",
+      "variant": "71ecdd098c551254",
+      "equal": true
+    },
+    "subtitlesHash": {
+      "source": "4b23ded6e41b1e87",
+      "variant": "ec58a1493220a1da",
+      "equal": false
+    }
+  },
+  "screenplay": {
+    "source_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+    "variant_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+    "official_script_sha256": "02f091cae8f4e6179364155ef489b8ae59839efd969b695d21971d7b1ab5e3de",
+    "bytes": 16933,
+    "source_variant_bytes_identical": true,
+    "source_official_bytes_identical": true,
+    "variant_official_bytes_identical": true,
+    "approval_status": "New remake script/outline remain pending as supplied by the assigning parent. This review made no backend query and grants no script or outline approval."
+  },
+  "derivation_crosscheck": {
+    "recorded_hashes_equal_independent_native_recomputation": true,
+    "recorded_source_variant_canonical_shas_match_actual_bytes": true
+  },
+  "saved_lint": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09/variants/clean-master/lint.json",
+    "sha256": "ec066241e1c7058ef286c9be63d1070c3c40e70e00863a1999372f84b99cb95c",
+    "errors": 0,
+    "warnings": 39,
+    "old_translation_stale_warning_count": 32,
+    "old_translated_title_width_warning_count": 2,
+    "other_warning_count": 5,
+    "other_warnings": [
+      {
+        "path": "scenes",
+        "message": "\"wall\" is in 41 of 101 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes",
+        "message": "\"workbench\" is in 35 of 101 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+      },
+      {
+        "path": "scenes[61] (c09r5-shot-065)",
+        "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "scenes[87] (c09r5-shot-095)",
+        "message": "about 10.4 s; shots over 10 s are stretched or frozen to fit"
+      },
+      {
+        "path": "loops",
+        "message": "the condensation plants 2 loops; after its one scene it teases at least 3 later moments, each cut off before its result and paid off where the body reaches it (script-writing.md §開場濃縮)",
+        "kind": "narrative"
+      }
+    ],
+    "changed": false,
+    "current_full_project_lint_rerun": false,
+    "current_full_project_warning_count": null,
+    "scope_note": "The preserved lint contains 39 warnings, including 32 stale pre-update translation warnings and 2 old translated-title-width warnings. Current eight-language documents, brief, and series were outside the assigned read scope and were not read or passed into a full lintProject run. No current lint warning count is inferred, and the saved evidence was not overwritten. This pass covers derivation metadata and independently recomputed native input hashes only."
+  },
+  "actual_artifacts": {
+    "inventory_root": "/workspace/work/brand-story-20261025/media/story-everyday-patagonia-c09-remake-20261025",
+    "presence": {
+      "final.mp4": false,
+      "narration.wav": false,
+      "timeline.json": false,
+      "audio": false,
+      "frames/manifest.json": false,
+      "keyframes/manifest.json": false,
+      "clips/manifest.json": false,
+      "music/manifest.json": false,
+      "checks.json": false,
+      "qa": false,
+      "dubs": false
+    },
+    "media_file_count": 0,
+    "media_file_paths": [],
+    "all_current_file_extensions": [
+      ".json"
+    ],
+    "approval_record_file_present": true,
+    "approval_record_contents_read": false,
+    "narrative_review_record_file_present": true,
+    "narrative_review_record_contents_read": false,
+    "actual_clean_master_exists": false,
+    "audio_exists": false,
+    "pictures_exist": false,
+    "media_qa_or_checks_exists": false,
+    "final_approval_granted_by_this_review": false,
+    "actual_dub_eligibility": false,
+    "note": "File inventory found 11 JSON text/workflow files only. An approvals.json and a narrative review record exist; their contents were outside this metadata read scope and were not used as media QA or final approval. No actual timeline, narration, per-line audio, generated image, clip, MP4, checks.json, or dub artifact exists under the scoped new remake work directory."
+  },
+  "checks": {
+    "source_matches_expected_sha256": true,
+    "variant_matches_expected_sha256": true,
+    "official_script_matches_expected_sha256": true,
+    "only_actual_deep_difference_is_burn_in": true,
+    "same_new_remake_slug": true,
+    "no_old_activated_slug_in_either_recipe": true,
+    "source_variant_screenplay_bytes_identical": true,
+    "source_official_screenplay_bytes_identical": true,
+    "variant_official_screenplay_bytes_identical": true,
+    "actual_immutable_lexicon_verified_by_native_reader": true,
+    "all_non_subtitle_native_input_hashes_equal": true,
+    "subtitle_native_input_hash_changes": true,
+    "recorded_derivation_matches_all_recomputed_hashes": true,
+    "recorded_derivation_binds_actual_source": true,
+    "recorded_derivation_binds_actual_variant": true,
+    "recorded_derivation_binds_actual_official_script": true,
+    "recorded_derivation_asserts_metadata_only": true,
+    "no_actual_media_artifacts_in_scoped_new_slug": true,
+    "saved_lint_errors_zero": true,
+    "read_inputs_unchanged_before_publish": true
+  },
+  "limitations": [
+    "METADATA_DERIVATION_PASS validates a text recipe relation only; it does not establish actual clean-master render quality, subtitle appearance, voice performance, duration, media QA, owner approval, paid admission, or dub eligibility.",
+    "Backend new script/outline remain pending per assignment. No old activated episode or 0547 approval is treated as approval for this remake.",
+    "Saved lint is preserved historical evidence and is not represented as the current post-translation full-project lint."
+  ],
+  "reproduction": {
+    "method": "Native pure functions, actual pinned immutable lexicon, source/variant deep comparison, and Buffer byte equality; no copied derivation hashes were used to generate the recomputed result.",
+    "command": "node --input-type=module <<'REPRO'\nimport {readFileSync} from 'node:fs';\nimport {createHash} from 'node:crypto';\nimport {isDeepStrictEqual} from 'node:util';\nimport {screenplay,narrativeHash} from '/workspace/work/brand-remakes-source/tools/video/core/screenplay.mjs';\nimport {speechHash} from '/workspace/work/brand-remakes-source/tools/video/core/timeline.mjs';\nimport {picturesHash,lookHash,mixHash,subtitlesHash} from '/workspace/work/brand-remakes-source/tools/video/core/drama.mjs';\nimport {readStoryLexicon} from '/workspace/work/brand-remakes-source/tools/video/core/story-lexicon.mjs';\nimport {speechLexicon} from '/workspace/work/brand-remakes-source/tools/video/dubs/plan.mjs';\nconst b='/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c09',slug='story-everyday-patagonia-c09-remake-20261025',c='/workspace/work/brand-story-20261025/submission-root/docs/videos/story-everyday-patagonia-c09-remake-20261025';\nconst bytes=p=>readFileSync(p),sha=b=>createHash('sha256').update(b).digest('hex');\nconst s=JSON.parse(bytes(b+'/video.json')),v=JSON.parse(bytes(b+'/variants/clean-master/video.json'));\nconst snap=readStoryLexicon({slug,storyDir:c}),lex=speechLexicon(snap.lexicon,s.narration_locale);\nfunction diff(a,b,p=''){if(isDeepStrictEqual(a,b))return [];if(a===null||b===null||typeof a!=='object'||typeof b!=='object'||Array.isArray(a)!==Array.isArray(b))return [{path:p,source:a,variant:b}];return [...new Set([...Object.keys(a),...Object.keys(b)])].flatMap(k=>!Object.hasOwn(a,k)||!Object.hasOwn(b,k)?[{path:p?p+'.'+k:k,source:a[k],variant:b[k],missing_in:!Object.hasOwn(a,k)?'source':'variant'}]:diff(a[k],b[k],p?p+'.'+k:k));}\nconst h={};for(const [n,f] of Object.entries({narrativeHash,speechHash:d=>speechHash(d,lex),picturesHash,lookHash,mixHash,subtitlesHash})){const source=f(s),variant=f(v);h[n]={source,variant,equal:source===variant};}\nconst a=Buffer.from(screenplay(s)),z=Buffer.from(screenplay(v)),o=bytes(c+'/script.md');\nconsole.log(JSON.stringify({source_sha256:sha(bytes(b+'/video.json')),variant_sha256:sha(bytes(b+'/variants/clean-master/video.json')),derivation_sha256:sha(bytes(b+'/variants/clean-master/derivation.json')),lexicon_sha256:snap.lexicon_sha256,head_event_sha256:snap.head_event_sha256,deep_diff:diff(s,v),hashes:h,screenplay:{source_sha256:sha(a),variant_sha256:sha(z),official_sha256:sha(o),source_variant_bytes_equal:a.equals(z),source_official_bytes_equal:a.equals(o)}},null,2));\nREPRO",
+    "native_module_sha256": {
+      "core/screenplay.mjs": "1a9e75af1d383948ab1861421a337145c7c89ab3cd927daa1d05385aeb55a389",
+      "core/timeline.mjs": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+      "core/drama.mjs": "0877885c11f51b794b64ee1d3a76a8b0193d239127f84e26856d6506a9b4bee1",
+      "core/story-lexicon.mjs": "66e11923b9de4a0ac065a1f4f9b38819c665ee7fa53a32957490069286434982",
+      "dubs/plan.mjs": "249dbbce09541ad1f843f39d7355b4de56b283830ff5bee357457e15b9765a2f"
+    }
+  }
+}

@@ -1,10 +1,10 @@
 {
   "schema_version": 1,
-  "status": "PENDING_INDEPENDENT_REVIEW_HOLD",
-  "candidate_revision": "length-r12",
-  "author": "/root/c05_r11_author",
+  "status": "PENDING_INDEPENDENT_SOURCE_AND_FRESH_NATIVE_PANEL12",
+  "candidate_revision": "teaser-r13",
+  "author": "/root/c05_teaser_candidate",
   "parent_source_video_sha256": "7fbc22336a476a32f684b463154b420a07ba5fa6377e7454b3d4b1e8edbf720a",
-  "parent_candidate_video_sha256": "309c2aedf635806c4b2828234cf6c02b4a19e8ab8d7ab628035a03e086ee0b84",
+  "parent_candidate_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
   "frozen_expansion_research": {
     "markdown_sha256": "0241eb279172af302351ffa72f43264313a521d30fe2ffa86429bad22f371ff0",
     "claims_sha256": "2219f8d5e97ac0647d2947319567695dea5bb90387edd6f5ae86e7dd1f656bc4",
@@ -153,22 +153,14 @@
     {
       "id": "c07o04",
       "chapter": "一根香燒完，夜還很長",
-      "claim": "採下的花遇上連雨怎麼辦，點火後成分又從哪裡離開？",
+      "claim": "採下的花遇上連雨怎麼辦？",
       "status": "PENDING_INDEPENDENT_REVIEW",
-      "change": "R11_TEXT_AND_SCENE_OBJECT_RETAINED",
-      "claim_kind": "TWO_UNRESOLVED_PREVIEWS",
+      "change": "R13_SPLIT_FIRST_EXISTING_PREVIEW_ONLY",
+      "claim_kind": "UNRESOLVED_EVENT_PREVIEW",
       "source_ids": [
-        "K_F",
         "NDL1897"
       ],
       "sources": [
-        {
-          "id": "K_F",
-          "url": "https://www.kincho.co.jp/factory/listen/detail.html",
-          "raw_cache": "/workspace/work/brand-story-20261025/c05-audit/source-check/K_F.html",
-          "raw_sha256": "98cc42111485595fc062421931adf48851d9a6337933b83bd696152210c2aa9f",
-          "text_cache": "/workspace/work/brand-story-20261025/c05-audit/source-check/K_F.txt"
-        },
         {
           "id": "NDL1897",
           "title": "除虫菊栽培書 5版",
@@ -296,7 +288,7 @@
           ]
         }
       ],
-      "locator": "兩個未揭結果預告，在c07d08及c05le013兌現。",
+      "locator": "1897第五版p27連雨備案的未揭結果問題，於c07d08回答；中性花籃與空竹簾情境共圖，不在開場畫供熱結果。",
       "source_anchors": [
         {
           "id": "N27_RAIN",
@@ -315,6 +307,39 @@
       "r9_claim_sha256": "f5a2e6c8ff1dd38bdfe809d1875090efcb34183a4bf518acb0e04375ae95ca47",
       "r10_claim_sha256": "f5a2e6c8ff1dd38bdfe809d1875090efcb34183a4bf518acb0e04375ae95ca47",
       "r11_claim_sha256": "f5a2e6c8ff1dd38bdfe809d1875090efcb34183a4bf518acb0e04375ae95ca47"
+    },
+    {
+      "id": "c05h04b1",
+      "chapter": "一根香燒完，夜還很長",
+      "claim": "點火後成分又從哪裡離開？",
+      "status": "PENDING_INDEPENDENT_REVIEW",
+      "change": "R13_SPLIT_SECOND_EXISTING_PREVIEW_ONLY",
+      "claim_kind": "UNRESOLVED_EVENT_PREVIEW",
+      "source_ids": [
+        "K_F"
+      ],
+      "sources": [
+        {
+          "id": "K_F",
+          "url": "https://www.kincho.co.jp/factory/listen/detail.html",
+          "raw_cache": "/workspace/work/brand-story-20261025/c05-audit/source-check/K_F.html",
+          "raw_sha256": "98cc42111485595fc062421931adf48851d9a6337933b83bd696152210c2aa9f",
+          "text_cache": "/workspace/work/brand-story-20261025/c05-audit/source-check/K_F.txt"
+        }
+      ],
+      "locator": "K_F原廠說明燃端與前方揮散位置；本句只問位置，c07u04先回答，c05le013接續6–8mm及約250°C細節。",
+      "source_anchors": [
+        {
+          "source_id": "K_F",
+          "text_cache": "/workspace/work/brand-story-20261025/c05-audit/source-check/K_F.txt",
+          "text_cache_sha256": "e58e9201da10b76a516111f3780529fec17d2a6ee5b9d84ec7d8712739a82a36",
+          "line_start": 79,
+          "line_end": 79,
+          "exact_excerpt": "除虫菊（シロバナムシヨケギク）の花に含まれているピレトリンという成分は、殺虫効果を持っています。そのピレトリンを化学的に合成したものがピレスロイドと呼ばれており、蚊取線香の中にはこのピレスロイドが含まれています。蚊取線香は、ピレスロイドを粕粉や木粉などの植物成分に混合し、燃やすことによって有効成分のピレスロイドを極細微粒子として空気中に浮遊させ、長時間殺虫効果を維持できるようにしたものです。燃焼部分の温度は約700～800℃で、ピレスロイドは先端から6～8mmの部分（約250℃）から揮散し、かなりの時間空中に浮かんでいます。従って、どのようなせまいすき間にも届き、タンスのうしろや部屋の隅に潜んでいる蚊を殺すことができるのです。殺虫剤が虫の体内に入る方法として、食物とともに口から、体表（皮フ）から、呼吸をする気門からの三つのルートがあり、虫の体内に入った殺虫剤は呼吸を止めるか、神経を攻撃して虫を殺します。",
+          "excerpt_sha256": "59ffa9da1bc5e5a3f3f6a47e4d3c2e28c18c27ee651621750e9b0bea36cec1e9"
+        }
+      ],
+      "source_evidence_reused_from_r12_line": "c07u04"
     },
     {
       "id": "c07o05",
@@ -7713,5 +7738,29 @@
     "claim_1958_caused_1955": false,
     "all_source_ids_sources_and_anchors_exact": true,
     "status": "AUTHOR_SCOPE_PENDING_INDEPENDENT_REVIEW"
+  },
+  "baseline_adopted_r12": {
+    "source_video_sha256": "1204dfb81743ed9dc7e041bc030ee7391ff92512951e0fa2cf470ccdc4f1ad87",
+    "source_receipt": "history/r12/reviews/source-length-r12-independent.json",
+    "source_receipt_sha256": "35bf977bbcda6a80812b070c862476355717f7e8171971c83386a8f8c1df6018",
+    "narrative_receipt": "history/r12/reviews/narrative-final.json",
+    "narrative_receipt_sha256": "feca7e19894d14cf17bc76003f6414f6bffbc9046cb05ad4c1a4e653a8da075e",
+    "applies_to_candidate": false
+  },
+  "teaser_image_plan": {
+    "file": "image-reuse-plan.json",
+    "actual_same_asset_verified": false,
+    "source_gate_required": true,
+    "pairs": [
+      {
+        "setup": "c07o04",
+        "payoff": "c07d08"
+      },
+      {
+        "setup": "c05h04b1",
+        "payoff": "c07u04"
+      }
+    ],
+    "scope": "Written visual planning only; matching prompts/keys are not generated-image acceptance."
   }
 }

@@ -1,6 +1,6 @@
-# C07 馬汀靴 R8｜一雙舊靴從選修到回程
+# C07 馬汀靴 R10｜一雙舊靴從選修到回程
 
-狀態：R8作者去除純回顧稿，待另一位獨立來源／書面配鏡審核與兩位全新隔離讀者。R7原件、來源PASS及敘事HOLD收據完整封存在history/r7；舊收據不核准本稿，作者不寫verify或自評通過。
+狀態：R10作者最小去重稿，待另一位獨立來源／書面配鏡審核與兩位全新隔離讀者。R9原稿、來源及書面配鏡PASS、verify、actualnative8共享no_recap HOLD與共圖計畫完整封存在history/r9；舊收據不核准本稿，作者不寫verify或自評通過。
 
 ## 問題
 
@@ -16,7 +16,9 @@
 
 ### 選項 A：選好的舊靴寄出，工序完成後接回回程
 
-六章沿送修、收件、拆解車縫、熱接、整理和回程推進。開場與獨有事實不擴改：刪20415對已完成熱接的狀態回顧；20602與20603只保留一次顧客完成／回程通知，維持七月、收鞋後幾天和正在回程的真實資訊。順讀後另刪20220分修結論、20232到站通知再述與20612一月穿感再總結。其餘84句中的83句、存留prompt/camera/emotion、18個loops及hook內容順序保持R7原值。這是同類純重述去除，未拿單人one_line意見擴改一月自述。
+R10只修兩個相鄰重述：刪20309對仍保有鞋形與送向機針的橋句；20310刪掉已說過的拆走舊底前提，直接問「新外底要直接縫到鞋面上嗎？」。後一句20313仍顯示先接上新沿條，再以原廠工法歸因其PVC材料；外底的熱接方法仍在後章回答，沒有新添工序。其他83句中文、所有存留prompt/camera/emotion、18個loops、不同實物／公共評論界線不改。沒有為單人one_line意見擴改一月自述或刪獨有材料。
+
+20104→20301與c7h04b1→20607兩對共圖完整保留。image-reuse-plan.json只更新本稿SHA及修訂編號；相同prompt/camera/cast/原生Stage.imageKey數值逐值核對不變。正式入場後先payoff --takes 1，第二命令前核live cache實檔SHA，缺漏就停；每端獨立judge、retake停pair，最終仍須manifest／含trim衍生檔同一實檔SHA。actual_same_asset_verified=false，沒有生成或買相似第二圖。R9來源查核及native8判定只綁舊稿，不適用改字後的R10，本稿須新的來源查核及actualnative9。
 
 ## 來源界線
 
@@ -24,8 +26,8 @@
 
 ## 字量與時長
 
-官方口徑為整份實聲旁白，包括coldopen與有聲CTA，只排額外5秒片頭與21秒片尾。約3500 spokenUnits只是規劃目標；R8字量與原生預估保存於author-notes.json。actual TTS未量測，不宣稱已符合或違反720–840秒，不靠慢播、停頓、重述或警語填長。
+官方口徑為整份實聲旁白，包括coldopen與有聲CTA，只排額外5秒片頭與21秒片尾。約3500 spokenUnits只是規劃目標；R10字量與原生預估保存於author-notes.json。actual TTS未量測，不宣稱已符合或違反720–840秒，不靠慢播、停頓、重述或警語填長。
 
 ## 製作規格與交接
 
-category story、不綁原series，target13，原生STORY Sulafat聲音、image-01與唯一cute-mystery，匿名英語prompt、無品牌名／人名／logo／可讀字。繁中燒錄與CC、coldopen後5秒正式片頭、21秒正式v4片尾、layout d縮圖。存留prompt、camera、emotion完整值不改；本輪只有作者文字與機械lint，尚待新的獨立來源及敘事審查，沒有TTS、圖像、SRT、影片、付費或owner核准。
+category story、不綁原series，target13，原生STORY Sulafat聲音、image-01與唯一cute-mystery，匿名英語prompt、無品牌名／人名／logo／可讀字。繁中燒錄與CC、coldopen後5秒正式片頭、21秒正式v4片尾、layout d縮圖。所有存留配鏡、camera與emotion均保持R9；本輪只有作者文字與機械lint，尚待新的獨立來源及敘事審查，沒有TTS、圖像、SRT、影片、付費或owner核准。

@@ -1,21 +1,91 @@
 {
-  "source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+  "performed_at": "2026-10-26T01:04:58.294Z",
+  "source_video_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+  "video_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+  "baseline_source_video_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
   "canonical_script_sha256": "e00fd07d54ef284a5577327f999f4e46222aef455417f3fc878c1a91f11b124e",
+  "actual_dictionary_content_sha256": "3e982509bd40c627c7074102ffe1e24481b7ef0ff112f6a0b3956d3d1eb5dfe5",
+  "prior_preflight_preserved": "history/preflight-before-controlled-visual-adoption/preflight-inputs.json",
+  "paid_calls": 0,
+  "duration_measured": false,
   "actual_duration_measured": false,
+  "lint": {
+    "log": "reviews/runtime-lint-teaser-plan.json",
+    "log_sha256": "072541d4d22a02a720dc10f91c8b8701b2efb38ec81f52cd82495026a09a45e1",
+    "exit_code": 0,
+    "errors": 0,
+    "soft_warnings": 19,
+    "stale_or_missing_translation_warnings": 0
+  },
   "tts": {
+    "log": "tts-dry-run.txt",
+    "log_sha256": "9db269a15230454a9558749210d382ab540e836624cc6bd5bdd71dcdf223c5a2",
     "exit_code": 0,
     "requests": 150,
-    "billable_characters": 4086,
-    "log_sha256": "7b0a9441a9232ef2752d04b9f2796c4c45f1787d3bb3dc36f2b8ad3c76289e23"
+    "billable_characters": 4086
   },
   "keyframes": {
+    "log": "keyframes-dry-run.txt",
+    "log_sha256": "aef1ce72a15875c7793d1b0ac44dc619fdfcee29eb1cfde18dc79fb6fe15a6ad",
     "exit_code": 0,
     "shots": 137,
     "max_takes_per_shot": 3,
-    "log_sha256": "aa46270affa3d1c8a3ceba76b69cca2ebd1184fc6586101181df65a751d47bd9"
+    "one_take_catalogue_estimate_usd": 1.85,
+    "max_three_takes_catalogue_estimate_usd": 5.55
+  },
+  "music": {
+    "status": "NOT_REQUOTED_NO_ACTUAL_TIMELINE",
+    "historical_hold_preserved": true
   },
   "whole_film_quote_complete": false,
   "actual_audio_generated": false,
   "actual_images_generated": false,
-  "paid_provider_requests": 0
+  "actual_same_asset_verified": false,
+  "image_reuse_plan": "image-reuse-plan.json",
+  "image_reuse_plan_sha256": "5d6f9c6bc6e91d960b5575652b263f7d55bd3ff785162ac2d12801a0891d5523",
+  "note": "Current catalog/status dry-run only; not an all-in price, new budget authorization or actual narration timing. USD200 generic display does not override existing USD25 stop.",
+  "branding_handoff": {
+    "state": "FORMAL_V4_DOWNLOADED_INSTALLED_FULL_AV_DECODE_PASS",
+    "required_policy": "../branding-pr1860/required-branding.json",
+    "authority_readme": "../branding-pr1860/README.md",
+    "package_id": "mokaair-brand-package-v4-endscreen",
+    "package_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "placed_hash_is_selection_not_production_pin": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "media_qa_receipt": "../branding-pr1860/media-qa.json",
+    "media_qa_receipt_sha256": "8b1af7a724ff34d5fde2ed5c128369390106a8629694aba6e5a25e2813781fd6",
+    "project_preflight_snapshot": "../branding-pr1860/project-preflights.json",
+    "snapshot_observed_at": "2026-10-26T02:23:34.964Z",
+    "snapshot_source_sha256": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "current_source_sha256_at_handoff": "aac065fb5663fd1a75dbac064470ceaefea43eac08a162ba3be96d9130724d11",
+    "snapshot_matches_current_source": true,
+    "source_specific_status": "PASS_FOR_RECORDED_CURRENT_SOURCE_SNAPSHOT_RECHECK_BEFORE_ASSEMBLY",
+    "fresh_readonly_preflight_required_before_assembly": true,
+    "intro_frames": 150,
+    "intro_seconds": 5,
+    "outro_frames": 630,
+    "outro_seconds": 21,
+    "assembly_required_option": "--intro-after-condensation",
+    "assembly_order": [
+      "cold_open",
+      "intro",
+      "remaining_body_and_voiced_CTA",
+      "outro"
+    ],
+    "body_narration_seconds_required": [
+      720,
+      840
+    ],
+    "body_includes_cold_open_and_voiced_CTA": true,
+    "bookends_excluded_from_body_seconds": true,
+    "bookends_extra_seconds": 26,
+    "bookends_extra_frames": 780,
+    "fail_on_missing_disabled_wrong_package_or_unreadable_remote": true,
+    "production_pin_written": false,
+    "timeline_created": false,
+    "assembly_executed": false,
+    "generated_story_media": 0,
+    "paid_requests": 0,
+    "budget_or_admission_authorization_changed": false,
+    "owner_decisions_written": 0
+  }
 }

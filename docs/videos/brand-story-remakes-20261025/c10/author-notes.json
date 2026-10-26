@@ -1,187 +1,20 @@
 {
-  "status": "HOLD_PENDING_NEW_INDEPENDENT_SOURCE_WRITTEN_VISUAL_AND_ACTUAL_NATIVE_PANEL6",
-  "revision": "r7",
-  "author": "/root/c10_r7_author",
-  "scope": "two-line explicit opening callback and direct viewer-share invitation only; other facts/order, all visuals and loops unchanged",
-  "input_sha256": {
-    "video.json": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
-    "script.md": "ae93803b514aa6e0272c3563f69d10497953c24b5b0dd483ec41821603cfacb7",
+  "status": "VISUAL_ONLY_AUTHOR_FREEZE_PENDING_INDEPENDENT_SOURCE_AND_RUNTIME_ADOPTION",
+  "revision": "c10-r7-teaser-image-plan-v1",
+  "scope": "Only the listed still prompts/cameras and author visual projections changed. Every approved narrative field and all localized bytes stay unchanged. Historical source PASS belongs to its frozen baseline; new independent source/written-visual check and controlled runtime adoption remain pending.",
+  "baseline_snapshot": "history/before-teaser-image-plan",
+  "freeze": "teaser-visual-plan-freeze.json",
+  "image_reuse_plan": "image-reuse-plan.json",
+  "core_four_sha256": {
+    "video.json": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f",
+    "script.md": "91719c5b7d3915393a97d5681256973927cc312e4e1b961d6247b9c68ca76c48",
     "narration-only.json": "c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c",
-    "claims.json": "8ccc4bacc1b03163caa0ec069b476262e0d6093012dfbab72b50332b3f708fcc"
+    "claims.json": "e76dd9ef35d4eacbf79b8c7b5a81ccd1f2cafae595da064fa0b7230f64c364b3"
   },
-  "r6_input_sha256": {
-    "video.json": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
-    "script.md": "ceb94ccb7093aced9a55f30b365de4ae591d3ef309c93446b15492d5dc66b026",
-    "narration-only.json": "16a6bc35c347d4f300f1861b934799fd52438527565befcd64c906aa53b4aa40",
-    "claims.json": "df84a6221e8b8e4decd68f34dbc19ba2370cd8199291dd7fda0e6b13333cccb5"
-  },
-  "delta_from_r6": {
-    "changed_narration": [
-      {
-        "id": "c10v5s04",
-        "before": "削皮器用鏈條拴在碗上，讓走進店裡的人直接試。",
-        "after": "開場預告的黑柄試用，就在這裡：削皮器用鏈條拴在胡蘿蔔碗上，讓進店的人伸手試。"
-      },
-      {
-        "id": "c10l20",
-        "before": "如果是你，會替家裡哪件小工具換掉握的地方？留言告訴我，卡住的是哪個動作。",
-        "after": "也請你留言分享，想替家裡哪件小工具換個握柄，以及最卡手的那個動作。"
-      }
-    ],
-    "added_narration": [],
-    "deleted_narration": [],
-    "changed_emotion": [
-      {
-        "id": "c10l20",
-        "before": "好奇上揚，不拉長停頓",
-        "after": "自然邀請觀眾分享，不上揚追問，不拉長停頓"
-      }
-    ],
-    "other_116_narration_and_claim_objects_unchanged": true,
-    "opening_nine_scenes_unchanged": true,
-    "r6_o11_and_its_answer_unchanged": true,
-    "scene_order_and_chapter_markers_unchanged": true,
-    "all_prompts_cameras_and_other_scene_data_unchanged": true,
-    "all_27_loops_unchanged": true,
-    "series_context_byte_identical": true,
-    "net_whole_units_planning": 12
-  },
-  "narration_plan": {
-    "total": 2670,
-    "duration_body_including_cold_open_and_voiced_cta": 2670,
-    "opening": 164,
-    "body_after_opening": 2506,
-    "outro_narration": 84,
-    "body_without_opening_and_outro": 2422
-  },
-  "duration_body_definition": "Whole unbranded narration includes cold open and voiced CTA; only added formal 5s intro / 21s outro excluded. after-opening/strict are auxiliary planning breakdowns.",
-  "planning_note": "rough3500不填長；實聲720–840秒及需補多少未知，原生估時不能當時長PASS或已知不足。",
-  "actual_narration_seconds": null,
-  "actual_required_extra_units": null,
-  "native_mechanical": {
-    "scope": "R7 author native mechanical preflight only; no independent source, narrative, visual, audio, media or owner verdict",
-    "context": {
-      "root": "/workspace/work/brand-story-20261025/c10-submission-root",
-      "canonical_video_sha256": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
-      "initialized_dictionary_terms": 308,
-      "initialized_dictionary_value_sha256": "5a09fb589cbd3c34f06873ebb6071df142434ebf963443da4e7592a38c0d6c75",
-      "shelf_dictionary_value_sha256": "5a09fb589cbd3c34f06873ebb6071df142434ebf963443da4e7592a38c0d6c75"
-    },
-    "source_video_sha256": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
-    "brief_sha256": "1859a71b20a2245cc74ea31945b745e65a289389789db002f434bd8512f6841f",
-    "series_sha256": "f18da6d7eb2b70718ff0c2fd0d9fed6ecd015f7b41921041b167832c4118f41a",
-    "runtime_script_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
-    "lint": {
-      "errors": [],
-      "warnings": [
-        {
-          "path": "scenes",
-          "message": "\"handle\" is in 47 of 115 pictures (a third is plenty): give each chapter its own place and props so the video travels"
-        },
-        {
-          "path": "scenes",
-          "message": "\"peeler\" is in 44 of 115 pictures (a third is plenty): give each chapter its own place and props so the video travels"
-        }
-      ],
-      "summary": {
-        "minutes": 12.662222222222223,
-        "lines": 118,
-        "spoken_units": 2670,
-        "billable_characters": 9230,
-        "chapters": [
-          "00:00 開場：先握住這支刀",
-          "00:48 一塊黏土接上手",
-          "03:30 手指繞回來，方向留下來",
-          "05:29 指腹壓下，鰭片跟著變形",
-          "07:17 接上刀片，交出樣品",
-          "10:11 拿去試，再交到下一雙手"
-        ]
-      }
-    },
-    "cadence_warning_count": 0,
-    "native_units": {
-      "total": 2670,
-      "duration_body_including_cold_open_and_voiced_cta": 2670,
-      "opening": 164,
-      "body_after_opening": 2506,
-      "outro_narration": 84,
-      "body_without_opening_and_outro": 2422
-    },
-    "lines": 118,
-    "scenes": 116,
-    "illustration_scenes": 115,
-    "maximum_estimated_shot_seconds": 9.4,
-    "estimated_total_seconds": 759.7333333333333,
-    "chapter_viewer_counts": [
-      {
-        "chapter": "開場：先握住這支刀",
-        "you": 3,
-        "i": 1
-      },
-      {
-        "chapter": "一塊黏土接上手",
-        "you": 5,
-        "i": 1
-      },
-      {
-        "chapter": "手指繞回來，方向留下來",
-        "you": 8,
-        "i": 2
-      },
-      {
-        "chapter": "指腹壓下，鰭片跟著變形",
-        "you": 4,
-        "i": 1
-      },
-      {
-        "chapter": "接上刀片，交出樣品",
-        "you": 5,
-        "i": 2
-      },
-      {
-        "chapter": "拿去試，再交到下一雙手",
-        "you": 4,
-        "i": 2
-      }
-    ],
-    "author_loop_plan": {
-      "entries": 27,
-      "distinct_payoffs": 25,
-      "maximum_gap_units": 203,
-      "maximum_gap_seconds_at_4_5_units": 45.111111111111114,
-      "independent_narrative_verdict": false
-    },
-    "exact_native_story_voice": true,
-    "actual_timing_verified": false,
-    "provider_calls": 0,
-    "backend_writes": 0
-  },
-  "native_lint_receipt_sha256": "e3971a4ce955a9aaa5a5d9da580b533dda5aed55df515898d26118ff99abc8a9",
-  "protected_files": {
-    "count": 236,
-    "all_unchanged": true,
-    "manifest_path": "/workspace/work/brand-story-20261025/c10-audit/r7-protected-before.json",
-    "manifest_sha256": "ff7946c639dfa63d2ef60d4beb8dc05801d515ac2dc1dbd172de3c5dc9f88e21"
-  },
-  "runtime": {
-    "c10_only_offline_preparation": true,
-    "source_equals_runtime": true,
-    "immutable_dictionary_changed": false,
-    "current_verify_absent": true,
-    "approvals_created": 0
-  },
-  "independent_source_pass": false,
-  "independent_visual_pass": false,
-  "native_narrative_pass": false,
-  "verify_written": false,
-  "owner_approval": false,
-  "actual_panel_round_next": 6,
-  "actual_panel_audit_name": "round-6-r7",
-  "last_actual_panel": "R6 actual panel5, archived history/r6",
-  "source_or_media_eligibility": false,
-  "translations_created": false,
-  "provider_calls": 0,
-  "backend_writes": 0,
+  "canonical_script_sha256": "1fa2d25a0161b8ed0e4638fbaf8d982cc1dbf5717e9300cd2d121e43b0a29082",
+  "official_canonical_unchanged": true,
+  "narrative_hash_unchanged": true,
+  "owner_approval_created": false,
   "generated_media": 0,
-  "git_actions": 0
+  "paid_requests": 0
 }

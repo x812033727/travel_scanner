@@ -1,0 +1,84 @@
+{
+  "source_video_sha256": "aed9598125cfe5fa754c53bfd62ed4672e95a30d347527b2778870111daffcd6",
+  "reviewer": "/root/c06_translate_ko_es",
+  "independent": true,
+  "role_disclosure": "wrote EN/JA not PT/ID",
+  "reviewed_at": "2026-10-25T20:40:12.968658+00:00",
+  "scope": "Targeted recheck of the two required fixes and adjacent clauses only; unchanged full text is not resampled. No actual audio, time-fit, SRT or media QA.",
+  "previous_review_sha256": "55d68f9b145f5e54db0caf8d5531935861ab7b6c0ea1a0fbc821721e20b1efce",
+  "applied_fixes_sha256": "8d0259803378e78e22231175f6624d9d85aeb31531b4bdf3de9b4b749a4e6810",
+  "locales": [
+    {
+      "locale": "pt",
+      "worksheet_sha256": "eb3e7cbe8b6d271a25700b00879d6a845454d475d39cd0b9c03b84f91eb57f01",
+      "translation_sha256": "ac318d120ab49c42d987e9bfe392d28f650a4de279f72d2b447d1be33b1fc595",
+      "status": "TEXT_PASS",
+      "checked_fix_targets": [
+        "lines.c09r5079"
+      ],
+      "adjacent_caption_line_ids": [
+        "c09r5078",
+        "c09r5079",
+        "c09r5080"
+      ],
+      "checks": [
+        {
+          "target": "lines.c09r5079",
+          "status": "RESOLVED",
+          "worksheet_and_native_current": "Ele convenceu outro parceiro a tentar, e escalaram da manhã ao pôr do sol; evitaram os pitons fixos, mas ainda usaram os pontos de ancoragem com parafusos que já estavam instalados.",
+          "evidence": "既有bolts錨點仍與固定pitons分開，未再指定膨脹機構；相鄰仍保留少一把錘子的代價與用錘誘惑的敘事。"
+        }
+      ],
+      "before_snapshot_hashes_match_original_review": true,
+      "only_required_text_changes_in_worksheet_and_native": true,
+      "metadata_and_protected_source_fields_unchanged": true,
+      "previous_full_review_lines": 103,
+      "previous_full_review_chapters": 6,
+      "findings": [],
+      "advisory": [
+        "其餘巴西葡語用法可接受：entaladores、estribo、enfiada均保留攀登語境，未把nut誤當食物；不因BR／PT詞彙差異要求修改。",
+        "非必修：c09r5051的a peça可明確寫成o piton，以減少與前半entalador的銜接歧義；現在以被省去的錘擊過程仍可理解。",
+        "1973事件／1974發表／1977另一採訪發表已在說明分清；同年秋天的相對年可選擇明寫1973，但未發現實際年份誤譯。"
+      ],
+      "actual_audio_measured": false,
+      "actual_time_fit_verified": false,
+      "paid_calls": 0
+    },
+    {
+      "locale": "id",
+      "worksheet_sha256": "acf269f079f2de323c04612582741b878e4ffa83195c634e9ce6f3a2ee8a47e5",
+      "translation_sha256": "625055a7e2a4273d0ac283e5421e71e85c2cc8df8c7efb690d44dfa210f411a1",
+      "status": "TEXT_PASS",
+      "checked_fix_targets": [
+        "lines.c09r5051"
+      ],
+      "adjacent_caption_line_ids": [
+        "c09r5050",
+        "c09r5051",
+        "c09r5052"
+      ],
+      "checks": [
+        {
+          "target": "lines.c09r5051",
+          "status": "RESOLVED",
+          "worksheet_and_native_current": "Chock tersangkut di celah karena bentuknya dan biasanya bisa dilepas kembali; yang dikurangi adalah proses memukul piton masuk dengan palu, lalu memukulnya lagi untuk melepasnya.",
+          "evidence": "敲入對象明寫piton，後接memukulnya承接同一piton；前半chock靠形狀嵌住且通常可取回不變，兩側仍是舊螺帽／少敲的新選擇。"
+        }
+      ],
+      "before_snapshot_hashes_match_original_review": true,
+      "only_required_text_changes_in_worksheet_and_native": true,
+      "metadata_and_protected_source_fields_unchanged": true,
+      "previous_full_review_lines": 103,
+      "previous_full_review_chapters": 6,
+      "findings": [],
+      "advisory": [
+        "pemanjatan bersih與artifisial分開，且保留繩索、其他裝備和既有螺栓，沒有譯成free solo或無繩攀登；mur logam也沒有食物含義。",
+        "非必修：memasuki rute、membuat satu kelompok piton等搭配可再口語化，但目前可理解，沒有造成事實退化，不列必要修正。",
+        "1973事件／1974發表／1977另一採訪發表已在說明分清；同年秋天的相對年可選擇明寫1973，但未發現實際年份誤譯。"
+      ],
+      "actual_audio_measured": false,
+      "actual_time_fit_verified": false,
+      "paid_calls": 0
+    }
+  ]
+}

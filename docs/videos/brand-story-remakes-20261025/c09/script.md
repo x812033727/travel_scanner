@@ -324,3 +324,15 @@
 
 [c09r5112] 想看熟悉品牌的主張，怎麼經得起實際使用，歡迎訂閱這個頻道。
 來源：S8；結尾答案或觀眾問題；所依據攀登過程見原始第一人稱記錄，非額外史實。
+
+## 開場共圖製作註解（非旁白、非實圖驗收）
+
+本段只記錄素材規劃，不加入有聲劇本。所有旁白、scene／line IDs、章序、情緒、loops與metadata均不變。現有來源PASS只屬封存輸入，新圖像prompt／camera須由獨立來源與書面分鏡查核。
+
+- `c09r5-shot-006` ↔ `c09r5-shot-088`：同一張已驗still，兩端同prompt與camera。
+  - English prompt: Medium shot on a plain granite ledge below a tall rock wall, an anonymous climber resting a closed plain gear bag beside a coiled rope, diffuse daylight.
+  - Camera: tilt up
+  - Boundaries: Retains the existing first-person 1974 publication about the 1973 climb and the separate clean-climbing source boundaries; no new historical action, location precision, person likeness or claim about one preserved physical bag.
+  - Opening: The closed gear bag conceals its contents. The neutral cliff context does not show pitons, chocks, a hammerless result, route completion or a named climber. The body narration supplies the factual answer; this is an anonymous conceptual context, not a claimed historical photograph.
+
+實檔尚不存在；詳見 `image-reuse-plan.json`。正式操作前先核既有payoff快取與實檔SHA，快取缺失就停，不能用第二次派送當快取探測。兩端仍各需judge，任何retake／裁切後須再核最終manifest與實檔SHA完全相同。不得以兩張近似圖代替同一資產。

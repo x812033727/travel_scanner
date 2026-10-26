@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "state": "REAL_APPROVAL_READBACK_AND_NORMAL_IMPORT_ONLY",
+  "performed_at": "2026-10-26T01:28:35.980Z",
+  "id": "c08",
+  "source_video_sha256": "db15e970a5e64715744760c3ef6ecc7c868ee132170bd09a6751dd35bf7c7895",
+  "canonical_script_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+  "visual_adoption_receipt_frozen_sha256": "309e7f30e08e9829c6e8448965386b02ef0aa63870550081c1d43a10ba3e6cae",
+  "visual_adoption_approval_sha256_before_and_after": null,
+  "approval_file_exists_now": true,
+  "approval_file_sha256_now": "cd073ec28f47c9f53fde65c6341d192ec8c51cd0393510a3f90bb19452106798",
+  "steps": [
+    {
+      "gate": "script",
+      "state": "IMPORTED",
+      "receipt": "script-approval-import.json",
+      "review_id": "3135f5d6-47d2-4496-a36f-4dc0a1ca8258",
+      "content_sha256": "0d354c54fd581d5c76af1f27ebf0e47c146a68b768ddfbb67c7ac973dae70e5b",
+      "review_decided_at": "2026-10-26T00:07:52.484229Z",
+      "approval_before_sha256": null,
+      "approval_after_sha256": "d5e059cff39d5bab0d9a81bf41be2c0ea11073135fcc5489b570adbc6106652d"
+    },
+    {
+      "gate": "outline",
+      "state": "IMPORTED",
+      "receipt": "outline-approval-import.json",
+      "review_id": "294c49b6-b310-426e-8422-a64827717bff",
+      "content_sha256": "b53c5a7952ce7a5fe4d8d3db591bd8b854267a033f81d58506d4ff96909dcde1",
+      "review_decided_at": "2026-10-26T00:07:52.345052Z",
+      "approval_before_sha256": "d5e059cff39d5bab0d9a81bf41be2c0ea11073135fcc5489b570adbc6106652d",
+      "approval_after_sha256": "cd073ec28f47c9f53fde65c6341d192ec8c51cd0393510a3f90bb19452106798"
+    }
+  ],
+  "backend_category_before": "story",
+  "backend_category_after": "story",
+  "backend_locales": {},
+  "locales_decided_at": null,
+  "remote_reviews_unchanged": true,
+  "backend_language_choice_and_decision_time_unchanged": true,
+  "existing_translation_and_dictionary_bytes_unchanged": true,
+  "new_owner_decisions_written": 0,
+  "new_reviews_submitted": 0,
+  "actual_media": 0,
+  "paid_calls": 0
+}

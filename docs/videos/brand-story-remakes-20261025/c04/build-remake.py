@@ -136,6 +136,13 @@ for c in claim_rows:
         c["scene"] = "c04r-outro"
 doc["scenes"] = scenes
 
+# Prompt/camera-only teaser image plan; narrative and all scene IDs remain frozen.
+TEASER_IMAGE_OVERRIDES = {'c04r-h05': {'prompt': 'Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.', 'camera': 'tilt up'}, 'c04r-e07': {'prompt': 'Close-up at a workbench, one anonymous technician holding the overlapping edges of two plain translucent films together beside a raised-cell sample, soft side light.', 'camera': 'tilt up'}}
+for _scene in doc['scenes']:
+    if _scene['id'] in TEASER_IMAGE_OVERRIDES:
+        _scene['data'].update(TEASER_IMAGE_OVERRIDES[_scene['id']])
+
+
 loops = [("H01", "N15", "觀眾寄件時兩張薄膜怎麼承擔保護貨物的工作"), ("H03", "O01", "氣室最初在牆面設計中擔任什麼工作"), ("H05", "E07", "兩張膜的接縫如何換一種做法")]
 loops += [("I03","I05","隔熱點子如何由公司回顧轉向易碎物緩衝"), ("T04","T06","熱薄膜變皺時如何整齊送進凹槽")]
 for item in source["loops"]:
@@ -175,6 +182,7 @@ for row in narrative:
 claims = ["# C04 新版逐句來源映射（待獨立覆核）", "", "這是作者的查核待辦，不是 PASS 收據。原來源閱讀日期為 2026-10-22；本次沒有冒稱重新閱讀所有原件。", "", "原件與段落定位：`../../story-everyday-bubble-wrap-c04/source-matrix.md` 和 `verify-1.md`。新稿不可沿用舊稿的 PASS。", "", "| 句 ID | 旁白 | 來源／界線 | 狀態 |", "| --- | --- | --- | --- |"]
 for row in claim_rows:
     claims.append(f"| {row['line']} | {row['text']} | {row['supports']} | PENDING |")
+claims += ['', '## 開場預告共圖（作者製片規劃，待獨立覆核）', '', '此節只規劃兩端共用同一張已驗收實圖。旁白、ID、scene順序、loops及原件主張未改；尚無實圖、實際共用SHA、來源新PASS或媒體驗收。具體request/key與停止條件見 `image-reuse-plan.json`。', '', '| 配對 | 預告scene／line | 回收章共圖scene／line | 未提前揭示結果的中性內容 |', '| --- | --- | --- | --- |', '| two-film-seam | c04r-h05／c04rh051 | c04r-e07／c04re071 | Two overlapping films and a raised-cell sample show the joint being handled, without drawing heat, a melted seam, machinery settings or the later solution. |', '', '同prompt/camera只是可執行的快取規劃。正式製片仍需有效全片帳戶與各既有關卡，先生成並驗收回收景單一take；預告指令前查live cache及實檔SHA，cache miss不得直接派送另一張圖。兩端仍各自通過judge；retake、修圖或裁切改了任一實檔則停止配對共同重查。最終manifest、實檔與組片引用SHA相同後才可記實際共圖通過。', '']
 (DEST / "claims.md").write_text("\n".join(claims)+"\n")
 
 brief = """# C04 泡泡紙｜10-25 新規則重製候選

@@ -1,4 +1,4 @@
-# C15 R2｜一筆修改留下了什麼
+# C15 R5｜一筆修改留下了什麼
 
 狀態：HOLD。全新remake slug、category story、video不帶series，不沿用原集核准。新稿須另一位逐句來源／書面配鏡查核及兩位新讀者。
 
@@ -18,9 +18,9 @@
 
 每次往前都有真動作或結果：等乾再擦、原位重寫、記憶型維持色態、膜變薄與溶劑相容、變透明提案、五百公斤量產與墨水分離、顧客親手體驗、低溫新舊回色。沒有玩具／產品型號／銷量清單、文件災難或犯罪戲，也不拿警語撐長。每章保留觀眾位置與作者反應。
 
-## R2兩項必修與保全
+## R5材料到量產的章節銜接
 
-R1已完整封存history/r1，包括core、凍結研究指紋、作者freeze、source HOLD和prepared-only native payload。R1從未有SOURCE PASS、verify、native票或owner批准。R2只把c15a02c1改為原廠側欄歸屬；h04拆成兩句/兩景，分別逐字共用d03/e04的prompt與camera，避免相同提示詞卻不同camera造成另一個cache key。image-reuse-plan.json是書面配鏡與未執行製片配方，不是keyframes manifest或新增schema欄位。正式入場後先生成payoff，只有該原圖通過才讓teaser以同輸入cache重用；若失敗或請求有變就停止成對修正，不買兩張相似圖或人工抄manifest。實際共用檔SHA仍待後續驗。
+R4全core、source PASS a5272971…、verify764ac94e…、actualnative2共享chapters_link/no_recap HOLD、plan及freeze完整封存history/r4，current/runtime舊verify已移除。R5把c17改成小燒杯成果走向大量製造時要守住什麼，並移到c18/c19真實溫域結果之後；d01以原廠回顧的2004專案及同品質大量製造直接回答，d02再窄問膠囊量，由d03的500kg回答。b12刪當代功能重說，只問早期記憶型的歷史溫差；c18增加原件已載的日常溫差需求以銜接。其餘74句、全部存留來源數字/界線、開場、prompt、camera與共圖pair原樣。R3完整core、source HOLD f5a0dc1a…、共圖plan及freeze已封存history/r3；R3未verify、未actual2盲評。R4只改b12：今日觀眾的無色修改需求與早期記憶型溫差提問分開，不把1988材料成果鎖成為當代草稿消字的研發目的，也不反向宣稱早年從未追求消字筆。其餘78句、數字、順序、prompt、camera、共圖pair及新事實完全保留。R2完整core、來源PASS、verify、actualpanel1的one_line/no_recap HOLD、共圖plan及freeze均封存history/r2，舊verify已從current/runtime移除，不沿用舊PASS。R3移除1970秋天／紅葉／紙杯獨立倒敘段，以紙上舊線的修改需求直接引到調整劑分界難題與原廠記錄的改造；1988只作相關材料階段的短歸屬。b11同室溫重述刪除，a06不獨立重講熱傳；無消字屑的獨有結果合入第一次摩擦消色a04。另刪已說過的原理、橋句與小結，尺寸、膜強度、相容性、千種化合物、透明化、五百公斤及冷熱端點保留。R1完整封存history/r1且從未native評；R2把c15a02c1改為原廠側欄歸屬；h04拆成兩句/兩景，分別逐字共用d03/e04的prompt與camera，避免相同提示詞卻不同camera造成另一個cache key。image-reuse-plan.json是書面配鏡與未執行製片配方，不是keyframes manifest或新增schema欄位。正式入場後先生成payoff，只有該原圖通過才讓teaser以同輸入cache重用；若失敗或請求有變就停止成對修正，不買兩張相似圖或人工抄manifest。實際共用檔SHA仍待後續驗。
 
 ## 原件界線
 
@@ -28,7 +28,7 @@ R1已完整封存history/r1，包括core、凍結研究指紋、作者freeze、s
 
 ## 長度與語言
 
-whole narration 2879 native spokenUnits，含coldopen 179及有聲CTA 95。目標13分鐘、真正unwrapped narration720–840秒，只能實際TTS量測；規劃units與估時不作時長PASS／FAIL，不慢播、不插空白、不重述填長。八語預設en/ja/ko/es/pt/id/vi/th，尚未翻譯或套後台選項。
+whole narration 2321 native spokenUnits，含coldopen 179及有聲CTA 95。目標13分鐘、真正unwrapped narration720–840秒，只能實際TTS量測；規劃units與估時不作時長PASS／FAIL，不慢播、不插空白、不重述填長。八語預設en/ja/ko/es/pt/id/vi/th，尚未翻譯或套後台選項。
 
 ## 聲畫執行待辦
 
@@ -36,4 +36,4 @@ voice逐字複製C06的Sulafat STORY設定；正常初始化本集immutable字�
 
 ## 待查
 
-逐句來源和書面圖像語意、新盲讀、讀音、實TTS、媒體QA與owner審核均待辦。0付費、0provider、0後台mutation、0新增批准。
+R5須新逐句來源及書面圖像語意查核、actual3新盲讀；讀音、實TTS、媒體QA與owner審核均待辦。0付費、0provider、0後台mutation、0新增批准。

@@ -126,6 +126,14 @@ def main():
     assert {k:v for k,v in video.items() if k!='scenes'}=={k:v for k,v in baseline_video.items() if k!='scenes'}
     video=baseline_video
     video['scenes']=retained
+    # STORY_CATEGORY_METADATA_CORRECTION: preserve the frozen narrative while reporting this source as a brand story.
+    video['category']='story'
+
+    # Prompt/camera-only teaser image plan; narrative and all scene IDs remain frozen.
+    TEASER_IMAGE_OVERRIDES = {'c06r2-h05': {'prompt': "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.", 'camera': 'push in'}, 'c06r2-k02-p2': {'prompt': "Close-up at a classroom craft table, one child's small hands pressing a firm plain lump of modeling clay, soft window light.", 'camera': 'push in'}, 'c06r2-h06': {'prompt': 'Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.', 'camera': 'pan left'}, 'c06r2-n06': {'prompt': 'Medium shot at a home crafting table, one anonymous adult examining a small bouquet of modeled flowers beside a plain empty vase, soft window light.', 'camera': 'pan left'}}
+    for _scene in video['scenes']:
+        if _scene['id'] in TEASER_IMAGE_OVERRIDES:
+            _scene['data'].update(TEASER_IMAGE_OVERRIDES[_scene['id']])
     dump('video.json',video); dump('narration-only.json',narration)
     dump('claims.json',{'schema_version':1,'status':'AUTHOR_CANDIDATE_NOT_INDEPENDENTLY_REVIEWED','lines':claims,'written_visuals':visual,'source_catalog':'source-catalog.json','research_original':'research-original.claims.json'})
     dump('source-catalog.json',{'schema_version':1,'sources':list(SOURCES.values()),'original_sha256':hashlib.sha256((HERE/'research-original.claims.json').read_bytes()).hexdigest(),'status':'RESEARCH_RECORD_NOT_NEW_SCRIPT_APPROVAL'})
@@ -143,6 +151,7 @@ def main():
     for s in SOURCES.values(): md += [f"### {s['id']} — {s['title']}",f"{s['url']}\n\n定位：{s['locator']}。出版：{s.get('published_on') or '頁面未列初次出版日'}；查閱：{DATE}。\n\n範圍：{s['limits']}\n"]
     md += ['## 書面配鏡','', '所有 shot 均是匿名概念插圖，英文提示詞不放品牌、人名、標誌或可讀文字；不是歷史照片或專利原圖。1960 Fun Factory用匿名通用槓桿與出口示意，不畫現代兩軌特定外形；專利組成不配成1933配方，成人花藝不配成所有經典黏土的保存性能。實際出圖、視覺QA尚未成立。']
     md += ['','## 新稿使用的原件補充定位','', 'P1的顆粒薄膜／濕熱糊化段在PDF1印刷欄2，保留「專利作者認為」的解釋層級；原件claim9另寫可塑性與保留形狀。後半特性段的密閉容器、玩後放回、充分乾硬不可重塑及可上色，對應Google Patents description498–500；是文件對其組成的描述，沒有獨立性能測試。逐句的細定位及範圍另列claims.json的evidence及source-anchors.json的line_evidence。']
+    md += ['', '## 開場預告共圖（作者製片規劃，待獨立覆核）', '', '此節只規劃兩端共用同一張已驗收實圖。旁白、ID、scene順序、loops及原件主張未改；尚無實圖、實際共用SHA、來源新PASS或媒體驗收。具體request/key與停止條件見 `image-reuse-plan.json`。', '', '| 配對 | 預告scene／line | 回收章共圖scene／line | 未提前揭示結果的中性內容 |', '| --- | --- | --- | --- |', '| small-hands-firm-clay | c06r2-h05／c6sh051 | c06r2-k02-p2／c6sk022 | Anonymous small hands face the firm-clay problem, without showing a successful classroom test or identifying a historical child or teacher. |', '| modeled-bouquet-before-finishing | c06r2-h06／c6sh061 | c06r2-n06／c6sn061, c6sn062 | The bouquet is awaiting its final step; no spray bottle, spraying action or durability result is pictured. The actual finishing-spray answer scene is unchanged. |', '', '同prompt/camera只是可執行的快取規劃。正式製片仍需有效全片帳戶與各既有關卡，先生成並驗收回收景單一take；預告指令前查live cache及實檔SHA，cache miss不得直接派送另一張圖。兩端仍各自通過judge；retake、修圖或裁切改了任一實檔則停止配對共同重查。最終manifest、實檔與組片引用SHA相同後才可記實際共圖通過。', '']
     (HERE/'claims.md').write_text('\n'.join(md)+'\n')
     ch_units={title:sum(units(n['text']) for n in narration if n['chapter']==title) for _,title in CHAPTERS}
     counts={'count_method':'native spokenUnits-compatible estimate, not measured audio','spoken_units_total':sum(ch_units.values()),'spoken_units_cold_open':ch_units[CHAPTERS[0][1]],'spoken_units_body':sum(ch_units.values())-ch_units[CHAPTERS[0][1]],'chapters':ch_units,'lines':len(narration),'scenes':len(scenes),'shot_scenes':len(visual),'outro_scenes':1,'loops_authored':len(video['loops']),'body_estimated_seconds_at_4_5_units_per_second':round((sum(ch_units.values())-ch_units[CHAPTERS[0][1]])/4.5,1)}

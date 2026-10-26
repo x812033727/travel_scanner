@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "episode": "C07 Dr. Martens remake R8",
-  "status": "AUTHOR_CANDIDATE_HOLD_PENDING_DIFFERENT_SOURCE_REVIEWER_AND_TWO_FRESH_READERS",
+  "episode": "C07 Dr. Martens remake R10",
+  "status": "AUTHOR_CANDIDATE_PENDING_NEW_INDEPENDENT_SOURCE_AND_VISUAL_QA",
   "research_original_sha256": {
     "research-original.md": "d419cafb1e1582dea16030ddfa52fce39d192733af1e9cd1e7acc1e3ece7b6c0",
     "research-original.claims.json": "dadcea4ca21ff9e12a0edb8128a6bf2da7f5bf38700c70e6ca1efb6f9518fb1e"
@@ -39,7 +39,7 @@
     "sha256": "c51653095967062b227f6493e06ddb7e3ea44126099f677479af898ba1c67cb3"
   },
   "historical_pass_not_inherited": true,
-  "author_role_disclosure": "R8 author edit only, not an independent source, visual or native panel verdict. Different source reviewer and two fresh readers required.",
+  "author_role_disclosure": "R10 minimal author edit only; no independent source/visual/native self-review or owner approval. R9 source PASS and native8 HOLD bind the old bytes only.",
   "original_inputs": [
     {
       "path": "/workspace/work/brand-remakes-source/docs/videos/story-everyday-dr-martens-c07/video.json",
@@ -967,39 +967,83 @@
       "id": "c7r20104",
       "scene": "c07r2-01-04",
       "chapter": "刀伸進了舊靴的鞋邊",
-      "text": "我想跟著它看：修理要拆到哪裡，包裹回來時，又多了什麼？",
+      "text": "我想跟著它看：修理要拆到哪裡？",
       "source_ids": [
         "T7_repairs_resole",
-        "R2_CUSTOMER_6870"
+        "R2_REPAIR_VIDEO"
       ],
       "evidence": [
         {
           "source_id": "T7_repairs_resole",
           "anchor_id": "T7_repairs_resole-r5",
-          "locator": "teardown scope; laces surprise withheld",
+          "locator": "Authorised service lists removal of old sole, welt and stitching; separate demonstration 5–6s shows inverted boot and knife moving along upper outsole edge. Component list is from the page, not a claim that each component is separately identifiable in the film; not the public reviewer’s physical pair.",
           "url": "https://drmartensrepairs.com/collections/welted-footwear-repairs/products/resole-and-welt-classic-dms-sole-per-pair",
           "raw_sha256": "96bf02e38a6214615de13b38a3dd6b0c0fa8ffa234286e8787274df44803a8ec",
           "evidence_level": "authorised_service_partner_current_account"
         },
         {
+          "source_id": "R2_REPAIR_VIDEO",
+          "anchor_id": "R2_REPAIR_VIDEO-r5",
+          "locator": "Authorised service lists removal of old sole, welt and stitching; separate demonstration 5–6s shows inverted boot and knife moving along upper outsole edge. Component list is from the page, not a claim that each component is separately identifiable in the film; not the public reviewer’s physical pair.",
+          "url": "https://drmartensrepairs.com/pages/how-it-works",
+          "raw_sha256": "f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74",
+          "evidence_level": "authorised_partner_original_demonstration_video"
+        }
+      ],
+      "narrative_mode": [
+        "viewer teaser question; different authorised demonstration context, not proof of the public commenter physical boot"
+      ],
+      "status": "PENDING_NEW_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
+      "written_visual": {
+        "scene": "c07r2-01-04",
+        "prompt": "Overhead view at a repair workbench, anonymous hands holding a plain knife just above the upper edge of a worn boot sole, soft daylight from the left.",
+        "mode": "anonymous concept, not real customer or historical reconstruction",
+        "review_state": "NOT_REVIEWED"
+      },
+      "planned_same_image": {
+        "plan": "image-reuse-plan.json",
+        "asset_plan_id": "knife-before-cut-shared-still",
+        "source_scene_id": "c07r2-03-01",
+        "reuse_scene_id": "c07r2-01-04",
+        "actual_file_sha256": null,
+        "status": "PLAN_ONLY"
+      }
+    },
+    {
+      "id": "c7h04b1",
+      "scene": "c07r9-01-04b",
+      "chapter": "刀伸進了舊靴的鞋邊",
+      "text": "包裹回來時，又多了什麼？",
+      "source_ids": [
+        "R2_CUSTOMER_6870"
+      ],
+      "evidence": [
+        {
           "source_id": "R2_CUSTOMER_6870",
           "anchor_id": "R2_CUSTOMER_6870-r5",
-          "locator": "teardown scope; laces surprise withheld",
+          "locator": "Review mentions added new pair of laces and appreciation; no observed discovery order.",
           "url": "https://uk.trustpilot.com/reviews/6870ffa65d1e329686a3886f",
           "raw_sha256": "c0e94d73e20c01919bb8cb93e2a9911fe873ca615ec452b6495101928c490694",
           "evidence_level": "attributed_public_first_person_account"
         }
       ],
       "narrative_mode": [
-        "attributed_customer_self_report_or_commentary; not independently verified",
-        "viewpoint_or_viewer_question; no firsthand repair or invented historical psychology"
+        "viewer teaser question; unverified July public account; neutral closed parcel with surprise contents withheld; no invented unboxing sequence"
       ],
       "status": "PENDING_NEW_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "written_visual": {
-        "scene": "c07r2-01-04",
-        "prompt": "Low angle close-up at a simple packing table, one anonymous adult studying an idle shoe-joining machine beside a closed parcel, mild window light from behind the camera.",
+        "scene": "c07r9-01-04b",
+        "prompt": "Overhead view at a plain parcel table, anonymous hands resting beside a closed unmarked shoebox, soft daylight from the left.",
         "mode": "anonymous concept, not real customer or historical reconstruction",
         "review_state": "NOT_REVIEWED"
+      },
+      "planned_same_image": {
+        "plan": "image-reuse-plan.json",
+        "asset_plan_id": "return-parcel-shared-still",
+        "source_scene_id": "c07r2-06-08",
+        "reuse_scene_id": "c07r9-01-04b",
+        "actual_file_sha256": null,
+        "status": "PLAN_ONLY"
       }
     },
     {
@@ -1661,9 +1705,17 @@
       "status": "PENDING_NEW_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "written_visual": {
         "scene": "c07r2-03-01",
-        "prompt": "Overhead view at a repair workbench, one anonymous adult guiding a plain knife along the upper edge of an old outsole, soft daylight from the left.",
+        "prompt": "Overhead view at a repair workbench, anonymous hands holding a plain knife just above the upper edge of a worn boot sole, soft daylight from the left.",
         "mode": "anonymous concept, not real customer or historical reconstruction",
         "review_state": "NOT_REVIEWED"
+      },
+      "planned_same_image": {
+        "plan": "image-reuse-plan.json",
+        "asset_plan_id": "knife-before-cut-shared-still",
+        "source_scene_id": "c07r2-03-01",
+        "reuse_scene_id": "c07r2-01-04",
+        "actual_file_sha256": null,
+        "status": "PLAN_ONLY"
       }
     },
     {
@@ -1814,39 +1866,10 @@
       }
     },
     {
-      "id": "c7r20309",
-      "scene": "c07r2-03-09",
-      "chapter": "舊底拆走，新線繞上鞋面",
-      "text": "下方要重新接合，上方仍維持著鞋的形狀；接著，這個留下來的部分才被送向機針。",
-      "source_ids": [
-        "R2_REPAIR_VIDEO"
-      ],
-      "evidence": [
-        {
-          "source_id": "R2_REPAIR_VIDEO",
-          "anchor_id": "R2_REPAIR_VIDEO-r5",
-          "locator": "7.5–8s transition, retained upper oriented toward sewing machine",
-          "url": "https://drmartensrepairs.com/pages/how-it-works",
-          "raw_sha256": "f5a6acd16fed47470947b6f19f47ad582dda14615324cd598197a31d2c891c74",
-          "evidence_level": "authorised_partner_original_demonstration_video"
-        }
-      ],
-      "narrative_mode": [
-        "separate authorised demonstration observation; not reviewer documented pair"
-      ],
-      "status": "PENDING_NEW_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "written_visual": {
-        "scene": "c07r2-03-09",
-        "prompt": "Close-up at a repair workbench, one anonymous adult moving a retained boot upper toward an idle stitching machine, soft daylight from the left.",
-        "mode": "anonymous concept, not real customer or historical reconstruction",
-        "review_state": "NOT_REVIEWED"
-      }
-    },
-    {
       "id": "c7r20310",
       "scene": "c07r2-03-10",
       "chapter": "舊底拆走，新線繞上鞋面",
-      "text": "可是舊底都拿走了，新底要直接縫到這層皮上嗎？",
+      "text": "新外底要直接縫到鞋面上嗎？",
       "source_ids": [
         "T3_plc_product"
       ],
@@ -3197,9 +3220,17 @@
       "status": "PENDING_NEW_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "written_visual": {
         "scene": "c07r2-06-08",
-        "prompt": "Overhead view at a simple parcel table, one anonymous adult lifting a new pair of plain laces from a shoebox, a gentle work lamp from the right.",
+        "prompt": "Overhead view at a plain parcel table, anonymous hands resting beside a closed unmarked shoebox, soft daylight from the left.",
         "mode": "anonymous concept, not real customer or historical reconstruction",
         "review_state": "NOT_REVIEWED"
+      },
+      "planned_same_image": {
+        "plan": "image-reuse-plan.json",
+        "asset_plan_id": "return-parcel-shared-still",
+        "source_scene_id": "c07r2-06-08",
+        "reuse_scene_id": "c07r9-01-04b",
+        "actual_file_sha256": null,
+        "status": "PLAN_ONLY"
       }
     },
     {
@@ -3607,5 +3638,69 @@
     "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/verify-1.md",
     "bytes": 29029,
     "sha256": "353f886c686c0dd1c5cbb1972355138d56d818efdede94eacf565611011ef312"
+  },
+  "r8_binding": {
+    "video.json": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r8/video.json",
+      "bytes": 56458,
+      "sha256": "037f7a673481337e6d0bf0c591e7b37b8443b0b1e82216722f9ee5c528b84262"
+    },
+    "script.md": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r8/script.md",
+      "bytes": 11191,
+      "sha256": "b9df40b98cd53582674445f2490d363cfbab73125251c9eaef658ff0b834a5b3"
+    },
+    "narration-only.json": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r8/narration-only.json",
+      "bytes": 14197,
+      "sha256": "e6717dd0018a4d7cc9c5dadf0736190d14b3440da4647cea5f01d459020ce148"
+    },
+    "claims.json": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r8/claims.json",
+      "bytes": 166426,
+      "sha256": "5d66f2ce62d61dade5e9ecdbaa90170671eef5fcab74f94a74111c6ba2583b90"
+    }
+  },
+  "r8_review_state": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r8/review-state.json",
+    "bytes": 511,
+    "sha256": "6da6c75ebf0cc3ad98e20746ea41af13b294e88b64d78cedade29453dee5ff0e"
+  },
+  "r9_binding": {
+    "video.json": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r9/video.json",
+      "bytes": 56914,
+      "sha256": "474bde4e16ee3d575e70af2d21d5ac3f98ea43aee0b1c25749be2178f90ae4ab"
+    },
+    "script.md": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r9/script.md",
+      "bytes": 11324,
+      "sha256": "0a322b76db44c978aae51f72957bb6320b9375f7e35374f1d94a4d197d89e297"
+    },
+    "narration-only.json": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r9/narration-only.json",
+      "bytes": 14293,
+      "sha256": "ff25e34df88cfb0005fd4437ef51931232a25597f26e4c8cec329d9a1d190646"
+    },
+    "claims.json": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r9/claims.json",
+      "bytes": 170585,
+      "sha256": "419c47a40e00cf36dc3ccb99ee6216b2b8940d9060c9beb70b7ff60ec1cd2704"
+    }
+  },
+  "r9_historical_source_review": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r9/reviews/source-r9-independent.json",
+    "bytes": 330169,
+    "sha256": "9ef1905a5ea2d6239171851113e233038ec113448b5ebbf77ce1f7cdeef3c74e"
+  },
+  "r9_historical_verify": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r9/verify-1.md",
+    "bytes": 29631,
+    "sha256": "a7d04302b1a363a9bc447c9f55e05e417681c02185cebdbd31877dd160a6d3d9"
+  },
+  "r9_historical_native8": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r9/reviews/narrative-r8.json",
+    "bytes": 12497,
+    "sha256": "1fea096334bc4b00938063bfdc408dd794bfd87d23b1b117b1751ada95d9baea"
   }
 }

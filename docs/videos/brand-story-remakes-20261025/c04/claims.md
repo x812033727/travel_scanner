@@ -116,3 +116,14 @@
 | c04rn151 | 還記得開頭那面牆嗎？花紋換了工作，氣室負責受壓，接縫和製程負責把這口空氣留給貨物。 | F04,F05 | PENDING |
 | c04rn161 | 如果是你，拆過最難忘的包裹時，最怕裡面哪樣東西撞壞？留言告訴我。 | editorial | PENDING |
 | c04rn171 | 想繼續看日用品怎麼換工作、背後又藏著什麼設計選擇，歡迎訂閱這個頻道。 | editorial | PENDING |
+
+## 開場預告共圖（作者製片規劃，待獨立覆核）
+
+此節只規劃兩端共用同一張已驗收實圖。旁白、ID、scene順序、loops及原件主張未改；尚無實圖、實際共用SHA、來源新PASS或媒體驗收。具體request/key與停止條件見 `image-reuse-plan.json`。
+
+| 配對 | 預告scene／line | 回收章共圖scene／line | 未提前揭示結果的中性內容 |
+| --- | --- | --- | --- |
+| two-film-seam | c04r-h05／c04rh051 | c04r-e07／c04re071 | Two overlapping films and a raised-cell sample show the joint being handled, without drawing heat, a melted seam, machinery settings or the later solution. |
+
+同prompt/camera只是可執行的快取規劃。正式製片仍需有效全片帳戶與各既有關卡，先生成並驗收回收景單一take；預告指令前查live cache及實檔SHA，cache miss不得直接派送另一張圖。兩端仍各自通過judge；retake、修圖或裁切改了任一實檔則停止配對共同重查。最終manifest、實檔與組片引用SHA相同後才可記實際共圖通過。
+

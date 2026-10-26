@@ -38,7 +38,7 @@
       "what": "開場拆除範圍由授權頁與示範第一刀回答"
     },
     {
-      "setup": "c7r20104",
+      "setup": "c7h04b1",
       "payoff": "c7r20607",
       "what": "開場回程預告：包裹裡新增的鞋帶"
     },
@@ -274,14 +274,30 @@
       "id": "c07r2-01-04",
       "template": "shot",
       "data": {
-        "prompt": "Low angle close-up at a simple packing table, one anonymous adult studying an idle shoe-joining machine beside a closed parcel, mild window light from behind the camera.",
+        "prompt": "Overhead view at a repair workbench, anonymous hands holding a plain knife just above the upper edge of a worn boot sole, soft daylight from the left.",
+        "visual": "still",
+        "camera": "tilt down"
+      },
+      "lines": [
+        {
+          "id": "c7r20104",
+          "text": "我想跟著它看：修理要拆到哪裡？",
+          "emotion": "對一個人自然說書，問句輕微上揚，數字清楚，句尾收乾淨"
+        }
+      ]
+    },
+    {
+      "id": "c07r9-01-04b",
+      "template": "shot",
+      "data": {
+        "prompt": "Overhead view at a plain parcel table, anonymous hands resting beside a closed unmarked shoebox, soft daylight from the left.",
         "visual": "still",
         "camera": "pan right"
       },
       "lines": [
         {
-          "id": "c7r20104",
-          "text": "我想跟著它看：修理要拆到哪裡，包裹回來時，又多了什麼？",
+          "id": "c7h04b1",
+          "text": "包裹回來時，又多了什麼？",
           "emotion": "對一個人自然說書，問句輕微上揚，數字清楚，句尾收乾淨"
         }
       ]
@@ -589,7 +605,7 @@
       "id": "c07r2-03-01",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view at a repair workbench, one anonymous adult guiding a plain knife along the upper edge of an old outsole, soft daylight from the left.",
+        "prompt": "Overhead view at a repair workbench, anonymous hands holding a plain knife just above the upper edge of a worn boot sole, soft daylight from the left.",
         "visual": "still",
         "camera": "tilt down"
       },
@@ -681,22 +697,6 @@
       ]
     },
     {
-      "id": "c07r2-03-09",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up at a repair workbench, one anonymous adult moving a retained boot upper toward an idle stitching machine, soft daylight from the left.",
-        "visual": "still",
-        "camera": "tilt up"
-      },
-      "lines": [
-        {
-          "id": "c7r20309",
-          "text": "下方要重新接合，上方仍維持著鞋的形狀；接著，這個留下來的部分才被送向機針。",
-          "emotion": "對一個人自然說書，問句輕微上揚，數字清楚，句尾收乾淨"
-        }
-      ]
-    },
-    {
       "id": "c07r2-03-10",
       "template": "shot",
       "data": {
@@ -707,7 +707,7 @@
       "lines": [
         {
           "id": "c7r20310",
-          "text": "可是舊底都拿走了，新底要直接縫到這層皮上嗎？",
+          "text": "新外底要直接縫到鞋面上嗎？",
           "emotion": "對一個人自然說書，問句輕微上揚，數字清楚，句尾收乾淨"
         }
       ]
@@ -1377,7 +1377,7 @@
       "id": "c07r2-06-08",
       "template": "shot",
       "data": {
-        "prompt": "Overhead view at a simple parcel table, one anonymous adult lifting a new pair of plain laces from a shoebox, a gentle work lamp from the right.",
+        "prompt": "Overhead view at a plain parcel table, anonymous hands resting beside a closed unmarked shoebox, soft daylight from the left.",
         "visual": "still",
         "camera": "pan right"
       },

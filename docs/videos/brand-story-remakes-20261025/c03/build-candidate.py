@@ -296,8 +296,16 @@ loops=[
 ('n06','p19s04','銷售回升時營業結果是否同升'),
 ]
 doc=copy.deepcopy(source);doc['slug']=SLUG;doc.pop('series',None);doc['target_minutes']=[12,14];doc['subtitles']={'burn_in':True};doc['look']={'preset':'cute-mystery'}
+doc['voice']['style']='標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。'
 doc['voice']['name']='Sulafat';doc['voice']['performance']='對一位觀眾說故事，作家舊型制與現代品牌分開；通路用貨物動作說明；交易估值、收入、減損與貸款費用分開自然慢說。'
-doc['scenes']=scenes;doc['loops']=[{'setup':line_for[s],'payoff':line_for[p],'what':w} for s,p,w in loops]
+doc['scenes']=scenes
+
+# Prompt/camera-only teaser image plan; narrative and all scene IDs remain frozen.
+TEASER_IMAGE_OVERRIDES = {'c03r-h04': {'prompt': 'Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.', 'camera': 'push in'}, 'c03r-p04s02': {'prompt': 'Medium shot, one anonymous reader browsing anonymous art history volumes in a public library, soft window light.', 'camera': 'push in'}, 'c03r-h05': {'prompt': 'Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.', 'camera': 'pan right'}, 'c03r-n04': {'prompt': 'Medium shot at an office desk, one anonymous adult comparing a blank forecast folder and a plain ledger, soft window light.', 'camera': 'pan right'}}
+for _scene in doc['scenes']:
+    if _scene['id'] in TEASER_IMAGE_OVERRIDES:
+        _scene['data'].update(TEASER_IMAGE_OVERRIDES[_scene['id']])
+doc['loops']=[{'setup':line_for[s],'payoff':line_for[p],'what':w} for s,p,w in loops]
 doc['loops']=[loop for loop in doc['loops'] if loop['setup']!=loop['payoff']]
 # n02 asks and answers in distinct clauses of the same scene.
 doc['loops'].append({'setup':line_for['n02'],'payoff':next(l['id'] for scene in scenes for l in scene['lines'] if l['id'].startswith('r3n02') and l['id']!=line_for['n02']),'what':'收入小幅下降時獲利為何受到更大壓力'})
@@ -332,6 +340,7 @@ for c in claims:
 md+=['','## 原件索引','']
 for i,s in enumerate(source['sources']):md+=['- '+s['title']+'：'+s['url']]
 md+=['- S6B 2016活動報告：https://dieterengroup.imgix.net/annual-reports/3_moleskine.pdf','- S10B 2017完整年報：https://dieterengroup.imgix.net/annual-reports/annualreport2017_en_0-1.pdf']
+md += ['', '## 開場預告共圖（作者製片規劃，待獨立覆核）', '', '此節只規劃兩端共用同一張已驗收實圖。旁白、ID、scene順序、loops及原件主張未改；尚無實圖、實際共用SHA、來源新PASS或媒體驗收。具體request/key與停止條件見 `image-reuse-plan.json`。', '', '| 配對 | 預告scene／line | 回收章共圖scene／line | 未提前揭示結果的中性內容 |', '| --- | --- | --- | --- |', '| authors-old-notebook-context | c03r-h04／r3h041 | c03r-p04s02／r304021 | Anonymous library reading context depicts neither a named author nor a modern branded notebook used by historical writers. |', '| financial-remeasurement-context | c03r-h05／r3h051 | c03r-n04／r3n041 | Blank forecast folder and plain ledger do not reveal the impairment amount. The numeric stats card remains unchanged; the shared still is the actual payoff chapter context. |', '', '同prompt/camera只是可執行的快取規劃。正式製片仍需有效全片帳戶與各既有關卡，先生成並驗收回收景單一take；預告指令前查live cache及實檔SHA，cache miss不得直接派送另一張圖。兩端仍各自通過judge；retake、修圖或裁切改了任一實檔則停止配對共同重查。最終manifest、實檔與組片引用SHA相同後才可記實際共圖通過。', '']
 (DEST/'claims.md').write_text('\n'.join(md)+'\n')
 notes={'status':'UNAPPROVED_CANDIDATE','author_revision':3,'author':'/root/remake_c03','slug':SLUG,'source_video_sha256':hashlib.sha256((OLD/'video.json').read_bytes()).hexdigest(),'source_base_commit':'2b20c30d359fe5d93a4ea66f013a52fa20a35c05','reference_pr':1844,'target_minutes':13,'required_measured_narration_minutes':[12,14],'measured_audio_seconds':None,'paid_calls':0,'backend_writes':0,'approvals_created':0,'unknown_historical_claims_included':0,'source_status':'PENDING_NEW_INDEPENDENT_REVIEW','narrative_status':'NOT_SUBMITTED','reuse_status':'FRESH_PRODUCTION_WITH_OPTIONAL_HISTORICAL_PROMPT_MAP','notes':['1997-11-26 corrected to first trademark filing using prospectus section11.2, not completed registration.','All contract and outsourcing mechanisms are explicitly scoped to the 2013 prospectus; no assertion about a 2025 named customer contract.','2016 year end: 79 stores. The 2016 signed 41% stake and EUR 506m equity valuation are distinct from company sales; full acquisition completed on 2017-01-24.','2025 revenue decline and brand impairment are distinct. H1 2026 is the newer period and is compared only with the same half.','No source pass, owner approval or blind reader answers are inherited.','No old paid media is available here; the compatible prompt map does not claim actual reuse.'],'holds':['New independent per-line sources and written-visual review','New isolated narrative readers after freezing the exact version','Owner script decision, full episode quotation and production admission','Fresh canonical story lexicon initialized by root; no old project lexicon copied','Actual TTS and measured 12–14 minute narration; full media QA and owner final review']}
 write('author-notes.json',notes)

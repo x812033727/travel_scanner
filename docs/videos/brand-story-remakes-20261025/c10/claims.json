@@ -1,11 +1,11 @@
 {
   "schema_version": 1,
-  "revision": "r7",
+  "revision": "c10-r7-teaser-image-plan-v1",
   "slug": "story-everyday-oxo-c10-remake-20261025",
-  "scope": "R7 author two-line callback/CTA correction only; new independent source/written-visual and actual native panel6 pending",
+  "scope": "Visual-only teaser/shared-still plan. Existing facts and every narrative field are unchanged; independent source/written-visual review pending, not an actual asset manifest or approval.",
   "input_sha256": {
-    "video.json": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
-    "script.md": "ae93803b514aa6e0272c3563f69d10497953c24b5b0dd483ec41821603cfacb7",
+    "video.json": "637c8cce6426341d8612b2443089556cbfc2b67d415d1d726bc559999a2d307f",
+    "script.md": "91719c5b7d3915393a97d5681256973927cc312e4e1b961d6247b9c68ca76c48",
     "narration-only.json": "c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c"
   },
   "protected_research_sha256": {
@@ -948,8 +948,16 @@
       "written_visual": {
         "conceptual": true,
         "not_historical_reconstruction": true,
-        "prompt": "Macro shot of a small lump of clay beside the metal handle of an unmarked peeler, afternoon light across a pottery surface.",
-        "narration_binding": "c10h06"
+        "prompt": "Macro shot of anonymous hands poised above a small lump of clay beside an unmarked thin metal vegetable peeler on a plain workbench, soft side light.",
+        "narration_binding": "c10h06",
+        "camera": "pull back",
+        "teaser_same_asset_plan": {
+          "file": "image-reuse-plan.json",
+          "pair_id": "clay-pre-action-shared-still",
+          "setup_scene_id": "c10r1-h06",
+          "payoff_scene_id": "c10r1-o06",
+          "actual_same_asset_verified": false
+        }
       },
       "independent_verdict": "NOT_REVIEWED"
     },
@@ -978,8 +986,16 @@
       "written_visual": {
         "conceptual": true,
         "not_historical_reconstruction": true,
-        "prompt": "Medium close-up of a broad black tool handle waiting beside a bowl of carrots on a shop demonstration table.",
-        "narration_binding": "c10h07"
+        "prompt": "Close-up of an unmarked black-handled vegetable peeler linked by a short plain chain to a bowl of carrots on a shop table, an anonymous hand held just above the handle, soft indoor light.",
+        "narration_binding": "c10h07",
+        "camera": "tilt down",
+        "teaser_same_asset_plan": {
+          "file": "image-reuse-plan.json",
+          "pair_id": "shop-trial-pre-action-shared-still",
+          "setup_scene_id": "c10r1-h07",
+          "payoff_scene_id": "c10r5-s04",
+          "actual_same_asset_verified": false
+        }
       },
       "independent_verdict": "NOT_REVIEWED"
     },
@@ -1269,8 +1285,16 @@
       "written_visual": {
         "conceptual": true,
         "not_historical_reconstruction": true,
-        "prompt": "Macro shot of fingers pressing clay around the thin metal handle of an unmarked vegetable peeler.",
-        "narration_binding": "c10o06"
+        "prompt": "Macro shot of anonymous hands poised above a small lump of clay beside an unmarked thin metal vegetable peeler on a plain workbench, soft side light.",
+        "narration_binding": "c10o06",
+        "camera": "pull back",
+        "teaser_same_asset_plan": {
+          "file": "image-reuse-plan.json",
+          "pair_id": "clay-pre-action-shared-still",
+          "setup_scene_id": "c10r1-h06",
+          "payoff_scene_id": "c10r1-o06",
+          "actual_same_asset_verified": false
+        }
       },
       "independent_verdict": "NOT_REVIEWED"
     },
@@ -4319,8 +4343,16 @@
       "written_visual": {
         "conceptual": true,
         "not_historical_reconstruction": true,
-        "prompt": "Close-up: An unbranded black-handled peeler attached by a visible short chain to a bowl of carrots on a store demonstration table; an anonymous hand reaches toward the peeler.",
-        "narration_binding": "c10v5s04"
+        "prompt": "Close-up of an unmarked black-handled vegetable peeler linked by a short plain chain to a bowl of carrots on a shop table, an anonymous hand held just above the handle, soft indoor light.",
+        "narration_binding": "c10v5s04",
+        "camera": "tilt down",
+        "teaser_same_asset_plan": {
+          "file": "image-reuse-plan.json",
+          "pair_id": "shop-trial-pre-action-shared-still",
+          "setup_scene_id": "c10r1-h07",
+          "payoff_scene_id": "c10r5-s04",
+          "actual_same_asset_verified": false
+        }
       },
       "independent_verdict": "NOT_REVIEWED"
     },

@@ -1,0 +1,276 @@
+{
+  "schema_version": 1,
+  "author": "/root/approved_teaser_visual_plan",
+  "status": "HOLD_CATEGORY_ONLY_NATIVE_TEMPLATE_COMPATIBILITY",
+  "created_at": "2026-10-26T00:42:22.714057+00:00",
+  "baseline_archive": "history/teaser-plan-before-story-category",
+  "source_before_sha256": "8549eb766873b65cb3453d03edfb5c2d151a3a9209578f3383cdc321c9620a75",
+  "source_after_sha256": "4a259f650f43fac5553d0ccff60a57a98c583b564cd1f47045acab3cff795b92",
+  "allowed_video_diff": [
+    {
+      "path": "category",
+      "before": "explainer",
+      "after": "story"
+    }
+  ],
+  "reason": "The task is a brand story and normal report-only synchronizes the source category. Classifying this source as story prevents overwriting the already-correct backend category with historical explainer metadata. This changes no protected setting, budget, identity, or owner decision.",
+  "source_and_visual_PASS_issued": false,
+  "old_and_new_owner_approval_scope": "Canonical narrative hashes only; no new approval created or fabricated.",
+  "old_visual_review_preserved": {
+    "path": "history/teaser-plan-before-story-category/reviews/source-teaser-visual-independent.json",
+    "sha256": "2724e74d275abe49bb15ae43b9691982d81e7013f29f8e2a16ce21f4e312828c"
+  },
+  "old_verify_preserved": {
+    "path": "history/teaser-plan-before-story-category/verify-1.md",
+    "sha256": "df07b2780e1bee097360e602aa480d9cb68fc1a26b8a5ce86a0c3a0430dec66b"
+  },
+  "current_verify_removed_until_new_independent_recheck": true,
+  "protected_auxiliary_files_sha256": {
+    "i18n/vi.json": "3f9052ad55334fa769e873ba98b74628e9da74fe40993cbc9eeae20e59e23a91",
+    "i18n/es.json": "2e959e9d6a62c31b98fd7fd6558ead310fd49cb98e4e1af81ed10d98da8a2c32",
+    "i18n/ko.json": "c3041b17ef775208840db4ef09bccfeefd5af1859be63090a5d49e9d24bd3925",
+    "i18n/id.json": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+    "i18n/en.json": "2f4ed3cb1ed5b8d835e8b8b853bf3614433357b752459223054f4bdc58992eea",
+    "i18n/th.json": "46d144e2fd146f734a2a9170a43073f8c4445e099c918cd863e6cd63642e4c12",
+    "i18n/ja.json": "2d5d9be77cc0bb2383e8cefd840f0157cfe48183322c039de9346b13c8769b18",
+    "i18n/pt.json": "fc2b5edc362455d196710b93ccdcc39d7317e6442261370eee5537562a4f207f",
+    "i18n/preparation-status.json": "c3447ce3cec1eb6910600eac4a562d9421dff8aac02c612f971af435838dfc16",
+    "i18n/README.md": "4cb01edfbe7a6d5ef07e022c3a85bb013a94be8ef9272512c0953189f4006b90",
+    "i18n/runtime-rehearsal.json": "cd99a099622775547e6c1aeac01eef68197bad9e853c238e2f876ce4ad73d9c4",
+    "i18n/reviews/recheck-vi-th.json": "77a240f5238e6ccebcd3cb064cef6128d8b2934ea0851760ad20fb608c0cc8f7",
+    "i18n/reviews/native-merge-vi.json": "647d0cabe140f45a4865786cb78faee1a07ba1077948ce8c57f0578ec6a09825",
+    "i18n/reviews/native-merge-pt.json": "80fe80af105f0f7444041f41b6bfd6161f4aad031650d95f84f50b5f1f211901",
+    "i18n/reviews/recheck-pt-id.json": "9e3309e70b2b03bc718411696c7bef2f79cf9f695b346f61ef08c544d8ef177b",
+    "i18n/reviews/recheck-ko-es.json": "fa230a7f09a0990e5f89523aa6c4e5e727bb2b8966a9d626023e474618407ed6",
+    "i18n/reviews/review-ko-es.json": "7ae6555afea8c50642ad7c450276da944ab7520a0526edb0b690136d8fde1605",
+    "i18n/reviews/native-merge-ko.json": "2cb27b8c2feeee5345a1f77112868671a67e8362c8ba26a6a180b4c50faf7a7e",
+    "i18n/reviews/native-merge-th.json": "c0c43288e3eff9dc84a92aa5e3b830877ba5abc1e4bcf81e23e16eee161ae5a2",
+    "i18n/reviews/native-merge-es.json": "bd055c0720e5f83680ba71b9517e8a57aec2eb53558ab57c746d9740ae9bb8f2",
+    "i18n/reviews/applied-fixes-pt-id.json": "cd838b104dfa5a13ffe5a420b909f9200444e604be4dc893b55c172c518d675d",
+    "i18n/reviews/recheck-en-ja.json": "da4660ab6cee144bab20f43514f2806eda83dad219aae298b74761afa8d55227",
+    "i18n/reviews/native-merge-en.json": "bdd5881ffab0ab7ec0719157671169c88a5fa1c696c8dbdb1087226b1b481307",
+    "i18n/reviews/review-en-ja.json": "ec2fb1928557614a0eb02fb630bd3ec1bc5a336f0dbd23e3e3b2d306b59f9068",
+    "i18n/reviews/native-merge-id.json": "0b9815f2b90c16308923dc8539706270a4add83329daed30e9deb497d09dee7d",
+    "i18n/reviews/applied-fixes-ko-es.json": "66ee49fdba4651772ac9f009f61b2169a22d292c8d9f1f039580594f5d49c5b9",
+    "i18n/reviews/native-merge-ja.json": "47b77d34929af492dbcca4e37ee1a08c77455c9f7c55f583f4fb612ec19141f3",
+    "i18n/reviews/applied-fixes-en-ja.json": "2d1b578e04ae0024a5cd7550e99c80c9622f1317bf024b8f207faa0f85a91422",
+    "i18n/reviews/review-vi-th.json": "8726826fc6364c74c7f21e1a804758e1452498b35a17ce47d34651cd2025fe5a",
+    "i18n/reviews/review-pt-id.json": "9eb4d050e49f674dcf3f39464452ee673a387eac0f39934c676175cf2e07712e",
+    "i18n/reviews/applied-fixes-vi-th.json": "516fc2700bf30bd99f92a34b048aff9e6c3a837adf8958a79b973a6570c1e156",
+    "i18n/history/round-1/vi.json": "a1dbc111b38d8d29a3b6965916c5c83d3be5deadcff86eb3f3e369ac51d9e472",
+    "i18n/history/round-1/es.json": "e60f60278ec8d87571792f6a4df4df8a8eacc805e77051f65b540023b1d9d745",
+    "i18n/history/round-1/ko.json": "609ecab037fb92d7d2828959fc2054574ae60aa7e36696dfd6b2542f757e3600",
+    "i18n/history/round-1/id.json": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+    "i18n/history/round-1/en.json": "5efec8b37807696cdf3d22142cbc2ec06f9a30020fc0da446d2f8b17f4565a40",
+    "i18n/history/round-1/th.json": "b6bc0e7710e4010bd4bd798fccdb9ed7a7a11b0a81ee85a95001194d59fdc1ca",
+    "i18n/history/round-1/ja.json": "f202513d7adec1508b428cdbcc5e8986c24a6df43c50502b41d00bbf9f3b90d1",
+    "i18n/history/round-1/pt.json": "ca225a8fe541a919118c5bd7c4f003fed2b7703cddeef52904ce7417d62285b5",
+    "i18n/reviews/translator-reports/pt-id.md": "8fdf1490893db5f402f38867f9f7ff86d70700eee38b8b9a489d628b3d0b90b4",
+    "i18n/reviews/translator-reports/vi-th.md": "161237058d7984a7e0acca21705d81731136b3b859094354529992ecff70b361",
+    "i18n/reviews/translator-reports/ko-es.md": "1373a758a3b8ee80455cb57a25c4b739623b525cae5251fdc2d3998c3eeff8b6",
+    "i18n/reviews/translator-reports/en-ja.md": "03d8ce904c6cd0c5fe34a4bef4fe78c7f6d839a18054b380d94fd94bdaea2abb",
+    "runtime-lexicon/current.json": "61447bd40667c28511b1be72e49f9658fa4ad994d42faa09c2443806a2c52dc0",
+    "runtime-lexicon/versions/da52e497e0721531dfa8e8043ec8ad1b0b39992472c4bfbba1c8b654685e8580.json": "da52e497e0721531dfa8e8043ec8ad1b0b39992472c4bfbba1c8b654685e8580",
+    "runtime-lexicon/events/dce1cb13f4e12aba6f832880791b10bd372a7d70c3853eeb2e91a6649ddfb353.json": "dce1cb13f4e12aba6f832880791b10bd372a7d70c3853eeb2e91a6649ddfb353",
+    "variants/clean-master/derivation.json": "1c4d83b591827e02f935d7a038eed3efb2be78d122c37ace88b7ed8d3e04f0a8",
+    "variants/clean-master/video.json": "6abac6b8f4c37ae62327efc04fa7aa95ba5e015e08d580a385f42f0bdca1e4c8",
+    "variants/clean-master/review.json": "fb4fc995691f1dae9548760dd4c3fc076e27ed4cc9d2aa8f41c6b8c615c2c885",
+    "variants/clean-master/README.md": "d3078c99071aa009e4e944dd41230e59a973b9b760f4faaec1b3fbaa05ba47e6",
+    "variants/clean-master/lint.json": "4e219d7b4a1f6dc4eb73c75ca76e2f7ae0e2930a04c7a1a1008f09b4f0c8c70c"
+  },
+  "source_other_three_unchanged": {
+    "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+    "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+    "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a"
+  },
+  "producer_builder_sha256": "f34aea824bd7db9778f51e73d833b5938eaa75ac899246a4fcaa3b96a637bb4b",
+  "runtime_writes": 0,
+  "media_writes": 0,
+  "approval_writes": 0,
+  "backend_calls": 0,
+  "provider_calls": 0,
+  "git_actions": 0,
+  "source_four_sha256": {
+    "video.json": "4a259f650f43fac5553d0ccff60a57a98c583b564cd1f47045acab3cff795b92",
+    "script.md": "6aac163b264501ae0ea87bb2a49b874bd288632c33bacc313d5a4a3c4dda9228",
+    "narration-only.json": "b6897d452d1a2b051bcce76184a02100f8e50e4fa61a9f5fd8e3a756e8d5a8b2",
+    "claims.json": "ecac34dc628e6be94b207baab5103438ede4d42002146e8850d413e2e193f38a"
+  },
+  "plan_sha256": "9fcb947acfe2dbd4496cd9430a8bfd56be197a6e81bf2bd5365be5f59dcea6c5",
+  "author_input_sha256": "d72beee40b6a5484277542c6f3d3e4c4f0d3d62b489ab13a15f8002bdeadfa3c",
+  "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+  "screenplay_bytes_identical": true,
+  "all_narrative_objects_and_ids_identical": true,
+  "all_scene_data_and_order_identical": true,
+  "all_other_metadata_leaves_identical": true,
+  "source_other_three_bytes_identical": true,
+  "claims_md_bytes_identical": true,
+  "native_review_matches_before_and_after": true,
+  "native_final_review_file_sha256": "05cdf7649684ff4b129fb0d91b61ee1ae3f07d05c6195787bb73d4f817d9d06e",
+  "native_hash_comparison": {
+    "narrativeHash": {
+      "before": "99b7fa6451a86058",
+      "after": "99b7fa6451a86058",
+      "equal": true
+    },
+    "speechHash": {
+      "before": "cbac582983bbb901",
+      "after": "cbac582983bbb901",
+      "equal": true
+    },
+    "picturesHash": {
+      "before": "34c8e122b8db8835",
+      "after": "34c8e122b8db8835",
+      "equal": true
+    },
+    "lookHash": {
+      "before": "98a370ae40badbaf",
+      "after": "98a370ae40badbaf",
+      "equal": true
+    },
+    "mixHash": {
+      "before": "71ecdd098c551254",
+      "after": "71ecdd098c551254",
+      "equal": true
+    }
+  },
+  "native_pair_requests": [
+    {
+      "asset_plan_id": "two-film-seam",
+      "composed_prompt_sha256": "f976f4c1b86586c811ec57c02494272fa7c81a197e24a00d78ba49c623d646d1",
+      "native_key_1k": "a1ef14ae5ad920ab",
+      "native_key_2k": "dde95d8ba1ab71e6",
+      "unchanged_after_category_only_correction": true,
+      "actual_same_asset_verified": false
+    }
+  ],
+  "planned_livecache_stop_conditions_unchanged": true,
+  "actual_same_asset_verified": false,
+  "lint": {
+    "actual_immutable_dictionary_context": true,
+    "errors_before": 0,
+    "errors_after": 8,
+    "errors_after_details": [
+      {
+        "path": "scenes[8].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-o02",
+        "template": "stats",
+        "line_ids": [
+          "c04ro021"
+        ]
+      },
+      {
+        "path": "scenes[25].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-i01",
+        "template": "stats",
+        "line_ids": [
+          "c04ri011"
+        ]
+      },
+      {
+        "path": "scenes[32].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-i07",
+        "template": "stats",
+        "line_ids": [
+          "c04ri071"
+        ]
+      },
+      {
+        "path": "scenes[59].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-e17",
+        "template": "stats",
+        "line_ids": [
+          "c04re171"
+        ]
+      },
+      {
+        "path": "scenes[65].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-t03",
+        "template": "stats",
+        "line_ids": [
+          "c04rt031"
+        ]
+      },
+      {
+        "path": "scenes[76].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-t12",
+        "template": "stats",
+        "line_ids": [
+          "c04rt121"
+        ]
+      },
+      {
+        "path": "scenes[84].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-n01",
+        "template": "stats",
+        "line_ids": [
+          "c04rn011"
+        ]
+      },
+      {
+        "path": "scenes[90].template",
+        "message": "a drama scene is a \"shot\" or one of the cards title, chapter, outro",
+        "scene_id": "c04r-n07",
+        "template": "stats",
+        "line_ids": [
+          "c04rn071"
+        ]
+      }
+    ],
+    "warnings_before": 9,
+    "warnings_after": 0,
+    "stale_or_missing_i18n_warnings": 0,
+    "status": "HOLD_NATIVE_CARD_TEMPLATE_COMPATIBILITY",
+    "reason": "category story excludes legacy explainer card templates. Repairing templates would exceed the category-only authorization and may change the canonical narrative; no template, voice or approval was altered to evade the guard."
+  },
+  "source_producer_replay": {
+    "memory_only": true,
+    "core_four_and_claims_md_exactly_equal": true
+  },
+  "runtime_protection": {
+    "current_runtime_source_sha256": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e",
+    "canonical_script_sha256": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+    "approval_file_sha256": "01c224bb2bbb0af52b5ef4cf8b46ffe4289aa6d74384a034f0629354c55d984c",
+    "existing_runtime_category": "explainer",
+    "source_runtime_not_adopted_by_this_task": true,
+    "runtime_files_read_only_verified": {
+      "brief.md": "c3eb5e30f27880ddbeb890ea9983b8c0c3d2189ccc3861ebd2f7c75dc022613c",
+      "claims.md": "08455c68eda7a3cb994b1d8ee493f955e70f1f487cd83f854aec733f0e8551ea",
+      "i18n/en.json": "2f4ed3cb1ed5b8d835e8b8b853bf3614433357b752459223054f4bdc58992eea",
+      "i18n/es.json": "2e959e9d6a62c31b98fd7fd6558ead310fd49cb98e4e1af81ed10d98da8a2c32",
+      "i18n/id.json": "817c9fe2bd04fd8f4d79b86e76c058df464acd2e7f02fef8f1cbebb6c521a0c1",
+      "i18n/ja.json": "2d5d9be77cc0bb2383e8cefd840f0157cfe48183322c039de9346b13c8769b18",
+      "i18n/ko.json": "c3041b17ef775208840db4ef09bccfeefd5af1859be63090a5d49e9d24bd3925",
+      "i18n/pt.json": "fc2b5edc362455d196710b93ccdcc39d7317e6442261370eee5537562a4f207f",
+      "i18n/th.json": "46d144e2fd146f734a2a9170a43073f8c4445e099c918cd863e6cd63642e4c12",
+      "i18n/vi.json": "3f9052ad55334fa769e873ba98b74628e9da74fe40993cbc9eeae20e59e23a91",
+      "script.md": "d363a2d4486549ead4e444455df4af5f9e80d72693bf34fc91f028a851b2d884",
+      "series.json": "0745c10d1cb0dac55d786a2f278b2e0823f42bdb671daba55d1dfb8dc9bb9f9f",
+      "story-lexicon/current.json": "61447bd40667c28511b1be72e49f9658fa4ad994d42faa09c2443806a2c52dc0",
+      "story-lexicon/events/dce1cb13f4e12aba6f832880791b10bd372a7d70c3853eeb2e91a6649ddfb353.json": "dce1cb13f4e12aba6f832880791b10bd372a7d70c3853eeb2e91a6649ddfb353",
+      "story-lexicon/versions/da52e497e0721531dfa8e8043ec8ad1b0b39992472c4bfbba1c8b654685e8580.json": "da52e497e0721531dfa8e8043ec8ad1b0b39992472c4bfbba1c8b654685e8580",
+      "verify-1.md": "193cb84f12e2cb518923c882d73fdd606b8802d1f07d72d02606ba2b14d916b1",
+      "video.json": "46999917780dc1ce4f2c18d8b36f27143bdee68fae0952ba2b78fafc3324d94e"
+    },
+    "media_files_read_only_verified": {
+      "approvals.json": "01c224bb2bbb0af52b5ef4cf8b46ffe4289aa6d74384a034f0629354c55d984c",
+      "i18n/en.todo.json": "a061fc11684eaa183dff92ed529b7a7ecfc42194f136b2f71a32e72ab246c638",
+      "i18n/es.todo.json": "0f13728c668fcaf64316c5bd07d12293875409c20d15e34e8b48b250f95a41c8",
+      "i18n/id.todo.json": "b917c9e86888b2a1b8819c09e0de8d506c5c5494661636262665478fe879dfbd",
+      "i18n/ja.todo.json": "c087c3c3ad713ed2d63002ee790b943eb45ce3f8f5e4ff43804c4640a64e9bf8",
+      "i18n/ko.todo.json": "d780d43b1e29a70bf1eea77d0aacf46df923f7307c6bfc602684fbd7a8f7bf2b",
+      "i18n/pt.todo.json": "e078a327dbeca03b291d9cc879c5bee66c017f57b07908c174058c7eeb64b3bb",
+      "i18n/th.todo.json": "614a55a8da5c63bdce8a3ebd714f8080f5733031dd501e97773d2dfcfadbf52f",
+      "i18n/vi.todo.json": "7d785c5678c58ae79af1a030de4a93806aa8620f334d9da5b21bf5575062a8b6",
+      "story/lexicon-transactions/43a73ced-d3da-4b63-aecc-05ea9a04f657.json": "576c48d7aef61fefd5281bd64fb762a44bf96e3000cb24626d6fce49bb00ff0d"
+    }
+  },
+  "current_i18n_and_other_auxiliary_files_rehashed": 51
+}
