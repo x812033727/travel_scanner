@@ -1,0 +1,92 @@
+{
+  "kind": "owner_requested_stop_at_missing_provider_facts",
+  "observed_at_UTC": "2026-10-26T08:40:01.586422+00:00",
+  "observed_at_Asia_Taipei": "2026-10-26T16:40:01.586422+08:00",
+  "slug": "forty-forest-map",
+  "task": "2026-10-25-ai-tech-forty-forest-map",
+  "responsible_owner_retained": "codex-ai-tech-news",
+  "branch": "codex/ai-tech-forty-20261025",
+  "instruction_precedence": "Latest owner message explicitly resumes this existing task and retains its owner; it supersedes the immediately earlier message asking to switch away.",
+  "stop_step": 1,
+  "status": "waiting_for_genuine_per_request_provider_results",
+  "provider_results": {
+    "PT_3cc1": {
+      "request_body_sha256": "3cc1ce6b7a4c1026cc52686be17962a255277ad86f795c46c88378068c0ee456",
+      "owner_supplied_result": null,
+      "provider_charged": null,
+      "provider_usage": null,
+      "audio_result_recoverable": null,
+      "known_Mokaair_HTTP_status": 502,
+      "local_journal": "held",
+      "zero_charge_inferred": false
+    },
+    "ES_9a36": {
+      "request_body_sha256": "9a361492e1a6bf205d1b8f7af3c8fa882ffc4d8b9c4ae937e68eb442a5cecd49",
+      "owner_supplied_result": null,
+      "provider_charged": null,
+      "provider_usage": null,
+      "audio_result_recoverable": null,
+      "status": "separate_prior_unknown_request",
+      "zero_charge_inferred": false
+    }
+  },
+  "blocked_next_actions": [
+    "ES/PT/ID/TH paid dubbing or retakes",
+    "check-audio or second transcription production for those four",
+    "new current dub CC delivery/QA/package/language batch"
+  ],
+  "existing_backend_delivery_scope": {
+    "checked_foreign": [
+      "en",
+      "ja",
+      "ko",
+      "vi"
+    ],
+    "remaining": [
+      "es",
+      "pt",
+      "id",
+      "th"
+    ],
+    "current_main": "564812bd2a172daab0782b95a8c19ab44e5ac0d567304767eeaa2f6aee46c40a",
+    "current_review": "95bd4a89-2f84-4b44-8c54-9d98e1b4676d",
+    "old_approved_review": "56c69b8f-3ee1-4c8d-9050-a507fe972185",
+    "current_QA_ok": false,
+    "current_QA_passed": 10,
+    "current_QA_total": 11,
+    "scope": "Existing authenticated delivery receipts, not a new live backend GET by this documentation edit."
+  },
+  "owner_caption_notes": {
+    "ES_PT_stale_errors_remain": true,
+    "CPS_are_advisories_not_hard_errors": true,
+    "future_ES_PT_over20_should_prioritize_split_or_concise_retranslation_then_normal_review": true,
+    "KO_VI_existing_deliveries_not_rebuilt_for_advisory_only": true,
+    "ID_delivery_note_conflict": "Owner remaining-list and verified receipts say ID not delivered; one later advisory sentence includes ID among delivered. Preserve verified4of8 count; reconcile via normal read-only review-files before future production.",
+    "VI_warning_counts": "Owner says15sentences; original current native manifest has16cue advisories. Both scopes preserved, neither native report overwritten."
+  },
+  "owner_reported_newly_deployed_tools": {
+    "review_files": "node tools/video/cli.mjs review-files --slug forty-forest-map --out DIR [--gate G]",
+    "branding_pull": "node tools/video/cli.mjs branding --pull",
+    "check_audio_changes": "Owner reports Latin prompt-tokenization, dual-transcriber agreement, foreign-word and Thai-number normalization fixes.",
+    "reported_by_owner": true,
+    "locally_integrated_or_executed": false,
+    "future_action": "Read deployed/main tool diffs and use isolated audited tool version after billing facts; do not merge/deploy PR1851 or alter old evidence."
+  },
+  "future_gates": {
+    "current_new_main_requires_actual_owner_approval": true,
+    "package_and_language_batch_bind_approved_current_main": true,
+    "all8_completion_or_server_autoapproval_claimed": false
+  },
+  "actions_this_step": {
+    "paid_requests": 0,
+    "journal_forget_clear_confirm": 0,
+    "native_checks": 0,
+    "TTS_ASR_media_or_backend_mutations": 0,
+    "source_or_dirty_ES_PT_modified_or_staged": false,
+    "merge_deploy_YouTube": false
+  },
+  "previous_progress_and_task_sha256": {
+    "docs/videos/forty-forest-map/production-progress.json": "6eaf83e0b552254c6a20f0a89e3a1de641e370580ff774b7086cfd5f4e697c8f",
+    "tasks/open/2026-10-25-ai-tech-forty-forest-map.md": "2fbdd1102cc97479be2c6a4a7b5259d238ac89ffa5095a479c711cb03950400b"
+  }
+}

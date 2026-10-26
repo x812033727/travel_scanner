@@ -1,0 +1,28 @@
+{
+  "observed_at": "2026-10-25T18:14:49.767780+00:00",
+  "before_video_sha256": "2b689e3f9e2f38d8da58b5fd1d5d999a2ef5d8e917102680a8c6de06cd859ca6",
+  "after_video_sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+  "old_url": "https://doi.org/10.25452/figshare.plus.32288616.v1",
+  "new_verified_official_fixed_v1_url": "https://api.figshare.com/v2/articles/32288616/versions/1",
+  "plain_doi_preserved": "10.25452/figshare.plus.32288616.v1",
+  "new_resource": "Official Figshare metadata JSON v1, GET200. DOI and canonical HTML returned403 in the same QA environment; no claim that HTML works. API HEAD400 is immaterial to the unchanged native GET checker.",
+  "all92_lines_voice_and_asset_bytes_unchanged": true,
+  "metadata_fields_replaced": [
+    "assets[0].url",
+    "assets[1].url",
+    "assets[2].url",
+    "assets[3].url",
+    "assets[4].url",
+    "assets[5].url"
+  ],
+  "original_final_sha256_unchanged": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+  "actual_source_check_sha256": "1bead3e0201f1fe1e345deeb81f648f74ddc54e175497a697e2c1d68014c1eac",
+  "qa_before": {
+    "passed": 10,
+    "total": 11,
+    "failed": "links HTTP403 DOI URL",
+    "policy_demo": 0.94,
+    "policy_stance": 0.8
+  },
+  "new_native_qa_still_pending": true
+}

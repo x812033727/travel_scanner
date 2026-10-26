@@ -1,0 +1,48 @@
+# 製作採用決定
+
+2026-10-25。站主要求 AI／科技時事影片持續製作，並明示「預設八語都要做」「如果要決定事情用你推薦的就好 不用問我」，再次要求完成後直接製作下一支。
+
+本片採用大綱 **A：從一個色塊，把六個分數讀回來**。Jev 的實際結果為 A 機率 1.00、立場 0.90、示範 0.98、建議 0.01；門檻通過，與協調者依真實資料示範作出的推薦一致。
+
+- 企劃 SHA-256：`bed926eba2ea535387b3a32d1069bb76578d7e14c7b9df46ce71e7e68361c647`。
+- Jev 結果取得：2026-10-25T15:17:46.701Z；正常工具路由送入後臺，當時實際審核狀態仍為 `pending`。
+- 協調者依站主委派於 15:19:20 UTC 使用原生 `approve --gate outline` 記錄本機採用；這不是站主在後臺按下核准的紀錄，也不製造 `auto.json`。
+
+後續固定交付繁中主片與 en、ja、ko、es、pt、id、vi、th 的標題說明、CC 和各自 M4A 配音；實際合成、逐句檢查、成片 QA 與後臺檔案讀回各自完成後記錄。YouTube 上傳／公開仍未執行。
+
+實作資料、中文 SVG 與獨立資料審查已具備。稿子不得改企劃、把刻意選樣當精度抽樣、把模型分數當校準正確率，或把 2020 實算當年度變化實測。旁白字典由協調者處理：在隔離 worktree 用原生字典寫入器只新增 DeepMind、ForTy、AlphaEarth 三個依原文朗讀的詞，既有詞條未動。相關窄範圍宣告與過期 scope 的碰撞檢查已記錄在本片任務；實際發音仍待音檢。
+
+## 本次稿件與製作採用（2026-10-25 16:51 UTC）
+
+協調者依上述持續委派採用實算教學路線。當前87句正文與圖卡經四份獨立事實查核收據覆核；最後一輪僅補B像素定位，原85句保持不變。新圖卡樣張已實際檢視，座標文字可讀，無版面溢出；縮圖待補真實資料圖，這是與旁白無關的metadata/asset修正。
+
+盲讀原始回覆為9/13，四個NO保留。因原始evidence沒有原生工具要求的方括號line ID，這個9/13僅代表raw判讀，不能冒充有效的native通過數。目前由同一讀者進行知情差異核對並提供真實帶ID原句的答案，不冒稱新盲讀。協調者採用完整輸入、250的逐步運算與必要短片尾：它們直接服務可跟算的教學目標；不得把不符合絕對「數字只能出現一次／不能連唸數值／不能有任何教學次序或總結」的NO改成YES，原生敘事關卡實際結果仍須如實保存。
+
+配音dry-run實際回報87 requests、2025 billable characters，原設定gemini:Sulafat可用、額度6,490,074。協調者依已查核的正文啟動正常TTS，沒有調整聲音或規避關卡快取。配音合成、實際音檢、正文時長、字幕及成片QA尚待完成，這項製作採用不代表那些檢查已通過，也不變更遠端核准狀態。
+
+## B總量驗算補充（2026-10-25 16:59 UTC）
+
+初始87句TTS已實際完成：總長478.2秒，片尾前正文466.533秒。未達八分鐘，因此採用撰稿者推薦A，新增先前尚未逐步示範的B六分數總量驗算與抄錄回查，保留原87句及其已合成take、不調慢聲音或增加停頓。`.344+.344=.688 → +.308=.996 → +.004+0+0=1`給出可照做的新中間步驟；名稱仍須對回，不把加總正確當精度或校準證明。新增五句c88–92，證據及原句完整保留的比對另記錄，須經定向查核後正常合成這五句，再量實際正文與總長。初始478.2秒只屬舊87句版本，不冒稱新92句已通過時長或音檢。
+
+
+## 歷史主體版已驗音軌與增量交付採用（截至2026-10-26T00:06Z）
+
+本節更新目前交付快照；上文87／92句早期製作採用及其當時pending狀態仍是歷史紀錄。協調者延續站主「預設八語都要做」「推薦決定不用問」的委派，只將真實原生音檢及獨立稽核通過的M4A增量交付。
+
+VI、EN、JA、KO共4／8音軌各92／92通過且已送後臺；KO於2026-10-25T23:50:57Z真實exit0、0 flags／unchecked，23:57:42完成四部分上傳、server組裝SHA／大小驗證及登入後兩角色metadata讀回。收據見[KO獨立音訊核驗](ko-audio-verification.json)及[KO增量交付](ko-backend-delivery.json)；這不包括遠端二進位下載。原1080p b293完整bytes、歷史主片QA11／11、全部舊files／payload及遠端pending／語言選擇保留，final及reviews仍pending，未提交正式language batch。
+
+KO歷史修復上限如實保留：兩輪原文retake、兩輪標準等義改詞後，23:29:47仍有dkq3一flag。協調者依持續推薦決策委派採單句owner exception，另記reword3，沒有把計數改回第二輪。只將dkq3的6개改為自然的여섯 범주、只描述最高分，保留六個範疇與唯一最大值；只新合成1句／26字，其他91句raw WAV SHA不變。舊失敗收據及archive保留；byte-scope核對與後來的ASR PASS分開記錄。
+
+ES首次92句合成完成但fit exit1（4 over／3 absorbed），還未音檢通過或交付；PT／ID／TH待製作。全部八語audio完成後，全部語言CC仍需依實際音軌timing重產／核對，保留速度advisory；完整package為0／8，all_eight_ready與overall均false。主片僅BODY CANDIDATE，正式官方intro／outro仍缺漏，須待合法素材與guard另處理。
+
+本次僅整理四份進度文件與兩份安全proof；未變更source／claims／lexicon／i18n／媒體，未操作後臺、付費、YouTube、merge或deploy。詳見[機器可讀進度](production-progress.json)及[製作結果](production-result.md)。
+
+## 目前正式官方v4交付與未知結果處置（2026-10-26）
+
+本節取代上節「目前交付」的時間性判斷，舊版本的事實／失敗／上限原樣封存。依站主加片頭片尾及持續推薦委派，正常官方v4的5秒intro在body frame682、21秒outro已建置並交付新主片5648；保留原b293 body完整SHA、舊approved56c69／12角色／QA11及全部原決策。新95bd final是pending／manual candidate、真QA false10／11（ES／PT stale captions失敗），不能以舊QA11或外層review-push exit0稱機器QA已通過。
+
+EN／JA／KO／VI四種目前92句已驗body raw/cache零TTS重封裝，正常cachedcheck與獨立368句全target／WAV／currentM4A／fit／meter核對後才交付。新五語ZH＋四語CC、完整native標題說明也已實際samepending交付，37roles全部登入讀回；35CPS含已交17、ES／PT stale2hard保留。外語三部件交付4／8，正式八語batch及overallfalse。不是只有payload.metadata就聲稱可下載文件，這次15真textblobs／25下載roles均有收據。
+
+PT原文retake1唯一v3 process258624真exit3，無新raw／完成stage但上游計費UNKNOWN。失敗文字與journal有Mokaair HTTP502；root正式更正原driver對HTTP暴露範圍的欄位誤判，未覆寫原270e。新held3cc1/journalb9d12與舊ES9a36/journal3935分開保留，不replay／清旗／forget，07:50過後仍必須先有真實provider每request結果。R1=1、shorten2、reword0不重置；服務忙碌／unknown及修復缺口不以聲音或品質門檻降低處理。
+
+目前事實、來源時間綁定及fullSHA見[製作結果](production-result.md)、[收據索引](receipts/official-v4-20261026/README.md)。此輪只有文件與安全proof副本，沒有變更video、voice、lexicon、data、accepted targets/WAV、i18n/es.json或pt.json，沒有API、付費、原生QA／媒體stage、YouTube、merge或部署。原來源74的文件更新後，交付時的全來源hash proof仍是歷史，不偽稱現在重跑全關卡。

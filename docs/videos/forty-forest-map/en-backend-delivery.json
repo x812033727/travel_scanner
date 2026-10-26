@@ -1,0 +1,972 @@
+{
+  "observed_at": "2026-10-25T20:52:02.574Z",
+  "slug": "forty-forest-map",
+  "locale": "en",
+  "mode": "explicit_root_execute_checked_audio_only",
+  "ok": true,
+  "stage": "checked_locale_audio_roles_attached",
+  "upload_started": true,
+  "review_post_attempted": true,
+  "part_receipts": [
+    {
+      "part": 0,
+      "bytes": 4194304,
+      "received": [
+        0
+      ],
+      "complete": false
+    },
+    {
+      "part": 1,
+      "bytes": 4194304,
+      "received": [
+        0,
+        1
+      ],
+      "complete": false
+    },
+    {
+      "part": 2,
+      "bytes": 4194304,
+      "received": [
+        0,
+        1,
+        2
+      ],
+      "complete": false
+    },
+    {
+      "part": 3,
+      "bytes": 964320,
+      "received": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "complete": true
+    }
+  ],
+  "http_errors": [],
+  "all_eight_ready": false,
+  "cc_metadata_language_batch_ready": false,
+  "remote_binary_stream_verification": {
+    "performed": false,
+    "reason": "Normal tool GET project, PUT file parts and POST reviews only. Verification uses server upload assembly and authenticated role SHA/size metadata; no authenticated binary GET route is exposed or called."
+  },
+  "remote_compare_and_swap_available": false,
+  "concurrency_guard_scope": "Exact owner-choice and every-review GET snapshots compared immediately before POST; endpoint has no conditional/CAS parameter. Post-readback must preserve all old fields/roles and decisions.",
+  "preflight": {
+    "locale": "en",
+    "checked": 92,
+    "flags": 0,
+    "skipped": 0,
+    "kept": 0,
+    "file": "/workspace/work/videos/forty-forest-map/dubs/en.m4a",
+    "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+    "bytes": 13547232,
+    "speech_hash": "c6d70ecaef91a15d",
+    "translation_hash": "bfff4c39fe664d8e",
+    "speech_fingerprint": "438272ab2d0b0b8f",
+    "duration": 512.805,
+    "codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "integrated_lufs": -14,
+    "true_peak_dbtp": -2.8,
+    "fit_windows": 89,
+    "fit_tempo_max": 1.21,
+    "proof_file": "/workspace/work/ai-tech-next/forty-en-independent-media-audit.json",
+    "proof_sha256": "c02f9097a75b672f6965fd94a046fa649cfb523b85e81bef83cbeb0ff0552e10",
+    "native_completed_at": "2026-10-25T20:30:29.293Z",
+    "native_log": "/workspace/work/ai-tech-next/forty-check-en-2026-10-25T20-30-21-157Z.log",
+    "lines": [
+      {
+        "id": "8aw6",
+        "wav_sha256": "c81765e24e684009b5a888f505aa48a9bd195098cbd2123aaf358ed7d74688a7",
+        "raw_intended": "I took this green ForTy cell from Taiwan's 2020 data.",
+        "full_spoken_form": "I took this green ForTy cell from Taiwan's 2020 data.",
+        "entry_sha256": "59593475ce00b199e76b57eb0fb36f525ea47bcbe61d11ac7cbc6ad6830e8b5c",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "gngj",
+        "wav_sha256": "5288e2fcad5c1dd6fee4395c3dd2e9ce11f26899659ebcccf36c7ac4d1626832",
+        "raw_intended": "The map has 6 classes. Why are only 5 values stored?",
+        "full_spoken_form": "The map has 6 classes. Why are only 5 values stored?",
+        "entry_sha256": "806975e5fa429ba158f9a0ecb7042729c93e68334610c06ac272c84a2c5701e6",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ep85",
+        "wav_sha256": "17c47c5c0fed1e7f8f7d0fd912acd5f79ca76021eafc96d53a4e8041f35ca62d",
+        "raw_intended": "What unit is that 248 stored in?",
+        "full_spoken_form": "What unit is that 248 stored in?",
+        "entry_sha256": "edc9c61f15fc17183fff2560e684e4054ace11249669469b9e9bb2b68b3811ba",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "jw6i",
+        "wav_sha256": "f1a4de9f7f8eb23de6b14f2a76c169ce6dad9123980695ae27b7ccc73de091f2",
+        "raw_intended": "Another cell is green too. Will it give the same results?",
+        "full_spoken_form": "Another cell is green too. Will it give the same results?",
+        "entry_sha256": "047b1c3fe307dd8f7beac529e37cb0d2aa4b8909ac6500fbf4c01c5fe2a4a1fb",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "5ur9",
+        "wav_sha256": "c80b52cf3e9c33c62977736c768a6e492409b213c9896b439a9362c8c2fc378f",
+        "raw_intended": "DeepMind showed ForTy this week. Read these 2 cells.",
+        "full_spoken_form": "DeepMind showed ForTy this week. Read these 2 cells.",
+        "entry_sha256": "de9495d273f9f463e4bc7f5189451fc9799b23d7ca7128979be86096690fae80",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "m2p6",
+        "wav_sha256": "4ca02cf05adf5b51b4267cc930140f503402f443afd93613a374481b298ebdf7",
+        "raw_intended": "Read not just the trees in this green cell, but how they grew and their use.",
+        "full_spoken_form": "Read not just the trees in this green cell, but how they grew and their use.",
+        "entry_sha256": "3aa189b86de5eabcc45b9e46fa9154ec236123fe42e7eef0d8bf625135154493",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "erqz",
+        "wav_sha256": "d43fba88487528eab8e7066130779a66eceee311bd23d5493d4c81466d6d4ff0",
+        "raw_intended": "Primary forest: native tree species, no visible human disturbance.",
+        "full_spoken_form": "Primary forest: native tree species, no visible human disturbance.",
+        "entry_sha256": "3c90afcf627501753f7643b8b68f430b286e3f018341fe8a44e10847b4e215ee",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "t4w3",
+        "wav_sha256": "b84a390705cf7ef01af2fcc66f87edb74cc12dd93cdd909353de8f5dad3ae0b9",
+        "raw_intended": "Naturally regenerating forest: mostly natural regrowth; secondary included.",
+        "full_spoken_form": "Naturally regenerating forest: mostly natural regrowth; secondary included.",
+        "entry_sha256": "caeef9cd1c962dbbc521e4c82f62f6633d57740421e7a4ed80f423a1920551a2",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "66nz",
+        "wav_sha256": "8600f1f5169492d597ae51fbc7162dad5abe0c248cc26be9d00dc235f161a44f",
+        "raw_intended": "Where do forests planted by people fit in this table?",
+        "full_spoken_form": "Where do forests planted by people fit in this table?",
+        "entry_sha256": "e958b3d7686038a8a57a3fa4a019884b17f53701317242e2447a73f3655f2222",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "3pse",
+        "wav_sha256": "ba10d652782a1f43a727ae167868dd9a6ca8285247e73fcf41b4c5fa8e0ef2bc",
+        "raw_intended": "Planted forest is mainly planted or sown; this data requires rotations over 40 years.",
+        "full_spoken_form": "Planted forest is mainly planted or sown; this data requires rotations over 40 years.",
+        "entry_sha256": "992a229257dff1c556dece18844ecf5212cc7e998af110b26bea55177bfa49af",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "v9fh",
+        "wav_sha256": "a2ec17c26ee1b0f0b7cc1241e4c48fd046a96e139917586e5fe54f6138dbf20b",
+        "raw_intended": "A rotation covers planting, management and reharvest, not a tree's current age.",
+        "full_spoken_form": "A rotation covers planting, management and reharvest, not a tree's current age.",
+        "entry_sha256": "6f2cc68f1b7f1baf84db124379291c0de9e888b8e3f3a9be0f82c67f95f1c778",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "7id9",
+        "wav_sha256": "1c45afa8917704cc1d47a9ea016c5ec856cc096d31b9a12291c5c9a6ed13f8f6",
+        "raw_intended": "Plantation forest has more intensive management, often few species, even ages and regular spacing.",
+        "full_spoken_form": "Plantation forest has more intensive management, often few species, even ages and regular spacing.",
+        "entry_sha256": "0d87201b59a3ddd0a2b692898ab0288597d43991234ce73a5cb7be35d1d2bc65",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "2vcb",
+        "wav_sha256": "115f28715d72a29a0a50c75c02546038d2bef3e92f0499fd792689ce6bd25c51",
+        "raw_intended": "Its rotation criterion is 40 years or less.",
+        "full_spoken_form": "Its rotation criterion is 40 years or less.",
+        "entry_sha256": "546d72208bc39ea63ddca42432a312f77902aba1e5ea7a7ce8631725238b5d05",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "yiya",
+        "wav_sha256": "ff64ea24fa0acf1bc60e24b81604c1f29d6096dc96aec59df31611e5dd2a33e1",
+        "raw_intended": "Tree crops and agroforestry include oil palm, rubber and orchards for non-timber farm products.",
+        "full_spoken_form": "Tree crops and agroforestry include oil palm, rubber and orchards for non-timber farm products.",
+        "entry_sha256": "5b5737eea907222bdc66a58015c816cbf5f03fdfb23f848a087f45893f87d572",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "rrgq",
+        "wav_sha256": "8fee730ddd979fff2e2392fd3f4939f9a6c5efb19e18c006f6c6a91a8590aef4",
+        "raw_intended": "Lastly, other land may include urban trees or sparse woody plants.",
+        "full_spoken_form": "Lastly, other land may include urban trees or sparse woody plants.",
+        "entry_sha256": "8f91216b9229cb85d9a2938fb60ba13d362d4a711821fce64822ad634201f3ab",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "fbc5",
+        "wav_sha256": "c6aaa5275b633b71f372a9bf223b0a93c45e7a49fa1c5ac24a59305c359ae7c5",
+        "raw_intended": "Each of these 6 classes has a fixed position. Read each value with its name.",
+        "full_spoken_form": "Each of these 6 classes has a fixed position. Read each value with its name.",
+        "entry_sha256": "4c93351ef6b5ccb3f91b92a8df6d73c5459d8985b81ae0c239770da6391c0ac8",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "gsa7",
+        "wav_sha256": "67723683e85415cf8485a47386c481bf65925f1685c366f2eca854fb591e8c11",
+        "raw_intended": "But how can a model tell these differences from satellite images?",
+        "full_spoken_form": "But how can a model tell these differences from satellite images?",
+        "entry_sha256": "6699617f4bc110602038afb91eae454986e093d35a7d9e804d03aba3c3068a89",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "9wmz",
+        "wav_sha256": "80fb1b92293504ca022b2da2515488fbbc640ef0c7d0aecb10c7f71f1d7f6bf2",
+        "raw_intended": "AlphaEarth first turns years of satellite readings into numbers.",
+        "full_spoken_form": "AlphaEarth first turns years of satellite readings into numbers.",
+        "entry_sha256": "7aa64dc1fee2b2f5cb672481b86733c9a6fd9c7987bd9581cd52a90c489bfb2d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "jkby",
+        "wav_sha256": "064e521383aec2ca6457445c2713ad96643b1a7486f597349f384459a5e4a935",
+        "raw_intended": "ForTy uses them for clues to planting patterns, seasons and growth cycles.",
+        "full_spoken_form": "ForTy uses them for clues to planting patterns, seasons and growth cycles.",
+        "entry_sha256": "5cac4fa3ed8a3a14646586cbc0ea6cfe9105a5b82b1b59d15a069e47d0a50312",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "5nt9",
+        "wav_sha256": "01c238bd6defb156518470ee85c7cbff9cc1987957449102722707cb5b4bf828",
+        "raw_intended": "Training also uses sites labeled by experts and regional data to link clues to land types.",
+        "full_spoken_form": "Training also uses sites labeled by experts and regional data to link clues to land types.",
+        "entry_sha256": "c7d9ba6bc8b88738e964d36350b6f629c9eaf8109113c5a846ff13f84e2aa1b5",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "m8cb",
+        "wav_sha256": "0ab6e1a3dfb5f3f7e9a7f1f5539509fa3b294454615bdb1025707d6d220c7ead",
+        "raw_intended": "This green cell stores the model's class scores in 5 integers.",
+        "full_spoken_form": "This green cell stores the model's class scores in 5 integers.",
+        "entry_sha256": "dfd6a419cb0aaa03768b4446dd017fb262ff3ba72c4776635b41f58e9204ba05",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "p2ry",
+        "wav_sha256": "6a3806e854100111acdacddff6a4b4f9379d3ef22b6c52fc08734000377d7d1b",
+        "raw_intended": "Find the 5 values: check the data's year and location first.",
+        "full_spoken_form": "Find the 5 values: check the data's year and location first.",
+        "entry_sha256": "c738457ec57b67eeb814ba6bda1a710bf973310c36a31a7a1e4fa847e9266f01",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "u5js",
+        "wav_sha256": "cf38d9739632343f64b067ca89956c990453887efbd96595fc080a218cb06f1b",
+        "raw_intended": "Use 121.4°E, 24.7°N.",
+        "full_spoken_form": "Use 121.4°E, 24.7°N.",
+        "entry_sha256": "99b9118ce01072eb9f7799ad6fdf611588a7aef081edf26022df14e307df3030",
+        "accepted_by": "native_second_Jev"
+      },
+      {
+        "id": "7732",
+        "wav_sha256": "403f54dc3280d3347150662b75a0810814bc0bb8ace3ed2fd56e2fc7455a5c45",
+        "raw_intended": "Take 10×10 cells around the target; red marks just the cell we'll calculate.",
+        "full_spoken_form": "Take 10×10 cells around the target; red marks just the cell we'll calculate.",
+        "entry_sha256": "7bbb449429f0f0f87edabe9b5a90f461c82fb238719357ce32bfb32177e9958a",
+        "accepted_by": "native_second_Jev"
+      },
+      {
+        "id": "yi97",
+        "wav_sha256": "683f957f50cb88d2d304290b28cf454caeabac464eb05ee19b2cd9a7cb4db230",
+        "raw_intended": "10 m is the output grid scale, not a list of tree locations.",
+        "full_spoken_form": "10 m is the output grid scale, not a list of tree locations.",
+        "entry_sha256": "5e86c9d92ee36a0a0ba77618e2c4f3d3b978359992701d31d35a1bf1e878599b",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "2k27",
+        "wav_sha256": "91244012565c6cf3ee80b511604f9654389f52aabbf0fe762f8d580f8af98ad3",
+        "raw_intended": "Keep fixed class names beside values so numbers stay with their class.",
+        "full_spoken_form": "Keep fixed class names beside values so numbers stay with their class.",
+        "entry_sha256": "fe234b44b4b38a3e28d72e51f319586e28b668871c457ffd3462520e713ec98d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "vk36",
+        "wav_sha256": "3c4a2cb6902ac27e6d9b57951508fb16696ad6372771d33cdfb3dd0e9d4737eb",
+        "raw_intended": "The 6 class values total 250. The value 255 is reserved for no data.",
+        "full_spoken_form": "The 6 class values total 250. The value 255 is reserved for no data.",
+        "entry_sha256": "3054bc93dad9e147f402affcce833b20e1d223750bf2cf5352200ff22ea50854",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "gfes",
+        "wav_sha256": "8f67160e96fd6d5db913abff06425bc79b31724c43a3fecfdbdb11945baf4589",
+        "raw_intended": "Exclude any no-data cell; don't count its marker as a score.",
+        "full_spoken_form": "Exclude any no-data cell; don't count its marker as a score.",
+        "entry_sha256": "9ea08b472cfde2aa21ebc13e61d73851f204e6a7a96d1bb52c278eea5928cb4e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "e826",
+        "wav_sha256": "de4a236f7136ae9721bbbe6d4de4e9804970dc0d95b46e3daf8c7986b3248961",
+        "raw_intended": "5 values are valid; derive other land's value, then compare 6 classes.",
+        "full_spoken_form": "5 values are valid; derive other land's value, then compare 6 classes.",
+        "entry_sha256": "388e0e26446bc664e241e63553bfcf9112c576c78cc4d51ddeb26fee04611395",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "svhy",
+        "wav_sha256": "f2f7fa441b05126c9cd67cc16626d338a603d2b4e71d12c58a56601d4e9e1dbe",
+        "raw_intended": "Keep field names with values; numbers alone don't identify a class.",
+        "full_spoken_form": "Keep field names with values; numbers alone don't identify a class.",
+        "entry_sha256": "c032227c8737b8626895185bf9df5fdedcb12f58ccc990e195d4d4d05e851a83",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "3gwz",
+        "wav_sha256": "c853f897a72b07dc47d5156f6f3dbe2a6923320722c00a46b6c29716c04f3caf",
+        "raw_intended": "How do we fill the opening's class-6 gap here?",
+        "full_spoken_form": "How do we fill the opening's class-6 gap here?",
+        "entry_sha256": "53badebb39cd5932fdc38ba4f90c37b2a8d1ccc0486dd96de9f708bd197f9f2d",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "7iv8",
+        "wav_sha256": "d33fc40fdb54fc96c132b5309be3e000de1200b9b13d0e21abff10a391b09c7b",
+        "raw_intended": "Class 6: 250 minus the first 5's sum.",
+        "full_spoken_form": "Class 6: 250 minus the first 5's sum.",
+        "entry_sha256": "767830933561c936dc9485b577eef5ed2eb03c59b60a4126563f0f986ffbf333",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "bxdi",
+        "wav_sha256": "9e906135735fcebda694e1139c32296a67edd65c5863240b2e339e8086eb9088",
+        "raw_intended": "This cell's 5 values, in order, are 0, 248, 0, 0, 0.",
+        "full_spoken_form": "This cell's 5 values, in order, are 0, 248, 0, 0, 0.",
+        "entry_sha256": "abae33ca146fb9c5b5db5cc4b0e6b601f1c6dfe3e3279df61496e9707a2ff464",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "anxa",
+        "wav_sha256": "83bb2e246378b2603caec8026f71ef06218177bc9827fe589b573a347a643d2f",
+        "raw_intended": "248 is a stored, scaled score, not a tree count or square meters.",
+        "full_spoken_form": "248 is a stored, scaled score, not a tree count or square meters.",
+        "entry_sha256": "13f50473cff06ead92268a45a417db72a0f47d4c97ba1e090199fa06dfc83821",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "up9r",
+        "wav_sha256": "125240e1d3627668aa328f62d24e1f08adafb6f99e7de8a1fd1ffc5c3541b3ce",
+        "raw_intended": "248 is naturally regenerating forest; the other 4 classes are 0. The sum is 248.",
+        "full_spoken_form": "248 is naturally regenerating forest; the other 4 classes are 0. The sum is 248.",
+        "entry_sha256": "989efc562ae4d5b2e07516c86ddc5f19e12749e7d4aa6e6412ac57ece4790341",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "3p97",
+        "wav_sha256": "9b0912715651ba6caeec3c30e732c1d97d2e1508c13865ff6a5e838d88976f47",
+        "raw_intended": "250 minus 248 gives 2 for other land.",
+        "full_spoken_form": "250 minus 248 gives 2 for other land.",
+        "entry_sha256": "c83dafc3154133ad46785f08dae15df17d21b9a3103c7e132746d47b08e02155",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "4av2",
+        "wav_sha256": "d4dc68079d04b8c80f3de46e2bf6f9341c0d4705c5477f8922ec83fbfff4ad79",
+        "raw_intended": "Then check that all 6 values are between 0 and 250, and their sum is 250.",
+        "full_spoken_form": "Then check that all 6 values are between 0 and 250, and their sum is 250.",
+        "entry_sha256": "82bc0af21d87ac508b6c893924e7f16972192665c327533d9382db3664c40b9e",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "8hpb",
+        "wav_sha256": "a31c4ae975b5dd9ed3c772da0c65d1bec99223909c6e58dffd73a6e35399f318",
+        "raw_intended": "How do we turn these stored values into model scores from 0 to 1?",
+        "full_spoken_form": "How do we turn these stored values into model scores from 0 to 1?",
+        "entry_sha256": "7eac98c63f8acded56dc618f030313c4435e31f3d45cb6175df62906ac3bfb6a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ywu9",
+        "wav_sha256": "ecfe9c042be3a16e86649996bfdcf3375762c0a5553df0835a159ffb1444542e",
+        "raw_intended": "Divide each by 250. For naturally regenerating forest, 248 becomes 0.992.",
+        "full_spoken_form": "Divide each by 250. For naturally regenerating forest, 248 becomes 0.992.",
+        "entry_sha256": "f1914ae58439cabf47d1a53e09520f8f5e1921b5cfec01bff9d4b7cb1d624256",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "u362",
+        "wav_sha256": "3da2b68ff7e61ea54c13144c6c0be01fe44b5817cf863a9da5b0d1097645779a",
+        "raw_intended": "For the other land class, dividing 2 gives 0.008.",
+        "full_spoken_form": "For the other land class, dividing 2 gives 0.008.",
+        "entry_sha256": "591c3753592a9fd0196f03b57ddc19230f7a1e867fbd4433e47a1c5b1bb5f354",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "eym7",
+        "wav_sha256": "b3292498e0f8d446d42ce6162775c253bf3c8d0dc23f7193db2887a77468f73b",
+        "raw_intended": "The other 4 stored values are 0, so their scores are also 0.",
+        "full_spoken_form": "The other 4 stored values are 0, so their scores are also 0.",
+        "entry_sha256": "ec4468c3ef86d083b4f2636333cea5a3395df353956eb2df025904c1a843cdd5",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "k3i2",
+        "wav_sha256": "6b0723a112cbe79667fddeaa798097198a531aded7e5ea74d64c845dd213edfc",
+        "raw_intended": "The 6 scores add up to exactly 1.",
+        "full_spoken_form": "The 6 scores add up to exactly 1.",
+        "entry_sha256": "a10e420da1ed95b64ee46f73e17856243061fb5df74cd4521b387e31db7b21c4",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "p9sg",
+        "wav_sha256": "895633f28e83ca99f277f14585acee816ca242254616db0a80851510700b0fe3",
+        "raw_intended": "This splits one total; it isn't 6 unrelated ratings.",
+        "full_spoken_form": "This splits one total; it isn't 6 unrelated ratings.",
+        "entry_sha256": "8fe7625c5665591ad3cd6622b6ba2cf0b8f250fdb3863742ebf3dc130c235e1f",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "dkq3",
+        "wav_sha256": "5267842b17f428ba6473bd94a6cef52eeeab751981d21aed15b2983ad7baa8a5",
+        "raw_intended": "Of all 6, only naturally regenerating forest scores highest.",
+        "full_spoken_form": "Of all 6, only naturally regenerating forest scores highest.",
+        "entry_sha256": "ada365d669175bfc38a691e40ea83b18f47a90c820fad99ebdb2dab8af5506df",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "w86h",
+        "wav_sha256": "71054a281939114c4aefd1d0a02b0284e02e081cb561b112126c59fce06e718f",
+        "raw_intended": "Use the top-scoring class; the red-boxed cell turns green.",
+        "full_spoken_form": "Use the top-scoring class; the red-boxed cell turns green.",
+        "entry_sha256": "badaa6c2782c0d859b5acc4849d7806c59b8f16801b6b49204bce627a31eac06",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "wh49",
+        "wav_sha256": "4df58d4ee793834b64641da31fe3697cbc72799d0d5f1cb01cb5ce688e425b98",
+        "raw_intended": "This is argmax: it chooses a class and doesn't retain all the scores.",
+        "full_spoken_form": "This is argmax: it chooses a class and doesn't retain all the scores.",
+        "entry_sha256": "d8181a85ed293b1aa02925471c95c8d0e244fcacd61f26e2cc0915406fba71a9",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "6ybg",
+        "wav_sha256": "4586cdb3f928e2283ef748ad734d75307f4334429b4b8c2b0e38000379fd8618",
+        "raw_intended": "Record naturally regenerating forest as the sole top class, with all 6 scores.",
+        "full_spoken_form": "Record naturally regenerating forest as the sole top class, with all 6 scores.",
+        "entry_sha256": "cbaf903f8932e63ba735b4cc71eed264762a143975032a87e528b3c14afeafbd",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "xxju",
+        "wav_sha256": "30a152ed3df138b06860b4d71c4b2df72c01dd62cad1e650c299c1caa4de7361",
+        "raw_intended": "Green gives a class name; values reveal its score distribution.",
+        "full_spoken_form": "Green gives a class name; values reveal its score distribution.",
+        "entry_sha256": "427e5d839a0f06c23bd726672f958ad70dd09fc84df3d2656602383aa9cccd05",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "endc",
+        "wav_sha256": "3f989344daa46d858501d70c28e3c80564ef91cd3e5f7b1e69bc09cf380bd6c8",
+        "raw_intended": "Can we choose as clearly for another cell from the same source?",
+        "full_spoken_form": "Can we choose as clearly for another cell from the same source?",
+        "entry_sha256": "f83d67b0c2115c012451a7a957c752213d62ffbd86c40abfc89ed48b2f0de2da",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "appe",
+        "wav_sha256": "bff0e5f94a4712a6d088a479dd503b4bff99e7e30fea57760e2b5c5e07313b38",
+        "raw_intended": "Now another cell in this block, chosen for the lowest maximum score.",
+        "full_spoken_form": "Now another cell in this block, chosen for the lowest maximum score.",
+        "entry_sha256": "49e4f48767038f695d39835e33883692a20fa07a0e443b3eee7b4feb633c9a1f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "beg8",
+        "wav_sha256": "f6d0121b1e00b2fc654069f3e1ca263b355d9158739daaf8eaf6185f6944dd01",
+        "raw_intended": "Reading practice, not random sampling for overall map accuracy",
+        "full_spoken_form": "Reading practice, not random sampling for overall map accuracy",
+        "entry_sha256": "5f4870f3e5bf0ecb9325decc33ad167ed50f383edbffc152a5ac43a468b3d813",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "fe8z",
+        "wav_sha256": "438030e377999f5fe7491d0ba94b361226cd5ba36bb460907c25cbc87f8d7378",
+        "raw_intended": "The second cell's pixel center is at 121.42234°E.",
+        "full_spoken_form": "The second cell's pixel center is at 121.42234°E.",
+        "entry_sha256": "40c865eea67c464813d8406822876e2b1ec31c7c1de6cb0aea0700ab44e54b56",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ymf8",
+        "wav_sha256": "4bc7053fab50124d44d9cb21bb4dc1dce8a8ed19129c1a0429ad30ecda93e289",
+        "raw_intended": "24.69528°N: use this to find the red box.",
+        "full_spoken_form": "24.69528°N: use this to find the red box.",
+        "entry_sha256": "13c416b9931451a304031aea23f4b521c4a892faa89b0ea355ea595d0eb0c7fa",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "54sx",
+        "wav_sha256": "b5922b5197568759fffddffde25f1630bb62fa5f0fcbd22a287f11a557327db6",
+        "raw_intended": "The 5 values in order are 0, 86, 0, 1, 77.",
+        "full_spoken_form": "The 5 values in order are 0, 86, 0, 1, 77.",
+        "entry_sha256": "ad0d84d3e3229373c6942376abdafd5c25c4e48d19fb9c6da5383cae130c29e9",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "mfsh",
+        "wav_sha256": "65ddb78002b6a9c658d7584b1dc7a0c5bd79ffe07fc73816593a28ade9913011",
+        "raw_intended": "Natural regrowth 86, plantation 1, tree crops 77: total 164.",
+        "full_spoken_form": "Natural regrowth 86, plantation 1, tree crops 77: total 164.",
+        "entry_sha256": "45c1f65b4eef28d7d77bbc5da2928b2666f9491c1f0fbdee610135f6f9078080",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "578j",
+        "wav_sha256": "6374b5791a93766b8608f6c1ad7132e9548302c8686db968f1dedcb02e2db3a5",
+        "raw_intended": "250 minus 164 gives 86 for other land.",
+        "full_spoken_form": "250 minus 164 gives 86 for other land.",
+        "entry_sha256": "f70846e9aed351a2da147cca53bc58d1bfa4e2c4f043d4b5a10fff1683d012d8",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "97h6",
+        "wav_sha256": "5ba4c21898d3c1ccb6971cb833f07d5fe5a3e9921f3f29d9892fe908b5dc318d",
+        "raw_intended": "Naturally regenerating forest and other land both have 86, tying for highest.",
+        "full_spoken_form": "Naturally regenerating forest and other land both have 86, tying for highest.",
+        "entry_sha256": "7cf232aaa08adde5cdbe3b80ae1350ec073c003ea51c0335c19d462c52465c6a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "8mtz",
+        "wav_sha256": "5dae69d2eea186ccbeca9e194857bd0eb2b43e7f21730b50bac012d29107a8a0",
+        "raw_intended": "Divide both by 250 to get the same score, 0.344.",
+        "full_spoken_form": "Divide both by 250 to get the same score, 0.344.",
+        "entry_sha256": "7d01baa2b87ac52d76b66e7fe9b833e879c842e1fc97f825634b53a8c900b711",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "4amm",
+        "wav_sha256": "130505f8980069feb4982439e84c976fcebe42bacff2ee69259e8833f78a770d",
+        "raw_intended": "Plantation forest's 1 becomes 0.004.",
+        "full_spoken_form": "Plantation forest's 1 becomes 0.004.",
+        "entry_sha256": "8b9f37a964ffa23699917caae3eddf96e38d628b5974ccf8a8f4795efd949376",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ux8j",
+        "wav_sha256": "1fa2a3995dae880fed89a3ad4c0c4a9dbb0e4f1e2cfcce774859f52645e01523",
+        "raw_intended": "Tree crops and agroforestry's 77 becomes 0.308.",
+        "full_spoken_form": "Tree crops and agroforestry's 77 becomes 0.308.",
+        "entry_sha256": "6960cbedd3447c216b053db6db4abc436f6f5ef5572cdd73bb8d96880241ffc1",
+        "accepted_by": "native_second_exact"
+      },
+      {
+        "id": "y64h",
+        "wav_sha256": "82703a5b6635eb5cf446e2215f60fc2f7bea3e71222e080cffbdef25c44a744e",
+        "raw_intended": "Primary forest and planted forest are 0.",
+        "full_spoken_form": "Primary forest and planted forest are 0.",
+        "entry_sha256": "42904266e860a9c37c33c2daf34d1ba99536463b8aca44ebdcbdcc6bb073be1f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "afyy",
+        "wav_sha256": "cb41e7e588382fe2649cfd176cc4953d45d68e25a0012e7472bb382f5ff2ae31",
+        "raw_intended": "Before recording the second cell, do these 6 scores also add up to 1?",
+        "full_spoken_form": "Before recording the second cell, do these 6 scores also add up to 1?",
+        "entry_sha256": "70aed860978b57d36dd0d0ca8df595036f1155c0ab0286d90864f1d35680700b",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "f2ze",
+        "wav_sha256": "ac3db0391787771c42c675b1b6eaf920da773b4cc1e86d05d0ef11c438451ead",
+        "raw_intended": "Add the 2 scores of 0.344 to get 0.688.",
+        "full_spoken_form": "Add the 2 scores of 0.344 to get 0.688.",
+        "entry_sha256": "ad77cac69c8c16bc597852f970caa8c3b4f3c56a42710368b66e14561eb81d90",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ckag",
+        "wav_sha256": "172ded66441b2f4cd809918b0915a87852531aba00a8c004f10cef1038927a76",
+        "raw_intended": "Add 0.308 to get 0.996.",
+        "full_spoken_form": "Add 0.308 to get 0.996.",
+        "entry_sha256": "69d68279d4fc19bbfc5f144379d69339438e3fb73d41da23a468f39ebbbe5f3f",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "n37p",
+        "wav_sha256": "38e5e1c8c4ec90330ff5db0bc4926ffe4adadfee07a90f8961e85e0a874e5b05",
+        "raw_intended": "Last, add 0.004 for exactly 1; the other 2 classes' zeros leave it unchanged.",
+        "full_spoken_form": "Last, add 0.004 for exactly 1; the other 2 classes' zeros leave it unchanged.",
+        "entry_sha256": "9543ab63989a51c7d8c6a6376915753018e10d026e1ac4c2ed26ed4eee976628",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ecb8",
+        "wav_sha256": "0ddd6c45c0d777091abdea1b93a63465857c4cb56ccf63aedb41cc78627d9a25",
+        "raw_intended": "Wrong sum? Check missed terms and decimal places; match each class name.",
+        "full_spoken_form": "Wrong sum? Check missed terms and decimal places; match each class name.",
+        "entry_sha256": "1c0cea11822f6252a8902a15d4facadbd270af99f0707b6cc6b45c6e968be6f5",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "8k4a",
+        "wav_sha256": "156fe2dfa27a903cb0f50362025fc7631b56b80c5160e1514258bd49a4031a0d",
+        "raw_intended": "If only one color is shown, which class is chosen?",
+        "full_spoken_form": "If only one color is shown, which class is chosen?",
+        "entry_sha256": "95349f8a12b5b442e48ad3103afc06e8c8eea45900c6f462628bc04aa8219c26",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "z33x",
+        "wav_sha256": "2600c952fc5facbde744f28ac3064a3fa9a5b3f037cf2fad288e5217efd1a613",
+        "raw_intended": "Showing one class compresses 6 scores into one label; it doesn't break the tie.",
+        "full_spoken_form": "Showing one class compresses 6 scores into one label; it doesn't break the tie.",
+        "entry_sha256": "c165534ef3c3ea9f613b4d2e7e508285b43f6476bbc23f97bb95336c0712df7e",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "wnrz",
+        "wav_sha256": "24cab1e19baf6b818c4b4705b0322db4551c60fd884197f4739173baa910c46a",
+        "raw_intended": "Our map picks the first top-scoring class in class order.",
+        "full_spoken_form": "Our map picks the first top-scoring class in class order.",
+        "entry_sha256": "a1c191f51addda03e84f9716e9ea2a31422bbd6269dc2921c9a550da839f652b",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ywz8",
+        "wav_sha256": "3ca104f5b90d1bd7f270a2d772af747ec57122dd9752eb4d900b92275171858a",
+        "raw_intended": "So it gets the naturally regenerating forest color too.",
+        "full_spoken_form": "So it gets the naturally regenerating forest color too.",
+        "entry_sha256": "05cc14863c252341fc25c0f6f7061af96a8f6755684c3b354d03f00c957c972c",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ww8v",
+        "wav_sha256": "6e91f44912fc786bc8cfbb90ee51523d782225e6c750ccb2e80038915ea984cf",
+        "raw_intended": "Remember the first green cell: just one top class",
+        "full_spoken_form": "Remember the first green cell: just one top class",
+        "entry_sha256": "3e854d50ebe9f3ce14dd3042cf7ca67b8768c9f96ebd2107dce4bf584a0a4f12",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "mx7g",
+        "wav_sha256": "56cfeb69d0f3b47d148bc40f708a8e37e7ae5d38d28439c3f6d73d0177fc2869",
+        "raw_intended": "Put both side by side: same color, different information.",
+        "full_spoken_form": "Put both side by side: same color, different information.",
+        "entry_sha256": "8b527ad23c3969c10ad53813977cd7a284284600d579e5aeb4f7c9bc94b25b41",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "7qfx",
+        "wav_sha256": "0f110730de5aa750e1bcb722a30cea68f41e70b9f2ba310cee60a0f3d1ac56fd",
+        "raw_intended": "Record the tie: naturally regenerating forest and other land; note first-in-order display.",
+        "full_spoken_form": "Record the tie: naturally regenerating forest and other land; note first-in-order display.",
+        "entry_sha256": "225fc872292eceac30d130915058973743cb5a3afc1191116edb4c3faf2f6ab4",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "hbci",
+        "wav_sha256": "522e88df973e20c7f65b322264db2e771a43e6596453ed37da3f1ae54fc44fba",
+        "raw_intended": "To compare results, read the note; don't let color hide the answer.",
+        "full_spoken_form": "To compare results, read the note; don't let color hide the answer.",
+        "entry_sha256": "1961d14d13e0e151ea6be89be59bfb48d9b237c982058f1d3cfcb6619fc5968e",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "sbkg",
+        "wav_sha256": "7032dbc106074d73fa4a823080c783d8f064cba75e131ebd1092252d6c4e9956",
+        "raw_intended": "After 2 green cells, can scores directly mean chances of being right?",
+        "full_spoken_form": "After 2 green cells, can scores directly mean chances of being right?",
+        "entry_sha256": "5297ac8c0c29ee5ee00659ffd8f9dc596ab0ecf3b2340dfbc87f9f61111a07cd",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "upmh",
+        "wav_sha256": "dc4fb3c82af3884f2f335f594f631b86fa14b842d72734db95808fd4ecb1536c",
+        "raw_intended": "To use scores, first separate model scores from real accuracy.",
+        "full_spoken_form": "To use scores, first separate model scores from real accuracy.",
+        "entry_sha256": "7d2dcc89fdb12e7edc7191df325b8399c13e096b788d5eabeb264f8067750954",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "vb62",
+        "wav_sha256": "e5ae6126b2e38ddf22e5a941b240e1aad62478a43ae7aa3bcf27d04b1c3a5aba",
+        "raw_intended": "These scores lack post-hoc probability calibration.",
+        "full_spoken_form": "These scores lack post-hoc probability calibration.",
+        "entry_sha256": "4cbd9ea5015506851f021594d221ce26b968c63cc1a3642ba31e2c4d1573679a",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "8m2e",
+        "wav_sha256": "8c9c467f62df5a41e178d6d5d404eed3febe9c7d06b67bccada8b5ffa91033fe",
+        "raw_intended": "To treat scores as chances of being right, use independent reference data; compare scores with real outcomes.",
+        "full_spoken_form": "To treat scores as chances of being right, use independent reference data; compare scores with real outcomes.",
+        "entry_sha256": "fd1a3f88f2ef716f5f4b07fe0d8c22fa27866b30af13344cdf695a35b0d607ff",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "bs4s",
+        "wav_sha256": "d520e36f30027566d26fd57bb40913b8ec8013d9bede7d85bd7b59f0f28d06f3",
+        "raw_intended": "So you can't directly say this cell has a 99.2% chance of being correct.",
+        "full_spoken_form": "So you can't directly say this cell has a 99.2% chance of being correct.",
+        "entry_sha256": "d933657a62e5d0660f833f198deadd1a55679e8774cf24a7f9ea86e9e9c7cc8d",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "ci5j",
+        "wav_sha256": "1b5d30f70bc8a26e6d3fd7e85a5e36e133f56e85b01ffa00bc65559f76a947c1",
+        "raw_intended": "The model sees clues; check land history and management use against reference data.",
+        "full_spoken_form": "The model sees clues; check land history and management use against reference data.",
+        "entry_sha256": "580514501c0aeaa9aca6d64b947e50403e2eea8fbcacfd766af14e02a89212de",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "6ss6",
+        "wav_sha256": "24d05658b6b81677f82dff0efcd32f86145b5901f3807ab192fc7dea019d9f39",
+        "raw_intended": "Once scores are clear, keep location and data year in the same row.",
+        "full_spoken_form": "Once scores are clear, keep location and data year in the same row.",
+        "entry_sha256": "3df04c5d21e94f4c75154d775447863b0397a135974ec0a60e1beb43f77264f3",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "rume",
+        "wav_sha256": "d3d696396d4289b47c92b0c1a3d8f15fb9e874a112ab7ac1f6389ac6889d2157",
+        "raw_intended": "Released in May, the baseline describes land conditions in 2020.",
+        "full_spoken_form": "Released in May, the baseline describes land conditions in 2020.",
+        "entry_sha256": "cdea203a6b2d78e1cbdc60aa3adf2f6d88c5cde9f5652115e2d76896b1cfc803",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "pvkj",
+        "wav_sha256": "799c63e1dd71a5cb82f74288dffe453534577430bda4d4178b14eca99fa7ab10",
+        "raw_intended": "The formal data paper was published on October 21.",
+        "full_spoken_form": "The formal data paper was published on October 21.",
+        "entry_sha256": "a48ba22e71359eef15d0320ac36e5b35b0a6a84738be03a0f6db1fffef42ee90",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "ncx4",
+        "wav_sha256": "a6d3ad6607e724cd64b9d813210965e8ad3325888e8e1d7dbccb37bf7e5f6a5b",
+        "raw_intended": "That introduction also shared an early-release annual series for 2017–2025.",
+        "full_spoken_form": "That introduction also shared an early-release annual series for 2017–2025.",
+        "entry_sha256": "6e2e5a4f5410d5d650f9ce59eedd870bb5840dd47404232c57085f58e60a13f7",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "j5kv",
+        "wav_sha256": "39a04ff24c540927c2e9c06b860973bc98ba389384973ae36d6217626ac0fc39",
+        "raw_intended": "One location can have yearly outputs, extending classification over time.",
+        "full_spoken_form": "One location can have yearly outputs, extending classification over time.",
+        "entry_sha256": "0194a392c4a5d523ed174811cf704a7a3ea5132b95482510b96ba4bbb0debed1",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "nqyj",
+        "wav_sha256": "1c87b6f572272b9230331d75796b3a18d296f7031682790e54f355da70e9e5a8",
+        "raw_intended": "Compare one place: fix location; keep each year's class order and all 6 scores.",
+        "full_spoken_form": "Compare one place: fix location; keep each year's class order and all 6 scores.",
+        "entry_sha256": "c5653f69abfb9b3aafe0e097d7d6a53ded60e3b66b0b5e51aeb8fd8935a612ff",
+        "accepted_by": "native_Jev"
+      },
+      {
+        "id": "wfb2",
+        "wav_sha256": "8b94e0e8da2f46948bbd6d7bad56cf3eeadbea7386179b81e31be2e0fa090a2d",
+        "raw_intended": "Changing only colors hides the ties and score gaps we just saw.",
+        "full_spoken_form": "Changing only colors hides the ties and score gaps we just saw.",
+        "entry_sha256": "323cb84368b36e0a4ba3811c41fb69ca682de6532f0663c436d599e142cf5587",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "88pk",
+        "wav_sha256": "c2afa933be2b947d9a342fb1ff5eba3e5c78d2a0dfdb72f1ab887f5ea1dd1df4",
+        "raw_intended": "These two 2020 cells only show what this version's output looks like.",
+        "full_spoken_form": "These two 2020 cells only show what this version's output looks like.",
+        "entry_sha256": "9f66235321a31a2f4d38f4000f1322b0b563deadecbc354f781ce2448282650f",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "bu6j",
+        "wav_sha256": "8696a10090c540a9fc9f94f13259f108ae2851cb3c97f6cae802bcd98eec8cb2",
+        "raw_intended": "Log year, location, 6 scores and all top-scoring classes in one pixel record.",
+        "full_spoken_form": "Log year, location, 6 scores and all top-scoring classes in one pixel record.",
+        "entry_sha256": "2747dd54e00ef15e3e7e1a611689ebee9b83179bad381b815a65c55ef33cd061",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "hr4b",
+        "wav_sha256": "ab86c06f6b53bb4eef77a8db1f1e4943974bc912ee297e7b27e910a2ea5add7b",
+        "raw_intended": "This row keeps what a single green color leaves out.",
+        "full_spoken_form": "This row keeps what a single green color leaves out.",
+        "entry_sha256": "ad3e0dacc211b814100fbc50a0ba2ec6ea186331e996b18b294906dd935308bd",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "4w7g",
+        "wav_sha256": "51e40f08516d9bbb3bfcf10eac431980b2d3e3bbf8552d2db6a6b60eb1bdb272",
+        "raw_intended": "What environments do you usually view on maps?",
+        "full_spoken_form": "What environments do you usually view on maps?",
+        "entry_sha256": "51cbbeeac89dfee8a0e69d8a54f3210339207d9e2f1c62c052af8ce9db837229",
+        "accepted_by": "native_exact"
+      },
+      {
+        "id": "39nc",
+        "wav_sha256": "11678e98fa2b201d1a77bda9c2c14614f1b21ddfcd1e9cd5c7e1255408cf40fe",
+        "raw_intended": "Subscribe, and let's understand real AI outputs together.",
+        "full_spoken_form": "Subscribe, and let's understand real A I outputs together.",
+        "entry_sha256": "986e053cea8162313a2dcd541796c5c1b7786d62d85a52886a72f442d3232f32",
+        "accepted_by": "native_exact"
+      }
+    ],
+    "source_sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+    "main_sha256": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+    "main_qa_sha256": "2996d2954442496ddbe1310832121d540f374aaf65a584f9ba138de07345855e",
+    "input_sha256": {
+      "/workspace/work/ai-tech-next/forty-en-independent-media-audit.json": "c02f9097a75b672f6965fd94a046fa649cfb523b85e81bef83cbeb0ff0552e10",
+      "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/video.json": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+      "/workspace/work/travel-scanner-forty/docs/videos/lexicon.json": "aa414e403385008766c93001c7b3fd825da9927b36e893f29f4dd376100ab46a",
+      "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/en.json": "c5a2a7ceffec09ce0823edd60ec97696f152a76e12805e7d7800938ec8c7886a",
+      "/workspace/work/videos/forty-forest-map/timeline.json": "d3df01349e4d85b4755ab81a47d47c2508afea3938262def07d3f16293302d1b",
+      "/workspace/work/videos/forty-forest-map/final.mp4": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+      "/workspace/work/videos/forty-forest-map/review/qa.json": "2996d2954442496ddbe1310832121d540f374aaf65a584f9ba138de07345855e",
+      "/workspace/work/ai-tech-next/forty-check-en-2026-10-25T20-30-21-157Z.log": "f42eb3eb76804590192463a0c4ff40e992a30bd3ebcd4d3c3ff3a56b5aca3d29",
+      "/workspace/work/videos/forty-forest-map/dubs/en/timeline.json": "5cbf3d2f6354a34055c8821f942fd9647a1861a91969feb49aff0131c91ad23a",
+      "/workspace/work/videos/forty-forest-map/dubs/en/fit.json": "11eb1c7d76bd9c7bc8469d1c3f15cbb16c60ee449d425c56be9ec4ba3dea7ce5",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/cache.json": "6e159a8ca0205432d6943605d70119fc3947d7f7a7f1448d9f0f5acb27a85e44",
+      "/workspace/work/videos/forty-forest-map/review/check.en.json": "9dfdadda49f3c3e16167df7aa29055455f4a673bcb44511323eeb2fbc49622e5",
+      "/workspace/work/videos/forty-forest-map/review/check-flags.en.json": "4155dedabc3fd1a1f3c481d0459d10f5a337271f2994f0ff0bb79029e401d4ea",
+      "/workspace/work/videos/forty-forest-map/dubs/en/delivery-measurement.json": "131b7f683352c8d3640237bc729f2de8bc74ac05e48ea9c17793dc57010eb804",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/8aw6.wav": "c81765e24e684009b5a888f505aa48a9bd195098cbd2123aaf358ed7d74688a7",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/gngj.wav": "5288e2fcad5c1dd6fee4395c3dd2e9ce11f26899659ebcccf36c7ac4d1626832",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ep85.wav": "17c47c5c0fed1e7f8f7d0fd912acd5f79ca76021eafc96d53a4e8041f35ca62d",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/jw6i.wav": "f1a4de9f7f8eb23de6b14f2a76c169ce6dad9123980695ae27b7ccc73de091f2",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/5ur9.wav": "c80b52cf3e9c33c62977736c768a6e492409b213c9896b439a9362c8c2fc378f",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/m2p6.wav": "4ca02cf05adf5b51b4267cc930140f503402f443afd93613a374481b298ebdf7",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/erqz.wav": "d43fba88487528eab8e7066130779a66eceee311bd23d5493d4c81466d6d4ff0",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/t4w3.wav": "b84a390705cf7ef01af2fcc66f87edb74cc12dd93cdd909353de8f5dad3ae0b9",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/66nz.wav": "8600f1f5169492d597ae51fbc7162dad5abe0c248cc26be9d00dc235f161a44f",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/3pse.wav": "ba10d652782a1f43a727ae167868dd9a6ca8285247e73fcf41b4c5fa8e0ef2bc",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/v9fh.wav": "a2ec17c26ee1b0f0b7cc1241e4c48fd046a96e139917586e5fe54f6138dbf20b",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/7id9.wav": "1c45afa8917704cc1d47a9ea016c5ec856cc096d31b9a12291c5c9a6ed13f8f6",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/2vcb.wav": "115f28715d72a29a0a50c75c02546038d2bef3e92f0499fd792689ce6bd25c51",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/yiya.wav": "ff64ea24fa0acf1bc60e24b81604c1f29d6096dc96aec59df31611e5dd2a33e1",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/rrgq.wav": "8fee730ddd979fff2e2392fd3f4939f9a6c5efb19e18c006f6c6a91a8590aef4",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/fbc5.wav": "c6aaa5275b633b71f372a9bf223b0a93c45e7a49fa1c5ac24a59305c359ae7c5",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/gsa7.wav": "67723683e85415cf8485a47386c481bf65925f1685c366f2eca854fb591e8c11",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/9wmz.wav": "80fb1b92293504ca022b2da2515488fbbc640ef0c7d0aecb10c7f71f1d7f6bf2",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/jkby.wav": "064e521383aec2ca6457445c2713ad96643b1a7486f597349f384459a5e4a935",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/5nt9.wav": "01c238bd6defb156518470ee85c7cbff9cc1987957449102722707cb5b4bf828",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/m8cb.wav": "0ab6e1a3dfb5f3f7e9a7f1f5539509fa3b294454615bdb1025707d6d220c7ead",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/p2ry.wav": "6a3806e854100111acdacddff6a4b4f9379d3ef22b6c52fc08734000377d7d1b",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/u5js.wav": "cf38d9739632343f64b067ca89956c990453887efbd96595fc080a218cb06f1b",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/7732.wav": "403f54dc3280d3347150662b75a0810814bc0bb8ace3ed2fd56e2fc7455a5c45",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/yi97.wav": "683f957f50cb88d2d304290b28cf454caeabac464eb05ee19b2cd9a7cb4db230",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/2k27.wav": "91244012565c6cf3ee80b511604f9654389f52aabbf0fe762f8d580f8af98ad3",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/vk36.wav": "3c4a2cb6902ac27e6d9b57951508fb16696ad6372771d33cdfb3dd0e9d4737eb",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/gfes.wav": "8f67160e96fd6d5db913abff06425bc79b31724c43a3fecfdbdb11945baf4589",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/e826.wav": "de4a236f7136ae9721bbbe6d4de4e9804970dc0d95b46e3daf8c7986b3248961",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/svhy.wav": "f2f7fa441b05126c9cd67cc16626d338a603d2b4e71d12c58a56601d4e9e1dbe",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/3gwz.wav": "c853f897a72b07dc47d5156f6f3dbe2a6923320722c00a46b6c29716c04f3caf",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/7iv8.wav": "d33fc40fdb54fc96c132b5309be3e000de1200b9b13d0e21abff10a391b09c7b",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/bxdi.wav": "9e906135735fcebda694e1139c32296a67edd65c5863240b2e339e8086eb9088",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/anxa.wav": "83bb2e246378b2603caec8026f71ef06218177bc9827fe589b573a347a643d2f",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/up9r.wav": "125240e1d3627668aa328f62d24e1f08adafb6f99e7de8a1fd1ffc5c3541b3ce",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/3p97.wav": "9b0912715651ba6caeec3c30e732c1d97d2e1508c13865ff6a5e838d88976f47",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/4av2.wav": "d4dc68079d04b8c80f3de46e2bf6f9341c0d4705c5477f8922ec83fbfff4ad79",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/8hpb.wav": "a31c4ae975b5dd9ed3c772da0c65d1bec99223909c6e58dffd73a6e35399f318",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ywu9.wav": "ecfe9c042be3a16e86649996bfdcf3375762c0a5553df0835a159ffb1444542e",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/u362.wav": "3da2b68ff7e61ea54c13144c6c0be01fe44b5817cf863a9da5b0d1097645779a",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/eym7.wav": "b3292498e0f8d446d42ce6162775c253bf3c8d0dc23f7193db2887a77468f73b",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/k3i2.wav": "6b0723a112cbe79667fddeaa798097198a531aded7e5ea74d64c845dd213edfc",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/p9sg.wav": "895633f28e83ca99f277f14585acee816ca242254616db0a80851510700b0fe3",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/dkq3.wav": "5267842b17f428ba6473bd94a6cef52eeeab751981d21aed15b2983ad7baa8a5",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/w86h.wav": "71054a281939114c4aefd1d0a02b0284e02e081cb561b112126c59fce06e718f",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/wh49.wav": "4df58d4ee793834b64641da31fe3697cbc72799d0d5f1cb01cb5ce688e425b98",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/6ybg.wav": "4586cdb3f928e2283ef748ad734d75307f4334429b4b8c2b0e38000379fd8618",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/xxju.wav": "30a152ed3df138b06860b4d71c4b2df72c01dd62cad1e650c299c1caa4de7361",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/endc.wav": "3f989344daa46d858501d70c28e3c80564ef91cd3e5f7b1e69bc09cf380bd6c8",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/appe.wav": "bff0e5f94a4712a6d088a479dd503b4bff99e7e30fea57760e2b5c5e07313b38",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/beg8.wav": "f6d0121b1e00b2fc654069f3e1ca263b355d9158739daaf8eaf6185f6944dd01",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/fe8z.wav": "438030e377999f5fe7491d0ba94b361226cd5ba36bb460907c25cbc87f8d7378",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ymf8.wav": "4bc7053fab50124d44d9cb21bb4dc1dce8a8ed19129c1a0429ad30ecda93e289",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/54sx.wav": "b5922b5197568759fffddffde25f1630bb62fa5f0fcbd22a287f11a557327db6",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/mfsh.wav": "65ddb78002b6a9c658d7584b1dc7a0c5bd79ffe07fc73816593a28ade9913011",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/578j.wav": "6374b5791a93766b8608f6c1ad7132e9548302c8686db968f1dedcb02e2db3a5",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/97h6.wav": "5ba4c21898d3c1ccb6971cb833f07d5fe5a3e9921f3f29d9892fe908b5dc318d",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/8mtz.wav": "5dae69d2eea186ccbeca9e194857bd0eb2b43e7f21730b50bac012d29107a8a0",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/4amm.wav": "130505f8980069feb4982439e84c976fcebe42bacff2ee69259e8833f78a770d",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ux8j.wav": "1fa2a3995dae880fed89a3ad4c0c4a9dbb0e4f1e2cfcce774859f52645e01523",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/y64h.wav": "82703a5b6635eb5cf446e2215f60fc2f7bea3e71222e080cffbdef25c44a744e",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/afyy.wav": "cb41e7e588382fe2649cfd176cc4953d45d68e25a0012e7472bb382f5ff2ae31",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/f2ze.wav": "ac3db0391787771c42c675b1b6eaf920da773b4cc1e86d05d0ef11c438451ead",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ckag.wav": "172ded66441b2f4cd809918b0915a87852531aba00a8c004f10cef1038927a76",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/n37p.wav": "38e5e1c8c4ec90330ff5db0bc4926ffe4adadfee07a90f8961e85e0a874e5b05",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ecb8.wav": "0ddd6c45c0d777091abdea1b93a63465857c4cb56ccf63aedb41cc78627d9a25",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/8k4a.wav": "156fe2dfa27a903cb0f50362025fc7631b56b80c5160e1514258bd49a4031a0d",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/z33x.wav": "2600c952fc5facbde744f28ac3064a3fa9a5b3f037cf2fad288e5217efd1a613",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/wnrz.wav": "24cab1e19baf6b818c4b4705b0322db4551c60fd884197f4739173baa910c46a",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ywz8.wav": "3ca104f5b90d1bd7f270a2d772af747ec57122dd9752eb4d900b92275171858a",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ww8v.wav": "6e91f44912fc786bc8cfbb90ee51523d782225e6c750ccb2e80038915ea984cf",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/mx7g.wav": "56cfeb69d0f3b47d148bc40f708a8e37e7ae5d38d28439c3f6d73d0177fc2869",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/7qfx.wav": "0f110730de5aa750e1bcb722a30cea68f41e70b9f2ba310cee60a0f3d1ac56fd",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/hbci.wav": "522e88df973e20c7f65b322264db2e771a43e6596453ed37da3f1ae54fc44fba",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/sbkg.wav": "7032dbc106074d73fa4a823080c783d8f064cba75e131ebd1092252d6c4e9956",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/upmh.wav": "dc4fb3c82af3884f2f335f594f631b86fa14b842d72734db95808fd4ecb1536c",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/vb62.wav": "e5ae6126b2e38ddf22e5a941b240e1aad62478a43ae7aa3bcf27d04b1c3a5aba",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/8m2e.wav": "8c9c467f62df5a41e178d6d5d404eed3febe9c7d06b67bccada8b5ffa91033fe",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/bs4s.wav": "d520e36f30027566d26fd57bb40913b8ec8013d9bede7d85bd7b59f0f28d06f3",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ci5j.wav": "1b5d30f70bc8a26e6d3fd7e85a5e36e133f56e85b01ffa00bc65559f76a947c1",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/6ss6.wav": "24d05658b6b81677f82dff0efcd32f86145b5901f3807ab192fc7dea019d9f39",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/rume.wav": "d3d696396d4289b47c92b0c1a3d8f15fb9e874a112ab7ac1f6389ac6889d2157",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/pvkj.wav": "799c63e1dd71a5cb82f74288dffe453534577430bda4d4178b14eca99fa7ab10",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/ncx4.wav": "a6d3ad6607e724cd64b9d813210965e8ad3325888e8e1d7dbccb37bf7e5f6a5b",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/j5kv.wav": "39a04ff24c540927c2e9c06b860973bc98ba389384973ae36d6217626ac0fc39",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/nqyj.wav": "1c87b6f572272b9230331d75796b3a18d296f7031682790e54f355da70e9e5a8",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/wfb2.wav": "8b94e0e8da2f46948bbd6d7bad56cf3eeadbea7386179b81e31be2e0fa090a2d",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/88pk.wav": "c2afa933be2b947d9a342fb1ff5eba3e5c78d2a0dfdb72f1ab887f5ea1dd1df4",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/bu6j.wav": "8696a10090c540a9fc9f94f13259f108ae2851cb3c97f6cae802bcd98eec8cb2",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/hr4b.wav": "ab86c06f6b53bb4eef77a8db1f1e4943974bc912ee297e7b27e910a2ea5add7b",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/4w7g.wav": "51e40f08516d9bbb3bfcf10eac431980b2d3e3bbf8552d2db6a6b60eb1bdb272",
+      "/workspace/work/videos/forty-forest-map/dubs/en/audio/39nc.wav": "11678e98fa2b201d1a77bda9c2c14614f1b21ddfcd1e9cd5c7e1255408cf40fe",
+      "/workspace/work/videos/forty-forest-map/dubs/en.m4a": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63"
+    },
+    "snapshot_signature": "224b631381c203c64bda359622486d867ebd066210a52a6ae0a38a9c3c4fe08f",
+    "meter_scope": "Existing actual encoded M4A measurement, SHA-bound to the actual bytes; no fresh loudness scan.",
+    "readiness_scope": "Checked requested M4A only; no CC/metadata/batch readiness or all-eight claim"
+  },
+  "final_review_id": "56c69b8f-3ee1-4c8d-9050-a507fe972185",
+  "before_review_sha256": "cc704a8c16c72d9717318c71aacdb9694c34b7f65a4cdcfdcf32d19d4b885e0d",
+  "server_upload_receipt": {
+    "complete": true,
+    "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+    "bytes": 13547232,
+    "parts": 4,
+    "parts_sent": 4,
+    "existing_blob_fast_path": false,
+    "sha_validation_scope": "Native assembly hashes uploaded parts and rejects SHA/size mismatches before complete=true."
+  },
+  "final_status": "pending",
+  "download_roles": [
+    {
+      "role": "dub_en",
+      "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+      "size": 13547232,
+      "content_type": "audio/mp4"
+    },
+    {
+      "role": "evidence_en_m4a",
+      "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+      "size": 13547232,
+      "content_type": "audio/mp4"
+    }
+  ],
+  "metadata_readback_verified": true,
+  "all_old_files_preserved": true,
+  "all_original_payload_fields_preserved": true,
+  "historical_main_qa_preserved_11_of_11": true,
+  "approval_changed": false,
+  "language_choice_changed": false,
+  "language_batch_submitted": false,
+  "standard_dubs_payload_changed": false,
+  "finished_at": "2026-10-25T20:52:20.469Z"
+}

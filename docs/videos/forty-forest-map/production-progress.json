@@ -1,0 +1,672 @@
+{
+  "observed_at": "2026-10-26T08:40:01.586422+00:00",
+  "status": "blocked",
+  "stage": "awaiting_owner_PT3cc1_and_ES9a36_provider_results_step1_no_replay",
+  "current_video_sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+  "speech_hash": "c6d70ecaef91a15d",
+  "documentation_refresh": {
+    "baseline_before_any_edit": {
+      "file": "/workspace/work/ai-tech-next/forty-docs-refresh-20261026/before-edit-archive.manifest.json",
+      "bytes": 113504,
+      "sha256": "e773b3668ad9035f83e95038eaeb2456952ab63ff987adacc0654fbb463eb4de"
+    },
+    "historical_docs": "history/before-official-v4-doc-refresh-20261026/archive-index.json",
+    "delivery_proofs_remain_historical_after_docs_change": true,
+    "source_video_voice_lexicon_data_and_4_accepted_targets_WAVs_changed": false,
+    "original_dirty_es_pt_files_modified_or_staged": false
+  },
+  "final_current_narration": {
+    "speech_hash": "c6d70ecaef91a15d",
+    "total_seconds": 512.7666666666667,
+    "body_before_outro_seconds": 501.03333333333336,
+    "checked_current_takes": 92,
+    "flags": 0,
+    "unchecked": 0,
+    "take_hashes_independently_verified": 92,
+    "exact_script": 63,
+    "same_sound_or_filler": 8,
+    "jev": 6,
+    "cleared_by_second_transcript": 15,
+    "initial_flags_progression": [
+      15,
+      8,
+      7,
+      0
+    ],
+    "receipt": "/workspace/work/videos/forty-forest-map/review/check-flags.json",
+    "receipt_sha256": "910d56f7fb88db69db2b9ce096c7fcc25b4017c86fec4ab4dcc02a0acb358019",
+    "strict_current_MASTER_proof": {
+      "proof_file": "/workspace/work/ai-tech-next/forty-master92-strict-current.2026-10-26T04-02-22-009Z.proof.json",
+      "proof_sha256": "11a0eb678c934a55964483178df770706c2f1d6b33b64a92ae8a41dc4cef0070",
+      "checked_current_fulltarget": 92,
+      "flags": 0,
+      "unchecked": 0,
+      "master_sha256": "51287e2d03921fe5da488590f23180257323c85b048c2f11cf35afe14f1773d7",
+      "in_memory_native_rebuild_exact": true,
+      "fresh_ASR": false
+    }
+  },
+  "final_film_produced": true,
+  "final_film": {
+    "path": "/workspace/work/videos/_forty-bookend-candidate/forty-forest-map/final.mp4",
+    "sha256": "564812bd2a172daab0782b95a8c19ab44e5ac0d567304767eeaa2f6aee46c40a",
+    "bytes": 47603425,
+    "frames": 16163,
+    "fps": 30,
+    "video_seconds": 538.7666666666667,
+    "AAC_container_seconds": 538.81,
+    "AAC_tail_after_video_seconds": 0.043333333333333335,
+    "width": 1920,
+    "height": 1080,
+    "branding_bookends_complete": true,
+    "retained_body_sha256": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+    "retained_body_bytes": 41255462
+  },
+  "assembly": {
+    "ok": true,
+    "integrated_lufs": -14.1,
+    "true_peak_dbtp": -2.8,
+    "slide_states": 89,
+    "longest_state_seconds": 11.7,
+    "PSNR_sampled_frames": 264,
+    "mechanical_audit_sha256": "529a6ccb3cf67a746e402a786f892db4f70f2965cec7fce63e5a3b2422368cfb"
+  },
+  "core_qa": {
+    "ok": false,
+    "passed": 10,
+    "total": 11,
+    "failed": [
+      "captions"
+    ],
+    "receipt": "receipts/official-v4-20261026/qa.json",
+    "receipt_sha256": "b14466b19eb9beb3f96ae84b08a538235a6763dcef29a356fd26d2629e2760d2",
+    "all_35_CPS_advisories_retained": true,
+    "checked_locale_CPS_advisories": 17,
+    "hard_stale_draft_locales": [
+      "es",
+      "pt"
+    ],
+    "native_inline_QA_function_return": 1,
+    "outer_manual_review_push_process_exit": 0,
+    "policy": {
+      "stance": 0.83,
+      "demo": 0.95,
+      "advice": 0.01,
+      "sponsor": 0.04
+    },
+    "manual_candidate": true,
+    "ready_to_publish": false
+  },
+  "historical_body_version": {
+    "final_film": {
+      "path": "/workspace/work/videos/forty-forest-map/final.mp4",
+      "sha256": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+      "frames": 15383,
+      "total_seconds": 512.7667,
+      "body_before_outro_seconds": 501.0333,
+      "bytes": 41255462,
+      "width": 1920,
+      "height": 1080,
+      "branding_bookends_complete": false
+    },
+    "core_qa": {
+      "ok": true,
+      "passed": 11,
+      "total": 11,
+      "receipt": "/workspace/work/videos/forty-forest-map/review/qa.json",
+      "receipt_sha256": "2996d2954442496ddbe1310832121d540f374aaf65a584f9ba138de07345855e",
+      "log": "/workspace/work/ai-tech-next/forty-qa-after-vi-pass.log",
+      "policy": {
+        "stance": 0.81,
+        "demo": 0.94,
+        "advice": 0.01,
+        "sponsor": 0.04
+      },
+      "caption_scope": "Historical frozen-main QA11/11 and then-current nine CC files; not a readiness claim for later EN/JA/KO dubs, CC or packages. VI CC was regenerated at 19:22; after all eight audio tracks complete, regenerate/review every language CC against its actual timing and retain advisories.",
+      "public_receipt": "qa-after-verified-vi.json",
+      "historical_main_qa": true
+    },
+    "old_backend_fields_are_historical": {
+      "page": "https://mokaair.com/zh-TW/admin/videos?video=forty-forest-map",
+      "main_audio_review": "pending",
+      "final_review_sent": true,
+      "final_remote_status": "pending",
+      "final_review_id": "56c69b8f-3ee1-4c8d-9050-a507fe972185",
+      "main_delivered_at": "2026-10-25T19:26:39.810Z",
+      "main_role": "evidence_zh_tw_1080p_mp4",
+      "vi_download_role": "evidence_vi_m4a",
+      "main_upload_server_assembly_sha_and_size_validated": true,
+      "authenticated_role_metadata_readback_verified": true,
+      "remote_binary_stream_download_performed": false,
+      "verification_scope": "Normal checked-audio-only review POST, native server assembly SHA/size validation and authenticated role metadata readback. No remote binary stream/download SHA verification. Historical main QA11/11 preserved; final pending and choices unchanged.",
+      "local_final_adopted_at": "2026-10-25T19:26:40.105Z",
+      "local_final_adoption_authority": "Standing owner delegation; normal local final gate adoption, not remote UI approval.",
+      "remote_approval_changed": false,
+      "language_batch_submitted": false,
+      "language_delivery_verified": false,
+      "checked_downloadable_foreign_locales": [
+        "vi",
+        "en",
+        "ja",
+        "ko"
+      ],
+      "main_delivery_dod_complete": true,
+      "all_eight_delivery_dod_complete": false,
+      "delivery_dod_complete": false,
+      "public_receipt": "main-delivery-verification.json",
+      "public_receipt_sha256": "66afab7c09216e29f5e0521c1cc7cb3d6df34a2bef6274413f410f7cf07bd3e3",
+      "raw_receipts": [
+        {
+          "path": "/workspace/work/ai-tech-next/attach-forty-main-download.result.json",
+          "sha256": "e5caa24b0cffc75ff93aa340f9ef3f49cd079d403bffbc8264ff57863a55c530"
+        },
+        {
+          "path": "/workspace/work/ai-tech-next/forty-main-and-vi-downloads.json",
+          "sha256": "33dee9e3a2f55887b3fa0d636372b3f665aa048a5f2fc5383c46a741ed0224e2"
+        },
+        {
+          "path": "/workspace/work/ai-tech-next/deliver-checked-forty-en.result.2026-10-25T20-52-02-573Z.json",
+          "sha256": "3211bb800cb6f2d7eddc434d938c23f4c1ead55c2fd209f1e98723d1fa2127cc"
+        },
+        {
+          "path": "/workspace/work/ai-tech-next/deliver-checked-forty-ja.result.2026-10-25T21-54-35-658Z.json",
+          "sha256": "ba21ef011b4dab323777485bb85d265e31ca96a1129e62e80f7cd1e78d70ff04"
+        },
+        {
+          "path": "/workspace/work/ai-tech-next/deliver-checked-forty-ko.result.2026-10-25T23-57-27-322Z.json",
+          "sha256": "ca8d813c8545c5058b59f344c6d6c883e37e482178949f1286bdd506fc5139e9"
+        }
+      ],
+      "checked_downloadable_foreign_audio_count": 4,
+      "en_download_roles": [
+        "dub_en",
+        "evidence_en_m4a"
+      ],
+      "en_delivered_at": "2026-10-25T20:52:20.469Z",
+      "en_delivery_receipt": "/workspace/work/ai-tech-next/deliver-checked-forty-en.result.2026-10-25T20-52-02-573Z.json",
+      "en_delivery_receipt_sha256": "3211bb800cb6f2d7eddc434d938c23f4c1ead55c2fd209f1e98723d1fa2127cc",
+      "all_old_files_and_payload_qa_preserved_after_en": true,
+      "standard_dubs_payload_changed_by_en": false,
+      "ja_download_roles": [
+        "dub_ja",
+        "evidence_ja_m4a"
+      ],
+      "ja_delivered_at": "2026-10-25T21:54:49.757Z",
+      "ja_delivery_receipt": "/workspace/work/ai-tech-next/deliver-checked-forty-ja.result.2026-10-25T21-54-35-658Z.json",
+      "ja_delivery_receipt_sha256": "ba21ef011b4dab323777485bb85d265e31ca96a1129e62e80f7cd1e78d70ff04",
+      "all_old_files_and_payload_qa_preserved_after_ja": true,
+      "standard_dubs_payload_changed_by_ja": false,
+      "main_delivery_dod_scope": "Historical delivered/check zh-TW body-only version; excludes formal branding bookends and complete all-eight delivery.",
+      "ko_download_roles": [
+        "dub_ko",
+        "evidence_ko_m4a"
+      ],
+      "ko_delivered_at": "2026-10-25T23:57:42.977Z",
+      "ko_delivery_receipt": "/workspace/work/ai-tech-next/deliver-checked-forty-ko.result.2026-10-25T23-57-27-322Z.json",
+      "ko_delivery_receipt_sha256": "ca8d813c8545c5058b59f344c6d6c883e37e482178949f1286bdd506fc5139e9",
+      "ko_public_delivery_receipt": "ko-backend-delivery.json",
+      "ko_public_delivery_receipt_sha256": "ca8d813c8545c5058b59f344c6d6c883e37e482178949f1286bdd506fc5139e9",
+      "all_old_files_and_payload_qa_preserved_after_ko": true,
+      "standard_dubs_payload_changed_by_ko": false
+    },
+    "actual_current_old_review_status": "approved",
+    "review_id": "56c69b8f-3ee1-4c8d-9050-a507fe972185",
+    "old_approved_files": 12,
+    "old_approved_QA": {
+      "ok": true,
+      "passed": 11,
+      "total": 11
+    },
+    "old_approved_status_QA_files_choices_preserved": true
+  },
+  "branding": {
+    "status": "official_v4_delivered",
+    "formal_official_package_available": true,
+    "asset_package_sha256": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "placed_branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "intro_frames": 150,
+    "intro_seconds": 5,
+    "intro_after_first_chapter_body_frame": 682,
+    "outro_frames": 630,
+    "outro_seconds": 21,
+    "historical_body_preserved": true,
+    "all_new_rules_complete": false
+  },
+  "narrative_current92": {
+    "passed": false,
+    "yes": 9,
+    "total": 13,
+    "failed": [
+      "no_toc",
+      "chapters_link",
+      "no_recap",
+      "no_detour"
+    ],
+    "decision": "Coordinator adopts documented teaching tradeoffs under standing user delegation; no score or remote approval was changed.",
+    "receipt": "narrative-after-audio-reword1-result.json",
+    "receipt_sha256": "ddb2e9da181574a8fc8d9964387d8f22e35a710a751f117f1dffa80a69c122b0",
+    "fresh_blind": false
+  },
+  "source_link_fix": {
+    "receipt": "source-link-fix.json",
+    "receipt_sha256": "2bbb119d428693d5c9b71568d83ffe791e51f7cafb598aaad9ec8bf65a271eb9",
+    "initial_qa": "10/11; only doi.org HTTP403 failed",
+    "verified_official_v1_url": "https://api.figshare.com/v2/articles/32288616/versions/1",
+    "method": "GET",
+    "status": 200,
+    "plain_doi": "10.25452/figshare.plus.32288616.v1",
+    "cc_by_4_asset_credits": 6,
+    "all92_lines_voice_asset_bytes_and_final_bytes_unchanged": true,
+    "note": "The pending-QA field in source-link-fix.json is its historical write-time state; the later native QA receipt is 11/11. No claim that DOI/HTML now returns 200."
+  },
+  "local_language_choice": {
+    "locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "parts": [
+      "metadata",
+      "captions",
+      "dub"
+    ],
+    "authority": "Standing user instruction; local record, not a remote UI click or saved server choice."
+  },
+  "localization": {
+    "locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "current_lines_per_locale": 92,
+    "metadata_text_complete_locales": 8,
+    "checked_foreign_audio_locales": [
+      "en",
+      "ja",
+      "ko",
+      "vi"
+    ],
+    "checked_foreign_audio_count": 4,
+    "checked_foreign_three_component_download_delivery_locales": [
+      "en",
+      "ja",
+      "ko",
+      "vi"
+    ],
+    "checked_foreign_three_component_download_delivery_count": 4,
+    "delivered_CC_and_title_description_locales": [
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "vi"
+    ],
+    "caption_manifest_sha256": "dcfcf1217f2e8b8d83973a4ba8e5442514e34c71803e91144ae950fb885600ee",
+    "caption_counts": {
+      "zh-TW": {
+        "cues": 97,
+        "timing": "narration",
+        "CPS_advisories": 0
+      },
+      "en": {
+        "cues": 98,
+        "timing": "dub",
+        "CPS_advisories": 0
+      },
+      "ja": {
+        "cues": 121,
+        "timing": "dub",
+        "CPS_advisories": 0
+      },
+      "ko": {
+        "cues": 114,
+        "timing": "dub",
+        "CPS_advisories": 1
+      },
+      "vi": {
+        "cues": 101,
+        "timing": "dub",
+        "CPS_advisories": 16
+      }
+    },
+    "captions_chapter_times": [
+      "00:00",
+      "00:27",
+      "02:05",
+      "02:57",
+      "04:38",
+      "07:03",
+      "08:26"
+    ],
+    "global_CPS_advisories": 35,
+    "delivered_locale_CPS_advisories": 17,
+    "all_eight_ready": false,
+    "native_language_batch_submitted": false,
+    "native_package_ready_claimed": false,
+    "current_audio": {
+      "en": {
+        "locale": "en",
+        "file": "/workspace/work/videos/_forty-bookend-candidate/forty-forest-map/dubs/en.m4a",
+        "sha256": "a127795f881fcb74adc5d096df71e4d62df5f32c0addd4133fa85e6e701bb277",
+        "bytes": 14389761,
+        "checked_current_accepted": 92,
+        "flags": 0,
+        "unchecked": 0,
+        "full_source_lines": 92,
+        "fit_windows": 89,
+        "tempo_max": 1.21,
+        "translation_hash": "bfff4c39fe664d8e",
+        "speech_fingerprint": "438272ab2d0b0b8f",
+        "duration": 538.81,
+        "measurement": {
+          "locale": "en",
+          "file": "dubs/en.m4a",
+          "bytes": 14389761,
+          "sha256": "a127795f881fcb74adc5d096df71e4d62df5f32c0addd4133fa85e6e701bb277",
+          "duration": 538.81,
+          "codec": "aac",
+          "sample_rate": 48000,
+          "channels": 2,
+          "integrated": -14.1,
+          "truePeak": -2.8,
+          "ok": true,
+          "problems": [],
+          "measured_at": "2026-10-26T04:29:31.208Z",
+          "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+          "target_video_frames": 16163,
+          "target_video_seconds": 538.7666666666667,
+          "body_frames": 15383,
+          "intro_at_body_frame": 682,
+          "network_calls": 0,
+          "new_TTS_or_ASR": false
+        },
+        "evidence_sha256": {
+          "timeline": "3dc0e2b71482399267b19ff7fe9aaa87d4c2d931f2c88ba5bbd5f522093d71e2",
+          "fit": "11eb1c7d76bd9c7bc8469d1c3f15cbb16c60ee449d425c56be9ec4ba3dea7ce5",
+          "measurement": "37a1b8a68c4ef6dc752abc19af6265901305559e746b97ef9fbbc1d3477c00d2",
+          "check": "9dfdadda49f3c3e16167df7aa29055455f4a673bcb44511323eeb2fbc49622e5",
+          "flags": "4155dedabc3fd1a1f3c481d0459d10f5a337271f2994f0ff0bb79029e401d4ea",
+          "cache": "6e159a8ca0205432d6943605d70119fc3947d7f7a7f1448d9f0f5acb27a85e44",
+          "raw_manifest": "f0d0c960bb6b4dee60140baf4f8b1f84dcf233f12919b5d4c5b03ab65a47d674"
+        },
+        "cached_ASR_reused": true,
+        "fresh_ASR": false
+      },
+      "ja": {
+        "locale": "ja",
+        "file": "/workspace/work/videos/_forty-bookend-candidate/forty-forest-map/dubs/ja.m4a",
+        "sha256": "00b4ff60773a15b9714b6f13bb85cfb4a657c4d74abc7c2c269f9afd3e7f6c03",
+        "bytes": 15639130,
+        "checked_current_accepted": 92,
+        "flags": 0,
+        "unchecked": 0,
+        "full_source_lines": 92,
+        "fit_windows": 89,
+        "tempo_max": 1.19,
+        "translation_hash": "4c1e48d66bcd3684",
+        "speech_fingerprint": "097a0075247e00cc",
+        "duration": 538.81,
+        "measurement": {
+          "locale": "ja",
+          "file": "dubs/ja.m4a",
+          "bytes": 15639130,
+          "sha256": "00b4ff60773a15b9714b6f13bb85cfb4a657c4d74abc7c2c269f9afd3e7f6c03",
+          "duration": 538.81,
+          "codec": "aac",
+          "sample_rate": 48000,
+          "channels": 2,
+          "integrated": -14.1,
+          "truePeak": -2.9,
+          "ok": true,
+          "problems": [],
+          "measured_at": "2026-10-26T04:29:40.080Z",
+          "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+          "target_video_frames": 16163,
+          "target_video_seconds": 538.7666666666667,
+          "body_frames": 15383,
+          "intro_at_body_frame": 682,
+          "network_calls": 0,
+          "new_TTS_or_ASR": false
+        },
+        "evidence_sha256": {
+          "timeline": "6f919438ebf54fd8c824666dd28cf6ac9abc21bdbbca555d86334b8676ccc067",
+          "fit": "aedd7297f2851332d06dea7791b8cd2e20a559abd5073cdb6a590b3a0148307f",
+          "measurement": "4d581b9a8d05cb551907931c45c050e8af45891c8eae1847b36aa4cad0d407c0",
+          "check": "2ad07c50446628ad395ec43e724299c1bb6a67b881336d68ea19a0fe29e9120f",
+          "flags": "9e613f4f186f1321ac8ef25928f7f16ffc27e1fd48e33a7cc1452bec64c479e9",
+          "cache": "c4dbddf0763da8ddb6288925635750bcb18af6794790f580e4912278446cbe8e",
+          "raw_manifest": "f0d0c960bb6b4dee60140baf4f8b1f84dcf233f12919b5d4c5b03ab65a47d674"
+        },
+        "cached_ASR_reused": true,
+        "fresh_ASR": false
+      },
+      "ko": {
+        "locale": "ko",
+        "file": "/workspace/work/videos/_forty-bookend-candidate/forty-forest-map/dubs/ko.m4a",
+        "sha256": "5221939a899018fbdfd6e80fce6dded4d294a88148e97fb158995e264d5e879d",
+        "bytes": 13617826,
+        "checked_current_accepted": 92,
+        "flags": 0,
+        "unchecked": 0,
+        "full_source_lines": 92,
+        "fit_windows": 89,
+        "tempo_max": 1.14,
+        "translation_hash": "e76d57184885fec4",
+        "speech_fingerprint": "5da6d39d9b80ae30",
+        "duration": 538.81,
+        "measurement": {
+          "locale": "ko",
+          "file": "dubs/ko.m4a",
+          "bytes": 13617826,
+          "sha256": "5221939a899018fbdfd6e80fce6dded4d294a88148e97fb158995e264d5e879d",
+          "duration": 538.81,
+          "codec": "aac",
+          "sample_rate": 48000,
+          "channels": 2,
+          "integrated": -14.1,
+          "truePeak": -2.5,
+          "ok": true,
+          "problems": [],
+          "measured_at": "2026-10-26T04:29:51.325Z",
+          "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+          "target_video_frames": 16163,
+          "target_video_seconds": 538.7666666666667,
+          "body_frames": 15383,
+          "intro_at_body_frame": 682,
+          "network_calls": 0,
+          "new_TTS_or_ASR": false
+        },
+        "evidence_sha256": {
+          "timeline": "9847ccd860c584940cbfbc5d207a5c6880e67e07c1d212a9d25fed3d367053e6",
+          "fit": "b655459a3ce70e67a179f8fa2329465342fa4c4a7def42f71c5c3b2e62ae815b",
+          "measurement": "ebfb8564c87be6ad65920ce6fb2474e8f53ca91f9693b7ea6f716a9fb7566b26",
+          "check": "1f62948bb0e0dc5840733156ba6efd3d7cdeea6cde4c27c97f059d5eb7d3f413",
+          "flags": "e6bde75e09a5f859b2e0affd24f91df3eb46322961a0ee080f751cceb1b27131",
+          "cache": "8b231260f32c9fa568175a26af931097bf672aade706ddba625aff82513c7405",
+          "raw_manifest": "f0d0c960bb6b4dee60140baf4f8b1f84dcf233f12919b5d4c5b03ab65a47d674"
+        },
+        "cached_ASR_reused": true,
+        "fresh_ASR": false
+      },
+      "vi": {
+        "locale": "vi",
+        "file": "/workspace/work/videos/_forty-bookend-candidate/forty-forest-map/dubs/vi.m4a",
+        "sha256": "9eb888015cbf0b710950c1ea741a8a8f9b3caf790ce342c9acf4bdf8b3b98817",
+        "bytes": 12998465,
+        "checked_current_accepted": 92,
+        "flags": 0,
+        "unchecked": 0,
+        "full_source_lines": 92,
+        "fit_windows": 89,
+        "tempo_max": 1.1,
+        "translation_hash": "4b427c0fa1ee4bf8",
+        "speech_fingerprint": "cac5b8defbb86686",
+        "duration": 538.81,
+        "measurement": {
+          "locale": "vi",
+          "file": "dubs/vi.m4a",
+          "bytes": 12998465,
+          "sha256": "9eb888015cbf0b710950c1ea741a8a8f9b3caf790ce342c9acf4bdf8b3b98817",
+          "duration": 538.81,
+          "codec": "aac",
+          "sample_rate": 48000,
+          "channels": 2,
+          "integrated": -14.1,
+          "truePeak": -2.9,
+          "ok": true,
+          "problems": [],
+          "measured_at": "2026-10-26T04:30:01.629Z",
+          "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+          "target_video_frames": 16163,
+          "target_video_seconds": 538.7666666666667,
+          "body_frames": 15383,
+          "intro_at_body_frame": 682,
+          "network_calls": 0,
+          "new_TTS_or_ASR": false
+        },
+        "evidence_sha256": {
+          "timeline": "046abd373bfe8e12048aca11caee621c753700b9b1e2558c83e70441f621532f",
+          "fit": "77fe45fe311718cf247334dd64af9c540bd56eed8db5e0c528d16c56f681f30b",
+          "measurement": "05e7d6b7a3913fa367418a04cc44ae8ebe984de0e99e68d31e427ebe1d57c8cc",
+          "check": "3917bab12be722284bfc7514a77b88e46f50cd5fdadc36c5da45ed777916de19",
+          "flags": "afa5cb473255bc78fd19401f6e9821f30243cfc0d81bee8c8e25ae59ec91edf0",
+          "cache": "072085374815ba2a559e7cdd5be9cc33ea6200712b2eb6ab43bc27c9f59e8a43",
+          "raw_manifest": "f0d0c960bb6b4dee60140baf4f8b1f84dcf233f12919b5d4c5b03ab65a47d674"
+        },
+        "cached_ASR_reused": true,
+        "fresh_ASR": false
+      }
+    },
+    "ES": "Held separate unknown HTTP502 request 9a36/journal3935. No replay or charge inference. Current ES draft track is stale; not checked/delivered on branded version.",
+    "PT": {
+      "status": "held_unknown_provider_outcome",
+      "native_current_audio_PASS": false,
+      "current_branded_download_delivered": false,
+      "actual_pid": 258624,
+      "started_at": "2026-10-26T06:50:04.672149+00:00",
+      "finished_at": "2026-10-26T06:50:36.418431+00:00",
+      "actual_exit_code": 3,
+      "native_processes_started": 1,
+      "completed_native_stage": null,
+      "actual_child_exit_waited": true,
+      "raw_SHA_changed_count": 0,
+      "provider_billable_total": "UNKNOWN_NOT_ZERO_CLAIM",
+      "Mokaair_HTTP_status_reported_by_native_failure_text": 502,
+      "provider_HTTP_status_charge_audio_result": "UNKNOWN",
+      "raw92_unchanged": true,
+      "logical_original_retake_round": 1,
+      "shorten_rounds": 2,
+      "reword_rounds": 0,
+      "completed_native_groups_from_log": 0,
+      "actual_native_synthesized": null,
+      "actual_native_billable_characters": null,
+      "held_journal_sha256": "b9d12c0e77dc02ec913bf8f23b82089e5172ae93675b24f39dea14a31203f75d",
+      "fit_complete": false,
+      "audio_checked": false,
+      "new_current_meter_performed": false,
+      "later_ASR_QA_TTS_backend_started": false,
+      "canonical2132_and_source74_core329_unchanged": true,
+      "old_ES_unknown_separate_unchanged": true,
+      "root_original_driver_field_correction": "Native failure text does report HTTP502; this is the Mokaair response indication, not the upstream provider outcome or invoice. Original driver receipt is preserved unchanged."
+    },
+    "ID": "92-line reviewed text exists; no genuine checked M4A or current CC delivery.",
+    "TH": "92-line reviewed text exists; no genuine checked M4A or current CC delivery."
+  },
+  "backend": {
+    "page": "https://mokaair.com/zh-TW/admin/videos?video=forty-forest-map",
+    "final_review_id": "95bd4a89-2f84-4b44-8c54-9d98e1b4676d",
+    "final_remote_status": "pending",
+    "current_roles": 37,
+    "main_and_four_M4As_finished_at": "2026-10-26T05:24:15.249Z",
+    "CC_and_title_description_finished_at": "2026-10-26T06:02:27.467Z",
+    "saved_authenticated_readback_at": "2026-10-26T06:02:26.141214Z",
+    "main_delivery_receipt": {
+      "file": "/workspace/work/ai-tech-next/attach-forty-branded-v4-main-and-checked-dubs.root-result.json",
+      "sha256": "de3f67369239428ba714b8ff16d7d2bd4ee4ba78bc6e94bee2e87b9416e45268",
+      "bytes": 1249613
+    },
+    "CC_delivery_receipt": {
+      "file": "/workspace/work/ai-tech-next/deliver-forty-branded-v4-checked-caption-assets.root-result.json",
+      "sha256": "f9b12728187f34f6efbc55c3ea90471376a3d2704cb448237f8284ffdbb3f981",
+      "bytes": 54271
+    },
+    "saved_authenticated_project_snapshot": {
+      "file": "/workspace/work/ai-tech-next/forty-after-branded-checked-CC.current-project.json",
+      "sha256": "4587ae3ab58da9fa4aaf9a2b74e410256b60bb50a97a42c8ba0d4c02ce3c0aed",
+      "bytes": 162797
+    },
+    "summary": "receipts/official-v4-20261026/actual-delivery-and-37-download-roles.summary.json",
+    "normal_server_assembly_SHA_size_and_authenticated_role_metadata_verified": true,
+    "remote_binary_stream_download_performed": false,
+    "remote_CAS_available": false,
+    "all_12_previous_current_refs_and_payload_preserved": true,
+    "old_approved_12_refs_status_QA_choices_preserved": true,
+    "server_approval_changed_by_helpers": false,
+    "language_batch_submitted": false
+  },
+  "PT_unknown_provider_outcome": {
+    "summary": "receipts/official-v4-20261026/PT-v3-unknown-provider-outcome.summary.json",
+    "request_body_sha256": "3cc1ce6b7a4c1026cc52686be17962a255277ad86f795c46c88378068c0ee456",
+    "provider_billing": "UNKNOWN",
+    "zero_provider_charge_claimed": false,
+    "raw_WAV_SHA_changed": 0,
+    "stage_completed": null,
+    "native_exit": 3,
+    "logical_original_retake_round": 1,
+    "shorten_rounds": 2,
+    "reword_rounds": 0,
+    "hold": {
+      "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384",
+      "held": true,
+      "updated_at": "2026-10-26T07:00:51.807131+00:00",
+      "not_before": "2026-10-26T07:50:36.418431+00:00",
+      "elapsed_not_before_never_resolves_unknown_request": true,
+      "automatic_TTS_replay_authorized": false,
+      "previous_hold_archived_sha256": "e8ac0335a7fb3b324dd93a3e2d5202ab9518807855a43d98108b853073f9b672",
+      "old_ES_unknown_hold_separate": true
+    },
+    "no_replay_without_real_outcome_even_after_not_before": true
+  },
+  "pending": [
+    "Owner must supply genuine per-request PT3cc1 and separately ES9a36 completion/charge/usage or recoverable audio facts. Both current owner form fields remain blank; stop at step1.",
+    "Resolve PT3cc1 actual upstream usage/outcome or recoverable answer without replay/forget/clearing held journal; elapsed07:50 never settles uncertainty.",
+    "Resolve separate older ES9a36/journal3935 unknown request without replay; do not treat PT hold or a successful GET as its resolution.",
+    "Only after genuine provider-outcome facts and a separate bounded root release may normal remaining audio production continue. Preserve retake/reword/fit/audio gates.",
+    "Finish and independently audit ES/PT/ID/TH actual current 92-line M4As, then deliver their complete metadata and actual-timing CC.",
+    "Retain current QA false10/11, ES/PT stale errors and all reading-speed advisories; a real future normal QA/package/language batch must establish its own results."
+  ],
+  "youtube_publication_performed": false,
+  "git_merge_performed": false,
+  "deployment_performed": false,
+  "main_frozen": true,
+  "final_film_delivered_to_backend": true,
+  "main_delivery_dod_complete": true,
+  "main_delivery_dod_scope": "Genuine new official-v4 full1080 main delivered to pending manual review; QAfalse10/11 retained.",
+  "all_eight_foreign_delivery_dod_complete": false,
+  "overall_complete": false,
+  "owner_billing_pause": {
+    "receipt": "receipts/owner-billing-pause-20261026.json",
+    "receipt_sha256": "6c771295245a26e311a8b8849b7dd933f2d5bebca7a15a0d6435537bb9e0b1c3",
+    "observed_at_Asia_Taipei": "2026-10-26T16:40:01.586422+08:00",
+    "stop_step": 1,
+    "PT_3cc1_provider_result": null,
+    "ES_9a36_provider_result": null,
+    "both_owner_form_fields_blank": true,
+    "no_charge_or_usage_inference": true,
+    "owner_and_branch_retained": true,
+    "existing_four_checked_deliveries_unchanged": true,
+    "next_four_audio_production_started": false,
+    "owner_reported_tool_updates_not_integrated_or_run": true,
+    "waiting_for_missing_facts_not_routine_approval": true
+  }
+}

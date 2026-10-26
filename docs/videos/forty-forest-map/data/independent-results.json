@@ -1,0 +1,604 @@
+{
+  "checked_utc": "2026-10-25T14:58:42.277648+00:00",
+  "scope": "independent bounded public read and manual Zstandard/predictor decode; no full COG/archive download; no model or paid API call",
+  "all_checks_pass": true,
+  "checks": [
+    {
+      "check": "remote_object_generation_matches",
+      "pass": true,
+      "details": {
+        "name": "export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+        "generation": "1777582191968217",
+        "size": "7293206",
+        "md5Hash": "/+qFVW6EBHvCe15/Zjd1SA=="
+      }
+    },
+    {
+      "check": "remote_object_size_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "remote_object_manifest_md5_matches",
+      "pass": true,
+      "details": "Manifest comparison only, not a full-object MD5 recomputation"
+    },
+    {
+      "check": "fresh_range_206_bytes=0-65535",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_content_range_bytes=0-65535",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_bytes_bytes=0-65535",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_sha_bytes=0-65535",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_206_bytes=4416787-4449437",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_content_range_bytes=4416787-4449437",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_bytes_bytes=4416787-4449437",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_sha_bytes=4416787-4449437",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_206_bytes=6384356-6435997",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_content_range_bytes=6384356-6435997",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_bytes_bytes=6384356-6435997",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_sha_bytes=6384356-6435997",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_206_bytes=6803030-6803185",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_content_range_bytes=6803030-6803185",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_bytes_bytes=6803030-6803185",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_sha_bytes=6803030-6803185",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_206_bytes=6936849-6937609",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_content_range_bytes=6936849-6937609",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_bytes_bytes=6936849-6937609",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_sha_bytes=6936849-6937609",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_206_bytes=7143959-7153353",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_content_range_bytes=7143959-7153353",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_bytes_bytes=7143959-7153353",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "fresh_range_sha_bytes=7143959-7153353",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "five_separate_planes",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "full_resolution_zstd_horizontal_predictor",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "derived_tile_indices_match",
+      "pass": true,
+      "details": [
+        46,
+        100,
+        154,
+        208,
+        262
+      ]
+    },
+    {
+      "check": "one_compressed_tile_for_each_plane",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "tile_offset_0",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "tile_offset_1",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "tile_offset_2",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "tile_offset_3",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "tile_offset_4",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "manual_zstd_predictor_equals_fresh_gdal_decode",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "original_affine_matches_json",
+      "pass": true,
+      "details": [
+        10.0,
+        0.0,
+        317440.0,
+        0.0,
+        10.0,
+        2692000.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    },
+    {
+      "check": "source_crs_epsg32651",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "positive_y_step_south_up",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_independent_pixels_equal_json",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_all_valid_pixels",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_other_array_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_argmax_array_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_scores_sum_one_all_pixels",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_six_scores_range_all_pixels",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_sample_stored_five",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_sample_other",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_official_class_order_in_json",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_sample_all_six_scores",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_window_transform_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_pixel_center_wgs84_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_complete_crop_values_match",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_complete_crop_transform_crs",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "A_complete_crop_metadata",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_independent_pixels_equal_json",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_all_valid_pixels",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_other_array_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_argmax_array_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_scores_sum_one_all_pixels",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_six_scores_range_all_pixels",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_sample_stored_five",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_sample_other",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_official_class_order_in_json",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_sample_all_six_scores",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_window_transform_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_pixel_center_wgs84_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_complete_crop_values_match",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_complete_crop_transform_crs",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_complete_crop_metadata",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "B_selection_first_row_major_minimum_matches",
+      "pass": true,
+      "details": [
+        4012,
+        2295
+      ]
+    },
+    {
+      "check": "B_selection_searched_valid_count_matches",
+      "pass": true,
+      "details": null
+    },
+    {
+      "check": "input_files_unchanged_during_independent_check",
+      "pass": true,
+      "details": null
+    }
+  ],
+  "original_inputs_sha256": {
+    "actual-roi-result.json": "867aa186e25b6a59ea5dcf32a100646d68497fa064d177e674f2674f42a362ba",
+    "actual-uncertain-roi-result.json": "4ebd1c412fe85576277d0b8c4ab96fce31254abe41b6c07ba3ca203220db101a",
+    "actual-2020-10x10-roi.tif": "05b05f2ea81849d620036994190d24d500684cad1dc70d402925074f4725f9d7",
+    "actual-2020-uncertain-10x10-roi.tif": "cecd23a1aab413fa4dbeb339e2924793a3e86262f560f70a6549298780092271",
+    "read_actual_roi.py": "6699a647cada902f8022b9fb840ccab1f096b0d216ceddf0f8bdcf826f3ea372",
+    "find_uncertain_roi.py": "b7027763ffe6961c71f1617d34ef5f2a60d5381f5bcf4cb5a7c8482791695b05",
+    "render_real_data_figure.py": "4b5130c4550861d2dae81ff047ab874266c953a37d43a593a7da7f4cf74f6526",
+    "real-forty-2020-two-rois.png": "2d08ccf33eff293e4b8040a9cfa940612dc2d976f6a3f485c104f56636719190",
+    "real-forty-2020-two-rois.svg": "8ee820b92e0734b5c905579d0c118ed109ac9051dab172c9d0d9eadad683de66"
+  },
+  "remote_object_metadata": {
+    "name": "export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif",
+    "generation": "1777582191968217",
+    "size": "7293206",
+    "md5Hash": "/+qFVW6EBHvCe15/Zjd1SA=="
+  },
+  "network": [
+    {
+      "url": "https://storage.googleapis.com/storage/v1/b/nature-trace/o/export_rasters%2Fforest_typology_2020_v1_0%2Fraster_51R_20_1_4.tif?fields=name,size,generation,md5Hash",
+      "status": 200,
+      "content_range": null,
+      "bytes": 177,
+      "sha256": "45cd60353994254a55d2652f480717155d504c9a6d36024a8cffdd0e5692c9c9"
+    },
+    {
+      "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif?generation=1777582191968217",
+      "status": 206,
+      "content_range": "bytes 0-65535/7293206",
+      "bytes": 65536,
+      "sha256": "67f858ed4a840e7433ccb5cdcd85b95cf86aa0be433a126a75a4ffcda24484af"
+    },
+    {
+      "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif?generation=1777582191968217",
+      "status": 206,
+      "content_range": "bytes 4416787-4449437/7293206",
+      "bytes": 32651,
+      "sha256": "a2cb24199d8d561ca85b694ae7cfdcb46465f30e209855e57313e139409750b1"
+    },
+    {
+      "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif?generation=1777582191968217",
+      "status": 206,
+      "content_range": "bytes 6384356-6435997/7293206",
+      "bytes": 51642,
+      "sha256": "125bca7d6028168605a350425525102cf019a0ad15a70706dd5f75c88c9a2e8f"
+    },
+    {
+      "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif?generation=1777582191968217",
+      "status": 206,
+      "content_range": "bytes 6803030-6803185/7293206",
+      "bytes": 156,
+      "sha256": "8e9329964025a6447d7ecedca5f4bfa399634778962f807bf710823981a5e291"
+    },
+    {
+      "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif?generation=1777582191968217",
+      "status": 206,
+      "content_range": "bytes 6936849-6937609/7293206",
+      "bytes": 761,
+      "sha256": "e768dfb8f2eb20ad4e6dcecb8499005aea491591c1ed449192e17487bbee2f12"
+    },
+    {
+      "url": "https://storage.googleapis.com/nature-trace/export_rasters/forest_typology_2020_v1_0/raster_51R_20_1_4.tif?generation=1777582191968217",
+      "status": 206,
+      "content_range": "bytes 7143959-7153353/7293206",
+      "bytes": 9395,
+      "sha256": "8509481e57cc5c8711de560fa24b51011644fa773a93bbd6ab36bf03587ee84d"
+    }
+  ],
+  "fresh_range_bytes_excluding_metadata": 160141,
+  "roi_results": {
+    "A": {
+      "source_pixel_row_col": [
+        4067,
+        2070
+      ],
+      "window_row_col": [
+        4062,
+        2065
+      ],
+      "selected_roi_pixel": [
+        5,
+        5
+      ],
+      "projected_pixel_center": [
+        338145.0,
+        2732675.0
+      ],
+      "pixel_center_lon_lat": [
+        121.40004092613184,
+        24.700006051424293
+      ],
+      "stored_five": [
+        0,
+        248,
+        0,
+        0,
+        0
+      ],
+      "other": 2,
+      "six_scores": [
+        0.0,
+        0.992,
+        0.0,
+        0.0,
+        0.0,
+        0.008
+      ],
+      "all_maximizer_class_ids": [
+        2
+      ],
+      "numpy_first_argmax_class_id": 2,
+      "roi_tied_pixels": 0,
+      "roi_class_counts": {
+        "2": 100
+      },
+      "min_maximum_score": 0.992,
+      "max_maximum_score": 0.996,
+      "nominal_projected_pixel_area_m2": 100.0,
+      "nominal_projected_roi_area_m2": 10000.0,
+      "window_xy_corners": [
+        [
+          338090.0,
+          2732620.0
+        ],
+        [
+          338190.0,
+          2732720.0
+        ]
+      ],
+      "selected_pixel_is_exact_geometric_roi_center": false
+    },
+    "B": {
+      "source_pixel_row_col": [
+        4012,
+        2295
+      ],
+      "window_row_col": [
+        4007,
+        2290
+      ],
+      "selected_roi_pixel": [
+        5,
+        5
+      ],
+      "projected_pixel_center": [
+        340395.0,
+        2732125.0
+      ],
+      "pixel_center_lon_lat": [
+        121.42233836084972,
+        24.695276083224126
+      ],
+      "stored_five": [
+        0,
+        86,
+        0,
+        1,
+        77
+      ],
+      "other": 86,
+      "six_scores": [
+        0.0,
+        0.344,
+        0.0,
+        0.004,
+        0.308,
+        0.344
+      ],
+      "all_maximizer_class_ids": [
+        2,
+        6
+      ],
+      "numpy_first_argmax_class_id": 2,
+      "roi_tied_pixels": 2,
+      "roi_class_counts": {
+        "2": 19,
+        "5": 14,
+        "6": 67
+      },
+      "min_maximum_score": 0.344,
+      "max_maximum_score": 1.0,
+      "nominal_projected_pixel_area_m2": 100.0,
+      "nominal_projected_roi_area_m2": 10000.0,
+      "window_xy_corners": [
+        [
+          340340.0,
+          2732070.0
+        ],
+        [
+          340440.0,
+          2732170.0
+        ]
+      ],
+      "selected_pixel_is_exact_geometric_roi_center": false
+    }
+  },
+  "B_search": {
+    "full_block_valid_pixels": 262144,
+    "eligible_after_five_pixel_border": 252004,
+    "minimum_stored_max_score": 86,
+    "minimum_model_score": 0.344,
+    "minimum_tie_locations": 2,
+    "first_selected_row_col": [
+      4012,
+      2295
+    ]
+  },
+  "manual_decoder": "system libzstd + independent per-row cumulative sum modulo 256, confirmed equal to fresh GDAL decode"
+}

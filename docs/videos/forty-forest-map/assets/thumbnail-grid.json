@@ -1,0 +1,428 @@
+{
+  "asset": "thumbnail-grid.png",
+  "sha256": "dd45ef07a7e773559b297f6d53614585ab566ac48163a38f83a4983ef8f21034",
+  "dimensions": {
+    "width": 1440,
+    "height": 1360,
+    "transparent": true
+  },
+  "source": {
+    "author": "Neumann et al. (2026)",
+    "title": "Forest Typology 2020 (v1)",
+    "doi": "https://doi.org/10.25452/figshare.plus.32288616.v1",
+    "license": "CC BY 4.0",
+    "license_url": "https://creativecommons.org/licenses/by/4.0/"
+  },
+  "adaptation": {
+    "author": "Mokaair",
+    "changes": [
+      "two separate 10×10 ROI crops",
+      "OtherLand = 250 − sum(five stored bands)",
+      "first maximum in the fixed six-class order",
+      "original class-colour redraw",
+      "unequal-size A/B composition",
+      "red outlines on the actual selected pixels"
+    ],
+    "no_satellite_basemap": true,
+    "not_adjacent": true,
+    "labels": [
+      "A",
+      "B",
+      "2020",
+      "兩處取樣"
+    ]
+  },
+  "inputs": {
+    "data/actual-roi-result.json": "867aa186e25b6a59ea5dcf32a100646d68497fa064d177e674f2674f42a362ba",
+    "assets/roi-a-grid.svg": "8e8fc0310fef479ac3b4667028fc80cf98f563de80ad1f2f8d68c8731e4302bc",
+    "data/actual-uncertain-roi-result.json": "4ebd1c412fe85576277d0b8c4ab96fce31254abe41b6c07ba3ca203220db101a",
+    "assets/roi-b-grid.svg": "9ea35af781e6443dce1a925955c84a58f84272ce65b6570a15519ec40863023c"
+  },
+  "generator": {
+    "path": "thumbnail-grid.py",
+    "sha256": "919d39d0f1359dfcb39083035e45c72cca07cbffd41e12c3befd2fb3808b66f1",
+    "command": "python docs/videos/forty-forest-map/assets/thumbnail-grid.py"
+  },
+  "render": {
+    "python": "3.12.14",
+    "numpy": "2.3.5",
+    "matplotlib": "3.10.8",
+    "dpi": 200,
+    "font_path": "/usr/share/fonts/opentype/noto/NotoSansCJK-Bold.ttc",
+    "font_sha256": "faa5f3656a78b2e2d450d27fe8382c778bc2b6bb5ea29c986664a6a435056ceb",
+    "interpolation": "nearest",
+    "origin": "lower",
+    "orientation": "positive affine Y; row 0 at bottom; columns increase rightward",
+    "design_canvas": [
+      720,
+      680
+    ],
+    "layout": {
+      "A": {
+        "left": 32,
+        "top": 80,
+        "size": 176,
+        "red_frame_pt": 3.0
+      },
+      "B": {
+        "left": 232,
+        "top": 172,
+        "size": 456,
+        "red_frame_pt": 3.5
+      }
+    }
+  },
+  "classes": [
+    {
+      "id": 1,
+      "name": "PrimaryForest",
+      "color": "#1B7837"
+    },
+    {
+      "id": 2,
+      "name": "NaturallyRegeneratingForest",
+      "color": "#7FBF7B"
+    },
+    {
+      "id": 3,
+      "name": "PlantedForest",
+      "color": "#1D91C0"
+    },
+    {
+      "id": 4,
+      "name": "PlantationForest",
+      "color": "#E65FA9"
+    },
+    {
+      "id": 5,
+      "name": "TreeCropsAndAgroforestry",
+      "color": "#E6AB02"
+    },
+    {
+      "id": 6,
+      "name": "OtherLand",
+      "color": "#FDE278"
+    }
+  ],
+  "rois": [
+    {
+      "label": "A",
+      "width": 10,
+      "height": 10,
+      "window_transform": [
+        10.0,
+        0.0,
+        338090.0,
+        0.0,
+        10.0,
+        2732620.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "class_ids_source_row_major": [
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ],
+        [
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      ],
+      "source_pixel": {
+        "row": 4067,
+        "col": 2070
+      },
+      "selected_roi_pixel": {
+        "row": 5,
+        "col": 5
+      },
+      "selected_six_stored_values": [
+        0,
+        248,
+        0,
+        0,
+        0,
+        2
+      ],
+      "selected_class_id": 2,
+      "selected_tied_maximum_count": 1
+    },
+    {
+      "label": "B",
+      "width": 10,
+      "height": 10,
+      "window_transform": [
+        10.0,
+        0.0,
+        340340.0,
+        0.0,
+        10.0,
+        2732070.0,
+        0.0,
+        0.0,
+        1.0
+      ],
+      "class_ids_source_row_major": [
+        [
+          6,
+          6,
+          6,
+          6,
+          2,
+          2,
+          2,
+          6,
+          6,
+          6
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          2,
+          2,
+          2,
+          2,
+          6,
+          6
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          2,
+          2,
+          2,
+          2,
+          6,
+          6
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          2,
+          2,
+          2,
+          2,
+          6,
+          6
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          6,
+          2,
+          5,
+          5,
+          6,
+          6
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          6,
+          2,
+          5,
+          5,
+          6,
+          6
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5,
+          6
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5,
+          5
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          5,
+          5,
+          5
+        ],
+        [
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          6,
+          2,
+          2
+        ]
+      ],
+      "source_pixel": {
+        "row": 4012,
+        "col": 2295
+      },
+      "selected_roi_pixel": {
+        "row": 5,
+        "col": 5
+      },
+      "selected_six_stored_values": [
+        0,
+        86,
+        0,
+        1,
+        77,
+        86
+      ],
+      "selected_class_id": 2,
+      "selected_tied_maximum_count": 2
+    }
+  ],
+  "validation": {
+    "both_grids_recomputed_from_five_bands": true,
+    "computed_other_and_classes_match_checked_in_JSON": true,
+    "all_200_colours_and_positions_match_existing_SVG": true,
+    "all_200_rendered_cell_centres_checked": true,
+    "both_selected_pixels_display_same_original_green": true
+  }
+}

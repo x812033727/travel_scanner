@@ -54,3 +54,49 @@ and outer `needed` calculation use separate cache-only logic. This is a deferred
 native-tool fix; the active language operation reconstructed the exact 22 bodies
 offline and stayed within the existing configured budget. It changes no settings
 and does not clear or resend uncertain paid requests.
+
+### 2026-10-26 additional unchanged-source EN evidence
+
+The same issue was confirmed in the third episode's genuine EN retakes; this is
+new evidence for this existing **open, unclaimed** ticket, not another ticket or
+an implementation. No command was rerun to reproduce it.
+
+- The preserved `formal-dub-en-retake1-dry-run.log` says
+  `en: 100 requests, 0 to synthesize; about 0 billable characters now (6513 for the track)`.
+- Actual `formal-dub-en-retake1.log` then reports six one-line retakes and
+  `6 requests synthesized (372 billable characters), 94 reused`.
+  The unchanged-source result records changed raw IDs
+  `zfgp,z9dp,84hx,5waf,8ywa,cgit`, with all other 99 raw clips unchanged.
+- Actual `formal-dub-en-retake2.log` reports
+  `2 requests synthesized (114 billable characters), 98 reused`; changed IDs
+  `8ywa,cgit`, with the other 103 raw clips unchanged. No second zero-work dry-run
+  receipt is claimed: only the first dry log above is preserved.
+- These are native planned/synthesized request and character reports, not an
+  independent provider wire-count or billing statement. TTS character estimates
+  do not describe ASR token usage or resolve an uncertain transcription charge.
+
+All files are retained under the external `work/ai-tech-next` proof directory:
+
+| proof | SHA256 |
+|---|---|
+| formal-dub-en-retake1-dry-run.log | 48a80d7c22582705ffb97c7ad10292e5bec0ea24bace4c7469915d719e89a66d |
+| formal-dub-en-retake1.log | 2601497d3c63cce28bb16dd2c01f9299b5b6ee696aaaaa8879468eccd4fb7028 |
+| formal-dub-en-retake2.log | ba954d87a8a549d41ea007d22e731b1033f523c1ddb144e41638fe78e444f38c |
+| formal-en-retake1-synth-fit-meter.result.json | 45dde074bda4588671271f87cd74b5ce66df420b948c5fd825b711fcbc0980ac |
+| formal-en-retake2-synth-fit-meter.result.json | 0a765a85957d2aab753e2d3ee5b9356022741be77045ee2cc889c9658ac5187b |
+
+The inspected native `tools/video/dubs/cli.mjs` SHA256 is
+`32fa90b9ae4ca8979584319647cd2f89a29d6d0827abed3137cd18e77545b807`.
+At 480 it returns `dryRun(...)` before `dubLocale(...)`. `dryRun` at 421-440
+sees only cache keys/WAV existence and receives no redo/force options. Actual
+`dubLocale` at 217-233 loads `values.redo`, makes flagged lines pending even when
+their cache is current, and estimates per-line retakes. The outer monthly
+`needed` at 493 is also cache-only. This confirms the existing scope and DoD;
+the future regression should include both six-ID/372-character and
+two-ID/114-character cached-redo shapes, without making paid requests.
+
+Offline duplicate checking found this same ticket in all five local worktrees
+and six local branch task trees. No live remote/PR query was made under the
+no-network instruction. Existing scope remains exactly the dub CLI and its
+native tests. Owner/status/claim and all existing implementation checkboxes are
+unchanged; no provider call, journal edit, tool patch, stage or commit occurred.

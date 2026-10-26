@@ -1,0 +1,3647 @@
+{
+  "observed_at": "2026-10-25T20:35:55.556Z",
+  "scope": "Independent EN current local dubbed audio only; JA remains owned by its sole paid producer. No claim of EN CC alignment/backend delivery or all-eight readiness.",
+  "verdict": "PASS",
+  "en_current_audio_ready": true,
+  "all_eight_ready": false,
+  "read_only_inputs": true,
+  "paid_calls": 0,
+  "network_calls": 0,
+  "source_sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+  "speech_hash": "c6d70ecaef91a15d",
+  "main_sha256": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+  "main_unchanged": true,
+  "main_seconds": 512.7666666666667,
+  "body_seconds": 501.03333333333336,
+  "expected_pins": {
+    "source": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+    "speech": "c6d70ecaef91a15d",
+    "main": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+    "en": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63"
+  },
+  "helper": {
+    "path": "/workspace/work/ai-tech-next/verify-forty-language-delivery.mjs",
+    "sha256": "96f00ad6e0d21cc672e7ca94a5d946a27ec785268ec3114824543fcafae9a75e",
+    "original_file_modified": false,
+    "execution": "Unmodified existing strong all-eight auditor imported with its sole audit write captured in memory; only the requested EN receipt is exclusively created. No prior audit output was overwritten."
+  },
+  "native_process_completion": {
+    "at": "2026-10-25T20:30:29.293Z",
+    "event": "native_step_finished",
+    "phase": "check",
+    "locale": "en",
+    "code": 0,
+    "signal": null,
+    "log": "/workspace/work/ai-tech-next/forty-check-en-2026-10-25T20-30-21-157Z.log",
+    "stage": {
+      "stage": "check-audio",
+      "at": "2026-10-25T20:30:29.244Z",
+      "locale": "en",
+      "lines": 92,
+      "exact": 54,
+      "alike": 0,
+      "judged": 38,
+      "cleared": 8,
+      "flagged": 0,
+      "unchecked": 0,
+      "transcribed": 1,
+      "jev_calls": 1
+    },
+    "evidence_sha256": {
+      "review/check-flags.en.json": "4155dedabc3fd1a1f3c481d0459d10f5a337271f2994f0ff0bb79029e401d4ea",
+      "review/check.en.json": "9dfdadda49f3c3e16167df7aa29055455f4a673bcb44511323eeb2fbc49622e5",
+      "dubs/en/fit.json": "11eb1c7d76bd9c7bc8469d1c3f15cbb16c60ee449d425c56be9ec4ba3dea7ce5",
+      "dubs/en/timeline.json": "5cbf3d2f6354a34055c8821f942fd9647a1861a91969feb49aff0131c91ad23a",
+      "dubs/en.m4a": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+      "dubs/en/delivery-measurement.json": "131b7f683352c8d3640237bc729f2de8bc74ac05e48ea9c17793dc57010eb804"
+    }
+  },
+  "latest_native_stage": {
+    "stage": "check-audio",
+    "at": "2026-10-25T20:30:29.244Z",
+    "locale": "en",
+    "lines": 92,
+    "exact": 54,
+    "alike": 0,
+    "judged": 38,
+    "cleared": 8,
+    "flagged": 0,
+    "unchecked": 0,
+    "transcribed": 1,
+    "jev_calls": 1
+  },
+  "en": {
+    "locale": "en",
+    "expected_lines": 92,
+    "checked_current_accepted": 92,
+    "native_currentDub": "current",
+    "ready": true,
+    "problems": [],
+    "clips": [
+      {
+        "id": "8aw6",
+        "raw_target": "I took this green ForTy cell from Taiwan's 2020 data.",
+        "cached_intended": "I took this green ForTy cell from Taiwan's 2020 data.",
+        "wav_sha256": "c81765e24e684009b5a888f505aa48a9bd195098cbd2123aaf358ed7d74688a7",
+        "native_clip_sha256_prefix": "c81765e24e684009",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "I took this green ForTy cell from Taiwan's 2020 data",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "I took this green ForTy cell from Taiwan's 2020 data.",
+        "expected_full_spoken_form": "I took this green ForTy cell from Taiwan's 2020 data.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "gngj",
+        "raw_target": "The map has 6 classes. Why are only 5 values stored?",
+        "cached_intended": "The map has 6 classes. Why are only 5 values stored?",
+        "wav_sha256": "5288e2fcad5c1dd6fee4395c3dd2e9ce11f26899659ebcccf36c7ac4d1626832",
+        "native_clip_sha256_prefix": "5288e2fcad5c1dd6",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "The map has six classes. Why are only five values stored?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.92,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "The map has 6 classes. Why are only 5 values stored?",
+        "expected_full_spoken_form": "The map has 6 classes. Why are only 5 values stored?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ep85",
+        "raw_target": "What unit is that 248 stored in?",
+        "cached_intended": "What unit is that 248 stored in?",
+        "wav_sha256": "17c47c5c0fed1e7f8f7d0fd912acd5f79ca76021eafc96d53a4e8041f35ca62d",
+        "native_clip_sha256_prefix": "17c47c5c0fed1e7f",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "What unit is that 248 stored in?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "What unit is that 248 stored in?",
+        "expected_full_spoken_form": "What unit is that 248 stored in?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "jw6i",
+        "raw_target": "Another cell is green too. Will it give the same results?",
+        "cached_intended": "Another cell is green too. Will it give the same results?",
+        "wav_sha256": "f1a4de9f7f8eb23de6b14f2a76c169ce6dad9123980695ae27b7ccc73de091f2",
+        "native_clip_sha256_prefix": "f1a4de9f7f8eb23d",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Another cell is green too. Will it give the same results?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Another cell is green too. Will it give the same results?",
+        "expected_full_spoken_form": "Another cell is green too. Will it give the same results?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "5ur9",
+        "raw_target": "DeepMind showed ForTy this week. Read these 2 cells.",
+        "cached_intended": "DeepMind showed ForTy this week. Read these 2 cells.",
+        "wav_sha256": "c80b52cf3e9c33c62977736c768a6e492409b213c9896b439a9362c8c2fc378f",
+        "native_clip_sha256_prefix": "c80b52cf3e9c33c6",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "DeepMind showed ForTy this week. Read these two cells.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.73,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "DeepMind showed ForTy this week. Read these 2 cells.",
+        "expected_full_spoken_form": "DeepMind showed ForTy this week. Read these 2 cells.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "m2p6",
+        "raw_target": "Read not just the trees in this green cell, but how they grew and their use.",
+        "cached_intended": "Read not just the trees in this green cell, but how they grew and their use.",
+        "wav_sha256": "4ca02cf05adf5b51b4267cc930140f503402f443afd93613a374481b298ebdf7",
+        "native_clip_sha256_prefix": "4ca02cf05adf5b51",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "read, not just the trees in the Greensoul, but how they grew and their use.",
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [],
+          "heard": "read not just the trees in this green cell, but how they grew and their use.",
+          "match_kind": "exact",
+          "noul": null
+        },
+        "accepted": true,
+        "accepted_by": "native_second_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.05,
+        "second_match_kind": "exact",
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Read not just the trees in this green cell, but how they grew and their use.",
+        "expected_full_spoken_form": "Read not just the trees in this green cell, but how they grew and their use.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "erqz",
+        "raw_target": "Primary forest: native tree species, no visible human disturbance.",
+        "cached_intended": "Primary forest: native tree species, no visible human disturbance.",
+        "wav_sha256": "d43fba88487528eab8e7066130779a66eceee311bd23d5493d4c81466d6d4ff0",
+        "native_clip_sha256_prefix": "d43fba88487528ea",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "primary forest, native tree species, no visible human disturbance.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Primary forest: native tree species, no visible human disturbance.",
+        "expected_full_spoken_form": "Primary forest: native tree species, no visible human disturbance.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "t4w3",
+        "raw_target": "Naturally regenerating forest: mostly natural regrowth; secondary included.",
+        "cached_intended": "Naturally regenerating forest: mostly natural regrowth; secondary included.",
+        "wav_sha256": "b84a390705cf7ef01af2fcc66f87edb74cc12dd93cdd909353de8f5dad3ae0b9",
+        "native_clip_sha256_prefix": "b84a390705cf7ef0",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Naturally regenerating forest, mostly natural regrowth, secondary included.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Naturally regenerating forest: mostly natural regrowth; secondary included.",
+        "expected_full_spoken_form": "Naturally regenerating forest: mostly natural regrowth; secondary included.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "66nz",
+        "raw_target": "Where do forests planted by people fit in this table?",
+        "cached_intended": "Where do forests planted by people fit in this table?",
+        "wav_sha256": "8600f1f5169492d597ae51fbc7162dad5abe0c248cc26be9d00dc235f161a44f",
+        "native_clip_sha256_prefix": "8600f1f5169492d5",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Where do forests planted by people fit in this table?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Where do forests planted by people fit in this table?",
+        "expected_full_spoken_form": "Where do forests planted by people fit in this table?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "3pse",
+        "raw_target": "Planted forest is mainly planted or sown; this data requires rotations over 40 years.",
+        "cached_intended": "Planted forest is mainly planted or sown; this data requires rotations over 40 years.",
+        "wav_sha256": "ba10d652782a1f43a727ae167868dd9a6ca8285247e73fcf41b4c5fa8e0ef2bc",
+        "native_clip_sha256_prefix": "ba10d652782a1f43",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Planted forest is mainly planted or sown. The latter requires rotations over 40 years.",
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [],
+          "heard": "Planted forest is mainly planted or sown. This data requires rotations over 40 years.",
+          "match_kind": "exact",
+          "noul": null
+        },
+        "accepted": true,
+        "accepted_by": "native_second_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.05,
+        "second_match_kind": "exact",
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Planted forest is mainly planted or sown; this data requires rotations over 40 years.",
+        "expected_full_spoken_form": "Planted forest is mainly planted or sown; this data requires rotations over 40 years.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "v9fh",
+        "raw_target": "A rotation covers planting, management and reharvest, not a tree's current age.",
+        "cached_intended": "A rotation covers planting, management and reharvest, not a tree's current age.",
+        "wav_sha256": "a2ec17c26ee1b0f0b7cc1241e4c48fd046a96e139917586e5fe54f6138dbf20b",
+        "native_clip_sha256_prefix": "a2ec17c26ee1b0f0",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "A rotation covers planting, management, and harvest, not a tree's current age.",
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [],
+          "heard": "A rotation covers planting, management, and re-harvest, not a tree's current age.",
+          "match_kind": "exact",
+          "noul": null
+        },
+        "accepted": true,
+        "accepted_by": "native_second_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.08,
+        "second_match_kind": "exact",
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "A rotation covers planting, management and reharvest, not a tree's current age.",
+        "expected_full_spoken_form": "A rotation covers planting, management and reharvest, not a tree's current age.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "7id9",
+        "raw_target": "Plantation forest has more intensive management, often few species, even ages and regular spacing.",
+        "cached_intended": "Plantation forest has more intensive management, often few species, even ages and regular spacing.",
+        "wav_sha256": "1c45afa8917704cc1d47a9ea016c5ec856cc096d31b9a12291c5c9a6ed13f8f6",
+        "native_clip_sha256_prefix": "1c45afa8917704cc",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Plantation forest has more intensive management, often few species, even ages, and regular spacing.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Plantation forest has more intensive management, often few species, even ages and regular spacing.",
+        "expected_full_spoken_form": "Plantation forest has more intensive management, often few species, even ages and regular spacing.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "2vcb",
+        "raw_target": "Its rotation criterion is 40 years or less.",
+        "cached_intended": "Its rotation criterion is 40 years or less.",
+        "wav_sha256": "115f28715d72a29a0a50c75c02546038d2bef3e92f0499fd792689ce6bd25c51",
+        "native_clip_sha256_prefix": "115f28715d72a29a",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Its rotation criterion is 40 years or less.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Its rotation criterion is 40 years or less.",
+        "expected_full_spoken_form": "Its rotation criterion is 40 years or less.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "yiya",
+        "raw_target": "Tree crops and agroforestry include oil palm, rubber and orchards for non-timber farm products.",
+        "cached_intended": "Tree crops and agroforestry include oil palm, rubber and orchards for non-timber farm products.",
+        "wav_sha256": "ff64ea24fa0acf1bc60e24b81604c1f29d6096dc96aec59df31611e5dd2a33e1",
+        "native_clip_sha256_prefix": "ff64ea24fa0acf1b",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Tree crops and agroforestry include oil palm, rubber, and orchards for non-timber farm products.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Tree crops and agroforestry include oil palm, rubber and orchards for non-timber farm products.",
+        "expected_full_spoken_form": "Tree crops and agroforestry include oil palm, rubber and orchards for non-timber farm products.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "rrgq",
+        "raw_target": "Lastly, other land may include urban trees or sparse woody plants.",
+        "cached_intended": "Lastly, other land may include urban trees or sparse woody plants.",
+        "wav_sha256": "8fee730ddd979fff2e2392fd3f4939f9a6c5efb19e18c006f6c6a91a8590aef4",
+        "native_clip_sha256_prefix": "8fee730ddd979fff",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Lastly, other land may include urban trees or sparse woody plants.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Lastly, other land may include urban trees or sparse woody plants.",
+        "expected_full_spoken_form": "Lastly, other land may include urban trees or sparse woody plants.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "fbc5",
+        "raw_target": "Each of these 6 classes has a fixed position. Read each value with its name.",
+        "cached_intended": "Each of these 6 classes has a fixed position. Read each value with its name.",
+        "wav_sha256": "c6aaa5275b633b71f372a9bf223b0a93c45e7a49fa1c5ac24a59305c359ae7c5",
+        "native_clip_sha256_prefix": "c6aaa5275b633b71",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Each of the six classes has a fixed position. Read each value with its name.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.91,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Each of these 6 classes has a fixed position. Read each value with its name.",
+        "expected_full_spoken_form": "Each of these 6 classes has a fixed position. Read each value with its name.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "gsa7",
+        "raw_target": "But how can a model tell these differences from satellite images?",
+        "cached_intended": "But how can a model tell these differences from satellite images?",
+        "wav_sha256": "67723683e85415cf8485a47386c481bf65925f1685c366f2eca854fb591e8c11",
+        "native_clip_sha256_prefix": "67723683e85415cf",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "But how can a model tell these differences from satellite images?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "But how can a model tell these differences from satellite images?",
+        "expected_full_spoken_form": "But how can a model tell these differences from satellite images?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "9wmz",
+        "raw_target": "AlphaEarth first turns years of satellite readings into numbers.",
+        "cached_intended": "AlphaEarth first turns years of satellite readings into numbers.",
+        "wav_sha256": "80fb1b92293504ca022b2da2515488fbbc640ef0c7d0aecb10c7f71f1d7f6bf2",
+        "native_clip_sha256_prefix": "80fb1b92293504ca",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "AlphaEarth first turns years of satellite readings into numbers",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "AlphaEarth first turns years of satellite readings into numbers.",
+        "expected_full_spoken_form": "AlphaEarth first turns years of satellite readings into numbers.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "jkby",
+        "raw_target": "ForTy uses them for clues to planting patterns, seasons and growth cycles.",
+        "cached_intended": "ForTy uses them for clues to planting patterns, seasons and growth cycles.",
+        "wav_sha256": "064e521383aec2ca6457445c2713ad96643b1a7486f597349f384459a5e4a935",
+        "native_clip_sha256_prefix": "064e521383aec2ca",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "ForTy uses them for clues to planting patterns, seasons, and growth cycles.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "ForTy uses them for clues to planting patterns, seasons and growth cycles.",
+        "expected_full_spoken_form": "ForTy uses them for clues to planting patterns, seasons and growth cycles.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "5nt9",
+        "raw_target": "Training also uses sites labeled by experts and regional data to link clues to land types.",
+        "cached_intended": "Training also uses sites labeled by experts and regional data to link clues to land types.",
+        "wav_sha256": "01c238bd6defb156518470ee85c7cbff9cc1987957449102722707cb5b4bf828",
+        "native_clip_sha256_prefix": "01c238bd6defb156",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Training also uses sites labeled by experts and regional data to link clues to land types.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Training also uses sites labeled by experts and regional data to link clues to land types.",
+        "expected_full_spoken_form": "Training also uses sites labeled by experts and regional data to link clues to land types.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "m8cb",
+        "raw_target": "This green cell stores the model's class scores in 5 integers.",
+        "cached_intended": "This green cell stores the model's class scores in 5 integers.",
+        "wav_sha256": "0ab6e1a3dfb5f3f7e9a7f1f5539509fa3b294454615bdb1025707d6d220c7ead",
+        "native_clip_sha256_prefix": "0ab6e1a3dfb5f3f7",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "This green cell stores the models class scores in five integers.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.54,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "This green cell stores the model's class scores in 5 integers.",
+        "expected_full_spoken_form": "This green cell stores the model's class scores in 5 integers.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "p2ry",
+        "raw_target": "Find the 5 values: check the data's year and location first.",
+        "cached_intended": "Find the 5 values: check the data's year and location first.",
+        "wav_sha256": "6a3806e854100111acdacddff6a4b4f9379d3ef22b6c52fc08734000377d7d1b",
+        "native_clip_sha256_prefix": "6a3806e854100111",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Find the five values, check the data's year and location first.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.78,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Find the 5 values: check the data's year and location first.",
+        "expected_full_spoken_form": "Find the 5 values: check the data's year and location first.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "u5js",
+        "raw_target": "Use 121.4°E, 24.7°N.",
+        "cached_intended": "Use 121.4°E, 24.7°N.",
+        "wav_sha256": "cf38d9739632343f64b067ca89956c990453887efbd96595fc080a218cb06f1b",
+        "native_clip_sha256_prefix": "cf38d9739632343f",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Use 121.4° east 24.7° north.",
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [],
+          "heard": "use 121.4 degrees east, 24.7 degrees north.",
+          "match_kind": null,
+          "noul": 0.6
+        },
+        "accepted": true,
+        "accepted_by": "native_second_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.42,
+        "second_match_kind": null,
+        "second_Jev": 0.6,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Use 121.4°E, 24.7°N.",
+        "expected_full_spoken_form": "Use 121.4°E, 24.7°N.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "7732",
+        "raw_target": "Take 10×10 cells around the target; red marks just the cell we'll calculate.",
+        "cached_intended": "Take 10×10 cells around the target; red marks just the cell we'll calculate.",
+        "wav_sha256": "403f54dc3280d3347150662b75a0810814bc0bb8ace3ed2fd56e2fc7455a5c45",
+        "native_clip_sha256_prefix": "403f54dc3280d334",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Take 10 by 10 cells around the target. Red marks just the cell will calculate.",
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [],
+          "heard": "take 10 by 10 cells around the target. Red marks just the cell we'll calculate.",
+          "match_kind": null,
+          "noul": 0.6
+        },
+        "accepted": true,
+        "accepted_by": "native_second_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.07,
+        "second_match_kind": null,
+        "second_Jev": 0.6,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Take 10×10 cells around the target; red marks just the cell we'll calculate.",
+        "expected_full_spoken_form": "Take 10×10 cells around the target; red marks just the cell we'll calculate.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "yi97",
+        "raw_target": "10 m is the output grid scale, not a list of tree locations.",
+        "cached_intended": "10 m is the output grid scale, not a list of tree locations.",
+        "wav_sha256": "683f957f50cb88d2d304290b28cf454caeabac464eb05ee19b2cd9a7cb4db230",
+        "native_clip_sha256_prefix": "683f957f50cb88d2",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "10 m is the output grid scale, not a list of tree locations.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "10 m is the output grid scale, not a list of tree locations.",
+        "expected_full_spoken_form": "10 m is the output grid scale, not a list of tree locations.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "2k27",
+        "raw_target": "Keep fixed class names beside values so numbers stay with their class.",
+        "cached_intended": "Keep fixed class names beside values so numbers stay with their class.",
+        "wav_sha256": "91244012565c6cf3ee80b511604f9654389f52aabbf0fe762f8d580f8af98ad3",
+        "native_clip_sha256_prefix": "91244012565c6cf3",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "keep fixed class names beside values, so numbers stay with their class.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Keep fixed class names beside values so numbers stay with their class.",
+        "expected_full_spoken_form": "Keep fixed class names beside values so numbers stay with their class.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "vk36",
+        "raw_target": "The 6 class values total 250. The value 255 is reserved for no data.",
+        "cached_intended": "The 6 class values total 250. The value 255 is reserved for no data.",
+        "wav_sha256": "3c4a2cb6902ac27e6d9b57951508fb16696ad6372771d33cdfb3dd0e9d4737eb",
+        "native_clip_sha256_prefix": "3c4a2cb6902ac27e",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "The six class values total 250. The value 255 is reserved for no data.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.89,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "The 6 class values total 250. The value 255 is reserved for no data.",
+        "expected_full_spoken_form": "The 6 class values total 250. The value 255 is reserved for no data.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "gfes",
+        "raw_target": "Exclude any no-data cell; don't count its marker as a score.",
+        "cached_intended": "Exclude any no-data cell; don't count its marker as a score.",
+        "wav_sha256": "8f67160e96fd6d5db913abff06425bc79b31724c43a3fecfdbdb11945baf4589",
+        "native_clip_sha256_prefix": "8f67160e96fd6d5d",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Exclude any no data cell. Don't count its marker as a score.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Exclude any no-data cell; don't count its marker as a score.",
+        "expected_full_spoken_form": "Exclude any no-data cell; don't count its marker as a score.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "e826",
+        "raw_target": "5 values are valid; derive other land's value, then compare 6 classes.",
+        "cached_intended": "5 values are valid; derive other land's value, then compare 6 classes.",
+        "wav_sha256": "de4a236f7136ae9721bbbe6d4de4e9804970dc0d95b46e3daf8c7986b3248961",
+        "native_clip_sha256_prefix": "de4a236f7136ae97",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Five values are valid, derive other land's value then compare six classes.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.72,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "5 values are valid; derive other land's value, then compare 6 classes.",
+        "expected_full_spoken_form": "5 values are valid; derive other land's value, then compare 6 classes.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "svhy",
+        "raw_target": "Keep field names with values; numbers alone don't identify a class.",
+        "cached_intended": "Keep field names with values; numbers alone don't identify a class.",
+        "wav_sha256": "f2f7fa441b05126c9cd67cc16626d338a603d2b4e71d12c58a56601d4e9e1dbe",
+        "native_clip_sha256_prefix": "f2f7fa441b05126c",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Keep field names with values. Numbers alone don't identify a class.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Keep field names with values; numbers alone don't identify a class.",
+        "expected_full_spoken_form": "Keep field names with values; numbers alone don't identify a class.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "3gwz",
+        "raw_target": "How do we fill the opening's class-6 gap here?",
+        "cached_intended": "How do we fill the opening's class-6 gap here?",
+        "wav_sha256": "c853f897a72b07dc47d5156f6f3dbe2a6923320722c00a46b6c29716c04f3caf",
+        "native_clip_sha256_prefix": "c853f897a72b07dc",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "How do we fill the openings class six gap here?",
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [],
+          "heard": "How do we fill the openings class 6 gap here?",
+          "match_kind": "exact",
+          "noul": null
+        },
+        "accepted": true,
+        "accepted_by": "native_second_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.46,
+        "second_match_kind": "exact",
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "How do we fill the opening's class-6 gap here?",
+        "expected_full_spoken_form": "How do we fill the opening's class-6 gap here?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "7iv8",
+        "raw_target": "Class 6: 250 minus the first 5's sum.",
+        "cached_intended": "Class 6: 250 minus the first 5's sum.",
+        "wav_sha256": "d33fc40fdb54fc96c132b5309be3e000de1200b9b13d0e21abff10a391b09c7b",
+        "native_clip_sha256_prefix": "d33fc40fdb54fc96",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Class six: 250 minus the first five sum",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.77,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Class 6: 250 minus the first 5's sum.",
+        "expected_full_spoken_form": "Class 6: 250 minus the first 5's sum.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "bxdi",
+        "raw_target": "This cell's 5 values, in order, are 0, 248, 0, 0, 0.",
+        "cached_intended": "This cell's 5 values, in order, are 0, 248, 0, 0, 0.",
+        "wav_sha256": "9e906135735fcebda694e1139c32296a67edd65c5863240b2e339e8086eb9088",
+        "native_clip_sha256_prefix": "9e906135735fcebd",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "This cell's five values in order are 0, 248, 0, 0, 0.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.81,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "This cell's 5 values, in order, are 0, 248, 0, 0, 0.",
+        "expected_full_spoken_form": "This cell's 5 values, in order, are 0, 248, 0, 0, 0.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "anxa",
+        "raw_target": "248 is a stored, scaled score, not a tree count or square meters.",
+        "cached_intended": "248 is a stored, scaled score, not a tree count or square meters.",
+        "wav_sha256": "83bb2e246378b2603caec8026f71ef06218177bc9827fe589b573a347a643d2f",
+        "native_clip_sha256_prefix": "83bb2e246378b260",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "248 is a stored, scaled score, not a tree count or square meters.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "248 is a stored, scaled score, not a tree count or square meters.",
+        "expected_full_spoken_form": "248 is a stored, scaled score, not a tree count or square meters.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "up9r",
+        "raw_target": "248 is naturally regenerating forest; the other 4 classes are 0. The sum is 248.",
+        "cached_intended": "248 is naturally regenerating forest; the other 4 classes are 0. The sum is 248.",
+        "wav_sha256": "125240e1d3627668aa328f62d24e1f08adafb6f99e7de8a1fd1ffc5c3541b3ce",
+        "native_clip_sha256_prefix": "125240e1d3627668",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "248 is naturally regenerating forest. The other four classes are zero. The sum is 248.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.79,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "248 is naturally regenerating forest; the other 4 classes are 0. The sum is 248.",
+        "expected_full_spoken_form": "248 is naturally regenerating forest; the other 4 classes are 0. The sum is 248.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "3p97",
+        "raw_target": "250 minus 248 gives 2 for other land.",
+        "cached_intended": "250 minus 248 gives 2 for other land.",
+        "wav_sha256": "9b0912715651ba6caeec3c30e732c1d97d2e1508c13865ff6a5e838d88976f47",
+        "native_clip_sha256_prefix": "9b0912715651ba6c",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "250 minus 248 gives 2% for other land.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "250 minus 248 gives 2 for other land.",
+        "expected_full_spoken_form": "250 minus 248 gives 2 for other land.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "4av2",
+        "raw_target": "Then check that all 6 values are between 0 and 250, and their sum is 250.",
+        "cached_intended": "Then check that all 6 values are between 0 and 250, and their sum is 250.",
+        "wav_sha256": "d4dc68079d04b8c80f3de46e2bf6f9341c0d4705c5477f8922ec83fbfff4ad79",
+        "native_clip_sha256_prefix": "d4dc68079d04b8c8",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Then, check that all six values are between 0 and 250, and their sum is 250.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.65,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Then check that all 6 values are between 0 and 250, and their sum is 250.",
+        "expected_full_spoken_form": "Then check that all 6 values are between 0 and 250, and their sum is 250.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "8hpb",
+        "raw_target": "How do we turn these stored values into model scores from 0 to 1?",
+        "cached_intended": "How do we turn these stored values into model scores from 0 to 1?",
+        "wav_sha256": "a31c4ae975b5dd9ed3c772da0c65d1bec99223909c6e58dffd73a6e35399f318",
+        "native_clip_sha256_prefix": "a31c4ae975b5dd9e",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "How do we turn these stored values into model scores from 0 to 1?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "How do we turn these stored values into model scores from 0 to 1?",
+        "expected_full_spoken_form": "How do we turn these stored values into model scores from 0 to 1?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ywu9",
+        "raw_target": "Divide each by 250. For naturally regenerating forest, 248 becomes 0.992.",
+        "cached_intended": "Divide each by 250. For naturally regenerating forest, 248 becomes 0.992.",
+        "wav_sha256": "ecfe9c042be3a16e86649996bfdcf3375762c0a5553df0835a159ffb1444542e",
+        "native_clip_sha256_prefix": "ecfe9c042be3a16e",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "divide each by 250. For naturally regenerating forest, 248 becomes 0.992.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Divide each by 250. For naturally regenerating forest, 248 becomes 0.992.",
+        "expected_full_spoken_form": "Divide each by 250. For naturally regenerating forest, 248 becomes 0.992.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "u362",
+        "raw_target": "For the other land class, dividing 2 gives 0.008.",
+        "cached_intended": "For the other land class, dividing 2 gives 0.008.",
+        "wav_sha256": "3da2b68ff7e61ea54c13144c6c0be01fe44b5817cf863a9da5b0d1097645779a",
+        "native_clip_sha256_prefix": "3da2b68ff7e61ea5",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "For the other land class, dividing two gives 0.008.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.88,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "For the other land class, dividing 2 gives 0.008.",
+        "expected_full_spoken_form": "For the other land class, dividing 2 gives 0.008.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "eym7",
+        "raw_target": "The other 4 stored values are 0, so their scores are also 0.",
+        "cached_intended": "The other 4 stored values are 0, so their scores are also 0.",
+        "wav_sha256": "b3292498e0f8d446d42ce6162775c253bf3c8d0dc23f7193db2887a77468f73b",
+        "native_clip_sha256_prefix": "b3292498e0f8d446",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "The other four stored values are zero, so their scores are also zero.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.81,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "The other 4 stored values are 0, so their scores are also 0.",
+        "expected_full_spoken_form": "The other 4 stored values are 0, so their scores are also 0.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "k3i2",
+        "raw_target": "The 6 scores add up to exactly 1.",
+        "cached_intended": "The 6 scores add up to exactly 1.",
+        "wav_sha256": "6b0723a112cbe79667fddeaa798097198a531aded7e5ea74d64c845dd213edfc",
+        "native_clip_sha256_prefix": "6b0723a112cbe796",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "The six scores add up to exactly one.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.74,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "The 6 scores add up to exactly 1.",
+        "expected_full_spoken_form": "The 6 scores add up to exactly 1.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "p9sg",
+        "raw_target": "This splits one total; it isn't 6 unrelated ratings.",
+        "cached_intended": "This splits one total; it isn't 6 unrelated ratings.",
+        "wav_sha256": "895633f28e83ca99f277f14585acee816ca242254616db0a80851510700b0fe3",
+        "native_clip_sha256_prefix": "895633f28e83ca99",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "This splits one total. It isn't six unrelated ratings.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.86,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "This splits one total; it isn't 6 unrelated ratings.",
+        "expected_full_spoken_form": "This splits one total; it isn't 6 unrelated ratings.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "dkq3",
+        "raw_target": "Of all 6, only naturally regenerating forest scores highest.",
+        "cached_intended": "Of all 6, only naturally regenerating forest scores highest.",
+        "wav_sha256": "5267842b17f428ba6473bd94a6cef52eeeab751981d21aed15b2983ad7baa8a5",
+        "native_clip_sha256_prefix": "5267842b17f428ba",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Of all six, only naturally regenerating forest scores highest.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.84,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Of all 6, only naturally regenerating forest scores highest.",
+        "expected_full_spoken_form": "Of all 6, only naturally regenerating forest scores highest.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "w86h",
+        "raw_target": "Use the top-scoring class; the red-boxed cell turns green.",
+        "cached_intended": "Use the top-scoring class; the red-boxed cell turns green.",
+        "wav_sha256": "71054a281939114c4aefd1d0a02b0284e02e081cb561b112126c59fce06e718f",
+        "native_clip_sha256_prefix": "71054a281939114c",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Use the top scoring class, the red boxed cell turns green.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Use the top-scoring class; the red-boxed cell turns green.",
+        "expected_full_spoken_form": "Use the top-scoring class; the red-boxed cell turns green.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "wh49",
+        "raw_target": "This is argmax: it chooses a class and doesn't retain all the scores.",
+        "cached_intended": "This is argmax: it chooses a class and doesn't retain all the scores.",
+        "wav_sha256": "4df58d4ee793834b64641da31fe3697cbc72799d0d5f1cb01cb5ce688e425b98",
+        "native_clip_sha256_prefix": "4df58d4ee793834b",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "This is argmax. It chooses a class and doesn't retain all the scores.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "This is argmax: it chooses a class and doesn't retain all the scores.",
+        "expected_full_spoken_form": "This is argmax: it chooses a class and doesn't retain all the scores.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "6ybg",
+        "raw_target": "Record naturally regenerating forest as the sole top class, with all 6 scores.",
+        "cached_intended": "Record naturally regenerating forest as the sole top class, with all 6 scores.",
+        "wav_sha256": "4586cdb3f928e2283ef748ad734d75307f4334429b4b8c2b0e38000379fd8618",
+        "native_clip_sha256_prefix": "4586cdb3f928e228",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "record naturally regenerating forest as the sole top class with all six scores",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.81,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Record naturally regenerating forest as the sole top class, with all 6 scores.",
+        "expected_full_spoken_form": "Record naturally regenerating forest as the sole top class, with all 6 scores.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "xxju",
+        "raw_target": "Green gives a class name; values reveal its score distribution.",
+        "cached_intended": "Green gives a class name; values reveal its score distribution.",
+        "wav_sha256": "30a152ed3df138b06860b4d71c4b2df72c01dd62cad1e650c299c1caa4de7361",
+        "native_clip_sha256_prefix": "30a152ed3df138b0",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Green gives a class name, values reveal its score distribution.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Green gives a class name; values reveal its score distribution.",
+        "expected_full_spoken_form": "Green gives a class name; values reveal its score distribution.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "endc",
+        "raw_target": "Can we choose as clearly for another cell from the same source?",
+        "cached_intended": "Can we choose as clearly for another cell from the same source?",
+        "wav_sha256": "3f989344daa46d858501d70c28e3c80564ef91cd3e5f7b1e69bc09cf380bd6c8",
+        "native_clip_sha256_prefix": "3f989344daa46d85",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Can we choose as clearly for another cell from the same source?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Can we choose as clearly for another cell from the same source?",
+        "expected_full_spoken_form": "Can we choose as clearly for another cell from the same source?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "appe",
+        "raw_target": "Now another cell in this block, chosen for the lowest maximum score.",
+        "cached_intended": "Now another cell in this block, chosen for the lowest maximum score.",
+        "wav_sha256": "bff0e5f94a4712a6d088a479dd503b4bff99e7e30fea57760e2b5c5e07313b38",
+        "native_clip_sha256_prefix": "bff0e5f94a4712a6",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Now, another cell in this block, chosen for the lowest maximum score,",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Now another cell in this block, chosen for the lowest maximum score.",
+        "expected_full_spoken_form": "Now another cell in this block, chosen for the lowest maximum score.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "beg8",
+        "raw_target": "Reading practice, not random sampling for overall map accuracy",
+        "cached_intended": "Reading practice, not random sampling for overall map accuracy",
+        "wav_sha256": "f6d0121b1e00b2fc654069f3e1ca263b355d9158739daaf8eaf6185f6944dd01",
+        "native_clip_sha256_prefix": "f6d0121b1e00b2fc",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Breeding practice, not random sampling for overall map accuracy.",
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [
+            "map"
+          ],
+          "heard": "Reading practice, not random sampling for overall map accuracy.",
+          "match_kind": "exact",
+          "noul": null
+        },
+        "accepted": true,
+        "accepted_by": "native_second_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.04,
+        "second_match_kind": "exact",
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Reading practice, not random sampling for overall map accuracy",
+        "expected_full_spoken_form": "Reading practice, not random sampling for overall map accuracy",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "fe8z",
+        "raw_target": "The second cell's pixel center is at 121.42234°E.",
+        "cached_intended": "The second cell's pixel center is at 121.42234°E.",
+        "wav_sha256": "438030e377999f5fe7491d0ba94b361226cd5ba36bb460907c25cbc87f8d7378",
+        "native_clip_sha256_prefix": "438030e377999f5f",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "The second cell's pixel center is at 121.42234 degrees East.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.5,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "The second cell's pixel center is at 121.42234°E.",
+        "expected_full_spoken_form": "The second cell's pixel center is at 121.42234°E.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ymf8",
+        "raw_target": "24.69528°N: use this to find the red box.",
+        "cached_intended": "24.69528°N: use this to find the red box.",
+        "wav_sha256": "4bc7053fab50124d44d9cb21bb4dc1dce8a8ed19129c1a0429ad30ecda93e289",
+        "native_clip_sha256_prefix": "4bc7053fab50124d",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "24.69528° north. Use this to find the red box.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.59,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "24.69528°N: use this to find the red box.",
+        "expected_full_spoken_form": "24.69528°N: use this to find the red box.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "54sx",
+        "raw_target": "The 5 values in order are 0, 86, 0, 1, 77.",
+        "cached_intended": "The 5 values in order are 0, 86, 0, 1, 77.",
+        "wav_sha256": "b5922b5197568759fffddffde25f1630bb62fa5f0fcbd22a287f11a557327db6",
+        "native_clip_sha256_prefix": "b5922b5197568759",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "The five values in order are 0, 86, 0, 1, 77.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.94,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "The 5 values in order are 0, 86, 0, 1, 77.",
+        "expected_full_spoken_form": "The 5 values in order are 0, 86, 0, 1, 77.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "mfsh",
+        "raw_target": "Natural regrowth 86, plantation 1, tree crops 77: total 164.",
+        "cached_intended": "Natural regrowth 86, plantation 1, tree crops 77: total 164.",
+        "wav_sha256": "65ddb78002b6a9c658d7584b1dc7a0c5bd79ffe07fc73816593a28ade9913011",
+        "native_clip_sha256_prefix": "65ddb78002b6a9c6",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Natural Regrowth: 86, Plantation: 1, Tree crops: 77, Total: 164",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Natural regrowth 86, plantation 1, tree crops 77: total 164.",
+        "expected_full_spoken_form": "Natural regrowth 86, plantation 1, tree crops 77: total 164.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "578j",
+        "raw_target": "250 minus 164 gives 86 for other land.",
+        "cached_intended": "250 minus 164 gives 86 for other land.",
+        "wav_sha256": "6374b5791a93766b8608f6c1ad7132e9548302c8686db968f1dedcb02e2db3a5",
+        "native_clip_sha256_prefix": "6374b5791a93766b",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "250 minus 164 gives 86 for other land.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "250 minus 164 gives 86 for other land.",
+        "expected_full_spoken_form": "250 minus 164 gives 86 for other land.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "97h6",
+        "raw_target": "Naturally regenerating forest and other land both have 86, tying for highest.",
+        "cached_intended": "Naturally regenerating forest and other land both have 86, tying for highest.",
+        "wav_sha256": "5ba4c21898d3c1ccb6971cb833f07d5fe5a3e9921f3f29d9892fe908b5dc318d",
+        "native_clip_sha256_prefix": "5ba4c21898d3c1cc",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Naturally regenerating forest and other land both have 86, tying for highest.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Naturally regenerating forest and other land both have 86, tying for highest.",
+        "expected_full_spoken_form": "Naturally regenerating forest and other land both have 86, tying for highest.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "8mtz",
+        "raw_target": "Divide both by 250 to get the same score, 0.344.",
+        "cached_intended": "Divide both by 250 to get the same score, 0.344.",
+        "wav_sha256": "5dae69d2eea186ccbeca9e194857bd0eb2b43e7f21730b50bac012d29107a8a0",
+        "native_clip_sha256_prefix": "5dae69d2eea186cc",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "divide both by 250 to get the same score, .344.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.73,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Divide both by 250 to get the same score, 0.344.",
+        "expected_full_spoken_form": "Divide both by 250 to get the same score, 0.344.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "4amm",
+        "raw_target": "Plantation forest's 1 becomes 0.004.",
+        "cached_intended": "Plantation forest's 1 becomes 0.004.",
+        "wav_sha256": "130505f8980069feb4982439e84c976fcebe42bacff2ee69259e8833f78a770d",
+        "native_clip_sha256_prefix": "130505f8980069fe",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Plantation forests 1% becomes 0.004",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Plantation forest's 1 becomes 0.004.",
+        "expected_full_spoken_form": "Plantation forest's 1 becomes 0.004.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ux8j",
+        "raw_target": "Tree crops and agroforestry's 77 becomes 0.308.",
+        "cached_intended": "Tree crops and agroforestry's 77 becomes 0.308.",
+        "wav_sha256": "1fa2a3995dae880fed89a3ad4c0c4a9dbb0e4f1e2cfcce774859f52645e01523",
+        "native_clip_sha256_prefix": "1fa2a3995dae880f",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Tree crops and agroforestry's 77% becomes .308.",
+        "second": {
+          "by": "whisper_second_opinion.py",
+          "terms": [],
+          "heard": "tree crops and agroforestry's 77% becomes 0.308.",
+          "match_kind": "exact",
+          "noul": null
+        },
+        "accepted": true,
+        "accepted_by": "native_second_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.35,
+        "second_match_kind": "exact",
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Tree crops and agroforestry's 77 becomes 0.308.",
+        "expected_full_spoken_form": "Tree crops and agroforestry's 77 becomes 0.308.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "y64h",
+        "raw_target": "Primary forest and planted forest are 0.",
+        "cached_intended": "Primary forest and planted forest are 0.",
+        "wav_sha256": "82703a5b6635eb5cf446e2215f60fc2f7bea3e71222e080cffbdef25c44a744e",
+        "native_clip_sha256_prefix": "82703a5b6635eb5c",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "primary forest and planted forest are 0.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Primary forest and planted forest are 0.",
+        "expected_full_spoken_form": "Primary forest and planted forest are 0.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "afyy",
+        "raw_target": "Before recording the second cell, do these 6 scores also add up to 1?",
+        "cached_intended": "Before recording the second cell, do these 6 scores also add up to 1?",
+        "wav_sha256": "cb41e7e588382fe2649cfd176cc4953d45d68e25a0012e7472bb382f5ff2ae31",
+        "native_clip_sha256_prefix": "cb41e7e588382fe2",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Before recording the second cell, do these six scores also add up to one?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.88,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Before recording the second cell, do these 6 scores also add up to 1?",
+        "expected_full_spoken_form": "Before recording the second cell, do these 6 scores also add up to 1?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "f2ze",
+        "raw_target": "Add the 2 scores of 0.344 to get 0.688.",
+        "cached_intended": "Add the 2 scores of 0.344 to get 0.688.",
+        "wav_sha256": "ac3db0391787771c42c675b1b6eaf920da773b4cc1e86d05d0ef11c438451ead",
+        "native_clip_sha256_prefix": "ac3db0391787771c",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Add the two scores of point 344 to get point 688.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.54,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Add the 2 scores of 0.344 to get 0.688.",
+        "expected_full_spoken_form": "Add the 2 scores of 0.344 to get 0.688.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ckag",
+        "raw_target": "Add 0.308 to get 0.996.",
+        "cached_intended": "Add 0.308 to get 0.996.",
+        "wav_sha256": "172ded66441b2f4cd809918b0915a87852531aba00a8c004f10cef1038927a76",
+        "native_clip_sha256_prefix": "172ded66441b2f4c",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Add .308 to get .996.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.88,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Add 0.308 to get 0.996.",
+        "expected_full_spoken_form": "Add 0.308 to get 0.996.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "n37p",
+        "raw_target": "Last, add 0.004 for exactly 1; the other 2 classes' zeros leave it unchanged.",
+        "cached_intended": "Last, add 0.004 for exactly 1; the other 2 classes' zeros leave it unchanged.",
+        "wav_sha256": "38e5e1c8c4ec90330ff5db0bc4926ffe4adadfee07a90f8961e85e0a874e5b05",
+        "native_clip_sha256_prefix": "38e5e1c8c4ec9033",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Last add 0.004 for exactly one. The other two classes zeros leave it unchanged",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.64,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Last, add 0.004 for exactly 1; the other 2 classes' zeros leave it unchanged.",
+        "expected_full_spoken_form": "Last, add 0.004 for exactly 1; the other 2 classes' zeros leave it unchanged.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ecb8",
+        "raw_target": "Wrong sum? Check missed terms and decimal places; match each class name.",
+        "cached_intended": "Wrong sum? Check missed terms and decimal places; match each class name.",
+        "wav_sha256": "0ddd6c45c0d777091abdea1b93a63465857c4cb56ccf63aedb41cc78627d9a25",
+        "native_clip_sha256_prefix": "0ddd6c45c0d77709",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Wrong sum? Check missed terms and decimal places. Match each class name.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Wrong sum? Check missed terms and decimal places; match each class name.",
+        "expected_full_spoken_form": "Wrong sum? Check missed terms and decimal places; match each class name.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "8k4a",
+        "raw_target": "If only one color is shown, which class is chosen?",
+        "cached_intended": "If only one color is shown, which class is chosen?",
+        "wav_sha256": "156fe2dfa27a903cb0f50362025fc7631b56b80c5160e1514258bd49a4031a0d",
+        "native_clip_sha256_prefix": "156fe2dfa27a903c",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "If only one color is shown, which class is chosen?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "If only one color is shown, which class is chosen?",
+        "expected_full_spoken_form": "If only one color is shown, which class is chosen?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "z33x",
+        "raw_target": "Showing one class compresses 6 scores into one label; it doesn't break the tie.",
+        "cached_intended": "Showing one class compresses 6 scores into one label; it doesn't break the tie.",
+        "wav_sha256": "2600c952fc5facbde744f28ac3064a3fa9a5b3f037cf2fad288e5217efd1a613",
+        "native_clip_sha256_prefix": "2600c952fc5facbd",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Showing one class compresses six scores into one label. It doesn't break the tie.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.63,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Showing one class compresses 6 scores into one label; it doesn't break the tie.",
+        "expected_full_spoken_form": "Showing one class compresses 6 scores into one label; it doesn't break the tie.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "wnrz",
+        "raw_target": "Our map picks the first top-scoring class in class order.",
+        "cached_intended": "Our map picks the first top-scoring class in class order.",
+        "wav_sha256": "24cab1e19baf6b818c4b4705b0322db4551c60fd884197f4739173baa910c46a",
+        "native_clip_sha256_prefix": "24cab1e19baf6b81",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Our map picks the first top-scoring class in class order.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Our map picks the first top-scoring class in class order.",
+        "expected_full_spoken_form": "Our map picks the first top-scoring class in class order.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ywz8",
+        "raw_target": "So it gets the naturally regenerating forest color too.",
+        "cached_intended": "So it gets the naturally regenerating forest color too.",
+        "wav_sha256": "3ca104f5b90d1bd7f270a2d772af747ec57122dd9752eb4d900b92275171858a",
+        "native_clip_sha256_prefix": "3ca104f5b90d1bd7",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "So it gets the naturally regenerating forest color, too.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "So it gets the naturally regenerating forest color too.",
+        "expected_full_spoken_form": "So it gets the naturally regenerating forest color too.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ww8v",
+        "raw_target": "Remember the first green cell: just one top class",
+        "cached_intended": "Remember the first green cell: just one top class",
+        "wav_sha256": "6e91f44912fc786bc8cfbb90ee51523d782225e6c750ccb2e80038915ea984cf",
+        "native_clip_sha256_prefix": "6e91f44912fc786b",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Remember the first green cell? Just one top class?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Remember the first green cell: just one top class",
+        "expected_full_spoken_form": "Remember the first green cell: just one top class",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "mx7g",
+        "raw_target": "Put both side by side: same color, different information.",
+        "cached_intended": "Put both side by side: same color, different information.",
+        "wav_sha256": "56cfeb69d0f3b47d148bc40f708a8e37e7ae5d38d28439c3f6d73d0177fc2869",
+        "native_clip_sha256_prefix": "56cfeb69d0f3b47d",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "put both side by side, same color, different information",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Put both side by side: same color, different information.",
+        "expected_full_spoken_form": "Put both side by side: same color, different information.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "7qfx",
+        "raw_target": "Record the tie: naturally regenerating forest and other land; note first-in-order display.",
+        "cached_intended": "Record the tie: naturally regenerating forest and other land; note first-in-order display.",
+        "wav_sha256": "0f110730de5aa750e1bcb722a30cea68f41e70b9f2ba310cee60a0f3d1ac56fd",
+        "native_clip_sha256_prefix": "0f110730de5aa750",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Record the tie, naturally regenerating forest and other land. Note first in order display.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Record the tie: naturally regenerating forest and other land; note first-in-order display.",
+        "expected_full_spoken_form": "Record the tie: naturally regenerating forest and other land; note first-in-order display.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "hbci",
+        "raw_target": "To compare results, read the note; don't let color hide the answer.",
+        "cached_intended": "To compare results, read the note; don't let color hide the answer.",
+        "wav_sha256": "522e88df973e20c7f65b322264db2e771a43e6596453ed37da3f1ae54fc44fba",
+        "native_clip_sha256_prefix": "522e88df973e20c7",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "To compare results, read the note. Don't let color hide the answer.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "To compare results, read the note; don't let color hide the answer.",
+        "expected_full_spoken_form": "To compare results, read the note; don't let color hide the answer.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "sbkg",
+        "raw_target": "After 2 green cells, can scores directly mean chances of being right?",
+        "cached_intended": "After 2 green cells, can scores directly mean chances of being right?",
+        "wav_sha256": "7032dbc106074d73fa4a823080c783d8f064cba75e131ebd1092252d6c4e9956",
+        "native_clip_sha256_prefix": "7032dbc106074d73",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "After two green cells, can scores directly mean chances of being right?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.94,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "After 2 green cells, can scores directly mean chances of being right?",
+        "expected_full_spoken_form": "After 2 green cells, can scores directly mean chances of being right?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "upmh",
+        "raw_target": "To use scores, first separate model scores from real accuracy.",
+        "cached_intended": "To use scores, first separate model scores from real accuracy.",
+        "wav_sha256": "dc4fb3c82af3884f2f335f594f631b86fa14b842d72734db95808fd4ecb1536c",
+        "native_clip_sha256_prefix": "dc4fb3c82af3884f",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "To use scores, first separate model scores from real accuracy.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "To use scores, first separate model scores from real accuracy.",
+        "expected_full_spoken_form": "To use scores, first separate model scores from real accuracy.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "vb62",
+        "raw_target": "These scores lack post-hoc probability calibration.",
+        "cached_intended": "These scores lack post-hoc probability calibration.",
+        "wav_sha256": "e5ae6126b2e38ddf22e5a941b240e1aad62478a43ae7aa3bcf27d04b1c3a5aba",
+        "native_clip_sha256_prefix": "e5ae6126b2e38ddf",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "These scores lack post hoc probability calibration.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "These scores lack post-hoc probability calibration.",
+        "expected_full_spoken_form": "These scores lack post-hoc probability calibration.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "8m2e",
+        "raw_target": "To treat scores as chances of being right, use independent reference data; compare scores with real outcomes.",
+        "cached_intended": "To treat scores as chances of being right, use independent reference data; compare scores with real outcomes.",
+        "wav_sha256": "8c9c467f62df5a41e178d6d5d404eed3febe9c7d06b67bccada8b5ffa91033fe",
+        "native_clip_sha256_prefix": "8c9c467f62df5a41",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "To treat scores as chances of being right, use independent reference data. Compare scores with real outcomes.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "To treat scores as chances of being right, use independent reference data; compare scores with real outcomes.",
+        "expected_full_spoken_form": "To treat scores as chances of being right, use independent reference data; compare scores with real outcomes.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "bs4s",
+        "raw_target": "So you can't directly say this cell has a 99.2% chance of being correct.",
+        "cached_intended": "So you can't directly say this cell has a 99.2% chance of being correct.",
+        "wav_sha256": "d520e36f30027566d26fd57bb40913b8ec8013d9bede7d85bd7b59f0f28d06f3",
+        "native_clip_sha256_prefix": "d520e36f30027566",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "So you can't directly say this cell has a 99.2% chance of being correct.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "So you can't directly say this cell has a 99.2% chance of being correct.",
+        "expected_full_spoken_form": "So you can't directly say this cell has a 99.2% chance of being correct.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ci5j",
+        "raw_target": "The model sees clues; check land history and management use against reference data.",
+        "cached_intended": "The model sees clues; check land history and management use against reference data.",
+        "wav_sha256": "1b5d30f70bc8a26e6d3fd7e85a5e36e133f56e85b01ffa00bc65559f76a947c1",
+        "native_clip_sha256_prefix": "1b5d30f70bc8a26e",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "The model sees clues, check land history and management use against reference data",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "The model sees clues; check land history and management use against reference data.",
+        "expected_full_spoken_form": "The model sees clues; check land history and management use against reference data.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "6ss6",
+        "raw_target": "Once scores are clear, keep location and data year in the same row.",
+        "cached_intended": "Once scores are clear, keep location and data year in the same row.",
+        "wav_sha256": "24d05658b6b81677f82dff0efcd32f86145b5901f3807ab192fc7dea019d9f39",
+        "native_clip_sha256_prefix": "24d05658b6b81677",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Once scores are clear, keep location and data year in the same row.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Once scores are clear, keep location and data year in the same row.",
+        "expected_full_spoken_form": "Once scores are clear, keep location and data year in the same row.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "rume",
+        "raw_target": "Released in May, the baseline describes land conditions in 2020.",
+        "cached_intended": "Released in May, the baseline describes land conditions in 2020.",
+        "wav_sha256": "d3d696396d4289b47c92b0c1a3d8f15fb9e874a112ab7ac1f6389ac6889d2157",
+        "native_clip_sha256_prefix": "d3d696396d4289b4",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Released in May, the baseline describes land conditions in 2020.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Released in May, the baseline describes land conditions in 2020.",
+        "expected_full_spoken_form": "Released in May, the baseline describes land conditions in 2020.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "pvkj",
+        "raw_target": "The formal data paper was published on October 21.",
+        "cached_intended": "The formal data paper was published on October 21.",
+        "wav_sha256": "799c63e1dd71a5cb82f74288dffe453534577430bda4d4178b14eca99fa7ab10",
+        "native_clip_sha256_prefix": "799c63e1dd71a5cb",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "The formal data paper was published on October 21st.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.51,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "The formal data paper was published on October 21.",
+        "expected_full_spoken_form": "The formal data paper was published on October 21.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "ncx4",
+        "raw_target": "That introduction also shared an early-release annual series for 2017–2025.",
+        "cached_intended": "That introduction also shared an early-release annual series for 2017–2025.",
+        "wav_sha256": "a6d3ad6607e724cd64b9d813210965e8ad3325888e8e1d7dbccb37bf7e5f6a5b",
+        "native_clip_sha256_prefix": "a6d3ad6607e724cd",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "That introduction also shared an early release annual series for 2017 to 2025",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.52,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "That introduction also shared an early-release annual series for 2017–2025.",
+        "expected_full_spoken_form": "That introduction also shared an early-release annual series for 2017–2025.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "j5kv",
+        "raw_target": "One location can have yearly outputs, extending classification over time.",
+        "cached_intended": "One location can have yearly outputs, extending classification over time.",
+        "wav_sha256": "39a04ff24c540927c2e9c06b860973bc98ba389384973ae36d6217626ac0fc39",
+        "native_clip_sha256_prefix": "39a04ff24c540927",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "One location can have yearly outputs, extending classification over time.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "One location can have yearly outputs, extending classification over time.",
+        "expected_full_spoken_form": "One location can have yearly outputs, extending classification over time.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "nqyj",
+        "raw_target": "Compare one place: fix location; keep each year's class order and all 6 scores.",
+        "cached_intended": "Compare one place: fix location; keep each year's class order and all 6 scores.",
+        "wav_sha256": "1c87b6f572272b9230331d75796b3a18d296f7031682790e54f355da70e9e5a8",
+        "native_clip_sha256_prefix": "1c87b6f572272b92",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Compare one place, fix location, keep each year's class order, and all six scores.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_Jev",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": null,
+        "primary_Jev": 0.64,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Compare one place: fix location; keep each year's class order and all 6 scores.",
+        "expected_full_spoken_form": "Compare one place: fix location; keep each year's class order and all 6 scores.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "wfb2",
+        "raw_target": "Changing only colors hides the ties and score gaps we just saw.",
+        "cached_intended": "Changing only colors hides the ties and score gaps we just saw.",
+        "wav_sha256": "8b94e0e8da2f46948bbd6d7bad56cf3eeadbea7386179b81e31be2e0fa090a2d",
+        "native_clip_sha256_prefix": "8b94e0e8da2f4694",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Changing only colors hides the ties and score gaps we just saw.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Changing only colors hides the ties and score gaps we just saw.",
+        "expected_full_spoken_form": "Changing only colors hides the ties and score gaps we just saw.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "88pk",
+        "raw_target": "These two 2020 cells only show what this version's output looks like.",
+        "cached_intended": "These two 2020 cells only show what this version's output looks like.",
+        "wav_sha256": "c2afa933be2b947d9a342fb1ff5eba3e5c78d2a0dfdb72f1ab887f5ea1dd1df4",
+        "native_clip_sha256_prefix": "c2afa933be2b947d",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "These two 2020 cells only show what this version's output looks like.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "These two 2020 cells only show what this version's output looks like.",
+        "expected_full_spoken_form": "These two 2020 cells only show what this version's output looks like.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "bu6j",
+        "raw_target": "Log year, location, 6 scores and all top-scoring classes in one pixel record.",
+        "cached_intended": "Log year, location, 6 scores and all top-scoring classes in one pixel record.",
+        "wav_sha256": "8696a10090c540a9fc9f94f13259f108ae2851cb3c97f6cae802bcd98eec8cb2",
+        "native_clip_sha256_prefix": "8696a10090c540a9",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Log year, location, 6 scores, and all top scoring classes in one PixelRecord",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Log year, location, 6 scores and all top-scoring classes in one pixel record.",
+        "expected_full_spoken_form": "Log year, location, 6 scores and all top-scoring classes in one pixel record.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "hr4b",
+        "raw_target": "This row keeps what a single green color leaves out.",
+        "cached_intended": "This row keeps what a single green color leaves out.",
+        "wav_sha256": "ab86c06f6b53bb4eef77a8db1f1e4943974bc912ee297e7b27e910a2ea5add7b",
+        "native_clip_sha256_prefix": "ab86c06f6b53bb4e",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "This row keeps what a single green color leaves out.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "This row keeps what a single green color leaves out.",
+        "expected_full_spoken_form": "This row keeps what a single green color leaves out.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "4w7g",
+        "raw_target": "What environments do you usually view on maps?",
+        "cached_intended": "What environments do you usually view on maps?",
+        "wav_sha256": "51e40f08516d9bbb3bfcf10eac431980b2d3e3bbf8552d2db6a6b60eb1bdb272",
+        "native_clip_sha256_prefix": "51e40f08516d9bbb",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "What environments do you usually view on Maps?",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "What environments do you usually view on maps?",
+        "expected_full_spoken_form": "What environments do you usually view on maps?",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      },
+      {
+        "id": "39nc",
+        "raw_target": "Subscribe, and let's understand real AI outputs together.",
+        "cached_intended": "Subscribe, and let's understand real AI outputs together.",
+        "wav_sha256": "11678e98fa2b201d1a77bda9c2c14614f1b21ddfcd1e9cd5c7e1255408cf40fe",
+        "native_clip_sha256_prefix": "11678e98fa2b201d",
+        "clip_current": true,
+        "native_synthesis_key_current": true,
+        "heard": "Subscribe, and let's understand real AI outputs together.",
+        "second": null,
+        "accepted": true,
+        "accepted_by": "native_exact",
+        "cached_primary_match_consistent": true,
+        "full_intended_exact": true,
+        "spoken_form_current": true,
+        "primary_match_kind": "exact",
+        "primary_Jev": null,
+        "second_match_kind": null,
+        "second_Jev": null,
+        "problems": [],
+        "ok": true,
+        "cached_full_spoken_form": "Subscribe, and let's understand real A I outputs together.",
+        "expected_full_spoken_form": "Subscribe, and let's understand real A I outputs together.",
+        "native_audio_cache_full_wav_sha256": null,
+        "native_audio_cache_hash_contract": "dub cache has native synthesis keys; actual full WAV SHA is independently hashed and native ASR cache uses clip16"
+      }
+    ],
+    "native_check": {
+      "code": 0,
+      "finished_at": "2026-10-25T20:30:29.293Z",
+      "stage_at": "2026-10-25T20:30:29.244Z",
+      "lines": 92,
+      "flagged": 0,
+      "unchecked": 0,
+      "log": "/workspace/work/ai-tech-next/forty-check-en-2026-10-25T20-30-21-157Z.log"
+    },
+    "skipped": false,
+    "kept": 0,
+    "lines": 92,
+    "speech_hash": "c6d70ecaef91a15d",
+    "translation_hash": "bfff4c39fe664d8e",
+    "fit": {
+      "windows": 89,
+      "over": 0,
+      "tempo_max": 1.21
+    },
+    "current_flags": [],
+    "media": {
+      "file": "/workspace/work/videos/forty-forest-map/dubs/en.m4a",
+      "exists": true,
+      "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+      "bytes": 13547232,
+      "mtimeMs": 1792960191510.6895
+    },
+    "encoded_meter": {
+      "integrated": -14,
+      "truePeak": -2.8,
+      "measured_at": "2026-10-25T20:30:20.589Z",
+      "source": "SHA-bound encoded delivery-measurement.json; not a new loudness scan"
+    },
+    "encoded_probe": {
+      "codec": "aac",
+      "sample_rate": 48000,
+      "channels": 2,
+      "duration": 512.805
+    },
+    "completed_receipt_blob_hashes": "present",
+    "status": "local_audio_ready"
+  },
+  "extra_binding_checks": {
+    "EN_producer_subrecord_stable": true,
+    "EN_completed_check_snapshot_stable": true,
+    "actual_encoded_meter_matches_completed_check_capture": true,
+    "full_spoken_forms_recomputed_for_92": true
+  },
+  "concurrent_producer": {
+    "phase": "ja_dub_running",
+    "active_locale": "ja",
+    "started_at": "2026-10-25T20:30:30.806Z",
+    "other_locale_changes_during_audit": [
+      "/workspace/work/videos/forty-forest-map/dubs/ja/audio/cache.json"
+    ],
+    "note": "Concurrent unrelated locale/heartbeat changes do not certify that locale or invalidate a stable completed EN receipt; EN and frozen-main bindings checked separately."
+  },
+  "all_eight_auditor_context": {
+    "status": "partial_not_all_eight_ready",
+    "all_eight_ready": false,
+    "ready_locales": [
+      "en",
+      "vi"
+    ],
+    "not_ready_locales": [
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "th"
+    ],
+    "global_problems": [
+      "Inputs changed during this read-only snapshot; rerun after the producer settles"
+    ]
+  },
+  "problems": [],
+  "observed_inputs": {
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/video.json": {
+      "sha256": "450bd6ad82146cfa1110abfe133cf9124980095a22402e72bfe0c693a743394a",
+      "bytes": 53194
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/lexicon.json": {
+      "sha256": "aa414e403385008766c93001c7b3fd825da9927b36e893f29f4dd376100ab46a",
+      "bytes": 6381
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/en.json": {
+      "sha256": "c5a2a7ceffec09ce0823edd60ec97696f152a76e12805e7d7800938ec8c7886a",
+      "bytes": 14913
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/ja.json": {
+      "sha256": "40df75c7c2c8edaf33c17b97ab8b9a59c5860cc1d2edd53f266db6bcf6e54231",
+      "bytes": 17414
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/ko.json": {
+      "sha256": "b437c5317cbbe44fc4f6c6fd335fa8cc6c2957505facef28b902861236a1d038",
+      "bytes": 15554
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/es.json": {
+      "sha256": "7e78b1ffe0b4b7b5e183261328c00be91280039b26c71ba0794b90341d53a16b",
+      "bytes": 15113
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/pt.json": {
+      "sha256": "b5a266d8e466b793d991f33fddf33147e95113775cf69aee01f1adfd4c3b1ae3",
+      "bytes": 14577
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/id.json": {
+      "sha256": "44abd569ac1d10fb506624240efeaebc7f41835bf1291385e2fde2554fa60031",
+      "bytes": 14527
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/vi.json": {
+      "sha256": "417363bf2bc84be68db15ddb1435f7486e38b8305baa061b9898c47866455f66",
+      "bytes": 17265
+    },
+    "/workspace/work/travel-scanner-forty/docs/videos/forty-forest-map/i18n/th.json": {
+      "sha256": "e040a9595cfab3ef96d582c610445f9f04464a71c81492a89d9843c97f82c92c",
+      "bytes": 24181
+    },
+    "/workspace/work/videos/forty-forest-map/timeline.json": {
+      "sha256": "d3df01349e4d85b4755ab81a47d47c2508afea3938262def07d3f16293302d1b",
+      "bytes": 45221
+    },
+    "/workspace/work/videos/forty-forest-map/checks.json": {
+      "sha256": "ac664b1a56f45a53f7822f7b91858b01e8ec54b1adc82a6b1652656c35e96cb0",
+      "bytes": 46702
+    },
+    "/workspace/work/videos/forty-forest-map/branding.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/state.json": {
+      "sha256": "b8091056e1c0ae19efd0c2406275a2de2177a0dc53a0769cdde31641e2499853",
+      "bytes": 10779
+    },
+    "/workspace/work/ai-tech-next/forty-language-production.json": {
+      "sha256": "37fff19c7e39e802f914922e84ebe48f73afdc69cc6282b4a077cef9b4580f0d",
+      "bytes": 64003
+    },
+    "/workspace/work/videos/forty-forest-map/final.mp4": {
+      "sha256": "b293282ddfefdf7fb6d20e88bfef46b281c1ecac31807ac0ecc13ee4eb193d18",
+      "bytes": 41255462
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/timeline.json": {
+      "sha256": "5cbf3d2f6354a34055c8821f942fd9647a1861a91969feb49aff0131c91ad23a",
+      "bytes": 35888
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/fit.json": {
+      "sha256": "11eb1c7d76bd9c7bc8469d1c3f15cbb16c60ee449d425c56be9ec4ba3dea7ce5",
+      "bytes": 20134
+    },
+    "/workspace/work/videos/forty-forest-map/review/check-flags.en.json": {
+      "sha256": "4155dedabc3fd1a1f3c481d0459d10f5a337271f2994f0ff0bb79029e401d4ea",
+      "bytes": 160
+    },
+    "/workspace/work/videos/forty-forest-map/review/check.en.json": {
+      "sha256": "9dfdadda49f3c3e16167df7aa29055455f4a673bcb44511323eeb2fbc49622e5",
+      "bytes": 41730
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/delivery-measurement.json": {
+      "sha256": "131b7f683352c8d3640237bc729f2de8bc74ac05e48ea9c17793dc57010eb804",
+      "bytes": 347
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/cache.json": {
+      "sha256": "6e159a8ca0205432d6943605d70119fc3947d7f7a7f1448d9f0f5acb27a85e44",
+      "bytes": 3244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/skipped.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/ai-tech-next/forty-check-en-2026-10-25T20-30-21-157Z.log": {
+      "sha256": "f42eb3eb76804590192463a0c4ff40e992a30bd3ebcd4d3c3ff3a56b5aca3d29",
+      "bytes": 2333
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en.m4a": {
+      "sha256": "6ca5213241ac1f107141ebd4d2e410d4f6474efe39bb1374f2fd35abc0192c63",
+      "bytes": 13547232
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/8aw6.wav": {
+      "sha256": "c81765e24e684009b5a888f505aa48a9bd195098cbd2123aaf358ed7d74688a7",
+      "bytes": 333164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/gngj.wav": {
+      "sha256": "5288e2fcad5c1dd6fee4395c3dd2e9ce11f26899659ebcccf36c7ac4d1626832",
+      "bytes": 373484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ep85.wav": {
+      "sha256": "17c47c5c0fed1e7f8f7d0fd912acd5f79ca76021eafc96d53a4e8041f35ca62d",
+      "bytes": 212204
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/jw6i.wav": {
+      "sha256": "f1a4de9f7f8eb23de6b14f2a76c169ce6dad9123980695ae27b7ccc73de091f2",
+      "bytes": 320684
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/5ur9.wav": {
+      "sha256": "c80b52cf3e9c33c62977736c768a6e492409b213c9896b439a9362c8c2fc378f",
+      "bytes": 333164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/m2p6.wav": {
+      "sha256": "4ca02cf05adf5b51b4267cc930140f503402f443afd93613a374481b298ebdf7",
+      "bytes": 457964
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/erqz.wav": {
+      "sha256": "d43fba88487528eab8e7066130779a66eceee311bd23d5493d4c81466d6d4ff0",
+      "bytes": 474284
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/t4w3.wav": {
+      "sha256": "b84a390705cf7ef01af2fcc66f87edb74cc12dd93cdd909353de8f5dad3ae0b9",
+      "bytes": 502124
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/66nz.wav": {
+      "sha256": "8600f1f5169492d597ae51fbc7162dad5abe0c248cc26be9d00dc235f161a44f",
+      "bytes": 299564
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/3pse.wav": {
+      "sha256": "ba10d652782a1f43a727ae167868dd9a6ca8285247e73fcf41b4c5fa8e0ef2bc",
+      "bytes": 564524
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/v9fh.wav": {
+      "sha256": "a2ec17c26ee1b0f0b7cc1241e4c48fd046a96e139917586e5fe54f6138dbf20b",
+      "bytes": 503084
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/7id9.wav": {
+      "sha256": "1c45afa8917704cc1d47a9ea016c5ec856cc096d31b9a12291c5c9a6ed13f8f6",
+      "bytes": 661484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/2vcb.wav": {
+      "sha256": "115f28715d72a29a0a50c75c02546038d2bef3e92f0499fd792689ce6bd25c51",
+      "bytes": 313004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/yiya.wav": {
+      "sha256": "ff64ea24fa0acf1bc60e24b81604c1f29d6096dc96aec59df31611e5dd2a33e1",
+      "bytes": 580844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/rrgq.wav": {
+      "sha256": "8fee730ddd979fff2e2392fd3f4939f9a6c5efb19e18c006f6c6a91a8590aef4",
+      "bytes": 459884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/fbc5.wav": {
+      "sha256": "c6aaa5275b633b71f372a9bf223b0a93c45e7a49fa1c5ac24a59305c359ae7c5",
+      "bytes": 453164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/gsa7.wav": {
+      "sha256": "67723683e85415cf8485a47386c481bf65925f1685c366f2eca854fb591e8c11",
+      "bytes": 331244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/9wmz.wav": {
+      "sha256": "80fb1b92293504ca022b2da2515488fbbc640ef0c7d0aecb10c7f71f1d7f6bf2",
+      "bytes": 374444
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/jkby.wav": {
+      "sha256": "064e521383aec2ca6457445c2713ad96643b1a7486f597349f384459a5e4a935",
+      "bytes": 450284
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/5nt9.wav": {
+      "sha256": "01c238bd6defb156518470ee85c7cbff9cc1987957449102722707cb5b4bf828",
+      "bytes": 517484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/m8cb.wav": {
+      "sha256": "0ab6e1a3dfb5f3f7e9a7f1f5539509fa3b294454615bdb1025707d6d220c7ead",
+      "bytes": 358124
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/p2ry.wav": {
+      "sha256": "6a3806e854100111acdacddff6a4b4f9379d3ef22b6c52fc08734000377d7d1b",
+      "bytes": 359084
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/u5js.wav": {
+      "sha256": "cf38d9739632343f64b067ca89956c990453887efbd96595fc080a218cb06f1b",
+      "bytes": 476204
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/7732.wav": {
+      "sha256": "403f54dc3280d3347150662b75a0810814bc0bb8ace3ed2fd56e2fc7455a5c45",
+      "bytes": 459884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/yi97.wav": {
+      "sha256": "683f957f50cb88d2d304290b28cf454caeabac464eb05ee19b2cd9a7cb4db230",
+      "bytes": 403244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/2k27.wav": {
+      "sha256": "91244012565c6cf3ee80b511604f9654389f52aabbf0fe762f8d580f8af98ad3",
+      "bytes": 357164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/vk36.wav": {
+      "sha256": "3c4a2cb6902ac27e6d9b57951508fb16696ad6372771d33cdfb3dd0e9d4737eb",
+      "bytes": 526124
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/gfes.wav": {
+      "sha256": "8f67160e96fd6d5db913abff06425bc79b31724c43a3fecfdbdb11945baf4589",
+      "bytes": 354284
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/e826.wav": {
+      "sha256": "de4a236f7136ae9721bbbe6d4de4e9804970dc0d95b46e3daf8c7986b3248961",
+      "bytes": 499244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/svhy.wav": {
+      "sha256": "f2f7fa441b05126c9cd67cc16626d338a603d2b4e71d12c58a56601d4e9e1dbe",
+      "bytes": 377324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/3gwz.wav": {
+      "sha256": "c853f897a72b07dc47d5156f6f3dbe2a6923320722c00a46b6c29716c04f3caf",
+      "bytes": 303404
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/7iv8.wav": {
+      "sha256": "d33fc40fdb54fc96c132b5309be3e000de1200b9b13d0e21abff10a391b09c7b",
+      "bytes": 389804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/bxdi.wav": {
+      "sha256": "9e906135735fcebda694e1139c32296a67edd65c5863240b2e339e8086eb9088",
+      "bytes": 591404
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/anxa.wav": {
+      "sha256": "83bb2e246378b2603caec8026f71ef06218177bc9827fe589b573a347a643d2f",
+      "bytes": 520364
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/up9r.wav": {
+      "sha256": "125240e1d3627668aa328f62d24e1f08adafb6f99e7de8a1fd1ffc5c3541b3ce",
+      "bytes": 607724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/3p97.wav": {
+      "sha256": "9b0912715651ba6caeec3c30e732c1d97d2e1508c13865ff6a5e838d88976f47",
+      "bytes": 391724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/4av2.wav": {
+      "sha256": "d4dc68079d04b8c80f3de46e2bf6f9341c0d4705c5477f8922ec83fbfff4ad79",
+      "bytes": 631724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/8hpb.wav": {
+      "sha256": "a31c4ae975b5dd9ed3c772da0c65d1bec99223909c6e58dffd73a6e35399f318",
+      "bytes": 436844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ywu9.wav": {
+      "sha256": "ecfe9c042be3a16e86649996bfdcf3375762c0a5553df0835a159ffb1444542e",
+      "bytes": 776684
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/u362.wav": {
+      "sha256": "3da2b68ff7e61ea54c13144c6c0be01fe44b5817cf863a9da5b0d1097645779a",
+      "bytes": 446444
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/eym7.wav": {
+      "sha256": "b3292498e0f8d446d42ce6162775c253bf3c8d0dc23f7193db2887a77468f73b",
+      "bytes": 353324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/k3i2.wav": {
+      "sha256": "6b0723a112cbe79667fddeaa798097198a531aded7e5ea74d64c845dd213edfc",
+      "bytes": 245804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/p9sg.wav": {
+      "sha256": "895633f28e83ca99f277f14585acee816ca242254616db0a80851510700b0fe3",
+      "bytes": 341804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/dkq3.wav": {
+      "sha256": "5267842b17f428ba6473bd94a6cef52eeeab751981d21aed15b2983ad7baa8a5",
+      "bytes": 389804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/w86h.wav": {
+      "sha256": "71054a281939114c4aefd1d0a02b0284e02e081cb561b112126c59fce06e718f",
+      "bytes": 329324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/wh49.wav": {
+      "sha256": "4df58d4ee793834b64641da31fe3697cbc72799d0d5f1cb01cb5ce688e425b98",
+      "bytes": 466604
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/6ybg.wav": {
+      "sha256": "4586cdb3f928e2283ef748ad734d75307f4334429b4b8c2b0e38000379fd8618",
+      "bytes": 517484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/xxju.wav": {
+      "sha256": "30a152ed3df138b06860b4d71c4b2df72c01dd62cad1e650c299c1caa4de7361",
+      "bytes": 380204
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/endc.wav": {
+      "sha256": "3f989344daa46d858501d70c28e3c80564ef91cd3e5f7b1e69bc09cf380bd6c8",
+      "bytes": 326444
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/appe.wav": {
+      "sha256": "bff0e5f94a4712a6d088a479dd503b4bff99e7e30fea57760e2b5c5e07313b38",
+      "bytes": 391724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/beg8.wav": {
+      "sha256": "f6d0121b1e00b2fc654069f3e1ca263b355d9158739daaf8eaf6185f6944dd01",
+      "bytes": 393644
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/fe8z.wav": {
+      "sha256": "438030e377999f5fe7491d0ba94b361226cd5ba36bb460907c25cbc87f8d7378",
+      "bytes": 617324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ymf8.wav": {
+      "sha256": "4bc7053fab50124d44d9cb21bb4dc1dce8a8ed19129c1a0429ad30ecda93e289",
+      "bytes": 499244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/54sx.wav": {
+      "sha256": "b5922b5197568759fffddffde25f1630bb62fa5f0fcbd22a287f11a557327db6",
+      "bytes": 626924
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/mfsh.wav": {
+      "sha256": "65ddb78002b6a9c658d7584b1dc7a0c5bd79ffe07fc73816593a28ade9913011",
+      "bytes": 754604
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/578j.wav": {
+      "sha256": "6374b5791a93766b8608f6c1ad7132e9548302c8686db968f1dedcb02e2db3a5",
+      "bytes": 421484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/97h6.wav": {
+      "sha256": "5ba4c21898d3c1ccb6971cb833f07d5fe5a3e9921f3f29d9892fe908b5dc318d",
+      "bytes": 520364
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/8mtz.wav": {
+      "sha256": "5dae69d2eea186ccbeca9e194857bd0eb2b43e7f21730b50bac012d29107a8a0",
+      "bytes": 376364
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/4amm.wav": {
+      "sha256": "130505f8980069feb4982439e84c976fcebe42bacff2ee69259e8833f78a770d",
+      "bytes": 427244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ux8j.wav": {
+      "sha256": "1fa2a3995dae880fed89a3ad4c0c4a9dbb0e4f1e2cfcce774859f52645e01523",
+      "bytes": 477164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/y64h.wav": {
+      "sha256": "82703a5b6635eb5cf446e2215f60fc2f7bea3e71222e080cffbdef25c44a744e",
+      "bytes": 337004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/afyy.wav": {
+      "sha256": "cb41e7e588382fe2649cfd176cc4953d45d68e25a0012e7472bb382f5ff2ae31",
+      "bytes": 377324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/f2ze.wav": {
+      "sha256": "ac3db0391787771c42c675b1b6eaf920da773b4cc1e86d05d0ef11c438451ead",
+      "bytes": 447404
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ckag.wav": {
+      "sha256": "172ded66441b2f4cd809918b0915a87852531aba00a8c004f10cef1038927a76",
+      "bytes": 315884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/n37p.wav": {
+      "sha256": "38e5e1c8c4ec90330ff5db0bc4926ffe4adadfee07a90f8961e85e0a874e5b05",
+      "bytes": 637484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ecb8.wav": {
+      "sha256": "0ddd6c45c0d777091abdea1b93a63465857c4cb56ccf63aedb41cc78627d9a25",
+      "bytes": 464684
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/8k4a.wav": {
+      "sha256": "156fe2dfa27a903cb0f50362025fc7631b56b80c5160e1514258bd49a4031a0d",
+      "bytes": 308204
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/z33x.wav": {
+      "sha256": "2600c952fc5facbde744f28ac3064a3fa9a5b3f037cf2fad288e5217efd1a613",
+      "bytes": 450284
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/wnrz.wav": {
+      "sha256": "24cab1e19baf6b818c4b4705b0322db4551c60fd884197f4739173baa910c46a",
+      "bytes": 337004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ywz8.wav": {
+      "sha256": "3ca104f5b90d1bd7f270a2d772af747ec57122dd9752eb4d900b92275171858a",
+      "bytes": 277484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ww8v.wav": {
+      "sha256": "6e91f44912fc786bc8cfbb90ee51523d782225e6c750ccb2e80038915ea984cf",
+      "bytes": 303404
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/mx7g.wav": {
+      "sha256": "56cfeb69d0f3b47d148bc40f708a8e37e7ae5d38d28439c3f6d73d0177fc2869",
+      "bytes": 337964
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/7qfx.wav": {
+      "sha256": "0f110730de5aa750e1bcb722a30cea68f41e70b9f2ba310cee60a0f3d1ac56fd",
+      "bytes": 590444
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/hbci.wav": {
+      "sha256": "522e88df973e20c7f65b322264db2e771a43e6596453ed37da3f1ae54fc44fba",
+      "bytes": 407084
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/sbkg.wav": {
+      "sha256": "7032dbc106074d73fa4a823080c783d8f064cba75e131ebd1092252d6c4e9956",
+      "bytes": 397484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/upmh.wav": {
+      "sha256": "dc4fb3c82af3884f2f335f594f631b86fa14b842d72734db95808fd4ecb1536c",
+      "bytes": 421484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/vb62.wav": {
+      "sha256": "e5ae6126b2e38ddf22e5a941b240e1aad62478a43ae7aa3bcf27d04b1c3a5aba",
+      "bytes": 268844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/8m2e.wav": {
+      "sha256": "8c9c467f62df5a41e178d6d5d404eed3febe9c7d06b67bccada8b5ffa91033fe",
+      "bytes": 697004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/bs4s.wav": {
+      "sha256": "d520e36f30027566d26fd57bb40913b8ec8013d9bede7d85bd7b59f0f28d06f3",
+      "bytes": 560684
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ci5j.wav": {
+      "sha256": "1b5d30f70bc8a26e6d3fd7e85a5e36e133f56e85b01ffa00bc65559f76a947c1",
+      "bytes": 477164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/6ss6.wav": {
+      "sha256": "24d05658b6b81677f82dff0efcd32f86145b5901f3807ab192fc7dea019d9f39",
+      "bytes": 361964
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/rume.wav": {
+      "sha256": "d3d696396d4289b47c92b0c1a3d8f15fb9e874a112ab7ac1f6389ac6889d2157",
+      "bytes": 371564
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/pvkj.wav": {
+      "sha256": "799c63e1dd71a5cb82f74288dffe453534577430bda4d4178b14eca99fa7ab10",
+      "bytes": 316844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/ncx4.wav": {
+      "sha256": "a6d3ad6607e724cd64b9d813210965e8ad3325888e8e1d7dbccb37bf7e5f6a5b",
+      "bytes": 522284
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/j5kv.wav": {
+      "sha256": "39a04ff24c540927c2e9c06b860973bc98ba389384973ae36d6217626ac0fc39",
+      "bytes": 416684
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/nqyj.wav": {
+      "sha256": "1c87b6f572272b9230331d75796b3a18d296f7031682790e54f355da70e9e5a8",
+      "bytes": 550124
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/wfb2.wav": {
+      "sha256": "8b94e0e8da2f46948bbd6d7bad56cf3eeadbea7386179b81e31be2e0fa090a2d",
+      "bytes": 361004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/88pk.wav": {
+      "sha256": "c2afa933be2b947d9a342fb1ff5eba3e5c78d2a0dfdb72f1ab887f5ea1dd1df4",
+      "bytes": 370604
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/bu6j.wav": {
+      "sha256": "8696a10090c540a9fc9f94f13259f108ae2851cb3c97f6cae802bcd98eec8cb2",
+      "bytes": 596204
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/hr4b.wav": {
+      "sha256": "ab86c06f6b53bb4eef77a8db1f1e4943974bc912ee297e7b27e910a2ea5add7b",
+      "bytes": 252524
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/4w7g.wav": {
+      "sha256": "51e40f08516d9bbb3bfcf10eac431980b2d3e3bbf8552d2db6a6b60eb1bdb272",
+      "bytes": 261164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/en/audio/39nc.wav": {
+      "sha256": "11678e98fa2b201d1a77bda9c2c14614f1b21ddfcd1e9cd5c7e1255408cf40fe",
+      "bytes": 357164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ja/timeline.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ja/fit.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check-flags.ja.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check.ja.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ja/delivery-measurement.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ja/audio/cache.json": {
+      "sha256": "e0367c42e1593e304abf3cb5763ab637c42aab052c8fca2f1763aa0f54aa6cc2",
+      "bytes": 2119
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ja/skipped.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ko/timeline.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ko/fit.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check-flags.ko.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check.ko.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ko/delivery-measurement.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ko/audio/cache.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/ko/skipped.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/es/timeline.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/es/fit.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check-flags.es.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check.es.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/es/delivery-measurement.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/es/audio/cache.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/es/skipped.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/pt/timeline.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/pt/fit.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check-flags.pt.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check.pt.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/pt/delivery-measurement.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/pt/audio/cache.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/pt/skipped.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/id/timeline.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/id/fit.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check-flags.id.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check.id.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/id/delivery-measurement.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/id/audio/cache.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/id/skipped.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/timeline.json": {
+      "sha256": "13c08e1f73b1ac12432f6b0d54d105935ee1a512b902505d48586d7cde087ffd",
+      "bytes": 35865
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/fit.json": {
+      "sha256": "77fe45fe311718cf247334dd64af9c540bd56eed8db5e0c528d16c56f681f30b",
+      "bytes": 20068
+    },
+    "/workspace/work/videos/forty-forest-map/review/check-flags.vi.json": {
+      "sha256": "afa5cb473255bc78fd19401f6e9821f30243cfc0d81bee8c8e25ae59ec91edf0",
+      "bytes": 160
+    },
+    "/workspace/work/videos/forty-forest-map/review/check.vi.json": {
+      "sha256": "3917bab12be722284bfc7514a77b88e46f50cd5fdadc36c5da45ed777916de19",
+      "bytes": 67185
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/delivery-measurement.json": {
+      "sha256": "b9fde945c1ed827c6a0f45781726f018138f7364f3e2a24e4ac9e9672a5f2b43",
+      "bytes": 347
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/cache.json": {
+      "sha256": "072085374815ba2a559e7cdd5be9cc33ea6200712b2eb6ab43bc27c9f59e8a43",
+      "bytes": 3059
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/skipped.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/ai-tech-next/forty-check-vi-2026-10-25T19-20-43-813Z.log": {
+      "sha256": "4ef82b12af1b23269e5c042e9d13cc4c1ccfb34b0d44025d0f7ae711046c5c46",
+      "bytes": 2206
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi.m4a": {
+      "sha256": "1f50cdfe5b5e6ff31ea562286d77ffd9c2df7dc00f75fea6e3f2b2036ce782f8",
+      "bytes": 12076524
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/8aw6.wav": {
+      "sha256": "fc611e327026ea30e9071dbc9c5ea8a32f6910587964a46fd87565865854c941",
+      "bytes": 319724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/gngj.wav": {
+      "sha256": "5053d4d988a17322ad7e2a6062475c06a206108584913e7c8a71443cbbc54fba",
+      "bytes": 305324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ep85.wav": {
+      "sha256": "7174e6f4189a96a823034397edc1346f68c4a4239f856b7ed56eca112393bbc7",
+      "bytes": 216044
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/jw6i.wav": {
+      "sha256": "def645297aca0c2a2b5fa9f55e31efd358a7971d3f4c78547441078357d4b2dd",
+      "bytes": 337964
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/5ur9.wav": {
+      "sha256": "2148aea111c250e07d1284f92b247cefefe3d40fedfe4fdba14f0bf06a2520d1",
+      "bytes": 320684
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/m2p6.wav": {
+      "sha256": "c0dc7252154073d40b8bab63056fbe904d14dea4e51266f1236b9326e9691890",
+      "bytes": 415724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/erqz.wav": {
+      "sha256": "d97b4c57b6f107b9765f1da751b32901547127c8de8b7195809e3c077bede08a",
+      "bytes": 367724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/t4w3.wav": {
+      "sha256": "278d8ff1c7b0f95bc3e3d247a8bf3f3ced976bf0acd039d9f23bc72cf5dc7a0b",
+      "bytes": 460844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/66nz.wav": {
+      "sha256": "f794ac71d6aed0565ec2ac3edd27c0d942d9a667d49dec003f5149f0eeadac21",
+      "bytes": 275564
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/3pse.wav": {
+      "sha256": "87ced591cd6e7e9d7dd9bdeeb4ead277bee7c4549b3f980f23662b104fbc3337",
+      "bytes": 529004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/v9fh.wav": {
+      "sha256": "5e01f36ab144acbd831bc3e3a669ca0876cd1a41bc543c6ceee1f4f1acef15a1",
+      "bytes": 482924
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/7id9.wav": {
+      "sha256": "0291c267558d830546cc0bf1d9a562bd470b0dad14b7a553f898dc9688cc42b7",
+      "bytes": 499244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/2vcb.wav": {
+      "sha256": "4432553545c6f92d7e13ee78c043fb807d860d471745b9e9db7694b6a8a82b93",
+      "bytes": 300524
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/yiya.wav": {
+      "sha256": "93ea48005820583588ed6f19c4a0d61dead10a03b9c87f6441a8be3af2a16d97",
+      "bytes": 580844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/rrgq.wav": {
+      "sha256": "ce3b49647aea84005b4cbe500ac20425533af295ba32ca5da0e23b8420a102d3",
+      "bytes": 335084
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/fbc5.wav": {
+      "sha256": "4bc33ecde58c4fbd06389b161189666fc4923918e849bcd8f96ccdaec75a0140",
+      "bytes": 304364
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/gsa7.wav": {
+      "sha256": "df76f3631a2b63fd786a2116ef1d644ff7d48ed0cb8978e18a250ef3667d3a5a",
+      "bytes": 377324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/9wmz.wav": {
+      "sha256": "d996e62fc89241e49052454091f55ef0c479f5353bb05c0afa60cb981f083719",
+      "bytes": 289964
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/jkby.wav": {
+      "sha256": "3ee3423509e694d108d293de299a79e69a85fe5f12f573422a0d14c427a0d308",
+      "bytes": 563564
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/5nt9.wav": {
+      "sha256": "ff7cc0d3674442080f111012280a2f90e408a56aa5037182dec8592ba32675f8",
+      "bytes": 436844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/m8cb.wav": {
+      "sha256": "88ca154929e7322ee9d6af4fab7eea017338789bf46f405790124bc47b802b1e",
+      "bytes": 319724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/p2ry.wav": {
+      "sha256": "da70b00f36ae9e89099f02af6392ec41d0032c5eed2c9f959cbffbcc36c49b15",
+      "bytes": 376364
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/u5js.wav": {
+      "sha256": "31a6fb40a6f5bcb16bc7d21086a817d09e1f90ccedd98900cf865d9367bd1942",
+      "bytes": 499244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/7732.wav": {
+      "sha256": "7a56c123441c499845603a435b5fe030a6195db92a3a488814e80ff88bc0c2b7",
+      "bytes": 456044
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/yi97.wav": {
+      "sha256": "0859022779d92e067abb76e2469493d99011c24473f4c83d8b691ce2f298b12f",
+      "bytes": 395564
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/2k27.wav": {
+      "sha256": "8aaf151e13ad7538986c398187be78dfffd2c6a2e492623fad7bdc8001e0098f",
+      "bytes": 340844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/vk36.wav": {
+      "sha256": "f6e8131570958c70441c841e751712a297df8910167874b9fd0ae4b9a10ba23f",
+      "bytes": 507884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/gfes.wav": {
+      "sha256": "40aba7d5848d5752ff140ab348e656572bb4a4dcc21aa3ae7de43eca2cbb5e0f",
+      "bytes": 348524
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/e826.wav": {
+      "sha256": "441f004b136585ce702fa8ed9406d72cca90e1e01c9000c455e069734378797f",
+      "bytes": 493484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/svhy.wav": {
+      "sha256": "af6c4671a945b618f32069b6885fac8b11ec15c65d3d1e02c461b77aefaaf520",
+      "bytes": 350444
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/3gwz.wav": {
+      "sha256": "fb6302523bfda8351f1d40e6a7cf7d043018b02f75670483785f6dd6fc0bf30b",
+      "bytes": 229484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/7iv8.wav": {
+      "sha256": "b996c07db626592ba3ff8f962fa371966fae9f4dd3076581c83024b1a2277a7a",
+      "bytes": 313004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/bxdi.wav": {
+      "sha256": "d9686c35c72c04dbf75ff2f81f248816baacacd40f4d430a430dbace67d075bb",
+      "bytes": 505004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/anxa.wav": {
+      "sha256": "8be1975c5ba31df656e4068cc4ec9591952fbd244f49a3899be255b1bd71d833",
+      "bytes": 403244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/up9r.wav": {
+      "sha256": "4c44823ba67ba2fe0d74da4531c3ddd224bfc6fccf43e5a275d40a2885677932",
+      "bytes": 532844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/3p97.wav": {
+      "sha256": "2a484937aaceefcfeb8261773f1508932a5acd6c6104a1a47c7277f5b21bbaae",
+      "bytes": 459884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/4av2.wav": {
+      "sha256": "e448760f6782a8efd234d2999e8e7eadc321f48552549d96ab9208f46c348e7c",
+      "bytes": 560684
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/8hpb.wav": {
+      "sha256": "53fb17283c4856602502433f8f95076530403fdcfa631b8a3ad4de3d1d12945e",
+      "bytes": 313004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ywu9.wav": {
+      "sha256": "8ab44ef8821bc45daf4625f2a66118c5e4da3581e7a448be87fcf2b1055641ae",
+      "bytes": 618284
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/u362.wav": {
+      "sha256": "cbbad29efb496af91333935555afee3fac1ad509d7ac59152f25e9a005c46d62",
+      "bytes": 368684
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/eym7.wav": {
+      "sha256": "04b1d5bc60703a7bf85da78b123be90fcbeaebec627ff90d449cf583c2ad7434",
+      "bytes": 336044
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/k3i2.wav": {
+      "sha256": "89681d2e4bca9a4d30fe4a3df89fa1f9aa859e50f19e56169afab8835de5efde",
+      "bytes": 180524
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/p9sg.wav": {
+      "sha256": "ad47011be07facb60f9f191fac048507fd76bf25ed8c56a0e07bf59506e97652",
+      "bytes": 290924
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/dkq3.wav": {
+      "sha256": "9c8555fb57d1b51ddeb1cd71259ffff3e38f91f3d7ca2bf12dfd972ab1fae68a",
+      "bytes": 265004
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/w86h.wav": {
+      "sha256": "015165f2c82a4c9a5d9d223d59f26d0f3147bbdf41126bb7ec635c07e4796f1f",
+      "bytes": 365804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/wh49.wav": {
+      "sha256": "8260c7e40f56de19c51bf207bb6c392f6f697632d3938a00bc13f2c64d5dcc32",
+      "bytes": 389804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/6ybg.wav": {
+      "sha256": "c06dfbff78ce4077bbbf935bad8accc7500c2aa2b527845a66474a4a52138459",
+      "bytes": 450284
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/xxju.wav": {
+      "sha256": "2134214ac3271f67e4e4826435349b8922ddb26ce7d57b64e42ecd9cd516b882",
+      "bytes": 427244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/endc.wav": {
+      "sha256": "a782bb5aec78d3db90d2e0d287d803675e672f225bc5cff2eefa8a13af9470f1",
+      "bytes": 298604
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/appe.wav": {
+      "sha256": "de47d0df63f916d09da3fa11e1fafa641f3fb4600e4f5ae215d161fe7c60f4dc",
+      "bytes": 501164
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/beg8.wav": {
+      "sha256": "896bb4d953e9bb3e2af08d8e95ad0ae7a6a3601cd69dca5b569cf2af19ea32b8",
+      "bytes": 338924
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/fe8z.wav": {
+      "sha256": "329922b35ac70d38ed98c852ca77d19f0db76715bb6fc52cf0a02d44002a36d6",
+      "bytes": 394604
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ymf8.wav": {
+      "sha256": "1d66e013150c748da34f7a9ed7519d220214f6933469e0c273d54bd4fa35819b",
+      "bytes": 519404
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/54sx.wav": {
+      "sha256": "8e0960ef8cf2e67d37c2d842e2f04cba7691095a73d8470122dd0831934c6c7d",
+      "bytes": 424364
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/mfsh.wav": {
+      "sha256": "c1cf491628ed41f7de031aff017aede3a910e444731396db8b51eb0a9dbec22a",
+      "bytes": 774764
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/578j.wav": {
+      "sha256": "5280398af7443ed09613e5210c5a058257fc8539095ffa13b05a1b9120976307",
+      "bytes": 390764
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/97h6.wav": {
+      "sha256": "9954e10be35c05f1c7c3dbde4243a1c51103f7b10f86647c683fedacd3a95fb1",
+      "bytes": 473324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/8mtz.wav": {
+      "sha256": "cc935338c99e5b87e274ca196476917ecec6319b6fbe85dd9df2084ebcb41857",
+      "bytes": 409964
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/4amm.wav": {
+      "sha256": "0c8379d649ae3bb01666b61bd4c3036242c45c3c7ad33d5a7756630a7c2605e2",
+      "bytes": 420524
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ux8j.wav": {
+      "sha256": "2ac8a7fa735ce97abdd0a6a1286960f0988dab1894e2ac66365bd57675a64383",
+      "bytes": 480044
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/y64h.wav": {
+      "sha256": "c9dd663feef2ef938f3784074bfe73cbe624c53eabd9c6133c89bd8b51515c60",
+      "bytes": 204524
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/afyy.wav": {
+      "sha256": "d9a95f9dace4fe7dc4a9ec04bc6ff5f2109d437ac62fd87961d5d87240cdcd02",
+      "bytes": 277484
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/f2ze.wav": {
+      "sha256": "65edd575abb8aaa26cf757fdd973967d2bfe17195923f88df4cdf9fbfce47a52",
+      "bytes": 386924
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ckag.wav": {
+      "sha256": "a27b886cff27593d617f2b567392a1f4d8bca6be6a557363accaa85fa9df5dd4",
+      "bytes": 316844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/n37p.wav": {
+      "sha256": "4d065134147ef865e65d4397ead17fef4664b85ce7af5a4d755ba4ed4154a24a",
+      "bytes": 483884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ecb8.wav": {
+      "sha256": "8a36fa6057a58e18d1816c83f0a9a48343c6532e0d6c9eec4b4d40cb27f80d7d",
+      "bytes": 407084
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/8k4a.wav": {
+      "sha256": "8b60339d48a7b92bc83177b1a875d569ee818c5c194d5e35acc6f7770f42418f",
+      "bytes": 259244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/z33x.wav": {
+      "sha256": "aec5cfb87c78ef6ca685ff4f6668db1bebf95278a08006c4372b19a395c973e7",
+      "bytes": 446444
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/wnrz.wav": {
+      "sha256": "12c745705930a83b0369a9ff636855991d0824334eef134d03216a234cfbf029",
+      "bytes": 334124
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ywz8.wav": {
+      "sha256": "e936371e3d04b64fc3330d7eb8658cb5b074ef0092456d40e20b283e6a845af8",
+      "bytes": 231404
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ww8v.wav": {
+      "sha256": "f014d76eb201dbe0bc8f92f1c8fa9f2a61c10a9265dca74fa1c9da215c7ec4cc",
+      "bytes": 294764
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/mx7g.wav": {
+      "sha256": "960e3ce2831d8c39364e6bab23425e022ef70bc73e26f8f3bd619bec07d0a224",
+      "bytes": 295724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/7qfx.wav": {
+      "sha256": "e84c4185c25e218eb7b387d40c33575f68b7c534559a0823728c4a9682f67e3d",
+      "bytes": 641324
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/hbci.wav": {
+      "sha256": "a33641d3234a0d00f767f728fbcb082fa1b212cddf39e4d3a3e9bb6698655249",
+      "bytes": 448364
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/sbkg.wav": {
+      "sha256": "5308bdc62ee62e0499955d41659950e1ffd865a388f27aead36f4d131a12e4b6",
+      "bytes": 319724
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/upmh.wav": {
+      "sha256": "44affe1e31eba9931f4623cb9ee66a798ca2afcb9fb92defa9a3b1cc8d66ecb2",
+      "bytes": 341804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/vb62.wav": {
+      "sha256": "c3ed580f2116e9685b31de830f0b7ac744fa434dfc6028a5a001105aace95fd7",
+      "bytes": 315884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/8m2e.wav": {
+      "sha256": "a7f6c3683b1946a0f424a339cf6859a6d820c1b4f40fa5c3d9f704146b59af8e",
+      "bytes": 483884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/bs4s.wav": {
+      "sha256": "295952ecde94244e7006470a890c3c60a8bc199352ed86844e9f9b5b7cfa9714",
+      "bytes": 447404
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ci5j.wav": {
+      "sha256": "134664cb86c1e52abdf6ab8eee6bb239f812eb19ace436f0d282b7f108ef2653",
+      "bytes": 505964
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/6ss6.wav": {
+      "sha256": "1276985f70903b81f596e062bea11736b227e881684e5aa9ad068714cb785f71",
+      "bytes": 419564
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/rume.wav": {
+      "sha256": "9d480974c29d64eb5a517da14d1ac590c3cb1f417d3728463d8f249c2c54880b",
+      "bytes": 388844
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/pvkj.wav": {
+      "sha256": "9b16bb01bff7cd1411f4f7a503e49377a61402adfe04628b29d9e8810d8be289",
+      "bytes": 259244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/ncx4.wav": {
+      "sha256": "65d98f928c8e410912700d1a35be6fed82c84c8956fd9f4a539ff4e929493ba4",
+      "bytes": 485804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/j5kv.wav": {
+      "sha256": "eff6d8ca3c3c48ec0ebb0b74b9ec1ee9775db2a15abc6baa4dc3507b6098bf01",
+      "bytes": 446444
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/nqyj.wav": {
+      "sha256": "d848e1adf1448e07bf524de29e744a7bdf0b14ee9c56ef1e47108cb1bb2008a9",
+      "bytes": 467564
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/wfb2.wav": {
+      "sha256": "09a3273c3c36314050701567fd890e8d940ece41ee5105d61c0af4c653a64b94",
+      "bytes": 321644
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/88pk.wav": {
+      "sha256": "d6f01fd7b0173a7cb887ff734980a2002c7c5b4ad42d53cf010d18bbabbd1956",
+      "bytes": 507884
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/bu6j.wav": {
+      "sha256": "bc8480bf17d352bd1a1f0dc5529108fa4bd11c1ef82faa4b728f2168932a2941",
+      "bytes": 427244
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/hr4b.wav": {
+      "sha256": "fb6285eec6cefab58bfd1dd360f2d33abeae9e39e39c049136331480cc9f867b",
+      "bytes": 278444
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/4w7g.wav": {
+      "sha256": "a383bb494a246b8fab1e5d0dd96e226ebc4d6cf61f162ea84d770125d5e633ee",
+      "bytes": 193964
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/vi/audio/39nc.wav": {
+      "sha256": "dfcd77a8e00d63edac0ae73e6a5d0d52e026e0bcbde488b8214270cfb37f31ed",
+      "bytes": 245804
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/th/timeline.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/th/fit.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check-flags.th.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/review/check.th.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/th/delivery-measurement.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/th/audio/cache.json": {
+      "sha256": null,
+      "bytes": null
+    },
+    "/workspace/work/videos/forty-forest-map/dubs/th/skipped.json": {
+      "sha256": null,
+      "bytes": null
+    }
+  },
+  "modifications": {
+    "only_written": "/workspace/work/ai-tech-next/forty-en-independent-media-audit.json",
+    "helper_repo_media_flags_cache_progress_changed": false
+  }
+}

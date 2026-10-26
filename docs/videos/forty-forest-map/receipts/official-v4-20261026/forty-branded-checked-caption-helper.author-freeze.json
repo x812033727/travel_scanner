@@ -1,0 +1,93 @@
+{
+  "at": "2026-10-26T05:54:22.336Z",
+  "status": "FROZEN_AUTHOR_PURE_PASS_AWAITING_INDEPENDENT_HELPER_PEER_ROOT_PIN_AND_ACTUAL_PREFLIGHT",
+  "helper": {
+    "file": "/workspace/work/ai-tech-next/deliver-forty-branded-v4-checked-caption-assets.mjs",
+    "sha256": "20a2d44f296e53e54079e92366a8f4538e293e9a426c42a0cdb73ba9aaa675b4",
+    "bytes": 50391
+  },
+  "pure_guard_receipt": {
+    "file": "/workspace/work/ai-tech-next/forty-branded-checked-caption-helper.selftests.final-instrumented.json",
+    "sha256": "53fb4de283648eb7a297561d13685f8318628953e5d54d691fa2eaf7532d61d3",
+    "bytes": 22925
+  },
+  "pure_guard_counts": {
+    "new": 144,
+    "reused_strict_caption": 66,
+    "reused_audio_profiles": {
+      "formal_audio": 28,
+      "forty_audio": 17,
+      "slides_main": 26
+    },
+    "total": 281
+  },
+  "instrumented_import_selftest_sideeffects": {
+    "fetch": 0,
+    "subprocess": 0,
+    "private_auth_reads": 0,
+    "subject_fs_mutation_attempts": 0
+  },
+  "pin_candidate": {
+    "file": "/workspace/work/ai-tech-next/forty-branded-checked-caption-root-pin.frozen-candidate.json",
+    "sha256": "f38a303cb0c6095d48993b83e704bd6b25186a92da35790fc311448d4ae1a96c",
+    "bytes": 6108
+  },
+  "candidate_executable": false,
+  "candidate_critical_root_review_fields_pending": true,
+  "old_pending_candidate_preserved": {
+    "file": "/workspace/work/ai-tech-next/forty-branded-checked-caption-root-pin.candidate.json",
+    "sha256": "5e15c4492d8f0b98cbf6a8a3dd2004ec55a39fd39648031ea8624470ff1b4883",
+    "bytes": 5928
+  },
+  "native_readonly_text_preparation": {
+    "file": "/workspace/work/ai-tech-next/forty-branded-checked-caption-native-text.preparation.json",
+    "sha256": "fa759b2ead763fb81fa13514936086224c7a329e216923c4cc7bb87898de23e8",
+    "bytes": 27904
+  },
+  "actual_root_text_continuity_review": {
+    "file": "/workspace/work/ai-tech-next/forty-branded-checked-caption-native-text.root-review.json",
+    "sha256": "2f606801163adb045a6670264bddd062909352361ecbdcde4343357d659166eb",
+    "bytes": 7502
+  },
+  "root_text_review_scope": "Actual15fileSHA/bytes, full native metadata continuity/readback, completeTXT formatting. Not fresh ASR, not CC upload, not server approval.",
+  "actual_main_delivery_receipt": {
+    "file": "/workspace/work/ai-tech-next/attach-forty-branded-v4-main-and-checked-dubs.root-result.json",
+    "sha256": "de3f67369239428ba714b8ff16d7d2bd4ee4ba78bc6e94bee2e87b9416e45268",
+    "bytes": 1249613
+  },
+  "native_caption_handoff": {
+    "file": "/workspace/work/videos/_forty-bookend-candidate/forty-current-captions.handoff.json",
+    "sha256": "8ebcb7a9fa46728e836d8cf4551ff94f279c9f3f365fbac3a3d9cd395209ed21",
+    "bytes": 15928
+  },
+  "scope": "Only15 checked current SRT/VTT/native-title-description text blobs,25normalroles,zh-TW+en/ja/ko/vi. No thumbnails/audio/video/drafts. Existing12 current roles,oldapproved12/nativeQAfalse10/allpayload/choices preserved.",
+  "new_remote_profile": "Rebuilds actually delivered baseline12 via unchangedmain appendBody plus actualde3 receipt. Does not call main.remoteFinal on an expanded real caption project or weaken its old guard. Newprofile allows only its own25 checked textrefs and two scoped caption evidence fields.",
+  "native_caption_issues": "All35reading-speed advisories,17among selected checked locales,and bothESPTstaleharderrors retained. Native QA remainsfalse10of11/manualcandidate/notready.",
+  "old_helpers_unchanged": [
+    {
+      "file": "/workspace/work/ai-tech-next/attach-forty-branded-v4-main-and-checked-dubs.mjs",
+      "sha256": "c5fcca935fa9d3f5139ad9e5c5e70eeb7416d7c1676522b0ea96ceae2804f56a",
+      "bytes": 97503
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/deliver-checked-caption-assets.strict-evidence.mjs",
+      "sha256": "0be5e42a821cecd5bf6495dd2b8cdf59eedd0e4a9e70ec20b8e252fea7232b87",
+      "bytes": 47106
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/deliver-checked-forty-locale.mjs",
+      "sha256": "c8c07023b6a0ef39118185af11385a6619f5234af2a5b18c328f04091e9bf9e9",
+      "bytes": 33680
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/deliver-slides-branded-v4-zh-tw-caption-assets.mjs",
+      "sha256": "25a2442e2c2929409baf6e949f3e2b53a1d6ed02b9493873230fee4d0041294b",
+      "bytes": 32519
+    }
+  ],
+  "actual_preflight": false,
+  "network_calls": 0,
+  "paid_calls": 0,
+  "candidate_source_media_state_caption_or_core_writes": 0,
+  "scratch_description_txt_files_prepared": 5
+}

@@ -1,0 +1,412 @@
+{
+  "title": "Peta Hutan Google ForTy: Hitung 6 Kelas dari 2 Piksel Taiwan",
+  "description": "Hitung hasil 6 kelas lahan ForTy dari 2 piksel asli Taiwan; keenam kelas mencakup OtherLand (lahan lain).\nUntuk kamu yang ingin memahami keluaran peta AI dan belum pernah membaca berkas penginderaan jauh, ikuti nilai lengkap, nilai sisa, dan pembagian hingga catatan piksel lengkap.\n\nPerhitungan memakai Forest Typology 2020 (v1). Seri tahunan awal 2017–2025 yang dibagikan dalam pengenalan riset pada Oktober 2026 dibahas terpisah; B adalah contoh pembacaan berskor rendah yang sengaja dipilih, bukan sampel pengujian akurasi.\n\nData: Neumann dkk. (2026), Forest Typology 2020 (v1).\nDOI: https://api.figshare.com/v2/articles/32288616/versions/1\nDOI: 10.25452/figshare.plus.32288616.v1\nLisensi CC BY 4.0: https://creativecommons.org/licenses/by/4.0/\nAdaptasi video ini: pemotongan area, perhitungan nilai sisa, klasifikasi dengan maksimum pertama, dan penggambaran ulang. Grafik tidak memakai citra satelit sebagai peta dasar.\n\nPaket data video ini (nilai asli, koordinat, dan aturan pemilihan sampel): https://github.com/x812033727/travel_scanner/tree/e0c70c899/docs/videos/forty-forest-map/data",
+  "tags": [
+    "ForTy",
+    "Google AI",
+    "peta hutan",
+    "AlphaEarth",
+    "data satelit",
+    "teknologi AI",
+    "hutan regenerasi alami"
+  ],
+  "chapters": {
+    "first-grid": "Baca piksel hijau Taiwan",
+    "label-meaning": "Dari hijau ke 6 kelas",
+    "pixel-record": "Temukan 5 nilai piksel target",
+    "residual-rule": "Isi kelas ke-6, pilih maksimum",
+    "b-selected-grid": "Hitung 6 skor piksel lain",
+    "score-question": "Catat skor dan tahun",
+    "complete-pixel-record": "Lengkapi catatan piksel"
+  },
+  "source_hashes": {
+    "chapters": {
+      "first-grid": "d2ec37c4047d",
+      "label-meaning": "14bcf64205a3",
+      "pixel-record": "cb394302d85a",
+      "residual-rule": "f3f49f822fbd",
+      "b-selected-grid": "17c6a0c4e962",
+      "score-question": "904d583e031e",
+      "complete-pixel-record": "d90396cd34a3"
+    },
+    "title": "bb370a30ffb7",
+    "description": "fc828ccf69df",
+    "tags": "4a0aef16d319",
+    "thumbnail": "0dbe591a2468"
+  },
+  "lines": {
+    "7732": {
+      "source_hash": "9b436683233d",
+      "text": "10×10 piksel sekitar target; bingkai merah hanya piksel hitungan."
+    },
+    "8aw6": {
+      "source_hash": "a20b19f15f64",
+      "text": "Saya ambil piksel hijau ForTy dari data Taiwan 2020."
+    },
+    "gngj": {
+      "source_hash": "6a9e5db9b529",
+      "text": "6 kelas di peta. Mengapa hanya simpan 5 nilai?"
+    },
+    "ep85": {
+      "source_hash": "afd1aa823264",
+      "text": "Apa satuan angka 248 di dalamnya?"
+    },
+    "jw6i": {
+      "source_hash": "a9469681da1f",
+      "text": "Piksel lain hijau juga. Hasilnya sama?"
+    },
+    "5ur9": {
+      "source_hash": "157c05af86c0",
+      "text": "DeepMind ulas ForTy minggu ini; baca 2 piksel."
+    },
+    "m2p6": {
+      "source_hash": "f192ea50797e",
+      "text": "Piksel hijau: bukan hanya pohon, juga cara tumbuh dan gunanya."
+    },
+    "erqz": {
+      "source_hash": "7b43ad4f9cc6",
+      "text": "Hutan primer: pohon asli, tanpa gangguan manusia yang tampak."
+    },
+    "t4w3": {
+      "source_hash": "463c4175fdb1",
+      "text": "Hutan regenerasi alami: dominan alami, juga sekunder sedang pulih."
+    },
+    "66nz": {
+      "source_hash": "6f430b4ae5c1",
+      "text": "Hutan yang ditanam manusia masuk mana di tabel?"
+    },
+    "3pse": {
+      "source_hash": "77f30f79a91a",
+      "text": "Hutan tanaman utamanya ditanam atau disemai; di data ini daur tebang lebih dari 40 tahun."
+    },
+    "v9fh": {
+      "source_hash": "4cffec66e250",
+      "text": "Daur tebang: rencana tanam, kelola hingga panen lagi, bukan umur pohon kini."
+    },
+    "7id9": {
+      "source_hash": "86d3a4a25712",
+      "text": "Hutan perkebunan lebih intensif; umumnya sedikit spesies, seumur, dan berjarak teratur."
+    },
+    "2vcb": {
+      "source_hash": "0f139e163572",
+      "text": "Syarat daur tebangnya adalah 40 tahun atau kurang."
+    },
+    "yiya": {
+      "source_hash": "10ec9a8094c7",
+      "text": "Tanaman pohon dan agroforestri: sawit, karet, kebun buah; hasil pertanian nonkayu."
+    },
+    "rrgq": {
+      "source_hash": "2a0041eeda2c",
+      "text": "Lahan lain bisa berisi pohon kota atau vegetasi berkayu jarang."
+    },
+    "fbc5": {
+      "source_hash": "442655cde31b",
+      "text": "Keenam kelas punya posisi tetap. Baca nilai bersama nama kelasnya."
+    },
+    "gsa7": {
+      "source_hash": "f3920569cf3b",
+      "text": "Namun, bagaimana model tahu bedanya dari citra satelit?"
+    },
+    "9wmz": {
+      "source_hash": "753e1d60f35a",
+      "text": "AlphaEarth ubah data satelit lintas tahun jadi angka."
+    },
+    "jkby": {
+      "source_hash": "8891440b374a",
+      "text": "ForTy baca angka: petunjuk pola tanam, musim, dan siklus tumbuh."
+    },
+    "5nt9": {
+      "source_hash": "fdcabf287920",
+      "text": "Pelatihan: label lokasi dari ahli dan data regional mengaitkan isyarat ke tipe lahan."
+    },
+    "m8cb": {
+      "source_hash": "63db17e31a5e",
+      "text": "Piksel hijau: 5 bilangan bulat, skor model tiap kelas."
+    },
+    "p2ry": {
+      "source_hash": "8b1ba845b6a6",
+      "text": "Untuk 5 nilai tepat, cek tahun data dan lokasi dulu."
+    },
+    "u5js": {
+      "source_hash": "c513c81a1051",
+      "text": "Lokasinya memakai 121,4° bujur timur dan 24,7° lintang utara."
+    },
+    "yi97": {
+      "source_hash": "2ee1a3341f4d",
+      "text": "Kisi 10 m: skala keluaran, bukan daftar lokasi tiap pohon."
+    },
+    "2k27": {
+      "source_hash": "d339ed359da4",
+      "text": "Baca nilai bersama nama kelas tetap agar tak salah kelas."
+    },
+    "vk36": {
+      "source_hash": "4e8d9e2dcea0",
+      "text": "Nilai 6 kelas berjumlah 250; 255 menjadi penanda tanpa data."
+    },
+    "gfes": {
+      "source_hash": "8a2ba9d3426e",
+      "text": "Tanpa data? Keluarkan piksel, jangan jadikan skor."
+    },
+    "e826": {
+      "source_hash": "70b0c02a6562",
+      "text": "Lima nilai valid; isi lahan lain, lalu bandingkan keenam kelas."
+    },
+    "svhy": {
+      "source_hash": "1670f3daf02a",
+      "text": "Nama kolom ikut nilai; angka saja tidak menunjukkan kelas."
+    },
+    "3gwz": {
+      "source_hash": "2bcb10651c3b",
+      "text": "Kelas ke-6 hilang di awal; cara mengisi?"
+    },
+    "7iv8": {
+      "source_hash": "bedeb009e520",
+      "text": "Kelas 6: 250 dikurangi jumlah 5 nilai lain."
+    },
+    "bxdi": {
+      "source_hash": "c7ce3516b2aa",
+      "text": "Lima nilai piksel ini berurutan: 0, 248, 0, 0, 0."
+    },
+    "anxa": {
+      "source_hash": "c77038507e33",
+      "text": "248 skor tersimpan berskala, bukan jumlah pohon atau meter persegi."
+    },
+    "up9r": {
+      "source_hash": "2ca68b83ed91",
+      "text": "Skor 248 untuk hutan regenerasi alami; 4 kelas lain 0, totalnya 248."
+    },
+    "3p97": {
+      "source_hash": "a96976409357",
+      "text": "250 dikurangi 248 menghasilkan 2 untuk lahan lain."
+    },
+    "4av2": {
+      "source_hash": "59067461efc6",
+      "text": "Lalu cek: 6 nilai antara 0 dan 250; totalnya harus 250."
+    },
+    "8hpb": {
+      "source_hash": "28a5a7ef2da6",
+      "text": "Bagaimana ubah nilai tersimpan ke skor model 0 sampai 1?"
+    },
+    "ywu9": {
+      "source_hash": "c6abda92d346",
+      "text": "Bagi tiap nilai dengan 250: nilai 248 hutan regenerasi alami menjadi 0,992."
+    },
+    "u362": {
+      "source_hash": "9dbdbe4f8b5c",
+      "text": "Nilai 2 untuk lahan lain dibagi, menjadi 0,008."
+    },
+    "eym7": {
+      "source_hash": "3e186d0579d1",
+      "text": "4 kelas lain: nilai tersimpan 0, skornya juga 0."
+    },
+    "k3i2": {
+      "source_hash": "d8b2e0012cf1",
+      "text": "Jumlahkan 6 skor, hasilnya tepat 1."
+    },
+    "p9sg": {
+      "source_hash": "a3b98fb0723e",
+      "text": "Ini satu total terbagi, bukan 6 penilaian terpisah."
+    },
+    "dkq3": {
+      "source_hash": "a7a1dfda496a",
+      "text": "Dari 6, hanya regenerasi alami yang tertinggi."
+    },
+    "w86h": {
+      "source_hash": "82bf922d9b5e",
+      "text": "Pilih skor tertinggi; piksel berbingkai merah jadi hijau."
+    },
+    "wh49": {
+      "source_hash": "4d4b5eb47bf0",
+      "text": "Ini ambil maksimum: memilih kelas, tanpa semua skor."
+    },
+    "6ybg": {
+      "source_hash": "7bc2276e4b7d",
+      "text": "Catat regenerasi alami saja yang tertinggi, bersama 6 skor lengkap."
+    },
+    "xxju": {
+      "source_hash": "136abf8ee820",
+      "text": "Hijau hanya memberi kelas; lihat nilainya untuk sebaran skor."
+    },
+    "endc": {
+      "source_hash": "888b58acfc41",
+      "text": "Piksel lain dari sumber sama: bisa dipilih sejelas ini?"
+    },
+    "appe": {
+      "source_hash": "af327d0012d2",
+      "text": "Ganti piksel di blok itu; sengaja pilih skor maksimum terendah."
+    },
+    "beg8": {
+      "source_hash": "beecd17e1562",
+      "text": "Latihan baca, bukan sampel acak penaksir akurasi peta."
+    },
+    "fe8z": {
+      "source_hash": "2ce4642ce9d5",
+      "text": "Pusat piksel kedua: 121,42234° bujur timur."
+    },
+    "ymf8": {
+      "source_hash": "7a91180c8e87",
+      "text": "24,69528° lintang utara: cocokkan dengan bingkai merah."
+    },
+    "54sx": {
+      "source_hash": "33135fa4be3c",
+      "text": "Kelima nilai itu berurutan: 0, 86, 0, 1, 77."
+    },
+    "mfsh": {
+      "source_hash": "346e7529302c",
+      "text": "Regenerasi alami 86, hutan perkebunan 1, tanaman pohon 77; total 164."
+    },
+    "578j": {
+      "source_hash": "70c759c7ba61",
+      "text": "250 dikurangi 164 menghasilkan 86 untuk lahan lain."
+    },
+    "97h6": {
+      "source_hash": "f00ffe55434f",
+      "text": "Regenerasi alami dan lahan lain 86: 2 kelas seri tertinggi."
+    },
+    "8mtz": {
+      "source_hash": "f92b1012d4af",
+      "text": "Bagi keduanya dengan 250, hasilnya sama-sama 0,344."
+    },
+    "4amm": {
+      "source_hash": "21955d851fa3",
+      "text": "Nilai 1 hutan perkebunan menjadi 0,004."
+    },
+    "ux8j": {
+      "source_hash": "79bf1af49fc6",
+      "text": "Nilai 77 tanaman pohon dan agroforestri menjadi 0,308."
+    },
+    "y64h": {
+      "source_hash": "0408d1712090",
+      "text": "Hutan primer dan hutan tanaman: 0."
+    },
+    "afyy": {
+      "source_hash": "9902ddfcb5ec",
+      "text": "Sebelum mencatat piksel kedua, apakah 6 skor ini juga berjumlah 1?"
+    },
+    "f2ze": {
+      "source_hash": "434f81a337c3",
+      "text": "Jumlahnya 0,688."
+    },
+    "ckag": {
+      "source_hash": "fd071e4fce68",
+      "text": "Tambah 0,308 lagi, hasilnya 0,996."
+    },
+    "n37p": {
+      "source_hash": "e98f210a7177",
+      "text": "Terakhir, tambah 0,004: tepat 1; 0 di 2 kelas lain tak mengubah total."
+    },
+    "ecb8": {
+      "source_hash": "090d9f9cbcc9",
+      "text": "Total salah? Cek yang luput, desimal; cocokkan tiap nilai ke kelas."
+    },
+    "8k4a": {
+      "source_hash": "f90dd80873cb",
+      "text": "Hanya satu warna: mana yang ditampilkan?"
+    },
+    "z33x": {
+      "source_hash": "8040671f0803",
+      "text": "Satu kelas memadatkan 6 skor jadi label; yang seri tidak otomatis beda peringkat."
+    },
+    "wnrz": {
+      "source_hash": "b2b55892c547",
+      "text": "Peta kami memakai maksimum pertama dalam urutan kelas."
+    },
+    "ywz8": {
+      "source_hash": "694ef01d2949",
+      "text": "Jadi, warnanya hijau regenerasi alami."
+    },
+    "ww8v": {
+      "source_hash": "b674a6d8e760",
+      "text": "Ingat hijau awal? Hanya 1 kelas tertinggi."
+    },
+    "mx7g": {
+      "source_hash": "54c30e4f5c87",
+      "text": "2 piksel bersama: warna sama bukan informasi sama."
+    },
+    "7qfx": {
+      "source_hash": "5848d6f8a077",
+      "text": "Catat regenerasi dan lahan lain sama-sama tertinggi; tulis: yang pertama tampil."
+    },
+    "hbci": {
+      "source_hash": "e218c30a9dd6",
+      "text": "Untuk membandingkan hasil, baca catatan ini, bukan hanya warna."
+    },
+    "sbkg": {
+      "source_hash": "32f5702cdbf7",
+      "text": "Usai baca 2 piksel, skor langsung dianggap peluang benar?"
+    },
+    "upmh": {
+      "source_hash": "1ac3b0d3f953",
+      "text": "Bedakan skor model dari ketepatan sebenarnya dulu."
+    },
+    "vb62": {
+      "source_hash": "5562650f79c2",
+      "text": "Skor model tanpa kalibrasi peluang setelahnya."
+    },
+    "8m2e": {
+      "source_hash": "b7766cdd2582",
+      "text": "Untuk baca skor sebagai peluang benar, pakai acuan independen; cocokkan skor dengan hasil nyata."
+    },
+    "bs4s": {
+      "source_hash": "cd96a342fedc",
+      "text": "Jadi, jangan langsung bilang piksel ini berpeluang benar 99,2%."
+    },
+    "ci5j": {
+      "source_hash": "c7359b572078",
+      "text": "Model melihat petunjuk; cek riwayat dan tujuan penggunaan lahan dengan acuan."
+    },
+    "6ss6": {
+      "source_hash": "6f02ea0220be",
+      "text": "Usai baca skor, simpan lokasi dan tahun data di baris yang sama."
+    },
+    "rume": {
+      "source_hash": "a6e204dddec5",
+      "text": "Data dasar 2020 rilis Mei, menggambarkan lahan tahun itu."
+    },
+    "pvkj": {
+      "source_hash": "6083843cf088",
+      "text": "Makalah data resminya terbit pada 21 Oktober."
+    },
+    "ncx4": {
+      "source_hash": "aa1ea920be41",
+      "text": "Pengenalan itu juga berbagi seri tahunan rilis awal 2017–2025."
+    },
+    "j5kv": {
+      "source_hash": "a3a6340e86e1",
+      "text": "Satu lokasi bisa punya hasil beda tahun; klasifikasi dapat ditelusuri lewat waktu."
+    },
+    "nqyj": {
+      "source_hash": "cf82f093a01f",
+      "text": "Untuk tempat sama, tetapkan lokasi; simpan urutan kelas dan 6 skor per tahun."
+    },
+    "wfb2": {
+      "source_hash": "80b5c3c18692",
+      "text": "Warna saja menyembunyikan hasil seri dan selisih skor tadi."
+    },
+    "88pk": {
+      "source_hash": "14cbc0dae702",
+      "text": "2 piksel 2020 hanya menunjukkan keluaran versi ini."
+    },
+    "bu6j": {
+      "source_hash": "867a8d8ace33",
+      "text": "Tulis dalam satu baris piksel: tahun, lokasi, 6 skor, dan semua kelas tertinggi."
+    },
+    "hr4b": {
+      "source_hash": "37a3fd66c2b2",
+      "text": "Baris ini simpan info yang 1 warna hijau hapus."
+    },
+    "4w7g": {
+      "source_hash": "7b9bf55b4843",
+      "text": "Lingkungan apa yang biasanya kamu lihat lewat peta?"
+    },
+    "39nc": {
+      "source_hash": "0c4caad74bac",
+      "text": "Berlangganan, kita pahami keluaran nyata AI bersama."
+    }
+  },
+  "thumbnail": {
+    "tag": "Piksel asli ForTy",
+    "headline": "HIJAU\n**ISINYA?**",
+    "sub": "5 nilai, 6 kelas"
+  }
+}
