@@ -11,3 +11,5 @@
 本版免費TTS預檢150請求、4086計費字元；圖像137景、每景含首次最多3次，圖像階段約US$1.85／5.55。這些不是全片報價，未含完整轉寫、評審、配樂、重試及歷史費用，沒有實際生成。原生全旁白3428units及排開場分項3229units也不證明時長；入場後先合成與逐句聽檢，實測自然語速正文720–840秒再鎖分鏡／配樂，不能靠停頓或慢播補長。
 
 繁中燒錄來源保留。[clean-master](variants/clean-master/derivation.json)僅是未執行配方，獨立審查只確認metadata差分及原生輸入hash。須共用真實已驗素材分別輸出、完整解碼及QA，clean輸出重新取得匹配的final批准，才開始真實八語配音、行窗調整與CC。未有媒體QA、final或YouTube上傳。
+
+本次外部修正的是後台分類；已核准來源video.json的歷史category仍為explainer、story情境由series.json提供。勿為同步分類而改已批准SHA，也勿再次report舊分類覆回後台；後續變更須先維持實際story分類並按新輸入重新查核。

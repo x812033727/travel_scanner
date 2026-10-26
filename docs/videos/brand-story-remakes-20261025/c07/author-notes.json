@@ -1,133 +1,108 @@
 {
   "schema_version": 1,
-  "revision": "C07 R6",
+  "revision": "C07 R8",
   "status": "HOLD_PENDING_DIFFERENT_SOURCE_WRITTEN_VISUAL_REVIEW_TWO_FRESH_READERS_AND_UNMEASURED_LENGTH",
-  "author": "/root/c03_review_ko_es",
-  "r5_author": "/root/c05_material_author",
-  "role": "R6 minimal author edit; earlier C07 R2/R3 author, not R5 author; no source/visual self-review, native vote, verify or owner approval",
-  "created_at_utc": "2026-10-25T23:14:35.498457+00:00",
-  "r5_core_bindings": {
+  "author": "/root/c07_r8_author",
+  "role": "R8 author edit, no source, written visual or native narrative self-review",
+  "created_at_utc": "2026-10-26T00:00:36.197025+00:00",
+  "r7_core_bindings": {
     "video.json": {
-      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r5/video.json",
-      "bytes": 62778,
-      "sha256": "3597965680281cfae801de7ed73a49e48115dddf4b1462af96647be731147fab"
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/video.json",
+      "bytes": 59413,
+      "sha256": "7c1a3a4de87fc06f177f7947676c19b98d0d4fcb85ec06f8ed7362b4e31c9dea"
     },
     "script.md": {
-      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r5/script.md",
-      "bytes": 12629,
-      "sha256": "d3759776d083bd14e12023374c20b87c347bcb07a9b5ae7431b61edd03ff5a48"
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/script.md",
+      "bytes": 11908,
+      "sha256": "b2bce84e096382e34ea0fd4c3effbd062fff6583fa9f23b7a026e0c6ec77c245"
     },
     "narration-only.json": {
-      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r5/narration-only.json",
-      "bytes": 16004,
-      "sha256": "75b146dc4f8471b85a3f0b4273559b1bd42a3f925f47cba55824000b74f39549"
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/narration-only.json",
+      "bytes": 15056,
+      "sha256": "fb176f22ba395810684041e200ba9665333e5477ca86a1ac50cb71b334e5f19b"
     },
     "claims.json": {
-      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r5/claims.json",
-      "bytes": 178134,
-      "sha256": "2c6a25e1406038e6a160e2fe849dfe1b547d65cdf47627263041375f94560c18"
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/claims.json",
+      "bytes": 172961,
+      "sha256": "b58f857e01b2be2f63f2cc9c9d03f258c4f038c714e9cfd93de5d23ddeec3fdb"
     }
   },
-  "r5_source_receipt_binding": {
-    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r5/reviews/source-r5-independent.json",
-    "bytes": 358238,
-    "sha256": "1354538384d0d5d29c0b76588155bd8a72c4ad24fcd067c73b6e3304dcb349e3"
-  },
-  "r5_verify_binding": {
-    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r5/verify-1.md",
-    "bytes": 7463,
-    "sha256": "f301931b647cf5d6f2041180fd04933b9b3ae273ee0697deb0d03c7c8f115295"
-  },
-  "r5_to_r6_delta": {
+  "r7_to_r8_delta": {
     "changed_line_ids": [
-      "c7r20305"
+      "c7r20603"
     ],
     "deleted_line_ids": [
-      "c7r20306",
-      "c7r20316",
-      "c7r20317",
-      "c7r20318"
+      "c7r20220",
+      "c7r20232",
+      "c7r20415",
+      "c7r20602",
+      "c7r20612"
     ],
     "added_line_ids": [],
     "line_changes": [
       {
-        "id": "c7r20305",
-        "before": "靴筒和皺折還在，下緣露出接合位置；師傅接著會把這裡送向哪個工具？",
-        "after": "我會盯著露出的接合位置：師傅接著會把這裡送向哪個工具？",
-        "reason": "保留本章旁白反應，接到已露出的接合位置與尚未回答的下一個工具問題；不重背保留舊皮的結果，不添工具用途或名稱。"
+        "id": "c7r20603",
+        "before": "對方說，維修方收到鞋後幾天，又傳來消息：鞋已修好，正在回程。",
+        "after": "七月那位送修者則寫，維修方收鞋後幾天，就通知鞋已修好，正在回程。",
+        "reason": "合併相鄰完成通知為同一次七月顧客真消息，保留收鞋後幾天與正在回程，不新增第二次通知事件。"
       }
     ],
     "deletions": [
       {
-        "id": "c7r20306",
-        "text": "我看到的是兩種老去的速度：外底被換下，皮鞋面還能跟著修下去。",
-        "reason": "刪除再次總結外底換下而鞋面留用；開場與拆解動作已交代同一範圍。"
+        "id": "c7r20220",
+        "text": "你要留下的外皮，和腳在裡面碰到的內裡，在這裡成了能分開處理的部位。",
+        "reason": "刪後跟內裡修補、保護鞋面後對內外皮可分修的純結論，20217問題及18–19新資訊保留。"
       },
       {
-        "id": "c7r20316",
-        "text": "舊線既然拆掉，新線還一定得是黃色嗎？",
-        "reason": "配色問答不再第二次出現，故連同這個重開問題刪除，避免留下無答案設問。"
+        "id": "c7r20232",
+        "text": "通知讓主人知道包裹到了；工作檯上，接著輪到人把舊接合拆開。",
+        "reason": "刪剛收到到站通知後的同消息再述；20301仍明確轉入另一雙鞋的授權示範刀口動作。"
       },
       {
-        "id": "c7r20317",
-        "text": "這項服務也能選黑色縫線，配的沿條顏色也可以改。",
-        "reason": "刪重複配色選項；只保留開場顧客自己的配色自述，不把官方黑線或沿條選項併成顧客經驗。"
+        "id": "c7r20415",
+        "text": "再把鞋側過來，縫線沿著鞋面下緣走，它下方的沿條，已經和新底連在一起。",
+        "reason": "刪20412–14已交代合攏與冷卻接合後再次描述縫線、沿條與外底連接的狀態。"
       },
       {
-        "id": "c7r20318",
-        "text": "你可以把穿皺的皮留下，再決定新接縫的顏色；這兩個部位，這次能分開作選擇。",
-        "reason": "刪在配色回答後再總結留下皺皮並另選新縫線顏色的句子。"
+        "id": "c7r20602",
+        "text": "而那位在七月留下評論的送修者，也等到了修理完成的通知。",
+        "reason": "與20603合為一次七月送修者的真實完成／回程通知，保留收鞋後幾天的事件時間資訊。"
+      },
+      {
+        "id": "c7r20612",
+        "text": "你會在這種話裡，聽出留下上半部的意思：穿著者想接著用的，是已經跟自己走過路的那一雙。",
+        "reason": "刪一月評論說不用重新磨合後再次詮釋留下上半部的純總結；一月實際自述與七月結尾答案保留。"
       }
     ],
-    "unchanged_surviving_narration_lines": 90,
-    "all_other_complete_scenes_unchanged": true,
-    "unchanged_complete_scene_count": 88,
+    "unchanged_surviving_narration_lines": 83,
+    "unchanged_complete_scene_count": 81,
     "all_retained_prompts_cameras_emotions_unchanged": true,
     "all_source_inventory_anchors_public_review_scope_and_video_scope_unchanged": true,
     "opening_six_full_scenes_unchanged": true,
     "no_retained_line_order_changes": true,
-    "loops": {
-      "before": 19,
-      "after": 18,
-      "removed": [
-        {
-          "setup": "c7r20316",
-          "payoff": "c7r20317",
-          "what": "可見選擇：新線能選黑色"
-        }
-      ],
-      "all_remaining_values_unchanged": true
-    },
-    "hooks": {
-      "removed_ids": [
-        "c7r20316"
-      ],
-      "remaining_values_unchanged": true
-    },
-    "new_external_source_claims_added": false,
-    "new_prompt_scene_ids": [],
-    "hard_source_fix_text_and_prompts_preserved": true,
-    "20301_T7_scope_separate_from_demo_exact": true,
-    "lone_january_review_one_line_not_pursued": true,
-    "2023_branch_not_restored": true,
-    "logistics_or_annual_totals_or_other_process_not_added": true
+    "all_loop_values_unchanged": true,
+    "all_hooks_and_chapter_names_unchanged": true,
+    "source_20603_unique_message_and_timing_preserved": true,
+    "other_pure_state_recaps_removed_after_full_read": true,
+    "hard_source_fixes_preserved": true,
+    "lone_no_detour_not_pursued": true,
+    "new_external_source_claims_added": false
   },
   "counts": {
-    "narration_lines": 91,
-    "scenes": 89,
+    "narration_lines": 84,
+    "scenes": 82,
     "chapters": 6,
-    "illustration_shots": 88,
+    "illustration_shots": 81,
     "cards": 1,
-    "loops": 18,
-    "unique_loop_payoffs": 16
+    "loops": 18
   },
   "native_units": {
-    "total": 2360,
-    "official_narration_body_planning_units": 2360,
+    "total": 2164,
+    "official_narration_body_planning_units": 2164,
     "opening": 142,
-    "body_after_opening": 2218,
+    "body_after_opening": 2022,
     "closing_card": 96,
-    "body_excluding_opening_and_closing": 2122,
+    "body_excluding_opening_and_closing": 1926,
     "chapters": [
       {
         "name": "刀伸進了舊靴的鞋邊",
@@ -136,37 +111,33 @@
       },
       {
         "name": "選好的靴子裝進了鞋盒",
-        "lines": 19,
-        "spoken_units": 460
+        "lines": 17,
+        "spoken_units": 404
       },
       {
         "name": "舊底拆走，新線繞上鞋面",
-        "lines": 14,
-        "spoken_units": 381
+        "lines": 13,
+        "spoken_units": 358
       },
       {
         "name": "熱刀把新底接了回來",
-        "lines": 17,
-        "spoken_units": 443
+        "lines": 16,
+        "spoken_units": 413
       },
       {
         "name": "新鞋底被修整，舊鞋面被擦亮",
-        "lines": 17,
-        "spoken_units": 451
+        "lines": 16,
+        "spoken_units": 424
       },
       {
         "name": "紙箱把這一雙送回去",
-        "lines": 18,
-        "spoken_units": 483
+        "lines": 16,
+        "spoken_units": 423
       }
-    ],
-    "official_duration_scope": "all narration including coldopen and voiced CTA, excluding separately added formal5s intro/21s outro"
+    ]
   },
   "planning_length": {
-    "r5_whole_native_units": 2460,
-    "r6_whole_native_units": 2360,
-    "whole_delta": -100,
-    "rough_target_units": 3500,
+    "whole_narration_spoken_units": 2164,
     "actual_duration_seconds": null,
     "target_actual_body_seconds": [
       720,
@@ -176,38 +147,6 @@
     "duration_pass_claimed": false,
     "no_padding_added": true
   },
-  "chapter_you_i": [
-    {
-      "title": "刀伸進了舊靴的鞋邊",
-      "you": 2,
-      "i": 2
-    },
-    {
-      "title": "選好的靴子裝進了鞋盒",
-      "you": 2,
-      "i": 1
-    },
-    {
-      "title": "舊底拆走，新線繞上鞋面",
-      "you": 1,
-      "i": 1
-    },
-    {
-      "title": "熱刀把新底接了回來",
-      "you": 2,
-      "i": 1
-    },
-    {
-      "title": "新鞋底被修整，舊鞋面被擦亮",
-      "you": 2,
-      "i": 1
-    },
-    {
-      "title": "紙箱把這一雙送回去",
-      "you": 3,
-      "i": 3
-    }
-  ],
   "substantive_existing_hook_plan": [
     {
       "id": "c7r20101",
@@ -285,23 +224,23 @@
       "id": "c7r20230",
       "kind": "問題",
       "substance": "收到靴子後的第一封通知",
-      "end_native_spoken_units": 534,
-      "gap_units": 101,
-      "planned_gap_seconds_at_4_5": 22.44
+      "end_native_spoken_units": 504,
+      "gap_units": 71,
+      "planned_gap_seconds_at_4_5": 15.78
     },
     {
       "id": "c7r20233",
       "kind": "章尾",
       "substance": "刀將先拆走什麼",
-      "end_native_spoken_units": 602,
-      "gap_units": 68,
-      "planned_gap_seconds_at_4_5": 15.11
+      "end_native_spoken_units": 546,
+      "gap_units": 42,
+      "planned_gap_seconds_at_4_5": 9.33
     },
     {
       "id": "c7r20301",
       "kind": "實際動作與拆除範圍",
       "substance": "授權頁的三部件拆除範圍，併在示範第一刀動作中，只揭曉一次。",
-      "end_native_spoken_units": 636,
+      "end_native_spoken_units": 580,
       "gap_units": 34,
       "planned_gap_seconds_at_4_5": 7.56
     },
@@ -309,7 +248,7 @@
       "id": "c7r20305",
       "kind": "既有具體問題",
       "substance": "露出底層後，下一個可見動作是噴口靠近；不臆測工具名或溫度。",
-      "end_native_spoken_units": 709,
+      "end_native_spoken_units": 653,
       "gap_units": 73,
       "planned_gap_seconds_at_4_5": 16.22
     },
@@ -317,7 +256,7 @@
       "id": "c7r20310",
       "kind": "問題",
       "substance": "先車沿條，外底還不在針下",
-      "end_native_spoken_units": 824,
+      "end_native_spoken_units": 768,
       "gap_units": 115,
       "planned_gap_seconds_at_4_5": 25.56
     },
@@ -325,15 +264,15 @@
       "id": "c7r20322",
       "kind": "章尾",
       "substance": "新底如何接回",
-      "end_native_spoken_units": 983,
-      "gap_units": 159,
-      "planned_gap_seconds_at_4_5": 35.33
+      "end_native_spoken_units": 904,
+      "gap_units": 136,
+      "planned_gap_seconds_at_4_5": 30.22
     },
     {
       "id": "c7r20407",
       "kind": "數字",
       "substance": "原廠現行接底工序的熱接溫度",
-      "end_native_spoken_units": 1169,
+      "end_native_spoken_units": 1090,
       "gap_units": 186,
       "planned_gap_seconds_at_4_5": 41.33
     },
@@ -341,7 +280,7 @@
       "id": "c7r20409",
       "kind": "動作問題",
       "substance": "如何把其他鞋邊送到接合工具前",
-      "end_native_spoken_units": 1211,
+      "end_native_spoken_units": 1132,
       "gap_units": 42,
       "planned_gap_seconds_at_4_5": 9.33
     },
@@ -349,7 +288,7 @@
       "id": "c7r20413",
       "kind": "問題",
       "substance": "冷卻後才形成一件PVC",
-      "end_native_spoken_units": 1319,
+      "end_native_spoken_units": 1240,
       "gap_units": 108,
       "planned_gap_seconds_at_4_5": 24.0
     },
@@ -357,15 +296,15 @@
       "id": "c7r20417",
       "kind": "章尾",
       "substance": "接好後還需修邊",
-      "end_native_spoken_units": 1426,
-      "gap_units": 107,
-      "planned_gap_seconds_at_4_5": 23.78
+      "end_native_spoken_units": 1317,
+      "gap_units": 77,
+      "planned_gap_seconds_at_4_5": 17.11
     },
     {
       "id": "c7r20504",
       "kind": "問題",
       "substance": "舊鞋面如何清潔與整理",
-      "end_native_spoken_units": 1525,
+      "end_native_spoken_units": 1416,
       "gap_units": 99,
       "planned_gap_seconds_at_4_5": 22.0
     },
@@ -373,15 +312,15 @@
       "id": "c7r20515",
       "kind": "問題",
       "substance": "專門機器、技術與原廠或認可替代部件",
-      "end_native_spoken_units": 1658,
-      "gap_units": 133,
-      "planned_gap_seconds_at_4_5": 29.56
+      "end_native_spoken_units": 1522,
+      "gap_units": 106,
+      "planned_gap_seconds_at_4_5": 23.56
     },
     {
       "id": "c7r20518",
       "kind": "既有動作問題",
       "substance": "收尾時手轉向哪裡，由下一句重新穿鞋帶的真動作回答。",
-      "end_native_spoken_units": 1775,
+      "end_native_spoken_units": 1639,
       "gap_units": 117,
       "planned_gap_seconds_at_4_5": 26.0
     },
@@ -389,7 +328,7 @@
       "id": "c7r20522",
       "kind": "章尾",
       "substance": "裝箱後回到送修者手中",
-      "end_native_spoken_units": 1877,
+      "end_native_spoken_units": 1741,
       "gap_units": 102,
       "planned_gap_seconds_at_4_5": 22.67
     },
@@ -397,15 +336,15 @@
       "id": "c7r20605",
       "kind": "人物結果",
       "substance": "送修者自述一週後收到修好的鞋",
-      "end_native_spoken_units": 1989,
-      "gap_units": 112,
-      "planned_gap_seconds_at_4_5": 24.89
+      "end_native_spoken_units": 1831,
+      "gap_units": 90,
+      "planned_gap_seconds_at_4_5": 20.0
     },
     {
       "id": "c7r20622",
       "kind": "回程問題",
       "substance": "開盒前回呼開場收住的新增物",
-      "end_native_spoken_units": 2006,
+      "end_native_spoken_units": 1848,
       "gap_units": 17,
       "planned_gap_seconds_at_4_5": 3.78
     },
@@ -413,7 +352,7 @@
       "id": "c7r20607",
       "kind": "揭曉",
       "substance": "回程多出的全新鞋帶，回收開場第二個預告",
-      "end_native_spoken_units": 2038,
+      "end_native_spoken_units": 1880,
       "gap_units": 32,
       "planned_gap_seconds_at_4_5": 7.11
     },
@@ -421,7 +360,7 @@
       "id": "c7r20611",
       "kind": "人物感受",
       "substance": "另一位送修者把留下的穿著感形容出來",
-      "end_native_spoken_units": 2160,
+      "end_native_spoken_units": 2002,
       "gap_units": 122,
       "planned_gap_seconds_at_4_5": 27.11
     },
@@ -429,27 +368,26 @@
       "id": "c7r20613",
       "kind": "現行服務",
       "substance": "網站目前預估的周轉時間，與具歸屬的單次回程分開",
-      "end_native_spoken_units": 2210,
-      "gap_units": 50,
-      "planned_gap_seconds_at_4_5": 11.11
+      "end_native_spoken_units": 2014,
+      "gap_units": 12,
+      "planned_gap_seconds_at_4_5": 2.67
     },
     {
       "id": "c7r20619",
       "kind": "答案",
       "substance": "七月自述的回程結果回呼開場想留下的上半部，不重述拆修工序",
-      "end_native_spoken_units": 2295,
+      "end_native_spoken_units": 2099,
       "gap_units": 85,
       "planned_gap_seconds_at_4_5": 18.89
     }
   ],
-  "maximum_planned_hook_gap_seconds_at_4_5": 41.33,
   "native_initialized_context_lint": {
     "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/native-initialized-lint.json",
-    "sha256": "422c9cdca0e448ac4b8e3f336ad941ed10d66939eca8e5eb9cecb445222fd49c",
+    "sha256": "19705553a6f7daff6fdf955aef0de678e98680c81567ce56bc4758e1e25f0d9d",
     "errors": 0,
-    "warnings": 5,
+    "warnings": 4,
     "cadence_warning_count": 0,
-    "max_shot_estimated_seconds": 10.133333333333333,
+    "max_shot_estimated_seconds": 9.4,
     "proper_existing_initialized_context": true,
     "immutable_dictionary_unchanged": true,
     "canonical_unchanged": true,
@@ -937,21 +875,129 @@
     "/workspace/work/brand-story-20261025/c07-audit/runtime/docs/videos/story-everyday-dr-martens-c07-remake-20261025/story-lexicon/versions/f3c1c50e943c7285e4ec02489b05c769f13d99bb3da3ce813e3839294dca4b51.json": "f3c1c50e943c7285e4ec02489b05c769f13d99bb3da3ce813e3839294dca4b51",
     "/workspace/work/brand-story-20261025/c07-audit/runtime/docs/videos/story-everyday-dr-martens-c07-remake-20261025/video.json": "246607e69585bcf4e28377e3a1215062407d68bb901fc9841163af1c9a796372",
     "/workspace/work/brand-story-20261025/c07-audit/validate-initialized.mjs": "00bc604669d74d65e90ac0e43d3b1ff79b45edfcbebe8ac7eedb37a3cc5f03d0",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/lexicon.json": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/brief.md": "c879d5c8c1230560fd430556d7ce5c76b6f4a7981b39c1398d6ab612c79ec3cf",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/claims.md": "10255f1cf3f6bda882951d01d9cda9566dd448504fd5d3cbeeb553b10142eac2",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/script.md": "b4bb383ba8ca0dc85427968093f233399f03d3a696620d715ee35654aadf0112",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/series.json": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/story-lexicon/current.json": "3b6d8f6a2dab3ba4ac3166c6e9b9ce7747da01cfafdf3d9ec879cb43e1989add",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/story-lexicon/events/07ee31b7c9e9c80ca6ef3dea7b46ff5b56e76ca32ad672a1c249ed597e9dc582.json": "07ee31b7c9e9c80ca6ef3dea7b46ff5b56e76ca32ad672a1c249ed597e9dc582",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/story-lexicon/versions/e8990680a85d2020b40fbdee7a2554793623ab465019f2f43a6881355fa6e87d.json": "e8990680a85d2020b40fbdee7a2554793623ab465019f2f43a6881355fa6e87d",
-    "/workspace/work/brand-story-20261025/c07-submission-root/docs/videos/story-everyday-dr-martens-c07-remake-20261025/video.json": "3597965680281cfae801de7ed73a49e48115dddf4b1462af96647be731147fab",
-    "/workspace/work/brand-story-20261025/c07-submission-root/runtime-manifest.json": "0217ae854b25dddb89c39cbe4f0f98445e498889d25844d54c60b68a05bb693b",
-    "/workspace/work/brand-story-20261025/story-everyday-dr-martens-c07.json": "f149cddc97afc80d766489e4953c894e77ede9af78de7ccb33ab0752e72f3e45"
+    "/workspace/work/brand-story-20261025/story-everyday-dr-martens-c07.json": "f149cddc97afc80d766489e4953c894e77ede9af78de7ccb33ab0752e72f3e45",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/author-notes.json": "996637505fa8f0f38dbc415ae07603d8b67ca8d1fb6429094422b394f609a67c",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/narration-only.json": "1daa2a0bf01b1921f8bfb8bb459082ebc57b7eb4c8a7e90e7311491a1a41a184",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/video.json": "2a9e9966b039875562ced76af3eaa080af4bc98263b4511ff3c945defe4628bb",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/author-data-r6.json": "4e168561b7bc4112898f3afa348cb0da27fac2d22929ed51c6cbafb1953ad671",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/build-candidate.py": "016b1ec247a3cfd2c7232bd559b9a47cf96fdcd1b46865f8ed057661c3f3cfa6",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/script.md": "f8318200333fd44b8037c0e113496160791a789a0a20a5f81f2645ee50ea6b30",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/native-initialized-lint.json": "422c9cdca0e448ac4b8e3f336ad941ed10d66939eca8e5eb9cecb445222fd49c",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/research-original.claims.json": "dadcea4ca21ff9e12a0edb8128a6bf2da7f5bf38700c70e6ca1efb6f9518fb1e",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/series.json": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/brief.md": "d4161d8ff0ae50054187a38004785b75369b6d049ffd2a72d677e920c52f81cb",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/author-data-r5.json": "98d98c667ee7ad25b558f5b5ae9b99b2522087ed9d534d065a5361e07aa90501",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/claims.json": "2eec80bb99c96b2092753743ce1a6036a061d3384c4104345c2dadcfb68b7eef",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/author-data-r4.json": "1babc3c1af9bb017090e10a606f6246ab786d09d595a1a2772f3d989cbee3a3f",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/research-original.md": "d419cafb1e1582dea16030ddfa52fce39d192733af1e9cd1e7acc1e3ece7b6c0",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/verify-1.md": "fd774bdfcbf8992ffc3d2550fcc5f498a06df765456dff85d9a8c0b61cc9b669",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/claims.md": "bd29f3e01c700cb77f793180c723f15018abc59f2aae3ba4a0738282bb13292a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/author-notes.json": "b9e16429c1abf0e4eb51e8cef8a29335b176fbb3d1b2ae4ac2260724e941687a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/narration-only.json": "fb176f22ba395810684041e200ba9665333e5477ca86a1ac50cb71b334e5f19b",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/video.json": "7c1a3a4de87fc06f177f7947676c19b98d0d4fcb85ec06f8ed7362b4e31c9dea",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/author-data-r6.json": "4e168561b7bc4112898f3afa348cb0da27fac2d22929ed51c6cbafb1953ad671",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/build-candidate.py": "5b1a26e32d60474b26c5bf5dd37a0f4a0be13e8401754a16bc80dc8e175417ee",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/script.md": "b2bce84e096382e34ea0fd4c3effbd062fff6583fa9f23b7a026e0c6ec77c245",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/native-initialized-lint.json": "178519df79a8c9d0c07a169a0449c71f681509f149174e14a9b73da097c2812f",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/research-original.claims.json": "dadcea4ca21ff9e12a0edb8128a6bf2da7f5bf38700c70e6ca1efb6f9518fb1e",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/series.json": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/brief.md": "21b02ffe8315e49ba840255a9ba46a18330ba088e259a87bb1610f79eeee5339",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/author-data-r5.json": "98d98c667ee7ad25b558f5b5ae9b99b2522087ed9d534d065a5361e07aa90501",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/author-data-r7.json": "a77265aa8e948be777a8ff52a142f0c3bdcb7c9ac5b278296e974ab1204b532a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/runtime-lint-r7.json": "b0d3b1513c004e7dff0b3071cb72230e01d7ba61f0dd1896dda46ae526a9ae5c",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/claims.json": "b58f857e01b2be2f63f2cc9c9d03f258c4f038c714e9cfd93de5d23ddeec3fdb",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/author-data-r4.json": "1babc3c1af9bb017090e10a606f6246ab786d09d595a1a2772f3d989cbee3a3f",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/research-original.md": "d419cafb1e1582dea16030ddfa52fce39d192733af1e9cd1e7acc1e3ece7b6c0",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/verify-1.md": "353f886c686c0dd1c5cbb1972355138d56d818efdede94eacf565611011ef312",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/claims.md": "3af1391c812dc62e8dc86b13a5419ab7137ed29918a26ecd7ed9c63a19ed954d",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/research-expansion/source-receipts.json": "f4f5564d0c6b8b496eea6ea8793e5f53f88ccabca8927a6690f4d86b152f8afb",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/research-expansion/research.md": "23ce0fe15844eb538f841777f1178b3bc6792c2362f7fc8bdb7e1728062e9154",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/research-expansion/claims.json": "a1cb2a5fcad36b9baa9c485043d314289df9758fda7123e2e9c50ac2381c1104",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r5-a.raw.json": "bd799d61d121f9e8a2ae7463bf3b57d7087732de5084caf87d38e30e3a988615",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r6-b.raw.json": "1950e671d4e9b5310340a66bc087b0734f7e919e95d94611c910e746fa10d75d",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r1-binding.json": "40da466f94c11b3e2145d8241287d7b32dc7bdd5ce55c50f184b1b25180e0800",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r6-binding.json": "9a5d299c9690de41025453535b739a951147b0e0e1e4fe6cddd543a1bad8d091",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r3-b.raw.json": "56e2806c8ebff3293c33a1d11e4968a0a66a7fc64542f2ff74d092cf14d20882",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/source-r5-independent.json": "1354538384d0d5d29c0b76588155bd8a72c4ad24fcd067c73b6e3304dcb349e3",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r2-binding.json": "75106af9c1c8132fe1e567034987a47f8b2b6adec77b0216b7f6605429f35e00",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r1-input.json": "8539dfaedbe4a8d051b1c6ff9b4c585b556f510aa329e65447d31f2dfa9950c7",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r1.json": "b6c5d065ec9646740cec8338076821bbf421cc53ef67f69f6072c31c7e93f7a1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r3.json": "92e2dc7377e6275e6d5a41ce2bd315b5bba35af6dd387b3613211fb35c9f0416",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r5.json": "ef45ca25898e5b0f75fe5f19194b4bb263d583c05fc3e3ada7e90d667b0dc11a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/source-r3-independent.json": "e8078c1b3f7d26d955f583498a28b7b9c83c30e83b0ff7248fea5d212d61a6f1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r1-b.raw.json": "e7e0d776e957fd61253079cf19591de3c4ff4103d3d310e0eb6f5d1a8ab8d3ce",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r2-b.raw.json": "13d94e6e69669da4fa1782befdafde76a9bbcab01001268dc33958ce6789f6f1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r4-binding.json": "9b87402f1ed4d9d94d5325c043eeba88908a64841af6e16ba5245148518ea6cc",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r3-input.json": "361afccff551aa414e7bc541a50458aaf4b27ccf4cd59c0a90191515be2c60f8",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r6.json": "99a12343acc508dea940798fe64e76de09640cc2363cc1abe455dd11cb394806",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r5-binding.json": "3a563fb28a716bb4eb6160dd768b18d04f9f815c4a22ee8c28732fd373bd9306",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/source-r4-independent.json": "cc5f61b926931a67c35787b967c882f2f2c21aac0cbe75db8a75c646b95cfce5",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r2.json": "e47a02fc220cf920822a1c4bf241af450907c2cbd81aa4ea2c67815a07c003cb",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r5-b.raw.json": "34c4af59c16a644b4a27805e53013387d169a9ec88e2f93b2a4096eaf602ac2f",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r4-input.json": "c182c553d158029691ccdd25c75d76436c98c219342e36f64b9c8c05c6f273af",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r1-a.raw.json": "93170414454467be6adec21721c9225cf4c01f60496c02c5643733b0d9a75006",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r2-input.json": "d11f2ae974dbcf33e04e988acfbea344cd3ec125699bb96734ce7e985b0dfe92",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/source-r1-independent.json": "f629ba73890f27c1253a59902964b6c036936d5eaa0f2fc0b691a6d46ecc7a14",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r6-a.raw.json": "269360adf6614cc4702afbca65ccf2eed877f23f3e63fa83dec52b8da777e03e",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/source-r2-independent.json": "e0ac53c3c0ccd5e03626f609bb0016b7ea2fa230ee26cac22fca233cbe771e6a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r3-binding.json": "9ae852f72d9a59d4b6ab0ceb976c3d1478c95030ce8e33c4d41efbbc0b7cb85a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/source-r6-independent.json": "77391d85f8aa7b23d2951f7ea630aa246fb3d36f961c0cca6c9b3a6e082028cc",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r4.json": "d51c5fa92cabde6f8126a21e2666a8fed9a1338190c4acdaa75629f5f9ff5c37",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r4-a.raw.json": "47359e8ad894776fee693495e508635ea779dbec1ee39fb76bd43daf5e85b8d2",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r5-input.json": "956b8c7513d45493da06f9d9a913e92b19ddc63ec6d6d53794dd14cde9fc490d",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r4-b.raw.json": "253774975b79b68c0497a888d6d8b550a9aad046ed9088b88a99194988af60bd",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r3-a.raw.json": "49d7ef45d1c9bad7a632f0caa6043deef6f84d219376bd3519cf61b7bf823918",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r2-a.raw.json": "8c396c0322b2a78f9ec0486b16659560845fa52acf04f7b5728698e7ce302f3b",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r6/reviews/narrative-r6-input.json": "99a68a6d976e5ce3c017df68631b357540cd5815d5161cef7e25927e970015b3",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/research-expansion/source-receipts.json": "f4f5564d0c6b8b496eea6ea8793e5f53f88ccabca8927a6690f4d86b152f8afb",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/research-expansion/research.md": "23ce0fe15844eb538f841777f1178b3bc6792c2362f7fc8bdb7e1728062e9154",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/research-expansion/claims.json": "a1cb2a5fcad36b9baa9c485043d314289df9758fda7123e2e9c50ac2381c1104",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r5-a.raw.json": "bd799d61d121f9e8a2ae7463bf3b57d7087732de5084caf87d38e30e3a988615",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r6-b.raw.json": "1950e671d4e9b5310340a66bc087b0734f7e919e95d94611c910e746fa10d75d",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r1-binding.json": "40da466f94c11b3e2145d8241287d7b32dc7bdd5ce55c50f184b1b25180e0800",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r6-binding.json": "9a5d299c9690de41025453535b739a951147b0e0e1e4fe6cddd543a1bad8d091",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r3-b.raw.json": "56e2806c8ebff3293c33a1d11e4968a0a66a7fc64542f2ff74d092cf14d20882",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/source-r5-independent.json": "1354538384d0d5d29c0b76588155bd8a72c4ad24fcd067c73b6e3304dcb349e3",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r2-binding.json": "75106af9c1c8132fe1e567034987a47f8b2b6adec77b0216b7f6605429f35e00",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r1-input.json": "8539dfaedbe4a8d051b1c6ff9b4c585b556f510aa329e65447d31f2dfa9950c7",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r1.json": "b6c5d065ec9646740cec8338076821bbf421cc53ef67f69f6072c31c7e93f7a1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r3.json": "92e2dc7377e6275e6d5a41ce2bd315b5bba35af6dd387b3613211fb35c9f0416",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r5.json": "ef45ca25898e5b0f75fe5f19194b4bb263d583c05fc3e3ada7e90d667b0dc11a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r7.json": "c34a9f52d8e4b527cfc2fa8df21b01df06b6d55b0344e3ae30040b8b94b60e98",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/source-r3-independent.json": "e8078c1b3f7d26d955f583498a28b7b9c83c30e83b0ff7248fea5d212d61a6f1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r1-b.raw.json": "e7e0d776e957fd61253079cf19591de3c4ff4103d3d310e0eb6f5d1a8ab8d3ce",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r7-input.json": "2cae4a5e69339b9638927a69dc1e0de21c535e3f8b87388a1426582bd9b51bf7",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r2-b.raw.json": "13d94e6e69669da4fa1782befdafde76a9bbcab01001268dc33958ce6789f6f1",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r4-binding.json": "9b87402f1ed4d9d94d5325c043eeba88908a64841af6e16ba5245148518ea6cc",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r3-input.json": "361afccff551aa414e7bc541a50458aaf4b27ccf4cd59c0a90191515be2c60f8",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r6.json": "99a12343acc508dea940798fe64e76de09640cc2363cc1abe455dd11cb394806",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r5-binding.json": "3a563fb28a716bb4eb6160dd768b18d04f9f815c4a22ee8c28732fd373bd9306",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/source-r4-independent.json": "cc5f61b926931a67c35787b967c882f2f2c21aac0cbe75db8a75c646b95cfce5",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r2.json": "e47a02fc220cf920822a1c4bf241af450907c2cbd81aa4ea2c67815a07c003cb",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r5-b.raw.json": "34c4af59c16a644b4a27805e53013387d169a9ec88e2f93b2a4096eaf602ac2f",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r7-a.raw.json": "7739784530e9efc8290264e6f0710c82f2821f2926208726afa7ddbb5c98c3fa",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r4-input.json": "c182c553d158029691ccdd25c75d76436c98c219342e36f64b9c8c05c6f273af",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r1-a.raw.json": "93170414454467be6adec21721c9225cf4c01f60496c02c5643733b0d9a75006",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r2-input.json": "d11f2ae974dbcf33e04e988acfbea344cd3ec125699bb96734ce7e985b0dfe92",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/source-r1-independent.json": "f629ba73890f27c1253a59902964b6c036936d5eaa0f2fc0b691a6d46ecc7a14",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r6-a.raw.json": "269360adf6614cc4702afbca65ccf2eed877f23f3e63fa83dec52b8da777e03e",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/source-r2-independent.json": "e0ac53c3c0ccd5e03626f609bb0016b7ea2fa230ee26cac22fca233cbe771e6a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r3-binding.json": "9ae852f72d9a59d4b6ab0ceb976c3d1478c95030ce8e33c4d41efbbc0b7cb85a",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/source-r6-independent.json": "77391d85f8aa7b23d2951f7ea630aa246fb3d36f961c0cca6c9b3a6e082028cc",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r4.json": "d51c5fa92cabde6f8126a21e2666a8fed9a1338190c4acdaa75629f5f9ff5c37",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r4-a.raw.json": "47359e8ad894776fee693495e508635ea779dbec1ee39fb76bd43daf5e85b8d2",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/source-r7-independent.json": "d82c2a133eef53a6b4ccc8fac1ad59e371cd7df02e6a1e2c2e10ee70e307726e",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r5-input.json": "956b8c7513d45493da06f9d9a913e92b19ddc63ec6d6d53794dd14cde9fc490d",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r4-b.raw.json": "253774975b79b68c0497a888d6d8b550a9aad046ed9088b88a99194988af60bd",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r7-b.raw.json": "497e448cb8367a8ed301314fcca6b260ae9b19b877964949ba92c256a29a763d",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r3-a.raw.json": "49d7ef45d1c9bad7a632f0caa6043deef6f84d219376bd3519cf61b7bf823918",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r7-binding.json": "0a06be276bfb104bad857405f1bf51dbe785a9ebfb8649d60a8999d2716452c4",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r2-a.raw.json": "8c396c0322b2a78f9ec0486b16659560845fa52acf04f7b5728698e7ce302f3b",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/history/r7/reviews/narrative-r6-input.json": "99a68a6d976e5ce3c017df68631b357540cd5815d5161cef7e25927e970015b3",
+    "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c07/author-data-r7.json": "a77265aa8e948be777a8ff52a142f0c3bdcb7c9ac5b278296e974ab1204b532a"
   },
-  "protected_input_count": 492,
+  "protected_input_count": 601,
   "protected_inputs_all_unchanged": true,
-  "source_anchors_kept_r5_ids": "Original source IDs and exact anchors preserved as R5 provenance; not a new source verdict.",
   "source_pass_issued": false,
   "written_visual_pass_issued": false,
   "native_narrative_pass_issued": false,
@@ -960,30 +1006,26 @@
   "different_source_reviewer_required": true,
   "fresh_isolated_readers_required": 2,
   "actual_audio_measured": false,
-  "candidate_media_reviewed": false,
-  "translations_written": false,
-  "verification_pipeline_run": false,
   "paid_calls": 0,
   "provider_calls": 0,
   "backend_actions": 0,
   "git_actions": 0,
-  "subagents_spawned": 0,
   "source_files_sha256": {
-    "video.json": "2a9e9966b039875562ced76af3eaa080af4bc98263b4511ff3c945defe4628bb",
-    "script.md": "f8318200333fd44b8037c0e113496160791a789a0a20a5f81f2645ee50ea6b30",
-    "narration-only.json": "1daa2a0bf01b1921f8bfb8bb459082ebc57b7eb4c8a7e90e7311491a1a41a184",
-    "claims.json": "2eec80bb99c96b2092753743ce1a6036a061d3384c4104345c2dadcfb68b7eef",
-    "claims.md": "bd29f3e01c700cb77f793180c723f15018abc59f2aae3ba4a0738282bb13292a",
-    "brief.md": "d4161d8ff0ae50054187a38004785b75369b6d049ffd2a72d677e920c52f81cb",
+    "video.json": "037f7a673481337e6d0bf0c591e7b37b8443b0b1e82216722f9ee5c528b84262",
+    "script.md": "b9df40b98cd53582674445f2490d363cfbab73125251c9eaef658ff0b834a5b3",
+    "narration-only.json": "e6717dd0018a4d7cc9c5dadf0736190d14b3440da4647cea5f01d459020ce148",
+    "claims.json": "5d66f2ce62d61dade5e9ecdbaa90170671eef5fcab74f94a74111c6ba2583b90",
+    "claims.md": "210b1485b6340665b418c6d09079e585856c0bea23b65f3b8d6280a5ed36a07c",
+    "brief.md": "f0d767a66b787d5725a70148905f5986ff1daed6efa837767936ea480df4e6d3",
     "series.json": "df0016934dd8b36a282903f990e3bb82f75a1ee920ee3a9b1285cc208f9adc85",
-    "build-candidate.py": "016b1ec247a3cfd2c7232bd559b9a47cf96fdcd1b46865f8ed057661c3f3cfa6",
-    "author-data-r6.json": "4e168561b7bc4112898f3afa348cb0da27fac2d22929ed51c6cbafb1953ad671",
-    "native-initialized-lint.json": "422c9cdca0e448ac4b8e3f336ad941ed10d66939eca8e5eb9cecb445222fd49c"
+    "build-candidate.py": "db88bd38ff63f463354b5eb7adfc8b41075977db4fbb24025aaae75989e0e526",
+    "author-data-r8.json": "99e8cfcf48970618be7c292e68370d8c05b0e63543587928beea30c3bb63c78e",
+    "native-initialized-lint.json": "19705553a6f7daff6fdf955aef0de678e98680c81567ce56bc4758e1e25f0d9d"
   },
   "core_four_sha256": {
-    "video.json": "2a9e9966b039875562ced76af3eaa080af4bc98263b4511ff3c945defe4628bb",
-    "script.md": "f8318200333fd44b8037c0e113496160791a789a0a20a5f81f2645ee50ea6b30",
-    "narration-only.json": "1daa2a0bf01b1921f8bfb8bb459082ebc57b7eb4c8a7e90e7311491a1a41a184",
-    "claims.json": "2eec80bb99c96b2092753743ce1a6036a061d3384c4104345c2dadcfb68b7eef"
+    "video.json": "037f7a673481337e6d0bf0c591e7b37b8443b0b1e82216722f9ee5c528b84262",
+    "script.md": "b9df40b98cd53582674445f2490d363cfbab73125251c9eaef658ff0b834a5b3",
+    "narration-only.json": "e6717dd0018a4d7cc9c5dadf0736190d14b3440da4647cea5f01d459020ce148",
+    "claims.json": "5d66f2ce62d61dade5e9ecdbaa90170671eef5fcab74f94a74111c6ba2583b90"
   }
 }

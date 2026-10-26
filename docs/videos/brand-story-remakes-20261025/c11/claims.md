@@ -1,4 +1,4 @@
-# C11 R3逐句來源綁定
+# C11 R6逐句來源綁定
 
 全部待獨立來源/書面配鏡QA；作者不給PASS。原文完整bytes留指定非Git快取；每句引用anchor ID，對應實際raw SHA、段落號、原段SHA和短原文，limits逐句保留。
 
@@ -7,19 +7,19 @@
 | c11r1h01 | 如果是你的小店，願不願意先放三箱奶咖，讓它占住貨架？ | VIEWER_STAKE_WITH_SOURCE_GROUNDED_CONDITIONAL_NUMBER | A_CASES | 不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。；把原訪談最初三箱試放量交給觀眾作店主位置的條件選擇；貨架占位為明示觀眾情境，不編實際店主心理、對話、損失、店名或試賣日期。開場不揭後續訂貨結果。 |
 | c11r1h02 | 上島達司後來回憶，銷售人員走進食品店，推銷一九六九年上市的UCC奶咖。 | ATTRIBUTED_SALES_ACTION_SCENE | A_CASES, A_UCC_MONTH | 不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。；不得無條件改稱全世界最早把液態咖啡裝罐；不能替稱世界首找到全球排除證據。；原Guinness訪談p65–66；1969只修飾這款奶咖的上市年，不指定這次拜訪日。人物與店鋪為匿名概念，不仿受訪者或特定食品店。 |
 | c11r1h03 | 我沒想到，方便還有這一面：做成了罐子，也得有人肯讓它走進自己的店。 | AUTHOR_REACTION | A_CASES | 不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。；對推銷行為的作者反應，不替當年店主補心理，也不先給試喝反應或訂貨結果。 |
-| c11r1h04 | 罐裡的奶怎麼待得住，冷罐又要怎麼追上萬博的人潮？ | TWO_OUTCOME_FREE_TEASERS | A_THREE_OBSTACLES, A_COLD_BRANCH, A_COLD_TRUCKS | 沒有證據三者按本片章序被發現，不能說內塗層同時解三題。；這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。；只預告分離障礙與交付問題，不給均質化/配送結果。 |
+| c11r1h04 | 罐裡的奶，怎麼待得住？ | OUTCOME_FREE_TEASER | A_THREE_OBSTACLES | 沒有證據三者按本片章序被發現，不能說內塗層同時解三題。；第一預告只問液體狀態；同圖來源t05。中性樣罐與樣杯不畫均一奶粒、機器、壓力數字或抑制分離結果。 |
+| c11h04b1 | 冷罐又要怎麼追上萬博的人潮？ | OUTCOME_FREE_TEASER | A_COLD_BRANCH, A_COLD_TRUCKS | 這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。；第二預告只問交付；同圖來源s11。中性搬箱不畫卡車、冷卻設備、運送路線或完成交付結果。 |
 | c11r1h05 | 跟著UCC這款奶咖，追上市前後兩年的工廠與會場，找出帶著走還需要什麼。 | SINGLE_NAMED_PROMISE | A_PROJECT_YEAR, A_COLD_BRANCH, A_COLD_TRUCKS | 後來UCC受訪者回憶，非當年啟案單；不能把約一年念成精確天數。；這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。；約1968研發至1970萬博；主角為同款商品，非同一批液體跨年。 |
 | c11r1h06 | 一杯咖啡離開店面，要怎麼讓你在別處，完整地喝到？ | CENTRAL_QUESTION | A_BOTTLE, A_INITIAL_HOLES | 後代品牌回顧；不編對話、天氣、站名或當天心理。；不是1969拉環即開；參考照片不是可自動重用的付費素材或已核准美術。 |
 | c11r1o01 | 先得離開那只要還的瓶子。UCC後來回顧，創辦人上島忠雄，曾在車站買了一瓶咖啡牛奶。 | ATTRIBUTED_LATER_ACCOUNT | A_BOTTLE | 後代品牌回顧；不編對話、天氣、站名或當天心理。 |
 | c11r1o02 | 發車鈴響，他還沒喝完，就得把瓶子交回攤位，再趕上列車。 | ATTRIBUTED_ACTION | A_BOTTLE | 後代品牌回顧；不編對話、天氣、站名或當天心理。；匿名概念場景；不補站名、車次、對話或天氣。 |
 | c11r1o03 | 你付錢買到的飲料，喝的時間卻被容器卡住；人要出發，剩下那一口只能留著。 | EDITORIAL_INTERPRETATION | A_BOTTLE | 後代品牌回顧；不編對話、天氣、站名或當天心理。；從退瓶動作解讀使用者利害，不新增某位旅客證言。 |
 | c11r1o04 | 在上島達司後來的訪談裡，玻璃瓶還有搬運上的麻煩：重，而且摔破會帶來危險。 | ATTRIBUTED_LATER_ACCOUNT | A_BOTTLE_MATERIAL | 不補重量差、事故人數或斷言這是唯一改罐原因。 |
-| c11r1o05 | 我覺得這個起點很實在：買飲料的人只是想繼續走，不想先處理空瓶要還給誰。 | AUTHOR_REACTION | A_BOTTLE | 後代品牌回顧；不編對話、天氣、站名或當天心理。 |
 | c11r1o06 | 把奶咖封進不必交回的罐子，成了方向；可是，咖啡此前真的沒被裝進罐裡嗎？ | FORWARD_QUESTION | A_BOTTLE, A_MIRA_DATE, A_MIRA_MONTH | 後代品牌回顧；不編對話、天氣、站名或當天心理。；地方政府是後設人物史，不是1965發票/廣告原件；不能因此證全球無更早例。 |
 | c11r1o07 | 濱田市的記錄寫，一九六五年九月十四日，米拉咖啡已在日本橋三越本店出售。 | ATTRIBUTED_LOCAL_HISTORY | A_MIRA_DATE, A_MIRA_MONTH | 地方政府是後設人物史，不是1965發票/廣告原件；不能因此證全球無更早例。；只作優先權界線，不另開三浦傳記，不把圖畫當當年三越原貌。 |
 | c11r1o08 | 後來的產業訪談，把米拉描述為加糖、無奶的咖啡；UCC這項試作，要把奶也放進去。 | ATTRIBUTED_PRODUCT_SCOPE | A_MIRA_PRODUCT, A_THREE_OBSTACLES | 是後來的研究者/編輯敘述，不是原罐配料表化驗；不能把牛乳樽運輸容器讀成加奶。；沒有證據三者按本片章序被發現，不能說內塗層同時解三題。；Mira奶成分為後來研究者/編輯報導，不是本輪原罐化驗。 |
 | c11r1o09 | UCC博物館把自家這一款，稱作世界首款含奶罐裝咖啡；這是館方對自己商品的說法。 | ATTRIBUTED_MANUFACTURER_CLAIM | A_MUSEUM_MILK | Mira無奶描述與此限定可以並存，但沒有完成全球所有含奶罐裝飲料前例的排除；不頒優先權。；不宣告全球優先權已獨立核定。 |
-| c11r1o10 | 對接下來的製造，關鍵就在那個奶字；一杯裡能喝到的組合，封起來後，還能維持嗎？ | FORWARD_MATERIAL_QUESTION | A_THREE_OBSTACLES | 沒有證據三者按本片章序被發現，不能說內塗層同時解三題。 |
+| c11r1o10 | 我更想知道，咖啡和奶封在罐裡，還能維持調好的狀態嗎？ | FORWARD_MATERIAL_QUESTION | A_THREE_OBSTACLES | 沒有證據三者按本片章序被發現，不能說內塗層同時解三題。 |
 | c11r1o11 | UCC的館長接受採訪時，把開發起點記在一九六八年前後，由公司組成專案推進。 | ATTRIBUTED_LATER_INTERVIEW | A_PROJECT_YEAR | 後來UCC受訪者回憶，非當年啟案單；不能把約一年念成精確天數。；不把後代採訪當1968當天的實驗紀錄。 |
 | c11r1o12 | 你若站在試作桌旁，面前不只是換一個容器，還有要一起進去的咖啡和牛奶。 | EXPLICIT_ILLUSTRATIVE_SCENE | A_THREE_OBSTACLES | 沒有證據三者按本片章序被發現，不能說內塗層同時解三題。 |
 | c11r1o13 | 它們調在一起的那一刻，能看起來很像一杯奶咖；放進罐裡之後，新的難題才出來。 | FORWARD_MATERIAL_PROBLEM | A_THREE_OBSTACLES | 沒有證據三者按本片章序被發現，不能說內塗層同時解三題。；不新增等待時間或某輪試作次序。 |
@@ -35,7 +35,6 @@
 | c11r1t11 | 你在桌邊覺得太苦，還能自己加點奶；封進罐裡，味道就得在你打開以前處理好。 | EXPLICIT_EVERYDAY_COMPARISON | A_HEAT_RATIO | 不能補比例數字、溫度、測試輪數或成功當日；不是現代控制對照實驗。；當代共同使用經驗，用於說明配方責任；不是歷史試喝者原話。 |
 | c11r1t12 | 加熱後的味道，要靠什麼繼續調整？ | FORWARD_QUESTION | A_HEAT_RATIO | 不能補比例數字、溫度、測試輪數或成功當日；不是現代控制對照實驗。 |
 | c11r1t13 | 報導寫，他們持續喝試作品，尋找咖啡、奶和糖的成分比率，設法減少加熱後留下的味道。 | ATTRIBUTED_ACTION_RESULT | A_HEAT_RATIO | 不能補比例數字、溫度、測試輪數或成功當日；不是現代控制對照實驗。；不補試驗輪數、比率數字、特定表情/想法或成功當日。 |
-| c11r1t14 | 喝一口的動作，被放到了正式販售以前；原料怎麼配，得經過味道這一關。 | EDITORIAL_INTERPRETATION | A_HEAT_RATIO | 不能補比例數字、溫度、測試輪數或成功當日；不是現代控制對照實驗。；對試喝調比的商品意義，不另稱獨立實驗結果。 |
 | c11r1t16 | 液體調整好了，外殼就只負責裝著它嗎？ | CHAPTER_END_QUESTION | A_COATING | 未取得該塗層的同期專利或配方；大和1969年表未明點UCC，不直接命名合作廠。 |
 | c11r1w01 | 金屬罐也會參與。UCC後來說，罐裡的鐵離子，會和咖啡中的成分結合。 | ATTRIBUTED_TECHNICAL_ACCOUNT | A_COATING | 未取得該塗層的同期專利或配方；大和1969年表未明點UCC，不直接命名合作廠。 |
 | c11r1w02 | 原廠把那個成分寫作單寧；發生反應以後，奶咖會變得很黑。 | ATTRIBUTED_PHENOMENON | A_COATING | 未取得該塗層的同期專利或配方；大和1969年表未明點UCC，不直接命名合作廠。；採原廠簡化說明，不新增化學反應式或濃度。 |
@@ -44,9 +43,7 @@
 | c11r1w05 | UCC說，他們和製罐公司合作，開發在罐內施加特殊塗層的技術。 | ATTRIBUTED_ACTION | A_COATING | 未取得該塗層的同期專利或配方；大和1969年表未明點UCC，不直接命名合作廠。 |
 | c11r1w06 | 那層處理對付的是罐壁帶來的變色，讓咖啡不用直接和裸露的金屬打交道。 | ATTRIBUTED_ACTION_RESULT | A_COATING | 未取得該塗層的同期專利或配方；大和1969年表未明點UCC，不直接命名合作廠。；塗層功能只限此來源所說的變色問題，不聲稱同解分離/加熱走味。 |
 | c11r1w07 | 我覺得有意思的是，設計一杯能帶走的奶咖，最後還得把包材的做法一起改。 | AUTHOR_REACTION | A_COATING | 未取得該塗層的同期專利或配方；大和1969年表未明點UCC，不直接命名合作廠。 |
-| c11r1w08 | 罐壁處理以後，這款奶咖什麼時候才能真正上架？ | FORWARD_LAUNCH_QUESTION | A_UCC_MONTH, A_PROJECT_YEAR | 不得無條件改稱全世界最早把液態咖啡裝罐；不能替稱世界首找到全球排除證據。；後來UCC受訪者回憶，非當年啟案單；不能把約一年念成精確天數。 |
-| c11r1w09 | 到了四月，這款奶咖開始販售；從專案啟動到商品化，受訪者回顧約花了一年。 | ATTRIBUTED_LAUNCH_RESULT | A_UCC_MONTH, A_PROJECT_YEAR | 不得無條件改稱全世界最早把液態咖啡裝罐；不能替稱世界首找到全球排除證據。；後來UCC受訪者回憶，非當年啟案單；不能把約一年念成精確天數。；四月指開場所交代的1969年；不重報無條件世界首。 |
-| c11r1w10 | 罐裡過了關，貨架外的問題卻來了：有人願意買一罐，帶離原本喝咖啡的地方嗎？ | FORWARD_QUESTION | A_CASES | 不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。 |
+| c11r1w10 | 原廠記下，四月開始販售；可是，有人願意買一罐，帶離原本喝咖啡的地方嗎？ | ATTRIBUTED_LAUNCH_TRANSITION_AND_FORWARD_QUESTION | A_UCC_MONTH, A_CASES | 不得無條件改稱全世界最早把液態咖啡裝罐；不能替稱世界首找到全球排除證據。；不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。；四月為原件記下、此前旁白未說的月份；1969年已由h02交代，此處不重報年或約一年研發算式。 |
 | c11r1w11 | 上島達司在金氏世界紀錄的訪談裡回憶，剛開始，業界有人把罐裝咖啡當成邪道。 | ATTRIBUTED_LATER_INTERVIEW | A_CASES | 不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。；不仿受訪者真人、不替店主配原話或推全業界一致。 |
 | c11r1w17 | 受訪者說，也有店家在喝過之後，願意把這種奶咖留下來賣；先試到那一口，才有貨架上的位置。 | ATTRIBUTED_TRIAL_RESULT | A_CASES | 不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。；只依訪談說有人喝過願留貨，不新增店名、原話或獨立顧客調查。 |
 | c11r1w12 | 最初放進食品店的那幾箱，後來有人接著訂嗎？ | FORWARD_RETAIL_ORDER_QUESTION | A_CASES | 不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。；回呼開場食品店與少量紙箱；下一句才給十箱、三十箱的新增訂貨結果，不再重報三箱，也不當成同一家店可稽核的訂貨表。 |
@@ -67,7 +64,6 @@
 | c11r1s09 | 可是，簽到供貨機會，並不會自己把一罐冷飲送到攤位。罐子要從哪裡接上會場？ | FORWARD_LOGISTICS_QUESTION | A_COLD_BRANCH, A_COLD_TRUCKS | 這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。 |
 | c11r1s10 | 他們在大阪製造工廠旁，設了大阪北支店，當時又被稱作萬博支店。 | ATTRIBUTED_LOGISTICS_ACTION | A_COLD_BRANCH, A_COLD_TRUCKS | 這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。；僅依來源的相鄰位置；不仿實際建築。 |
 | c11r1s11 | 奶咖先在這個配送據點冷卻，再由卡車送進會場；採訪記述，為此準備了多台車。 | ATTRIBUTED_ACTION_RESULT | A_COLD_BRANCH, A_COLD_TRUCKS | 這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。；不補冷卻溫度、冷藏車機型、冰塊、確切車數或路線。 |
-| c11r1s12 | 你在攤位拿到的是冷罐，離開工廠後的那段路，也有人先替它安排好。 | EDITORIAL_VIEWER_INTERPRETATION | A_COLD_BRANCH, A_COLD_TRUCKS | 這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。 |
 | c11r1s13 | 我更好奇，會場以外的人，要怎麼知道這罐奶咖？ | AUTHOR_FORWARD_QUESTION | A_COLD_BRANCH, A_COLD_TRUCKS, A_TV | 這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。；未取得當年電視節目、播出日期或收視數據，不能當獨立傳播因果測量。；由返鄉飲用經驗與電視中的取罐場景承擔具體傳遞結果。 |
 | c11r1s14 | 會場裡，來客開始拿起這種罐裝飲料；原廠留下的當時照片，也能看到人手裡的奶咖罐。 | SOURCED_VISIBLE_RESULT | A_COLD_BRANCH, A_COLD_TRUCKS | 這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。；參考已實看banpaku.jpg；原創概念畫，不複用照片或仿其中真人。 |
 | c11r1s15 | 來自各地的人，把喝過的經驗帶回家鄉；那罐飲料的消息，跟著旅程走出了會場。 | ATTRIBUTED_DIFFUSION_ACTION | A_COLD_BRANCH, A_COLD_TRUCKS | 這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。；依公司回顧的返鄉傳播，不編具體人物說詞。 |
@@ -85,7 +81,6 @@
 | c11r1d11 | 原廠初代罐的說明，寫的是用專用開孔器在罐頂開孔；這些孔，各有什麼用？ | SOURCED_USAGE_ACTION_WITH_FORWARD_FUNCTION_QUESTION | A_INITIAL_HOLES | 不是1969拉環即開；參考照片不是可自動重用的付費素材或已核准美術。；保留實際開孔動作，再問入口用途，由下一句飲口與空氣孔作新答案；不重問罐已封住或從哪裡喝。 |
 | c11r1d12 | 一邊是飲口，另一邊是空氣孔；喝的人要用它，還得有能把這些入口打開的工具。 | SOURCED_USAGE_RESULT | A_INITIAL_HOLES | 不是1969拉環即開；參考照片不是可自動重用的付費素材或已核准美術。；此處才揭初代說明規定的兩種入口用途；不補單孔失敗或不能流出的實驗。 |
 | c11r1d13 | 你現在熟悉的拉開就喝，在那種罐頂上，還不是手指自己能完成的事。 | EDITORIAL_VIEWER_INTERPRETATION | A_INITIAL_HOLES | 不是1969拉環即開；參考照片不是可自動重用的付費素材或已核准美術。；只限1969初代，不宣稱1981才有拉環或所有中間版本都同蓋。 |
-| c11r1d14 | 我想，初代罐最有意思的地方，就在這裡：飲料已經能跟著你走，打開它的工作，還得有人拿工具完成。 | AUTHOR_REACTION | A_INITIAL_HOLES | 不是1969拉環即開；參考照片不是可自動重用的付費素材或已核准美術。；不再演假想旅客完整上車/喝到的重播。 |
 | c11r1ct1 | 這款奶咖把喝咖啡的地點帶走，卻沒有省掉讓你喝到的工作；那些工作，被接到製造、配送和罐頂。 | SYNTHESIS_ANSWER | A_HOMOGENIZE, A_HEAT_RATIO, A_COATING, A_COLD_TRUCKS, A_INITIAL_HOLES | 作者綜合答案/觀眾留言/訂閱理由；不主張新歷史事件或數字。；有聲CTA納入官方旁白duration，另加正式v4尾片不含於此。 |
 | c11r1ct2 | 你第一次喝罐裝飲料，記得是別人替你開好，還是你自己打開？留言告訴我。 | VIEWER_COMMENT_QUESTION |  | 作者綜合答案/觀眾留言/訂閱理由；不主張新歷史事件或數字。；有聲CTA納入官方旁白duration，另加正式v4尾片不含於此。 |
 | c11r1ct3 | 想看懂熟悉物品怎麼把方便交到你手上，歡迎訂閱，一起看那些小動作背後的選擇。 | CHANNEL_SUBSCRIPTION_REASON |  | 作者綜合答案/觀眾留言/訂閱理由；不主張新歷史事件或數字。；有聲CTA納入官方旁白duration，另加正式v4尾片不含於此。 |
@@ -175,3 +170,8 @@
 ### A_RAIL
 
 {"source_id":"GUINNESS2019","raw_path":"/workspace/work/brand-story-20261025/c11-audit/source-cache/GUINNESS2019.html","raw_sha256":"2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20","text_path":"/workspace/work/brand-story-20261025/c11-audit/source-cache/GUINNESS2019.txt","text_sha256":"be43d264a15207fce04bd88fcf7453f4dd8ef7530d266cf4dc853741d739d858","paragraphs_path":"/workspace/work/brand-story-20261025/c11-audit/source-cache/GUINNESS2019.paragraphs.json","paragraphs_sha256":"8936b30788b5ca7fcf90564cde141ffafdc891aab918c878b14c12a6b03f3b5f","paragraphs":[68],"paragraph_sha256":{"68":"50e3d6eb0c126acc539ec37a6309223d0fb662d5acfed2294521ef33e432f2f3"},"short_quote":"鉄道弘済会","short_quote_sha256":"0ac15477558417cd598adc6d8f9c42d3594b141a4cd2b1b7f4a7c502b908ed52"}
+
+
+## 開場兩預告同圖安排
+
+h04→t05與h04b1→s11各共用一張尚未生成的圖。image-reuse-plan.json綁每對scene/line、prompt SHA、camera、完整生成參數、原生cache配方及同一實檔SHA驗證；只生成payoff一次再引用。尚未執行，不作實圖驗收或組片完成。

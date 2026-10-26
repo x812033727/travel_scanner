@@ -1,0 +1,314 @@
+{
+  "schema_version": 1,
+  "status": "HOLD_PENDING_INDEPENDENT_SOURCE_AND_FRESH_READERS",
+  "author": "/root/c11_r4_author",
+  "candidate_revision": "c11-r4",
+  "slug": "story-everyday-ucc-c11-remake-20261025",
+  "counts": {
+    "lines": 84,
+    "scenes": 82,
+    "chapters": 6,
+    "shots": 81,
+    "cards": 1,
+    "loops": 24
+  },
+  "native_units": {
+    "counter": "spokenUnits(spokenText(line))",
+    "official_narration_body_planning_units": 2428,
+    "coldopen": 157,
+    "voiced_CTA": 103,
+    "after_opening_planning_only": 2271,
+    "after_opening_and_CTA_planning_only": 2168,
+    "official_duration_scope": "all actual narration timeline including coldopen and voiced CTA; excludes separate 5s/21s channel bookends",
+    "normal_4_to_5_arithmetic_seconds": [
+      485.6,
+      607
+    ],
+    "at_4_5_units_per_second": 539.5555555555555,
+    "actual_tts_seconds": null,
+    "actual_duration_verified": false,
+    "length_hold": true,
+    "length_hold_reason": "目前有效總units低於約3500規劃目標，actual TTS未知；紙面算式不作實測時長合格或失敗的結論，不以限定語、慢播、停頓、重述或副線補字。"
+  },
+  "maximum_estimated_shot_seconds": 10.133333333333333,
+  "voice_source": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
+    "file_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
+    "voice_object_sha256": "cdda79f645ce8a01d03ec8248bbebb27de27e55cff3c68ef713b50626230f30a",
+    "exact_copy": true
+  },
+  "frozen_research_sha256": {
+    "research-original.md": "2c3e2f0a2ad4bf41b50a3c2484831eeda5861d32ecf4d11f409ebb7bc0bfed1b",
+    "research-original.claims.json": "14103ff5df3c9871d942021bda9e1c581bcf68c013047d9fbcd79512613a90fa",
+    "original-preservation.json": "40a0726eeb5937b9d6573c733b3432dc11c21c88762a1731cd46d80d46e9501b"
+  },
+  "protected_old28_snapshot_and_research_unchanged": true,
+  "series_rebind": false,
+  "approval_created": false,
+  "verify_written": false,
+  "source_pass_claimed": false,
+  "narrative_pass_claimed": false,
+  "owner_approval": false,
+  "provider_calls": 0,
+  "paid_calls": 0,
+  "backend_mutations": 0,
+  "git_commands": 0,
+  "subagents_spawned": 0,
+  "execution_recipe": {
+    "image_model": "image-01",
+    "look": {
+      "preset": "cute-mystery"
+    },
+    "stillmotion": true,
+    "minimum_body_illustration_share": 0.7,
+    "maximum_consecutive_cards": 3,
+    "burn_in_zh_tw": true,
+    "cc_zh_tw": true,
+    "intro": {
+      "seconds": 5,
+      "placement": "after coldopen",
+      "executed": false
+    },
+    "outro": {
+      "seconds": 21,
+      "version": "formal-v4",
+      "placement": "after voiced CTA",
+      "executed": false
+    },
+    "thumbnail": {
+      "layout": "d",
+      "brand": "UCC",
+      "headline": "yellow with black outline",
+      "sub": "short white"
+    },
+    "actual_media_created": false
+  },
+  "independent_source_QA": "PENDING_OTHER_REVIEWER",
+  "fresh_narrative_readers": "PENDING",
+  "runtime_root": "/workspace/work/brand-story-20261025/c11-submission-root",
+  "author_revision_delta": {
+    "role": "AUTHOR_CHANGE_RECORD_NOT_INDEPENDENT_REVIEW",
+    "previous_revision": "c11-r3",
+    "next_actual_native_reader_round": 4,
+    "previous_core_four_sha256": {
+      "video.json": "81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf",
+      "brief.md": "8b4aca6409ca262fc3debea370307ce69c22c736eab5cc918d503fb591e03d5a",
+      "series.json": "c79f28994a0a00a26056d50ab17459ff43d523e8892acd3c7ddbc92731f849e3",
+      "claims.json": "3d3c387307b301db069728d1a7598752380296fdfbf78b9a3950dfa6d147837c"
+    },
+    "previous_source_review": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/history/r3/reviews/source-r3-independent.json",
+      "sha256": "3368c77cb77b69d6c2f567653726380e057c527ad6bb7c8d520e3ab9911324f1"
+    },
+    "previous_verify": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/history/r3/verify-1.md",
+      "sha256": "eef70cb68c84bbd71593b7d442c5bea4ccd5e5275d0e11bd035c360a23c2967b"
+    },
+    "previous_native": {
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/history/r3/reviews/narrative-r3.json",
+      "sha256": "ad574ffa5203fec430254fa49e4f786eae039d08f396f30ad92eb249d8d563f2",
+      "passed": false,
+      "shared_failed": [
+        "no_recap"
+      ]
+    },
+    "changed_narration_ids": [],
+    "removed_narration_ids": [
+      "c11r1d14"
+    ],
+    "added_narration_ids": [],
+    "unchanged_surviving_lines": 84,
+    "line_changes": [],
+    "deletions": [
+      {
+        "id": "c11r1d14",
+        "before": "我想，初代罐最有意思的地方，就在這裡：飲料已經能跟著你走，打開它的工作，還得有人拿工具完成。",
+        "reason": "兩位獨立讀者共同指出純結論重述；刪句及其概念插圖景，不加入替代重述。"
+      }
+    ],
+    "prompts_added_or_changed": [],
+    "surviving_scenes_exactly_preserved": true,
+    "surviving_camera_assignments_preserved": true,
+    "opening_six_scenes_exactly_preserved": true,
+    "loops_exactly_preserved": true,
+    "loops_count": 24,
+    "chapter_titles_exactly_preserved": true,
+    "thumbnail_exactly_preserved": true,
+    "whole_units_before": 2468,
+    "whole_units_after": 2428,
+    "whole_units_delta": -40,
+    "source_qa_required": "Deletion-only R4: confirm d14/its scene/claim removed, all surviving narration and scenes/24 loops unchanged, d11 action→d12 actual hole functions→d13 comparison still supported. R4 source and narrative decisions must come from independent reviewers."
+  },
+  "native_proper_context": {
+    "root": "/workspace/work/brand-story-20261025/c11-submission-root",
+    "slug": "story-everyday-ucc-c11-remake-20261025",
+    "scope": "loadProject on the ordinary initialized context; replace only doc/brief/series in memory, retain its true immutable lexicon. Native mechanical lint only; no narrative/source self-review or approval.",
+    "runtime_video_sha256": "81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf",
+    "validated_candidate_video_sha256": "04064206ab45552b6138872a17817e47d6aa176497583533aac2e4a0e6a4dd48",
+    "runtime_core_and_prior_verify_unchanged": true,
+    "prior_runtime_verify_used_as_r4_verification": false,
+    "immutable_lexicon_sha256": "1ea60e8a43469741c1eb8bc438e7af230896e8456c809ec114b61be29c42366a",
+    "lexicon_not_overwritten": true,
+    "result": {
+      "errors": [],
+      "warnings": [
+        {
+          "path": "scenes[44] (c11r1w17)",
+          "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
+        },
+        {
+          "path": "scenes",
+          "message": "about 11.1 minutes; the target is 12-14"
+        }
+      ],
+      "summary": {
+        "minutes": 11.123333333333333,
+        "lines": 84,
+        "spoken_units": 2428,
+        "billable_characters": 7652,
+        "chapters": [
+          "00:00 銷售人員走進食品店",
+          "00:43 瓶子交回去，奶咖得另找出口",
+          "02:41 混得進去，還得留在一起",
+          "04:19 罐壁加入了這杯咖啡",
+          "06:23 把罐子放進旅客看得到的地方",
+          "09:14 工廠外排起車，手裡的罐還等著開"
+        ]
+      }
+    },
+    "errors": 0,
+    "cadence_warnings": [],
+    "maximum_estimated_shot_seconds": 10.133333333333333
+  },
+  "at_least_eight_concrete_action_payoffs": [
+    {
+      "setup": "c11r1o06",
+      "payoff": "c11r1o07",
+      "what": "1965已有Mira罐裝實售早例",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1o10",
+      "payoff": "c11r1t05",
+      "what": "含奶混合物放進罐後如何保持狀態",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1t04",
+      "payoff": "c11r1t05",
+      "what": "拌在一起到抑制分離",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1t12",
+      "payoff": "c11r1t13",
+      "what": "試喝樣品、調整成分比率",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1w04",
+      "payoff": "c11r1w06",
+      "what": "與製罐公司合作內部塗層處理變色",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1w12",
+      "payoff": "c11r1w14",
+      "what": "回呼食品店的那幾箱，續訂增加到十箱與三十箱",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1w16",
+      "payoff": "c11r1s02",
+      "what": "把罐排到旅客可見的車窗",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1s20",
+      "payoff": "c11r1s21",
+      "what": "事前規模判斷經海外視察後改變，公司將萬博納入策略",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1s09",
+      "payoff": "c11r1s11",
+      "what": "工廠旁支店與多台卡車完成冷罐配送",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1s18",
+      "payoff": "c11r1d02",
+      "what": "要貨增加卻有卡車等出貨的場景",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1d05",
+      "payoff": "c11r1d06",
+      "what": "單一工廠不足後擴大協力工廠",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    },
+    {
+      "setup": "c11r1d09",
+      "payoff": "c11r1d12",
+      "what": "交到手裡後用開孔器完成飲口與空氣孔",
+      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
+    }
+  ],
+  "length_target_delta": {
+    "rough_total_target": 3500,
+    "actual_planning_total": 2428,
+    "delta_to_rough_target": -1072,
+    "new_narration_exceeds_legacy_by": 669,
+    "not_a_duration_pass": true
+  },
+  "planned_illustration_spoken_unit_share": 0.9575782537067545,
+  "current_source_status": "PENDING_INDEPENDENT_QA_NOT_AUTHOR_PASS",
+  "current_narrative_status": "PENDING_FRESH_READERS_NOT_AUTHOR_SELF_REVIEW",
+  "runtime_preparation": {
+    "helper": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/prepare-runtime.mjs",
+    "runtime_manifest_sha256": "0970d87429d1902924f7652077b26558e5cfe544cc3c1a692bbfe157e1166b3a",
+    "prepared_project_ids": [
+      "c11"
+    ],
+    "only_new_c11_slug": true,
+    "ordinary_immutable_lexicon_initialization": true,
+    "initialization_revision": "c11-r1",
+    "current_candidate_validation": "R4 actual normal synchronized runtime, independently source/narrative unreviewed",
+    "candidate_core_written_to_runtime": true,
+    "copied_other_episode_dictionary_or_approval": false,
+    "approvals_created": 0,
+    "paid_media_created": false
+  },
+  "protected_input_file_count": 129,
+  "protected_history_reviews_old28_snapshot_and_research_unchanged": true,
+  "file_sha256": {
+    "video.json": "04064206ab45552b6138872a17817e47d6aa176497583533aac2e4a0e6a4dd48",
+    "script.md": "7d8f4bffb0189321ec5f3cce85410f016a4c4e3e1013fa0c3b28f7b69b890f75",
+    "narration-only.json": "a6a46c1f1d4740d6f045c466d97a5494f4cb30fd472feab55fc15180e1985316",
+    "brief.md": "64cd0447d0d33dcfe112aca4b676e91500b0fc48943e47ceb47b1f8e33e5dec0",
+    "series.json": "34765f8b94be1ac4218541ec79260862adf2abd2fa95f6777001a8f6ffc59291",
+    "claims.json": "aeef2c2d437239dfd5c4128b47670ace38aada9ed345342a2e5b6ac38a7ac4b8",
+    "claims.md": "cd810610cd0b456af250711d4b257094f4dbff646369196bd095c46633ad0696",
+    "build-candidate.mjs": "87c115fb8d4b79214df931db85b3c6914a2e953be1dcdbab5b78ce5807c14931",
+    "prepare-runtime.mjs": "2a2a0c13af5033fecda6f53865166aeb28326f101c997fe61c92747eb1c3769e"
+  },
+  "core_four_sha256": {
+    "video.json": "04064206ab45552b6138872a17817e47d6aa176497583533aac2e4a0e6a4dd48",
+    "brief.md": "64cd0447d0d33dcfe112aca4b676e91500b0fc48943e47ceb47b1f8e33e5dec0",
+    "series.json": "34765f8b94be1ac4218541ec79260862adf2abd2fa95f6777001a8f6ffc59291",
+    "claims.json": "aeef2c2d437239dfd5c4128b47670ace38aada9ed345342a2e5b6ac38a7ac4b8"
+  },
+  "frozen_at_utc": "2026-10-25T23:43:39.906Z",
+  "native_runtime_rehearsal": {
+    "receipt": "native-author-lint-r4.json",
+    "receipt_sha256": "5ec7366292bc5aa64459defc053026382b496511de938c567d302eb7aff68cc3",
+    "ordinary_helper": "prepare-runtime.mjs",
+    "runtime_manifest_sha256": "0970d87429d1902924f7652077b26558e5cfe544cc3c1a692bbfe157e1166b3a",
+    "runtime_video_sha256": "04064206ab45552b6138872a17817e47d6aa176497583533aac2e4a0e6a4dd48",
+    "immutable_lexicon_sha256": "1ea60e8a43469741c1eb8bc438e7af230896e8456c809ec114b61be29c42366a",
+    "errors": 0,
+    "cadence_warnings": 0,
+    "source_verify_present": false,
+    "actual_tts_seconds": null
+  }
+}

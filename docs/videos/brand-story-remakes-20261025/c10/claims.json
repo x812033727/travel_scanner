@@ -1,12 +1,12 @@
 {
   "schema_version": 1,
-  "revision": "r6",
+  "revision": "r7",
   "slug": "story-everyday-oxo-c10-remake-20261025",
-  "scope": "R6 author single-question and matching visual/loop/anchor correction only; new independent source/written-visual and actual native panel5 pending",
+  "scope": "R7 author two-line callback/CTA correction only; new independent source/written-visual and actual native panel6 pending",
   "input_sha256": {
-    "video.json": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
-    "script.md": "ceb94ccb7093aced9a55f30b365de4ae591d3ef309c93446b15492d5dc66b026",
-    "narration-only.json": "16a6bc35c347d4f300f1861b934799fd52438527565befcd64c906aa53b4aa40"
+    "video.json": "bc1a619974666659e134e976db7aee0b68dbc744dc391070590d9f85a0acc176",
+    "script.md": "ae93803b514aa6e0272c3563f69d10497953c24b5b0dd483ec41821603cfacb7",
+    "narration-only.json": "c1e723ca73cd7c3a8c883feb491745f7f498cc384a1bc76493236f3b7524a77c"
   },
   "protected_research_sha256": {
     "research-original.md": "103534b03aa83d10d2d9c2b4c61ac8d0a45bad27384fff79418b44ea5eab4dc7",
@@ -4294,7 +4294,7 @@
     {
       "line_id": "c10v5s04",
       "scene_id": "c10r5-s04",
-      "text": "削皮器用鏈條拴在碗上，讓走進店裡的人直接試。",
+      "text": "開場預告的黑柄試用，就在這裡：削皮器用鏈條拴在胡蘿蔔碗上，讓進店的人伸手試。",
       "kind": "attributed_fact",
       "material_refs": [
         "C10X08"
@@ -4313,7 +4313,8 @@
       "limits": [
         "This is the same retail-carrot story already used from the 2017 brand retrospective; replace/deepen it once, not a second demonstration.",
         "Do not claim measured causal uplift, numeric sales, every shopper buying, or modern store policy.",
-        "An inaccessible Formosa search lead mentions a different hanging arrangement; do not blend that snippet with this chain-to-bowl original."
+        "An inaccessible Formosa search lead mentions a different hanging arrangement; do not blend that snippet with this chain-to-bowl original.",
+        "開場回叫同一次店內試用，不宣稱黏土原型、展會樣品與零售工具為同一實體；不增添精確日期／店址、逐人結果或量化銷售。"
       ],
       "written_visual": {
         "conceptual": true,
@@ -4952,11 +4953,13 @@
     {
       "line_id": "c10l20",
       "scene_id": "c10r1-outro",
-      "text": "如果是你，會替家裡哪件小工具換掉握的地方？留言告訴我，卡住的是哪個動作。",
+      "text": "也請你留言分享，想替家裡哪件小工具換個握柄，以及最卡手的那個動作。",
       "kind": "viewer_cta",
       "material_refs": [],
       "evidence": [],
-      "limits": [],
+      "limits": [
+        "明確邀請觀眾分享工具與卡手動作，不是要求故事另交答案的事實懸念。"
+      ],
       "written_visual": {
         "conceptual": true,
         "not_historical_reconstruction": true,
@@ -5189,5 +5192,11 @@
     "script.md": "15efb67f8c07c9b63bbd8347077cc20f9f6feb816ec8e0a254ba2e476bba70c3",
     "narration-only.json": "84912abeeefe98eb489a784c925e61757ae3070acc5609a10b36acb704400eae",
     "claims.json": "75b6008c68d1672d890edf39febe571bb689ffd971a09ab34942b3fbb0e57eb6"
+  },
+  "r6_input_sha256": {
+    "video.json": "60ebd41c33edf0254b170fea76a85c2651ea2360a9d0aec1c4cadd5879b659de",
+    "script.md": "ceb94ccb7093aced9a55f30b365de4ae591d3ef309c93446b15492d5dc66b026",
+    "narration-only.json": "16a6bc35c347d4f300f1861b934799fd52438527565befcd64c906aa53b4aa40",
+    "claims.json": "df84a6221e8b8e4decd68f34dbc19ba2370cd8199291dd7fda0e6b13333cccb5"
   }
 }

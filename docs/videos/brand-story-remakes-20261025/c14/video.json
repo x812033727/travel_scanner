@@ -38,9 +38,9 @@
       "what": "開場的金屬牙齒：十二咬閥被反覆夾壓"
     },
     {
-      "setup": "c14r1h04",
-      "payoff": "c14r1m05",
-      "what": "開場的模具：兩天拿到實體矽膠測試件"
+      "setup": "c14r1h07",
+      "payoff": "c14r1m02",
+      "what": "開場的工程師模具：三維列印模具製出實矽膠樣件"
     },
     {
       "setup": "c14r1h06",
@@ -108,19 +108,9 @@
       "what": "測試動作對應袋體與嘴部不同受力"
     },
     {
-      "setup": "c14r1t09",
-      "payoff": "c14r1t10",
-      "what": "報導未交出循環數與通過率，不擴為保證"
-    },
-    {
       "setup": "c14r1t11",
-      "payoff": "c14r1m04",
-      "what": "列印模製出可測的真矽膠件"
-    },
-    {
-      "setup": "c14r1m03",
-      "payoff": "c14r1m05",
-      "what": "軟件取得讓形狀與材料可受測"
+      "payoff": "c14r1m02",
+      "what": "螢幕形狀做成三維列印模具，再成為實體矽膠咬閥"
     },
     {
       "setup": "c14r1m07",
@@ -309,14 +299,30 @@
       "id": "c14r1h04",
       "template": "shot",
       "data": {
-        "prompt": "Close-up of a plain flexible drinking mouthpiece resting beside an empty small mold and two metal test plates, diffuse workshop light.",
+        "prompt": "Wide conceptual view of twelve plain small mouthpieces arranged between two metal test plates, soft laboratory light.",
         "visual": "still",
-        "camera": "pan right"
+        "camera": "tilt up"
       },
       "lines": [
         {
           "id": "c14r1h04",
-          "text": "後來，出口被送進模具，也被夾在模擬牙齒的金屬之間。",
+          "text": "後來，出口被夾在模擬牙齒的金屬之間。",
+          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
+        }
+      ]
+    },
+    {
+      "id": "c14r1h07",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an anonymous hand lifting a plain flexible silicone part from a small printed mold, diffuse workshop light.",
+        "visual": "still",
+        "camera": "tilt up"
+      },
+      "lines": [
+        {
+          "id": "c14r1h07",
+          "text": "另一份個案裡，工程師為咬口做出模具。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -364,7 +370,7 @@
       "lines": [
         {
           "id": "c14r1o01",
-          "text": "那枚衣夾先替管端守住出口；紐西蘭品牌回顧說，艾德森就是用它夾住管子。",
+          "text": "我讀的紐西蘭品牌回顧裡，艾德森用那枚衣夾，夾住了管子出口。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ],
@@ -381,23 +387,7 @@
       "lines": [
         {
           "id": "c14r1o02",
-          "text": "他是急救醫療技術員，回顧裡那袋水，用的原是點滴袋；襪子套在袋外，水仍裝在袋裡。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1o03",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an anonymous cyclist pointing toward a plain tube crossing one shoulder from a sock-covered pouch, mild overcast light.",
-        "visual": "still",
-        "camera": "pan left"
-      },
-      "lines": [
-        {
-          "id": "c14r1o03",
-          "text": "你看這個安排，背後負責帶水，管子負責把水送到肩上；襪子自己並不裝水。",
+          "text": "他是急救醫療技術員，回顧裡那袋水，用的原是點滴袋。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -430,22 +420,6 @@
         {
           "id": "c14r1o05",
           "text": "這套拼裝留下的，是手動夾閉：衣夾還要有人照顧，並不會因為你喝完，就自己回到管口。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1o06",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an anonymous cyclist looking thoughtfully at a plain shoulder tube near the mouth, overcast light.",
-        "visual": "still",
-        "camera": "drift"
-      },
-      "lines": [
-        {
-          "id": "c14r1o06",
-          "text": "我覺得，管子越過肩膀的意義，也在這裡：水已經來到嘴邊，控制水的機會也到了嘴邊。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -788,22 +762,6 @@
       ]
     },
     {
-      "id": "c14r1b04",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an anonymous hand lifting a plain clear bottle, its short internal tube leading toward the mouthpiece, neutral light.",
-        "visual": "still",
-        "camera": "tilt down"
-      },
-      "lines": [
-        {
-          "id": "c14r1b04",
-          "text": "原先是管子越肩來找嘴，現在瓶子被手拿起，短管把瓶裡的水接到上面的咬口。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
       "id": "c14r1b05",
       "template": "shot",
       "data": {
@@ -879,22 +837,6 @@
         {
           "id": "c14r1b09",
           "text": "防漏，是公司在報導裡的說法；這個展品，讓出口和容器的分工，出現在日常水瓶裡。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1b10",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an anonymous adult placing a plain bottle beside an open plain hydration pack, soft window light.",
-        "visual": "still",
-        "camera": "tilt up"
-      },
-      "lines": [
-        {
-          "id": "c14r1b10",
-          "text": "我覺得，這次不是背水的點子被丟掉，而是把能帶走的控制，留在另一種容器上。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1007,23 +949,7 @@
       "lines": [
         {
           "id": "c14r1t06",
-          "text": "同時，十二個咬閥夾在兩片金屬之間，模擬大人和孩子的牙齒反覆咬壓。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1t07",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of plain metal test plates pressing a row of flexible mouthpieces, diffuse side light.",
-        "visual": "still",
-        "camera": "tilt down"
-      },
-      "lines": [
-        {
-          "id": "c14r1t07",
-          "text": "開場那副金屬牙齒，到這裡有了工作：不只碰一下出口，而是反覆讓它受力。",
+          "text": "開場那副金屬牙齒，是兩片金屬夾著十二個咬閥，反覆模擬大人和孩子的咬壓。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1039,39 +965,7 @@
       "lines": [
         {
           "id": "c14r1t08",
-          "text": "我覺得這個畫面比一句耐用有用得多；袋子和咬口，承受的動作根本不同。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1t09",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an anonymous adult looking at a blank results sheet beside a plain mouthpiece test fixture, soft lamp light.",
-        "visual": "still",
-        "camera": "pan left"
-      },
-      "lines": [
-        {
-          "id": "c14r1t09",
-          "text": "你可能會追問：夾了多少次、多久壞，最後有幾個通過？",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1t10",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an anonymous technician removing one plain mouthpiece from a metal fixture, diffuse light.",
-        "visual": "still",
-        "camera": "pull out"
-      },
-      "lines": [
-        {
-          "id": "c14r1t10",
-          "text": "這篇報導沒有交出那張成績表，留下的，是袋體與嘴部分別被施力的現場。",
+          "text": "我覺得這個畫面，比一句耐用更值得細看。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1087,7 +981,7 @@
       "lines": [
         {
           "id": "c14r1t11",
-          "text": "而出口要被咬，前提是手裡真有一個能變形的樣件；螢幕上的形狀，怎麼交給嘴試？",
+          "text": "而螢幕上的咬口形狀，還不是你能碰到的軟零件；工程師先怎麼把它做出來？",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1120,39 +1014,7 @@
       "lines": [
         {
           "id": "c14r1m02",
-          "text": "他先做出三維列印模具，再用模具做真正的矽膠零件；列印的，不是拿來咬的塑膠替身。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1m03",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an anonymous engineer comparing a rigid blank model with a flexible mouthpiece sample, soft side light.",
-        "visual": "still",
-        "camera": "tilt down"
-      },
-      "lines": [
-        {
-          "id": "c14r1m03",
-          "text": "如果要知道放開會不會回閉，你拿一塊硬的外形模型，能替軟零件回答嗎？",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1m04",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an anonymous engineer lightly flexing a plain silicone mouthpiece sample, soft lamp light.",
-        "visual": "still",
-        "camera": "push in"
-      },
-      "lines": [
-        {
-          "id": "c14r1m04",
-          "text": "這次交到手裡的是可拿去測的矽膠件，形狀與材料，才有機會一起接受人的測試。",
+          "text": "開場那副模具，是他用三維列印做的，再用來製作矽膠咬閥樣件。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1168,23 +1030,7 @@
       "lines": [
         {
           "id": "c14r1m05",
-          "text": "工程師回述，這樣兩天就拿到了測試零件；那個數字買到的是能試，不是已經證明不壞。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1m06",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an anonymous tester receiving a plain flexible mouthpiece sample on a clean tray, soft indoor light.",
-        "visual": "still",
-        "camera": "pull out"
-      },
-      "lines": [
-        {
-          "id": "c14r1m06",
-          "text": "我喜歡這個結果，因為下一個判斷不用只對著螢幕做；手裡已經有東西，能交給真的人。",
+          "text": "工程師回述，這樣兩天就拿到了測試零件。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1200,7 +1046,7 @@
       "lines": [
         {
           "id": "c14r1m07",
-          "text": "拿到軟樣件以後，工程師最想再取得什麼？",
+          "text": "我更想知道，拿到軟樣件後，工程師還想取得什麼？",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1216,7 +1062,7 @@
       "lines": [
         {
           "id": "c14r1m08",
-          "text": "他說，越能從真人測試取得回饋越好；能被人試的出口，才有機會把感受帶回設計。",
+          "text": "他說，越能從真人測試取得回饋越好。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1232,7 +1078,7 @@
       "lines": [
         {
           "id": "c14r1m09",
-          "text": "可是，就算嘴邊會自封，補水時還有另一個開口必須打開；那裡也能守住水嗎？",
+          "text": "可是，就算你嘴邊的咬口會自封，補水時還有另一個開口必須打開；那裡也能守住水嗎？",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1265,7 +1111,7 @@
       "lines": [
         {
           "id": "c14r1r02",
-          "text": "這一款還有單手開關，可以關住飲水管；嘴邊的自封口器，另負責每次喝完後的回閉。",
+          "text": "這一款另有單手開關，讓你用一隻手關住飲水管。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1335,22 +1181,6 @@
       ]
     },
     {
-      "id": "c14r1r07",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an anonymous adult studying the underside of a plain reservoir cap, diffuse daylight.",
-        "visual": "still",
-        "camera": "tilt up"
-      },
-      "lines": [
-        {
-          "id": "c14r1r07",
-          "text": "所以你手上看似已經轉緊的蓋子，裡面仍可能有一個地方，沒有貼好。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
       "id": "c14r1r08",
       "template": "shot",
       "data": {
@@ -1378,22 +1208,6 @@
         {
           "id": "c14r1r09",
           "text": "原廠的季前檢查，把水裝回袋子，蓋好後轉動、擠壓，觀察有沒有漏水。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1r10",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an anonymous hand pressing a plain filled reservoir while watching its cap rim above a sink, soft side light.",
-        "visual": "still",
-        "camera": "pan left"
-      },
-      "lines": [
-        {
-          "id": "c14r1r10",
-          "text": "這個動作讓蓋口也承受水與擠壓；觀察的位置，從嘴邊移到了整個裝水的袋子。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]
@@ -1528,22 +1342,6 @@
       ]
     },
     {
-      "id": "c14r1d07",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a plain reservoir held open on a simple drying support beside a separate closed mouthpiece, diffuse indoor light.",
-        "visual": "still",
-        "camera": "pan right"
-      },
-      "lines": [
-        {
-          "id": "c14r1d07",
-          "text": "出口能回閉，這時卻不能替內部乾燥；袋口得打開，貼合的內壁得分開。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
       "id": "c14r1d08",
       "template": "shot",
       "data": {
@@ -1635,22 +1433,6 @@
         {
           "id": "c14r1d13",
           "text": "開場問水能不能留在該在的地方，到這裡，答案多了一個時間點：收起來時，它得離開。",
-          "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
-        }
-      ]
-    },
-    {
-      "id": "c14r1d14",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an anonymous adult holding an empty plain hydration pack ready for storage, soft indoor light.",
-        "visual": "still",
-        "camera": "pan right"
-      },
-      "lines": [
-        {
-          "id": "c14r1d14",
-          "text": "我想，讓你下一次還能拿起這袋水的方便，就藏在這個沒有水的結尾裡。",
           "emotion": "對一位觀眾說書，自然起伏；假設、原文歸屬與數字讀清楚"
         }
       ]

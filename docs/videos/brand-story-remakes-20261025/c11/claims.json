@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_QA",
-  "candidate_revision": "c11-r3",
-  "author": "/root/c05_material_author",
+  "candidate_revision": "c11-r6",
+  "author": "/root/c11_r4_author",
   "video_slug": "story-everyday-ucc-c11-remake-20261025",
   "frozen_research_sha256": {
     "research-original.md": "2c3e2f0a2ad4bf41b50a3c2484831eeda5861d32ecf4d11f409ebb7bc0bfed1b",
@@ -684,30 +684,64 @@
     {
       "id": "c11r1h04",
       "chapter": "銷售人員走進食品店",
-      "claim": "罐裡的奶怎麼待得住，冷罐又要怎麼追上萬博的人潮？",
-      "claim_kind": "TWO_OUTCOME_FREE_TEASERS",
+      "claim": "罐裡的奶，怎麼待得住？",
+      "claim_kind": "OUTCOME_FREE_TEASER",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
       "research_claim_ids": [
-        "R07",
+        "R07"
+      ],
+      "anchor_ids": [
+        "A_THREE_OBSTACLES"
+      ],
+      "source_ids": [
+        "UCC2026"
+      ],
+      "limits": [
+        "沒有證據三者按本片章序被發現，不能說內塗層同時解三題。"
+      ],
+      "author_context": "第一預告只問液體狀態；同圖來源t05。中性樣罐與樣杯不畫均一奶粒、機器、壓力數字或抑制分離結果。",
+      "visual_prompt": "Medium shot at a plain development bench, anonymous hands holding a closed unmarked sample can beside a plain cup of pale coffee, diffuse side light.",
+      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT",
+      "planned_same_image": {
+        "plan": "image-reuse-plan.json",
+        "asset_plan_id": "milk-sample-shared-still",
+        "source_scene_id": "c11r1t05",
+        "reuse_scene_id": "c11r1h04",
+        "actual_file_sha256": null,
+        "status": "PLAN_ONLY"
+      }
+    },
+    {
+      "id": "c11h04b1",
+      "chapter": "銷售人員走進食品店",
+      "claim": "冷罐又要怎麼追上萬博的人潮？",
+      "claim_kind": "OUTCOME_FREE_TEASER",
+      "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
+      "research_claim_ids": [
         "R15"
       ],
       "anchor_ids": [
-        "A_THREE_OBSTACLES",
         "A_COLD_BRANCH",
         "A_COLD_TRUCKS"
       ],
       "source_ids": [
-        "UCC2026",
         "UCC2025",
         "JNET2023"
       ],
       "limits": [
-        "沒有證據三者按本片章序被發現，不能說內塗層同時解三題。",
         "這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。"
       ],
-      "author_context": "只預告分離障礙與交付問題，不給均質化/配送結果。",
-      "visual_prompt": "Wide split composition of a plain sample cup with a pale upper layer and stacked unmarked beverage crates in a warehouse doorway, diffuse light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
+      "author_context": "第二預告只問交付；同圖來源s11。中性搬箱不畫卡車、冷卻設備、運送路線或完成交付結果。",
+      "visual_prompt": "Medium shot inside a plain beverage depot, an anonymous worker gripping a plain drink crate beside a closed loading doorway, soft daylight.",
+      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT",
+      "planned_same_image": {
+        "plan": "image-reuse-plan.json",
+        "asset_plan_id": "cold-delivery-crate-shared-still",
+        "source_scene_id": "c11r1s11",
+        "reuse_scene_id": "c11h04b1",
+        "actual_file_sha256": null,
+        "status": "PLAN_ONLY"
+      }
     },
     {
       "id": "c11r1h05",
@@ -847,28 +881,6 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c11r1o05",
-      "chapter": "瓶子交回去，奶咖得另找出口",
-      "claim": "我覺得這個起點很實在：買飲料的人只是想繼續走，不想先處理空瓶要還給誰。",
-      "claim_kind": "AUTHOR_REACTION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
-      "research_claim_ids": [
-        "R01"
-      ],
-      "anchor_ids": [
-        "A_BOTTLE"
-      ],
-      "source_ids": [
-        "UCC2026"
-      ],
-      "limits": [
-        "後代品牌回顧；不編對話、天氣、站名或當天心理。"
-      ],
-      "author_context": "",
-      "visual_prompt": "Medium shot of an anonymous traveler holding an empty bottle while looking toward a station platform, soft daylight.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c11r1o06",
       "chapter": "瓶子交回去，奶咖得另找出口",
       "claim": "把奶咖封進不必交回的罐子，成了方向；可是，咖啡此前真的沒被裝進罐裡嗎？",
@@ -971,7 +983,7 @@
     {
       "id": "c11r1o10",
       "chapter": "瓶子交回去，奶咖得另找出口",
-      "claim": "對接下來的製造，關鍵就在那個奶字；一杯裡能喝到的組合，封起來後，還能維持嗎？",
+      "claim": "我更想知道，咖啡和奶封在罐裡，還能維持調好的狀態嗎？",
       "claim_kind": "FORWARD_MATERIAL_QUESTION",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
       "research_claim_ids": [
@@ -1141,8 +1153,16 @@
         "歷史採訪報導，不是原始實驗報告；沒有壓力、粒徑、設備型號或最終配方，不可補。"
       ],
       "author_context": "只依報導白話均質化，不補壓力、粒徑、機器型號或本輪實驗數據。",
-      "visual_prompt": "Close-up conceptual view of many evenly sized pale droplets dispersed through brown liquid in a plain sample cup, neutral light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
+      "visual_prompt": "Medium shot at a plain development bench, anonymous hands holding a closed unmarked sample can beside a plain cup of pale coffee, diffuse side light.",
+      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT",
+      "planned_same_image": {
+        "plan": "image-reuse-plan.json",
+        "asset_plan_id": "milk-sample-shared-still",
+        "source_scene_id": "c11r1t05",
+        "reuse_scene_id": "c11r1h04",
+        "actual_file_sha256": null,
+        "status": "PLAN_ONLY"
+      }
     },
     {
       "id": "c11r1t06",
@@ -1328,28 +1348,6 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c11r1t14",
-      "chapter": "混得進去，還得留在一起",
-      "claim": "喝一口的動作，被放到了正式販售以前；原料怎麼配，得經過味道這一關。",
-      "claim_kind": "EDITORIAL_INTERPRETATION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
-      "research_claim_ids": [
-        "R09"
-      ],
-      "anchor_ids": [
-        "A_HEAT_RATIO"
-      ],
-      "source_ids": [
-        "JNET2011"
-      ],
-      "limits": [
-        "不能補比例數字、溫度、測試輪數或成功當日；不是現代控制對照實驗。"
-      ],
-      "author_context": "對試喝調比的商品意義，不另稱獨立實驗結果。",
-      "visual_prompt": "Close-up of an anonymous worker lowering a small tasting cup beside unmarked sample cans, soft side light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c11r1t16",
       "chapter": "混得進去，還得留在一起",
       "claim": "液體調整好了，外殼就只負責裝著它嗎？",
@@ -1526,76 +1524,28 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c11r1w08",
-      "chapter": "罐壁加入了這杯咖啡",
-      "claim": "罐壁處理以後，這款奶咖什麼時候才能真正上架？",
-      "claim_kind": "FORWARD_LAUNCH_QUESTION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
-      "research_claim_ids": [
-        "R02",
-        "R06"
-      ],
-      "anchor_ids": [
-        "A_UCC_MONTH",
-        "A_PROJECT_YEAR"
-      ],
-      "source_ids": [
-        "UCC2025_REPRO",
-        "JNET2023"
-      ],
-      "limits": [
-        "不得無條件改稱全世界最早把液態咖啡裝罐；不能替稱世界首找到全球排除證據。",
-        "後來UCC受訪者回憶，非當年啟案單；不能把約一年念成精確天數。"
-      ],
-      "author_context": "",
-      "visual_prompt": "Close-up of anonymous hands placing an unmarked sealed can on a shop shelf, gentle light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c11r1w09",
-      "chapter": "罐壁加入了這杯咖啡",
-      "claim": "到了四月，這款奶咖開始販售；從專案啟動到商品化，受訪者回顧約花了一年。",
-      "claim_kind": "ATTRIBUTED_LAUNCH_RESULT",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
-      "research_claim_ids": [
-        "R02",
-        "R06"
-      ],
-      "anchor_ids": [
-        "A_UCC_MONTH",
-        "A_PROJECT_YEAR"
-      ],
-      "source_ids": [
-        "UCC2025_REPRO",
-        "JNET2023"
-      ],
-      "limits": [
-        "不得無條件改稱全世界最早把液態咖啡裝罐；不能替稱世界首找到全球排除證據。",
-        "後來UCC受訪者回憶，非當年啟案單；不能把約一年念成精確天數。"
-      ],
-      "author_context": "四月指開場所交代的1969年；不重報無條件世界首。",
-      "visual_prompt": "Medium shot of an anonymous shop worker setting plain milk-coffee cans on a shelf, soft daylight.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c11r1w10",
       "chapter": "罐壁加入了這杯咖啡",
-      "claim": "罐裡過了關，貨架外的問題卻來了：有人願意買一罐，帶離原本喝咖啡的地方嗎？",
-      "claim_kind": "FORWARD_QUESTION",
+      "claim": "原廠記下，四月開始販售；可是，有人願意買一罐，帶離原本喝咖啡的地方嗎？",
+      "claim_kind": "ATTRIBUTED_LAUNCH_TRANSITION_AND_FORWARD_QUESTION",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
       "research_claim_ids": [
+        "R02",
         "R13"
       ],
       "anchor_ids": [
+        "A_UCC_MONTH",
         "A_CASES"
       ],
       "source_ids": [
+        "UCC2025_REPRO",
         "GUINNESS2019"
       ],
       "limits": [
+        "不得無條件改稱全世界最早把液態咖啡裝罐；不能替稱世界首找到全球排除證據。",
         "不是抽樣銷售統計、全公司銷量曲線，不能推每家店都如此。"
       ],
-      "author_context": "",
+      "author_context": "四月為原件記下、此前旁白未說的月份；1969年已由h02交代，此處不重報年或約一年研發算式。",
       "visual_prompt": "Wide shot of anonymous shoppers passing a modest shelf of unmarked coffee cans, soft shop light.",
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
@@ -2030,32 +1980,16 @@
         "這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。"
       ],
       "author_context": "不補冷卻溫度、冷藏車機型、冰塊、確切車數或路線。",
-      "visual_prompt": "Medium shot of anonymous workers loading plain beverage crates onto a simple truck at a warehouse doorway, daylight.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c11r1s12",
-      "chapter": "把罐子放進旅客看得到的地方",
-      "claim": "你在攤位拿到的是冷罐，離開工廠後的那段路，也有人先替它安排好。",
-      "claim_kind": "EDITORIAL_VIEWER_INTERPRETATION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
-      "research_claim_ids": [
-        "R15"
-      ],
-      "anchor_ids": [
-        "A_COLD_BRANCH",
-        "A_COLD_TRUCKS"
-      ],
-      "source_ids": [
-        "UCC2025",
-        "JNET2023"
-      ],
-      "limits": [
-        "這是後來UCC館長/主管說法，不是1970運單；不可補車數、路線、班次或冰塊。"
-      ],
-      "author_context": "",
-      "visual_prompt": "Close-up of an anonymous server handing a plain cool beverage can across a simple pavilion counter, gentle light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
+      "visual_prompt": "Medium shot inside a plain beverage depot, an anonymous worker gripping a plain drink crate beside a closed loading doorway, soft daylight.",
+      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT",
+      "planned_same_image": {
+        "plan": "image-reuse-plan.json",
+        "asset_plan_id": "cold-delivery-crate-shared-still",
+        "source_scene_id": "c11r1s11",
+        "reuse_scene_id": "c11h04b1",
+        "actual_file_sha256": null,
+        "status": "PLAN_ONLY"
+      }
     },
     {
       "id": "c11r1s13",
@@ -2443,28 +2377,6 @@
       ],
       "author_context": "只限1969初代，不宣稱1981才有拉環或所有中間版本都同蓋。",
       "visual_prompt": "Medium shot of an anonymous adult holding a plain opened can with a separate opener resting nearby, gentle light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c11r1d14",
-      "chapter": "工廠外排起車，手裡的罐還等著開",
-      "claim": "我想，初代罐最有意思的地方，就在這裡：飲料已經能跟著你走，打開它的工作，還得有人拿工具完成。",
-      "claim_kind": "AUTHOR_REACTION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_VISUAL_REVIEW",
-      "research_claim_ids": [
-        "R11"
-      ],
-      "anchor_ids": [
-        "A_INITIAL_HOLES"
-      ],
-      "source_ids": [
-        "UCC2025"
-      ],
-      "limits": [
-        "不是1969拉環即開；參考照片不是可自動重用的付費素材或已核准美術。"
-      ],
-      "author_context": "不再演假想旅客完整上車/喝到的重播。",
-      "visual_prompt": "Close-up of a plain opened can and a small separate opener on a simple travel table, soft window light.",
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {

@@ -1,4 +1,4 @@
-# C11 R3｜奶咖帶得走以後
+# C11 R6｜奶咖帶得走以後
 
 狀態：HOLD。新卡slug；video不帶series重新綁定欄位。作者/研究員只交新稿，待另一位來源QA、fresh readers與後續聲音/畫面關卡；無SOURCE、敘事、owner或媒體核准。
 
@@ -22,13 +22,13 @@
 
 1965 Mira早例明確；1969含奶首款只能是UCC館方的說法。歷史製程和物流是原廠/受訪者後代回顧，不作同期實驗/運單。沒有捏造原話、試喝心理、配方數字或同批次跨年。三份凍結研究、舊集28檔和唯讀快照SHA不變。
 
-## R3 作者差異
+## R6 作者差異
 
-h01把觀眾放到食品店主位置，問是否願替三箱奶咖留貨架；h02以原訪談的走進食品店推銷為真動作，1969只標產品上市年，不替這次拜訪補日期。h03同步作者反應，首章名改成銷售人員走進食品店。後續訂貨結果留w14，w12改為回呼那幾箱的續訂問題，並移到試喝願留貨的w17之後；原w13三箱重報刪除。t02、d10純重述刪除；d11保留既有真開孔動作，末尾改問入口各有何用途，由下一句飲口與空氣孔作新答案，不重問罐已封住或從哪裡喝。均質化、塗層、配送與後段兩孔結果不改。h01至h03匿名概念prompt同步，縮圖改指既有d11工具動作；其餘存留配鏡與運鏡保持R2。
+R5來源PASS、書面配鏡HOLD，從未有native5票；完整原件及review-state封存在history/r5。R6只把h04的兩個預告拆為h04奶狀態、h04b1冷罐交付，按t05再s11的正文順序；h04與t05共用一組中性樣罐/樣杯prompt和t05 camera，h04b1與s11共用一組中性搬箱prompt和s11 camera。開場不畫均一奶粒或卡車等後段答案，所有payoff旁白原文不變。兩對source/reuse scene與line、完整生成輸入、原生cache key演練及實檔SHA待驗條件見image-reuse-plan.json；它是製作sidecar，不是新schema或既有keyframes manifest。正式入場後先生成payoff，通過後相同輸入只命中同一現存圖；任何輸入、seed、裁切或選圖差異須停止核對，不另買相似圖冒充同圖。actual_same_asset_verified=false，尚無任何生成或組片。其他78句及獨有事實、章名、縮圖與21組非此映射改動loops保持R5；本R6仍待獨立來源/書面配鏡及全新讀者，不繼承R5的來源PASS為本稿批准。
 
 ## 字量與官方duration口徑
 
-旁白總量2468 native spokenUnits；coldopen 157；有聲CTA 103。排coldopen規劃分項2311；再排有聲CTA規劃分項2208。官方duration以整份actual narration timeline計，含coldopen和有聲CTA，只排另外加的頻道bookends；分項不是官方duration。總units以4–5/s算術為493.6–617.0秒，4.5/s約548.4秒；這不是TTS實測。目標實聲720–840秒，TTS仍未知；紙面字量缺口保留HOLD，不以慢播/停頓或補重述填數。
+旁白總量2276 native spokenUnits；coldopen 157；有聲CTA 103。排coldopen規劃分項2119；再排有聲CTA規劃分項2016。官方duration以整份actual narration timeline計，含coldopen和有聲CTA，只排另外加的頻道bookends；分項不是官方duration。總units以4–5/s算術為455.2–569.0秒，4.5/s約505.8秒；這不是TTS實測。目標實聲720–840秒，TTS仍未知；紙面字量缺口保留HOLD，不以慢播/停頓或補重述填數。
 
 ## 聲音與畫面待執行規格
 

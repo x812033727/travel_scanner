@@ -1,39 +1,47 @@
-# C11 UCC R3｜獨立來源與書面配鏡差分查核
+# C11 UCC R6｜獨立來源與書面配鏡差分查核
 
-查核者：`/root/c11_r1_source`。未寫中文候選或研究；未讀native／blind投票。
+查核者：`/root/c11_r4_source`。未寫中文候選、研究或共圖計畫；本輪未讀native／blind票。R4／R5已披露的歷史metadata暴露不作判定依據，本輪未新增暴露。
 
-**SOURCE PASS／WRITTEN VISUAL PASS。** 無必要修正。
+**SOURCE PASS／WRITTEN VISUAL PASS／PLANNED REUSE PASS。** 無必要修正。這是來源及書面共圖規劃核准；尚無實圖檔案或實際共用SHA證據，未授實際音畫、實聲長度、owner或production核准。
 
 ## 凍結輸入
 
 | 檔案 | SHA-256 |
 | --- | --- |
-| video.json | `81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf` |
-| script.md | `30d48cf0757463b63355369b898a2127264bd7650f1625085f6d56d1fc51d04e` |
-| narration-only.json | `01a8a0afd2ad4760687474dadbb71b9b2a34db5be9e839944ca71a2b2333cb39` |
-| claims.json | `3d3c387307b301db069728d1a7598752380296fdfbf78b9a3950dfa6d147837c` |
-| reviews/source-r3-independent.json | `3368c77cb77b69d6c2f567653726380e057c527ad6bb7c8d520e3ab9911324f1` |
+| video.json | `03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b` |
+| script.md | `1cc1d014cf1bf3c7aa6c1f44751e7c457bb5e327729d3e8a573867787a1c65d1` |
+| narration-only.json | `faf50858697c1e48895435af3abad6068e9d047eb86cc8898b32bbdd7d36053b` |
+| claims.json | `41d367767138c4d34da8af812f779f94151675e31abf9ae6ae07039feb1c5082` |
+| image-reuse-plan.json | `bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9` |
+| reviews/source-r6-independent.json | `58ff9d0b1ce33e7374546aa1ae5cec788f40c8f0e413004f2897ba353cc8b258` |
 
-R2來源報告SHA `6489003dbff232c93d52a7530d5ff192fee6fba6ea25d1520ed1557c5d1a174a`；R2 verify SHA `c6dcff6bd8db450e1501e0a0193ac2d85e4fb06ae8c97d6da0667ea251d0d71a`。R2四核心及R2→R1來源proof鏈均重新核實。
+R5來源報告SHA `78041720b1a086de11339f9ea1983a88f6bc09c45c425c96a234758dd9594dc7` 已實核；其來源PASS、書面配鏡HOLD分開承接，不把HOLD當PASS。R5四核心及R5→R4→R3→R2→R1來源proof鏈重新核實；R5沒有本輪適用verify。
 
-| R2核心 | SHA-256 |
+| R5核心 | SHA-256 |
 | --- | --- |
-| history/r2/video.json | `b3890b62bee517866a037249d9d5a853f39c5b52f7be0ac7e988fe053daa0156` |
-| history/r2/script.md | `78deb0291c93938e8e92760bfb46c509e3348a2ffe7efbbcfd8b10b70974ba7e` |
-| history/r2/narration-only.json | `1fe15fda9f959f32581e20748c5ee51fe9e9c518817aed4c48a4c7d98d3c30ad` |
-| history/r2/claims.json | `bfdc52d4ee66a39061d85a5955109edae2c31b499fdd2682e010c6dab695ba78` |
+| history/r5/video.json | `4bf4cf8ac1afacd68988a00db34ce81cf494a623ee3f299dbeb098fad4bee8c3` |
+| history/r5/script.md | `368afe9a2a7a8328dc03ba576d6a39fa4220b5c6d0d9e3ddd5cad8348723827c` |
+| history/r5/narration-only.json | `4634101ecd26263111d14184e6d9540969b01ce4884d35592902ce8532bff2b3` |
+| history/r5/claims.json | `381b148813eb5d8eeff02f7e194d77f1b1e22c6ede94f3d986dfd3286a7912a1` |
 
-## 原件、差分與新語境
+## 原件、差分與共圖規劃
 
-Guinness原HTML SHA `2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20` 已重開獨立解析。p52明確點名上島達司會長；p65記1969年4月商品化，p66記食品店三箱試放、喝過願留貨、訂單漸增10箱／30箱，p67–68為後續脈絡。UCC2025_REPRO p188上市年月及UCC2025 p189–191開孔方法亦直接重讀。
+R6把h04兩預告拆為h04與新增c11h04b1。79句成80句、76 shot成77 shot；總78 scene含一個outro、23 loops。其餘78句原文、76完整claim及74完整scene逐物件與R5相同；既有運鏡及visual模式不變。h04、t05、s11三個prompt改成兩組中性畫面，新h04b1複製s11的prompt及camera。只有冷罐預告的loop setup改綁新ID；六章章名、縮圖及其餘video欄位不變。
 
-- h01的貨架與三箱是明示觀眾條件選擇；h02的1969只修飾商品上市，不補試賣日期、實店、店主心理／台詞或損失。h03為旁白反應。前三新prompt都匿名且不冒作原場景照片。
-- w17試喝願留商品在第45句，w12續訂問題第46句，w14十／三十箱結果第47句。原三箱已在開場，刪w13重報不丟原件限定；這不是同店原訂貨表或總銷量曲線。
-- 刪t02後，t01採訪分離現象→t04提問→t05均質化處置仍完整。
-- 刪d10後，d11第79句真開孔方法加用途問題→d12第80句飲口／空氣孔真答案。沒有今天打開神戶保存古罐、單孔失敗或未證流量實驗。
-- 五句變文、三句刪除；80句原文不變，76完整claim及78完整scene物件精確驗綁。只有前三prompt改，camera全不變。首章名與縮圖shot改綁d11已核；其餘79圖prompt與outro資料相同。
+親讀原始HTML：UCC2026 p222–223的分離／風味／罐壁問題、JNET2011 p1121的均質化抑制分離、JNET2023 p1131與UCC2025 p167的工廠旁配送據點、冷罐與卡車。兩預告只問奶的狀態及冷罐交付，沒有新增史實或先揭方法。樣罐與樣杯不畫均一奶粒或設備；中性搬箱不畫卡車、冷卻裝置、路線或已送達結果。
 
-85句video／script／narration-only／claims的ID、章名、文字、順序一致；82個prompt、24loops／48真端點及縮圖引用有效並向前。35筆原件收件、33個研究／新增錨點、原三研究、old28、snapshot及history均重新hash驗綁，未改保護原件。
+依script-writing.md §開場濃縮「每一個預告句用回收它的那一章的畫面（同一張圖）」核對：
+
+| 預告 | 真payoff | 共用計畫ID | 原生imageKey（規劃1K） |
+| --- | --- | --- | --- |
+| c11r1h04 | c11r1t05 | milk-sample-shared-still | `99c272f890e44236` |
+| c11h04b1 | c11r1s11 | cold-delivery-crate-shared-still | `284cb84f75f0ea4c` |
+
+已直接呼叫官方resolveLook、shotCast、composeShotPrompt、shotPrompt及Stage.imageKey作純本地計算：兩端原prompt、camera與完整composed prompt逐對相同，零裁切、零修正；兩個1K key均吻合sidecar。另以2K規劃尺寸驗算，每對仍相同。所有程式檔、規則檔、sidecar及其四核心／brief／series／claims.md綁定均以真SHA核實。這些參數是宣告計畫，沒有讀後台設定或呼叫provider。
+
+image-reuse-plan明列source/reuse scene與line ID、固定asset_plan_id、四條claims引用，以及官方keyframes --shot的payoff先行、--takes 1、seed offset 0、首take正常judge通過後才走teaser精確cache重用。任一失敗、參數改變、有效cache缺失或選中圖分歧即應停止該對；不能另生相似圖冒作共圖。裁切後衍生檔、各scene judge、真manifest及組片實際輸入仍須在正式產圖後核同一路徑與SHA；本輪未執行這些媒體步驟。
+
+80句video／script／narration-only／claims的ID、章名、文字與順序一致；77個prompt與claims一致；23 loops／46端點均存在且向前。35筆原件收件、5份清單、33研究／新增錨點的raw／cache／段落真SHA、三份研究、old28與snapshot皆實核未變。names不入prompt、look只cute-mystery、burn_in=true，縮圖仍指d11。
 
 ## 逐句結果
 
@@ -42,14 +50,14 @@ Guinness原HTML SHA `2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9e
 | c11r1h01 | PLAN | GUINNESS2019 |
 | c11r1h02 | ATTRIBUTED | GUINNESS2019、UCC2025_REPRO |
 | c11r1h03 | PLAN | GUINNESS2019 |
-| c11r1h04 | PLAN | UCC2026、UCC2025、JNET2023 |
+| c11r1h04 | PLAN | UCC2026 |
+| c11h04b1 | PLAN | UCC2025、JNET2023 |
 | c11r1h05 | PLAN | JNET2023、UCC2025 |
 | c11r1h06 | PLAN | UCC2026、UCC2025 |
 | c11r1o01 | ATTRIBUTED | UCC2026 |
 | c11r1o02 | ATTRIBUTED | UCC2026 |
 | c11r1o03 | PLAN | UCC2026 |
 | c11r1o04 | ATTRIBUTED | GUINNESS2019 |
-| c11r1o05 | PLAN | UCC2026 |
 | c11r1o06 | PLAN | UCC2026、HAMADA2021、SHIMANE_FIRST |
 | c11r1o07 | ATTRIBUTED | HAMADA2021、SHIMANE_FIRST |
 | c11r1o08 | ATTRIBUTED | CAN_INTERVIEW、UCC2026 |
@@ -70,7 +78,6 @@ Guinness原HTML SHA `2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9e
 | c11r1t11 | PLAN | JNET2011 |
 | c11r1t12 | PLAN | JNET2011 |
 | c11r1t13 | ATTRIBUTED | JNET2011 |
-| c11r1t14 | PLAN | JNET2011 |
 | c11r1t16 | PLAN | UCC2025_REPRO |
 | c11r1w01 | ATTRIBUTED | UCC2025_REPRO |
 | c11r1w02 | ATTRIBUTED | UCC2025_REPRO |
@@ -79,9 +86,7 @@ Guinness原HTML SHA `2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9e
 | c11r1w05 | ATTRIBUTED | UCC2025_REPRO |
 | c11r1w06 | ATTRIBUTED | UCC2025_REPRO |
 | c11r1w07 | PLAN | UCC2025_REPRO |
-| c11r1w08 | PLAN | UCC2025_REPRO、JNET2023 |
-| c11r1w09 | ATTRIBUTED | UCC2025_REPRO、JNET2023 |
-| c11r1w10 | PLAN | GUINNESS2019 |
+| c11r1w10 | ATTRIBUTED | UCC2025_REPRO、GUINNESS2019 |
 | c11r1w11 | ATTRIBUTED | GUINNESS2019 |
 | c11r1w17 | ATTRIBUTED | GUINNESS2019 |
 | c11r1w12 | PLAN | GUINNESS2019 |
@@ -102,7 +107,6 @@ Guinness原HTML SHA `2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9e
 | c11r1s09 | PLAN | UCC2025、JNET2023 |
 | c11r1s10 | ATTRIBUTED | UCC2025、JNET2023 |
 | c11r1s11 | ATTRIBUTED | UCC2025、JNET2023 |
-| c11r1s12 | PLAN | UCC2025、JNET2023 |
 | c11r1s13 | PLAN | UCC2025、JNET2023 |
 | c11r1s14 | ATTRIBUTED | UCC2025、JNET2023 |
 | c11r1s15 | ATTRIBUTED | UCC2025、JNET2023 |
@@ -120,13 +124,15 @@ Guinness原HTML SHA `2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9e
 | c11r1d11 | CONFIRMED | UCC2025 |
 | c11r1d12 | CONFIRMED | UCC2025 |
 | c11r1d13 | PLAN | UCC2025 |
-| c11r1d14 | PLAN | UCC2025 |
 | c11r1ct1 | PLAN | JNET2011、UCC2025_REPRO、JNET2023、UCC2025 |
 | c11r1ct2 | PLAN | 觀眾提問／頻道邀請 |
 | c11r1ct3 | PLAN | 觀眾提問／頻道邀請 |
 
 ## 範圍限制
 
-官方完整有聲正文2,468 spokenUnits，含coldopen157及有聲CTA103。原生估時678秒只作規劃；未生成／量測實聲，不判13分鐘時長PASS／FAIL，也不授實際生成圖或owner核准。
+全有聲正文2,276 spokenUnits已用原生spokenUnits(spokenText(line))獨立重算，含coldopen157及有聲CTA103。拆句不增加units；這是紙面規劃，實聲尚未生成／量測，不判13分鐘實聲PASS／FAIL。
 
-Mira早例、館方含奶首款歸屬、1978／1981拉環衝突、歷史製程／物流回憶及不編配方／測量的界線維持。只寫本verify及獨立報告；core／研究／old28／snapshot／history／task未改，無provider／後台／Git／spawn，未授canonical、讀音／TTS、媒體、打包或發布核准。
+3→10→30箱仍為上島達司有限回憶；1969及四月只指商品上市。Mira 1965先例／加糖無奶與館方自稱含奶首款的歸屬保留；1978／1981拉環衝突不選首次年；製程／配送不編同期實驗、完整配方、車數或運單。35筆收件含失敗、重複載體與排除圖，不是35組獨立證據。
+
+共圖只通過書面規劃：actual file及SHA仍為null、actual_same_asset_verified=false。只寫本verify與獨立source報告；未改core、計畫、研究、old28、snapshot、history或task，無provider／付費／後台／Git／新子代理，未授native／blind投票、owner、預算、canonical、讀音／TTS、實際圖像／共圖／聲音／字幕QA、打包或發布核准。
+

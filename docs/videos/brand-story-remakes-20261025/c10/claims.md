@@ -1,4 +1,4 @@
-# C10 OXO｜R6 作者逐句來源錨點
+# C10 OXO｜R7 作者逐句來源錨點
 
 逐句事實綁實際原件bytes／SHA、段頁、短摘錄與不支持界線，完整欄位見claims.json；C10Xxx綁三份凍結research-expansion。這不是獨立查核。
 
@@ -100,7 +100,7 @@
 | c10v5s01 | attributed_fact | C10X07 | No original order, invoice, sales ledger, exact unit count or expectation was acquired.；Do not call Lechters the first, sole or exclusive retailer.；Full line does not establish a reliable initial product count; do not merge conflicting 10/15-tool accounts. |
 | c10v5s02 | attributed_fact | C10X07 | No original order, invoice, sales ledger, exact unit count or expectation was acquired.；Do not call Lechters the first, sole or exclusive retailer.；Full line does not establish a reliable initial product count; do not merge conflicting 10/15-tool accounts. |
 | c10v5s03 | attributed_fact | C10X08 | This is the same retail-carrot story already used from the 2017 brand retrospective; replace/deepen it once, not a second demonstration.；Do not claim measured causal uplift, numeric sales, every shopper buying, or modern store policy.；An inaccessible Formosa search lead mentions a different hanging arrangement; do not blend that snippet with this chain-to-bowl original. |
-| c10v5s04 | attributed_fact | C10X08 | This is the same retail-carrot story already used from the 2017 brand retrospective; replace/deepen it once, not a second demonstration.；Do not claim measured causal uplift, numeric sales, every shopper buying, or modern store policy.；An inaccessible Formosa search lead mentions a different hanging arrangement; do not blend that snippet with this chain-to-bowl original. |
+| c10v5s04 | attributed_fact | C10X08 | This is the same retail-carrot story already used from the 2017 brand retrospective; replace/deepen it once, not a second demonstration.；Do not claim measured causal uplift, numeric sales, every shopper buying, or modern store policy.；An inaccessible Formosa search lead mentions a different hanging arrangement; do not blend that snippet with this chain-to-bowl original.；開場回叫同一次店內試用，不宣稱黏土原型、展會樣品與零售工具為同一實體；不增添精確日期／店址、逐人結果或量化銷售。 |
 | c10l06 | hypothetical | N26 | 沒有首家店、確切日期、所有人真試或銷售因果。2026節目主持人說銷售起飛也不是零售帳目，不用來擴大承諾。 |
 | c10l07 | hypothetical | N26 | 沒有首家店、確切日期、所有人真試或銷售因果。2026節目主持人說銷售起飛也不是零售帳目，不用來擴大承諾。 |
 | c10v5s05 | attributed_fact | C10X08 | This is the same retail-carrot story already used from the 2017 brand retrospective; replace/deepen it once, not a second demonstration.；Do not claim measured causal uplift, numeric sales, every shopper buying, or modern store policy.；An inaccessible Formosa search lead mentions a different hanging arrangement; do not blend that snippet with this chain-to-bowl original. |
@@ -120,5 +120,5 @@
 | c10v5u13 | attributed_fact | C10X14 | Do not invent a drawer, exact visual gaze, lifelong adoption, subsequent use or emotional motive.；This is one household account, not every customer’s behaviour or an environmental benefit.；Preserve attribution to Alben’s written account rather than narrating it as footage we possess. |
 | c10v5u14 | attributed_fact | C10X14 | Do not invent a drawer, exact visual gaze, lifelong adoption, subsequent use or emotional motive.；This is one household account, not every customer’s behaviour or an environmental benefit.；Preserve attribution to Alben’s written account rather than narrating it as footage we possess. |
 | c10l19 | final_answer | N01, N05, N26 | 多年後品牌自述，沒有1989同期日記／錄音；不可重建她說的台詞、某一日或疾病療效。；沒有樣本數、受試者名單或所有人一致結論；不把紐約群體直接說成2026訪談中的同一基金會。；沒有首家店、確切日期、所有人真試或銷售因果。2026節目主持人說銷售起飛也不是零售帳目，不用來擴大承諾。 |
-| c10l20 | viewer_cta | 作者互動／CTA | 不作史實 |
+| c10l20 | viewer_cta |  | 明確邀請觀眾分享工具與卡手動作，不是要求故事另交答案的事實懸念。 |
 | c10l21 | channel_cta | 作者互動／CTA | 不作史實 |

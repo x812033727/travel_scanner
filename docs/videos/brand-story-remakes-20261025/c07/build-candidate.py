@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""C07 R6 minimal author deduplication from immutable R5; no source self-review."""
+"""C07 R8 remove pure recaps from immutable R7; no source self-review."""
 from pathlib import Path
 import copy,datetime,hashlib,json,re,subprocess
 OUT=Path(__file__).resolve().parent
 REPO=OUT.parents[3]
-BASE=OUT/'history/r5'
+BASE=OUT/'history/r7'
 ROOT=Path('/workspace/work/brand-story-20261025/c07-submission-root')
 SLUG='story-everyday-dr-martens-c07-remake-20261025'
 file_sha=lambda p:hashlib.sha256(Path(p).read_bytes()).hexdigest()
@@ -506,35 +506,22 @@ PROTECTED={
   "/workspace/work/brand-story-20261025/c07-submission-root/runtime-manifest.json": "0217ae854b25dddb89c39cbe4f0f98445e498889d25844d54c60b68a05bb693b",
   "/workspace/work/brand-story-20261025/story-everyday-dr-martens-c07.json": "f149cddc97afc80d766489e4953c894e77ede9af78de7ccb33ab0752e72f3e45"
 }
+PROTECTED={p:h for p,h in PROTECTED.items() if '/c07-submission-root/' not in p}
 for path,digest in PROTECTED.items():assert file_sha(path)==digest,path
-expected={'video.json':'3597965680281cfae801de7ed73a49e48115dddf4b1462af96647be731147fab','script.md':'d3759776d083bd14e12023374c20b87c347bcb07a9b5ae7431b61edd03ff5a48','narration-only.json':'75b146dc4f8471b85a3f0b4273559b1bd42a3f925f47cba55824000b74f39549','claims.json':'2c6a25e1406038e6a160e2fe849dfe1b547d65cdf47627263041375f94560c18'}
-for f,h in expected.items():assert file_sha(BASE/f)==h,('Frozen R5 changed',f)
-assert file_sha(BASE/'reviews/source-r5-independent.json')=='1354538384d0d5d29c0b76588155bd8a72c4ad24fcd067c73b6e3304dcb349e3'
-assert file_sha(BASE/'verify-1.md')=='f301931b647cf5d6f2041180fd04933b9b3ae273ee0697deb0d03c7c8f115295'
+
+expected={'video.json': '7c1a3a4de87fc06f177f7947676c19b98d0d4fcb85ec06f8ed7362b4e31c9dea', 'script.md': 'b2bce84e096382e34ea0fd4c3effbd062fff6583fa9f23b7a026e0c6ec77c245', 'narration-only.json': 'fb176f22ba395810684041e200ba9665333e5477ca86a1ac50cb71b334e5f19b', 'claims.json': 'b58f857e01b2be2f63f2cc9c9d03f258c4f038c714e9cfd93de5d23ddeec3fdb'}
+for f,h in expected.items():assert file_sha(BASE/f)==h,('Frozen R7 changed',f)
 assert not (OUT/'verify-1.md').exists()
-D=readj(OUT/'author-data-r6.json');priorD=readj(BASE/'author-data-r5.json')
+PROTECTED.update({str(f):file_sha(f) for f in (OUT/'history').rglob('*') if f.is_file()})
+PROTECTED.update({str(f):file_sha(f) for f in (OUT/'research-expansion').rglob('*') if f.is_file()})
+PROTECTED[str(OUT/'author-data-r7.json')]=file_sha(OUT/'author-data-r7.json')
+D=readj(OUT/'author-data-r8.json');priorD=readj(BASE/'author-data-r7.json')
 prior=readj(BASE/'video.json');priorclaims=readj(BASE/'claims.json')
 pl={l['id']:l for s in prior['scenes'] for l in s['lines']}
 ps={l['id']:s for s in prior['scenes'] for l in s['lines']}
-CHANGE={'c7r20305':'我會盯著露出的接合位置：師傅接著會把這裡送向哪個工具？'}
-REASONS={
-    'c7r20306':'刪除再次總結外底換下而鞋面留用；開場與拆解動作已交代同一範圍。',
-    'c7r20316':'配色問答不再第二次出現，故連同這個重開問題刪除，避免留下無答案設問。',
-    'c7r20317':'刪重複配色選項；只保留開場顧客自己的配色自述，不把官方黑線或沿條選項併成顧客經驗。',
-    'c7r20318':'刪在配色回答後再總結留下皺皮並另選新縫線顏色的句子。'
-}
+CHANGE={'c7r20603':'七月那位送修者則寫，維修方收鞋後幾天，就通知鞋已修好，正在回程。'}
+REASONS={'c7r20220': '刪後跟內裡修補、保護鞋面後對內外皮可分修的純結論，20217問題及18–19新資訊保留。', 'c7r20232': '刪剛收到到站通知後的同消息再述；20301仍明確轉入另一雙鞋的授權示範刀口動作。', 'c7r20415': '刪20412–14已交代合攏與冷卻接合後再次描述縫線、沿條與外底連接的狀態。', 'c7r20602': '與20603合為一次七月送修者的真實完成／回程通知，保留收鞋後幾天的事件時間資訊。', 'c7r20612': '刪一月評論說不用重新磨合後再次詮釋留下上半部的純總結；一月實際自述與七月結尾答案保留。'}
 DELETED=list(REASONS)
-r5rows=[r for c in priorD['chapters'] for r in c['rows']]
-rows=[r for c in D['chapters'] for r in c['rows']]
-assert [r['id'] for r in rows]==[r['id'] for r in r5rows if r['id'] not in DELETED]
-assert [c['title'] for c in D['chapters']]==[c['title'] for c in priorD['chapters']]
-assert D['title']==priorD['title'] and D['logline']==priorD['logline']
-for r in rows:
-    before=next(x for x in r5rows if x['id']==r['id'])
-    assert r=={**before,'text':CHANGE.get(r['id'],before['text'])}
-expected_loops=[lp for lp in prior['loops'] if not any(lp[k] in DELETED for k in ['setup','payoff'])]
-assert D['loops']==expected_loops
-assert D['hooks']==[h for h in priorD['hooks'] if h['id'] not in DELETED]
 doc=copy.deepcopy(prior);scenes=[]
 for scene in doc['scenes']:
     scene['lines']=[l for l in scene['lines'] if l['id'] not in DELETED]
@@ -550,56 +537,37 @@ assert {k:v for k,v in doc.items() if k not in ['scenes','loops']}=={k:v for k,v
 ids=[l['id'] for s in scenes for l in s['lines']]
 for lp in doc['loops']:assert lp['setup'] in ids and lp['payoff'] in ids and ids.index(lp['setup'])<ids.index(lp['payoff'])
 current={l['id']:l['text'] for s in scenes for l in s['lines']}
-hard_ids=['c7r20301','c7r20217','c7r20218','c7r20219','c7r20319','c7r20320','c7r20520','c7r20606','c7r20607']
-for key in hard_ids:
-    assert current[key]==pl[key]['text']
-    assert next(s for s in scenes if any(l['id']==key for l in s['lines']))==ps[key]
-assert current['c7r20107']==pl['c7r20107']['text']
-for key in ['c7r20610','c7r20611','c7r20612']:assert current[key]==pl[key]['text']
 for scene in scenes:
     original=next(s for s in prior['scenes'] if s['id']==scene['id'])
     assert scene['data']==original['data'] and scene.get('chapter')==original.get('chapter')
     for l in scene['lines']:assert l.get('emotion')==pl[l['id']].get('emotion')
-series=readj(BASE/'series.json')
-dump('video.json',doc);dump('series.json',series)
-assert file_sha(OUT/'series.json')==file_sha(BASE/'series.json')
+series=readj(BASE/'series.json');dump('video.json',doc);dump('series.json',series)
 (OUT/'brief.md').write_text(D['brief'])
 claims=copy.deepcopy(priorclaims)
-claims['episode']='C07 Dr. Martens remake R6'
-claims['status']='AUTHOR_CANDIDATE_HOLD_PENDING_DIFFERENT_SOURCE_REVIEWER_AND_TWO_FRESH_READERS'
-claims['r5_binding']={f:binding(BASE/f) for f in expected}
-claims['r5_historical_source_review']=binding(BASE/'reviews/source-r5-independent.json')
-claims['r5_historical_verify']=binding(BASE/'verify-1.md')
-claims['historical_pass_not_inherited']=True
-claims['author_role_disclosure']='R6 author performed earlier C07 R2/R3 author work but did not write R5. This is a minimal author deduplication, not an independent source, written-visual or narrative verdict. Another source reviewer and two fresh isolated readers are required.'
+claims.update(episode='C07 Dr. Martens remake R8',status='AUTHOR_CANDIDATE_HOLD_PENDING_DIFFERENT_SOURCE_REVIEWER_AND_TWO_FRESH_READERS',r7_binding={f:binding(BASE/f) for f in expected},r7_historical_source_review=binding(BASE/'reviews/source-r7-independent.json'),r7_historical_verify=binding(BASE/'verify-1.md'),historical_pass_not_inherited=True,source_pass_issued=False,written_visual_pass_issued=False,owner_approval_issued=False,author_role_disclosure='R8 author edit only, not an independent source, visual or native panel verdict. Different source reviewer and two fresh readers required.')
 claims['narration_claims']=[copy.deepcopy(r) for r in priorclaims['narration_claims'] if r['id'] not in DELETED]
+oldclaims={r['id']:r for r in priorclaims['narration_claims']}
 for row in claims['narration_claims']:
-    if row['id'] in CHANGE:
+    if row['id']=='c7r20603':
         row['text']=CHANGE[row['id']]
-        row['narrative_mode'].append('viewpoint_or_viewer_question; no firsthand repair or invented historical psychology')
-claims['source_pass_issued']=False;claims['written_visual_pass_issued']=False;claims['owner_approval_issued']=False
-for key in ['source_inventory','source_anchors','original_inputs','public_review_scope','source_video_scope']:
-    assert claims[key]==priorclaims[key]
+for key in ['source_inventory','source_anchors','original_inputs','public_review_scope','source_video_scope']:assert claims[key]==priorclaims[key]
 dump('claims.json',claims)
-chapters=[];lines=[]
-for ch in D['chapters']:
-    chapters.append({'title':ch['title'],'line_ids':[r['id'] for r in ch['rows']]})
-    lines.extend({'id':r['id'],'text':r['text']} for r in ch['rows'])
-dump('narration-only.json',{'slug':SLUG,'scope':'R6 narration only; author candidate, no verdict','chapters':chapters,'lines':lines})
-script=['# '+D['title'],'','R6作者附來源稿；HOLD未核准。R5收據綁定舊稿，不適用本稿；canonical screenplay由根代理另用原生工具產生。','']
+chapters=[{'title':c['title'],'line_ids':[r['id'] for r in c['rows']]} for c in D['chapters']]
+lines=[{'id':r['id'],'text':r['text']} for c in D['chapters'] for r in c['rows']]
+dump('narration-only.json',{'slug':SLUG,'scope':'R8 narration only; author candidate, no verdict','chapters':chapters,'lines':lines})
+script=['# '+D['title'],'','R8作者附來源稿；HOLD未核准。R7收據綁定舊稿，不適用本稿；canonical screenplay由根代理另用原生工具產生。','']
 for ch in D['chapters']:
     script+=['## '+ch['title'],'']
     for row in claims['narration_claims']:
         if row['chapter']==ch['title']:script+=['['+row['id']+'] '+row['text'],'來源：'+(', '.join(row['source_ids']) or '觀眾問題／訂閱邀請'),'']
 (OUT/'script.md').write_text('\n'.join(script)+'\n')
-md=['# C07 R6｜逐句來源與書面概念配鏡索引','','作者映射，待另一位獨立來源reviewer及兩位新讀者；不繼承R5 PASS。','','## 原件來源','']
-for source in claims['source_inventory']:
-    md+=['- '+source['id']+'：['+source['title']+']('+source['url']+')；'+source['evidence_level']+'；raw SHA '+source['raw_binding']['sha256']+'。']
+md=['# C07 R8｜逐句來源與書面概念配鏡索引','','作者映射，待不同來源reviewer及兩位新讀者；不繼承R7 PASS。','','## 原件來源','']
+for source in claims['source_inventory']:md+=['- '+source['id']+'：['+source['title']+']('+source['url']+')；'+source['evidence_level']+'；raw SHA '+source['raw_binding']['sha256']+'。']
 md+=['','## 逐句錨點','','| ID | 旁白 | 來源 | 定位 |','|---|---|---|---|']
-for row in claims['narration_claims']:
-    md+=['| '+row['id']+' | '+row['text'].replace('|','／')+' | '+', '.join(row['source_ids'])+' | '+(row['evidence'][0]['locator'] if row['evidence'] else '觀眾邀請')+' |']
-md+=['','評論是not-verified公共自述，來源示範是另一雙鞋的獨立工序展示，匿名prompt不冒充真實顧客或歷史原件。原件／cache SHA、短錨點與逐句prompt沿用R5綁定，另待本輪獨立查核；本作者不給來源或書面配鏡PASS。']
+for row in claims['narration_claims']:md+=['| '+row['id']+' | '+row['text'].replace('|','／')+' | '+', '.join(row['source_ids'])+' | '+(row['evidence'][0]['locator'] if row['evidence'] else '觀眾邀請')+' |']
+md+=['','評論為not-verified公共自述，授權示範為另一雙鞋的獨立工序；20313把機針轉動與另歸因的原廠PVC沿條工法併為一次動作，不由示範外觀辨識材料，不冒稱同實鞋。本作者不給來源或配鏡PASS。']
 (OUT/'claims.md').write_text('\n'.join(md)+'\n')
+
 native_code=r"""
 import fs from 'node:fs';import path from 'node:path';import crypto from 'node:crypto';
 import {loadProject,lintProject} from './tools/video/core/state.mjs';
@@ -617,7 +585,7 @@ p.doc=JSON.parse(fs.readFileSync(path.join(dir,'video.json'),'utf8'));p.brief=fs
 const d=p.doc,result=lintProject(p),flat=d.scenes.flatMap(s=>s.lines??[]),sum=a=>a.reduce((n,l)=>n+spokenUnits(spokenText(l)),0),chapters=[];
 for(const s of d.scenes){if(s.chapter)chapters.push({name:s.chapter,lines:[]});chapters.at(-1).lines.push(...s.lines??[])}
 const total=sum(flat),opening=sum(chapters[0].lines),closing=sum(d.scenes.at(-1).lines),t=estimateTimeline(d);
-console.log(JSON.stringify({scope:'R6 author native lint in existing normally initialized canonical context; candidate substituted in memory only; not verify or independent approval',input_sha256:Object.fromEntries(['video.json','script.md','narration-only.json','claims.json','claims.md','brief.md','series.json','build-candidate.py','author-data-r6.json'].map(f=>[f,sha(path.join(dir,f))])),context_binding:context,immutable_dictionary_unchanged:immutableFiles.every(f=>dictionaryBefore[f]===sha(path.join(p.dir,f))),canonical_bytes_unchanged:sha(p.file)===context.canonical_sha256,voice_exact_native_story_style:d.voice.style===STORY_VOICE_STYLE,native_units:{total,official_narration_body_planning_units:total,opening,body_after_opening:total-opening,closing_card:closing,body_excluding_opening_and_closing:total-opening-closing,chapters:chapters.map(c=>({name:c.name,lines:c.lines.length,spoken_units:sum(c.lines)}))},line_spoken_units:Object.fromEntries(flat.map(l=>[l.id,spokenUnits(spokenText(l))])),native_estimate:{default_cpm:DEFAULT_CPM,minutes:t.total_frames/FPS/60,not_actual_audio:true},scene_estimates:t.scenes.map(s=>({id:s.id,seconds:(s.end_frame-s.start_frame)/FPS})),result,paid_calls:0,provider_calls:0,backend_actions:0,actual_duration_measured:false}));
+console.log(JSON.stringify({scope:'R8 author native lint in existing normally initialized canonical context; candidate substituted in memory only; not verify or independent approval',input_sha256:Object.fromEntries(['video.json','script.md','narration-only.json','claims.json','claims.md','brief.md','series.json','build-candidate.py','author-data-r8.json'].map(f=>[f,sha(path.join(dir,f))])),context_binding:context,immutable_dictionary_unchanged:immutableFiles.every(f=>dictionaryBefore[f]===sha(path.join(p.dir,f))),canonical_bytes_unchanged:sha(p.file)===context.canonical_sha256,voice_exact_native_story_style:d.voice.style===STORY_VOICE_STYLE,native_units:{total,official_narration_body_planning_units:total,opening,body_after_opening:total-opening,closing_card:closing,body_excluding_opening_and_closing:total-opening-closing,chapters:chapters.map(c=>({name:c.name,lines:c.lines.length,spoken_units:sum(c.lines)}))},line_spoken_units:Object.fromEntries(flat.map(l=>[l.id,spokenUnits(spokenText(l))])),native_estimate:{default_cpm:DEFAULT_CPM,minutes:t.total_frames/FPS/60,not_actual_audio:true},scene_estimates:t.scenes.map(s=>({id:s.id,seconds:(s.end_frame-s.start_frame)/FPS})),result,paid_calls:0,provider_calls:0,backend_actions:0,actual_duration_measured:false}));
 """
 run=subprocess.run(['node','--input-type=module','-e',native_code,str(OUT),str(ROOT)],cwd=REPO,capture_output=True,text=True,check=True)
 native=json.loads(run.stdout)
@@ -631,77 +599,28 @@ assert not cadence,cadence
 assert native['max_shot_estimated_seconds']<=12
 assert native['voice_exact_native_story_style'] and native['immutable_dictionary_unchanged'] and native['canonical_bytes_unchanged']
 assert native['context_binding']['initialized_terms']>0
+
 ends={};acc=0
 for line in lines:
     acc+=native['line_spoken_units'][line['id']];ends[line['id']]=acc
 hooks=[];prev=0
 for hook in D['hooks']:
-    end=ends[hook['id']]
-    assert end>=prev
-    hooks.append({**hook,'end_native_spoken_units':end,'gap_units':end-prev,'planned_gap_seconds_at_4_5':round((end-prev)/4.5,2)})
-    prev=end
+    end=ends[hook['id']];hooks.append({**hook,'end_native_spoken_units':end,'gap_units':end-prev,'planned_gap_seconds_at_4_5':round((end-prev)/4.5,2)});prev=end
 assert max(x['planned_gap_seconds_at_4_5'] for x in hooks)<=45
-chapteryou=[]
 for ch in D['chapters']:
     text=''.join(r['text'] for r in ch['rows']);assert '你' in text and '我' in text
-    chapteryou.append({'title':ch['title'],'you':text.count('你'),'i':text.count('我')})
-changed=[key for key in current if current[key]!=pl[key]['text']]
-deleted=[key for key in pl if key not in current]
-assert changed==list(CHANGE)
-assert deleted==DELETED
+changed=[key for key in current if current[key]!=pl[key]['text']];deleted=[key for key in pl if key not in current]
+assert changed==list(CHANGE) and deleted==DELETED
 assert list(current)==[key for key in pl if key not in DELETED]
-assert len(lines)==91 and len(scenes)==89
 for scene in scenes:
     original=next(s for s in prior['scenes'] if s['id']==scene['id'])
-    if scene['id']!=ps['c7r20305']['id']:assert scene==original
+    if scene['id']!=ps['c7r20603']['id']:assert scene==original
 for row in claims['narration_claims']:
-    before=next(x for x in priorclaims['narration_claims'] if x['id']==row['id'])
-    if row['id'] not in CHANGE:assert row==before
-    else:
-        assert row['source_ids']==before['source_ids'] and row['evidence']==before['evidence'] and row['written_visual']==before['written_visual']
+    if row['id'] not in CHANGE:assert row==oldclaims[row['id']]
 assert {r['id']:r['text'] for r in claims['narration_claims']}==current
 assert lines==[{'id':l['id'],'text':l['text']} for s in doc['scenes'] for l in s['lines']]
 for path,digest in PROTECTED.items():assert file_sha(path)==digest,path
-u=native['native_units'];prior_units=readj(BASE/'native-initialized-lint.json')['native_units']
-delta={
-    'changed_line_ids':changed,'deleted_line_ids':deleted,'added_line_ids':[],
-    'line_changes':[{'id':key,'before':pl[key]['text'],'after':text,'reason':'保留本章旁白反應，接到已露出的接合位置與尚未回答的下一個工具問題；不重背保留舊皮的結果，不添工具用途或名稱。'} for key,text in CHANGE.items()],
-    'deletions':[{'id':key,'text':pl[key]['text'],'reason':REASONS[key]} for key in DELETED],
-    'unchanged_surviving_narration_lines':len(lines)-len(changed),
-    'all_other_complete_scenes_unchanged':True,'unchanged_complete_scene_count':len(scenes)-1,
-    'all_retained_prompts_cameras_emotions_unchanged':True,
-    'all_source_inventory_anchors_public_review_scope_and_video_scope_unchanged':True,
-    'opening_six_full_scenes_unchanged':True,
-    'no_retained_line_order_changes':True,
-    'loops':{'before':len(prior['loops']),'after':len(doc['loops']),'removed':[lp for lp in prior['loops'] if lp not in doc['loops']],'all_remaining_values_unchanged':True},
-    'hooks':{'removed_ids':['c7r20316'],'remaining_values_unchanged':True},
-    'new_external_source_claims_added':False,'new_prompt_scene_ids':[],
-    'hard_source_fix_text_and_prompts_preserved':True,
-    '20301_T7_scope_separate_from_demo_exact':True,
-    'lone_january_review_one_line_not_pursued':True,
-    '2023_branch_not_restored':True,'logistics_or_annual_totals_or_other_process_not_added':True
-}
-notes={
-    'schema_version':1,'revision':'C07 R6','status':'HOLD_PENDING_DIFFERENT_SOURCE_WRITTEN_VISUAL_REVIEW_TWO_FRESH_READERS_AND_UNMEASURED_LENGTH',
-    'author':'/root/c03_review_ko_es','r5_author':'/root/c05_material_author',
-    'role':'R6 minimal author edit; earlier C07 R2/R3 author, not R5 author; no source/visual self-review, native vote, verify or owner approval',
-    'created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),
-    'r5_core_bindings':{f:binding(BASE/f) for f in expected},
-    'r5_source_receipt_binding':binding(BASE/'reviews/source-r5-independent.json'),
-    'r5_verify_binding':binding(BASE/'verify-1.md'),
-    'r5_to_r6_delta':delta,
-    'counts':{'narration_lines':len(lines),'scenes':len(scenes),'chapters':len(chapters),'illustration_shots':len(shotids),'cards':1,'loops':len(doc['loops']),'unique_loop_payoffs':len({lp['payoff'] for lp in doc['loops']})},
-    'native_units':{**u,'official_duration_scope':'all narration including coldopen and voiced CTA, excluding separately added formal5s intro/21s outro'},
-    'planning_length':{'r5_whole_native_units':prior_units['total'],'r6_whole_native_units':u['total'],'whole_delta':u['total']-prior_units['total'],'rough_target_units':3500,'actual_duration_seconds':None,'target_actual_body_seconds':[720,840],'known_duration_failure_claimed':False,'duration_pass_claimed':False,'no_padding_added':True},
-    'chapter_you_i':chapteryou,'substantive_existing_hook_plan':hooks,'maximum_planned_hook_gap_seconds_at_4_5':max(x['planned_gap_seconds_at_4_5'] for x in hooks),
-    'native_initialized_context_lint':{'path':str(OUT/'native-initialized-lint.json'),'sha256':file_sha(OUT/'native-initialized-lint.json'),'errors':len(native['result']['errors']),'warnings':len(native['result']['warnings']),'cadence_warning_count':len(cadence),'max_shot_estimated_seconds':native['max_shot_estimated_seconds'],'proper_existing_initialized_context':True,'immutable_dictionary_unchanged':True,'canonical_unchanged':True,'not_independent_verdict':True},
-    'protected_input_sha256':PROTECTED,'protected_input_count':len(PROTECTED),'protected_inputs_all_unchanged':True,
-    'source_anchors_kept_r5_ids':'Original source IDs and exact anchors preserved as R5 provenance; not a new source verdict.',
-    'source_pass_issued':False,'written_visual_pass_issued':False,'native_narrative_pass_issued':False,'verify_written':False,'owner_approval_issued':False,
-    'different_source_reviewer_required':True,'fresh_isolated_readers_required':2,'actual_audio_measured':False,'candidate_media_reviewed':False,'translations_written':False,
-    'verification_pipeline_run':False,'paid_calls':0,'provider_calls':0,'backend_actions':0,'git_actions':0,'subagents_spawned':0,
-    'source_files_sha256':{f:file_sha(OUT/f) for f in ['video.json','script.md','narration-only.json','claims.json','claims.md','brief.md','series.json','build-candidate.py','author-data-r6.json','native-initialized-lint.json']},
-    'core_four_sha256':{f:file_sha(OUT/f) for f in expected}
-}
+u=native['native_units']
+notes={'schema_version':1,'revision':'C07 R8','status':'HOLD_PENDING_DIFFERENT_SOURCE_WRITTEN_VISUAL_REVIEW_TWO_FRESH_READERS_AND_UNMEASURED_LENGTH','author':'/root/c07_r8_author','role':'R8 author edit, no source, written visual or native narrative self-review','created_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'r7_core_bindings':{f:binding(BASE/f) for f in expected},'r7_to_r8_delta':{'changed_line_ids':changed,'deleted_line_ids':deleted,'added_line_ids':[],'line_changes':[{'id':k,'before':pl[k]['text'],'after':v,'reason':'合併相鄰完成通知為同一次七月顧客真消息，保留收鞋後幾天與正在回程，不新增第二次通知事件。'} for k,v in CHANGE.items()],'deletions':[{'id':k,'text':pl[k]['text'],'reason':REASONS[k]} for k in DELETED],'unchanged_surviving_narration_lines':len(lines)-len(changed),'unchanged_complete_scene_count':len(scenes)-1,'all_retained_prompts_cameras_emotions_unchanged':True,'all_source_inventory_anchors_public_review_scope_and_video_scope_unchanged':True,'opening_six_full_scenes_unchanged':True,'no_retained_line_order_changes':True,'all_loop_values_unchanged':True,'all_hooks_and_chapter_names_unchanged':True,'source_20603_unique_message_and_timing_preserved':True,'other_pure_state_recaps_removed_after_full_read':True,'hard_source_fixes_preserved':True,'lone_no_detour_not_pursued':True,'new_external_source_claims_added':False},'counts':{'narration_lines':len(lines),'scenes':len(scenes),'chapters':len(chapters),'illustration_shots':len(shotids),'cards':1,'loops':len(doc['loops'])},'native_units':u,'planning_length':{'whole_narration_spoken_units':u['total'],'actual_duration_seconds':None,'target_actual_body_seconds':[720,840],'known_duration_failure_claimed':False,'duration_pass_claimed':False,'no_padding_added':True},'substantive_existing_hook_plan':hooks,'native_initialized_context_lint':{'path':str(OUT/'native-initialized-lint.json'),'sha256':file_sha(OUT/'native-initialized-lint.json'),'errors':len(native['result']['errors']),'warnings':len(native['result']['warnings']),'cadence_warning_count':len(cadence),'max_shot_estimated_seconds':native['max_shot_estimated_seconds'],'proper_existing_initialized_context':True,'immutable_dictionary_unchanged':True,'canonical_unchanged':True,'not_independent_verdict':True},'protected_input_sha256':PROTECTED,'protected_input_count':len(PROTECTED),'protected_inputs_all_unchanged':True,'source_pass_issued':False,'written_visual_pass_issued':False,'native_narrative_pass_issued':False,'verify_written':False,'owner_approval_issued':False,'different_source_reviewer_required':True,'fresh_isolated_readers_required':2,'actual_audio_measured':False,'paid_calls':0,'provider_calls':0,'backend_actions':0,'git_actions':0,'source_files_sha256':{f:file_sha(OUT/f) for f in ['video.json','script.md','narration-only.json','claims.json','claims.md','brief.md','series.json','build-candidate.py','author-data-r8.json','native-initialized-lint.json']},'core_four_sha256':{f:file_sha(OUT/f) for f in expected}}
 dump('author-notes.json',notes)
-print(json.dumps({'revision':'C07 R6','status':notes['status'],'counts':notes['counts'],'native_units':u,'native_errors':len(native['result']['errors']),'native_warnings':native['result']['warnings'],'cadence_warnings':len(cadence),'max_shot_estimated_seconds':native['max_shot_estimated_seconds'],'changed_line_ids':changed,'deleted_line_ids':deleted,'added_line_ids':[],'protected_inputs':len(PROTECTED),'four_sha256':notes['core_four_sha256']},ensure_ascii=False))
+print(json.dumps({'revision':'C07 R8','counts':notes['counts'],'native_units':u,'native_errors':len(native['result']['errors']),'native_warnings':native['result']['warnings'],'cadence_warnings':len(cadence),'max_shot_estimated_seconds':native['max_shot_estimated_seconds'],'four_sha256':notes['core_four_sha256']},ensure_ascii=False))

@@ -1,21 +1,20 @@
-# C14 R3逐句原件與書面配鏡綁定
+# C14 R6逐句原件與書面配鏡綁定
 
-作者同時是原研究員，不能簽來源PASS。每句綁raw實bytes/SHA、取回狀態、原頁/段、quote/context SHA；新增定位只在凍結原件中，三研究不改。概念圖不是同期實物重建、原專利精密剖面或已生成媒體。
+作者只修訂既有凍結來源綁定，不能簽獨立來源PASS。每句綁raw實bytes/SHA、取回狀態、原頁/段、quote/context SHA；新增定位只在凍結原件中，三研究不改。概念圖不是同期實物重建、原專利精密剖面或已生成媒體。
 
 | ID | 口播 | 類型 | 原件錨點 | 額外界線 |
 | --- | --- | --- | --- | --- |
 | c14r1h01 | 你背著三公升水，若管口一直滴，喝到以前就先漏掉；多裝水，能解決這件事嗎？ | VIEWER_HYPOTHETICAL_WITH_SOURCED_CAPACITY | A28, A_CRUX_3L | 假設句；現行Crux3L容量，不是初代水袋規格、實測滴漏、危急脫水或醫療操作。 |
 | c14r1h02 | 八〇年代末，德州一場單車賽裡，品牌回顧中的艾德森，把一袋水放到車衣背後。 | ATTRIBUTED_RETROSPECTIVE_WITH_DATE_RANGE | A02, A05, A06, A07 | 1988/1989均屬八〇年代末。主辦同段自相矛盾，不擇一；NZ回顧非同期現場。COURT的1988Texas只作年代/地點交叉界線，不把Michael Edson拼字或FasTrak成立與品牌回顧合成已證單一事件。艾德森為Michael Eidson的口播譯名。 |
 | c14r1h03 | 袋子外面套著襪子，管子越過肩膀；我注意到的，卻是管口那枚衣夾。 | AUTHOR_REACTION_TO_SOURCED_OBJECT | A02, A03 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1h04 | 後來，出口被送進模具，也被夾在模擬牙齒的金屬之間。 | TWO_OBJECT_TEASERS | A18, A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1h04 | 後來，出口被夾在模擬牙齒的金屬之間。 | TWO_OBJECT_TEASERS_PART_METAL | A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1h07 | 另一份個案裡，工程師為咬口做出模具。 | TWO_OBJECT_TEASERS_PART_MOLD | A18 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1h05 | 今天跟著CamelBak的一袋水，從背上身，走到下一次還能再喝。 | NAMED_SCOPE_PROMISE | A02, A10, A14, A19, A27 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1h06 | 把水背上身之後，怎麼讓它在你要喝時出來，其他時候留在該在的地方？ | CENTRAL_QUESTION | A03, A10, A22, A27 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1o01 | 那枚衣夾先替管端守住出口；紐西蘭品牌回顧說，艾德森就是用它夾住管子。 | ATTRIBUTED_ACTION_RESULT | A03 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1o02 | 他是急救醫療技術員，回顧裡那袋水，用的原是點滴袋；襪子套在袋外，水仍裝在袋裡。 | ATTRIBUTED_RETROSPECTIVE | A02 | 只敘後來品牌回顧中的器材與位置；不教點滴袋改裝飲用、不演醫療程序。 |
-| c14r1o03 | 你看這個安排，背後負責帶水，管子負責把水送到肩上；襪子自己並不裝水。 | NARROW_PHYSICAL_INTERPRETATION | A02 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1o01 | 我讀的紐西蘭品牌回顧裡，艾德森用那枚衣夾，夾住了管子出口。 | ATTRIBUTED_ACTION_RESULT | A03 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1o02 | 他是急救醫療技術員，回顧裡那袋水，用的原是點滴袋。 | ATTRIBUTED_RETROSPECTIVE | A02 | 只敘後來品牌回顧中的器材與位置；不教點滴袋改裝飲用、不演醫療程序。 |
 | c14r1o04 | 但把出口移到嘴邊，和讓出口自己關上，是同一件事嗎？ | FORWARD_CONTROL_QUESTION | A02, A03 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1o05 | 這套拼裝留下的，是手動夾閉：衣夾還要有人照顧，並不會因為你喝完，就自己回到管口。 | NARROW_PHYSICAL_RESULT | A03 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1o06 | 我覺得，管子越過肩膀的意義，也在這裡：水已經來到嘴邊，控制水的機會也到了嘴邊。 | AUTHOR_REACTION | A02, A03 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1o07 | 如果放開嘴，出口就能關回去，你的手是不是能少管一件事？ | FORWARD_SELF_CLOSURE_QUESTION | A03, A10 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1v01 | 後來的咬閥，把這個開關問題交給了嘴；其中一份口器專利，記下可變形的出口。 | DOCUMENTED_DESIGN_INTRODUCTION | A10 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1v02 | 這份申請在一九九八年提出，二〇〇〇年獲准；它描述的出口，不是一個始終敞開的圓孔。 | DATED_PATENT_DESIGN | A10 | 1998-07-17申請、2000-06-06授權為文件日期；不是首發明或首款採用日期。 |
@@ -37,44 +36,34 @@
 | c14r1b01 | 二〇〇六年的展場報導裡，那個咬著喝的出口，已經搬到透明水瓶上。 | DATED_REPORTER_OBSERVATION | A14 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1b02 | 記者寫的是七百五十毫升瓶，咬口可以翻起，下面接著瓶內一小段吸管。 | REPORTED_PHYSICAL_CONFIGURATION | A14 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1b03 | 你手裡換回瓶子，嘴邊卻不用換回一個敞開的瓶口；這才是讓我停下來看的地方。 | AUTHOR_VIEWER_REACTION | A14 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1b04 | 原先是管子越肩來找嘴，現在瓶子被手拿起，短管把瓶裡的水接到上面的咬口。 | NARROW_CONTAINER_COMPARISON | A02, A14 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1b05 | 容器變了，讓出口在喝的時候打開，這個工作能一起搬過去嗎？ | FORWARD_TRANSFER_QUESTION | A13, A14 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1b06 | 同年公開的一份水瓶申請文件，描述了受壓變形的咬口，也引用先前那份口器專利。 | DOCUMENT_TO_DOCUMENT_CONNECTION | A12, A13 | 2006-10-12公開，不作實驗事件年；本案2005-12-20送件，與展場實物的專利/SKU對應未證。 |
 | c14r1b07 | 裡面的構想仍是壓開、撤力回閉；換容器，不必連開關的原理都從頭換掉。 | DOCUMENTED_DESIGN_CONTINUITY | A13 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1b08 | 可是，報導說它防漏，是記者測過，還是公司這樣說？ | FORWARD_REPORTED_PERFORMANCE_QUESTION | A14 | 防漏為報導歸給公司的說法，不是記者或本片獨立測試；相鄰專利可選構造不當展場SKU精確剖面。 |
 | c14r1b09 | 防漏，是公司在報導裡的說法；這個展品，讓出口和容器的分工，出現在日常水瓶裡。 | ATTRIBUTED_COMPANY_CLAIM_AND_OBSERVATION | A14 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1b10 | 我覺得，這次不是背水的點子被丟掉，而是把能帶走的控制，留在另一種容器上。 | AUTHOR_INTERPRETATION | A14 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1b11 | 不過，瓶子拿起一次能喝，和袋子在身上反覆擠、反覆咬，能算同一場考驗嗎？ | FORWARD_REPEATED_USE_QUESTION | A20, A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1t01 | 背袋會受擠壓，水路也分成不同部件；二〇一四年年報，寫下當時的組合。 | DATED_PRODUCT_CONFIGURATION | A17 | 2014會計年度母公司年報，2015申報；只口播當年產品組合。 |
 | c14r1t02 | 那是聚氨酯袋體、管子，再接自封口器；同份年報的採購段，也列出聚氨酯膜。 | DATED_MATERIAL_DESCRIPTION | A17, A30 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1t03 | 你背著它走時，會彎動的是袋子，嘴邊一再受壓的，卻是另一個小部件。 | PHYSICAL_COMPONENT_INTERPRETATION | A17, A20, A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1t04 | 所以，要看反覆使用，該把力氣加在哪裡？ | FORWARD_TEST_ACTION_QUESTION | A20, A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1t05 | 二〇一五年，記者走進加州佩塔盧馬的實驗室，看見水袋正在被壓、被扭。 | DATED_REPORTER_SITE_OBSERVATION | A20 | 2015-05-06報導的現場觀測；不是測試歷史首次或所有型號。 |
-| c14r1t06 | 同時，十二個咬閥夾在兩片金屬之間，模擬大人和孩子的牙齒反覆咬壓。 | REPORTED_TEST_ACTION | A21 | 原文a dozen=12，圖示應12件；反覆咬壓無精確循環數/樣本通過率，不把thousands of times a day變成壽命結果。 |
-| c14r1t07 | 開場那副金屬牙齒，到這裡有了工作：不只碰一下出口，而是反覆讓它受力。 | NAMED_TEASER_PAYOFF | A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1t08 | 我覺得這個畫面比一句耐用有用得多；袋子和咬口，承受的動作根本不同。 | AUTHOR_REACTION | A20, A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1t09 | 你可能會追問：夾了多少次、多久壞，最後有幾個通過？ | OBSERVATION_RESULT_LIMIT | A20, A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1t10 | 這篇報導沒有交出那張成績表，留下的，是袋體與嘴部分別被施力的現場。 | TEST_SCOPE_BOUNDARY | A20, A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1t11 | 而出口要被咬，前提是手裡真有一個能變形的樣件；螢幕上的形狀，怎麼交給嘴試？ | FORWARD_PHYSICAL_PROTOTYPE_QUESTION | A18, A19 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1t06 | 開場那副金屬牙齒，是兩片金屬夾著十二個咬閥，反覆模擬大人和孩子的咬壓。 | REPORTED_TEST_ACTION | A21 | 原文a dozen=12，圖示應12件；反覆咬壓無精確循環數/樣本通過率，不把thousands of times a day變成壽命結果。 |
+| c14r1t08 | 我覺得這個畫面，比一句耐用更值得細看。 | AUTHOR_REACTION | A20, A21 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1t11 | 而螢幕上的咬口形狀，還不是你能碰到的軟零件；工程師先怎麼把它做出來？ | FORWARD_PHYSICAL_PROTOTYPE_QUESTION | A18, A19 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1m01 | 二〇一六年的供應商個案，訪問了設計工程師麥克里迪；他做的是一體、自封的矽膠咬閥樣件。 | DATED_NAMED_ENGINEER_RETROSPECTIVE | A18 | 麥克里迪為Aaron McCready；©2016供應商個案的具名回述，非確認2016實驗日期、初代首次或2015實驗室同一SKU。 |
-| c14r1m02 | 他先做出三維列印模具，再用模具做真正的矽膠零件；列印的，不是拿來咬的塑膠替身。 | ATTRIBUTED_MANUFACTURING_ACTION | A18, A19 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1m03 | 如果要知道放開會不會回閉，你拿一塊硬的外形模型，能替軟零件回答嗎？ | VIEWER_PHYSICAL_PROTOTYPE_QUESTION | A18, A19, A11 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1m04 | 這次交到手裡的是可拿去測的矽膠件，形狀與材料，才有機會一起接受人的測試。 | ATTRIBUTED_PROTOTYPE_RESULT | A18, A19 | 可測樣件的取得，不聲稱真人實測已執行或通過。 |
-| c14r1m05 | 工程師回述，這樣兩天就拿到了測試零件；那個數字買到的是能試，不是已經證明不壞。 | ATTRIBUTED_TWO_DAY_RESULT_WITH_SCOPE | A19 | 兩天只屬工程師回述的實體矽膠測試件取得，不等兩天耐久測試通過；likely兩個月及10–20倍宣傳比較未口播。 |
-| c14r1m06 | 我喜歡這個結果，因為下一個判斷不用只對著螢幕做；手裡已經有東西，能交給真的人。 | AUTHOR_REACTION | A18, A19 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1m07 | 拿到軟樣件以後，工程師最想再取得什麼？ | FORWARD_USER_FEEDBACK_QUESTION | A18, A19, A_SW_CONTEXT | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1m08 | 他說，越能從真人測試取得回饋越好；能被人試的出口，才有機會把感受帶回設計。 | ATTRIBUTED_USER_FEEDBACK_PURPOSE | A18, A19, A_SW_CONTEXT | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1m09 | 可是，就算嘴邊會自封，補水時還有另一個開口必須打開；那裡也能守住水嗎？ | FORWARD_REFILL_SEAL_QUESTION | A22, A28 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1m02 | 開場那副模具，是他用三維列印做的，再用來製作矽膠咬閥樣件。 | ATTRIBUTED_MANUFACTURING_ACTION | A18, A19 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1m05 | 工程師回述，這樣兩天就拿到了測試零件。 | ATTRIBUTED_TWO_DAY_RESULT_WITH_SCOPE | A19 | 兩天只屬工程師回述的實體矽膠測試件取得，不等兩天耐久測試通過；likely兩個月及10–20倍宣傳比較未口播。 |
+| c14r1m07 | 我更想知道，拿到軟樣件後，工程師還想取得什麼？ | FORWARD_USER_FEEDBACK_QUESTION | A18, A19, A_SW_CONTEXT | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1m08 | 他說，越能從真人測試取得回饋越好。 | ATTRIBUTED_USER_FEEDBACK_PURPOSE | A18, A19, A_SW_CONTEXT | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1m09 | 可是，就算你嘴邊的咬口會自封，補水時還有另一個開口必須打開；那裡也能守住水嗎？ | FORWARD_REFILL_SEAL_QUESTION | A22, A28 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r01 | 補水口把你帶回袋子上；開場那款水袋的現行介紹，特別列了方便握住、重新灌水的把手。 | CURRENT_PRODUCT_FEATURE | A28 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1r02 | 這一款還有單手開關，可以關住飲水管；嘴邊的自封口器，另負責每次喝完後的回閉。 | CURRENT_PRODUCT_DISTINCT_CONTROLS | A28 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
+| c14r1r02 | 這一款另有單手開關，讓你用一隻手關住飲水管。 | CURRENT_PRODUCT_SHUTOFF_CONTROL | A28 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r03 | 我原先容易把不漏水，全想成嘴邊那一小塊；可是補水蓋，也是一個得關好的接面。 | AUTHOR_REACTION | A22, A28 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r04 | 如果出口沒有滴，水卻從蓋邊跑出來，你會先看哪裡？ | FORWARD_CAP_LEAK_QUESTION | A22 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r05 | 原廠現行問答列出兩個可能原因：蓋子螺紋有砂粒，或者蓋內的密封圈扭了。 | OFFICIAL_POSSIBLE_FAILURE_CAUSES | A22 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r06 | 砂粒讓蓋子不能完整密合；那個黑色環若扭曲變形，也會破壞蓋口的密封。 | OFFICIAL_FAILURE_MECHANISM | A22, A_CARE_CONTEXT, A_CARE_GRIT | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1r07 | 所以你手上看似已經轉緊的蓋子，裡面仍可能有一個地方，沒有貼好。 | VIEWER_PHYSICAL_INTERPRETATION | A22, A_CARE_CONTEXT | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r08 | 能不能在背出去以前，讓這條縫先露出來？ | FORWARD_LEAK_CHECK_QUESTION | A23 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r09 | 原廠的季前檢查，把水裝回袋子，蓋好後轉動、擠壓，觀察有沒有漏水。 | ATTRIBUTED_CURRENT_INSPECTION_ACTION | A23 | 第三人稱歸屬現行指引的檢查動作，不當本片親測、初代故障或醫療/戶外安全保證。 |
-| c14r1r10 | 這個動作讓蓋口也承受水與擠壓；觀察的位置，從嘴邊移到了整個裝水的袋子。 | NARROW_INSPECTION_INTERPRETATION | A23 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r11 | 我覺得，它沒有離開一開始的問題：讓水跟你走，還得知道它有沒有從別的地方先走掉。 | AUTHOR_REACTION | A22, A23 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1r12 | 可喝完、洗完之後，水反而不該再留在袋裡；這次要怎麼讓它出去？ | FORWARD_DRYING_QUESTION | A24, A25 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1d01 | 洗後殘水，把水路反過來考了一次；原廠清潔頁說，角落、飲水管和咬口都可能留水。 | OFFICIAL_RESIDUAL_WATER_LOCATIONS | A25 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
@@ -83,14 +72,12 @@
 | c14r1d04 | 原廠的清洗範圍，因此不只是一個大袋子；水走過的管與咬口，也得接到清水。 | OFFICIAL_COMPLETE_WATER_PATH_CLEANING | A25, A_CLEAN_CONTEXT, A_CLEAN_RINSE | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1d05 | 但洗掉殘留物以後，內壁還貼在一起，空氣要從哪裡進去？ | FORWARD_INNER_WALL_QUESTION | A26 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1d06 | 清潔頁給的動作，是把袋體撐開，讓內部通風；乾燥架把兩邊內壁分開，也讓水能排出。 | OFFICIAL_DRYING_ACTION_RESULT | A26 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1d07 | 出口能回閉，這時卻不能替內部乾燥；袋口得打開，貼合的內壁得分開。 | PHYSICAL_FUNCTION_CONTRAST | A10, A26 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1d08 | 飲水管若緊緊盤起來，原廠說水可能積在低處；怎麼讓管內也有乾燥的路？ | FORWARD_TUBE_DRYING_QUESTION | A_CLEAN_TUBE | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1d09 | 它排掉管裡的水，垂直掛起，並讓兩端敞開；乾燥不只留給袋子的內部。 | OFFICIAL_TUBE_DRYING_ACTION | A_CLEAN_TUBE | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1d10 | 分件晾乾用到的是可拆零件；管與咬口各自留出的空間，也讓你能查看裡面是不是還有水。 | VIEWER_INTERPRETATION_WITH_DETACHABLE_SCOPE | A_CLEAN_CONTEXT | 只示意原廠允許拆卸的部件，不強拆固定接點。 |
 | c14r1d11 | 再看一眼，才知道能不能收回去；原廠要你看的是什麼？ | FORWARD_STORAGE_CHECK_QUESTION | A27 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1d12 | 原廠要求收存前再看接縫、角落、管子和接口，有沒有水滴或凝結；還有水，就繼續晾乾。 | OFFICIAL_OBSERVABLE_STORAGE_CRITERION | A27 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1d13 | 開場問水能不能留在該在的地方，到這裡，答案多了一個時間點：收起來時，它得離開。 | CENTRAL_QUESTION_NEW_PHASE_PAYOFF | A24, A27 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
-| c14r1d14 | 我想，讓你下一次還能拿起這袋水的方便，就藏在這個沒有水的結尾裡。 | AUTHOR_CLOSING_INTERPRETATION | A24, A27 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1ct1 | 一袋水的方便，是把開、關與重新使用接成水路；容量留在背上，出口和接縫，卻都得被照顧。 | SYNTHESIS_ANSWER | A02, A03, A10, A22, A27 | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1ct2 | 你最常把水帶去騎車、走路，還是放在桌邊？留言告訴我，哪個小地方最讓你在意。 | VIEWER_COMMENT_QUESTION |  | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
 | c14r1ct3 | 想知道熟悉的物品，怎麼把方便送到你手裡，歡迎訂閱，和我一起看那些真正起作用的小動作。 | CHANNEL_SUBSCRIPTION_REASON |  | 物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。 |
@@ -125,13 +112,13 @@
 
 {"id":"A03","source_id":"NZ_HISTORY","claim":"同段用衣夾夾管端，作手動出口控制。","limits":"不等自封咬閥，也非當年零漏水測試。","locator":"HTML normalized text paragraph 156","paragraph":156,"pdf_page":null,"short_quote":"its end clamped by a clothespin","quote_sha256":"626b26619c0c72bfe08785e5728f2b9c30f77e9d5b1f4f58de4337fdbf716fd2","context_sha256":"6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25","raw_path":"/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html","raw_sha256":"a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c","text_path":"/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt","text_sha256":"af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197","status":"RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"}
 
-### A18
-
-{"id":"A18","source_id":"SW_PDF","claim":"Aaron McCready以3D列印模做一體自封矽膠咬口樣件。","limits":"具名工程師供應商個案，不是最初發明／初代模具。","locator":"PDF page 3","paragraph":null,"pdf_page":3,"short_quote":"one-piece, self-sealing, silicone bite valve","quote_sha256":"96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89","context_sha256":"c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d","raw_path":"/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf","raw_sha256":"8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda","text_path":"/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt","text_sha256":"36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe","status":"RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"}
-
 ### A21
 
 {"id":"A21","source_id":"SONOMA2015","claim":"同段現場看十二咬閥在金屬間夾壓模擬牙齒。","limits":"不是保證每天千次或終身不壞。","locator":"HTML normalized text paragraph 76","paragraph":76,"pdf_page":null,"short_quote":"a dozen bite valves","quote_sha256":"948d6fc3628e109dcd813c20dd03fd4cab34a29fc9ed52553e03ad0621e83c30","context_sha256":"56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee","raw_path":"/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html","raw_sha256":"7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd","text_path":"/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt","text_sha256":"2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c","status":"RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"}
+
+### A18
+
+{"id":"A18","source_id":"SW_PDF","claim":"Aaron McCready以3D列印模做一體自封矽膠咬口樣件。","limits":"具名工程師供應商個案，不是最初發明／初代模具。","locator":"PDF page 3","paragraph":null,"pdf_page":3,"short_quote":"one-piece, self-sealing, silicone bite valve","quote_sha256":"96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89","context_sha256":"c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d","raw_path":"/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf","raw_sha256":"8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda","text_path":"/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt","text_sha256":"36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe","status":"RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"}
 
 ### A10
 

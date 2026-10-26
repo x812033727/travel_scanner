@@ -1,36 +1,36 @@
 {
   "schema_version": 1,
   "status": "HOLD_PENDING_INDEPENDENT_SOURCE_AND_FRESH_READERS",
-  "author": "/root/c05_material_author",
-  "candidate_revision": "c11-r3",
+  "author": "/root/c11_r4_author",
+  "candidate_revision": "c11-r6",
   "slug": "story-everyday-ucc-c11-remake-20261025",
   "counts": {
-    "lines": 85,
-    "scenes": 83,
+    "lines": 80,
+    "scenes": 78,
     "chapters": 6,
-    "shots": 82,
+    "shots": 77,
     "cards": 1,
-    "loops": 24
+    "loops": 23
   },
   "native_units": {
     "counter": "spokenUnits(spokenText(line))",
-    "official_narration_body_planning_units": 2468,
+    "official_narration_body_planning_units": 2276,
     "coldopen": 157,
     "voiced_CTA": 103,
-    "after_opening_planning_only": 2311,
-    "after_opening_and_CTA_planning_only": 2208,
+    "after_opening_planning_only": 2119,
+    "after_opening_and_CTA_planning_only": 2016,
     "official_duration_scope": "all actual narration timeline including coldopen and voiced CTA; excludes separate 5s/21s channel bookends",
     "normal_4_to_5_arithmetic_seconds": [
-      493.6,
-      617
+      455.2,
+      569
     ],
-    "at_4_5_units_per_second": 548.4444444444445,
+    "at_4_5_units_per_second": 505.77777777777777,
     "actual_tts_seconds": null,
     "actual_duration_verified": false,
     "length_hold": true,
     "length_hold_reason": "目前有效總units低於約3500規劃目標，actual TTS未知；紙面算式不作實測時長合格或失敗的結論，不以限定語、慢播、停頓、重述或副線補字。"
   },
-  "maximum_estimated_shot_seconds": 10.6,
+  "maximum_estimated_shot_seconds": 10.133333333333333,
   "voice_source": {
     "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c06/video.json",
     "file_sha256": "45057c33f3c6efa3510c5c27f1f9c03172ba7ebbea5a2914ac0b01e0693e0a13",
@@ -88,171 +88,103 @@
   "runtime_root": "/workspace/work/brand-story-20261025/c11-submission-root",
   "author_revision_delta": {
     "role": "AUTHOR_CHANGE_RECORD_NOT_INDEPENDENT_REVIEW",
-    "previous_revision": "c11-r2",
-    "next_actual_native_reader_round": 3,
+    "previous_revision": "c11-r5",
+    "next_actual_native_reader_round": 5,
+    "author_revision": 6,
     "previous_core_four_sha256": {
-      "video.json": "b3890b62bee517866a037249d9d5a853f39c5b52f7be0ac7e988fe053daa0156",
-      "brief.md": "815db610c5cf42146338356f3829768d5630b530e3c1c82b19d008215dc6a92a",
-      "series.json": "006afcef2a944f8ba7639ec7045408c7a76de9b82b07609b02d13730c10cabd4",
-      "claims.json": "bfdc52d4ee66a39061d85a5955109edae2c31b499fdd2682e010c6dab695ba78"
+      "video.json": "4bf4cf8ac1afacd68988a00db34ce81cf494a623ee3f299dbeb098fad4bee8c3",
+      "script.md": "368afe9a2a7a8328dc03ba576d6a39fa4220b5c6d0d9e3ddd5cad8348723827c",
+      "narration-only.json": "4634101ecd26263111d14184e6d9540969b01ce4884d35592902ce8532bff2b3",
+      "claims.json": "381b148813eb5d8eeff02f7e194d77f1b1e22c6ede94f3d986dfd3286a7912a1"
     },
     "previous_source_review": {
-      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/history/r2/reviews/source-r2-independent.json",
-      "sha256": "6489003dbff232c93d52a7530d5ff192fee6fba6ea25d1520ed1557c5d1a174a"
+      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/history/r5/reviews/source-r5-independent.json",
+      "sha256": "78041720b1a086de11339f9ea1983a88f6bc09c45c425c96a234758dd9594dc7",
+      "source_verdict": "PASS",
+      "written_visual_verdict": "HOLD"
     },
-    "previous_verify": {
-      "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/history/r2/verify-1.md",
-      "sha256": "c6dcff6bd8db450e1501e0a0193ac2d85e4fb06ae8c97d6da0667ea251d0d71a"
+    "previous_native": {
+      "evaluated": false,
+      "votes_exist": false,
+      "merged_verdict": "NOT_EVALUATED"
     },
     "changed_narration_ids": [
-      "c11r1h01",
-      "c11r1h02",
-      "c11r1h03",
-      "c11r1w12",
-      "c11r1d11"
+      "c11r1h04"
     ],
-    "removed_narration_ids": [
-      "c11r1t02",
-      "c11r1w13",
-      "c11r1d10"
+    "removed_narration_ids": [],
+    "added_narration_ids": [
+      "c11h04b1"
     ],
-    "added_narration_ids": [],
-    "unchanged_surviving_lines": 80,
+    "unchanged_surviving_lines": 78,
     "line_changes": [
       {
-        "id": "c11r1h01",
-        "before": "你想買一罐帶走就喝的奶咖；早期UCC的罐頂，只開一個孔就夠了嗎？",
-        "after": "如果是你的小店，願不願意先放三箱奶咖，讓它占住貨架？"
-      },
-      {
-        "id": "c11r1h02",
-        "before": "原廠在神戶本社保存的，是一九六九年推出的初代罐；小小的開孔器，就擱在罐頂。",
-        "after": "上島達司後來回憶，銷售人員走進食品店，推銷一九六九年上市的UCC奶咖。"
-      },
-      {
-        "id": "c11r1h03",
-        "before": "我看著這個工具才發現，你手裡拿到一罐飲料，不一定已經拿到全部的方便。",
-        "after": "我沒想到，方便還有這一面：做成了罐子，也得有人肯讓它走進自己的店。"
-      },
-      {
-        "id": "c11r1w12",
-        "before": "改向食品店推銷，最初能先留下多少貨？",
-        "after": "最初放進食品店的那幾箱，後來有人接著訂嗎？"
-      },
-      {
-        "id": "c11r1d11",
-        "before": "原廠保存初代罐的說明，給的動作是用專用開孔器，從罐頂打開入口。",
-        "after": "原廠初代罐的說明，寫的是用專用開孔器在罐頂開孔；這些孔，各有什麼用？"
+        "id": "c11r1h04",
+        "before": "罐裡的奶怎麼待得住，冷罐又要怎麼追上萬博的人潮？",
+        "after": "罐裡的奶，怎麼待得住？"
       }
-    ],
-    "deletions": [
-      {
-        "id": "c11r1t02",
-        "before": "你拿起來時，期待的是原來那杯調好的飲料；現在，液體卻在容器裡分了位置。",
-        "reason": "刪奶分離的重述。"
-      },
-      {
-        "id": "c11r1w13",
-        "before": "他記得，銷售人員跑進食品店，先讓店裡放三箱。",
-        "reason": "三箱數字與食品店推銷已移入開場，刪後段重報。"
-      },
-      {
-        "id": "c11r1d10",
-        "before": "罐子不必送回去，裡面的奶咖卻還封著；手指碰到金屬蓋，要從哪裡喝？",
-        "reason": "刪初代罐封著與從哪裡喝的重述；d09直接接d11真開孔動作。"
-      }
-    ],
-    "moved_line": {
-      "id": "c11r1w12",
-      "from": "before c11r1w17",
-      "to": "after c11r1w17, before c11r1w14",
-      "reason": "先給試喝願留貨，再問後續訂貨並給十箱/三十箱新結果。"
-    },
-    "opening_source": {
-      "raw_path": "/workspace/work/brand-story-20261025/c11-audit/source-cache/GUINNESS2019.html",
-      "raw_sha256": "2ba3dfba2b13eacea46bd4104af05a611608804e5aa23c1f5fcb5aa3e9eeba20",
-      "paragraphs": [
-        65,
-        66
-      ],
-      "actual_original_html_read": true,
-      "scope": "三箱是達司原訪談的試放量；店主位置是觀眾條件情境。1969只修飾奶咖上市年，不新增試賣日期、店名、心理、台詞、價格或同一戶可稽核訂貨表。"
-    },
-    "claim_context_only_updated_ids": [
-      "c11r1d12"
     ],
     "prompts_added_or_changed": [
-      "c11r1h01",
-      "c11r1h02",
-      "c11r1h03"
+      "c11r1h04",
+      "c11h04b1",
+      "c11r1t05",
+      "c11r1s11"
     ],
-    "surviving_camera_assignments_preserved": true,
-    "chapter_title": {
-      "before": "罐子帶走了，工具卻還得跟上",
-      "after": "銷售人員走進食品店"
-    },
-    "thumbnail_shot": {
-      "before": "c11r1h01",
-      "after": "c11r1d11",
-      "reason": "h01改為食品店紙箱概念，沿用d11現有工具動作支撐原縮圖文字；無新媒體。"
-    },
-    "loops": {
-      "count": 24,
-      "opening_retail_payoff": "c11r1h01 → c11r1w14",
-      "retail_order_payoff": "c11r1w12 → c11r1w14",
-      "deleted_usage_setup": "c11r1d10",
-      "initial_can_result_retained": "c11r1d09 → c11r1d12",
-      "function_question_added_to_existing_action": "c11r1d11 → c11r1d12"
-    },
-    "whole_units_before": 2550,
-    "whole_units_after": 2468,
-    "whole_units_delta": -82,
-    "source_qa_required": "New opening and w12 retail callback/source scope; deleted t02/w13/d10; d11 retains action and asks actual opening functions answered at d12; d12 context, chapter and thumbnail pointer delta. No R3 SOURCE or narrative verdict is authored here."
+    "payoff_narration_exactly_preserved": true,
+    "other_scenes_exactly_preserved": true,
+    "first_three_scenes_exactly_preserved": true,
+    "loop_count": 23,
+    "loops_change": "Only second h04 teaser endpoint splits to h04b1→s11; other 22 loops unchanged.",
+    "chapter_titles_exactly_preserved": true,
+    "thumbnail_exactly_preserved": true,
+    "whole_units_before": 2276,
+    "whole_units_after": 2276,
+    "whole_units_delta": 0,
+    "source_qa_required": "R6 same-image mandatory fixes: h04 milk teaser and new h04b1 delivery teaser must each match their true payoff t05/s11 prompt/camera through the written production sidecar, without revealing outcomes in opening. All other R5 SOURCE PASS text remains exact, but R6 requires a new independent bound source/visual review. No author source or native verdict."
   },
   "native_proper_context": {
     "root": "/workspace/work/brand-story-20261025/c11-submission-root",
     "slug": "story-everyday-ucc-c11-remake-20261025",
     "scope": "loadProject on the ordinary initialized context; replace only doc/brief/series in memory, retain its true immutable lexicon. Native mechanical lint only; no narrative/source self-review or approval.",
-    "runtime_video_sha256": "b3890b62bee517866a037249d9d5a853f39c5b52f7be0ac7e988fe053daa0156",
-    "validated_candidate_video_sha256": "81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf",
+    "runtime_video_sha256": "4bf4cf8ac1afacd68988a00db34ce81cf494a623ee3f299dbeb098fad4bee8c3",
+    "validated_candidate_video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
     "runtime_core_and_prior_verify_unchanged": true,
-    "prior_runtime_verify_used_as_r3_verification": false,
+    "prior_runtime_verify_used_as_r6_verification": false,
     "immutable_lexicon_sha256": "1ea60e8a43469741c1eb8bc438e7af230896e8456c809ec114b61be29c42366a",
     "lexicon_not_overwritten": true,
     "result": {
       "errors": [],
       "warnings": [
         {
-          "path": "scenes[44] (c11r1w17)",
+          "path": "scenes",
+          "message": "\"coffee\" is in 28 of 77 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes[41] (c11r1w17)",
           "message": "about 10.1 s; shots over 10 s are stretched or frozen to fit"
         },
         {
-          "path": "scenes[81] (c11r1d14)",
-          "message": "about 10.6 s; shots over 10 s are stretched or frozen to fit"
-        },
-        {
           "path": "scenes",
-          "message": "about 11.3 minutes; the target is 12-14"
+          "message": "about 10.4 minutes; the target is 12-14"
         }
       ],
       "summary": {
-        "minutes": 11.3,
-        "lines": 85,
-        "spoken_units": 2468,
-        "billable_characters": 7768,
+        "minutes": 10.447222222222223,
+        "lines": 80,
+        "spoken_units": 2276,
+        "billable_characters": 7212,
         "chapters": [
           "00:00 銷售人員走進食品店",
-          "00:43 瓶子交回去，奶咖得另找出口",
-          "02:41 混得進去，還得留在一起",
-          "04:19 罐壁加入了這杯咖啡",
-          "06:23 把罐子放進旅客看得到的地方",
-          "09:14 工廠外排起車，手裡的罐還等著開"
+          "00:44 瓶子交回去，奶咖得另找出口",
+          "02:31 混得進去，還得留在一起",
+          "04:01 罐壁加入了這杯咖啡",
+          "05:50 把罐子放進旅客看得到的地方",
+          "08:34 工廠外排起車，手裡的罐還等著開"
         ]
       }
     },
     "errors": 0,
     "cadence_warnings": [],
-    "maximum_estimated_shot_seconds": 10.6
+    "maximum_estimated_shot_seconds": 10.133333333333333
   },
   "at_least_eight_concrete_action_payoffs": [
     {
@@ -330,47 +262,66 @@
   ],
   "length_target_delta": {
     "rough_total_target": 3500,
-    "actual_planning_total": 2468,
-    "delta_to_rough_target": -1032,
-    "new_narration_exceeds_legacy_by": 709,
+    "actual_planning_total": 2276,
+    "delta_to_rough_target": -1224,
+    "new_narration_exceeds_legacy_by": 517,
     "not_a_duration_pass": true
   },
-  "planned_illustration_spoken_unit_share": 0.9582658022690438,
+  "planned_illustration_spoken_unit_share": 0.9547451669595782,
   "current_source_status": "PENDING_INDEPENDENT_QA_NOT_AUTHOR_PASS",
   "current_narrative_status": "PENDING_FRESH_READERS_NOT_AUTHOR_SELF_REVIEW",
   "runtime_preparation": {
     "helper": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c11/prepare-runtime.mjs",
-    "runtime_manifest_sha256": "22a4e4e4392e4b6e7bf3578d84b222079c0ca252830ec51c1e1403dd37730c9f",
+    "runtime_manifest_sha256": "cf5ad2c75d0b7004385eeaf23e792a785e69d2c9b67fc5cca7cefb2674b90f33",
     "prepared_project_ids": [
       "c11"
     ],
     "only_new_c11_slug": true,
     "ordinary_immutable_lexicon_initialization": true,
     "initialization_revision": "c11-r1",
-    "current_candidate_validation": "R3 doc/brief/series in memory only",
-    "candidate_core_written_to_runtime": false,
+    "current_candidate_validation": "R6 actual normally synchronized runtime; independent source/narrative unreviewed",
+    "candidate_core_written_to_runtime": true,
     "copied_other_episode_dictionary_or_approval": false,
     "approvals_created": 0,
     "paid_media_created": false
   },
-  "protected_input_file_count": 90,
+  "protected_input_file_count": 218,
   "protected_history_reviews_old28_snapshot_and_research_unchanged": true,
+  "image_reuse_plan": {
+    "path": "image-reuse-plan.json",
+    "sha256": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9",
+    "status": "PLAN_ONLY",
+    "actual_same_asset_verified": false
+  },
   "file_sha256": {
-    "video.json": "81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf",
-    "script.md": "30d48cf0757463b63355369b898a2127264bd7650f1625085f6d56d1fc51d04e",
-    "narration-only.json": "01a8a0afd2ad4760687474dadbb71b9b2a34db5be9e839944ca71a2b2333cb39",
-    "brief.md": "8b4aca6409ca262fc3debea370307ce69c22c736eab5cc918d503fb591e03d5a",
-    "series.json": "c79f28994a0a00a26056d50ab17459ff43d523e8892acd3c7ddbc92731f849e3",
-    "claims.json": "3d3c387307b301db069728d1a7598752380296fdfbf78b9a3950dfa6d147837c",
-    "claims.md": "eb04340313fbaf50be7c82688c984f93f3640405b66fd683b6ffea0acc20fa1c",
-    "build-candidate.mjs": "9f3ba60f41ec0bd0347fda78759a58e336d9687eda4f3c916c5fd5ed71311cb4",
-    "prepare-runtime.mjs": "2a2a0c13af5033fecda6f53865166aeb28326f101c997fe61c92747eb1c3769e"
+    "video.json": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+    "script.md": "1cc1d014cf1bf3c7aa6c1f44751e7c457bb5e327729d3e8a573867787a1c65d1",
+    "narration-only.json": "faf50858697c1e48895435af3abad6068e9d047eb86cc8898b32bbdd7d36053b",
+    "brief.md": "5bdcc8704598d81c0f40a916ce4dd40bf818815f929955c6faf82e1f8972a533",
+    "series.json": "2ba6558904ffa91f15cfad6bef81841e58eef64dbaf46052b37cc0dd39c1c848",
+    "claims.json": "41d367767138c4d34da8af812f779f94151675e31abf9ae6ae07039feb1c5082",
+    "claims.md": "6772fd0dac05faaeebd1090534e0275291a115c0001ec7cf389da981bc496657",
+    "build-candidate.mjs": "b339fc0497d6bc08b20050d2a1d00f91faf0cecb87afcfe44ec64f2b61745daa",
+    "prepare-runtime.mjs": "2a2a0c13af5033fecda6f53865166aeb28326f101c997fe61c92747eb1c3769e",
+    "image-reuse-plan.json": "bd7fd483d1f6bbb50f94d469dcf49a67b2d5233e855cbd280f6242b7a1f3a7c9"
   },
   "core_four_sha256": {
-    "video.json": "81c47f39c1ef16dc1126787c21c00f700be5247e8ba8af8320d02839d8e072cf",
-    "brief.md": "8b4aca6409ca262fc3debea370307ce69c22c736eab5cc918d503fb591e03d5a",
-    "series.json": "c79f28994a0a00a26056d50ab17459ff43d523e8892acd3c7ddbc92731f849e3",
-    "claims.json": "3d3c387307b301db069728d1a7598752380296fdfbf78b9a3950dfa6d147837c"
+    "video.json": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+    "script.md": "1cc1d014cf1bf3c7aa6c1f44751e7c457bb5e327729d3e8a573867787a1c65d1",
+    "narration-only.json": "faf50858697c1e48895435af3abad6068e9d047eb86cc8898b32bbdd7d36053b",
+    "claims.json": "41d367767138c4d34da8af812f779f94151675e31abf9ae6ae07039feb1c5082"
   },
-  "frozen_at_utc": "2026-10-25T23:18:24.086Z"
+  "frozen_at_utc": "2026-10-26T00:08:57.562Z",
+  "native_runtime_rehearsal": {
+    "receipt": "native-author-lint-r6.json",
+    "receipt_sha256": "a5bb2f5cfc7df2c4722a576ed72cd62651941128f3e98176b24e28115ba8fad0",
+    "ordinary_helper": "prepare-runtime.mjs",
+    "runtime_manifest_sha256": "cf5ad2c75d0b7004385eeaf23e792a785e69d2c9b67fc5cca7cefb2674b90f33",
+    "runtime_video_sha256": "03817277b5c79f45c6064a082ac9a23279b9b11b289cd091cb2261a212d5d38b",
+    "immutable_lexicon_sha256": "1ea60e8a43469741c1eb8bc438e7af230896e8456c809ec114b61be29c42366a",
+    "errors": 0,
+    "cadence_warnings": 0,
+    "source_verify_present": false,
+    "actual_tts_seconds": null
+  }
 }

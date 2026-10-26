@@ -1,9 +1,9 @@
 {
   "schema_version": 1,
   "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-  "candidate_revision": "c14-r3",
-  "author": "/root/c05_r10_author",
-  "author_is_original_researcher": true,
+  "candidate_revision": "c14-r6",
+  "author": "/root/c14_r4_author",
+  "author_is_original_researcher": false,
   "video_slug": "story-everyday-camelbak-c14-remake-20261025",
   "frozen_research_sha256": {
     "research-original.md": "e8d6ec0f77680c32c3f7de08723d2f44a5e8960b2f86024ac4bc742180acda65",
@@ -378,23 +378,6 @@
       "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
       "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
     },
-    "A18": {
-      "id": "A18",
-      "source_id": "SW_PDF",
-      "claim": "Aaron McCready以3D列印模做一體自封矽膠咬口樣件。",
-      "limits": "具名工程師供應商個案，不是最初發明／初代模具。",
-      "locator": "PDF page 3",
-      "paragraph": null,
-      "pdf_page": 3,
-      "short_quote": "one-piece, self-sealing, silicone bite valve",
-      "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
-      "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
-      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
-      "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
-      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
-      "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
-      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
-    },
     "A21": {
       "id": "A21",
       "source_id": "SONOMA2015",
@@ -410,6 +393,23 @@
       "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
       "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
       "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
+      "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
+    },
+    "A18": {
+      "id": "A18",
+      "source_id": "SW_PDF",
+      "claim": "Aaron McCready以3D列印模做一體自封矽膠咬口樣件。",
+      "limits": "具名工程師供應商個案，不是最初發明／初代模具。",
+      "locator": "PDF page 3",
+      "paragraph": null,
+      "pdf_page": 3,
+      "short_quote": "one-piece, self-sealing, silicone bite valve",
+      "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
+      "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
+      "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
+      "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
+      "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
+      "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
       "status": "RESEARCH_ONLY_PENDING_INDEPENDENT_REVIEW"
     },
     "A10": {
@@ -1103,36 +1103,16 @@
     {
       "id": "c14r1h04",
       "chapter": "水在背上，出口誰管？",
-      "claim": "後來，出口被送進模具，也被夾在模擬牙齒的金屬之間。",
-      "claim_kind": "TWO_OBJECT_TEASERS",
+      "claim": "後來，出口被夾在模擬牙齒的金屬之間。",
+      "claim_kind": "TWO_OBJECT_TEASERS_PART_METAL",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
-        "A18",
         "A21"
       ],
       "source_ids": [
-        "SW_PDF",
         "SONOMA2015"
       ],
       "evidence": [
-        {
-          "anchor_id": "A18",
-          "source_id": "SW_PDF",
-          "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
-          "raw_bytes": 350662,
-          "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
-          "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
-          "locator": "PDF page 3",
-          "short_quote": "one-piece, self-sealing, silicone bite valve",
-          "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
-          "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
-          "scope": "Aaron McCready以3D列印模做一體自封矽膠咬口樣件。",
-          "not_supported": "具名工程師供應商個案，不是最初發明／初代模具。"
-        },
         {
           "anchor_id": "A21",
           "source_id": "SONOMA2015",
@@ -1153,11 +1133,49 @@
         }
       ],
       "limits": [
-        "具名工程師供應商個案，不是最初發明／初代模具。",
         "不是保證每天千次或終身不壞。"
       ],
       "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Close-up of a plain flexible drinking mouthpiece resting beside an empty small mold and two metal test plates, diffuse workshop light.",
+      "visual_prompt": "Wide conceptual view of twelve plain small mouthpieces arranged between two metal test plates, soft laboratory light.",
+      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
+    },
+    {
+      "id": "c14r1h07",
+      "chapter": "水在背上，出口誰管？",
+      "claim": "另一份個案裡，工程師為咬口做出模具。",
+      "claim_kind": "TWO_OBJECT_TEASERS_PART_MOLD",
+      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
+      "anchor_ids": [
+        "A18"
+      ],
+      "source_ids": [
+        "SW_PDF"
+      ],
+      "evidence": [
+        {
+          "anchor_id": "A18",
+          "source_id": "SW_PDF",
+          "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
+          "http_status": 200,
+          "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
+          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
+          "raw_bytes": 350662,
+          "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
+          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
+          "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
+          "locator": "PDF page 3",
+          "short_quote": "one-piece, self-sealing, silicone bite valve",
+          "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
+          "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
+          "scope": "Aaron McCready以3D列印模做一體自封矽膠咬口樣件。",
+          "not_supported": "具名工程師供應商個案，不是最初發明／初代模具。"
+        }
+      ],
+      "limits": [
+        "具名工程師供應商個案，不是最初發明／初代模具。"
+      ],
+      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
+      "visual_prompt": "Close-up of an anonymous hand lifting a plain flexible silicone part from a small printed mold, diffuse workshop light.",
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
@@ -1388,7 +1406,7 @@
     {
       "id": "c14r1o01",
       "chapter": "衣夾守住的出口，換成回閉的狹縫",
-      "claim": "那枚衣夾先替管端守住出口；紐西蘭品牌回顧說，艾德森就是用它夾住管子。",
+      "claim": "我讀的紐西蘭品牌回顧裡，艾德森用那枚衣夾，夾住了管子出口。",
       "claim_kind": "ATTRIBUTED_ACTION_RESULT",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -1427,7 +1445,7 @@
     {
       "id": "c14r1o02",
       "chapter": "衣夾守住的出口，換成回閉的狹縫",
-      "claim": "他是急救醫療技術員，回顧裡那袋水，用的原是點滴袋；襪子套在袋外，水仍裝在袋裡。",
+      "claim": "他是急救醫療技術員，回顧裡那袋水，用的原是點滴袋。",
       "claim_kind": "ATTRIBUTED_RETROSPECTIVE",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -1461,45 +1479,6 @@
       ],
       "author_context": "只敘後來品牌回顧中的器材與位置；不教點滴袋改裝飲用、不演醫療程序。",
       "visual_prompt": "Medium shot of an anonymous cyclist holding a plain sock-covered flexible pouch, with only the upper pouch edge visible, diffuse light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c14r1o03",
-      "chapter": "衣夾守住的出口，換成回閉的狹縫",
-      "claim": "你看這個安排，背後負責帶水，管子負責把水送到肩上；襪子自己並不裝水。",
-      "claim_kind": "NARROW_PHYSICAL_INTERPRETATION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A02"
-      ],
-      "source_ids": [
-        "NZ_HISTORY"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A02",
-          "source_id": "NZ_HISTORY",
-          "url": "https://camelbak.co.nz/pages/about-us",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.050554+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
-          "raw_bytes": 391775,
-          "raw_sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
-          "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
-          "locator": "HTML normalized text paragraph 156",
-          "short_quote": "filled an IV bag with water",
-          "quote_sha256": "ec76919020a9f02f533c7a7d1b74dd1bace7c7beb21d426560cb49373754e9ef",
-          "context_sha256": "6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25",
-          "scope": "NZ品牌回顧IV水袋、襪、車衣背後安放與管越肩。",
-          "not_supported": "後期品牌回顧；賽事年有分歧，不教醫材仿作。"
-        }
-      ],
-      "limits": [
-        "後期品牌回顧；賽事年有分歧，不教醫材仿作。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Medium shot of an anonymous cyclist pointing toward a plain tube crossing one shoulder from a sock-covered pouch, mild overcast light.",
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
@@ -1598,65 +1577,6 @@
       ],
       "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
       "visual_prompt": "Close-up of an anonymous hand holding a detached wooden clothespin beside a plain flexible tube end, soft side light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c14r1o06",
-      "chapter": "衣夾守住的出口，換成回閉的狹縫",
-      "claim": "我覺得，管子越過肩膀的意義，也在這裡：水已經來到嘴邊，控制水的機會也到了嘴邊。",
-      "claim_kind": "AUTHOR_REACTION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A02",
-        "A03"
-      ],
-      "source_ids": [
-        "NZ_HISTORY"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A02",
-          "source_id": "NZ_HISTORY",
-          "url": "https://camelbak.co.nz/pages/about-us",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.050554+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
-          "raw_bytes": 391775,
-          "raw_sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
-          "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
-          "locator": "HTML normalized text paragraph 156",
-          "short_quote": "filled an IV bag with water",
-          "quote_sha256": "ec76919020a9f02f533c7a7d1b74dd1bace7c7beb21d426560cb49373754e9ef",
-          "context_sha256": "6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25",
-          "scope": "NZ品牌回顧IV水袋、襪、車衣背後安放與管越肩。",
-          "not_supported": "後期品牌回顧；賽事年有分歧，不教醫材仿作。"
-        },
-        {
-          "anchor_id": "A03",
-          "source_id": "NZ_HISTORY",
-          "url": "https://camelbak.co.nz/pages/about-us",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.050554+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
-          "raw_bytes": 391775,
-          "raw_sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
-          "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
-          "locator": "HTML normalized text paragraph 156",
-          "short_quote": "its end clamped by a clothespin",
-          "quote_sha256": "626b26619c0c72bfe08785e5728f2b9c30f77e9d5b1f4f58de4337fdbf716fd2",
-          "context_sha256": "6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25",
-          "scope": "同段用衣夾夾管端，作手動出口控制。",
-          "not_supported": "不等自封咬閥，也非當年零漏水測試。"
-        }
-      ],
-      "limits": [
-        "後期品牌回顧；賽事年有分歧，不教醫材仿作。",
-        "不等自封咬閥，也非當年零漏水測試。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Medium shot of an anonymous cyclist looking thoughtfully at a plain shoulder tube near the mouth, overcast light.",
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
@@ -2621,66 +2541,6 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c14r1b04",
-      "chapter": "出口搬到手握瓶",
-      "claim": "原先是管子越肩來找嘴，現在瓶子被手拿起，短管把瓶裡的水接到上面的咬口。",
-      "claim_kind": "NARROW_CONTAINER_COMPARISON",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A02",
-        "A14"
-      ],
-      "source_ids": [
-        "NZ_HISTORY",
-        "TRADE2006"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A02",
-          "source_id": "NZ_HISTORY",
-          "url": "https://camelbak.co.nz/pages/about-us",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.050554+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.html",
-          "raw_bytes": 391775,
-          "raw_sha256": "a913b64dc4e994453c4d584cfe70e4e53906227d6d1c7bd075f922ad60190f9c",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/NZ_HISTORY.txt",
-          "text_sha256": "af44eb2e101a0e3bc00470a778062504841301b00c124d61b4d63596c4167197",
-          "locator": "HTML normalized text paragraph 156",
-          "short_quote": "filled an IV bag with water",
-          "quote_sha256": "ec76919020a9f02f533c7a7d1b74dd1bace7c7beb21d426560cb49373754e9ef",
-          "context_sha256": "6b4fb5509c01d9dd3af5d7213b26bc4f1fa31cddbd38a1078d9d055281bcca25",
-          "scope": "NZ品牌回顧IV水袋、襪、車衣背後安放與管越肩。",
-          "not_supported": "後期品牌回顧；賽事年有分歧，不教醫材仿作。"
-        },
-        {
-          "anchor_id": "A14",
-          "source_id": "TRADE2006",
-          "url": "https://gearjunkie.com/uncategorized/outdoor-retailer-trade-show-winter-market-2006-gear-highlights",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.519526+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.html",
-          "raw_bytes": 463338,
-          "raw_sha256": "8ce965756660c47a2b9b1ae4e9a228eabbbfd8a136af2fe04a3346089e0bab68",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.txt",
-          "text_sha256": "8da2a93c4fbf7ce4602ca2dd3075e62112014e277fe54a8044cbbca02a9d9cd4",
-          "locator": "HTML normalized text paragraph 143",
-          "short_quote": "same bite valve design",
-          "quote_sha256": "474bb8c620f3917a2df9a6ddc30d3e705c2e73b88c4fc1b479e6f002ed1517bf",
-          "context_sha256": "53b241b27e4c77a2d3973c56401d0c4648da6da2010ffd41a80fbf465cfa4b77",
-          "scope": "2006展場報導見透明0.75L瓶，翻起咬口接短吸管，說沿用水袋包咬閥設計。",
-          "not_supported": "May為預告、防漏為公司說法；不認定每款BetterBottle同SKU。"
-        }
-      ],
-      "limits": [
-        "後期品牌回顧；賽事年有分歧，不教醫材仿作。",
-        "May為預告、防漏為公司說法；不認定每款BetterBottle同SKU。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Close-up of an anonymous hand lifting a plain clear bottle, its short internal tube leading toward the mouthpiece, neutral light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c14r1b05",
       "chapter": "出口搬到手握瓶",
       "claim": "容器變了，讓出口在喝的時候打開，這個工作能一起搬過去嗎？",
@@ -2914,45 +2774,6 @@
       ],
       "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
       "visual_prompt": "Close-up of an anonymous hand holding a plain bottle upright with its mouthpiece folded down, diffuse indoor light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c14r1b10",
-      "chapter": "出口搬到手握瓶",
-      "claim": "我覺得，這次不是背水的點子被丟掉，而是把能帶走的控制，留在另一種容器上。",
-      "claim_kind": "AUTHOR_INTERPRETATION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A14"
-      ],
-      "source_ids": [
-        "TRADE2006"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A14",
-          "source_id": "TRADE2006",
-          "url": "https://gearjunkie.com/uncategorized/outdoor-retailer-trade-show-winter-market-2006-gear-highlights",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.519526+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.html",
-          "raw_bytes": 463338,
-          "raw_sha256": "8ce965756660c47a2b9b1ae4e9a228eabbbfd8a136af2fe04a3346089e0bab68",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/TRADE2006.txt",
-          "text_sha256": "8da2a93c4fbf7ce4602ca2dd3075e62112014e277fe54a8044cbbca02a9d9cd4",
-          "locator": "HTML normalized text paragraph 143",
-          "short_quote": "same bite valve design",
-          "quote_sha256": "474bb8c620f3917a2df9a6ddc30d3e705c2e73b88c4fc1b479e6f002ed1517bf",
-          "context_sha256": "53b241b27e4c77a2d3973c56401d0c4648da6da2010ffd41a80fbf465cfa4b77",
-          "scope": "2006展場報導見透明0.75L瓶，翻起咬口接短吸管，說沿用水袋包咬閥設計。",
-          "not_supported": "May為預告、防漏為公司說法；不認定每款BetterBottle同SKU。"
-        }
-      ],
-      "limits": [
-        "May為預告、防漏為公司說法；不認定每款BetterBottle同SKU。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Medium shot of an anonymous adult placing a plain bottle beside an open plain hydration pack, soft window light.",
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
@@ -3293,7 +3114,7 @@
     {
       "id": "c14r1t06",
       "chapter": "袋子被扭，嘴被反覆夾壓",
-      "claim": "同時，十二個咬閥夾在兩片金屬之間，模擬大人和孩子的牙齒反覆咬壓。",
+      "claim": "開場那副金屬牙齒，是兩片金屬夾著十二個咬閥，反覆模擬大人和孩子的咬壓。",
       "claim_kind": "REPORTED_TEST_ACTION",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -3330,48 +3151,9 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c14r1t07",
-      "chapter": "袋子被扭，嘴被反覆夾壓",
-      "claim": "開場那副金屬牙齒，到這裡有了工作：不只碰一下出口，而是反覆讓它受力。",
-      "claim_kind": "NAMED_TEASER_PAYOFF",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A21"
-      ],
-      "source_ids": [
-        "SONOMA2015"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A21",
-          "source_id": "SONOMA2015",
-          "url": "https://www.sonomamag.com/hands-free-hydration/",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.800430+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
-          "raw_bytes": 97870,
-          "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
-          "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
-          "locator": "HTML normalized text paragraph 76",
-          "short_quote": "a dozen bite valves",
-          "quote_sha256": "948d6fc3628e109dcd813c20dd03fd4cab34a29fc9ed52553e03ad0621e83c30",
-          "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
-          "scope": "同段現場看十二咬閥在金屬間夾壓模擬牙齒。",
-          "not_supported": "不是保證每天千次或終身不壞。"
-        }
-      ],
-      "limits": [
-        "不是保證每天千次或終身不壞。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Close-up of plain metal test plates pressing a row of flexible mouthpieces, diffuse side light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c14r1t08",
       "chapter": "袋子被扭，嘴被反覆夾壓",
-      "claim": "我覺得這個畫面比一句耐用有用得多；袋子和咬口，承受的動作根本不同。",
+      "claim": "我覺得這個畫面，比一句耐用更值得細看。",
       "claim_kind": "AUTHOR_REACTION",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -3428,127 +3210,9 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c14r1t09",
-      "chapter": "袋子被扭，嘴被反覆夾壓",
-      "claim": "你可能會追問：夾了多少次、多久壞，最後有幾個通過？",
-      "claim_kind": "OBSERVATION_RESULT_LIMIT",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A20",
-        "A21"
-      ],
-      "source_ids": [
-        "SONOMA2015"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A20",
-          "source_id": "SONOMA2015",
-          "url": "https://www.sonomamag.com/hands-free-hydration/",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.800430+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
-          "raw_bytes": 97870,
-          "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
-          "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
-          "locator": "HTML normalized text paragraph 76",
-          "short_quote": "pressed and twisted",
-          "quote_sha256": "2f794a2dbf35989ca7d087e50f9e073480901ecf8149461a983f9658d120e76b",
-          "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
-          "scope": "2015記者現場看袋體受壓扭。",
-          "not_supported": "只有動作，沒有條件／通過率／精確壽命。"
-        },
-        {
-          "anchor_id": "A21",
-          "source_id": "SONOMA2015",
-          "url": "https://www.sonomamag.com/hands-free-hydration/",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.800430+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
-          "raw_bytes": 97870,
-          "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
-          "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
-          "locator": "HTML normalized text paragraph 76",
-          "short_quote": "a dozen bite valves",
-          "quote_sha256": "948d6fc3628e109dcd813c20dd03fd4cab34a29fc9ed52553e03ad0621e83c30",
-          "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
-          "scope": "同段現場看十二咬閥在金屬間夾壓模擬牙齒。",
-          "not_supported": "不是保證每天千次或終身不壞。"
-        }
-      ],
-      "limits": [
-        "只有動作，沒有條件／通過率／精確壽命。",
-        "不是保證每天千次或終身不壞。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Close-up of an anonymous adult looking at a blank results sheet beside a plain mouthpiece test fixture, soft lamp light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c14r1t10",
-      "chapter": "袋子被扭，嘴被反覆夾壓",
-      "claim": "這篇報導沒有交出那張成績表，留下的，是袋體與嘴部分別被施力的現場。",
-      "claim_kind": "TEST_SCOPE_BOUNDARY",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A20",
-        "A21"
-      ],
-      "source_ids": [
-        "SONOMA2015"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A20",
-          "source_id": "SONOMA2015",
-          "url": "https://www.sonomamag.com/hands-free-hydration/",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.800430+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
-          "raw_bytes": 97870,
-          "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
-          "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
-          "locator": "HTML normalized text paragraph 76",
-          "short_quote": "pressed and twisted",
-          "quote_sha256": "2f794a2dbf35989ca7d087e50f9e073480901ecf8149461a983f9658d120e76b",
-          "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
-          "scope": "2015記者現場看袋體受壓扭。",
-          "not_supported": "只有動作，沒有條件／通過率／精確壽命。"
-        },
-        {
-          "anchor_id": "A21",
-          "source_id": "SONOMA2015",
-          "url": "https://www.sonomamag.com/hands-free-hydration/",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.800430+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.html",
-          "raw_bytes": 97870,
-          "raw_sha256": "7e439580aa7a783bdce46c96358b89bbf2432b0d3cbc4a033bcefcb722a534cd",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SONOMA2015.txt",
-          "text_sha256": "2e5b8ea58eaef099248dc8aede267d23402475888393aaa55c059741e421480c",
-          "locator": "HTML normalized text paragraph 76",
-          "short_quote": "a dozen bite valves",
-          "quote_sha256": "948d6fc3628e109dcd813c20dd03fd4cab34a29fc9ed52553e03ad0621e83c30",
-          "context_sha256": "56913122db4049f385f11a1ce211d8dd6b01bec473e7f02b1477262d51753cee",
-          "scope": "同段現場看十二咬閥在金屬間夾壓模擬牙齒。",
-          "not_supported": "不是保證每天千次或終身不壞。"
-        }
-      ],
-      "limits": [
-        "只有動作，沒有條件／通過率／精確壽命。",
-        "不是保證每天千次或終身不壞。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Medium shot of an anonymous technician removing one plain mouthpiece from a metal fixture, diffuse light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c14r1t11",
       "chapter": "袋子被扭，嘴被反覆夾壓",
-      "claim": "而出口要被咬，前提是手裡真有一個能變形的樣件；螢幕上的形狀，怎麼交給嘴試？",
+      "claim": "而螢幕上的咬口形狀，還不是你能碰到的軟零件；工程師先怎麼把它做出來？",
       "claim_kind": "FORWARD_PHYSICAL_PROTOTYPE_QUESTION",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -3646,7 +3310,7 @@
     {
       "id": "c14r1m02",
       "chapter": "模具裡出來的是能試的矽膠件",
-      "claim": "他先做出三維列印模具，再用模具做真正的矽膠零件；列印的，不是拿來咬的塑膠替身。",
+      "claim": "開場那副模具，是他用三維列印做的，再用來製作矽膠咬閥樣件。",
       "claim_kind": "ATTRIBUTED_MANUFACTURING_ACTION",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -3703,148 +3367,9 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c14r1m03",
-      "chapter": "模具裡出來的是能試的矽膠件",
-      "claim": "如果要知道放開會不會回閉，你拿一塊硬的外形模型，能替軟零件回答嗎？",
-      "claim_kind": "VIEWER_PHYSICAL_PROTOTYPE_QUESTION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A18",
-        "A19",
-        "A11"
-      ],
-      "source_ids": [
-        "SW_PDF",
-        "PAT_MOUTH_PDF"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A18",
-          "source_id": "SW_PDF",
-          "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
-          "raw_bytes": 350662,
-          "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
-          "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
-          "locator": "PDF page 3",
-          "short_quote": "one-piece, self-sealing, silicone bite valve",
-          "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
-          "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
-          "scope": "Aaron McCready以3D列印模做一體自封矽膠咬口樣件。",
-          "not_supported": "具名工程師供應商個案，不是最初發明／初代模具。"
-        },
-        {
-          "anchor_id": "A19",
-          "source_id": "SW_PDF",
-          "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
-          "raw_bytes": 350662,
-          "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
-          "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
-          "locator": "PDF page 3",
-          "short_quote": "actual silicone parts for testing in two days",
-          "quote_sha256": "50140394d4826e1615d9e2e268f8647846933e9da03d2c83e13c6f925eabd6d1",
-          "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
-          "scope": "工程師稱兩天有實體矽膠測試件，外部做可能兩個月。",
-          "not_supported": "兩天為回述；兩個月是likely估計，不作A/B實測或耐久通過率。"
-        },
-        {
-          "anchor_id": "A11",
-          "source_id": "PAT_MOUTH_PDF",
-          "url": "https://patentimages.storage.googleapis.com/d3/a6/f4/06b770a5034b16/US6070767.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:45:31.236824+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
-          "raw_bytes": 1071928,
-          "raw_sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.txt",
-          "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
-          "locator": "PDF page 8",
-          "short_quote": "fifty-five durometer silicone",
-          "quote_sha256": "2ab2192d474f22bfe2137c9027200c7d097ad1d7ca83ccf049905c60429eaa96",
-          "context_sha256": "71842d1adef4e27679e2588b0b55aad4f354cb8246fafcd5eca21e9547812f18",
-          "scope": "材料須能回閉；原件舉55durometer矽膠例。",
-          "not_supported": "例子非全品牌配方、現售材料或醫療認證。"
-        }
-      ],
-      "limits": [
-        "具名工程師供應商個案，不是最初發明／初代模具。",
-        "兩天為回述；兩個月是likely估計，不作A/B實測或耐久通過率。",
-        "例子非全品牌配方、現售材料或醫療認證。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Medium shot of an anonymous engineer comparing a rigid blank model with a flexible mouthpiece sample, soft side light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c14r1m04",
-      "chapter": "模具裡出來的是能試的矽膠件",
-      "claim": "這次交到手裡的是可拿去測的矽膠件，形狀與材料，才有機會一起接受人的測試。",
-      "claim_kind": "ATTRIBUTED_PROTOTYPE_RESULT",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A18",
-        "A19"
-      ],
-      "source_ids": [
-        "SW_PDF"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A18",
-          "source_id": "SW_PDF",
-          "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
-          "raw_bytes": 350662,
-          "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
-          "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
-          "locator": "PDF page 3",
-          "short_quote": "one-piece, self-sealing, silicone bite valve",
-          "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
-          "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
-          "scope": "Aaron McCready以3D列印模做一體自封矽膠咬口樣件。",
-          "not_supported": "具名工程師供應商個案，不是最初發明／初代模具。"
-        },
-        {
-          "anchor_id": "A19",
-          "source_id": "SW_PDF",
-          "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
-          "raw_bytes": 350662,
-          "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
-          "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
-          "locator": "PDF page 3",
-          "short_quote": "actual silicone parts for testing in two days",
-          "quote_sha256": "50140394d4826e1615d9e2e268f8647846933e9da03d2c83e13c6f925eabd6d1",
-          "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
-          "scope": "工程師稱兩天有實體矽膠測試件，外部做可能兩個月。",
-          "not_supported": "兩天為回述；兩個月是likely估計，不作A/B實測或耐久通過率。"
-        }
-      ],
-      "limits": [
-        "具名工程師供應商個案，不是最初發明／初代模具。",
-        "兩天為回述；兩個月是likely估計，不作A/B實測或耐久通過率。"
-      ],
-      "author_context": "可測樣件的取得，不聲稱真人實測已執行或通過。",
-      "visual_prompt": "Close-up of an anonymous engineer lightly flexing a plain silicone mouthpiece sample, soft lamp light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c14r1m05",
       "chapter": "模具裡出來的是能試的矽膠件",
-      "claim": "工程師回述，這樣兩天就拿到了測試零件；那個數字買到的是能試，不是已經證明不壞。",
+      "claim": "工程師回述，這樣兩天就拿到了測試零件。",
       "claim_kind": "ATTRIBUTED_TWO_DAY_RESULT_WITH_SCOPE",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -3881,68 +3406,9 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c14r1m06",
-      "chapter": "模具裡出來的是能試的矽膠件",
-      "claim": "我喜歡這個結果，因為下一個判斷不用只對著螢幕做；手裡已經有東西，能交給真的人。",
-      "claim_kind": "AUTHOR_REACTION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A18",
-        "A19"
-      ],
-      "source_ids": [
-        "SW_PDF"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A18",
-          "source_id": "SW_PDF",
-          "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
-          "raw_bytes": 350662,
-          "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
-          "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
-          "locator": "PDF page 3",
-          "short_quote": "one-piece, self-sealing, silicone bite valve",
-          "quote_sha256": "96f38314643288e40fa722a1d33dfd18dfd665f6f29a9443727ec26f09f3db89",
-          "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
-          "scope": "Aaron McCready以3D列印模做一體自封矽膠咬口樣件。",
-          "not_supported": "具名工程師供應商個案，不是最初發明／初代模具。"
-        },
-        {
-          "anchor_id": "A19",
-          "source_id": "SW_PDF",
-          "url": "https://files.solidworks.com/casestudies_eng/pdf/CamelBak_CaseStudy_102116.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:44:19.447258+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.pdf",
-          "raw_bytes": 350662,
-          "raw_sha256": "8a08b6b67ba8c0022c75043f91e0b61fabd84bc82615bd6c3f23972d99dc5cda",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/SW_PDF.txt",
-          "text_sha256": "36779508070e609c495dcf5ef6c7e09e223a80c3ec6eb4077fee7a21f5c7c2fe",
-          "locator": "PDF page 3",
-          "short_quote": "actual silicone parts for testing in two days",
-          "quote_sha256": "50140394d4826e1615d9e2e268f8647846933e9da03d2c83e13c6f925eabd6d1",
-          "context_sha256": "c354bd10012b9fafd3ecad168be0cb2612ff3ffcab109c6b5f194b1c78b2e86d",
-          "scope": "工程師稱兩天有實體矽膠測試件，外部做可能兩個月。",
-          "not_supported": "兩天為回述；兩個月是likely估計，不作A/B實測或耐久通過率。"
-        }
-      ],
-      "limits": [
-        "具名工程師供應商個案，不是最初發明／初代模具。",
-        "兩天為回述；兩個月是likely估計，不作A/B實測或耐久通過率。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Medium shot of an anonymous tester receiving a plain flexible mouthpiece sample on a clean tray, soft indoor light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c14r1m07",
       "chapter": "模具裡出來的是能試的矽膠件",
-      "claim": "拿到軟樣件以後，工程師最想再取得什麼？",
+      "claim": "我更想知道，拿到軟樣件後，工程師還想取得什麼？",
       "claim_kind": "FORWARD_USER_FEEDBACK_QUESTION",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -4021,7 +3487,7 @@
     {
       "id": "c14r1m08",
       "chapter": "模具裡出來的是能試的矽膠件",
-      "claim": "他說，越能從真人測試取得回饋越好；能被人試的出口，才有機會把感受帶回設計。",
+      "claim": "他說，越能從真人測試取得回饋越好。",
       "claim_kind": "ATTRIBUTED_USER_FEEDBACK_PURPOSE",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -4100,7 +3566,7 @@
     {
       "id": "c14r1m09",
       "chapter": "模具裡出來的是能試的矽膠件",
-      "claim": "可是，就算嘴邊會自封，補水時還有另一個開口必須打開；那裡也能守住水嗎？",
+      "claim": "可是，就算你嘴邊的咬口會自封，補水時還有另一個開口必須打開；那裡也能守住水嗎？",
       "claim_kind": "FORWARD_REFILL_SEAL_QUESTION",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
@@ -4199,8 +3665,8 @@
     {
       "id": "c14r1r02",
       "chapter": "嘴關好了，蓋邊還有一條縫",
-      "claim": "這一款還有單手開關，可以關住飲水管；嘴邊的自封口器，另負責每次喝完後的回閉。",
-      "claim_kind": "CURRENT_PRODUCT_DISTINCT_CONTROLS",
+      "claim": "這一款另有單手開關，讓你用一隻手關住飲水管。",
+      "claim_kind": "CURRENT_PRODUCT_SHUTOFF_CONTROL",
       "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
       "anchor_ids": [
         "A28"
@@ -4453,65 +3919,6 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c14r1r07",
-      "chapter": "嘴關好了，蓋邊還有一條縫",
-      "claim": "所以你手上看似已經轉緊的蓋子，裡面仍可能有一個地方，沒有貼好。",
-      "claim_kind": "VIEWER_PHYSICAL_INTERPRETATION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A22",
-        "A_CARE_CONTEXT"
-      ],
-      "source_ids": [
-        "CARE"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A22",
-          "source_id": "CARE",
-          "url": "https://www.camelbak.com/care-and-cleaning.html",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.052662+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
-          "raw_bytes": 131072,
-          "raw_sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
-          "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
-          "locator": "HTML normalized text paragraph 73",
-          "short_quote": "grit in the cap threads, or a twisted O-ring",
-          "quote_sha256": "dc75706319f50bbfa25e91879e515b0844cef5833c31d78da6ec76562963b938",
-          "context_sha256": "891f9a5b093fb3ee8aebbdde0be0dac71415805953d2f21dd76708a3abc425db",
-          "scope": "現行官方列袋蓋漏水兩可能原因：螺紋砂粒、扭曲O-ring。",
-          "not_supported": "非完整故障診斷、非初代已發生故障。"
-        },
-        {
-          "anchor_id": "A_CARE_CONTEXT",
-          "source_id": "CARE",
-          "url": "https://www.camelbak.com/care-and-cleaning.html",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.052662+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
-          "raw_bytes": 131072,
-          "raw_sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
-          "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
-          "locator": "HTML normalized text paragraph 75",
-          "short_quote": "If the ring is twisted or pulled out of shape",
-          "quote_sha256": "13ee3cac8e869feabbd16d4dee5e2e6bc016089c127d7daa4c612fd5f5924579",
-          "context_sha256": "9d3a127b4a97f07f19194b965faab01538c25de1438740718e8f6ebdfdda14ff",
-          "scope": "蓋內密封圈變形可能不能正確密合。",
-          "not_supported": "現行故障可能原因，非全故障表或初代歷史事件。"
-        }
-      ],
-      "limits": [
-        "非完整故障診斷、非初代已發生故障。",
-        "現行故障可能原因，非全故障表或初代歷史事件。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Medium shot of an anonymous adult studying the underside of a plain reservoir cap, diffuse daylight.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c14r1r08",
       "chapter": "嘴關好了，蓋邊還有一條縫",
       "claim": "能不能在背出去以前，讓這條縫先露出來？",
@@ -4587,45 +3994,6 @@
       ],
       "author_context": "第三人稱歸屬現行指引的檢查動作，不當本片親測、初代故障或醫療/戶外安全保證。",
       "visual_prompt": "Medium shot of an anonymous adult gently turning a plain filled reservoir over a sink to inspect its cap, diffuse light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c14r1r10",
-      "chapter": "嘴關好了，蓋邊還有一條縫",
-      "claim": "這個動作讓蓋口也承受水與擠壓；觀察的位置，從嘴邊移到了整個裝水的袋子。",
-      "claim_kind": "NARROW_INSPECTION_INTERPRETATION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A23"
-      ],
-      "source_ids": [
-        "CARE"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A23",
-          "source_id": "CARE",
-          "url": "https://www.camelbak.com/care-and-cleaning.html",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.052662+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
-          "raw_bytes": 131072,
-          "raw_sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
-          "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
-          "locator": "HTML normalized text paragraph 97",
-          "short_quote": "rotating/squishing the reservoir",
-          "quote_sha256": "85bbcde14a435234146875dac22a9c9e1190ff12c898cba044a0162b0b8e486d",
-          "context_sha256": "89d8375a854c0e48211b77f143f304d6b057d87a220be693bb3e95bab68a2c71",
-          "scope": "季前裝水後轉動／壓扭查漏；鄰段解釋砂粒或O-ring妨礙密封。",
-          "not_supported": "現行檢查指引，沒有本片實作，不作野外或醫療安全保證。"
-        }
-      ],
-      "limits": [
-        "現行檢查指引，沒有本片實作，不作野外或醫療安全保證。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Close-up of an anonymous hand pressing a plain filled reservoir while watching its cap rim above a sink, soft side light.",
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
@@ -5083,66 +4451,6 @@
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {
-      "id": "c14r1d07",
-      "chapter": "最後一點水，得離開角落",
-      "claim": "出口能回閉，這時卻不能替內部乾燥；袋口得打開，貼合的內壁得分開。",
-      "claim_kind": "PHYSICAL_FUNCTION_CONTRAST",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A10",
-        "A26"
-      ],
-      "source_ids": [
-        "PAT_MOUTH_PDF",
-        "CLEAN"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A10",
-          "source_id": "PAT_MOUTH_PDF",
-          "url": "https://patentimages.storage.googleapis.com/d3/a6/f4/06b770a5034b16/US6070767.pdf",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:45:31.236824+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.pdf",
-          "raw_bytes": 1071928,
-          "raw_sha256": "5838024d56fe0c30cf8633b3b84d15488e0f55f1bea7e0424bb23c7cfdc80d17",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/PAT_MOUTH_PDF.txt",
-          "text_sha256": "e233321839a4f27c0b9e63f515fc273ce64384b0cae2802afe275b4c52ad3bfd",
-          "locator": "PDF page 1",
-          "short_quote": "normally closed slit",
-          "quote_sha256": "e5a58ca4190dd0c2d0034949307346347ff101eb3342c8441e90a07d6f11cb37",
-          "context_sha256": "b5d06b15bcd15bfa491cbc7b19f8204a23c03832ef694439874e1bdc7974d7a9",
-          "scope": "1998送件／2000授權口器，彈性狹縫常閉、壓形變可出水。",
-          "not_supported": "特定設計，不是所有SKU或首款採用／流量實測。"
-        },
-        {
-          "anchor_id": "A26",
-          "source_id": "CLEAN",
-          "url": "https://www.camelbak.com/how-to-clean-dry-store-hydration-reservoir.html",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.265811+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.html",
-          "raw_bytes": 125454,
-          "raw_sha256": "e2b55a1c255394a936a5f560e6525345f966a8fbfd956bdcdfb65d9b5006eb86",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.txt",
-          "text_sha256": "ff4044f54d4eeb107aa0e3137865f7a8e583e31c828f7fcd6bf96e2c07602c6b",
-          "locator": "HTML normalized text paragraph 125",
-          "short_quote": "Prop the reservoir open",
-          "quote_sha256": "bc1e2f2842c99744745b69fe36184755e4f36f19bd51d9b828851b4eaf9e03f0",
-          "context_sha256": "369a41a16b6df8b363878cb031d530ac45a15a45dd62e6ac9a0e39aee8a5a068",
-          "scope": "撐開袋體讓空氣進內部、分開內壁利排水。",
-          "not_supported": "現行使用環節，不倒寫為早期研發原因；僅可拆件拆卸。"
-        }
-      ],
-      "limits": [
-        "特定設計，不是所有SKU或首款採用／流量實測。",
-        "現行使用環節，不倒寫為早期研發原因；僅可拆件拆卸。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Close-up of a plain reservoir held open on a simple drying support beside a separate closed mouthpiece, diffuse indoor light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
       "id": "c14r1d08",
       "chapter": "最後一點水，得離開角落",
       "claim": "飲水管若緊緊盤起來，原廠說水可能積在低處；怎麼讓管內也有乾燥的路？",
@@ -5395,66 +4703,6 @@
       ],
       "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
       "visual_prompt": "Medium shot of an anonymous adult setting fully aired plain reservoir parts beside an open storage bag, diffuse window light.",
-      "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
-    },
-    {
-      "id": "c14r1d14",
-      "chapter": "最後一點水，得離開角落",
-      "claim": "我想，讓你下一次還能拿起這袋水的方便，就藏在這個沒有水的結尾裡。",
-      "claim_kind": "AUTHOR_CLOSING_INTERPRETATION",
-      "status": "PENDING_INDEPENDENT_SOURCE_AND_WRITTEN_VISUAL_REVIEW",
-      "anchor_ids": [
-        "A24",
-        "A27"
-      ],
-      "source_ids": [
-        "CARE",
-        "CLEAN"
-      ],
-      "evidence": [
-        {
-          "anchor_id": "A24",
-          "source_id": "CARE",
-          "url": "https://www.camelbak.com/care-and-cleaning.html",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.052662+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.html",
-          "raw_bytes": 131072,
-          "raw_sha256": "3cd16c5cfa998c2405a3a94c572f201f1d3685e958943641b27e9da4133305aa",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CARE.txt",
-          "text_sha256": "b22c8f9fb59641e2cbac4d30c1743558547035793a7d07e826fe2fb3ee38109a",
-          "locator": "HTML normalized text paragraph 71",
-          "short_quote": "no moisture is trapped inside",
-          "quote_sha256": "45e474367d4249e97132530966f285b768ab55d0e80202ab6330a416baea6b84",
-          "context_sha256": "89947ba908613ac61de83924c5c00afbbd9f333e67772f5fafca6bbb3839c377",
-          "scope": "官方要求收存前乾燥，避免內部困水。",
-          "not_supported": "不承諾無菌／防病，不教消毒配方。"
-        },
-        {
-          "anchor_id": "A27",
-          "source_id": "CLEAN",
-          "url": "https://www.camelbak.com/how-to-clean-dry-store-hydration-reservoir.html",
-          "http_status": 200,
-          "retrieved_at_utc": "2026-10-25T21:43:28.265811+00:00",
-          "raw_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.html",
-          "raw_bytes": 125454,
-          "raw_sha256": "e2b55a1c255394a936a5f560e6525345f966a8fbfd956bdcdfb65d9b5006eb86",
-          "text_path": "/workspace/work/brand-story-20261025/c14-audit/source-cache/CLEAN.txt",
-          "text_sha256": "ff4044f54d4eeb107aa0e3137865f7a8e583e31c828f7fcd6bf96e2c07602c6b",
-          "locator": "HTML normalized text paragraph 131",
-          "short_quote": "droplets or condensation",
-          "quote_sha256": "bd5f831c5b7d8074331a58a1832bbed3873cb6ad17810f436fac033f302ab5db",
-          "context_sha256": "c1a5301d3d8e5475be615dab27daf3d4e3084e44c846b53292dd7a29ba630fef",
-          "scope": "收前查接縫／角落／管／接口的殘滴或凝結。",
-          "not_supported": "可觀察要求，非本片已測結果。"
-        }
-      ],
-      "limits": [
-        "不承諾無菌／防病，不教消毒配方。",
-        "可觀察要求，非本片已測結果。"
-      ],
-      "author_context": "物件/功能相連不代表同一袋水、同一部件、型號、批次或已證歷史研發因果。",
-      "visual_prompt": "Medium shot of an anonymous adult holding an empty plain hydration pack ready for storage, soft indoor light.",
       "visual_kind": "ORIGINAL_ANONYMOUS_CONCEPT_ILLUSTRATION_NOT_ARCHIVAL_REENACTMENT"
     },
     {

@@ -1,6 +1,6 @@
-# C14 R3｜一袋水與出口
+# C14 R6｜一袋水與出口
 
-HOLD：作者/原研究員交第一稿；沒有獨立來源、敘事、實聲圖像或owner核准。新slug story-everyday-camelbak-c14-remake-20261025，category story / format drama；video無series欄位，不rebind舊集。父task已涵蓋，未另開task。
+HOLD：R6保留來源新動作並刪除重複功能總結，尚待本版獨立來源與全新讀者；沒有實聲圖像或owner核准。新slug story-everyday-camelbak-c14-remake-20261025，category story / format drama；video無series欄位，不rebind舊集。父task已涵蓋，未另開task。
 
 ## 問題
 
@@ -28,7 +28,7 @@ HOLD：作者/原研究員交第一稿；沒有獨立來源、敘事、實聲圖
 
 ## 官方字量與時長
 
-全旁白 2663 native spokenUnits，含coldopen 163與有聲CTA 106。扣coldopen 2500；再扣CTA 2394，兩個只屬規劃分項。官方body是actual narration timeline整份，只排另加5s/21s branding。4–5units/s算術範圍 532.6–665.8秒，4.5/s約591.8秒；不是實聲。有效量低於rough3500，13min/720–840s仍強HOLD，不用慢播、警語、重述、商業副線或假想失敗補字。
+全旁白 2168 native spokenUnits，含coldopen 173與有聲CTA 106。扣coldopen 1995；再扣CTA 1889，兩個只屬規劃分項。官方body是actual narration timeline整份，只排另加5s/21s branding。4–5units/s算術範圍 433.6–542.0秒，4.5/s約481.8秒；不是實聲。有效量低於rough3500，13min/720–840s仍強HOLD，不用慢播、警語、重述、商業副線或假想失敗補字。
 
 ## 執行規格（recipe，未取素材）
 

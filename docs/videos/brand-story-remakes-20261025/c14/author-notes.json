@@ -1,36 +1,36 @@
 {
   "schema_version": 1,
-  "candidate_revision": "c14-r3",
-  "author": "/root/c05_r10_author",
-  "author_is_original_researcher": true,
+  "candidate_revision": "c14-r6",
+  "author": "/root/c14_r4_author",
+  "author_is_original_researcher": false,
   "status": "HOLD_PENDING_INDEPENDENT_SOURCE_FRESH_READERS_AND_ACTUAL_DURATION",
   "slug": "story-everyday-camelbak-c14-remake-20261025",
   "counts": {
-    "lines": 90,
-    "scenes": 88,
+    "lines": 77,
+    "scenes": 75,
     "chapters": 7,
-    "illustrations": 87,
+    "illustrations": 74,
     "cards": 1,
-    "loops": 27,
+    "loops": 25,
     "source_documents": 12,
     "anchors": 32,
-    "evidence_bindings": 150,
-    "rows_with_source": 88,
+    "evidence_bindings": 125,
+    "rows_with_source": 75,
     "editorial_CTA_without_historical_claims": 2
   },
   "native_units": {
     "counter": "spokenUnits(spokenText(line))",
-    "official_narration_body_planning_units": 2663,
-    "coldopen": 163,
+    "official_narration_body_planning_units": 2168,
+    "coldopen": 173,
     "voiced_CTA": 106,
-    "after_opening_planning_only": 2500,
-    "after_opening_and_CTA_planning_only": 2394,
+    "after_opening_planning_only": 1995,
+    "after_opening_and_CTA_planning_only": 1889,
     "official_duration_scope": "all actual narration including coldopen and voiced CTA; excludes separately added 5s/21s channel bookends",
     "arithmetic_seconds_at_4_to_5": [
-      532.6,
-      665.75
+      433.6,
+      542
     ],
-    "at_4_5_units_per_second": 591.7777777777778,
+    "at_4_5_units_per_second": 481.77777777777777,
     "actual_tts_seconds": null,
     "actual_duration_verified": false,
     "length_hold": true,
@@ -41,36 +41,34 @@
     "basis": "DEFAULT_CPM250 planning only, not actual voice",
     "questions_or_chapter_starts": [
       0,
-      37.266666666666666,
-      45.233333333333334,
-      71.06666666666666,
-      95.93333333333334,
-      129.03333333333333,
-      161.63333333333333,
-      177.56666666666666,
-      192.53333333333333,
-      234.76666666666668,
-      240.33333333333334,
-      273.2,
-      297.3333333333333,
-      320.76666666666665,
-      328.96666666666664,
-      352.6333333333333,
-      389.6,
-      403.8666666666667,
-      412.8,
-      432.1,
-      468.03333333333336,
-      482.06666666666666,
-      490.53333333333336,
-      518.3,
-      548.7666666666667,
-      579.4666666666667,
-      586.7333333333333,
-      619.8333333333334,
-      643.2666666666667,
-      669.1,
-      701.7
+      40.7,
+      48.666666666666664,
+      62.233333333333334,
+      77.93333333333334,
+      111.03333333333333,
+      143.63333333333333,
+      159.56666666666666,
+      174.53333333333333,
+      216.76666666666668,
+      222.33333333333334,
+      246.5,
+      270.6333333333333,
+      285.3666666666667,
+      293.56666666666666,
+      317.23333333333335,
+      343.6333333333333,
+      352.1,
+      374.3666666666667,
+      384.76666666666665,
+      394.1666666666667,
+      418.56666666666666,
+      441.3,
+      463.3,
+      470.56666666666666,
+      503.6666666666667,
+      519.3666666666667,
+      545.2,
+      569.8333333333334
     ],
     "maximum_gap_seconds": 42.23333333333335,
     "actual_audio_cadence_pending": true
@@ -98,8 +96,8 @@
       "A06",
       "A07",
       "A03",
-      "A18",
       "A21",
+      "A18",
       "A10",
       "A14",
       "A19",
@@ -465,7 +463,7 @@
     "stillmotion": true,
     "minimum_body_illustration_share": 0.7,
     "maximum_consecutive_cards": 3,
-    "planned_illustration_spoken_unit_share": 0.9601952684941795,
+    "planned_illustration_spoken_unit_share": 0.9511070110701108,
     "burn_in_zh_tw": true,
     "cc_zh_tw": true,
     "intro": {
@@ -497,7 +495,7 @@
     "root": "/workspace/work/brand-story-20261025/c14-submission-root",
     "slug": "story-everyday-camelbak-c14-remake-20261025",
     "scope": "Initialized native mechanical lint only, not a source/narrative/owner review.",
-    "runtime_video_sha256": "4776ef057a09c26774a31e489a586b36c31b1c386d50adb31dfec1d04de467af",
+    "runtime_video_sha256": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
     "immutable_lexicon_sha256": "5da8ab42711b4d489d026db42915554e300acf174c395a051da9b30ae024cbce",
     "lexicon_not_overwritten": true,
     "result": {
@@ -505,22 +503,30 @@
       "warnings": [
         {
           "path": "scenes",
-          "message": "\"mouthpiece\" is in 40 of 87 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+          "message": "\"mouthpiece\" is in 32 of 74 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "\"reservoir\" is in 25 of 74 pictures (a third is plenty): give each chapter its own place and props so the video travels"
+        },
+        {
+          "path": "scenes",
+          "message": "about 10.0 minutes; the target is 12-14"
         }
       ],
       "summary": {
-        "minutes": 12.16,
-        "lines": 90,
-        "spoken_units": 2663,
-        "billable_characters": 8379,
+        "minutes": 9.962222222222222,
+        "lines": 77,
+        "spoken_units": 2168,
+        "billable_characters": 6940,
         "chapters": [
           "00:00 水在背上，出口誰管？",
-          "00:45 衣夾守住的出口，換成回閉的狹縫",
-          "04:00 出口搬到手握瓶",
-          "05:28 袋子被扭，嘴被反覆夾壓",
-          "06:52 模具裡出來的是能試的矽膠件",
-          "08:10 嘴關好了，蓋邊還有一條縫",
-          "09:46 最後一點水，得離開角落"
+          "00:48 衣夾守住的出口，換成回閉的狹縫",
+          "03:42 出口搬到手握瓶",
+          "04:53 袋子被扭，嘴被反覆夾壓",
+          "05:52 模具裡出來的是能試的矽膠件",
+          "06:34 嘴關好了，蓋邊還有一條縫",
+          "07:50 最後一點水，得離開角落"
         ]
       }
     },
@@ -530,7 +536,7 @@
   },
   "runtime_preparation": {
     "helper": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/prepare-runtime.mjs",
-    "runtime_manifest_sha256": "4320db25af3651c0f651f827cf721a5afefa9e4d6bfcc6b2930d59ed78e45a90",
+    "runtime_manifest_sha256": "916dc74e3ea31af2b9a326712b2134567f08cacfda89255c682dc4087e8d20e0",
     "prepared_project_ids": [
       "c14"
     ],
@@ -539,17 +545,28 @@
     "approvals_created": 0,
     "paid_media_created": false
   },
+  "opening_teaser_asset_reuse": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/asset-reuse-plan.json",
+    "sha256": "81017f59a9c7706243a39e38e9a82bac490e297e2ab437804ea2b05feb762ea3",
+    "pairs": [
+      [
+        "c14r1h04",
+        "c14r1t06"
+      ],
+      [
+        "c14r1h07",
+        "c14r1m02"
+      ]
+    ],
+    "actual_same_file_verified": false,
+    "production_images_generated": 0,
+    "native_manifest_created": false
+  },
   "at_least_eight_concrete_action_payoff_bindings": [
     {
       "setup": "c14r1h04",
       "payoff": "c14r1t06",
       "what": "開場的金屬牙齒：十二咬閥被反覆夾壓",
-      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
-    },
-    {
-      "setup": "c14r1h04",
-      "payoff": "c14r1m05",
-      "what": "開場的模具：兩天拿到實體矽膠測試件",
       "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
     },
     {
@@ -602,14 +619,8 @@
     },
     {
       "setup": "c14r1t11",
-      "payoff": "c14r1m04",
-      "what": "列印模製出可測的真矽膠件",
-      "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
-    },
-    {
-      "setup": "c14r1m03",
-      "payoff": "c14r1m05",
-      "what": "軟件取得讓形狀與材料可受測",
+      "payoff": "c14r1m02",
+      "what": "螢幕形狀做成三維列印模具，再成為實體矽膠咬閥",
       "status": "AUTHOR_INTENT_PENDING_INDEPENDENT_JUDGMENT"
     },
     {
@@ -664,25 +675,53 @@
     "next_actual_native_panel": 2,
     "author_has_not_voted": true
   },
+  "author_revision4": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/revision4.json",
+    "sha256": "8a10b7bc4e2f25ce17e02f4d8c6e75e9bf7f85fea958254d8c410c2b793f0177",
+    "previous_author_revision": 3,
+    "previous_actual_native_panel": 2,
+    "next_actual_native_panel": 3,
+    "author_has_not_voted": true
+  },
+  "author_revision5": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/revision5.json",
+    "sha256": "4d10f643ca6af89954a8e09ef8edece81bd1e0411587d26cc649984cd537236c",
+    "previous_author_revision": 4,
+    "previous_actual_native_panel": 3,
+    "next_actual_native_panel": 4,
+    "author_has_not_voted": true
+  },
+  "author_revision6": {
+    "path": "/workspace/work/brand-remakes-source/docs/videos/brand-story-remakes-20261025/c14/revision6.json",
+    "sha256": "ac58dea5f13f7ffc48fc6e0f70c823ae84fe711ea8bfdd736e0f79faa0a5b997",
+    "previous_author_revision": 5,
+    "previous_actual_native_panel": 4,
+    "next_actual_native_panel": 5,
+    "author_has_not_voted": true
+  },
   "file_sha256": {
-    "video.json": "4776ef057a09c26774a31e489a586b36c31b1c386d50adb31dfec1d04de467af",
-    "script.md": "9a663e2e2e1228bf574443af70677248f7e03c4e67f1df65be21648e43a95e79",
-    "narration-only.json": "d6763b8e8e50a1a8088b17e298e3b265d552c1a91c33e325ef7b4104671aecdc",
-    "claims.json": "4e0d00d525fb0ccf01e1ee7b585fccf4244600ade482bbed09a9e5063489c0f1",
-    "claims.md": "c2dded8f1669ef5b0898377537f16808d689314f1f3e49efdc95085096a1bd8a",
-    "brief.md": "7ea35124f77dceb397808a877769633ab54fdea02e8f8edd24b453b0818675c7",
-    "series.json": "cebced708809e501a815d3458ab3afdb688cf220ba1cf44d787dc5b5aff937b1",
-    "author-materials.json": "4f167772dd9184ae1c6da404debfd416a4bfb0d85a9ce5feb53c4a4d526c0da7",
-    "build-candidate.mjs": "c62a981a89fb99b631b5bfd6bbb46371c07247e530a635f8697c25f63638ff33",
+    "video.json": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+    "script.md": "cca53c89fa030a937545e2e6291b93c2a3d88f8315090a5765ab9882a470449e",
+    "narration-only.json": "a703e0def0cd5dfb9b0b65274c8924d2e731ea9e5a02a7bc1203f913dd4e5a84",
+    "claims.json": "ef56290aff6c63961a7267115e86630fc6ef84ee7c9832daf6b9f2a6e51c4e3d",
+    "claims.md": "31acb25836cb575dbb4678d9a4ba3ca3f70b6d5d817f64fc2979d673630b5a77",
+    "brief.md": "50695bfdb31e93c7d4448abea96983f3174a3eebc42f770f7c6cd63cd8e3172c",
+    "series.json": "bba9fbaa643a33c22e8205b73d57563ab2941271c7e122530c8f1677065e746d",
+    "author-materials.json": "481a5521ac064a81c388499ade28411cf334f25aae127c0a1cbf8b13f464a941",
+    "build-candidate.mjs": "5105c46f637418359ab7c09533e78c43fbc13be0a9793ae67c8c15870c26fa79",
     "prepare-runtime.mjs": "7723eaf7fd19b763ca47cf99ac3ae289cbe4b80d2e2dcdf5bfc163a6d36844a1",
+    "asset-reuse-plan.json": "81017f59a9c7706243a39e38e9a82bac490e297e2ab437804ea2b05feb762ea3",
+    "revision4.json": "8a10b7bc4e2f25ce17e02f4d8c6e75e9bf7f85fea958254d8c410c2b793f0177",
+    "revision5.json": "4d10f643ca6af89954a8e09ef8edece81bd1e0411587d26cc649984cd537236c",
+    "revision6.json": "ac58dea5f13f7ffc48fc6e0f70c823ae84fe711ea8bfdd736e0f79faa0a5b997",
     "source2revision.json": "adce03e98cc0ef84360cf24e320e3363b6384c18f1ca842c62ceea01e1f32b0a",
     "revision3.json": "42e109c4e7c44ca938ffc5691afe05241680e5031f3a5ba4e0e5a28b918cbbce"
   },
   "review_four_sha256": {
-    "video.json": "4776ef057a09c26774a31e489a586b36c31b1c386d50adb31dfec1d04de467af",
-    "script.md": "9a663e2e2e1228bf574443af70677248f7e03c4e67f1df65be21648e43a95e79",
-    "narration-only.json": "d6763b8e8e50a1a8088b17e298e3b265d552c1a91c33e325ef7b4104671aecdc",
-    "claims.json": "4e0d00d525fb0ccf01e1ee7b585fccf4244600ade482bbed09a9e5063489c0f1"
+    "video.json": "5a555ee4b1ac57f4a990a251a0336376d87d293500824771fe4e1c75f70525ea",
+    "script.md": "cca53c89fa030a937545e2e6291b93c2a3d88f8315090a5765ab9882a470449e",
+    "narration-only.json": "a703e0def0cd5dfb9b0b65274c8924d2e731ea9e5a02a7bc1203f913dd4e5a84",
+    "claims.json": "ef56290aff6c63961a7267115e86630fc6ef84ee7c9832daf6b9f2a6e51c4e3d"
   },
-  "frozen_at_utc": "2026-10-25T23:17:45.291Z"
+  "frozen_at_utc": "2026-10-26T00:07:45.773Z"
 }
