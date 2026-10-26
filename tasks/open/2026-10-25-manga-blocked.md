@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-manga-blocked
 title: 免關卡的漫劇（manga 等級）關鍵影格改完兩輪提示詞仍沒過時，保留最佳張往下做，不再 blocked
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5.5-manga-accept-best
+claimed_at: 2026-10-26T15:54:01Z
 created_at: 2026-10-25T22:59:31Z
 completed_at:
 branch:
