@@ -8,7 +8,7 @@
 # the same version (package-lock.json pins @playwright/test 1.64.1). Tag and digest: a tag moved
 # on the registry cannot change this image without a diff here; Dependabot (.github/dependabot.yml,
 # docker) moves the digest by pull request.
-FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:7852dc5a7d72f5fe458a597d690f6c42fbc8e9e26ddfa95f8e6ef552558d9bbf AS worker
+FROM mcr.microsoft.com/playwright:v1.64.1-noble@sha256:47b510dd9230bf0b9bfc9b20102241e577ea7a99334ab4c3ca19f19770e9b8ea AS worker
 
 RUN apt-get update \
  && apt-get install -y --no-install-recommends ca-certificates curl ffmpeg python3-venv unzip \
