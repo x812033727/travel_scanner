@@ -1,0 +1,34 @@
+{
+  "observed_at_utc": "2026-10-26T22:29:13.581Z",
+  "routes": [
+    "GET /api/video/reviews/ai-editable-explainer-animation",
+    "GET /api/video/reviews/ai-pdf-quotes-to-comparison"
+  ],
+  "rows": [
+    {
+      "slug": "ai-editable-explainer-animation",
+      "observed_at_utc": "2026-10-26T22:29:12.970Z",
+      "final": {
+        "id": "d1a5872b-b500-409a-a119-ecc825b40040",
+        "status": "approved",
+        "sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521"
+      },
+      "retries": {},
+      "worker_state": "unavailable",
+      "locales_decided_at": "2026-10-25T20:10:41.250623Z"
+    },
+    {
+      "slug": "ai-pdf-quotes-to-comparison",
+      "observed_at_utc": "2026-10-26T22:29:13.581Z",
+      "final": {
+        "id": "934608a8-fdce-4e4c-9105-43fdd3e7f1ac",
+        "status": "approved",
+        "sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f"
+      },
+      "retries": {},
+      "worker_state": "unavailable",
+      "locales_decided_at": null
+    }
+  ],
+  "no_paid_or_owner_operation": true
+}
