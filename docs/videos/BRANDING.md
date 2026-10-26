@@ -140,6 +140,26 @@ API 只讀它唯讀掛載的工作卷，而且只給目前 `current.json`（全�
 裝好之後照上面的規則：只影響之後第一次成片的長片；已經成片、沒有片頭片尾的未核准影片要明確
 `assemble --adopt-branding` 重做。
 
+### 本機成片要跟正式站同一包
+
+本機或雲端合成的長片要跟正式站工人用同一包素材：2026-10-13 五支奇聞檔案局重剪在本機合成，
+本機還停在 `mokaair-brand-package-v2-cc`（3 秒片尾、沒有配樂），正式站已經是 v4；2026-10-19 三集雲端
+成片則完全沒有片頭片尾。兩次都沒有任何提示，站主看片才發現。
+
+所以 `assemble` 與 `compile`（含 `--dry-run`）在這次會用「這台機器目前的素材包」時（第一次成片、
+`--adopt-branding`、還沒 pin 的 `--intro-after-condensation`），編碼前先問正式站工人用哪一包
+（`branding/site.mjs`，問法同 `branding --pull`：系列片先問系列，系列沒有才用全頻道），結束時再印一次：
+
+- 一樣：不印任何東西。
+- 不一樣：`WARN branding: this build pins <本機 id> (<hash>) but the site's worker uses <正式站 id> (<hash>)`，
+  本機沒裝就寫 `no bookends`。合成照做不擋（可能是刻意用舊包），要跟正式站一樣就停下來
+  `branding --pull` 再重跑；已經成片的未核准影片用 `--adopt-branding` 重做。
+- 問不到（沒有權杖、連不上、10 秒沒回、正式站設定讀不出來）：印 `branding: not compared …` 或
+  `could not compare …`，照常合成，不會因此失敗。
+
+已經 pin 的影片不比對：pin 本來就是刻意固定的選擇，換 current 不會讓舊片重排（上面「安裝與採用」）。
+主機上的工人問的是自己的工作卷，一定一樣，所以主機的紀錄裡不會多出任何一行。
+
 ## 片頭位置
 
 站主 2026-10-12／10-13 決定：有旁白的長片第一章是 30–60 秒的開場濃縮（script-writing.md

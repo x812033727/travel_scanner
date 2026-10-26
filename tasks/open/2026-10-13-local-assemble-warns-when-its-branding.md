@@ -1,19 +1,27 @@
 ---
 id: 2026-10-13-local-assemble-warns-when-its-branding
 title: Local assemble warns when its branding package is older than the host's
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-5-5-branding-pull
+claimed_at: 2026-10-26T00:43:38Z
 created_at: 2026-10-13T13:44:53Z
 completed_at:
-branch:
+branch: claude/gracious-bohr-2mjwx0
 depends_on: []
 scope:
   - tools/video/assemble/cli.mjs
+  - tools/video/assemble/assemble.test.mjs
+  - tools/video/compile/cli.mjs
+  - tools/video/compile/compile.test.mjs
   - tools/video/core/branding.mjs
+  - tools/video/core/branding.test.mjs
+  - tools/video/branding/site.mjs
+  - tools/video/branding/site.test.mjs
   - docs/videos/BRANDING.md
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
 ---
 
 # Local assemble warns when its branding package is older than the host's
@@ -30,23 +38,31 @@ cut. The local copy was brought to v4 by hand that day (`branding --install
 
 ## Definition of done
 
-- [ ] A local `assemble`/`compile` of a new long video says, before it encodes, when the branding
+- [x] A local `assemble`/`compile` of a new long video says, before it encodes, when the branding
       it is about to pin is not the one the site's worker uses (the id and hash of both), and
       how to install the current one; it does not silently go ahead.
-- [ ] It works offline (no site reachable): it says it could not compare, it does not fail.
-- [ ] BRANDING.md says local builds must match the host's package and how to check.
+- [x] It works offline (no site reachable): it says it could not compare, it does not fail.
+- [x] BRANDING.md says local builds must match the host's package and how to check.
 
 ## Steps
 
-- [ ] Find where the host's current branding can be read without SSH (an existing /admin or
+- [x] Find where the host's current branding can be read without SSH (an existing /admin or
       automation endpoint, or the worker's report); if none exists, decide with the owner
       whether to add a read-only one or keep a checked-in expected id instead.
-- [ ] Add the comparison to the assemble/compile preflight, with tests.
+- [x] Add the comparison to the assemble/compile preflight, with tests.
 
 ## How to verify
 
-Point a scratch workdir at an older package, run `assemble --dry-run` (or the preflight) and see
-the warning; install the current one and see it go away.
+`assemble` has no dry run; `compile --dry-run` and the tests show it without encoding:
+
+```bash
+node --test tools/video/branding/site.test.mjs tools/video/core/branding.test.mjs \
+  tools/video/compile/compile.test.mjs tools/video/assemble/assemble.test.mjs
+```
+
+By hand, after #1860's endpoint is deployed: point `--workdir` at a scratch folder with an older
+package installed (`branding --install`), run `compile --slug <series>-full --dry-run` or start an
+`assemble` of a new video and read the `WARN branding:` line; `branding --pull` and it is gone.
 
 ## Notes
 
@@ -56,3 +72,14 @@ the warning; install the current one and see it go away.
   (2026-10-26-pull-the-site-s-current-branding): `GET /api/video/media/branding` with a video
   tool token answers the worker's current id and hash (`brandingStatus` in
   tools/video/media/client.mjs), and `branding --pull` installs it.
+- 2026-10-26 (claude-opus-5-5-branding-pull): done on the same branch as the endpoint
+  (claude/gracious-bohr-2mjwx0), since the comparison needs it. `pinsDefault` in core/branding.mjs
+  says when a build takes this machine's package (first build, adoption, an unpinned
+  re-placement); only then do assemble and compile ask (`siteBrandingNotice` in
+  tools/video/branding/site.mjs), once, with a 10-second deadline and no retries. Different: a
+  `WARN branding:` line before encoding and again at the end; the build goes on, since an older
+  package can be deliberate. No token or no site: a `not compared` / `could not compare` line.
+- Claimed with `--force`: the overlapping claims are stale; 2026-10-24-manga-sticker-drama-pace
+  (status review) already landed as #1836 and only its ticket was never closed.
+- On the host the worker asks about its own volume, so it always matches and prints nothing; it
+  costs one request per first build within the video tool token's per-minute window.
