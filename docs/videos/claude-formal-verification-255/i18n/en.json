@@ -1,0 +1,464 @@
+{
+  "title": "Claude Formal Verification: What 255 Reveals About Code Guarantees",
+  "description": "Why does a program with only 8 bytes of capacity accept length 255? We make the requirements explicit, then fix two real C examples and check their results.\nFor anyone who wants to understand AI-written code proofs or asks AI to edit code: we keep reproducible records of accepting valid inputs and of whether execution ends.\n\nOn 2026-10-22, Anthropic and Theorem published joint research. The study reports 239 entry points across 123 libraries; the public release cited here contains 60 entry points across 25 libraries. The statement that no halts proof is provided applies only to that public release, not to the entire study.\n\nOur original local guard has n=0..255 and a capacity of 8 bytes, with 1 of those bytes reserved for the terminator. It only decides acceptance. A separate, independent program checks the return after counting. Methods: actual C execution, exhaustive enumeration, propositional SAT for the guard, and a finite control graph for the loop. We did not run the vendor's Rocq checker.\n\nOriginal C code, execution results, and the complete source bundle: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nThe original SVG diagrams were redrawn for this video from program results and the official workflow. They are not presented as product UI footage.",
+  "tags": [
+    "Claude",
+    "formal verification",
+    "program proofs",
+    "Theorem",
+    "Rocq",
+    "C programming",
+    "AI technology"
+  ],
+  "chapters": {
+    "capacity-accepts-255": "Local check accepts 255",
+    "research-published": "Record the valid lengths",
+    "which-line-to-fix": "Keep 256; reject the input",
+    "deny-all-two-directions": "Reject-all rejects valid input",
+    "independent-counter": "A cycle in the return check",
+    "fix-proof-object": "Match formal proof conditions",
+    "completed-repair-record": "Record your own requirements"
+  },
+  "source_hashes": {
+    "chapters": {
+      "capacity-accepts-255": "1edec6460faf",
+      "research-published": "b9cbfb707fc5",
+      "which-line-to-fix": "f262b006fc8b",
+      "deny-all-two-directions": "674fcccac2dc",
+      "independent-counter": "cc8b520b8c1e",
+      "fix-proof-object": "3a178f11392d",
+      "completed-repair-record": "e9b10d121112"
+    },
+    "title": "a5726411c90f",
+    "description": "b51dff023429",
+    "tags": "b9a93e92a3ea",
+    "thumbnail": "4a13ca08da95"
+  },
+  "lines": {
+    "zfgp": {
+      "source_hash": "51ad6a8effbf",
+      "text": "On October 25, 2026, my program has 8 bytes of capacity, yet accepts length 255?"
+    },
+    "z9dp": {
+      "source_hash": "11c849209e8c",
+      "text": "The record only bans bad inputs. Does rejecting all count as done?"
+    },
+    "bpnn": {
+      "source_hash": "d5b6e86e4a26",
+      "text": "The record needs a return result. Will the other counter program exit?"
+    },
+    "c8r2": {
+      "source_hash": "d08593484c6f",
+      "text": "For the same requirement, who checks the proof AI writes?"
+    },
+    "qwaw": {
+      "source_hash": "87ec5f62a39d",
+      "text": "This record addresses checks raised by Claude's October 22 study."
+    },
+    "4rff": {
+      "source_hash": "1043928fb4f5",
+      "text": "It turns test requirements into checkable claims."
+    },
+    "5i5d": {
+      "source_hash": "c91a6afcaf84",
+      "text": "I use my own C program to first fill the acceptance-decision row."
+    },
+    "jeaj": {
+      "source_hash": "061da398672e",
+      "text": "The input is a data length from 0 to 255."
+    },
+    "fzz5": {
+      "source_hash": "f8a3ef316a7b",
+      "text": "Capacity is 8 bytes; reserve 1 byte for the terminator."
+    },
+    "kkef": {
+      "source_hash": "613b93ef6e5d",
+      "text": "Accept only if input length plus 1 is at most 8."
+    },
+    "m7xu": {
+      "source_hash": "beccf431c07d",
+      "text": "Length 7 plus 1 is 8: accept. Length 8 plus 1 is 9: reject."
+    },
+    "axkg": {
+      "source_hash": "81fdf48fed5f",
+      "text": "0 is valid: with its terminator, it takes 1 byte."
+    },
+    "r79s": {
+      "source_hash": "fc014520652f",
+      "text": "So the record's accepted range is 0 to 7."
+    },
+    "p2uy": {
+      "source_hash": "195732bdedff",
+      "text": "Then why did the opening's 255 get through?"
+    },
+    "vwiq": {
+      "source_hash": "21a409869e52",
+      "text": "Follow the total-length calculation: 255 plus 1 first gives 256."
+    },
+    "5iky": {
+      "source_hash": "6a0926451df1",
+      "text": "Addition first promotes to int; it doesn't directly become 0."
+    },
+    "zfmi": {
+      "source_hash": "1261dadf89b8",
+      "text": "Buggy code casts the total to an unsigned 8-bit integer."
+    },
+    "3mpx": {
+      "source_hash": "d42e2f0ee585",
+      "text": "This type can store only 0 to 255."
+    },
+    "tew5": {
+      "source_hash": "d9d811112416",
+      "text": "Casting 256 back makes the stored value 0."
+    },
+    "femu": {
+      "source_hash": "220318e06cd5",
+      "text": "Comparing 0 with capacity 8, it returns a pass."
+    },
+    "64pm": {
+      "source_hash": "c7c9badc100f",
+      "text": "8 bits is the type's width; 8 bytes is the capacity."
+    },
+    "2yfh": {
+      "source_hash": "5416bd8e701a",
+      "text": "The bug is in cast and storage. Don't confuse the two eights."
+    },
+    "mvnc": {
+      "source_hash": "6c298111610c",
+      "text": "A counterexample is recorded. Which line can keep the full total?"
+    },
+    "936d": {
+      "source_hash": "ae981efaab7e",
+      "text": "Keep the full value, then store the total as an unsigned 16-bit integer."
+    },
+    "s57e": {
+      "source_hash": "79e31dd724e4",
+      "text": "Narrow the result to 8 bits first, then store it wider, and 0 is still 0."
+    },
+    "yavq": {
+      "source_hash": "e66bc8925e43",
+      "text": "Fix the whole line: both calculation and the cast storing the total."
+    },
+    "ij57": {
+      "source_hash": "0c80420a8b4f",
+      "text": "Input 255 plus 1 now stays 256."
+    },
+    "mfag": {
+      "source_hash": "1a6522a29e00",
+      "text": "It exceeds capacity 8, so now it correctly rejects."
+    },
+    "vkym": {
+      "source_hash": "e673cce257c4",
+      "text": "What about valid length 7? Plus 1 gives 8; it's still accepted."
+    },
+    "84hx": {
+      "source_hash": "3b26fcf9b4a7",
+      "text": "But how do two cases rule out errors in between?"
+    },
+    "wunt": {
+      "source_hash": "ecba87fb6974",
+      "text": "I first chose 0,1,2,3,4; all met expectations."
+    },
+    "a7te": {
+      "source_hash": "e578ae9a58a1",
+      "text": "Listing all values from 0 to 255 checks the full range."
+    },
+    "dfhy": {
+      "source_hash": "2671499a63a4",
+      "text": "The buggy code's only extra acceptance is 255; widened code accepts only 0 to 7."
+    },
+    "zgkb": {
+      "source_hash": "371c593fcf07",
+      "text": "I add a solver model to the record, encoding the same input as 8 Boolean bits."
+    },
+    "5waf": {
+      "source_hash": "458b210e1f7d",
+      "text": "Ask the propositional solver: can an invalid length be accepted?"
+    },
+    "unr8": {
+      "source_hash": "617c2e811777",
+      "text": "Finding whether Boolean conditions can all hold at once is called propositional SAT."
+    },
+    "gtuj": {
+      "source_hash": "e037da4e41bb",
+      "text": "It finds 255 in buggy code, but no such case in widened code."
+    },
+    "56e4": {
+      "source_hash": "df688c85d423",
+      "text": "Ask if valid lengths are rejected: none in the fixed version either."
+    },
+    "tksv": {
+      "source_hash": "b2fd3228b90d",
+      "text": "Match model results to actual C runs, one by one: all 256 results agree."
+    },
+    "2zma": {
+      "source_hash": "e8e85c6af839",
+      "text": "This range is small enough to test each value; the solver adds no new answer."
+    },
+    "4bqi": {
+      "source_hash": "252be5155496",
+      "text": "But if the record only bans invalid inputs, can reject-all be delivered?"
+    },
+    "xfvp": {
+      "source_hash": "4b6db1295170",
+      "text": "Under that one-way rule, reject-all does block every invalid input."
+    },
+    "cabc": {
+      "source_hash": "d956e6235b37",
+      "text": "But it also blocks every length from 0 to 7."
+    },
+    "jhkm": {
+      "source_hash": "a9f687dfe5f3",
+      "text": "This comparison uses a symbolic model, not another C program run."
+    },
+    "e6wk": {
+      "source_hash": "f81aaebebd68",
+      "text": "That's 0 false acceptances, but 8 false rejections."
+    },
+    "7d4v": {
+      "source_hash": "61b2cb398b62",
+      "text": "Just ban invalid inputs: code can comply by rejecting everyone."
+    },
+    "6a2b": {
+      "source_hash": "9ae03adb435e",
+      "text": "Also require and check that valid inputs must be accepted."
+    },
+    "4akm": {
+      "source_hash": "2f806baf75ba",
+      "text": "Together: every length 0 to 7 must pass; all other lengths must be rejected."
+    },
+    "w9b4": {
+      "source_hash": "46ba75e0d185",
+      "text": "The opening's one-way record adds: valid inputs must pass."
+    },
+    "dkjy": {
+      "source_hash": "5173b4f1b49d",
+      "text": "This row delivers acceptance decisions; the code never writes a data buffer."
+    },
+    "8ywa": {
+      "source_hash": "a0c466fb0042",
+      "text": "I enter two zeros for widened code: no false acceptances or rejections."
+    },
+    "xh98": {
+      "source_hash": "fe37ccbc7c85",
+      "text": "Acceptance is done; another record row awaits return checks."
+    },
+    "idga": {
+      "source_hash": "ae8256662823",
+      "text": "How do we make the return field a requirement we can check?"
+    },
+    "u2xw": {
+      "source_hash": "7c424d942fba",
+      "text": "I use a separate counter program for returns; its input is the limit."
+    },
+    "p4u6": {
+      "source_hash": "ec08985f14bf",
+      "text": "The limit is still 0 to 255; the counter starts at 0."
+    },
+    "v9sd": {
+      "source_hash": "836ec578fb98",
+      "text": "While the counter is at most the limit, add 1; otherwise, exit."
+    },
+    "riuf": {
+      "source_hash": "db172bc80117",
+      "text": "The count required is limit plus 1; the return must equal it too."
+    },
+    "cgit": {
+      "source_hash": "c76f55e16961",
+      "text": "On input zero, expect 1 increment and a return of 1."
+    },
+    "y326": {
+      "source_hash": "b9fcf61439c5",
+      "text": "Input 7: expect eight increments, returning 8."
+    },
+    "qmcd": {
+      "source_hash": "9920f81d6dfc",
+      "text": "The buggy counter is 8-bit; at limit 254, it reaches 255 and exits."
+    },
+    "b3r9": {
+      "source_hash": "92d99ed278ce",
+      "text": "But at limit 255, the tool stops the run after 0.25 seconds."
+    },
+    "ijcq": {
+      "source_hash": "9ca16efd3147",
+      "text": "Does it never end, or did we stop too soon?"
+    },
+    "ihny": {
+      "source_hash": "2b1076d364b1",
+      "text": "It timed out; that alone cannot prove the program will never end."
+    },
+    "4jzv": {
+      "source_hash": "2cc53f409e78",
+      "text": "Check each state, and how it moves to the next."
+    },
+    "kfft": {
+      "source_hash": "a8d29d4c4a87",
+      "text": "The limit is fixed; no other actor changes the counter."
+    },
+    "58rm": {
+      "source_hash": "8061c9874100",
+      "text": "The 8-bit counter goes from 0 to 255, then wraps back to 0."
+    },
+    "mjsr": {
+      "source_hash": "8fc664ffa3ea",
+      "text": "The condition holds, the limit is unchanged, so the same cycle repeats."
+    },
+    "kq36": {
+      "source_hash": "507103f421d2",
+      "text": "The full control graph has a 256-step cycle, so this model cannot exit."
+    },
+    "qjaw": {
+      "source_hash": "6943c6c30477",
+      "text": "Timeout is this run's observation; the cycle is the control graph's reason."
+    },
+    "h6n5": {
+      "source_hash": "76b3d1c35566",
+      "text": "To finish counting and exit, where must we make more room?"
+    },
+    "p8te": {
+      "source_hash": "1f31f5bf394f",
+      "text": "Make the counter and its cast unsigned 16-bit integers."
+    },
+    "ghs2": {
+      "source_hash": "44c693ffa379",
+      "text": "At 255, adding 1 now preserves 256."
+    },
+    "9mxr": {
+      "source_hash": "f9c3102691d9",
+      "text": "256 exceeds the limit; the condition fails. It exits, returning 256."
+    },
+    "ey22": {
+      "source_hash": "ab81b657c3e3",
+      "text": "The return field now has a result: every input exits and returns limit plus 1."
+    },
+    "5feu": {
+      "source_hash": "77c4be3bf068",
+      "text": "Return value and exit condition go in separate fields of the same row."
+    },
+    "rsx8": {
+      "source_hash": "703de6633c3c",
+      "text": "The record separates acceptance and return. Do Claude's proofs check the same requirements?"
+    },
+    "zg4q": {
+      "source_hash": "a7b37d0a21b6",
+      "text": "To match the record to a formal proof, fix the program version, statement, and execution model."
+    },
+    "wzn2": {
+      "source_hash": "0e7058e63ce9",
+      "text": "The public release targets compiled RISC-V binaries."
+    },
+    "cawx": {
+      "source_hash": "f47af9bb57ae",
+      "text": "Rocq kernel checks AI proofs at compilation."
+    },
+    "uqde": {
+      "source_hash": "9df86b875f32",
+      "text": "Tools match the result to the fixed claim and list assumptions used."
+    },
+    "5fga": {
+      "source_hash": "3037ed1a4bcf",
+      "text": "Those assumptions must also pass an allowlist audit."
+    },
+    "wi26": {
+      "source_hash": "f1b584773e69",
+      "text": "The opening's checks rest on Rocq's kernel and tools checking claims and assumptions."
+    },
+    "nzaz": {
+      "source_hash": "c5297adfa2e6",
+      "text": "Compiling a file isn't the goal achieved. What must be proved?"
+    },
+    "7ip9": {
+      "source_hash": "2091612eccbf",
+      "text": "It compares normal and error-checked builds of one program, not before and after fixes."
+    },
+    "6x7t": {
+      "source_hash": "a130679b15cc",
+      "text": "Model inputs must keep the normal build within its memory budget."
+    },
+    "5u3j": {
+      "source_hash": "4178cb1c03d9",
+      "text": "Given that, neither build has the specified errors."
+    },
+    "cnnu": {
+      "source_hash": "c0ffe8d60c16",
+      "text": "Finite behavior records can include text already output."
+    },
+    "fwc2": {
+      "source_hash": "f9564955e189",
+      "text": "Both builds must allow the same set of observable records."
+    },
+    "e7pc": {
+      "source_hash": "b42411054a81",
+      "text": "But does matching behavior also guarantee termination?"
+    },
+    "3jaw": {
+      "source_hash": "aae859832b95",
+      "text": "No. This release provides no proof of a termination statement."
+    },
+    "e2mj": {
+      "source_hash": "23946a0cdb79",
+      "text": "To guarantee execution ends, prove termination separately."
+    },
+    "4nfp": {
+      "source_hash": "5fbfa4be8c60",
+      "text": "This release doesn't mean the whole study left termination out."
+    },
+    "cr5k": {
+      "source_hash": "3bbfdf53bd0b",
+      "text": "The official study covers 123 libraries and 239 entry points."
+    },
+    "b7jg": {
+      "source_hash": "75b294425df2",
+      "text": "The current public release lists 60 entry points from 25 libraries."
+    },
+    "i2pt": {
+      "source_hash": "cb96d246e7c3",
+      "text": "Label the version too; record study totals and the available release separately."
+    },
+    "te3s": {
+      "source_hash": "7ebd5fca5887",
+      "text": "Add our check methods to the record to compare the deliverables."
+    },
+    "iest": {
+      "source_hash": "4db58281622c",
+      "text": "Acceptance uses enumeration and SAT; returns use a finite control graph."
+    },
+    "3u2q": {
+      "source_hash": "0e12f29539db",
+      "text": "Both have actual C run comparisons; I didn't run the study's Rocq checker."
+    },
+    "ucn4": {
+      "source_hash": "11074012ccac",
+      "text": "My results cover only these two local examples, not a whole-app certification."
+    },
+    "bt2j": {
+      "source_hash": "3662e46316cc",
+      "text": "The record separates fixes to total length from the counter declaration and update."
+    },
+    "mj65": {
+      "source_hash": "934a8f87c333",
+      "text": "For reruns, check versions first; put expected and actual results in one row."
+    },
+    "edry": {
+      "source_hash": "8446fe5f59b9",
+      "text": "Fixed code won't be checked against old code's answers."
+    },
+    "mhjn": {
+      "source_hash": "e31cafa64480",
+      "text": "Write clear acceptance criteria."
+    },
+    "87s6": {
+      "source_hash": "fc5be78815da",
+      "text": "Comment with how you use AI to write code."
+    },
+    "22tu": {
+      "source_hash": "7102028b107c",
+      "text": "Subscribe to explore AI research through real results."
+    }
+  },
+  "thumbnail": {
+    "tag": "Claude Verification",
+    "headline": "**255**\nPassed?",
+    "sub": "8 bytes. Still passes."
+  }
+}

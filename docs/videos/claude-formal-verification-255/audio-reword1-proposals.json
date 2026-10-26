@@ -1,0 +1,251 @@
+{
+  "source": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/video.json",
+  "sourceSHA": "a77c48e48131a2a17196cbddf2bf192f33c02c9d5defc3953a543155e441514d",
+  "status": "proposal_only; no source edits or retakes",
+  "review_basis": "Primary and second ASR text from review/check.json, with review/check-flags.json. No WAV listening performed.",
+  "scope": {
+    "source_line_count": 105,
+    "proposed_line_count": 8,
+    "unchanged_line_count": 97,
+    "ids_and_order_preserved": true,
+    "all_nonselected_lines_and_all_other_fields_including_codes_preserved_in_memory": true,
+    "source_written": false,
+    "flags_cache_or_transcripts_modified": false,
+    "audio_generated": false,
+    "paid_actions": false
+  },
+  "proposals": [
+    {
+      "id": "z9dp",
+      "oldtext": "紀錄上只寫不收錯的，全部拒絕能算修好嗎？",
+      "heardprimary": "記錄上只寫不收錯的，全部拒絕，能算收好嗎？",
+      "heardsecond": "記錄上只寫不收錯的,全部拒絕,能算收好嗎?",
+      "proposed": "紀錄上只寫不收錯的，全部拒絕能算完成嗎？",
+      "character_count_including_punctuation_and_C": 20,
+      "why": "兩次ASR都把「修好」辨成「收好」；改用「完成」保留驗收能否交差的問句，避開這組近音。",
+      "meaningchecks": [
+        {
+          "pass": 1,
+          "check": "source_semantics",
+          "passed": true,
+          "detail": "仍是單向不誤接受的紀錄條件，以及全部拒絕能否算完成的疑問；沒有提前給答案。"
+        },
+        {
+          "pass": 2,
+          "check": "numbers_negation_and_scope",
+          "passed": true,
+          "detail": "保留「只」、「不」、「全部」；沒有新增數字、輸入條件或結論。"
+        },
+        {
+          "pass": 3,
+          "check": "context_and_invariants",
+          "passed": true,
+          "detail": "接續原開場，後文合法輸入也須接受的回收仍成立；「完成」指同一項修正的驗收。"
+        }
+      ]
+    },
+    {
+      "id": "femu",
+      "oldtext": "拿零和容量八比較，它於是回傳接受。",
+      "heardprimary": "拿零和容量八比較，它於是回傳接收",
+      "heardsecond": "拿0和容量8比較,他於是回傳接手。",
+      "proposed": "拿零和容量八比較，程式就回傳通過。",
+      "character_count_including_punctuation_and_C": 17,
+      "why": "兩次ASR分別出現「接收」與「接手」；改說「回傳通過」，保留檢查結果，避開把接受判斷誤聽成接收資料。",
+      "meaningchecks": [
+        {
+          "pass": 1,
+          "check": "source_semantics",
+          "passed": true,
+          "detail": "仍將轉型所得的零與容量八比較，並回傳表示通過的檢查結果。"
+        },
+        {
+          "pass": 2,
+          "check": "numbers_negation_and_scope",
+          "passed": true,
+          "detail": "完整保留零、八與判斷為通過的結果；未改成拒絕，也未改輸入。"
+        },
+        {
+          "pass": 3,
+          "check": "context_and_invariants",
+          "passed": true,
+          "detail": "「通過」指guard的布林接受判斷；不宣稱寫入或接收資料緩衝區。"
+        }
+      ]
+    },
+    {
+      "id": "dfhy",
+      "oldtext": "錯版多接受的只有二百五十五；加寬版則接受零到七。",
+      "heardprimary": "錯版都接受的只有二百五十五，加寬版則接受零到七",
+      "heardsecond": "錯版都接受的只有255,加寬版則接受0-7。",
+      "proposed": "錯版額外放行的只有二百五十五；加寬版只放行零到七。",
+      "character_count_including_punctuation_and_C": 25,
+      "why": "兩次ASR都把「多接受」辨成「都接受」，會誤成錯版只放行二百五十五；改用「額外放行」明說它是多出來的唯一值。",
+      "meaningchecks": [
+        {
+          "pass": 1,
+          "check": "source_semantics",
+          "passed": true,
+          "detail": "「額外」保留錯版在合法範圍以外多放行一值的意思；加寬版保留正確接受區間。"
+        },
+        {
+          "pass": 2,
+          "check": "numbers_negation_and_scope",
+          "passed": true,
+          "detail": "唯一額外值仍是二百五十五；加寬版只放行零到七，沒有把錯版說成只接受二百五十五。"
+        },
+        {
+          "pass": 3,
+          "check": "context_and_invariants",
+          "passed": true,
+          "detail": "延續前一行零到二百五十五的完整列舉；沒有改動既定輸入域或任何其他版本的結果。"
+        }
+      ]
+    },
+    {
+      "id": "tksv",
+      "oldtext": "模型的結果，還逐值對回實際C程式，二百五十六列全相符。",
+      "heardprimary": "模型的結果啊，還逐值對回實際C程式，兩百五十六列全相符",
+      "heardsecond": "模型的結果,還逐值對回實際西城市,256列,全相符。",
+      "proposed": "模型結果逐筆對照C語言程式的實際執行結果，二百五十六筆全相符。",
+      "character_count_including_punctuation_and_C": 31,
+      "why": "主ASR出現「兩百」與填充音，第二次出現「實際西城市」；改用「C語言程式」與「逐筆對照」，明說比較的是模型與實際執行結果，保留二百五十六筆全相符。",
+      "meaningchecks": [
+        {
+          "pass": 1,
+          "check": "source_semantics",
+          "passed": true,
+          "detail": "比較的兩邊仍是模型結果與實際C程式的執行結果，並逐筆核對。"
+        },
+        {
+          "pass": 2,
+          "check": "numbers_negation_and_scope",
+          "passed": true,
+          "detail": "筆數仍為二百五十六，且全部相符；不是二百五十七、抽樣、近似或只比一筆。"
+        },
+        {
+          "pass": 3,
+          "check": "context_and_invariants",
+          "passed": true,
+          "detail": "「C語言程式」僅展開原來的C稱呼；延續既定完整輸入域，未新增官方Rocq驗證或應用程式認證。"
+        }
+      ]
+    },
+    {
+      "id": "4akm",
+      "oldtext": "兩個方向合起來，就是應且只應接受零到七。",
+      "heardprimary": "兩個方向合起來，就是 in 且只應接受零到七",
+      "heardsecond": "兩個方向合起來,就是因且指因接受零到七。",
+      "proposed": "兩個方向合起來，零到七都要放行，其他長度一律拒絕。",
+      "character_count_including_punctuation_and_C": 25,
+      "why": "兩次ASR都未清楚辨出「應且只應」；拆成合法範圍全部放行、其餘長度全部拒絕，讓兩個方向直接可聽懂。",
+      "meaningchecks": [
+        {
+          "pass": 1,
+          "check": "source_semantics",
+          "passed": true,
+          "detail": "把雙向接受契約拆開表達：合法長度全須放行，不合法長度全須拒絕。"
+        },
+        {
+          "pass": 2,
+          "check": "numbers_negation_and_scope",
+          "passed": true,
+          "detail": "零到七及兩側的全稱量詞均保留；沒有弱化成只有不誤接受或只有不誤拒絕。"
+        },
+        {
+          "pass": 3,
+          "check": "context_and_invariants",
+          "passed": true,
+          "detail": "「其他長度」依前文既定零到二百五十五輸入域解讀；沒有擴大程式輸入域。"
+        }
+      ]
+    },
+    {
+      "id": "ihny",
+      "oldtext": "單靠這次逾時，還不能判定。",
+      "heardprimary": "單靠這次隕石還不能判定",
+      "heardsecond": "單靠這次與時,還不能判定。",
+      "proposed": "這次超過等待上限，光憑這點還不能斷定程式永遠不會結束。",
+      "character_count_including_punctuation_and_C": 27,
+      "why": "兩次ASR把「逾時」辨成「隕石」或「與時」；改用「超過等待上限」，並明說單靠這點不能推出永不結束。",
+      "meaningchecks": [
+        {
+          "pass": 1,
+          "check": "source_semantics",
+          "passed": true,
+          "detail": "把「逾時」展開為超過等待上限，仍只是本次執行的觀察。"
+        },
+        {
+          "pass": 2,
+          "check": "numbers_negation_and_scope",
+          "passed": true,
+          "detail": "保留「光憑這點還不能」的否定限制，不把逾時說成非終止的證明，也不保證會結束。"
+        },
+        {
+          "pass": 3,
+          "check": "context_and_invariants",
+          "passed": true,
+          "detail": "回答緊鄰上一句「真的不會結束，還是等得不夠久」；後續循環控制圖仍提供另外的理由。"
+        }
+      ]
+    },
+    {
+      "id": "5feu",
+      "oldtext": "我把返回值和離開條件，分開填進同一列紀錄。",
+      "heardprimary": "無法返回值和離開條件，分開填進同一列紀錄。",
+      "heardsecond": "無包返回紙和離開條件,分開填進同一列記錄。",
+      "proposed": "返回值和離開條件，在同一列紀錄分欄填寫。",
+      "character_count_including_punctuation_and_C": 20,
+      "why": "兩次ASR把「我把」辨成「無法」或「無包」；改成兩個欄位作句首，保留同一列分開填寫的動作，避免錯聽成否定。",
+      "meaningchecks": [
+        {
+          "pass": 1,
+          "check": "source_semantics",
+          "passed": true,
+          "detail": "返回值與離開條件仍分開記錄，且都位於同一列。"
+        },
+        {
+          "pass": 2,
+          "check": "numbers_negation_and_scope",
+          "passed": true,
+          "detail": "保留兩個欄位、分開與同一列的關係，沒有加入否定或合併兩種要求。"
+        },
+        {
+          "pass": 3,
+          "check": "context_and_invariants",
+          "passed": true,
+          "detail": "改成欄位作主詞只移除近音句首；不更動上一句每個輸入離開並返回上限加一的結果。"
+        }
+      ]
+    },
+    {
+      "id": "4nfp",
+      "oldtext": "這說的是這份公開版本，不能推成整個研究都沒處理終止。",
+      "heardprimary": "這說的是這份公開版本，不能推稱整個研究都沒處理終止。",
+      "heardsecond": "這說的是這份公開版本,不能推陳整個研究都沒處理終止。",
+      "proposed": "這說的是這份公開版本，不代表整個研究都沒處理終止。",
+      "character_count_including_punctuation_and_C": 25,
+      "why": "兩次ASR把「推成」辨成「推稱」或「推陳」；改用「不代表」，保留公開版本與整個研究之間不能外推的範圍限制。",
+      "meaningchecks": [
+        {
+          "pass": 1,
+          "check": "source_semantics",
+          "passed": true,
+          "detail": "結論對象仍明確是這份公開版本，不能據此外推整個研究都沒處理終止。"
+        },
+        {
+          "pass": 2,
+          "check": "numbers_negation_and_scope",
+          "passed": true,
+          "detail": "保留「不代表」的外推否定及「整個研究都沒」的量化範圍；不宣稱研究有或沒有完整終止證明。"
+        },
+        {
+          "pass": 3,
+          "check": "context_and_invariants",
+          "passed": true,
+          "detail": "承接前文這份公開版本未提供終止命題證明；不擴張為整個研究、其他版本或本地範例的結論。"
+        }
+      ]
+    }
+  ]
+}

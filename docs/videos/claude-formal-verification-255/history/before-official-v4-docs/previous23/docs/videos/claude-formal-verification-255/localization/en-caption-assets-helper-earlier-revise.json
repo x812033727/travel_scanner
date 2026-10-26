@@ -1,0 +1,469 @@
+{
+  "observed_at": "2026-10-26T02:06:51.927191+00:00",
+  "result": "REVISE",
+  "module_file": "/workspace/work/ai-tech-next/deliver-checked-caption-assets.mjs",
+  "module_sha256": "4b877b7e33013ac68cecf6fbd4db59c3b2c2b72f644efaa938b0f3375e47c5f6",
+  "independent_reader": "/root/news_verify",
+  "author": "/root/checked_caption_assets",
+  "review_kind": "Source review plus pure self-tests and explicit negative fixtures; not actual localPreflight or production execution",
+  "actual_local_preflight": false,
+  "credentials_read": false,
+  "network": false,
+  "paid": false,
+  "source_or_media_changes": false,
+  "read_scope": "All original268source lines and complete delta to current288lines; imports and native routines inspected where used. This is a helper review, not production asset/audio acceptance.",
+  "pure_test_receipt": {
+    "file": "caption-assets-peer-review.structured-pure-tests.json",
+    "sha256": "5f7c6fd430036bdeb59ff8802be06002454a94335194c3906f6691b14e37008e",
+    "passed_guards": 122,
+    "side_effect_counts": {
+      "fetch": 0,
+      "subprocess": 0,
+      "credential_reads": 0,
+      "writes": 0
+    },
+    "independent_mutations_rejected": {
+      "profile": true,
+      "locale": true,
+      "source_sha256": true,
+      "thumbnail_sha256": true,
+      "thumbnail_bytes": true,
+      "viewed": true,
+      "method": true,
+      "viewed_by": true,
+      "viewed_at": true,
+      "evidence_sha256": true
+    }
+  },
+  "original_review": {
+    "file": "caption-assets-peer-review.initial.json",
+    "module_sha256": "0d24c9502606d8ead5ee6e25933a1ebd843511a6d412c5289075118415fbf3bf",
+    "result": "REVISE",
+    "issues_fixed_in_current": [
+      "R1",
+      "R2"
+    ]
+  },
+  "passes": [
+    {
+      "id": "P01",
+      "area": "Safe import / default mode",
+      "finding": "Import and 122 pure guards under throwing fetch/subprocess/private-auth-read/filesystem-mutation traps caused zero trapped operations. The CLI requires explicit target and defaults to local-only."
+    },
+    {
+      "id": "P02",
+      "area": "Existing independent audio guard preservation",
+      "finding": "Unchanged imported localPreflight functions remain responsible for complete actual current105/92/118 audio; foreign flags/skipped/kept reject. Existing helper and45 profile/module SHA pins match actual files."
+    },
+    {
+      "id": "P03",
+      "area": "Native complete captions",
+      "finding": "Full target texts and every source ID are required; requested foreign actual currentDub must equal checked audio file. SRT and VTT must equal native reconstruction byte-for-byte, and current manifest binds cue count/problems/dub timing. Native CPS advisories are retained; hard failures reject."
+    },
+    {
+      "id": "P04",
+      "area": "Native metadata",
+      "finding": "Current native metadata status, composeMetadata result and exact title/blankline/complete-description/final-newline bytes are reconstructed and pinned. No generation CLI runs."
+    },
+    {
+      "id": "P05",
+      "area": "Checked audio already on backend",
+      "finding": "Both requested dub_<locale> and evidence_<locale>_m4a roles must match full independently checked audio SHA/size/type before caption append. This helper cannot attach any audio."
+    },
+    {
+      "id": "P06",
+      "area": "Small explicit assets only",
+      "finding": "Only exact requested SRT,VTT,metadataTXT and optional current JPEG roles are constructed; root asset SHA/size pins and actual JPEG magic are checked. No M4A,WAV,video,other locale,ASR or speech routes."
+    },
+    {
+      "id": "P07",
+      "area": "Preservation",
+      "finding": "Append-only file roles and supplemental evidence preserve existing payload fields, dubs, metadata,QA11, choices, other reviews and pending-final identity. Conflicting roles reject; repeat same binding is idempotent."
+    },
+    {
+      "id": "P08",
+      "area": "Normal API only",
+      "finding": "Only fixed-project authenticated GET, exact assetSHA PUT and one POST to existing pending final. GET/PUT retries are bounded; POST is never blindly retried. Default has no credential read/network."
+    },
+    {
+      "id": "P09",
+      "area": "Concurrent changes",
+      "finding": "Local inputs, entire review list and owner choices are checked again before POST and exact stored role/payload/QA/decisions afterward. No server CAS is claimed."
+    },
+    {
+      "id": "P10",
+      "area": "Narrow result claims",
+      "finding": "Explicit all_eight_ready=false and overall_production_completed=false remain. Readback is authenticated role metadata after normal content-addressed completion, not remote binary GET/stream hash."
+    },
+    {
+      "id": "P11",
+      "area": "Revision-specific fixes",
+      "finding": "4b now rejects mismatched view profile/locale/source/JPEG/bytes/viewed=false/method/reviewer and view time later than pin. Bounded cumulative summary plus saved prior summary/review hash addresses original growth issue."
+    }
+  ],
+  "issues": [
+    {
+      "id": "R3",
+      "result": "REVISE",
+      "area": "Actual image evidence accepts nonimage files",
+      "lines": "current54-60,current132-134",
+      "evidence": "A structurally correct view record can point evidence_file to caption-assets-helper-preparation.json with its real fullSHA. Exported validateVisualProof and exact isolated production visualEvidenceFile+digest checks accept this JSON as actual viewed image/contact evidence.",
+      "required": "At the actual-view evidence path, check supported real image bytes/signature (and preferably decode using an already available safe reader if needed), not only regularfile/path/size. Keep structured JSON record validation separate. Add JSON/text-disguised-as-image negative fixtures.",
+      "boundary": "This does not claim an image signature can prove that a person viewed an image; root's factual attestation remains required."
+    },
+    {
+      "id": "R4",
+      "result": "REVISE",
+      "area": "Future root-view timestamps accepted together",
+      "lines": "current39,current51",
+      "evidence": "pin.reviewed_at=2099-01-01T00:00:01Z and view.viewed_at=2099-01-01T00:00:00Z both pass. The existing future test only rejects view later than an earlier pin.",
+      "required": "Require both actual review/view timestamps finite and not after current clock, in addition to view<=review; test both-future and same-future cases. Preserve original inputs and failed receipt."
+    }
+  ],
+  "parent_helper_pins": [
+    {
+      "file": "deliver-checked-formal-locale.mjs",
+      "expected_sha256": "90a84eb4ef4c43edb0eba8348f5fc994ca72372df47b9e5bcd52641da0c884e8",
+      "actual_sha256": "90a84eb4ef4c43edb0eba8348f5fc994ca72372df47b9e5bcd52641da0c884e8",
+      "match": true
+    },
+    {
+      "file": "deliver-checked-forty-locale.mjs",
+      "expected_sha256": "c8c07023b6a0ef39118185af11385a6619f5234af2a5b18c328f04091e9bf9e9",
+      "actual_sha256": "c8c07023b6a0ef39118185af11385a6619f5234af2a5b18c328f04091e9bf9e9",
+      "match": true
+    },
+    {
+      "file": "attach-slides-main-download.video-timing.count-corrected.mjs",
+      "expected_sha256": "85a488ac0508c0964e958c9d2e832652a3dffe2f13171f98ab4dd9a53953a6d5",
+      "actual_sha256": "85a488ac0508c0964e958c9d2e832652a3dffe2f13171f98ab4dd9a53953a6d5",
+      "match": true
+    }
+  ],
+  "native_module_pins": [
+    {
+      "profile": "formal255",
+      "module": "core/stages.mjs",
+      "expected_sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "actual_sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "core/captions.mjs",
+      "expected_sha256": "dfa1d116049d6e480dfe4eda5ee8f8651a006bc11e36286bc2a6c91b82dd0088",
+      "actual_sha256": "dfa1d116049d6e480dfe4eda5ee8f8651a006bc11e36286bc2a6c91b82dd0088",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "core/state.mjs",
+      "expected_sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "actual_sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "core/schema.mjs",
+      "expected_sha256": "8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b",
+      "actual_sha256": "8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "core/timeline.mjs",
+      "expected_sha256": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+      "actual_sha256": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "core/branding.mjs",
+      "expected_sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+      "actual_sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "core/translations.mjs",
+      "expected_sha256": "92145323271592349e1a11d3ee4aafccc24c7ed418ed7ee331ec5b5bf49c86e4",
+      "actual_sha256": "92145323271592349e1a11d3ee4aafccc24c7ed418ed7ee331ec5b5bf49c86e4",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "core/metadata.mjs",
+      "expected_sha256": "ab4530beb2974d2558a220c267a1de712130371bb6bef84b69e6835c8b61dd18",
+      "actual_sha256": "ab4530beb2974d2558a220c267a1de712130371bb6bef84b69e6835c8b61dd18",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "core/compilation.mjs",
+      "expected_sha256": "76ec1c467dbb2d1ecfd5422141b8c145d9f73dc669d1326a260f1688ead26efd",
+      "actual_sha256": "76ec1c467dbb2d1ecfd5422141b8c145d9f73dc669d1326a260f1688ead26efd",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "package/metadata.mjs",
+      "expected_sha256": "dcca63b10ae3f88e5905008f87c3065b6fe293ef2268755aa41f5527fa877e2c",
+      "actual_sha256": "dcca63b10ae3f88e5905008f87c3065b6fe293ef2268755aa41f5527fa877e2c",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "review/renewal-handoff.mjs",
+      "expected_sha256": "4061c664592e9ac3e0971489e0af9e930660429eb232b5dcb6d45fe90b5f0317",
+      "actual_sha256": "4061c664592e9ac3e0971489e0af9e930660429eb232b5dcb6d45fe90b5f0317",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "qa/checks.mjs",
+      "expected_sha256": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+      "actual_sha256": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "review/sync.mjs",
+      "expected_sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "actual_sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "tts/credentials.mjs",
+      "expected_sha256": "f715b299607b79d797e8b60760e520644368425a2039d4ce7b0cd3ddc72c3753",
+      "actual_sha256": "f715b299607b79d797e8b60760e520644368425a2039d4ce7b0cd3ddc72c3753",
+      "match": true
+    },
+    {
+      "profile": "formal255",
+      "module": "tts/client.mjs",
+      "expected_sha256": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04",
+      "actual_sha256": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/stages.mjs",
+      "expected_sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "actual_sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/captions.mjs",
+      "expected_sha256": "dfa1d116049d6e480dfe4eda5ee8f8651a006bc11e36286bc2a6c91b82dd0088",
+      "actual_sha256": "dfa1d116049d6e480dfe4eda5ee8f8651a006bc11e36286bc2a6c91b82dd0088",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/state.mjs",
+      "expected_sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "actual_sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/schema.mjs",
+      "expected_sha256": "8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b",
+      "actual_sha256": "8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/timeline.mjs",
+      "expected_sha256": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+      "actual_sha256": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/branding.mjs",
+      "expected_sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+      "actual_sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/translations.mjs",
+      "expected_sha256": "92145323271592349e1a11d3ee4aafccc24c7ed418ed7ee331ec5b5bf49c86e4",
+      "actual_sha256": "92145323271592349e1a11d3ee4aafccc24c7ed418ed7ee331ec5b5bf49c86e4",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/metadata.mjs",
+      "expected_sha256": "ab4530beb2974d2558a220c267a1de712130371bb6bef84b69e6835c8b61dd18",
+      "actual_sha256": "ab4530beb2974d2558a220c267a1de712130371bb6bef84b69e6835c8b61dd18",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "core/compilation.mjs",
+      "expected_sha256": "76ec1c467dbb2d1ecfd5422141b8c145d9f73dc669d1326a260f1688ead26efd",
+      "actual_sha256": "76ec1c467dbb2d1ecfd5422141b8c145d9f73dc669d1326a260f1688ead26efd",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "package/metadata.mjs",
+      "expected_sha256": "dcca63b10ae3f88e5905008f87c3065b6fe293ef2268755aa41f5527fa877e2c",
+      "actual_sha256": "dcca63b10ae3f88e5905008f87c3065b6fe293ef2268755aa41f5527fa877e2c",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "review/renewal-handoff.mjs",
+      "expected_sha256": "4061c664592e9ac3e0971489e0af9e930660429eb232b5dcb6d45fe90b5f0317",
+      "actual_sha256": "4061c664592e9ac3e0971489e0af9e930660429eb232b5dcb6d45fe90b5f0317",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "qa/checks.mjs",
+      "expected_sha256": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+      "actual_sha256": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "review/sync.mjs",
+      "expected_sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "actual_sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "tts/credentials.mjs",
+      "expected_sha256": "f715b299607b79d797e8b60760e520644368425a2039d4ce7b0cd3ddc72c3753",
+      "actual_sha256": "f715b299607b79d797e8b60760e520644368425a2039d4ce7b0cd3ddc72c3753",
+      "match": true
+    },
+    {
+      "profile": "forty",
+      "module": "tts/client.mjs",
+      "expected_sha256": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04",
+      "actual_sha256": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/stages.mjs",
+      "expected_sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "actual_sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/captions.mjs",
+      "expected_sha256": "dfa1d116049d6e480dfe4eda5ee8f8651a006bc11e36286bc2a6c91b82dd0088",
+      "actual_sha256": "dfa1d116049d6e480dfe4eda5ee8f8651a006bc11e36286bc2a6c91b82dd0088",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/state.mjs",
+      "expected_sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "actual_sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/schema.mjs",
+      "expected_sha256": "8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b",
+      "actual_sha256": "8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/timeline.mjs",
+      "expected_sha256": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+      "actual_sha256": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/branding.mjs",
+      "expected_sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+      "actual_sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/translations.mjs",
+      "expected_sha256": "92145323271592349e1a11d3ee4aafccc24c7ed418ed7ee331ec5b5bf49c86e4",
+      "actual_sha256": "92145323271592349e1a11d3ee4aafccc24c7ed418ed7ee331ec5b5bf49c86e4",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/metadata.mjs",
+      "expected_sha256": "ab4530beb2974d2558a220c267a1de712130371bb6bef84b69e6835c8b61dd18",
+      "actual_sha256": "ab4530beb2974d2558a220c267a1de712130371bb6bef84b69e6835c8b61dd18",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "core/compilation.mjs",
+      "expected_sha256": "76ec1c467dbb2d1ecfd5422141b8c145d9f73dc669d1326a260f1688ead26efd",
+      "actual_sha256": "76ec1c467dbb2d1ecfd5422141b8c145d9f73dc669d1326a260f1688ead26efd",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "package/metadata.mjs",
+      "expected_sha256": "dcca63b10ae3f88e5905008f87c3065b6fe293ef2268755aa41f5527fa877e2c",
+      "actual_sha256": "dcca63b10ae3f88e5905008f87c3065b6fe293ef2268755aa41f5527fa877e2c",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "review/renewal-handoff.mjs",
+      "expected_sha256": "4061c664592e9ac3e0971489e0af9e930660429eb232b5dcb6d45fe90b5f0317",
+      "actual_sha256": "4061c664592e9ac3e0971489e0af9e930660429eb232b5dcb6d45fe90b5f0317",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "qa/checks.mjs",
+      "expected_sha256": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+      "actual_sha256": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "review/sync.mjs",
+      "expected_sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "actual_sha256": "8a25b2ce9e6eac14e32d789461f35d758504e5b4547ab3600f0c8e9985d3b4c9",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "tts/credentials.mjs",
+      "expected_sha256": "f715b299607b79d797e8b60760e520644368425a2039d4ce7b0cd3ddc72c3753",
+      "actual_sha256": "f715b299607b79d797e8b60760e520644368425a2039d4ce7b0cd3ddc72c3753",
+      "match": true
+    },
+    {
+      "profile": "slides118",
+      "module": "tts/client.mjs",
+      "expected_sha256": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04",
+      "actual_sha256": "e4e2ae5c6b74af27e43eecf8e7ad8153a476a5440df7617d151e1096ca0b4a04",
+      "match": true
+    }
+  ],
+  "all_pins_match": true,
+  "not_executed": [
+    "actual localPreflight",
+    "actual audio audit",
+    "credential access",
+    "backend GET/PUT/POST",
+    "paid calls"
+  ],
+  "readback_claim_boundary": "No actual target was accepted or uploaded. Future execute must first pass root's actual pin plus local preflight, then exact normal backend readback. No server CAS or remote binary stream hashing is asserted."
+}

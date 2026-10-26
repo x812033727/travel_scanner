@@ -1,0 +1,310 @@
+{
+  "kind": "formal-official-bookends-independent-mechanical-audit",
+  "at": "2026-10-26T04:30:04.070090+00:00",
+  "verdict": "PASS",
+  "problems": [],
+  "scope": {
+    "mechanical_byte_and_json_audit_only": true,
+    "native_true_exit_notice_received_before_candidate_reads": true,
+    "media_decode_probe_extract_commands": 0,
+    "network_calls": 0,
+    "paid_calls": 0,
+    "canonical_candidate_source_writes": 0,
+    "only_written": "/workspace/work/ai-tech-next/formal-bookends-mechanical-audit.json",
+    "no_subagents_for_this_task": true,
+    "not_claimed": [
+      "independent actual container probe",
+      "visual or aural acceptance",
+      "new QA policy judgement",
+      "new speech checks",
+      "final approval",
+      "backend submission",
+      "all-language readiness"
+    ]
+  },
+  "input_receipts": {
+    "formal-copy.result.json": {
+      "sha256": "dd6cf29a19eb538513b9c96c1eba7185b04f8b8891c8c1f9388ab1b5003a25d0",
+      "bytes": 2648
+    },
+    "formal-copy.canonical-before.json": {
+      "sha256": "30d281e0784d323673f66ff904ef21573b46a1b4ffe31180db0d9f90cf7c5ca0",
+      "bytes": 472375
+    },
+    "formal-copy.canonical-after.json": {
+      "sha256": "810fefd31981f093cc9a86c8a26c4be27eb0442d5b70726429fc283d61827ea3",
+      "bytes": 472375
+    },
+    "formal-copy.destination-initial.json": {
+      "sha256": "a48c12c5e8e2ce1609ed7bdfaa3a87b6cd8990f088bd9ac76458e214bfdf8aa2",
+      "bytes": 472134
+    },
+    "formal-source-and-native.baseline.json": {
+      "sha256": "81776d17ad7a418ba9544f6f2388d98e6ea66750b7e7af8a0b76581ee6480e8a",
+      "bytes": 128052
+    },
+    "formal-native-assemble-completion.json": {
+      "sha256": "0c39fdf57883b1eead42bc9bcc91a9a43482c7439df56b384500c5b67b89ec33",
+      "bytes": 1350
+    }
+  },
+  "completion": {
+    "kind": "formal-official-v4-assemble-only",
+    "active": false,
+    "phase": "native_assemble_exit0",
+    "pid": 231259,
+    "started_at": "2026-10-26T04:15:58.484Z",
+    "root": "/workspace/work/travel-scanner-formal-255",
+    "canonical": "/workspace/work/videos/claude-formal-verification-255",
+    "candidate": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255",
+    "actual_command": [
+      "assemble",
+      "--slug",
+      "claude-formal-verification-255",
+      "--workdir",
+      "/workspace/work/videos/_formal-bookend-candidate",
+      "--intro-after-condensation"
+    ],
+    "network_allowed": false,
+    "paid_allowed": false,
+    "no_other_stage": [
+      "captions",
+      "dub",
+      "tts",
+      "check-audio",
+      "qa",
+      "package",
+      "review-push",
+      "approve",
+      "publish"
+    ],
+    "native_project_lease": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/LEASE",
+      "owner": "formal-bookend-assemble",
+      "pid": 231259,
+      "active": false
+    },
+    "copy_receipt_sha256": "dd6cf29a19eb538513b9c96c1eba7185b04f8b8891c8c1f9388ab1b5003a25d0",
+    "selected_branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "intro_at_body_frame": 732,
+    "native_code": 0,
+    "native_finished_at": "2026-10-26T04:28:06.543Z",
+    "finished_at": "2026-10-26T04:28:06.545Z"
+  },
+  "source_pin": {
+    "path": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/video.json",
+    "sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f"
+  },
+  "copy_inventory_consistency": {
+    "canonical_before_after_and_initial_bytes_equal": true,
+    "original_files": 1865,
+    "copied_bytes": 623235297
+  },
+  "protected_canonical": {
+    "current_file_count": 1865,
+    "changed_original_files": [],
+    "added_files": [],
+    "symlinks": [],
+    "all_original_full_sha_and_sizes_unchanged": true
+  },
+  "formal_source_native_wrapper_baseline": {
+    "source_files": 167,
+    "native_core_files": 442,
+    "total_files_hashed": 609,
+    "changed": []
+  },
+  "candidate": {
+    "original_files_rehashed": 1865,
+    "changed_original_files": [
+      "build/segments.ffconcat",
+      "checks.json",
+      "final.mp4",
+      "state.json"
+    ],
+    "unexpected_changed_original_files": [],
+    "missing_original_files": [],
+    "added_files": [
+      "branding.json",
+      "build/body.mp4",
+      "build/branding/39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64-x264-high-crf18-stillimage-g60-bf2-bt709-v2/intro.mp4",
+      "build/branding/39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64-x264-high-crf18-stillimage-g60-bf2-bt709-v2/join.ffconcat",
+      "build/branding/39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64-x264-high-crf18-stillimage-g60-bf2-bt709-v2/outro.mp4"
+    ],
+    "symlinks": [],
+    "shared_inode_paths_with_canonical": [],
+    "protected_categories": {
+      "audio/": {
+        "files": 106,
+        "all_full_sha_and_size_unchanged": true,
+        "added_files": []
+      },
+      "dubs/": {
+        "files": 260,
+        "all_full_sha_and_size_unchanged": true,
+        "added_files": []
+      },
+      "captions/": {
+        "files": 19,
+        "all_full_sha_and_size_unchanged": true,
+        "added_files": []
+      },
+      "review/": {
+        "files": 13,
+        "all_full_sha_and_size_unchanged": true,
+        "added_files": []
+      }
+    },
+    "new_state_runs": [
+      {
+        "stage": "assemble",
+        "at": "2026-10-26T04:28:06.535Z",
+        "ok": true,
+        "encoded_segments": 0,
+        "seconds": 725
+      }
+    ],
+    "approvals_preserved": true,
+    "timeline_preserved": true,
+    "historical_qa_preserved": true,
+    "expected_changed_original_files": [
+      "build/segments.ffconcat",
+      "checks.json",
+      "final.mp4",
+      "state.json"
+    ],
+    "preserved_local_approval_gates": [
+      "outline",
+      "outline",
+      "audio"
+    ],
+    "local_final_approval_exists": false,
+    "local_publish_approval_exists": false,
+    "lease_absent_at_completed_audit": true
+  },
+  "official_registry": {
+    "current.json": {
+      "sha256": "94f5faaed614291353b906fff9a773a4d46692b033054eea0d8a2b4d56d6c94e",
+      "bytes": 612,
+      "matches_copy_pin": true,
+      "matches_original_registry_source": true,
+      "separate_inode": true
+    },
+    "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/intro.mp4": {
+      "sha256": "50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d",
+      "bytes": 2708408,
+      "matches_copy_pin": true,
+      "matches_original_registry_source": true,
+      "separate_inode": true
+    },
+    "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/outro.mp4": {
+      "sha256": "00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396",
+      "bytes": 2054558,
+      "matches_copy_pin": true,
+      "matches_original_registry_source": true,
+      "separate_inode": true
+    }
+  },
+  "official_assets_hashed_without_decode": {
+    "intro": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/_branding/416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/intro.mp4",
+      "sha256": "50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d",
+      "bytes": 2708408,
+      "frames_from_pin": 150
+    },
+    "outro": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/_branding/416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/outro.mp4",
+      "sha256": "00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396",
+      "bytes": 2054558,
+      "frames_from_pin": 630
+    }
+  },
+  "branding": {
+    "pin": {
+      "schema_version": 1,
+      "id": "mokaair-brand-package-v4-endscreen",
+      "intro": {
+        "file": "/workspace/work/videos/_formal-bookend-candidate/_branding/416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/intro.mp4",
+        "sha256": "50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d",
+        "frames": 150
+      },
+      "outro": {
+        "file": "/workspace/work/videos/_formal-bookend-candidate/_branding/416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/outro.mp4",
+        "sha256": "00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396",
+        "frames": 630
+      },
+      "intro_at": "after_first_chapter",
+      "hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+      "adopted_at": "2026-10-26T04:28:06.511Z"
+    },
+    "applied": {
+      "hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+      "id": "mokaair-brand-package-v4-endscreen",
+      "intro_frames": 150,
+      "outro_frames": 630,
+      "body_frames": 16813,
+      "intro_at_frame": 732,
+      "body_file": "build/body.mp4",
+      "body_sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5"
+    },
+    "independently_computed_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64"
+  },
+  "body": {
+    "sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "bytes": 48226281,
+    "old_canonical_body_sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "byte_identical_to_original": true,
+    "frames_from_unchanged_timeline": 16813
+  },
+  "branded_final": {
+    "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+    "bytes": 54578838,
+    "different_from_original": true,
+    "native_checks_ok": true,
+    "native_problems": [],
+    "frames_from_native_checks": 17593,
+    "native_loudness": {
+      "integrated": -14.1,
+      "truePeak": -2.6
+    },
+    "video_grid_seconds_calculated": 586.4333333333333,
+    "container_duration_independently_measured_by_this_auditor": false
+  },
+  "timing_expected_and_native_bound": {
+    "body_frames": 16813,
+    "intro_at_body_frame": 732,
+    "intro_frames": 150,
+    "intro_start_frame": 732,
+    "intro_end_frame": 882,
+    "content_end_frame": 16963,
+    "outro_frames": 630,
+    "outro_end_frame": 17593,
+    "first_chapter_preserved": true,
+    "subsequent_content_offset_frames": 150
+  },
+  "limitations": [
+    "No media tool was executed; native frame/loudness values are read from completed native checks and linked by byte hashes. Producer independently probes/extracts/views.",
+    "Full file SHA hashing verifies bytes and isolation; it does not establish subjective visual/audio quality.",
+    "Historical QA/approval/captions/dubs remain old-body artifacts. Their unchanged bytes do not approve or mark the new branded final or localized presentation current."
+  ],
+  "initial_expectation_resolution": {
+    "initial_three_file_expectation": true,
+    "initial_strict_check_flagged": "build/segments.ffconcat",
+    "coordinator_corrected_expectation_before_final_audit": "Native generated concat manifest may change in isolated work base. Verify exact rebase rather than accepting arbitrary content differences.",
+    "independently_proved_exact_root_rebase_only": true,
+    "line_count_before": 94,
+    "line_count_after": 94,
+    "exact_rebased_path_count": 93,
+    "same_segment_order_and_names": true,
+    "original_manifest_sha256": "2e151d79a161e05c2f82b27dc14d43090ae0f70186a65fbf8801c45a04231b67",
+    "candidate_manifest_sha256": "1a88ac9e88463a3a9649ea44947366bff8cc7b8d66eb0010db37465f43ea5084",
+    "native_code_reference": "tools/video/assemble/cli.mjs:472",
+    "material_protected_content_mismatch": false
+  },
+  "completed_at": "2026-10-26T04:31:05.352857+00:00",
+  "coordinator_post_verification_receipt": {
+    "path": "/workspace/work/videos/_formal-bookend-candidate/formal-branded-assemble-only-verification.json",
+    "sha256": "20c7a17e310093e63eed27f55f798d50706da60b6e8362fbf73b027b2158c031",
+    "matches_completion_message_pin": true,
+    "not_substituted_for_independent_full_sha_inventory": true
+  }
+}

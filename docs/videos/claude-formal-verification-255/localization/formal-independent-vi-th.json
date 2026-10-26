@@ -1,0 +1,1702 @@
+{
+  "kind": "independent-caption-review",
+  "role": "Reviewer did not translate vi or th; prior translation work was es, pt and id.",
+  "findings_spec": {
+    "vi": [
+      {
+        "id": "cawx",
+        "kinds": [
+          "meaning",
+          "readability"
+        ],
+        "required": true,
+        "reason": "The relative clause 'do AI' is grammatically unfinished. Name AI's writing explicitly, and attach the compile-time clause to the Rocq kernel's examination of that proof. The selected wording retains kernel, Rocq, AI authorship and compile time."
+      },
+      {
+        "id": "6x7t",
+        "kinds": [
+          "meaning"
+        ],
+        "required": true,
+        "reason": "Make the memory restriction explicitly a requirement on the admitted input, rather than a bare assertion that input never exceeds memory. Retain the system model, ordinary build and specified memory allowance. 'phai' restores the premise's must-condition."
+      },
+      {
+        "id": "ey22",
+        "kinds": [
+          "readability",
+          "scope_clarity"
+        ],
+        "required": true,
+        "reason": "An input does not itself exit or return a value. State that for every input the program exits and returns limit plus 1, while retaining the result in the return column."
+      },
+      {
+        "id": "2yfh",
+        "kinds": [
+          "readability"
+        ],
+        "required": true,
+        "reason": "'Hai so 8 la cung mot viec' is an unnatural literal rendering of treating two eights as the same thing. Use the ordinary Vietnamese verb for conflating them; keep the conversion-at-storage location and the two eights."
+      },
+      {
+        "id": "5u3j",
+        "kinds": [
+          "readability"
+        ],
+        "required": true,
+        "reason": "'Du tien de' is an unnatural way to say that this premise is satisfied. Use 'thoa tien de'; retain the conditional, both builds, negation and only the designated errors."
+      },
+      {
+        "id": "84hx",
+        "kinds": [
+          "optional_clarity"
+        ],
+        "required": false,
+        "reason": "'Hai dong' can be understood as two record rows, but is also easy to confuse with two code lines just discussed. Naming the two results directly is clearer; this is not a claimed factual contradiction."
+      },
+      {
+        "id": "zgkb",
+        "kinds": [
+          "optional_readability"
+        ],
+        "required": false,
+        "reason": "The original meaning is recoverable. 'Bieu dien' makes the mathematical encoding of the same input in eight true/false bits more natural than 'viet cung dau vao thanh'. No model strength or checker is added."
+      }
+    ],
+    "th": [
+      {
+        "id": "cawx",
+        "kinds": [
+          "meaning",
+          "budget"
+        ],
+        "required": true,
+        "reason": "At the end of the current relative clause, 'while compiling' can modify AI writing the proof. Put compile time first so the kernel performs the check during compilation. Keep the full kernel term, Rocq, proof and AI-written authorship. The clear candidate remains over 36 and is unresolved."
+      },
+      {
+        "id": "936d",
+        "kinds": [
+          "budget"
+        ],
+        "required": true,
+        "reason": "Replace only the storage preposition with 'in'. Preserve complete calculation value, stored total, integer, unsignedness and 16 bits."
+      },
+      {
+        "id": "u2xw",
+        "kinds": [
+          "budget"
+        ],
+        "required": true,
+        "reason": "Fill the return value in the already named return field, using another independent counting program. State explicitly that its input is the limit. 'Counting' is already carried by the program, so the limit remains its counting limit; no downstream relation to the guard is introduced."
+      },
+      {
+        "id": "7ip9",
+        "kinds": [
+          "budget"
+        ],
+        "required": true,
+        "reason": "Move 'same program' before the ordinary/error-checking forms and avoid repeating 'version'. Retain public release, the same program, both forms and the explicit not-before/after-repair distinction."
+      },
+      {
+        "id": "6x7t",
+        "kinds": [
+          "budget"
+        ],
+        "required": true,
+        "reason": "The current meaning is correct. The shorter candidate still preserves system model, input must-condition, ordinary build, non-exceedance and specified memory budget. It remains over 54; no faithful natural in-budget version is offered."
+      },
+      {
+        "id": "5u3j",
+        "kinds": [
+          "budget"
+        ],
+        "required": true,
+        "reason": "Use an explicit if-condition and 'both' referring to the two builds. Keep the absence of the designated errors, rather than promising absence of every possible error."
+      },
+      {
+        "id": "cnnu",
+        "kinds": [
+          "budget"
+        ],
+        "required": true,
+        "reason": "Keep finite length of the behavioral record, possibility, text, the program as emitter and already-produced output. The clear shorter noun phrase remains over 52. A finite number of records or short records would change the claim and is not proposed."
+      },
+      {
+        "id": "4nfp",
+        "kinds": [
+          "budget"
+        ],
+        "required": true,
+        "reason": "'This conclusion' explicitly refers to the immediately preceding termination-proof statement. Restrict that conclusion to this public release and exclude the entire research from its scope. This preserves the source's anaphoric limitation without repeating the termination noun and does not assert that the wider research proved termination."
+      },
+      {
+        "id": "mvnc",
+        "kinds": [
+          "terminology",
+          "readability"
+        ],
+        "required": true,
+        "reason": "Use the Thai term for a line of code, not a table row: this question points to the line that preserves the total. Keep the found counterexample and complete total."
+      },
+      {
+        "id": "yavq",
+        "kinds": [
+          "terminology",
+          "readability"
+        ],
+        "required": true,
+        "reason": "This is the entire code line, not a record-table row. Retain both calculation and the conversion used to store the total as changes to that line."
+      },
+      {
+        "id": "ey22",
+        "kinds": [
+          "readability",
+          "scope_clarity"
+        ],
+        "required": true,
+        "reason": "Make the program the subject that exits and returns the bound plus 1 for every input, rather than saying that the inputs exit. Retain the completed return-column result and the universal input scope."
+      }
+    ]
+  },
+  "candidate_checks": {
+    "vi": {
+      "cawx": [
+        "Khi biên dịch, nhân Rocq xét chứng minh AI viết.",
+        "Nhân Rocq kiểm tra chứng minh AI viết khi biên dịch."
+      ],
+      "6x7t": [
+        "Mô hình hệ thống: đầu vào phải giữ bản thường trong mức bộ nhớ đã định."
+      ],
+      "2yfh": [
+        "Lỗi ở ép kiểu khi lưu; không thể đánh đồng hai số 8 ấy."
+      ],
+      "84hx": [
+        "Nhưng chỉ xem hai kết quả này, sao biết ở giữa không còn lỗi?"
+      ],
+      "zgkb": [
+        "Phiếu thêm mô hình giải: cùng đầu vào được biểu diễn bằng 8 bit đúng/sai."
+      ],
+      "ey22": [
+        "Ô trả về có kết quả: với mọi đầu vào, chương trình thoát và trả về giới hạn cộng 1."
+      ],
+      "5u3j": [
+        "Thỏa tiền đề ấy, cả hai bản không gặp lỗi đã chỉ định."
+      ]
+    },
+    "th": {
+      "936d": [
+        "คำนวณให้คงค่าครบ แล้วเก็บผลรวมในจำนวนเต็มไร้เครื่องหมาย 16 บิต"
+      ],
+      "u2xw": [
+        "ฉันใช้โปรแกรมนับอิสระอีกตัวกรอกค่าคืน อินพุตคือขีดจำกัด",
+        "ฉันใช้โปรแกรมนับอิสระอีกตัวกรอกช่องคืนค่า รับขีดจำกัด",
+        "ฉันใช้โปรแกรมนับอิสระอีกตัวกรอกช่องคืนค่า รับขีดจำกัดการนับ"
+      ],
+      "cawx": [
+        "ขณะคอมไพล์ เคอร์เนล Rocq ตรวจบทพิสูจน์ที่ AI เขียน",
+        "ขณะคอมไพล์ แกน Rocq ตรวจบทพิสูจน์ที่ AI เขียน"
+      ],
+      "7ip9": [
+        "ฉบับสาธารณะเทียบโปรแกรมเดียวกันแบบปกติกับตรวจข้อผิดพลาด ไม่ใช่ก่อนหลังแก้"
+      ],
+      "6x7t": [
+        "ในโมเดลระบบ อินพุตต้องให้รุ่นปกติไม่เกินงบหน่วยความจำที่ระบุ"
+      ],
+      "5u3j": [
+        "ถ้าตรงเกณฑ์นี้ ทั้งคู่ไร้ข้อผิดพลาดที่ระบุ"
+      ],
+      "cnnu": [
+        "บันทึกพฤติกรรมความยาวจำกัดอาจมีข้อความที่โปรแกรมส่งออกแล้ว"
+      ],
+      "4nfp": [
+        "ข้อสรุปนี้ใช้เฉพาะฉบับสาธารณะนี้ ไม่ใช่ทั้งงานวิจัย"
+      ],
+      "mvnc": [
+        "บันทึกพบกรณีโต้แย้งแล้ว บรรทัดไหนเก็บความยาวรวมได้ครบ?"
+      ],
+      "yavq": [
+        "ต้องแก้ทั้งบรรทัด ทั้งการคำนวณและการแปลงชนิดที่เก็บผลรวม"
+      ],
+      "ey22": [
+        "ช่องคืนค่าได้ผลแล้ว ทุกอินพุต โปรแกรมออกและคืนค่าขีดจำกัดบวก 1"
+      ]
+    }
+  },
+  "primary": {
+    "video_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+    "claims_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
+    "speech_hash_reference": "8028c7320d9cab29; supplied by coordinator/author, not independently read or regenerated",
+    "source_text_freeze_reference": "232b4495b433041007c039630ec517b7e0b4948c3cd7a5a47da6ecd88cae8a15; layout-only change to current e6 source retains worksheet text"
+  },
+  "author_proof_sha256": {
+    "/workspace/work/ai-tech-next/formal-translation-vi-th-review.md": "e97c336413c294ae8d510d6b7b0353c4c879a469d884965f2ef1d67360ee6c13",
+    "/workspace/work/ai-tech-next/formal-translation-vi-th-review.json": "2151dc1fb243c6e21d7c3f03653499c35dbeeae16737fecf6f8159e389d69099"
+  },
+  "review_method": {
+    "whole_script": "Read all 105 current lines per locale in source order, all 7 chapters, title, complete description, tags and all three thumbnail fields. Primary narration and claims were consulted. Author critique was consulted after forming the independent source comparison.",
+    "passes": [
+      "1: source meaning, conditions, negation, numerical/type scope and attribution",
+      "2: natural spoken Vietnamese/Thai, grammatical agents, mathematical terms and metadata",
+      "3: raw Unicode character budgets, metadata limits, names, full URL/paragraph structure and source-id match"
+    ],
+    "character_count": "Python Unicode code points including Thai combining marks, consistent with current max_chars. No normalization, budget changes or timing inference.",
+    "audio": "Not run. No TTS, ASR, paid action or actual dubbing/window-fit assessment.",
+    "mutations": "Only the two requested independent-review scratch reports. No worksheet, merge, source, claim, media, cache, backend or git mutation."
+  },
+  "locales": {
+    "vi": {
+      "worksheet_path": "/workspace/work/videos/claude-formal-verification-255/i18n/vi.todo.json",
+      "worksheet_sha256": "1641566392931e1e650e40474afc012365a0edd5cea264bf35cd25edcd17330f",
+      "worksheet_unchanged": true,
+      "reviewed_lines": 105,
+      "reviewed_chapters": 7,
+      "reviewed_metadata": [
+        "title",
+        "description (all paragraphs and full URL)",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "line_review_coverage": [
+        {
+          "id": "zfgp",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "z9dp",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "bpnn",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "c8r2",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "qwaw",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4rff",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "5i5d",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "jeaj",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "fzz5",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "kkef",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "m7xu",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "axkg",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "r79s",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "p2uy",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "vwiq",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "5iky",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "zfmi",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "3mpx",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "tew5",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "femu",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "64pm",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "2yfh",
+          "status": "finding"
+        },
+        {
+          "id": "mvnc",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "936d",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "s57e",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "yavq",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ij57",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mfag",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "vkym",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "84hx",
+          "status": "optional_suggestion"
+        },
+        {
+          "id": "wunt",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "a7te",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "dfhy",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "zgkb",
+          "status": "optional_suggestion"
+        },
+        {
+          "id": "5waf",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "unr8",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "gtuj",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "56e4",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "tksv",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "2zma",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4bqi",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "xfvp",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "cabc",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "jhkm",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "e6wk",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "7d4v",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "6a2b",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4akm",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "w9b4",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "dkjy",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "8ywa",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "xh98",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "idga",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "u2xw",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "p4u6",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "v9sd",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "riuf",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "cgit",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "y326",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "qmcd",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "b3r9",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ijcq",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ihny",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4jzv",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "kfft",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "58rm",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mjsr",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "kq36",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "qjaw",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "h6n5",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "p8te",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ghs2",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "9mxr",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ey22",
+          "status": "finding"
+        },
+        {
+          "id": "5feu",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "rsx8",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "zg4q",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "wzn2",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "cawx",
+          "status": "finding"
+        },
+        {
+          "id": "uqde",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "5fga",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "wi26",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "nzaz",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "7ip9",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "6x7t",
+          "status": "finding"
+        },
+        {
+          "id": "5u3j",
+          "status": "finding"
+        },
+        {
+          "id": "cnnu",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "fwc2",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "e7pc",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "3jaw",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "e2mj",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4nfp",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "cr5k",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "b7jg",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "i2pt",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "te3s",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "iest",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "3u2q",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ucn4",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "bt2j",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mj65",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "edry",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mhjn",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "87s6",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "22tu",
+          "status": "reviewed_no_required_change"
+        }
+      ],
+      "chapters_reviewed": [
+        {
+          "scene": "capacity-accepts-255",
+          "text": "Kiểm tra cục bộ nhận cả 255",
+          "chars": 27,
+          "required_fixes": 0
+        },
+        {
+          "scene": "research-published",
+          "text": "Ghi rõ độ dài được chấp nhận",
+          "chars": 28,
+          "required_fixes": 0
+        },
+        {
+          "scene": "which-line-to-fix",
+          "text": "Giữ tổng 256, kiểm lại từ chối",
+          "chars": 30,
+          "required_fixes": 0
+        },
+        {
+          "scene": "deny-all-two-directions",
+          "text": "Từ chối hết cả đầu vào hợp lệ",
+          "chars": 29,
+          "required_fixes": 0
+        },
+        {
+          "scene": "independent-counter",
+          "text": "Ô trả về gặp vòng lặp",
+          "chars": 21,
+          "required_fixes": 0
+        },
+        {
+          "scene": "fix-proof-object",
+          "text": "Đối chiếu điều kiện chứng minh",
+          "chars": 30,
+          "required_fixes": 0
+        },
+        {
+          "scene": "completed-repair-record",
+          "text": "Ghi yêu cầu của bạn vào phiếu",
+          "chars": 29,
+          "required_fixes": 0
+        }
+      ],
+      "metadata_required_fixes": 0,
+      "metadata_static_checks": {
+        "title_chars": 86,
+        "tags_chars_with_separators": 90,
+        "full_url_and_paragraphs": "pass",
+        "thumbnail_all_fields_and_255_emphasis_newline": "pass",
+        "actual_thumbnail_render_fit": "not_run"
+      },
+      "current_static_within": 105,
+      "current_static_over": [],
+      "findings": [
+        {
+          "id": "cawx",
+          "kinds": [
+            "meaning",
+            "readability"
+          ],
+          "required": true,
+          "reason": "The relative clause 'do AI' is grammatically unfinished. Name AI's writing explicitly, and attach the compile-time clause to the Rocq kernel's examination of that proof. The selected wording retains kernel, Rocq, AI authorship and compile time.",
+          "source": "Rocq核心在編譯時，檢查AI寫出的證明。",
+          "old": "Nhân Rocq kiểm tra chứng minh do AI khi biên dịch.",
+          "old_chars": 50,
+          "max_chars": 50,
+          "proposed": "Khi biên dịch, nhân Rocq xét chứng minh AI viết.",
+          "proposed_chars": 48,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [
+            {
+              "text": "Nhân Rocq kiểm tra chứng minh AI viết khi biên dịch.",
+              "chars": 52,
+              "max_chars": 50,
+              "within_static_budget": false
+            }
+          ],
+          "applied": false
+        },
+        {
+          "id": "6x7t",
+          "kinds": [
+            "meaning"
+          ],
+          "required": true,
+          "reason": "Make the memory restriction explicitly a requirement on the admitted input, rather than a bare assertion that input never exceeds memory. Retain the system model, ordinary build and specified memory allowance. 'phai' restores the premise's must-condition.",
+          "source": "在系統模型內，輸入須讓一般版不超過指定記憶體預算。",
+          "old": "Ở mô hình hệ thống, đầu vào không làm bản thường vượt mức bộ nhớ đã định.",
+          "old_chars": 73,
+          "max_chars": 75,
+          "proposed": "Mô hình hệ thống: đầu vào phải giữ bản thường trong mức bộ nhớ đã định.",
+          "proposed_chars": 71,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "ey22",
+          "kinds": [
+            "readability",
+            "scope_clarity"
+          ],
+          "required": true,
+          "reason": "An input does not itself exit or return a value. State that for every input the program exits and returns limit plus 1, while retaining the result in the return column.",
+          "source": "紀錄的返回欄有結果了：每個輸入都離開，並返回上限加一。",
+          "old": "Ô trả về đã có kết quả: mọi đầu vào đều thoát và trả về giới hạn cộng 1.",
+          "old_chars": 72,
+          "max_chars": 108,
+          "proposed": "Ô trả về có kết quả: với mọi đầu vào, chương trình thoát và trả về giới hạn cộng 1.",
+          "proposed_chars": 83,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "2yfh",
+          "kinds": [
+            "readability"
+          ],
+          "required": true,
+          "reason": "'Hai so 8 la cung mot viec' is an unnatural literal rendering of treating two eights as the same thing. Use the ordinary Vietnamese verb for conflating them; keep the conversion-at-storage location and the two eights.",
+          "source": "這次的錯在轉型儲存，不能把兩種八當成同一件事。",
+          "old": "Lỗi ở ép kiểu lúc lưu; đừng coi hai số 8 là cùng một việc.",
+          "old_chars": 58,
+          "max_chars": 83,
+          "proposed": "Lỗi ở ép kiểu khi lưu; không thể đánh đồng hai số 8 ấy.",
+          "proposed_chars": 55,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "5u3j",
+          "kinds": [
+            "readability"
+          ],
+          "required": true,
+          "reason": "'Du tien de' is an unnatural way to say that this premise is satisfied. Use 'thoa tien de'; retain the conditional, both builds, negation and only the designated errors.",
+          "source": "符合這個前提，兩版都不會出現指定錯誤。",
+          "old": "Đủ tiền đề ấy, cả hai bản không gặp lỗi đã chỉ định.",
+          "old_chars": 52,
+          "max_chars": 61,
+          "proposed": "Thỏa tiền đề ấy, cả hai bản không gặp lỗi đã chỉ định.",
+          "proposed_chars": 54,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "84hx",
+          "kinds": [
+            "optional_clarity"
+          ],
+          "required": false,
+          "reason": "'Hai dong' can be understood as two record rows, but is also easy to confuse with two code lines just discussed. Naming the two results directly is clearer; this is not a claimed factual contradiction.",
+          "source": "但只看這兩筆，怎麼確認中間沒有別的錯？",
+          "old": "Nhưng chỉ xem hai dòng này, sao biết ở giữa không còn lỗi?",
+          "old_chars": 58,
+          "max_chars": 70,
+          "proposed": "Nhưng chỉ xem hai kết quả này, sao biết ở giữa không còn lỗi?",
+          "proposed_chars": 61,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "zgkb",
+          "kinds": [
+            "optional_readability"
+          ],
+          "required": false,
+          "reason": "The original meaning is recoverable. 'Bieu dien' makes the mathematical encoding of the same input in eight true/false bits more natural than 'viet cung dau vao thanh'. No model strength or checker is added.",
+          "source": "這份紀錄另加一個求解模型，把同一輸入寫成八個真假位元。",
+          "old": "Phiếu thêm mô hình để giải, viết cùng đầu vào thành 8 bit đúng hoặc sai.",
+          "old_chars": 72,
+          "max_chars": 101,
+          "proposed": "Phiếu thêm mô hình giải: cùng đầu vào được biểu diễn bằng 8 bit đúng/sai.",
+          "proposed_chars": 73,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        }
+      ],
+      "required_findings": 5,
+      "optional_suggestions": 2,
+      "unresolved_after_proposed_candidates": [],
+      "hypothetical_static_within_after_candidates": 105,
+      "verdict": "ready_after_required_wording_fixes; actual_audio_not_assessed"
+    },
+    "th": {
+      "worksheet_path": "/workspace/work/videos/claude-formal-verification-255/i18n/th.todo.json",
+      "worksheet_sha256": "bb3a489d2305de9bf9d923d7492e6fde5ba54d89eac51c0e89b380d5f0f8c01e",
+      "worksheet_unchanged": true,
+      "reviewed_lines": 105,
+      "reviewed_chapters": 7,
+      "reviewed_metadata": [
+        "title",
+        "description (all paragraphs and full URL)",
+        "tags",
+        "thumbnail.tag",
+        "thumbnail.headline",
+        "thumbnail.sub"
+      ],
+      "line_review_coverage": [
+        {
+          "id": "zfgp",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "z9dp",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "bpnn",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "c8r2",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "qwaw",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4rff",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "5i5d",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "jeaj",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "fzz5",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "kkef",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "m7xu",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "axkg",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "r79s",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "p2uy",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "vwiq",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "5iky",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "zfmi",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "3mpx",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "tew5",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "femu",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "64pm",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "2yfh",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mvnc",
+          "status": "finding"
+        },
+        {
+          "id": "936d",
+          "status": "finding"
+        },
+        {
+          "id": "s57e",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "yavq",
+          "status": "finding"
+        },
+        {
+          "id": "ij57",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mfag",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "vkym",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "84hx",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "wunt",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "a7te",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "dfhy",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "zgkb",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "5waf",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "unr8",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "gtuj",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "56e4",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "tksv",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "2zma",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4bqi",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "xfvp",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "cabc",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "jhkm",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "e6wk",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "7d4v",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "6a2b",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4akm",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "w9b4",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "dkjy",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "8ywa",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "xh98",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "idga",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "u2xw",
+          "status": "finding"
+        },
+        {
+          "id": "p4u6",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "v9sd",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "riuf",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "cgit",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "y326",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "qmcd",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "b3r9",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ijcq",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ihny",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4jzv",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "kfft",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "58rm",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mjsr",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "kq36",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "qjaw",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "h6n5",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "p8te",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ghs2",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "9mxr",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ey22",
+          "status": "finding"
+        },
+        {
+          "id": "5feu",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "rsx8",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "zg4q",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "wzn2",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "cawx",
+          "status": "finding"
+        },
+        {
+          "id": "uqde",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "5fga",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "wi26",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "nzaz",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "7ip9",
+          "status": "finding"
+        },
+        {
+          "id": "6x7t",
+          "status": "finding"
+        },
+        {
+          "id": "5u3j",
+          "status": "finding"
+        },
+        {
+          "id": "cnnu",
+          "status": "finding"
+        },
+        {
+          "id": "fwc2",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "e7pc",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "3jaw",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "e2mj",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "4nfp",
+          "status": "finding"
+        },
+        {
+          "id": "cr5k",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "b7jg",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "i2pt",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "te3s",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "iest",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "3u2q",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "ucn4",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "bt2j",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mj65",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "edry",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "mhjn",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "87s6",
+          "status": "reviewed_no_required_change"
+        },
+        {
+          "id": "22tu",
+          "status": "reviewed_no_required_change"
+        }
+      ],
+      "chapters_reviewed": [
+        {
+          "scene": "capacity-accepts-255",
+          "text": "ตรวจในเครื่องกลับรับ 255",
+          "chars": 24,
+          "required_fixes": 0
+        },
+        {
+          "scene": "research-published",
+          "text": "บันทึกความยาวที่รับได้ก่อน",
+          "chars": 26,
+          "required_fixes": 0
+        },
+        {
+          "scene": "which-line-to-fix",
+          "text": "เก็บ 256 แล้วตรวจว่าปฏิเสธ",
+          "chars": 26,
+          "required_fixes": 0
+        },
+        {
+          "scene": "deny-all-two-directions",
+          "text": "ปฏิเสธหมด แม้ค่าที่ถูกต้อง",
+          "chars": 26,
+          "required_fixes": 0
+        },
+        {
+          "scene": "independent-counter",
+          "text": "ช่องคืนค่าพบวงรอบ",
+          "chars": 17,
+          "required_fixes": 0
+        },
+        {
+          "scene": "fix-proof-object",
+          "text": "เทียบบันทึกกับเงื่อนไขพิสูจน์",
+          "chars": 29,
+          "required_fixes": 0
+        },
+        {
+          "scene": "completed-repair-record",
+          "text": "เขียนข้อกำหนดของคุณลงบันทึก",
+          "chars": 27,
+          "required_fixes": 0
+        }
+      ],
+      "metadata_required_fixes": 0,
+      "metadata_static_checks": {
+        "title_chars": 76,
+        "tags_chars_with_separators": 83,
+        "full_url_and_paragraphs": "pass",
+        "thumbnail_all_fields_and_255_emphasis_newline": "pass",
+        "actual_thumbnail_render_fit": "not_run"
+      },
+      "current_static_within": 97,
+      "current_static_over": [
+        {
+          "id": "936d",
+          "chars": 64,
+          "max_chars": 63,
+          "text": "คำนวณให้คงค่าครบ แล้วเก็บผลรวมด้วยจำนวนเต็มไร้เครื่องหมาย 16 บิต"
+        },
+        {
+          "id": "u2xw",
+          "chars": 66,
+          "max_chars": 58,
+          "text": "ฉันกรอกช่องคืนค่าด้วยโปรแกรมนับอิสระอีกตัว อินพุตคือขีดจำกัดการนับ"
+        },
+        {
+          "id": "cawx",
+          "chars": 49,
+          "max_chars": 36,
+          "text": "เคอร์เนล Rocq ตรวจบทพิสูจน์ที่ AI เขียนขณะคอมไพล์"
+        },
+        {
+          "id": "7ip9",
+          "chars": 81,
+          "max_chars": 74,
+          "text": "ฉบับสาธารณะเทียบรุ่นปกติกับรุ่นตรวจข้อผิดพลาดของโปรแกรมเดียวกัน ไม่ใช่ก่อนหลังแก้"
+        },
+        {
+          "id": "6x7t",
+          "chars": 62,
+          "max_chars": 54,
+          "text": "ในโมเดลระบบ อินพุตต้องไม่ทำให้รุ่นปกติเกินงบหน่วยความจำที่ระบุ"
+        },
+        {
+          "id": "5u3j",
+          "chars": 55,
+          "max_chars": 44,
+          "text": "ตรงตามเงื่อนไขนี้ ทั้งสองรุ่นจะไม่เกิดข้อผิดพลาดที่ระบุ"
+        },
+        {
+          "id": "cnnu",
+          "chars": 64,
+          "max_chars": 52,
+          "text": "บันทึกพฤติกรรมที่มีความยาวจำกัด อาจมีข้อความที่โปรแกรมส่งออกแล้ว"
+        },
+        {
+          "id": "4nfp",
+          "chars": 67,
+          "max_chars": 57,
+          "text": "นี่เฉพาะฉบับสาธารณะ ไม่ได้แปลว่างานวิจัยทั้งหมดไม่พิจารณาการสิ้นสุด"
+        }
+      ],
+      "findings": [
+        {
+          "id": "cawx",
+          "kinds": [
+            "meaning",
+            "budget"
+          ],
+          "required": true,
+          "reason": "At the end of the current relative clause, 'while compiling' can modify AI writing the proof. Put compile time first so the kernel performs the check during compilation. Keep the full kernel term, Rocq, proof and AI-written authorship. The clear candidate remains over 36 and is unresolved.",
+          "source": "Rocq核心在編譯時，檢查AI寫出的證明。",
+          "old": "เคอร์เนล Rocq ตรวจบทพิสูจน์ที่ AI เขียนขณะคอมไพล์",
+          "old_chars": 49,
+          "max_chars": 36,
+          "proposed": "ขณะคอมไพล์ เคอร์เนล Rocq ตรวจบทพิสูจน์ที่ AI เขียน",
+          "proposed_chars": 50,
+          "proposed_within_static_budget": false,
+          "static_budget_status": "unresolved_keep_full_meaning",
+          "alternatives": [
+            {
+              "text": "ขณะคอมไพล์ แกน Rocq ตรวจบทพิสูจน์ที่ AI เขียน",
+              "chars": 45,
+              "max_chars": 36,
+              "within_static_budget": false
+            }
+          ],
+          "applied": false
+        },
+        {
+          "id": "936d",
+          "kinds": [
+            "budget"
+          ],
+          "required": true,
+          "reason": "Replace only the storage preposition with 'in'. Preserve complete calculation value, stored total, integer, unsignedness and 16 bits.",
+          "source": "讓計算保留完整值，再用十六位元無號整數儲存總長。",
+          "old": "คำนวณให้คงค่าครบ แล้วเก็บผลรวมด้วยจำนวนเต็มไร้เครื่องหมาย 16 บิต",
+          "old_chars": 64,
+          "max_chars": 63,
+          "proposed": "คำนวณให้คงค่าครบ แล้วเก็บผลรวมในจำนวนเต็มไร้เครื่องหมาย 16 บิต",
+          "proposed_chars": 62,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "u2xw",
+          "kinds": [
+            "budget"
+          ],
+          "required": true,
+          "reason": "Fill the return value in the already named return field, using another independent counting program. State explicitly that its input is the limit. 'Counting' is already carried by the program, so the limit remains its counting limit; no downstream relation to the guard is introduced.",
+          "source": "我用另一支獨立計數程式填返回欄；輸入是計數上限。",
+          "old": "ฉันกรอกช่องคืนค่าด้วยโปรแกรมนับอิสระอีกตัว อินพุตคือขีดจำกัดการนับ",
+          "old_chars": 66,
+          "max_chars": 58,
+          "proposed": "ฉันใช้โปรแกรมนับอิสระอีกตัวกรอกค่าคืน อินพุตคือขีดจำกัด",
+          "proposed_chars": 55,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [
+            {
+              "text": "ฉันใช้โปรแกรมนับอิสระอีกตัวกรอกช่องคืนค่า รับขีดจำกัด",
+              "chars": 53,
+              "max_chars": 58,
+              "within_static_budget": true
+            },
+            {
+              "text": "ฉันใช้โปรแกรมนับอิสระอีกตัวกรอกช่องคืนค่า รับขีดจำกัดการนับ",
+              "chars": 59,
+              "max_chars": 58,
+              "within_static_budget": false
+            }
+          ],
+          "applied": false
+        },
+        {
+          "id": "7ip9",
+          "kinds": [
+            "budget"
+          ],
+          "required": true,
+          "reason": "Move 'same program' before the ordinary/error-checking forms and avoid repeating 'version'. Retain public release, the same program, both forms and the explicit not-before/after-repair distinction.",
+          "source": "公開版比較同一程式的一般版與錯誤檢查版，並非剛才的修正前後。",
+          "old": "ฉบับสาธารณะเทียบรุ่นปกติกับรุ่นตรวจข้อผิดพลาดของโปรแกรมเดียวกัน ไม่ใช่ก่อนหลังแก้",
+          "old_chars": 81,
+          "max_chars": 74,
+          "proposed": "ฉบับสาธารณะเทียบโปรแกรมเดียวกันแบบปกติกับตรวจข้อผิดพลาด ไม่ใช่ก่อนหลังแก้",
+          "proposed_chars": 73,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "6x7t",
+          "kinds": [
+            "budget"
+          ],
+          "required": true,
+          "reason": "The current meaning is correct. The shorter candidate still preserves system model, input must-condition, ordinary build, non-exceedance and specified memory budget. It remains over 54; no faithful natural in-budget version is offered.",
+          "source": "在系統模型內，輸入須讓一般版不超過指定記憶體預算。",
+          "old": "ในโมเดลระบบ อินพุตต้องไม่ทำให้รุ่นปกติเกินงบหน่วยความจำที่ระบุ",
+          "old_chars": 62,
+          "max_chars": 54,
+          "proposed": "ในโมเดลระบบ อินพุตต้องให้รุ่นปกติไม่เกินงบหน่วยความจำที่ระบุ",
+          "proposed_chars": 60,
+          "proposed_within_static_budget": false,
+          "static_budget_status": "unresolved_keep_full_meaning",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "5u3j",
+          "kinds": [
+            "budget"
+          ],
+          "required": true,
+          "reason": "Use an explicit if-condition and 'both' referring to the two builds. Keep the absence of the designated errors, rather than promising absence of every possible error.",
+          "source": "符合這個前提，兩版都不會出現指定錯誤。",
+          "old": "ตรงตามเงื่อนไขนี้ ทั้งสองรุ่นจะไม่เกิดข้อผิดพลาดที่ระบุ",
+          "old_chars": 55,
+          "max_chars": 44,
+          "proposed": "ถ้าตรงเกณฑ์นี้ ทั้งคู่ไร้ข้อผิดพลาดที่ระบุ",
+          "proposed_chars": 42,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "cnnu",
+          "kinds": [
+            "budget"
+          ],
+          "required": true,
+          "reason": "Keep finite length of the behavioral record, possibility, text, the program as emitter and already-produced output. The clear shorter noun phrase remains over 52. A finite number of records or short records would change the claim and is not proposed.",
+          "source": "有限的行為紀錄，可以包含程式已經輸出的文字。",
+          "old": "บันทึกพฤติกรรมที่มีความยาวจำกัด อาจมีข้อความที่โปรแกรมส่งออกแล้ว",
+          "old_chars": 64,
+          "max_chars": 52,
+          "proposed": "บันทึกพฤติกรรมความยาวจำกัดอาจมีข้อความที่โปรแกรมส่งออกแล้ว",
+          "proposed_chars": 58,
+          "proposed_within_static_budget": false,
+          "static_budget_status": "unresolved_keep_full_meaning",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "4nfp",
+          "kinds": [
+            "budget"
+          ],
+          "required": true,
+          "reason": "'This conclusion' explicitly refers to the immediately preceding termination-proof statement. Restrict that conclusion to this public release and exclude the entire research from its scope. This preserves the source's anaphoric limitation without repeating the termination noun and does not assert that the wider research proved termination.",
+          "source": "這說的是這份公開版本，不代表整個研究都沒處理終止。",
+          "old": "นี่เฉพาะฉบับสาธารณะ ไม่ได้แปลว่างานวิจัยทั้งหมดไม่พิจารณาการสิ้นสุด",
+          "old_chars": 67,
+          "max_chars": 57,
+          "proposed": "ข้อสรุปนี้ใช้เฉพาะฉบับสาธารณะนี้ ไม่ใช่ทั้งงานวิจัย",
+          "proposed_chars": 51,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "mvnc",
+          "kinds": [
+            "terminology",
+            "readability"
+          ],
+          "required": true,
+          "reason": "Use the Thai term for a line of code, not a table row: this question points to the line that preserves the total. Keep the found counterexample and complete total.",
+          "source": "紀錄已找到反例，哪一行能把完整總長留下？",
+          "old": "บันทึกพบกรณีโต้แย้งแล้ว แถวไหนเก็บความยาวรวมได้ครบ?",
+          "old_chars": 51,
+          "max_chars": 58,
+          "proposed": "บันทึกพบกรณีโต้แย้งแล้ว บรรทัดไหนเก็บความยาวรวมได้ครบ?",
+          "proposed_chars": 54,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "yavq",
+          "kinds": [
+            "terminology",
+            "readability"
+          ],
+          "required": true,
+          "reason": "This is the entire code line, not a record-table row. Retain both calculation and the conversion used to store the total as changes to that line.",
+          "source": "修正版這一整行，計算和存放總長的轉型都要一起改。",
+          "old": "ต้องแก้ทั้งแถว ทั้งการคำนวณและการแปลงชนิดที่เก็บผลรวม",
+          "old_chars": 53,
+          "max_chars": 59,
+          "proposed": "ต้องแก้ทั้งบรรทัด ทั้งการคำนวณและการแปลงชนิดที่เก็บผลรวม",
+          "proposed_chars": 56,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        },
+        {
+          "id": "ey22",
+          "kinds": [
+            "readability",
+            "scope_clarity"
+          ],
+          "required": true,
+          "reason": "Make the program the subject that exits and returns the bound plus 1 for every input, rather than saying that the inputs exit. Retain the completed return-column result and the universal input scope.",
+          "source": "紀錄的返回欄有結果了：每個輸入都離開，並返回上限加一。",
+          "old": "ช่องคืนค่าได้ผลแล้ว ทุกอินพุตออกและคืนค่าขีดจำกัดบวก 1",
+          "old_chars": 54,
+          "max_chars": 78,
+          "proposed": "ช่องคืนค่าได้ผลแล้ว ทุกอินพุต โปรแกรมออกและคืนค่าขีดจำกัดบวก 1",
+          "proposed_chars": 62,
+          "proposed_within_static_budget": true,
+          "static_budget_status": "candidate_within_budget",
+          "alternatives": [],
+          "applied": false
+        }
+      ],
+      "required_findings": 11,
+      "optional_suggestions": 0,
+      "unresolved_after_proposed_candidates": [
+        {
+          "id": "cawx",
+          "chars": 50,
+          "max_chars": 36,
+          "excess": 14,
+          "candidate": "ขณะคอมไพล์ เคอร์เนล Rocq ตรวจบทพิสูจน์ที่ AI เขียน"
+        },
+        {
+          "id": "6x7t",
+          "chars": 60,
+          "max_chars": 54,
+          "excess": 6,
+          "candidate": "ในโมเดลระบบ อินพุตต้องให้รุ่นปกติไม่เกินงบหน่วยความจำที่ระบุ"
+        },
+        {
+          "id": "cnnu",
+          "chars": 58,
+          "max_chars": 52,
+          "excess": 6,
+          "candidate": "บันทึกพฤติกรรมความยาวจำกัดอาจมีข้อความที่โปรแกรมส่งออกแล้ว"
+        }
+      ],
+      "hypothetical_static_within_after_candidates": 102,
+      "verdict": "wording_fixes_required; static_budget_pending"
+    }
+  },
+  "boundary_review": [
+    {
+      "topic": "local arithmetic",
+      "status": "No numeric/type error found. Both retain 255 + 1 -> promoted ordinary integer 256 -> unsigned 8-bit narrowing 0; 8 bits and 8 bytes remain distinct."
+    },
+    {
+      "topic": "guard contract and repair",
+      "status": "Input 0..255, capacity 8 bytes, extra terminator byte, accept exactly 0..7, complete calculation/storage fix, no data-buffer write, both false-accept/false-reject directions retained."
+    },
+    {
+      "topic": "local model scope",
+      "status": "SAT remains propositional; two no-counterexample queries concern widened guard; deny-all comparison remains symbolic; loop uses complete finite control graph; local C comparison does not become Rocq reproduction or whole-app certification."
+    },
+    {
+      "topic": "independent loop",
+      "status": "Other independent counter, fixed limit, no other actor writing counter, 256-step cycle, timeout alone insufficient, counter declaration/update conversion repaired, all-input exit and n+1 value retained. Return-subject phrasing should be clarified as listed."
+    },
+    {
+      "topic": "public proof attribution and order",
+      "status": "AI authorship and compilation-stage checking need listed cawx wording fixes. The following fixed-proposition/used-assumptions and allowlist-audit sequence is retained in both."
+    },
+    {
+      "topic": "agreement premise and behavior",
+      "status": "Normal/error-checking builds of same program, not local before/after repair; ordinary-build memory allowance under system model; only designated errors excluded under premise; finite observable allowed-record sets equal. VI must-condition should be explicit as listed."
+    },
+    {
+      "topic": "research vs release",
+      "status": "Official research 123 libraries/239 entry points remains distinct from public 60/25. Lack of halts proof stays confined to this public release, with no extrapolation to the whole research. Thai scope-preserving short candidate uses explicit this-conclusion reference."
+    }
+  ],
+  "status": "independent_review_complete_no_translations_applied"
+}

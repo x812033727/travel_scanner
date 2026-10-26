@@ -1,0 +1,808 @@
+{
+  "observed_at": "2026-10-25T23:07:06Z",
+  "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "claims_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
+  "speech_hash": "8028c7320d9cab29",
+  "scope": "Text, metadata, generated thumbnails and narration-timed CC preparation only; not paid dubbing, per-locale fit/audio or delivery readiness.",
+  "locales": {
+    "en": {
+      "translation_path": "i18n/en.json",
+      "translation_sha256": "4b3531c22918db3168b00fa6ffdd4b1a7282caff145664b191e6ecd881c671c9",
+      "lines": 105,
+      "chapters": 7,
+      "title_description_tags_thumbnail_fields_present": true,
+      "source_hashes": {
+        "chapters": {
+          "capacity-accepts-255": "1edec6460faf",
+          "research-published": "b9cbfb707fc5",
+          "which-line-to-fix": "f262b006fc8b",
+          "deny-all-two-directions": "674fcccac2dc",
+          "independent-counter": "cc8b520b8c1e",
+          "fix-proof-object": "3a178f11392d",
+          "completed-repair-record": "e9b10d121112"
+        },
+        "title": "a5726411c90f",
+        "description": "b51dff023429",
+        "tags": "b9a93e92a3ea",
+        "thumbnail": "4a13ca08da95"
+      },
+      "static_budget_excesses": [],
+      "cc": [
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/en.srt",
+          "bytes": 10224,
+          "sha256": "b0513afffae20e8b735d2ca182fd8b4eada6ff58b27085d1dc433750929c49e2"
+        },
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/en.vtt",
+          "bytes": 9908,
+          "sha256": "aa0c5172ac40a928f385bb2fa746056ea39bfd9d866d7b7a63005e485ee06ced"
+        }
+      ],
+      "cc_manifest": {
+        "cues": 108,
+        "problems": [],
+        "timing": "narration"
+      },
+      "thumbnail": {
+        "path": "/workspace/work/videos/claude-formal-verification-255/thumbnails/en.jpg",
+        "bytes": 94361,
+        "sha256": "23ceca2fe0562b0ae9422cb583608ceea15d99c460f748ac584d1955540dad12",
+        "qa_checked": true
+      },
+      "actual_audio_produced": false,
+      "audio_checked": false,
+      "m4a_ready": false,
+      "language_package_ready": false
+    },
+    "ja": {
+      "translation_path": "i18n/ja.json",
+      "translation_sha256": "0e59e9d50e655e111eef66235657095c3724304e939c7d727ed5e9bc79d08032",
+      "lines": 105,
+      "chapters": 7,
+      "title_description_tags_thumbnail_fields_present": true,
+      "source_hashes": {
+        "chapters": {
+          "capacity-accepts-255": "1edec6460faf",
+          "research-published": "b9cbfb707fc5",
+          "which-line-to-fix": "f262b006fc8b",
+          "deny-all-two-directions": "674fcccac2dc",
+          "independent-counter": "cc8b520b8c1e",
+          "fix-proof-object": "3a178f11392d",
+          "completed-repair-record": "e9b10d121112"
+        },
+        "title": "a5726411c90f",
+        "description": "b51dff023429",
+        "tags": "b9a93e92a3ea",
+        "thumbnail": "4a13ca08da95"
+      },
+      "static_budget_excesses": [
+        {
+          "id": "cawx",
+          "characters": 28,
+          "max_chars": 22
+        }
+      ],
+      "cc": [
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/ja.srt",
+          "bytes": 12440,
+          "sha256": "6d2f72d1f962bb309af717331fc5ce43acf1e5b6b435f07626219a2158588371"
+        },
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/ja.vtt",
+          "bytes": 12068,
+          "sha256": "6cbffcb249416f4462f8fcb9ff7a0a32053cdc8afa6745f01ba45d7f45a14b74"
+        }
+      ],
+      "cc_manifest": {
+        "cues": 122,
+        "problems": [],
+        "timing": "narration"
+      },
+      "thumbnail": {
+        "path": "/workspace/work/videos/claude-formal-verification-255/thumbnails/ja.jpg",
+        "bytes": 91896,
+        "sha256": "e4f133903202701061804886bbf3d91c3377564a83f93e9152dea22017ba5114",
+        "qa_checked": true
+      },
+      "actual_audio_produced": false,
+      "audio_checked": false,
+      "m4a_ready": false,
+      "language_package_ready": false
+    },
+    "ko": {
+      "translation_path": "i18n/ko.json",
+      "translation_sha256": "80beb85d3a43ed42fd67b3d49f5d5ac115a0f877de2772134c75de72380a3c91",
+      "lines": 105,
+      "chapters": 7,
+      "title_description_tags_thumbnail_fields_present": true,
+      "source_hashes": {
+        "chapters": {
+          "capacity-accepts-255": "1edec6460faf",
+          "research-published": "b9cbfb707fc5",
+          "which-line-to-fix": "f262b006fc8b",
+          "deny-all-two-directions": "674fcccac2dc",
+          "independent-counter": "cc8b520b8c1e",
+          "fix-proof-object": "3a178f11392d",
+          "completed-repair-record": "e9b10d121112"
+        },
+        "title": "a5726411c90f",
+        "description": "b51dff023429",
+        "tags": "b9a93e92a3ea",
+        "thumbnail": "4a13ca08da95"
+      },
+      "static_budget_excesses": [
+        {
+          "id": "wunt",
+          "characters": 35,
+          "max_chars": 25
+        },
+        {
+          "id": "cawx",
+          "characters": 30,
+          "max_chars": 19
+        },
+        {
+          "id": "6x7t",
+          "characters": 31,
+          "max_chars": 28
+        },
+        {
+          "id": "4nfp",
+          "characters": 36,
+          "max_chars": 30
+        }
+      ],
+      "cc": [
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/ko.srt",
+          "bytes": 11299,
+          "sha256": "265c659a8f8505ea8d7841957bfc8408d113ec49ee6fd1500cd10b82d0f27846"
+        },
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/ko.vtt",
+          "bytes": 10939,
+          "sha256": "f160a41c60e91268b716ad5a195e5fc0aea768db149b84acbfb3adbd5757f34a"
+        }
+      ],
+      "cc_manifest": {
+        "cues": 119,
+        "problems": [],
+        "timing": "narration"
+      },
+      "thumbnail": {
+        "path": "/workspace/work/videos/claude-formal-verification-255/thumbnails/ko.jpg",
+        "bytes": 88885,
+        "sha256": "da3dc40badecce1d0b5a288eba93965c19538535080faa85d10efe6b27bb694d",
+        "qa_checked": true
+      },
+      "actual_audio_produced": false,
+      "audio_checked": false,
+      "m4a_ready": false,
+      "language_package_ready": false
+    },
+    "es": {
+      "translation_path": "i18n/es.json",
+      "translation_sha256": "c348253d886cfc2f0b700daedf912354d5737d20d3783448a45834cb9a0f3330",
+      "lines": 105,
+      "chapters": 7,
+      "title_description_tags_thumbnail_fields_present": true,
+      "source_hashes": {
+        "chapters": {
+          "capacity-accepts-255": "1edec6460faf",
+          "research-published": "b9cbfb707fc5",
+          "which-line-to-fix": "f262b006fc8b",
+          "deny-all-two-directions": "674fcccac2dc",
+          "independent-counter": "cc8b520b8c1e",
+          "fix-proof-object": "3a178f11392d",
+          "completed-repair-record": "e9b10d121112"
+        },
+        "title": "a5726411c90f",
+        "description": "b51dff023429",
+        "tags": "b9a93e92a3ea",
+        "thumbnail": "4a13ca08da95"
+      },
+      "static_budget_excesses": [
+        {
+          "id": "qwaw",
+          "characters": 83,
+          "max_chars": 74
+        },
+        {
+          "id": "4rff",
+          "characters": 63,
+          "max_chars": 43
+        },
+        {
+          "id": "u2xw",
+          "characters": 74,
+          "max_chars": 62
+        },
+        {
+          "id": "zg4q",
+          "characters": 95,
+          "max_chars": 84
+        },
+        {
+          "id": "cawx",
+          "characters": 58,
+          "max_chars": 38
+        },
+        {
+          "id": "uqde",
+          "characters": 75,
+          "max_chars": 62
+        },
+        {
+          "id": "5fga",
+          "characters": 68,
+          "max_chars": 58
+        },
+        {
+          "id": "7ip9",
+          "characters": 103,
+          "max_chars": 79
+        },
+        {
+          "id": "6x7t",
+          "characters": 105,
+          "max_chars": 57
+        },
+        {
+          "id": "edry",
+          "characters": 55,
+          "max_chars": 50
+        },
+        {
+          "id": "mhjn",
+          "characters": 36,
+          "max_chars": 28
+        },
+        {
+          "id": "22tu",
+          "characters": 60,
+          "max_chars": 58
+        }
+      ],
+      "cc": [
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/es.srt",
+          "bytes": 10226,
+          "sha256": "9c908908afc424d7f918521bf0fa02fe777986db17b75a2eb61f186e7f370120"
+        },
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/es.vtt",
+          "bytes": 9902,
+          "sha256": "2d6a889f89df66d81c6d7abfff1581ee6b44f337ee3db9790b400e64193ba0e1"
+        }
+      ],
+      "cc_manifest": {
+        "cues": 110,
+        "problems": [
+          "cue 7 (4rff): 18.8 characters a second, above 17",
+          "cue 87 (7ip9): 17.7 characters a second, above 17",
+          "cue 89 (6x7t): 20.0 characters a second, above 17",
+          "cue 90 (6x7t): 21.4 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "thumbnail": {
+        "path": "/workspace/work/videos/claude-formal-verification-255/thumbnails/es.jpg",
+        "bytes": 95341,
+        "sha256": "30014b9a4febf5d5eef93a495f090a93ad4e468d8e7055d62cacbe9b7a7b1001",
+        "qa_checked": true
+      },
+      "actual_audio_produced": false,
+      "audio_checked": false,
+      "m4a_ready": false,
+      "language_package_ready": false
+    },
+    "pt": {
+      "translation_path": "i18n/pt.json",
+      "translation_sha256": "bc1f62c52fb5a4f933aaba89a7da10101ed2eb02cfee7824c8e07d57d4807c01",
+      "lines": 105,
+      "chapters": 7,
+      "title_description_tags_thumbnail_fields_present": true,
+      "source_hashes": {
+        "chapters": {
+          "capacity-accepts-255": "1edec6460faf",
+          "research-published": "b9cbfb707fc5",
+          "which-line-to-fix": "f262b006fc8b",
+          "deny-all-two-directions": "674fcccac2dc",
+          "independent-counter": "cc8b520b8c1e",
+          "fix-proof-object": "3a178f11392d",
+          "completed-repair-record": "e9b10d121112"
+        },
+        "title": "a5726411c90f",
+        "description": "b51dff023429",
+        "tags": "b9a93e92a3ea",
+        "thumbnail": "4a13ca08da95"
+      },
+      "static_budget_excesses": [
+        {
+          "id": "qwaw",
+          "characters": 80,
+          "max_chars": 66
+        },
+        {
+          "id": "4rff",
+          "characters": 51,
+          "max_chars": 39
+        },
+        {
+          "id": "mfag",
+          "characters": 44,
+          "max_chars": 42
+        },
+        {
+          "id": "w9b4",
+          "characters": 57,
+          "max_chars": 47
+        },
+        {
+          "id": "u2xw",
+          "characters": 72,
+          "max_chars": 55
+        },
+        {
+          "id": "zg4q",
+          "characters": 93,
+          "max_chars": 75
+        },
+        {
+          "id": "cawx",
+          "characters": 56,
+          "max_chars": 34
+        },
+        {
+          "id": "uqde",
+          "characters": 72,
+          "max_chars": 55
+        },
+        {
+          "id": "5fga",
+          "characters": 65,
+          "max_chars": 52
+        },
+        {
+          "id": "7ip9",
+          "characters": 101,
+          "max_chars": 70
+        },
+        {
+          "id": "6x7t",
+          "characters": 91,
+          "max_chars": 51
+        },
+        {
+          "id": "cnnu",
+          "characters": 60,
+          "max_chars": 50
+        },
+        {
+          "id": "3u2q",
+          "characters": 63,
+          "max_chars": 59
+        },
+        {
+          "id": "edry",
+          "characters": 56,
+          "max_chars": 45
+        },
+        {
+          "id": "mhjn",
+          "characters": 32,
+          "max_chars": 25
+        },
+        {
+          "id": "22tu",
+          "characters": 60,
+          "max_chars": 52
+        }
+      ],
+      "cc": [
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/pt.srt",
+          "bytes": 9739,
+          "sha256": "0d6f76ef2cfb4bcd459d3b1f6dbb5f4f9ab0a01b5eaf0de37f7053769f2d8953"
+        },
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/pt.vtt",
+          "bytes": 9419,
+          "sha256": "81522fb955454596ab05a448a036ab93cefa769071cc6d372ec72c89edbc6356"
+        }
+      ],
+      "cc_manifest": {
+        "cues": 109,
+        "problems": [
+          "cue 86 (7ip9): 18.0 characters a second, above 17",
+          "cue 88 (6x7t): 18.8 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "thumbnail": {
+        "path": "/workspace/work/videos/claude-formal-verification-255/thumbnails/pt.jpg",
+        "bytes": 96136,
+        "sha256": "6f29b69ca3460fc9e494a3da9aff1c1c40cb6e23d883f3530c3f47bb36d0a912",
+        "qa_checked": true
+      },
+      "actual_audio_produced": false,
+      "audio_checked": false,
+      "m4a_ready": false,
+      "language_package_ready": false
+    },
+    "id": {
+      "translation_path": "i18n/id.json",
+      "translation_sha256": "53526d0aa44bb37406fcca8f687b9816c15eb343e39a4ae3d41466ed5ba10dce",
+      "lines": 105,
+      "chapters": 7,
+      "title_description_tags_thumbnail_fields_present": true,
+      "source_hashes": {
+        "chapters": {
+          "capacity-accepts-255": "1edec6460faf",
+          "research-published": "b9cbfb707fc5",
+          "which-line-to-fix": "f262b006fc8b",
+          "deny-all-two-directions": "674fcccac2dc",
+          "independent-counter": "cc8b520b8c1e",
+          "fix-proof-object": "3a178f11392d",
+          "completed-repair-record": "e9b10d121112"
+        },
+        "title": "a5726411c90f",
+        "description": "b51dff023429",
+        "tags": "b9a93e92a3ea",
+        "thumbnail": "4a13ca08da95"
+      },
+      "static_budget_excesses": [
+        {
+          "id": "cawx",
+          "characters": 48,
+          "max_chars": 38
+        },
+        {
+          "id": "7ip9",
+          "characters": 98,
+          "max_chars": 79
+        },
+        {
+          "id": "6x7t",
+          "characters": 88,
+          "max_chars": 57
+        }
+      ],
+      "cc": [
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/id.srt",
+          "bytes": 9967,
+          "sha256": "9e180badeca534db0e8532d6c4f615608f3aaafd67c64ede189515b46aacf053"
+        },
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/id.vtt",
+          "bytes": 9647,
+          "sha256": "0e7c05235f9bb886d9b9c2c94e64d5811b6c9ea281c2bcbe3a0dd3edadd456b1"
+        }
+      ],
+      "cc_manifest": {
+        "cues": 109,
+        "problems": [
+          "cue 87 (7ip9): 18.2 characters a second, above 17",
+          "cue 89 (6x7t): 19.3 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "thumbnail": {
+        "path": "/workspace/work/videos/claude-formal-verification-255/thumbnails/id.jpg",
+        "bytes": 95389,
+        "sha256": "85aa389351777fc72ad00fb5910d6d0b7b1b524fbf20c1c7154831d22049f3ae",
+        "qa_checked": true
+      },
+      "actual_audio_produced": false,
+      "audio_checked": false,
+      "m4a_ready": false,
+      "language_package_ready": false
+    },
+    "vi": {
+      "translation_path": "i18n/vi.json",
+      "translation_sha256": "af8a2e6b1f061d65e6caddee98b59cd99517a5b9f8e0cc127bfa7f4237532ff0",
+      "lines": 105,
+      "chapters": 7,
+      "title_description_tags_thumbnail_fields_present": true,
+      "source_hashes": {
+        "chapters": {
+          "capacity-accepts-255": "1edec6460faf",
+          "research-published": "b9cbfb707fc5",
+          "which-line-to-fix": "f262b006fc8b",
+          "deny-all-two-directions": "674fcccac2dc",
+          "independent-counter": "cc8b520b8c1e",
+          "fix-proof-object": "3a178f11392d",
+          "completed-repair-record": "e9b10d121112"
+        },
+        "title": "a5726411c90f",
+        "description": "b51dff023429",
+        "tags": "b9a93e92a3ea",
+        "thumbnail": "4a13ca08da95"
+      },
+      "static_budget_excesses": [],
+      "cc": [
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/vi.srt",
+          "bytes": 12917,
+          "sha256": "da82314fb858e82ca4acc0e12c67199f25e8d2b391801358eb42815b5a0eecd7"
+        },
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/vi.vtt",
+          "bytes": 12585,
+          "sha256": "6b972eb4ca69153d809270be3bf6b534ac9d835a7b299b386866fd27e8615277"
+        }
+      ],
+      "cc_manifest": {
+        "cues": 112,
+        "problems": [],
+        "timing": "narration"
+      },
+      "thumbnail": {
+        "path": "/workspace/work/videos/claude-formal-verification-255/thumbnails/vi.jpg",
+        "bytes": 93673,
+        "sha256": "2f631fb0e570c6347d25976d154a8d69b9ebc538c72f540ab8064049aca70d32",
+        "qa_checked": true
+      },
+      "actual_audio_produced": false,
+      "audio_checked": false,
+      "m4a_ready": false,
+      "language_package_ready": false
+    },
+    "th": {
+      "translation_path": "i18n/th.json",
+      "translation_sha256": "5a08a79af1b6a46affa5f991ab98664fc3f93d69569a3349e85e30da3148239b",
+      "lines": 105,
+      "chapters": 7,
+      "title_description_tags_thumbnail_fields_present": true,
+      "source_hashes": {
+        "chapters": {
+          "capacity-accepts-255": "1edec6460faf",
+          "research-published": "b9cbfb707fc5",
+          "which-line-to-fix": "f262b006fc8b",
+          "deny-all-two-directions": "674fcccac2dc",
+          "independent-counter": "cc8b520b8c1e",
+          "fix-proof-object": "3a178f11392d",
+          "completed-repair-record": "e9b10d121112"
+        },
+        "title": "a5726411c90f",
+        "description": "b51dff023429",
+        "tags": "b9a93e92a3ea",
+        "thumbnail": "4a13ca08da95"
+      },
+      "static_budget_excesses": [
+        {
+          "id": "cawx",
+          "characters": 50,
+          "max_chars": 36
+        },
+        {
+          "id": "6x7t",
+          "characters": 60,
+          "max_chars": 54
+        },
+        {
+          "id": "cnnu",
+          "characters": 58,
+          "max_chars": 52
+        }
+      ],
+      "cc": [
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/th.srt",
+          "bytes": 18487,
+          "sha256": "4b46cbb731140fbdf94ab1147cbd3522a4220747b746c7eeb62f85664c8dc804"
+        },
+        {
+          "file": "/workspace/work/videos/claude-formal-verification-255/captions/th.vtt",
+          "bytes": 18183,
+          "sha256": "46e097f12c6c21eb3735a5545222bc8ae80a1d8baf6592dbf53bc597f8cf7d53"
+        }
+      ],
+      "cc_manifest": {
+        "cues": 105,
+        "problems": [],
+        "timing": "narration"
+      },
+      "thumbnail": {
+        "path": "/workspace/work/videos/claude-formal-verification-255/thumbnails/th.jpg",
+        "bytes": 90674,
+        "sha256": "ec0263ca6485d4aefda51f641baae51b1906ad89dfeab40f6f85dc298a5ec220",
+        "qa_checked": true
+      },
+      "actual_audio_produced": false,
+      "audio_checked": false,
+      "m4a_ready": false,
+      "language_package_ready": false
+    }
+  },
+  "foreign_m4a_count": 0,
+  "foreign_audio_passed": 0,
+  "foreign_audio_delivered": 0,
+  "foreign_language_packages_ready": 0,
+  "all_eight_ready": false,
+  "cc_timing_scope": "All current CC manifest timing fields are narration. After real dub synthesis/fit/check, regenerate and review every locale against its actual dub timeline; retain reading-speed advisories.",
+  "caption_manifest_sha256": "3c0b57e134587c95005e68f12c37aa9b1def2cccd5e4e537074a20fef5b77247",
+  "caption_manifest": {
+    "speech_hash": "8028c7320d9cab29",
+    "chapters": [],
+    "locales": {
+      "zh-TW": {
+        "cues": 106,
+        "problems": [],
+        "timing": "narration"
+      },
+      "en": {
+        "cues": 108,
+        "problems": [],
+        "timing": "narration"
+      },
+      "ja": {
+        "cues": 122,
+        "problems": [],
+        "timing": "narration"
+      },
+      "ko": {
+        "cues": 119,
+        "problems": [],
+        "timing": "narration"
+      },
+      "es": {
+        "cues": 110,
+        "problems": [
+          "cue 7 (4rff): 18.8 characters a second, above 17",
+          "cue 87 (7ip9): 17.7 characters a second, above 17",
+          "cue 89 (6x7t): 20.0 characters a second, above 17",
+          "cue 90 (6x7t): 21.4 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "pt": {
+        "cues": 109,
+        "problems": [
+          "cue 86 (7ip9): 18.0 characters a second, above 17",
+          "cue 88 (6x7t): 18.8 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "id": {
+        "cues": 109,
+        "problems": [
+          "cue 87 (7ip9): 18.2 characters a second, above 17",
+          "cue 89 (6x7t): 19.3 characters a second, above 17"
+        ],
+        "timing": "narration"
+      },
+      "vi": {
+        "cues": 112,
+        "problems": [],
+        "timing": "narration"
+      },
+      "th": {
+        "cues": 105,
+        "problems": [],
+        "timing": "narration"
+      }
+    },
+    "skipped": {}
+  },
+  "historical_reviews": [
+    {
+      "path": "localization/formal-translation-en-ja-ko-review.md",
+      "source_path": "/workspace/work/ai-tech-next/formal-translation-en-ja-ko-review.md",
+      "bytes": 5200,
+      "sha256": "ec007da217a6291b2a195a89b7892826c867e95d03152ff08cef8f349cfd7cf2",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-translation-en-ja-ko-review.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-translation-en-ja-ko-review.json",
+      "bytes": 12246,
+      "sha256": "45a4b023fdde5aa492a7c8ba23031f227dbe7975c827c816da27d62e0bac8322",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-translation-es-pt-id-review.md",
+      "source_path": "/workspace/work/ai-tech-next/formal-translation-es-pt-id-review.md",
+      "bytes": 6079,
+      "sha256": "c2308c47bc62c9cb0435a396a80f0375cabc1488ec5c772e23b7eee20316f6a0",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-translation-es-pt-id-review.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-translation-es-pt-id-review.json",
+      "bytes": 221416,
+      "sha256": "4a1d2ace116b8983dd55331f4172c9c8898633b80d09f03f748ae9eccbf409f6",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-translation-vi-th-review.md",
+      "source_path": "/workspace/work/ai-tech-next/formal-translation-vi-th-review.md",
+      "bytes": 22937,
+      "sha256": "e97c336413c294ae8d510d6b7b0353c4c879a469d884965f2ef1d67360ee6c13",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-translation-vi-th-review.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-translation-vi-th-review.json",
+      "bytes": 34547,
+      "sha256": "2151dc1fb243c6e21d7c3f03653499c35dbeeae16737fecf6f8159e389d69099",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-independent-ja-ko.md",
+      "source_path": "/workspace/work/ai-tech-next/formal-independent-ja-ko.md",
+      "bytes": 12048,
+      "sha256": "88817d5cc35f7518ee486e3d42c0066e86888c896f0d72d4d1f8f89d1ed3757e",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-independent-ja-ko.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-independent-ja-ko.json",
+      "bytes": 19662,
+      "sha256": "2774505d9817d83e9762a51726c3387d90c2cd547e6230d2006e1d94566e28a7",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-independent-es-pt-id.md",
+      "source_path": "/workspace/work/ai-tech-next/formal-independent-es-pt-id.md",
+      "bytes": 15196,
+      "sha256": "176077bd0658af7a5ec63ce936c63e92874a317dfc4eed0ac65a4237d2799545",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-independent-es-pt-id.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-independent-es-pt-id.json",
+      "bytes": 77628,
+      "sha256": "b4e0062180428abc7d12c4dca0cd32e83a5c982974cb5e9f23b595ceea1fba6b",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-independent-vi-th.md",
+      "source_path": "/workspace/work/ai-tech-next/formal-independent-vi-th.md",
+      "bytes": 16672,
+      "sha256": "02c263c90d5d0e840cc54d6754742d78c327b5c59897703c71f1e580e648aa38",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-independent-vi-th.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-independent-vi-th.json",
+      "bytes": 62554,
+      "sha256": "5d5a3058163d12d364f62e2b30f22f7b7182f656b61aea845edc66a028ceb64a",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-en-root-independent-review.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-en-root-independent-review.json",
+      "bytes": 1624,
+      "sha256": "6bddd13b785ce12fea9fc7144f77a1b360c59b2d5465f957c71f54af6d2705ee",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-independent-five-application.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-independent-five-application.json",
+      "bytes": 72832,
+      "sha256": "3a8f2136479587aeb4c401d14350ac40430590609ba89c1a2d472aaf2ed76fa6",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-independent-ja-ko-application.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-independent-ja-ko-application.json",
+      "bytes": 10848,
+      "sha256": "40dcc94fd7c7a95a93b6d9ece30dd43411687ed3bf3276ea03ba01b7cffb0c27",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    },
+    {
+      "path": "localization/formal-th-4nfp-scope-followup.json",
+      "source_path": "/workspace/work/ai-tech-next/formal-th-4nfp-scope-followup.json",
+      "bytes": 6072,
+      "sha256": "43d18010b6289181304ac6056e36ba116d6d6b49f6aff81f7bcf2c9f3b53d32f",
+      "copy_mode": "exact bytes; historical verdict preserved"
+    }
+  ],
+  "protected_source_claims_i18n_media_not_modified": true,
+  "localized_thumbnail_visual_review": "localized-thumbnail-review.json",
+  "all_embedded_pixel_text_translated": false
+}

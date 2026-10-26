@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-10-26T01:12:29.184079+00:00",
+  "snapshot_content_as_of": "2026-10-26T01:05:03.510145Z",
+  "scope": "Documentation/proof-copy checks only; no current media or backend action",
+  "native_lint": {
+    "exit_code": 0,
+    "errors": [],
+    "warnings": [
+      {
+        "path": "scenes[0]",
+        "message": "the opening chapter runs about 25 s; it is the condensation, 30 to 60 s before the first real chapter: one scene of the story told in order up to the first fact that makes no sense, ending on the question the whole video answers (script-writing.md §開場濃縮)"
+      },
+      {
+        "path": "scenes",
+        "message": "「二百五十五」 is said in 13 lines (zfgp, jeaj, vwiq, 3mpx, ij57, a7te, dfhy, gtuj, p4u6, qmcd, b3r9, 58rm, ghs2): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "scenes",
+        "message": "「二百五十六」 is said in 7 lines (vwiq, tew5, ij57, tksv, kq36, ghs2, 9mxr): a fact is told once, and brought back only by a callback (「還記得那…」「剛剛那…」) (script-writing.md §故事主線與鉤子)",
+        "kind": "narrative"
+      },
+      {
+        "path": "youtube/es",
+        "message": "es.title: 38.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/pt",
+        "message": "pt.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/vi",
+        "message": "vi.title: 43 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/th",
+        "message": "th.title: 38 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "summary_kind": "Native estimate only; actual video and dub timings are recorded separately in production-progress.",
+    "actual_film_or_audio_rerun": false
+  },
+  "task_check": {
+    "exit_code": 0,
+    "validated_task_files": 2185,
+    "existing_warnings_present": true,
+    "warning_count_not_claimed_from_truncated_stdout": true
+  },
+  "receipt_index_and_protected_checks": {
+    "index_entries_verified": 46,
+    "protected_files_unchanged": 36,
+    "relative_links_broken": [],
+    "ready_delivered": 1,
+    "all8": false,
+    "overall": false,
+    "proof_sha256": "a80eed3e56c18f7f400f7bae25fb1fdaee8197ecad0681cebfc1b115abea763d",
+    "exact_backend_receipt_sha256": "affde191de1fba5c37d1e8fffa04ebebcef9f3ba881a2c2cd83d295b5674be9c"
+  },
+  "all8_false_and_overall_false": true,
+  "broad_236_tests_rerun": false,
+  "reason": "Root directed no repeat of same-code broad236 tests; relevant native/task/SHA/relative checks completed.",
+  "source_media_i18n_edited": false,
+  "network_paid_calls": 0,
+  "git_stage_commit_push": false
+}

@@ -1,0 +1,531 @@
+{
+  "observed_at": "2026-10-26T01:05:03.510145Z",
+  "scope": "Immutable EN production history snapshot; no future JA success inferred",
+  "producer_updated_at": "2026-10-26T01:04:59.827Z",
+  "producer_source_sha256": "7299e905b43749ecd6c7e893759ab82c668cda2c24aba4142e8ab6ad61f80703",
+  "producer_phase_at_snapshot": "ja_initial_check_running",
+  "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "speech_hash": "8028c7320d9cab29",
+  "native_events": [
+    {
+      "event": "native_step_finished",
+      "phase": "dub",
+      "locale": "en",
+      "at": "2026-10-25T23:14:39.333Z",
+      "code": 1,
+      "log": "/workspace/work/ai-tech-next/formal-dub-en-initial.log"
+    },
+    {
+      "event": "native_step_finished",
+      "phase": "dub",
+      "locale": "en",
+      "at": "2026-10-25T23:22:53.251Z",
+      "code": 0,
+      "log": "/workspace/work/ai-tech-next/formal-dub-en-fit1.log",
+      "evidence_sha256": {
+        "dubs/en/audio/cache.json": "771a882796921442b52e25acf38d2b691ccf3e29832f4ab881ac0b4bb9d877ee",
+        "dubs/en/fit.json": "26abc3d66838bc45e55ee4419cd3ee7aba0d988dba59fc39a0a29cb301a94302",
+        "dubs/en/timeline.json": "e95d9d4f74e416bc4b3d20a1e530e9f694a2f4ff51207adf3c5c23a84aafa76f",
+        "dubs/en/narration.wav": "576dfaffe31e0b5a5d0a2fe58ee09444d842585c58a3242960683730059803d9",
+        "dubs/en.m4a": "0dd85093dd748c9da4b4488a976184afd225320cc02640b2dab67a6ff5da741c",
+        "dubs/en/delivery-measurement.json": "bf314c0bd77466ab908a216f051016cfc402e75d2b7e92e297119cd557b61a7c"
+      }
+    },
+    {
+      "event": "native_step_finished",
+      "phase": "meter",
+      "locale": "en",
+      "at": "2026-10-25T23:25:39.681Z",
+      "code": 0,
+      "log": "/workspace/work/ai-tech-next/formal-meter-en-native-timing.log",
+      "evidence_sha256": {
+        "dubs/en/audio/cache.json": "771a882796921442b52e25acf38d2b691ccf3e29832f4ab881ac0b4bb9d877ee",
+        "dubs/en/fit.json": "26abc3d66838bc45e55ee4419cd3ee7aba0d988dba59fc39a0a29cb301a94302",
+        "dubs/en/timeline.json": "e95d9d4f74e416bc4b3d20a1e530e9f694a2f4ff51207adf3c5c23a84aafa76f",
+        "dubs/en/narration.wav": "576dfaffe31e0b5a5d0a2fe58ee09444d842585c58a3242960683730059803d9",
+        "dubs/en.m4a": "0dd85093dd748c9da4b4488a976184afd225320cc02640b2dab67a6ff5da741c",
+        "dubs/en/delivery-measurement.json": "bf314c0bd77466ab908a216f051016cfc402e75d2b7e92e297119cd557b61a7c"
+      }
+    },
+    {
+      "at": "2026-10-25T23:35:33.098661+00:00",
+      "event": "root_explicitly_released_one_EN_initial_ASR",
+      "locale": "en",
+      "round": "initial"
+    },
+    {
+      "at": "2026-10-25T23:36:57.250Z",
+      "event": "native_step_started",
+      "phase": "check",
+      "locale": "en",
+      "round": "initial",
+      "log": "/workspace/work/ai-tech-next/formal-check-en-initial-2026-10-25T23-36-57-250Z.log"
+    },
+    {
+      "at": "2026-10-25T23:49:40.661Z",
+      "event": "native_step_finished",
+      "phase": "check",
+      "locale": "en",
+      "round": "initial",
+      "code": 1,
+      "signal": null,
+      "log": "/workspace/work/ai-tech-next/formal-check-en-initial-2026-10-25T23-36-57-250Z.log",
+      "log_sha256": "56842f3a8c6972d949034907325956fdb22712ce5a416bd4e63640c0fad9373c",
+      "stage": {
+        "stage": "check-audio",
+        "at": "2026-10-25T23:49:40.526Z",
+        "locale": "en",
+        "lines": 105,
+        "exact": 77,
+        "alike": 0,
+        "judged": 28,
+        "cleared": 3,
+        "flagged": 6,
+        "leaked": 2,
+        "unchecked": 0,
+        "transcribed": 105,
+        "jev_calls": 2
+      },
+      "evidence_sha256": {
+        "review/check-flags.en.json": "ff1f1af5ee140cd2ab121f529cba6018eb454ab184b2c2f2006e0b2afa2e1ad9",
+        "review/check.en.json": "d6d05759b2c5467a43854981a01f43da76c8eaed6abb87df678f80c3190aeb4d",
+        "dubs/en/audio/cache.json": "771a882796921442b52e25acf38d2b691ccf3e29832f4ab881ac0b4bb9d877ee",
+        "dubs/en/fit.json": "26abc3d66838bc45e55ee4419cd3ee7aba0d988dba59fc39a0a29cb301a94302",
+        "dubs/en/timeline.json": "e95d9d4f74e416bc4b3d20a1e530e9f694a2f4ff51207adf3c5c23a84aafa76f",
+        "dubs/en/narration.wav": "576dfaffe31e0b5a5d0a2fe58ee09444d842585c58a3242960683730059803d9",
+        "dubs/en.m4a": "0dd85093dd748c9da4b4488a976184afd225320cc02640b2dab67a6ff5da741c",
+        "dubs/en/delivery-measurement.json": "bf314c0bd77466ab908a216f051016cfc402e75d2b7e92e297119cd557b61a7c"
+      },
+      "capture": "/workspace/work/ai-tech-next/formal-check-en-initial-2026-10-25T23-36-57-250Z.capture.json",
+      "capture_sha256": "4ce3c01c100d4212ab072c501bc7f3a17b34f14e7e0bf8f63c5e32d895d9d14e"
+    },
+    {
+      "at": "2026-10-25T23:52:03.567237+00:00",
+      "event": "root_authorized_exact_six_unchanged_EN_retake1",
+      "locale": "en",
+      "ids": [
+        "zfgp",
+        "z9dp",
+        "84hx",
+        "5waf",
+        "8ywa",
+        "cgit"
+      ]
+    },
+    {
+      "at": "2026-10-25T23:52:57.424878+00:00",
+      "event": "native_step_started",
+      "phase": "dub",
+      "round": "retake1",
+      "locale": "en",
+      "log": "/workspace/work/ai-tech-next/formal-dub-en-retake1.log",
+      "ids": [
+        "zfgp",
+        "z9dp",
+        "84hx",
+        "5waf",
+        "8ywa",
+        "cgit"
+      ]
+    },
+    {
+      "at": "2026-10-25T23:58:10.401689+00:00",
+      "event": "native_step_finished",
+      "phase": "dub",
+      "round": "retake1",
+      "locale": "en",
+      "code": 0,
+      "log": "/workspace/work/ai-tech-next/formal-dub-en-retake1.log",
+      "stage": {
+        "stage": "dub",
+        "at": "2026-10-25T23:56:52.078Z",
+        "locale": "en",
+        "requests": 100,
+        "synthesized": 6,
+        "billable": 372,
+        "fallbacks": [],
+        "tempo_max": 1.15,
+        "over": 0,
+        "absorbed": 0,
+        "file": "en.m4a"
+      },
+      "evidence_sha256": {
+        "dubs/en/audio/cache.json": "80493cd4d5a44a5c9204df4103e15b26920dd7a87100695df143133a37863a57",
+        "dubs/en/fit.json": "dcea7e65a8beb788ea7216e70f0ca9acafa755283f33a6c4129fed9db287e994",
+        "dubs/en/timeline.json": "0636f7767c81715f8363b479519502f97258ff2fc88fe814f679cf708af97680",
+        "dubs/en/narration.wav": "34a4eb7675c4b3fab1c06dccbd460207c0f21b069ba86adf178689c10f7bde88",
+        "dubs/en.m4a": "955aa1c9887334e0a36432190b6be52863b3f9b99184cdc8d65b6a40184d4886",
+        "dubs/en/delivery-measurement.json": "e4644a75dc36bdf2cd26fcdc02ab997904f726a53bf03e83e2947bd0b2f1f38d"
+      }
+    },
+    {
+      "at": "2026-10-25T23:58:10.401689+00:00",
+      "event": "native_step_finished",
+      "phase": "meter",
+      "round": "retake1",
+      "locale": "en",
+      "code": 0,
+      "log": "/workspace/work/ai-tech-next/formal-meter-en-retake1.log",
+      "evidence_sha256": {
+        "dubs/en/audio/cache.json": "80493cd4d5a44a5c9204df4103e15b26920dd7a87100695df143133a37863a57",
+        "dubs/en/fit.json": "dcea7e65a8beb788ea7216e70f0ca9acafa755283f33a6c4129fed9db287e994",
+        "dubs/en/timeline.json": "0636f7767c81715f8363b479519502f97258ff2fc88fe814f679cf708af97680",
+        "dubs/en/narration.wav": "34a4eb7675c4b3fab1c06dccbd460207c0f21b069ba86adf178689c10f7bde88",
+        "dubs/en.m4a": "955aa1c9887334e0a36432190b6be52863b3f9b99184cdc8d65b6a40184d4886",
+        "dubs/en/delivery-measurement.json": "e4644a75dc36bdf2cd26fcdc02ab997904f726a53bf03e83e2947bd0b2f1f38d"
+      }
+    },
+    {
+      "at": "2026-10-25T23:58:12.464Z",
+      "event": "native_step_started",
+      "phase": "check",
+      "locale": "en",
+      "round": "retake1",
+      "log": "/workspace/work/ai-tech-next/formal-check-en-retake1-2026-10-25T23-58-12-464Z.log"
+    },
+    {
+      "at": "2026-10-25T23:59:52.394Z",
+      "event": "native_step_finished",
+      "phase": "check",
+      "locale": "en",
+      "round": "retake1",
+      "code": 1,
+      "signal": null,
+      "log": "/workspace/work/ai-tech-next/formal-check-en-retake1-2026-10-25T23-58-12-464Z.log",
+      "log_sha256": "589da465bf6984dfff9ad9dd46e8f43ab6a2e45d395cbe49e9582a41a13a55a5",
+      "stage": {
+        "stage": "check-audio",
+        "at": "2026-10-25T23:59:52.246Z",
+        "locale": "en",
+        "lines": 105,
+        "exact": 80,
+        "alike": 0,
+        "judged": 25,
+        "cleared": 3,
+        "flagged": 2,
+        "unchecked": 0,
+        "transcribed": 6,
+        "jev_calls": 2
+      },
+      "evidence_sha256": {
+        "review/check-flags.en.json": "adba497967b8f525acb5a37f1c120f225a408fae99892507c68e71f53f028035",
+        "review/check.en.json": "ccb122582ad021a2c38b8a2fa3cf8393e4247f9bb856ff940a19fde5b2a06864",
+        "dubs/en/audio/cache.json": "80493cd4d5a44a5c9204df4103e15b26920dd7a87100695df143133a37863a57",
+        "dubs/en/fit.json": "dcea7e65a8beb788ea7216e70f0ca9acafa755283f33a6c4129fed9db287e994",
+        "dubs/en/timeline.json": "0636f7767c81715f8363b479519502f97258ff2fc88fe814f679cf708af97680",
+        "dubs/en/narration.wav": "34a4eb7675c4b3fab1c06dccbd460207c0f21b069ba86adf178689c10f7bde88",
+        "dubs/en.m4a": "955aa1c9887334e0a36432190b6be52863b3f9b99184cdc8d65b6a40184d4886",
+        "dubs/en/delivery-measurement.json": "e4644a75dc36bdf2cd26fcdc02ab997904f726a53bf03e83e2947bd0b2f1f38d"
+      },
+      "capture": "/workspace/work/ai-tech-next/formal-check-en-retake1-2026-10-25T23-58-12-464Z.capture.json",
+      "capture_sha256": "732d2046e4b16b680f69b3b90ce3dc954ccce7b44db24a1e9135c0f11ef50014"
+    },
+    {
+      "at": "2026-10-26T00:01:43.093055+00:00",
+      "event": "root_authorized_exact_two_unchanged_EN_retake2",
+      "locale": "en",
+      "ids": [
+        "8ywa",
+        "cgit"
+      ]
+    },
+    {
+      "at": "2026-10-26T00:01:43.093055+00:00",
+      "event": "native_step_started",
+      "phase": "dub",
+      "round": "retake2",
+      "locale": "en",
+      "log": "/workspace/work/ai-tech-next/formal-dub-en-retake2.log"
+    },
+    {
+      "at": "2026-10-26T00:05:50.529849+00:00",
+      "event": "native_step_finished",
+      "phase": "dub",
+      "round": "retake2",
+      "locale": "en",
+      "code": 0,
+      "log": "/workspace/work/ai-tech-next/formal-dub-en-retake2.log",
+      "stage": {
+        "stage": "dub",
+        "at": "2026-10-26T00:04:49.104Z",
+        "locale": "en",
+        "requests": 100,
+        "synthesized": 2,
+        "billable": 114,
+        "fallbacks": [],
+        "tempo_max": 1.15,
+        "over": 0,
+        "absorbed": 0,
+        "file": "en.m4a"
+      },
+      "evidence_sha256": {
+        "dubs/en/audio/cache.json": "80493cd4d5a44a5c9204df4103e15b26920dd7a87100695df143133a37863a57",
+        "dubs/en/fit.json": "54a765d44bb0d64c852a01bef59004e277bd4a8d89bcb72898bf04efb58f2979",
+        "dubs/en/timeline.json": "5b5f918baaee1de95d08461481d51b427ef54791145314452f5b2e5c63627a71",
+        "dubs/en/narration.wav": "3ea3311fe28ac2154980f8ed04a7626414b78255ffcf34b3e47c4a0e094eb23d",
+        "dubs/en.m4a": "39c52e242bbe6a888b78407310df647af1227e59cc783930f87fc881e1ddfaf9",
+        "dubs/en/delivery-measurement.json": "9b6baff0414fa7b13386b606e1e6fe2bb61b8f585710894206a1f4ea1d21bc94"
+      }
+    },
+    {
+      "at": "2026-10-26T00:05:50.529849+00:00",
+      "event": "native_step_finished",
+      "phase": "meter",
+      "round": "retake2",
+      "locale": "en",
+      "code": 0,
+      "log": "/workspace/work/ai-tech-next/formal-meter-en-retake2.log",
+      "evidence_sha256": {
+        "dubs/en/audio/cache.json": "80493cd4d5a44a5c9204df4103e15b26920dd7a87100695df143133a37863a57",
+        "dubs/en/fit.json": "54a765d44bb0d64c852a01bef59004e277bd4a8d89bcb72898bf04efb58f2979",
+        "dubs/en/timeline.json": "5b5f918baaee1de95d08461481d51b427ef54791145314452f5b2e5c63627a71",
+        "dubs/en/narration.wav": "3ea3311fe28ac2154980f8ed04a7626414b78255ffcf34b3e47c4a0e094eb23d",
+        "dubs/en.m4a": "39c52e242bbe6a888b78407310df647af1227e59cc783930f87fc881e1ddfaf9",
+        "dubs/en/delivery-measurement.json": "9b6baff0414fa7b13386b606e1e6fe2bb61b8f585710894206a1f4ea1d21bc94"
+      }
+    },
+    {
+      "at": "2026-10-26T00:05:52.065Z",
+      "event": "native_step_started",
+      "phase": "check",
+      "locale": "en",
+      "round": "retake2",
+      "log": "/workspace/work/ai-tech-next/formal-check-en-retake2-2026-10-26T00-05-52-065Z.log"
+    },
+    {
+      "at": "2026-10-26T00:07:48.667Z",
+      "event": "native_step_finished",
+      "phase": "check",
+      "locale": "en",
+      "round": "retake2",
+      "code": 1,
+      "signal": null,
+      "log": "/workspace/work/ai-tech-next/formal-check-en-retake2-2026-10-26T00-05-52-065Z.log",
+      "log_sha256": "be7ed692cc44c0eaa04fcc1642940f996371b214ecf046746b52553c34a26725",
+      "stage": {
+        "stage": "check-audio",
+        "at": "2026-10-26T00:07:48.605Z",
+        "locale": "en",
+        "lines": 105,
+        "exact": 80,
+        "alike": 0,
+        "judged": 25,
+        "cleared": 4,
+        "flagged": 1,
+        "unchecked": 0,
+        "transcribed": 2,
+        "jev_calls": 2
+      },
+      "evidence_sha256": {
+        "review/check-flags.en.json": "204f2e2b16cdd2751988535b6023d0e5e5a6cac72662a82fc6036adaad960733",
+        "review/check.en.json": "59cc34155e449456605774637be8a02e4f6e6e227f3673adb65e25dd09af71cb",
+        "dubs/en/audio/cache.json": "80493cd4d5a44a5c9204df4103e15b26920dd7a87100695df143133a37863a57",
+        "dubs/en/fit.json": "54a765d44bb0d64c852a01bef59004e277bd4a8d89bcb72898bf04efb58f2979",
+        "dubs/en/timeline.json": "5b5f918baaee1de95d08461481d51b427ef54791145314452f5b2e5c63627a71",
+        "dubs/en/narration.wav": "3ea3311fe28ac2154980f8ed04a7626414b78255ffcf34b3e47c4a0e094eb23d",
+        "dubs/en.m4a": "39c52e242bbe6a888b78407310df647af1227e59cc783930f87fc881e1ddfaf9",
+        "dubs/en/delivery-measurement.json": "9b6baff0414fa7b13386b606e1e6fe2bb61b8f585710894206a1f4ea1d21bc94"
+      },
+      "capture": "/workspace/work/ai-tech-next/formal-check-en-retake2-2026-10-26T00-05-52-065Z.capture.json",
+      "capture_sha256": "46852c65d75093c7537ecb77f45bb109e1f6c015feff969f42a331cddc471c36"
+    },
+    {
+      "at": "2026-10-26T00:15:47.677349+00:00",
+      "event": "native_step_started",
+      "phase": "dub",
+      "round": "reword1",
+      "locale": "en",
+      "log": "/workspace/work/ai-tech-next/formal-dub-en-reword1.log"
+    },
+    {
+      "at": "2026-10-26T00:21:04.187132+00:00",
+      "event": "native_step_finished",
+      "phase": "dub",
+      "round": "reword1",
+      "locale": "en",
+      "code": 0,
+      "log": "/workspace/work/ai-tech-next/formal-dub-en-reword1.log",
+      "stage": {
+        "stage": "dub",
+        "at": "2026-10-26T00:19:40.648Z",
+        "locale": "en",
+        "requests": 100,
+        "synthesized": 1,
+        "billable": 52,
+        "fallbacks": [],
+        "tempo_max": 1.15,
+        "over": 0,
+        "absorbed": 0,
+        "file": "en.m4a"
+      },
+      "evidence_sha256": {
+        "dubs/en/audio/cache.json": "b6f7dbea2e474c1f991940967a90edaaaccf5558348c3f4d45f607e3b3e3ea5f",
+        "dubs/en/fit.json": "3be6c68795996d97698761180de2e41f1a591d64dc674a177893561cd9dd1ce5",
+        "dubs/en/timeline.json": "06c04b755b7f2df109f7c0ae0ff5b6001fef07d633640baef8990a4bb788842b",
+        "dubs/en/narration.wav": "09df7e039bf2a056e4b0702e06537ceed8152c7ea5bc996d027ba0fb0908fd84",
+        "dubs/en.m4a": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+        "dubs/en/delivery-measurement.json": "6eac854238f3b52c2996d96955b36182e54044a0fb4452156b7a7299cea9fc66"
+      }
+    },
+    {
+      "at": "2026-10-26T00:21:04.187132+00:00",
+      "event": "native_step_finished",
+      "phase": "meter",
+      "round": "reword1",
+      "locale": "en",
+      "code": 0,
+      "log": "/workspace/work/ai-tech-next/formal-meter-en-reword1.log",
+      "evidence_sha256": {
+        "dubs/en/audio/cache.json": "b6f7dbea2e474c1f991940967a90edaaaccf5558348c3f4d45f607e3b3e3ea5f",
+        "dubs/en/fit.json": "3be6c68795996d97698761180de2e41f1a591d64dc674a177893561cd9dd1ce5",
+        "dubs/en/timeline.json": "06c04b755b7f2df109f7c0ae0ff5b6001fef07d633640baef8990a4bb788842b",
+        "dubs/en/narration.wav": "09df7e039bf2a056e4b0702e06537ceed8152c7ea5bc996d027ba0fb0908fd84",
+        "dubs/en.m4a": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+        "dubs/en/delivery-measurement.json": "6eac854238f3b52c2996d96955b36182e54044a0fb4452156b7a7299cea9fc66"
+      }
+    },
+    {
+      "at": "2026-10-26T00:27:13.856Z",
+      "event": "native_step_started",
+      "phase": "check",
+      "locale": "en",
+      "round": "reword1",
+      "log": "/workspace/work/ai-tech-next/formal-check-en-reword1-2026-10-26T00-27-13-856Z.log"
+    },
+    {
+      "at": "2026-10-26T00:27:20.776Z",
+      "event": "native_step_finished",
+      "phase": "check",
+      "locale": "en",
+      "round": "reword1",
+      "code": 0,
+      "signal": null,
+      "log": "/workspace/work/ai-tech-next/formal-check-en-reword1-2026-10-26T00-27-13-856Z.log",
+      "log_sha256": "b67abacfa703f2b22cfd13b538f05ffacf12699d373009cbcec829164b9d5c17",
+      "stage": {
+        "stage": "check-audio",
+        "at": "2026-10-26T00:27:20.722Z",
+        "locale": "en",
+        "lines": 105,
+        "exact": 80,
+        "alike": 0,
+        "judged": 25,
+        "cleared": 4,
+        "flagged": 0,
+        "unchecked": 0,
+        "transcribed": 1,
+        "jev_calls": 1
+      },
+      "evidence_sha256": {
+        "review/check-flags.en.json": "ecdb338f98a96f24a16c26978a8d8fc75b40213e8166003920d3ecbc2b352431",
+        "review/check.en.json": "3117cebfea6a4c94a36a203744fd345dc2dfed98129019a08550dd9bfbef6dfe",
+        "dubs/en/audio/cache.json": "b6f7dbea2e474c1f991940967a90edaaaccf5558348c3f4d45f607e3b3e3ea5f",
+        "dubs/en/fit.json": "3be6c68795996d97698761180de2e41f1a591d64dc674a177893561cd9dd1ce5",
+        "dubs/en/timeline.json": "06c04b755b7f2df109f7c0ae0ff5b6001fef07d633640baef8990a4bb788842b",
+        "dubs/en/narration.wav": "09df7e039bf2a056e4b0702e06537ceed8152c7ea5bc996d027ba0fb0908fd84",
+        "dubs/en.m4a": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+        "dubs/en/delivery-measurement.json": "6eac854238f3b52c2996d96955b36182e54044a0fb4452156b7a7299cea9fc66"
+      },
+      "capture": "/workspace/work/ai-tech-next/formal-check-en-reword1-2026-10-26T00-27-13-856Z.capture.json",
+      "capture_sha256": "520d2260f4578f8ac7a32fd92933d3273c99d82319c662243e22e251290e0fef"
+    }
+  ],
+  "check_rounds": [
+    {
+      "round": "initial",
+      "code": 1,
+      "completed_at": "2026-10-25T23:49:40.661Z",
+      "native_stage": {
+        "stage": "check-audio",
+        "at": "2026-10-25T23:49:40.526Z",
+        "locale": "en",
+        "lines": 105,
+        "exact": 77,
+        "alike": 0,
+        "judged": 28,
+        "cleared": 3,
+        "flagged": 6,
+        "leaked": 2,
+        "unchecked": 0,
+        "transcribed": 105,
+        "jev_calls": 2
+      },
+      "capture": "localization/formal-check-en-initial-2026-10-25T23-36-57-250Z.capture.json",
+      "capture_sha256": "4ce3c01c100d4212ab072c501bc7f3a17b34f14e7e0bf8f63c5e32d895d9d14e",
+      "log_sha256": "56842f3a8c6972d949034907325956fdb22712ce5a416bd4e63640c0fad9373c"
+    },
+    {
+      "round": "retake1",
+      "code": 1,
+      "completed_at": "2026-10-25T23:59:52.394Z",
+      "native_stage": {
+        "stage": "check-audio",
+        "at": "2026-10-25T23:59:52.246Z",
+        "locale": "en",
+        "lines": 105,
+        "exact": 80,
+        "alike": 0,
+        "judged": 25,
+        "cleared": 3,
+        "flagged": 2,
+        "unchecked": 0,
+        "transcribed": 6,
+        "jev_calls": 2
+      },
+      "capture": "localization/formal-check-en-retake1-2026-10-25T23-58-12-464Z.capture.json",
+      "capture_sha256": "732d2046e4b16b680f69b3b90ce3dc954ccce7b44db24a1e9135c0f11ef50014",
+      "log_sha256": "589da465bf6984dfff9ad9dd46e8f43ab6a2e45d395cbe49e9582a41a13a55a5"
+    },
+    {
+      "round": "retake2",
+      "code": 1,
+      "completed_at": "2026-10-26T00:07:48.667Z",
+      "native_stage": {
+        "stage": "check-audio",
+        "at": "2026-10-26T00:07:48.605Z",
+        "locale": "en",
+        "lines": 105,
+        "exact": 80,
+        "alike": 0,
+        "judged": 25,
+        "cleared": 4,
+        "flagged": 1,
+        "unchecked": 0,
+        "transcribed": 2,
+        "jev_calls": 2
+      },
+      "capture": "localization/formal-check-en-retake2-2026-10-26T00-05-52-065Z.capture.json",
+      "capture_sha256": "46852c65d75093c7537ecb77f45bb109e1f6c015feff969f42a331cddc471c36",
+      "log_sha256": "be7ed692cc44c0eaa04fcc1642940f996371b214ecf046746b52553c34a26725"
+    },
+    {
+      "round": "reword1",
+      "code": 0,
+      "completed_at": "2026-10-26T00:27:20.776Z",
+      "native_stage": {
+        "stage": "check-audio",
+        "at": "2026-10-26T00:27:20.722Z",
+        "locale": "en",
+        "lines": 105,
+        "exact": 80,
+        "alike": 0,
+        "judged": 25,
+        "cleared": 4,
+        "flagged": 0,
+        "unchecked": 0,
+        "transcribed": 1,
+        "jev_calls": 1
+      },
+      "capture": "localization/formal-check-en-reword1-2026-10-26T00-27-13-856Z.capture.json",
+      "capture_sha256": "520d2260f4578f8ac7a32fd92933d3273c99d82319c662243e22e251290e0fef",
+      "log_sha256": "b67abacfa703f2b22cfd13b538f05ffacf12699d373009cbcec829164b9d5c17"
+    }
+  ],
+  "retake_rounds": 2,
+  "listener_reword_rounds": 1,
+  "historical_initial_fit_failure_preserved": true,
+  "cost_scope": "Stored native request/synthesized/billable-character fields are per-stage history, not unique HTTP counts or a newly calculated monetary total. No paid history reset.",
+  "ja_status_at_snapshot": "initial_check_running_not_passed_or_delivered",
+  "ja_completed_check_at_snapshot": null,
+  "all_eight_ready": false
+}

@@ -1,0 +1,641 @@
+{
+  "status": "translation completed; self-review three passes complete; independent review pending; no merge or paid actions",
+  "source_text_freeze_sha256": "232b4495b433041007c039630ec517b7e0b4948c3cd7a5a47da6ecd88cae8a15",
+  "current_video_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "current_claims_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
+  "source_layout_change": "current e6e87 source only consolidates five-small-examples table; all105 sources/metadata unchanged",
+  "speech_hash": "8028c7320d9cab29",
+  "at": "2026-10-25T21:27:25.682033+00:00",
+  "writes": "only vi/th worksheet text fields and this .md/.json report; no merge, git, paid model, backend or source edits",
+  "passes": [
+    {
+      "pass": 1,
+      "kind": "draft",
+      "scope": "105 lines +7 chapters +title/description/tags +3 thumbnail words each locale; source and glossary read"
+    },
+    {
+      "pass": 2,
+      "kind": "critique",
+      "scope": "meaning against source, standard Hanoi VI / polite Bangkok woman TH, terminology and clauses; faults saved below"
+    },
+    {
+      "pass": 3,
+      "kind": "final",
+      "scope": "all numeric/C/type/negation/official term scope and budgets; applied fixes, protected-field restoration and metadata limits checked"
+    }
+  ],
+  "locales": {
+    "vi": {
+      "worksheet": "/workspace/work/videos/claude-formal-verification-255/i18n/vi.todo.json",
+      "initial_sha256": "f1c1fb0569eaf65c265ceff435c9b1bc698fb5450a25f72589c61f1f006e9deb",
+      "final_sha256": "1641566392931e1e650e40474afc012365a0edd5cea264bf35cd25edcd17330f",
+      "protected_fields_restored_exact_initial_sha256": "f1c1fb0569eaf65c265ceff435c9b1bc698fb5450a25f72589c61f1f006e9deb",
+      "protected_fields_unchanged": true,
+      "parts": [
+        "metadata",
+        "captions"
+      ],
+      "lines_translated": 105,
+      "chapters_translated": 7,
+      "metadata_complete": true,
+      "title": "Nghiên cứu kiểm chứng hình thức của Claude: số 255 nói gì về bảo đảm của chương trình?",
+      "title_chars": 86,
+      "thumbnail": {
+        "tag": "Claude kiểm chứng hình thức",
+        "headline": "**255**\nLọt qua?",
+        "sub": "Chỉ chứa 8, vẫn lọt"
+      },
+      "glossary": {
+        "AI": "AI",
+        "Anthropic": "Anthropic",
+        "C": "C",
+        "Claude": "Claude",
+        "RISC-V": "RISC-V",
+        "Rocq": "Rocq",
+        "SAT": "SAT",
+        "loop": "vòng lặp",
+        "formal_verification": "kiểm chứng hình thức",
+        "proposition": "mệnh đề",
+        "unsigned_integer": "số nguyên không dấu",
+        "plain_build": "bản thường",
+        "public_release": "bản công khai",
+        "termination_proposition": "mệnh đề kết thúc"
+      },
+      "source_name_renderings_for_review_only": [
+        {
+          "source": "Anthropic：Claude形式驗證研究",
+          "rendering": "Anthropic: nghiên cứu kiểm chứng hình thức của Claude"
+        },
+        {
+          "source": "Theorem公開proof：README",
+          "rendering": "Theorem: README các proof công khai"
+        },
+        {
+          "source": "Theorem：證明來源與固定命題",
+          "rendering": "Theorem: nguồn gốc chứng minh và mệnh đề cố định"
+        },
+        {
+          "source": "Theorem：實際checker流程",
+          "rendering": "Theorem: quy trình bộ kiểm thực tế"
+        },
+        {
+          "source": "Theorem：agreement與halts命題",
+          "rendering": "Theorem: các mệnh đề agreement và halts"
+        },
+        {
+          "source": "C11委員會草案：整數提升與無號轉型",
+          "rendering": "Dự thảo ủy ban C11: nâng kiểu số nguyên và ép kiểu không dấu"
+        },
+        {
+          "source": "本片原創C程式與完整結果",
+          "rendering": "Mã C tự viết và kết quả đầy đủ của video"
+        }
+      ],
+      "glossary_in_worksheet_unchanged": true,
+      "critique": [
+        {
+          "id": "c8r2",
+          "draft": "Cùng yêu cầu ấy, AI viết chứng minh rồi ai kiểm nhận?",
+          "final": "Cùng yêu cầu ấy, AI viết chứng minh rồi ai nghiệm thu?",
+          "fault_and_fix": [
+            "Natural acceptance-review terminology; preserve who checks AI proof."
+          ]
+        },
+        {
+          "id": "4rff",
+          "draft": "Nghiên cứu đổi yêu cầu kiểm thử thành mệnh đề kiểm được.",
+          "final": "Nghiên cứu đổi yêu cầu kiểm thử ra mệnh đề kiểm tra được.",
+          "fault_and_fix": [
+            "Replace compressed 'kiểm được' with natural verb; retain research attribution."
+          ]
+        },
+        {
+          "id": "mfag",
+          "draft": "Nó lớn hơn sức chứa 8; lần này trả về từ chối đúng.",
+          "final": "Nó vượt sức chứa 8; lần này trả về kết quả từ chối đúng.",
+          "fault_and_fix": [
+            "Make returned rejection result grammatical; preserve capacity8 and correct outcome."
+          ]
+        },
+        {
+          "id": "dfhy",
+          "draft": "Phiên bản sai chỉ cho qua thêm 255; phiên bản rộng chỉ nhận 0 đến 7.",
+          "final": "Bản sai chỉ cho qua thêm 255; bản dùng kiểu rộng chỉ nhận 0 đến 7.",
+          "fault_and_fix": [
+            "Make widened-type variant natural; preserve extra-only255 and legal0..7."
+          ]
+        },
+        {
+          "id": "gtuj",
+          "draft": "Phiên bản sai tìm ra 255; phiên bản rộng không có phản ví dụ ấy.",
+          "final": "Bản sai tìm ra 255; bản dùng kiểu rộng không tìm ra phản ví dụ ấy.",
+          "fault_and_fix": [
+            "Consistent widened-type wording; preserve solver finding vs absent counterexample."
+          ]
+        },
+        {
+          "id": "unr8",
+          "draft": "Cách tìm xem các điều kiện đúng/sai có thể cùng thỏa này gọi là SAT mệnh đề.",
+          "final": "Tìm xem các điều kiện đúng/sai có thể đồng thời thỏa mãn: đó là SAT mệnh đề.",
+          "fault_and_fix": [
+            "Natural propositional satisfaction wording."
+          ]
+        },
+        {
+          "id": "6a2b",
+          "draft": "Hãy thêm điều kiện: đầu vào hợp lệ cũng buộc phải được nhận.",
+          "final": "Ghi thêm điều kiện cần kiểm: đầu vào hợp lệ phải được nhận.",
+          "fault_and_fix": [
+            "Explicitly preserve writing another condition TO CHECK, not merely adding a wish."
+          ]
+        },
+        {
+          "id": "dkjy",
+          "draft": "Dòng này chỉ giao phán quyết chấp nhận; chương trình không ghi vào bộ đệm.",
+          "final": "Dòng này chỉ đưa kết quả chấp nhận; chương trình không ghi vào bộ đệm dữ liệu.",
+          "fault_and_fix": [
+            "Replace judicial 'verdict' wording; preserve guard-only/no-buffer-write.",
+            "Keep DATA-buffer modifier explicitly; do not overstate about incidental I/O buffers."
+          ]
+        },
+        {
+          "id": "8ywa",
+          "draft": "Tôi ghi hai kết quả phiên bản rộng là 0: không nhận sai, không từ chối sai.",
+          "final": "Tôi ghi hai kết quả bản dùng kiểu rộng là 0: không nhận sai, không từ chối sai.",
+          "fault_and_fix": [
+            "Consistent widened-type wording, both zero outcomes retained."
+          ]
+        },
+        {
+          "id": "xh98",
+          "draft": "Dòng xét chấp nhận đã xong; phiếu còn dòng khác đợi kiểm việc trả về.",
+          "final": "Dòng chấp nhận đã xong; phiếu còn dòng khác chờ nghiệm thu việc trả về.",
+          "fault_and_fix": [
+            "Make inspection of the pending return record natural."
+          ]
+        },
+        {
+          "id": "zg4q",
+          "draft": "Đối lại với chứng minh chính thức, phải cố định phiên bản chương trình, mệnh đề và mô hình hoạt động.",
+          "final": "Đối chiếu phiếu với chứng minh hình thức: cố định phiên bản chương trình, mệnh đề và mô hình vận hành.",
+          "fault_and_fix": [
+            "Formal proof is 'hình thức', not 'chính thức' meaning official."
+          ]
+        },
+        {
+          "id": "uqde",
+          "draft": "Công cụ đối kết quả với mệnh đề cố định, rồi liệt kê các giả định đã dùng.",
+          "final": "Công cụ đối chiếu kết quả với mệnh đề cố định, liệt kê các giả định đã dùng.",
+          "fault_and_fix": [
+            "Natural compare verb; fixed proposition and used assumptions retained."
+          ]
+        },
+        {
+          "id": "wi26",
+          "draft": "Câu hỏi nghiệm thu mở đầu nằm ở việc nhân Rocq và công cụ kiểm mệnh đề, giả định.",
+          "final": "Câu hỏi nghiệm thu mở đầu nằm ở việc nhân Rocq và công cụ kiểm tra mệnh đề, giả định.",
+          "fault_and_fix": [
+            "Use full checking verb."
+          ]
+        },
+        {
+          "id": "7ip9",
+          "draft": "Phiên bản công khai so hai bản dựng thường và có kiểm lỗi của cùng mã, không phải trước/sau sửa.",
+          "final": "Bản công khai so sánh bản thường với bản kiểm lỗi của cùng chương trình, không phải trước/sau sửa.",
+          "fault_and_fix": [
+            "Natural comparison; retain same program vs before/after distinction."
+          ]
+        },
+        {
+          "id": "6x7t",
+          "draft": "Trong mô hình hệ thống, đầu vào không khiến bản thường vượt hạn mức bộ nhớ.",
+          "final": "Ở mô hình hệ thống, đầu vào không làm bản thường vượt mức bộ nhớ đã định.",
+          "fault_and_fix": [
+            "Restore specified memory-budget qualifier while retaining system/input/plain premise."
+          ]
+        },
+        {
+          "id": "4nfp",
+          "draft": "Chỉ nói bản công khai này; không có nghĩa cả nghiên cứu bỏ qua kết thúc.",
+          "final": "Chỉ nói bản công khai này; không có nghĩa cả nghiên cứu không xét kết thúc.",
+          "fault_and_fix": [
+            "Use non-entailment rather than imputing neglect; retain release-only scope."
+          ]
+        },
+        {
+          "id": "mj65",
+          "draft": "Chạy lại thì đối phiên bản trước, rồi để kết quả dự kiến và thực tế cùng một dòng.",
+          "final": "Chạy lại: trước hết kiểm phiên bản, rồi đặt kết quả dự kiến và thực tế cùng dòng.",
+          "fault_and_fix": [
+            "Make first check version unambiguous, not previous-version reading."
+          ]
+        },
+        {
+          "id": "edry",
+          "draft": "Như vậy không lấy mã đã sửa so với đáp án của mã cũ khác.",
+          "final": "Tránh lấy mã đã sửa so với đáp án của một mã cũ khác.",
+          "fault_and_fix": [
+            "Natural version-mismatch warning; preserve another old program."
+          ]
+        },
+        {
+          "id": "rsx8",
+          "draft": "Phiếu đã tách chấp nhận và trả về; chứng minh trong nghiên cứu Claude kiểm cùng yêu cầu sao?",
+          "final": "Phiếu đã tách chấp nhận và trả về; chứng minh trong nghiên cứu Claude kiểm cùng loại yêu cầu sao?",
+          "fault_and_fix": [
+            "Retain SAME KIND of requirement, not an identical local predicate."
+          ]
+        },
+        {
+          "id": "3u2q",
+          "draft": "Cả hai đều đối chiếu C chạy thật; chưa chạy bộ kiểm Rocq của nghiên cứu.",
+          "final": "Cả hai đều đối chiếu với C chạy thật; chưa chạy bộ kiểm Rocq của nghiên cứu.",
+          "fault_and_fix": [
+            "Restore natural comparison preposition; preserve no official Rocq run."
+          ]
+        },
+        {
+          "id": "cawx",
+          "draft": "Nhân Rocq kiểm tra chứng minh khi biên dịch.",
+          "final": "Nhân Rocq kiểm tra chứng minh do AI khi biên dịch.",
+          "fault_and_fix": [
+            "Final named-term check caught omitted AI authorship; restored AI provenance within50chars."
+          ]
+        },
+        {
+          "id": "zgkb",
+          "draft": "Phiếu thêm mô hình giải, viết cùng đầu vào thành 8 bit đúng hoặc sai.",
+          "final": "Phiếu thêm mô hình để giải, viết cùng đầu vào thành 8 bit đúng hoặc sai.",
+          "fault_and_fix": [
+            "Natural mathematical model-to-solve wording; preserve same8-bit input."
+          ]
+        }
+      ],
+      "metadata_critique": [
+        "Preserved audience conjunction rather than broadening to OR.",
+        "Kept original self-written C and original SVG ownership explicit; no product-operation image claim.",
+        "Restored formal-verification qualifier in thumbnail tag rather than shortening away its type.",
+        "Kept title under100chars,7 chapter names about30chars, stressed255 and newline in thumbnail."
+      ],
+      "numeric_and_scope_checks": [
+        "2026-10-25 local demo date /10-22 official study publication distinct; clause date first.",
+        "0..255 input;8byte capacity+1byte terminator;0..7 accepted iff others rejected;bit vsbyte preserved.",
+        "int256 then uint8 narrowing0; unsigned8/16 and complete widening/cast changes retained.",
+        "sole extra255;256 input comparisons;deny-all symbolic not compiledC;0falseaccept/8falsereject.",
+        "loop independent,0.25sec observation only;fixedinput256-step cycle vs actual fixed C returning256 /n+1.",
+        "239entry/123library official report vs60entry/25library publicrelease;onlythisrelease lacks halts proof.",
+        "Rocq compile/kernel AI-proof attribution, wrapper fixed proposition/used assumptions, allowlist maintained.",
+        "plain specified memory budget;finite observable records same allowed set;no entire-app certificate/no vendorRocq rerun."
+      ],
+      "script_and_names_checks": "NFC; no CJK/kana/Hangul; all source official Latin terms retained; all105 source texts match current source",
+      "description_structure_and_urls": "all4 paragraph blocks and exact source URL list preserved",
+      "budget_counting": "Unicode code points, INCLUDING Thai vowel/tone marks as native budget; no grapheme discount",
+      "budget_unresolved": [],
+      "within_budget_lines": 105,
+      "native_metadata_readonly_check": {
+        "body_bytes": 1477,
+        "composed_description_bytes": 3062,
+        "credit_lines": 10,
+        "chapter_count": 7,
+        "youtube_field_problems": []
+      },
+      "merge_performed": false,
+      "independent_review_performed": false,
+      "dub_or_thumbnail_render_fit_certified": false
+    },
+    "th": {
+      "worksheet": "/workspace/work/videos/claude-formal-verification-255/i18n/th.todo.json",
+      "initial_sha256": "faa2744eaf91abd2f827f2b71124c6258fcadd8259cea5d70113d3dceda143b2",
+      "final_sha256": "bb3a489d2305de9bf9d923d7492e6fde5ba54d89eac51c0e89b380d5f0f8c01e",
+      "protected_fields_restored_exact_initial_sha256": "faa2744eaf91abd2f827f2b71124c6258fcadd8259cea5d70113d3dceda143b2",
+      "protected_fields_unchanged": true,
+      "parts": [
+        "metadata",
+        "captions"
+      ],
+      "lines_translated": 105,
+      "chapters_translated": 7,
+      "metadata_complete": true,
+      "title": "งานวิจัยการทวนสอบเชิงรูปนัยของ Claude: ใช้ 255 เข้าใจสิ่งที่โปรแกรมรับประกัน",
+      "title_chars": 76,
+      "thumbnail": {
+        "tag": "Claude ทวนสอบเชิงรูปนัย",
+        "headline": "**255**\nผ่านได้?",
+        "sub": "จุ 8 แต่ผ่าน"
+      },
+      "glossary": {
+        "AI": "AI",
+        "Anthropic": "Anthropic",
+        "C": "C",
+        "Claude": "Claude",
+        "RISC-V": "RISC-V",
+        "Rocq": "Rocq",
+        "SAT": "SAT",
+        "loop": "ลูป",
+        "formal_verification": "การทวนสอบเชิงรูปนัย",
+        "proposition": "ประพจน์",
+        "unsigned_integer": "จำนวนเต็มไร้เครื่องหมาย",
+        "plain_build": "รุ่นปกติ",
+        "public_release": "ฉบับสาธารณะ",
+        "termination_proposition": "ประพจน์การสิ้นสุด"
+      },
+      "source_name_renderings_for_review_only": [
+        {
+          "source": "Anthropic：Claude形式驗證研究",
+          "rendering": "Anthropic: งานวิจัยทวนสอบเชิงรูปนัยของ Claude"
+        },
+        {
+          "source": "Theorem公開proof：README",
+          "rendering": "Theorem: README บทพิสูจน์ที่เผยแพร่"
+        },
+        {
+          "source": "Theorem：證明來源與固定命題",
+          "rendering": "Theorem: ที่มาบทพิสูจน์และประพจน์ที่กำหนด"
+        },
+        {
+          "source": "Theorem：實際checker流程",
+          "rendering": "Theorem: ขั้นตอนตัวตรวจจริง"
+        },
+        {
+          "source": "Theorem：agreement與halts命題",
+          "rendering": "Theorem: ประพจน์ agreement และ halts"
+        },
+        {
+          "source": "C11委員會草案：整數提升與無號轉型",
+          "rendering": "ร่างคณะกรรมการ C11: การยกระดับจำนวนเต็มและแปลงชนิดไร้เครื่องหมาย"
+        },
+        {
+          "source": "本片原創C程式與完整結果",
+          "rendering": "โค้ด C ที่เขียนเองและผลครบของวิดีโอ"
+        }
+      ],
+      "glossary_in_worksheet_unchanged": true,
+      "critique": [
+        {
+          "id": "4rff",
+          "draft": "งานวิจัยแปลงเงื่อนไขทดสอบเป็นประพจน์ที่ตรวจได้",
+          "final": "งานวิจัยแปลงเกณฑ์ทดสอบเป็นประพจน์ตรวจได้",
+          "fault_and_fix": [
+            "Shorten via equivalent test-criteria phrase, keeping research/checkable proposition."
+          ]
+        },
+        {
+          "id": "zfmi",
+          "draft": "ฉบับผิดแปลงความยาวรวมกลับเป็นจำนวนเต็มไร้เครื่องหมาย 8 บิต",
+          "final": "ฉบับผิดแปลงผลรวมเป็นจำนวนเต็มไร้เครื่องหมาย 8 บิต",
+          "fault_and_fix": [
+            "Total length is established; retain wrong-version unsigned8 cast without using unexplained C abbreviation."
+          ]
+        },
+        {
+          "id": "uqde",
+          "draft": "เครื่องมือเทียบผลกับประพจน์ที่ตรึงไว้ แล้วแจกแจงสมมติฐานที่ใช้",
+          "final": "เครื่องมือเทียบผลกับประพจน์ที่กำหนด แล้วระบุสมมติฐานที่ใช้",
+          "fault_and_fix": [
+            "Natural shorter verbs; specified fixed proposition and used assumptions retained."
+          ]
+        },
+        {
+          "id": "wi26",
+          "draft": "คำถามตรวจรับตอนต้น อยู่ที่เคอร์เนล Rocq กับเครื่องมือตรวจประพจน์และสมมติฐาน",
+          "final": "คำถามตรวจรับแรก อยู่ที่เคอร์เนล Rocq กับเครื่องมือตรวจประพจน์และสมมติฐาน",
+          "fault_and_fix": [
+            "Equivalent opening-question wording; retain kernel/tool/proposition/assumptions."
+          ]
+        },
+        {
+          "id": "u2xw",
+          "draft": "ฉันใช้โปรแกรมนับอีกตัวที่อิสระกรอกช่องคืนค่า อินพุตคือขีดจำกัดนับ",
+          "final": "ฉันกรอกช่องคืนค่าด้วยโปรแกรมนับอิสระอีกตัว อินพุตคือขีดจำกัดการนับ",
+          "fault_and_fix": [
+            "Natural independent-counter wording; retain first person, return field and input limit even if over budget."
+          ]
+        },
+        {
+          "id": "4nfp",
+          "draft": "นี่เฉพาะฉบับสาธารณะ ไม่ได้หมายความว่างานวิจัยทั้งหมดไม่จัดการการสิ้นสุด",
+          "final": "นี่เฉพาะฉบับสาธารณะ ไม่ได้แปลว่างานวิจัยทั้งหมดไม่พิจารณาการสิ้นสุด",
+          "fault_and_fix": [
+            "Natural research 'address/consider termination', not manage termination; preserve non-entailment/scope."
+          ]
+        },
+        {
+          "id": "rsx8",
+          "draft": "บันทึกแยกรับกับคืนค่าแล้ว งานวิจัย Claude ก็พิสูจน์ข้อกำหนดเดียวกันไหม?",
+          "final": "บันทึกแยกรับกับคืนค่าแล้ว งานวิจัย Claude ก็พิสูจน์ข้อกำหนดแบบเดียวกันไหม?",
+          "fault_and_fix": [
+            "Retain same KIND of requirement in the rhetorical comparison."
+          ]
+        },
+        {
+          "id": "3u2q",
+          "draft": "ทั้งสองเทียบกับ C รันจริง แต่ไม่ได้รันตัวตรวจ Rocq ในข่าว",
+          "final": "ทั้งคู่เทียบกับผลรัน C จริง แต่ไม่ได้รันตัวตรวจ Rocq ในข่าว",
+          "fault_and_fix": [
+            "Natural actual-execution-results comparison; preserve no official checker execution."
+          ]
+        },
+        {
+          "id": "cawx",
+          "draft": "เคอร์เนล Rocq ตรวจบทพิสูจน์ตอนคอมไพล์",
+          "final": "เคอร์เนล Rocq ตรวจบทพิสูจน์ที่ AI เขียนขณะคอมไพล์",
+          "fault_and_fix": [
+            "Final named-term check caught omitted AI authorship; restore full AI-written proof clause even over36char budget."
+          ]
+        },
+        {
+          "id": "936d",
+          "fault_and_fix": [
+            "Over provisional character budget. Preserve full meaning; unresolved for coordinator, not silently passed."
+          ],
+          "final": "คำนวณให้คงค่าครบ แล้วเก็บผลรวมด้วยจำนวนเต็มไร้เครื่องหมาย 16 บิต",
+          "budget": {
+            "chars": 64,
+            "max_chars": 63
+          }
+        },
+        {
+          "id": "u2xw",
+          "fault_and_fix": [
+            "Over provisional character budget. Preserve full meaning; unresolved for coordinator, not silently passed."
+          ],
+          "final": "ฉันกรอกช่องคืนค่าด้วยโปรแกรมนับอิสระอีกตัว อินพุตคือขีดจำกัดการนับ",
+          "budget": {
+            "chars": 66,
+            "max_chars": 58
+          }
+        },
+        {
+          "id": "cawx",
+          "fault_and_fix": [
+            "Over provisional character budget. Preserve full meaning; unresolved for coordinator, not silently passed."
+          ],
+          "final": "เคอร์เนล Rocq ตรวจบทพิสูจน์ที่ AI เขียนขณะคอมไพล์",
+          "budget": {
+            "chars": 49,
+            "max_chars": 36
+          }
+        },
+        {
+          "id": "7ip9",
+          "fault_and_fix": [
+            "Over provisional character budget. Preserve full meaning; unresolved for coordinator, not silently passed."
+          ],
+          "final": "ฉบับสาธารณะเทียบรุ่นปกติกับรุ่นตรวจข้อผิดพลาดของโปรแกรมเดียวกัน ไม่ใช่ก่อนหลังแก้",
+          "budget": {
+            "chars": 81,
+            "max_chars": 74
+          }
+        },
+        {
+          "id": "6x7t",
+          "fault_and_fix": [
+            "Over provisional character budget. Preserve full meaning; unresolved for coordinator, not silently passed."
+          ],
+          "final": "ในโมเดลระบบ อินพุตต้องไม่ทำให้รุ่นปกติเกินงบหน่วยความจำที่ระบุ",
+          "budget": {
+            "chars": 62,
+            "max_chars": 54
+          }
+        },
+        {
+          "id": "5u3j",
+          "fault_and_fix": [
+            "Over provisional character budget. Preserve full meaning; unresolved for coordinator, not silently passed."
+          ],
+          "final": "ตรงตามเงื่อนไขนี้ ทั้งสองรุ่นจะไม่เกิดข้อผิดพลาดที่ระบุ",
+          "budget": {
+            "chars": 55,
+            "max_chars": 44
+          }
+        },
+        {
+          "id": "cnnu",
+          "fault_and_fix": [
+            "Over provisional character budget. Preserve full meaning; unresolved for coordinator, not silently passed."
+          ],
+          "final": "บันทึกพฤติกรรมที่มีความยาวจำกัด อาจมีข้อความที่โปรแกรมส่งออกแล้ว",
+          "budget": {
+            "chars": 64,
+            "max_chars": 52
+          }
+        },
+        {
+          "id": "4nfp",
+          "fault_and_fix": [
+            "Over provisional character budget. Preserve full meaning; unresolved for coordinator, not silently passed."
+          ],
+          "final": "นี่เฉพาะฉบับสาธารณะ ไม่ได้แปลว่างานวิจัยทั้งหมดไม่พิจารณาการสิ้นสุด",
+          "budget": {
+            "chars": 67,
+            "max_chars": 57
+          }
+        }
+      ],
+      "metadata_critique": [
+        "Preserved audience conjunction rather than broadening to OR.",
+        "Kept original self-written C and original SVG ownership explicit; no product-operation image claim.",
+        "Restored formal-verification qualifier in thumbnail tag rather than shortening away its type.",
+        "Kept title under100chars,7 chapter names about30chars, stressed255 and newline in thumbnail."
+      ],
+      "numeric_and_scope_checks": [
+        "2026-10-25 local demo date /10-22 official study publication distinct; clause date first.",
+        "0..255 input;8byte capacity+1byte terminator;0..7 accepted iff others rejected;bit vsbyte preserved.",
+        "int256 then uint8 narrowing0; unsigned8/16 and complete widening/cast changes retained.",
+        "sole extra255;256 input comparisons;deny-all symbolic not compiledC;0falseaccept/8falsereject.",
+        "loop independent,0.25sec observation only;fixedinput256-step cycle vs actual fixed C returning256 /n+1.",
+        "239entry/123library official report vs60entry/25library publicrelease;onlythisrelease lacks halts proof.",
+        "Rocq compile/kernel AI-proof attribution, wrapper fixed proposition/used assumptions, allowlist maintained.",
+        "plain specified memory budget;finite observable records same allowed set;no entire-app certificate/no vendorRocq rerun."
+      ],
+      "script_and_names_checks": "NFC; no CJK/kana/Hangul; all source official Latin terms retained; all105 source texts match current source",
+      "description_structure_and_urls": "all4 paragraph blocks and exact source URL list preserved",
+      "budget_counting": "Unicode code points, INCLUDING Thai vowel/tone marks as native budget; no grapheme discount",
+      "budget_unresolved": [
+        {
+          "id": "936d",
+          "source": "讓計算保留完整值，再用十六位元無號整數儲存總長。",
+          "text": "คำนวณให้คงค่าครบ แล้วเก็บผลรวมด้วยจำนวนเต็มไร้เครื่องหมาย 16 บิต",
+          "chars": 64,
+          "max_chars": 63,
+          "over_by": 1,
+          "status": "unresolved: full faithful text kept for independent review / actual native window fit; no clause removed to force budget"
+        },
+        {
+          "id": "u2xw",
+          "source": "我用另一支獨立計數程式填返回欄；輸入是計數上限。",
+          "text": "ฉันกรอกช่องคืนค่าด้วยโปรแกรมนับอิสระอีกตัว อินพุตคือขีดจำกัดการนับ",
+          "chars": 66,
+          "max_chars": 58,
+          "over_by": 8,
+          "status": "unresolved: full faithful text kept for independent review / actual native window fit; no clause removed to force budget"
+        },
+        {
+          "id": "cawx",
+          "source": "Rocq核心在編譯時，檢查AI寫出的證明。",
+          "text": "เคอร์เนล Rocq ตรวจบทพิสูจน์ที่ AI เขียนขณะคอมไพล์",
+          "chars": 49,
+          "max_chars": 36,
+          "over_by": 13,
+          "status": "unresolved: full faithful text kept for independent review / actual native window fit; no clause removed to force budget"
+        },
+        {
+          "id": "7ip9",
+          "source": "公開版比較同一程式的一般版與錯誤檢查版，並非剛才的修正前後。",
+          "text": "ฉบับสาธารณะเทียบรุ่นปกติกับรุ่นตรวจข้อผิดพลาดของโปรแกรมเดียวกัน ไม่ใช่ก่อนหลังแก้",
+          "chars": 81,
+          "max_chars": 74,
+          "over_by": 7,
+          "status": "unresolved: full faithful text kept for independent review / actual native window fit; no clause removed to force budget"
+        },
+        {
+          "id": "6x7t",
+          "source": "在系統模型內，輸入須讓一般版不超過指定記憶體預算。",
+          "text": "ในโมเดลระบบ อินพุตต้องไม่ทำให้รุ่นปกติเกินงบหน่วยความจำที่ระบุ",
+          "chars": 62,
+          "max_chars": 54,
+          "over_by": 8,
+          "status": "unresolved: full faithful text kept for independent review / actual native window fit; no clause removed to force budget"
+        },
+        {
+          "id": "5u3j",
+          "source": "符合這個前提，兩版都不會出現指定錯誤。",
+          "text": "ตรงตามเงื่อนไขนี้ ทั้งสองรุ่นจะไม่เกิดข้อผิดพลาดที่ระบุ",
+          "chars": 55,
+          "max_chars": 44,
+          "over_by": 11,
+          "status": "unresolved: full faithful text kept for independent review / actual native window fit; no clause removed to force budget"
+        },
+        {
+          "id": "cnnu",
+          "source": "有限的行為紀錄，可以包含程式已經輸出的文字。",
+          "text": "บันทึกพฤติกรรมที่มีความยาวจำกัด อาจมีข้อความที่โปรแกรมส่งออกแล้ว",
+          "chars": 64,
+          "max_chars": 52,
+          "over_by": 12,
+          "status": "unresolved: full faithful text kept for independent review / actual native window fit; no clause removed to force budget"
+        },
+        {
+          "id": "4nfp",
+          "source": "這說的是這份公開版本，不代表整個研究都沒處理終止。",
+          "text": "นี่เฉพาะฉบับสาธารณะ ไม่ได้แปลว่างานวิจัยทั้งหมดไม่พิจารณาการสิ้นสุด",
+          "chars": 67,
+          "max_chars": 57,
+          "over_by": 10,
+          "status": "unresolved: full faithful text kept for independent review / actual native window fit; no clause removed to force budget"
+        }
+      ],
+      "within_budget_lines": 97,
+      "native_metadata_readonly_check": {
+        "body_bytes": 2282,
+        "composed_description_bytes": 4157,
+        "credit_lines": 10,
+        "chapter_count": 7,
+        "youtube_field_problems": []
+      },
+      "merge_performed": false,
+      "independent_review_performed": false,
+      "dub_or_thumbnail_render_fit_certified": false
+    }
+  }
+}

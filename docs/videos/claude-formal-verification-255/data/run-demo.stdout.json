@@ -1,0 +1,120 @@
+{
+  "scope": "Original finite-domain 8-bit arithmetic specification and guard-only compiled C; SymPy propositional SAT, not SMT, not Rocq, not a vendor-library reproduction. No buffer writes are executed.",
+  "boundary_rows": [
+    {
+      "n": 7,
+      "bad": 1,
+      "widened": 1,
+      "bound": 1,
+      "mathematical_fits": 1,
+      "promoted_total": 8,
+      "narrowed_total": 8
+    },
+    {
+      "n": 8,
+      "bad": 0,
+      "widened": 0,
+      "bound": 0,
+      "mathematical_fits": 0,
+      "promoted_total": 9,
+      "narrowed_total": 9
+    },
+    {
+      "n": 254,
+      "bad": 0,
+      "widened": 0,
+      "bound": 0,
+      "mathematical_fits": 0,
+      "promoted_total": 255,
+      "narrowed_total": 255
+    },
+    {
+      "n": 255,
+      "bad": 1,
+      "widened": 0,
+      "bound": 0,
+      "mathematical_fits": 0,
+      "promoted_total": 256,
+      "narrowed_total": 0
+    }
+  ],
+  "bad_false_accepts": [
+    255
+  ],
+  "widened_false_accepts": [],
+  "full_compiled_c_vs_symbolic_model_comparison": {
+    "rows": 256,
+    "all_match": true
+  },
+  "sat_solver": {
+    "library": "SymPy",
+    "version": "1.14.0",
+    "algorithm": "dpll2",
+    "kind": "propositional SAT",
+    "proof_certificate_exported_or_independently_checked": false,
+    "queries": {
+      "bad_false_accept": {
+        "result": "SAT",
+        "elapsed_seconds": 0.4893766620007227,
+        "input_assignment": {
+          "b1": true,
+          "b3": true,
+          "b0": true,
+          "b6": true,
+          "b4": true,
+          "b2": true,
+          "b5": true,
+          "b7": true
+        },
+        "decoded_n": 255
+      },
+      "bad_false_reject": {
+        "result": "UNSAT",
+        "elapsed_seconds": 0.01479929400011315,
+        "raw_result": false
+      },
+      "widened_false_accept": {
+        "result": "UNSAT",
+        "elapsed_seconds": 0.004887784998572897,
+        "raw_result": false
+      },
+      "widened_false_reject": {
+        "result": "UNSAT",
+        "elapsed_seconds": 0.2549371639979654,
+        "raw_result": false
+      },
+      "reject_everything_false_accept": {
+        "result": "UNSAT",
+        "elapsed_seconds": 0.0025910179974744096,
+        "raw_result": false
+      },
+      "reject_everything_false_reject": {
+        "result": "SAT",
+        "elapsed_seconds": 0.0009239549981430173,
+        "input_assignment": {
+          "b3": false,
+          "b7": false,
+          "b5": false,
+          "b6": false,
+          "b4": false
+        },
+        "decoded_n": 0
+      }
+    },
+    "remaining_bad_false_accept_after_excluding_255": "UNSAT"
+  },
+  "environment": {
+    "python": "3.12.14",
+    "gcc_version_first_line": "gcc (Debian 14.2.0-19) 14.2.0",
+    "installed_executables": {
+      "rocq": null,
+      "coqc": null,
+      "lean": null,
+      "lake": null,
+      "z3": null,
+      "cvc5": null,
+      "boolector": null,
+      "gcc": "/usr/bin/gcc"
+    }
+  }
+}

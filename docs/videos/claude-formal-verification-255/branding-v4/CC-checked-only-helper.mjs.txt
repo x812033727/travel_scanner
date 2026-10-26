@@ -1,0 +1,343 @@
+#!/usr/bin/env node
+// Isolated THIRD formal official-v4 zh-TW+EN checked CC/title-description downloads.
+// Default LOCAL ONLY. No media/CC generation, TTS/ASR/QA/review-push, approval or language batch.
+// Existing main c5f and strict BODY 0be5 remain unchanged. This new remote profile extends
+// the actually delivered 13-file baseline only with 6 checked text blobs / 10 roles.
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {isDeepStrictEqual,parseArgs} from 'node:util';
+import {fileURLToPath} from 'node:url';
+import * as mainVideo from './attach-formal-branded-main-and-checked-en.retained-history.owner-preserved.mjs';
+import * as checked from './deliver-checked-caption-assets.strict-evidence.mjs';
+import {choices,validatePartReceipt} from './deliver-checked-formal-locale.mjs';
+import {loadProject} from '/workspace/work/travel-scanner-formal-255/tools/video/core/state.mjs';
+import {textHash} from '/workspace/work/travel-scanner-formal-255/tools/video/core/schema.mjs';
+import {localeTexts,localeCues,currentDub} from '/workspace/work/travel-scanner-formal-255/tools/video/core/stages.mjs';
+import {appliedBranding,presentationTimeline} from '/workspace/work/travel-scanner-formal-255/tools/video/core/branding.mjs';
+import {toSrt,toVtt,checkCues} from '/workspace/work/travel-scanner-formal-255/tools/video/core/captions.mjs';
+import {composeMetadata} from '/workspace/work/travel-scanner-formal-255/tools/video/package/metadata.mjs';
+import {PART_BYTES,fitPayload} from '/workspace/work/travel-scanner-formal-255/tools/video/review/sync.mjs';
+import {readCredentials,TOKEN_PATTERN,validSite} from '/workspace/work/travel-scanner-formal-255/tools/video/tts/credentials.mjs';
+import {USER_AGENT} from '/workspace/work/travel-scanner-formal-255/tools/video/tts/client.mjs';
+
+const BASE='/workspace/work/ai-tech-next',ROOT='/workspace/work/travel-scanner-formal-255',WORK='/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255';
+const AUTH_HOME='/workspace/work/ai-tech-dns-containment/private-auth',SLUG='claude-formal-verification-255',PROFILE='formal105_official_v4_zh_tw_en_checked_captions';
+const SELF=fileURLToPath(import.meta.url),LOCALES=['zh-TW','en'],FOREIGN=['en'],KINDS=['srt','vtt','description'];
+const MAIN_PIN=BASE+'/formal-branded-main-EN-retained-history.owner-preserved.root-pin.actual.json',MAIN_RECEIPT=BASE+'/attach-formal-branded-main-and-checked-en.owner-preserved.root-result.json';
+const VERSION_BASE=path.dirname(WORK),TEXT_BASE=BASE+'/formal-branded-checked-caption-text';
+const COMMON=BASE+'/formal-branded-en-independent.2026-10-26T05-07-19-607Z';
+const FIELD='supplemental_formal_branded_checked_caption_assets',STANDARD_FIELD='supplemental_checked_caption_assets';
+const P=Object.freeze({"source":"e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f","speech":"8028c7320d9cab29","body":"c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5","main":"b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a","package":"416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88","placed":"39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64","qa":"a458c1e8cd58c5b847c2d16e39fc83aa66dcebe27ea58d9ae776659a28fedcad","mainHelper":"026f0db92ffebccfb5efc5abf8539a8043a82ff38a7f1e6c7860947f5523d9aa","strictHelper":"0be5e42a821cecd5bf6495dd2b8cdf59eedd0e4a9e70ec20b8e252fea7232b87","mainPin":"64ca8edb6f475115ab479d9aa83e716b109df591518032c26c891723c2f1ab7f","mainReceipt":"d45fd8917edba4a127065e9d0bf56a9ae514f2004568633a3617ec5d3b1f74b5","current":"e66d6661-c991-42fc-abde-30e942c9fe5b","old":"00f2b388-712e-4886-9849-64e12e0f6bec","manifest":"0baad6c85446922716cb9a5fb53ce8b400f77fce295ea917b0fbaf37cc3a1870","handoff":"907cce3cf13f3bc57a7df48fbb2000ea381dfb5d80d46cdebb5cf3d5787a835e","master":"19ae93ed8c07850bf0b53363401cad31d656d646d4539c0ecced7fbc81cb7373","masterProof":"e8642a047159aaf53584bd6e54de2ab62f24b3acb9fc1d6f1f74d8945289545e","foreignProof":"742eecb40f8a77af3ce0b56679ae8b93c59bedfdac846b11a9a9b63e43a2a37d"});
+const AUDIO={"en":{"sha256":"af7c3d50693e7231513bdb57e4f404b9491d449dddcad9c12d7c5e931c3a799a","bytes":15391038}};
+const FIXED={
+ [BASE+'/attach-formal-branded-main-and-checked-en.retained-history.owner-preserved.mjs']:P.mainHelper,
+ [BASE+'/deliver-checked-caption-assets.strict-evidence.mjs']:P.strictHelper,
+ [BASE+'/deliver-checked-formal-locale.mjs']:'90a84eb4ef4c43edb0eba8348f5fc994ca72372df47b9e5bcd52641da0c884e8',
+ [MAIN_PIN]:P.mainPin,[MAIN_RECEIPT]:P.mainReceipt,[WORK+'/captions/manifest.json']:P.manifest,
+ [VERSION_BASE+'/formal-current-captions.handoff.json']:P.handoff,
+ [COMMON+'.proof.json']:P.foreignProof
+};
+const fail=m=>{throw new Error(m);},clone=x=>JSON.parse(JSON.stringify(x)),digest=b=>crypto.createHash('sha256').update(b).digest('hex');
+const same=(a,b,m)=>{if(!isDeepStrictEqual(a,b))fail(m);},read=f=>JSON.parse(fs.readFileSync(f,'utf8')),shaFile=f=>digest(fs.readFileSync(f)),fullSha=x=>/^[a-f0-9]{64}$/.test(x??''),iso=()=>new Date().toISOString();
+const roles=(kind,locale)=>{const safe=locale.toLowerCase().replace(/-/g,'_');return{ srt:['captions_'+locale,'evidence_'+safe+'_cc_srt'],vtt:['evidence_'+safe+'_cc_vtt'],description:['description_'+locale,'evidence_'+safe+'_metadata_txt']}[kind];};
+export function ownerSnapshot(project){return{...choices(project),...Object.fromEntries(Object.entries(project).filter(([key])=>key.startsWith('youtube_')||key==='slot_at'))};}
+export function uploadPlan(){return LOCALES.flatMap(locale=>KINDS.map(kind=>({locale,kind,file:kind==='description'?TEXT_BASE+'/'+locale+'.txt':WORK+'/captions/'+locale+'.'+kind,roles:roles(kind,locale)})));}
+export function validatePin(pin){
+ if(!pin||pin.schema_version!==1||pin.profile!==PROFILE||!fullSha(pin.helper_sha256)||pin.source_sha256!==P.source||pin.speech_hash!==P.speech||pin.main_sha256!==P.main||pin.branding_hash!==P.placed||pin.package_hash!==P.package||pin.qa_sha256!==P.qa||pin.qa_ok!==false||pin.caption_manifest_sha256!==P.manifest||pin.native_caption_handoff_sha256!==P.handoff)fail('Exact current official THIRD formal checked-CC source/presentation/native-failed-QA pin required');
+ same(pin.locales,LOCALES,'Only zh-TW and the actual four checked foreign locales are permitted');
+ if(pin.main_pin_file!==MAIN_PIN||pin.main_pin_sha256!==P.mainPin||pin.main_delivery_receipt_file!==MAIN_RECEIPT||pin.main_delivery_receipt_sha256!==P.mainReceipt)fail('Exact reviewed main pin and actual delivered receipt must remain bound');
+ if(typeof pin.root_reviewed_by!=='string'||!pin.root_reviewed_by.trim()||!Number.isFinite(Date.parse(pin.root_reviewed_at))||Date.parse(pin.root_reviewed_at)>Date.now())fail('Actual root review identity and nonfuture time required');
+ same(Object.keys(pin.assets??{}).sort(),[...LOCALES].sort(),'No foreign draft asset configuration allowed');
+ for(const locale of LOCALES){same(Object.keys(pin.assets[locale]??{}).sort(),[...KINDS].sort(),'Exactly three text files per checked locale');for(const entry of uploadPlan().filter(x=>x.locale===locale)){const a=pin.assets[locale][entry.kind];if(a.file!==entry.file||!fullSha(a.sha256)||!Number.isSafeInteger(a.bytes)||a.bytes<=0||a.bytes>512*1024)fail('Exact current '+locale+'/'+entry.kind+' path/fullSHA/bytes required');}}
+ if(pin.thumbnails!==null||typeof pin.omitted_thumbnails_reason!=='string'||!pin.omitted_thumbnails_reason.trim())fail('No thumbnails in this profile; preserve native current thumbnail');
+ const expectedAudio={'zh-TW':P.master,...Object.fromEntries(FOREIGN.map(locale=>[locale,AUDIO[locale].sha256]))};same(pin.checked_audio_sha256,expectedAudio,'Master/current encoded foreign audio bindings differ');
+ return pin;
+}
+export function requirePresentation(shown){
+ if(shown?.branding_hash!==P.placed||shown.total_frames!==17593||shown.body_total_frames!==16813||shown.fps!==30||shown.intro_at_frame!==732||shown.intro_end_frame!==882||shown.content_end_frame!==16963||shown.lines?.length!==105||new Set(shown.lines.map(x=>x.id)).size!==105)fail('Exact once-projected official presentation and all105source IDs required');
+}
+export function derivePresentation(body,checks){
+ if(body.branding_hash!=null||body.total_frames!==16813||body.speech_hash!==P.speech||body.fps!==30)fail('Original current unshifted BODY timeline required');
+ const applied=appliedBranding(checks);same(applied,{hash:P.placed,id:'mokaair-brand-package-v4-endscreen',intro_frames:150,outro_frames:630,body_frames:16813,intro_at_frame:732,body_file:'build/body.mp4',body_sha256:P.body},'Exact native applied official presentation required');
+ const shown=presentationTimeline(body,applied);requirePresentation(shown);return shown;
+}
+export function nativeAssets(project,shown,manifest,locale,dub,srt,vtt){
+ if(!LOCALES.includes(locale))fail('Unchecked foreign draft cannot be delivered');requirePresentation(shown);
+ const {texts,skipped}=localeTexts(project.doc,project.translations);if(skipped[locale]?.length||Object.keys(texts[locale]??{}).length!==105)fail('Full105 complete current intended source text required');
+ same([...shown.lines.map(x=>x.id)].sort(),Object.keys(texts[locale]).sort(),'Complete presentation/source ID sets differ');
+ if(locale==='zh-TW'){if(dub!==null)fail('Main narration captions must use current presented narration timing');}
+ else if(!dub||dub.stale||dub.locale!==locale||dub.branding_hash!==P.placed||dub.total_frames!==17593||dub.body_total_frames!==16813||dub.content_end_frame!==16963||dub.intro_at_frame!==732||dub.speech_hash!==P.speech)fail('Foreign captions require the actual current checked branded dub timeline');
+ const native=localeCues(shown,texts,locale,'zh-TW',dub);if(native.missing.length)fail('Native CC omitted current intended lines');
+ same([...new Set(native.cues.map(x=>x.line))].sort(),Object.keys(texts[locale]).sort(),'Native cues do not cover all105 current intended IDs');
+ checked.assertCaptionBytes(srt,vtt,toSrt(native.cues),toVtt(native.cues));
+ const problems=checkCues(native.cues,locale),timing=locale==='zh-TW'?'narration':'dub';
+ if(manifest.speech_hash!==P.speech||manifest.branding_hash!==P.placed||manifest.chapters?.length||manifest.skipped?.[locale]?.length)fail('Current native caption manifest source/presentation is stale');
+ same(manifest.locales?.[locale],{cues:native.cues.length,problems,timing},'Actual native caption manifest timing/count/problems differ');
+ if(problems.some(x=>!/characters a second/.test(x)))fail('Hard native caption problem in checked locale');
+ const composed=composeMetadata({doc:project.doc,timeline:shown,translations:project.translations,pack:project.pack,locales:LOCALES});
+ if(composed.problems.length)fail('Native complete current presentation metadata: '+composed.problems.join('; '));
+ const metadata=locale==='zh-TW'?{title:composed.metadata.title,description:composed.metadata.description}:composed.metadata.localizations[locale];
+ if(!metadata?.title||!metadata.description)fail('Current localized native title/description missing');
+ return{buffers:{srt:Buffer.from(srt),vtt:Buffer.from(vtt),description:Buffer.from(metadata.title+'\n\n'+metadata.description+'\n')},metadata,chapters:composed.metadata.chapters,cues:native.cues.length,reading_speed_advisories:problems,timing};
+}
+export function bindAssets(allBuffers,pin){
+ same(Object.keys(allBuffers).sort(),[...LOCALES].sort(),'Only two checked locales may supply data');
+ return uploadPlan().map(entry=>{const data=allBuffers[entry.locale]?.[entry.kind],a=pin.assets[entry.locale][entry.kind];if(!Buffer.isBuffer(data)||digest(data)!==a.sha256||data.length!==a.bytes||data.length<=0||data.length>512*1024)fail('Actual native checked text bytes/fullSHA changed: '+entry.locale+'/'+entry.kind);return{...entry,sha256:a.sha256,size:data.length,content_type:'text/plain',data};});
+}
+export function requireAssetPlan(assets){
+ same(assets.map(({locale,kind,file,roles})=>({locale,kind,file,roles})),uploadPlan(),'Only exact6 checked text paths/kinds/10normalroles allowed');
+ if(new Set(assets.map(x=>x.sha256)).size!==6||assets.some(x=>x.content_type!=='text/plain'||!fullSha(x.sha256)||!Number.isSafeInteger(x.size)||x.size<=0||x.size>512*1024))fail('Only distinct, small, fully pinned native text/plain files allowed');
+}
+export function requireCaptionIssues(rows){
+ same(rows.map(x=>x.locale),['zh-TW','en','ja','ko','es','pt','id','vi','th'],'Complete native nine-locale issue history must be retained');
+ const speed=rows.flatMap(x=>x.problems.filter(p=>/characters a second/.test(p))),selected=rows.filter(x=>LOCALES.includes(x.locale)).flatMap(x=>x.problems.filter(p=>/characters a second/.test(p))),hard=rows.flatMap(x=>x.problems.filter(p=>!/characters a second/.test(p)).map(problem=>({locale:x.locale,problem})));
+ if(speed.length!==8||selected.length!==0||hard.length!==1||hard[0].locale!=='ja'||!hard[0].problem.includes('does not match the branding'))fail('All8 native CPS reminders and the JA stale hard error must remain; no draft is marked checked');
+ return{global_reading_speed_advisories:8,checked_reading_speed_advisories:0,stale_draft_hard_locales:['ja']};
+}
+export function requireMainReceipt(receipt,mainLocal){
+ if(receipt.ok!==true||receipt.stage!=='new_main_checked_EN_and_seven_BODY_history_downloads_attached'||receipt.final_review_id!==P.current||receipt.metadata_readback_verified!==true||receipt.old_undecided_BODY_12_refs_QA_decision_preserved!==true||receipt.new_machine_qa_passed!==false)fail('Exact actual main+four downloadable M4A delivery receipt required');
+ same(receipt.preflight.snapshot_signature,mainLocal.snapshot_signature,'Main/current raw/check/fit/meter/QA/evidence changed since actual delivery');
+ same(receipt.preflight.pin,mainLocal.pin,'Exact actual root main pin changed');same(receipt.preflight.qa_report,mainLocal.qa_report,'Actual native failed QA changed');
+ if(mainLocal.master?.checked_current_accepted!==105||mainLocal.master.flags!==0||mainLocal.master.unchecked!==0||mainLocal.master.sha256!==P.master||mainLocal.master.clips?.length!==105||mainLocal.master.in_memory_native_rebuild_exact!==true)fail('Complete current strict MASTER105 binding changed');
+ if(mainLocal.quality.machine_qa_passed!==false||mainLocal.quality.passed!==10||mainLocal.quality.total!==11)fail('Native QAfalse10 must remain an honest manual candidate');
+ same(mainLocal.quality.failed_item_ids,['captions'],'Actual failed native item changed');
+}
+export function deliveredBaseline(mainLocal){
+ const native=mainVideo.remoteFinal(mainLocal.initial_project_snapshot,mainLocal),prepared=mainVideo.appendBody(native,mainLocal);
+ const final={...clone(native),...prepared.body};if(final.id!==P.current||final.files.length!==13)fail('Actual delivered base must be exact13 current roles');
+ return final;
+}
+export async function localPreflight(pinFile){
+ if(typeof pinFile!=='string'||!path.isAbsolute(pinFile)||path.dirname(path.resolve(pinFile))!==BASE)fail('Explicit root caption pin in task scratch required');
+ const pin=validatePin(read(pinFile)),hashes={};for(const[f,sha]of Object.entries(FIXED)){hashes[f]=shaFile(f);if(hashes[f]!==sha)fail('Pinned reviewed helper/source/delivery/caption proof changed: '+f);}
+ if(shaFile(SELF)!==pin.helper_sha256)fail('Actual helper is not exact root-reviewed fullSHA');hashes[SELF]=pin.helper_sha256;hashes[pinFile]=shaFile(pinFile);
+ const mainLocal=await mainVideo.localPreflight(MAIN_PIN);requireMainReceipt(read(MAIN_RECEIPT),mainLocal);
+ const baseline=deliveredBaseline(mainLocal),project=loadProject({root:ROOT,slug:SLUG}),manifest=read(WORK+'/captions/manifest.json'),buffers={},locale_data={};
+ const bodyBytes=fs.readFileSync(WORK+'/timeline.json'),checkBytes=fs.readFileSync(WORK+'/checks.json');
+ if(digest(bodyBytes)!==mainLocal.input_sha256[WORK+'/timeline.json']||digest(checkBytes)!==mainLocal.input_sha256[WORK+'/checks.json'])fail('Current native body/applied-branding inputs changed after complete main preflight');
+ hashes[WORK+'/timeline.json']=digest(bodyBytes);hashes[WORK+'/checks.json']=digest(checkBytes);
+ const shown=derivePresentation(JSON.parse(bodyBytes),JSON.parse(checkBytes));
+
+ requireCaptionIssues(mainLocal.captions.rows);
+ for(const locale of LOCALES){
+  const dub=locale==='zh-TW'?null:currentDub(project,WORK,locale,P.speech);
+  if(locale!=='zh-TW'){const row=mainLocal.en;if(row?.checked_current_accepted!==105||row.flags!==0||row.unchecked!==0||row.sha256!==AUDIO[locale].sha256||row.bytes!==AUDIO[locale].bytes)fail('Underlying complete current checked M4A binding changed');}
+  const data=nativeAssets(project,shown,manifest,locale,dub,fs.readFileSync(WORK+'/captions/'+locale+'.srt'),fs.readFileSync(WORK+'/captions/'+locale+'.vtt'));
+  const file=TEXT_BASE+'/'+locale+'.txt';same(fs.readFileSync(file),data.buffers.description,'Scratch native title/description TXT differs: '+locale);
+  same(baseline.payload.metadata?.[locale],data.metadata,'Delivered native metadata is not current presentation composition: '+locale);
+  buffers[locale]=data.buffers;locale_data[locale]={metadata:data.metadata,cues:data.cues,reading_speed_advisories:data.reading_speed_advisories,native_caption_timing:data.timing,chapters:data.chapters};
+ }
+ const asset_data=bindAssets(buffers,pin);requireAssetPlan(asset_data);for(const asset of asset_data)hashes[asset.file]=asset.sha256;
+ const summary={profile:PROFILE,locales:LOCALES,source_sha256:P.source,speech_hash:P.speech,main_sha256:P.main,main_pin_file:MAIN_PIN,main_pin_sha256:P.mainPin,main_delivery_receipt_file:MAIN_RECEIPT,main_delivery_receipt_sha256:P.mainReceipt,qa_sha256:P.qa,qa_ok:false,caption_manifest_sha256:P.manifest,branding_hash:P.placed,package_hash:P.package,presentation_frames:17593,intro_at_frame:732,locale_data,assets:asset_data.map(({data,...x})=>x),global_native_caption_issues:clone(mainLocal.captions.rows),checked_foreign_audio:1,total_foreign:8,all_eight_ready:false,overall_production_completed:false,input_sha256:hashes,main_snapshot_signature:mainLocal.snapshot_signature};
+ for(const[f,sha]of Object.entries(hashes))if(shaFile(f)!==sha)fail('Local input changed while preparing text assets');
+ return{...summary,pin,mainLocal,baseline,asset_data,snapshot_signature:digest(JSON.stringify(summary))};
+}
+function forLocale(local,locale){
+ const foreign=locale!=='zh-TW';return{cfg:{kind:foreign?'foreign':'main'},locale,source_sha256:P.source,speech_hash:P.speech,main_sha256:P.main,checked_audio_sha256:foreign?AUDIO[locale].sha256:P.master,checked_audio_bytes:foreign?AUDIO[locale].bytes:null,checked_lines:105,audio_proof_sha256:foreign?P.foreignProof:P.mainReceipt,native_caption_timing:foreign?'dub':'narration',assets:local.assets.filter(x=>x.locale===locale)};
+}
+export function appendBody(final,local){
+ requireAssetPlan(local.assets);requireCaptionIssues(local.global_native_caption_issues);let working=clone(final),newFiles=[],rolesAdded=[];
+ for(const locale of LOCALES){const next=checked.appendBody(working,forLocale(local,locale));working={...working,...next.body};newFiles.push(...next.newFiles);rolesAdded.push(...next.roles);}
+ const record={profile:PROFILE,locales:LOCALES,source_sha256:P.source,speech_hash:P.speech,main_sha256:P.main,main_pin_file:MAIN_PIN,main_pin_sha256:P.mainPin,main_delivery_receipt_file:MAIN_RECEIPT,main_delivery_receipt_sha256:P.mainReceipt,qa_sha256:P.qa,qa_ok:false,master_prior_proof_sha256:P.masterProof,master_current_delivery_proof_sha256:P.mainReceipt,foreign_proof_sha256:P.foreignProof,branding_hash:P.placed,package_hash:P.package,presentation_frames:17593,intro_at_frame:732,checked_lines_per_locale:105,assets:local.assets.map(({file,...x})=>x),locale_details:local.locale_data,all_native_caption_issues_preserved:local.global_native_caption_issues,excluded_draft_locales:['ja','ko','es','pt','id','vi','th'],thumbnail_uploaded:false,fresh_ASR:false,checked_foreign_audio:1,total_foreign:8,all_eight_ready:false,overall_production_completed:false};
+ let ownAdded=false;if(Object.hasOwn(final.payload,FIELD))same(final.payload[FIELD],record,'Existing current branded caption evidence differs; never overwrite history');else{working.payload[FIELD]=record;ownAdded=true;}
+ for(const[k,v]of Object.entries(final.payload))if(![STANDARD_FIELD,FIELD].includes(k))same(working.payload[k],v,'Original native main payload/failedQA changed');
+ const needs_post=newFiles.length>0||ownAdded||!isDeepStrictEqual(working.payload[STANDARD_FIELD],final.payload[STANDARD_FIELD]);
+ const summary=needs_post?'官方5秒片頭與21秒片尾、完整1080p、已驗EN M4A及7個舊版history引用保留；新增繁中＋EN當前真時間軸CC（SRT/VTT）與完整標題說明下載附件。8CPS提醒及JA stale錯誤保留；原生QA仍false10/11、caption失敗、manual候選未核准。八外語已驗音軌1/8，整體未完成，未驗語言不附送。':final.summary;
+ const body={gate:'final',subject:final.subject??null,content_sha256:P.main,summary,payload:working.payload,files:working.files};same(fitPayload(body).body,body,'Native fitter would trim protected full report or metadata');
+ return{body,newFiles,needs_post,roles:rolesAdded};
+}
+export function remoteFinal(project,local){
+ const rows=(project.reviews??[]).filter(x=>x.gate==='final'&&x.subject==null&&x.status!=='superseded');if(rows.some(x=>!Number.isFinite(Date.parse(x.created_at))))fail('Invalid final timestamps');
+ rows.sort((a,b)=>Date.parse(b.created_at)-Date.parse(a.created_at));const f=rows[0],base=local.baseline;
+ if(!f||f.id!==P.current||f.status!=='pending'||f.choice!==null||f.note!==null||f.decided_at!==null||f.content_sha256!==P.main||f.payload?.hand_pushed!==true||f.payload.manual_review!==true||!f.payload.manual_review_reason||Object.hasOwn(f.payload,'qa')||f.payload.branding_hash!==P.placed)fail('Same genuinely delivered official manual pending required; never overwrite approved history');
+ if(new Set(f.files.map(x=>x.role)).size!==f.files.length)fail('Duplicate current role');
+ same(f.payload.manual_review_qa,local.mainLocal.qa_report,'Native QAfalse10/11/report/details/warnings changed');
+ for(const file of base.files)same(f.files.find(x=>x.role===file.role),file,'An actual delivered main/M4A/native image role changed');
+ const expected=new Map(local.assets.flatMap(a=>a.roles.map(role=>[role,{role,sha256:a.sha256,size:a.size,content_type:'text/plain'}])));
+ for(const file of f.files)if(!base.files.some(x=>x.role===file.role))same(file,expected.get(file.role),'Only exact checked caption/text roles may be added');
+ for(const[k,v]of Object.entries(base.payload))same(f.payload[k],v,'An original delivered native payload field changed');
+ for(const k of Object.keys(f.payload))if(!Object.hasOwn(base.payload,k)&&![STANDARD_FIELD,FIELD].includes(k))fail('Unknown extra payload field outside checked-caption scope');
+ // Validate every existing new role/evidence record by recomputing the same complete proposal.
+ const proposed=appendBody(f,local);for(const field of [STANDARD_FIELD,FIELD])if(Object.hasOwn(f.payload,field)){if(field===FIELD)same(f.payload[field],proposed.body.payload[field],'Existing caption profile evidence differs');else{
+  const existing=f.payload[field];if(!existing||typeof existing!=='object'||Array.isArray(existing))fail('Malformed existing checked captions');
+  for(const[locale,records]of Object.entries(existing)){if(!LOCALES.includes(locale)||!records||typeof records!=='object'||Array.isArray(records))fail('Foreign draft/unknown caption record forbidden');for(const[role,record]of Object.entries(records)){if(!local.assets.some(x=>x.locale===locale&&x.roles.includes(role)))fail('Unknown role inside checked caption evidence');same(record,proposed.body.payload[field]?.[locale]?.[role],'Existing checked caption record differs');}}
+ }}
+ same(ownerSnapshot(project),ownerSnapshot(local.mainLocal.initial_project_snapshot),'Owner choices/status/YouTube fields differ from actual main delivery baseline');
+ if(project.reviews.length!==local.mainLocal.initial_project_snapshot.reviews.length)fail('Review count changed');
+ for(const old of local.mainLocal.initial_project_snapshot.reviews.filter(x=>x.id!==P.current))same(project.reviews.find(x=>x.id===old.id),old,'Historical approved/source/QA/decision changed');
+ return f;
+}
+export function guardRemoteUnchanged(before,fresh,local){same(ownerSnapshot(before),ownerSnapshot(fresh),'Owner choices/YouTube fields changed during upload');same(before.reviews,fresh.reviews,'A review changed during upload; no POST');same(remoteFinal(before,local).id,remoteFinal(fresh,local).id,'Current pending changed');}
+export function allowedRequest(method,suffix,assets){requireAssetPlan(assets);return checked.allowedRequest(method,suffix,new Set(assets.map(x=>x.sha256)));}
+
+function requester(credentials,assets,result){
+ return async(method,suffix,{json,bytes,query}={})=>{
+  if(!allowedRequest(method,suffix,assets))fail('Forbidden endpoint/method/hash; only6 current checked text blobs allowed');
+  const url=credentials.site+'/api/video/reviews/'+SLUG+suffix+(query?'?'+new URLSearchParams(query):''),attempts=method==='POST'?1:4;
+  for(let n=0;n<attempts;n++){
+   let response;try{response=await fetch(url,{method,redirect:'error',signal:AbortSignal.timeout(60000),headers:{Authorization:'Bearer '+credentials.token,'User-Agent':USER_AGENT,Accept:'application/json',...(json?{'Content-Type':'application/json'}:bytes?{'Content-Type':'application/octet-stream'}:{})},body:json?JSON.stringify(json):bytes});}catch{if(n+1<attempts){await new Promise(r=>setTimeout(r,2**n*1000));continue;}fail(method+' normal network failure; POST outcome may be uncertain, never blindly repeated');}
+   if(response.ok)return response.json();const e=await response.json().catch(()=>({}));result.http_errors.push({method,suffix,status:response.status,code:e.code??null});
+   if((response.status===429||response.status>=500)&&n+1<attempts){await new Promise(r=>setTimeout(r,Math.min(Number(response.headers.get('retry-after'))||2**n,30)*1000));continue;}
+   fail(method+' normal tool HTTP '+response.status+' ('+(e.code??'unknown')+')');
+  }
+ };
+}
+async function execute(local,pinFile,result){
+ const credentials=readCredentials({env:{},home:AUTH_HOME});
+ if(!credentials.token||!TOKEN_PATTERN.test(credentials.token)||!validSite(credentials.site+'/')||!credentials.site.startsWith('https://'))fail('Saved normal private-auth HTTPS credentials required');
+ const request=requester(credentials,local.asset_data,result),before=await request('GET',''),final=remoteFinal(before,local),proposal=appendBody(final,local);
+ result.final_review_id=final.id;result.before_review_sha256=digest(JSON.stringify(final));
+ // Always PUT the15 tiny content-addressed blobs: same-role idempotence can restore an
+ // unavailable stored blob. A no-POST result is not claimed to be zero remote mutation.
+ for(const asset of local.asset_data){
+  const parts=Math.ceil(asset.size/PART_BYTES);let complete=false;
+  for(let part=0;part<parts;part++){
+   const bytes=asset.data.subarray(part*PART_BYTES,Math.min((part+1)*PART_BYTES,asset.size));result.upload_started=true;
+   const receipt=validatePartReceipt(await request('PUT','/files/'+asset.sha256,{bytes,query:{part:String(part),parts:String(parts),size:String(asset.size)}}),part,parts);
+   result.part_receipts.push({locale:asset.locale,kind:asset.kind,sha256:asset.sha256,part,bytes:bytes.length,received:receipt.received,complete:receipt.complete});
+   if(receipt.complete){complete=true;result.server_upload_receipts.push({locale:asset.locale,kind:asset.kind,sha256:asset.sha256,bytes:asset.size,parts,complete:true,existing_blob_possible:true,scope:'Normal store verifies SHA when assembling new bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash.'});break;}
+  }
+  if(!complete)fail('Server did not confirm complete text-blob assembly');
+ }
+ const freshLocal=await localPreflight(pinFile);same(freshLocal.snapshot_signature,local.snapshot_signature,'Current main/audio/source/check/caption/metadata/proof bytes changed during upload; no POST');
+ const fresh=await request('GET','');guardRemoteUnchanged(before,fresh,freshLocal);
+ const prepared=appendBody(remoteFinal(fresh,freshLocal),freshLocal);same(prepared.body,proposal.body,'Protected append proposal changed; no POST');
+ if(!prepared.needs_post){Object.assign(result,{ok:true,stage:'checked_current_two_locale_caption_metadata_roles_already_present',no_review_post:true,no_review_mutation:true,metadata_readback_verified:true,download_roles:final.files.filter(x=>proposal.roles.includes(x.role))});return;}
+ result.review_post_attempted=true;const posted=await request('POST','/reviews',{json:prepared.body});
+ if(posted.id!==final.id||posted.status!=='pending'||posted.content_sha256!==P.main)fail('POST returned unexpected final identity/status; authenticated readback required before any retry');
+ const after=await request('GET',''),stored=remoteFinal(after,freshLocal);
+ same(stored.files,prepared.body.files,'Stored role metadata differs');same(stored.payload,prepared.body.payload,'Stored payload/report differs');same(stored.summary,prepared.body.summary,'Stored summary differs');same(ownerSnapshot(after),ownerSnapshot(before),'Owner choices/status/YouTube fields changed');
+ for(const k of ['id','status','choice','note','decided_at','created_at','content_sha256'])same(stored[k],final[k],'Current pending identity/decision changed: '+k);
+ if(before.reviews.length!==after.reviews.length)fail('Review count changed');for(const old of before.reviews.filter(x=>x.id!==final.id))same(after.reviews.find(x=>x.id===old.id),old,'Historical approved/source/QA review changed');
+ Object.assign(result,{ok:true,stage:'checked_current_zh_tw_and_en_caption_metadata_assets_attached',metadata_readback_verified:true,download_roles:stored.files.filter(x=>prepared.roles.includes(x.role)),all_original_13_files_preserved:true,all_original_payload_fields_preserved:true,old_superseded_BODY_12_and_seven_live_history_refs_preserved:true,native_qa_ok:false,native_qa_passed:10,native_qa_total:11,native_qa_failed_items:['captions'],native_all8_cps_and_ja_stale_error_preserved:true,approval_changed:false,language_choice_changed:false,standard_dubs_payload_changed:false,language_batch_submitted:false});
+}
+export function selfTest(){
+ const tests=[],pass=(name,f)=>{f();tests.push({name,passed:true});},reject=(name,f)=>pass(name,()=>assert.throws(f));
+ const buffers=Object.fromEntries(LOCALES.map(locale=>[locale,Object.fromEntries(KINDS.map(kind=>[kind,Buffer.from(locale+' native complete '+kind)]))]));
+ const pin={schema_version:1,profile:PROFILE,locales:LOCALES,helper_sha256:'a'.repeat(64),source_sha256:P.source,speech_hash:P.speech,main_sha256:P.main,branding_hash:P.placed,package_hash:P.package,qa_sha256:P.qa,qa_ok:false,caption_manifest_sha256:P.manifest,native_caption_handoff_sha256:P.handoff,main_pin_file:MAIN_PIN,main_pin_sha256:P.mainPin,main_delivery_receipt_file:MAIN_RECEIPT,main_delivery_receipt_sha256:P.mainReceipt,root_reviewed_by:'pure-fixture-only',root_reviewed_at:'2026-01-01T00:00:00Z',thumbnails:null,omitted_thumbnails_reason:'Preserve existing native main thumbnail; no upload',checked_audio_sha256:{'zh-TW':P.master,...Object.fromEntries(FOREIGN.map(locale=>[locale,AUDIO[locale].sha256]))},assets:Object.fromEntries(LOCALES.map(locale=>[locale,Object.fromEntries(uploadPlan().filter(x=>x.locale===locale).map(x=>[x.kind,{file:x.file,sha256:digest(buffers[locale][x.kind]),bytes:buffers[locale][x.kind].length}]))]))};
+ pass('exact two-checked-locale root schema',()=>validatePin(pin));
+ for(const key of ['profile','source_sha256','speech_hash','main_sha256','branding_hash','package_hash','qa_sha256','caption_manifest_sha256','native_caption_handoff_sha256','main_pin_file','main_pin_sha256','main_delivery_receipt_file','main_delivery_receipt_sha256'])reject('wrong '+key,()=>validatePin({...pin,[key]:'wrong'}));
+ reject('QAfalse cannotwashtrue',()=>validatePin({...pin,qa_ok:true}));
+ reject('future root review',()=>validatePin({...pin,root_reviewed_at:'2099-01-01T00:00:00Z'}));
+ reject('pending candidate missing rootidentity',()=>validatePin({...pin,root_reviewed_by:null}));
+ reject('pending candidate missing reviewtime',()=>validatePin({...pin,root_reviewed_at:null}));
+ reject('no fabricated thumbnailview/upload',()=>validatePin({...pin,thumbnails:{en:{}}}));
+ reject('no unverified ES locale',()=>validatePin({...pin,locales:[...LOCALES,'es']}));
+ reject('no unverified PTassetentry',()=>validatePin({...pin,assets:{...pin.assets,pt:{}}}));
+ reject('wrong underlying checked M4A',()=>validatePin({...pin,checked_audio_sha256:{...pin.checked_audio_sha256,en:'b'.repeat(64)}}));
+ const assets=bindAssets(buffers,pin).map(({data,...x})=>x);
+ pass('exact6smalltext/10nativealiases',()=>{requireAssetPlan(assets);assert.equal(assets.length,6);assert.equal(assets.flatMap(x=>x.roles).length,10);});
+ pass('native zh-TW role spelling retained',()=>same(assets.filter(x=>x.locale==='zh-TW').flatMap(x=>x.roles),['captions_zh-TW','evidence_zh_tw_cc_srt','evidence_zh_tw_cc_vtt','description_zh-TW','evidence_zh_tw_metadata_txt'],'native roles'));
+ for(const locale of LOCALES)for(const kind of KINDS)reject('changed '+locale+'/'+kind+' bytes',()=>bindAssets({...buffers,[locale]:{...buffers[locale],[kind]:Buffer.concat([buffers[locale][kind],Buffer.from('.')])}},pin));
+ reject('wrong assetpath',()=>validatePin({...pin,assets:{...pin.assets,en:{...pin.assets.en,srt:{...pin.assets.en.srt,file:WORK+'/captions/es.srt'}}}}));
+ reject('wrong mimeaudio cannot smuggle M4A',()=>requireAssetPlan(assets.map((x,i)=>i===0?{...x,content_type:'audio/mp4'}:x)));
+ reject('wrong imageasset cannot smuggle thumb',()=>requireAssetPlan([...assets,{locale:'en',kind:'thumbnail',file:WORK+'/thumbnails/en.jpg',roles:['thumbnail_en'],sha256:'a'.repeat(64),size:10,content_type:'image/jpeg'}]));
+ reject('role cannot switch verifiedlocale',()=>requireAssetPlan(assets.map((x,i)=>i===0?{...x,roles:['captions_es']}:x)));
+ reject('audiofile path cannot substitute text',()=>requireAssetPlan(assets.map((x,i)=>i===0?{...x,file:WORK+'/dubs/en.m4a'}:x)));
+ const shown={branding_hash:P.placed,total_frames:17593,body_total_frames:16813,fps:30,intro_at_frame:732,intro_end_frame:882,content_end_frame:16963,lines:Array.from({length:105},(_,i)=>({id:'line'+i,start_frame:i<5?i*120:882+(i-5)*120,end_frame:i<5?i*120+60:892+(i-5)*120,audio_samples:48000})),chapters:[{scene:'first',title:'開場',start_frame:0},{scene:'second',title:'查回資料',start_frame:882},{scene:'third',title:'完成',start_frame:3000}]};
+ const doc={slug:SLUG,narration_locale:'zh-TW',scenes:[{id:'first',lines:shown.lines.map((x,i)=>({id:x.id,text:'內容'+i}))}],youtube:{title:'原創示範',description:'完整作者說明',tags:[],category_id:'28',made_for_kids:false},sources:[],assets:[]};
+ const project={doc,translations:Object.fromEntries(FOREIGN.map(locale=>[locale,{title:locale+' original title',description:locale+' complete original description',lines:Object.fromEntries(doc.scenes[0].lines.map((x,i)=>[x.id,{source_hash:textHash(x.text),text:locale+' text '+i}]))}]))};
+ const texts=localeTexts(doc,project.translations).texts,dubs=Object.fromEntries(FOREIGN.map(locale=>[locale,{...shown,locale,speech_hash:P.speech,lines:shown.lines.map(x=>({...x,start_frame:x.start_frame+2,end_frame:x.end_frame+2}))}]));
+ const nativeCues=Object.fromEntries(LOCALES.map(locale=>[locale,localeCues(shown,texts,locale,'zh-TW',locale==='zh-TW'?null:dubs[locale]).cues]));
+ const manifest={speech_hash:P.speech,branding_hash:P.placed,locales:Object.fromEntries(LOCALES.map(locale=>[locale,{cues:nativeCues[locale].length,problems:checkCues(nativeCues[locale],locale),timing:locale==='zh-TW'?'narration':'dub'}]))};
+ const rebuild=locale=>nativeAssets(project,shown,manifest,locale,locale==='zh-TW'?null:dubs[locale],Buffer.from(toSrt(nativeCues[locale])),Buffer.from(toVtt(nativeCues[locale])));
+ for(const locale of LOCALES){pass('native105fullIDs '+locale,()=>assert.equal(rebuild(locale).cues,105));pass('native title/blank/full-description TXT '+locale,()=>{const n=rebuild(locale);same(n.buffers.description,Buffer.from(n.metadata.title+'\n\n'+n.metadata.description+'\n'),'TXT');});pass('actual presented chapter00:29 '+locale,()=>assert.equal(rebuild(locale).chapters[1].at,'00:29'));}
+ const captionTags={'zh-TW':'｜CC字幕',en:'｜CC Subtitles',ja:'｜字幕付き',ko:'｜CC 자막',vi:'｜Vietsub'};for(const locale of LOCALES)pass('native localized CCtitle tag '+locale,()=>assert(rebuild(locale).metadata.title.endsWith(captionTags[locale])));
+ pass('native foreign uses actualdub distinct from narrationtime',()=>assert.notEqual(toSrt(nativeCues.en),toSrt(localeCues(shown,texts,'en','zh-TW',null).cues)));
+ reject('foreign cannot silentlyfallback narration',()=>nativeAssets(project,shown,manifest,'en',null,Buffer.from(toSrt(nativeCues.en)),Buffer.from(toVtt(nativeCues.en))));
+ reject('foreign wronglocale timeline',()=>nativeAssets(project,shown,manifest,'en',{...dubs.en,locale:'ja'},Buffer.from(toSrt(nativeCues.en)),Buffer.from(toVtt(nativeCues.en))));
+ reject('foreign stale dub forbidden',()=>nativeAssets(project,shown,manifest,'en',{...dubs.en,stale:true},Buffer.from(toSrt(nativeCues.en)),Buffer.from(toVtt(nativeCues.en))));
+ reject('foreign packagehash is not placedhash',()=>nativeAssets(project,shown,manifest,'en',{...dubs.en,branding_hash:P.package},Buffer.from(toSrt(nativeCues.en)),Buffer.from(toVtt(nativeCues.en))));
+ reject('main cannotuseforeign dubtiming',()=>nativeAssets(project,shown,manifest,'zh-TW',dubs.en,Buffer.from(toSrt(nativeCues['zh-TW'])),Buffer.from(toVtt(nativeCues['zh-TW']))));
+ reject('unverified ES cannotbe delivered',()=>nativeAssets(project,shown,manifest,'es',null,Buffer.from('x'),Buffer.from('y')));
+ reject('double-shifted foreign SRT refused',()=>nativeAssets(project,shown,manifest,'en',dubs.en,Buffer.from(toSrt(nativeCues.en.map(x=>({...x,start_ms:x.start_ms+5000,end_ms:x.end_ms+5000})))),Buffer.from(toVtt(nativeCues.en))));
+ reject('wrong two-decimal timing rejected',()=>checked.assertCaptionBytes(Buffer.from('00:00:01.23'),Buffer.from('vtt'),'00:00:01.233','vtt'));
+ reject('wrong caption manifest narrationtiming',()=>nativeAssets(project,shown,{...manifest,locales:{...manifest.locales,en:{...manifest.locales.en,timing:'narration'}}},'en',dubs.en,Buffer.from(toSrt(nativeCues.en)),Buffer.from(toVtt(nativeCues.en))));
+ reject('caption source hash stale',()=>nativeAssets(project,shown,{...manifest,speech_hash:'wrong'},'en',dubs.en,Buffer.from(toSrt(nativeCues.en)),Buffer.from(toVtt(nativeCues.en))));
+ reject('full sourceIDs nottruncated',()=>nativeAssets({...project,doc:{...doc,scenes:[{...doc.scenes[0],lines:doc.scenes[0].lines.slice(1)}]}},shown,manifest,'zh-TW',null,Buffer.from(toSrt(nativeCues['zh-TW'])),Buffer.from(toVtt(nativeCues['zh-TW']))));
+ for(const[key,value]of Object.entries({branding_hash:P.package,total_frames:16313,body_total_frames:17593,intro_at_frame:0,intro_end_frame:982,content_end_frame:15683,fps:24}))reject('wrong presentation '+key,()=>requirePresentation({...shown,[key]:value}));
+ const allNames=['zh-TW','en','ja','ko','es','pt','id','vi','th'],counts={'zh-TW':0,en:0,ja:0,ko:0,es:4,pt:2,id:2,vi:0,th:0};
+ const issues=allNames.map(locale=>({locale,timing:FOREIGN.includes(locale)?'dub':'narration',problems:[...(['ja'].includes(locale)?[`the ${locale} dub track is older or does not match the branding; these cues follow the narration, run dub again`]:[]),...Array.from({length:counts[locale]},(_,i)=>'cue '+i+': 18 characters a second, above 17')],checked_audio_verified:LOCALES.includes(locale)}));
+ pass('all8CPS/selected0/JA1 hard preserved',()=>requireCaptionIssues(issues));
+ reject('CPS cannotbe zeroed toclaimpass',()=>requireCaptionIssues(issues.map(x=>({...x,problems:x.problems.filter(p=>!/characters a second/.test(p))}))));
+ reject('stale JA harderror cannotclear',()=>requireCaptionIssues(issues.map(x=>({...x,problems:x.problems.filter(p=>/characters a second/.test(p))}))));
+ const qa={ok:false,final_sha256:P.main,items:Array.from({length:11},(_,i)=>({id:i===3?'captions':'native'+i,ok:i!==3,detail:i===3?'JA stale':'native verified',...(i===3?{warnings:['all8 kept']}:{})}))};
+ const initialFiles=[{role:'preview',sha256:digest('preview'),size:100,content_type:'video/mp4'},{role:'contact_sheet',sha256:digest('contact'),size:100,content_type:'image/png'},{role:'thumbnail',sha256:digest('thumbnail'),size:100,content_type:'image/jpeg'},{role:'dub_en',sha256:AUDIO.en.sha256,size:AUDIO.en.bytes,content_type:'audio/mp4'},...mainVideo.uploadPlan().map(({file,...x})=>x)];
+ const base={id:P.current,gate:'final',subject:null,status:'pending',choice:null,note:null,created_at:'2026-01-02T00:00:00Z',decided_at:null,content_sha256:P.main,summary:'native QAfalse manual candidate',files:initialFiles,payload:{hand_pushed:true,manual_review:true,manual_review_reason:'actual official replacement',branding_hash:P.placed,manual_review_qa:qa,metadata:Object.fromEntries(LOCALES.map(x=>[x,{title:x+' native title',description:x+' native presented description'}])),dubs:Object.fromEntries(FOREIGN.map(x=>[x,{status:'ready',format:'m4a',file_role:'dub_'+x}])),supplemental_formal_branded_checked_EN_and_BODY_history:{actual_unchanged_main:true,qa_ok:false}}};
+ const old={id:P.old,gate:'final',subject:null,status:'superseded',created_at:'2026-01-01T00:00:00Z',content_sha256:'c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5',decided_at:null,files:clone(initialFiles.slice(0,12)),payload:{qa:{ok:true,items:Array.from({length:11},()=>({ok:true}))}},choice:null,note:null};
+ const snapshot={stage:'final',locales:{all8:'unchanged'},languages:{all8:'unchanged'},ready_to_upload:false,youtube_video_id:null,reviews:[base,old]};
+ const local={assets,locale_data:Object.fromEntries(LOCALES.map(x=>[x,{metadata:base.payload.metadata[x],cues:x==='zh-TW'?106:108,reading_speed_advisories:issues.find(r=>r.locale===x).problems,native_caption_timing:x==='zh-TW'?'narration':'dub',chapters:[]}])),global_native_caption_issues:issues,baseline:clone(base),mainLocal:{qa_report:qa,initial_project_snapshot:clone(snapshot)}};
+ pass('real-shaped delivered13 baseline accepted',()=>assert.equal(remoteFinal(snapshot,local).id,P.current));
+ const proposal=appendBody(base,local);
+ pass('exact15blobs add25roles/total37',()=>{assert.equal(proposal.newFiles.length,10);assert.equal(proposal.body.files.length,23);assert.equal(new Set(proposal.roles).size,10);});
+ pass('all13 original refs preserved',()=>same(proposal.body.files.slice(0,13),base.files,'base13'));
+ pass('all original payload/QAfalse/mainrecord/metadata/dubs preserved',()=>{for(const[k,v]of Object.entries(base.payload))same(proposal.body.payload[k],v,k);assert.equal(proposal.body.payload.manual_review_qa.ok,false);});
+ pass('standard currentASR evidence binds correctmaster/M4As',()=>{assert.equal(proposal.body.payload[STANDARD_FIELD]['zh-TW']['captions_zh-TW'].audio_proof_sha256,P.mainReceipt);assert.equal(proposal.body.payload[STANDARD_FIELD].en.captions_en.audio_proof_sha256,P.foreignProof);assert.equal(proposal.body.payload[STANDARD_FIELD].en.captions_en.checked_audio_sha256,AUDIO.en.sha256);});
+ pass('nativewarnings35 and QAfalse notwashed',()=>{assert.match(proposal.body.summary,/QA仍false10\/11/);assert.doesNotMatch(proposal.body.summary,/官方片頭片尾待補|QA11\/11/);assert.equal(proposal.body.payload[FIELD].all_eight_ready,false);same(proposal.body.payload[FIELD].all_native_caption_issues_preserved,issues,'issues');});
+ const after=clone(snapshot);after.reviews[0]={...after.reviews[0],...proposal.body};
+ pass('same25roles/evidence are idempotent',()=>assert.equal(appendBody(remoteFinal(after,local),local).needs_post,false));
+ pass('partialroles append safely',()=>assert.equal(appendBody({...base,files:proposal.body.files.slice(0,16)},local).newFiles.length,7));
+ pass('partial standardrecords completed withoutchange',()=>{const one={...base,payload:{...base.payload,[STANDARD_FIELD]:{'zh-TW':{'captions_zh-TW':proposal.body.payload[STANDARD_FIELD]['zh-TW']['captions_zh-TW']}}}};const p=clone(snapshot);p.reviews[0]=one;assert(appendBody(remoteFinal(p,local),local).needs_post);});
+ reject('same requested role differentSHA refuses',()=>appendBody({...base,files:[...base.files,{role:'captions_en',sha256:'b'.repeat(64),size:12,content_type:'text/plain'}]},local));
+ reject('native dub changed beforetext attachment',()=>appendBody({...base,files:base.files.map(x=>x.role==='dub_en'?{...x,sha256:'b'.repeat(64)}:x)},local));
+ reject('underlying current EN M4A alias missing',()=>appendBody({...base,files:base.files.filter(x=>x.role!=='evidence_en_m4a')},local));
+ reject('foreign draft captionsfile notallowed',()=>remoteFinal({...snapshot,reviews:[{...base,files:[...base.files,{role:'captions_es',sha256:'b'.repeat(64),size:12,content_type:'text/plain'}]},old]},local));
+ reject('unknown role inside standardrecord forbidden',()=>remoteFinal({...snapshot,reviews:[{...base,payload:{...base.payload,[STANDARD_FIELD]:{en:{unreviewed:{all_eight_ready:true}}}}},old]},local));
+ reject('unverified locale inside standardrecord forbidden',()=>remoteFinal({...snapshot,reviews:[{...base,payload:{...base.payload,[STANDARD_FIELD]:{es:{captions_es:{}}}}},old]},local));
+ reject('conflicting own profileproof forbidden',()=>appendBody({...base,payload:{...base.payload,[FIELD]:{}}},local));
+ reject('unknown other payload mutation forbidden',()=>remoteFinal({...snapshot,reviews:[{...base,payload:{...base.payload,unknown_ready:true}},old]},local));
+ reject('native failedQA cannotwashtrue',()=>remoteFinal({...snapshot,reviews:[{...base,payload:{...base.payload,manual_review_qa:{...qa,ok:true}}},old]},local));
+ reject('oldnaturalstatus cannotbe approved',()=>remoteFinal({...snapshot,reviews:[base,{...old,status:'approved'}]},local));
+ reject('oldhistorical files cannotchange',()=>remoteFinal({...snapshot,reviews:[base,{...old,files:old.files.slice(1)}]},local));
+ reject('newpending cannotbe approved',()=>remoteFinal({...snapshot,reviews:[{...base,status:'approved'},old]},local));
+ reject('newpending content cannotbe oldbody',()=>remoteFinal({...snapshot,reviews:[{...base,content_sha256:old.content_sha256},old]},local));
+ reject('newpending serverapprove slot forbidden',()=>remoteFinal({...snapshot,reviews:[{...base,payload:{...base.payload,qa}},old]},local));
+ reject('metadata native chapter changed forbidden',()=>remoteFinal({...snapshot,reviews:[{...base,payload:{...base.payload,metadata:{...base.payload.metadata,en:{title:'changed',description:'wrong00:22'}}}},old]},local));
+ pass('fresh unchanged whole-review snapshot passes',()=>guardRemoteUnchanged(snapshot,clone(snapshot),local));
+ reject('owner language choice concurrentchange',()=>guardRemoteUnchanged(snapshot,{...snapshot,locales:{en:false}},local));
+ reject('YouTube note concurrentchange',()=>guardRemoteUnchanged(snapshot,{...snapshot,youtube_publish_note:'owner changed'},local));
+ reject('owner project slot concurrentchange',()=>guardRemoteUnchanged(snapshot,{...snapshot,slot_at:'2099-01-01T00:00:00Z'},local));
+ reject('any currentreview concurrentchange',()=>guardRemoteUnchanged(snapshot,{...snapshot,reviews:[{...base,summary:'changed'},old]},local));
+ reject('any historicalreview concurrentchange',()=>guardRemoteUnchanged(snapshot,{...snapshot,reviews:[base,{...old,note:'changed'}]},local));
+ for(const asset of assets)pass('PUT only pinned '+asset.locale+'/'+asset.kind,()=>assert(allowedRequest('PUT','/files/'+asset.sha256,assets)));
+ for(const[m,s]of [['PUT','/files/'+P.main],['PUT','/files/'+AUDIO.en.sha256],['PUT','/files/'+P.master],['POST','/approve'],['POST','/languages'],['POST','/youtube'],['GET','/files/'+assets[0].sha256],['DELETE','']])pass('forbidden route '+m+s,()=>assert.equal(allowedRequest(m,s,assets),false));
+ pass('normal project GET and one samepending POST allowed',()=>{assert(allowedRequest('GET','',assets));assert(allowedRequest('POST','/reviews',assets));});
+ const mainLocal={master:{checked_current_accepted:105,flags:0,unchecked:0,sha256:P.master,clips:Array.from({length:105},()=>({})),in_memory_native_rebuild_exact:true},snapshot_signature:'a'.repeat(64),pin:{actual:true},qa_report:qa,quality:{machine_qa_passed:false,passed:10,total:11,failed_item_ids:['captions']}},receipt={ok:true,stage:'new_main_checked_EN_and_seven_BODY_history_downloads_attached',final_review_id:P.current,metadata_readback_verified:true,old_undecided_BODY_12_refs_QA_decision_preserved:true,new_machine_qa_passed:false,preflight:mainLocal};
+ pass('actual-delivery proof binds same nativefalse10 currentmain',()=>requireMainReceipt(receipt,mainLocal));
+ reject('deliveryreceipt oldID wrong',()=>requireMainReceipt({...receipt,final_review_id:P.old},mainLocal));
+ reject('deliveryreceipt raw/current snapshot changed',()=>requireMainReceipt(receipt,{...mainLocal,snapshot_signature:'b'.repeat(64)}));
+ reject('deliveryreceipt QAchanged',()=>requireMainReceipt(receipt,{...mainLocal,qa_report:{...qa,ok:true}}));
+const rawBody={speech_hash:P.speech,total_frames:16813,fps:30,scenes:[{id:'first',start_frame:0,end_frame:732},{id:'second',start_frame:732,end_frame:16813}],chapters:shown.chapters.map((x,i)=>({...x,start_frame:i===0?0:x.start_frame-150})),lines:shown.lines.map(x=>({...x,start_frame:x.start_frame>=882?x.start_frame-150:x.start_frame,end_frame:x.start_frame>=882?x.end_frame-150:x.end_frame}))};
+ const applied={hash:P.placed,id:'mokaair-brand-package-v4-endscreen',intro_frames:150,outro_frames:630,body_frames:16813,intro_at_frame:732,body_file:'build/body.mp4',body_sha256:P.body};
+ pass('derive17593 from currentunshiftedbody+nativeapplied once',()=>{const s=derivePresentation(rawBody,{branding:applied});assert.equal(s.total_frames,17593);assert.equal(s.intro_at_frame,732);assert.equal(s.intro_end_frame,882);assert.equal(s.content_end_frame,16963);assert.equal(s.chapters[1].start_frame,882);});
+ reject('derive alreadybranded body forbidden',()=>derivePresentation({...rawBody,branding_hash:P.placed},{branding:applied}));
+ reject('derive wrongsource speech forbidden',()=>derivePresentation({...rawBody,speech_hash:'wrong'},{branding:applied}));
+ reject('derive package cannotreplace appliedhash',()=>derivePresentation(rawBody,{branding:{...applied,hash:P.package}}));
+ reject('derive oldbody SHA cannotbe newmain',()=>derivePresentation(rawBody,{branding:{...applied,body_sha256:P.main}}));
+ reject('derive wrongplacement757 forbidden',()=>derivePresentation(rawBody,{branding:{...applied,intro_at_frame:757}}));
+ reject('derive incomplete104source IDs forbidden',()=>derivePresentation({...rawBody,lines:rawBody.lines.slice(1)},{branding:applied}));
+ reject('oneofseven livehistory refs cannotdisappear',()=>remoteFinal({...snapshot,reviews:[{...base,files:base.files.filter(x=>x.role!=='evidence_history_body_preview_mp4')},old]},local));
+ const oldSrt=mainVideo.uploadPlan().find(x=>x.role==='evidence_history_en_body_cc_srt');
+ reject('oldBODY ENcaption cannotbe currentbrandedCC',()=>appendBody({...base,files:[...base.files,{role:'captions_en',sha256:oldSrt.sha256,size:oldSrt.size,content_type:'text/plain'}]},local));
+ const partialExisting={...after.reviews[0],files:after.reviews[0].files.filter(x=>x.role!=='captions_en')},partialProject={...snapshot,reviews:[partialExisting,old]};
+ pass('completeevidence butmissingonecurrentrole repairsnotfalseidempotence',()=>{const p=appendBody(remoteFinal(partialProject,local),local);assert.equal(p.needs_post,true);assert.equal(p.newFiles.length,1);});
+
+ const imported=checked.selfTest();
+ return{self_test:true,profile:PROFILE,tests,reused_strict_caption_guards:imported,network_calls:0,paid_calls:0,production_source_or_media_writes:0,actual_preflight:false};
+}
+
+async function main(){
+ const{values:v}=parseArgs({options:{pin:{type:'string'},execute:{type:'boolean',default:false},out:{type:'string'},'self-test':{type:'boolean',default:false}},strict:true});
+ if(v['self-test']){if(v.execute)fail('Pure tests cannot execute');process.stdout.write(JSON.stringify(selfTest(),null,2)+'\n');return;}
+ if(!v.pin)fail('Explicit root --pin required; default LOCAL ONLY');
+ const output=path.resolve(v.out??BASE+'/deliver-formal-branded-checked-caption-assets.'+(v.execute?'result':'preflight')+'.'+iso().replace(/[:.]/g,'-')+'.json');
+ if(path.dirname(output)!==BASE||!/^deliver-formal-branded-checked-caption-assets[._-][A-Za-z0-9._-]+\.json$/.test(path.basename(output))||fs.existsSync(output))fail('New task scratch receipt required; never overwrite history');
+ const result={observed_at:iso(),slug:SLUG,mode:v.execute?'explicit_root_execute_checked6textblobs_only':'local_only_no_network',ok:false,stage:'local_preconditions',upload_started:false,review_post_attempted:false,part_receipts:[],server_upload_receipts:[],http_errors:[],verification_kind:'normal_server_SHA_assembly_and_authenticated_role_metadata_readback',remote_binary_download_performed:false,remote_CAS_available:false,concurrency_limit:'Fresh exact owner-choice/every-review snapshots guard earlier changes. Native normal POST has no atomic CAS.',all_eight_ready:false,overall_production_completed:false,native_qa_ok:false,ready_to_publish:false,fresh_ASR:false,language_batch_submitted:false,thumbnail_uploaded:false};
+ try{const local=await localPreflight(path.resolve(v.pin));const{asset_data,mainLocal,baseline,pin,...safe}=local;result.preflight=safe;if(v.execute)await execute(local,path.resolve(v.pin),result);else Object.assign(result,{ok:true,stage:'current_checked_two_locale_caption_assets_local_preconditions_passed_no_network'});}
+ catch(e){result.error=String(e.message??e);result.requires_authenticated_readback_before_retry=result.review_post_attempted;process.exitCode=1;}
+ finally{result.finished_at=iso();fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx',mode:0o600});process.stdout.write(JSON.stringify({output,ok:result.ok,stage:result.stage,error:result.error??null,upload_started:result.upload_started,review_post_attempted:result.review_post_attempted},null,2)+'\n');}
+}
+if(process.argv[1]&&path.resolve(process.argv[1])===SELF)await main();
+

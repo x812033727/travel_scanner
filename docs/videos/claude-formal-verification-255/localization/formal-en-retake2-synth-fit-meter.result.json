@@ -1,0 +1,74 @@
+{
+  "at": "2026-10-26T00:05:50.529849+00:00",
+  "scope": "Unchanged-original ENretake2 synthesis/actualfit/fresh encodedmeter. Not ASR PASS. Original retake limit reached.",
+  "native_dub_exit_code": 0,
+  "native_stage": {
+    "stage": "dub",
+    "at": "2026-10-26T00:04:49.104Z",
+    "locale": "en",
+    "requests": 100,
+    "synthesized": 2,
+    "billable": 114,
+    "fallbacks": [],
+    "tempo_max": 1.15,
+    "over": 0,
+    "absorbed": 0,
+    "file": "en.m4a"
+  },
+  "raw_changed_ids": [
+    "8ywa",
+    "cgit"
+  ],
+  "raw_reused_fullSHA_unchanged": 103,
+  "source_EN_text_and_frozen_inputs_unchanged": true,
+  "fit": {
+    "windows": 101,
+    "over": 0,
+    "sped": 7,
+    "tempo_max": 1.15
+  },
+  "measurement": {
+    "locale": "en",
+    "file": "dubs/en.m4a",
+    "bytes": 14525089,
+    "sha256": "39c52e242bbe6a888b78407310df647af1227e59cc783930f87fc881e1ddfaf9",
+    "duration": 560.505,
+    "codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "integrated": -14,
+    "truePeak": -2,
+    "timing": {
+      "problems": [],
+      "timeline_seconds": 560.4333333333333,
+      "pcm_samples": 26900800,
+      "pcm_sample_rate": 48000,
+      "pcm_seconds": 560.4333333333333,
+      "encoded_samples": 26904240,
+      "encoded_seconds": 560.505,
+      "encoded_start": 0,
+      "encoded_end": 560.505,
+      "container_seconds": 560.505,
+      "aac_tail_seconds": 0.07166666666671517,
+      "native_short_allowance_seconds": 0.03333333333333333,
+      "native_long_allowance_seconds": 0.09733333333333333,
+      "native_rule": "/workspace/work/travel-scanner-formal-255/tools/video/assemble/plan.mjs:200 checkProbe; AAC_PADDING_SECONDS=(3*1024)/48000"
+    },
+    "ok": true,
+    "problems": [],
+    "measured_at": "2026-10-26T00:05:26.743Z"
+  },
+  "evidence_sha256": {
+    "dubs/en/audio/cache.json": "80493cd4d5a44a5c9204df4103e15b26920dd7a87100695df143133a37863a57",
+    "dubs/en/fit.json": "54a765d44bb0d64c852a01bef59004e277bd4a8d89bcb72898bf04efb58f2979",
+    "dubs/en/timeline.json": "5b5f918baaee1de95d08461481d51b427ef54791145314452f5b2e5c63627a71",
+    "dubs/en/narration.wav": "3ea3311fe28ac2154980f8ed04a7626414b78255ffcf34b3e47c4a0e094eb23d",
+    "dubs/en.m4a": "39c52e242bbe6a888b78407310df647af1227e59cc783930f87fc881e1ddfaf9",
+    "dubs/en/delivery-measurement.json": "9b6baff0414fa7b13386b606e1e6fe2bb61b8f585710894206a1f4ea1d21bc94"
+  },
+  "retake_rounds": 2,
+  "shorten_rounds": 1,
+  "reword_rounds": 0,
+  "cumulative_actual_billable_characters": 6984,
+  "all_eight_ready": false
+}

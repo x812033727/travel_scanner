@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-25T21:21:27.418090+00:00",
+  "reviewer": "root; independent of EN translator",
+  "snapshot_sha256": "24f084fb3e9975f09e1fc60f57818d4eedcade0027f90d659725f4234bb8316c",
+  "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "spoken_source_unchanged_by_layout_delta": true,
+  "all_105_lines_and_all_metadata_read": true,
+  "mandatory_factual_issues": 0,
+  "verdict": "ACCEPT_WITH_ONE_CLARITY_REPAIR_BEFORE_MERGE",
+  "repair": [
+    {
+      "id": "fzz5",
+      "old": "Capacity is only 8 bytes; the terminator needs 1 more byte.",
+      "proposed": "Capacity is 8 bytes; reserve 1 byte for the terminator.",
+      "characters": 55,
+      "max_chars": 61,
+      "reason": "Avoid needs 1 more byte being heard as capacity beyond 8. Source reserves 1 byte inside the 8-byte capacity. Next equation <=8 remains unchanged."
+    }
+  ],
+  "checks": [
+    "All 105 EN captions preserve corresponding scope, assumptions, negations, numeric values and operation order.",
+    "int-promotion then uint8 narrowing, full wide RHS/storage, counter declaration+update fix preserved.",
+    "Only release-specific absence of halts proof; official study/release counts separated.",
+    "Guard has no buffer write, loop independent, timeout observation distinct from finite-cycle reason.",
+    "Original code URL, scope, full description and 7 chapters align; no fake Rocq/product execution.",
+    "All EN draft lines within native worksheet budgets; actual fit and audio are not yet measured."
+  ],
+  "limits": "Text review only; no WAV/ASR/M4A/backend or thumbnail-render readiness claim."
+}

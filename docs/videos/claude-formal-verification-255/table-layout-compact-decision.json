@@ -1,0 +1,66 @@
+{
+  "at": "2026-10-25T21:08:07.733407+00:00",
+  "reason": "Native full render rejected five-row table at60% and26px overheight. Compact only the five identical-result rows into one explicitly enumerated group.",
+  "before_sha256": "232b4495b433041007c039630ec517b7e0b4948c3cd7a5a47da6ecd88cae8a15",
+  "after_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "only_changed_field": "scenes[five-small-examples].data.rows",
+  "before": [
+    [
+      "0",
+      "接受",
+      "是"
+    ],
+    [
+      "1",
+      "接受",
+      "是"
+    ],
+    [
+      "2",
+      "接受",
+      "是"
+    ],
+    [
+      "3",
+      "接受",
+      "是"
+    ],
+    [
+      "4",
+      "接受",
+      "是"
+    ]
+  ],
+  "after": [
+    [
+      "0、1、2、3、4",
+      "全部接受",
+      "全部符合"
+    ]
+  ],
+  "expanded_equivalence": {
+    "inputs": [
+      0,
+      1,
+      2,
+      3,
+      4
+    ],
+    "wrong_guard_accepts_each": true,
+    "matches_expected_for_each": true
+  },
+  "all_105_lines_voice_style_pauses_ids_order_metadata_claims_assets_unchanged": true,
+  "tts_or_asr_redone": false,
+  "render_recheck": {
+    "ok": true,
+    "states_drawn": 1,
+    "states_reused": 100,
+    "seconds": 12,
+    "layout_problems": 0,
+    "log": "/workspace/work/ai-tech-next/formal-render-table-compact.log",
+    "repaired_state": "frames/22099036a8fe9b4c.png",
+    "repaired_state_sha256": "c4838caecbc972ec8ce5fdcbe4b3fe67593c873993d48ab959aa087c8b9e29d5",
+    "root_actually_viewed_repaired_state_and_native_contact_sheet": true
+  },
+  "scope": "Layout-only; not a new fact, narration or final QA claim"
+}

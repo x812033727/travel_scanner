@@ -1,0 +1,20 @@
+{
+  "reviewed_at": "2026-10-25T23:17:42.439799+00:00",
+  "reviewer": "root-independent-of-EN-producer",
+  "proposal_sha256": "7102c6ab1a452aa2a6af7a633e7e4c57c71ef691086cc04355fc1a60cd6fd09c",
+  "decision": "ACCEPT_TEXT_ONLY_NOT_AUDIO_PASS",
+  "id": "wunt",
+  "old_text": "I first chose 0,1,2,3,4. All five small values matched.",
+  "accepted_text": "I first chose 0,1,2,3,4; all met expectations.",
+  "characters": 46,
+  "actual_native_max_chars": 47,
+  "checks": [
+    "First-person initial choice preserved by I first chose.",
+    "Ordered 0,1,2,3,4 unchanged; explicit five-item list plus all retains all five selected inputs.",
+    "Met expectations directly states expected outcome, rather than global correctness.",
+    "Smallness follows explicit 0..4 and neighboring a7te separately expands to 0..255; no exhaustive claim added.",
+    "Source/table/claims/narration/timeline and native tempo threshold must stay unchanged."
+  ],
+  "authorization": "Standing user asks coordinator recommendations without routine questions; one actual overflow, scoped fit repair.",
+  "next": "Native i18n merge only this caption, 1 new take/other104 unchanged, actual native fit/meter required; no ASR until explicit shared-slot release."
+}

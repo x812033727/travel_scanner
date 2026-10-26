@@ -1,0 +1,163 @@
+{
+  "observed_at": "2026-10-25T23:16:03.805710+00:00",
+  "scope": "Single actual EN fit overflow; semantic proposal pending root independent adoption. No i18n edit, no further paid request, no ASR.",
+  "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+  "speech_hash": "8028c7320d9cab29",
+  "locale": "en",
+  "archive": "/workspace/work/ai-tech-next/formal-language-archives/en-before-fit1-2026-10-25T23-16-03.805Z",
+  "archive_manifest_sha256": "537e0d98cc252d7f8ef284598ecda9cd404e4a9ee2d7af5f8d8f41d2b4e04eeb",
+  "native_dub_exit_code": 1,
+  "native_requests": 100,
+  "native_billable_characters": 6452,
+  "raw_wavs_count": 105,
+  "native_log": "/workspace/work/ai-tech-next/formal-dub-en-initial.log",
+  "native_log_sha256": "6722cca876f9008525277788d96a908f78f1058036229e663f8bc60ec894b2b2",
+  "fit_sha256": "de5bc3d15baf1e18a29216c282d1157d13a2249f00aa38ca17f317ba2f1e236c",
+  "actual_overflows": [
+    {
+      "id": "wunt",
+      "chars": 55,
+      "max_chars": 47,
+      "window_over_seconds": 0.53,
+      "seconds": 5.62
+    }
+  ],
+  "windows": 101,
+  "source_scene": {
+    "id": "five-small-examples",
+    "template": "table",
+    "data": {
+      "title": "原先看的五個小值",
+      "columns": [
+        "輸入",
+        "錯版結果",
+        "是否符合"
+      ],
+      "rows": [
+        [
+          "0、1、2、3、4",
+          "全部接受",
+          "全部符合"
+        ]
+      ],
+      "key": "小值都對，還不足以涵蓋完整範圍",
+      "source": "原創guard｜GCC14.2.0｜2026-10-25"
+    },
+    "lines": [
+      {
+        "id": "wunt",
+        "text": "我原先選零、一、二、三、四，五個小值都符合預期。",
+        "emotion": "自然清楚，重要數字稍作強調"
+      }
+    ],
+    "claims": [
+      "c31"
+    ]
+  },
+  "context": [
+    {
+      "scene": "fixed-255-rejects",
+      "source": {
+        "id": "mfag",
+        "text": "它大於容量八，這次正確回傳拒絕。",
+        "reveal": 1
+      },
+      "english": "It exceeds capacity 8, so now it correctly rejects."
+    },
+    {
+      "scene": "wide-fix-and-valid-seven",
+      "source": {
+        "id": "vkym",
+        "text": "原本合法的長度七呢？加一得到八，仍然接受。",
+        "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+      },
+      "english": "What about valid length 7? Plus 1 gives 8; it's still accepted."
+    },
+    {
+      "scene": "how-check-the-middle",
+      "source": {
+        "id": "84hx",
+        "text": "但只看這兩筆，怎麼確認中間沒有別的錯？",
+        "emotion": "像替觀眾問出疑惑，尾音輕輕上揚"
+      },
+      "english": "But how do two cases rule out errors in between?"
+    },
+    {
+      "scene": "five-small-examples",
+      "source": {
+        "id": "wunt",
+        "text": "我原先選零、一、二、三、四，五個小值都符合預期。",
+        "emotion": "自然清楚，重要數字稍作強調"
+      },
+      "english": "I first chose 0,1,2,3,4. All five small values matched."
+    },
+    {
+      "scene": "enumerate-entire-domain",
+      "source": {
+        "id": "a7te",
+        "text": "把零到二百五十五全部列出來，才能對回完整範圍。"
+      },
+      "english": "Listing all values from 0 to 255 checks the full range."
+    },
+    {
+      "scene": "only-extra-accepted-value",
+      "source": {
+        "id": "dfhy",
+        "text": "錯版額外放行的只有二百五十五；加寬版只放行零到七。",
+        "emotion": "自然清楚，重要數字稍作強調"
+      },
+      "english": "The buggy code's only extra acceptance is 255; widened code accepts only 0 to 7."
+    },
+    {
+      "scene": "boolean-input-model",
+      "source": {
+        "id": "zgkb",
+        "text": "這份紀錄另加一個求解模型，把同一輸入寫成八個真假位元。",
+        "emotion": "自然清楚，重要數字稍作強調"
+      },
+      "english": "I add a solver model to the record, encoding the same input as 8 Boolean bits."
+    }
+  ],
+  "lines": [
+    {
+      "id": "wunt",
+      "source": "我原先選零、一、二、三、四，五個小值都符合預期。",
+      "old_text": "I first chose 0,1,2,3,4. All five small values matched.",
+      "old_characters": 55,
+      "text": "I first chose 0,1,2,3,4; all met expectations.",
+      "characters": 46,
+      "max_chars": 47,
+      "actual_fit": {
+        "id": "wunt",
+        "chars": 55,
+        "max_chars": 47,
+        "window_over_seconds": 0.53,
+        "seconds": 5.62
+      },
+      "meaning_check": "Retains first-person initial selection, exact ordered 0,1,2,3,4 and all meeting expected outcomes. The explicit five-item list conveys all five small values; no new result or exhaustive-domain claim. Following line still expands to full 0..255 range.",
+      "protected_fields": [
+        "id/order/source_hash/source narration/voice/style/emotion unchanged",
+        "exact digit strings and order 0,1,2,3,4 unchanged",
+        "all five selected cases meet expected outcomes",
+        "limited sample scope, not entire range proof",
+        "native 1.15 threshold and timeline unchanged"
+      ],
+      "apply_now": false,
+      "awaiting_independent_root_adoption": true
+    }
+  ],
+  "critique": [
+    {
+      "pass": "draft",
+      "observation": "Compress duplicated all five small values after the explicit five-item list; replace generic matched with precise met expectations."
+    },
+    {
+      "pass": "critique",
+      "observation": "First chose and all preserve temporal and quantifier scope; each 0..4 digit remains. Smallness is visible from exact values and need not be separately pronounced. No unrelated five-row layout change or extra input is introduced."
+    },
+    {
+      "pass": "final",
+      "observation": "46 codepoints <= actual native max47; natural complete sentence with explicit expectations. This is semantic recommendation only; a re-synthesis and real fit remain required."
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "at": "2026-10-26T00:15:47.677349+00:00",
+  "round": 1,
+  "kind": "listener_reword",
+  "changed_lines": [
+    "cgit"
+  ],
+  "unchanged_lines": 104,
+  "metadata_unchanged": true,
+  "source_hash_unchanged": true,
+  "before_SHA256": "dfa76cd6e53bf90e0dc85ce5c7691b2faafff7208dc85d1d0016ffbefc76ac98",
+  "after_SHA256": "2c01a9b4bf57687a9d455bc425af7f7467239c36e0c1b6ddde164e559c8a95da",
+  "root_independent_review_SHA256": "cd0dd9615dce689400c5689b6cace0d369d826405be81bacf608ddd5a7bb81f0",
+  "old_text": "Input 0: expect one increment, returning 1.",
+  "text": "On input zero, expect 1 increment and a return of 1.",
+  "numeric_equivalence": [
+    {
+      "before": "0",
+      "after": "zero",
+      "value": 0,
+      "role": "input limit"
+    },
+    {
+      "before": "one",
+      "after": "1",
+      "value": 1,
+      "role": "increment count"
+    },
+    {
+      "before": "1",
+      "after": "1",
+      "value": 1,
+      "role": "returned value"
+    }
+  ],
+  "numeric_values_and_order_preserved": [
+    0,
+    1,
+    1
+  ],
+  "literal_spellings_changed_by_explicit_root_adoption": true,
+  "retake_rounds_preserved": 2,
+  "shorten_rounds_preserved": 1,
+  "all_zh_source_main_timeline_bytes_unchanged": true
+}

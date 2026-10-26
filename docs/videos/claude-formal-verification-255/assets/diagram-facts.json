@@ -1,0 +1,120 @@
+{
+  "domain": [
+    0,
+    255
+  ],
+  "capacity_bytes": 8,
+  "terminator_bytes": 1,
+  "counts": {
+    "bad": {
+      "accepted": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        255
+      ],
+      "accept_count": 9,
+      "false_accepts": [
+        255
+      ],
+      "false_rejects": []
+    },
+    "fixed": {
+      "accepted": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "accept_count": 8,
+      "false_accepts": [],
+      "false_rejects": []
+    },
+    "deny_all": {
+      "accepted": [],
+      "accept_count": 0,
+      "false_accepts": [],
+      "false_rejects": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ]
+    }
+  },
+  "n255": {
+    "n": 255,
+    "bad": 1,
+    "widened": 0,
+    "bound": 0,
+    "mathematical_fits": 0,
+    "promoted_total": 256,
+    "narrowed_total": 0
+  },
+  "loop_cycle_length": 256,
+  "fixed_actual_returns": 256,
+  "fixed_n255_exit": 256,
+  "observed_timeout_seconds": 0.25,
+  "deny_all_method": "symbolic model and propositional SAT, not a deny-all C run",
+  "local_scope": "guard only, no buffer writes; independent counter-only loop; no official checker rerun",
+  "inputs": {
+    "guard.c": {
+      "sha256": "4bfc837e2f17c1ae8326924a926929ee3d8dec29e88ec355b77db591c0d9e799"
+    },
+    "loop.c": {
+      "sha256": "b1d181702c61b152724eeeb693891f45005e7ca0c7dfa583cb5378a6fc68f0a2"
+    },
+    "all-256-cases.json": {
+      "sha256": "e957484d742ea0b6fc39c9f5c8bdb80f91d5299ef13fad574a55c1d534d5c1d8"
+    },
+    "loop-all-256.json": {
+      "sha256": "2523d7e0650d3a89b8d90987c300b5a3d588f50ad5137262be9916167920a86c"
+    },
+    "results.json": {
+      "sha256": "724d32d699601eb523dafaa04a1165bf77a32459b8b4641c8ed102e7316a272c"
+    },
+    "loop-results.json": {
+      "sha256": "c710013a94fd45f34c90d6a40454e9691e2cf5ff078e6e8c199632b9ee4ab434"
+    },
+    "sat-output.json": {
+      "sha256": "6faee1dfe1437ae212f5f13eeb6f95571edef9a2a8d9374927895ef7e8495078"
+    }
+  },
+  "official_scope": {
+    "kind": "CITED checker workflow, not rerun",
+    "urls": [
+      "https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md",
+      "https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md",
+      "https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md",
+      "https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md"
+    ],
+    "agreement_is_not_halts": true,
+    "checker_checks_in_order": [
+      "Rocq compilation checks proof terms in the kernel",
+      "wrapper compilation also checks terms in the kernel and has the required fixed statement type",
+      "Print Assumptions lists dependencies",
+      "allowlist audit refuses unexpected assumptions"
+    ],
+    "source_snapshot_sha256": {
+      "third-topic-source-proofs-readme.txt": "691725dc47cda47bea65f1255c307fd30eeac751ab1cfd84e3c9cb41df376a94",
+      "third-topic-source-proofs-origin.txt": "d752870fac42440eeb2012bd504f7213132b712c50938b9c068b975a6986442f",
+      "third-topic-source-proofs-statements.txt": "46bb8f03a00484658ec93f27d8d50a008f733f2942913f5a011d46ea0db45781",
+      "third-topic-source-proofs-checking.raw": "8fea2025f3a16f72613b3a70a7b51716cf7058c11fe5b453e327d970702af160"
+    }
+  },
+  "public_data_directory": "https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data",
+  "public_link_verification": "Directory / actual raw source-file checks supplied by root; this asset generator makes no network calls."
+}

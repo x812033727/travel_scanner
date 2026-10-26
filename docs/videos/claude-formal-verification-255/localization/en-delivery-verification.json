@@ -1,0 +1,135 @@
+{
+  "observed_at": "2026-10-26T00:47:20.921Z",
+  "slug": "claude-formal-verification-255",
+  "locale": "en",
+  "ok": true,
+  "stage": "checked_locale_audio_roles_attached",
+  "part_receipts": [
+    {
+      "part": 0,
+      "bytes": 4194304,
+      "received": [
+        0
+      ],
+      "complete": false
+    },
+    {
+      "part": 1,
+      "bytes": 4194304,
+      "received": [
+        0,
+        1
+      ],
+      "complete": false
+    },
+    {
+      "part": 2,
+      "bytes": 4194304,
+      "received": [
+        0,
+        1,
+        2
+      ],
+      "complete": false
+    },
+    {
+      "part": 3,
+      "bytes": 1969913,
+      "received": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "complete": true
+    }
+  ],
+  "server_upload_receipt": {
+    "complete": true,
+    "sha256": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+    "bytes": 14552825,
+    "parts": 4,
+    "parts_sent": 4,
+    "existing_blob_fast_path": false,
+    "sha_validation_scope": "Native assembly hashes uploaded parts and rejects SHA/size mismatches before complete=true."
+  },
+  "final_review_id": "00f2b388-712e-4886-9849-64e12e0f6bec",
+  "final_status": "pending",
+  "download_roles": [
+    {
+      "role": "dub_en",
+      "sha256": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+      "size": 14552825,
+      "content_type": "audio/mp4"
+    },
+    {
+      "role": "evidence_en_m4a",
+      "sha256": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+      "size": 14552825,
+      "content_type": "audio/mp4"
+    }
+  ],
+  "metadata_readback_verified": true,
+  "all_old_files_preserved": true,
+  "all_original_payload_fields_preserved": true,
+  "historical_main_qa_preserved_11_of_11": true,
+  "approval_changed": false,
+  "language_choice_changed": false,
+  "language_batch_submitted": false,
+  "standard_dubs_payload_changed": false,
+  "all_eight_ready": false,
+  "cc_metadata_language_batch_ready": false,
+  "remote_binary_stream_verification": {
+    "performed": false,
+    "reason": "Normal tool GET project, PUT file parts and POST reviews only. Verification uses server upload assembly and authenticated role SHA/size metadata; no authenticated binary GET route is exposed or called."
+  },
+  "finished_at": "2026-10-26T00:47:37.352Z",
+  "scope": "EN checked M4A incremental attachment only; main body candidate stays pending, official bookends missing",
+  "verification_kind": "normal_server_SHA_assembly_and_authenticated_role_metadata_readback",
+  "raw_helper_receipt_sha256": "affde191de1fba5c37d1e8fffa04ebebcef9f3ba881a2c2cd83d295b5674be9c",
+  "safe_exact_helper_receipt": "en-backend-delivery-receipt.json",
+  "strict_audio_proof": "en-audio-audit.rich-stage-pass.json",
+  "strict_audio_proof_sha256": "a80eed3e56c18f7f400f7bae25fb1fdaee8197ecad0681cebfc1b115abea763d",
+  "current_audio": {
+    "checked": 105,
+    "flags": 0,
+    "skipped": 0,
+    "kept": 0,
+    "sha256": "94d4bfc1721615fe1c1e77cfc369dca17be15e6b569c68e032660db9ad006699",
+    "bytes": 14552825,
+    "duration": 560.505,
+    "timing": {
+      "errors": [],
+      "timeline_seconds": 560.4333333333333,
+      "pcm_samples": 26900800,
+      "pcm_seconds": 560.4333333333333,
+      "encoded_samples": 26904240,
+      "encoded_seconds": 560.505,
+      "encoded_start": 0,
+      "encoded_end": 560.505,
+      "container_seconds": 560.505,
+      "aac_tail_seconds": 0.07166666666671517,
+      "native_short_allowance_seconds": 0.03333333333333333,
+      "native_long_allowance_seconds": 0.09733333333333333,
+      "native_rule": "assemble/plan.mjs checkProbe; AAC_PADDING_SECONDS=(3*1024)/48000"
+    },
+    "codec": "aac",
+    "sample_rate": 48000,
+    "channels": 2,
+    "integrated_lufs": -14,
+    "true_peak_dbtp": -2,
+    "fit_windows": 101,
+    "fit_tempo_max": 1.15,
+    "speech_hash": "8028c7320d9cab29",
+    "translation_hash": "92e6309bd9211052",
+    "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+    "main_sha256": "c8f4bf86b1bfcc66aa8dccfdf2c047469da56bad2461a0ef130e72988dd63ed5",
+    "main_qa_sha256": "7d3aecb28a914692d140dc3a649106a51fb02ba2371c21f3e9c37d1bacd71852"
+  },
+  "actual_foreign_audio_delivered": 1,
+  "complete_language_packages_ready": 0,
+  "official_channel_bookends_present": false,
+  "overall_production_completed": false,
+  "public_safety": "Whitelist projection and exact helper receipt were inspected: no credentials, HTTP auth headers or raw server/project response body copied.",
+  "remote_binary_download_performed": false
+}
