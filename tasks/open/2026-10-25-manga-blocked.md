@@ -1,7 +1,7 @@
 ---
 id: 2026-10-25-manga-blocked
 title: 免關卡的漫劇（manga 等級）關鍵影格改完兩輪提示詞仍沒過時，保留最佳張往下做，不再 blocked
-status: in-progress
+status: review
 priority: P2
 area: tools
 owner: claude-opus-5.5-manga-accept-best
@@ -50,6 +50,8 @@ scope:
 第 2 集重做起若有鏡頭兩輪沒過，auto.json 出現 `accepted_pictures`、notes「pictures kept with the judge's remarks」，作品不再 blocked；成片審核 payload 列出那些鏡。
 
 ## Notes
+
+- PR: https://github.com/x812033727/travel_scanner/pull/1879
 
 - 2026-10-26 做法（claude-opus-5.5-manga-accept-best）：`media/keyframes.mjs` 新增並匯出 `mangaTier(doc, series)`、`keepsBestPictures(doc, series)`（插圖投影片，或 video.json 的 `series.visual_tier`、沒有就 series.json 的是 `manga`）；`acceptBest`、`flow.mjs acceptBestPictures`（用 `state.series`）都改用它。`sync.mjs acceptedPicturesOf(doc, workdir, series)` 同一判法寫在原地（sync 不 import keyframes.mjs：keyframes → media/cli.mjs → cli.mjs 有循環的風險），final 送審傳 `project.series`。
 - **成片仍是 manual review**：保留了圖的成片照舊帶 `--manual-review`、`accepted_pictures` 送審，伺服器只從 `payload.qa` 自動核准，所以 `drama_auto_approve_final` 對這一筆不作用、等站主看成片。這是 10-06 決定與 keyframes.mjs 原註解（沒人被要求看的成片不能自動過）的延續；manga 作品因此不再 blocked，但有保留圖的那集成片仍要站主看一眼。若站主要免關卡作品連這種成片也自動核准，要另開票改 `flow.mjs gate` 與伺服器規則。
