@@ -209,7 +209,8 @@ reviewed_budget_rollback_pair() {
     0132_video_pilot_budget:0133_story_followon_budget|\
     0137_video_manga_tier:0138_story_everyday_budget|\
     0138_story_everyday_budget:0139_c20_zippo_pilot_budget|\
-    0139_c20_zippo_pilot_budget:0140_c11_ucc_remake_budget) return 0 ;;
+    0139_c20_zippo_pilot_budget:0140_c11_ucc_remake_budget|\
+    0140_c11_ucc_remake_budget:0141_story_remake_budgets) return 0 ;;
     *) return 1 ;;
   esac
 }

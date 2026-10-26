@@ -28,6 +28,7 @@ from app.video_budget.models import (
     ACTIVATED_STORY_SLUGS,
     C03_ACTIVATED_SLUG,
     C03_HISTORY_CLOSED_RECEIPT,
+    C11_REMAKE_SLUG,
     C_SERIES_PILOT_LIMITS_USD,
     C_SERIES_PRE_LEDGER_OPERATION_ID,
     FOLLOWON_LIMIT_USD,
@@ -371,11 +372,11 @@ async def test_everyday_stories_stay_held_even_if_an_account_is_inserted(
     sessions: async_sessionmaker[AsyncSession],
     slug: str,
 ) -> None:
-    assert ACTIVATED_STORY_SLUGS == {C03_ACTIVATED_SLUG}
+    assert ACTIVATED_STORY_SLUGS == {C03_ACTIVATED_SLUG, C11_REMAKE_SLUG}
     assert PREPRODUCTION_HOLD_SLUGS == (
         UNRECONCILED_STORY_SLUGS | PENDING_PILOT_SLUGS
     ) - ACTIVATED_STORY_SLUGS
-    assert set(C_SERIES_PILOT_LIMITS_USD) == PREPRODUCTION_HOLD_SLUGS | ACTIVATED_STORY_SLUGS
+    assert set(C_SERIES_PILOT_LIMITS_USD) == PREPRODUCTION_HOLD_SLUGS | {C03_ACTIVATED_SLUG}
     assert C_SERIES_PILOT_LIMITS_USD[slug] == PILOT_LIMIT_USD
     if slug in PENDING_PILOT_SLUGS:
         assert PENDING_PILOT_LIMITS_USD[slug] == PILOT_LIMIT_USD
@@ -547,6 +548,52 @@ async def test_c03_stays_exhausted_until_the_exact_owner_settlement_is_applied(
         # A settlement below the ceiling with the owner's receipt is not the decision
         # the activation names: it is an ordinary settled charge and counts as one.
         assert view.settled_usd == Decimal("1.713")
+
+
+@pytest.mark.asyncio
+async def test_c11_remake_spends_from_its_own_fresh_account(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    # Owner decision 2026-10-26: a new film, no pre-ledger history, its own USD 25.
+    assert not service.is_preproduction_held(C11_REMAKE_SLUG)
+    assert service.is_pilot(C11_REMAKE_SLUG)
+    assert C11_REMAKE_SLUG not in C_SERIES_PILOT_LIMITS_USD
+    with pytest.raises(AppError) as missing:
+        await _reserve(sessions, "c11r-narration", "0.5", slug=C11_REMAKE_SLUG)
+    assert missing.value.code == "video_budget_missing_account"
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=C11_REMAKE_SLUG, limit_usd=PILOT_LIMIT_USD))
+        await session.commit()
+    receipt = await _reserve(sessions, "c11r-narration", "0.5", slug=C11_REMAKE_SLUG)
+    assert receipt is not None and receipt.dispatch_allowed
+    view = await _summary(sessions, C11_REMAKE_SLUG)
+    assert view is not None
+    assert (view.limit_usd, view.reserved_usd, view.remaining_usd) == (
+        PILOT_LIMIT_USD,
+        Decimal("0.5"),
+        Decimal("24.5"),
+    )
+    with pytest.raises(AppError) as exhausted:
+        await _reserve(sessions, "c11r-too-much", "24.6", slug=C11_REMAKE_SLUG)
+    assert exhausted.value.code == "video_budget_exhausted"
+    # Its sibling remake and the dropped original have no account decision and stay held.
+    for sibling in ("story-everyday-kikkoman-c08-remake-20261025", "story-everyday-ucc-c11"):
+        assert service.is_preproduction_held(sibling)
+        with pytest.raises(AppError) as held:
+            await _reserve(sessions, "first-paid-call", "0.01", slug=sibling)
+        assert held.value.code == "video_budget_preproduction_hold"
+
+
+@pytest.mark.asyncio
+async def test_c11_remake_account_with_another_limit_is_not_spendable(
+    sessions: async_sessionmaker[AsyncSession],
+) -> None:
+    async with sessions() as session:
+        session.add(VideoPilotBudget(slug=C11_REMAKE_SLUG, limit_usd=FOLLOWON_LIMIT_USD))
+        await session.commit()
+    with pytest.raises(AppError) as invalid:
+        await _reserve(sessions, "c11r-narration", "0.5", slug=C11_REMAKE_SLUG)
+    assert invalid.value.code == "video_budget_invalid_account"
 
 
 @pytest.mark.asyncio
