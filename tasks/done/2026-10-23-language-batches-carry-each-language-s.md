@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-language-batches-carry-each-language-s
 title: Language batches carry each language's thumbnail and the manual guide reads them
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-10-23T17:22:36Z
 created_at: 2026-10-23T17:22:06Z
-completed_at:
+completed_at: 2026-10-24T11:03:05Z
 branch: claude/language-batch-thumbnails
 depends_on: []
 scope:
@@ -41,7 +41,7 @@ languages' captions, titles and descriptions.
 - [x] The manual guide merges the newest approved language batch newer than the confirmation:
   its metadata.json (all translations), captions, descriptions and thumbnails.
 - [x] Duration review increment for `sync.mjs` and `sync.test.mjs` by an independent reviewer (`claude-pr-review-language-thumbnails-20261024`, PASS).
-- [ ] Merged and deployed. Existing videos get thumbnails on the site only with their next
+- [x] Merged and deployed. Existing videos get thumbnails on the site only with their next Deployed dac1b1ee3; A4's batch of 2026-10-24 01:51Z carried all eight thumbnails.
   language batch (A4's dub retries will send one).
 
 ## How to verify

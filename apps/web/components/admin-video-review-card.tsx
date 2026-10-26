@@ -322,6 +322,11 @@ function PickTable({ review }: { review: Review }) {
   const choice = text(pick.choice);
   const advice = number(pick.advice);
   if (keys.length === 0 && !choice && advice === null) return null;
+  // Jev scores two or three outlines only; a brief with one option, or one a session pushed by
+  // hand, carries no pick at all, which is not a pick under the thresholds.
+  if (Object.keys(scores).length === 0 && !choice && advice === null) {
+    return review.status === "pending" ? <p className="text-sm text-[var(--muted)]">{t("pickNotJudged")}</p> : null;
+  }
   const chosen = record(scores[choice]);
   // A demo of null was not asked: the site files the video as an explainer or a story
   // (docs/videos/HANDS-OFF.md, who is asked for a demonstration). A missing score still counts as none.

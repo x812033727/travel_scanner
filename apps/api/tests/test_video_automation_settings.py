@@ -392,6 +392,116 @@ async def test_a_sheet_is_picked_only_with_the_switch_on() -> None:
     assert not await service.auto_picks_look(session, payload), "off until the owner turns it on"
 
 
+# What the judge actually gives a plain-background sheet (ticket 2026-10-25-judge-7-judge): no
+# sheet passes 7, so it suggests none; B and C carry the faults the keyframes would inherit.
+UNSUGGESTED: dict[str, Any] = {
+    "options": [
+        {"key": "A", "judge": {"overall": 6.1, "problems": ["appearance: 背景畫成落石鎮 → grey"]}},
+        {"key": "B", "judge": {"overall": 6.29, "problems": ["no_text: 右下角有小字 → no text"]}},
+        {"key": "C", "judge": {"overall": 5.8, "problems": ["clean: 左手六指 → correct hands"]}},
+        {"key": "D", "judge": {"overall": 5.9, "problems": []}},
+        {"key": "E", "judge": {"overall": 4.5, "problems": ["style: 太寫實 → sticker style"]}},
+        {"key": "F"},
+    ],
+    "suggested": None,
+}
+
+
+def test_the_fallback_picks_the_best_sheet_without_text_or_anatomy_faults() -> None:
+    assert not service.look_pick_passed(UNSUGGESTED, 7), "the judge suggested nothing"
+    skipped = ["B（no_text: 右下角有小字）", "C（clean: 左手六指）", "F（沒有分數）"]
+    assert service.look_fallback_pick(UNSUGGESTED, 7) == ("A", 6.1, skipped)
+    assert service.look_fallback_note("A", 6.1, skipped, 7) == (
+        "judge 沒有推薦達到門檻 7 的設定圖；備援選法選 A：6.1/10，是沒有 no_text、clean 問題的"
+        "候選裡最高分（備援門檻 5）。略過：B（no_text: 右下角有小字）、C（clean: 左手六指）、"
+        "F（沒有分數）"
+    )
+    # The floor is the threshold less two: A clears it at 7 and 8, not at 9.
+    assert service.look_fallback_pick(UNSUGGESTED, 8) is not None
+    assert service.look_fallback_pick(UNSUGGESTED, 9) is None
+    # Every eligible sheet under the floor, or none eligible at all: the owner decides.
+    blocked = {
+        "options": [
+            {"key": "A", "judge": {"overall": 6.2, "problems": ["no_text: 角落有字 → no text"]}},
+            {"key": "B", "judge": {"overall": 6.0, "problems": ["clean: 兩個頭 → one figure"]}},
+        ]
+    }
+    assert service.look_fallback_pick(blocked, 7) is None
+    under = {"options": [{"key": "A", "judge": {"overall": 4.99}}]}
+    assert service.look_fallback_pick(under, 7) is None
+    assert service.look_fallback_pick({"options": [{"key": "A", "judge": {"overall": 5}}]}, 7) == (
+        "A", 5.0, []
+    )
+    assert service.look_fallback_note("A", 5, [], 7).endswith("略過：沒有略過任何一張")
+    # Malformed payloads are not picks.
+    assert service.look_fallback_pick({}, 7) is None
+    assert service.look_fallback_pick({"options": "A"}, 7) is None
+    assert service.look_fallback_pick(
+        {"options": [{"key": "A", "judge": {"overall": True}}, "B", {"judge": {"overall": 9}}]}, 7
+    ) is None
+
+
+@pytest.mark.asyncio
+async def test_the_fallback_runs_under_the_same_conditions_as_the_judge_s_pick() -> None:
+    note = service.look_fallback_note("A", 6.1, [
+        "B（no_text: 右下角有小字）", "C（clean: 左手六指）", "F（沒有分數）"
+    ], 7)
+    session = AsyncMock()
+    session.scalar = AsyncMock(return_value=SimpleNamespace(auto_pick_look=True, judge_min_score=7))
+    assert await service.auto_look_fallback(session, UNSUGGESTED) == ("A", note)
+    assert not await service.auto_picks_look(session, UNSUGGESTED)
+    session.scalar = AsyncMock(return_value=SimpleNamespace(auto_pick_look=True, judge_min_score=9))
+    assert await service.auto_look_fallback(session, UNSUGGESTED) is None, "6.1 is under 9 - 2"
+    session.scalar = AsyncMock(
+        return_value=SimpleNamespace(auto_pick_look=False, judge_min_score=7)
+    )
+    assert await service.auto_look_fallback(session, UNSUGGESTED) is None, "switch off, no series"
+    session.scalar = AsyncMock(return_value=None)
+    assert await service.auto_look_fallback(session, UNSUGGESTED) is None
+
+
+# What the judge wrote for 江河 on 2026-10-25 (e001-redo1): it failed ``clean`` on every sheet
+# without saying what or where, so each line is the placeholder app.video_media.judge writes.
+PLACEHOLDER_CLEAN = (
+    "clean: the judge found it but did not say what or where (asked: Are anatomy and clothing"
+    " free of faults: correct hands and fingers, no warped face, nothing floating or"
+    " duplicated?) → write the correction into the prompt"
+)
+
+
+def test_a_placeholder_clean_line_does_not_block_a_sheet() -> None:
+    sheets = {
+        "options": [
+            {
+                "key": "A",
+                "judge": {"overall": 6.2, "problems": [PLACEHOLDER_CLEAN, "style: 太寫實 → 貼圖"]},
+            },
+            {"key": "B", "judge": {"overall": 5.8, "problems": [PLACEHOLDER_CLEAN]}},
+            {"key": "C", "judge": {"overall": 6.0, "problems": [
+                "recognizable: the judge found it but did not say what or where (asked: …)"
+                " → write the correction into the prompt",
+                PLACEHOLDER_CLEAN,
+            ]}},
+        ],
+        "suggested": None,
+    }
+    assert service.look_fallback_pick(sheets, 7) == ("A", 6.2, []), "placeholders block nothing"
+    # A described fault still does, placeholder or not beside it.
+    described = {
+        **sheets,
+        "options": [
+            *sheets["options"],
+            {"key": "D", "judge": {"overall": 6.5, "problems": [
+                PLACEHOLDER_CLEAN,
+                "clean: the side-profile character is duplicated on the right → one figure only",
+            ]}},
+        ],
+    }
+    assert service.look_fallback_pick(described, 7) == (
+        "A", 6.2, ["D（clean: the side-profile character is duplicated on the right）"]
+    )
+
+
 @pytest.mark.parametrize(
     "changes",
     [

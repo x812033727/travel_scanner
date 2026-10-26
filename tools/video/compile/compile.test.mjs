@@ -433,3 +433,22 @@ test("a failed branded commit rolls captions and timing records back with the me
   assert.equal(existsSync(path.join(box.workdir, "captions", "ja.srt")), false, "only the complete current caption set is promoted");
   assert.equal(readdirSync(path.join(box.workdir, "build")).some((name) => name.startsWith("compile-pending-")), false);
 });
+
+test("a first compilation says when the site's worker builds with another package, and nothing when it is the same", async () => {
+  const box = compilationSandbox();
+  const local = installBranding(box);
+  const fake = fakeFfmpeg({ total: TOTAL });
+  const site = (answer) => async (url) => {
+    assert.equal(url, "https://mokaair.test/api/video/media/branding");
+    return Response.json(answer);
+  };
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_SITE: "https://mokaair.test", MOKAAIR_VIDEO_TOKEN: "mkv_test" };
+  const other = { id: "mokaair-brand-package-v4-endscreen", hash: "4".repeat(64) };
+  const differs = compileContext(box, fake, { env, fetch: site(other) });
+  assert.equal(await main(["compile", "--slug", box.slug, "--dry-run"], differs.ctx), EXIT.ok, differs.out.stderr);
+  assert.match(differs.out.stdout, new RegExp(`^WARN branding: this build pins channel-v1 \\(${brandingHash(local).slice(0, 12)}\\) but the site's worker uses mokaair-brand-package-v4-endscreen \\(444444444444\\); to match it, stop and run \`node tools/video/cli.mjs branding --pull\``, "m"));
+  const same = compileContext(box, fake, { env, fetch: site({ id: "channel-v1", hash: brandingHash(local) }) });
+  assert.equal(await main(["compile", "--slug", box.slug, "--dry-run"], same.ctx), EXIT.ok);
+  assert.doesNotMatch(same.out.stdout, /branding:/);
+  assert.equal(fake.calls.length, 0);
+});

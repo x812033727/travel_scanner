@@ -48,4 +48,15 @@ describe("the outline pick table", () => {
       cleanup();
     }
   });
+
+  // A brief with one outline, pushed by hand (story-everyday-play-doh-c06-remake-20261025), has
+  // no pick: Jev scores two or three. It says Jev did not score it, not that it fell short.
+  it("says Jev did not score a brief that carries no pick", () => {
+    const review = outline({});
+    review.payload = { options: [{ key: "A", title: "拿它的手換了，它要做對什麼？" }] };
+    render(<ReviewCard slug="story-everyday-play-doh-c06-remake-20261025" review={review} canManage={false} onDecided={vi.fn()} />);
+    expect(screen.queryByLabelText("Jev 挑選的理由")).toBeNull();
+    expect(screen.queryByText("有項目沒過門檻，所以還是等你決定。")).toBeNull();
+    expect(screen.getByText(/Jev 沒有評這份企劃/)).toBeTruthy();
+  });
 });

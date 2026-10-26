@@ -1,13 +1,13 @@
 ---
 id: 2026-10-23-explicit-checked-loop-for-a-generated
 title: Explicit checked loop for a generated music bed shorter than its cut
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-10-23T19:07:52Z
 created_at: 2026-10-23T19:07:35Z
-completed_at:
+completed_at: 2026-10-24T11:03:09Z
 branch: claude/music-checked-loop
 depends_on: []
 scope:
@@ -41,7 +41,7 @@ their approved cut was mixed with.
 - [x] `musicInputs` (assemble and dub) and status accept a short bed only with a loop recorded for
   that file, that decoded length and a cut no longer than the recorded one.
 - [x] Duration review increment for `core/state.mjs` (`claude-pr-review-music-loop-20261024`, PASS).
-- [ ] Merged, deployed; `music --loop` run for A4 on the host and its block cleared; the ja/ko/es/id
+- [x] Merged, deployed; `music --loop` run for A4 on the host and its block cleared; the ja/ko/es/id Deployed 95951bb6a; A4 looped (171 s bed, 4 plays under 566 s); id made, ja (7 lines) and ko (1 line) given up by Jev, es does not fit.
   dubs made.
 
 ## How to verify

@@ -254,10 +254,30 @@ def _explainer_bible_problem(body: dict[str, Any]) -> str | None:
 
 
 LOOK_ID = re.compile(r"[a-z][a-z0-9-]{1,23}")
+# A character's own sheet prompt (docs/videos/SERIES.md §人物表的 sheet_prompt): the sentence
+# that replaces the worker's character-design-sheet one (tools/video/media/look.mjs
+# DEFAULT_SHEET_PROMPT) for a character with no human form (a system, a panel), at most this
+# many characters, as core/drama.mjs limits it in video.json.
+SHEET_PROMPT_CHARS = 600
 
 
 def _is_text(value: object) -> bool:
     return isinstance(value, str) and bool(value.strip())
+
+
+def _sheet_prompt_problem(character: dict[str, Any]) -> str | None:
+    """Why a character's `sheet_prompt` cannot be filed, or None: text of at most
+    SHEET_PROMPT_CHARS when it is given (null is the same as leaving it out; the worker's
+    castFrom skips it, and the default sheet sentence stands)."""
+    prompt = character.get("sheet_prompt")
+    if prompt is None:
+        return None
+    if not _is_text(prompt) or len(prompt) > SHEET_PROMPT_CHARS:
+        return (
+            f"character {character['id']}: sheet_prompt must be text of at most "
+            f"{SHEET_PROMPT_CHARS} characters"
+        )
+    return None
 
 
 def _is_whole(value: object) -> TypeGuard[int]:
@@ -545,6 +565,9 @@ def doc_problem(
                 for key in ("id", "name", "appearance")
             ):
                 return "every character needs an id, a name and an appearance"
+            sheet_prompt = _sheet_prompt_problem(character)
+            if sheet_prompt:
+                return sheet_prompt
             look_problem = shot_looks_problem(character)
             if look_problem:
                 return f"character {character['id']}: {look_problem}"
