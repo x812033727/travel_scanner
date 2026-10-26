@@ -1,13 +1,13 @@
 ---
 id: 2026-10-26-video-tool-token-downloads-a-video
 title: Video tool token downloads a video's live review attachments
-status: in-progress
+status: done
 priority: P2
 area: tools
 owner: claude-opus-5-5
 claimed_at: 2026-10-26T06:05:09Z
 created_at: 2026-10-26T05:55:27Z
-completed_at:
+completed_at: 2026-10-26T06:53:50Z
 branch: claude/focused-hopper-zq70n8
 depends_on: []
 scope:
@@ -46,7 +46,7 @@ later renewal or re-import of a cloud-made video would hit the same wall.
       attachments to `DIR/<gate>/<role>.<ext>`, checks each SHA-256 and size, keeps what is
       already there, and writes `review-files.json`.
 - [x] docs/videos/BRANDING.md says when and how to use it.
-- [ ] Deployed, and one real `review-files --dry-run` against production lists a video's files.
+- [x] Deployed, and one real `review-files --dry-run` against production lists a video's files.
 
 ## Steps
 
@@ -57,7 +57,7 @@ later renewal or re-import of a cloud-made video would hit the same wall.
 - [x] Web: `download` kind in `apps/web/app/api/video/reviews/[...path]/forward.ts`, tests.
 - [x] Tool: `tools/video/review/files.mjs`, wired as `review-files`, tests.
 - [x] Docs: BRANDING.md "工作檔不在了：從審核區取回附件".
-- [ ] After deploy: `review-files --slug ollama-phonon-local-speech-language-gap --dry-run`.
+- [x] After deploy: `review-files --slug ollama-phonon-local-speech-language-gap --dry-run`.
 
 ## How to verify
 
@@ -78,3 +78,9 @@ node tools/video/cli.mjs review-files --slug <a video with an approved final> --
 - The command changes nothing on the site. Its output is the starting point for `renewal.mjs
   stage` or `import --from`; an already-uploaded video still cannot be renewed and needs a new
   slug.
+- 2026-10-26, after the deploy of #1862: `--dry-run` for `ollama-phonon-local-speech-language-gap`
+  listed 43 files (audio, final, publish approved; languages pending), and `--gate final --out`
+  fetched preview.mp4, contact_sheet.png and thumbnail.jpg with matching SHA-256; a second run
+  kept all three. The scratch copy was deleted afterwards.
+- Captions go up as `text/plain`, so they come back as `captions_<locale>.txt`; the bytes are
+  SubRip. Naming them `.srt` by role would read better, but nothing depends on it.
