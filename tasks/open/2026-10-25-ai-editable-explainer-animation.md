@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-editable-explainer-animation
 title: Produce an original editable AI explainer animation tutorial with eight foreign languages
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-ai-video
+claimed_at: 2026-10-26T10:55:06Z
 created_at: 2026-10-25T15:24:17Z
 completed_at:
 branch: codex/ai-editable-animation-20261025
@@ -45,6 +45,14 @@ The owner requests a new original AI teaching video informed by recent popular f
 Run `node --use-env-proxy /workspace/work/ai-animation-01/cli.mjs status --slug ai-editable-explainer-animation` and the matching `lint`, `check-audio`, `qa` and package checks. The original lab has an independent mathematics checker, positive sum-seven/sum-six cases and a rejecting invalid-input case. Media duration must be measured with ffprobe, not inferred from the script estimate.
 
 ## Notes
+
+### Latest checkpoint 2026-10-26T11:02:42.715733+00:00
+
+- Fresh hourly instruction at10:53Z: original task8:11Z was more than2hours old; latest production PR1852head remainedbfab1c26626384549334e7a165048aa21e08cc04, original actual producer had ended, LEASE/STOP absent. Root genuinely reclaimed this task as codex-ai-video; no competing takeover. Fresh production GET still had old final/publishapproved and pending materials a1f42597, no renewal approval or publication.
+- Root reviewed/integrated the exact bounded settled-service retake implementation and all three under-lease producer intent guards (moduleeb68...,84targetPASS; broad2820pass/6existingA01fixturefail/5skip, not fullpass). One actual65characterTH synthesis succeededHTTP200, native retakes1→2/2. cab285 newraw SHA f662f9a863bdd2cdc59da1934221fe700c6f0ea7cfb0fb8b2981622d3f9ae00b,4.42s;100otherraws and9protected ENunknown/3skips/primary files unchanged. Existing defer_count6/duehistory remains intact. Exact outcome /workspace/work/ai-animation-01/th-counted-retake-outcome-20261026T1058.json SHA576bbb86d87de1b608ec2d081b38b8a13ed2b53145b6a45cf8417fb084a9585a; sourcecopy research/media-checkpoints/th-counted-retake-20261026.json.
+- Permanent service-retakes/80314efb1c9db5dbc40cfac786078904bf9e0711e5f0c7e8ff4ac9c9ab72ed41/intent.json is applied. This is a newrawtake, NOT a voicepass; asr_performed=false atretakeoutcome. Never repeat its redo, delete intent, refund counter or forget journal. Remaining voice acceptance must come from actual native ASR/Jev.
+- Sole original TH continuation is delegated to /root/animation_th_resume using ONLY normal /workspace/work/ai-animation-01/languages.mjs dub-reviewed th once. Root does not run another old producer concurrently. Existing helpers preserve a real lease and pause genuine shortening/rewording at meaning-review boundaries; preserve every failure/unknown/backoff/cap. Do not start any owner retry or touch EN/KO/PT/ID. Next precise state/result will be recorded after this actual invocation ends.
+- Separate newPDFfilm has now actually passed native narrative11 and demo0.93; its sole producer /root/pdf_pipeline_audit has started real zh-TW TTS after a real88request/2156billablechar dryrun with6,101,745remaining. Externalroot /workspace/work/ai-pdf-01, source /workspace/travel_scanner_pdf, draftPR1864. No cross-project receipt import; all8foreignparts still follow true primaryfinalQA.
 
 ### Latest checkpoint 2026-10-26T08:11:53.219151+00:00
 

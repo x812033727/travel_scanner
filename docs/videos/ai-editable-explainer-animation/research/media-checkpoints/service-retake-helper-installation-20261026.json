@@ -1,0 +1,32 @@
+{
+  "installed_at": "2026-10-26T10:55:52.942Z",
+  "actual_exclusive_lease_owner": "codex-ai-video-reviewed-retake-integration",
+  "reviewed_patch_sha256": "203958dd2b035f2a890291c185b1a5a954ea0437031e85532ad1b9af142bc5b0",
+  "helpers": [
+    {
+      "file": "/workspace/work/ai-animation-01/languages.mjs",
+      "original_sha256": "0a99da6421412b9da48d1027f2bbc8d6db3ecc557e142f51e1c508d27d8ad7ff",
+      "patched_sha256": "b88301aaf04a6b8decd39880d4c22e858226b764d2d3304264e66d94dabc3534",
+      "review_candidate": "/workspace/work/ai-animation-01/service-retake-languages.mjs.candidate",
+      "actual_sha256": "b88301aaf04a6b8decd39880d4c22e858226b764d2d3304264e66d94dabc3534"
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/flow.mjs",
+      "original_sha256": "29e54f4238e03307fed3d44831b30ce4f09f34337147cc6ede444bd48ba9b660",
+      "patched_sha256": "c6da84dd3f3c6b018ae33f4dfde0b7ed4cddd39fd913a865f7772b955a4c18f0",
+      "review_candidate": "/workspace/work/ai-animation-01/service-retake-flow.mjs.candidate",
+      "actual_sha256": "c6da84dd3f3c6b018ae33f4dfde0b7ed4cddd39fd913a865f7772b955a4c18f0"
+    },
+    {
+      "file": "/workspace/work/ai-animation-01/cli.mjs",
+      "original_sha256": "5ef19855d5f30b93fb6961bfad9b27ce660e4455e0ba4711d96e76c2934718b7",
+      "patched_sha256": "954eb7d00d825abcb288c2e569453f41dd50f23afea195779f5dba9e84e4a0e4",
+      "review_candidate": "/workspace/work/ai-animation-01/service-retake-cli.mjs.candidate",
+      "actual_sha256": "954eb7d00d825abcb288c2e569453f41dd50f23afea195779f5dba9e84e4a0e4"
+    }
+  ],
+  "backups": "/workspace/work/ai-animation-01/service-retake-helper-backups",
+  "provider_requests": 0,
+  "native_counters_unchanged": true,
+  "scope": "Original three controlled wrappers only; generic unscoped CLI/host workers must not bypass permanent holds."
+}
