@@ -1,0 +1,466 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "vi",
+  "scope": "source-meaning-and-naturalness",
+  "passed": true,
+  "recorded_at_utc": "2026-10-26T20:18:12.477870+00:00",
+  "reviewer": {
+    "agent": "/root/pdf_ko_single_producer/review_pdf_id_vi_current/vi_current_full_review",
+    "identity": "OpenAI Codex agent",
+    "independent_of_author_for_this_locale": true,
+    "authorship_scope": "This agent authored or edited no Vietnamese translation, source, repository review index, or production artifact. This agent wrote only the exact outside-repository baseline and this new independent report.",
+    "delegated_review_scope": "Personally performed the entire VI current-source text review; did not delegate any part of this VI judgment."
+  },
+  "source_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/vi.json",
+  "translation_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+  "baseline_file": "/workspace/work/ai-pdf-01/vi-current-independent-review-20261026/locale.baseline.current.json",
+  "baseline_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+  "actual_scope": {
+    "current_chinese_vietnamese_spoken_pairs_read_in_full": 101,
+    "current_source_cards_read_in_full": 62,
+    "full_card_context_includes": "Every scene chapter, template, title/key/text, row, code, caption, original English quotation, source filename/page and claim IDs as present in video.json.",
+    "metadata_read": {
+      "title": true,
+      "description_all_paragraphs": true,
+      "tags_all": true,
+      "chapters": 9,
+      "thumbnail_fields": [
+        "tag",
+        "headline",
+        "sub"
+      ]
+    },
+    "method": "Read every current Chinese spoken line and corresponding current Vietnamese text in scene order, all complete scene-card context, and complete source/VI metadata. Independently judged source meaning and Vietnamese naturalness, then read the actual VI history and verified archived bytes/deltas and linked hashes; prior passes were provenance, not a substitute for this new reading.",
+    "project_instructions_read": [
+      "/workspace/travel_scanner_pdf/AGENTS.md",
+      "/workspace/travel_scanner_pdf/.agents/skills/youtube-video/SKILL.md"
+    ]
+  },
+  "issues": [],
+  "meaning_issue_count": 0,
+  "naturalness_issue_count": 0,
+  "verdict": "No substantive source-meaning or Vietnamese-naturalness issue found in the exact current source/translation bytes. Existing concise wording remains acceptable in its actual cards and metadata context; no stylistic rewrite is requested.",
+  "critical_checks": [
+    {
+      "topic": "Unknown shipping versus free shipping",
+      "line_ids": [
+        "hg9m",
+        "nxct",
+        "ea2e",
+        "q7x8",
+        "7hi8",
+        "cxxm",
+        "6pwe",
+        "u7i8",
+        "tnrc"
+      ],
+      "result": "Vietnamese preserves that every quote supplies both pages, evidence remains attached to fields, Birch has explicitly free delivery (0), while Cedar original shipping is unquoted/null and cannot be invented as zero or ranked first."
+    },
+    {
+      "topic": "Separate product and shipping taxes",
+      "line_ids": [
+        "ea2e",
+        "xwsj",
+        "rgfp",
+        "znv7",
+        "j2ja",
+        "hiqk"
+      ],
+      "result": "Goods and shipping tax treatment stays separate, tax-inclusive amounts are not taxed again, and missing shipping tax remains unknown. The fictional 5% assumption is preserved."
+    },
+    {
+      "topic": "Revision identity and evidence",
+      "line_ids": [
+        "k75x",
+        "mbee",
+        "h85p",
+        "hiqk",
+        "benr",
+        "zqts",
+        "m5sn"
+      ],
+      "result": "Cedar revised replaces the old Cedar row rather than adding a fourth supplier; old originals remain, new conditions and the matching revised source references replace the adopted row."
+    },
+    {
+      "topic": "Quantity changes and refusal",
+      "line_ids": [
+        "q57z",
+        "7dp4",
+        "ubke",
+        "f5gy",
+        "sqqn",
+        "sxtz",
+        "rgr9",
+        "8fkp",
+        "bnhk",
+        "vnaq",
+        "pn4i",
+        "9jiq",
+        "egmv",
+        "92mc"
+      ],
+      "result": "Preserves 10→20 with other requirements and revised scenario unchanged; original-10 file/save-as/new-name/20 clause order remains; 12 and 13 are adjacent independent requests; 21 exceeds all three quoted ranges, calculation is refused and no new result directory is created, then a fresh quote is requested."
+    },
+    {
+      "topic": "Money and comparison directions",
+      "line_ids": [
+        "dyun",
+        "m8sb",
+        "gy4i",
+        "6nxr",
+        "7jrk",
+        "e5gd",
+        "petb"
+      ],
+      "result": "TWD retained without VND conversion: revised Cedar costs 50 more than Birch at 10; Birch costs 110 more than Aster at 20; Cedar costs 52.50 less than Aster at 20; Birch costs 7.50 less than Cedar at 12; Cedar leads by 13.75 at 13. Cedar−Birch positive means Cedar dearer and negative cheaper; each additional card improves Cedar relative to Birch by 21.25."
+    },
+    {
+      "topic": "Static workbook and truthful method limitations",
+      "line_ids": [
+        "3639",
+        "658p",
+        "cv74",
+        "8xam",
+        "qrv8",
+        "ehby"
+      ],
+      "result": "AI organizes fields, calculation tools calculate, exported numeric values are static and changed needs require regenerated results. Full description preserves Codex analysis, pypdf selectable-text extraction, exact-decimal method, no tested commercial-upload-UI claim, no scanned-image OCR, and openpyxl writing rather than formula calculation."
+    },
+    {
+      "topic": "Current metadata and thumbnail",
+      "line_ids": [],
+      "result": "Complete metadata retains the date and exact current materials URL. Cộng hết / trước in the AI-quote/tax/shipping context means total the applicable components first; it does not instruct adding suppliers together or treating unknown fees as free. All nine localized chapter names remain faithful compact chapter labels."
+    }
+  ],
+  "exact_materials_url": "https://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+  "estimated_budget_observations": [
+    {
+      "id": "vee5",
+      "characters": 56,
+      "max_chars": 53,
+      "over_by": 3,
+      "status": "Preserved current warning; source superlative most often remains present as nhất."
+    }
+  ],
+  "budget_interpretation": "Character budgets are estimates only. This report neither suppresses the 56/53 warning nor claims timed fit, audio duration, ASR or voice quality. No rewording was invented to fit an estimate.",
+  "chain": {
+    "read_manifest": [
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/vi.meaning-review.json",
+        "sha256": "2a9e5a5b540dcee0c4d7d5f3fef8e92ec7ab188e30ce661ff9a390a5436929f6",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/vi.thumbnail-headline-current-source-review-20261026.json",
+        "sha256": "fdecf988c3803a912fbc301b668294108a6bdd072c338a9ab901c15b0de887e3",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/vi.prior-meaning-index.json",
+        "sha256": "affae145f304d4836240c5bff973f437f36490c7ea78495913088780d642c69a",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/vi.prior-translation.json",
+        "sha256": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/vi.initial-current-source-review.json",
+        "sha256": "e273331f6dcbf31ff2af5f8bbb3f4415608df967f43b0c7df4cfebe4f4fa848d",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/vi.initial-independent-review.json",
+        "sha256": "0a0ae0831e760ebedca4ee06177b6d8dc9532e122224ec7a431f3f72daf00fca",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/vi.67f17d5944fde4d05df2cd667e3dcbe6fd4c41d269d62151518ff22b0a1cd780.json",
+        "sha256": "6551c4cfad7d43d234546495003898088a8b7b2d5da08e10d0e8235379a6b21f",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/vi.72aded533d08ac4b9f6d3bbb07a0ee65bcca918939eaa110591e8b822f443d01.json",
+        "sha256": "f144ad13b163e4b9d44cfa3589076902bccd528f6a5df7ca8ccac8387bc84d27",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/author-history/vi.67f17d5944fde4d05df2cd667e3dcbe6fd4c41d269d62151518ff22b0a1cd780.json",
+        "sha256": "67f17d5944fde4d05df2cd667e3dcbe6fd4c41d269d62151518ff22b0a1cd780",
+        "actual_read_scope": "Complete VI-specific report/worksheet or archived VI translation; all fields read or compared with the personally read current text."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.independent-metadata-delta-review.json",
+        "sha256": "100d9df7f2884e38d14432b8c620d8c7f99c9ece82ecb92116bae2e346c60ff5",
+        "actual_read_scope": "All shared/global fields and complete VI entry; unrelated locale entries are outside this VI review scope."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.root-r2-proposal.json",
+        "sha256": "1c98b139801ff568f69987eaf582d1085f1304f4a9ba096c575071910ca4d68b",
+        "actual_read_scope": "All shared/global fields and complete VI entry; unrelated locale entries are outside this VI review scope."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.root-current-source-admission.json",
+        "sha256": "737fdace01e27e4c374260755c7a21161a1ddda30cd438640a2b1d9b84d6072b",
+        "actual_read_scope": "All shared/global fields and complete VI entry; unrelated locale entries are outside this VI review scope."
+      },
+      {
+        "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/original-revised-chronology-clarification.json",
+        "sha256": "3833322aec74bab63bf31c00f31b3e49515c08480de45d453e6cb7bb70046254",
+        "actual_read_scope": "Complete source chronology change record."
+      }
+    ],
+    "verified_mechanical_checks": {
+      "current_formal_index_source_and_translation_hashes_match": true,
+      "current_formal_report_link_hash_matches": true,
+      "headline_report_hashes_and_prior_index_match": true,
+      "headline_independent_metadata_and_proposal_hashes_match": true,
+      "prior_current_report_translation_hash_matches_archived_translation": true,
+      "prior_full_independent_review_link_hash_matches": true,
+      "frozen_source79_hash_matches_prior_full_review": true,
+      "final_author_hash_matches_prior_full_review": true,
+      "current_all101_spoken_texts_exact_to_final_independently_reviewed_author": true,
+      "current_all101_source_line_records_exact_to_source79": true,
+      "prior_translation_to_current_only_thumbnail_headline_changed": true,
+      "all101_current_line_source_hashes_match_chinese_text": true,
+      "baseline_bytes_exact_to_current_translation": true
+    },
+    "archived_failure_disposition": [
+      {
+        "report_authored_sha256": "67f17d5944fde4d05df2cd667e3dcbe6fd4c41d269d62151518ff22b0a1cd780",
+        "issues": [
+          "d8h7 unnatural same-work wording",
+          "qrv8 principal-money ambiguity",
+          "thumbnail tag missing AI"
+        ],
+        "current_disposition": "All three independently rechecked as resolved in actual current text."
+      },
+      {
+        "report_authored_sha256": "72aded533d08ac4b9f6d3bbb07a0ee65bcca918939eaa110591e8b822f443d01",
+        "issues": [
+          "vee5 omitted most-often superlative"
+        ],
+        "current_disposition": "Independently rechecked as resolved; actual current text keeps nhất, with the estimated overage retained."
+      }
+    ],
+    "actual_author_history_to_current_spoken_deltas": [
+      "d8h7",
+      "qrv8",
+      "vee5"
+    ],
+    "actual_final_author_to_current_spoken_deltas": [],
+    "actual_source79_to_current_deltas": [
+      "extract-core card caption explicitly applies revision-replacement line after receipt",
+      "description materials literal commit URL 53e7243…→e2631cf…"
+    ],
+    "actual_prior_current_translation_to_current_deltas": [
+      "thumbnail.headline: **Tính tổng trước** → **Cộng hết**\\n**trước**"
+    ],
+    "current_formal_index_boundaries": [],
+    "source79_snapshot_file": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/source-video.json",
+    "source79_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+    "final_author_file": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/vi.authored.json",
+    "final_author_sha256": "c00caaeb2c549e3ee80de5e3bc710e871c9c62c99b8a1339f488ae4fb70ec5a8"
+  },
+  "reviewed_line_ids": [
+    "6vwc",
+    "xnrg",
+    "edfn",
+    "hg9m",
+    "ajsk",
+    "kv5r",
+    "ddpd",
+    "9ski",
+    "bv46",
+    "hssn",
+    "d8h7",
+    "jfix",
+    "d78a",
+    "mjhz",
+    "fvzv",
+    "3742",
+    "3639",
+    "658p",
+    "m57n",
+    "scia",
+    "nxct",
+    "7k9u",
+    "ea2e",
+    "ke2c",
+    "rgfp",
+    "fd27",
+    "qttz",
+    "indq",
+    "q7x8",
+    "7hi8",
+    "cxxm",
+    "6pwe",
+    "eg6v",
+    "g3vp",
+    "35fs",
+    "at27",
+    "d2m5",
+    "xwsj",
+    "qagq",
+    "znv7",
+    "c49q",
+    "bcr5",
+    "tnrc",
+    "cv74",
+    "8xam",
+    "qrv8",
+    "ehby",
+    "u7i8",
+    "e86a",
+    "j2ja",
+    "ehkq",
+    "aghq",
+    "z8x8",
+    "7scz",
+    "w9yq",
+    "pdxs",
+    "k75x",
+    "mbee",
+    "h85p",
+    "hiqk",
+    "ambg",
+    "dyun",
+    "benr",
+    "zqts",
+    "q57z",
+    "7dp4",
+    "ubke",
+    "f5gy",
+    "3eue",
+    "sqqn",
+    "6wkf",
+    "74dc",
+    "326u",
+    "m5sn",
+    "sxtz",
+    "rgr9",
+    "xevg",
+    "m8sb",
+    "pruf",
+    "gy4i",
+    "cbe9",
+    "nvu3",
+    "fa3t",
+    "63ek",
+    "8fkp",
+    "utm2",
+    "bnhk",
+    "7udt",
+    "6nxr",
+    "7jrk",
+    "e5gd",
+    "petb",
+    "vnaq",
+    "trph",
+    "cegb",
+    "pn4i",
+    "9jiq",
+    "egmv",
+    "92mc",
+    "vee5",
+    "9jqz"
+  ],
+  "reviewed_scene_ids": [
+    "opening",
+    "opening-unit",
+    "opening-result",
+    "opening-missing",
+    "opening-revision",
+    "opening-quantity",
+    "need-start",
+    "need-spec",
+    "need-delivery",
+    "need-labels",
+    "need-fiction",
+    "need-route",
+    "need-proof",
+    "extract-start",
+    "extract-core",
+    "extract-fields",
+    "extract-aster",
+    "extract-aster-quote",
+    "extract-birch",
+    "extract-missing-quote",
+    "extract-null",
+    "extract-review",
+    "cost-start",
+    "cost-unit-baseline",
+    "cost-aster-formula",
+    "cost-birch-formula",
+    "cost-initial-result",
+    "cost-rounding",
+    "cost-workbook",
+    "missing-start",
+    "missing-known",
+    "missing-question",
+    "missing-no-send",
+    "missing-status",
+    "revision-start",
+    "revision-identity",
+    "revision-diff",
+    "revision-total",
+    "revision-ranking",
+    "revision-links",
+    "quantity-start",
+    "quantity-edit",
+    "quantity-prompt",
+    "quantity-run",
+    "quantity-output",
+    "quantity-ranges",
+    "quantity-aster",
+    "quantity-birch",
+    "quantity-cedar",
+    "quantity-ranking",
+    "threshold-start",
+    "threshold-request12",
+    "threshold-run12",
+    "threshold-request13",
+    "threshold-run13",
+    "threshold-results",
+    "threshold-margin",
+    "range21-request",
+    "range21-run",
+    "range21-result",
+    "range21-question",
+    "outro"
+  ],
+  "reviewed_boundaries": [],
+  "future_boundary_read": false,
+  "future_model_boundary_review_claimed": false,
+  "native_boundary_units_started_by_this_agent": false,
+  "voice": false,
+  "voice_approval_claimed": false,
+  "audio_generated_or_listened": false,
+  "audio_fit_approval_claimed": false,
+  "AV_approval_claimed": false,
+  "render_or_mobile_visual_QA_claimed": false,
+  "publication_or_fullpackage_approval_claimed": false,
+  "actions": {
+    "source_translation_or_repository_edits": false,
+    "formal_index_edits": false,
+    "task_or_git_edits": false,
+    "network_requests": 0,
+    "provider_or_paid_calls": 0,
+    "lease_auto_counter_changes": false,
+    "exclusive_no_overwrite_outputs_only": [
+      "/workspace/work/ai-pdf-01/vi-current-independent-review-20261026/locale.baseline.current.json",
+      "/workspace/work/ai-pdf-01/vi-current-independent-review-20261026/independent-current-source-review.json"
+    ]
+  },
+  "limitations": [
+    "This is an independent current source-text meaning/naturalness judgment only, bound to the exact hashes above.",
+    "No future native shorten/reword boundary payload was opened or reviewed; actual future payloads require their own review. The old worksheet 7dp4 caption-clause context is not such a native boundary.",
+    "No audio/voice/fit, rendered thumbnail, captions timing, final video/package, owner approval, or publication approval is asserted.",
+    "No external factual research was performed; technical-method claims were checked for faithful preservation against the Chinese source.",
+    "No repository, source, translation, meaning index, tasks, Git, lease, auto or counters were modified."
+  ]
+}
