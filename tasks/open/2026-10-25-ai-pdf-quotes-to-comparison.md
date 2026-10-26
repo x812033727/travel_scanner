@@ -1,7 +1,7 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: in-progress
+status: blocked
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
@@ -39,6 +39,15 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Actual PT service defer; finite queue stopped safely — 2026-10-26T20:34Z
+
+- The first PT normal unit genuinely ended2026-10-26T20:29:07.752857Z with exit4 after the actual service response「Gemini 語音暫時忙碌或達到用量上限，請稍後重試」. It created0primaryWAV/0ASR/no fit/no track, no model boundary, no skip or source rewrite. Native PT0shorten/0retakes/0reword/check_stoppedtrue, defer_count1 and exactdue2026-10-26T20:34:07.630Z remain intact. The underlying primary auto.status=done remains untouched; it does not mean the foreign package is complete. Zero output is not a claim of zero billing or guaranteed provider disposition. The actual local speech-journal directories contain no unknown record at the post-audit; no unknown was deleted or replayed.
+- This is the finite handoff's explicit GLOBAL BACKOFF stop. Native167497/driver167495/session15877 have genuinely ended; LEASE/STOP absent, no background next unit or scheduled resume exists. Do not automatically retry when the due clock elapses; a fresh authorized execution must recheck ownership/source/current QA/service/unknown/budget first. ID/VI/TH paid units were not started. PT remains missing/stopped, not falsely skipped/accepted. EN3flags/native1-2-2 andJA1flag/native0-2-2 remain untouched; currentKO/ES remain genuinely checked.
+- Before that one PT unit, real PR1852 branch task reads20:24:07 and20:27:29 still foundblob0ecde69a/latest17:03:40 (over2hours); actual originalcontroller/LEASE/STOP were absent and original SDK GET20:26:40 showed originalapprovedfinal/retries{}/workerunavailable. PDF GET20:26:42 genuinely approved primary346a withmatching11QA and exact local chat8choice; currentPT3f74/f7index/d143report plus fresh independent101pair/62card reportfff9905a matched. True native dryrun exited0:95new requests/6112estimatedchars,5,743,457remaining,14estimatedover warnings retained. Dryrun protected2334runtime files exactly. These estimates/readiness did not predict or waive the later real provider busy response. Original animation files or owner routes were never written.
+- Exact external prefix `/workspace/work/ai-pdf-01/pt-first-unit-20261026T202407Z` preserves actual task/idle/productionGET/dryrun/admission/before/start/log/progress/outcome. Actual outcomeSHA `49031ee033d3f0c123468500835d4fae30cac7522836a17c1f85df2025f1c721`, post-defer auditSHA `7f45e16e488786f36dc99be560e5456026e0f44552099765f3c03e4c6ad8cfc4`; source-identical copies and byte-preserving logs now underresearch/language-checkpoints. Approvedprimary/body/branding, all9source files, allEN/JA/KO/ESraw/checks/caps/tracks, eightcheckedthumbnails andframesmanifest stayedexact. Controller end marker `/workspace/work/ai-pdf-01/finite-controller-stop-after-PT-defer-20261026.json` andsourcecopy record that no continuously live controller is claimed after this stop.
+- The actual final native/source/raw/check/fit audit computes **KO+ES2/8 checked foreign voices**, with flags[] andcurrent101rawchecks; EN/JA have physicalcurrent tracks but failedflags/stopped gates and thereforeareNOTready. PT/ID/VI/TH aremissing. Full8package/push remains forbidden andsite languagepanelunsynchronized. No new nine-caption command was run during this stopped finite queue, no future voice orcaption QA is implied, andno Studio/upload/publication occurred. This transient service backoff has no new user action to request; do not repeat the old connection/permission question.
+- Precise next step: after the saved native due, a fresh authorized coordinator may ordinary-reclaim/resume this same task/branch only after fresh original protection andPDFidle/global/currentmeaning/primary11QA/choice/quotaguards establish eligibility, then `node --use-env-proxy /workspace/work/ai-pdf-01/languages.mjs --execute dub-reviewed pt` with the existing compatiblemedium environment. Preserve allreceipts, defer/caps, flags andlimits; no force/reset/thirdrewrite/modelchase orduplicatePOST. ContinueID→VI→THserially only when the actualglobalstate permits. Keep originalfilm/EN/JAordinaryretry/owner/publish/newmovie outside this finite grant. Need real owner-capable fresh recovery for any exhausted EN/JA later, not another editorial-approval question.
 
 ### Exact-current PT/ID/VI/TH independent text baselines — 2026-10-26T20:24Z
 
