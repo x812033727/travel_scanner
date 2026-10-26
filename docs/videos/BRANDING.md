@@ -153,7 +153,7 @@ API 只讀它唯讀掛載的工作卷，而且只給目前 `current.json`（全�
 - 一樣：不印任何東西。
 - 不一樣：`WARN branding: this build pins <本機 id> (<hash>) but the site's worker uses <正式站 id> (<hash>)`，
   本機沒裝就寫 `no bookends`。合成照做不擋（可能是刻意用舊包），要跟正式站一樣就停下來
-  `branding --pull` 再重跑；已經成片的未核准影片用 `--adopt-branding` 重做。
+  `branding --pull` 再重跑（系列片是 `branding --pull --series sothatswhy`，警告裡會照寫）；已經成片的未核准影片用 `--adopt-branding` 重做。
 - 問不到（沒有權杖、連不上、10 秒沒回、正式站設定讀不出來）：印 `branding: not compared …` 或
   `could not compare …`，照常合成，不會因此失敗。
 

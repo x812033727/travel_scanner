@@ -57,8 +57,9 @@ export async function siteBrandingNotice({ doc, local, ctx, timeoutMs = COMPARE_
     return `branding: could not compare with the site's worker (${error.message}); check with \`node tools/video/cli.mjs branding --pull --dry-run\``;
   }
   if ((remote?.hash ?? null) === (local?.hash ?? null)) return null;
+  // A series' package installs into the series registry, the one readDefaultBranding reads here.
   const fix = remote
-    ? "to match it, stop and run `node tools/video/cli.mjs branding --pull`, then build again"
+    ? `to match it, stop and run \`node tools/video/cli.mjs branding --pull${remote.series ? ` --series ${remote.series}` : ""}\`, then build again`
     : "it has none installed or has them switched off; check `branding --json` on the host";
   return `WARN branding: this build pins ${named(local)} but the site's worker uses ${named(remote)}; ${fix}`;
 }

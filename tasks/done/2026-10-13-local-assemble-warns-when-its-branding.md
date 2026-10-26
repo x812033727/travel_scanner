@@ -94,3 +94,7 @@ package installed (`branding --install`), run `compile --slug <series>-full --dr
   though the test installs a package first; `pinsDefault` reads no package, so the result is the
   same. Left as is: core/branding.test.mjs is a bound file and a message-only edit would need
   another receipt increment; fix it with the next change that touches that file.
+- Codex review on #1860 (P2): for an explainer whose series package differs, the warning said
+  `branding --pull` without `--series`, which updates only the channel default while this machine
+  keeps reading the stale series registry. The advice now names `--series <remote.series>`.
+

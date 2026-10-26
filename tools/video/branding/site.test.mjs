@@ -46,6 +46,12 @@ test("an older package or none at all names both and says how to match the site"
   assert.match(none, /^WARN branding: this build pins no bookends but the site's worker uses mokaair-brand-package-v4-endscreen/);
 });
 
+test("a series package that differs says to pull the series, which is what this machine reads", async () => {
+  const site = fakeSite({ "branding/series/sothatswhy": [200, { ...SERIES, series: "sothatswhy" }] });
+  const notice = await siteBrandingNotice({ doc: explainer, local: V4, ctx: ctxFor(site) });
+  assert.match(notice, /uses mokaair-sothatswhy-bookends-v3-endscreen .*run `node tools\/video\/cli\.mjs branding --pull --series sothatswhy`, then build again$/);
+});
+
 test("a site worker without a package is named as such, and none on both sides agrees", async () => {
   const site = fakeSite({ branding: notInstalled });
   assert.match(await siteBrandingNotice({ doc: curio, local: V4, ctx: ctxFor(site) }), /the site's worker uses no bookends; it has none installed or has them switched off; check `branding --json` on the host$/);
