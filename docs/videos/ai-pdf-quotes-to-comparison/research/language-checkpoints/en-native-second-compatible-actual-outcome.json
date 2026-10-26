@@ -1,0 +1,69 @@
+{
+  "recorded_at": "2026-10-26T14:26:33.658767+00:00",
+  "actual_exit_code": 1,
+  "actual_log": "/workspace/work/ai-pdf-01/en-native-second-compatible.log",
+  "actual_log_sha256": "a7695eef2764fb713efe3849574d5e9bccc56507d424a3ab726f13d962e15836",
+  "runtime_compatible_receipt_sha256": "57b652d570e87fad17fde911678b7a00d3aff5d86736310bf0d8032af5e62f53",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+  "actual_101_primary_cached_hashes_and_hints_current_preflight": true,
+  "primary_provider_transcriptions_now": 0,
+  "native_reported_Jev_calls": 1,
+  "actual_second_records": {
+    "hg9m": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "But can't blank shipping just mean free delivery?",
+      "match_kind": null,
+      "noul": 0.11
+    },
+    "fd27": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "Join Esther's unit price and shipping from two pages in one row, each sourced.",
+      "match_kind": null,
+      "noul": 0.05
+    },
+    "znv7": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "Purchase tax-inclusive unit price times quantity gives goods cost.",
+      "match_kind": null,
+      "noul": 0.03
+    },
+    "xevg": {
+      "by": "whisper_second_opinion.py",
+      "terms": [],
+      "heard": "Aster's goods cost rises with quantity. Shipping stays a single charge.",
+      "match_kind": "exact",
+      "noul": null
+    }
+  },
+  "before_flags": [
+    "hg9m",
+    "fd27",
+    "znv7",
+    "xevg"
+  ],
+  "after_flags": [
+    "hg9m",
+    "fd27",
+    "znv7"
+  ],
+  "native_rounds_preserved": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 1,
+    "check_stopped": true
+  },
+  "only_expected_EN_check_files_changed": [
+    "review/check.en.json",
+    "review/check-flags.en.json"
+  ],
+  "raw_WAVs_unchanged": true,
+  "no_TTS_requested": true,
+  "actual_snapshot": "/workspace/work/ai-pdf-01/en-audio-observed-history/native-second-compatible-ended",
+  "lease_present": false,
+  "voice_approved": false,
+  "next": "Three real flags remain. Current source/meaning index is unchanged and includes the actual unused reword1 boundary. One remaining normal native reword2 may run within existing caps, stopping for independent review; no reset or adoption of rejected proposals."
+}

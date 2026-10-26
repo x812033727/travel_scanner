@@ -1,0 +1,108 @@
+{
+  "recorded_at": "2026-10-26T14:32:01.264017+00:00",
+  "actual_exit_code": 6,
+  "actual_log": "/workspace/work/ai-pdf-01/en-after-second-normal-reword2.log",
+  "native_boundary_file": "/workspace/work/ai-pdf-01/author-review-boundaries/en.reword.round-2.2026-10-26T14-28-24-930Z.json",
+  "native_boundary_sha256": "4fcc8edd5b915840f68ed26dd461efc0e54c313ad9c86748ae18b3bc5ee64118",
+  "native_boundary": {
+    "schema_version": 1,
+    "slug": "ai-pdf-quotes-to-comparison",
+    "locale": "en",
+    "variant": "reword",
+    "round": 2,
+    "recorded_at": "2026-10-26T14:28:24.930Z",
+    "purpose": "Actual native model answer awaiting independent meaning review; not approval or retry authorization",
+    "native_rounds": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    },
+    "native_result": {
+      "ids": [],
+      "problems": [
+        "hg9m: over its budget (66 characters, at most 58)",
+        "fd27: over its budget (130 characters, at most 93)",
+        "znv7: over its budget (104 characters, at most 77)"
+      ]
+    },
+    "native_answer_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/en-reword-round-2-meaning-review-2026-10-26T14-28-24-930Z.txt",
+    "native_answer_sha256": "dd76831ff481631d2fabf9ad7727c3a0feee4b1b3b2e8449d2204400e16aad6e",
+    "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc"
+  },
+  "canonical_translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+  "zero_proposals_adopted": true,
+  "actual_flags": [
+    "hg9m",
+    "fd27",
+    "znv7"
+  ],
+  "native_rounds": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 2,
+    "check_stopped": true
+  },
+  "protected_primary_and_EN_track_files": {
+    "approvals.json": {
+      "before": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "after": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "unchanged": true
+    },
+    "final.mp4": {
+      "before": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "after": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "unchanged": true
+    },
+    "timeline.json": {
+      "before": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "after": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "unchanged": true
+    },
+    "narration.wav": {
+      "before": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "after": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "unchanged": true
+    },
+    "review/check.json": {
+      "before": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "after": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "unchanged": true
+    },
+    "review/check-flags.json": {
+      "before": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "after": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "unchanged": true
+    },
+    "review/qa.json": {
+      "before": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "after": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "unchanged": true
+    },
+    "languages.json": {
+      "before": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "after": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "unchanged": true
+    },
+    "dubs/en/timeline.json": {
+      "before": "170a0056161b6d8f16f38e4c79f9c0abf0adaabedeb2cee18136e0ef5435c52f",
+      "after": "170a0056161b6d8f16f38e4c79f9c0abf0adaabedeb2cee18136e0ef5435c52f",
+      "unchanged": true
+    },
+    "dubs/en/fit.json": {
+      "before": "a2c89959888040d20c28bf51348eae2e281b6d0ebf9710ddbe645dcce6ca33dd",
+      "after": "a2c89959888040d20c28bf51348eae2e281b6d0ebf9710ddbe645dcce6ca33dd",
+      "unchanged": true
+    },
+    "dubs/en.m4a": {
+      "before": "07ec894a91e3a831cef590ad94236a3b552ed3b2f42403e75b04925013b4865b",
+      "after": "07ec894a91e3a831cef590ad94236a3b552ed3b2f42403e75b04925013b4865b",
+      "unchanged": true
+    }
+  },
+  "actual_check_snapshot": "/workspace/work/ai-pdf-01/en-audio-observed-history/reword2-actual-ended",
+  "project_lease_present": false,
+  "EN_voice_approved": false,
+  "next": "Retake/reword caps remain consumed; do not trigger skip or a third canonical author rewrite. Root must preserve actual unused answer review and any genuine owner retry requirement. Continue another authorized locale serially while keeping EN unchanged."
+}
