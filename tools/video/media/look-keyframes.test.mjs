@@ -13,7 +13,7 @@ import { readLedger } from "./ledger.mjs";
 import { keepSheets } from "./series-store.mjs";
 import { readCache, readJobs } from "./cache.mjs";
 import { bestTake, chosenSheets, CONTACT_SHEET_TILES, contactSheetPages, entryStands, FIX_ARROW, fixClauses, fixesBefore, keyframeChecks, keyframeRubric, MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET, PLACEHOLDER_FIX, retakePrompt, shotPrompt, STYLE_PLATE_ID, STYLE_PLATE_PROMPT } from "./keyframes.mjs";
-import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, sheetPrompt, suggestedOf } from "./look.mjs";
+import { DEFAULT_SHEET_PROMPT, MAX_LOOK_ROUNDS, optionKey, parseChoice, resetSheets, SEEDS_PER_REDRAW, sheetPrompt, suggestedOf } from "./look.mjs";
 import { imagePrice, statusProblem } from "./stages.mjs";
 
 // The fixture videos run seconds; the eight-minute floor has tests of its own.
@@ -234,6 +234,65 @@ test("a character no sheet passes gets a second round, asked with the judge's fi
   assert.equal(manifest.characters.jingwei.fixes, undefined);
   assert.match(run.out.stdout, /yandi seed 2: asked with the corrections of the candidates before: a crown of bronze leaves, as the appearance says\n/);
   assert.match(run.out.stdout, /ERROR yandi: no candidate passed the judge: appearance: the crown is a plain gold band → a crown of bronze leaves, as the appearance says\n  fixes for yandi: a crown of bronze leaves, as the appearance says\nrewrite the appearance or sheet_prompt of yandi and run look again/);
+});
+
+// A character with no human form: the setting book's sheet_prompt replaces the design-sheet
+// sentence (docs/videos/SERIES.md §人物表的 sheet_prompt), and the owner's note on the sheets
+// sent back is drawn on the next seeds (resetSheets; 系統說我是 BUG e001-redo1, 2026-10-25).
+const PANE_PROMPT = "a single blank pane of pale-blue light floating in darkness, nothing else in the picture, no person, no face, no text";
+const PANE_NOTE = "六張都畫了人，只要一塊空白的淡藍光板";
+
+test("a character sent back is drawn again on the seeds past its redraws, asked with the owner's note, while the approved character keeps the owner's pick, and a sheet_prompt from the cast heads the prompt", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const file = path.join(box.dir, "video.json");
+  const doc = readJson(file);
+  doc.characters[1].sheet_prompt = PANE_PROMPT;
+  writeFileSync(file, JSON.stringify(doc, null, 2));
+  const site = mediaSite({ verdicts: () => ({ overall: 8, passed: true }) });
+  const run = context(box, site.fetchImpl);
+  assert.equal(await main(["look", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr);
+  const first = manifestOf(box, "characters");
+  assert.ok(first.characters.yandi.prompt.startsWith(`${PANE_PROMPT}. Character: 炎帝, `), "the cast's sheet_prompt replaces the design-sheet sentence");
+  assert.ok(first.characters.jingwei.prompt.startsWith(`${DEFAULT_SHEET_PROMPT}. Character: 精衛, `));
+  assert.ok(site.state.images.filter((request) => request.prompt.includes("Character: 炎帝")).every((request) => request.prompt.startsWith(PANE_PROMPT)));
+  assert.equal(site.state.images.length, 6);
+
+  // The worker's look prompt fix (automation/flow.mjs redrawSheets): the owner sent 炎帝's sheets
+  // back with a note and chose 精衛's B.
+  const manifest = manifestOf(box, "characters");
+  assert.deepEqual(resetSheets(manifest, [{ id: "yandi", problems: [PANE_NOTE] }, { id: "nobody", problems: [] }], { picks: { jingwei: 2 }, now: new Date("2026-09-26T09:00:00Z") }), ["yandi"]);
+  assert.deepEqual(manifest.characters.yandi, { name: "炎帝", prompt: first.characters.yandi.prompt, candidates: [], suggested: null, needs_review: false, redraws: 1, sent_back: [{ at: "2026-09-26T09:00:00.000Z", said: [PANE_NOTE], fixes: [PANE_NOTE] }] });
+  assert.deepEqual([manifest.characters.jingwei.owner_pick, manifest.characters.jingwei.suggested], [2, 2], "the owner's pick becomes the suggestion of the review sent again");
+  assert.equal(manifest.characters.jingwei.candidates.length, 3, "the approved character keeps its sheets");
+  writeFileSync(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify(manifest, null, 2));
+
+  const again = context(box, site.fetchImpl);
+  assert.equal(await main(["look", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  const redrawn = site.state.images.slice(6);
+  assert.deepEqual(redrawn.map((request) => request.seed), [SEEDS_PER_REDRAW + 1, SEEDS_PER_REDRAW + 2, SEEDS_PER_REDRAW + 3], "only the character sent back is drawn, on the seeds past its redraws");
+  assert.ok(redrawn.every((request) => request.prompt.startsWith(PANE_PROMPT) && request.prompt.endsWith(`. Corrections: ${PANE_NOTE}`)), redrawn[0].prompt);
+  assert.match(again.out.stdout, /yandi seed 1001: asked with the corrections of the sheets sent back: 六張都畫了人，只要一塊空白的淡藍光板\n/);
+  const after = manifestOf(box, "characters");
+  assert.deepEqual(after.characters.yandi.candidates.map((candidate) => [candidate.n, candidate.seed, candidate.file]), [[1, 1001, "characters/yandi/1001.png"], [2, 1002, "characters/yandi/1002.png"], [3, 1003, "characters/yandi/1003.png"]]);
+  assert.deepEqual(after.characters.yandi.candidates.map((candidate) => candidate.fixes), [[PANE_NOTE], [PANE_NOTE], [PANE_NOTE]]);
+  assert.ok(after.characters.yandi.suggested >= 1);
+  assert.equal(after.characters.yandi.redraws, 1);
+  assert.deepEqual([after.characters.jingwei.owner_pick, after.characters.jingwei.suggested], [2, 2], "untouched by the run");
+  assert.deepEqual(after.characters.jingwei.candidates.map((candidate) => candidate.seed), [1, 2, 3]);
+  assert.equal(site.state.judges.length, 9);
+
+  // Sent back once more, this time by the judge (its problems carry fixes): the next seeds start
+  // another SEEDS_PER_REDRAW on, asked with both rounds' corrections.
+  const twice = manifestOf(box, "characters");
+  resetSheets(twice, [{ id: "yandi", problems: [CROWN_PROBLEM] }], { now: new Date("2026-09-26T10:00:00Z") });
+  assert.equal(twice.characters.yandi.redraws, 2);
+  assert.deepEqual(twice.characters.yandi.sent_back.map((each) => each.fixes), [[PANE_NOTE], [CROWN_FIX]]);
+  assert.deepEqual([twice.characters.jingwei.owner_pick, twice.characters.jingwei.suggested], [2, 2], "an earlier pick stands when this round has none");
+  writeFileSync(path.join(box.workdir, "characters", "manifest.json"), JSON.stringify(twice, null, 2));
+  const third = context(box, site.fetchImpl);
+  assert.equal(await main(["look", "--slug", box.slug], third.ctx), EXIT.ok, third.out.stderr);
+  assert.deepEqual(site.state.images.slice(9).map((request) => request.seed), [2001, 2002, 2003]);
+  assert.ok(site.state.images.slice(9).every((request) => request.prompt.endsWith(`. Corrections: ${PANE_NOTE}; ${CROWN_FIX}`)), site.state.images[9].prompt);
 });
 
 const STORM_FIX = "the girl facing the sea, in the middle third of the frame";
