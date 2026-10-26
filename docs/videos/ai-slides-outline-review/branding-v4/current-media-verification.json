@@ -1,0 +1,216 @@
+{
+  "at": "2026-10-26T03:52:40.051733+00:00",
+  "kind": "current-official-v4-media-and-identity-summary",
+  "source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+  "speech_hash": "a8055d3edb90bcda",
+  "main": {
+    "sha256": "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c",
+    "bytes": 58584900,
+    "seconds": 629.5333333333333,
+    "video_timing": {
+      "video": {
+        "codec": "h264",
+        "width": 1920,
+        "height": 1080,
+        "frames": 18886,
+        "fps": 30,
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "start_pts": "0",
+        "start_seconds": 0,
+        "duration_ts": "9669632",
+        "time_base": "1/15360",
+        "exact_duration_seconds": 629.5333333333333,
+        "reported_duration": "629.533333",
+        "native_timeline_frames": 18886,
+        "native_timeline_fps": 30
+      },
+      "audio": {
+        "codec": "aac",
+        "sample_rate": 48000,
+        "channels": 2,
+        "start_seconds": 0,
+        "duration_ts": "30221280",
+        "time_base": "1/48000",
+        "duration_seconds": 629.61,
+        "end_seconds": 629.61
+      },
+      "container": {
+        "bytes": 58584900,
+        "start_time": "0.000000",
+        "duration": "629.610000",
+        "last_actual_stream_endpoint_seconds": 629.61
+      },
+      "aac_end_after_video_seconds": 0.07666666666666666,
+      "timing_scope": "Video duration is exact frames/fps and duration_ts/time_base; container duration follows the actual maximum stream endpoint. Measured AAC tail is reported separately and never called video duration.",
+      "decimal_rounding_only": true
+    }
+  },
+  "official": {
+    "package_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "placed_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "id": "mokaair-brand-package-v4-endscreen",
+    "asset_verification": "Pinned normal PR1860 metadata/provenance, actual source SHA/size and native verifyBrandingAssets ffprobe",
+    "intro_frames": 150,
+    "outro_frames": 630,
+    "intro_at_body_frame": 757
+  },
+  "placement": {
+    "intro_at": "after_first_chapter",
+    "intro_starts_frame": 757,
+    "intro_ends_before_frame": 907,
+    "outro_starts_frame": 18256,
+    "total_frames": 18886,
+    "body_frames": 18106,
+    "intro_frames": 150,
+    "outro_frames": 630,
+    "line_crossing_count": 0
+  },
+  "native_loudness": {
+    "integrated": -14.1,
+    "truePeak": -2.8
+  },
+  "retained_original_body": {
+    "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/build/body.mp4",
+    "bytes": 52296204,
+    "sha256": "3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea"
+  },
+  "body_video_stream_provenance": {
+    "old_final_video_sha256": "SHA256=a387654a4b61421982251d398726ae261aa257a877e2c71d955d480fcd801063",
+    "new_body_video_sha256": "SHA256=a387654a4b61421982251d398726ae261aa257a877e2c71d955d480fcd801063",
+    "exact_equal": true
+  },
+  "canonical_existing_files": 2096,
+  "canonical_all_hashes_unchanged": true,
+  "protected_copied_files": 2070,
+  "shared_protected_inodes": 0,
+  "current_narration_checked_lines": 118,
+  "current_narration_flags": 0,
+  "current_narration_unchecked": 0,
+  "new_TTS_or_ASR_performed": false,
+  "native_caption_rows": [
+    {
+      "locale": "zh-TW",
+      "cues": 118,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [],
+      "original_dry_body_audio_checked": true,
+      "foreign_audio_verified": false
+    },
+    {
+      "locale": "en",
+      "cues": 119,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [],
+      "original_dry_body_audio_checked": false,
+      "foreign_audio_verified": false
+    },
+    {
+      "locale": "ja",
+      "cues": 138,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [
+        "cue 137 (yf5s): 8.4 characters a second, above 8"
+      ],
+      "original_dry_body_audio_checked": false,
+      "foreign_audio_verified": false
+    },
+    {
+      "locale": "ko",
+      "cues": 145,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [],
+      "original_dry_body_audio_checked": false,
+      "foreign_audio_verified": false
+    },
+    {
+      "locale": "es",
+      "cues": 121,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [
+        "cue 22 (5s9a): 21.0 characters a second, above 17",
+        "cue 30 (uqnr): 19.2 characters a second, above 17",
+        "cue 37 (cht8): 19.3 characters a second, above 17",
+        "cue 41 (wy6f): 18.9 characters a second, above 17",
+        "cue 72 (iswb): 21.1 characters a second, above 17",
+        "cue 120 (yf5s): 17.9 characters a second, above 17",
+        "cue 121 (umdp): 18.3 characters a second, above 17"
+      ],
+      "original_dry_body_audio_checked": false,
+      "foreign_audio_verified": false
+    },
+    {
+      "locale": "pt",
+      "cues": 121,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [
+        "cue 30 (uqnr): 21.3 characters a second, above 17",
+        "cue 32 (r3y9): 17.9 characters a second, above 17",
+        "cue 37 (cht8): 18.0 characters a second, above 17",
+        "cue 41 (wy6f): 18.4 characters a second, above 17",
+        "cue 72 (iswb): 20.4 characters a second, above 17",
+        "cue 120 (yf5s): 18.3 characters a second, above 17",
+        "cue 121 (umdp): 17.8 characters a second, above 17"
+      ],
+      "original_dry_body_audio_checked": false,
+      "foreign_audio_verified": false
+    },
+    {
+      "locale": "id",
+      "cues": 130,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [
+        "cue 6 (3vx9): 17.1 characters a second, above 17",
+        "cue 8 (jyx8): 18.6 characters a second, above 17",
+        "cue 27 (g7uh): 18.8 characters a second, above 17",
+        "cue 32 (uqnr): 18.5 characters a second, above 17",
+        "cue 36 (y3nk): 18.9 characters a second, above 17",
+        "cue 38 (7g33): 18.0 characters a second, above 17",
+        "cue 39 (2knx): 18.3 characters a second, above 17",
+        "cue 67 (rzc3): 17.6 characters a second, above 17",
+        "cue 77 (iswb): 18.4 characters a second, above 17",
+        "cue 92 (a9g4): 17.9 characters a second, above 17",
+        "cue 126 (teri): 18.3 characters a second, above 17",
+        "cue 129 (yf5s): 19.1 characters a second, above 17"
+      ],
+      "original_dry_body_audio_checked": false,
+      "foreign_audio_verified": false
+    },
+    {
+      "locale": "vi",
+      "cues": 123,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [],
+      "original_dry_body_audio_checked": false,
+      "foreign_audio_verified": false
+    },
+    {
+      "locale": "th",
+      "cues": 118,
+      "single_shift": true,
+      "inverse_exact": true,
+      "reading_speed_advisories": [],
+      "original_dry_body_audio_checked": false,
+      "foreign_audio_verified": false
+    }
+  ],
+  "native_caption_manifest_sha256": "e6fddc798908c52c9282d9b2c8055efbdbbd9a9eb544fda31756c0b3c5847151",
+  "caption_reading_speed_advisories_retained": 27,
+  "foreign_audio_ready": 0,
+  "root_reported_actual_splice_contact_view": true,
+  "root_view_provenance": "Root producer task instruction explicitly states actual view of this nine-frame contact; this documentation agent did not claim to repeat that view.",
+  "actual_splice_contact_sha256": "3095c339bdd111987b5321b2c5511b915c64f5dddc2691e750fa5df463eadf24",
+  "full_human_audio_or_video_playback_claimed": false,
+  "mechanical_audit_source_sha256": "edc2351f75d73083417c4d170b4751681faa1c29d03740f1e32878b823d08be4",
+  "handoff_source_sha256": "93d4e1cc641d977a7242e8ab83417395657c2e8d4c185b583327920ff9172904",
+  "main_receipt_sha256": "12bec87bed8495b6dc578f1c451026723575888a50c673a2e7f80d79ec5aa8d5",
+  "scope": "Derived public summary of actual normal assembly/checks and root delivery proof; no new media run, ASR, QA or backend call by the documentation editor."
+}

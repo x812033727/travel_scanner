@@ -1,31 +1,29 @@
 # 第四片製作進度快照
 
-截至 2026-10-26T01:30:26.879Z，繁中 **1080p 本體候選已完成並附上後台下載證據**，遠端 final 仍為 pending。這份本體的當前旁白 118/118 接受、0 flags／unchecked，核心 QA 11/11 通過。官方頻道動畫片頭尾仍缺；八外語已完成本地 metadata、CC 草稿及縮圖，**實際外語音訊仍為 0/8 ready，overall_complete=false**。
+截至 2026-10-26T04:12:21.363Z，含**官方5秒片頭與21秒片尾的完整1080p新版，以及按當前影片對時的繁中CC／標題說明下載檔，均已交後台並讀回核對**。片頭接在首章濃縮段後，新成片既有fresh QA11/11不變。final仍是manual-review pending；已交付1/9個字幕語言（繁中），八外語已驗配音仍0/8，overall_complete=false。
 
-| 項目 | 實際狀態與證據 |
+| 項目 | 當前實際狀態與證據 |
 |---|---|
-| 凍結版本 | source `296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f`；claims `2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7`；speech `a8055d3edb90bcda`；lexicon `378f875ef4daf76e4aadee22bae0aa3c523dd39528ca48f69f139c2a70843b0c`。本次只更新文件與安全收據。 |
-| 當前音訊 | 正常複檢真正 exit0，118 checked／118 accepted／0 flags／0 unchecked；84 exact、15同音／語助、6 Jev、13第二轉寫。嚴格全目標核驗 ready=true／problems=[]，見[當前音檢收據](narration-listener-reword1-verification.json)。 |
-| 實際正文時間 | 18106 frames／30＝603.533333 秒；outro 前591.366667秒；扣冷開與outro的正文566.133333秒。不是用片頭尾或慢播補足八分鐘。 |
-| 實際 MP4 | 1920×1080、30fps、18106 video frames，視訊603.533333秒；AAC／容器603.605秒。52,296,204 bytes，SHA `3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea`。見[本體實測](body-candidate-verification.json)。 |
-| 核心 QA | [原始 QA](body-core-qa.json) 11/11、ok=true，綁同一 MP4 SHA；仍保留27筆字幕閱讀速度提醒。這是無官方 bookends 的本體核心 QA，不能替代完整正式製作驗收。 |
-| 後台下載 | 2026-10-26T01:05:11.570Z 完成13/13 parts上傳，server assembly驗SHA／大小；經正常驗證身分的metadata GET確認角色 `evidence_zh_tw_1080p_mp4`、同SHA及52,296,204 bytes。沒有把metadata回讀說成遠端binary重新下載／雜湊。見[真實附件收據](main-download-attachment.json)。 |
-| 遠端狀態 | final review `532d5837-0036-4695-9535-97d0c6a6044b` 仍 pending；script／audio正常送審與本機委派採用分開，沒有遠端核准或站主UI點擊宣稱。本輪已用正常唯讀GET重新核對；沒有POST。 |
-| 後台實際附件範圍 | [安全回讀](backend-current-final-safe-readback.json)列出的roles只有 `preview`、`contact_sheet`、`thumbnail`、`evidence_zh_tw_1080p_mp4`；9語title／description與當前本地native compose逐字相符。CC附件0/9、外語縮圖附件0/8，二者只本地生成，不能稱已送達。 |
-| 當前lint | 0 errors／6 warnings：25秒冷開、2025必要重現，以及EN／ES／PT／ID標題手機列表寬度。原生估時／provider字元輸出不是實測時長或計費。 |
-| 八語文字 | en／ja／ko／es／pt／id／vi／th 各118句、6章及title／description／tags／縮圖三欄完成，三組不同作者獨審後套用必要修正；可選字數精簡未整批採用。見[文字與 CC 初始快照](localization-initial-reviewed-snapshot.json)。 |
-| 九套 CC | zh-TW 加八外語的SRT／VTT已建立。八外語仍依繁中主旁白時間軸，屬待實際配音後重排的草稿；不是八條配音已音檢通過。27筆CPS提醒原樣保留於QA與快照。 |
-| 八語縮圖 | 原生已draw八張；root實看all8 contact。KO原「그다음 제작」斷詞後，正常merge／draw成「다음 제작」，root已實看修正。本文件作者只核對當前SHA與套用差異，沒有冒稱重新看過八張。見[KO獨審](thumbnail-ko-wrap-independent-review.json)及[套用核對](thumbnail-ko-wrap-application.json)。 |
-| 外語音訊 | 0/8 accepted／ready、0/8已驗證音訊交付，尚未送language batch。後續由唯一producer先做EN synth／fit／meter；ASR仍hold，進行中或fit不算ready。 |
-| 品牌與敘事 | 官方頻道動畫bookends仍missing。R2兩份raw及citation修復native各12/13、passed=false、no_recap；保留完整提示與必要算義的教學取捨，沒有重算成13/13。 |
+| 凍結來源／音訊 | source `296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f`、claims `2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7`、speech `a8055d3edb90bcda`未改。沿用完整相同118個已驗當前WAV／full intended／ASR收據，118 accepted、0 flags／unchecked；這次不宣稱新TTS或ASR。 |
+| 官方片頭尾 | 真實official v4 package `416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88`；placed pin `39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64`。body frame757插入150frames，907格回正文；18256格開始630frames片尾。詳[官方來源摘要](branding-v4/official-package-source-summary.json)。 |
+| 新版1080p | SHA `c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c`，58,584,900 bytes，1920×1080／30fps／18,886frames。視訊629.533333秒，48kHz雙聲道AAC／容器629.610秒，額外AAC尾端0.076667秒分開記，不稱視訊長度。-14.1 LUFS／true peak -2.8。詳[當前媒體證據](branding-v4/current-media-verification.json)。 |
+| 原主體保護 | 新版`build/body.mp4`完整SHA精確等於舊3cdb，52,296,204 bytes；encoded video stream也相同。原canonical2096檔全部SHA不變、2070 protected copied檔無shared inode。原603.533333秒主體扣冷開與原outro仍566.133333秒，不用官方片頭尾補正文八分鐘。 |
+| 當前QA | [新媒體原始QA](branding-v4/native-final-qa.json)11/11，綁c387新SHA。Jev立場.83／示範.76／建議.02／業配.08；27筆CC閱讀速度提醒原樣保留。沒有把此QA當八語配音或fresh narrative PASS。 |
+| 後台實際下載 | [正常附件收據](branding-v4/main-download-attachment.json)：新主片14parts、舊主體13parts、舊preview4parts，各正常store complete；登入角色metadata回讀同SHA／大小。新current review `a0e0a6bc-aca6-4182-adf1-00fa8176937e`仍pending；沒有遠端binary重取驗hash。 |
+| 舊版審核與實體 | 舊BODY review `532d5837-0036-4695-9535-97d0c6a6044b`為superseded，原files／QA／payload等metadata全保留。兩個原獨有blob以current live `evidence_history_body_1080p_mp4`及`evidence_history_body_preview_mp4`保留；沒有寫reserved renewal欄位、伺服器核准或設定。 |
+| Helper真實歷史 | 舊ee1候選因真native GC會清逾1小時superseded-undecided舊blob而[REVISE](branding-v4/main-helper-earlier-revise.json)。新retained-body helper保留94純guards，獨審20額外負例及真native GC正反例通過；[獨審](branding-v4/main-helper-retained-peer-review.json)只作code/pure門檻，實際交付另由root收據證明。 |
+| 繁中CC／說明真實交付 | [正常CC附件收據](branding-v4/zh-tw/backend-delivery-receipt.json)於04:12:21.363Z完成3個text/plain blob PUT及一次same-a0e append POST，5個下載roles已登入讀回。SRT `b1375188f1cafbdb776bb000f1fdf4268e9653df6ab4e879f3e1242989d88969`／11,607 bytes；VTT `07a2a11a857975277340e715e22ab6b39db3be366197d2bd3c8f088cce96761b`／11,251 bytes；標題空行說明TXT `410f0c49ae7ef5ebf79702555f10ac7ddbe8bcdaa5cf126217c4fc432f027e62`／3,203 bytes。118 cues、0閱讀速度提醒，chapter2=00:30；native帶CC標記標題及說明精確等於existing payload zh-TW。 |
+| CC與metadata界線 | current final共11roles，原6refs／payload／manualQA11／舊review／history／八語選擇全未改。**字幕語言已交1/9（繁中）；外語CC0/8、外語縮圖0/8、外語配音0/8**。其餘8套local字幕仍為主旁白timing草稿，須依各語實際接受音軌重排；normal final payload9語文字不代表外語下載檔已交付。 |
+| 八語音訊 | EN initial只有93/118 raw WAV，兩次native process已知settled429，第二次0新WAV；沒有M4A／fit／meter／當前音檢PASS。其餘七語亦未完成。保存逐句快取、原失敗、重錄上限與未知計費限制，不換provider／聲音／全局設定。詳[真實held收據](branding-v4/en-initial-synthesis-held.json)。 |
+| 敘事與來源 | R2兩個12/13、passed=false、no_recap原樣保存；完整提示與必要算義的教學取捨未改。官方事實／原創示範／未親測限制仍見[verify5](verify-5.md)與[製作採用](production-decision.md)。 |
 
-原[verify-1](verify-1.md) REVISE、[verify-2](verify-2.md) R1 PASS、[verify-3](verify-3.md) 欄位回歸REVISE、[verify-4](verify-4.md) 修補PASS、[verify-5](verify-5.md) 當前三句PASS均保留原bytes與各自範圍。舊speech0f1的7→5→3旗、三句修詞／67 chars新TTS及114張原生render歷史不改寫；當前a805音檢通過由後續真實收據證明。
+ZH helper210純guards（73+66+28+17+26）、獨立14額外負例與18個readonly子審負例通過；[精確count收據](branding-v4/zh-tw/helper-author-exact-counts.json)只更正原aggregate summary，原錯誤summary及完整tests均保留。實際交付另由root收據證明，不以peer代替runtime。
+
+root已實看9格真實splice contact；本文件作者只核對其實際hash及root報告，沒有另稱全片人耳聽校。三個短review音檔已留在工作區，不把「已準備片段」說成完整人工觀看。
 
 ## 仍待完成
 
-- 合法官方頻道動畫片頭尾與bookend guard、真正正式定版；靜態outro或null-branding核心QA不能替代。
-- 八語逐語實際fit／meter／正常音檢與全目標核驗；按各語接受音訊的時間軸重建CC，再驗可下載角色／SHA／大小及真正language batch。
-- 以另行授權的checked-only附件流程交付並核對9套CC與8張外語縮圖；目前final files沒有這些角色，metadata payload不代表字幕或縮圖檔已上傳。
-- 遠端最終核准與整體交付狀態；目前僅本體候選可供審閱，overall及all_eight_ready均false。沒有YouTube公開、合併或部署。
+- 完成八外語當前M4A／fit／meter／完整目標音檢、依接受配音重排CC及逐語metadata／縮圖下載附件，再正常讀回驗證。
+- 正常final核准與language batch仍待完成；不宣稱八語ready或全部新規則完成。沒有YouTube公開、合併或部署。
 
-本次更新前的狀態文件已[逐bytes封存](production-history/20261026-pre-body-delivery-doc-update/archive-manifest.json)，舊「assembly running／尚待音檢」只是當時快照，不能覆蓋上述新結果。詳[機器進度](production-progress.json)、[採用與界線](production-decision.md)及[收據索引](production-receipt-index.json)。
+本次追加前的main-only29檔freeze與文件已[逐bytes封存](production-history/20261026-pre-zh-cc-doc-update/archive-manifest.json)，原freeze90bf保留；更早BODY當前文件亦[完整保留](production-history/20261026-pre-official-v4-main-doc-update/archive-manifest.json)。原[本體QA](body-core-qa.json)、[本體附件收據](main-download-attachment.json)及所有verify／失敗歷史仍保留。詳[機器進度](production-progress.json)、[後台附件摘要](branding-v4/current-backend-attachment-summary.json)與[收據索引](production-receipt-index.json)。

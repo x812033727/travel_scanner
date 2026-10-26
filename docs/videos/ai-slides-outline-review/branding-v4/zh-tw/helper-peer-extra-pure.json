@@ -1,0 +1,70 @@
+{
+  "helper": "/workspace/work/ai-tech-next/deliver-slides-branded-v4-zh-tw-caption-assets.mjs",
+  "helper_sha256": "25a2442e2c2929409baf6e949f3e2b53a1d6ed02b9493873230fee4d0041294b",
+  "kind": "independent_peer_synthetic_fixture_guards_only",
+  "tests": [
+    {
+      "name": "unreviewed real candidate cannot execute a preflight",
+      "passed": true
+    },
+    {
+      "name": "synthetic complete current six-ref pending profile accepted",
+      "passed": true
+    },
+    {
+      "name": "missing live retained ref evidence_history_body_1080p_mp4 refuses before upload",
+      "passed": true
+    },
+    {
+      "name": "missing live retained ref evidence_history_body_preview_mp4 refuses before upload",
+      "passed": true
+    },
+    {
+      "name": "missing live retained ref thumbnail refuses before upload",
+      "passed": true
+    },
+    {
+      "name": "missing live retained ref preview refuses before upload",
+      "passed": true
+    },
+    {
+      "name": "current approved cannot be used for pending append",
+      "passed": true
+    },
+    {
+      "name": "current superseded cannot be used for pending append",
+      "passed": true
+    },
+    {
+      "name": "current rejected cannot be used for pending append",
+      "passed": true
+    },
+    {
+      "name": "current metadata chapter/text mismatch refuses before upload",
+      "passed": true
+    },
+    {
+      "name": "old BODY QA mutation refuses before upload",
+      "passed": true
+    },
+    {
+      "name": "fresh current manual QA mutation refuses before upload",
+      "passed": true
+    },
+    {
+      "name": "fresh GET retained-history mutation is rejected",
+      "passed": true
+    },
+    {
+      "name": "fresh GET language choice mutation is rejected",
+      "passed": true
+    }
+  ],
+  "guard_count": 14,
+  "actual_preflight": false,
+  "network_calls": 0,
+  "paid_calls": 0,
+  "media_writes": 0,
+  "production_state_writes": 0,
+  "source_of_QA_template": "read-only existing12bec proof, synthetic remote project; no API called"
+}

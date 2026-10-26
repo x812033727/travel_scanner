@@ -1,0 +1,25 @@
+# 製作採用與當前交付界線
+
+本片沿用站主持續委派：推薦／Jev選擇、繁中加八外語、直接後台並接續下一支；例行製作不逐項重問。這份文件只記錄已有結果，沒有代替站主遠端核准或改動其他影片。
+
+原採用A：從四頁成品倒回完整做法，再完成交付。真實Jev結果A0.99／立場0.92／示範0.93／建議0.02，通過；brief SHA `05f2f32c6d0684d66a434c8150131a9df5dba86a8ee1e0dc012d292934fee203`。20:07:49正常提交為pending，本機於20:10:11.434Z依委派原生採用；Jev回傳的自動核准字樣不是伺服器核准，沒有偽造auto.json或站主UI操作。
+
+主角仍是同一份四頁簡報與逐頁引用紀錄。作者兩頁未渲染初稿、整批feedback與修訂由同次build保存，只作編輯流程示例；沒有Notebook產品試用、獨立互動pause、產品匯出／速度／準確率實測。Google功能按公告引用，方案／rollout差異未用帳號結果對齊，不保證免費可用。
+
+固定資料為2026報告中的2025統計：581.69十億美元企業總額包含344.66私人子集，不能相加；美國285.88／中國12.41只比相同私人融資範圍。88%是受訪者回報組織至少一項業務使用AI，不是普查。70%／79%問法與分母未對齊，只註記，不任選採用率或說報告錯。第1頁是作者問題總覽，精確原報告定位只列第2至4頁。交付PDF是圖片頁；PPTX保存原生文字／形狀，未作PowerPoint原生渲染。
+
+## 2026-10-26 官方片頭尾與新版交付
+
+站主追加「要加片頭加片尾，可以參考PR1860」。官方來源已於正常endpoint恢復，真實v4素材經SHA／大小／frames／native ffprobe驗證；沒有捏造官方品牌。只在隔離work base完成新版本，原canonical2096檔／聲音／source／claims／字典／八語文字不改。[新片實測](branding-v4/current-media-verification.json)保存5秒片頭在首章後、21秒片尾、629.533333秒視訊與629.610秒AAC界線。
+
+新c387成片的fresh QA11/11、118個完全相同當前已驗WAV與完整intended／ASR鏈，分別驗證；沒有將舊BODY QA換綁新檔或聲稱重新聽校。原R2兩份12/13 false／no_recap及root教學取捨不變，不因bookends修正敘事分數。
+
+2026-10-26T03:45:25.901Z，[正常main-only附件流程](branding-v4/main-download-attachment.json)實際完成新主片／舊主體／舊preview三個精確blob。new manual-review final a0e仍pending，舊532d已superseded但完整review metadata與QA未改。兩個history roles使用正常live file refs保護原實體；舊ee1 helper的真GC風險REVISE、修正後獨審與native正反例全部保存，不手寫server retention／renewal／approval欄位。
+
+## 八語文字與目前未完成項
+
+八語文字與縮圖的獨審／必要application均沿用原收據，沒有把可選budget候選整批套用。新9套local字幕按presentation精確位移一次；外語仍依繁中timing，必須等各語真實接受配音後重排。normal final payload已有9語title／description，**不等於CC下載附件或獨立語言包已交付**。目前CC0/9、外語縮圖0/8、外語音訊0/8，[目前附件摘要](branding-v4/current-backend-attachment-summary.json)只列六個真roles。
+
+EN initial93/118 raw後兩次known429，第二次0新raw；沒有M4A／fit／meter／當前音檢PASS。原語音、逐句快取、失敗、原句retake／改寫上限與未知計費限制原樣保留。八語及整體仍false，final仍pending，沒有YouTube公開／合併／部署。後續先交繁中CC下載，再完成八語真M4A／CC／metadata與讀回。
+
+原BODY版當前文件另存[更新前清單](production-history/20261026-pre-official-v4-main-doc-update/archive-manifest.json)；較早所有verify-1至5、旁白失敗與教學取捨仍各綁原來源。詳[製作結果](production-result.md)、[機器進度](production-progress.json)與[收據索引](production-receipt-index.json)。

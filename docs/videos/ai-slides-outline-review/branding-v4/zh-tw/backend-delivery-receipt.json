@@ -1,0 +1,219 @@
+{
+  "observed_at": "2026-10-26T04:11:30.731Z",
+  "mode": "explicit_root_execute_zh_tw_text_assets_only",
+  "ok": true,
+  "stage": "branded_zh_tw_current_caption_metadata_assets_attached",
+  "upload_started": true,
+  "review_post_attempted": true,
+  "part_receipts": [
+    {
+      "sha256": "b1375188f1cafbdb776bb000f1fdf4268e9653df6ab4e879f3e1242989d88969",
+      "part": 0,
+      "bytes": 11607,
+      "received": [
+        0
+      ],
+      "complete": true
+    },
+    {
+      "sha256": "07a2a11a857975277340e715e22ab6b39db3be366197d2bd3c8f088cce96761b",
+      "part": 0,
+      "bytes": 11251,
+      "received": [
+        0
+      ],
+      "complete": true
+    },
+    {
+      "sha256": "410f0c49ae7ef5ebf79702555f10ac7ddbe8bcdaa5cf126217c4fc432f027e62",
+      "part": 0,
+      "bytes": 3203,
+      "received": [
+        0
+      ],
+      "complete": true
+    }
+  ],
+  "server_upload_receipts": [
+    {
+      "sha256": "b1375188f1cafbdb776bb000f1fdf4268e9653df6ab4e879f3e1242989d88969",
+      "bytes": 11607,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA for newly assembled bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    },
+    {
+      "sha256": "07a2a11a857975277340e715e22ab6b39db3be366197d2bd3c8f088cce96761b",
+      "bytes": 11251,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA for newly assembled bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    },
+    {
+      "sha256": "410f0c49ae7ef5ebf79702555f10ac7ddbe8bcdaa5cf126217c4fc432f027e62",
+      "bytes": 3203,
+      "parts": 1,
+      "complete": true,
+      "existing_blob_possible": true,
+      "scope": "Normal store verifies SHA for newly assembled bytes; complete may also reuse an existing content-addressed blob. Not a remote binary rehash."
+    }
+  ],
+  "http_errors": [],
+  "verification_kind": "normal_server_SHA_assembly_and_authenticated_role_metadata_readback",
+  "remote_binary_download_performed": false,
+  "remote_CAS_available": false,
+  "concurrency_limit": "Fresh GET guards earlier changes; native normal POST has no atomic CAS.",
+  "foreign_media_uploaded": 0,
+  "foreign_checked": 0,
+  "all_eight_ready": false,
+  "overall_production_completed": false,
+  "new_asr_performed": false,
+  "language_batch_submitted": false,
+  "preflight": {
+    "profile": "slides118_branded_v4_zhTW",
+    "locale": "zh-TW",
+    "source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+    "speech_hash": "a8055d3edb90bcda",
+    "main_sha256": "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c",
+    "checked_audio_sha256": "4a298ebb54e7fc4fca152d12e2b11f9c6871bfb51e577addbce239b2f95f38c7",
+    "checked_lines": 118,
+    "audio_proof_sha256": "12bec87bed8495b6dc578f1c451026723575888a50c673a2e7f80d79ec5aa8d5",
+    "native_caption_timing": "narration",
+    "caption_manifest_sha256": "e6fddc798908c52c9282d9b2c8055efbdbbd9a9eb544fda31756c0b3c5847151",
+    "main_pin_file": "/workspace/work/ai-tech-next/fourth-branded-v4-main-retained-body-root-pin.json",
+    "main_pin_sha256": "e0333ea12738040fe3d08a48faefa9e130d66698dca4957153baaf2104cb0526",
+    "main_delivery_receipt_file": "/workspace/work/ai-tech-next/attach-slides-branded-v4-main-download.retained-body.root-result.json",
+    "branding_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "package_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "presentation_frames": 18886,
+    "intro_at_frame": 757,
+    "chapters": [
+      {
+        "at": "00:00",
+        "title": "我從公開報告寫下簡報需求"
+      },
+      {
+        "at": "00:30",
+        "title": "來源紀錄把金額與使用比例分開"
+      },
+      {
+        "at": "02:03",
+        "title": "完整需求交出後，作者初稿仍擠在兩頁"
+      },
+      {
+        "at": "03:42",
+        "title": "集中修改讓四頁各自有了任務"
+      },
+      {
+        "at": "06:34",
+        "title": "第二到第四頁接回原報告"
+      },
+      {
+        "at": "08:34",
+        "title": "Google公告新增生成前的大綱審查"
+      }
+    ],
+    "native_metadata": {
+      "title": "AI簡報先審大綱：公開PDF變成4頁有來源的成品｜CC字幕",
+      "description": "把公開PDF變成4頁簡報，生成之前的大綱要先決定什麼？\n給需要交付可修改、可回查簡報的一般工作者。\n\n本地原創示例於2026-10-25完成：作者需求、兩頁初稿、集中修改與修訂階段在同一次生成中保存，並非Notebook產品回應或真實互動停等審查。官方2026-10-19消息作為流程背景；未登入或實測產品。\n\n資料是Stanford 2026 AI Index經濟章中的2025統計。金額為Quid投資範圍：企業總額包含私人子集，兩者不相加；地區比較限定私人AI投資。88%為受訪者自述其組織至少一項業務使用AI；70%／79%問法與分母對齊未解，只留註記。\n\n引用清單中，第1頁是作者問題總覽；第2至4頁列出原報告位置。\n\n交付PDF由頁面圖片構成；PPTX保留原生文字與形狀，已重新開啟檢查結構，未在PowerPoint原生渲染。\n\n可複用完整提示：\n請只用我提供的這份公開PDF，替一般同事做四頁簡報。簡報目標約三分鐘。先給大綱，先不要生成投影片。\n每頁只回答一個問題，列出要用的數字、資料年、單位。列出受訪母體或統計範圍、報告印刷頁碼和PDF頁序。把投資金額和使用比例分開。總額與其中一部分，不要相加。\n來源若有未對齊處，列成待確認，不要替我挑一個數字。等我一次回覆全部修改後，再產出四頁簡報。同時交可編輯檔、PDF和逐頁引用清單。未確認的數字只作註記，不畫成確定結論。\n\n四頁PDF／可編輯PPTX／逐頁引用與作者需求資料包：https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data\n\n📌 章節\n00:00 我從公開報告寫下簡報需求\n00:30 來源紀錄把金額與使用比例分開\n02:03 完整需求交出後，作者初稿仍擠在兩頁\n03:42 集中修改讓四頁各自有了任務\n06:34 第二到第四頁接回原報告\n08:34 Google公告新增生成前的大綱審查\n\n📚 參考資料\nGoogle：生成前共同審大綱與製作筆記：https://blog.google/innovation-and-ai/products/gemini-notebook/co-create-slides-videos/\nWorkspace：Review流程與推出範圍：https://workspaceupdates.googleblog.com/2026/10/gain-more-creative-control-over-slide-Decks-and-Video-Overviews-in-Gemini-Notebook.html\nNotebook：簡報共同製作與修改說明：https://support.google.com/gemininotebook/answer/16757456?hl=en\nNotebook：影片製作筆記說明：https://support.google.com/gemininotebook/answer/16454555?hl=en\nStanford：2026 AI Index經濟章：https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf\nMcKinsey：2025自述調查：https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai-2025\n\n📷 圖片來源\nMokaair原創簡報第1頁；數據引自Stanford AI Index 2026（本片原創排版；報告資料依來源引用）：https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data\n\n#AI簡報 #GeminiNotebook #AI新聞拆解"
+    },
+    "cues": 118,
+    "reading_speed_advisories": [],
+    "assets": [
+      {
+        "kind": "srt",
+        "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/zh-TW.srt",
+        "sha256": "b1375188f1cafbdb776bb000f1fdf4268e9653df6ab4e879f3e1242989d88969",
+        "size": 11607,
+        "content_type": "text/plain",
+        "roles": [
+          "captions_zh-TW",
+          "evidence_zh_tw_cc_srt"
+        ]
+      },
+      {
+        "kind": "vtt",
+        "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/zh-TW.vtt",
+        "sha256": "07a2a11a857975277340e715e22ab6b39db3be366197d2bd3c8f088cce96761b",
+        "size": 11251,
+        "content_type": "text/plain",
+        "roles": [
+          "evidence_zh_tw_cc_vtt"
+        ]
+      },
+      {
+        "kind": "description",
+        "file": "/workspace/work/ai-tech-next/slides-branded-v4-zh-tw-native-description.txt",
+        "sha256": "410f0c49ae7ef5ebf79702555f10ac7ddbe8bcdaa5cf126217c4fc432f027e62",
+        "size": 3203,
+        "content_type": "text/plain",
+        "roles": [
+          "description_zh-TW",
+          "evidence_zh_tw_metadata_txt"
+        ]
+      }
+    ],
+    "input_sha256": {
+      "/workspace/work/ai-tech-next/attach-slides-branded-v4-main-download.retained-body.mjs": "558743e712a46d7d08a0f87d84924d0243439e4aa0fd6b1c450ee7eb6ee8db11",
+      "/workspace/work/ai-tech-next/deliver-checked-caption-assets.strict-evidence.mjs": "0be5e42a821cecd5bf6495dd2b8cdf59eedd0e4a9e70ec20b8e252fea7232b87",
+      "/workspace/work/ai-tech-next/fourth-branded-v4-main-retained-body-root-pin.json": "e0333ea12738040fe3d08a48faefa9e130d66698dca4957153baaf2104cb0526",
+      "/workspace/work/ai-tech-next/attach-slides-branded-v4-main-download.retained-body.root-result.json": "12bec87bed8495b6dc578f1c451026723575888a50c673a2e7f80d79ec5aa8d5",
+      "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/manifest.json": "e6fddc798908c52c9282d9b2c8055efbdbbd9a9eb544fda31756c0b3c5847151",
+      "/workspace/work/ai-tech-next/deliver-slides-branded-v4-zh-tw-caption-assets.mjs": "25a2442e2c2929409baf6e949f3e2b53a1d6ed02b9493873230fee4d0041294b",
+      "/workspace/work/ai-tech-next/fourth-branded-zh-tw-caption-root-pin.json": "5465731b237c14aff9cbdba5d08e70f72c7ff9b81877b900e1a2cd48449eaf20",
+      "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/zh-TW.srt": "b1375188f1cafbdb776bb000f1fdf4268e9653df6ab4e879f3e1242989d88969",
+      "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/zh-TW.vtt": "07a2a11a857975277340e715e22ab6b39db3be366197d2bd3c8f088cce96761b",
+      "/workspace/work/ai-tech-next/slides-branded-v4-zh-tw-native-description.txt": "410f0c49ae7ef5ebf79702555f10ac7ddbe8bcdaa5cf126217c4fc432f027e62"
+    },
+    "main_snapshot_signature": "d096b2ca3a4709be8b5b04ef64cea03f1275dd47c7e7e57846becfcad2bf6f71",
+    "foreign_checked": 0,
+    "all_eight_ready": false,
+    "overall_production_completed": false,
+    "snapshot_signature": "fd2b8c524e81a4183311bad2d6300179b78066d34da3efe8010983e9c6fff35f"
+  },
+  "final_review_id": "a0e0a6bc-aca6-4182-adf1-00fa8176937e",
+  "before_review_sha256": "7769348362dc7092fb9ad7bce35f56e4f40f12af03c7925f56fb90b57184a224",
+  "metadata_readback_verified": true,
+  "download_roles": [
+    {
+      "role": "captions_zh-TW",
+      "sha256": "b1375188f1cafbdb776bb000f1fdf4268e9653df6ab4e879f3e1242989d88969",
+      "size": 11607,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_zh_tw_cc_srt",
+      "sha256": "b1375188f1cafbdb776bb000f1fdf4268e9653df6ab4e879f3e1242989d88969",
+      "size": 11607,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_zh_tw_cc_vtt",
+      "sha256": "07a2a11a857975277340e715e22ab6b39db3be366197d2bd3c8f088cce96761b",
+      "size": 11251,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "description_zh-TW",
+      "sha256": "410f0c49ae7ef5ebf79702555f10ac7ddbe8bcdaa5cf126217c4fc432f027e62",
+      "size": 3203,
+      "content_type": "text/plain"
+    },
+    {
+      "role": "evidence_zh_tw_metadata_txt",
+      "sha256": "410f0c49ae7ef5ebf79702555f10ac7ddbe8bcdaa5cf126217c4fc432f027e62",
+      "size": 3203,
+      "content_type": "text/plain"
+    }
+  ],
+  "all_old_files_preserved": true,
+  "all_original_payload_fields_preserved": true,
+  "manual_qa_preserved_11_of_11": true,
+  "old_history_review_preserved": true,
+  "history_blob_refs_live": true,
+  "approval_changed": false,
+  "language_choice_changed": false,
+  "finished_at": "2026-10-26T04:12:21.363Z"
+}

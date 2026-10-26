@@ -8,21 +8,18 @@
 
 固定資料為2026報告中的2025統計：581.69十億美元企業總額包含344.66私人子集，不能相加；美國285.88／中國12.41只比相同私人融資範圍。88%是受訪者回報組織至少一項業務使用AI，不是普查。70%／79%問法與分母未對齊，只註記，不任選採用率或說報告錯。第1頁是作者問題總覽，精確原報告定位只列第2至4頁。交付PDF是圖片頁；PPTX保存原生文字／形狀，未作PowerPoint原生渲染。
 
-## 2026-10-26 已完成的本體候選
+## 2026-10-26 官方片頭尾與新版交付
 
-當前source `296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f`、claims `2c56550a6ffde77c8ee781f909554a8c94c9f7d787f877fc34b4c385160778f7`、speech `a8055d3edb90bcda`保持不動。原三句修詞後已實際完成118/118音檢與嚴格全目標核驗；不是以舊旗標代替新take檢查。
+站主追加「要加片頭加片尾，可以參考PR1860」。官方來源已於正常endpoint恢復，真實v4素材經SHA／大小／frames／native ffprobe驗證；沒有捏造官方品牌。只在隔離work base完成新版本，原canonical2096檔／聲音／source／claims／字典／八語文字不改。[新片實測](branding-v4/current-media-verification.json)保存5秒片頭在首章後、21秒片尾、629.533333秒視訊與629.610秒AAC界線。
 
-1920×1080本體MP4已完成，video603.533333秒、container603.605秒、52,296,204 bytes、SHA `3cdbde2a415d1c41a0e47c25e3914a687d9bef524763a750ea66a4b11f43fcea`。[本體核心QA](body-core-qa.json)11/11綁同一媒體；保留27筆CPS提醒，不把本體核心QA說成完整品牌／八語／新規格全部完成。
+新c387成片的fresh QA11/11、118個完全相同當前已驗WAV與完整intended／ASR鏈，分別驗證；沒有將舊BODY QA換綁新檔或聲稱重新聽校。原R2兩份12/13 false／no_recap及root教學取捨不變，不因bookends修正敘事分數。
 
-2026-10-26T01:05:11.570Z，[正常附件流程](main-download-attachment.json)已完成13 parts、server SHA／size驗證與authenticated metadata回讀。後台final `532d5837-0036-4695-9535-97d0c6a6044b`仍pending；角色 `evidence_zh_tw_1080p_mp4`供本體候選下載審閱。沒有遠端binary重新下載驗hash、核准、YouTube公開、合併或部署宣稱。
+2026-10-26T03:45:25.901Z，[正常main-only附件流程](branding-v4/main-download-attachment.json)實際完成新主片／舊主體／舊preview三個精確blob。new manual-review final a0e仍pending，舊532d已superseded但完整review metadata與QA未改。兩個history roles使用正常live file refs保護原實體；舊ee1 helper的真GC風險REVISE、修正後獨審與native正反例全部保存，不手寫server retention／renewal／approval欄位。
 
-## 八語文字採用，音訊另行驗收
+## 八語文字與目前未完成項
 
-三組獨審與真正必要修正分開保存：[EN／JA／KO](translation-independent-en-ja-ko.json)、[ES／PT／ID](translation-independent-es-pt-id.json)、[VI／TH](translation-independent-vi-th.json)。實際套用見[前三語application](translation-mandatory-en-ja-ko-application.json)與[其餘五語application](translation-mandatory-five-application.json)。前者7個finding units改6個text leaves；可選budget候選沒有整批採用，不能把獨審或靜態相容寫成配音fit。
+八語文字與縮圖的獨審／必要application均沿用原收據，沒有把可選budget候選整批套用。新9套local字幕按presentation精確位移一次；外語仍依繁中timing，必須等各語真實接受配音後重排。normal final payload已有9語title／description，**不等於CC下載附件或獨立語言包已交付**。04:12:21.363Z已透過[獨立checked-only小文字附件流程](branding-v4/zh-tw/backend-delivery-receipt.json)交付當前繁中118 cues SRT／VTT與帶native CC標題的說明TXT，3個blob／5個roles；chapter2=00:30，native標題說明對existing payload zh-TW逐字相同。現為CC語言1/9，外語CC0/8、外語縮圖0/8、外語音訊0/8；[目前附件摘要](branding-v4/current-backend-attachment-summary.json)列11個真roles，原6refs及manualQA／history／choices未改。
 
-八外語metadata／118句CC文字及九套字幕已建立；CC仍依主旁白timing。八張語言縮圖已draw，root實看all8 contact；KO最後短headline經[獨審](thumbnail-ko-wrap-independent-review.json)、正常merge／draw與root實看修正。[初始快照](localization-initial-reviewed-snapshot.json)保存各語i18n、CC、縮圖SHA和提醒，不用之後的配音結果倒填此歷史。
+EN initial93/118 raw後兩次known429，第二次0新raw；沒有M4A／fit／meter／當前音檢PASS。原語音、逐句快取、失敗、原句retake／改寫上限與未知計費限制原樣保留。八語及整體仍false，final仍pending，沒有YouTube公開／合併／部署。後續完成八語真M4A／CC／metadata與讀回；此文字追加未做新ASR、聽校、QA或核准。
 
-八外語音訊仍0/8 ready，無language batch交付。唯一producer接續EN first synth／fit／meter，ASR hold；若真overflow需改字，先保義獨審、留前後SHA與套用時間，再按原生正常流程驗收。官方動畫bookends仍missing、敘事12/13 false／no_recap仍保留，因此overall及all_eight_ready都false。完整狀態見[production-result](production-result.md)、[progress](production-progress.json)及[receipt index](production-receipt-index.json)；更新前文件另存[歷史清單](production-history/20261026-pre-body-delivery-doc-update/archive-manifest.json)。
-
-
-[正常唯讀安全回讀](backend-current-final-safe-readback.json)已確認：final仍pending，9語title／description與目前本地native compose全部逐字相符；實際files只有preview、contact_sheet、主縮圖及1080p本體evidence。CC附件0/9、外語縮圖附件0/8、外語配音附件0/8。字幕與外語縮圖的本地生成沒有被當作後台交付；本輪只有一個GET，沒有POST或final repush。當前lint0 errors／6 warnings與27筆CC閱讀速度提醒均保留。
+本次CC追加前29檔main-only與freeze90bf已[逐bytes封存](production-history/20261026-pre-zh-cc-doc-update/archive-manifest.json)。原BODY版當前文件另存[更新前清單](production-history/20261026-pre-official-v4-main-doc-update/archive-manifest.json)；較早所有verify-1至5、旁白失敗與教學取捨仍各綁原來源。詳[製作結果](production-result.md)、[機器進度](production-progress.json)與[收據索引](production-receipt-index.json)。

@@ -1,0 +1,99 @@
+{
+  "kind": "independent_peer_review_branded_v4_zhTW_caption_small_helper",
+  "reviewer": "/root/formal_docs_commit",
+  "reviewed_at": "2026-10-26T04:08:36.599886+00:00",
+  "helper": "/workspace/work/ai-tech-next/deliver-slides-branded-v4-zh-tw-caption-assets.mjs",
+  "helper_sha256": "25a2442e2c2929409baf6e949f3e2b53a1d6ed02b9493873230fee4d0041294b",
+  "verdict": "PASS",
+  "scope": "Frozen code review, exact unchanged helper/native contract hashes, pure synthetic guard tests only. This is not an actual media preflight, root review pin, server approval, binary download proof or delivery receipt.",
+  "author_freeze": {
+    "file": "/workspace/work/ai-tech-next/slides-branded-zh-tw-caption-helper.author-freeze.json",
+    "sha256": "56dd2bacd21cf7d1b675564760fbae9c973e924f76189f012dda40b35b67fab2"
+  },
+  "author_count_correction": {
+    "file": "/workspace/work/ai-tech-next/slides-branded-zh-tw-caption-helper.author-freeze.exact-counts.json",
+    "sha256": "74c36a1a05f7041220a77cb7db6ee68a719990f9a5b03535b75137343d62baff",
+    "earlier_count_summaries_preserved": true,
+    "detail_tests_were_complete": true
+  },
+  "peer_selftests": {
+    "file": "/workspace/work/ai-tech-next/slides-branded-zh-tw-caption-helper.peer-selftests.json",
+    "sha256": "816b22acce38660cb43d44ab03ad274fdb44795585a0c1293dd43db90b2f0ce7",
+    "groups": {
+      "new": 73,
+      "strict": 66,
+      "formal_audio": 28,
+      "forty_audio": 17,
+      "slides_main": 26
+    },
+    "all210_passed": true,
+    "exit_code": 0
+  },
+  "peer_extra_synthetic_guards": {
+    "file": "/workspace/work/ai-tech-next/slides-branded-zh-tw-caption-helper.peer-extra-pure.json",
+    "sha256": "31bc3255bf802fc3d175ff51d2728221b2a0610c0aa4d9dd8dc2f0734d800dd7",
+    "all14_passed": true,
+    "exit_code": 0
+  },
+  "readonly_subpeer": {
+    "agent": "/root/formal_docs_commit/duckdb_docs_peer",
+    "verdict": "PASS",
+    "bound_helper_sha256": "25a2442e2c2929409baf6e949f3e2b53a1d6ed02b9493873230fee4d0041294b",
+    "provenance": "Live collaboration message and final, transcribed by coordinator; child performed zero file writes.",
+    "additional_remote_negative_cases": 18,
+    "all_rejected": true,
+    "focus": [
+      "input immutability and six original refs",
+      "partial/idempotent/colliding roles",
+      "old supplemental EN evidence kept",
+      "exact normal routes three hashes only",
+      "POST attempts=1 and single callsite",
+      "fresh local+remote guards and noCAS disclosure",
+      "unknownPOST requires authenticated readback",
+      "physical GC live history refs retained; missing old files abort"
+    ]
+  },
+  "findings": {
+    "unchanged_strict_and_main_preflights_imported_and_fullSHA_checked": true,
+    "main5587_pin_e033_actual_delivery_12bec_required": true,
+    "no_existing_BODY_branding_guard_relaxed": true,
+    "complete118_intended_source_ID_coverage": true,
+    "native_cues_use_exact_already_presented_18886_frame_timeline_with_splice757_once": true,
+    "exact_native_SRT_VTT_and_manifest_count_timing_problems_checked": true,
+    "metadata_uses_same_presented_chapters_and_exact_title_blank_description_LF": true,
+    "exact3small_text_plain_blobs_5roles": true,
+    "no_thumbnail_upload_or_fabricated_thumbnail_view_proof": true,
+    "no_foreign_dub_or_caption_or_ready_language_upload": true,
+    "exact_current_pending_a0e_c387_manualQA9bf_brand39d_and_all_six_refs_required": true,
+    "same_files_full_original_payload_QA_old_reviews_choices_preserved": true,
+    "append_only_supplemental_evidence_no_approval_renewal_or_language_batch": true,
+    "max_one_POST_and_unknown_outcome_guard": true,
+    "normal_private_auth_standard_UA_TLS_proxy_no_token_output": true,
+    "nativePOST_has_no_atomic_CAS_disclosed": true,
+    "metadata_readback_not_remote_binary_rehash_disclosed": true
+  },
+  "new_pin_candidate": {
+    "file": "/workspace/work/ai-tech-next/slides-branded-zh-tw-caption-root-pin.candidate.json",
+    "sha256": "f20883d47fba4f2d5e87784132dfa8ed93be24169a9e020c986d32fb713af37b",
+    "root_review_fields_null": true,
+    "not_executable_as_is": true,
+    "null_candidate_rejected_by_pure_guard": true
+  },
+  "limitations": [
+    "Root must create its own real reviewed_at/by pin after checking actual asset hashes, then run default actual local preflight and inspect it before explicit execute.",
+    "Fresh GET guards do not close the native GET-to-POST race window; ordinary endpoint has no atomic CAS.",
+    "Part completion may reuse an existing content-addressed blob; no claim of remote binary rehash.",
+    "Source/master audio/body/presentation checks are imported strict code and were not actually re-executed by this peer."
+  ],
+  "actual_preflight": false,
+  "network_calls": 0,
+  "auth_read_calls": 0,
+  "paid_calls": 0,
+  "new_ASR": false,
+  "production_source_or_media_writes": 0,
+  "repo_git_mutations": 0,
+  "only_peer_scratch_receipts_written": true,
+  "reviewed_core_and_helper_hashes_still_unchanged": true,
+  "all_eight_ready": false,
+  "overall_production_completed": false
+}
