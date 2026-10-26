@@ -1,4 +1,4 @@
-"""Exercise the 0139 image on the exact future C08 account schema in PostgreSQL.
+"""Exercise the 0139 image on the exact future C11 UCC remake account schema in PostgreSQL.
 
 The test strips the 0140 migration from a disposable copy of the application,
 upgrades that database with the pinned 0140 source, then runs the old 0139
@@ -28,8 +28,8 @@ from sqlalchemy.ext.asyncio import create_async_engine
 
 from app.config import get_settings
 from app.migration_guard import (
-    C08_PILOT_SLUG,
-    C08_REVIEWED_FUTURE_REVISION,
+    C11_REMAKE_PILOT_SLUG,
+    C11_REMAKE_REVIEWED_FUTURE_REVISION,
     C20_PILOT_SLUG,
 )
 from app.video_budget.models import C_SERIES_PILOT_LIMITS_USD, PILOT_LIMITS_USD
@@ -38,14 +38,14 @@ from app.video_budget.service import is_preproduction_held
 API_ROOT = Path(__file__).resolve().parents[1]
 REPO_ROOT = API_ROOT.parents[1]
 ROLLBACK_HEAD = "0139_c20_zippo_pilot_budget"
-FUTURE_HEAD = C08_REVIEWED_FUTURE_REVISION
+FUTURE_HEAD = C11_REMAKE_REVIEWED_FUTURE_REVISION
 FUTURE_SOURCE = r'''
-"""Seed only the held C08 short-v8 pilot account.
+"""Seed only the C11 UCC remake's USD 25 pilot account (owner approved 2026-10-26).
 
-Revision ID: 0140_c08_kikkoman_pilot_budget
+Revision ID: 0140_c11_ucc_remake_budget
 Revises: 0139_c20_zippo_pilot_budget
 
-The paid admission guard continues to refuse all everyday-story slugs.
+An account alone admits no paid request; the application's activated-slug list decides.
 """
 
 import re
@@ -55,12 +55,12 @@ from decimal import Decimal
 import sqlalchemy as sa
 from alembic import op
 
-revision: str = "0140_c08_kikkoman_pilot_budget"
+revision: str = "0140_c11_ucc_remake_budget"
 down_revision: str | None = "0139_c20_zippo_pilot_budget"
 branch_labels: str | Sequence[str] | None = None
 depends_on: str | Sequence[str] | None = None
 
-SLUG = "story-everyday-kikkoman-c08-short-v8"
+SLUG = "story-everyday-ucc-c11-remake-20261025"
 OWNERSHIP = "video_pilot_budget_0140_owned"
 C20_SLUG = "story-everyday-zippo-c20-short-v8"
 C20_OWNERSHIP = "video_pilot_budget_0139_owned"
@@ -93,7 +93,7 @@ HISTORICAL = (
 
 def upgrade() -> None:
     if op.get_context().as_sql:
-        raise RuntimeError("0140 requires online C08 account verification")
+        raise RuntimeError("0140 requires online C11 remake account verification")
     bind = op.get_bind()
     bind.execute(sa.text(
         "LOCK TABLE video_pilot_budgets, video_pilot_budget_operations, "
@@ -170,14 +170,14 @@ def upgrade() -> None:
 
 
 def downgrade() -> None:
-    raise RuntimeError("C08 ledger evidence cannot be erased automatically")
+    raise RuntimeError("C11 remake ledger evidence cannot be erased automatically")
 '''.lstrip("\n")
 # The actual 0140 migration must be byte-for-byte this reviewed fixture, or the
 # compatibility pair requires a fresh review and test before deployment.
-FUTURE_SOURCE_SHA256 = "8d6fd7f52d6bee1fe232fe559dda95cfa7c6c4d3351596bde6b46aadd6e8a8de"
+FUTURE_SOURCE_SHA256 = "b6a8707dc220819ccfae8f54ca9c90a790d0eb1cea448f7f030da93fe94583f6"
 
 
-def test_reviewed_future_source_is_pinned_and_c08_stays_held() -> None:
+def test_reviewed_future_source_is_pinned_and_c11_remake_stays_held() -> None:
     assert hashlib.sha256(FUTURE_SOURCE.encode("utf-8")).hexdigest() == FUTURE_SOURCE_SHA256
     assignments: dict[str, ast.expr] = {}
     for statement in ast.parse(FUTURE_SOURCE).body:
@@ -190,7 +190,7 @@ def test_reviewed_future_source_is_pinned_and_c08_stays_held() -> None:
             assignments[statement.target.id] = statement.value
     assert ast.literal_eval(assignments["revision"]) == FUTURE_HEAD
     assert ast.literal_eval(assignments["down_revision"]) == ROLLBACK_HEAD
-    assert ast.literal_eval(assignments["SLUG"]) == C08_PILOT_SLUG
+    assert ast.literal_eval(assignments["SLUG"]) == C11_REMAKE_PILOT_SLUG
     assert ast.literal_eval(assignments["OWNERSHIP"]) == "video_pilot_budget_0140_owned"
     prior = assignments["PRIOR_LIMITS"]
     assert isinstance(prior, ast.Dict)
@@ -205,7 +205,7 @@ def test_reviewed_future_source_is_pinned_and_c08_stays_held() -> None:
         **C_SERIES_PILOT_LIMITS_USD,
         C20_PILOT_SLUG: Decimal("25"),
     }
-    assert is_preproduction_held(C08_PILOT_SLUG)
+    assert is_preproduction_held(C11_REMAKE_PILOT_SLUG)
 
 
 def _base_url() -> URL:
@@ -304,7 +304,7 @@ def _copy_0139_image_tree(destination: Path) -> Path:
 @pytest.fixture
 def rollback_database(tmp_path: Path) -> Iterator[tuple[URL, Path]]:
     base = _base_url()
-    name = f"test_c08_rollback_{uuid4().hex[:16]}"
+    name = f"test_c11_rollback_{uuid4().hex[:16]}"
     url = base.set(database=name)
     asyncio.run(_database_ddl(base, f'CREATE DATABASE "{name}"'))
     try:
@@ -314,7 +314,7 @@ def rollback_database(tmp_path: Path) -> Iterator[tuple[URL, Path]]:
 
 
 @pytest.mark.skipif(os.getenv("RUN_INTEGRATION_TESTS") != "1", reason="local PostgreSQL required")
-def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
+def test_real_0140_c11_remake_account_allows_only_reviewed_0139_rollback(
     rollback_database: tuple[URL, Path],
 ) -> None:
     url, rollback_root = rollback_database
@@ -360,7 +360,7 @@ def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
             _execute(
                 url,
                 "INSERT INTO video_pilot_budgets(slug, limit_usd) VALUES (:slug, 25)",
-                {"slug": C08_PILOT_SLUG},
+                {"slug": C11_REMAKE_PILOT_SLUG},
             )
         )
         assert (
@@ -369,7 +369,9 @@ def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
         )
         asyncio.run(
             _execute(
-                url, "DELETE FROM video_pilot_budgets WHERE slug=:slug", {"slug": C08_PILOT_SLUG}
+                url,
+                "DELETE FROM video_pilot_budgets WHERE slug=:slug",
+                {"slug": C11_REMAKE_PILOT_SLUG},
             )
         )
         asyncio.run(
@@ -424,7 +426,7 @@ def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
                 url,
                 "SELECT slug, limit_usd, created_at FROM video_pilot_budgets "
                 "WHERE slug <> :slug ORDER BY slug",
-                {"slug": C08_PILOT_SLUG},
+                {"slug": C11_REMAKE_PILOT_SLUG},
             )
         )
         == accounts_before
@@ -453,29 +455,29 @@ def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
         _fetch(
             url,
             "SELECT slug, limit_usd, created_at FROM video_pilot_budgets WHERE slug=:slug",
-            {"slug": C08_PILOT_SLUG},
+            {"slug": C11_REMAKE_PILOT_SLUG},
         )
     )
-    c08_owner = asyncio.run(
+    c11_owner = asyncio.run(
         _fetch(
             url,
             "SELECT slug, account_created, account_created_at FROM video_pilot_budget_0140_owned",
         )
     )
-    assert len(account) == len(c08_owner) == 1
-    assert account[0][0] == c08_owner[0][0] == C08_PILOT_SLUG
+    assert len(account) == len(c11_owner) == 1
+    assert account[0][0] == c11_owner[0][0] == C11_REMAKE_PILOT_SLUG
     assert Decimal(str(account[0][1])) == Decimal("25")
-    assert c08_owner[0][1] is True and c08_owner[0][2] == account[0][2]
+    assert c11_owner[0][1] is True and c11_owner[0][2] == account[0][2]
 
     # The old image must preserve later evidence while continuing to hold paid
-    # requests for both C20 and C08. This operation is disposable test data.
+    # requests for both C20 and the C11 remake. This operation is disposable test data.
     asyncio.run(
         _execute(
             url,
             "INSERT INTO video_pilot_budget_operations "
             "(id, slug, operation_id, category, provider, model, max_usd, status, attempts) "
             "VALUES (:id, :slug, 'later-uncertain', 'speech', 'test', 'test', 1, 'uncertain', 1)",
-            {"id": uuid4(), "slug": C08_PILOT_SLUG},
+            {"id": uuid4(), "slug": C11_REMAKE_PILOT_SLUG},
         )
     )
     operations = asyncio.run(
@@ -522,7 +524,7 @@ def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
             "import asyncio\nfrom decimal import Decimal\n"
             "from app.db import SessionFactory, engine\n"
             "from app.video_budget import service\n"
-            f"slugs=({C20_PILOT_SLUG!r}, {C08_PILOT_SLUG!r})\n"
+            f"slugs=({C20_PILOT_SLUG!r}, {C11_REMAKE_PILOT_SLUG!r})\n"
             "async def check():\n"
             " async with SessionFactory() as session:\n"
             "  for slug in slugs:\n"
@@ -549,7 +551,7 @@ def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
     asyncio.run(
         _execute(url, "UPDATE alembic_version SET version_num=:revision", {"revision": FUTURE_HEAD})
     )
-    for slug in (C08_PILOT_SLUG, C20_PILOT_SLUG):
+    for slug in (C11_REMAKE_PILOT_SLUG, C20_PILOT_SLUG):
         asyncio.run(
             _execute(
                 url,
@@ -581,7 +583,7 @@ def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
             url,
             "UPDATE video_pilot_budget_0140_owned SET account_created_at="
             "(SELECT created_at FROM video_pilot_budgets WHERE slug=:slug)",
-            {"slug": C08_PILOT_SLUG},
+            {"slug": C11_REMAKE_PILOT_SLUG},
         )
     )
     asyncio.run(
@@ -634,10 +636,12 @@ def test_real_0140_c08_account_allows_only_reviewed_0139_rollback(
         _execute(
             url,
             "DELETE FROM video_pilot_budget_operations WHERE slug=:slug",
-            {"slug": C08_PILOT_SLUG},
+            {"slug": C11_REMAKE_PILOT_SLUG},
         )
     )
     asyncio.run(
-        _execute(url, "DELETE FROM video_pilot_budgets WHERE slug=:slug", {"slug": C08_PILOT_SLUG})
+        _execute(
+            url, "DELETE FROM video_pilot_budgets WHERE slug=:slug", {"slug": C11_REMAKE_PILOT_SLUG}
+        )
     )
     assert _run(migrate_command, cwd=rollback_root, url=url).returncode != 0

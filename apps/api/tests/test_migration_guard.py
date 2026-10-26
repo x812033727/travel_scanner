@@ -60,15 +60,17 @@ def test_revision_classification_never_accepts_an_unknown_or_multiple_database_h
         guard.classify_revisions(
             (guard.C20_REVIEWED_FUTURE_REVISION,), guard.C_SERIES_ROLLBACK_IMAGE_HEAD, known
         )
-    c08 = guard.classify_revisions(
-        (guard.C08_REVIEWED_FUTURE_REVISION,), guard.C08_ROLLBACK_IMAGE_HEAD, known
+    c11 = guard.classify_revisions(
+        (guard.C11_REMAKE_REVIEWED_FUTURE_REVISION,), guard.C11_REMAKE_ROLLBACK_IMAGE_HEAD, known
     )
-    assert c08.state == "rollback-compatible"
-    with pytest.raises(guard.MigrationGuardError, match="unknown"):
-        guard.classify_revisions(("0140_other_budget",), guard.C08_ROLLBACK_IMAGE_HEAD, known)
+    assert c11.state == "rollback-compatible"
     with pytest.raises(guard.MigrationGuardError, match="unknown"):
         guard.classify_revisions(
-            (guard.C08_REVIEWED_FUTURE_REVISION,), guard.C20_ROLLBACK_IMAGE_HEAD, known
+            ("0140_other_budget",), guard.C11_REMAKE_ROLLBACK_IMAGE_HEAD, known
+        )
+    with pytest.raises(guard.MigrationGuardError, match="unknown"):
+        guard.classify_revisions(
+            (guard.C11_REMAKE_REVIEWED_FUTURE_REVISION,), guard.C20_ROLLBACK_IMAGE_HEAD, known
         )
 
 
@@ -178,8 +180,8 @@ class _Connection:
         historical: Sequence[object] | None = None,
         ownership: Sequence[object] | None = None,
         ownership_constraint: Sequence[object] | None = None,
-        c08_ownership: Sequence[object] | None = None,
-        c08_ownership_constraint: Sequence[object] | None = None,
+        c11_ownership: Sequence[object] | None = None,
+        c11_ownership_constraint: Sequence[object] | None = None,
     ) -> None:
         self.results = [
             _Rows([(slug, limit, "created") for slug, limit in accounts.items()]),
@@ -195,15 +197,15 @@ class _Connection:
                 else ownership_constraint
             ),
             _Rows(
-                [(guard.C08_PILOT_SLUG, True, "created")]
-                if c08_ownership is None
-                else c08_ownership
+                [(guard.C11_REMAKE_PILOT_SLUG, True, "created")]
+                if c11_ownership is None
+                else c11_ownership
             ),
             _Rows([("created",)]),
             _Rows(
                 [("p", True, "PRIMARY KEY (slug)")]
-                if c08_ownership_constraint is None
-                else c08_ownership_constraint
+                if c11_ownership_constraint is None
+                else c11_ownership_constraint
             ),
         ]
 
@@ -380,42 +382,44 @@ async def test_0139_rollback_readback_requires_only_c20_and_ownership() -> None:
 
 
 @pytest.mark.asyncio
-async def test_0140_rollback_readback_requires_c20_c08_and_both_ownerships() -> None:
+async def test_0140_rollback_readback_requires_c20_c11_remake_and_both_ownerships() -> None:
     expected = {
         **PILOT_LIMITS_USD,
         **C_SERIES_PILOT_LIMITS_USD,
         guard.C20_PILOT_SLUG: Decimal("25.000000"),
-        guard.C08_PILOT_SLUG: Decimal("25.000000"),
+        guard.C11_REMAKE_PILOT_SLUG: Decimal("25.000000"),
     }
     await _verify_0140_fake(_Connection(expected))
     missing = dict(expected)
-    missing.pop(guard.C08_PILOT_SLUG)
+    missing.pop(guard.C11_REMAKE_PILOT_SLUG)
     with pytest.raises(guard.MigrationGuardError, match="accounts or limits"):
         await _verify_0140_fake(_Connection(missing))
     with pytest.raises(guard.MigrationGuardError, match="accounts or limits"):
-        await _verify_0140_fake(_Connection({**expected, guard.C08_PILOT_SLUG: Decimal("5")}))
+        await _verify_0140_fake(
+            _Connection({**expected, guard.C11_REMAKE_PILOT_SLUG: Decimal("5")})
+        )
     with pytest.raises(guard.MigrationGuardError, match="accounts or limits"):
         await _verify_0140_fake(_Connection({**expected, "unreviewed": Decimal("25")}))
     with pytest.raises(guard.MigrationGuardError, match="holds are missing"):
         await _verify_0140_fake(_Connection(expected, historical=_HISTORICAL[:-1]))
     with pytest.raises(guard.MigrationGuardError, match="0139 C20 ownership record"):
         await _verify_0140_fake(_Connection(expected, ownership=[]))
-    for c08_ownership in (
+    for c11_ownership in (
         [],
-        [(guard.C08_PILOT_SLUG, False, "created")],
-        [(guard.C08_PILOT_SLUG, True, "created"), ("extra", True, "created")],
+        [(guard.C11_REMAKE_PILOT_SLUG, False, "created")],
+        [(guard.C11_REMAKE_PILOT_SLUG, True, "created"), ("extra", True, "created")],
     ):
-        with pytest.raises(guard.MigrationGuardError, match="0140 C08 ownership record"):
-            await _verify_0140_fake(_Connection(expected, c08_ownership=c08_ownership))
-    with pytest.raises(guard.MigrationGuardError, match="0140 C08 ownership timestamp"):
+        with pytest.raises(guard.MigrationGuardError, match="0140 C11 remake ownership record"):
+            await _verify_0140_fake(_Connection(expected, c11_ownership=c11_ownership))
+    with pytest.raises(guard.MigrationGuardError, match="0140 C11 remake ownership timestamp"):
         await _verify_0140_fake(
-            _Connection(expected, c08_ownership=[(guard.C08_PILOT_SLUG, True, "other")])
+            _Connection(expected, c11_ownership=[(guard.C11_REMAKE_PILOT_SLUG, True, "other")])
         )
-    with pytest.raises(guard.MigrationGuardError, match="0140 C08 ownership primary key"):
+    with pytest.raises(guard.MigrationGuardError, match="0140 C11 remake ownership primary key"):
         await _verify_0140_fake(
             _Connection(
                 expected,
-                c08_ownership_constraint=[("p", True, "PRIMARY KEY (account_created)")],
+                c11_ownership_constraint=[("p", True, "PRIMARY KEY (account_created)")],
             )
         )
 
