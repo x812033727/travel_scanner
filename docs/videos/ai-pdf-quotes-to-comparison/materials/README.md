@@ -91,6 +91,48 @@ python3 build_comparison.py \
 這個指令重現**本次已保存的 AI 抽取結果**如何產生 20 張比價表；不是重新呼叫 AI。
 換成自己的 PDF 時，須先實際重做抽取與來源檢查，不能沿用這份虛構資料的 AI JSON。
 
+## 相鄰數量的轉換點：12 張與 13 張
+
+把修訂情境分別另存為 `request-12.json`、`request-13.json`，只改 `quantity`，
+保留 `"scenario": "revised"` 及其他條件。這兩個數量都在三家原文明示的
+10–20 張範圍內；Cedar 使用修訂版，甲與丙的固定運費各只計一次。
+教材已附兩份可修改的需求檔。在解壓教材的 `materials` 資料夾分別執行：
+
+```bash
+python3 build_comparison.py \
+  --analysis ../research/lab-ai-extraction.json \
+  --extracted ../research/lab-extracted-pages.json \
+  --request request-12.json \
+  --out comparison-12
+
+python3 build_comparison.py \
+  --analysis ../research/lab-ai-extraction.json \
+  --extracted ../research/lab-extracted-pages.json \
+  --request request-13.json \
+  --out comparison-13
+```
+
+兩份結果保存在不同資料夾。先看各自的 `selected-comparison.json`：確認需求為
+12／13 張、情境為 `revised`，三家來源仍只有甲、乙、丙修訂版，再核對金額。
+這是使用已保存 AI 抽取資料的本機重算，沒有再次呼叫模型。
+
+| 需求數量 | 甲送達含稅總價 | 乙送達含稅總價 | 丙修訂版送達含稅總價 | 最低候選 |
+| --- | ---: | ---: | ---: | --- |
+| 12 張 | 2,478.00 | 2,460.00 | 2,467.50 | 乙 |
+| 13 張 | 2,667.00 | 2,665.00 | 2,651.25 | 丙修訂版 |
+
+上表金額單位為本練習的 TWD。差額固定用「丙減乙」：12 張為 `+7.50`，
+表示丙較貴；13 張為 `-13.75`，表示丙較便宜。其他條件不變時，每多一張，
+乙的含稅商品金額增加 `205.00`，丙增加 `175.00 × 1.05 = 183.75`；
+丙相對乙每張追回 `21.25`，所以在這兩個相鄰數量之間跨過零。
+這個轉換點只適用於本教材明示條件，不能外推至未報價的數量或真實供應商。
+
+程式 stdout 的 `winners` 是固定三個教學情境（原版10／修訂10／修訂20）的
+回歸檢查摘要，不是本次12／13張的名次。新數量的名次以各自
+`selected-comparison.json` 的 `request`、`delivered_total` 與
+`lowest_comparable` 為準。`research/quantity-threshold-12-13-execution.json`
+保留兩次真實命令、退出碼、完整 stdout、選定結果及獨立 Decimal 核對。
+
 
 ## 數量超出報價範圍的負例練習
 
