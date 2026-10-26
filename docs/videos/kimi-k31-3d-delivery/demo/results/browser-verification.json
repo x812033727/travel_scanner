@@ -1,0 +1,251 @@
+{
+  "kind": "actual_local_Chromium_STL_viewer_and_download_verification_not_model_test",
+  "at": "2026-10-26T11:14:46.401Z",
+  "ok": true,
+  "browser_version": "156.0.8078.4",
+  "viewport": {
+    "width": 1920,
+    "height": 1080,
+    "deviceScaleFactor": 1
+  },
+  "runtime_external_network_requests": 0,
+  "errors": [],
+  "checks": [
+    "ring JS actual mesh matches original Python limited checker",
+    "filled JS actual mesh matches original Python limited checker",
+    "actual section loops and nominal/minimum bore distinguished",
+    "visible original non-model disclosure, external unit assumption and nominal bore label",
+    "oblique actual1920x1080 no overflow",
+    "top actual1920x1080 no overflow",
+    "section actual1920x1080 no overflow",
+    "side actual1920x1080 no overflow",
+    "actual pointer drag changes rendered mesh",
+    "default download actual bytes kimi-official-audit.fixture-ring.stl",
+    "default download actual bytes kimi-official-audit.fixture-filled-hole-counterexample.stl",
+    "default download actual bytes kimi-official-audit.geometry-spec.json",
+    "uploaded filled-hole STL actually changes A computation and section",
+    "uploaded STL download is current actual file, not original A",
+    "out-of-scope translated mesh rejected and prior current file retained",
+    "uploaded spec updates current computation and downloads exact current bytes",
+    "unsupported unit rejected without silently assigning units",
+    "reset restores exact original fixtures and external spec",
+    "390px responsive page has no horizontal overflow",
+    "no page exceptions or external network requests"
+  ],
+  "check_count": 20,
+  "figures": [
+    {
+      "file": "figures/01-oblique-comparison.png",
+      "bytes": 285576,
+      "sha256": "3713cf79544d1fae0a79af8ee699fc58c41852d835df550a630c833bba90d22e",
+      "width": 1920,
+      "height": 1080,
+      "view": "oblique",
+      "actual_layout": {
+        "scrollWidth": 1920,
+        "scrollHeight": 1080,
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "canvasCount": 2,
+        "svgCount": 0,
+        "criticalOverflow": [],
+        "coloredBorderPixels": [
+          0,
+          0
+        ],
+        "coloredPixels": [
+          29447,
+          32320
+        ]
+      }
+    },
+    {
+      "file": "figures/02-top-view.png",
+      "bytes": 286643,
+      "sha256": "624dc84b89548fb163d68ce35a5f1fc4e5726f939af3ff115175b54ceb063115",
+      "width": 1920,
+      "height": 1080,
+      "view": "top",
+      "actual_layout": {
+        "scrollWidth": 1920,
+        "scrollHeight": 1080,
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "canvasCount": 2,
+        "svgCount": 0,
+        "criticalOverflow": [],
+        "coloredBorderPixels": [
+          0,
+          0
+        ],
+        "coloredPixels": [
+          31534,
+          37418
+        ]
+      }
+    },
+    {
+      "file": "figures/03-horizontal-section.png",
+      "bytes": 241435,
+      "sha256": "c672c7c82da8d0d304405ba28951a784551afbc8c19b0c873b97099c0bba29eb",
+      "width": 1920,
+      "height": 1080,
+      "view": "section",
+      "actual_layout": {
+        "scrollWidth": 1920,
+        "scrollHeight": 1080,
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "canvasCount": 2,
+        "svgCount": 0,
+        "criticalOverflow": [],
+        "coloredBorderPixels": [
+          0,
+          0
+        ],
+        "coloredPixels": [
+          4785,
+          4467
+        ]
+      }
+    },
+    {
+      "file": "figures/04-side-view.png",
+      "bytes": 214859,
+      "sha256": "85d284ed7e933d22dae85a11407d3f8114f272f7413e331678b584236767f378",
+      "width": 1920,
+      "height": 1080,
+      "view": "side",
+      "actual_layout": {
+        "scrollWidth": 1920,
+        "scrollHeight": 1080,
+        "innerWidth": 1920,
+        "innerHeight": 1080,
+        "canvasCount": 2,
+        "svgCount": 0,
+        "criticalOverflow": [],
+        "coloredBorderPixels": [
+          0,
+          0
+        ],
+        "coloredPixels": [
+          6569,
+          6891
+        ]
+      }
+    }
+  ],
+  "mobile": {
+    "scrollWidth": 390,
+    "innerWidth": 390,
+    "scrollHeight": 2854,
+    "innerHeight": 844
+  },
+  "fixture_evidence": {
+    "view": "oblique",
+    "spec": {
+      "kind": "original_editorial_washer_acceptance_spec_not_Kimi_task_result",
+      "declared_unit": "mm",
+      "outer_diameter_mm": 40,
+      "through_hole_diameter_mm": 16,
+      "height_mm": 5
+    },
+    "ring": {
+      "triangles": 512,
+      "bounds": [
+        [
+          -20,
+          20
+        ],
+        [
+          -20,
+          20
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "dims": [
+        40,
+        40,
+        5
+      ],
+      "volume": 5269.40146411902,
+      "expected": 5277.875658030853,
+      "relative_volume_error": 0.0016056069640327038,
+      "blocked_hole_probe_rays": 0,
+      "probe_count": 33,
+      "checks": {
+        "explicit_unit_declaration": true,
+        "edge_manifold": true,
+        "consistent_edge_winding": true,
+        "no_degenerate_triangles": true,
+        "positive_signed_volume": true,
+        "bounding_dimensions": true,
+        "specified_axis_hole_open_at33_rays": true,
+        "volume_within_1percent_of_spec": true
+      },
+      "accepted_for_this_limited_spec": true,
+      "section_topology": {
+        "loops": 2,
+        "closed": true,
+        "center_material": false
+      },
+      "smallest_clear_diameter_mm": 15.980727299278552
+    },
+    "filled": {
+      "triangles": 256,
+      "bounds": [
+        [
+          -20,
+          20
+        ],
+        [
+          -20,
+          20
+        ],
+        [
+          0,
+          5
+        ]
+      ],
+      "dims": [
+        40,
+        40,
+        5
+      ],
+      "volume": 6273.096981094105,
+      "expected": 5277.875658030853,
+      "relative_volume_error": 0.18856475361425323,
+      "blocked_hole_probe_rays": 33,
+      "probe_count": 33,
+      "checks": {
+        "explicit_unit_declaration": true,
+        "edge_manifold": true,
+        "consistent_edge_winding": true,
+        "no_degenerate_triangles": true,
+        "positive_signed_volume": true,
+        "bounding_dimensions": true,
+        "specified_axis_hole_open_at33_rays": false,
+        "volume_within_1percent_of_spec": false
+      },
+      "accepted_for_this_limited_spec": false,
+      "section_topology": {
+        "loops": 1,
+        "closed": true,
+        "center_material": true
+      },
+      "smallest_clear_diameter_mm": 0
+    },
+    "section_counts": {
+      "ring": 256,
+      "filled": 128
+    },
+    "no_model_generation_test": true
+  },
+  "limits": [
+    "Only the two original editorial fixtures and bounded upload behavior were verified.",
+    "Not a Kimi generation/export test, physical print, manufacturing certification or current video production."
+  ]
+}

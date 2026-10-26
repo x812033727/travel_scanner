@@ -1,0 +1,461 @@
+{
+  "at": "2026-10-26T13:46:55.530578+00:00",
+  "source_sha256": "9686969c66cfd9329c28e0f75d62c22830930b609479560d896e3e087829958b",
+  "ROOT_full_semantic_read": [
+    "ko114",
+    "vi114",
+    "id114",
+    "th114"
+  ],
+  "independent_peer_full_semantic_read": [
+    "en114",
+    "ja114",
+    "es114",
+    "pt114"
+  ],
+  "peer_sha256": "e77e932fb12c3d50fd6466737d88bd07f824743a1f382e7b9570e028c0c3c804",
+  "edits": [
+    {
+      "locale": "en",
+      "field": "lines.q8wd.text",
+      "before": "A washer can have a through-hole and still a complete surface around that space.",
+      "after": "A washer can have a through-hole and still have a complete surface around that space.",
+      "reason": "en-01: The coordination omits the second verb after “still”; the intended closed surface is clear but the sentence is ungrammatical."
+    },
+    {
+      "locale": "en",
+      "field": "lines.ni1q.text",
+      "before": "Double the faces describes this mesh division; it is not a quality score.",
+      "after": "Having twice as many faces only tells us how this mesh was divided; it isn't a quality score.",
+      "reason": "en-02: “Double the faces describes” is an awkward, potentially imperative-sounding subject. Use a gerund subject and retain the factor of two and mesh-versus-quality distinction."
+    },
+    {
+      "locale": "ja",
+      "field": "lines.2g58.text",
+      "before": "2026年10月26日、このパソコンで自作したワッシャーの教材を2つ開きました。",
+      "after": "2026年10月26日、このパソコンで、自作のワッシャー教材を2つ開きました。",
+      "reason": "ja-01: このパソコンで自作した modifies creation of the teaching model. The source places opening the files on this computer; it does not claim where they were created."
+    },
+    {
+      "locale": "ja",
+      "field": "lines.yxau.text",
+      "before": "中央が空いていても、最も狭い場所が穴の呼び径を満たすとは限りません。",
+      "after": "中央が空いていれば、最も狭い部分も、必ず穴の呼び径を満たすのでしょうか。",
+      "reason": "ja-02: The source asks whether an empty center guarantees nominal minimum diameter. The translation states the answer in advance and changes a source setup question into an assertion. Restore the question."
+    },
+    {
+      "locale": "es",
+      "field": "description.text",
+      "before": "Grabación/verificación: 2026-10-26 (Taipéi). Kimi K3.1 Pro destaca la creación 3D. ¿Cuándo puedes entregar lo descargado? Para usar modelos 3D de IA en exhibición, edición o entrega de piezas: comparamos dos STL de una arandela original, desde medidas y cierre hasta el agujero pasante y el paso libre mínimo.\n\nAmbos son material didáctico del equipo editorial. El relleno es deliberado, no un fallo de Kimi. Medidas nominales: exterior 40 mm, agujero 16 mm, espesor 5 mm. Con 64 segmentos, el paso libre mínimo real es aprox. 15.980727 mm: tener agujero no cumple un mínimo de 16 mm.\n\nIncluye visor local, STL originales, especificación JSON y verificador Python. Descomprime todo en una carpeta y ejecuta en demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNo probamos una cuenta de Kimi, no ejecutamos su modelo ni probamos la exportación o la impresión real. La descripción oficial consultada de recursos descargables para imprimir no especifica STL. Los pesos completos se prometen antes de 2026-11-04; no verificamos haber obtenido los nuevos pesos. BenchCAD 92.7 es VoxelIoU with-tools, no éxito de impresión.\n\nLa revisión local solo cubre el eje indicado, muestreo limitado, medidas exteriores, bordes y volumen. No cubre todos los agujeros, autointersecciones, espesor mínimo de pared, laminado, materiales, carga ni condiciones de fabricación. Aprobar no es una certificación de fabricación.",
+      "after": "Grabación/verificación: 2026-10-26 (Taipéi). Kimi K3.1 Pro destaca la creación 3D. ¿Cuándo puedes entregar lo descargado? Para usar modelos 3D de IA en exhibición, edición o entrega de piezas: comparamos dos STL de una arandela original, desde medidas y cierre hasta el agujero pasante y el paso libre mínimo.\n\nAmbos son material didáctico del equipo editorial. El relleno es deliberado, no un fallo de Kimi. Medidas nominales: exterior 40 mm, agujero 16 mm, espesor 5 mm. Con 64 segmentos, el paso libre mínimo real es aprox. 15.980727 mm: tener un agujero no garantiza un paso libre mínimo de al menos 16 mm.\n\nIncluye visor local, STL originales, especificación JSON y verificador Python. Descomprime todo en una carpeta y ejecuta en demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNo probamos una cuenta de Kimi, no ejecutamos su modelo ni probamos la exportación o la impresión real. La descripción oficial consultada de recursos descargables para imprimir no especifica STL. Los pesos completos se prometen antes de 2026-11-04; no verificamos haber obtenido los nuevos pesos. BenchCAD 92.7 es VoxelIoU with-tools, no éxito de impresión.\n\nLa revisión local solo cubre el eje indicado, muestreo limitado, medidas exteriores, bordes y volumen. No cubre todos los agujeros, autointersecciones, espesor mínimo de pared, laminado, materiales, carga ni condiciones de fabricación. Aprobar no es una certificación de fabricación.",
+      "reason": "es-01: The measured specimen does fail 16 mm, so the current contextual conclusion is true. The source sentence makes the more general no-guarantee claim: existence of a hole alone does not establish minimum clearance. Preserve that distinction."
+    },
+    {
+      "locale": "pt",
+      "field": "description.text",
+      "before": "Gravação/checagem: 2026-10-26 (Taipé). Kimi K3.1 Pro destaca a criação 3D. Quando dá para entregar o download? Para usar modelos 3D de IA em exibição, edição ou entrega de peças: comparamos dois STL de uma arruela original, das medidas e fechamento ao furo passante e vão livre mínimo.\n\nOs dois são materiais didáticos da equipe editorial. O preenchimento é proposital, não uma falha do Kimi. Medidas nominais: exterior 40 mm, furo 16 mm, espessura 5 mm. Com 64 segmentos, o vão livre mínimo real é aprox. 15.980727 mm: ter furo não atende a um mínimo de 16 mm.\n\nInclui visualizador local, STL originais, especificação JSON e verificador Python. Descompacte tudo numa pasta e execute em demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNão testamos conta do Kimi, não executamos seu modelo nem testamos a exportação ou impressão real. A descrição oficial consultada de recursos baixáveis para impressão não especifica STL. Os pesos completos foram prometidos para antes de 2026-11-04; não verificamos ter obtido os novos pesos. BenchCAD 92.7 é VoxelIoU with-tools, não sucesso de impressão.\n\nA checagem local só cobre o eixo indicado, amostragem limitada, medidas externas, arestas e volume. Não cobre todos os furos, autointerseções, espessura mínima de parede, fatiamento, materiais, carga nem condições de fabricação. Passar não é certificação de fabricação.",
+      "after": "Gravação/checagem: 2026-10-26 (Taipé). Kimi K3.1 Pro destaca a criação 3D. Quando dá para entregar o download? Para usar modelos 3D de IA em exibição, edição ou entrega de peças: comparamos dois STL de uma arruela original, das medidas e fechamento ao furo passante e vão livre mínimo.\n\nOs dois são materiais didáticos da equipe editorial. O preenchimento é proposital, não uma falha do Kimi. Medidas nominais: exterior 40 mm, furo 16 mm, espessura 5 mm. Com 64 segmentos, o vão livre mínimo real é aprox. 15.980727 mm: ter um furo não garante um vão livre mínimo de pelo menos 16 mm.\n\nInclui visualizador local, STL originais, especificação JSON e verificador Python. Descompacte tudo numa pasta e execute em demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNão testamos conta do Kimi, não executamos seu modelo nem testamos a exportação ou impressão real. A descrição oficial consultada de recursos baixáveis para impressão não especifica STL. Os pesos completos foram prometidos para antes de 2026-11-04; não verificamos ter obtido os novos pesos. BenchCAD 92.7 é VoxelIoU with-tools, não sucesso de impressão.\n\nA checagem local só cobre o eixo indicado, amostragem limitada, medidas externas, arestas e volume. Não cobre todos os furos, autointerseções, espessura mínima de parede, fatiamento, materiais, carga nem condições de fabricação. Passar não é certificação de fabricação.",
+      "reason": "pt-01: The measured specimen does fail 16 mm, so the current contextual conclusion is true. The source sentence makes the more general no-guarantee claim: existence of a hole alone does not establish minimum clearance. Preserve that distinction."
+    },
+    {
+      "locale": "en",
+      "field": "lines.1cox.text",
+      "before": "Arbitrary holes, self-intersections and minimum wall thickness throughout are unchecked.",
+      "after": "Beyond the arbitrary hole shapes mentioned earlier, self-intersections and minimum wall thickness throughout are unchecked.",
+      "reason": "en-03: Restore the source’s explicit callback to arbitrary hole shapes mentioned earlier, while preserving the unchecked self-intersection and minimum-wall conditions."
+    },
+    {
+      "locale": "en",
+      "field": "lines.oe9l.text",
+      "before": "I'll hand over the model files, same-version spec and check results together.",
+      "after": "I'll hand over the model files we just saw, the same-version spec and the check results together.",
+      "reason": "en-04: Restore the source’s explicit callback to the model/spec/result group just examined. The existing facts are correct; the edit preserves spoken continuity."
+    },
+    {
+      "locale": "ja",
+      "field": "lines.1cox.text",
+      "before": "任意の穴形状に加え、自己交差や各所の最小肉厚も未検査です。",
+      "after": "先ほど挙げた任意の穴形状に加え、自己交差や各所の最小肉厚も未検査です。",
+      "reason": "ja-03: Restore the source’s explicit callback to arbitrary hole shapes mentioned earlier, while preserving the unchecked self-intersection and minimum-wall conditions."
+    },
+    {
+      "locale": "ja",
+      "field": "lines.oe9l.text",
+      "before": "モデルファイル、同じバージョンの仕様、検査結果を、まとめて相手に渡します。",
+      "after": "先ほどのモデルファイル、同じバージョンの仕様、検査結果を、まとめて相手に渡します。",
+      "reason": "ja-04: Restore the source’s explicit callback to the model/spec/result group just examined. The existing facts are correct; the edit preserves spoken continuity."
+    },
+    {
+      "locale": "es",
+      "field": "lines.1cox.text",
+      "before": "Tampoco revisamos agujeros de cualquier forma, autointersecciones ni el espesor mínimo de cada pared.",
+      "after": "Además de los agujeros de cualquier forma ya mencionados, tampoco revisamos autointersecciones ni el espesor mínimo de cada pared.",
+      "reason": "es-02: Restore the source’s explicit callback to arbitrary hole shapes mentioned earlier, while preserving the unchecked self-intersection and minimum-wall conditions."
+    },
+    {
+      "locale": "es",
+      "field": "lines.oe9l.text",
+      "before": "Entregaré juntos los modelos, la especificación de su versión y los resultados.",
+      "after": "Entregaré juntos los modelos que acabamos de ver, la especificación de su versión y los resultados.",
+      "reason": "es-03: Restore the source’s explicit callback to the model/spec/result group just examined. The existing facts are correct; the edit preserves spoken continuity."
+    },
+    {
+      "locale": "pt",
+      "field": "lines.1cox.text",
+      "before": "Também não verificamos furos de qualquer formato, autointerseções nem a espessura mínima de cada parede.",
+      "after": "Além dos furos de qualquer formato já mencionados, ainda não verificamos autointerseções nem a espessura mínima de cada parede.",
+      "reason": "pt-02: Restore the source’s explicit callback to arbitrary hole shapes mentioned earlier, while preserving the unchecked self-intersection and minimum-wall conditions."
+    },
+    {
+      "locale": "pt",
+      "field": "lines.oe9l.text",
+      "before": "Vou entregar juntos modelos, especificação da mesma versão e resultados.",
+      "after": "Vou entregar juntos os modelos que acabamos de ver, a especificação da mesma versão e os resultados.",
+      "reason": "pt-03: Restore the source’s explicit callback to the model/spec/result group just examined. The existing facts are correct; the edit preserves spoken continuity."
+    },
+    {
+      "locale": "en",
+      "field": "tags.text",
+      "before": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "3D models",
+        "STL",
+        "3D printing",
+        "3D asset delivery",
+        "BenchCAD",
+        "AI tech news",
+        "model acceptance"
+      ],
+      "after": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "3D models",
+        "STL",
+        "3D printing",
+        "3D asset delivery",
+        "BenchCAD",
+        "AI tech news",
+        "model acceptance",
+        "Mokaair"
+      ],
+      "reason": "en-05: The source has the unchanged brand tag Mokaair. All four worksheets omit that tenth source tag. Restore it as an untranslated brand name."
+    },
+    {
+      "locale": "ja",
+      "field": "tags.text",
+      "before": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "3Dモデル",
+        "STL",
+        "3Dプリント",
+        "3Dデータ納品",
+        "BenchCAD",
+        "AI技術ニュース",
+        "モデル検収"
+      ],
+      "after": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "3Dモデル",
+        "STL",
+        "3Dプリント",
+        "3Dデータ納品",
+        "BenchCAD",
+        "AI技術ニュース",
+        "モデル検収",
+        "Mokaair"
+      ],
+      "reason": "ja-05: The source has the unchanged brand tag Mokaair. All four worksheets omit that tenth source tag. Restore it as an untranslated brand name."
+    },
+    {
+      "locale": "es",
+      "field": "tags.text",
+      "before": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "modelos 3D",
+        "STL",
+        "impresión 3D",
+        "entrega de modelos 3D",
+        "BenchCAD",
+        "noticias de IA",
+        "verificación de modelos"
+      ],
+      "after": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "modelos 3D",
+        "STL",
+        "impresión 3D",
+        "entrega de modelos 3D",
+        "BenchCAD",
+        "noticias de IA",
+        "verificación de modelos",
+        "Mokaair"
+      ],
+      "reason": "es-04: The source has the unchanged brand tag Mokaair. All four worksheets omit that tenth source tag. Restore it as an untranslated brand name."
+    },
+    {
+      "locale": "pt",
+      "field": "tags.text",
+      "before": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "modelos 3D",
+        "STL",
+        "impressão 3D",
+        "entrega de modelos 3D",
+        "BenchCAD",
+        "notícias de IA",
+        "verificação de modelos"
+      ],
+      "after": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "modelos 3D",
+        "STL",
+        "impressão 3D",
+        "entrega de modelos 3D",
+        "BenchCAD",
+        "notícias de IA",
+        "verificação de modelos",
+        "Mokaair"
+      ],
+      "reason": "pt-04: The source has the unchanged brand tag Mokaair. All four worksheets omit that tenth source tag. Restore it as an untranslated brand name."
+    },
+    {
+      "locale": "ko",
+      "field": "tags.text",
+      "before": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "3D 모델",
+        "STL",
+        "3D 프린팅",
+        "3D 납품",
+        "BenchCAD",
+        "AI 기술 뉴스",
+        "모델 검수"
+      ],
+      "after": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "3D 모델",
+        "STL",
+        "3D 프린팅",
+        "3D 납품",
+        "BenchCAD",
+        "AI 기술 뉴스",
+        "모델 검수",
+        "Mokaair"
+      ],
+      "reason": "Restore unchanged tenth source brand tag."
+    },
+    {
+      "locale": "id",
+      "field": "tags.text",
+      "before": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "model 3D",
+        "STL",
+        "cetak 3D",
+        "penyerahan model 3D",
+        "BenchCAD",
+        "berita teknologi AI",
+        "pemeriksaan model"
+      ],
+      "after": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "model 3D",
+        "STL",
+        "cetak 3D",
+        "penyerahan model 3D",
+        "BenchCAD",
+        "berita teknologi AI",
+        "pemeriksaan model",
+        "Mokaair"
+      ],
+      "reason": "Restore unchanged tenth source brand tag."
+    },
+    {
+      "locale": "vi",
+      "field": "tags.text",
+      "before": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "mô hình 3D",
+        "STL",
+        "in 3D",
+        "bàn giao mô hình 3D",
+        "BenchCAD",
+        "tin công nghệ AI",
+        "nghiệm thu mô hình"
+      ],
+      "after": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "mô hình 3D",
+        "STL",
+        "in 3D",
+        "bàn giao mô hình 3D",
+        "BenchCAD",
+        "tin công nghệ AI",
+        "nghiệm thu mô hình",
+        "Mokaair"
+      ],
+      "reason": "Restore unchanged tenth source brand tag."
+    },
+    {
+      "locale": "th",
+      "field": "tags.text",
+      "before": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "โมเดล 3D",
+        "STL",
+        "พิมพ์ 3D",
+        "ส่งมอบ 3D",
+        "BenchCAD",
+        "ข่าว AI",
+        "ตรวจรับโมเดล"
+      ],
+      "after": [
+        "Kimi K3.1 Pro",
+        "Kimi 3D Make",
+        "โมเดล 3D",
+        "STL",
+        "พิมพ์ 3D",
+        "ส่งมอบ 3D",
+        "BenchCAD",
+        "ข่าว AI",
+        "ตรวจรับโมเดล",
+        "Mokaair"
+      ],
+      "reason": "Restore unchanged tenth source brand tag."
+    },
+    {
+      "locale": "ko",
+      "field": "lines.1cox.text",
+      "before": "임의 구멍 형태 외에 자기 교차와 각 지점의 최소 벽 두께도 미검증입니다.",
+      "after": "앞서 말한 임의의 구멍 형태 외에, 자기 교차와 각 지점의 최소 벽 두께도 미검증입니다.",
+      "reason": "ROOT full114read: preserve explicit previous-reference from current source."
+    },
+    {
+      "locale": "ko",
+      "field": "lines.oe9l.text",
+      "before": "저는 모델 파일·같은 버전의 규격·검사 결과를 인수자에게 함께 넘깁니다.",
+      "after": "아까 그 모델 파일·같은 버전의 규격·검사 결과를 인수자에게 함께 넘깁니다.",
+      "reason": "ROOT full114read: preserve current-source callback to the same three files."
+    },
+    {
+      "locale": "id",
+      "field": "lines.1cox.text",
+      "before": "Bentuk lubang sembarang, perpotongan diri, dan tebal dinding minimum tiap tempat belum diuji.",
+      "after": "Selain bentuk lubang sembarang tadi, perpotongan diri dan tebal dinding minimum tiap tempat belum diuji.",
+      "reason": "ROOT full114read: retain earlier-hole-form callback."
+    },
+    {
+      "locale": "es",
+      "field": "description.text",
+      "before": "Grabación/verificación: 2026-10-26 (Taipéi). Kimi K3.1 Pro destaca la creación 3D. ¿Cuándo puedes entregar lo descargado? Para usar modelos 3D de IA en exhibición, edición o entrega de piezas: comparamos dos STL de una arandela original, desde medidas y cierre hasta el agujero pasante y el paso libre mínimo.\n\nAmbos son material didáctico del equipo editorial. El relleno es deliberado, no un fallo de Kimi. Medidas nominales: exterior 40 mm, agujero 16 mm, espesor 5 mm. Con 64 segmentos, el paso libre mínimo real es aprox. 15.980727 mm: tener un agujero no garantiza un paso libre mínimo de al menos 16 mm.\n\nIncluye visor local, STL originales, especificación JSON y verificador Python. Descomprime todo en una carpeta y ejecuta en demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNo probamos una cuenta de Kimi, no ejecutamos su modelo ni probamos la exportación o la impresión real. La descripción oficial consultada de recursos descargables para imprimir no especifica STL. Los pesos completos se prometen antes de 2026-11-04; no verificamos haber obtenido los nuevos pesos. BenchCAD 92.7 es VoxelIoU with-tools, no éxito de impresión.\n\nLa revisión local solo cubre el eje indicado, muestreo limitado, medidas exteriores, bordes y volumen. No cubre todos los agujeros, autointersecciones, espesor mínimo de pared, laminado, materiales, carga ni condiciones de fabricación. Aprobar no es una certificación de fabricación.",
+      "after": "Grabación/verificación: 2026-10-26 (Taipéi). Kimi K3.1 Pro destaca la creación 3D. ¿Cuándo puedes entregar lo descargado? Para usar modelos 3D de IA en exhibición, edición o entrega de piezas: comparamos dos STL de una arandela original, desde medidas y cierre hasta el agujero pasante y el paso libre mínimo.\n\nAmbos son material didáctico del equipo editorial. El relleno es deliberado, no un fallo de Kimi. Medidas nominales: exterior 40 mm, agujero 16 mm, espesor 5 mm. Con 64 segmentos, el paso libre mínimo real es aprox. 15.980727 mm: tener un agujero no garantiza un paso libre mínimo de al menos 16 mm.\n\nIncluye visor local, STL originales, especificación JSON y verificador Python. Descomprime todo en una carpeta y ejecuta en demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNo probamos una cuenta de Kimi, no ejecutamos su modelo ni probamos la exportación o la impresión real. La descripción oficial consultada de recursos descargables para imprimir no especifica STL. Los pesos completos se prometen antes de 2026-11-04; no verificamos haber obtenido los nuevos pesos. BenchCAD 92.7 es VoxelIoU with-tools, no éxito de impresión.\n\nLa revisión local solo cubre el eje indicado, muestreo limitado, medidas exteriores, bordes y volumen. No cubre todos los agujeros, autointersecciones, espesor mínimo de pared, laminado, materiales, carga ni condiciones de fabricación. Aprobar no es una certificación de fabricación.\nEl verificador original no implementa este nuevo requisito de paso libre mínimo.",
+      "reason": "Make new minimum-clearance gate limitation explicit; supported by source edz9/f106."
+    },
+    {
+      "locale": "pt",
+      "field": "description.text",
+      "before": "Gravação/checagem: 2026-10-26 (Taipé). Kimi K3.1 Pro destaca a criação 3D. Quando dá para entregar o download? Para usar modelos 3D de IA em exibição, edição ou entrega de peças: comparamos dois STL de uma arruela original, das medidas e fechamento ao furo passante e vão livre mínimo.\n\nOs dois são materiais didáticos da equipe editorial. O preenchimento é proposital, não uma falha do Kimi. Medidas nominais: exterior 40 mm, furo 16 mm, espessura 5 mm. Com 64 segmentos, o vão livre mínimo real é aprox. 15.980727 mm: ter um furo não garante um vão livre mínimo de pelo menos 16 mm.\n\nInclui visualizador local, STL originais, especificação JSON e verificador Python. Descompacte tudo numa pasta e execute em demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNão testamos conta do Kimi, não executamos seu modelo nem testamos a exportação ou impressão real. A descrição oficial consultada de recursos baixáveis para impressão não especifica STL. Os pesos completos foram prometidos para antes de 2026-11-04; não verificamos ter obtido os novos pesos. BenchCAD 92.7 é VoxelIoU with-tools, não sucesso de impressão.\n\nA checagem local só cobre o eixo indicado, amostragem limitada, medidas externas, arestas e volume. Não cobre todos os furos, autointerseções, espessura mínima de parede, fatiamento, materiais, carga nem condições de fabricação. Passar não é certificação de fabricação.",
+      "after": "Gravação/checagem: 2026-10-26 (Taipé). Kimi K3.1 Pro destaca a criação 3D. Quando dá para entregar o download? Para usar modelos 3D de IA em exibição, edição ou entrega de peças: comparamos dois STL de uma arruela original, das medidas e fechamento ao furo passante e vão livre mínimo.\n\nOs dois são materiais didáticos da equipe editorial. O preenchimento é proposital, não uma falha do Kimi. Medidas nominais: exterior 40 mm, furo 16 mm, espessura 5 mm. Com 64 segmentos, o vão livre mínimo real é aprox. 15.980727 mm: ter um furo não garante um vão livre mínimo de pelo menos 16 mm.\n\nInclui visualizador local, STL originais, especificação JSON e verificador Python. Descompacte tudo numa pasta e execute em demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNão testamos conta do Kimi, não executamos seu modelo nem testamos a exportação ou impressão real. A descrição oficial consultada de recursos baixáveis para impressão não especifica STL. Os pesos completos foram prometidos para antes de 2026-11-04; não verificamos ter obtido os novos pesos. BenchCAD 92.7 é VoxelIoU with-tools, não sucesso de impressão.\n\nA checagem local só cobre o eixo indicado, amostragem limitada, medidas externas, arestas e volume. Não cobre todos os furos, autointerseções, espessura mínima de parede, fatiamento, materiais, carga nem condições de fabricação. Passar não é certificação de fabricação.\nO verificador original não implementa esse novo requisito de vão livre mínimo.",
+      "reason": "Make new minimum-clearance gate limitation explicit; supported by source edz9/f106."
+    }
+  ],
+  "finals": [
+    {
+      "locale": "en",
+      "author_file": "translations-en-ja/final/en.todo.json",
+      "author_sha256": "c57fbf1dbde52dfd8880d4b121d8f167acbb285ab2ffced4a2085ff9aa9ce2fe",
+      "root_file": "en.todo.json",
+      "sha256": "05b39a4e465f8d299c89d62d82c303bb7c6761a4a7ce26e1491c27fc6e4b7907",
+      "bytes": 39242,
+      "description_bytes": 1561,
+      "text_only": true
+    },
+    {
+      "locale": "ja",
+      "author_file": "translations-en-ja/final/ja.todo.json",
+      "author_sha256": "a01cca491ce0b3456cc73a2697ded64bee34a3568ea9ba11164ab9cbb1a45d84",
+      "root_file": "ja.todo.json",
+      "sha256": "8478ce32ade842b08725c8c230bc161e7c6ae105f0586502b6f71e3c9f3ee36f",
+      "bytes": 42363,
+      "description_bytes": 1756,
+      "text_only": true
+    },
+    {
+      "locale": "ko",
+      "author_file": "translations-ko-vi/ko/ko.final.todo.json",
+      "author_sha256": "8d75230d16ec37222282b5d34cd0a2acc52bf1cd27971aab269cdabb9e9af187",
+      "root_file": "ko.todo.json",
+      "sha256": "19f34cc7293a49f196b9d5b9e81d6e37bdfbcb0c937e375216bf411fb19b8df9",
+      "bytes": 40752,
+      "description_bytes": 1575,
+      "text_only": true
+    },
+    {
+      "locale": "es",
+      "author_file": "translations-es-pt/final/es.todo.json",
+      "author_sha256": "a20166ae99ea3ce6e640880ddf55c8d236d9c56046529b0f62839ed78444d1d8",
+      "root_file": "es.todo.json",
+      "sha256": "832f77d7b013121a535227d430553a0f34544d2142c3f796e97a7e3f07990eab",
+      "bytes": 40012,
+      "description_bytes": 1590,
+      "text_only": true
+    },
+    {
+      "locale": "pt",
+      "author_file": "translations-es-pt/final/pt.todo.json",
+      "author_sha256": "0e37302b91a0a4c8a8a0b46b1852ef21b462747c1c23943efc9329f7fa7673d3",
+      "root_file": "pt.todo.json",
+      "sha256": "360add1a2cbbbf1082783afd7b3bf0fb83eb815b7e3a6497e4205af1350aab42",
+      "bytes": 39898,
+      "description_bytes": 1578,
+      "text_only": true
+    },
+    {
+      "locale": "id",
+      "author_file": "translations-id-th/id/id.todo.json",
+      "author_sha256": "01bdfce7df89a5e10bb8a6d167d51f4a7cd8b0cc4d683d7be179e4de6762e84c",
+      "root_file": "id.todo.json",
+      "sha256": "e17af7e8b629eb9ed0de28a7b4bf9c09586627c064cbd095966811fbde3add84",
+      "bytes": 39599,
+      "description_bytes": 1398,
+      "text_only": true
+    },
+    {
+      "locale": "vi",
+      "author_file": "translations-ko-vi/vi/vi.final.todo.json",
+      "author_sha256": "eb099d630df53b294c6320b440bc065a521ddbb20d074d2f4c2ea56b2ed0708e",
+      "root_file": "vi.todo.json",
+      "sha256": "25d49880f99dfdc68eaf2554de9bfac62b2018b984ef44f8720092194171013f",
+      "bytes": 42221,
+      "description_bytes": 1654,
+      "text_only": true
+    },
+    {
+      "locale": "th",
+      "author_file": "translations-id-th/th/th.todo.json",
+      "author_sha256": "eee4df7ac09a256bab179bbbf3ee35a3b5852ea9d90db3a5a70e8e170521ea10",
+      "root_file": "th.todo.json",
+      "sha256": "81eb9f83d6b6e017715b04f42e46f740adaab040ad0f04ed114af4971cdb254e",
+      "bytes": 52544,
+      "description_bytes": 1547,
+      "text_only": true
+    }
+  ],
+  "all_native_nontext_fields_unchanged": true,
+  "audio_fit_CPS_CC_approval": false,
+  "canonical_writes": false
+}

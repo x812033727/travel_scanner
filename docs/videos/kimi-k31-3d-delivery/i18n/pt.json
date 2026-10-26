@@ -1,0 +1,501 @@
+{
+  "title": "Kimi K3.1 Pro: seu modelo 3D baixado serve mesmo?",
+  "description": "Gravação/checagem: 2026-10-26 (Taipé). Kimi K3.1 Pro destaca a criação 3D. Quando dá para entregar o download? Para usar modelos 3D de IA em exibição, edição ou entrega de peças: comparamos dois STL de uma arruela original, das medidas e fechamento ao furo passante e vão livre mínimo.\n\nOs dois são materiais didáticos da equipe editorial. O preenchimento é proposital, não uma falha do Kimi. Medidas nominais: exterior 40 mm, furo 16 mm, espessura 5 mm. Com 64 segmentos, o vão livre mínimo real é aprox. 15.980727 mm: ter um furo não garante um vão livre mínimo de pelo menos 16 mm.\n\nInclui visualizador local, STL originais, especificação JSON e verificador Python. Descompacte tudo numa pasta e execute em demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNão testamos conta do Kimi, não executamos seu modelo nem testamos a exportação ou impressão real. A descrição oficial consultada de recursos baixáveis para impressão não especifica STL. Os pesos completos foram prometidos para antes de 2026-11-04; não verificamos ter obtido os novos pesos. BenchCAD 92.7 é VoxelIoU with-tools, não sucesso de impressão.\n\nA checagem local só cobre o eixo indicado, amostragem limitada, medidas externas, arestas e volume. Não cobre todos os furos, autointerseções, espessura mínima de parede, fatiamento, materiais, carga nem condições de fabricação. Passar não é certificação de fabricação.\nO verificador original não implementa esse novo requisito de vão livre mínimo.",
+  "tags": [
+    "Kimi K3.1 Pro",
+    "Kimi 3D Make",
+    "modelos 3D",
+    "STL",
+    "impressão 3D",
+    "entrega de modelos 3D",
+    "BenchCAD",
+    "notícias de IA",
+    "verificação de modelos",
+    "Mokaair"
+  ],
+  "thumbnail": {
+    "tag": "Kimi K3.1 Pro",
+    "headline": "Baixou\n**Serve?**",
+    "sub": "Uma arruela, dois arquivos, um requisito"
+  },
+  "chapters": {
+    "download-moment": "Uma arruela, três surpresas",
+    "news-reaches-desk": "Modelo novo, quais requisitos?",
+    "spec-arrives": "Do furo à especificação",
+    "outer-bounds-pass": "Medidas e fechamento: e agora?",
+    "run-ring-command": "Dois arquivos, um verificador",
+    "new-use-new-spec": "O uso muda a aceitação"
+  },
+  "source_hashes": {
+    "chapters": {
+      "download-moment": "e51064b94360",
+      "news-reaches-desk": "a6a91f46b8b1",
+      "spec-arrives": "c6d07c8cbe01",
+      "outer-bounds-pass": "bd19e2e5a94c",
+      "run-ring-command": "6afd37a1fee0",
+      "new-use-new-spec": "16ff0f3eba91"
+    },
+    "title": "952836668e80",
+    "description": "46848a68fd88",
+    "tags": "a542d0d7b55c",
+    "thumbnail": "d21661b0f36a"
+  },
+  "lines": {
+    "2g58": {
+      "source_hash": "e5256c8698cd",
+      "text": "Em 26 de outubro de 2026, abro neste computador duas arruelas didáticas que fiz."
+    },
+    "2sc4": {
+      "source_hash": "6b3e49e3002f",
+      "text": "Kimi K3.1 Pro destaca o 3D para baixar. Quando posso aceitar o arquivo recebido?"
+    },
+    "4ran": {
+      "source_hash": "6b6bcd244689",
+      "text": "Mudo para a vista lateral e espero a comparação das medidas externas com a especificação."
+    },
+    "pfy0": {
+      "source_hash": "d6c1972bf2c2",
+      "text": "O resultado de malha fechada ainda não apareceu. O que ele garante?"
+    },
+    "5jr1": {
+      "source_hash": "7477deec8160",
+      "text": "Ao ver o corte do furo, será que o ponto mais estreito atende ao requisito?"
+    },
+    "fv1i": {
+      "source_hash": "363986dce4f4",
+      "text": "No mesmo visualizador, mantenho ângulos comparáveis para os dois arquivos que fiz."
+    },
+    "6yl7": {
+      "source_hash": "7c930eebed4c",
+      "text": "Juntando especificação, originais e resultados, a diferença aparece."
+    },
+    "b7uf": {
+      "source_hash": "d77b7a380bcc",
+      "text": "Com a mesma especificação, você decide se aceita ou devolve o arquivo recebido."
+    },
+    "gzek": {
+      "source_hash": "ff7586e4b01a",
+      "text": "O que falta para uma bela prévia 3D virar uma peça útil?"
+    },
+    "q0p1": {
+      "source_hash": "ee0342a2d04b",
+      "text": "Abro a especificação das duas amostras; ponho medidas exigidas e dados do modelo lado a lado."
+    },
+    "lqfp": {
+      "source_hash": "71bb6443e1d8",
+      "text": "A nova versão do Kimi, de 24 de outubro, horário de Taipé, oferece 3D Make."
+    },
+    "h9gn": {
+      "source_hash": "86accf8a9884",
+      "text": "No 3D Make, dá para visualizar e editar online, além de baixar os recursos."
+    },
+    "zwa9": {
+      "source_hash": "1e53ebfc088d",
+      "text": "A impressão 3D é um uso oficial, mas não define a entrega desta arruela."
+    },
+    "ekg8": {
+      "source_hash": "27bbc4fe7ee6",
+      "text": "Os pesos completos seguem prometidos antes de 4 de novembro; não são o arquivo de hoje."
+    },
+    "rw5b": {
+      "source_hash": "87acb7a3f2a8",
+      "text": "Primeiro confirme o formato e o uso desta arruela; poder baixar não basta para aceitá-la."
+    },
+    "0glu": {
+      "source_hash": "7383bb42dedf",
+      "text": "Em uma avaliação de reconstrução 3D, foi divulgada a pontuação de 92.7."
+    },
+    "y868": {
+      "source_hash": "dbf451505279",
+      "text": "Com ferramentas, reconstrói-se a forma 3D a partir de imagens de vários ângulos."
+    },
+    "0m8z": {
+      "source_hash": "dd57695117d3",
+      "text": "O teste de modelos abertos usou 1000 arquivos sorteados de um total de 17900."
+    },
+    "uyzf": {
+      "source_hash": "3f91305a67df",
+      "text": "A métrica compara quanto a forma reconstruída se sobrepõe à forma de referência."
+    },
+    "dzyw": {
+      "source_hash": "3f106761ae62",
+      "text": "Não é a taxa de peças úteis obtida ao imprimir 100 peças."
+    },
+    "nc22": {
+      "source_hash": "2ee956ac1a58",
+      "text": "Voltando à arruela: antes de aceitá-la, qual requisito concreto ainda falta?"
+    },
+    "56w0": {
+      "source_hash": "4281a83e3340",
+      "text": "A haste deve passar pelo centro, e o anel externo preservar a área de contato."
+    },
+    "66ya": {
+      "source_hash": "e669ea11da26",
+      "text": "Se só pedir que pareça arruela, mesmo bonita, cada lado pode esperar algo diferente."
+    },
+    "1ks6": {
+      "source_hash": "45b4c0ed3c38",
+      "text": "A diferença pode passar despercebida na prévia; escrita como requisito, permite comparar."
+    },
+    "zmyw": {
+      "source_hash": "c93f45134595",
+      "text": "O diâmetro externo de 40 mm fixa o espaço que esta arruela didática ocupa."
+    },
+    "1gex": {
+      "source_hash": "460f9a9a3d8f",
+      "text": "Os 16 mm nominais do furo são a meta ao desenhar o círculo, não o vão livre mínimo medido."
+    },
+    "v5m0": {
+      "source_hash": "cf481634f945",
+      "text": "A espessura de 5 mm é a distância da base até a face superior."
+    },
+    "d0ap": {
+      "source_hash": "c6d0428004bd",
+      "text": "Esses números vão num arquivo de especificação entregue junto dos dois STL."
+    },
+    "tvz8": {
+      "source_hash": "935057a49210",
+      "text": "Unidade, diâmetros externo e do furo e altura têm campos próprios: sem adivinhar ao editar."
+    },
+    "4sem": {
+      "source_hash": "883b702e3770",
+      "text": "Se você muda seus requisitos, o verificador precisa ler esses mesmos requisitos."
+    },
+    "9xjo": {
+      "source_hash": "dd54352d926b",
+      "text": "Se aquele 40 é só uma coordenada, como ele passa a significar milímetros?"
+    },
+    "o3u0": {
+      "source_hash": "cc499784147c",
+      "text": "STL não traz unidade: a especificação externa e a importação precisam concordar."
+    },
+    "0sh9": {
+      "source_hash": "3d604fc183e1",
+      "text": "Uma unidade errada muda o tamanho da peça toda; caber na tela não basta."
+    },
+    "fu17": {
+      "source_hash": "681e4677e461",
+      "text": "Os dois arquivos abertos aqui são STL com dados reais de triângulos."
+    },
+    "7gpn": {
+      "source_hash": "7bd9eb8835b8",
+      "text": "Ambos usam a mesma orientação de coordenadas e esta especificação em milímetros."
+    },
+    "89zh": {
+      "source_hash": "faa9397391f4",
+      "text": "Com o mesmo requisito de peça, focamos a diferença naquele furo passante exigido."
+    },
+    "o8jk": {
+      "source_hash": "202437132685",
+      "text": "Preenchi o centro de uma amostra de propósito como contraexemplo para a entrega."
+    },
+    "dag4": {
+      "source_hash": "6bbd602a3a61",
+      "text": "Não é falha de geração do Kimi: com a mesma forma externa, vemos se verificamos o furo."
+    },
+    "palv": {
+      "source_hash": "6de2fd7596f6",
+      "text": "Controlar esse preenchimento permite comparar a checagem das medidas externas."
+    },
+    "f84c": {
+      "source_hash": "a7144da00f0e",
+      "text": "Ao receber um modelo, talvez comece medindo comprimento, largura e altura com a régua."
+    },
+    "ipjt": {
+      "source_hash": "088d27c4283a",
+      "text": "Se isso bastasse, também deveria barrar o contraexemplo com o centro preenchido."
+    },
+    "0jfv": {
+      "source_hash": "ac4ff6aef353",
+      "text": "Agora os dois modelos com a mesma forma externa passam juntos por essa checagem."
+    },
+    "ox5o": {
+      "source_hash": "6fbcd622aec8",
+      "text": "Na caixa externa indicada, os dois medem 40, 40 e 5."
+    },
+    "6skt": {
+      "source_hash": "5dd6b2d51ac5",
+      "text": "A caixa engloba as coordenadas extremas; ter material no centro não muda seu tamanho."
+    },
+    "z5jf": {
+      "source_hash": "e193a3118630",
+      "text": "A régua confirmou a forma externa, mas ainda não respondeu sobre o furo que precisamos."
+    },
+    "boyv": {
+      "source_hash": "0ae2eb3df893",
+      "text": "Será mais confiável verificar se a malha está fechada?"
+    },
+    "ljeg": {
+      "source_hash": "97c4d72b2e28",
+      "text": "A checagem vê se as arestas dos triângulos se ligam bem às faces vizinhas."
+    },
+    "njr0": {
+      "source_hash": "3f58522ece93",
+      "text": "Nenhum arquivo tem arestas de borda; isso ainda não diz se dá para entregá-lo."
+    },
+    "q8wd": {
+      "source_hash": "7254d2396f8a",
+      "text": "A arruela pode ter furo passante e uma superfície completa em volta do vazio."
+    },
+    "ip0k": {
+      "source_hash": "e19fccd1f508",
+      "text": "A parede externa se liga ao topo, o topo à parede do furo, e a base fecha o percurso."
+    },
+    "pqc3": {
+      "source_hash": "487dfedb4993",
+      "text": "Malha fechada é superfície do material sem junções abertas; não exige preencher o centro."
+    },
+    "h0ab": {
+      "source_hash": "2f3eba2f0f6b",
+      "text": "A amostra furada tem 512 triângulos; o contraexemplo preenchido tem 256."
+    },
+    "ni1q": {
+      "source_hash": "bf0036038b4e",
+      "text": "O dobro de faces só mostra como esta malha foi dividida; não é uma nota de qualidade."
+    },
+    "s8d7": {
+      "source_hash": "451202da75cb",
+      "text": "Nem a caixa nem o fechamento viram a passagem central; é preciso olhar em outro lugar."
+    },
+    "qhwk": {
+      "source_hash": "b0ff2e117723",
+      "text": "O furo exigido fica no centro e atravessa a espessura, da base ao topo."
+    },
+    "u98g": {
+      "source_hash": "db512fe298a2",
+      "text": "Um furo em outro lugar ou um círculo desenhado não substituem essa passagem."
+    },
+    "rk1x": {
+      "source_hash": "3205fa814f4b",
+      "text": "Nas duas amostras, a base fica em zero e o topo na espessura especificada."
+    },
+    "a6o8": {
+      "source_hash": "49bf205f8e52",
+      "text": "Descompacte tudo numa pasta e abra primeiro o visualizador incluído no navegador."
+    },
+    "qqjh": {
+      "source_hash": "333693d1e7a9",
+      "text": "Alterne vista superior e lateral para separar medidas externas e passagem central."
+    },
+    "wmo7": {
+      "source_hash": "5c7a312c0e0c",
+      "text": "Para checar os originais, mantenha a especificação; o mesmo programa lê os triângulos."
+    },
+    "t7wu": {
+      "source_hash": "9f87381477f8",
+      "text": "Abra um terminal na pasta do material e cole o comando completo da tela."
+    },
+    "zx72": {
+      "source_hash": "8c51ab90d083",
+      "text": "Ele lerá a amostra furada e aquela especificação externa."
+    },
+    "a2bm": {
+      "source_hash": "0abb1a553b20",
+      "text": "O verificador compara coordenadas e triângulos com a mesma especificação externa."
+    },
+    "up0s": {
+      "source_hash": "65ec82799748",
+      "text": "Cole este outro comando para usar o contraexemplo preenchido de propósito."
+    },
+    "sfk4": {
+      "source_hash": "93119dc8199e",
+      "text": "Programa e especificação ficam iguais; só muda o modelo verificado."
+    },
+    "cmuz": {
+      "source_hash": "1e82e94e9dd2",
+      "text": "Assim localizamos por que as medidas coincidem, mas os resultados diferem."
+    },
+    "x3p9": {
+      "source_hash": "f86d30a28a93",
+      "text": "O exterior passou. Será que triângulos bloqueiam o centro?"
+    },
+    "5len": {
+      "source_hash": "479cb6f41788",
+      "text": "O programa amostra o furo e calcula interseções com triângulos ao longo da espessura."
+    },
+    "5fad": {
+      "source_hash": "d6dabac47d06",
+      "text": "A amostragem limitada conta as linhas bloqueadas; não garante qualquer formato de furo."
+    },
+    "l8p2": {
+      "source_hash": "e6dc61221635",
+      "text": "Nenhuma linha de observação da amostra furada toca material."
+    },
+    "it4f": {
+      "source_hash": "0ce141d0dbc6",
+      "text": "No contraexemplo preenchido, todas as linhas são bloqueadas."
+    },
+    "1b0m": {
+      "source_hash": "ee207c238450",
+      "text": "O arquivo inicial, de igual tamanho mas sem poder ser entregue, já tem motivo de devolução."
+    },
+    "v4r0": {
+      "source_hash": "f687a7f69668",
+      "text": "Na metade da altura, o corte da amostra furada deixa dois contornos: interno e externo."
+    },
+    "8q11": {
+      "source_hash": "130f601b6663",
+      "text": "O contorno interno cerca o vazio; o preenchido só tem contorno externo e material no centro."
+    },
+    "qlqs": {
+      "source_hash": "8aeebb645b6c",
+      "text": "Em outras alturas, persiste essa diferença entre o centro vazio e o preenchido."
+    },
+    "2g8t": {
+      "source_hash": "02ebdaf48309",
+      "text": "O volume do material também confirma, por outro caminho, aquele preenchimento central."
+    },
+    "dra2": {
+      "source_hash": "aa7e67a2faaa",
+      "text": "O contraexemplo preenchido tem mais volume, embora mantenha as mesmas medidas externas."
+    },
+    "lxiq": {
+      "source_hash": "e4f3839fe9f8",
+      "text": "O contraexemplo bloqueado também não atende ao volume exigido na especificação."
+    },
+    "yxau": {
+      "source_hash": "f2adf91f7d7d",
+      "text": "Se o centro está vazio, o ponto mais estreito sempre atende ao diâmetro nominal?"
+    },
+    "i9h8": {
+      "source_hash": "7ceb929b1c14",
+      "text": "O círculo é aproximado por 64 segmentos retos, com vértices no raio indicado."
+    },
+    "b3ef": {
+      "source_hash": "c61874db21dd",
+      "text": "O segmento entre dois vértices fica mais perto do centro do que o arco circular."
+    },
+    "pypq": {
+      "source_hash": "30f702a0cae8",
+      "text": "O menor diâmetro mede cerca de 15.98 mm, um pouco menos que o nominal."
+    },
+    "c8u0": {
+      "source_hash": "6e708932531d",
+      "text": "A diferença é menor que 0.02 mm, mas fica bem onde a haste precisa passar."
+    },
+    "vlft": {
+      "source_hash": "fa124d1b1a03",
+      "text": "Compare o ponto mais estreito da passagem; não basta ver se há um furo."
+    },
+    "zzay": {
+      "source_hash": "ae6f973846c3",
+      "text": "Se exigir vão livre mínimo de pelo menos o diâmetro nominal, esta amostra deve ser devolvida."
+    },
+    "c8hn": {
+      "source_hash": "a5125b7ff010",
+      "text": "A medição anterior mostra que o ponto mais estreito fica abaixo desse novo requisito."
+    },
+    "qqez": {
+      "source_hash": "ace04997aafb",
+      "text": "Se o uso desta arruela exigir mais, não dá para reutilizar direto a aprovação limitada."
+    },
+    "5m5q": {
+      "source_hash": "231a2969bad4",
+      "text": "Como escrever o novo vão livre mínimo numa frase que quem recebe possa conferir?"
+    },
+    "33ye": {
+      "source_hash": "cae95ccdd0eb",
+      "text": "Escreva na entrega: vão livre mínimo da peça acabada de pelo menos 16 mm."
+    },
+    "edz9": {
+      "source_hash": "5f015817fad5",
+      "text": "É um requisito à parte, não um campo já implementado na especificação original."
+    },
+    "f106": {
+      "source_hash": "1b822456cba9",
+      "text": "O verificador não testou a nova condição; sua aprovação não responde ao requisito."
+    },
+    "x4k6": {
+      "source_hash": "6753920eb84e",
+      "text": "Esta aprovação só cobre o eixo indicado, as medidas, as arestas da malha e o volume."
+    },
+    "1cox": {
+      "source_hash": "b36327fd2aac",
+      "text": "Além dos furos de qualquer formato já mencionados, ainda não verificamos autointerseções nem a espessura mínima de cada parede."
+    },
+    "6rli": {
+      "source_hash": "facfa20da921",
+      "text": "Fatiamento, material, carga e uso real da peça impressa ainda ficam para depois."
+    },
+    "3w3j": {
+      "source_hash": "b43310e0409c",
+      "text": "Voltando ao Kimi: este verificador só lê STL em texto, não imagens diretamente."
+    },
+    "kwmv": {
+      "source_hash": "30c68da26eb2",
+      "text": "Para outro formato de malha, você precisa de uma ferramenta que o leia bem."
+    },
+    "cezr": {
+      "source_hash": "642a91565718",
+      "text": "Mudar a extensão para STL não converte o conteúdo original em dados de triângulos."
+    },
+    "d7t1": {
+      "source_hash": "f7f807b51d7e",
+      "text": "Se quiser continuar alterando o furo, o que falta na entrega além desta malha?"
+    },
+    "t3r1": {
+      "source_hash": "45676ab928d3",
+      "text": "A prévia mostra a forma geral; a malha permite verificar a superfície real."
+    },
+    "rwiy": {
+      "source_hash": "9c68d5bc003f",
+      "text": "Para seguir mudando o diâmetro, peça também o arquivo-fonte que preserve como editá-lo."
+    },
+    "ul11": {
+      "source_hash": "f80b707aa13b",
+      "text": "Uma malha de triângulos como STL não preserva automaticamente como você desenhou aquele círculo."
+    },
+    "hrlr": {
+      "source_hash": "37b45190a2a2",
+      "text": "Ainda não testei quais extensões o Kimi pode exportar."
+    },
+    "vum2": {
+      "source_hash": "4a42896ae43f",
+      "text": "Anunciar downloads para impressão não equivale a comprovar como exportar STL."
+    },
+    "cen6": {
+      "source_hash": "62a3c8bf0a8c",
+      "text": "Ao testar, confira permissões da conta e arquivos recebidos; depois escolha a ferramenta."
+    },
+    "oe9l": {
+      "source_hash": "0384e3d51956",
+      "text": "Vou entregar juntos os modelos que acabamos de ver, a especificação da mesma versão e os resultados."
+    },
+    "0gjn": {
+      "source_hash": "3e4a9688c27e",
+      "text": "Se a versão do original mudar, ainda dá para entregá-lo com estes resultados?"
+    },
+    "fxx4": {
+      "source_hash": "aa73b231996e",
+      "text": "Se o original muda, os resultados só valem para o arquivo antigo; não se atualizam sozinhos."
+    },
+    "3ro5": {
+      "source_hash": "48195b652435",
+      "text": "Assim, quem entrega explica o que fez, e quem recebe tem como conferir de novo."
+    },
+    "usyf": {
+      "source_hash": "62e1f245b7ab",
+      "text": "Devolva o contraexemplo preenchido com seus resultados, dando uma base concreta para corrigir."
+    },
+    "su1a": {
+      "source_hash": "f3778dfd1c3d",
+      "text": "Você pode entregar a amostra furada e resultados limitados, mas não garantias de fabricação sem verificar."
+    },
+    "vw33": {
+      "source_hash": "68eabd430f3e",
+      "text": "Se quem recebe acrescentar esse vão livre mínimo, inclua a comparação das medições independentes."
+    },
+    "nqza": {
+      "source_hash": "bdf61d6ed30f",
+      "text": "A beleza convida a baixar; um uso claro define o que verificar depois do download."
+    },
+    "45nk": {
+      "source_hash": "513b82dd0b3b",
+      "text": "Só se o arquivo cumprir sua especificação e tiver resultados ligados a ele, dá para dizer onde usá-lo."
+    },
+    "70ym": {
+      "source_hash": "3d0791b9b4c7",
+      "text": "Esta arruela precisa entregar uma resposta que quem recebe possa conferir de novo."
+    }
+  }
+}
