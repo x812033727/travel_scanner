@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文版16:11.97預覽與播放器抽查通過；QA10/11，13句旁白受服務限制待重錄，最新續試仍失敗，16:00台北後才可再試。八語配音尚未開始 |
+| 1 | curio-s31 | curio-s31-v2 | 13疑句已成功重錄；新旁白正文15:43，待新WAV獨立辨識及音訊QA，再重組中文版。八語配音尚未開始 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,7 +34,13 @@
 
 ## 當前斷點
 
-**最新實況：2026-10-27 12:02台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+**最新實況：2026-10-27 16:05台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+
+16:00退避後正常續作已成功：session62156於16:04:27台北native_exit=0，完成13請求／242計費字元、158請求沿用。13句WAV均實際改變，已逐檔凍結；source/script與speechHash未變，audio_evidence0問題、journal空且lease釋放。新旁白正文28290frames／30fps＝943秒（15:43），新timeline SHA `2c8ca9bcb1351ff046e2d70a4593bdb42442ea9a56172748b06a256875d602bf`、narration SHA `8aba58fcb273ab577bb7b87b380bd79babb24147a845ac89f09b044fc0874082`。成功重錄輪數現在是1；前五個provider拒絕指令沒有完成重錄。完整收據見[speech-retry-20261027-1600.json](speech-retry-20261027-1600.json)，private新cohort manifest SHA `fb86a85557d67c3c1fa6f849564fc27986fb5ced4b0212a52ce485ed8c693a46`。
+
+當前下一步是對這13個新SHA的凍結WAV作cached Whisper獨立辨識，再用新SHA reader跑官方check-audio；舊13flags只屬於舊音檔，不能沿用舊轉寫或判定到新WAV。`s31_audio_plan`準備唯一新scratch／一次SSH的離線批次，`s31_translate_ko_es`先覆核launcher與reader；先查當前agent／private收據，不競爭啟動第二份ASR或任何TTS。舊16:11.97預覽與10/11QA是重錄前歷史，現在與新旁白不同，尚需音訊QA及重組；不得核准audio／final或接S15。
+
+16:01最初的本機啟動因Windows `--import C:/...`得到`ERR_UNSUPPORTED_ESM_URL_SCHEME`，native1；helper與CLI都未載入、diagnostic檔未建立，21檔未變、journal空。已保存啟動與對帳收據，獨立無害control確認改`--import file:///C:/...`才可載入；之後使用全新`tts-after1600-fileurl`槽位完成上述唯一正常provider續試。這個local startup failure不計provider refusal或成功重錄，舊槽位不得重播。凍結helper SHA未變，實際觀測非2xx紀錄0筆；沒有為診斷額外probe。後續Windows呼叫一律使用file URL。
 
 11:40退避後已只正常續試一次，session21401保存native_exit=4，仍為相同Gemini忙碌／用量限制；dry-run13句／242字元，站內月額度5743335。21個凍結檔案全未變、audio_evidence0問題、journal全空且lease已釋放，成功重錄輪數仍0，沒有新ASR或新集。原始dispatch／native exit／result均保留，見[speech-retry-20261027-1140.json](speech-retry-20261027-1140.json)；不要重跑`tts-after1140`的已結束槽位。**下次不得早於16:00台北（08:00Z）**，至少240分鐘退避後再正常續試一次；若仍受限繼續延長，不推定供應商重置時間，也不變更聲音、供應商或全域預算。現在五個語音指令都沒有完成重錄，不等同已做五輪音訊品質重錄。
 
@@ -42,13 +48,13 @@
 
 已將「Gemini合成429缺少安全結構診斷」另開P2未認領票`2026-10-27-preserve-safe-gemini-tts-429-diagnostics`，只追蹤adapter/serverlog觀測資訊，不在本影片票改共用工具、設定或部署；該票記錄與pilot-budget票的scope碰撞，實作前仍須查持有者。現有accesslog不足分辨provider busy與quota，不為取得錯誤碼而另送付費probe。
 
-下一次正常TTS可附帶私有唯讀transport觀測：`curio-s31-v2-preflight/curio-tts-transport-diagnostic.mjs`，凍結SHA `df217e9f22be3f52220d94f7fbab84ac301d022643fa31a2f1c8238f143aace9`。獨立static及4組離線mock測試通過，165次mock皆只呼叫原fetch一次，保留原Promise／Response／例外，不新增網路或重試；只記實際本機API非2xx的HTTP碼、有限白名單problem.code與有界Retry-After秒數。見[speech-transport-observer-20261027.json](speech-transport-observer-20261027.json)。16:00後仍先核對source／WAV／journal／lease／process，再以bundled Node `--import` 此檔執行原本當前13flags的正常TTS；`CURIO_TTS_TRANSPORT_DIAGNOSTIC_FILE`只設全新唯一JSONL basename（省略會自動產生唯一名），收據保留在preflight。不可重用舊檔或為診斷多送probe；basename無效／已存在時helper會不啟用觀測而保留原fetch，不會攔住CLI。仍須立即保存並傳遞native exit。此離線準備尚未取得真實problem.code，也無法還原server丟掉的provider quota body或證明重置時間。
+已準備並在成功續作中使用的私有唯讀transport觀測：`curio-s31-v2-preflight/curio-tts-transport-diagnostic.mjs`，凍結SHA `df217e9f22be3f52220d94f7fbab84ac301d022643fa31a2f1c8238f143aace9`。獨立static及4組離線mock測試通過，165次mock皆只呼叫原fetch一次，保留原Promise／Response／例外，不新增網路或重試；只記實際本機API非2xx的HTTP碼、有限白名單problem.code與有界Retry-After秒數。見[speech-transport-observer-20261027.json](speech-transport-observer-20261027.json)（離線準備快照）及上方實際續作收據。Windows須用bundled Node `--import file:///C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/curio-tts-transport-diagnostic.mjs`；`CURIO_TTS_TRANSPORT_DIAGNOSTIC_FILE`只設全新唯一JSONL basename（省略會自動產生唯一名），收據保留在preflight。不可重用舊檔或為診斷多送probe；basename無效／已存在時helper會不啟用觀測而保留原fetch，不會攔住CLI。仍須立即保存並傳遞native exit。它無法還原server丟掉的provider quota body或證明重置時間。
 
 09:06台北站主要求「繼續」後再次唯讀核對：source/script/preview SHA、speechHash、visualHash均與驗證收據相同，audio_evidence0問題、13flags未變、journal全空、lease與本集producer皆無。尚未到09:30，不因一般「繼續」提早重送。另以本機無害退出碼對照確認PowerShell會把未明確傳遞的native非零碼包成外層1，見[speech-exit-scope-20261027.json](speech-exit-scope-20261027.json)。未呼叫provider、未改聲音或預算。今後CLI結束後立即保存並傳遞`$LASTEXITCODE`，將native碼與外層shell碼分開記錄；43490當次native碼沒有保存，不能事後追認成4。
 
-目前沒有仍在執行的本集製作指令；最後EN render session98057已exit0，補產CC也已exit0。最新完整驗證收據為[production-preview-r6.json](production-preview-r6.json)（08:46:47台北快照）：當前source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA均核對通過；原版final SHA仍為`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
+重錄前的EN render session98057與補產CC均已exit0。[production-preview-r6.json](production-preview-r6.json)是08:46:47台北的歷史完整驗證快照：當時source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA核對通過；重錄後不能用它證明舊成片與新旁白相同。原版final SHA仍保留`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
 
-**下一個可行動斷點是16:00台北後的語音續作**，不是再生圖、重跑既有ASR、反覆問policy或開始S15。先核對最新WAV／journal／lease／process，再只正常續試當前13句一次並保存native exit；若仍busy/quota，保留收據並延長退避。音訊未過，所以audio／final／完整八語交付包均未完成；不能勾整集完成。
+**下一個可行動斷點是新13WAV的獨立ASR與官方音訊QA**。先讀新cohort與正在準備／執行的ASR收據，不重播任何已結束TTS槽位。音訊未過，且舊成片尚未重組，所以audio／final／完整八語交付包均未完成；不能勾整集完成或開始S15。
 
 - 配對已恢復，不再要求站主重配。guarded keyframes最後session `7898` 已正常完成：129/129張judge通過，沒有needs_review；官方keyframeProblems為0，visual_hash `4ff8941e6473b9f4`、speechHash `8af0af8b6fb7d1e4`。六頁最新圖板已由代理實際檢視，依站主推薦選擇委託記錄storyboard核准，並非站主本人觀看。manifest SHA `fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2`。
 - 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。

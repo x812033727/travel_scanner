@@ -2,7 +2,9 @@
 
 狀態：**旁白已生成，音訊QA尚未通過，沒有成片核准**。
 
-最新續試（11:40退避後，12:02讀回）：session21401仍為native_exit4／Gemini忙碌或用量限制，21個凍結檔案未變、journal空且lease釋放，成功重錄輪數仍0。當前13flags保持，沒有新ASR；下一次不得早於**16:00台北**，只正常續試一次且需先查journal／WAV／lease／process。原始收據保留，見[speech-retry-20261027-1140.json](speech-retry-20261027-1140.json)。下方11:40及09:30內容是先前履歷。
+最新16:05台北：session62156已native_exit0，13疑句成功重錄（13requests／242字元，158reused），13個WAV SHA全改變且已凍結；source與speechHash不變、audio_evidence0問題、journal空且lease釋放。正文現在28290frames／30＝943秒（15:43），成功重錄輪數1。正準備新13WAV的cached Whisper盲式辨識與新SHA reader；下方原13flags／轉寫是舊音檔結果，不能當作新WAV的QA，也不能沿用舊reader結果。舊預覽與QA需要在音訊通過後重組更新。見[speech-retry-20261027-1600.json](speech-retry-20261027-1600.json)。16:01另有已對帳的Windows preload本機啟動錯誤，未載CLI或送provider；已改file URL，不計provider refusal。
+
+先前續試（11:40退避後，12:02讀回）：session21401仍為native_exit4／Gemini忙碌或用量限制，21個凍結檔案未變、journal空且lease釋放，當時成功重錄輪數仍0。當時13flags保持，沒有新ASR；16:00退避斷點已由上段成功續作收據取代。原始收據保留，見[speech-retry-20261027-1140.json](speech-retry-20261027-1140.json)。下方11:40及09:30內容是先前履歷。
 
 先前續試（09:35:57派送，09:38讀回）：session16091已native_exit4，仍回覆忙碌／用量限制；21個凍結檔案與13句WAV未變、journal空、成功重錄輪數0。此輪已明確保存native exit，不混淆PowerShell外層碼。當時設定下一次不得早於**11:40台北**；該斷點已由上段12:02收據取代。見[speech-retry-20261027-0930.json](speech-retry-20261027-0930.json)。下方09:30文字是前一輪歷史，不能當作新重送授權。
 
@@ -32,6 +34,6 @@
 
 第一輪第二轉寫後的歷史15句：`lz204`、`v2a0281`、`lz310`、`lz318`、`v2a0461`、`v2a0471`、`v2a0491`、`lz422`、`v2a0611`、`lz505`、`lz506`、`lz511`、`v2a0722`、`v2a0731`、`lz519`。後續正式語境複查另排除`lz204`、`lz505`，目前剩13句，不能照舊15句清單盲目重錄。
 
-下一步是不早於16:00台北、且沒有其他製作程序時的一次正常退避續作：先核對journal及現有音檔，只重錄官方當前13句flags，再對完成的新音檔做獨立辨識與官方檢查；若busy/quota再現則延長退避。reader只接受原WAV雜湊；變更後音檔必須重新辨識，不能沿用這份結果。只處理有證據的疑句，不因生僻人名、同音字或同景切句位置就重錄整集。
+下一步是對剛成功重錄的13個新WAV做獨立辨識與官方檢查；先查新cohort與當前ASR程序，不再送同一份TTS。舊reader只接受原WAV雜湊；變更後音檔必須使用新辨識，不能沿用這份歷史結果。只處理有證據的疑句，不因生僻人名、同音字或同景切句位置就重錄整集。
 
 八語文字覆核另見 [i18n-review-summary.json](i18n-review-summary.json)。逐語配音、實際窗口fit、字幕偏移、品牌片頭片尾、成片音量與播放器檢查均尚未通過。

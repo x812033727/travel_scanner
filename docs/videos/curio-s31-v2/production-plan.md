@@ -44,7 +44,9 @@
 
 先前09:38台北：09:30退避後已正常續試一次13句／242字元，session16091保存native_exit4，仍為Gemini忙碌／用量限制；21個凍結檔案未變，成功重錄輪數0、journal全空且lease已釋放。累計四個語音指令均未完成重錄，不把拒絕請求算成已錄完的品質重錄輪次。當時11:40台北的退避斷點已由下段12:02收據取代；沒有新WAV就不再跑ASR或重合成，不提早接下一集。見[speech-retry-20261027-0930.json](speech-retry-20261027-0930.json)及[batch-queue.md](batch-queue.md)。
 
-最新12:02台北：11:40退避後的一次續作session21401仍native_exit4／busy-quota，21檔未變、journal全空、lease釋放，沒有成功重錄或新ASR；當前13句仍待修正。已延長退避至**16:00台北**，240分鐘後才可再正常續試一次，不推定日額或供應商重置時間。第五個未完成語音指令的實證見[speech-retry-20261027-1140.json](speech-retry-20261027-1140.json)。音訊、final、八語配音與完整交付包仍未完成。
+先前12:02台北：11:40退避後的一次續作session21401仍native_exit4／busy-quota，21檔未變、journal全空、lease釋放，沒有成功重錄或新ASR；當時13句仍待修正。退避至**16:00台北**的斷點已由下段成功續作收據取代，不推定日額或供應商重置時間。第五個未完成語音指令的實證見[speech-retry-20261027-1140.json](speech-retry-20261027-1140.json)。音訊、final、八語配音與完整交付包仍未完成。
+
+最新16:05台北：退避後session62156已native_exit0，完成13requests／242字元、158reused；13WAV實際改變並凍結，正文28290frames／30＝943秒，audio_evidence0問題、journal空且lease釋放。成功重錄輪數1，現在先做新WAV獨立ASR與官方音訊QA；舊13flags屬舊take，舊16:11.97預覽／10/11QA與新旁白不同，尚未重組或核准。新cohort manifest SHA `fb86a85557d67c3c1fa6f849564fc27986fb5ced4b0212a52ce485ed8c693a46`，收據[speech-retry-20261027-1600.json](speech-retry-20261027-1600.json)。先前Windows preload URL錯誤已離線查明並對帳，CLI未載入；改用file URL後才完成唯一正常provider續作。圖片／評審與配樂沒有新費用，八語配音及交付包仍待辦。
 
 ## 接續順序
 
