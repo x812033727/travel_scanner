@@ -1,0 +1,62 @@
+{
+  "kind": "ROOT_DuckDB_four_replacement_cards_actual_visual_review_v1",
+  "recorded_at": "2026-10-27T09:21:54.527152+00:00",
+  "source": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+    "bytes": 58095,
+    "sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8"
+  },
+  "actual_body_render_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-body-remedial-exec-exit.json",
+    "bytes": 490,
+    "sha256": "14a922664fcae3a9635072000499f99f71c09cf3ba4c3f67a36061955f741d40"
+  },
+  "rows": [
+    {
+      "scene": "valid-json-fields",
+      "index": 35,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/257af747f0ba007e.png",
+      "bytes": 116584,
+      "sha256": "fbe22ffb9284059fbc7bde0916bc235a752f4439fe396fd3201b3f5f9b9df145",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "root",
+      "evidence": "代理模式四錯誤欄位完整，包括actual_day與候選actual_days、parcel_id；完整底部key，不再有裁切heading。"
+    },
+    {
+      "scene": "first-delivered-late",
+      "index": 49,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/cdf9ed8f759546d1.png",
+      "bytes": 96265,
+      "sha256": "60fb18db20c8296458fffa204f9045b548e1a225e00c02bb94632fdd611b0e73",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "root",
+      "evidence": "P0002完整保留R2、承諾3、實際4、差1；底部從完整檔抽一筆回查全字完整。"
+    },
+    {
+      "scene": "tail-of-output",
+      "index": 50,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/3e5e52d53c816c4d.png",
+      "bytes": 96407,
+      "sha256": "5fa4f19f7b007f41930326c93510c9e43c3835d8114ba55f895ecc37800569f3",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "root",
+      "evidence": "四筆末端紀錄P1191/R3/2、P1194/R2/1、P1198/R2/1、P1199/R3/2完整，key全字無裁切。"
+    },
+    {
+      "scene": "handoff-pack",
+      "index": 63,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/d4316d96a63f8abd.png",
+      "bytes": 115166,
+      "sha256": "da5c306f69d2e9916cdb8b8fb96b3b4b17af87b053b6dd575b34972de4bc9e06",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "root",
+      "evidence": "CSV/Parquet/SQL/HTML四交付用途文字完整，key交出能重查的教材無裁切。"
+    }
+  ],
+  "blocking_findings": [],
+  "scope": "Only four actual replacement originals. Root also independently inspected original35 crop; original64 review remains immutable; unchanged60 require hash-bound original review continuity."
+}

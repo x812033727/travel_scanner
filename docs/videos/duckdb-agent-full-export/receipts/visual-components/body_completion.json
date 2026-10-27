@@ -1,0 +1,117 @@
+{
+  "kind": "actual_DuckDB_native_four_body_title_repair_attempt_v1",
+  "pid": 375755,
+  "intent_id": "duckdb-four-body-titles-20261027t091845",
+  "started_at": "2026-10-27T09:19:04.947Z",
+  "helper_sha256": "e7764737968c86f7225f289b2b8491af2f30325a73d0db772aefbc6803686914",
+  "profile_sha256": "f269dbbd60606fcbd728094605309bb41e06eb46b81146a65a047f63e7e8e02b",
+  "release_sha256": "023da1b240a17fddad1fb5f6148a2237a99d6a9c6c8a5fa2a79229f83b0ab5ef",
+  "source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "new_source_sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8",
+  "head": "3844641cd604b52a153d00bcc8fdc291362287c4",
+  "active": false,
+  "ok": true,
+  "steps": [
+    {
+      "args": [
+        "render",
+        "--slug",
+        "duckdb-agent-full-export",
+        "--workdir",
+        "/workspace/work/videos"
+      ],
+      "exit_code": 0,
+      "finished_at": "2026-10-27T09:19:29.226Z"
+    }
+  ],
+  "auth_reads": 0,
+  "network_calls": 0,
+  "paid_calls": 0,
+  "new_TTS_ASR_QA_fit_meter": 0,
+  "server_approval": false,
+  "new_human_visual_review_claimed": false,
+  "authored_source": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+    "bytes": 58095,
+    "sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8"
+  },
+  "native_exit_code": 0,
+  "postflight": {
+    "current_source": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+      "bytes": 58095,
+      "sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8"
+    },
+    "current_manifest": {
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/manifest.json",
+      "bytes": 55958,
+      "sha256": "f4789aaed0490136c243d2b01e2d9a658a96d490e649f5888b9133ecf3e8bfbb"
+    },
+    "current_cache": {
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/cache.json",
+      "bytes": 33798,
+      "sha256": "e18096452d2806e0d87f2d42bcf5d43539ceec9c5bf49a00f1d4272e20bb9694"
+    },
+    "current_state": {
+      "file": "/workspace/work/videos/duckdb-agent-full-export/state.json",
+      "bytes": 746,
+      "sha256": "1415d7ad9c36650ae9100ed71a20751f863faaf8d7b867dd4819f00293eadc99"
+    },
+    "current_contact_sheet": {
+      "file": "/workspace/work/videos/duckdb-agent-full-export/contact-sheet.png",
+      "bytes": 1467486,
+      "sha256": "3955f79f18b4bfa9c876a9609d050638774eecd96c455343e672a60091b00f71"
+    },
+    "new_stills": [
+      {
+        "id": "valid-json-fields",
+        "index": 35,
+        "file": {
+          "file": "/workspace/work/videos/duckdb-agent-full-export/frames/257af747f0ba007e.png",
+          "bytes": 116584,
+          "sha256": "fbe22ffb9284059fbc7bde0916bc235a752f4439fe396fd3201b3f5f9b9df145"
+        }
+      },
+      {
+        "id": "first-delivered-late",
+        "index": 49,
+        "file": {
+          "file": "/workspace/work/videos/duckdb-agent-full-export/frames/cdf9ed8f759546d1.png",
+          "bytes": 96265,
+          "sha256": "60fb18db20c8296458fffa204f9045b548e1a225e00c02bb94632fdd611b0e73"
+        }
+      },
+      {
+        "id": "tail-of-output",
+        "index": 50,
+        "file": {
+          "file": "/workspace/work/videos/duckdb-agent-full-export/frames/3e5e52d53c816c4d.png",
+          "bytes": 96407,
+          "sha256": "5fa4f19f7b007f41930326c93510c9e43c3835d8114ba55f895ecc37800569f3"
+        }
+      },
+      {
+        "id": "handoff-pack",
+        "index": 63,
+        "file": {
+          "file": "/workspace/work/videos/duckdb-agent-full-export/frames/d4316d96a63f8abd.png",
+          "bytes": 115166,
+          "sha256": "da5c306f69d2e9916cdb8b8fb96b3b4b17af87b053b6dd575b34972de4bc9e06"
+        }
+      }
+    ],
+    "native_drawn": 4,
+    "native_reused": 60,
+    "current_native_thumbnail_gaps": 0,
+    "foreign_thumbnails": 8,
+    "old861_PNGs_preserved": true,
+    "old64_cache_entries_preserved": true,
+    "all9_JPEGs_byte_unchanged": true,
+    "all111_source_lines_and8translations_unchanged": true,
+    "new_human_visual_review_claimed": false
+  },
+  "stage": "four_duplicate_table_titles_removed_native4_redrawn60_reused",
+  "finished_at": "2026-10-27T09:19:30.154Z",
+  "native_lease_released": true,
+  "true_normal_return_reached": true
+}

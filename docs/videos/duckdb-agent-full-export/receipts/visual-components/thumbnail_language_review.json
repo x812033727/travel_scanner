@@ -1,0 +1,114 @@
+{
+  "kind": "Independent_DuckDB_four_thumbnail_headline_review_v1",
+  "reviewer": "/root/duckdb_four_thumbnail_word_review",
+  "reviewed_at": "2026-10-27T08:42:38.916710+00:00",
+  "source": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+    "bytes": 58284,
+    "sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa"
+  },
+  "source_thumbnail_headline": "還有\n**省略列**",
+  "verdict": "ACCEPT_FOUR_TEXT_ONLY",
+  "rows": [
+    {
+      "locale": "es",
+      "original_i18n": {
+        "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/es.json",
+        "bytes": 22086,
+        "sha256": "2e8511e2456cf75c6455f205fcf6105613a5b867995ccd6079490b0349afa60c"
+      },
+      "old_headline": "Hay más\n**filas omitidas**",
+      "Root_candidate_headline": "**Filas**\nomitidas",
+      "accepted_headline": "**Filas**\nomitidas",
+      "accepted": true,
+      "needs_wording_correction": false,
+      "tag_must_remain": "DuckDB2.0",
+      "sub_must_remain": "De la vista previa al archivo completo",
+      "unchanged_line_targets": 111,
+      "all_other_i18n_fields_must_remain_equal": true,
+      "original_other_i18n_fields_semantic_sha256": "d89ff5493caf24d2be31965e74098a57b9ca949cd7af8cba5f51cc99ff71a4fb",
+      "review": {
+        "naturalness": "Natural Spanish noun phrase; feminine plural omitidas agrees with filas.",
+        "semantic": "Filas omitidas means omitted rows. In the retained preview-to-complete-file subtitle and existing table subject, it does not assert missing or deleted source data.",
+        "removed_prefix": "Hay más (there are more) is optional thumbnail framing; removing it retains the central omission claim."
+      }
+    },
+    {
+      "locale": "pt",
+      "original_i18n": {
+        "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/pt.json",
+        "bytes": 21636,
+        "sha256": "f0696f7449489eb4c8536a0501fd24afed155ae0b6531c46e15c3181b84d3b07"
+      },
+      "old_headline": "Ainda há\n**linhas omitidas**",
+      "Root_candidate_headline": "**Linhas**\nomitidas",
+      "accepted_headline": "**Linhas**\nomitidas",
+      "accepted": true,
+      "needs_wording_correction": false,
+      "tag_must_remain": "DuckDB2.0",
+      "sub_must_remain": "Da prévia à entrega completa",
+      "unchanged_line_targets": 111,
+      "all_other_i18n_fields_must_remain_equal": true,
+      "original_other_i18n_fields_semantic_sha256": "ca3dec9d50132a6f8ec6f894c10f29f7fd2439741a067f7adb3587987a24ce9e",
+      "review": {
+        "naturalness": "Natural Brazilian Portuguese noun phrase; feminine plural omitidas agrees with linhas.",
+        "semantic": "Linhas omitidas describes rows omitted from display; the retained Da prévia à entrega completa subtitle preserves the preview context. It makes no claim of data loss.",
+        "removed_prefix": "Ainda há (there are still) adds emphasis rather than a separate factual condition and may be removed for brevity."
+      }
+    },
+    {
+      "locale": "id",
+      "original_i18n": {
+        "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/id.json",
+        "bytes": 22101,
+        "sha256": "1eefbda5e5253f143c0a4d27b9eca3d08453e28464ea688705b1773d3e7c9988"
+      },
+      "old_headline": "Masih ada\n**baris tak tampil**",
+      "Root_candidate_headline": "**Baris**\ntak tampil",
+      "accepted_headline": "**Baris**\ntak tampil",
+      "accepted": true,
+      "needs_wording_correction": false,
+      "tag_must_remain": "DuckDB2.0",
+      "sub_must_remain": "Dari pratinjau ke hasil lengkap",
+      "unchanged_line_targets": 111,
+      "all_other_i18n_fields_must_remain_equal": true,
+      "original_other_i18n_fields_semantic_sha256": "de67bd3e46f57cfbde018e157dede4b484c8fcf43b6dd5b484aa1faa2481ff7e",
+      "review": {
+        "naturalness": "Baris tak tampil is concise, idiomatic Indonesian headline wording. Tak is a natural short form of tidak; the negation is retained.",
+        "semantic": "The phrase means rows not shown. The retained Dari pratinjau ke hasil lengkap subtitle and existing table image locate this in the preview, not deleted data or a failed query.",
+        "removed_prefix": "Masih ada (there are still) is dispensable framing; omitting it does not change which rows are displayed or selected."
+      }
+    },
+    {
+      "locale": "vi",
+      "original_i18n": {
+        "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/vi.json",
+        "bytes": 23621,
+        "sha256": "e9a22e9d92c524a6c492f97088913b7285f3c6ce28467c12b2d8125fa1002428"
+      },
+      "old_headline": "Vẫn còn\n**dòng bị lược**",
+      "Root_candidate_headline": "**Dòng**\nbị lược",
+      "accepted_headline": "**Dòng**\nbị lược",
+      "accepted": true,
+      "needs_wording_correction": false,
+      "tag_must_remain": "DuckDB2.0",
+      "sub_must_remain": "Từ xem trước đến tệp đầy đủ",
+      "unchanged_line_targets": 111,
+      "all_other_i18n_fields_must_remain_equal": true,
+      "original_other_i18n_fields_semantic_sha256": "4575ded74e34c8dba0937807de7f9441cb30c1cb01e2b1eaf6e05a99b800814a",
+      "review": {
+        "naturalness": "Dòng bị lược is grammatical and understandable Vietnamese headline wording; the omitted-object context is a display preview. Diacritics remain correct.",
+        "semantic": "The existing phrase dòng bị lược is retained, with only the initial capital and bold emphasis changed. The retained Từ xem trước đến tệp đầy đủ subtitle prevents a claim that stored records were lost.",
+        "removed_prefix": "Vẫn còn (there are still) is optional framing; removing it does not change the central statement about omitted displayed rows."
+      }
+    }
+  ],
+  "scope": "Independent linguistic and semantic review of four Root-authored thumbnail headline shortenings only. No change to title, description, tags, chapters, 111 narration/translation targets, voice, pronunciation, rewrite/retake limits, tag or subtitle.",
+  "prefix_removal_accepted": true,
+  "numerals_negation_population_years_unmeasured_limitations_unchanged": true,
+  "no_source_data_loss_or_AI_capability_claim_added": true,
+  "actual_new_render_fit_verified": false,
+  "actual_new_JPEG_review_performed": false,
+  "next_required": "Apply the four accepted strings through the normal metadata-only i18n merge, then native thumbnails-only render and actual JPEG layout/visual verification. Keep the first native fit failures and thresholds.",
+  "auth_network_native_CLI_render_or_repo_writes": 0
+}

@@ -1,24 +1,26 @@
-# DuckDB2.0：八語文字已採用，媒體尚未製作
+# DuckDB2.0：視覺元件與22份附件已驗證，音訊及正式成片待完成
 
-繁中來源仍為[video.json](video.json)40eb，speech38cf、[script.md](script.md)7aac；八種外語的111句、六章、完整標題說明／tags與縮圖詞均經作者及root全量文字審查，再由正常原生`i18n-merge`採用。**這是8/8本地文字，不是八語CC／配音交付。** 繁中master paid TTS0／raw0／actual timeline無，M4A、fit／meter／ASR、全片與後台交付尚未完成。
+截至2026-10-27T09:56:16.602807+00:00，64張原生圖卡與繁中加八語共9張JPEG縮圖已實際製作並逐張驗收；同一待審SCRIPT已附22份視覺元件，正常完整下載及獨立bytes／SHA查核完成。[當前進度](production-progress.json)、[實際元件索引](receipts/visual-components/index.json)與[完整下載證據](receipts/visual-components/normal_full22_proof.json)分列範圍。
 
-| 語言 | 句／章 | 當前i18n SHA-256 | 證據 |
-| --- | --- | --- | --- |
-| en | 111／6 | `faf5cb2f1c7fd536e012cd2a8191062ee4069d42ef46b8b8fbf8f10543f2cf4b` | [採用收據](localization/en/actual-native-text-adoption.json) |
-| ja | 111／6 | `324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2` | [採用收據](localization/ja/actual-native-text-adoption.json) |
-| ko | 111／6 | `6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f` | [採用收據](localization/ko/actual-native-text-adoption.json) |
-| es | 111／6 | `2e8511e2456cf75c6455f205fcf6105613a5b867995ccd6079490b0349afa60c` | [採用收據](localization/es/actual-native-text-adoption.json) |
-| pt | 111／6 | `f0696f7449489eb4c8536a0501fd24afed155ae0b6531c46e15c3181b84d3b07` | [採用收據](localization/pt/actual-native-text-adoption.json) |
-| id | 111／6 | `1eefbda5e5253f143c0a4d27b9eca3d08453e28464ea688705b1773d3e7c9988` | [採用收據](localization/id/actual-native-text-adoption.json) |
-| vi | 111／6 | `e9a22e9d92c524a6c492f97088913b7285f3c6ce28467c12b2d8125fa1002428` | [採用收據](localization/vi/actual-native-text-adoption.json) |
-| th | 111／6 | `0af06dff9045602f026526516e3d7d10c1c689effa9c06c1a5d57d8eb257d544` | [採用收據](localization/th/actual-native-text-adoption.json) |
+22份為9張縮圖、聯絡表、9份完整原始標題說明草稿TXT、原生frames manifest、誠實元件報告及128秒無旁白視覺樣片。64張真實圖卡依稿件順序各停2秒，這是檢閱速度，並非實測旁白或章節時間；沒有把樣片當成正式成片，也沒有ZIP或64張PNG後台交付宣稱。
 
-[當前進度](production-progress.json)、[全八語文字摘要](localization/all8/actual-all8-text-adoption-summary.json)、[當前收據索引](receipts/all8-text-adoption-index.json)及[本輪檢查](receipts/all8-text-adoption-validation.json)分列範圍。PT／ID／TH的原採用批次當時只達文字7/8，保持原文；VI另有真實completion後才成立8/8。所有root review中的before-merge狀態與作者REVISE／validator錯誤也保持歷史，不倒改成功。
+繁中paid TTS0／raw0，actual audio timeline與CC尚無；八語已驗M4A仍0/8，fit／meter／ASR、正式語言包、至少480秒正文、正式成片及完整QA仍待完成。原生靜態字標不等於官方5秒片頭／21秒片尾，本片尚未套用動畫bookends。
 
-這支以1,200筆原創虛構配送資料，區分40列預覽／1,160列省略與明確條件選出的480筆完整交付；`>=`變式720筆包含240筆剛好準時。完整[可攜教材](public-run/README.md)、[SQL](public-run/demo/followup.sql)、[需求變式](public-run/demo/variant.sql)、[26,889B ZIP](duckdb-public-fixtures.zip)與[公開GET查核收據](receipts/fifth-public-artifacts-verification.json)保留。這是同一DuckDB2.0.0、確定性作者操作；不是AI模型／效能／token／成本評測。原創教材CC0-1.0、DuckDB MIT與官方來源權利分開。
+當前來源[video.json](video.json)SHA `1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8`；只刪除4張卡片被裁切的可選重複title，相同文字保留於key。正常快取render重用60張並重畫4張，原64張實看中的4項裁切失敗、4張替換圖的真實複審，以及初次native0／outer1縮圖失敗均完整保留。[視覺delta](receipts/visual-components/source-visual-delta.json)也記錄ES／PT／ID／VI四個縮圖短標的正常metadata merge；111句完整line objects、全部八語targets與完整metadata不變。
 
-[verify4](verify-4.md)只核metadata公開連結delta與既有21項固定證據連續性，不冒稱今日重新live查所有官方事實。兩份[敘事原始結果](narrative-r2/)仍各12/13 false，root教學取捨與[本地採用](reviews/script-local-adoption.json)不等同server批准。官方5秒片頭／21秒片尾素材已取得，但第五尚未套用成片；不把其他片的scoped recovery當成本片paid放行。
+[script.md](script.md)仍為7aac，既有SCRIPT `dd47b9a0-6456-4651-9456-32b320909338`仍pending；新增附件不構成server／UI批准。40eb的verify4及source-gates保持原來源綁定；兩份原生敘事結果仍各12/13 false，教學取捨不改raw失敗或門檻。
 
-本輪只封存[五份可變文件與三份ES描述檔](history/before-all8-text-adoption-docs/identity.json)，舊ES68可由63份原位＋5份快照精確重建，以Git `a090b585a674db0f1e0f2ef12771363bfa7596eb` 保留全部556份舊檔；不遞迴複製history。原[ES284索引](receipts/es-text-adoption-index.json)與更早資料保持原文。新196份proof均有[exact copy identity](localization/all8/copy-identity.json)，PT正確閱讀入口為[corrected.md](localization/pt/author/source-target-complete-111.final.corrected.md)，舊錯標籤Markdown及inverse proof照存。
+| 語言 | 當前i18n SHA-256 | 範圍 |
+| --- | --- | --- |
+| en | `faf5cb2f1c7fd536e012cd2a8191062ee4069d42ef46b8b8fbf8f10543f2cf4b` | 111句／六章／完整metadata；CC及M4A未完成 |
+| ja | `324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2` | 111句／六章／完整metadata；CC及M4A未完成 |
+| ko | `6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f` | 111句／六章／完整metadata；CC及M4A未完成 |
+| es | `61cf0a0077d9cf9fd3b93d8117bf3975dc162a982acc981213af6789e1889b9c` | 111句／六章／完整metadata；CC及M4A未完成 |
+| pt | `43dc7e4434394fb72def2921db8a4201d32d0b66bac73a8deaab146407b5db6e` | 111句／六章／完整metadata；CC及M4A未完成 |
+| id | `a71014a6452b76e081f276bd6cf628015c1d4a1cfbc9e04bda6ebc4975ce262a` | 111句／六章／完整metadata；CC及M4A未完成 |
+| vi | `198c81025f5164c9c8e2d2e9ff821743674342f14a90a0c10691485967b68623` | 111句／六章／完整metadata；CC及M4A未完成 |
+| th | `0af06dff9045602f026526516e3d7d10c1c689effa9c06c1a5d57d8eb257d544` | 111句／六章／完整metadata；CC及M4A未完成 |
 
-PR1861維持[no-auto-merge](https://github.com/x812033727/travel_scanner/pull/1861)。本輪不呼叫API／paid／ASR／媒體，不改source、claims、voice、lexicon、data或任何已採用target；只準備精確freeze供root審查，未stage／commit／push，不merge／deploy／上傳YouTube，也不開第六題。
+原創1,200筆配送教材、480筆完整條件交付與720筆需求變式，見[可攜教材](public-run/README.md)；公開CSV／ZIP的既有200／SHA證據保持。
+
+五份原始摘要已[逐bytes封存](history/before-visual-components-docs/identity.json)，舊索引／freeze保持原位，未遞迴複製history。本次公開proof只含明確審查過的文字／JSON／真實log，不含媒體、私有project、credentials、profile或release。PR1861維持no-auto-merge；本票尚未done，責任與原branch／PR1861延續；未merge／deploy／上傳YouTube。

@@ -1,0 +1,1921 @@
+{
+  "kind": "Independent_DuckDB_64_current_native_cards_actual_visual_review_v1",
+  "source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "source_file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+  "card_count": 64,
+  "actual_view_count": 64,
+  "native_view_image_call_count": 68,
+  "all_actual_views_completed": true,
+  "acceptable_card_count": 60,
+  "unacceptable_card_count": 4,
+  "blocking_findings": [
+    {
+      "ordinal": 35,
+      "scene": "valid-json-fields",
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/661a42cbd7a4ba33.png",
+      "sha256": "f8f7140e4670893e06b034e079370fc805dfa746b77baae5cac846353cb93764",
+      "severity": "blocking",
+      "issue": "Visible bottom clipping of table-title glyphs",
+      "visible_proof": "BLOCKING on full-original reinspection: title 代理模式的錯誤欄位 has visibly cropped/flattened bottom edges of glyphs at approximately y234, unlike full title on scene12. All 4 table rows, source and key remain legible and match source. Upper-right watermark is separate. Initial pass superseded by this actual-pixel reinspection.",
+      "approximate_region": {
+        "x": 96,
+        "y": 180,
+        "width": 800,
+        "height": 62
+      }
+    },
+    {
+      "ordinal": 49,
+      "scene": "first-delivered-late",
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/fdd389b1f4273bae.png",
+      "sha256": "d8c58fc8ea7cbed5e33f2c1b10f3567b2aa5bbe5521ba255ccffefcac4fbc035",
+      "severity": "blocking",
+      "issue": "Visible bottom clipping of table-title glyphs",
+      "visible_proof": "BLOCKING: title 從完整檔抽一筆回查 has visibly cropped lower glyph edges at approximately y234; reopened full native original confirmed. Rows P0002: route R2, promised_days 3, actual_days 4, days_late 1 are complete and match source. Source/key clear; watermark separate.",
+      "approximate_region": {
+        "x": 96,
+        "y": 180,
+        "width": 800,
+        "height": 62
+      }
+    },
+    {
+      "ordinal": 50,
+      "scene": "tail-of-output",
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/2b3dde4c2fe654bb.png",
+      "sha256": "2d35a1858ca8976c6c72df16509ab304bd620ce451ce7d547904358e99c65c85",
+      "severity": "blocking",
+      "issue": "Visible bottom clipping of table-title glyphs",
+      "visible_proof": "BLOCKING: title 末端紀錄也在完整檔 has visibly cropped lower glyph edges at approximately y234; reopened full native original confirmed. All 4 rows complete and match source: P1191 R3 2; P1194 R2 1; P1198 R2 1; P1199 R3 2. Source/key clear; watermark separate.",
+      "approximate_region": {
+        "x": 96,
+        "y": 180,
+        "width": 800,
+        "height": 62
+      }
+    },
+    {
+      "ordinal": 63,
+      "scene": "handoff-pack",
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/9e8bf2f98a084e85.png",
+      "sha256": "759d173f3f5250bbdded1cc77392252180cade1fcb29e495b2bb3d64a37e5e8b",
+      "severity": "blocking",
+      "issue": "Visible bottom clipping of table-title glyphs",
+      "visible_proof": "BLOCKING: title 交出能重查的教材 has visibly cropped lower glyph edges at approximately y234, consistent with scenes35/49/50. All 4 data rows complete and source-matched: CSV 開啟完整名單; Parquet 保存相同內容; SQL 重做對應的需求; HTML 讀摘要並找到全檔. Source/key clear; watermark separate.",
+      "approximate_region": {
+        "x": 96,
+        "y": 180,
+        "width": 800,
+        "height": 62
+      }
+    }
+  ],
+  "auth_network_producer_calls": 0,
+  "viewer": "/root/duckdb_cards_actual_visual_review",
+  "completed_at": "2026-10-27T08:59:13.154428+00:00",
+  "method": "Resolved ordered planned64 stills against frames/manifest.json. Read repository AGENTS.md, current video.json scene data, claims.md. Opened each distinct native still via tools.view_image(detail original), forwarded image(...) and actually inspected pixels; four cards were opened again to confirm suspected title clipping. Compared visible text/numbers/SQL/negation to each current source scene. No acceptability inferred solely from hashes, layout metadata or contact sheets.",
+  "integrity": {
+    "source_unchanged": true,
+    "all_64_reviewed_stills_unchanged": true,
+    "before_file": "BEFORE.json",
+    "after_file": "AFTER.json",
+    "scope": "Source SHA256 and exact64 reviewed native still hashes/byte sizes were checked before and after. This report does not claim an independent before/after hash of the other797 transition PNGs."
+  },
+  "scope_limits": [
+    "Current64 native body stills only; no thumbnail review in this subtask.",
+    "No transition animation, complete video/program, narration/audio/TTS/ASR/playback or QA acceptance claim.",
+    "Native watermark v1 observed visually separate from content; it is not acceptance of the official5/21 animated bookends.",
+    "No renderer, producer, network/auth, SQL execution, audio, task, Git, canonical, hold or journal actions; source/body files preserved."
+  ],
+  "cards": [
+    {
+      "ordinal": 1,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/18ba9ac55cc81059.png",
+      "bytes": 100708,
+      "sha256": "a6015676fdc3085033fb720f232907f3f0f4c2bfb24c5a2799140013d4a73709",
+      "scene": "parcel-table-start",
+      "index": 0,
+      "planned_text": "01 / 06配送預覽中間少了一大段原創虛構教學資料本地操作2026-10-25｜DuckDB2.0｜虛構資料配送清單原創虛構教學資料",
+      "source_data": {
+        "text": "配送清單",
+        "sub": "原創虛構教學資料",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "原創虛構教學資料"
+      },
+      "chapter": "配送預覽中間少了一大段",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:07.572Z",
+      "notes": "Native 1920×1080: 配送清單, 原創虛構教學資料 and source kicker 2026-10-25 / DuckDB2.0 / 虛構資料 are complete; chapter/key readable. Watermark upper right is separate.",
+      "sha256_after": "a6015676fdc3085033fb720f232907f3f0f4c2bfb24c5a2799140013d4a73709",
+      "bytes_after": 100708,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 2,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/1fc3a0588f60c5b4.png",
+      "bytes": 123061,
+      "sha256": "8bf14691ab075a836aff5d48d84032d2843787861e918ba8d05db4561a36011c",
+      "scene": "running-followup-task",
+      "index": 0,
+      "planned_text": "01 / 06配送預覽中間少了一大段同一份練習表的查詢狀態本地操作2026-10-25｜DuckDB2.0｜虛構資料哪些包裹需要跟進同一份練習表的查詢狀態",
+      "source_data": {
+        "text": "哪些包裹需要跟進",
+        "sub": "同一份練習表的查詢狀態",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份練習表的查詢狀態"
+      },
+      "chapter": "配送預覽中間少了一大段",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:07.572Z",
+      "notes": "Native 1920×1080: 哪些包裹需要跟進 and 同一份練習表的查詢狀態 are complete; no clipping despite long title. Source kicker, chapter and key readable; watermark separate.",
+      "sha256_after": "8bf14691ab075a836aff5d48d84032d2843787861e918ba8d05db4561a36011c",
+      "bytes_after": 123061,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 3,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/46b78a753967b326.png",
+      "bytes": 105208,
+      "sha256": "4b94ce2c7ae863ad20ea9d52593bf2b6f25f86b03ea78b4ae6084b2d1aa31ad6",
+      "scene": "forty-visible",
+      "index": 0,
+      "planned_text": "01 / 06配送預覽中間少了一大段顯示內容仍有省略本地操作2026-10-25｜DuckDB2.0｜虛構資料前後40列顯示內容仍有省略",
+      "source_data": {
+        "text": "前後40列",
+        "sub": "顯示內容仍有省略",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "顯示內容仍有省略"
+      },
+      "chapter": "配送預覽中間少了一大段",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:07.572Z",
+      "notes": "Native 1920×1080: 前後40列 and 顯示內容仍有省略 are complete and agree with source. Chapter/source/key readable; watermark separate.",
+      "sha256_after": "4b94ce2c7ae863ad20ea9d52593bf2b6f25f86b03ea78b4ae6084b2d1aa31ad6",
+      "bytes_after": 105208,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 4,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/c682b2bd4fb53ce9.png",
+      "bytes": 119496,
+      "sha256": "2a800f22c56ee4656fd35d3fc9af6f1877a114ec31df47292eba35a399d93b66",
+      "scene": "missing-question",
+      "index": 0,
+      "planned_text": "01 / 06配送預覽中間少了一大段先分清資料與顯示本地操作2026-10-25｜DuckDB2.0｜虛構資料紀錄真的少了？先分清資料與顯示",
+      "source_data": {
+        "text": "紀錄真的少了？",
+        "sub": "先分清資料與顯示",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "先分清資料與顯示"
+      },
+      "chapter": "配送預覽中間少了一大段",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:07.572Z",
+      "notes": "Native 1920×1080: 紀錄真的少了？ and 先分清資料與顯示 retain question mark and all characters. Chapter/source/key readable; watermark separate.",
+      "sha256_after": "2a800f22c56ee4656fd35d3fc9af6f1877a114ec31df47292eba35a399d93b66",
+      "bytes_after": 119496,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 5,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/07d1d7f7895bb640.png",
+      "bytes": 104311,
+      "sha256": "658a16b475d8d8fb988644cee8dd2be61277e70c9e0e9870fb36e274c631b2b3",
+      "scene": "typo-question",
+      "index": 0,
+      "planned_text": "01 / 06配送預覽中間少了一大段相同欄位需求會收到什麼回覆本地操作2026-10-25｜DuckDB2.0｜虛構資料少一個字母相同欄位需求會收到什麼回覆",
+      "source_data": {
+        "text": "少一個字母",
+        "sub": "相同欄位需求會收到什麼回覆",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "相同欄位需求會收到什麼回覆"
+      },
+      "chapter": "配送預覽中間少了一大段",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:25.080Z",
+      "notes": "少一個字母 and 相同欄位需求會收到什麼回覆 are readable in main and key positions. Kicker/chapter complete; no overlap/tofu; watermark separate.",
+      "sha256_after": "658a16b475d8d8fb988644cee8dd2be61277e70c9e0e9870fb36e274c631b2b3",
+      "bytes_after": 104311,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 6,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/8757582ccacbc6a0.png",
+      "bytes": 120676,
+      "sha256": "ba6c21db022244dc4ae2dd7afb2f84233913360c6226b5a1467d9208e26568d4",
+      "scene": "export-question",
+      "index": 0,
+      "planned_text": "01 / 06配送預覽中間少了一大段清單另存後，還要讀回本地操作2026-10-25｜DuckDB2.0｜虛構資料完整檔怎麼確認？清單另存後，還要讀回",
+      "source_data": {
+        "text": "完整檔怎麼確認？",
+        "sub": "清單另存後，還要讀回",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "清單另存後，還要讀回"
+      },
+      "chapter": "配送預覽中間少了一大段",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:25.080Z",
+      "notes": "完整檔怎麼確認？ and 清單另存後，還要讀回 are complete including punctuation. Kicker/chapter/key readable; no clipping; watermark separate.",
+      "sha256_after": "ba6c21db022244dc4ae2dd7afb2f84233913360c6226b5a1467d9208e26568d4",
+      "bytes_after": 120676,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 7,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/2b6099af1c8307af.png",
+      "bytes": 124273,
+      "sha256": "b1647bba6f4059451012b5732dbc222227e49a0f83c9e8e6ad95dd05c482eced",
+      "scene": "input-is-still-there",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡省略的是顯示，不是紀錄本地操作2026-10-25｜DuckDB2.0｜虛構資料資料仍有1200筆省略的是顯示，不是紀錄",
+      "source_data": {
+        "text": "資料仍有1200筆",
+        "sub": "省略的是顯示，不是紀錄",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "省略的是顯示，不是紀錄"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:25.080Z",
+      "notes": "資料仍有1200筆 and negation 省略的是顯示，不是紀錄 are fully visible. Chapter changes to 02/06; source/key legible; watermark separate.",
+      "sha256_after": "b1647bba6f4059451012b5732dbc222227e49a0f83c9e8e6ad95dd05c482eced",
+      "bytes_after": 124273,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 8,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/4d7f5ffb289d7e64.png",
+      "bytes": 119176,
+      "sha256": "7727e600b472915f7a957365522d545f123f345bc53a63e5709bf92ef0efbc1f",
+      "scene": "release-time",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡新模式的發表與正式版新模式的發表與正式版時間當時的功能狀態2026-10-09代理模式介紹2026-10-212.0正式release官方發表與release日期｜2026-10-25核對",
+      "source_data": {
+        "title": "新模式的發表與正式版",
+        "columns": [
+          "時間",
+          "當時的功能狀態"
+        ],
+        "rows": [
+          [
+            "2026-10-09",
+            "代理模式介紹"
+          ],
+          [
+            "2026-10-21",
+            "2.0正式release"
+          ]
+        ],
+        "source": "官方發表與release日期｜2026-10-25核對",
+        "key": "新模式的發表與正式版"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:25.080Z",
+      "notes": "Table visibly contains 2026-10-09→代理模式介紹 and 2026-10-21→2.0正式release, matching source. Title, 時間/當時的功能狀態 headers, source date 2026-10-25 and key are clear; watermark separate.",
+      "sha256_after": "7727e600b472915f7a957365522d545f123f345bc53a63e5709bf92ef0efbc1f",
+      "bytes_after": 119176,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 9,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/e8a9d2f4711c2194.png",
+      "bytes": 116652,
+      "sha256": "a4811320dc49abd7a6c5dfdec869edb1a59a579589640a84b7ce2549164da474",
+      "scene": "mode-role",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡同一份資料，逐項對回條件一般模式對齊的表格保留型別與列數代理模式緊湊Markdown明列省略與結果摘要官方agent文件｜2026-10-25",
+      "source_data": {
+        "left": {
+          "heading": "一般模式",
+          "points": [
+            "對齊的表格",
+            "保留型別與列數"
+          ]
+        },
+        "right": {
+          "heading": "代理模式",
+          "points": [
+            "緊湊Markdown",
+            "明列省略與結果摘要"
+          ]
+        },
+        "source": "官方agent文件｜2026-10-25",
+        "key": "同一份資料，逐項對回條件"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:45.119Z",
+      "notes": "Comparison has both headings 一般模式/代理模式 and all four bullets, including 保留型別與列數 and 明列省略與結果摘要. Source and key complete; no text overlap; watermark separate.",
+      "sha256_after": "a4811320dc49abd7a6c5dfdec869edb1a59a579589640a84b7ce2549164da474",
+      "bytes_after": 116652,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 10,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/95245c501ed626ad.png",
+      "bytes": 123766,
+      "sha256": "911bb8d86f07b8109037fd40efb67a2f3cc1c5d8b10945a336819eb1caec727d",
+      "scene": "existing-file-tools",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡讀CSV、SQL查詢與匯出原本就有官方2.0公告｜既有能力與新模式分開既有資料能力讀CSV、SQL查詢與匯出原本就有",
+      "source_data": {
+        "text": "既有資料能力",
+        "sub": "讀CSV、SQL查詢與匯出原本就有",
+        "kicker": "官方2.0公告｜既有能力與新模式分開",
+        "key": "讀CSV、SQL查詢與匯出原本就有"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:45.119Z",
+      "notes": "既有資料能力 and 讀CSV、SQL查詢與匯出原本就有 are complete; 官方2.0公告 kicker readable. Matches source and does not imply CSV is new; watermark separate.",
+      "sha256_after": "911bb8d86f07b8109037fd40efb67a2f3cc1c5d8b10945a336819eb1caec727d",
+      "bytes_after": 123766,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 11,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/e5de0844057e37bc.png",
+      "bytes": 112048,
+      "sha256": "dd3ad5e59bfea162c4f01cf03e14c8aea30b605776c371828aadedafbbd0e3e3",
+      "scene": "bounded-choice",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡同版模式對照作者方法範圍｜2026-10-25固定資料與版本只比較回覆模式，不變更既有資料庫",
+      "source_data": {
+        "text": "固定資料與版本",
+        "sub": "只比較回覆模式，不變更既有資料庫",
+        "kicker": "作者方法範圍｜2026-10-25",
+        "key": "同版模式對照"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:45.119Z",
+      "notes": "固定資料與版本 and full restriction 只比較回覆模式，不變更既有資料庫 are visible; source date/key readable. No clipping/tofu; watermark separate.",
+      "sha256_after": "dd3ad5e59bfea162c4f01cf03e14c8aea30b605776c371828aadedafbbd0e3e3",
+      "bytes_after": 112048,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 12,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/07bdb29f91024570.png",
+      "bytes": 113364,
+      "sha256": "5ed7a49724ccdc143049cd2b41a83e4e17e7ec0124b2c5e558b103c0befc5c7a",
+      "scene": "input-columns",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡先認出五個欄位欄位意思parcel_id包裹代號route路線promised_days承諾天數status配送狀態actual_days實際天數本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "先認出五個欄位",
+        "columns": [
+          "欄位",
+          "意思"
+        ],
+        "rows": [
+          [
+            "parcel_id",
+            "包裹代號"
+          ],
+          [
+            "route",
+            "路線"
+          ],
+          [
+            "promised_days",
+            "承諾天數"
+          ],
+          [
+            "status",
+            "配送狀態"
+          ],
+          [
+            "actual_days",
+            "實際天數"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:50:45.119Z",
+      "notes": "Actually viewed all FIVE rows: parcel_id 包裹代號; route 路線; promised_days 承諾天數; status 配送狀態; actual_days 實際天數. Title says 五個欄位 and matches current source. Lowest actual_days row and source line are complete; watermark separate.",
+      "sha256_after": "5ed7a49724ccdc143049cd2b41a83e4e17e7ec0124b2c5e558b103c0befc5c7a",
+      "bytes_after": 113364,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 13,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/bf97f6d0e65e179f.png",
+      "bytes": 90094,
+      "sha256": "6cb62eab11442de427c7087b72151cad6fde306303e16b0891559d28a90ab556",
+      "scene": "force-human",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡明確選擇一般模式./duckdb -no-init -no-agent \\  :memory: -f demo/preview.sql公開教材根目錄｜Linux2.0實跑｜反斜線為shell續行",
+      "source_data": {
+        "code": "./duckdb -no-init -no-agent \\\n  :memory: -f demo/preview.sql",
+        "caption": "公開教材根目錄｜Linux2.0實跑｜反斜線為shell續行",
+        "key": "明確選擇一般模式"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:51:13.982Z",
+      "notes": "Both command lines are readable: ./duckdb -no-init -no-agent followed by visible shell backslash; :memory: -f demo/preview.sql. Caption explicitly identifies shell continuation; key/chapter complete; watermark separate.",
+      "sha256_after": "6cb62eab11442de427c7087b72151cad6fde306303e16b0891559d28a90ab556",
+      "bytes_after": 90094,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 14,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/a6d158fd9b758763.png",
+      "bytes": 94461,
+      "sha256": "56ccf1b4a727c4e3a3ae73c7e535b4609afa1b33afbc09907fea501fcbad07d3",
+      "scene": "force-agent",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡只改模式，輸入與查詢不變./duckdb -no-init -agent \\  :memory: -f demo/preview.sql公開教材根目錄｜Linux2.0實跑｜反斜線為shell續行",
+      "source_data": {
+        "code": "./duckdb -no-init -agent \\\n  :memory: -f demo/preview.sql",
+        "caption": "公開教材根目錄｜Linux2.0實跑｜反斜線為shell續行",
+        "key": "只改模式，輸入與查詢不變"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:51:13.982Z",
+      "notes": "Both command lines are readable: ./duckdb -no-init -agent followed by visible shell backslash; :memory: -f demo/preview.sql. Only mode flag differs from previous source command; caption/key/chapter complete; watermark separate.",
+      "sha256_after": "56ccf1b4a727c4e3a3ae73c7e535b4609afa1b33afbc09907fea501fcbad07d3",
+      "bytes_after": 94461,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 15,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/e8561b4b0bad757a.png",
+      "bytes": 113673,
+      "sha256": "68c8956b2bfb2b5428fac3d4a83d78fb797134f941d2bdc7b130215fe27c23d5",
+      "scene": "find-the-omission",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡從回覆中定位顯示範圍本地操作2026-10-25｜DuckDB2.0｜虛構資料哪裡標示省略？從回覆中定位顯示範圍",
+      "source_data": {
+        "text": "哪裡標示省略？",
+        "sub": "從回覆中定位顯示範圍",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "從回覆中定位顯示範圍"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:51:13.982Z",
+      "notes": "哪裡標示省略？ and 從回覆中定位顯示範圍 appear fully, including punctuation. Source/chapter/key legible; no clipping/tofu; watermark separate.",
+      "sha256_after": "68c8956b2bfb2b5428fac3d4a83d78fb797134f941d2bdc7b130215fe27c23d5",
+      "bytes_after": 113673,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 16,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/d2f0d51fcde7268f.png",
+      "bytes": 88145,
+      "sha256": "368c5e4d55174e0630c5642dbc7701f9c1fb4f9470ba8dcd6184d9034ce74222",
+      "scene": "same-preview",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡完整內容與欄位一同保留.read demo/setup.sqlSELECT * FROM parcelsORDER BY parcel_id;preview.sql 第1–3行／全3行｜本地2.0",
+      "source_data": {
+        "code": ".read demo/setup.sql\nSELECT * FROM parcels\nORDER BY parcel_id;",
+        "caption": "preview.sql 第1–3行／全3行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:51:13.982Z",
+      "notes": "All 3 SQL lines visible: .read demo/setup.sql; SELECT * FROM parcels; ORDER BY parcel_id; with source line-range 第1–3行／全3行. Code punctuation and underscores intact; caption/key/chapter clear; watermark separate.",
+      "sha256_after": "368c5e4d55174e0630c5642dbc7701f9c1fb4f9470ba8dcd6184d9034ce74222",
+      "bytes_after": 88145,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 17,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/585cfe33cebb94cd.png",
+      "bytes": 128351,
+      "sha256": "4e395acedd45fc66e19f9bd49e4ec5afa4555048de63b73789f0ad376e0c5cf0",
+      "scene": "human-footer",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡一般模式也標示顯示列數1200 rows (40 shown)                                 5 columns共1200列，顯示40列，5個欄位公開教材Linux2.0實跑｜runlogs/human-preview.stdout.txt",
+      "source_data": {
+        "quote": "1200 rows (40 shown)                                 5 columns",
+        "source": "公開教材Linux2.0實跑｜runlogs/human-preview.stdout.txt",
+        "translation": "共1200列，顯示40列，5個欄位",
+        "key": "一般模式也標示顯示列數"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:51:55.771Z",
+      "notes": "Quote wraps across two lines but preserves 1200 rows (40 shown) and 5 columns; translation 共1200列，顯示40列，5個欄位 is complete. Full human-preview.stdout.txt source and key clear; watermark separate.",
+      "sha256_after": "4e395acedd45fc66e19f9bd49e4ec5afa4555048de63b73789f0ad376e0c5cf0",
+      "bytes_after": 128351,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 18,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/d75bb50d2011edc2.png",
+      "bytes": 105855,
+      "sha256": "42167038d35d883618a712ff3da01450c4db4792b20338c74c771dc1a76b6246",
+      "scene": "agent-omitted",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡省略標記位在結果之中| … 1160 rows omitted … |中間1160列沒有顯示公開教材Linux2.0實跑｜runlogs/agent-preview.stdout.txt",
+      "source_data": {
+        "quote": "| … 1160 rows omitted … |",
+        "source": "公開教材Linux2.0實跑｜runlogs/agent-preview.stdout.txt",
+        "translation": "中間1160列沒有顯示",
+        "key": "省略標記位在結果之中"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:51:55.771Z",
+      "notes": "Quote visibly preserves pipes, ellipses and 1160 rows omitted; translation 中間1160列沒有顯示 is complete. Source agent-preview.stdout.txt and key readable; watermark separate.",
+      "sha256_after": "42167038d35d883618a712ff3da01450c4db4792b20338c74c771dc1a76b6246",
+      "bytes_after": 105855,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 19,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/7695e0288f4f25ef.png",
+      "bytes": 127150,
+      "sha256": "a875fbf93579fa0c849e07c3574dbbea65399c477665d1e329a042fc323c65e2",
+      "scene": "same-result-different-view",
+      "index": 0,
+      "planned_text": "02 / 06原表還在，省略出現在回覆裡回覆格式變了回覆格式變了比較一般模式代理模式同一輸入1200筆1200筆顯示列數前後40列前後40列輸出形式對齊表格緊湊Markdown本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "回覆格式變了",
+        "columns": [
+          "比較",
+          "一般模式",
+          "代理模式"
+        ],
+        "rows": [
+          [
+            "同一輸入",
+            "1200筆",
+            "1200筆"
+          ],
+          [
+            "顯示列數",
+            "前後40列",
+            "前後40列"
+          ],
+          [
+            "輸出形式",
+            "對齊表格",
+            "緊湊Markdown"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "回覆格式變了"
+      },
+      "chapter": "原表還在，省略出現在回覆裡",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:51:55.771Z",
+      "notes": "All table values visible: both inputs 1200筆, both previews 前後40列, outputs 對齊表格 vs 緊湊Markdown. Headers/title/source/key complete; no overlap; watermark separate.",
+      "sha256_after": "a875fbf93579fa0c849e07c3574dbbea65399c477665d1e329a042fc323c65e2",
+      "bytes_after": 127150,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 20,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/8683b7d558fad7a4.png",
+      "bytes": 123664,
+      "sha256": "00165624ca7265082d7d58c3927990c062cbf08be1c4be80cbee3cf840b8f57f",
+      "scene": "define-the-followup",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選把需求寫成可執行條件本地操作2026-10-25｜DuckDB2.0｜虛構資料只找已送達延遲把需求寫成可執行條件",
+      "source_data": {
+        "text": "只找已送達延遲",
+        "sub": "把需求寫成可執行條件",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "把需求寫成可執行條件"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:51:55.771Z",
+      "notes": "只找已送達延遲 and 把需求寫成可執行條件 are complete. Chapter 03/06 三筆包裹，只有一筆入選, source and key readable; watermark separate.",
+      "sha256_after": "00165624ca7265082d7d58c3927990c062cbf08be1c4be80cbee3cf840b8f57f",
+      "bytes_after": 123664,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 21,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/d827f7bfaff5c4d0.png",
+      "bytes": 124505,
+      "sha256": "f7d91e1b3d4354d82c07c7a7e5332638c2cf7f6bb0c0ea404e0dfbfe277608e1",
+      "scene": "explicit-input-types",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選完整內容與欄位一同保留CREATE TABLE parcels ASSELECT * FROM read_csv('demo/input/parcels.csv',  columns={'parcel_id':'VARCHAR','route':'VARCHAR',           'promised_days':'INTEGER','status':'VARCHAR',           'actual_days':'INTEGER'},header=true);setup.sql 第5–9行／全9行｜本地2.0",
+      "source_data": {
+        "code": "CREATE TABLE parcels AS\nSELECT * FROM read_csv('demo/input/parcels.csv',\n  columns={'parcel_id':'VARCHAR','route':'VARCHAR',\n           'promised_days':'INTEGER','status':'VARCHAR',\n           'actual_days':'INTEGER'},header=true);",
+        "caption": "setup.sql 第5–9行／全9行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:52:17.315Z",
+      "notes": "All 5 SQL lines visible, including read_csv path; parcel_id/route VARCHAR, promised_days INTEGER, status VARCHAR, actual_days INTEGER and header=true. Quotes/braces/closing ); intact. Caption setup.sql 第5–9行／全9行 and key clear; watermark separate.",
+      "sha256_after": "f7d91e1b3d4354d82c07c7a7e5332638c2cf7f6bb0c0ea404e0dfbfe277608e1",
+      "bytes_after": 124505,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 22,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/37288183dbc1b42d.png",
+      "bytes": 104430,
+      "sha256": "fd060ac18c65ed1d7d2a045affa8bac4e77d2cbf4104321e138323be519bf793",
+      "scene": "inspect-columns",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選完整內容與欄位一同保留.read demo/setup.sqlDESCRIBE parcels;SELECT status,count(*) AS recordsFROM parcels GROUP BY status ORDER BY status;followup.sql 第1–4行／全24行｜本地2.0",
+      "source_data": {
+        "code": ".read demo/setup.sql\nDESCRIBE parcels;\nSELECT status,count(*) AS records\nFROM parcels GROUP BY status ORDER BY status;",
+        "caption": "followup.sql 第1–4行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:52:17.315Z",
+      "notes": "All 4 SQL lines visible: setup read, DESCRIBE parcels; SELECT status,count(*) AS records; FROM parcels GROUP BY status ORDER BY status;. Caption 第1–4行／全24行 and key clear; watermark separate.",
+      "sha256_after": "fd060ac18c65ed1d7d2a045affa8bac4e77d2cbf4104321e138323be519bf793",
+      "bytes_after": 104430,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 23,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/8d7bdc34b5fd4919.png",
+      "bytes": 110455,
+      "sha256": "14609558aa356fb0bf1daa9c7cedd7394ca21ef8451f00c015dd7ae46ed7a4f7",
+      "scene": "input-status-count",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選送達與在途先分開送達與在途先分開狀態本例筆數實際天數delivered960已有整數in_transit240空白本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "送達與在途先分開",
+        "columns": [
+          "狀態",
+          "本例筆數",
+          "實際天數"
+        ],
+        "rows": [
+          [
+            "delivered",
+            "960",
+            "已有整數"
+          ],
+          [
+            "in_transit",
+            "240",
+            "空白"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "送達與在途先分開"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:52:17.315Z",
+      "notes": "Table fully displays delivered 960 已有整數 and in_transit 240 空白, matching source. Headers/title/source/key clear; no overlap/tofu; watermark separate.",
+      "sha256_after": "14609558aa356fb0bf1daa9c7cedd7394ca21ef8451f00c015dd7ae46ed7a4f7",
+      "bytes_after": 110455,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 24,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/4a20a2ff65a57a9c.png",
+      "bytes": 123680,
+      "sha256": "b30acee12636281f029f6ed1634c8b1abb67a66b0c937a6110fee467a7e094e9",
+      "scene": "apply-both-conditions",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選依同一份表逐項判斷本地操作2026-10-25｜DuckDB2.0｜虛構資料把條件套回這筆資料依同一份表逐項判斷",
+      "source_data": {
+        "text": "把條件套回這筆資料",
+        "sub": "依同一份表逐項判斷",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "依同一份表逐項判斷"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:52:17.315Z",
+      "notes": "Main title wraps into 把條件套 / 回這筆資料 without loss; full sub 依同一份表逐項判斷 is visible below with spacing. Source/chapter/key clear; watermark separate.",
+      "sha256_after": "b30acee12636281f029f6ed1634c8b1abb67a66b0c937a6110fee467a7e094e9",
+      "bytes_after": 123680,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 25,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/c338a44a40ef7ed5.png",
+      "bytes": 99728,
+      "sha256": "8398e81e3b8eaebdc507801cc355a13ca5b20c114412ed5ecb4166e8ce8fc5e8",
+      "scene": "read-one-parcel",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選跟著一筆資料判斷跟著一筆資料判斷代號狀態承諾實際P0002delivered3天4天本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "跟著一筆資料判斷",
+        "columns": [
+          "代號",
+          "狀態",
+          "承諾",
+          "實際"
+        ],
+        "rows": [
+          [
+            "P0002",
+            "delivered",
+            "3天",
+            "4天"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "跟著一筆資料判斷"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:52:38.260Z",
+      "notes": "Table shows P0002, delivered, 承諾3天, 實際4天, all complete with units and matching source. Title/chapter/source/key readable; watermark separate.",
+      "sha256_after": "8398e81e3b8eaebdc507801cc355a13ca5b20c114412ed5ecb4166e8ce8fc5e8",
+      "bytes_after": 99728,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 26,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/c0711def4d94a0e1.png",
+      "bytes": 92757,
+      "sha256": "cf9c65fa19172298d11be4258c7ba23b2e694962bc71a5e92d6b38de78625171",
+      "scene": "compute-days-late",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選晚了幾天也寫出來晚了幾天也寫出來代號計算結果P00024−3晚1天本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "晚了幾天也寫出來",
+        "columns": [
+          "代號",
+          "計算",
+          "結果"
+        ],
+        "rows": [
+          [
+            "P0002",
+            "4−3",
+            "晚1天"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "晚了幾天也寫出來"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:52:38.260Z",
+      "notes": "Table shows P0002, calculation 4−3 and result 晚1天, including minus and day unit. Matches source arithmetic. Title/chapter/source/key readable; watermark separate.",
+      "sha256_after": "cf9c65fa19172298d11be4258c7ba23b2e694962bc71a5e92d6b38de78625171",
+      "bytes_after": 92757,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 27,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/9588899ea9f32369.png",
+      "bytes": 102008,
+      "sha256": "fde3ecfff0a20362318db269e22ff6a6d379d85f2af6c72d3df19dc14779ad78",
+      "scene": "in-transit-example",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選在途紀錄不進這張單在途紀錄不進這張單代號狀態實際天數P0005in_transit空白本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "在途紀錄不進這張單",
+        "columns": [
+          "代號",
+          "狀態",
+          "實際天數"
+        ],
+        "rows": [
+          [
+            "P0005",
+            "in_transit",
+            "空白"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "在途紀錄不進這張單"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:52:38.260Z",
+      "notes": "Table shows P0005 in_transit 空白 and title/key 在途紀錄不進這張單; negation 不 is clear. All source/chapter text complete; watermark separate.",
+      "sha256_after": "fde3ecfff0a20362318db269e22ff6a6d379d85f2af6c72d3df19dc14779ad78",
+      "bytes_after": 102008,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 28,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/e62a73e1eb947137.png",
+      "bytes": 136973,
+      "sha256": "69a8763aeac638a3fff5bfbb1337b8555578cec741cf8561745e6555a8da0155",
+      "scene": "where-is-complete",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選完整內容與欄位一同保留COPY ( SELECT parcel_id,route,promised_days,actual_days,        actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>promised_days ORDER BY parcel_id) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');followup.sql 第9–15行／全24行｜本地2.0",
+      "source_data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          3,
+          5
+        ]
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:52:38.260Z",
+      "notes": "All 7 COPY SQL lines visible; highlight does not obscure days_late calculation or strict > predicate. status='delivered', ORDER BY parcel_id, CSV destination, HEADER and DELIMITER punctuation intact. Source 第9–15行／全24行/key readable; watermark separate.",
+      "sha256_after": "69a8763aeac638a3fff5bfbb1337b8555578cec741cf8561745e6555a8da0155",
+      "bytes_after": 136973,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 29,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/77a52d6bed3b4614.png",
+      "bytes": 137048,
+      "sha256": "0ce3a8be38dedb22adb538c4c9a015abd22f2f39b6b2db08fa5dd2834e925dbe",
+      "scene": "selection-and-order",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選完整內容與欄位一同保留COPY ( SELECT parcel_id,route,promised_days,actual_days,        actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>promised_days ORDER BY parcel_id) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');followup.sql 第9–15行／全24行｜本地2.0",
+      "source_data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          2,
+          3,
+          6
+        ]
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:53:18.009Z",
+      "notes": "All 7 COPY SQL lines visible with highlights on selected fields, days_late calculation and ORDER BY parcel_id. Strict >, CSV path and (HEADER,DELIMITER ','); complete; caption/key readable; watermark separate.",
+      "sha256_after": "0ce3a8be38dedb22adb538c4c9a015abd22f2f39b6b2db08fa5dd2834e925dbe",
+      "bytes_after": 137048,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 30,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/6cb331666e45a440.png",
+      "bytes": 103024,
+      "sha256": "5cef0b3ab29ecbec1cd689e22ddbfb0ffaa60729e3c467e4615fe677d830955e",
+      "scene": "on-time-example",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選同一表中的準時紀錄同一表中的準時紀錄代號承諾實際本次判定P00013天3天不進延遲清單本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "同一表中的準時紀錄",
+        "columns": [
+          "代號",
+          "承諾",
+          "實際",
+          "本次判定"
+        ],
+        "rows": [
+          [
+            "P0001",
+            "3天",
+            "3天",
+            "不進延遲清單"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一表中的準時紀錄"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:53:18.009Z",
+      "notes": "Table shows P0001, 承諾3天, 實際3天, 本次判定 不進延遲清單. Negation and both day units visible; matches source. Title/source/key clear; watermark separate.",
+      "sha256_after": "5cef0b3ab29ecbec1cd689e22ddbfb0ffaa60729e3c467e4615fe677d830955e",
+      "bytes_after": 103024,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 31,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/c5738fb1c35a6f82.png",
+      "bytes": 132138,
+      "sha256": "c03258f663743650ca40aded33595ff2255ad279f32f90e5fb41d2b737a94934",
+      "scene": "field-name-question",
+      "index": 0,
+      "planned_text": "03 / 06三筆包裹，只有一筆入選條件寫對後，還得使用真正欄位本地操作2026-10-25｜DuckDB2.0｜虛構資料欄位名稱也要對齊條件寫對後，還得使用真正欄位",
+      "source_data": {
+        "text": "欄位名稱也要對齊",
+        "sub": "條件寫對後，還得使用真正欄位",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "條件寫對後，還得使用真正欄位"
+      },
+      "chapter": "三筆包裹，只有一筆入選",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:53:18.009Z",
+      "notes": "Full main title 欄位名稱也要對齊 and sub 條件寫對後，還得使用真正欄位 are complete. Source/chapter/key clear; no clipping/tofu; watermark separate.",
+      "sha256_after": "c03258f663743650ca40aded33595ff2255ad279f32f90e5fb41d2b737a94934",
+      "bytes_after": 132138,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 32,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/18f6fd7bab89cbc0.png",
+      "bytes": 141064,
+      "sha256": "c13ee2831d15a1d865005bca8c9411abd44fd06463ae3c3dd1db0fa0bc16c7ab",
+      "scene": "human-error",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來一般模式也會正確報錯Binder Error: Referenced column \"actual_day\" not found in FROM clause!找不到這個欄位名稱公開教材Linux2.0實跑｜runlogs/human-typo.stderr.txt",
+      "source_data": {
+        "quote": "Binder Error: Referenced column \"actual_day\" not found in FROM clause!",
+        "source": "公開教材Linux2.0實跑｜runlogs/human-typo.stderr.txt",
+        "translation": "找不到這個欄位名稱",
+        "key": "一般模式也會正確報錯"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:53:18.009Z",
+      "notes": "Full wrapped quote Binder Error: Referenced column \"actual_day\" not found in FROM clause! is visible, preserving singular typo, underscore, not, quotes and exclamation. Translation 找不到這個欄位名稱, human-typo.stderr.txt source and key readable; watermark separate.",
+      "sha256_after": "c13ee2831d15a1d865005bca8c9411abd44fd06463ae3c3dd1db0fa0bc16c7ab",
+      "bytes_after": 141064,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 33,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/54287471ab2930ca.png",
+      "bytes": 86660,
+      "sha256": "e567a954600d6aa26f25f68c01c945bcd0d12bce53722104ce88f1ad81318522",
+      "scene": "intentional-typo",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來完整內容與欄位一同保留.read demo/setup.sqlSELECT parcel_id, actual_dayFROM parcels LIMIT 1;typo.sql 第1–3行／全3行｜本地2.0",
+      "source_data": {
+        "code": ".read demo/setup.sql\nSELECT parcel_id, actual_day\nFROM parcels LIMIT 1;",
+        "caption": "typo.sql 第1–3行／全3行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          2
+        ]
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:08.167Z",
+      "notes": "All 3 lines visible; highlighted SELECT parcel_id, actual_day preserves intentional singular typo; FROM parcels LIMIT 1; intact. typo.sql 第1–3行／全3行 caption and key readable; watermark separate.",
+      "sha256_after": "e567a954600d6aa26f25f68c01c945bcd0d12bce53722104ce88f1ad81318522",
+      "bytes_after": 86660,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 34,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/b7d6dad00e6a1324.png",
+      "bytes": 122115,
+      "sha256": "20e895d8332166c1091c1144f40aa201f439eb0cdf1fca42af930d16ffd54a35",
+      "scene": "stderr-contract",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來先選JSON行，再定位錯字與候選從這次錯誤輸出找回欄位訊息順序本次stderr第一行模式啟動說明文字第二行合法JSON錯誤物件本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "從這次錯誤輸出找回欄位",
+        "columns": [
+          "訊息順序",
+          "本次stderr"
+        ],
+        "rows": [
+          [
+            "第一行",
+            "模式啟動說明文字"
+          ],
+          [
+            "第二行",
+            "合法JSON錯誤物件"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "先選JSON行，再定位錯字與候選"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:08.167Z",
+      "notes": "Table visibly distinguishes 第一行 模式啟動說明文字 from 第二行 合法JSON錯誤物件. Key says 先選JSON行，再定位錯字與候選, preserving stream/JSON distinction. Title/source clear; watermark separate.",
+      "sha256_after": "20e895d8332166c1091c1144f40aa201f439eb0cdf1fca42af930d16ffd54a35",
+      "bytes_after": 122115,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 35,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/661a42cbd7a4ba33.png",
+      "bytes": 129596,
+      "sha256": "f8f7140e4670893e06b034e079370fc805dfa746b77baae5cac846353cb93764",
+      "scene": "valid-json-fields",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來代理模式的錯誤欄位代理模式的錯誤欄位欄位本次內容exception_typeBindererror_subtypeCOLUMN_NOT_FOUNDnameactual_day說明內的候選名稱actual_days、parcel_id本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "代理模式的錯誤欄位",
+        "columns": [
+          "欄位",
+          "本次內容"
+        ],
+        "rows": [
+          [
+            "exception_type",
+            "Binder"
+          ],
+          [
+            "error_subtype",
+            "COLUMN_NOT_FOUND"
+          ],
+          [
+            "name",
+            "actual_day"
+          ],
+          [
+            "說明內的候選名稱",
+            "actual_days、parcel_id"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "代理模式的錯誤欄位"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": false,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:24.054Z",
+      "notes": "BLOCKING on full-original reinspection: title 代理模式的錯誤欄位 has visibly cropped/flattened bottom edges of glyphs at approximately y234, unlike full title on scene12. All 4 table rows, source and key remain legible and match source. Upper-right watermark is separate. Initial pass superseded by this actual-pixel reinspection.",
+      "prior_observations": [
+        {
+          "observed_at": "2026-10-27T08:54:08.167Z",
+          "acceptable": true,
+          "notes": "All 4 error-field rows complete: exception_type Binder; error_subtype COLUMN_NOT_FOUND; name actual_day; candidate names actual_days、parcel_id. Underscores and plural difference clear. Title/source/key readable; watermark separate."
+        }
+      ],
+      "sha256_after": "f8f7140e4670893e06b034e079370fc805dfa746b77baae5cac846353cb93764",
+      "bytes_after": 129596,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 36,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/a7031c28622dab16.png",
+      "bytes": 91089,
+      "sha256": "28fb571d586b7534bdca4d9316d358e06c47610ad5a59e87a3c032c9c7e9459d",
+      "scene": "repair-the-name",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來依原欄位修正依原欄位修正錯字原表欄位actual_dayactual_days本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "依原欄位修正",
+        "columns": [
+          "錯字",
+          "原表欄位"
+        ],
+        "rows": [
+          [
+            "actual_day",
+            "actual_days"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "依原欄位修正"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:08.167Z",
+      "notes": "Correction table clearly shows 錯字 actual_day versus 原表欄位 actual_days. Final s and underscores visible; title/source/key complete; watermark separate.",
+      "sha256_after": "28fb571d586b7534bdca4d9316d358e06c47610ad5a59e87a3c032c9c7e9459d",
+      "bytes_after": 91089,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 37,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/1893bd634f2301a9.png",
+      "bytes": 150890,
+      "sha256": "cb512b2d4f9d5d0f29f3aeb0c28a994534004cbdf87862937c889100accc2ee9",
+      "scene": "copy-limit-question",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來修好欄位後，完整查詢準備寫檔本地操作2026-10-25｜DuckDB2.0｜虛構資料預覽的省略，會跟進檔案嗎？修好欄位後，完整查詢準備寫檔",
+      "source_data": {
+        "text": "預覽的省略，會跟進檔案嗎？",
+        "sub": "修好欄位後，完整查詢準備寫檔",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "修好欄位後，完整查詢準備寫檔"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:28.235Z",
+      "notes": "Two-line main question 預覽的省略，會跟進檔案嗎？ is complete including comma/question mark. Sub/key 修好欄位後，完整查詢準備寫檔 and source/chapter clear; watermark separate.",
+      "sha256_after": "cb512b2d4f9d5d0f29f3aeb0c28a994534004cbdf87862937c889100accc2ee9",
+      "bytes_after": 150890,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 38,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/710deea405a06214.png",
+      "bytes": 136652,
+      "sha256": "78899a4d1b4b1cb3da43336158e2e37a7d30b21b5252a5324f62a998c3486812",
+      "scene": "copy-csv-whole",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來完整內容與欄位一同保留COPY ( SELECT parcel_id,route,promised_days,actual_days,        actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>promised_days ORDER BY parcel_id) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');followup.sql 第9–15行／全24行｜本地2.0",
+      "source_data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:28.235Z",
+      "notes": "All 7 CSV COPY lines visible without highlight, including all selected columns, days_late, delivered strict > predicate, ORDER BY and full CSV destination/options. Source caption/key clear; watermark separate.",
+      "sha256_after": "78899a4d1b4b1cb3da43336158e2e37a7d30b21b5252a5324f62a998c3486812",
+      "bytes_after": 136652,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 39,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/392e2e4339448a38.png",
+      "bytes": 136575,
+      "sha256": "df98c443d8d644a8e1cbcabd998f9112b8401375d46466382fe543625152c8db",
+      "scene": "copy-where",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來完整內容與欄位一同保留COPY ( SELECT parcel_id,route,promised_days,actual_days,        actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>promised_days ORDER BY parcel_id) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');followup.sql 第9–15行／全24行｜本地2.0",
+      "source_data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          4,
+          5,
+          6
+        ]
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:28.235Z",
+      "notes": "All 7 CSV COPY lines visible; highlights on FROM/WHERE/ORDER do not obscure delivered, actual_days>promised_days or parcel_id. Full destination/options, caption/key clear; watermark separate.",
+      "sha256_after": "df98c443d8d644a8e1cbcabd998f9112b8401375d46466382fe543625152c8db",
+      "bytes_after": 136575,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 40,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/375f2ff0372ad056.png",
+      "bytes": 136648,
+      "sha256": "7707520d495203a5e18aaaaf6a431345f12ffe74e6ccb5f618bf096ef9935409",
+      "scene": "copy-destination",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來完整內容與欄位一同保留COPY ( SELECT parcel_id,route,promised_days,actual_days,        actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>promised_days ORDER BY parcel_id) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');followup.sql 第9–15行／全24行｜本地2.0",
+      "source_data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          7
+        ]
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:28.235Z",
+      "notes": "All 7 CSV COPY lines visible; highlighted destination preserves demo/output/late-followup.csv and (HEADER,DELIMITER ',');. Strict predicate/selected columns remain readable; caption/key clear; watermark separate.",
+      "sha256_after": "7707520d495203a5e18aaaaf6a431345f12ffe74e6ccb5f618bf096ef9935409",
+      "bytes_after": 136648,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 41,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/b91b586fcdf3d87a.png",
+      "bytes": 137208,
+      "sha256": "3f9b4ce9cac667d234d5c70c1856a677014fc1505c234b64278a0653423b137d",
+      "scene": "copy-parquet-whole",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來完整內容與欄位一同保留COPY ( SELECT parcel_id,route,promised_days,actual_days,        actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>promised_days ORDER BY parcel_id) TO 'demo/output/late-followup.parquet' (FORMAT PARQUET);followup.sql 第16–22行／全24行｜本地2.0",
+      "source_data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.parquet' (FORMAT PARQUET);",
+        "caption": "followup.sql 第16–22行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:50.372Z",
+      "notes": "All 7 Parquet COPY lines visible, matching selected fields, delivered strict > condition and ORDER BY; destination late-followup.parquet and (FORMAT PARQUET); fully legible. Caption 第16–22行／全24行/key clear; watermark separate.",
+      "sha256_after": "3f9b4ce9cac667d234d5c70c1856a677014fc1505c234b64278a0653423b137d",
+      "bytes_after": 137208,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 42,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/1fad177a58acaa1c.png",
+      "bytes": 84680,
+      "sha256": "d60647e03e1ffe609b5589fa9579b8eabe7a62dce15b16b1c32f90789e368543",
+      "scene": "run-followup",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來固定同版CLI與臨時資料庫./duckdb -no-init -agent :memory: -f demo/followup.sql公開教材根目錄｜Linux2.0實際執行的完整命令",
+      "source_data": {
+        "code": "./duckdb -no-init -agent :memory: -f demo/followup.sql",
+        "caption": "公開教材根目錄｜Linux2.0實際執行的完整命令",
+        "key": "固定同版CLI與臨時資料庫"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:50.372Z",
+      "notes": "Single full command ./duckdb -no-init -agent :memory: -f demo/followup.sql fits in code box with both ends visible. Full execution caption and key 固定同版CLI與臨時資料庫 readable; watermark separate.",
+      "sha256_after": "d60647e03e1ffe609b5589fa9579b8eabe7a62dce15b16b1c32f90789e368543",
+      "bytes_after": 84680,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 43,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/d3c3d978a4f651f6.png",
+      "bytes": 92783,
+      "sha256": "43f58fcaf3b136b2d4f6ec0afdfa55e433035fd52cb27bdddeb11a48be6498a8",
+      "scene": "read-exported-count",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來完整內容與欄位一同保留SELECT count(*) AS exported_rowsFROM read_csv('demo/output/late-followup.csv');followup.sql 第23–24行／全24行｜本地2.0",
+      "source_data": {
+        "code": "SELECT count(*) AS exported_rows\nFROM read_csv('demo/output/late-followup.csv');",
+        "caption": "followup.sql 第23–24行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:50.372Z",
+      "notes": "Both readback-count SQL lines visible: SELECT count(*) AS exported_rows / FROM read_csv('demo/output/late-followup.csv');. Caption 第23–24行／全24行 and key clear; watermark separate.",
+      "sha256_after": "43f58fcaf3b136b2d4f6ec0afdfa55e433035fd52cb27bdddeb11a48be6498a8",
+      "bytes_after": 92783,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 44,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/3c4c1e4caae9a916.png",
+      "bytes": 99343,
+      "sha256": "fd3adde0ac095a083311665677f9923711f39f30c9ac9de7c800d8b858f5ce5c",
+      "scene": "actual-export-count",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來這是篩選後的檔案筆數| 480 |完整匯出資料列為480筆公開教材Linux2.0實跑｜runlogs/agent-followup.stdout.txt",
+      "source_data": {
+        "quote": "| 480 |",
+        "source": "公開教材Linux2.0實跑｜runlogs/agent-followup.stdout.txt",
+        "translation": "完整匯出資料列為480筆",
+        "key": "這是篩選後的檔案筆數"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:54:50.372Z",
+      "notes": "Quote | 480 | and translation 完整匯出資料列為480筆 fully visible. Source agent-followup.stdout.txt and key 這是篩選後的檔案筆數 complete; number matches source; watermark separate.",
+      "sha256_after": "fd3adde0ac095a083311665677f9923711f39f30c9ac9de7c800d8b858f5ce5c",
+      "bytes_after": 99343,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 45,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/7b48c753c5ef1116.png",
+      "bytes": 117530,
+      "sha256": "0cf229016bfc8282ea7eaf52322bd7952c5838f6c9f6ee14fd13eebe1064de72",
+      "scene": "same-version-same-answer",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來模式改顯示，沒有改篩選答案本地操作2026-10-25｜DuckDB2.0｜虛構資料相同條件，相同清單模式改顯示，沒有改篩選答案",
+      "source_data": {
+        "text": "相同條件，相同清單",
+        "sub": "模式改顯示，沒有改篩選答案",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "模式改顯示，沒有改篩選答案"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:55:37.225Z",
+      "notes": "Two-line title 相同條件，相同清單 is intact; full sub/key 模式改顯示，沒有改篩選答案 preserves negation 沒有. Source/chapter clear; no clipping; watermark separate.",
+      "sha256_after": "0cf229016bfc8282ea7eaf52322bd7952c5838f6c9f6ee14fd13eebe1064de72",
+      "bytes_after": 117530,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 46,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/6ca9ae576dfe48a8.png",
+      "bytes": 129703,
+      "sha256": "9267622637c17181624da828ae7bda6f9e7b137753f37c2236a0866072425473",
+      "scene": "handoff-question",
+      "index": 0,
+      "planned_text": "04 / 06少一個字母，查詢先停了下來確認內容，而不只看副檔名本地操作2026-10-25｜DuckDB2.0｜虛構資料檔案能重開，還要核對確認內容，而不只看副檔名",
+      "source_data": {
+        "text": "檔案能重開，還要核對",
+        "sub": "確認內容，而不只看副檔名",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "確認內容，而不只看副檔名"
+      },
+      "chapter": "少一個字母，查詢先停了下來",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:55:37.225Z",
+      "notes": "Title wraps 檔案能重 / 開，還要核對; all characters and comma remain visible. Sub/key 確認內容，而不只看副檔名 preserves 不. Source/chapter readable; watermark separate.",
+      "sha256_after": "9267622637c17181624da828ae7bda6f9e7b137753f37c2236a0866072425473",
+      "bytes_after": 129703,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 47,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/ab2a17ca6ae85541.png",
+      "bytes": 107249,
+      "sha256": "08e0d7316a1ec5d04c3f3d059c5aabd9c934950dd0c2a6840ba3eed4972042a1",
+      "scene": "read-parquet-back",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表完整內容與欄位一同保留COPY ( SELECT * FROM 'demo/output/late-followup.parquet' ORDER BY parcel_id) TO 'demo/output/parquet-readback.csv' (HEADER,DELIMITER ',');readback.sql 第3–6行／全6行｜本地2.0",
+      "source_data": {
+        "code": "COPY (\n SELECT * FROM 'demo/output/late-followup.parquet'\n ORDER BY parcel_id\n) TO 'demo/output/parquet-readback.csv' (HEADER,DELIMITER ',');",
+        "caption": "readback.sql 第3–6行／全6行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:55:37.225Z",
+      "notes": "All 4 SQL lines visible: COPY from late-followup.parquet, ORDER BY parcel_id, destination parquet-readback.csv with HEADER/DELIMITER and closing punctuation. Caption 第3–6行／全6行, chapter05/key clear; watermark separate.",
+      "sha256_after": "08e0d7316a1ec5d04c3f3d059c5aabd9c934950dd0c2a6840ba3eed4972042a1",
+      "bytes_after": 107249,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 48,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/e8fb1c2374da0f4b.png",
+      "bytes": 87125,
+      "sha256": "61aeba8e388e8235ebde2083375bc8e16870d640850c7d8b258f7035c90c372c",
+      "scene": "run-readback",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表固定同版CLI與臨時資料庫./duckdb -no-init -no-agent :memory: -f demo/readback.sql公開教材根目錄｜Linux2.0實際執行的完整命令",
+      "source_data": {
+        "code": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql",
+        "caption": "公開教材根目錄｜Linux2.0實際執行的完整命令",
+        "key": "固定同版CLI與臨時資料庫"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:55:37.225Z",
+      "notes": "Full single command ./duckdb -no-init -no-agent :memory: -f demo/readback.sql visible with no clipped ends. Full execution caption and key 固定同版CLI與臨時資料庫 readable; watermark separate.",
+      "sha256_after": "61aeba8e388e8235ebde2083375bc8e16870d640850c7d8b258f7035c90c372c",
+      "bytes_after": 87125,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 49,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/fdd389b1f4273bae.png",
+      "bytes": 107009,
+      "sha256": "d8c58fc8ea7cbed5e33f2c1b10f3567b2aa5bbe5521ba255ccffefcac4fbc035",
+      "scene": "first-delivered-late",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表從完整檔抽一筆回查從完整檔抽一筆回查欄位P0002這一筆routeR2promised_days3actual_days4days_late1本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "從完整檔抽一筆回查",
+        "columns": [
+          "欄位",
+          "P0002這一筆"
+        ],
+        "rows": [
+          [
+            "route",
+            "R2"
+          ],
+          [
+            "promised_days",
+            "3"
+          ],
+          [
+            "actual_days",
+            "4"
+          ],
+          [
+            "days_late",
+            "1"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "從完整檔抽一筆回查"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:24.054Z",
+      "acceptable": false,
+      "notes": "BLOCKING: title 從完整檔抽一筆回查 has visibly cropped lower glyph edges at approximately y234; reopened full native original confirmed. Rows P0002: route R2, promised_days 3, actual_days 4, days_late 1 are complete and match source. Source/key clear; watermark separate.",
+      "sha256_after": "d8c58fc8ea7cbed5e33f2c1b10f3567b2aa5bbe5521ba255ccffefcac4fbc035",
+      "bytes_after": 107009,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 50,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/2b3dde4c2fe654bb.png",
+      "bytes": 110076,
+      "sha256": "2d35a1858ca8976c6c72df16509ab304bd620ce451ce7d547904358e99c65c85",
+      "scene": "tail-of-output",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表末端紀錄也在完整檔末端紀錄也在完整檔代號路線晚幾天P1191R32P1194R21P1198R21P1199R32本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "末端紀錄也在完整檔",
+        "columns": [
+          "代號",
+          "路線",
+          "晚幾天"
+        ],
+        "rows": [
+          [
+            "P1191",
+            "R3",
+            "2"
+          ],
+          [
+            "P1194",
+            "R2",
+            "1"
+          ],
+          [
+            "P1198",
+            "R2",
+            "1"
+          ],
+          [
+            "P1199",
+            "R3",
+            "2"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "末端紀錄也在完整檔"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:24.054Z",
+      "acceptable": false,
+      "notes": "BLOCKING: title 末端紀錄也在完整檔 has visibly cropped lower glyph edges at approximately y234; reopened full native original confirmed. All 4 rows complete and match source: P1191 R3 2; P1194 R2 1; P1198 R2 1; P1199 R3 2. Source/key clear; watermark separate.",
+      "sha256_after": "2d35a1858ca8976c6c72df16509ab304bd620ce451ce7d547904358e99c65c85",
+      "bytes_after": 110076,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 51,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/a6ef83bd10a3ccfe.png",
+      "bytes": 109202,
+      "sha256": "a27d33b6e73a1dd952b6aaf81297bc7bdb67017832b42c6ee7254f87d3c377b4",
+      "scene": "route-summary-query",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表完整內容與欄位一同保留SELECT route,count(*) AS delivered_lateFROM parcelsWHERE status='delivered' AND actual_days>promised_daysGROUP BY route ORDER BY route;followup.sql 第5–8行／全24行｜本地2.0",
+      "source_data": {
+        "code": "SELECT route,count(*) AS delivered_late\nFROM parcels\nWHERE status='delivered' AND actual_days>promised_days\nGROUP BY route ORDER BY route;",
+        "caption": "followup.sql 第5–8行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:24.054Z",
+      "acceptable": true,
+      "notes": "All 4 route-summary SQL lines visible: count(*) AS delivered_late, FROM parcels, status='delivered' AND actual_days>promised_days, GROUP BY route ORDER BY route;. Caption 第5–8行／全24行 and key readable; watermark separate.",
+      "sha256_after": "a27d33b6e73a1dd952b6aaf81297bc7bdb67017832b42c6ee7254f87d3c377b4",
+      "bytes_after": 109202,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 52,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/05dca7af45977520.png",
+      "bytes": 107560,
+      "sha256": "c0b9ffb0088578c4582814a6afbb87d181c1436c3cb10ed984147f0600a234dd",
+      "scene": "route-summary-result",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表兩條路線的跟進紀錄兩條路線的跟進紀錄路線本例資料列R2240R3240本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "兩條路線的跟進紀錄",
+        "columns": [
+          "路線",
+          "本例資料列"
+        ],
+        "rows": [
+          [
+            "R2",
+            "240"
+          ],
+          [
+            "R3",
+            "240"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "兩條路線的跟進紀錄"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:24.054Z",
+      "acceptable": true,
+      "notes": "Table fully shows R2 240 and R3 240 beneath 路線/本例資料列. Title 兩條路線的跟進紀錄 has complete glyphs; source/chapter/key clear; no clipping/overlap/tofu; watermark separate.",
+      "sha256_after": "c0b9ffb0088578c4582814a6afbb87d181c1436c3cb10ed984147f0600a234dd",
+      "bytes_after": 107560,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 53,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/39b974ddece518fa.png",
+      "bytes": 123801,
+      "sha256": "d459c4d8b9c11977791b6e9462f15ea1e776ee517cb53f2084c56b2edb6f6c33",
+      "scene": "full-content-comparison",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表CSV與Parquet讀回結果相符本地操作2026-10-25｜DuckDB2.0｜虛構資料逐列內容一致CSV與Parquet讀回結果相符",
+      "source_data": {
+        "text": "逐列內容一致",
+        "sub": "CSV與Parquet讀回結果相符",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "CSV與Parquet讀回結果相符"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:51.470Z",
+      "notes": "逐列內容一致 and CSV與Parquet讀回結果相符 fully visible; source/chapter/key complete. No clipping/overlap/tofu; watermark separate. This card states source content, not an independent replay claim by reviewer.",
+      "sha256_after": "d459c4d8b9c11977791b6e9462f15ea1e776ee517cb53f2084c56b2edb6f6c33",
+      "bytes_after": 123801,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 54,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/8e1cc79d7ab9413b.png",
+      "bytes": 137328,
+      "sha256": "81d8b5de5a8063aecd755ff01dcfa799b7c7bd394c5517302b9d9c26288eded3",
+      "scene": "source-predicate-check",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表標準函式庫逐筆套條件，另核對全部代號本地操作2026-10-25｜DuckDB2.0｜虛構資料再從原表重算名單標準函式庫逐筆套條件，另核對全部代號",
+      "source_data": {
+        "text": "再從原表重算名單",
+        "sub": "標準函式庫逐筆套條件，另核對全部代號",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "標準函式庫逐筆套條件，另核對全部代號"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:51.470Z",
+      "notes": "再從原表重算名單 and entire long sub/key 標準函式庫逐筆套條件，另核對全部代號 are visible with no clipped ends. Source/chapter clear; watermark separate.",
+      "sha256_after": "81d8b5de5a8063aecd755ff01dcfa799b7c7bd394c5517302b9d9c26288eded3",
+      "bytes_after": 137328,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 55,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/e72c13db2806c695.png",
+      "bytes": 122476,
+      "sha256": "43346e96195c686234bca63d3556a0760557dc3e82748308c534a564ed3f3dc5",
+      "scene": "change-the-requirement",
+      "index": 0,
+      "planned_text": "05 / 06檔案重開後，逐筆對回原表同一份資料，修改一個比較條件本地操作2026-10-25｜DuckDB2.0｜虛構資料若要包含剛好準時同一份資料，修改一個比較條件",
+      "source_data": {
+        "text": "若要包含剛好準時",
+        "sub": "同一份資料，修改一個比較條件",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份資料，修改一個比較條件"
+      },
+      "chapter": "檔案重開後，逐筆對回原表",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:51.470Z",
+      "notes": "若要包含剛好準時 and 同一份資料，修改一個比較條件 complete. Condition-change wording retained; source/chapter/key clear; no clipping/tofu; watermark separate.",
+      "sha256_after": "43346e96195c686234bca63d3556a0760557dc3e82748308c534a564ed3f3dc5",
+      "bytes_after": 122476,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 56,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/8afc52b2e72ec882.png",
+      "bytes": 150932,
+      "sha256": "ebba1016dc072abefc59cfd8484ddd8f2fd4e121b5dc458f335373abd6a33d92",
+      "scene": "new-requirement-consequence",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求改的是交付需求，不是修正舊清單本地操作2026-10-25｜DuckDB2.0｜虛構資料原本排除的紀錄，現在要留下改的是交付需求，不是修正舊清單",
+      "source_data": {
+        "text": "原本排除的紀錄，現在要留下",
+        "sub": "改的是交付需求，不是修正舊清單",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "改的是交付需求，不是修正舊清單"
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:57:51.470Z",
+      "notes": "Title wraps 原本排除的紀 / 錄，現在要留下 with all characters intact. Sub/key 改的是交付需求，不是修正舊清單 preserves negation 不是. Chapter06/source clear; watermark separate.",
+      "sha256_after": "ebba1016dc072abefc59cfd8484ddd8f2fd4e121b5dc458f335373abd6a33d92",
+      "bytes_after": 150932,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 57,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/c6e6d6c6ae53391a.png",
+      "bytes": 135904,
+      "sha256": "5a0fe0e258421c0313eef9bc69a74490b9065f0ea5ff1f3621f07d2325263676",
+      "scene": "due-or-late-rule",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求完整內容與欄位一同保留COPY ( SELECT parcel_id,route,promised_days,actual_days,        actual_days-promised_days AS days_late FROM parcels WHERE status='delivered' AND actual_days>=promised_days ORDER BY parcel_id) TO 'demo/output/due-or-late.csv' (HEADER,DELIMITER ',');variant.sql 第2–8行／全10行｜本地2.0",
+      "source_data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>=promised_days\n ORDER BY parcel_id\n) TO 'demo/output/due-or-late.csv' (HEADER,DELIMITER ',');",
+        "caption": "variant.sql 第2–8行／全10行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          5,
+          7
+        ]
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:58:19.936Z",
+      "notes": "All 7 variant COPY lines visible; comparison >= is rendered as a readable ≥ ligature, distinguishing inclusive condition from prior strict >. status='delivered', full due-or-late.csv destination and HEADER/DELIMITER intact. Caption 第2–8行／全10行/key readable; watermark separate.",
+      "sha256_after": "5a0fe0e258421c0313eef9bc69a74490b9065f0ea5ff1f3621f07d2325263676",
+      "bytes_after": 135904,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 58,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/d929e4728dfbcd52.png",
+      "bytes": 86935,
+      "sha256": "dace0b6994e73adc9423d78d082fc7296a1f34a67db41cededf7e0ce60082cb8",
+      "scene": "run-variant",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求固定同版CLI與臨時資料庫./duckdb -no-init -agent :memory: -f demo/variant.sql公開教材根目錄｜Linux2.0實際執行的完整命令",
+      "source_data": {
+        "code": "./duckdb -no-init -agent :memory: -f demo/variant.sql",
+        "caption": "公開教材根目錄｜Linux2.0實際執行的完整命令",
+        "key": "固定同版CLI與臨時資料庫"
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:58:19.936Z",
+      "notes": "Full single command ./duckdb -no-init -agent :memory: -f demo/variant.sql visible with complete path. Execution caption and key clear; no clipping/tofu; watermark separate.",
+      "sha256_after": "dace0b6994e73adc9423d78d082fc7296a1f34a67db41cededf7e0ce60082cb8",
+      "bytes_after": 86935,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 59,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/a08de03d70f095db.png",
+      "bytes": 132572,
+      "sha256": "6de085a8973d3c82738d843f0781e90218cc59287cc86d956be84e0e0309b6a5",
+      "scene": "variant-members-question",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求同一份原表，只修改這個比較符號本地操作2026-10-25｜DuckDB2.0｜虛構資料多出來的是哪一組？同一份原表，只修改這個比較符號",
+      "source_data": {
+        "text": "多出來的是哪一組？",
+        "sub": "同一份原表，只修改這個比較符號",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份原表，只修改這個比較符號"
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:58:19.936Z",
+      "notes": "Two-line question 多出來的是哪一組？ retains all characters and question mark; sub/key 同一份原表，只修改這個比較符號 complete. Source/chapter readable; watermark separate.",
+      "sha256_after": "6de085a8973d3c82738d843f0781e90218cc59287cc86d956be84e0e0309b6a5",
+      "bytes_after": 132572,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 60,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/f9113640a4410758.png",
+      "bytes": 125428,
+      "sha256": "5e91970eea920c253a5f340779b196f6396bb04db6a28cd90cc29e6d45c23db6",
+      "scene": "variant-result",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求需求變式：剛好準時或晚到需求變式：剛好準時或晚到這次需求完整筆數原本：嚴格晚到480變式：剛好準時或晚到720本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "需求變式：剛好準時或晚到",
+        "columns": [
+          "這次需求",
+          "完整筆數"
+        ],
+        "rows": [
+          [
+            "原本：嚴格晚到",
+            "480"
+          ],
+          [
+            "變式：剛好準時或晚到",
+            "720"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "需求變式：剛好準時或晚到"
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "acceptable": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:58:19.936Z",
+      "notes": "Full title 需求變式：剛好準時或晚到 and table rows 原本：嚴格晚到 480 / 變式：剛好準時或晚到 720 readable. Labels preserve inclusive scope rather than calling all720 late. Headers/source/key complete; watermark separate.",
+      "sha256_after": "5e91970eea920c253a5f340779b196f6396bb04db6a28cd90cc29e6d45c23db6",
+      "bytes_after": 125428,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 61,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/06048019509ebdae.png",
+      "bytes": 113265,
+      "sha256": "f26c2cbc9b0f78b9dcecc68c9e0c4881260082bc5ecf91b581533793ea04f13b",
+      "scene": "on-time-enters-variant",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求剛好準時的紀錄入選剛好準時的紀錄入選代號晚幾天新需求判定P00010納入剛好準時或晚到本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "剛好準時的紀錄入選",
+        "columns": [
+          "代號",
+          "晚幾天",
+          "新需求判定"
+        ],
+        "rows": [
+          [
+            "P0001",
+            "0",
+            "納入剛好準時或晚到"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "剛好準時的紀錄入選"
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:59:12.802Z",
+      "acceptable": true,
+      "notes": "Table fully shows P0001, 晚幾天 0 and 新需求判定 納入剛好準時或晚到. Title/key 剛好準時的紀錄入選 complete; inclusion and zero value match source. Source/chapter clear; watermark separate.",
+      "sha256_after": "f26c2cbc9b0f78b9dcecc68c9e0c4881260082bc5ecf91b581533793ea04f13b",
+      "bytes_after": 113265,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 62,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/99b0a4138d298992.png",
+      "bytes": 139192,
+      "sha256": "79957342b7d07d0d97eda46f65bd2c898ef0a556a7a77123a34b8229c725d531",
+      "scene": "different-deliveries",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求同一原表，完整結果隨需求改變本地操作2026-10-25｜DuckDB2.0｜虛構資料兩份清單，各有一份需求同一原表，完整結果隨需求改變",
+      "source_data": {
+        "text": "兩份清單，各有一份需求",
+        "sub": "同一原表，完整結果隨需求改變",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一原表，完整結果隨需求改變"
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:59:12.802Z",
+      "acceptable": true,
+      "notes": "Two-line title 兩份清單，各有一份需求 and sub/key 同一原表，完整結果隨需求改變 complete. Comma and all characters visible; source/chapter clear; watermark separate.",
+      "sha256_after": "79957342b7d07d0d97eda46f65bd2c898ef0a556a7a77123a34b8229c725d531",
+      "bytes_after": 139192,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 63,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/9e8bf2f98a084e85.png",
+      "bytes": 126883,
+      "sha256": "759d173f3f5250bbdded1cc77392252180cade1fcb29e495b2bb3d64a37e5e8b",
+      "scene": "handoff-pack",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求交出能重查的教材交出能重查的教材檔案接手者可以做什麼CSV開啟完整名單Parquet保存相同內容SQL重做對應的需求HTML讀摘要並找到全檔本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+      "source_data": {
+        "title": "交出能重查的教材",
+        "columns": [
+          "檔案",
+          "接手者可以做什麼"
+        ],
+        "rows": [
+          [
+            "CSV",
+            "開啟完整名單"
+          ],
+          [
+            "Parquet",
+            "保存相同內容"
+          ],
+          [
+            "SQL",
+            "重做對應的需求"
+          ],
+          [
+            "HTML",
+            "讀摘要並找到全檔"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "交出能重查的教材"
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:59:12.802Z",
+      "acceptable": false,
+      "notes": "BLOCKING: title 交出能重查的教材 has visibly cropped lower glyph edges at approximately y234, consistent with scenes35/49/50. All 4 data rows complete and source-matched: CSV 開啟完整名單; Parquet 保存相同內容; SQL 重做對應的需求; HTML 讀摘要並找到全檔. Source/key clear; watermark separate.",
+      "sha256_after": "759d173f3f5250bbdded1cc77392252180cade1fcb29e495b2bb3d64a37e5e8b",
+      "bytes_after": 126883,
+      "unchanged_after_actual_view": true
+    },
+    {
+      "ordinal": 64,
+      "file": "/workspace/work/videos/duckdb-agent-full-export/frames/160b6cc5ee297939.png",
+      "bytes": 92776,
+      "sha256": "cd4b2fdfde5cb7c77310e6acc4963c1395e3199fdbef193435fc092b302f87f1",
+      "scene": "keep-the-rule",
+      "index": 0,
+      "planned_text": "06 / 06準時包裹加入，清單換了需求用檔案與規則承接交付完整清單，附上完整規則訂閱｜用真實產物讀懂AI工具mokaair.com",
+      "source_data": {
+        "title": "完整清單，附上完整規則",
+        "cta": "訂閱｜用真實產物讀懂AI工具",
+        "key": "用檔案與規則承接交付"
+      },
+      "chapter": "準時包裹加入，清單換了需求",
+      "actually_viewed": true,
+      "viewer": "/root/duckdb_cards_actual_visual_review",
+      "observed_at": "2026-10-27T08:59:12.802Z",
+      "acceptable": true,
+      "notes": "End-card title 完整清單，附上完整規則, CTA 訂閱｜用真實產物讀懂AI工具, mokaair.com and key 用檔案與規則承接交付 complete. Chapter06 and native v1 watermark readable and separate; no cropping/overlap/tofu. This is an end card still, not official animated bookend acceptance.",
+      "sha256_after": "cd4b2fdfde5cb7c77310e6acc4963c1395e3199fdbef193435fc092b302f87f1",
+      "bytes_after": 92776,
+      "unchanged_after_actual_view": true
+    }
+  ]
+}

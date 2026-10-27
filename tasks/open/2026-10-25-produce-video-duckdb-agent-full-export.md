@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-produce-video-duckdb-agent-full-export
 title: 製作 DuckDB 2.0 agent 模式完整跟進清單影片
-status: in-progress
+status: blocked
 priority: P1
 area: docs
-owner: codex-duckdb-20261025
-claimed_at: 2026-10-25T23:13:03Z
+owner:
+claimed_at:
 created_at: 2026-10-25T23:13:01Z
 completed_at:
 branch: codex/ai-tech-duckdb-20261025
@@ -128,3 +128,23 @@ ES native lint真exit0，保留37.5／36手機標題寬度建議（0 errors、1 
 Root指定/root/es_docs_commit為本輪唯一文件editor，沿既有owner／claim／branch。只copy196份精確作者／root／中間批次證據並核19固定功能輸入，不改source40eb／claimscc38／speech38cf／script7aac／Sulafat voice／lexicon／data或任何已採用i18n。PT原37檔／b75c／111錯標籤MD及label-only inverse proof、ID初107PASS4REVISE、TH13vs14描述header修正、VI舊source／LEASE兩檔與resume記錄及全部失敗／修訂均保留。
 
 只封存實際變動的五份doc/task與三ES描述檔；舊68=63原位＋5快照、舊Git556=551原位＋5快照，無遞迴historycopy。新的[索引](../../docs/videos/duckdb-agent-full-export/receipts/all8-text-adoption-index.json)與[驗證](../../docs/videos/duckdb-agent-full-export/receipts/all8-text-adoption-validation.json)列native lint全部實際advisories、tasks、連結與protected19。Root獨立freeze審查前不stage／commit／push；本票仍in-progress，不done／release／merge／deploy／上傳YouTube，不開topic6。原兩份敘事12/13 false、正常server pending與local採用之界線均不變。
+
+
+## 原生視覺元件及同一SCRIPT22附件實際交付
+
+2026-10-27T09:56:16.602807+00:00。Root實際完成64張原生圖卡與9張縮圖、73項當前實看，以及128秒無旁白視覺樣片；同一pending SCRIPT附22份元件後，正常full22下載及獨立bytes／SHA驗證完成。樣片2秒／卡只是檢閱速度，不是正式成片或實測旁白；9份TXT是原始標題說明草稿。
+
+- [x] 64原生圖卡／9縮圖製作與逐張視覺驗收，真實初次縮圖失敗及4張title裁切／替換圖複審完整保留。
+- [x] 同一SCRIPT22附件實際append、正常完整下載及獨立binary readback，原pending／hand-pushed／script7aac保持。
+- [ ] 繁中actual TTS／CC／至少480秒正文／正式成片QA及八語正式metadata、CC、M4A仍待完成。
+
+來源1c475只刪4張卡片可選重複title，key原句保留；ES／PT／ID／VI四縮圖短標經正常metadata merge。111句所有line objects／八語targets／完整metadata／claims／voice／lexicon不變。TTS0／raw0、actual CC與audio timeline無、外語已驗M4A0/8、官方5／21動畫bookends未套用。原40eb fact/source-gates與兩份native12/13 false保持，不將元件交付當成新批准、正式language batch或本票done。
+
+當前公開proof／進度見docs/videos/duckdb-agent-full-export/receipts/visual-components/index.json。只封存五份原始摘要；舊proof原位、無遞迴historycopy，不提交私有project／auth／profile／release／媒體。本次docs updater沒有auth／network／producer／Git mutation；Root另跑正常checks並精確scoped commit/push。本票尚未done，責任與原branch／PR1861延續；維持no-auto-merge，未merge／deploy／YouTube上傳。本次文件更新沒有建立其他影片。
+
+
+## 本輪停點與續作
+
+2026-10-27T10:07:13.245740+00:00：64圖卡、9縮圖與128秒無聲檢閱樣片已直接交本片後台，同一SCRIPT22附件經正常全量下載及獨立完整bytes／SHA驗證；待審未核准。source lint實際0 errors／2個既有ES及ID手機寬度提醒；docs-videos實際236／236通過、0 fail／0 skip。
+
+本票已由正常task工具release並設blocked，owner／claimed_at已空；尚未done，責任仍由本對話codex-duckdb-20261025與原branch／PR1861延續，沒有交給其他producer。停在繁中原版actual TTS／音訊timeline／CC／正式片頭片尾與成片，以及八語各自經當前音檔核驗的M4A、實際CC與正式語言包。八語已驗M4A仍0/8。既有series TTS hold、全域Whisper／ASR reservation及未知計費journal保持原bytes；不得因PID已死清hold、重送或forget journal。恢復前讀CURRENT最新checkpoint、查實際PID／LEASE／state，保留現有逐句快取、retake／改寫上限、歷次失敗及原核准。沒有merge／deploy／YouTube上傳或其他影片／全域排程修改。

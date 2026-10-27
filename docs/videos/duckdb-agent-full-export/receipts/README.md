@@ -1,11 +1,9 @@
-# 公開安全收據：八語文字已採用
+# 公開安全收據：當前視覺元件及同一SCRIPT22附件
 
-當前使用[all8-text-adoption-index.json](all8-text-adoption-index.json)與[本輪驗證](all8-text-adoption-validation.json)。八語各111句／六章／完整metadata是本地文字採用，actual CC／M4A／fit／meter／ASR／後台交付仍0，master paid TTS0／raw0／actual timeline無。
+[當前索引](visual-components/index.json)收錄Root明確審查的精確文字proof複本、實際下載證據與[source視覺delta](visual-components/source-visual-delta.json)。原生64圖卡／9縮圖的73項實看、128秒無旁白樣片的ffprobe／逐卡SSIM，以及完整22下載各有真實收據。
 
-[全八語當前摘要](../localization/all8/actual-all8-text-adoption-summary.json)把原PT／ID／TH中間7語批次與稍後VI真completion分開；[196份exact copies](../localization/all8/copy-identity.json)涵蓋四語完整作者歷史、root全量審查／delta／pure preview／正常CLI log與completion，不改寫原native_CLI_yet=false的審稿時狀態。PT閱讀用corrected.md與corrected JSON，原錯標籤及inverse證據仍在。
+TXT是原始完整title／description草稿；同一pending SCRIPT附件不等於正式metadata／CC／M4A語言交付。繁中TTS0／raw0、八語已驗M4A0/8、actual CC／音訊timeline／正式成片／完整QA／動畫bookends均未完成。
 
-[最新歷史identity](../history/before-all8-text-adoption-docs/identity.json)只有五份可變doc／task快照加三ES描述檔。舊ES68以63份原位＋5份archive重建，全部舊556檔綁Git a090；不遞迴複製既有history。原[index31](index.json)、[verify4](root-verify4-adoption-index.json)、[EN](en-text-adoption-index.json)、[JA](ja-text-adoption-index.json)、[KO](ko-text-adoption-index.json)、[ES284](es-text-adoption-index.json)與metadata／source freeze都保持原bytes與原scope。
+[舊all8文字索引](all8-text-adoption-index.json)、verify4與所有舊freeze原bytes保留；原四縮圖fit失敗、四圖卡title裁切發現與兩份native12/13 false也保留身份。[五份原始摘要封存](../history/before-visual-components-docs/identity.json)可重建本輪之前狀態。
 
-新index只列實際存在的不可變proof／當前i18n／archive與bytes、SHA。自己、validation、可變README／result／progress／receiptREADME／task不入entries，避免循環hash；最終external freeze另釘本輪精確路徑。來源proof／公開GET與native narrative原始false、dry-run估值與provider用量未知各保留身份，不等同媒體或server核准。
-
-本輪19個功能／來源／八語i18n輸入保持；原生lint實際soft warnings逐項列在binding／validation，不改title或native門檻去湊零。當前腳本／log純檢查均無auth／API／paid／media；沒有全八語媒體DOD、正式batch、merge／deploy或YouTube完成宣稱。
+新index排除自己、validation與可變摘要以避免循環hash；外部Root final freeze另綁精確路徑。不提交私有project／auth／profile／release／媒體，也沒有新server批准或語言batch。

@@ -1,32 +1,15 @@
-# 第五片：八語完整文字8/8，媒體與後台交付仍未完成
+# 第五片實際結果：原生視覺與SCRIPT附件完成，整片仍在製作
 
-截至 2026-10-26T09:19:55.989537+00:00，八種外語各111句／六章／完整metadata及縮圖詞，已完成全量文字審查及正常native採用。詳見[全八語摘要](localization/all8/actual-all8-text-adoption-summary.json)、[機讀進度](production-progress.json)與[當前索引](receipts/all8-text-adoption-index.json)。
+截至2026-10-27T09:56:16.602807+00:00，64張原生圖卡與繁中加八語共9張JPEG縮圖已實際製作並逐張驗收；同一待審SCRIPT已附22份視覺元件，正常完整下載及獨立bytes／SHA查核完成。[當前進度](production-progress.json)、[實際元件索引](receipts/visual-components/index.json)與[完整下載證據](receipts/visual-components/normal_full22_proof.json)分列範圍。
 
-| 語言 | 句／章 | 當前i18n SHA-256 | 證據 |
-| --- | --- | --- | --- |
-| en | 111／6 | `faf5cb2f1c7fd536e012cd2a8191062ee4069d42ef46b8b8fbf8f10543f2cf4b` | [採用收據](localization/en/actual-native-text-adoption.json) |
-| ja | 111／6 | `324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2` | [採用收據](localization/ja/actual-native-text-adoption.json) |
-| ko | 111／6 | `6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f` | [採用收據](localization/ko/actual-native-text-adoption.json) |
-| es | 111／6 | `2e8511e2456cf75c6455f205fcf6105613a5b867995ccd6079490b0349afa60c` | [採用收據](localization/es/actual-native-text-adoption.json) |
-| pt | 111／6 | `f0696f7449489eb4c8536a0501fd24afed155ae0b6531c46e15c3181b84d3b07` | [採用收據](localization/pt/actual-native-text-adoption.json) |
-| id | 111／6 | `1eefbda5e5253f143c0a4d27b9eca3d08453e28464ea688705b1773d3e7c9988` | [採用收據](localization/id/actual-native-text-adoption.json) |
-| vi | 111／6 | `e9a22e9d92c524a6c492f97088913b7285f3c6ce28467c12b2d8125fa1002428` | [採用收據](localization/vi/actual-native-text-adoption.json) |
-| th | 111／6 | `0af06dff9045602f026526516e3d7d10c1c689effa9c06c1a5d57d8eb257d544` | [採用收據](localization/th/actual-native-text-adoption.json) |
+22份為9張縮圖、聯絡表、9份完整原始標題說明草稿TXT、原生frames manifest、誠實元件報告及128秒無旁白視覺樣片。64張真實圖卡依稿件順序各停2秒，這是檢閱速度，並非實測旁白或章節時間；沒有把樣片當成正式成片，也沒有ZIP或64張PNG後台交付宣稱。
 
-## 實際採用與歷史界線
+繁中paid TTS0／raw0，actual audio timeline與CC尚無；八語已驗M4A仍0/8，fit／meter／ASR、正式語言包、至少480秒正文、正式成片及完整QA仍待完成。原生靜態字標不等於官方5秒片頭／21秒片尾，本片尚未套用動畫bookends。
 
-EN／JA／KO／ES的原採用證據原位保存。PT／ID／TH正常CLI各真exit0，原[中間批次](localization/remaining-text-batch/native-PT-ID-TH-merge-result.json)明記當時文字7/8；VI的[獨立真completion](localization/vi/root/native-merge-completion.json)之後才使目前文字8/8成立。PT root只釐清jd24符合條件母體與description未量測token／成本用詞，其他110句與source/context保持；ID／TH／VI root未改target，全部原作者修訂與fresh reader結果保存。
+當前來源[video.json](video.json)SHA `1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8`；只刪除4張卡片被裁切的可選重複title，相同文字保留於key。正常快取render重用60張並重畫4張，原64張實看中的4項裁切失敗、4張替換圖的真實複審，以及初次native0／outer1縮圖失敗均完整保留。[視覺delta](receipts/visual-components/source-visual-delta.json)也記錄ES／PT／ID／VI四個縮圖短標的正常metadata merge；111句完整line objects、全部八語targets與完整metadata不變。
 
-PT原renderer把111個目標標成ES；v2以[修正MD](localization/pt/author/source-target-complete-111.final.corrected.md)及[inverse proof](localization/pt/author/PT-final-mapping-label-correction.json)補證，舊37檔／b75c／錯標籤檔原bytes不變。當前作者三輪與ledger連到corrected JSON，不把歷史標籤錯誤當作譯文變更。VI舊source-before／LEASE兩檔及新resume sidecar、14次修訂可重建最終10欄位與fresh reader全111PASS亦照存。
+[script.md](script.md)仍為7aac，既有SCRIPT `dd47b9a0-6456-4651-9456-32b320909338`仍pending；新增附件不構成server／UI批准。40eb的verify4及source-gates保持原來源綁定；兩份原生敘事結果仍各12/13 false，教學取捨不改raw失敗或門檻。
 
-## 尚未完成的真實媒體
+五份原始摘要已[逐bytes封存](history/before-visual-components-docs/identity.json)，舊索引／freeze保持原位，未遞迴複製history。本次公開proof只含明確審查過的文字／JSON／真實log，不含媒體、私有project、credentials、profile或release。PR1861維持no-auto-merge；本票尚未done，責任與原branch／PR1861延續；未merge／deploy／上傳YouTube。
 
-繁中master paid TTS0、raw0、actual timeline無；所有語言actual SRT／VTT、M4A、fit／meter／ASR與後台交付都尚未完成。Translation line targets不是字幕成品，untimed metadata、字數／手機寬度advisory與估時不是實測配音fit；沒有清除旗標、改門檻、重設retake／shorten／reword，亦未以文字採用解除service hold。全八語媒體DOD與overall仍false，未送正式語言batch或YouTube。
-
-源40eb、claimscc38、speech38cf、script7aac／Sulafat voice、lexicon與data不變。[verify4](verify-4.md)只是metadata delta／固定證據連續性；兩位原生敘事讀者12/13 false與教學取捨保持，沒有製造新native narrative PASS。官方v4 5／21秒素材可用但尚未組成本片，不能把材料取得寫成成片完成。
-
-## 文件驗證範圍
-
-以Git `a090b585a674db0f1e0f2ef12771363bfa7596eb` 為完整舊556檔anchor，變更前全SHA相符；[增量歷史identity](history/before-all8-text-adoption-docs/identity.json)只copy五份實際可變摘要／task與三份ES描述檔，重建舊68=63原位＋5快照。196份新作者／root／中間批次複本全SHA／bytes及distinct inode逐項綁定。新[validation](receipts/all8-text-adoption-validation.json)記當前19功能輸入、native純binding／實際lint／tasks／連結，原soft warnings如實保留，不假定零警告。
-
-本次只更新文件及安全proof，不改任何target／source／voice／global settings，也無auth／API／paid／media動作。精確proposal／freeze尚待root獨立review；本票仍in-progress、PR1861 no-auto-merge，不stage／commit／push、merge／deploy／上傳YouTube。
+本次結構檢查見[validation](receipts/visual-components/documentation-structural-validation.json)；當前source lint／docs-videos／tasks由Root另跑並記實際exit。
