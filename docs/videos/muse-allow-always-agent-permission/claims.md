@@ -9,7 +9,7 @@ GG ＝ https://support.google.com/accounts/answer/13533235?hl=zh-Hant
 
 ## 事實
 
-c1｜多倫多的 YouTuber Matt Robb 讓 Meta 的 AI 代理 Muse 替他在 Facebook Marketplace 賣一個鍵盤（MX Keys Mini）；日期 **9 月 26 日（多倫多當地時間，週六）**：他寫「today… until late tonight」的 Threads 貼文 DdxwAJnDhNy 由編號換算是 9/27 00:27 EDT，X 貼文 2104090601411293303 是 9/27 06:07 UTC＝02:07 EDT，都在午夜之後；Yahoo 嵌入的「September 27, 2026」是 UTC 日期；Fortune（經 AI Weekly 轉述）寫買家「9:15 p.m. on a Saturday」到達＝9/26。「多倫多」照 Fortune（AP）"a Toronto-based content creator"（verify-1 確認）｜YH、TR、Fortune、Robb 的 Threads／X 貼文｜2026-10-27｜open
+c1｜多倫多的 YouTuber Matt Robb 讓 Meta 的 AI 代理 Muse 替他在 Facebook Marketplace 賣一個鍵盤（MX Keys Mini）；日期 **9 月 26 日（多倫多當地時間，週六）**：他寫「today… until late tonight」的 Threads 貼文 DdxwAJnDhNy 由編號換算是 9/27 00:27 EDT，X 貼文 2104090601411293303 是 9/27 06:07 UTC＝02:07 EDT，都在午夜之後；Yahoo 嵌入的「September 27, 2026」是 UTC 日期；AI Weekly 寫買家「9:15 p.m. on a Saturday」到達＝9/26，並說是 Fortune 報導的，但 Fortune 原文（2026-10-27 重抓）沒有 9:15 也沒有 Saturday，只寫 "late at night"，所以這一點只算 AI Weekly 的說法；9/26 靠前面兩則貼文的時間就成立（verify-2）。「多倫多」照 Fortune（AP）"a Toronto-based content creator"（verify-1 確認）｜YH、TR、Fortune、Robb 的 Threads／X 貼文｜2026-10-27｜open
 c2｜買家照 Muse 給的地址到了他住的大樓（"showed up at his building"）｜YH｜2026-10-27｜open
 c3｜Muse 在台灣還不能用：美國 9 月 8 日、加拿大 9 月 18 日開放，日本 10 月 23 日開始（verify-1：美國 9/8 與日本 10/23 照 Meta 官方公告，日本公告說日本是北美之外第一個地區；加拿大 9/18 照 iPhone in Canada 引 Meta 的 X 貼文；Inside 頁 2026-10-27 回 403 Cloudflare 擋下，撰稿存檔也是擋下頁，已從來源移除）｜Meta Newsroom（英文 9/8、日文 10/23）、iPhone in Canada、SmartScope｜2026-10-27｜naive
 c4｜Meta Superintelligence Labs 的 David Singleton 在回覆 Robb 週二貼文時說 Meta 確認「no breach of privacy controls」（verify-1：這是員工的回覆，不是「看過紀錄之後」說的；看紀錄的是 c7 的 Muse 團隊與 Robb。旁白改為「Meta 的一位員工回覆他：已確認沒有違反隱私控制」，卡片拿掉「任何」）｜YH｜2026-10-27｜no-breach
@@ -28,6 +28,7 @@ c16｜Claude Code 只在提示能顯示全部會准的範圍時才給「don't as
 c17｜bypassPermissions 模式略過權限提示（表格原文 "except for the actions no mode auto-approves"，verify-1 把卡片「略過所有」改成「略過幾乎所有」），包括寫入 .git、.claude 等受保護路徑；只該在容器或 VM 這類隔離環境用｜CC〈Permission modes〉｜2026-10-27｜bypass
 c18｜拒絕規則優先：允許規則不能在拒絕規則裡開例外｜CC〈Manage permissions〉第 73 段｜2026-10-27｜deny-file、text-not-meaning
 
+c19｜Meta 的 Muse 安全說明：授權「bound to the particular connector/destination and use case」；支援 one-time、session-scoped、task-scoped、time-bounded、perpetual 五種｜https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse（security.muse.ai 轉址）｜2026-10-27｜meta-grants、unknown
 ## 本片自己跑的紀錄
 
 機器：雲端容器（站主 2026-10-27 請撰稿者自己跑），Claude Code 2.1.311，manual mode，模型 Sonnet 5.5；git 2.43.0。示範倉庫 perm-demo，遠端是同一台機器上的 bare repo，不碰任何真實專案或帳號。
@@ -57,6 +58,10 @@ r9｜新 session 請它 `git push -f origin main` → 沒有詢問，遠端 b2a3
 - Muse、ARTEX 之外，`settings.local.json` 的路徑在 Windows 或非 git 目錄會不同（CC 有寫），片中沒講。
 
 ## 進度
+
+- 2026-10-27 verify-2 之後（撰稿者）：verify-2 找到 Meta 自己的 Muse 安全說明（security.muse.ai → research.meta.ai），加一張官方引文卡（授權綁定連接器與用途、五種授權）；「我查不到的」改成「Meta 列了五種授權，卻沒說 Allow Always 對應哪一種」；字幕的減號 f 改小寫。
+
+- 2026-10-27 verify-2（獨立查核第 2 輪）：所有來源今天重抓（HTTP 200），verify-1 改過的 9 項與撰稿者之後改的 g4t7、asv8、84vx、eb6y、22hq、wrva、S10 設定檔卡、四張對話卡都對過，抽查 17 條（種子 20261027）。旁白、卡片、說明欄沒有要改的事實；只改了 c1 的依據（Fortune 原文沒有「9:15 p.m. on a Saturday」）。要撰稿者或站主決定的事：Meta 官方的 security.muse.ai 有寫 Muse 的授權種類（one-time、session、task、time-bounded、perpetual），wrva／S31「還沒找到它的說明頁」要不要改；S10 的 02b 與 S23 右邊泡泡是事後補記，不是當下擷取；「減號 F」在字幕上是大寫。見 `verify-2.md`。
 
 - 2026-10-27 verify-1 之後（撰稿者）：看法章「Muse 那晚沒有出錯」與來源矛盾（Muse 自己認錯、Meta 承認價格顯示錯誤），改成「Muse 那晚也出了錯；但地址送得出去，是因為一個按鈕准的範圍」，卡片改「錯的不只是 AI／還有按鈕的範圍」；四句過長的縮短；「減號 f」改寫成「減號 F」並補進字典；實跑紀錄補上第 2 步的設定檔原文（02b-settings.txt）與 r7–r9。
 

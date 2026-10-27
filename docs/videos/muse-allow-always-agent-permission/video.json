@@ -161,6 +161,11 @@
       "title": "Fortune (AP): Matt Robb, a Toronto-based content creator",
       "url": "https://fortune.com/2026/10/19/meta-muse-ai-agent-facebook-marketplace-home-address-privacy/",
       "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Meta AI Research: Security and safety for AI agents, our approach with Muse",
+      "url": "https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse",
+      "checked_on": "2026-10-27"
     }
   ],
   "assets": [],
@@ -397,6 +402,36 @@
           "reveal": 1,
           "emotion": "亮起來"
         }
+      ]
+    },
+    {
+      "id": "meta-grants",
+      "template": "quote",
+      "data": {
+        "kicker": "Meta 的 Muse 安全說明",
+        "quote": "They’re bound to the particular connector/destination and use case.",
+        "source": "research.meta.ai · Security and safety for AI agents",
+        "translation": "這些授權，綁定的是特定的連接器或目的地，以及那種用途。",
+        "keys": [
+          "授權綁的是連接器和用途",
+          "一次、對話、任務、限時、永久"
+        ]
+      },
+      "lines": [
+        {
+          "id": "w39j",
+          "text": "Meta 自己的安全說明也寫了：每一個授權，綁的是一個連接器和一種用途；",
+          "emotion": "平，清楚"
+        },
+        {
+          "id": "ive5",
+          "text": "種類有一次、整段對話、整個任務、限時，和永久五種。",
+          "reveal": 1,
+          "emotion": "清單，清楚"
+        }
+      ],
+      "claims": [
+        "c19"
       ]
     },
     {
@@ -776,7 +811,7 @@
       "lines": [
         {
           "id": "asv8",
-          "text": "剛剛問的 Google 這邊：Gemini 這類代理，能透過你連結的 App 替你做事；",
+          "text": "剛剛問的 Google 這邊：Gemini 這類代理，能用你連結的 App 做事；",
           "emotion": "接住問題，平"
         },
         {
@@ -1083,7 +1118,7 @@
       "lines": [
         {
           "id": "eb6y",
-          "text": "強制推送有一個簡寫，減號 F；我改用這個寫法請它推送，",
+          "text": "強制推送有一個簡寫，減號 f；我改用這個寫法請它推送，",
           "emotion": "放慢"
         },
         {
@@ -1108,7 +1143,7 @@
       "lines": [
         {
           "id": "22hq",
-          "text": "擋住的只是那幾個字；簡寫的減號 F，被 git push 星號那條允許接走了。",
+          "text": "擋住的只是那幾個字；簡寫的減號 f，被 git push 星號那條允許接走了。",
           "emotion": "清楚"
         },
         {
@@ -1202,13 +1237,13 @@
       "template": "big",
       "data": {
         "kicker": "我查不到的",
-        "text": "Meta 怎麼定義\n那幾個允許選項",
-        "key": "還沒找到 Meta 的說明頁"
+        "text": "Allow Always\n對應**哪一種**？",
+        "key": "Meta 列了五種授權"
       },
       "lines": [
         {
           "id": "wrva",
-          "text": "我查不到的是：Meta 怎麼定義 Muse 那幾個允許選項，我還沒找到它的說明頁。",
+          "text": "我查不到的是：Meta 列了五種授權，卻沒說 Allow Always 對應哪一種。",
           "emotion": "放輕"
         }
       ]
