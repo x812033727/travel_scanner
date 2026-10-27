@@ -212,16 +212,6 @@
           "id": "7tzn",
           "text": "用 AI 工具 ARTEX，攻擊了幾百個組織；",
           "emotion": "ARTEX 放慢"
-        },
-        {
-          "id": "tiky",
-          "text": "好幾次，不到三小時就拿下雲端管理權限；",
-          "emotion": "「不到三小時」放慢，「台灣」停半拍"
-        },
-        {
-          "id": "cjk6",
-          "text": "緊接著，台灣的 91APP 也在調查報告裡，寫出了 ARTEX 這個名字。",
-          "emotion": "「台灣」停半拍"
         }
       ],
       "claims": [
@@ -229,6 +219,38 @@
         "c2",
         "c3",
         "c4"
+      ]
+    },
+    {
+      "id": "open-hours",
+      "template": "big",
+      "data": {
+        "kicker": "Microsoft：好幾次",
+        "text": "不到 **3** 小時\n拿下雲端管理權限",
+        "key": "從鎖定到拿下權限"
+      },
+      "lines": [
+        {
+          "id": "tiky",
+          "text": "好幾次，不到三小時就拿下雲端管理權限；",
+          "emotion": "「不到三小時」放慢，「台灣」停半拍"
+        }
+      ]
+    },
+    {
+      "id": "open-taiwan",
+      "template": "big",
+      "data": {
+        "kicker": "緊接著，台灣",
+        "text": "91APP 的報告\n寫出 **ARTEX**",
+        "key": "91APP 調查報告 2026-10-22"
+      },
+      "lines": [
+        {
+          "id": "cjk6",
+          "text": "緊接著，台灣的 91APP 也在調查報告裡，寫出了 ARTEX 這個名字。",
+          "emotion": "「台灣」停半拍"
+        }
       ]
     },
     {
@@ -561,16 +583,27 @@
           "id": "zz9s",
           "text": "開頭說的不到三小時，就是這樣來的：門早就開著，AI 只是走得很快。",
           "emotion": "「門早就開著」放慢"
-        },
-        {
-          "id": "ubmv",
-          "text": "那台灣這次的鑰匙，又放在哪裡？",
-          "emotion": "問句上揚"
         }
       ],
       "claims": [
         "c3",
         "c14"
+      ]
+    },
+    {
+      "id": "where2",
+      "template": "big",
+      "data": {
+        "kicker": "那台灣呢？",
+        "text": "這次的鑰匙\n放在**哪裡**？",
+        "key": "台灣這次的鑰匙放在哪？"
+      },
+      "lines": [
+        {
+          "id": "ubmv",
+          "text": "那台灣這次的鑰匙，又放在哪裡？",
+          "emotion": "問句上揚"
+        }
       ]
     },
     {
@@ -621,7 +654,23 @@
           "id": "kfdv",
           "text": "最後用這把金鑰進到訂單資料庫，不含信用卡等支付資訊。",
           "reveal": 1
-        },
+        }
+      ],
+      "claims": [
+        "c17",
+        "c18"
+      ],
+      "chapter": "台灣這次的鑰匙放在哪？"
+    },
+    {
+      "id": "no-new-hole",
+      "template": "big",
+      "data": {
+        "kicker": "沒有新的漏洞",
+        "text": "一扇沒關好的門\n一把**放著的鑰匙**",
+        "key": "還不是放得最隨便的"
+      },
+      "lines": [
         {
           "id": "qb46",
           "text": "沒有新的漏洞，只有一扇沒關好的門，和一把放在程式碼倉庫裡的鑰匙。",
@@ -632,21 +681,15 @@
           "text": "而這把鑰匙，還不是放得最隨便的。",
           "emotion": "轉折，壓低"
         }
-      ],
-      "claims": [
-        "c17",
-        "c18"
-      ],
-      "chapter": "台灣這次的鑰匙放在哪？"
+      ]
     },
     {
       "id": "zeabur",
       "template": "big",
       "data": {
-        "kicker": "同一週的另一個台灣例子",
-        "text": "明文、沒期限、\n八月**沒換到**",
-        "sub": "Zeabur 初步報告 2026-10-19；未提及 ARTEX，也未說攻擊者用 AI 工具",
-        "key": "37 分鐘，逾 321 萬筆環境變數"
+        "kicker": "同一週",
+        "text": "Zeabur\n也被讀走了資料",
+        "key": "報告沒提到 ARTEX"
       },
       "lines": [
         {
@@ -658,7 +701,24 @@
           "id": "gpaj",
           "text": "它的報告沒提到 ARTEX，記下的是鑰匙怎麼被放著：",
           "emotion": "句尾往下接"
-        },
+        }
+      ],
+      "claims": [
+        "c19",
+        "c20",
+        "c21"
+      ]
+    },
+    {
+      "id": "zeabur-keys",
+      "template": "big",
+      "data": {
+        "kicker": "同一週的另一個台灣例子",
+        "text": "明文、沒期限、\n八月**沒換到**",
+        "sub": "Zeabur 初步報告 2026-10-19；未提及 ARTEX，也未說攻擊者用 AI 工具",
+        "key": "明文、沒期限、沒換到"
+      },
+      "lines": [
         {
           "id": "nwji",
           "text": "攻擊者用的，是長期有效、用明文保存的管理憑證；",
@@ -668,17 +728,24 @@
           "id": "siri",
           "text": "八月出事之後換過一輪金鑰，偏偏沒換到這幾把。",
           "emotion": "「偏偏」放慢"
-        },
+        }
+      ]
+    },
+    {
+      "id": "zeabur-37",
+      "template": "big",
+      "data": {
+        "kicker": "37 分鐘裡",
+        "text": "**321 萬**筆\n環境變數被讀走",
+        "key": "平台資料庫被讀取",
+        "sub": "Zeabur 初步報告：3,218,965 筆（已確認）"
+      },
+      "lines": [
         {
           "id": "29n6",
           "text": "三十七分鐘裡，平台資料庫被讀走三百二十多萬筆環境變數。",
           "emotion": "數字放慢"
         }
-      ],
-      "claims": [
-        "c19",
-        "c20",
-        "c21"
       ]
     },
     {
@@ -726,15 +793,26 @@
           "id": "ei35",
           "text": "但例外之一，是你已經授權存取帳戶的那些第三方應用程式。",
           "emotion": "「例外」停半拍"
-        },
+        }
+      ],
+      "claims": [
+        "c23"
+      ]
+    },
+    {
+      "id": "other-door",
+      "template": "big",
+      "data": {
+        "kicker": "換了鎖",
+        "text": "門墊下那把\n開的是**另一扇門**",
+        "key": "換鎖收不回放出去的鑰匙"
+      },
+      "lines": [
         {
           "id": "qyat",
           "text": "換了鎖，門墊下那把鑰匙開的是另一扇門。",
           "emotion": "對照，輕"
         }
-      ],
-      "claims": [
-        "c23"
       ]
     },
     {
@@ -839,7 +917,6 @@
         ],
         "ran_on": "2026-10-27",
         "tool_version": "grep (GNU grep) 3.11",
-        "typing": "human",
         "keys": [
           "在整個資料夾搜尋 PASSWORD",
           "找不到"
@@ -976,7 +1053,11 @@
       "data": {
         "title": "換成你的金鑰名稱",
         "code": "# 在你自己的倉庫資料夾裡\ngit log --oneline -G API_KEY\ngit log --oneline -G SECRET\n\n# 找到之後，看那一次的檔案\ngit show <提交編號>:<檔名>",
-        "caption": "沒有任何輸出，代表目前分支的歷史裡沒有這個字（2026-10-27 示範倉庫跑 -G API_KEY）"
+        "caption": "沒有任何輸出，代表目前分支的歷史裡沒有這個字（2026-10-27 示範倉庫跑 -G API_KEY）",
+        "highlight": [
+          2,
+          3
+        ]
       },
       "lines": [
         {
@@ -987,7 +1068,24 @@
         {
           "id": "asmx",
           "text": "例如 API KEY 或 SECRET；"
-        },
+        }
+      ],
+      "claims": [
+        "r6"
+      ]
+    },
+    {
+      "id": "your-line-2",
+      "template": "code",
+      "data": {
+        "title": "換成你的金鑰名稱",
+        "code": "# 在你自己的倉庫資料夾裡\ngit log --oneline -G API_KEY\ngit log --oneline -G SECRET\n\n# 找到之後，看那一次的檔案\ngit show <提交編號>:<檔名>",
+        "caption": "沒有任何輸出，代表目前分支的歷史裡沒有這個字（2026-10-27 示範倉庫跑 -G API_KEY）",
+        "highlight": [
+          6
+        ]
+      },
+      "lines": [
         {
           "id": "gzty",
           "text": "找到了，就用 git show 看那一次的檔案；",
@@ -998,9 +1096,6 @@
           "text": "沒有任何輸出，就是目前分支的歷史裡沒有這個字。",
           "emotion": "收穩"
         }
-      ],
-      "claims": [
-        "r6"
       ]
     },
     {
