@@ -1,9 +1,9 @@
 {
   "kind": "fifth_episode_production_progress",
   "schema_version": 1,
-  "updated_at_utc": "2026-10-27T16:29:20.998500+00:00",
+  "updated_at_utc": "2026-10-27T17:19:56.114447+00:00",
   "slug": "duckdb-agent-full-export",
-  "stage": "native64_SCRIPT22_verified_initial_TTS_resume03_native_ceiling_HTTP429_raw0",
+  "stage": "native64_SCRIPT22_verified_initial_TTS_resume04_firstbody_HTTP429_raw0",
   "overall_production_completed": false,
   "source_import_complete": true,
   "source_video_sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8",
@@ -185,7 +185,7 @@
     "current_raw_WAVs": 0,
     "provider_or_voice_or_global_settings_changed": false,
     "hold_receipt": "receipts/tts-deferral.json",
-    "root_decision": "Normal initial resume03 reached unchanged native5/body ceiling with five known429 responses and four normal waits, raw0. No fourth process. Preserve cumulative3/11, cache/journals, all old unknowns and existing limits.",
+    "root_decision": "The original first body returned known429 once; this narrower dispatch bound retained nativewaiting and stopped before retry. No fifth process. Source, voice, original tool ceilings and quality gates unchanged. Current vendorquota/reset facts requested once; no serviceavailability inferred from internalmonthlyroom.",
     "dryrun_requests": 111,
     "dryrun_pending": 111,
     "dryrun_billable_characters_estimate": 2508,
@@ -196,10 +196,10 @@
     "paid_started_definition": "At least one normal paid-route speech request has been dispatched; this boolean is not a provider charge claim. Exact cumulative and last-invocation transport counts are recorded separately.",
     "hold_receipt_role": "Dated historical root scheduling deferral; not an automatic permanent block on distinct DuckDB initial requests.",
     "release_kind": "ROOT bounded production dispatch decision only; not audio/quality/server approval.",
-    "initial_process_attempts": 3,
+    "initial_process_attempts": 4,
     "original_retake_round": 0,
     "rewrite_rounds_used": 0,
-    "actual_speech_HTTP_POST": 11,
+    "actual_speech_HTTP_POST": 12,
     "actual_successful_speech_HTTP": 0,
     "actual_native_exit": 4,
     "actual_HTTP_status": 429,
@@ -215,17 +215,19 @@
     "manual_journal_forget": false,
     "old_unknowns_or_ASR_reservation_cleared": false,
     "provider_invoice_or_zero_charge_claim": false,
-    "current_attempt_receipt": "receipts/master-audio-resume03-20261027/actual-native-exit.json",
-    "actual_exec_receipt": "receipts/master-audio-resume03-20261027/actual-native-exit.json",
-    "independent_failed_attempt_review": "receipts/master-audio-resume03-20261027/independent-refusal-review.json",
-    "future_resume_policy": "After service cooldown, ROOT may admit a separately bounded normal initial resume using the unchanged current plan/cache/journal and existing caps. It must not rerun the consumed first helper, retake or replay unknown requests, wait on unrelated ForTy billing as a blanket prohibition, or start an automatic loop.",
+    "current_attempt_receipt": "receipts/master-audio-resume04-20261027/actual-native-exit.json",
+    "actual_exec_receipt": "receipts/master-audio-resume04-20261027/actual-native-exit.json",
+    "independent_failed_attempt_review": "receipts/master-audio-resume04-20261027/independent-refusal-review.json",
+    "future_resume_policy": "Assess new current service recovery/quota information before another paid start; vendorquota/error and reset/recovery facts are requested. Preserve cumulative4/12, original plan/cache/journal/ceilings and all unknowns. A repeated continuation message or internalmonthlyroom alone is not recovery evidence. No automatic fifth process, unknown replay, provider/voice/globalsettings change, or ASRlease clearing.",
     "listening_or_ASR_accepted": false,
     "narration_or_timeline_created": false,
-    "actual_speech_HTTP_POST_definition": "Cumulative: initial1 POST1 + resume02 POST5 + resume03 POST5; one unique original line attempted.",
-    "last_invocation_speech_HTTP_POST": 5,
-    "last_invocation_known_HTTP429": 5,
-    "last_invocation_native_waits": 4,
-    "automatic_HTTP_retries_definition": "Cumulative native bounded retries after actual known429: four in resume02 and four in resume03. No next-process loop or unknown replay."
+    "actual_speech_HTTP_POST_definition": "Cumulative: initial1 POST1 + resume02 POST5 + resume03 POST5 + resume04 POST1; one unique original line attempted.",
+    "last_invocation_speech_HTTP_POST": 1,
+    "last_invocation_known_HTTP429": 1,
+    "last_invocation_native_waits": 0,
+    "automatic_HTTP_retries_definition": "Cumulative native bounded retries after actual known429: four in resume02 and four in resume03. No next-process loop or unknown replay.",
+    "last_invocation_retry_waits_aborted": 1,
+    "last_invocation_first_body_max_attempts": 1
   },
   "media": {
     "audio_checked": false,
@@ -791,16 +793,16 @@
     "normal_repository_tests_run_by_this_updater": false
   },
   "task_handoff": {
-    "recorded_at": "2026-10-27T16:29:20.998500+00:00",
+    "recorded_at": "2026-10-27T17:19:56.114447+00:00",
     "actual_status": "blocked",
     "owner_claim_released": true,
     "normal_release_and_status_receipt": {
-      "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/ROOT-task-stop-exits.json",
+      "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/ROOT-task-stop-exits.json",
       "bytes": 714,
-      "sha256": "4c10932dd5c1f9de436cdb3689142ad3a0d5e77522cba05053928c5abd17589b"
+      "sha256": "c5b69a7ffadce8e52d070e4b8a3382581742a5c43ea32b1eb442917024f0d232"
     },
     "responsibility": "codex-duckdb-20261025; same conversation/branch/PR1861, not done or transferred.",
-    "stop_point": "Initial resume03 naturally reached native five-attempt known429 ceiling, raw0. Preserve cumulative3processes/11POST, original limits, all caches and unknown journals; no fourth process or automatic recovery loop this turn.",
+    "stop_point": "Resume04 first original body known429; one dispatch, waiting retained, no retry/sleep/raw. Vendor current TTS quota/error and reset/recovery facts asked once, response pending. Preserve cumulative4processes/12POST and original caps/cache/journals. No automatic fifth process or global ASR lease takeover.",
     "no_background_media_or_audio_producer": true
   },
   "initial_TTS_attempt_history": {
@@ -957,6 +959,75 @@
       },
       "responsibility": "codex-duckdb-20261025; same conversation/branch/PR1861, not done or transferred.",
       "stop_point": "Second initial process reached native5/body known429 ceiling, raw0. No third process or automatic loop; preserve cumulative attempts/cache/journals/limits for any separately assessed later normal recovery. Keep ForTy unknowns and Kimi global ASR reservation unchanged.",
+      "no_background_media_or_audio_producer": true
+    }
+  },
+  "initial_TTS_resume04": {
+    "actual_completed_at": "2026-10-27T17:15:59.599Z",
+    "actual_PID": 2587,
+    "actual_exec_session": 95755,
+    "actual_tool_and_native_exit": 4,
+    "initial_process_attempt": 4,
+    "original_retake_round": 0,
+    "rewrite_rounds_used": 0,
+    "actual_counts": {
+      "status_GET": 1,
+      "speech_POST": 1,
+      "unique_body_dispatches": 1,
+      "successful_HTTP": 0,
+      "logical_successes": 0,
+      "HTTP429_responses": 1,
+      "denied": 0,
+      "returned_billable": 0,
+      "missing_billable_headers": 0,
+      "native_waits": 0,
+      "retry_waits_aborted": 1
+    },
+    "cumulative_initial_processes": 4,
+    "cumulative_speech_HTTP_POST": 12,
+    "first_body_max_attempts": 1,
+    "waiting_JSON_retained_before_abort": true,
+    "actual_retry_sleep_performed": false,
+    "raw_WAVs": 0,
+    "new_backend_media": 0,
+    "all111_source_and_spoken_bodies_unchanged": true,
+    "actual_exit_receipt": "receipts/master-audio-resume04-20261027/actual-native-exit.json",
+    "actual_events": "receipts/master-audio-resume04-20261027/http-events.jsonl",
+    "independent_refusal_review": "receipts/master-audio-resume04-20261027/independent-refusal-review.json",
+    "previous_attempt_objects_preserved": true,
+    "no_fifth_producer_process": true,
+    "provider_fact_request": {
+      "kind": "missing_current_provider_quota_fact_not_routine_permission",
+      "asked_at": "2026-10-27T17:17:03.655224+00:00",
+      "async_question_accepted": true,
+      "requested_facts": [
+        "Current Gemini TTS vendor quota/resource constraint or error code",
+        "Vendor recovery or reset time"
+      ],
+      "reason": "Repeated actual known429; ordinary status reports internalmonthlyroom only, currentAPI discards vendorerror details and may emitfallbackRetryAfter10. No supported normal perrequest/vendorhealth endpoint.",
+      "provider_fact_response_received": false,
+      "same_old_ForTy_facts_not_reasked": true,
+      "no_provider_credentials_requested": true,
+      "speech_recovery_report": {
+        "file": "/workspace/work/ai-tech-next/production-continuation-20261027t1709/recovery/RECOVERY-ROUTES-REPORT.json",
+        "sha256": "253aeb407efb8235cb655dedcaaf6a3c8801244295405b066ca8a237b2f1c090"
+      }
+    },
+    "provider_invoice_audited": false,
+    "zero_charge_claimed": false,
+    "ASR_or_audio_listening_complete": false,
+    "server_approval": false,
+    "prior_task_handoff": {
+      "recorded_at": "2026-10-27T16:29:20.998500+00:00",
+      "actual_status": "blocked",
+      "owner_claim_released": true,
+      "normal_release_and_status_receipt": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/ROOT-task-stop-exits.json",
+        "bytes": 714,
+        "sha256": "4c10932dd5c1f9de436cdb3689142ad3a0d5e77522cba05053928c5abd17589b"
+      },
+      "responsibility": "codex-duckdb-20261025; same conversation/branch/PR1861, not done or transferred.",
+      "stop_point": "Initial resume03 naturally reached native five-attempt known429 ceiling, raw0. Preserve cumulative3processes/11POST, original limits, all caches and unknown journals; no fourth process or automatic recovery loop this turn.",
       "no_background_media_or_audio_producer": true
     }
   }

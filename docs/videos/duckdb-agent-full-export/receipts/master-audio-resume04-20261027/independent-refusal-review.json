@@ -1,0 +1,109 @@
+{
+  "kind": "independent_actual_duckdb_resume04_first_body_refusal_preservation_review",
+  "at": "2026-10-27T17:18:40.009726+00:00",
+  "reviewer": "/root/resume04_review",
+  "verdict": "CLEAR_FAILURE_EVIDENCE_ONLY",
+  "scope": "Physical completed refusal evidence only; not synthesis,listening,QA,invoice,zerocharge or server approval.",
+  "completion": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/resume-04/completion.json",
+    "bytes": 30391,
+    "sha256": "dc6f41b0e9e67e4dde7ac089a098a28acd61ce99846cfc2d8782d0a151c2066f"
+  },
+  "root_actual_tool_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/ROOT-resume04-actual-exit.json",
+    "bytes": 541,
+    "sha256": "6841b4f1b282a1d3392a3bae7f407c9d083c604638c777323b77710f36cd16aa"
+  },
+  "events": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/resume-04/http-events.jsonl",
+    "bytes": 2071,
+    "sha256": "8e9fc8528c4c2bd882704c56704c69762603be6f309a53526a67563716ea2f5c"
+  },
+  "baseline": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/ROOT-before-inputs.json",
+    "bytes": 319144,
+    "sha256": "f9817e01b3b5971be99d58eebd1a31adcdc8ea4ccb014595bf730e953f0ad87d"
+  },
+  "helper": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/prepare/resume-once.mjs",
+    "bytes": 26547,
+    "sha256": "2fec39074b25d4aef9ce6785721870bbe053c7541ac01195d2598b6827d7f090"
+  },
+  "plan": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/prepare/resume-plan.json",
+    "bytes": 203357,
+    "sha256": "f6331a42ffd8b260d98d50ddbd3a0843b9f8f5f6e273a88e07ebf2aa08952a41"
+  },
+  "actual_tool_session_id": 95755,
+  "actual_tool_exit_code": 4,
+  "actual_native_exit": 4,
+  "actual_pid": 2587,
+  "started_at": "2026-10-27T17:15:52.553Z",
+  "completed_at": "2026-10-27T17:15:59.599Z",
+  "counts": {
+    "status_GET": 1,
+    "speech_POST": 1,
+    "unique_body_dispatches": 1,
+    "successful_HTTP": 0,
+    "logical_successes": 0,
+    "HTTP429_responses": 1,
+    "denied": 0,
+    "returned_billable": 0,
+    "missing_billable_headers": 0,
+    "native_waits": 0,
+    "retry_waits_aborted": 1
+  },
+  "cumulative_initial_processes": 4,
+  "cumulative_speech_POST": 12,
+  "original_retake_round": 0,
+  "rewrite_rounds_used": 0,
+  "raw_WAVs": 0,
+  "ASR": 0,
+  "foreign_checked_M4A": 0,
+  "listening_completed": false,
+  "E_protected_files": 847,
+  "W_protected_files": 948,
+  "all_file_sets_and_bytes_match_baseline_in_two_physical_passes": true,
+  "held_records_exact": 4,
+  "prior_actual_receipts_exact": 15,
+  "native_MJS_pins_exact": 329,
+  "all111_full_intended_spoken_body_key_parts_equal_first_plan": true,
+  "dispatched_line_id": "dg2i",
+  "intended_literal": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+  "spoken_text": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+  "body_sha256": "f0f1e2466673301518f74eebc86d7f4b7bbc4bb354a096205a3e8257ac667075",
+  "logical_planned_native_characters": 23,
+  "physical_submitted_characters": 23,
+  "request_id": "af9bc57b-ac0f-422f-9225-515df0d956d1",
+  "sent": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/resume-04/sent/dg2i.attempt-1.json",
+    "bytes": 853,
+    "sha256": "8df0d593bf9f1e845c1dcbd5dd56972b0ad5d07ac9a88eea5afdaafd3acc73b9"
+  },
+  "response": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/resume-04/responses/dg2i.attempt-1.private.bin",
+    "bytes": 278,
+    "sha256": "b2b7e5d12a5d41c2cfb2eb294055f71c4f8d6f8cc3f395891aca71ec9d82a712"
+  },
+  "native_waiting": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/resume-04/waiting/dg2i.attempt-1.json",
+    "bytes": 1021,
+    "sha256": "622fb3c01b4acb05c3a2c7e5dc3d8dea43c6e5dbe20aac4c20fa050fbfb7eaa5"
+  },
+  "same_native_sent_waiting_generation": true,
+  "native_planned_wait_ms": 10000,
+  "actual_native_sleep_calls": 0,
+  "first_body_retry_aborted_before_second_dispatch": true,
+  "no_second_transport_or_accepted_WAV": true,
+  "current_speech_journal_empty": true,
+  "native_lease_released": true,
+  "native_pid_absent": true,
+  "new_producer_or_ASR_processes_found": [],
+  "native_known_refusal_cleanup_not_manual_forget": true,
+  "unknown_records_and_quality_flags_unchanged": true,
+  "not_an_invoice": true,
+  "audit_auth": 0,
+  "audit_network": 0,
+  "audit_paid": 0,
+  "audit_producer_invocations": 0
+}
