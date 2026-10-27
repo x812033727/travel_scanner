@@ -16,3 +16,21 @@ All 4 concrete requested fixes are present and faithful. The CTA uses the root-s
 Chinese speech source remains the approved r6 speechHash 8af0af8b6fb7d1e4. All 212 caption source hashes are current, all Chinese worksheet source strings match video.json, and all 212 persisted translated texts match the final private worksheet. Title, description, tags, six chapters and both thumbnail fields are present and source-current; no orphan chapter.
 Title is 53/92 characters; description body is 974 UTF-8 bytes. The corrected evidence-form wording and date-check wording preserve the reviewed source meaning.
 Final text verdict: ready. Measured dub fit remains pending for lz314 (80/78 initial characters); render, composed-package limits and runtime media QA are separate gates. No translation or media file was edited during this delta review.
+
+
+## 2026-10-27 listener-rw1-amended-five-lines：獨立差分覆核 READY
+
+來源video SHA 6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86；speechHash fa2912daff4bd218。只更新5格及source_hash，其餘207格、metadata與thumbnail不變。獨立覆核：s31_audio_plan + s31_translate_ko_es；40格schema及來源界線由s31_translate_ko_es覆核。
+
+| ID | 當前譯文 | source_hash |
+| --- | --- | --- |
+| lz318 | Trong các sử thư được tra cứu cho hồ sơ này, chỉ đoạn này ghi rõ Lĩnh Nam; | 01b0234b0cdd |
+| v2a0471 | không cho biết cách gửi quả tươi. Vậy thuyết Phù Châu dựa vào đâu? | b111ee9244cb |
+| v2a0491 | Những dòng chữ học giả Ngô Tăng để lại cho ta thấy đáp án hình thành ra sao. | 7568e9847eb8 |
+| lz424 | Bảy ngày bảy đêm để đưa tới kinh đô, | 53f2e4fe3ceb |
+| v2a0722 | có chứng minh được vải cũng tới ngày hôm đó không? | ce0eaf96fdec |
+
+Merged SHA-256: 2e1c5ade882855874f171c63617d48019be29bc5d4515790c2218d800c7f5af0
+
+Final text verdict: READY for current protected five-line source delta.
+Timed dub, fit, audio QA and final package: PENDING. No owner-listened/watched or Studio-upload claim.

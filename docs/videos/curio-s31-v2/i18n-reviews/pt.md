@@ -50,3 +50,21 @@ The saved merged-file diff is only thumbnail.headline; the worksheet diff is onl
 All three English, Brazilian Portuguese and Indonesian headline texts were cross-reviewed by /root/s31_translate_pt_id and /root/s31_translate_ko_es. The wording keeps the risk on delivery without asserting toxicity or confirmed deaths. Chinese video.json is unchanged (SHA-256 d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170).
 This is saved-file text readback, not audio, timed-fit, thumbnail-font-size, render or package approval. Root's rendering and QA are separate.
 Latest metadata text verdict: READY.
+
+
+## 2026-10-27 listener-rw1-amended-five-lines：獨立差分覆核 READY
+
+來源video SHA 6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86；speechHash fa2912daff4bd218。只更新5格及source_hash，其餘207格、metadata與thumbnail不變。獨立覆核：s31_audio_plan + s31_translate_ko_es；40格schema及來源界線由s31_translate_ko_es覆核。
+
+| ID | 當前譯文 | source_hash |
+| --- | --- | --- |
+| lz318 | Das crônicas que consultamos neste caso, só este trecho cita Lingnan; | 01b0234b0cdd |
+| v2a0471 | não explica como enviavam frutas frescas. Em que se baseia a versão de Fuzhou? | b111ee9244cb |
+| v2a0491 | Os escritos do estudioso Wu Zeng nos mostram como a resposta tomou forma. | 7568e9847eb8 |
+| lz424 | Sete dias e sete noites para entregar as lichias na capital, | 53f2e4fe3ceb |
+| v2a0722 | pode provar que as lichias também chegaram naquele dia? | ce0eaf96fdec |
+
+Merged SHA-256: c693a0f2c30e05c82ccacab21bf343e4d7ca9b47f0134c145a57f1e6802da4de
+
+Final text verdict: READY for current protected five-line source delta.
+Timed dub, fit, audio QA and final package: PENDING. No owner-listened/watched or Studio-upload claim.

@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 第一輪疑句降至5；第二輪僅重錄5句已完成，正文15:43.9，待5個新WAV獨立ASR與官方QA。八語配音尚未開始 |
+| 1 | curio-s31 | curio-s31-v2 | 第1輪listener官方音訊QA已結束，只剩2個專名／同音疑句；保留低分與原始轉寫，獨立發音覆核中。八語配音尚未開始 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,11 +34,27 @@
 
 ## 當前斷點
 
-**最新實況：2026-10-27 16:38台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+**最新實況：2026-10-27 17:46台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+
+官方check8572已於17:31:30台北結束native1：212＝155逐字＋30同音／口語＋4Jev＋21第二轉寫＋2flags（v2a0491、v2a0722），只新增5ASR／2Jev；見[audio-qa-listener-rw1-official.json](audio-qa-listener-rw1-official.json)。當前check／flags、兩個原始WAV及timeline／approvals已凍結，source／audio仍fa2912daff4bd218、audioEvidence0、active journal0、leasefree、producer0。沒有進行第2輪listener或再次付費。離線比較器發音診斷發現吳曾被預設為ceng2、麗芝的麗被預設為li2；實際轉寫與意圖可能只是專名／多音字假陰性，正作獨立來源與發音覆核。不能改flags／低分、拼接轉寫或為了green寫錯字幕；也不能先聲稱實際音訊通過。當前lint已0錯誤／0警告。
+
+當前唯一本集producer是**官方check-audio session8572**，log `check-audio-listener-rw1.txt`，已fresh核對source／timeline／5WAV／audio_evidence0／active journal0／敘事綁定及八語1696格source_hash全current後啟動，不帶`--locale`、不force。先等此指令結束，不啟動競爭的TTS、ASR或check；尚無audio／final核准。
+
+當前source SHA `6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86`、script SHA `d9056e2b5b27b1ce4c6b084a89adb76a6c723bb603349c2d72f35f9cb028c5b0`、speechHash `fa2912daff4bd218`、narrativeHash `7a931bb0c6952510`；visualHash仍`4ff8941e6473b9f4`。第一版listener裸評的no_recap低判及澄清全部保留；只在合成前修兩處確切重述（不先揭吳曾改口、刪已說過的馬接力），相對r6總5行有差分、207行不變。新bare readers C11/13、D12/13，依官方ANY-yes合併13/13、round8通過，script gate已依委託對新SHA記錄；不是站主本人讀／聽／看。`claims.md`212行對齊，八語各5格共40格已獨立覆核套用、其他207格及metadata／thumbnail不變，見[listener-rw1-i18n-review.json](listener-rw1-i18n-review.json)。
+
+新措辭TTS16992 native0，5requests／90字元、166reused，5WAV實際改變且凍結；source與audio已對齊`fa2912daff4bd218`，正文28310frames／30＝943.666667秒。plain品質重錄2/2維持，listener合成現在1/2；沒有買新圖或配樂。見[listener-rw1-audio.json](listener-rw1-audio.json)，parent manifest SHA `4d729c2d1c6d96c3ebcd6c60e0b007f978893598ef23e2e9707581d290124edb`。獨立cached Whisper已5/5/native0/42.563秒完成，新reader SHA `114981084b5293db2d16115c63df5d7df2a073dbdeee754db2fe164ab4c8bce2`經獨立審閱；整句32聯集為新5＋r2未變1＋r1未變8＋context2＋old16。見[audio-qa-listener-rw1-asr.json](audio-qa-listener-rw1-asr.json)。原舊成片及10/11QA仍不代表當前新音訊。
+
+R2官方check session68516已完成：212/212＝154逐字＋29同音／口語＋4Jev＋21第二轉寫＋4flags（lz318、v2a0471、v2a0491、v2a0722），5新ASR／2Jev；active journal0，已驗recovery/tmp保留。見[audio-qa-retake2-official.json](audio-qa-retake2-official.json)。plain retake2/2用完後，沒有再盲重錄原文；改走第1輪listener受保護措辭，撰寫與獨立語意覆核均PASS，4句已套用並同步script／claims及audit差分，其他208句、專名／數字、voice／shot／metadata均不變。見[listener-rewrite-r1.json](listener-rewrite-r1.json)。
+
+17:01第一版listener source SHA `2646c3a9dbc97b65512a72eff2848319b251a9c3cda653c42dbd5c2991c0fd62`、speechHash `91814d96b978a75e`是未合成的中間稿，低判與後續兩處修補分別見[narrative-listener-rw1-initial.json](narrative-listener-rw1-initial.json)、[listener-rw1-narrative-amendment.json](listener-rw1-narrative-amendment.json)。它已由上段當前來源、round8敘事、40格翻譯與新WAV取代，不能作續作入口。
+
+R2新5WAV的cached Whisper已完成5/5、native0、45.188秒、stderr空；獨立審閱通過的新reader `whisper-retake5-r2-verified-reader.mjs` SHA `b6af5f73f6ea1808c3ff099889d8aaa662f83499f7e1ca73857fc91df463c1d3`，raw SHA `c60b384e5a10184246bb4e2aa29f40dadd9b9dba5526221ef529d8cf9294ad73`。新／舊31整句選取與時間分域均驗證通過，見[audio-qa-retake2-asr.json](audio-qa-retake2-asr.json)。Root fresh核對source／timeline／5WAV／audio_evidence0／active journal0與lease後，已啟動唯一**官方check-audio session68516**，log `check-audio-r2.txt`；先等此指令結束，不再啟動ASR、check或TTS。這不是音訊核准。
 
 官方音訊QA session60616已安全完成：212/212檢查，153逐字、29同音／口語差異、4Jev通過、21第二轉寫排除、5flags；只新增5個primary ASR／2Jev，明確記錄1個先前已付answer由journal讀回，沒有重買該筆。見[audio-qa-retake1-official.json](audio-qa-retake1-official.json)。active journal entries現在0；已驗證的recovery proof與原confirmed tmp仍保留，不能把保留證據誤認為待重送請求或為了清空目錄而刪除。
 
 按現行網站drama重錄上限2（唯讀查得，未改設定），已只對剩餘5句作第2輪原文重錄：session71171 native_exit0、5requests／88字元、166reused，5WAV均變更且凍結，source／voice不變、audio_evidence0問題、active journal0且lease釋放。新正文28317frames／30＝943.9秒；新timeline SHA `1849d12c382ee222475b4a07d115a361606ba6b696f96c34cf13e777efb39cd1`、narration SHA `b819389fc2f68c26577db669fe08943e550fd20e52220f331e7e859ae25faf10`。新cohort manifest SHA `8aa3a3a9e0452d8799681aae999f1d8ece81cec9c03f943931591eb0c8cd5c3b`，收據[audio-retake2-20261027.json](audio-retake2-20261027.json)。`s31_audio_plan`／`s31_translate_ko_es`正準備與覆核唯一next5離線ASR；先查private `whisper-retake5-r2-20261027T0836/`及agent狀態，不另啟第二份。新reader應選r2新5＋r1未變8＋context2＋old16的整句真實ASR。若新QA仍有flags，走最多2輪受保護的聽眾措辭修正，不無限重錄原文；audio／final仍未核准。
+
+R2 next5原launcher審閱PASS SHA `25fb687d73787c1968804bd0792014dc138428de9a74cb85f441b24cd1442fa3`，唯一SSH session71929現已結束；原PID2565、4CPU／nice19／offline及20分鐘硬上限，fresh RAM約27.4GiB、load0.49、worker CPU0.00%／Mem0.11%均通過。原始ASR與收據保留，不重跑此批。
 
 private clone使用官方journal恢復實測已PASS（review SHA `0583f1810e0165ab5edfe74df7a23114786703fdc4e58d17a6a66f8ab52e59d7`）：精確request `04a11d27c3214447eb325787ecac9bc6624ef061e6ea92e6434561cb5f782b93`對應新v2a0611 WAV的16k downsample，完整sent／sidecar／tmp SHA及基底吻合；官方default processAlive確認PID55548為ESRCH，mock send／fetch均0calls，已保存回覆可讀回且reused1。原三檔保持不變，只有private clone新增recovery proof。Root核對後正常續作session60616已完成，log `check-audio-retake13-recovery-r1.txt`；不加force、不手動刪journal，實際讀回已付同request，後續不同request仍是正常已授權查核。
 
@@ -64,7 +80,7 @@ private clone使用官方journal恢復實測已PASS（review SHA `0583f1810e0165
 
 重錄前的EN render session98057與補產CC均已exit0。[production-preview-r6.json](production-preview-r6.json)是08:46:47台北的歷史完整驗證快照：當時source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA核對通過；重錄後不能用它證明舊成片與新旁白相同。原版final SHA仍保留`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
 
-**下一個可行動斷點是第二輪5個新WAV的獨立ASR與官方QA**。先讀next5 batch／agent／launcher／reader審閱收據，不啟動競爭者；如再遇持久化錯誤，保留sent／answer／tmp重新對帳，不能forget／手動移除後重送。舊v2 reader不能拿r1那5份轉寫冒充r2音訊，須新SHA reader。中文旁白check不帶`--locale`（此旗標只給八個dub語系），也不加force。音訊未過且舊成片尚未重組，所以audio／final／完整八語交付包均未完成；不能勾整集完成或開始S15。
+**下一個可行動斷點是兩個剩餘疑句的獨立發音覆核**。若只是同音字，依listener規則保留原句並記錄委託品質判斷及官方原2flags；不假稱Jev自動全過或人工聽音。若證據不足，尚有第2輪受保護措辭機會，不能無限重錄。音訊獲實際可追溯決定後才render／clips／既有music驗證／assemble／captions／QA／新播放器驗證，再核准中文final、逐語製作八條dub。尚未完成完整交付包，不能勾整集完成或開始S15。
 
 - 配對已恢復，不再要求站主重配。guarded keyframes最後session `7898` 已正常完成：129/129張judge通過，沒有needs_review；官方keyframeProblems為0，visual_hash `4ff8941e6473b9f4`、speechHash `8af0af8b6fb7d1e4`。六頁最新圖板已由代理實際檢視，依站主推薦選擇委託記錄storyboard核准，並非站主本人觀看。manifest SHA `fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2`。
 - 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。

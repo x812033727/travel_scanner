@@ -31,3 +31,21 @@ Composed-description estimate: 4935 UTF-8 bytes, derived from root's prior 4920-
 
 Final narrow description verdict: ready — exact persisted readback at the merged SHA-256 above; 0 open description fixes.
 Text readiness remains distinct from measured SLIDE STATE dub fit, audio/pronunciation QA, rendering and player verification. No translation, source or media file was edited by this reviewer.
+
+
+## 2026-10-27 listener-rw1-amended-five-lines：獨立差分覆核 READY
+
+來源video SHA 6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86；speechHash fa2912daff4bd218。只更新5格及source_hash，其餘207格、metadata與thumbnail不變。獨立覆核：s31_audio_plan + s31_translate_ko_es；40格schema及來源界線由s31_translate_ko_es覆核。
+
+| ID | 當前譯文 | source_hash |
+| --- | --- | --- |
+| lz318 | ในพงศาวดารที่ตรวจดูสำหรับแฟ้มนี้ มีแค่ข้อความนี้ที่ระบุหลิ่งหนาน | 01b0234b0cdd |
+| v2a0471 | อธิบายวิธีส่งผลสดไม่ได้ แล้วที่ว่ามาจากฟู่โจว มีหลักฐานอะไร | b111ee9244cb |
+| v2a0491 | ข้อความที่นักปราชญ์อู๋เจิงเขียนไว้ ทำให้เราเห็นว่าคำตอบเกิดขึ้นอย่างไร | 7568e9847eb8 |
+| lz424 | เจ็ดวันเจ็ดคืน ส่งถึงเมืองหลวง | 53f2e4fe3ceb |
+| v2a0722 | พิสูจน์ได้ไหมว่าลิ้นจี่ก็มาถึงวันนั้น | ce0eaf96fdec |
+
+Merged SHA-256: 9015ed13c614f304358c5cafe77e347c5f913c852aa2ea0ae31e07921fc88c9e
+
+Final text verdict: READY for current protected five-line source delta.
+Timed dub, fit, audio QA and final package: PENDING. No owner-listened/watched or Studio-upload claim.

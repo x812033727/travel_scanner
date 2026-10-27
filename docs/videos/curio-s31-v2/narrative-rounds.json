@@ -1,6 +1,6 @@
 {
   "rule": "Each required question passes when at least one of two independent fresh readers answers yes with line evidence; every rewrite gets two new readers.",
-  "final_round": 6,
+  "final_round": 8,
   "final_passed": true,
   "rounds": [
     {
@@ -171,6 +171,36 @@
         }
       ],
       "blocking": []
+    },
+    {
+      "round": 7,
+      "stage": "listener_round1_initial_source",
+      "source_video_sha256": "2646c3a9dbc97b65512a72eff2848319b251a9c3cda653c42dbd5c2991c0fd62",
+      "payload_sha256": "cb1cdc35fcaf761da2eb0abe0c13fb21db908d7026cd082d49f8144b3b4db04f",
+      "reader_record": "narrative-listener-rw1-initial.json",
+      "reader_yes": [
+        11,
+        10
+      ],
+      "merged_yes": 12,
+      "passed": false,
+      "failed": [
+        "no_recap"
+      ]
+    },
+    {
+      "round": 8,
+      "stage": "listener_round1_amended_source",
+      "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+      "payload_sha256": "c60da45b976628935ba08e72697454caed50ec35c328565e1c875464ebdbe55b",
+      "reader_record": "narrative-listener-rw1-amended.json",
+      "reader_yes": [
+        11,
+        12
+      ],
+      "merged_yes": 13,
+      "passed": true,
+      "failed": []
     }
   ]
 }

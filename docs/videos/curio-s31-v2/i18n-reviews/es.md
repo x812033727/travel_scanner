@@ -77,3 +77,21 @@ Closed IDs: lz310, lz104, v2a0072, lz216, lz220, lz306, v2a0522, lz423, lz502, v
 
 Final text verdict: ready — 17/17 requested corrections verified; 0 open text-review fixes at the merged SHA-256 above.
 Timed-fit verdict: not yet verified. Text ready 不等於實際 SLIDE STATE 配音窗口、發音／音訊 QA 或播放器驗證通過；原列 budget diagnostics 仍須由實測決定，不得據此刪除史實。
+
+
+## 2026-10-27 listener-rw1-amended-five-lines：獨立差分覆核 READY
+
+來源video SHA 6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86；speechHash fa2912daff4bd218。只更新5格及source_hash，其餘207格、metadata與thumbnail不變。獨立覆核：s31_translate_ko_es；40格schema及來源界線由s31_translate_ko_es覆核。
+
+| ID | 當前譯文 | source_hash |
+| --- | --- | --- |
+| lz318 | De las crónicas que consultamos para este caso, solo este pasaje menciona Lingnan; | 01b0234b0cdd |
+| v2a0471 | no explica cómo mandaban fruta fresca. ¿Qué sustenta la versión de Fuzhou? | b111ee9244cb |
+| v2a0491 | Los escritos del erudito Wu Zeng nos muestran cómo tomó forma la respuesta. | 7568e9847eb8 |
+| lz424 | Siete días y siete noches para llevar el lichi a la capital, | 53f2e4fe3ceb |
+| v2a0722 | ¿puede probar que el lichi también llegó ese día? | ce0eaf96fdec |
+
+Merged SHA-256: b7abb1389bc45002b2ad896f23cc2c26e4c0fb8b41e8a2fa9bcb9094b421ab17
+
+Final text verdict: READY for current protected five-line source delta.
+Timed dub, fit, audio QA and final package: PENDING. No owner-listened/watched or Studio-upload claim.

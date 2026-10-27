@@ -84,3 +84,21 @@ Closed IDs: lz216, v2a0582, lz510, v2a0731, v2a0821, lz201, lz105, v2a0151, lz30
 
 Final text verdict: ready — 14/14 requested corrections verified; 0 open text-review fixes at the merged SHA-256 above.
 Timed-fit verdict: not yet verified. Text ready 不等於實際 SLIDE STATE 配音窗口、發音／音訊 QA 或播放器驗證通過；原列 budget diagnostics 仍須由實測決定，不得據此刪除史實。
+
+
+## 2026-10-27 listener-rw1-amended-five-lines：獨立差分覆核 READY
+
+來源video SHA 6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86；speechHash fa2912daff4bd218。只更新5格及source_hash，其餘207格、metadata與thumbnail不變。獨立覆核：s31_translate_ko_es；40格schema及來源界線由s31_translate_ko_es覆核。
+
+| ID | 當前譯文 | source_hash |
+| --- | --- | --- |
+| lz318 | 이번 조사에서 살핀 사서 중 영남을 명시한 건 이 대목뿐입니다. | 01b0234b0cdd |
+| v2a0471 | 생과 운송법을 설명하진 못합니다. 그럼 부주설의 근거는 무엇입니까? | b111ee9244cb |
+| v2a0491 | 학자 오증이 남긴 글은 답이 어떻게 만들어지는지 보여 줍니다. | 7568e9847eb8 |
+| lz424 | 일곱 낮과 일곱 밤 만에 수도에 전달됐고, | 53f2e4fe3ceb |
+| v2a0722 | 리치도 그날 도착했음을 증명할 수 있습니까? | ce0eaf96fdec |
+
+Merged SHA-256: f32af9634be54e8db4587b874b2a87293a16bf63973e07f1ccbb390f1b59975e
+
+Final text verdict: READY for current protected five-line source delta.
+Timed dub, fit, audio QA and final package: PENDING. No owner-listened/watched or Studio-upload claim.

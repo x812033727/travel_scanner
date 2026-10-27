@@ -29,3 +29,21 @@ Merged file: docs/videos/curio-s31-v2/i18n/ja.json
 SHA-256: a14ecba0948b4254887f1179bccb9f5c4980191205029b85afc01092591c95da
 No new text issue in this narrow delta check. Existing fit-risk observations still require measured whole-window/audio verification; this verdict approves the corrected translation text only.
 Final delta verdict: ready.
+
+
+## 2026-10-27 listener-rw1-amended-five-lines：獨立差分覆核 READY
+
+來源video SHA 6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86；speechHash fa2912daff4bd218。只更新5格及source_hash，其餘207格、metadata與thumbnail不變。獨立覆核：s31_translate_ko_es；40格schema及來源界線由s31_translate_ko_es覆核。
+
+| ID | 當前譯文 | source_hash |
+| --- | --- | --- |
+| lz318 | この調査で読んだ史書では、嶺南と明記するのはこの一条だけです。 | 01b0234b0cdd |
+| v2a0471 | 生果の輸送法の説明にはなりません。涪州説の根拠は？ | b111ee9244cb |
+| v2a0491 | 学者の呉曾が残した記述から、答えがどう形づくられるかが見えてきます。 | 7568e9847eb8 |
+| lz424 | 七日七晩かけて都へ届け、 | 53f2e4fe3ceb |
+| v2a0722 | その日にライチも届いたと証明できますか。 | ce0eaf96fdec |
+
+Merged SHA-256: 6c3e3b768896a18f00e08d9e757433b0ab3f3589a65025aab93d28cf7ba05d99
+
+Final text verdict: READY for current protected five-line source delta.
+Timed dub, fit, audio QA and final package: PENDING. No owner-listened/watched or Studio-upload claim.

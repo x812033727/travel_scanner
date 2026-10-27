@@ -61,3 +61,21 @@ The shorter fallback received independent text PASS from /root/s31_translate_pt_
 Chinese video.json is unchanged (SHA-256 d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170). PT and ID are outside this update.
 This is saved-file text readback only. It does not approve audio, timed fit, thumbnail font size, rendered images or the final package; root's render and QA remain separate.
 Latest EN fallback metadata text verdict: READY.
+
+
+## 2026-10-27 listener-rw1-amended-five-lines：獨立差分覆核 READY
+
+來源video SHA 6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86；speechHash fa2912daff4bd218。只更新5格及source_hash，其餘207格、metadata與thumbnail不變。獨立覆核：s31_translate_ko_es；40格schema及來源界線由s31_translate_ko_es覆核。
+
+| ID | 當前譯文 | source_hash |
+| --- | --- | --- |
+| lz318 | Of the histories checked for this file, only this passage names Lingnan; | 01b0234b0cdd |
+| v2a0471 | can't explain fresh-fruit delivery. What supports the Fuzhou claim? | b111ee9244cb |
+| v2a0491 | The scholar Wu Zeng's writings show us how the answer took shape. | 7568e9847eb8 |
+| lz424 | Seven days and seven nights to deliver them to the capital, | 53f2e4fe3ceb |
+| v2a0722 | —can it prove the lychees also arrived that day? | ce0eaf96fdec |
+
+Merged SHA-256: 849655432b2ef2ef36634bd77a7599729a6ac24b252c420a9db64629ca8d9a20
+
+Final text verdict: READY for current protected five-line source delta.
+Timed dub, fit, audio QA and final package: PENDING. No owner-listened/watched or Studio-upload claim.
