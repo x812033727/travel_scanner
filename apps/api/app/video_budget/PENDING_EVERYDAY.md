@@ -71,3 +71,25 @@ assembly, captions, QA and packaging. Concretely:
   `summary`/`inspect` report it as `historical_closed_usd`.
 - The USD 25 ceiling therefore guards C03's post-activation work only. The owner accepted
   that the film's all-in cost is the closed historical exposure plus that work.
+
+## Story remakes (owner decision 2026-10-26)
+
+The 2026-10-25 remakes are new films under new slugs (`story-everyday-*-remake-20261025`).
+None of them has paid history, so none needs a `pre-ledger-history` hold, and none
+borrows the original slug's account: an original's held or exhausted account stays
+exactly as above.
+
+- **C11 UCC remake** (`story-everyday-ucc-c11-remake-20261025`): the owner approved a
+  USD 25 whole-film ceiling and about ten minutes. 0140 creates its account
+  (`video_pilot_budget_0140_owned`), and `ACTIVATED_STORY_SLUGS` (API `models.py`,
+  local `pending-pilot-budget.mjs`) admits it. `REMAKE_PILOT_LIMITS_USD` holds its
+  ceiling apart from `C_SERIES_PILOT_LIMITS_USD`, whose exact set the 0138 and 0139
+  rollback readbacks still expect. The 0139 compatibility image (#1870) holds it.
+- **C14, C03, C04, C06, C05, C08 remakes**: the owner asked for them next under the same
+  terms. The 0140 image (#1875) accepts the additive 0141 contract of their six USD 25
+  accounts (`migration_guard._verify_reviewed_0141`) and keeps them held. 0141 creates the
+  accounts (`video_pilot_budget_0141_owned`) and `BATCH_REMAKE_SLUGS` activates them, in
+  the release after the 0140 image is deployed.
+
+Before the first paid call of each remake, report its narration characters, image count
+and the total to the owner, then read back `reconcile_cli` / `inspect` for its account.

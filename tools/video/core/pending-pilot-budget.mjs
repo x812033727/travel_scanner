@@ -10,9 +10,20 @@
 // film may buy what finishes it (one narration line, then unpaid steps). The
 // API still refuses it until that settlement is applied, so the local client
 // sends the attributed request and lets the server answer.
+//
+// The C11 UCC remake was activated by the owner on 2026-10-26: a new film with
+// no pre-ledger history, its own US$25 account from migration 0140. Six more
+// remakes followed on the same terms, with their accounts from 0141.
 export const EVERYDAY_STORY_PREFIX = "story-everyday-";
 export const ACTIVATED_STORY_SLUGS = Object.freeze([
   "story-everyday-moleskine-c03",
+  "story-everyday-ucc-c11-remake-20261025",
+  "story-everyday-camelbak-c14-remake-20261025",
+  "story-everyday-moleskine-c03-remake-20261025",
+  "story-everyday-bubble-wrap-c04-remake-20261025",
+  "story-everyday-play-doh-c06-remake-20261025",
+  "story-everyday-kincho-c05-remake-20261025",
+  "story-everyday-kikkoman-c08-remake-20261025",
 ]);
 export const PREPRODUCTION_HOLD_SLUGS = Object.freeze([
   "story-everyday-bubble-wrap-c04",

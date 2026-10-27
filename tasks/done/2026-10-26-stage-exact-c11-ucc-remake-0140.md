@@ -1,13 +1,13 @@
 ---
 id: 2026-10-26-stage-exact-c11-ucc-remake-0140
 title: Stage exact C11 UCC remake 0140 rollback compatibility
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-happy-brahmagupta
 claimed_at: 2026-10-26T13:58:18Z
 created_at: 2026-10-26T13:58:12Z
-completed_at:
+completed_at: 2026-10-26T15:07:12Z
 branch: claude/happy-brahmagupta-ibjkpd
 depends_on: []
 scope:
@@ -39,7 +39,7 @@ scope:
 
 - [x] `migration_guard.py`、`schema.py`、`host-verify.sh` 與測試改成 C11 remake 的 0140。
 - [x] C08 的整合測試改名 `test_c11_remake_budget_rollback_integration.py`；未來 migration 原文改 slug、revision 與 docstring，SHA 重新固定。
-- [ ] PR 合併後由站主在自己電腦照 skill `deploy` 部署；部署後 `python -m app.migration_guard --status` 為 `state=exact current=0139_c20_zippo_pilot_budget`。
+- [x] PR 合併後由站主在自己電腦照 skill `deploy` 部署（站主 2026-10-26 回報已部署）；部署後 `python -m app.migration_guard --status` 為 `state=exact current=0139_c20_zippo_pilot_budget`。
 
 ## How to verify
 
@@ -52,3 +52,4 @@ scope:
 - 只換掉 0140 的預留，沒有動 C08 remake 或 Codex `codex/brand-remakes-20261025` 那批（scope 只有 `docs/videos/brand-story-remakes-20261025`）。其他 remake 要付費時各自要帳戶，接在 0141 之後。
 - PR：https://github.com/x812033727/travel_scanner/pull/1870
 - 下一步：`2026-10-26-c11-ucc-remake-0140-account-and`。
+- #1870 2026-10-26 14:27Z squash 合併為 `2edb6eaab`；站主回報已部署。雲端 session 連不到主機，`migration_guard --status` 那一行由站主讀回，下一張票合併前要先確認。

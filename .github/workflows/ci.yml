@@ -80,6 +80,10 @@ jobs:
         run: uv run pytest tests/test_c11_remake_budget_rollback_integration.py -q -p no:cacheprovider
         env:
           RUN_INTEGRATION_TESTS: "1"
+      - name: Validate story remakes 0141-on-0140 rollback with PostgreSQL and Compose command
+        run: uv run pytest tests/test_story_remakes_budget_rollback_integration.py -q -p no:cacheprovider
+        env:
+          RUN_INTEGRATION_TESTS: "1"
   # The main pytest run took 23 of the old api job's 25 minutes (run 37111019702). Each
   # shard is its own job with its own PostgreSQL, Redis and S3 companion, so no two tests
   # running at once share a database. TOTAL in the pytest line must match the matrix.
@@ -268,26 +272,11 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with: { node-version: 24, cache: npm }
       - run: npm ci
-      # A required check now depends on the Ubuntu mirror; one failed fetch is retried
-      # rather than blocking the merge (the same reasoning as tools/ci/pull-images.sh). The
-      # pipeline's ffmpeg lookup (tools/video/assemble/ffmpeg.mjs) wants libx264; a build
-      # without it fails here, by name, instead of as six ToolMissing test failures.
+      # A required check now depends on the Ubuntu mirror; a failed or crawling fetch is
+      # retried, then sent to the main archive, rather than blocking the merge (the same
+      # reasoning as tools/ci/pull-images.sh).
       - name: Install ffmpeg
-        run: |
-          for attempt in 1 2 3; do
-            if sudo apt-get -o Acquire::Retries=3 update \
-              && sudo apt-get -o Acquire::Retries=3 install -y --no-install-recommends ffmpeg; then
-              break
-            fi
-            if [ "$attempt" = 3 ]; then exit 1; fi
-            sleep $((attempt * 10))
-          done
-          ffmpeg -hide_banner -version | sed -n 1p
-          encoders=$(ffmpeg -hide_banner -encoders)
-          if ! grep -qw libx264 <<<"$encoders"; then
-            echo "::error::the installed ffmpeg has no libx264 encoder"
-            exit 1
-          fi
+        run: bash "$GITHUB_WORKSPACE/tools/ci/install-ffmpeg.sh"
       - run: npx playwright install --with-deps chromium
       - run: npm run test:docs-videos
       # With Chromium here, the two browser regressions in tools/video/render/browser.test.mjs,

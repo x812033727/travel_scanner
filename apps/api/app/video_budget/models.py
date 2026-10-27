@@ -83,7 +83,23 @@ PENDING_PILOT_SLUGS = frozenset(PENDING_PILOT_LIMITS_USD)
 # counts in full, so the account is exhausted until the host applies it.
 C03_ACTIVATED_SLUG = "story-everyday-moleskine-c03"
 C03_HISTORY_CLOSED_RECEIPT = "owner-decision-20261024-c03-full-ceiling"
-ACTIVATED_STORY_SLUGS = frozenset((C03_ACTIVATED_SLUG,))
+# Owner decision 2026-10-26: the C11 UCC remake is a new film with no pre-ledger
+# history. 0140 creates its own USD 25 whole-film account, and it is activated
+# for everything that finishes it. Keep it out of C_SERIES_PILOT_LIMITS_USD: the
+# 0138 and 0139 rollback readbacks still expect their exact earlier account sets.
+C11_REMAKE_SLUG = "story-everyday-ucc-c11-remake-20261025"
+# The owner asked for six more remakes on the same terms (2026-10-26). 0141 creates
+# their accounts; like the C11 remake, none of them has pre-ledger history.
+BATCH_REMAKE_SLUGS = (
+    "story-everyday-camelbak-c14-remake-20261025",
+    "story-everyday-moleskine-c03-remake-20261025",
+    "story-everyday-bubble-wrap-c04-remake-20261025",
+    "story-everyday-play-doh-c06-remake-20261025",
+    "story-everyday-kincho-c05-remake-20261025",
+    "story-everyday-kikkoman-c08-remake-20261025",
+)
+REMAKE_PILOT_LIMITS_USD = dict.fromkeys((C11_REMAKE_SLUG, *BATCH_REMAKE_SLUGS), PILOT_LIMIT_USD)
+ACTIVATED_STORY_SLUGS = frozenset((C03_ACTIVATED_SLUG, *REMAKE_PILOT_LIMITS_USD))
 # Historical reconciliation alone would not prove the current voice, model,
 # supplier account, region, or prices. A separate reviewed change must lift
 # these holds before any new paid request can be admitted.

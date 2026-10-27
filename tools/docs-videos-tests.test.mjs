@@ -62,7 +62,10 @@ test("the video-tests job installs ffmpeg and Chromium, runs both suites, fails 
   const job = /^ {2}video-tests:\r?\n((?: {4}.*\r?\n|[ \t]*\r?\n)+)/m.exec(ci)?.[1];
   assert.ok(job, "ci.yml has no video-tests job");
   // Without ffmpeg six of the runner's native speech cases fail with ToolMissing.
-  assert.match(job, /\bapt-get\b[^\n]*\binstall\b[^\n]*\bffmpeg\b/, "the video-tests job no longer installs ffmpeg");
+  assert.match(job, /^\s+run: bash "\$GITHUB_WORKSPACE\/tools\/ci\/install-ffmpeg\.sh"\s*$/m, "the video-tests job no longer installs ffmpeg");
+  const install = readFileSync(join(ROOT, "tools", "ci", "install-ffmpeg.sh"), "utf8");
+  assert.match(install, /\bapt-get\b[^\n]*\binstall\b[^\n]*\bffmpeg\b/, "tools/ci/install-ffmpeg.sh no longer installs ffmpeg");
+  assert.match(install, /grep -qw libx264/, "tools/ci/install-ffmpeg.sh no longer requires libx264");
   assert.match(job, /^\s+- run: npx playwright install --with-deps chromium\s*$/m, "the video-tests job no longer installs Chromium");
   assert.match(job, /^\s+- run: npm run test:docs-videos\s*$/m, `the video-tests job no longer runs npm run ${SCRIPT}`);
   // The tools tests again, on test:tools' own globs, with a TAP copy the skip check reads.
