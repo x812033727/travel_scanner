@@ -88,8 +88,8 @@
     "category_id": 28,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "ARTEX：AI 駭客不到 3 小時打進雲端，它沒猜密碼，是撿走你放著的鑰匙",
-    "description": "2026 年 10 月 21 日，Microsoft 公布一份報告：它評估一個跟中國政府有關的駭客組織，用 AI 自主滲透測試工具 ARTEX 同時攻擊全球幾百個組織，好幾次從鎖定到拿下雲端管理權限不到三小時；隔天台灣的 91APP 也在調查報告裡寫出 ARTEX 的痕跡。這支用三份官方報告講它實際從哪裡進去：其中一波十五萬次猜密碼全部失敗，進去的是早就被授權的 App、GitLab 裡的一把資料庫金鑰；再跑一行 git 指令，把一個已經刪掉的密碼從歷史裡拿回來，最後是收回鑰匙的三個地方。\n寫給用 Google 帳號登入一堆服務的人、會把專案推上 GitHub 的工程師與新手，以及替公司管 Microsoft 365 的人。\n\n錄製日期 2026 年 10 月 27 日。猜密碼的次數、早就授權的應用程式、不到三小時、2,250 個租戶與新增的認證可當後門，照 Microsoft Threat Intelligence 10 月 21 日的報告；Appsmith、GitLab 裡的資料庫金鑰與時間，照 91APP 10 月 22 日的 18 天調查報告；日本約 20 家企業，照 GMO サイバーセキュリティ by イエラエ 10 月 19 日的調查（ScanNetSecurity、iThome 報導）；韓國逾 6 萬筆個資與防禦建議，照數位發展部資安署 10 月 21 日新聞稿；署長說 AI 評估成本後放棄部分企業、7 月國內監測到類似攻擊，照 iThome 對同日記者會的報導；Zeabur 的明文憑證、八月沒輪替到與 321 萬筆環境變數，照 Zeabur 10 月 19 日初步報告，該報告沒有提到 ARTEX 或 AI 工具；改密碼的例外照 Google 帳戶說明；先撤銷或輪替照 GitHub Docs。片中的終端機畫面是 2026-10-27 在 Ubuntu 24.04.5、git 2.43.0 上建的示範倉庫真的跑出來的，密碼是假的。「我的看法是」「我查不到」是站主的意見。本片不示範任何攻擊、不提供攻擊工具的連結。\n\n片中的指令：\ngit log --oneline -G PASSWORD\ngit show b3faea1:.env\ngit log --oneline -G API_KEY\n\n你的 Google 授權清單裡，有幾個已經不認得的 App？留言告訴我。",
+    "title": "ARTEX：AI 駭客不到 3 小時打進雲端，它不靠猜密碼，是撿走你放著的鑰匙",
+    "description": "2026 年 10 月 21 日，Microsoft 公布一份報告：它評估一個跟中國政府有關的駭客組織，用 AI 自主滲透測試工具 ARTEX 攻擊全球幾百個組織，好幾次從鎖定到拿下雲端管理權限不到三小時；緊接著台灣的 91APP 也在調查報告裡寫出 ARTEX 的痕跡。這支用三份官方報告講它實際從哪裡進去：其中一波十五萬次猜密碼全部失敗，進去的是早就被授權的 App、GitLab 裡的一把資料庫金鑰；再跑一行 git 指令，把一個已經刪掉的密碼從歷史裡拿回來，最後是收回鑰匙的三個地方。\n寫給用 Google 帳號登入一堆服務的人、會把專案推上 GitHub 的工程師與新手，以及替公司管 Microsoft 365 的人。\n\n錄製日期 2026 年 10 月 27 日。猜密碼的次數、早就授權的應用程式、不到三小時、2,250 個租戶與新增的認證可當後門，照 Microsoft Threat Intelligence 10 月 21 日的報告；Appsmith、GitLab 裡的資料庫金鑰與時間，照 91APP 10 月 22 日的 18 天調查報告；日本約 20 家企業，照 GMO サイバーセキュリティ by イエラエ 10 月 19 日的調查（ScanNetSecurity、iThome 報導）；韓國逾 6 萬筆個資與防禦建議，照數位發展部資安署 10 月 21 日新聞稿；署長說 AI 評估成本後放棄部分企業、7 月國內監測到類似攻擊，照 iThome 同日的報導；ConnectWise 10 月 16 日公告的是調查備份服務遭未授權存取的嘗試，照 ConnectWise 狀態頁；Zeabur 的明文憑證、八月沒輪替到與 321 萬筆環境變數，照 Zeabur 10 月 19 日初步報告，該報告沒有提到 ARTEX，也沒說攻擊者用了 AI 工具；改密碼的例外照 Google 帳戶說明；先撤銷或輪替照 GitHub Docs。片中的終端機畫面是 2026-10-27 在 Ubuntu 24.04.5、git 2.43.0 上建的示範倉庫真的跑出來的，密碼是假的。「我的看法是」「我查不到」是站主的意見。本片不示範任何攻擊、不提供攻擊工具的連結。\n\n片中的指令：\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\n你的 Google 授權清單裡，有幾個已經不認得的 App？留言告訴我。",
     "tags": [
       "ARTEX",
       "AI 駭客",
@@ -173,6 +173,21 @@
       "title": "GitHub Docs: Reviewing your authorized OAuth apps",
       "url": "https://docs.github.com/en/apps/oauth-apps/using-oauth-apps/reviewing-your-authorized-oauth-apps",
       "checked_on": "2026-10-27"
+    },
+    {
+      "title": "ConnectWise Product and Services Status: ConnectWise Cloud Backup Issue Investigation (2026-10-16)",
+      "url": "https://status.connectwise.com/pages/incident/619cf82551fec9053d612f09/6ad263692dc48705ab3da2cb",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Microsoft Learn: Conditional Access for workload identities",
+      "url": "https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Git documentation: git-log",
+      "url": "https://git-scm.com/docs/git-log",
+      "checked_on": "2026-10-27"
     }
   ],
   "assets": [],
@@ -183,7 +198,7 @@
       "template": "title",
       "data": {
         "tag": "AI 新聞",
-        "title": "AI 駭客不猜密碼，\n它**撿鑰匙**",
+        "title": "AI 駭客不靠猜密碼，\n它**撿鑰匙**",
         "subtitle": "ARTEX · Microsoft 報告 2026-10-21 · 91APP 調查 2026-10-22",
         "key": "ARTEX：AI 自主滲透測試工具"
       },
@@ -200,7 +215,7 @@
         },
         {
           "id": "tiky",
-          "text": "好幾次，不到三小時就拿下雲端管理權限；隔天，台灣的 91APP 也找到它的痕跡。",
+          "text": "好幾次，不到三小時就拿下雲端管理權限；緊接著，台灣的 91APP 也找到它的痕跡。",
           "emotion": "「不到三小時」放慢，「台灣」停半拍"
         }
       ],
@@ -243,7 +258,7 @@
         },
         {
           "id": "6pn9",
-          "text": "真正進去的，是早就被允許的 App，和沒人記得的金鑰。",
+          "text": "真正進去的，是早就被允許的 App，和放在程式碼倉庫裡的金鑰。",
           "emotion": "「早就被允許」加重"
         }
       ],
@@ -324,7 +339,7 @@
           },
           {
             "value": "約 20 家",
-            "label": "日本：一台攻擊主機鎖定的企業"
+            "label": "日本：一組攻擊主機鎖定的企業"
           },
           {
             "value": "1 座",
@@ -334,7 +349,7 @@
         "source": "資安署 10-21；GMO 10-19；91APP 10-22",
         "keys": [
           "韓國：逾 6 萬筆個資",
-          "日本：一台主機鎖定約 20 家",
+          "日本：一組主機鎖定約 20 家",
           "台灣：91APP 的訂單資料庫"
         ]
       },
@@ -346,7 +361,7 @@
         },
         {
           "id": "wnqk",
-          "text": "日本的資安公司 GMO 查到，光一台攻擊主機就鎖定約二十家企業；",
+          "text": "日本的資安公司 GMO 查到，光一組攻擊主機就鎖定約二十家企業；",
           "reveal": 1
         },
         {
@@ -395,14 +410,14 @@
       "id": "cheap",
       "template": "big",
       "data": {
-        "kicker": "資安署署長，記者會",
+        "kicker": "資安署署長，iThome 報導",
         "text": "AI 會先挑\n**便宜的門**",
-        "key": "扎實的企業，AI 評估後放棄"
+        "key": "防禦弱、對外開得多的先被打"
       },
       "lines": [
         {
           "id": "3zwr",
-          "text": "記者會上，署長補了一個觀察：",
+          "text": "同一天，署長還補了一個觀察：",
           "emotion": "像轉述，平"
         },
         {
@@ -412,7 +427,7 @@
         },
         {
           "id": "kwax",
-          "text": "它不挑公司大小，挑的是便宜。",
+          "text": "署長說，容易被打的，是防禦弱、對外服務開得多的。",
           "emotion": "短句，乾脆"
         }
       ],
@@ -508,12 +523,12 @@
       "id": "spray",
       "template": "stats",
       "data": {
-        "title": "其中一波猜密碼（10/10–10/14）",
+        "title": "其中一波：8 個組織、327 個帳號",
         "stats": [
           {
             "value": "151,000+",
             "label": "次登入失敗",
-            "note": "8 個組織、327 個帳號"
+            "note": "10/10–10/14，最高每分鐘 2,900 次"
           },
           {
             "value": "約 98%",
@@ -526,26 +541,26 @@
         ],
         "source": "Microsoft Threat Intelligence · 2026-10-21",
         "keys": [
-          "八個組織、327 個帳號",
-          "失敗 15 萬次，最高一分鐘 2,900 次",
+          "10/10–14：失敗 15 萬次",
+          "約 98% 是帳號被鎖住",
           "成功登入：零次"
         ]
       },
       "lines": [
         {
           "id": "a6cm",
-          "text": "十月十號到十四號，這個組織對八個組織、三百二十七個帳號猜密碼；",
+          "text": "開頭說的十五萬次就是這一波：十月十號到十四號，最高一分鐘兩千九百次；",
           "emotion": "日期清楚"
         },
         {
           "id": "5xut",
-          "text": "開頭說的十五萬次就是這一波，最高一分鐘兩千九百次；",
+          "text": "將近九成八的回應，是帳號被鎖住；",
           "reveal": 1,
           "emotion": "數字一個一個加快"
         },
         {
           "id": "krad",
-          "text": "將近九成八的回應是帳號被鎖住；成功登入，零次。",
+          "text": "成功登入，零次。",
           "reveal": 1,
           "emotion": "「零次」停半拍"
         }
@@ -661,11 +676,11 @@
           ],
           [
             "10/14–15",
-            "Zeabur 叢集與平台資料庫被讀取"
+            "Zeabur 遭入侵（報告未提 ARTEX）"
           ],
           [
             "10/16",
-            "ConnectWise 公告備份服務遭存取"
+            "ConnectWise 公告備份服務遭入侵嘗試"
           ],
           [
             "10/19",
@@ -680,7 +695,7 @@
             "91APP 公布 18 天調查報告"
           ]
         ],
-        "source": "91APP、Zeabur、Microsoft、GMO、資安署",
+        "source": "91APP、Zeabur、ConnectWise、Microsoft、GMO、資安署",
         "keys": [
           "10/3：91APP",
           "10/14–15：Zeabur",
@@ -698,12 +713,12 @@
         },
         {
           "id": "f3qn",
-          "text": "十四、十五號，台灣的雲端部署平台 Zeabur 被入侵；",
+          "text": "十四、十五號，台灣的 Zeabur 被入侵，它的報告沒提到 ARTEX；",
           "reveal": 1
         },
         {
           "id": "vwab",
-          "text": "十六號，ConnectWise 公告它的備份服務被存取；",
+          "text": "十六號，ConnectWise 公告有人試圖入侵它的備份服務；",
           "reveal": 1
         },
         {
@@ -810,7 +825,7 @@
         },
         {
           "id": "gpaj",
-          "text": "它的報告沒有提到 ARTEX，也沒說攻擊者用了 AI 工具。",
+          "text": "剛剛說過，它的報告沒提到 ARTEX，也沒說攻擊者用了 AI 工具。",
           "emotion": "「沒有提到」清楚"
         },
         {
@@ -873,7 +888,7 @@
         "source": "support.google.com/accounts/answer/41078",
         "keys": [
           "改密碼：登出所有裝置",
-          "例外：你授權過的第三方應用程式"
+          "例外之一：你授權過的第三方應用程式"
         ]
       },
       "lines": [
@@ -884,7 +899,7 @@
         },
         {
           "id": "ei35",
-          "text": "但例外是，你已經授權存取帳戶的那些第三方應用程式。",
+          "text": "但例外之一，是你已經授權存取帳戶的那些第三方應用程式。",
           "emotion": "「例外」停半拍"
         },
         {
@@ -1045,7 +1060,7 @@
         "title": "問 git 的歷史",
         "command": "git log --oneline -G PASSWORD",
         "output": [
-          "984e6d1 remove secrets from repo\nb3faea1 add db config"
+          "5f37a2a remove secrets from repo\na6036e8 add db config"
         ],
         "ran_on": "2026-10-27",
         "tool_version": "git version 2.43.0, Ubuntu 24.04.5 LTS",
@@ -1077,7 +1092,7 @@
       "template": "terminal",
       "data": {
         "title": "拿回加進去的那一次",
-        "command": "git show b3faea1:.env",
+        "command": "git show a6036e8:.env",
         "output": [
           "DB_HOST=orders-db.internal\nDB_PASSWORD=demo-not-a-real-secret"
         ],
@@ -1122,7 +1137,7 @@
         },
         {
           "id": "urui",
-          "text": "剛剛那把資料庫金鑰，也放在 GitLab 這種程式碼倉庫裡；它是怎麼放的，報告沒有寫。",
+          "text": "剛剛那把資料庫金鑰，也在 GitLab 這種倉庫裡；怎麼放的，報告沒寫。",
           "emotion": "平，「報告沒有寫」清楚"
         }
       ],
@@ -1136,7 +1151,7 @@
       "data": {
         "title": "換成你的金鑰名稱",
         "code": "# 在你自己的倉庫資料夾裡\ngit log --oneline -G API_KEY\ngit log --oneline -G SECRET\n\n# 找到之後，看那一次的檔案\ngit show <提交編號>:<檔名>",
-        "caption": "沒有任何輸出，代表歷史裡沒有這個字（2026-10-27 示範倉庫跑 -G API_KEY）"
+        "caption": "沒有任何輸出，代表目前分支的歷史裡沒有這個字（2026-10-27 示範倉庫跑 -G API_KEY）"
       },
       "lines": [
         {
@@ -1155,7 +1170,7 @@
         },
         {
           "id": "nq6x",
-          "text": "沒有任何輸出，就是歷史裡沒有這個字。",
+          "text": "沒有任何輸出，就是目前分支的歷史裡沒有這個字。",
           "emotion": "收穩"
         }
       ],
