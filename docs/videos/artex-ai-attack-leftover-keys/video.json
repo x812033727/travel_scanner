@@ -566,12 +566,25 @@
     },
     {
       "id": "three-hours",
-      "template": "big",
+      "template": "stats",
       "data": {
-        "kicker": "從鎖定到拿下雲端管理權限",
-        "text": "不到 **3** 小時",
-        "sub": "Microsoft：多次案例；超過 2,250 個租戶被嘗試登入",
-        "key": "門早就開著，AI 只是走得快"
+        "title": "機器的速度",
+        "stats": [
+          {
+            "value": "2,250+",
+            "label": "被嘗試登入的雲端租戶"
+          },
+          {
+            "value": "不到 3 小時",
+            "label": "從鎖定到拿下雲端管理權限",
+            "note": "Microsoft：多次案例"
+          }
+        ],
+        "source": "Microsoft Threat Intelligence · 2026-10-21",
+        "keys": [
+          "對 2,250 多個環境嘗試登入",
+          "門早就開著，AI 只是走得快"
+        ]
       },
       "lines": [
         {
@@ -582,7 +595,8 @@
         {
           "id": "zz9s",
           "text": "開頭說的不到三小時，就是這樣來的：門早就開著，AI 只是走得很快。",
-          "emotion": "「門早就開著」放慢"
+          "emotion": "「門早就開著」放慢",
+          "reveal": 1
         }
       ],
       "claims": [
@@ -1184,23 +1198,29 @@
       "data": {
         "steps": [
           {
+            "title": "帳號的授權清單",
+            "detail": "不寫程式的人看這裡",
+            "icon": "person"
+          },
+          {
             "title": "Google 帳戶",
-            "detail": "連結的應用程式 → 查看詳細資料 → 移除存取權",
+            "detail": "連結的應用程式 → 移除存取權",
             "icon": "globe"
           },
           {
             "title": "GitHub",
-            "detail": "Settings → Applications → Authorized OAuth Apps → Revoke",
+            "detail": "Authorized OAuth Apps → Revoke",
             "icon": "folder"
           },
           {
             "title": "不認得、不再用的",
-            "detail": "先移除；需要時再授權一次",
+            "detail": "先移除，需要再授權",
             "icon": "checklist"
           }
         ],
         "source": "Google 帳戶說明；GitHub Docs",
         "keys": [
+          "不寫程式的人：授權清單",
           "Google：連結的應用程式",
           "GitHub：授權過的 OAuth App",
           "不認得的先移除"
@@ -1220,7 +1240,8 @@
         {
           "id": "vtxp",
           "text": "Google 帳戶有一頁連結的應用程式，點進詳細資料，就能移除存取權；",
-          "emotion": "清楚"
+          "emotion": "清楚",
+          "reveal": 1
         },
         {
           "id": "2wc7",
