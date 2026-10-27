@@ -2,22 +2,25 @@
 
 本片以本地原創四頁簡報示範大綱審查、集中修改、可編輯交付與回查來源，沒有Notebook產品實測。
 
-官方5秒片頭與21秒片尾已加入完整1080p新版，fresh QA11/11，後台下載附件已交付並讀回；manual final仍pending。118句繁中當前音訊沿用精確相同已驗WAV，繁中118 cues CC與native標題說明TXT亦已交後台讀回；八外語音訊0/8、外語CC仍草稿，overall=false。官方bookends已恢復，不再是缺素材狀態；敘事12/13 false原樣保留。
+最新交付（2026-10-27）：含官方5秒片頭與21秒片尾的1080p新版、繁中CC與標題說明，以及八外語各自的字幕參考稿、縮圖和完整標題說明TXT，已送到本片後台；目前待審版本共36個附件，經正常工具完整下載並核對每檔內容、SHA-256、大小與角色。成片仍待人工核准；外語已驗M4A仍0/8，整片尚未完成。[交付與完整讀回證據](receipts/foreign-reference-assets-20261027/README.md)。
+
+八外語SRT依當前已驗繁中旁白時間軸製作，已包含首章後的5秒片頭位移。它們是參考稿，仍須在每語配音接受後按真正音訊重排；不能當作外語配音已驗。原QA11/11與27項外語字幕閱讀速度提醒、兩份敘事12/13 false及教學取捨完整保留，沒有新執行音訊合成、聽校或QA。
 
 | 閱讀入口 | 內容 |
 |---|---|
-| [製作結果](production-result.md)／[機器進度](production-progress.json) | 當前真實媒體、片頭尾、附件與未完成項 |
+| [本輪後台交付與完整讀回](receipts/foreign-reference-assets-20261027/README.md) | 新增8字幕參考稿、8原生縮圖、8完整標題說明TXT與說明報告；current36完整讀回 |
+| [製作結果](production-result.md)／[機器進度](production-progress.json) | 既有結果與最新實際附件、未完成項 |
 | [製作採用](production-decision.md) | 原始授權、PR1860委派、來源／產品實測界線 |
-| [新版後台附件](branding-v4/main-download-attachment.json)／[QA](branding-v4/native-final-qa.json) | 新主片14parts、舊主體13、舊preview4；QA綁新c387 |
+| [新版1080p原始附件收據](branding-v4/main-download-attachment.json)／[QA](branding-v4/native-final-qa.json) | 2026-10-26官方新版上傳與QA；原有紀錄不倒改 |
 | [新版實測](branding-v4/current-media-verification.json)／[官方素材來源](branding-v4/official-package-source-summary.json) | 18886frames／629.533333秒video／629.610秒AAC，5+21秒官方動畫 |
-| [繁中CC／說明交付](branding-v4/zh-tw/backend-delivery-receipt.json)／[繁中標題說明TXT](branding-v4/zh-tw/title-description.zh-TW.txt) | 當前118 cues／0提醒；chapter2=00:30，3 blobs／5 roles已讀回 |
-| [目前附件摘要](branding-v4/current-backend-attachment-summary.json)／[helper獨審](branding-v4/main-helper-retained-peer-review.json) | 新pending11roles不改核准，舊實體與review保留；外語仍未交付 |
-| [原本體附件](main-download-attachment.json)／[原本體QA](body-core-qa.json) | 原3cdb的真實歷史，不改綁新版 |
-| [八語文字／九CC初始快照](localization-initial-reviewed-snapshot.json)／[EN held收據](branding-v4/en-initial-synthesis-held.json) | 初始文字／縮圖與真實93/118 raw、0/8配音 |
+| [繁中CC／說明原始交付](branding-v4/zh-tw/backend-delivery-receipt.json)／[繁中標題說明TXT](branding-v4/zh-tw/title-description.zh-TW.txt) | 2026-10-26當前118 cues／0提醒；chapter2=00:30 |
+| [前一輪11附件摘要](branding-v4/current-backend-attachment-summary.json)／[原helper獨審](branding-v4/main-helper-retained-peer-review.json) | 當時metadata-only讀回的歷史範圍；本輪完整binary讀回另留新證據 |
+| [原本體附件](main-download-attachment.json)／[原本體QA](body-core-qa.json) | 原3cdb歷史，沒有改綁新版 |
+| [八語文字／九CC初始快照](localization-initial-reviewed-snapshot.json)／[EN held收據](branding-v4/en-initial-synthesis-held.json) | 初始文字／縮圖與93/118 raw、0/8配音的實際限制 |
 | [來源主張](claims.md)／[當前事實核驗](verify-5.md) | 數值、單位、母體、資料年及70/79未解註記 |
-| [原創教材](data/DELIVERY.md) | 四頁PDF、可編輯PPTX與引用；不含原始整份報告權利 |
-| [收據索引](production-receipt-index.json)／[CC追加前29檔freeze](production-history/20261026-pre-zh-cc-doc-update/archive-manifest.json)／[更早BODY文件](production-history/20261026-pre-official-v4-main-doc-update/archive-manifest.json) | 完整SHA／大小與歷次不同時點快照 |
+| [原創教材](data/DELIVERY.md) | 四頁PDF、可編輯PPTX與引用 |
+| [歷史收據索引](production-receipt-index.json) | 舊時點SHA／大小與封存紀錄不變 |
 
-後台：https://mokaair.com/zh-TW/admin/videos?video=ai-slides-outline-review 。當前`evidence_zh_tw_1080p_mp4`為c387／58,584,900 bytes；舊3cdb與舊preview另有live history附件。正常store完成及metadata讀回不等於遠端binary重取驗hash。
+後台：https://mokaair.com/zh-TW/admin/videos?video=ai-slides-outline-review 。主片為SHA `c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c`，58,584,900 bytes；舊正文3cdb與舊preview另有live history附件。新附件保留原11refs與完整payload、manualQA、審核歷史及選擇；沒有伺服器核准或語言批次。
 
-原已公開教材沿用固定版本：https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data 。本次docs編輯沒有付費、QA、後台POST或媒體修改；按root授權在獨立freeze審核後精確提交同分支。PR保持no-auto-merge，不部署、不合併、不上傳或公開YouTube。
+原公開教材沿用固定版本：https://github.com/x812033727/travel_scanner/tree/c8308b78321ad3ebc23bf516d1828203d07a40a8/docs/videos/ai-slides-outline-review/data 。PR保持no-auto-merge，不部署、不合併、不上傳或公開YouTube。

@@ -1,0 +1,67 @@
+{
+  "kind": "independent_PT_thumbnail_visual_concern_resolution_v1",
+  "at": "2026-10-27T07:16:19.586362+00:00",
+  "verdict": "CLEAR_NO_CHANGE",
+  "initial_Root_concern": "In batched compressed image presentation, Root initially perceived the third-line word crie as clipped, reading rie. This was a concern, not a measured layout failure.",
+  "independent_observation": "Viewed the original current JPEG using view_image at 1280x720. Full crie is visible and readable, separated from the subtitle; no observed clipping or overlap.",
+  "Root_followup": "Root reopened the same original JPEG and independently confirmed full crie, spacing and no cut; original concern withdrawn.",
+  "current_thumbnail": {
+    "path": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/thumbnails/pt.jpg",
+    "bytes": 101482,
+    "sha256": "e1dd7b49db48f3e97221fad29dede5fb70b9d6f2dc7d17043fd5bccb28976fd9"
+  },
+  "translation": {
+    "path": "/workspace/work/travel-scanner-slides/docs/videos/ai-slides-outline-review/i18n/pt.json",
+    "bytes": 20344,
+    "sha256": "1a3ad9a9a2da9441a67c7b3146fbe5fa5dfe2d894606c11a6a63a0a689256a58"
+  },
+  "current_thumbnail_text": {
+    "tag": "Roteiro com AI",
+    "headline": "**Revise**\ndepois crie",
+    "sub": "Do roteiro ao arquivo editável"
+  },
+  "native_rules": [
+    {
+      "path": "/workspace/work/travel-scanner-slides/tools/video/templates/theme.css",
+      "bytes": 18845,
+      "sha256": "053dfe2aa7bc95183a701338ace96a4e1165cb6533bd8a5360fad98d8bc7e966"
+    },
+    {
+      "path": "/workspace/work/travel-scanner-slides/tools/video/render/browser.mjs",
+      "bytes": 15080,
+      "sha256": "8b47a5a5cbe77895a49b63759e24ef4eb732a663ccc85db194c8f7f1f0ed1adb"
+    },
+    {
+      "path": "/workspace/work/travel-scanner-slides/tools/video/templates/templates.mjs",
+      "bytes": 58791,
+      "sha256": "d4dfeda30396bd1922488dd1ee60304cb7cd03e1d872af3e92b8d22cefde66f2"
+    }
+  ],
+  "layout_evidence": {
+    "source_headline": "**Revise**\ndepois crie",
+    "actual_visible_wrap": [
+      "Revise",
+      "depois",
+      "crie"
+    ],
+    "column_width_calculation": "1280 * 0.4 - 56 - 24 = 432 CSS px",
+    "h1_max_height_px": 300,
+    "default_h1_font_px": 136,
+    "line_height": 1.1,
+    "native_fit_shrink_min_fraction": 0.6,
+    "native_vertical_tolerance_em": 0.4,
+    "actual_new_geometry_measurement": false
+  },
+  "linguistic_review": "Revise, depois crie is natural PT-BR imperative thumbnail copy and explicitly preserves reviewing before creation. No factual, numeric, negation or source text changes are needed.",
+  "changes_recommended": [],
+  "actual_actions": {
+    "auth": 0,
+    "network": 0,
+    "native_render_or_merge": 0,
+    "repo_changes": 0,
+    "canonical_changes": 0,
+    "image_editing": 0,
+    "paid_requests": 0
+  },
+  "limits": "Visual inspection of the existing current JPEG and static CSS/render-code reading only. No new render, browser geometry measurement or whole-film QA was performed."
+}
