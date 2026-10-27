@@ -1,5 +1,5 @@
 {
-  "title": "ARTEX: AI Hackers Breached the Cloud in Under 3 Hours With Keys You Left Out",
+  "title": "ARTEX: AI Hackers Hit the Cloud in Under 3 Hours With Your Keys, Not Guessing",
   "description": "On October 21, 2026, Microsoft reported its assessment that a Chinese government-linked hacking group used ARTEX, an autonomous AI penetration-testing tool, to attack hundreds of organizations worldwide, several times going from target to cloud admin rights in under three hours. Right after, Taiwan's 91APP also noted ARTEX traces in its investigation report. Three official reports show where it really got in: one wave of 150,000 password guesses all failed; what got in was an already-authorized app and a database key in GitLab. Then one git command recovers a deleted password from history; last, three places to take your keys back.\nFor people who use Google sign-in everywhere, engineers and beginners pushing projects to GitHub, and company Microsoft 365 admins.\n\nRecorded Oct 27, 2026. Guess counts, authorized apps, under three hours, 2,250 tenants and added credentials as backdoors: Microsoft Threat Intelligence, Oct 21. Appsmith, the GitLab database key and timing: 91APP's 18-day investigation report, Oct 22. AI cutting attack costs and the defense advice: Taiwan's Administration for Cyber Security, Oct 21; its director on AI giving up on some companies and similar attacks seen in Taiwan in July: iThome, same day. Zeabur's plaintext credentials, keys missed in August and 3.21 million environment variables: Zeabur's Oct 19 preliminary report, which does not mention ARTEX or say the attacker used AI tools. Password-change exception: Google Account Help; revoke or rotate first: GitHub Docs. Terminal footage: a real run on 2026-10-27 in a demo repository on Ubuntu 24.04.5 with git 2.43.0; the password is fake. \"My view\" and \"I couldn't find\" are my own opinions. No attack is shown and no attack tool is linked.\n\nCommands in the video:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nHow many apps on your Google access list don't you recognize? Tell me in the comments.",
   "tags": [
     "ARTEX",
@@ -9,7 +9,7 @@
     "Microsoft Storm-0940",
     "Zeabur security incident",
     "git deleted password",
-    "OAuth authorized apps",
+    "Authorized OAuth Apps",
     "Administration for Cyber Security",
     "AI news"
   ],
@@ -73,7 +73,7 @@
     },
     "yfkf": {
       "source_hash": "7cc400f1c4a5",
-      "text": "that Taiwanese e-commerce firm's report shows where the key the attackers found was left;"
+      "text": "that Taiwanese e-commerce firm's report shows where the attackers found their key;"
     },
     "v5t8": {
       "source_hash": "046f85a2f9f1",
@@ -93,7 +93,7 @@
     },
     "uny5": {
       "source_hash": "715c336bbe03",
-      "text": "So AI hackers are less lock pickers than thieves checking doormats."
+      "text": "So AI hackers are like thieves checking doormats, not lock pickers."
     },
     "yfsm": {
       "source_hash": "d41452698666",
@@ -329,11 +329,11 @@
     },
     "vtxp": {
       "source_hash": "30bcd9820c12",
-      "text": "Google Account has a page of connected apps; open the details to remove access;"
+      "text": "Your Google Account has a linked apps page; open See details to remove access;"
     },
     "2wc7": {
       "source_hash": "899d44c9ed09",
-      "text": "GitHub settings have a page of authorized OAuth apps; revoke any you don't recognize."
+      "text": "GitHub settings have an Authorized OAuth Apps page; revoke any you don't recognize."
     },
     "yt6t": {
       "source_hash": "886ae4112912",
@@ -405,7 +405,7 @@
     },
     "zha9": {
       "source_hash": "e660e332c916",
-      "text": "How many did you remove? Tell me."
+      "text": "How many removed? Tell me below."
     },
     "8y54": {
       "source_hash": "3bfeebb0032d",
