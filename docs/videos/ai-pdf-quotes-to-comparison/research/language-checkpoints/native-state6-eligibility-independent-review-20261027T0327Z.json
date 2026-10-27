@@ -1,0 +1,144 @@
+{
+  "schema_version": 1,
+  "kind": "independent-readonly-native-state6-preentry-eligibility-analysis-not-execution-or-service-approval",
+  "recorded_at_utc": "2026-10-27T03:31:27.270060+00:00",
+  "reviewer": "/root/review_native_state6_eligibility_0327",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "conclusion": {
+    "native_own6_alone_is_not_preentry_terminal": true,
+    "conditional_one_genuine_synthesis_intended_normal_PT_unit_is_native_supported": true,
+    "owner_recovery_required_solely_because_own6_before_any_new_attempt": false,
+    "reason": "DEFER_LIMIT=6 limits consecutive saved deferrals; code, comments and existing tests deliberately allow the next genuinely attempted unit after its saved due. A NEW own failure in that unit invokes defer at own6 and natively blocks instead of saving a seventh own deferral. It is not a pre-request own-count cutoff.",
+    "confidence": "high for the unchanged local native semantics; this is conditional on all independent current admission gates, not provider availability or a paid execution authorization",
+    "not_just_elapsed_time": "The conclusion also reads the actual current nonblocked native state, adapter pre-entry gates, unchanged handler ordering and explicit direct-dub and worker tests. The existing ticket caution against calling merely to terminalize/reset/force remains binding."
+  },
+  "actual_local_state_at_read": {
+    "head": "66955e4d53de8908b85a26ff80bfd1ef928085d3",
+    "auto_sha256": "fabab7edc8e4abe01dfc84cced43ac5e81fdfab13051b5fec9536a4f7c4e8f37",
+    "matches_actual_state6_snapshot": true,
+    "status": "done",
+    "blocked": null,
+    "blocked_kind": null,
+    "tidied_at": null,
+    "defer_count": 6,
+    "defer_shared_field_present": false,
+    "native_shared": 0,
+    "native_own": 6,
+    "native_DEFER_LIMIT": 6,
+    "deferred_until": "2026-10-27T03:19:44.138Z",
+    "actual_saved_due_passed": true,
+    "PT_native_rounds": {
+      "shorten": 0,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    },
+    "PT_native_skip_present": false,
+    "PT_primary_WAV_count": 0,
+    "speech_journal_count": 0,
+    "current_top_level_unadopted_model_receipts": 0
+  },
+  "personally_read_file_hashes": {
+    "AGENTS.md": "983dfa8599086f4028a3e17e3afa4b36f68b321cdb4c3246dd3693a6a98aa725",
+    ".agents/skills/youtube-video/SKILL.md": "38f5479207f523d82fd7ea348134e7b0aba087abe19c6818646d7276e928c516",
+    "tasks/open/2026-10-25-ai-pdf-quotes-to-comparison.md": "10bd4a627024e3611f2224937a8cf377cb617e70caccf09f7b74ab60cee0e31b",
+    "tools/video/automation/flow.mjs": "167a1630f0c95886e7518cfd7a5e3110ebe234d860700b603b82d4d07750b7ee",
+    "tools/video/automation/automation.test.mjs": "ec8a08cb927300bf985d91bc0fc63668f082405dc23ad9cbf0020b4f8699de32",
+    "/workspace/work/ai-pdf-01/languages.mjs": "f8d07607e95c4bed91ea1941f0ab2fac2fd7bbb3005617fe83beb72e668f74bf",
+    "actual_state6_baseline": "fe8cbb7aa13a4cc46cdfc838f13631407ac0460684a67bfb88ef101a40d1cc3a"
+  },
+  "code_evidence": [
+    {
+      "file": "tools/video/automation/flow.mjs",
+      "lines": "685-690",
+      "finding": "Explicit comment: after six deferrals of5/10/20/40/80/120min, the NEXT FAILURE blocks; DEFER_LIMIT=6."
+    },
+    {
+      "file": "tools/video/automation/flow.mjs",
+      "lines": "1218-1227,1233-1256",
+      "finding": "defer handles an actual unit refusal. It computes own=count-shared; only !everyone && own>=limit calls block. Otherwise it records the next wait. This is not invoked as a pre-entry own-count check."
+    },
+    {
+      "file": "tools/video/automation/flow.mjs",
+      "lines": "1318-1320,1523-1527",
+      "finding": "waiting checks current-run skipped, pendingUntil and saved deferred_until. Worker accepts active/done and skips blocked/due projects. No own-count pre-cutoff exists here."
+    },
+    {
+      "file": "/workspace/work/ai-pdf-01/languages.mjs",
+      "lines": "227-245,267-280",
+      "finding": "Guarded adapter obtains the real lease; requires active/done and not tidied, no STOP, passed native due, exact approved current final/remote choice/local chat authorization/current meaning review, translation-ready and no native skip. It calls unchanged makeDub without a defer-count cutoff."
+    },
+    {
+      "file": "tools/video/automation/flow.mjs",
+      "lines": "4358-4381,4418-4451",
+      "finding": "makeDub preserves native rounds/check_stopped, then guardedSpeech performs normal dub. Only after actual made.code4 does unfinished call defer; uncertain/other failures retain their native distinct handling."
+    },
+    {
+      "file": "tools/video/automation/flow.mjs",
+      "lines": "2583-2607",
+      "finding": "A true new own failure at the limit naturally calls block, records blocked_from_status/status/blocked/blocked_kind and deletes wait fields. That natural deletion is not permission for an agent to reset them manually."
+    },
+    {
+      "file": "tools/video/automation/flow.mjs",
+      "lines": "1285-1315",
+      "finding": "A trouble-free native visit can naturally clear consecutive wait fields through moved; this does not itself prove checked-voice readiness."
+    },
+    {
+      "file": "tools/video/automation/flow.mjs",
+      "lines": "765-789",
+      "finding": "Shared/global trouble is classified from real codes/wording; a new everyone-classified error may still save a shared deferral. Future outcome must be observed, not forced into a predetermined block."
+    }
+  ],
+  "existing_tests_personally_read_not_run": [
+    {
+      "file": "tools/video/automation/automation.test.mjs",
+      "lines": "4147-4155",
+      "finding": "Direct dub-retake test performs six actual failed step calls and advances to each next run; it then performs the seventh actual step and expects blocked/deferred:dub, while retake rounds remain untouched."
+    },
+    {
+      "file": "tools/video/automation/automation.test.mjs",
+      "lines": "6382-6408",
+      "finding": "Direct deferral test records six waits, then the seventh failure blocks and native wait fields disappear."
+    },
+    {
+      "file": "tools/video/automation/automation.test.mjs",
+      "lines": "6642-6672",
+      "finding": "Whole-worker test advances six deferrals, calls worker.step a seventh time, and asserts blocked only then and asked(slug)==7*4. Four is that client fixture bounded transport retry count, not a billing or universal TTS request limit."
+    },
+    {
+      "file": "tools/video/automation/automation.test.mjs",
+      "lines": "7618-7645",
+      "finding": "Shared deferrals do not count against own limit; the own seventh failure blocks. This current state has no shared field, so own6 is exact."
+    }
+  ],
+  "legitimate_possible_outcomes_of_one_new_unit": [
+    "Real synthesis/check/model progress, within existing native budgets and caps; any actual model-answer/source boundary still requires real independent review before changed takes.",
+    "A new same-own vendor code4 failure naturally blocks as deferred:dub; observe actual status, counters, due deletion, raw log and adapter exit3 rather than predeclaring defer7/new due.",
+    "A newly classified global/shared error follows native everyone semantics; preserve its actual defer_shared/count/due and stop the finite admission.",
+    "Unknown/pending/lost paid answer preserves the exact journal/job and uses only its supported reconciliation; no replacement paid request.",
+    "Genuine native success or trouble-free stage may naturally clear wait fields; actual source/raw/check/fit/meaning gates must still establish voice readiness."
+  ],
+  "required_fresh_admission_conditions_not_certified_by_this_report": [
+    "Original PR1852 latest task age/actual controller/LEASE/STOP/site retries must still be independently clear; stop if recent/live original ownership exists.",
+    "Fresh current PDF actual controller/lease/STOP/native blocked/policy/unknown state, original/current runtime protections and source bindings must be checked.",
+    "Current approved primary346a with matching11QA and real production GET; exact chat8 plus actual panel compatibility; current eight genuine meaning/report/archive chains.",
+    "Actual native dry-run/quota/budget and unchanged provider/model/voice/threshold/timing/font/configuration, with no service-availability or billing inference.",
+    "A uniquely named committed/pushed reviewed ONE-unit helper/grant and explicit root handoff if delegated; no consumed historical driver or one-use replay.",
+    "Stop on actual unit exit/new global/unknown/boundary; no next locale, timer, ordinary ENJA retry, owner action, new film or full8 package bypass."
+  ],
+  "review_process": {
+    "personally_read_relevant_native_flow_adapter_comments_and_existing_tests": true,
+    "parallel_independent_test_comment_read": "/root/review_native_state6_eligibility_0327/tests_semantics; same conclusion, no writes/execution",
+    "tests_or_native_modules_executed": false,
+    "network_or_provider_calls": 0,
+    "source_task_Git_canonical_media_claim_lease_mutations": false,
+    "only_allowed_external_report_write": true
+  },
+  "not_claimed": [
+    "Paid execution approval from this report alone",
+    "Actual Gemini synthesis or service availability",
+    "Any provider raw HTTP code, billing settlement or zero billing",
+    "New installation, full-film/whole-track listening/voice/semantic approval",
+    "Guaranteed future block, automatic retry eligibility, manual state reset or owner recovery"
+  ]
+}

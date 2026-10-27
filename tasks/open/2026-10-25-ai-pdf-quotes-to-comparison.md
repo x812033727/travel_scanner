@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: blocked
+status: in-progress
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
-claimed_at: 2026-10-27T01:15:58Z
+claimed_at: 2026-10-27T03:33:51Z
 created_at: 2026-10-25T15:36:21Z
 completed_at:
 branch: codex/ai-pdf-comparison-20261026
@@ -40,6 +40,17 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Native state6 independently qualified for ONE genuine synthesis attempt — 2026-10-27T03:36:08.907156+00:00
+
+- Fresh user execution after real03:19:44.138Z due rechecked actual native own/shared/blocked semantics, rather than treating elapsed time as authorization. Full independent review `research/language-checkpoints/native-state6-eligibility-independent-review-20261027T0327Z.json` SHAbeabf33e and root's own code/comment/test reads establish that six saved deferrals are not a pre-entry terminal condition: unchanged flow685–690/1215–1246 and existing directdub/worker tests allow a genuine next synthesis attempt; only a NEW own failure invokes nativeblock. Tests were read, not newly executed. No counter/core/settings change or terminalization-only call is authorized. Current actual native remainsdone/own6/sharedfieldabsent/nonblocked/PT0-0-0stopped, with unknown0.
+- Independent original03:28–29Z audit3e0093f6 still found remote task0ec/latestOct26 17:03:40/head1237/draft/no-auto, no actual controller/LEASE/STOP, original14 exact and normalSDKGET unchanged approvedfinal/publish/pendingmaterials/retries{}/workerunavailable. Root read complete actual audit. No original source/media/paid/owner action or repeated connection question.
+- ONE FREE preflight genuinely completed03:32:24.406Z/exit0/session16477 and released all7protection guards. Runtime2350 exactly matches currentfe8/state6,2349NONAUTO still match completed9CC; all489dated source files and502then-current files,20core/original14/text28+manifest399c/consumedCCmarker stayed exact. All8 formal meaning chains/7actual archives EN3JA2KO2 and existing fullPT4b64 baseline are current; journals0/top-levelunadopted0/archive836fe preserved. New source-only admission evidence follows this dated502source snapshot.
+- Real primary346a/matching11QA/chat8/currentcaps and actualbothprojectGETs passed. Native dryrun95requests/6112estimatedchars/monthly5743335/14estimatedover plus retained0.13s/1.18x warning remain; configured readiness/estimated quota is not actual synthesis availability/fit/HTTP/billing proof. NineCC1002cues/31warnings and actual nine-locale text are unchanged; KOES2/8 checked voices remain, ENJAfailed and PTIDVITHmissing preserved.
+- Root ordinary same-owner claim succeeded withoutforce/native write. Root personally read frozenFREEa3c45b4b andONEaac4cfc6 plus independent static38a79cfa. Actual compiler checks passed; two earlier outside preparation JavaScript SyntaxErrors occurred before nested tool dispatch and are factually retained in preparation777ea909, without a native/provider failure or replay claim. Final source-identical grant `research/language-checkpoints/remaining-languages-native-state6-qualification-20261027T0327Z.json` SHA `ba8e2c6bfef9f767537d54efc6cc789000ecac06afca33a4173feff0678df6d7` pins full d5f/b571/68896/5b61 safeguards, actual eligibilitybeab/source/runtime/FREE proofs, exact synthesis intent and `/root/pdf_native_state6_prepare_0327` as prospective sole coordinator. No paid unit has started at this dated checkpoint; root retains source/task/Git until actual checks/commit/push and explicitGO.
+- Exactly ONE unchanged normalcachedPT unit is admitted conditionally for genuine current checked-voice production. On ANY actual native exit/global/unknown/modelboundary STOP and preserve realbefore6/afterstatus/PID/exit/log/receipts/newcurrentruntime/precisenextstep. A NEW owncode4 failure may naturally block as deferred:dub, remove wait fields and returnadapterexit3; retain its true blockedkind/fromdone and nativefieldabsence, never fake defer7/newdue, manually restorestate6, forceblock/reset or bypassowner recovery. Shared/success/unknown/model outcomes must likewise be observed, not hardcoded. Actual accepted+rejected/raw model proposals require independent contextual meaning review before changedtakes. No secondPT/IDVITH/ENJA, timer, owner, newmovie, modelvoicealiasthreshold/timing/font/budget change or full8bypass. Actual PT words/timing changes require a fresh nativeCC/text rebuild+QA; prior artifacts remain immutable. Publishing stays owner.
+
+- Actual admission checks passed: tasks2187 with unrelated warnings retained, all8 staged source/index/report chains and all7 actual native archives, cached-diff0. Receipt `research/language-checkpoints/native-state6-admission-source-checks-20261027T0327Z.json` pins actual logs/bindings. Native existing deferral tests were read, not run; unchanged-production docs236 and lint0errors/2warnings remain dated historical checks, with no new whole-film/voice/listening approval.
 
 ### Actual sixth PT service defer; native own limit preserved — 2026-10-27T01:22:03.821466+00:00
 

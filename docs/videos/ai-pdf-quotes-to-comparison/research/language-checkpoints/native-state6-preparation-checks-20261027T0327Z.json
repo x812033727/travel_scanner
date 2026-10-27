@@ -1,0 +1,33 @@
+{
+  "recorded_at_utc": "2026-10-27T03:34:49.338772+00:00",
+  "kind": "outside-only-preparation-and-static-compiler-evidence-not-native-execution",
+  "preparer": "/root/pdf_native_state6_prepare_0327",
+  "FREE_file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-free-preflight.mjs",
+  "FREE_sha256": "a3c45b4b3a2f8938af6e0bf791a3e4342c6f99493f1db7f623e826417e165562",
+  "actual_node_check_exit": 0,
+  "ONE_file": "/workspace/work/ai-pdf-01/run-pt-native-state6-qualification-20261027T0327Z.py",
+  "ONE_sha256": "aac4cfc63700b66ba6a44601302728f3ffff45f6743a8e7b8cfc60e2b6080889",
+  "actual_py_compile_exit": 0,
+  "full_old_helpers_and_new_diffs_personally_read": true,
+  "prior_full_constraints_personally_read": [
+    "d5f2732963ad6af44cfc6da13b874e215391634e6dfbf6e87dc5ebcaa0b33649",
+    "b571c105a1ce1eefb098ddea723e9ed561f740c34e86e2f1782ac678a5196be6",
+    "68896d52b37a77fa77d41a14845e1eae12a29ab6bba427bbec64dd17cf65fe76",
+    "5b61aa6fe65eead2e2e1549a6ab2c54b82380112940e09e087b2da4e127eb22e"
+  ],
+  "orchestration_failures_preserved": [
+    {
+      "actual_error": "SyntaxError: Invalid or unexpected token",
+      "phase": "functions.exec JavaScript parsing before nested tool dispatch for a read-only report-inspection command",
+      "native_or_file_tool_dispatched": false
+    },
+    {
+      "actual_error": "SyntaxError: Invalid or unexpected token",
+      "phase": "functions.exec JavaScript parsing before nested tool dispatch while embedding Python triple quotes in an outside code-writing wrapper",
+      "native_or_file_tool_dispatched": false
+    }
+  ],
+  "correction": "Outside code-writing wrapper used an explicit JavaScript String.raw literal with a quoted Python heredoc; it created only this new outside driver. Frozen FREE unchanged.",
+  "native_helpers_or_paid_commands_executed_by_preparer": false,
+  "canonical_source_task_Git_claim_lease_owner_mutations": false
+}
