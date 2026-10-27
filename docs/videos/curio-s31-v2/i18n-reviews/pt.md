@@ -40,3 +40,13 @@ Merged file: docs/videos/curio-s31-v2/i18n/pt.json
 SHA-256: 59695b7c783d3a9bff0026f031bc2dabe188fce59c8ae46a4a11f0a5995048ab
 No new text issue in this narrow delta check. Existing fit-risk observations still require measured whole-window/audio verification; this verdict approves the corrected translation text only.
 Final delta verdict: ready.
+
+Post-save thumbnail metadata readback (2026-10-27): READY for translation text.
+Headline: `**Ousaria** levar?`
+Previous merged SHA-256: 59695b7c783d3a9bff0026f031bc2dabe188fce59c8ae46a4a11f0a5995048ab
+Current merged SHA-256: f24538d2d987fa4c4edd86bddad92feb6d4f6b636cda6123777c82db5ca3dbf5
+Current worksheet SHA-256: a69a5ad74d1146841baee1e6d9e001a2967b67060967cc313174168530b2c424
+The saved merged-file diff is only thumbnail.headline; the worksheet diff is only thumbnail.text.headline. The two saved headlines and all 212 caption texts match. The original subheading (`Sabor muda em 3 dias. Como levar?`), title, description, tags, chapters, caption data and protected/source fields are unchanged against the before-change backups.
+All three English, Brazilian Portuguese and Indonesian headline texts were cross-reviewed by /root/s31_translate_pt_id and /root/s31_translate_ko_es. The wording keeps the risk on delivery without asserting toxicity or confirmed deaths. Chinese video.json is unchanged (SHA-256 d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170).
+This is saved-file text readback, not audio, timed-fit, thumbnail-font-size, render or package approval. Root's rendering and QA are separate.
+Latest metadata text verdict: READY.

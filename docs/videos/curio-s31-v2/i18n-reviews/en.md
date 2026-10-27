@@ -39,3 +39,25 @@ Merged file: docs/videos/curio-s31-v2/i18n/en.json
 SHA-256: 056c1431861cc3a1a1b3070e43bb353b333ca57b6c54ea65183d205694f4d49b
 No new text issue in this narrow delta check. Existing fit-risk observations still require measured whole-window/audio verification; this verdict approves the corrected translation text only.
 Final delta verdict: ready.
+
+Post-save thumbnail metadata readback (2026-10-27): READY for translation text.
+Headline: `**Risky** delivery?`
+Previous merged SHA-256: 056c1431861cc3a1a1b3070e43bb353b333ca57b6c54ea65183d205694f4d49b
+Current merged SHA-256: eaeae175818f4e87f74adf8837d2e1f62949abd4df7a7c7de6ae4723ef616cc4
+Current worksheet SHA-256: bd878db5638bb13c6187ea28d3aa1b19399af5c24bd1e95f87714aa6c8de17d0
+The saved merged-file diff is only thumbnail.headline; the worksheet diff is only thumbnail.text.headline. The two saved headlines and all 212 caption texts match. The original subheading (`Taste turns in 3 days. How?`), title, description, tags, chapters, caption data and protected/source fields are unchanged against the before-change backups.
+All three English, Brazilian Portuguese and Indonesian headline texts were cross-reviewed by /root/s31_translate_pt_id and /root/s31_translate_ko_es. The wording keeps the risk on delivery without asserting toxicity or confirmed deaths. Chinese video.json is unchanged (SHA-256 d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170).
+This is saved-file text readback, not audio, timed-fit, thumbnail-font-size, render or package approval. Root's rendering and QA are separate.
+Latest metadata text verdict: READY.
+
+EN fallback post-save metadata readback (2026-10-27): READY for translation text.
+Headline: `A **risky** rush?`
+Original reviewed merged SHA-256: 056c1431861cc3a1a1b3070e43bb353b333ca57b6c54ea65183d205694f4d49b
+Intermediate merged SHA-256: eaeae175818f4e87f74adf8837d2e1f62949abd4df7a7c7de6ae4723ef616cc4
+Current merged SHA-256: e135b206dcab33ef3d462d887c74dac1522792ff3f46e6c464d3196cef93f1e2
+Current worksheet SHA-256: c7692bc6a5f458c53d7c56874e56f0dbcb725b7f432135f80c69a1809a3086f7
+The actual saved-file diff against thumbnail-en-fallback-r6-before is only thumbnail.headline in the merged file and thumbnail.text.headline in the worksheet. Both headlines match; the original subheading (`Taste turns in 3 days. How?`), title, description, tags, chapters, source/protected fields and all 212 captions remain unchanged. Worksheet and merged caption text match.
+The shorter fallback received independent text PASS from /root/s31_translate_pt_id. It naturally describes a risky rush to deliver the lychees supplied by the unchanged illustration/subheading, without asserting toxicity or confirmed deaths.
+Chinese video.json is unchanged (SHA-256 d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170). PT and ID are outside this update.
+This is saved-file text readback only. It does not approve audio, timed fit, thumbnail font size, rendered images or the final package; root's render and QA remain separate.
+Latest EN fallback metadata text verdict: READY.
