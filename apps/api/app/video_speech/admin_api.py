@@ -98,7 +98,10 @@ from app.video_speech.tokens import PREFIX_SHOWN, find_active_token, new_token, 
 # Text per request, before markup. At about 4.5 characters a second this is under six minutes
 # of audio, about 32 MB of 48 kHz PCM; a longer scene is split by the pipeline.
 MAX_REQUEST_CHARACTERS = 1500
-MAX_ACTIVE_TOKENS = 10
+# Active video tool tokens at once. Every paired machine and cloud session holds one, and a
+# Claude cloud session is a fresh container each time, so ten (the limit until 2026-10-27) ran
+# out; revoking stale ones on the card stays the way to make room.
+MAX_ACTIVE_TOKENS = 30
 SPEECH_REQUESTS_PER_MINUTE = 120
 PAIRING_STARTS_PER_HOUR = 10
 # Google lists 8,192 text input and 16,384 audio output tokens for this TTS model.

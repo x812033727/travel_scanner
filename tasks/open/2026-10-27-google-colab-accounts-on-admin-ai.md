@@ -21,6 +21,9 @@ scope:
   - apps/api/tests/test_ai_accounts_admin.py
   - apps/api/tests/test_ai_accounts_agent.py
   - apps/api/tests/test_video_pairing.py
+  - apps/api/tests/test_video_speech.py
+  - docs/videos/long-form/review.md
+  - docs/videos/long-form/review.json
   - ops/ai-accounts
   - apps/web/components/admin-ai-accounts-panel.tsx
   - apps/web/components/admin-ai-accounts-panel.test.tsx
@@ -93,6 +96,15 @@ On the host after deploy: `bash ops/ai-accounts/install.sh --runtime-env /root/t
 service, open AI 設定 → 訂閱帳號 and sign a Google account in under Google Colab.
 
 ## Notes
+
+- The owner asked (2026-10-27) to raise the cap on active video tool tokens, which was 10:
+  every paired cloud session holds one and a cloud container is fresh each time. It is 30
+  now (`MAX_ACTIVE_TOKENS` in `apps/api/app/video_speech/admin_api.py`); revoking stale tokens
+  on the card is still how room is made.
+- The duration review binding (`docs/videos/long-form/review.md`, `review.json`) had to be
+  refreshed for the five admin.json files and tts.test.mjs: the CI jobs `smoke` and
+  `video-tests` run `tools/video/long-form/review.test.mjs`, which fails on any byte change to
+  a bound file. The increment is in review.md.
 
 - Claimed with `--force`: the scope overlaps stale (> 24 h) directory-wide claims of
   `2026-10-12-let-managers-link-a-private-studio` (admin.json ×5),

@@ -237,7 +237,7 @@ async def test_unknown_codes_are_404_and_a_full_token_list_refuses_approval(
         assert malformed.status_code == 404
 
         body = (await client.post(PAIRINGS, json={"client_name": "x"})).json()
-        pairing_app["session"].active = 10
+        pairing_app["session"].active = admin_api.MAX_ACTIVE_TOKENS
         refused = await client.post(f"{ADMIN}/{body['user_code']}/approve")
         assert refused.status_code == 409 and refused.json()["code"] == "video_tool_token_limit"
         # The pairing is still waiting, so the owner can revoke an old token and try again.
