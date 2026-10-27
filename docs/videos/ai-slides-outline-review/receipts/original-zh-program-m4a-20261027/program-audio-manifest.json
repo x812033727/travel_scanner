@@ -1,0 +1,157 @@
+{
+  "kind": "actual_Slides_original_ZH_program_M4A_v1",
+  "at": "2026-10-27T23:21:43.541Z",
+  "source": {
+    "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/final.mp4",
+    "bytes": 58584900,
+    "sha256": "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c"
+  },
+  "output": {
+    "file": "/workspace/work/videos/_slides-zh-program-audio/ai-slides-outline-review/program.zh-TW.m4a",
+    "bytes": 17283377,
+    "sha256": "74a61024d1f235b225b2f4a8945571c0bca5a01c190ca8b3f114b1ef65601b6f"
+  },
+  "locale": "zh-TW",
+  "content_type": "audio/mp4",
+  "full_official_v4_program_audio": true,
+  "source_review_id": "a0e0a6bc-aca6-4182-adf1-00fa8176937e",
+  "inherited_source": {
+    "current_source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+    "current_narration_sha256": "4a298ebb54e7fc4fca152d12e2b11f9c6871bfb51e577addbce239b2f95f38c7",
+    "speech_hash": "a8055d3edb90bcda",
+    "accepted_lines": 118,
+    "currentness": {
+      "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/peer/inherited-current-source.json",
+      "bytes": 139763,
+      "sha256": "5ad2518313960dd344f2c9b5fd28eb7ce023afb9e07ae535ffdb0ad436b3979a"
+    },
+    "narration_proof": {
+      "file": "/workspace/work/travel-scanner-slides/docs/videos/ai-slides-outline-review/narration-listener-reword1-verification.json",
+      "bytes": 263275,
+      "sha256": "b9ba45c3eeca003fc4e862eae7126e73d39d89ae6de66b22a55f4e4ce32f6d87"
+    },
+    "inherited_only": true,
+    "new_ASR_or_listening": false
+  },
+  "intermediate": {
+    "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/prep-producer/run-once/remux-intermediate.m4a",
+    "bytes": 17283377,
+    "sha256": "1ba5187d88b34dc894e2ee60926c65669df85429b32a1c925bd7538c0aad1188"
+  },
+  "raw_timing_restoration": {
+    "source_timescale": 48000,
+    "source_duration_ticks": 30222303,
+    "source_stts_runs": [
+      [
+        28390,
+        1024
+      ],
+      [
+        1,
+        4703
+      ],
+      [
+        1119,
+        1024
+      ],
+      [
+        1,
+        384
+      ]
+    ],
+    "remux_normalization_ticks": 1,
+    "restored_source_mdhd_and_last_stts_words_exact": true,
+    "actual_changed_bytes": [
+      {
+        "offset": 315,
+        "before": 224,
+        "after": 223
+      },
+      {
+        "offset": 586,
+        "before": 129,
+        "after": 128
+      }
+    ],
+    "only_derived_two_uint32_words_may_change": true,
+    "all_other_intermediate_bytes_and_atom_sizes_offsets_unchanged": true,
+    "source_stts_elst_stsz_payloads_exact": true,
+    "sample_count": 29511,
+    "no_quality_tolerance_relaxation": true
+  },
+  "source_AAC_unchanged": true,
+  "packet_count": 29511,
+  "all_packet_payloads_times_durations_flags_side_data_equal": true,
+  "ordered_packet_sha256": "8ef92aaf9eed43bb4277bf57409f1ac0d0ca0ed15f846cb106c8bc8fddc11f1d",
+  "stream_fields_compared": [
+    "codec_name",
+    "codec_long_name",
+    "profile",
+    "codec_type",
+    "codec_tag_string",
+    "codec_tag",
+    "sample_fmt",
+    "sample_rate",
+    "channels",
+    "channel_layout",
+    "bits_per_sample",
+    "time_base",
+    "start_pts",
+    "start_time",
+    "duration_ts",
+    "duration",
+    "nb_frames",
+    "extradata_size",
+    "extradata_hash",
+    "initial_padding",
+    "trailing_padding"
+  ],
+  "packet_fields_compared": [
+    "codec_type",
+    "pts",
+    "pts_time",
+    "dts",
+    "dts_time",
+    "duration",
+    "duration_time",
+    "size",
+    "flags",
+    "side_data_list",
+    "data_hash"
+  ],
+  "container_only_fields_not_compared": [
+    "stream_index",
+    "pos",
+    "format.bit_rate",
+    "format.size",
+    "format.filename",
+    "format.tags",
+    "stream.tags",
+    "stream.disposition"
+  ],
+  "PCM": {
+    "format": "f32le",
+    "sample_rate": 48000,
+    "channels": 2,
+    "bytes": 241745920,
+    "sample_frames": 30218240,
+    "sha256": "7a703cd597f29a5c0a0a96ff3e91643a01a5b190319c5659b4758b29ce1ec59f",
+    "exact_source_equality": true,
+    "full_decode_both_exit0_error_stderr_empty": true
+  },
+  "audio_stream_seconds": 629.61,
+  "audio_container_seconds": 629.61,
+  "actual_meter": {
+    "integrated_LUFS": -14.1,
+    "LRA_LU": 3.9,
+    "true_peak_dBFS": -2.8,
+    "measurement_only_no_new_or_lowered_threshold": true
+  },
+  "only_remux_calls": 1,
+  "no_reencode_filter_resample_speed_splice": true,
+  "new_ASR_or_listening": false,
+  "new_TTS_ASR_paid_network": 0,
+  "source_QA_unchanged": "11/11 true, not rerun",
+  "foreign_checked_M4A": 0,
+  "whole_episode_languages_or_server_approval": false
+}

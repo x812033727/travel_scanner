@@ -12,7 +12,6 @@ branch: codex/ai-tech-slides-20261025
 depends_on: []
 scope:
   - docs/videos/ai-slides-outline-review
-  - docs/videos/lexicon.json
 ---
 
 # AI slides outline review with four cited pages
@@ -100,3 +99,19 @@ CC語言現1/9（繁中）；外語8套仍草稿且未上傳，外語已驗M4A0/
 - 原208EP檔只改README/progress，其餘原件、canonical2096與official candidate2102全hash保持。原progress與README新receipts原bytes保留；完整證據見receipts/foreign-reference-assets-20261027/README.md。停止時由Root正常更新本票status/release與CURRENT續作，docs updater不偽造owner變更。
 
 2026-10-27T07:51:31.601384+00:00：本輪可獨立完成的八語reference文字／縮圖與全36binary驗核已完成；正常release後本票blocked／unclaimed，整片未done。責任仍由本對話codex-ai-tech-news與原codex/ai-tech-slides-20261025分支續作，沒有移交其他producer。續作先核CURRENT與實際PID／LEASE；保留全域ASR／TTS與unknown計費原件，待真實結果及正常解除hold後才接續八語已驗M4A及actualdub CC，不能重送付費或清旗。
+
+
+2026-10-27：本輪僅從既有118句已查核正式v4成片抽取繁中完整節目M4A，不改發音字典。初次正常claim被另一張MCP任務的lexicon共同scope拒絕，故只縮窄本票scope至本episode，保留失敗log且未force、未改他票或共用lexicon。
+
+
+## 繁中完整節目M4A／同一待審38附件 — 2026-10-27T23:35:56.818396+00:00
+
+Root從既有official v4成片c387製作獨立繁中完整節目M4A，保留首章後5秒片頭／21秒片尾、AAC／容器629.610秒。單次remux只精確還原來源兩個時間欄位；原AAC payload／全部packet時序與side-data／stts-elst-stsz／完整PCM完全相同，無重編碼或放寬門檻。118句沿用當前WAV／完整intended／轉寫／timeline接受紀錄，另核來源綁定；無新TTS／ASR或完整人耳重聽。
+
+同一pending final a0e0a6bc-aca6-4182-adf1-00fa8176937e 原36refs／payload／QA／歷史及語言選擇保持；新增M4A＋TXT已完整下載bytes／SHA／MIME核對，共38附件。收據見docs/videos/ai-slides-outline-review/receipts/original-zh-program-m4a-20261027/index.json。原QA11/11、敘事兩12/13 false、27項字幕速度提醒、EN93/118 raw、所有failed／unknown／cache／上限與四held原件保持；外語checkedM4A仍0/8，八語actual-dub CC／正式批次及遠端final核准未完成，本票未done／移交。Root正常release／blocked與實際checks另記新object；27舊progress值不動，不merge／deploy／YouTube。
+
+
+本輪停止點：繁中完整節目M4A及TXT已交同pending final38並完整讀回，非整體八語完成；本票由Root正常release、blocked，兩命令真exit0，owner／claimed_at空，同對話及PR1857仍負責，未done／移交。八外語當前音檔M4A／實際配音時間CC及正式批次仍待；原EN93/118 cache、原失敗／未知／上限與全域ASR他host保留，不重送付費請求。已完成M4A／readback不重播，無背景producer；不merge／deploy／YouTube。
+
+
+Root本輪必要檢查：test:docs-videos真exit0，236 pass／0 fail／0 skip（34310.084419ms）；check:tasks真exit0，2183files／151既有其他scope警告。實際stdout／stderr／exit在B/checks，真apply／handoff／checks只補新original_ZH_program_M4A，原27progress值不動。當前M4A／同final38與full2readback已closed，不重播；待八語checkedM4A／actual-dub CC／final核准與正式批次，未整片done。

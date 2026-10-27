@@ -1,0 +1,70 @@
+{
+  "kind": "actual_Slides_ZH_program_audio_append2_v1",
+  "started_at": "2026-10-27T23:29:49.027Z",
+  "pid": 15576,
+  "active": false,
+  "ok": true,
+  "counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 6,
+    "review_POST": 1,
+    "file_GET": 2,
+    "denied": 0
+  },
+  "paid_calls": 0,
+  "new_TTS": 0,
+  "new_ASR": 0,
+  "server_approval": false,
+  "foreign_completed_added": 0,
+  "uploads": [
+    {
+      "role": "evidence_zh_tw_program_m4a",
+      "sha256": "74a61024d1f235b225b2f4a8945571c0bca5a01c190ca8b3f114b1ef65601b6f",
+      "parts": 5,
+      "actual_parts_sent": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "complete": true
+    },
+    {
+      "role": "evidence_zh_tw_program_audio_report",
+      "sha256": "88afbd300b874ca491aaebec52d81c669f09a5ec873a9c907ea3cf7e8c7d9fbc",
+      "parts": 1,
+      "actual_parts_sent": [
+        0
+      ],
+      "complete": true
+    }
+  ],
+  "full_new_binary_readbacks": [
+    {
+      "role": "evidence_zh_tw_program_m4a",
+      "content_type": "audio/mp4",
+      "HTTP": 200,
+      "bytes": 17283377,
+      "sha256": "74a61024d1f235b225b2f4a8945571c0bca5a01c190ca8b3f114b1ef65601b6f",
+      "downloaded_file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/delivery-prep/append-run/readback/evidence_zh_tw_program_m4a.m4a",
+      "response_content_type": "audio/mp4"
+    },
+    {
+      "role": "evidence_zh_tw_program_audio_report",
+      "content_type": "text/plain",
+      "HTTP": 200,
+      "bytes": 1594,
+      "sha256": "88afbd300b874ca491aaebec52d81c669f09a5ec873a9c907ea3cf7e8c7d9fbc",
+      "downloaded_file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/delivery-prep/append-run/readback/evidence_zh_tw_program_audio_report.txt",
+      "response_content_type": "text/plain; charset=utf-8"
+    }
+  ],
+  "final_ref_count": 38,
+  "prior36_refs_unchanged": true,
+  "original_payload_QA_dubs_choices_history_unchanged": true,
+  "API_no_atomic_CAS_limitation": true,
+  "finished_at": "2026-10-27T23:31:51.548Z",
+  "native_lease_released": true
+}
