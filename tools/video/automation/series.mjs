@@ -110,6 +110,8 @@ export function documentProblem(kind, answer, job) {
       const shotLooks = shotLooksProblem(character);
       if (shotLooks) return `character ${character.id}: ${shotLooks}`;
     }
+    const narrator = narratorProblem(body.narrator);
+    if (narrator) return narrator;
     if (kind === "bible") {
       // The one-off's story bible (apps/api/app/video_automation/series.py doc_problem): the
       // acts, and the one outline the episode is written from.
@@ -412,6 +414,35 @@ const registerOf = (text) => {
 const usableVoice = (voice) => isObject(voice) && VOICE_PROVIDERS.includes(voice.provider) && isText(voice.name);
 const voiceKey = (voice) => `${voice.provider}:${voice.name}`;
 
+// The work's own narrator (docs/videos/SERIES.md §作品的旁白), as the site files it
+// (apps/api/app/video_automation/series.py _narrator_problem): a Gemini voice may carry a style.
+const NARRATOR_KEYS = ["provider", "name", "style"];
+const NARRATOR_NAME_MAX = 64;
+const NARRATOR_STYLE_MAX = 400;
+
+/** Why a setting book's `narrator` cannot be filed, or null (left out or null: the drama tab's voice). */
+export function narratorProblem(narrator) {
+  if (narrator === undefined || narrator === null) return null;
+  if (!isObject(narrator) || Object.keys(narrator).some((key) => !NARRATOR_KEYS.includes(key))) return "narrator must be {provider, name, style}";
+  if (!VOICE_PROVIDERS.includes(narrator.provider)) return `narrator.provider must be one of ${VOICE_PROVIDERS.join(", ")}`;
+  if (!isText(narrator.name) || narrator.name.length > NARRATOR_NAME_MAX) return `narrator.name must be the voice's name, at most ${NARRATOR_NAME_MAX} characters`;
+  if (narrator.style !== undefined && narrator.style !== null) {
+    if (narrator.provider !== "gemini") return "narrator.style is a Gemini voice's; an Azure voice has none";
+    if (!isText(narrator.style) || narrator.style.length > NARRATOR_STYLE_MAX) return `narrator.style must be text of at most ${NARRATOR_STYLE_MAX} characters`;
+  }
+  return null;
+}
+
+/**
+ * The narrator voice a setting book names for its own work, or null: the voice its episodes are
+ * narrated in instead of the drama tab's `drama_voice`, which every other drama keeps.
+ */
+export function narratorFrom(setting) {
+  const narrator = setting?.narrator;
+  if (narrator === undefined || narrator === null || narratorProblem(narrator)) return null;
+  return { provider: narrator.provider, name: narrator.name, ...(isText(narrator.style) ? { style: narrator.style } : {}) };
+}
+
 /**
  * The cast with a voice on every character. One the setting book names stays as written; one it
  * leaves without (a `voice_note` alone) is cast here, in id order, from the drama tab's
@@ -446,7 +477,8 @@ export function castVoices(cast, { voices = [], narrator = null, notes = new Map
  * with a look covering it takes the look's appearance, sheet prompt and voice style; everything
  * downstream (the sheet and shot prompts, the series' sheet store, the narration) reads these.
  * A character the book gives no voice is cast by `castVoices` from the options' pool (the drama
- * tab's `character_voice_pool`) and narrator.
+ * tab's `character_voice_pool`), never in the narrator's voice: the book's own (narratorFrom)
+ * when it names one, else the options' (the drama tab's).
  */
 export function castFrom(setting, episode = null, options = {}) {
   const characters = Array.isArray(setting?.characters) ? setting.characters : [];
@@ -468,7 +500,7 @@ export function castFrom(setting, episode = null, options = {}) {
       return entry;
     })
     .sort((a, b) => (a.id < b.id ? -1 : a.id > b.id ? 1 : 0));
-  return castVoices(cast, { ...options, notes });
+  return castVoices(cast, { ...options, narrator: narratorFrom(setting) ?? options.narrator ?? null, notes });
 }
 
 /**

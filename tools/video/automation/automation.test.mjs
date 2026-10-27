@@ -35,6 +35,7 @@ import { AutomationError, automationClient, POLICY_HOLD, RUN_PENDING, RUN_UNCERT
 import { acquireProjectLease } from "../core/project-lease.mjs";
 import { EDITORIAL_USER_AGENT, pageReader, pageText, urlsIn } from "./fetch.mjs";
 import { Automation, automatedVideos, blockedKindOf, DEFER_BASE_MS, DEFER_LIMIT, DEFER_MAX_MS, DEFER_REPORT_FROM, errorScope, everyones, listenerEdits, mainGuide, PENDING_RECHECK_MS, UNRECORDED_LIMIT, MAX_DUB_RETAKE_ROUNDS, MAX_DUB_REWORD_ROUNDS, MAX_DUB_SHORTEN_ROUNDS, MAX_PROMPT_FIX_ROUNDS, MAX_REPLANS, MAX_REWRITE_ROUNDS, planProblem, resetForRetry, settingsFor, settle, sheetDone, siteArticleUrl, siteSources, slidesImageVendor, thumbnailAskHash } from "./flow.mjs";
+import { castFrom, documentProblem, narratorFrom, narratorProblem } from "./series.mjs";
 import { DRAMA_INSTRUCTIONS, INSTRUCTIONS, instructionsFor, LISTENER_REWRITE, parseAnswer, references, SOURCE_INSTRUCTIONS, STANCE_HEADING, TRANSLATOR_REWORD, TRANSLATOR_SHORTEN, TRANSLATOR_TITLE } from "./prompts.mjs";
 import { tidyRound } from "./tidy.mjs";
 
@@ -1853,7 +1854,7 @@ test("a drama reads the drama part's own settings and falls back to the tutorial
   const mangaSeries = { slug: "xitong-shuo-wo-shi-bug", visual_tier: "manga" };
   const manga = settle(dramaFixture(), { slug: "jingwei", settings: following, sourceGuide: null, root: ROOT, format: "drama", series: mangaSeries });
   assert.equal(manga.voice.name, "Sulafat");
-  assert.equal(manga.voice.style, "標準國語，咬字清楚，台北人平常說話的語調。說書人的語氣，節奏快，每一句的尾音收得乾脆有力，關鍵字稍微加重，句與句之間不拖，像在講一個很爽的故事");
+  assert.equal(manga.voice.style, "標準國語，咬字清楚，台北人平常說話的語調。邊講邊吐槽的語氣，語速快，一秒五到六個字，句子之間幾乎不停；每一句都帶態度，吐槽、比喻、反問或預告，尾音乾脆，關鍵字加重，像在跟朋友講一件很扯的事");
   assert.equal(manga.voice.rate, undefined, "still Gemini's fields alone");
   assert.equal(settle(dramaFixture(), { slug: "jingwei", settings: split, sourceGuide: null, root: ROOT, format: "drama", series: mangaSeries }).voice.style, "Grave", "the owner's drama voice stands");
   assert.equal(settle(dramaFixture(), { slug: "jingwei", settings: following, sourceGuide: null, root: ROOT, format: "drama", series: { ...mangaSeries, visual_tier: "hybrid" } }).voice.style, "Relaxed");
@@ -1861,6 +1862,49 @@ test("a drama reads the drama part's own settings and falls back to the tutorial
   assert.deepEqual(settle(dramaFixture(), { slug: "jingwei", settings: azureTutorial, sourceGuide: null, root: ROOT, format: "drama", series: mangaSeries }).voice, { provider: "azure", name: "zh-TW-HsiaoChenNeural", rate: "+0%" }, "an Azure voice has no style to carry it");
   const slides = settle(fixture(), { slug: "z", settings: split, sourceGuide: null, root: ROOT });
   assert.equal(slides.voice.name, "Sulafat", "a tutorial keeps the channel voice whatever the drama chose");
+});
+
+test("a setting book's own narrator narrates its series over the drama tab's voice, keeps the cast off it, and is filed only as a voice (docs/videos/SERIES.md §作品的旁白)", () => {
+  const voice = { provider: "gemini", name: "Sulafat", style: "Relaxed", model: null, rate: "+0%" };
+  const kore = { provider: "gemini", name: "Kore", style: "Grave", model: null, rate: "+0%" };
+  const chosen = { voice, drama: { ...DRAMA_SETTINGS, drama_voice: kore } };
+  const unchosen = { voice, drama: { ...DRAMA_SETTINGS, drama_voice: null } };
+  const mangaSeries = { slug: "xitong-shuo-wo-shi-bug", episode: 1, chapter: 1, visual_tier: "manga" };
+  const firstPerson = { provider: "gemini", name: "Charon", style: "我是江河本人，邊講邊吐槽，語速快" };
+  const settled = (settings, narrator, series = mangaSeries) => settle(dramaFixture(), { slug: "jingwei", settings, sourceGuide: null, root: ROOT, format: "drama", series, narrator });
+  // 系統說我是 BUG's lead tells it in the first person (2026-10-27): its own voice and style, whatever the drama tab chose.
+  assert.deepEqual(settled(chosen, firstPerson).voice, firstPerson);
+  assert.deepEqual(settled(unchosen, firstPerson).voice, firstPerson);
+  // Named without a style, a manga series' Gemini narrator takes the storyteller's direction the writer plans from.
+  assert.equal(settled(chosen, { provider: "gemini", name: "Charon" }).voice.name, "Charon");
+  assert.match(settled(chosen, { provider: "gemini", name: "Charon" }).voice.style, /^標準國語，咬字清楚，台北人平常說話的語調。邊講邊吐槽的語氣/);
+  assert.deepEqual(settled(chosen, { provider: "azure", name: "zh-TW-YunJheNeural" }).voice, { provider: "azure", name: "zh-TW-YunJheNeural" });
+  // A series without one keeps the drama tab's voice, as every other drama does.
+  assert.deepEqual(settled(chosen, null).voice, { provider: "gemini", name: "Kore", style: "Grave" });
+
+  // series.json carries the book's narrator (narratorFrom), and the cast is never voiced in it.
+  const book = { characters: [{ id: "jiang-he", name: "江河", appearance: "a young man", voice_note: "男聲" }], narrator: { provider: "gemini", name: "Charon", style: "我是江河本人" } };
+  assert.deepEqual(narratorFrom(book), { provider: "gemini", name: "Charon", style: "我是江河本人" });
+  assert.equal(narratorFrom({ characters: [] }), null);
+  assert.equal(narratorFrom({ narrator: { provider: "openai", name: "alloy" } }), null, "one the site would not file is none");
+  const [jiang] = castFrom(book, 1, { narrator: { provider: "gemini", name: "Puck" } });
+  assert.notEqual(jiang.voice.name, "Charon", "the book's narrator, not the drama tab's, is taken");
+  assert.equal(castFrom({ characters: book.characters }, 1, { narrator: { provider: "gemini", name: "Puck" } })[0].voice.name, "Charon", "without a book narrator the first free male voice is cast");
+
+  // Filed as the site files it (apps/api/app/video_automation/series.py _narrator_problem).
+  assert.equal(narratorProblem(undefined), null);
+  assert.equal(narratorProblem(null), null);
+  assert.equal(narratorProblem(book.narrator), null);
+  assert.equal(narratorProblem("Charon"), "narrator must be {provider, name, style}");
+  assert.equal(narratorProblem({ provider: "gemini", name: "Charon", rate: "+20%" }), "narrator must be {provider, name, style}");
+  assert.equal(narratorProblem({ provider: "elevenlabs", name: "Adam" }), "narrator.provider must be one of azure, gemini");
+  assert.equal(narratorProblem({ provider: "gemini", name: "x".repeat(65) }), "narrator.name must be the voice's name, at most 64 characters");
+  assert.equal(narratorProblem({ provider: "azure", name: "zh-TW-YunJheNeural", style: "快" }), "narrator.style is a Gemini voice's; an Azure voice has none");
+  assert.equal(narratorProblem({ provider: "gemini", name: "Charon", style: "x".repeat(401) }), "narrator.style must be text of at most 400 characters");
+  const settingJob = { series: { slug: "xitong-shuo-wo-shi-bug", planned_episodes: 50 } };
+  const answer = (narrator) => ({ body_md: "# 設定集", body_json: { characters: [{ id: "jiang-he", name: "江河", appearance: "a young man" }], mysteries: ["誰寫了系統"], narrator } });
+  assert.equal(documentProblem("setting", answer(book.narrator), settingJob), null);
+  assert.equal(documentProblem("setting", answer({ provider: "gemini" }), settingJob), "narrator.name must be the voice's name, at most 64 characters");
 });
 
 test("a drama stage ends its prompt with the drama part's standing instructions, a tutorial stage with the tutorial's", async () => {
@@ -2112,6 +2156,22 @@ test("an approved legacy explainer episode keeps the ten-minute target for its w
   const state = readJson(path.join(box.work, slug, "auto.json"));
   assert.equal(state.target_minutes, 10);
   assert.deepEqual(automation.scriptPayload(state, {}).target_minutes, [10, 10]);
+});
+
+test("an episode's series.json carries its setting book's own narrator, and none when the book names none", async () => {
+  const box = sandbox();
+  const site = fakeSite();
+  const { ctx } = context(box, site.fetchImpl, { now: Date.parse("2026-10-27T02:00:00Z") });
+  const automation = new Automation(ctx, automationClient(ctx), site.settings);
+  automation.refs = smallRefs;
+  const series = { slug: "xitong-shuo-wo-shi-bug", kind: "series", title: "系統說我是 BUG", premise: "被系統判成 BUG 的人", style_preset: "cinematic-3d", target_minutes: 3, genre: "system", lead: "solo-male", visual_tier: "manga" };
+  const episode = { number: 1, chapter_number: 1, title: "垃圾坑", logline: "江河醒在垃圾坑裡", beats: {} };
+  const characters = [{ id: "jiang-he", name: "江河", appearance: "a young man", voice: { provider: "gemini", name: "Puck" } }];
+  const narrator = { provider: "gemini", name: "Charon", style: "我是江河本人，邊講邊吐槽" };
+  await automation.draftEpisode({ id: "request", slug: "bug-e001", premise: series.premise, target_minutes: 3 }, { series, setting: { body_json: { characters, narrator } }, episodes: [episode] }, episode);
+  assert.deepEqual(readJson(path.join(docDir("bug-e001", box.root), "series.json")).narrator, narrator);
+  await automation.draftEpisode({ id: "request", slug: "bug-e002", premise: series.premise, target_minutes: 3 }, { series, setting: { body_json: { characters } }, episodes: [{ ...episode, number: 2 }] }, { ...episode, number: 2 });
+  assert.equal(Object.hasOwn(readJson(path.join(docDir("bug-e002", box.root), "series.json")), "narrator"), false);
 });
 
 test("a new series episode is held from its save until its outline's approval is written and reported", async () => {

@@ -15,7 +15,7 @@ import { StoryLexiconError } from "../core/story-lexicon.mjs";
 import { atomicWrite, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, stopRequested, UsageError } from "../core/paths.mjs";
 import { requireProjectLease } from "../core/project-lease.mjs";
 import { ARTIFACTS, lintProject, loadProject, recordStage } from "../core/state.mjs";
-import { buildTimeline, checkChapters, formatClock, frameToSeconds, speechHash } from "../core/timeline.mjs";
+import { buildTimeline, checkChapters, formatClock, frameToSeconds, mangaDrama, speechHash } from "../core/timeline.mjs";
 import { checkAudio } from "./check.mjs";
 import { PILOT_SLUGS, SpeechError, speechStatus, synthesize, synthesizeAligned } from "./client.mjs";
 import { TOKEN_PATTERN, readCredentials, validSite, writeCredentials } from "./credentials.mjs";
@@ -24,6 +24,7 @@ import { GEMINI_VOICE_PREFIX, MAX_REQUEST_CHARACTERS, billableForRequest, planRe
 import { JOURNAL_DIR, openSpeechJournal } from "./speech-journal.mjs";
 import { buildNarration, flaggedLines, lineBody, synthesizeLines, synthesizeRequest } from "./synthesis.mjs";
 import { readCache, takeCurrent } from "./takes.mjs";
+import { CHARACTER_MIN_RATE, MAX_TEMPO, NARRATOR_MIN_RATE, ffmpegAtempo, scaledTiming, tempoFor } from "./tempo.mjs";
 import { encodeWav, parseWav, requireNarrationFormat } from "./wav.mjs";
 
 const FREE_TIER = 500_000;
@@ -74,6 +75,43 @@ function writeTake(audioDir, id, bytes, timing) {
   rmSync(timingFile(audioDir, id), { force: true });
   atomicWrite(path.join(audioDir, `${id}.wav`), bytes);
   if (timing) atomicWrite(timingFile(audioDir, id), `${JSON.stringify({ wav_sha256: wavHash(bytes), ...timing })}\n`);
+}
+
+/**
+ * Speed up the takes of a sticker drama read slower than its form wants (tempo.mjs), each take
+ * once: cache.json's `tempo` records the decision for the WAV it left, sped or not, and a take
+ * whose bytes still hash to it is not measured again (a sped take still under its floor, capped,
+ * would otherwise be sped again on every run). The decision is saved before the sped WAV, so a run
+ * stopped between the two decides again on the original. The take's timing is scaled with it.
+ * Resolves to how many takes were sped.
+ */
+async function paceTakes(requests, cache, audioDir, atempo) {
+  let sped = 0;
+  for (const request of requests) {
+    for (const line of request.lines) {
+      const bytes = readFileSync(path.join(audioDir, `${line.id}.wav`));
+      const hash = wavHash(bytes);
+      if (cache.tempo?.[line.id]?.sha256 === hash) continue;
+      const clip = requireNarrationFormat(parseWav(bytes));
+      const decision = tempoFor({ units: line.weight, samples: clip.length, speaker: request.speaker ?? NARRATOR });
+      cache.tempo ??= {};
+      if (decision.factor <= 1) {
+        cache.tempo[line.id] = { ...decision, sha256: hash };
+        atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
+        continue;
+      }
+      const faster = await atempo(clip, decision.factor);
+      const out = encodeWav(faster);
+      requireNarrationFormat(parseWav(out));
+      cache.tempo[line.id] = { ...decision, source_sha256: hash, sha256: wavHash(out) };
+      cache.sha256 ??= {};
+      cache.sha256[line.id] = wavHash(out);
+      atomicWrite(path.join(audioDir, "cache.json"), `${JSON.stringify(cache, null, 2)}\n`);
+      writeTake(audioDir, line.id, out, scaledTiming(readTiming(audioDir, line.id, hash), decision.factor, faster.length));
+      sped += 1;
+    }
+  }
+  return sped;
 }
 
 const escapeHtml = (text) => String(text).replace(/[&<>"']/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]);
@@ -498,6 +536,10 @@ async function tts(args, ctx) {
     ctx.stdout.write(`${request.id}${who}: ${done}${result.fallback ? " (split did not match the text; synthesized line by line)" : ""}\n`);
   }
 
+  // A sticker drama's slow takes are sped up before anything copies or lays them out (tempo.mjs).
+  // An evidence refresh changes no audio, so it binds the takes as they are.
+  const paced = mangaDrama(doc, project.series) && !values["refresh-evidence"] ? await paceTakes(requests, cache, audioDir, ctx.atempo ?? ffmpegAtempo(ctx.env)) : 0;
+
   for (const reference of references) {
     const { bytes, hash } = checkedOriginal(reference.audio_ref);
     const line = reference.lines[0];
@@ -524,14 +566,21 @@ async function tts(args, ctx) {
   const samplesById = Object.fromEntries([...clips].map(([id, clip]) => [id, Math.max(1, clip.length)]));
   // The speech hash is the script's alone: measured timing is derived from the audio and never
   // makes a timeline stale.
-  const timeline = { ...buildTimeline(doc, samplesById), speech_hash: speechHash(doc, lexicon) };
+  const timeline = { ...buildTimeline(doc, samplesById, { series: project.series }), speech_hash: speechHash(doc, lexicon) };
   // A clip trimmed to nothing still needs one sample to sit on the grid.
   for (const [id, clip] of clips) if (clip.length === 0) clips.set(id, new Int16Array(1));
   atomicWrite(path.join(workdir, ARTIFACTS.narration), encodeWav(buildNarration(timeline, clips)));
   // A line's measured timing rides on its entry, after its take's hash; a line without one is
   // written as before, so a narration with no timing keeps the same timeline.json bytes.
   const bound = bindAudioEvidence(timeline, workdir);
-  const lines = bound.lines.map((line) => (timings.has(line.id) ? { ...line, timing: timings.get(line.id) } : line));
+  // A sped take says by how much beside the hash that binds it, and from what rate; the others,
+  // and every take of any other video, are written as before.
+  // A same-take repeat (audio_ref) is its source's bytes, so it says what its source says.
+  const lines = bound.lines.map((line) => {
+    const tempo = cache.tempo?.[cache.references?.[line.id]?.source ?? line.id];
+    const sped = tempo?.factor > 1 && tempo.sha256 === line.audio_sha256;
+    return { ...line, ...(sped ? { tempo: { factor: tempo.factor, rate: tempo.rate, target: tempo.target } } : {}), ...(timings.has(line.id) ? { timing: timings.get(line.id) } : {}) };
+  });
   atomicWrite(path.join(workdir, ARTIFACTS.timeline), `${JSON.stringify({ ...bound, lines }, null, 2)}\n`);
   // Lint checked the chapters on an estimate; this is the real check. Chapters YouTube would not
   // show fail the run, after the files are written, so a fix to the script reuses every take whose
@@ -545,11 +594,12 @@ async function tts(args, ctx) {
     if (!(error instanceof UsageError)) throw error;
   }
   const chapters = checkChapters(presented);
-  recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice), ...(timings.size ? { timed: timings.size } : {}), ...(chapters.length ? { ok: false, chapters } : {}) }, ctx.now());
+  recordStage(workdir, "tts", { requests: requests.length, synthesized: pending.length, fallbacks, billable, voice: doc.voice.name, voices: voices.map((entry) => entry.voice), ...(timings.size ? { timed: timings.size } : {}), ...(paced ? { sped: paced } : {}), ...(chapters.length ? { ok: false, chapters } : {}) }, ctx.now());
 
   ctx.stdout.write(`${pending.length} requests synthesized (${billable} billable characters), ${requests.length - pending.length} reused; narration ${formatClock(frameToSeconds(timeline.total_frames))}\n`);
   if (journal.reused) ctx.stdout.write(`${journal.reused} answers paid for by an earlier run came from the speech journal, not bought again\n`);
   if (timings.size) ctx.stdout.write(`${timings.size} of ${timeline.lines.length} lines carry measured character times; their CC cues start on the spoken character\n`);
+  if (paced) ctx.stdout.write(`${paced} slow takes sped up with atempo (at most ${MAX_TEMPO}×) to ${NARRATOR_MIN_RATE} characters a second for the narrator, ${CHARACTER_MIN_RATE} for a character\n`);
   if (fallbacks.length) ctx.stdout.write(`line-by-line fallback for: ${fallbacks.join(", ")}\n`);
   if (chapters.length) {
     // The problems come last, so a caller that reports the last line names one.

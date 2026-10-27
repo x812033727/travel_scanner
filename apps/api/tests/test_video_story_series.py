@@ -11,6 +11,7 @@ from pydantic import ValidationError
 from app.video_automation.models import VideoDramaSeries
 from app.video_automation.schemas import SeriesDocSubmitIn, SeriesIn, SeriesPatch
 from app.video_automation.series import (
+    NARRATOR_STYLE_CHARS,
     SHEET_PROMPT_CHARS,
     doc_problem,
     patch_problem,
@@ -203,3 +204,60 @@ def test_a_setting_book_character_may_carry_its_own_sheet_prompt() -> None:
 def test_a_sheet_prompt_that_is_not_short_text_is_refused(sheet_prompt: object) -> None:
     problem = _problem(HERO, {**SYSTEM, "sheet_prompt": sheet_prompt})
     assert problem == "character xitong: sheet_prompt must be text of at most 600 characters"
+
+
+# A setting book may name the work's own narrator (docs/videos/SERIES.md §作品的旁白), so the
+# first-person male voice of 系統說我是 BUG never becomes every drama's drama_voice (2026-10-27).
+def _narrated(narrator: object) -> str | None:
+    setting = SeriesDocSubmitIn(
+        kind="setting", body_md="# x", body_json={"characters": [dict(HERO)], "narrator": narrator}
+    )
+    return doc_problem(_series_row(), setting)
+
+
+CHARON: Mapping[str, object] = {"provider": "gemini", "name": "Charon"}
+NAME_PROBLEM = "narrator.name must be the voice's name, at most 64 characters"
+STYLE_PROBLEM = "narrator.style must be text of at most 400 characters"
+SHAPE_PROBLEM = "narrator must be {provider, name, style}"
+PROVIDER_PROBLEM = "narrator.provider must be one of azure, gemini"
+
+
+def test_a_setting_book_may_name_its_own_narrator() -> None:
+    assert _narrated(None) is None, "null: the drama tab's voice, as before"
+    assert _narrated(dict(CHARON)) is None
+    assert _narrated({**CHARON, "style": "江河本人，邊講邊吐槽"}) is None
+    assert _narrated({**CHARON, "style": "x" * NARRATOR_STYLE_CHARS}) is None
+    assert _narrated({"provider": "azure", "name": "zh-TW-YunJheNeural"}) is None
+    one_off = _series_row(kind="one-off", planned_episodes=1, episodes_per_chapter=1)
+    bible = SeriesDocSubmitIn(
+        kind="bible",
+        body_md="# x",
+        body_json={
+            "characters": [dict(HERO)],
+            "acts": [{"title": "一"}],
+            "outline": {"title": "x"},
+            "narrator": {"provider": "openai", "name": "alloy"},
+        },
+    )
+    assert doc_problem(one_off, bible) == PROVIDER_PROBLEM
+
+
+@pytest.mark.parametrize(
+    ("narrator", "problem"),
+    [
+        ("Charon", SHAPE_PROBLEM),
+        ({**CHARON, "rate": "+20%"}, SHAPE_PROBLEM),
+        ({"provider": "elevenlabs", "name": "Adam"}, PROVIDER_PROBLEM),
+        ({"provider": "gemini"}, NAME_PROBLEM),
+        ({"provider": "gemini", "name": "  "}, NAME_PROBLEM),
+        ({"provider": "gemini", "name": "x" * 65}, NAME_PROBLEM),
+        (
+            {"provider": "azure", "name": "zh-TW-YunJheNeural", "style": "快"},
+            "narrator.style is a Gemini voice's; an Azure voice has none",
+        ),
+        ({**CHARON, "style": ""}, STYLE_PROBLEM),
+        ({**CHARON, "style": "x" * (NARRATOR_STYLE_CHARS + 1)}, STYLE_PROBLEM),
+    ],
+)
+def test_a_narrator_that_is_not_a_voice_is_refused(narrator: object, problem: str) -> None:
+    assert _narrated(narrator) == problem

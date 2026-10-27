@@ -809,6 +809,57 @@ test("tts on a drama gives each speaker their voice, and names the character who
   assert.equal(strict.calls.filter((call) => call.url.endsWith("/api/video/speech")).length, 0, "nothing synthesized");
 });
 
+test("tts on a manga drama speeds its slow takes once, by speaker, records it beside each take's hash, and lays the shots end to end", async () => {
+  const box = sandbox("fixture-drama", "drama");
+  const file = path.join(box.dir, "video.json");
+  const doc = JSON.parse(readFileSync(file, "utf8"));
+  for (const scene of doc.scenes) if (scene.template === "shot") scene.data.visual = "still";
+  // Sped up, the closing chapter would fall under YouTube's ten seconds.
+  doc.scenes.at(-1).lines.push({ id: "y7tn", text: "精衛每天銜著一顆石子，從西山飛到東海，一趟又一趟。" });
+  writeFileSync(file, JSON.stringify(doc));
+  writeFileSync(path.join(box.dir, "series.json"), JSON.stringify({ slug: "bug", episode: 1, chapter: 1, visual_tier: "manga", characters: doc.characters }));
+  assert.deepEqual(lintProject(loadProject({ slug: box.slug, root: box.root })).errors, []);
+  const server = fakeServer({ status: { gemini_configured: true, gemini_monthly_limit: 300000, gemini_used: 0 } });
+  const env = { VIDEO_WORKDIR: box.work, MOKAAIR_VIDEO_TOKEN: TOKEN, MOKAAIR_SITE: "https://mokaair.test" };
+  const sped = [];
+  // A stand-in for ffmpeg's atempo: as many samples as the factor leaves.
+  const atempo = async (clip, factor) => {
+    sped.push(factor);
+    return clip.slice(0, Math.round(clip.length / factor));
+  };
+  const run = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl, atempo });
+  assert.equal(await main(["tts", "--slug", box.slug], run.ctx), EXIT.ok, run.out.stderr + run.out.stdout);
+  const timeline = JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8"));
+  const byId = Object.fromEntries(timeline.lines.map((line) => [line.id, line]));
+  // The fake server reads 200 ms a written character: 「很久以前，發鳩山上住著炎帝最小的女兒。」 is 17
+  // spoken units in 3.8 s and the trimmed take's margins, 4.43 a second, so the narrator's take is
+  // sped 1.25× toward 5.5.
+  assert.deepEqual(byId.k7p2.tempo, { factor: 1.25, rate: 4.43, target: 5.5 });
+  assert.ok(Math.abs((byId.k7p2.audio_samples * 1.25) / SAMPLE_RATE - 17 / 4.43) < 0.01, `${byId.k7p2.audio_samples} samples`);
+  // 「父王，我去看看海就回來。」, a character's request of its own: 10 units in 2.4 s, 4.17, toward 4.5.
+  assert.deepEqual(byId.x9fe.tempo, { factor: 1.08, rate: 4.17, target: 4.5 });
+  assert.ok(timeline.lines.every((line) => line.tempo), "every take of the fixture is read slower than its floor");
+  assert.equal(sped.length, timeline.lines.length);
+  const cache = JSON.parse(readFileSync(path.join(box.workdir, "audio", "cache.json"), "utf8"));
+  assert.equal(cache.tempo.k7p2.sha256, byId.k7p2.audio_sha256);
+  assert.equal(cache.sha256.k7p2, byId.k7p2.audio_sha256);
+  assert.match(cache.tempo.k7p2.source_sha256, /^[a-f0-9]{64}$/);
+  // The shots run on: 80 ms after the opening's last line, the chapter's end keeps its gap.
+  const pause = (id) => (byId[id].end_frame - byId[id].start_frame) * SAMPLES_PER_FRAME - byId[id].audio_samples;
+  assert.ok(pause("m4qa") < ms(80) + SAMPLES_PER_FRAME, `${pause("m4qa")} samples after the opening`);
+  assert.ok(pause("b3tn") >= ms(1000), "farewell closes chapter 發鳩山");
+  const state = JSON.parse(readFileSync(path.join(box.workdir, "state.json"), "utf8"));
+  assert.equal(state.runs.at(-1).sped, timeline.lines.length);
+  assert.match(run.out.stdout, /11 slow takes sped up with atempo/);
+
+  // Once per take: a second run measures nothing again, a capped take included, and writes the same timeline.
+  const again = capture({ root: box.root, env, home: box.base, fetch: server.fetchImpl, atempo });
+  assert.equal(await main(["tts", "--slug", box.slug], again.ctx), EXIT.ok, again.out.stderr);
+  assert.equal(sped.length, timeline.lines.length);
+  assert.deepEqual(JSON.parse(readFileSync(path.join(box.workdir, "timeline.json"), "utf8")), timeline);
+  assert.doesNotMatch(again.out.stdout, /sped up/);
+});
+
 /** The unit each cue's first letter or number was timed in: a line's cues hold its letters and numbers, in order. */
 function cueHeads(cues, chars) {
   const heard = /[\p{L}\p{N}]/u;
