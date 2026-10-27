@@ -316,10 +316,7 @@
         "kicker": "數位發展部資安署，2026-10-21",
         "quote": "新興 AI 大幅降低了攻擊成本並提升攻擊速度，但防禦的核心觀念並未改變",
         "source": "moda.gov.tw/ACS 新聞稿 · 2026-10-21",
-        "keys": [
-          "資安署：AI 改變速度與成本",
-          "防禦的觀念沒變"
-        ]
+        "key": "資安署：AI 改變速度與成本"
       },
       "lines": [
         {
@@ -373,6 +370,7 @@
           ]
         },
         "keys": [
+          "AI 駭客像翻門墊的小偷",
           "撬鎖：一扇一扇試",
           "翻門墊：找到鑰匙就開門"
         ]
@@ -513,9 +511,9 @@
       "template": "quote",
       "data": {
         "kicker": "Microsoft 的報告",
-        "quote": "…to authenticate to Microsoft 365 customer environments through applications that had already been granted access",
+        "quote": "…applications that had already been granted access",
         "source": "microsoft.com/security/blog · 2026-10-21",
-        "translation": "透過早就被授權的應用程式，登入 Microsoft 365 的客戶環境",
+        "translation": "透過早就被授權的應用程式",
         "keys": [
           "拿到 ConnectWise 的應用程式憑證",
           "從早就授權過的 App 進去"
@@ -549,8 +547,7 @@
       "template": "big",
       "data": {
         "kicker": "從鎖定到拿下雲端管理權限",
-        "numeral": "3",
-        "text": "小時不到",
+        "text": "不到 **3** 小時",
         "sub": "Microsoft：多次案例；超過 2,250 個租戶被嘗試登入",
         "key": "門早就開著，AI 只是走得快"
       },
@@ -691,10 +688,7 @@
         "kicker": "Zeabur 給使用者的第一件事",
         "quote": "請更換存放在 Zeabur 的所有密碼與金鑰，即使八月事件後已經換過。",
         "source": "zeabur.com · 2026-10-19 初步報告",
-        "keys": [
-          "所有密碼和金鑰都要換",
-          "即使八月已經換過"
-        ]
+        "key": "所有密碼和金鑰都要換"
       },
       "lines": [
         {
@@ -720,10 +714,7 @@
         "kicker": "Google 帳戶說明：變更或重設密碼",
         "quote": "系統會將你登出所有裝置，但以下裝置例外：…安裝了第三方應用程式的某些裝置，而且你已將帳戶存取權授予這些應用程式。",
         "source": "support.google.com/accounts/answer/41078",
-        "keys": [
-          "改密碼：登出所有裝置",
-          "例外之一：你授權過的第三方應用程式"
-        ]
+        "key": "例外：授權過的第三方應用程式"
       },
       "lines": [
         {
@@ -751,9 +742,9 @@
       "template": "quote",
       "data": {
         "kicker": "Microsoft 的報告",
-        "quote": "These changes can remain active as a backdoor even after the original compromised application is mediated.",
+        "quote": "…remain active as a backdoor even after the original compromised application is mediated.",
         "source": "microsoft.com/security/blog · 2026-10-21",
-        "translation": "這些變更在原本被入侵的應用程式處理好之後，仍可能繼續當後門。",
+        "translation": "原本被入侵的應用程式處理好之後，仍可能繼續當後門。",
         "keys": [
           "攻擊者替 App 加上自己的憑證",
           "原本的 App 修好，後門還在"
@@ -1116,7 +1107,7 @@
         "source": "Google 帳戶說明；GitHub Docs",
         "keys": [
           "Google：連結的應用程式",
-          "GitHub：Authorized OAuth Apps",
+          "GitHub：授權過的 OAuth App",
           "不認得的先移除"
         ]
       },
