@@ -1,3 +1,17 @@
+# 繁中完整節目M4A已交後台
+
+2026-10-27T23:35:56.818396+00:00。既有官方v4成片已另交繁中完整節目[M4A下載](https://mokaair.com/zh-TW/admin/videos?video=ai-slides-outline-review)，保留第一章後5秒片頭及21秒片尾；AAC／容器均629.610秒。輸出17283377 bytes／SHA `74a61024d1f235b225b2f4a8945571c0bca5a01c190ca8b3f114b1ef65601b6f`，來源成片 `c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c` 未改。
+
+同一pending final `a0e0a6bc-aca6-4182-adf1-00fa8176937e` 保留原36份參照、完整payload／QA／審核與語言歷史，追加M4A與使用說明TXT，共38份；新兩檔均完整下載並逐bytes／SHA／MIME核對。
+
+單次remux後只把來源衍生的mdhd與末stts欄位精確還原原值；原始AAC payload、全部29,511個packet時序／side-data、stts／elst／stsz及完整解碼PCM均相同，沒有重編碼、變速、重採樣、剪接或放寬門檻。118句沿用已驗當前WAV／完整intended／轉寫／timeline，來源綁定另獨審；本輪沒有新TTS／ASR或完整人耳重聽。詳[實際音檔manifest](receipts/original-zh-program-m4a-20261027/program-audio-manifest.json)及[安全文字收據索引](receipts/original-zh-program-m4a-20261027/index.json)。
+
+原QA11/11、兩份敘事12/13 false、27項外語字幕速度提醒、EN93/118 raw及全部失敗／未知／重錄上限保留。已驗外語M4A仍0/8，八語actual-dub CC／正式語言批次及遠端final核准仍待，整片未done。
+
+---
+
+以下完整保留舊日期紀錄。當前M4A／38附件以本段及production-progress.json新增original_ZH_program_M4A物件為準；舊progress27欄原值未改。
+
 # 第四片製作進度快照
 
 截至 2026-10-26T04:12:21.363Z，含**官方5秒片頭與21秒片尾的完整1080p新版，以及按當前影片對時的繁中CC／標題說明下載檔，均已交後台並讀回核對**。片頭接在首章濃縮段後，新成片既有fresh QA11/11不變。final仍是manual-review pending；已交付1/9個字幕語言（繁中），八外語已驗配音仍0/8，overall_complete=false。

@@ -500,5 +500,129 @@
     "server_approval": false,
     "overall_complete": false,
     "receipt": "receipts/foreign-reference-assets-20261027/README.md"
+  },
+  "original_ZH_program_M4A": {
+    "documentation_updated_at": "2026-10-27T23:35:56.818396+00:00",
+    "prior_commit": "2998b3a42bcc20717624f6f565990323bb9f0b12",
+    "source_sha256": "296fa0c93be25c7074ec50259db650f5663aca2324a5e0a16da2118406757c2f",
+    "speech_hash": "a8055d3edb90bcda",
+    "narration_sha256": "4a298ebb54e7fc4fca152d12e2b11f9c6871bfb51e577addbce239b2f95f38c7",
+    "source_main": {
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/final.mp4",
+      "bytes": 58584900,
+      "sha256": "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c"
+    },
+    "M4A": {
+      "file": "/workspace/work/videos/_slides-zh-program-audio/ai-slides-outline-review/program.zh-TW.m4a",
+      "bytes": 17283377,
+      "sha256": "74a61024d1f235b225b2f4a8945571c0bca5a01c190ca8b3f114b1ef65601b6f"
+    },
+    "audio_stream_seconds": 629.61,
+    "audio_container_seconds": 629.61,
+    "full_official_v4_program_audio": true,
+    "official_intro_after_first_chapter_seconds": 5,
+    "official_outro_seconds": 21,
+    "actual_manifest": "receipts/original-zh-program-m4a-20261027/program-audio-manifest.json",
+    "source_AAC_packets_timing_tables_and_full_decoded_PCM_equal": true,
+    "one_remux_and_exact_source_table_restoration_only": true,
+    "current_118_source_records_verified": true,
+    "new_ASR_or_human_listening": false,
+    "local_media_producer_new_TTS_ASR_paid_network": 0,
+    "actual_delivery_transport_counts": {
+      "auth_reads": 1,
+      "project_GET": 4,
+      "file_PUT": 6,
+      "review_POST": 1,
+      "file_GET": 2,
+      "denied": 0
+    },
+    "same_pending_final_review_id": "a0e0a6bc-aca6-4182-adf1-00fa8176937e",
+    "status": "pending",
+    "retained_old_references": 36,
+    "new_files": 2,
+    "current_references": 38,
+    "full_two_binary_readback_verified": true,
+    "old_full_payload_QA_and_all_history_preserved": true,
+    "source_QA_11of11_preserved_not_rerun": true,
+    "original_false_narrative_and_all_failed_unknown_limits_preserved": true,
+    "foreign_checked_M4A": 0,
+    "actual_foreign_dub_CC": 0,
+    "new_language_batch": false,
+    "server_approval": false,
+    "whole_episode_complete": false,
+    "public_receipts_index": "receipts/original-zh-program-m4a-20261027/index.json",
+    "Root_actual_docs_apply": {
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/docs-prep/apply.actual.json",
+        "bytes": 4646,
+        "sha256": "151551567e97a7de33af9a05abf3602eaecea9cbb8c37d9262927cc665964a76"
+      },
+      "session": 66731,
+      "tool_exit": 0,
+      "tool_chunk": "2b4ea8",
+      "paths": 11
+    },
+    "Root_actual_handoff": {
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/ROOT-task-release.actual.json",
+        "bytes": 705,
+        "sha256": "fbf28ec7d7ce6ff9d1c6d43d56de3f17df6190481a35df04f69bb5648dab1874"
+      },
+      "tool_exit": 0,
+      "tool_chunk": "e16d3a",
+      "status": "blocked",
+      "owner": null,
+      "claimed_at": null,
+      "responsibility_unchanged": "same conversation, codex-ai-tech-news, branch codex/ai-tech-slides-20261025 and PR1857",
+      "not_done_or_transferred": true
+    },
+    "Root_actual_checks": {
+      "docs_videos": {
+        "native_summary": {
+          "tests": 236.0,
+          "pass": 236.0,
+          "fail": 0.0,
+          "cancelled": 0.0,
+          "skipped": 0.0,
+          "duration_ms": 34310.084419
+        },
+        "exit": 0,
+        "receipt": {
+          "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/checks/docs-videos.exit.json",
+          "bytes": 348,
+          "sha256": "4f17b8c195160fa6e0526cdc70443af08c34c03dcf64bb81f96c8699cad288c9"
+        },
+        "stdout": {
+          "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/checks/docs-videos.stdout",
+          "bytes": 19558,
+          "sha256": "0be8808ad3ecf8a9d0dcf60428bfc8f3df2a5fb29c0a78f8eed424a929d8a9de"
+        },
+        "stderr": {
+          "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/checks/docs-videos.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "tasks": {
+        "files": 2183,
+        "existing_other_scope_warnings": 151,
+        "exit": 0,
+        "receipt": {
+          "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/checks/tasks.exit.json",
+          "bytes": 330,
+          "sha256": "83ea1f4cfab36aeee0679d2ba28fbadccdacff4e13895d041b79d18cc0493af6"
+        },
+        "stdout": {
+          "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/checks/tasks.stdout",
+          "bytes": 27342,
+          "sha256": "cefc37c35b6bbad5ac75149e8e98c9ba660bd51b8e57d31e66c1ce4fa1faebaf"
+        },
+        "stderr": {
+          "file": "/workspace/work/ai-tech-next/slides-zh-program-20261027/checks/tasks.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
   }
 }
