@@ -1,0 +1,415 @@
+{
+  "title": "ARTEX: hackers con IA entran a la nube en menos de 3 horas con llaves que dejaste",
+  "description": "El 21 de octubre de 2026, Microsoft evaluó que un grupo de hackers ligado al gobierno chino usó ARTEX, una herramienta de IA de pentesting autónomo, contra cientos de organizaciones, y que varias veces tomó el control de admin de la nube en menos de tres horas. Después, la taiwanesa 91APP citó rastros de ARTEX en su informe. Tres informes oficiales muestran por dónde entró: 150.000 intentos de contraseña fallaron; entró por una app ya autorizada y una clave de base de datos en GitLab. Luego, un comando de git recupera del historial una contraseña borrada; al final, tres lugares para recuperar tus llaves.\nPara quien entra con Google a muchos servicios, sube proyectos a GitHub o administra Microsoft 365.\n\nGrabado el 27-10-2026. Intentos de contraseña, apps autorizadas, menos de tres horas, 2.250 inquilinos y credenciales añadidas como puerta trasera: informe de Microsoft Threat Intelligence del 21 de octubre. Appsmith, la clave en GitLab y las fechas: informe de 18 días de 91APP del 22 de octubre. IA que abarata ataques y recomendaciones: comunicado de la agencia de ciberseguridad de Taiwán del 21 de octubre; lo dicho por su director y los ataques similares de julio: iThome, mismo día. Credenciales en texto plano, claves no rotadas en agosto y 3,21 millones de variables de entorno: informe preliminar de Zeabur del 19 de octubre, que no menciona ARTEX ni dice que el atacante usara IA. Excepción al cambiar la contraseña: ayuda de Google; revocar o rotar primero: GitHub Docs. La terminal es real: repositorio de prueba del 27-10-2026, Ubuntu 24.04.5, git 2.43.0; la contraseña es falsa. \"Creo que\" y \"no pude confirmar\" son opiniones del autor. No hay demos de ataque ni enlaces a herramientas.\n\nComandos del video:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\n¿Cuántas apps de tu lista de Google ya no reconoces? Cuéntame en comentarios.",
+  "tags": [
+    "ARTEX",
+    "hackers con IA",
+    "91APP ciberataque",
+    "ciberataques con IA",
+    "Microsoft Storm-0940",
+    "Zeabur incidente de seguridad",
+    "git borrar contraseña",
+    "apps OAuth autorizadas",
+    "ciberseguridad Taiwán",
+    "noticias de IA"
+  ],
+  "thumbnail": {
+    "tag": "Noticias IA",
+    "headline": "**Llaves**,\nno ganzúas",
+    "sub": "ARTEX: cómo entra el hacker con IA y cómo recuperar tus llaves"
+  },
+  "chapters": {
+    "open": "¿Qué es ARTEX?",
+    "acs": "¿Y si no soy una gran empresa?",
+    "ms-page": "¿Cómo entró la IA?",
+    "route-91app": "¿Dónde estaba la llave en Taiwán?",
+    "google": "¿Basta con cambiar la contraseña?",
+    "ls": "¿Cómo encuentro mis llaves?",
+    "view": "Mi opinión: qué hacer ahora"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "15121923ce90",
+      "acs": "b5051d10397a",
+      "ms-page": "81c7a6e6c3f5",
+      "route-91app": "5f0715490f6a",
+      "google": "a3f0c745a54b",
+      "ls": "2193a36be479",
+      "view": "f6511ebd3f37"
+    },
+    "title": "45311fe332ff",
+    "description": "f622f6a39e94",
+    "tags": "2ab87fe05065",
+    "thumbnail": "4992c00258f5"
+  },
+  "lines": {
+    "y9kb": {
+      "source_hash": "9ec5aec269f1",
+      "text": "El 21 de octubre, Microsoft: hackers ligados al gobierno chino"
+    },
+    "7tzn": {
+      "source_hash": "16fdbe07f16d",
+      "text": "atacaron a cientos de organizaciones con la IA ARTEX;"
+    },
+    "tiky": {
+      "source_hash": "b6dccdcd3daa",
+      "text": "y varias veces tomaron la nube como admin en menos de 3 horas;"
+    },
+    "cjk6": {
+      "source_hash": "552f1cc343c0",
+      "text": "justo después, la taiwanesa 91APP también citó a ARTEX en su informe de investigación."
+    },
+    "3h5e": {
+      "source_hash": "5d339fd29ab2",
+      "text": "Dirás: no soy gran empresa y mi contraseña es larga, ¿qué tiene que ver conmigo?"
+    },
+    "4irk": {
+      "source_hash": "531b4c28ce9b",
+      "text": "Te afecta. Microsoft registró una oleada:"
+    },
+    "6pn9": {
+      "source_hash": "a5648e941f38",
+      "text": "150.000 intentos de contraseña, y no es lo que crees;"
+    },
+    "yfkf": {
+      "source_hash": "7cc400f1c4a5",
+      "text": "el informe de esa empresa taiwanesa dice dónde estaba la llave que halló el atacante;"
+    },
+    "v5t8": {
+      "source_hash": "046f85a2f9f1",
+      "text": "y qué dice la ayuda de Google al cambiar contraseña;"
+    },
+    "vbbm": {
+      "source_hash": "ebab78f91bce",
+      "text": "Recuerda esto: una contraseña ya borrada vuelve del historial con un solo comando."
+    },
+    "kj3y": {
+      "source_hash": "86a1b1f0a491",
+      "text": "¿No eres grande? Para la agencia de ciberseguridad de Taiwán, la IA abarata y acelera los ataques;"
+    },
+    "na73": {
+      "source_hash": "048023ba9375",
+      "text": "su director: ante algunas empresas sólidas, la IA calculó el costo de atacar, desistió y fue por las débiles."
+    },
+    "uny5": {
+      "source_hash": "715c336bbe03",
+      "text": "Así, el hacker con IA no fuerza la cerradura: alza el tapete."
+    },
+    "yfsm": {
+      "source_hash": "d41452698666",
+      "text": "Forzar cerraduras: puerta por puerta; si es buena, no entra;"
+    },
+    "ugft": {
+      "source_hash": "08610ff7f028",
+      "text": "alzar tapetes: miles de casas por noche; si halla llave, abre."
+    },
+    "52j9": {
+      "source_hash": "28407b4a699f",
+      "text": "¿Y qué tapetes revisó, exactamente?"
+    },
+    "wq9c": {
+      "source_hash": "81683cc5f544",
+      "text": "La respuesta, en este informe de Microsoft; enlace en la descripción."
+    },
+    "a6cm": {
+      "source_hash": "5d133bf72de9",
+      "text": "Los 150.000 del inicio son esta oleada: del 10 al 14 de octubre, hasta 2.900 por minuto;"
+    },
+    "5xut": {
+      "source_hash": "ae4049f81508",
+      "text": "casi el 98% respondió: cuenta bloqueada;"
+    },
+    "krad": {
+      "source_hash": "29bab557afd3",
+      "text": "inicios de sesión exitosos: cero."
+    },
+    "yqhv": {
+      "source_hash": "e205e657949f",
+      "text": "Contraseña y verificación en dos pasos lo frenaron, ¿no?"
+    },
+    "bqc5": {
+      "source_hash": "65483ad050c2",
+      "text": "Pero ni siquiera necesitaba esa puerta."
+    },
+    "wqed": {
+      "source_hash": "345448d2a316",
+      "text": "Según el informe, robaron credenciales de app de ConnectWise"
+    },
+    "j7dk": {
+      "source_hash": "d2d299aa8d95",
+      "text": "y con la app que el cliente ya autorizó entraron a su Microsoft 365;"
+    },
+    "anq3": {
+      "source_hash": "9dee78c7ecdc",
+      "text": "nadie inicia sesión, y la verificación en dos pasos no lo frena."
+    },
+    "v7kk": {
+      "source_hash": "0a1c6139e235",
+      "text": "La IA lo lleva a velocidad de máquina: intentó entrar en más de 2.250 nubes de empresas."
+    },
+    "zz9s": {
+      "source_hash": "2a56cc7c5822",
+      "text": "De ahí las menos de 3 horas del inicio: la puerta ya estaba abierta y la IA solo fue rápido."
+    },
+    "ubmv": {
+      "source_hash": "6d6afad3c162",
+      "text": "¿Y dónde estaba esta vez la llave en Taiwán?"
+    },
+    "kwit": {
+      "source_hash": "60a04b2cf132",
+      "text": "Está en el informe de esa empresa."
+    },
+    "d7ke": {
+      "source_hash": "a578aae063e7",
+      "text": "Appsmith, herramienta interna sin actualizar: por ahí el atacante entró a la red interna;"
+    },
+    "wzkp": {
+      "source_hash": "c6e6e3406c6e",
+      "text": "y en GitLab, una clave de base de datos;"
+    },
+    "kfdv": {
+      "source_hash": "f5beec9fa00d",
+      "text": "y con ella entró a la base de pedidos, sin datos de pago como tarjetas."
+    },
+    "qb46": {
+      "source_hash": "b08630ba2e23",
+      "text": "Ninguna falla nueva: una puerta mal cerrada y una llave en un repositorio."
+    },
+    "g47a": {
+      "source_hash": "85be112cd5ac",
+      "text": "Y ni siquiera era la llave más descuidada."
+    },
+    "3j5c": {
+      "source_hash": "4a678bfc51da",
+      "text": "Esa semana, Zeabur (Taiwán) perdió datos;"
+    },
+    "gpaj": {
+      "source_hash": "055027054734",
+      "text": "su informe no menciona ARTEX; anota cómo estaban guardadas las llaves:"
+    },
+    "nwji": {
+      "source_hash": "f9782dc30d3b",
+      "text": "el atacante usó credenciales admin duraderas en texto plano;"
+    },
+    "siri": {
+      "source_hash": "3e3e735bb015",
+      "text": "tras el incidente de agosto rotaron claves, pero justo estas no."
+    },
+    "29n6": {
+      "source_hash": "092655035988",
+      "text": "En 37 minutos se leyeron de su base más de 3,2 millones de variables de entorno."
+    },
+    "fvak": {
+      "source_hash": "d184f18968e7",
+      "text": "Su primer pedido: cambiar todas las contraseñas y claves, aunque ya lo hicieras en agosto."
+    },
+    "kemy": {
+      "source_hash": "8940de443fb0",
+      "text": "Entonces, si cambio mi contraseña, ¿listo?"
+    },
+    "bc63": {
+      "source_hash": "cb0ef5fd77ec",
+      "text": "Ayuda de Google: cambiar la contraseña cierra todas tus sesiones;"
+    },
+    "ei35": {
+      "source_hash": "8cf674c9e1d2",
+      "text": "pero una excepción son las apps de terceros a las que ya diste acceso a tu cuenta."
+    },
+    "qyat": {
+      "source_hash": "026d37580698",
+      "text": "Con cerradura nueva, la llave del tapete abre otra puerta."
+    },
+    "dqii": {
+      "source_hash": "463b8b5b6001",
+      "text": "Igual en empresas: ya dentro, añaden sus propias credenciales a la app;"
+    },
+    "f3e5": {
+      "source_hash": "f3cd35bd961c",
+      "text": "aunque reparen la app, las llaves nuevas pueden quedar de puerta trasera."
+    },
+    "urua": {
+      "source_hash": "56b6b614ff09",
+      "text": "No basta con cambiar la cerradura: busca y recupera las llaves que diste."
+    },
+    "8csm": {
+      "source_hash": "1a6f5696f578",
+      "text": "¿Y qué hay bajo mi propio tapete?"
+    },
+    "9c5b": {
+      "source_hash": "64fd153f9d69",
+      "text": "Creé un repo de prueba y primero hice commit de un .env con una contraseña falsa;"
+    },
+    "7iw4": {
+      "source_hash": "c7044b38646a",
+      "text": "luego lo borré y lo añadí a .gitignore."
+    },
+    "yzmt": {
+      "source_hash": "85b48813db60",
+      "text": "Listo la carpeta: el .env ya no está."
+    },
+    "tpcz": {
+      "source_hash": "9c70c5942b84",
+      "text": "Con el método más común, busco PASSWORD en toda la carpeta:"
+    },
+    "hvxy": {
+      "source_hash": "ba1686108eb0",
+      "text": "No aparece. Aquí, casi todos pensarían que la contraseña ya no existe."
+    },
+    "bk5g": {
+      "source_hash": "d14982d9536d",
+      "text": "Ahora la pregunta: ¿de verdad se borró?"
+    },
+    "qyg2": {
+      "source_hash": "9691cf6c1b50",
+      "text": "Le pregunto al historial de git con otro comando: ¿qué commits tocaron PASSWORD?"
+    },
+    "tzyy": {
+      "source_hash": "196ff7c71926",
+      "text": "Salen los dos: uno que la borró y otro que la agregó."
+    },
+    "a497": {
+      "source_hash": "a5f16b99e9d8",
+      "text": "Con git show, el commit que la agregó y el archivo;"
+    },
+    "5uez": {
+      "source_hash": "387de5574b46",
+      "text": "y vuelve el archivo entero; la contraseña está en la segunda línea."
+    },
+    "qt6f": {
+      "source_hash": "fe048fb60020",
+      "text": "Borrado y en .gitignore, y aun así un comando lo recupera."
+    },
+    "urui": {
+      "source_hash": "126b2bf40b0a",
+      "text": "Esa clave de base de datos estaba en un repositorio GitLab; el informe no dice cómo."
+    },
+    "ishi": {
+      "source_hash": "4644d0db2922",
+      "text": "Cambia PASSWORD por el nombre de tu clave,"
+    },
+    "asmx": {
+      "source_hash": "582e7addb5b1",
+      "text": "como API KEY o SECRET;"
+    },
+    "gzty": {
+      "source_hash": "da83b4f39297",
+      "text": "si sale, mira ese archivo con git show;"
+    },
+    "nq6x": {
+      "source_hash": "8f46aacdd4d3",
+      "text": "si no sale nada, la palabra no está en el historial de la rama actual."
+    },
+    "rgnn": {
+      "source_hash": "99f883f30c63",
+      "text": "Si aparece, pensarás: ¿y si borro el historial?"
+    },
+    "4qg5": {
+      "source_hash": "a22278c919f1",
+      "text": "La documentación de GitHub pone el orden al principio: el primer paso es revocar o rotar esa clave."
+    },
+    "epn2": {
+      "source_hash": "45b154967e8b",
+      "text": "Primero anula esa clave y crea otra;"
+    },
+    "wmyv": {
+      "source_hash": "382ecd2b0feb",
+      "text": "reescribir el historial puede esperar: solo cambia tu copia;"
+    },
+    "qb97": {
+      "source_hash": "a8ada1663602",
+      "text": "el historial viejo sigue en otras PC y forks; avisa a quien tenga copia."
+    },
+    "uwmf": {
+      "source_hash": "05c7f0129b7a",
+      "text": "Pero el repo es solo el tapete del programador. ¿Y el de quien no programa?"
+    },
+    "3t35": {
+      "source_hash": "7195d4e40be5",
+      "text": "En tu lista de autorizaciones."
+    },
+    "vtxp": {
+      "source_hash": "30bcd9820c12",
+      "text": "En tu cuenta de Google, en apps conectadas, abre los detalles y quita el acceso;"
+    },
+    "2wc7": {
+      "source_hash": "899d44c9ed09",
+      "text": "en los ajustes de GitHub, apps OAuth autorizadas: revoca las que no reconozcas."
+    },
+    "yt6t": {
+      "source_hash": "886ae4112912",
+      "text": "Regla simple: lo que no reconoces o no usas, quítalo; si hace falta, autoriza de nuevo."
+    },
+    "78d5": {
+      "source_hash": "82462964a42a",
+      "text": "En empresas, peor: todos cambian contraseña y quizá no baste."
+    },
+    "masb": {
+      "source_hash": "3a87c85c9d55",
+      "text": "Si administras Microsoft 365, revisa los accesos de las apps, no solo del personal;"
+    },
+    "ji9j": {
+      "source_hash": "82b020f03357",
+      "text": "nuevas credenciales en apps;"
+    },
+    "pw7e": {
+      "source_hash": "10b73fddfc13",
+      "text": "cambios de permisos y roles admin."
+    },
+    "jfjh": {
+      "source_hash": "7015f50fac24",
+      "text": "Lo que cambiar la contraseña no recupera: las llaves de estos tres lugares."
+    },
+    "txje": {
+      "source_hash": "06f674cbbc46",
+      "text": "Con eso, ¿aún te encuentra el hacker con IA?"
+    },
+    "v4ev": {
+      "source_hash": "001815edc0f4",
+      "text": "Creo que el hacker con IA no inventó entradas nuevas;"
+    },
+    "uesa": {
+      "source_hash": "c9e10a6439c3",
+      "text": "solo encuentra más rápido las llaves que dejaste."
+    },
+    "2yvb": {
+      "source_hash": "d6b5b97bc3dc",
+      "text": "Te afecta aunque no seas grande: elige la puerta más barata;"
+    },
+    "vkgi": {
+      "source_hash": "1d5df21d8007",
+      "text": "lo que puedes hacer es no ser esa puerta."
+    },
+    "8e9n": {
+      "source_hash": "7e4aaa5033ca",
+      "text": "No pude confirmar: cuántos miembros afectados hay; esa empresa lo dirá después;"
+    },
+    "i653": {
+      "source_hash": "d862861d6923",
+      "text": "la agencia vio ataques similares en Taiwán en julio; no dijo qué herramienta."
+    },
+    "hfq9": {
+      "source_hash": "748f2472617e",
+      "text": "Hoy: tus autorizaciones en Google y GitHub;"
+    },
+    "qgux": {
+      "source_hash": "d9b49162edcb",
+      "text": "esta semana, ejecuta ese comando en tu repositorio;"
+    },
+    "ijkr": {
+      "source_hash": "8778aa3dbf7b",
+      "text": "luego, claves que caduquen; la agencia pide cerrar cuentas al salir y revisar permisos cada trimestre."
+    },
+    "wkg5": {
+      "source_hash": "413505d64090",
+      "text": "Llaves, no solo cerraduras."
+    },
+    "zha9": {
+      "source_hash": "e660e332c916",
+      "text": "¿Cuántas quitaste? Cuéntame."
+    },
+    "8y54": {
+      "source_hash": "3bfeebb0032d",
+      "text": "Suscríbete: cada video te da una decisión práctica."
+    }
+  }
+}
