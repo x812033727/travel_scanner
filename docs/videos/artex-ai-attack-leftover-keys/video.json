@@ -1,0 +1,1511 @@
+{
+  "schema_version": 1,
+  "slug": "artex-ai-attack-leftover-keys",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像跟一個剛收到防詐通知、有點擔心的朋友把事情講清楚：平穩、不嚇人，不渲染國家。數字與日期一個一個咬清楚；替觀眾問的疑問上揚，答案接得乾脆；門墊那個對照用輕的語氣；終端機那幾張像在旁邊看他打，放慢；「一行指令就拿回來」亮起來；「我的看法是」放慢放穩；「我查不到」放輕；留言題輕輕收。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "loops": [
+    {
+      "setup": "3h5e",
+      "payoff": "2yvb",
+      "what": "我不是大公司，關我什麼事"
+    },
+    {
+      "setup": "4irk",
+      "payoff": "j7dk",
+      "what": "十五萬次失敗，那它怎麼進去的"
+    },
+    {
+      "setup": "yfkf",
+      "payoff": "urua",
+      "what": "改密碼為什麼收不回來"
+    },
+    {
+      "setup": "v5t8",
+      "payoff": "wzkp",
+      "what": "承諾的：三份報告講它從哪進去"
+    },
+    {
+      "setup": "vbbm",
+      "payoff": "5uez",
+      "what": "承諾的：一行指令拿回刪掉的密碼"
+    },
+    {
+      "setup": "7bwz",
+      "payoff": "yt6t",
+      "what": "承諾的：三個地方收回鑰匙"
+    },
+    {
+      "setup": "52j9",
+      "payoff": "j7dk",
+      "what": "它翻的是哪些門墊"
+    },
+    {
+      "setup": "yqhv",
+      "payoff": "zz9s",
+      "what": "兩步驟驗證擋住了不就好了"
+    },
+    {
+      "setup": "ubmv",
+      "payoff": "wzkp",
+      "what": "台灣這次的鑰匙放在哪"
+    },
+    {
+      "setup": "kemy",
+      "payoff": "ei35",
+      "what": "我把密碼改掉總可以了吧"
+    },
+    {
+      "setup": "8csm",
+      "payoff": "5uez",
+      "what": "我自己的門墊下放了什麼"
+    },
+    {
+      "setup": "bk5g",
+      "payoff": "5uez",
+      "what": "真的刪掉了嗎"
+    },
+    {
+      "setup": "rgnn",
+      "payoff": "4qg5",
+      "what": "找到了，刪歷史就好？"
+    }
+  ],
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "ARTEX：AI 駭客不到 3 小時打進雲端，它沒猜密碼，是撿走你放著的鑰匙",
+    "description": "2026 年 10 月 21 日，Microsoft 公布一份報告：它評估一個跟中國政府有關的駭客組織，用 AI 自主滲透測試工具 ARTEX 同時攻擊全球幾百個組織，好幾次從鎖定到拿下雲端管理權限不到三小時；隔天台灣的 91APP 也在調查報告裡寫出 ARTEX 的痕跡。這支用三份官方報告講它實際從哪裡進去：其中一波十五萬次猜密碼全部失敗，進去的是早就被授權的 App、GitLab 裡的一把資料庫金鑰；再跑一行 git 指令，把一個已經刪掉的密碼從歷史裡拿回來，最後是收回鑰匙的三個地方。\n寫給用 Google 帳號登入一堆服務的人、會把專案推上 GitHub 的工程師與新手，以及替公司管 Microsoft 365 的人。\n\n錄製日期 2026 年 10 月 27 日。猜密碼的次數、早就授權的應用程式、不到三小時、2,250 個租戶與新增的認證可當後門，照 Microsoft Threat Intelligence 10 月 21 日的報告；Appsmith、GitLab 裡的資料庫金鑰與時間，照 91APP 10 月 22 日的 18 天調查報告；日本約 20 家企業，照 GMO サイバーセキュリティ by イエラエ 10 月 19 日的調查（ScanNetSecurity、iThome 報導）；韓國逾 6 萬筆個資與防禦建議，照數位發展部資安署 10 月 21 日新聞稿；署長說 AI 評估成本後放棄部分企業、7 月國內監測到類似攻擊，照 iThome 對同日記者會的報導；Zeabur 的明文憑證、八月沒輪替到與 321 萬筆環境變數，照 Zeabur 10 月 19 日初步報告，該報告沒有提到 ARTEX 或 AI 工具；改密碼的例外照 Google 帳戶說明；先撤銷或輪替照 GitHub Docs。片中的終端機畫面是 2026-10-27 在 Ubuntu 24.04.5、git 2.43.0 上建的示範倉庫真的跑出來的，密碼是假的。「我的看法是」「我查不到」是站主的意見。本片不示範任何攻擊、不提供攻擊工具的連結。\n\n片中的指令：\ngit log --oneline -G PASSWORD\ngit show b3faea1:.env\ngit log --oneline -G API_KEY\n\n你的 Google 授權清單裡，有幾個已經不認得的 App？留言告訴我。",
+    "tags": [
+      "ARTEX",
+      "AI 駭客",
+      "91APP 資安",
+      "AI 資安攻擊",
+      "Microsoft Storm-0940",
+      "Zeabur 資安事件",
+      "git 刪除密碼",
+      "OAuth 授權 App",
+      "資安署",
+      "AI 時事"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI 新聞",
+      "headline": "**撿鑰匙**\n不撬鎖",
+      "sub": "ARTEX：AI 駭客怎麼進去、你的鑰匙怎麼收回",
+      "capture": "ms-page"
+    }
+  },
+  "sources": [
+    {
+      "title": "Microsoft Security Blog: AI-driven, large-scale nation-state campaign using ARTEX enables supply chain compromise (2026-10-21)",
+      "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "91APP 新聞中心：91APP 公布《2026 遭受駭客攻擊事件 18 天調查報告》(2026-10-22)",
+      "url": "https://91app.com/blog/91app-202610-security-incident/",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "數位發展部資通安全署新聞稿：新型態 AI 攻擊來襲！資安署提出企業防護策略與行動 (2026-10-21)",
+      "url": "https://moda.gov.tw/ACS/press/news/press/21130",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "iThome：資安署示警AI攻擊進入新階段 (2026-10-21)",
+      "url": "https://www.ithome.com.tw/news/179865",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "ScanNetSecurity：GMOサイバーセキュリティ byイエラエ、不正アクセス攻撃元にAI自律型ペンテストシステム「ARTEX」を確認 (2026-10-21)",
+      "url": "https://scan.netsecurity.ne.jp/article/2026/10/21/56522.html",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "iThome：日本企業接連遭駭，GMO確認攻擊者使用AI滲透測試工具ARTEX",
+      "url": "https://www.ithome.com.tw/news/179850",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "iThome：91APP遭駭事件查出ARTEX攻擊痕跡",
+      "url": "https://www.ithome.com.tw/news/179923",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Zeabur：2026 年十月資安事件（初步報告）(2026-10-19)",
+      "url": "https://zeabur.com/zh-TW/blogs/october-2026-security-incident",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Google 帳戶說明：變更或重設密碼",
+      "url": "https://support.google.com/accounts/answer/41078?hl=zh-Hant",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Google 帳戶說明：管理 Google 帳戶與第三方應用程式之間的連結",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=zh-Hant",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "GitHub Docs: Removing sensitive data from a repository",
+      "url": "https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/removing-sensitive-data-from-a-repository",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "GitHub Docs: Reviewing your authorized OAuth apps",
+      "url": "https://docs.github.com/en/apps/oauth-apps/using-oauth-apps/reviewing-your-authorized-oauth-apps",
+      "checked_on": "2026-10-27"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "ARTEX 是什麼？",
+      "template": "title",
+      "data": {
+        "tag": "AI 新聞",
+        "title": "AI 駭客不猜密碼，\n它**撿鑰匙**",
+        "subtitle": "ARTEX · Microsoft 報告 2026-10-21 · 91APP 調查 2026-10-22",
+        "key": "ARTEX：AI 自主滲透測試工具"
+      },
+      "lines": [
+        {
+          "id": "y9kb",
+          "text": "10 月 21 日，Microsoft 評估：一個中國政府相關的駭客組織，",
+          "emotion": "開場平穩"
+        },
+        {
+          "id": "7tzn",
+          "text": "用 AI 工具 ARTEX，攻擊了幾百個組織；",
+          "emotion": "ARTEX 放慢"
+        },
+        {
+          "id": "tiky",
+          "text": "好幾次，不到三小時就拿下雲端管理權限；隔天，台灣的 91APP 也找到它的痕跡。",
+          "emotion": "「不到三小時」放慢，「台灣」停半拍"
+        }
+      ],
+      "claims": [
+        "c1",
+        "c2",
+        "c3",
+        "c4"
+      ]
+    },
+    {
+      "id": "naive",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會問",
+        "text": "我又不是大公司，\n密碼也夠長？",
+        "key": "我不是大公司，關我什麼事？"
+      },
+      "lines": [
+        {
+          "id": "3h5e",
+          "text": "你可能會問：我又不是大公司，密碼也設得夠長，這跟我有什麼關係？",
+          "emotion": "替觀眾問，帶一點不以為然，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "not-guessing",
+      "template": "big",
+      "data": {
+        "kicker": "其實",
+        "text": "它進門的方法\n**不是猜密碼**",
+        "key": "15 萬次猜密碼，全部失敗"
+      },
+      "lines": [
+        {
+          "id": "4irk",
+          "text": "有關係：它其中一波猜了十五萬次密碼，全部失敗；",
+          "emotion": "「其實」的語氣，數字放慢"
+        },
+        {
+          "id": "6pn9",
+          "text": "真正進去的，是早就被允許的 App，和沒人記得的金鑰。",
+          "emotion": "「早就被允許」加重"
+        }
+      ],
+      "claims": [
+        "c5",
+        "c6"
+      ]
+    },
+    {
+      "id": "stakes",
+      "template": "big",
+      "data": {
+        "kicker": "這種鑰匙你家也有",
+        "text": "按過「允許」的 App\n刪掉卻還在的設定檔",
+        "key": "改密碼收不回來"
+      },
+      "lines": [
+        {
+          "id": "yfkf",
+          "text": "這種鑰匙你家也有，而且改密碼收不回來。",
+          "emotion": "短句，「收不回來」壓低"
+        }
+      ]
+    },
+    {
+      "id": "promise",
+      "template": "bullets",
+      "data": {
+        "title": "接下來",
+        "items": [
+          {
+            "text": "三份官方報告：它從哪進去",
+            "icon": "document"
+          },
+          {
+            "text": "一行指令：拿回刪掉的密碼",
+            "icon": "terminal"
+          },
+          {
+            "text": "三個地方：收回你的鑰匙",
+            "icon": "lock"
+          }
+        ],
+        "keys": [
+          "三份報告：它從哪進去",
+          "一行指令、三個地方"
+        ]
+      },
+      "lines": [
+        {
+          "id": "v5t8",
+          "text": "接下來：三份官方報告，講它從哪裡進去；",
+          "emotion": "承諾句，穩"
+        },
+        {
+          "id": "vbbm",
+          "text": "一行指令，把刪掉的密碼從歷史裡拿回來；",
+          "reveal": 1
+        },
+        {
+          "id": "7bwz",
+          "text": "三個地方，把你的鑰匙收回來。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "month",
+      "chapter": "跟我有關嗎？我又不是大公司",
+      "template": "stats",
+      "data": {
+        "title": "這一個月，三個國家",
+        "stats": [
+          {
+            "value": "逾 6 萬筆",
+            "label": "韓國金融機構外洩的個資"
+          },
+          {
+            "value": "約 20 家",
+            "label": "日本：一台攻擊主機鎖定的企業"
+          },
+          {
+            "value": "1 座",
+            "label": "台灣 91APP：被存取的訂單資料庫"
+          }
+        ],
+        "source": "資安署 10-21；GMO 10-19；91APP 10-22",
+        "keys": [
+          "韓國：逾 6 萬筆個資",
+          "日本：一台主機鎖定約 20 家",
+          "台灣：91APP 的訂單資料庫"
+        ]
+      },
+      "lines": [
+        {
+          "id": "kwvr",
+          "text": "韓國的金融機構，被 AI 工具配合跳板入侵，外洩超過六萬筆個資；",
+          "emotion": "平實"
+        },
+        {
+          "id": "wnqk",
+          "text": "日本的資安公司 GMO 查到，光一台攻擊主機就鎖定約二十家企業；",
+          "reveal": 1
+        },
+        {
+          "id": "d5nu",
+          "text": "台灣就是剛剛那家電商：一座訂單資料庫被存取，報告裡寫著 ARTEX 的痕跡。",
+          "reveal": 1,
+          "emotion": "「台灣」清楚"
+        }
+      ],
+      "claims": [
+        "c7",
+        "c8",
+        "c9",
+        "c4"
+      ]
+    },
+    {
+      "id": "acs",
+      "template": "quote",
+      "data": {
+        "kicker": "數位發展部資安署，2026-10-21",
+        "quote": "新興 AI 大幅降低了攻擊成本並提升攻擊速度，但防禦的核心觀念並未改變",
+        "source": "moda.gov.tw/ACS 新聞稿 · 2026-10-21",
+        "keys": [
+          "資安署：AI 改變速度與成本",
+          "防禦的觀念沒變"
+        ]
+      },
+      "lines": [
+        {
+          "id": "kj3y",
+          "text": "數位發展部資安署的說法是：AI 降低了攻擊的成本、提高了速度，",
+          "emotion": "平，停半拍"
+        },
+        {
+          "id": "dxwq",
+          "text": "但防禦的核心觀念沒有變。",
+          "emotion": "「沒有變」清楚"
+        }
+      ],
+      "claims": [
+        "c10"
+      ]
+    },
+    {
+      "id": "cheap",
+      "template": "big",
+      "data": {
+        "kicker": "資安署署長，記者會",
+        "text": "AI 會先挑\n**便宜的門**",
+        "key": "扎實的企業，AI 評估後放棄"
+      },
+      "lines": [
+        {
+          "id": "3zwr",
+          "text": "記者會上，署長補了一個觀察：",
+          "emotion": "像轉述，平"
+        },
+        {
+          "id": "na73",
+          "text": "部分基礎扎實的企業，AI 工具評估過攻擊成本，就放棄了，轉向防護比較弱的目標。",
+          "emotion": "「放棄了」停半拍"
+        },
+        {
+          "id": "kwax",
+          "text": "它不挑公司大小，挑的是便宜。",
+          "emotion": "短句，乾脆"
+        }
+      ],
+      "claims": [
+        "c11"
+      ]
+    },
+    {
+      "id": "doormat",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "撬鎖的小偷",
+          "icon": "lock",
+          "points": [
+            "一扇門一扇門試",
+            "鎖夠好就進不來"
+          ]
+        },
+        "right": {
+          "heading": "翻門墊的小偷",
+          "icon": "search",
+          "points": [
+            "一晚翻幾千家門墊",
+            "翻到鑰匙就開門"
+          ]
+        },
+        "keys": [
+          "撬鎖：一扇一扇試",
+          "翻門墊：找到鑰匙就開門"
+        ]
+      },
+      "lines": [
+        {
+          "id": "uny5",
+          "text": "所以 AI 駭客比較像翻門墊的小偷，不是撬鎖的。",
+          "emotion": "對照的語氣，輕"
+        },
+        {
+          "id": "yfsm",
+          "text": "撬鎖，要一扇門一扇門試，鎖夠好就進不來；",
+          "reveal": 1
+        },
+        {
+          "id": "ugft",
+          "text": "翻門墊，一個晚上翻幾千家，翻到備用鑰匙就開門。",
+          "reveal": 1,
+          "emotion": "「備用鑰匙」加重"
+        },
+        {
+          "id": "52j9",
+          "text": "那它翻的，到底是哪些門墊？",
+          "emotion": "問句上揚，輕輕收"
+        }
+      ]
+    },
+    {
+      "id": "ms-page",
+      "chapter": "AI 到底怎麼進去的？",
+      "template": "screencast",
+      "data": {
+        "title": "Microsoft 的報告",
+        "caption": "microsoft.com/security/blog · 2026-10-21 · 2026-10-27 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://www.microsoft.com/en-us/security/blog/2026/10/21/storm-0940-uses-artex-agentic-ai-connectwise-supply-chain-compromise/"
+          },
+          {
+            "action": "wait",
+            "selector": "h1.card-block__title"
+          },
+          {
+            "action": "capture",
+            "focus": "h1.card-block__title",
+            "zoom": 1.2
+          }
+        ],
+        "key": "Microsoft 2026-10-21 的報告"
+      },
+      "lines": [
+        {
+          "id": "wq9c",
+          "text": "門墊的答案，在 Microsoft 這份報告裡，連結在說明欄。",
+          "emotion": "像指著畫面，平"
+        }
+      ],
+      "claims": [
+        "c1"
+      ]
+    },
+    {
+      "id": "spray",
+      "template": "stats",
+      "data": {
+        "title": "其中一波猜密碼（10/10–10/14）",
+        "stats": [
+          {
+            "value": "151,000+",
+            "label": "次登入失敗",
+            "note": "8 個組織、327 個帳號"
+          },
+          {
+            "value": "約 98%",
+            "label": "回應是帳號被鎖住"
+          },
+          {
+            "value": "0",
+            "label": "次成功登入"
+          }
+        ],
+        "source": "Microsoft Threat Intelligence · 2026-10-21",
+        "keys": [
+          "八個組織、327 個帳號",
+          "失敗 15 萬次，最高一分鐘 2,900 次",
+          "成功登入：零次"
+        ]
+      },
+      "lines": [
+        {
+          "id": "a6cm",
+          "text": "十月十號到十四號，這個組織對八個組織、三百二十七個帳號猜密碼；",
+          "emotion": "日期清楚"
+        },
+        {
+          "id": "5xut",
+          "text": "開頭說的十五萬次就是這一波，最高一分鐘兩千九百次；",
+          "reveal": 1,
+          "emotion": "數字一個一個加快"
+        },
+        {
+          "id": "krad",
+          "text": "將近九成八的回應是帳號被鎖住；成功登入，零次。",
+          "reveal": 1,
+          "emotion": "「零次」停半拍"
+        }
+      ],
+      "claims": [
+        "c5",
+        "c12"
+      ]
+    },
+    {
+      "id": "mfa",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會想",
+        "text": "密碼和兩步驟驗證\n都擋住了，不就好了？",
+        "key": "擋住了，不就好了？"
+      },
+      "lines": [
+        {
+          "id": "yqhv",
+          "text": "你可能會想：密碼和兩步驟驗證都擋住了，那不就好了？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "bqc5",
+          "text": "問題是，它根本不需要走那扇門。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "granted",
+      "template": "quote",
+      "data": {
+        "kicker": "Microsoft 的報告",
+        "quote": "…to authenticate to Microsoft 365 customer environments through applications that had already been granted access",
+        "source": "microsoft.com/security/blog · 2026-10-21",
+        "translation": "透過早就被授權的應用程式，登入 Microsoft 365 的客戶環境",
+        "keys": [
+          "拿到 ConnectWise 的應用程式憑證",
+          "從早就授權過的 App 進去"
+        ]
+      },
+      "lines": [
+        {
+          "id": "wqed",
+          "text": "報告說，它拿到備份服務商 ConnectWise 的應用程式憑證，",
+          "emotion": "平"
+        },
+        {
+          "id": "j7dk",
+          "text": "再透過客戶早就授權過的那個 App，直接進到客戶的 Microsoft 365；",
+          "reveal": 1,
+          "emotion": "「早就授權過」放慢"
+        },
+        {
+          "id": "anq3",
+          "text": "過程中不需要任何人登入，所以也沒有兩步驟驗證可以擋。",
+          "emotion": "亮起來"
+        }
+      ],
+      "claims": [
+        "c6",
+        "c13"
+      ]
+    },
+    {
+      "id": "three-hours",
+      "template": "big",
+      "data": {
+        "kicker": "從鎖定到拿下雲端管理權限",
+        "numeral": "3",
+        "text": "小時不到",
+        "sub": "Microsoft：多次案例；超過 2,250 個租戶被嘗試登入",
+        "key": "門早就開著，AI 只是走得快"
+      },
+      "lines": [
+        {
+          "id": "v7kk",
+          "text": "AI 讓這件事變成機器的速度：它對兩千兩百五十多個企業的雲端環境嘗試登入。",
+          "emotion": "平穩，數字清楚"
+        },
+        {
+          "id": "zz9s",
+          "text": "開頭說的不到三小時，就是這樣來的：門早就開著，AI 只是走得很快。",
+          "emotion": "「門早就開著」放慢"
+        },
+        {
+          "id": "ubmv",
+          "text": "那台灣這次的鑰匙，又放在哪裡？",
+          "emotion": "問句上揚"
+        }
+      ],
+      "claims": [
+        "c3",
+        "c14"
+      ]
+    },
+    {
+      "id": "timeline",
+      "chapter": "台灣這次的鑰匙放在哪？",
+      "template": "table",
+      "data": {
+        "title": "這一個月（日期依各家報告）",
+        "columns": [
+          "日期",
+          "發生什麼"
+        ],
+        "rows": [
+          [
+            "10/3",
+            "91APP 一座訂單資料庫被存取"
+          ],
+          [
+            "10/14–15",
+            "Zeabur 叢集與平台資料庫被讀取"
+          ],
+          [
+            "10/16",
+            "ConnectWise 公告備份服務遭存取"
+          ],
+          [
+            "10/19",
+            "GMO 確認日本企業遭 ARTEX 攻擊"
+          ],
+          [
+            "10/21",
+            "Microsoft 報告；資安署示警"
+          ],
+          [
+            "10/22",
+            "91APP 公布 18 天調查報告"
+          ]
+        ],
+        "source": "91APP、Zeabur、Microsoft、GMO、資安署",
+        "keys": [
+          "10/3：91APP",
+          "10/14–15：Zeabur",
+          "10/16：ConnectWise 公告",
+          "10/19：GMO 確認 ARTEX",
+          "10/21：Microsoft 與資安署",
+          "10/22：91APP 調查報告"
+        ]
+      },
+      "lines": [
+        {
+          "id": "4zjm",
+          "text": "把這一個月排起來看。十月三號，91APP 的一座訂單資料庫被存取；",
+          "emotion": "平穩，日期清楚"
+        },
+        {
+          "id": "f3qn",
+          "text": "十四、十五號，台灣的雲端部署平台 Zeabur 被入侵；",
+          "reveal": 1
+        },
+        {
+          "id": "vwab",
+          "text": "十六號，ConnectWise 公告它的備份服務被存取；",
+          "reveal": 1
+        },
+        {
+          "id": "cawt",
+          "text": "十九號，日本的 GMO 確認攻擊者用的是 ARTEX；",
+          "reveal": 1
+        },
+        {
+          "id": "sfzc",
+          "text": "二十一號，Microsoft 的報告和資安署的示警同一天出來；",
+          "reveal": 1
+        },
+        {
+          "id": "26an",
+          "text": "二十二號，那家電商公布十八天的調查報告。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ],
+      "claims": [
+        "c9",
+        "c15",
+        "c16",
+        "c8",
+        "c1",
+        "c10",
+        "c4"
+      ]
+    },
+    {
+      "id": "route-91app",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "沒更新的內部工具",
+            "detail": "Appsmith 套件未更新，攻擊者進入內網",
+            "icon": "gear"
+          },
+          {
+            "title": "GitLab 裡的一把金鑰",
+            "detail": "從 GitLab 取得資料庫金鑰",
+            "icon": "folder"
+          },
+          {
+            "title": "訂單資料庫",
+            "detail": "訂單資訊被存取；不含信用卡等支付資訊",
+            "icon": "file"
+          }
+        ],
+        "source": "91APP 18 天調查報告 · 2026-10-22",
+        "keys": [
+          "91APP：沒更新的 Appsmith",
+          "GitLab 裡的資料庫金鑰",
+          "訂單資料庫；不含信用卡"
+        ]
+      },
+      "lines": [
+        {
+          "id": "kwit",
+          "text": "這份調查報告寫了攻擊者走的路：一套內部效率工具 Appsmith，套件沒有更新，",
+          "emotion": "平穩"
+        },
+        {
+          "id": "d7ke",
+          "text": "攻擊者從這裡進到內部網路；"
+        },
+        {
+          "id": "wzkp",
+          "text": "接著在 GitLab 裡，拿到一把資料庫金鑰；",
+          "reveal": 1,
+          "emotion": "「一把資料庫金鑰」放慢"
+        },
+        {
+          "id": "kfdv",
+          "text": "最後用這把金鑰進到訂單資料庫，不含信用卡等支付資訊。",
+          "reveal": 1
+        },
+        {
+          "id": "qb46",
+          "text": "沒有新的漏洞，只有一扇沒關好的門，和一把放在程式碼倉庫裡的鑰匙。",
+          "emotion": "收穩，不加油添醋"
+        }
+      ],
+      "claims": [
+        "c17",
+        "c18"
+      ]
+    },
+    {
+      "id": "zeabur",
+      "template": "big",
+      "data": {
+        "kicker": "同一週的另一個台灣例子",
+        "text": "明文、沒期限、\n八月**沒換到**",
+        "sub": "Zeabur 初步報告 2026-10-19；未提及 ARTEX，也未說攻擊者用 AI 工具",
+        "key": "37 分鐘，逾 321 萬筆環境變數"
+      },
+      "lines": [
+        {
+          "id": "3j5c",
+          "text": "同一週的 Zeabur，是另一種放法；",
+          "emotion": "平"
+        },
+        {
+          "id": "gpaj",
+          "text": "它的報告沒有提到 ARTEX，也沒說攻擊者用了 AI 工具。",
+          "emotion": "「沒有提到」清楚"
+        },
+        {
+          "id": "nwji",
+          "text": "攻擊者用的，是長期有效、用明文保存的管理憑證；",
+          "emotion": "平"
+        },
+        {
+          "id": "siri",
+          "text": "八月出事之後換過一輪金鑰，偏偏沒換到這幾把。",
+          "emotion": "「偏偏」放慢"
+        },
+        {
+          "id": "29n6",
+          "text": "三十七分鐘裡，平台資料庫被讀走三百二十多萬筆環境變數。",
+          "emotion": "數字放慢"
+        }
+      ],
+      "claims": [
+        "c19",
+        "c20",
+        "c21"
+      ]
+    },
+    {
+      "id": "zeabur-ask",
+      "template": "quote",
+      "data": {
+        "kicker": "Zeabur 給使用者的第一件事",
+        "quote": "請更換存放在 Zeabur 的所有密碼與金鑰，即使八月事件後已經換過。",
+        "source": "zeabur.com · 2026-10-19 初步報告",
+        "keys": [
+          "所有密碼和金鑰都要換",
+          "即使八月已經換過"
+        ]
+      },
+      "lines": [
+        {
+          "id": "fvak",
+          "text": "所以它給使用者的第一件事是：所有密碼和金鑰都要換，即使八月已經換過。",
+          "emotion": "平穩"
+        },
+        {
+          "id": "kemy",
+          "text": "那我把自己的密碼改掉，總可以了吧？",
+          "emotion": "替觀眾問，問句上揚"
+        }
+      ],
+      "claims": [
+        "c22"
+      ]
+    },
+    {
+      "id": "google",
+      "chapter": "換了密碼不就好了？",
+      "template": "quote",
+      "data": {
+        "kicker": "Google 帳戶說明：變更或重設密碼",
+        "quote": "系統會將你登出所有裝置，但以下裝置例外：…安裝了第三方應用程式的某些裝置，而且你已將帳戶存取權授予這些應用程式。",
+        "source": "support.google.com/accounts/answer/41078",
+        "keys": [
+          "改密碼：登出所有裝置",
+          "例外：你授權過的第三方應用程式"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bc63",
+          "text": "Google 的帳戶說明寫著：改密碼，會把你登出所有裝置；",
+          "emotion": "平"
+        },
+        {
+          "id": "ei35",
+          "text": "但例外是，你已經授權存取帳戶的那些第三方應用程式。",
+          "emotion": "「例外」停半拍"
+        },
+        {
+          "id": "qyat",
+          "text": "換了鎖，門墊下那把鑰匙開的是另一扇門。",
+          "emotion": "對照，輕"
+        }
+      ],
+      "claims": [
+        "c23"
+      ]
+    },
+    {
+      "id": "backdoor",
+      "template": "quote",
+      "data": {
+        "kicker": "Microsoft 的報告",
+        "quote": "These changes can remain active as a backdoor even after the original compromised application is mediated.",
+        "source": "microsoft.com/security/blog · 2026-10-21",
+        "translation": "這些變更在原本被入侵的應用程式處理好之後，仍可能繼續當後門。",
+        "keys": [
+          "攻擊者替 App 加上自己的憑證",
+          "原本的 App 修好，後門還在"
+        ]
+      },
+      "lines": [
+        {
+          "id": "dqii",
+          "text": "企業的版本也一樣：攻擊者進去之後，會替應用程式加上自己的憑證；",
+          "emotion": "平"
+        },
+        {
+          "id": "f3e5",
+          "text": "原本那個 App 修好了，這些新加的憑證還可能留著當後門。",
+          "reveal": 1,
+          "emotion": "「後門」壓低"
+        }
+      ],
+      "claims": [
+        "c24"
+      ]
+    },
+    {
+      "id": "keys-not-locks",
+      "template": "big",
+      "data": {
+        "kicker": "所以",
+        "text": "要找的是**鑰匙**，\n不只換鎖",
+        "key": "把放出去的鑰匙找出來、收回來"
+      },
+      "lines": [
+        {
+          "id": "urua",
+          "text": "所以該做的不只是換鎖，是把放出去的鑰匙找出來、收回來。",
+          "emotion": "亮起來"
+        },
+        {
+          "id": "8csm",
+          "text": "那我自己的門墊下，放了什麼？",
+          "emotion": "問句，輕輕收"
+        }
+      ]
+    },
+    {
+      "id": "ls",
+      "chapter": "我自己的鑰匙怎麼找？",
+      "template": "terminal",
+      "data": {
+        "title": "示範倉庫：刪掉 .env 之後",
+        "command": "ls -A",
+        "output": [
+          ".git\n.gitignore"
+        ],
+        "ran_on": "2026-10-27",
+        "tool_version": "ls (GNU coreutils) 9.4",
+        "typing": "human",
+        "keys": [
+          "示範倉庫，密碼是假的",
+          "設定檔不見了"
+        ]
+      },
+      "lines": [
+        {
+          "id": "9c5b",
+          "text": "我建了一個示範用的程式倉庫，先提交一個設定檔，裡面有一組假的資料庫密碼；",
+          "emotion": "像在旁邊看他打，放慢"
+        },
+        {
+          "id": "7iw4",
+          "text": "下一次提交把它刪掉，也加進忽略清單。"
+        },
+        {
+          "id": "yzmt",
+          "text": "列出資料夾，設定檔不見了。",
+          "reveal": 1,
+          "emotion": "平"
+        }
+      ],
+      "claims": [
+        "r1",
+        "r2"
+      ]
+    },
+    {
+      "id": "grep",
+      "template": "terminal",
+      "data": {
+        "title": "最常見的找法：搜尋檔案",
+        "command": "grep -rn PASSWORD --exclude-dir=.git . || echo \"not found\"",
+        "output": [
+          "not found"
+        ],
+        "ran_on": "2026-10-27",
+        "tool_version": "grep (GNU grep) 3.11",
+        "typing": "human",
+        "keys": [
+          "在整個資料夾搜尋 PASSWORD",
+          "找不到"
+        ]
+      },
+      "lines": [
+        {
+          "id": "tpcz",
+          "text": "再用最常見的方法，在整個資料夾搜尋 PASSWORD 這個字：",
+          "emotion": "放慢"
+        },
+        {
+          "id": "hvxy",
+          "text": "找不到。到這裡，大部分人會覺得密碼已經不在了。",
+          "reveal": 1,
+          "emotion": "平，帶一點放心"
+        }
+      ],
+      "claims": [
+        "r3"
+      ]
+    },
+    {
+      "id": "gone",
+      "template": "big",
+      "data": {
+        "kicker": "問題來了",
+        "text": "真的**刪掉**了嗎？",
+        "key": "真的刪掉了嗎？"
+      },
+      "lines": [
+        {
+          "id": "bk5g",
+          "text": "問題來了：它真的被刪掉了嗎？",
+          "emotion": "停一拍，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "gitlog",
+      "template": "terminal",
+      "data": {
+        "title": "問 git 的歷史",
+        "command": "git log --oneline -G PASSWORD",
+        "output": [
+          "984e6d1 remove secrets from repo\nb3faea1 add db config"
+        ],
+        "ran_on": "2026-10-27",
+        "tool_version": "git version 2.43.0, Ubuntu 24.04.5 LTS",
+        "typing": "human",
+        "keys": [
+          "哪幾次提交動過 PASSWORD？",
+          "兩筆：加進去、刪掉"
+        ]
+      },
+      "lines": [
+        {
+          "id": "qyg2",
+          "text": "換一行指令，問 git 的歷史：哪幾次提交，動過含有 PASSWORD 的那一行？",
+          "emotion": "放慢，像在等它打完"
+        },
+        {
+          "id": "tzyy",
+          "text": "兩筆都出來了：一筆是刪掉的，一筆是加進去的。",
+          "reveal": 1,
+          "emotion": "清楚"
+        }
+      ],
+      "claims": [
+        "r4"
+      ]
+    },
+    {
+      "id": "gitshow",
+      "template": "terminal",
+      "data": {
+        "title": "拿回加進去的那一次",
+        "command": "git show b3faea1:.env",
+        "output": [
+          "DB_HOST=orders-db.internal\nDB_PASSWORD=demo-not-a-real-secret"
+        ],
+        "ran_on": "2026-10-27",
+        "tool_version": "git version 2.43.0, Ubuntu 24.04.5 LTS",
+        "typing": "human",
+        "keys": [
+          "指定提交和檔名",
+          "整個設定檔回來了"
+        ]
+      },
+      "lines": [
+        {
+          "id": "a497",
+          "text": "再用 git show，指定加進去的那一次和那個檔名；",
+          "emotion": "放慢"
+        },
+        {
+          "id": "5uez",
+          "text": "整個設定檔原封不動回來了，密碼就在第二行。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ],
+      "claims": [
+        "r5"
+      ]
+    },
+    {
+      "id": "one-line",
+      "template": "big",
+      "data": {
+        "kicker": "刪掉、也加進忽略清單",
+        "text": "一行指令\n**就拿回來**",
+        "key": "刪掉的不等於消失"
+      },
+      "lines": [
+        {
+          "id": "qt6f",
+          "text": "刪掉了，也加進忽略清單，一行指令還是拿得回來。",
+          "emotion": "平，帶一點意外"
+        },
+        {
+          "id": "urui",
+          "text": "剛剛那把資料庫金鑰，也放在 GitLab 這種程式碼倉庫裡；它是怎麼放的，報告沒有寫。",
+          "emotion": "平，「報告沒有寫」清楚"
+        }
+      ],
+      "claims": [
+        "c18"
+      ]
+    },
+    {
+      "id": "your-line",
+      "template": "code",
+      "data": {
+        "title": "換成你的金鑰名稱",
+        "code": "# 在你自己的倉庫資料夾裡\ngit log --oneline -G API_KEY\ngit log --oneline -G SECRET\n\n# 找到之後，看那一次的檔案\ngit show <提交編號>:<檔名>",
+        "caption": "沒有任何輸出，代表歷史裡沒有這個字（2026-10-27 示範倉庫跑 -G API_KEY）"
+      },
+      "lines": [
+        {
+          "id": "ishi",
+          "text": "換成你的專案：把 PASSWORD 換成你自己的金鑰名稱，",
+          "emotion": "清楚，乾脆"
+        },
+        {
+          "id": "asmx",
+          "text": "例如 API_KEY 或 SECRET；"
+        },
+        {
+          "id": "gzty",
+          "text": "找到了，就用 git show 看那一次的檔案；",
+          "emotion": "平"
+        },
+        {
+          "id": "nq6x",
+          "text": "沒有任何輸出，就是歷史裡沒有這個字。",
+          "emotion": "收穩"
+        }
+      ],
+      "claims": [
+        "r6"
+      ]
+    },
+    {
+      "id": "rotate",
+      "template": "quote",
+      "data": {
+        "kicker": "GitHub Docs：Removing sensitive data",
+        "quote": "…as a first step you need to revoke and/or rotate that secret.",
+        "source": "docs.github.com · Removing sensitive data",
+        "translation": "第一步，你要撤銷或輪替那個密鑰。",
+        "keys": [
+          "找到了，先刪歷史？",
+          "第一步：撤銷或輪替"
+        ]
+      },
+      "lines": [
+        {
+          "id": "rgnn",
+          "text": "找到了，你可能會想：那我把歷史刪乾淨就好？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "4qg5",
+          "text": "GitHub 的說明把順序寫在最前面：第一步，是撤銷或輪替那把金鑰。",
+          "reveal": 1,
+          "emotion": "「第一步」加重"
+        }
+      ],
+      "claims": [
+        "c25"
+      ]
+    },
+    {
+      "id": "after-found",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "撤銷或輪替",
+            "detail": "讓找到的那把失效，換一把新的",
+            "icon": "lock"
+          },
+          {
+            "title": "再決定改不改歷史",
+            "detail": "改寫只改得到你這一份",
+            "icon": "gear"
+          },
+          {
+            "title": "通知有複本的人",
+            "detail": "clone、fork 裡的舊歷史還在",
+            "icon": "person"
+          }
+        ],
+        "source": "GitHub Docs：Removing sensitive data",
+        "keys": [
+          "一、先讓它失效",
+          "二、再決定改不改歷史",
+          "三、通知有複本的人"
+        ]
+      },
+      "lines": [
+        {
+          "id": "epn2",
+          "text": "因為改寫歷史，只改得到你這一份；",
+          "emotion": "平"
+        },
+        {
+          "id": "wmyv",
+          "text": "別人電腦上的複本、fork 出去的那份，舊的歷史都還在。",
+          "reveal": 1
+        },
+        {
+          "id": "qb97",
+          "text": "所以順序是：先讓它失效，再決定要不要改寫歷史，最後通知有複本的人。",
+          "reveal": 1,
+          "emotion": "清單，清楚"
+        }
+      ],
+      "claims": [
+        "c26"
+      ]
+    },
+    {
+      "id": "accounts",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Google 帳戶",
+            "detail": "連結的應用程式 → 查看詳細資料 → 移除存取權",
+            "icon": "globe"
+          },
+          {
+            "title": "GitHub",
+            "detail": "Settings → Applications → Authorized OAuth Apps → Revoke",
+            "icon": "folder"
+          },
+          {
+            "title": "不認得、不再用的",
+            "detail": "先移除；需要時再授權一次",
+            "icon": "checklist"
+          }
+        ],
+        "source": "Google 帳戶說明；GitHub Docs",
+        "keys": [
+          "Google：連結的應用程式",
+          "GitHub：Authorized OAuth Apps",
+          "不認得的先移除"
+        ]
+      },
+      "lines": [
+        {
+          "id": "uwmf",
+          "text": "不寫程式的人，門墊在帳號的授權清單裡。",
+          "emotion": "平，換個口氣"
+        },
+        {
+          "id": "vtxp",
+          "text": "Google 帳戶有一頁連結的應用程式，點進每個 App 的詳細資料，可以移除存取權；",
+          "emotion": "清楚"
+        },
+        {
+          "id": "2wc7",
+          "text": "GitHub 的設定裡，有一頁授權過的 OAuth 應用程式，不認得的就撤銷。",
+          "reveal": 1
+        },
+        {
+          "id": "yt6t",
+          "text": "原則很簡單：不認得、不再用的，先移除，需要時再授權一次。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ],
+      "claims": [
+        "c27",
+        "c28"
+      ]
+    },
+    {
+      "id": "m365",
+      "template": "bullets",
+      "data": {
+        "title": "管 Microsoft 365 的人",
+        "items": [
+          {
+            "text": "看應用程式的登入，不只員工",
+            "icon": "search"
+          },
+          {
+            "text": "查應用程式新增的認證",
+            "icon": "lock"
+          },
+          {
+            "text": "查權限與管理角色的變更",
+            "icon": "person"
+          }
+        ],
+        "source": "Microsoft 報告 Immediate actions · 2026-10-21",
+        "keys": [
+          "應用程式的登入紀錄",
+          "新增的認證",
+          "權限與角色的變更"
+        ]
+      },
+      "lines": [
+        {
+          "id": "78d5",
+          "text": "替公司管 Microsoft 365 的人，照 Microsoft 的清單多看三樣：",
+          "emotion": "清單段落"
+        },
+        {
+          "id": "masb",
+          "text": "應用程式自己的登入紀錄，不只是員工的；"
+        },
+        {
+          "id": "ji9j",
+          "text": "有沒有人替應用程式新增認證；",
+          "reveal": 1
+        },
+        {
+          "id": "pw7e",
+          "text": "權限和管理角色有沒有被改過。",
+          "reveal": 1
+        },
+        {
+          "id": "jfjh",
+          "text": "開頭那句改密碼收不回，要收的就是這三個地方的鑰匙。",
+          "emotion": "收穩，回呼開頭"
+        }
+      ],
+      "claims": [
+        "c29"
+      ]
+    },
+    {
+      "id": "view",
+      "chapter": "我的看法：現在先做什麼",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "AI 沒有發明\n**新的入口**",
+        "key": "AI 只是讓鑰匙更快被找到"
+      },
+      "lines": [
+        {
+          "id": "txje",
+          "text": "我的看法是：這一波 AI 攻擊，沒有發明新的入口。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "hvs8",
+          "text": "剛剛那一波猜密碼全部失敗，進去的是早就被允許的 App，和倉庫裡的一把金鑰。",
+          "emotion": "平"
+        },
+        {
+          "id": "uesa",
+          "text": "AI 只是讓放著的鑰匙，在三個小時內被找到。",
+          "emotion": "「三個小時」放慢"
+        }
+      ]
+    },
+    {
+      "id": "unknown",
+      "template": "big",
+      "data": {
+        "kicker": "我查不到的",
+        "text": "91APP 影響多少人\n台灣 7 月是哪套工具",
+        "key": "還不知道的兩件事"
+      },
+      "lines": [
+        {
+          "id": "8e9n",
+          "text": "我查不到的也有：剛剛那家電商實際影響多少會員，報告說之後才公布；",
+          "emotion": "放輕"
+        },
+        {
+          "id": "i653",
+          "text": "資安署說七月國內也監測到類似的 AI 攻擊，但沒說是哪一套工具。",
+          "emotion": "放輕"
+        }
+      ],
+      "claims": [
+        "c30",
+        "c31"
+      ]
+    },
+    {
+      "id": "three-things",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "今天",
+            "detail": "Google、GitHub 的授權清單各看一次",
+            "icon": "checklist"
+          },
+          {
+            "title": "這週",
+            "detail": "自己的倉庫跑一次 git log -G",
+            "icon": "terminal"
+          },
+          {
+            "title": "之後",
+            "detail": "金鑰設期限；離職當天停用帳號",
+            "icon": "clock"
+          }
+        ],
+        "source": "帳號：資安署 2026-10-21；期限：站主看法",
+        "keys": [
+          "今天：看授權清單",
+          "這週：跑一次 git log -G",
+          "之後：金鑰設期限"
+        ]
+      },
+      "lines": [
+        {
+          "id": "hfq9",
+          "text": "現在先做三件：今天，把 Google 和 GitHub 的授權清單各看一次；",
+          "emotion": "行動清單，乾脆"
+        },
+        {
+          "id": "qgux",
+          "text": "這週，在自己的程式倉庫跑一次剛剛那行指令；",
+          "reveal": 1
+        },
+        {
+          "id": "ijkr",
+          "text": "之後，金鑰都設期限；資安署也建議，離職當天就停用帳號，每季覆核權限。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ],
+      "claims": [
+        "c32"
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "kicker": "所以，跟你有什麼關係",
+        "text": "不要當\n**最便宜的那扇門**",
+        "key": "AI 先挑最便宜的門"
+      },
+      "lines": [
+        {
+          "id": "2yvb",
+          "text": "所以，剛剛那句跟我有什麼關係？AI 會先挑最便宜的門；",
+          "emotion": "回呼，放慢"
+        },
+        {
+          "id": "vkgi",
+          "text": "你能做的，是讓自己不是那一扇。",
+          "emotion": "亮起來，收"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "鑰匙要收回來，\n不只換鎖",
+        "lines": [
+          "git log --oneline -G 你的金鑰名稱"
+        ],
+        "cta": "訂閱：每一支都給你一個看完就能做的判斷",
+        "key": "每支一個判斷"
+      },
+      "lines": [
+        {
+          "id": "wkg5",
+          "text": "十五萬次猜密碼擋住了，鑰匙沒擋住。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "zha9",
+          "text": "你清掉了幾個授權？留言告訴我。",
+          "emotion": "輕輕收，問句"
+        },
+        {
+          "id": "8y54",
+          "text": "訂閱，每支都給你一個能做的判斷。",
+          "emotion": "輕快收"
+        }
+      ]
+    }
+  ]
+}
