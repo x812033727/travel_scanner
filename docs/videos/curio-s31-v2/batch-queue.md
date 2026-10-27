@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 兩例多音比較誤判已獨立覆核，依推薦選擇委託接受當前音訊；官方2flags／低分保留。新render／clips／既有music驗證均native0；唯一新assembly執行中，八語配音尚未開始 |
+| 1 | curio-s31 | curio-s31-v2 | 兩例多音比較誤判已獨立覆核，依推薦選擇委託接受當前音訊；官方2flags／低分保留。新版中文master已11/11QA、原生抽查及委託final核准；英文dub首次合成執行中，其餘七語未開始，完整交付包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,9 +34,17 @@
 
 ## 當前斷點
 
-**最新實況：2026-10-27 18:00台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+**最新實況：2026-10-27 18:21台北。以下較早紀錄保留為履歷，以本段為續作入口。**
 
-當前唯一producer為assemble session33528／slot assemble-listener1-current（正式--intro-after-condensation），log在private同slot.txt。render56428已native0：5states新繪、228沿用、212字幕／cues；5張新字幕實圖已逐一查看，字形及版面正常，source／speech／subtitles binding均current。clips native0沿用129stills、0newclips；music native0核對既有976秒bed原SHA，無購買。見[media-refresh-listener-rw1.json](media-refresh-listener-rw1.json)。先等assembly完成與實際checks／frame count／新final SHA讀回，才captions／QA／native player及final決定；不要以預估片長或舊final充當新成片。
+中文版新master已完成：assemble33528 native0，150景只重編16segments、406秒；29090frames／30＝969.666667秒（16:09.667），container969.705秒，301800813B，SHA b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60。當前body28310frames、intro150在frame1574／52.466667秒、v4outro630；-14LUFS／peak-1.9／bed-33.1，checks.ok=true／63frame samples。官方QA68642 native0 **11/11**，六章與九語metadata／caption綁定current；ja2、es5、pt1、vi2個閱讀速度警告保留，留待各語實際dub timing處理，不先刪事實。
+
+新檔原生MP4播放已實際抽查開場進度、片頭door／Mokaair logo、546秒吳曾新字幕、868秒荔枝新字幕及v4片尾slot，最後currentTime=duration=969.705、ended=true／error=null。只作抽查，沒有全片連續觀看／人工聽音／站主觀看宣稱；v4視覺slot存在，YouTube可點end-screen尚未安裝。暫存tab與經PID／命令身分核對的loopback server已關閉，無動到別人程序。見[chinese-final-listener-rw1.json](chinese-final-listener-rw1.json)。final gate已於18:17:38台北native0依委託綁上述SHA，見[final-acceptance-listener-rw1.json](final-acceptance-listener-rw1.json)；原版final SHA648962…343af再次核對不變。這仍不是完整交付包。
+
+**現在唯一production command是英文首次dub session90907**，slot dub-en-first，log private dub-en-first-production.txt，正式--locale en --line-by-line／無force／沿用既有speech quota。已完成dry-run171requests／10565字元，當時月額度5508182，估計9windows需加速、0預估fit over；實際fit及音訊QA尚未得知。source／final／en212格與文字審閱SHA在dispatch前核對current，原translation／review／timeline／approvals／languages／QA已備份dub-en-first-before。英文初次產音不算品質重錄，shorten／quality-retake／reword計數均0。先等該指令nativeexit；不能啟動ASR、check、另一語或另一集，也不能動active producer的journal。
+
+英文首檢的private batch-second-opinion bridge由s31_audio_plan準備，尚未啟用、未SSH／API；須待實際EN fit完成後凍結全EN WAV cohort及binding，獨立審generic code＋cohort，才可掛官方check-audio --locale en。不可套用中文32句reader，不能先跑沒有second的付費check來探疑句；callback只可選已審EN cohort的完整WAV子集，忽略hints／原稿，單次cached Whisper／4CPU／nice19／離線／資源gate／總20分鐘含傳檔與cleanup，未知結果不得盲重送。
+
+18:00時的唯一producer為assemble session33528（現已完成）／slot assemble-listener1-current（正式--intro-after-condensation），log在private同slot.txt。render56428已native0：5states新繪、228沿用、212字幕／cues；5張新字幕實圖已逐一查看，字形及版面正常，source／speech／subtitles binding均current。clips native0沿用129stills、0newclips；music native0核對既有976秒bed原SHA，無購買。見[media-refresh-listener-rw1.json](media-refresh-listener-rw1.json)。先等assembly完成與實際checks／frame count／新final SHA讀回，才captions／QA／native player及final決定；不要以預估片長或舊final充當新成片。
 
 兩例獨立發音覆核已完成，見[audio-qa-phonetic-independent-review.json](audio-qa-phonetic-independent-review.json)（SHA131ecc59a6e7ba13eb373f31b340274dcac50deefe9cd8eebc51ee3424b8d27a）：0491的實際Whisper「無憎」對應作者Wu Zeng；0722的實際primary「麗芝」可讀lì zhī，與荔枝同音。比較器確實選了不合此語境的céng／lí。另一份ASR仍各有不同音，不能說兩份一致或聲調已逐聲聽驗。依站主直接委託，root作有界品質接受，完整記錄兩案反例及聲學不確定性，沒有改source／WAV／cache／flags／字典／Jev分數，也沒有人被宣稱聽過；不為文字誤判重買，listener2未執行。見[audio-qa-delegated-decision.json](audio-qa-delegated-decision.json)、[audio-acceptance-listener-rw1.json](audio-acceptance-listener-rw1.json)。官方local audio gate已於17:52:42台北native0記錄，綁timeline SHA461844fdcf9a29ecf581397c9c546637ce85262bc7ef2b8854e683fdf64d8f31；官方checker仍是native1／2flags，不能改寫成自動全過。
 
@@ -88,7 +96,7 @@ private clone使用官方journal恢復實測已PASS（review SHA `0583f1810e0165
 
 重錄前的EN render session98057與補產CC均已exit0。[production-preview-r6.json](production-preview-r6.json)是08:46:47台北的歷史完整驗證快照：當時source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA核對通過；重錄後不能用它證明舊成片與新旁白相同。原版final SHA仍保留`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
 
-**下一個可行動斷點是唯一assemble session33528完成**。讀回實際新final／checks／branding與current narration SHA後，captions／QA／新播放器驗證，再依實際QA記錄中文final決定、逐語製作八條dub。private post-audio-current-entry-companion.json明示當前有界委託音訊決策，取代舊frozen recipe的「必須0flags」協調預設；舊recipe及原低分原封保留。尚未完成完整交付包，不能勾整集完成或開始S15。
+**下一個可行動斷點是唯一英文dub session90907完成**。先讀nativeexit與實際fit／current WAV／timeline／journal；native0且fit妥當才凍結全EN cohort並獨立審bridge，作新EN second-ASR／official check／mix驗證，再依序ja→ko→es→pt→id→vi→th。若fit over，最多2輪受保護縮句；若provider拒絕，保留journal並退避；不重跑已有dispatch的槽位。private post-audio-current-entry-companion.json明示當前有界委託音訊決策，取代舊frozen recipe的「必須0flags」協調預設；舊recipe及原低分原封保留。尚未完成完整交付包，不能勾整集完成或開始S15。
 
 - 配對已恢復，不再要求站主重配。guarded keyframes最後session `7898` 已正常完成：129/129張judge通過，沒有needs_review；官方keyframeProblems為0，visual_hash `4ff8941e6473b9f4`、speechHash `8af0af8b6fb7d1e4`。六頁最新圖板已由代理實際檢視，依站主推薦選擇委託記錄storyboard核准，並非站主本人觀看。manifest SHA `fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2`。
 - 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。

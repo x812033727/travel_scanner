@@ -1,6 +1,8 @@
 # S31 v2 音訊檢查進度
 
-狀態：**當前旁白已依站主推薦選擇委託作有界接受；官方仍保留2flags及低分，沒有當前成片核准**。
+狀態：**當前旁白已依委託作有界接受，官方2flags／低分保留；新中文master已有11/11QA、原生抽查及委託final核准，英文首次配音執行中**。
+
+18:21台北：新中文master SHA b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60，29090frames＝16:09.667，container969.705；11/11QA與實際原生抽查包括兩張更新字幕及正常ended=true／error=null。final核准僅屬此中文檔；無全片連看、人工聽音或站主觀看宣稱。英文dub90907執行中，等實際fit與新WAV才獨立ASR／QA；其餘七語與完整交付包未成。下段17:55舊render狀態已完成，其音訊裁量及兩個官方flag仍保留。
 
 最新17:55台北：listener1的212句官方QA已完成，155逐字＋30同音／口語＋4Jev＋21第二轉寫＋2flags。獨立覆核證明比較器對吳曾／麗芝的多音預設有假陰性；依實際Whisper無憎及實際primary麗芝的語境同音證據接受兩案，同時保留吳政／立志反例與聲調未經聆聽證實的限制。官方低分與2flags原封保留；不是Jev全過，不是站主或代理聽過。詳見[audio-qa-delegated-decision.json](audio-qa-delegated-decision.json)與[audio-acceptance-listener-rw1.json](audio-acceptance-listener-rw1.json)。未執行listener2或新付費；audio gate綁current timeline461844…d8f31、speechfa2912daff4bd218。新render執行中，舊final／10of11QA仍是歷史。下方較早疑句數只屬各自take。
 

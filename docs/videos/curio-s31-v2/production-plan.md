@@ -2,7 +2,9 @@
 
 新稿：[script.md](script.md)。原標題保留，使用獨立 slug `curio-s31-v2`。原版 `curio-s31` 的成片、旁白、插圖、外語及核准仍歸原工作與 PR #1800；本次不覆寫它們。
 
-## 當前讀回（2026-10-27 17:55台北）
+## 當前讀回（2026-10-27 18:21台北）
+
+中文master已完成與依委託核准，實際16:09.667／29090frames，SHA b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60；官方QA11/11、新檔原生開場／片頭／更新字幕／v4片尾及ended抽查通過。僅抽查，沒有宣稱站主觀看或任何人完整聆聽。九語CC文字綁定current，外語速度警告留待實際配音時間處理。現在英文首次dub90907執行中（dry-run171requests／10565字元／當時既有月額5508182），七語待後續；八語／上架包未成，未上傳。下段17:55來源及音訊決策保留，其render執行狀態已被本段取代。
 
 新source SHA6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86，speechHash fa2912daff4bd218，實際正文28310frames／30＝943.666667秒。listener修補5句、敘事round8依官方合併13/13、八語40格差分覆核及1696source hashes均current。129圖全沿用，保守圖片／評審控制總額仍US$1.578／6；既有976秒配樂SHA a00ffb8aa48c83041867c2ea319ff962b21b6510cb9e97030711ef73e9518a41沿用，不新買。音訊依有界委託品質決策核准，官方2flags及低分保留，沒有聆聽或自動全過宣稱；見audio-qa-delegated-decision.json。新render session56428執行中，舊16:11.967預覽還不是當前final，八語dubs／完整交付包未成。
 

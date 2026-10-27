@@ -24,7 +24,7 @@ Owner 2026-10-26 requested continuation of「楊貴妃的荔枝，怎麼送到�
 
 - [x] Revised, independently reviewed Chinese script targets 13 minutes with a source-bound claim map, five-step opening, conversational delivery, 45-second hooks, burned-in Chinese captions and bold thumbnail.
 - [x] Preserve existing paid illustrations/music where valid and quote all incremental production before incurring new charges.
-- [ ] After owner approval, generate and review the Chinese narration/storyboard, assemble with channel intro and v4 end screen, verify actual duration and QA, and submit the final cut.
+- [x] After owner approval, generate/review the Chinese narration/storyboard, assemble with channel intro and v4 end screen, verify actual duration/QA/native spot playback, and record delegated local final acceptance; external upload remains separate.
 - [ ] Refresh selected translations, CC and dubs against the revised script, then prepare the upload package; publication remains owner controlled.
 
 ## Steps
@@ -45,6 +45,8 @@ Owner 2026-10-26 requested continuation of「楊貴妃的荔枝，怎麼送到�
 `node tools/video/cli.mjs lint --slug curio-s31-v2`; fresh `narrative --slug curio-s31-v2` readers; `npm run check:tasks`. Paid steps require approved episode-wide scope. Actual timeline and assembled media, not planned seconds, establish runtime.
 
 ## Notes
+
+- 18:21Taipei: currentChinese master b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60/301800813B completed33528native0,29090frames/30=16:09.667/container969.705,16of150segments encoded406s,checks.ok/63samples/-14LUFS/peak-1.9/bed-33.1. Captions/review native0, officialQA68642native0/11of11; tenforeign CCspeedwarnings retained foractualdubtiming. Nativecurrent opening/intro/new0491&0722subtitles/v4slots/end spotchecks passed endedtrue/errornull; nofullwatch/listening/ownerwatchclaim, noStudioendscreeninstall. Ownloopbackserver/tab stopped afteridentitycheck. Final localgate native0 at10:17:38Z bindsactualSHA; chinese-final-listener-rw1.json/final-acceptance-listener-rw1.json,originalSHAunchanged. Onlyproduction command now EN firstdub90907(slotdub-en-first, --line-by-line/no force),171requests10565charsestimated,monthly5508182before,0estimatedover/9speedups. Awaitnativeexit/actualfit/currentWAV/journalbeforeASR/check/nextlocale; do not replaydispatch orcountfirstsynthesisasqualityretake. PrivateENbatchbridgepreparation only, requiresactualcompletedfullENcohort+independentreview beforeenable; noSSHyet. Eightdubs/package/S15 stillincomplete.
 
 - 18:00Taipei: render56428native0/5drawn228reused/39s/212strips+cues; actual5changedstripimages viewed, glyph/layout normal. Clipsnative0/129stills0newclips; musicnative0/existingbedSHAa00ffb8aa48c83041867c2ea319ff962b21b6510cb9e97030711ef73e9518a41. Source/audio/frames/clips/subtitle/currentart/approval bindings verified; media-refresh-listener-rw1.json. Onlyassemble33528nowactive(slotassemble-listener1-current, --intro-after-condensation); waitactualnewfinal/checks/framecount/SHA beforecaptions/QA/newnativeplayer/finaldecision. No dubs/package/next episode/upload yet.
 
