@@ -31,4 +31,4 @@
 
 ## 站主觀點
 
-照《種田娶妻打天下》2026-10-16 的規矩：3D 國漫 CG 畫風、不用真人；女生要漂亮（濃顏、合身剪裁），每集至少一個顏值鏡頭；不露、不濕身、鏡頭不停在身體部位；不黃標：沈照雪的傷只是臉色白與袖口燒焦，沒有血；「妖獸道」只是一句話。說話的鏡頭照 storyboard-rules.md：說話的人在畫面上時 motion 第一句寫他說這句話、嘴唇下巴隨每個音節動；說話鏡頭都是自己的片段，不用靜圖、不切素材。靜圖只有三個插鏡（s10、s19、s31），都沒有人說話在畫面上。仙錄面板不由海螺生成，prompt 裡沒有面板、文字或 UI。橫式 16:9，海螺 H3 2K 圖生影片（4 秒一支）；角色外觀照 `docs/videos/series-plans/xiuxian-jiangli/production/cast.json` 逐字照抄。
+照《種田娶妻打天下》2026-10-16 的規矩：3D 國漫 CG 畫風、不用真人；女生要漂亮（濃顏、合身剪裁），每集至少一個顏值鏡頭；不露、不濕身、鏡頭不停在身體部位；不黃標：沈照雪的傷只是臉色白與袖口燒焦，沒有血；「妖獸道」只是一句話。說話的鏡頭照 storyboard-rules.md：說話的人在畫面上時 motion 第一句寫他說這句話、嘴唇下巴隨每個音節動；說話鏡頭都是自己的片段，不用靜圖、不切素材。靜圖只有三個插鏡（s10、s19、s31），都沒有人說話在畫面上。仙錄面板不由海螺生成，prompt 裡沒有面板、文字或 UI。橫式 16:9，MiniMax H3 2K 圖生影片（4 秒一支，站主 2026-10-27 定：在 Colab 直接打 MiniMax API，首格用 image-01，見 `docs/videos/series-plans/xiuxian-jiangli/production/colab/README.md`）；角色外觀照 `docs/videos/series-plans/xiuxian-jiangli/production/cast.json` 逐字照抄。

@@ -6,9 +6,10 @@
     "畫風照《種田娶妻打天下》2026-10-16 晚站主的決定：3D 國漫 CG，不用真人；look.style 已寫成英文，定妝照提示詞照 refs-dh-jobs.json 的寫法。",
     "美女規則照 chapter-01.md 的顏值規則：濃顏、合身剪裁、每集至少一個顏值鏡頭；不露、不濕身、鏡頭不停在身體部位。",
     "說話的鏡頭一定會動嘴（種田 storyboard-rules.md）：台詞的 speaker 在畫面上時，data.motion 第一句寫他說這句話、嘴唇下巴隨每個音節動；說話鏡頭不用 still、不用 data.source；靜圖一集不超過 10%。",
-    "仙錄面板不由海螺生成：拍江小滿的主觀鏡頭或臉部近景，面板文字在剪接時疊上（藍金色、像一頁書的半透明框，見每集 overlays.json）。prompt 裡不要寫面板、文字或 UI。",
+    "仙錄面板不由圖片或影片模型生成：拍江小滿的主觀鏡頭或臉部近景，面板文字在剪接時疊上（藍金色、像一頁書的半透明框，見每集 overlays.json）。prompt 裡不要寫面板、文字或 UI。",
     "沈照雪受傷時（第 1–2 集）在該鏡 prompt 裡寫 her face gone translucent white、one sleeve torn and scorched at the cuff；好了之後不寫。",
-    "聲音是代理的建議，試片前照 voice-audition.md 試聽再定。"
+    "聲音是代理的建議，試片前照 voice-audition.md 試聽再定。",
+    "站主 2026-10-27：製作路線是 Colab 直接打 MiniMax API（image-01 首格、H3 v2 圖生影片），不走海螺網頁、不走站上伺服器；做法在 production/colab/README.md。"
   ],
   "look": {
     "preset": "custom",
