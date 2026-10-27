@@ -20,6 +20,11 @@ export const DEFAULT_CPM = 250;
 export const DEFAULT_PAUSE_MS = 300;
 // Extra silence after a scene's last line, so a slide change never lands mid-breath.
 export const SCENE_GAP_MS = 700;
+// A sticker drama's line without a pause of its own (docs/videos/BINGE.md §畫面等級): one shot is
+// one line there, so the slide pause and scene gap fell after every line, and 系統說我是 BUG
+// e001-redo1 stopped for a second after 49 of its 50 lines (the funny-dub references it was
+// measured against run at 84–88% voiced with no such stop). Its shots run on within a chapter.
+export const MANGA_PAUSE_MS = 80;
 export const TAIL_MS = 1500;
 export const MIN_CHAPTERS = 3;
 export const CHAPTER_MIN_SECONDS = 10;
@@ -45,18 +50,29 @@ export function estimateSamples(line, cpm = DEFAULT_CPM) {
 }
 
 /**
+ * Whether a drama of the manga tier (docs/videos/BINGE.md §畫面等級), as media/keyframes.mjs
+ * mangaTier reads it: video.json's `series.visual_tier`, else its series.json's (`series`).
+ */
+export function mangaDrama(doc, series = null) {
+  return doc.format === "drama" && (doc.series?.visual_tier ?? series?.visual_tier) === "manga";
+}
+
+/**
  * Lay out every line on the frame grid.
  * `samplesById` maps line id to the length of its synthesized clip in samples (the TTS stage), or
- * pass `estimatedSamples(doc)` before any audio exists.
+ * pass `estimatedSamples(doc)` before any audio exists. `series` is the episode's series.json,
+ * which says whether a drama is of the manga tier: its lines without a pause of their own take
+ * MANGA_PAUSE_MS, and its shots get no SCENE_GAP_MS between them except where a chapter ends.
  */
-export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
+export function buildTimeline(doc, samplesById, { basis = "measured", series = null } = {}) {
   const lines = [];
   const scenes = [];
   const chapters = [];
   const actions = [];
   let frame = 0;
   const policyHash = hasAnimePolicy(doc) ? runtimePolicyHash(doc) : null;
-  for (const source of doc.scenes) {
+  const manga = mangaDrama(doc, series);
+  for (const [sceneIndex, source] of doc.scenes.entries()) {
     const action = source.action_seconds;
     if (action !== undefined && (!(isLongAnime(doc) || timesSilentShots(doc)) || !Number.isSafeInteger(action) || action < 1 || action > 8 || source.template !== "shot" || !Array.isArray(source.lines) || source.lines.length)) throw new Error(`scene ${source.id}: action_seconds needs a silent shot of a long anime or of a drama with a cast and no length floor, lasting 1 to 8 seconds`);
     if (!source.lines?.length && action === undefined) continue;
@@ -71,6 +87,10 @@ export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
       frame = end;
       continue;
     }
+    // A manga shot runs straight on into the next one unless that one opens a chapter (the next
+    // scene laid out, as one without lines or action is skipped above) or this is the last.
+    const following = doc.scenes.slice(sceneIndex + 1).find((scene) => scene.lines?.length || scene.action_seconds !== undefined);
+    const runsOn = manga && following !== undefined && !following.chapter;
     source.lines.forEach((line, index) => {
       const samples = samplesById[line.id];
       if (!Number.isInteger(samples) || samples <= 0) throw new Error(`no audio length for line ${line.id}`);
@@ -82,7 +102,8 @@ export function buildTimeline(doc, samplesById, { basis = "measured" } = {}) {
       }
       const last = index === source.lines.length - 1;
       const isLastLine = last && source === doc.scenes.at(-1);
-      const pauseMs = (line.pause_after_ms ?? DEFAULT_PAUSE_MS) + (last ? (isLastLine ? TAIL_MS : SCENE_GAP_MS) : 0);
+      const ownPause = line.pause_after_ms ?? (manga && !(last && !runsOn) ? MANGA_PAUSE_MS : DEFAULT_PAUSE_MS);
+      const pauseMs = ownPause + (last ? (isLastLine ? TAIL_MS : runsOn ? 0 : SCENE_GAP_MS) : 0);
       const frames = framesFor(samples + msToSamples(pauseMs));
       lines.push({ id: line.id, scene: source.id, start_frame: frame, end_frame: frame + frames, audio_samples: samples, ...(line.speaker ? { speaker: line.speaker } : {}) });
       frame += frames;

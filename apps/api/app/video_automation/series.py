@@ -278,6 +278,39 @@ def _sheet_prompt_problem(character: dict[str, Any]) -> str | None:
     return None
 
 
+# The work's own narrator (docs/videos/SERIES.md §作品的旁白): a voice the setting book may name
+# so one series' narrator (系統說我是 BUG: its lead in the first person, a male voice) never
+# becomes every drama's through the drama tab's drama_voice. The worker reads it in
+# tools/video/automation/series.mjs narratorFrom; a Gemini voice takes a written style of at most
+# NARRATOR_STYLE_CHARS, as core/drama.mjs limits a voice's style in video.json.
+NARRATOR_PROVIDERS = ("azure", "gemini")
+NARRATOR_KEYS = frozenset({"provider", "name", "style"})
+NARRATOR_NAME_CHARS = 64
+NARRATOR_STYLE_CHARS = 400
+
+
+def _narrator_problem(body: dict[str, Any]) -> str | None:
+    """Why a setting book's `narrator` cannot be filed, or None (left out, or null, it is the
+    drama tab's voice as before)."""
+    narrator = body.get("narrator")
+    if narrator is None:
+        return None
+    if not isinstance(narrator, dict) or not set(narrator) <= NARRATOR_KEYS:
+        return "narrator must be {provider, name, style}"
+    if narrator.get("provider") not in NARRATOR_PROVIDERS:
+        return f"narrator.provider must be one of {', '.join(NARRATOR_PROVIDERS)}"
+    name = narrator.get("name")
+    if not isinstance(name, str) or not name.strip() or len(name) > NARRATOR_NAME_CHARS:
+        return f"narrator.name must be the voice's name, at most {NARRATOR_NAME_CHARS} characters"
+    style = narrator.get("style")
+    if style is not None:
+        if narrator["provider"] != "gemini":
+            return "narrator.style is a Gemini voice's; an Azure voice has none"
+        if not isinstance(style, str) or not style.strip() or len(style) > NARRATOR_STYLE_CHARS:
+            return f"narrator.style must be text of at most {NARRATOR_STYLE_CHARS} characters"
+    return None
+
+
 def _is_whole(value: object) -> TypeGuard[int]:
     return isinstance(value, int) and not isinstance(value, bool)
 
@@ -572,6 +605,9 @@ def doc_problem(
             looks = _looks_problem(series, character)
             if looks:
                 return looks
+        narrator = _narrator_problem(body)
+        if narrator:
+            return narrator
         if payload.kind == "bible":
             for key in BIBLE_LISTS:
                 if not isinstance(body.get(key), list) or not body[key]:

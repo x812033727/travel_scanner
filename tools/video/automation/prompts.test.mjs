@@ -717,16 +717,22 @@ test("the manga tier's rule reaches a one-off without a genre, and the default t
   assert.deepEqual(VISUAL_TIERS, ["clips", "hybrid", "stills", "manga"]);
   assert.deepEqual(TIER_CLIP_SHARE, { clips: 1, hybrid: 0.4, stills: 0.1, manga: 0 });
   assert.match(VISUAL_TIER_RULES.manga, /never "visual": "clip"/);
-  // The cut of 2026-10-24 (ticket 2026-10-24-manga-sticker-drama-pace-visible-camera): 2 to 3.5 s a picture, one line a shot, lint at 4 s.
-  assert.match(VISUAL_TIER_RULES.manga, /new picture every 2 to 3\.5 seconds, one line per shot[^.]*the lint warns on any shot over 4 seconds/);
-  assert.doesNotMatch(VISUAL_TIER_RULES.manga, /3 to 5 seconds/);
-  // The beats the references leave: a chime on its own line, a breath before a reveal.
-  assert.match(VISUAL_TIER_RULES.manga, /write every 「叮」 as a line of its own \("text": "叮。", "pause_after_ms": 500\)[^.]*the line before a reveal or a reversal "pause_after_ms": 800/);
-  assert.equal(MANGA_NARRATION_PERFORMANCE, "說書人的語氣，節奏快，每一句的尾音收得乾脆有力，關鍵字稍微加重，句與句之間不拖，像在講一個很爽的故事");
-  assert.ok(VISUAL_TIER_RULES.manga.includes(`2026-10-22: ${MANGA_NARRATION_PERFORMANCE}.`));
+  // The cut of 2026-10-24 (ticket 2026-10-24-manga-sticker-drama-pace-visible-camera), 2 to 3.5 s a picture and lint at 4 s,
+  // carrying one or two lines since 2026-10-27 (ticket 2026-10-27-1-3-5-5-5).
+  assert.match(VISUAL_TIER_RULES.manga, /new picture every 2 to 3\.5 seconds, one or two short lines per shot \(together under 3\.5 seconds at the narrator's pace\)[^.]*the lint warns on any shot over 4 seconds/);
+  assert.doesNotMatch(VISUAL_TIER_RULES.manga, /3 to 5 seconds|one line per shot/);
+  // The owner of 2026-10-27 ("旁白有點不搭，節奏有點慢而且口氣也怪怪的"): the lead in the first person or to the
+  // viewer, an attitude in every line, unless the series note says otherwise.
+  assert.match(VISUAL_TIER_RULES.manga, /Narrate in the first person by default[^.]*the lead telling their own story \(我\) or talks straight to the viewer \(你\), never a third-person summary/);
+  assert.match(VISUAL_TIER_RULES.manga, /When the series note says who narrates or in which person, follow the note\./);
+  assert.match(VISUAL_TIER_RULES.manga, /Every line carries an attitude: a jab, a comparison, a rhetorical question or a forward hook/);
+  // The shots run on (core/timeline.mjs MANGA_PAUSE_MS): a pause only before a reveal, and a chime opens its line.
+  assert.match(VISUAL_TIER_RULES.manga, /the line before a reveal or a reversal gets "pause_after_ms": 600, and no other line needs one/);
+  assert.match(VISUAL_TIER_RULES.manga, /A 「叮」 is never a line of its own: it opens the line it announces/);
+  assert.doesNotMatch(VISUAL_TIER_RULES.manga, /"text": "叮。"|"pause_after_ms": 500|"pause_after_ms": 800|silent 37/);
+  assert.equal(MANGA_NARRATION_PERFORMANCE, "邊講邊吐槽的語氣，語速快，一秒五到六個字，句子之間幾乎不停；每一句都帶態度，吐槽、比喻、反問或預告，尾音乾脆，關鍵字加重，像在跟朋友講一件很扯的事");
+  assert.ok(VISUAL_TIER_RULES.manga.includes(`2026-10-27: ${MANGA_NARRATION_PERFORMANCE}.`));
   assert.match(VISUAL_TIER_RULES.manga, /one character per picture/);
-  // The owner's narrator choice of 2026-10-22 (Sulafat, the storyteller's register) rides in the tier's rule.
-  assert.match(VISUAL_TIER_RULES.manga, /"performance" plan is the storyteller's[^.]*說書人的語氣，節奏快/);
   // The sticker drama's hook cadence (the owner, 2026-10-22), which lint measures at 30 s.
   assert.match(VISUAL_TIER_RULES.manga, /Every 20 to 30 seconds a line lands a hook[^.]*the lint warns on any stretch over 30 seconds/);
   // A one-off carries no genre: only a tier other than the default is sent, under its own heading.

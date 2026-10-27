@@ -61,7 +61,7 @@ import { registerLine, registerSummary, setPauseBeats } from "./register.mjs";
 import { rewriteProblems } from "./rewrite.mjs";
 import { assembleSheet, clearUnits, readUnits, refusedUnits, sheetUnits, UNIT_CHARS, UNIT_LINES, unitGaps, unitKey, unitVideo, writeUnits } from "./sheet-units.mjs";
 import { advanceCompilation, startCompilation } from "./compilation.mjs";
-import { castFrom, castVoices, episodeBrief, isExplainerOneOff, isOneOff, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
+import { castFrom, castVoices, episodeBrief, isExplainerOneOff, isOneOff, narratorFrom, retentionNumbers, scriptVerdict, seriesStep } from "./series.mjs";
 import { episodeSeries, episodeShortFields, episodeShortsProblems, shortsFile } from "../shorts/episode.mjs";
 import { SPEECH_UNCERTAIN } from "../tts/client.mjs";
 import { flaggedLines } from "../tts/synthesis.mjs";
@@ -524,14 +524,22 @@ const SERIES_MUSIC = Object.freeze({ [CURIO_PRESET]: CURIO_MUSIC });
  * one; the writer's own look fields stay. The owner's request's preset (`stylePreset`) wins over
  * the settings tab's; an explainer's preset is not the writer's to change, and it has no characters.
  */
-export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, stylePreset = null, production = null }) {
+export function settle(video, { slug, settings, sourceGuide, root, format = "slides", series = null, cast = null, narrator = null, stylePreset = null, production = null }) {
   const settled = { ...video, slug, voice: settledVoice(settingsFor(settings, format).voice) };
+  // The work's own narrator (docs/videos/SERIES.md §作品的旁白): the voice its setting book names
+  // (series.json `narrator`, castFrom keeps the cast off it) stands over the drama tab's, which
+  // every other drama keeps. 系統說我是 BUG is told by its lead in the first person, a male voice
+  // (2026-10-27); the drama tab's voice would have made every drama his.
+  const ownNarrator = format === "drama" && series && narrator;
+  if (ownNarrator) settled.voice = settledVoice(narrator);
   // The sticker drama's narrator (the manga tier, docs/videos/BINGE.md §畫面等級): the storyteller's
   // direction the writer plans from reaches the TTS too, unless the owner named a narrator voice
-  // on the drama tab, whose style then stands. Until 2026-10-24 an empty drama_voice fell back
-  // to the tutorial's relaxed-explainer style, and the first 系統說我是 BUG episode was read at
-  // 3.0 characters a second with one second of pauses in 172 s (the ticket's measurement).
-  if (format === "drama" && series?.visual_tier === "manga" && !settings.drama?.drama_voice && settled.voice.provider === "gemini") {
+  // on the drama tab or the setting book, whose style then stands (a book's Gemini voice named
+  // without a style takes this one). Until 2026-10-24 an empty drama_voice fell back to the
+  // tutorial's relaxed-explainer style, and the first 系統說我是 BUG episode was read at 3.0
+  // characters a second with one second of pauses in 172 s (the ticket's measurement).
+  const ownStyle = ownNarrator ? Boolean(narrator.style) : Boolean(settings.drama?.drama_voice);
+  if (format === "drama" && series?.visual_tier === "manga" && !ownStyle && settled.voice.provider === "gemini") {
     settled.voice = { ...settled.voice, style: `${CHANNEL_ACCENT}。${MANGA_NARRATION_PERFORMANCE}`.slice(0, 400) };
   }
   if (format === "drama" && production?.profile?.phases?.primary?.locale === "zh-TW") {
@@ -2353,6 +2361,7 @@ export class Automation {
     // The cast as this episode wears it: a character's look that covers the episode stands in for
     // the book's appearance, sheet prompt and voice style (docs/videos/SERIES.md, 換裝與變化).
     const cast = castFrom(context.setting?.body_json, episode.number, { voices: this.settings.drama?.character_voice_pool ?? [], narrator: settingsFor(this.settings, "drama").voice });
+    const narrator = narratorFrom(context.setting?.body_json);
     const production = productionForEpisode(context.setting?.body_json, episode.number);
     const visualTier = production?.profile ? "clips" : series.visual_tier ?? "clips";
     const beats = episode.beats ?? {};
@@ -2419,6 +2428,9 @@ export class Automation {
       title: episode.title,
       logline: episode.logline,
       characters: cast,
+      // The work's own narrator (docs/videos/SERIES.md §作品的旁白), which settle puts in
+      // video.json over the drama tab's; written only when the book names one.
+      ...(narrator ? { narrator } : {}),
       ...(production ? { production } : {}),
       beats,
       recaps: context.recaps ?? [],
@@ -2993,7 +3005,7 @@ export class Automation {
   settled(state, video) {
     const info = state.series ? readJson(path.join(docDir(state.slug, this.ctx.root), "series.json"), {}) : null;
     const cast = info ? info.characters ?? [] : null;
-    const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, stylePreset: state.style_preset ?? null, production: info?.production ?? null });
+    const settledVideo = settle(video, { slug: state.slug, settings: this.settings, sourceGuide: state.source_guide, root: this.ctx.root, format: state.format, series: state.series ?? null, cast, narrator: narratorFrom(info), stylePreset: state.style_preset ?? null, production: info?.production ?? null });
     // The storytelling register's pause beats are the tool's (register.mjs setPauseBeats): set on
     // every save of a script whose prompts carry the register, before lint, whichever stage wrote it.
     return this.usesRegister(state) ? setPauseBeats(settledVideo) : settledVideo;

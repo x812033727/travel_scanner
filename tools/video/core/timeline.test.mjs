@@ -14,6 +14,8 @@ import {
   estimateTimeline,
   formatClock,
   framesFor,
+  MANGA_PAUSE_MS,
+  mangaDrama,
   msToSamples,
   SAMPLES_PER_FRAME,
   SCENE_GAP_MS,
@@ -49,6 +51,51 @@ test("every line starts on a frame and gets its clip plus pause, padded to whole
     frame = line.end_frame;
   }
   assert.equal(timeline.total_frames, frame);
+});
+
+test("a manga drama's shots run on within a chapter: no scene gap, a short default pause, the line's own pause kept, chapter ends and the tail as before", () => {
+  const shot = (id, lines, chapter) => ({ id, template: "shot", ...(chapter ? { chapter } : {}), data: {}, lines: lines.map(([lineId, pause]) => ({ id: lineId, text: "台詞。", ...(pause === undefined ? {} : { pause_after_ms: pause }) })) });
+  const doc = {
+    format: "drama",
+    series: { slug: "bug", episode: 1, chapter: 1 },
+    scenes: [
+      shot("s1", [["a1"], ["a2"]], "一"),
+      shot("s2", [["b1", 600]]),
+      { id: "empty", template: "shot", data: {}, lines: [] },
+      shot("s3", [["c1"]]),
+      shot("s4", [["d1"]], "二"),
+      shot("s5", [["e1"]]),
+    ],
+  };
+  const samples = Object.fromEntries(["a1", "a2", "b1", "c1", "d1", "e1"].map((id) => [id, 32_000]));
+  const pauses = (timeline) => Object.fromEntries(timeline.lines.map((line) => [line.id, (line.end_frame - line.start_frame) * SAMPLES_PER_FRAME]));
+  const frames = (ms) => framesFor(32_000 + msToSamples(ms)) * SAMPLES_PER_FRAME;
+  const manga = buildTimeline(doc, samples, { series: { visual_tier: "manga" } });
+  assert.deepEqual(pauses(manga), {
+    a1: frames(MANGA_PAUSE_MS),
+    a2: frames(MANGA_PAUSE_MS),
+    b1: frames(600),
+    // The last shot of chapter 一, across a scene with nothing to lay out.
+    c1: frames(DEFAULT_PAUSE_MS + SCENE_GAP_MS),
+    d1: frames(MANGA_PAUSE_MS),
+    e1: frames(DEFAULT_PAUSE_MS + TAIL_MS),
+  });
+  assert.ok(MANGA_PAUSE_MS <= 100);
+  // video.json's own tier reads alike; a drama of any other tier, and slides, keep every gap.
+  assert.deepEqual(buildTimeline({ ...doc, series: { ...doc.series, visual_tier: "manga" } }, samples), manga);
+  const ordinary = {
+    a1: frames(DEFAULT_PAUSE_MS),
+    a2: frames(DEFAULT_PAUSE_MS + SCENE_GAP_MS),
+    b1: frames(600 + SCENE_GAP_MS),
+    c1: frames(DEFAULT_PAUSE_MS + SCENE_GAP_MS),
+    d1: frames(DEFAULT_PAUSE_MS + SCENE_GAP_MS),
+    e1: frames(DEFAULT_PAUSE_MS + TAIL_MS),
+  };
+  assert.deepEqual(pauses(buildTimeline(doc, samples, { series: { visual_tier: "stills" } })), ordinary);
+  assert.deepEqual(pauses(buildTimeline(doc, samples)), ordinary);
+  assert.deepEqual(pauses(buildTimeline({ ...doc, format: undefined }, samples, { series: { visual_tier: "manga" } })), ordinary);
+  assert.equal(mangaDrama(doc, { visual_tier: "manga" }), true);
+  assert.equal(mangaDrama(doc), false);
 });
 
 test("two thousand lines of arbitrary length accumulate no drift between audio and frames", () => {
