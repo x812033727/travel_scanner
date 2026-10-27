@@ -159,3 +159,11 @@ Root已校正先前將單片未知計費限制擴張到所有新TTS的本地排�
 停於已知服務忙碌、raw0，整片與八語M4A仍未完成。未來可在冷卻後由Root另立一次受限的正常初始resume，使用現有plan／cache／journal及原額度，無須等待ForTy舊PT3cc1／ES9a36事實；那些未知請求與Kimi全球ASR reservation仍不得重送或解除。已消耗first helper／永久marker不可重跑，也不開自動付費迴圈。Root後續正常release/statusblocked另記真實退出；責任沿同對話／branch／PR1861，不移交、不done、不merge／deploy／YouTube。
 
 2026-10-27T14:50:39.488157+00:00：Root已正常release及設blocked，兩命令實際exit0，owner／claimed_at空。停點是本片首次請求的HTTP429服務忙碌；raw0，未移交、未done，責任同本對話及PR1861。首次helper已消耗；後續只能另立受限的正常初始resume並保留attempt1／retake0歷史、原上限與未知紀錄。無背景配音／ASR／媒體工人。
+
+## 正常初始恢復 attempt2 — 2026-10-27T15:34:30.984042+00:00
+
+實際session27452／PID383242於15:24:42.199Z exit4。原111句／2508 native邏輯字元與Sulafat／完整source不變；同一句dg2i收到5次HTTP429 upstream_busy，按原生Retry-After10秒等待4次，到每句既有5次上限後結束。沒有第6次本輪POST或第三個製作程序。累計初始process attempts2／speech POST6／retake0／rewrite0，raw0、無narration/timeline/CC/M4A/film/ASR/新後台媒體。
+
+獨立實體驗核確認原W948／EP841／3held與5份前次收據完整，5份sent／5份response／4份waiting與native lineage均真實；native正常處理已知拒絕，無手動forget、清旗、降低門檻、未知請求重送或帳單／零扣款宣稱。詳receipts/master-audio-resume02-20261027/。後續須保留累計attempts、原cache/journal及上限，不能重播已消耗兩輪helper／marker，不開自動無限程序；ForTy與Kimi未知紀錄／globalASR reservation仍保留，獨立DuckDB初始恢復不被ForTy舊計費事實永久阻擋。
+
+本輪已正常release並設blocked，兩命令真exit0，owner／claimed_at空。責任仍同對話codex-duckdb-20261025及原branch／PR1861；未done／移交，無背景媒體或配音工人。
