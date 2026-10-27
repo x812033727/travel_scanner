@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "FIFTH_ACTUAL_PRIVATE_RECOVERY_REVIEWED_PENDING_FRESH_NORMAL_RESUME",
+  "failed_command": {
+    "session": 38131,
+    "slot": "check-en-saved-answer4-resume",
+    "pid": 32176,
+    "native_exit": 1,
+    "ended_at": "2026-10-27T13:31:25.1722048Z",
+    "native_receipt_sha256": "317226d64101875fd0983203e628c904dac85ae5756bc10cd7f22e6e44081a9c",
+    "reason": "Windows EPERM on confirmed promotion of a different complete transcribe answer. Original sent/answer/tmp retained.",
+    "same_rename_attempts": 113,
+    "scheduled_extra_wait_ms": 28149,
+    "retry_deadline_unchanged_ms": 30000,
+    "io_log_sha256": "3377a963e0c4d1ccd18d0959265c2c86c6ef53f8cda9957d1ef422cbcc28f03d"
+  },
+  "request_sha256": "12876292d88d2d5c83438502db017de44b13c8042c6670e59e9a480d4e904027",
+  "line_id": "v2a0521",
+  "freeze": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-fifth-rename-failure-before/manifest.json",
+    "sha256": "4495a9e42aed91dae9fadee5f78934bda3b577730053f12a69c5e9ac8d8863aa",
+    "at": "2026-10-27T13:33:33.841Z",
+    "present_files": 20,
+    "absent_files": 2,
+    "raw_wavs_unchanged": 212,
+    "cache_lines": 130,
+    "preserved_files": 58,
+    "active_files": 3,
+    "lease": false,
+    "asr_state": false,
+    "direct_runs": {
+      "dub-en-bridge-prep": [],
+      "dub-en-bridge-prep-v2": [],
+      "dub-en-bridge-prep-v3": []
+    }
+  },
+  "saved_files": [
+    {
+      "name": "12876292d88d2d5c83438502db017de44b13c8042c6670e59e9a480d4e904027.json",
+      "bytes": 443,
+      "sha256": "8f028ea7a0d5231dd439dee92e899a0fd199d439a8b1a276618e102d5abb06fd"
+    },
+    {
+      "name": "12876292d88d2d5c83438502db017de44b13c8042c6670e59e9a480d4e904027.answer.json",
+      "bytes": 1286,
+      "sha256": "f069dc5bd8e5e2dcd9a30f952564c980648b5b68b2ec7824f6002ab7355c40be"
+    },
+    {
+      "name": "12876292d88d2d5c83438502db017de44b13c8042c6670e59e9a480d4e904027.json.32176.tmp",
+      "bytes": 758,
+      "sha256": "7466a88b2cb65477eeb977275d4bdeaa66f1c8d12750b799bb3dfbb3dfc69beb"
+    }
+  ],
+  "private_check": {
+    "result_file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-transcribe-recovery-prep/runs/recovery-df7b07a2-90d1-4034-b165-85dd967485c3/result.json",
+    "result_sha256": "bf38f401dfb08a8bcf0b5e88e3e92e42e33c95c7c02c8c55a9b199e738dde9c2",
+    "native_exit": 0,
+    "unique_line": "v2a0521",
+    "terms_count": 0,
+    "terms_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "proof_sha256": "a2aee575b17b12c5993af44419060c02ded0ee9c7e6afe79e47a7c48fbf0abc0",
+    "reused": 1,
+    "send_calls": 0,
+    "fetch_calls": 0,
+    "old_pid_default": "ESRCH",
+    "alive_hold": "video_speech_uncertain",
+    "original_files_unchanged": true,
+    "canonical_promoted": false
+  },
+  "audio_accepted": false,
+  "complete_delivery_package": false,
+  "owner_listened_or_watched": false,
+  "youtube_uploaded_or_published": false,
+  "next": "Actual private recovery and prior consumption reviews passed. Root must freshly reconcile current inputs, exact journal membership, producer/lease and unused binding, then use a new normal resume slot. Never replay38131 or manually promote/delete/forget.",
+  "actual_request_review": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-transcribe-recovery-prep/actual-request-review-12876292d88d2d5c.json",
+    "sha256": "b1a57763e8ed6e593e4c5e04deb9421294660093a5e156e4d151bd8ede1ff129",
+    "verdict": "PASS_ACTUAL_PRIVATE_EN_TRANSCRIBE_RECOVERY_RESULT"
+  },
+  "previous_actual_consumption": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer-consumption-ff4b.json",
+    "sha256": "9b37968bee7042dc025cfe4f8335c8437769cb4c7556b4d26526daf0263e1efa",
+    "old_cache_rows_preserved": 126,
+    "current_cache_rows": 130,
+    "raw_source_translation_master_unchanged": true
+  }
+}

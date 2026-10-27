@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA、原生抽查及委託final核准。EN已有110/212辨識cache；第三筆保存回覆逐筆覆核及fresh核對通過後，唯一正常續檢29192執行中。八語驗收／完整包未成 |
+| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA及委託final核准。EN已有130/212辨識cache；38131遇第五筆Windows journal EPERM已結束，保存回覆逐筆恢復覆核PASS，準備fresh核對後新slot續檢。八語驗收／完整包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -33,6 +33,18 @@
 - 完成一集即更新本表與該集任務，再接下一集。進度不變時保持安靜，只通知成品完成、真正失敗、預算超限或需要站主處理的事項。
 
 ## 當前斷點
+
+**最新實況：2026-10-27 21:36台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+第四筆覆核後正常續檢38131／PID32176曾執行，fresh543次SHA、cache126、52preserved＋3active全符；已於21:31:25 native1停止，遇第五筆v2a0521/request12876292d88d2d5c83438502db017de44b13c8042c6670e59e9a480d4e904027完整回覆的同類Windows EPERM。上一筆ff4b/lz418 actual canonical沿用獨立PASS9b37968bee7042dc025cfe4f8335c8437769cb4c7556b4d26526daf0263e1efa，原126cache全保留、current130，212raw／source／翻譯／中文master均未變。
+
+第五筆三真檔及22項mutable證據凍結manifest4495a9e42aed91dae9fadee5f78934bda3b577730053f12a69c5e9ac8d8863aa，58preserved＋3active保留；通用checker native0／唯一v2a0521／terms0／private reuse1send0fetch0/default ESRCH/alivehold，resultbf38f401dfb08a8bcf0b5e88e3e92e42e33c95c7c02c8c55a9b199e738dde9c2。逐筆獨立覆核b1a57763e8ed6e593e4c5e04deb9421294660093a5e156e4d151bd8ede1ff129 PASS，Root準備fresh核對後的新slot正常續檢；目前無producer／lease／second reservation或run。見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。不得重播38131或手動promote/delete/forget；沒有改OS、voice、provider或任何預算／重試上限，完整EN品質與八語包仍未成。
+
+**最新實況：2026-10-27 21:28台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+29192已21:24:12 native1結束，新的lz418/reqff4bfc70067b6bece4604236d5b506acd31d86104d5385b2dcbac3c27472d436完整回覆在Windows confirmed rename遇EPERM。current cache已126/212；22項mutable證據與212raw凍結manifest7b6bd95a21a20e6ddec4eb67207cafa3ff1571839606ed263ae67fcca19ad824，52歷史保存檔＋3active三真檔全保留。離線checker native0／exact唯一lz418／terms0／private reuse1send0fetch0/default ESRCH/alivehold及原件未改，result5320f2d136b4240b23db75a0792664d5502801beb55ef0b620e923a95ad1c7ae；逐筆獨立覆核d44b7ba1e6421c24cbf5800093314d06d1199d5f3f7c2a21f170f6be6c5a75a9 PASS。
+
+Root準備新正常slot前的fresh核對，上一筆aa360實際沿用由獨立readback核對中。目前無producer／lease／second reservation或run，不能重播29192或手動promote/delete/forget。113次原rename／28218ms額外等待仍受原30秒上限，沒有OS或預算變更。見[dub-en-fourth-check-recovery.json](dub-en-fourth-check-recovery.json)。完整EN品質、八語驗收及交付包仍未完成。
 
 **最新實況：2026-10-27 21:22台北。以本段為續作入口，以下舊斷點保留為履歷。**
 

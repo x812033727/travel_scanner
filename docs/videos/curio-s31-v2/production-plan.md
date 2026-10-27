@@ -4,6 +4,10 @@
 
 ## 當前讀回（2026-10-27）
 
+21:36台北最新：38131已因第五筆完整ASR回覆的Windows journal EPERM native1結束。前四筆保存回覆均實際沿用，current130/212cache、原音與中文master未變；第五筆離線恢復及逐筆獨立覆核PASS，準備fresh核對後新slot續檢。所有58歷史檔與3active保留，沒有提高重試／圖片／全域上限。EN完整品質、八語驗收與交付包仍待完成。見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。
+
+21:28台北最新：29192於第四筆完整回覆confirmed rename EPERM native1停止；EN辨識cache126/212，新保存回覆已離線恢復及逐筆獨立覆核PASS，準備fresh核對後新slot續檢。52歷史檔與3active三真檔保留，未增加30秒重試上限、圖片支出或全域預算；無新語言合成、無音訊接受。見[dub-en-fourth-check-recovery.json](dub-en-fourth-check-recovery.json)。
+
 21:22台北最新：第三筆完整保存回覆已逐筆獨立覆核，fresh536次SHA／current110cache／49journal會員與來源、hint、unused binding、製作鎖核對後，唯一正常EN續檢29192／PID45724執行中。既有已付答案循正式journal恢復，其餘不同請求仍用既有授權流程；不force或改上限。等待完整音訊結果再續JA，0/8外語驗收。見[dub-en-third-check-saved-answer-recovery.json](dub-en-third-check-saved-answer-recovery.json)。
 
 21:18台北最新：5437已因第三筆完整回覆的Windows journal EPERM native1結束；9bd6保存答案實際沿用通過獨立核對，原103cache保留、目前110。新aa360/v2a0431三真檔與所有46歷史檔保存，離線官方恢復native0/reused1/send0/fetch0，逐筆覆核與新入口準備中。無producer／second dispatch／JA，尚無完整EN品質結果；圖片帳本及所有上限不變。見[dub-en-third-check-journal-failure.json](dub-en-third-check-journal-failure.json)。

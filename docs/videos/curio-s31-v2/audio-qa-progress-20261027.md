@@ -1,6 +1,10 @@
 # S31 v2 音訊檢查進度
 
-狀態：**中文master已11/11QA、原生抽查及委託final核准；EN已有110/212辨識cache，第三筆保存回覆逐筆覆核PASS，fresh核對後唯一正常續檢29192執行中，尚非完整品質結果**。
+狀態：**中文master已11/11QA及委託final核准；EN已有130/212辨識cache，38131遇第五筆Windows journal EPERM已結束，保存回覆逐筆恢復覆核PASS，準備fresh核對後新slot續檢，尚非完整品質結果**。
+
+21:36台北：ff4b/lz418 actual沿用已獨立確認，原126cache保留、current130。第五128762/v2a0521完整保存回覆離線恢復native0及逐筆獨立review b1a577…ff129 PASS，58歷史保存檔＋3active均保留，等Root fresh核對後新slot正常續作；無producer或second dispatch，原音／中文master／上限不變。見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。
+
+21:28台北：第四筆ff4b/lz418完整答案、sent、tmp與52保存檔保留；actual private恢復native0/reuse1send0fetch0及逐筆獨立覆核d44b7b…a75a9通過。29192已結束不可重播，先fresh核對再新slot續作。126筆cache是檢查進度，未代表音訊接受；原音、中文master與上限不變。見[dub-en-fourth-check-recovery.json](dub-en-fourth-check-recovery.json)。
 
 21:22台北：逐筆獨立review f3db35…dc1f5與Root fresh536次SHA／cache三方110／49journal會員／1個實際hint／unused binding／lease與producer前提通過，正常新slot `check-en-saved-answer3-resume`已dispatch29192／PID45724。先等nativeexit及aa360實際沿用、flags和second runtime/cleanup；原音及上限未改，沒有EN音訊接受或JA合成。見[dub-en-third-check-saved-answer-recovery.json](dub-en-third-check-saved-answer-recovery.json)。
 
