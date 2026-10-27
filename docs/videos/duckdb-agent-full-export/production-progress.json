@@ -1,9 +1,9 @@
 {
   "kind": "fifth_episode_production_progress",
   "schema_version": 1,
-  "updated_at_utc": "2026-10-27T17:19:56.114447+00:00",
+  "updated_at_utc": "2026-10-27T19:06:36.829859+00:00",
   "slug": "duckdb-agent-full-export",
-  "stage": "native64_SCRIPT22_verified_initial_TTS_resume04_firstbody_HTTP429_raw0",
+  "stage": "SCRIPT25_verified_live_CLI93s_source_asset_audio_and_foreign_delivery_pending",
   "overall_production_completed": false,
   "source_import_complete": true,
   "source_video_sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8",
@@ -793,16 +793,16 @@
     "normal_repository_tests_run_by_this_updater": false
   },
   "task_handoff": {
-    "recorded_at": "2026-10-27T17:19:56.114447+00:00",
+    "recorded_at": "2026-10-27T19:06:36.829859+00:00",
     "actual_status": "blocked",
     "owner_claim_released": true,
     "normal_release_and_status_receipt": {
-      "file": "/workspace/work/ai-tech-next/duckdb-master-resume-04-20261027/ROOT-task-stop-exits.json",
-      "bytes": 714,
-      "sha256": "c5b69a7ffadce8e52d070e4b8a3382581742a5c43ea32b1eb442917024f0d232"
+      "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/task-release-blocked.json",
+      "bytes": 763,
+      "sha256": "1b361aa70f63eb94431843f087f94e175098fc2b2caf6a5b019f155f3365679e"
     },
     "responsibility": "codex-duckdb-20261025; same conversation/branch/PR1861, not done or transferred.",
-    "stop_point": "Resume04 first original body known429; one dispatch, waiting retained, no retry/sleep/raw. Vendor current TTS quota/error and reset/recovery facts asked once, response pending. Preserve cumulative4processes/12POST and original caps/cache/journals. No automatic fifth process or global ASR lease takeover.",
+    "stop_point": "New real silent CLI source recording and three attachments delivered/read back; pending SCRIPT now25. Master narration/current CC/M4A, official intro5 after first chapter plus outro21, full film/body length/QA and eight foreign media packages remain unfinished. Existing vendor current TTS quota/error/reset facts asked once and response pending; cumulative4processes/12POST/raw0 and unknown journals preserved. No automatic fifth process or global ASR lease takeover.",
     "no_background_media_or_audio_producer": true
   },
   "initial_TTS_attempt_history": {
@@ -1029,6 +1029,142 @@
       "responsibility": "codex-duckdb-20261025; same conversation/branch/PR1861, not done or transferred.",
       "stop_point": "Initial resume03 naturally reached native five-attempt known429 ceiling, raw0. Preserve cumulative3processes/11POST, original limits, all caches and unknown journals; no fourth process or automatic recovery loop this turn.",
       "no_background_media_or_audio_producer": true
+    }
+  },
+  "live_cli_capture": {
+    "documentation_updated_at": "2026-10-27T19:03:57.821981+00:00",
+    "actual_recording_started_at": "2026-10-27T18:41:50.316Z",
+    "actual_recording_finished_at": "2026-10-27T18:43:22.341Z",
+    "capture_process_started_at": "2026-10-27T18:41:49.464Z",
+    "capture_processing_finished_at": "2026-10-27T18:44:24.187Z",
+    "actual_append_started_at": "2026-10-27T18:51:11.429Z",
+    "actual_append_finished_at": "2026-10-27T18:51:43.864Z",
+    "actual_component_delivered": true,
+    "review_id": "dd47b9a0-6456-4651-9456-32b320909338",
+    "gate": "script",
+    "status": "pending",
+    "prior_attachment_count": 22,
+    "new_attachment_count": 3,
+    "total_current_attachment_count": 25,
+    "original22_refs_preserved": true,
+    "source_sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8",
+    "script_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+    "video": {
+      "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/live-demo.silent.mp4",
+      "bytes": 2509370,
+      "sha256": "5f8bbbbebfe3065f40b4a839c8f61b1e02a8c90e43d658f34687549b4f5d0448"
+    },
+    "seconds": 93.12,
+    "fps": "25/1",
+    "frames": 2328,
+    "audio_streams": 0,
+    "capture_date": "2026-10-27",
+    "original_fixture_date": "2026-10-25",
+    "real_commands_during_recording": true,
+    "UI_original_not_official": true,
+    "oracle": {
+      "input_rows": 1200,
+      "strict_rows": 480,
+      "inclusive_rows": 720,
+      "on_time_added": 240,
+      "all_rows_match": true,
+      "parquet_roundtrip_equal": true,
+      "strict_first": {
+        "parcel_id": "P0002",
+        "route": "R2",
+        "promised_days": "3",
+        "actual_days": "4",
+        "days_late": "1"
+      },
+      "strict_last": {
+        "parcel_id": "P1199",
+        "route": "R3",
+        "promised_days": "3",
+        "actual_days": "5",
+        "days_late": "2"
+      },
+      "strict_csv_sha256": "7a09b5c5cd0477366bf3dd8897104540952572543487017b9f0d0e1f360624a5"
+    },
+    "actual_upload_counts": {
+      "auth_reads": 1,
+      "project_GET": 4,
+      "file_PUT": 3,
+      "review_POST": 1,
+      "file_GET": 3,
+      "denied": 0
+    },
+    "full_new3_binary_readbacks": [
+      {
+        "role": "evidence_live_cli_capture",
+        "content_type": "video/mp4",
+        "HTTP": 200,
+        "bytes": 2509370,
+        "sha256": "5f8bbbbebfe3065f40b4a839c8f61b1e02a8c90e43d658f34687549b4f5d0448",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/upload-prep/run/readback/evidence_live_cli_capture.mp4",
+        "response_content_type": "video/mp4"
+      },
+      {
+        "role": "evidence_live_cli_report",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 1359,
+        "sha256": "39d6fe9176a350b1ec19bdc3cddf24706cfe0a49371ea7eba02a2b6e333c1832",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/upload-prep/run/readback/evidence_live_cli_report.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      {
+        "role": "evidence_live_cli_manifest",
+        "content_type": "application/json",
+        "HTTP": 200,
+        "bytes": 16787,
+        "sha256": "624261eb20a75cefc8ac62458e2a25d4915782d795349740d3f6f4e977762558",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/upload-prep/run/readback/evidence_live_cli_manifest.json",
+        "response_content_type": "application/json"
+      }
+    ],
+    "public_text_index": "receipts/live-capture-20261027/index.json",
+    "independent_append_review": "receipts/live-capture-20261027/independent-append-review.json",
+    "new_TTS_ASR_paid": 0,
+    "foreign_checked_M4A": 0,
+    "actual_CC": 0,
+    "server_approval": false,
+    "full_film_audio_QA_bookends_or_language_batch_completed": false,
+    "old_script_visual_attachments_block_is_dated_original22": true,
+    "previous_TTS_and_quality_objects_unchanged": true,
+    "task_handoff_update_reserved_for_Root": false,
+    "required_docs_videos_check": {
+      "actual_session": 99027,
+      "actual_exit": 0,
+      "passed": 236,
+      "failed": 0,
+      "skipped": 0,
+      "duration_ms": 55264.576042,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/checks/docs-videos.exit.json",
+        "bytes": 673,
+        "sha256": "03d389e594373c937e3996c1f4181bee94a30edef04cd8402dbbb7f061b9819f"
+      }
+    },
+    "normal_task_release_and_blocked": {
+      "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/task-release-blocked.json",
+      "bytes": 763,
+      "sha256": "1b361aa70f63eb94431843f087f94e175098fc2b2caf6a5b019f155f3365679e"
+    },
+    "actual_docs_apply": {
+      "actual_session": 62149,
+      "actual_tool_exit": 0,
+      "proposal_sha256": "14aa3e1d549cd7bbe3292c6440c05066c34ee9fbe2fdb34c881184ca4d9e0ae2"
+    },
+    "required_tasks_check": {
+      "actual_session": 60664,
+      "actual_exit": 0,
+      "validated_task_files": 2183,
+      "existing_warnings": 151,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/checks/tasks.exit.json",
+        "bytes": 656,
+        "sha256": "dd9f7f54e41965e8e58b89d10137560a5c6e4e2316a1d0e2bfdeb4d7db4c1bbf"
+      }
     }
   }
 }

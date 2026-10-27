@@ -1,3 +1,9 @@
+# 最新：實跑操作錄影三份來源素材交付，當前SCRIPT25份附件
+
+2026-10-27T19:03:57.821981+00:00。[精確文字索引](live-capture-20261027/index.json)收錄當次實際捕捉、影格／完整資料核對與新增三檔完整下載證據。93.12秒無配音操作來源片已交付同一待審SCRIPT，原22份完整保留，當前共25份。原TTS累計4程序／12POST/raw0及八語已驗M4A0/8未改；本輪無新TTS、ASR、付費或核准。以下舊段落原文保留，為其所標日期之歷史紀錄。
+
+---
+
 # 公開安全收據：當前視覺元件及同一SCRIPT22附件
 
 [當前索引](visual-components/index.json)收錄Root明確審查的精確文字proof複本、實際下載證據與[source視覺delta](visual-components/source-visual-delta.json)。原生64圖卡／9縮圖的73項實看、128秒無旁白樣片的ffprobe／逐卡SSIM，以及完整22下載各有真實收據。

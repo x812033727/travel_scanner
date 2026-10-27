@@ -1,3 +1,17 @@
+# DuckDB 2.0：實跑操作錄影已交付，當前同一待審SCRIPT共25份附件
+
+2026-10-27T19:03:57.821981+00:00。新增93.12秒、1920×1080、25fps／2328格的無配音實際操作錄影，已直接送到[Mokaair本片後台](https://mokaair.com/zh-TW/admin/videos?video=duckdb-agent-full-export)，並完整下載三個新增檔案、逐bytes／SHA核對。原22份附件保持，新增MP4、使用說明與當次錄影manifest，總數25；仍為同一SCRIPT待審，未建立伺服器核准。
+
+六項CLI命令在錄影期間真實執行，畫面呈現當次stdout：工具版本、一般預覽、agent預覽、完整480筆嚴格晚到CSV／Parquet、Parquet讀回，以及改需求後720筆包含剛好準時名單。新增240筆的days_late全為0，沒有把720筆全稱晚到；完整各列各欄與原1,200筆虛構輸入相符。原創操作視窗與2026-10-27重現日期均有標示，沒有冒充官方UI、AI推理或效能測試。
+
+[公開文字收據索引](receipts/live-capture-20261027/index.json)、[獨立交付驗核](receipts/live-capture-20261027/independent-append-review.json)、[使用說明](receipts/live-capture-20261027/live-demo-usage.txt)與[錄影原始碼](authoring/live-capture/README.md)分列範圍。Root及獨立審查實看影格，另從目前MP4解碼7張取樣影格核對；未冒稱逐格或連續全片人工觀看。
+
+本輪新增TTS／ASR／付費請求均0；舊TTS累計4個初始程序／12次POST、raw0與未知紀錄保持，八語已驗M4A仍0/8。正式成片、實際旁白時間軸、CC、5秒片頭／21秒片尾、八語配音與完整QA仍待完成。來源111句、八語全文、聲音、舊品質false與歷史失敗原樣；已有官方v4素材，後續按真實旁白時間軸剪接。
+
+---
+
+以下保留先前日期的完整紀錄；其中22份附件及TTS attempt2／3／4為當時狀態，目前總數以本段與production-progress.json的live_cli_capture為準。
+
 # DuckDB2.0：視覺元件與22份附件已驗證，音訊及正式成片待完成
 
 2026-10-27T15:24:42.199Z，正常初始恢復程序（累計attempt2／retake0）以exit4結束：同一句dg2i收到5次HTTP429，原生按Retry-After正常等待4次後到達每句5次上限。本輪沒有第6次speech POST或第三個製作程序，音檔仍0；前次1次加本次5次，累計6次speech POST。見[本次實際退出](receipts/master-audio-resume02-20261027/actual-native-exit.json)與[獨立實體核對](receipts/master-audio-resume02-20261027/independent-refusal-review.json)。所有未知請求、原品質結果與既有22份後台附件保持，沒有帳單或零扣款宣稱。

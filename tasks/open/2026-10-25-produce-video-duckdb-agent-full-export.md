@@ -181,3 +181,13 @@ Root session10397／PID1005於16:25:20.126Z真tool/native exit4。同一句dg2i�
 Root session95755／PID2587於17:15:59.599Z真tool/native exit4。原稿第一句dg2i單次POST仍回HTTP429 upstream_busy；較窄的首句dispatch上限保存真nativewaiting收據後停止，無第二次POST或實際等待，也無新音檔／時間軸／CC／M4A／成片或後台媒體。累計initialprocess4／speechPOST12／retake0／rewrite0，沒有第五個程序；其他原生上限與品質門檻保持。
 
 [實際退出](../../docs/videos/duckdb-agent-full-export/receipts/master-audio-resume04-20261027/actual-native-exit.json)、[HTTP事件](../../docs/videos/duckdb-agent-full-export/receipts/master-audio-resume04-20261027/http-events.jsonl)與[獨立失敗保存查核](../../docs/videos/duckdb-agent-full-export/receipts/master-audio-resume04-20261027/independent-refusal-review.json)保存實際bytes。原E847／W948、4份hold（含全域ASR實際LEASE）與15份舊收據完整；原111句、八語文字及所有歷史品質false不變。查核只確認失敗保存，沒有聽校或計費核准。網站月字數與10秒等待值無法判定供應商配額及恢復時間，已首次詢問供應商端currentTTS配額／錯誤代碼與重置時間；未要求金鑰、未重問ForTy舊facts。先取得新的服務恢復資訊再評付費續作，不因同一句續作訊息自動重開。已正常release／blocked，責任同對話及PR1861，未done／移交。
+
+
+## 實跑操作錄影來源素材已交付 — 2026-10-27T19:03:57.821981+00:00
+
+本輪已真錄93.12秒／25fps／2328格的原創操作視窗，六項DuckDB CLI在錄影期間實跑，完整480／720筆及新增240筆準時資料經逐欄核對，Parquet讀回一致。同一pending SCRIPT新增三份來源素材並完整200下載／SHA核對，原22份保持，當前25份；公開證據見docs/videos/duckdb-agent-full-export/receipts/live-capture-20261027/index.json。獨立交付proof357e7e91只接受來源元件交付，沒有音訊／成片／語言核准。
+
+本輪新TTS／ASR／付費0；既有4個初始TTS程序／12POST/raw0、111句與八語全文、品質false及所有未知紀錄保留。八語已驗M4A仍0/8，正式成片及官方5+21、actual CC／旁白timeline／QA仍待做。任務仍由同對話codex-duckdb-20261025及原branch／PR1861負責，未done／移交；Root後續正常release／blocked並另記實際退出與停點。
+
+
+2026-10-27T19:06:36.829859+00:00：來源素材與三份後台交付已完成，本票正常release／status blocked兩命令真exit0，owner／claimed_at空。責任仍由本對話及原branch／PR1861延續，尚未done／移交。下一步仍為繁中當前音檔／actual CC、第一章後5秒官方片頭與21秒片尾、至少480秒正文／整片QA及八語各自經當前音檔查核的M4A和正式語言包。先前已詢問的供應商TTS配額／恢復事實尚待回覆，不重問或自動重開第五程序；保留4次程序／12POST/raw0與全部未知紀錄、全域另一host ASR LEASE。無背景媒體或音訊工人，不merge／deploy／YouTube。
