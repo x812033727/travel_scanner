@@ -29,17 +29,17 @@
   "loops": [
     {
       "setup": "t002",
-      "payoff": "t104",
+      "payoff": "t099",
       "what": "目前查得到最早的盒子晚了兩千多年"
     },
     {
       "setup": "t005",
-      "payoff": "t066",
+      "payoff": "t065",
       "what": "罐口底下留下的那一樣"
     },
     {
       "setup": "t007",
-      "payoff": "t091",
+      "payoff": "t083",
       "what": "威尼斯印上的另一個字"
     },
     {
@@ -49,27 +49,27 @@
     },
     {
       "setup": "t038",
-      "payoff": "t101",
+      "payoff": "t094",
       "what": "收下了才明白那一句被照抄"
     },
     {
       "setup": "t041",
-      "payoff": "t113",
+      "payoff": "t108",
       "what": "罐子從哪裡來，原文沒說的後果"
     },
     {
-      "setup": "t071",
-      "payoff": "t072",
+      "setup": "t070",
+      "payoff": "t071",
       "what": "希望為什麼跟災禍關在一起"
     },
     {
-      "setup": "t125",
-      "payoff": "t126",
+      "setup": "t120",
+      "payoff": "t121",
       "what": "再等五十六年才接上的線索"
     },
     {
-      "setup": "t128",
-      "payoff": "t130",
+      "setup": "t123",
+      "payoff": "t125",
       "what": "伊拉斯謨為什麼寫成盒子"
     },
     {
@@ -78,13 +78,13 @@
       "what": "泥土女孩怎麼變成讓人後悔的禮"
     },
     {
-      "setup": "t082",
-      "payoff": "t083",
+      "setup": "t072",
+      "payoff": "t073",
       "what": "罐子什麼時候、被誰縮成盒子"
     },
     {
-      "setup": "t115",
-      "payoff": "t116",
+      "setup": "t110",
+      "payoff": "t111",
       "what": "一本格言集怎麼讓大家都說盒子"
     }
   ],
@@ -936,36 +936,21 @@
       ]
     },
     {
-      "id": "jar-scatter",
+      "id": "jar-why",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a young woman in a long plain ancient Greek dress and a shawl, her hair tied up standing beside an open storage jar with the lid in her hands, grey smoke rising in front of her face, her mouth open in shock, soft daylight",
+        "prompt": "Close-up of a magnifying glass held over an old blank scroll with a wide empty gap between two short smudged lines, warm lamp light",
         "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
           "id": "t057",
-          "text": "詩裡只寫了一個動作：她掀開大蓋子，把裡面的東西撒了出去。"
-        }
-      ]
-    },
-    {
-      "id": "jar-why",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a magnifying glass held over an old blank scroll with a wide empty gap between two short smudged lines, warm lamp light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t058",
           "text": "為什麼要掀開？她是故意的，還是不小心？",
           "emotion": "問句"
         },
         {
-          "id": "t059",
+          "id": "t058",
           "text": "原文沒交代，這是研究者都知道的大缺口。"
         }
       ]
@@ -975,12 +960,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young reader in a hoodie sitting cross-legged on a bed with an open book, eyebrows shooting up in disbelief, a desk lamp beside her",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t060",
+          "id": "t059",
           "text": "老實說，我最意外的是：最有名的那一刻，原文只有短短兩行。",
           "emotion": "旁白自己的反應"
         }
@@ -991,12 +976,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of grey smoke curling over the dark rim of an open storage jar, a few tiny winged shadows rising out of it, mild afternoon light",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t061",
+          "id": "t060",
           "text": "那她撒出去的，到底是什麼？",
           "emotion": "問句，壓低"
         }
@@ -1008,12 +993,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a farmer in a straw hat pausing in a wheat field at midday, looking over his shoulder uneasily at a faint grey wisp behind him, hazy light",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t062",
+          "id": "t061",
           "text": "是一整罐的災禍和疾病。從此，疾病白天黑夜，自己找上門。",
           "emotion": "沉"
         }
@@ -1024,12 +1009,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tiny winged shadow tiptoeing across a moonlit windowsill toward a sleeping house, its little mouth closed, cool moonlight",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t063",
+          "id": "t062",
           "text": "而且是悄悄來的，因為宙斯拿走了它們的聲音。",
           "emotion": "壓低，放輕"
         }
@@ -1040,12 +1025,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man in a hoodie on a night bus hugging himself as if cold, glancing sideways nervously, the bus interior lit by dim overhead lights",
-        "camera": "push in",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t064",
+          "id": "t063",
           "text": "你想想，最可怕的不是病，是病來的時候，一點聲音都沒有。",
           "emotion": "對觀眾，輕"
         }
@@ -1056,12 +1041,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up looking down into the mouth of a big storage jar, a tiny warm glowing spark with little feathers clinging just under the inner rim, pale grey light",
-        "camera": "drift",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t065",
+          "id": "t064",
           "text": "罐子裡，只剩下最後一樣。會是什麼？",
           "emotion": "停一拍，問句"
         }
@@ -1077,7 +1062,7 @@
       },
       "lines": [
         {
-          "id": "t066",
+          "id": "t065",
           "text": "還記得開場那一樣沒飛走的東西嗎？它叫艾爾庇斯，通常翻成「希望」。",
           "emotion": "回呼，揭曉"
         }
@@ -1088,12 +1073,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tiny warm glowing spark with little feathers sitting under the rim of a storage jar like a bird in a nest, the heavy lid sliding shut above it, soft daylight",
-        "camera": "pan right",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t067",
+          "id": "t066",
           "text": "詩裡說，它待在打不破的住處裡，就在罐口邊緣底下，沒飛出門外。",
           "emotion": "放慢"
         }
@@ -1104,12 +1089,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a broad-shouldered white-bearded king of the gods in a long white robe and a gold laurel wreath on a cloud raising one hand with a calm, knowing look, a heavy lid floating shut far below him, soft late light",
-        "camera": "tilt down",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t068",
+          "id": "t067",
           "text": "因為它飛出去之前，蓋子先蓋上了，這是宙斯的意思。"
         }
       ]
@@ -1119,12 +1104,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a mother in a cardigan closing a picture book and smiling reassuringly at a child in bed, a small night light glowing beside them",
-        "camera": "pull out",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t069",
+          "id": "t068",
           "text": "很多版本講到這裡會說：還好，人類至少還留著希望。",
           "emotion": "像床邊故事"
         }
@@ -1135,12 +1120,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tiny glowing feathered spark looking out through the narrow gap under a closed jar lid, its little face pressed to the gap, dim light",
-        "camera": "pan left",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t070",
+          "id": "t069",
           "text": "可是你注意，詩裡的希望，是關在罐子裡、沒出來的那一個。",
           "emotion": "對觀眾，點出來"
         }
@@ -1151,169 +1136,35 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a tiny glowing feathered spark peering up from under the rim of a closed jar, looking lonely, the lid's shadow over it, dim light",
-        "camera": "tilt up",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t071",
+          "id": "t070",
           "text": "問題來了：一個叫「希望」的東西，為什麼要跟災禍關在同一個罐子裡？",
           "emotion": "升級，問句"
         }
       ]
     },
     {
-      "id": "hope-smithy",
-      "chapter": "留在罐口下的那一樣，被吵了兩千年",
+      "id": "out-argue",
       "template": "shot",
       "data": {
-        "prompt": "Medium shot of a few village men in wool cloaks sitting idle on a bench inside a warm blacksmith's forge on a snowy day, one yawning, firelight from the forge",
-        "camera": "push in",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t072",
-          "text": "赫西俄德沒解釋；可是同一首詩後面，又寫到希望。",
-          "emotion": "接住"
-        },
-        {
-          "id": "t073",
-          "text": "他勸人冬天別在鐵匠鋪閒聊，要去做工。"
-        }
-      ]
-    },
-    {
-      "id": "hope-idle",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of an elderly bearded Greek poet in a plain brown wool cloak pointing sternly out of a forge doorway toward a snowy field with a plough, his cloak pulled tight, cold daylight",
-        "camera": "drift",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t074",
-          "text": "他說，懶人守著的，是空的希望；"
-        },
-        {
-          "id": "t075",
-          "text": "陪著閒坐不做事的窮人的那種希望，不是好東西。",
-          "emotion": "加重"
-        }
-      ]
-    },
-    {
-      "id": "hope-context",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a farmer's rough hands gripping the wooden handle of a plough in a snowy field, breath steaming in the cold air, overcast light",
-        "camera": "pan right",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t076",
-          "text": "注意，他講的只是閒坐那種希望。罐口底下那一個，又是哪一種？",
-          "emotion": "清楚，問句"
-        }
-      ]
-    },
-    {
-      "id": "hope-evil",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a tiny grey spark with a sly grin hiding under a jar's rim among a few fading wisps of smoke, dim cool light",
-        "camera": "tilt down",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t077",
-          "text": "從古代起，讀的人就分成兩邊。一邊說：留下的是壞的那種預期，好的早就飛走了。",
-          "emotion": "壓低"
-        }
-      ]
-    },
-    {
-      "id": "hope-pantry",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a tiny warm glowing feathered spark sleeping peacefully in a cosy nest of straw inside a storage jar, even light from above",
-        "camera": "pull out",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t078",
-          "text": "另一邊剛好相反：希望被留下來，是替人類保住它。今天最常聽到的，是這一邊。"
-        }
-      ]
-    },
-    {
-      "id": "hope-why",
-      "template": "shot",
-      "data": {
-        "prompt": "Close-up of a tiny glowing feathered spark under a jar rim, half its face lit warm and half in cool shadow, looking unsure, dim light",
-        "camera": "pan left",
-        "visual": "still"
-      },
-      "lines": [
-        {
-          "id": "t079",
-          "text": "為什麼吵不完？因為這個字可以是盼著好事，也可以是等著壞事，原文偏偏沒說是哪一種。",
-          "emotion": "收著"
-        }
-      ]
-    },
-    {
-      "id": "hope-react",
-      "template": "shot",
-      "data": {
-        "prompt": "Medium shot of an elderly bearded Greek poet in a plain brown wool cloak sitting under an olive tree chuckling to himself with his eyes closed, a blank wax tablet resting on his knee, soft late-afternoon light",
+        "prompt": "Close-up of a tiny glowing feathered spark under the rim of a closed jar, half its face lit warm and half in cool shadow, looking unsure, dim light",
         "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t080",
-          "text": "一個字吵了這麼久，我其實有點佩服。",
-          "emotion": "旁白自己的反應"
+          "id": "t071",
+          "text": "詩裡沒解釋。這個字是好是壞，讀的人從古代一路吵到現在。",
+          "emotion": "收著"
         }
       ]
     },
     {
-      "id": "hope-table",
-      "template": "compare",
-      "data": {
-        "title": "罐口底下的 elpis",
-        "left": {
-          "heading": "壞的預期",
-          "points": [
-            "好的飛走，壞的留下",
-            "古代注釋引 Aristarchus"
-          ]
-        },
-        "right": {
-          "heading": "替人類保住的安慰",
-          "points": [
-            "今天最常聽到的讀法",
-            "如 West 1978（轉引）"
-          ]
-        },
-        "verdict": "原文只說它留下，沒說好壞",
-        "source": "BMCR 2006.07.16；學者立場轉引；查核 2026-10-27"
-      },
-      "lines": [
-        {
-          "id": "t081",
-          "text": "你覺得呢？罐子裡留下的，是安慰，還是另一種災禍？",
-          "emotion": "對觀眾，問句"
-        }
-      ]
-    },
-    {
-      "id": "hope-turn",
+      "id": "out-turn",
       "template": "shot",
       "data": {
         "prompt": "Wide shot of an old harbour town at dawn, a ship with a furled sail gliding toward a city of canals and bell towers, soft pink morning light",
@@ -1322,8 +1173,8 @@
       },
       "lines": [
         {
-          "id": "t082",
-          "text": "希望被吵了這麼久；可是罐子本身，是在什麼時候、被誰縮成了盒子？",
+          "id": "t072",
+          "text": "可是罐子本身，是在什麼時候、被誰縮成了盒子？",
           "emotion": "問句，章末"
         }
       ]
@@ -1339,7 +1190,7 @@
       },
       "lines": [
         {
-          "id": "t083",
+          "id": "t073",
           "text": "一五〇八年九月，威尼斯的阿爾定印書坊，印出一本拉丁文格言集。",
           "emotion": "沉穩進場景"
         }
@@ -1355,7 +1206,7 @@
       },
       "lines": [
         {
-          "id": "t084",
+          "id": "t074",
           "text": "編這本書的，是鹿特丹的學者伊拉斯謨。"
         }
       ]
@@ -1370,11 +1221,11 @@
       },
       "lines": [
         {
-          "id": "t085",
+          "id": "t075",
           "text": "他替每一句古代俗語，都寫了一段解說。"
         },
         {
-          "id": "t086",
+          "id": "t076",
           "text": "其中一句叫：吃過苦頭，笨人才學乖。",
           "emotion": "像念諺語"
         }
@@ -1390,7 +1241,7 @@
       },
       "lines": [
         {
-          "id": "t087",
+          "id": "t077",
           "text": "他說，這句話大概出自一個古老的故事，赫西俄德講過，大意如此。"
         }
       ]
@@ -1405,14 +1256,44 @@
       },
       "lines": [
         {
-          "id": "t088",
+          "id": "t078",
           "text": "你注意那四個字：大意如此。這代表什麼？",
           "emotion": "對觀眾，問句"
         },
         {
-          "id": "t089",
+          "id": "t079",
           "text": "他不是在翻譯，是在重講。",
           "emotion": "點出來"
+        }
+      ]
+    },
+    {
+      "id": "venice-brothers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin Renaissance scholar in a black cap and a dark fur-collared coat holding a blurred page up to the window light, two tiny sketched figures of brothers just visible on it, smiling to himself",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "他重講的，是一對兄弟的故事：普羅米修斯和厄庇墨透斯。"
+        }
+      ]
+    },
+    {
+      "id": "venice-gifts",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a long plain ancient Greek dress and a shawl, her hair tied up standing very straight in a richly embroidered long gown and a gold diadem, smiling confidently, a soft glow around her, mild morning light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t081",
+          "text": "他這樣講：潘朵拉身上堆滿了天賦：美貌、打扮、聰明、口才。"
         }
       ]
     },
@@ -1426,8 +1307,8 @@
       },
       "lines": [
         {
-          "id": "t090",
-          "text": "他這樣講：朱比特讓潘朵拉帶著一個盒子，去找普羅米修斯。",
+          "id": "t082",
+          "text": "朱比特讓她帶著一個東西，去找普羅米修斯。",
           "emotion": "放慢"
         }
       ]
@@ -1437,17 +1318,17 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young woman in a long plain ancient Greek dress and a shawl, her hair tied up holding a small round ornate box in both palms, tiny dark wisps leaking from under its lid, her expression uncertain, soft light from the left",
-        "camera": "tilt up",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t091",
-          "text": "開場說威尼斯印上的另一個字，就是這個：盒子。",
+          "id": "t083",
+          "text": "開場說威尼斯印上的另一個字，就是它：盒子。",
           "emotion": "回呼，揭曉"
         },
         {
-          "id": "t092",
+          "id": "t084",
           "text": "盒子非常漂亮，裡面卻藏著各種災禍。"
         }
       ]
@@ -1457,17 +1338,17 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a tall bearded titan in a long rust-red cloak folding his arms and turning his face away from an offered small box, standing at a garden gate, overcast light",
-        "camera": "push in",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t093",
+          "id": "t085",
           "text": "結果呢，普羅米修斯拒收，",
           "emotion": "升級"
         },
         {
-          "id": "t094",
+          "id": "t086",
           "text": "還交代弟弟：我不在的時候，有人送東西來，別收。"
         }
       ]
@@ -1477,12 +1358,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a long plain ancient Greek dress and a shawl, her hair tied up smiling sweetly and holding out a small round box toward someone out of frame, standing on a doorstep, mild afternoon light",
-        "camera": "drift",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t095",
+          "id": "t087",
           "text": "潘朵拉轉身回去，說服了厄庇墨透斯，把盒子送給了他。"
         }
       ]
@@ -1492,17 +1373,17 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young curly-haired man in a knee-length belted tunic and sandals lifting the lid of a small round box, tiny grey winged shapes bursting out into his face, eyes popping in shock, soft daylight",
-        "camera": "pan right",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t096",
+          "id": "t088",
           "text": "沒想到，最大的改動在後面：",
           "emotion": "升級"
         },
         {
-          "id": "t097",
+          "id": "t089",
           "text": "在這個版本裡，打開盒子的，是厄庇墨透斯。",
           "emotion": "揭曉"
         }
@@ -1513,18 +1394,34 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young curly-haired man in a knee-length belted tunic and sandals sitting on the floor amid drifting grey smoke, an empty small box in his lap, slapping his own forehead, soft morning light",
-        "camera": "tilt down",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t098",
+          "id": "t090",
           "text": "疾病飛出來，他這才開始變聰明，可惜太晚了。"
         },
         {
-          "id": "t099",
+          "id": "t091",
           "text": "吃過苦頭，才學乖。",
           "emotion": "像念諺語"
+        }
+      ]
+    },
+    {
+      "id": "venice-nogift",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young curly-haired man in a knee-length belted tunic and sandals holding an empty small box upside down and shaking it, a rueful lopsided smile, grey wisps fading around him, soft light from a window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "他還用了一個希臘詞，形容宙斯送的東西：不是禮物的禮物。",
+          "emotion": "放慢"
         }
       ]
     },
@@ -1533,12 +1430,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young woman in a cardigan at a cafe table tilting her head thoughtfully over a cup, chin on hand, overcast light",
-        "camera": "pull out",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t100",
+          "id": "t093",
           "text": "我覺得這個版本比原版好懂；也許，就是太好懂了。",
           "emotion": "意見，帶一點玩味"
         }
@@ -1549,12 +1446,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a thin Renaissance scholar in a black cap and a dark fur-collared coat's hand copying a short line of curling marks from an old blank-looking manuscript into his own blurred page, candle light from the left",
-        "camera": "pan left",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t101",
+          "id": "t094",
           "text": "抄原文的人，就是他：厄庇墨透斯那句「收下了，才明白」，他在同一則裡引了希臘原文。"
         }
       ]
@@ -1564,18 +1461,38 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a fingertip on a blank page of an old book sliding down past five short lines to a sixth, warm candle light",
-        "camera": "tilt up",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t102",
+          "id": "t095",
           "text": "那一行，離寫大罐子的那一行只差五行。他為什麼不照著寫罐子？",
           "emotion": "放慢，問句"
         },
         {
-          "id": "t103",
+          "id": "t096",
           "text": "沒有資料，我們不猜。"
+        }
+      ]
+    },
+    {
+      "id": "venice-enemy",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin Renaissance scholar in a black cap and a dark fur-collared coat frowning as he writes a short new heading on a blurred page, a small round box drawn in the margin as a tiny doodle, soft candle light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "同一本書另一則格言叫：敵人的禮物，不是禮物。",
+          "emotion": "像念諺語"
+        },
+        {
+          "id": "t098",
+          "text": "他在那裡，又提到了那個騙人的盒子。"
         }
       ]
     },
@@ -1584,17 +1501,17 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a long dim library aisle of old shelves, one book pulled halfway out and glowing faintly, the only shapes are the shelves and the books, soft grey light",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t104",
+          "id": "t099",
           "text": "開場那個晚了兩千多年的盒子，目前查得到最早，就在這裡。",
           "emotion": "篤定"
         },
         {
-          "id": "t105",
+          "id": "t100",
           "text": "更早的版本有沒有，還沒查到。",
           "emotion": "收著"
         }
@@ -1605,12 +1522,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of an old thick dictionary lying open on a desk with blurred pages, a magnifying glass resting on it, pale grey light",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t106",
+          "id": "t101",
           "text": "可是拉丁文的這個字，指的到底是多大的東西？",
           "emotion": "問句"
         }
@@ -1622,12 +1539,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a small round lidded pot no bigger than a dinner plate sitting on a museum pedestal, a curious little girl's face peeking over the edge, even gallery light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t107",
+          "id": "t102",
           "text": "字典上說得很乾脆：小盒子、小匣子。",
           "emotion": "乾脆"
         }
@@ -1638,12 +1555,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a museum guard in a grey uniform pointing proudly at a small round lidded pot inside a glass case, even gallery light",
-        "camera": "tilt down",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t108",
+          "id": "t103",
           "text": "例如紐約大都會博物館一個雅典的盒子，約西元前七百五十年做的。"
         }
       ]
@@ -1653,12 +1570,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of two hands measuring a small round flat lidded pot with a cloth tape measure on a plain table, soft light from a window",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t109",
+          "id": "t104",
           "text": "不含蓋子，高八點四公分，直徑二十三公分，比較像一個扁扁的圓盒。",
           "emotion": "數字一個一個"
         }
@@ -1690,12 +1607,12 @@
       },
       "lines": [
         {
-          "id": "t110",
+          "id": "t105",
           "text": "還記得羅浮宮那個大罐子嗎？兩件不同的文物，你看，差在哪？",
           "emotion": "回呼，問句"
         },
         {
-          "id": "t111",
+          "id": "t106",
           "text": "一個跟人差不多高，一個放得上桌。",
           "emotion": "對比"
         }
@@ -1706,12 +1623,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a pair of hands holding a red pencil over a blank page of a book review, the pencil pausing in mid-air, soft lamp light",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t112",
+          "id": "t107",
           "text": "一位書評人說得妙：要是赫西俄德交代了罐子從哪來，"
         }
       ]
@@ -1721,12 +1638,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young woman in a long plain ancient Greek dress and a shawl, her hair tied up walking along a country path carrying a small round box easily in one hand, swinging it lightly, mild afternoon light",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t113",
+          "id": "t108",
           "text": "伊拉斯謨大概就沒辦法說，那是小到潘朵拉能隨身帶著的盒子。"
         }
       ]
@@ -1736,12 +1653,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a young man in a T-shirt straining to tip a huge storage jar in a courtyard, cheeks puffed, a small box sitting on a step beside him, even light from above",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t114",
+          "id": "t109",
           "text": "你想想，搬不動的罐子和捧在手上的盒子，故事差多少？",
           "emotion": "對觀眾，問句"
         }
@@ -1752,12 +1669,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a busy old harbour at dawn with a merchant ship being loaded with wooden crates of books, a porter carrying one crate up the gangplank, soft pink light",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t115",
+          "id": "t110",
           "text": "可是一本拉丁文的格言集，怎麼讓後來說故事的人，都跟著說成盒子？",
           "emotion": "問句，章末"
         }
@@ -1769,12 +1686,12 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a bald sixteenth-century Italian scholar in a dark red robe writing in a thick book at a cluttered desk, a little guilty glance to the side, soft afternoon light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t116",
+          "id": "t111",
           "text": "其中一條路，是十六世紀義大利學者吉拉爾迪的神話手冊。",
           "emotion": "接住"
         }
@@ -1785,12 +1702,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of two open books side by side on a desk with blurred matching pages, a finger pointing back and forth between them, soft morning light",
-        "camera": "tilt down",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t117",
+          "id": "t112",
           "text": "他寫潘朵拉那一句，跟伊拉斯謨幾乎一字不差。"
         }
       ]
@@ -1800,12 +1717,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a woman's hands in lace cuffs writing with a fountain pen on a blank sheet at a crowded Victorian desk, a stack of journals beside her, soft grey window light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t118",
+          "id": "t113",
           "text": "一九〇〇年，英國學者珍·哈里森寫了一篇〈潘朵拉的盒子〉。"
         }
       ]
@@ -1815,12 +1732,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of the same lace-cuffed hand drawing a firm double line across a blank page, ink pot beside it, soft grey light",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t119",
+          "id": "t114",
           "text": "她一路往回追，想找出這個盒子是從哪裡來的。"
         }
       ]
@@ -1835,7 +1752,7 @@
       },
       "lines": [
         {
-          "id": "t120",
+          "id": "t115",
           "text": "她說：把那個大罐子翻成盒子，麻煩就從這裡開始。",
           "emotion": "引述，加重"
         }
@@ -1846,12 +1763,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a thick old English dictionary falling open on a library table with blurred pages, a ribbon marker sliding out, mild afternoon light",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t121",
+          "id": "t116",
           "text": "她還說，英文古典辭典裡那個「漂亮的盒子」，看來就是從吉拉爾迪來的。"
         }
       ]
@@ -1861,17 +1778,17 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a fountain pen laid down across a blank sheet beside a cold cup of tea, the hand pulling back from it, soft grey evening light",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t122",
+          "id": "t117",
           "text": "可是追到這裡，她就停住了。你猜她寫了什麼？",
           "emotion": "問句"
         },
         {
-          "id": "t123",
+          "id": "t118",
           "text": "吉拉爾迪是照誰抄的，我不知道。",
           "emotion": "放慢"
         }
@@ -1882,17 +1799,17 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a long empty reading room with rows of wooden desks and brass desk lamps switched off, dust floating in pale light from high windows, the only shapes are desks and shelves",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t124",
+          "id": "t119",
           "text": "我很喜歡這句話：線索斷了，她就大方說斷了。",
           "emotion": "旁白自己的反應"
         },
         {
-          "id": "t125",
+          "id": "t120",
           "text": "線索要接起來，還得再等五十六年。",
           "emotion": "收著"
         }
@@ -1904,12 +1821,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of two pairs of hands, one with a wedding ring, laying a thick new hardcover book with a plain blank jacket on a desk, pale grey light",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t126",
+          "id": "t121",
           "text": "一九五六年，潘諾夫斯基夫婦出了一本同名的書。"
         }
       ]
@@ -1924,7 +1841,7 @@
       },
       "lines": [
         {
-          "id": "t127",
+          "id": "t122",
           "text": "書的第二章，標題就是：盒子的來源，鹿特丹的伊拉斯謨。",
           "emotion": "一字一字"
         }
@@ -1935,17 +1852,17 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a thin Renaissance scholar in a black cap and a dark fur-collared coat looking up from his desk with an innocent shrug, quill still in hand, candle light",
-        "camera": "tilt down",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t128",
+          "id": "t123",
           "text": "可是，伊拉斯謨為什麼會寫成盒子？",
           "emotion": "問句"
         },
         {
-          "id": "t129",
+          "id": "t124",
           "text": "他自己沒說明，到現在也沒有定論。"
         }
       ]
@@ -1955,12 +1872,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a scholar's hand sliding a small round box across a desk until it sits beside a tiny model of a huge storage jar, comparing them, soft lamp light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t130",
+          "id": "t125",
           "text": "有研究者推測，他可能把另一個故事混了進來。",
           "emotion": "標成推測"
         }
@@ -1971,12 +1888,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young woman in a long pale dress and hooded cloak holding a small round box against her chest in both hands, looking down at it nervously, soft dusk light",
-        "camera": "pan left",
+        "camera": "pan right",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t131",
+          "id": "t126",
           "text": "古羅馬作家阿普列尤斯的《變形記》裡，維納斯交給少女賽姬一個盒子，"
         }
       ]
@@ -1986,12 +1903,12 @@
       "template": "shot",
       "data": {
         "prompt": "Wide shot of a young woman in a long pale dress and hooded cloak walking down a dark rocky path toward a misty cave, clutching a small round box, faint grey dusk light",
-        "camera": "tilt up",
+        "camera": "tilt down",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t132",
+          "id": "t127",
           "text": "要她帶去冥界；一路上有聲音叮嚀：千萬別打開。",
           "emotion": "壓低"
         }
@@ -2002,12 +1919,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a young woman in a hooded cloak lifting the lid of a small round box, a soft grey mist of sleep drifting out over her drooping eyelids, faint dusk light",
-        "camera": "push in",
+        "camera": "pull out",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t133",
+          "id": "t128",
           "text": "她還是打開了，裡面是冥界的沉睡。",
           "emotion": "放輕"
         }
@@ -2018,12 +1935,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a little boy in pyjamas pointing excitedly at an open picture book, mouth open as if shouting I knew it, warm lamp light",
-        "camera": "drift",
+        "camera": "pan left",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t134",
+          "id": "t129",
           "text": "不准打開、偏偏打開。你小時候聽的潘朵拉，是不是比較像這個？",
           "emotion": "對觀眾，問句"
         }
@@ -2034,17 +1951,17 @@
       "template": "shot",
       "data": {
         "prompt": "Medium shot of a thin Renaissance scholar in a black cap and a dark fur-collared coat holding a finger to his lips with a mysterious half-smile, standing by a window, mild daylight",
-        "camera": "pan right",
+        "camera": "tilt up",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t135",
+          "id": "t130",
           "text": "但這只是推測，伊拉斯謨自己沒這樣說過。",
           "emotion": "清楚"
         },
         {
-          "id": "t136",
+          "id": "t131",
           "text": "回到開場的問題：潘朵拉打開的，到底是什麼？",
           "emotion": "問句"
         }
@@ -2055,12 +1972,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a hand placing a small round box on a shelf next to a huge storage jar, the box tiny beside it, soft afternoon light",
-        "camera": "tilt down",
+        "camera": "push in",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t137",
+          "id": "t132",
           "text": "還記得羅浮宮那個一點五六公尺高的皮托斯嗎？她掀開的，就是同一種東西：大儲物罐。",
           "emotion": "答案，放慢"
         }
@@ -2071,12 +1988,12 @@
       "template": "shot",
       "data": {
         "prompt": "Close-up of a manila folder on a desk being closed by a hand, a rubber stamp beside it, soft afternoon light",
-        "camera": "pull out",
+        "camera": "drift",
         "visual": "still"
       },
       "lines": [
         {
-          "id": "t138",
+          "id": "t133",
           "text": "這份檔案，存檔：罐子是原文，盒子是後來的人替它換的。",
           "emotion": "乾脆，落地"
         }
@@ -2091,12 +2008,12 @@
       },
       "lines": [
         {
-          "id": "t139",
+          "id": "t134",
           "text": "如果你是罐口底下那個希望，你覺得自己是被保護，還是被關起來？留言告訴我。",
           "emotion": "親近"
         },
         {
-          "id": "t140",
+          "id": "t135",
           "text": "這個頻道只講原典裡有的；想一起翻原版，就訂閱。",
           "emotion": "乾脆"
         }
