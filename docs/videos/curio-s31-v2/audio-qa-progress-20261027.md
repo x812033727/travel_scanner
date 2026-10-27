@@ -1,8 +1,8 @@
 # S31 v2 音訊檢查進度
 
-狀態：**EN原文retake1 native4／provider busy；212 raw與29目標全未變、plain0/2、無producer。最早15:15:04Z fresh核對新slot；原29flags及全部舊take保留，0/8 accepted**。
+狀態：**EN原文retake1冷卻後續作仍429／native4；212 raw未變、plain0/2、無producer。最早16:35Z（台北00:35）fresh核對新slot；原29flags及全部舊take保留，0/8 accepted**。
 
-最新 checkpoint（2026-10-27）：原文retake1的78815／PID10320已於14:55:04.0103260Z native4結束；14:54:20–14:55:03連續5個429 `video_speech_upstream_busy`，Retry-After 10秒。**獨立對帳已確認212 raw全部未變：29個目標0 changed、其餘183亦0 changed；EN mix／timeline／fit／cache／source／approvals／state及82份journal全SHA未變，active／uncertain 0、PID dead／leasefree。沒有完成品質retake輪次（plain 0/2），無producer，0/8 accepted。** 費用尚無usage收據，不能宣稱零費；月quota足夠也不代表Google當日quota未滿。**最早2026-10-27T15:15:04Z才可fresh核對新slot**；冷卻期間不啟新paid job、不換provider／不改quota，不重播已結束的舊slot。新slot須fresh quota／source／lease／journal與exact remaining subset。見[dub-en-quality-retake1-provider-busy.json](dub-en-quality-retake1-provider-busy.json)；原29flags與全部舊take保留，完整包及下一集未成。
+最新 checkpoint（2026-10-27）：冷卻後的獨立續作 `dub-en-quality-retake1-after-busy1`（82113／PID57648）於15:34:08.1485986Z native4結束，仍是5次429 `video_speech_upstream_busy`。**獨立對帳及Root讀回確認212 raw未變（29目標／183其他皆0 changed），102項來源／mix／fit／timeline／cache／check／approval／state與82份journal全SHA保留，active／uncertain 0、PID已退出、無lease。plain仍0/2，0/8配音接受。** 最早 **2026-10-27T16:35:00Z（台北10/28 00:35）** 才可重新核對，已較前次延長至至少60分鐘；此前只讀觀察，不重播任一舊slot。15:26:30Z官方quota快照仍為5,157,762，涵蓋29 requests／1,251字元，但不能證明供應商當日額度可用，也無收據可宣稱零費用。下次須fresh quota／來源／lease／journal與實際剩餘句子。見[第二次限流對帳](dub-en-quality-retake1-provider-busy2.json)；兩次原始紀錄完整保留。完整包尚未完成，S15尚未開始。
 
 窄診斷：[私有 final-diagnosis.md](C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/rename-native-diagnostic-20261027/final-diagnosis.md)，SHA256 `fa648dfc294921661b21f98f795d5f3ef16002325f1358c0d8dd0948fe441f86`。本機fixture可重現EPERM，但未證實production持鎖來源或UTF8因果；沒有OS改動或上限變更。Transport observer只涵蓋synthesis，舊absolute-path配置未啟用；空檔／缺席不能證明ASR無HTTP錯誤。
 
