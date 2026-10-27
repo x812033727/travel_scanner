@@ -148,3 +148,14 @@ Root指定/root/es_docs_commit為本輪唯一文件editor，沿既有owner／cla
 2026-10-27T10:07:13.245740+00:00：64圖卡、9縮圖與128秒無聲檢閱樣片已直接交本片後台，同一SCRIPT22附件經正常全量下載及獨立完整bytes／SHA驗證；待審未核准。source lint實際0 errors／2個既有ES及ID手機寬度提醒；docs-videos實際236／236通過、0 fail／0 skip。
 
 本票已由正常task工具release並設blocked，owner／claimed_at已空；尚未done，責任仍由本對話codex-duckdb-20261025與原branch／PR1861延續，沒有交給其他producer。停在繁中原版actual TTS／音訊timeline／CC／正式片頭片尾與成片，以及八語各自經當前音檔核驗的M4A、實際CC與正式語言包。八語已驗M4A仍0/8。既有series TTS hold、全域Whisper／ASR reservation及未知計費journal保持原bytes；不得因PID已死清hold、重送或forget journal。恢復前讀CURRENT最新checkpoint、查實際PID／LEASE／state，保留現有逐句快取、retake／改寫上限、歷次失敗及原核准。沒有merge／deploy／YouTube上傳或其他影片／全域排程修改。
+
+
+## 首次繁中TTS實際啟動與429服務停點 — 2026-10-27
+
+Root已校正先前將單片未知計費限制擴張到所有新TTS的本地排程政策，在站主既有製作委派與原111句／2508字元額度內，允許一個獨立DuckDB首次原生程序。實際session16864／PID381994於14:37:26Z exit4：1status GET、1speech POST，dg2i的23字元請求回HTTP429 `video_speech_upstream_busy`／Retry-After10秒；受限程序停止等待，沒有第二次HTTP、成功音檔、旁白或時間軸。初始process attempt1、原句retake0，沒有新增111句完成證明。
+
+獨立實體驗核只為如實失敗保存CLEAR，確認原948W／835EP／state與3held紀錄原bytes、nativelease釋放、新journal按已知拒絕的原生契約清理；送出前原件、回覆與log保留，無手動forget、QA清旗或零扣款／供應商帳單宣稱。收據見docs/videos/duckdb-agent-full-export/receipts/master-audio-initial-20261027/。先前TTS0時的完整progress另存history/before-initial-TTS-20261027/；舊tts-deferral、敘事false、已交22附件及所有來源／語言文字保持。
+
+停於已知服務忙碌、raw0，整片與八語M4A仍未完成。未來可在冷卻後由Root另立一次受限的正常初始resume，使用現有plan／cache／journal及原額度，無須等待ForTy舊PT3cc1／ES9a36事實；那些未知請求與Kimi全球ASR reservation仍不得重送或解除。已消耗first helper／永久marker不可重跑，也不開自動付費迴圈。Root後續正常release/statusblocked另記真實退出；責任沿同對話／branch／PR1861，不移交、不done、不merge／deploy／YouTube。
+
+2026-10-27T14:50:39.488157+00:00：Root已正常release及設blocked，兩命令實際exit0，owner／claimed_at空。停點是本片首次請求的HTTP429服務忙碌；raw0，未移交、未done，責任同本對話及PR1861。首次helper已消耗；後續只能另立受限的正常初始resume並保留attempt1／retake0歷史、原上限與未知紀錄。無背景配音／ASR／媒體工人。

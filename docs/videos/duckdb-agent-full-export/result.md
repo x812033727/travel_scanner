@@ -1,10 +1,14 @@
 # 第五片實際結果：原生視覺與SCRIPT附件完成，整片仍在製作
 
+2026-10-27T14:37:26.315Z，正常初始TTS程序實際結束為exit4（PID381994／session16864）：1個status GET、1個speech POST，第一句dg2i的23字元請求回HTTP429 `video_speech_upstream_busy`，Retry-After為10秒。這次受限程序停止原生等待，沒有第二次HTTP送出、成功WAV、旁白或時間軸；不是完整111句合成。見[真實退出](receipts/master-audio-initial-20261027/actual-native-exit.json)、[原始回覆](receipts/master-audio-initial-20261027/provider-response.json)及[獨立失敗驗核](receipts/master-audio-initial-20261027/independent-failure-audit.json)。
+
+服務忙碌後的後續初始resume須另立受限決定並保留真實失敗／快取；這次不是新未知計費結果，也沒有帳單或零扣款宣稱。
+
 截至2026-10-27T09:56:16.602807+00:00，64張原生圖卡與繁中加八語共9張JPEG縮圖已實際製作並逐張驗收；同一待審SCRIPT已附22份視覺元件，正常完整下載及獨立bytes／SHA查核完成。[當前進度](production-progress.json)、[實際元件索引](receipts/visual-components/index.json)與[完整下載證據](receipts/visual-components/normal_full22_proof.json)分列範圍。
 
 22份為9張縮圖、聯絡表、9份完整原始標題說明草稿TXT、原生frames manifest、誠實元件報告及128秒無旁白視覺樣片。64張真實圖卡依稿件順序各停2秒，這是檢閱速度，並非實測旁白或章節時間；沒有把樣片當成正式成片，也沒有ZIP或64張PNG後台交付宣稱。
 
-繁中paid TTS0／raw0，actual audio timeline與CC尚無；八語已驗M4A仍0/8，fit／meter／ASR、正式語言包、至少480秒正文、正式成片及完整QA仍待完成。原生靜態字標不等於官方5秒片頭／21秒片尾，本片尚未套用動畫bookends。
+繁中已實際啟動一次受限的首次合成；唯一speech POST回HTTP429 `video_speech_upstream_busy`，未取得音訊，raw仍0。actual audio timeline與CC尚無；八語已驗M4A仍0/8，fit／meter／ASR、正式語言包、至少480秒正文、正式成片及完整QA仍待完成。原生靜態字標不等於官方5秒片頭／21秒片尾，本片尚未套用動畫bookends。
 
 當前來源[video.json](video.json)SHA `1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8`；只刪除4張卡片被裁切的可選重複title，相同文字保留於key。正常快取render重用60張並重畫4張，原64張實看中的4項裁切失敗、4張替換圖的真實複審，以及初次native0／outer1縮圖失敗均完整保留。[視覺delta](receipts/visual-components/source-visual-delta.json)也記錄ES／PT／ID／VI四個縮圖短標的正常metadata merge；111句完整line objects、全部八語targets與完整metadata不變。
 

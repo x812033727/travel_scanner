@@ -1,9 +1,9 @@
 {
   "kind": "fifth_episode_production_progress",
   "schema_version": 1,
-  "updated_at_utc": "2026-10-27T10:09:03.877783+00:00",
+  "updated_at_utc": "2026-10-27T14:50:39.488157+00:00",
   "slug": "duckdb-agent-full-export",
-  "stage": "native64_visuals9_thumbnails_and_SCRIPT22_draft_attachments_verified_audio_CC_full_film_pending",
+  "stage": "native64_visuals_SCRIPT22_verified_initial_TTS_HTTP429_raw0_audio_CC_full_film_pending",
   "overall_production_completed": false,
   "source_import_complete": true,
   "source_video_sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8",
@@ -180,19 +180,47 @@
     "existing_script_adoption_still_current_by_identical_script_bytes": true
   },
   "TTS": {
-    "paid_started": false,
+    "paid_started": true,
     "paid_syntheses": 0,
     "current_raw_WAVs": 0,
     "provider_or_voice_or_global_settings_changed": false,
     "hold_receipt": "receipts/tts-deferral.json",
-    "root_decision": "defer new paid fifth TTS because actual shared Gemini speech busy/429 context; source gates and dry-run only",
+    "root_decision": "The prior blanket stop was ROOT scheduling policy. One distinct bounded DuckDB initial invocation was delegated and actually stopped at a known HTTP429 service refusal; future normally bounded initial resume may proceed after cooldown using current cache/journal/plan without settling unrelated ForTy unknowns.",
     "dryrun_requests": 111,
     "dryrun_pending": 111,
     "dryrun_billable_characters_estimate": 2508,
     "configuration_ready_is_not_provider_available": true,
     "provider_billing_audited": false,
-    "fifth_paid_release_granted": false,
-    "other_episode_scoped_recovery_is_fifth_release": false
+    "fifth_paid_release_granted": true,
+    "other_episode_scoped_recovery_is_fifth_release": false,
+    "paid_started_definition": "One normal paid-route speech request was dispatched; this is not a provider charge claim.",
+    "hold_receipt_role": "Dated historical root scheduling deferral; not an automatic permanent block on distinct DuckDB initial requests.",
+    "release_kind": "ROOT bounded production dispatch decision only; not audio/quality/server approval.",
+    "initial_process_attempts": 1,
+    "original_retake_round": 0,
+    "rewrite_rounds_used": 0,
+    "actual_speech_HTTP_POST": 1,
+    "actual_successful_speech_HTTP": 0,
+    "actual_native_exit": 4,
+    "actual_HTTP_status": 429,
+    "actual_error_code": "video_speech_upstream_busy",
+    "actual_first_line_id": "dg2i",
+    "actual_first_requested_billable_bound": 23,
+    "planned_total_request_cap": 111,
+    "planned_total_billable_cap": 2508,
+    "actual_retry_after_seconds": 10,
+    "automatic_HTTP_retries": 0,
+    "unknown_request_created": false,
+    "native_new_settled_journal_cleaned_normally": true,
+    "manual_journal_forget": false,
+    "old_unknowns_or_ASR_reservation_cleared": false,
+    "provider_invoice_or_zero_charge_claim": false,
+    "current_attempt_receipt": "receipts/master-audio-initial-20261027/actual-completion.json",
+    "actual_exec_receipt": "receipts/master-audio-initial-20261027/actual-native-exit.json",
+    "independent_failed_attempt_review": "receipts/master-audio-initial-20261027/independent-failure-audit.json",
+    "future_resume_policy": "After service cooldown, ROOT may admit a separately bounded normal initial resume using the unchanged current plan/cache/journal and existing caps. It must not rerun the consumed first helper, retake or replay unknown requests, wait on unrelated ForTy billing as a blanket prohibition, or start an automatic loop.",
+    "listening_or_ASR_accepted": false,
+    "narration_or_timeline_created": false
   },
   "media": {
     "audio_checked": false,
@@ -758,21 +786,72 @@
     "normal_repository_tests_run_by_this_updater": false
   },
   "task_handoff": {
-    "recorded_at": "2026-10-27T10:09:03.877783+00:00",
+    "recorded_at": "2026-10-27T14:50:39.488157+00:00",
     "actual_status": "blocked",
     "owner_claim_released": true,
     "normal_release_and_status_receipt": {
-      "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-task-release-status-exits.json",
-      "bytes": 1960,
-      "sha256": "8e2482b7dbeaeaead6a85e114594b762f69fb23e7efdb00a31c31c4822e7aeba"
+      "file": "/workspace/work/ai-tech-next/duckdb-master-audio-20261027/ROOT-task-stop-exits.json",
+      "bytes": 501,
+      "sha256": "442b6d02edc6423416e0b80552b270bd48921666347b2e20a8772a739a7beffa"
     },
-    "actual_post_handoff_task_check": {
-      "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-tasks-post-handoff-check-exit.json",
-      "bytes": 694,
-      "sha256": "920e977919ff467fe26f6c8df177cab49c9bd60718d46fa708e5da19210c3ab4"
-    },
-    "responsibility": "codex-duckdb-20261025; same conversation and original branch/PR1861, no transfer or episode done.",
-    "stop_point": "Actual TTS/audio timeline/CC/official animated bookends/full episode and eight checked downloadable M4A language packages pending under original service holds and unknown journals.",
+    "responsibility": "codex-duckdb-20261025; same conversation/branch/PR1861, no transfer and not done.",
+    "stop_point": "Own first normal speech POST returned known HTTP429 upstream busy; raw0, no timeline or narration. After cooldown a separately bounded normal initial resume may use current plan/cache/journal and existing caps without requiring unrelated ForTy billing facts. Old ForTy/Kimi unknowns and global ASR reservation remain protected.",
     "no_background_media_or_audio_producer": true
+  },
+  "initial_TTS_attempt_history": {
+    "recorded_at": "2026-10-27T14:47:24.000220+00:00",
+    "actual_completed_at": "2026-10-27T14:37:26.315Z",
+    "actual_pid": 381994,
+    "actual_exec_session": 16864,
+    "result": "known_settled_HTTP429_external_failure_no_audio",
+    "historical_before_stage": "native64_visuals9_thumbnails_and_SCRIPT22_draft_attachments_verified_audio_CC_full_film_pending",
+    "historical_before_updated_at": "2026-10-27T10:09:03.877783+00:00",
+    "historical_before_TTS": {
+      "paid_started": false,
+      "paid_syntheses": 0,
+      "current_raw_WAVs": 0,
+      "provider_or_voice_or_global_settings_changed": false,
+      "hold_receipt": "receipts/tts-deferral.json",
+      "root_decision": "defer new paid fifth TTS because actual shared Gemini speech busy/429 context; source gates and dry-run only",
+      "dryrun_requests": 111,
+      "dryrun_pending": 111,
+      "dryrun_billable_characters_estimate": 2508,
+      "configuration_ready_is_not_provider_available": true,
+      "provider_billing_audited": false,
+      "fifth_paid_release_granted": false,
+      "other_episode_scoped_recovery_is_fifth_release": false
+    },
+    "historical_progress_copy": "history/before-initial-TTS-20261027/production-progress.json.txt",
+    "historical_progress_sha256": "71020d82387317912723aa9b234272d8088fe762f927780ecf1a42bdbc8dbaa6",
+    "actual_completion": "receipts/master-audio-initial-20261027/actual-completion.json",
+    "actual_exit": "receipts/master-audio-initial-20261027/actual-native-exit.json",
+    "actual_response": "receipts/master-audio-initial-20261027/provider-response.json",
+    "http_events": "receipts/master-audio-initial-20261027/http-events.jsonl",
+    "independent_review": "receipts/master-audio-initial-20261027/independent-failure-audit.json",
+    "whole_episode_complete": false,
+    "new_backend_artifacts": 0,
+    "all8_checked_M4A": 0,
+    "old_failure_QA_narrative_and_all_media_false_flags_preserved": true,
+    "source_voice_provider_and_shared_settings_unchanged": true,
+    "global_ASR_coordination_and_series_TTS_hold_original_bytes_preserved": true,
+    "billing_outcomes_of_old_unknown_requests_resolved": false,
+    "prior_task_handoff": {
+      "recorded_at": "2026-10-27T10:09:03.877783+00:00",
+      "actual_status": "blocked",
+      "owner_claim_released": true,
+      "normal_release_and_status_receipt": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-task-release-status-exits.json",
+        "bytes": 1960,
+        "sha256": "8e2482b7dbeaeaead6a85e114594b762f69fb23e7efdb00a31c31c4822e7aeba"
+      },
+      "actual_post_handoff_task_check": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-tasks-post-handoff-check-exit.json",
+        "bytes": 694,
+        "sha256": "920e977919ff467fe26f6c8df177cab49c9bd60718d46fa708e5da19210c3ab4"
+      },
+      "responsibility": "codex-duckdb-20261025; same conversation and original branch/PR1861, no transfer or episode done.",
+      "stop_point": "Actual TTS/audio timeline/CC/official animated bookends/full episode and eight checked downloadable M4A language packages pending under original service holds and unknown journals.",
+      "no_background_media_or_audio_producer": true
+    }
   }
 }
