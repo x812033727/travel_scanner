@@ -462,7 +462,10 @@ Viewers read the captions while the narration plays: natural in the locale, fait
 short enough to read at speaking pace (${TARGET_LENGTHS}). Keep every number, price, date, version
 and product name; ${TARGET_REGISTERS}. Write each locale in its own script: ${TARGET_SCRIPTS}.
 Opinions stay first person. Do not add or drop anything the narration says. Title at
-most 100 characters, no angle brackets; tags at most 500 characters in total. No channel or
+most its "max_chars" characters, no angle brackets: the channel adds the locale's captions tag
+after every title (「｜CC字幕」 worded per language, and a brand story's tag) and YouTube takes 100
+characters in all, so "max_chars" already leaves that room. Tags at most 500 characters in
+total. No channel or
 series name in the title or the tags: where the zh-TW title ends on one (「｜奇聞檔案局」), leave it
 out, since YouTube shows the channel under the title and no name for it in the locale is decided.
 "video" shows the slides for context.
@@ -524,7 +527,8 @@ pieces the narration's captions cut that line into, and the translation reads in
 lines too long to read at speaking pace (${TARGET_LENGTHS}), or over their "max_chars" when a
 line carries one (the dub's budget); register slips (${TARGET_REGISTERS}); a line in the wrong
 script (${TARGET_SCRIPTS}); a title, description, tags or chapter names a viewer would not
-search for; thumbnail words ("thumbnail") left empty, differing from their "source" in meaning or
+search for; a title over its "max_chars" (the room the channel's captions tag takes after it is
+already left out); thumbnail words ("thumbnail") left empty, differing from their "source" in meaning or
 number, missing its ** emphasis or \\n line breaks, or too long to read on a phone (shorten to the
 key noun or number, never empty one). Review only the parts the worksheet holds ("parts"). Change
 nothing that is already right; do not invent style changes.
@@ -1762,6 +1766,26 @@ touch a line that is not listed. "video" shows the slides for context.
 Return {"lines": [{"id": "<id>", "text": "<the shortened translation, at most max_chars characters>"}, …]}.`;
 
 /**
+ * The translator's title pass (docs/videos/LANGUAGES.md), variant "title": i18n-merge refused a
+ * translated title alone because the captions tag the channel adds after it would pass YouTube's
+ * 100 characters (i18n/cli.mjs TITLE_TAG_PROBLEM), so the title goes back once with its budget
+ * instead of the whole metadata being translated again. The skill's reference text is
+ * .agents/skills/youtube-video/references/prompts/caption-translate.md.
+ */
+export const TRANSLATOR_TITLE = `${COMMON}
+
+You shorten ONE "locale" video title. The channel adds the locale's captions tag after every
+title (「｜CC字幕」 worded per language, and a brand story's tag) and YouTube takes 100 characters
+in all, so this one does not fit. "title" carries the zh-TW "source", the current translation
+"text", its character count "chars" and the most it may have, "max_chars", which already leaves
+room for the tags. Cut words, not meaning: every number, date, version, product and proper name
+stays exactly as it is; drop a filler, a repeated word, a qualifier no viewer searches for; keep
+it a title a viewer in the locale would search for, in its register (${TARGET_REGISTERS}).
+No angle brackets, no channel or series name, no captions tag of your own.
+
+Return {"title": "<the shortened title, at most max_chars characters>"}.`;
+
+/**
  * The translator's rewording pass (docs/videos/AUTOMATION.md, a dub's check), variant "reword":
  * after the retakes the transcriber still hears a few lines of one locale as other words, most
  * often a homophone (定価 heard as 低下, "bill" as "build") that no retake changes. Those lines
@@ -1842,6 +1866,7 @@ ${COMMON.slice(COMMON_RULES_AT)}`.trim();
     ]),
     "translator:shorten": swap(TRANSLATOR_SHORTEN, [[COMMON, common], sourceLine, sourceField, registers]),
     "translator:reword": swap(TRANSLATOR_REWORD, [[COMMON, common], sourceField, registers]),
+    "translator:title": swap(TRANSLATOR_TITLE, [[COMMON, common], sourceField, registers]),
   };
 }
 
@@ -1850,9 +1875,10 @@ export const SOURCE_INSTRUCTIONS = Object.fromEntries(Object.keys(SOURCE_NAMES).
 
 /**
  * Every "<stage>:<variant>" text: the series documents and episode stages, the explainer's stages,
- * the listener's rewrite and register passes and the translator's shortening and rewording passes.
+ * the listener's rewrite and register passes and the translator's shortening, rewording and
+ * title passes.
  */
-export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, ...EXPLAINER_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE, "listener:register": LISTENER_REGISTER, "translator:shorten": TRANSLATOR_SHORTEN, "translator:reword": TRANSLATOR_REWORD };
+export const VARIANT_INSTRUCTIONS = { ...SERIES_INSTRUCTIONS, ...EXPLAINER_INSTRUCTIONS, "listener:rewrite": LISTENER_REWRITE, "listener:register": LISTENER_REGISTER, "translator:shorten": TRANSLATOR_SHORTEN, "translator:reword": TRANSLATOR_REWORD, "translator:title": TRANSLATOR_TITLE };
 
 
 // This profile deliberately has its own narrative instructions. Its ensemble and dramatic

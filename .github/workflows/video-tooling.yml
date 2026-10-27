@@ -40,7 +40,8 @@ jobs:
           node-version: 24
           cache: npm
       - run: npm ci
-      - run: sudo apt-get update && sudo apt-get install -y --no-install-recommends ffmpeg
+      - name: Install ffmpeg
+        run: bash "$GITHUB_WORKSPACE/tools/ci/install-ffmpeg.sh"
       - run: npx playwright install --with-deps chromium
       - run: node --test "tools/video/**/*.test.mjs"
       - run: node tools/video/assemble/smoke.mjs --workdir "$RUNNER_TEMP/video-smoke"

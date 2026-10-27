@@ -96,6 +96,27 @@ export function withCaptionTag(title, locale) {
 }
 
 /**
+ * The title YouTube gets for `title` in `locale`, as the package writes it: a brand story's
+ * story tag (withStoryTag), then the captions tag (withCaptionTag). Its length is what
+ * TITLE_MAX_CHARS holds, so a translation is checked on this, not on the bare title.
+ */
+export function captionedTitle(title, locale, { story = false } = {}) {
+  return withCaptionTag(story ? withStoryTag(title, locale) : title, locale);
+}
+
+/**
+ * How many characters a translated title may have so the tags the channel adds after it still
+ * fit TITLE_MAX_CHARS: 100 less the locale's captions tag, and a brand story's story tag too
+ * (2026-10-26: a th title of 99 and a pt one of 98 went up as 106 and 108 and blocked the
+ * package). What the translator is told; the merge checks captionedTitle itself, whose short
+ * tag lets a title a few characters over this still go in.
+ */
+export function titleBudget(locale, { story = false } = {}) {
+  const tags = `${CAPTION_TAGS[locale] ?? CAPTION_TAGS.en}${story ? STORY_TAGS[locale] ?? STORY_TAGS.en : ""}`;
+  return TITLE_MAX_CHARS - [...tags].length;
+}
+
+/**
  * One entry of video.json's assets[]: the three fields the schema requires (path, source,
  * license) and the two `stock fetch` adds (tools/video/media/stock.mjs). `source` is the credit
  * line as the vendor words it ("Photo by … on Pexels", "Image by … from Pixabay"), `author` the

@@ -29,6 +29,7 @@ from app.video_budget.models import (
     PILOT_LIMIT_USD,
     PILOT_LIMITS_USD,
     PILOT_SLUGS,
+    REMAKE_PILOT_LIMITS_USD,
     VideoPilotBudget,
     VideoPilotBudgetOperation,
     utcnow,
@@ -85,8 +86,9 @@ def is_pilot(slug: str | None) -> bool:
 
 def is_preproduction_held(slug: str | None) -> bool:
     # Every everyday-object film is held except the ones the owner activated
-    # (C03, 2026-10-24). An activated film still needs its 0138 account and the
-    # settled pre-ledger row before anything can be reserved.
+    # (C03 2026-10-24, the C11 UCC remake 2026-10-26). An activated film still
+    # needs its account (0138 for C03, with the settled pre-ledger row; 0140 for
+    # the C11 remake) before anything can be reserved.
     return (
         isinstance(slug, str)
         and slug.startswith(EVERYDAY_STORY_PREFIX)
@@ -133,10 +135,16 @@ def _label(value: str, *, name: str, length: int) -> str:
     return value
 
 
+def _reviewed_limit(slug: str) -> Decimal | None:
+    return PILOT_LIMITS_USD.get(
+        slug, C_SERIES_PILOT_LIMITS_USD.get(slug, REMAKE_PILOT_LIMITS_USD.get(slug))
+    )
+
+
 def _account_limit_is_valid(slug: str, limit_usd: Decimal) -> bool:
     if slug == B18_V2_SLUG:
         return limit_usd in (PILOT_LIMIT_USD, B18_V2_LIMIT_USD)
-    return limit_usd == PILOT_LIMITS_USD.get(slug, C_SERIES_PILOT_LIMITS_USD.get(slug))
+    return limit_usd == _reviewed_limit(slug)
 
 
 async def _locked_account(session: AsyncSession, slug: str) -> VideoPilotBudget:
@@ -412,7 +420,7 @@ async def summary(session: AsyncSession, slug: str) -> BudgetSummary | None:
     )
     # Show the intended ceiling even before 0133 lowers B18's persisted row.
     # This is a read-only transitional state; reserve stays held at USD 25.
-    effective_limit = PILOT_LIMITS_USD.get(slug, C_SERIES_PILOT_LIMITS_USD.get(slug))
+    effective_limit = _reviewed_limit(slug)
     assert effective_limit is not None
     remaining = effective_limit - reserved - settled
     return BudgetSummary(

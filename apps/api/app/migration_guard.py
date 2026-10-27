@@ -8,8 +8,11 @@ budget schema after reading back its held accounts and historical operations.
 The 0138 image accepts only the additive 0139 C20 account contract, with the
 same historical holds and a matching C20 ownership record. Paid admission
 remains held in that image.
-The 0139 image accepts only the additive 0140 C08 account contract after
+The 0139 image accepts only the additive 0140 C11 remake account contract after
 checking both new account ownership records. Paid admission remains held.
+The 0140 image accepts only the additive 0141 contract of six story-remake
+accounts after checking all three ownership records. Paid admission for those
+six remains held in that image.
 This module never stamps or downgrades a database.
 """
 
@@ -49,10 +52,21 @@ C20_ROLLBACK_IMAGE_HEAD = "0138_story_everyday_budget"
 C20_REVIEWED_FUTURE_REVISION = "0139_c20_zippo_pilot_budget"
 C20_PILOT_SLUG = "story-everyday-zippo-c20-short-v8"
 C20_PILOT_LIMIT_USD = Decimal("25.000000")
-C08_ROLLBACK_IMAGE_HEAD = "0139_c20_zippo_pilot_budget"
-C08_REVIEWED_FUTURE_REVISION = "0140_c08_kikkoman_pilot_budget"
-C08_PILOT_SLUG = "story-everyday-kikkoman-c08-short-v8"
-C08_PILOT_LIMIT_USD = Decimal("25.000000")
+C11_REMAKE_ROLLBACK_IMAGE_HEAD = "0139_c20_zippo_pilot_budget"
+C11_REMAKE_REVIEWED_FUTURE_REVISION = "0140_c11_ucc_remake_budget"
+C11_REMAKE_PILOT_SLUG = "story-everyday-ucc-c11-remake-20261025"
+C11_REMAKE_PILOT_LIMIT_USD = Decimal("25.000000")
+REMAKES_ROLLBACK_IMAGE_HEAD = "0140_c11_ucc_remake_budget"
+REMAKES_REVIEWED_FUTURE_REVISION = "0141_story_remake_budgets"
+REMAKE_PILOT_SLUGS = (
+    "story-everyday-camelbak-c14-remake-20261025",
+    "story-everyday-moleskine-c03-remake-20261025",
+    "story-everyday-bubble-wrap-c04-remake-20261025",
+    "story-everyday-play-doh-c06-remake-20261025",
+    "story-everyday-kincho-c05-remake-20261025",
+    "story-everyday-kikkoman-c08-remake-20261025",
+)
+REMAKE_PILOT_LIMIT_USD = Decimal("25.000000")
 State = Literal["exact", "upgrade", "rollback-compatible"]
 
 
@@ -81,7 +95,12 @@ def classify_revisions(
         return MigrationState(current, expected, "rollback-compatible")
     if expected == C20_ROLLBACK_IMAGE_HEAD and current == C20_REVIEWED_FUTURE_REVISION:
         return MigrationState(current, expected, "rollback-compatible")
-    if expected == C08_ROLLBACK_IMAGE_HEAD and current == C08_REVIEWED_FUTURE_REVISION:
+    if (
+        expected == C11_REMAKE_ROLLBACK_IMAGE_HEAD
+        and current == C11_REMAKE_REVIEWED_FUTURE_REVISION
+    ):
+        return MigrationState(current, expected, "rollback-compatible")
+    if expected == REMAKES_ROLLBACK_IMAGE_HEAD and current == REMAKES_REVIEWED_FUTURE_REVISION:
         return MigrationState(current, expected, "rollback-compatible")
     if current is None or current in known_revisions:
         return MigrationState(current, expected, "upgrade")
@@ -376,14 +395,14 @@ async def _verify_c20_ownership(connection: AsyncConnection) -> None:
 
 
 async def _verify_reviewed_0140(connection: AsyncConnection) -> None:
-    """Accept only the held C08 account added after reviewed C20 0139."""
+    """Accept only the held C11 UCC remake account added after reviewed C20 0139."""
     await _verify_reviewed_budget_schema(
         connection,
         expected_accounts={
             **PILOT_LIMITS_USD,
             **C_SERIES_PILOT_LIMITS_USD,
             C20_PILOT_SLUG: C20_PILOT_LIMIT_USD,
-            C08_PILOT_SLUG: C08_PILOT_LIMIT_USD,
+            C11_REMAKE_PILOT_SLUG: C11_REMAKE_PILOT_LIMIT_USD,
         },
         revision="0140",
     )
@@ -393,13 +412,13 @@ async def _verify_reviewed_0140(connection: AsyncConnection) -> None:
         text("SELECT slug, account_created, account_created_at FROM video_pilot_budget_0140_owned")
     )
     owners = rows.all()
-    if len(owners) != 1 or owners[0][0] != C08_PILOT_SLUG or owners[0][1] is not True:
-        raise MigrationGuardError("reviewed 0140 C08 ownership record is invalid")
+    if len(owners) != 1 or owners[0][0] != C11_REMAKE_PILOT_SLUG or owners[0][1] is not True:
+        raise MigrationGuardError("reviewed 0140 C11 remake ownership record is invalid")
     account = await connection.execute(
-        select(VideoPilotBudget.created_at).where(VideoPilotBudget.slug == C08_PILOT_SLUG)
+        select(VideoPilotBudget.created_at).where(VideoPilotBudget.slug == C11_REMAKE_PILOT_SLUG)
     )
     if owners[0][2] is None or owners[0][2] != account.scalar_one():
-        raise MigrationGuardError("reviewed 0140 C08 ownership timestamp changed")
+        raise MigrationGuardError("reviewed 0140 C11 remake ownership timestamp changed")
     constraints = await connection.execute(
         text(
             "SELECT con.contype, con.convalidated, pg_get_constraintdef(con.oid) "
@@ -415,7 +434,68 @@ async def _verify_reviewed_0140(connection: AsyncConnection) -> None:
         or primary_keys[0][1] is not True
         or _canonical_check(primary_keys[0][2]).upper() != "PRIMARYKEYSLUG"
     ):
-        raise MigrationGuardError("reviewed 0140 C08 ownership primary key changed")
+        raise MigrationGuardError("reviewed 0140 C11 remake ownership primary key changed")
+
+
+async def _verify_reviewed_0141(connection: AsyncConnection) -> None:
+    """Accept only the six held story-remake accounts added after reviewed C11 0140."""
+    await _verify_reviewed_budget_schema(
+        connection,
+        expected_accounts={
+            **PILOT_LIMITS_USD,
+            **C_SERIES_PILOT_LIMITS_USD,
+            C20_PILOT_SLUG: C20_PILOT_LIMIT_USD,
+            C11_REMAKE_PILOT_SLUG: C11_REMAKE_PILOT_LIMIT_USD,
+            **dict.fromkeys(REMAKE_PILOT_SLUGS, REMAKE_PILOT_LIMIT_USD),
+        },
+        revision="0141",
+    )
+    await _verify_c_series_holds(connection, revision="0141")
+    await _verify_c20_ownership(connection)
+    accounts = await connection.execute(
+        select(VideoPilotBudget.slug, VideoPilotBudget.created_at).where(
+            VideoPilotBudget.slug.in_((C11_REMAKE_PILOT_SLUG, *REMAKE_PILOT_SLUGS))
+        )
+    )
+    created = dict(accounts.tuples().all())
+    for table, slugs, owner_query in (
+        (
+            "video_pilot_budget_0140_owned",
+            (C11_REMAKE_PILOT_SLUG,),
+            "SELECT slug, account_created, account_created_at FROM video_pilot_budget_0140_owned",
+        ),
+        (
+            "video_pilot_budget_0141_owned",
+            REMAKE_PILOT_SLUGS,
+            "SELECT slug, account_created, account_created_at FROM video_pilot_budget_0141_owned",
+        ),
+    ):
+        rows = await connection.execute(text(owner_query))
+        owners = rows.all()
+        if (
+            len(owners) != len(slugs)
+            or {owner[0] for owner in owners} != set(slugs)
+            or any(owner[1] is not True for owner in owners)
+        ):
+            raise MigrationGuardError(f"reviewed 0141 {table} records are invalid")
+        if any(owner[2] is None or owner[2] != created[owner[0]] for owner in owners):
+            raise MigrationGuardError(f"reviewed 0141 {table} timestamp changed")
+        constraints = await connection.execute(
+            text(
+                "SELECT con.contype, con.convalidated, pg_get_constraintdef(con.oid) "
+                "FROM pg_constraint AS con "
+                "WHERE con.conrelid = CAST(:table AS regclass) AND con.conname = :primary_key"
+            ),
+            {"table": table, "primary_key": f"{table}_pkey"},
+        )
+        primary_keys = constraints.all()
+        if (
+            len(primary_keys) != 1
+            or _pg_char(primary_keys[0][0]) != "p"
+            or primary_keys[0][1] is not True
+            or _canonical_check(primary_keys[0][2]).upper() != "PRIMARYKEYSLUG"
+        ):
+            raise MigrationGuardError(f"reviewed 0141 {table} primary key changed")
 
 
 async def read_state() -> MigrationState:
@@ -432,8 +512,10 @@ async def read_state() -> MigrationState:
                     await _verify_reviewed_0138(connection)
                 elif state.current == C20_REVIEWED_FUTURE_REVISION:
                     await _verify_reviewed_0139(connection)
-                elif state.current == C08_REVIEWED_FUTURE_REVISION:
+                elif state.current == C11_REMAKE_REVIEWED_FUTURE_REVISION:
                     await _verify_reviewed_0140(connection)
+                elif state.current == REMAKES_REVIEWED_FUTURE_REVISION:
+                    await _verify_reviewed_0141(connection)
                 else:
                     raise MigrationGuardError("unreviewed rollback revision")
             return state

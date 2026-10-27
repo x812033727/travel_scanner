@@ -28,13 +28,13 @@ import { emptyLexicon } from "../core/lexicon.mjs";
 import { initializeStoryLexicon, mergeSharedLexicon, videoLexicon } from "../core/lexicon-store.mjs";
 import { stanceProblems } from "../core/lint.mjs";
 import { isNarrated, mergePanelVerdicts, NARRATIVE_REVIEW, narrativeRecord, narrativeReviewMatches, PANEL_INSTRUCTIONS, panelPayload, panelQuestions, panelVerdict, STORY_PANEL_READERS } from "../core/narrative.mjs";
-import { articlePath, SITE } from "../core/metadata.mjs";
+import { articlePath, SITE, titleBudget } from "../core/metadata.mjs";
 import { atomicWrite, contentPackFile, docDir, lexiconFile, readJson, resolveWorkBase, resolveWorkdir, ROOT, stopRequested, UsageError } from "../core/paths.mjs";
 import { eachLine, LINE_ID, TARGET_LOCALES, MIN_EPISODE_MINUTES, minEpisodeMinutes, NARRATION_LOCALE, narrationLocale, spokenText, textHash, VIDEO_CATEGORIES } from "../core/schema.mjs";
 import { writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckBinding, scriptCheckMatches, scriptCheckUnbound } from "../core/script-check.mjs";
 import { LOCALE_PARTS, readLanguages, writeLanguages } from "../core/stages.mjs";
-import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus } from "../core/state.mjs";
+import { ARTIFACTS, dubArtifacts, dubsStatus, lintProject, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
 import { estimateTimeline, FPS, speechHash } from "../core/timeline.mjs";
 import { localizedThumbnailHash } from "../core/translations.mjs";
 import { MAX_TEMPO, overrunSummary } from "../dubs/plan.mjs";
@@ -42,7 +42,7 @@ import { checkPackage, listFiles, METADATA_FILE, packageLocalesWanted, UPLOAD_DI
 import { checksCurrent } from "../package/cli.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
-import { buildSheet, SHEET_PARTS, sheetContext, withoutContext } from "../i18n/cli.mjs";
+import { buildSheet, SHEET_PARTS, sheetContext, TITLE_TAG_PROBLEM, titleFits, withoutContext } from "../i18n/cli.mjs";
 import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { resetSheets } from "../media/look.mjs";
 import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
@@ -667,6 +667,12 @@ const speechUncertain = (result) => result.code === 3 && lastLine(result.out).in
  */
 const lostPolicy = (result) => result.code === 3 && lastLine(result.out).includes(RUN_UNCERTAIN);
 /** The digits of a line, in order: a shortened translation must keep every one of them. */
+/** Whether i18n-merge refused nothing but a title the channel's captions tag makes too long. */
+function onlyTitleTooLong(out) {
+  const problems = String(out ?? "").split("\n").filter((line) => /^\s/.test(line) && line.trim() && !line.trim().startsWith("note:"));
+  return problems.length === 1 && problems[0].trim().startsWith(`title: ${TITLE_TAG_PROBLEM}`);
+}
+
 const digitsOf = (text) => (String(text).match(/\d+(?:[.,]\d+)*/g) ?? []).join(" ");
 /** A unit's report line names its video once: a phrase gets the slug, a line that has it stays. */
 const lineFor = (slug, text) => (text.startsWith(`${slug}: `) ? text : `${slug}: ${text}`);
@@ -3239,6 +3245,9 @@ export class Automation {
     const file = path.join(workdir, ARTIFACTS.characters);
     const manifest = readJson(file, null);
     if (!manifest?.characters) return this.block(state, "characters/manifest.json is gone; run look again");
+    // A character sent back (redrawSheets) has no sheets until look draws it again: the status
+    // routes here only once every character has some (core/state.mjs), and this is the guard.
+    if (undrawnCharacters(manifest).length) return this.media(state, "look");
     const project = await this.api.reviews(state.slug);
     const sha = await sha256File(file);
     const reviews = (project?.reviews ?? []).filter((review) => review.gate === "look" && review.content_sha256 === sha);
@@ -4343,7 +4352,18 @@ export class Automation {
     const finished = whole ? kept[keys[0]].reviewed : assembleSheet(sheet, keys.map((key) => kept[key].reviewed));
     this.fence(state.slug, `merging the ${locale} translation`);
     writeFileSync(sheetFile, `${JSON.stringify(finished, null, 2)}\n`);
-    const merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
+    let merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
+    // A title that only the channel's captions tag pushes past YouTube's limit goes back alone,
+    // once, before the whole metadata is asked again (and a second refusal blocks the video).
+    if (merged.code !== 0 && onlyTitleTooLong(merged.out)) {
+      if (storyDubSelected && !(await this.storyDubReady(state))) return null;
+      const title = await this.shortenTitle(state, locale, finished, video);
+      if (title) {
+        finished.title = { ...finished.title, text: title };
+        writeFileSync(sheetFile, `${JSON.stringify(finished, null, 2)}\n`);
+        merged = await run(ctx, ["i18n-merge", "--slug", state.slug, "--locale", locale]);
+      }
+    }
     if (merged.code !== 0) {
       // What the merge refused is asked again; the units it did not name stay kept.
       for (const unit of refusedUnits(merged.out, units)) delete kept[keys[units.indexOf(unit)]];
@@ -4574,6 +4594,29 @@ export class Automation {
     saveState(workdir, state);
     this.log(`  ${locale} dub given up: ${reason}`);
     return `${state.slug}: ${locale} dub given up (${reason}); the video goes on without it`;
+  }
+
+  /**
+   * The translator's title pass (variant "title"): a reviewed translation whose title alone
+   * i18n-merge refused, because the captions tag the channel adds after it would pass YouTube's
+   * 100 characters (2026-10-26: a th title of 99 and a pt one of 98 blocked their packages after
+   * the upload was confirmed), goes back with the title's budget. Answers the shorter title when
+   * it fits with the tag and keeps every digit, else null: the refusal then takes its usual
+   * course, a whole new translation of the metadata.
+   */
+  async shortenTitle(state, locale, sheet, video) {
+    const before = String(sheet.title?.text ?? "").trim();
+    const title = { source: sheet.title?.source ?? video.youtube?.title ?? "", text: before, chars: [...before].length, max_chars: titleBudget(locale, { story: video.category === "story" }) };
+    const answer = await this.stage("translator", state.slug, { locale, title, ...sourceLocale(video) }, 16_000, state.format, "title");
+    const after = typeof answer?.title === "string" ? answer.title.trim() : "";
+    const problem = !after ? "answered without a title" : /[<>]/.test(after) ? "angle brackets" : !titleFits(video, after, locale) ? `still too long (${[...after].length} characters)` : digitsOf(after) !== digitsOf(before) ? "the numbers changed" : null;
+    if (problem) {
+      this.log(`  ${locale} title pass dropped: ${problem}`);
+      return null;
+    }
+    state.notes = [...(state.notes ?? []), `${locale} title shortened for the captions tag: 「${before}」 → 「${after}」`];
+    this.log(`  ${locale} title shortened from ${[...before].length} to ${[...after].length} characters`);
+    return after;
   }
 
   /**
