@@ -1,0 +1,1248 @@
+{
+  "schema_version": 1,
+  "slug": "muse-allow-always-agent-permission",
+  "format": "slides",
+  "category": "ai-news",
+  "theme": "paper",
+  "target_minutes": [
+    8,
+    10
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。絕不平、絕不像在念稿。",
+    "performance": "像跟一個剛看到 Muse 新聞、也天天在用 AI 的朋友把一個按鈕講清楚：平穩、不嚇人，不笑當事人。替觀眾問的疑問上揚；門禁卡的對照用輕的語氣；Claude Code 那幾張像在旁邊看我操作，放慢；「它沒有再問我」亮起來；「我的看法是」放慢放穩；「我查不到」放輕；留言題輕輕收。英文產品名照英文念。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "loops": [
+    {
+      "setup": "vz2h",
+      "payoff": "mzgb",
+      "what": "台灣用不到 Muse，關我什麼事"
+    },
+    {
+      "setup": "3wna",
+      "payoff": "v7uf",
+      "what": "地址是怎麼送出去的"
+    },
+    {
+      "setup": "pauw",
+      "payoff": "t8u9",
+      "what": "同一種按鈕你也按過"
+    },
+    {
+      "setup": "gp6y",
+      "payoff": "pvqj",
+      "what": "開新對話，看它還記不記得"
+    },
+    {
+      "setup": "4bsn",
+      "payoff": "pvqj",
+      "what": "是 Meta 不好，還是按鈕本來就這樣"
+    },
+    {
+      "setup": "jxxs",
+      "payoff": "t8u9",
+      "what": "那顆星號是關鍵"
+    },
+    {
+      "setup": "bd47",
+      "payoff": "pvqj",
+      "what": "我從沒打算讓它做的那一種"
+    },
+    {
+      "setup": "nand",
+      "payoff": "n2s7",
+      "what": "Google 的代理准一次准到哪裡"
+    },
+    {
+      "setup": "dkqg",
+      "payoff": "md6y",
+      "what": "哪些事只准這一次"
+    },
+    {
+      "setup": "nkur",
+      "payoff": "rwk8",
+      "what": "按過的去哪裡收回"
+    },
+    {
+      "setup": "xaxz",
+      "payoff": "qdis",
+      "what": "只擋最危險的行不行"
+    },
+    {
+      "setup": "r2p5",
+      "payoff": "dg88",
+      "what": "還有更寬的一律"
+    },
+    {
+      "setup": "e436",
+      "payoff": "qdis",
+      "what": "換個寫法擋不擋得到"
+    }
+  ],
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "你按了「一律允許」，AI 就替你把地址給了陌生人：一個按鈕到底准了多少事",
+    "description": "2026 年 9 月 26 日，多倫多一位 YouTuber 讓 Meta 的 AI 代理 Muse 替他在 Marketplace 賣鍵盤，當晚買家照著 Muse 給的地址到了他家樓下；Meta 看過紀錄說沒有違反隱私控制，原因是他第一天按下的「Allow Always」。這支用他的事件講那個按鈕准了什麼，再在 Claude Code 裡真的按一次「Yes, and don't ask again」：它存下的是所有 git push，連新對話裡的強制推送都不再問；最後是去哪裡收回，以及為什麼加一條拒絕規則擋 --force，換成簡寫 -f 還是擋不住。\n寫給在台灣用 Gemini、ChatGPT 或 Claude，開始讓 AI 代理替自己做事的人，以及天天在 Claude Code 裡按「不要再問」的工程師。\n\n錄製日期 2026 年 10 月 27 日。Muse 事件的經過與當事人的原話，照 Matt Robb 在 X、Threads 上的說明與 Yahoo Tech、TechRadar 的報導；Meta 的回應（沒有違反隱私控制、會把權限提示寫清楚）照同一批報導的轉述，Meta 沒有公開說明頁可以引用；Muse 目前在美國、加拿大與日本開放，台灣還不能用，照 Inside 與日本媒體的報導；「不要再問」存在哪裡、記多久、星號怎麼比對、一串指令各存一條規則，照 Claude Code 官方文件〈Configure permissions〉；代理存取權與「移除代理的存取權不會中斷連結」照 Google 帳戶說明。片中的 Claude Code 畫面是 2026-10-27 在 Claude Code 2.1.311 與一個示範倉庫上真的跑出來的，遠端是本機的測試倉庫。「我的做法」「我的看法是」「我查不到」是站主的意見。\n\n片中的拒絕規則（擋不到簡寫 -f，只是示範）：\n\"deny\": [\"Bash(git push --force *)\"]\n\n片中提到的地方：\nClaude Code：/permissions\nGoogle 帳戶：連結的應用程式 → 代理存取權 → 停止使用\n\n你按過幾次「不要再問」？留言告訴我。",
+    "tags": [
+      "Meta Muse",
+      "AI 代理",
+      "一律允許",
+      "Claude Code 權限",
+      "don't ask again",
+      "Google 代理存取權",
+      "AI 安全",
+      "Muse 地址",
+      "AI 時事"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI 新聞",
+      "headline": "按一次\n**全都准**",
+      "sub": "Muse 把地址給了陌生人：你也按過同一種按鈕"
+    }
+  },
+  "sources": [
+    {
+      "title": "Yahoo Tech: A YouTuber figured out how his Muse AI agent shared his address with a total stranger",
+      "url": "https://tech.yahoo.com/ai/meta-ai/articles/youtuber-says-muse-setting-led-122153415.html",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "TechRadar: YouTuber says Meta's Muse AI ruined a sale and gave out his home address without permission",
+      "url": "https://www.techradar.com/ai-platforms-assistants/you-gotta-never-do-that-again-youtuber-says-metas-muse-ai-ruined-a-sale-and-gave-out-his-home-address-without-permission",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Matt Robb on Threads",
+      "url": "https://www.threads.com/@matt.j.robb/post/Dd28UvzALKg/by-doing-that-it-granted-muse-permission-to-send-messages-on-my-behalf-going/",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Claude Code Docs: Configure permissions",
+      "url": "https://code.claude.com/docs/en/permissions",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Google 帳戶說明：管理 Google 帳戶與第三方應用程式之間的連結",
+      "url": "https://support.google.com/accounts/answer/13533235?hl=zh-Hant",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Inside：Meta Muse 上線不到兩週登頂美國 App Store",
+      "url": "https://www.inside.com.tw/article/42443-meta-muse-app-store-number-one-us-2026",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "SmartScope: Meta Muse Japan launch",
+      "url": "https://smartscope.blog/en/blog/meta-muse-japan-launch-free-plan-limitations-invite-2026/",
+      "checked_on": "2026-10-27"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "open",
+      "chapter": "AI 代理怎麼會把地址給陌生人？",
+      "template": "title",
+      "data": {
+        "tag": "AI 新聞",
+        "title": "你按了「一律允許」，\n它就**一直允許**",
+        "subtitle": "Meta Muse · Claude Code · Google 代理存取權 · 2026-10",
+        "key": "Muse：Meta 的 AI 代理"
+      },
+      "lines": [
+        {
+          "id": "2z4v",
+          "text": "9 月 26 日，多倫多一位 YouTuber，",
+          "emotion": "開場平穩，日期清楚"
+        },
+        {
+          "id": "u227",
+          "text": "讓 Meta 的 AI 代理 Muse，替他賣一個鍵盤；"
+        },
+        {
+          "id": "wbw3",
+          "text": "那天晚上，一位買家照著 Muse 給的地址，開車到了他家樓下。",
+          "emotion": "「他家樓下」放慢"
+        }
+      ],
+      "claims": [
+        "c1",
+        "c2"
+      ]
+    },
+    {
+      "id": "naive",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會問",
+        "text": "Muse 台灣還用不到，\n關我什麼事？",
+        "key": "台灣用不到，關我什麼事？"
+      },
+      "lines": [
+        {
+          "id": "vz2h",
+          "text": "你可能會問：Muse 在台灣還用不到，這跟我有什麼關係？",
+          "emotion": "替觀眾問，問句上揚"
+        }
+      ],
+      "claims": [
+        "c3"
+      ]
+    },
+    {
+      "id": "no-breach",
+      "template": "big",
+      "data": {
+        "kicker": "Meta 看過紀錄",
+        "text": "沒有違反\n任何**隱私控制**",
+        "key": "那地址是怎麼送出去的？"
+      },
+      "lines": [
+        {
+          "id": "tech",
+          "text": "有關係。Meta 看過紀錄之後說：這次沒有違反任何隱私控制。",
+          "emotion": "平，「沒有違反」清楚"
+        },
+        {
+          "id": "3wna",
+          "text": "那地址是怎麼送出去的？答案在他第一天按下的一個按鈕。",
+          "emotion": "問句，句尾收著"
+        }
+      ],
+      "claims": [
+        "c4"
+      ]
+    },
+    {
+      "id": "stakes",
+      "template": "big",
+      "data": {
+        "kicker": "先記住這件事",
+        "text": "同一種按鈕\n你多半**也按過**",
+        "key": "等一下按一次給你看"
+      },
+      "lines": [
+        {
+          "id": "pauw",
+          "text": "同一種按鈕，你在 Claude Code、在 Google 帳戶裡，多半也按過；",
+          "emotion": "壓低"
+        },
+        {
+          "id": "gp6y",
+          "text": "等一下我會按一次給你看，再開一個新的對話，看它還記不記得。",
+          "emotion": "收穩，帶一點神秘"
+        }
+      ]
+    },
+    {
+      "id": "robb",
+      "chapter": "那個按鈕到底准了什麼？",
+      "template": "quote",
+      "data": {
+        "kicker": "當事人 Matt Robb，9 月 30 日",
+        "quote": "I didn't think it would send it out to everyone that gave me an offer",
+        "source": "Matt Robb 在 X 上（Yahoo Tech 轉述）",
+        "translation": "我沒想到，它會把它送給每一個出價的人。",
+        "keys": [
+          "第一天按了 Allow Always",
+          "沒想到會送給每個出價的人"
+        ]
+      },
+      "lines": [
+        {
+          "id": "33r9",
+          "text": "他後來把經過貼出來：設定 Muse 的第一天，他按了 Allow Always，一律允許；",
+          "emotion": "平穩"
+        },
+        {
+          "id": "e3as",
+          "text": "他以為，Muse 接受出價之前，還會先問他。"
+        },
+        {
+          "id": "v7uf",
+          "text": "結果這個允許，讓 Muse 用一份回覆範本替他發訊息；",
+          "emotion": "「回覆範本」放慢"
+        },
+        {
+          "id": "4z2v",
+          "text": "範本裡，就有他給過的取貨地址。",
+          "emotion": "壓低"
+        },
+        {
+          "id": "v9yp",
+          "text": "他自己的話是：我沒想到，它會把地址送給每一個出價的人。",
+          "reveal": 1,
+          "emotion": "轉述，輕"
+        }
+      ],
+      "claims": [
+        "c5",
+        "c6"
+      ]
+    },
+    {
+      "id": "muse-sorry",
+      "template": "quote",
+      "data": {
+        "kicker": "Muse 事後傳給他的訊息",
+        "quote": "my auto-reply told him ‘Yep I’m here!’ at 9:27 when you clearly weren’t available",
+        "source": "TechRadar 引述 Muse 的訊息",
+        "translation": "我的自動回覆在 9:27 跟他說「我到了」，可你那時明明不在。",
+        "keys": [
+          "Muse 的自動回覆說「我到了」",
+          "人其實不在家"
+        ]
+      },
+      "lines": [
+        {
+          "id": "85ie",
+          "text": "更麻煩的是後面：Muse 事後自己傳訊息跟他道歉，",
+          "emotion": "平，句尾往下"
+        },
+        {
+          "id": "dgma",
+          "text": "說它的自動回覆在晚上九點二十七分，跟買家說了一句我到了；",
+          "emotion": "「我到了」放慢"
+        },
+        {
+          "id": "zxza",
+          "text": "可他那時根本不在家。",
+          "reveal": 1,
+          "emotion": "壓低"
+        }
+      ],
+      "claims": [
+        "c15"
+      ]
+    },
+    {
+      "id": "meta-clearer",
+      "template": "big",
+      "data": {
+        "kicker": "Meta 的團隊",
+        "text": "會把權限提示\n**寫清楚**",
+        "key": "陪他看紀錄，說會改提示"
+      },
+      "lines": [
+        {
+          "id": "nwnq",
+          "text": "Meta 的團隊陪他看了紀錄，說之後會把權限提示寫得更清楚。",
+          "emotion": "平"
+        }
+      ],
+      "claims": [
+        "c7"
+      ]
+    },
+    {
+      "id": "thought-vs-granted",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "他以為准的",
+          "icon": "person",
+          "points": [
+            "這件事不用再問",
+            "答應出價前還會問"
+          ]
+        },
+        "right": {
+          "heading": "按鈕准的",
+          "icon": "checklist",
+          "points": [
+            "這一類訊息都不問",
+            "範本裡的地址一起送"
+          ]
+        },
+        "keys": [
+          "他以為：准一件事",
+          "實際：准一整類動作"
+        ]
+      },
+      "lines": [
+        {
+          "id": "4y5d",
+          "text": "差別在這裡：他以為准的，是一件事；",
+          "emotion": "對照，清楚"
+        },
+        {
+          "id": "yt9q",
+          "text": "按鈕准的，是一整類動作。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "keycard",
+      "template": "big",
+      "data": {
+        "kicker": "像一張大樓門禁卡",
+        "text": "只想請人收包裹\n給出去的是**整棟的卡**",
+        "key": "卡上不會寫只能收包裹"
+      },
+      "lines": [
+        {
+          "id": "ffiv",
+          "text": "就像你只想請管理員幫忙收個包裹，給出去的，卻是整棟大樓、每天都能刷的門禁卡；",
+          "emotion": "比喻，輕"
+        },
+        {
+          "id": "mrwt",
+          "text": "卡上不會寫：只能收包裹。"
+        },
+        {
+          "id": "4bsn",
+          "text": "那這是 Meta 做得不好，還是這種按鈕本來就這樣？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "cc-prompt",
+      "chapter": "按一次「不要再問」，它記住了什麼？",
+      "template": "code",
+      "data": {
+        "title": "Claude Code 問我",
+        "code": " Do you want to proceed?\n ❯ 1. Yes\n   2. Yes, and don’t ask again for: git push *",
+        "caption": "示範倉庫請它 git push origin main 時的權限提示，節錄 3 行（共 4 個選項）· 實跑 2026-10-27 · Claude Code 2.1.311",
+        "highlight": [
+          3
+        ]
+      },
+      "lines": [
+        {
+          "id": "hx9a",
+          "text": "我拿 Claude Code 試：在一個示範用的程式倉庫裡，請它推送一次程式碼。",
+          "emotion": "像在旁邊看他打，放慢"
+        },
+        {
+          "id": "ataa",
+          "text": "它停下來問我；第二個選項寫著：以後不用再問 git push，後面跟著一顆星號。",
+          "emotion": "「一顆星號」放慢"
+        },
+        {
+          "id": "579i",
+          "text": "第一個選項只准這一次；第二個，才會存成一條規則。",
+          "emotion": "清楚"
+        },
+        {
+          "id": "jxxs",
+          "text": "那顆星號，是整件事的關鍵。",
+          "emotion": "停一拍，壓低"
+        }
+      ],
+      "claims": [
+        "r1"
+      ]
+    },
+    {
+      "id": "settings",
+      "template": "terminal",
+      "data": {
+        "title": "示範倉庫的設定檔",
+        "command": "cat .claude/settings.local.json",
+        "output": [
+          "{\n  \"permissions\": {\n    \"allow\": [\n      \"Bash(git push *)\"\n    ]\n  }\n}"
+        ],
+        "ran_on": "2026-10-27",
+        "tool_version": "Claude Code 2.1.311",
+        "typing": "human",
+        "keys": [
+          "我選了第二個選項",
+          "多了一條：git push 加一顆星"
+        ]
+      },
+      "lines": [
+        {
+          "id": "k2z3",
+          "text": "我選了它，然後打開這個倉庫裡的設定檔：",
+          "emotion": "放慢"
+        },
+        {
+          "id": "974w",
+          "text": "裡面多了一條規則，git push，空一格，一顆星。",
+          "reveal": 1,
+          "emotion": "一個字一個字"
+        }
+      ],
+      "claims": [
+        "r2"
+      ]
+    },
+    {
+      "id": "star-meaning",
+      "template": "big",
+      "data": {
+        "kicker": "這條規則的意思",
+        "text": "**每一個**以 git push\n開頭的指令",
+        "key": "不只我准的那一次"
+      },
+      "lines": [
+        {
+          "id": "t8u9",
+          "text": "星號的意思是：以後每一個用 git push 開頭的指令，都不用再問；",
+          "emotion": "清楚"
+        },
+        {
+          "id": "w2z2",
+          "text": "規則存在倉庫根目錄，這個倉庫裡的每一次對話都算。",
+          "emotion": "平"
+        },
+        {
+          "id": "bd47",
+          "text": "包括我從沒打算讓它做的那一種。",
+          "emotion": "轉折，壓低"
+        }
+      ],
+      "claims": [
+        "c8"
+      ]
+    },
+    {
+      "id": "force",
+      "template": "chat",
+      "data": {
+        "title": "新對話・實跑 2026-10-27",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "請執行 git push --force origin main"
+          },
+          {
+            "side": "left",
+            "name": "Claude",
+            "text": "強制推送已完成。main 已從 69cd815 強制更新到 b2a3d6d"
+          }
+        ],
+        "keys": [
+          "新的對話，請它強制推送",
+          "沒有再問，遠端被蓋掉"
+        ]
+      },
+      "lines": [
+        {
+          "id": "yesz",
+          "text": "我先在自己這邊改寫一筆提交，讓遠端只能用強制推送才蓋得掉；",
+          "emotion": "平穩"
+        },
+        {
+          "id": "r272",
+          "text": "然後關掉，開一個全新的對話，請它強制推送。"
+        },
+        {
+          "id": "pvqj",
+          "text": "它沒有再問我，直接把遠端的歷史蓋掉了。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ],
+      "claims": [
+        "r3"
+      ]
+    },
+    {
+      "id": "all-pushes",
+      "template": "big",
+      "data": {
+        "kicker": "我只准過",
+        "text": "一次普通推送\n它記得的是**全部**",
+        "key": "那 Google 的代理呢？"
+      },
+      "lines": [
+        {
+          "id": "iscs",
+          "text": "我只准過一次普通的推送；換了對話，它記得的是全部的推送，連強制推送都在裡面。",
+          "emotion": "放慢，「全部」加重"
+        },
+        {
+          "id": "nand",
+          "text": "那 Google 帳戶裡的 AI 代理，准一次又會准到哪裡？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "cc-table",
+      "chapter": "別的 AI 的「一律」，也一直有效嗎？",
+      "template": "table",
+      "data": {
+        "title": "按「不要再問」之後，記多久",
+        "columns": [
+          "Claude Code 的動作",
+          "記多久"
+        ],
+        "rows": [
+          [
+            "執行指令",
+            "永久，整個倉庫"
+          ],
+          [
+            "修改檔案",
+            "到這次對話結束"
+          ],
+          [
+            "抓網頁",
+            "永久，以網域為單位"
+          ]
+        ],
+        "source": "code.claude.com/docs · Configure permissions",
+        "keys": [
+          "執行指令：永久",
+          "修改檔案：到對話結束",
+          "抓網頁：永久，以網域"
+        ]
+      },
+      "lines": [
+        {
+          "id": "gbjw",
+          "text": "先把 Claude Code 這邊講完；它的官方文件把記多久寫成一張表：",
+          "emotion": "平"
+        },
+        {
+          "id": "k7ev",
+          "text": "執行指令，按下不要再問是永久的，整個倉庫都算；",
+          "emotion": "清楚"
+        },
+        {
+          "id": "rjuv",
+          "text": "修改檔案，只到這次對話結束；",
+          "reveal": 1
+        },
+        {
+          "id": "yxtq",
+          "text": "抓網頁，也是永久，以網域為單位。",
+          "reveal": 1
+        }
+      ],
+      "claims": [
+        "c9"
+      ]
+    },
+    {
+      "id": "wildcards",
+      "template": "code",
+      "data": {
+        "title": "同一顆星，寫法差一點",
+        "code": "Bash(git push *)  每一個 git push\nBash(git *)       每一個 git 指令\nBash(ls *)        ls，但不含 lsof\nBash(ls*)         沒有空格，連 lsof 都算",
+        "caption": "依 Claude Code 文件〈Wildcard patterns〉整理 · 2026-10-27"
+      },
+      "lines": [
+        {
+          "id": "gmxs",
+          "text": "星號放在哪，差很多：git 空一格星號，准的是所有 git 指令；",
+          "emotion": "清楚"
+        },
+        {
+          "id": "9g8d",
+          "text": "星號前面少一個空格，列出檔案的那條規則，連名字開頭一樣的別的程式都算進去。",
+          "emotion": "「少一個空格」放慢"
+        },
+        {
+          "id": "3788",
+          "text": "你按下不要再問的時候，看的是一句話，存下來的是一條規則。",
+          "emotion": "收穩"
+        }
+      ],
+      "claims": [
+        "c10"
+      ]
+    },
+    {
+      "id": "shows-scope",
+      "template": "big",
+      "data": {
+        "kicker": "公平地說",
+        "text": "提示上**有寫**\n只是那顆星很小",
+        "key": "看不完整的，只給「這一次」"
+      },
+      "lines": [
+        {
+          "id": "5hq9",
+          "text": "公平地說，Claude Code 有寫出來：",
+          "emotion": "平，持平"
+        },
+        {
+          "id": "3q7g",
+          "text": "只有在提示能把會准的範圍全部顯示出來時，"
+        },
+        {
+          "id": "bs4b",
+          "text": "它才會給你不要再問這個選項；顯示不完整的，只給這一次。",
+          "emotion": "清楚"
+        },
+        {
+          "id": "fp5b",
+          "text": "問題不在它藏起來，在那顆星很小，而我們按得很快。",
+          "emotion": "收穩，帶一點自嘲"
+        },
+        {
+          "id": "r2p5",
+          "text": "而這還不是最寬的一律。",
+          "emotion": "轉折，壓低"
+        }
+      ],
+      "claims": [
+        "c16"
+      ]
+    },
+    {
+      "id": "bypass",
+      "template": "big",
+      "data": {
+        "kicker": "最寬的一律",
+        "text": "略過**所有**權限詢問\n只該在容器裡用",
+        "key": "文件：只在隔離環境使用"
+      },
+      "lines": [
+        {
+          "id": "dg88",
+          "text": "最寬的一律，是一個叫略過權限的模式：它連寫進 git 和設定資料夾都不問；",
+          "emotion": "壓低"
+        },
+        {
+          "id": "unhr",
+          "text": "它自己的警告很直接：只在容器或虛擬機這種壞了也沒關係的環境裡用。",
+          "emotion": "「只在」加重"
+        }
+      ],
+      "claims": [
+        "c17"
+      ]
+    },
+    {
+      "id": "compound",
+      "template": "big",
+      "data": {
+        "kicker": "文件裡的另一個細節",
+        "text": "一串指令\n每一段**各存一條**",
+        "key": "&& 連起來的，各存一條規則"
+      },
+      "lines": [
+        {
+          "id": "82fs",
+          "text": "還有一個細節：你同意一串用連接符號串起來的指令，",
+          "emotion": "平"
+        },
+        {
+          "id": "56zp",
+          "text": "它會替每一段需要同意的指令，各存一條規則，最多五條。",
+          "emotion": "「各存一條」清楚"
+        }
+      ],
+      "claims": [
+        "c11"
+      ]
+    },
+    {
+      "id": "google-agent",
+      "template": "quote",
+      "data": {
+        "kicker": "Google 帳戶說明：Gemini 和代理權限",
+        "quote": "移除代理的存取權，並不會中斷或刪除 Google 帳戶與該應用程式的連結。",
+        "source": "support.google.com/accounts/answer/13533235",
+        "keys": [
+          "代理透過連結的 App 替你做事",
+          "停用代理不等於中斷連結"
+        ]
+      },
+      "lines": [
+        {
+          "id": "asv8",
+          "text": "剛剛問的 Google 這邊：它讓 Gemini 這類代理，透過你連結的 App 替你做事；",
+          "emotion": "接住問題，平"
+        },
+        {
+          "id": "n2s7",
+          "text": "說明裡有一句很容易漏看：停止讓代理使用，不會中斷你帳戶跟那個 App 的連結。",
+          "emotion": "「不會中斷」清楚"
+        },
+        {
+          "id": "4ifa",
+          "text": "代理能不能用，跟 App 連不連著，是兩件事，要分開收。",
+          "emotion": "收穩"
+        },
+        {
+          "id": "dkqg",
+          "text": "那到底哪些事，應該永遠只准這一次？",
+          "emotion": "問句上揚"
+        }
+      ],
+      "claims": [
+        "c12"
+      ]
+    },
+    {
+      "id": "three-rules",
+      "chapter": "哪些事只能按「這一次」？",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "會花錢的",
+            "detail": "接受出價、下單、付款",
+            "icon": "lightning"
+          },
+          {
+            "title": "會送出你的資料",
+            "detail": "地址、電話、帳號",
+            "icon": "lock"
+          },
+          {
+            "title": "會替你回覆別人",
+            "detail": "訊息、留言、信件",
+            "icon": "chat"
+          }
+        ],
+        "source": "站主的做法；依 Muse 事件與 Claude Code 文件",
+        "keys": [
+          "會花錢的：只按這一次",
+          "送出資料的：只按這一次",
+          "替你回話的：只按這一次"
+        ]
+      },
+      "lines": [
+        {
+          "id": "gf8n",
+          "text": "我的做法是三條：會花錢的，例如接受出價，只按這一次；",
+          "emotion": "清單，乾脆"
+        },
+        {
+          "id": "bx5g",
+          "text": "會把我的資料送出去的，例如地址，只按這一次；",
+          "reveal": 1
+        },
+        {
+          "id": "md6y",
+          "text": "會替我回覆別人的，也只按這一次。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "robb-advice",
+      "template": "quote",
+      "data": {
+        "kicker": "當事人的建議",
+        "quote": "double-check what permissions AI has in your life",
+        "source": "Matt Robb（Yahoo Tech 轉述）",
+        "translation": "檢查一下，AI 在你生活裡有哪些權限。",
+        "keys": [
+          "檢查 AI 有哪些權限",
+          "按過的，去哪裡收回？"
+        ]
+      },
+      "lines": [
+        {
+          "id": "g6t4",
+          "text": "當事人自己的建議也只有一句：檢查一下，AI 在你生活裡有哪些權限。",
+          "reveal": 1,
+          "emotion": "平穩"
+        },
+        {
+          "id": "nkur",
+          "text": "那已經按過的，要去哪裡收回？",
+          "emotion": "問句上揚"
+        }
+      ],
+      "claims": [
+        "c13"
+      ]
+    },
+    {
+      "id": "permissions",
+      "chapter": "按過的「一律」，去哪裡收回？",
+      "template": "quote",
+      "data": {
+        "kicker": "Claude Code：/permissions",
+        "quote": "Any Bash command starting with git push",
+        "source": "實跑 2026-10-27｜Claude Code 2.1.311",
+        "translation": "任何以 git push 開頭的指令",
+        "keys": [
+          "打 /permissions 看規則",
+          "它自己的說明"
+        ]
+      },
+      "lines": [
+        {
+          "id": "u7a8",
+          "text": "Claude Code 裡打斜線 permissions，就看得到這條規則；",
+          "emotion": "清楚"
+        },
+        {
+          "id": "fw4f",
+          "text": "點進去，它自己的說明寫著：任何以 git push 開頭的指令。",
+          "reveal": 1,
+          "emotion": "「任何」加重"
+        }
+      ],
+      "claims": [
+        "r4"
+      ]
+    },
+    {
+      "id": "asks-again",
+      "template": "chat",
+      "data": {
+        "title": "刪掉之後・實跑 2026-10-27",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "請執行 git push --force origin main"
+          },
+          {
+            "side": "left",
+            "name": "Claude",
+            "text": "Do you want to proceed?"
+          }
+        ],
+        "keys": [
+          "刪掉規則，再請它強制推送",
+          "它又停下來問了"
+        ]
+      },
+      "lines": [
+        {
+          "id": "nd54",
+          "text": "把它刪掉，再請它強制推送一次，",
+          "emotion": "平"
+        },
+        {
+          "id": "rwk8",
+          "text": "它又停下來問我了。",
+          "reveal": 1,
+          "emotion": "放鬆，亮"
+        }
+      ],
+      "claims": [
+        "r5"
+      ]
+    },
+    {
+      "id": "settings-after",
+      "template": "terminal",
+      "data": {
+        "title": "刪掉之後的設定檔",
+        "command": "cat .claude/settings.local.json",
+        "output": [
+          "{\n  \"permissions\": {\n    \"allow\": []\n  }\n}"
+        ],
+        "ran_on": "2026-10-27",
+        "tool_version": "Claude Code 2.1.311",
+        "typing": "human",
+        "keys": [
+          "再看一次設定檔",
+          "允許清單空了"
+        ]
+      },
+      "lines": [
+        {
+          "id": "e8de",
+          "text": "再打開那個設定檔，允許清單已經空了；",
+          "emotion": "平"
+        },
+        {
+          "id": "khqh",
+          "text": "這份檔案每個倉庫各有一份，換一個專案，就要各自查一次。",
+          "reveal": 1,
+          "emotion": "清楚"
+        }
+      ],
+      "claims": [
+        "r6",
+        "c8"
+      ]
+    },
+    {
+      "id": "deny-file",
+      "template": "terminal",
+      "data": {
+        "title": "設定檔第 2–9 行（共 10 行）",
+        "command": "cat .claude/settings.local.json",
+        "output": [
+          "  \"permissions\": {\n    \"allow\": [\n      \"Bash(git push *)\"\n    ],\n    \"deny\": [\n      \"Bash(git push --force *)\"\n    ]\n  }"
+        ],
+        "ran_on": "2026-10-27",
+        "tool_version": "Claude Code 2.1.311",
+        "keys": [
+          "允許 git push，但拒絕 --force"
+        ]
+      },
+      "lines": [
+        {
+          "id": "xaxz",
+          "text": "那能不能留著方便，只把最危險的擋掉？拒絕規則永遠比允許規則優先；",
+          "emotion": "問句接說明，平"
+        },
+        {
+          "id": "84vx",
+          "text": "所以我把允許加回去，再加一條拒絕：凡是 git push 加上強制旗標開頭的，都擋。",
+          "emotion": "清楚"
+        }
+      ],
+      "claims": [
+        "c18",
+        "r7"
+      ]
+    },
+    {
+      "id": "deny-works",
+      "template": "chat",
+      "data": {
+        "title": "新對話・實跑 2026-10-27",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "請執行 git push --force origin main"
+          },
+          {
+            "side": "left",
+            "name": "Claude",
+            "text": "因為系統拒絕了這個指令的權限,所以沒有任何東西被推送。"
+          }
+        ],
+        "keys": [
+          "開新對話，請它強制推送",
+          "擋下來了"
+        ]
+      },
+      "lines": [
+        {
+          "id": "dg98",
+          "text": "開一個新的對話，再請它強制推送；",
+          "emotion": "平"
+        },
+        {
+          "id": "cpne",
+          "text": "這次擋下來了，它說系統拒絕了這個指令，什麼都沒推送。",
+          "reveal": 1,
+          "emotion": "放鬆"
+        },
+        {
+          "id": "e436",
+          "text": "問題來了：同一件事，換個寫法呢？",
+          "emotion": "停一拍，問句上揚"
+        }
+      ],
+      "claims": [
+        "r8"
+      ]
+    },
+    {
+      "id": "dash-f",
+      "template": "chat",
+      "data": {
+        "title": "簡寫 -f・實跑 2026-10-27",
+        "messages": [
+          {
+            "side": "right",
+            "name": "我",
+            "text": "請執行 git push -f origin main"
+          },
+          {
+            "side": "left",
+            "name": "Claude",
+            "text": "main 在 origin 上從 b2a3d6d 被強制更新為 38a0e59。"
+          }
+        ],
+        "keys": [
+          "改成簡寫 -f",
+          "沒問，又蓋掉了"
+        ]
+      },
+      "lines": [
+        {
+          "id": "eb6y",
+          "text": "強制推送有一個簡寫，減號 f；我改用這個寫法請它推送，",
+          "emotion": "放慢"
+        },
+        {
+          "id": "qdis",
+          "text": "它沒有問，直接把遠端又蓋掉了。",
+          "reveal": 1,
+          "emotion": "亮起來，帶一點意外"
+        }
+      ],
+      "claims": [
+        "r9"
+      ]
+    },
+    {
+      "id": "text-not-meaning",
+      "template": "big",
+      "data": {
+        "kicker": "規則比對的是",
+        "text": "**字**，\n不是意思",
+        "key": "拒絕清單列不完所有寫法"
+      },
+      "lines": [
+        {
+          "id": "22hq",
+          "text": "拒絕規則擋的是那幾個字；簡寫的減號 f，被那條 git push 星號的允許接走了。",
+          "emotion": "清楚"
+        },
+        {
+          "id": "bgg2",
+          "text": "所以我不靠拒絕清單列完所有寫法：會改寫歷史的推送，乾脆不存允許規則，每次都問。",
+          "emotion": "收穩，「每次都問」加重"
+        }
+      ],
+      "claims": [
+        "c18"
+      ]
+    },
+    {
+      "id": "google-steps",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "連結的應用程式",
+            "detail": "Google 帳戶裡的這一頁",
+            "icon": "globe"
+          },
+          {
+            "title": "代理存取權",
+            "detail": "篩選出代理能用的 App",
+            "icon": "search"
+          },
+          {
+            "title": "停止使用",
+            "detail": "收回代理的權限",
+            "icon": "lock"
+          }
+        ],
+        "source": "Google 帳戶說明：Gemini 和代理權限",
+        "keys": [
+          "Google 帳戶：連結的應用程式",
+          "篩選：代理存取權",
+          "按停止使用"
+        ]
+      },
+      "lines": [
+        {
+          "id": "b5jh",
+          "text": "Google 這邊，到帳戶的連結的應用程式；",
+          "emotion": "清楚"
+        },
+        {
+          "id": "euay",
+          "text": "選代理存取權這個篩選，找到 Gemini 能操作的 App；",
+          "reveal": 1
+        },
+        {
+          "id": "s7hg",
+          "text": "按停止使用，收回代理的權限；要連 App 一起斷，再另外移除。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ],
+      "claims": [
+        "c14"
+      ]
+    },
+    {
+      "id": "view",
+      "chapter": "我的看法：代理還要不要用？",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "它沒出錯\n**按鈕的範圍**出錯",
+        "key": "照規則做，規則是你按出來的"
+      },
+      "lines": [
+        {
+          "id": "8zas",
+          "text": "收回之後，代理還要不要用？",
+          "emotion": "接住上一章，問句"
+        },
+        {
+          "id": "5vtz",
+          "text": "我的看法是：要用；但它照規則做事，而規則的範圍，是你按出來的。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "g4t7",
+          "text": "Muse 那晚沒有出錯，錯的是一個按鈕准的範圍，跟人以為的不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "unknown",
+      "template": "big",
+      "data": {
+        "kicker": "我查不到的",
+        "text": "Meta 怎麼定義\n那幾個允許選項",
+        "key": "還沒找到 Meta 的說明頁"
+      },
+      "lines": [
+        {
+          "id": "wrva",
+          "text": "我查不到的是：Meta 自己怎麼定義 Muse 那幾個允許選項，我還沒找到它的說明頁。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "answer",
+      "template": "big",
+      "data": {
+        "kicker": "所以，跟你有關",
+        "text": "你按過的「一律」\n**還在生效**",
+        "key": "台灣用不到 Muse 也有關"
+      },
+      "lines": [
+        {
+          "id": "mzgb",
+          "text": "所以跟用不到 Muse 的你有關：你按過的一律，現在多半還在生效。",
+          "emotion": "回呼開場，放慢"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "只准這一次，\n不准一整類",
+        "lines": [
+          "Claude Code：/permissions",
+          "Google：連結的應用程式 → 代理存取權"
+        ],
+        "cta": "訂閱：每一支都給你一個看完就能做的判斷",
+        "key": "每支一個判斷"
+      },
+      "lines": [
+        {
+          "id": "wpuq",
+          "text": "花錢、送資料、替你回話的，只按這一次。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "xf47",
+          "text": "你按過幾次不要再問？留言告訴我。",
+          "emotion": "輕輕收，問句"
+        },
+        {
+          "id": "28bp",
+          "text": "訂閱，每支都給你一個能做的判斷。",
+          "emotion": "輕快收"
+        }
+      ]
+    }
+  ]
+}

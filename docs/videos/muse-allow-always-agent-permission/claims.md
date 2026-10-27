@@ -1,0 +1,61 @@
+# muse-allow-always-agent-permission：可查核的主張
+
+撰稿 2026-10-27。每一行：編號｜主張｜來源｜確認日期｜場景。來源頁存在工作區 `muse/src/`，實跑紀錄在 `muse/run/`（`RUNLOG.md` 與每一步的畫面擷取）。
+
+YH ＝ https://tech.yahoo.com/ai/meta-ai/articles/youtuber-says-muse-setting-led-122153415.html
+TR ＝ https://www.techradar.com/ai-platforms-assistants/you-gotta-never-do-that-again-youtuber-says-metas-muse-ai-ruined-a-sale-and-gave-out-his-home-address-without-permission
+CC ＝ https://code.claude.com/docs/en/permissions
+GG ＝ https://support.google.com/accounts/answer/13533235?hl=zh-Hant
+
+## 事實
+
+c1｜多倫多的 YouTuber Matt Robb 讓 Meta 的 AI 代理 Muse 替他在 Facebook Marketplace 賣一個鍵盤（MX Keys Mini）；日期：多家報導寫 9 月 26 日，他在 X 上的貼文日期是 9 月 27 日（寫「today」），**待查核決定**｜YH、TR、Cybernews｜2026-10-27｜open
+c2｜買家照 Muse 給的地址到了他住的大樓（"showed up at his building"）｜YH｜2026-10-27｜open
+c3｜Muse 在台灣還不能用：美國 9 月 8 日、加拿大 9 月 18 日開放，日本 10 月 23 日開始（媒體報導，Meta 官方公告未找到）｜Inside、SmartScope、smhn.info｜2026-10-27｜naive
+c4｜Meta Superintelligence Labs 的 David Singleton 說 Meta 確認「no breach of privacy controls」｜YH｜2026-10-27｜no-breach
+c5｜Robb 說他設定時按了「Allow Always」，以為接受出價前還會問他｜YH｜2026-10-27｜robb
+c6｜這個設定讓 Muse 用含取貨地址的範本替他發訊息；原話 "I didn't think it would send it out to everyone that gave me an offer"｜YH、Threads @matt.j.robb｜2026-10-27｜robb
+c7｜Meta 的 Muse 團隊陪他看了紀錄，說會把權限提示寫得更清楚｜YH｜2026-10-27｜meta-clearer
+c8｜選「Yes, and don't ask again」後規則存到 git 倉庫根目錄的 `.claude/settings.local.json`，之後在這個倉庫任何位置開的 session 都適用｜CC〈Permission system〉｜2026-10-27｜star-meaning、settings-after
+c9｜表：Bash 指令「Permanently per repository and command」、檔案修改「Until session end」、WebFetch「Permanently per repository and domain」｜CC 表格｜2026-10-27｜cc-table
+c10｜`Bash(git *)` 准每一個 git 指令；`Bash(ls *)` 要求空格所以不含 lsof；`Bash(ls*)` 沒有空格連 lsof 都算｜CC〈Wildcard patterns〉｜2026-10-27｜wildcards
+c11｜同意用 && 串起來的指令時，替每一段需要同意的子指令各存一條規則，最多 5 條｜CC〈compound commands〉段｜2026-10-27｜compound
+c12｜原句：「移除代理的存取權，並不會中斷或刪除 Google 帳戶與該應用程式的連結。」；Gemini 或 Google AI 代理可透過連結的應用程式完成任務｜GG〈Gemini 和代理權限〉｜2026-10-27｜google-agent
+c13｜Robb 的建議原話 "double-check what permissions AI has in your life"｜YH｜2026-10-27｜robb-advice
+c14｜步驟：連結的應用程式頁 → 「代理存取權」篩選 → 「停止使用 <應用程式名稱>」；要中斷 App 本身的連結要另外操作｜GG｜2026-10-27｜google-steps
+c15｜Muse 事後的訊息原句 "my auto-reply told him ‘Yep I’m here!’ at 9:27 when you clearly weren’t available"｜TR｜2026-10-27｜muse-sorry
+c16｜Claude Code 只在提示能顯示全部會准的範圍時才給「don't ask again」；否則只給一次性的同意｜CC〈Permission system〉第 45 段｜2026-10-27｜shows-scope
+c17｜bypassPermissions 模式略過權限提示，包括寫入 .git、.claude 等受保護路徑；只該在容器或 VM 這類隔離環境用｜CC〈Permission modes〉｜2026-10-27｜bypass
+c18｜拒絕規則優先：允許規則不能在拒絕規則裡開例外｜CC〈Manage permissions〉第 73 段｜2026-10-27｜deny-file、text-not-meaning
+
+## 本片自己跑的紀錄
+
+機器：雲端容器（站主 2026-10-27 請撰稿者自己跑），Claude Code 2.1.311，manual mode，模型 Sonnet 5.5；git 2.43.0。示範倉庫 perm-demo，遠端是同一台機器上的 bare repo，不碰任何真實專案或帳號。
+
+r1｜請它 `git push origin main` → 權限提示四個選項，第 2 項是「Yes, and don’t ask again for: git push *」（`01-prompt.txt`）｜run｜2026-10-27｜cc-prompt
+r2｜選第 2 項後 `cat .claude/settings.local.json` → `"allow": ["Bash(git push *)"]`｜run｜2026-10-27｜settings
+r3｜本機 amend 後 `/exit`，開新 session 請它 `git push --force origin main` → 沒有詢問，遠端 main 69cd815 → b2a3d6d（`03-force.txt`）｜run｜2026-10-27｜force
+r4｜`/permissions` → Allow 分頁列出 `Bash(git push *)`；選取後顯示「Any Bash command starting with git push」「From project local settings」（`04`、`05`）｜run｜2026-10-27｜permissions
+r5｜刪掉規則後再請它強制推送 → 出現「Do you want to proceed?」，選 No（`07`、`08`）｜run｜2026-10-27｜asks-again
+r6｜刪掉後的設定檔 → `"allow": []`（`06b-settings-after.txt`）｜run｜2026-10-27｜settings-after
+r7｜寫入 allow `Bash(git push *)` 與 deny `Bash(git push --force *)`（`09-deny-settings.txt`；卡片節錄第 2–9 行）｜run｜2026-10-27｜deny-file
+r8｜新 session 請它 `git push --force origin main` → 「因為系統拒絕了這個指令的權限,所以沒有任何東西被推送。」，遠端不變（`10-deny-force.txt`）｜run｜2026-10-27｜deny-works
+r9｜新 session 請它 `git push -f origin main` → 沒有詢問，遠端 b2a3d6d → 38a0e59（`11-dash-f.txt`）：拒絕規則比對文字，簡寫 -f 被 `git push *` 允許接走｜run｜2026-10-27｜dash-f
+
+## 與企劃不同的地方
+
+- 示範由撰稿者在雲端容器裡跑（站主 2026-10-27 要求），不是站主自己的電腦。
+- 多了企劃沒有的實跑：拒絕規則擋得住 `--force`、擋不住 `-f`（r7–r9），成為第 6 章的轉折。
+- 企劃第 3 章的「其他 AI」只講 Claude Code 與 Google，沒有 ChatGPT（官方權限頁沒找到）。
+- 估 8.2 分鐘、87 句。
+
+## 我懷疑但沒動的事
+
+- 事件日期 9/26 或 9/27（見 c1）。
+- Singleton 的「no breach of privacy controls」只有 Yahoo Tech 轉述；旁白說「Meta 看過紀錄之後說」，查核時判斷是否要改成「Meta 的人說」。
+- 第 5 章的三條規則是站主看法，卡片來源寫明；Google 說明裡自己舉的例子（讓 Gemini 登入旅遊 App 訂民宿）沒放進片中。
+- Muse、ARTEX 之外，`settings.local.json` 的路徑在 Windows 或非 git 目錄會不同（CC 有寫），片中沒講。
+
+## 進度
+
+- 2026-10-27：34 景、87 句寫完，lint 0 錯誤 0 警告，等查核（verify-1）。
