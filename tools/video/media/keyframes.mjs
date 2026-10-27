@@ -293,6 +293,24 @@ async function drawContactSheets(ctx, { doc, workdir, manifest, drawn, channel }
 }
 
 /**
+ * Whether a manga-tier drama (docs/videos/BINGE.md §畫面等級): every shot a still with a camera
+ * move, no clip. The tier is video.json's `series.visual_tier`, else its series.json's (`series`).
+ */
+export function mangaTier(doc, series = null) {
+  return (doc.series?.visual_tier ?? series?.visual_tier) === "manga";
+}
+
+/**
+ * Whether a video keeps the judge's best take of a shot its prompt fixes could not mend
+ * (`--accept-best`; the owner's decision of 2026-10-06: a video no longer blocks on its
+ * pictures): illustrated slides, and a manga-tier drama, whose pictures are stills the cut shows
+ * as they are (2026-10-26). A drama with clips draws a clip's first frame, and waits.
+ */
+export function keepsBestPictures(doc, series = null) {
+  return illustrated(doc) || mangaTier(doc, series);
+}
+
+/**
  * `--accept-best`: keep the best take of the named shots (or of every shot waiting for a prompt
  * fix, "all") as their picture, with the judge's remarks on record, once the prompt fixes are
  * spent (automation/flow.mjs fixPrompts; the owner's decision of 2026-10-06). The shot leaves
@@ -302,14 +320,14 @@ async function drawContactSheets(ctx, { doc, workdir, manifest, drawn, channel }
  * picture (every seed refused) cannot be kept: it still needs a prompt. Exit 1 while any shot
  * still waits for one.
  *
- * For an illustrated video alone, by the predicate the two readers of a kept picture use
- * (review/sync.mjs acceptedPicturesOf, automation/flow.mjs acceptBestPictures): they send no
- * other video's cut for the manual review, so a drama's shot kept here would leave needs_review
- * and its storyboard and cut could be approved on arrival with nobody asked to look at it.
+ * For the videos keepsBestPictures names alone, the predicate the two readers of a kept picture
+ * use too (review/sync.mjs acceptedPicturesOf, automation/flow.mjs acceptBestPictures): they send
+ * no other video's cut for the manual review, so another drama's shot kept here would leave
+ * needs_review and its storyboard and cut could be approved on arrival with nobody asked to look.
  */
-async function acceptBest(ctx, { doc, workdir, hash, bound, wanted, channel }) {
+async function acceptBest(ctx, { doc, series, workdir, hash, bound, wanted, channel }) {
   const { EXIT } = ctx;
-  if (!illustrated(doc)) throw new UsageError(`--accept-best keeps pictures of an illustrated video alone (still "shot" scenes outside a drama, docs/videos/ILLUSTRATED.md): only an illustrated video's cut is sent for the owner's manual review, and ${doc.slug} is not one; fix the prompts of its shots instead`);
+  if (!keepsBestPictures(doc, series)) throw new UsageError(`--accept-best keeps pictures of an illustrated video or a manga-tier drama alone (stills alone, docs/videos/ILLUSTRATED.md, docs/videos/BINGE.md §畫面等級): only such a video's cut is sent for the owner's manual review, and ${doc.slug} is not one; fix the prompts of its shots instead`);
   const manifest = readJson(manifestFile(workdir), null);
   if (!manifest?.shots) throw new UsageError("keyframes/manifest.json is missing; run keyframes first");
   if (manifest.look_hash !== hash || !bound(manifest)) throw new UsageError("keyframes/manifest.json was drawn for another look or other pictures; run keyframes first");
@@ -465,7 +483,7 @@ export async function run(command, args, ctx) {
   const format = slides ? doc.format : null;
   if (values["accept-best"]) {
     if (!mayWriteProject(ctx, workdir, "keyframes")) return EXIT.incomplete;
-    return acceptBest(ctx, { doc, workdir, hash, bound, wanted: values["accept-best"], channel: values.channel });
+    return acceptBest(ctx, { doc, series: project.series, workdir, hash, bound, wanted: values["accept-best"], channel: values.channel });
   }
   const rubricOptions = { subtitleBand: burnIn(doc), craft: slides };
   const wanted = values.shot ? new Set(values.shot.split(",").map((each) => each.trim()).filter(Boolean)) : null;
@@ -501,7 +519,7 @@ export async function run(command, args, ctx) {
   // first frame, stay at the 1K the clip models take.
   // A manga-tier drama (docs/videos/BINGE.md §畫面等級) is stills too, and its pictures are cut
   // in from every edge where image-01 writes its scribbles (trim.mjs EDGE_INSET_SHARE).
-  const manga = (doc.series?.visual_tier ?? project.series?.visual_tier) === "manga";
+  const manga = mangaTier(doc, project.series);
   const stillPictures = slides || isExplainer(doc) || manga;
   const inset = manga ? EDGE_INSET_SHARE : 0;
   const sizeFor = (status) => (stillPictures ? imageSizeFor(status, format) : null);

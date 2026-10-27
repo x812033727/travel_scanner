@@ -47,7 +47,7 @@
   → 站主從作品頁或「可以上架」卡下載 1080p 成片 → Studio 上傳私人 → 貼網址、選上架時間
 ```
 
-仍然會找站主的只有：查核退回重寫用完仍不過的文件（停在待審，附查核的問題）、劇本被退回 `MAX_PROMPT_FIX_ROUNDS` 輪後卡住、自動品管有項目沒過、卡住的影片（同一階段連續失敗、預算、缺金鑰、磁碟）、上架時間。
+仍然會找站主的只有：查核退回重寫用完仍不過的文件（停在待審，附查核的問題）、劇本被退回 `MAX_PROMPT_FIX_ROUNDS` 輪後卡住、自動品管有項目沒過、關鍵影格保留了 judge 沒過的最佳張的成片（§畫面等級）、卡住的影片（同一階段連續失敗、預算、缺金鑰、磁碟）、上架時間。
 
 ## 資料模型（遷移 `0103_video_binge_series`，接在 `0102_video_youtube_sync` 後）
 
@@ -232,6 +232,7 @@ payload 是 `tools/video/review/sync.mjs` 送審 `script` 關卡時的 `coverage
 
 - **`manga` 等級是單集也能選的**（「新的漫劇」表單的「畫面做法」，`DramaRequestIn.visual_tier`，預設 `clips`）：單集的 series.json 原本不帶任何合集欄位，工人在它不是 `clips` 時才把 `visual_tier` 寫進去，所以舊的單集一個位元組都不變；提示詞的題材段落在沒有題材時也會單獨送出等級規則（`prompts.mjs` 的 `genreBlock`）。
 - **`manga` 等級每 30 秒要有一個鉤子**（站主 2026-10-22：這是貼圖漫劇的規矩，動畫漫劇的規格不動）：撰稿規則要求每 20–30 秒用旁白的話落一個鉤子（懸著的問題、前向鉤子、升級、揭露或反轉）；lint 用 `core/narrative.mjs` 的 `shotHookProblems` 照旁白片同一套字樣（問號、等一下／先記住／之後會、但這還不是／更怪的是／問題來了）在整集鏡頭的時間軸上量，超過 `MANGA_HOOK_GAP_SECONDS` 30 秒沒有一個就警告（`lint.mjs` 只對 `series.visual_tier === "manga"` 量；動畫漫劇不量）。
+- **`manga` 等級的關鍵影格改完兩輪提示詞仍沒過，保留最佳張往下做**（2026-10-26，票 `2026-10-25-manga-blocked`）：和插圖投影片同一條路（站主 2026-10-06 的決定：影片不再因圖片卡住）。`prompt_fixes.keyframes` 用完後，`flow.mjs` 的 `acceptBestPictures` 跑 `keyframes --accept-best`，每個還沒過、有圖的鏡留 judge 最佳張（manifest 的 `accepted_with_problems`），auto.json 記 `accepted_pictures`、備註「pictures kept with the judge's remarks」，影片不 blocked；分鏡照常送審，保留的鏡標 `accepted`，免關卡作品由伺服器照 #1821 的 details 規則自動核准；成片帶 `--manual-review` 送審，payload 的 `accepted_pictures` 列出保留的鏡與 judge 的話，由站主看成片決定（`drama_auto_approve_final` 對這一筆不作用，伺服器只從 `payload.qa` 自動核准）。判法是 `media/keyframes.mjs` 的 `keepsBestPictures`：插圖投影片，或 video.json 的 `series.visual_tier`（沒有就看 series.json）是 `manga` 的漫劇，免關卡與否都一樣；動畫漫劇（有 clip 的等級）與長篇動畫照舊 blocked 等人，因為它的關鍵影格是片段的第一格。一鏡連一張圖都沒有（每個 seed 都被拒）時也照舊 blocked。2026-10-25 第 1 集重做與第 5 集是在主機上手改解掉的。
 - **`manga` 等級的關鍵影格四邊各裁 4%**（`media/trim.mjs` 的 `EDGE_INSET_SHARE`，`keyframes.mjs` 跟紙邊裁切同一條路，裁完放回原尺寸）：image-01 大約三成的圖會在邊緣長出小字或假簽名（2026-10-22 的 20 張樣張），寫 negative 擋不住，裁掉最穩。2026-10-24 起 manga 等級先裁、把裁過的檔放進媒體庫、再問 judge（原本判原圖，image-01 的上下黑邊讓《系統說我是 BUG》第 1 集 42／46 鏡被判沒填滿畫框）；manifest 與之後的運鏡用裁過的檔。judge 的問法也改成是非題，見 [`DRAMA.md`](DRAMA.md) §manga 等級的關鍵影格用是非題。
 - **`manga` 等級的節奏照兩支十萬點閱的參考片改**（2026-10-24，票 `2026-10-24-manga-sticker-drama-pace-visible-camera`）：站主看《系統說我是 BUG》第 1 集說「單調、節奏慢」。用同一把尺（成片轉 96×54 灰階、每 0.25 秒一幀的相鄰幀平均差；差 ≥45 算硬切、切點以外的中位差＝鏡內動量、差 <3 的幀比例＝靜止比）量兩支參考（桃桃爱漫画 `0r9ZmCt-BtQ`、花影漫剧 `zH9N0JXvhlQ`）與我們的 e001 body：鏡長中位 1.75–3.25 秒對我們 3.75 秒；鏡內動量 7.8–12.5 對 1.2；靜止幀比 0–15% 對 80%；語速句內 5 字/秒、37–45% 時間沒人說話，對我們 3.0 字/秒、172 秒只有 1 秒空檔。三處改法，全部只對 `series.visual_tier === "manga"`：
   - **看得見的運鏡**（`assemble/drama.mjs`）：`layoutDrama` 由 `assemble/cli.mjs` 傳 `tier`，manga 的 still 運鏡帶 `profile: "manga"`，`zoompanExpr`／`motionTravel` 改讀 `MANGA_MOTION`：push／pull 20%（原 10%）、pan／tilt 1.12 倍（原 1.08，且 3 秒內走完整段，原本 3 秒只走一半）、drift 10% 加 30% 橫移（原 4%、15%），travel 3 秒內走完（原 6 秒）、最少六成。segment key 多 `MOTION_MANGA_VERSION`，沒有 profile 的 key 一個位元組不變（測試釘 main 的 key 值），所以其他等級、插圖投影片、Shorts 與舊片都不重算。常數是量出來的：本機用 ffmpeg 對一張柔化的 1080p 圖組 3 秒段、用同一把尺量，舊常數 push 3.8、pan 11、tilt 5.6、drift 1.7（e001 幾乎全是 drift／push，整集 1.2），新常數 push 13.5、pan 29、tilt 16、drift 10、靜止幀 0%；票上一開始例舉的 0.25／1.25／0.12 會把 pan 推到 45，量尺會把它數成硬切（表與腳本在票）。
