@@ -1685,5 +1685,217 @@
     "reason": "Original prompt exhausted three judged takes. Changed to simpler one-person palace interior after producer stopped; preserves all speech and narrative bindings.",
     "original_prompt_retention_planned": 66,
     "original_verdicts_retained_actual": 65
+  },
+  "illustration_prompt_corrections_r6": {
+    "speech_hash": "8af0af8b6fb7d1e4",
+    "script_check_binding_unchanged": true,
+    "narrative_review_still_matches": true,
+    "look_unchanged": true,
+    "look_preset": "cute-mystery",
+    "final_source_sha256": "d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170",
+    "applied_batches": [
+      {
+        "at": "2026-10-26T23:35:28.639Z",
+        "private_receipt": "exhausted-prompt-fixes-r6-applied.json",
+        "receipt_sha256": "d432956ec0065efb777b8b0138d722943316a348ed5e9f3af5071fe0da1bc66b",
+        "source_before_sha256": "27ef7f6bb1fa2851589e95a6cc12bff5d5d59d5e9d22a4bcd6ae399caee640e5",
+        "source_after_sha256": "3776057001d7c2b9308b5bb5d99d5efc79bbaa0963d7cb887565896896d33cf0",
+        "shots": [
+          "v2-add-049",
+          "v2-add-058"
+        ]
+      },
+      {
+        "at": "2026-10-26T23:50:11.328Z",
+        "private_receipt": "exhausted-prompt-fixes-r6-v2-add-072_v2-add-074_v2-add-080-2026-10-26T23-50-11-274Z-applied.json",
+        "receipt_sha256": "8ccc9a1113e19ac66ba83e516be47ee1a71912d35429244a19ba69edf89ca195",
+        "source_before_sha256": "3776057001d7c2b9308b5bb5d99d5efc79bbaa0963d7cb887565896896d33cf0",
+        "source_after_sha256": "d68ac81ad3918a6f091f9a7a6a95b71d3f2837e5c078d79bd16c3160b6a64170",
+        "shots": [
+          "v2-add-072",
+          "v2-add-074",
+          "v2-add-080"
+        ]
+      }
+    ],
+    "shots": [
+      {
+        "id": "v2-add-049",
+        "source_line_ids": [
+          "v2a0491"
+        ],
+        "camera": "tilt up",
+        "before_prompt": "Wide shot in a scholar's workroom at midday, a round-cheeked man in a loose tunic removing a plain scroll case from a low shelf, his expression newly curious, mild light from an open doorway.",
+        "after_prompt": "Medium shot in a quiet study at midday, one adult scholar in a loose tunic seated behind a bare desk, turning his face toward the viewer with a thoughtful expression, a plain wall behind him, soft light from a side window.",
+        "reason": "移除反覆誤讀的卷軸取放與書架動作，改為單人轉頭思考。",
+        "fact_boundary": "示意答案形成的思考，不重建吳曾的具體發現場景，也不增加運送證據。",
+        "private_proposal": "prompt-fixes-after-guarded-r6.json",
+        "proposal_sha256": "941cb4ac2db3e26f2c68169cf8ace9ccbe2a30ab98a9f748ea66703c02e48b10",
+        "preserved_failed_takes": [
+          {
+            "seed": 1,
+            "sha256": "9c242e717831972675377f25a1e3d98823aee895668f293d5b6be5867b4abb04"
+          },
+          {
+            "seed": 2,
+            "sha256": "eb95c2c7d2f586e362643041d5bf061298173f1a23dbdc27b334f587caa5a528"
+          },
+          {
+            "seed": 3,
+            "sha256": "c9774b59656d3f8739d7b73771780b459e4fd990c8fa3a14fa06d93a2d4b3ab7"
+          }
+        ],
+        "backed_up_paid_file_count": 5,
+        "final_selected": {
+          "file": "keyframes/v2-add-049-2.jpg",
+          "sha256": "6a1478f4e27cb4ef692231a47d5fdd9b01cdc93551976874bf935d5d7c0cce07",
+          "seed": 2,
+          "judge_passed": true,
+          "overall": 9.29
+        }
+      },
+      {
+        "id": "v2-add-058",
+        "source_line_ids": [
+          "v2a0581",
+          "v2a0582"
+        ],
+        "camera": "pan left",
+        "before_prompt": "Close shot in a local chronicler's room on a drizzly day, an elderly man in a woven coat lifting a loose slip from a closed document case, his expression cautious, diffuse light through a paper screen.",
+        "after_prompt": "Medium shot in a plain study at midday, one elderly reader in a loose tunic tilting his head slightly toward the viewer with a cautious expression, his face fully visible, a bare wall behind him, soft even light from a side window.",
+        "reason": "移除雨景、紙屏及從封閉文匣取紙的複雜動作，改為單人謹慎側頭。",
+        "fact_boundary": "保留「相傳」的限定，不把宋代地方說法畫成唐代親歷交接。",
+        "private_proposal": "prompt-fix-v2-add-058-r6.json",
+        "proposal_sha256": "8cade9aaddb0a2a7979c9871bcc4a04f93fecdbb05bdc59c4f870b9d7b2ba24a",
+        "preserved_failed_takes": [
+          {
+            "seed": 1,
+            "sha256": "54ed4a650a7c7f830ecffa6eea15832820d073374bb5b35646baaa0f57b8ca29"
+          },
+          {
+            "seed": 2,
+            "sha256": "8ef6ee33360ddf2910c864517cc7f4ce8b1ab4f6c5a6a28d140b02ca4e4434f1"
+          },
+          {
+            "seed": 3,
+            "sha256": "af95269d41a33b5040058aadf9301b358a789ffeaa2f8facbbda23bcfaa55736"
+          }
+        ],
+        "backed_up_paid_file_count": 6,
+        "final_selected": {
+          "file": "keyframes/v2-add-058-1.jpg",
+          "sha256": "e13acf887ba34eb868d6aa6bf1e76dbf4f7286014d7aa6026ded28b6ed0ea88b",
+          "seed": 1,
+          "judge_passed": true,
+          "overall": 10
+        }
+      },
+      {
+        "id": "v2-add-072",
+        "source_line_ids": [
+          "v2a0721",
+          "v2a0722"
+        ],
+        "camera": "pan left",
+        "before_prompt": "Close shot at a dispatch counter at night, a careful clerk in a cotton jacket holding a plain wooden receipt tally above an empty fruit tray, his expression doubtful, lamplight beside his hand.",
+        "after_prompt": "Medium shot at a plain dispatch counter in daytime, one mature clerk with graying hair and a short beard in a loose tunic, tilting his head toward the viewer with a doubtful expression, his face fully visible, an unadorned wall behind him, soft even light from a side window.",
+        "reason": "移除木籌、紙收據與果盤等易混淆道具及夜間燈光，保留懷疑表情。",
+        "fact_boundary": "不以收據或果實畫面替到訪紀錄補出荔枝送達的證明。",
+        "private_proposal": "prompt-fix-v2-add-072-r6.json",
+        "proposal_sha256": "06eece17da162670f20a0dae4b74e62fdc77e9bed599d16e8cc898951e84ed89",
+        "preserved_failed_takes": [
+          {
+            "seed": 1,
+            "sha256": "4016bc3c61f25e8572d096657b0b0d68774424a8003fbbc5ea35d0104808e0d4"
+          },
+          {
+            "seed": 2,
+            "sha256": "2206596cfc0b314cee20d60021e33334e55d56dbbd7c2524a30d0a7bd7968843"
+          },
+          {
+            "seed": 3,
+            "sha256": "d16a57e407a1dddc3d2e0a7151c7408b290601abb9c938f19cc32e5544fcf3a5"
+          }
+        ],
+        "backed_up_paid_file_count": 6,
+        "final_selected": {
+          "file": "keyframes/v2-add-072-1-trim.jpg",
+          "sha256": "bff2a77434781b44f8fadfb48620168241a9c78fe79dd89a2db1135216a74691",
+          "seed": 1,
+          "judge_passed": true,
+          "overall": 9.29
+        }
+      },
+      {
+        "id": "v2-add-074",
+        "source_line_ids": [
+          "v2a0741"
+        ],
+        "camera": "tilt down",
+        "before_prompt": "Medium shot along a palace road after rain, a solitary messenger in a patched travel cloak carrying an empty wicker basket, his tired expression visible in three-quarter view, diffused light over the wet paving.",
+        "after_prompt": "Medium shot in a plain reading room at midday, one mature reader with a short beard in a simple tunic looking up toward the viewer with a thoughtful expression, seated behind a bare table, his face fully visible, a plain wall behind him, soft even light from a side window.",
+        "reason": "移除濕宮道、建築遠景與籃子，改為讀者思考，降低寫實背景誘因。",
+        "fact_boundary": "示意如何閱讀杜牧，不將詩句畫成帝王日程或已證實的運送路線。",
+        "private_proposal": "prompt-fix-v2-add-074-r6.json",
+        "proposal_sha256": "b7ae4a77600079434fceb06c31fe88eec6fffb4d1d2105a587d726b64b7adf47",
+        "preserved_failed_takes": [
+          {
+            "seed": 1,
+            "sha256": "f9d3c5f47e3b136385c43d22b6435f47ac832f850374acfb3bedc6a18a9f8cae"
+          },
+          {
+            "seed": 2,
+            "sha256": "ba6ec6ea52bedd3054da31ac7faa1bf3cbb42e03295632b9686daa120553e343"
+          },
+          {
+            "seed": 3,
+            "sha256": "bcc358176d53b1972376746951929e5963aafdb4c27425523ddc358e81ca1c43"
+          }
+        ],
+        "backed_up_paid_file_count": 3,
+        "final_selected": {
+          "file": "keyframes/v2-add-074-1.jpg",
+          "sha256": "837bf897f1021663e997f6eb0b433837cc411a20ab432e299f073551557a30ae",
+          "seed": 1,
+          "judge_passed": true,
+          "overall": 9.29
+        }
+      },
+      {
+        "id": "v2-add-080",
+        "source_line_ids": [
+          "v2a0801"
+        ],
+        "camera": "pan left",
+        "before_prompt": "Medium shot inside a quiet library at dusk, an elderly compiler sliding a tied bundle of old papers into a plain archive box with a thoughtful face, lamplight on the table.",
+        "after_prompt": "Medium shot in a plain study at midday, one elderly scholar with thinning hair and a short beard in a simple robe looking thoughtfully toward the viewer, one closed book resting on the bare table before him, his calm face fully visible, a bare wall behind him, soft even light from a side window.",
+        "reason": "移除紙束入箱、黃昏及檯燈，改為年長學者與靜置的合書。",
+        "fact_boundary": "示意宋人追記，不將泛稱學者畫成已確認身分的編者或唐代目擊者。",
+        "private_proposal": "prompt-fix-v2-add-080-r6.json",
+        "proposal_sha256": "e0e50ccbebc99a47bb499a35d4db7536aa5df62538ffa2da6aad436572940b9f",
+        "preserved_failed_takes": [
+          {
+            "seed": 1,
+            "sha256": "7e84102cbb67e1a68018721585f11539a8812bcd0bafd21b6aea1762aefc5ba8"
+          },
+          {
+            "seed": 2,
+            "sha256": "726de89ca492d174eb963c44896c8a126005eddff7000e7e63c8d5bb94e499c6"
+          },
+          {
+            "seed": 3,
+            "sha256": "62cec02f4013390303b24c796ab0b7f94e735425f375a84dce7ff1f8fe820905"
+          }
+        ],
+        "backed_up_paid_file_count": 6,
+        "final_selected": {
+          "file": "keyframes/v2-add-080-1-trim.jpg",
+          "sha256": "a19d96e3420391751f25aaf8cd25fc55db570c9183d27229ddaa2aee57ba013c",
+          "seed": 1,
+          "judge_passed": true,
+          "overall": 9.29
+        }
+      }
+    ]
   }
 }

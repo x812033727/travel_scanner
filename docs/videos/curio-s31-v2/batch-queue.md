@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文轉寫212句已跑完、31句做離線第二意見；插圖生成中，八語稿已完成並交叉覆核 |
+| 1 | curio-s31 | curio-s31-v2 | 129/129插圖與分鏡通過；目前合成中文版預覽。中文音訊13句待局部重錄，八語文字已覆核、配音尚未開始 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -32,6 +32,17 @@
 - 完成一集即更新本表與該集任務，再接下一集。進度不變時保持安靜，只通知成品完成、真正失敗、預算超限或需要站主處理的事項。
 
 ## 當前斷點
+
+**最新實況：2026-10-27 08:00台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+
+- 配對已恢復，不再要求站主重配。guarded keyframes最後session `7898` 已正常完成：129/129張judge通過，沒有needs_review；官方keyframeProblems為0，visual_hash `4ff8941e6473b9f4`、speechHash `8af0af8b6fb7d1e4`。六頁最新圖板已由代理實際檢視，依站主推薦選擇委託記錄storyboard核准，並非站主本人觀看。manifest SHA `fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2`。
+- 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。
+- render session `78493`已exit0：233states全沿用、27秒、0layout錯誤；九語縮圖及卡片圖板與先前實際檢視的10檔SHA一致，frames已重綁current visual_hash。clips正式執行exit0：129stills、0clips、0新購。music正式驗證原track SHA通過。
+- **當前唯一製作程序為assemble session `96823`**，log `assemble-preview-r6.txt`，08:00啟動，使用`--intro-after-condensation`。先等它結束才能局部重錄／check；目前只可稱未核准中文版預覽。
+- 獨立離線context Whisper已exit0：52個鄰句fresh無提示轉寫，再逐一辨識15個原始target WAV；提示只由固定鄰句實際聽到的轉寫組成，沒有傳原稿或先前target猜測。private `context-whisper-r6-20261027T074158/`保存原始JSONL、WAV SHA、實際prompt與verified receipt。獨立覆核PASS的新reader已接入官方check-audio：212/212檢查、18句second transcript排除疑慮、**13flags仍保留**，0新ASR／1Jev call；log `check-audio-context-r6.txt`。舊check及低分判定保留在`check-context-r6-before/`，沒有擇字拼成符合原稿的ASR。
+- 兩次TTS重錄均因provider429未產生新WAV；仍遵守不早於08:15台北的一次正常退避續作上限。若正式複查仍有flags，保留待修正狀態；可先合成未核准預覽，不能提前核准成片或開始下一集。
+
+### 先前履歷（不能當作當前執行狀態）
 
 2026-10-27早上站主重新配對並回覆「完成」，官方login session `46042` 已exit0、權杖正常寫入；連線阻塞已解除，不要再開配對。正式 `check-audio` 已吃入先前31句獨立Whisper：212句檢查完成、16句排除初輪疑慮、15句仍標記。
 
