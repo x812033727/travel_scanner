@@ -4,6 +4,14 @@
 
 ## 當前讀回（2026-10-27）
 
+最新 checkpoint（2026-10-27）：94112／PID43140已於13:57:22.6646441Z native1結束；第六筆0196／lz422已由正常續檢實際沿用，原137筆cache全保留、目前170/212，212 raw及來源／EN／lexicon／中文master未變。第七筆43f97…d9c3b／lz504完整保存回覆已離線恢復native0（reuse1／send0／fetch0），逐筆獨立覆核e0d11f…64b1 PASS；freeze為21 present／1 absent、70 preserved＋3 active。**目前 review PASS，準備 fresh 正常續檢，無 producer；第七筆尚未由 canonical 消費、second ASR尚未派發。** 新runner只讀guard通過566次checks（不是unique檔數），Root仍須在新slot前fresh核對；不重播94112或手動promote／delete／forget。原20分鐘callback及30秒I/O上限不變。見[dub-en-seventh-check-recovery.json](dub-en-seventh-check-recovery.json)。0/8外語驗收，完整包及下一集未成。
+
+窄診斷：[私有 final-diagnosis.md](C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/rename-native-diagnostic-20261027/final-diagnosis.md)，SHA256 `fa648dfc294921661b21f98f795d5f3ef16002325f1358c0d8dd0948fe441f86`。本機fixture可重現EPERM，但未證實production持鎖來源或UTF8因果；沒有OS改動或上限變更。Transport observer只涵蓋synthesis，舊absolute-path配置未啟用；空檔／缺席不能證明ASR無HTTP錯誤。
+
+**歷史快照：以下 running、最新、待核對等文字均描述當時狀態，不代表目前有程序執行；目前狀態以上段為準。**
+
+最新續作入口：2026-10-27T13:53:02.6945692Z。第六筆保存回覆逐筆恢復覆核及Root fresh557次SHA核對通過：current/private各212raw、current/frozen/consumption三方cache137、原130全保留、64preserved＋3active＝67精確journal會員、terms0與來源/lexicon/unused EN binding均current，原PID53448 dead且無競爭程序/lease/STOP/ASRstate。**唯一正常續檢session94112／PID43140執行中**，slot check-en-saved-answer6-resume，lease 2026-10-27T13:53:03.335Z；同一已審EN source-free bridge從起點帶入，no force／原20分鐘callback及30秒IO上限不變。新runner僅把observer參數改成basename，helper仍只涵蓋synthesis，不拿空檔證明ASR沒有HTTP錯誤。**先等94112 nativeexit，再核0196實際沿用、完整flags、second runtime/cleanup及journal；不可啟動另一producer/JA或重播54516。** 見[dub-en-sixth-check-recovery.json](dub-en-sixth-check-recovery.json)。0/8外語驗收，完整包及下一集未成。
+
 本輪最新：54516已於13:39:12Z native1結束，EN辨識cache137/212；第五保存答案實際沿用獨立確認，第六筆完整回覆離線恢復及逐筆覆核PASS，準備fresh核對後正常續檢。64歷史檔與3active均保留，Windows鎖來源仍未知，沒有OS／供應商／費用／上限變更。舊transport observer因absolute path未啟用，且只涵蓋synthesis，不能把缺席當作ASR未遭HTTP錯誤。見[dub-en-sixth-check-recovery.json](dub-en-sixth-check-recovery.json)。
 
 最新續作入口：2026-10-27T13:38:05.3498942Z。第五筆保存回覆逐筆覆核及Root fresh550次SHA核對通過：current/private各212raw、current/frozen/consumption三方cache130、原126全保留、58preserved＋3active＝61精確journal會員、terms0與來源/lexicon/unused EN binding均current，原PID32176 dead且無競爭程序/lease/STOP/ASRstate。**唯一正常續檢session54516／PID53448執行中**，slot check-en-saved-answer5-resume，lease 2026-10-27T13:38:06.012Z；同一已審EN source-free bridge從起點帶入，no force／原20分鐘callback及30秒IO上限不變。**先等54516 nativeexit，再核128762實際沿用、完整flags、second runtime/cleanup及journal；不可啟動另一producer或JA，不能重播38131。** 見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。0/8外語驗收，完整包及下一集未成。

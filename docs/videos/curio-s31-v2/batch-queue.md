@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA及委託final核准。EN已有137/212辨識cache；54516遇第六筆Windows journal EPERM已結束，第六筆保存回覆逐筆恢復覆核PASS，準備fresh核對後續檢。八語驗收／完整包未成 |
+| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA及委託final核准。EN170/212辨識cache；第六筆已實際沿用，第七筆保存回覆review PASS，準備fresh正常續檢、無producer。八語驗收／完整包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,7 +34,15 @@
 
 ## 當前斷點
 
-**本輪最新核對（2026-10-27）：54516已結束；以下running紀錄均為當時履歷。**
+最新 checkpoint（2026-10-27）：94112／PID43140已於13:57:22.6646441Z native1結束；第六筆0196／lz422已由正常續檢實際沿用，原137筆cache全保留、目前170/212，212 raw及來源／EN／lexicon／中文master未變。第七筆43f97…d9c3b／lz504完整保存回覆已離線恢復native0（reuse1／send0／fetch0），逐筆獨立覆核e0d11f…64b1 PASS；freeze為21 present／1 absent、70 preserved＋3 active。**目前 review PASS，準備 fresh 正常續檢，無 producer；第七筆尚未由 canonical 消費、second ASR尚未派發。** 新runner只讀guard通過566次checks（不是unique檔數），Root仍須在新slot前fresh核對；不重播94112或手動promote／delete／forget。原20分鐘callback及30秒I/O上限不變。見[dub-en-seventh-check-recovery.json](dub-en-seventh-check-recovery.json)。0/8外語驗收，完整包及下一集未成。
+
+窄診斷：[私有 final-diagnosis.md](C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/rename-native-diagnostic-20261027/final-diagnosis.md)，SHA256 `fa648dfc294921661b21f98f795d5f3ef16002325f1358c0d8dd0948fe441f86`。本機fixture可重現EPERM，但未證實production持鎖來源或UTF8因果；沒有OS改動或上限變更。Transport observer只涵蓋synthesis，舊absolute-path配置未啟用；空檔／缺席不能證明ASR無HTTP錯誤。
+
+**歷史快照：以下 running、最新、待核對等文字均描述當時狀態，不代表目前有程序執行；目前狀態以上段為準。**
+
+最新續作入口：2026-10-27T13:53:02.6945692Z。第六筆保存回覆逐筆恢復覆核及Root fresh557次SHA核對通過：current/private各212raw、current/frozen/consumption三方cache137、原130全保留、64preserved＋3active＝67精確journal會員、terms0與來源/lexicon/unused EN binding均current，原PID53448 dead且無競爭程序/lease/STOP/ASRstate。**唯一正常續檢session94112／PID43140執行中**，slot check-en-saved-answer6-resume，lease 2026-10-27T13:53:03.335Z；同一已審EN source-free bridge從起點帶入，no force／原20分鐘callback及30秒IO上限不變。新runner僅把observer參數改成basename，helper仍只涵蓋synthesis，不拿空檔證明ASR沒有HTTP錯誤。**先等94112 nativeexit，再核0196實際沿用、完整flags、second runtime/cleanup及journal；不可啟動另一producer/JA或重播54516。** 見[dub-en-sixth-check-recovery.json](dub-en-sixth-check-recovery.json)。0/8外語驗收，完整包及下一集未成。
+
+**歷史核對（2026-10-27）：54516已結束；以下running紀錄均為當時履歷。**
 
 54516／PID53448於13:39:12Z native1，第六筆lz422/request0196f77a6faa75b5cdefa6628d1008e57cb3d784da61f84a3d4943d061a915ec完整回覆confirmed rename再次Windows EPERM。第五128762/v2a0521 actual canonical沿用獨立PASS0544dfd9889796442e34e27e3c67f40c6dc83f5bc660fc370ef1f2c7115dc380，原130cache全保留、current137，212raw／source／EN翻譯／lexicon／中文master均未變。第六筆22項證據凍結manifest3e6fb429661b20b02ea5fca9b4331645c22c3d4b8947d9c0b55bae4f0bcf7fa4，64preserved＋3active全保留；approved generic native0/result39c29efff280d51ccf4e0d7d5550710d4f80d9c6ec0609b01a0cdb786263b27d，唯一lz422／terms0／reused1send0fetch0／default ESRCH／alivehold，逐筆獨立review1af9f5cfa1587162a112093f5307120b6e8e85e1e6e717dba3df705e182f6f89 PASS。
 

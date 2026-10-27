@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "SEVENTH_ACTUAL_RECOVERY_REVIEWED_FRESH_NORMAL_RESUME_PREPARATION_NO_PRODUCER",
+  "failed_command": {
+    "session": 94112,
+    "slot": "check-en-saved-answer6-resume",
+    "pid": 43140,
+    "native_exit": 1,
+    "ended_at": "2026-10-27T13:57:22.6646441Z",
+    "native_receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer6-resume-native-exit.json",
+      "sha256": "0934d0071eeb59019d8ab8a0499c0579375878446c41b61c57d953ea50e27ab0"
+    },
+    "reason": "Windows EPERM on confirmed promotion of a different complete primary transcribe answer; all original evidence retained."
+  },
+  "request_sha256": "43f97f9a9a15b010c40aede64768a28a178fcfb14f8024606e5616ecd18d9c3b",
+  "line_id": "lz504",
+  "freeze": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-seventh-rename-failure-before/manifest.json",
+    "sha256": "cc70cdd4467e5e3b5c879b4ebe19f616650d2747801062de47bd61fe34314f62",
+    "at": "2026-10-27T14:02:03.374Z",
+    "present_files": 21,
+    "absent_files": 1,
+    "preserved_files": 70,
+    "active_files": 3,
+    "cache_lines": 170,
+    "raw_wavs_unchanged": 212,
+    "lease_present": false,
+    "asr_project_state_present": false,
+    "direct_runs": {
+      "dub-en-bridge-prep": [],
+      "dub-en-bridge-prep-v2": [],
+      "dub-en-bridge-prep-v3": []
+    }
+  },
+  "saved_files": [
+    {
+      "name": "43f97f9a9a15b010c40aede64768a28a178fcfb14f8024606e5616ecd18d9c3b.json",
+      "bytes": 443,
+      "sha256": "5db034d7ff4f08aecf0b51daee1ea842f8559d43ca6db37b7c18202e42e64304"
+    },
+    {
+      "name": "43f97f9a9a15b010c40aede64768a28a178fcfb14f8024606e5616ecd18d9c3b.answer.json",
+      "bytes": 1282,
+      "sha256": "b2504a4f077ee7d1156e07b3aca27e9833a403a8f0dc21c1cb35b7fae431b996"
+    },
+    {
+      "name": "43f97f9a9a15b010c40aede64768a28a178fcfb14f8024606e5616ecd18d9c3b.json.43140.tmp",
+      "bytes": 755,
+      "sha256": "162fc1255980001a0b78b75f5e88ae667c71397402d64077d1866fa51642f7b8"
+    }
+  ],
+  "private_check": {
+    "result_file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-transcribe-recovery-prep/runs/recovery-f0525ac8-1480-4393-a57a-6c76ef9b384c/result.json",
+    "result_sha256": "c70a5d87bf44b9e6e62343ca23f1a101fd37e5c6b9c00ae97cfe6eae140a72d8",
+    "native_exit": 0,
+    "unique_line": "lz504",
+    "terms_count": 0,
+    "terms_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "proof_sha256": "bfcac774249b9eede6277d943993b535ea20e9e6f9a5e408c809b6d7a44095c8",
+    "reused": 1,
+    "reopened_reused": 1,
+    "send_calls": 0,
+    "fetch_calls": 0,
+    "default_pid": "ESRCH",
+    "alive_hold": "video_speech_uncertain",
+    "original_files_unchanged": true,
+    "canonical_promoted": false
+  },
+  "actual_request_review": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-transcribe-recovery-prep/actual-request-review-43f97f9a9a15b010.json",
+    "sha256": "e0d11f9bfd29b1df570881522f6a7fe6da693149c520c083d6df4d732d8264b1",
+    "verdict": "PASS_ACTUAL_PRIVATE_EN_TRANSCRIBE_RECOVERY_RESULT"
+  },
+  "previous_actual_consumption": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer-consumption-0196.json",
+    "sha256": "3da8d0d66cc44634d10853f4c5959f29dafc4106e158cdfbbdc4b292c9390f43",
+    "request_sha256": "0196f77a6faa75b5cdefa6628d1008e57cb3d784da61f84a3d4943d061a915ec",
+    "line_id": "lz422",
+    "verdict": "PASS_PREVIOUS_SAVED_ANSWER_ACTUALLY_CONSUMED",
+    "old_cache_rows_preserved": 137,
+    "current_cache_rows": 170,
+    "raw_source_translation_master_unchanged": true
+  },
+  "runner_readonly_guard": {
+    "ready_receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/run-en-saved-answer7-resume-ready.json",
+      "sha256": "08645db0b37c5fb77ac5c8c2001c0fde331593861670f03597b774a895ea65cd"
+    },
+    "runner_sha256": "7b0f1b4947b8847401ee7644e45fa50526bf68829066ba950a1d5a86f7dc34a1",
+    "checks_reported_by_root": 566,
+    "count_is_unique_files": false,
+    "scope": "Prepare-only read-only checks; not a dispatch or a new producer."
+  },
+  "diagnostic_scope": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/rename-native-diagnostic-20261027/final-diagnosis.md",
+    "sha256": "fa648dfc294921661b21f98f795d5f3ef16002325f1358c0d8dd0948fe441f86",
+    "conclusion": "Private Windows fixtures reproduce EPERM, but the production holder and root cause remain unknown; UTF8 causation is not established.",
+    "os_changes": false,
+    "deadline_or_cap_changes": false,
+    "production_issue_resolved": false,
+    "transport_observer": "Synthesis-only; no transcribe/judge coverage. Earlier absolute-path configuration did not enable it; absent or empty logs do not prove ASR HTTP success."
+  },
+  "producer_running": false,
+  "canonical_saved_answer_consumed": false,
+  "second_previously_dispatched": false,
+  "audio_accepted": false,
+  "owner_listened_or_watched": false,
+  "complete_delivery_package": false,
+  "youtube_uploaded_or_published": false,
+  "next": "Root must freshly reconcile current source/raw/cache/journal/PID/lease and the unchanged binding before one new normal no-force slot. Do not replay ended slots, manually promote/delete/forget journal, or claim audio acceptance from this private recovery result. Existing 20-minute second-opinion callback and 30-second I/O limits remain unchanged."
+}
