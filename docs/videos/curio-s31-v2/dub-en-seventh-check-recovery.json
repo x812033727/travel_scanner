@@ -2,7 +2,7 @@
   "schema_version": 1,
   "slug": "curio-s31-v2",
   "locale": "en",
-  "status": "SEVENTH_ACTUAL_RECOVERY_REVIEWED_FRESH_NORMAL_RESUME_PREPARATION_NO_PRODUCER",
+  "status": "SEVENTH_SAVED_ANSWER_ACTUALLY_CONSUMED_NEXT_DISTINCT_REQUEST_HELD_NO_PRODUCER",
   "failed_command": {
     "session": 94112,
     "slot": "check-en-saved-answer6-resume",
@@ -104,11 +104,64 @@
     "transport_observer": "Synthesis-only; no transcribe/judge coverage. Earlier absolute-path configuration did not enable it; absent or empty logs do not prove ASR HTTP success."
   },
   "producer_running": false,
-  "canonical_saved_answer_consumed": false,
+  "canonical_saved_answer_consumed": true,
   "second_previously_dispatched": false,
   "audio_accepted": false,
   "owner_listened_or_watched": false,
   "complete_delivery_package": false,
   "youtube_uploaded_or_published": false,
-  "next": "Root must freshly reconcile current source/raw/cache/journal/PID/lease and the unchanged binding before one new normal no-force slot. Do not replay ended slots, manually promote/delete/forget journal, or claim audio acceptance from this private recovery result. Existing 20-minute second-opinion callback and 30-second I/O limits remain unchanged."
+  "next": "Session97406 ended native1 after actually consuming43f97/lz504. The eighth distinct saved answer695b/lz514 has separate private recovery review PASS; prepare a fresh normal no-force slot only after Root reconciliation. No producer or second dispatch; see dub-en-eighth-check-recovery.json. Audio acceptance and complete delivery remain pending.",
+  "fresh_dispatch": {
+    "previous_consumption_sha256": "684f6fb800ca9313489ed71d71812498762a1193957258aa8f2608fbac695576",
+    "preserved_journal_files": 70,
+    "observer_file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer7-resume-transport-289a77a21ce74d36869102c6fd6751c9.jsonl",
+    "force": false,
+    "expected_terms_count": 0,
+    "recovery_review_sha256": "e0d11f9bfd29b1df570881522f6a7fe6da693149c520c083d6df4d732d8264b1",
+    "partial_cache_lines": 170,
+    "fresh_files_checked": 566,
+    "frozen_cache_lines": 170,
+    "earlier_consumption_sha256": "3d399bc377346f22e88eb386d4288260cea032b0f3cf52c78f90f26aa71a1622",
+    "frozen_absent": 1,
+    "old_cache_preserved": 137,
+    "generic_result_sha256": "c70a5d87bf44b9e6e62343ca23f1a101fd37e5c6b9c00ae97cfe6eae140a72d8",
+    "prior_consumption_sha256": "3da8d0d66cc44634d10853f4c5959f29dafc4106e158cdfbbdc4b292c9390f43",
+    "second_timeout_ms": 1200000,
+    "prior_saved_answer_consumed": true,
+    "raw_wavs": 212,
+    "request_sha256": "43f97f9a9a15b010c40aede64768a28a178fcfb14f8024606e5616ecd18d9c3b",
+    "at": "2026-10-27T14:14:45.0472582Z",
+    "original_pid": 43140,
+    "second_previously_dispatched": false,
+    "frozen_present": 21,
+    "expected_terms_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "binding_sha256": "9899846260cb029b0c456f2629b9f65323a469911e0049c559a08677ab2eb183",
+    "generic_code_review_sha256": "8809759655937822b3b74efe347deeb9d700513c5a3445c6f5f2c1d72a68ac56",
+    "saved_answer_to_reuse_count": 1,
+    "slot": "check-en-saved-answer7-resume",
+    "locale": "en"
+  },
+  "normal_resume": {
+    "session": 97406,
+    "slot": "check-en-saved-answer7-resume",
+    "pid": 27636,
+    "dispatched_at": "2026-10-27T14:14:45.0472582Z",
+    "lease_acquired_at": "2026-10-27T14:14:48.409Z",
+    "native_exit": 1,
+    "runner_sha256": "7b0f1b4947b8847401ee7644e45fa50526bf68829066ba950a1d5a86f7dc34a1",
+    "new_saved_answer_actual_consumption_verified": true,
+    "ended_at": "2026-10-27T14:17:22.2701101Z",
+    "native_receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer7-resume-native-exit.json",
+      "sha256": "5d7382620366ca05fde932932cf5681275577bafbfcde0fe6246e378b13c65c0"
+    }
+  },
+  "actual_consumption": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer-consumption-43f97.json",
+    "sha256": "111036ea239379aa84ef9209adb8ddbf182fad8dd39a55e140b5baf21109412a",
+    "verdict": "PASS_PREVIOUS_SAVED_ANSWER_ACTUALLY_CONSUMED",
+    "old_cache_rows_preserved": 170,
+    "current_cache_rows": 189,
+    "raw_source_script_translation_lexicon_master_state_unchanged": true
+  }
 }
