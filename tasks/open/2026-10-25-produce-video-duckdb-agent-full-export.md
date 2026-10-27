@@ -191,3 +191,15 @@ Root session95755／PID2587於17:15:59.599Z真tool/native exit4。原稿第一�
 
 
 2026-10-27T19:06:36.829859+00:00：來源素材與三份後台交付已完成，本票正常release／status blocked兩命令真exit0，owner／claimed_at空。責任仍由本對話及原branch／PR1861延續，尚未done／移交。下一步仍為繁中當前音檔／actual CC、第一章後5秒官方片頭與21秒片尾、至少480秒正文／整片QA及八語各自經當前音檔查核的M4A和正式語言包。先前已詢問的供應商TTS配額／恢復事實尚待回覆，不重問或自動重開第五程序；保留4次程序／12POST/raw0與全部未知紀錄、全域另一host ASR LEASE。無背景媒體或音訊工人，不merge／deploy／YouTube。
+
+
+## 兩張實測截圖原生整合及新腳本版本 — 2026-10-27T21:37:28.742655+00:00
+
+Root實際套用兩景screenshot與真實asset credit，正常script重產及render真exit0；當前source51263f／scriptb917，speech38cf與111個完整line物件、八語全文及聲音不變。原生render重畫2／重用62，聯絡表更新；新版script payload的check_status是missing（工人script-check.json不存在），與舊local7aac核准stale及歷史敘事false分開。來源與真實視覺範圍見docs/videos/duckdb-agent-full-export/receipts/screenshot-integration-20261027/independent-source-render-review.json。舊script7aac核准仍保留並正常stale；兩份native12/13 false不洗掉，不稱新的敘事／音檢／QA通過。
+
+新版SCRIPT 3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb pending，舊SCRIPT dd47b9a0-6456-4651-9456-32b320909338 正常superseded，原payload與25refs保持；新review含完整舊25refs＋7份本次來源／腳本／畫面與說明共32refs。七個新檔均完整下載並逐bytes／SHA／MIME核對，舊25binary未重送或重下載。實際交付及獨立驗核見同receipt目錄index.json。未代核准、未建正式languagebatch。
+
+本輪TTS／ASR／付費模型請求0；保留4process／12POST/raw0、原上限／快取／全部未知與failed flags。當前繁中旁白／actual CC、第一章後官方5＋21、至少480秒正文／成片QA、八語各實測M4A及正式交付仍未完成。先前current vendor quota/reset事實已問待回，不重問或自動第五TTS；另一host全域ASR lease不清、不另鏈。責任沿原本對話／codex-duckdb-20261025／分支與PR1861，未done或移交；Root正常release／blocked停點另記。維持no-auto-merge，不merge／deploy／YouTube。
+
+
+2026-10-27T21:38:51.298328+00:00：兩景整合／新版SCRIPT32與七份附件的實際交付及獨審已完成，本票由Root正常release並設blocked，兩命令真exit0，owner／claimed_at空。責任仍同對話codex-duckdb-20261025／同分支／PR1861，尚未done或移交。內嵌stdout在手機無法逐行讀，正式影片需真實近拍與正常視覺QA；另待當前繁中旁白、actual CC、第一章後官方5秒片頭＋21秒片尾、至少480秒正文及八語各經當前音檔查核的M4A／正式包。舊false與未知／上限保持，已問vendorfacts未回不重問或自動第五TTS，不清另一host ASR lease、不另鏈；無背景producer，不merge／deploy／YouTube。

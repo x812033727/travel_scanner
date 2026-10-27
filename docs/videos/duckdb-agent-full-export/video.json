@@ -76,6 +76,16 @@
       "path": "docs/videos/duckdb-agent-full-export/assets/thumbnail-subject-9317157458b260ea.png",
       "source": "本片原創教學示意｜虛構配送資料與本地2.0輸出｜非DuckDB官方UI",
       "license": "CC0-1.0"
+    },
+    {
+      "path": "stock/19fcc33c270f1a94c6190f1cbf63b71ce3a572905f9ca992324fc3f32ca2fb68.png",
+      "source": "Author original DuckDB2.0 operation console, replayed2026-10-27 from original fictional fixture2026-10-25; current actual PNG 02-scrolled.png; not DuckDB officialUI.",
+      "license": "Original author UI and fictional fixture: CC0-1.0; DuckDB tool/output: MIT."
+    },
+    {
+      "path": "stock/2cbd2f34aae16862142f117f39012dbb1c95b894915b57e72418222292478d69.png",
+      "source": "Author original DuckDB2.0 operation console, replayed2026-10-27 from original fictional fixture2026-10-25; current actual PNG 03-scrolled.png; not DuckDB officialUI.",
+      "license": "Original author UI and fictional fixture: CC0-1.0; DuckDB tool/output: MIT."
     }
   ],
   "scenes": [
@@ -492,12 +502,12 @@
     },
     {
       "id": "human-footer",
-      "template": "quote",
+      "template": "screenshot",
       "data": {
-        "quote": "1200 rows (40 shown)                                 5 columns",
-        "source": "公開教材Linux2.0實跑｜runlogs/human-preview.stdout.txt",
-        "translation": "共1200列，顯示40列，5個欄位",
-        "key": "一般模式也標示顯示列數"
+        "title": "一般模式的顯示範圍",
+        "image": "stock/19fcc33c270f1a94c6190f1cbf63b71ce3a572905f9ca992324fc3f32ca2fb68.png",
+        "caption": "2026-10-27重現｜原創視窗、虛構資料；原始fixture為2026-10-25",
+        "key": "總共1200列，畫面顯示40列"
       },
       "claims": [
         "c2"
@@ -516,12 +526,12 @@
     },
     {
       "id": "agent-omitted",
-      "template": "quote",
+      "template": "screenshot",
       "data": {
-        "quote": "| … 1160 rows omitted … |",
-        "source": "公開教材Linux2.0實跑｜runlogs/agent-preview.stdout.txt",
-        "translation": "中間1160列沒有顯示",
-        "key": "省略標記位在結果之中"
+        "title": "代理模式直接標出省略",
+        "image": "stock/2cbd2f34aae16862142f117f39012dbb1c95b894915b57e72418222292478d69.png",
+        "caption": "2026-10-27重現｜原創視窗、虛構資料；原始fixture為2026-10-25",
+        "key": "1160列未顯示，資料沒有消失"
       },
       "claims": [
         "c2"

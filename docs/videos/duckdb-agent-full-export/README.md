@@ -1,3 +1,19 @@
+# DuckDB 2.0：兩張真實操作截圖已整合，新版腳本含32份附件待審
+
+2026-10-27T21:37:28.742655+00:00。已把一般模式的「1,200筆只顯示40筆」與代理模式的「中間1,160筆未顯示」兩張實測截圖放入 `human-footer`、`agent-omitted` 的正常原生場景，重新 render 2 狀態、重用62狀態。截圖保留操作重現2026-10-27、原始fixture2026-10-25、原創視窗及虛構資料標示。
+
+新版 [video.json](video.json) SHA `51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c`，[script.md](script.md) SHA `b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa`。111句完整line物件、speech `38cf9292f6945199`、八語全文、claims與頻道聲音保持；腳本只有兩個版型標籤和 narrative footer 改變。舊7aac本機腳本核准原樣保留且正常失效（stale）；新版payload的check_status為missing，原因是工人review/script-check.json未存在，兩者分開。舊兩份12/13 false保留，沒有當前敘事重新通過或伺服器核准宣稱。
+
+新版SCRIPT `3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb` 已送到[Mokaair本片後台](https://mokaair.com/zh-TW/admin/videos?video=duckdb-agent-full-export)，狀態pending。新附兩張當前PNG、聯絡表、來源JSON、腳本MD、frames manifest與使用說明共7份，均實際完整下載、逐bytes／SHA／MIME核對；原25份ref完整帶入，總數32。舊SCRIPT `dd47b9a0-6456-4651-9456-32b320909338` 依正常換版成superseded，原payload與25份ref保持。沒有重傳或重下載舊25份binary。
+
+[公開文字收據索引](receipts/screenshot-integration-20261027/index.json)、[獨立來源與視覺驗核](receipts/screenshot-integration-20261027/independent-source-render-review.json)、[獨立交付驗核](receipts/screenshot-integration-20261027/independent-delivery-review.json)與[原生整合來源碼](authoring/screenshot-integration/README.md)分列範圍。這是兩景視覺與腳本版本交付；不是正式成片、旁白、字幕或八語完成。Root與獨立審查實看兩個1920×1080輸出及480×270預覽；標題與大字關鍵句可讀，內嵌stdout約10px且手機無法逐行閱讀。這兩景僅接受為脈絡與來源畫面，整片仍需真實stdout近拍與正常畫面驗收，未稱整片視覺QA通過。
+
+本輪新增TTS／ASR／付費模型請求0。舊TTS累計4個初始程序／12次POST、raw0及所有未知紀錄保持；八語文字8/8，經當前音檔查核的M4A仍0/8。繁中當前旁白／actual CC、正文至少480秒、第一章後5秒官方片頭與21秒片尾、整片QA及八語正式交付仍待完成。官方v4素材已可用，後續按真實旁白時間軸採用。
+
+---
+
+以下完整保留先前日期的紀錄；當時來源1c475、腳本7aac、同一SCRIPT25與舊current判斷為歷史狀態。當前來源與32份新版待審以本段及production-progress.json的screenshot_integration為準。
+
 # DuckDB 2.0：實跑操作錄影已交付，當前同一待審SCRIPT共25份附件
 
 2026-10-27T19:03:57.821981+00:00。新增93.12秒、1920×1080、25fps／2328格的無配音實際操作錄影，已直接送到[Mokaair本片後台](https://mokaair.com/zh-TW/admin/videos?video=duckdb-agent-full-export)，並完整下載三個新增檔案、逐bytes／SHA核對。原22份附件保持，新增MP4、使用說明與當次錄影manifest，總數25；仍為同一SCRIPT待審，未建立伺服器核准。

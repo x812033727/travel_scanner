@@ -1,12 +1,12 @@
 {
   "kind": "fifth_episode_production_progress",
   "schema_version": 1,
-  "updated_at_utc": "2026-10-27T19:06:36.829859+00:00",
+  "updated_at_utc": "2026-10-27T21:37:28.742655+00:00",
   "slug": "duckdb-agent-full-export",
-  "stage": "SCRIPT25_verified_live_CLI93s_source_asset_audio_and_foreign_delivery_pending",
+  "stage": "SCRIPT32_revision_pending_two_actual_screens_integrated_audio_and_all8_media_pending",
   "overall_production_completed": false,
   "source_import_complete": true,
-  "source_video_sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8",
+  "source_video_sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c",
   "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
   "speech_hash": "38cf9292f6945199",
   "voice_unchanged": {
@@ -1164,6 +1164,171 @@
         "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/checks/tasks.exit.json",
         "bytes": 656,
         "sha256": "dd9f7f54e41965e8e58b89d10137560a5c6e4e2316a1d0e2bfdeb4d7db4c1bbf"
+      }
+    }
+  },
+  "screenshot_integration": {
+    "documentation_updated_at": "2026-10-27T21:37:28.742655+00:00",
+    "source_before": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+      "bytes": 58095,
+      "sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8"
+    },
+    "source_after": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+      "bytes": 58952,
+      "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c"
+    },
+    "script_before": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/script.md",
+      "bytes": 15250,
+      "sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b"
+    },
+    "script_after": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/script.md",
+      "bytes": 15260,
+      "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+    },
+    "speech_hash_unchanged": "38cf9292f6945199",
+    "visual_hash": "7debdee5a1fd4f41",
+    "narrative_hash": "ffa6912398093790",
+    "scene_ids": [
+      "human-footer",
+      "agent-omitted"
+    ],
+    "source_full111_line_objects_and_all8_unchanged": true,
+    "native_script_approval_now": "stale",
+    "new_script_payload_check_status": "missing",
+    "new_script_payload_check_status_reason": "No worker review/script-check.json exists; this is separate from stale local7aac script approval and dated native narrative false receipts.",
+    "old_native_script_approval_preserved": true,
+    "old_script_gate_and_source_gate_objects_are_dated_history": true,
+    "old_native_narrative_two_12of13_false_preserved": true,
+    "new_current_narrative_PASS_claimed": false,
+    "actual_visual_scope": {
+      "actual_fullsize_PNGs_opened": 2,
+      "actual_source_console_PNGs_opened": 2,
+      "actual480x270_previews_opened": 2,
+      "mobile_previews": [
+        {
+          "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/mobile-previews/human-footer.png",
+          "bytes": 30163,
+          "sha256": "6e55e2b5ab372dcfdff7de62a6f9f01a0c5e0e7811c6783147953c1ed7ddd79d"
+        },
+        {
+          "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/mobile-previews/agent-omitted.png",
+          "bytes": 32192,
+          "sha256": "a955a0b473bff09b726e688a3e0c111f06857120986d3afdf7efaef9ca227636"
+        }
+      ],
+      "observed": "Both1920x1080 cards cleanly integrate exactoriginalconsole captures; heading/date/fictional labels and bigChinese keyband fit. At480px heading/keyband clearly state1200total/40displayed and1160undisplayed/notlost.",
+      "limitation": "Embeddedoriginalstdout is~788x443 inset, ~10px at1080p and not phone-readable; do not claim everyfooter/row/omittedmarker readable onphone. Screenshot is contextualsource evidence, not final close-upvisualquality acceptance. Phone-sizeddatecaption issmall.",
+      "future_requirement": "Wholefilm review should judge genuineclose-upactualstdout where audience must read exactCLI evidence; no edited/fabricatednumbers or fakeclipmanifest. Existing fullresolutionoriginals/realclip remain downloadable evidence.",
+      "no_secret_or_personal_identity_seen": true,
+      "wholefilm_continuous_view_or_audio_listening": false
+    },
+    "actual_native_source_apply": {
+      "session": 78748,
+      "pid": 9926,
+      "tool_exit": 0,
+      "receipt": "receipts/screenshot-integration-20261027/source-apply.actual.json"
+    },
+    "actual_native_render": {
+      "session": 37960,
+      "pid": 10105,
+      "tool_exit": 0,
+      "stage": {
+        "stage": "render",
+        "at": "2026-10-27T21:28:11.773Z",
+        "states": 64,
+        "drawn": 2,
+        "reused": 62,
+        "strips": 0,
+        "seconds": 10,
+        "channel": "bundled chromium"
+      },
+      "receipt": "receipts/screenshot-integration-20261027/render.actual.json"
+    },
+    "old_script_review_id": "dd47b9a0-6456-4651-9456-32b320909338",
+    "old_script_status_after": "superseded",
+    "old_script_payload_and25refs_preserved": true,
+    "new_script_review_id": "3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb",
+    "new_script_status": "pending",
+    "new_script_attachment_count": 32,
+    "new_attachments": 7,
+    "retained_old_refs": 25,
+    "full_new7_binary_readback_verified": true,
+    "new_delivery_counts": {
+      "auth_reads": 1,
+      "project_GET": 4,
+      "file_PUT": 7,
+      "review_POST": 1,
+      "file_GET": 7,
+      "denied": 0
+    },
+    "actual_delivery": {
+      "session": 7004,
+      "pid": 10583,
+      "tool_exit": 0,
+      "receipt": "receipts/screenshot-integration-20261027/delivery.actual.json"
+    },
+    "public_receipts_index": "receipts/screenshot-integration-20261027/index.json",
+    "independent_source_render_review": "receipts/screenshot-integration-20261027/independent-source-render-review.json",
+    "independent_delivery_review": "receipts/screenshot-integration-20261027/independent-delivery-review.json",
+    "source_pngs_content_addressed_in_workdir_only": true,
+    "prior_render_media_archived_outside_repo": true,
+    "new_TTS_ASR_paid_model_calls": 0,
+    "foreign_checked_M4A": 0,
+    "actual_CC": 0,
+    "server_approval": false,
+    "whole_episode_complete": false,
+    "no_atomic_CAS_limitation": "Whole project compared at before/prePOST/after/postbinary observations; API has no atomic compare-and-swap, so this does not eliminate every race.",
+    "task_handoff_update_reserved_for_Root": false,
+    "task_handoff": {
+      "recorded_at": "2026-10-27T21:38:51.298328+00:00",
+      "actual_status": "blocked",
+      "owner_claim_released": true,
+      "normal_release_and_status_receipt": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/task-release-blocked.json",
+        "bytes": 652,
+        "sha256": "3c021a6b2ce899559fded111244b77d3f03205fc97547d93139e294dd4aa0fb7"
+      },
+      "responsibility": "Same conversation/codex-duckdb-20261025/branch/PR1861; not done or transferred.",
+      "stop_point": "Two contextual screenshot scenes integrated, current native64/2draw62reuse and newSCRIPT32 sevenfiles delivered/readback. Embeddedstdout notphone-line-readable; genuinecloseup/wholefilmvisualreview pending. Master narration/currentCC/official5+21/480sbody and all8 currentcheckedM4A remain unfinished. Old2x12of13false, missingworkercheck/stalelocalapproval, cumulative4TTSprocess/12POST/raw0, originalceilings/cache/unknowns and otherhostglobalASRlease preserved. Vendorfacts alreadyaskedonce pending, no automaticfifthpaidprocess.",
+      "no_background_media_or_audio_producer": true
+    },
+    "required_checks": {
+      "docs_videos": {
+        "actual_session": 95228,
+        "actual_tool_exit": 0,
+        "passed": 236,
+        "failed": 0,
+        "skipped": 0,
+        "duration_ms": 29601.182903,
+        "receipt": {
+          "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/checks/docs-videos.exit.json",
+          "bytes": 686,
+          "sha256": "e327ff97c8a8bfb2d48fab8784f0298271d309717e078b253dad424d444b5e2b"
+        }
+      },
+      "tasks": {
+        "actual_tool_exit": 0,
+        "validated_task_files": 2183,
+        "existing_warnings": 151,
+        "receipt": {
+          "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/checks/tasks.exit.json",
+          "bytes": 669,
+          "sha256": "ff5f735b3ddfd67f6b2f9961d35177cdb8ebb7bb18380837b2b9a220ab521090"
+        }
+      }
+    },
+    "docs_apply": {
+      "actual_tool_exit": 0,
+      "tool_chunk": "26ccc0",
+      "proposal_sha256": "5e6ae87b3a57dc9555847aef0547eca0933aee14ac91300e22c9294318843e98",
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/docs-prep/apply.actual.json",
+        "bytes": 10409,
+        "sha256": "e61659191974357231c4fc5624f66f1121e195e06d7a065108977cc90395d896"
       }
     }
   }

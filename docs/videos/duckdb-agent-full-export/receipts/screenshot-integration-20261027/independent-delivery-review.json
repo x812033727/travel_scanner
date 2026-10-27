@@ -1,0 +1,435 @@
+{
+  "kind": "independent_actual_DuckDB_current_screen_SCRIPT_revision_readback_review",
+  "at": "2026-10-27T21:36:04.010Z",
+  "verdict": "CLEAR_SEVEN_SOURCE_VISUAL_ARTIFACTS_DELIVERED_NEW_PENDING_SCRIPT_ONLY",
+  "root_actual_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/ROOT-delivery-actual-exit.json",
+    "bytes": 918,
+    "sha256": "f12d6b86c83f405184895e611ce79249abeb57533da5eb1680ca4c0769b6aa7f"
+  },
+  "actual_completion": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/run/completion.json",
+    "bytes": 5340,
+    "sha256": "0c2eb253ff849a8d4c5399edf002e1a90a2091a154bf0a889b5cfeb241943e51"
+  },
+  "helper": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/submit-screen-revision.mjs",
+    "bytes": 27597,
+    "sha256": "0a460a8376dd9560ae41611820f3f5cfd887a5cdc95c4723a734929473a46360"
+  },
+  "profile": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/actual-profile.json",
+    "bytes": 556537,
+    "sha256": "ae7f0b5dd69d6dd906016ad46115cf9370b308c950521bac729383ef52b4dec5"
+  },
+  "inputs": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/delivery-inputs.json",
+    "bytes": 2536,
+    "sha256": "ab654dbac74fb7174d1db38b58ed434a514b9555c614bc4419dca9a2f795958e"
+  },
+  "dispatch": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/ROOT-delivery-dispatch.json",
+    "bytes": 1621,
+    "sha256": "c4e8bcee9b29849ab3bb3795805de7d51066158ba39146b4f878fe59ab050f8f"
+  },
+  "actual_counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 7,
+    "review_POST": 1,
+    "file_GET": 7,
+    "denied": 0
+  },
+  "all19_HTTP_raw_body_hash_size_and_status_checked": [
+    {
+      "file": "HTTP-file_GET-1.json",
+      "kind": "file_GET",
+      "index": 1,
+      "status": 200,
+      "bytes": 200971,
+      "sha256": "3cffc9f9ab11d7f60bfc4f87bc8631926719711a7a8c1caa8d6ed90b5a213214",
+      "content_type": "image/png",
+      "role": "evidence_human_footer_current"
+    },
+    {
+      "file": "HTTP-file_GET-2.json",
+      "kind": "file_GET",
+      "index": 2,
+      "status": 200,
+      "bytes": 209896,
+      "sha256": "d4b0a99399016f6c90a5f30c029ffc14fc4e40557f79a2ccf6e3355732cd21bb",
+      "content_type": "image/png",
+      "role": "evidence_agent_omitted_current"
+    },
+    {
+      "file": "HTTP-file_GET-3.json",
+      "kind": "file_GET",
+      "index": 3,
+      "status": 200,
+      "bytes": 1466564,
+      "sha256": "d566e6812cb1bd112c5a0337860005eaf3416f94eb929c3ce4a3445425e523f8",
+      "content_type": "image/png",
+      "role": "contact_sheet_current"
+    },
+    {
+      "file": "HTTP-file_GET-4.json",
+      "kind": "file_GET",
+      "index": 4,
+      "status": 200,
+      "bytes": 58952,
+      "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c",
+      "content_type": "application/json",
+      "role": "evidence_current_video_source"
+    },
+    {
+      "file": "HTTP-file_GET-5.json",
+      "kind": "file_GET",
+      "index": 5,
+      "status": 200,
+      "bytes": 15260,
+      "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa",
+      "content_type": "text/plain; charset=utf-8",
+      "role": "evidence_current_script"
+    },
+    {
+      "file": "HTTP-file_GET-6.json",
+      "kind": "file_GET",
+      "index": 6,
+      "status": 200,
+      "bytes": 55770,
+      "sha256": "139b7bbeda700803f7a591023ac36df29aaca07aeea03a8860f03e85595111eb",
+      "content_type": "application/json",
+      "role": "evidence_current_frames_manifest"
+    },
+    {
+      "file": "HTTP-file_GET-7.json",
+      "kind": "file_GET",
+      "index": 7,
+      "status": 200,
+      "bytes": 2701,
+      "sha256": "e984d60b33bf64d3e8171c15635d2420d38b83020aff70bb5e61d4e87e036c03",
+      "content_type": "text/plain; charset=utf-8",
+      "role": "evidence_visual_revision_report"
+    },
+    {
+      "file": "HTTP-file_PUT-1.json",
+      "kind": "file_PUT",
+      "index": 1,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_human_footer_current"
+    },
+    {
+      "file": "HTTP-file_PUT-2.json",
+      "kind": "file_PUT",
+      "index": 2,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_agent_omitted_current"
+    },
+    {
+      "file": "HTTP-file_PUT-3.json",
+      "kind": "file_PUT",
+      "index": 3,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "contact_sheet_current"
+    },
+    {
+      "file": "HTTP-file_PUT-4.json",
+      "kind": "file_PUT",
+      "index": 4,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_current_video_source"
+    },
+    {
+      "file": "HTTP-file_PUT-5.json",
+      "kind": "file_PUT",
+      "index": 5,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_current_script"
+    },
+    {
+      "file": "HTTP-file_PUT-6.json",
+      "kind": "file_PUT",
+      "index": 6,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_current_frames_manifest"
+    },
+    {
+      "file": "HTTP-file_PUT-7.json",
+      "kind": "file_PUT",
+      "index": 7,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_visual_revision_report"
+    },
+    {
+      "file": "HTTP-project_GET-1.json",
+      "kind": "project_GET",
+      "index": 1,
+      "status": 200,
+      "bytes": 46360,
+      "sha256": "f8b61f2f4c1a0bd98600b8b191717dde8465445cc6eb9dabbedc3ccd223eca87",
+      "content_type": "application/json",
+      "role": null
+    },
+    {
+      "file": "HTTP-project_GET-2.json",
+      "kind": "project_GET",
+      "index": 2,
+      "status": 200,
+      "bytes": 46360,
+      "sha256": "f8b61f2f4c1a0bd98600b8b191717dde8465445cc6eb9dabbedc3ccd223eca87",
+      "content_type": "application/json",
+      "role": null
+    },
+    {
+      "file": "HTTP-project_GET-3.json",
+      "kind": "project_GET",
+      "index": 3,
+      "status": 200,
+      "bytes": 76270,
+      "sha256": "632a1b3f383a043047c8a9ad2b2bcd5531852751a613eac64ff4594e7d398621",
+      "content_type": "application/json",
+      "role": null
+    },
+    {
+      "file": "HTTP-project_GET-4.json",
+      "kind": "project_GET",
+      "index": 4,
+      "status": 200,
+      "bytes": 76270,
+      "sha256": "632a1b3f383a043047c8a9ad2b2bcd5531852751a613eac64ff4594e7d398621",
+      "content_type": "application/json",
+      "role": null
+    },
+    {
+      "file": "HTTP-review_POST-1.json",
+      "kind": "review_POST",
+      "index": 1,
+      "status": 201,
+      "bytes": 29906,
+      "sha256": "dde903d3d840397a2964075fb0200790c6de3ccfd3b20b5a243d143842ce2782",
+      "content_type": "application/json",
+      "role": null
+    }
+  ],
+  "outbound_compact_ReviewIn_sha256": "518caa257489026f109d0e583abfcd271dc2507a633dae8cf877d4ef676af789",
+  "exact_outbound_body_equals_prepared_profile_and_actual_POST_response": true,
+  "new_review": {
+    "id": "3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb",
+    "gate": "script",
+    "status": "pending",
+    "content_sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa",
+    "files": 32,
+    "hand_pushed": true,
+    "choice": null,
+    "note": null,
+    "decided_at": null
+  },
+  "old_review": {
+    "id": "dd47b9a0-6456-4651-9456-32b320909338",
+    "from_status": "pending",
+    "to_status": "superseded",
+    "old25_refs_allmetadata_order_hash_exact": true,
+    "oldpayload_summary_source_hash_choice_notes_timestamps_exact": true
+  },
+  "project_preservation": {
+    "before_equals_fresh_baseline": true,
+    "prePOST_equals_before": true,
+    "after_equals_only_new_review_plus_old_status_superseded_and_sync": true,
+    "post_binary_equals_after": true,
+    "allother_project_fields_reviews_choices_languages_qualities_exact": true,
+    "no_atomic_CAS_boundary": "Observed before/prePOST/after/postbinary snapshots exact; API has no atomicCAS guarantee between requests."
+  },
+  "seven_uploads_onepart_each_all_actualACK_complete_received0": true,
+  "seven_full_binary_readbacks": [
+    {
+      "role": "evidence_human_footer_current",
+      "content_type": "image/png",
+      "bytes": 200971,
+      "sha256": "3cffc9f9ab11d7f60bfc4f87bc8631926719711a7a8c1caa8d6ed90b5a213214",
+      "HTTP": 200,
+      "response_content_type": "image/png",
+      "full_raw_readback_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/run/readback/evidence_human_footer_current.png",
+        "bytes": 200971,
+        "sha256": "3cffc9f9ab11d7f60bfc4f87bc8631926719711a7a8c1caa8d6ed90b5a213214"
+      }
+    },
+    {
+      "role": "evidence_agent_omitted_current",
+      "content_type": "image/png",
+      "bytes": 209896,
+      "sha256": "d4b0a99399016f6c90a5f30c029ffc14fc4e40557f79a2ccf6e3355732cd21bb",
+      "HTTP": 200,
+      "response_content_type": "image/png",
+      "full_raw_readback_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/run/readback/evidence_agent_omitted_current.png",
+        "bytes": 209896,
+        "sha256": "d4b0a99399016f6c90a5f30c029ffc14fc4e40557f79a2ccf6e3355732cd21bb"
+      }
+    },
+    {
+      "role": "contact_sheet_current",
+      "content_type": "image/png",
+      "bytes": 1466564,
+      "sha256": "d566e6812cb1bd112c5a0337860005eaf3416f94eb929c3ce4a3445425e523f8",
+      "HTTP": 200,
+      "response_content_type": "image/png",
+      "full_raw_readback_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/run/readback/contact_sheet_current.png",
+        "bytes": 1466564,
+        "sha256": "d566e6812cb1bd112c5a0337860005eaf3416f94eb929c3ce4a3445425e523f8"
+      }
+    },
+    {
+      "role": "evidence_current_video_source",
+      "content_type": "application/json",
+      "bytes": 58952,
+      "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c",
+      "HTTP": 200,
+      "response_content_type": "application/json",
+      "full_raw_readback_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/run/readback/evidence_current_video_source.json",
+        "bytes": 58952,
+        "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c"
+      }
+    },
+    {
+      "role": "evidence_current_script",
+      "content_type": "text/plain",
+      "bytes": 15260,
+      "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa",
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "full_raw_readback_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/run/readback/evidence_current_script.txt",
+        "bytes": 15260,
+        "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+      }
+    },
+    {
+      "role": "evidence_current_frames_manifest",
+      "content_type": "application/json",
+      "bytes": 55770,
+      "sha256": "139b7bbeda700803f7a591023ac36df29aaca07aeea03a8860f03e85595111eb",
+      "HTTP": 200,
+      "response_content_type": "application/json",
+      "full_raw_readback_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/run/readback/evidence_current_frames_manifest.json",
+        "bytes": 55770,
+        "sha256": "139b7bbeda700803f7a591023ac36df29aaca07aeea03a8860f03e85595111eb"
+      }
+    },
+    {
+      "role": "evidence_visual_revision_report",
+      "content_type": "text/plain",
+      "bytes": 2701,
+      "sha256": "e984d60b33bf64d3e8171c15635d2420d38b83020aff70bb5e61d4e87e036c03",
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "full_raw_readback_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/delivery-prep/run/readback/evidence_visual_revision_report.txt",
+        "bytes": 2701,
+        "sha256": "e984d60b33bf64d3e8171c15635d2420d38b83020aff70bb5e61d4e87e036c03"
+      }
+    }
+  ],
+  "all7_actual_bytes_rawHTTP_savedbuffer_and_currentlocal_equal": true,
+  "whole_local_E875_W976_full_fileSet_and_SHA_preserved_during_delivery": true,
+  "source_and_script": {
+    "video": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+      "bytes": 58952,
+      "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c"
+    },
+    "script": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/script.md",
+      "bytes": 15260,
+      "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+    },
+    "speech_hash": "38cf9292f6945199",
+    "visual_hash": "7debdee5a1fd4f41",
+    "narrative_hash": "ffa6912398093790",
+    "current_native_scenes_payload_exact": true,
+    "source111_fullobjects_unchanged": true,
+    "old_script_approval_preserved_stale": true,
+    "native_newreview_check_status": "missing",
+    "old2x12of13false_QA_cache_attempt_history_preserved": true
+  },
+  "held4_exact": [
+    {
+      "file": "/workspace/work/ai-tech-next/forty-asr-coordination.json",
+      "bytes": 1104,
+      "sha256": "342d7b1aafbf751f0eddc60531a7fb4c42a2a4be74f8a03da777c179e1b74c9d"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/series-tts-service-hold.json",
+      "bytes": 5127,
+      "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/audio/speech-journal/dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7.json",
+      "bytes": 422,
+      "sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/.global-check-audio-slot/LEASE",
+      "bytes": 292,
+      "sha256": "18b629d2f1ab8243977bc0bb0ce5a0cfdaab6306c72e46fad75678e66dc85764"
+    }
+  ],
+  "native_lease_released_and_actualPID_gone": true,
+  "limits": {
+    "paid_TTS_ASR": 0,
+    "project_PUT": 0,
+    "server_approval": false,
+    "language_batch": false,
+    "foreign_checked_M4A": 0,
+    "fullfilm_audio_bookend_QA_complete": false
+  },
+  "visual_scope": "Previously independently viewed nativefullsize and480previews: contextualscreens/keybands only clear; tinyembeddedstdout NOT phone-readable. This readback provesexactbinarydelivery, not freshvisual/wholefilm/ASR/audio acceptance.",
+  "peer_checker_diagnostics": [
+    {
+      "attempt": 1,
+      "tool_chunk": "d16295",
+      "exit": 1,
+      "cause": "Wrong helperSHA expanded suffix in checker; actual/helperprofiledispatch exact, corrected literal only",
+      "archive": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/peer/check-actual-delivery.attempt01.mjs"
+    },
+    {
+      "attempt": 2,
+      "tool_chunk": "f06a76",
+      "exit": 1,
+      "cause": "Checker wrongly assumed nativeworker script-check exists; actualabsent implies missing/[] distinct from localapprovalstale and oldnarrativefalse. Corrected checker expectation only",
+      "archive": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/peer/check-actual-delivery.attempt02.mjs"
+    }
+  ],
+  "peer_API_auth_producer_TTS_ASR_git_task_calls": 0
+}

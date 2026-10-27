@@ -1,0 +1,105 @@
+{
+  "kind": "actual_DuckDB_two_original_screenshot_source_integration",
+  "pid": 9926,
+  "started_at": "2026-10-27T21:25:56.475Z",
+  "source_before": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+    "bytes": 58095,
+    "sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8"
+  },
+  "script_before": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/script.md",
+    "bytes": 15250,
+    "sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b"
+  },
+  "source_after_expected": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/prep-author/candidate-v2/after-video.json",
+    "bytes": 58952,
+    "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c"
+  },
+  "script_after_expected": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/prep-author/candidate-v2/after-script.md",
+    "bytes": 15260,
+    "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+  },
+  "baseline": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/baseline.json",
+    "sha256": "16297d3c2fd721bf027d8c32af8b23aa250cba028c3b18d208f4652ee280d94b"
+  },
+  "network_auth_TTS_ASR_paid_calls": 0,
+  "render_executed": false,
+  "approvals_changed": false,
+  "ok": true,
+  "native_script_exit": 0,
+  "source_after": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+    "bytes": 58952,
+    "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c"
+  },
+  "script_after": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/script.md",
+    "bytes": 15260,
+    "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+  },
+  "stock_files": [
+    {
+      "file": "/workspace/work/videos/duckdb-agent-full-export/stock/19fcc33c270f1a94c6190f1cbf63b71ce3a572905f9ca992324fc3f32ca2fb68.png",
+      "bytes": 191668,
+      "sha256": "19fcc33c270f1a94c6190f1cbf63b71ce3a572905f9ca992324fc3f32ca2fb68"
+    },
+    {
+      "file": "/workspace/work/videos/duckdb-agent-full-export/stock/2cbd2f34aae16862142f117f39012dbb1c95b894915b57e72418222292478d69.png",
+      "bytes": 197598,
+      "sha256": "2cbd2f34aae16862142f117f39012dbb1c95b894915b57e72418222292478d69"
+    }
+  ],
+  "native_lint": {
+    "errors": [],
+    "warnings": [
+      {
+        "path": "youtube/es",
+        "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/id",
+        "message": "id.title: 39 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "summary": {
+      "minutes": 10.47,
+      "lines": 111,
+      "spoken_units": 2282,
+      "billable_characters": 8062,
+      "chapters": [
+        "00:00 配送預覽中間少了一大段",
+        "00:31 原表還在，省略出現在回覆裡",
+        "02:44 三筆包裹，只有一筆入選",
+        "04:38 少一個字母，查詢先停了下來",
+        "07:17 檔案重開後，逐筆對回原表",
+        "08:54 準時包裹加入，清單換了需求"
+      ]
+    }
+  },
+  "native_render_problems": [],
+  "current_script_approval": {
+    "status": "stale",
+    "entry": {
+      "gate": "script",
+      "file": "script.md",
+      "sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+      "approved_at": "2026-10-26T01:48:28.930Z",
+      "note": "站主持續委派推薦決策；採當前ca1e與verify3 PASS；R2兩讀者各12/13 false與計算重述、版本脈絡教學取捨保留。這只是本機script採用，遠端仍pending，非使用者UI核准。未完成音訊、八語或官方品牌片頭尾。"
+    },
+    "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+  },
+  "current_visual_hash": "7debdee5a1fd4f41",
+  "speech_hash": "38cf9292f6945199",
+  "current_narrative_hash": "ffa6912398093790",
+  "protected_old_E_except_two_files_unchanged": true,
+  "protected_old_W_full948_unchanged": true,
+  "all8_source_targets_claims_voice_and_held4_preserved": true,
+  "old_reviews_QA_and_attempts_preserved": true,
+  "native_lease_released": true,
+  "network_attempts": 0,
+  "finished_at": "2026-10-27T21:25:58.049Z"
+}

@@ -1,0 +1,301 @@
+{
+  "kind": "independent_two_screenshot_PREP_source_semantics_review",
+  "at": "2026-10-27T21:24:11.517Z",
+  "verdict": "CLEAR_SOURCE_VISUAL_DELTA_ONLY_RENDER_AND_VISUAL_REVIEW_STILL_REQUIRED",
+  "source_before": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+    "bytes": 58095,
+    "sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8"
+  },
+  "source_after": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/prep-author/candidate-v2/after-video.json",
+    "bytes": 58952,
+    "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c"
+  },
+  "script_after": {
+    "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/prep-author/candidate-v2/after-script.md",
+    "bytes": 15260,
+    "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+  },
+  "exact_allowed_delta": [
+    {
+      "id": "human-footer",
+      "before": {
+        "id": "human-footer",
+        "template": "quote",
+        "data": {
+          "quote": "1200 rows (40 shown)                                 5 columns",
+          "source": "公開教材Linux2.0實跑｜runlogs/human-preview.stdout.txt",
+          "translation": "共1200列，顯示40列，5個欄位",
+          "key": "一般模式也標示顯示列數"
+        },
+        "claims": [
+          "c2"
+        ],
+        "lines": [
+          {
+            "id": "h4gg",
+            "text": "一般模式底下，已經列出總列數與顯示列數。",
+            "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+          },
+          {
+            "id": "4cr9",
+            "text": "這一行把查詢結果大小和畫面大小分開了。"
+          }
+        ]
+      },
+      "after": {
+        "id": "human-footer",
+        "template": "screenshot",
+        "data": {
+          "title": "一般模式的顯示範圍",
+          "image": "stock/19fcc33c270f1a94c6190f1cbf63b71ce3a572905f9ca992324fc3f32ca2fb68.png",
+          "caption": "2026-10-27重現｜原創視窗、虛構資料；原始fixture為2026-10-25",
+          "key": "總共1200列，畫面顯示40列"
+        },
+        "claims": [
+          "c2"
+        ],
+        "lines": [
+          {
+            "id": "h4gg",
+            "text": "一般模式底下，已經列出總列數與顯示列數。",
+            "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+          },
+          {
+            "id": "4cr9",
+            "text": "這一行把查詢結果大小和畫面大小分開了。"
+          }
+        ]
+      }
+    },
+    {
+      "id": "agent-omitted",
+      "before": {
+        "id": "agent-omitted",
+        "template": "quote",
+        "data": {
+          "quote": "| … 1160 rows omitted … |",
+          "source": "公開教材Linux2.0實跑｜runlogs/agent-preview.stdout.txt",
+          "translation": "中間1160列沒有顯示",
+          "key": "省略標記位在結果之中"
+        },
+        "claims": [
+          "c2"
+        ],
+        "lines": [
+          {
+            "id": "uj2p",
+            "text": "代理模式則在中間直接標出，一千一百六十列省略。",
+            "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+          },
+          {
+            "id": "u5mp",
+            "text": "那是沒有顯示的部分，不是查詢或儲存少掉資料。"
+          }
+        ]
+      },
+      "after": {
+        "id": "agent-omitted",
+        "template": "screenshot",
+        "data": {
+          "title": "代理模式直接標出省略",
+          "image": "stock/2cbd2f34aae16862142f117f39012dbb1c95b894915b57e72418222292478d69.png",
+          "caption": "2026-10-27重現｜原創視窗、虛構資料；原始fixture為2026-10-25",
+          "key": "1160列未顯示，資料沒有消失"
+        },
+        "claims": [
+          "c2"
+        ],
+        "lines": [
+          {
+            "id": "uj2p",
+            "text": "代理模式則在中間直接標出，一千一百六十列省略。",
+            "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+          },
+          {
+            "id": "u5mp",
+            "text": "那是沒有顯示的部分，不是查詢或儲存少掉資料。"
+          }
+        ]
+      }
+    }
+  ],
+  "assets_added": [
+    {
+      "path": "stock/19fcc33c270f1a94c6190f1cbf63b71ce3a572905f9ca992324fc3f32ca2fb68.png",
+      "source": "Author original DuckDB2.0 operation console, replayed2026-10-27 from original fictional fixture2026-10-25; current actual PNG 02-scrolled.png; not DuckDB officialUI.",
+      "license": "Original author UI and fictional fixture: CC0-1.0; DuckDB tool/output: MIT."
+    },
+    {
+      "path": "stock/2cbd2f34aae16862142f117f39012dbb1c95b894915b57e72418222292478d69.png",
+      "source": "Author original DuckDB2.0 operation console, replayed2026-10-27 from original fictional fixture2026-10-25; current actual PNG 03-scrolled.png; not DuckDB officialUI.",
+      "license": "Original author UI and fictional fixture: CC0-1.0; DuckDB tool/output: MIT."
+    }
+  ],
+  "line_objects_111_equal": true,
+  "all_other_source_fields_equal": true,
+  "claims_voice_lexicon_all8_files_preserved": true,
+  "all8": [
+    {
+      "locale": "en",
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/en.json",
+      "bytes": 21009,
+      "sha256": "faf5cb2f1c7fd536e012cd2a8191062ee4069d42ef46b8b8fbf8f10543f2cf4b"
+    },
+    {
+      "locale": "ja",
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/ja.json",
+      "bytes": 22540,
+      "sha256": "324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2"
+    },
+    {
+      "locale": "ko",
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/ko.json",
+      "bytes": 23479,
+      "sha256": "6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f"
+    },
+    {
+      "locale": "es",
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/es.json",
+      "bytes": 22077,
+      "sha256": "61cf0a0077d9cf9fd3b93d8117bf3975dc162a982acc981213af6789e1889b9c"
+    },
+    {
+      "locale": "pt",
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/pt.json",
+      "bytes": 21626,
+      "sha256": "43dc7e4434394fb72def2921db8a4201d32d0b66bac73a8deaab146407b5db6e"
+    },
+    {
+      "locale": "id",
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/id.json",
+      "bytes": 22091,
+      "sha256": "a71014a6452b76e081f276bd6cf628015c1d4a1cfbc9e04bda6ebc4975ce262a"
+    },
+    {
+      "locale": "vi",
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/vi.json",
+      "bytes": 23610,
+      "sha256": "198c81025f5164c9c8e2d2e9ff821743674342f14a90a0c10691485967b68623"
+    },
+    {
+      "locale": "th",
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/th.json",
+      "bytes": 33661,
+      "sha256": "0af06dff9045602f026526516e3d7d10c1c689effa9c06c1a5d57d8eb257d544"
+    }
+  ],
+  "protected_files": [
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/claims.md",
+      "bytes": 10294,
+      "sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/lexicon.json",
+      "bytes": 6316,
+      "sha256": "e91a7de47dfe80156ad3acb21b8a6ee02e6978d6bf085e42c926aa138f9c19d5"
+    },
+    {
+      "file": "/workspace/work/videos/duckdb-agent-full-export/approvals.json",
+      "bytes": 1241,
+      "sha256": "83ad538758736b8885c834e39a5762a7ed78cbbd7002cbf7b3634eff0e7e2977"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/th.json",
+      "bytes": 33661,
+      "sha256": "0af06dff9045602f026526516e3d7d10c1c689effa9c06c1a5d57d8eb257d544"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/ja.json",
+      "bytes": 22540,
+      "sha256": "324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/id.json",
+      "bytes": 22091,
+      "sha256": "a71014a6452b76e081f276bd6cf628015c1d4a1cfbc9e04bda6ebc4975ce262a"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/vi.json",
+      "bytes": 23610,
+      "sha256": "198c81025f5164c9c8e2d2e9ff821743674342f14a90a0c10691485967b68623"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/pt.json",
+      "bytes": 21626,
+      "sha256": "43dc7e4434394fb72def2921db8a4201d32d0b66bac73a8deaab146407b5db6e"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/ko.json",
+      "bytes": 23479,
+      "sha256": "6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/en.json",
+      "bytes": 21009,
+      "sha256": "faf5cb2f1c7fd536e012cd2a8191062ee4069d42ef46b8b8fbf8f10543f2cf4b"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/i18n/es.json",
+      "bytes": 22077,
+      "sha256": "61cf0a0077d9cf9fd3b93d8117bf3975dc162a982acc981213af6789e1889b9c"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/forty-asr-coordination.json",
+      "bytes": 1104,
+      "sha256": "342d7b1aafbf751f0eddc60531a7fb4c42a2a4be74f8a03da777c179e1b74c9d"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/series-tts-service-hold.json",
+      "bytes": 5127,
+      "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/audio/speech-journal/dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7.json",
+      "bytes": 422,
+      "sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/.global-check-audio-slot/LEASE",
+      "bytes": 292,
+      "sha256": "18b629d2f1ab8243977bc0bb0ce5a0cfdaab6306c72e46fad75678e66dc85764"
+    }
+  ],
+  "speech": "38cf9292f6945199",
+  "visual": "7debdee5a1fd4f41",
+  "narrative": "ffa6912398093790",
+  "script_actual_differences": [
+    {
+      "line": 80,
+      "before": "#### 17. human-footer（quote）",
+      "after": "#### 17. human-footer（screenshot）"
+    },
+    {
+      "line": 85,
+      "before": "#### 18. agent-omitted（quote）",
+      "after": "#### 18. agent-omitted（screenshot）"
+    },
+    {
+      "line": 320,
+      "before": "narrative 33aca1b29ba7817a",
+      "after": "narrative ffa6912398093790"
+    }
+  ],
+  "lint_errors": [],
+  "lint_warnings": [
+    {
+      "path": "youtube/es",
+      "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+    },
+    {
+      "path": "youtube/id",
+      "message": "id.title: 39 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+    }
+  ],
+  "source_pngs_physically_read": true,
+  "actual_render_mobile_wholefilm_audio_review": false,
+  "gates": "Normal regeneratedscript hash changes; keep oldapprovals and old2x12/13 false. Native newvisualHash/renderrequired. Any localadoption must be newnormal truthful delegateddecision, not transplanted/serverapproval.",
+  "no_producer_or_network_auth_ASR_TTS_actions": true
+}
