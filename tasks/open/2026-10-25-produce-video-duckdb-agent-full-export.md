@@ -167,3 +167,10 @@ Root已校正先前將單片未知計費限制擴張到所有新TTS的本地排�
 獨立實體驗核確認原W948／EP841／3held與5份前次收據完整，5份sent／5份response／4份waiting與native lineage均真實；native正常處理已知拒絕，無手動forget、清旗、降低門檻、未知請求重送或帳單／零扣款宣稱。詳receipts/master-audio-resume02-20261027/。後續須保留累計attempts、原cache/journal及上限，不能重播已消耗兩輪helper／marker，不開自動無限程序；ForTy與Kimi未知紀錄／globalASR reservation仍保留，獨立DuckDB初始恢復不被ForTy舊計費事實永久阻擋。
 
 本輪已正常release並設blocked，兩命令真exit0，owner／claimed_at空。責任仍同對話codex-duckdb-20261025及原branch／PR1861；未done／移交，無背景媒體或配音工人。
+
+
+## 正常初始恢復 attempt3 — 2026-10-27T16:29:20.998500+00:00
+
+Root session10397／PID1005於16:25:20.126Z真tool/native exit4。同一句dg2i依原生上限收到5次HTTP429 upstream_busy，正常等候4次後停止；raw0、無新增旁白／時間軸／CC／M4A／成片或後台媒體。累計initialprocess3／speechPOST11／retake0／rewrite0，沒有第四個程序或自動迴圈。
+
+[實際退出](../../docs/videos/duckdb-agent-full-export/receipts/master-audio-resume03-20261027/actual-native-exit.json)、[HTTP事件](../../docs/videos/duckdb-agent-full-export/receipts/master-audio-resume03-20261027/http-events.jsonl)與[獨立失敗保存查核](../../docs/videos/duckdb-agent-full-export/receipts/master-audio-resume03-20261027/independent-refusal-review.json)均綁實際bytes；查核確認原E844／W948、3held與10份前次收據完整。這是失敗證據保存，並非音訊／聽校／品質核准或帳單結果。原111句、八語文字、native品質false與歷史失敗不變。已正常release／blocked，責任同對話及PR1861；尚未done，無背景製作工人。

@@ -30,3 +30,10 @@
 原創1,200筆配送教材、480筆完整條件交付與720筆需求變式，見[可攜教材](public-run/README.md)；公開CSV／ZIP的既有200／SHA證據保持。
 
 五份原始摘要已[逐bytes封存](history/before-visual-components-docs/identity.json)，舊索引／freeze保持原位，未遞迴複製history。本次公開proof只含明確審查過的文字／JSON／真實log，不含媒體、私有project、credentials、profile或release。PR1861維持no-auto-merge；本票尚未done，責任與原branch／PR1861延續；未merge／deploy／上傳YouTube。
+
+
+## 正常初始恢復 attempt3 — 2026-10-27T16:29:20.998500+00:00
+
+Root session10397／PID1005於16:25:20.126Z真tool/native exit4。同一句dg2i依原生上限收到5次HTTP429 upstream_busy，正常等候4次後停止；raw0、無新增旁白／時間軸／CC／M4A／成片或後台媒體。累計initialprocess3／speechPOST11／retake0／rewrite0，沒有第四個程序或自動迴圈。
+
+[實際退出](receipts/master-audio-resume03-20261027/actual-native-exit.json)、[HTTP事件](receipts/master-audio-resume03-20261027/http-events.jsonl)與[獨立失敗保存查核](receipts/master-audio-resume03-20261027/independent-refusal-review.json)均綁實際bytes；查核確認原E844／W948、3held與10份前次收據完整。這是失敗證據保存，並非音訊／聽校／品質核准或帳單結果。原111句、八語文字、native品質false與歷史失敗不變。已正常release／blocked，責任同對話及PR1861；尚未done，無背景製作工人。
