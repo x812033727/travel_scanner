@@ -1,0 +1,415 @@
+{
+  "title": "ARTEX: AI 해커가 3시간도 안 돼 클라우드를 뚫은 방법, 비밀번호 추측이 아니라 놓아둔 열쇠였다",
+  "description": "2026년 10월 21일 Microsoft는 중국 정부 연계 해커 조직이 AI 자율 침투 테스트 도구 ARTEX로 수백 곳을 공격했고, 여러 번 3시간도 안 돼 클라우드 관리 권한을 장악했다고 평가했습니다. 이어 대만 91APP 조사 보고서에도 ARTEX 흔적이 나왔습니다. 공식 보고서 세 건으로 침입 경로를 봅니다. 비밀번호 추측 15만 번은 모두 실패했고, 뚫린 곳은 이미 승인된 앱과 GitLab 속 DB 키였습니다. git 명령 한 줄로 지운 비밀번호를 기록에서 되찾고, 열쇠를 회수할 세 곳을 정리합니다.\nGoogle 계정으로 여기저기 로그인하는 분, GitHub에 코드를 올리는 개발자와 입문자, Microsoft 365 관리자를 위한 영상입니다.\n\n녹화일 2026년 10월 27일. 추측 횟수, 승인된 앱, 3시간 미만, 2,250개 테넌트, 추가 자격 증명 백도어는 Microsoft Threat Intelligence 10월 21일 보고서, Appsmith와 GitLab 속 키는 91APP 10월 22일 18일간 조사 보고서, 비용 절감과 방어 권고는 대만 사이버보안서 10월 21일 보도자료, 서장 발언과 7월 유사 공격은 같은 날 iThome 보도 기준입니다. Zeabur 평문 자격 증명, 8월에 못 바꾼 키, 환경 변수 321만 건은 Zeabur 10월 19일 초기 보고서이며, 이 보고서는 ARTEX도 AI 도구 사용도 언급하지 않습니다. 비밀번호 변경 예외는 Google 계정 도움말, 취소·교체 우선은 GitHub Docs 기준입니다. 터미널은 2026-10-27 Ubuntu 24.04.5, git 2.43.0 데모 저장소 실제 결과이며 비밀번호는 가짜입니다. '제 생각엔', '못 찾은 것'은 운영자 의견입니다. 공격 시연·도구 링크는 없습니다.\n\n영상 속 명령:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nGoogle 승인 목록에 모르는 앱이 몇 개인가요? 댓글로 알려 주세요.",
+  "tags": [
+    "ARTEX",
+    "AI 해커",
+    "91APP 해킹",
+    "AI 사이버 공격",
+    "Microsoft Storm-0940",
+    "Zeabur 보안 사고",
+    "git 비밀번호 삭제",
+    "OAuth 앱 권한",
+    "대만 사이버보안서",
+    "AI 뉴스"
+  ],
+  "thumbnail": {
+    "tag": "AI 뉴스",
+    "headline": "**열쇠 줍기**\n문은 안 딴다",
+    "sub": "ARTEX: AI 해커의 침입 경로와 열쇠 회수법"
+  },
+  "chapters": {
+    "open": "ARTEX란 무엇인가?",
+    "acs": "대기업 아닌 나와도 상관있나?",
+    "ms-page": "AI는 어떻게 들어갔나?",
+    "route-91app": "대만 사례, 열쇠는 어디 있었나?",
+    "google": "비밀번호만 바꾸면 될까?",
+    "ls": "내 열쇠는 어떻게 찾나?",
+    "view": "제 생각: 지금 먼저 할 일"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "15121923ce90",
+      "acs": "b5051d10397a",
+      "ms-page": "81c7a6e6c3f5",
+      "route-91app": "5f0715490f6a",
+      "google": "a3f0c745a54b",
+      "ls": "2193a36be479",
+      "view": "f6511ebd3f37"
+    },
+    "title": "45311fe332ff",
+    "description": "f622f6a39e94",
+    "tags": "2ab87fe05065",
+    "thumbnail": "4992c00258f5"
+  },
+  "lines": {
+    "y9kb": {
+      "source_hash": "9ec5aec269f1",
+      "text": "10월 21일 Microsoft 평가로는 중국 정부 연계"
+    },
+    "7tzn": {
+      "source_hash": "16fdbe07f16d",
+      "text": "해커 조직이 AI 도구 ARTEX로 수백 곳 공격,"
+    },
+    "tiky": {
+      "source_hash": "b6dccdcd3daa",
+      "text": "여러 번 3시간 안에 클라우드 관리 권한을 장악했습니다."
+    },
+    "cjk6": {
+      "source_hash": "552f1cc343c0",
+      "text": "이어서 대만의 91APP도 조사 보고서에 ARTEX라는 이름을 적었습니다."
+    },
+    "3h5e": {
+      "source_hash": "5d339fd29ab2",
+      "text": "대기업도 아니고 비밀번호도 긴데 나와 무슨 상관이냐고요?"
+    },
+    "4irk": {
+      "source_hash": "531b4c28ce9b",
+      "text": "상관있습니다. Microsoft 기록:"
+    },
+    "6pn9": {
+      "source_hash": "a5648e941f38",
+      "text": "그중 15만 번 비밀번호 추측, 결과는 뜻밖입니다."
+    },
+    "yfkf": {
+      "source_hash": "7cc400f1c4a5",
+      "text": "대만의 그 이커머스 보고서엔 공격자가 주운 열쇠의 위치가 나옵니다."
+    },
+    "v5t8": {
+      "source_hash": "046f85a2f9f1",
+      "text": "비밀번호 변경 얘기도 Google 도움말에."
+    },
+    "vbbm": {
+      "source_hash": "ebab78f91bce",
+      "text": "하나만 기억하세요. 지운 비밀번호도 명령 한 줄이면 기록에서 돌아옵니다."
+    },
+    "kj3y": {
+      "source_hash": "86a1b1f0a491",
+      "text": "대기업이 아니라고요? 대만 사이버보안서는 AI가 공격 비용을 낮추고 속도를 높였답니다."
+    },
+    "na73": {
+      "source_hash": "048023ba9375",
+      "text": "서장 말로는 기본이 탄탄한 기업 일부는, AI 도구가 비용을 따져 보고 포기해 약한 곳으로 갔습니다."
+    },
+    "uny5": {
+      "source_hash": "715c336bbe03",
+      "text": "그래서 AI 해커는 자물쇠 대신 현관 매트를 뒤집니다."
+    },
+    "yfsm": {
+      "source_hash": "d41452698666",
+      "text": "자물쇠는 문 하나하나 따야 하고, 튼튼하면 못 엽니다."
+    },
+    "ugft": {
+      "source_hash": "08610ff7f028",
+      "text": "매트는 하룻밤에 수천 집, 예비 열쇠만 나오면 엽니다."
+    },
+    "52j9": {
+      "source_hash": "28407b4a699f",
+      "text": "그럼 AI는 어떤 매트를 뒤졌을까요?"
+    },
+    "wq9c": {
+      "source_hash": "81683cc5f544",
+      "text": "매트의 답은 Microsoft 보고서에, 링크는 설명란에."
+    },
+    "a6cm": {
+      "source_hash": "5d133bf72de9",
+      "text": "처음 말한 15만 번이 이것: 10월 10일부터 14일, 최고 분당 2,900번."
+    },
+    "5xut": {
+      "source_hash": "ae4049f81508",
+      "text": "응답의 약 98%는 계정 잠김이었고,"
+    },
+    "krad": {
+      "source_hash": "29bab557afd3",
+      "text": "로그인 성공은 0번입니다."
+    },
+    "yqhv": {
+      "source_hash": "e205e657949f",
+      "text": "비밀번호도 2단계 인증도 막았으니 괜찮지 않냐고요?"
+    },
+    "bqc5": {
+      "source_hash": "65483ad050c2",
+      "text": "그런데 애초에 그 문이 필요 없었습니다."
+    },
+    "wqed": {
+      "source_hash": "345448d2a316",
+      "text": "보고서상 ConnectWise의 앱 자격 증명을 얻어"
+    },
+    "j7dk": {
+      "source_hash": "d2d299aa8d95",
+      "text": "고객이 승인해 둔 앱으로 Microsoft 365에 직행했고,"
+    },
+    "anq3": {
+      "source_hash": "9dee78c7ecdc",
+      "text": "아무도 로그인하지 않으니 2단계 인증도 막을 수 없습니다."
+    },
+    "v7kk": {
+      "source_hash": "0a1c6139e235",
+      "text": "AI가 이를 기계 속도로 바꿔, 기업 클라우드 2,250여 곳에 로그인을 시도했습니다."
+    },
+    "zz9s": {
+      "source_hash": "2a56cc7c5822",
+      "text": "처음의 3시간 미만은 이렇게 나왔습니다. 이미 열린 문을 AI가 빨리 지나갔을 뿐."
+    },
+    "ubmv": {
+      "source_hash": "6d6afad3c162",
+      "text": "그럼 대만의 이번 열쇠는 어디 있었을까요?"
+    },
+    "kwit": {
+      "source_hash": "60a04b2cf132",
+      "text": "답은 그 이커머스 조사 보고서에."
+    },
+    "d7ke": {
+      "source_hash": "a578aae063e7",
+      "text": "내부 도구 Appsmith가 업데이트 안 돼, 공격자가 여기로 내부망에 들어갔고,"
+    },
+    "wzkp": {
+      "source_hash": "c6e6e3406c6e",
+      "text": "이어 GitLab에서 DB 키를 얻고,"
+    },
+    "kfdv": {
+      "source_hash": "f5beec9fa00d",
+      "text": "결국 이 키로 주문 DB에 들어갔습니다. 카드 등 결제 정보는 제외."
+    },
+    "qb46": {
+      "source_hash": "b08630ba2e23",
+      "text": "새 취약점은 없었습니다. 덜 닫힌 문, 저장소에 둔 열쇠뿐입니다."
+    },
+    "g47a": {
+      "source_hash": "85be112cd5ac",
+      "text": "이 열쇠도 가장 허술한 예는 아닙니다."
+    },
+    "3j5c": {
+      "source_hash": "4a678bfc51da",
+      "text": "같은 주 대만 Zeabur도 유출;"
+    },
+    "gpaj": {
+      "source_hash": "055027054734",
+      "text": "보고서엔 ARTEX 언급 없이 열쇠가 놓인 방식이 적혔습니다:"
+    },
+    "nwji": {
+      "source_hash": "f9782dc30d3b",
+      "text": "공격자는 오래 유효한 평문 관리 자격 증명을 썼고,"
+    },
+    "siri": {
+      "source_hash": "3e3e735bb015",
+      "text": "8월 사고 뒤 키를 바꿨는데 하필 이것들이 빠졌습니다."
+    },
+    "29n6": {
+      "source_hash": "092655035988",
+      "text": "37분 동안 플랫폼 DB에서 환경 변수 320만여 건이 읽혔습니다."
+    },
+    "fvak": {
+      "source_hash": "d184f18968e7",
+      "text": "그래서 사용자에게 한 첫 당부: 모든 비밀번호와 키를 바꿀 것, 8월에 바꿨어도."
+    },
+    "kemy": {
+      "source_hash": "8940de443fb0",
+      "text": "그럼 내 비밀번호만 바꾸면 되겠죠?"
+    },
+    "bc63": {
+      "source_hash": "cb0ef5fd77ec",
+      "text": "Google 도움말: 비밀번호를 바꾸면 모든 기기 로그아웃."
+    },
+    "ei35": {
+      "source_hash": "8cf674c9e1d2",
+      "text": "하지만 예외 하나가, 계정 액세스를 허용한 서드 파티 앱입니다."
+    },
+    "qyat": {
+      "source_hash": "026d37580698",
+      "text": "자물쇠를 바꿔도, 매트 밑 열쇠는 다른 문을 엽니다."
+    },
+    "dqii": {
+      "source_hash": "463b8b5b6001",
+      "text": "기업도 같습니다. 침입 후 앱에 자기 자격 증명을 추가합니다."
+    },
+    "f3e5": {
+      "source_hash": "f3cd35bd961c",
+      "text": "원래 앱을 고쳐도, 새로 추가된 열쇠는 백도어로 남을 수 있습니다."
+    },
+    "urua": {
+      "source_hash": "56b6b614ff09",
+      "text": "그러니 자물쇠만 바꿀 게 아니라 내준 열쇠를 찾아 회수해야 합니다."
+    },
+    "8csm": {
+      "source_hash": "1a6f5696f578",
+      "text": "그럼 내 매트 밑엔 뭐가 있을까요?"
+    },
+    "9c5b": {
+      "source_hash": "64fd153f9d69",
+      "text": "데모 저장소를 만들어, 가짜 DB 비밀번호가 든 설정 파일부터 커밋했고,"
+    },
+    "7iw4": {
+      "source_hash": "c7044b38646a",
+      "text": "다음 커밋에 지우고 무시 목록에 추가."
+    },
+    "yzmt": {
+      "source_hash": "85b48813db60",
+      "text": "폴더를 보면 설정 파일이 사라졌습니다."
+    },
+    "tpcz": {
+      "source_hash": "9c70c5942b84",
+      "text": "가장 흔한 방법으로 폴더 전체에서 PASSWORD 검색:"
+    },
+    "hvxy": {
+      "source_hash": "ba1686108eb0",
+      "text": "없습니다. 여기서 대부분은 비밀번호가 사라졌다고 생각합니다."
+    },
+    "bk5g": {
+      "source_hash": "d14982d9536d",
+      "text": "문제는 이겁니다. 정말 지워졌을까요?"
+    },
+    "qyg2": {
+      "source_hash": "9691cf6c1b50",
+      "text": "다른 명령으로 git 기록에 물어봅니다. PASSWORD 줄을 건드린 커밋은?"
+    },
+    "tzyy": {
+      "source_hash": "196ff7c71926",
+      "text": "두 건 나옵니다. 지운 커밋과 넣은 커밋."
+    },
+    "a497": {
+      "source_hash": "a5f16b99e9d8",
+      "text": "git show로 넣은 커밋과 파일명을 지정하면"
+    },
+    "5uez": {
+      "source_hash": "387de5574b46",
+      "text": "설정 파일이 통째로 돌아오고, 비밀번호는 둘째 줄에 있습니다."
+    },
+    "qt6f": {
+      "source_hash": "fe048fb60020",
+      "text": "지우고 무시 목록에 넣어도, 명령 한 줄로 되찾습니다."
+    },
+    "urui": {
+      "source_hash": "126b2bf40b0a",
+      "text": "아까 DB 키도 GitLab에 있었지만, 어떻게 뒀는지는 보고서에 없습니다."
+    },
+    "ishi": {
+      "source_hash": "4644d0db2922",
+      "text": "내 저장소면 PASSWORD 대신 키 이름,"
+    },
+    "asmx": {
+      "source_hash": "582e7addb5b1",
+      "text": "API KEY나 SECRET."
+    },
+    "gzty": {
+      "source_hash": "da83b4f39297",
+      "text": "찾으면 git show로 그때 파일 확인,"
+    },
+    "nq6x": {
+      "source_hash": "8f46aacdd4d3",
+      "text": "출력이 없으면 현재 브랜치 기록에 그 단어가 없다는 뜻입니다."
+    },
+    "rgnn": {
+      "source_hash": "99f883f30c63",
+      "text": "찾았으면 기록을 깨끗이 지우면 될까요?"
+    },
+    "4qg5": {
+      "source_hash": "a22278c919f1",
+      "text": "GitHub 문서는 순서를 맨 앞에 적었습니다. 첫 단계는 그 키를 취소하거나 교체하는 것."
+    },
+    "epn2": {
+      "source_hash": "45b154967e8b",
+      "text": "먼저 찾은 키를 폐기하고 새로 발급."
+    },
+    "wmyv": {
+      "source_hash": "382ecd2b0feb",
+      "text": "기록 수정은 나중에 정하세요. 내 사본만 바뀌니까요."
+    },
+    "qb97": {
+      "source_hash": "a8ada1663602",
+      "text": "다른 PC나 fork엔 기록이 남으니 사본 가진 이에게 알리세요."
+    },
+    "uwmf": {
+      "source_hash": "05c7f0129b7a",
+      "text": "하지만 저장소는 개발자의 매트일 뿐. 코딩 안 하는 사람의 매트는?"
+    },
+    "3t35": {
+      "source_hash": "7195d4e40be5",
+      "text": "계정의 앱 승인 목록입니다."
+    },
+    "vtxp": {
+      "source_hash": "30bcd9820c12",
+      "text": "Google 계정의 연결된 앱, 세부정보에서 액세스를 삭제할 수 있고,"
+    },
+    "2wc7": {
+      "source_hash": "899d44c9ed09",
+      "text": "GitHub 설정의 승인된 OAuth 앱 페이지에서, 모르는 건 취소."
+    },
+    "yt6t": {
+      "source_hash": "886ae4112912",
+      "text": "원칙은 간단합니다. 모르거나 안 쓰는 건 먼저 지우고, 필요하면 다시 승인."
+    },
+    "78d5": {
+      "source_hash": "82462964a42a",
+      "text": "회사는 더 골치. 전원 비밀번호를 바꿔도 못 막을 수도."
+    },
+    "masb": {
+      "source_hash": "3a87c85c9d55",
+      "text": "그래서 Microsoft 365 관리자는 앱 자체 로그인 기록도 봐야 하고,"
+    },
+    "ji9j": {
+      "source_hash": "82b020f03357",
+      "text": "앱 자격 증명이 추가됐는지,"
+    },
+    "pw7e": {
+      "source_hash": "10b73fddfc13",
+      "text": "권한과 관리 역할이 바뀌었는지."
+    },
+    "jfjh": {
+      "source_hash": "7015f50fac24",
+      "text": "처음에 비밀번호 변경으론 못 거둔다던 열쇠, 이 세 곳에서 거둡니다."
+    },
+    "txje": {
+      "source_hash": "06f674cbbc46",
+      "text": "세 곳 열쇠를 거두면 AI 해커가 날 찾을까요?"
+    },
+    "v4ev": {
+      "source_hash": "001815edc0f4",
+      "text": "제 생각엔 AI 해커는 새 입구를 안 만들었고,"
+    },
+    "uesa": {
+      "source_hash": "c9e10a6439c3",
+      "text": "놓아둔 열쇠를 더 빨리 찾게 했을 뿐입니다."
+    },
+    "2yvb": {
+      "source_hash": "d6b5b97bc3dc",
+      "text": "대기업 아닌 당신도 해당됩니다. 싼 문부터 고르니까요."
+    },
+    "vkgi": {
+      "source_hash": "1d5df21d8007",
+      "text": "할 수 있는 건 그 문이 되지 않는 것입니다."
+    },
+    "8e9n": {
+      "source_hash": "7e4aaa5033ca",
+      "text": "제가 못 찾은 것도 있습니다. 그 업체의 피해 회원 수는 추후 공개랍니다."
+    },
+    "i653": {
+      "source_hash": "d862861d6923",
+      "text": "사이버보안서는 7월 대만서도 비슷한 AI 공격을 봤지만 도구는 미공개."
+    },
+    "hfq9": {
+      "source_hash": "748f2472617e",
+      "text": "오늘 Google·GitHub 목록 확인"
+    },
+    "qgux": {
+      "source_hash": "d9b49162edcb",
+      "text": "이번 주, 내 저장소에서 아까 그 명령 실행."
+    },
+    "ijkr": {
+      "source_hash": "8778aa3dbf7b",
+      "text": "앞으로 키엔 기한을. 사이버보안서도 퇴사 당일 계정 정지, 분기마다 권한 점검을 권합니다."
+    },
+    "wkg5": {
+      "source_hash": "413505d64090",
+      "text": "자물쇠만 말고 열쇠 회수."
+    },
+    "zha9": {
+      "source_hash": "e660e332c916",
+      "text": "몇 개 지웠나요? 댓글로!"
+    },
+    "8y54": {
+      "source_hash": "3bfeebb0032d",
+      "text": "구독하면 매 영상 실천할 판단 하나를 드립니다."
+    }
+  }
+}
