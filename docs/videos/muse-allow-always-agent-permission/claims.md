@@ -29,6 +29,7 @@ c17｜bypassPermissions 模式略過權限提示（表格原文 "except for the 
 c18｜拒絕規則優先：允許規則不能在拒絕規則裡開例外｜CC〈Manage permissions〉第 73 段｜2026-10-27｜deny-file、text-not-meaning
 
 c19｜Meta 的 Muse 安全說明：授權「bound to the particular connector/destination and use case」；支援 one-time、session-scoped、task-scoped、time-bounded、perpetual 五種｜https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse（security.muse.ai 轉址）｜2026-10-27｜meta-grants、unknown
+c20｜Google 的例子：允許 Gemini 透過「使用 Google 帳戶登入」登入旅遊應用程式，協助搜尋及預訂度假民宿｜https://support.google.com/accounts/answer/13533235?hl=zh-Hant｜2026-10-27｜google-agent
 ## 本片自己跑的紀錄
 
 機器：雲端容器（站主 2026-10-27 請撰稿者自己跑），Claude Code 2.1.311，manual mode，模型 Sonnet 5.5；git 2.43.0。示範倉庫 perm-demo，遠端是同一台機器上的 bare repo，不碰任何真實專案或帳號。
@@ -58,6 +59,10 @@ r9｜新 session 請它 `git push -f origin main` → 沒有詢問，遠端 b2a3
 - Muse、ARTEX 之外，`settings.local.json` 的路徑在 Windows 或非 git 目錄會不同（CC 有寫），片中沒講。
 
 ## 進度
+
+- 2026-10-27 盲讀三次（7→8→7 題沒過，每次沒過的題目不同）：第二輪改寫後開場不再說「答案在按鈕」、Claude Code 的表改兩列、補上「這種按鈕本來就這樣，不只 Meta」、最後一章第一句接上一章、五種授權不逐一念。第三讀仍沒過：no_spoiler、no_toc、payoffs、no_recap、opening_hooks、no_detour（必答）。照 SKILL.md 主幹 4.5 交站主決定。估 8.1 分鐘、87 句，lint 0 錯誤 0 警告。
+
+- 2026-10-27 盲讀第一輪（7 題沒過）後：第 4 章先用 Google 自己的例子回答「准一次准到哪裡」，再接 Claude Code 的表；刪掉串接指令的岔題（c11 不再出現）；片尾與看法章的重述改成回呼。
 
 - 2026-10-27 verify-2 之後（撰稿者）：verify-2 找到 Meta 自己的 Muse 安全說明（security.muse.ai → research.meta.ai），加一張官方引文卡（授權綁定連接器與用途、五種授權）；「我查不到的」改成「Meta 列了五種授權，卻沒說 Allow Always 對應哪一種」；字幕的減號 f 改小寫。
 
