@@ -1,0 +1,95 @@
+{
+  "reviewed_at_utc": "2026-10-26T07:10:23.012324+00:00",
+  "reviewer": "OpenAI Codex agent /root/pdf_lab",
+  "method": "Actual view_image inspection of all 8 regenerated PDF pages and all 5 current result preview PNGs. No human or other-provider review is claimed.",
+  "all_eight_pdf_pages_readable_without_clipping": true,
+  "actual_final_result_previews_readable_without_clipping": true,
+  "arithmetic_and_labels_match_independently_verified_data": true,
+  "result_preview_not_a_spreadsheet_or_AI_app_screenshot": true,
+  "font_issue_history": "Initial unembedded Helvetica output displayed irregular spacing; original files and AI execution were archived before installing no new software and switching visible PDF text to existing embedded DejaVuSans/DejaVuSans-Bold. Current previews were rendered and re-read; separate actual AI agent reread the new eight-page extraction before final calculations.",
+  "old_actual_snapshot": "/workspace/work/ai-pdf-01/lab/versions/before-embedded-fonts",
+  "current_extracted_pages_sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+  "current_normalized_sha256": "f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8",
+  "pdf_font_inspection": "name                                 type              encoding         emb sub uni object ID\n------------------------------------ ----------------- ---------------- --- --- --- ---------\nHelvetica                            Type 1            WinAnsi          no  no  no       2  0\nAAAAAA+DejaVuSans                    TrueType          WinAnsi          yes yes yes      8  0\nAAAAAA+DejaVuSans-Bold               TrueType          WinAnsi          yes yes yes     12  0\n",
+  "summary_render": {
+    "command": [
+      "pdftoppm",
+      "-png",
+      "-scale-to",
+      "1800",
+      "-singlefile",
+      "/workspace/work/ai-pdf-01/lab/result-previews/comparison-one-page.pdf",
+      "/workspace/work/ai-pdf-01/lab/result-previews/comparison-one-page"
+    ],
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "viewed_images": [
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/previews/aster-1.png",
+      "sha256": "f6c3fde01e6fb15a3cbb485fc5f75dfa6f38957e47659bffd7fcc6034ce8cea1",
+      "bytes": 96217
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/previews/aster-2.png",
+      "sha256": "9809acc502c8db206ed56973ae3a368c83781f74ece75686883cbd8322f6a781",
+      "bytes": 105806
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/previews/birch-1.png",
+      "sha256": "6b408f2bd2b7fd173a667d281a4e6224aec492c5ecac18ce817d9f606d815cd9",
+      "bytes": 102539
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/previews/birch-2.png",
+      "sha256": "383727502a89a059422c9124c87c843dd84986fb4aeb3b15f3197deac0d9b201",
+      "bytes": 105785
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/previews/cedar-1.png",
+      "sha256": "bc8dedddfe195ff1c57599a53f38c3a381de047b97046a1082d01a3cddff1236",
+      "bytes": 104921
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/previews/cedar-2.png",
+      "sha256": "4a48ccbdb002210dc7a0513a5abaaf2223729070743c5e02cf38eae523ed00ef",
+      "bytes": 99937
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/previews/cedar-revised-1.png",
+      "sha256": "6d6aab49751415398cbb7ae235c503ba3e9164d39b60596db3f374ca576d744a",
+      "bytes": 104801
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/previews/cedar-revised-2.png",
+      "sha256": "df45672e8896f83a094c961912c5ff5ff2e30afbdac0dd2c736b8def9f8268f0",
+      "bytes": 117861
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/result-previews/comparison-one-page.png",
+      "sha256": "d5374ce1a734ac7960162be773fcd329d9dd89970f8f7fa146361782e94d39c1",
+      "bytes": 184377
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/result-previews/headline-baseline.png",
+      "sha256": "99c4e9fa8b9f138e8f345a38be0ea408ec901b90f9a474d2f3c8149be42412f2",
+      "bytes": 111895
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/result-previews/original-10.png",
+      "sha256": "13e7f17e7c8759afcf37b15d73dee5702ab356ecea66c445a29de2d8a556cd7a",
+      "bytes": 160057
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/result-previews/revised-10.png",
+      "sha256": "16386b7268b1d76ce8112e53ed1ff58665b02708835d4a15ca52aeefd32b2f33",
+      "bytes": 160172
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/result-previews/revised-20.png",
+      "sha256": "7b0fb6106e50b3c886c0929f8984ce21c693ef2f24c798ea7cfb6a0f1cedb47c",
+      "bytes": 167579
+    }
+  ]
+}

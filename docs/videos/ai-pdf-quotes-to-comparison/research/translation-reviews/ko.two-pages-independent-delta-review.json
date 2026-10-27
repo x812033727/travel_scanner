@@ -1,0 +1,114 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "ko",
+  "kind": "independent-review-of-unapplied-author-clarification-before-first-audio",
+  "scope": "source-meaning-and-naturalness; one proposed author correction only",
+  "recorded_at_utc": "2026-10-26T17:20:49.255553+00:00",
+  "reviewer": "OpenAI Codex /root/review_pdf_ko_boundary",
+  "proposal_author": "/root",
+  "independence": {
+    "reviewer_is_proposal_author": false,
+    "reviewer_is_original_translation_author": false,
+    "reviewer_is_producer": false,
+    "disclosure": "This reviewer independently found the baseline 2쪽/page-2 ambiguity and previously suggested the cardinal 두 쪽 or 두 페이지 전체 direction. The complete sentence reviewed here, 견적마다 두 쪽 원문 전체와 요구사항을 AI에 줍니다., was authored by /root; this reviewer did not write or apply that complete proposal."
+  },
+  "proposal_file": "/workspace/work/ai-pdf-01/ko-independent-boundary-review/nxct-before-first-audio-author-proposal.json",
+  "proposal_sha256": "305022040c46e6db9d0337619456245fe00ac32e81b68bd74f66722aeb4acb7e",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "base_translation_sha256": "aca0ed7af78ecc433accda5eb8994f157faa6dc833b65e3c04c0b0b4d743541e",
+  "line_id": "nxct",
+  "source_chinese": "所以我們把每份報價的兩頁文字，都連同需求交給 AI。",
+  "before_korean": "각 견적 2쪽의 원문과 요구를 AI에 줍니다.",
+  "proposed_korean": "견적마다 두 쪽 원문 전체와 요구사항을 AI에 줍니다.",
+  "author_proposal_read": true,
+  "native_model_boundary_read": false,
+  "reviewed_native_model_boundaries": [],
+  "native_answer_acceptance_claimed": false,
+  "applied_by_reviewer": false,
+  "passed": true,
+  "review_result": "passed-for-this-exact-unapplied-author-proposal-source-meaning-and-naturalness-only",
+  "issues": [],
+  "actual_context_read": {
+    "baseline_preparation": {
+      "file": "/workspace/work/ai-pdf-01/ko-independent-boundary-review/preparation.json",
+      "sha256": "35e7d5100f2234f5eb019802f76dc13c767532e69b204fe94ec52d9031eace0d",
+      "preserved_unchanged": true,
+      "prior_actual_read": "All 101 source/Korean pairs, all 62 source cards, metadata, saved eight-page PDF text and the complete initial failed/failed/passed/current-delta chain were read in preparation."
+    },
+    "this_followup_reread": [
+      "exact full author proposal",
+      "current source nxct line",
+      "current Korean nxct line",
+      "need-proof card with m57n/scia",
+      "extract-start card and adjacent 7k9u",
+      "extract-core full seven-line prompt and ea2e",
+      "extract-fields card and ke2c/rgfp",
+      "current meaning-review index and current-source report",
+      "initial independent final report and both failed-review findings and resolution chain",
+      "live native ko.todo nxct record and max_chars"
+    ]
+  },
+  "assessment": {
+    "every_quote": "견적마다 explicitly preserves 每份報價, with no supplier dropped or added.",
+    "both_complete_pages": "두 쪽 uses the Korean cardinal for two pages, and 원문 전체 explicitly states their complete original text. It does not mean only page 2. This matches the card 兩頁都交給它 and the preceding warning that page 1 alone misses delivery cost.",
+    "requirements_together": "원문 전체와 요구사항을 AI에 줍니다 preserves giving AI the complete source text together with the requirements; 요구사항 makes the purchasing requirements clearer than the older bare 요구.",
+    "meaning_and_sequence": "The instructional action remains source text plus requirements supplied to AI before field-by-field evidence extraction. The next line still requests original wording for each field. No arithmetic, extraction, UI, OCR, supplier, tax, revision or audio claim is added.",
+    "naturalness": "The sentence is clear and natural instructional Korean in the surrounding 합니다 register. The compact noun phrase 두 쪽 원문 전체 is readily understood in this document-reading context; no awkward coined term or misleading numeral remains.",
+    "baseline_finding": "The exact proposal resolves BKO-PREP-1 from preparation.json. That original finding record remains unchanged."
+  },
+  "estimated_character_budget": {
+    "live_worksheet_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/i18n/ko.todo.json",
+    "live_worksheet_sha256": "30f5ce6aa5d0a8c802389718d5c20a13f376eb6562ee223458f1fb8e79130740",
+    "counting_method": "Unicode code points, including spaces and punctuation; Python len on the exact strings",
+    "before_codepoints": 25,
+    "proposed_codepoints": 30,
+    "max_chars": 30,
+    "over_by": 0,
+    "within_estimated_budget": true,
+    "measured_audio_fit": null,
+    "limitation": "Exactly reaches the estimated30-codepoint budget. This is not synthesized duration, ASR, listening, pronunciation, native voice or dub-fit approval."
+  },
+  "base_review_chain": [
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.meaning-review.json",
+      "sha256": "0b46448b208056c917e1261c6059cb29b3715b8f0a9a8e33f698eeb851e36e7b"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.initial-current-source-review.json",
+      "sha256": "be3c026293207499cbcb86af48904765922b29c2890544e1431d08dd3d4e6feb"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.initial-independent-review.json",
+      "sha256": "651ba0f05a24dd9eb1ed50a594d54bf143d80bd95eaab4b8ac948cd0550dd9f8"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/ko.b81d5cb99095e0bf5264c8c8ad0a7803dfa7bc24a66b4a1aece9bc611498cf92.json",
+      "sha256": "3f03dd0e72a3d7e5d1a234b387a3785e43ef7d497073cf084268e006643b61a9"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/ko.c7e1a50b79f215f65d3d43626207966cc329f32b2af6deccd12ebb1f67e35213.json",
+      "sha256": "9c6c202eb0a7e7e02c16258bdf76a158cf389789ea5b1b99f3fb8834f461afd6"
+    }
+  ],
+  "composite_binding_limit": "This report binds to the exact proposal plus the unchanged aca0ed base and eac889 source. No merged canonical Korean file or new composite meaning-review index is created or approved by this reviewer. After the normal one-line native merge, the coordinator must bind its composite report/index to the actual resulting canonical hash, retaining the full base chain and this exact delta review.",
+  "actions": {
+    "only_file_written": "/workspace/work/ai-pdf-01/ko-independent-boundary-review/nxct-author-correction-independent-review.json",
+    "repository_changed": false,
+    "source_or_index_changed": false,
+    "task_or_lease_claimed": false,
+    "native_producer_command_run": false,
+    "paid_TTS_or_ASR_run": false,
+    "audio_or_captions_changed": false,
+    "auto_or_approvals_changed": false,
+    "native_counter_reset_or_limit_expanded": false
+  },
+  "approval_limits": {
+    "native_model_answer_accepted": false,
+    "audio_fit": false,
+    "voice": false,
+    "final_QA": false,
+    "publish": false
+  },
+  "next": "Coordinator may adopt only this exact independently reviewed sentence via the normal native one-line i18n merge at a safe lease-free boundary, then record the actual resulting canonical/composite hashes. No first-audio or later native-boundary success is implied."
+}

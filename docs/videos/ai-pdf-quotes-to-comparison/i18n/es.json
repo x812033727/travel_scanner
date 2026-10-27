@@ -1,0 +1,451 @@
+{
+  "title": "3 cotizaciones PDF con AI: ¿el menor precio unitario es el más barato?",
+  "description": "No puedes ordenar directamente los precios unitarios de 3 cotizaciones PDF. Con este mismo ejercicio original de cotizaciones de postales, usa AI para organizar especificaciones, cantidad, impuestos incluidos o excluidos, envío y páginas de origen. Después calcula totales con entrega comparables según las condiciones expresas. Verifica otra vez el resultado al recibir una revisión y cambiar la cantidad de 10 a 20 postales.\n\nLa demostración usa el análisis de documentos de Codex AI realizado para este ejercicio, extracción de texto con pypdf y cálculo decimal exacto para generar una hoja de cálculo editable. No afirma haber probado la interfaz de carga de ningún producto comercial de AI. Los proveedores, precios y la tasa del 5% son datos originales de práctica, no una evaluación fiscal de una transacción real.\n\nFecha de los datos y de la práctica: 2026-10-26. Estos PDF tienen texto seleccionable; este flujo de extracción no hace OCR de imágenes escaneadas. Los valores de la hoja se calcularon con una herramienta de cálculo. openpyxl solo escribe el archivo; no se afirma que calcule fórmulas.\n\nEl material incluye requisitos, prompts, el generador de los PDF de origen, texto extraído por página, una tabla comparativa editable y el historial de versiones.\n\nEl prompt de 7 líneas en pantalla contiene la tarea para el espectador. El formato de campos legible por máquina está en el contrato JSON de analysis-prompt.txt, que también se leyó durante este análisis con AI.\n\nMaterial original, requisitos y prompts completos:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+  "tags": [
+    "tutorial AI",
+    "comparar cotizaciones PDF",
+    "comparación de precios",
+    "AI para oficina",
+    "Codex",
+    "pypdf"
+  ],
+  "thumbnail": {
+    "tag": "Cotizaciones PDF con AI",
+    "headline": "**Total**\n**primero**",
+    "sub": "Incluye impuesto y envío"
+  },
+  "chapters": {
+    "opening": "¿Basta el menor precio?",
+    "need-start": "Define qué vas a comparar",
+    "extract-start": "Cada campo con su fuente",
+    "cost-start": "Total con impuesto y envío",
+    "missing-start": "Pregunta por lo que falta",
+    "revision-start": "Actualiza con la revisión",
+    "quantity-start": "Duplica y revisa condiciones",
+    "threshold-start": "¿Cuándo cambia el más barato?",
+    "range21-request": "Fuera del rango cotizado"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "6198bec8fea6",
+      "need-start": "13b3f8bc78bf",
+      "extract-start": "1e08abc4dd35",
+      "cost-start": "03cd0948a886",
+      "missing-start": "2fc8ed124d22",
+      "revision-start": "014694bfda51",
+      "quantity-start": "7b025430bfe0",
+      "threshold-start": "db18134baff1",
+      "range21-request": "2678d2a246fd"
+    },
+    "title": "ea54635dadc1",
+    "description": "82023a597713",
+    "tags": "b04ad22c133c",
+    "thumbnail": "12bdfb50a92a"
+  },
+  "lines": {
+    "3639": {
+      "source_hash": "1d15b826da4e",
+      "text": "AI ordena campos; una herramienta hace cuentas."
+    },
+    "3742": {
+      "source_hash": "3147dae75bbd",
+      "text": "La tasa es un supuesto; usa tus condiciones en compras reales."
+    },
+    "6vwc": {
+      "source_hash": "bb864b04f219",
+      "text": "El menor precio unitario aún no puede ir primero."
+    },
+    "xnrg": {
+      "source_hash": "87b4ff93c8d1",
+      "text": "Las 3 cotizaciones usan distintas bases de precio."
+    },
+    "edfn": {
+      "source_hash": "89bd8ea525c4",
+      "text": "AI hará una tabla editable que conserve las páginas de origen."
+    },
+    "hg9m": {
+      "source_hash": "7fd501513981",
+      "text": "¿Envío en blanco significa envío gratis?"
+    },
+    "ajsk": {
+      "source_hash": "6a14b7251701",
+      "text": "¿Una revisión cambia quién cobra menos?"
+    },
+    "kv5r": {
+      "source_hash": "79ba69d02368",
+      "text": "¿Al duplicar la cantidad, sigue valiendo la respuesta?"
+    },
+    "ddpd": {
+      "source_hash": "7082f51acc01",
+      "text": "Imprimirás 10 postales; ya cotizaron los 3"
+    },
+    "9ski": {
+      "source_hash": "c138299c8363",
+      "text": "Guarda aparte tus requisitos; que la cotización no decida."
+    },
+    "bv46": {
+      "source_hash": "f8a06c3ad4ae",
+      "text": "Papel, tamaño e impresión deben coincidir punto por punto."
+    },
+    "hssn": {
+      "source_hash": "b030bf4c1692",
+      "text": "Decir postales no basta: otro papel puede cambiar el precio."
+    },
+    "d8h7": {
+      "source_hash": "8d1a50a65e49",
+      "text": "Misma dirección y plazo para comparar bien."
+    },
+    "jfix": {
+      "source_hash": "8f3e2289792e",
+      "text": "Buscamos el total con entrega; el precio unitario es solo un campo."
+    },
+    "d78a": {
+      "source_hash": "4313d111425e",
+      "text": "Guarda los 3 originales; pon la salida en otra carpeta."
+    },
+    "mjhz": {
+      "source_hash": "83df6da2d82d",
+      "text": "Así ves qué cambió el proveedor en la nueva versión."
+    },
+    "fvzv": {
+      "source_hash": "ee1a7a132bf3",
+      "text": "Proveedores y condiciones ficticios de práctica."
+    },
+    "658p": {
+      "source_hash": "526bfd3e70c6",
+      "text": "Separarlos permite saber si falló el texto o la fórmula."
+    },
+    "m57n": {
+      "source_hash": "24bcedced7ac",
+      "text": "Aster: precio en página 1, entrega en página 2."
+    },
+    "scia": {
+      "source_hash": "edb8257f6553",
+      "text": "Si solo lees la primera página, faltará un costo desde el inicio."
+    },
+    "nxct": {
+      "source_hash": "9221c8ab1536",
+      "text": "Damos a AI 2 páginas de cada cotización y los requisitos."
+    },
+    "7k9u": {
+      "source_hash": "f15e4aaa83ab",
+      "text": "Pide el texto fuente de cada campo, no solo quién conviene más."
+    },
+    "ea2e": {
+      "source_hash": "cde3d1893878",
+      "text": "Deja nulo lo que falte; separa el impuesto del precio y el del envío."
+    },
+    "ke2c": {
+      "source_hash": "891115cfc2b9",
+      "text": "Los 3 diseños difieren: define campos comunes para comparar bien."
+    },
+    "rgfp": {
+      "source_hash": "a7758d41bf25",
+      "text": "Si incluye impuesto, consérvalo así; no sumes todo de inmediato."
+    },
+    "fd27": {
+      "source_hash": "5ff09a31f891",
+      "text": "Precio y envío de Aster, en 2 páginas, van en una fila con sus fuentes."
+    },
+    "qttz": {
+      "source_hash": "061cae372b28",
+      "text": "Con esta cita verificas si se omitió el envío."
+    },
+    "indq": {
+      "source_hash": "8d66d4f444a9",
+      "text": "¿Por qué Birch puede poner envío cero y Cedar no?"
+    },
+    "q7x8": {
+      "source_hash": "5944c5607fca",
+      "text": "Birch tiene envío cero porque cotizó la entrega gratis."
+    },
+    "7hi8": {
+      "source_hash": "d21bdcbcf4ee",
+      "text": "Cedar no cotiza envío en página 2; es distinto."
+    },
+    "cxxm": {
+      "source_hash": "b72f27b689fd",
+      "text": "AI conserva la diferencia; no debe llenar la tabla con ceros."
+    },
+    "6pwe": {
+      "source_hash": "44e3cafff427",
+      "text": "Al calcular, el programa ve el nulo: la cotización sigue incompleta."
+    },
+    "eg6v": {
+      "source_hash": "95babb2e9408",
+      "text": "En la tabla, coteja en origen los valores decisivos."
+    },
+    "g3vp": {
+      "source_hash": "1026f1ccbcbc",
+      "text": "Coteja cada valor con su cita fuente; si no coincide, márcalo por confirmar."
+    },
+    "35fs": {
+      "source_hash": "4be5ecc81557",
+      "text": "Por precio unitario creciente, Cedar parece más barato."
+    },
+    "at27": {
+      "source_hash": "37ec3bd1711c",
+      "text": "Pero ese orden aún no incluye impuesto ni entrega."
+    },
+    "d2m5": {
+      "source_hash": "380ec942689d",
+      "text": "Guarda ese orden; con los totales con entrega, compara cómo cambió."
+    },
+    "xwsj": {
+      "source_hash": "a4e62373497b",
+      "text": "Aster cotiza producto y envío sin impuesto; calcula sus impuestos por separado."
+    },
+    "qagq": {
+      "source_hash": "d092574a9f30",
+      "text": "Suma esas partidas para el total con entrega de Aster."
+    },
+    "znv7": {
+      "source_hash": "63a5cf7d3bbb",
+      "text": "El precio unitario de Birch ya incluye el impuesto del producto; multiplícalo por la cantidad para obtener el importe del producto."
+    },
+    "c49q": {
+      "source_hash": "9d6435969ddc",
+      "text": "El impuesto de Cedar se calcula; ¿ya puede competir?"
+    },
+    "bcr5": {
+      "source_hash": "fd897961bb71",
+      "text": "Con entrega, ahora Birch cuesta menos que Aster."
+    },
+    "tnrc": {
+      "source_hash": "48714b501253",
+      "text": "El total de Cedar está pendiente; no puede ir primero."
+    },
+    "cv74": {
+      "source_hash": "1b5d6c5ce376",
+      "text": "Deja que la herramienta calcule los decimales según las condiciones indicadas; luego unifica el formato de los importes."
+    },
+    "8xam": {
+      "source_hash": "11c95498b7af",
+      "text": "No dejes que el modelo redondee primero el precio unitario y multiplique ese error por la cantidad."
+    },
+    "qrv8": {
+      "source_hash": "f6ebe568a766",
+      "text": "Abre la hoja; verifica por separado los importes de origen y los calculados."
+    },
+    "ehby": {
+      "source_hash": "b1633f805e92",
+      "text": "No son fórmulas que recalculen solas; si cambian los requisitos, genera otra salida."
+    },
+    "u7i8": {
+      "source_hash": "2fce9f4c3f9b",
+      "text": "¿Recuerdas el envío en blanco? Ese dato determina si Cedar puede entrar al ranking."
+    },
+    "e86a": {
+      "source_hash": "8ed2c9df8dc9",
+      "text": "El producto de Cedar cuesta menos que Birch; con envío bajo, se invierten."
+    },
+    "j2ja": {
+      "source_hash": "40796c6ec734",
+      "text": "La tabla separa lo conocido de Cedar: faltan envío, si incluye impuesto y el importe del impuesto."
+    },
+    "ehkq": {
+      "source_hash": "d982a65cfa54",
+      "text": "Pregunta por el envío y su impuesto a la misma dirección."
+    },
+    "aghq": {
+      "source_hash": "70cbf7ac869a",
+      "text": "Confirma si el costo varía con la cantidad, para no adivinar después"
+    },
+    "z8x8": {
+      "source_hash": "ca7683a734a3",
+      "text": "AI arma las preguntas; tú debes confirmar el borrador."
+    },
+    "7scz": {
+      "source_hash": "7e2e7627740a",
+      "text": "No presentes lo pendiente como condiciones ya aceptadas."
+    },
+    "w9yq": {
+      "source_hash": "4dd11571123f",
+      "text": "Añade un estado que explique qué falta resolver."
+    },
+    "pdxs": {
+      "source_hash": "075e20b2797d",
+      "text": "Si las especificaciones difieren, pregunta si pueden igualar; no inventes un precio de mejora."
+    },
+    "k75x": {
+      "source_hash": "541c3946496d",
+      "text": "Llegó la revisión de Cedar; no es un 4º proveedor."
+    },
+    "mbee": {
+      "source_hash": "1b528e2b4b7d",
+      "text": "Guarda el original; actualiza esa fila de Cedar."
+    },
+    "h85p": {
+      "source_hash": "c76fed99e194",
+      "text": "Coteja el código anterior y marca su archivo como sustituido."
+    },
+    "hiqk": {
+      "source_hash": "89dd59ebf23d",
+      "text": "Cambian el envío y su impuesto; el precio unitario no cambió."
+    },
+    "ambg": {
+      "source_hash": "4740d823925e",
+      "text": "Ya se puede calcular el total con entrega de Cedar: empata con Aster."
+    },
+    "dyun": {
+      "source_hash": "0e8f2191d09f",
+      "text": "Con el envío, Cedar cuesta 50 TWD más que Birch y aún no gana."
+    },
+    "benr": {
+      "source_hash": "c9af59c4b3b4",
+      "text": "Revisa si la fuente ya apunta a la revisión correcta."
+    },
+    "zqts": {
+      "source_hash": "65b8d6b123e7",
+      "text": "Si cambias el importe y enlazas el original, otros no podrán verificarlo."
+    },
+    "q57z": {
+      "source_hash": "27ccf198c6a1",
+      "text": "Ahora necesitas imprimir 20 de las mismas postales."
+    },
+    "7dp4": {
+      "source_hash": "82ad1f2ea647",
+      "text": "Guarda el archivo de cantidad de 10 con el nuevo nombre que ves, y cambia la cantidad a 20."
+    },
+    "ubke": {
+      "source_hash": "c22c4a780369",
+      "text": "Cambia la cantidad; no dupliques el total anterior."
+    },
+    "f5gy": {
+      "source_hash": "2ae0a402d113",
+      "text": "Guarda el escenario revisado; no vuelvas al original."
+    },
+    "3eue": {
+      "source_hash": "31ec121f822e",
+      "text": "Cambia cantidad; di que lo demás no cambia."
+    },
+    "sqqn": {
+      "source_hash": "5e811dc8ed67",
+      "text": "Verifica el rango cotizado; actualiza importes y fuentes, y anota cambios."
+    },
+    "6wkf": {
+      "source_hash": "3f7f5ae11299",
+      "text": "Guarda; ejecuta en la carpeta materials."
+    },
+    "74dc": {
+      "source_hash": "fb263d432f38",
+      "text": "Lee la nueva cantidad y guarda sin sobrescribir cotizaciones."
+    },
+    "326u": {
+      "source_hash": "e461e11f751e",
+      "text": "Abre el registro; confirma la nueva cantidad usada."
+    },
+    "m5sn": {
+      "source_hash": "311b70e145a7",
+      "text": "En proveedores, Cedar debe tener solo la fila de la revisión."
+    },
+    "sxtz": {
+      "source_hash": "3ad3c0bf760f",
+      "text": "Los 3 indican que sus propios precios unitarios no cambian dentro de este rango."
+    },
+    "rgr9": {
+      "source_hash": "3da467e9ffaf",
+      "text": "La entrega también tiene condiciones expresas; por eso podemos recalcular los importes para la nueva cantidad."
+    },
+    "xevg": {
+      "source_hash": "477df56d08f7",
+      "text": "El importe total del producto de Aster sube con la cantidad; el envío sigue fijo."
+    },
+    "m8sb": {
+      "source_hash": "9776125f547c",
+      "text": "Birch: 110 TWD más que Aster; el orden se invierte."
+    },
+    "pruf": {
+      "source_hash": "67ee1a53dd66",
+      "text": "¿Con Cedar, vuelve a cambiar el orden?"
+    },
+    "gy4i": {
+      "source_hash": "62457f085560",
+      "text": "Cedar cuesta 52.50 TWD menos que Aster."
+    },
+    "cbe9": {
+      "source_hash": "e987d435ff47",
+      "text": "¿Recuerdas duplicar la cantidad? El menor total cambió: ahora es Cedar."
+    },
+    "nvu3": {
+      "source_hash": "4042e2c8c96e",
+      "text": "Nadie bajó el precio: cambió el peso del envío fijo al variar la cantidad de postales."
+    },
+    "fa3t": {
+      "source_hash": "cafddf6deba4",
+      "text": "¿Con cuántas cambia el más barato?"
+    },
+    "63ek": {
+      "source_hash": "bfdb3434b13a",
+      "text": "Probamos 2 cantidades consecutivas, sin suponer que el orden sirve para cualquier cantidad."
+    },
+    "8fkp": {
+      "source_hash": "4cbd974a0dff",
+      "text": "Guarda aparte el escenario revisado, pon 12 y conserva lo demás."
+    },
+    "utm2": {
+      "source_hash": "b1d2b608c925",
+      "text": "Ejecuta con los mismos datos extraídos; guarda en la carpeta de este pedido."
+    },
+    "bnhk": {
+      "source_hash": "140cf1a645ad",
+      "text": "Copia el pedido, suma 1 postal y guarda con otro nombre."
+    },
+    "7udt": {
+      "source_hash": "ab814eaac43c",
+      "text": "Separa las salidas para cotejar ambos resultados lado a lado."
+    },
+    "6nxr": {
+      "source_hash": "73e5454db3ea",
+      "text": "Con 12, Birch cuesta solo 7.50 TWD menos que Cedar; aún lidera."
+    },
+    "7jrk": {
+      "source_hash": "4f854db5ecda",
+      "text": "Con 13, Cedar lleva 13.75 TWD de ventaja: aquí se cruza el punto de cambio."
+    },
+    "e5gd": {
+      "source_hash": "12edf2d26cf4",
+      "text": "Cedar menos Birch: positivo, Cedar cuesta más; negativo, menos."
+    },
+    "petb": {
+      "source_hash": "a22168a8912b",
+      "text": "Con cada postal, Cedar recupera 21.25 TWD frente a Birch; así la diferencia cruza el cero."
+    },
+    "vnaq": {
+      "source_hash": "5255b4e6db78",
+      "text": "De 20 a 21 postales, ¿todavía se puede calcular el resultado?"
+    },
+    "trph": {
+      "source_hash": "8c562e47c3ed",
+      "text": "Sin cambiar el precio unitario, recalcula igual."
+    },
+    "cegb": {
+      "source_hash": "3b7ba4d7428d",
+      "text": "Cambia solo el archivo del pedido y la carpeta de salida; nada más."
+    },
+    "pn4i": {
+      "source_hash": "89db532be9e4",
+      "text": "El programa coteja la nueva cantidad con cada rango cotizado."
+    },
+    "9jiq": {
+      "source_hash": "f0851ddf761b",
+      "text": "No calcula ni crea otra carpeta de resultados."
+    },
+    "egmv": {
+      "source_hash": "a36ddfbd2752",
+      "text": "Porque 21 postales exceden el rango escrito en las 3 cotizaciones."
+    },
+    "92mc": {
+      "source_hash": "d80cea105bc9",
+      "text": "Si lo necesitas, pide nueva cotización para esa cantidad."
+    },
+    "vee5": {
+      "source_hash": "0698b30c9511",
+      "text": "Comenta qué campo de cotización ves poco claro con más frecuencia."
+    },
+    "9jqz": {
+      "source_hash": "7b87be3cbbdc",
+      "text": "Suscríbete para seguir usando AI en trabajos que puedes entregar."
+    }
+  }
+}

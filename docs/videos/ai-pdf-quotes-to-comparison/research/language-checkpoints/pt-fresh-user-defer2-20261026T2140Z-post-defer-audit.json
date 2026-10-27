@@ -1,0 +1,186 @@
+{
+  "recorded_at_utc": "2026-10-26T21:44:47.711Z",
+  "kind": "actual-third-PT-service-defer-and-finite-coordinator-stop",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "actual_native_exit": 4,
+  "actual_driver_ended_at": "2026-10-26T21:43:12.694776+00:00",
+  "native_pid": 170599,
+  "driver_pid": 170574,
+  "actual_PIDs_ended": true,
+  "LEASE_STOP_absent": true,
+  "actual_PT_WAVs": 0,
+  "actual_PT_ASR": 0,
+  "PT_fit_or_track_present": false,
+  "PT_native_rounds": {
+    "shorten": 0,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "native_status": "done",
+  "previous_defer_count": 2,
+  "new_defer_count": 3,
+  "previous_due": "2026-10-26T21:05:02.168Z",
+  "new_due": "2026-10-26T22:03:11.200Z",
+  "actual_literal_service_message": "Gemini 語音暫時忙碌或達到用量上限，請稍後重試",
+  "provider_HTTP_code_or_zero_billing_inferred": false,
+  "current_journal_files": [],
+  "current_unadopted_durable_model_receipts": [],
+  "immutable_archived_first_writer_sha256": "836fe4b1a11afded5d1020f1c2c08fbe9bd417b63d7a9a9c060a56ec3f02051b",
+  "source9_byte_exact": true,
+  "protected_primary_raw_checks_caps_thumbnails_byte_exact": true,
+  "actual_checked_voice_locales": [
+    "ko",
+    "es"
+  ],
+  "voice_locale_rows": [
+    {
+      "locale": "en",
+      "translation_sha256": "4958b944504e67e2b0a4eaf8cb946830273de870eabd1305fa6e3039f59dbdb1",
+      "meaning_index_sha256": "ba72a51ec61b05c4a9354cf034cc377b513830f9feb68e82289ed1b79b19d516",
+      "meaning_current": true,
+      "native_status": {
+        "status": "current",
+        "note": "en.m4a"
+      },
+      "native_rounds": {
+        "shorten": 1,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "flags": [
+        "hg9m",
+        "fd27",
+        "znv7"
+      ],
+      "current_raw_matched_primary_checks": 101,
+      "kept": [],
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ja",
+      "translation_sha256": "6269e257a86790fe8c293392b9d78c1f2529e208870858894391cf027da6ed71",
+      "meaning_index_sha256": "ca72c5b912597bf51087afa1bc08bf73243e2a765e159dff82a8200d5fc2ff92",
+      "meaning_current": true,
+      "native_status": {
+        "status": "current",
+        "note": "ja.m4a"
+      },
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "flags": [
+        "fd27"
+      ],
+      "current_raw_matched_primary_checks": 101,
+      "kept": [],
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ko",
+      "translation_sha256": "9568b1cb834bd1ce4e3e1ca1849ae30a7e1e1ec6c6eb02d4c9e46fe8e3ffabf6",
+      "meaning_index_sha256": "86ce9f174629d2d425cb13aa8dd7f7e6c569067ec07aca6af0e30e736393d954",
+      "meaning_current": true,
+      "native_status": {
+        "status": "current",
+        "note": "ko.m4a"
+      },
+      "native_rounds": null,
+      "flags": [],
+      "current_raw_matched_primary_checks": 101,
+      "kept": [],
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "es",
+      "translation_sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+      "meaning_index_sha256": "693324486e34837008cfa9975aaf29d7fb2b42760c60001790b3d2aae07557e1",
+      "meaning_current": true,
+      "native_status": {
+        "status": "current",
+        "note": "es.m4a"
+      },
+      "native_rounds": null,
+      "flags": [],
+      "current_raw_matched_primary_checks": 101,
+      "kept": [],
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "pt",
+      "translation_sha256": "3f74c77761514a627781626ecc61bdc5cde3ffec851b7488e723846d6669195d",
+      "meaning_index_sha256": "f7ed26fb9eab7877ca9d2d52cd31ebb425380d63690a2d9ef4366c1d9574e557",
+      "meaning_current": true,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 0,
+        "reword": 0,
+        "check_stopped": true
+      },
+      "flags": null,
+      "current_raw_matched_primary_checks": 0,
+      "kept": [],
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "id",
+      "translation_sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+      "meaning_index_sha256": "e1a04b25070a136a200554a2a0c2eadd60d6e8fd5717c3c5f69da1d94fb5ae52",
+      "meaning_current": true,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "flags": null,
+      "current_raw_matched_primary_checks": 0,
+      "kept": [],
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "vi",
+      "translation_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+      "meaning_index_sha256": "2a9e5a5b540dcee0c4d7d5f3fef8e92ec7ab188e30ce661ff9a390a5436929f6",
+      "meaning_current": true,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "flags": null,
+      "current_raw_matched_primary_checks": 0,
+      "kept": [],
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "th",
+      "translation_sha256": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+      "meaning_index_sha256": "1472d54db412d171293d35712d7a4562e5428d83483daa94660c8292e0820550",
+      "meaning_current": true,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "flags": null,
+      "current_raw_matched_primary_checks": 0,
+      "kept": [],
+      "actual_checked_voice_ready": false
+    }
+  ],
+  "actual_boundary_files": [],
+  "actual_outcome_sha256": "3de2d8049675e38dfd09ad5fb4062b7367e9c40c48589401520494cca94bf947",
+  "actual_log_sha256": "14447e47e2d93f254b1cfae810ad5a4955eca19b8957b6b5a5c193894b50e876",
+  "finite_queue_stopped": true,
+  "automatic_due_resume_or_next_locale_started": false,
+  "owner_original_publication_or_new_movie_actions": false,
+  "next": "Stop finite queue per e89f grant. Preserve defer3/due22:03:11.200Z and PT0/0/0stopped; no timer resume or IDVI TH workaround. Only a fresh authorized execution after real due may qualify normal PT after original/PDF ownership/current meaning/primary11QA/choice/quota/unknown checks. ENJA ordinary retries/owner/full8/publish/newmovie remain forbidden."
+}

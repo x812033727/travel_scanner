@@ -1,0 +1,1800 @@
+{
+  "assets": [
+    {
+      "path": "stock/be673375c05932dd665ca14b79030c1fa69b5705c1d582348b31b0eb89a5c7a2.png",
+      "source": "本次原創SVG圖解；來源 diagrams/pdf-quotes-hero.svg；十張實算A2100/B2050/C未知",
+      "license": "Original Mokaair teaching material; no external stock photo"
+    }
+  ],
+  "category": "tutorial",
+  "format": "slides",
+  "loops": [
+    {
+      "payoff": "u7i8",
+      "setup": "hg9m",
+      "what": "未報運費不能當免費，總價仍待確認"
+    },
+    {
+      "payoff": "dyun",
+      "setup": "ajsk",
+      "what": "修訂單補齊後，丙比乙多50元"
+    },
+    {
+      "payoff": "cbe9",
+      "setup": "kv5r",
+      "what": "二十張時固定運費使最低總價換成丙"
+    },
+    {
+      "payoff": "fd27",
+      "setup": "m57n",
+      "what": "甲的兩頁欄位與來源合成同一列"
+    },
+    {
+      "what": "找出相鄰需求的最低價轉換點",
+      "setup": "fa3t",
+      "payoff": "7jrk"
+    }
+  ],
+  "scenes": [
+    {
+      "chapter": "最低單價，能直接下單？",
+      "data": {
+        "key": "找出能下單的比較結果",
+        "subtitle": "AI 比較三份 PDF 報價",
+        "tag": "原創練習｜可編輯比價表",
+        "title": "最低單價，真的便宜？"
+      },
+      "id": "opening",
+      "lines": [
+        {
+          "emotion": "壓低開場，句尾留一點疑問",
+          "id": "6vwc",
+          "pause_after_ms": 900,
+          "text": "最低的單價，現在還不能直接排第一。"
+        }
+      ],
+      "template": "title"
+    },
+    {
+      "claims": [
+        "c1"
+      ],
+      "data": {
+        "columns": [
+          "供應商",
+          "單價",
+          "標示"
+        ],
+        "key": "三種單價，還不是同一種總額",
+        "rows": [
+          [
+            "甲 Aster",
+            "180",
+            "未稅"
+          ],
+          [
+            "乙 Birch",
+            "205",
+            "含稅"
+          ],
+          [
+            "丙 Cedar",
+            "175",
+            "未稅"
+          ]
+        ],
+        "source": "原創練習｜三家 PDF 第1頁",
+        "title": "先只看單價"
+      },
+      "id": "opening-unit",
+      "lines": [
+        {
+          "id": "xnrg",
+          "text": "因為這三份報價，寫的其實不是同一種金額。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "data": {
+        "key": "每個重要欄位都能回到來源頁",
+        "text": "表格要留住原文"
+      },
+      "id": "opening-result",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "edfn",
+          "text": "所以我們讓 AI 做一張能編輯的表，連原文頁碼也一起留下。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "data": {
+        "key": "待確認不能偷偷變成零",
+        "text": "運費空白，算免費？"
+      },
+      "id": "opening-missing",
+      "lines": [
+        {
+          "id": "hg9m",
+          "text": "但空白的運費，能不能直接當成免費？"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "data": {
+        "key": "同一家供應商，條件變了",
+        "text": "補來一張修訂單"
+      },
+      "id": "opening-revision",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "ajsk",
+          "text": "補來一張修訂單，便宜的會換人嗎？"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "data": {
+        "key": "換數量後，答案也要重新算",
+        "text": "數量翻倍呢？"
+      },
+      "id": "opening-quantity",
+      "lines": [
+        {
+          "id": "kv5r",
+          "pause_after_ms": 1200,
+          "text": "如果數量翻倍，原本的答案還能用嗎？"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "chapter": "把需求寫成比較基準",
+      "claims": [
+        "c2"
+      ],
+      "data": {
+        "key": "把比較基準留在 requirements.txt",
+        "text": "先寫自己要買什麼"
+      },
+      "id": "need-start",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "ddpd",
+          "text": "你現在要印十張明信片，三家都寄來了報價。"
+        },
+        {
+          "id": "9ski",
+          "text": "先把自己的需求另存一份，別讓報價替你決定要買什麼。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c2"
+      ],
+      "data": {
+        "caption": "requirements.txt 第7–8行｜連續節錄",
+        "code": "原始需求：10 張 A6 明信片（105 × 148 mm），350 gsm 霧面白卡紙，\n雙面全彩，所有稿件相同；送到同一個指定地址，7 個工作天內交貨。",
+        "key": "同一規格才放進同一張比較表",
+        "title": "這次要印的內容"
+      },
+      "id": "need-spec",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "bv46",
+          "text": "像紙張、尺寸和印刷方式，都要能逐項對上。"
+        },
+        {
+          "id": "hssn",
+          "text": "只寫明信片還不夠，換一種紙就可能是另一個價格。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c2"
+      ],
+      "data": {
+        "caption": "requirements.txt 第8–9行｜連續節錄",
+        "code": "雙面全彩，所有稿件相同；送到同一個指定地址，7 個工作天內交貨。\n比的是符合需求、送達且含明示稅額的總價，不是單價。",
+        "key": "比較的終點是送到你手上",
+        "title": "交貨也有共同條件"
+      },
+      "id": "need-delivery",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "d8h7",
+          "text": "交貨地址和期限也要相同，才是在比同一件事。"
+        },
+        {
+          "id": "jfix",
+          "text": "這次要的是送達總價，單價只是其中一個欄位。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c3"
+      ],
+      "data": {
+        "columns": [
+          "卡片稱呼",
+          "供應商",
+          "原檔"
+        ],
+        "key": "原件只讀，結果另存",
+        "rows": [
+          [
+            "甲",
+            "Aster",
+            "aster.pdf"
+          ],
+          [
+            "乙",
+            "Birch",
+            "birch.pdf"
+          ],
+          [
+            "丙",
+            "Cedar",
+            "cedar.pdf"
+          ]
+        ],
+        "source": "原創練習｜來源 PDF 清單",
+        "title": "三家原檔先保留"
+      },
+      "id": "need-labels",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "d78a",
+          "text": "三份原檔先保留下來，輸出另外放一個資料夾。"
+        },
+        {
+          "id": "mjhz",
+          "text": "這樣你收到新版本，還能看出供應商到底改了什麼。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c4"
+      ],
+      "data": {
+        "key": "供應商、金額與稅率皆為教材設定",
+        "text": "這是一組練習報價"
+      },
+      "id": "need-fiction",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "fvzv",
+          "text": "這組供應商和交易條件，都是練習用的虛構資料。"
+        },
+        {
+          "id": "3742",
+          "text": "畫面上的稅率是計算假設，真實交易要用自己的報價條件。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c5"
+      ],
+      "data": {
+        "columns": [
+          "工作",
+          "本次做法"
+        ],
+        "key": "文字、判讀、算術各自留下結果",
+        "rows": [
+          [
+            "逐頁取得文字",
+            "文字 PDF 抽文"
+          ],
+          [
+            "整理欄位與缺漏",
+            "AI 讀逐頁原文"
+          ],
+          [
+            "計算並匯出",
+            "精確小數計算後寫表"
+          ]
+        ],
+        "source": "本次工作流｜抽文 → 欄位 → 計算",
+        "title": "AI 接手哪一段？"
+      },
+      "id": "need-route",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "3639",
+          "text": "你可以讓 AI 幫忙整理欄位，再把算術交給計算工具。"
+        },
+        {
+          "id": "658p",
+          "text": "把這兩件事拆開，錯了才知道該回頭看文字還是公式。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c6"
+      ],
+      "data": {
+        "key": "條款可能藏在另一頁",
+        "text": "第一頁還沒看完"
+      },
+      "id": "need-proof",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "m57n",
+          "text": "甲的單價在第一頁，送貨條件卻放在第二頁。"
+        },
+        {
+          "id": "scia",
+          "pause_after_ms": 1200,
+          "text": "如果只讀首頁，這張比較表一開始就少了一筆錢。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "chapter": "讓每個欄位都找得到原文",
+      "claims": [
+        "c5",
+        "c6"
+      ],
+      "data": {
+        "key": "附上需求，才能判斷是否符合",
+        "text": "兩頁都交給它"
+      },
+      "id": "extract-start",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "nxct",
+          "text": "所以我們把每份報價的兩頁文字，都連同需求交給 AI。"
+        },
+        {
+          "id": "7k9u",
+          "text": "而且要它每個欄位都附上原文，別只回一句哪家比較划算。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c7"
+      ],
+      "data": {
+        "caption": "viewer-prompt.txt 全文｜第5行於收到修訂版後套用",
+        "code": "請比較 requirements.txt 與三家報價的逐頁原文。\n先列規格、適用數量、幣別、單價、稅、運費、交期。\n每個欄位附檔名、頁碼及支持它的原句。\n沒寫的填待確認，不能當作零或自行補價格。\nCedar 修訂版取代原版參與比價，原檔保留。\n確認規格和數量可比，再按已知稅與運費計算總價。\n交付可編輯比價表、待問問題及修訂前後差異。",
+        "key": "欄位、原句、頁碼一起交付",
+        "title": "完整可複製的提示詞"
+      },
+      "id": "extract-core",
+      "lines": [
+        {
+          "id": "ea2e",
+          "text": "缺的就保留空值，單價和運費各自的稅，也要分清楚。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c7"
+      ],
+      "data": {
+        "columns": [
+          "原文欄位",
+          "表格要保留什麼"
+        ],
+        "key": "同樣的欄位，接住不同排版",
+        "rows": [
+          [
+            "規格與數量",
+            "商品內容、數量適用範圍"
+          ],
+          [
+            "單價與稅",
+            "金額、含稅或未稅"
+          ],
+          [
+            "送貨條件",
+            "運費、運費稅、交貨天數"
+          ]
+        ],
+        "source": "本次分析要求｜欄位定義",
+        "title": "先抽這些欄位"
+      },
+      "id": "extract-fields",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "ke2c",
+          "text": "三家版面不同，所以先訂好共同欄位，才不會照著排版亂比。"
+        },
+        {
+          "id": "rgfp",
+          "text": "原文是含稅價，就保留含稅價，不要急著把所有數字加在一起。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c6"
+      ],
+      "data": {
+        "columns": [
+          "欄位",
+          "值",
+          "出處"
+        ],
+        "key": "一張報價的條件跨了兩頁",
+        "rows": [
+          [
+            "單價",
+            "180，未稅",
+            "aster.pdf 第1頁"
+          ],
+          [
+            "商品稅",
+            "5%",
+            "aster.pdf 第1頁"
+          ],
+          [
+            "運費",
+            "200，未稅",
+            "aster.pdf 第2頁"
+          ]
+        ],
+        "source": "原創練習｜aster.pdf 第1–2頁",
+        "title": "甲的單價可以追到哪裡？"
+      },
+      "id": "extract-aster",
+      "lines": [
+        {
+          "id": "fd27",
+          "text": "甲分在兩頁的單價和運費，表格接成同一列，各自留著出處。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c6"
+      ],
+      "data": {
+        "key": "運費也明示為未稅",
+        "quote": "Shipping: TWD 200.00 excluding tax to the specified address",
+        "source": "aster.pdf 第2頁｜原創練習原文"
+      },
+      "id": "extract-aster-quote",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "qttz",
+          "text": "拿這段原句，就能核對表格有沒有把運費漏掉。"
+        },
+        {
+          "id": "indq",
+          "text": "同樣是運費，為什麼乙能填零，丙卻不行？"
+        }
+      ],
+      "template": "quote"
+    },
+    {
+      "claims": [
+        "c8"
+      ],
+      "data": {
+        "columns": [
+          "欄位",
+          "值",
+          "出處"
+        ],
+        "key": "零元必須有原文支持",
+        "rows": [
+          [
+            "單價",
+            "205，含稅",
+            "birch.pdf 第1頁"
+          ],
+          [
+            "運費",
+            "0，送達免運",
+            "birch.pdf 第2頁"
+          ],
+          [
+            "交期",
+            "5 個工作天",
+            "birch.pdf 第2頁"
+          ]
+        ],
+        "source": "原創練習｜birch.pdf 第1–2頁",
+        "title": "乙的高單價包含了什麼？"
+      },
+      "id": "extract-birch",
+      "lines": [
+        {
+          "id": "q7x8",
+          "text": "乙的運費填零，是因為它的報價明寫免費送達。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c9"
+      ],
+      "data": {
+        "key": "沒有報價，和免費不同",
+        "quote": "Shipping: not quoted",
+        "source": "cedar.pdf 第2頁｜原創練習原文"
+      },
+      "id": "extract-missing-quote",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "7hi8",
+          "text": "丙的第二頁則寫運費沒有報價，這是另一種狀態。"
+        },
+        {
+          "id": "cxxm",
+          "text": "AI 應該保留這個差別，不能為了把表填滿就補上零。"
+        }
+      ],
+      "template": "quote"
+    },
+    {
+      "claims": [
+        "c9"
+      ],
+      "data": {
+        "caption": "分析結果欄位示意｜值以原文為準",
+        "code": "\"shipping_amount\": {\n  \"value\": null,\n  \"page\": 2,\n  \"evidence\": \"Shipping: not quoted\"\n}",
+        "key": "缺漏保留空值，理由跟著留",
+        "title": "空值也有可核對的理由"
+      },
+      "id": "extract-null",
+      "lines": [
+        {
+          "id": "6pwe",
+          "text": "後面算總價時，程式看到這個空值，就知道還不能當成完整報價。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c8",
+        "c9"
+      ],
+      "data": {
+        "key": "先看會改變答案的那幾欄",
+        "text": "挑兩個關鍵值回頭看"
+      },
+      "id": "extract-review",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "eg6v",
+          "text": "拿到表格後，先挑會改變答案的值回到原頁核對。"
+        },
+        {
+          "id": "g3vp",
+          "pause_after_ms": 1200,
+          "text": "逐欄對照數值和支持它的原句；對不上，就先標成待確認。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "chapter": "含稅和運費要算到同一個終點",
+      "claims": [
+        "c10"
+      ],
+      "data": {
+        "key": "先決定要算的是哪一種總額",
+        "text": "單價排序先停一下"
+      },
+      "id": "cost-start",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "35fs",
+          "text": "如果只是把單價從小排到大，丙看起來會最便宜。"
+        },
+        {
+          "id": "at27",
+          "text": "可是這個排序，還沒有把稅和送達費用放進來。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c10"
+      ],
+      "data": {
+        "columns": [
+          "順序",
+          "供應商",
+          "原報單價"
+        ],
+        "key": "這是單價對照，不能當成交總價",
+        "rows": [
+          [
+            "1",
+            "丙",
+            "175，未稅"
+          ],
+          [
+            "2",
+            "甲",
+            "180，未稅"
+          ],
+          [
+            "3",
+            "乙",
+            "205，含稅"
+          ]
+        ],
+        "source": "實際單價排序｜原創三份報價",
+        "title": "單價排序對照"
+      },
+      "id": "cost-unit-baseline",
+      "lines": [
+        {
+          "id": "d2m5",
+          "text": "先把這個排序留下來，等送達總價算完，再對照名次差在哪。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c11"
+      ],
+      "data": {
+        "caption": "aster.pdf 第1–2頁｜本練習明示條件",
+        "code": "商品未稅：10 × 180 = 1,800\n商品稅額：1,800 × 5% = 90\n運費含稅：200 × 1.05 = 210\n送達總價：1,800 + 90 + 210 = 2,100",
+        "key": "商品稅與運費稅分開核對",
+        "title": "甲的完整算式"
+      },
+      "id": "cost-aster-formula",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "xwsj",
+          "text": "甲的商品和運費都明示未稅，所以兩邊各算自己的稅。"
+        },
+        {
+          "id": "qagq",
+          "text": "把這幾項合起來，才是甲這份報價的送達總價。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c12"
+      ],
+      "data": {
+        "caption": "birch.pdf 第1–2頁｜本練習明示條件",
+        "code": "含稅商品：10 × 205 = 2,050\n送貨費用：0\n送達總價：2,050\n不再重複加一次商品稅",
+        "key": "已含稅的那一欄，別再加一次",
+        "title": "乙的單價已經含稅"
+      },
+      "id": "cost-birch-formula",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "znv7",
+          "text": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。"
+        },
+        {
+          "id": "c49q",
+          "text": "那丙的商品稅也算得出來，它能一起排進名次嗎？"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c11",
+        "c12",
+        "c13"
+      ],
+      "data": {
+        "columns": [
+          "供應商",
+          "送達含稅總價",
+          "狀態"
+        ],
+        "key": "只在條件完整的報價之間比較",
+        "rows": [
+          [
+            "甲",
+            "2,100.00",
+            "條件完整"
+          ],
+          [
+            "乙",
+            "2,050.00",
+            "條件完整"
+          ],
+          [
+            "丙",
+            "待確認",
+            "缺運費與其稅"
+          ]
+        ],
+        "source": "實際計算｜原始報價，數量10",
+        "title": "十張的可比較結果"
+      },
+      "id": "cost-initial-result",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "bcr5",
+          "text": "結果算到同一個終點，目前是乙比甲便宜。"
+        },
+        {
+          "id": "tnrc",
+          "text": "丙的總價仍待確認，所以不能把它排成第一名。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c14"
+      ],
+      "data": {
+        "key": "原文金額和計算欄分開保存",
+        "text": "小數交給計算工具"
+      },
+      "id": "cost-rounding",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "cv74",
+          "text": "碰到小數時，讓計算工具依明示條件計算，再統一金額格式。"
+        },
+        {
+          "id": "8xam",
+          "text": "不要讓模型先四捨五入單價，再把誤差一路乘上數量。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c14",
+        "c15"
+      ],
+      "data": {
+        "columns": [
+          "欄位",
+          "用途"
+        ],
+        "key": "固定值匯出，改需求後要重做",
+        "rows": [
+          [
+            "原文值",
+            "保留報價寫了什麼"
+          ],
+          [
+            "計算值",
+            "這次條件算出的金額"
+          ],
+          [
+            "來源欄",
+            "回到原檔的對應頁面"
+          ]
+        ],
+        "source": "本次匯出方法｜精確小數計算",
+        "title": "金額與來源一起留"
+      },
+      "id": "cost-workbook",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "qrv8",
+          "text": "打開試算表，把原文金額和計算金額分開核對。"
+        },
+        {
+          "id": "ehby",
+          "text": "但它不是會自己重算的公式，需求一改，就要重新產生一次結果。",
+          "pause_after_ms": 1200
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "chapter": "把缺漏變成能寄出的問題",
+      "claims": [
+        "c9",
+        "c13"
+      ],
+      "data": {
+        "key": "保留未知，才知道該問什麼",
+        "text": "丙還缺一個回答"
+      },
+      "id": "missing-start",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "u7i8",
+          "text": "還記得那個空白的運費嗎？現在它直接決定丙能不能排進名次。"
+        },
+        {
+          "id": "e86a",
+          "text": "因為丙的商品比乙便宜，只要運費不夠高，名次就會翻過來。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c9"
+      ],
+      "data": {
+        "columns": [
+          "已知",
+          "未知"
+        ],
+        "key": "已知的部分照留，不拼出假總價",
+        "rows": [
+          [
+            "商品單價 175，未稅",
+            "運費金額"
+          ],
+          [
+            "商品稅 5%",
+            "運費是否含稅"
+          ],
+          [
+            "數量適用 10–20",
+            "運費的稅率或稅額"
+          ]
+        ],
+        "source": "原創練習｜cedar.pdf 第1–2頁",
+        "title": "丙已知和未知分開"
+      },
+      "id": "missing-known",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "j2ja",
+          "text": "表格把丙拆成已知跟未知，未知的是運費、運費是否含稅，還有稅額。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c17"
+      ],
+      "data": {
+        "key": "先確認費用，再談名次",
+        "messages": [
+          {
+            "name": "給丙的草稿",
+            "side": "right",
+            "text": "請補送到指定地址的運費、含稅狀態與適用稅額，並確認十到二十張費用是否相同。"
+          }
+        ],
+        "title": "可以直接修改的詢問"
+      },
+      "id": "missing-question",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "ehkq",
+          "text": "所以問題要問得具體，請它補送到同一地址的運費和稅。"
+        },
+        {
+          "id": "aghq",
+          "text": "也要確認數量改變後費用是否相同，免得下一輪又得猜。"
+        }
+      ],
+      "template": "chat"
+    },
+    {
+      "claims": [
+        "c17"
+      ],
+      "data": {
+        "key": "由真正下單的人確認後再寄送",
+        "text": "這裡先留下詢問草稿"
+      },
+      "id": "missing-no-send",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "z8x8",
+          "text": "AI 可以幫你整理待問清單，但詢問草稿還需要你確認。"
+        },
+        {
+          "id": "7scz",
+          "text": "別把表格裡的待確認，寫成供應商已經同意的條件。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c18"
+      ],
+      "data": {
+        "columns": [
+          "結果",
+          "下一個動作"
+        ],
+        "key": "價格低，不會自動補齊條件",
+        "rows": [
+          [
+            "條件完整",
+            "可進入同基準比較"
+          ],
+          [
+            "費用缺漏",
+            "補問費用與稅"
+          ],
+          [
+            "規格不同",
+            "先確認能否提供同規格"
+          ]
+        ],
+        "source": "比價表的使用規則｜原創教學建議",
+        "title": "狀態欄說明為何還不能選"
+      },
+      "id": "missing-status",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "w9yq",
+          "text": "你也可以讓表格多一個狀態欄位，寫清楚它卡在哪裡。"
+        },
+        {
+          "id": "pdxs",
+          "pause_after_ms": 1200,
+          "text": "真正的報價如果規格不同，先問能不能對齊，別自己編一個升級價。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "chapter": "修訂版到手，只替換改過的條件",
+      "claims": [
+        "c19"
+      ],
+      "data": {
+        "key": "新舊兩份，還是同一家供應商",
+        "text": "補件到了，先認版本"
+      },
+      "id": "revision-start",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "k75x",
+          "text": "丙補來了修訂版，這時候不要把它當成第四家供應商。"
+        },
+        {
+          "id": "mbee",
+          "text": "留下舊檔作紀錄，再用新的條件替換丙這一列。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c19"
+      ],
+      "data": {
+        "key": "修訂版明確取代原版",
+        "quote": "Replaces CED-1026-v1; not an additional supplier.",
+        "source": "cedar-revised.pdf 第1頁｜原創練習"
+      },
+      "id": "revision-identity",
+      "lines": [
+        {
+          "id": "h85p",
+          "text": "先核對這裡列的舊版編號，再把對應的舊檔標成已被取代。"
+        }
+      ],
+      "template": "quote"
+    },
+    {
+      "claims": [
+        "c19",
+        "c20"
+      ],
+      "data": {
+        "columns": [
+          "欄位",
+          "原版",
+          "修訂版"
+        ],
+        "key": "補的是送貨條件，商品價格沒變",
+        "rows": [
+          [
+            "運費未稅",
+            "待確認",
+            "250"
+          ],
+          [
+            "運費稅",
+            "待確認",
+            "5%"
+          ],
+          [
+            "商品單價",
+            "175 未稅",
+            "175 未稅"
+          ]
+        ],
+        "source": "原創練習｜Cedar 原版與修訂版",
+        "title": "先看真正改了什麼"
+      },
+      "id": "revision-diff",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "hiqk",
+          "text": "這次改的是運費和它的稅，商品單價並沒有跟著變。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c20"
+      ],
+      "data": {
+        "caption": "cedar-revised.pdf 第1–2頁｜實際計算",
+        "code": "商品含稅：10 × 175 × 1.05 = 1,837.50\n運費含稅：250 × 1.05 = 262.50\n送達總價：1,837.50 + 262.50 = 2,100.00",
+        "key": "補齊後，才得到可比較的總額",
+        "title": "修訂版的十張總價"
+      },
+      "id": "revision-total",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "ambg",
+          "text": "好，現在丙的送達總價算得出來了，結果剛好和甲一樣。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c20",
+        "c21",
+        "c38"
+      ],
+      "data": {
+        "columns": [
+          "供應商",
+          "送達含稅總價",
+          "比較"
+        ],
+        "key": "丙比乙多50.00元",
+        "rows": [
+          [
+            "甲",
+            "2,100.00",
+            "與丙同價"
+          ],
+          [
+            "乙",
+            "2,050.00",
+            "最低"
+          ],
+          [
+            "丙修訂版",
+            "2,100.00",
+            "與甲同價"
+          ]
+        ],
+        "source": "實際計算｜修訂版，數量10",
+        "title": "補件後，十張的答案"
+      },
+      "id": "revision-ranking",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "dyun",
+          "text": "運費補齊後，丙比乙多了五十元，還追不上。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c19",
+        "c22"
+      ],
+      "data": {
+        "key": "改金額，也更新來源版本",
+        "text": "新的值，要跟新的頁碼"
+      },
+      "id": "revision-links",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "benr",
+          "text": "這時候還要看一眼來源這個欄位，有沒有改成對應修訂版。"
+        },
+        {
+          "id": "zqts",
+          "pause_after_ms": 1200,
+          "text": "只換了金額卻還連著舊檔，別人回頭核對時就會找不到。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "chapter": "數量翻倍，重新確認適用條件",
+      "claims": [
+        "c23"
+      ],
+      "data": {
+        "key": "保留規格，重算數量與總價",
+        "text": "數量改成二十張"
+      },
+      "id": "quantity-start",
+      "lines": [
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "q57z",
+          "text": "後來你的需求改了，同樣的明信片，要印二十張。"
+        },
+        {
+          "id": "7dp4",
+          "text": "先把原本十張的數量設定檔，另存成畫面上這個新檔名，再把數量改成二十。"
+        }
+      ],
+      "template": "big"
+    },
+    {
+      "claims": [
+        "c23"
+      ],
+      "data": {
+        "caption": "request-20.json 第1–4行｜全文",
+        "code": "{\n  \"scenario\": \"revised\",\n  \"quantity\": 20\n}",
+        "key": "改的是需求，不是直接改總價格",
+        "title": "你要改的那一行"
+      },
+      "id": "quantity-edit",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "ubke",
+          "text": "你改的是需求數量，不是把原本的總價直接乘上兩倍。"
+        },
+        {
+          "id": "f5gy",
+          "text": "情境這個欄位要保留修訂版，別切回原始報價。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c23"
+      ],
+      "data": {
+        "key": "同時更新金額、來源與變動",
+        "messages": [
+          {
+            "name": "你的要求",
+            "side": "right",
+            "text": "數量改成二十張，其餘需求相同；確認適用範圍，更新金額、來源及變動清單。"
+          }
+        ],
+        "title": "更新要求寫完整"
+      },
+      "id": "quantity-prompt",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "3eue",
+          "text": "數量改過之後，還要明說其他需求都不變。"
+        },
+        {
+          "id": "sqqn",
+          "text": "先確認報價的適用範圍，再更新金額和來源，留下變動清單。"
+        }
+      ],
+      "template": "chat"
+    },
+    {
+      "claims": [
+        "c23",
+        "c31"
+      ],
+      "data": {
+        "caption": "materials 資料夾執行｜實跑 2026-10-26",
+        "code": "python3 build_comparison.py \\\n  --analysis ../research/lab-ai-extraction.json \\\n  --extracted ../research/lab-extracted-pages.json \\\n  --request request-20.json \\\n  --out comparison-output",
+        "key": "新需求、來源不變，輸出另存",
+        "title": "存檔後，執行這條命令"
+      },
+      "id": "quantity-run",
+      "lines": [
+        {
+          "id": "6wkf",
+          "text": "存檔後，在教材的程式資料夾執行這條命令。"
+        },
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "74dc",
+          "text": "它會讀取新數量，另存結果，不覆蓋供應商的原始報價。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c23",
+        "c31"
+      ],
+      "data": {
+        "columns": [
+          "欄位",
+          "輸出內容"
+        ],
+        "key": "先核對需求與版本，再看金額",
+        "rows": [
+          [
+            "需求數量",
+            "20"
+          ],
+          [
+            "採用情境",
+            "修訂版"
+          ],
+          [
+            "供應商",
+            "甲、乙、丙修訂版"
+          ]
+        ],
+        "source": "實跑 2026-10-26｜selected-comparison.json",
+        "title": "新的需求真的進入結果"
+      },
+      "id": "quantity-output",
+      "lines": [
+        {
+          "id": "326u",
+          "text": "打開輸出的需求紀錄，確認它真的使用了新的數量。"
+        },
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "m5sn",
+          "text": "再看供應商清單，丙應該只剩採用修訂版的那一列。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c24"
+      ],
+      "data": {
+        "columns": [
+          "供應商",
+          "單價適用數量",
+          "運費條件"
+        ],
+        "key": "這次能重算，是因為條件有明寫",
+        "rows": [
+          [
+            "甲",
+            "10–20 張",
+            "200 未稅，範圍內固定"
+          ],
+          [
+            "乙",
+            "10–20 張",
+            "指定地址免運"
+          ],
+          [
+            "丙修訂版",
+            "10–20 張",
+            "250 未稅，範圍內固定"
+          ]
+        ],
+        "source": "原創練習｜三家 PDF 第2頁",
+        "title": "原文是否允許這樣重算？"
+      },
+      "id": "quantity-ranges",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "sxtz",
+          "text": "這三份報價都寫明，單價在這段數量範圍內保持相同。"
+        },
+        {
+          "id": "rgr9",
+          "text": "送貨條件也有對應的說明，所以我們這次能照新數量重算。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "claims": [
+        "c25"
+      ],
+      "data": {
+        "caption": "aster.pdf 第1–2頁｜實際計算",
+        "code": "商品含稅：20 × 180 × 1.05 = 3,780\n運費含稅：200 × 1.05 = 210\n送達總價：3,990",
+        "key": "固定運費只算一筆",
+        "title": "甲的二十張總價"
+      },
+      "id": "quantity-aster",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "xevg",
+          "text": "甲的商品金額跟著數量增加，但運費還是那一筆。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c26",
+        "c38"
+      ],
+      "data": {
+        "caption": "birch.pdf 第1–2頁｜實際計算",
+        "code": "含稅單價：205\n商品與送達總價：20 × 205 = 4,100",
+        "key": "乙比甲多110.00元",
+        "title": "乙的二十張總價"
+      },
+      "id": "quantity-birch",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "m8sb",
+          "text": "乙比甲多了一百一十元，原本的先後順序反過來了。"
+        },
+        {
+          "id": "pruf",
+          "text": "那把丙也算進來，這個名次還會再變嗎？"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c27",
+        "c38"
+      ],
+      "data": {
+        "caption": "cedar-revised.pdf 第1–2頁｜實際計算",
+        "code": "商品含稅：20 × 175 × 1.05 = 3,675\n運費含稅：250 × 1.05 = 262.50\n送達總價：3,937.50",
+        "key": "丙比甲少52.50元",
+        "title": "丙修訂版的二十張總價"
+      },
+      "id": "quantity-cedar",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "gy4i",
+          "text": "再看丙，它比甲少了五十二元五角。"
+        }
+      ],
+      "template": "code"
+    },
+    {
+      "claims": [
+        "c25",
+        "c26",
+        "c27"
+      ],
+      "data": {
+        "columns": [
+          "供應商",
+          "送達含稅總價",
+          "狀態"
+        ],
+        "key": "需求改變，舊答案就要重新比較",
+        "rows": [
+          [
+            "丙修訂版",
+            "3,937.50",
+            "最低"
+          ],
+          [
+            "甲",
+            "3,990.00",
+            "條件完整"
+          ],
+          [
+            "乙",
+            "4,100.00",
+            "條件完整"
+          ]
+        ],
+        "source": "實際計算｜修訂版，數量20",
+        "title": "二十張，最低總價換了"
+      },
+      "id": "quantity-ranking",
+      "lines": [
+        {
+          "emotion": "數字前稍停，清楚但不拖慢",
+          "id": "cbe9",
+          "text": "還記得開頭問的數量翻倍嗎？最低總價真的換人了，變成丙。"
+        },
+        {
+          "id": "nvu3",
+          "pause_after_ms": 1200,
+          "text": "不是誰突然降價，而是固定運費在不同張數下，占的比例變了。"
+        }
+      ],
+      "template": "table"
+    },
+    {
+      "id": "threshold-start",
+      "chapter": "只多一張，最低價在哪裡換人？",
+      "template": "big",
+      "data": {
+        "text": "把轉換點找出來",
+        "key": "比較相鄰數量，不猜所有張數"
+      },
+      "lines": [
+        {
+          "id": "fa3t",
+          "text": "那最低總價是從第幾張開始換人？"
+        },
+        {
+          "id": "63ek",
+          "text": "我們拿相鄰的兩個需求來試，不去猜所有張數都用同一個排名。"
+        }
+      ],
+      "claims": [
+        "c39"
+      ]
+    },
+    {
+      "id": "threshold-request12",
+      "template": "code",
+      "data": {
+        "title": "先存第一個需求",
+        "code": "{\n  \"scenario\": \"revised\",\n  \"quantity\": 12\n}",
+        "caption": "request-12.json 第1–4行｜全文",
+        "key": "修訂情境不變，只改數量"
+      },
+      "lines": [
+        {
+          "id": "8fkp",
+          "text": "先把修訂情境另存一份，數量填十二，其他條件保持相同。"
+        }
+      ],
+      "claims": [
+        "c39"
+      ]
+    },
+    {
+      "id": "threshold-run12",
+      "template": "code",
+      "data": {
+        "title": "建立十二張的結果",
+        "code": "python3 build_comparison.py \\\n  --analysis ../research/lab-ai-extraction.json \\\n  --extracted ../research/lab-extracted-pages.json \\\n  --request request-12.json \\\n  --out comparison-12",
+        "caption": "materials 資料夾執行｜實跑2026-10-26",
+        "key": "新輸出，不覆蓋原先結果"
+      },
+      "lines": [
+        {
+          "id": "utm2",
+          "text": "用同一份抽取資料執行，結果另存到這一份需求的資料夾。"
+        }
+      ],
+      "claims": [
+        "c39"
+      ]
+    },
+    {
+      "id": "threshold-request13",
+      "template": "code",
+      "data": {
+        "title": "再測相鄰的一張",
+        "code": "{\n  \"scenario\": \"revised\",\n  \"quantity\": 13\n}",
+        "caption": "request-13.json 第1–4行｜全文",
+        "key": "需求多一張，其餘條件相同"
+      },
+      "lines": [
+        {
+          "id": "bnhk",
+          "text": "再複製這份需求，只多加一張，留下另一個檔名。"
+        }
+      ],
+      "claims": [
+        "c39"
+      ]
+    },
+    {
+      "id": "threshold-run13",
+      "template": "code",
+      "data": {
+        "title": "保留第二份結果",
+        "code": "python3 build_comparison.py \\\n  --analysis ../research/lab-ai-extraction.json \\\n  --extracted ../research/lab-extracted-pages.json \\\n  --request request-13.json \\\n  --out comparison-13",
+        "caption": "materials 資料夾執行｜實跑2026-10-26",
+        "key": "兩份結果可以並排核對"
+      },
+      "lines": [
+        {
+          "id": "7udt",
+          "text": "輸出位置也要分開，這樣兩份結果才能真的並排比較。"
+        }
+      ],
+      "claims": [
+        "c39"
+      ]
+    },
+    {
+      "id": "threshold-results",
+      "template": "table",
+      "data": {
+        "title": "相鄰數量，真的換了人",
+        "columns": [
+          "張數",
+          "甲",
+          "乙",
+          "丙修訂",
+          "最低"
+        ],
+        "rows": [
+          [
+            "12",
+            "2,478.00",
+            "2,460.00",
+            "2,467.50",
+            "乙"
+          ],
+          [
+            "13",
+            "2,667.00",
+            "2,665.00",
+            "2,651.25",
+            "丙"
+          ]
+        ],
+        "key": "單位：元｜送達含稅總價",
+        "source": "實際comparison-12/13｜原報價第1–2頁"
+      },
+      "lines": [
+        {
+          "id": "6nxr",
+          "text": "十二張時，乙只比丙少七元五角，還沒有換人。"
+        },
+        {
+          "id": "7jrk",
+          "text": "十三張時，丙就領先十三元七角五分，這一步才跨過轉換點。"
+        }
+      ],
+      "claims": [
+        "c40"
+      ]
+    },
+    {
+      "id": "threshold-margin",
+      "template": "code",
+      "data": {
+        "title": "差額用同一個方向",
+        "code": "12 張：丙 − 乙 = +7.50\n13 張：丙 − 乙 = −13.75\n每加一張：205.00 − 183.75 = 21.25",
+        "caption": "兩份實際比較結果｜相同的差額方向",
+        "key": "正數：丙較貴｜負數：丙較便宜"
+      },
+      "lines": [
+        {
+          "id": "e5gd",
+          "text": "差額都用丙減乙，正數是丙較貴，負數就是丙較便宜。"
+        },
+        {
+          "id": "petb",
+          "text": "每多一張，丙相對乙追回二十一元兩角五分，所以差額跨過了零。",
+          "pause_after_ms": 1200
+        }
+      ],
+      "claims": [
+        "c41"
+      ]
+    },
+    {
+      "id": "range21-request",
+      "chapter": "超出報價範圍，先別下單",
+      "template": "code",
+      "data": {
+        "title": "如果再多要一張？",
+        "code": "{\n  \"scenario\": \"revised\",\n  \"quantity\": 21\n}",
+        "caption": "request-21-invalid.json 第1–4行｜全文",
+        "key": "同一個採購，數量改成21"
+      },
+      "lines": [
+        {
+          "id": "vnaq",
+          "text": "二十張的需求如果再多要一張，變成二十一張，答案還算得出來嗎？",
+          "emotion": "清楚帶著觀眾動手，數字前稍停"
+        },
+        {
+          "id": "trph",
+          "text": "這次先別改單價，照同一個方法重算看看。",
+          "emotion": "清楚帶著觀眾動手，數字前稍停"
+        }
+      ],
+      "claims": [
+        "c36"
+      ]
+    },
+    {
+      "id": "range21-run",
+      "template": "code",
+      "data": {
+        "title": "只更換需求與輸出位置",
+        "code": "python3 build_comparison.py \\\n  --analysis ../research/lab-ai-extraction.json \\\n  --extracted ../research/lab-extracted-pages.json \\\n  --request request-21-invalid.json \\\n  --out comparison-21",
+        "caption": "materials 資料夾執行｜實跑 2026-10-26",
+        "key": "其餘資料與程式不變"
+      },
+      "lines": [
+        {
+          "id": "cegb",
+          "text": "只換需求檔和輸出資料夾，其他輸入都不變。",
+          "emotion": "清楚帶著觀眾動手，數字前稍停"
+        },
+        {
+          "id": "pn4i",
+          "text": "程式會先拿新數量，對照各家寫明的適用範圍。",
+          "emotion": "清楚帶著觀眾動手，數字前稍停"
+        }
+      ],
+      "claims": [
+        "c36"
+      ]
+    },
+    {
+      "id": "range21-result",
+      "template": "quote",
+      "data": {
+        "source": "實際執行｜2026-10-26｜數量21",
+        "key": "超出範圍，沒有產生新比價表",
+        "quote": "ValueError: Quantity outside explicitly quoted range"
+      },
+      "lines": [
+        {
+          "id": "9jiq",
+          "text": "結果它拒絕計算，也沒有建立新的結果資料夾。",
+          "emotion": "清楚帶著觀眾動手，數字前稍停"
+        },
+        {
+          "id": "egmv",
+          "text": "因為二十一張，已經超過這三份報價寫明的範圍。",
+          "emotion": "清楚帶著觀眾動手，數字前稍停"
+        }
+      ],
+      "claims": [
+        "c36"
+      ]
+    },
+    {
+      "id": "range21-question",
+      "template": "chat",
+      "data": {
+        "title": "把新的需求交回供應商",
+        "messages": [
+          {
+            "text": "想改成21張，請重報同規格的單價、運費和交期。",
+            "side": "right"
+          }
+        ],
+        "key": "詢問草稿｜尚未寄出"
+      },
+      "lines": [
+        {
+          "id": "92mc",
+          "text": "如果真的需要這個數量，就請供應商重報這一版條件。",
+          "emotion": "清楚帶著觀眾動手，數字前稍停"
+        }
+      ],
+      "claims": [
+        "c37"
+      ]
+    },
+    {
+      "data": {
+        "cta": "完整需求與提示詞在教材包",
+        "key": "你最常遇到哪個報價欄位沒寫清楚？",
+        "title": "換成你的報價試一次"
+      },
+      "id": "outro",
+      "lines": [
+        {
+          "id": "vee5",
+          "text": "你最常遇到哪個報價欄位沒寫清楚，留言告訴我。"
+        },
+        {
+          "emotion": "自然銜接上一句，重點輕輕加重",
+          "id": "9jqz",
+          "text": "訂閱這個頻道，繼續把 AI 用成能交付的工作成果。"
+        }
+      ],
+      "template": "outro"
+    }
+  ],
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "sources": [
+    {
+      "checked_on": "2026-10-26",
+      "title": "pypdf — Extract Text from a PDF",
+      "url": "https://pypdf.readthedocs.io/en/stable/user/extract-text.html"
+    },
+    {
+      "checked_on": "2026-10-26",
+      "title": "openpyxl — Using formulae",
+      "url": "https://openpyxl.readthedocs.io/en/stable/simple_formulae.html"
+    }
+  ],
+  "subtitles": {
+    "burn_in": false
+  },
+  "target_minutes": [
+    8,
+    12
+  ],
+  "theme": "paper",
+  "thumbnail": {
+    "data": {
+      "asset": "stock/be673375c05932dd665ca14b79030c1fa69b5705c1d582348b31b0eb89a5c7a2.png",
+      "headline": "**先算總價**",
+      "layout": "a",
+      "sub": "稅與運費別漏算",
+      "tag": "AI 比較 PDF 報價"
+    },
+    "template": "thumb"
+  },
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "youtube": {
+    "category_id": 27,
+    "default_language": "zh-TW",
+    "description": "三份 PDF 報價的單價不能直接放在一起排序。跟著同一組原創明信片報價，讓 AI 先整理規格、數量、含稅狀態、運費與來源頁碼，再用明示條件算出可比較的送達總價。收到修訂版、把數量從十張改成二十張後，重新核對結果。\n\n示範使用本次 Codex AI 文件分析、pypdf 文字抽取與精確小數計算，輸出可編輯試算表；不宣稱已實測任何特定商用 AI 產品的上傳介面。供應商、價格及百分之五稅率均是原創練習設定，不是對真實交易的稅務判斷。\n\n資料與實作日期：2026-10-26。本次 PDF 可選取文字；這條抽文流程不做掃描影像 OCR。試算表中的數值由計算工具實際計算，openpyxl 只負責寫檔，不宣稱它會計算公式。\n\n教材包含需求、提示詞、來源 PDF 生成程式、逐頁抽文、可編輯比價表與版本紀錄。\n\n畫面七行提示詞為觀眾任務要求；機讀欄位格式另見 analysis-prompt.txt 的 JSON 契約，本次 AI 分析也讀取了該契約。\n\n原創教材、需求與完整提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+    "made_for_kids": false,
+    "tags": [
+      "AI 教學",
+      "PDF 比價",
+      "報價比較",
+      "辦公室 AI",
+      "Mokaair"
+    ],
+    "title": "用 AI 比較三份 PDF 報價：最低單價，真的最便宜？",
+    "video_id": null
+  }
+}

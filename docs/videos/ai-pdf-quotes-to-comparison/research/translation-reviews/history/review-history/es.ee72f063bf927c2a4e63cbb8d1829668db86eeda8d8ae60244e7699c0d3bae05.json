@@ -1,0 +1,455 @@
+{
+  "locale": "es",
+  "scope": "source-meaning-and-naturalness",
+  "reviewer": {
+    "id": "/root/pdf_author_id_vi",
+    "role": "independent_reviewer_of_es_pt",
+    "independence": "Authored id/vi only; did not author or edit es/pt. No self-review of id/vi."
+  },
+  "source_snapshot": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/source-video.json",
+  "exactsource_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "authored_file": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/es.authored.json",
+  "actualauthored_file_sha256": "ee72f063bf927c2a4e63cbb8d1829668db86eeda8d8ae60244e7699c0d3bae05",
+  "lines_reviewed": 101,
+  "reviewed_line_ids": [
+    "6vwc",
+    "xnrg",
+    "edfn",
+    "hg9m",
+    "ajsk",
+    "kv5r",
+    "ddpd",
+    "9ski",
+    "bv46",
+    "hssn",
+    "d8h7",
+    "jfix",
+    "d78a",
+    "mjhz",
+    "fvzv",
+    "3742",
+    "3639",
+    "658p",
+    "m57n",
+    "scia",
+    "nxct",
+    "7k9u",
+    "ea2e",
+    "ke2c",
+    "rgfp",
+    "fd27",
+    "qttz",
+    "indq",
+    "q7x8",
+    "7hi8",
+    "cxxm",
+    "6pwe",
+    "eg6v",
+    "g3vp",
+    "35fs",
+    "at27",
+    "d2m5",
+    "xwsj",
+    "qagq",
+    "znv7",
+    "c49q",
+    "bcr5",
+    "tnrc",
+    "cv74",
+    "8xam",
+    "qrv8",
+    "ehby",
+    "u7i8",
+    "e86a",
+    "j2ja",
+    "ehkq",
+    "aghq",
+    "z8x8",
+    "7scz",
+    "w9yq",
+    "pdxs",
+    "k75x",
+    "mbee",
+    "h85p",
+    "hiqk",
+    "ambg",
+    "dyun",
+    "benr",
+    "zqts",
+    "q57z",
+    "7dp4",
+    "ubke",
+    "f5gy",
+    "3eue",
+    "sqqn",
+    "6wkf",
+    "74dc",
+    "326u",
+    "m5sn",
+    "sxtz",
+    "rgr9",
+    "xevg",
+    "m8sb",
+    "pruf",
+    "gy4i",
+    "cbe9",
+    "nvu3",
+    "fa3t",
+    "63ek",
+    "8fkp",
+    "utm2",
+    "bnhk",
+    "7udt",
+    "6nxr",
+    "7jrk",
+    "e5gd",
+    "petb",
+    "vnaq",
+    "trph",
+    "cegb",
+    "pn4i",
+    "9jiq",
+    "egmv",
+    "92mc",
+    "vee5",
+    "9jqz"
+  ],
+  "metadata_reviewed": [
+    "title",
+    "description",
+    "tags",
+    "thumbnail.tag",
+    "thumbnail.headline",
+    "thumbnail.sub",
+    "chapters.opening",
+    "chapters.need-start",
+    "chapters.extract-start",
+    "chapters.cost-start",
+    "chapters.missing-start",
+    "chapters.revision-start",
+    "chapters.quantity-start",
+    "chapters.threshold-start",
+    "chapters.range21-request"
+  ],
+  "passed": false,
+  "issue_count": 17,
+  "issues": [
+    {
+      "issue_id": "ES-01",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.xnrg"
+      ],
+      "evidence": [
+        {
+          "location": "lines.xnrg",
+          "source": "因為這三份報價，寫的其實不是同一種金額。",
+          "authored": "Las 3 cotizaciones no muestran el mismo importe."
+        }
+      ],
+      "problem": "Different kinds/bases of amount became merely different numerical amounts. The source explains tax-exclusive versus tax-inclusive price bases, not the unsurprising fact that prices differ.",
+      "suggested_fix": "State that the three quotations use different amount bases, e.g. Las 3 no cotizan con la misma base de precio."
+    },
+    {
+      "issue_id": "ES-02",
+      "kind": "naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.jfix"
+      ],
+      "evidence": [
+        {
+          "location": "lines.jfix",
+          "source": "這次要的是送達總價，單價只是其中一個欄位。",
+          "authored": "Buscamos el total entregado; precio unitario es un campo"
+        }
+      ],
+      "problem": "El total entregado is an unnatural calque for the total cost including delivery. Elsewhere the draft uses the clearer total con entrega.",
+      "suggested_fix": "Use total con entrega consistently; retain the contrast with unit price being just one field."
+    },
+    {
+      "issue_id": "ES-03",
+      "kind": "meaning",
+      "severity": "moderate",
+      "locations": [
+        "lines.d78a"
+      ],
+      "evidence": [
+        {
+          "location": "lines.d78a",
+          "source": "三份原檔先保留下來，輸出另外放一個資料夾。",
+          "authored": "Guarda los 3 originales; pon la salida aparte."
+        }
+      ],
+      "problem": "Pon la salida aparte loses the explicit instruction to put output in another folder.",
+      "suggested_fix": "Keep the other-folder instruction, e.g. Guarda los 3 originales; salida en otra carpeta."
+    },
+    {
+      "issue_id": "ES-04",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.xwsj"
+      ],
+      "evidence": [
+        {
+          "location": "lines.xwsj",
+          "source": "甲的商品和運費都明示未稅，所以兩邊各算自己的稅。",
+          "authored": "Aster: producto y envío sin impuesto; calcula ambos"
+        }
+      ],
+      "problem": "Calcula ambos has producto y envio as its grammatical antecedents. It does not say to calculate their respective taxes separately, which is the actual arithmetic instruction.",
+      "suggested_fix": "Explicitly calculate each tax separately for the tax-exclusive goods and shipping. Retain an over-budget exception if a natural faithful version cannot fit."
+    },
+    {
+      "issue_id": "ES-05",
+      "kind": "meaning-and-naturalness",
+      "severity": "major",
+      "locations": [
+        "lines.znv7"
+      ],
+      "evidence": [
+        {
+          "location": "lines.znv7",
+          "source": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。",
+          "authored": "Birch: con impuesto, por cantidad da el total del producto."
+        }
+      ],
+      "problem": "Con impuesto, por cantidad da el total del producto omits the unit-price multiplicand. It is not a complete, natural explanation of unit price times quantity, and it does not explicitly preserve that goods tax is already included.",
+      "suggested_fix": "Name the tax-inclusive unit price and multiply that price by quantity to obtain the goods amount. Do not omit the multiplicand to fit the budget."
+    },
+    {
+      "issue_id": "ES-06",
+      "kind": "naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.bcr5"
+      ],
+      "evidence": [
+        {
+          "location": "lines.bcr5",
+          "source": "結果算到同一個終點，目前是乙比甲便宜。",
+          "authored": "Al mismo punto final, Birch es menor que Aster"
+        }
+      ],
+      "problem": "Al mismo punto final is a literal calque, and Birch es menor compares companies as though they were numbers rather than saying Birch costs less.",
+      "suggested_fix": "Use a cost comparison, e.g. Con entrega, Birch cuesta menos que Aster."
+    },
+    {
+      "issue_id": "ES-07",
+      "kind": "meaning",
+      "severity": "moderate",
+      "locations": [
+        "lines.cv74"
+      ],
+      "evidence": [
+        {
+          "location": "lines.cv74",
+          "source": "碰到小數時，讓計算工具依明示條件計算，再統一金額格式。",
+          "authored": "Calcula decimales según las condiciones; luego unifica el formato."
+        }
+      ],
+      "problem": "The specified calculation-tool step is absent. The sentence now simply tells the viewer to calculate, weakening the source distinction between AI interpretation and tool-based arithmetic.",
+      "suggested_fix": "Retain calculation by a tool under the stated conditions, followed by standardizing money formatting."
+    },
+    {
+      "issue_id": "ES-08",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.8xam"
+      ],
+      "evidence": [
+        {
+          "location": "lines.8xam",
+          "source": "不要讓模型先四捨五入單價，再把誤差一路乘上數量。",
+          "authored": "No dejes que AI redondee antes el precio y multiplique el error."
+        }
+      ],
+      "problem": "Multiplique el error omits that the error is multiplied by quantity. Precio also loses the explicit unit-price distinction at this critical explanation.",
+      "suggested_fix": "Say that the model must not first round the unit price and then multiply that rounding error by quantity."
+    },
+    {
+      "issue_id": "ES-09",
+      "kind": "meaning-and-naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.qrv8"
+      ],
+      "evidence": [
+        {
+          "location": "lines.qrv8",
+          "source": "打開試算表，把原文金額和計算金額分開核對。",
+          "authored": "Abre la hoja; compara aparte origen y cálculo."
+        }
+      ],
+      "problem": "Compara aparte origen y calculo is vague and unnatural: the source asks to check the quoted monetary values and the calculated monetary values separately, not abstract origin versus calculation.",
+      "suggested_fix": "Name original/quoted amounts and calculated amounts, and preserve checking the two separately in the spreadsheet."
+    },
+    {
+      "issue_id": "ES-10",
+      "kind": "naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.u7i8"
+      ],
+      "evidence": [
+        {
+          "location": "lines.u7i8",
+          "source": "還記得那個空白的運費嗎？現在它直接決定丙能不能排進名次。",
+          "authored": "¿Recuerdas el envío vacío? Decide si Cedar puede entrar al ranking."
+        }
+      ],
+      "problem": "Envio vacio can mean an empty shipment. The intended meaning is a blank shipping-cost field, already expressed naturally as envio en blanco in hg9m.",
+      "suggested_fix": "Use the blank cost-field meaning, e.g. el envio en blanco or el campo de envio en blanco."
+    },
+    {
+      "issue_id": "ES-11",
+      "kind": "meaning-and-naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.dyun"
+      ],
+      "evidence": [
+        {
+          "location": "lines.dyun",
+          "source": "運費補齊後，丙比乙多了五十元，還追不上。",
+          "authored": "Con envío, Cedar supera a Birch por 50 TWD; aún no gana."
+        }
+      ],
+      "problem": "Cedar supera a Birch can suggest outperforming Birch, while the source says Cedar costs 50 TWD more and therefore still loses. A direct price comparison avoids the contradictory ranking implication.",
+      "suggested_fix": "Use cuesta 50 TWD mas que Birch and retain that Cedar still does not win."
+    },
+    {
+      "issue_id": "ES-12",
+      "kind": "naturalness",
+      "severity": "minor",
+      "locations": [
+        "lines.6wkf"
+      ],
+      "evidence": [
+        {
+          "location": "lines.6wkf",
+          "source": "存檔後，在教材的程式資料夾執行這條命令。",
+          "authored": "Guarda; ejecuta esto en materials."
+        }
+      ],
+      "problem": "The exact directory name materials is correct, but en materials omits the source indication that it is a folder. This can be made explicit within the slot.",
+      "suggested_fix": "Keep the literal directory name: Guarda; ejecuta en la carpeta materials."
+    },
+    {
+      "issue_id": "ES-13",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.sxtz"
+      ],
+      "evidence": [
+        {
+          "location": "lines.sxtz",
+          "source": "這三份報價都寫明，單價在這段數量範圍內保持相同。",
+          "authored": "Los 3 fijan el mismo precio unitario dentro de este rango."
+        }
+      ],
+      "problem": "Los 3 fijan el mismo precio unitario reads as all three suppliers setting the same unit price. Their prices are different; each supplier keeps its own unit price unchanged across the quoted quantity range.",
+      "suggested_fix": "Use a distributive/possessive statement, e.g. Los 3 mantienen sus precios unitarios en este rango."
+    },
+    {
+      "issue_id": "ES-14",
+      "kind": "meaning",
+      "severity": "major",
+      "locations": [
+        "lines.rgr9"
+      ],
+      "evidence": [
+        {
+          "location": "lines.rgr9",
+          "source": "送貨條件也有對應的說明，所以我們這次能照新數量重算。",
+          "authored": "También detallan la entrega; así podemos recalcular esa cantidad."
+        }
+      ],
+      "problem": "Recalcular esa cantidad means recalculating the quantity itself. The source recalculates amounts for the newly requested quantity because the shipping terms explicitly permit it.",
+      "suggested_fix": "Say recalcular para la nueva cantidad, retaining the stated shipping conditions as the reason."
+    },
+    {
+      "issue_id": "ES-15",
+      "kind": "meaning-and-naturalness",
+      "severity": "major",
+      "locations": [
+        "lines.xevg"
+      ],
+      "evidence": [
+        {
+          "location": "lines.xevg",
+          "source": "甲的商品金額跟著數量增加，但運費還是那一筆。",
+          "authored": "El producto de Aster sube con la cantidad; el envío sigue fijo."
+        }
+      ],
+      "problem": "El producto de Aster sube can imply that the product price rises. The source specifically says the aggregate goods amount rises with quantity while shipping remains fixed; its unit price does not change.",
+      "suggested_fix": "Name the goods amount/value, not the product or unit price, and retain its increase with quantity and fixed shipping."
+    },
+    {
+      "issue_id": "ES-16",
+      "kind": "meaning",
+      "severity": "moderate",
+      "locations": [
+        "lines.fa3t",
+        "chapters.threshold-start"
+      ],
+      "evidence": [
+        {
+          "location": "lines.fa3t",
+          "source": "那最低總價是從第幾張開始換人？",
+          "authored": "¿Con cuántas cambia el menor total?"
+        },
+        {
+          "location": "chapters.threshold-start",
+          "source": "只多一張，最低價在哪裡換人？",
+          "authored": "¿Cuándo cambia el menor total?"
+        }
+      ],
+      "problem": "Cambia el menor total asks when the numerical minimum total changes; that total changes with every quantity. The intended question is when the identity of the cheapest supplier changes.",
+      "suggested_fix": "Ask when the cheapest supplier changes, e.g. Con cuantas cambia el mas barato? / Cuando cambia el mas barato? Preserve Spanish opening question marks and accents in the authored wording."
+    },
+    {
+      "issue_id": "ES-17",
+      "kind": "naturalness",
+      "severity": "moderate",
+      "locations": [
+        "lines.6nxr"
+      ],
+      "evidence": [
+        {
+          "location": "lines.6nxr",
+          "source": "十二張時，乙只比丙少七元五角，還沒有換人。",
+          "authored": "Con 12, Birch es 7.50 TWD menor que Cedar; aún lidera."
+        }
+      ],
+      "problem": "Birch es 7.50 TWD menor que Cedar compares the company itself as a smaller amount. The monetary value is correct, but the natural comparison is cuesta ... menos.",
+      "suggested_fix": "State that Birch costs 7.50 TWD less than Cedar at 12 and still leads."
+    }
+  ],
+  "confirmed_checks": [
+    "All 101 source/target lines were read individually against the exact source scene context.",
+    "All title, description paragraphs, tags, nine chapter names and three thumbnail fields were read.",
+    "Original worksheet fields are preserved except authored text; line sources match this exact snapshot.",
+    "Aster/Birch/Cedar mapping is consistent. Cedar revision is not counted as a fourth supplier.",
+    "Missing shipping is not silently set to zero; free Birch shipping is distinguished from unquoted Cedar shipping.",
+    "Metadata preserves fictional suppliers/prices/5% tax and does not present real tax advice.",
+    "Static workbook regeneration is retained; metadata says openpyxl writes files and does not calculate formulas.",
+    "Actual Codex document analysis and pypdf extraction remain distinct from a claimed commercial upload-interface test; no OCR claim was added.",
+    "2026-10-26 and the exact frozen materials URL are preserved; future URL changes require another check.",
+    "Money amounts 50, 110, 52.50, 7.50, 13.75 and 21.25 retain their exact TWD values; Portuguese decimal commas are localization, not currency conversion.",
+    "The literal materials folder name is correct for the source command context. Folder-noun clarity is reported above.",
+    "7dp4 keeps saving the quantity-10 file under the shown new name before changing the quantity to 20."
+  ],
+  "limitations": [
+    "Only this frozen source snapshot and these exact authored-file hashes are reviewed. This is not a final-current-source or publication approval.",
+    "Character budgets are estimates. No audio synthesis, listening, actual dub-fit or timing approval was performed.",
+    "Some suggested fixes describe required meaning rather than asserting they fit the current max_chars; preserve facts and record a budget exception where needed.",
+    "No draft/source was changed by this reviewer. The original author must revise, followed by independent re-review."
+  ],
+  "exact_source_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "actual_authored_file_sha256": "ee72f063bf927c2a4e63cbb8d1829668db86eeda8d8ae60244e7699c0d3bae05"
+}

@@ -1,0 +1,551 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "th",
+  "recorded_at_utc": "2026-10-26T20:18:26.849515+00:00",
+  "reviewer": "OpenAI Codex /root/pdf_ko_single_producer/review_pdf_th_current",
+  "independent_from_translation_author": "/root/pdf_author_ko_th",
+  "independence": {
+    "current_or_historical_Thai_author": false,
+    "Thai_text_edited_by_reviewer": false,
+    "production_commands_performed": false,
+    "review_is_new_actual_current_text_read": true,
+    "human_native_Thai_review_claimed": false,
+    "separate_secondary_crosscheck_completed": false
+  },
+  "scope": "source-meaning-and-naturalness",
+  "status": "current_source_meaning_and_text_naturalness_passed_for_exact_SHA_only",
+  "passed": true,
+  "issues": [],
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+  "baseline_file": "/workspace/work/ai-pdf-01/th-current-independent-review-20261026/th.baseline.current.json",
+  "baseline_is_exact_current_translation_bytes": true,
+  "actual_read": {
+    "all101_Chinese_Thai_spoken_pairs": true,
+    "line_count": 101,
+    "line_ids": [
+      "6vwc",
+      "xnrg",
+      "edfn",
+      "hg9m",
+      "ajsk",
+      "kv5r",
+      "ddpd",
+      "9ski",
+      "bv46",
+      "hssn",
+      "d8h7",
+      "jfix",
+      "d78a",
+      "mjhz",
+      "fvzv",
+      "3742",
+      "3639",
+      "658p",
+      "m57n",
+      "scia",
+      "nxct",
+      "7k9u",
+      "ea2e",
+      "ke2c",
+      "rgfp",
+      "fd27",
+      "qttz",
+      "indq",
+      "q7x8",
+      "7hi8",
+      "cxxm",
+      "6pwe",
+      "eg6v",
+      "g3vp",
+      "35fs",
+      "at27",
+      "d2m5",
+      "xwsj",
+      "qagq",
+      "znv7",
+      "c49q",
+      "bcr5",
+      "tnrc",
+      "cv74",
+      "8xam",
+      "qrv8",
+      "ehby",
+      "u7i8",
+      "e86a",
+      "j2ja",
+      "ehkq",
+      "aghq",
+      "z8x8",
+      "7scz",
+      "w9yq",
+      "pdxs",
+      "k75x",
+      "mbee",
+      "h85p",
+      "hiqk",
+      "ambg",
+      "dyun",
+      "benr",
+      "zqts",
+      "q57z",
+      "7dp4",
+      "ubke",
+      "f5gy",
+      "3eue",
+      "sqqn",
+      "6wkf",
+      "74dc",
+      "326u",
+      "m5sn",
+      "sxtz",
+      "rgr9",
+      "xevg",
+      "m8sb",
+      "pruf",
+      "gy4i",
+      "cbe9",
+      "nvu3",
+      "fa3t",
+      "63ek",
+      "8fkp",
+      "utm2",
+      "bnhk",
+      "7udt",
+      "6nxr",
+      "7jrk",
+      "e5gd",
+      "petb",
+      "vnaq",
+      "trph",
+      "cegb",
+      "pn4i",
+      "9jiq",
+      "egmv",
+      "92mc",
+      "vee5",
+      "9jqz"
+    ],
+    "all62_source_card_data_objects_and_context": true,
+    "card_count": 62,
+    "card_ids": [
+      "opening",
+      "opening-unit",
+      "opening-result",
+      "opening-missing",
+      "opening-revision",
+      "opening-quantity",
+      "need-start",
+      "need-spec",
+      "need-delivery",
+      "need-labels",
+      "need-fiction",
+      "need-route",
+      "need-proof",
+      "extract-start",
+      "extract-core",
+      "extract-fields",
+      "extract-aster",
+      "extract-aster-quote",
+      "extract-birch",
+      "extract-missing-quote",
+      "extract-null",
+      "extract-review",
+      "cost-start",
+      "cost-unit-baseline",
+      "cost-aster-formula",
+      "cost-birch-formula",
+      "cost-initial-result",
+      "cost-rounding",
+      "cost-workbook",
+      "missing-start",
+      "missing-known",
+      "missing-question",
+      "missing-no-send",
+      "missing-status",
+      "revision-start",
+      "revision-identity",
+      "revision-diff",
+      "revision-total",
+      "revision-ranking",
+      "revision-links",
+      "quantity-start",
+      "quantity-edit",
+      "quantity-prompt",
+      "quantity-run",
+      "quantity-output",
+      "quantity-ranges",
+      "quantity-aster",
+      "quantity-birch",
+      "quantity-cedar",
+      "quantity-ranking",
+      "threshold-start",
+      "threshold-request12",
+      "threshold-run12",
+      "threshold-request13",
+      "threshold-run13",
+      "threshold-results",
+      "threshold-margin",
+      "range21-request",
+      "range21-run",
+      "range21-result",
+      "range21-question",
+      "outro"
+    ],
+    "metadata": [
+      "complete Chinese and Thai title",
+      "complete Chinese and Thai description, including all paragraphs and exact URL",
+      "all 5 Chinese and 4 current Thai tags",
+      "all 9 Chinese and Thai chapter titles",
+      "complete Chinese and Thai thumbnail tag/headline/sub"
+    ],
+    "quote_evidence": "Complete persisted pypdf extraction read for all four two-page documents: aster.pdf, birch.pdf, cedar.pdf, cedar-revised.pdf. No new PDF extraction or visual inspection performed.",
+    "requirements_and_viewer_prompt": "Complete requirements.txt and seven-line viewer-prompt.txt read. Every-field filename/page/supporting-sentence rule retained in the current cards, with revision instruction explicitly conditional on receipt.",
+    "method": "Actually read all current spoken pairs and all card data with adjacent narrative context, then complete metadata. Existing reports and mechanical exactness/hash checks supplement this reading. No pass inferred merely from the formal index."
+  },
+  "meaning_checks": [
+    {
+      "check": "missing/null versus explicit free/zero",
+      "result": "preserved",
+      "line_ids": [
+        "hg9m",
+        "indq",
+        "q7x8",
+        "7hi8",
+        "cxxm",
+        "6pwe",
+        "tnrc",
+        "u7i8",
+        "j2ja"
+      ],
+      "evidence": "Thai distinguishes Birch explicit free delivery/0 from Cedar missing shipping/null, keeps incomplete total pending and prevents first-place ranking."
+    },
+    {
+      "check": "separate goods and shipping taxes",
+      "result": "preserved",
+      "line_ids": [
+        "ea2e",
+        "xwsj",
+        "znv7",
+        "j2ja",
+        "hiqk"
+      ],
+      "evidence": "Goods and shipping taxes remain separate; Birch tax-inclusive goods are not taxed again; original Cedar freight/tax status and amount remain unknown."
+    },
+    {
+      "check": "every quote both pages plus per-field evidence",
+      "result": "preserved",
+      "line_ids": [
+        "m57n",
+        "scia",
+        "nxct",
+        "7k9u",
+        "fd27",
+        "eg6v",
+        "g3vp"
+      ],
+      "evidence": "ข้อความทั้ง2หน้าของแต่ละใบ explicitly includes both pages of each quote. Cards retain filename/page/supporting original sentence for every field, plus requirements and unresolved mismatches."
+    },
+    {
+      "check": "Cedar revision identity and provenance",
+      "result": "preserved",
+      "line_ids": [
+        "k75x",
+        "mbee",
+        "h85p",
+        "hiqk",
+        "benr",
+        "zqts",
+        "m5sn"
+      ],
+      "evidence": "C revision replaces its old row and source references, preserves the old file, keeps goods price unchanged and is explicitly not a fourth supplier."
+    },
+    {
+      "check": "10 to20 request chronology and range",
+      "result": "preserved",
+      "line_ids": [
+        "q57z",
+        "7dp4",
+        "ubke",
+        "f5gy",
+        "3eue",
+        "sqqn",
+        "326u",
+        "sxtz",
+        "rgr9",
+        "xevg"
+      ],
+      "evidence": "Save old10 settings under displayed new filename before changing to20; keep revised scenario and other requirements; verify stated10–20 scope; fixed freight is not doubled."
+    },
+    {
+      "check": "50/110/52.50 comparisons",
+      "result": "preserved",
+      "line_ids": [
+        "dyun",
+        "m8sb",
+        "gy4i"
+      ],
+      "evidence": "At10 C revised is50 TWD above B and equals A. At20 B is110 above A; C is52.50 below A."
+    },
+    {
+      "check": "12 to13 threshold and signed direction",
+      "result": "preserved",
+      "line_ids": [
+        "fa3t",
+        "63ek",
+        "8fkp",
+        "bnhk",
+        "6nxr",
+        "7jrk",
+        "e5gd",
+        "petb"
+      ],
+      "evidence": "At12 B is7.50 TWD below C; at13 C leads B by13.75. Difference is C−B: positive means C more expensive; negative means C cheaper. Each extra piece decreases that difference by21.25 TWD."
+    },
+    {
+      "check": "21 refusal and no new output",
+      "result": "preserved",
+      "line_ids": [
+        "vnaq",
+        "trph",
+        "cegb",
+        "pn4i",
+        "9jiq",
+        "egmv",
+        "92mc"
+      ],
+      "evidence": "Same inputs except request/output; program checks each written range, rejects21 and creates no new result directory; ask supplier to requote rather than invent a price."
+    },
+    {
+      "check": "fictional exercise and tax assumption",
+      "result": "preserved",
+      "line_ids": [
+        "fvzv",
+        "3742"
+      ],
+      "evidence": "Fictional suppliers/terms and5% exercise assumption are retained; no real-transaction tax ruling introduced."
+    },
+    {
+      "check": "actual Codex/pypdf/OCR/openpyxl/static workbook scope",
+      "result": "preserved",
+      "line_ids": [
+        "3639",
+        "658p",
+        "cv74",
+        "qrv8",
+        "ehby"
+      ],
+      "evidence": "Full Thai description retains Codex document analysis, pypdf selectable-text extraction, exact decimal calculation and openpyxl file-writing only, with no tested commercial upload UI or scanned-image OCR claim. ehby explicitly says the workbook does not recalculate itself and changed requirements require a fresh result."
+    },
+    {
+      "check": "exact current materials URL and date",
+      "result": "preserved",
+      "evidence": "https://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+      "date": "2026-10-26"
+    },
+    {
+      "check": "current thumbnail headline meaning/naturalness",
+      "result": "preserved",
+      "evidence": "**รวมยอด**\n**ก่อน** reads as total it up first. The break preserves priority and the unchanged subline explicitly reminds the viewer to include tax and shipping."
+    },
+    {
+      "check": "Thai naturalness in full context and prior issues",
+      "result": "no concrete new issue",
+      "evidence": "Compact Thai narration remains understandable and source-faithful. Current u7i8/j2ja/cv74/qrv8 preserve the previously corrected inclusion-of-C, known/unknown data, monetary-formatting and source/calculated-amount distinctions. vee5 explicitly retains the source most-often question with บ่อยสุด and comment request. No style-preference rewrite proposed."
+    }
+  ],
+  "independent_decimal_crosscheck": [
+    {
+      "quantity": 10,
+      "A_TWD": "2100.00",
+      "B_TWD": "2050.00",
+      "C_revised_TWD": "2100.00",
+      "C_minus_B_TWD": "50.00"
+    },
+    {
+      "quantity": 12,
+      "A_TWD": "2478.00",
+      "B_TWD": "2460.00",
+      "C_revised_TWD": "2467.50",
+      "C_minus_B_TWD": "7.50"
+    },
+    {
+      "quantity": 13,
+      "A_TWD": "2667.00",
+      "B_TWD": "2665.00",
+      "C_revised_TWD": "2651.25",
+      "C_minus_B_TWD": "-13.75"
+    },
+    {
+      "quantity": 20,
+      "A_TWD": "3990.00",
+      "B_TWD": "4100.00",
+      "C_revised_TWD": "3937.50",
+      "C_minus_B_TWD": "-162.50"
+    }
+  ],
+  "formal_chain": [
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/th.meaning-review.json",
+      "sha256": "1472d54db412d171293d35712d7a4562e5428d83483daa94660c8292e0820550",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/th.thumbnail-headline-current-source-review-20261026.json",
+      "sha256": "f0c1cb6d5f2f0fa6b8fe7e8de6b889d2590bbf190b75ce9bd5108d7472f85af0",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/th.prior-meaning-index.json",
+      "sha256": "7b4459551751ad4f0e7fa255012ebf8e15f1662e54fb6002269245b04e808b39",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/th.prior-translation.json",
+      "sha256": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+      "actual_read_scope": "Complete structured comparison: sole current change is thumbnail.headline; all101 records and every other field exact."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/th.initial-current-source-review.json",
+      "sha256": "f04bb1c9296a4dffd44a0c7092335531de3849ea0bb5c5dbe53773b5568e4ba0",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/th.initial-independent-review.json",
+      "sha256": "89621885db4d98f5cd2fb3eeafc37e876a3d27e5372952ed3ef402be6717815f",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/th.256dc363ac1d233cc02851fb90645c6c5bcc3f2f752356ea09e84dc6d067e630.json",
+      "sha256": "f2a214214852b4f677379b6f2170ba6fcd7389caf60961f36d0914d45ddee824",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/th.c0b83b799cdcab410695d8723e7a0696d3a10428a9ce49fd37ca80c58fcb4de9.json",
+      "sha256": "3de3a317720277f2273beb0806729cc589bab17c6798ac7b8c6075187fd13ed9",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/baseline-preflights/th-independent-preflight-review.json",
+      "sha256": "83b6f20f533bbc27b11e12345cb7d3520c3c6dd24910a7651a842121227adc4e",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.independent-metadata-delta-review.json",
+      "sha256": "100d9df7f2884e38d14432b8c620d8c7f99c9ece82ecb92116bae2e346c60ff5",
+      "actual_read_scope": "Shared scope/provenance/limitations and complete Thai row/metadata/existing-meaning-chain context read; no new review of other locales claimed."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.root-r2-proposal.json",
+      "sha256": "1c98b139801ff568f69987eaf582d1085f1304f4a9ba096c575071910ca4d68b",
+      "actual_read_scope": "Proposal context and Thai before/after headline read; all-locale proposal visible but no other-locale source review claimed."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.root-current-source-admission.json",
+      "sha256": "737fdace01e27e4c374260755c7a21161a1ddda30cd438640a2b1d9b84d6072b",
+      "actual_read_scope": "Source/Thai chain admission and provenance context read; no other-locale review claimed."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/original-revised-chronology-clarification.json",
+      "sha256": "3833322aec74bab63bf31c00f31b3e49515c08480de45d453e6cb7bb70046254",
+      "actual_read_scope": "Complete Thai-specific report and substantive scope/findings/limitations read; SHA verified."
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/source-79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84.json",
+      "sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+      "actual_read_scope": "Complete structured comparison to current source: all101 records exact; source delta paths and exact old/new changed fields verified. No new media review."
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/th.authored.json",
+      "sha256": "0ebb5001092909772c436cfc4b635053e62ebe24443038c4de6d0d0795a52ce7",
+      "actual_read_scope": "All101 Thai texts mechanically matched to current actually read texts; full metadata, glossary, worksheet boundary note read; character budgets recomputed."
+    }
+  ],
+  "mechanical_checks": {
+    "formal_index_source_SHA_matches": true,
+    "formal_index_translation_SHA_matches": true,
+    "formal_index_report_SHA_matches": true,
+    "thumbnail_binding_prior_index_SHA_matches": true,
+    "thumbnail_binding_prior_translation_SHA_matches": true,
+    "thumbnail_delta_report_SHA_matches": true,
+    "thumbnail_delta_proposal_SHA_matches": true,
+    "prior_index_report_SHA_matches": true,
+    "initial_full_report_SHA_matches": true,
+    "full_review_source_snapshot_SHA_matches": true,
+    "full_review_author_snapshot_SHA_matches": true,
+    "all101_current_Chinese_line_records_equal_original_full_review_snapshot": true,
+    "all101_current_Thai_texts_equal_full_review_authored_texts": true,
+    "all101_current_Thai_records_equal_pre_thumbnail_translation": true,
+    "all101_line_source_hashes_current": true,
+    "authored_title_tags_exact": true,
+    "authored_all9_chapters_exact": true,
+    "authored_description_only_literal_URL_commit_delta": true,
+    "authored_thumbnail_tag_sub_exact": true,
+    "exact_current_materials_URL_preserved": true
+  },
+  "source_delta_from_original_full_review": [
+    ".scenes[14].data.caption",
+    ".youtube.description"
+  ],
+  "translation_delta_from_pre_thumbnail_current_source": [
+    ".thumbnail.headline"
+  ],
+  "native_readonly_metadata_status": {
+    "title": "current",
+    "description": "current",
+    "tags": "current",
+    "all9_chapters": "current",
+    "orphan_chapters": [],
+    "thumbnail": "current",
+    "method": "Read-only import of unchanged tools/video/core/translations.mjs metadataStatus and thumbnailStatus; no CLI production command."
+  },
+  "estimated_character_budget_overages": [
+    {
+      "id": "cv74",
+      "characters": 70,
+      "max_chars": 65,
+      "over_by": 5
+    },
+    {
+      "id": "u7i8",
+      "characters": 68,
+      "max_chars": 63,
+      "over_by": 5
+    },
+    {
+      "id": "vee5",
+      "characters": 47,
+      "max_chars": 38,
+      "over_by": 9
+    }
+  ],
+  "budget_scope_note": "Recomputed Unicode code-point counts against genuine original worksheet max_chars. These three existing warnings remain estimates; no measured fit failure or fit pass is asserted and they are not grounds for preference-only rewrites.",
+  "boundary_read": false,
+  "future_native_boundary_read": false,
+  "native_Thai_rewrite_boundary_reviewed": false,
+  "reviewed_boundaries": [],
+  "voice": false,
+  "audio_fit_or_timing_passed": false,
+  "audio_or_ASR_or_voice_approval_claimed": false,
+  "limitations": [
+    "Exact current source/translation SHA text review only; future actual Thai shorten/reword boundary must be separately read and reviewed.",
+    "Not a native Thai human review, measured audio fit/voice result, render/mobile visual check, caption/AV/full-package QA or owner/publication approval.",
+    "No provider synthesis, ASR, listening, timing, new PDF extraction, UI test or artifact rendering performed.",
+    "Existing reports media/approval claims are retained solely as historical context and are not adopted as fresh evidence."
+  ],
+  "actions": {
+    "repository_files_modified": [],
+    "only_new_files": [
+      "/workspace/work/ai-pdf-01/th-current-independent-review-20261026/th.baseline.current.json",
+      "/workspace/work/ai-pdf-01/th-current-independent-review-20261026/independent-current-source-review.json"
+    ],
+    "exclusive_create_no_overwrite": true,
+    "task_Git_source_index_counter_lease_auto_changes": false,
+    "producer_commands": 0,
+    "provider_or_paid_calls": 0,
+    "external_content_network_requests": 0,
+    "runtime_environment_status_read": true
+  },
+  "next_scope": "Remain available for a separately supplied actual Thai shorten/reword boundary. This report does not approve any unseen boundary or authorize production."
+}

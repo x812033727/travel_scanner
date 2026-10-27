@@ -1,0 +1,65 @@
+// Read-only actual stopped-unit audit. Offline/native status only; external evidence output.
+import fs from 'node:fs';
+import path from 'node:path';
+import { createHash } from 'node:crypto';
+import { isDeepStrictEqual } from 'node:util';
+import { loadProject, dubsStatus } from '/workspace/travel_scanner_pdf/tools/video/core/state.mjs';
+import { speechHash } from '/workspace/travel_scanner_pdf/tools/video/core/timeline.mjs';
+const home='/workspace/work/ai-pdf-01',root='/workspace/travel_scanner_pdf',slug='ai-pdf-quotes-to-comparison';
+const work=path.join(home,'media',slug),doc=path.join(root,'docs/videos',slug),prefix=path.join(home,'pt-fresh-user-defer5-20261027T0114Z');
+const read=f=>JSON.parse(fs.readFileSync(f)),sha=f=>createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+const exists=f=>fs.existsSync(f),maybe=f=>exists(f)?read(f):null,insist=(v,m)=>{if(!v)throw new Error(m);};
+const save=(f,v)=>fs.writeFileSync(f,JSON.stringify(v,null,2)+'\n',{flag:'wx'});
+const before=read(prefix+'-before.json'),out=read(prefix+'-actual-outcome.json'),state=read(path.join(work,'auto.json'));
+insist(out.actual_exit_code===4&&out.PT_primary_WAV_count===0&&out.PT_saved_primary_check_count===0&&out.defer_count_before===before.native_before.defer_count&&out.defer_count_after===out.defer_count_before+1&&state.defer_count===out.defer_count_after&&state.deferred_until===out.due_after&&Date.parse(state.deferred_until)>Date.parse(out.ended_at_utc),'Actual newly ended service defer outcome changed');
+insist(!exists(path.join(work,'LEASE'))&&!exists(path.join(work,'STOP')),'Real native lease/STOP persists');
+for(const pid of[out.native_pid,out.driver_pid]){try{process.kill(pid,0);throw new Error(`PID${pid} still exists; inspect actual start before any source write`);}catch(e){if(e.code!=='ESRCH')throw e;}}
+globalThis.fetch=()=>{throw new Error('This stopped-unit audit is offline; network refused');};
+const project=loadProject({slug,root}),speech=speechHash(project.doc,project.lexicon),status=dubsStatus(project,work,speech);
+const locales=['en','ja','ko','es','pt','id','vi','th'];
+const rows=locales.map(locale=>{const idxFile=path.join(doc,'research/translation-reviews',locale+'.meaning-review.json'),idx=read(idxFile),translation=sha(path.join(doc,'i18n',locale+'.json'));
+const meaning=idx.passed&&idx.source_video_sha256===sha(path.join(doc,'video.json'))&&idx.translation_sha256===translation&&sha(path.join(doc,idx.report_file))===idx.report_sha256;
+const cache=maybe(path.join(work,'review',`check.${locale}.json`)),flags=maybe(path.join(work,'review',`check-flags.${locale}.json`)),timeline=maybe(path.join(work,'dubs',locale,'timeline.json')),fit=maybe(path.join(work,'dubs',locale,'fit.json'));
+let matching=0;for(const[id,row]of Object.entries(cache?.lines??{})){const f=path.join(work,'dubs',locale,'audio',id+'.wav');if(exists(f)&&row.clip===sha(f).slice(0,16))matching++;}
+const checked=Boolean(meaning&&status[locale]?.status==='current'&&!state.languages?.[locale]?.check_stopped&&flags?.speech_hash===speech&&flags?.translation_hash===timeline?.translation_hash&&Array.isArray(flags?.flags)&&flags.flags.length===0&&(fit?.over??[]).length===0&&(fit?.kept??[]).length===0&&matching===101);
+return{locale,translation_sha256:translation,meaning_index_sha256:sha(idxFile),meaning_current:meaning,native_status:status[locale],native_rounds:state.languages?.[locale]??null,flags:flags?.flags??null,current_raw_matched_primary_checks:matching,kept:fit?.kept??[],actual_checked_voice_ready:checked};});
+const actualFlowFile=path.join(root,'tools/video/automation/flow.mjs'),actualFlowText=fs.readFileSync(actualFlowFile,'utf8');
+const nativeLimit=Number(actualFlowText.match(/export const DEFER_LIMIT = (\d+);/)?.[1]);insist(nativeLimit===6,'Actual native DEFER_LIMIT changed');
+const nativeShared=Math.min(Number.isInteger(state.defer_shared)&&state.defer_shared>0?state.defer_shared:0,state.defer_count),nativeOwn=state.defer_count-nativeShared;
+const nativeDeferSemantics={DEFER_LIMIT:nativeLimit,actual_defer_count:state.defer_count,actual_defer_shared_field_present:Object.hasOwn(state,'defer_shared'),actual_defer_shared_field:state.defer_shared??null,native_shared_clamped:nativeShared,native_own_count:nativeOwn,native_own_at_limit:nativeOwn>=nativeLimit,actual_flow_sha256:sha(actualFlowFile),read_actual_source_lines:'tools/video/automation/flow.mjs:1233-1256',elapsed_due_is_not_eligibility:true,counter_or_state_fields_manually_changed:false};
+const ready=rows.filter(r=>r.actual_checked_voice_ready).map(r=>r.locale);insist(isDeepStrictEqual(ready,['ko','es']),'Actual checked locale count differs; inspect all evidence');
+const journalFiles=[];function files(dir){return exists(dir)?fs.readdirSync(dir,{withFileTypes:true}).flatMap(e=>e.isDirectory()?files(path.join(dir,e.name)):e.isFile()?[path.join(dir,e.name)]:[]):[];}
+for(const f of files(work))if(f.includes('/speech-journal/'))journalFiles.push(path.relative(work,f));
+const runDir=path.join(work,'run-receipts'),unadopted=fs.readdirSync(runDir,{withFileTypes:true}).filter(e=>e.isFile()&&e.name.endsWith('.json')).map(e=>path.join(runDir,e.name)).filter(f=>!read(f).adopted).map(f=>path.relative(work,f));
+insist(journalFiles.length===0&&unadopted.length===0,'Current unknown/model receipt appeared; stop untouched');
+const source9=Object.entries(before.source_hashes).every(([p,h])=>sha(path.join(doc,p))===h);
+const protectedExact=Object.entries(before.protected_hashes).every(([p,h])=>sha(path.join(work,p))===h);
+const sourceENJAexact=['en','ja'].every(l=>isDeepStrictEqual(state.languages[l],before.native_before.languages[l]));
+insist(source9&&protectedExact&&sourceENJAexact,'Protected source/media/control differs');
+const snapshot=(dir,exclude=[])=>Object.fromEntries(files(dir).sort().filter(f=>!exclude.includes(path.relative(dir,f))).map(f=>[path.relative(dir,f),sha(f)]));
+const actualRuntime=snapshot(work,['LEASE']),oldCC=read(path.join(home,'free-caption-preparation-20261026T2144Z/one-use-execution/after-final-audit.json')).runtime_files;
+const changes=[...new Set([...Object.keys(before.runtime_files),...Object.keys(actualRuntime)])].sort().filter(f=>before.runtime_files[f]!==actualRuntime[f]);
+insist(isDeepStrictEqual(changes,['auto.json'])&&Object.keys(actualRuntime).length===2350,'Actual stopped-unit runtime changed beyond auto.json');
+const nonAutoCurrent=Object.fromEntries(Object.entries(actualRuntime).filter(([f])=>f!=='auto.json')),nonAutoOldCC=Object.fromEntries(Object.entries(oldCC).filter(([f])=>f!=='auto.json'));
+insist(isDeepStrictEqual(nonAutoCurrent,nonAutoOldCC),'Non-auto runtime files differ from completed9CC checkpoint');
+const sourceTree=snapshot(doc),coreInputs=Object.fromEntries(Object.keys(before.core_and_shared_inputs).map(f=>[f,sha(path.join(root,f))]));
+insist(isDeepStrictEqual(sourceTree,before.full_source_tree_before)&&isDeepStrictEqual(coreInputs,before.core_and_shared_inputs),'Full then-current movie source/core changed');
+const textDir=path.join(home,'language-text-delivery-20261026T2154Z'),textFiles=snapshot(textDir),CCMarker=path.join(home,'free-caption-preparation-20261026T2144Z/one-use-execution/ONE_USE.json');
+insist(isDeepStrictEqual(textFiles,before.text_delivery_files_before)&&sha(CCMarker)===before.CC_ONE_USE_sha256,'Immutabletext/CCmarker changed');
+const grant=read(path.join(home,'remaining-languages-resume-after-PT-defer5-20261027T0114Z.json'));
+insist(sha(grant.original_readonly_audit.file)===grant.original_readonly_audit.sha256,'Original audit bytes changed');
+const orig=read(grant.original_readonly_audit.file).protected_files_observed_sha256;
+insist(Object.keys(orig).length===14&&Object.entries(orig).every(([f,h])=>sha(f)===h),'Original14 protected files changed');
+const log=fs.readFileSync(prefix+'.log','utf8');
+insist(log.includes('Gemini 語音暫時忙碌或達到用量上限，請稍後重試')&&sha(prefix+'.log')===out.log_sha256,'Actual service log differs');
+const nowManifest=prefix+'-post-unit-runtime-snapshot.json',actualSnapshot=read(nowManifest);
+insist(isDeepStrictEqual(actualSnapshot.runtime_files,actualRuntime)&&isDeepStrictEqual(actualSnapshot.source_files,sourceTree)&&isDeepStrictEqual(actualSnapshot.native_auto,state)&&actualSnapshot.actual_outcome_sha256===sha(prefix+'-actual-outcome.json'),'Actual driver current fullsnapshot differs');
+
+const audit={recorded_at_utc:new Date().toISOString(),kind:'actual-PT-service-defer-and-finite-ONE-unit-stop',slug,actual_native_exit:4,actual_driver_ended_at:out.ended_at_utc,native_pid:out.native_pid,driver_pid:out.driver_pid,actual_PIDs_ended:true,LEASE_STOP_absent:true,actual_PT_WAVs:out.PT_primary_WAV_count,actual_PT_ASR:out.PT_saved_primary_check_count,PT_fit_or_track_present:exists(path.join(work,'dubs/pt/fit.json'))||exists(path.join(work,'dubs/pt.m4a')),PT_native_rounds:state.languages.pt,native_status:state.status,previous_defer_count:out.defer_count_before,new_defer_count:out.defer_count_after,previous_due:out.due_before,new_due:state.deferred_until,actual_literal_service_message:'Gemini 語音暫時忙碌或達到用量上限，請稍後重試',provider_HTTP_code_or_zero_billing_inferred:false,current_journal_files:journalFiles,current_unadopted_durable_model_receipts:unadopted,immutable_archived_first_writer_sha256:sha(path.join(runDir,'archive/4608ed31112bd4b764dbb2da5a5772730eb28d48b7f147edc2b4ae3b7c02e367-d6544532-e2db-4348-9b9d-2f3721dc888f.json')),source9_byte_exact:source9,protected_primary_raw_checks_caps_thumbnails_byte_exact:protectedExact&&out.EN_JA_KO_ES_raw_wavs_byte_exact&&sourceENJAexact,actual_checked_voice_locales:ready,voice_locale_rows:rows,actual_boundary_files:out.actual_boundary_files,actual_outcome_sha256:sha(prefix+'-actual-outcome.json'),actual_log_sha256:sha(prefix+'.log'),finite_queue_stopped:true,automatic_due_resume_or_next_locale_started:false,owner_original_publication_or_new_movie_actions:false,next:'Stop finite ONE-unit grant5b61. Preserve actual current defer count/due/own-shared semantics and PT0/0/0stopped; no timer resume or IDVI TH workaround. Elapsed clock alone does not establish eligibility: only a separate fresh authorized execution may inspect actual native blocked/own-shared/DEFER_LIMIT state and supported recovery together with original/PDF ownership/current meaning/primary11QA/choice/quota/unknown safeguards. Do not invoke a normal helper merely to terminalize, force or reset at the native limit. No manually blocked status or reset. ENJA ordinary retries/owner/full8/publish/newmovie remain forbidden.'};
+audit.extended_protection={whole_runtime_count:2350,only_runtime_change_from_this_unit:changes,all2349_NONAUTO_files_match_actual9CC_snapshot:true,actual_auto_sha256:actualRuntime['auto.json'],whole_current_movie_source_file_count:Object.keys(sourceTree).length,whole_current_movie_source_byte_exact:true,shared_core_and_lexicon20_exact:true,original14_exact:true,nine_CC1002cues31warnings_unchanged:true,immutable_text_delivery_28plus_manifest_exact:true,consumed_CC_ONE_USE_exact:true,language_adapter_exact:out.language_adapter_byte_exact,compatible_ASR_env_exact:out.compatible_ASR_env_byte_exact};
+audit.current_post_defer_runtime_snapshot={file:nowManifest,sha256:sha(nowManifest)};
+audit.native_defer_semantics=nativeDeferSemantics;
+audit.next+=' The completed9CC and entry snapshots contain historical auto3/auto5; preserve all2349NONAUTO files and use this actual new full current runtime snapshot/native auto, never whole-old-auto equality or reset. NineCC/text remain current because no spoken words/timing changed.';
+save(prefix+'-post-defer-audit.json',audit);
+save(path.join(home,'finite-controller-stop-after-PT-fresh-user-defer6-20261027T0114Z.json'),{recorded_at_utc:new Date().toISOString(),kind:'finite-coordinator-stopped-at-actual-PT-service-defer-not-a-live-OS-claim',slug,coordinator:'/root/pdf_pt_state5_prepare_0114',grant_sha256:'5b61aa6fe65eead2e2e1549a6ab2c54b82380112940e09e087b2da4e127eb22e',inherited_grant_sha256:'d5f2732963ad6af44cfc6da13b874e215391634e6dfbf6e87dc5ebcaa0b33649',prefix,actual_exit:4,actual_ended_at:out.ended_at_utc,actual_PIDs_ended:true,LEASE_STOP_absent:true,native_defer_count:state.defer_count,native_defer_semantics:nativeDeferSemantics,native_due:state.deferred_until,PT_native_rounds:state.languages.pt,PT_WAVs:0,PT_ASR:0,actual_checked_voice_locales:ready,actual_outcome_sha256:sha(prefix+'-actual-outcome.json'),actual_post_defer_audit_sha256:sha(prefix+'-post-defer-audit.json'),automatic_next_unit_or_due_resume:false,HTTP_code_or_billing0_inference:false,next:audit.next});
+console.log(JSON.stringify({audit_file:prefix+'-post-defer-audit.json',audit_sha256:sha(prefix+'-post-defer-audit.json'),stop_file:path.join(home,'finite-controller-stop-after-PT-fresh-user-defer6-20261027T0114Z.json'),actual_checked_voice_locales:ready,native_due:state.deferred_until},null,2));

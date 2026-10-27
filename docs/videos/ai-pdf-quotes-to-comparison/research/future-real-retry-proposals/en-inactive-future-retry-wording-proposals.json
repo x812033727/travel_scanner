@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T14:39:22.996457+00:00",
+  "author": {
+    "agent_id": "/root/pdf_author_en_ja",
+    "role": "Original English author preparing inactive future wording proposals only"
+  },
+  "scope": "UNACTIVATED_FUTURE_GENUINE_OWNER_RETRY_TEXT_PREPARATION_ONLY",
+  "state": "not adopted / not authorized for current exhausted cycle / requires genuine supported fresh retry and independent current review",
+  "not_a_native_translation_file": true,
+  "current_translation": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json",
+    "actual_full_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc"
+  },
+  "source_video": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+    "actual_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04"
+  },
+  "observed_exhausted_native_state": {
+    "auto_path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json",
+    "auto_sha256": "ee9432448646ac347ae185ef948e2a4a6cb92b15a70e18749792f1a0841c1b94",
+    "native_counters": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    },
+    "last_reword_boundary_path": "/workspace/work/ai-pdf-01/author-review-boundaries/en.reword.json",
+    "last_reword_boundary_sha256": "4fcc8edd5b915840f68ed26dd461efc0e54c313ad9c86748ae18b3bc5ee64118",
+    "round": 2,
+    "accepted_line_ids": [],
+    "rejected_budget_messages": [
+      "hg9m: over its budget (66 characters, at most 58)",
+      "fd27: over its budget (130 characters, at most 93)",
+      "znv7: over its budget (104 characters, at most 77)"
+    ]
+  },
+  "supplier_alias_context": {
+    "proposed_aliases": {
+      "A": "Aster, the first supplier / on-screen 甲",
+      "B": "Birch, the second supplier / on-screen 乙"
+    },
+    "current_scene_evidence": {
+      "need-labels_rows": [
+        [
+          "甲",
+          "Aster",
+          "aster.pdf"
+        ],
+        [
+          "乙",
+          "Birch",
+          "birch.pdf"
+        ]
+      ],
+      "opening-unit_first_two_rows": [
+        [
+          "甲 Aster",
+          "180",
+          "未稅"
+        ],
+        [
+          "乙 Birch",
+          "205",
+          "含稅"
+        ]
+      ]
+    },
+    "current_materials_evidence": {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/quote-source.json",
+      "sha256": "cdeb47092eb6dadf014aae276c61a62e434aadf2f368adf6577fb3d198bc22f0",
+      "first_two_supplier_names": [
+        "Aster",
+        "Birch"
+      ]
+    },
+    "description_read": true,
+    "english_description_explicitly_introduces_latin_A_B_aliases": false,
+    "review_requirement": "The assignment permits A/B aliases for the established first/second supplier mapping. The current English description supplies the demo/materials context but does not literally introduce A/B; any future independent current review must check that these aliases are clear with the actual visuals and materials."
+  },
+  "proposals": [
+    {
+      "id": "hg9m",
+      "state": "not adopted / not authorized for current exhausted cycle / requires genuine supported fresh retry and independent current review",
+      "original_chinese": "但空白的運費，能不能直接當成免費？",
+      "source_scene": "opening-missing",
+      "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+      "canonical_line_source_hash": "7fd501513981",
+      "actual_chinese_text_sha256": "7fd501513981fc433c89b082a925b78e6c89ca078ea7a1dfeac436d2bc3cf91c",
+      "current_english": "But can blank shipping just mean free delivery?",
+      "current_codepoints": 47,
+      "proposed_english": "Does a blank shipping field mean free delivery?",
+      "proposed_codepoints": 47,
+      "genuine_native_budget_codepoints": 58,
+      "remaining_estimated_characters": 11,
+      "future_authoring_intent": "Avoid can/cannot near-homophones while keeping the question about whether an unspecified shipping charge means free delivery.",
+      "current_cycle_adoption_authorized": false,
+      "audio_test_performed": false,
+      "independent_current_review_status": "Required at any future supported fresh retry; no author pass or approval asserted."
+    },
+    {
+      "id": "fd27",
+      "state": "not adopted / not authorized for current exhausted cycle / requires genuine supported fresh retry and independent current review",
+      "original_chinese": "甲分在兩頁的單價和運費，表格接成同一列，各自留著出處。",
+      "source_scene": "extract-aster",
+      "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+      "canonical_line_source_hash": "5ff09a31f891",
+      "actual_chinese_text_sha256": "5ff09a31f8919d018da75974c2b69fb390283c0729e1dc246d65e893d6cf02fc",
+      "current_english": "Join Aster's unit price and shipping from two pages in one row, each sourced.",
+      "current_codepoints": 77,
+      "proposed_english": "Join supplier A's unit price and shipping from two pages in one row, each with its source.",
+      "proposed_codepoints": 90,
+      "genuine_native_budget_codepoints": 93,
+      "remaining_estimated_characters": 3,
+      "future_authoring_intent": "Avoid Aster/a store by using the assigned Aster=A supplier alias; retain the two-page inputs, one combined row, and individual source references.",
+      "current_cycle_adoption_authorized": false,
+      "audio_test_performed": false,
+      "independent_current_review_status": "Required at any future supported fresh retry; no author pass or approval asserted."
+    },
+    {
+      "id": "znv7",
+      "state": "not adopted / not authorized for current exhausted cycle / requires genuine supported fresh retry and independent current review",
+      "original_chinese": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。",
+      "source_scene": "cost-birch-formula",
+      "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+      "canonical_line_source_hash": "63a5cf7d3bbb",
+      "actual_chinese_text_sha256": "63a5cf7d3bbb5df48ba2be8aae9ed9858e8d32c9815f5549a4ae9b0996063be1",
+      "current_english": "Birch's tax-inclusive unit price times quantity gives goods cost.",
+      "current_codepoints": 65,
+      "proposed_english": "Supplier B's tax-inclusive unit price times quantity gives goods cost.",
+      "proposed_codepoints": 70,
+      "genuine_native_budget_codepoints": 77,
+      "remaining_estimated_characters": 7,
+      "future_authoring_intent": "Avoid Birch/Purchase by using the assigned Birch=B supplier alias; retain the tax-inclusive unit price multiplied by quantity to obtain goods cost.",
+      "current_cycle_adoption_authorized": false,
+      "audio_test_performed": false,
+      "independent_current_review_status": "Required at any future supported fresh retry; no author pass or approval asserted."
+    }
+  ],
+  "future_use_requirement": "Only after a genuine supported fresh owner retry is opened through the actual product, root may consider these proposals with independent review against the then-current source, translation and audio context. This artifact grants no permission to edit the current exhausted cycle or reset or bypass caps.",
+  "audio_scope": "Codepoint lengths are only text measurements. No TTS, ASR, listening, audio-fit finding, native-voice approval or independent semantic pass is asserted.",
+  "non_actions": [
+    "No canonical or draft translation file was generated or edited.",
+    "No source, index, counter, boundary, raw model answer or media file was edited.",
+    "No TTS, ASR, native producer, paid or network call was made.",
+    "No owner retry, counter reset, cap bypass, approval or current-cycle adoption was performed."
+  ],
+  "protected_input_sha256_before": {
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json": "ee9432448646ac347ae185ef948e2a4a6cb92b15a70e18749792f1a0841c1b94",
+    "/workspace/work/ai-pdf-01/author-review-boundaries/en.reword.json": "4fcc8edd5b915840f68ed26dd461efc0e54c313ad9c86748ae18b3bc5ee64118",
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/quote-source.json": "cdeb47092eb6dadf014aae276c61a62e434aadf2f368adf6577fb3d198bc22f0"
+  },
+  "protected_input_sha256_after": {
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json": "ee9432448646ac347ae185ef948e2a4a6cb92b15a70e18749792f1a0841c1b94",
+    "/workspace/work/ai-pdf-01/author-review-boundaries/en.reword.json": "4fcc8edd5b915840f68ed26dd461efc0e54c313ad9c86748ae18b3bc5ee64118",
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/quote-source.json": "cdeb47092eb6dadf014aae276c61a62e434aadf2f368adf6577fb3d198bc22f0"
+  },
+  "protected_inputs_unchanged": true
+}

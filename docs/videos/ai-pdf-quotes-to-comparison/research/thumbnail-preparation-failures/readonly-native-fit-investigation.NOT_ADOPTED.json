@@ -1,0 +1,563 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "observed_at_utc": "2026-10-26T19:19:18.068Z",
+  "reviewer": "/root/audit_pdf_thumbnail_fit",
+  "status": "READ-ONLY INVESTIGATION / NOT ADOPTED / NO RENDER",
+  "scope": "Read actual failed eight native capture receipts and helper, native rendering/template/i18n/thumbnail-QA code; run only existing pure native headline estimates. No source/media/old-scratch mutation.",
+  "actual_previous_failure": {
+    "native_log": "/workspace/work/ai-pdf-01/localized-thumbnail-preparation-20261026/native-render.log",
+    "captures_file": "/workspace/work/ai-pdf-01/localized-thumbnail-preparation-20261026/actual-captures.json",
+    "count": 8,
+    "actual_drawn": 0,
+    "locales": [
+      {
+        "locale": "en",
+        "problems": [
+          "text does not fit even at 60% size: \"Total Cost First\""
+        ],
+        "failed_jpeg_sha256": "9bc74451cb5e81ba1efc0ddd33c709f94f9687abf3e59efc0511cd7dd24d07b1",
+        "failed_jpeg_persisted_as_qualified_artifact": false
+      },
+      {
+        "locale": "ja",
+        "problems": [
+          "text does not fit even at 60% size: \"まず総額を計算\""
+        ],
+        "failed_jpeg_sha256": "5863a70ba8a77e5e573ed7b43158c60c25fceb46c7e520befe1041eaebe64732",
+        "failed_jpeg_persisted_as_qualified_artifact": false
+      },
+      {
+        "locale": "ko",
+        "problems": [
+          "text does not fit even at 60% size: \"총액부터 계산\""
+        ],
+        "failed_jpeg_sha256": "1665ac06aabed2f7aa731d6a18dc271edf7eece4d6f5354de87cc72cb6ea6d90",
+        "failed_jpeg_persisted_as_qualified_artifact": false
+      },
+      {
+        "locale": "es",
+        "problems": [
+          "text does not fit even at 60% size: \"Calcula el total\""
+        ],
+        "failed_jpeg_sha256": "ef47d009320b56a3aad55bc6f5a1ff798c61be2e769a06017c977e97269d2a1d",
+        "failed_jpeg_persisted_as_qualified_artifact": false
+      },
+      {
+        "locale": "pt",
+        "problems": [
+          "text does not fit even at 60% size: \"Calcule o total\""
+        ],
+        "failed_jpeg_sha256": "76ea8567072af273845c9b966b9b86ec6ce6de49961647cb00a3b537ea60ddbc",
+        "failed_jpeg_persisted_as_qualified_artifact": false
+      },
+      {
+        "locale": "id",
+        "problems": [
+          "text does not fit even at 60% size: \"Hitung total dulu\""
+        ],
+        "failed_jpeg_sha256": "86998a6916ebbc103e2a9a53bbadbd13ac9c0aef6a1f6cba907e99fc8f252796",
+        "failed_jpeg_persisted_as_qualified_artifact": false
+      },
+      {
+        "locale": "vi",
+        "problems": [
+          "text does not fit even at 60% size: \"Tính tổng trước\""
+        ],
+        "failed_jpeg_sha256": "778207dc67b5bf3173c1a581231e11304d41ab97fa743271a049b04012161303",
+        "failed_jpeg_persisted_as_qualified_artifact": false
+      },
+      {
+        "locale": "th",
+        "problems": [
+          "text does not fit even at 60% size: \"คิดยอดรวมก่อน\""
+        ],
+        "failed_jpeg_sha256": "df1d0d0da4d8142c16b607bf262da738c8b33dc47348a0e3ba6598bdbb20e634",
+        "failed_jpeg_persisted_as_qualified_artifact": false
+      }
+    ],
+    "old_scratch_consumed": true
+  },
+  "mechanism": {
+    "emphasis": "richText at templates/templates.mjs:33-34 turns one same-line **phrase** into one em. theme.css:57 sets .thumb em white-space:nowrap, so whole translated headlines cannot break.",
+    "geometry": "1280*40% -56 left padding -24 right padding =432px text column. h1 starts136px, line-height1.1, max-height300. Native fitText shrinks by2px toward60% then reports remaining overflow.",
+    "newline_support": "Supported: **word/group**\n**next group** -> <em>word/group</em><br><em>next group</em>. Do not retain a single emphasis pair across a newline: regex (.+?) is not dotAll and the stars stay literal.",
+    "normal_route": "At a real lease-free source boundary, fresh i18n-sheet --parts metadata, root-authored wrapping/wording, independent current source meaning review, native i18n-merge; rebind actual current full-translation review hashes. Leave all101 spoken records, source script/speech, audio/journals/flags/caps/approvals unchanged. Fresh native scratch render after root review; never overwrite old one-use preparation.",
+    "foreign_qa_rules": "qa/thumbnail.mjs:218-250 explicitly keeps dimensions/2MB/phone>=24/title overlap for foreign locale thumbnails while exempting zh-TW-specific six-glyph/two-Latin-word/Chinese segmentation rules. This existing exemption does not certify a three-line visual."
+  },
+  "root_authored_exact_lexical_two_line_proposals": [
+    {
+      "locale": "en",
+      "old_headline": "**Total Cost First**",
+      "lexical_characters_preserved_ignoring_markup_and_whitespace": true,
+      "headline": "**Total Cost**\n**First**",
+      "generated_inline_html": "<em>Total Cost</em><br><em>First</em>",
+      "native_static_estimate_frame_font_px": 82,
+      "native_static_estimate_at_320px": 21,
+      "native_static_layout": {
+        "lines": 2,
+        "tooWide": true,
+        "breaks": [
+          {
+            "at": 11,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": false,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "ja",
+      "old_headline": "**まず総額を計算**",
+      "lexical_characters_preserved_ignoring_markup_and_whitespace": true,
+      "headline": "**まず総額を**\n**計算**",
+      "generated_inline_html": "<em>まず総額を</em><br><em>計算</em>",
+      "native_static_estimate_frame_font_px": 86,
+      "native_static_estimate_at_320px": 22,
+      "native_static_layout": {
+        "lines": 2,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 5,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": false,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "ko",
+      "old_headline": "**총액부터 계산**",
+      "lexical_characters_preserved_ignoring_markup_and_whitespace": true,
+      "headline": "**총액부터**\n**계산**",
+      "generated_inline_html": "<em>총액부터</em><br><em>계산</em>",
+      "native_static_estimate_frame_font_px": 108,
+      "native_static_estimate_at_320px": 27,
+      "native_static_layout": {
+        "lines": 2,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 4,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": true,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "es",
+      "old_headline": "**Calcula el total**",
+      "lexical_characters_preserved_ignoring_markup_and_whitespace": true,
+      "headline": "**Calcula**\n**el total**",
+      "generated_inline_html": "<em>Calcula</em><br><em>el total</em>",
+      "native_static_estimate_frame_font_px": 96,
+      "native_static_estimate_at_320px": 24,
+      "native_static_layout": {
+        "lines": 2,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 8,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": true,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "pt",
+      "old_headline": "**Calcule o total**",
+      "lexical_characters_preserved_ignoring_markup_and_whitespace": true,
+      "headline": "**Calcule**\n**o total**",
+      "generated_inline_html": "<em>Calcule</em><br><em>o total</em>",
+      "native_static_estimate_frame_font_px": 102,
+      "native_static_estimate_at_320px": 26,
+      "native_static_layout": {
+        "lines": 2,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 8,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": true,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "id",
+      "old_headline": "**Hitung total dulu**",
+      "lexical_characters_preserved_ignoring_markup_and_whitespace": true,
+      "headline": "**Hitung total**\n**dulu**",
+      "generated_inline_html": "<em>Hitung total</em><br><em>dulu</em>",
+      "native_static_estimate_frame_font_px": 82,
+      "native_static_estimate_at_320px": 21,
+      "native_static_layout": {
+        "lines": 2,
+        "tooWide": true,
+        "breaks": [
+          {
+            "at": 13,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": false,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "vi",
+      "old_headline": "**Tính tổng trước**",
+      "lexical_characters_preserved_ignoring_markup_and_whitespace": true,
+      "headline": "**Tính tổng**\n**trước**",
+      "generated_inline_html": "<em>Tính tổng</em><br><em>trước</em>",
+      "native_static_estimate_frame_font_px": 90,
+      "native_static_estimate_at_320px": 23,
+      "native_static_layout": {
+        "lines": 2,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 10,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": false,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "th",
+      "old_headline": "**คิดยอดรวมก่อน**",
+      "lexical_characters_preserved_ignoring_markup_and_whitespace": true,
+      "headline": "**คิดยอดรวม**\n**ก่อน**",
+      "generated_inline_html": "<em>คิดยอดรวม</em><br><em>ก่อน</em>",
+      "native_static_estimate_frame_font_px": 120,
+      "native_static_estimate_at_320px": 30,
+      "native_static_layout": {
+        "lines": 2,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 9,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": true,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    }
+  ],
+  "independent_advisory_semantic_alternatives_NOT_root_authored_NOT_adopted": {
+    "reviewer": "/root/audit_pdf_thumbnail_fit/thumbnail_phrase_review",
+    "scope": "Bounded linguistic judgment; no actual fit, source/voice approval or native speaker credential claimed.",
+    "proposals": [
+      {
+        "locale": "en",
+        "meaning_note": "Total first; cost/calculate is implied by unchanged PDF quote context and tax/shipping subline.",
+        "headline": "**Total**\n**First**",
+        "generated_inline_html": "<em>Total</em><br><em>First</em>",
+        "native_static_estimate_frame_font_px": 136,
+        "native_static_estimate_at_320px": 34,
+        "native_static_layout": {
+          "lines": 2,
+          "tooWide": false,
+          "breaks": [
+            {
+              "at": 6,
+              "chosen": true
+            }
+          ]
+        },
+        "static_minimum_24px_phone_rule_met": true,
+        "actual_browser_fit_NOT_run": true,
+        "actual_visual_review_NOT_run": true
+      },
+      {
+        "locale": "ja",
+        "meaning_note": "Natural short First, the total; calculation verb is implicit in context.",
+        "headline": "**まずは**\n**総額**",
+        "generated_inline_html": "<em>まずは</em><br><em>総額</em>",
+        "native_static_estimate_frame_font_px": 136,
+        "native_static_estimate_at_320px": 34,
+        "native_static_layout": {
+          "lines": 2,
+          "tooWide": false,
+          "breaks": [
+            {
+              "at": 3,
+              "chosen": true
+            }
+          ]
+        },
+        "static_minimum_24px_phone_rule_met": true,
+        "actual_browser_fit_NOT_run": true,
+        "actual_visual_review_NOT_run": true
+      },
+      {
+        "locale": "ko",
+        "meaning_note": "Existing lexical words preserved: calculate total first.",
+        "headline": "**총액부터**\n**계산**",
+        "generated_inline_html": "<em>총액부터</em><br><em>계산</em>",
+        "native_static_estimate_frame_font_px": 108,
+        "native_static_estimate_at_320px": 27,
+        "native_static_layout": {
+          "lines": 2,
+          "tooWide": false,
+          "breaks": [
+            {
+              "at": 4,
+              "chosen": true
+            }
+          ]
+        },
+        "static_minimum_24px_phone_rule_met": true,
+        "actual_browser_fit_NOT_run": true,
+        "actual_visual_review_NOT_run": true
+      },
+      {
+        "locale": "es",
+        "meaning_note": "Total first; calculate is implicit. A concise semantic rewrite, not just wrapping.",
+        "headline": "**Total**\n**primero**",
+        "generated_inline_html": "<em>Total</em><br><em>primero</em>",
+        "native_static_estimate_frame_font_px": 102,
+        "native_static_estimate_at_320px": 26,
+        "native_static_layout": {
+          "lines": 2,
+          "tooWide": false,
+          "breaks": [
+            {
+              "at": 6,
+              "chosen": true
+            }
+          ]
+        },
+        "static_minimum_24px_phone_rule_met": true,
+        "actual_browser_fit_NOT_run": true,
+        "actual_visual_review_NOT_run": true
+      },
+      {
+        "locale": "pt",
+        "meaning_note": "Elliptical First, the total; preserves priority, calculation implicit. Needs formal current translation review.",
+        "headline": "**Antes,**\n**o total**",
+        "generated_inline_html": "<em>Antes,</em><br><em>o total</em>",
+        "native_static_estimate_frame_font_px": 110,
+        "native_static_estimate_at_320px": 28,
+        "native_static_layout": {
+          "lines": 2,
+          "tooWide": false,
+          "breaks": [
+            {
+              "at": 6,
+              "chosen": true
+            }
+          ]
+        },
+        "static_minimum_24px_phone_rule_met": true,
+        "actual_browser_fit_NOT_run": true,
+        "actual_visual_review_NOT_run": true
+      },
+      {
+        "locale": "id",
+        "meaning_note": "Total first; calculate is implicit.",
+        "headline": "**Total**\n**dulu**",
+        "generated_inline_html": "<em>Total</em><br><em>dulu</em>",
+        "native_static_estimate_frame_font_px": 136,
+        "native_static_estimate_at_320px": 34,
+        "native_static_layout": {
+          "lines": 2,
+          "tooWide": false,
+          "breaks": [
+            {
+              "at": 6,
+              "chosen": true
+            }
+          ]
+        },
+        "static_minimum_24px_phone_rule_met": true,
+        "actual_browser_fit_NOT_run": true,
+        "actual_visual_review_NOT_run": true
+      },
+      {
+        "locale": "vi",
+        "meaning_note": "Add everything up first; semantic compression of full total calculation. Do not substitute Tổng trước, which may mean previous total.",
+        "headline": "**Cộng hết**\n**trước**",
+        "generated_inline_html": "<em>Cộng hết</em><br><em>trước</em>",
+        "native_static_estimate_frame_font_px": 104,
+        "native_static_estimate_at_320px": 26,
+        "native_static_layout": {
+          "lines": 2,
+          "tooWide": false,
+          "breaks": [
+            {
+              "at": 9,
+              "chosen": true
+            }
+          ]
+        },
+        "static_minimum_24px_phone_rule_met": true,
+        "actual_browser_fit_NOT_run": true,
+        "actual_visual_review_NOT_run": true
+      },
+      {
+        "locale": "th",
+        "meaning_note": "Total it up first; uses clear verb รวมยอด rather than just nounยอดรวม.",
+        "headline": "**รวมยอด**\n**ก่อน**",
+        "generated_inline_html": "<em>รวมยอด</em><br><em>ก่อน</em>",
+        "native_static_estimate_frame_font_px": 136,
+        "native_static_estimate_at_320px": 34,
+        "native_static_layout": {
+          "lines": 2,
+          "tooWide": false,
+          "breaks": [
+            {
+              "at": 6,
+              "chosen": true
+            }
+          ]
+        },
+        "static_minimum_24px_phone_rule_met": true,
+        "actual_browser_fit_NOT_run": true,
+        "actual_visual_review_NOT_run": true
+      }
+    ]
+  },
+  "exact_lexical_three_line_options_NOT_root_adopted": [
+    {
+      "locale": "en",
+      "note": "Preserves original words using one emphasized run per word; three lines need actual native geometry and visual review. This is an alternative investigation, not permission to change channel design.",
+      "headline": "**Total**\n**Cost**\n**First**",
+      "generated_inline_html": "<em>Total</em><br><em>Cost</em><br><em>First</em>",
+      "native_static_estimate_frame_font_px": 102,
+      "native_static_estimate_at_320px": 26,
+      "native_static_layout": {
+        "lines": 3,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 6,
+            "chosen": true
+          },
+          {
+            "at": 11,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": true,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "id",
+      "note": "Preserves original words using one emphasized run per word; three lines need actual native geometry and visual review. This is an alternative investigation, not permission to change channel design.",
+      "headline": "**Hitung**\n**total**\n**dulu**",
+      "generated_inline_html": "<em>Hitung</em><br><em>total</em><br><em>dulu</em>",
+      "native_static_estimate_frame_font_px": 102,
+      "native_static_estimate_at_320px": 26,
+      "native_static_layout": {
+        "lines": 3,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 7,
+            "chosen": true
+          },
+          {
+            "at": 13,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": true,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    },
+    {
+      "locale": "vi",
+      "note": "Preserves original words using one emphasized run per word; three lines need actual native geometry and visual review. This is an alternative investigation, not permission to change channel design.",
+      "headline": "**Tính**\n**tổng**\n**trước**",
+      "generated_inline_html": "<em>Tính</em><br><em>tổng</em><br><em>trước</em>",
+      "native_static_estimate_frame_font_px": 102,
+      "native_static_estimate_at_320px": 26,
+      "native_static_layout": {
+        "lines": 3,
+        "tooWide": false,
+        "breaks": [
+          {
+            "at": 5,
+            "chosen": true
+          },
+          {
+            "at": 10,
+            "chosen": true
+          }
+        ]
+      },
+      "static_minimum_24px_phone_rule_met": true,
+      "actual_browser_fit_NOT_run": true,
+      "actual_visual_review_NOT_run": true
+    }
+  ],
+  "limitations": [
+    "No browser render, JPEG generation, mobile/fullsize view or immutable-after comparison was performed by this investigation.",
+    "Static QA estimates are models of geometry, not actual multilingual glyph measurement. Thai actual failed despite the coarse static width model claiming floorfit; retained true native failure is decisive.",
+    "Root exact two-line EN and ID still tooWide at static floor; JA and VI fall below unchanged24px phone criterion. Do not relabel these proposals as fit or source approvals.",
+    "No provider, paid TTS/ASR/model, owner, publication, primary renderer or package operation was run.",
+    "Only this new external report directory is written; original project, repo, old consumed scratch and lease are not written."
+  ],
+  "source_file_hashes": {
+    "captures": {
+      "file": "/workspace/work/ai-pdf-01/localized-thumbnail-preparation-20261026/actual-captures.json",
+      "sha256": "41d317d9b76881cb4050a2464847615a405ed32b375261ed413e88414e4f05e1"
+    },
+    "native_log": {
+      "file": "/workspace/work/ai-pdf-01/localized-thumbnail-preparation-20261026/native-render.log",
+      "sha256": "1c5523303b12826d7707eaaa498938a80a3eeebe61c15693bec462997619d8e0"
+    },
+    "helper": {
+      "file": "/workspace/work/ai-pdf-01/prepare-localized-thumbnails-20261026.mjs",
+      "sha256": "1dac1d09671c9152f1187a74295c86d7d0bdff6a0d0934042f9e97b5577c02d9"
+    },
+    "renderer": {
+      "file": "/workspace/travel_scanner_pdf/tools/video/render/browser.mjs",
+      "sha256": "8b47a5a5cbe77895a49b63759e24ef4eb732a663ccc85db194c8f7f1f0ed1adb"
+    },
+    "theme": {
+      "file": "/workspace/travel_scanner_pdf/tools/video/templates/theme.css",
+      "sha256": "98a760726065583474fa191dd41f454f5f6142e5cb7041854d33d20ffbf11c49"
+    },
+    "templates": {
+      "file": "/workspace/travel_scanner_pdf/tools/video/templates/templates.mjs",
+      "sha256": "d4dfeda30396bd1922488dd1ee60304cb7cd03e1d872af3e92b8d22cefde66f2"
+    },
+    "native_thumbnail_qa": {
+      "file": "/workspace/travel_scanner_pdf/tools/video/qa/thumbnail.mjs",
+      "sha256": "4a1ee61758e2d3516a2d827819642f46e1b1bb53f88f162bda61abb8581328fc"
+    },
+    "i18n_cli": {
+      "file": "/workspace/travel_scanner_pdf/tools/video/i18n/cli.mjs",
+      "sha256": "7c18f3ae076be34ff4eee0979ed8f6e76044f6594ef8335b567b0d8791f8c9ea"
+    },
+    "i18n_tests": {
+      "file": "/workspace/travel_scanner_pdf/tools/video/i18n/i18n.test.mjs",
+      "sha256": "d8f92172d9ed0123ce35f5708ed6950db4eff059ceeb78f062adc55f69037c87"
+    }
+  },
+  "next": "Root may select truthful metadata-only proposals after checking static failures. If exact words in two lines are mandatory, EN/ID need a different authored solution; do not reduce font gate or change native layout to force passing. Require formal current-language reviews for semantic changes, then actual fresh eight-thumbnail native render and full/mobile visual checks before any adoption."
+}

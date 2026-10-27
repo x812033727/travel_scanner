@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "observed_at": "2026-10-26T08:29:49.567Z",
+  "finished_at": "2026-10-26T08:29:52.671Z",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "outcome": "native_fix_saved_lint_clear_needs_reverification",
+  "exact_request_sha256": "d253a26d360a52891c4e343b1a0ec4114e3e5e3db69fb8f97a6dbf7083efa9c4",
+  "exact_job_id": "c04e0dc3-6130-476d-ac35-dd1caeace90f",
+  "transport": [
+    {
+      "at": "2026-10-26T08:29:49.592Z",
+      "route": "/api/video/automation/settings",
+      "method": "GET"
+    },
+    {
+      "at": "2026-10-26T08:29:51.272Z",
+      "route": "/api/video/automation/run/jobs/c04e0dc3-6130-476d-ac35-dd1caeace90f?input_hash=1108ce18c3f7d565e412498f8edd422ed7763fa0a96cb3f4d2631ede8c1a4101",
+      "method": "GET"
+    }
+  ],
+  "paid_POSTs": 0,
+  "narrative_reader_calls": 0,
+  "native_result": "ai-pdf-quotes-to-comparison: screenplay rewritten after the storytelling panel's note (round 1); it is checked again",
+  "prior_checkpoint": {
+    "current_video_sha256": "63cf7a8b591212059ccdd8ffa2f303bb722e3db3c0f9aab3f223d0cb3064b1a9",
+    "state_sha256": "96038281e24b2352aca6651eb3616d918b572f0f74697e278a1556539b722d0b",
+    "failed_narrative_sha256": "14a7eb31e16876e4b4a0f8556d491762e9a1c8d084e7eb2aa173e72ee5d65f27",
+    "saved_receipt_sha256": "37850ede31117c26b85870e39ce3eebe3f4c6b0385c427f413ad40402d3bde9b",
+    "archived_first_receipt_sha256": "836fe4b1a11afded5d1020f1c2c08fbe9bd417b63d7a9a9c060a56ec3f02051b",
+    "first_result_text_sha256": "ea54b2dff7ce71160c5b0b5db7aece1d71d07d3fe70ec60888482ea2c0fea189"
+  },
+  "actual_state": {
+    "status": "active",
+    "prompt_fixes": {
+      "narrative": 1
+    },
+    "verified": false,
+    "listener_done": false
+  },
+  "actual_lint": {
+    "errors": [],
+    "warnings": []
+  },
+  "converted_lint_failure": null,
+  "first_paid_archive_preserved_sha256": "836fe4b1a11afded5d1020f1c2c08fbe9bd417b63d7a9a9c060a56ec3f02051b",
+  "first_paid_result_not_cancelled": true,
+  "next": "Run real verification, listener, narrative and demonstration gates; no prior passed source check is reused for this rewrite."
+}

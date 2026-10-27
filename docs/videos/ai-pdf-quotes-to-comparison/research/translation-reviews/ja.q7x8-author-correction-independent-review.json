@@ -1,0 +1,250 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "ja",
+  "line_id": "q7x8",
+  "scope": "Independent author-correction source meaning, Japanese naturalness, exact numeric tokens and counted-native-reword budget review",
+  "recorded_at_utc": "2026-10-26T17:09:39.145790+00:00",
+  "reviewer": {
+    "agent_id": "/root/review_pdf_ja_boundary",
+    "independence": "Did not author or edit the proposed correction, native answer or canonical Japanese. Root authored the proposal. This review does not apply any text or run a new audio take.",
+    "actual_reading": "Actually reread the author proposal; current canonical q7x8; Chinese source, actual card and all adjacent scene lines; prior boundary review; real native raw answer and rejection; latest stored primary and second ASR records; live native worksheet row; and native source implementing the reword budget/numeric guard. No audio listening or new ASR is claimed."
+  },
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "5356fe3c5cdc38e7f798817bbf1775d0d17dccce6f5f3e7b02001617999313bf",
+  "author_proposal": {
+    "file": "/workspace/work/ai-pdf-01/ja-independent-boundary-review/q7x8-author-correction-round1-proposal.json",
+    "sha256": "be21d07103a4a3b623682ab2fd03901d9ed2abf626621b88540f0a0a9db0d265",
+    "author": "/root",
+    "applied": false,
+    "current_japanese": "Birchの送料が0なのは、見積書に無料配送と明記があるためです。",
+    "proposed_japanese": "Birchの見積書に無料配送とあるので、送料欄には0を入れます。"
+  },
+  "prior_independent_review": {
+    "file": "/workspace/work/ai-pdf-01/ja-independent-boundary-review/reword1-independent-meaning-review.json",
+    "sha256": "a6c0c8f7c7f90035e3e707e2bf44e587ffbaa037805e05b1d9c2a63ff53e02d7",
+    "passed_for_then_current_text": true
+  },
+  "boundaries": [
+    {
+      "file": "/workspace/work/ai-pdf-01/author-review-boundaries/ja.reword.round-1.2026-10-26T17-00-58-659Z.json",
+      "sha256": "f886fbc82399484686aa63263551b598484e563d89431c730ef6cde6fa0ef8d2",
+      "variant": "reword",
+      "round": 1,
+      "native_answer_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/ja-reword-round-1-meaning-review-2026-10-26T17-00-58-659Z.txt",
+      "native_answer_sha256": "24cb38142348ebd66e1b8f2986633ee46ecaa1ff25f8da35c718146af8044af4",
+      "q7x8_native_proposal": "Birchの送料がゼロなのは、見積書に無料配送とあるためです。",
+      "actual_rejection_reason_exact": "q7x8: the numbers changed",
+      "native_proposal_still_rejected": true,
+      "root_correction_is_distinct_author_proposal": true,
+      "model_acceptance_of_root_correction_claimed": false
+    }
+  ],
+  "source_context_read": [
+    {
+      "id": "extract-aster-quote",
+      "card": {
+        "key": "運費也明示為未稅",
+        "quote": "Shipping: TWD 200.00 excluding tax to the specified address",
+        "source": "aster.pdf 第2頁｜原創練習原文"
+      },
+      "lines": [
+        {
+          "id": "qttz",
+          "chinese": "拿這段原句，就能核對表格有沒有把運費漏掉。",
+          "current_japanese": "この原文で、表の送料の抜けを確認できます。"
+        },
+        {
+          "id": "indq",
+          "chinese": "同樣是運費，為什麼乙能填零，丙卻不行？",
+          "current_japanese": "送料はなぜBirchなら0で、Cedarは駄目なのでしょう。"
+        }
+      ]
+    },
+    {
+      "id": "extract-birch",
+      "card": {
+        "columns": [
+          "欄位",
+          "值",
+          "出處"
+        ],
+        "key": "零元必須有原文支持",
+        "rows": [
+          [
+            "單價",
+            "205，含稅",
+            "birch.pdf 第1頁"
+          ],
+          [
+            "運費",
+            "0，送達免運",
+            "birch.pdf 第2頁"
+          ],
+          [
+            "交期",
+            "5 個工作天",
+            "birch.pdf 第2頁"
+          ]
+        ],
+        "source": "原創練習｜birch.pdf 第1–2頁",
+        "title": "乙的高單價包含了什麼？"
+      },
+      "lines": [
+        {
+          "id": "q7x8",
+          "chinese": "乙的運費填零，是因為它的報價明寫免費送達。",
+          "current_japanese": "Birchの送料が0なのは、見積書に無料配送と明記があるためです。"
+        }
+      ]
+    },
+    {
+      "id": "extract-missing-quote",
+      "card": {
+        "key": "沒有報價，和免費不同",
+        "quote": "Shipping: not quoted",
+        "source": "cedar.pdf 第2頁｜原創練習原文"
+      },
+      "lines": [
+        {
+          "id": "7hi8",
+          "chinese": "丙的第二頁則寫運費沒有報價，這是另一種狀態。",
+          "current_japanese": "Cedarの2ページ目は送料未見積もりで、別の状態です。"
+        },
+        {
+          "id": "cxxm",
+          "chinese": "AI 應該保留這個差別，不能為了把表填滿就補上零。",
+          "current_japanese": "AIはこの違いを残し、表を埋めるために0を入れてはいけません。"
+        }
+      ]
+    }
+  ],
+  "meaning_review": {
+    "passed": true,
+    "finding": "Faithful. The source says Birch shipping is entered as zero because its written quote explicitly states free delivery. The proposal gives the same written-evidence cause first and the zero-entry consequence second. 見積書に無料配送とある explicitly locates the condition in the quote; 送料欄 makes the existing comparison-table field explicit without inventing a new price or a new supplier.",
+    "supplier_and_unknown_check": "Birch is named, matching 乙; the adjacent Cedar statement remains shipping not quoted and must not be filled with 0. This sentence licenses zero only for the supplier with explicit free-delivery evidence, and does not turn unknown Cedar shipping into free delivery.",
+    "currency_check": "0 is an amount in the shipping field in this quote/table context. The proposal adds no 円, no yen claim and no other currency label. The currency context remains the existing TWD/台湾ドル context.",
+    "no_unrelated_new_claims": true
+  },
+  "naturalness_review": {
+    "passed": true,
+    "finding": "Natural, concise instructional Japanese. The causal construction 見積書に無料配送とあるので、送料欄には0を入れます connects written evidence to table entry directly. It avoids the old 0なのは wording while preserving the source meaning.",
+    "does_not_claim_to_fix_audio_or_ASR": true
+  },
+  "numeric_check": {
+    "passed": true,
+    "native_regex_source": "tools/video/automation/flow.mjs:669 digitsOf uses /\\d+(?:[.,]\\d+)*/g and joins matches with a space.",
+    "current_digit_sequence": [
+      "0"
+    ],
+    "proposal_digit_sequence": [
+      "0"
+    ],
+    "same_sequence": true,
+    "rejected_native_digit_sequence": [],
+    "rejected_native_0_to_ゼロ_failure_not_reclassified": true
+  },
+  "budget_check": {
+    "worksheet_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/i18n/ja.todo.json",
+    "worksheet_sha256": "2d5897cbaf0ee9252be3dbcf0cde6d5a351c8f26baf38053a533fe2960d8774e",
+    "worksheet_row": {
+      "id": "q7x8",
+      "scene": "extract-birch",
+      "todo": false,
+      "source": "乙的運費填零，是因為它的報價明寫免費送達。",
+      "text": "Birchの送料が0なのは、見積書に無料配送と明記があるためです。",
+      "max_chars": 30
+    },
+    "measurement": "Unicode code points, matching native [...text].length. These exact strings are BMP characters; counts independently recomputed.",
+    "current_codepoints": 33,
+    "proposed_codepoints": 32,
+    "raw_worksheet_max_chars": 30,
+    "raw_worksheet_budget_passed": false,
+    "raw_worksheet_over_by": 2,
+    "native_reword_guard_source_file": "/workspace/travel_scanner_pdf/tools/video/automation/flow.mjs",
+    "native_reword_guard_source_sha256": "167a1630f0c95886e7518cfd7a5e3110ebe234d860700b603b82d4d07750b7ee",
+    "native_cli_adapter_file": "/workspace/work/ai-pdf-01/cli.mjs",
+    "native_cli_adapter_sha256": "69ffda1b26988e7dff5876181f1d124785c2992e4fc6382b4ee3d3bce3c3fae7",
+    "adapter_binds_this_repository": true,
+    "actual_native_reword_rule": "flow.mjs:4637–4638 takes max(integer worksheet budget, current text codepoints); flow.mjs:4658 rejects a proposal over that effective cap.",
+    "effective_counted_reword_max_chars": 33,
+    "effective_native_reword_budget_passed": true,
+    "effective_native_reword_under_by": 1,
+    "finding": "32 exceeds the raw worksheet estimate of 30 by 2, but passes the applicable counted native reword1 guard of max(30,33)=33. No claim that the raw worksheet budget passed is made. Neither character result establishes actual spoken fit."
+  },
+  "latest_stored_audio_observation_read": {
+    "check_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check.ja.json",
+    "check_sha256": "15169f788e8a4b3e22f5ad47e68613e7eceba383d9efbb4607a5f5721a881029",
+    "q7x8_record": {
+      "scene": "extract-birch",
+      "clip": "f1fbb5360877ff25",
+      "terms": [
+        "Birch"
+      ],
+      "heard": "Birchの送料が0円なのは、見積書に無料配送と明記があるためです。",
+      "noul": 0.15,
+      "intended": "Birchの送料が0なのは、見積書に無料配送と明記があるためです。",
+      "spoken_form": "Birchの送料が0なのは、見積書に無料配送と明記があるためです。",
+      "match_kind": null,
+      "match": false,
+      "second": {
+        "by": "whisper_second_opinion.py",
+        "terms": [
+          "Birch"
+        ],
+        "heard": "バーチの送料が0円なのは三森署に無料配送と名機があるためです",
+        "match_kind": null,
+        "noul": 0.04
+      }
+    },
+    "interpretation": "The latest stored primary and second ASR text render the prior intended 0なのは wording with 0円なのは. These are actual stored ASR observations read during this review, not direct listening, not new ASR, and not an audio test of this author proposal.",
+    "author_proposal_audio_fit_or_ASR_pass_claimed": false
+  },
+  "observations": [
+    {
+      "id": "RAW-WORKSHEET-OVER",
+      "scope": "raw worksheet estimate",
+      "detail": "Proposal is 32 code points versus live worksheet max_chars 30. The counted native reword effective limit is separately 33; do not relabel the worksheet estimate as 33."
+    }
+  ],
+  "issues": [],
+  "issues_count": 0,
+  "passed": true,
+  "passed_definition": "Pass applies to source meaning, naturalness, exact numeric-token sequence and the actual effective native reword1 guard. The raw worksheet estimate check is explicitly false, and no audio fit or voice acceptance is inferred.",
+  "native_control_preserved": {
+    "auto_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json",
+    "auto_sha256": "56e55c2634df92d251725214312b0769344e92242d089305b4a13adb0b3fa073",
+    "native_rounds": {
+      "shorten": 0,
+      "retakes": 2,
+      "reword": 1,
+      "check_stopped": true
+    },
+    "flags_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check-flags.ja.json",
+    "flags_sha256": "fb53e3e0f970a76573a964eedc35377384bc2acd40e8b4c30c0bbf8dc5eff52d",
+    "flags": [
+      "fd27",
+      "q7x8",
+      "pn4i"
+    ],
+    "all_three_match_false": true,
+    "cleared_flags": false,
+    "reset_or_extra_round_authorized": false,
+    "continuation_limit": "The existing native limit is two total reword rounds. Reword1 is already counted; only normal round2 may remain. This review grants no extra retakes/rewords/reset or new authorization."
+  },
+  "actions": {
+    "only_written_file": "/workspace/work/ai-pdf-01/ja-independent-boundary-review/q7x8-author-correction-independent-review.json",
+    "canonical_text_modified": false,
+    "index_modified": false,
+    "auto_raw_flags_or_caps_modified": false,
+    "rejected_native_proposal_adopted": false,
+    "proposal_applied": false,
+    "native_merge_run": false,
+    "new_take_run": false,
+    "paid_calls": 0,
+    "ASR_calls": 0,
+    "network_actions": 0,
+    "audio_approval_claimed": false,
+    "publication_approval_claimed": false
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "recorded_at_utc": "2026-10-26T19:20:11.955478+00:00",
+  "author": "/root",
+  "scope": "Proposed localized thumbnail headlines only; no speech/source/captions or title/description/tag/sub changes",
+  "rows": [
+    {
+      "locale": "en",
+      "current_translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI PDF Quotes",
+        "headline": "**Total Cost First**",
+        "sub": "Include tax and shipping"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI PDF Quotes",
+        "headline": "**Total**\n**First**",
+        "sub": "Include tax and shipping"
+      },
+      "only_proposed_field": "thumbnail.headline"
+    },
+    {
+      "locale": "ja",
+      "current_translation_sha256": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AIでPDF見積比較",
+        "headline": "**まず総額を計算**",
+        "sub": "税と送料も忘れずに"
+      },
+      "proposed_thumbnail": {
+        "tag": "AIでPDF見積比較",
+        "headline": "**まず**\n**総額**",
+        "sub": "税と送料も忘れずに"
+      },
+      "only_proposed_field": "thumbnail.headline"
+    },
+    {
+      "locale": "ko",
+      "current_translation_sha256": "898d2f2e3805f63c6ffc9e0bc6282382001aff144c9120bb1eda40ca276e80f6",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI PDF 견적 비교",
+        "headline": "**총액부터 계산**",
+        "sub": "세금·배송비도 포함"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI PDF 견적 비교",
+        "headline": "**총액부터**",
+        "sub": "세금·배송비도 포함"
+      },
+      "only_proposed_field": "thumbnail.headline"
+    },
+    {
+      "locale": "es",
+      "current_translation_sha256": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "Cotizaciones PDF con AI",
+        "headline": "**Calcula el total**",
+        "sub": "Incluye impuesto y envío"
+      },
+      "proposed_thumbnail": {
+        "tag": "Cotizaciones PDF con AI",
+        "headline": "**Total**\n**primero**",
+        "sub": "Incluye impuesto y envío"
+      },
+      "only_proposed_field": "thumbnail.headline"
+    },
+    {
+      "locale": "pt",
+      "current_translation_sha256": "db80b73e876d581d65675139ab96e8d354b0689b1727630ab4546d87fa3c6bd8",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Calcule o total**",
+        "sub": "Inclua imposto e frete"
+      },
+      "proposed_thumbnail": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Custo**\n**total**",
+        "sub": "Inclua imposto e frete"
+      },
+      "only_proposed_field": "thumbnail.headline"
+    },
+    {
+      "locale": "id",
+      "current_translation_sha256": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Hitung total dulu**",
+        "sub": "Pajak dan kirim dihitung"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Total**\n**dulu**",
+        "sub": "Pajak dan kirim dihitung"
+      },
+      "only_proposed_field": "thumbnail.headline"
+    },
+    {
+      "locale": "vi",
+      "current_translation_sha256": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI so báo giá PDF",
+        "headline": "**Tính tổng trước**",
+        "sub": "Đừng sót thuế, phí giao"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI so báo giá PDF",
+        "headline": "**Cộng hết**\n**trước**",
+        "sub": "Đừng sót thuế, phí giao"
+      },
+      "only_proposed_field": "thumbnail.headline"
+    },
+    {
+      "locale": "th",
+      "current_translation_sha256": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI เทียบราคา PDF",
+        "headline": "**คิดยอดรวมก่อน**",
+        "sub": "อย่าลืมภาษีกับค่าส่ง"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI เทียบราคา PDF",
+        "headline": "**รวมยอด**\n**ก่อน**",
+        "sub": "อย่าลืมภาษีกับค่าส่ง"
+      },
+      "only_proposed_field": "thumbnail.headline"
+    }
+  ],
+  "reason": "Existing full highlighted phrases are single nowrap em spans and all8 native renders actually failed. Use concise localized headlines within unchanged native layout and phone threshold. Portuguese Custo total intentionally keeps total-cost concept without literal first; full tax/shipping instruction remains in unchanged subline.",
+  "not_adopted": true,
+  "actual_fit_render_or_visual_qa_claimed": false,
+  "boundary_note": "KO native paid continuation may advance spoken translation independently; this metadata proposal does not review/approve future spoken changes. Apply only at a real lease-free boundary, prove current101spoken records exact for each locale, and retain current voice-boundary review chain."
+}

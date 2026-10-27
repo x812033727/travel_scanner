@@ -1,0 +1,51 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "en",
+  "scope": "source-meaning-and-naturalness",
+  "passed": true,
+  "recorded_at_utc": "2026-10-26T12:38:22.329Z",
+  "reviewer": "OpenAI Codex /root current-source delta reviewer; full translation independently reviewed by {\"agent_id\":\"/root/pdf_author_ko_th\",\"role\":\"independent reviewer of en/ja, final textual delta rereview after original-author revisions\",\"independence\":\"Did not author or edit either en or ja draft. Previously authored ko and coordinated th; those languages were not self-reviewed here.\",\"method\":\"Rounds 1 and 2 manually read all 101 captions and all metadata/actual changes against source79. This round manually reread the sole new caption change against the exact source sentence and scene context. Reconstructing the previous full authored hash proves all other captions, metadata and non-text data exactly match the fully reread second-round file. No draft was edited by the reviewer.\"}",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "a6189e49f541bb0961fedfaf5ad9b9a74be916eaa60f594e2dba91608220d80b",
+  "base_full_independent_review": {
+    "file": "research/translation-reviews/en.initial-independent-review.json",
+    "sha256": "c02536252737eba48597f85db1c74ce874db5b251e38eb4d80ef3363ff7024b2",
+    "source_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+    "authored_sha256": "0962a91bf2c31d17fe5435c6f0c1eeb6c73ef5f50e1dd27b8aa8add6ca597e40"
+  },
+  "current_source_delta": {
+    "proof": "research/original-revised-chronology-clarification.json",
+    "all_101_line_records_exact": true,
+    "only_source_changes": [
+      "extract-core visual caption conditions revision adoption on receipt",
+      "description materials URL literal commit"
+    ],
+    "old_materials_commit": "53e7243ba84b2327f7a7674acc8065f411088d96",
+    "new_materials_commit": "e2631cfb53c2b275345001ae9df7b60135e5035a"
+  },
+  "translation_delta_review": {
+    "all_101_spoken_translation_texts_exact_to_independently_reviewed_author": true,
+    "all_chapter_title_tag_thumbnail_texts_exact": true,
+    "description_changed_only_one_literal_materials_commit_URL": true,
+    "other_description_words_and_paragraphs_exact": true,
+    "native_i18n_merge_generated_all_source_hashes": true,
+    "source_URL_contains_actual_pushed_materials_commit": true
+  },
+  "estimated_budget_overages": [
+    {
+      "id": "9ski",
+      "characters": 70,
+      "max_chars": 69
+    },
+    {
+      "id": "vee5",
+      "characters": 49,
+      "max_chars": 46
+    }
+  ],
+  "reviewed_boundaries": [],
+  "audio_fit_or_voice_approval_claimed": false,
+  "final_or_publication_approval_claimed": false,
+  "paid_calls": 0
+}

@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "observed_at_utc": "2026-10-26T13:15:26.809494+00:00",
+  "observer": "OpenAI Codex /root/pdf_continue_primary/en_second_asr_availability",
+  "scope": "Read-only native-source/default-Python/bounded project-cache inspection; no production, audio, approval, provider or network operation.",
+  "default_python": "/opt/codex/runtimes/codex-primary-runtime/dependencies/python/bin/python3",
+  "actual_default_python_import_faster_whisper": {
+    "success": false,
+    "error_type": "ModuleNotFoundError",
+    "error_message": "No module named 'faster_whisper'"
+  },
+  "module_spec_presence": {
+    "faster_whisper": false,
+    "ctranslate2": false,
+    "whisper": false,
+    "torch": false,
+    "huggingface_hub": false
+  },
+  "whisper_executable_on_PATH": null,
+  "bounded_cache_search": {
+    "directories": [
+      "/workspace/work/ai-animation-01",
+      "/workspace/work/ai-pdf-01"
+    ],
+    "name_patterns": [
+      "pyvenv.cfg",
+      "model.bin",
+      "*.safetensors",
+      "*whisper*"
+    ],
+    "excluded": [
+      "browsers",
+      "node_modules",
+      ".git"
+    ],
+    "matching_existing_source_only": [
+      "/workspace/work/ai-animation-01/runtime-pr1860/tools/video/tts/whisper_second_opinion.py"
+    ],
+    "actual_model_or_venv_found": false,
+    "additional_known_venv_candidates_all_absent": [
+      "/workspace/.venv",
+      "/workspace/whisper",
+      "/workspace/work/whisper",
+      "/workspace/work/whisper-venv",
+      "/workspace/work/ai-animation-01/.venv",
+      "/workspace/work/ai-pdf-01/.venv",
+      "/workspace/travel_scanner/.venv",
+      "/workspace/travel_scanner_pdf/.venv"
+    ],
+    "limit": "Private/home caches, credentials, environment-variable values and other Python installations were not inspected; absence is bounded to this scope."
+  },
+  "native_behavior_from_actual_source": {
+    "runner": "tools/video/tts/whisper_second_opinion.py",
+    "required_dependency": "faster_whisper.WhisperModel",
+    "device": "cpu",
+    "compute_type": "int8",
+    "default_model_in_source": "large-v3",
+    "model_loaded_or_ASR_run": false,
+    "default_download_claim": "The script documents about3GB on first use; no download was attempted or claimed.",
+    "input": "locale and clip filenames, plus per-clip spelling hints; full script sentences are not supplied.",
+    "second_results_saved_as": "review/check.<locale>.json lines[id].second = {by, terms, heard, match_kind, noul}",
+    "per_clip_cache_binding": "Only cached rows with the same WAV clip hash and spelling-hint terms are reused; a changed clip or hints produces a fresh entry without the previous second result.",
+    "normal_later_helper_without_second_opinion_flag": "For an unchanged clip/hints row, native clearedBySecond is evaluated even when no second command is configured for that invocation, so stored real second evidence can remain effective.",
+    "clear_condition": "The genuine second transcript must match via native matchKind or receive a real Jev probability at the existing threshold; native leaked-word flags remain regardless.",
+    "second_failure": "The native catch reports second-transcriber failure and preserves the outstanding flags. It is not an approval or retry reset.",
+    "no_manual_pass_recommended": true
+  },
+  "read_source_files": [
+    {
+      "path": "tools/video/tts/whisper_second_opinion.py",
+      "sha256": "a5a68ab332fa618ce793e7533441236c518e0721a8e748f25aef484dbdac9b48"
+    },
+    {
+      "path": "tools/video/tts/second-opinion.mjs",
+      "sha256": "eded27843f7d3e97535344c5d2130c09a3cbd4161dce7f53d96b13a451424f2a"
+    },
+    {
+      "path": "tools/video/tts/check.mjs",
+      "sha256": "299559cf086283f2b703fbb2c40a4b18607b17fff9cdb6116988b8c862e0affb"
+    }
+  ],
+  "performed_commands": [
+    "sed/rg read AGENTS.md, youtube-video skill, whisper_second_opinion.py, second-opinion.mjs and check.mjs",
+    "python3 importlib.util.find_spec for named ASR dependencies",
+    "python3 actual import faster_whisper with ImportError capture",
+    "rg --files name-only bounded scan of the two project roots",
+    "Path.exists checks of eight explicit workspace venv candidates"
+  ],
+  "conclusion": "The bundled native optional second-opinion integration exists, but it is not immediately runnable with the observed default Python: faster-whisper and its named dependencies are absent, and no model/venv was found in the bounded workspace scope. No installation, model loading, decoding, success or audio clearance is claimed.",
+  "canonical_files_changed": false,
+  "production_or_paid_calls": 0,
+  "downloads_or_installs": 0,
+  "audio_runs": 0,
+  "environment_or_secret_values_read": false
+}

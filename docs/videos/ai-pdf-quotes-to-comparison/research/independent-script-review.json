@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "checked_at_utc": "2026-10-26T07:08:09.440839+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex agent /root/pdf_research",
+    "independent_of_script_author": true,
+    "human_approval_claimed": false,
+    "backend_or_Jev_approval_claimed": false
+  },
+  "review_type": "Independent source, teaching reproducibility and arithmetic review before TTS. No media-duration, listening or final visual QA was performed.",
+  "reviewed_inputs": [
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+      "sha256": "68573a9cb7c41ab22a3c7aeee66865a7a94f707bd3e6e2a151f11738639fe688",
+      "bytes": 45794
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/script.md",
+      "sha256": "d917c45af417162b554c9c12ac901218136f9c0285ce8d7a74b8922b6924bf7c",
+      "bytes": 10046
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/brief.md",
+      "sha256": "e821a2a0bc03c0706061f56f7a05bf8841cd52b712e1bc06c9e0f44761a5ea04",
+      "bytes": 7308
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/viewer-prompt.txt",
+      "sha256": "6b491f229d7f5e12f53c2f56de3c812614f4ec7ac96e9042127aa45bb6d3a5c4",
+      "bytes": 442
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/extracted-pages.json",
+      "sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+      "bytes": 6693
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/normalized-quotes.json",
+      "sha256": "f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8",
+      "bytes": 22847
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/requests/request-20.json",
+      "sha256": "53f882946086d999e5ccbcf14755a176a92907e2c984920c2f3653c10be8eb62",
+      "bytes": 46
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/lab/ai-analysis-execution.json",
+      "sha256": "a2c5c2ec04b3d0ac17a5e4753f5036a112d96c9f5994c580213980920b83d4ee",
+      "bytes": 19201
+    }
+  ],
+  "verdict": "changes_required_before_final_script_lock",
+  "checks": [
+    {
+      "id": "source-field-evidence",
+      "result": "pass",
+      "details": "Read all eight extracted pages. All 48 required normalized field evidence strings are literal substrings of the claimed source document/page."
+    },
+    {
+      "id": "prompt-card",
+      "result": "pass",
+      "details": "extract-core code card is byte-text equivalent after surrounding-whitespace trimming to all seven lines of the actual viewer-prompt.txt."
+    },
+    {
+      "id": "quantity-card",
+      "result": "pass",
+      "details": "quantity-edit code card exactly matches requests/request-20.json after surrounding-whitespace trimming: scenario revised, quantity 20."
+    },
+    {
+      "id": "independent-decimal-arithmetic",
+      "result": "pass",
+      "details": "Recomputed from the current normalized source values with Decimal: Aster 2100.00/3990.00 at quantities10/20; Birch2050.00/4100.00; original Cedar null/null; revised Cedar2100.00/3937.50. No second tax added to Birch."
+    },
+    {
+      "id": "missing-is-not-zero",
+      "result": "pass",
+      "details": "Cedar original shipping amount/rate remain null and tax mode unknown. Its goods-inclusive1837.50 is never called a known delivered total."
+    },
+    {
+      "id": "revision-identity",
+      "result": "pass",
+      "details": "Revised Cedar explicitly replaces the original; scripted three-supplier comparison and unchanged175 goods price agree with the two revisions."
+    },
+    {
+      "id": "quantity-and-fixed-shipping-scope",
+      "result": "pass",
+      "details": "All page2 sources explicitly cover10–20 pieces and fixed or free shipping. The arithmetic ranking change follows actual stated scope; quantity21 refusal is separately evidenced by actual-request-runs.json."
+    },
+    {
+      "id": "xlsx-scope",
+      "result": "pass",
+      "details": "Brief, metadata and cost-workbook narration explicitly describe precomputed editable values and require regeneration after changes; no interactive-formula calculation by openpyxl is claimed."
+    },
+    {
+      "id": "product-and-ocr-honesty",
+      "result": "pass",
+      "details": "The metadata/brief identify Codex and local text extraction; no unrun named product upload UI, all-AI OCR incapability or fabricated model failure is claimed."
+    },
+    {
+      "id": "fictional-tax-context",
+      "result": "pass",
+      "details": "5% is explicitly a fictional exercise assumption, with both card and narration coverage."
+    }
+  ],
+  "required_changes": [
+    {
+      "id": "R1",
+      "severity": "teaching_reproducibility",
+      "location": "video.json quantity-edit / quantity-prompt transition before quantity formulas",
+      "finding": "The video shows the changed JSON and then the computed totals, but does not show the actual command/action that reads that request and recalculates. A viewer cannot identify how to get from the edited file to the delivered result from these cards alone.",
+      "requested_fix": "Add an exact, readable local command card for the real build_comparison.py invocation with --analysis, --extracted, --request request-20.json and --out; name where the saved selected-comparison.csv/json appears, and narrate that the command runs after saving the quantity edit. Use actual recorded output, not a fake terminal screenshot. A concise setup card should identify which input files Codex reads and the normalized-quotes.json output used by the calculator.",
+      "approval_rule": "Inspect the actual revised cards and narration before treating this item as resolved."
+    },
+    {
+      "id": "R2",
+      "severity": "source_bound_execution_evidence",
+      "location": "lab/results/verification.json and results-request-{10,20}/verification.json",
+      "finding": "At review time the final embedded-font source snapshot is extracted-pages586eb5f7... and normalized-quotesf86e3a0e..., while existing calculation verification receipts still bind earlier c196bf68.../24cc2a97... (and an older256b242e... base receipt). Numeric equality does not verify execution against the final snapshot.",
+      "requested_fix": "Actually rerun the existing comparison commands against the final AI output and extracted pages, preserve the earlier receipts as history, and refresh actual-request-runs and current verification receipts. Do not relabel old hashes or fabricate new runs.",
+      "approval_rule": "Current receipt input SHA-256 values must equal the actual final source files, with actual exit0 calculations and actual quantity21 refusal still preserved."
+    }
+  ],
+  "nonblocking_cautions": [
+    {
+      "id": "C1",
+      "location": "extract-core seven-line prompt card",
+      "details": "The seven-line viewer prompt was added after an earlier schema-specific analysis prompt; current provenance records that ordering. It is a real applied viewer task prompt, but do not imply this alone was the exact initial machine-readable extraction request. Keep analysis-prompt.txt in materials and identify it in the setup so the demonstrated route remains reproducible."
+    },
+    {
+      "id": "C2",
+      "location": "future render/audio stage",
+      "details": "This is a source/script review. Long seven-line prompt readability, actual slide holds, media duration, voice pronunciation, CC and finalQA still require their native checks; this report does not substitute for those."
+    }
+  ],
+  "mutations": "Only this authorized research/independent-script-review.json was written. No source, script, lab, task, approval, request or paid operation was modified by this reviewer.",
+  "rechecks": [
+    {
+      "checked_at_utc": "2026-10-26T07:14:37.902177+00:00",
+      "reviewer": "OpenAI Codex agent /root/pdf_research",
+      "scope": "Only prior R1, R2 and C1; actual revised command/output cards, prompt provenance, final-source calculation evidence and real relative-command outputs. No source or claim edit, no paid operation.",
+      "source_snapshot": {
+        "scenes": 56,
+        "lines": 107
+      },
+      "reviewed_inputs": [
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/video.json",
+          "sha256": "6626531b3c00dd4aa724a64e1480fe4f69c20f01bfbdda69f5dacc9e43dc27ab",
+          "bytes": 47857
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/script.md",
+          "sha256": "349dd09ec36e72f4d6e90e2f34f60885b9b7d40739955d0832b72fbf36ce0b58",
+          "bytes": 10411
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/brief.md",
+          "sha256": "e821a2a0bc03c0706061f56f7a05bf8841cd52b712e1bc06c9e0f44761a5ea04",
+          "bytes": 7308
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/materials/analysis-prompt.txt",
+          "sha256": "dc159f0d4ad8713e3c7d28cc9a43df823ec20fe2bd25687105f1001c7d29921f",
+          "bytes": 2387
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/materials/viewer-prompt.txt",
+          "sha256": "6b491f229d7f5e12f53c2f56de3c812614f4ec7ac96e9042127aa45bb6d3a5c4",
+          "bytes": 442
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/materials/request-20.json",
+          "sha256": "53f882946086d999e5ccbcf14755a176a92907e2c984920c2f3653c10be8eb62",
+          "bytes": 46
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/research/lab-ai-extraction.json",
+          "sha256": "f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8",
+          "bytes": 22847
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/research/lab-extracted-pages.json",
+          "sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+          "bytes": 6693
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/research/lab-ai-analysis-execution.json",
+          "sha256": "a2c5c2ec04b3d0ac17a5e4753f5036a112d96c9f5994c580213980920b83d4ee",
+          "bytes": 19201
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/research/lab-request-runs.json",
+          "sha256": "1a0f3944ad798ef659c8ff58b2adb0358e0c325aed97acfa7e69ff487cf47367",
+          "bytes": 4312
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/research/lab-verification-request-10.json",
+          "sha256": "a5d6c43ecc579a888cedac41c8023d24973e177ff76ef51b88cbac565f8b1c41",
+          "bytes": 5350
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/research/lab-verification-request-20.json",
+          "sha256": "580591e663d330e16e07d28a9f98ee4dee720f8093f46fb90d2c83d1e8b1b4c9",
+          "bytes": 5350
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/research/lab-relative-command-execution.json",
+          "sha256": "0b0736f87ea6963ff2c0f10260f69f5fefc6432c5167dd73312be36bc43bcbfa",
+          "bytes": 5016
+        },
+        {
+          "path": "docs/videos/ai-pdf-quotes-to-comparison/research/lab-execution-20261026.json",
+          "sha256": "61f49f0a684cfe9e292cb6300d35fe10486aa6793ef45d83715e9ab143a2fd6e",
+          "bytes": 11331
+        }
+      ],
+      "item_results": [
+        {
+          "id": "R1",
+          "result": "resolved_pass",
+          "evidence": [
+            "quantity-run displays the exact argv recorded by lab-relative-command-execution.json, including analysis/extracted/request/out options. The code card parsed as shell arguments equals the actual command receipt.",
+            "New narration explicitly says to save then execute in the materials directory; quantity-output identifies the actual selected-comparison.json result with request20/revised/three suppliers. Both new cards narration appears in script.md.",
+            "All three actual relative input files and the build_comparison.py code match the execution receipt hashes; every recorded output file exists with matching hash and byte length in the isolated repro-package, including selected-comparison outputs.",
+            "The selected result has quantity20 and exactly one Cedar row using cedar-revised.pdf."
+          ]
+        },
+        {
+          "id": "R2",
+          "result": "resolved_pass",
+          "evidence": [
+            "Repo lab-ai-extraction.json and lab-extracted-pages.json exactly match the live final normalized/extracted files: f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8 and 586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c.",
+            "Actual final request10 and request20 verification receipts are copied unchanged into research, each binds those final input hashes and passes all17 checks.",
+            "lab-request-runs.json records successful standard/request10/request20 commands and the actual quantity21 ValueError with exit1/no output. The 16-check standard run and17-check request runs are distinct truthful counts.",
+            "The relative demonstration receipt binds the same final hashes and its actual output file hashes/sizes were independently read and matched; this is not an inferred success from unchanged totals."
+          ]
+        },
+        {
+          "id": "C1",
+          "result": "documented_nonblocking_boundary",
+          "evidence": [
+            "The actual seven-line prompt remains available as viewer-prompt.txt and is labelled as that file on screen; there is no observed narration claiming it was the sole original schema-specific request.",
+            "The material README identifies requirements.txt, analysis-prompt.txt, extracted-pages.json and normalized-quotes.json. The actual execution record retains original ordering and the later final-font rerun, so the seven-line addition is not falsely backdated.",
+            "The machine-readable source used by the visible calculator command is named explicitly as lab-ai-extraction.json; it is not confused with a raw PDF or a complete consumer product UI."
+          ],
+          "continuing_boundary": "Keep the full analysis-prompt.txt and actual provenance in the delivered materials. This recheck does not certify that any commercial UI will emit the same JSON from the seven-line prompt alone."
+        }
+      ],
+      "verdict": "pass_for_source_and_script_review_scope",
+      "unresolved_required_changes_from_initial_review": [],
+      "may_proceed_to": "Native verifier and listener; TTS/render/audio/CC/actual duration and finalQA still require the real pipeline checks.",
+      "remaining_media_holds": [
+        "No slide readability or dwell-time verdict for final render was made by this text recheck.",
+        "No narration listening, audio transcription, finalQA, translation or upload approval is asserted."
+      ],
+      "approval_identity": "Independent Codex source review only; no human, Jev, backend final approval or publication claimed."
+    }
+  ],
+  "current_verdict": "pass_for_source_and_script_review_scope",
+  "current_unresolved_required_changes": [],
+  "historical_verdict_notice": "The original verdict/required_changes are preserved above as initial-review history; the latest recheck supplies their current resolution."
+}

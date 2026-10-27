@@ -1,0 +1,138 @@
+{
+  "schema_version": 1,
+  "scope": "source-meaning-and-naturalness",
+  "review_target": "independent review of the original-author corrected candidate only; not canonical adoption or voice approval",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+  "reviewed_boundaries": [
+    {
+      "file": "author-review-boundaries/en.shorten.round-1.2026-10-26T12-47-12-330Z.json",
+      "sha256": "0ef7251d29feab65eab6f392aa31228e8b8b7e18278486d2acab9b42e66e6452"
+    }
+  ],
+  "locale": "en",
+  "reviewer": {
+    "agent_id": "/root/pdf_author_ko_th",
+    "role": "Original independent English source-text reviewer; not native producer or author of the candidate file",
+    "independence_detail": "Reviewer earlier suggested the same recompute wording. The original English author /root/pdf_author_en_ja separately constructed and froze the whole-file candidate. Reviewer did not edit the native/candidate translations and independently checked the exact candidate, Chinese and complete file deltas.",
+    "method": "Actually read both Chinese source sentences and their code-scene context, the canonical-before/native-proposal/corrected-candidate texts, and author notes. Verified the recursive full-file delta and every source-hash/metadata field. No fit result or author assurance substituted for the meaning reading."
+  },
+  "source_video": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+    "sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04"
+  },
+  "accepted_candidate": {
+    "path": "/workspace/work/ai-pdf-01/en-shorten1-author-correction.json",
+    "sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc"
+  },
+  "actual_native_translation": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json",
+    "sha256": "96bf226e0a0f1ad1ec18b2b26b5f66384099b7d1edb508005cf05972bafe117c",
+    "original_failed_decision_preserved": true
+  },
+  "native_boundary": {
+    "path": "/workspace/work/ai-pdf-01/author-review-boundaries/en.shorten.round-1.2026-10-26T12-47-12-330Z.json",
+    "sha256": "0ef7251d29feab65eab6f392aa31228e8b8b7e18278486d2acab9b42e66e6452",
+    "recorded_translation_sha256": "96bf226e0a0f1ad1ec18b2b26b5f66384099b7d1edb508005cf05972bafe117c",
+    "recorded_translation_is_not_the_corrected_candidate": true
+  },
+  "raw_native_answer": {
+    "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/en-shorten-round-1-meaning-review-2026-10-26T12-47-12-330Z.txt",
+    "sha256": "7284be9b3da08f8538809b8308fa2e6a5d150f4a0c9cd6a46d000258d74ce5f4",
+    "unchanged_original_proposal": true
+  },
+  "original_failed_review": {
+    "path": "/workspace/work/ai-pdf-01/en-shorten1-independent-meaning-review.json",
+    "sha256": "a3af4cdc8907fe1459d4bc8c2a1889670d63918302607cddf3830a084e554691",
+    "passed": false,
+    "preserved_unchanged": true
+  },
+  "author_notes": {
+    "path": "/workspace/work/ai-pdf-01/en-shorten1-author-correction.author-notes.json",
+    "sha256": "6b0598d24f2bde15e29a3c7ae160fd8a72104dc3f8415166905f1cfe043a7fea"
+  },
+  "canonical_baseline": {
+    "git_commit": "b8616c5e7",
+    "actual_sha256": "a6189e49f541bb0961fedfaf5ad9b9a74be916eaa60f594e2dba91608220d80b"
+  },
+  "full_file_delta_proof": {
+    "actual_native_to_candidate_changed_paths": [
+      "lines.trph.text"
+    ],
+    "canonical_baseline_to_candidate_changed_paths": [
+      "lines.vnaq.text",
+      "lines.trph.text"
+    ],
+    "line_count": 101,
+    "native_to_candidate_other_100_entries_exact": true,
+    "native_shortened_vnaq_exact": true,
+    "baseline_to_candidate_other_99_entries_exact": true,
+    "metadata_and_top_level_fields_exact_against_both": [
+      "title",
+      "description",
+      "tags",
+      "chapters",
+      "source_hashes",
+      "thumbnail"
+    ],
+    "all_line_source_hashes_exact_against_both": true,
+    "all_top_level_source_hashes_exact_against_both": true
+  },
+  "lines_reviewed": 2,
+  "line_reviews": [
+    {
+      "id": "vnaq",
+      "chinese_source_read": "二十張的需求如果再多要一張，變成二十一張，答案還算得出來嗎？",
+      "scene": "range21-request",
+      "canonical_before_text_read": "Add one to the 20-card request, making 21: can we still get an answer?",
+      "actual_native_text_read": "Add one to the 20-card request, making 21: still answerable?",
+      "corrected_candidate_text_read": "Add one to the 20-card request, making 21: still answerable?",
+      "candidate_codepoints": 60,
+      "native_payload_max_chars": 64,
+      "passed": true,
+      "finding": "Retains the explicit 20-card requirement plus one, becoming 21, and the question whether an answer is still possible. It does not assert that the out-of-range request can be calculated."
+    },
+    {
+      "id": "trph",
+      "chinese_source_read": "這次先別改單價，照同一個方法重算看看。",
+      "scene": "range21-request",
+      "canonical_before_text_read": "Keep unit prices for now; recalculate the same way.",
+      "actual_native_text_read": "Keep unit prices for now; redo the same method.",
+      "corrected_candidate_text_read": "Keep unit prices for now; recompute as before.",
+      "candidate_codepoints": 46,
+      "native_payload_max_chars": 47,
+      "passed": true,
+      "finding": "Natural plain English. Keep unit prices for now preserves the instruction not to change unit prices at this step; recompute as before explicitly recalculates using the same earlier method. It adds no price assumption, new method or claim of a successful 21-card calculation."
+    }
+  ],
+  "resolved_native_issue": {
+    "id": "EN-SHORTEN1-TRPH-1",
+    "result": "Resolved in this separate author-corrected candidate; the original native proposal remains a failed textual artifact."
+  },
+  "remaining_meaning_or_naturalness_issues": [],
+  "issues": [],
+  "passed": true,
+  "decision": "This exact corrected candidate passes source meaning and naturalness against source eac889...; this is not approval of the unchanged original native proposal.",
+  "native_round_state_unchanged": {
+    "shorten": 1,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "protected_runtime_state": {
+    "auto_json_path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json",
+    "auto_json_sha256": "b0dca4d4bc10b08fc897b94c10ee6695d5ab392dd42a9a970901910475fa34e7",
+    "all_author_notes_protected_file_hashes_independently_verified_unchanged": true
+  },
+  "audio_scope": {
+    "source_only": true,
+    "old_wav_count": 101,
+    "new_tts_or_asr_performed": false,
+    "audio_listened_by_reviewer": false,
+    "new_audio_fit_approved": false,
+    "new_audio_quality_approved": false,
+    "note": "46 code points is within the native 47-character estimate for trph; that is not measured new audio fit. The existing WAVs are old-text artifacts. Native shorten=1, retakes=0, reword=0, check_stopped=true remain unchanged."
+  },
+  "mutations": "Only this separate external review report and helper were written. Original failed review, actual native answer/boundary, canonical translation/source, counters, index and reviewed_boundaries were not changed. No paid, native, network, TTS or ASR operation occurred.",
+  "adoption_status": "Author candidate only at review time. Root owns any lease-safe canonical adoption and review/index linkage, followed by the sole producer workflow. This source-text report does not itself authorize a producer call, retry, retake, reword, final QA, owner action or publication."
+}

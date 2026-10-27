@@ -1,0 +1,196 @@
+{
+  "checked_at_utc": "2026-10-26T07:07:35.102696+00:00",
+  "actual_ai_analyst": "OpenAI Codex agent (sub-agent /root/pdf_ai_extract)",
+  "analysis_sha256": "f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8",
+  "selected_request": {
+    "scenario": "revised",
+    "quantity": 10
+  },
+  "request_sha256": "7c1d5d568212a5c6e31042f1e7f8fc542950956814ce044b1f3a05868e8a9b30",
+  "extracted_pages_sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+  "truth_sha256": "ba02380452061fe58abc6a4187566b9d101dce26f9c9242efcf85cda87ad37ee",
+  "verification": "Independent fixture field assertions, exact page-evidence substring checks, Decimal totals, actual xlsx data_only readback, unknown shipping kept blank, revision replacement and out-of-range rejection",
+  "checks": [
+    {
+      "check": "independent_total",
+      "file": "aster.pdf",
+      "quantity": 10,
+      "actual": "2100.00",
+      "pass": true
+    },
+    {
+      "check": "independent_total",
+      "file": "aster.pdf",
+      "quantity": 20,
+      "actual": "3990.00",
+      "pass": true
+    },
+    {
+      "check": "reject_out_of_range_quantity_21",
+      "file": "aster.pdf",
+      "pass": true
+    },
+    {
+      "check": "independent_total",
+      "file": "birch.pdf",
+      "quantity": 10,
+      "actual": "2050.00",
+      "pass": true
+    },
+    {
+      "check": "independent_total",
+      "file": "birch.pdf",
+      "quantity": 20,
+      "actual": "4100.00",
+      "pass": true
+    },
+    {
+      "check": "reject_out_of_range_quantity_21",
+      "file": "birch.pdf",
+      "pass": true
+    },
+    {
+      "check": "independent_total",
+      "file": "cedar.pdf",
+      "quantity": 10,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "check": "independent_total",
+      "file": "cedar.pdf",
+      "quantity": 20,
+      "actual": null,
+      "pass": true
+    },
+    {
+      "check": "reject_out_of_range_quantity_21",
+      "file": "cedar.pdf",
+      "pass": true
+    },
+    {
+      "check": "independent_total",
+      "file": "cedar-revised.pdf",
+      "quantity": 10,
+      "actual": "2100.00",
+      "pass": true
+    },
+    {
+      "check": "independent_total",
+      "file": "cedar-revised.pdf",
+      "quantity": 20,
+      "actual": "3937.50",
+      "pass": true
+    },
+    {
+      "check": "reject_out_of_range_quantity_21",
+      "file": "cedar-revised.pdf",
+      "pass": true
+    },
+    {
+      "check": "winner_and_no_duplicate_revision",
+      "scenario": "original-10",
+      "winners": [
+        "Birch"
+      ],
+      "pass": true
+    },
+    {
+      "check": "winner_and_no_duplicate_revision",
+      "scenario": "revised-10",
+      "winners": [
+        "Birch"
+      ],
+      "pass": true
+    },
+    {
+      "check": "winner_and_no_duplicate_revision",
+      "scenario": "revised-20",
+      "winners": [
+        "Cedar"
+      ],
+      "pass": true
+    },
+    {
+      "check": "actual_headline_sort_is_Cedar_Aster_Birch_not_model_failure",
+      "pass": true
+    },
+    {
+      "check": "actual_request_file_drives_selected_table",
+      "request_file": "/workspace/work/ai-pdf-01/lab/requests/request-10.json",
+      "request_sha256": "7c1d5d568212a5c6e31042f1e7f8fc542950956814ce044b1f3a05868e8a9b30",
+      "quantity": 10,
+      "scenario": "revised",
+      "totals": {
+        "Aster": "2100.00",
+        "Birch": "2050.00",
+        "Cedar": "2100.00"
+      },
+      "pass": true
+    }
+  ],
+  "all_passed": true,
+  "formula_evaluation_claimed": false,
+  "output_files": [
+    {
+      "name": "baseline-and-normalized-order.json",
+      "bytes": 601,
+      "sha256": "9de1c612ae82e3c4dbdf00abe1aaf2c509a7925cb2e00eecf888f629588eaa2c"
+    },
+    {
+      "name": "change-log.json",
+      "bytes": 573,
+      "sha256": "5eece163997905a316890f7acf8e84bf82e57a3218105b5ddae1c59b716558b9"
+    },
+    {
+      "name": "comparison.json",
+      "bytes": 4304,
+      "sha256": "c392e1162b791ecedc82a2bcb9ca2dd41ea73a71d424c50755828c242f3d25ab"
+    },
+    {
+      "name": "comparison.md",
+      "bytes": 1319,
+      "sha256": "403eb971cacecc3cb83f7c44af857306d72c36a19c8e27c7712abaf348c72800"
+    },
+    {
+      "name": "comparison.xlsx",
+      "bytes": 13518,
+      "sha256": "068151632c82b1f7a63b7fc0b8b93c86beb09f7b09a087a9874d75bf6d0bb965"
+    },
+    {
+      "name": "headline-unit-sort-baseline.csv",
+      "bytes": 448,
+      "sha256": "4672e1eba5c482d194c250de197e18b4e57a7703be9eb2c5e5185875067edf6a"
+    },
+    {
+      "name": "original-10.csv",
+      "bytes": 531,
+      "sha256": "ce6b009a07c14160dc8c6f632815e9d06cb856018fdc8c129e9dd98d529e8435"
+    },
+    {
+      "name": "questions.txt",
+      "bytes": 504,
+      "sha256": "fa572e87cedfce6246f78cc4f6f773da35ffde32f99a45c4c55cf97a0ef5bab2"
+    },
+    {
+      "name": "revised-10.csv",
+      "bytes": 540,
+      "sha256": "93c64f00c828eb4c8cd168ebdc749f742a9d33a8e2e4ef653072081321d0d6aa"
+    },
+    {
+      "name": "revised-20.csv",
+      "bytes": 540,
+      "sha256": "1161a12d8e5f8a55d3465624bb941dd98c45b4a1d8a97b4891c0ccd5e78916b6"
+    },
+    {
+      "name": "selected-comparison.csv",
+      "bytes": 540,
+      "sha256": "93c64f00c828eb4c8cd168ebdc749f742a9d33a8e2e4ef653072081321d0d6aa"
+    },
+    {
+      "name": "selected-comparison.json",
+      "bytes": 1586,
+      "sha256": "eacb746bb34c646de0940ace1dce11dee3e7950038babb4fde3d36217374fa80"
+    }
+  ]
+}

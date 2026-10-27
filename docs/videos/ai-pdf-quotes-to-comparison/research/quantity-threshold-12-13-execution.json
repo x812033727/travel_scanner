@@ -1,0 +1,199 @@
+{
+  "schema_version": 1,
+  "method": "Actual existing comparison program, two changed request files, exact saved AI extraction and eight-page sources; separate Decimal formulas independently check selected outputs; no new AI/provider/supplier call",
+  "reason": "First actual narrated body was measured467.466667seconds, below480; add a new useful threshold-finding operation instead of silence/repetition/slow speech",
+  "input_code_sha256": "35103b82d83b527b897bbc171e8d71e40431ebc0c4412a9c3ce62b898b160ea1",
+  "analysis_sha256": "f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8",
+  "extracted_pages_sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+  "actual_runs": [
+    {
+      "executed_at_utc": "2026-10-26T11:09:38.768031+00:00",
+      "cwd": "/workspace/work/ai-pdf-01/repro-package/materials",
+      "command": [
+        "python3",
+        "build_comparison.py",
+        "--analysis",
+        "../research/lab-ai-extraction.json",
+        "--extracted",
+        "../research/lab-extracted-pages.json",
+        "--request",
+        "request-12.json",
+        "--out",
+        "comparison-12"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"comparison-12\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "request_file": "materials/request-12.json",
+      "request_sha256": "470f32f0126f80a526165455dabf16195c4895a5f0f46f68638208f401b53dab",
+      "selected_result": {
+        "request": {
+          "scenario": "revised",
+          "quantity": 12
+        },
+        "request_sha256": "470f32f0126f80a526165455dabf16195c4895a5f0f46f68638208f401b53dab",
+        "rows": [
+          {
+            "supplier": "Aster",
+            "source_file": "aster.pdf",
+            "quantity": 12,
+            "unit_price": "180.00",
+            "unit_tax_mode": "exclusive",
+            "goods_gross": "2268.00",
+            "shipping_gross": "210.00",
+            "delivered_total": "2478.00",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 7,
+            "price_source": "aster.pdf p.1",
+            "shipping_source": "aster.pdf p.2",
+            "lowest_comparable": false
+          },
+          {
+            "supplier": "Birch",
+            "source_file": "birch.pdf",
+            "quantity": 12,
+            "unit_price": "205.00",
+            "unit_tax_mode": "inclusive",
+            "goods_gross": "2460.00",
+            "shipping_gross": "0.00",
+            "delivered_total": "2460.00",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 5,
+            "price_source": "birch.pdf p.1",
+            "shipping_source": "birch.pdf p.2",
+            "lowest_comparable": true
+          },
+          {
+            "supplier": "Cedar",
+            "source_file": "cedar-revised.pdf",
+            "quantity": 12,
+            "unit_price": "175.00",
+            "unit_tax_mode": "exclusive",
+            "goods_gross": "2205.00",
+            "shipping_gross": "262.50",
+            "delivered_total": "2467.50",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 7,
+            "price_source": "cedar-revised.pdf p.1",
+            "shipping_source": "cedar-revised.pdf p.2",
+            "lowest_comparable": false
+          }
+        ]
+      },
+      "selected_result_sha256": "69c124266f2d43caf09b60cf1a096e3eb9523bd38e74d742f6dc2611349b3a62",
+      "independent_decimal_totals": {
+        "Aster": "2478.00",
+        "Birch": "2460.00",
+        "Cedar": "2467.50"
+      },
+      "independent_check_passed": true,
+      "winner": "Birch"
+    },
+    {
+      "executed_at_utc": "2026-10-26T11:09:38.941935+00:00",
+      "cwd": "/workspace/work/ai-pdf-01/repro-package/materials",
+      "command": [
+        "python3",
+        "build_comparison.py",
+        "--analysis",
+        "../research/lab-ai-extraction.json",
+        "--extracted",
+        "../research/lab-extracted-pages.json",
+        "--request",
+        "request-13.json",
+        "--out",
+        "comparison-13"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"comparison-13\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "request_file": "materials/request-13.json",
+      "request_sha256": "08ebad425a955e34cffc984a7ae131dd9401887cc013a9fa7423f46058c434c1",
+      "selected_result": {
+        "request": {
+          "scenario": "revised",
+          "quantity": 13
+        },
+        "request_sha256": "08ebad425a955e34cffc984a7ae131dd9401887cc013a9fa7423f46058c434c1",
+        "rows": [
+          {
+            "supplier": "Aster",
+            "source_file": "aster.pdf",
+            "quantity": 13,
+            "unit_price": "180.00",
+            "unit_tax_mode": "exclusive",
+            "goods_gross": "2457.00",
+            "shipping_gross": "210.00",
+            "delivered_total": "2667.00",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 7,
+            "price_source": "aster.pdf p.1",
+            "shipping_source": "aster.pdf p.2",
+            "lowest_comparable": false
+          },
+          {
+            "supplier": "Birch",
+            "source_file": "birch.pdf",
+            "quantity": 13,
+            "unit_price": "205.00",
+            "unit_tax_mode": "inclusive",
+            "goods_gross": "2665.00",
+            "shipping_gross": "0.00",
+            "delivered_total": "2665.00",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 5,
+            "price_source": "birch.pdf p.1",
+            "shipping_source": "birch.pdf p.2",
+            "lowest_comparable": false
+          },
+          {
+            "supplier": "Cedar",
+            "source_file": "cedar-revised.pdf",
+            "quantity": 13,
+            "unit_price": "175.00",
+            "unit_tax_mode": "exclusive",
+            "goods_gross": "2388.75",
+            "shipping_gross": "262.50",
+            "delivered_total": "2651.25",
+            "status": "可比較",
+            "comparable": true,
+            "lead_business_days": 7,
+            "price_source": "cedar-revised.pdf p.1",
+            "shipping_source": "cedar-revised.pdf p.2",
+            "lowest_comparable": true
+          }
+        ]
+      },
+      "selected_result_sha256": "67681c31721565460b7c72a5e4adcd632887ef363dd6dba66da4770f80838dd1",
+      "independent_decimal_totals": {
+        "Aster": "2667.00",
+        "Birch": "2665.00",
+        "Cedar": "2651.25"
+      },
+      "independent_check_passed": true,
+      "winner": "Cedar"
+    }
+  ],
+  "margin_calculation": {
+    "at_12_cedar_minus_birch": "7.50",
+    "at_13_birch_minus_cedar": "13.75",
+    "one_extra_cedar_goods_gross": "183.75",
+    "one_extra_birch_goods_gross": "205.00",
+    "relative_gain_per_extra_piece": "21.25"
+  },
+  "scope": "All quantities stay within the original explicit10–20 range; only same fictional procurement, source versions and shipping conditions. No real supplier recommendation.",
+  "additional_actual_decimal_derivation": {
+    "calculated_at_utc": "2026-10-26T11:13:14.850233+00:00",
+    "method": "Actual Python decimal.Decimal subtraction of both actual selected_result goods_gross/delivered_total strings; fixed shipping unchanged in both outputs",
+    "cedar_goods_increase": "183.75",
+    "birch_goods_increase": "205.00",
+    "relative_gain": "21.25",
+    "cedar_minus_birch_at_12": "7.50",
+    "cedar_minus_birch_at_13": "-13.75"
+  }
+}

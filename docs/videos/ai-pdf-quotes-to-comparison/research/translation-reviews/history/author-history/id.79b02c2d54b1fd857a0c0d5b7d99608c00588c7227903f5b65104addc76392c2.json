@@ -1,0 +1,935 @@
+{
+  "locale": "id",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "parts": [
+    "metadata",
+    "captions"
+  ],
+  "note": "Fill the `text` of everything marked todo: lines, chapters, the title, the description, the tags. The rest already has a current translation. Keep `id`, `scene`, `source` and `todo` as they are. `thumbnail.text` holds the words of this locale's own thumbnail, one for each word in `thumbnail.source` (tag, headline, sub): short enough to read on a phone, with the same `**` emphasis and line breaks. `max_chars` is how many characters a line's dub may have (docs/videos/DUBS.md): the translation is also read aloud in the time the narration line takes, so stay under it. `glossary.terms` are the dictionary terms this video uses, in the forms they appear in, and `glossary.sources` the names of its sources: render each one way everywhere, a product, company, model or feature name as its maker writes it. `boundaries` maps a line id to the pieces the narration's captions cut that line into (a line absent from it is one cue): keep the clauses in that order.",
+  "title": {
+    "todo": true,
+    "source": "用 AI 比較三份 PDF 報價：最低單價，真的最便宜？",
+    "text": "Bandingkan 3 Penawaran PDF dengan AI: Harga Satuan Terendah Pasti Termurah?"
+  },
+  "description": {
+    "todo": true,
+    "source": "三份 PDF 報價的單價不能直接放在一起排序。跟著同一組原創明信片報價，讓 AI 先整理規格、數量、含稅狀態、運費與來源頁碼，再用明示條件算出可比較的送達總價。收到修訂版、把數量從十張改成二十張後，重新核對結果。\n\n示範使用本次 Codex AI 文件分析、pypdf 文字抽取與精確小數計算，輸出可編輯試算表；不宣稱已實測任何特定商用 AI 產品的上傳介面。供應商、價格及百分之五稅率均是原創練習設定，不是對真實交易的稅務判斷。\n\n資料與實作日期：2026-10-26。本次 PDF 可選取文字；這條抽文流程不做掃描影像 OCR。試算表中的數值由計算工具實際計算，openpyxl 只負責寫檔，不宣稱它會計算公式。\n\n教材包含需求、提示詞、來源 PDF 生成程式、逐頁抽文、可編輯比價表與版本紀錄。\n\n畫面七行提示詞為觀眾任務要求；機讀欄位格式另見 analysis-prompt.txt 的 JSON 契約，本次 AI 分析也讀取了該契約。\n\n原創教材、需求與完整提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials",
+    "text": "Harga satuan dari tiga penawaran PDF tidak bisa langsung diurutkan bersama. Dengan satu set penawaran kartu pos orisinal yang sama, minta AI merapikan spesifikasi, jumlah, status pajak, biaya kirim, dan nomor halaman sumber, lalu hitung total biaya sampai tujuan yang bisa dibandingkan berdasarkan syarat tertulis. Setelah menerima revisi dan mengubah jumlah dari 10 menjadi 20 lembar, periksa kembali hasilnya.\n\nDemo ini menggunakan analisis dokumen AI oleh Codex pada percobaan ini, ekstraksi teks pypdf, dan perhitungan desimal presisi untuk menghasilkan spreadsheet yang bisa diedit; tidak mengklaim telah menguji antarmuka unggah produk AI komersial tertentu. Pemasok, harga, dan tarif pajak 5% adalah pengaturan latihan orisinal, bukan penilaian pajak untuk transaksi nyata.\n\nTanggal data dan praktik: 2026-10-26. Teks PDF kali ini bisa dipilih; alur ekstraksi ini tidak melakukan OCR gambar pindai. Nilai dalam spreadsheet benar-benar dihitung oleh alat hitung; openpyxl hanya menulis berkas, tanpa klaim bahwa alat itu menghitung rumus.\n\nMateri mencakup kebutuhan, prompt, program pembuat PDF sumber, ekstraksi teks per halaman, tabel perbandingan harga yang bisa diedit, dan riwayat versi.\n\nPrompt tujuh baris di layar berisi persyaratan tugas bagi penonton; format kolom yang dapat dibaca mesin ada dalam kontrak JSON di analysis-prompt.txt, yang juga dibaca dalam analisis AI kali ini.\n\nMateri orisinal, kebutuhan, dan prompt lengkap:\nhttps://github.com/x812033727/travel_scanner/tree/53e7243ba84b2327f7a7674acc8065f411088d96/docs/videos/ai-pdf-quotes-to-comparison/materials"
+  },
+  "tags": {
+    "todo": true,
+    "source": [
+      "AI 教學",
+      "PDF 比價",
+      "報價比較",
+      "辦公室 AI",
+      "Mokaair"
+    ],
+    "text": [
+      "tutorial AI",
+      "perbandingan harga PDF",
+      "membandingkan penawaran",
+      "AI untuk kantor",
+      "Codex",
+      "PDF"
+    ]
+  },
+  "thumbnail": {
+    "todo": true,
+    "source": {
+      "tag": "AI 比較 PDF 報價",
+      "headline": "**先算總價**",
+      "sub": "稅與運費別漏算"
+    },
+    "text": {
+      "tag": "Bandingkan PDF",
+      "headline": "**Hitung total dulu**",
+      "sub": "Pajak dan kirim dihitung"
+    }
+  },
+  "chapters": [
+    {
+      "scene": "opening",
+      "todo": true,
+      "source": "最低單價，能直接下單？",
+      "text": "Harga rendah, langsung pesan?"
+    },
+    {
+      "scene": "need-start",
+      "todo": true,
+      "source": "把需求寫成比較基準",
+      "text": "Tulis dasar perbandingan"
+    },
+    {
+      "scene": "extract-start",
+      "todo": true,
+      "source": "讓每個欄位都找得到原文",
+      "text": "Lacak tiap kolom ke sumber"
+    },
+    {
+      "scene": "cost-start",
+      "todo": true,
+      "source": "含稅和運費要算到同一個終點",
+      "text": "Total pajak dan kirim"
+    },
+    {
+      "scene": "missing-start",
+      "todo": true,
+      "source": "把缺漏變成能寄出的問題",
+      "text": "Susun pertanyaan soal data"
+    },
+    {
+      "scene": "revision-start",
+      "todo": true,
+      "source": "修訂版到手，只替換改過的條件",
+      "text": "Ganti syarat yang direvisi"
+    },
+    {
+      "scene": "quantity-start",
+      "todo": true,
+      "source": "數量翻倍，重新確認適用條件",
+      "text": "Jumlah naik, cek syarat lagi"
+    },
+    {
+      "scene": "threshold-start",
+      "todo": true,
+      "source": "只多一張，最低價在哪裡換人？",
+      "text": "Tambah 1, termurah berganti?"
+    },
+    {
+      "scene": "range21-request",
+      "todo": true,
+      "source": "超出報價範圍，先別下單",
+      "text": "Di luar rentang, tunda pesan"
+    }
+  ],
+  "glossary": {
+    "terms": [
+      "AI",
+      "Codex",
+      "JSON",
+      "Mokaair",
+      "PDF"
+    ],
+    "sources": [
+      "pypdf — Extract Text from a PDF",
+      "openpyxl — Using formulae"
+    ]
+  },
+  "boundaries": {
+    "7dp4": [
+      "先把原本十張的數量設定檔，",
+      "另存成畫面上這個新檔名，再把數量改成二十。"
+    ]
+  },
+  "lines": [
+    {
+      "id": "6vwc",
+      "scene": "opening",
+      "todo": true,
+      "source": "最低的單價，現在還不能直接排第一。",
+      "text": "Harga satuan terendah belum bisa jadi nomor satu.",
+      "max_chars": 52
+    },
+    {
+      "id": "xnrg",
+      "scene": "opening-unit",
+      "todo": true,
+      "source": "因為這三份報價，寫的其實不是同一種金額。",
+      "text": "Sebab ketiga penawaran ini beda jenis nominalnya.",
+      "max_chars": 49
+    },
+    {
+      "id": "edfn",
+      "scene": "opening-result",
+      "todo": true,
+      "source": "所以我們讓 AI 做一張能編輯的表，連原文頁碼也一起留下。",
+      "text": "Jadi AI membuat tabel yang bisa diedit, lengkap dengan halaman sumber.",
+      "max_chars": 71
+    },
+    {
+      "id": "hg9m",
+      "scene": "opening-missing",
+      "todo": true,
+      "source": "但空白的運費，能不能直接當成免費？",
+      "text": "Biaya kirim kosong boleh dianggap gratis?",
+      "max_chars": 44
+    },
+    {
+      "id": "ajsk",
+      "scene": "opening-revision",
+      "todo": true,
+      "source": "補來一張修訂單，便宜的會換人嗎？",
+      "text": "Ada revisi; yang termurah akan berganti?",
+      "max_chars": 44
+    },
+    {
+      "id": "kv5r",
+      "scene": "opening-quantity",
+      "todo": true,
+      "source": "如果數量翻倍，原本的答案還能用嗎？",
+      "text": "Kalau jumlahnya dua kali lipat, jawaban lama masih berlaku?",
+      "max_chars": 59
+    },
+    {
+      "id": "ddpd",
+      "scene": "need-start",
+      "todo": true,
+      "source": "你現在要印十張明信片，三家都寄來了報價。",
+      "text": "Mau cetak 10 kartu pos; 3 pemasok menawar.",
+      "max_chars": 42
+    },
+    {
+      "id": "9ski",
+      "scene": "need-start",
+      "todo": true,
+      "source": "先把自己的需求另存一份，別讓報價替你決定要買什麼。",
+      "text": "Simpan kebutuhanmu terpisah; jangan ikut saja isi penawaran.",
+      "max_chars": 61
+    },
+    {
+      "id": "bv46",
+      "scene": "need-spec",
+      "todo": true,
+      "source": "像紙張、尺寸和印刷方式，都要能逐項對上。",
+      "text": "Kertas, ukuran, dan cara cetak harus cocok satu per satu.",
+      "max_chars": 58
+    },
+    {
+      "id": "hssn",
+      "scene": "need-spec",
+      "todo": true,
+      "source": "只寫明信片還不夠，換一種紙就可能是另一個價格。",
+      "text": "Cuma tulis kartu pos kurang; ganti kertas bisa beda harga.",
+      "max_chars": 61
+    },
+    {
+      "id": "d8h7",
+      "scene": "need-delivery",
+      "todo": true,
+      "source": "交貨地址和期限也要相同，才是在比同一件事。",
+      "text": "Alamat dan tenggat harus sama agar sebanding.",
+      "max_chars": 47
+    },
+    {
+      "id": "jfix",
+      "scene": "need-delivery",
+      "todo": true,
+      "source": "這次要的是送達總價，單價只是其中一個欄位。",
+      "text": "Cari total sampai tujuan; harga satuan cuma satu kolom.",
+      "max_chars": 56
+    },
+    {
+      "id": "d78a",
+      "scene": "need-labels",
+      "todo": true,
+      "source": "三份原檔先保留下來，輸出另外放一個資料夾。",
+      "text": "Simpan 3 berkas asli; keluaran di folder lain.",
+      "max_chars": 50
+    },
+    {
+      "id": "mjhz",
+      "scene": "need-labels",
+      "todo": true,
+      "source": "這樣你收到新版本，還能看出供應商到底改了什麼。",
+      "text": "Versi baru datang, perubahan pemasok tetap terlihat.",
+      "max_chars": 52
+    },
+    {
+      "id": "fvzv",
+      "scene": "need-fiction",
+      "todo": true,
+      "source": "這組供應商和交易條件，都是練習用的虛構資料。",
+      "text": "Pemasok dan syaratnya fiktif, khusus latihan.",
+      "max_chars": 48
+    },
+    {
+      "id": "3742",
+      "scene": "need-fiction",
+      "todo": true,
+      "source": "畫面上的稅率是計算假設，真實交易要用自己的報價條件。",
+      "text": "Tarif pajak di layar asumsi; transaksi nyata ikut penawaranmu.",
+      "max_chars": 64
+    },
+    {
+      "id": "3639",
+      "scene": "need-route",
+      "todo": true,
+      "source": "你可以讓 AI 幫忙整理欄位，再把算術交給計算工具。",
+      "text": "AI susun kolom; alat hitung mengerjakan angkanya.",
+      "max_chars": 50
+    },
+    {
+      "id": "658p",
+      "scene": "need-route",
+      "todo": true,
+      "source": "把這兩件事拆開，錯了才知道該回頭看文字還是公式。",
+      "text": "Pisahkan agar jika salah, tahu perlu cek teks atau rumus.",
+      "max_chars": 60
+    },
+    {
+      "id": "m57n",
+      "scene": "need-proof",
+      "todo": true,
+      "source": "甲的單價在第一頁，送貨條件卻放在第二頁。",
+      "text": "Harga satuan Aster di halaman 1, syarat kirim di 2.",
+      "max_chars": 55
+    },
+    {
+      "id": "scia",
+      "scene": "need-proof",
+      "todo": true,
+      "source": "如果只讀首頁，這張比較表一開始就少了一筆錢。",
+      "text": "Kalau cuma baca halaman pertama, tabel sudah melewatkan satu biaya.",
+      "max_chars": 69
+    },
+    {
+      "id": "nxct",
+      "scene": "extract-start",
+      "todo": true,
+      "source": "所以我們把每份報價的兩頁文字，都連同需求交給 AI。",
+      "text": "Beri AI teks 2 halaman tiap penawaran beserta kebutuhan.",
+      "max_chars": 60
+    },
+    {
+      "id": "7k9u",
+      "scene": "extract-start",
+      "todo": true,
+      "source": "而且要它每個欄位都附上原文，別只回一句哪家比較划算。",
+      "text": "Minta teks sumber tiap kolom, bukan cuma jawaban siapa termurah.",
+      "max_chars": 64
+    },
+    {
+      "id": "ea2e",
+      "scene": "extract-core",
+      "todo": true,
+      "source": "缺的就保留空值，單價和運費各自的稅，也要分清楚。",
+      "text": "Yang tak ada tetap null; bedakan pajak harga satuan dan biaya kirim.",
+      "max_chars": 72
+    },
+    {
+      "id": "ke2c",
+      "scene": "extract-fields",
+      "todo": true,
+      "source": "三家版面不同，所以先訂好共同欄位，才不會照著排版亂比。",
+      "text": "Tata letak 3 pemasok beda; samakan kolom agar tak salah banding.",
+      "max_chars": 65
+    },
+    {
+      "id": "rgfp",
+      "scene": "extract-fields",
+      "todo": true,
+      "source": "原文是含稅價，就保留含稅價，不要急著把所有數字加在一起。",
+      "text": "Harga sudah termasuk pajak? Pertahankan; jangan buru-buru jumlah.",
+      "max_chars": 69
+    },
+    {
+      "id": "fd27",
+      "scene": "extract-aster",
+      "todo": true,
+      "source": "甲分在兩頁的單價和運費，表格接成同一列，各自留著出處。",
+      "text": "Harga satuan dan kirim Aster dari 2 halaman jadi 1 baris, tiap nilai ada sumber.",
+      "max_chars": 72
+    },
+    {
+      "id": "qttz",
+      "scene": "extract-aster-quote",
+      "todo": true,
+      "source": "拿這段原句，就能核對表格有沒有把運費漏掉。",
+      "text": "Kutipan ini bisa mengecek kirim yang terlewat.",
+      "max_chars": 46
+    },
+    {
+      "id": "indq",
+      "scene": "extract-aster-quote",
+      "todo": true,
+      "source": "同樣是運費，為什麼乙能填零，丙卻不行？",
+      "text": "Biaya kirim: kenapa Birch boleh 0, Cedar tidak?",
+      "max_chars": 51
+    },
+    {
+      "id": "q7x8",
+      "scene": "extract-birch",
+      "todo": true,
+      "source": "乙的運費填零，是因為它的報價明寫免費送達。",
+      "text": "Kirim Birch 0 karena penawaran jelas bilang gratis kirim.",
+      "max_chars": 57
+    },
+    {
+      "id": "7hi8",
+      "scene": "extract-missing-quote",
+      "todo": true,
+      "source": "丙的第二頁則寫運費沒有報價，這是另一種狀態。",
+      "text": "Cedar halaman 2: kirim belum ditawar. Ini beda.",
+      "max_chars": 48
+    },
+    {
+      "id": "cxxm",
+      "scene": "extract-missing-quote",
+      "todo": true,
+      "source": "AI 應該保留這個差別，不能為了把表填滿就補上零。",
+      "text": "AI jaga perbedaan ini; jangan isi 0 cuma agar tabel penuh.",
+      "max_chars": 66
+    },
+    {
+      "id": "6pwe",
+      "scene": "extract-null",
+      "todo": true,
+      "source": "後面算總價時，程式看到這個空值，就知道還不能當成完整報價。",
+      "text": "Saat menghitung total, null memberi tahu program: penawaran belum lengkap.",
+      "max_chars": 75
+    },
+    {
+      "id": "eg6v",
+      "scene": "extract-review",
+      "todo": true,
+      "source": "拿到表格後，先挑會改變答案的值回到原頁核對。",
+      "text": "Di tabel, cek nilai penentu hasil ke halaman sumber.",
+      "max_chars": 53
+    },
+    {
+      "id": "g3vp",
+      "scene": "extract-review",
+      "todo": true,
+      "source": "逐欄對照數值和支持它的原句；對不上，就先標成待確認。",
+      "text": "Cocokkan nilai tiap kolom dengan kutipannya; jika tak cocok, tandai perlu konfirmasi.",
+      "max_chars": 89
+    },
+    {
+      "id": "35fs",
+      "scene": "cost-start",
+      "todo": true,
+      "source": "如果只是把單價從小排到大，丙看起來會最便宜。",
+      "text": "Urutkan harga satuan saja, Cedar terlihat termurah.",
+      "max_chars": 55
+    },
+    {
+      "id": "at27",
+      "scene": "cost-start",
+      "todo": true,
+      "source": "可是這個排序，還沒有把稅和送達費用放進來。",
+      "text": "Tapi urutan ini belum memuat pajak dan biaya kirim.",
+      "max_chars": 53
+    },
+    {
+      "id": "d2m5",
+      "scene": "cost-unit-baseline",
+      "todo": true,
+      "source": "先把這個排序留下來，等送達總價算完，再對照名次差在哪。",
+      "text": "Simpan urutan; hitung total sampai tujuan, lalu bandingkan posisi.",
+      "max_chars": 70
+    },
+    {
+      "id": "xwsj",
+      "scene": "cost-aster-formula",
+      "todo": true,
+      "source": "甲的商品和運費都明示未稅，所以兩邊各算自己的稅。",
+      "text": "Aster: barang dan kirim belum termasuk pajak; hitung pajaknya terpisah.",
+      "max_chars": 51
+    },
+    {
+      "id": "qagq",
+      "scene": "cost-aster-formula",
+      "todo": true,
+      "source": "把這幾項合起來，才是甲這份報價的送達總價。",
+      "text": "Jumlah semua ini jadi total sampai tujuan Aster.",
+      "max_chars": 60
+    },
+    {
+      "id": "znv7",
+      "scene": "cost-birch-formula",
+      "todo": true,
+      "source": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。",
+      "text": "Harga satuan Birch termasuk pajak barang; kali jumlah jadi nilai barang.",
+      "max_chars": 59
+    },
+    {
+      "id": "c49q",
+      "scene": "cost-birch-formula",
+      "todo": true,
+      "source": "那丙的商品稅也算得出來，它能一起排進名次嗎？",
+      "text": "Pajak barang Cedar terhitung; boleh ikut peringkat?",
+      "max_chars": 52
+    },
+    {
+      "id": "bcr5",
+      "scene": "cost-initial-result",
+      "todo": true,
+      "source": "結果算到同一個終點，目前是乙比甲便宜。",
+      "text": "Total sampai tujuan: kini Birch di bawah Aster",
+      "max_chars": 46
+    },
+    {
+      "id": "tnrc",
+      "scene": "cost-initial-result",
+      "todo": true,
+      "source": "丙的總價仍待確認，所以不能把它排成第一名。",
+      "text": "Total Cedar belum pasti, jadi tak boleh nomor satu.",
+      "max_chars": 54
+    },
+    {
+      "id": "cv74",
+      "scene": "cost-rounding",
+      "todo": true,
+      "source": "碰到小數時，讓計算工具依明示條件計算，再統一金額格式。",
+      "text": "Desimal dihitung alat sesuai syarat tertulis, lalu samakan format uang",
+      "max_chars": 70
+    },
+    {
+      "id": "8xam",
+      "scene": "cost-rounding",
+      "todo": true,
+      "source": "不要讓模型先四捨五入單價，再把誤差一路乘上數量。",
+      "text": "Model jangan bulatkan harga satuan dulu; galat ikut dikali jumlah.",
+      "max_chars": 71
+    },
+    {
+      "id": "qrv8",
+      "scene": "cost-workbook",
+      "todo": true,
+      "source": "打開試算表，把原文金額和計算金額分開核對。",
+      "text": "Buka tabel; cek nominal asli dan hasil terpisah.",
+      "max_chars": 49
+    },
+    {
+      "id": "ehby",
+      "scene": "cost-workbook",
+      "todo": true,
+      "source": "但它不是會自己重算的公式，需求一改，就要重新產生一次結果。",
+      "text": "Ini bukan rumus yang menghitung ulang sendiri; kebutuhan berubah, buat ulang hasilnya",
+      "max_chars": 85
+    },
+    {
+      "id": "u7i8",
+      "scene": "missing-start",
+      "todo": true,
+      "source": "還記得那個空白的運費嗎？現在它直接決定丙能不能排進名次。",
+      "text": "Ingat biaya kirim kosong? Ini menentukan Cedar boleh ikut peringkat.",
+      "max_chars": 68
+    },
+    {
+      "id": "e86a",
+      "scene": "missing-start",
+      "todo": true,
+      "source": "因為丙的商品比乙便宜，只要運費不夠高，名次就會翻過來。",
+      "text": "Barang Cedar di bawah Birch; kirim cukup rendah, peringkat berbalik.",
+      "max_chars": 74
+    },
+    {
+      "id": "j2ja",
+      "scene": "missing-known",
+      "todo": true,
+      "source": "表格把丙拆成已知跟未知，未知的是運費、運費是否含稅，還有稅額。",
+      "text": "Tabel pisahkan Cedar: diketahui dan belum; yang belum biaya kirim, termasuk pajak atau belum, dan pajaknya.",
+      "max_chars": 98
+    },
+    {
+      "id": "ehkq",
+      "scene": "missing-question",
+      "todo": true,
+      "source": "所以問題要問得具體，請它補送到同一地址的運費和稅。",
+      "text": "Tanya spesifik: minta biaya kirim dan pajak ke alamat sama.",
+      "max_chars": 61
+    },
+    {
+      "id": "aghq",
+      "scene": "missing-question",
+      "todo": true,
+      "source": "也要確認數量改變後費用是否相同，免得下一輪又得猜。",
+      "text": "Cek biaya tetap saat jumlah berubah, agar nanti tak menebak lagi.",
+      "max_chars": 68
+    },
+    {
+      "id": "z8x8",
+      "scene": "missing-no-send",
+      "todo": true,
+      "source": "AI 可以幫你整理待問清單，但詢問草稿還需要你確認。",
+      "text": "AI susun daftar tanya, tapi drafnya perlu kamu cek.",
+      "max_chars": 54
+    },
+    {
+      "id": "7scz",
+      "scene": "missing-no-send",
+      "todo": true,
+      "source": "別把表格裡的待確認，寫成供應商已經同意的條件。",
+      "text": "Jangan tulis yang belum pasti seolah pemasok sudah menyetujui.",
+      "max_chars": 62
+    },
+    {
+      "id": "w9yq",
+      "scene": "missing-status",
+      "todo": true,
+      "source": "你也可以讓表格多一個狀態欄位，寫清楚它卡在哪裡。",
+      "text": "Tambah kolom status agar jelas letak kendalanya.",
+      "max_chars": 50
+    },
+    {
+      "id": "pdxs",
+      "scene": "missing-status",
+      "todo": true,
+      "source": "真正的報價如果規格不同，先問能不能對齊，別自己編一個升級價。",
+      "text": "Spesifikasi penawaran nyata beda? Tanya bisa disamakan; jangan karang harga peningkatan.",
+      "max_chars": 94
+    },
+    {
+      "id": "k75x",
+      "scene": "revision-start",
+      "todo": true,
+      "source": "丙補來了修訂版，這時候不要把它當成第四家供應商。",
+      "text": "Cedar kirim revisi; jangan anggap pemasok keempat.",
+      "max_chars": 52
+    },
+    {
+      "id": "mbee",
+      "scene": "revision-start",
+      "todo": true,
+      "source": "留下舊檔作紀錄，再用新的條件替換丙這一列。",
+      "text": "Simpan berkas lama; baris Cedar pakai syarat baru.",
+      "max_chars": 53
+    },
+    {
+      "id": "h85p",
+      "scene": "revision-identity",
+      "todo": true,
+      "source": "先核對這裡列的舊版編號，再把對應的舊檔標成已被取代。",
+      "text": "Cek nomor versi lama di sini, lalu tandai berkas terkait sudah digantikan.",
+      "max_chars": 80
+    },
+    {
+      "id": "hiqk",
+      "scene": "revision-diff",
+      "todo": true,
+      "source": "這次改的是運費和它的稅，商品單價並沒有跟著變。",
+      "text": "Biaya kirim dan pajaknya berubah; harga satuan barang tetap.",
+      "max_chars": 61
+    },
+    {
+      "id": "ambg",
+      "scene": "revision-total",
+      "todo": true,
+      "source": "好，現在丙的送達總價算得出來了，結果剛好和甲一樣。",
+      "text": "Kini total sampai tujuan Cedar bisa dihitung, dan sama dengan Aster.",
+      "max_chars": 70
+    },
+    {
+      "id": "dyun",
+      "scene": "revision-ranking",
+      "todo": true,
+      "source": "運費補齊後，丙比乙多了五十元，還追不上。",
+      "text": "Kirim lengkap, Cedar TWD 50 di atas Birch; belum unggul.",
+      "max_chars": 60
+    },
+    {
+      "id": "benr",
+      "scene": "revision-links",
+      "todo": true,
+      "source": "這時候還要看一眼來源這個欄位，有沒有改成對應修訂版。",
+      "text": "Cek kolom sumber merujuk versi revisi yang tepat.",
+      "max_chars": 55
+    },
+    {
+      "id": "zqts",
+      "scene": "revision-links",
+      "todo": true,
+      "source": "只換了金額卻還連著舊檔，別人回頭核對時就會找不到。",
+      "text": "Nominal diganti, tautan masih ke berkas lama; orang tak bisa mengecek.",
+      "max_chars": 73
+    },
+    {
+      "id": "q57z",
+      "scene": "quantity-start",
+      "todo": true,
+      "source": "後來你的需求改了，同樣的明信片，要印二十張。",
+      "text": "Kebutuhan berubah: kartu pos sama, 20 lembar.",
+      "max_chars": 48
+    },
+    {
+      "id": "7dp4",
+      "scene": "quantity-start",
+      "todo": true,
+      "source": "先把原本十張的數量設定檔，另存成畫面上這個新檔名，再把數量改成二十。",
+      "text": "Simpan salinan setelan jumlah 10 dengan nama baru di layar, lalu ubah jumlah jadi 20.",
+      "max_chars": 99
+    },
+    {
+      "id": "ubke",
+      "scene": "quantity-edit",
+      "todo": true,
+      "source": "你改的是需求數量，不是把原本的總價直接乘上兩倍。",
+      "text": "Ubah jumlah kebutuhan, jangan gandakan total lama.",
+      "max_chars": 54
+    },
+    {
+      "id": "f5gy",
+      "scene": "quantity-edit",
+      "todo": true,
+      "source": "情境這個欄位要保留修訂版，別切回原始報價。",
+      "text": "Kolom skenario tetap revisi, jangan penawaran awal.",
+      "max_chars": 54
+    },
+    {
+      "id": "3eue",
+      "scene": "quantity-prompt",
+      "todo": true,
+      "source": "數量改過之後，還要明說其他需求都不變。",
+      "text": "Ubah jumlah, tegaskan kebutuhan lain tetap.",
+      "max_chars": 43
+    },
+    {
+      "id": "sqqn",
+      "scene": "quantity-prompt",
+      "todo": true,
+      "source": "先確認報價的適用範圍，再更新金額和來源，留下變動清單。",
+      "text": "Cek rentang penawaran; perbarui nominal, sumber, simpan daftar perubahan.",
+      "max_chars": 75
+    },
+    {
+      "id": "6wkf",
+      "scene": "quantity-run",
+      "todo": true,
+      "source": "存檔後，在教材的程式資料夾執行這條命令。",
+      "text": "Simpan, jalankan di folder kode materi.",
+      "max_chars": 40
+    },
+    {
+      "id": "74dc",
+      "scene": "quantity-run",
+      "todo": true,
+      "source": "它會讀取新數量，另存結果，不覆蓋供應商的原始報價。",
+      "text": "Baca jumlah baru; simpan terpisah, tak timpa penawaran asli.",
+      "max_chars": 63
+    },
+    {
+      "id": "326u",
+      "scene": "quantity-output",
+      "todo": true,
+      "source": "打開輸出的需求紀錄，確認它真的使用了新的數量。",
+      "text": "Buka catatan kebutuhan; cek jumlah baru dipakai.",
+      "max_chars": 52
+    },
+    {
+      "id": "m5sn",
+      "scene": "quantity-output",
+      "todo": true,
+      "source": "再看供應商清單，丙應該只剩採用修訂版的那一列。",
+      "text": "Daftar pemasok: Cedar tinggal 1 baris dengan versi revisi.",
+      "max_chars": 72
+    },
+    {
+      "id": "sxtz",
+      "scene": "quantity-ranges",
+      "todo": true,
+      "source": "這三份報價都寫明，單價在這段數量範圍內保持相同。",
+      "text": "Ketiganya jelas: harga satuan tetap dalam rentang jumlah ini.",
+      "max_chars": 62
+    },
+    {
+      "id": "rgr9",
+      "scene": "quantity-ranges",
+      "todo": true,
+      "source": "送貨條件也有對應的說明，所以我們這次能照新數量重算。",
+      "text": "Syarat kirim juga jelas; jumlah baru kali ini bisa dihitung ulang",
+      "max_chars": 65
+    },
+    {
+      "id": "xevg",
+      "scene": "quantity-aster",
+      "todo": true,
+      "source": "甲的商品金額跟著數量增加，但運費還是那一筆。",
+      "text": "Nilai barang Aster naik sesuai jumlah, kirim tetap 1 kali.",
+      "max_chars": 63
+    },
+    {
+      "id": "m8sb",
+      "scene": "quantity-birch",
+      "todo": true,
+      "source": "乙比甲多了一百一十元，原本的先後順序反過來了。",
+      "text": "Birch TWD 110 di atas Aster; urutan awal berbalik.",
+      "max_chars": 53
+    },
+    {
+      "id": "pruf",
+      "scene": "quantity-birch",
+      "todo": true,
+      "source": "那把丙也算進來，這個名次還會再變嗎？",
+      "text": "Jika Cedar ikut, peringkat berubah lagi?",
+      "max_chars": 41
+    },
+    {
+      "id": "gy4i",
+      "scene": "quantity-cedar",
+      "todo": true,
+      "source": "再看丙，它比甲少了五十二元五角。",
+      "text": "Cedar lebih murah TWD 52.50 dari Aster.",
+      "max_chars": 55
+    },
+    {
+      "id": "cbe9",
+      "scene": "quantity-ranking",
+      "todo": true,
+      "source": "還記得開頭問的數量翻倍嗎？最低總價真的換人了，變成丙。",
+      "text": "Ingat jumlah dua kali lipat di awal? Total terendah benar berganti ke Cedar.",
+      "max_chars": 80
+    },
+    {
+      "id": "nvu3",
+      "scene": "quantity-ranking",
+      "todo": true,
+      "source": "不是誰突然降價，而是固定運費在不同張數下，占的比例變了。",
+      "text": "Tak ada yang mendadak menurunkan harga; porsi biaya kirim tetap berubah saat jumlah berubah.",
+      "max_chars": 95
+    },
+    {
+      "id": "fa3t",
+      "scene": "threshold-start",
+      "todo": true,
+      "source": "那最低總價是從第幾張開始換人？",
+      "text": "Mulai jumlah berapa termurah berganti?",
+      "max_chars": 39
+    },
+    {
+      "id": "63ek",
+      "scene": "threshold-start",
+      "todo": true,
+      "source": "我們拿相鄰的兩個需求來試，不去猜所有張數都用同一個排名。",
+      "text": "Kita uji 2 kebutuhan dengan jumlah berurutan, jangan mengira semua jumlah punya peringkat sama.",
+      "max_chars": 117
+    },
+    {
+      "id": "8fkp",
+      "scene": "threshold-request12",
+      "todo": true,
+      "source": "先把修訂情境另存一份，數量填十二，其他條件保持相同。",
+      "text": "Salin skenario revisi, isi jumlah 12, syarat lain tetap sama.",
+      "max_chars": 70
+    },
+    {
+      "id": "utm2",
+      "scene": "threshold-run12",
+      "todo": true,
+      "source": "用同一份抽取資料執行，結果另存到這一份需求的資料夾。",
+      "text": "Jalankan dengan data ekstraksi sama; simpan hasil di folder kebutuhan ini.",
+      "max_chars": 77
+    },
+    {
+      "id": "bnhk",
+      "scene": "threshold-request13",
+      "todo": true,
+      "source": "再複製這份需求，只多加一張，留下另一個檔名。",
+      "text": "Salin kebutuhan ini, tambah 1 lembar, simpan nama lain.",
+      "max_chars": 60
+    },
+    {
+      "id": "7udt",
+      "scene": "threshold-run13",
+      "todo": true,
+      "source": "輸出位置也要分開，這樣兩份結果才能真的並排比較。",
+      "text": "Pisahkan keluaran agar 2 hasil bisa dibandingkan berdampingan.",
+      "max_chars": 67
+    },
+    {
+      "id": "6nxr",
+      "scene": "threshold-results",
+      "todo": true,
+      "source": "十二張時，乙只比丙少七元五角，還沒有換人。",
+      "text": "12 kartu: Birch di bawah Cedar TWD 7.50; belum berganti",
+      "max_chars": 55
+    },
+    {
+      "id": "7jrk",
+      "scene": "threshold-results",
+      "todo": true,
+      "source": "十三張時，丙就領先十三元七角五分，這一步才跨過轉換點。",
+      "text": "13 lembar, Cedar unggul TWD 13.75; baru di sini melewati titik pergantian.",
+      "max_chars": 90
+    },
+    {
+      "id": "e5gd",
+      "scene": "threshold-margin",
+      "todo": true,
+      "source": "差額都用丙減乙，正數是丙較貴，負數就是丙較便宜。",
+      "text": "Cedar − Birch: positif lebih mahal, negatif lebih murah.",
+      "max_chars": 63
+    },
+    {
+      "id": "petb",
+      "scene": "threshold-margin",
+      "todo": true,
+      "source": "每多一張，丙相對乙追回二十一元兩角五分，所以差額跨過了零。",
+      "text": "Tiap tambahan 1 lembar, Cedar mengejar Birch TWD 21.25, jadi selisih melewati 0.",
+      "max_chars": 99
+    },
+    {
+      "id": "vnaq",
+      "scene": "range21-request",
+      "todo": true,
+      "source": "二十張的需求如果再多要一張，變成二十一張，答案還算得出來嗎？",
+      "text": "Dari 20 tambah 1 jadi 21 lembar, jawabannya masih bisa dihitung?",
+      "max_chars": 67
+    },
+    {
+      "id": "trph",
+      "scene": "range21-request",
+      "todo": true,
+      "source": "這次先別改單價，照同一個方法重算看看。",
+      "text": "Harga satuan tetap; hitung lagi pakai cara sama.",
+      "max_chars": 48
+    },
+    {
+      "id": "cegb",
+      "scene": "range21-run",
+      "todo": true,
+      "source": "只換需求檔和輸出資料夾，其他輸入都不變。",
+      "text": "Hanya ganti berkas kebutuhan dan folder keluaran; masukan lain tetap.",
+      "max_chars": 72
+    },
+    {
+      "id": "pn4i",
+      "scene": "range21-run",
+      "todo": true,
+      "source": "程式會先拿新數量，對照各家寫明的適用範圍。",
+      "text": "Program cek jumlah baru sesuai rentang tertulis tiap pemasok.",
+      "max_chars": 61
+    },
+    {
+      "id": "9jiq",
+      "scene": "range21-result",
+      "todo": true,
+      "source": "結果它拒絕計算，也沒有建立新的結果資料夾。",
+      "text": "Program tak menghitung dan tak buat folder hasil baru.",
+      "max_chars": 55
+    },
+    {
+      "id": "egmv",
+      "scene": "range21-result",
+      "todo": true,
+      "source": "因為二十一張，已經超過這三份報價寫明的範圍。",
+      "text": "Sebab 21 lembar sudah di luar rentang tertulis ketiga penawaran ini.",
+      "max_chars": 77
+    },
+    {
+      "id": "92mc",
+      "scene": "range21-question",
+      "todo": true,
+      "source": "如果真的需要這個數量，就請供應商重報這一版條件。",
+      "text": "Jika perlu jumlah itu, minta pemasok menawar ulang syarat ini.",
+      "max_chars": 62
+    },
+    {
+      "id": "vee5",
+      "scene": "outro",
+      "todo": true,
+      "source": "你最常遇到哪個報價欄位沒寫清楚，留言告訴我。",
+      "text": "Kolom apa sering tak jelas? Tulis komentar.",
+      "max_chars": 40
+    },
+    {
+      "id": "9jqz",
+      "scene": "outro",
+      "todo": true,
+      "source": "訂閱這個頻道，繼續把 AI 用成能交付的工作成果。",
+      "text": "Langganan kanal; terus pakai AI untuk hasil kerja yang bisa diserahkan.",
+      "max_chars": 72
+    }
+  ]
+}

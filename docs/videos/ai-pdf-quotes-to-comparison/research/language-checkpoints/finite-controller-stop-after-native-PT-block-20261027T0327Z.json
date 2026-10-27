@@ -1,0 +1,39 @@
+{
+  "recorded_at_utc": "2026-10-27T03:49:28.693569+00:00",
+  "kind": "finite-ONE-unit-ended-and-STOPPED-after-genuine-native-block",
+  "actual_exit": 3,
+  "started_at": "2026-10-27T03:39:29.927022+00:00",
+  "ended_at": "2026-10-27T03:40:19.930002+00:00",
+  "driver_pid": 180281,
+  "native_pid": 180306,
+  "PIDs_ended": true,
+  "LEASE_STOP_absent": true,
+  "native_site_blocked": true,
+  "native_after": {
+    "status": "blocked",
+    "blocked": "still could not move after 7 tries: pt dub could not finish (Gemini 語音暫時忙碌或達到用量上限，請稍後重試)",
+    "blocked_kind": "deferred:dub",
+    "blocked_from_status": "done",
+    "defer_count_field_present": false,
+    "defer_shared_field_present": false,
+    "deferred_until_field_present": false,
+    "PT_rounds": {
+      "shorten": 0,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    }
+  },
+  "current_baseline": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-post-unit-runtime-snapshot.json",
+    "sha256": "d7c93836b11be0533310ba49a2af8b65a33e0274a0c0ca1a0a7c7c9ef02ffcac"
+  },
+  "summary": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-post-native-block-runtime-source-summary.json",
+    "sha256": "a4c2610266bb375a7d2b9982389b2a120108dab29333dc85214e14b6b852a159"
+  },
+  "grant_sha256": "ba8e2c6bfef9f767537d54efc6cc789000ecac06afca33a4173feff0678df6d7",
+  "automatic_queued_units": [],
+  "no_owner_retry_or_publication_action": true,
+  "next": "Native and real site now genuinely blocked after a new own failure. No due or automatic normal retry remains. Preserve this actual blocked-state snapshot and every failed/unknown/cap/approval/source/text artifact. Resume only through a genuine supported owner retry/recovery reflected by actual site request and normal acknowledgement/guards, after service/current ownership/source/meaning/primary11QA/chat8/quota/unknown checks. Never restore done, recreate/decrease counters, remove skips or invoke ordinary dub while nativeblocked. ENJA ordinary retry/original owner operations/other locale/new movie/full8/publish remain excluded; publishing stays owner."
+}

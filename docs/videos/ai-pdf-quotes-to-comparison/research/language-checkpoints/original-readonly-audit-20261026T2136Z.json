@@ -1,0 +1,228 @@
+{
+  "schema_version": 1,
+  "report_saved_at_utc": "2026-10-26T21:38:27.901240+00:00",
+  "reviewer": "/root/watch_original_readonly_2136",
+  "scope": "Read-only original-film watcher; external own evidence only; no original canonical/source/task/Git/AV/provider/owner mutation",
+  "observed_interval_utc": [
+    "2026-10-26T21:36:25Z",
+    "2026-10-26T21:37:21.052Z"
+  ],
+  "remote_task": {
+    "repository": "x812033727/travel_scanner",
+    "branch": "codex/ai-editable-animation-20261025",
+    "path": "tasks/open/2026-10-25-ai-editable-explainer-animation.md",
+    "blob_sha": "0ecde69a42861d4f672a0be1105fb2b209829246",
+    "latest_checkpoint_utc": "2026-10-26T17:03:40.579560+00:00",
+    "status": "blocked",
+    "owner": "codex-ai-video",
+    "source": "actual github_fetch_file read this watcher; whole current task read"
+  },
+  "remote_pr": {
+    "number": 1852,
+    "draft": true,
+    "state": "open",
+    "merged": false,
+    "head_sha": "1237b380550f2b9e1f1e8f26c6df9517cbf63c5c",
+    "source": "actual github_get_pr_info read this watcher"
+  },
+  "actual_controller_observation": {
+    "live_original_node_python_ffmpeg_controller": false,
+    "method": "/proc cmdline read, process executable restricted to node/python/ffmpeg/ffprobe, matched ai-animation-01; observer processes excluded",
+    "canonical_live_lease_or_stop": [],
+    "candidate_live_lease_or_stop": [],
+    "dead_lease_records_preserved": true,
+    "protected_active_condition_triggered": false
+  },
+  "site_get_observations": [
+    {
+      "checked_at_utc": "2026-10-26T21:36:52.942Z",
+      "route": "GET https://mokaair.com/api/video/reviews/ai-editable-explainer-animation",
+      "method_guard": "GET only; exact origin/path; no query; attempts1; timeout20s",
+      "stage": "waiting",
+      "worker_state": "unavailable",
+      "dub_retries": {},
+      "dub_states": {
+        "en": "working",
+        "ja": "ready",
+        "ko": "skipped",
+        "es": "ready",
+        "pt": "skipped",
+        "id": "skipped",
+        "vi": "ready",
+        "th": "working"
+      },
+      "metadata_and_captions": {
+        "en": "ready",
+        "ja": "ready",
+        "ko": "ready",
+        "es": "ready",
+        "pt": "ready",
+        "id": "ready",
+        "vi": "ready",
+        "th": "ready"
+      }
+    },
+    {
+      "checked_at_utc": "2026-10-26T21:37:21.052Z",
+      "route": "GET https://mokaair.com/api/video/reviews/ai-editable-explainer-animation",
+      "method_guard": "GET only; exact origin/path; no query; attempts1; timeout20s",
+      "youtube_video_id": null,
+      "ready_to_upload": false,
+      "locales_decided_at": "2026-10-25T20:10:41.250623Z",
+      "locales": {
+        "en": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ja": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "ko": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "es": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "pt": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "id": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "vi": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        },
+        "th": {
+          "metadata": true,
+          "captions": true,
+          "dub": true
+        }
+      },
+      "dub_retries": {},
+      "reviews": [
+        {
+          "id": "a1f42597-a205-481f-b9be-0c19676b0a9a",
+          "gate": "languages",
+          "status": "pending"
+        },
+        {
+          "id": "e5b66d53-a355-4578-a429-f237859ba12d",
+          "gate": "publish",
+          "status": "approved"
+        },
+        {
+          "id": "d1a5872b-b500-409a-a119-ecc825b40040",
+          "gate": "final",
+          "status": "approved"
+        }
+      ]
+    }
+  ],
+  "protected_files_observed_sha256": {
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/auto.json": "b4bb92c6dde27be074f4b5fa8cc9e6ad9b502e7ba912d6a65172cce05a7f3b4b",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/final.mp4": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/qa.json": "a653adc056a3bf8b1abf4cf4cc9cca8a06efabac5bdb2c3dc95ae08db72be1d1",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.th.json": "b65c7705b36c77590a77d749231e1ae6e4ab7321f1bbb9b6de6f41a827a5725a",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/skipped.json": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/skipped.json": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/skipped.json": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+    "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation/auto.json": "19a11f9466676c4970126bece120a4f358727d02f074b35812d81fb47826f3b1",
+    "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation/final.mp4": "77b542c9c1cb0e75680581d73d926db5f253e6dc5066bcbed26c0a54a061d076",
+    "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation/review/qa.json": "d2bda457e47640c7d8068bddb0ef7eb886798c1c9947d9d7f9aa0e413eb181c1",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93",
+    "/workspace/work/ai-animation-01/bookends-candidate-20261026/staged-renewal/renewal-candidate.json": "2fcf936f6141ace9a38311a8efbf4b4885037e515975a4d04bad03497e85a83a"
+  },
+  "quality_state": {
+    "canonical_existing_matching_final_qa": {
+      "ok": true,
+      "items": 11,
+      "all_items_ok": true
+    },
+    "candidate_existing_matching_final_qa": {
+      "ok": true,
+      "items": 11,
+      "all_items_ok": true
+    },
+    "new_full_film_or_audio_qa_performed": false,
+    "th_flags": [
+      "719e7c",
+      "8eb4eb",
+      "ee8b7c",
+      "28a3eb",
+      "c38a5e"
+    ],
+    "th_native_rounds": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    },
+    "en_sent_unknown_preserved": true,
+    "ko_pt_id_skips_preserved": true
+  },
+  "measured_durations": {
+    "canonical_format_duration_seconds": "589.600000",
+    "canonical_provenance": "actual ffprobe format=duration read during watcher21:36–21:37Z",
+    "candidate_format_duration_seconds_watcher": "615.605000",
+    "candidate_provenance": "actual ffprobe format=duration read during watcher21:36–21:37Z; historical PR1852 video duration615.566667 is distinct from format duration",
+    "candidate_additional_readonly_probe": {
+      "measured_at_utc": "2026-10-26T21:38:27.901390+00:00",
+      "argv": [
+        "ffprobe",
+        "-v",
+        "error",
+        "-select_streams",
+        "v:0",
+        "-show_entries",
+        "stream=duration,nb_frames,r_frame_rate",
+        "-show_entries",
+        "format=duration",
+        "-of",
+        "json",
+        "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation/final.mp4"
+      ],
+      "exit_code": 0,
+      "stdout": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "r_frame_rate": "30/1",
+            "duration": "615.566667",
+            "nb_frames": "18467"
+          }
+        ],
+        "format": {
+          "duration": "615.605000"
+        }
+      },
+      "purpose": "separately verify current video-stream duration/frames and container format duration; no provider/native production"
+    }
+  },
+  "conclusion": "No new original-film progress or actionable blocker since prior20:38 watcher. Original producer inactive and remote checkpoint stale; known owner/renewal/reconciliation and failed/unknown/skipped voice blockers remain. No original takeover or paid continuation performed.",
+  "actions_not_performed": [
+    "task claim or update",
+    "source/canonical/media modification",
+    "paid/provider/native requests",
+    "owner query or action",
+    "publication",
+    "journal or skip reset",
+    "cap or threshold change"
+  ],
+  "audit_save_preflight_history": "First attempted Python audit saver had an IndentationError at parse time before any mkdir/write/ffprobe. This corrected exclusive writer is a new execution; no report or original data was overwritten."
+}

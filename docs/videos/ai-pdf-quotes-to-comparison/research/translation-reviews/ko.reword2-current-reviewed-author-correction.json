@@ -1,0 +1,59 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "ko",
+  "scope": "source-meaning-and-naturalness",
+  "passed": true,
+  "reviewer": "Independent Korean reviews by /root/review_pdf_ko_round1; exact native delta binding by /root",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "d8ade8d531d1791da8a057f1d3aef310bc5b553062ed332f8e8f1dbbbcbcc958",
+  "base_meaning_index": {
+    "schema_version": 1,
+    "slug": "ai-pdf-quotes-to-comparison",
+    "locale": "ko",
+    "scope": "source-meaning-and-naturalness",
+    "passed": true,
+    "reviewer": "Independent current Korean review by /root/review_pdf_ko_round1; exact source binding by /root",
+    "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "translation_sha256": "898d2f2e3805f63c6ffc9e0bc6282382001aff144c9120bb1eda40ca276e80f6",
+    "report_file": "research/translation-reviews/ko.reword-round1-current-independent-review.json",
+    "report_sha256": "e5bc4e91fd7e0150850830ea790629e8503cf44799492e99e6d6f682ce9ceb9e",
+    "reviewed_boundaries": [
+      {
+        "file": "author-review-boundaries/ko.reword.round-1.2026-10-26T17-58-15-289Z.json",
+        "sha256": "d4911737844e1143b66b38d06418552b44e78f9773c9bcc969a8740e92513910"
+      }
+    ]
+  },
+  "native_reword2_review": {
+    "report_file": "research/translation-reviews/ko.reword-round2-current-independent-review.json",
+    "sha256": "48d1e2f347ad4d446c924aa81b4bc66a0c7634bdec2604fa3d2ab2ac20bdcb52",
+    "reviewed_translation_sha256": "9bb36db600a713d29113be47f5698a2649788859c644783480b07a1ebd69c3e8"
+  },
+  "independent_author_correction_review": {
+    "report_file": "research/translation-reviews/ko.bnhk-counted-reword2-author-correction-independent-review.json",
+    "sha256": "dc9f0ae3f1a78840c84d0e1dbe263e0d0390e475871ad590cb3b41a640f49484",
+    "proposal_file": "research/translation-reviews/ko.bnhk-counted-reword2-author-proposal.json",
+    "proposal_sha256": "a36762cc4ec58d73aec1627033a50b35d3d33f33f3a5fc244b2dd1c012894989",
+    "changed_id": "bnhk",
+    "actual_only_one_text_changed": true
+  },
+  "reviewed_boundaries": [
+    {
+      "file": "author-review-boundaries/ko.reword.round-1.2026-10-26T17-58-15-289Z.json",
+      "sha256": "d4911737844e1143b66b38d06418552b44e78f9773c9bcc969a8740e92513910"
+    },
+    {
+      "file": "author-review-boundaries/ko.reword.round-2.2026-10-26T19-20-50-323Z.json",
+      "sha256": "10c132d27d02da5dc3ef0f8af5a164ebcca32b61ff0fda0dd7cd3c3738eed7a6"
+    }
+  ],
+  "native_rejected_39_over_37_preserved": true,
+  "corrected_codepoints": 36,
+  "actual_worksheet_budget": 37,
+  "other100records_and_all_metadata_exact": true,
+  "total_reword_round_limit": 2,
+  "current_round_already_counted": 2,
+  "third_round_or_counter_reset": false,
+  "actual_new_audio_fit_or_voice_approval": false
+}

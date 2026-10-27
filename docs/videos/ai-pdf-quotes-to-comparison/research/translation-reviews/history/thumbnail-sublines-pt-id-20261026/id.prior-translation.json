@@ -1,0 +1,451 @@
+{
+  "title": "3 Penawaran PDF dengan AI: Harga Satuan Terendah Pasti Termurah?",
+  "description": "Harga satuan dari tiga penawaran PDF tidak bisa langsung diurutkan bersama. Dengan satu set penawaran kartu pos orisinal yang sama, minta AI merapikan spesifikasi, jumlah, status pajak, biaya kirim, dan nomor halaman sumber, lalu hitung total biaya sampai tujuan yang bisa dibandingkan berdasarkan syarat tertulis. Setelah menerima revisi dan mengubah jumlah dari 10 menjadi 20 lembar, periksa kembali hasilnya.\n\nDemo ini menggunakan analisis dokumen AI oleh Codex pada percobaan ini, ekstraksi teks pypdf, dan perhitungan desimal presisi untuk menghasilkan spreadsheet yang bisa diedit; tidak mengklaim telah menguji antarmuka unggah produk AI komersial tertentu. Pemasok, harga, dan tarif pajak 5% adalah pengaturan latihan orisinal, bukan penilaian pajak untuk transaksi nyata.\n\nTanggal data dan praktik: 2026-10-26. Teks PDF kali ini bisa dipilih; alur ekstraksi ini tidak melakukan OCR gambar pindai. Nilai dalam spreadsheet benar-benar dihitung oleh alat hitung; openpyxl hanya menulis berkas, tanpa klaim bahwa alat itu menghitung rumus.\n\nMateri mencakup kebutuhan, prompt, program pembuat PDF sumber, ekstraksi teks per halaman, tabel perbandingan harga yang bisa diedit, dan riwayat versi.\n\nPrompt tujuh baris di layar berisi persyaratan tugas bagi penonton; format kolom yang dapat dibaca mesin ada dalam kontrak JSON di analysis-prompt.txt, yang juga dibaca dalam analisis AI kali ini.\n\nMateri orisinal, kebutuhan, dan prompt lengkap:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+  "tags": [
+    "tutorial AI",
+    "perbandingan harga PDF",
+    "membandingkan penawaran",
+    "AI untuk kantor",
+    "Codex",
+    "PDF"
+  ],
+  "thumbnail": {
+    "tag": "AI bandingkan penawaran PDF",
+    "headline": "**Total**\n**dulu**",
+    "sub": "Pajak dan kirim dihitung"
+  },
+  "chapters": {
+    "opening": "Harga rendah, langsung pesan?",
+    "need-start": "Tulis dasar perbandingan",
+    "extract-start": "Lacak tiap kolom ke sumber",
+    "cost-start": "Total dengan pajak dan kirim",
+    "missing-start": "Susun pertanyaan soal data",
+    "revision-start": "Ganti syarat yang direvisi",
+    "quantity-start": "Jumlah digandakan, cek syarat",
+    "threshold-start": "Tambah 1, termurah berganti?",
+    "range21-request": "Di luar rentang, tunda pesan"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "6198bec8fea6",
+      "need-start": "13b3f8bc78bf",
+      "extract-start": "1e08abc4dd35",
+      "cost-start": "03cd0948a886",
+      "missing-start": "2fc8ed124d22",
+      "revision-start": "014694bfda51",
+      "quantity-start": "7b025430bfe0",
+      "threshold-start": "db18134baff1",
+      "range21-request": "2678d2a246fd"
+    },
+    "title": "ea54635dadc1",
+    "description": "82023a597713",
+    "tags": "b04ad22c133c",
+    "thumbnail": "12bdfb50a92a"
+  },
+  "lines": {
+    "3639": {
+      "source_hash": "1d15b826da4e",
+      "text": "AI susun kolom; alat hitung mengerjakan angkanya."
+    },
+    "3742": {
+      "source_hash": "3147dae75bbd",
+      "text": "Tarif pajak di layar asumsi; transaksi nyata ikut penawaranmu."
+    },
+    "6vwc": {
+      "source_hash": "bb864b04f219",
+      "text": "Harga satuan terendah belum bisa jadi nomor satu."
+    },
+    "xnrg": {
+      "source_hash": "87b4ff93c8d1",
+      "text": "Sebab ketiga penawaran ini beda jenis nominalnya."
+    },
+    "edfn": {
+      "source_hash": "89bd8ea525c4",
+      "text": "Jadi AI membuat tabel yang bisa diedit, lengkap dengan halaman sumber."
+    },
+    "hg9m": {
+      "source_hash": "7fd501513981",
+      "text": "Biaya kirim kosong boleh dianggap gratis?"
+    },
+    "ajsk": {
+      "source_hash": "6a14b7251701",
+      "text": "Ada revisi; yang termurah akan berganti?"
+    },
+    "kv5r": {
+      "source_hash": "79ba69d02368",
+      "text": "Kalau jumlahnya dua kali lipat, jawaban lama masih berlaku?"
+    },
+    "ddpd": {
+      "source_hash": "7082f51acc01",
+      "text": "Mau cetak 10 kartu pos; 3 pemasok menawar."
+    },
+    "9ski": {
+      "source_hash": "c138299c8363",
+      "text": "Simpan kebutuhanmu terpisah; jangan ikut saja isi penawaran."
+    },
+    "bv46": {
+      "source_hash": "f8a06c3ad4ae",
+      "text": "Kertas, ukuran, dan cara cetak harus cocok satu per satu."
+    },
+    "hssn": {
+      "source_hash": "b030bf4c1692",
+      "text": "Cuma tulis kartu pos kurang; ganti kertas bisa beda harga."
+    },
+    "d8h7": {
+      "source_hash": "8d1a50a65e49",
+      "text": "Alamat dan tenggat harus sama agar sebanding."
+    },
+    "jfix": {
+      "source_hash": "8f3e2289792e",
+      "text": "Cari total sampai tujuan; harga satuan cuma satu kolom."
+    },
+    "d78a": {
+      "source_hash": "4313d111425e",
+      "text": "Simpan 3 berkas asli; keluaran di folder lain."
+    },
+    "mjhz": {
+      "source_hash": "83df6da2d82d",
+      "text": "Versi baru datang, perubahan pemasok tetap terlihat."
+    },
+    "fvzv": {
+      "source_hash": "ee1a7a132bf3",
+      "text": "Pemasok dan syaratnya fiktif, khusus latihan."
+    },
+    "658p": {
+      "source_hash": "526bfd3e70c6",
+      "text": "Pisahkan agar jika salah, tahu perlu cek teks atau rumus."
+    },
+    "m57n": {
+      "source_hash": "24bcedced7ac",
+      "text": "Harga satuan Aster di halaman 1, syarat kirim di 2."
+    },
+    "scia": {
+      "source_hash": "edb8257f6553",
+      "text": "Kalau cuma baca halaman pertama, tabel sudah melewatkan satu biaya."
+    },
+    "nxct": {
+      "source_hash": "9221c8ab1536",
+      "text": "Beri AI teks 2 halaman tiap penawaran beserta kebutuhan."
+    },
+    "7k9u": {
+      "source_hash": "f15e4aaa83ab",
+      "text": "Minta teks sumber tiap kolom, bukan cuma jawaban siapa termurah."
+    },
+    "ea2e": {
+      "source_hash": "cde3d1893878",
+      "text": "Yang tak ada tetap null; bedakan pajak harga satuan dan biaya kirim."
+    },
+    "ke2c": {
+      "source_hash": "891115cfc2b9",
+      "text": "Tata letak 3 pemasok beda; samakan kolom agar tak salah banding."
+    },
+    "rgfp": {
+      "source_hash": "a7758d41bf25",
+      "text": "Harga sudah termasuk pajak? Pertahankan; jangan buru-buru jumlah."
+    },
+    "fd27": {
+      "source_hash": "5ff09a31f891",
+      "text": "Harga satuan dan kirim Aster dari 2 halaman jadi 1 baris, tiap nilai ada sumber."
+    },
+    "qttz": {
+      "source_hash": "061cae372b28",
+      "text": "Dengan kutipan ini, cek apakah biaya kirim terlewat di tabel."
+    },
+    "indq": {
+      "source_hash": "8d66d4f444a9",
+      "text": "Biaya kirim: kenapa Birch boleh 0, Cedar tidak?"
+    },
+    "q7x8": {
+      "source_hash": "5944c5607fca",
+      "text": "Kirim Birch 0 karena penawaran jelas bilang gratis kirim."
+    },
+    "7hi8": {
+      "source_hash": "d21bdcbcf4ee",
+      "text": "Halaman 2 Cedar: biaya kirim belum disebutkan. Ini berbeda."
+    },
+    "cxxm": {
+      "source_hash": "b72f27b689fd",
+      "text": "AI jaga perbedaan ini; jangan isi 0 cuma agar tabel penuh."
+    },
+    "6pwe": {
+      "source_hash": "44e3cafff427",
+      "text": "Saat menghitung total, null memberi tahu program: penawaran belum lengkap."
+    },
+    "eg6v": {
+      "source_hash": "95babb2e9408",
+      "text": "Di tabel, cek nilai penentu hasil ke halaman sumber."
+    },
+    "g3vp": {
+      "source_hash": "1026f1ccbcbc",
+      "text": "Cocokkan nilai tiap kolom dengan kutipannya; jika tak cocok, tandai perlu konfirmasi."
+    },
+    "35fs": {
+      "source_hash": "4be5ecc81557",
+      "text": "Urutkan harga satuan saja, Cedar terlihat termurah."
+    },
+    "at27": {
+      "source_hash": "37ec3bd1711c",
+      "text": "Tapi urutan ini belum memuat pajak dan biaya kirim."
+    },
+    "d2m5": {
+      "source_hash": "380ec942689d",
+      "text": "Simpan urutan; hitung total sampai tujuan, lalu bandingkan posisi."
+    },
+    "xwsj": {
+      "source_hash": "a4e62373497b",
+      "text": "Aster: barang dan kirim belum termasuk pajak; hitung pajaknya terpisah."
+    },
+    "qagq": {
+      "source_hash": "d092574a9f30",
+      "text": "Jumlah semua ini jadi total sampai tujuan Aster."
+    },
+    "znv7": {
+      "source_hash": "63a5cf7d3bbb",
+      "text": "Harga satuan Birch termasuk pajak barang; kali jumlah jadi nilai barang."
+    },
+    "c49q": {
+      "source_hash": "9d6435969ddc",
+      "text": "Pajak barang Cedar terhitung; boleh ikut peringkat?"
+    },
+    "bcr5": {
+      "source_hash": "fd897961bb71",
+      "text": "Total sampai tujuan: kini Birch di bawah Aster"
+    },
+    "tnrc": {
+      "source_hash": "48714b501253",
+      "text": "Total Cedar belum pasti, jadi tak boleh nomor satu."
+    },
+    "cv74": {
+      "source_hash": "1b5d6c5ce376",
+      "text": "Desimal dihitung alat sesuai syarat tertulis, lalu samakan format uang"
+    },
+    "8xam": {
+      "source_hash": "11c95498b7af",
+      "text": "Model jangan bulatkan harga satuan dulu; galat ikut dikali jumlah."
+    },
+    "qrv8": {
+      "source_hash": "f6ebe568a766",
+      "text": "Buka tabel; cek nominal asli dan hasil terpisah."
+    },
+    "ehby": {
+      "source_hash": "b1633f805e92",
+      "text": "Ini bukan rumus yang menghitung ulang sendiri; kebutuhan berubah, buat ulang hasilnya"
+    },
+    "u7i8": {
+      "source_hash": "2fce9f4c3f9b",
+      "text": "Ingat biaya kirim kosong? Ini menentukan Cedar boleh ikut peringkat."
+    },
+    "e86a": {
+      "source_hash": "8ed2c9df8dc9",
+      "text": "Barang Cedar lebih murah dari Birch; jika biaya kirim cukup rendah, peringkat berbalik."
+    },
+    "j2ja": {
+      "source_hash": "40796c6ec734",
+      "text": "Tabel pisahkan Cedar: diketahui dan belum; yang belum biaya kirim, termasuk pajak atau belum, dan pajaknya."
+    },
+    "ehkq": {
+      "source_hash": "d982a65cfa54",
+      "text": "Tanya spesifik: minta biaya kirim dan pajak ke alamat sama."
+    },
+    "aghq": {
+      "source_hash": "70cbf7ac869a",
+      "text": "Cek apakah biaya sama saat jumlah berubah agar tak menebak lagi."
+    },
+    "z8x8": {
+      "source_hash": "ca7683a734a3",
+      "text": "AI susun daftar tanya, tapi drafnya perlu kamu cek."
+    },
+    "7scz": {
+      "source_hash": "7e2e7627740a",
+      "text": "Jangan tulis yang belum pasti seolah pemasok sudah menyetujui."
+    },
+    "w9yq": {
+      "source_hash": "4dd11571123f",
+      "text": "Tambah kolom status agar jelas letak kendalanya."
+    },
+    "pdxs": {
+      "source_hash": "075e20b2797d",
+      "text": "Spesifikasi penawaran nyata beda? Tanya bisa disamakan; jangan karang harga peningkatan."
+    },
+    "k75x": {
+      "source_hash": "541c3946496d",
+      "text": "Cedar kirim revisi; jangan anggap pemasok keempat."
+    },
+    "mbee": {
+      "source_hash": "1b528e2b4b7d",
+      "text": "Simpan berkas lama; baris Cedar pakai syarat baru."
+    },
+    "h85p": {
+      "source_hash": "c76fed99e194",
+      "text": "Cek nomor versi lama di sini, lalu tandai berkas terkait sudah digantikan."
+    },
+    "hiqk": {
+      "source_hash": "89dd59ebf23d",
+      "text": "Biaya kirim dan pajaknya berubah; harga satuan barang tetap."
+    },
+    "ambg": {
+      "source_hash": "4740d823925e",
+      "text": "Kini total sampai tujuan Cedar bisa dihitung, dan sama dengan Aster."
+    },
+    "dyun": {
+      "source_hash": "0e8f2191d09f",
+      "text": "Kirim lengkap, Cedar TWD 50 di atas Birch; belum unggul."
+    },
+    "benr": {
+      "source_hash": "c9af59c4b3b4",
+      "text": "Cek kolom sumber merujuk versi revisi yang tepat."
+    },
+    "zqts": {
+      "source_hash": "65b8d6b123e7",
+      "text": "Nominal diganti, tautan masih ke berkas lama; orang tak bisa mengecek."
+    },
+    "q57z": {
+      "source_hash": "27ccf198c6a1",
+      "text": "Kebutuhan berubah: cetak 20 kartu pos yang sama."
+    },
+    "7dp4": {
+      "source_hash": "82ad1f2ea647",
+      "text": "Simpan salinan setelan jumlah 10 dengan nama baru di layar, lalu ubah jumlah jadi 20."
+    },
+    "ubke": {
+      "source_hash": "c22c4a780369",
+      "text": "Ubah jumlah kebutuhan, jangan gandakan total lama."
+    },
+    "f5gy": {
+      "source_hash": "2ae0a402d113",
+      "text": "Kolom skenario tetap revisi, jangan penawaran awal."
+    },
+    "3eue": {
+      "source_hash": "31ec121f822e",
+      "text": "Ubah jumlah, tegaskan kebutuhan lain tetap."
+    },
+    "sqqn": {
+      "source_hash": "5e811dc8ed67",
+      "text": "Cek rentang penawaran; perbarui nominal, sumber, simpan daftar perubahan."
+    },
+    "6wkf": {
+      "source_hash": "3f7f5ae11299",
+      "text": "Simpan, jalankan di folder kode materi."
+    },
+    "74dc": {
+      "source_hash": "fb263d432f38",
+      "text": "Baca jumlah baru; simpan terpisah, tak timpa penawaran asli."
+    },
+    "326u": {
+      "source_hash": "e461e11f751e",
+      "text": "Buka catatan kebutuhan; cek jumlah baru dipakai."
+    },
+    "m5sn": {
+      "source_hash": "311b70e145a7",
+      "text": "Daftar pemasok: Cedar tinggal 1 baris dengan versi revisi."
+    },
+    "sxtz": {
+      "source_hash": "3ad3c0bf760f",
+      "text": "Ketiganya jelas: harga satuan tetap dalam rentang jumlah ini."
+    },
+    "rgr9": {
+      "source_hash": "3da467e9ffaf",
+      "text": "Syarat kirim juga jelas; jumlah baru kali ini bisa dihitung ulang"
+    },
+    "xevg": {
+      "source_hash": "477df56d08f7",
+      "text": "Nilai barang Aster naik sesuai jumlah, kirim tetap 1 kali."
+    },
+    "m8sb": {
+      "source_hash": "9776125f547c",
+      "text": "Birch TWD 110 di atas Aster; urutan awal berbalik."
+    },
+    "pruf": {
+      "source_hash": "67ee1a53dd66",
+      "text": "Jika Cedar ikut, peringkat berubah lagi?"
+    },
+    "gy4i": {
+      "source_hash": "62457f085560",
+      "text": "Cedar lebih murah TWD 52.50 dari Aster."
+    },
+    "cbe9": {
+      "source_hash": "e987d435ff47",
+      "text": "Ingat jumlah dua kali lipat di awal? Total terendah benar berganti ke Cedar."
+    },
+    "nvu3": {
+      "source_hash": "4042e2c8c96e",
+      "text": "Tak ada yang mendadak menurunkan harga; porsi biaya kirim tetap berubah saat jumlah berubah."
+    },
+    "fa3t": {
+      "source_hash": "cafddf6deba4",
+      "text": "Mulai jumlah berapa termurah berganti?"
+    },
+    "63ek": {
+      "source_hash": "bfdb3434b13a",
+      "text": "Kita uji 2 kebutuhan dengan jumlah berurutan, jangan mengira semua jumlah punya peringkat sama."
+    },
+    "8fkp": {
+      "source_hash": "4cbd974a0dff",
+      "text": "Salin skenario revisi, isi jumlah 12, syarat lain tetap sama."
+    },
+    "utm2": {
+      "source_hash": "b1d2b608c925",
+      "text": "Jalankan dengan data ekstraksi sama; simpan hasil di folder kebutuhan ini."
+    },
+    "bnhk": {
+      "source_hash": "140cf1a645ad",
+      "text": "Salin kebutuhan ini, tambah 1 lembar, simpan nama lain."
+    },
+    "7udt": {
+      "source_hash": "ab814eaac43c",
+      "text": "Pisahkan keluaran agar 2 hasil bisa dibandingkan berdampingan."
+    },
+    "6nxr": {
+      "source_hash": "73e5454db3ea",
+      "text": "12 kartu: Birch di bawah Cedar TWD 7.50; belum berganti"
+    },
+    "7jrk": {
+      "source_hash": "4f854db5ecda",
+      "text": "13 lembar, Cedar unggul TWD 13.75; baru di sini melewati titik pergantian."
+    },
+    "e5gd": {
+      "source_hash": "12edf2d26cf4",
+      "text": "Cedar − Birch: positif lebih mahal, negatif lebih murah."
+    },
+    "petb": {
+      "source_hash": "a22168a8912b",
+      "text": "Tiap tambahan 1 lembar, Cedar mengejar Birch TWD 21.25, jadi selisih melewati 0."
+    },
+    "vnaq": {
+      "source_hash": "5255b4e6db78",
+      "text": "Dari 20 tambah 1 jadi 21 lembar, jawabannya masih bisa dihitung?"
+    },
+    "trph": {
+      "source_hash": "8c562e47c3ed",
+      "text": "Harga satuan tetap; hitung lagi pakai cara sama."
+    },
+    "cegb": {
+      "source_hash": "3b7ba4d7428d",
+      "text": "Hanya ganti berkas kebutuhan dan folder keluaran; masukan lain tetap."
+    },
+    "pn4i": {
+      "source_hash": "89db532be9e4",
+      "text": "Program cek jumlah baru sesuai rentang tertulis tiap pemasok."
+    },
+    "9jiq": {
+      "source_hash": "f0851ddf761b",
+      "text": "Program tak menghitung dan tak buat folder hasil baru."
+    },
+    "egmv": {
+      "source_hash": "a36ddfbd2752",
+      "text": "Sebab 21 lembar sudah di luar rentang tertulis ketiga penawaran ini."
+    },
+    "92mc": {
+      "source_hash": "d80cea105bc9",
+      "text": "Jika perlu jumlah itu, minta pemasok menawar ulang syarat ini."
+    },
+    "vee5": {
+      "source_hash": "0698b30c9511",
+      "text": "Kolom apa yang paling sering tak jelas? Tulis komentar."
+    },
+    "9jqz": {
+      "source_hash": "7b87be3cbbdc",
+      "text": "Langganan kanal; terus pakai AI untuk hasil kerja yang bisa diserahkan."
+    }
+  }
+}

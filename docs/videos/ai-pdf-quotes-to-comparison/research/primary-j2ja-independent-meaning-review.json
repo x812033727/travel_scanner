@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-26T12:00:26.758170+00:00",
+  "reviewer": "OpenAI Codex /root independent from native listener rewrite",
+  "scope": "source-meaning-and-naturalness-only",
+  "source_video_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "reference_commit": "23798d2cd89dc44d576377e306c884cc1afc46b3",
+  "actual_changes": [
+    {
+      "id": "j2ja",
+      "before": {
+        "emotion": "自然銜接上一句，重點輕輕加重",
+        "id": "j2ja",
+        "text": "表格把丙拆成已知和未知，未知的是運費、它含不含稅和稅額。"
+      },
+      "after": {
+        "emotion": "自然銜接上一句，重點輕輕加重",
+        "id": "j2ja",
+        "text": "表格把丙拆成已知跟未知，未知的是運費、運費是否含稅，還有稅額。"
+      }
+    }
+  ],
+  "meaning_pass": true,
+  "naturalness_pass": true,
+  "reason": "The rewrite retains the distinction between known/unknown values and identifies the same three unknowns: shipping fee, whether shipping includes tax, and its tax amount. Replacing 它含不含稅 with 運費是否含稅 removes pronoun ambiguity without inventing a price or tax treatment. 已知和未知→已知跟未知 and 還有 are natural spoken Taiwanese Mandarin.",
+  "all_other_line_records_exact": true,
+  "native_rewrite_record": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/rewrites.json",
+  "audio_or_final_approval_inferred_from_text": false,
+  "source_edited": false,
+  "paid_calls": 0
+}

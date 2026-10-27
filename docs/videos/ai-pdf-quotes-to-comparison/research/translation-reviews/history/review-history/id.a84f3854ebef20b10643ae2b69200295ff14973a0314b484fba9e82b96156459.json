@@ -1,0 +1,310 @@
+{
+  "locale": "id",
+  "reviewer": {
+    "agent": "/root/pdf_author_en_ja",
+    "identity": "OpenAI Codex agent",
+    "independent_of_author_for_this_locale": true,
+    "authorship_scope_in_this_task": "Authored en/ja only; did not author id/vi."
+  },
+  "reviewed_at_utc": "2026-10-26T12:29:44.060669+00:00",
+  "scope": "source-meaning-and-naturalness",
+  "source_snapshot": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/source-video.json",
+  "exact_source_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "authored_file": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/id.authored.json",
+  "actual_authored_file_sha256": "a84f3854ebef20b10643ae2b69200295ff14973a0314b484fba9e82b96156459",
+  "lines_reviewed": 101,
+  "reviewed_line_ids": [
+    "6vwc",
+    "xnrg",
+    "edfn",
+    "hg9m",
+    "ajsk",
+    "kv5r",
+    "ddpd",
+    "9ski",
+    "bv46",
+    "hssn",
+    "d8h7",
+    "jfix",
+    "d78a",
+    "mjhz",
+    "fvzv",
+    "3742",
+    "3639",
+    "658p",
+    "m57n",
+    "scia",
+    "nxct",
+    "7k9u",
+    "ea2e",
+    "ke2c",
+    "rgfp",
+    "fd27",
+    "qttz",
+    "indq",
+    "q7x8",
+    "7hi8",
+    "cxxm",
+    "6pwe",
+    "eg6v",
+    "g3vp",
+    "35fs",
+    "at27",
+    "d2m5",
+    "xwsj",
+    "qagq",
+    "znv7",
+    "c49q",
+    "bcr5",
+    "tnrc",
+    "cv74",
+    "8xam",
+    "qrv8",
+    "ehby",
+    "u7i8",
+    "e86a",
+    "j2ja",
+    "ehkq",
+    "aghq",
+    "z8x8",
+    "7scz",
+    "w9yq",
+    "pdxs",
+    "k75x",
+    "mbee",
+    "h85p",
+    "hiqk",
+    "ambg",
+    "dyun",
+    "benr",
+    "zqts",
+    "q57z",
+    "7dp4",
+    "ubke",
+    "f5gy",
+    "3eue",
+    "sqqn",
+    "6wkf",
+    "74dc",
+    "326u",
+    "m5sn",
+    "sxtz",
+    "rgr9",
+    "xevg",
+    "m8sb",
+    "pruf",
+    "gy4i",
+    "cbe9",
+    "nvu3",
+    "fa3t",
+    "63ek",
+    "8fkp",
+    "utm2",
+    "bnhk",
+    "7udt",
+    "6nxr",
+    "7jrk",
+    "e5gd",
+    "petb",
+    "vnaq",
+    "trph",
+    "cegb",
+    "pn4i",
+    "9jiq",
+    "egmv",
+    "92mc",
+    "vee5",
+    "9jqz"
+  ],
+  "metadata_reviewed": {
+    "title": true,
+    "description_all_paragraphs": true,
+    "tags_all": true,
+    "chapters": 9,
+    "thumbnail_fields": [
+      "tag",
+      "headline",
+      "sub"
+    ]
+  },
+  "reference_inputs_read": [
+    "source-video.json including all narration and scene data",
+    "id.todo.json",
+    "id.authored.json",
+    "id-vi.author-notes.json",
+    "/workspace/travel_scanner_pdf/.agents/skills/youtube-video/references/prompts/caption-review.md"
+  ],
+  "mechanical_checks": {
+    "worksheet_non_text_fields_preserved": true,
+    "all_line_sources_and_scenes_match_snapshot": true,
+    "title_chars": 75,
+    "tags_chars_joined_comma_space": 89,
+    "description_date_preserved": true,
+    "description_materials_url_matches_snapshot": true,
+    "thumbnail_fields_complete": true,
+    "thumbnail_emphasis_preserved": true
+  },
+  "checked_content": [
+    "Aster/Birch/Cedar mapping, revision replacing original Cedar rather than adding a fourth supplier, and source-page traceability.",
+    "Spoken quantities and monetary facts: 10/20/12/13/21, TWD 50/110/52.50/7.50/13.75/21.25; no IDR/VND conversion.",
+    "Free delivery versus missing shipping, null rather than invented zero, separate goods and shipping taxes, and recalculation only within quoted quantity ranges.",
+    "Static exported workbook values require regenerated results; no automatic formula recalculation is claimed.",
+    "Description preserves the fictional 5% exercise tax, Codex/pypdf/exact-decimal method, no commercial upload-UI test claim, selectable-text/OCR limitation, and openpyxl file-writing limitation.",
+    "The 7dp4 clause order keeps the original 10 quantity file, new on-screen file name, then the quantity change to 20.",
+    "Descriptions retain the exact source URL/date; commands and paths on the frozen slides were checked for context and are not rewritten in these narration drafts."
+  ],
+  "meaning_naturalness_issue_count": 2,
+  "issue_counts_by_kind": {
+    "meaning": 2,
+    "naturalness": 0
+  },
+  "issues": [
+    {
+      "field": "line:q57z",
+      "kind": "meaning",
+      "problem": "The source explicitly changes the requirement to PRINT 20 of the same postcards. The current line omits printing, so restore that requirement.",
+      "suggested": "Kebutuhan berubah: cetak 20 kartu pos yang sama.",
+      "source": "後來你的需求改了，同樣的明信片，要印二十張。",
+      "current": "Kebutuhan berubah: kartu pos sama, 20 lembar.",
+      "required_revision": true,
+      "suggested_chars": 48,
+      "current_chars": 45,
+      "max_chars": 48,
+      "suggestion_over_estimated_budget_by": 0
+    },
+    {
+      "field": "line:vee5",
+      "kind": "meaning",
+      "problem": "Sering asks about fields that are often unclear. The source asks which field the viewer MOST OFTEN encounters as unclear; preserve the superlative frequency.",
+      "suggested": "Kolom apa yang paling sering tak jelas? Tulis komentar.",
+      "source": "你最常遇到哪個報價欄位沒寫清楚，留言告訴我。",
+      "current": "Kolom apa sering tak jelas? Tulis komentar.",
+      "required_revision": true,
+      "suggested_chars": 55,
+      "current_chars": 43,
+      "max_chars": 40,
+      "suggestion_over_estimated_budget_by": 15
+    }
+  ],
+  "estimated_budget_observations": [
+    {
+      "id": "fd27",
+      "chars": 80,
+      "max_chars": 72,
+      "over_by": 8
+    },
+    {
+      "id": "qttz",
+      "chars": 61,
+      "max_chars": 46,
+      "over_by": 15
+    },
+    {
+      "id": "7hi8",
+      "chars": 59,
+      "max_chars": 48,
+      "over_by": 11
+    },
+    {
+      "id": "xwsj",
+      "chars": 71,
+      "max_chars": 51,
+      "over_by": 20
+    },
+    {
+      "id": "znv7",
+      "chars": 72,
+      "max_chars": 59,
+      "over_by": 13
+    },
+    {
+      "id": "e86a",
+      "chars": 87,
+      "max_chars": 74,
+      "over_by": 13
+    },
+    {
+      "id": "j2ja",
+      "chars": 107,
+      "max_chars": 98,
+      "over_by": 9
+    },
+    {
+      "id": "vee5",
+      "chars": 43,
+      "max_chars": 40,
+      "over_by": 3
+    }
+  ],
+  "budget_interpretation": "Character overages are recorded separately. They do not by themselves make source meaning fail, and a character count is not an actual timed-audio fit result. Suggestions are semantic/naturalness guidance; some exceed estimated budgets and need author handling without losing facts.",
+  "passed": false,
+  "verdict": "The initial findings are resolved. Additional source omissions found during the second full reading still require author revision and independent re-review.",
+  "changes_applied": false,
+  "limitations": [
+    "This report binds only the exact frozen source snapshot and authored-file bytes named above.",
+    "Any authored text, source wording, materials URL, or relevant source-context revision requires review against the updated bytes.",
+    "No target-language audio was generated or listened to; no native-voice approval, dub-fit approval, final-video QA, publishing approval or merge is claimed.",
+    "No draft, source or other locale was edited during this independent review."
+  ],
+  "rereview_round": 2,
+  "previous_failed_report": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/review-history/id.79b02c2d54b1fd857a0c0d5b7d99608c00588c7227903f5b65104addc76392c2.json",
+  "previous_authored_sha256": "79b02c2d54b1fd857a0c0d5b7d99608c00588c7227903f5b65104addc76392c2",
+  "review_method_this_round": "Independently reread all 101 frozen-source/ID/VI pairs in full, all metadata/chapters/thumbnail/glossary/boundaries, and every actual diff from the original author-history bytes. Did not substitute author assurances for reading.",
+  "original_issue_resolutions": [
+    {
+      "field": "line:7hi8",
+      "status": "resolved-after-independent-reread",
+      "previous": "Cedar halaman 2: kirim belum ditawar. Ini beda.",
+      "revised": "Halaman 2 Cedar: biaya kirim belum disebutkan. Ini berbeda."
+    },
+    {
+      "field": "line:aghq",
+      "status": "resolved-after-independent-reread",
+      "previous": "Cek biaya tetap saat jumlah berubah, agar nanti tak menebak lagi.",
+      "revised": "Cek apakah biaya sama saat jumlah berubah agar tak menebak lagi."
+    },
+    {
+      "field": "line:qttz",
+      "status": "resolved-after-independent-reread",
+      "previous": "Kutipan ini bisa mengecek kirim yang terlewat.",
+      "revised": "Dengan kutipan ini, cek apakah biaya kirim terlewat di tabel."
+    },
+    {
+      "field": "line:e86a",
+      "status": "resolved-after-independent-reread",
+      "previous": "Barang Cedar di bawah Birch; kirim cukup rendah, peringkat berbalik.",
+      "revised": "Barang Cedar lebih murah dari Birch; jika biaya kirim cukup rendah, peringkat berbalik."
+    },
+    {
+      "field": "chapter:quantity-start",
+      "status": "resolved-after-independent-reread",
+      "previous": "Jumlah naik, cek syarat lagi",
+      "revised": "Jumlah digandakan, cek syarat"
+    },
+    {
+      "field": "chapter:cost-start",
+      "status": "resolved-after-independent-reread",
+      "previous": "Total pajak dan kirim",
+      "revised": "Total dengan pajak dan kirim"
+    },
+    {
+      "field": "thumbnail:tag",
+      "status": "resolved-after-independent-reread",
+      "previous": "Bandingkan PDF",
+      "revised": "AI bandingkan penawaran PDF"
+    }
+  ],
+  "actual_changed_line_ids": [
+    "qttz",
+    "7hi8",
+    "e86a",
+    "aghq"
+  ],
+  "actual_changed_chapter_ids": [
+    "cost-start",
+    "quantity-start"
+  ],
+  "actual_changed_thumbnail_fields": [
+    "tag"
+  ]
+}

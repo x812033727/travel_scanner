@@ -1,0 +1,112 @@
+{
+  "observed_at_utc": "2026-10-26T23:35:50.917Z",
+  "kind": "one-fresh-user-nonpaid-PT-state4-preflight-after-actual9CC",
+  "routes": [
+    "GET /api/video/reviews/ai-editable-explainer-animation",
+    "GET /api/video/reviews/ai-pdf-quotes-to-comparison",
+    "GET /api/video/speech/status"
+  ],
+  "original_final": {
+    "id": "d1a5872b-b500-409a-a119-ecc825b40040",
+    "status": "approved",
+    "sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521"
+  },
+  "original_retries": {},
+  "original_worker_state": "unavailable",
+  "original_local_controller_LEASE_STOP_absent": true,
+  "PDF_final": {
+    "id": "934608a8-fdce-4e4c-9105-43fdd3e7f1ac",
+    "status": "approved",
+    "sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f"
+  },
+  "matching_QA11": true,
+  "PDF_retries": {},
+  "PDF_locales_decided_at": null,
+  "actual_dry_run_exit": 0,
+  "estimated_new_requests": 95,
+  "estimated_billable_characters": 6112,
+  "monthly_characters_remaining_at_read": 5743457,
+  "estimated_over_windows_preserved": 14,
+  "Gemini_configured_ready_not_synthesis_availability": true,
+  "no_fit_or_billing_inference": true,
+  "actual_state4_baseline_file": "/workspace/work/ai-pdf-01/pt-fresh-user-defer3-20261026T2222Z-post-defer4-runtime-snapshot.json",
+  "actual_state4_baseline_sha256": "8b595529bd0376963a9463ce6d4c77f9337b3798fda3829baa62b673d2215a23",
+  "all2349_NONAUTO_match_completed9CC": true,
+  "actual_original14_protected_exact": true,
+  "canonical_runtime_files_exact": 2350,
+  "whole_movie_source_files_exact": 457,
+  "production_sources9_exact": true,
+  "current_meaning_indices": [
+    {
+      "locale": "en",
+      "translation_sha256": "4958b944504e67e2b0a4eaf8cb946830273de870eabd1305fa6e3039f59dbdb1",
+      "index_sha256": "ba72a51ec61b05c4a9354cf034cc377b513830f9feb68e82289ed1b79b19d516",
+      "report_sha256": "17dbdb29ece754ac7c764fffc24ca7de0e0507435e5f0104eaaee4248811758e"
+    },
+    {
+      "locale": "ja",
+      "translation_sha256": "6269e257a86790fe8c293392b9d78c1f2529e208870858894391cf027da6ed71",
+      "index_sha256": "ca72c5b912597bf51087afa1bc08bf73243e2a765e159dff82a8200d5fc2ff92",
+      "report_sha256": "7caa4bdf692d18b18613f330df6c4d1a3f60c7243b04566217f64923e0492b60"
+    },
+    {
+      "locale": "ko",
+      "translation_sha256": "9568b1cb834bd1ce4e3e1ca1849ae30a7e1e1ec6c6eb02d4c9e46fe8e3ffabf6",
+      "index_sha256": "86ce9f174629d2d425cb13aa8dd7f7e6c569067ec07aca6af0e30e736393d954",
+      "report_sha256": "a860f044b721af3995e87bb12a8319cba9a0c1679c499103a92329224bf19960"
+    },
+    {
+      "locale": "es",
+      "translation_sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+      "index_sha256": "693324486e34837008cfa9975aaf29d7fb2b42760c60001790b3d2aae07557e1",
+      "report_sha256": "722a3a84a7483be6122198c5e1764c882ff7fe84baa3ce2e43a52032cdd6266f"
+    },
+    {
+      "locale": "pt",
+      "translation_sha256": "3f74c77761514a627781626ecc61bdc5cde3ffec851b7488e723846d6669195d",
+      "index_sha256": "f7ed26fb9eab7877ca9d2d52cd31ebb425380d63690a2d9ef4366c1d9574e557",
+      "report_sha256": "d143dae4e994efd43c16bcc1432b44ae7c4a1607915f87dece4ccfc61375e0ee"
+    },
+    {
+      "locale": "id",
+      "translation_sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+      "index_sha256": "e1a04b25070a136a200554a2a0c2eadd60d6e8fd5717c3c5f69da1d94fb5ae52",
+      "report_sha256": "4f7b8485e112c2ab0319b42583cfbfa673d6ac5754f378f7298c86ca9fa981f2"
+    },
+    {
+      "locale": "vi",
+      "translation_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+      "index_sha256": "2a9e5a5b540dcee0c4d7d5f3fef8e92ec7ab188e30ce661ff9a390a5436929f6",
+      "report_sha256": "fdecf988c3803a912fbc301b668294108a6bdd072c338a9ab901c15b0de887e3"
+    },
+    {
+      "locale": "th",
+      "translation_sha256": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+      "index_sha256": "1472d54db412d171293d35712d7a4562e5428d83483daa94660c8292e0820550",
+      "report_sha256": "f0c1cb6d5f2f0fa6b8fe7e8de6b889d2590bbf190b75ce9bd5108d7472f85af0"
+    }
+  ],
+  "shared_core_and_lexicon_inputs_exact": 20,
+  "nine_CC1002cues31warnings_preserved": true,
+  "text_delivery28files_and_manifest_exact": true,
+  "CC_ONE_USE_preserved": true,
+  "native_auto_defer_caps_exact": true,
+  "native_defer_count": 4,
+  "native_due": "2026-10-26T23:10:03.504Z",
+  "PT_native_rounds": {
+    "shorten": 0,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "live_speech_journals": 0,
+  "current_unadopted_model_receipts": 0,
+  "archived_terminal_first_writer_sha256": "836fe4b1a11afded5d1020f1c2c08fbe9bd417b63d7a9a9c060a56ec3f02051b",
+  "actual_prior_PT_full_review_sha256": "4b64e8399bf89c0d15cae25bbaf31cf00e08aa538a42d73376f1c2dea0a0d215",
+  "historical_state2_false_archive_failure_preserved": "/workspace/work/ai-pdf-01/pt-fresh-user-defer2-20261026T2138Z-free-preflight-failure.json",
+  "native_current_run_scan_top_level": true,
+  "dry_run_log_sha256": "17d99e91394d971098a867178b622fd0a17c5ad23c223a806142fec823cfaa94",
+  "helper_sha256": "38bedd1894aa193007d2d9557748d1546ce5a56ce4a8517f66c59358e5a69f7c",
+  "no_paid_or_owner_operation": true,
+  "source_task_Git_not_written": true
+}

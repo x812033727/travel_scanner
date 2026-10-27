@@ -1,0 +1,1330 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "es",
+  "scope": "source-meaning-and-naturalness",
+  "kind": "independent-exact-current-baseline-before-native-voice",
+  "recorded_at_utc": "2026-10-26T19:47:52.057656+00:00",
+  "reviewer": "OpenAI Codex /root/review_pdf_es_current",
+  "independent_from_translation_author": true,
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+  "passed": true,
+  "issues": [],
+  "meaning_naturalness_issue_count": 0,
+  "actual_read_manifest": [
+    {
+      "file": "/workspace/travel_scanner_pdf/AGENTS.md",
+      "sha256": "983dfa8599086f4028a3e17e3afa4b36f68b321cdb4c3246dd3693a6a98aa725",
+      "scope": "Complete instructions actually read"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/.agents/skills/youtube-video/SKILL.md",
+      "sha256": "38f5479207f523d82fd7ea348134e7b0aba087abe19c6818646d7276e928c516",
+      "scope": "Complete skill actually read"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+      "sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+      "scope": "All62 scene cards/data and101 Chinese spoken texts, all YouTube metadata, thumbnail, sources and loops actually read; voice configuration not independently assessed"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/es.json",
+      "sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+      "scope": "All101 Spanish texts and complete title/description/tags/nine chapters/thumbnail actually read"
+    }
+  ],
+  "actual_coverage": {
+    "source_spanish_pairs": 101,
+    "source_cards": 62,
+    "line_ids": [
+      "6vwc",
+      "xnrg",
+      "edfn",
+      "hg9m",
+      "ajsk",
+      "kv5r",
+      "ddpd",
+      "9ski",
+      "bv46",
+      "hssn",
+      "d8h7",
+      "jfix",
+      "d78a",
+      "mjhz",
+      "fvzv",
+      "3742",
+      "3639",
+      "658p",
+      "m57n",
+      "scia",
+      "nxct",
+      "7k9u",
+      "ea2e",
+      "ke2c",
+      "rgfp",
+      "fd27",
+      "qttz",
+      "indq",
+      "q7x8",
+      "7hi8",
+      "cxxm",
+      "6pwe",
+      "eg6v",
+      "g3vp",
+      "35fs",
+      "at27",
+      "d2m5",
+      "xwsj",
+      "qagq",
+      "znv7",
+      "c49q",
+      "bcr5",
+      "tnrc",
+      "cv74",
+      "8xam",
+      "qrv8",
+      "ehby",
+      "u7i8",
+      "e86a",
+      "j2ja",
+      "ehkq",
+      "aghq",
+      "z8x8",
+      "7scz",
+      "w9yq",
+      "pdxs",
+      "k75x",
+      "mbee",
+      "h85p",
+      "hiqk",
+      "ambg",
+      "dyun",
+      "benr",
+      "zqts",
+      "q57z",
+      "7dp4",
+      "ubke",
+      "f5gy",
+      "3eue",
+      "sqqn",
+      "6wkf",
+      "74dc",
+      "326u",
+      "m5sn",
+      "sxtz",
+      "rgr9",
+      "xevg",
+      "m8sb",
+      "pruf",
+      "gy4i",
+      "cbe9",
+      "nvu3",
+      "fa3t",
+      "63ek",
+      "8fkp",
+      "utm2",
+      "bnhk",
+      "7udt",
+      "6nxr",
+      "7jrk",
+      "e5gd",
+      "petb",
+      "vnaq",
+      "trph",
+      "cegb",
+      "pn4i",
+      "9jiq",
+      "egmv",
+      "92mc",
+      "vee5",
+      "9jqz"
+    ],
+    "scene_ids": [
+      "opening",
+      "opening-unit",
+      "opening-result",
+      "opening-missing",
+      "opening-revision",
+      "opening-quantity",
+      "need-start",
+      "need-spec",
+      "need-delivery",
+      "need-labels",
+      "need-fiction",
+      "need-route",
+      "need-proof",
+      "extract-start",
+      "extract-core",
+      "extract-fields",
+      "extract-aster",
+      "extract-aster-quote",
+      "extract-birch",
+      "extract-missing-quote",
+      "extract-null",
+      "extract-review",
+      "cost-start",
+      "cost-unit-baseline",
+      "cost-aster-formula",
+      "cost-birch-formula",
+      "cost-initial-result",
+      "cost-rounding",
+      "cost-workbook",
+      "missing-start",
+      "missing-known",
+      "missing-question",
+      "missing-no-send",
+      "missing-status",
+      "revision-start",
+      "revision-identity",
+      "revision-diff",
+      "revision-total",
+      "revision-ranking",
+      "revision-links",
+      "quantity-start",
+      "quantity-edit",
+      "quantity-prompt",
+      "quantity-run",
+      "quantity-output",
+      "quantity-ranges",
+      "quantity-aster",
+      "quantity-birch",
+      "quantity-cedar",
+      "quantity-ranking",
+      "threshold-start",
+      "threshold-request12",
+      "threshold-run12",
+      "threshold-request13",
+      "threshold-run13",
+      "threshold-results",
+      "threshold-margin",
+      "range21-request",
+      "range21-run",
+      "range21-result",
+      "range21-question",
+      "outro"
+    ],
+    "metadata_fields": [
+      "title",
+      "description all paragraphs/exact materials URL",
+      "all tags",
+      "all9chapter names",
+      "thumbnail.tag",
+      "thumbnail.headline",
+      "thumbnail.sub"
+    ],
+    "all101_pairs_and62cards_read_by_this_reviewer": true
+  },
+  "review_chain": [
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es.meaning-review.json",
+      "sha256": "693324486e34837008cfa9975aaf29d7fb2b42760c60001790b3d2aae07557e1",
+      "actual_read_scope": "Formal index, all fields"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es.thumbnail-headline-current-source-review-20261026.json",
+      "sha256": "722a3a84a7483be6122198c5e1764c882ff7fe84baa3ce2e43a52032cdd6266f",
+      "actual_read_scope": "Entire ES current composite and its prior-index/metadata-delta bindings"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/es.prior-meaning-index.json",
+      "sha256": "206526248fabe8805eff74ac7934eb4b4ae896d2fbb91d21518fc4e0bc3b0a79",
+      "actual_read_scope": "Entire prior ES formal index"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es.phone-title-current-source-review.json",
+      "sha256": "2bdc0564b38b6bf5387f09b8e90a4ef24ed14952fcbe5e4659eaeb1227f4dfb1",
+      "actual_read_scope": "Entire title-only composite and base/full-review binding"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es-pt-phone-title-independent-review.json",
+      "sha256": "a83097d2f8ba547526ade807a7b3a6e1bf3c964eb1a4db7ce9d072c743d1d02a",
+      "actual_read_scope": "Full global verdict/limits and ES title row; PT row was also visible but not the subject"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es.initial-current-source-review.json",
+      "sha256": "7788ba58f3f7439fac5b21f8b9d3e6dfe6dfdfa540c6bbff455d1055202b8ce6",
+      "actual_read_scope": "Entire current-source chronology/URL rebind, source/author bindings and estimated-budget list"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es.initial-independent-review.json",
+      "sha256": "c6a61ea65144bb045cea48122e33786dcad58185351dc6ef1f700d3c12f899e3",
+      "actual_read_scope": "Semantic review/confirmed checks, earlier failure resolution, metadata findings and limits; per-record digest ledger parsed/mechanically contextualized, not a new audit of historical WAVs"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.independent-metadata-delta-review.json",
+      "sha256": "100d9df7f2884e38d14432b8c620d8c7f99c9ece82ecb92116bae2e346c60ff5",
+      "actual_read_scope": "Global verdict/limits and exact ES row including complete ES metadata projection; other-locale rows are outside this review"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/baseline-preflights/es-pt-independent-preflight-review.json",
+      "sha256": "db979c6a403a437478b026e3dd5db06c922021e59583599d25858f80eec4ce3d",
+      "actual_read_scope": "Scope, coverage/ES line hashes mechanically matched all101 current pairs, source-delta and critical teaching checks, findings and limitations; not all PT-specific records rereviewed"
+    }
+  ],
+  "actual_mechanical_context": {
+    "current_formal_index_and_report_hashes_match": true,
+    "current_formal_index_reviewed_boundaries": [],
+    "all101_spoken_pair_hashes_equal_prior17_31_baseline": true,
+    "only_current_vs_prior7ee_translation_change": "thumbnail.headline",
+    "all_other_translation_fields_and101_records_equal_prior7ee": true,
+    "prior_thumbnail_actual_sha256": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea"
+  },
+  "critical_teaching_checks": [
+    {
+      "topic": "requirements/all pages/page evidence",
+      "line_ids": [
+        "m57n",
+        "scia",
+        "nxct",
+        "7k9u",
+        "ea2e",
+        "fd27",
+        "eg6v",
+        "g3vp"
+      ],
+      "assessment": "Each quote contributes two pages plus requirements; per-field source text and page references survive, including the other-page shipping condition. The complete seven-line visual prompt retains null, evidence, explicit tax/shipping and conditional revised-C clause."
+    },
+    {
+      "topic": "tax, free shipping and incomplete totals",
+      "line_ids": [
+        "indq",
+        "q7x8",
+        "7hi8",
+        "cxxm",
+        "6pwe",
+        "xwsj",
+        "znv7",
+        "tnrc",
+        "u7i8",
+        "j2ja",
+        "ehkq",
+        "aghq",
+        "7scz"
+      ],
+      "assessment": "Birch explicit free shipping can be0; Cedar not-quoted shipping remains unknown/null and cannot lead a complete-total comparison. Product tax and shipping tax are separate; Birch tax-included product is not taxed twice. Questions remain drafts and unknowns are not accepted terms."
+    },
+    {
+      "topic": "revision identity and sources",
+      "line_ids": [
+        "k75x",
+        "mbee",
+        "h85p",
+        "hiqk",
+        "benr",
+        "zqts",
+        "m5sn"
+      ],
+      "assessment": "Cedar revision is the same supplier, not a fourth. Only its current row/terms replace the old version; original retained, listed old identifier matched, source links updated; goods unit price unchanged."
+    },
+    {
+      "topic": "quantities, margins and sign",
+      "line_ids": [
+        "q57z",
+        "7dp4",
+        "ubke",
+        "f5gy",
+        "sxtz",
+        "rgr9",
+        "xevg",
+        "m8sb",
+        "gy4i",
+        "cbe9",
+        "nvu3",
+        "fa3t",
+        "63ek",
+        "8fkp",
+        "utm2",
+        "bnhk",
+        "7udt",
+        "6nxr",
+        "7jrk",
+        "e5gd",
+        "petb"
+      ],
+      "assessment": "Same postcards and other requirements preserved at10→20 and12→13; old10 setup saved as shown new filename before20; revised scenario retained, only quantity changed, quoted range checked and separate outputs kept. Each supplier own unit price stays fixed in range, not all suppliers sharing one price.50/110/52.50/7.50/13.75/21.25TWD amounts and comparators correct. C−B positive means C more expensive; negative means C less expensive."
+    },
+    {
+      "topic": "outside range and static outputs",
+      "line_ids": [
+        "qrv8",
+        "ehby",
+        "vnaq",
+        "trph",
+        "cegb",
+        "pn4i",
+        "9jiq",
+        "egmv",
+        "92mc"
+      ],
+      "assessment": "21 is outside quoted10–20; program refuses calculation and creates no new output directory. A new quote is requested instead of fabricating terms. Workbook contains computed values and must be regenerated, not self-recalculating formulas."
+    },
+    {
+      "topic": "truthful implementation metadata",
+      "line_ids": [
+        "fvzv",
+        "3742",
+        "3639",
+        "658p",
+        "cv74",
+        "8xam"
+      ],
+      "assessment": "Full Spanish description retains fictional suppliers/prices/5% practice assumptions, date2026-10-26, actual Codex document analysis/pypdf selectable-text extraction/decimal calculations, no commercial uploadUI or scanned-image OCR claim, openpyxl writes rather than computes formulas, exact current materials commit URL and JSON contract versus viewer prompt distinction."
+    },
+    {
+      "topic": "natural actionable Spanish and metadata",
+      "line_ids": [
+        "6vwc",
+        "xnrg",
+        "edfn",
+        "ddpd",
+        "9ski",
+        "pdxs",
+        "6wkf",
+        "vee5",
+        "9jqz"
+      ],
+      "assessment": "Compact Spanish instructions are understandable and natural in the lesson context; no substantive omission or incorrect counterpart found. Title still asks whether lowest unit cost is really cheapest. Headline Total/primero and unchanged tax/shipping sub are faithful compact copy. Punctuation/style preferences do not justify new wording."
+    }
+  ],
+  "line_pair_read_records": [
+    {
+      "scene_id": "opening",
+      "line_id": "6vwc",
+      "source_text": "最低的單價，現在還不能直接排第一。",
+      "spanish_text": "El menor precio unitario aún no puede ir primero.",
+      "source_text_sha256": "bb864b04f219e7536873800edf00d2eea9d03c0493eee9a21b960901f600546c",
+      "spanish_text_sha256": "f5c1fd5e268e65501581d098b8d68d55a6ecbf66cec7a03813f37a7a34964a6c",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "opening-unit",
+      "line_id": "xnrg",
+      "source_text": "因為這三份報價，寫的其實不是同一種金額。",
+      "spanish_text": "Las 3 cotizaciones usan distintas bases de precio.",
+      "source_text_sha256": "87b4ff93c8d11f51bdac4a5fe2beaede09df19967a4558829065df6e1b19778e",
+      "spanish_text_sha256": "8fb3d6e95820314a2c136699015d219a54110c79d11898f72468fab06106eeca",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "opening-result",
+      "line_id": "edfn",
+      "source_text": "所以我們讓 AI 做一張能編輯的表，連原文頁碼也一起留下。",
+      "spanish_text": "AI hará una tabla editable que conserve las páginas de origen.",
+      "source_text_sha256": "89bd8ea525c4be39a05ad6168bc02bc22b8bc1e9f948d68432d5aa0ad5f2d35b",
+      "spanish_text_sha256": "ae37d4c681aa2390c02e2fc5cc3232053afe86e1597fc298108f6709030e0c48",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "opening-missing",
+      "line_id": "hg9m",
+      "source_text": "但空白的運費，能不能直接當成免費？",
+      "spanish_text": "¿Envío en blanco significa envío gratis?",
+      "source_text_sha256": "7fd501513981fc433c89b082a925b78e6c89ca078ea7a1dfeac436d2bc3cf91c",
+      "spanish_text_sha256": "fd1f183521ba0d954d6c5ba06f92cd2c3bbad2bdcab779c1559eb01474afc518",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "opening-revision",
+      "line_id": "ajsk",
+      "source_text": "補來一張修訂單，便宜的會換人嗎？",
+      "spanish_text": "¿Una revisión cambia quién cobra menos?",
+      "source_text_sha256": "6a14b7251701d3a9ca59f9bc509b03f2b6bf47cfda9a51c74722cc381efeee0a",
+      "spanish_text_sha256": "3fcdc8ddf58949fc1ae1cdec859fcdcef80852d15423cd7b6c6b11f187534591",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "opening-quantity",
+      "line_id": "kv5r",
+      "source_text": "如果數量翻倍，原本的答案還能用嗎？",
+      "spanish_text": "¿Al duplicar la cantidad, sigue valiendo la respuesta?",
+      "source_text_sha256": "79ba69d02368aacbbee76d213866dcd32b7cdbdc2fc42c89728bd9fa4cd1f22d",
+      "spanish_text_sha256": "3cdd48c02eb70ee4b7ec2109cd6ac0ae76de8bd374faf7fcc237f393d416e5d6",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-start",
+      "line_id": "ddpd",
+      "source_text": "你現在要印十張明信片，三家都寄來了報價。",
+      "spanish_text": "Imprimirás 10 postales; ya cotizaron los 3",
+      "source_text_sha256": "7082f51acc010d58fc3d097c53ac7ca3200871dad2fc648c9cfff306dde16a53",
+      "spanish_text_sha256": "4a0797ea81242f811ca2d5e6ca38ce5ce40dba8bd67f658ab3b92eda7ec780f8",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-start",
+      "line_id": "9ski",
+      "source_text": "先把自己的需求另存一份，別讓報價替你決定要買什麼。",
+      "spanish_text": "Guarda aparte tus requisitos; que la cotización no decida.",
+      "source_text_sha256": "c138299c836302c1e97b4376510fbd7fb634db4f0b3b45c4368f13b1b5042333",
+      "spanish_text_sha256": "1d331badf2b97462236c57d26529ca1ca65a0410cafb7dee29d8c913aa92eadc",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-spec",
+      "line_id": "bv46",
+      "source_text": "像紙張、尺寸和印刷方式，都要能逐項對上。",
+      "spanish_text": "Papel, tamaño e impresión deben coincidir punto por punto.",
+      "source_text_sha256": "f8a06c3ad4aec7ea0d8065cf4a8a86ae1a7022d4a3c0b1393350ef16eeac1ce7",
+      "spanish_text_sha256": "2caf2e797fd645d909760690db0d449a486da75c7174cd8a4a94fa79224286e3",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-spec",
+      "line_id": "hssn",
+      "source_text": "只寫明信片還不夠，換一種紙就可能是另一個價格。",
+      "spanish_text": "Decir postales no basta: otro papel puede cambiar el precio.",
+      "source_text_sha256": "b030bf4c16928ad1e367ad37b1fa4bb50d375181a87ccc2ad5e8b0ffdd9f0cd1",
+      "spanish_text_sha256": "4fbf6736224d240f06c985c1415a7a391c0c4489b65aaf7be42b04b66bbedeff",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-delivery",
+      "line_id": "d8h7",
+      "source_text": "交貨地址和期限也要相同，才是在比同一件事。",
+      "spanish_text": "Misma dirección y plazo para comparar bien.",
+      "source_text_sha256": "8d1a50a65e497ee042b6eb3622bd27ac525a03a396a9d777ed4656d3406bd962",
+      "spanish_text_sha256": "f9b77056c65c9645cadc41a8427533dffdac8aa61a8cdd48e47b2e9007f9e88d",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-delivery",
+      "line_id": "jfix",
+      "source_text": "這次要的是送達總價，單價只是其中一個欄位。",
+      "spanish_text": "Buscamos el total con entrega; el precio unitario es solo un campo.",
+      "source_text_sha256": "8f3e2289792e2a3b6f6daf215e2467322c850526f57d829e293cc439b1688ca7",
+      "spanish_text_sha256": "e9f637ea0cf23e13174a402da060909620f3d3cce41ae8ea3ed91fdf816c5851",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-labels",
+      "line_id": "d78a",
+      "source_text": "三份原檔先保留下來，輸出另外放一個資料夾。",
+      "spanish_text": "Guarda los 3 originales; pon la salida en otra carpeta.",
+      "source_text_sha256": "4313d111425ebecaa31e6b62d1ac7873b826a318edf52569e7cdadc26f7a7393",
+      "spanish_text_sha256": "367cbfd81156aa76bb963a79ebe8f8206c4bfb58c76c61e21474863b99347bf2",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-labels",
+      "line_id": "mjhz",
+      "source_text": "這樣你收到新版本，還能看出供應商到底改了什麼。",
+      "spanish_text": "Así ves qué cambió el proveedor en la nueva versión.",
+      "source_text_sha256": "83df6da2d82df792e9655a2a392af49a05eac42ac89264e13c4da89eb343a038",
+      "spanish_text_sha256": "16c4990ab7c409c82f34018e28166bf829ef92b0a7453fd8b3df0ab891408176",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-fiction",
+      "line_id": "fvzv",
+      "source_text": "這組供應商和交易條件，都是練習用的虛構資料。",
+      "spanish_text": "Proveedores y condiciones ficticios de práctica.",
+      "source_text_sha256": "ee1a7a132bf3d77d57bea5323f33e628e4f131673ea6655a7bc1bb02873beecc",
+      "spanish_text_sha256": "f9bc6e916d83ba7b2c6dd6d75e1edd962991cc334f176544a677a892b9a69337",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-fiction",
+      "line_id": "3742",
+      "source_text": "畫面上的稅率是計算假設，真實交易要用自己的報價條件。",
+      "spanish_text": "La tasa es un supuesto; usa tus condiciones en compras reales.",
+      "source_text_sha256": "3147dae75bbd5417ed57e3befb1ddf8ef61053f274ed34a5eaae1cc5a5ea80e5",
+      "spanish_text_sha256": "f0e868ceb6aea160ca5b939adf05641f8d34e7286db7705308f6d4b91eab4c43",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-route",
+      "line_id": "3639",
+      "source_text": "你可以讓 AI 幫忙整理欄位，再把算術交給計算工具。",
+      "spanish_text": "AI ordena campos; una herramienta hace cuentas.",
+      "source_text_sha256": "1d15b826da4ec99b458ca59b789c1970580c98b90d921b467ea4c90f63ed0656",
+      "spanish_text_sha256": "243de65fe5a8624781bf3c1629d03e80ea819672b1b682e8b6fcdab4cb9538f5",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-route",
+      "line_id": "658p",
+      "source_text": "把這兩件事拆開，錯了才知道該回頭看文字還是公式。",
+      "spanish_text": "Separarlos permite saber si falló el texto o la fórmula.",
+      "source_text_sha256": "526bfd3e70c67752d117dea08ee9b6314b5a722c8a7c3ccd1bdcffde5a3d3077",
+      "spanish_text_sha256": "75c6c0a7f6c024aab1778304a0f93d10913855754647be1ea5f64a243df55e46",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-proof",
+      "line_id": "m57n",
+      "source_text": "甲的單價在第一頁，送貨條件卻放在第二頁。",
+      "spanish_text": "Aster: precio en página 1, entrega en página 2.",
+      "source_text_sha256": "24bcedced7ac9f2abd5b6c034e818a5a69f87ee584c7730a07bb47fd575c3462",
+      "spanish_text_sha256": "1569ec237855efd12c79fbf9bd0319d24fa1dcda7c183dcc910dca045777fe16",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "need-proof",
+      "line_id": "scia",
+      "source_text": "如果只讀首頁，這張比較表一開始就少了一筆錢。",
+      "spanish_text": "Si solo lees la primera página, faltará un costo desde el inicio.",
+      "source_text_sha256": "edb8257f6553245a32388ae00e11237e6793858162cb02e31c05d5cf16d49456",
+      "spanish_text_sha256": "3b949507eb0a98b5daee6c6a445bdbec30b158077d62b3d90a630f11e0f93014",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-start",
+      "line_id": "nxct",
+      "source_text": "所以我們把每份報價的兩頁文字，都連同需求交給 AI。",
+      "spanish_text": "Damos a AI 2 páginas de cada cotización y los requisitos.",
+      "source_text_sha256": "9221c8ab15364670ceaed1f509a0e390d2bf408d9c8a65de4e8f386baf134060",
+      "spanish_text_sha256": "e963216000896371abc5d5adb4e87f31bbce4ca419a5f252eebf5971df3397d6",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-start",
+      "line_id": "7k9u",
+      "source_text": "而且要它每個欄位都附上原文，別只回一句哪家比較划算。",
+      "spanish_text": "Pide el texto fuente de cada campo, no solo quién conviene más.",
+      "source_text_sha256": "f15e4aaa83ab7f61df28ee5eaf5def6383445cdc4cf7a6fc9b445b59164fbee2",
+      "spanish_text_sha256": "8851ba19e02b393bc78f2f232fa39a318f185ec128c46495873f1c0526514ac1",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-core",
+      "line_id": "ea2e",
+      "source_text": "缺的就保留空值，單價和運費各自的稅，也要分清楚。",
+      "spanish_text": "Deja nulo lo que falte; separa el impuesto del precio y el del envío.",
+      "source_text_sha256": "cde3d1893878b9dd2792ae24b96862a96f8d6d355e079090659f5d2abe71cd9a",
+      "spanish_text_sha256": "9bdf270987498b0fac7ee799ac8ae3907c04b7743fa5cec1083279e11febb7c5",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-fields",
+      "line_id": "ke2c",
+      "source_text": "三家版面不同，所以先訂好共同欄位，才不會照著排版亂比。",
+      "spanish_text": "Los 3 diseños difieren: define campos comunes para comparar bien.",
+      "source_text_sha256": "891115cfc2b9eb7a9b591c2243aabf2d2645b08fad0d93f1d448442833ba982b",
+      "spanish_text_sha256": "5e53333889dafafef80108bd6d037c411075cb14eca553a2d3bb8bc29c3e6180",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-fields",
+      "line_id": "rgfp",
+      "source_text": "原文是含稅價，就保留含稅價，不要急著把所有數字加在一起。",
+      "spanish_text": "Si incluye impuesto, consérvalo así; no sumes todo de inmediato.",
+      "source_text_sha256": "a7758d41bf2550de8a70ba5b0fc33de861747368e7f4d86f86e32ecf3e1bc270",
+      "spanish_text_sha256": "27f6ef734ce25db37d7e86fff54560f5f15bcba3fa948f5f38f7205dc0acf354",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-aster",
+      "line_id": "fd27",
+      "source_text": "甲分在兩頁的單價和運費，表格接成同一列，各自留著出處。",
+      "spanish_text": "Precio y envío de Aster, en 2 páginas, van en una fila con sus fuentes.",
+      "source_text_sha256": "5ff09a31f8919d018da75974c2b69fb390283c0729e1dc246d65e893d6cf02fc",
+      "spanish_text_sha256": "1e99f7e1b25ce8ac9f11428a05b7897bdc5740f2d00edcc0c3f53360ec8eccf7",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-aster-quote",
+      "line_id": "qttz",
+      "source_text": "拿這段原句，就能核對表格有沒有把運費漏掉。",
+      "spanish_text": "Con esta cita verificas si se omitió el envío.",
+      "source_text_sha256": "061cae372b28f8b78b17a951e6351084c092a30bcccfa22e2d4846519c8a5720",
+      "spanish_text_sha256": "7bea297064d29d1497fffa8290176447903303b7f127cddb630eb78f2ab77b07",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-aster-quote",
+      "line_id": "indq",
+      "source_text": "同樣是運費，為什麼乙能填零，丙卻不行？",
+      "spanish_text": "¿Por qué Birch puede poner envío cero y Cedar no?",
+      "source_text_sha256": "8d66d4f444a91c75ece3c3c6976000e90850444c1fe76687ed9d4c8286d9633a",
+      "spanish_text_sha256": "bf45d234289c4b6aa548c1095f339768362e4dbe85a8d0e72332f32698cfc670",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-birch",
+      "line_id": "q7x8",
+      "source_text": "乙的運費填零，是因為它的報價明寫免費送達。",
+      "spanish_text": "Birch tiene envío cero porque cotizó la entrega gratis.",
+      "source_text_sha256": "5944c5607fcacc1000af3dd8b5343215b7b3f6d193c9fde94ceee7d642d57f6d",
+      "spanish_text_sha256": "85c5edf27d90f762453a8c0fcc728e99c97cc350c44211855a9dc4c25c5ba7fb",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-missing-quote",
+      "line_id": "7hi8",
+      "source_text": "丙的第二頁則寫運費沒有報價，這是另一種狀態。",
+      "spanish_text": "Cedar no cotiza envío en página 2; es distinto.",
+      "source_text_sha256": "d21bdcbcf4ee1679c8708b9ee05a2791896f03c61204b066b256c0105322a683",
+      "spanish_text_sha256": "a0f9084461faaf5f178d8fa465e207f8d7ae9d198246cef9f96faa387be2f861",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-missing-quote",
+      "line_id": "cxxm",
+      "source_text": "AI 應該保留這個差別，不能為了把表填滿就補上零。",
+      "spanish_text": "AI conserva la diferencia; no debe llenar la tabla con ceros.",
+      "source_text_sha256": "b72f27b689fd12ed5636f6cd978461ab7b66c2bb7029f4ccac3e73c34729385e",
+      "spanish_text_sha256": "a4c4047ed9aa8b35f4334421653b83032dccdebbd4100c16ab6b532f9a7a2ec6",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-null",
+      "line_id": "6pwe",
+      "source_text": "後面算總價時，程式看到這個空值，就知道還不能當成完整報價。",
+      "spanish_text": "Al calcular, el programa ve el nulo: la cotización sigue incompleta.",
+      "source_text_sha256": "44e3cafff427ca11e7167ea868d60d11d54fec58ef7f5546bd64882cde350d80",
+      "spanish_text_sha256": "61bdef616f93974324aafe44150b8a42bc21dbc9b0754ac64c57c8c957699950",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-review",
+      "line_id": "eg6v",
+      "source_text": "拿到表格後，先挑會改變答案的值回到原頁核對。",
+      "spanish_text": "En la tabla, coteja en origen los valores decisivos.",
+      "source_text_sha256": "95babb2e94087ba5ae2d6de5fc45298863102758a0f2f38181dbe971a3810f9f",
+      "spanish_text_sha256": "f64530a94472694b1f4a128464b23234a9aca9b7cef2279e749adde741ed9381",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "extract-review",
+      "line_id": "g3vp",
+      "source_text": "逐欄對照數值和支持它的原句；對不上，就先標成待確認。",
+      "spanish_text": "Coteja cada valor con su cita fuente; si no coincide, márcalo por confirmar.",
+      "source_text_sha256": "1026f1ccbcbcbe1a7543d7e38e9b1ef6fc9eccb2ced7dad790e1aa62b522a57a",
+      "spanish_text_sha256": "bf6ee1e060a909dfc6117dad264670b25aaee3e9d77b82bb9dec9b83a41199b7",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-start",
+      "line_id": "35fs",
+      "source_text": "如果只是把單價從小排到大，丙看起來會最便宜。",
+      "spanish_text": "Por precio unitario creciente, Cedar parece más barato.",
+      "source_text_sha256": "4be5ecc815574c57e41a50bf333ee2eba6ff0efcebb83b7ed9670a39c29bbb0f",
+      "spanish_text_sha256": "9a4e08d8d6b68434fabd626529b08f3407434341ce9aacb520e9aabc517b4b4a",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-start",
+      "line_id": "at27",
+      "source_text": "可是這個排序，還沒有把稅和送達費用放進來。",
+      "spanish_text": "Pero ese orden aún no incluye impuesto ni entrega.",
+      "source_text_sha256": "37ec3bd1711cc8d09b9407847f5addc2a845c292131988b4ed455c7a222be560",
+      "spanish_text_sha256": "beb9873709d44cdbb19718fd77c9712ad9eee3f543422943df65b5ad6cefa746",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-unit-baseline",
+      "line_id": "d2m5",
+      "source_text": "先把這個排序留下來，等送達總價算完，再對照名次差在哪。",
+      "spanish_text": "Guarda ese orden; con los totales con entrega, compara cómo cambió.",
+      "source_text_sha256": "380ec942689dbc85ecb40c92b0ce9e3ff38ff9bb8edd494527a71e2f77187ec3",
+      "spanish_text_sha256": "5b8b919e81e9a5a3536e097764f4a40a5197e0b22fae09ff327b33c30782d899",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-aster-formula",
+      "line_id": "xwsj",
+      "source_text": "甲的商品和運費都明示未稅，所以兩邊各算自己的稅。",
+      "spanish_text": "Aster cotiza producto y envío sin impuesto; calcula sus impuestos por separado.",
+      "source_text_sha256": "a4e62373497be700761bcab2716bbf4445fd4a8e6e883a6b5908ab2f332154a9",
+      "spanish_text_sha256": "176c2d6a9968aaa2a2c22bbda07d23ec4b0ed9b7d196a77783edb6c56c4e08bc",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-aster-formula",
+      "line_id": "qagq",
+      "source_text": "把這幾項合起來，才是甲這份報價的送達總價。",
+      "spanish_text": "Suma esas partidas para el total con entrega de Aster.",
+      "source_text_sha256": "d092574a9f30d6c115cbd4cc1a67b6d19699291bab341030704e9afd6505c42a",
+      "spanish_text_sha256": "925bfa56aea4b4e58b7ac74bf67944ecd7deaae74045299081b16150f1293300",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-birch-formula",
+      "line_id": "znv7",
+      "source_text": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。",
+      "spanish_text": "El precio unitario de Birch ya incluye el impuesto del producto; multiplícalo por la cantidad para obtener el importe del producto.",
+      "source_text_sha256": "63a5cf7d3bbb5df48ba2be8aae9ed9858e8d32c9815f5549a4ae9b0996063be1",
+      "spanish_text_sha256": "fb548426e7e0059a2957b8ffb3dc6431f4aa0b045bc2302278b9746d330a8164",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-birch-formula",
+      "line_id": "c49q",
+      "source_text": "那丙的商品稅也算得出來，它能一起排進名次嗎？",
+      "spanish_text": "El impuesto de Cedar se calcula; ¿ya puede competir?",
+      "source_text_sha256": "9d6435969ddccf0f3886cc11d3c4ba530de642cd2ad0d9b27c5dbe992d2d29a5",
+      "spanish_text_sha256": "47c7663d833fece6b4c2a39101793e49c5001b4956808b8a40cedc1f03c28dd5",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-initial-result",
+      "line_id": "bcr5",
+      "source_text": "結果算到同一個終點，目前是乙比甲便宜。",
+      "spanish_text": "Con entrega, ahora Birch cuesta menos que Aster.",
+      "source_text_sha256": "fd897961bb714a3d12de549d802b3fc6f1feb9de37ccdf400879dccef2a9bba0",
+      "spanish_text_sha256": "2fb366d21e5b634ebc2428b08c5bae83264bf330acf86aab37713f4c64552909",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-initial-result",
+      "line_id": "tnrc",
+      "source_text": "丙的總價仍待確認，所以不能把它排成第一名。",
+      "spanish_text": "El total de Cedar está pendiente; no puede ir primero.",
+      "source_text_sha256": "48714b5012536abab6a6e9c53e935dab72f7b22261f304337c20fe5c83a1bcf5",
+      "spanish_text_sha256": "09863b815cce7f6cff2a723f646918146585fe25babac3c9c0ad53c55e6a3618",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-rounding",
+      "line_id": "cv74",
+      "source_text": "碰到小數時，讓計算工具依明示條件計算，再統一金額格式。",
+      "spanish_text": "Deja que la herramienta calcule los decimales según las condiciones indicadas; luego unifica el formato de los importes.",
+      "source_text_sha256": "1b5d6c5ce37693c932a19ddcb3570b9a0a589bdb51f7acf448dead57a3f998c4",
+      "spanish_text_sha256": "61ae479f9d1cf6f78726c568acef04d74a53fa5dcc9f475fbaa403770e80e10f",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-rounding",
+      "line_id": "8xam",
+      "source_text": "不要讓模型先四捨五入單價，再把誤差一路乘上數量。",
+      "spanish_text": "No dejes que el modelo redondee primero el precio unitario y multiplique ese error por la cantidad.",
+      "source_text_sha256": "11c95498b7af77454397f9e172d5ad9fb6d2af4fc2fb9cef7609e34603a4228c",
+      "spanish_text_sha256": "e1d81c92f27e1ce34c20c9684fe4cff1038cac9db8feb8a6800d34bd7990d93c",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-workbook",
+      "line_id": "qrv8",
+      "source_text": "打開試算表，把原文金額和計算金額分開核對。",
+      "spanish_text": "Abre la hoja; verifica por separado los importes de origen y los calculados.",
+      "source_text_sha256": "f6ebe568a766ce5a8cd3cb9f2d7f21e44dbcd5a1a4ab9104367c5407f8871d72",
+      "spanish_text_sha256": "ec95e02daf43dfbd91835cac98dbe5b23f5de14dd5c3fcccad7488b8ad3b8d10",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "cost-workbook",
+      "line_id": "ehby",
+      "source_text": "但它不是會自己重算的公式，需求一改，就要重新產生一次結果。",
+      "spanish_text": "No son fórmulas que recalculen solas; si cambian los requisitos, genera otra salida.",
+      "source_text_sha256": "b1633f805e92b1ff0b89a207abb4e03ade13ad9a8da5cb9556e0e11b9dd4b8da",
+      "spanish_text_sha256": "bdbfabcc999f56cb2e49f1830a9825dac11127ebeaec9a9bfd844fa535dcfe2a",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-start",
+      "line_id": "u7i8",
+      "source_text": "還記得那個空白的運費嗎？現在它直接決定丙能不能排進名次。",
+      "spanish_text": "¿Recuerdas el envío en blanco? Ese dato determina si Cedar puede entrar al ranking.",
+      "source_text_sha256": "2fce9f4c3f9bb6604dff79dbcf43f9dbfe6de1ecfe5d2fdada3255c95eb4608c",
+      "spanish_text_sha256": "f6aeba6f166a72c4ff3008bf9f961cfe786eee6cede8b4717eed3869531f1cb2",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-start",
+      "line_id": "e86a",
+      "source_text": "因為丙的商品比乙便宜，只要運費不夠高，名次就會翻過來。",
+      "spanish_text": "El producto de Cedar cuesta menos que Birch; con envío bajo, se invierten.",
+      "source_text_sha256": "8ed2c9df8dc94b08b223ca557d69ba3af038a8c195d7fc83acdc38802cceca6f",
+      "spanish_text_sha256": "edc26fa637ba7757c7e7460ed293dbd647edcaeb84105341fc2b962402169b21",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-known",
+      "line_id": "j2ja",
+      "source_text": "表格把丙拆成已知跟未知，未知的是運費、運費是否含稅，還有稅額。",
+      "spanish_text": "La tabla separa lo conocido de Cedar: faltan envío, si incluye impuesto y el importe del impuesto.",
+      "source_text_sha256": "40796c6ec734bbd7b8674b915a460c07782c04784e96e5ca5784da6aaf633c86",
+      "spanish_text_sha256": "5ceb55ce295c131168fe361900bbcbf5a05b66598a40bd952712d5bfcd155e2f",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-question",
+      "line_id": "ehkq",
+      "source_text": "所以問題要問得具體，請它補送到同一地址的運費和稅。",
+      "spanish_text": "Pregunta por el envío y su impuesto a la misma dirección.",
+      "source_text_sha256": "d982a65cfa544d888828270862605d6840637279a6045fe67ad2e39550ba196a",
+      "spanish_text_sha256": "7250fabdc0e0d903821dc87312b134f774c67519efbc48920e75fa9ee014a761",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-question",
+      "line_id": "aghq",
+      "source_text": "也要確認數量改變後費用是否相同，免得下一輪又得猜。",
+      "spanish_text": "Confirma si el costo varía con la cantidad, para no adivinar después",
+      "source_text_sha256": "70cbf7ac869a5fc2cfea158453574d1ce024019930c012d909b44e8340c3a00c",
+      "spanish_text_sha256": "862176b8755d0399744234aab7ce291d6b810fb38782886f56e211c1579bd077",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-no-send",
+      "line_id": "z8x8",
+      "source_text": "AI 可以幫你整理待問清單，但詢問草稿還需要你確認。",
+      "spanish_text": "AI arma las preguntas; tú debes confirmar el borrador.",
+      "source_text_sha256": "ca7683a734a31ef858d670df1ccd9a76aba2fc4863db4af009c89a1e7350ca35",
+      "spanish_text_sha256": "331acc2ed61265ecd5c8658183edf97c3af18a6fd59efb8a291dfe3337e64b8a",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-no-send",
+      "line_id": "7scz",
+      "source_text": "別把表格裡的待確認，寫成供應商已經同意的條件。",
+      "spanish_text": "No presentes lo pendiente como condiciones ya aceptadas.",
+      "source_text_sha256": "7e2e7627740a0ba88a10f21b0942b8b2b5f6a8b7621f6fa6018b8bb189027246",
+      "spanish_text_sha256": "95c1d949fc47d155f744d0138738ca48f20a892d20d0244dd4bf39c510cb95f4",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-status",
+      "line_id": "w9yq",
+      "source_text": "你也可以讓表格多一個狀態欄位，寫清楚它卡在哪裡。",
+      "spanish_text": "Añade un estado que explique qué falta resolver.",
+      "source_text_sha256": "4dd11571123f074773e1fd26ea77f0d5e1092a166046e9782ebb2fe831c3b06c",
+      "spanish_text_sha256": "e87312c0a656efac7238b57126712c35ad2aec4c3f8b2d617758529c4c581edb",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "missing-status",
+      "line_id": "pdxs",
+      "source_text": "真正的報價如果規格不同，先問能不能對齊，別自己編一個升級價。",
+      "spanish_text": "Si las especificaciones difieren, pregunta si pueden igualar; no inventes un precio de mejora.",
+      "source_text_sha256": "075e20b2797df25cde77c7c7792757b0cc295d0ead4dfb29e59b32f82acfff3c",
+      "spanish_text_sha256": "89d218da6be953d26a3249f6a41fb8a6092612777b8693f607a58324874a6f15",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "revision-start",
+      "line_id": "k75x",
+      "source_text": "丙補來了修訂版，這時候不要把它當成第四家供應商。",
+      "spanish_text": "Llegó la revisión de Cedar; no es un 4º proveedor.",
+      "source_text_sha256": "541c3946496d5b86296e01c9835c675434b27cb772d6bfe0403318a42adb70a1",
+      "spanish_text_sha256": "264a7d4d1465bf5c5fd81896aea8b3fa9993f6e4057f4fd56c9efcc5abbd083b",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "revision-start",
+      "line_id": "mbee",
+      "source_text": "留下舊檔作紀錄，再用新的條件替換丙這一列。",
+      "spanish_text": "Guarda el original; actualiza esa fila de Cedar.",
+      "source_text_sha256": "1b528e2b4b7d3c936127f3fd7193284bb3de4550b8fb7e58cbf2f25a2f7611ac",
+      "spanish_text_sha256": "b6a51b7264027c79c4f102145a2eddc7ad32379006c5e7721c76590a8ec3bb17",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "revision-identity",
+      "line_id": "h85p",
+      "source_text": "先核對這裡列的舊版編號，再把對應的舊檔標成已被取代。",
+      "spanish_text": "Coteja el código anterior y marca su archivo como sustituido.",
+      "source_text_sha256": "c76fed99e194b9c6d25e3e9a36dfa1d08ba17fe4d25d5fc3e3c594ad73724a21",
+      "spanish_text_sha256": "bf7020fbf4641588a05bb4d4f3f6fd19c9fdb4847e510a393fe9ffd3157155a7",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "revision-diff",
+      "line_id": "hiqk",
+      "source_text": "這次改的是運費和它的稅，商品單價並沒有跟著變。",
+      "spanish_text": "Cambian el envío y su impuesto; el precio unitario no cambió.",
+      "source_text_sha256": "89dd59ebf23d40068b9b63bf5f523f683699d08a153d1b8b48f68cf3f3367321",
+      "spanish_text_sha256": "628dfc9ec6c200278c6bf951d3fc1956926ac9d7c0b5abcb62a7ad7eb60da924",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "revision-total",
+      "line_id": "ambg",
+      "source_text": "好，現在丙的送達總價算得出來了，結果剛好和甲一樣。",
+      "spanish_text": "Ya se puede calcular el total con entrega de Cedar: empata con Aster.",
+      "source_text_sha256": "4740d823925ef099bf7cf3a815efed5ba9f4e518254b53f6607bad95054eab7c",
+      "spanish_text_sha256": "3ca39e29e19b1420654662e87f2899c9b091aebb9dd4666398170c0c9c8882d2",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "revision-ranking",
+      "line_id": "dyun",
+      "source_text": "運費補齊後，丙比乙多了五十元，還追不上。",
+      "spanish_text": "Con el envío, Cedar cuesta 50 TWD más que Birch y aún no gana.",
+      "source_text_sha256": "0e8f2191d09f10e2b87da9dbd4316d421ed75334e8bc264e9d6bf94e2869d9ee",
+      "spanish_text_sha256": "4aa9ce0daa6f3e829e7090943334579713605604295f8d99f69ef3f4389eaf69",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "revision-links",
+      "line_id": "benr",
+      "source_text": "這時候還要看一眼來源這個欄位，有沒有改成對應修訂版。",
+      "spanish_text": "Revisa si la fuente ya apunta a la revisión correcta.",
+      "source_text_sha256": "c9af59c4b3b4a4a516f72963689943db4570f5b0e1e71f9ec8fd96d7152e3828",
+      "spanish_text_sha256": "71e2fe44a57686dfb2497150b30694d8fb585df40785affcfa60e5f500813f97",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "revision-links",
+      "line_id": "zqts",
+      "source_text": "只換了金額卻還連著舊檔，別人回頭核對時就會找不到。",
+      "spanish_text": "Si cambias el importe y enlazas el original, otros no podrán verificarlo.",
+      "source_text_sha256": "65b8d6b123e7f13159e62bd4a27c114dec5bea4f92a47db154062993d9176604",
+      "spanish_text_sha256": "69697d028a7e6cf8fe5ae10a54ae1a5043a8988d0a9d4976eea67bde4e160d88",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-start",
+      "line_id": "q57z",
+      "source_text": "後來你的需求改了，同樣的明信片，要印二十張。",
+      "spanish_text": "Ahora necesitas imprimir 20 de las mismas postales.",
+      "source_text_sha256": "27ccf198c6a10990191c410269a575ebf416e95ffab9d17d898ffa228a27347f",
+      "spanish_text_sha256": "6a176162b12838b0c259c9fa0df86d6427eaae7a7dee9fea7dff1cec53c03d70",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-start",
+      "line_id": "7dp4",
+      "source_text": "先把原本十張的數量設定檔，另存成畫面上這個新檔名，再把數量改成二十。",
+      "spanish_text": "Guarda el archivo de cantidad de 10 con el nuevo nombre que ves, y cambia la cantidad a 20.",
+      "source_text_sha256": "82ad1f2ea647bf84b083f05af96f323b52148cbdae42f9de38c3ce7808926486",
+      "spanish_text_sha256": "c58a008612d104c581930d4b743a8385122408551dd82c2346b9344cd78d2e47",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-edit",
+      "line_id": "ubke",
+      "source_text": "你改的是需求數量，不是把原本的總價直接乘上兩倍。",
+      "spanish_text": "Cambia la cantidad; no dupliques el total anterior.",
+      "source_text_sha256": "c22c4a780369f23201f078926d814e3a9a9b957e0b9cc8eac0b0d7f416157d66",
+      "spanish_text_sha256": "c74e90eb4a7d736ea891a0104209d38dff14567718480ae94114861e7dc2704f",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-edit",
+      "line_id": "f5gy",
+      "source_text": "情境這個欄位要保留修訂版，別切回原始報價。",
+      "spanish_text": "Guarda el escenario revisado; no vuelvas al original.",
+      "source_text_sha256": "2ae0a402d1136f0611c1ec61f62ffd1bc35de7260793c3186dd79434d4b46993",
+      "spanish_text_sha256": "81991157457fd3e487f61d16202b1fd0a5ca5abba6fba12d536222c40786da26",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-prompt",
+      "line_id": "3eue",
+      "source_text": "數量改過之後，還要明說其他需求都不變。",
+      "spanish_text": "Cambia cantidad; di que lo demás no cambia.",
+      "source_text_sha256": "31ec121f822ef005472b06708fa2bbc95ddcaff2c6152e84a4625bd03a9d88cd",
+      "spanish_text_sha256": "bf47d8c0d814321e80e38334acb2b485d460209017bb1ae7b1f5232e5f2a2141",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-prompt",
+      "line_id": "sqqn",
+      "source_text": "先確認報價的適用範圍，再更新金額和來源，留下變動清單。",
+      "spanish_text": "Verifica el rango cotizado; actualiza importes y fuentes, y anota cambios.",
+      "source_text_sha256": "5e811dc8ed67bddb1c033131aa87ac95f8ba2301d6ef6db7f20e9c48a3ff37f1",
+      "spanish_text_sha256": "6367fee6903f882a7eaeb6505166954d9b149d956dfad6cd55c1aced98f8f0ad",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-run",
+      "line_id": "6wkf",
+      "source_text": "存檔後，在教材的程式資料夾執行這條命令。",
+      "spanish_text": "Guarda; ejecuta en la carpeta materials.",
+      "source_text_sha256": "3f7f5ae11299d1c218125694fdaf75188d992f9afbb21c200b667fbb61b30f34",
+      "spanish_text_sha256": "05eb772fdf808edcc229c15cdf18f2c81443aa3290e931f45ef2815efdab0306",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-run",
+      "line_id": "74dc",
+      "source_text": "它會讀取新數量，另存結果，不覆蓋供應商的原始報價。",
+      "spanish_text": "Lee la nueva cantidad y guarda sin sobrescribir cotizaciones.",
+      "source_text_sha256": "fb263d432f3862ed5f2bbf3834d1af925c7a41c50bfbb1f5722c888ea17900a3",
+      "spanish_text_sha256": "0bb35faeff2e376bb4f2b074d4476de6cdc299d45052cb9e43cdd1cc8a334611",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-output",
+      "line_id": "326u",
+      "source_text": "打開輸出的需求紀錄，確認它真的使用了新的數量。",
+      "spanish_text": "Abre el registro; confirma la nueva cantidad usada.",
+      "source_text_sha256": "e461e11f751e6282cbd7cedcdaa8af2646d45df7fadf0b11e601e90aa8221418",
+      "spanish_text_sha256": "3d71493074cb5e108d503623c217956ea29ff070dd14c8b3af312fbdf9765c50",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-output",
+      "line_id": "m5sn",
+      "source_text": "再看供應商清單，丙應該只剩採用修訂版的那一列。",
+      "spanish_text": "En proveedores, Cedar debe tener solo la fila de la revisión.",
+      "source_text_sha256": "311b70e145a7eb37bf248ad48a05efc6825a74c4e13c45bcd248a3e8fc8aaaf5",
+      "spanish_text_sha256": "40ee6fbda447bafa563da8237a2c18e45f40e5ba5828ffc1e2037eb548a7c2a8",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-ranges",
+      "line_id": "sxtz",
+      "source_text": "這三份報價都寫明，單價在這段數量範圍內保持相同。",
+      "spanish_text": "Los 3 indican que sus propios precios unitarios no cambian dentro de este rango.",
+      "source_text_sha256": "3ad3c0bf760f231ea546d006abc3895b8df29019b8d1da9249666aa2c2e4cfa2",
+      "spanish_text_sha256": "383f6c7fe35f8038dd6a014ad422f9c48afa82927db5d3996989987f8ce13ba4",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-ranges",
+      "line_id": "rgr9",
+      "source_text": "送貨條件也有對應的說明，所以我們這次能照新數量重算。",
+      "spanish_text": "La entrega también tiene condiciones expresas; por eso podemos recalcular los importes para la nueva cantidad.",
+      "source_text_sha256": "3da467e9ffaf4320817a8c511bc7e3611d5bf1edd095626204bf866d512bddde",
+      "spanish_text_sha256": "b487bbf6a92e29ba422c3dd323c1405c9f2f882696982e5013e386d3c62ea355",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-aster",
+      "line_id": "xevg",
+      "source_text": "甲的商品金額跟著數量增加，但運費還是那一筆。",
+      "spanish_text": "El importe total del producto de Aster sube con la cantidad; el envío sigue fijo.",
+      "source_text_sha256": "477df56d08f7b2435a75df5e9da52230baf35f6ab329590c543cd56830ad8ef0",
+      "spanish_text_sha256": "42b544d204e82c001f01b7a368cac44a69f1d8d902385c44664aaad17e04cc6d",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-birch",
+      "line_id": "m8sb",
+      "source_text": "乙比甲多了一百一十元，原本的先後順序反過來了。",
+      "spanish_text": "Birch: 110 TWD más que Aster; el orden se invierte.",
+      "source_text_sha256": "9776125f547c6e6c355b53b78e89b00e62edfadc1148becfc97268c0da769a7c",
+      "spanish_text_sha256": "5ab4d9f82eee73ad58c771327b0e2bf61b0bab1d7d645da327e0eae875ae6420",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-birch",
+      "line_id": "pruf",
+      "source_text": "那把丙也算進來，這個名次還會再變嗎？",
+      "spanish_text": "¿Con Cedar, vuelve a cambiar el orden?",
+      "source_text_sha256": "67ee1a53dd664a669ff59ab92a364cd16886889f4dae3fe14743503518da9556",
+      "spanish_text_sha256": "bcb6d9b3e3ddfcc2670988159e6b3771ab0cb02a2efe120de524d46a954fa755",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-cedar",
+      "line_id": "gy4i",
+      "source_text": "再看丙，它比甲少了五十二元五角。",
+      "spanish_text": "Cedar cuesta 52.50 TWD menos que Aster.",
+      "source_text_sha256": "62457f0855604dceb134510a473cb4451452d2ed3826a0cc67fc742dafe0943f",
+      "spanish_text_sha256": "38a08a53f9b0ac4870e81af2ca847028f1545fb789a4337acae9bd14f2e797c6",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-ranking",
+      "line_id": "cbe9",
+      "source_text": "還記得開頭問的數量翻倍嗎？最低總價真的換人了，變成丙。",
+      "spanish_text": "¿Recuerdas duplicar la cantidad? El menor total cambió: ahora es Cedar.",
+      "source_text_sha256": "e987d435ff47fdc8e563271754f4a07adec73919f08ec02353bbb93f5ce22eec",
+      "spanish_text_sha256": "f2da1452fa0f60894539304de071a27563f33cce72d3412377fea053095a8a27",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "quantity-ranking",
+      "line_id": "nvu3",
+      "source_text": "不是誰突然降價，而是固定運費在不同張數下，占的比例變了。",
+      "spanish_text": "Nadie bajó el precio: cambió el peso del envío fijo al variar la cantidad de postales.",
+      "source_text_sha256": "4042e2c8c96e4c58ae92399078e13d4713af1abd14a0801940886cba74cb9a0e",
+      "spanish_text_sha256": "509ec09e4809f36c336654dee1c040b9b56e7ae25cd20defa15e5272b401bcc8",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-start",
+      "line_id": "fa3t",
+      "source_text": "那最低總價是從第幾張開始換人？",
+      "spanish_text": "¿Con cuántas cambia el más barato?",
+      "source_text_sha256": "cafddf6deba44a28ab7121a2c2fb4b01c6c57afa293bc1a37d646ba8208ed3a3",
+      "spanish_text_sha256": "102ca1c9d6a02333004020b92291bcc8bb30a1527ec381636726eac972e715e7",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-start",
+      "line_id": "63ek",
+      "source_text": "我們拿相鄰的兩個需求來試，不去猜所有張數都用同一個排名。",
+      "spanish_text": "Probamos 2 cantidades consecutivas, sin suponer que el orden sirve para cualquier cantidad.",
+      "source_text_sha256": "bfdb3434b13a20bb8d9f41fe50851233f719b2ecbc146b2f0bbfea602bf741ad",
+      "spanish_text_sha256": "05a74aaef604858a75984e9786cb3c3eecd10b3920e70e713dfb5346629de1d4",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-request12",
+      "line_id": "8fkp",
+      "source_text": "先把修訂情境另存一份，數量填十二，其他條件保持相同。",
+      "spanish_text": "Guarda aparte el escenario revisado, pon 12 y conserva lo demás.",
+      "source_text_sha256": "4cbd974a0dff8a81ef0fca8cc511209cd2ae919f2672f36beaec13b0c88aeda2",
+      "spanish_text_sha256": "e0ef06c26413627201620d3771bcad0046986f180da66317b096a66869be8ebb",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-run12",
+      "line_id": "utm2",
+      "source_text": "用同一份抽取資料執行，結果另存到這一份需求的資料夾。",
+      "spanish_text": "Ejecuta con los mismos datos extraídos; guarda en la carpeta de este pedido.",
+      "source_text_sha256": "b1d2b608c925e063482c31dc3199b58dafda461d9a502f6ecdb7ddbed4a7f03f",
+      "spanish_text_sha256": "fab2109ed4327acf49534379cd1eca7bdcd6e26499e790d49e30eecdd6e91a7e",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-request13",
+      "line_id": "bnhk",
+      "source_text": "再複製這份需求，只多加一張，留下另一個檔名。",
+      "spanish_text": "Copia el pedido, suma 1 postal y guarda con otro nombre.",
+      "source_text_sha256": "140cf1a645ad7fd1d1ac7a751a0cf6fb5b773431c5add8e585322665e5d0f348",
+      "spanish_text_sha256": "9272b455ca5c46f5ff8c391d96cc00aeff016ae8f0c53c0e0b74057db06e185a",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-run13",
+      "line_id": "7udt",
+      "source_text": "輸出位置也要分開，這樣兩份結果才能真的並排比較。",
+      "spanish_text": "Separa las salidas para cotejar ambos resultados lado a lado.",
+      "source_text_sha256": "ab814eaac43c431a63ec17612189835895fd735745b6812466737c0c3ffb2e43",
+      "spanish_text_sha256": "4c1505ad33a08c06e1d5be39ffd96027191e167bf45fb96a69111ad8d6c590a6",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-results",
+      "line_id": "6nxr",
+      "source_text": "十二張時，乙只比丙少七元五角，還沒有換人。",
+      "spanish_text": "Con 12, Birch cuesta solo 7.50 TWD menos que Cedar; aún lidera.",
+      "source_text_sha256": "73e5454db3eab8c0ef9d9cc5422f1e9d48310311b49908bd82081f84246db204",
+      "spanish_text_sha256": "dd88872c19d0ac1391c7fc2f80a90fa7b2f966354d2671608bd8bb62b0d2ab88",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-results",
+      "line_id": "7jrk",
+      "source_text": "十三張時，丙就領先十三元七角五分，這一步才跨過轉換點。",
+      "spanish_text": "Con 13, Cedar lleva 13.75 TWD de ventaja: aquí se cruza el punto de cambio.",
+      "source_text_sha256": "4f854db5ecdacff3c8ad389625370d231b0534c39e539dbbeada291df72da79b",
+      "spanish_text_sha256": "aaf3cff0734a93717e9f849ae910939f1a965a6c49586407a6ab56cfdd65ce39",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-margin",
+      "line_id": "e5gd",
+      "source_text": "差額都用丙減乙，正數是丙較貴，負數就是丙較便宜。",
+      "spanish_text": "Cedar menos Birch: positivo, Cedar cuesta más; negativo, menos.",
+      "source_text_sha256": "12edf2d26cf47ae297676db907d8c07ecaf3c4225078bbc4ef18c2fe8aa86b64",
+      "spanish_text_sha256": "7f9255969ef315147196840f17910b76855d4503a9f9c8fa5b3f3f4dab9e5c7e",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "threshold-margin",
+      "line_id": "petb",
+      "source_text": "每多一張，丙相對乙追回二十一元兩角五分，所以差額跨過了零。",
+      "spanish_text": "Con cada postal, Cedar recupera 21.25 TWD frente a Birch; así la diferencia cruza el cero.",
+      "source_text_sha256": "a22168a8912bc679155bc4e0b8a51f21f175543c9c58921e07744dbd75526a26",
+      "spanish_text_sha256": "1c12df82e2bf42ee611febdc32d5f5b61ac6a97b9a190063995b84f34d2825cd",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "range21-request",
+      "line_id": "vnaq",
+      "source_text": "二十張的需求如果再多要一張，變成二十一張，答案還算得出來嗎？",
+      "spanish_text": "De 20 a 21 postales, ¿todavía se puede calcular el resultado?",
+      "source_text_sha256": "5255b4e6db788c4f75c0d12810d418e0410c107ae3e2ba724c94006e7ec171ac",
+      "spanish_text_sha256": "7a4b399eb946235d60aa008acf1123f792d3d573ea32a19c5904315ea4b215dd",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "range21-request",
+      "line_id": "trph",
+      "source_text": "這次先別改單價，照同一個方法重算看看。",
+      "spanish_text": "Sin cambiar el precio unitario, recalcula igual.",
+      "source_text_sha256": "8c562e47c3ed9d8dfcb27765f145f3274c0270fc171472b5e3308b8f2a11cbe3",
+      "spanish_text_sha256": "769cc9d1a4dbb5c40254c1a554055ba93d1c971f3b890b765516bf25d725f267",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "range21-run",
+      "line_id": "cegb",
+      "source_text": "只換需求檔和輸出資料夾，其他輸入都不變。",
+      "spanish_text": "Cambia solo el archivo del pedido y la carpeta de salida; nada más.",
+      "source_text_sha256": "3b7ba4d7428d4aa2700651f0f14ab314658cdb283113443c9fb8e64bf8310f20",
+      "spanish_text_sha256": "535d9daeac07e55d7dc43ff36581751031ebff020588795c79e51dd88c913993",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "range21-run",
+      "line_id": "pn4i",
+      "source_text": "程式會先拿新數量，對照各家寫明的適用範圍。",
+      "spanish_text": "El programa coteja la nueva cantidad con cada rango cotizado.",
+      "source_text_sha256": "89db532be9e40e25cf516908a95442282e23720aa36ba87098df7993ab01c4df",
+      "spanish_text_sha256": "c352116c0033ee98f0bbc410faaa99112db7b56653d64de01ef26a5f63e44503",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "range21-result",
+      "line_id": "9jiq",
+      "source_text": "結果它拒絕計算，也沒有建立新的結果資料夾。",
+      "spanish_text": "No calcula ni crea otra carpeta de resultados.",
+      "source_text_sha256": "f0851ddf761ba952c1911902cd028b12d63efa09e895e03ca5c9aec6280321b7",
+      "spanish_text_sha256": "c73ba426e05bbd5b887d1b6ca560176efbac70e179271b965e75ba532f45c5a7",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "range21-result",
+      "line_id": "egmv",
+      "source_text": "因為二十一張，已經超過這三份報價寫明的範圍。",
+      "spanish_text": "Porque 21 postales exceden el rango escrito en las 3 cotizaciones.",
+      "source_text_sha256": "a36ddfbd27525363ec0681a0de9de2ed6e39b7f7480de0928f63c8386f670376",
+      "spanish_text_sha256": "6a657d42287c37877b21e70b45908c78559291cc1faa489f0f5ebcd56e290e78",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "range21-question",
+      "line_id": "92mc",
+      "source_text": "如果真的需要這個數量，就請供應商重報這一版條件。",
+      "spanish_text": "Si lo necesitas, pide nueva cotización para esa cantidad.",
+      "source_text_sha256": "d80cea105bc91adf157287bb571ed3e1b4a02616595e91038906abc607979449",
+      "spanish_text_sha256": "16262d6b6a97e9486e59de4400ffba1dccde57dc91f97934e5c9b6ea1b2346e1",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "outro",
+      "line_id": "vee5",
+      "source_text": "你最常遇到哪個報價欄位沒寫清楚，留言告訴我。",
+      "spanish_text": "Comenta qué campo de cotización ves poco claro con más frecuencia.",
+      "source_text_sha256": "0698b30c95113670360e30c83408860a646ed7df48b823ff00e2f4b6be693e47",
+      "spanish_text_sha256": "4fc94a12236badc2d94c5952ec78d3a7cf4480085f025a50c2ecfdaae5953dd7",
+      "actually_read_against_source_and_card": true
+    },
+    {
+      "scene_id": "outro",
+      "line_id": "9jqz",
+      "source_text": "訂閱這個頻道，繼續把 AI 用成能交付的工作成果。",
+      "spanish_text": "Suscríbete para seguir usando AI en trabajos que puedes entregar.",
+      "source_text_sha256": "7b87be3cbbdc0b3d8ac2f3f6dfa55d3030c228053493cfa5fae8f3ca487e911d",
+      "spanish_text_sha256": "bd5d49b1d67d7929cdb229b1cee28e96ad5bf81aa8d240f09acffbbf8e7487c3",
+      "actually_read_against_source_and_card": true
+    }
+  ],
+  "independent_critical_crosscheck": {
+    "reviewer": "/root/review_pdf_es_current/es_critical_crosscheck",
+    "actual_scope": "Read complete Chinese/Spanish descriptions, critical extraction/tax/shipping/missing/revision/10-20/12-13/21 scenes and adjacent cards/pairs",
+    "findings": "No substantive fidelity or naturalness issue; explicitly confirmed all quoted critical conditions, signed margins and implementation limits. No file/native/provider action or audio claim."
+  },
+  "reviewed_boundaries": [],
+  "boundary_read": false,
+  "native_boundary_read": false,
+  "estimated_budget_note": "Existing chain retains17 estimated character overages. This review does not change estimates or claim measured fit; any genuine future shortening/reword answer needs fresh review before changed takes.",
+  "limitations": {
+    "source_only": true,
+    "audio_video_or_WAV_files_opened": false,
+    "ASR_or_listening_or_fit_review": false,
+    "thumbnail_render_or_visual_QA_review": false,
+    "current_or_future_voice_approval": false,
+    "future_native_model_boundary_review": false,
+    "paid_eligibility_or_new_authorization": false,
+    "owner_or_publish_approval": false,
+    "official_source_fetch_or_lab_reexecution": false
+  },
+  "actions": {
+    "repository_canonical_index_task_lease_or_media_writes": false,
+    "provider_network_or_native_invocation": false,
+    "only_new_external_outputs": [
+      "es.baseline.current.json",
+      "independent-current-source-review.json"
+    ]
+  },
+  "next": "Keep this exact baseline for an actually returned ES shortening/rewording boundary. Coordinator remains responsible for a single producer handoff and true fit/ASR/quality outcomes; this text review authorizes no paid work."
+}

@@ -1,0 +1,29 @@
+{
+  "restored_at": "2026-10-26T09:31:41.906Z",
+  "source_video_sha256": "d990cd49715dcfdc6992e34c1ceff281f12a893d3481e55080fb693c9874c069",
+  "previous_claims_sha256": "8250adb0157038ac0e68175fe352c7f9e31d5e4a167f3eb1204e97f715526249",
+  "restored_claims_sha256": "33692655cabf555b069f144dfb5ff41bfcf73b843bc16ed81ea687521b29f853",
+  "actual_base_commit": "a2c088e49e93f1a6c0ccea8730a23da43bde74ee",
+  "historical_native_claims": "research/claims-native-history-before-restoration.md",
+  "native_state_unchanged": true,
+  "quality_pass_inferred": false,
+  "next": "Real verifier reads restored source evidence before narrative/demo/audio.",
+  "citation_url_spacing_risk": {
+    "reported_at_utc": "2026-10-26T10:57:25.792343+00:00",
+    "original_installed_candidate_sha256": "33692655cabf555b069f144dfb5ff41bfcf73b843bc16ed81ea687521b29f853",
+    "spacing_repaired_candidate_sha256": "421e9645c85731f54c885412685dba42dc505d7f1fb330ef908f6e1cc2810ce7",
+    "affected_claims": [
+      "c15",
+      "c29"
+    ],
+    "actual_defect": "A fullwidth date parenthesis immediately followed each .html URL in the restored historical rows; a native URL extractor can include it as a malformed URL.",
+    "candidate_only_fix": "Insert one delimiter space after each affected URL and record that limited repair; no fact or quality verdict changed.",
+    "sequencing": "Root had already installed the first candidate and started real verifier8 before this risk was returned. Canonical was frozen until that real response; the later citation repair did not edit or fabricate the verifier verdict.",
+    "evidence_refs": [
+      "verify-8.md",
+      "research/source-gates-after-verifier-8.json"
+    ],
+    "new_api_or_provider_call_by_risk_report": false,
+    "quality_verdict_changed": false
+  }
+}

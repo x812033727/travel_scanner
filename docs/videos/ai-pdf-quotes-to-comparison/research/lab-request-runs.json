@@ -1,0 +1,78 @@
+{
+  "commands": [
+    {
+      "command": [
+        "python3",
+        "docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py",
+        "--analysis",
+        "/workspace/work/ai-pdf-01/lab/normalized-quotes.json",
+        "--extracted",
+        "/workspace/work/ai-pdf-01/lab/extracted-pages.json",
+        "--out",
+        "/workspace/work/ai-pdf-01/lab/results"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"/workspace/work/ai-pdf-01/lab/results\", \"checks\": 16, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "output_created": true
+    },
+    {
+      "command": [
+        "python3",
+        "docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py",
+        "--analysis",
+        "/workspace/work/ai-pdf-01/lab/normalized-quotes.json",
+        "--extracted",
+        "/workspace/work/ai-pdf-01/lab/extracted-pages.json",
+        "--out",
+        "/workspace/work/ai-pdf-01/lab/results-request-10",
+        "--request",
+        "/workspace/work/ai-pdf-01/lab/requests/request-10.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"/workspace/work/ai-pdf-01/lab/results-request-10\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "output_created": true
+    },
+    {
+      "command": [
+        "python3",
+        "docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py",
+        "--analysis",
+        "/workspace/work/ai-pdf-01/lab/normalized-quotes.json",
+        "--extracted",
+        "/workspace/work/ai-pdf-01/lab/extracted-pages.json",
+        "--out",
+        "/workspace/work/ai-pdf-01/lab/results-request-20",
+        "--request",
+        "/workspace/work/ai-pdf-01/lab/requests/request-20.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"output\": \"/workspace/work/ai-pdf-01/lab/results-request-20\", \"checks\": 17, \"all_passed\": true, \"winners\": {\"original-10\": [\"Birch\"], \"revised-10\": [\"Birch\"], \"revised-20\": [\"Cedar\"]}}\n",
+      "stderr": "",
+      "output_created": true
+    },
+    {
+      "command": [
+        "python3",
+        "docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py",
+        "--analysis",
+        "/workspace/work/ai-pdf-01/lab/normalized-quotes.json",
+        "--extracted",
+        "/workspace/work/ai-pdf-01/lab/extracted-pages.json",
+        "--out",
+        "/workspace/work/ai-pdf-01/lab/results-request-21-invalid",
+        "--request",
+        "/workspace/work/ai-pdf-01/lab/requests/request-21-invalid.json"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "Traceback (most recent call last):\n  File \"/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py\", line 234, in <module>\n    if __name__ == '__main__': main()\n                               ^^^^^^\n  File \"/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py\", line 196, in main\n    selected_rows = make_rows(quote_map, originals if selected_request['scenario']=='original' else revised, selected_request['quantity'])\n                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py\", line 70, in make_rows\n    result = delivered(fields, qty)\n             ^^^^^^^^^^^^^^^^^^^^^^\n  File \"/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/materials/build_comparison.py\", line 46, in delivered\n    raise ValueError('Quantity outside explicitly quoted range')\nValueError: Quantity outside explicitly quoted range\n",
+      "output_created": false
+    }
+  ],
+  "code_sha256": "35103b82d83b527b897bbc171e8d71e40431ebc0c4412a9c3ce62b898b160ea1",
+  "ai_analysis_sha256": "f86e3a0eef16325197aa2c1409b125ec91a792d15b1e195522d77da4630d07b8",
+  "ai_execution_sha256": "a2c5c2ec04b3d0ac17a5e4753f5036a112d96c9f5994c580213980920b83d4ee",
+  "extracted_pages_sha256": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c"
+}

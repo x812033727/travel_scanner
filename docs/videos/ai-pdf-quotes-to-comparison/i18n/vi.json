@@ -1,0 +1,451 @@
+{
+  "title": "Dùng AI so sánh 3 báo giá PDF: Đơn giá thấp nhất có thật sự rẻ nhất?",
+  "description": "Không thể lấy đơn giá từ ba báo giá PDF rồi xếp hạng ngay. Với cùng một bộ báo giá bưu thiếp tự soạn, nhờ AI sắp xếp quy cách, số lượng, tình trạng đã gồm thuế hay chưa, phí giao hàng và số trang nguồn, rồi tính tổng tiền giao tận nơi có thể so sánh theo các điều kiện được ghi rõ. Sau khi nhận phiên bản sửa đổi và đổi số lượng từ 10 thành 20 tấm, kiểm tra lại kết quả.\n\nVí dụ này dùng phân tích tài liệu bằng AI Codex trong lần thực hiện này, trích xuất văn bản bằng pypdf và tính số thập phân chính xác để xuất bảng tính có thể chỉnh sửa; không khẳng định đã thử giao diện tải tệp lên của bất kỳ sản phẩm AI thương mại cụ thể nào. Nhà cung cấp, giá và thuế suất 5% đều là dữ liệu tự soạn cho bài tập, không phải nhận định thuế cho giao dịch thật.\n\nNgày dữ liệu và thực hành: 2026-10-26. PDF lần này có văn bản chọn được; quy trình trích xuất này không làm OCR ảnh quét. Các giá trị trong bảng tính thực sự do công cụ tính toán; openpyxl chỉ ghi tệp, không khẳng định công cụ này tính công thức.\n\nTài liệu gồm nhu cầu, câu lệnh cho AI, chương trình tạo PDF nguồn, văn bản trích xuất từng trang, bảng so sánh giá có thể chỉnh sửa và lịch sử phiên bản.\n\nCâu lệnh bảy dòng trên màn hình là yêu cầu nhiệm vụ dành cho người xem; định dạng các trường để máy đọc nằm trong hợp đồng JSON ở analysis-prompt.txt, và lần phân tích AI này cũng đã đọc hợp đồng đó.\n\nTài liệu tự soạn, nhu cầu và câu lệnh đầy đủ:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+  "tags": [
+    "hướng dẫn AI",
+    "so sánh giá PDF",
+    "so sánh báo giá",
+    "AI văn phòng",
+    "Codex",
+    "PDF"
+  ],
+  "thumbnail": {
+    "tag": "AI so báo giá PDF",
+    "headline": "**Cộng hết**\n**trước**",
+    "sub": "Đừng sót thuế, phí giao"
+  },
+  "chapters": {
+    "opening": "Đơn giá rẻ, đặt ngay được?",
+    "need-start": "Lập chuẩn từ nhu cầu",
+    "extract-start": "Mỗi cột đều có nguồn",
+    "cost-start": "Tính cả thuế và phí giao",
+    "missing-start": "Hỏi rõ những mục còn thiếu",
+    "revision-start": "Thay điều kiện đã sửa đổi",
+    "quantity-start": "Gấp đôi lượng, kiểm điều kiện",
+    "threshold-start": "Thêm 1 tấm, ai rẻ nhất?",
+    "range21-request": "Vượt phạm vi, khoan đặt hàng"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "6198bec8fea6",
+      "need-start": "13b3f8bc78bf",
+      "extract-start": "1e08abc4dd35",
+      "cost-start": "03cd0948a886",
+      "missing-start": "2fc8ed124d22",
+      "revision-start": "014694bfda51",
+      "quantity-start": "7b025430bfe0",
+      "threshold-start": "db18134baff1",
+      "range21-request": "2678d2a246fd"
+    },
+    "title": "ea54635dadc1",
+    "description": "82023a597713",
+    "tags": "b04ad22c133c",
+    "thumbnail": "12bdfb50a92a"
+  },
+  "lines": {
+    "3639": {
+      "source_hash": "1d15b826da4e",
+      "text": "AI sắp xếp các cột, công cụ tính lo phần số học."
+    },
+    "3742": {
+      "source_hash": "3147dae75bbd",
+      "text": "Thuế suất trên màn hình là giả định; giao dịch thật dùng điều kiện báo giá của bạn."
+    },
+    "6vwc": {
+      "source_hash": "bb864b04f219",
+      "text": "Đơn giá thấp nhất chưa thể đứng đầu ngay."
+    },
+    "xnrg": {
+      "source_hash": "87b4ff93c8d1",
+      "text": "Vì các khoản tiền ghi trong 3 báo giá không cùng loại."
+    },
+    "edfn": {
+      "source_hash": "89bd8ea525c4",
+      "text": "Ta nhờ AI làm bảng sửa được, lưu cả số trang gốc."
+    },
+    "hg9m": {
+      "source_hash": "7fd501513981",
+      "text": "Phí giao hàng trống có coi là miễn phí được không?"
+    },
+    "ajsk": {
+      "source_hash": "6a14b7251701",
+      "text": "Có báo giá sửa đổi, bên rẻ nhất sẽ đổi chứ?"
+    },
+    "kv5r": {
+      "source_hash": "79ba69d02368",
+      "text": "Nếu số lượng gấp đôi, kết quả cũ còn dùng được không?"
+    },
+    "ddpd": {
+      "source_hash": "7082f51acc01",
+      "text": "Bạn in 10 bưu thiếp, 3 bên đã gửi báo giá."
+    },
+    "9ski": {
+      "source_hash": "c138299c8363",
+      "text": "Lưu riêng nhu cầu; đừng để báo giá quyết định bạn mua gì."
+    },
+    "bv46": {
+      "source_hash": "f8a06c3ad4ae",
+      "text": "Giấy, kích thước, cách in phải khớp từng mục."
+    },
+    "hssn": {
+      "source_hash": "b030bf4c1692",
+      "text": "Chỉ ghi bưu thiếp chưa đủ; đổi giấy có thể đổi giá."
+    },
+    "d8h7": {
+      "source_hash": "8d1a50a65e49",
+      "text": "Địa chỉ và hạn giao phải giống nhau để so sánh công bằng."
+    },
+    "jfix": {
+      "source_hash": "8f3e2289792e",
+      "text": "Cần tổng tiền giao tận nơi; đơn giá chỉ là một cột."
+    },
+    "d78a": {
+      "source_hash": "4313d111425e",
+      "text": "Giữ 3 tệp gốc, lưu đầu ra trong thư mục khác."
+    },
+    "mjhz": {
+      "source_hash": "83df6da2d82d",
+      "text": "Có phiên bản mới, bạn vẫn thấy bên bán đã đổi gì."
+    },
+    "fvzv": {
+      "source_hash": "ee1a7a132bf3",
+      "text": "Nhà cung cấp và điều kiện đều giả định để luyện tập."
+    },
+    "658p": {
+      "source_hash": "526bfd3e70c6",
+      "text": "Tách 2 việc, sai mới biết cần xem lại chữ hay công thức."
+    },
+    "m57n": {
+      "source_hash": "24bcedced7ac",
+      "text": "Đơn giá Aster ở trang 1, điều kiện giao ở trang 2."
+    },
+    "scia": {
+      "source_hash": "edb8257f6553",
+      "text": "Chỉ đọc trang đầu, bảng so sánh đã thiếu một khoản tiền."
+    },
+    "nxct": {
+      "source_hash": "9221c8ab1536",
+      "text": "Ta gửi AI cả 2 trang mỗi báo giá, kèm nhu cầu."
+    },
+    "7k9u": {
+      "source_hash": "f15e4aaa83ab",
+      "text": "Mỗi cột cần kèm nguyên văn, đừng chỉ trả lời bên nào lợi hơn."
+    },
+    "ea2e": {
+      "source_hash": "cde3d1893878",
+      "text": "Mục thiếu giữ null; phân biệt thuế đơn giá và thuế phí giao hàng."
+    },
+    "ke2c": {
+      "source_hash": "891115cfc2b9",
+      "text": "3 bên trình bày khác nhau; đặt cột chung để tránh so sai theo bố cục."
+    },
+    "rgfp": {
+      "source_hash": "a7758d41bf25",
+      "text": "Giá gốc đã gồm thuế thì giữ nguyên, đừng vội cộng mọi số lại."
+    },
+    "fd27": {
+      "source_hash": "5ff09a31f891",
+      "text": "Đơn giá, phí giao Aster ở 2 trang gộp 1 dòng, mỗi mục giữ nguồn."
+    },
+    "qttz": {
+      "source_hash": "061cae372b28",
+      "text": "Dùng câu gốc này kiểm tra bảng có sót phí giao."
+    },
+    "indq": {
+      "source_hash": "8d66d4f444a9",
+      "text": "Cùng phí giao, sao Birch được điền 0, Cedar lại không?"
+    },
+    "q7x8": {
+      "source_hash": "5944c5607fca",
+      "text": "Birch ghi 0 vì báo giá nói rõ giao hàng miễn phí."
+    },
+    "7hi8": {
+      "source_hash": "d21bdcbcf4ee",
+      "text": "Trang 2 Cedar ghi chưa báo phí giao; đây là trạng thái khác."
+    },
+    "cxxm": {
+      "source_hash": "b72f27b689fd",
+      "text": "AI phải giữ khác biệt này, đừng điền 0 chỉ để lấp đầy bảng."
+    },
+    "6pwe": {
+      "source_hash": "44e3cafff427",
+      "text": "Khi tính tổng, null báo chương trình biết báo giá vẫn chưa đầy đủ."
+    },
+    "eg6v": {
+      "source_hash": "95babb2e9408",
+      "text": "Có bảng rồi, kiểm tra giá trị làm đổi kết quả ở trang gốc."
+    },
+    "g3vp": {
+      "source_hash": "1026f1ccbcbc",
+      "text": "Đối chiếu từng cột với câu gốc hỗ trợ; không khớp thì đánh dấu cần xác nhận."
+    },
+    "35fs": {
+      "source_hash": "4be5ecc81557",
+      "text": "Chỉ xếp đơn giá tăng dần, Cedar có vẻ rẻ nhất."
+    },
+    "at27": {
+      "source_hash": "37ec3bd1711c",
+      "text": "Nhưng thứ tự này chưa tính thuế và phí giao tận nơi."
+    },
+    "d2m5": {
+      "source_hash": "380ec942689d",
+      "text": "Giữ thứ tự này; tính tổng giao tận nơi xong, đối chiếu thứ hạng thay đổi."
+    },
+    "xwsj": {
+      "source_hash": "a4e62373497b",
+      "text": "Hàng và phí giao Aster chưa thuế, tính thuế riêng."
+    },
+    "qagq": {
+      "source_hash": "d092574a9f30",
+      "text": "Cộng các khoản này mới ra tổng giao tận nơi của Aster."
+    },
+    "znv7": {
+      "source_hash": "63a5cf7d3bbb",
+      "text": "Đơn giá Birch đã gồm thuế hàng; nhân số lượng ra tiền hàng."
+    },
+    "c49q": {
+      "source_hash": "9d6435969ddc",
+      "text": "Tính được thuế hàng Cedar, có xếp hạng cùng được không?"
+    },
+    "bcr5": {
+      "source_hash": "fd897961bb71",
+      "text": "Cùng cơ sở tổng tiền, Birch đang rẻ hơn Aster."
+    },
+    "tnrc": {
+      "source_hash": "48714b501253",
+      "text": "Tổng Cedar còn cần xác nhận, nên chưa thể xếp đầu."
+    },
+    "cv74": {
+      "source_hash": "1b5d6c5ce376",
+      "text": "Với số thập phân, công cụ tính theo điều kiện ghi rõ, rồi thống nhất định dạng tiền."
+    },
+    "8xam": {
+      "source_hash": "11c95498b7af",
+      "text": "Đừng để mô hình làm tròn đơn giá trước, rồi nhân sai số với số lượng."
+    },
+    "qrv8": {
+      "source_hash": "f6ebe568a766",
+      "text": "Mở bảng tính, kiểm riêng tiền trong báo giá và tiền tính ra."
+    },
+    "ehby": {
+      "source_hash": "b1633f805e92",
+      "text": "Đây không phải công thức tự tính lại; nhu cầu đổi, phải tạo lại kết quả."
+    },
+    "u7i8": {
+      "source_hash": "2fce9f4c3f9b",
+      "text": "Nhớ phí giao trống chứ? Nó quyết định Cedar có được xếp hạng."
+    },
+    "e86a": {
+      "source_hash": "8ed2c9df8dc9",
+      "text": "Hàng Cedar rẻ hơn Birch; phí giao đủ thấp thì thứ hạng đảo ngược."
+    },
+    "j2ja": {
+      "source_hash": "40796c6ec734",
+      "text": "Bảng tách Cedar thành đã biết và chưa biết: phí giao, phí đã gồm thuế chưa và tiền thuế."
+    },
+    "ehkq": {
+      "source_hash": "d982a65cfa54",
+      "text": "Hỏi cụ thể: xin bổ sung phí giao và thuế tới cùng địa chỉ."
+    },
+    "aghq": {
+      "source_hash": "70cbf7ac869a",
+      "text": "Cũng hỏi đổi số lượng thì phí có giữ nguyên, tránh vòng sau lại đoán."
+    },
+    "z8x8": {
+      "source_hash": "ca7683a734a3",
+      "text": "AI lập danh sách cần hỏi, nhưng bạn phải duyệt dự thảo."
+    },
+    "7scz": {
+      "source_hash": "7e2e7627740a",
+      "text": "Đừng biến mục cần xác nhận thành điều kiện bên bán đã đồng ý."
+    },
+    "w9yq": {
+      "source_hash": "4dd11571123f",
+      "text": "Thêm cột trạng thái, ghi rõ đang vướng ở đâu."
+    },
+    "pdxs": {
+      "source_hash": "075e20b2797d",
+      "text": "Báo giá thật khác quy cách, hỏi có đồng nhất được không; đừng tự bịa giá nâng cấp."
+    },
+    "k75x": {
+      "source_hash": "541c3946496d",
+      "text": "Cedar gửi báo giá sửa đổi; đừng coi là bên thứ tư."
+    },
+    "mbee": {
+      "source_hash": "1b528e2b4b7d",
+      "text": "Giữ tệp cũ làm hồ sơ, thay dòng Cedar bằng điều kiện mới."
+    },
+    "h85p": {
+      "source_hash": "c76fed99e194",
+      "text": "Kiểm mã phiên bản cũ ở đây, rồi đánh dấu tệp tương ứng đã bị thay thế."
+    },
+    "hiqk": {
+      "source_hash": "89dd59ebf23d",
+      "text": "Lần này đổi phí giao và thuế của nó; đơn giá hàng vẫn giữ nguyên."
+    },
+    "ambg": {
+      "source_hash": "4740d823925e",
+      "text": "Giờ tính được tổng giao tận nơi của Cedar, đúng bằng Aster."
+    },
+    "dyun": {
+      "source_hash": "0e8f2191d09f",
+      "text": "Đủ phí giao, Cedar hơn Birch 50 TWD, vẫn chưa rẻ hơn."
+    },
+    "benr": {
+      "source_hash": "c9af59c4b3b4",
+      "text": "Xem cột nguồn đã đổi sang đúng phiên bản sửa đổi chưa."
+    },
+    "zqts": {
+      "source_hash": "65b8d6b123e7",
+      "text": "Chỉ đổi tiền mà vẫn dẫn tệp cũ, người khác kiểm lại sẽ không tìm thấy."
+    },
+    "q57z": {
+      "source_hash": "27ccf198c6a1",
+      "text": "Nhu cầu đổi: vẫn bưu thiếp ấy, in 20 tấm."
+    },
+    "7dp4": {
+      "source_hash": "82ad1f2ea647",
+      "text": "Lưu tệp số lượng 10 thành tên mới trên màn hình, rồi đổi số lượng thành 20."
+    },
+    "ubke": {
+      "source_hash": "c22c4a780369",
+      "text": "Đổi số lượng cần mua, không nhân đôi tổng cũ."
+    },
+    "f5gy": {
+      "source_hash": "2ae0a402d113",
+      "text": "Cột kịch bản giữ phiên bản sửa đổi, đừng về báo giá gốc."
+    },
+    "3eue": {
+      "source_hash": "31ec121f822e",
+      "text": "Đổi số lượng, nói rõ nhu cầu khác giữ nguyên."
+    },
+    "sqqn": {
+      "source_hash": "5e811dc8ed67",
+      "text": "Kiểm phạm vi báo giá, rồi cập nhật tiền và nguồn, lưu danh sách thay đổi."
+    },
+    "6wkf": {
+      "source_hash": "3f7f5ae11299",
+      "text": "Lưu rồi chạy lệnh ở thư mục mã tài liệu."
+    },
+    "74dc": {
+      "source_hash": "fb263d432f38",
+      "text": "Đọc số lượng mới, lưu riêng kết quả, không ghi đè báo giá gốc của bên bán."
+    },
+    "326u": {
+      "source_hash": "e461e11f751e",
+      "text": "Mở hồ sơ nhu cầu xuất ra, kiểm đã dùng số lượng mới."
+    },
+    "m5sn": {
+      "source_hash": "311b70e145a7",
+      "text": "Xem danh sách bên bán, Cedar chỉ còn 1 dòng dùng phiên bản sửa đổi."
+    },
+    "sxtz": {
+      "source_hash": "3ad3c0bf760f",
+      "text": "Cả 3 báo giá ghi rõ đơn giá giữ nguyên trong khoảng số lượng này."
+    },
+    "rgr9": {
+      "source_hash": "3da467e9ffaf",
+      "text": "Điều kiện giao cũng ghi tương ứng, nên lần này tính lại được theo số lượng mới."
+    },
+    "xevg": {
+      "source_hash": "477df56d08f7",
+      "text": "Tiền hàng Aster tăng theo số lượng, phí giao vẫn chỉ 1 khoản."
+    },
+    "m8sb": {
+      "source_hash": "9776125f547c",
+      "text": "Birch hơn Aster 110 TWD; thứ tự cũ đảo ngược."
+    },
+    "pruf": {
+      "source_hash": "67ee1a53dd66",
+      "text": "Tính cả Cedar, thứ hạng lại đổi chứ?"
+    },
+    "gy4i": {
+      "source_hash": "62457f085560",
+      "text": "Cedar ít hơn Aster 52.50 TWD."
+    },
+    "cbe9": {
+      "source_hash": "e987d435ff47",
+      "text": "Nhớ câu hỏi gấp đôi số lượng chứ? Tổng thấp nhất đã đổi sang Cedar."
+    },
+    "nvu3": {
+      "source_hash": "4042e2c8c96e",
+      "text": "Không ai đột ngột giảm giá; tỷ trọng phí giao cố định thay đổi theo số lượng."
+    },
+    "fa3t": {
+      "source_hash": "cafddf6deba4",
+      "text": "Từ tấm thứ mấy bên rẻ nhất đổi?"
+    },
+    "63ek": {
+      "source_hash": "bfdb3434b13a",
+      "text": "Ta thử 2 nhu cầu có số lượng liền nhau, đừng đoán mọi số lượng đều cùng thứ hạng."
+    },
+    "8fkp": {
+      "source_hash": "4cbd974a0dff",
+      "text": "Lưu riêng kịch bản sửa đổi, nhập số lượng 12, giữ nguyên điều kiện khác."
+    },
+    "utm2": {
+      "source_hash": "b1d2b608c925",
+      "text": "Chạy cùng dữ liệu trích xuất, lưu riêng kết quả vào thư mục nhu cầu này."
+    },
+    "bnhk": {
+      "source_hash": "140cf1a645ad",
+      "text": "Sao chép nhu cầu này, thêm đúng 1 tấm, lưu tên khác."
+    },
+    "7udt": {
+      "source_hash": "ab814eaac43c",
+      "text": "Tách cả nơi xuất để thực sự đặt 2 kết quả cạnh nhau so sánh."
+    },
+    "6nxr": {
+      "source_hash": "73e5454db3ea",
+      "text": "12 tấm, Birch chỉ ít hơn Cedar 7.50 TWD; chưa đổi ngôi."
+    },
+    "7jrk": {
+      "source_hash": "4f854db5ecda",
+      "text": "13 tấm, Cedar dẫn trước 13.75 TWD; bước này mới qua điểm chuyển."
+    },
+    "e5gd": {
+      "source_hash": "12edf2d26cf4",
+      "text": "Lấy Cedar trừ Birch; dương là Cedar đắt hơn, âm là rẻ hơn."
+    },
+    "petb": {
+      "source_hash": "a22168a8912b",
+      "text": "Thêm 1 tấm, Cedar rút ngắn chênh lệch với Birch 21.25 TWD, nên chênh lệch qua 0."
+    },
+    "vnaq": {
+      "source_hash": "5255b4e6db78",
+      "text": "20 tấm thêm 1 thành 21, còn tính được kết quả không?"
+    },
+    "trph": {
+      "source_hash": "8c562e47c3ed",
+      "text": "Chưa đổi đơn giá, thử tính lại theo cùng cách."
+    },
+    "cegb": {
+      "source_hash": "3b7ba4d7428d",
+      "text": "Chỉ đổi tệp nhu cầu và thư mục đầu ra, đầu vào khác giữ nguyên."
+    },
+    "pn4i": {
+      "source_hash": "89db532be9e4",
+      "text": "Chương trình đối chiếu số lượng mới với phạm vi từng bên ghi rõ."
+    },
+    "9jiq": {
+      "source_hash": "f0851ddf761b",
+      "text": "Nó từ chối tính, cũng không tạo thư mục kết quả mới."
+    },
+    "egmv": {
+      "source_hash": "a36ddfbd2752",
+      "text": "Vì 21 tấm đã vượt phạm vi ghi rõ trong cả 3 báo giá."
+    },
+    "92mc": {
+      "source_hash": "d80cea105bc9",
+      "text": "Nếu cần đúng số lượng này, nhờ bên bán báo giá lại điều kiện đó."
+    },
+    "vee5": {
+      "source_hash": "0698b30c9511",
+      "text": "Mục báo giá nào hay bị ghi không rõ nhất? Bình luận nhé."
+    },
+    "9jqz": {
+      "source_hash": "7b87be3cbbdc",
+      "text": "Đăng ký kênh, tiếp tục dùng AI tạo kết quả công việc có thể bàn giao."
+    }
+  }
+}

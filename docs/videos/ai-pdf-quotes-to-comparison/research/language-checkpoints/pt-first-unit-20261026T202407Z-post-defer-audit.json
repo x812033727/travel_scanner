@@ -1,0 +1,237 @@
+{
+  "recorded_at_utc": "2026-10-26T20:33:21.228Z",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "coordinator": "/root/pdf_ko_single_producer",
+  "kind": "actual-PT-global-service-defer-and-finite-controller-stop-audit",
+  "actual_unit_exit": 4,
+  "actual_provider_message": "Gemini 語音暫時忙碌或達到用量上限，請稍後重試",
+  "actual_provider_code_or_billing_disposition_inferred": false,
+  "PT_generated_primary_WAVs": 0,
+  "PT_ASR_records": 0,
+  "PT_fit_or_track_present": false,
+  "native_defer_count": 1,
+  "native_deferred_until": "2026-10-26T20:34:07.630Z",
+  "due_elapsed_at_audit": false,
+  "native_PT_rounds": {
+    "shorten": 0,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "native_global_status": "done",
+  "scope_stop": "Finite queue stops on this actual global backoff. No automatic resume at the due time; preserve it for a fresh separately coordinated execution.",
+  "ID_VI_TH_paid_units_started": false,
+  "local_speech_journals_at_audit": [],
+  "provider_billing_resolution_claimed": false,
+  "source_files_unchanged": true,
+  "all_primary_EN_JA_KO_ES_raw_checks_caps_thumbnails_protected": true,
+  "LEASE_STOP_absent": true,
+  "original_last_before_paid_task_guard": {
+    "observed_at_utc": "2026-10-26T20:27:29Z",
+    "actual_task_blob": "0ecde69a42861d4f672a0be1105fb2b209829246",
+    "owner": "codex-ai-video",
+    "ref": "codex/ai-editable-animation-20261025",
+    "latest_checkpoint": "2026-10-26T17:03:40.579560+00:00",
+    "checkpoint_age_seconds": 12228.421,
+    "under_two_hours": false,
+    "latest_note_heading": "### Free preparation while remaining blocked — 2026-10-26T17:03:40.579560+00:00",
+    "purpose": "Fresh original-source read immediately before one admitted PT unit; no original source/media/owner action."
+  },
+  "original_sdk_idle_preflight_sha256": "98f109c44a59e16840af61d3f898924bf8840d8e375097f4536781bd74401d19",
+  "true_checked_voice_locales": [
+    "ko",
+    "es"
+  ],
+  "voice_locale_rows": [
+    {
+      "locale": "en",
+      "whole_translation_sha256": "4958b944504e67e2b0a4eaf8cb946830273de870eabd1305fa6e3039f59dbdb1",
+      "meaning_index_sha256": "ba72a51ec61b05c4a9354cf034cc377b513830f9feb68e82289ed1b79b19d516",
+      "current_independent_meaning_chain_exact": true,
+      "native_dub_status": {
+        "status": "current",
+        "note": "en.m4a"
+      },
+      "expected_fingerprints": {
+        "translation_hash": "7f6dd61951ad52b0",
+        "speech_fingerprint": "6ff9ec59ae49bfca"
+      },
+      "matching_current_raw_primary_checks": 101,
+      "flags": [
+        "hg9m",
+        "fd27",
+        "znv7"
+      ],
+      "fit_current": true,
+      "timeline_current": true,
+      "native_rounds": {
+        "shorten": 1,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ja",
+      "whole_translation_sha256": "6269e257a86790fe8c293392b9d78c1f2529e208870858894391cf027da6ed71",
+      "meaning_index_sha256": "ca72c5b912597bf51087afa1bc08bf73243e2a765e159dff82a8200d5fc2ff92",
+      "current_independent_meaning_chain_exact": true,
+      "native_dub_status": {
+        "status": "current",
+        "note": "ja.m4a"
+      },
+      "expected_fingerprints": {
+        "translation_hash": "216a22c479565d85",
+        "speech_fingerprint": "d13ae9c399b3850e"
+      },
+      "matching_current_raw_primary_checks": 101,
+      "flags": [
+        "fd27"
+      ],
+      "fit_current": true,
+      "timeline_current": true,
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ko",
+      "whole_translation_sha256": "9568b1cb834bd1ce4e3e1ca1849ae30a7e1e1ec6c6eb02d4c9e46fe8e3ffabf6",
+      "meaning_index_sha256": "86ce9f174629d2d425cb13aa8dd7f7e6c569067ec07aca6af0e30e736393d954",
+      "current_independent_meaning_chain_exact": true,
+      "native_dub_status": {
+        "status": "current",
+        "note": "ko.m4a"
+      },
+      "expected_fingerprints": {
+        "translation_hash": "fc7fde221d87ffc5",
+        "speech_fingerprint": "cf272120db2ab1f4"
+      },
+      "matching_current_raw_primary_checks": 101,
+      "flags": [],
+      "fit_current": true,
+      "timeline_current": true,
+      "native_rounds": null,
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "es",
+      "whole_translation_sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+      "meaning_index_sha256": "693324486e34837008cfa9975aaf29d7fb2b42760c60001790b3d2aae07557e1",
+      "current_independent_meaning_chain_exact": true,
+      "native_dub_status": {
+        "status": "current",
+        "note": "es.m4a"
+      },
+      "expected_fingerprints": {
+        "translation_hash": "bd72ad7b231cc5d7",
+        "speech_fingerprint": "c278f4dc99c4d2e7"
+      },
+      "matching_current_raw_primary_checks": 101,
+      "flags": [],
+      "fit_current": true,
+      "timeline_current": true,
+      "native_rounds": null,
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "pt",
+      "whole_translation_sha256": "3f74c77761514a627781626ecc61bdc5cde3ffec851b7488e723846d6669195d",
+      "meaning_index_sha256": "f7ed26fb9eab7877ca9d2d52cd31ebb425380d63690a2d9ef4366c1d9574e557",
+      "current_independent_meaning_chain_exact": true,
+      "native_dub_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "expected_fingerprints": {
+        "translation_hash": "66d29dc8686b0cdc",
+        "speech_fingerprint": "c7d116728d6a1ab5"
+      },
+      "matching_current_raw_primary_checks": 0,
+      "flags": null,
+      "fit_current": false,
+      "timeline_current": false,
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 0,
+        "reword": 0,
+        "check_stopped": true
+      },
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "id",
+      "whole_translation_sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+      "meaning_index_sha256": "e1a04b25070a136a200554a2a0c2eadd60d6e8fd5717c3c5f69da1d94fb5ae52",
+      "current_independent_meaning_chain_exact": true,
+      "native_dub_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "expected_fingerprints": {
+        "translation_hash": "d74bd3ff15755371",
+        "speech_fingerprint": "c54258a32b72eae0"
+      },
+      "matching_current_raw_primary_checks": 0,
+      "flags": null,
+      "fit_current": false,
+      "timeline_current": false,
+      "native_rounds": null,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "vi",
+      "whole_translation_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+      "meaning_index_sha256": "2a9e5a5b540dcee0c4d7d5f3fef8e92ec7ab188e30ce661ff9a390a5436929f6",
+      "current_independent_meaning_chain_exact": true,
+      "native_dub_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "expected_fingerprints": {
+        "translation_hash": "2a441dc7bb9e39da",
+        "speech_fingerprint": "7cb4aad0f5398fee"
+      },
+      "matching_current_raw_primary_checks": 0,
+      "flags": null,
+      "fit_current": false,
+      "timeline_current": false,
+      "native_rounds": null,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "th",
+      "whole_translation_sha256": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+      "meaning_index_sha256": "1472d54db412d171293d35712d7a4562e5428d83483daa94660c8292e0820550",
+      "current_independent_meaning_chain_exact": true,
+      "native_dub_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "expected_fingerprints": {
+        "translation_hash": "01f708e9859dc0a6",
+        "speech_fingerprint": "54a1072107dc4bb1"
+      },
+      "matching_current_raw_primary_checks": 0,
+      "flags": null,
+      "fit_current": false,
+      "timeline_current": false,
+      "native_rounds": null,
+      "actual_checked_voice_ready": false
+    }
+  ],
+  "authorized_caption_file_locales_present": [
+    "zh-TW"
+  ],
+  "normal_nine_caption_command_run_by_controller": false,
+  "all8_voice_or_fullpackage_ready": false,
+  "owner_or_publication_action": false,
+  "actual_manual_audio_listening_claimed": false,
+  "outcome_sha256": "49031ee033d3f0c123468500835d4fae30cac7522836a17c1f85df2025f1c721",
+  "next": "After native due, a fresh authorized execution must recheck original recent-owner/actual-controller/lease/retry state, PDF idle/native state/unknown/backoff, approved primary+11QA/current PT meaning and budget before normal cached PT continuation from these exact receipts. Do not replay a lost request, reset defer/caps, start ID/VI/TH during this stopped finite queue, touch EN/JA ordinary retry, or bypass full8/panel guards."
+}

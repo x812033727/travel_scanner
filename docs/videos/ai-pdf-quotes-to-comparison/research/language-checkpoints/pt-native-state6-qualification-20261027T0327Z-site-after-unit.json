@@ -1,0 +1,104 @@
+{
+  "observed_at_utc": "2026-10-27T03:41:43.335Z",
+  "kind": "actual-normal-project-GET-after-ended-ONE-native-PT-unit",
+  "routes": [
+    "GET /api/video/reviews/ai-pdf-quotes-to-comparison"
+  ],
+  "slug": "ai-pdf-quotes-to-comparison",
+  "stage": "blocked",
+  "worker_state": "unavailable",
+  "pending": 0,
+  "checklist": [
+    {
+      "key": "blocked",
+      "label": "卡住，需要人處理：still could not move after 7 tries: pt dub could not finish (Gemini 語音暫時忙碌或達到用量上限，請稍後重試)",
+      "done": false
+    },
+    {
+      "key": "brief",
+      "label": "企劃書",
+      "done": true
+    },
+    {
+      "key": "outline_approved",
+      "label": "站主選好大綱",
+      "done": true
+    },
+    {
+      "key": "script_passes_lint",
+      "label": "稿子通過檢查",
+      "done": true
+    },
+    {
+      "key": "fact_checked",
+      "label": "查核完成",
+      "done": true
+    },
+    {
+      "key": "narration_synthesized",
+      "label": "旁白合成",
+      "done": true
+    },
+    {
+      "key": "narration_approved",
+      "label": "旁白核准",
+      "done": true
+    },
+    {
+      "key": "frames_rendered",
+      "label": "畫面完成",
+      "done": true
+    },
+    {
+      "key": "video_assembled",
+      "label": "成片合成",
+      "done": true
+    },
+    {
+      "key": "captions_written",
+      "label": "字幕",
+      "done": true
+    },
+    {
+      "key": "final_video_approved",
+      "label": "成片核准",
+      "done": true
+    },
+    {
+      "key": "upload_package",
+      "label": "上傳包",
+      "done": true
+    },
+    {
+      "key": "on_youtube",
+      "label": "已上 YouTube",
+      "done": false
+    }
+  ],
+  "ready_to_upload": false,
+  "youtube_video_id": null,
+  "dropped_at": null,
+  "retry_request_id": null,
+  "retry_acknowledged_id": null,
+  "dub_retries": {},
+  "dub_retry_blocked": {},
+  "locales_decided_at": null,
+  "locales": {},
+  "reviews": [
+    {
+      "id": "8ba70975-93b9-4a20-b637-c280b90db175",
+      "gate": "publish",
+      "subject": null,
+      "status": "approved",
+      "content_sha256": "9b6ba96a419895fbc6a512f877ca68e7b1878192a0d6fd12032815d3d55d89cd"
+    },
+    {
+      "id": "934608a8-fdce-4e4c-9105-43fdd3e7f1ac",
+      "gate": "final",
+      "subject": null,
+      "status": "approved",
+      "content_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f"
+    }
+  ],
+  "no_owner_retry_or_other_mutation": true
+}

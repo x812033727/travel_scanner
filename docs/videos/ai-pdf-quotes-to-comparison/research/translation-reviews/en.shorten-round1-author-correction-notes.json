@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "created_at_utc": "2026-10-26T12:53:29.832287+00:00",
+  "author": {
+    "agent_id": "/root/pdf_author_en_ja",
+    "role": "Original English translation author; author correction only, not independent review"
+  },
+  "scope": "author-wording-correction-after-native-shorten-round-1",
+  "status": "PROVISIONAL_AUTHOR_CANDIDATE_REQUIRES_INDEPENDENT_REVIEW",
+  "source": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+    "sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "line_id": "trph",
+    "text": "這次先別改單價，照同一個方法重算看看。"
+  },
+  "current_native_translation": {
+    "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json",
+    "sha256": "96bf226e0a0f1ad1ec18b2b26b5f66384099b7d1edb508005cf05972bafe117c"
+  },
+  "candidate": {
+    "path": "/workspace/work/ai-pdf-01/en-shorten1-author-correction.json",
+    "sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+    "format": "Complete native translation JSON, preserving the current file bytes except the single text-string replacement"
+  },
+  "failed_independent_review": {
+    "path": "/workspace/work/ai-pdf-01/en-shorten1-independent-meaning-review.json",
+    "sha256": "a3af4cdc8907fe1459d4bc8c2a1889670d63918302607cddf3830a084e554691",
+    "passed": false
+  },
+  "change": {
+    "line_id": "trph",
+    "before": "Keep unit prices for now; redo the same method.",
+    "after": "Keep unit prices for now; recompute as before.",
+    "actual_codepoints_before": 47,
+    "actual_codepoints_after": 46,
+    "native_payload_max_chars": 47,
+    "over_estimated_budget_by": 0,
+    "authored_intent": "Retain unit prices unchanged for now, and explicitly recompute using the same earlier method."
+  },
+  "mechanical_preservation": {
+    "changed_paths": [
+      "lines.trph.text"
+    ],
+    "only_one_line_text_changed": true,
+    "total_line_count": 101,
+    "other_100_line_entries_exact": true,
+    "native_shortened_vnaq_entry_exact": true,
+    "native_shortened_vnaq_text": "Add one to the 20-card request, making 21: still answerable?",
+    "all_metadata_and_top_level_fields_exact": true,
+    "all_source_hashes_exact": true
+  },
+  "native_boundary": {
+    "path": "/workspace/work/ai-pdf-01/author-review-boundaries/en.shorten.json",
+    "sha256": "0ef7251d29feab65eab6f392aa31228e8b8b7e18278486d2acab9b42e66e6452",
+    "variant": "shorten",
+    "round": 1,
+    "state_read_before": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    },
+    "state_read_after": {
+      "shorten": 1,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    },
+    "state_unchanged": true,
+    "raw_answer_path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/en-shorten-round-1-meaning-review-2026-10-26T12-47-12-330Z.txt",
+    "raw_answer_sha256": "7284be9b3da08f8538809b8308fa2e6a5d150f4a0c9cd6a46d000258d74ce5f4",
+    "workflow_position": "Source wording correction after the accepted first native shortening and before re-TTS; no additional shortening round, counter reset or cap bypass was performed."
+  },
+  "protected_files_before_sha256": {
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json": "96bf226e0a0f1ad1ec18b2b26b5f66384099b7d1edb508005cf05972bafe117c",
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "/workspace/work/ai-pdf-01/author-review-boundaries/en.shorten.json": "0ef7251d29feab65eab6f392aa31228e8b8b7e18278486d2acab9b42e66e6452",
+    "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json": "b0dca4d4bc10b08fc897b94c10ee6695d5ab392dd42a9a970901910475fa34e7",
+    "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/en-shorten-round-1-meaning-review-2026-10-26T12-47-12-330Z.txt": "7284be9b3da08f8538809b8308fa2e6a5d150f4a0c9cd6a46d000258d74ce5f4",
+    "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/fit.json": "ef3f69b666b22d1985cd88f67129d5c3f6b3e499d9ac9c858b8aeba8b359ec15",
+    "/workspace/work/ai-pdf-01/en-shorten1-independent-meaning-review.json": "a3af4cdc8907fe1459d4bc8c2a1889670d63918302607cddf3830a084e554691"
+  },
+  "protected_files_after_sha256": {
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json": "96bf226e0a0f1ad1ec18b2b26b5f66384099b7d1edb508005cf05972bafe117c",
+    "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "/workspace/work/ai-pdf-01/author-review-boundaries/en.shorten.json": "0ef7251d29feab65eab6f392aa31228e8b8b7e18278486d2acab9b42e66e6452",
+    "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json": "b0dca4d4bc10b08fc897b94c10ee6695d5ab392dd42a9a970901910475fa34e7",
+    "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/en-shorten-round-1-meaning-review-2026-10-26T12-47-12-330Z.txt": "7284be9b3da08f8538809b8308fa2e6a5d150f4a0c9cd6a46d000258d74ce5f4",
+    "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/fit.json": "ef3f69b666b22d1985cd88f67129d5c3f6b3e499d9ac9c858b8aeba8b359ec15",
+    "/workspace/work/ai-pdf-01/en-shorten1-independent-meaning-review.json": "a3af4cdc8907fe1459d4bc8c2a1889670d63918302607cddf3830a084e554691"
+  },
+  "actions_not_performed": [
+    "No canonical translation, source, index, counter, boundary, raw answer or media edit.",
+    "No TTS, ASR, native producer, paid or network call.",
+    "No retake, reword, owner action, approval or author self-review."
+  ],
+  "next_action": "Original independent reviewer /root/pdf_author_ko_th to review this exact candidate hash. Root handles any actual lease adoption and review update.",
+  "fit_scope": "46 characters is below the native 47-character estimate; this is not an actual new audio fit or quality result."
+}

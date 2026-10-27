@@ -1,0 +1,77 @@
+{
+  "locale": "th",
+  "independent_reviewer": "/root/pdf_author_es_pt",
+  "independent_from_author": "/root/pdf_author_ko_th",
+  "exactsource_snapshot_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+  "actualauthored_file_sha256": "256dc363ac1d233cc02851fb90645c6c5bcc3f2f752356ea09e84dc6d067e630",
+  "scope": "source-meaning-and-naturalness",
+  "status": "author_revision_required",
+  "passed": false,
+  "lines_reviewed": 101,
+  "chapters_reviewed": 9,
+  "metadata_reviewed": ["title", "complete description", "all tags", "all chapter names", "thumbnail tag", "thumbnail headline", "thumbnail sub"],
+  "method": "Actually read all 101 source/translation sentence pairs, all metadata and the saved source-video.json scene data. Compared source clause order, conditions, numbers, supplier mapping, terminology and natural Thai wording. Mechanical checks supplemented this reading and did not replace it. No authored text or source was edited.",
+  "issues": [
+    {
+      "id": "TH-1",
+      "fields": ["u7i8"],
+      "kind": "meaning-and-naturalness",
+      "severity": "medium",
+      "source": "還記得那個空白的運費嗎？現在它直接決定丙能不能排進名次。",
+      "authored_wording": "จำค่าส่งว่างได้ไหม ตอนนี้มันชี้ขาดว่า C จะร่วมจัดอันดับได้ไหม",
+      "problem": "C จะร่วมจัดอันดับ can read as Cedar helping to perform or organize the ranking. The source means whether Cedar's quote can be included among the ranked candidates.",
+      "suggestion": "Use an inclusion/passive construction such as จะนำ C มาจัดอันดับได้ไหม or C จะถูกนำมาจัดอันดับได้ไหม, retaining the opening reminder about the blank freight value."
+    },
+    {
+      "id": "TH-2",
+      "fields": ["j2ja"],
+      "kind": "naturalness",
+      "severity": "low",
+      "source": "表格把丙拆成已知跟未知，未知的是運費、運費是否含稅，還有稅額。",
+      "authored_wording": "ตารางแยก C เป็นที่รู้กับไม่รู้ ส่วนที่ไม่รู้คือค่าส่ง รวมภาษีหรือไม่ และภาษีเท่าไร",
+      "problem": "แยก C เป็นที่รู้กับไม่รู้ is an unnatural compressed construction. The table separates known and unknown information about Cedar, rather than turning the supplier into known/unknown categories.",
+      "suggestion": "Make ข้อมูล or ส่วน explicit, for example ตารางแยกข้อมูล C เป็นส่วนที่รู้กับยังไม่รู้. Keep all three unknowns: freight amount, whether freight includes tax, and tax amount. Remeasure the revised line."
+    },
+    {
+      "id": "TH-3",
+      "fields": ["cv74"],
+      "kind": "naturalness",
+      "severity": "low",
+      "source": "碰到小數時，讓計算工具依明示條件計算，再統一金額格式。",
+      "authored_wording": "ทศนิยมให้เครื่องมือคิดตามเงื่อนไขที่ระบุ แล้วจัดรูปเงินให้ตรงกัน",
+      "problem": "จัดรูปเงิน is not a natural expression for formatting monetary amounts. It sounds like a literal shortening of 'format money'.",
+      "suggestion": "Use wording with รูปแบบจำนวนเงิน, รูปแบบยอดเงิน or จัดรูปแบบตัวเลข, while retaining calculation under the explicitly stated conditions before standardizing the format."
+    },
+    {
+      "id": "TH-4",
+      "fields": ["qrv8"],
+      "kind": "naturalness",
+      "severity": "low",
+      "source": "打開試算表，把原文金額和計算金額分開核對。",
+      "authored_wording": "เปิดตาราง ตรวจเงินต้นฉบับแยกจากเงินที่คำนวณ",
+      "problem": "เงินต้นฉบับ is an unnatural label for a monetary amount in the source document. The sentence should distinguish source amounts from calculated amounts plainly.",
+      "suggestion": "Use ยอดในต้นฉบับ or ยอดเงินในต้นฉบับ and ยอดที่คำนวณ, retaining the instruction to open the worksheet and check the two separately."
+    }
+  ],
+  "checked_and_preserved": {
+    "all_line_sources_match_snapshot": true,
+    "all_non_text_worksheet_fields_preserved": true,
+    "supplier_mapping": "The description explicitly establishes A=Aster, B=Birch, C=Cedar; all 101 lines consistently use these references.",
+    "numbers_and_money": "Read all numeric claims, including 10/20 quantities, 12/13/21 cases, 50, 110, 52.50, 7.50, 13.75 and 21.25 TWD. Exact values, currencies, comparison parties and the decreasing C-minus-B difference are preserved.",
+    "source_url_preserved_exactly": true,
+    "date_preserved": "2026-10-26",
+    "commands_paths_names": "analysis-prompt.txt and the full source URL are exact. Spoken deictic instructions refer to the unchanged source snapshot's visible commands and files.",
+    "unknown_shipping": "Missing freight remains distinct from zero/free shipping. The original Cedar total remains unresolved and cannot be ranked first.",
+    "fictional_tax": "Description and narration retain fictional suppliers/conditions and the 5% practice setting rather than a tax judgment on a real transaction.",
+    "static_workbook": "ehby preserves that this is not a self-recalculating formula and that changed requirements require a fresh result. Description preserves openpyxl file-writing scope.",
+    "actual_tool_scope": "Description retains the actual Codex AI document analysis, pypdf extraction and exact decimal calculation, with no commercial-upload-UI test or scanned-image OCR claim.",
+    "clause_order_7dp4": "Save the quantity-10 settings under the displayed new name first, then change quantity to 20; preserved.",
+    "revision_identity": "Cedar revised replaces its original, is not a fourth supplier, and updates source references. Preserved.",
+    "range_21": "Refusal outside the written quantity range and absence of a new output folder are preserved.",
+    "register": "Thai script and a conversational neutral Bangkok register are used. No male-particle ครับ or unsupported narrator identity was introduced."
+  },
+  "estimated_character_budget_exceptions": [],
+  "budget_scope_note": "The frozen authored file has no character-budget overage. This is not an audio timing or voice-quality finding; no Thai synthesis or listening was performed.",
+  "next_action": "Return issues to the author for revision, then independently reread the changed text and rebind the report to the revised authored file hash. No draft changes were made by this reviewer.",
+  "limitations": "This is a review against source-video.json snapshot 79d55 only. Later visual/materials/description-URL changes require an appropriate delta check. It is not final QA, native voice approval, readiness approval, merge approval or publishing approval."
+}

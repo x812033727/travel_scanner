@@ -1,0 +1,1491 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "id",
+  "recorded_at_utc": "2026-10-26T20:19:26.772688+00:00",
+  "scope": "current-source-meaning-and-naturalness; complete written-source review only",
+  "passed": true,
+  "reviewer": {
+    "agent": "/root/pdf_ko_single_producer/review_pdf_id_vi_current",
+    "identity": "OpenAI Codex independent reviewing agent",
+    "independent_of_source_and_indonesian_translation_authorship": true,
+    "authored_or_reworded_this_locale": false,
+    "review_delegated_for_this_locale": false,
+    "other_locale_review": "Vietnamese complete review delegated to separate independent child /root/pdf_ko_single_producer/review_pdf_id_vi_current/vi_current_full_review; no VI full-read claim made by this ID report."
+  },
+  "current_source": {
+    "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+    "sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04"
+  },
+  "current_translation": {
+    "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/id.json",
+    "sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+    "baseline_file": "/workspace/work/ai-pdf-01/id-current-independent-review-20261026/locale.baseline.current.json",
+    "baseline_sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+    "exact_baseline_bytes_equal_current_at_close": true
+  },
+  "actual_scope": {
+    "all_101_chinese_indonesian_spoken_pairs_personally_read_in_full": true,
+    "all_62_source_cards_personally_read_in_full": true,
+    "all_scene_card_data_including_code_tables_quotes_sources_and_chats_read": true,
+    "source_context_read": "Complete current video.json data, including loops/sources/assets/voice metadata. No generated audio or video read.",
+    "metadata_read": {
+      "title": true,
+      "description_all_six_paragraphs": true,
+      "all_tags": true,
+      "chapter_titles": 9,
+      "thumbnail_fields": [
+        "tag",
+        "headline",
+        "sub"
+      ]
+    },
+    "actual_prior_chain_read": "All Indonesian-specific formal composite/index/history records in manifest; multi-locale metadata reports read in shared fields plus complete ID rows. Actual preserved author bytes, failed reviews, prior translations and exact deltas verified. Current verdict derives from fresh full source/ID reading, not inherited pass."
+  },
+  "issues": [],
+  "issue_counts": {
+    "source_meaning": 0,
+    "substantive_naturalness": 0
+  },
+  "critical_semantic_findings": [
+    {
+      "topic": "unknown versus free",
+      "line_ids": [
+        "ea2e",
+        "indq",
+        "q7x8",
+        "7hi8",
+        "cxxm",
+        "6pwe",
+        "tnrc"
+      ],
+      "finding": "ID keeps missing shipping null/unconfirmed and refuses to rank incomplete Cedar first. Birch shipping is zero only because the source explicitly states free delivery."
+    },
+    {
+      "topic": "tax treatment",
+      "line_ids": [
+        "ea2e",
+        "rgfp",
+        "xwsj",
+        "znv7",
+        "j2ja",
+        "ehkq"
+      ],
+      "finding": "Goods/unit-price tax and shipping tax remain distinct; tax-inclusive Birch goods are not taxed again. Unknown shipping tax is still a question, not supplied by assumption."
+    },
+    {
+      "topic": "both pages and evidence",
+      "line_ids": [
+        "m57n",
+        "scia",
+        "nxct",
+        "7k9u",
+        "fd27",
+        "qttz",
+        "g3vp"
+      ],
+      "finding": "Every quotation supplies both pages with requirements. Each relevant field keeps source text, filename and page; Aster unit price on page 1 and shipping on page 2 are combined into one supplier row."
+    },
+    {
+      "topic": "revision identity and chronology",
+      "line_ids": [
+        "k75x",
+        "mbee",
+        "h85p",
+        "hiqk",
+        "benr",
+        "zqts",
+        "m5sn"
+      ],
+      "finding": "Cedar revised replaces its old quote and is explicitly not a fourth supplier. Old files remain recorded; amounts and evidence point to the revised file. The seven-line prompt card caption correctly applies revision replacement after the revision arrives."
+    },
+    {
+      "topic": "quantity and no-output refusal",
+      "line_ids": [
+        "q57z",
+        "7dp4",
+        "ubke",
+        "f5gy",
+        "3eue",
+        "sqqn",
+        "sxtz",
+        "rgr9",
+        "8fkp",
+        "bnhk",
+        "vnaq",
+        "trph",
+        "pn4i",
+        "9jiq",
+        "egmv",
+        "92mc"
+      ],
+      "finding": "10→20 changes the requirement after saving the old request under a new filename, retaining revised scenario and checking explicit 10–20 applicability. 12 and 13 are separate adjacent requests/outputs. The keep-price instruction at 21 is a trial in context, followed by explicit rejection outside range and no new results folder; no extrapolated quote is promised."
+    },
+    {
+      "topic": "numeric directions",
+      "line_ids": [
+        "dyun",
+        "m8sb",
+        "gy4i",
+        "6nxr",
+        "7jrk",
+        "e5gd",
+        "petb"
+      ],
+      "finding": "Revised10 Cedar is TWD50 above Birch; at20 Birch is TWD110 above Aster and Cedar TWD52.50 below Aster. At12 Birch is TWD7.50 below Cedar; at13 Cedar leads Birch by TWD13.75. Cedar−Birch positive means dearer/negative cheaper; each added card closes TWD21.25. Source-card arithmetic independently checked using exact decimal subtraction."
+    },
+    {
+      "topic": "method and static workbook claims",
+      "line_ids": [
+        "3639",
+        "658p",
+        "cv74",
+        "8xam",
+        "qrv8",
+        "ehby"
+      ],
+      "finding": "ID keeps AI field analysis separate from calculation; displayed/results values are fixed exports requiring regeneration after changed requirements. Complete description preserves Codex analysis, pypdf text extraction, exact-decimal arithmetic, selectable-text PDFs, no scanned-image OCR, no claim of tested commercial upload UI and openpyxl file-writing only. These are translation-faithfulness findings; no independent rerun of the original lab is claimed."
+    },
+    {
+      "topic": "materials and metadata",
+      "finding": "Exact 2026-10-26 date and literal materials URL match current Chinese description. Title remains a question about lowest unit price rather than a guarantee. Total/dulu plus Pajak + ongkir is natural concise Indonesian thumbnail copy in full quote-comparison context; the tax/shipping reminder remains understood. All nine chapter labels preserve the workflow and quantity/refusal conditions."
+    }
+  ],
+  "exact_materials_url": "https://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+  "estimated_character_budget_warnings_preserved": [
+    {
+      "id": "fd27",
+      "characters": 80,
+      "max_chars": 72,
+      "over_by": 8
+    },
+    {
+      "id": "qttz",
+      "characters": 61,
+      "max_chars": 46,
+      "over_by": 15
+    },
+    {
+      "id": "7hi8",
+      "characters": 59,
+      "max_chars": 48,
+      "over_by": 11
+    },
+    {
+      "id": "xwsj",
+      "characters": 71,
+      "max_chars": 51,
+      "over_by": 20
+    },
+    {
+      "id": "znv7",
+      "characters": 72,
+      "max_chars": 59,
+      "over_by": 13
+    },
+    {
+      "id": "e86a",
+      "characters": 87,
+      "max_chars": 74,
+      "over_by": 13
+    },
+    {
+      "id": "j2ja",
+      "characters": 107,
+      "max_chars": 98,
+      "over_by": 9
+    },
+    {
+      "id": "vee5",
+      "characters": 55,
+      "max_chars": 40,
+      "over_by": 15
+    }
+  ],
+  "budget_interpretation": "These are unchanged historical estimates recomputed from the current text against actual authored worksheet max_chars. They remain unresolved fit cautions; this source meaning pass does not estimate timed fit, authorize shortening, or approve dubbing.",
+  "current_formal_index": {
+    "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.meaning-review.json",
+    "sha256": "e1a04b25070a136a200554a2a0c2eadd60d6e8fd5717c3c5f69da1d94fb5ae52",
+    "passed_value": true,
+    "source_and_translation_bindings_match_actual_bytes": true,
+    "linked_report_sha256_matches_actual_bytes": true,
+    "reviewed_boundaries": []
+  },
+  "actual_chain_manifest": [
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.meaning-review.json",
+      "sha256": "e1a04b25070a136a200554a2a0c2eadd60d6e8fd5717c3c5f69da1d94fb5ae52",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.initial-independent-review.json",
+      "sha256": "923ec1661dd2212a9c3601448415fe9b9d06f919d33bae0dd7aff86c34b47e0e",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.initial-current-source-review.json",
+      "sha256": "8b7f9692a002c69fa4007d322f5ed0ff8b505e7b1b95428a5e784c17a83be8d6",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id-phone-title-independent-review.json",
+      "sha256": "cc2b5169eaff70e256968021de1143bf5fe82c603c140e9d94ea7e8ac6f94674",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.phone-title-current-source-review.json",
+      "sha256": "1d2c14ae903980851ac8103f8683c1fb7ac21455520acf226b153092d8867b7d",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.thumbnail-headline-current-source-review-20261026.json",
+      "sha256": "a47a2ea6cd6f3d1d5ba286f729b72c32195c6ef0856eab46ca5b910380af1356",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.thumbnail-subline-current-source-review-20261026.json",
+      "sha256": "4f7b8485e112c2ab0319b42583cfbfa673d6ac5754f378f7298c86ca9fa981f2",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/author-history/id.79b02c2d54b1fd857a0c0d5b7d99608c00588c7227903f5b65104addc76392c2.json",
+      "sha256": "79b02c2d54b1fd857a0c0d5b7d99608c00588c7227903f5b65104addc76392c2",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/id.79b02c2d54b1fd857a0c0d5b7d99608c00588c7227903f5b65104addc76392c2.json",
+      "sha256": "d2a0bb182c0b7af4eea3c0e1b0911a61dfef308d7fec301954336555b57338db",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/review-history/id.a84f3854ebef20b10643ae2b69200295ff14973a0314b484fba9e82b96156459.json",
+      "sha256": "afeab89e7b829a169a8a8813e7789e049a1e9e8345fc03369bb287b71ddd17b3",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/metadata-title/id.24cfd9b6efb4591ab449f6201de565f6aff9fd91fadd79782c17e7c06b7b2e7f.meaning-review.json",
+      "sha256": "ed02828968c15bf42027d78613ea7016aa63701d30edd6f08406ea0bdfdf6f35",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/id.prior-meaning-index.json",
+      "sha256": "438774f64169495895371be587c8ed63a7cf0b351c12af1dc21eb286485c39fb",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-sublines-pt-id-20261026/id.prior-meaning-index.json",
+      "sha256": "03b5fe88f4cac87bc580213034fda32542130060498df8c2b6930658dad80a82",
+      "actual_read_scope": "Complete Indonesian-specific report or preserved history record."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.independent-metadata-delta-review.json",
+      "sha256": "100d9df7f2884e38d14432b8c620d8c7f99c9ece82ecb92116bae2e346c60ff5",
+      "actual_read_scope": "All shared report/proposal fields and complete Indonesian locale record; unrelated locale language assessments excluded from required review."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.root-r2-proposal.json",
+      "sha256": "1c98b139801ff568f69987eaf582d1085f1304f4a9ba096c575071910ca4d68b",
+      "actual_read_scope": "All shared report/proposal fields and complete Indonesian locale record; unrelated locale language assessments excluded from required review."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.root-current-source-admission.json",
+      "sha256": "737fdace01e27e4c374260755c7a21161a1ddda30cd438640a2b1d9b84d6072b",
+      "actual_read_scope": "All shared report/proposal fields and complete Indonesian locale record; unrelated locale language assessments excluded from required review."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-sublines-pt-id-20261026.independent-metadata-delta-review.json",
+      "sha256": "656087f62043d44ed6c41d5370da3d0c38f31d555e1e61c72846c91b7f9862a6",
+      "actual_read_scope": "All shared report/proposal fields and complete Indonesian locale record; unrelated locale language assessments excluded from required review."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-sublines-pt-id-20261026.root-proposal.json",
+      "sha256": "3ed57cde8a14bfcefb8252b5576491adbae319d2400c1c52ffd9fbe6c832f5e4",
+      "actual_read_scope": "All shared report/proposal fields and complete Indonesian locale record; unrelated locale language assessments excluded from required review."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-sublines-pt-id-20261026.root-current-source-admission.json",
+      "sha256": "2f66edfe1cc077657ec03760cf7918cb1f1440054d4e7f18fbb1cdf1595c1abc",
+      "actual_read_scope": "All shared report/proposal fields and complete Indonesian locale record; unrelated locale language assessments excluded from required review."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/id.prior-translation.json",
+      "sha256": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "actual_read_scope": "Actual archived translation parsed, compared field-by-field to current; unchanged 101 lines were personally read as current pairs; full changed thumbnail fields read."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-sublines-pt-id-20261026/id.prior-translation.json",
+      "sha256": "50249accb62db18e6d410192dd44ef807df821c6960283e78fcbe2b6ab24a2e3",
+      "actual_read_scope": "Actual archived translation parsed, compared field-by-field to current; unchanged 101 lines were personally read as current pairs; full changed thumbnail fields read."
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/original-revised-chronology-clarification.json",
+      "sha256": "3833322aec74bab63bf31c00f31b3e49515c08480de45d453e6cb7bb70046254",
+      "actual_read_scope": "Complete chronology/source-delta proof; no approval inherited."
+    },
+    {
+      "file": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/id.authored.json",
+      "sha256": "be3460f4495eba00c0f2604b795162c15accbde8a847caaf6b3c7ca09768d76e",
+      "actual_read_scope": "Exact original final authored bytes verified; all 101 texts compared equal to personally read current pairs; all metadata differences checked."
+    },
+    {
+      "file": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/source-video.json",
+      "sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+      "actual_read_scope": "Actual prior source parsed and complete structural diff against personally read full current source; only two changed paths."
+    },
+    {
+      "file": "/workspace/work/ai-pdf-01/translation-author-drafts/79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84/id-vi.author-notes.json",
+      "sha256": "1fe500474acecd098e2ab413ebb0c1570934b5cc745527dc22e4a032a57f152a",
+      "actual_read_scope": "Shared author/context notes and complete ID counts/budget/revision records; no VI approval claimed."
+    },
+    {
+      "file": "/workspace/work/ai-pdf-01/phone-title-proposals.json",
+      "sha256": "f0ef39ffdb7c9c9a4ca0fc4ae3ee7781be8b4692ef7b170ef31f3204a839fec7",
+      "actual_read_scope": "Complete title proposal, including exact ID before/after and source binding."
+    }
+  ],
+  "actual_chain_hash_checks": [
+    {
+      "at": "id.meaning-review.json",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.thumbnail-subline-current-source-review-20261026.json",
+      "expected_sha256": "4f7b8485e112c2ab0319b42583cfbfa673d6ac5754f378f7298c86ca9fa981f2",
+      "actual_sha256": "4f7b8485e112c2ab0319b42583cfbfa673d6ac5754f378f7298c86ca9fa981f2",
+      "matched": true
+    },
+    {
+      "at": "id.initial-current-source-review.json/base_full_independent_review",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.initial-independent-review.json",
+      "expected_sha256": "923ec1661dd2212a9c3601448415fe9b9d06f919d33bae0dd7aff86c34b47e0e",
+      "actual_sha256": "923ec1661dd2212a9c3601448415fe9b9d06f919d33bae0dd7aff86c34b47e0e",
+      "matched": true
+    },
+    {
+      "at": "id.phone-title-current-source-review.json/base_full_meaning_review",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.initial-current-source-review.json",
+      "expected_sha256": "8b7f9692a002c69fa4007d322f5ed0ff8b505e7b1b95428a5e784c17a83be8d6",
+      "actual_sha256": "8b7f9692a002c69fa4007d322f5ed0ff8b505e7b1b95428a5e784c17a83be8d6",
+      "matched": true
+    },
+    {
+      "at": "id.phone-title-current-source-review.json/independent_title_delta",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id-phone-title-independent-review.json",
+      "expected_sha256": "cc2b5169eaff70e256968021de1143bf5fe82c603c140e9d94ea7e8ac6f94674",
+      "actual_sha256": "cc2b5169eaff70e256968021de1143bf5fe82c603c140e9d94ea7e8ac6f94674",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-headline-current-source-review-20261026.json/prior_current_meaning_index",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/id.prior-meaning-index.json",
+      "expected_sha256": "438774f64169495895371be587c8ed63a7cf0b351c12af1dc21eb286485c39fb",
+      "actual_sha256": "438774f64169495895371be587c8ed63a7cf0b351c12af1dc21eb286485c39fb",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-headline-current-source-review-20261026.json/prior_current_meaning_index/index",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.phone-title-current-source-review.json",
+      "expected_sha256": "1d2c14ae903980851ac8103f8683c1fb7ac21455520acf226b153092d8867b7d",
+      "actual_sha256": "1d2c14ae903980851ac8103f8683c1fb7ac21455520acf226b153092d8867b7d",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-headline-current-source-review-20261026.json/prior_translation",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-headlines-20261026/id.prior-translation.json",
+      "expected_sha256": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "actual_sha256": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-headline-current-source-review-20261026.json/independent_metadata_delta",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.independent-metadata-delta-review.json",
+      "expected_sha256": "100d9df7f2884e38d14432b8c620d8c7f99c9ece82ecb92116bae2e346c60ff5",
+      "actual_sha256": "100d9df7f2884e38d14432b8c620d8c7f99c9ece82ecb92116bae2e346c60ff5",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-headline-current-source-review-20261026.json/independent_metadata_delta",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-headlines-20261026.root-r2-proposal.json",
+      "expected_sha256": "1c98b139801ff568f69987eaf582d1085f1304f4a9ba096c575071910ca4d68b",
+      "actual_sha256": "1c98b139801ff568f69987eaf582d1085f1304f4a9ba096c575071910ca4d68b",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-subline-current-source-review-20261026.json/prior_current_meaning_index",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-sublines-pt-id-20261026/id.prior-meaning-index.json",
+      "expected_sha256": "03b5fe88f4cac87bc580213034fda32542130060498df8c2b6930658dad80a82",
+      "actual_sha256": "03b5fe88f4cac87bc580213034fda32542130060498df8c2b6930658dad80a82",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-subline-current-source-review-20261026.json/prior_current_meaning_index/index",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.thumbnail-headline-current-source-review-20261026.json",
+      "expected_sha256": "a47a2ea6cd6f3d1d5ba286f729b72c32195c6ef0856eab46ca5b910380af1356",
+      "actual_sha256": "a47a2ea6cd6f3d1d5ba286f729b72c32195c6ef0856eab46ca5b910380af1356",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-subline-current-source-review-20261026.json/prior_translation",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/history/thumbnail-sublines-pt-id-20261026/id.prior-translation.json",
+      "expected_sha256": "50249accb62db18e6d410192dd44ef807df821c6960283e78fcbe2b6ab24a2e3",
+      "actual_sha256": "50249accb62db18e6d410192dd44ef807df821c6960283e78fcbe2b6ab24a2e3",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-subline-current-source-review-20261026.json/independent_metadata_delta",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-sublines-pt-id-20261026.independent-metadata-delta-review.json",
+      "expected_sha256": "656087f62043d44ed6c41d5370da3d0c38f31d555e1e61c72846c91b7f9862a6",
+      "actual_sha256": "656087f62043d44ed6c41d5370da3d0c38f31d555e1e61c72846c91b7f9862a6",
+      "matched": true
+    },
+    {
+      "at": "id.thumbnail-subline-current-source-review-20261026.json/independent_metadata_delta",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/thumbnail-sublines-pt-id-20261026.root-proposal.json",
+      "expected_sha256": "3ed57cde8a14bfcefb8252b5576491adbae319d2400c1c52ffd9fbe6c832f5e4",
+      "actual_sha256": "3ed57cde8a14bfcefb8252b5576491adbae319d2400c1c52ffd9fbe6c832f5e4",
+      "matched": true
+    },
+    {
+      "at": "history/metadata-title/id.24cfd9b6efb4591ab449f6201de565f6aff9fd91fadd79782c17e7c06b7b2e7f.meaning-review.json",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.initial-current-source-review.json",
+      "expected_sha256": "8b7f9692a002c69fa4007d322f5ed0ff8b505e7b1b95428a5e784c17a83be8d6",
+      "actual_sha256": "8b7f9692a002c69fa4007d322f5ed0ff8b505e7b1b95428a5e784c17a83be8d6",
+      "matched": true
+    },
+    {
+      "at": "history/thumbnail-headlines-20261026/id.prior-meaning-index.json",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.phone-title-current-source-review.json",
+      "expected_sha256": "1d2c14ae903980851ac8103f8683c1fb7ac21455520acf226b153092d8867b7d",
+      "actual_sha256": "1d2c14ae903980851ac8103f8683c1fb7ac21455520acf226b153092d8867b7d",
+      "matched": true
+    },
+    {
+      "at": "history/thumbnail-sublines-pt-id-20261026/id.prior-meaning-index.json",
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.thumbnail-headline-current-source-review-20261026.json",
+      "expected_sha256": "a47a2ea6cd6f3d1d5ba286f729b72c32195c6ef0856eab46ca5b910380af1356",
+      "actual_sha256": "a47a2ea6cd6f3d1d5ba286f729b72c32195c6ef0856eab46ca5b910380af1356",
+      "matched": true
+    }
+  ],
+  "actual_history_delta_checks": {
+    "current_101_texts_exact_to_final_original_authored_be3460": true,
+    "final_authored_sha256": "be3460f4495eba00c0f2604b795162c15accbde8a847caaf6b3c7ca09768d76e",
+    "original_source_sha256": "79d55d8d550c6aa356ba7b45b294979017b45a09b73ca160ab8d4dd2f2058a84",
+    "original_to_current_source_only_changed_paths": [
+      "scenes[14].data.caption",
+      "youtube.description"
+    ],
+    "source_narration_all101_exact": true,
+    "intermediate_a84_author_file_not_present": true,
+    "intermediate_a84_reconstructed_in_memory_from_actual_final_bytes_and_failed_review_two_prechange_texts_sha256": "a84f3854ebef20b10643ae2b69200295ff14973a0314b484fba9e82b96156459",
+    "no_intermediate_file_created": true,
+    "archived_title783_reverting_only_Bandingkan_prefix_reproduces_prephone24c_bytes_sha256": "24cfd9b6efb4591ab449f6201de565f6aff9fd91fadd79782c17e7c06b7b2e7f",
+    "archived_headline783_to_current_only_changed_thumbnail_headline_and_sub": true,
+    "archived_subline502_to_current_only_changed_thumbnail_sub": true,
+    "all_prior_failures_checked_against_actual_current_revisions": true
+  },
+  "native_readonly_source_freshness_check": {
+    "method": "Pure existing metadataStatus/thumbnailStatus/textHash helpers imported in a separate read-only Node invocation; no native producer/merge command.",
+    "all101_line_entries_current": true,
+    "title_description_tags_all_current": true,
+    "all9_chapters_current": true,
+    "thumbnail_current": true,
+    "orphan_lines": [],
+    "orphan_chapters": []
+  },
+  "reviewed_line_ids": [
+    "6vwc",
+    "xnrg",
+    "edfn",
+    "hg9m",
+    "ajsk",
+    "kv5r",
+    "ddpd",
+    "9ski",
+    "bv46",
+    "hssn",
+    "d8h7",
+    "jfix",
+    "d78a",
+    "mjhz",
+    "fvzv",
+    "3742",
+    "3639",
+    "658p",
+    "m57n",
+    "scia",
+    "nxct",
+    "7k9u",
+    "ea2e",
+    "ke2c",
+    "rgfp",
+    "fd27",
+    "qttz",
+    "indq",
+    "q7x8",
+    "7hi8",
+    "cxxm",
+    "6pwe",
+    "eg6v",
+    "g3vp",
+    "35fs",
+    "at27",
+    "d2m5",
+    "xwsj",
+    "qagq",
+    "znv7",
+    "c49q",
+    "bcr5",
+    "tnrc",
+    "cv74",
+    "8xam",
+    "qrv8",
+    "ehby",
+    "u7i8",
+    "e86a",
+    "j2ja",
+    "ehkq",
+    "aghq",
+    "z8x8",
+    "7scz",
+    "w9yq",
+    "pdxs",
+    "k75x",
+    "mbee",
+    "h85p",
+    "hiqk",
+    "ambg",
+    "dyun",
+    "benr",
+    "zqts",
+    "q57z",
+    "7dp4",
+    "ubke",
+    "f5gy",
+    "3eue",
+    "sqqn",
+    "6wkf",
+    "74dc",
+    "326u",
+    "m5sn",
+    "sxtz",
+    "rgr9",
+    "xevg",
+    "m8sb",
+    "pruf",
+    "gy4i",
+    "cbe9",
+    "nvu3",
+    "fa3t",
+    "63ek",
+    "8fkp",
+    "utm2",
+    "bnhk",
+    "7udt",
+    "6nxr",
+    "7jrk",
+    "e5gd",
+    "petb",
+    "vnaq",
+    "trph",
+    "cegb",
+    "pn4i",
+    "9jiq",
+    "egmv",
+    "92mc",
+    "vee5",
+    "9jqz"
+  ],
+  "reviewed_source_card_ids": [
+    "opening",
+    "opening-unit",
+    "opening-result",
+    "opening-missing",
+    "opening-revision",
+    "opening-quantity",
+    "need-start",
+    "need-spec",
+    "need-delivery",
+    "need-labels",
+    "need-fiction",
+    "need-route",
+    "need-proof",
+    "extract-start",
+    "extract-core",
+    "extract-fields",
+    "extract-aster",
+    "extract-aster-quote",
+    "extract-birch",
+    "extract-missing-quote",
+    "extract-null",
+    "extract-review",
+    "cost-start",
+    "cost-unit-baseline",
+    "cost-aster-formula",
+    "cost-birch-formula",
+    "cost-initial-result",
+    "cost-rounding",
+    "cost-workbook",
+    "missing-start",
+    "missing-known",
+    "missing-question",
+    "missing-no-send",
+    "missing-status",
+    "revision-start",
+    "revision-identity",
+    "revision-diff",
+    "revision-total",
+    "revision-ranking",
+    "revision-links",
+    "quantity-start",
+    "quantity-edit",
+    "quantity-prompt",
+    "quantity-run",
+    "quantity-output",
+    "quantity-ranges",
+    "quantity-aster",
+    "quantity-birch",
+    "quantity-cedar",
+    "quantity-ranking",
+    "threshold-start",
+    "threshold-request12",
+    "threshold-run12",
+    "threshold-request13",
+    "threshold-run13",
+    "threshold-results",
+    "threshold-margin",
+    "range21-request",
+    "range21-run",
+    "range21-result",
+    "range21-question",
+    "outro"
+  ],
+  "line_reviews": [
+    {
+      "id": "6vwc",
+      "scene": "opening",
+      "source_text": "最低的單價，現在還不能直接排第一。",
+      "localized_text": "Harga satuan terendah belum bisa jadi nomor satu.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "xnrg",
+      "scene": "opening-unit",
+      "source_text": "因為這三份報價，寫的其實不是同一種金額。",
+      "localized_text": "Sebab ketiga penawaran ini beda jenis nominalnya.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "edfn",
+      "scene": "opening-result",
+      "source_text": "所以我們讓 AI 做一張能編輯的表，連原文頁碼也一起留下。",
+      "localized_text": "Jadi AI membuat tabel yang bisa diedit, lengkap dengan halaman sumber.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "hg9m",
+      "scene": "opening-missing",
+      "source_text": "但空白的運費，能不能直接當成免費？",
+      "localized_text": "Biaya kirim kosong boleh dianggap gratis?",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "ajsk",
+      "scene": "opening-revision",
+      "source_text": "補來一張修訂單，便宜的會換人嗎？",
+      "localized_text": "Ada revisi; yang termurah akan berganti?",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "kv5r",
+      "scene": "opening-quantity",
+      "source_text": "如果數量翻倍，原本的答案還能用嗎？",
+      "localized_text": "Kalau jumlahnya dua kali lipat, jawaban lama masih berlaku?",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "ddpd",
+      "scene": "need-start",
+      "source_text": "你現在要印十張明信片，三家都寄來了報價。",
+      "localized_text": "Mau cetak 10 kartu pos; 3 pemasok menawar.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "9ski",
+      "scene": "need-start",
+      "source_text": "先把自己的需求另存一份，別讓報價替你決定要買什麼。",
+      "localized_text": "Simpan kebutuhanmu terpisah; jangan ikut saja isi penawaran.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "bv46",
+      "scene": "need-spec",
+      "source_text": "像紙張、尺寸和印刷方式，都要能逐項對上。",
+      "localized_text": "Kertas, ukuran, dan cara cetak harus cocok satu per satu.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "hssn",
+      "scene": "need-spec",
+      "source_text": "只寫明信片還不夠，換一種紙就可能是另一個價格。",
+      "localized_text": "Cuma tulis kartu pos kurang; ganti kertas bisa beda harga.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "d8h7",
+      "scene": "need-delivery",
+      "source_text": "交貨地址和期限也要相同，才是在比同一件事。",
+      "localized_text": "Alamat dan tenggat harus sama agar sebanding.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "jfix",
+      "scene": "need-delivery",
+      "source_text": "這次要的是送達總價，單價只是其中一個欄位。",
+      "localized_text": "Cari total sampai tujuan; harga satuan cuma satu kolom.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "d78a",
+      "scene": "need-labels",
+      "source_text": "三份原檔先保留下來，輸出另外放一個資料夾。",
+      "localized_text": "Simpan 3 berkas asli; keluaran di folder lain.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "mjhz",
+      "scene": "need-labels",
+      "source_text": "這樣你收到新版本，還能看出供應商到底改了什麼。",
+      "localized_text": "Versi baru datang, perubahan pemasok tetap terlihat.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "fvzv",
+      "scene": "need-fiction",
+      "source_text": "這組供應商和交易條件，都是練習用的虛構資料。",
+      "localized_text": "Pemasok dan syaratnya fiktif, khusus latihan.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "3742",
+      "scene": "need-fiction",
+      "source_text": "畫面上的稅率是計算假設，真實交易要用自己的報價條件。",
+      "localized_text": "Tarif pajak di layar asumsi; transaksi nyata ikut penawaranmu.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "3639",
+      "scene": "need-route",
+      "source_text": "你可以讓 AI 幫忙整理欄位，再把算術交給計算工具。",
+      "localized_text": "AI susun kolom; alat hitung mengerjakan angkanya.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "658p",
+      "scene": "need-route",
+      "source_text": "把這兩件事拆開，錯了才知道該回頭看文字還是公式。",
+      "localized_text": "Pisahkan agar jika salah, tahu perlu cek teks atau rumus.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "m57n",
+      "scene": "need-proof",
+      "source_text": "甲的單價在第一頁，送貨條件卻放在第二頁。",
+      "localized_text": "Harga satuan Aster di halaman 1, syarat kirim di 2.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "scia",
+      "scene": "need-proof",
+      "source_text": "如果只讀首頁，這張比較表一開始就少了一筆錢。",
+      "localized_text": "Kalau cuma baca halaman pertama, tabel sudah melewatkan satu biaya.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "nxct",
+      "scene": "extract-start",
+      "source_text": "所以我們把每份報價的兩頁文字，都連同需求交給 AI。",
+      "localized_text": "Beri AI teks 2 halaman tiap penawaran beserta kebutuhan.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "7k9u",
+      "scene": "extract-start",
+      "source_text": "而且要它每個欄位都附上原文，別只回一句哪家比較划算。",
+      "localized_text": "Minta teks sumber tiap kolom, bukan cuma jawaban siapa termurah.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "ea2e",
+      "scene": "extract-core",
+      "source_text": "缺的就保留空值，單價和運費各自的稅，也要分清楚。",
+      "localized_text": "Yang tak ada tetap null; bedakan pajak harga satuan dan biaya kirim.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "ke2c",
+      "scene": "extract-fields",
+      "source_text": "三家版面不同，所以先訂好共同欄位，才不會照著排版亂比。",
+      "localized_text": "Tata letak 3 pemasok beda; samakan kolom agar tak salah banding.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "rgfp",
+      "scene": "extract-fields",
+      "source_text": "原文是含稅價，就保留含稅價，不要急著把所有數字加在一起。",
+      "localized_text": "Harga sudah termasuk pajak? Pertahankan; jangan buru-buru jumlah.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "fd27",
+      "scene": "extract-aster",
+      "source_text": "甲分在兩頁的單價和運費，表格接成同一列，各自留著出處。",
+      "localized_text": "Harga satuan dan kirim Aster dari 2 halaman jadi 1 baris, tiap nilai ada sumber.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "qttz",
+      "scene": "extract-aster-quote",
+      "source_text": "拿這段原句，就能核對表格有沒有把運費漏掉。",
+      "localized_text": "Dengan kutipan ini, cek apakah biaya kirim terlewat di tabel.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "indq",
+      "scene": "extract-aster-quote",
+      "source_text": "同樣是運費，為什麼乙能填零，丙卻不行？",
+      "localized_text": "Biaya kirim: kenapa Birch boleh 0, Cedar tidak?",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "q7x8",
+      "scene": "extract-birch",
+      "source_text": "乙的運費填零，是因為它的報價明寫免費送達。",
+      "localized_text": "Kirim Birch 0 karena penawaran jelas bilang gratis kirim.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "7hi8",
+      "scene": "extract-missing-quote",
+      "source_text": "丙的第二頁則寫運費沒有報價，這是另一種狀態。",
+      "localized_text": "Halaman 2 Cedar: biaya kirim belum disebutkan. Ini berbeda.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "cxxm",
+      "scene": "extract-missing-quote",
+      "source_text": "AI 應該保留這個差別，不能為了把表填滿就補上零。",
+      "localized_text": "AI jaga perbedaan ini; jangan isi 0 cuma agar tabel penuh.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "6pwe",
+      "scene": "extract-null",
+      "source_text": "後面算總價時，程式看到這個空值，就知道還不能當成完整報價。",
+      "localized_text": "Saat menghitung total, null memberi tahu program: penawaran belum lengkap.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "eg6v",
+      "scene": "extract-review",
+      "source_text": "拿到表格後，先挑會改變答案的值回到原頁核對。",
+      "localized_text": "Di tabel, cek nilai penentu hasil ke halaman sumber.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "g3vp",
+      "scene": "extract-review",
+      "source_text": "逐欄對照數值和支持它的原句；對不上，就先標成待確認。",
+      "localized_text": "Cocokkan nilai tiap kolom dengan kutipannya; jika tak cocok, tandai perlu konfirmasi.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "35fs",
+      "scene": "cost-start",
+      "source_text": "如果只是把單價從小排到大，丙看起來會最便宜。",
+      "localized_text": "Urutkan harga satuan saja, Cedar terlihat termurah.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "at27",
+      "scene": "cost-start",
+      "source_text": "可是這個排序，還沒有把稅和送達費用放進來。",
+      "localized_text": "Tapi urutan ini belum memuat pajak dan biaya kirim.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "d2m5",
+      "scene": "cost-unit-baseline",
+      "source_text": "先把這個排序留下來，等送達總價算完，再對照名次差在哪。",
+      "localized_text": "Simpan urutan; hitung total sampai tujuan, lalu bandingkan posisi.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "xwsj",
+      "scene": "cost-aster-formula",
+      "source_text": "甲的商品和運費都明示未稅，所以兩邊各算自己的稅。",
+      "localized_text": "Aster: barang dan kirim belum termasuk pajak; hitung pajaknya terpisah.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "qagq",
+      "scene": "cost-aster-formula",
+      "source_text": "把這幾項合起來，才是甲這份報價的送達總價。",
+      "localized_text": "Jumlah semua ini jadi total sampai tujuan Aster.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "znv7",
+      "scene": "cost-birch-formula",
+      "source_text": "乙的單價已經含商品稅，直接乘數量就能得到商品金額。",
+      "localized_text": "Harga satuan Birch termasuk pajak barang; kali jumlah jadi nilai barang.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "c49q",
+      "scene": "cost-birch-formula",
+      "source_text": "那丙的商品稅也算得出來，它能一起排進名次嗎？",
+      "localized_text": "Pajak barang Cedar terhitung; boleh ikut peringkat?",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "bcr5",
+      "scene": "cost-initial-result",
+      "source_text": "結果算到同一個終點，目前是乙比甲便宜。",
+      "localized_text": "Total sampai tujuan: kini Birch di bawah Aster",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "tnrc",
+      "scene": "cost-initial-result",
+      "source_text": "丙的總價仍待確認，所以不能把它排成第一名。",
+      "localized_text": "Total Cedar belum pasti, jadi tak boleh nomor satu.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "cv74",
+      "scene": "cost-rounding",
+      "source_text": "碰到小數時，讓計算工具依明示條件計算，再統一金額格式。",
+      "localized_text": "Desimal dihitung alat sesuai syarat tertulis, lalu samakan format uang",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "8xam",
+      "scene": "cost-rounding",
+      "source_text": "不要讓模型先四捨五入單價，再把誤差一路乘上數量。",
+      "localized_text": "Model jangan bulatkan harga satuan dulu; galat ikut dikali jumlah.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "qrv8",
+      "scene": "cost-workbook",
+      "source_text": "打開試算表，把原文金額和計算金額分開核對。",
+      "localized_text": "Buka tabel; cek nominal asli dan hasil terpisah.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "ehby",
+      "scene": "cost-workbook",
+      "source_text": "但它不是會自己重算的公式，需求一改，就要重新產生一次結果。",
+      "localized_text": "Ini bukan rumus yang menghitung ulang sendiri; kebutuhan berubah, buat ulang hasilnya",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "u7i8",
+      "scene": "missing-start",
+      "source_text": "還記得那個空白的運費嗎？現在它直接決定丙能不能排進名次。",
+      "localized_text": "Ingat biaya kirim kosong? Ini menentukan Cedar boleh ikut peringkat.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "e86a",
+      "scene": "missing-start",
+      "source_text": "因為丙的商品比乙便宜，只要運費不夠高，名次就會翻過來。",
+      "localized_text": "Barang Cedar lebih murah dari Birch; jika biaya kirim cukup rendah, peringkat berbalik.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "j2ja",
+      "scene": "missing-known",
+      "source_text": "表格把丙拆成已知跟未知，未知的是運費、運費是否含稅，還有稅額。",
+      "localized_text": "Tabel pisahkan Cedar: diketahui dan belum; yang belum biaya kirim, termasuk pajak atau belum, dan pajaknya.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "ehkq",
+      "scene": "missing-question",
+      "source_text": "所以問題要問得具體，請它補送到同一地址的運費和稅。",
+      "localized_text": "Tanya spesifik: minta biaya kirim dan pajak ke alamat sama.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "aghq",
+      "scene": "missing-question",
+      "source_text": "也要確認數量改變後費用是否相同，免得下一輪又得猜。",
+      "localized_text": "Cek apakah biaya sama saat jumlah berubah agar tak menebak lagi.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "z8x8",
+      "scene": "missing-no-send",
+      "source_text": "AI 可以幫你整理待問清單，但詢問草稿還需要你確認。",
+      "localized_text": "AI susun daftar tanya, tapi drafnya perlu kamu cek.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "7scz",
+      "scene": "missing-no-send",
+      "source_text": "別把表格裡的待確認，寫成供應商已經同意的條件。",
+      "localized_text": "Jangan tulis yang belum pasti seolah pemasok sudah menyetujui.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "w9yq",
+      "scene": "missing-status",
+      "source_text": "你也可以讓表格多一個狀態欄位，寫清楚它卡在哪裡。",
+      "localized_text": "Tambah kolom status agar jelas letak kendalanya.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "pdxs",
+      "scene": "missing-status",
+      "source_text": "真正的報價如果規格不同，先問能不能對齊，別自己編一個升級價。",
+      "localized_text": "Spesifikasi penawaran nyata beda? Tanya bisa disamakan; jangan karang harga peningkatan.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "k75x",
+      "scene": "revision-start",
+      "source_text": "丙補來了修訂版，這時候不要把它當成第四家供應商。",
+      "localized_text": "Cedar kirim revisi; jangan anggap pemasok keempat.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "mbee",
+      "scene": "revision-start",
+      "source_text": "留下舊檔作紀錄，再用新的條件替換丙這一列。",
+      "localized_text": "Simpan berkas lama; baris Cedar pakai syarat baru.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "h85p",
+      "scene": "revision-identity",
+      "source_text": "先核對這裡列的舊版編號，再把對應的舊檔標成已被取代。",
+      "localized_text": "Cek nomor versi lama di sini, lalu tandai berkas terkait sudah digantikan.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "hiqk",
+      "scene": "revision-diff",
+      "source_text": "這次改的是運費和它的稅，商品單價並沒有跟著變。",
+      "localized_text": "Biaya kirim dan pajaknya berubah; harga satuan barang tetap.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "ambg",
+      "scene": "revision-total",
+      "source_text": "好，現在丙的送達總價算得出來了，結果剛好和甲一樣。",
+      "localized_text": "Kini total sampai tujuan Cedar bisa dihitung, dan sama dengan Aster.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "dyun",
+      "scene": "revision-ranking",
+      "source_text": "運費補齊後，丙比乙多了五十元，還追不上。",
+      "localized_text": "Kirim lengkap, Cedar TWD 50 di atas Birch; belum unggul.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "benr",
+      "scene": "revision-links",
+      "source_text": "這時候還要看一眼來源這個欄位，有沒有改成對應修訂版。",
+      "localized_text": "Cek kolom sumber merujuk versi revisi yang tepat.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "zqts",
+      "scene": "revision-links",
+      "source_text": "只換了金額卻還連著舊檔，別人回頭核對時就會找不到。",
+      "localized_text": "Nominal diganti, tautan masih ke berkas lama; orang tak bisa mengecek.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "q57z",
+      "scene": "quantity-start",
+      "source_text": "後來你的需求改了，同樣的明信片，要印二十張。",
+      "localized_text": "Kebutuhan berubah: cetak 20 kartu pos yang sama.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "7dp4",
+      "scene": "quantity-start",
+      "source_text": "先把原本十張的數量設定檔，另存成畫面上這個新檔名，再把數量改成二十。",
+      "localized_text": "Simpan salinan setelan jumlah 10 dengan nama baru di layar, lalu ubah jumlah jadi 20.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "ubke",
+      "scene": "quantity-edit",
+      "source_text": "你改的是需求數量，不是把原本的總價直接乘上兩倍。",
+      "localized_text": "Ubah jumlah kebutuhan, jangan gandakan total lama.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "f5gy",
+      "scene": "quantity-edit",
+      "source_text": "情境這個欄位要保留修訂版，別切回原始報價。",
+      "localized_text": "Kolom skenario tetap revisi, jangan penawaran awal.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "3eue",
+      "scene": "quantity-prompt",
+      "source_text": "數量改過之後，還要明說其他需求都不變。",
+      "localized_text": "Ubah jumlah, tegaskan kebutuhan lain tetap.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "sqqn",
+      "scene": "quantity-prompt",
+      "source_text": "先確認報價的適用範圍，再更新金額和來源，留下變動清單。",
+      "localized_text": "Cek rentang penawaran; perbarui nominal, sumber, simpan daftar perubahan.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "6wkf",
+      "scene": "quantity-run",
+      "source_text": "存檔後，在教材的程式資料夾執行這條命令。",
+      "localized_text": "Simpan, jalankan di folder kode materi.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "74dc",
+      "scene": "quantity-run",
+      "source_text": "它會讀取新數量，另存結果，不覆蓋供應商的原始報價。",
+      "localized_text": "Baca jumlah baru; simpan terpisah, tak timpa penawaran asli.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "326u",
+      "scene": "quantity-output",
+      "source_text": "打開輸出的需求紀錄，確認它真的使用了新的數量。",
+      "localized_text": "Buka catatan kebutuhan; cek jumlah baru dipakai.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "m5sn",
+      "scene": "quantity-output",
+      "source_text": "再看供應商清單，丙應該只剩採用修訂版的那一列。",
+      "localized_text": "Daftar pemasok: Cedar tinggal 1 baris dengan versi revisi.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "sxtz",
+      "scene": "quantity-ranges",
+      "source_text": "這三份報價都寫明，單價在這段數量範圍內保持相同。",
+      "localized_text": "Ketiganya jelas: harga satuan tetap dalam rentang jumlah ini.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "rgr9",
+      "scene": "quantity-ranges",
+      "source_text": "送貨條件也有對應的說明，所以我們這次能照新數量重算。",
+      "localized_text": "Syarat kirim juga jelas; jumlah baru kali ini bisa dihitung ulang",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "xevg",
+      "scene": "quantity-aster",
+      "source_text": "甲的商品金額跟著數量增加，但運費還是那一筆。",
+      "localized_text": "Nilai barang Aster naik sesuai jumlah, kirim tetap 1 kali.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "m8sb",
+      "scene": "quantity-birch",
+      "source_text": "乙比甲多了一百一十元，原本的先後順序反過來了。",
+      "localized_text": "Birch TWD 110 di atas Aster; urutan awal berbalik.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "pruf",
+      "scene": "quantity-birch",
+      "source_text": "那把丙也算進來，這個名次還會再變嗎？",
+      "localized_text": "Jika Cedar ikut, peringkat berubah lagi?",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "gy4i",
+      "scene": "quantity-cedar",
+      "source_text": "再看丙，它比甲少了五十二元五角。",
+      "localized_text": "Cedar lebih murah TWD 52.50 dari Aster.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "cbe9",
+      "scene": "quantity-ranking",
+      "source_text": "還記得開頭問的數量翻倍嗎？最低總價真的換人了，變成丙。",
+      "localized_text": "Ingat jumlah dua kali lipat di awal? Total terendah benar berganti ke Cedar.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "nvu3",
+      "scene": "quantity-ranking",
+      "source_text": "不是誰突然降價，而是固定運費在不同張數下，占的比例變了。",
+      "localized_text": "Tak ada yang mendadak menurunkan harga; porsi biaya kirim tetap berubah saat jumlah berubah.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "fa3t",
+      "scene": "threshold-start",
+      "source_text": "那最低總價是從第幾張開始換人？",
+      "localized_text": "Mulai jumlah berapa termurah berganti?",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "63ek",
+      "scene": "threshold-start",
+      "source_text": "我們拿相鄰的兩個需求來試，不去猜所有張數都用同一個排名。",
+      "localized_text": "Kita uji 2 kebutuhan dengan jumlah berurutan, jangan mengira semua jumlah punya peringkat sama.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "8fkp",
+      "scene": "threshold-request12",
+      "source_text": "先把修訂情境另存一份，數量填十二，其他條件保持相同。",
+      "localized_text": "Salin skenario revisi, isi jumlah 12, syarat lain tetap sama.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "utm2",
+      "scene": "threshold-run12",
+      "source_text": "用同一份抽取資料執行，結果另存到這一份需求的資料夾。",
+      "localized_text": "Jalankan dengan data ekstraksi sama; simpan hasil di folder kebutuhan ini.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "bnhk",
+      "scene": "threshold-request13",
+      "source_text": "再複製這份需求，只多加一張，留下另一個檔名。",
+      "localized_text": "Salin kebutuhan ini, tambah 1 lembar, simpan nama lain.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "7udt",
+      "scene": "threshold-run13",
+      "source_text": "輸出位置也要分開，這樣兩份結果才能真的並排比較。",
+      "localized_text": "Pisahkan keluaran agar 2 hasil bisa dibandingkan berdampingan.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "6nxr",
+      "scene": "threshold-results",
+      "source_text": "十二張時，乙只比丙少七元五角，還沒有換人。",
+      "localized_text": "12 kartu: Birch di bawah Cedar TWD 7.50; belum berganti",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "7jrk",
+      "scene": "threshold-results",
+      "source_text": "十三張時，丙就領先十三元七角五分，這一步才跨過轉換點。",
+      "localized_text": "13 lembar, Cedar unggul TWD 13.75; baru di sini melewati titik pergantian.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "e5gd",
+      "scene": "threshold-margin",
+      "source_text": "差額都用丙減乙，正數是丙較貴，負數就是丙較便宜。",
+      "localized_text": "Cedar − Birch: positif lebih mahal, negatif lebih murah.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "petb",
+      "scene": "threshold-margin",
+      "source_text": "每多一張，丙相對乙追回二十一元兩角五分，所以差額跨過了零。",
+      "localized_text": "Tiap tambahan 1 lembar, Cedar mengejar Birch TWD 21.25, jadi selisih melewati 0.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "vnaq",
+      "scene": "range21-request",
+      "source_text": "二十張的需求如果再多要一張，變成二十一張，答案還算得出來嗎？",
+      "localized_text": "Dari 20 tambah 1 jadi 21 lembar, jawabannya masih bisa dihitung?",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "trph",
+      "scene": "range21-request",
+      "source_text": "這次先別改單價，照同一個方法重算看看。",
+      "localized_text": "Harga satuan tetap; hitung lagi pakai cara sama.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "cegb",
+      "scene": "range21-run",
+      "source_text": "只換需求檔和輸出資料夾，其他輸入都不變。",
+      "localized_text": "Hanya ganti berkas kebutuhan dan folder keluaran; masukan lain tetap.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "pn4i",
+      "scene": "range21-run",
+      "source_text": "程式會先拿新數量，對照各家寫明的適用範圍。",
+      "localized_text": "Program cek jumlah baru sesuai rentang tertulis tiap pemasok.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "9jiq",
+      "scene": "range21-result",
+      "source_text": "結果它拒絕計算，也沒有建立新的結果資料夾。",
+      "localized_text": "Program tak menghitung dan tak buat folder hasil baru.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "egmv",
+      "scene": "range21-result",
+      "source_text": "因為二十一張，已經超過這三份報價寫明的範圍。",
+      "localized_text": "Sebab 21 lembar sudah di luar rentang tertulis ketiga penawaran ini.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "92mc",
+      "scene": "range21-question",
+      "source_text": "如果真的需要這個數量，就請供應商重報這一版條件。",
+      "localized_text": "Jika perlu jumlah itu, minta pemasok menawar ulang syarat ini.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "vee5",
+      "scene": "outro",
+      "source_text": "你最常遇到哪個報價欄位沒寫清楚，留言告訴我。",
+      "localized_text": "Kolom apa yang paling sering tak jelas? Tulis komentar.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    },
+    {
+      "id": "9jqz",
+      "scene": "outro",
+      "source_text": "訂閱這個頻道，繼續把 AI 用成能交付的工作成果。",
+      "localized_text": "Langganan kanal; terus pakai AI untuk hasil kerja yang bisa diserahkan.",
+      "personally_read_in_full": true,
+      "result": "no-substantive-source-meaning-or-naturalness-issue-found"
+    }
+  ],
+  "reviewed_boundaries": [],
+  "future_boundary_read": false,
+  "futureboundaryread": false,
+  "future_model_boundary_acceptance": false,
+  "voice": false,
+  "voice_approval": false,
+  "audio_listened": false,
+  "audio_fit_or_native_voice_approval_claimed": false,
+  "actual_render_mobile_fit_or_fullpackage_approval_claimed": false,
+  "final_or_publication_approval_claimed": false,
+  "actions": {
+    "only_new_files_written": [
+      "/workspace/work/ai-pdf-01/id-current-independent-review-20261026/locale.baseline.current.json",
+      "/workspace/work/ai-pdf-01/id-current-independent-review-20261026/independent-current-source-review.json"
+    ],
+    "exclusive_create_nooverwrite": true,
+    "repository_source_translation_reviewindex_tasks_git_edits": false,
+    "provider_network_paid_or_production_calls": false,
+    "lease_auto_counter_edits": false
+  },
+  "verdict": "Current Indonesian written-source meaning and substantive naturalness pass on the exact current hashes above. Eight estimated character-budget warnings remain. Future actual native model boundaries require separate review after they exist; no AV, dub fit, voice, package or publication acceptance is granted."
+}

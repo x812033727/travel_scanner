@@ -1,0 +1,711 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "scope": "independent proposed localized thumbnail-headline meaning-and-naturalness delta only",
+  "recorded_at_utc": "2026-10-26T19:23:35.237246+00:00",
+  "reviewer": "OpenAI Codex /root/review_pdf_thumbnail_words",
+  "independent_from_root_proposal_author": true,
+  "proposal_file": "/workspace/work/ai-pdf-01/thumbnail-fit-investigation-20261026/root-short-headline-proposal-r2.json",
+  "proposal_sha256": "1c98b139801ff568f69987eaf582d1085f1304f4a9ba096c575071910ca4d68b",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "source_context_actually_read": {
+    "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+    "fields": [
+      "youtube.title",
+      "youtube.full description",
+      "youtube.tags",
+      "thumbnail complete data"
+    ],
+    "question": "用 AI 比較三份 PDF 報價：最低單價，真的最便宜？",
+    "headline": "先算總價",
+    "subtitle": "稅與運費別漏算",
+    "metadata": {
+      "category_id": 27,
+      "default_language": "zh-TW",
+      "description": "三份 PDF 報價的單價不能直接放在一起排序。跟著同一組原創明信片報價，讓 AI 先整理規格、數量、含稅狀態、運費與來源頁碼，再用明示條件算出可比較的送達總價。收到修訂版、把數量從十張改成二十張後，重新核對結果。\n\n示範使用本次 Codex AI 文件分析、pypdf 文字抽取與精確小數計算，輸出可編輯試算表；不宣稱已實測任何特定商用 AI 產品的上傳介面。供應商、價格及百分之五稅率均是原創練習設定，不是對真實交易的稅務判斷。\n\n資料與實作日期：2026-10-26。本次 PDF 可選取文字；這條抽文流程不做掃描影像 OCR。試算表中的數值由計算工具實際計算，openpyxl 只負責寫檔，不宣稱它會計算公式。\n\n教材包含需求、提示詞、來源 PDF 生成程式、逐頁抽文、可編輯比價表與版本紀錄。\n\n畫面七行提示詞為觀眾任務要求；機讀欄位格式另見 analysis-prompt.txt 的 JSON 契約，本次 AI 分析也讀取了該契約。\n\n原創教材、需求與完整提示詞：\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+      "made_for_kids": false,
+      "tags": [
+        "AI 教學",
+        "PDF 比價",
+        "報價比較",
+        "辦公室 AI",
+        "Mokaair"
+      ],
+      "title": "用 AI 比較三份 PDF 報價：最低單價，真的最便宜？",
+      "video_id": null
+    },
+    "thumbnail": {
+      "data": {
+        "asset": "stock/be673375c05932dd665ca14b79030c1fa69b5705c1d582348b31b0eb89a5c7a2.png",
+        "headline": "**先算總價**",
+        "layout": "a",
+        "sub": "稅與運費別漏算",
+        "tag": "AI 比較 PDF 報價"
+      },
+      "template": "thumb"
+    }
+  },
+  "project_instructions_read": [
+    {
+      "file": "/workspace/travel_scanner_pdf/AGENTS.md",
+      "scope": "complete project instructions"
+    },
+    {
+      "file": "/workspace/travel_scanner_pdf/.agents/skills/youtube-video/SKILL.md",
+      "scope": "skill and relevant invariant rules/production/handoff; publication remains owner"
+    }
+  ],
+  "passed": true,
+  "issues": [],
+  "locale_reviews": [
+    {
+      "locale": "en",
+      "passed": true,
+      "scope": "thumbnail-headline meaning/naturalness in actually read current full metadata only",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI PDF Quotes",
+        "headline": "**Total Cost First**",
+        "sub": "Include tax and shipping"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI PDF Quotes",
+        "headline": "**Total**\n**First**",
+        "sub": "Include tax and shipping"
+      },
+      "only_proposed_field": "thumbnail.headline",
+      "assessment": "Total First is natural concise thumbnail copy for prioritizing the delivered monetary total. Omitting Cost is unambiguous with AI PDF Quotes and Include tax and shipping, and changes no claim about missing items or AI capability.",
+      "issues": [],
+      "actual_full_metadata_read": {
+        "title": "Compare 3 PDF Quotes with AI: Is the Lowest Unit Price Really Cheapest?",
+        "description": "You cannot simply sort the unit prices in three PDF quotes. Follow one original set of postcard quotes: have AI organize specifications, quantities, tax status, shipping and source page numbers, then use the stated terms to calculate comparable delivered totals. Check the results again after receiving a revision and changing the quantity from 10 cards to 20.\n\nThis demo uses Codex AI document analysis, pypdf text extraction and exact decimal calculations to produce an editable spreadsheet. It does not claim to have tested the upload interface of any particular commercial AI product. The suppliers, prices and 5% tax rate are original practice settings, not tax advice for real transactions.\n\nData and implementation date: 2026-10-26. These PDFs have selectable text; this text extraction workflow does not perform OCR on scanned images. The spreadsheet values were actually calculated by a calculation tool. openpyxl only writes the file; no claim is made that it calculates formulas.\n\nThe materials include requirements, prompts, a source PDF generator, page-by-page extracted text, an editable quote comparison sheet and version records.\n\nThe seven-line prompt on screen gives the viewer's task requirements. The machine-readable field format is specified separately in the JSON contract in analysis-prompt.txt; this AI analysis also read that contract.\n\nOriginal materials, requirements and full prompts:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "AI tutorial",
+          "PDF quote comparison",
+          "compare quotations",
+          "office AI"
+        ],
+        "chapters": {
+          "opening": "Can the lowest unit price win?",
+          "need-start": "Set comparison requirements",
+          "extract-start": "Trace fields to source text",
+          "cost-start": "Include tax and delivery",
+          "missing-start": "Ask about missing data",
+          "revision-start": "Replace only revised terms",
+          "quantity-start": "Double quantity, check terms",
+          "threshold-start": "One more card, a new winner?",
+          "range21-request": "Outside quote range? Ask first"
+        },
+        "thumbnail": {
+          "tag": "AI PDF Quotes",
+          "headline": "**Total Cost First**",
+          "sub": "Include tax and shipping"
+        }
+      },
+      "metadata_projection_sha256_at_report": "0981500088dc8b9bbff8121150efffbfe17c1eb4a92508a03cc403954b509837",
+      "translation_file_sha256_observed_at_report": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "proposal_translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "whole_translation_changed_since_proposal": false,
+      "new_spoken_translation_meaning_review_claimed": false
+    },
+    {
+      "locale": "ja",
+      "passed": true,
+      "scope": "thumbnail-headline meaning/naturalness in actually read current full metadata only",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AIでPDF見積比較",
+        "headline": "**まず総額を計算**",
+        "sub": "税と送料も忘れずに"
+      },
+      "proposed_thumbnail": {
+        "tag": "AIでPDF見積比較",
+        "headline": "**まずは**\n**総額**",
+        "sub": "税と送料も忘れずに"
+      },
+      "only_proposed_field": "thumbnail.headline",
+      "assessment": "まずは／総額 is natural headline ellipsis for first looking at the total. It retains 先 and 総額; the unchanged 税と送料も忘れずに supplies the cost components. The two lines split after the adverbial phrase, not inside a word.",
+      "issues": [],
+      "actual_full_metadata_read": {
+        "title": "AIで3つのPDF見積もりを比較：単価が最安なら、本当に一番安い？",
+        "description": "3つのPDF見積もりの単価は、そのまま並べて順位を付けられません。オリジナルのはがき見積もりを使い、まずAIに仕様、数量、税込み・税別、送料、出典ページを整理させ、明示された条件で比較できる納品総額を計算します。改訂版が届き、数量を10枚から20枚に変えた後も、結果を確認し直します。\n\nこの実演では、今回のCodexによるAI文書分析、pypdfでのテキスト抽出、正確な小数計算を使い、編集できる表計算ファイルを出力します。特定の商用AI製品のアップロード画面を実際に試したとは主張しません。通貨はTWD（台湾ドル）です。会社、価格、5%の税率はいずれもオリジナルの練習用設定で、実際の取引の税務判断ではありません。\n\nデータ・実装日：2026-10-26。今回のPDFは文字を選択できます。このテキスト抽出手順では、スキャン画像のOCRは行いません。表計算ファイルの数値は計算ツールで実際に計算しています。openpyxlはファイルを書き出すだけで、数式を計算するとは主張しません。\n\n教材には要件、プロンプト、元のPDFを生成するプログラム、ページごとの抽出文、編集できる見積比較表、版の記録が含まれます。\n\n画面の7行のプロンプトは、視聴者の作業要件です。機械で読める項目形式は、analysis-prompt.txtのJSON形式の出力仕様に別途記載され、今回のAI分析でもその仕様を読み込んでいます。\n\nオリジナル教材、要件、完全なプロンプト：\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "AI活用",
+          "PDF見積比較",
+          "見積もり比較",
+          "仕事のAI"
+        ],
+        "chapters": {
+          "opening": "最安の単価で発注できる？",
+          "need-start": "要件を比較基準にする",
+          "extract-start": "各項目の原文をたどる",
+          "cost-start": "税と送料を総額に含める",
+          "missing-start": "不明点を問い合わせに変える",
+          "revision-start": "改訂された条件だけ置き換える",
+          "quantity-start": "数量を倍にして条件を再確認",
+          "threshold-start": "1枚増すと最安が変わる？",
+          "range21-request": "見積もりの範囲外では発注を待つ"
+        },
+        "thumbnail": {
+          "tag": "AIでPDF見積比較",
+          "headline": "**まず総額を計算**",
+          "sub": "税と送料も忘れずに"
+        }
+      },
+      "metadata_projection_sha256_at_report": "357987ad46cadf5c849726b2cc8af1121c7c48e49530daa9867d8b9309783b48",
+      "translation_file_sha256_observed_at_report": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+      "proposal_translation_sha256": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+      "whole_translation_changed_since_proposal": false,
+      "new_spoken_translation_meaning_review_claimed": false
+    },
+    {
+      "locale": "ko",
+      "passed": true,
+      "scope": "thumbnail-headline meaning/naturalness in actually read current full metadata only",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI PDF 견적 비교",
+        "headline": "**총액부터 계산**",
+        "sub": "세금·배송비도 포함"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI PDF 견적 비교",
+        "headline": "**총액부터**\n**계산**",
+        "sub": "세금·배송비도 포함"
+      },
+      "only_proposed_field": "thumbnail.headline",
+      "assessment": "총액부터／계산 preserves exactly the old words 총액부터 계산 (calculate the total first), changing only the line break and emphasis boundaries. This is natural Korean instructional thumbnail copy; taxes and delivery remain in the unchanged subline.",
+      "issues": [],
+      "actual_full_metadata_read": {
+        "title": "AI로 PDF 견적 3개 비교: 최저 단가가 정말 가장 쌀까요?",
+        "description": "PDF 견적 3개의 단가를 그대로 모아 순위를 매기면 안 됩니다. 직접 만든 엽서 견적 사례로 AI가 사양, 수량, 세금 포함 여부, 배송비와 출처 쪽수를 먼저 정리하게 한 뒤, 명시된 조건에 따라 비교 가능한 배송비 포함 총액을 계산합니다. 수정본을 받고 수량을 10장에서 20장으로 바꾼 뒤에는 결과를 다시 대조합니다.\n\n이번 시연은 Codex AI 문서 분석, pypdf 텍스트 추출과 정확한 소수 계산으로 편집 가능한 스프레드시트를 출력합니다. 특정 상용 AI 제품의 업로드 화면을 실제로 시험했다는 뜻은 아닙니다. 업체 Aster(A), Birch(B), Cedar(C)와 가격, 5% 세율은 모두 직접 만든 연습 설정이며 실제 거래의 세무 판단이 아닙니다.\n\n자료 및 실습 날짜: 2026-10-26. 이번 PDF는 텍스트 선택이 가능합니다. 이 추출 과정에서는 스캔 이미지 OCR을 하지 않습니다. 스프레드시트의 값은 계산 도구로 실제 계산했으며 openpyxl은 파일 작성만 담당합니다. 수식을 계산한다고 주장하지 않습니다.\n\n교재에는 요구 사항, 프롬프트, 원본 PDF 생성 코드, 쪽별 추출 텍스트, 편집 가능한 견적 비교표와 버전 기록이 포함됩니다.\n\n화면의 7줄 프롬프트는 시청자의 작업 요구입니다. 기계가 읽을 필드 형식은 analysis-prompt.txt의 JSON 규약에 따로 적혀 있으며, 이번 AI 분석에서도 이 규약을 읽었습니다.\n\n직접 만든 교재, 요구 사항과 전체 프롬프트:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "AI 활용법",
+          "PDF 가격 비교",
+          "견적 비교",
+          "사무실 AI"
+        ],
+        "chapters": {
+          "opening": "최저 단가로 바로 주문해도 될까요?",
+          "need-start": "요구 사항을 비교 기준으로 정하기",
+          "extract-start": "모든 항목의 원문 근거 남기기",
+          "cost-start": "세금과 배송비까지 같은 총액 비교",
+          "missing-start": "누락 항목을 문의할 질문으로 만들기",
+          "revision-start": "수정본의 바뀐 조건만 교체하기",
+          "quantity-start": "수량이 2배면 적용 조건 재확인",
+          "threshold-start": "1장 차이로 최저가 업체가 바뀌는 지점",
+          "range21-request": "견적 범위를 넘으면 주문 전 재문의"
+        },
+        "thumbnail": {
+          "tag": "AI PDF 견적 비교",
+          "headline": "**총액부터 계산**",
+          "sub": "세금·배송비도 포함"
+        }
+      },
+      "metadata_projection_sha256_at_report": "26adf9d016ba74f0dc62a1b0e5025e6fcfc539712d5746a378cf4134aee7d08c",
+      "translation_file_sha256_observed_at_report": "9bb36db600a713d29113be47f5698a2649788859c644783480b07a1ebd69c3e8",
+      "proposal_translation_sha256": "898d2f2e3805f63c6ffc9e0bc6282382001aff144c9120bb1eda40ca276e80f6",
+      "whole_translation_changed_since_proposal": true,
+      "new_spoken_translation_meaning_review_claimed": false
+    },
+    {
+      "locale": "es",
+      "passed": true,
+      "scope": "thumbnail-headline meaning/naturalness in actually read current full metadata only",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "Cotizaciones PDF con AI",
+        "headline": "**Calcula el total**",
+        "sub": "Incluye impuesto y envío"
+      },
+      "proposed_thumbnail": {
+        "tag": "Cotizaciones PDF con AI",
+        "headline": "**Total**\n**primero**",
+        "sub": "Incluye impuesto y envío"
+      },
+      "only_proposed_field": "thumbnail.headline",
+      "assessment": "Total／primero is a natural compact priority label in this quote-comparison context. It says to establish the total first; the unchanged subtitle explicitly includes tax and shipping. The title and full description still explain comparable delivered totals rather than ranking unit prices.",
+      "issues": [],
+      "actual_full_metadata_read": {
+        "title": "3 cotizaciones PDF con AI: ¿el menor precio unitario es el más barato?",
+        "description": "No puedes ordenar directamente los precios unitarios de 3 cotizaciones PDF. Con este mismo ejercicio original de cotizaciones de postales, usa AI para organizar especificaciones, cantidad, impuestos incluidos o excluidos, envío y páginas de origen. Después calcula totales con entrega comparables según las condiciones expresas. Verifica otra vez el resultado al recibir una revisión y cambiar la cantidad de 10 a 20 postales.\n\nLa demostración usa el análisis de documentos de Codex AI realizado para este ejercicio, extracción de texto con pypdf y cálculo decimal exacto para generar una hoja de cálculo editable. No afirma haber probado la interfaz de carga de ningún producto comercial de AI. Los proveedores, precios y la tasa del 5% son datos originales de práctica, no una evaluación fiscal de una transacción real.\n\nFecha de los datos y de la práctica: 2026-10-26. Estos PDF tienen texto seleccionable; este flujo de extracción no hace OCR de imágenes escaneadas. Los valores de la hoja se calcularon con una herramienta de cálculo. openpyxl solo escribe el archivo; no se afirma que calcule fórmulas.\n\nEl material incluye requisitos, prompts, el generador de los PDF de origen, texto extraído por página, una tabla comparativa editable y el historial de versiones.\n\nEl prompt de 7 líneas en pantalla contiene la tarea para el espectador. El formato de campos legible por máquina está en el contrato JSON de analysis-prompt.txt, que también se leyó durante este análisis con AI.\n\nMaterial original, requisitos y prompts completos:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "tutorial AI",
+          "comparar cotizaciones PDF",
+          "comparación de precios",
+          "AI para oficina",
+          "Codex",
+          "pypdf"
+        ],
+        "thumbnail": {
+          "tag": "Cotizaciones PDF con AI",
+          "headline": "**Calcula el total**",
+          "sub": "Incluye impuesto y envío"
+        },
+        "chapters": {
+          "opening": "¿Basta el menor precio?",
+          "need-start": "Define qué vas a comparar",
+          "extract-start": "Cada campo con su fuente",
+          "cost-start": "Total con impuesto y envío",
+          "missing-start": "Pregunta por lo que falta",
+          "revision-start": "Actualiza con la revisión",
+          "quantity-start": "Duplica y revisa condiciones",
+          "threshold-start": "¿Cuándo cambia el más barato?",
+          "range21-request": "Fuera del rango cotizado"
+        }
+      },
+      "metadata_projection_sha256_at_report": "0120c46294ba8deff3e4c0035e39e89c544910ab9e91d2449fb11c7077bb05b8",
+      "translation_file_sha256_observed_at_report": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea",
+      "proposal_translation_sha256": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea",
+      "whole_translation_changed_since_proposal": false,
+      "new_spoken_translation_meaning_review_claimed": false
+    },
+    {
+      "locale": "pt",
+      "passed": true,
+      "scope": "thumbnail-headline meaning/naturalness in actually read current full metadata only",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Calcule o total**",
+        "sub": "Inclua imposto e frete"
+      },
+      "proposed_thumbnail": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Antes,**\n**o total**",
+        "sub": "Inclua imposto e frete"
+      },
+      "only_proposed_field": "thumbnail.headline",
+      "assessment": "Antes,／o total is elliptical but natural enough short thumbnail copy here: before comparing, establish the total. The comma is intentional and the article o is retained. Unchanged Inclua imposto e frete and the full description make total cost with the stated tax/freight explicit. A three-word foreign headline is not a semantic defect.",
+      "issues": [],
+      "actual_full_metadata_read": {
+        "title": "3 cotações PDF com AI: o menor preço unitário é mesmo o mais barato?",
+        "description": "Não dá para ordenar diretamente os preços unitários de 3 cotações PDF. Com este mesmo exercício original de cotações de postais, use AI para organizar especificações, quantidade, impostos incluídos ou excluídos, frete e páginas de origem. Depois calcule preços finais comparáveis, com frete e os impostos indicados, com base nas condições explícitas. Confira de novo o resultado ao receber uma revisão e mudar a quantidade de 10 para 20 postais.\n\nA demonstração usa a análise de documentos com Codex AI realizada neste exercício, extração de texto com pypdf e cálculo decimal exato para gerar uma planilha editável. Não afirma ter testado a interface de upload de nenhum produto comercial de AI. Os fornecedores, preços e a alíquota de 5% são dados originais de prática, não uma avaliação tributária de uma transação real.\n\nData dos dados e da prática: 2026-10-26. Estes PDFs têm texto selecionável; este fluxo de extração não faz OCR de imagens digitalizadas. Os valores da planilha foram calculados por uma ferramenta de cálculo. openpyxl só grava o arquivo; não se afirma que calcule fórmulas.\n\nO material inclui requisitos, prompts, o gerador dos PDFs de origem, texto extraído por página, uma tabela comparativa editável e o histórico de versões.\n\nO prompt de 7 linhas na tela traz a tarefa para o espectador. O formato de campos legível por máquina está no contrato JSON de analysis-prompt.txt, que também foi lido nesta análise com AI.\n\nMaterial original, requisitos e prompts completos:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "tutorial AI",
+          "comparar cotações PDF",
+          "comparação de preços",
+          "AI no escritório",
+          "Codex",
+          "pypdf"
+        ],
+        "thumbnail": {
+          "tag": "Cotações PDF com AI",
+          "headline": "**Calcule o total**",
+          "sub": "Inclua imposto e frete"
+        },
+        "chapters": {
+          "opening": "Basta o menor preço?",
+          "need-start": "Defina a base da comparação",
+          "extract-start": "Cada campo com sua fonte",
+          "cost-start": "Total com imposto e frete",
+          "missing-start": "Pergunte pelo que falta",
+          "revision-start": "Atualize com a revisão",
+          "quantity-start": "Dobre e confira as condições",
+          "threshold-start": "Quando muda o mais barato?",
+          "range21-request": "Fora da faixa cotada"
+        }
+      },
+      "metadata_projection_sha256_at_report": "08d9740918af1eb08a78b0c7871a410ca398e97e96678b205ea2dd3db9e16977",
+      "translation_file_sha256_observed_at_report": "db80b73e876d581d65675139ab96e8d354b0689b1727630ab4546d87fa3c6bd8",
+      "proposal_translation_sha256": "db80b73e876d581d65675139ab96e8d354b0689b1727630ab4546d87fa3c6bd8",
+      "whole_translation_changed_since_proposal": false,
+      "new_spoken_translation_meaning_review_claimed": false
+    },
+    {
+      "locale": "id",
+      "passed": true,
+      "scope": "thumbnail-headline meaning/naturalness in actually read current full metadata only",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Hitung total dulu**",
+        "sub": "Pajak dan kirim dihitung"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Total**\n**dulu**",
+        "sub": "Pajak dan kirim dihitung"
+      },
+      "only_proposed_field": "thumbnail.headline",
+      "assessment": "Total／dulu is natural concise Indonesian thumbnail copy meaning total first. Dropping Hitung leaves the calculation action understood from the quote-comparison context and unchanged Pajak dan kirim dihitung. It preserves priority and does not invent free delivery.",
+      "issues": [],
+      "actual_full_metadata_read": {
+        "title": "3 Penawaran PDF dengan AI: Harga Satuan Terendah Pasti Termurah?",
+        "description": "Harga satuan dari tiga penawaran PDF tidak bisa langsung diurutkan bersama. Dengan satu set penawaran kartu pos orisinal yang sama, minta AI merapikan spesifikasi, jumlah, status pajak, biaya kirim, dan nomor halaman sumber, lalu hitung total biaya sampai tujuan yang bisa dibandingkan berdasarkan syarat tertulis. Setelah menerima revisi dan mengubah jumlah dari 10 menjadi 20 lembar, periksa kembali hasilnya.\n\nDemo ini menggunakan analisis dokumen AI oleh Codex pada percobaan ini, ekstraksi teks pypdf, dan perhitungan desimal presisi untuk menghasilkan spreadsheet yang bisa diedit; tidak mengklaim telah menguji antarmuka unggah produk AI komersial tertentu. Pemasok, harga, dan tarif pajak 5% adalah pengaturan latihan orisinal, bukan penilaian pajak untuk transaksi nyata.\n\nTanggal data dan praktik: 2026-10-26. Teks PDF kali ini bisa dipilih; alur ekstraksi ini tidak melakukan OCR gambar pindai. Nilai dalam spreadsheet benar-benar dihitung oleh alat hitung; openpyxl hanya menulis berkas, tanpa klaim bahwa alat itu menghitung rumus.\n\nMateri mencakup kebutuhan, prompt, program pembuat PDF sumber, ekstraksi teks per halaman, tabel perbandingan harga yang bisa diedit, dan riwayat versi.\n\nPrompt tujuh baris di layar berisi persyaratan tugas bagi penonton; format kolom yang dapat dibaca mesin ada dalam kontrak JSON di analysis-prompt.txt, yang juga dibaca dalam analisis AI kali ini.\n\nMateri orisinal, kebutuhan, dan prompt lengkap:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "tutorial AI",
+          "perbandingan harga PDF",
+          "membandingkan penawaran",
+          "AI untuk kantor",
+          "Codex",
+          "PDF"
+        ],
+        "thumbnail": {
+          "tag": "AI bandingkan penawaran PDF",
+          "headline": "**Hitung total dulu**",
+          "sub": "Pajak dan kirim dihitung"
+        },
+        "chapters": {
+          "opening": "Harga rendah, langsung pesan?",
+          "need-start": "Tulis dasar perbandingan",
+          "extract-start": "Lacak tiap kolom ke sumber",
+          "cost-start": "Total dengan pajak dan kirim",
+          "missing-start": "Susun pertanyaan soal data",
+          "revision-start": "Ganti syarat yang direvisi",
+          "quantity-start": "Jumlah digandakan, cek syarat",
+          "threshold-start": "Tambah 1, termurah berganti?",
+          "range21-request": "Di luar rentang, tunda pesan"
+        }
+      },
+      "metadata_projection_sha256_at_report": "6171254d468df1823362716881b5b22ccd4ecca054b77216800db56b2edfcf71",
+      "translation_file_sha256_observed_at_report": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "proposal_translation_sha256": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "whole_translation_changed_since_proposal": false,
+      "new_spoken_translation_meaning_review_claimed": false
+    },
+    {
+      "locale": "vi",
+      "passed": true,
+      "scope": "thumbnail-headline meaning/naturalness in actually read current full metadata only",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI so báo giá PDF",
+        "headline": "**Tính tổng trước**",
+        "sub": "Đừng sót thuế, phí giao"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI so báo giá PDF",
+        "headline": "**Cộng hết**\n**trước**",
+        "sub": "Đừng sót thuế, phí giao"
+      },
+      "only_proposed_field": "thumbnail.headline",
+      "assessment": "Cộng hết／trước is a natural compact imperative meaning add all the cost components first. The unchanged AI so báo giá PDF tag, Đừng sót thuế, phí giao subtitle, and full description anchor hết to each quote's specified cost components after extraction/normalization, not adding suppliers together or assigning zero to missing shipping. It preserves the total-before-comparing instruction in this context.",
+      "issues": [],
+      "actual_full_metadata_read": {
+        "title": "Dùng AI so sánh 3 báo giá PDF: Đơn giá thấp nhất có thật sự rẻ nhất?",
+        "description": "Không thể lấy đơn giá từ ba báo giá PDF rồi xếp hạng ngay. Với cùng một bộ báo giá bưu thiếp tự soạn, nhờ AI sắp xếp quy cách, số lượng, tình trạng đã gồm thuế hay chưa, phí giao hàng và số trang nguồn, rồi tính tổng tiền giao tận nơi có thể so sánh theo các điều kiện được ghi rõ. Sau khi nhận phiên bản sửa đổi và đổi số lượng từ 10 thành 20 tấm, kiểm tra lại kết quả.\n\nVí dụ này dùng phân tích tài liệu bằng AI Codex trong lần thực hiện này, trích xuất văn bản bằng pypdf và tính số thập phân chính xác để xuất bảng tính có thể chỉnh sửa; không khẳng định đã thử giao diện tải tệp lên của bất kỳ sản phẩm AI thương mại cụ thể nào. Nhà cung cấp, giá và thuế suất 5% đều là dữ liệu tự soạn cho bài tập, không phải nhận định thuế cho giao dịch thật.\n\nNgày dữ liệu và thực hành: 2026-10-26. PDF lần này có văn bản chọn được; quy trình trích xuất này không làm OCR ảnh quét. Các giá trị trong bảng tính thực sự do công cụ tính toán; openpyxl chỉ ghi tệp, không khẳng định công cụ này tính công thức.\n\nTài liệu gồm nhu cầu, câu lệnh cho AI, chương trình tạo PDF nguồn, văn bản trích xuất từng trang, bảng so sánh giá có thể chỉnh sửa và lịch sử phiên bản.\n\nCâu lệnh bảy dòng trên màn hình là yêu cầu nhiệm vụ dành cho người xem; định dạng các trường để máy đọc nằm trong hợp đồng JSON ở analysis-prompt.txt, và lần phân tích AI này cũng đã đọc hợp đồng đó.\n\nTài liệu tự soạn, nhu cầu và câu lệnh đầy đủ:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "hướng dẫn AI",
+          "so sánh giá PDF",
+          "so sánh báo giá",
+          "AI văn phòng",
+          "Codex",
+          "PDF"
+        ],
+        "thumbnail": {
+          "tag": "AI so báo giá PDF",
+          "headline": "**Tính tổng trước**",
+          "sub": "Đừng sót thuế, phí giao"
+        },
+        "chapters": {
+          "opening": "Đơn giá rẻ, đặt ngay được?",
+          "need-start": "Lập chuẩn từ nhu cầu",
+          "extract-start": "Mỗi cột đều có nguồn",
+          "cost-start": "Tính cả thuế và phí giao",
+          "missing-start": "Hỏi rõ những mục còn thiếu",
+          "revision-start": "Thay điều kiện đã sửa đổi",
+          "quantity-start": "Gấp đôi lượng, kiểm điều kiện",
+          "threshold-start": "Thêm 1 tấm, ai rẻ nhất?",
+          "range21-request": "Vượt phạm vi, khoan đặt hàng"
+        }
+      },
+      "metadata_projection_sha256_at_report": "3c9cad986ae5175ccd212a860a3a41a99c2d99f23f99b5833d059710608641ff",
+      "translation_file_sha256_observed_at_report": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+      "proposal_translation_sha256": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+      "whole_translation_changed_since_proposal": false,
+      "new_spoken_translation_meaning_review_claimed": false
+    },
+    {
+      "locale": "th",
+      "passed": true,
+      "scope": "thumbnail-headline meaning/naturalness in actually read current full metadata only",
+      "source_chinese_headline": "**先算總價**",
+      "before_thumbnail": {
+        "tag": "AI เทียบราคา PDF",
+        "headline": "**คิดยอดรวมก่อน**",
+        "sub": "อย่าลืมภาษีกับค่าส่ง"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI เทียบราคา PDF",
+        "headline": "**รวมยอด**\n**ก่อน**",
+        "sub": "อย่าลืมภาษีกับค่าส่ง"
+      },
+      "only_proposed_field": "thumbnail.headline",
+      "assessment": "รวมยอด／ก่อน is natural concise Thai for total it up first. The line break is between the action and ก่อน, preserving the priority. The unchanged อย่าลืมภาษีกับค่าส่ง makes taxes/shipping explicit without asserting that unknown shipping is free.",
+      "issues": [],
+      "actual_full_metadata_read": {
+        "title": "ใช้ AI เทียบใบเสนอราคา PDF 3 ใบ: ราคาต่อหน่วยต่ำสุด ถูกสุดจริงหรือ?",
+        "description": "นำราคาต่อหน่วยในใบเสนอราคา PDF 3 ใบมาเรียงเทียบกันตรงๆ ไม่ได้ ลองทำตามด้วยชุดใบเสนอราคาโปสต์การ์ดที่สร้างขึ้นสำหรับบทเรียนนี้ ให้ AI จัดสเปก จำนวน สถานะรวมภาษี ค่าส่ง และเลขหน้าที่มาก่อน แล้วคำนวณยอดรวมส่งถึงมือที่เทียบกันได้ตามเงื่อนไขที่ระบุชัด เมื่อได้ฉบับแก้ไขและเปลี่ยนจำนวนจาก10เป็น20ใบ ให้ตรวจผลอีกครั้ง\n\nตัวอย่างนี้ใช้การวิเคราะห์เอกสารด้วย Codex AI ในงานครั้งนี้ ดึงข้อความด้วย pypdf และคำนวณทศนิยมอย่างแม่นยำ เพื่อส่งออกตารางคำนวณที่แก้ไขได้ ไม่ได้อ้างว่าได้ทดลองหน้าจออัปโหลดของผลิตภัณฑ์ AI เชิงพาณิชย์ใดโดยเฉพาะ ผู้ขาย ราคา และอัตราภาษี5% เป็นข้อมูลที่สร้างขึ้นเพื่อฝึก ไม่ใช่การวินิจฉัยภาษีของธุรกรรมจริง ในบทเรียน A คือ Aster, B คือ Birch และ C คือ Cedar\n\nวันที่ข้อมูลและลงมือทำ: 2026-10-26 ข้อความใน PDF ชุดนี้เลือกคัดลอกได้ ขั้นตอนดึงข้อความนี้ไม่ทำ OCR ภาพสแกน ตัวเลขในตารางคำนวณโดยเครื่องมือคำนวณจริง ส่วน openpyxl ใช้เขียนไฟล์เท่านั้น ไม่ได้อ้างว่าคำนวณสูตรได้\n\nสื่อการเรียนมีความต้องการ พรอมป์ต์ โปรแกรมสร้าง PDF ต้นทาง ข้อความที่ดึงแยกหน้า ตารางเทียบราคาที่แก้ไขได้ และประวัติรุ่น\n\nพรอมป์ต์7บรรทัดบนจอคือคำสั่งงานของผู้ชม รูปแบบช่องข้อมูลสำหรับเครื่องอ่านอยู่ในข้อกำหนด JSON ของ analysis-prompt.txt ซึ่ง AI ได้อ่านด้วยในการวิเคราะห์ครั้งนี้\n\nสื่อการเรียนที่สร้างขึ้น ความต้องการ และพรอมป์ต์ฉบับเต็ม:\nhttps://github.com/x812033727/travel_scanner/tree/e2631cfb53c2b275345001ae9df7b60135e5035a/docs/videos/ai-pdf-quotes-to-comparison/materials",
+        "tags": [
+          "สอนใช้ AI",
+          "เทียบราคา PDF",
+          "เปรียบเทียบใบเสนอราคา",
+          "AI งานออฟฟิศ"
+        ],
+        "thumbnail": {
+          "tag": "AI เทียบราคา PDF",
+          "headline": "**คิดยอดรวมก่อน**",
+          "sub": "อย่าลืมภาษีกับค่าส่ง"
+        },
+        "chapters": {
+          "opening": "ถูกสุดต่อหน่วย สั่งเลยได้ไหม",
+          "need-start": "เขียนความต้องการเป็นเกณฑ์เทียบ",
+          "extract-start": "ย้อนถึงต้นฉบับได้ทุกช่อง",
+          "cost-start": "รวมภาษีค่าส่งถึงปลายทางเดียว",
+          "missing-start": "เปลี่ยนข้อมูลขาดเป็นคำถาม",
+          "revision-start": "ฉบับแก้ไข แทนเฉพาะเงื่อนไขใหม่",
+          "quantity-start": "เพิ่มเท่าตัว ตรวจเงื่อนไขใหม่",
+          "threshold-start": "เพิ่ม1ใบ เจ้าที่ถูกสุดเปลี่ยน",
+          "range21-request": "เกินช่วงเสนอราคา อย่าเพิ่งสั่ง"
+        }
+      },
+      "metadata_projection_sha256_at_report": "7a6d4b5b036f5d1d7d35d0b239994a2820dbda0f36d5d2050180a3664f4543de",
+      "translation_file_sha256_observed_at_report": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+      "proposal_translation_sha256": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+      "whole_translation_changed_since_proposal": false,
+      "new_spoken_translation_meaning_review_claimed": false
+    }
+  ],
+  "actual_read_manifest": [
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json",
+      "file_sha256_observed_at_report": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "scope_actually_read": "complete title, full description, all tags, all chapter names, full thumbnail tag/headline/sub; no spoken lines or source_hashes review",
+      "metadata_projection_sha256": "0981500088dc8b9bbff8121150efffbfe17c1eb4a92508a03cc403954b509837"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/ja.json",
+      "file_sha256_observed_at_report": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+      "scope_actually_read": "complete title, full description, all tags, all chapter names, full thumbnail tag/headline/sub; no spoken lines or source_hashes review",
+      "metadata_projection_sha256": "357987ad46cadf5c849726b2cc8af1121c7c48e49530daa9867d8b9309783b48"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/ko.json",
+      "file_sha256_observed_at_report": "9bb36db600a713d29113be47f5698a2649788859c644783480b07a1ebd69c3e8",
+      "scope_actually_read": "complete title, full description, all tags, all chapter names, full thumbnail tag/headline/sub; no spoken lines or source_hashes review",
+      "metadata_projection_sha256": "26adf9d016ba74f0dc62a1b0e5025e6fcfc539712d5746a378cf4134aee7d08c"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/es.json",
+      "file_sha256_observed_at_report": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea",
+      "scope_actually_read": "complete title, full description, all tags, all chapter names, full thumbnail tag/headline/sub; no spoken lines or source_hashes review",
+      "metadata_projection_sha256": "0120c46294ba8deff3e4c0035e39e89c544910ab9e91d2449fb11c7077bb05b8"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/pt.json",
+      "file_sha256_observed_at_report": "db80b73e876d581d65675139ab96e8d354b0689b1727630ab4546d87fa3c6bd8",
+      "scope_actually_read": "complete title, full description, all tags, all chapter names, full thumbnail tag/headline/sub; no spoken lines or source_hashes review",
+      "metadata_projection_sha256": "08d9740918af1eb08a78b0c7871a410ca398e97e96678b205ea2dd3db9e16977"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/id.json",
+      "file_sha256_observed_at_report": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "scope_actually_read": "complete title, full description, all tags, all chapter names, full thumbnail tag/headline/sub; no spoken lines or source_hashes review",
+      "metadata_projection_sha256": "6171254d468df1823362716881b5b22ccd4ecca054b77216800db56b2edfcf71"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/vi.json",
+      "file_sha256_observed_at_report": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+      "scope_actually_read": "complete title, full description, all tags, all chapter names, full thumbnail tag/headline/sub; no spoken lines or source_hashes review",
+      "metadata_projection_sha256": "3c9cad986ae5175ccd212a860a3a41a99c2d99f23f99b5833d059710608641ff"
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/th.json",
+      "file_sha256_observed_at_report": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+      "scope_actually_read": "complete title, full description, all tags, all chapter names, full thumbnail tag/headline/sub; no spoken lines or source_hashes review",
+      "metadata_projection_sha256": "7a6d4b5b036f5d1d7d35d0b239994a2820dbda0f36d5d2050180a3664f4543de"
+    }
+  ],
+  "existing_meaning_chain_context": [
+    {
+      "locale": "en",
+      "meaning_index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/en.meaning-review.json",
+      "meaning_index_sha256_observed_at_report": "73ffbf758a7e9277a2e44356ca010ebf1b913d0075299f94546ea97eede3fdfb",
+      "index_translation_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "index_matches_observed_whole_translation": true,
+      "current_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/en.reword-round2-unused-boundary-independent-review.json",
+      "current_report_sha256": "44085e7533afff70859500006d417c516a560354e7e353ca93a601a7c0fdea0a",
+      "current_report_hash_matches_index": true,
+      "context_read_scope": "Formal index and report provenance/current-source meaning conclusion, relevant metadata-exactness/source-delta context; not a new review of the archived spoken proposals/101-line arrays/audio histories.",
+      "initial_independent_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/en.initial-independent-review.json",
+      "initial_report_sha256": "c02536252737eba48597f85db1c74ce874db5b251e38eb4d80ef3363ff7024b2",
+      "initial_context_read_scope": "Reviewer independence, source-bound scope, metadata-reviewed claims, passed/issues/verdict and prior-finding disposition; not a fresh 101-line review.",
+      "current_index_reviewed_boundaries_retained_as_existing_evidence_only": [
+        {
+          "file": "author-review-boundaries/en.reword.round-1.2026-10-26T13-15-02-577Z.json",
+          "sha256": "6630883c923d5808794642c5166baed338ef48ff7c9231200f93d2628ddedcf7"
+        },
+        {
+          "file": "author-review-boundaries/en.reword.round-2.2026-10-26T14-28-24-930Z.json",
+          "sha256": "4fcc8edd5b915840f68ed26dd461efc0e54c313ad9c86748ae18b3bc5ee64118"
+        },
+        {
+          "file": "author-review-boundaries/en.shorten.round-1.2026-10-26T12-47-12-330Z.json",
+          "sha256": "0ef7251d29feab65eab6f392aa31228e8b8b7e18278486d2acab9b42e66e6452"
+        }
+      ],
+      "boundary_read_by_this_report": false
+    },
+    {
+      "locale": "ja",
+      "meaning_index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ja.meaning-review.json",
+      "meaning_index_sha256_observed_at_report": "0d44e936b62f0f2dd212aba1124883951a19e686350856c036326c7cf0757456",
+      "index_translation_sha256": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+      "index_matches_observed_whole_translation": true,
+      "current_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ja.reword-round2-unused-boundary-independent-review.json",
+      "current_report_sha256": "7acdb5cc06a645d21fe04906ca44d7753ddc8282f551fb94460314dd92945d73",
+      "current_report_hash_matches_index": true,
+      "context_read_scope": "Formal index and report provenance/current-source meaning conclusion, relevant metadata-exactness/source-delta context; not a new review of the archived spoken proposals/101-line arrays/audio histories.",
+      "initial_independent_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ja.initial-independent-review.json",
+      "initial_report_sha256": "6523ca44b4b3f06be2e7424f7c025dfd1a86ed082c714a91bedb64ea1cfcb333",
+      "initial_context_read_scope": "Reviewer independence, source-bound scope, metadata-reviewed claims, passed/issues/verdict and prior-finding disposition; not a fresh 101-line review.",
+      "current_index_reviewed_boundaries_retained_as_existing_evidence_only": [
+        {
+          "file": "author-review-boundaries/ja.reword.round-1.2026-10-26T17-00-58-659Z.json",
+          "sha256": "f886fbc82399484686aa63263551b598484e563d89431c730ef6cde6fa0ef8d2"
+        },
+        {
+          "file": "author-review-boundaries/ja.reword.round-2.2026-10-26T17-17-54-336Z.json",
+          "sha256": "1ddd3fe401ba7cf13556f47b8b24147be3ad6c8f19f9da6ad7da517c5c95f93c"
+        }
+      ],
+      "boundary_read_by_this_report": false
+    },
+    {
+      "locale": "ko",
+      "meaning_index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.meaning-review.json",
+      "meaning_index_sha256_observed_at_report": "06cc4ed0bf3f4a2c1b4b0e0e644813847bcfb785935fd65ca6d29e71336eb97c",
+      "index_translation_sha256": "898d2f2e3805f63c6ffc9e0bc6282382001aff144c9120bb1eda40ca276e80f6",
+      "index_matches_observed_whole_translation": false,
+      "current_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.reword-round1-current-independent-review.json",
+      "current_report_sha256": "e5bc4e91fd7e0150850830ea790629e8503cf44799492e99e6d6f682ce9ceb9e",
+      "current_report_hash_matches_index": true,
+      "context_read_scope": "Formal index and report provenance/current-source meaning conclusion, relevant metadata-exactness/source-delta context; not a new review of the archived spoken proposals/101-line arrays/audio histories.",
+      "initial_independent_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ko.initial-independent-review.json",
+      "initial_report_sha256": "651ba0f05a24dd9eb1ed50a594d54bf143d80bd95eaab4b8ac948cd0550dd9f8",
+      "initial_context_read_scope": "Reviewer independence, source-bound scope, metadata-reviewed claims, passed/issues/verdict and prior-finding disposition; not a fresh 101-line review.",
+      "current_index_reviewed_boundaries_retained_as_existing_evidence_only": [
+        {
+          "file": "author-review-boundaries/ko.reword.round-1.2026-10-26T17-58-15-289Z.json",
+          "sha256": "d4911737844e1143b66b38d06418552b44e78f9773c9bcc969a8740e92513910"
+        }
+      ],
+      "boundary_read_by_this_report": false
+    },
+    {
+      "locale": "es",
+      "meaning_index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es.meaning-review.json",
+      "meaning_index_sha256_observed_at_report": "206526248fabe8805eff74ac7934eb4b4ae896d2fbb91d21518fc4e0bc3b0a79",
+      "index_translation_sha256": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea",
+      "index_matches_observed_whole_translation": true,
+      "current_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es.phone-title-current-source-review.json",
+      "current_report_sha256": "2bdc0564b38b6bf5387f09b8e90a4ef24ed14952fcbe5e4659eaeb1227f4dfb1",
+      "current_report_hash_matches_index": true,
+      "context_read_scope": "Formal index and report provenance/current-source meaning conclusion, relevant metadata-exactness/source-delta context; not a new review of the archived spoken proposals/101-line arrays/audio histories.",
+      "initial_independent_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/es.initial-independent-review.json",
+      "initial_report_sha256": "c6a61ea65144bb045cea48122e33786dcad58185351dc6ef1f700d3c12f899e3",
+      "initial_context_read_scope": "Reviewer independence, source-bound scope, metadata-reviewed claims, passed/issues/verdict and prior-finding disposition; not a fresh 101-line review.",
+      "current_index_reviewed_boundaries_retained_as_existing_evidence_only": [],
+      "boundary_read_by_this_report": false
+    },
+    {
+      "locale": "pt",
+      "meaning_index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/pt.meaning-review.json",
+      "meaning_index_sha256_observed_at_report": "5e5c9954074e7f8e61d5d96ec876b8cd721c55ffe732025f20fc22996ef4eaba",
+      "index_translation_sha256": "db80b73e876d581d65675139ab96e8d354b0689b1727630ab4546d87fa3c6bd8",
+      "index_matches_observed_whole_translation": true,
+      "current_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/pt.phone-title-current-source-review.json",
+      "current_report_sha256": "f660f23db9678df59535a995f1cbf9b81a4af879521efafd23a526d75b5b04fc",
+      "current_report_hash_matches_index": true,
+      "context_read_scope": "Formal index and report provenance/current-source meaning conclusion, relevant metadata-exactness/source-delta context; not a new review of the archived spoken proposals/101-line arrays/audio histories.",
+      "initial_independent_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/pt.initial-independent-review.json",
+      "initial_report_sha256": "dc764656a4035fc2a4e3148fd0d6a436234b61312122d999d77d3b8f60178f1a",
+      "initial_context_read_scope": "Reviewer independence, source-bound scope, metadata-reviewed claims, passed/issues/verdict and prior-finding disposition; not a fresh 101-line review.",
+      "current_index_reviewed_boundaries_retained_as_existing_evidence_only": [],
+      "boundary_read_by_this_report": false
+    },
+    {
+      "locale": "id",
+      "meaning_index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.meaning-review.json",
+      "meaning_index_sha256_observed_at_report": "438774f64169495895371be587c8ed63a7cf0b351c12af1dc21eb286485c39fb",
+      "index_translation_sha256": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "index_matches_observed_whole_translation": true,
+      "current_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.phone-title-current-source-review.json",
+      "current_report_sha256": "1d2c14ae903980851ac8103f8683c1fb7ac21455520acf226b153092d8867b7d",
+      "current_report_hash_matches_index": true,
+      "context_read_scope": "Formal index and report provenance/current-source meaning conclusion, relevant metadata-exactness/source-delta context; not a new review of the archived spoken proposals/101-line arrays/audio histories.",
+      "initial_independent_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/id.initial-independent-review.json",
+      "initial_report_sha256": "923ec1661dd2212a9c3601448415fe9b9d06f919d33bae0dd7aff86c34b47e0e",
+      "initial_context_read_scope": "Reviewer independence, source-bound scope, metadata-reviewed claims, passed/issues/verdict and prior-finding disposition; not a fresh 101-line review.",
+      "current_index_reviewed_boundaries_retained_as_existing_evidence_only": [],
+      "boundary_read_by_this_report": false
+    },
+    {
+      "locale": "vi",
+      "meaning_index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/vi.meaning-review.json",
+      "meaning_index_sha256_observed_at_report": "affae145f304d4836240c5bff973f437f36490c7ea78495913088780d642c69a",
+      "index_translation_sha256": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+      "index_matches_observed_whole_translation": true,
+      "current_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/vi.initial-current-source-review.json",
+      "current_report_sha256": "e273331f6dcbf31ff2af5f8bbb3f4415608df967f43b0c7df4cfebe4f4fa848d",
+      "current_report_hash_matches_index": true,
+      "context_read_scope": "Formal index and report provenance/current-source meaning conclusion, relevant metadata-exactness/source-delta context; not a new review of the archived spoken proposals/101-line arrays/audio histories.",
+      "initial_independent_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/vi.initial-independent-review.json",
+      "initial_report_sha256": "0a0ae0831e760ebedca4ee06177b6d8dc9532e122224ec7a431f3f72daf00fca",
+      "initial_context_read_scope": "Reviewer independence, source-bound scope, metadata-reviewed claims, passed/issues/verdict and prior-finding disposition; not a fresh 101-line review.",
+      "current_index_reviewed_boundaries_retained_as_existing_evidence_only": [],
+      "boundary_read_by_this_report": false
+    },
+    {
+      "locale": "th",
+      "meaning_index_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/th.meaning-review.json",
+      "meaning_index_sha256_observed_at_report": "7b4459551751ad4f0e7fa255012ebf8e15f1662e54fb6002269245b04e808b39",
+      "index_translation_sha256": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+      "index_matches_observed_whole_translation": true,
+      "current_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/th.initial-current-source-review.json",
+      "current_report_sha256": "f04bb1c9296a4dffd44a0c7092335531de3849ea0bb5c5dbe53773b5568e4ba0",
+      "current_report_hash_matches_index": true,
+      "context_read_scope": "Formal index and report provenance/current-source meaning conclusion, relevant metadata-exactness/source-delta context; not a new review of the archived spoken proposals/101-line arrays/audio histories.",
+      "initial_independent_report_file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/th.initial-independent-review.json",
+      "initial_report_sha256": "89621885db4d98f5cd2fb3eeafc37e876a3d27e5372952ed3ef402be6717815f",
+      "initial_context_read_scope": "Reviewer independence, source-bound scope, metadata-reviewed claims, passed/issues/verdict and prior-finding disposition; not a fresh 101-line review.",
+      "current_index_reviewed_boundaries_retained_as_existing_evidence_only": [],
+      "boundary_read_by_this_report": false
+    }
+  ],
+  "independent_secondary_crosscheck": {
+    "reviewer": "/root/review_pdf_thumbnail_words/pt_vi_phrase_crosscheck",
+    "scope": "Actually read Chinese title/full description/thumbnail plus complete PT/VI metadata and exact r2 proposal; independently checked PT Antes, o total and VI Cộng hết trước",
+    "findings": "No substantive meaning or naturalness issue; both are acceptable compact copy in the actual quote-comparison/tax/shipping context.",
+    "canonical_or_provider_actions": false
+  },
+  "mechanical_checks": {
+    "all8_current_thumbnail_fields_match_exact_proposal_before": true,
+    "proposed_changes_only_headline": true,
+    "tag_and_sub_exact": true,
+    "no_title_description_chapter_tag_or_spoken_change_proposed": true,
+    "all8_formal_report_hashes_matched_actual_existing_indices_at_report": true
+  },
+  "reviewed_boundaries": [],
+  "limitations": {
+    "only_reviewed_delta": true,
+    "whole_translation_source_review_claimed": false,
+    "future_or_new_KO_spoken_boundary_reviewed": false,
+    "actual_layout_rendered": false,
+    "visual_or_mobile_QA_passed": false,
+    "actual_font_or_fit_passed": false,
+    "audio_or_ASR_or_voice_passed": false,
+    "captions_or_fullpackage_QA_passed": false,
+    "owner_approval_or_publication": false,
+    "rejected_wording_or_stopped_voice_flags_overridden": false
+  },
+  "actions": {
+    "only_file_written": "/workspace/work/ai-pdf-01/thumbnail-fit-investigation-20261026/short-headlines-r2-independent-meaning-review.json",
+    "repository_or_canonical_writes": false,
+    "source_index_task_or_lease_changes": false,
+    "media_or_native_controls_changes": false,
+    "render_or_provider_or_paid_or_owner_request": false
+  },
+  "next": "This actual delta review may be combined only with a genuine then-current whole-source meaning chain after a real lease-free native metadata merge proves all101 spoken records and all other metadata exact. KO advanced independently from the proposal snapshot; its new spoken boundary requires separate actual review. Preserve stopped voices/caps and old failed thumbnail render; use a fresh scratch, native unmodified fit/phone checks and actual full/mobile image inspection before adoption."
+}

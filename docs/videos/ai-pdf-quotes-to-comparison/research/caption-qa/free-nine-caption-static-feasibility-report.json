@@ -1,0 +1,179 @@
+{
+  "schema_version": 1,
+  "kind": "independent-static-feasibility-and-unexecuted-helper-preparation-not-caption-QA-or-production-authorization",
+  "recorded_at_utc": "2026-10-26T21:51:16.175381+00:00",
+  "reviewer": "/root/pdf_cc_free_unit_review",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "scope": "Read-only native caption generation/QA/state/lease semantics, plus authoring an external candidate only",
+  "actual_code_reads": [
+    {
+      "file": "AGENTS.md",
+      "sha256": "983dfa8599086f4028a3e17e3afa4b36f68b321cdb4c3246dd3693a6a98aa725",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": ".agents/skills/youtube-video/SKILL.md",
+      "sha256": "38f5479207f523d82fd7ea348134e7b0aba087abe19c6818646d7276e928c516",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/cli.mjs",
+      "sha256": "25d05ae14bb6b0d65bd3963b20bc5c8d894797ae1ea8f811632a362f09757b08",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/core/stages.mjs",
+      "sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/core/captions.mjs",
+      "sha256": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/core/state.mjs",
+      "sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/core/branding.mjs",
+      "sha256": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/core/paths.mjs",
+      "sha256": "76e19da45a3308e48b2d86f7d95f8d71830c8448183b654c7661e044d09c8e75",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/core/project-lease.mjs",
+      "sha256": "611e9403b68059fdf2bbb475e4795f02813f606b17ae4a5326a420054b434a98",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/qa/checks.mjs",
+      "sha256": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/qa/cli.mjs",
+      "sha256": "993fc86ad97327368a6ca7db3104b1770a66be9145da60f5c99da54983052f33",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "tools/video/package/cli.mjs",
+      "sha256": "46e4627f26030e5296ae42970adf5ef313551a593523d8bd47089c1e656e89e4",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    },
+    {
+      "file": "docs/videos/LANGUAGES.md",
+      "sha256": "f844bf6a3f4c1f052148c1749c482c90d92e5ca451549ae97cb12685499e6b37",
+      "read_scope": "Relevant implementations and their caller context; LANGUAGES policy sections only"
+    }
+  ],
+  "conclusion": "A separate one-use zero-network nine-locale caption generation is feasible under its own genuine root authorization after the paid queue stops and releases. It must preserve the actual native provider pause and all voice failures. No caption files were generated or approved by this static review.",
+  "native_findings": [
+    {
+      "source": "tools/video/cli.mjs:265 and tools/video/core/stages.mjs:227",
+      "finding": "cmdCaptions/runCaptions do not acquire their own project lease or check STOP; the reviewed external one-use wrapper must do both before calling normal native main once."
+    },
+    {
+      "source": "tools/video/core/stages.mjs:242-269",
+      "finding": "Native runCaptions may write nine SRT/VTT pairs, captions/manifest.json, and append one state.json caption run. It may remove not-written target files; the wrapper must reject any deletion outside its exact allowlist and any incomplete locale set."
+    },
+    {
+      "source": "tools/video/core/stages.mjs:119 and 193",
+      "finding": "currentDub checks script/translation/voice/raw/branding currency but does not approve failed ASR. Native current EN/JA physical timelines therefore remain valid timing inputs while their voices stay failed/stopped. Missing PT/ID/VI/TH dub timelines fall back to the presented primary narration."
+    },
+    {
+      "source": "tools/video/cli.mjs:282",
+      "finding": "Native caption CLI exit0 is based on chapter problems only. A true caption result also requires actual manifest skipped/missing state, parsed-file diagnostics, deterministic native expected-byte comparison, current source line coverage and the existing captionsItem component."
+    },
+    {
+      "source": "tools/video/qa/checks.mjs:121",
+      "finding": "Native captionsItem treats reading-speed warnings as warnings; every other cue issue is a failure. Preserve all returned diagnostics and do not label a result with warnings as zero problems."
+    },
+    {
+      "source": "tools/video/core/state.mjs:265",
+      "finding": "state.json is reserialized after one appended run. Compare all non-runs properties, the exact original run prefix, exactly one added run with only stage/at/locales and the actual native timestamp/manifest locale order. A raw-byte prefix check would be wrong."
+    },
+    {
+      "source": "tools/video/core/captions.mjs:603",
+      "finding": "parseSrt does not retain cue.line IDs, so its diagnostic labels contain (?) while native manifest problems retain source IDs. Preserve the two diagnostics independently; compare manifest problems to native expected cues, not literal parsed-SRT labels."
+    },
+    {
+      "source": "tools/video/qa/cli.mjs:243-307",
+      "finding": "Caption-current context includes brandingCurrent, actual body frame count and speech bindings. A complete caption-only component check can reuse this predicate without running full qa, replacing review/qa.json or contacting models."
+    }
+  ],
+  "candidate": {
+    "file": "/workspace/work/ai-pdf-01/free-caption-preparation-20261026T2144Z/free-caption-one-use.mjs",
+    "sha256": "f5ccae34067a1e66e47ba9dc54cd5678b6fd7e5a3d6d70b62ffe4e342d964f34",
+    "executed": false,
+    "node_syntax_check_actually_passed": true,
+    "fixed_output_directory": "/workspace/work/ai-pdf-01/free-caption-preparation-20261026T2144Z/one-use-execution",
+    "output_directory_or_one_use_marker_created_by_execution": false,
+    "changes_before_freeze": [
+      {
+        "initial_sha256": "a5d923e701951998af29dd9ef0538ad6c4608841a531f9291025a5db6634d4f8",
+        "issue": "Independent reviewer read actual fit/timeline schemas and found kept is optional/absent in successful outputs. The initial required-array test would falsely refuse before lease. Corrected to normal optional-empty semantics and actual fit.over[] requirement; no native policy changed."
+      },
+      {
+        "issue": "Shared docs/videos/lexicon.json lies outside movie DOC. Candidate now separately protects its hash and 16 critical native module hashes before/after/final audit."
+      },
+      {
+        "issue": "Final outcome now saves post-release audit even on partial/thrown native failure and derives after-state voice readiness from actual reread rather than the cached before-state."
+      }
+    ],
+    "required_root_grant_fields": {
+      "schema_version": 1,
+      "kind": "one-free-nine-locale-caption-unit",
+      "slug": "ai-pdf-quotes-to-comparison",
+      "authorized_by": "/root",
+      "helper_sha256": "f5ccae34067a1e66e47ba9dc54cd5678b6fd7e5a3d6d70b62ffe4e342d964f34",
+      "all_network_and_paid_forbidden": true,
+      "locales": [
+        "zh-TW",
+        "en",
+        "ja",
+        "ko",
+        "es",
+        "pt",
+        "id",
+        "vi",
+        "th"
+      ],
+      "original_task_guard_sha256": "SHA256 of the genuinely freshly read guard file passed on the command line"
+    },
+    "command_shape": [
+      "node",
+      "/workspace/work/ai-pdf-01/free-caption-preparation-20261026T2144Z/free-caption-one-use.mjs",
+      "--execute",
+      "--grant-file",
+      "ROOT_CREATED_GRANT",
+      "--grant-sha256",
+      "EXACT_ROOT_GRANT_SHA",
+      "--source-commit",
+      "EXACT_CLEAN_COMMITTED_HEAD",
+      "--original-task-file",
+      "FRESH_ORIGINAL_TASK_GUARD"
+    ],
+    "not_an_authorization": "This report describes required root-created grant fields. The report itself is not accepted as a grant and does not permit execution."
+  },
+  "required_actual_before_execution": [
+    "Paid producer must have actually exited, saved/checkpointed/pushed and explicitly released source ownership. Check real processes, project LEASE/STOP and clean pinned branch again.",
+    "Root must freshly read PR1852 task/controller/retries and PDF real primary approval. The zero-network helper uses a guard under10minutes, rejects a recent original owner, and reads actual local primary346a plus matching11QA.",
+    "Root must separately authorize and commit the exact frozen helper/grant and issue explicit execution GO; no current production authorization is implied by preparation.",
+    "Native auto must remain done/defer3/due2026-10-26T22:03:11.200Z/PT0-0-0stopped/EN1-2-2stopped/JA0-2-2stopped. The free unit does not compare due for paid eligibility, clear it or send provider requests.",
+    "Nine current sources, all8 genuine meaning/report/boundary chains, actual chat8 choice, unknown/current model journals and original14 protected files must pass without changes.",
+    "After native execution preserve all outputs/failures with actual returned exit or thrown-error distinction; do not rollback, waive a failed cue, clear flags or repeat the consumed unit."
+  ],
+  "limitations": [
+    "No current or future caption artifact was generated, parsed, audited or approved during this preparation.",
+    "No new full-film11QA, voice acceptance, text semantic full-read, whole-audio listening, package, owner approval or site language choice synchronization is claimed.",
+    "No original-file/production-source/media/task/Git/LEASE/auto changes occurred. Only this external preparation directory was written.",
+    "No project site/provider/model/paid request was sent. Managed environment status and skill metadata were read through their tools."
+  ],
+  "next": "Parent root must personally inspect the full candidate and its independent static review, create a separate concrete grant and verify the real producer release/current protection gates before any one-use caption execution."
+}

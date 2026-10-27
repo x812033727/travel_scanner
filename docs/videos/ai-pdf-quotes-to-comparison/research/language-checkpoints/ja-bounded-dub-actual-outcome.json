@@ -1,0 +1,848 @@
+{
+  "recorded_at_utc": "2026-10-26T13:49:46.447552+00:00",
+  "actual_unit_exit_code": 0,
+  "native_command": [
+    "node",
+    "--use-env-proxy",
+    "/workspace/work/ai-pdf-01/cli.mjs",
+    "--execute",
+    "dub",
+    "--locale",
+    "ja"
+  ],
+  "actual_log": "/workspace/work/ai-pdf-01/ja-bounded-dub-native.log",
+  "actual_log_sha256": "2c1a6208641888aa4b503db2743496800fe63182a602d126fdd87bf6dc9e69ae",
+  "preflight_exit_code": 0,
+  "actual_preflight_stdout": "ja: 95 requests, 95 to synthesize; about 3187 billable characters now (3187 for the track)\n  at 7.21 characters a second: 3 of 62 windows would speed up, 0 would not fit even at 1.15x\nserver: Gemini ready; 6002697 characters left this month\n",
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "70a718d2b51e18c57a4e1f2844c2b5ef611c5fd76b2b43dff7ff09f2a869c11c",
+  "primary_final_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+  "raw_source_line_WAVs": 101,
+  "additional_native_tempo_cache_WAVs": 31,
+  "actual_fit_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/ja/fit.json",
+  "actual_fit_sha256": "51c8a3b994a0ce10b6fa5b40ed3e38371dd8a9cead7cade7b4e016fb5136cb3e",
+  "actual_fit_over": [],
+  "actual_fit_kept": [],
+  "actual_fit_translation_hash": "412e8d03190fa2a9",
+  "actual_fit_speech_hash": "5a05e4b33208a86e",
+  "actual_tempo_max": 1.15,
+  "actual_track": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/ja.m4a",
+  "actual_track_sha256": "a707083effb66058f1890fab211461c138c8e2df319d3627b53dfd8b429ff59a",
+  "actual_track_probe": {
+    "format": {
+      "duration": "554.500000",
+      "size": "16176215"
+    }
+  },
+  "protected_files": [
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/en.json",
+      "before_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "after_sha256": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/i18n/ja.json",
+      "before_sha256": "70a718d2b51e18c57a4e1f2844c2b5ef611c5fd76b2b43dff7ff09f2a869c11c",
+      "after_sha256": "70a718d2b51e18c57a4e1f2844c2b5ef611c5fd76b2b43dff7ff09f2a869c11c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ja.meaning-review.json",
+      "before_sha256": "14ab982c1d3afddccbeefd6e285b4b5107eabb36613cdfab9b11cb51d747e68a",
+      "after_sha256": "14ab982c1d3afddccbeefd6e285b4b5107eabb36613cdfab9b11cb51d747e68a",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/video.json",
+      "before_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+      "after_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/approvals.json",
+      "before_sha256": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "after_sha256": "470127d6afeb8872ef7f79dc2feabe568b8bcf6d989a324597eeb4bf05496766",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json",
+      "before_sha256": "229c18cbbc66f62e60f14c5db7f8ade35bdef2ceb2190873653437a3837894c5",
+      "after_sha256": "229c18cbbc66f62e60f14c5db7f8ade35bdef2ceb2190873653437a3837894c5",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/326u.wav",
+      "before_sha256": "6b01998179ee8eaa035e28dfcd31a7fe4fb87d43dd81fdb21366fa9b0a2cb00e",
+      "after_sha256": "6b01998179ee8eaa035e28dfcd31a7fe4fb87d43dd81fdb21366fa9b0a2cb00e",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/35fs.wav",
+      "before_sha256": "1d1706e5a86fda8983d6642a5e3ee47e955cc9fe54626f557c9041beedf8fff9",
+      "after_sha256": "1d1706e5a86fda8983d6642a5e3ee47e955cc9fe54626f557c9041beedf8fff9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/3639.wav",
+      "before_sha256": "a0b3a9e3046579a05b3523498fc2ed8538ae7c62ceb26cab6c980a8fe783486c",
+      "after_sha256": "a0b3a9e3046579a05b3523498fc2ed8538ae7c62ceb26cab6c980a8fe783486c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/3742.wav",
+      "before_sha256": "d53d199321be77360a21b6d7758015a292679eb3f36198e0b52f0db11810d515",
+      "after_sha256": "d53d199321be77360a21b6d7758015a292679eb3f36198e0b52f0db11810d515",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/3eue.wav",
+      "before_sha256": "b5857c9db255764ecee7e50d0fc50b7d005645c7d678c3d14ab39f7316072a93",
+      "after_sha256": "b5857c9db255764ecee7e50d0fc50b7d005645c7d678c3d14ab39f7316072a93",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/63ek.wav",
+      "before_sha256": "15d27d51ce27a9e062fe9fce7791725d65c1eab877e71abb216a707c0643dde9",
+      "after_sha256": "15d27d51ce27a9e062fe9fce7791725d65c1eab877e71abb216a707c0643dde9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/658p.wav",
+      "before_sha256": "2f92678006eb7e44ab45a7b5b364717f10725a44d403b892949629e0923e3ce3",
+      "after_sha256": "2f92678006eb7e44ab45a7b5b364717f10725a44d403b892949629e0923e3ce3",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/6nxr.wav",
+      "before_sha256": "e7fda48b543604ae62bf2a8f05f9ddc97f3a8a34e17b68f47fe0d13bdadb749c",
+      "after_sha256": "e7fda48b543604ae62bf2a8f05f9ddc97f3a8a34e17b68f47fe0d13bdadb749c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/6nxr.x1.04.wav",
+      "before_sha256": "b7f4b463ec4014c61bd0b8b9b3b21b3367721027718420c44a0ae1491fdae0b7",
+      "after_sha256": "b7f4b463ec4014c61bd0b8b9b3b21b3367721027718420c44a0ae1491fdae0b7",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/6pwe.wav",
+      "before_sha256": "a3b9a92e6b841385bba6cc8cb32c6c4db0828994dc13218a21879e63d04bb99c",
+      "after_sha256": "a3b9a92e6b841385bba6cc8cb32c6c4db0828994dc13218a21879e63d04bb99c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/6vwc.wav",
+      "before_sha256": "76dae693e1fe1580210a7b909988a2eb21dcd3179b4ff0d4a53e017b1d167647",
+      "after_sha256": "76dae693e1fe1580210a7b909988a2eb21dcd3179b4ff0d4a53e017b1d167647",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/6wkf.wav",
+      "before_sha256": "9a3decebbbd7f81452891d63c31152f4fd792aebb27f40de7f57624d9adc7d75",
+      "after_sha256": "9a3decebbbd7f81452891d63c31152f4fd792aebb27f40de7f57624d9adc7d75",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/74dc.wav",
+      "before_sha256": "5ce6dd46afa7394e942e5589fccfb92684bb215cbd15e8872a97c3d809a846fc",
+      "after_sha256": "5ce6dd46afa7394e942e5589fccfb92684bb215cbd15e8872a97c3d809a846fc",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/7dp4.wav",
+      "before_sha256": "74431fdd28d545259ba6327b32ba67408200cd06dc6b58ee7dbf3d8173d892d9",
+      "after_sha256": "74431fdd28d545259ba6327b32ba67408200cd06dc6b58ee7dbf3d8173d892d9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/7hi8.wav",
+      "before_sha256": "19de109de940fceff17a4bb74930091443a8c8fe3f9fab01da85fa770c129763",
+      "after_sha256": "19de109de940fceff17a4bb74930091443a8c8fe3f9fab01da85fa770c129763",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/7jrk.wav",
+      "before_sha256": "dda1cea4b5ec22fb9d80deacd8741cc8c868a85ae732379191a88a82ea5529ca",
+      "after_sha256": "dda1cea4b5ec22fb9d80deacd8741cc8c868a85ae732379191a88a82ea5529ca",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/7jrk.x1.04.wav",
+      "before_sha256": "58aadfc1e4f6d4cae5cebc6909ea17dd4fef1abbf7d64b55b0d024c797125ba1",
+      "after_sha256": "58aadfc1e4f6d4cae5cebc6909ea17dd4fef1abbf7d64b55b0d024c797125ba1",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/7k9u.wav",
+      "before_sha256": "311cfec949a307ac5f568188f29c1cf8488971a27c594818fc6c7ff9be4ff518",
+      "after_sha256": "311cfec949a307ac5f568188f29c1cf8488971a27c594818fc6c7ff9be4ff518",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/7scz.wav",
+      "before_sha256": "71b97dabebc40784cda4b39be4b2a22e9fd01cf99cb423a948f5fe98938203f6",
+      "after_sha256": "71b97dabebc40784cda4b39be4b2a22e9fd01cf99cb423a948f5fe98938203f6",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/7udt.wav",
+      "before_sha256": "6fb077478edb014bdeacfba6b32fba5f612affae8291629a6fb5e09f2273e460",
+      "after_sha256": "6fb077478edb014bdeacfba6b32fba5f612affae8291629a6fb5e09f2273e460",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/8fkp.wav",
+      "before_sha256": "81a852f3a393a67c66abb4f177458a40ba5e24aa39fe29924568fd1e5e01ad38",
+      "after_sha256": "81a852f3a393a67c66abb4f177458a40ba5e24aa39fe29924568fd1e5e01ad38",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/8xam.wav",
+      "before_sha256": "3940435902f5103521c298cfebfc3466fb1b989d416c10bd5a86e568bbf8e070",
+      "after_sha256": "3940435902f5103521c298cfebfc3466fb1b989d416c10bd5a86e568bbf8e070",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/92mc.wav",
+      "before_sha256": "e03c4addb3aa08b29a10f853e79af12476aee9261f016966f6efbc6ce8884c74",
+      "after_sha256": "e03c4addb3aa08b29a10f853e79af12476aee9261f016966f6efbc6ce8884c74",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/9jiq.wav",
+      "before_sha256": "1d95dc7772dc5e56d806f87595ff96788e7482107ffe7967d24a74311f275e8c",
+      "after_sha256": "1d95dc7772dc5e56d806f87595ff96788e7482107ffe7967d24a74311f275e8c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/9jqz.wav",
+      "before_sha256": "d4a6c40d54e21729f5479a6fd38a12871049b095939e3f05bf51d8f2ee2120de",
+      "after_sha256": "d4a6c40d54e21729f5479a6fd38a12871049b095939e3f05bf51d8f2ee2120de",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/9ski.wav",
+      "before_sha256": "d9a686a5d24772b5a49708ad57a05bad71672f5ac55fc8c5ad32e46f23081def",
+      "after_sha256": "d9a686a5d24772b5a49708ad57a05bad71672f5ac55fc8c5ad32e46f23081def",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/aghq.wav",
+      "before_sha256": "26d34cc0dcc7a5bf8e309f5d1b8c11736d8931aa1e05b4bb4fe0c95ad466f646",
+      "after_sha256": "26d34cc0dcc7a5bf8e309f5d1b8c11736d8931aa1e05b4bb4fe0c95ad466f646",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/ajsk.wav",
+      "before_sha256": "7aac65f37d4b54206f8e6507ec609e19bfdb848bf13f694fdd993ddf07f8a8ad",
+      "after_sha256": "7aac65f37d4b54206f8e6507ec609e19bfdb848bf13f694fdd993ddf07f8a8ad",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/ambg.wav",
+      "before_sha256": "cfc1c7a5f85077693de1da5555409d9e1b724237a811fd59a661e7185f565fb3",
+      "after_sha256": "cfc1c7a5f85077693de1da5555409d9e1b724237a811fd59a661e7185f565fb3",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/at27.wav",
+      "before_sha256": "135cad12173ddd731e09feee7330f6bc2138668f6bfa11065f226c1392888bc0",
+      "after_sha256": "135cad12173ddd731e09feee7330f6bc2138668f6bfa11065f226c1392888bc0",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/bcr5.wav",
+      "before_sha256": "51e055282b068018ce9d75dd0a720d7b9edbb7b54023d499fb798dc6f0984b38",
+      "after_sha256": "51e055282b068018ce9d75dd0a720d7b9edbb7b54023d499fb798dc6f0984b38",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/benr.wav",
+      "before_sha256": "815519e9672a3f6f6f77f16898a90e34bf81555fc42d6e972c2be450c1924a0e",
+      "after_sha256": "815519e9672a3f6f6f77f16898a90e34bf81555fc42d6e972c2be450c1924a0e",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/bnhk.wav",
+      "before_sha256": "9124cb11bb0a52964326cfaa4c84142d40e284d7ccf6a5f9da45b82965ce6df4",
+      "after_sha256": "9124cb11bb0a52964326cfaa4c84142d40e284d7ccf6a5f9da45b82965ce6df4",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/bv46.wav",
+      "before_sha256": "f81f54950250d3fe1a56cb9e89d9e083e024f54f0c9af97b5974dc6fc23a0703",
+      "after_sha256": "f81f54950250d3fe1a56cb9e89d9e083e024f54f0c9af97b5974dc6fc23a0703",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/c49q.wav",
+      "before_sha256": "016d1bd82033973c86c584cba85cc8a74645b5c149bf4159b45fba864c007494",
+      "after_sha256": "016d1bd82033973c86c584cba85cc8a74645b5c149bf4159b45fba864c007494",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/cache.json",
+      "before_sha256": "c01ea13819c075029f1edc76b93ceeeb73dfce2e1ed0f23eefca3996f75c407e",
+      "after_sha256": "c01ea13819c075029f1edc76b93ceeeb73dfce2e1ed0f23eefca3996f75c407e",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/cbe9.wav",
+      "before_sha256": "362d922f165feebc49a3f1b2ab319bccccbd67d64348e3797639af0d4092bdd5",
+      "after_sha256": "362d922f165feebc49a3f1b2ab319bccccbd67d64348e3797639af0d4092bdd5",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/cegb.wav",
+      "before_sha256": "2765091e3f86e94d2c25e2398c17ed868d53cc944fc60e53c02a4de0ccaf6240",
+      "after_sha256": "2765091e3f86e94d2c25e2398c17ed868d53cc944fc60e53c02a4de0ccaf6240",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/cv74.wav",
+      "before_sha256": "8b4b860d712fb6ed58051fcc74aeed2f8769a5227c275646587fe823862d7056",
+      "after_sha256": "8b4b860d712fb6ed58051fcc74aeed2f8769a5227c275646587fe823862d7056",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/cxxm.wav",
+      "before_sha256": "6c370f21258ca4bf0f060847798b5e476bf7054ba54aa95445232cd6524d026b",
+      "after_sha256": "6c370f21258ca4bf0f060847798b5e476bf7054ba54aa95445232cd6524d026b",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/d2m5.wav",
+      "before_sha256": "0963bfcc8b7fa553c013a71efc470c6f142e6305b7847a8e608955593383a86e",
+      "after_sha256": "0963bfcc8b7fa553c013a71efc470c6f142e6305b7847a8e608955593383a86e",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/d78a.wav",
+      "before_sha256": "7f4bc3768bf28bb07b72a432453920e29440ad1e3b24e1cda35a4b7e0dde98c0",
+      "after_sha256": "7f4bc3768bf28bb07b72a432453920e29440ad1e3b24e1cda35a4b7e0dde98c0",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/d8h7.wav",
+      "before_sha256": "6ad56bbb7bfe3ded9b03d87d3ed51cd2de1c6a4dc365f73df71ca18b1a55b4b5",
+      "after_sha256": "6ad56bbb7bfe3ded9b03d87d3ed51cd2de1c6a4dc365f73df71ca18b1a55b4b5",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/ddpd.wav",
+      "before_sha256": "94727a8e281a8ed1546c4af5a6029955d1b16ab9ef7cc193addc3544b1278f01",
+      "after_sha256": "94727a8e281a8ed1546c4af5a6029955d1b16ab9ef7cc193addc3544b1278f01",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/dyun.wav",
+      "before_sha256": "e375af6a7286136a15163bd88cc6c07f78525d91f17d2cde24b916bc2bed195b",
+      "after_sha256": "e375af6a7286136a15163bd88cc6c07f78525d91f17d2cde24b916bc2bed195b",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/e5gd.wav",
+      "before_sha256": "522c691bef102505a3ef74234846a87ab14339ffac2a4b03b3ae22b7a48792c7",
+      "after_sha256": "522c691bef102505a3ef74234846a87ab14339ffac2a4b03b3ae22b7a48792c7",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/e5gd.x1.15.wav",
+      "before_sha256": "e74c0276bd397dcb454d40b4dc7822eeaf32afa0bdf986773d4270ea4d96027d",
+      "after_sha256": "e74c0276bd397dcb454d40b4dc7822eeaf32afa0bdf986773d4270ea4d96027d",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/e5gd.x1.17.wav",
+      "before_sha256": "d3cf74892c555b18d2c2aad8d77577a579aa8656e58326712cd1d96bc1d47fe6",
+      "after_sha256": "d3cf74892c555b18d2c2aad8d77577a579aa8656e58326712cd1d96bc1d47fe6",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/e86a.wav",
+      "before_sha256": "539c69887725314d5367ec3b519add4426c45f69242053bd21909f18d57f909c",
+      "after_sha256": "539c69887725314d5367ec3b519add4426c45f69242053bd21909f18d57f909c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/ea2e.wav",
+      "before_sha256": "ab1d323c96261471e108d9d0cce9a355fcffe053c93cfc0c780edce39b29eac2",
+      "after_sha256": "ab1d323c96261471e108d9d0cce9a355fcffe053c93cfc0c780edce39b29eac2",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/edfn.wav",
+      "before_sha256": "12d2986db9aa2a9a7a9b1af29d6cc8849249f5e0951fb46cc489dafd4a2bbac8",
+      "after_sha256": "12d2986db9aa2a9a7a9b1af29d6cc8849249f5e0951fb46cc489dafd4a2bbac8",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/eg6v.wav",
+      "before_sha256": "1848cee76b0c56b4094aea0d9db2a7c14f1d425511f285f952b5efbd2f3be0f4",
+      "after_sha256": "1848cee76b0c56b4094aea0d9db2a7c14f1d425511f285f952b5efbd2f3be0f4",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/egmv.wav",
+      "before_sha256": "ac42b3a4845909ab445844dc5be806842af5bc71f769c102d7c145d300c815dd",
+      "after_sha256": "ac42b3a4845909ab445844dc5be806842af5bc71f769c102d7c145d300c815dd",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/ehby.wav",
+      "before_sha256": "491d68e05a603639efa9401806a3b0732bc2651050c0f85dd492a7c36aa41752",
+      "after_sha256": "491d68e05a603639efa9401806a3b0732bc2651050c0f85dd492a7c36aa41752",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/ehkq.wav",
+      "before_sha256": "a9acafd3084c9ec57c30ab32b4c9cd2c557ff10f70517ff008c4b0aa31f45a9e",
+      "after_sha256": "a9acafd3084c9ec57c30ab32b4c9cd2c557ff10f70517ff008c4b0aa31f45a9e",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/f5gy.wav",
+      "before_sha256": "0dca4b579f622ee90e5859783731ddf08cb3c5ba3580da15bd31dca9acd317b3",
+      "after_sha256": "0dca4b579f622ee90e5859783731ddf08cb3c5ba3580da15bd31dca9acd317b3",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/fa3t.wav",
+      "before_sha256": "fc1e76bf0e31e7766ef2373c9a29948da6014e221dae6596537df1f9e566cbdf",
+      "after_sha256": "fc1e76bf0e31e7766ef2373c9a29948da6014e221dae6596537df1f9e566cbdf",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/fd27.wav",
+      "before_sha256": "fb95f06aadbd081f05d1ceb7f0e5ee641b26405d76984a91ed831a186fd82fba",
+      "after_sha256": "fb95f06aadbd081f05d1ceb7f0e5ee641b26405d76984a91ed831a186fd82fba",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/fvzv.wav",
+      "before_sha256": "9d530084978ae50627e116ce4948d77fac02b6d8b3eef8868edc4e65324e57c4",
+      "after_sha256": "9d530084978ae50627e116ce4948d77fac02b6d8b3eef8868edc4e65324e57c4",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/g3vp.wav",
+      "before_sha256": "e4eab36c7cd3071972b5aa42188f6192734bd72c200d6751fbc64eb9d072ee22",
+      "after_sha256": "e4eab36c7cd3071972b5aa42188f6192734bd72c200d6751fbc64eb9d072ee22",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/gy4i.wav",
+      "before_sha256": "860cad5a4014bbdd981a4cc4c6d953fa522d1952916250d5e9c0a04aac4428ca",
+      "after_sha256": "860cad5a4014bbdd981a4cc4c6d953fa522d1952916250d5e9c0a04aac4428ca",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/gy4i.x1.02.wav",
+      "before_sha256": "2139bc988bd7d294efe90298a89a0ca498aa1a392529f1d6f642fb17c873bf9b",
+      "after_sha256": "2139bc988bd7d294efe90298a89a0ca498aa1a392529f1d6f642fb17c873bf9b",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/h85p.wav",
+      "before_sha256": "392f9b2cc71c1c4f056515665da5fc8d087b251fa41ebf5e7eb6a7ed835783be",
+      "after_sha256": "392f9b2cc71c1c4f056515665da5fc8d087b251fa41ebf5e7eb6a7ed835783be",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/hg9m.wav",
+      "before_sha256": "41578cf9f6d3eb1565d230348d1bdac200c077a4eaf6cccdc74248286971b520",
+      "after_sha256": "41578cf9f6d3eb1565d230348d1bdac200c077a4eaf6cccdc74248286971b520",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/hg9m.x1.01.wav",
+      "before_sha256": "56ce373a161582cb692038e934871730a3513b7686dc68c4331203d91ef139de",
+      "after_sha256": "56ce373a161582cb692038e934871730a3513b7686dc68c4331203d91ef139de",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/hiqk.wav",
+      "before_sha256": "67755ddba1fd785102f83c74e2b016451503414b02723f0b62d2aa7480376ec9",
+      "after_sha256": "67755ddba1fd785102f83c74e2b016451503414b02723f0b62d2aa7480376ec9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/hssn.wav",
+      "before_sha256": "063991a746cca4331f13b8a49066acd1a77364f0e048f33602d4397f0a238689",
+      "after_sha256": "063991a746cca4331f13b8a49066acd1a77364f0e048f33602d4397f0a238689",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/indq.wav",
+      "before_sha256": "92250cd57c2dcd2c4f3463d89812e9ff44ff0c201efdcd2fb33ba46cb734d7fd",
+      "after_sha256": "92250cd57c2dcd2c4f3463d89812e9ff44ff0c201efdcd2fb33ba46cb734d7fd",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/j2ja.wav",
+      "before_sha256": "3014d4cd731fea656c9e588b14a53588f60418e2a6984cfd19df2464436ce63f",
+      "after_sha256": "3014d4cd731fea656c9e588b14a53588f60418e2a6984cfd19df2464436ce63f",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/jfix.wav",
+      "before_sha256": "72a80b4ca1119ae71d1c3142cc7b0053157a2e1c64a3a6bd057545acfef81389",
+      "after_sha256": "72a80b4ca1119ae71d1c3142cc7b0053157a2e1c64a3a6bd057545acfef81389",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/k75x.wav",
+      "before_sha256": "5961377d9ae2637588ff18fac85dafaa7963e1dbb06678f3059a412c6a45a4fb",
+      "after_sha256": "5961377d9ae2637588ff18fac85dafaa7963e1dbb06678f3059a412c6a45a4fb",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/ke2c.wav",
+      "before_sha256": "7230e0c48ddb5d9d7a2e4cb4b36836958391408a40374bef6f39da69bb54761f",
+      "after_sha256": "7230e0c48ddb5d9d7a2e4cb4b36836958391408a40374bef6f39da69bb54761f",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/kv5r.wav",
+      "before_sha256": "6f4edf2e006fb11cdb8b0bd68ecf95f2c993904521d34aae7d8ba9e28aaf36be",
+      "after_sha256": "6f4edf2e006fb11cdb8b0bd68ecf95f2c993904521d34aae7d8ba9e28aaf36be",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/m57n.wav",
+      "before_sha256": "19c7e18538c9ef684d1c6ce87031554c75f114a0aa9ba69c54fb7bebdbf864d3",
+      "after_sha256": "19c7e18538c9ef684d1c6ce87031554c75f114a0aa9ba69c54fb7bebdbf864d3",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/m5sn.wav",
+      "before_sha256": "9bc4c15fdc6e5e2bef48a9c3fa83f15a46299311927577cc049bcb73931b1235",
+      "after_sha256": "9bc4c15fdc6e5e2bef48a9c3fa83f15a46299311927577cc049bcb73931b1235",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/m8sb.wav",
+      "before_sha256": "e2a66ca9315c8607e57fe5340e9202bcf8ec736158de4f19702fbcf9f1349465",
+      "after_sha256": "e2a66ca9315c8607e57fe5340e9202bcf8ec736158de4f19702fbcf9f1349465",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/mbee.wav",
+      "before_sha256": "d81002afe392f6438e82005bc083579f0399f7fb11697976c761557bfb8aaebd",
+      "after_sha256": "d81002afe392f6438e82005bc083579f0399f7fb11697976c761557bfb8aaebd",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/mjhz.wav",
+      "before_sha256": "9cf062354bf88c8ecb265a1388b1ea3ebd9bc3037730effd04a39de8c22c4989",
+      "after_sha256": "9cf062354bf88c8ecb265a1388b1ea3ebd9bc3037730effd04a39de8c22c4989",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/nvu3.wav",
+      "before_sha256": "92ab571918d203eeaa5c83ffe91c12c842b1c434319766a77696be9455799352",
+      "after_sha256": "92ab571918d203eeaa5c83ffe91c12c842b1c434319766a77696be9455799352",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/nxct.wav",
+      "before_sha256": "558860cc99fcee6eeaca89d84f96ed03dfae9883dc24780b166a8e6defc48942",
+      "after_sha256": "558860cc99fcee6eeaca89d84f96ed03dfae9883dc24780b166a8e6defc48942",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/pdxs.wav",
+      "before_sha256": "97d34ff36d2d7615b710f6d7abdf935e8e91c3b0dbdcf439d7565fb3c9c207f7",
+      "after_sha256": "97d34ff36d2d7615b710f6d7abdf935e8e91c3b0dbdcf439d7565fb3c9c207f7",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/petb.wav",
+      "before_sha256": "5277195b2cf40e548abf5e2bcba90ae2e0cd478e3c27e13949e1c0f79307c2f2",
+      "after_sha256": "5277195b2cf40e548abf5e2bcba90ae2e0cd478e3c27e13949e1c0f79307c2f2",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/petb.x1.15.wav",
+      "before_sha256": "82f196f0897d96ec622cadd55441cfbb2fa76ce1d97084a77e885346bc6b8e4c",
+      "after_sha256": "82f196f0897d96ec622cadd55441cfbb2fa76ce1d97084a77e885346bc6b8e4c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/petb.x1.17.wav",
+      "before_sha256": "29d89664c4387d4b4e1db4a3e944d91c2ca46171126864b28c43d5f8ab719c58",
+      "after_sha256": "29d89664c4387d4b4e1db4a3e944d91c2ca46171126864b28c43d5f8ab719c58",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/pn4i.wav",
+      "before_sha256": "e46bf8f6b11b40bc4df77c6256d3e48427f54af9228a46ccef165267ad6b72d0",
+      "after_sha256": "e46bf8f6b11b40bc4df77c6256d3e48427f54af9228a46ccef165267ad6b72d0",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/pruf.wav",
+      "before_sha256": "012a8d702808ab317e7c00a45445d19edde2c16b9e171488cb29c1cdb73e0115",
+      "after_sha256": "012a8d702808ab317e7c00a45445d19edde2c16b9e171488cb29c1cdb73e0115",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/q57z.wav",
+      "before_sha256": "47a3c4ceabade882f5bb38909fd451572eab6220b2ec6b6c03d2712a720de1e7",
+      "after_sha256": "47a3c4ceabade882f5bb38909fd451572eab6220b2ec6b6c03d2712a720de1e7",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/q7x8.wav",
+      "before_sha256": "c818ba989407438c63fec4c39635686f25bd34ab44990365c2d4da03b1db0624",
+      "after_sha256": "c818ba989407438c63fec4c39635686f25bd34ab44990365c2d4da03b1db0624",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/qagq.wav",
+      "before_sha256": "cd2d9be9a0f8cc6aa97db15d12a331a99e5e9a1a78e702dcf64e7c67b1fdb573",
+      "after_sha256": "cd2d9be9a0f8cc6aa97db15d12a331a99e5e9a1a78e702dcf64e7c67b1fdb573",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/qrv8.wav",
+      "before_sha256": "92c63e0389c457087572a5e045c4e796054b4321886ab4b3b9493c9a5a8c99f9",
+      "after_sha256": "92c63e0389c457087572a5e045c4e796054b4321886ab4b3b9493c9a5a8c99f9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/qttz.wav",
+      "before_sha256": "7638e117e8d856348ef249e470c1d63aa434d7d3144c3a01a1e78443a8377eb1",
+      "after_sha256": "7638e117e8d856348ef249e470c1d63aa434d7d3144c3a01a1e78443a8377eb1",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/rgfp.wav",
+      "before_sha256": "3e9960ac8402347dd62edefb8f3ca3affb796eedf519bae471f949106f2131f8",
+      "after_sha256": "3e9960ac8402347dd62edefb8f3ca3affb796eedf519bae471f949106f2131f8",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/rgr9.wav",
+      "before_sha256": "2bca5c4cec6daa52df8f3ea5337b165aab8fe48c35a2db9c789f26ef372f554e",
+      "after_sha256": "2bca5c4cec6daa52df8f3ea5337b165aab8fe48c35a2db9c789f26ef372f554e",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/scia.wav",
+      "before_sha256": "34fa34f960ebe99a68df5b932037096f6d5fb36d7fd32d175836b5d67dcd10d9",
+      "after_sha256": "34fa34f960ebe99a68df5b932037096f6d5fb36d7fd32d175836b5d67dcd10d9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/sqqn.wav",
+      "before_sha256": "fa085c8a16e1ed0becc404b580ecce4265829cad6707f62eaca8f0ead8db819e",
+      "after_sha256": "fa085c8a16e1ed0becc404b580ecce4265829cad6707f62eaca8f0ead8db819e",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/sxtz.wav",
+      "before_sha256": "0c216ae59c85c4bcae9cb26dbf0ede727ddf4958561f1dee1d375a18da124f22",
+      "after_sha256": "0c216ae59c85c4bcae9cb26dbf0ede727ddf4958561f1dee1d375a18da124f22",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/tnrc.wav",
+      "before_sha256": "8e57649b42f8b6183ab5f8a20daf1c60effec36ef7fb7d83ae0d436f3584c33c",
+      "after_sha256": "8e57649b42f8b6183ab5f8a20daf1c60effec36ef7fb7d83ae0d436f3584c33c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/trph.wav",
+      "before_sha256": "bc36ec97a6c2f84448dfc38480018357b7c7556f3f001dcb3c0602874349dae9",
+      "after_sha256": "bc36ec97a6c2f84448dfc38480018357b7c7556f3f001dcb3c0602874349dae9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/trph.x1.02.wav",
+      "before_sha256": "05e370b3a36ca6e040867bc269fba38bd4e315697d773757622a7705a181309d",
+      "after_sha256": "05e370b3a36ca6e040867bc269fba38bd4e315697d773757622a7705a181309d",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/trph.x1.15.wav",
+      "before_sha256": "ea3baf5b07d9f06e3bff9fbbdb98c88ab9a59dcf55e44d22f1e0b1eddfa37351",
+      "after_sha256": "ea3baf5b07d9f06e3bff9fbbdb98c88ab9a59dcf55e44d22f1e0b1eddfa37351",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/u7i8.wav",
+      "before_sha256": "f27a7aeb37db66405c2a2c2f4a30f62642948cccfd8cf80efd464a0b7b008c5b",
+      "after_sha256": "f27a7aeb37db66405c2a2c2f4a30f62642948cccfd8cf80efd464a0b7b008c5b",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/ubke.wav",
+      "before_sha256": "21553d15639ae5f13f524714a718792bdf3208020fbcf8afa8a18639b3983b08",
+      "after_sha256": "21553d15639ae5f13f524714a718792bdf3208020fbcf8afa8a18639b3983b08",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/utm2.wav",
+      "before_sha256": "1f732fa6ef05ec19d75866ff88b68df01c109bc3604364e3f33fbb94fd61626f",
+      "after_sha256": "1f732fa6ef05ec19d75866ff88b68df01c109bc3604364e3f33fbb94fd61626f",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/vee5.wav",
+      "before_sha256": "b94d0b33f35559d84034b71d8bf1ae9ffe4436026ef35cf6ae5e289bba958931",
+      "after_sha256": "b94d0b33f35559d84034b71d8bf1ae9ffe4436026ef35cf6ae5e289bba958931",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/vnaq.wav",
+      "before_sha256": "23e74aaded7316730fc967468b59c0070f138d31a6dc92e5ead9a7489abb738a",
+      "after_sha256": "23e74aaded7316730fc967468b59c0070f138d31a6dc92e5ead9a7489abb738a",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/vnaq.x1.02.wav",
+      "before_sha256": "1337574cd89d3020977ef22e45eb308cd6b1678ef87548473301b6db0e7fcc0b",
+      "after_sha256": "1337574cd89d3020977ef22e45eb308cd6b1678ef87548473301b6db0e7fcc0b",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/vnaq.x1.15.wav",
+      "before_sha256": "a951292a301d2e97003a741cf307e57fff57e0e833bbe27bf3a1a5e11075ad78",
+      "after_sha256": "a951292a301d2e97003a741cf307e57fff57e0e833bbe27bf3a1a5e11075ad78",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/w9yq.wav",
+      "before_sha256": "c157d151664b614db42fd9ba20ce1ec93fd687e5937b271e96d26b805cec38e9",
+      "after_sha256": "c157d151664b614db42fd9ba20ce1ec93fd687e5937b271e96d26b805cec38e9",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/xevg.wav",
+      "before_sha256": "975484005d8ceac35897d4c9124b2664cb47065f01ad76a27122c58a08c7b872",
+      "after_sha256": "975484005d8ceac35897d4c9124b2664cb47065f01ad76a27122c58a08c7b872",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/xnrg.wav",
+      "before_sha256": "e8e17cc6ee451fe3dbc4656aabf15381132ee3a1d03b4b6131e227301c06c369",
+      "after_sha256": "e8e17cc6ee451fe3dbc4656aabf15381132ee3a1d03b4b6131e227301c06c369",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/xwsj.wav",
+      "before_sha256": "702702fd878f5316be02e994447e52bec353c73e5f8857771043d9b81a484fe5",
+      "after_sha256": "702702fd878f5316be02e994447e52bec353c73e5f8857771043d9b81a484fe5",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/z8x8.wav",
+      "before_sha256": "0b91fd6c8212019d6d1ae6b9b38ed407e6d2de0f29ca00a0d0c3d648b09adad3",
+      "after_sha256": "0b91fd6c8212019d6d1ae6b9b38ed407e6d2de0f29ca00a0d0c3d648b09adad3",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/znv7.wav",
+      "before_sha256": "1be99fc2547c48f66ee2ed5c0bd1e03a9780baf41d4a5d6305e3d3685bb134bc",
+      "after_sha256": "1be99fc2547c48f66ee2ed5c0bd1e03a9780baf41d4a5d6305e3d3685bb134bc",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/audio/zqts.wav",
+      "before_sha256": "c8ada8b4aeadd9cedd4af0085a032b4992a51e6bb093f30515a4ee7aa445c8ae",
+      "after_sha256": "c8ada8b4aeadd9cedd4af0085a032b4992a51e6bb093f30515a4ee7aa445c8ae",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/body.m4a",
+      "before_sha256": "f79bd3c9f911609c0c74056ee18122ad1e9ea86f205c5593032fb13bc66b8dcc",
+      "after_sha256": "f79bd3c9f911609c0c74056ee18122ad1e9ea86f205c5593032fb13bc66b8dcc",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/fit.json",
+      "before_sha256": "a2c89959888040d20c28bf51348eae2e281b6d0ebf9710ddbe645dcce6ca33dd",
+      "after_sha256": "a2c89959888040d20c28bf51348eae2e281b6d0ebf9710ddbe645dcce6ca33dd",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/narration.wav",
+      "before_sha256": "88f1cf3ace4d910a94677be560af26e5cf21fad972c770418b0e37f001c6eb61",
+      "after_sha256": "88f1cf3ace4d910a94677be560af26e5cf21fad972c770418b0e37f001c6eb61",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en/timeline.json",
+      "before_sha256": "170a0056161b6d8f16f38e4c79f9c0abf0adaabedeb2cee18136e0ef5435c52f",
+      "after_sha256": "170a0056161b6d8f16f38e4c79f9c0abf0adaabedeb2cee18136e0ef5435c52f",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/en.m4a",
+      "before_sha256": "07ec894a91e3a831cef590ad94236a3b552ed3b2f42403e75b04925013b4865b",
+      "after_sha256": "07ec894a91e3a831cef590ad94236a3b552ed3b2f42403e75b04925013b4865b",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/final.mp4",
+      "before_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "after_sha256": "346a5bbd4b47884f301a9dfc9b67fe81e1a504232a0f4746e60ddead54d94e3f",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/languages.json",
+      "before_sha256": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "after_sha256": "96a63b6f2ff7f1513b76613f45e7e86d38069fba6cf214c6cc0ad506251462d3",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/narration.wav",
+      "before_sha256": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "after_sha256": "5ca7b54255c8b670e59e46c43c4ef0eae02e91432cd6a23dc776e437cd44ebde",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check-flags.en.json",
+      "before_sha256": "e10ecb27f97f9957b92d00d194a49f21d7d08d81c805676c4c54417527f914e8",
+      "after_sha256": "e10ecb27f97f9957b92d00d194a49f21d7d08d81c805676c4c54417527f914e8",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check-flags.json",
+      "before_sha256": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "after_sha256": "b145bb3b275f2afd437d380cb00a755071d10909085e809a5e07f648c7d96b29",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check.en.json",
+      "before_sha256": "c3dda55a23705ae993b15ecce8c69e96d34b10b185ac4195d27a1eb79460b141",
+      "after_sha256": "c3dda55a23705ae993b15ecce8c69e96d34b10b185ac4195d27a1eb79460b141",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check.json",
+      "before_sha256": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "after_sha256": "88606211e16f7ceb6765c1d4b373f7f67f578927d8eabc9a7585e3f1971b03ae",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/qa.json",
+      "before_sha256": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "after_sha256": "3dd74bb8fbed3a5efff50b1932de98ac24419c61654b0cd215d5533a289fa26c",
+      "unchanged": true
+    },
+    {
+      "path": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/timeline.json",
+      "before_sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "after_sha256": "226cafffe6e8b6df7d71d2be6ec3a121cff6481bdac2aa16e57cea6d206e9433",
+      "unchanged": true
+    }
+  ],
+  "all_134_protected_primary_control_EN_files_unchanged": true,
+  "no_JA_ASR_or_shorten_started": true,
+  "JA_voice_approved": false,
+  "project_lease_present_after_actual_exit": false,
+  "next": "Hand the idle project lane back to root for the actual EN independent-ASR check. JA requires a later normal native audio check; actual TTS/fit success is not voice acceptance."
+}

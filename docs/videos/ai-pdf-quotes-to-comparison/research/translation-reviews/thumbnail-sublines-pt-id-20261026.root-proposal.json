@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "author": "/root",
+  "recorded_at_utc": "2026-10-26T19:34:06.696585+00:00",
+  "source_chinese_sub": "稅與運費別漏算",
+  "source_chinese_headline": "先算總價",
+  "scope": "Only PT/ID thumbnail.sub; original first-total headline and every spoken record/title/description/tag/chapter remain unchanged",
+  "rows": [
+    {
+      "locale": "pt",
+      "current_translation_sha256": "b9696b6cd76fd261b8aff78f439bba39e8754fdacd9764a0d296dcbf76ff9445",
+      "before_thumbnail": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Antes,**\n**o total**",
+        "sub": "Inclua imposto e frete"
+      },
+      "proposed_thumbnail": {
+        "tag": "Cotações PDF com AI",
+        "headline": "**Antes,**\n**o total**",
+        "sub": "Imposto + frete"
+      },
+      "only_proposed_field": "thumbnail.sub"
+    },
+    {
+      "locale": "id",
+      "current_translation_sha256": "50249accb62db18e6d410192dd44ef807df821c6960283e78fcbe2b6ab24a2e3",
+      "before_thumbnail": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Total**\n**dulu**",
+        "sub": "Pajak dan kirim dihitung"
+      },
+      "proposed_thumbnail": {
+        "tag": "AI bandingkan penawaran PDF",
+        "headline": "**Total**\n**dulu**",
+        "sub": "Pajak + ongkir"
+      },
+      "only_proposed_field": "thumbnail.sub"
+    }
+  ],
+  "why": "Actual native first corrected-headline render produced6of8, but PT/ID original two-line sub ran into MOKAAIR. Use short labels naming tax plus freight/delivery fee to keep the same whole-total instruction legible on one line. No font/layout/brand/phone rule change.",
+  "actual_failed_output": "/workspace/work/ai-pdf-01/localized-thumbnail-native-adoption-20261026",
+  "not_adopted": true,
+  "actual_fit_or_visual_QA_claimed": false
+}

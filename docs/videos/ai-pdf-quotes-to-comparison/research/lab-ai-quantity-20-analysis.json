@@ -1,0 +1,515 @@
+{
+  "schema_version": 1,
+  "analyst": "OpenAI Codex agent (sub-agent /root/pdf_ai_extract)",
+  "input_files": [
+    "requirements.txt",
+    "analysis-prompt.txt",
+    "extracted-pages.json",
+    "viewer-prompt.txt",
+    "requests/request-20.json"
+  ],
+  "input_sha256": {
+    "requirements.txt": "c3c38e75c01b15a10b8fe8540e367fad8eeebbf0a0dcc7f8fcd4d00100759fa3",
+    "analysis-prompt.txt": "dc159f0d4ad8713e3c7d28cc9a43df823ec20fe2bd25687105f1001c7d29921f",
+    "extracted-pages.json": "586eb5f78b158217cdb63e9625124034c0f45e4be9491a80efbc5b2518f6158c",
+    "viewer-prompt.txt": "6b491f229d7f5e12f53c2f56de3c812614f4ec7ac96e9042127aa45bb6d3a5c4",
+    "requests/request-20.json": "53f882946086d999e5ccbcf14755a176a92907e2c984920c2f3653c10be8eb62"
+  },
+  "request": {
+    "source_file": "requests/request-20.json",
+    "file_content": {
+      "scenario": "revised",
+      "quantity": 20
+    },
+    "exact_additional_instruction": "數量改成20張，其餘需求相同；先確認各報價數量適用範圍與運費，再更新比較和來源，列出變動。",
+    "received_phase": "A genuine subsequent task after initial extraction and the later font-correction rerun; not part of the initial prompt.",
+    "previous_requested_quantity": 10,
+    "new_requested_quantity": 20,
+    "all_other_requirements_unchanged": true
+  },
+  "scenario_decision": {
+    "request_scenario_value": "revised",
+    "normalized_scenario": "cedar_revised",
+    "supplier_count": 3,
+    "selected_source_files": [
+      "aster.pdf",
+      "birch.pdf",
+      "cedar-revised.pdf"
+    ],
+    "cedar_selected_source": "cedar-revised.pdf",
+    "cedar_excluded_source": "cedar.pdf",
+    "reason": "The new request asks for the revised scenario. The revised Cedar document explicitly replaces v1 and is not an additional supplier.",
+    "evidence": {
+      "value": "replaces original",
+      "source_file": "cedar-revised.pdf",
+      "page": 1,
+      "evidence": "Replaces CED-1026-v1; not an additional supplier."
+    },
+    "original_retention": "Keep original Cedar as historical evidence; its unquoted shipping remains unknown and is not filled using the revision."
+  },
+  "comparability_decision": {
+    "all_selected_goods_specifications_match": true,
+    "all_selected_quantities_20_in_explicit_range": true,
+    "all_selected_lead_times_within_7_business_days": true,
+    "all_selected_shipping_to_specified_address_explicit": true,
+    "all_selected_shipping_fixed_through_20": true,
+    "support": "Each supplier_analyses entry preserves source_fields and the literal page-2 range/shipping evidence."
+  },
+  "supplier_analyses": [
+    {
+      "supplier": "Aster",
+      "source_file": "aster.pdf",
+      "revision": "original",
+      "requested_quantity": 20,
+      "source_quoted_quantity": {
+        "value": 10,
+        "source_file": "aster.pdf",
+        "page": 1,
+        "evidence": "Quoted quantity: 10 pieces"
+      },
+      "quantity_applicable": {
+        "value": true,
+        "source_file": "aster.pdf",
+        "page": 2,
+        "evidence": "Quantity range: 10 to 20 pieces inclusive"
+      },
+      "unit_price_unchanged_at_20": {
+        "value": true,
+        "source_file": "aster.pdf",
+        "page": 2,
+        "evidence": "Unit price stays TWD 180.00 excluding tax throughout this range."
+      },
+      "shipping_fixed_for_10_to_20": {
+        "value": true,
+        "source_file": "aster.pdf",
+        "page": 2,
+        "evidence": "Shipping remains TWD 200.00 net for 10 to 20 pieces."
+      },
+      "source_fields": {
+        "specification": {
+          "value": "A6 postcard (105 x 148 mm); 350 gsm matte white card; double-sided full colour; one identical artwork",
+          "source_file": "aster.pdf",
+          "page": 1,
+          "evidence": "Item: A6 postcard (105 x 148 mm)\nPaper: 350 gsm matte white card\nPrint: double-sided full colour; one identical artwork"
+        },
+        "quoted_quantity": {
+          "value": 10,
+          "source_file": "aster.pdf",
+          "page": 1,
+          "evidence": "Quoted quantity: 10 pieces"
+        },
+        "quantity_min": {
+          "value": 10,
+          "source_file": "aster.pdf",
+          "page": 2,
+          "evidence": "Quantity range: 10 to 20 pieces inclusive"
+        },
+        "quantity_max": {
+          "value": 20,
+          "source_file": "aster.pdf",
+          "page": 2,
+          "evidence": "Quantity range: 10 to 20 pieces inclusive"
+        },
+        "currency": {
+          "value": "TWD",
+          "source_file": "aster.pdf",
+          "page": 1,
+          "evidence": "Currency: TWD"
+        },
+        "unit_price": {
+          "value": "180.00",
+          "source_file": "aster.pdf",
+          "page": 1,
+          "evidence": "Unit price: TWD 180.00 excluding tax"
+        },
+        "unit_tax_mode": {
+          "value": "exclusive",
+          "source_file": "aster.pdf",
+          "page": 1,
+          "evidence": "Unit price: TWD 180.00 excluding tax"
+        },
+        "goods_tax_rate": {
+          "value": "0.05",
+          "source_file": "aster.pdf",
+          "page": 1,
+          "evidence": "Goods tax: 5% of goods net amount"
+        },
+        "shipping_amount": {
+          "value": "200.00",
+          "source_file": "aster.pdf",
+          "page": 2,
+          "evidence": "Shipping: TWD 200.00 excluding tax to the specified address"
+        },
+        "shipping_tax_mode": {
+          "value": "exclusive",
+          "source_file": "aster.pdf",
+          "page": 2,
+          "evidence": "Shipping: TWD 200.00 excluding tax to the specified address"
+        },
+        "shipping_tax_rate": {
+          "value": "0.05",
+          "source_file": "aster.pdf",
+          "page": 2,
+          "evidence": "Shipping tax: 5% of shipping net amount"
+        },
+        "lead_business_days": {
+          "value": 7,
+          "source_file": "aster.pdf",
+          "page": 2,
+          "evidence": "Lead time: 7 business days"
+        }
+      },
+      "currency": "TWD",
+      "decimal_formula": "Decimal(20) * Decimal(\"180.00\") * (Decimal(\"1\") + Decimal(\"0.05\")) + Decimal(\"200.00\") * (Decimal(\"1\") + Decimal(\"0.05\"))",
+      "decimal_result_at_20": {
+        "goods_gross": "3780.00",
+        "shipping_gross": "210.00",
+        "delivered_total": "3990.00"
+      },
+      "decimal_result_at_10_for_change_comparison": {
+        "goods_gross": "1890.00",
+        "shipping_gross": "210.00",
+        "delivered_total": "2100.00"
+      },
+      "delivered_total_change": "1890.00",
+      "change_explanation": "Quantity changes from 10 to 20 and goods amount scales with quantity; unit price, tax mode/rate, shipping amount, shipping tax, specifications, and lead time remain those explicitly quoted. The quoted_quantity field remains 10 because that is the source text."
+    },
+    {
+      "supplier": "Birch",
+      "source_file": "birch.pdf",
+      "revision": "original",
+      "requested_quantity": 20,
+      "source_quoted_quantity": {
+        "value": 10,
+        "source_file": "birch.pdf",
+        "page": 1,
+        "evidence": "Quoted quantity: 10 pieces"
+      },
+      "quantity_applicable": {
+        "value": true,
+        "source_file": "birch.pdf",
+        "page": 2,
+        "evidence": "Quantity range: 10 to 20 pieces inclusive"
+      },
+      "unit_price_unchanged_at_20": {
+        "value": true,
+        "source_file": "birch.pdf",
+        "page": 2,
+        "evidence": "The TWD 205.00 tax-inclusive unit price stays the same in this range."
+      },
+      "shipping_fixed_for_10_to_20": {
+        "value": true,
+        "source_file": "birch.pdf",
+        "page": 2,
+        "evidence": "Quantity range: 10 to 20 pieces inclusive\nThe TWD 205.00 tax-inclusive unit price stays the same in this range.\nShipping: TWD 0.00; delivery to the specified address is free"
+      },
+      "source_fields": {
+        "specification": {
+          "value": "A6 postcard (105 x 148 mm); 350 gsm matte white card; double-sided full colour; one identical artwork",
+          "source_file": "birch.pdf",
+          "page": 1,
+          "evidence": "Size: A6 postcard (105 x 148 mm)\nStock: 350 gsm matte white card\nPrinting: double-sided full colour; one identical artwork"
+        },
+        "quoted_quantity": {
+          "value": 10,
+          "source_file": "birch.pdf",
+          "page": 1,
+          "evidence": "Quoted quantity: 10 pieces"
+        },
+        "quantity_min": {
+          "value": 10,
+          "source_file": "birch.pdf",
+          "page": 2,
+          "evidence": "Quantity range: 10 to 20 pieces inclusive"
+        },
+        "quantity_max": {
+          "value": 20,
+          "source_file": "birch.pdf",
+          "page": 2,
+          "evidence": "Quantity range: 10 to 20 pieces inclusive"
+        },
+        "currency": {
+          "value": "TWD",
+          "source_file": "birch.pdf",
+          "page": 1,
+          "evidence": "Currency: TWD"
+        },
+        "unit_price": {
+          "value": "205.00",
+          "source_file": "birch.pdf",
+          "page": 1,
+          "evidence": "Unit price: TWD 205.00 including 5% goods tax"
+        },
+        "unit_tax_mode": {
+          "value": "inclusive",
+          "source_file": "birch.pdf",
+          "page": 1,
+          "evidence": "Unit price: TWD 205.00 including 5% goods tax"
+        },
+        "goods_tax_rate": {
+          "value": "0.05",
+          "source_file": "birch.pdf",
+          "page": 1,
+          "evidence": "Unit price: TWD 205.00 including 5% goods tax"
+        },
+        "shipping_amount": {
+          "value": "0.00",
+          "source_file": "birch.pdf",
+          "page": 2,
+          "evidence": "Shipping: TWD 0.00; delivery to the specified address is free"
+        },
+        "shipping_tax_mode": {
+          "value": "inclusive",
+          "source_file": "birch.pdf",
+          "page": 2,
+          "evidence": "Shipping tax mode: inclusive; shipping tax rate: 0%"
+        },
+        "shipping_tax_rate": {
+          "value": "0.00",
+          "source_file": "birch.pdf",
+          "page": 2,
+          "evidence": "Shipping tax mode: inclusive; shipping tax rate: 0%"
+        },
+        "lead_business_days": {
+          "value": 5,
+          "source_file": "birch.pdf",
+          "page": 2,
+          "evidence": "Lead time: 5 business days"
+        }
+      },
+      "currency": "TWD",
+      "decimal_formula": "Decimal(20) * Decimal(\"205.00\") + Decimal(\"0.00\")",
+      "decimal_result_at_20": {
+        "goods_gross": "4100.00",
+        "shipping_gross": "0.00",
+        "delivered_total": "4100.00"
+      },
+      "decimal_result_at_10_for_change_comparison": {
+        "goods_gross": "2050.00",
+        "shipping_gross": "0.00",
+        "delivered_total": "2050.00"
+      },
+      "delivered_total_change": "2050.00",
+      "change_explanation": "Quantity changes from 10 to 20 and goods amount scales with quantity; unit price, tax mode/rate, shipping amount, shipping tax, specifications, and lead time remain those explicitly quoted. The quoted_quantity field remains 10 because that is the source text."
+    },
+    {
+      "supplier": "Cedar",
+      "source_file": "cedar-revised.pdf",
+      "revision": "revised",
+      "requested_quantity": 20,
+      "source_quoted_quantity": {
+        "value": 10,
+        "source_file": "cedar-revised.pdf",
+        "page": 1,
+        "evidence": "Quoted quantity: 10 pieces"
+      },
+      "quantity_applicable": {
+        "value": true,
+        "source_file": "cedar-revised.pdf",
+        "page": 2,
+        "evidence": "Quantity range: 10 to 20 pieces inclusive"
+      },
+      "unit_price_unchanged_at_20": {
+        "value": true,
+        "source_file": "cedar-revised.pdf",
+        "page": 2,
+        "evidence": "Unit price stays TWD 175.00 excluding tax throughout this range."
+      },
+      "shipping_fixed_for_10_to_20": {
+        "value": true,
+        "source_file": "cedar-revised.pdf",
+        "page": 2,
+        "evidence": "Shipping remains TWD 250.00 net for 10 to 20 pieces."
+      },
+      "source_fields": {
+        "specification": {
+          "value": "A6 postcard (105 x 148 mm); 350 gsm matte white card; double-sided full colour; one identical artwork",
+          "source_file": "cedar-revised.pdf",
+          "page": 1,
+          "evidence": "Product: A6 postcard (105 x 148 mm)\nMaterial: 350 gsm matte white card\nPrint specification: double-sided full colour; one identical artwork"
+        },
+        "quoted_quantity": {
+          "value": 10,
+          "source_file": "cedar-revised.pdf",
+          "page": 1,
+          "evidence": "Quoted quantity: 10 pieces"
+        },
+        "quantity_min": {
+          "value": 10,
+          "source_file": "cedar-revised.pdf",
+          "page": 2,
+          "evidence": "Quantity range: 10 to 20 pieces inclusive"
+        },
+        "quantity_max": {
+          "value": 20,
+          "source_file": "cedar-revised.pdf",
+          "page": 2,
+          "evidence": "Quantity range: 10 to 20 pieces inclusive"
+        },
+        "currency": {
+          "value": "TWD",
+          "source_file": "cedar-revised.pdf",
+          "page": 1,
+          "evidence": "Currency: TWD"
+        },
+        "unit_price": {
+          "value": "175.00",
+          "source_file": "cedar-revised.pdf",
+          "page": 1,
+          "evidence": "Unit price: TWD 175.00 excluding tax"
+        },
+        "unit_tax_mode": {
+          "value": "exclusive",
+          "source_file": "cedar-revised.pdf",
+          "page": 1,
+          "evidence": "Unit price: TWD 175.00 excluding tax"
+        },
+        "goods_tax_rate": {
+          "value": "0.05",
+          "source_file": "cedar-revised.pdf",
+          "page": 1,
+          "evidence": "Goods tax: 5% of goods net amount"
+        },
+        "shipping_amount": {
+          "value": "250.00",
+          "source_file": "cedar-revised.pdf",
+          "page": 2,
+          "evidence": "Shipping: TWD 250.00 excluding tax to the specified address"
+        },
+        "shipping_tax_mode": {
+          "value": "exclusive",
+          "source_file": "cedar-revised.pdf",
+          "page": 2,
+          "evidence": "Shipping: TWD 250.00 excluding tax to the specified address"
+        },
+        "shipping_tax_rate": {
+          "value": "0.05",
+          "source_file": "cedar-revised.pdf",
+          "page": 2,
+          "evidence": "Shipping tax: 5% of shipping net amount"
+        },
+        "lead_business_days": {
+          "value": 7,
+          "source_file": "cedar-revised.pdf",
+          "page": 2,
+          "evidence": "Lead time: 7 business days"
+        }
+      },
+      "currency": "TWD",
+      "decimal_formula": "Decimal(20) * Decimal(\"175.00\") * (Decimal(\"1\") + Decimal(\"0.05\")) + Decimal(\"250.00\") * (Decimal(\"1\") + Decimal(\"0.05\"))",
+      "decimal_result_at_20": {
+        "goods_gross": "3675.00",
+        "shipping_gross": "262.50",
+        "delivered_total": "3937.50"
+      },
+      "decimal_result_at_10_for_change_comparison": {
+        "goods_gross": "1837.50",
+        "shipping_gross": "262.50",
+        "delivered_total": "2100.00"
+      },
+      "delivered_total_change": "1837.50",
+      "change_explanation": "Quantity changes from 10 to 20 and goods amount scales with quantity; unit price, tax mode/rate, shipping amount, shipping tax, specifications, and lead time remain those explicitly quoted. The quoted_quantity field remains 10 because that is the source text."
+    }
+  ],
+  "decimal_execution": {
+    "actually_executed": true,
+    "engine": "Python standard-library decimal.Decimal in this Codex agent tool execution",
+    "source_fields_extracted_before_calculation": true,
+    "spreadsheet_run_by_this_agent": false,
+    "rounding": "Amounts displayed to two decimal places. All delivered totals here are exact at cents; no intermediate rounding of inclusive-tax splits is required for delivered totals.",
+    "birch_rule": "Unit price includes goods tax. Multiply by 20 once; add no second goods tax. Shipping is explicitly zero.",
+    "unknown_rule": "Original Cedar total remains null; no missing amount or tax rate is invented.",
+    "downstream_handoff": "The lab may independently rerun the same Decimal calculations from normalized-quotes.json plus request-20.json to produce the editable table."
+  },
+  "ranking_at_20": [
+    {
+      "rank": 1,
+      "supplier": "Cedar",
+      "delivered_total": "3937.50",
+      "currency": "TWD",
+      "source_file": "cedar-revised.pdf"
+    },
+    {
+      "rank": 2,
+      "supplier": "Aster",
+      "delivered_total": "3990.00",
+      "currency": "TWD",
+      "source_file": "aster.pdf"
+    },
+    {
+      "rank": 3,
+      "supplier": "Birch",
+      "delivered_total": "4100.00",
+      "currency": "TWD",
+      "source_file": "birch.pdf"
+    }
+  ],
+  "winner_change": {
+    "winner_at_10_revised": "Birch",
+    "winner_at_20_revised": "Cedar",
+    "decision": "Recomputed at 20 rather than assuming the previous minimum remains the minimum."
+  },
+  "original_cedar_not_used": {
+    "source_file": "cedar.pdf",
+    "requested_quantity": 20,
+    "quantity_applicable": {
+      "value": true,
+      "source_file": "cedar.pdf",
+      "page": 2,
+      "evidence": "Quantity range: 10 to 20 pieces inclusive"
+    },
+    "unit_price_unchanged_at_20": {
+      "value": true,
+      "source_file": "cedar.pdf",
+      "page": 2,
+      "evidence": "Unit price stays TWD 175.00 excluding tax throughout this range."
+    },
+    "shipping_amount": {
+      "value": null,
+      "source_file": "cedar.pdf",
+      "page": 2,
+      "evidence": "Shipping: not quoted"
+    },
+    "shipping_tax_mode": {
+      "value": "unknown",
+      "source_file": "cedar.pdf",
+      "page": 2,
+      "evidence": "Shipping tax: not quoted"
+    },
+    "shipping_tax_rate": {
+      "value": null,
+      "source_file": "cedar.pdf",
+      "page": 2,
+      "evidence": "Shipping tax: not quoted"
+    },
+    "delivered_total": null,
+    "questions": [
+      {
+        "field": "shipping_amount",
+        "question": "請提供10張及20張送至同一指定地址的書面運費報價，並確認數量變動時運費是否相同。",
+        "source_file": "cedar.pdf",
+        "page": 2,
+        "evidence": "Shipping: not quoted"
+      },
+      {
+        "field": "shipping_tax_mode",
+        "question": "運費報價是含稅還是未稅？",
+        "source_file": "cedar.pdf",
+        "page": 2,
+        "evidence": "Shipping tax: not quoted"
+      },
+      {
+        "field": "shipping_tax_rate",
+        "question": "運費適用的稅率與稅額是多少？請書面明示，不能以商品稅率代替。",
+        "source_file": "cedar.pdf",
+        "page": 2,
+        "evidence": "Shipping tax: not quoted"
+      }
+    ]
+  },
+  "limitations": [
+    "Only supplied selectable-PDF page text was read; no PDF visual inspection or OCR.",
+    "Source PDF hashes are metadata from extracted-pages.json; this agent did not open the PDF binaries.",
+    "No fixture, truth, results, generator, or independent checker output was read."
+  ]
+}

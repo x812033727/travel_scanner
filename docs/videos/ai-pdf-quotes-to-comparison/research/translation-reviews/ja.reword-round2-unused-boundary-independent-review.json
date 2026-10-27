@@ -1,0 +1,388 @@
+{
+  "schema_version": 1,
+  "slug": "ai-pdf-quotes-to-comparison",
+  "locale": "ja",
+  "scope": "source-meaning-and-naturalness",
+  "recorded_at_utc": "2026-10-26T17:21:44.034888+00:00",
+  "reviewer": {
+    "agent_id": "/root/review_pdf_ja_boundary",
+    "role": "Independent unused native reword2 boundary reviewer",
+    "independence": "Did not author, edit or adopt canonical Japanese or either native answer. Did not run production, audio, ASR, retakes or reword stages. Wrote only this report.",
+    "method": "Actually read the r2 raw answer, both real JA boundaries and raw-answer bindings, current fd27 with Chinese and adjacent cards/captions, the two prior independent review conclusions, root composite binding, and latest stored primary/second ASR records, native flags, fit and counters. Hash and parsed-record comparisons establish unchanged scope; they do not substitute for reading."
+  },
+  "source_video_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+  "translation_sha256": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+  "boundaries": [
+    {
+      "file": "/workspace/work/ai-pdf-01/author-review-boundaries/ja.reword.round-1.2026-10-26T17-00-58-659Z.json",
+      "sha256": "f886fbc82399484686aa63263551b598484e563d89431c730ef6cde6fa0ef8d2",
+      "variant": "reword",
+      "round": 1,
+      "native_answer_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/ja-reword-round-1-meaning-review-2026-10-26T17-00-58-659Z.txt",
+      "native_answer_sha256": "24cb38142348ebd66e1b8f2986633ee46ecaa1ff25f8da35c718146af8044af4",
+      "read_in_full": true,
+      "historical_applied_ids": [
+        "fd27",
+        "pn4i"
+      ],
+      "historical_rejected": [
+        {
+          "id": "q7x8",
+          "reason_exact": "q7x8: the numbers changed",
+          "remains_rejected": true
+        }
+      ]
+    },
+    {
+      "file": "/workspace/work/ai-pdf-01/author-review-boundaries/ja.reword.round-2.2026-10-26T17-17-54-336Z.json",
+      "sha256": "1ddd3fe401ba7cf13556f47b8b24147be3ad6c8f19f9da6ad7da517c5c95f93c",
+      "variant": "reword",
+      "round": 2,
+      "native_answer_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/answers/ja-reword-round-2-meaning-review-2026-10-26T17-17-54-336Z.txt",
+      "native_answer_sha256": "013dd142ff73770788f62364ae24c8d41b88a771f1d0408f9c5f4f6fa9f6dc55",
+      "read_in_full": true,
+      "raw_proposal_ids": [
+        "fd27"
+      ],
+      "applied_ids": [],
+      "applied_count": 0,
+      "rejected": [
+        {
+          "id": "fd27",
+          "reason_exact": "fd27: unchanged",
+          "remains_unused": true
+        }
+      ],
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      }
+    }
+  ],
+  "reviewed_boundaries": [
+    {
+      "file": "/workspace/work/ai-pdf-01/author-review-boundaries/ja.reword.round-1.2026-10-26T17-00-58-659Z.json",
+      "sha256": "f886fbc82399484686aa63263551b598484e563d89431c730ef6cde6fa0ef8d2"
+    },
+    {
+      "file": "/workspace/work/ai-pdf-01/author-review-boundaries/ja.reword.round-2.2026-10-26T17-17-54-336Z.json",
+      "sha256": "1ddd3fe401ba7cf13556f47b8b24147be3ad6c8f19f9da6ad7da517c5c95f93c"
+    }
+  ],
+  "prior_review_chain": {
+    "native_reword1_independent_review": {
+      "file": "/workspace/work/ai-pdf-01/ja-independent-boundary-review/reword1-independent-meaning-review.json",
+      "sha256": "a6c0c8f7c7f90035e3e707e2bf44e587ffbaa037805e05b1d9c2a63ff53e02d7",
+      "passed": true
+    },
+    "q7x8_author_correction_independent_review": {
+      "file": "/workspace/work/ai-pdf-01/ja-independent-boundary-review/q7x8-author-correction-independent-review.json",
+      "sha256": "508f1554e5a9eb9d5c849f60a03c1e43b2d2877062f9cbdd34987ea96515c9ac",
+      "passed": true,
+      "raw_worksheet_budget_passed": false,
+      "raw_worksheet_max_chars": 30,
+      "corrected_codepoints": 32,
+      "effective_existing_reword1_cap": 33,
+      "effective_budget_passed": true
+    },
+    "current_composite": {
+      "file": "/workspace/travel_scanner_pdf/docs/videos/ai-pdf-quotes-to-comparison/research/translation-reviews/ja.reword1-current-reviewed-author-correction.json",
+      "sha256": "9ef90b4a794f33c5a6ffb61997c8307678872b1ce8190cc453ee92e858cc6d00",
+      "read_in_full": true,
+      "translation_sha256": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351",
+      "no_audio_acceptance_inferred_from_prior_source_pass": true
+    },
+    "baseline_actually_read_source_sha256": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "baseline_actually_read_translation_sha256": "70a718d2b51e18c57a4e1f2844c2b5ef611c5fd76b2b43dff7ff09f2a869c11c"
+  },
+  "changes_ids": [],
+  "changed_line_ids": [],
+  "r2_adoption_proof": {
+    "raw_proposal_count": 1,
+    "native_accepted_count": 0,
+    "actual_native_reason": "fd27: unchanged",
+    "raw_text_equals_current_exactly": true,
+    "before_unit_source_hashes": {
+      "video.json": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+      "i18n/pt.json": "db80b73e876d581d65675139ab96e8d354b0689b1727630ab4546d87fa3c6bd8",
+      "i18n/es.json": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea",
+      "i18n/id.json": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "i18n/ko.json": "aca0ed7af78ecc433accda5eb8994f157faa6dc833b65e3c04c0b0b4d743541e",
+      "i18n/vi.json": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+      "i18n/en.json": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "i18n/th.json": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+      "i18n/ja.json": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351"
+    },
+    "after_unit_source_hashes": {
+      "video.json": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+      "i18n/pt.json": "db80b73e876d581d65675139ab96e8d354b0689b1727630ab4546d87fa3c6bd8",
+      "i18n/es.json": "7ee642cf0a288ce8be2010b68f4b048d8a7becb7f2743401230325d37f3446ea",
+      "i18n/id.json": "78302c5a486dcb63d026a439b1d354846ebdcfa71766a8ff2624435f5288ac05",
+      "i18n/ko.json": "aca0ed7af78ecc433accda5eb8994f157faa6dc833b65e3c04c0b0b4d743541e",
+      "i18n/vi.json": "938bbba0ac851c8a1d78bb7ce91138afe17d2c057da78b9293451b84def6dd73",
+      "i18n/en.json": "844c953f4842dcb741bc5a5a96db904729f77e3312a41b373f8bcf5a1b44acbc",
+      "i18n/th.json": "8b60ef2931b5eb1308d0e486a8d441239af64fb54c4975d8d17911c1d66cd116",
+      "i18n/ja.json": "4669d500de015f641c9edecb572a300a753e6322e91f80fa3fec68cd26f63351"
+    },
+    "all_nine_source_files_byte_exact_from_before_to_after": true,
+    "all_nine_current_hashes_independently_match": true,
+    "translation_all_101_records_and_metadata_unchanged_during_unit": true,
+    "r2_source_change_count": 0
+  },
+  "current_review_chain_delta_proof": {
+    "total_line_records": 101,
+    "only_changes_from_actually_read_70a_baseline": [
+      "fd27",
+      "q7x8",
+      "pn4i"
+    ],
+    "two_native_r1_texts_exact_to_raw_answer": true,
+    "q7x8_exact_to_independently_reviewed_root_proposal": true,
+    "other_98_full_line_records_exact_to_baseline": true,
+    "all_101_line_nontext_fields_exact": true,
+    "all_metadata_values_exact": true,
+    "metadata_canonical_sha256": "90b72bd78a5d4b331ddf61ab983fa0d3ed85ebebf5ec2cb25c816e40ac29951a"
+  },
+  "line_reviews": [
+    {
+      "id": "fd27",
+      "raw_native_proposal": "Asterの2ページ分の単価と送料を1行にまとめ、出典もそれぞれ残します。",
+      "current_japanese": "Asterの2ページ分の単価と送料を1行にまとめ、出典もそれぞれ残します。",
+      "native_disposition": "unused; unchanged",
+      "source_context_read": [
+        {
+          "scene": "extract-fields",
+          "card": {
+            "columns": [
+              "原文欄位",
+              "表格要保留什麼"
+            ],
+            "key": "同樣的欄位，接住不同排版",
+            "rows": [
+              [
+                "規格與數量",
+                "商品內容、數量適用範圍"
+              ],
+              [
+                "單價與稅",
+                "金額、含稅或未稅"
+              ],
+              [
+                "送貨條件",
+                "運費、運費稅、交貨天數"
+              ]
+            ],
+            "source": "本次分析要求｜欄位定義",
+            "title": "先抽這些欄位"
+          },
+          "lines": [
+            {
+              "id": "ke2c",
+              "chinese": "三家版面不同，所以先訂好共同欄位，才不會照著排版亂比。",
+              "current_japanese": "3社で配置が違うので、配置に惑わされぬよう共通項目を先に決めます。"
+            },
+            {
+              "id": "rgfp",
+              "chinese": "原文是含稅價，就保留含稅價，不要急著把所有數字加在一起。",
+              "current_japanese": "原文が税込みなら税込みのまま残し、すぐ全ての数値を足さないでください。"
+            }
+          ]
+        },
+        {
+          "scene": "extract-aster",
+          "card": {
+            "columns": [
+              "欄位",
+              "值",
+              "出處"
+            ],
+            "key": "一張報價的條件跨了兩頁",
+            "rows": [
+              [
+                "單價",
+                "180，未稅",
+                "aster.pdf 第1頁"
+              ],
+              [
+                "商品稅",
+                "5%",
+                "aster.pdf 第1頁"
+              ],
+              [
+                "運費",
+                "200，未稅",
+                "aster.pdf 第2頁"
+              ]
+            ],
+            "source": "原創練習｜aster.pdf 第1–2頁",
+            "title": "甲的單價可以追到哪裡？"
+          },
+          "lines": [
+            {
+              "id": "fd27",
+              "chinese": "甲分在兩頁的單價和運費，表格接成同一列，各自留著出處。",
+              "current_japanese": "Asterの2ページ分の単価と送料を1行にまとめ、出典もそれぞれ残します。"
+            }
+          ]
+        },
+        {
+          "scene": "extract-aster-quote",
+          "card": {
+            "key": "運費也明示為未稅",
+            "quote": "Shipping: TWD 200.00 excluding tax to the specified address",
+            "source": "aster.pdf 第2頁｜原創練習原文"
+          },
+          "lines": [
+            {
+              "id": "qttz",
+              "chinese": "拿這段原句，就能核對表格有沒有把運費漏掉。",
+              "current_japanese": "この原文で、表の送料の抜けを確認できます。"
+            },
+            {
+              "id": "indq",
+              "chinese": "同樣是運費，為什麼乙能填零，丙卻不行？",
+              "current_japanese": "送料はなぜBirchなら0で、Cedarは駄目なのでしょう。"
+            }
+          ]
+        }
+      ],
+      "meaning_finding": "The current source text remains faithful in this card and adjacent-caption context. Aster unit price on page 1 and shipping on page 2 are collected in one row, with each source retained. 2ページ分 compresses the across-two-pages information without changing supplier, field, page count, row count or source traceability. 出典 means the source reference, as required by the Chinese.",
+      "naturalness_finding": "Acceptable natural instructional Japanese. The proposal is exactly the already reviewed current sentence, so r2 introduces no new wording or meaning.",
+      "numeric_sequence_current": [
+        "2",
+        "1"
+      ],
+      "numeric_sequence_raw_proposal": [
+        "2",
+        "1"
+      ],
+      "passed_for_current_source_text": true,
+      "issues": []
+    }
+  ],
+  "actual_audio_state_observed_read_only": {
+    "actual_unit_outcome_file": "/workspace/work/ai-pdf-01/ja-reviewed-reword1-20261026T1715-actual-outcome.json",
+    "actual_unit_outcome_sha256": "0b2bdd4a74f16013a2c2765afd24782bc448bb1e5679c311439aa7a0d55b926f",
+    "actual_exit_code": 6,
+    "actual_unit_ended_at_utc": "2026-10-26T17:17:54.633113+00:00",
+    "LEASE_present_after_reported": false,
+    "before_snapshot_file": "/workspace/work/ai-pdf-01/ja-reviewed-reword1-20261026T1715-before.json",
+    "before_snapshot_sha256": "4b67372a65d44a53e2a6e95aa1f67250e994dcb4f02e5530e0fbf9acc4463245",
+    "raw_audio_snapshot_diff": {
+      "measurement": "Compare recorded raw-source WAV hash maps, excluding tempo-cache .x files; no new audio generation or direct audio listening by reviewer.",
+      "raw_source_count_before": 101,
+      "raw_source_count_after": 101,
+      "changed_raw_source_files": [
+        "fd27.wav",
+        "pn4i.wav",
+        "q7x8.wav"
+      ],
+      "unchanged_raw_source_count": 98
+    },
+    "check_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check.ja.json",
+    "check_sha256": "41efd3d61ab9b47a6bc040a6d3d05432da4c230e97b3cc3d02c7490943607aea",
+    "fd27_primary_and_second_record": {
+      "scene": "extract-aster",
+      "clip": "a7e17dfa5fbae4c8",
+      "terms": [
+        "Aster"
+      ],
+      "heard": "Asterの2ページ分の単価と送料を1行にまとめ、出店もそれぞれ残します。",
+      "noul": 0.06,
+      "intended": "Asterの2ページ分の単価と送料を1行にまとめ、出典もそれぞれ残します。",
+      "spoken_form": "Asterの2ページ分の単価と送料を1行にまとめ、出典もそれぞれ残します。",
+      "match_kind": null,
+      "match": false,
+      "second": {
+        "by": "whisper_second_opinion.py",
+        "terms": [
+          "Aster"
+        ],
+        "heard": "Asterの2ページ分の単価と送料を1行にまとめ出店もそれぞれ残します",
+        "match_kind": null,
+        "noul": 0.1
+      }
+    },
+    "q7x8_record": {
+      "scene": "extract-birch",
+      "clip": "410972207a4d3b67",
+      "terms": [
+        "Birch"
+      ],
+      "heard": "Birchの見積書に無料配送ってあるので、送料欄には0を入れます。",
+      "noul": 0.28,
+      "intended": "Birchの見積書に無料配送とあるので、送料欄には0を入れます。",
+      "spoken_form": "Birchの見積書に無料配送とあるので、送料欄には0を入れます。",
+      "match_kind": null,
+      "match": false,
+      "second": {
+        "by": "whisper_second_opinion.py",
+        "terms": [
+          "Birch"
+        ],
+        "heard": "バーチの見積もり書に無料配送ってあるので送料欄にはゼロを入れます",
+        "match_kind": null,
+        "noul": 0.62
+      }
+    },
+    "pn4i_record": {
+      "scene": "range21-run",
+      "clip": "dd2845b5baae93f1",
+      "terms": [],
+      "heard": "まず新しい数量を各社が明記した適用範囲と照合します",
+      "noul": null,
+      "intended": "まず新しい数量を、各社が明記した適用範囲と照合します。",
+      "spoken_form": "まず新しい数量を、各社が明記した適用範囲と照合します。",
+      "match_kind": "exact",
+      "match": true
+    },
+    "flag_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/review/check-flags.ja.json",
+    "flag_sha256": "54a86224ccca6277df59217cd8af576663178ea254d355d4c0f83fc1444fd5ef",
+    "actual_flags": [
+      "fd27"
+    ],
+    "actual_flag_count": 1,
+    "q7x8_and_pn4i_absent_from_native_flags": true,
+    "interpretation": "fd27 remains a real unresolved native flag. Both stored transcripts render intended 出典 as 出店. q7x8 and pn4i are absent from the latest native flag list; q7x8 raw primary match remains false and is not relabeled true here. No direct audio listening, forced skip, flag override or voice pass is claimed.",
+    "fit_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/dubs/ja/fit.json",
+    "fit_sha256": "a6a67f814245b64ca7f5c7c897ebaa293830f34b4c08a1a08a7c15626a9a9f19",
+    "actual_fit_over": [],
+    "fit_over_empty_observed": true,
+    "fit_is_not_voice_approval": true
+  },
+  "native_control_preserved": {
+    "auto_file": "/workspace/work/ai-pdf-01/media/ai-pdf-quotes-to-comparison/auto.json",
+    "auto_sha256": "49de44587c2cfa53b3ae4ae591359f5c86bbbd2c6645de5c88b8fc9d6a4613e1",
+    "native_rounds": {
+      "shorten": 0,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    },
+    "native_total_reword_limit": 2,
+    "both_reword_rounds_already_counted": true,
+    "check_stopped": true,
+    "round3_or_further_author_correction_proposed": false,
+    "extra_retake_reword_reset_or_new_authorization_granted": false,
+    "remaining_audio_flag_not_cleared_by_source_pass": true
+  },
+  "issues": [],
+  "issues_count": 0,
+  "passed": true,
+  "status": "Retain source-meaning and naturalness pass for exact current JA4669. Both real JA reword boundaries are accounted for. R2 adopted zero changes and remains unused; the actual fd27 audio flag and exhausted native reword counters remain unchanged.",
+  "audio_voice_passed": false,
+  "voice_approved": false,
+  "final_or_publication_approval_claimed": false,
+  "actions": {
+    "only_written_file": "/workspace/work/ai-pdf-01/ja-independent-boundary-review/reword2-unused-boundary-independent-review.json",
+    "canonical_or_index_modified": false,
+    "auto_raw_flags_caps_or_media_modified": false,
+    "paid_calls": 0,
+    "new_ASR_or_audio_actions": 0,
+    "network_actions": 0,
+    "retry_or_model_chase_started": false,
+    "normal_native_failure_overridden": false
+  }
+}
