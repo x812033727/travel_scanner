@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-pdf-quotes-to-comparison
 title: Produce AI PDF quote comparison tutorial after the editable animation episode
-status: blocked
+status: in-progress
 priority: P2
 area: docs
 owner: codex-ai-video-pdf
-claimed_at: 2026-10-26T23:36:02Z
+claimed_at: 2026-10-27T01:15:58Z
 created_at: 2026-10-25T15:36:21Z
 completed_at:
 branch: codex/ai-pdf-comparison-20261026
@@ -40,6 +40,16 @@ The owner explicitly requests continuous original AI teaching-video production a
 Research and the concrete next_brief are in docs/videos/ai-editable-explainer-animation/research/next-topics.json. The final lab must independently calculate totals, keep unsupported prices unknown and prove changes after quantity revision. The actual film must pass lint/audio/media/QA/package checks; planned timing is not proof.
 
 ## Notes
+
+### Fresh actual state5 PT admission after genuine saved due — 2026-10-27T01:16:38.738969+00:00
+
+- This is a separate fresh user execution after real2026-10-27T00:58:53.497Z due, with no due-time automatic replay. Independent original audit01:14–15Z still found actual taskblob0ec/latestOct26 17:03:40/head1237/draft/no-auto, no actual controller/LEASE/STOP, original14 unchanged and genuine SDKGET unchanged approvedfinal/publish/pendingmaterials/retries{}/workerunavailable. Root read the complete actual audit91f1356a. No original source/media/paid/owner action or repeated connection question.
+- ONE new FREE preflight actually ended01:15:38.881Z/exit0/session20599 and released01:15:39.783Z with7/7actual guards PASS. Current2350runtime matches genuine state5 baseline5e9bcbd;2349NONAUTO files still match completed9CC, preserving auto5/due/caps. All467dated source files and479then-current files, core20/original14/immutabletext28+manifest399c/consumedCCmarker stayed exact. All8 current meaning chains and7actual native archives (EN3/JA2/KO2) match their real reviews; existing fullPT4b64 baseline remains current. Unknownspeechjournals0/currenttop-levelunadopted0 and archive836fe unchanged. New source-only admission reports follow this dated479snapshot.
+- Actual primary346a/matching11QA/localchat8/nativePT5/due/caps and genuinebothprojectGETs passed. Actual native dryrun95newrequests/6112estimatedchars/monthly5743335/14estimateover and retained0.13s/1.18x warning remain. Quota is the actual current read; no billing attribution or actual synthesis/fit/HTTP settlement is inferred. NineCC1002cues/31warnings and actual nine-locale title/description/chapter text are unchanged/current in their documented failed-dub/fallback timings because no text/audio timing changed. True checked voices remainKO+ES2/8; ENJAfailedlimits and PT/ID/VI/THmissing remain.
+- Root ordinary same-owner status/claim succeeded withoutforce/native change. Root personally read complete frozen6f606e52 FREE/e43c9aae ONEdriver and actual original audit; existing compiler checks passed. Final source-identical grant `research/language-checkpoints/remaining-languages-resume-after-PT-defer5-20261027T0114Z.json` SHA `5b61aa6fe65eead2e2e1549a6ab2c54b82380112940e09e087b2da4e127eb22e` inherits full d5f/b571/68896 safeguards, narrows scope to exactly ONE normalcachedPT and names `/root/pdf_pt_state5_prepare_0114`. Before explicitGO no paid unit has started and root alone writes source/task/Git. Actual staged checks/commit/push and root GO_PAID remain required for execution.
+- On ANY actual native exit/defer/unknown/modelboundary/globalstop, stop the finite admission, save true PID/exit/log/receipts/caps/newdue/newcurrentruntime baseline and precise next step at ended/lease-free boundary. No nextPT/ID/VI/TH/ENJA unit, timer/owner/newmovie/reset/forcedskip/thirdround/modelvoicealiasthreshold/timing/font/budget change. Actual accepted AND rejected/raw model proposals require real independent contextual review before changed takes. ActualPTword/timing changes require new nativeCC/text rebuilding and QA; old artifacts remain immutable. Full8finalize/package/push needs actual8checked/current/no stopped-kept state and real matching site choice; publishing stays owner.
+
+- Actual admission checks passed: tasks2187 with existing unrelated warnings retained, all8 staged current source/index/report chains and all7 actual model boundaries, cached diff0. Independent full static review c25e9973 found no blocker. Receipt `research/language-checkpoints/pt-state5-admission-source-checks-20261027T0114Z.json` pins actual results. Production/nativecore unchanged; prior docs236 and lint0errors/2warnings remain historical checks, with no new broad suite/full-film/voice approval claimed.
 
 ### Actual fifth PT service defer; finite one-unit run stopped — 2026-10-26T23:39:52.202151+00:00
 
