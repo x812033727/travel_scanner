@@ -1,13 +1,13 @@
 {
-  "title": "ARTEX: hacker de IA invade a nuvem em menos de 3 horas sem chutar senha, pega a chave",
-  "description": "Em 21/10/2026, a Microsoft publicou um relatório: um grupo hacker ligado ao governo chinês usou ARTEX, ferramenta de IA de teste de invasão autônomo, contra centenas de organizações e, várias vezes, foi do alvo ao controle de admin da nuvem em menos de três horas. Logo depois, a taiwanesa 91APP citou rastros do ARTEX no relatório de investigação. Com três relatórios oficiais, veja por onde ele entrou: numa onda, 150 mil tentativas de senha falharam todas; entraram um app já autorizado e uma chave de banco de dados no GitLab. Depois, um comando git traz do histórico uma senha já apagada; no fim, os três lugares onde recolher as chaves.\nPara quem entra em muitos serviços com a conta Google, devs e iniciantes que sobem projetos no GitHub e quem administra o Microsoft 365 da empresa.\n\nGravado em 27/10/2026. Tentativas de senha, apps já autorizados, menos de 3 horas, 2.250 tenants e credenciais novas como porta dos fundos: Microsoft Threat Intelligence, 21/10. Appsmith, a chave no GitLab e as datas: relatório de 18 dias da 91APP, 22/10. IA barateando ataques e as defesas: agência de cibersegurança de Taiwan, 21/10. O diretor sobre a IA desistir de empresas e os ataques de julho: iThome, mesmo dia. Credenciais em texto puro da Zeabur, as não trocadas em agosto e 3,21 milhões de variáveis de ambiente: relatório preliminar da Zeabur, 19/10, que não cita ARTEX nem uso de IA. Exceção ao trocar a senha: Ajuda da Conta do Google; revogar ou rotacionar primeiro: GitHub Docs. O terminal é de um repositório demo real (Ubuntu 24.04.5, git 2.43.0, 2026-10-27); a senha é falsa. “Eu acho” e “não achei” são opinião do autor. O vídeo não demonstra ataques nem linka ferramentas de ataque.\n\nComandos do vídeo:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nQuantos apps que você não reconhece têm acesso à sua conta Google? Comente.",
+  "title": "ARTEX: IA invade a nuvem em menos de 3 horas; não depende de chutar senha, pega a chave",
+  "description": "Em 21/10/2026, a Microsoft publicou um relatório que avalia que um grupo hacker alinhado ao governo chinês usou ARTEX, ferramenta de IA de teste de invasão autônomo, contra centenas de organizações e, várias vezes, foi do alvo ao controle de admin da nuvem em menos de 3 horas. Logo depois, a taiwanesa 91APP citou rastros do ARTEX no relatório de investigação. Com três relatórios oficiais, veja por onde ele entrou: numa onda, 150 mil tentativas de senha falharam todas; entraram um app já autorizado e uma chave de banco de dados no GitLab. Depois, um comando git traz do histórico uma senha já apagada; no fim, os três lugares onde recolher as chaves.\nPara quem entra em muitos serviços com a conta Google, devs e iniciantes que sobem projetos no GitHub e quem gere o Microsoft 365 da empresa.\n\nGravado em 27/10/2026. Tentativas de senha, apps já autorizados, menos de 3 horas, 2.250 tenants e credenciais novas como porta dos fundos: Microsoft Threat Intelligence, 21/10. Appsmith, a chave no GitLab e as datas: relatório de 18 dias da 91APP, 22/10. IA barateando ataques e as defesas: agência de cibersegurança de Taiwan, 21/10. O diretor sobre a IA desistir de empresas e os ataques de julho: iThome, mesmo dia. Credenciais em texto puro da Zeabur, as não trocadas em agosto e 3,21 milhões de variáveis de ambiente: relatório preliminar da Zeabur, 19/10, que não cita ARTEX nem diz que os invasores usaram IA. Exceção ao trocar a senha: Ajuda da Conta do Google; revogar ou rotacionar primeiro: GitHub Docs. O terminal é de um repositório demo real (Ubuntu 24.04.5, git 2.43.0, 2026-10-27); a senha é falsa. \"Eu acho\" e \"não achei\" são opinião do autor. Sem demonstração de ataques nem links para ferramentas.\n\nComandos do vídeo:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nQuantos apps desconhecidos têm acesso à sua conta Google? Comente.",
   "tags": [
     "ARTEX",
     "hacker de IA",
     "91APP segurança",
     "ataque com IA",
     "Microsoft Storm-0940",
-    "Zeabur vazamento",
+    "Zeabur incidente de segurança",
     "git senha apagada",
     "apps OAuth autorizados",
     "cibersegurança Taiwan",
@@ -45,7 +45,7 @@
   "lines": {
     "y9kb": {
       "source_hash": "9ec5aec269f1",
-      "text": "Em 21/10, a Microsoft avaliou: hackers ligados a Pequim,"
+      "text": "Em 21 de outubro, a Microsoft avalia: hackers pró-Pequim"
     },
     "7tzn": {
       "source_hash": "16fdbe07f16d",
@@ -69,7 +69,7 @@
     },
     "6pn9": {
       "source_hash": "a5648e941f38",
-      "text": "150 mil senhas tentadas; o resultado surpreende;"
+      "text": "150 mil chutes de senha; o resultado surpreende;"
     },
     "yfkf": {
       "source_hash": "7cc400f1c4a5",
@@ -89,7 +89,7 @@
     },
     "na73": {
       "source_hash": "048023ba9375",
-      "text": "O diretor disse: com empresas de base sólida, a IA mediu o custo, desistiu e foi às mais fracas."
+      "text": "O diretor disse: com algumas empresas sólidas, a IA mediu o custo, desistiu e foi às mais fracas."
     },
     "uny5": {
       "source_hash": "715c336bbe03",
@@ -117,7 +117,7 @@
     },
     "5xut": {
       "source_hash": "ae4049f81508",
-      "text": "Quase 98%: a conta foi bloqueada;"
+      "text": "Quase 98% das respostas: bloqueio;"
     },
     "krad": {
       "source_hash": "29bab557afd3",
@@ -141,7 +141,7 @@
     },
     "anq3": {
       "source_hash": "9dee78c7ecdc",
-      "text": "Ninguém fez login; não havia verificação em duas etapas."
+      "text": "Ninguém logou; as duas etapas não tinham o que barrar."
     },
     "v7kk": {
       "source_hash": "0a1c6139e235",
@@ -181,7 +181,7 @@
     },
     "3j5c": {
       "source_hash": "4a678bfc51da",
-      "text": "Na semana, a taiwanesa Zeabur vazou;"
+      "text": "Mesma semana: leram dados da Zeabur;"
     },
     "gpaj": {
       "source_hash": "055027054734",
@@ -189,7 +189,7 @@
     },
     "nwji": {
       "source_hash": "f9782dc30d3b",
-      "text": "usou credenciais de admin duradouras, em texto puro;"
+      "text": "o invasor usou credenciais admin duradouras, em claro;"
     },
     "siri": {
       "source_hash": "3e3e735bb015",
@@ -285,7 +285,7 @@
     },
     "ishi": {
       "source_hash": "4644d0db2922",
-      "text": "No seu projeto, troque PASSWORD pela chave,"
+      "text": "Troque PASSWORD pelo nome da sua chave,"
     },
     "asmx": {
       "source_hash": "582e7addb5b1",
@@ -329,7 +329,7 @@
     },
     "vtxp": {
       "source_hash": "30bcd9820c12",
-      "text": "Conta do Google: em apps conectados, abra os detalhes e remova o acesso;"
+      "text": "Conta do Google: em apps vinculados, abra os detalhes e remova o acesso;"
     },
     "2wc7": {
       "source_hash": "899d44c9ed09",
@@ -401,7 +401,7 @@
     },
     "wkg5": {
       "source_hash": "413505d64090",
-      "text": "Tranca não basta: recolha."
+      "text": "Recolha as chaves também."
     },
     "zha9": {
       "source_hash": "e660e332c916",
