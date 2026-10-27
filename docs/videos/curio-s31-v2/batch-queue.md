@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA、原生抽查及委託final核准，原2flags／低分保留。英文212片段與16:09.705混音已native0／fit150窗0over；兩筆保存paid answer正常沿用。正在準備完整EN cohort及獨立音訊首檢，其餘七語／完整交付包未成 |
+| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA、原生抽查及委託final核准，原2flags／低分保留。英文212片段與16:09.705混音已native0／fit150窗0over；真cohort／binding獨立PASS，官方EN首檢46532執行中，其餘七語／完整交付包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -33,6 +33,12 @@
 - 完成一集即更新本表與該集任務，再接下一集。進度不變時保持安靜，只通知成品完成、真正失敗、預算超限或需要站主處理的事項。
 
 ## 當前斷點
+
+**最新實況：2026-10-27 20:21台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+當前唯一本集producer為官方EN首檢 **session46532／PID46832**，slot `check-en-first-reviewed-v3`、lease取得12:21:33Z；實際log `C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-first-reviewed-v3-production.txt`。從第一次check就帶已審source-free bridge v3／正確EN binding，沒有bare paid check、沒有force。**先等此指令native exit，再核官方flags／實際second runtime及cleanup／journal，不能啟動另一個check、ASR、TTS、JA或下一集。** 見[dub-en-first-check-dispatch.json](dub-en-first-check-dispatch.json)。
+
+collector v2的23原測試＋5獨立控制PASS，review75c3ffa…a96僅限prepare；Root實際prepare native0於20:17台北完成。完整212 raw WAV／68,852,848B／717.12秒皆凍結，catalog577ff8…ffb18、provenance3a59c6…e73d；原始PCM1 mono48k16bit，12個stretched樣本另綁。ko_es正式actual cohort＋binding-core覆核4db14a…9bc0已逐檔驗current/frozen SHA/bytes/headers/noalias，13artifact/原native0/source/voice/cache/v4／實際樣本重播150窗0over及212placement全match。Root據此組fullbinding989984…b183／corec1cff4…118d。這只批准callback由實際args機械選exact-SHA子集、單SSH及fresh資源／cached-model gate；不預稱Whisper真跑、發音通過或有人聽過。英文check/flags在首檢前確定不存在，中文原check及兩flags已另外凍結。中文master不變，EN還未音訊接受，八語驗收0/8。
 
 **最新實況：2026-10-27 20:04台北。以本段為續作入口，以下舊斷點保留為履歷。**
 

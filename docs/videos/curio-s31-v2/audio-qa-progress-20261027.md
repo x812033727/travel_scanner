@@ -1,6 +1,8 @@
 # S31 v2 音訊檢查進度
 
-狀態：**中文master已11/11QA、原生抽查及委託final核准，官方旁白2flags／低分保留；英文212句與混音已native0／fit0over，等待完整cohort及獨立音訊首檢**。
+狀態：**中文master已11/11QA、原生抽查及委託final核准，官方旁白2flags／低分保留；EN完整cohort／binding獨立PASS，正式首檢session46532執行中**。
+
+20:21台北：actual212 raw／12 stretched已逐檔與物理fit覆核通過，Root正式首檢從一開始就掛正確EN的已審source-free bridge v3；單一PID46832持lease，先等nativeexit，不開另一check/ASR/TTS/JA。review僅授權實際callback exact-SHA subset及單SSH fresh gates，沒有預稱真ASR/音訊/聆聽pass。見[dub-en-first-check-dispatch.json](dub-en-first-check-dispatch.json)。
 
 20:04台北：EN正常resume92912 native0，969.705秒branded mix SHA99141e…adc9，150窗fit0over（cheng-date0.1秒由next-slack吸收），8窗加速不超1.15。獨立actual recovery核對4aca1e…2e7b確認原172WAV全未變、兩個saved answer正常trim/encode後逐bytes等於v2a0681/v2a0682、log reuse2；不重買這兩筆。I/O preload v2已審後啟用，但實際38次均第一次rename成功、0額外retry／wait，因此不聲稱治好OS。source／中文final及核准不變，品質重錄／縮句／reword0；無active producer／lease／request，34個舊proof/tmp保留。完整212cohort collector v1在mock獨立覆核發現會員／fit一致性缺口，另存v2修補；bridge v3 generic已PASS但尚無actual binding／SSH／ASR／EN音訊接受，不能先做JA。見[dub-en-synthesis-complete.json](dub-en-synthesis-complete.json)。下段172片段及v3待審為舊履歷。
 
