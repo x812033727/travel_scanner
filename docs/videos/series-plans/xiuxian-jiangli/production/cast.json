@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "series": "xiuxian-jiangli",
+  "purpose": "《我的修仙獎勵是不是發錯了？》第一季共用的 look、角色外貌（英文，給圖與影片模型）與聲音。每集 video.json 從這裡照抄用到的角色，不要各自改寫，避免換臉。中文外貌提示詞在 chapter-01.md 到 chapter-06.md 的人物表。",
+  "owner_notes": [
+    "畫風照《種田娶妻打天下》2026-10-16 晚站主的決定：3D 國漫 CG，不用真人；look.style 已寫成英文，定妝照提示詞照 refs-dh-jobs.json 的寫法。",
+    "美女規則照 chapter-01.md 的顏值規則：濃顏、合身剪裁、每集至少一個顏值鏡頭；不露、不濕身、鏡頭不停在身體部位。",
+    "說話的鏡頭一定會動嘴（種田 storyboard-rules.md）：台詞的 speaker 在畫面上時，data.motion 第一句寫他說這句話、嘴唇下巴隨每個音節動；說話鏡頭不用 still、不用 data.source；靜圖一集不超過 10%。",
+    "仙錄面板不由海螺生成：拍江小滿的主觀鏡頭或臉部近景，面板文字在剪接時疊上（藍金色、像一頁書的半透明框，見每集 overlays.json）。prompt 裡不要寫面板、文字或 UI。",
+    "沈照雪受傷時（第 1–2 集）在該鏡 prompt 裡寫 her face gone translucent white、one sleeve torn and scorched at the cuff；好了之後不寫。",
+    "聲音是代理的建議，試片前照 voice-audition.md 試聽再定。"
+  ],
+  "look": {
+    "preset": "custom",
+    "style": "3D Chinese donghua CG animation in the style of high-end domestic 3D animated series and game cinematics, Unreal Engine 5 cinematic render: semi-realistic stylised characters with refined features and slightly enlarged expressive eyes, detailed skin with texture but not photographic, individually rendered hair strands, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field, glamorous flattering beauty lighting on faces; not a photograph, not live action",
+    "negative": "photograph, live action, real person, flat 2D anime, sketch, text, subtitles, watermark, logo, UI panel, extra fingers, deformed hands, blood, gore, wounds, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "",
+    "candidates": 2
+  },
+  "system_panel": "藍金色、像翻開的一頁書的半透明框；獎勵落地時有金色光點散開；只在江小滿的主觀鏡頭裡出現。",
+  "characters": [
+    {
+      "id": "jiangxiaoman",
+      "name": "江小滿",
+      "appearance": "East Asian young man of twenty-two, boyish good looks: thick brows, warm double-lidded eyes with a sly glint, straight nose, an easy crooked grin, lean build with forearms toned from tossing a wok, black hair tied in a messy topknot with a grey cloth strip, a faded ash-grey servant's short tunic with both sleeves rolled to the elbow, a rope belt with one wooden ladle tucked in it, straw sandals",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十二歲的年輕人，嘴快、愛吐槽、會跟鍋說話，認真起來聲音很穩"
+      }
+    },
+    {
+      "id": "shenzhaoxue",
+      "name": "沈照雪",
+      "appearance": "East Asian young woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, flawless porcelain skin that looks as if it has never seen the sun, tall slender upright figure with a slim waist, black hair swept up without a single loose strand and held by one white jade hairpin, a fitted moon-white narrow-sleeved sword robe with a silver sash, a plain-sheathed longsword on her back",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的內門首席，聲音清、冷、短句，受傷時氣音多一點"
+      }
+    },
+    {
+      "id": "songguanshi",
+      "name": "宋管事",
+      "appearance": "East Asian middle-aged man of forty-six, a long narrow face, drooping figure-eight brows, small triangular eyes, two thin rat-whisker moustache strands, a grey-green steward's robe with wide sleeves, a ring of iron keys at his belt, a wooden-covered ledger under one arm",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十六歲的管事，鼻音重、拖長音、陰陽怪氣"
+      }
+    },
+    {
+      "id": "xianlu",
+      "name": "仙錄",
+      "appearance": "no on-screen body; only a voice and a blue-gold page-shaped panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Despina",
+        "style": "標準國語，咬字清楚；平穩、沒有情緒的電子合成女聲，像古書在念自己，一字一頓"
+      }
+    },
+    {
+      "id": "ali",
+      "name": "阿璃",
+      "appearance": "East Asian young woman of eighteen, lively and wild: big round eyes with long lashes, a small upturned nose, a grin that shows one small fang, honey-white skin, black hair in two messy braids tied with red cord, a rust-brown short jacket over bound-leg trousers, a ring of tiny bells at her waist, a glowing gold spirit mark on her right wrist; after the disguise is washed off: a faint gold mark between her brows, slightly pointed ear tips, hair with a red sheen in the light",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十八歲的妖族少女，聲音亮、語速快、沒心沒肺，餓的時候很委屈"
+      }
+    },
+    {
+      "id": "tangsu",
+      "name": "唐酥",
+      "appearance": "East Asian young woman of nineteen, cute and shrewd: a round face, almond eyes that curve into lines when she smiles, soft cheeks, fair skin, hair in two buns tied with goose-yellow ribbons, a goose-yellow waist-cinched ruqun with a thin gold trim at the cuffs, a small abacus hanging at her waist, fingers that fly over the beads",
+      "voice": {
+        "provider": "gemini",
+        "name": "Laomedeia",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十九歲的商鋪少女，聲音甜、說話快，算起帳來一秒變精明"
+      }
+    },
+    {
+      "id": "luzhao",
+      "name": "陸昭",
+      "appearance": "East Asian young woman of twenty, sharp cool handsome beauty: straight sword-like brows, phoenix eyes, thin lips, a clean jawline, healthy skin, a high ponytail tied with black cord, the law hall's black close-fitting uniform with red edging, leather wrist guards, a roll of seals and an iron ruler at her belt, heels always together when she stands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Kore",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的執法堂弟子，聲音俐落、短句、不帶笑，笑起來反而尷尬"
+      }
+    },
+    {
+      "id": "bailu",
+      "name": "白鷺",
+      "appearance": "East Asian young woman of nineteen, airy and delicate: willow-leaf brows, bright watery almond eyes, a small nose tip, a mouth always about to smile, fair skin, black hair in one long braid to the waist tied off with a white crane feather, a pale cyan wide-sleeved dress with grass stains on the hem, a long bamboo feeding stick in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Aoede",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十九歲的鶴舍弟子，聲音輕、慢、像在跟鶴說話"
+      }
+    },
+    {
+      "id": "songwanwan",
+      "name": "宋綰綰",
+      "appearance": "East Asian young woman of twenty-three, glamorous and vivid: long fine brows, peach-blossom eyes with a flirtatious tilt at the corners, full red lips, a sweet smile that never reaches her eyes, fair skin and a slim waist, black hair in a high chignon with a red-gold hairpin, a peach-pink waist-cinched ruqun under a white gauze apron with gold thread at the cuffs, pale red nails, hands that move like a dancer's when she serves a dish",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zephyr",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十三歲的膳堂廚娘，聲音甜、尾音上揚，生氣時變尖"
+      }
+    },
+    {
+      "id": "guzhanglao",
+      "name": "顧長老",
+      "appearance": "East Asian old man of sixty-eight, thin, a long white beard, brows so long they droop over very bright eyes, a dark brown alchemy-hall robe with burn holes at the cuffs, fingers stained amber by furnace fire",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；六十八歲的長老，聲音低、慢、沙，話少，吃飯時很大聲"
+      }
+    },
+    {
+      "id": "hedayong",
+      "name": "何大勇",
+      "appearance": "East Asian young man of twenty-five, round honest face, small eyes, a toothy grin, a stout build, the outer sect's grey-blue short tunic, a slim long sword at his belt that does not suit him",
+      "voice": {
+        "provider": "gemini",
+        "name": "Fenrir",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十五歲的胖師兄，大嗓門、憨、吃飯的聲音比說話大"
+      }
+    },
+    {
+      "id": "xiaoshitou",
+      "name": "小石頭",
+      "appearance": "East Asian boy of eleven, round face, big eyes, sun-darkened skin, a tuft of hair sticking up at his forehead, a patched servant's short tunic, always hugging a rice scoop bigger than his head",
+      "voice": {
+        "provider": "gemini",
+        "name": "Leda",
+        "style": "標準國語，咬字清楚；十一歲的小男孩，聲音細、說悄悄話"
+      }
+    }
+  ]
+}
