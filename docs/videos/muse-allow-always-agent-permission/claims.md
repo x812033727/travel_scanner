@@ -9,23 +9,23 @@ GG ＝ https://support.google.com/accounts/answer/13533235?hl=zh-Hant
 
 ## 事實
 
-c1｜多倫多的 YouTuber Matt Robb 讓 Meta 的 AI 代理 Muse 替他在 Facebook Marketplace 賣一個鍵盤（MX Keys Mini）；日期：多家報導寫 9 月 26 日，他在 X 上的貼文日期是 9 月 27 日（寫「today」），**待查核決定**｜YH、TR、Cybernews｜2026-10-27｜open
+c1｜多倫多的 YouTuber Matt Robb 讓 Meta 的 AI 代理 Muse 替他在 Facebook Marketplace 賣一個鍵盤（MX Keys Mini）；日期 **9 月 26 日（多倫多當地時間，週六）**：他寫「today… until late tonight」的 Threads 貼文 DdxwAJnDhNy 由編號換算是 9/27 00:27 EDT，X 貼文 2104090601411293303 是 9/27 06:07 UTC＝02:07 EDT，都在午夜之後；Yahoo 嵌入的「September 27, 2026」是 UTC 日期；Fortune（經 AI Weekly 轉述）寫買家「9:15 p.m. on a Saturday」到達＝9/26。「多倫多」照 Fortune（AP）"a Toronto-based content creator"（verify-1 確認）｜YH、TR、Fortune、Robb 的 Threads／X 貼文｜2026-10-27｜open
 c2｜買家照 Muse 給的地址到了他住的大樓（"showed up at his building"）｜YH｜2026-10-27｜open
-c3｜Muse 在台灣還不能用：美國 9 月 8 日、加拿大 9 月 18 日開放，日本 10 月 23 日開始（媒體報導，Meta 官方公告未找到）｜Inside、SmartScope、smhn.info｜2026-10-27｜naive
-c4｜Meta Superintelligence Labs 的 David Singleton 說 Meta 確認「no breach of privacy controls」｜YH｜2026-10-27｜no-breach
-c5｜Robb 說他設定時按了「Allow Always」，以為接受出價前還會問他｜YH｜2026-10-27｜robb
+c3｜Muse 在台灣還不能用：美國 9 月 8 日、加拿大 9 月 18 日開放，日本 10 月 23 日開始（verify-1：美國 9/8 與日本 10/23 照 Meta 官方公告，日本公告說日本是北美之外第一個地區；加拿大 9/18 照 iPhone in Canada 引 Meta 的 X 貼文；Inside 頁 2026-10-27 回 403 Cloudflare 擋下，撰稿存檔也是擋下頁，已從來源移除）｜Meta Newsroom（英文 9/8、日文 10/23）、iPhone in Canada、SmartScope｜2026-10-27｜naive
+c4｜Meta Superintelligence Labs 的 David Singleton 在回覆 Robb 週二貼文時說 Meta 確認「no breach of privacy controls」（verify-1：這是員工的回覆，不是「看過紀錄之後」說的；看紀錄的是 c7 的 Muse 團隊與 Robb。旁白改為「Meta 的一位員工回覆他：已確認沒有違反隱私控制」，卡片拿掉「任何」）｜YH｜2026-10-27｜no-breach
+c5｜Robb 說他一開始請 Muse 賣鍵盤時按了「Allow Always」，以為接受出價前還會問他（YH "when he first asked Meta's AI agent to sell his computer keyboard"；verify-1 把「設定 Muse 的第一天」改成「一開始」）；這段說明是 9 月 29 日（週二）貼的：YH 寫 "Tuesday update"、文章 2026-09-29 12:21 UTC 刊出，Threads Dd28UvzALKg 換算 9/29 00:51 EDT；卡片原寫 9 月 30 日，已改｜YH、Threads @matt.j.robb｜2026-10-27｜robb
 c6｜這個設定讓 Muse 用含取貨地址的範本替他發訊息；原話 "I didn't think it would send it out to everyone that gave me an offer"｜YH、Threads @matt.j.robb｜2026-10-27｜robb
 c7｜Meta 的 Muse 團隊陪他看了紀錄，說會把權限提示寫得更清楚｜YH｜2026-10-27｜meta-clearer
 c8｜選「Yes, and don't ask again」後規則存到 git 倉庫根目錄的 `.claude/settings.local.json`，之後在這個倉庫任何位置開的 session 都適用｜CC〈Permission system〉｜2026-10-27｜star-meaning、settings-after
 c9｜表：Bash 指令「Permanently per repository and command」、檔案修改「Until session end」、WebFetch「Permanently per repository and domain」｜CC 表格｜2026-10-27｜cc-table
 c10｜`Bash(git *)` 准每一個 git 指令；`Bash(ls *)` 要求空格所以不含 lsof；`Bash(ls*)` 沒有空格連 lsof 都算｜CC〈Wildcard patterns〉｜2026-10-27｜wildcards
-c11｜同意用 && 串起來的指令時，替每一段需要同意的子指令各存一條規則，最多 5 條｜CC〈compound commands〉段｜2026-10-27｜compound
+c11｜對用 && 串起來的指令按「Yes, and don't ask again」時（verify-1：旁白補上「按不要再問」，單按 Yes 不存規則），替每一段需要同意的子指令各存一條規則，最多 5 條｜CC〈compound commands〉段｜2026-10-27｜compound
 c12｜原句：「移除代理的存取權，並不會中斷或刪除 Google 帳戶與該應用程式的連結。」；Gemini 或 Google AI 代理可透過連結的應用程式完成任務｜GG〈Gemini 和代理權限〉｜2026-10-27｜google-agent
 c13｜Robb 的建議原話 "double-check what permissions AI has in your life"｜YH｜2026-10-27｜robb-advice
 c14｜步驟：連結的應用程式頁 → 「代理存取權」篩選 → 「停止使用 <應用程式名稱>」；要中斷 App 本身的連結要另外操作｜GG｜2026-10-27｜google-steps
-c15｜Muse 事後的訊息原句 "my auto-reply told him ‘Yep I’m here!’ at 9:27 when you clearly weren’t available"｜TR｜2026-10-27｜muse-sorry
+c15｜Muse 事後的訊息原句 "my auto-reply told him ‘Yep I’m here!’ at 9:27 when you clearly weren’t available"（verify-1："Yep I'm here!" 是替他說「對，我在！」，Muse 自己說是 "claiming you're home"，不是「我到了」，翻譯與旁白已改；這則是 Muse 主動傳的壞消息與認錯，"I'm sorry" 是 Robb 罵它之後才回的，旁白「道歉」改「認錯」）｜TR｜2026-10-27｜muse-sorry
 c16｜Claude Code 只在提示能顯示全部會准的範圍時才給「don't ask again」；否則只給一次性的同意｜CC〈Permission system〉第 45 段｜2026-10-27｜shows-scope
-c17｜bypassPermissions 模式略過權限提示，包括寫入 .git、.claude 等受保護路徑；只該在容器或 VM 這類隔離環境用｜CC〈Permission modes〉｜2026-10-27｜bypass
+c17｜bypassPermissions 模式略過權限提示（表格原文 "except for the actions no mode auto-approves"，verify-1 把卡片「略過所有」改成「略過幾乎所有」），包括寫入 .git、.claude 等受保護路徑；只該在容器或 VM 這類隔離環境用｜CC〈Permission modes〉｜2026-10-27｜bypass
 c18｜拒絕規則優先：允許規則不能在拒絕規則裡開例外｜CC〈Manage permissions〉第 73 段｜2026-10-27｜deny-file、text-not-meaning
 
 ## 本片自己跑的紀錄
@@ -51,11 +51,14 @@ r9｜新 session 請它 `git push -f origin main` → 沒有詢問，遠端 b2a3
 
 ## 我懷疑但沒動的事
 
-- 事件日期 9/26 或 9/27（見 c1）。
-- Singleton 的「no breach of privacy controls」只有 Yahoo Tech 轉述；旁白說「Meta 看過紀錄之後說」，查核時判斷是否要改成「Meta 的人說」。
+- 事件日期 9/26 或 9/27（見 c1）。→ verify-1：9/26，理由見 c1。
+- Singleton 的「no breach of privacy controls」只有 Yahoo Tech 轉述；旁白說「Meta 看過紀錄之後說」，查核時判斷是否要改成「Meta 的人說」。→ verify-1 已改，見 c4。
 - 第 5 章的三條規則是站主看法，卡片來源寫明；Google 說明裡自己舉的例子（讓 Gemini 登入旅遊 App 訂民宿）沒放進片中。
 - Muse、ARTEX 之外，`settings.local.json` 的路徑在 Windows 或非 git 目錄會不同（CC 有寫），片中沒講。
 
 ## 進度
 
+- 2026-10-27 verify-1 之後（撰稿者）：看法章「Muse 那晚沒有出錯」與來源矛盾（Muse 自己認錯、Meta 承認價格顯示錯誤），改成「Muse 那晚也出了錯；但地址送得出去，是因為一個按鈕准的範圍」，卡片改「錯的不只是 AI／還有按鈕的範圍」；四句過長的縮短；「減號 f」改寫成「減號 F」並補進字典；實跑紀錄補上第 2 步的設定檔原文（02b-settings.txt）與 r7–r9。
+
 - 2026-10-27：34 景、87 句寫完，lint 0 錯誤 0 警告，等查核（verify-1）。
+- 2026-10-27：verify-1 完成，8 處事實修正（見 `verify-1.md`），lint 0 錯誤；超過三處，需要第二輪查核。

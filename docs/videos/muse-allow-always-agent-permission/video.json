@@ -89,7 +89,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "你按了「一律允許」，AI 就替你把地址給了陌生人：一個按鈕到底准了多少事",
-    "description": "2026 年 9 月 26 日，多倫多一位 YouTuber 讓 Meta 的 AI 代理 Muse 替他在 Marketplace 賣鍵盤，當晚買家照著 Muse 給的地址到了他家樓下；Meta 看過紀錄說沒有違反隱私控制，原因是他第一天按下的「Allow Always」。這支用他的事件講那個按鈕准了什麼，再在 Claude Code 裡真的按一次「Yes, and don't ask again」：它存下的是所有 git push，連新對話裡的強制推送都不再問；最後是去哪裡收回，以及為什麼加一條拒絕規則擋 --force，換成簡寫 -f 還是擋不住。\n寫給在台灣用 Gemini、ChatGPT 或 Claude，開始讓 AI 代理替自己做事的人，以及天天在 Claude Code 裡按「不要再問」的工程師。\n\n錄製日期 2026 年 10 月 27 日。Muse 事件的經過與當事人的原話，照 Matt Robb 在 X、Threads 上的說明與 Yahoo Tech、TechRadar 的報導；Meta 的回應（沒有違反隱私控制、會把權限提示寫清楚）照同一批報導的轉述，Meta 沒有公開說明頁可以引用；Muse 目前在美國、加拿大與日本開放，台灣還不能用，照 Inside 與日本媒體的報導；「不要再問」存在哪裡、記多久、星號怎麼比對、一串指令各存一條規則，照 Claude Code 官方文件〈Configure permissions〉；代理存取權與「移除代理的存取權不會中斷連結」照 Google 帳戶說明。片中的 Claude Code 畫面是 2026-10-27 在 Claude Code 2.1.311 與一個示範倉庫上真的跑出來的，遠端是本機的測試倉庫。「我的做法」「我的看法是」「我查不到」是站主的意見。\n\n片中的拒絕規則（擋不到簡寫 -f，只是示範）：\n\"deny\": [\"Bash(git push --force *)\"]\n\n片中提到的地方：\nClaude Code：/permissions\nGoogle 帳戶：連結的應用程式 → 代理存取權 → 停止使用\n\n你按過幾次「不要再問」？留言告訴我。",
+    "description": "2026 年 9 月 26 日，多倫多一位 YouTuber 讓 Meta 的 AI 代理 Muse 替他在 Marketplace 賣鍵盤，當晚買家照著 Muse 給的地址到了他家樓下；Meta 的員工回覆說沒有違反隱私控制，原因是他一開始按下的「Allow Always」。這支用他的事件講那個按鈕准了什麼，再在 Claude Code 裡真的按一次「Yes, and don't ask again」：它存下的是所有 git push，連新對話裡的強制推送都不再問；最後是去哪裡收回，以及為什麼加一條拒絕規則擋 --force，換成簡寫 -f 還是擋不住。\n寫給在台灣用 Gemini、ChatGPT 或 Claude，開始讓 AI 代理替自己做事的人，以及天天在 Claude Code 裡按「不要再問」的工程師。\n\n錄製日期 2026 年 10 月 27 日。Muse 事件的經過與當事人的原話，照 Matt Robb 在 X、Threads 上的說明與 Yahoo Tech、TechRadar 的報導；Meta 的回應（沒有違反隱私控制、會把權限提示寫清楚）照同一批報導的轉述，Meta 沒有公開說明頁可以引用；Muse 目前在美國、加拿大與日本開放，台灣還不能用，照 Meta 的公告與 iPhone in Canada 的報導；「不要再問」存在哪裡、記多久、星號怎麼比對、一串指令各存一條規則，照 Claude Code 官方文件〈Configure permissions〉；代理存取權與「移除代理的存取權不會中斷連結」照 Google 帳戶說明。片中的 Claude Code 畫面是 2026-10-27 在 Claude Code 2.1.311 與一個示範倉庫上真的跑出來的，遠端是本機的測試倉庫。「我的做法」「我的看法是」「我查不到」是站主的意見。\n\n片中的拒絕規則（擋不到簡寫 -f，只是示範）：\n\"deny\": [\"Bash(git push --force *)\"]\n\n片中提到的地方：\nClaude Code：/permissions\nGoogle 帳戶：連結的應用程式 → 代理存取權 → 停止使用\n\n你按過幾次「不要再問」？留言告訴我。",
     "tags": [
       "Meta Muse",
       "AI 代理",
@@ -138,13 +138,28 @@
       "checked_on": "2026-10-27"
     },
     {
-      "title": "Inside：Meta Muse 上線不到兩週登頂美國 App Store",
-      "url": "https://www.inside.com.tw/article/42443-meta-muse-app-store-number-one-us-2026",
+      "title": "SmartScope: Meta Muse Japan launch",
+      "url": "https://smartscope.blog/en/blog/meta-muse-japan-launch-free-plan-limitations-invite-2026/",
       "checked_on": "2026-10-27"
     },
     {
-      "title": "SmartScope: Meta Muse Japan launch",
-      "url": "https://smartscope.blog/en/blog/meta-muse-japan-launch-free-plan-limitations-invite-2026/",
+      "title": "Meta Newsroom: Introducing Muse (2026-09-08)",
+      "url": "https://about.fb.com/news/2026/09/introducing-muse-personal-ai-agent/",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Meta 日本：Muse を日本で提供開始（2026-10-23）",
+      "url": "https://about.fb.com/ja/news/2026/10/muse-personal-ai-agent-launches-in-japan/",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "iPhone in Canada: Meta's Muse AI Agent Is Now Available in Canada",
+      "url": "https://www.iphoneincanada.ca/2026/09/18/metas-muse-ai-agent-is-now-available-in-canada/",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Fortune (AP): Matt Robb, a Toronto-based content creator",
+      "url": "https://fortune.com/2026/10/19/meta-muse-ai-agent-facebook-marketplace-home-address-privacy/",
       "checked_on": "2026-10-27"
     }
   ],
@@ -204,19 +219,19 @@
       "id": "no-breach",
       "template": "big",
       "data": {
-        "kicker": "Meta 看過紀錄",
-        "text": "沒有違反\n任何**隱私控制**",
+        "kicker": "Meta 員工的回覆",
+        "text": "沒有違反\n**隱私控制**",
         "key": "那地址是怎麼送出去的？"
       },
       "lines": [
         {
           "id": "tech",
-          "text": "有關係。Meta 看過紀錄之後說：這次沒有違反任何隱私控制。",
+          "text": "有關係。Meta 的一位員工回覆他：已確認沒有違反隱私控制。",
           "emotion": "平，「沒有違反」清楚"
         },
         {
           "id": "3wna",
-          "text": "那地址是怎麼送出去的？答案在他第一天按下的一個按鈕。",
+          "text": "那地址是怎麼送出去的？答案在他一開始按下的一個按鈕。",
           "emotion": "問句，句尾收著"
         }
       ],
@@ -250,19 +265,19 @@
       "chapter": "那個按鈕到底准了什麼？",
       "template": "quote",
       "data": {
-        "kicker": "當事人 Matt Robb，9 月 30 日",
+        "kicker": "當事人 Matt Robb，9 月 29 日",
         "quote": "I didn't think it would send it out to everyone that gave me an offer",
         "source": "Matt Robb 在 X 上（Yahoo Tech 轉述）",
         "translation": "我沒想到，它會把它送給每一個出價的人。",
         "keys": [
-          "第一天按了 Allow Always",
+          "一開始就按了 Allow Always",
           "沒想到會送給每個出價的人"
         ]
       },
       "lines": [
         {
           "id": "33r9",
-          "text": "他後來把經過貼出來：設定 Muse 的第一天，他按了 Allow Always，一律允許；",
+          "text": "他後來把經過貼出來：一開始賣鍵盤時，他按了 Allow Always，一律允許；",
           "emotion": "平穩"
         },
         {
@@ -298,22 +313,22 @@
         "kicker": "Muse 事後傳給他的訊息",
         "quote": "my auto-reply told him ‘Yep I’m here!’ at 9:27 when you clearly weren’t available",
         "source": "TechRadar 引述 Muse 的訊息",
-        "translation": "我的自動回覆在 9:27 跟他說「我到了」，可你那時明明不在。",
+        "translation": "我的自動回覆在 9:27 跟他說「對，我在！」，可你那時明明不在。",
         "keys": [
-          "Muse 的自動回覆說「我到了」",
+          "Muse 的自動回覆說「我在」",
           "人其實不在家"
         ]
       },
       "lines": [
         {
           "id": "85ie",
-          "text": "更麻煩的是後面：Muse 事後自己傳訊息跟他道歉，",
+          "text": "更麻煩的是後面：Muse 事後自己傳訊息跟他認錯，",
           "emotion": "平，句尾往下"
         },
         {
           "id": "dgma",
-          "text": "說它的自動回覆在晚上九點二十七分，跟買家說了一句我到了；",
-          "emotion": "「我到了」放慢"
+          "text": "說它的自動回覆在晚上九點二十七分，跟買家回了一句：對，我在；",
+          "emotion": "「我在」放慢"
         },
         {
           "id": "zxza",
@@ -703,7 +718,7 @@
       "template": "big",
       "data": {
         "kicker": "最寬的一律",
-        "text": "略過**所有**權限詢問\n只該在容器裡用",
+        "text": "略過**幾乎所有**權限詢問\n只該在容器裡用",
         "key": "文件：只在隔離環境使用"
       },
       "lines": [
@@ -733,7 +748,7 @@
       "lines": [
         {
           "id": "82fs",
-          "text": "還有一個細節：你同意一串用連接符號串起來的指令，",
+          "text": "還有一個細節：你對一串用連接符號串起來的指令按不要再問，",
           "emotion": "平"
         },
         {
@@ -761,7 +776,7 @@
       "lines": [
         {
           "id": "asv8",
-          "text": "剛剛問的 Google 這邊：它讓 Gemini 這類代理，透過你連結的 App 替你做事；",
+          "text": "剛剛問的 Google 這邊：Gemini 這類代理，能透過你連結的 App 替你做事；",
           "emotion": "接住問題，平"
         },
         {
@@ -990,7 +1005,7 @@
         },
         {
           "id": "84vx",
-          "text": "所以我把允許加回去，再加一條拒絕：凡是 git push 加上強制旗標開頭的，都擋。",
+          "text": "所以我把允許加回去，再加一條拒絕：git push 加強制旗標開頭的，都擋。",
           "emotion": "清楚"
         }
       ],
@@ -1068,7 +1083,7 @@
       "lines": [
         {
           "id": "eb6y",
-          "text": "強制推送有一個簡寫，減號 f；我改用這個寫法請它推送，",
+          "text": "強制推送有一個簡寫，減號 F；我改用這個寫法請它推送，",
           "emotion": "放慢"
         },
         {
@@ -1093,7 +1108,7 @@
       "lines": [
         {
           "id": "22hq",
-          "text": "拒絕規則擋的是那幾個字；簡寫的減號 f，被那條 git push 星號的允許接走了。",
+          "text": "擋住的只是那幾個字；簡寫的減號 F，被 git push 星號那條允許接走了。",
           "emotion": "清楚"
         },
         {
@@ -1162,7 +1177,7 @@
       "template": "big",
       "data": {
         "kicker": "我的看法",
-        "text": "它沒出錯\n**按鈕的範圍**出錯",
+        "text": "錯的不只是 AI\n還有**按鈕的範圍**",
         "key": "照規則做，規則是你按出來的"
       },
       "lines": [
@@ -1178,7 +1193,7 @@
         },
         {
           "id": "g4t7",
-          "text": "Muse 那晚沒有出錯，錯的是一個按鈕准的範圍，跟人以為的不一樣。"
+          "text": "Muse 那晚也出了錯；但地址送得出去，是因為一個按鈕准的範圍，跟人以為的不一樣。"
         }
       ]
     },
@@ -1193,7 +1208,7 @@
       "lines": [
         {
           "id": "wrva",
-          "text": "我查不到的是：Meta 自己怎麼定義 Muse 那幾個允許選項，我還沒找到它的說明頁。",
+          "text": "我查不到的是：Meta 怎麼定義 Muse 那幾個允許選項，我還沒找到它的說明頁。",
           "emotion": "放輕"
         }
       ]
