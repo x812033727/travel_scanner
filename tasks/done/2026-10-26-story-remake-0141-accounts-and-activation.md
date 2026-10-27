@@ -1,13 +1,13 @@
 ---
 id: 2026-10-26-story-remake-0141-accounts-and-activation
 title: Story remake 0141 accounts and activation
-status: review
+status: done
 priority: P1
 area: api
 owner: claude-opus-5-5-happy-brahmagupta
 claimed_at: 2026-10-26T15:55:51Z
 created_at: 2026-10-26T15:34:03Z
-completed_at:
+completed_at: 2026-10-26T23:03:57Z
 branch: claude/happy-brahmagupta-ibjkpd
 depends_on:
   - 2026-10-26-c11-ucc-remake-0140-account-and
@@ -47,3 +47,4 @@ scope:
 - 驗證：ruff、mypy app 489／tests 423；全新 PostgreSQL 16 upgrade 到 head（0141 實跑，`migration_guard --status` exact 0141），預算、migration、四支回滾整合測試與影片相關 242 passed、1 skip。
 - PR（草稿，#1875 部署後才合併）：https://github.com/x812033727/travel_scanner/pull/1876
 - 2026-10-26 CI：`video-tests` 連兩次、`smoke` 一次在「Install ffmpeg」撞 20 分鐘時限（`azure.archive.ubuntu.com` 每秒幾十 KB，13.5 MB 的 libflite1 下載 4–6 分鐘），測試都還沒開始；同時段 #1877 的 CI 過了。每個 job 各重跑一次後，照站主「有問題用建議的做法」把修正帶進這個 PR：`tools/ci/install-ffmpeg.sh`，每次嘗試限時（update 90 秒、install 240 秒，正常安裝不到一分鐘，三次最壞約 17 分鐘仍在 job 的 20 分鐘內），第二、三次改用 `archive.ubuntu.com`（runner 的來源是 `mirror+file:/etc/apt/apt-mirrors.txt`，只改 sources 沒用，要覆寫那份清單；第一版漏了這點，smoke 三次都還在 Azure 鏡像上逾時）；`ci.yml` 的 video-tests 與 `video-tooling.yml` 的 smoke 都改呼叫它，`tools/docs-videos-tests.test.mjs` 改驗腳本。
+- 2026-10-26：#1876 合併。部署後讀回（`migration_guard --status` exact 0141、六個帳戶 US$25）待站主貼回；製作接在 C11 之後，照站主順序 C14 → C03 → C04 → C06 → C05 → C08。

@@ -69,14 +69,16 @@ function recordDisclosure(file, decision) {
 const lostItem = (lost) => item("policy", false, `outcome unknown: Jev was asked about this narration at ${lost.at} and its answer was lost (${lost.why}); Jev may have judged it and used one of today's calls, so it is not asked again until the owner retries`);
 
 /**
- * The lost judgement the last report kept (`policy_lost`), read before qa.json is written again.
- * A report that cannot be read holds nothing and is written over, as it always was.
+ * What the last report kept of Jev: the lost judgement (`policy_lost`) and the last answer
+ * (`policy_judged`), read before qa.json is written again. A report that cannot be read holds
+ * nothing and is written over, as it always was.
  */
-function heldLoss(file) {
+function heldPolicy(file) {
   try {
-    return readJson(file, null)?.policy_lost ?? null;
+    const report = readJson(file, null);
+    return { held: report?.policy_lost ?? null, judged: report?.policy_judged ?? null };
   } catch {
-    return null;
+    return { held: null, judged: null };
   }
 }
 
@@ -92,30 +94,43 @@ function heldLoss(file) {
  * narration or viewpoint is another request: it is asked as usual and the old record dropped.
  * Anything else (a spent Jev budget, Jev down, a revoked token) says who can fix it, and the exit
  * code carries that.
+ *
+ * Every answer is kept as `policy_judged` ({ request_sha256, ok, detail }). A settled answer is
+ * still asked again on the next run, except where the site will not take the same request
+ * twice: a film with a whole-film budget account (every `story-everyday-*`) books each Jev
+ * request once and answers a second send with 409 `video_budget_operation_reused`. Then the
+ * kept answer for this very request is the verdict, so review-push, which runs qa again, can
+ * post the cut (2026-10-26, the C11 UCC remake's final). A round that fails some other way
+ * (no token, a lost answer, Jev down) keeps that answer too, so the next round can still use it.
  */
-async function policyItem(ctx, request, { held = null, finalSha256 = null } = {}) {
+async function policyItem(ctx, request, { held = null, judged = null, finalSha256 = null } = {}) {
   const requestSha256 = createHash("sha256").update(JSON.stringify(request)).digest("hex");
-  if (held?.request_sha256 === requestSha256) return { item: lostItem(held), lost: held };
+  // The kept answer outlives any round that does not replace it, while it names this request.
+  const kept = judged?.request_sha256 === requestSha256 ? { judged } : {};
+  if (held?.request_sha256 === requestSha256) return { item: lostItem(held), lost: held, ...kept };
   let api;
   try {
     api = automationClient(ctx);
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
-    return { item: item("policy", false, error.message), who: error.who };
+    return { item: item("policy", false, error.message), who: error.who, ...kept };
   }
   try {
     const verdict = policyVerdict(await api.judgePolicy(request));
-    return { item: item("policy", verdict.ok, verdict.detail) };
+    return { item: item("policy", verdict.ok, verdict.detail), judged: { request_sha256: requestSha256, ok: verdict.ok, detail: verdict.detail } };
   } catch (error) {
     if (!(error instanceof AutomationError)) throw error;
+    if (error.status === 409 && error.code === "video_budget_operation_reused" && kept.judged) {
+      return { item: item("policy", judged.ok, judged.detail), judged };
+    }
     // Before the fallback below, which would make it the service's and run qa again next round.
     if (error.code === RUN_UNCERTAIN) {
       const lost = { request_sha256: requestSha256, final_sha256: finalSha256, at: new Date(ctx.now ? ctx.now() : Date.now()).toISOString(), why: error.why ?? error.message };
-      return { item: lostItem(lost), lost };
+      return { item: lostItem(lost), lost, ...kept };
     }
-    if (error.status === 404) return { item: item("policy", false, "judge endpoint not available") };
-    if (error.status === 409 && error.code === "video_judge_not_enabled") return { item: item("policy", false, "channel stance is blank; the judge has nothing to judge against") };
-    return { item: item("policy", false, `the judge call failed: ${error.message}`), who: error.who ?? "service" };
+    if (error.status === 404) return { item: item("policy", false, "judge endpoint not available"), ...kept };
+    if (error.status === 409 && error.code === "video_judge_not_enabled") return { item: item("policy", false, "channel stance is blank; the judge has nothing to judge against"), ...kept };
+    return { item: item("policy", false, `the judge call failed: ${error.message}`), who: error.who ?? "service", ...kept };
   }
 }
 
@@ -327,7 +342,7 @@ export async function run(command, args, ctx) {
   const links = await checkLinks(descriptionUrls(descriptions), linkChecker({ fetchImpl: ctx.fetch ?? globalThis.fetch, sleep: ctx.sleep, now: () => Number(ctx.now ? ctx.now() : Date.now()) }));
   items.push(item("links", links.every((result) => result.ok), linksDetail(links)));
   items.push(thumbnailItem(doc, workdir, project.translations));
-  const policy = await policyItem(ctx, policyRequest({ doc, brief: project.brief }), { held: heldLoss(inWork(QA_FILE)), finalSha256 });
+  const policy = await policyItem(ctx, policyRequest({ doc, brief: project.brief }), { ...heldPolicy(inWork(QA_FILE)), finalSha256 });
   items.push(policy.item);
   who = policy.who ?? null;
   const decision = disclosureDecision(doc, { musicSource: music?.source ?? (doc.music?.track ? "track" : doc.music ? "generated" : null) });
@@ -337,7 +352,7 @@ export async function run(command, args, ctx) {
   // the same final.mp4 hash. The assemble item binds subtitlesHash(doc) to checks.json, and the
   // captions item checks the current zh-TW CC; old reviews have no such evidence and stay locked.
   const storySubtitles = drama && isStory(project.series) ? { subtitles_burned_in: burnIn(doc) } : {};
-  const report = { ...qaReport(items, finalSha256), ...storySubtitles, ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}) };
+  const report = { ...qaReport(items, finalSha256), ...storySubtitles, ...(hasAnimePolicy(doc) ? { policy_hash: runtimePolicyHash(doc), runtime_spec: { ...doc.runtime_spec }, runtime_context: animeRuntimeContext(doc) } : {}), ...(policy.lost ? { policy_lost: policy.lost } : {}), ...(policy.judged ? { policy_judged: policy.judged } : {}) };
   writeReport(ctx, doc, workdir, report, finalSha256);
   // A lost judgement is the owner's, whatever the other items say: exit 3 keeps review-push from
   // posting the cut, and the code on the last line tells it from a token the owner has to replace.
