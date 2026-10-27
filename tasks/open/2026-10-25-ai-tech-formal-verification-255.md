@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-tech-formal-verification-255
 title: AI tech formal verification 255
-status: in-progress
+status: blocked
 priority: P2
 area: docs
-owner: codex-ai-tech-news
-claimed_at: 2026-10-25T18:54:39Z
+owner:
+claimed_at:
 created_at: 2026-10-25T18:54:29Z
 completed_at:
 branch: codex/ai-tech-formal-20261025
@@ -97,3 +97,13 @@ Root委派/root/formal_branded_main_peer為本輪唯一文件editor，沿用code
 05:55:27.601Z實際normal9blob處理／同pending追加完成main＋EN下載與7舊獨有blob history留存；06:40:36.548Z再以6smalltextblob／10roles完成ZH106及EN108cue、各105source IDs、currenttitle-description，authenticated讀回後current e66d6661-c991-42fc-abde-30e942c9fe5b共23roles。CurrentQA a458真false10/11、onlycaptions，JA14flags／stale1hard及ES4PT2ID2共8CPS不洗分。舊00f2自然superseded，其餘12refs／payload／QA11／null決定欄位完全保留；7獨有舊blob正常恢復並live引用，另有原生agedGC九hashfixture。
 
 外語仍EN1/8，JA91accepted14flags及其他六語不ready。預設8語是使用者要求；歷史server locales{}照實記錄，不假造勾選。沒有正式batch／server批准／整片QA通過。源e6e／claims527／speech8028／master19ae／voice／lexicon／data及敘事9/13 false不改。文件改前609source/native和canonical1865全hash相同，舊23檔／progress／result／task／index先逐bytes封存；dirty i18n/ja.json完整SHA de739653…0fc41保持、不stage。026f／9ff／0be5嚴格helper與delivery snapshot保持原文，文件更新後不冒稱舊整體公共文件hash仍是current。只準備新freeze，須root獨立review後才另行授權scoped stage／commit／push，維持in-progress／no-auto-merge；不merge／deploy／YouTube／topic6。
+
+
+## Normal full23 remote binary readback — 2026-10-27T06:35:17.186Z
+
+- Root沿用既有本票唯一producer與docs scope，實際PID／canonical及official-candidate LEASE皆空；dirtyJA de739全bytes保留、不stage，未動lexicon／source／i18n／audio／flags／holds。
+- 正常review-files真exit0/session96920/PID367861，GET project1+file23/denied0/paid0/not_fetched[]；前後projectGET byteexact。ROOT offline verifier77389真exit0，23完整binary／current官方main b635與EN af7／105 current WAV＋完整intended ASR acceptance／101fit0over及原meter／ZH106EN108／metadata9／舊BODY12與7historybuffers皆實核。這是補既有交付的完整下載驗證，不是新增M4A。
+- 當前fresh_remote_binary_hash_performed改true，其餘原QAfalse10/11＋8CPS／JA14stale／EN1of8／all_eight與overall false全部保留。之前false原進度在新receipts before-progress.json保留；沒有倒改歷史收據。完整證據見receipts/remote-binary-readback-20261027/README.md。
+- 本票整片與八語Definition of done仍未完成；無serverwrites／source或final核准／新language batch／merge／部署／YouTube。本輪docs/tests/Git/PR實際結果寫入CURRENT.md。
+
+- 續作交接：正常status/release完成後，工具release會設回open；已再以正常status設為blocked，owner/claimed_at清空但本對話codex-ai-tech-news與原分支仍負責續作，Claude或其他producer未接手。全域ASR／TTS hold未釋放。停在JA14flags及其餘七語媒體、正常QA與核准版language batch；不可把這次讀回驗證當全片完成。先核對真實既有請求結果、PID／LEASE／state，再按既有有界快取／attempt規則恢復。

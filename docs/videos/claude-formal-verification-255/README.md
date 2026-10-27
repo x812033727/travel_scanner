@@ -1,5 +1,7 @@
 # Claude形式驗證255：當前官方片頭尾版
 
+最新核對（2026-10-27）：已補完目前待審成片全23附件的正常完整下載與ROOT實體驗證，含正式片頭尾版1080p、兩個英文M4A角色、繁中／英文實際CC與完整標題說明。105句英文現有音檢、fit與meter仍綁同一音檔；沒有新合成或核准，仍是英文1/8。[完整讀回證據](receipts/remote-binary-readback-20261027/README.md)。先前server組檔／角色metadata收據保持原日期與範圍。
+
 [完整1080p、EN M4A與繁中／EN CC及標題說明](production-result.md)已直接交[該片Mokaair後台](https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255)並讀回。新main b635含官方5秒片頭／21秒片尾，current pending e66d共23roles。
 
 **目前EN1/8；原生QA真false10/11，只captions未過。** JA14flags／stale harderror與8項CPS保持，整片與八語DOD尚未完成，沒有正式languages batch／server核准／YouTube公開。

@@ -1,5 +1,5 @@
 {
-  "observed_at": "2026-10-26T07:19:01.912820+00:00",
+  "observed_at": "2026-10-27T06:35:17.186Z",
   "status": "in-progress",
   "stage": "official_v4_main_EN_M4A_ZH_EN_CC_title_description_delivered_1of8_manual_pending_QA10_JA14flags",
   "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
@@ -112,7 +112,7 @@
     "main_EN_and_history_delivered_at": "2026-10-26T05:55:27.601Z",
     "ZH_EN_CC_title_description_delivered_at": "2026-10-26T06:40:36.548Z",
     "server_assembly_SHA_size_and_authenticated_role_metadata_verified": true,
-    "fresh_remote_binary_hash_performed": false,
+    "fresh_remote_binary_hash_performed": true,
     "atomic_CAS_available": false,
     "main_raw_receipt_sha256": "d45fd8917edba4a127065e9d0bf56a9ae514f2004568633a3617ec5d3b1f74b5",
     "CC_actual_receipt_sha256": "e2f7cba8c4a16c906662f6e24a444abd48851eb9326dbd684be1af89e2b77b67",
@@ -131,7 +131,10 @@
       "locales_decided_at": null,
       "dub_locales": []
     },
-    "user_default_eight_foreign_languages_is_not_fake_server_selection": true
+    "user_default_eight_foreign_languages_is_not_fake_server_selection": true,
+    "normal_full_binary_readback_at": "2026-10-27T06:35:17.186Z",
+    "normal_full_binary_readback_receipt": "receipts/remote-binary-readback-20261027/root-full23-binary-proof.json",
+    "normal_full_binary_downloaded_roles": 23
   },
   "branding": {
     "official_channel_bookends_present": true,
@@ -236,7 +239,10 @@
         "current_EN_independent_proof": "branding-v4/EN-current-independent-proof.json",
         "historical_EN_thumbnail_retained_in_old_review_and_current_history_alias": true,
         "no_new_syntheses_for_branding": true,
-        "no_new_ASR_or_Jev_for_cached_recheck": true
+        "no_new_ASR_or_Jev_for_cached_recheck": true,
+        "normal_remote_binary_readback_verified": true,
+        "normal_remote_binary_readback_at": "2026-10-27T06:35:17.186Z",
+        "normal_remote_binary_readback_receipt": "receipts/remote-binary-readback-20261027/root-full23-binary-proof.json"
       },
       "ja": {
         "translation_sha256": "de739653e8ac7e02f02fd67153f22749dda84babb5dc59fa1615f1035020fc41",
@@ -621,5 +627,21 @@
     "strict_delivery_helpers_026f_9ff_0be5_unchanged_historical": true,
     "source_progress_hashes_after_doc_update_not_relabelled_as_still_current": true,
     "stage_commit_push_requires_root_independent_review": true
+  },
+  "normal_binary_readback_update": {
+    "at": "2026-10-27T06:35:17.186Z",
+    "normal_process_exit_code": 0,
+    "Root_verifier_exit_code": 0,
+    "downloaded_current_final_files": 23,
+    "missing_files": 0,
+    "main_and_EN_and_ZH_EN_CC_full_buffers_verified": true,
+    "English105_current_accepted": true,
+    "existing_fit_and_meter_hashes_bound": true,
+    "other_original_files_and_dirty_JA_unchanged": true,
+    "new_paid_requests": 0,
+    "new_server_writes": 0,
+    "new_approval": false,
+    "all_eight_ready": false,
+    "receipt": "receipts/remote-binary-readback-20261027/README.md"
   }
 }
