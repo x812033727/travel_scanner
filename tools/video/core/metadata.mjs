@@ -326,14 +326,28 @@ export function dedupeLinks(body, article = null) {
 }
 
 // Where the first sentence ends: a CJK terminator, or a Latin one followed by a space or the end
-// (so "2.5%" and "Omni 1.1" stay whole), and the quote or bracket that closes it.
-const SENTENCE_END = /[。！？]|[.!?](?=\s|$)/u;
+// (so "2.5%" and "Omni 1.1" stay whole), and the quote or bracket that closes it. A terminator
+// inside a corner-bracket quote that the quote does not close on is the quote's own
+// (「徵求男子，參加危險的旅程。工資很少…」), so the sentence runs on to the next one; a quote that
+// never closes falls back to the first terminator.
+const SENTENCE_END = /[。！？]|[.!?](?=\s|$)/gu;
 const CLOSERS = /^[」』）)\]"']/u;
+
+function insideQuote(text, index) {
+  let depth = 0;
+  for (const char of text.slice(0, index)) {
+    if (char === "「" || char === "『") depth += 1;
+    else if ((char === "」" || char === "』") && depth > 0) depth -= 1;
+  }
+  return depth > 0;
+}
 
 /** A paragraph's first sentence and the rest of it: ["Token 是什麼？", "這集回答…"]. */
 export function splitFirstSentence(text) {
-  const match = SENTENCE_END.exec(text);
-  if (!match) return [text.trim(), ""];
+  const matches = [...text.matchAll(SENTENCE_END)];
+  if (!matches.length) return [text.trim(), ""];
+  const ends = (each) => !insideQuote(text, each.index) || CLOSERS.test(text[each.index + each[0].length] ?? "");
+  const match = matches.find(ends) ?? matches[0];
   let end = match.index + match[0].length;
   while (end < text.length && CLOSERS.test(text[end])) end += 1;
   return [text.slice(0, end).trim(), text.slice(end).trim()];

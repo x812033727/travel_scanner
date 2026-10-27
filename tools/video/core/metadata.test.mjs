@@ -46,6 +46,8 @@ test("the body is laid out as hook, audience, then the rest as the writer paragr
   assert.deepEqual(splitFirstSentence("First 2.5% of Omni 1.1 is fine. Then more."), ["First 2.5% of Omni 1.1 is fine.", "Then more."], "a Latin period ends a sentence only before a space");
   assert.deepEqual(splitFirstSentence("「真的嗎？」她問。"), ["「真的嗎？」", "她問。"], "the closing quote stays with its sentence");
   assert.deepEqual(splitFirstSentence("沒有句點"), ["沒有句點", ""]);
+  assert.deepEqual(splitFirstSentence("「徵求男子，參加危險的旅程。工資很少。」據說是廣告。後來呢？"), ["「徵求男子，參加危險的旅程。工資很少。」", "據說是廣告。後來呢？"], "a full stop inside a quote does not end the sentence");
+  assert.deepEqual(splitFirstSentence("「沒有結尾。真的"), ["「沒有結尾。", "真的"], "a quote that never closes falls back to the first terminator");
   const token = "Token 是什麼？這集回答 AI 在數什麼，以及什麼時候該在意。\n給常把公告貼給 AI 整理的人；不用懂程式。\n\n用一份公告實際算一次。\n\n錄製日期：2026 年 10 月 3 日。";
   assert.deepEqual(bodyLayout(token), { hook: "Token 是什麼？", audience: "給常把公告貼給 AI 整理的人；不用懂程式。", rest: "這集回答 AI 在數什麼，以及什麼時候該在意。\n\n用一份公告實際算一次。\n\n錄製日期：2026 年 10 月 3 日。" });
   assert.deepEqual(bodyLayout("OpenAI 發表了 25 項。這支分五張清單。\n\n給付 Plus 的人。\n\n講到錢。"), { hook: "OpenAI 發表了 25 項。", audience: "給付 Plus 的人。", rest: "這支分五張清單。\n\n講到錢。" }, "a second paragraph is the audience line too");
