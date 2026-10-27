@@ -2,6 +2,8 @@
 
 狀態：**旁白已生成，音訊QA尚未通過，沒有成片核准**。
 
+最新16:38台北：第一輪新13WAV已完成盲式Whisper及官方check，疑句降至5（212＝153逐字＋29同音／口語＋4Jev＋21第二轉寫＋5flags），見[audio-qa-retake1-asr.json](audio-qa-retake1-asr.json)及[audio-qa-retake1-official.json](audio-qa-retake1-official.json)。Windows journal更名故障已透過保留的完整answer安全恢復，官方明確reused1；active entries0，原tmp與recovery proof保留。第二輪只重錄5句已成功71171 native0／88字元，5新SHA已凍結，正文現在28317frames＝943.9秒；正準備新5WAV的ASR及新reader。plain drama品質重錄已2/2，後續如仍疑句才進受保護的聽眾改寫（最多2輪）。目前5flags是r1舊take判定，不能當作r2的新QA。見[audio-retake2-20261027.json](audio-retake2-20261027.json)。
+
 最新16:05台北：session62156已native_exit0，13疑句成功重錄（13requests／242字元，158reused），13個WAV SHA全改變且已凍結；source與speechHash不變、audio_evidence0問題、journal空且lease釋放。正文現在28290frames／30＝943秒（15:43），成功重錄輪數1。正準備新13WAV的cached Whisper盲式辨識與新SHA reader；下方原13flags／轉寫是舊音檔結果，不能當作新WAV的QA，也不能沿用舊reader結果。舊預覽與QA需要在音訊通過後重組更新。見[speech-retry-20261027-1600.json](speech-retry-20261027-1600.json)。16:01另有已對帳的Windows preload本機啟動錯誤，未載CLI或送provider；已改file URL，不計provider refusal。
 
 先前續試（11:40退避後，12:02讀回）：session21401仍為native_exit4／Gemini忙碌或用量限制，21個凍結檔案未變、journal空且lease釋放，當時成功重錄輪數仍0。當時13flags保持，沒有新ASR；16:00退避斷點已由上段成功續作收據取代。原始收據保留，見[speech-retry-20261027-1140.json](speech-retry-20261027-1140.json)。下方11:40及09:30內容是先前履歷。

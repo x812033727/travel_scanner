@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 13疑句已成功重錄；新旁白正文15:43，待新WAV獨立辨識及音訊QA，再重組中文版。八語配音尚未開始 |
+| 1 | curio-s31 | curio-s31-v2 | 第一輪疑句降至5；第二輪僅重錄5句已完成，正文15:43.9，待5個新WAV獨立ASR與官方QA。八語配音尚未開始 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,11 +34,21 @@
 
 ## 當前斷點
 
-**最新實況：2026-10-27 16:05台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+**最新實況：2026-10-27 16:38台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+
+官方音訊QA session60616已安全完成：212/212檢查，153逐字、29同音／口語差異、4Jev通過、21第二轉寫排除、5flags；只新增5個primary ASR／2Jev，明確記錄1個先前已付answer由journal讀回，沒有重買該筆。見[audio-qa-retake1-official.json](audio-qa-retake1-official.json)。active journal entries現在0；已驗證的recovery proof與原confirmed tmp仍保留，不能把保留證據誤認為待重送請求或為了清空目錄而刪除。
+
+按現行網站drama重錄上限2（唯讀查得，未改設定），已只對剩餘5句作第2輪原文重錄：session71171 native_exit0、5requests／88字元、166reused，5WAV均變更且凍結，source／voice不變、audio_evidence0問題、active journal0且lease釋放。新正文28317frames／30＝943.9秒；新timeline SHA `1849d12c382ee222475b4a07d115a361606ba6b696f96c34cf13e777efb39cd1`、narration SHA `b819389fc2f68c26577db669fe08943e550fd20e52220f331e7e859ae25faf10`。新cohort manifest SHA `8aa3a3a9e0452d8799681aae999f1d8ece81cec9c03f943931591eb0c8cd5c3b`，收據[audio-retake2-20261027.json](audio-retake2-20261027.json)。`s31_audio_plan`／`s31_translate_ko_es`正準備與覆核唯一next5離線ASR；先查private `whisper-retake5-r2-20261027T0836/`及agent狀態，不另啟第二份。新reader應選r2新5＋r1未變8＋context2＋old16的整句真實ASR。若新QA仍有flags，走最多2輪受保護的聽眾措辭修正，不無限重錄原文；audio／final仍未核准。
+
+private clone使用官方journal恢復實測已PASS（review SHA `0583f1810e0165ab5edfe74df7a23114786703fdc4e58d17a6a66f8ab52e59d7`）：精確request `04a11d27c3214447eb325787ecac9bc6624ef061e6ea92e6434561cb5f782b93`對應新v2a0611 WAV的16k downsample，完整sent／sidecar／tmp SHA及基底吻合；官方default processAlive確認PID55548為ESRCH，mock send／fetch均0calls，已保存回覆可讀回且reused1。原三檔保持不變，只有private clone新增recovery proof。Root核對後正常續作session60616已完成，log `check-audio-retake13-recovery-r1.txt`；不加force、不手動刪journal，實際讀回已付同request，後續不同request仍是正常已授權查核。
+
+先前故障：官方check-audio session77188於16:26 native_exit1，Windows EPERM使已回覆的speech/transcribe confirmation無法rename到journal。sent JSON、完整answer sidecar、confirmed tmp三檔均已凍結在private `check-retake13-rename-failure-before/journal/`，保留後才作上段對帳與安全續作。這是既有`2026-10-07-preserve-speech-journal-writes-through-windows`票追蹤的類型，不在本影片票修改共用工具。沒有核准audio或final。
 
 16:00退避後正常續作已成功：session62156於16:04:27台北native_exit=0，完成13請求／242計費字元、158請求沿用。13句WAV均實際改變，已逐檔凍結；source/script與speechHash未變，audio_evidence0問題、journal空且lease釋放。新旁白正文28290frames／30fps＝943秒（15:43），新timeline SHA `2c8ca9bcb1351ff046e2d70a4593bdb42442ea9a56172748b06a256875d602bf`、narration SHA `8aba58fcb273ab577bb7b87b380bd79babb24147a845ac89f09b044fc0874082`。成功重錄輪數現在是1；前五個provider拒絕指令沒有完成重錄。完整收據見[speech-retry-20261027-1600.json](speech-retry-20261027-1600.json)，private新cohort manifest SHA `fb86a85557d67c3c1fa6f849564fc27986fb5ced4b0212a52ce485ed8c693a46`。
 
-當前下一步是對這13個新SHA的凍結WAV作cached Whisper獨立辨識，再用新SHA reader跑官方check-audio；舊13flags只屬於舊音檔，不能沿用舊轉寫或判定到新WAV。`s31_audio_plan`準備唯一新scratch／一次SSH的離線批次，`s31_translate_ko_es`先覆核launcher與reader；先查當前agent／private收據，不競爭啟動第二份ASR或任何TTS。舊16:11.97預覽與10/11QA是重錄前歷史，現在與新旁白不同，尚需音訊QA及重組；不得核准audio／final或接S15。
+成功重錄後的順序是cached Whisper獨立辨識、新SHA reader、官方check-audio。ASR與reader審閱已完成，見下段；現在先處理上段journal對帳，不競爭啟動第二份ASR或任何TTS。舊13flags只屬於舊音檔，不能沿用舊轉寫或判定到新WAV。舊16:11.97預覽與10/11QA是重錄前歷史，現在與新旁白不同，尚需音訊QA及重組；不得核准audio／final或接S15。
+
+唯一離線ASR session32156已完成13/13、native_exit0、150.476秒、stderr空，沒有timeout或新模型下載；raw stdout SHA `92db8107dedceb5621c44a913fde3d20f26716ad4cf1f30d14c30c16bfe7246f`。獨立審閱通過的新reader v2 SHA `fa97c6bb6083f1a48a800309aafc9d61db93c871c54b70e3ceb278a65ca8f298`，按SHA選新13全句＋未變context2＋未變old16，不拼字；16anchors與完整31句重播已驗。實際server完成16:15:27台北；原verified-receipt.at被prepare物件展開覆寫，已保留原收據及raw並以timing companion說明，v2強綁旁證，不虛構精確finalize時間。完整收據[audio-qa-retake1-asr.json](audio-qa-retake1-asr.json)。原PID2401已結束，不要重跑ASR。
 
 16:01最初的本機啟動因Windows `--import C:/...`得到`ERR_UNSUPPORTED_ESM_URL_SCHEME`，native1；helper與CLI都未載入、diagnostic檔未建立，21檔未變、journal空。已保存啟動與對帳收據，獨立無害control確認改`--import file:///C:/...`才可載入；之後使用全新`tts-after1600-fileurl`槽位完成上述唯一正常provider續試。這個local startup failure不計provider refusal或成功重錄，舊槽位不得重播。凍結helper SHA未變，實際觀測非2xx紀錄0筆；沒有為診斷額外probe。後續Windows呼叫一律使用file URL。
 
@@ -54,7 +64,7 @@
 
 重錄前的EN render session98057與補產CC均已exit0。[production-preview-r6.json](production-preview-r6.json)是08:46:47台北的歷史完整驗證快照：當時source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA核對通過；重錄後不能用它證明舊成片與新旁白相同。原版final SHA仍保留`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
 
-**下一個可行動斷點是新13WAV的獨立ASR與官方音訊QA**。先讀新cohort與正在準備／執行的ASR收據，不重播任何已結束TTS槽位。音訊未過，且舊成片尚未重組，所以audio／final／完整八語交付包均未完成；不能勾整集完成或開始S15。
+**下一個可行動斷點是第二輪5個新WAV的獨立ASR與官方QA**。先讀next5 batch／agent／launcher／reader審閱收據，不啟動競爭者；如再遇持久化錯誤，保留sent／answer／tmp重新對帳，不能forget／手動移除後重送。舊v2 reader不能拿r1那5份轉寫冒充r2音訊，須新SHA reader。中文旁白check不帶`--locale`（此旗標只給八個dub語系），也不加force。音訊未過且舊成片尚未重組，所以audio／final／完整八語交付包均未完成；不能勾整集完成或開始S15。
 
 - 配對已恢復，不再要求站主重配。guarded keyframes最後session `7898` 已正常完成：129/129張judge通過，沒有needs_review；官方keyframeProblems為0，visual_hash `4ff8941e6473b9f4`、speechHash `8af0af8b6fb7d1e4`。六頁最新圖板已由代理實際檢視，依站主推薦選擇委託記錄storyboard核准，並非站主本人觀看。manifest SHA `fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2`。
 - 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。

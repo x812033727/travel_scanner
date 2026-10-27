@@ -48,6 +48,8 @@
 
 最新16:05台北：退避後session62156已native_exit0，完成13requests／242字元、158reused；13WAV實際改變並凍結，正文28290frames／30＝943秒，audio_evidence0問題、journal空且lease釋放。成功重錄輪數1，現在先做新WAV獨立ASR與官方音訊QA；舊13flags屬舊take，舊16:11.97預覽／10/11QA與新旁白不同，尚未重組或核准。新cohort manifest SHA `fb86a85557d67c3c1fa6f849564fc27986fb5ced4b0212a52ce485ed8c693a46`，收據[speech-retry-20261027-1600.json](speech-retry-20261027-1600.json)。先前Windows preload URL錯誤已離線查明並對帳，CLI未載入；改用file URL後才完成唯一正常provider續作。圖片／評審與配樂沒有新費用，八語配音及交付包仍待辦。
 
+最新16:38台北：r1獨立ASR13/13及官方QA完成，疑句降至5；已保存的transcribe answer經官方journal恢復並實際reused1，沒有重買該筆。只對5句作r2原文重錄已native0（71171，5requests／88字元、166reused），正文28317frames／30＝943.9秒；5新SHA待新獨立ASR及官方QA。成功plain重錄2/2後不再無限重錄，如仍有疑句才進最多2輪受保護的措辭修正。active journal entries0但已驗證recovery/tmp證據保留，source／voice及圖片音樂費用未變；audio／final／八語配音仍未完成。收據[audio-qa-retake1-official.json](audio-qa-retake1-official.json)、[audio-retake2-20261027.json](audio-retake2-20261027.json)。
+
 ## 接續順序
 
 1. 已完成：站主確認這份修訂稿與本集生圖上限；只對新版記錄新的 outline/script 決定，不移用原版核准。
