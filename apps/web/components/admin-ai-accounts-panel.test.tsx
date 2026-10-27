@@ -215,8 +215,7 @@ describe("AdminAiAccountsPanel", () => {
     );
     const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
       const url = String(input);
-      if (url.endsWith("/admin/ai-accounts/colab/c/login")) return response(login({ tool: "colab", slot: "c", kind: "paste_code", url: google, user_code: null }), 201);
-      if (url.endsWith("/code") && init?.method === "POST") return response(login({ tool: "colab", slot: "c", kind: "paste_code", status: "verifying", url: null, user_code: null }), 202);
+      if (url.endsWith("/admin/ai-accounts/colab/a/login")) return response(login({ tool: "colab", slot: "a", kind: "paste_code", url: google, user_code: null }), 201);
       if (url.includes("/admin/ai-accounts")) return response(state);
       throw new Error(`unexpected ${url}`);
     });
@@ -236,9 +235,10 @@ describe("AdminAiAccountsPanel", () => {
     expect(within(section).queryByRole("article", { name: "Google Colab 帳號 B" })).toBeNull();
     expect(within(section).getByText("會使用下一個空位：帳號 B")).toBeTruthy();
 
-    // A sign-in for a named slot walks the Google code dialog with Colab's own words.
+    // Signing a card in again opens the Google code dialog with Colab's own title.
     fireEvent.click(within(first).getByRole("button", { name: "重新登入" }));
-    await waitFor(() => expect(fetchMock.mock.calls.some(([input]) => String(input).endsWith("/admin/ai-accounts/colab/a/login"))).toBe(true));
+    const dialog = await screen.findByRole("dialog", { name: "登入 Google Colab（帳號 A）" });
+    expect(within(dialog).getByRole("link", { name: /開啟登入頁/ }).getAttribute("href")).toBe(google);
   });
 
   it("walks a Colab sign-in with Colab's own steps", async () => {
