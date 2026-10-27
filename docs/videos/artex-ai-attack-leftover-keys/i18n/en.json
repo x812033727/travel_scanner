@@ -1,0 +1,415 @@
+{
+  "title": "ARTEX: AI Hackers Breached the Cloud in Under 3 Hours With Keys You Left Out",
+  "description": "On October 21, 2026, Microsoft reported its assessment that a Chinese government-linked hacking group used ARTEX, an autonomous AI penetration-testing tool, to attack hundreds of organizations worldwide, several times going from target to cloud admin rights in under three hours. Right after, Taiwan's 91APP also noted ARTEX traces in its investigation report. Three official reports show where it really got in: one wave of 150,000 password guesses all failed; what got in was an already-authorized app and a database key in GitLab. Then one git command recovers a deleted password from history; last, three places to take your keys back.\nFor people who use Google sign-in everywhere, engineers and beginners pushing projects to GitHub, and company Microsoft 365 admins.\n\nRecorded Oct 27, 2026. Guess counts, authorized apps, under three hours, 2,250 tenants and added credentials as backdoors: Microsoft Threat Intelligence, Oct 21. Appsmith, the GitLab database key and timing: 91APP's 18-day investigation report, Oct 22. AI cutting attack costs and the defense advice: Taiwan's Administration for Cyber Security, Oct 21; its director on AI giving up on some companies and similar attacks seen in Taiwan in July: iThome, same day. Zeabur's plaintext credentials, keys missed in August and 3.21 million environment variables: Zeabur's Oct 19 preliminary report, which does not mention ARTEX or say the attacker used AI tools. Password-change exception: Google Account Help; revoke or rotate first: GitHub Docs. Terminal footage: a real run on 2026-10-27 in a demo repository on Ubuntu 24.04.5 with git 2.43.0; the password is fake. \"My view\" and \"I couldn't find\" are my own opinions. No attack is shown and no attack tool is linked.\n\nCommands in the video:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nHow many apps on your Google access list don't you recognize? Tell me in the comments.",
+  "tags": [
+    "ARTEX",
+    "AI hackers",
+    "91APP security breach",
+    "AI cyberattack",
+    "Microsoft Storm-0940",
+    "Zeabur security incident",
+    "git deleted password",
+    "OAuth authorized apps",
+    "Administration for Cyber Security",
+    "AI news"
+  ],
+  "thumbnail": {
+    "tag": "AI News",
+    "headline": "**Grabs keys**\nPicks no locks",
+    "sub": "ARTEX: how AI hackers get in, and how to take your keys back"
+  },
+  "chapters": {
+    "open": "What is ARTEX?",
+    "acs": "Does it matter to small users?",
+    "ms-page": "How did the AI get in?",
+    "route-91app": "Where was Taiwan's key?",
+    "google": "Won't a new password fix it?",
+    "ls": "How to find your own keys",
+    "view": "My take: what to do now"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "15121923ce90",
+      "acs": "b5051d10397a",
+      "ms-page": "81c7a6e6c3f5",
+      "route-91app": "5f0715490f6a",
+      "google": "a3f0c745a54b",
+      "ls": "2193a36be479",
+      "view": "f6511ebd3f37"
+    },
+    "title": "45311fe332ff",
+    "description": "f622f6a39e94",
+    "tags": "2ab87fe05065",
+    "thumbnail": "4992c00258f5"
+  },
+  "lines": {
+    "y9kb": {
+      "source_hash": "9ec5aec269f1",
+      "text": "On Oct 21, Microsoft assessed that a group tied to China's government"
+    },
+    "7tzn": {
+      "source_hash": "16fdbe07f16d",
+      "text": "used the AI tool ARTEX to attack hundreds of organizations;"
+    },
+    "tiky": {
+      "source_hash": "b6dccdcd3daa",
+      "text": "several times, it took cloud admin rights in under three hours."
+    },
+    "cjk6": {
+      "source_hash": "552f1cc343c0",
+      "text": "Right after, Taiwan's 91APP also named ARTEX in its investigation report."
+    },
+    "3h5e": {
+      "source_hash": "5d339fd29ab2",
+      "text": "You might ask: I'm not a big company, my password is long enough. Why should I care?"
+    },
+    "4irk": {
+      "source_hash": "531b4c28ce9b",
+      "text": "You should. Microsoft logged one wave:"
+    },
+    "6pn9": {
+      "source_hash": "a5648e941f38",
+      "text": "150,000 password guesses, and the result isn't what you'd think;"
+    },
+    "yfkf": {
+      "source_hash": "7cc400f1c4a5",
+      "text": "that Taiwanese e-commerce firm's report shows where the key the attackers found was left;"
+    },
+    "v5t8": {
+      "source_hash": "046f85a2f9f1",
+      "text": "and Google's own help says something about password changes;"
+    },
+    "vbbm": {
+      "source_hash": "ebab78f91bce",
+      "text": "Remember one thing: a deleted password can come back from history with one command."
+    },
+    "kj3y": {
+      "source_hash": "86a1b1f0a491",
+      "text": "You say you're not a big company? Taiwan's cybersecurity agency says AI cut attack costs and raised speed;"
+    },
+    "na73": {
+      "source_hash": "048023ba9375",
+      "text": "The agency's director added: facing some well-defended companies, AI tools weighed the cost, gave up, and moved to weaker ones."
+    },
+    "uny5": {
+      "source_hash": "715c336bbe03",
+      "text": "So AI hackers are less lock pickers than thieves checking doormats."
+    },
+    "yfsm": {
+      "source_hash": "d41452698666",
+      "text": "Picking locks means trying door after door; a good lock keeps you out;"
+    },
+    "ugft": {
+      "source_hash": "08610ff7f028",
+      "text": "checking doormats, it's thousands a night; find a spare key, walk in."
+    },
+    "52j9": {
+      "source_hash": "28407b4a699f",
+      "text": "So which doormats is it checking?"
+    },
+    "wq9c": {
+      "source_hash": "81683cc5f544",
+      "text": "The answer is in this Microsoft report, linked in the description."
+    },
+    "a6cm": {
+      "source_hash": "5d133bf72de9",
+      "text": "The 150,000 from the start is this wave: October 10 to 14, peaking at 2,900 a minute;"
+    },
+    "5xut": {
+      "source_hash": "ae4049f81508",
+      "text": "nearly 98% of responses: account locked;"
+    },
+    "krad": {
+      "source_hash": "29bab557afd3",
+      "text": "successful sign-ins: zero."
+    },
+    "yqhv": {
+      "source_hash": "e205e657949f",
+      "text": "You might think: passwords and 2-step verification held, so OK?"
+    },
+    "bqc5": {
+      "source_hash": "65483ad050c2",
+      "text": "The problem is, it never needed that door."
+    },
+    "wqed": {
+      "source_hash": "345448d2a316",
+      "text": "The report says it got backup vendor ConnectWise's app credentials,"
+    },
+    "j7dk": {
+      "source_hash": "d2d299aa8d95",
+      "text": "then, via the app customers had already authorized, went into their Microsoft 365;"
+    },
+    "anq3": {
+      "source_hash": "9dee78c7ecdc",
+      "text": "no one had to sign in, so there was no 2-step verification to stop it."
+    },
+    "v7kk": {
+      "source_hash": "0a1c6139e235",
+      "text": "AI turns this into machine speed: it tried signing in to over 2,250 companies' cloud environments."
+    },
+    "zz9s": {
+      "source_hash": "2a56cc7c5822",
+      "text": "That's where \"under three hours\" came from: the door was already open; AI just walked fast."
+    },
+    "ubmv": {
+      "source_hash": "6d6afad3c162",
+      "text": "So where was the key this time in Taiwan?"
+    },
+    "kwit": {
+      "source_hash": "60a04b2cf132",
+      "text": "In that e-commerce firm's report."
+    },
+    "d7ke": {
+      "source_hash": "a578aae063e7",
+      "text": "An internal productivity tool, Appsmith, wasn't updated; attackers entered the internal network there;"
+    },
+    "wzkp": {
+      "source_hash": "c6e6e3406c6e",
+      "text": "then, in GitLab, they got a database key;"
+    },
+    "kfdv": {
+      "source_hash": "f5beec9fa00d",
+      "text": "finally, the key opened the order database; no credit card or other payment data."
+    },
+    "qb46": {
+      "source_hash": "b08630ba2e23",
+      "text": "No new vulnerability: just a door left open and a key left in a code repository."
+    },
+    "g47a": {
+      "source_hash": "85be112cd5ac",
+      "text": "And that wasn't even the most carelessly kept key."
+    },
+    "3j5c": {
+      "source_hash": "4a678bfc51da",
+      "text": "Same week, Taiwan's Zeabur also had data taken;"
+    },
+    "gpaj": {
+      "source_hash": "055027054734",
+      "text": "its report never mentions ARTEX; it records how the keys were kept:"
+    },
+    "nwji": {
+      "source_hash": "f9782dc30d3b",
+      "text": "the attackers used long-lived admin credentials stored in plaintext;"
+    },
+    "siri": {
+      "source_hash": "3e3e735bb015",
+      "text": "keys were rotated after an August incident, but these few were missed."
+    },
+    "29n6": {
+      "source_hash": "092655035988",
+      "text": "In 37 minutes, over 3.2 million environment variables were read from the platform database."
+    },
+    "fvak": {
+      "source_hash": "d184f18968e7",
+      "text": "So the first thing it asked of users: change every password and key, even those changed in August."
+    },
+    "kemy": {
+      "source_hash": "8940de443fb0",
+      "text": "So if I change my own password, I'm fine, right?"
+    },
+    "bc63": {
+      "source_hash": "cb0ef5fd77ec",
+      "text": "Google's help says a password change signs you out of all devices;"
+    },
+    "ei35": {
+      "source_hash": "8cf674c9e1d2",
+      "text": "but one exception is the third-party apps you've given access to your account."
+    },
+    "qyat": {
+      "source_hash": "026d37580698",
+      "text": "Change the lock, and the doormat key still opens another door."
+    },
+    "dqii": {
+      "source_hash": "463b8b5b6001",
+      "text": "Same for businesses: once inside, attackers add their own credentials to apps;"
+    },
+    "f3e5": {
+      "source_hash": "f3cd35bd961c",
+      "text": "even after the original app is fixed, those added keys can stay as backdoors."
+    },
+    "urua": {
+      "source_hash": "56b6b614ff09",
+      "text": "So it's not just changing locks: find the keys you gave out and take them back."
+    },
+    "8csm": {
+      "source_hash": "1a6f5696f578",
+      "text": "So what's under my own doormat?"
+    },
+    "9c5b": {
+      "source_hash": "64fd153f9d69",
+      "text": "I built a demo repository and first committed a config file with a fake database password;"
+    },
+    "7iw4": {
+      "source_hash": "c7044b38646a",
+      "text": "the next commit deleted it and ignored it."
+    },
+    "yzmt": {
+      "source_hash": "85b48813db60",
+      "text": "List the folder: the config file is gone."
+    },
+    "tpcz": {
+      "source_hash": "9c70c5942b84",
+      "text": "Then the most common way: search the whole folder for the word PASSWORD:"
+    },
+    "hvxy": {
+      "source_hash": "ba1686108eb0",
+      "text": "Not found. At this point, most people would think the password is gone."
+    },
+    "bk5g": {
+      "source_hash": "d14982d9536d",
+      "text": "Here's the question: is it really deleted?"
+    },
+    "qyg2": {
+      "source_hash": "9691cf6c1b50",
+      "text": "Now one command asks git's history: which commits touched a line with PASSWORD?"
+    },
+    "tzyy": {
+      "source_hash": "196ff7c71926",
+      "text": "Both show up: one that removed it, one that added it."
+    },
+    "a497": {
+      "source_hash": "a5f16b99e9d8",
+      "text": "Then git show, naming the commit that added it and the file;"
+    },
+    "5uez": {
+      "source_hash": "387de5574b46",
+      "text": "the whole config file is back, untouched, the password on line two."
+    },
+    "qt6f": {
+      "source_hash": "fe048fb60020",
+      "text": "Deleted and ignored, and one command still brings it back."
+    },
+    "urui": {
+      "source_hash": "126b2bf40b0a",
+      "text": "That database key was also in a GitLab repository; how it was kept, the report doesn't say."
+    },
+    "ishi": {
+      "source_hash": "4644d0db2922",
+      "text": "For your project, swap PASSWORD for your own key name,"
+    },
+    "asmx": {
+      "source_hash": "582e7addb5b1",
+      "text": "such as API KEY or SECRET;"
+    },
+    "gzty": {
+      "source_hash": "da83b4f39297",
+      "text": "if found, use git show to see that commit's file;"
+    },
+    "nq6x": {
+      "source_hash": "8f46aacdd4d3",
+      "text": "no output means the word isn't in the current branch's history."
+    },
+    "rgnn": {
+      "source_hash": "99f883f30c63",
+      "text": "Found one? You might think: just scrub the history?"
+    },
+    "4qg5": {
+      "source_hash": "a22278c919f1",
+      "text": "GitHub's docs put the order up front: step one is to revoke or rotate that key."
+    },
+    "epn2": {
+      "source_hash": "45b154967e8b",
+      "text": "So first, disable that key and make a new one;"
+    },
+    "wmyv": {
+      "source_hash": "382ecd2b0feb",
+      "text": "rewriting history can wait, since it only changes your own copy;"
+    },
+    "qb97": {
+      "source_hash": "a8ada1663602",
+      "text": "old history on others' machines and in forks remains, so tell anyone with a copy."
+    },
+    "uwmf": {
+      "source_hash": "05c7f0129b7a",
+      "text": "But repositories are only engineers' doormats; where's the doormat for non-coders?"
+    },
+    "3t35": {
+      "source_hash": "7195d4e40be5",
+      "text": "In your accounts' authorized apps."
+    },
+    "vtxp": {
+      "source_hash": "30bcd9820c12",
+      "text": "Google Account has a page of connected apps; open the details to remove access;"
+    },
+    "2wc7": {
+      "source_hash": "899d44c9ed09",
+      "text": "GitHub settings have a page of authorized OAuth apps; revoke any you don't recognize."
+    },
+    "yt6t": {
+      "source_hash": "886ae4112912",
+      "text": "The rule is simple: remove what you don't recognize or use; authorize again when needed."
+    },
+    "78d5": {
+      "source_hash": "82462964a42a",
+      "text": "Companies have it worse: all staff changing passwords may not stop it."
+    },
+    "masb": {
+      "source_hash": "3a87c85c9d55",
+      "text": "So Microsoft 365 admins should check the apps' own sign-in logs, not just the staff's;"
+    },
+    "ji9j": {
+      "source_hash": "82b020f03357",
+      "text": "any credentials added to apps;"
+    },
+    "pw7e": {
+      "source_hash": "10b73fddfc13",
+      "text": "and changed permissions or admin roles."
+    },
+    "jfjh": {
+      "source_hash": "7015f50fac24",
+      "text": "The keys a password change can't take back are in these three places."
+    },
+    "txje": {
+      "source_hash": "06f674cbbc46",
+      "text": "Once these keys are back, can AI hackers still find you?"
+    },
+    "v4ev": {
+      "source_hash": "001815edc0f4",
+      "text": "My view: this wave of AI hackers invented no new way in;"
+    },
+    "uesa": {
+      "source_hash": "c9e10a6439c3",
+      "text": "it just helps find keys left lying around faster."
+    },
+    "2yvb": {
+      "source_hash": "d6b5b97bc3dc",
+      "text": "So it matters even if you're not big: it picks the cheapest door first;"
+    },
+    "vkgi": {
+      "source_hash": "1d5df21d8007",
+      "text": "what you can do is not be that door."
+    },
+    "8e9n": {
+      "source_hash": "7e4aaa5033ca",
+      "text": "What I couldn't find: how many of that firm's members were affected; the report says later;"
+    },
+    "i653": {
+      "source_hash": "d862861d6923",
+      "text": "and the cybersecurity agency saw similar AI attacks in Taiwan in July, but named no tool."
+    },
+    "hfq9": {
+      "source_hash": "748f2472617e",
+      "text": "Today, review Google and GitHub authorized apps;"
+    },
+    "qgux": {
+      "source_hash": "d9b49162edcb",
+      "text": "this week, run that command in your own repositories;"
+    },
+    "ijkr": {
+      "source_hash": "8778aa3dbf7b",
+      "text": "after that, give keys an expiry; the agency also advises: disable accounts on exit day, review access quarterly."
+    },
+    "wkg5": {
+      "source_hash": "413505d64090",
+      "text": "Reclaim keys, not just new locks."
+    },
+    "zha9": {
+      "source_hash": "e660e332c916",
+      "text": "How many did you remove? Tell me."
+    },
+    "8y54": {
+      "source_hash": "3bfeebb0032d",
+      "text": "Subscribe: every video gives you a call you can act on."
+    }
+  }
+}

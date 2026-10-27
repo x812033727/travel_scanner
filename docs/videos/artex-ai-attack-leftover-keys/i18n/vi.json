@@ -1,0 +1,415 @@
+{
+  "title": "ARTEX: hacker AI chiếm đám mây chưa tới 3 giờ, không đoán mật khẩu mà nhặt chìa bạn để quên",
+  "description": "21/10/2026, Microsoft đánh giá một nhóm hacker liên quan chính phủ Trung Quốc dùng ARTEX, công cụ AI kiểm thử xâm nhập tự động, tấn công hàng trăm tổ chức, nhiều lần chiếm quyền quản trị đám mây chưa tới 3 giờ; ngay sau đó 91APP ở Đài Loan cũng thấy dấu vết ARTEX. Theo 3 báo cáo chính thức: 150 nghìn lần đoán mật khẩu đều thất bại, lối vào là ứng dụng được cấp quyền từ lâu và một khóa cơ sở dữ liệu trong GitLab; một lệnh git lấy lại mật khẩu đã xóa khỏi lịch sử; và 3 chỗ để thu hồi chìa khóa.\nDành cho người đăng nhập nhiều dịch vụ bằng Google, người đẩy dự án lên GitHub và người quản trị Microsoft 365.\n\nGhi hình 27/10/2026. Nguồn: số lần đoán, ứng dụng được cấp quyền, dưới 3 giờ, 2.250 tenant, cửa hậu: Microsoft Threat Intelligence 21/10; Appsmith, khóa trong GitLab: báo cáo 18 ngày của 91APP 22/10; AI hạ chi phí, khuyến nghị: Cục An ninh mạng 21/10; lời Cục trưởng, tấn công tương tự tháng 7: iThome; khóa lưu văn bản rõ, sót khi đổi tháng 8, 3,21 triệu biến môi trường: báo cáo sơ bộ Zeabur 19/10 (không nhắc ARTEX, không nói kẻ tấn công dùng AI); ngoại lệ khi đổi mật khẩu: trợ giúp Google; thu hồi hoặc xoay vòng trước: GitHub Docs. Terminal: kho minh họa chạy thật 2026-10-27 trên Ubuntu 24.04.5, git 2.43.0, mật khẩu giả. \"Quan điểm của tôi\", \"tôi không tra được\" là ý kiến chủ kênh. Không minh họa tấn công, không link công cụ.\n\nLệnh trong video:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nDanh sách cấp quyền Google của bạn có mấy ứng dụng bạn không nhận ra? Bình luận cho tôi biết.",
+  "tags": [
+    "ARTEX",
+    "hacker AI",
+    "91APP bảo mật",
+    "tấn công mạng bằng AI",
+    "Microsoft Storm-0940",
+    "sự cố bảo mật Zeabur",
+    "git xóa mật khẩu",
+    "ứng dụng OAuth",
+    "Cục An ninh mạng Đài Loan",
+    "tin tức AI"
+  ],
+  "thumbnail": {
+    "tag": "Tin AI",
+    "headline": "**Nhặt chìa**\nkhông cạy khóa",
+    "sub": "ARTEX: hacker AI vào bằng cách nào, thu hồi chìa khóa ra sao"
+  },
+  "chapters": {
+    "open": "ARTEX là gì?",
+    "acs": "Tôi đâu phải công ty lớn?",
+    "ms-page": "AI đã vào bằng cách nào?",
+    "route-91app": "Chìa khóa ở Đài Loan nằm đâu?",
+    "google": "Đổi mật khẩu là đủ chưa?",
+    "ls": "Tìm chìa khóa của tôi ra sao?",
+    "view": "Quan điểm: làm gì trước tiên"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "15121923ce90",
+      "acs": "b5051d10397a",
+      "ms-page": "81c7a6e6c3f5",
+      "route-91app": "5f0715490f6a",
+      "google": "a3f0c745a54b",
+      "ls": "2193a36be479",
+      "view": "f6511ebd3f37"
+    },
+    "title": "45311fe332ff",
+    "description": "f622f6a39e94",
+    "tags": "2ab87fe05065",
+    "thumbnail": "4992c00258f5"
+  },
+  "lines": {
+    "y9kb": {
+      "source_hash": "9ec5aec269f1",
+      "text": "21 tháng 10, Microsoft đánh giá: một nhóm hacker liên quan chính phủ Trung Quốc,"
+    },
+    "7tzn": {
+      "source_hash": "16fdbe07f16d",
+      "text": "dùng công cụ AI ARTEX tấn công hàng trăm tổ chức;"
+    },
+    "tiky": {
+      "source_hash": "b6dccdcd3daa",
+      "text": "nhiều lần, chưa tới 3 giờ đã chiếm được quyền quản trị đám mây;"
+    },
+    "cjk6": {
+      "source_hash": "552f1cc343c0",
+      "text": "ngay sau đó, 91APP ở Đài Loan cũng ghi cái tên ARTEX trong báo cáo điều tra."
+    },
+    "3h5e": {
+      "source_hash": "5d339fd29ab2",
+      "text": "Bạn có thể hỏi: tôi đâu phải công ty lớn, mật khẩu cũng đủ dài, liên quan gì tới tôi?"
+    },
+    "4irk": {
+      "source_hash": "531b4c28ce9b",
+      "text": "Có liên quan. Microsoft ghi lại một đợt trong số đó:"
+    },
+    "6pn9": {
+      "source_hash": "a5648e941f38",
+      "text": "150 nghìn lần đoán mật khẩu, kết quả khác với bạn nghĩ;"
+    },
+    "yfkf": {
+      "source_hash": "7cc400f1c4a5",
+      "text": "báo cáo của công ty thương mại điện tử Đài Loan ấy ghi rõ chìa khóa kẻ tấn công nhặt được nằm ở đâu;"
+    },
+    "v5t8": {
+      "source_hash": "046f85a2f9f1",
+      "text": "còn một chuyện về đổi mật khẩu, nằm trong hướng dẫn của chính Google;"
+    },
+    "vbbm": {
+      "source_hash": "ebab78f91bce",
+      "text": "Nhớ trước một điều: mật khẩu đã xóa, chỉ một dòng lệnh là lấy lại được từ lịch sử."
+    },
+    "kj3y": {
+      "source_hash": "86a1b1f0a491",
+      "text": "Bạn nói mình không phải công ty lớn? Cục An ninh mạng cho rằng AI đã hạ chi phí tấn công, tăng tốc độ;"
+    },
+    "na73": {
+      "source_hash": "048023ba9375",
+      "text": "Cục trưởng còn nói: với một số doanh nghiệp nền tảng vững, công cụ AI tính chi phí tấn công rồi bỏ cuộc, chuyển sang nơi phòng thủ yếu."
+    },
+    "uny5": {
+      "source_hash": "715c336bbe03",
+      "text": "Nên hacker AI giống kẻ trộm lật thảm chùi chân, không phải kẻ cạy khóa."
+    },
+    "yfsm": {
+      "source_hash": "d41452698666",
+      "text": "Cạy khóa phải thử từng cánh cửa, khóa đủ tốt là không vào được;"
+    },
+    "ugft": {
+      "source_hash": "08610ff7f028",
+      "text": "lật thảm thì một đêm lật vài nghìn nhà, thấy chìa dự phòng là mở cửa."
+    },
+    "52j9": {
+      "source_hash": "28407b4a699f",
+      "text": "Vậy nó lật những tấm thảm nào?"
+    },
+    "wq9c": {
+      "source_hash": "81683cc5f544",
+      "text": "Câu trả lời nằm trong báo cáo này của Microsoft, link ở phần mô tả."
+    },
+    "a6cm": {
+      "source_hash": "5d133bf72de9",
+      "text": "150 nghìn lần nói ở đầu chính là đợt này: từ 10 đến 14 tháng 10, cao nhất 2.900 lần mỗi phút;"
+    },
+    "5xut": {
+      "source_hash": "ae4049f81508",
+      "text": "gần 98% phản hồi là tài khoản bị khóa;"
+    },
+    "krad": {
+      "source_hash": "29bab557afd3",
+      "text": "đăng nhập thành công: 0 lần."
+    },
+    "yqhv": {
+      "source_hash": "e205e657949f",
+      "text": "Bạn có thể nghĩ: mật khẩu và xác thực hai bước đều chặn được, vậy là ổn?"
+    },
+    "bqc5": {
+      "source_hash": "65483ad050c2",
+      "text": "Vấn đề là nó chẳng cần đi qua cánh cửa đó."
+    },
+    "wqed": {
+      "source_hash": "345448d2a316",
+      "text": "Báo cáo nói nó lấy thông tin xác thực ứng dụng của bên sao lưu ConnectWise,"
+    },
+    "j7dk": {
+      "source_hash": "d2d299aa8d95",
+      "text": "rồi qua ứng dụng mà khách hàng đã cấp quyền từ lâu, vào thẳng Microsoft 365 của khách;"
+    },
+    "anq3": {
+      "source_hash": "9dee78c7ecdc",
+      "text": "không ai cần đăng nhập, nên cũng chẳng có xác thực hai bước nào để chặn."
+    },
+    "v7kk": {
+      "source_hash": "0a1c6139e235",
+      "text": "AI biến việc này thành tốc độ máy: nó thử đăng nhập vào môi trường đám mây của hơn 2.250 doanh nghiệp."
+    },
+    "zz9s": {
+      "source_hash": "2a56cc7c5822",
+      "text": "Chưa tới 3 giờ nói ở đầu là từ đây mà ra: cửa đã mở sẵn, AI chỉ đi rất nhanh."
+    },
+    "ubmv": {
+      "source_hash": "6d6afad3c162",
+      "text": "Vậy lần này ở Đài Loan, chìa khóa nằm ở đâu?"
+    },
+    "kwit": {
+      "source_hash": "60a04b2cf132",
+      "text": "Đáp án ở báo cáo điều tra của công ty đó."
+    },
+    "d7ke": {
+      "source_hash": "a578aae063e7",
+      "text": "Một công cụ năng suất nội bộ, Appsmith, chưa cập nhật gói phần mềm, kẻ tấn công từ đây vào mạng nội bộ;"
+    },
+    "wzkp": {
+      "source_hash": "c6e6e3406c6e",
+      "text": "rồi trong GitLab, lấy được một khóa cơ sở dữ liệu;"
+    },
+    "kfdv": {
+      "source_hash": "f5beec9fa00d",
+      "text": "cuối cùng dùng khóa đó vào cơ sở dữ liệu đơn hàng, không gồm thông tin thanh toán như thẻ tín dụng."
+    },
+    "qb46": {
+      "source_hash": "b08630ba2e23",
+      "text": "Không có lỗ hổng mới, chỉ một cánh cửa đóng chưa kỹ và một chìa khóa để trong kho mã."
+    },
+    "g47a": {
+      "source_hash": "85be112cd5ac",
+      "text": "Mà chìa khóa này còn chưa phải để cẩu thả nhất."
+    },
+    "3j5c": {
+      "source_hash": "4a678bfc51da",
+      "text": "Cùng tuần, Zeabur ở Đài Loan cũng bị đọc trộm dữ liệu;"
+    },
+    "gpaj": {
+      "source_hash": "055027054734",
+      "text": "báo cáo của họ không nhắc ARTEX, mà ghi lại chìa khóa đã bị để thế nào:"
+    },
+    "nwji": {
+      "source_hash": "f9782dc30d3b",
+      "text": "kẻ tấn công dùng thông tin xác thực quản trị dài hạn, lưu dạng văn bản rõ;"
+    },
+    "siri": {
+      "source_hash": "3e3e735bb015",
+      "text": "sau sự cố tháng 8 họ đã thay một loạt khóa, nhưng lại sót đúng mấy chiếc này."
+    },
+    "29n6": {
+      "source_hash": "092655035988",
+      "text": "Trong 37 phút, hơn 3,2 triệu biến môi trường bị đọc từ cơ sở dữ liệu của nền tảng."
+    },
+    "fvak": {
+      "source_hash": "d184f18968e7",
+      "text": "Nên việc đầu tiên họ yêu cầu người dùng là: đổi hết mật khẩu và khóa bí mật, kể cả đã đổi hồi tháng 8."
+    },
+    "kemy": {
+      "source_hash": "8940de443fb0",
+      "text": "Vậy tôi đổi mật khẩu của mình là được rồi chứ?"
+    },
+    "bc63": {
+      "source_hash": "cb0ef5fd77ec",
+      "text": "Hướng dẫn tài khoản Google ghi: đổi mật khẩu sẽ đăng xuất bạn khỏi mọi thiết bị;"
+    },
+    "ei35": {
+      "source_hash": "8cf674c9e1d2",
+      "text": "nhưng một ngoại lệ là các ứng dụng bên thứ ba bạn đã cấp quyền truy cập tài khoản."
+    },
+    "qyat": {
+      "source_hash": "026d37580698",
+      "text": "Thay ổ khóa rồi, chìa dưới tấm thảm vẫn mở một cánh cửa khác."
+    },
+    "dqii": {
+      "source_hash": "463b8b5b6001",
+      "text": "Doanh nghiệp cũng vậy: vào được rồi, kẻ tấn công gắn thông tin xác thực riêng vào ứng dụng;"
+    },
+    "f3e5": {
+      "source_hash": "f3cd35bd961c",
+      "text": "ứng dụng gốc đã sửa xong, các chìa mới thêm vẫn có thể còn lại làm cửa hậu."
+    },
+    "urua": {
+      "source_hash": "56b6b614ff09",
+      "text": "Nên việc cần làm không chỉ là thay ổ khóa, mà là tìm và thu hồi những chìa đã trao ra."
+    },
+    "8csm": {
+      "source_hash": "1a6f5696f578",
+      "text": "Vậy dưới tấm thảm của tôi có gì?"
+    },
+    "9c5b": {
+      "source_hash": "64fd153f9d69",
+      "text": "Tôi tạo một kho mã để minh họa, commit trước một file cấu hình chứa mật khẩu cơ sở dữ liệu giả;"
+    },
+    "7iw4": {
+      "source_hash": "c7044b38646a",
+      "text": "commit sau xóa nó, thêm vào danh sách bỏ qua."
+    },
+    "yzmt": {
+      "source_hash": "85b48813db60",
+      "text": "Liệt kê thư mục, file cấu hình đã biến mất."
+    },
+    "tpcz": {
+      "source_hash": "9c70c5942b84",
+      "text": "Rồi dùng cách phổ biến nhất, tìm chữ PASSWORD trong cả thư mục:"
+    },
+    "hvxy": {
+      "source_hash": "ba1686108eb0",
+      "text": "không thấy. Tới đây, phần lớn mọi người nghĩ mật khẩu đã không còn."
+    },
+    "bk5g": {
+      "source_hash": "d14982d9536d",
+      "text": "Câu hỏi là: nó đã thật sự bị xóa chưa?"
+    },
+    "qyg2": {
+      "source_hash": "9691cf6c1b50",
+      "text": "Đổi sang một lệnh hỏi lịch sử git: những commit nào đã động tới dòng có PASSWORD?"
+    },
+    "tzyy": {
+      "source_hash": "196ff7c71926",
+      "text": "Hiện ra cả hai: một commit xóa nó, một commit thêm nó vào."
+    },
+    "a497": {
+      "source_hash": "a5f16b99e9d8",
+      "text": "Rồi dùng git show, chỉ rõ lần thêm vào và tên file đó;"
+    },
+    "5uez": {
+      "source_hash": "387de5574b46",
+      "text": "cả file cấu hình quay về nguyên vẹn, mật khẩu ở ngay dòng thứ hai."
+    },
+    "qt6f": {
+      "source_hash": "fe048fb60020",
+      "text": "Đã xóa, đã thêm vào danh sách bỏ qua, một dòng lệnh vẫn lấy lại được."
+    },
+    "urui": {
+      "source_hash": "126b2bf40b0a",
+      "text": "Khóa cơ sở dữ liệu lúc nãy cũng nằm trong một kho như GitLab; để thế nào thì báo cáo không ghi."
+    },
+    "ishi": {
+      "source_hash": "4644d0db2922",
+      "text": "Áp vào dự án của bạn: thay PASSWORD bằng tên khóa của bạn,"
+    },
+    "asmx": {
+      "source_hash": "582e7addb5b1",
+      "text": "ví dụ API KEY hoặc SECRET;"
+    },
+    "gzty": {
+      "source_hash": "da83b4f39297",
+      "text": "tìm thấy thì dùng git show xem file của lần đó;"
+    },
+    "nq6x": {
+      "source_hash": "8f46aacdd4d3",
+      "text": "không có gì in ra nghĩa là lịch sử nhánh hiện tại không có chữ này."
+    },
+    "rgnn": {
+      "source_hash": "99f883f30c63",
+      "text": "Tìm thấy rồi, bạn có thể nghĩ: xóa sạch lịch sử là xong?"
+    },
+    "4qg5": {
+      "source_hash": "a22278c919f1",
+      "text": "Hướng dẫn của GitHub ghi thứ tự ngay đầu: bước một là thu hồi hoặc xoay vòng khóa đó."
+    },
+    "epn2": {
+      "source_hash": "45b154967e8b",
+      "text": "Nên trước tiên vô hiệu hóa khóa đó, thay khóa mới;"
+    },
+    "wmyv": {
+      "source_hash": "382ecd2b0feb",
+      "text": "viết lại lịch sử để sau hãy tính, vì nó chỉ sửa được bản của bạn;"
+    },
+    "qb97": {
+      "source_hash": "a8ada1663602",
+      "text": "lịch sử cũ trên máy người khác, trong các bản fork vẫn còn, phải báo người có bản sao."
+    },
+    "uwmf": {
+      "source_hash": "05c7f0129b7a",
+      "text": "Nhưng kho mã chỉ là tấm thảm của kỹ sư; người không viết code thì thảm ở đâu?"
+    },
+    "3t35": {
+      "source_hash": "7195d4e40be5",
+      "text": "Ở danh sách cấp quyền của tài khoản."
+    },
+    "vtxp": {
+      "source_hash": "30bcd9820c12",
+      "text": "Tài khoản Google có trang ứng dụng được kết nối, mở chi tiết là gỡ được quyền truy cập;"
+    },
+    "2wc7": {
+      "source_hash": "899d44c9ed09",
+      "text": "trong cài đặt GitHub có trang ứng dụng OAuth đã cấp quyền, không nhận ra thì thu hồi."
+    },
+    "yt6t": {
+      "source_hash": "886ae4112912",
+      "text": "Nguyên tắc rất đơn giản: không nhận ra, không còn dùng thì gỡ trước, cần thì cấp lại."
+    },
+    "78d5": {
+      "source_hash": "82462964a42a",
+      "text": "Ở công ty còn khó hơn: nhân viên đổi hết mật khẩu cũng chưa chắc chặn được."
+    },
+    "masb": {
+      "source_hash": "3a87c85c9d55",
+      "text": "Nên người quản trị Microsoft 365 phải xem nhật ký đăng nhập của chính ứng dụng, không chỉ của nhân viên;"
+    },
+    "ji9j": {
+      "source_hash": "82b020f03357",
+      "text": "ứng dụng có bị thêm thông tin xác thực;"
+    },
+    "pw7e": {
+      "source_hash": "10b73fddfc13",
+      "text": "quyền và vai trò quản trị có bị đổi không."
+    },
+    "jfjh": {
+      "source_hash": "7015f50fac24",
+      "text": "Đổi mật khẩu không thu hồi được như nói ở đầu; chìa cần thu hồi nằm ở ba chỗ này."
+    },
+    "txje": {
+      "source_hash": "06f674cbbc46",
+      "text": "Thu hồi chìa ở ba chỗ này rồi, hacker AI còn tìm thấy bạn không?"
+    },
+    "v4ev": {
+      "source_hash": "001815edc0f4",
+      "text": "Quan điểm của tôi: đợt hacker AI này không tạo ra lối vào mới;"
+    },
+    "uesa": {
+      "source_hash": "c9e10a6439c3",
+      "text": "nó chỉ khiến những chìa khóa bỏ quên bị tìm ra nhanh hơn."
+    },
+    "2yvb": {
+      "source_hash": "d6b5b97bc3dc",
+      "text": "Nên dù không phải công ty lớn, bạn vẫn liên quan: nó chọn cửa rẻ nhất trước;"
+    },
+    "vkgi": {
+      "source_hash": "1d5df21d8007",
+      "text": "việc bạn làm được là đừng để mình là cánh cửa đó."
+    },
+    "8e9n": {
+      "source_hash": "7e4aaa5033ca",
+      "text": "Có điều tôi không tra được: công ty đó ảnh hưởng bao nhiêu thành viên, báo cáo nói sẽ công bố sau;"
+    },
+    "i653": {
+      "source_hash": "d862861d6923",
+      "text": "Cục An ninh mạng nói tháng 7 Đài Loan cũng phát hiện tấn công AI tương tự, mà không nói công cụ nào."
+    },
+    "hfq9": {
+      "source_hash": "748f2472617e",
+      "text": "Hôm nay, xem danh sách cấp quyền của Google và GitHub;"
+    },
+    "qgux": {
+      "source_hash": "d9b49162edcb",
+      "text": "tuần này, chạy lệnh lúc nãy trong kho mã của bạn một lần;"
+    },
+    "ijkr": {
+      "source_hash": "8778aa3dbf7b",
+      "text": "sau đó, đặt hạn cho mọi khóa bí mật; Cục An ninh mạng còn khuyên vô hiệu tài khoản ngay ngày nghỉ việc, rà quyền mỗi quý."
+    },
+    "wkg5": {
+      "source_hash": "413505d64090",
+      "text": "Thu hồi chìa, không chỉ thay ổ khóa."
+    },
+    "zha9": {
+      "source_hash": "e660e332c916",
+      "text": "Bạn đã gỡ mấy quyền? Bình luận nhé."
+    },
+    "8y54": {
+      "source_hash": "3bfeebb0032d",
+      "text": "Đăng ký kênh, mỗi video cho bạn một nhận định làm được ngay."
+    }
+  }
+}
