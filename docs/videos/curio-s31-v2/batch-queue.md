@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 第三次續作仍429／native4；212 raw未變、plain0/2、無producer；最早18:49Z（台北02:49）fresh核對。0/8 accepted |
+| 1 | curio-s31 | curio-s31-v2 | 第四次續作仍429／native4；212 raw未變、plain0/2、無producer；最早23:07Z（台北07:07）fresh核對。0/8 accepted |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,7 +34,7 @@
 
 ## 當前斷點
 
-最新 checkpoint（2026-10-27）：再次冷卻後的獨立續作 `dub-en-quality-retake1-after-busy2`（32680／PID26440）於16:48:08.3004755Z native4結束，仍是5次429 `video_speech_upstream_busy`。**獨立對帳及Root讀回確認212 raw未變（29目標／183其他皆0 changed），102項來源／mix／fit／timeline／cache／check／approval／state與82份journal全SHA保留，active／uncertain 0、PID已退出、無lease。plain仍0/2，0/8配音接受。** 最早 **2026-10-27T18:49:00Z（台北10/28 02:49）** 才可重新核對，這次延長至至少120分鐘；此前只讀觀察，不重播任何舊slot。16:45:18Z官方quota快照仍為5,157,762，涵蓋29 requests／1,251字元；現有錯誤未保留供應商細節，不能區分暫時壅塞與每日額度，也無usage收據可宣稱零費用。下次須fresh quota／來源／lease／journal與實際剩餘句子。見[第三次限流對帳](dub-en-quality-retake1-provider-busy3.json)；三次原始紀錄完整保留。完整包尚未完成，S15尚未開始。
+最新 checkpoint（2026-10-27）：冷卻後的獨立續作 `dub-en-quality-retake1-after-busy3`（16454／PID27896）於19:06:25.6787402Z native4結束，仍是5次429 `video_speech_upstream_busy`。**獨立對帳及Root讀回確認212 raw未變（29目標／183其他皆0 changed），102項來源／mix／fit／timeline／cache／check／approval／state與82份journal全SHA保留，active／uncertain 0、PID已退出、無lease。plain仍0/2，0/8配音接受。** 最早 **2026-10-27T23:07:00Z（台北10/28 07:07）** 才可重新核對，這次延長至至少240分鐘；此前只讀觀察，不重播任何舊slot。19:04:19Z官方quota快照仍為5,157,762，涵蓋29 requests／1,251字元；現有錯誤未保留供應商細節，不能區分暫時壅塞與每日額度，也無usage收據可宣稱零費用。下次須fresh quota／來源／lease／journal與實際剩餘句子。見[第四次限流對帳](dub-en-quality-retake1-provider-busy4.json)；四次原始紀錄完整保留。完整包尚未完成，S15尚未開始。
 
 窄診斷：[私有 final-diagnosis.md](C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/rename-native-diagnostic-20261027/final-diagnosis.md)，SHA256 `fa648dfc294921661b21f98f795d5f3ef16002325f1358c0d8dd0948fe441f86`。本機fixture可重現EPERM，但未證實production持鎖來源或UTF8因果；沒有OS改動或上限變更。Transport observer只涵蓋synthesis，舊absolute-path配置未啟用；空檔／缺席不能證明ASR無HTTP錯誤。
 
