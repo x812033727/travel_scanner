@@ -36,6 +36,8 @@
 
 **最新實況：2026-10-27 08:47台北。以下較早紀錄保留為履歷，以本段為續作入口。**
 
+09:06台北站主要求「繼續」後再次唯讀核對：source/script/preview SHA、speechHash、visualHash均與驗證收據相同，audio_evidence0問題、13flags未變、journal全空、lease與本集producer皆無。尚未到09:30，不因一般「繼續」提早重送。另以本機無害退出碼對照確認PowerShell會把未明確傳遞的native非零碼包成外層1，見[speech-exit-scope-20261027.json](speech-exit-scope-20261027.json)。未呼叫provider、未改聲音或預算。今後CLI結束後立即保存並傳遞`$LASTEXITCODE`，將native碼與外層shell碼分開記錄；43490當次native碼沒有保存，不能事後追認成4。
+
 目前沒有仍在執行的本集製作指令；最後EN render session98057已exit0，補產CC也已exit0。最新完整驗證收據為[production-preview-r6.json](production-preview-r6.json)（08:46:47台北快照）：當前source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA均核對通過；原版final SHA仍為`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
 
 **下一個可行動斷點是09:30台北後的語音續作**，不是再生圖、重跑既有ASR、反覆問policy或開始S15。先核對最新WAV／journal／lease／process，再只正常續試當前13句一次；若仍busy/quota，保留收據並延長退避。音訊未過，所以audio／final／完整八語交付包均未完成；不能勾整集完成。
@@ -44,11 +46,11 @@
 - 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。
 - render session `78493`已exit0：233states全沿用、27秒、0layout錯誤；九語縮圖及卡片圖板與先前實際檢視的10檔SHA一致，frames已重綁current visual_hash。clips正式執行exit0：129stills、0clips、0新購。music正式驗證原track SHA通過。
 - assemble session `96823`已exit0：150/150segments，1702秒；成片29159frames／30fps＝971.966667秒（16:11.967），片頭在frame1574／52.466667秒插入，intro150frames、v4outro630frames；-14LUFS／truepeak-1.9dBFS／musicbed-33.1LUFS，checks.ok=true。預覽final.mp4 SHA `023c6407ebaa7e5c928af287e31dc1bbad429d28726b33ea92e0a0d2c55f318e`，302331298bytes。獨立凍結讀回21/21檔SHA通過；原生播放器已驗開場進度、中段跳轉、片頭、v4片尾及正常ended=true／error=null，實際container972.005秒（AAC padding）。只做抽查，沒有宣稱全片連續觀看、人工聽音或站主本人觀看。九語CC已按片頭插點重產；ja2／es3閱讀速度警告留待實際配音時間修正。
-- TTS session `43490`已exit1，仍回覆「Gemini 語音暫時忙碌或達到用量上限，請稍後重試」；這輪沒有直接取得HTTP碼，不能擅自確定日額或重置時間。凍結21檔逐一讀回全未變、所有audio_evidence為0問題、speech-journal仍全空，成功重錄輪數仍0；private `tts-retake-context13-result.json`保留實證。**下一次語音續作不得早於2026-10-27 09:30台北（01:30Z）**，且須重查當前WAV／journal與active producer，只正常續試一次；再忙碌則加長退避，不換供應商／聲音或提高全域預算。dry-run13句／242字元、月額度5743335只代表站內額度，不保證provider可用。
+- TTS session `43490`外層PowerShell觀測exit1，原native碼未保存，仍回覆「Gemini 語音暫時忙碌或達到用量上限，請稍後重試」；這輪沒有直接取得HTTP碼，不能擅自確定日額或重置時間，也不能只憑shell1推定provider錯誤類別變化。凍結21檔逐一讀回全未變、所有audio_evidence為0問題、speech-journal仍全空，成功重錄輪數仍0；private `tts-retake-context13-result.json`保留原始觀測。**下一次語音續作不得早於2026-10-27 09:30台北（01:30Z）**，且須重查當前WAV／journal與active producer，只正常續試一次；再忙碌則加長退避，不換供應商／聲音或提高全域預算。dry-run13句／242字元、月額度5743335只代表站內額度，不保證provider可用。
 - 第一輪完整QA9/11：音訊未核准，另因新版尚無server project row而被預設問教學示範。已以官方`review-push --report-only`只登記本集format=drama/category=explainer，GET前404、後200且video_id=null／reviews=0，沒有送審或上傳影片。按正確分類再跑QA，policy通過（demo不適用），目前10/11只剩narration；保留前後兩份報告，不偽造原判定。
 - EN/PT/ID三張外語縮圖改短標語，已逐語互審、保存後讀回，sub/title/description/212captions與voice均不變；最後render98057已exit0、233states全沿用，三張實圖已查看，同一官方縮圖檢查分別28／26／30px（320px寬），均pass、無警告。完整QA10/11報告產於最後EN備案之前，因此保留其當時EN23px警告；最新收據另列已解決的targeted follow-up，不篡改原報告，也不只為標語變動反覆消耗policy judge。CC已補產。不要為了消除未來配音時才應處理的CC速度警告刪事實。
 - 獨立離線context Whisper已exit0：52個鄰句fresh無提示轉寫，再逐一辨識15個原始target WAV；提示只由固定鄰句實際聽到的轉寫組成，沒有傳原稿或先前target猜測。private `context-whisper-r6-20261027T074158/`保存原始JSONL、WAV SHA、實際prompt與verified receipt。獨立覆核PASS的新reader已接入官方check-audio：212/212檢查、18句second transcript排除疑慮、**13flags仍保留**，0新ASR／1Jev call；log `check-audio-context-r6.txt`。舊check及低分判定保留在`check-context-r6-before/`，沒有擇字拼成符合原稿的ASR。
-- 三次語音指令均未完成重錄（前兩次429／exit4，最後一次busy/quota訊息／exit1）；不要把拒絕請求算成成功重錄輪數。仍有13flags；不能提前核准audio／final、封完整交付包或開始下一集。
+- 三次語音指令均未完成重錄（前兩次429／exit4，最後一次busy/quota訊息／外層shell1、native未保存）；不要把拒絕請求算成成功重錄輪數。仍有13flags；不能提前核准audio／final、封完整交付包或開始下一集。
 
 ### 先前履歷（不能當作當前執行狀態）
 
