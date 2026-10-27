@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA、原生抽查及委託final核准。EN首檢的保存answer已通過獨立安全沿用核對，fresh232檔一致後正常續檢74735執行中；其餘七語／完整包未成 |
+| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA、原生抽查及委託final核准。EN已有110/212辨識cache；第三筆保存回覆逐筆覆核及fresh核對通過後，唯一正常續檢29192執行中。八語驗收／完整包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -33,6 +33,32 @@
 - 完成一集即更新本表與該集任務，再接下一集。進度不變時保持安靜，只通知成品完成、真正失敗、預算超限或需要站主處理的事項。
 
 ## 當前斷點
+
+**最新實況：2026-10-27 21:22台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+第三筆aa360/v2a0431 actual private恢復獨立覆核PASS `f3db35c619c7cf8eeab50f2c6b9772a5ae41cc59e72e3d309d938dc8ebedc1f5`；Root讀回新runner差分，fresh536次current／private SHA核對、current/frozen/consumption三方cache110／原103全保留、current＋frozen各212raw、46preserved＋3active＝49精確journal會員及實際hint SHA/count1全通過。原producer45204 dead、無lease／STOP／另一producer／second reservation或legacy runs，來源及unused EN binding均current。
+
+**目前唯一製作程序：正常check-audio續檢session29192／PID45724**，slot `check-en-saved-answer3-resume`，13:21:53Z dispatch／13:21:54Z lease。runner SHA `5d65d503a1794a0ea2e0b035a08a27c007d45c216c0a25c79c90fc884cf090b5`，首段即帶同一已審EN source-free bridge，no force／原20分鐘callback及30秒IO上限不變。**等29192 nativeexit，再核對aa360實際canonical沿用、完整flags、second runtime/cleanup及current journal；不可競爭啟動check/ASR/TTS/JA，或重播5437等已結束slot。** 見[dub-en-third-check-saved-answer-recovery.json](dub-en-third-check-saved-answer-recovery.json)。0/8外語配音驗收，中文master／212 EN原音／圖片帳本未變，S15等仍依序等待。
+
+**最新實況：2026-10-27 21:18台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+5437於21:13:42 native1結束；上一筆9bd6/lz411已由canonical正常沿用，獨立收據684f6fb800ca9313489ed71d71812498762a1193957258aa8f2608fbac695576確認原103cache逐項保留、目前110筆、212raw／中文master不變。新v2a0431回覆req `aa360da09a71fda7219f24df44bdfad53e9474cd9585f3e8da081f724014a840`同樣在confirmed rename遇EPERM；三真檔477/1338/798B與其餘來源/cache凍結manifest `ac6da18020b6281e19d8fcd41859fbaf16b9479e790880db0725ad8127cb6869`，這次另完整列46個非active保存檔，沒有刪除任何舊證據。113次原rename／28160ms額外等待後依30秒deadline停止，沒有變更上限／OS。
+
+已審通用checker對此新actual evidence native0，唯一v2a0431、官方16k及1個實際hint重建同request；private reuse1/send0/fetch0/default PID45204 ESRCH/alive負控hold，result37bcf55b65d7b745dcfb0fbc30e80d8ec7dce76b21780cd74556706e8285f8ac。逐筆獨立覆核與新resume入口準備中；目前無producer／lease／second reservation或run。先等actual review與fresh current核對，不能重播5437或手動升格/forget。見[dub-en-third-check-journal-failure.json](dub-en-third-check-journal-failure.json)。英文尚未完整音訊驗收，JA及下一集未開始。
+
+**最新實況：2026-10-27 21:12台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+新lz411保存回覆已通過逐筆獨立恢復覆核，Root讀回新runner並再次fresh核對：529次SHA檢查（包含current／private副本）、20存在／2不存在的凍結證據、current及private各212raw、實讀103cache、40歷史保存檔＋3active三真檔＝43個精確journal會員；lexicon／source／unused EN binding、PID12192 dead、lease／STOP／other producer／second state／legacy runs均符合前提。40保存檔包括原34與上一筆843正常消費後的6個archive/proof/tmp，沒有修改舊manifest或刪檔。
+
+**唯一製作程序為正常check-audio續檢session5437／PID45204**，slot `check-en-saved-answer2-resume`，13:12:34Z dispatch／13:12:35Z lease；runner SHA `e92d3344b0fbef710c3d9f9e3ba636b581ad85ec5a3fa76799b925931db552b4`。從命令起點帶同一個已審EN v3 bridge/binding、既有20分鐘callback上限及30秒IO上限，no force。**先等5437 nativeexit，再核對9bd6保存回覆的canonical實際消費、原始flags、second runtime/cleanup與current journal。不可競爭啟動check/ASR/TTS/JA或下一集；已結束74735不能重播。** 見[dub-en-second-check-saved-answer-recovery.json](dub-en-second-saved-answer-recovery.json)。中文master、EN原音及圖片帳本不變；0/8外語驗收、完整包未成。
+
+只讀JA前置備忘保存在private `next-ja-production-preflight.md`（SHA13dac6a82d06208500beb640bb28e6e76bdaec49734bcab75202f18d3002bc0e）。Merged JA的212 source綁定當前來源，舊workdir `ja.todo.json`有5個source／4個text仍是listener前歷史，不能再merge覆蓋current版本。JA尚無timeline／fit／m4a，未啟動合成；必須EN完整音訊接受後才按備忘fresh核對。
+
+**最新實況：2026-10-27 21:05台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+74735已於20:39:11 native1結束，不能重播該slot。上一筆lz202的保存回覆已由正常journal流程實際消費，獨立readback `3d399bc377346f22e88eb386d4288260cea032b0f3cf52c78f90f26aa71a1622`確認原14筆cache全保留、目前103筆；212原音及中文master未變。新lz411回覆又遇相同Windows EPERM；113次同一rename／28169ms額外等待後按既定30秒停止，原因仍未確認，沒有延長預算或改OS。新request `9bd6e7e48246c0c784190123632e4456a14addcfad5fc19d9a3f26f11ede4e0a`的sent／answer／confirmedtmp三真檔完整，22項mutable證據（20存在、2不存在）及212raw核對凍結於manifest `8fe653500402e7f6e279185650556c8a57fb8e32d80661880a8edbf44fad7469`。
+
+已審通用checker對此實際新request離線native0：唯一lz411、官方16k downsample及hints完整重建同request，default PID12192 ESRCH、alive負控hold、private replay reused1/send0/fetch0，原檔未改。逐筆獨立覆核 `f98d96e981b4982b1a519f731a668c883dcebcc35705b628392461abde519001` PASS；Root正在準備新slot的正常無force續檢，必須fresh核對current來源／212raw／103cache／三檔會員／lexicon／lease與未使用的EN bridge binding。此處尚未宣稱新回覆已由canonical消費、第二ASR已執行或音訊通過。見[dub-en-second-check-journal-failure.json](dub-en-second-check-journal-failure.json)。0/8外語配音已驗收、下一集未開始。
 
 **最新實況：2026-10-27 20:30台北。以本段為續作入口，以下舊斷點保留為履歷。**
 

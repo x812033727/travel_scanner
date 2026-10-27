@@ -1,6 +1,14 @@
 # S31 v2 音訊檢查進度
 
-狀態：**中文master已11/11QA、原生抽查及委託final核准；EN saved answer恢復合約獨立PASS，fresh232檔一致後正常續檢74735執行中，尚非品質結果**。
+狀態：**中文master已11/11QA、原生抽查及委託final核准；EN已有110/212辨識cache，第三筆保存回覆逐筆覆核PASS，fresh核對後唯一正常續檢29192執行中，尚非完整品質結果**。
+
+21:22台北：逐筆獨立review f3db35…dc1f5與Root fresh536次SHA／cache三方110／49journal會員／1個實際hint／unused binding／lease與producer前提通過，正常新slot `check-en-saved-answer3-resume`已dispatch29192／PID45724。先等nativeexit及aa360實際沿用、flags和second runtime/cleanup；原音及上限未改，沒有EN音訊接受或JA合成。見[dub-en-third-check-saved-answer-recovery.json](dub-en-third-check-saved-answer-recovery.json)。
+
+21:18台北：9bd6/lz411 canonical實際沿用獨立PASS，原103cache全部保留，目前110。5437已native1於新aa360/v2a0431完整回覆升格失敗，三真檔與46歷史保存檔都保留；離線checker native0/reused1/send0/fetch0，尚待逐筆獨立覆核與fresh核對再新slot續檢。無producer／second dispatch；原音、中文final及預算未改。見[dub-en-third-check-journal-failure.json](dub-en-third-check-journal-failure.json)。
+
+21:12台北：529次current／private SHA核對、實讀103cache／212raw、40preserved＋3active精確journal會員及source/lexicon/unused binding／lease／producer前提全過，已啟動5437／PID45204。新slot `check-en-saved-answer2-resume`沿用已審EN source-free bridge，未force或改上限。先等nativeexit再核對實際9bd6回覆沿用、flags及second runtime；不把private recovery PASS當作音訊接受。見[dub-en-second-check-saved-answer-recovery.json](dub-en-second-saved-answer-recovery.json)。
+
+21:05台北：上一筆lz202實際canonical沿用已獨立驗證，原14筆cache保留、212raw與中文final未變。新lz411的完整回覆、sent及confirmedtmp全保存；113次原rename在30秒deadline仍失敗。已審通用checker對新9bd6…request private replay native0/reused1/send0/fetch0，逐筆獨立覆核f98d96…19001通過；Root準備新slot前的fresh對帳。沒有手動promote、delete/forget、音訊核准或新語言合成。見[dub-en-second-check-journal-failure.json](dub-en-second-check-journal-failure.json)；下方74735執行中是歷史。
 
 20:30台北：lz202 exact request／三真檔／官方16k downsample與hints=[]經PRIVATE replay reused1/send0/fetch0、defaultdeadPID／alive負控全PASS；Root fresh核232檔與journal一致才啟動74735／PID12192，從起點帶同一個尚未dispatch的已審EN bridge。先等nativeexit，clone合約不是canonical已消費或發音已通過。見[dub-en-first-check-saved-answer-recovery.json](dub-en-first-check-saved-answer-recovery.json)。
 

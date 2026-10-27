@@ -4,6 +4,14 @@
 
 ## 當前讀回（2026-10-27）
 
+21:22台北最新：第三筆完整保存回覆已逐筆獨立覆核，fresh536次SHA／current110cache／49journal會員與來源、hint、unused binding、製作鎖核對後，唯一正常EN續檢29192／PID45724執行中。既有已付答案循正式journal恢復，其餘不同請求仍用既有授權流程；不force或改上限。等待完整音訊結果再續JA，0/8外語驗收。見[dub-en-third-check-saved-answer-recovery.json](dub-en-third-check-saved-answer-recovery.json)。
+
+21:18台北最新：5437已因第三筆完整回覆的Windows journal EPERM native1結束；9bd6保存答案實際沿用通過獨立核對，原103cache保留、目前110。新aa360/v2a0431三真檔與所有46歷史檔保存，離線官方恢復native0/reused1/send0/fetch0，逐筆覆核與新入口準備中。無producer／second dispatch／JA，尚無完整EN品質結果；圖片帳本及所有上限不變。見[dub-en-third-check-journal-failure.json](dub-en-third-check-journal-failure.json)。
+
+21:12台北最新：新保存回覆已逐筆獨立覆核，Root fresh核529次SHA／103cache／212raw／43journal會員與來源、lexicon、unused binding、製作鎖後，唯一正常續檢5437／PID45204執行中。沿用既有原音與已審bridge、no force，不改費用／重試上限。等nativeexit和完整品質／實際沿用證據才處理下一步，0/8外語驗收。見[dub-en-second-check-saved-answer-recovery.json](dub-en-second-saved-answer-recovery.json)。
+
+21:05台北最新：EN辨識進度103/212，上一筆保存回覆已由正式journal沿用，獨立實際核對通過。74735已因另一筆完整回覆的Windows EPERM native1結束；新三真檔已凍結，離線官方恢復及逐筆獨立覆核PASS，準備fresh核對後新slot正常續檢。尚無EN完整品質結果或外語驗收，不啟動JA。圖片費用／上限、212原音與中文master不變。見[dub-en-second-check-journal-failure.json](dub-en-second-check-journal-failure.json)；以下running狀態保留為歷史。
+
 20:30台北最新：EN已付ASR answer恢復合約的獨立PRIVATE clone覆核通過，Root fresh232檔／lexicon／3journal與unused binding全部一致後，新正常首檢續作74735／PID12192執行中，仍從起點帶已審source-free bridge。不force、不動原音或OS／上限；先等nativeexit及實際journal consumption／品質與second runtime證據，不能先做JA。見[dub-en-first-check-saved-answer-recovery.json](dub-en-first-check-saved-answer-recovery.json)。
 
 20:26台北最新：EN首檢46532在保存完整primary ASR回覆後Windows journal升格EPERM，native1／尚非完整品質結果。14筆已寫cache、新answer三真檔及22份mutable evidence已凍結，212原音及中文final全未變。30秒I/O額外wait已耗盡，沒有解除持續拒絕；不增加全域／本集上限或更動OS安全設定。獨立PRIVATE official-journal恢復核對中，Root未重送；無producer／lease／secondASR dispatch。詳見[dub-en-first-check-journal-failure.json](dub-en-first-check-journal-failure.json)，以下首檢running為歷史。
