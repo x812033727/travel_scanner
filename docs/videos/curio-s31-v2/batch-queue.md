@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 兩例多音比較誤判已獨立覆核，依推薦選擇委託接受當前音訊；官方2flags／低分保留。新版中文master已11/11QA、原生抽查及委託final核准；英文已安全讀回保存回覆並續作，唯一dub session12945執行中；其餘七語／完整交付包未成 |
+| 1 | curio-s31 | curio-s31-v2 | 兩例多音比較誤判已獨立覆核，依推薦選擇委託接受當前音訊；官方2flags／低分保留。新版中文master已11/11QA、原生抽查及委託final核准；英文172片段保留，第四個journal故障兩筆回覆已離線核對，暫停等本集限時I/O重試處理獨立覆核；其餘七語／完整交付包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,9 +34,27 @@
 
 ## 當前斷點
 
-**最新實況：2026-10-27 18:38台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+**最新實況：2026-10-27 19:09台北。以下較早紀錄保留為履歷，以本段為續作入口。**
 
-EN saved synthesize answer的獨立PRIVATE clone恢復PASS，receipt SHA3454b05c4cfe19fdad1ab64bb14173a89050b7b4cb5ee2420d44cda60a0da0b4：exact body／994B sent／1951B sidecar／1255B confirmed／203564B WAV／generation皆匹配，default PID47048 ESRCH、alive負控hold，reused1／send0／fetch0；returned billable0是本次沿用合約，原paid billable30留存。root再次核65個凍結檔全部0drift／leasefree，新的正常resume已啟動**唯一session12945／slot dub-en-saved-answer-resume**。當前log同slot-production.txt；先等nativeexit，不啟動另一producer。resume dry-run128待產request／8068字元估計、當時既有月額5482537，估計仍0fit-over；其中這一筆從原回覆讀回，其餘不同未完成request仍正常已授權paid-capable。
+77232已native1，第四次不同request的confirmed journal升格Windows EPERM。現在172個EN WAV及cache/source/gates/log／全部active journal2筆6真檔已完整凍結，manifest9b693e5a5807e82a9fbea18f139ad6b6839f928df68d785301c8cf95a6d2b891，PID43060已ESRCH、leasefree。新staged req2f2ad389067e5a6d7b65cc687ebba4f1b66ce00bfef083d24487e157cb20f062與confirmed companion0f0b8482c5e4a92624ac1d644657929dd809f25e465c43a3c878d5d5b195215f均保留。Generic已審checker對新staged實際PASS（receipt be6b21a09d75668e55ca65eb1723487753033c219c7409d7fc3e7b7fbea87f99）；root另用六真檔、官方wrap在PRIVATE clone實際joint reuse2/send0/fetch0、原檔不變（receipt8829ab51bf4cdd1446e39146a9ec4f15cceb6989e446af91908d91f298535efb）。見[dub-en-fourth-journal-failure.json](dub-en-fourth-journal-failure.json)。尚未normal resume這兩筆，不宣稱實際新clip已交付。
+
+**當前無canonical producer。先完成／獨立審閱本集限定的confirmed-journal rename retry preload，再fresh172clips/cache/source＋兩個保存answer後才新slot正常續作。** ko_es在private confirmed-journal-retry-prep/準備可逆per-process I/O處理：只對本集、ownPID、sent→confirmed且完整bytes/SHA/generation不變的同一原rename操作多等，總額外wait30秒封頂；無copy/delete/alternate syscall、無HTTP重送、無voice/全域預算/OS安全設定或repo共享工具變更。需自測與pt_id獨立code review後才啟用；如不安全仍丟原錯誤、保存journals，不偽成功。
+
+ASR bridgev1及v2均已正式拒絕啟用；v2的alias及kill/reap已修，但獨立負控再發現catch前程序死亡時，新binding能略過未結DISPATCH_INTENT。v2 review SHA d7dc851c85ddf7e74d3608c2f5932a7a0c62a7b99d63ec53d39a24a56d60d276。audio_plan已暫停尚未建立的cohort collector，現在另存v3，加入SSH前exclusive+fsync project-wide reservation及完整COMPLETE proof才可結案；v1/v2原code/收據保留。仍無實際EN完整cohort/binding／真SSH／ASR。完整EN native0/fitpass後才可凍結actual212 WAV、審v2／binding、掛官方首檢；其餘七語及完整交付包未成，Chinese master/QA/final gate不變。
+
+87402已native1，第三次不同request的confirmed升格Windows EPERM；已產161EN WAV/cache/source/gates/log凍結，manifest2dd16f17b392d75d6cb24aff093dfc9c48a31e54a66d1480ca7d935b3a5b4723。新staged req0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5/PID8488已ESRCH，用獨立code-review通過的frozen PRIVATE generic checker已做實際clone PASS（receipt9898ec61df1031193b56748941034ef096ecac465fd1387147d4776238a3f68f），reused1/send0/fetch0、原paid billable36保留。
+
+本次active journal **2筆**：另有同一multi-line unit前句11afb86830e29b59d2e07cfad7d15b636526f2777c72da0e7fef8ffc4604c717已confirmed但尚未消費，JSON1227B與WAV203564B另凍結companion manifest e371b343dc8cdafd3f1a84bb0eee97b3698cd054daaef61d6ba31d5e16610ed2。這筆本來就confirmed，沒有偽造answer sidecar／tmp套四檔規則；ko_es在PRIVATE clone驗正常直接reuse/0send/0fetch。見[dub-en-third-journal-failure.json](dub-en-third-journal-failure.json)。**當前無producer；等兩筆實際合約皆PASS，再fresh161clips/cache/source＋兩個journal row才正常resume新slot。** 87402不能重播，不可delete/forget/手動rename。中文final不變，EN未fit/audioQA完成；bridgev2仍未啟用。
+
+第二筆synthesize journal的PRIVATE clone恢復也已PASS（SHA69e53adebb7df1c701721e0476c40aae7ce53b163e382db26296e85f3fdaa616），exact request／4files／defaultdeadPID＋alive負控、reused1/send0/fetch0通過。Root fresh核160個凍結檔（含146個WAV）全0drift後，正常resume全新**唯一session87402／slot dub-en-saved-answer2-resume**。dry-run剩52requests／3216字元估計，當時既有月額5452289、仍0estimatedfit-over；不改voice／source／translation／全域預算。
+
+官方canonical proof已讀回該saved raw WAV ca8834…e703，經正常trim／encode後與實際新lz426.wav逐bytes相同，clip SHA24b42cef6f0578153f3757e2880b5cfa979e629a3b7319bd52f6b8a96583a18f；原146WAV再次讀回全未變。見[dub-en-second-saved-answer-recovery.json](dub-en-second-saved-answer-recovery.json)。兩筆已付answer均非重買；其餘不同剩餘工作仍正常已授權paid-capable。**先等87402 nativeexit，再查實際fit／全212WAV／timelines／journal；現在不得啟動check、ASR或下一語。** EN仍是首次合成、品質重錄／縮句／reword均0。
+
+12945已於18:39:02台北native1結束，第二筆不同的完整synthesize answer升格confirmed時再次Windows EPERM；前一筆確已從保存回覆重用，不能誤認為重送原request。現在已產146個EN WAV，全部與cache/source/gates/log另凍結dub-en-second-journal-failure-before，manifest SHA9fde58bfb1347fc77cd2d943a059a751ad0ab5806c4a265f7c47d35c7fcc14d9。新req1cde9891b24dd325283187fb439e5e4c344d504199e931df4d8a2b63d9d734f1、producer51568已ESRCH、leasefree、activejournal1；sent969B/answer1915B/confirmedtmp1230B/WAV387884B四檔齊全，見[dub-en-second-journal-failure.json](dub-en-second-journal-failure.json)。ko_es正在全新PRIVATE clone驗同一官方恢復合約及0send/0fetch；root未retry，禁止delete/forget/manualrename。
+
+**此為第二筆覆核前快照，已由上段PASS與87402 resume取代。** 12945已結束不可重播；英文fit/audioQA仍未完成。已核准中文master不變。bridgev1已拒、v2仍在私人準備及後續獨立覆核；此時不能啟動ASR/check/下一語。
+
+EN saved synthesize answer的獨立PRIVATE clone恢復PASS，receipt SHA3454b05c4cfe19fdad1ab64bb14173a89050b7b4cb5ee2420d44cda60a0da0b4：exact body／994B sent／1951B sidecar／1255B confirmed／203564B WAV／generation皆匹配，default PID47048 ESRCH、alive負控hold，reused1／send0／fetch0；returned billable0是本次沿用合約，原paid billable30留存。root再次核65個凍結檔全部0drift／leasefree，新的正常resume已啟動**當時session12945／slot dub-en-saved-answer-resume（現已native1結束）**。當前log同slot-production.txt；先等nativeexit，不啟動另一producer。resume dry-run128待產request／8068字元估計、當時既有月額5482537，估計仍0fit-over；其中這一筆從原回覆讀回，其餘不同未完成request仍正常已授權paid-capable。
 
 實際canonical recovery proof SHA488c2fe0a793dc01e6b14494754a4ded636739a68d7022c2f794aa2e4a2a5bf2已建立；原回覆WAV經工具正常trimSilence／encodeWav後，與新v2a0221.wav full SHA3d2887fbcdace0ec1a6ce0ff6946a41be71fbfbb80c9e7664bbc8298daeb4dc6逐bytes一致。這解釋raw WAV SHA與trimmed clip SHA不同，沒有拼接或修改ASR。原49個片段又讀回全未變，原confirmed tmp及recovery archive仍保留；沒有重買該exact request。見[dub-en-saved-answer-recovery.json](dub-en-saved-answer-recovery.json)。整條EN仍未完成／fit及audioQA未通過，不能先勾配音完成。
 
@@ -106,7 +124,7 @@ private clone使用官方journal恢復實測已PASS（review SHA `0583f1810e0165
 
 重錄前的EN render session98057與補產CC均已exit0。[production-preview-r6.json](production-preview-r6.json)是08:46:47台北的歷史完整驗證快照：當時source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA核對通過；重錄後不能用它證明舊成片與新旁白相同。原版final SHA仍保留`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
 
-**下一個可行動斷點是唯一normal resume12945完成**。先讀實際nativeexit／fit／current WAV／cache／timeline／journal，保留任何新uncertain outcome並對帳，不能重播舊slot。完整EN native0／fit妥當後，凍結全cohort，再獨立審實際binding＋已修的bridgev2（v1不可啟用），作EN第二ASR／official check／mix驗證，再依序ja→ko→es→pt→id→vi→th。若fit over，最多2輪受保護縮句；不得無上限重錄或以missing/skipped冒稱八語完成。private post-audio-current-entry-companion.json明示當前有界委託音訊決策，取代舊frozen recipe的「必須0flags」協調預設；舊recipe及原低分原封保留。尚未完成完整交付包，不能勾整集完成或開始S15。
+**當前可行動斷點是本集限定I/O重試處理的獨立覆核；當前入口見最上段**。先讀實際nativeexit／fit／current WAV／cache／timeline／journal，保留任何新uncertain outcome並對帳，不能重播舊slot。完整EN native0／fit妥當後，凍結全cohort，再獨立審實際binding＋已修的bridgev2（v1不可啟用），作EN第二ASR／official check／mix驗證，再依序ja→ko→es→pt→id→vi→th。若fit over，最多2輪受保護縮句；不得無上限重錄或以missing/skipped冒稱八語完成。private post-audio-current-entry-companion.json明示當前有界委託音訊決策，取代舊frozen recipe的「必須0flags」協調預設；舊recipe及原低分原封保留。尚未完成完整交付包，不能勾整集完成或開始S15。
 
 - 配對已恢復，不再要求站主重配。guarded keyframes最後session `7898` 已正常完成：129/129張judge通過，沒有needs_review；官方keyframeProblems為0，visual_hash `4ff8941e6473b9f4`、speechHash `8af0af8b6fb7d1e4`。六頁最新圖板已由代理實際檢視，依站主推薦選擇委託記錄storyboard核准，並非站主本人觀看。manifest SHA `fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2`。
 - 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。
