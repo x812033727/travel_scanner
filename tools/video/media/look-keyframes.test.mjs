@@ -1664,7 +1664,7 @@ test("--accept-best keeps the judge's best take of a shot still failing after it
   assert.equal(manifestOf(box, "keyframes").shots.desk.needs_review, true, "nothing written");
 });
 
-test("--accept-best is for an illustrated video alone: a drama's failing shot is refused, since nobody is sent that cut to look at", async () => {
+test("--accept-best is for an illustrated video or a manga-tier drama alone: a drama with clips and an explainer have their failing shot refused, since nobody is sent that cut to look at", async () => {
   // An explainer draws its stills like a slides video and has no look gate, but it is a drama:
   // its cut is not sent for the owner's manual review (review/sync.mjs acceptedPicturesOf).
   const box = sandbox("fixture-explainer", "explainer");
@@ -1680,16 +1680,16 @@ test("--accept-best is for an illustrated video alone: a drama's failing shot is
   for (const wanted of [failing, "all"]) {
     const refused = context(box, site.fetchImpl);
     assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", wanted], refused.ctx), EXIT.usage);
-    assert.match(refused.out.stderr, /--accept-best keeps pictures of an illustrated video alone .* only an illustrated video's cut is sent for the owner's manual review, and fixture-explainer is not one; fix the prompts of its shots instead/);
+    assert.match(refused.out.stderr, /--accept-best keeps pictures of an illustrated video or a manga-tier drama alone .* only such a video's cut is sent for the owner's manual review, and fixture-explainer is not one; fix the prompts of its shots instead/);
     assert.doesNotMatch(refused.out.stdout, /kept with the judge's remarks/);
   }
   assert.equal(readFileSync(file, "utf8"), before, "nothing is kept, and the shot still waits for its prompt");
-  // A drama with a cast is told the same, before anything in its work directory is read.
+  // A drama with a cast and clips (no manga tier) is told the same, before anything in its work directory is read.
   const drama = sandbox("fixture-drama", "drama");
   assert.equal(illustrated(dramaFixture()), false);
   const told = context(drama, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", drama.slug, "--accept-best", "bird"], told.ctx), EXIT.usage);
-  assert.match(told.out.stderr, /only an illustrated video's cut is sent for the owner's manual review, and fixture-drama is not one/);
+  assert.match(told.out.stderr, /only such a video's cut is sent for the owner's manual review, and fixture-drama is not one/);
 });
 
 test("the worker's own --accept-best call still keeps the pictures of every video illustrated() covers: illustrated slides, and a screencast with stills", async () => {
@@ -1830,7 +1830,7 @@ test("--accept-best is still refused for a cute explainer: its failing picture i
   assert.equal(JSON.parse(before).shots[failing].needs_review, true);
   const refused = context(box, site.fetchImpl);
   assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "all"], refused.ctx), EXIT.usage);
-  assert.match(refused.out.stderr, /--accept-best keeps pictures of an illustrated video alone .* fix the prompts of its shots instead/);
+  assert.match(refused.out.stderr, /--accept-best keeps pictures of an illustrated video or a manga-tier drama alone .* fix the prompts of its shots instead/);
   assert.equal(readFileSync(file, "utf8"), before, "nothing is kept, and the shot still waits for its prompt");
 });
 
@@ -1872,7 +1872,7 @@ test("a manga drama's fault checks: one identity question per character before t
   assert.ok(10 - checks[0].cost < 4, "an identity fault fails the take under the server's floor whatever the rest answers");
 });
 
-test("a manga drama's keyframes are judged by the fault checks on a server that takes them, from the cut-in copy, and scored on the rubric on one that does not", async () => {
+test("a manga drama's keyframes are judged by the fault checks on a server that takes them, from the cut-in copy, a failing one kept by --accept-best, and scored on the rubric on one that does not", async () => {
   const box = mangaSandbox();
   const cut = [];
   // The stand-in trimmer of a sandbox: writes the cut copy beside the picture and records what it was asked.
@@ -1929,9 +1929,17 @@ test("a manga drama's keyframes are judged by the fault checks on a server that 
   assert.equal(await main(["keyframes", "--slug", box.slug], again.ctx), EXIT.lint, again.out.stderr);
   assert.equal(site.state.judges.filter((request) => request.kind === "keyframe").length, 6);
   assert.match(again.out.stdout, /opening: kept \(judge 10\/10\)\n/);
-  // --accept-best is still not for a drama: its pictures wait for the prompt fix, then the owner's retry.
-  const refused = context(box, site.fetchImpl, { trimImage });
-  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "all"], refused.ctx), EXIT.usage);
+  // A manga-tier drama's pictures are stills the cut shows as they are: once the prompt fixes are
+  // spent (automation/flow.mjs acceptBestPictures) the best take is kept with the judge's remarks,
+  // and the storyboard goes up next.
+  const kept = context(box, site.fetchImpl, { trimImage });
+  assert.equal(await main(["keyframes", "--slug", box.slug, "--accept-best", "all"], kept.ctx), EXIT.ok, kept.out.stderr);
+  assert.match(kept.out.stdout, /farewell: kept with the judge's remarks \(judge 9\.76\/10\): identity_yandi: /);
+  assert.match(kept.out.stdout, /1 pictures kept with the judge's remarks \(farewell\); the final cut goes to the owner\nnext: node tools\/video\/cli\.mjs review-push --slug fixture-drama --gate storyboard\n$/);
+  const keptManifest = manifestOf(box, "keyframes");
+  assert.deepEqual([keptManifest.shots.farewell.needs_review, keptManifest.shots.farewell.accepted_with_problems, keptManifest.shots.farewell.problems], [false, [IDENTITY_PROBLEM], undefined]);
+  assert.equal(keptManifest.shots.farewell.file, manifest.shots.farewell.file, "the best take, as the judge left it");
+  assert.equal(keptManifest.shots.opening.accepted_with_problems, undefined, "a shot that passed is not kept");
 
   // A server without the checks scores the same episode on the rubric, identity questions first, still from the cut-in copy.
   const scored = mangaSandbox();

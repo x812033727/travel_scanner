@@ -732,7 +732,7 @@ async function submission(gate, { ctx, request, project, workdir, dir, flags = [
     // The summary and the reason name the first few and count the rest (namedPictures): every
     // one of them is in accepted_pictures with what the judge said, which review-push cuts to
     // a few lines a picture where it posts the review (fitPayload).
-    const acceptedPictures = acceptedPicturesOf(doc, workdir);
+    const acceptedPictures = acceptedPicturesOf(doc, workdir, project.series);
     const keptIds = namedPictures(acceptedPictures.map((picture) => picture.id));
     const manual = manualReview || acceptedPictures.length > 0;
     const manualReason = acceptedPictures.length
@@ -1153,12 +1153,14 @@ export function storyboardSheets(manifest, ids, workdir) {
 }
 
 /**
- * The pictures of an illustrated video kept with the judge's remarks once their prompt fixes were
- * spent (media/keyframes.mjs --accept-best; `accepted_with_problems` in keyframes/manifest.json),
- * as [{ id, problems }] in shot order; none for any other video, or when every shot passed.
+ * The pictures kept with the judge's remarks once their prompt fixes were spent (media/keyframes.mjs
+ * --accept-best; `accepted_with_problems` in keyframes/manifest.json), as [{ id, problems }] in shot
+ * order: of an illustrated video, or of a manga-tier drama whose video.json or series.json
+ * (`series`) names the tier (keyframes.mjs keepsBestPictures, the same predicate); none for any
+ * other video, or when every shot passed.
  */
-export function acceptedPicturesOf(doc, workdir) {
-  if (!illustrated(doc)) return [];
+export function acceptedPicturesOf(doc, workdir, series = null) {
+  if (!illustrated(doc) && (doc.series?.visual_tier ?? series?.visual_tier) !== "manga") return [];
   const manifest = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
   return drawnShotScenes(doc)
     .filter((scene) => Array.isArray(manifest?.shots?.[scene.id]?.accepted_with_problems))

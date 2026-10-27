@@ -1631,6 +1631,21 @@ test("illustrated slides push their storyboard too, and it is the gate after the
   assert.match(board.summary, /分鏡 5 鏡，judge 最低 8\/10/);
 });
 
+test("a manga-tier drama's kept pictures are listed for the final review like an illustrated video's; a drama with clips keeps none", () => {
+  const box = sandbox("fixture-drama", "drama");
+  const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));
+  const [first, second] = doc.scenes.filter((scene) => scene.template === "shot").map((scene) => scene.id);
+  mkdirSync(path.join(box.workdir, "keyframes"), { recursive: true });
+  const FAR = ["frame: an extreme long shot drawn as a medium shot → the whole hall small in the frame"];
+  writeFileSync(path.join(box.workdir, "keyframes", "manifest.json"), JSON.stringify({ shots: { [first]: { needs_review: false, accepted_with_problems: FAR }, [second]: { needs_review: false } } }));
+  // The tier from series.json (project.series), as review-push passes it, or from video.json itself.
+  assert.deepEqual(acceptedPicturesOf(doc, box.workdir, { visual_tier: "manga" }), [{ id: first, problems: FAR }]);
+  assert.deepEqual(acceptedPicturesOf({ ...doc, series: { kind: "one-off", visual_tier: "manga" } }, box.workdir), [{ id: first, problems: FAR }]);
+  // A drama with clips never keeps a picture (keyframes --accept-best refuses it): nothing to list.
+  assert.deepEqual(acceptedPicturesOf(doc, box.workdir), []);
+  assert.deepEqual(acceptedPicturesOf(doc, box.workdir, { visual_tier: "hybrid" }), []);
+});
+
 test("a picture kept with the judge's remarks goes up accepted, outside the board's lowest score and problems, and listed for the owner", async () => {
   const box = sandbox("fixture-illustrated", "illustrated");
   const doc = JSON.parse(readFileSync(path.join(box.dir, "video.json"), "utf8"));

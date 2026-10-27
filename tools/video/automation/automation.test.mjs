@@ -8111,13 +8111,13 @@ test("a retry while the saved writer run is still running waits for it without c
   assert.equal(video.state().failures?.writer, undefined);
 });
 
-test("illustrated slides keep the judge's best pictures once the prompt fixes are spent and send the cut for the owner's review; a shot with no picture, a storyboard the owner sent back and a drama still wait", async () => {
-  const setup = (name, fixtureName, format) => {
+test("illustrated slides and a manga-tier drama keep the judge's best pictures once the prompt fixes are spent and send the cut for the owner's review; a shot with no picture, a storyboard the owner sent back and a drama with clips still wait", async () => {
+  const setup = (name, fixtureName, format, series = undefined) => {
     const slug = `keep-best-${name}`;
     const box = sandbox(slug, fixtureName);
     const docFile = path.join(box.dir, "video.json");
     atomicWrite(docFile, JSON.stringify({ ...readJson(docFile), slug, format }));
-    const state = { slug, status: "active", format, created_at: "2026-10-06T10:00:00Z", notes: [], chosen: "A", prompt_fixes: { keyframes: MAX_PROMPT_FIX_ROUNDS } };
+    const state = { slug, status: "active", format, created_at: "2026-10-06T10:00:00Z", notes: [], chosen: "A", prompt_fixes: { keyframes: MAX_PROMPT_FIX_ROUNDS }, ...(series ? { series } : {}) };
     atomicWrite(path.join(box.workdir, "auto.json"), JSON.stringify(state));
     writeFileSync(path.join(box.workdir, "final.mp4"), "the cut");
     const site = fakeSite({ settings: { drama: { ...DRAMA_SETTINGS, drama_enabled: format === "drama" }, slides: { slides_media_enabled: true } }, answers: { writer: (body) => ({ video: body.payload.video, lexicon_additions: {} }) } });
@@ -8190,12 +8190,39 @@ test("illustrated slides keep the judge's best pictures once the prompt fixes ar
   atomicWrite(sentBack.manifestFile, JSON.stringify({ shots: { podium: sentBack.picture("podium", PODIUM) } }));
   assert.match(await sentBack.worker.fixPrompts(sentBack.state, "keyframes", { targets: [{ id: "podium", problems: ["太暗"] }], ownerNote: "太暗" }), /blocked — keyframes still fails after 2 prompt fixes/);
   assert.equal(sentBack.runs.length, 0);
-  // A drama's pictures wait for a person, as before.
-  const drama = setup("drama", "drama", "drama");
+  // A drama with clips (an animated one, no manga tier) draws a clip's first frame: its pictures wait for a person, as before.
+  const drama = setup("drama", "drama", "drama", { slug: "a-binge", episode: 1, visual_tier: "hybrid", hands_off: true });
   atomicWrite(drama.manifestFile, JSON.stringify({ shots: { opening: drama.picture("opening", ["clean: six fingers → five fingers"]) } }));
   assert.match(await drama.worker.media(drama.state, "keyframes"), /blocked — keyframes still fails after 2 prompt fixes/);
   assert.equal(drama.runs.length, 1);
   assert.equal(automatedVideos(drama.box.work).find((item) => item.slug === drama.slug).blocked_kind, "prompt_fixes:keyframes");
+
+  // A manga-tier drama (docs/videos/BINGE.md §畫面等級; a hands-off series' episode here) is stills
+  // alone: its pictures are kept like the slides', its storyboard goes up as before (the kept shots
+  // marked accepted, review/sync.mjs) and its cut for the owner's manual review.
+  const manga = setup("manga", "drama", "drama", { slug: "system-bug", episode: 5, visual_tier: "manga", hands_off: true });
+  const FAR = ["frame: an extreme long shot drawn as a medium shot → the whole hall small in the frame"];
+  atomicWrite(manga.manifestFile, JSON.stringify({ shots: { opening: manga.picture("opening", FAR), farewell: { file: "keyframes/farewell-1.png", sha256: "b".repeat(64), needs_review: false, judge: { overall: 9, passed: true, problems: [] } } } }));
+  assert.equal(await manga.worker.media(manga.state, "keyframes"), `${manga.slug}: 1 pictures kept with the judge's remarks after 2 prompt fixes; the final cut goes to the owner`);
+  assert.deepEqual(manga.runs, [["keyframes", "--slug", manga.slug], ["keyframes", "--slug", manga.slug, "--accept-best", "opening"]]);
+  assert.equal(manga.site.calls.run.length, 0, "no third prompt fix");
+  const mangaKept = automatedVideos(manga.box.work).find((item) => item.slug === manga.slug);
+  assert.equal(mangaKept.status, "active");
+  assert.equal(mangaKept.blocked_kind, undefined);
+  assert.deepEqual(mangaKept.accepted_pictures, [{ id: "opening", problems: FAR }]);
+  assert.equal(mangaKept.prompt_fixes?.keyframes, undefined);
+  manga.runs.length = 0;
+  assert.match(await manga.worker.gate(mangaKept, "storyboard", manga.manifestFile), /storyboard sent to \/admin\/videos/);
+  assert.deepEqual(manga.runs, [["review-push", "--slug", manga.slug, "--gate", "storyboard"]], "the storyboard is the server's to approve, as before");
+  manga.runs.length = 0;
+  assert.match(await manga.worker.gate(mangaKept, "final", path.join(manga.box.workdir, "final.mp4")), /final sent to \/admin\/videos/);
+  assert.deepEqual(manga.runs, [["review-push", "--slug", manga.slug, "--gate", "final", "--manual-review"]]);
+  // The tier read from video.json as keyframes reads it, when auto.json carries no series.
+  const oneOff = setup("manga-one-off", "drama", "drama");
+  const oneOffDoc = path.join(oneOff.box.dir, "video.json");
+  atomicWrite(oneOffDoc, JSON.stringify({ ...readJson(oneOffDoc), series: { kind: "one-off", visual_tier: "manga" } }));
+  atomicWrite(oneOff.manifestFile, JSON.stringify({ shots: { opening: oneOff.picture("opening", FAR) } }));
+  assert.match(await oneOff.worker.media(oneOff.state, "keyframes"), /1 pictures kept with the judge's remarks after 2 prompt fixes/);
 });
 
 test("a slides video's writer hears the prompt budget of the image model the settings will draw it with, under the heaviest look it may get, counted as keyframes counts a shot", async () => {
