@@ -2,7 +2,7 @@
   "schema_version": 1,
   "slug": "curio-s31-v2",
   "locale": "en",
-  "status": "EIGHTH_ACTUAL_RECOVERY_REVIEWED_FRESH_NORMAL_RESUME_PREPARATION_NO_PRODUCER",
+  "status": "EIGHTH_SAVED_ANSWER_ACTUALLY_CONSUMED_FIRST_COMPLETE_EN_QUALITY_29_FLAGS",
   "failed_command": {
     "session": 97406,
     "slot": "check-en-saved-answer7-resume",
@@ -85,16 +85,16 @@
     "current_cache_rows": 189,
     "raw_source_script_translation_lexicon_master_state_unchanged": true
   },
-  "runner_status": "ANSWER8_PREPARATION_ONLY_NO_DISPATCH",
+  "runner_status": "NORMAL_RESUME_ENDED_WITH_COMPLETE_QUALITY_FLAGS",
   "prior_diagnostic_unchanged": "See dub-en-seventh-check-recovery.json diagnostic_scope; no OS/deadline/cap changes or proven production holder/UTF8 cause.",
   "producer_running": false,
-  "canonical_saved_answer_consumed": false,
-  "second_previously_dispatched": false,
+  "canonical_saved_answer_consumed": true,
+  "second_previously_dispatched": true,
   "audio_accepted": false,
   "owner_listened_or_watched": false,
   "complete_delivery_package": false,
   "youtube_uploaded_or_published": false,
-  "next": "Root must freshly reconcile current source/raw/cache/journal/PID/lease and the unchanged binding before one new normal no-force slot. Do not replay ended slots or manually promote/delete/forget journal. Private recovery is not audio acceptance; the existing 20-minute callback and 30-second I/O limits remain unchanged.",
+  "next": "Session97854 completed all212lines with29qualityflags and consumed695b/lz514. First second-ASR runtime review PASS; local close/reap verified, remote scratch deletion unproved and state/runs retained. Original-text retake1 remains prepare-only until Root fresh quota/quiet guards. See dub-en-first-check-complete.json; no producer or audio acceptance.",
   "runner_readonly_guard": {
     "ready_receipt": {
       "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/run-en-saved-answer8-resume-ready.json",
@@ -104,5 +104,127 @@
     "checks_reported_by_root": 573,
     "count_is_unique_files": false,
     "scope": "Prepare-only read-only checks; no dispatch. Root must freshly reconcile before one new normal no-force slot."
+  },
+  "fresh_dispatch": {
+    "fresh_files_checked": 573,
+    "partial_cache_lines": 189,
+    "raw_wavs": 212,
+    "preserved_journal_files": 76,
+    "original_pid": 27636,
+    "expected_terms_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "second_previously_dispatched": false,
+    "earlier_consumption_sha256": "3d399bc377346f22e88eb386d4288260cea032b0f3cf52c78f90f26aa71a1622",
+    "old_cache_preserved": 170,
+    "binding_sha256": "9899846260cb029b0c456f2629b9f65323a469911e0049c559a08677ab2eb183",
+    "at": "2026-10-27T14:25:29.6516650Z",
+    "recovery_review_sha256": "82cc7d630cad5c1ff32c40e97bbf633ed29be1eda5a11cc1e346272bb442b416",
+    "previous_consumption_sha256": "684f6fb800ca9313489ed71d71812498762a1193957258aa8f2608fbac695576",
+    "frozen_cache_lines": 189,
+    "force": false,
+    "request_sha256": "695b9b0a690e19c42bfcb15c55e420f0e7d55c33c8a443b53a7dab5a6e375b6c",
+    "generic_code_review_sha256": "8809759655937822b3b74efe347deeb9d700513c5a3445c6f5f2c1d72a68ac56",
+    "saved_answer_to_reuse_count": 1,
+    "frozen_present": 21,
+    "frozen_absent": 1,
+    "slot": "check-en-saved-answer8-resume",
+    "locale": "en",
+    "prior_consumption_sha256": "111036ea239379aa84ef9209adb8ddbf182fad8dd39a55e140b5baf21109412a",
+    "prior_saved_answer_consumed": true,
+    "expected_terms_count": 0,
+    "observer_file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer8-resume-transport-fe9aa5096d69418d80b9ca0dc16280f1.jsonl",
+    "generic_result_sha256": "a56a871317b7725673f97b2a9f06eaa408723eb23c39a3d3a0429378156aa9fa",
+    "second_timeout_ms": 1200000
+  },
+  "normal_resume": {
+    "session": 97854,
+    "slot": "check-en-saved-answer8-resume",
+    "pid": 15272,
+    "dispatched_at": "2026-10-27T14:25:29.6516650Z",
+    "lease_acquired_at": "2026-10-27T14:25:30.310Z",
+    "native_exit": 1,
+    "runner_sha256": "cccb75297fb1ca6b109e439fbb671d2ca5761b5649426d5ec8a3e6bb4cb5d035",
+    "new_saved_answer_actual_consumption_verified": true,
+    "ended_at": "2026-10-27T14:34:07.6598357Z",
+    "native_receipt": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer8-resume-native-exit.json",
+      "sha256": "0c3495c4fc96fbfc30797b1d32e4d4bdd17b9f0639763264225240fcbea5aab8"
+    },
+    "exit_meaning": "Completed quality check with29flags; no new journal failure."
+  },
+  "actual_consumption": {
+    "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-saved-answer-consumption-695b.json",
+    "sha256": "37650e6fc3a47b0e5f39f9091f5ba599913102ed2d7156b0300fa220024da228",
+    "verdict": "PASS_PREVIOUS_SAVED_ANSWER_ACTUALLY_CONSUMED",
+    "old_primary_and_semantic_entries_preserved": 189,
+    "current_cache_rows": 212,
+    "whole_entry_deep_equal_required": false
+  },
+  "complete_quality_result": {
+    "document": "dub-en-first-check-complete.json",
+    "freeze": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-first-complete-quality-before-retake/manifest.json",
+      "sha256": "b3bb04d79f0553cb564708254c891bdd167af1cde9fe4df5b007471b8256258c"
+    },
+    "summary": {
+      "checked": 212,
+      "exact": 148,
+      "alike": 0,
+      "judged_fine_by_jev": 13,
+      "cleared_by_second": 22,
+      "flagged": 29,
+      "primary_jev_entries": 64,
+      "second_transcript_entries": 51,
+      "transcribed_this_run": 22,
+      "jev_calls_this_run": 3,
+      "new_primary_asr_requests_this_run": 22,
+      "saved_primary_answer_reused_this_run": 1
+    }
+  },
+  "second_opinion_runtime": {
+    "status": "PASS_COMPLETE_CLOSED_ACTUAL_EN_ASR_RUNTIME",
+    "independent_review": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-first-bridge-runtime-audit-20261027.json",
+      "sha256": "03600f4eb93abaa2f8a407bb6eee692449c30036beb55745f54c8bbba5065542"
+    },
+    "second_transcript_entries": 51,
+    "subset_tar_members": 52,
+    "subset_scope": "Only a source-free manifest and51 actual raw WAVs; whole returned transcripts/result/verified/current cache and frozen/current WAV full SHA agree.",
+    "native_whisper_exit": 0,
+    "native_whisper_seconds": 390.3793122309726,
+    "total_callback_ms": 396399.306,
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "nice": 19,
+    "offline": true,
+    "hints_sent": false,
+    "prior_asr_sent": false,
+    "complete": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\asr-project-state\\curio-s31-v2\\complete.json",
+      "sha256": "d5f95a07d688dadfbc5041bb8cc1a574ad69f1c53c0804d9b6f2f02f32fa087a"
+    },
+    "local_ssh_close_exit": 0,
+    "local_child_close_observed": true,
+    "local_child_reaped": true,
+    "fresh_local_process_probes": {
+      "3540": "ESRCH",
+      "15272": "ESRCH",
+      "18260": "ESRCH"
+    },
+    "holds_or_uncertain_markers": false,
+    "lease_present": false,
+    "no_runtime_blocker_for_separate_tts": true,
+    "project_state_observed_present": true,
+    "project_state_archived_or_cleared": false,
+    "state_and_run_evidence_retained": true,
+    "transport_remote_cleanup_confirmed": false,
+    "remote_scratch_removed_proved": false,
+    "remote_live_processes_freshly_queried": false,
+    "new_cohort_or_binding_approved": false,
+    "audio_approved": false,
+    "scope": "Normal native model exit0 and local SSH close0/reap are verified. The frozen transport always emits remote_cleanup_confirmed=false; this does not prove remote scratch deletion or a fresh remote process audit. State/runs remain intact, not archived. Different second-ASR input still requires separately reviewed state closure and new actual cohort/binding."
   }
 }
