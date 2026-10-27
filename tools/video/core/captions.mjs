@@ -279,8 +279,14 @@ export function displayText(text, rules) {
   return rules.words ? text.trim() : text.replace(TRAILING, "");
 }
 
+// spokenUnits counts a Latin word as two and leaves Thai out: Thai writes no spaces between
+// words, so a piece is weighed by its letters instead, about five to a word (combining vowel and
+// tone marks ride on a letter and add nothing).
+const THAI_LETTER = /(?=\p{Script=Thai})\P{M}/gu;
+
 function weight(text) {
-  return Math.max(1, spokenUnits(text)) + (text.match(/[，。！？；：、,.!?;:]/gu)?.length ?? 0) * 0.5;
+  const thai = (text.match(THAI_LETTER)?.length ?? 0) * 0.4;
+  return Math.max(1, spokenUnits(text) + thai) + (text.match(/[，。！？；：、,.!?;:]/gu)?.length ?? 0) * 0.5;
 }
 
 // What is heard: a letter or a number. Spaces are never timed, and punctuation, which the server

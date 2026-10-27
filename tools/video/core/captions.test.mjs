@@ -107,6 +107,15 @@ test("merging a piece that would flash past keeps the space and never makes a cu
   assert.deepEqual(merged.map((cue) => cue.text), ["September 2026."]);
 });
 
+test("a Thai piece is timed by its letters: the Latin name beside it does not take the line's time (C11 UCC remake)", () => {
+  const th = LOCALE_RULES.th;
+  const pieces = ["ทัตสึชิ อุเอชิมะ ย้อนเล่าในภายหลังว่า พนักงานขายเดินเข้าร้านขายอาหารเพื่อเสนอ", "UCC Milk Coffee ที่วางขายในปี 1969"];
+  const [first, second] = timePieces(pieces, 0, 7900, th);
+  // Before, the Thai letters weighed nothing: 0.9 s for the long piece, 7 s for the short one.
+  assert.ok(first.end_ms - first.start_ms > second.end_ms - second.start_ms, JSON.stringify([first, second]));
+  for (const cue of [first, second]) assert.ok((measure(cue.text, th) * 1000) / (cue.end_ms - cue.start_ms) <= th.maxCps, cue.text);
+});
+
 test("every cue of a real translation wraps into at most two lines with its spaces intact", () => {
   const ko = LOCALE_RULES.ko;
   const lines = [
