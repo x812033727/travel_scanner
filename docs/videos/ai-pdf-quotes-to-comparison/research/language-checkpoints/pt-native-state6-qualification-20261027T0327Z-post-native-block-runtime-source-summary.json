@@ -1,0 +1,282 @@
+{
+  "recorded_at_utc": "2026-10-27T03:49:28.693569+00:00",
+  "kind": "actual-current-native-and-site-blocked-baseline-no-reset",
+  "snapshot": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-post-unit-runtime-snapshot.json",
+    "sha256": "d7c93836b11be0533310ba49a2af8b65a33e0274a0c0ca1a0a7c7c9ef02ffcac"
+  },
+  "actual_outcome": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-actual-outcome.json",
+    "sha256": "f11acb2b89e4e2a8c05f1a7a3d1cb180900abd08219ad5a127c744ecc52bf88a"
+  },
+  "actual_offline_audit": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-post-native-block-audit.json",
+    "sha256": "edbe97866475439d0c4e7f2b917ed7e11e2cf0543d9e9e7280c8cba060206960"
+  },
+  "actual_site_GET": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-site-after-unit.json",
+    "sha256": "39e1f77719979bf7995d0f323e57d8aa5d4d7a3d8ab191ea788cbd6bbba3b463"
+  },
+  "actual_log": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z.log",
+    "sha256": "cf03f8bdf8cdbf328c9284c52f1e9833d6089146cc39247f3b74aa4304965f2a"
+  },
+  "actual_native_after": {
+    "status": "blocked",
+    "blocked": "still could not move after 7 tries: pt dub could not finish (Gemini 語音暫時忙碌或達到用量上限，請稍後重試)",
+    "blocked_kind": "deferred:dub",
+    "blocked_from_status": "done",
+    "defer_count_field_present": false,
+    "defer_shared_field_present": false,
+    "deferred_until_field_present": false,
+    "PT_rounds": {
+      "shorten": 0,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    }
+  },
+  "actual_before_own": 6,
+  "actual_exit": 3,
+  "runtime_file_count": 2350,
+  "then_source_file_count": 514,
+  "auto_sha256": "2762f2cc53e56457c0b9b1c142e02744fa4d828a5bb6d18731e071aa07655354",
+  "only_runtime_change": [
+    "auto.json"
+  ],
+  "all2349_NONAUTO_unchanged": true,
+  "production9": {
+    "video.json": "eac88936fbcb0324208d639b75ddad8f045c6bcc3cc8c4f60d89ebc6c65f3e04",
+    "i18n/pt.json": "3f74c77761514a627781626ecc61bdc5cde3ffec851b7488e723846d6669195d",
+    "i18n/es.json": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+    "i18n/id.json": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+    "i18n/ko.json": "9568b1cb834bd1ce4e3e1ca1849ae30a7e1e1ec6c6eb02d4c9e46fe8e3ffabf6",
+    "i18n/vi.json": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+    "i18n/en.json": "4958b944504e67e2b0a4eaf8cb946830273de870eabd1305fa6e3039f59dbdb1",
+    "i18n/th.json": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+    "i18n/ja.json": "6269e257a86790fe8c293392b9d78c1f2529e208870858894391cf027da6ed71"
+  },
+  "core20": {
+    "docs/videos/lexicon.json": "9b06e91f344173f30cd415d17184b8346bfde07c81c7a5e55be8f20b9e0b0c05",
+    "tools/video/cli.mjs": "25d05ae14bb6b0d65bd3963b20bc5c8d894797ae1ea8f811632a362f09757b08",
+    "tools/video/core/state.mjs": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc",
+    "tools/video/core/stages.mjs": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+    "tools/video/core/branding.mjs": "24bab8ccfd587132dedc3bc1a5750e4e39cf4a64415ff68a30e326be47501f5d",
+    "tools/video/core/captions.mjs": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+    "tools/video/core/timeline.mjs": "a10016b2abe6acd06caa9e0c4ce268ea4f311e0d35f48b6d2276d3680c0fd362",
+    "tools/video/core/paths.mjs": "76e19da45a3308e48b2d86f7d95f8d71830c8448183b654c7661e044d09c8e75",
+    "tools/video/core/project-lease.mjs": "611e9403b68059fdf2bbb475e4795f02813f606b17ae4a5326a420054b434a98",
+    "tools/video/core/schema.mjs": "8252bc5c7f4ef1038abaec7aca05ec99675173b31cbdc176a3666087f1afe87b",
+    "tools/video/core/approvals.mjs": "d97e182fb942071e49cbd9fb64a35efcb327251048945c388fa8678c28065577",
+    "tools/video/core/lexicon.mjs": "b9869497afbbd8dfbfce273e9856fab45beadf7b341aa3da17c6685b4509386d",
+    "tools/video/core/lexicon-store.mjs": "84440a1b2430cd7548c09cccfd9be0058734337b9819ef4b8137863b03021ccf",
+    "tools/video/core/translations.mjs": "92145323271592349e1a11d3ee4aafccc24c7ed418ed7ee331ec5b5bf49c86e4",
+    "tools/video/dubs/plan.mjs": "249dbbce09541ad1f843f39d7355b4de56b283830ff5bee357457e15b9765a2f",
+    "tools/video/qa/checks.mjs": "fc20fd679954a775427aff5f9d0a9f318d574a241c78bd063b3bdb4a59e12ac2",
+    "tools/video/review/renewal-handoff.mjs": "871fb86a0d6f9097632ddc74a655f647168b44d660bd892f92e332c291bde29c",
+    "tools/video/automation/flow.mjs": "167a1630f0c95886e7518cfd7a5e3110ebe234d860700b603b82d4d07750b7ee",
+    "tools/video/automation/client.mjs": "a79d0d9ad460cb75f850372a6f49470df8b470c23029218541ea4f1a9e351201",
+    "tools/video/automation/run-receipts.mjs": "c81ebc524090ddc12c23510055b7d27cf29fe736aed332136a3ea169869ddd31"
+  },
+  "original14": {
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/auto.json": "b4bb92c6dde27be074f4b5fa8cc9e6ad9b502e7ba912d6a65172cce05a7f3b4b",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/final.mp4": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/qa.json": "a653adc056a3bf8b1abf4cf4cc9cca8a06efabac5bdb2c3dc95ae08db72be1d1",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.th.json": "b65c7705b36c77590a77d749231e1ae6e4ab7321f1bbb9b6de6f41a827a5725a",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/skipped.json": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/skipped.json": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/skipped.json": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+    "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation/auto.json": "19a11f9466676c4970126bece120a4f358727d02f074b35812d81fb47826f3b1",
+    "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation/final.mp4": "77b542c9c1cb0e75680581d73d926db5f253e6dc5066bcbed26c0a54a061d076",
+    "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation/review/qa.json": "d2bda457e47640c7d8068bddb0ef7eb886798c1c9947d9d7f9aa0e413eb181c1",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93",
+    "/workspace/work/ai-animation-01/bookends-candidate-20261026/staged-renewal/renewal-candidate.json": "2fcf936f6141ace9a38311a8efbf4b4885037e515975a4d04bad03497e85a83a"
+  },
+  "text28_plus_manifest": {
+    "captions/en.srt": "f1be6bc3d07779762b81b5218262041d9534694e8e39c7c866485a0c98aec490",
+    "captions/en.vtt": "443e88e7ebdd4b88fce597ad79ddeedd980bbcaeb85b844044b0e5c11600b95c",
+    "captions/es.srt": "3711e5ed82e51d277e585967e9d2c9247a9cd4eb758b58ccb0dd980f93da21e4",
+    "captions/es.vtt": "d187643a8cde064c12f2581ee1695b760b870ee51bd9d68bda7c62bfe7bd3fe8",
+    "captions/id.srt": "6d6b79d615f5fc88e0277ac4dc6cf7f4868411789d7834ba79cccaf6477b03ff",
+    "captions/id.vtt": "b1029e3472c6014b301580843228a0c8b100d50e42c8261c4f791c9a2d17eb59",
+    "captions/ja.srt": "4e00968781b94dd55d9ca561de23295e9d932a6e4a89c6d397aa2987f89b9066",
+    "captions/ja.vtt": "a8471181b57fd6ad45ff39bbffc7ef91d65b9c14e14e547cc76fb9879b17c315",
+    "captions/ko.srt": "df8ce4c4c282a5503e1822fab3f05fb524b0be7e89e7a3266b9a4fadb64a7915",
+    "captions/ko.vtt": "e324601338bdd10ed53afa89e309c91cb767d5b1382ef6a2705dc551897e88b9",
+    "captions/pt.srt": "4bf84efb6027673c54ac306130165a2562f571e3952363e65e25d67c280b4fee",
+    "captions/pt.vtt": "3c4a65a262f4ed143989856bdd8ebf2f4202b1fb8f8bfb2af7b84e10f43f8358",
+    "captions/th.srt": "9a0315ee69b018fb3cd27fe0da2043f8ae78fa41dec3f04dc79e5f9156794347",
+    "captions/th.vtt": "da49277e53426421ddc0d4f7db347bf157311de0adfc41e13a016159248e013a",
+    "captions/vi.srt": "b66e84f1d249deee0a5c356df9d5f2bd456eb0caa5547ed147bb13b80d50bb14",
+    "captions/vi.vtt": "ac9c8098cfd551ff0dcd7270b2fdaa124d6d74894ebd25ae766843069e421a66",
+    "captions/zh-TW.srt": "f51270876cd9d0cc6b59892918baefc8382ddc7f7fba215bb20d2c519dea15a5",
+    "captions/zh-TW.vtt": "62e1bab4be7498d836716b4663c1abb626bc70162500abc6bd985718272ee889",
+    "description.en.txt": "8d38d544d28f47cba701a27a9fe2093f6ae13bbce72b2f074ea501560cf77018",
+    "description.es.txt": "48db4212d417a9ca3d3053165bb2d7dbe1ac15369ba187e8e35f922af1e66742",
+    "description.id.txt": "9a8b60b39557edf3bf29c44019217f161f7efd2a216d187903db32bcec48ef3c",
+    "description.ja.txt": "6a678232041d8c592bc3164883c0c3e26b04c470b9bbe0ed511a734d5811405f",
+    "description.ko.txt": "a028c2db3fd3145edc4f6549ae089305a6cb5f6007287ecc8ddf449c349b7170",
+    "description.pt.txt": "a7bec5a85014cd8931fbd25bc62a50173e1a72366321f1405544a780ced91266",
+    "description.th.txt": "5f1570514475bb15ac725a5cedde71949c9535a7cf78e1258aef4fd823c1e2e7",
+    "description.vi.txt": "bbf52c36f5c5bf02fc7d1dfc9cc2780bef214d75fca5f0db7164724e4fd12493",
+    "description.zh-TW.txt": "cbb9cc097969e845cd585870e366575d33678e9fc7972b8e3559f7a95fb083f4",
+    "metadata.native.json": "77d238e32219b69ade8477c7bf65775c5e71e15b5c1f0c2738782f51548be25a",
+    "text-delivery-manifest.json": "399c80524327e3f1bbbd0422dcd8181973402bd321a20437b5bba6f50bb60220"
+  },
+  "consumed_CC_marker_sha256": "2a62ad6b8d64ae0236ffcfa99070d215cc292adda9f309cce5503c1eda98c698",
+  "voice_rows": [
+    {
+      "locale": "en",
+      "translation_sha256": "4958b944504e67e2b0a4eaf8cb946830273de870eabd1305fa6e3039f59dbdb1",
+      "meaning_index_sha256": "ba72a51ec61b05c4a9354cf034cc377b513830f9feb68e82289ed1b79b19d516",
+      "meaning_current": true,
+      "actual_model_boundary_count": 3,
+      "native_status": {
+        "status": "current",
+        "note": "en.m4a"
+      },
+      "native_rounds": {
+        "shorten": 1,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "actual_flags": [
+        "hg9m",
+        "fd27",
+        "znv7"
+      ],
+      "raw_matched_primary_checks": 101,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ja",
+      "translation_sha256": "6269e257a86790fe8c293392b9d78c1f2529e208870858894391cf027da6ed71",
+      "meaning_index_sha256": "ca72c5b912597bf51087afa1bc08bf73243e2a765e159dff82a8200d5fc2ff92",
+      "meaning_current": true,
+      "actual_model_boundary_count": 2,
+      "native_status": {
+        "status": "current",
+        "note": "ja.m4a"
+      },
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "actual_flags": [
+        "fd27"
+      ],
+      "raw_matched_primary_checks": 101,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ko",
+      "translation_sha256": "9568b1cb834bd1ce4e3e1ca1849ae30a7e1e1ec6c6eb02d4c9e46fe8e3ffabf6",
+      "meaning_index_sha256": "86ce9f174629d2d425cb13aa8dd7f7e6c569067ec07aca6af0e30e736393d954",
+      "meaning_current": true,
+      "actual_model_boundary_count": 2,
+      "native_status": {
+        "status": "current",
+        "note": "ko.m4a"
+      },
+      "native_rounds": null,
+      "actual_flags": [],
+      "raw_matched_primary_checks": 101,
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "es",
+      "translation_sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+      "meaning_index_sha256": "693324486e34837008cfa9975aaf29d7fb2b42760c60001790b3d2aae07557e1",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "current",
+        "note": "es.m4a"
+      },
+      "native_rounds": null,
+      "actual_flags": [],
+      "raw_matched_primary_checks": 101,
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "pt",
+      "translation_sha256": "3f74c77761514a627781626ecc61bdc5cde3ffec851b7488e723846d6669195d",
+      "meaning_index_sha256": "f7ed26fb9eab7877ca9d2d52cd31ebb425380d63690a2d9ef4366c1d9574e557",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 0,
+        "reword": 0,
+        "check_stopped": true
+      },
+      "actual_flags": null,
+      "raw_matched_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "id",
+      "translation_sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+      "meaning_index_sha256": "e1a04b25070a136a200554a2a0c2eadd60d6e8fd5717c3c5f69da1d94fb5ae52",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "actual_flags": null,
+      "raw_matched_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "vi",
+      "translation_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+      "meaning_index_sha256": "2a9e5a5b540dcee0c4d7d5f3fef8e92ec7ab188e30ce661ff9a390a5436929f6",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "actual_flags": null,
+      "raw_matched_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "th",
+      "translation_sha256": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+      "meaning_index_sha256": "1472d54db412d171293d35712d7a4562e5428d83483daa94660c8292e0820550",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "actual_flags": null,
+      "raw_matched_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    }
+  ],
+  "checked_foreign": [
+    "ko",
+    "es"
+  ],
+  "CC_cues": 1002,
+  "CC_reading_WARN": 31,
+  "native_wait_fields_naturally_absent": true,
+  "raw_log_displayed_count0_is_fallback_not_canonical_reset": true,
+  "no_synthetic_defer7_or_new_due": true,
+  "next": "Native and real site now genuinely blocked after a new own failure. No due or automatic normal retry remains. Preserve this actual blocked-state snapshot and every failed/unknown/cap/approval/source/text artifact. Resume only through a genuine supported owner retry/recovery reflected by actual site request and normal acknowledgement/guards, after service/current ownership/source/meaning/primary11QA/chat8/quota/unknown checks. Never restore done, recreate/decrease counters, remove skips or invoke ordinary dub while nativeblocked. ENJA ordinary retry/original owner operations/other locale/new movie/full8/publish remain excluded; publishing stays owner."
+}

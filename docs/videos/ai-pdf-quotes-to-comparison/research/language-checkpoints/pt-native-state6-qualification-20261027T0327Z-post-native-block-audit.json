@@ -1,0 +1,238 @@
+{
+  "recorded_at_utc": "2026-10-27T03:43:35.933Z",
+  "kind": "actual-one-genuine-PT-attempt-natively-blocked-after-NEW-own-failure",
+  "slug": "ai-pdf-quotes-to-comparison",
+  "ok": true,
+  "checks": {
+    "actual_driver_and_native_ended": true,
+    "actual_PDF_controllers_absent": true,
+    "actual_LEASE_STOP_absent": true,
+    "runtime2350_matches_actual_post_unit_snapshot": true,
+    "only_actual_runtime_change_auto": true,
+    "all2349_NONAUTO_match_completed9CC": true,
+    "full_then_current_source514_exact": true,
+    "production9_source_exact": true,
+    "shared_core20_exact": true,
+    "immutable_text28plusmanifest_exact": true,
+    "consumed_CC_ONE_USE_exact": true,
+    "original14_exact": true,
+    "protected_primary_checks_thumbnails_CC_exact": true,
+    "ENJA_failed_caps_exact": true,
+    "actual8_meaning_chains_current": true,
+    "actual7_model_boundaries_bound": true,
+    "actual_checked_voices_still_KO_ES": true,
+    "current_unknown_and_unadopted_zero": true,
+    "terminal_archive836fe_preserved": true,
+    "actual_new_native_block_matches_outcome": true,
+    "native_wait_fields_genuinely_absent": true,
+    "actual_PT_WAV_ASR_zero": true,
+    "actual_log_bytes_match": true,
+    "genuine_site_blocked_report_present": true,
+    "genuine_site_final_still_exact_approved": true,
+    "primary_and_existing11QA_still_match": true,
+    "unchanged_native_adapter": true,
+    "unchanged_compatible_medium_env": true
+  },
+  "actual_exit": 3,
+  "actual_started_at": "2026-10-27T03:39:29.927022+00:00",
+  "actual_ended_at": "2026-10-27T03:40:19.930002+00:00",
+  "native_pid": 180306,
+  "driver_pid": 180281,
+  "actual_controllers": [],
+  "actual_control_paths": [],
+  "actual_native_after": {
+    "status": "blocked",
+    "blocked": "still could not move after 7 tries: pt dub could not finish (Gemini 語音暫時忙碌或達到用量上限，請稍後重試)",
+    "blocked_kind": "deferred:dub",
+    "blocked_from_status": "done",
+    "defer_count_field_present": false,
+    "defer_shared_field_present": false,
+    "deferred_until_field_present": false,
+    "PT_rounds": {
+      "shorten": 0,
+      "retakes": 0,
+      "reword": 0,
+      "check_stopped": true
+    }
+  },
+  "actual_before_own": 6,
+  "native_DEFER_LIMIT_unchanged": 6,
+  "native_block_removed_wait_fields_not_manual_reset": true,
+  "no_synthetic_defer7_or_new_due": true,
+  "actual_checked_foreign_locales": [
+    "ko",
+    "es"
+  ],
+  "voice_rows": [
+    {
+      "locale": "en",
+      "translation_sha256": "4958b944504e67e2b0a4eaf8cb946830273de870eabd1305fa6e3039f59dbdb1",
+      "meaning_index_sha256": "ba72a51ec61b05c4a9354cf034cc377b513830f9feb68e82289ed1b79b19d516",
+      "meaning_current": true,
+      "actual_model_boundary_count": 3,
+      "native_status": {
+        "status": "current",
+        "note": "en.m4a"
+      },
+      "native_rounds": {
+        "shorten": 1,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "actual_flags": [
+        "hg9m",
+        "fd27",
+        "znv7"
+      ],
+      "raw_matched_primary_checks": 101,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ja",
+      "translation_sha256": "6269e257a86790fe8c293392b9d78c1f2529e208870858894391cf027da6ed71",
+      "meaning_index_sha256": "ca72c5b912597bf51087afa1bc08bf73243e2a765e159dff82a8200d5fc2ff92",
+      "meaning_current": true,
+      "actual_model_boundary_count": 2,
+      "native_status": {
+        "status": "current",
+        "note": "ja.m4a"
+      },
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 2,
+        "reword": 2,
+        "check_stopped": true
+      },
+      "actual_flags": [
+        "fd27"
+      ],
+      "raw_matched_primary_checks": 101,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "ko",
+      "translation_sha256": "9568b1cb834bd1ce4e3e1ca1849ae30a7e1e1ec6c6eb02d4c9e46fe8e3ffabf6",
+      "meaning_index_sha256": "86ce9f174629d2d425cb13aa8dd7f7e6c569067ec07aca6af0e30e736393d954",
+      "meaning_current": true,
+      "actual_model_boundary_count": 2,
+      "native_status": {
+        "status": "current",
+        "note": "ko.m4a"
+      },
+      "native_rounds": null,
+      "actual_flags": [],
+      "raw_matched_primary_checks": 101,
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "es",
+      "translation_sha256": "78503f20a6d34c25e91a0257578632c60d8dd206ea4a90d4d337741fc3718125",
+      "meaning_index_sha256": "693324486e34837008cfa9975aaf29d7fb2b42760c60001790b3d2aae07557e1",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "current",
+        "note": "es.m4a"
+      },
+      "native_rounds": null,
+      "actual_flags": [],
+      "raw_matched_primary_checks": 101,
+      "actual_checked_voice_ready": true
+    },
+    {
+      "locale": "pt",
+      "translation_sha256": "3f74c77761514a627781626ecc61bdc5cde3ffec851b7488e723846d6669195d",
+      "meaning_index_sha256": "f7ed26fb9eab7877ca9d2d52cd31ebb425380d63690a2d9ef4366c1d9574e557",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": {
+        "shorten": 0,
+        "retakes": 0,
+        "reword": 0,
+        "check_stopped": true
+      },
+      "actual_flags": null,
+      "raw_matched_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "id",
+      "translation_sha256": "1d9a153a4e46fada058866b10fedfd0902d75978ddde309eb54694413f4cac21",
+      "meaning_index_sha256": "e1a04b25070a136a200554a2a0c2eadd60d6e8fd5717c3c5f69da1d94fb5ae52",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "actual_flags": null,
+      "raw_matched_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "vi",
+      "translation_sha256": "e5f9d84d9fc653ad4d1cb26eb3f2dc67fb70421e6e38edbaeb30719008810625",
+      "meaning_index_sha256": "2a9e5a5b540dcee0c4d7d5f3fef8e92ec7ab188e30ce661ff9a390a5436929f6",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "actual_flags": null,
+      "raw_matched_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    },
+    {
+      "locale": "th",
+      "translation_sha256": "ccd6f6cf70ac9b7c7b37648ce0d3c2834b7bb5f580e02948b43df7d723b83d37",
+      "meaning_index_sha256": "1472d54db412d171293d35712d7a4562e5428d83483daa94660c8292e0820550",
+      "meaning_current": true,
+      "actual_model_boundary_count": 0,
+      "native_status": {
+        "status": "missing",
+        "note": ""
+      },
+      "native_rounds": null,
+      "actual_flags": null,
+      "raw_matched_primary_checks": 0,
+      "actual_checked_voice_ready": false
+    }
+  ],
+  "current_speech_journals": [],
+  "current_top_level_unadopted_model_receipts": [],
+  "actual_runtime_changed_paths": [
+    "auto.json"
+  ],
+  "actual_outcome_sha256": "f11acb2b89e4e2a8c05f1a7a3d1cb180900abd08219ad5a127c744ecc52bf88a",
+  "actual_log_sha256": "cf03f8bdf8cdbf328c9284c52f1e9833d6089146cc39247f3b74aa4304965f2a",
+  "current_blocked_runtime_snapshot": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-post-unit-runtime-snapshot.json",
+    "sha256": "d7c93836b11be0533310ba49a2af8b65a33e0274a0c0ca1a0a7c7c9ef02ffcac",
+    "auto_sha256": "2762f2cc53e56457c0b9b1c142e02744fa4d828a5bb6d18731e071aa07655354",
+    "runtime_files": 2350,
+    "dated_source_files": 514
+  },
+  "actual_site_after_unit": {
+    "file": "/workspace/work/ai-pdf-01/pt-native-state6-qualification-20261027T0327Z-site-after-unit.json",
+    "sha256": "39e1f77719979bf7995d0f323e57d8aa5d4d7a3d8ab191ea788cbd6bbba3b463",
+    "observed_at_utc": "2026-10-27T03:41:43.335Z",
+    "stage": "blocked",
+    "retry_request_id": null,
+    "retry_acknowledged_id": null,
+    "dub_retries": {},
+    "worker_state": "unavailable"
+  },
+  "actual_new_owner_retry_request_present": false,
+  "no_owner_retry_or_publication_action": true,
+  "no_HTTP_code_billing_settlement_or_zero_billing_inference": true,
+  "no_new_full_QA_voice_semantic_listening_or_installation_claim": true,
+  "next": "Native and real site now genuinely blocked after a new own failure. No due or automatic normal retry remains. Preserve this actual blocked-state snapshot and every failed/unknown/cap/approval/source/text artifact. Resume only through a genuine supported owner retry/recovery reflected by actual site request and normal acknowledgement/guards, after service/current ownership/source/meaning/primary11QA/chat8/quota/unknown checks. Never restore done, recreate/decrease counters, remove skips or invoke ordinary dub while nativeblocked. ENJA ordinary retry/original owner operations/other locale/new movie/full8/publish remain excluded; publishing stays owner."
+}
