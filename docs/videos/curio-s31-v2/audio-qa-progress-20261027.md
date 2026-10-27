@@ -1,6 +1,8 @@
 # S31 v2 音訊檢查進度
 
-狀態：**旁白已生成，音訊QA尚未通過，沒有成片核准**。
+狀態：**當前旁白已依站主推薦選擇委託作有界接受；官方仍保留2flags及低分，沒有當前成片核准**。
+
+最新17:55台北：listener1的212句官方QA已完成，155逐字＋30同音／口語＋4Jev＋21第二轉寫＋2flags。獨立覆核證明比較器對吳曾／麗芝的多音預設有假陰性；依實際Whisper無憎及實際primary麗芝的語境同音證據接受兩案，同時保留吳政／立志反例與聲調未經聆聽證實的限制。官方低分與2flags原封保留；不是Jev全過，不是站主或代理聽過。詳見[audio-qa-delegated-decision.json](audio-qa-delegated-decision.json)與[audio-acceptance-listener-rw1.json](audio-acceptance-listener-rw1.json)。未執行listener2或新付費；audio gate綁current timeline461844…d8f31、speechfa2912daff4bd218。新render執行中，舊final／10of11QA仍是歷史。下方較早疑句數只屬各自take。
 
 最新16:38台北：第一輪新13WAV已完成盲式Whisper及官方check，疑句降至5（212＝153逐字＋29同音／口語＋4Jev＋21第二轉寫＋5flags），見[audio-qa-retake1-asr.json](audio-qa-retake1-asr.json)及[audio-qa-retake1-official.json](audio-qa-retake1-official.json)。Windows journal更名故障已透過保留的完整answer安全恢復，官方明確reused1；active entries0，原tmp與recovery proof保留。第二輪只重錄5句已成功71171 native0／88字元，5新SHA已凍結，正文現在28317frames＝943.9秒；正準備新5WAV的ASR及新reader。plain drama品質重錄已2/2，後續如仍疑句才進受保護的聽眾改寫（最多2輪）。目前5flags是r1舊take判定，不能當作r2的新QA。見[audio-retake2-20261027.json](audio-retake2-20261027.json)。
 

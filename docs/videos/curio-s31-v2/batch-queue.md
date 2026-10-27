@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 第1輪listener官方音訊QA已結束，只剩2個專名／同音疑句；保留低分與原始轉寫，獨立發音覆核中。八語配音尚未開始 |
+| 1 | curio-s31 | curio-s31-v2 | 兩例多音比較誤判已獨立覆核，依推薦選擇委託接受當前音訊；官方2flags／低分保留。新render／clips／既有music驗證均native0；唯一新assembly執行中，八語配音尚未開始 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,9 +34,17 @@
 
 ## 當前斷點
 
-**最新實況：2026-10-27 17:46台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+**最新實況：2026-10-27 18:00台北。以下較早紀錄保留為履歷，以本段為續作入口。**
 
-官方check8572已於17:31:30台北結束native1：212＝155逐字＋30同音／口語＋4Jev＋21第二轉寫＋2flags（v2a0491、v2a0722），只新增5ASR／2Jev；見[audio-qa-listener-rw1-official.json](audio-qa-listener-rw1-official.json)。當前check／flags、兩個原始WAV及timeline／approvals已凍結，source／audio仍fa2912daff4bd218、audioEvidence0、active journal0、leasefree、producer0。沒有進行第2輪listener或再次付費。離線比較器發音診斷發現吳曾被預設為ceng2、麗芝的麗被預設為li2；實際轉寫與意圖可能只是專名／多音字假陰性，正作獨立來源與發音覆核。不能改flags／低分、拼接轉寫或為了green寫錯字幕；也不能先聲稱實際音訊通過。當前lint已0錯誤／0警告。
+當前唯一producer為assemble session33528／slot assemble-listener1-current（正式--intro-after-condensation），log在private同slot.txt。render56428已native0：5states新繪、228沿用、212字幕／cues；5張新字幕實圖已逐一查看，字形及版面正常，source／speech／subtitles binding均current。clips native0沿用129stills、0newclips；music native0核對既有976秒bed原SHA，無購買。見[media-refresh-listener-rw1.json](media-refresh-listener-rw1.json)。先等assembly完成與實際checks／frame count／新final SHA讀回，才captions／QA／native player及final決定；不要以預估片長或舊final充當新成片。
+
+兩例獨立發音覆核已完成，見[audio-qa-phonetic-independent-review.json](audio-qa-phonetic-independent-review.json)（SHA131ecc59a6e7ba13eb373f31b340274dcac50deefe9cd8eebc51ee3424b8d27a）：0491的實際Whisper「無憎」對應作者Wu Zeng；0722的實際primary「麗芝」可讀lì zhī，與荔枝同音。比較器確實選了不合此語境的céng／lí。另一份ASR仍各有不同音，不能說兩份一致或聲調已逐聲聽驗。依站主直接委託，root作有界品質接受，完整記錄兩案反例及聲學不確定性，沒有改source／WAV／cache／flags／字典／Jev分數，也沒有人被宣稱聽過；不為文字誤判重買，listener2未執行。見[audio-qa-delegated-decision.json](audio-qa-delegated-decision.json)、[audio-acceptance-listener-rw1.json](audio-acceptance-listener-rw1.json)。官方local audio gate已於17:52:42台北native0記錄，綁timeline SHA461844fdcf9a29ecf581397c9c546637ce85262bc7ef2b8854e683fdf64d8f31；官方checker仍是native1／2flags，不能改寫成自動全過。
+
+17:55時的producer是新render session56428（現已完成）（slot render-listener1-msedge），先等native exit與新frames讀回。首次default Chromium缺binary的render native5已對帳：十份舊manifest未變、leasefree、journal0；改用已安裝Edge及正式VIDEO_BROWSER_CHANNEL=msedge，無安裝或新增付費。後續本機render也須設此channel。舊final完整保存在private retake-context13-before/final.mp4。shared比較器問題已另立未認領P2票2026-10-27-avoid-polyphonic-character-false-flags-in；本集不修改共享工具。
+
+當前source lint0錯誤／0警告；bundled Node24.19.0完整docs-video236/236通過、task validation2193通過（既有警告保留），見[validation-listener-rw1.json](validation-listener-rw1.json)。
+
+17:46覆核前快照（已由上段委託決策取代）：官方check8572已於17:31:30台北結束native1：212＝155逐字＋30同音／口語＋4Jev＋21第二轉寫＋2flags（v2a0491、v2a0722），只新增5ASR／2Jev；見[audio-qa-listener-rw1-official.json](audio-qa-listener-rw1-official.json)。當前check／flags、兩個原始WAV及timeline／approvals已凍結，source／audio仍fa2912daff4bd218、audioEvidence0、active journal0、leasefree、producer0。沒有進行第2輪listener或再次付費。離線比較器發音診斷發現吳曾被預設為ceng2、麗芝的麗被預設為li2；實際轉寫與意圖可能只是專名／多音字假陰性，正作獨立來源與發音覆核。不能改flags／低分、拼接轉寫或為了green寫錯字幕；也不能先聲稱實際音訊通過。當前lint已0錯誤／0警告。
 
 當前唯一本集producer是**官方check-audio session8572**，log `check-audio-listener-rw1.txt`，已fresh核對source／timeline／5WAV／audio_evidence0／active journal0／敘事綁定及八語1696格source_hash全current後啟動，不帶`--locale`、不force。先等此指令結束，不啟動競爭的TTS、ASR或check；尚無audio／final核准。
 
@@ -80,7 +88,7 @@ private clone使用官方journal恢復實測已PASS（review SHA `0583f1810e0165
 
 重錄前的EN render session98057與補產CC均已exit0。[production-preview-r6.json](production-preview-r6.json)是08:46:47台北的歷史完整驗證快照：當時source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA核對通過；重錄後不能用它證明舊成片與新旁白相同。原版final SHA仍保留`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
 
-**下一個可行動斷點是兩個剩餘疑句的獨立發音覆核**。若只是同音字，依listener規則保留原句並記錄委託品質判斷及官方原2flags；不假稱Jev自動全過或人工聽音。若證據不足，尚有第2輪受保護措辭機會，不能無限重錄。音訊獲實際可追溯決定後才render／clips／既有music驗證／assemble／captions／QA／新播放器驗證，再核准中文final、逐語製作八條dub。尚未完成完整交付包，不能勾整集完成或開始S15。
+**下一個可行動斷點是唯一assemble session33528完成**。讀回實際新final／checks／branding與current narration SHA後，captions／QA／新播放器驗證，再依實際QA記錄中文final決定、逐語製作八條dub。private post-audio-current-entry-companion.json明示當前有界委託音訊決策，取代舊frozen recipe的「必須0flags」協調預設；舊recipe及原低分原封保留。尚未完成完整交付包，不能勾整集完成或開始S15。
 
 - 配對已恢復，不再要求站主重配。guarded keyframes最後session `7898` 已正常完成：129/129張judge通過，沒有needs_review；官方keyframeProblems為0，visual_hash `4ff8941e6473b9f4`、speechHash `8af0af8b6fb7d1e4`。六頁最新圖板已由代理實際檢視，依站主推薦選擇委託記錄storyboard核准，並非站主本人觀看。manifest SHA `fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2`。
 - 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。

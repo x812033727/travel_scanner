@@ -2,6 +2,12 @@
 
 新稿：[script.md](script.md)。原標題保留，使用獨立 slug `curio-s31-v2`。原版 `curio-s31` 的成片、旁白、插圖、外語及核准仍歸原工作與 PR #1800；本次不覆寫它們。
 
+## 當前讀回（2026-10-27 17:55台北）
+
+新source SHA6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86，speechHash fa2912daff4bd218，實際正文28310frames／30＝943.666667秒。listener修補5句、敘事round8依官方合併13/13、八語40格差分覆核及1696source hashes均current。129圖全沿用，保守圖片／評審控制總額仍US$1.578／6；既有976秒配樂SHA a00ffb8aa48c83041867c2ea319ff962b21b6510cb9e97030711ef73e9518a41沿用，不新買。音訊依有界委託品質決策核准，官方2flags及低分保留，沒有聆聽或自動全過宣稱；見audio-qa-delegated-decision.json。新render session56428執行中，舊16:11.967預覽還不是當前final，八語dubs／完整交付包未成。
+
+現行lint0errors／0warnings，bundled Node24.19.0完整docs-video236/236、task2193通過，見validation-listener-rw1.json。下方原報價與各次驗證保留為當時紀錄，以batch-queue.md最新斷點續作。
+
 ## 已完成的準備
 
 - 6 章、212 行、3,206 個漢字口語單位；150 景，其中 129 景為插圖，24 條伏筆。開場先說利害與場景，只有兩個預告，再接承諾句與問題；每章對觀眾說話，包含旁白自己的反應。

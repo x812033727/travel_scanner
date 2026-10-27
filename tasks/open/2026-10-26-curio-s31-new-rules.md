@@ -37,7 +37,7 @@ Owner 2026-10-26 requested continuation of「楊貴妃的荔枝，怎麼送到�
 - [x] Generate Chinese narration and preserve all source-bound WAV/evidence.
 - [x] Recover/reconcile paid art and complete129/129 judge-passed illustrations within the cap.
 - [x] Assemble the Chinese preview with the channel intro, burned captions, reused music and v4outro; verify native spot playback and actual duration.
-- [ ] Resolve remaining narration flags on the actual current takes; do not approve audio or final prematurely.
+- [x] Adjudicate current narration flags against actual-take evidence; two disclosed mechanical flags accepted under delegated contextual review, with low scores/contrary ASR retained.
 - [ ] Complete all eight selected dubs, timed CC/fit checks and the verified pre-upload delivery package before starting S15.
 
 ## How to verify
@@ -45,6 +45,10 @@ Owner 2026-10-26 requested continuation of「楊貴妃的荔枝，怎麼送到�
 `node tools/video/cli.mjs lint --slug curio-s31-v2`; fresh `narrative --slug curio-s31-v2` readers; `npm run check:tasks`. Paid steps require approved episode-wide scope. Actual timeline and assembled media, not planned seconds, establish runtime.
 
 ## Notes
+
+- 18:00Taipei: render56428native0/5drawn228reused/39s/212strips+cues; actual5changedstripimages viewed, glyph/layout normal. Clipsnative0/129stills0newclips; musicnative0/existingbedSHAa00ffb8aa48c83041867c2ea319ff962b21b6510cb9e97030711ef73e9518a41. Source/audio/frames/clips/subtitle/currentart/approval bindings verified; media-refresh-listener-rw1.json. Onlyassemble33528nowactive(slotassemble-listener1-current, --intro-after-condensation); waitactualnewfinal/checks/framecount/SHA beforecaptions/QA/newnativeplayer/finaldecision. No dubs/package/next episode/upload yet.
+
+- 17:55Taipei: independent phonetic evidence review SHA131ecc59a6e7ba13eb373f31b340274dcac50deefe9cd8eebc51ee3424b8d27a supports retaining both current lines, no furtherTTS. Root recorded bounded delegated acceptance d6e340de27f7be9b5afd6fd23a622aca3bc163c1ba35ba12e9fb777680b29a95, retaining2mechanicalflags/alllowJev/discordantASR/acoustic-tone uncertainty; no listening, zero-flag or automatic-pass claim. Official local audioapproval native0 at09:52:42Z binds461844fdcf9a29ecf581397c9c546637ce85262bc7ef2b8854e683fdf64d8f31; source/WAV/cache/dict unchanged,listener2notexecuted. Current onlyproducer render56428/slotrender-listener1-msedge; firstdefaultbrowser native5 reconciled tenunchangedmanifests/journal0/leasefree, officialEdgechannel fixes prerequisite, noinstall/pay. Waitactualrenderexit beforeclips/music/assembly/newQA/player/dubs. Current236of236docs-videotests and2193tasks pass underbundled24.19, lint0/0; sharedpolyphonyP2filedunclaimed, no corechanges.
 
 - 17:46Taipei: officialcheck8572 completed native1/212checked=155exact+30sound+4Jev+21second+2flags(v2a0491,v2a0722),5newASR/2Jev. Saved audio-qa-listener-rw1-official.json SHAaefcf420104aab689dee5da35a1cbd44acdc8d862ae1266baa8a701259b105a2 and frozen actualcheck/flags/2WAV/timeline/approvals; current source/audiofa291, audioEvidence0,activejournal0,leasefree,producer0,lint0errors0warnings. No furtherTTS or audioapproval at this snapshot. Offline diagnostic shows comparison default ceng2 for吳曾 andli2 for麗芝; independent primary-source phonetic review pending to distinguish same-sound falseflags from actual uncertainty. Preserve raw2flags/Jev/ASR, no cache/dictionary/score manipulation and no owner-listened claim. Plain2/2,listener1/2 unchanged.
 
