@@ -1,7 +1,7 @@
 {
-  "observed_at": "2026-10-27T06:35:17.186Z",
+  "observed_at": "2026-10-27T20:08:27.137379+00:00",
   "status": "in-progress",
-  "stage": "official_v4_main_EN_M4A_ZH_EN_CC_title_description_delivered_1of8_manual_pending_QA10_JA14flags",
+  "stage": "official_v4_ZH_program_M4A_download_added_current25_pending_EN1of8_QAfalse10_JA14",
   "source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
   "claims_sha256": "527048b6061d21f70e00475cc4790a46b0de6e536a37e8966402194a043fa9c6",
   "speech_hash": "8028c7320d9cab29",
@@ -643,5 +643,170 @@
     "new_approval": false,
     "all_eight_ready": false,
     "receipt": "receipts/remote-binary-readback-20261027/README.md"
+  },
+  "original_ZH_program_audio": {
+    "observed_at": "2026-10-27T20:08:27.137379+00:00",
+    "actual_delivered": true,
+    "same_pending_final_id": "e66d6661-c991-42fc-abde-30e942c9fe5b",
+    "old_refs": 23,
+    "added_refs": 2,
+    "current_refs": 25,
+    "current_M4A": {
+      "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.original-timing.zh-TW.m4a",
+      "bytes": 15950408,
+      "sha256": "f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f"
+    },
+    "actual_report": {
+      "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program-audio-original-timing.txt",
+      "bytes": 1583,
+      "sha256": "94323031b09641c9bcde7613d5167e627ba7cdd97df68a5ea90697c78492ad3e"
+    },
+    "AAC_container_seconds": 586.51,
+    "source_main": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+      "bytes": 54578838,
+      "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a"
+    },
+    "prior_M4A_43e_retained": {
+      "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.zh-TW.m4a",
+      "bytes": 15950408,
+      "sha256": "43e936eb7da5a16c05118f74edbced2daa9ac2f692d789b4a5d8518538338c56"
+    },
+    "original_manifest_db8_retained": {
+      "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program-audio-manifest.json",
+      "bytes": 4264,
+      "sha256": "db8c735f9389b55d3d9ae0f76bdd53e99e81d4fe86899a3b3cccea8a347217a6"
+    },
+    "source_105_acceptance_inherited_not_new_ASR": true,
+    "raw_source_timing_restoration": {
+      "two_BE_uint32_fields": [
+        {
+          "at": 312,
+          "before": 28153504,
+          "after": 28153503
+        },
+        {
+          "at": 583,
+          "before": 65,
+          "after": 64
+        }
+      ],
+      "actual_changed_bytes": [
+        {
+          "offset": 315,
+          "before": 160,
+          "after": 159
+        },
+        {
+          "offset": 586,
+          "before": 65,
+          "after": 64
+        }
+      ],
+      "all_other_bytes_equal_old_M4A": true,
+      "all_atom_sizes_and_offsets_unchanged": true,
+      "source_stts_payload_exact": true,
+      "source_mdhd_duration_and_timescale_exact": true,
+      "source_elst_and_stsz_payload_exact": true,
+      "sample_count": 27491,
+      "stts_total_ticks": 28153503,
+      "timescale": 48000
+    },
+    "packet_count": 27491,
+    "ordered_packet_sha256": "a3f5f0e269e028351430cb674f1114f0e4a8abb109ba5d5a83389c9d781fa047",
+    "full_PCM": {
+      "bytes": 225198080,
+      "sha256": "dc3c58e40972bf94e79ce9847e22c83b8b994f376fb0399bdf9c53e5540698c9",
+      "sample_frames": 28149760,
+      "sample_rate": 48000,
+      "channels": 2,
+      "source_actual_receipt": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/source-decoded-PCM.result.json",
+        "bytes": 907,
+        "sha256": "6c844f965f231b2b4dc96a014bd08b375e6db99cd8f1ff42435389ef993de84e"
+      },
+      "exact_source_equality": true,
+      "full_decode_exit0_error_stderr_empty": true
+    },
+    "actual_meter": {
+      "integrated_LUFS": -14.1,
+      "LRA_LU": 4.2,
+      "true_peak_dBFS": -2.6,
+      "measurement_only": true
+    },
+    "append_counts": {
+      "auth_reads": 1,
+      "project_GET": 4,
+      "file_PUT": 5,
+      "review_POST": 1,
+      "file_GET": 2,
+      "denied": 0
+    },
+    "full_new_binary_readbacks": [
+      {
+        "role": "evidence_zh_tw_program_m4a",
+        "content_type": "audio/mp4",
+        "HTTP": 200,
+        "bytes": 15950408,
+        "sha256": "f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f",
+        "downloaded_file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-append/append-run/readback/evidence_zh_tw_program_m4a.m4a",
+        "response_content_type": "audio/mp4"
+      },
+      {
+        "role": "evidence_zh_tw_program_audio_report",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 1583,
+        "sha256": "94323031b09641c9bcde7613d5167e627ba7cdd97df68a5ea90697c78492ad3e",
+        "downloaded_file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-append/append-run/readback/evidence_zh_tw_program_audio_report.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      }
+    ],
+    "public_text_index": "receipts/original-zh-program-audio-20261027/index.json",
+    "independent_restoration_review": "receipts/original-zh-program-audio-20261027/restored-physical-review.json",
+    "independent_append_review": "receipts/original-zh-program-audio-20261027/independent-two-file-readback-review.json",
+    "foreign_completed_unchanged": 1,
+    "foreign_total": 8,
+    "new_TTS_ASR_paid": 0,
+    "wholefilm_QA_or_all8_or_server_approval_completed": false,
+    "old_backend23_block_is_dated_original": true,
+    "Root_task_release_handoff_pending": false,
+    "normal_task_release_and_blocked": {
+      "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-task-release-blocked.json",
+      "bytes": 604,
+      "sha256": "c9f3610ea2c1177b22c0860b611794ea6c210332fa506ad20d0533876810fcef"
+    },
+    "task_handoff": {
+      "recorded_at": "2026-10-27T20:14:55.644700+00:00",
+      "status": "blocked",
+      "owner_claim_released": true,
+      "responsibility": "codex-ai-tech-news; same conversation/branch/PR1856, not done or transferred",
+      "stop_point": "Current ZH full-program M4A and report delivered/readback. Foreign EN remains1/8, JA14flags/stale and sixother media incomplete; nativeQAfalse10 captions and all8/overallfalse preserved. Resume only normal bounded current-audio flow with real service/billing facts and unique globalASR slot; preserve all caches/unknowns/retake/rewrite caps. No automatic paid retries or lease takeover.",
+      "no_background_producer": true
+    },
+    "required_docs_videos_check": {
+      "actual_session": 55737,
+      "actual_tool_exit": 0,
+      "passed": 236,
+      "failed": 0,
+      "skipped": 0,
+      "duration_ms": 65263.968963,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/checks/docs-videos.exit.json",
+        "bytes": 669,
+        "sha256": "814e0d19ca0af6750f9c0a12e6ef39c3f494ba17db9bfd5dd2db39e03c7c99ff"
+      }
+    },
+    "required_tasks_check": {
+      "actual_session": 65440,
+      "actual_tool_exit": 0,
+      "validated_tasks": 2185,
+      "existing_warnings": 151,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/checks/tasks.exit.json",
+        "bytes": 652,
+        "sha256": "12c0d00d81eb4381a4b318aab16ccc55931c3909c4dd8dedc28656aa24d4dc22"
+      }
+    }
   }
 }

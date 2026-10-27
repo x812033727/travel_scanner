@@ -1,3 +1,15 @@
+# Claude形式驗證255：繁中完整節目M4A已新增交付
+
+2026-10-27T20:08:27.137379+00:00。已將當前官方片頭尾版的繁中完整節目M4A與實際使用說明追加到[本片後台](https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255)，同一待審final由23增為25附件。新音檔15950408B，SHA `f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f`；AAC節目時長586.510秒，第一章後5秒片頭／21秒片尾保持。兩個新檔均完整下載後核對bytes／SHA／MIME，原23附件、完整payload／QA／choices及歷史審核保留。
+
+從來源AAC抽出的初版M4A43e936eb…與manifest db8c735f…原樣保留。獨立解析原始MDHD／STTS發現初版容器把尾端時間正規化增加1tick；新副本只還原兩個32bit元資料欄位，實際只改offset315與586的兩個byte，其他每個byte、大小與offset不變。新檔raw STTS、MDHD時長及時間尺度、ELST／STSZ皆與來源相同；27491個AAC封包payload／時間／side-data／extradata及完整解碼PCM一致。這次沒有第二次remux、重新編碼或新旁白。
+
+105句繁中當前音檔／完整intended／ASR接受證據只作來源繼承，沒有新ASR或逐段人工重聽。**外語仍EN1/8、JA14flags／stale、原生整片QA仍false10/11，八語與整片DOD未完成**。本次是繁中原版的新增下載格式，不計為第二種完成外語、不構成核准或語言批次。
+
+[精確文字證據索引](receipts/original-zh-program-audio-20261027/index.json)、[還原後獨立實體查核](receipts/original-zh-program-audio-20261027/restored-physical-review.json)、[兩檔完整讀回查核](receipts/original-zh-program-audio-20261027/independent-two-file-readback-review.json)與[節目音訊說明](receipts/original-zh-program-audio-20261027/program-audio-original-timing.txt)分列範圍。以下原文是所標日期的歷史快照，23附件為先前狀態；當前新增格式見progress的`original_ZH_program_audio`。
+
+---
+
 # Claude形式驗證255：當前官方片頭尾版
 
 最新核對（2026-10-27）：已補完目前待審成片全23附件的正常完整下載與ROOT實體驗證，含正式片頭尾版1080p、兩個英文M4A角色、繁中／英文實際CC與完整標題說明。105句英文現有音檢、fit與meter仍綁同一音檔；沒有新合成或核准，仍是英文1/8。[完整讀回證據](receipts/remote-binary-readback-20261027/README.md)。先前server組檔／角色metadata收據保持原日期與範圍。

@@ -1,0 +1,500 @@
+{
+  "kind": "independent_Formal_ZH_actual_media_physical_review_v1",
+  "observed_at": "2026-10-27T19:43:08.112432+00:00",
+  "verdict": "CLEAR_PRESENTATION_PACKET_PCM_COMPONENT_WITH_CARRIER_TAIL_NOTE",
+  "problems": [],
+  "scope": "Independent current physical file hashing and full byte-at-position packet verification; raw MP4 atoms independently parsed. Actual six-child receipts and stored full-decode digests inspected. No rerun ffmpeg/ffprobe/ASR, helper/API/auth/network or new producer. PCM bytes were streamed by actual producer and not retained; no independent second decoding or human listen is claimed.",
+  "Root_outer_exit": {
+    "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/ROOT-actual-media-exit.json",
+    "bytes": 720,
+    "sha256": "8b91d6db8f1b26d80b4ba29c93ced08d1033711fc114011f549b2cb87bda2a26"
+  },
+  "completion": {
+    "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/completion.json",
+    "bytes": 7251,
+    "sha256": "087d27f7dbfe4d8e2f69e1ad0726bcd43bf170f623b93c89bebf534215a053a7"
+  },
+  "Root_own_review": {
+    "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/ROOT-media-actual-own-review.json",
+    "bytes": 859,
+    "sha256": "3f1725dd1a847757c246088edd9590462cd52bc5797cbd821eb42e2ae6178831"
+  },
+  "actual_manifest": {
+    "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program-audio-manifest.json",
+    "bytes": 4264,
+    "sha256": "db8c735f9389b55d3d9ae0f76bdd53e99e81d4fe86899a3b3cccea8a347217a6"
+  },
+  "actual_audio": {
+    "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.zh-TW.m4a",
+    "bytes": 15950408,
+    "sha256": "43e936eb7da5a16c05118f74edbced2daa9ac2f692d789b4a5d8518538338c56"
+  },
+  "actual_report_before_text_amendment": {
+    "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program-audio-usage.txt",
+    "bytes": 1434,
+    "sha256": "fe8e3edf08721b7fa39fbc4df52fb05c26b24a3b5f499e87c2e9046801324d6e"
+  },
+  "packet_count": 27491,
+  "all_saved_ffprobe_packet_and_stream_fields_equal": true,
+  "ordered_packet_transcript_sha256": "a3f5f0e269e028351430cb674f1114f0e4a8abb109ba5d5a83389c9d781fa047",
+  "physical_packet_and_atom_evidence": [
+    {
+      "name": "source-audio-packets",
+      "source_file": {
+        "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+        "bytes": 54578838,
+        "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a"
+      },
+      "all_packet_payloads_verified_from_actual_file_positions": 27491,
+      "concatenated_payload_sha256": "7bca70eebdacbf20c58d90568027c11db511fef645b95e165075536abb70c8cb",
+      "payload_bytes": 15839382,
+      "sample_count_from_actual_stsz": 27491,
+      "stsz": {
+        "atom_path": "moov/trak[hdlr=soun]/mdia/minf/stbl/stsz",
+        "offset": 421012,
+        "payload_offset": 421020,
+        "bytes": 109984,
+        "payload_bytes": 109976,
+        "payload_sha256": "875bae7d5048e85fa1eef47e2354055fd58c4eff06fd6dad92aafee339ca97ad"
+      },
+      "stts": {
+        "atom_path": "moov/trak[hdlr=soun]/mdia/minf/stbl/stts",
+        "offset": 236268,
+        "payload_offset": 236276,
+        "bytes": 48,
+        "payload_bytes": 40,
+        "payload_sha256": "0b7cf3ad1ae00f5141a8748ff399a5f0c6e56fae055aaa65f17db1b7044e5f08",
+        "runs": [
+          [
+            26370,
+            1024
+          ],
+          [
+            1,
+            4703
+          ],
+          [
+            1119,
+            1024
+          ],
+          [
+            1,
+            64
+          ]
+        ],
+        "payload_hex": "00000000000000040000670200000400000000010000125f0000045f000004000000000100000040"
+      },
+      "mdhd": {
+        "atom_path": "moov/trak[hdlr=soun]/mdia/mdhd",
+        "offset": 235997,
+        "payload_offset": 236005,
+        "bytes": 32,
+        "payload_bytes": 24,
+        "payload_sha256": "281cf681a717c0dc7dd4172a72950002730c18b5d298cd9a22639e49e8e91ad3",
+        "timescale": 48000,
+        "media_duration": 28153503,
+        "payload_hex": "0000000000000000000000000000bb8001ad969f55c40000"
+      },
+      "elst": {
+        "atom_path": "moov/trak[hdlr=soun]/edts/elst",
+        "offset": 235961,
+        "payload_offset": 235969,
+        "bytes": 28,
+        "payload_bytes": 20,
+        "payload_sha256": "40063a3346b8fc39b3fce0c01c29ca9be1ac0e9f49267a520b06adb47c395755",
+        "payload_hex": "00000000000000010008f30e0000040000010000"
+      },
+      "AudioSpecificConfig": {
+        "hex": "119056e500",
+        "bytes": 5,
+        "sha256": "b3108813350006ef07740046fab14af9c374938867d16db02fe1a8baa5e72f10"
+      },
+      "top_level_atoms": [
+        {
+          "type": "ftyp",
+          "offset": 0,
+          "bytes": 32
+        },
+        {
+          "type": "moov",
+          "offset": 32,
+          "bytes": 601491
+        },
+        {
+          "type": "free",
+          "offset": 601523,
+          "bytes": 8
+        },
+        {
+          "type": "mdat",
+          "offset": 601531,
+          "bytes": 53977307
+        }
+      ]
+    },
+    {
+      "name": "M4A-audio-packets",
+      "source_file": {
+        "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.zh-TW.m4a",
+        "bytes": 15950408,
+        "sha256": "43e936eb7da5a16c05118f74edbced2daa9ac2f692d789b4a5d8518538338c56"
+      },
+      "all_packet_payloads_verified_from_actual_file_positions": 27491,
+      "concatenated_payload_sha256": "7bca70eebdacbf20c58d90568027c11db511fef645b95e165075536abb70c8cb",
+      "payload_bytes": 15839382,
+      "sample_count_from_actual_stsz": 27491,
+      "stsz": {
+        "atom_path": "moov/trak[hdlr=soun]/mdia/minf/stbl/stsz",
+        "offset": 795,
+        "payload_offset": 803,
+        "bytes": 109984,
+        "payload_bytes": 109976,
+        "payload_sha256": "875bae7d5048e85fa1eef47e2354055fd58c4eff06fd6dad92aafee339ca97ad"
+      },
+      "stts": {
+        "atom_path": "moov/trak[hdlr=soun]/mdia/minf/stbl/stts",
+        "offset": 539,
+        "payload_offset": 547,
+        "bytes": 48,
+        "payload_bytes": 40,
+        "payload_sha256": "f657e05209cfcb8ecba6a24f1a31240f3b434591db143013baa61b6b88e51da5",
+        "runs": [
+          [
+            26370,
+            1024
+          ],
+          [
+            1,
+            4703
+          ],
+          [
+            1119,
+            1024
+          ],
+          [
+            1,
+            65
+          ]
+        ],
+        "payload_hex": "00000000000000040000670200000400000000010000125f0000045f000004000000000100000041"
+      },
+      "mdhd": {
+        "atom_path": "moov/trak[hdlr=soun]/mdia/mdhd",
+        "offset": 288,
+        "payload_offset": 296,
+        "bytes": 32,
+        "payload_bytes": 24,
+        "payload_sha256": "8f19d5b2b04c6121012932d0a96992d8b64342ff29ea91396c82bb2ee58892e2",
+        "timescale": 48000,
+        "media_duration": 28153504,
+        "payload_hex": "0000000000000000000000000000bb8001ad96a0690f0000"
+      },
+      "elst": {
+        "atom_path": "moov/trak[hdlr=soun]/edts/elst",
+        "offset": 252,
+        "payload_offset": 260,
+        "bytes": 28,
+        "payload_bytes": 20,
+        "payload_sha256": "40063a3346b8fc39b3fce0c01c29ca9be1ac0e9f49267a520b06adb47c395755",
+        "payload_hex": "00000000000000010008f30e0000040000010000"
+      },
+      "AudioSpecificConfig": {
+        "hex": "119056e500",
+        "bytes": 5,
+        "sha256": "b3108813350006ef07740046fab14af9c374938867d16db02fe1a8baa5e72f10"
+      },
+      "top_level_atoms": [
+        {
+          "type": "ftyp",
+          "offset": 0,
+          "bytes": 28
+        },
+        {
+          "type": "moov",
+          "offset": 28,
+          "bytes": 110982
+        },
+        {
+          "type": "free",
+          "offset": 111010,
+          "bytes": 8
+        },
+        {
+          "type": "mdat",
+          "offset": 111018,
+          "bytes": 15839390
+        }
+      ]
+    }
+  ],
+  "carrier_tail_note": {
+    "classification": "carrier-tail note; ffprobe presentation packets and actual decode digests remain exact",
+    "source_final_stts_sample_delta": 64,
+    "output_final_stts_sample_delta": 65,
+    "source_mdhd_media_duration": 28153503,
+    "output_mdhd_media_duration": 28153504,
+    "timescale": 48000,
+    "carrier_tail_difference_ticks": 1,
+    "carrier_tail_difference_seconds": 2.0833333333333333e-05,
+    "raw_container_all_timing_byte_equality_claimed": false,
+    "edit_list_payload_bytes_exact": true,
+    "sample_size_table_payload_bytes_exact": true,
+    "no_audio_packet_payload_or_exposed_presentation_timing_change": true,
+    "no_PCM_decode_count_or_digest_change": true,
+    "no_media_rerun_or_threshold_change": true
+  },
+  "actual_children": [
+    {
+      "name": "source-audio-packets",
+      "actual_exit": 0,
+      "PID": 7492,
+      "process_gone": true,
+      "result": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/source-audio-packets.result.json",
+        "bytes": 847,
+        "sha256": "598343c391775befa5610aa98c5ceb0bedd90871e9f6249000cd7323498184cd"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/source-audio-packets.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_bytes": 13072039,
+      "stdout_sha256": "9353bd4c104619f962809d517f01d21d9758e6f9bd414312969fbd18930c4086",
+      "PCM_stream_only": false,
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/source-audio-packets.stdout",
+        "bytes": 13072039,
+        "sha256": "9353bd4c104619f962809d517f01d21d9758e6f9bd414312969fbd18930c4086"
+      }
+    },
+    {
+      "name": "AAC-streamcopy",
+      "actual_exit": 0,
+      "PID": 7493,
+      "process_gone": true,
+      "result": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/AAC-streamcopy.result.json",
+        "bytes": 1161,
+        "sha256": "49d451cdadc2c55879149abcc6e84657ce10a5378e2f2cf6f27dbf8959e10152"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/AAC-streamcopy.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "PCM_stream_only": false,
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/AAC-streamcopy.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    },
+    {
+      "name": "M4A-audio-packets",
+      "actual_exit": 0,
+      "PID": 7496,
+      "process_gone": true,
+      "result": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/M4A-audio-packets.result.json",
+        "bytes": 851,
+        "sha256": "18fd3594bb77a5024addd6c489e14976fdf29bd637b12d2eec7208d42daf5875"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/M4A-audio-packets.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_bytes": 13056242,
+      "stdout_sha256": "555b98ea3465c074dcab776e32e08d70fae8a6619cb465046c66e926e54caaac",
+      "PCM_stream_only": false,
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/M4A-audio-packets.stdout",
+        "bytes": 13056242,
+        "sha256": "555b98ea3465c074dcab776e32e08d70fae8a6619cb465046c66e926e54caaac"
+      }
+    },
+    {
+      "name": "source-decoded-PCM",
+      "actual_exit": 0,
+      "PID": 7497,
+      "process_gone": true,
+      "result": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/source-decoded-PCM.result.json",
+        "bytes": 907,
+        "sha256": "6c844f965f231b2b4dc96a014bd08b375e6db99cd8f1ff42435389ef993de84e"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/source-decoded-PCM.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_bytes": 225198080,
+      "stdout_sha256": "dc3c58e40972bf94e79ce9847e22c83b8b994f376fb0399bdf9c53e5540698c9",
+      "PCM_stream_only": true
+    },
+    {
+      "name": "M4A-decoded-PCM",
+      "actual_exit": 0,
+      "PID": 7508,
+      "process_gone": true,
+      "result": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/M4A-decoded-PCM.result.json",
+        "bytes": 911,
+        "sha256": "5051b4d26c2205e4bcce82c3e62c5d55445a03944491f6a27110a7a97c2542d5"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/M4A-decoded-PCM.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stdout_bytes": 225198080,
+      "stdout_sha256": "dc3c58e40972bf94e79ce9847e22c83b8b994f376fb0399bdf9c53e5540698c9",
+      "PCM_stream_only": true
+    },
+    {
+      "name": "M4A-ebur128-meter",
+      "actual_exit": 0,
+      "PID": 7519,
+      "process_gone": true,
+      "result": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/M4A-ebur128-meter.result.json",
+        "bytes": 928,
+        "sha256": "f6056f3d3cde29beb1c393c19a18f7512b41e7c305f02b581e2652411846497b"
+      },
+      "stderr": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/M4A-ebur128-meter.stderr",
+        "bytes": 1010161,
+        "sha256": "9edae1898318299ced0af8899368784fc94966b8d9b2b9f84d1dd1cc6b716e18"
+      },
+      "stdout_bytes": 0,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "PCM_stream_only": false,
+      "stdout": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/M4A-ebur128-meter.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  ],
+  "decoded_PCM": {
+    "format": "f32le",
+    "sample_rate": 48000,
+    "channels": 2,
+    "bytes": 225198080,
+    "sample_frames": 28149760,
+    "seconds": 586.4533333333334,
+    "sha256": "dc3c58e40972bf94e79ce9847e22c83b8b994f376fb0399bdf9c53e5540698c9",
+    "full_source_and_M4A_equal": true,
+    "full_decode_both_exit0_and_error_stderr_empty": true,
+    "independent_new_decode_performed": false,
+    "actual_producer_stream_digests_and_counts_verified": true
+  },
+  "actual_meter_from_physical_stderr": {
+    "integrated_LUFS": -14.1,
+    "loudness_range_LU": 4.2,
+    "true_peak_dBFS": -2.6
+  },
+  "protected_inventories": [
+    {
+      "key": "E",
+      "root": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255",
+      "files": 248,
+      "full_file_set_and_all_sizes_SHA_equal": true,
+      "original_inventory": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/E-before-files.json",
+        "bytes": 52187,
+        "sha256": "adc4a9bddf2af132ca2ab23f4233be8c0c7bf82d87639eadbed054434d71d460"
+      },
+      "problems": []
+    },
+    {
+      "key": "W",
+      "root": "/workspace/work/videos/claude-formal-verification-255",
+      "files": 1865,
+      "full_file_set_and_all_sizes_SHA_equal": true,
+      "original_inventory": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/W-before-files.json",
+        "bytes": 360030,
+        "sha256": "754e95de716d32948c1c489a563caf582c7efa564ec369baa7b5f2335e7476ca"
+      },
+      "problems": []
+    },
+    {
+      "key": "C",
+      "root": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255",
+      "files": 1872,
+      "full_file_set_and_all_sizes_SHA_equal": true,
+      "original_inventory": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/C-before-files.json",
+        "bytes": 361664,
+        "sha256": "56b6746abc6f1e13a6b1c6af8d7d972e004c69512a5d4ac1dad7753b8ec5aaba"
+      },
+      "problems": []
+    }
+  ],
+  "held4": [
+    {
+      "file": "/workspace/work/ai-tech-next/forty-asr-coordination.json",
+      "bytes": 1104,
+      "sha256": "342d7b1aafbf751f0eddc60531a7fb4c42a2a4be74f8a03da777c179e1b74c9d"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/series-tts-service-hold.json",
+      "bytes": 5127,
+      "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/audio/speech-journal/dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7.json",
+      "bytes": 422,
+      "sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/.global-check-audio-slot/LEASE",
+      "bytes": 292,
+      "sha256": "18b629d2f1ab8243977bc0bb0ce5a0cfdaab6306c72e46fad75678e66dc85764"
+    }
+  ],
+  "source105": {
+    "prior_currentness": {
+      "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-peer/source-currentness.prep.json",
+      "bytes": 2957,
+      "sha256": "b820cc14bcf4af59d9d92043bb9478d5b6bd6891692fdf44881067e3f947946b"
+    },
+    "prior_check": {
+      "file": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/narration-current-layout-verification.json",
+      "bytes": 233245,
+      "sha256": "e8642a047159aaf53584bd6e54de2ab62f24b3acb9fc1d6f1f74d8945289545e"
+    },
+    "all105_current_actual_WAV_fullSHA_timeline_clip_intended_spoken_heard_cache_bindings_verified_again": true,
+    "accepted_lines": 105,
+    "new_ASR_or_listening": false
+  },
+  "original_QA": {
+    "file": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/review/qa.json",
+      "bytes": 2394,
+      "sha256": "a458c1e8cd58c5b847c2d16e39fc83aa66dcebe27ea58d9ae776659a28fedcad"
+    },
+    "ok": false,
+    "passed": 10,
+    "total": 11
+  },
+  "JA_flags": {
+    "file": {
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/review/check-flags.ja.json",
+      "bytes": 2032,
+      "sha256": "0e415b65812f97ae4521de021c3989edd3ab20bd28919e8d5099cd91b29640b2"
+    },
+    "count": 14
+  },
+  "producer_PID_gone": true,
+  "all_child_PIDs_gone": true,
+  "both_native_project_LEASEs_absent": true,
+  "new_TTS_ASR_paid_network": 0,
+  "server_approval": false,
+  "wholefilm_QA_or_alllanguages_completed": false,
+  "pending_report_text_amendment": "Root will version-preserve original report and narrow broad original-tail statement to explicit 1/48000-second carrier-table note before acceptance/profile. This review does not modify output."
+}

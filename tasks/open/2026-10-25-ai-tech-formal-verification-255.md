@@ -12,7 +12,6 @@ branch: codex/ai-tech-formal-20261025
 depends_on: []
 scope:
   - docs/videos/claude-formal-verification-255
-  - docs/videos/lexicon.json
 ---
 
 # AI tech formal verification 255
@@ -107,3 +106,18 @@ Root委派/root/formal_branded_main_peer為本輪唯一文件editor，沿用code
 - 本票整片與八語Definition of done仍未完成；無serverwrites／source或final核准／新language batch／merge／部署／YouTube。本輪docs/tests/Git/PR實際結果寫入CURRENT.md。
 
 - 續作交接：正常status/release完成後，工具release會設回open；已再以正常status設為blocked，owner/claimed_at清空但本對話codex-ai-tech-news與原分支仍負責續作，Claude或其他producer未接手。全域ASR／TTS hold未釋放。停在JA14flags及其餘七語媒體、正常QA與核准版language batch；不可把這次讀回驗證當全片完成。先核對真實既有請求結果、PID／LEASE／state，再按既有有界快取／attempt規則恢復。
+
+
+## 本輪繁中原音軌M4A的精確範圍
+
+2026-10-27：本輪只處理既有正式片的繁中完整原音軌轉封裝、實體驗證及交付，不更動共用發音字典。第一次正常claim因歷史scope仍含lexicon.json而與MCP教學票重疊，真實exit1已保存；只將本票scope縮回本episode，再正常claim，不force、不釋放或修改MCP票，也不更動lexicon。原JA髒檔與所有品質結果保留。
+
+
+## 繁中完整節目M4A兩附件交付 — 2026-10-27T20:08:27.137379+00:00
+
+同一待審e66d final新增原版繁中M4A及實際說明，原23refs保持、當前25，兩檔完整下載與獨立bytes／SHA／MIME核對。新M4A 15950408B／f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f，AAC節目586.510秒、官方第一章後5秒片頭／21秒片尾保持。初版43e／db8與raw1tick實體發現原樣保留；新副本只還原兩個32bit元資料欄位（實際改兩byte），AAC封包／原始來源時間欄位與PCM均同來源，沒有第二remux／重新編碼或新TTS／ASR。完整證據見docs/videos/claude-formal-verification-255/receipts/original-zh-program-audio-20261027/index.json。
+
+來源105句的當前音檔／完整intended／ASR只作繼承，不稱重新聽校。外語仍EN1/8；JA14flags／stale、原生QAfalse10/11與所有重錄／改寫／未知計費紀錄保留，八語及整片DOD未完成。本票仍由同對話codex-ai-tech-news及原branch／PR1856負責，未done／移交；Root在收尾時正常release／blocked並另記真實停點。未merge／deploy／YouTube。
+
+
+2026-10-27T20:14:55.644700+00:00：本輪繁中原版完整節目M4A與說明已實際交付並完成獨立完整讀回，任務正常release／blocked兩命令真exit0，owner／claimed_at空；責任同對話codex-ai-tech-news及原branch／PR1856，尚未done／移交。外語仍EN1/8；JA14flags／stale及其餘六語媒體、captions QAfalse10/11、正式核准與languages batch仍待完成。保留原始快取、重錄／改寫上限、未知計費與另一host全球ASR LEASE；不重送、forget或清旗。沒有背景媒體／ASR工人，未merge／deploy／YouTube。

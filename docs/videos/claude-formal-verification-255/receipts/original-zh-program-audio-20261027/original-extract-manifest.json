@@ -1,0 +1,146 @@
+{
+  "kind": "actual_Formal_original_ZH_program_M4A_streamcopy_v1",
+  "at": "2026-10-27T19:37:51.097Z",
+  "source": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+    "bytes": 54578838,
+    "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a"
+  },
+  "output": {
+    "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.zh-TW.m4a",
+    "bytes": 15950408,
+    "sha256": "43e936eb7da5a16c05118f74edbced2daa9ac2f692d789b4a5d8518538338c56"
+  },
+  "content_type": "audio/mp4",
+  "locale": "zh-TW",
+  "full_branded_program_audio": true,
+  "source_inherited_currentness": {
+    "proof": {
+      "file": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/narration-current-layout-verification.json",
+      "bytes": 233245,
+      "sha256": "e8642a047159aaf53584bd6e54de2ab62f24b3acb9fc1d6f1f74d8945289545e"
+    },
+    "independent_source_currentness": {
+      "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-peer/source-currentness.prep.json",
+      "bytes": 2957,
+      "sha256": "b820cc14bcf4af59d9d92043bb9478d5b6bd6891692fdf44881067e3f947946b"
+    },
+    "current_source_sha256": "e6e87e77f069a574d6e1d7f47bf2e5be031eb8566bb2edb71defa24ae4c2b99f",
+    "current_narration_sha256": "19ae93ed8c07850bf0b53363401cad31d656d646d4539c0ecced7fbc81cb7373",
+    "current_checked_source_lines": 105,
+    "existing_QA": {
+      "pin": {
+        "path": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/review/qa.json",
+        "bytes": 2394,
+        "sha256": "a458c1e8cd58c5b847c2d16e39fc83aa66dcebe27ea58d9ae776659a28fedcad"
+      },
+      "ok": false,
+      "passed_items": 10,
+      "total_items": 11
+    },
+    "existing_JA_flags": 14,
+    "inherited_checks_only": true,
+    "new_ASR_or_listening": false,
+    "full_film_QA_or_server_approval": false
+  },
+  "source_AAC_unchanged": true,
+  "all_packet_payloads_times_durations_flags_and_side_data_equal": true,
+  "packet_count": 27491,
+  "ordered_packet_transcript_sha256": "a3f5f0e269e028351430cb674f1114f0e4a8abb109ba5d5a83389c9d781fa047",
+  "packet_fields_compared": [
+    "codec_type",
+    "pts",
+    "pts_time",
+    "dts",
+    "dts_time",
+    "duration",
+    "duration_time",
+    "size",
+    "flags",
+    "side_data_list",
+    "data_hash"
+  ],
+  "container_only_fields_not_compared": [
+    "stream_index",
+    "pos",
+    "format.bit_rate",
+    "format.size",
+    "format.filename",
+    "format.tags",
+    "stream.tags",
+    "stream.disposition"
+  ],
+  "stream_fields_compared": [
+    "codec_name",
+    "codec_long_name",
+    "profile",
+    "codec_type",
+    "codec_tag_string",
+    "codec_tag",
+    "sample_fmt",
+    "sample_rate",
+    "channels",
+    "channel_layout",
+    "bits_per_sample",
+    "time_base",
+    "start_pts",
+    "start_time",
+    "duration_ts",
+    "duration",
+    "nb_frames",
+    "extradata_size",
+    "extradata_hash",
+    "initial_padding",
+    "trailing_padding"
+  ],
+  "decoded_PCM": {
+    "format": "f32le",
+    "sample_rate": 48000,
+    "channels": 2,
+    "bytes": 225198080,
+    "sample_frames": 28149760,
+    "seconds": 586.4533333333334,
+    "sha256": "dc3c58e40972bf94e79ce9847e22c83b8b994f376fb0399bdf9c53e5540698c9",
+    "full_source_and_M4A_equal": true,
+    "full_decode_both_exit0_and_error_stderr_empty": true
+  },
+  "container_stream_duration_seconds": 586.51,
+  "container_format_duration_seconds": 586.51,
+  "actual_meter": {
+    "integrated_LUFS": -14.1,
+    "loudness_range_LU": 4.2,
+    "true_peak_dBFS": -2.6,
+    "measurement_only_no_new_quality_threshold": true
+  },
+  "top_level_atoms": [
+    {
+      "type": "ftyp",
+      "offset": 0,
+      "bytes": 28
+    },
+    {
+      "type": "moov",
+      "offset": 28,
+      "bytes": 110982
+    },
+    {
+      "type": "free",
+      "offset": 111010,
+      "bytes": 8
+    },
+    {
+      "type": "mdat",
+      "offset": 111018,
+      "bytes": 15839390
+    }
+  ],
+  "output_no_reencode_filter_resample_speed_or_splice": true,
+  "remux_calls": 1,
+  "ASR": 0,
+  "TTS": 0,
+  "paid": 0,
+  "network": 0,
+  "server_approval": false,
+  "new_listening_or_ASR_acceptance": false,
+  "whole_film_QA_or_languages_completed": false
+}

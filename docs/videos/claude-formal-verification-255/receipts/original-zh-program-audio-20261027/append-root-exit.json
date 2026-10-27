@@ -1,0 +1,56 @@
+{
+  "kind": "Root_actual_Formal_ZH_program_audio_append_tool_exit",
+  "at": "2026-10-27T20:05:46.337196+00:00",
+  "actual_tool_session": 61080,
+  "actual_tool_exit": 0,
+  "actual_output_chunk": "a009fe",
+  "actual_PID": 7886,
+  "completion": {
+    "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-append/append-run/completion.json",
+    "bytes": 2057,
+    "sha256": "1228b3f80a47456df6d041f75b7076c7a643eb7924101af52b10de7e783416da"
+  },
+  "counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 5,
+    "review_POST": 1,
+    "file_GET": 2,
+    "denied": 0
+  },
+  "new2_local_equals_actual_full_readbacks": [
+    {
+      "role": "evidence_zh_tw_program_m4a",
+      "local": {
+        "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.original-timing.zh-TW.m4a",
+        "bytes": 15950408,
+        "sha256": "f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f"
+      },
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-append/append-run/readback/evidence_zh_tw_program_m4a.m4a",
+        "bytes": 15950408,
+        "sha256": "f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f"
+      },
+      "HTTP": 200,
+      "MIME": "audio/mp4"
+    },
+    {
+      "role": "evidence_zh_tw_program_audio_report",
+      "local": {
+        "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program-audio-original-timing.txt",
+        "bytes": 1583,
+        "sha256": "94323031b09641c9bcde7613d5167e627ba7cdd97df68a5ea90697c78492ad3e"
+      },
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-append/append-run/readback/evidence_zh_tw_program_audio_report.txt",
+        "bytes": 1583,
+        "sha256": "94323031b09641c9bcde7613d5167e627ba7cdd97df68a5ea90697c78492ad3e"
+      },
+      "HTTP": 200,
+      "MIME": "text/plain; charset=utf-8"
+    }
+  ],
+  "current_refs": 25,
+  "server_approval": false,
+  "foreign_completed_added": 0
+}

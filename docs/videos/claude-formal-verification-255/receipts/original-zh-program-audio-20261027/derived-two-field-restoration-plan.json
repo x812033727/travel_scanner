@@ -1,0 +1,51 @@
+{
+  "kind": "independent_dynamic_raw_carrier_two_field_restoration_plan",
+  "scope": "Read-only parser derivation. No patching, copying, remux, decode, ASR, API or mutation of originaloutputs.",
+  "atoms": [
+    {
+      "kind": "source",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+      "bytes": 54578838,
+      "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+      "mdhd_atom_offset": 235997,
+      "mdhd_duration_offset": 236021,
+      "mdhd_duration": 28153503,
+      "stts_atom_offset": 236268,
+      "stts_entry_count": 4,
+      "stts_last_sample_count": 1,
+      "stts_last_delta_offset": 236312,
+      "stts_last_delta": 64,
+      "all_sample_duration_sum": 28153503,
+      "total_sample_count": 27491,
+      "no_box_length_or_offset_change_required": true
+    },
+    {
+      "kind": "M4A",
+      "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.zh-TW.m4a",
+      "bytes": 15950408,
+      "sha256": "43e936eb7da5a16c05118f74edbced2daa9ac2f692d789b4a5d8518538338c56",
+      "mdhd_atom_offset": 288,
+      "mdhd_duration_offset": 312,
+      "mdhd_duration": 28153504,
+      "stts_atom_offset": 539,
+      "stts_entry_count": 4,
+      "stts_last_sample_count": 1,
+      "stts_last_delta_offset": 583,
+      "stts_last_delta": 65,
+      "all_sample_duration_sum": 28153504,
+      "total_sample_count": 27491,
+      "no_box_length_or_offset_change_required": true
+    }
+  ],
+  "new_copy_patch_only": {
+    "stts_uint32_offset": 583,
+    "stts_old": 65,
+    "stts_new": 64,
+    "mdhd_uint32_offset": 312,
+    "mdhd_old": 28153504,
+    "mdhd_new": 28153503,
+    "total_fixed_field_bytes": 8,
+    "all_other_bytes_must_equal_old_M4A": true,
+    "file_and_box_sizes_must_remain_equal": true
+  }
+}

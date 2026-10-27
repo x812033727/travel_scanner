@@ -1,0 +1,89 @@
+{
+  "kind": "Formal_original_ZH_raw_timing_restored_M4A",
+  "at": "2026-10-27T19:54:14.738Z",
+  "source": {
+    "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/final.mp4",
+    "bytes": 54578838,
+    "sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a"
+  },
+  "prior_M4A": {
+    "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.zh-TW.m4a",
+    "bytes": 15950408,
+    "sha256": "43e936eb7da5a16c05118f74edbced2daa9ac2f692d789b4a5d8518538338c56"
+  },
+  "output": {
+    "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.original-timing.zh-TW.m4a",
+    "bytes": 15950408,
+    "sha256": "f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f"
+  },
+  "source_pending_final_id": "e66d6661-c991-42fc-abde-30e942c9fe5b",
+  "restoration": {
+    "two_BE_uint32_fields": [
+      {
+        "at": 312,
+        "before": 28153504,
+        "after": 28153503
+      },
+      {
+        "at": 583,
+        "before": 65,
+        "after": 64
+      }
+    ],
+    "actual_changed_bytes": [
+      {
+        "offset": 315,
+        "before": 160,
+        "after": 159
+      },
+      {
+        "offset": 586,
+        "before": 65,
+        "after": 64
+      }
+    ],
+    "all_other_bytes_equal_old_M4A": true,
+    "all_atom_sizes_and_offsets_unchanged": true,
+    "source_stts_payload_exact": true,
+    "source_mdhd_duration_and_timescale_exact": true,
+    "source_elst_and_stsz_payload_exact": true,
+    "sample_count": 27491,
+    "stts_total_ticks": 28153503,
+    "timescale": 48000
+  },
+  "all_current_packet_hashes_timing_side_data_and_extradata_match_source": true,
+  "packet_count": 27491,
+  "ordered_packet_sha256": "a3f5f0e269e028351430cb674f1114f0e4a8abb109ba5d5a83389c9d781fa047",
+  "PCM": {
+    "bytes": 225198080,
+    "sha256": "dc3c58e40972bf94e79ce9847e22c83b8b994f376fb0399bdf9c53e5540698c9",
+    "sample_frames": 28149760,
+    "sample_rate": 48000,
+    "channels": 2,
+    "source_actual_receipt": {
+      "file": "/workspace/work/ai-tech-next/continuation-20261027t1918/formal-zh-audio/run-once/source-decoded-PCM.result.json",
+      "bytes": 907,
+      "sha256": "6c844f965f231b2b4dc96a014bd08b375e6db99cd8f1ff42435389ef993de84e"
+    },
+    "exact_source_equality": true,
+    "full_decode_exit0_error_stderr_empty": true
+  },
+  "container_seconds": 586.51,
+  "actual_meter": {
+    "integrated_LUFS": -14.1,
+    "LRA_LU": 4.2,
+    "true_peak_dBFS": -2.6,
+    "measurement_only": true
+  },
+  "old_three_outputs_unchanged": true,
+  "source105_inherited_only": {
+    "file": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/narration-current-layout-verification.json",
+    "bytes": 233245,
+    "sha256": "e8642a047159aaf53584bd6e54de2ab62f24b3acb9fc1d6f1f74d8945289545e"
+  },
+  "source_QA_still_false_10_of_11": true,
+  "JA_flags_still14": true,
+  "new_ASR_or_human_listening": false,
+  "remux_reencode_TTS_paid_network": 0,
+  "wholefilm_or_languages_or_server_approval": false
+}
