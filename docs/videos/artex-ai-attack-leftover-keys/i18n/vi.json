@@ -1,6 +1,6 @@
 {
-  "title": "ARTEX: hacker AI chiếm đám mây chưa tới 3 giờ, không đoán mật khẩu mà nhặt chìa bạn để quên",
-  "description": "21/10/2026, Microsoft đánh giá một nhóm hacker liên quan chính phủ Trung Quốc dùng ARTEX, công cụ AI kiểm thử xâm nhập tự động, tấn công hàng trăm tổ chức, nhiều lần chiếm quyền quản trị đám mây chưa tới 3 giờ; ngay sau đó 91APP ở Đài Loan cũng thấy dấu vết ARTEX. Theo 3 báo cáo chính thức: 150 nghìn lần đoán mật khẩu đều thất bại, lối vào là ứng dụng được cấp quyền từ lâu và một khóa cơ sở dữ liệu trong GitLab; một lệnh git lấy lại mật khẩu đã xóa khỏi lịch sử; và 3 chỗ để thu hồi chìa khóa.\nDành cho người đăng nhập nhiều dịch vụ bằng Google, người đẩy dự án lên GitHub và người quản trị Microsoft 365.\n\nGhi hình 27/10/2026. Nguồn: số lần đoán, ứng dụng được cấp quyền, dưới 3 giờ, 2.250 tenant, cửa hậu: Microsoft Threat Intelligence 21/10; Appsmith, khóa trong GitLab: báo cáo 18 ngày của 91APP 22/10; AI hạ chi phí, khuyến nghị: Cục An ninh mạng 21/10; lời Cục trưởng, tấn công tương tự tháng 7: iThome; khóa lưu văn bản rõ, sót khi đổi tháng 8, 3,21 triệu biến môi trường: báo cáo sơ bộ Zeabur 19/10 (không nhắc ARTEX, không nói kẻ tấn công dùng AI); ngoại lệ khi đổi mật khẩu: trợ giúp Google; thu hồi hoặc xoay vòng trước: GitHub Docs. Terminal: kho minh họa chạy thật 2026-10-27 trên Ubuntu 24.04.5, git 2.43.0, mật khẩu giả. \"Quan điểm của tôi\", \"tôi không tra được\" là ý kiến chủ kênh. Không minh họa tấn công, không link công cụ.\n\nLệnh trong video:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nDanh sách cấp quyền Google của bạn có mấy ứng dụng bạn không nhận ra? Bình luận cho tôi biết.",
+  "title": "ARTEX: hacker AI chiếm đám mây dưới 3 giờ, không nhờ đoán mật khẩu mà nhặt chìa bạn để quên",
+  "description": "21/10/2026, Microsoft đánh giá một nhóm hacker liên quan chính phủ Trung Quốc dùng ARTEX, công cụ AI kiểm thử xâm nhập tự động, tấn công hàng trăm tổ chức, nhiều lần chiếm quyền quản trị đám mây chưa tới 3 giờ; ngay sau đó 91APP ở Đài Loan cũng thấy dấu vết ARTEX. Theo 3 báo cáo chính thức: 150 nghìn lần đoán mật khẩu đều thất bại, lối vào là ứng dụng được cấp quyền từ lâu và một khóa cơ sở dữ liệu trong GitLab; một lệnh git lấy lại mật khẩu đã xóa khỏi lịch sử; và 3 chỗ để thu hồi chìa khóa.\nDành cho người đăng nhập nhiều dịch vụ bằng Google, người đẩy dự án lên GitHub và người quản trị Microsoft 365.\n\nGhi hình 27/10/2026. Nguồn: số lần đoán, ứng dụng được cấp quyền, dưới 3 giờ, 2.250 tenant, cửa hậu: Microsoft Threat Intelligence 21/10; Appsmith, khóa trong GitLab: báo cáo 18 ngày của 91APP 22/10; AI hạ chi phí, khuyến nghị: Cục An ninh mạng Đài Loan 21/10; lời Cục trưởng, tấn công tương tự tháng 7: iThome; khóa lưu văn bản rõ, sót khi đổi tháng 8, 3,21 triệu biến môi trường: báo cáo sơ bộ Zeabur 19/10 (không nhắc ARTEX, không nói kẻ tấn công dùng AI); ngoại lệ khi đổi mật khẩu: trợ giúp Google; thu hồi hoặc xoay vòng trước: GitHub Docs. Terminal: kho minh họa chạy thật 2026-10-27 trên Ubuntu 24.04.5, git 2.43.0, mật khẩu giả. \"Quan điểm của tôi\", \"tôi không tra được\" là ý kiến chủ kênh. Không minh họa tấn công, không link công cụ.\n\nLệnh trong video:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nDanh sách cấp quyền Google của bạn có mấy ứng dụng bạn không nhận ra? Bình luận cho tôi biết.",
   "tags": [
     "ARTEX",
     "hacker AI",
@@ -25,7 +25,7 @@
     "route-91app": "Chìa khóa ở Đài Loan nằm đâu?",
     "google": "Đổi mật khẩu là đủ chưa?",
     "ls": "Tìm chìa khóa của tôi ra sao?",
-    "view": "Quan điểm: làm gì trước tiên"
+    "view": "Tôi nghĩ: làm gì trước tiên"
   },
   "source_hashes": {
     "chapters": {
@@ -85,7 +85,7 @@
     },
     "kj3y": {
       "source_hash": "86a1b1f0a491",
-      "text": "Bạn nói mình không phải công ty lớn? Cục An ninh mạng cho rằng AI đã hạ chi phí tấn công, tăng tốc độ;"
+      "text": "Bạn nói mình không phải công ty lớn? Cục An ninh mạng Đài Loan cho rằng AI đã hạ chi phí tấn công, tăng tốc độ;"
     },
     "na73": {
       "source_hash": "048023ba9375",
@@ -329,7 +329,7 @@
     },
     "vtxp": {
       "source_hash": "30bcd9820c12",
-      "text": "Tài khoản Google có trang ứng dụng được kết nối, mở chi tiết là gỡ được quyền truy cập;"
+      "text": "Tài khoản Google có trang ứng dụng đã liên kết, xem thông tin chi tiết là xoá được quyền truy cập;"
     },
     "2wc7": {
       "source_hash": "899d44c9ed09",
