@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "at": "2026-10-27T10:29:04.834Z",
+  "session": 90907,
+  "native_exit": 1,
+  "failure": "Windows EPERM promoting complete confirmed synthesis receipt",
+  "failure_at": "2026-10-27T10:23:18.0339399Z",
+  "request_sha256": "0faeb13391cd2028b43a1c057808809afa05ec7e93af04c1c0de98f8c5d0444a",
+  "producer_pid": 47048,
+  "producer_os_state": "ESRCH",
+  "lease": null,
+  "active_journal_entries": 1,
+  "partial_en_wavs_frozen": 49,
+  "frozen_manifest_sha256": "20fe65799325f7a7fb3d985fb1e1fc04c92df92e36f575754cd3027b11cb6fc2",
+  "frozen_journal": [
+    {
+      "file": "journal/0faeb13391cd2028b43a1c057808809afa05ec7e93af04c1c0de98f8c5d0444a.json",
+      "bytes": 994,
+      "sha256": "03cdab124b07e9716c81f752623ea6a0b2c85a58709efa884040aefca908a1e9"
+    },
+    {
+      "file": "journal/0faeb13391cd2028b43a1c057808809afa05ec7e93af04c1c0de98f8c5d0444a.answer.json",
+      "bytes": 1951,
+      "sha256": "b0eaff41f549aaf302ceefa59bfa0b63a0d631a1c4b5e461e35b4710ccafc9db"
+    },
+    {
+      "file": "journal/0faeb13391cd2028b43a1c057808809afa05ec7e93af04c1c0de98f8c5d0444a.json.47048.tmp",
+      "bytes": 1255,
+      "sha256": "92f0d7d978d29a37039ca60a61f203b2a15aa4e055a41604af5567b3818eadc1"
+    },
+    {
+      "file": "journal/0faeb13391cd2028b43a1c057808809afa05ec7e93af04c1c0de98f8c5d0444a.wav",
+      "bytes": 203564,
+      "sha256": "282871272ee55e7527f975bdd3ac263807a7abb702043ce50f034958b41de40e"
+    }
+  ],
+  "current_chinese_final_sha256": "b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60",
+  "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+  "chinese_final_qa_and_approval_remain_current": true,
+  "english_fit_or_audio_qa_complete": false,
+  "english_quality_retake_rounds": 0,
+  "english_fit_shortening_rounds": 0,
+  "english_reword_rounds": 0,
+  "confirmation_pending_recovery": true,
+  "canonical_journal_unchanged": true,
+  "request_retried": false,
+  "first_dispatch_must_not_be_replayed": true,
+  "shared_tools_not_changed": true,
+  "existing_shared_issue": "2026-10-07-preserve-speech-journal-writes-through-windows",
+  "next": "Independent official synthesize journal recovery on a new private clone with mock send/fetch forbidden. Fresh canonical evidence must match before a new normal-resume dispatch."
+}
