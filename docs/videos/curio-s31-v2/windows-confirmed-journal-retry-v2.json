@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T11:42:18.933Z",
+  "type": "root_delegated_operational_choice",
+  "scope": "Opt-in per-process Windows compatibility mitigation for exact own-PID confirmed journal promotion in this episode only.",
+  "reason": "Four completed saved synthesis answers could not be atomically promoted under transient Windows file locks. Continue existing authorized production using bounded retries of the same original rename, preserving every saved outcome.",
+  "candidate_version": 2,
+  "candidate_sha256": "f26413bd0c34f69e015145d25606044fb54d5bda30cddcaeccda87ffa370a016",
+  "factory_sha256": "52410611d527c760e6a30940a1b3f3ab13d7f214efa2de0ab495eff3dcae3421",
+  "preload_sha256": "4c1321d4e031c67303650143b9f69cc86a2dec791c062344288605cc802884b9",
+  "independent_review_sha256": "1fe346f23f3681cf46c1f97270012efbf9c0dba95656784d097b09ce4ee14fe1",
+  "independent_review": {
+    "verdict": "PASS",
+    "approved_for_process_rename_retry": true,
+    "reviewer": "/root/s31_translate_pt_id",
+    "factory_sha256": "52410611d527c760e6a30940a1b3f3ab13d7f214efa2de0ab495eff3dcae3421",
+    "preload_sha256": "4c1321d4e031c67303650143b9f69cc86a2dec791c062344288605cc802884b9",
+    "paths_source_sha256": "76e19da45a3308e48b2d86f7d95f8d71830c8448183b654c7661e044d09c8e75",
+    "journal_source_sha256": "a5cc9de701666a75f40e159970d6f102ab77be1ba0823332bbceb802589f4001",
+    "selftest_code_sha256": "e110281211493d052f94581581531c03f40d2b73c08de56b7c5b0c8c4e2a6a59",
+    "candidate_sha256": "f26413bd0c34f69e015145d25606044fb54d5bda30cddcaeccda87ffa370a016",
+    "readme_sha256": "24153d0e352b7c8c93faa7858682969bb94055c244f2ace1947a33e3f9846192",
+    "original_authored_selftest_receipt_sha256": "50b9387f90187334e6fe38402022ad147854ffde638cfe41794ef92fdea304b6",
+    "supersedes_failed_v1_review_sha256": "a8669cd12f3c0f82ceec8927e5f1b9efe7e1d483732765a36803b71d0f92b492",
+    "blocking_findings": [],
+    "reviewed_behavior": [
+      "Previously guarded exact source/target pairs are checked in factory.mjs:117-129 before any original rename. A saved terminal state throws its original native error; the state and baseline are never reset or evicted. The v1 observed-CAS-conflict and unreadable-target outer-reentry overwrite regressions are fixed.",
+      "An unseen pair retains its ordinary first native call and exact arguments, receiver, successful result and original error identity. Additional synchronous calls are limited to eligible EPERM/EACCES, exact Windows journal-root filenames and own PID; a positively ordinary/non-confirmed or other-producer source is outside guarded recovery. Unknown eligible source/target reads fail closed.",
+      "Guarded snapshots check every ancestor against symlink/realpath aliases, ordinary nlink=1 bounded files, stable identity before/after reads, exact full byte SHA, own producer PID, matching request hash/path/generation, confirmed-to-sent field relation and sent-byte hash. Content, source, target, inode, code or permission changes cannot reopen a guarded pair in this process.",
+      "The same monotonic deadline and reserved scheduled-wait counter remain across official outer calls: at most 30000 additional scheduled milliseconds per pair. Official eight outer waits can still total 2550ms, but guarded outer calls invoke no native rename. Clock/log/code failures, deadline exhaustion and successful guarded completion remain sticky.",
+      "Preload requires explicit opt-in, an ordinary same-directory PASS review with approval true and matching two module/core hashes, actual pinned core bytes and the exact current root without ancestor aliases. The shared v1/v2 singleton prevents layering. Installation changes only synchronous fs.renameSync and syncBuiltinESMExports bindings; rollback restores them on install or enabled-log failure.",
+      "The bounded wx log emits only request SHA, attempt count, scheduled wait and finite result code, at most 256 rows, 256 bytes per row and 65536 bytes total. Failure or saturation disables extra work; an original successful result is not replaced by logging failure.",
+      "The candidate contains no HTTP call/retry, copy/delete, alternate filesystem promotion syscall, async rename patch, journal release/forget, OS security change or shared source edit. All extra attempts invoke the supplied original rename."
+    ],
+    "validation": {
+      "node_executable": "C:/Users/x8120/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "node_version": "v24.19.0",
+      "authored_suite_independently_rerun": {
+        "command_arguments": [
+          "./selftest.mjs"
+        ],
+        "native_exit": 0,
+        "passed": 15,
+        "failed": 0,
+        "fetch_calls": 0,
+        "receipt": "selftest-49e7f47a-58d2-4649-bc22-1549df73c3c3.json",
+        "receipt_sha256": "800409e4b49a8a4536e8b3b671cd7581f59e15b18eb72863e27ffec1cc536f8d",
+        "private_native_holder": {
+          "pid": 10972,
+          "exit": 0,
+          "reaped": true,
+          "native_error_codes": [
+            "EPERM"
+          ],
+          "original_calls": 6,
+          "elapsed_ms": 1343,
+          "scheduled_extra_wait_ms": 1250
+        },
+        "actual_named_esm_binding_decorated_and_restored": true,
+        "coverage": [
+          "default official atomicWrite outer calls",
+          "source/target/generation/inode/code conflict and sticky reentry",
+          "unknown reads then recovered permissions",
+          "root and ancestor aliases, symlink/hardlink, other PID/type/path/error",
+          "ordinary source passthrough",
+          "original args/receiver/result/error identity",
+          "clock/log/sleep/deadline failures",
+          "bounded redacted logs",
+          "private disabled/invalid startup",
+          "owned hidden native Windows holder"
+        ]
+      },
+      "independent_v1_regression_controls": {
+        "command_arguments": [
+          "./independent-review-controls.mjs"
+        ],
+        "native_exit": 0,
+        "passed": 4,
+        "script_sha256": "9579afd8f474ec888ccd8f51986d9ccf3dfc8ad8964a4fcc3d7ace48490ad911",
+        "receipt": "independent-controls-ebee7b3f-95ed-45ea-99f7-6f535fe48191/results.json",
+        "receipt_sha256": "23f583e0a5d85c904068a53a336e9d596a61ccae9ea1358206fe0f5e3d703c5d",
+        "cas_conflict_then_nine_reentries_total_original_calls": 1,
+        "unreadable_then_read_recovered_total_original_calls": 1,
+        "official_atomicWrite_conflict_original_calls": 1,
+        "official_atomicWrite_outer_wait_ms": [
+          10,
+          20,
+          40,
+          80,
+          160,
+          320,
+          640,
+          1280
+        ],
+        "official_atomicWrite_guarded_reentry_syscalls": 0,
+        "changed_target_and_confirmed_source_preserved": true,
+        "nine_outer_calls_extra_wait_ms": 30000,
+        "nine_outer_calls_total_original_calls": 120,
+        "network_calls": 0
+      },
+      "independent_exact_preload_mock_gate_controls": {
+        "command_arguments": [
+          "--experimental-vm-modules",
+          "./independent-preload-gate-controls.mjs"
+        ],
+        "native_exit": 0,
+        "passed": 18,
+        "script_sha256": "ebdfec640e6318f054c0f83e8894ae51320f951a6d30cf2075b9e46ce5df3242",
+        "receipt": "independent-gate-7ff5d260-c60f-412f-aaf4-fd62f775c8e0.json",
+        "receipt_sha256": "6dd16623498c501e2d42078083b056a4b0481645a7ead4ddae809bd72403d6f6",
+        "coverage": [
+          "disabled opt-in",
+          "bad opt-in",
+          "missing review",
+          "non-PASS review",
+          "approval false",
+          "factory hash mismatch",
+          "preload hash mismatch",
+          "core pin mismatch",
+          "review symlink",
+          "review outside directory",
+          "actual core byte drift",
+          "root alias",
+          "ancestor alias",
+          "singleton already installed",
+          "log open failure",
+          "syncBuiltinESMExports failure and restoration",
+          "enabled-log failure and restoration",
+          "matching review enables only mock fs and preserves original nonmatching args/this/result/error"
+        ],
+        "virtual_filesystem_only_for_preload": true,
+        "native_canonical_root_reads": 0,
+        "network_calls": 0
+      },
+      "frozen_v2_code_and_metadata_sha256_unchanged_after_tests": true
+    },
+    "recipe": {
+      "opt_in_environment": {
+        "CURIO_CONFIRMED_JOURNAL_RENAME_RETRY": "1",
+        "CURIO_CONFIRMED_JOURNAL_RENAME_RETRY_REVIEW": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/confirmed-journal-retry-prep-v2/independent-review.json"
+      },
+      "node_executable": "C:/Users/x8120/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe",
+      "preload_arguments": [
+        "--import",
+        "file:///C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/confirmed-journal-retry-prep-v2/preload.mjs"
+      ],
+      "cli_arguments": "Only Root's separately authorized unchanged normal invocation, after fresh source/journal/lease reconciliation. Preserve and propagate native exit code; clear the two opt-in variables afterward.",
+      "executed": false
+    },
+    "approval_scope": "Only the frozen v2 per-process Windows confirmed-journal rename retry preload as a compatibility candidate. This is not an instruction to start a CLI or producer.",
+    "limitations": [
+      "No matching-review production preload was installed and no canonical journal/media/dub was inspected. Matching-review behavior was evaluated from the exact frozen source with an entirely mocked filesystem; real named ESM decoration was independently exercised on a newly created private fixture.",
+      "Final stable read to native rename remains a small non-atomic interval; this is not an OS compare-and-swap. Unknown eligible candidates conservatively block. Process suspension may exceed the deadline, after which no extra syscall is sent.",
+      "An already guarded pair never reopens in this process, including after successful guarded completion or a later generation. The bounded map does not evict state; overflow conservatively blocks further matching candidates. Ordinary outer waits may remain even when their native rename calls are blocked.",
+      "This is not a shared-tool P2 fix, invoice/global-budget approval, journal recovery authorization, audio completeness or timed-fit acceptance. Root must independently reconcile fresh source, lease, complete/current journal and any saved answers before a normal authorized new slot.",
+      "Only private reviewer controls/receipts and private authored-suite fixtures/logs were added. Frozen v1/v2 code, candidate metadata, original receipts and canonical/repository content were not modified. No real API, SSH, socket, model, check, TTS or paid producer was run."
+    ]
+  },
+  "live_startup_dry_run": {
+    "at": "2026-10-27T11:40:52.839Z",
+    "native_exit": 0,
+    "actual_startup_enabled": true,
+    "matching_review_sha256": "1fe346f23f3681cf46c1f97270012efbf9c0dba95656784d097b09ce4ee14fe1",
+    "io_log": "rename-retry-1793101234146-47716-2c050f22-2fd8-4938-a4d5-18a5333197d0.jsonl",
+    "io_log_sha256": "9e0e2b2d6a5abf65c480488f315f5c1a6ed606ff8c3f81ee12f3d679d8db6fa4",
+    "io_rows": [
+      {
+        "request_sha256": null,
+        "attempts": 0,
+        "wait_ms": 0,
+        "result": "install_ready"
+      },
+      {
+        "request_sha256": null,
+        "attempts": 0,
+        "wait_ms": 0,
+        "result": "enabled"
+      }
+    ],
+    "canonical_promotion_attempts": 0,
+    "dry_run_provider_synthesis_requests": 0,
+    "remaining_requests_estimate": 30,
+    "remaining_characters_estimate": 2023,
+    "existing_monthly_quota_before": 5357273,
+    "opt_in_environment_cleared": true
+  },
+  "failed_v1_preserved": true,
+  "failed_v1_review_sha256": "a8669cd12f3c0f82ceec8927e5f1b9efe7e1d483732765a36803b71d0f92b492",
+  "operation": "same original synchronous rename only",
+  "max_extra_scheduled_wait_per_pair_ms": 30000,
+  "existing_outer_wait_may_remain_ms": 2550,
+  "guarded_outer_native_reentry": false,
+  "reviewed_scope_own_pid_only": true,
+  "baseline_hashes_identity_generation_status_and_root_rechecked": true,
+  "no_http_or_provider_retry_added": true,
+  "no_voice_or_waveform_or_flags_or_dictionary_change": true,
+  "no_shared_repo_or_os_security_or_global_budget_change": true,
+  "not_an_os_compare_and_swap_or_shared_p2_fix": true,
+  "normal_resume_requires_fresh_saved_answer_and_source_reconciliation": true,
+  "complete_audio_or_fit_or_episode_claim": false
+}

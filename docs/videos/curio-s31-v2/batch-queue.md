@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 兩例多音比較誤判已獨立覆核，依推薦選擇委託接受當前音訊；官方2flags／低分保留。新版中文master已11/11QA、原生抽查及委託final核准；英文172片段保留，第四個journal故障兩筆回覆已離線核對，暫停等本集限時I/O重試處理獨立覆核；其餘七語／完整交付包未成 |
+| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA、原生抽查及委託final核准，原2flags／低分保留。英文212片段與16:09.705混音已native0／fit150窗0over；兩筆保存paid answer正常沿用。正在準備完整EN cohort及獨立音訊首檢，其餘七語／完整交付包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -33,6 +33,14 @@
 - 完成一集即更新本表與該集任務，再接下一集。進度不變時保持安靜，只通知成品完成、真正失敗、預算超限或需要站主處理的事項。
 
 ## 當前斷點
+
+**最新實況：2026-10-27 20:04台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+英文正式正常續作session92912已於19:50:15台北native0，212個原始WAV齊全；150窗fit0over，8窗tempo至1.15，cheng-date的3frame／0.1秒由下一停頓合法吸收。branded en.m4a為46,583,012B／969.705秒／48k stereo，SHA99141e431c94d33b29d9143af4259f1f083e730f968389cdd68156408ac2adc9；source仍6e0dd44…b86、speechfa2912daff4bd218。最後resume CLI30requests／1799billablechars、141reused、2個原paid journal answer沿用而非重買；品質重錄／縮句／reword仍0。見[dub-en-synthesis-complete.json](dub-en-synthesis-complete.json)。
+
+限本集的I/O preload v2已經獨立PASS（review1fe346…fe1）後啟用；實際38次均為原rename第一次成功、額外retry／wait均0，transport observer空。不能說shim已證明治好Windows鎖，也沒有更動共享工具／OS安全／voice／全域預算。環境opt-in已清，當前producer0／leasefree／active journal0；34個不可變的舊recovery proof／answer／tmp仍完整保留，不刪除也不forget。
+
+Root已建立actual completion observation90987ce91c78ca61821ded5cb7992e68a9453c734c1d13aa0956ac3557fc43b8，綁原native0收據、完整212WAV／current source／translation／timeline／fit／cache／branding／中文final及既有核准。這只是實況清冊，不是音訊驗收。private bridge v3 genericcode獨立PASS（review5dd8f5…a64b），但尚未actual cohort／binding核准或真SSH／ASR。collector v1獨立覆核拒絕（review57ce1e…c51）：postcopy會員未重查與fit一致性負控；正在另存v2修正，沒有在actual資料執行失敗版。完成修正覆核、凍結真212cohort及actual binding覆核後，才從第一次官方EN check掛已審source-free第二辨識；不可先bare paid check探句，也不可開始JA／下一集。中文master及核准維持，八語配音驗收仍0/8，完整包未成。
 
 **最新實況：2026-10-27 19:09台北。以下較早紀錄保留為履歷，以本段為續作入口。**
 

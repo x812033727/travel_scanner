@@ -4,6 +4,8 @@
 
 ## 當前讀回（2026-10-27）
 
+20:04台北最新：中文版完整master維持11/11QA及委託final核准。英文首次合成／混音已native0，212句／150窗fit0over，969.705秒／46,583,012B，SHA99141e431c94d33b29d9143af4259f1f083e730f968389cdd68156408ac2adc9；8窗加速≤1.15、cheng-date合法借後停頓0.1秒。兩筆已付答案成功沿用，原172片段全未變且獨立實際覆核通過。I/O限定處理已審啟用但0額外retry，不能當作OS修復證明。正在準備真212WAV cohort及首檢binding，尚無EN音訊接受／其餘七語／完整交付包，未上傳。collector v1僅mock覆核被拒、v2修補；bridge v3 generic PASS尚非實際dispatch批准。圖片／judge上限及帳本完全不變。詳見[dub-en-synthesis-complete.json](dub-en-synthesis-complete.json)與queue；以下172片段等狀態保留為履歷。
+
 目前更新（以batch-queue.md最新時點為準）：中文master16:09.667已11/11QA及委託final核准；英文已有172個片段，尚未組成完整配音或通過fit/audioQA。Windows完整回覆journal升格曾四次更名失敗，全部已付回覆與原片段保留；當前兩筆已在PRIVATE clone證明可沿用，先等本集限定、30秒額外上限的原rename重試處理自測與獨立覆核，不改OS安全設定／全域額度或repo共享工具。ASR bridgev1/v2的缺陷在付費啟用前被覆核攔下，v3仍待審。其餘七語與完整交付包未成，沒有上傳。
 
 中文master已完成與依委託核准，實際16:09.667／29090frames，SHA b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60；官方QA11/11、新檔原生開場／片頭／更新字幕／v4片尾及ended抽查通過。僅抽查，沒有宣稱站主觀看或任何人完整聆聽。九語CC文字綁定current，外語速度警告留待實際配音時間處理。現在英文首次dub90907執行中（dry-run171requests／10565字元／當時既有月額5508182），七語待後續；八語／上架包未成，未上傳。下段17:55來源及音訊決策保留，其render執行狀態已被本段取代。
