@@ -1,0 +1,2338 @@
+{
+  "schema_version": 1,
+  "slug": "curio-u17",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像深夜跟朋友講一段怪事：開場對著觀眾、帶點挑釁；夜路壓低放慢，「星星不會轉彎」停一拍，「記憶斷了」收住；夢那章放輕，「其實」亮起來；報紙那章加快；打開檔案後語氣清醒，「極可能是木星」前停一拍、帶笑；星圖輕鬆，「六顆要剔除」放慢；結尾乾脆，「存檔」落地。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "一九六一年九月，夜路上一顆會轉彎的星",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man on a sofa at home in the evening watching an old science-fiction film on a television, a bowl of popcorn in his lap, eyes wide, the glow of the screen on his face",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你一定看過這種故事：被外星人帶上飛船，醒來少了一段時間。",
+          "emotion": "對觀眾說，壓低，帶一點挑釁"
+        }
+      ]
+    },
+    {
+      "id": "open-stakes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a shelf of old paperback books and video tapes with blank spines, a finger sliding along them, soft grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "研究者把這種故事的原型，追到六十五年前的一個晚上。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1950s sedan driving alone along a two-lane mountain road at night, its headlights the only light, dark forested hills on both sides, one bright star low over the ridge",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "一九六一年九月十九日晚上，新罕布夏，一輛車往南開。",
+          "emotion": "沉穩進場景，壓低放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-car",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dachshund on the back seat of a 1950s car at night, ears up and eyes wide, staring out of the side window at a bright point of light in the sky, faint dashboard glow",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "車上是一對度假回來的夫妻，後座趴著一隻臘腸狗。"
+        }
+      ]
+    },
+    {
+      "id": "open-star",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hand in a cardigan sleeve pressed flat against a car window at night, one bright point of light in the black sky beyond the glass",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t005",
+          "text": "過了 Lancaster 前後，太太發現窗外有一顆星，在動。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a dark forested ridge at night with a single bright light in the sky above it curving sharply off its path, a tiny car on the road far below",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "星星不會轉彎。可是這一顆，會。",
+          "emotion": "短句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "open-major",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an air force officer in a 1960s blue uniform at a metal desk in a base office in grey morning light, a telephone receiver at his ear, a pencil over a blank form",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "但這還不是最怪的。",
+          "emotion": "升級"
+        },
+        {
+          "id": "t008",
+          "text": "兩天後，一位空軍少校在電話裡，把這個晚上寫成了一份報告。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-tape",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a reel-to-reel tape recorder on a doctor's desk in a quiet office in soft morning light, its reels starting to turn, a hand in a grey suit sleeve pressing a key",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "兩年多後，波士頓一間診間裡，一台錄音機開始轉。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "1961.9.19",
+        "kicker": "新罕布夏，U.S. 3 南下",
+        "sub": "一條夜路，四年後上了全國的報紙"
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "這份檔案，我們跟著這對夫妻走四年，從一條夜路走到全國的報紙。",
+          "emotion": "承諾句，語氣篤定"
+        },
+        {
+          "id": "t011",
+          "text": "「被外星人綁架」這個故事，到底是從哪裡開始的？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "road-binoc",
+      "chapter": "Indian Head 以南，他拿著望遠鏡走進田裡",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of black binoculars lying on the front bench seat of a 1950s car at night, a man's hand reaching for them, faint dashboard glow",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t012",
+          "text": "車上剛好有一副望遠鏡，兩個人不時拿起來看。",
+          "emotion": "接住開場，輕快"
+        }
+      ]
+    },
+    {
+      "id": "road-closer",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from high above of a winding mountain road at night, a small car with its headlights on, a bright oblong light hanging just above the treetops ahead of it",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "那道光換了好幾次方向，越靠越近。"
+        }
+      ]
+    },
+    {
+      "id": "road-notch",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a narrow mountain pass at night between steep dark cliffs, one car's headlights winding through it, a faint light in the sky above the cliffs",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "車子開進 Franconia Notch 的山谷，它還在。"
+        }
+      ]
+    },
+    {
+      "id": "road-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a dachshund on the back seat of a car at night, ears flat and eyes huge, pressing itself low against the seat, faint glow from the dashboard",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t015",
+          "text": "你想像一下：深夜的山路，兩邊是黑漆漆的山，只有你們一輛車。",
+          "emotion": "對觀眾，壓低"
+        }
+      ]
+    },
+    {
+      "id": "road-stop",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1950s car stopped on an empty two-lane road at night, its driver door open and headlights on, a dark field and a line of trees beside it",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "到了 Lincoln 一帶、Indian Head 以南，車停了下來。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "road-field",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind of a man in a dark jacket walking into a dark open field at night with binoculars hanging from his neck, tall grass around his legs, a light hovering low over the tree line ahead",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "先生 Barney 拿著望遠鏡下車，一個人走進路邊的田裡。"
+        },
+        {
+          "id": "t018",
+          "text": "望遠鏡裡，他看到了什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "road-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pair of binoculars held up in two hands at night, the round lenses reflecting a row of small lit windows in a dark hovering shape",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "他後來說，他看見了窗戶，窗戶後面有人影。",
+          "emotion": "壓低，一個字一個字"
+        }
+      ]
+    },
+    {
+      "id": "road-run",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind of a man in a dark jacket running back across a dark field toward a car with its headlights on, binoculars swinging from his neck",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "他轉身就跑，一路跑回車上。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "road-beep",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the dashboard of a 1950s car at night, the radio dial glowing faintly, a woman's hand frozen in the air above the knob",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "車子再開動，接著是一陣嗶嗶聲。",
+          "emotion": "壓低"
+        },
+        {
+          "id": "t022",
+          "text": "然後，他們說，記憶斷了。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "road-ashland",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small car on a quiet two-lane road through low rolling hills at night, a few distant house lights in the valley below",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "再聽到那個聲音，車已經到了 Ashland 附近，離 Lincoln 大約三十英里。"
+        }
+      ]
+    },
+    {
+      "id": "road-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded road map on a car seat under the dome light, a long blank stretch between two pencil marks, a woman's finger resting on the gap",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "中間那一段路怎麼開過來的，兩個人都想不起來。"
+        }
+      ]
+    },
+    {
+      "id": "road-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dachshund sitting up on the back seat of a parked car, head tilted in confusion, one ear inside out, faint glow from the dashboard",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "這就很怪了：那可是一整段山路，不是打個瞌睡就過去的。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "road-hours",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a round kitchen wall clock in pale grey early light, its hands at an odd hour, a man's coat thrown over a chair below it",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t026",
+          "text": "後來他們說，這一晚少了大約兩個小時。那兩個小時，去了哪裡？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "road-phone",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hand resting on a black rotary telephone on a kitchen table in grey morning light, a cup of coffee beside it",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "到家的隔天，太太拿起了電話。她打給誰？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "call-base",
+      "chapter": "九月二十一日，一通打給空軍基地的電話",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a 1960s air force base on a flat coastal plain in grey morning light, a row of low office buildings and a tall radar tower, one airman crossing the lot",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t028",
+          "text": "她打給附近的 Pease 空軍基地。",
+          "emotion": "接住，輕快"
+        }
+      ]
+    },
+    {
+      "id": "call-desk",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an air force major at a metal desk in a base office in grey daylight, a telephone receiver at his ear, a pencil moving across a blank typed form",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "九月二十一日，一位少校在電話裡一句一句問，寫成正式報告。"
+        }
+      ]
+    },
+    {
+      "id": "call-card",
+      "template": "big",
+      "data": {
+        "text": "100-1-61",
+        "kicker": "Pease 空軍基地情報報告，1961 年 9 月 21 日",
+        "sub": "由電話問話寫成，現藏美國國家檔案館"
+      },
+      "lines": [
+        {
+          "id": "t030",
+          "text": "這份報告，現在還收在美國國家檔案館。"
+        },
+        {
+          "id": "t031",
+          "text": "你可能會想：都打給空軍了，該講的，一定都講了吧？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "call-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hand writing a letter with a ballpoint pen at a kitchen table in soft afternoon light, the page still blank below the pen, an envelope beside it",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "沒有。五天後，太太寫信給一個民間的飛碟研究組織。"
+        },
+        {
+          "id": "t033",
+          "text": "信裡，她承認了一件事。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "call-hide",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dachshund lying under a kitchen table in afternoon light, one eye open, looking up at a pair of slippers",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t034",
+          "text": "打給空軍的時候，他們沒講先生看到的窗後人影。"
+        },
+        {
+          "id": "t035",
+          "text": "因為聽起來太離譜，不像真的。",
+          "emotion": "轉述，帶一點無奈"
+        }
+      ]
+    },
+    {
+      "id": "call-blank",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hands pressed to his temples at a kitchen table in grey daylight, a cold cup of coffee in front of him",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t036",
+          "text": "信裡還寫，先生的記憶，到那一刻就一片空白。"
+        }
+      ]
+    },
+    {
+      "id": "call-hypno",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick telephone directory open on a table in soft daylight, a woman's finger running down a column of blank lines",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "她正在考慮，去找一位會用催眠的精神科醫師。"
+        }
+      ]
+    },
+    {
+      "id": "call-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman today at a library table reading an old photocopied letter, eyebrows shooting up in surprise, soft daylight from a tall window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t038",
+          "text": "我讀到這裡愣了一下：事發才一個禮拜，催眠這兩個字就出現了。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "call-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a finished letter folded beside its envelope on a kitchen table, the pages blank, soft afternoon light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "可是這封信裡，沒有一個字提到「被帶上飛船」。"
+        },
+        {
+          "id": "t040",
+          "text": "那這段情節，最早是從哪裡冒出來的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "dream-bed",
+      "chapter": "十天後，她開始做夢",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bedroom at night in moonlight through thin curtains, a woman asleep seen from behind under a patchwork quilt, a dachshund curled at the foot of the bed",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "查得到的最早一筆，是太太的夢。",
+          "emotion": "接住，放慢"
+        },
+        {
+          "id": "t042",
+          "text": "據她自己說，那晚之後大約十天到兩週，她開始做夢，連著好幾晚。"
+        }
+      ]
+    },
+    {
+      "id": "dream-road",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a hazy dreamlike country road at night, a huge soft orange glowing shape resting beside it, a row of small blurry shadow shapes standing on the road, everything soft and out of focus",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "夢裡，路上站著一群人，旁邊有一個很大的橘色東西。",
+          "emotion": "像在說夢，輕"
+        }
+      ]
+    },
+    {
+      "id": "dream-wake",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hand gripping the edge of a quilt in a dark bedroom, moonlight across her fingers, a dachshund's nose nudging her hand",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "她和先生被帶了上去，分在不同的房間接受檢查。",
+          "emotion": "收乾，不渲染"
+        }
+      ]
+    },
+    {
+      "id": "dream-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man today on a sofa holding a phone, frowning thoughtfully at the screen, soft afternoon light from a window",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "你可能以為，被外星人帶走這一段，是後來在催眠裡挖出來的。",
+          "emotion": "「你以為」放慢放輕"
+        }
+      ]
+    },
+    {
+      "id": "dream-other",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man's thumb paused over a phone screen showing only a blank grey card, soft afternoon light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t046",
+          "text": "其實，在催眠的兩年多前，它就先出現在一場夢裡。",
+          "emotion": "「其實」亮起來"
+        }
+      ]
+    },
+    {
+      "id": "dream-type",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a typewriter on a kitchen table in grey November daylight, a woman's fingers on the keys, a short stack of five blank typed pages beside it",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "那年十一月，她把夢寫下來，整整五頁。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "dream-webb",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a man in a tweed jacket sitting on a living-room sofa in soft afternoon light, a notebook open on his knee, a pen in his hand",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "一位民間調查員，在催眠之前就聽過這些夢。"
+        }
+      ]
+    },
+    {
+      "id": "dream-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a notebook on a man's knee, his pen underlining one short blank line twice, soft afternoon light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "他當時的判斷很簡單：是被嚇到了。"
+        },
+        {
+          "id": "t050",
+          "text": "斷片是驚嚇，做夢也是驚嚇。老實說，換成我也會這樣想。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "dream-barney",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hands turning a car key over and over on a kitchen table in grey daylight, a pair of binoculars lying next to them",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t051",
+          "text": "可是先生 Barney，對那段路，一直什麼都想不起來。"
+        }
+      ]
+    },
+    {
+      "id": "dream-clinic",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a brick building on a Boston street in grey winter daylight, a couple in winter coats seen from behind climbing its front steps",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "一九六三年十二月十四日，他帶著太太，走進波士頓一間診間。"
+        }
+      ]
+    },
+    {
+      "id": "dream-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's gloved hand on the brass knob of a frosted-glass office door in grey winter daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "醫師叫 Benjamin Simon，他會用催眠。那段空白裡，會找到什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "tape-first",
+      "chapter": "一九六四年，診間裡的錄音帶",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet doctor's office in soft winter morning light, two empty armchairs facing a desk, a reel-to-reel tape recorder on the desk by the window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t054",
+          "text": "答案沒有馬上來。一九六四年一月四日，星期六早上八點，第一次催眠。",
+          "emotion": "接住，沉穩"
+        }
+      ]
+    },
+    {
+      "id": "tape-practice",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a doctor's hand in a grey suit sleeve writing a short note on a blank notepad beside a tape recorder, soft morning light from a window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "頭三次，醫師只是讓兩個人一次一次進入催眠。"
+        }
+      ]
+    },
+    {
+      "id": "tape-reels",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the reels of a tape recorder turning on a desk in soft daylight, a thin brown tape running between them",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "他們說的每一句話，都錄進了錄音帶。"
+        }
+      ]
+    },
+    {
+      "id": "tape-feb",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a man in a cardigan reclining in a leather armchair in a doctor's office in soft grey daylight, his hands resting loosely on the armrests",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "還記得開場那台錄音機嗎？二月二十二日，輪到 Barney 回到那條路上。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "tape-said",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the needle of a tape recorder's level meter swinging on a desk in soft grey daylight, the reels turning",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "他在催眠裡，第一次說出：他也被帶上了飛船。",
+          "emotion": "放慢，落地"
+        }
+      ]
+    },
+    {
+      "id": "tape-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman today on a sofa wearing headphones, mouth open in surprise, rubbing the goosebumps on her arm, soft daylight from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "讀到這句，我手臂起了雞皮疙瘩。",
+          "emotion": "旁白自己的反應"
+        },
+        {
+          "id": "t060",
+          "text": "你可能會覺得：兩個人都這樣講，總該是真的了吧？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "tape-doctor",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a doctor in a grey suit standing at his office window in soft daylight, hands clasped behind his back, looking down at a winter street",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "先別急。主持催眠的醫師，自己有另一個看法，等一下再打開。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "tape-map",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hand drawing small dots and joining lines on a blank sheet of paper with a pencil at a kitchen table in grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "太太在催眠裡還說，飛船上有人給她看了一張地圖。"
+        }
+      ]
+    },
+    {
+      "id": "tape-map-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a finished pencil sketch of a dozen dots joined by lines lying on a kitchen table, an eraser and a pencil beside it, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "後來，她把它畫了出來：一堆點，和連著點的線。"
+        }
+      ]
+    },
+    {
+      "id": "tape-map-c",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dachshund sniffing the corner of a pencil sketch of dots that hangs off the edge of a kitchen table, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t064",
+          "text": "這張圖，後來會讓一位老師，忙上將近五年。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "tape-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a row of brown tape boxes on a doctor's shelf in soft daylight, a hand sliding the last one into place",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t065",
+          "text": "療程前後半年多。一年多以後，這些經過全上了報紙。誰寫的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "paper-reporter",
+      "chapter": "一九六五年十月，連載五天的報紙",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a newspaper reporter in shirtsleeves typing at a cluttered desk in a 1960s newsroom in grey daylight, a coffee cup and a stack of blank paper beside him",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "寫的是《Boston Traveler》的一位記者。一九六五年十月二十五日起，連載五天。",
+          "emotion": "接住，加快"
+        }
+      ]
+    },
+    {
+      "id": "paper-stand",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newsstand vendor in a flat cap on a city street corner in grey autumn daylight, holding up a folded newspaper with a blank front page, eyebrows raised",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "據波士頓公共圖書館的介紹，第一篇登在頭版。"
+        }
+      ]
+    },
+    {
+      "id": "paper-refuse",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a closed screen door on a quiet suburban porch in grey autumn daylight, a folded newspaper lying on the doormat",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "這對夫妻拒絕受訪。一年後的雜誌說，他們看到報導時相當難過。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "paper-hours",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand in a shirt cuff circling one blank paragraph of a newspaper column with a pencil, grey daylight on a desk",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "還記得那兩個小時嗎？查得到最早印成鉛字的，就在連載第二篇。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "paper-wire",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a teletype machine in a busy newsroom in grey daylight, a long ribbon of blank paper spilling out, an editor in braces tearing it off",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t070",
+          "text": "連載經合眾國際社轉發，這對夫妻那一年就成了全國話題。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "paper-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a 1960s housewife at a kitchen table in morning light reading a newspaper with one hand over her mouth, a coffee cup halfway to her lips",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "換成你是他們，一夜之間全國都在讀你的事，會是什麼感覺？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "paper-look",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glossy 1960s magazine lying open on a coffee table in soft daylight, its pages blank, a woman's hand turning a page",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "一九六六年十月，《Look》雜誌連載兩期，同一年出了書。"
+        }
+      ]
+    },
+    {
+      "id": "paper-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hardcover book with a plain dust jacket on a bookshop shelf in soft daylight, a customer's finger tipping it out",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "書名的副標，叫「在飛碟上消失的兩個小時」。這副標下得真會賣。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "paper-tv",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a 1970s sweater in his living room in the evening, leaning toward a glowing wooden television set, a bowl of popcorn forgotten in his lap",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t074",
+          "text": "一九七五年十月，NBC 把它拍成了電視電影。"
+        }
+      ]
+    },
+    {
+      "id": "paper-calls",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a switchboard operator in a headset at a desk in grey daylight, a whole row of telephone lines lit up in front of her, eyebrows raised",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "一部紀錄片後來說，首播之後幾週，很多人通報了類似的綁架。"
+        }
+      ]
+    },
+    {
+      "id": "paper-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long row of identical suburban houses in the evening, one window lit in each house, a single bright point of light in the sky above them",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "一個晚上的故事，開始出現在別人身上。為什麼？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "paper-turn",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain manila folder lying closed on an archive table in grey daylight, a gloved hand lifting its cover",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t077",
+          "text": "故事越講越完整。可是最早那份空軍報告裡，到底寫了什麼？",
+          "emotion": "轉折，問句"
+        }
+      ]
+    },
+    {
+      "id": "file-band",
+      "chapter": "報告 100-1-61：一條光帶，沒有人影",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand laying an old typed report on an archive table in grey daylight, the typed lines too small and blurry to read, a magnifying glass beside it",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "開場那位少校記下的，是一條連續的光帶，不管怎麼轉向，都像雪茄。",
+          "emotion": "接住，清楚"
+        }
+      ]
+    },
+    {
+      "id": "file-wings",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a toy model of a long glowing cigar-shaped craft with two V-shaped wings hanging on a string above an archive table, tiny red lights on the wing tips, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "它會伸出 V 形的「翼」，翼尖亮著紅燈。"
+        }
+      ]
+    },
+    {
+      "id": "file-time",
+      "template": "stats",
+      "data": {
+        "title": "報告 100-1-61 記下的",
+        "stats": [
+          {
+            "value": "約 30 分鐘",
+            "label": "看了多久"
+          },
+          {
+            "value": "約 30 英里",
+            "label": "Lincoln 到 Ashland"
+          },
+          {
+            "value": "0",
+            "label": "人影"
+          }
+        ],
+        "source": "Pease 空軍基地情報報告；美國國家檔案館 T1206 第 44 卷影像 0040–0042"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "他們不時拿望遠鏡看，前後大約三十分鐘；那個聲音，報告記成嗡嗡聲。"
+        },
+        {
+          "id": "t081",
+          "text": "你發現少了什麼嗎？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "file-none",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an archivist's finger running down the margin of an old typed report in grey daylight, stopping at an empty space at the bottom of the page",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "窗後的人影，沒有。被帶上飛船，也沒有。",
+          "emotion": "短句"
+        },
+        {
+          "id": "t083",
+          "text": "他們說少掉的那兩個小時，報告裡一個時數都沒寫。"
+        }
+      ]
+    },
+    {
+      "id": "file-radar",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot from behind of a radar controller in a headset in a dim radar room at an air base, leaning toward a round glowing screen with one small blip on it",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "同一個晚上，基地的雷達也記了一筆：凌晨兩點十四分，四英里外，一個不明目標。"
+        }
+      ]
+    },
+    {
+      "id": "file-tower",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an air traffic controller in a glass control tower at night, binoculars raised toward a dark empty sky over a runway",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t085",
+          "text": "塔台往那個方向看，從頭到尾，什麼都沒看見。這是證據嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "file-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a magnifying glass over two typed sentences on an old report on an archive table, the words blurred beyond reading, grey daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "報告自己說：雷達沒有描述，兩件事有沒有關係，無法判定。"
+        }
+      ]
+    },
+    {
+      "id": "file-two-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a gloved hand sliding the magnifying glass down to the next blurry typed line of an old report, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "下一句卻又寫：時間和距離，可能暗示兩者有關。",
+          "emotion": "轉折"
+        }
+      ]
+    },
+    {
+      "id": "file-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman today at a library table holding an old photocopy in each hand, looking from one to the other with a crooked smile, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "一份報告，兩頭都留了門。",
+          "emotion": "旁白自己的反應"
+        },
+        {
+          "id": "t089",
+          "text": "那上面的人，最後怎麼歸類？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "card-cabinet",
+      "chapter": "紀錄卡上，手寫的「資料不足」",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a long government archive room in grey daylight, rows of metal filing cabinets, one drawer pulled open and an archivist in a cardigan reaching into it",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t090",
+          "text": "空軍專門收飛碟報告的「藍皮書」計畫，把它歸成：資料不足。",
+          "emotion": "接住，落地"
+        }
+      ]
+    },
+    {
+      "id": "card-mist",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a valley between mountains in pale early morning, a flat layer of mist lying across the middle of the slopes, one car on the road below",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "分析表說，雷達和目擊，多半都是當天 Lincoln 一帶強烈的逆溫造成的。"
+        }
+      ]
+    },
+    {
+      "id": "card-glass",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a glass of water on a windowsill in mild daylight, a pencil standing in it that looks bent where it meets the water",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "逆溫，就是冷熱空氣上下顛倒，光線會變得古怪。",
+          "emotion": "像解釋給朋友聽"
+        }
+      ]
+    },
+    {
+      "id": "card-search",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a cap turning a big searchlight mounted on a truck at a 1960s car dealership opening in the evening, its beam pointing up into the sky",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "光源呢？卡片上寫：不知道，但具備廣告探照燈的一切特徵。"
+        }
+      ]
+    },
+    {
+      "id": "card-card",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old index card in a gloved hand in grey daylight, two typed lines scratched out with heavy pen strokes and a short handwritten scrawl beside them, all blurred beyond reading",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t094",
+          "text": "卡片上原本打好的兩行結論，被劃掉了，旁邊手寫：資料不足。"
+        }
+      ]
+    },
+    {
+      "id": "card-card-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a magnifying glass held over the scratched-out lines of an old index card, the pen strokes too heavy to see through, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "我很想知道那兩行原本寫什麼，可惜劃得看不出來了。",
+          "emotion": "旁白自己的反應"
+        },
+        {
+          "id": "t096",
+          "text": "那「空軍說是木星」，又是從哪來的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "card-letter",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a typed government letter being pulled from its envelope on a desk in grey daylight, the typed lines blurred beyond reading",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t097",
+          "text": "兩年後，一九六三年，空軍回覆民眾的一封信。"
+        }
+      ]
+    },
+    {
+      "id": "card-table",
+      "template": "table",
+      "data": {
+        "title": "同一個案子，三種寫法",
+        "columns": [
+          "案卷的分析",
+          "正式分類",
+          "1963 年的回信"
+        ],
+        "rows": [
+          [
+            "逆溫；光源不明，像廣告探照燈",
+            "資料不足",
+            "「極可能是木星」"
+          ]
+        ],
+        "source": "美國國家檔案館 T1206 第 43 卷影像 1043–1046"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "同一段話，前面寫：沒有方位資料，無法判定是木星。"
+        },
+        {
+          "id": "t099",
+          "text": "後面卻寫：極可能是木星。",
+          "emotion": "揭曉前停一拍"
+        }
+      ]
+    },
+    {
+      "id": "card-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman today at a library table holding up a photocopied letter, jaw dropped, soft daylight from a tall window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "你沒聽錯，同一段。",
+          "emotion": "對觀眾，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "card-sky",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a night sky over dark mountains, one steady bright planet low on the left and a second, larger light on the right",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "一位民間調查員當年就反駁過：他們說，那晚木星和那個東西，同時都在天上。"
+        }
+      ]
+    },
+    {
+      "id": "card-doctor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a stack of brown tape boxes on an archive table in grey daylight, a gloved hand resting on top of them",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t102",
+          "text": "空軍沒有答案。那主持催眠的醫師呢？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "simon-view",
+      "chapter": "醫師的看法：看到了，但沒有被帶走",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a doctor in a grey suit at his desk in soft daylight, a reel of tape in one hand, a closed notebook in front of him",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "醫師接受他們看到了東西，但不接受綁架。",
+          "emotion": "接住，清楚"
+        }
+      ]
+    },
+    {
+      "id": "simon-webb",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thick typed report lying open on a coffee table in soft afternoon light, a pencil resting across a blank page",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t104",
+          "text": "一位民間調查員一九六五年記下他的看法：綁架，只發生在太太的夢裡。"
+        }
+      ]
+    },
+    {
+      "id": "simon-repeat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a man's hands wrapped around a coffee cup on a kitchen table in grey daylight, steam rising, a woman's hand gesturing across the table",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "先生聽她一遍一遍講那些夢，最後也覺得，自己被帶走了。"
+        }
+      ]
+    },
+    {
+      "id": "simon-you",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man today at a family dinner table in warm daylight, laughing and scratching his head",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t106",
+          "text": "這讓我想到：家人把你小時候的事講了很多遍，你好像也就記得了。",
+          "emotion": "意見，親近"
+        }
+      ]
+    },
+    {
+      "id": "simon-truth",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a doctor's hand placing a reel of tape into a plain cardboard box on a desk in soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "醫師還說過：催眠通往的，是病人自己感受到、理解到的真相。"
+        }
+      ]
+    },
+    {
+      "id": "simon-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a doctor in a grey suit closing his office door in soft daylight, a coat over his arm",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "所以，催眠找回了被抹掉的記憶嗎？主持催眠的人自己，不是這樣說的。"
+        }
+      ]
+    },
+    {
+      "id": "simon-eyes",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an old 1960s television set in a dim living room, its curved screen showing only a blurry pale silhouette of a figure with a large oval head, a soft glow from the screen",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t109",
+          "text": "更怪的是那雙眼睛。Barney 在催眠裡，描述了一雙繞到臉側的大眼睛。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "simon-calendar",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1964 wall calendar in a kitchen in grey daylight, a finger counting the blank squares between two circled days",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "研究者 Kottmeyer 對了一下日曆。"
+        }
+      ]
+    },
+    {
+      "id": "simon-tv",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a cat sitting on a rug in a 1960s living room in the evening, staring up at a glowing television in the corner with a blurry pale shape on its screen",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t111",
+          "text": "那次療程的十二天前，電視剛播出一集科幻影集《The Outer Limits》。"
+        }
+      ]
+    },
+    {
+      "id": "simon-cat",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the cat on the rug turning its head away from the glowing television, ears back, tail curled",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "他懷疑兩者有關，但他自己用的是「如果」：這是推論，不是證據。"
+        }
+      ]
+    },
+    {
+      "id": "simon-map",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a pencil sketch of dots joined by lines pinned to a kitchen corkboard in grey daylight, a woman's finger tapping one dot",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "可是太太手上，還有那張畫滿點和線的圖。那些點，真的是星星嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "map-nyt",
+      "chapter": "一張星圖，十五顆星裡的六顆",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hand laying a pencil sketch of dots next to a newspaper star chart on a kitchen table in grey daylight, both covered in small dots and lines",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t114",
+          "text": "她自己是這麼認為的：一九六五年，她拿《紐約時報》的一張星圖來比，",
+          "emotion": "接住"
+        },
+        {
+          "id": "t115",
+          "text": "還照著加上了星名。"
+        }
+      ]
+    },
+    {
+      "id": "map-fish",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a schoolteacher in a 1960s cardigan threading small beads onto strings that hang from a wooden frame in her living room, soft daylight from a window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "真正讓它出名的，是俄亥俄州的一位學校老師，Marjorie Fish。"
+        }
+      ]
+    },
+    {
+      "id": "map-beads",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of dozens of small beads hanging on threads at different heights inside a wooden frame, a woman's fingers adjusting one bead, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t117",
+          "text": "一九六八年八月起，她用珠子和線，在家裡吊出附近恆星的立體模型。"
+        }
+      ]
+    },
+    {
+      "id": "map-years",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cosy living room in soft daylight almost filled by a big wooden frame of hanging bead strings, a cup of tea going cold on a side table",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "一吊就是將近五年。換成你，會為了一張別人畫的圖，吊這麼久的珠子嗎？",
+          "emotion": "對觀眾，帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "map-match",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hands holding a pencil sketch of dots up in front of the bead frame, lining the two up, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t119",
+          "text": "她說，對上了：網罟座的 Zeta Reticuli 那一帶。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "map-mag",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a 1974 astronomy magazine lying on a coffee table in soft daylight, its cover a plain starry picture with no lettering, a hand reaching for it",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "一九七四年十二月，天文雜誌《Astronomy》刊出這件事。雜誌都登了，還能有假？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "map-sagan",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of an astronomer in a turtleneck sweater at a blackboard covered in chalk dots in soft daylight, drawing a circle around a few of them",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "隔年，天文學家 Carl Sagan 和 Steven Soter 回應：這是先挑星星、再挑角度湊出來的。"
+        }
+      ]
+    },
+    {
+      "id": "map-rice",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a handful of rice grains scattered on a dark wooden table in grey daylight, a finger pushing a few of them into the shape of a little house",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "從一大堆隨機的點裡，你總挑得出幾個，像你心裡那張圖。",
+          "emotion": "對觀眾，像解釋給朋友聽"
+        }
+      ]
+    },
+    {
+      "id": "map-charts",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of several different star charts spread on a table in soft daylight, a hand laying the dot sketch on top of each one in turn",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "懷疑論者 Sheaffer 說得更直接：這張圖，跟太多星圖都對得上。那到底對不對？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "map-sat",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a satellite with folded solar panels drifting above the curve of the Earth, a faint field of stars behind it",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t124",
+          "text": "二〇〇八年，Brett Holman 用衛星後來量到的新資料，照 Fish 自己的條件重算。"
+        }
+      ]
+    },
+    {
+      "id": "map-big",
+      "template": "big",
+      "data": {
+        "text": "6／15",
+        "kicker": "Brett Holman 2008 年的重算（Armagh 天文館 2011 年轉述）",
+        "sub": "Fish 選的 15 顆星，6 顆要剔除"
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "她選的十五顆星裡，有六顆要剔除。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "map-untie",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hands untying the last bead strings from a wooden frame in soft afternoon light, beads dropping into a tin box",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t126",
+          "text": "據訃聞的說法，Fish 後來也發表聲明，認為那個對應不太可能成立。"
+        }
+      ]
+    },
+    {
+      "id": "map-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman today at a library table closing a book and nodding slowly, soft daylight from a tall window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "花了那麼多年，最後自己說不成立。說真的，我滿佩服的。",
+          "emotion": "旁白自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "map-why",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet two-lane mountain road in grey daylight, a tourist in a rain jacket standing at a low stone wall by the roadside looking up at the hills",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "一個夢、一卷錄音、一張圖。後來那麼多綁架故事，為什麼很像它？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "end-hopkins",
+      "chapter": "二〇一一年，路邊立起一塊牌子",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a researcher in a 1990s sweater in a cluttered painter's studio in soft daylight, pinning blank index cards onto a large corkboard",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t129",
+          "text": "答案要看你問誰。",
+          "emotion": "接住，對觀眾"
+        },
+        {
+          "id": "t130",
+          "text": "綁架研究者 Budd Hopkins 說，後來調查到的主題，幾乎都重複了這第一案。"
+        }
+      ]
+    },
+    {
+      "id": "end-hopkins-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a corkboard covered in identical blank index cards joined by red string, a hand pinning one more, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t131",
+          "text": "在他看來，那是同一件事，一再發生。"
+        }
+      ]
+    },
+    {
+      "id": "end-skeptic",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot from behind of a man in a lab coat at a desk in mild daylight, laying a stack of newspaper clippings beside a stack of report forms of the same height",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t132",
+          "text": "懷疑論者說的正好倒過來：是這個故事的宣傳，帶出了後來那些通報。"
+        }
+      ]
+    },
+    {
+      "id": "end-react",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the young woman today at the library table leaning back in her chair, arms folded, smiling thoughtfully, soft daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "同一份檔案，兩邊的結論完全相反，這是我覺得這個故事最有意思的地方。",
+          "emotion": "旁白自己的意見"
+        }
+      ]
+    },
+    {
+      "id": "end-marker",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a roadside pull-off on a mountain highway in grey daylight, a family of tourists in rain jackets at a low stone wall, a child pointing at the hills",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t134",
+          "text": "二〇一一年，事發五十年，新罕布夏州在 Lincoln 的路邊立了一面歷史標誌。"
+        }
+      ]
+    },
+    {
+      "id": "end-marker-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a child's hand resting on a cold stone wall by a mountain road in grey daylight, misty hills in the distance",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t135",
+          "text": "立牌那年寫的是：這是美國第一個廣為報導的 UFO 綁架通報。"
+        },
+        {
+          "id": "t136",
+          "text": "開場說的那個原型，指的就是這一晚。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "end-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of an empty two-lane mountain road winding through a narrow pass in pale grey daylight, steep cliffs on both sides, no cars on it",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t137",
+          "text": "回到開場的問題：「被外星人綁架」的故事，是從哪裡開始的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "end-answer-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of five typed pages, a reel of tape and a folded newspaper lying side by side on an archive table in grey daylight, all blank",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t138",
+          "text": "查得到的最早一筆，是事發十天到兩週後的一場夢。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "t139",
+          "text": "兩年多後，它進了錄音帶；四年後，上了報紙。"
+        }
+      ]
+    },
+    {
+      "id": "end-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a plain manila folder on an archive table being closed by a gloved hand, a rubber stamp beside it, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t140",
+          "text": "這份檔案，存檔：故事從夢到報紙，每一步都有當年的文件。",
+          "emotion": "乾脆，落地"
+        },
+        {
+          "id": "t141",
+          "text": "至於那道光是什麼，空軍自己寫的是：資料不足。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "outro",
+      "data": {
+        "title": "綁架的情節，最早出現在一場夢裡",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t142",
+          "text": "如果那天晚上換成你在那條路上，你第一個會打給誰？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t143",
+          "text": "這個頻道只講檔案裡查得到的，想一起把檔案翻到底，就訂閱。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t002",
+      "payoff": "t136",
+      "what": "研究者說的那個原型，指的是哪一晚"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t078",
+      "what": "少校在電話裡寫下的報告"
+    },
+    {
+      "setup": "t009",
+      "payoff": "t057",
+      "what": "波士頓診間裡那台錄音機"
+    },
+    {
+      "setup": "t011",
+      "payoff": "t138",
+      "what": "綁架的故事從哪裡開始"
+    },
+    {
+      "setup": "t018",
+      "payoff": "t019",
+      "what": "望遠鏡裡看到了什麼"
+    },
+    {
+      "setup": "t026",
+      "payoff": "t069",
+      "what": "他們說少掉的兩個小時，最早印在哪"
+    },
+    {
+      "setup": "t027",
+      "payoff": "t028",
+      "what": "到家隔天，她打給誰"
+    },
+    {
+      "setup": "t033",
+      "payoff": "t034",
+      "what": "信裡承認的那件事"
+    },
+    {
+      "setup": "t040",
+      "payoff": "t041",
+      "what": "被帶上飛船的情節從哪冒出來"
+    },
+    {
+      "setup": "t053",
+      "payoff": "t058",
+      "what": "催眠在那段空白裡找到什麼"
+    },
+    {
+      "setup": "t061",
+      "payoff": "t103",
+      "what": "主持催眠的醫師自己怎麼看"
+    },
+    {
+      "setup": "t064",
+      "payoff": "t118",
+      "what": "一位老師為這張圖忙了將近五年"
+    },
+    {
+      "setup": "t065",
+      "payoff": "t066",
+      "what": "誰把這件事寫上報紙"
+    },
+    {
+      "setup": "t076",
+      "payoff": "t130",
+      "what": "為什麼後來的故事開始像它"
+    },
+    {
+      "setup": "t089",
+      "payoff": "t090",
+      "what": "空軍最後怎麼歸類"
+    },
+    {
+      "setup": "t096",
+      "payoff": "t099",
+      "what": "「空軍說是木星」從哪來"
+    },
+    {
+      "setup": "t113",
+      "payoff": "t114",
+      "what": "那些點是不是星星"
+    },
+    {
+      "setup": "t123",
+      "payoff": "t125",
+      "what": "星圖到底對不對得上"
+    }
+  ],
+  "youtube": {
+    "title": "外星人綁架的原型，最早出現在夢裡？1961 年那條夜路｜奇聞檔案局",
+    "description": "一九六一年九月十九日晚上，新罕布夏，一對夫妻沿著 U.S. 3 往南開，太太發現窗外有一顆星在動。兩天後，空軍基地的一位少校在電話裡把這個晚上寫成一份報告；兩年多後，波士頓一間診間裡，一台錄音機開始轉。\n\n這一集先跟著 Barney 與 Betty Hill 走完那一晚和之後的四年：Indian Head 以南的那片田、到家隔天那通電話、五天後那封信、十天後開始的夢與十一月寫下的五頁、一九六四年的催眠錄音、一九六五年十月連載五天的報紙。然後打開檔案：空軍報告 100-1-61 記了什麼、同一晚的雷達、藍皮書紀錄卡上手寫的「資料不足」、一九六三年那封又說「無法判定是木星」又說「極可能是木星」的回信、主持催眠的醫師怎麼看，以及那張星圖從 Marjorie Fish 的珠子模型到 2008 年的重算。\n\n他們自己的說法（窗後的人影、少掉的兩個小時、被帶上飛船）一律標成他們說的；研究者的推論（電視影集的時間點、後來的綁架故事為什麼像它）一律掛名。每個日期、數字與引言的出處列在下方參考資料。\n\n本集插圖由 AI 生成；故事裡的人物過世未滿七十年或仍在世，畫面只用背影、剪影、手與物件，不畫本人，也不畫被綁架的經過。\n\n資料截至 2026-10-27",
+    "tags": [
+      "外星人綁架",
+      "希爾夫婦",
+      "Betty and Barney Hill",
+      "藍皮書計畫",
+      "UFO",
+      "飛碟",
+      "新罕布夏",
+      "Zeta Reticuli",
+      "奇聞檔案局",
+      "外星"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "最早\n**是一場夢**",
+      "tag": "外星",
+      "sub": "1961 年的空軍檔案",
+      "shot": "open-car"
+    }
+  },
+  "sources": [
+    {
+      "title": "美國國家檔案館：Project Blue Book T1206 第 43 卷，Lincoln, New Hampshire, September 1961",
+      "url": "https://catalog.archives.gov/id/28994660",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "美國國家檔案館：Project Blue Book T1206 第 44 卷（Pease 報告、雷達紀錄、剪報、《Look》連載頁）",
+      "url": "https://catalog.archives.gov/id/28994718",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0040：Pease 空軍基地情報報告 100-1-61 首頁",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0040.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0041：Pease 報告補充頁",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0041.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0042：Pease 報告第 3 頁",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0042.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0038：Pease 雷達值班紀錄摘錄",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0038.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 43 影像 1043：Project 10073 紀錄卡",
+      "url": "https://catalog.archives.gov/medialive/60/9946/28994660/content/TB0106/T1206-ProjectBlueBook/T1206_0043/images/1043.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 43 影像 1044：UFO 分析表",
+      "url": "https://catalog.archives.gov/medialive/60/9946/28994660/content/TB0106/T1206-ProjectBlueBook/T1206_0043/images/1044.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 43 影像 1046：空軍外國技術處 1963-09-27 的回信",
+      "url": "https://catalog.archives.gov/medialive/60/9946/28994660/content/TB0106/T1206-ProjectBlueBook/T1206_0043/images/1046.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0013、0014：《Look》1966-10-04 連載開頭與編者按",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0014.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0020、0022：《Look》1966-10-04 第 48、53 頁（看診與催眠的日期）",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0022.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0010：《Look》1966-10-18（Simon 那一頁的小標）",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0010.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0008：《Look》1966-10-18 星圖頁圖說",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0008.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0032：《Boston Traveler》1965 年連載第二篇",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0032.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "藍皮書 44 影像 0035：《Boston Traveler》1965-10-29 最後一篇",
+      "url": "https://catalog.archives.gov/medialive/18/9947/28994718/content/TB0106/T1206-ProjectBlueBook/T1206_0044/images/0035.jpg",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Walter N. Webb：A Dramatic UFO Encounter in the White Mountains（NICAP，1965-08-30）",
+      "url": "https://www.nicap.org/reports/610919hill_report2.pdf",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "波士頓公共圖書館：The Abduction of Betty and Barney Hill（2025）",
+      "url": "https://www.bpl.org/blogs/post/the-abduction-of-betty-and-barney-hill/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "UNH Magazine：An Extraterrestrial Special Collection（2021）",
+      "url": "https://magazine.unh.edu/issue/spring-summer-2021/an-extraterrestrial-special-collection/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Nashua Telegraph：60th anniversary of N.H.'s contribution to the flying saucer craze（2021）",
+      "url": "https://www.nashuatelegraph.com/news/local-news/2021/09/18/wishing-a-happy-60th-anniversary-to-n-h-s-contribution-to-the-flying-saucer-craze-of-the-50s-and-60s/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Internet Archive 書目：The Interrupted Journey（Fuller，Dial Press，1966）",
+      "url": "https://archive.org/details/interruptedjourn00full",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "PBS NOVA：Kidnapped by UFOs?（1997）逐字稿",
+      "url": "https://www.pbs.org/wgbh/nova/transcripts/2306tufos.html",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Magonia 第 35 期（1990）：Kottmeyer〈Entirely Unpredisposed〉",
+      "url": "https://archive.org/details/Magonia_No_35_1990_01",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NICAP 轉錄：Dickinson〈The Zeta Reticuli Incident〉（《Astronomy》1974-12）",
+      "url": "https://www.nicap.org/articles/hillzeta.htm",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "《Astronomy》1974 年 12 月號目錄",
+      "url": "https://www.astronomy.com/issues/1974/december-1974",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NICAP 轉錄：Sagan 與 Soter〈Pattern Recognition & Zeta Reticuli〉（1975）",
+      "url": "https://www.nicap.org/articles/hillzeta2.htm",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "gravitywarpdrive 轉錄：Zeta Reticuli Incident 全組（含 Sheaffer）",
+      "url": "https://www.gravitywarpdrive.com/Zeta_Reticuli_Incident.htm",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Brett Holman：Goodbye Zeta Reticuli（Airminded，2008-11-05）",
+      "url": "https://airminded.org/2008/11/05/goodbye-zeta-reticuli/",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Armagh 天文館：Betty Hill's UFO star map – the truth（2011，2013 補訃聞）",
+      "url": "https://armaghplanet.com/betty-hills-ufo-star-map-the-truth.html",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "McGill Office for Science and Society：Alien abduction hardly convincing（2023）",
+      "url": "https://www.mcgill.ca/oss/node/9618",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "NHPR：Marking History: The Betty and Barney Hill Incident in Lincoln（2014）",
+      "url": "https://www.nhpr.org/post/marking-history-betty-and-barney-hill-incident-lincoln",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Jason Colavito：NH's UFO abduction plaque（2011，標誌全文轉錄）",
+      "url": "https://www.jasoncolavito.com/blog/nhs-ufo-abduction-plaque-and-the-assault-on-truth",
+      "checked_on": "2026-10-12"
+    },
+    {
+      "title": "Wikipedia（索引）：Barney and Betty Hill incident",
+      "url": "https://en.wikipedia.org/wiki/Barney_and_Betty_Hill_incident",
+      "checked_on": "2026-10-12"
+    }
+  ],
+  "assets": []
+}
