@@ -42,7 +42,9 @@
 
 預覽完成快照2026-10-27 08:47台北：129/129插圖與分鏡通過；中文版預覽已合成，29159frames／30fps＝16:11.967，原生播放器可播放、跳轉並正常播畢。-14LUFS／truepeak-1.9dBFS／musicbed-33.1LUFS，當前source/media綁定與原版SHA均核對。完整QA10/11只剩音訊未核准；三張外語縮圖後續實圖檢查均過（28／26／30px），八語文字review SHA最新，配音尚未生成。帳本US$1.3905、包含歷史重試不確定量的保守控制US$1.578，均低於US$6；配樂／clips新購0。該快照尚未通過音訊、final或完整交付包，詳見[production-preview-r6.json](production-preview-r6.json)。
 
-最新09:38台北：09:30退避後已正常續試一次13句／242字元，session16091保存native_exit4，仍為Gemini忙碌／用量限制；21個凍結檔案未變，成功重錄輪數0、journal全空且lease已釋放。累計四個語音指令均未完成重錄，不把拒絕請求算成已錄完的品質重錄輪次。下一次不得早於**11:40台北**，先核對journal／WAV／lease／process，只續試一次；若仍受限再延長退避。沒有新WAV就不再跑ASR或重合成，不提早接下一集。見[speech-retry-20261027-0930.json](speech-retry-20261027-0930.json)及[batch-queue.md](batch-queue.md)。
+先前09:38台北：09:30退避後已正常續試一次13句／242字元，session16091保存native_exit4，仍為Gemini忙碌／用量限制；21個凍結檔案未變，成功重錄輪數0、journal全空且lease已釋放。累計四個語音指令均未完成重錄，不把拒絕請求算成已錄完的品質重錄輪次。當時11:40台北的退避斷點已由下段12:02收據取代；沒有新WAV就不再跑ASR或重合成，不提早接下一集。見[speech-retry-20261027-0930.json](speech-retry-20261027-0930.json)及[batch-queue.md](batch-queue.md)。
+
+最新12:02台北：11:40退避後的一次續作session21401仍native_exit4／busy-quota，21檔未變、journal全空、lease釋放，沒有成功重錄或新ASR；當前13句仍待修正。已延長退避至**16:00台北**，240分鐘後才可再正常續試一次，不推定日額或供應商重置時間。第五個未完成語音指令的實證見[speech-retry-20261027-1140.json](speech-retry-20261027-1140.json)。音訊、final、八語配音與完整交付包仍未完成。
 
 ## 接續順序
 
