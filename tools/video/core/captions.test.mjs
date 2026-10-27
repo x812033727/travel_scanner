@@ -3,6 +3,7 @@ import { createHash } from "node:crypto";
 import test from "node:test";
 
 import {
+  balanceReferenceBoundaries,
   buildCues,
   checkCues,
   cuePieces,
@@ -501,6 +502,148 @@ test("checkCues reads the reading speed from the measured spans", () => {
 
 const spans = (cues) => cues.map((cue) => [cue.start_ms, cue.end_ms]);
 const weightedCues = (bounds) => bounds.slice(1).map((end, index) => ({ start_ms: bounds[index], end_ms: end, text: `piece ${index + 1}` }));
+
+// Actual narration-reference windows/text from Kimi's current branded film. No production
+// files are loaded: these are regressions for the uneven allocations viewers received.
+const KIMI_SIDE_VIEW = "I switch this viewer to side view, awaiting the dimensions-versus-spec result.";
+const REFERENCE_NARRATION = { locale: "zh-TW", texts: {} };
+const kimiSideWindow = { id: "4ran", start_frame: 497, end_frame: 665, audio_samples: 254400 };
+
+function assertSameCaptionContentAndWindow(before, after) {
+  assert.deepEqual(after.map((cue) => ({ text: cue.text, line: cue.line })), before.map((cue) => ({ text: cue.text, line: cue.line })));
+  assert.deepEqual([after[0].start_ms, after.at(-1).end_ms], [before[0].start_ms, before.at(-1).end_ms]);
+  after.forEach((cue, index) => {
+    assert.ok(Number.isSafeInteger(cue.start_ms) && Number.isSafeInteger(cue.end_ms));
+    assert.ok(cue.end_ms - cue.start_ms >= MIN_CUE_MS);
+    if (index) assert.equal(cue.start_ms, after[index - 1].end_ms);
+  });
+}
+
+test("foreign reference captions repair actual English and Spanish skew with the smallest required boundary move", () => {
+  for (const [locale, line, text, expected] of [
+    ["en", kimiSideWindow, KIMI_SIDE_VIEW, [[16567, 20067], [20067, 22167]]],
+    ["es", kimiSideWindow, "Paso a la vista lateral y espero la comparación de medidas exteriores y requisitos.", [[16567, 20108], [20108, 22167]]],
+    // The original body frame range 18442–18615 follows the 150-frame intro.
+    ["es", { id: "d7t1", start_frame: 18592, end_frame: 18765, audio_samples: 227520 },
+      "Si quieres seguir modificando el agujero, ¿qué falta en la entrega además de esta malla?", [[619733, 622145], [622145, 624873]]],
+  ]) {
+    const timeline = { lines: [line] }, texts = { [line.id]: text };
+    const before = buildCues(timeline, texts, locale).cues;
+    const after = buildCues(timeline, texts, locale, REFERENCE_NARRATION).cues;
+    assert.ok(checkCues(before, locale).some((problem) => problem.includes("characters a second")), locale);
+    assertSameCaptionContentAndWindow(before, after);
+    assert.deepEqual(spans(after), expected, locale);
+    assert.deepEqual(checkCues(after, locale), [], locale);
+  }
+});
+
+test("an overfull foreign reference sentence retains its exact timing and speed findings", () => {
+  const timeline = { lines: [{ id: "1cox", start_frame: 17633, end_frame: 17808, audio_samples: 265440 }] };
+  const texts = { "1cox": "Además de los agujeros de cualquier forma ya mencionados, tampoco revisamos autointersecciones ni el espesor mínimo de cada pared." };
+  const before = buildCues(timeline, texts, "es").cues;
+  const after = buildCues(timeline, texts, "es", REFERENCE_NARRATION).cues;
+  assert.equal(checkCues(before, "es").length, 2);
+  assert.deepEqual(after, before);
+  assert.equal(toSrt(after), toSrt(before));
+  assert.deepEqual(checkCues(after, "es"), checkCues(before, "es"));
+});
+
+test("already readable reference captions, narration and the own-audio/dub path stay byte for byte", () => {
+  const texts = { "4ran": KIMI_SIDE_VIEW };
+  const timeline = { lines: [kimiSideWindow] };
+  const own = buildCues(timeline, texts, "en").cues;
+  assert.deepEqual(spans(own), [[16567, 20097], [20097, 22167]], "own audio keeps spoken-weight allocation");
+  assert.equal(toSrt(buildCues(timeline, texts, "en", { locale: "en", texts }).cues), toSrt(own), "narration is not a foreign reference");
+  const roomy = { lines: [{ ...kimiSideWindow, end_frame: 740, audio_samples: 360000 }] };
+  const readable = buildCues(roomy, texts, "en").cues;
+  assert.deepEqual(checkCues(readable, "en"), []);
+  assert.equal(toSrt(buildCues(roomy, texts, "en", REFERENCE_NARRATION).cues), toSrt(readable));
+  const source = { "4ran": "我把檢視器切到側面，等外形尺寸跟規格比對的結果。" };
+  assert.deepEqual(buildCues(timeline, source, "zh-TW", { locale: "zh-TW", texts: source }), buildCues(timeline, source, "zh-TW"));
+});
+
+test("matched measured words keep their genuine starts even when a foreign-reference context is supplied", () => {
+  const chars = timed(KIMI_SIDE_VIEW, (index) => index * 160);
+  const timeline = { lines: [{ ...kimiSideWindow, timing: { chars } }] };
+  const texts = { "4ran": KIMI_SIDE_VIEW };
+  const own = buildCues(timeline, texts, "en").cues;
+  assert.ok(checkCues(own, "en").some((problem) => problem.includes("characters a second")));
+  assert.deepEqual(buildCues(timeline, texts, "en", REFERENCE_NARRATION).cues, own);
+});
+
+test("a fast inherited narration boundary is repaired without changing source measured starts", () => {
+  const source = "這段旁白先讓我們看完整的外形尺寸，接著再把畫面中的數字跟原來那份規格逐一比對。";
+  const pieces = cuePieces(source, "zh-TW");
+  assert.equal(pieces.length, 2);
+  const pivot = unitsOf(pieces[0]).length;
+  const chars = timed(source, (index) => index < pivot ? Math.floor(index * 3000 / pivot) : 3530 + (index - pivot) * 40);
+  const timeline = { lines: [{ ...kimiSideWindow, timing: { chars } }] };
+  const narration = { locale: "zh-TW", texts: { "4ran": source } };
+  const sourceCues = buildCues(timeline, narration.texts, "zh-TW").cues;
+  assert.equal(sourceCues[1].start_ms, 20097, "genuine narration change would restore the too-fast reference boundary");
+  const reference = buildCues(timeline, { "4ran": KIMI_SIDE_VIEW }, "en", narration).cues;
+  assert.deepEqual(spans(reference), [[16567, 20067], [20067, 22167]]);
+  assert.deepEqual(checkCues(reference, "en"), []);
+  assert.deepEqual(buildCues(timeline, narration.texts, "zh-TW").cues, sourceCues, "source measured starts stay untouched");
+});
+
+test("an untouched passing inheritance keeps its original conservative guard and exact old result", () => {
+  const weighted = [
+    { start_ms: 0, end_ms: 2500, text: "short cue" },
+    { start_ms: 2500, end_ms: 5000, text: "awaiting the dimensions-versus-spec result." },
+  ];
+  assert.equal(balanceReferenceBoundaries(weighted, en), weighted, "the displayed original cues already pass");
+  assert.equal(inheritBoundaries(weighted, [2900], en), null, "do not broaden the original raw-text guard on an untouched path");
+
+  const source = "這段旁白先讓我們看完整的外形尺寸，接著再把畫面中的數字跟原來那份規格逐一比對。";
+  const pivot = unitsOf(cuePieces(source, "zh-TW")[0]).length;
+  const chars = timed(source, (index) => index < pivot ? Math.floor(index * 2500 / pivot) : 2933 + (index - pivot) * 40);
+  const timeline = { lines: [{ ...kimiSideWindow, timing: { chars } }] };
+  const texts = { "4ran": KIMI_SIDE_VIEW }, narration = { locale: "zh-TW", texts: { "4ran": source } };
+  const originalWeighted = timePieces(splitText(KIMI_SIDE_VIEW, en), 16567, 22167, en, fits, chars);
+  const originalInherited = inheritBoundaries(originalWeighted, [19500], en);
+  assert.ok(originalInherited);
+  const expected = originalInherited.map((cue) => ({ ...cue, line: "4ran", text: wrapCue(displayText(cue.text, en), en) }));
+  assert.deepEqual(checkCues(expected, "en"), []);
+  assert.deepEqual(buildCues(timeline, texts, "en", narration).cues, expected);
+});
+
+test("three reference cues propagate only required boundary moves and satisfy the exact floating-point CPS gate", () => {
+  const text = "abcdefghijklmnopqrstu"; // 21 displayed characters, also under the Thai width rule.
+  const rules = LOCALE_RULES.th;
+  const before = [
+    { start_ms: 0, end_ms: 1000, text },
+    { start_ms: 1000, end_ms: 1700, text },
+    { start_ms: 1700, end_ms: 5000, text },
+  ];
+  assert.ok(measure(text, rules) / (1400 / 1000) > rules.maxCps, "the unchanged gate rejects 1400ms on IEEE doubles");
+  const after = balanceReferenceBoundaries(before, rules);
+  assertSameCaptionContentAndWindow(before, after);
+  assert.deepEqual(spans(after), [[0, 1401], [1401, 2802], [2802, 5000]]);
+  assert.deepEqual(checkCues(after, "th"), []);
+  const noRoom = [0, 1400, 2800, 4200].slice(1).map((end, index, all) => ({ start_ms: index ? all[index - 1] : 0, end_ms: end, text }));
+  assert.equal(balanceReferenceBoundaries(noRoom, rules), noRoom, "no borrowing time when exact gate-safe integer durations cannot fit");
+  assert.equal(checkCues(noRoom, "th").length, 3);
+});
+
+test("Thai reference balancing preserves combining marks, number-unit groups and the same rounded window", () => {
+  const text = "รูมีเส้นผ่านศูนย์กลางระบุ 16 มิลลิเมตร เป็นเป้าหมายตอนวาดวงกลม ยังไม่ใช่ช่องว่างต่ำสุดที่วัดแล้ว";
+  const timeline = { lines: [{ id: "1gex", start_frame: 4773, end_frame: 4985, audio_samples: 324000 }] };
+  const texts = { "1gex": text }, rules = LOCALE_RULES.th;
+  const before = buildCues(timeline, texts, "th").cues;
+  const after = buildCues(timeline, texts, "th", REFERENCE_NARRATION).cues;
+  assert.equal(checkCues(before, "th").length, 1);
+  assertSameCaptionContentAndWindow(before, after);
+  assert.ok(after.some((cue) => cue.text.includes("16 มิลลิเมตร")));
+  assert.ok(after.some((cue) => measure(cue.text.replace(/\n/g, ""), rules) < [...cue.text.replace(/\n/g, "")].length));
+  assert.deepEqual(checkCues(after, "th"), []);
+});
+
+test("the CPS diagnostic uses the same newline-excluded display width as its unchanged trigger", () => {
+  const problem = { line: "4ran", start_ms: 20097, end_ms: 22167, text: "awaiting the\ndimensions-versus-spec result." };
+  assert.deepEqual(checkCues([problem], "en"), ["cue 1 (4ran): 20.3 characters a second, above 20"]);
+  assert.deepEqual(checkCues([{ ...problem, start_ms: 20067 }], "en"), [], "exactly 20 CPS does not warn");
+});
 
 test("a translation's cue changes take the narration's measured ones: one for one, the nearest, or pinned with weighted shares between", () => {
   // Equal counts: one for one.

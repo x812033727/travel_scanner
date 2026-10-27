@@ -1,0 +1,642 @@
+{
+  "kind": "actual_Kimi_native_caption_pacing_attempt",
+  "helper_file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/prepare-captions.mjs",
+  "helper_sha256": "6a925d65729b86cfcdf3ed8419faf568f5c5e3ad7ac3e73d8e83651590b35ae1",
+  "profile_sha256": "7d01c3672dad7d692270f937bba2e9fbe9ee04d08b33f228c61455c4accd305e",
+  "release_sha256": "84bebfc63c9dcdc0a96f496b4fa7e016bb4dde2d942515d0ca4510e500a5458b",
+  "started_at": "2026-10-27T02:49:15.236Z",
+  "pid": 360369,
+  "active": false,
+  "ok": true,
+  "phase": "complete",
+  "counts": {
+    "normal_captions_CLI": 1,
+    "network": 0,
+    "auth": 0,
+    "ASR": 0,
+    "TTS": 0,
+    "QA_policy": 0,
+    "media_tools": 0
+  },
+  "normal_native_args": [
+    "captions",
+    "--slug",
+    "kimi-k31-3d-delivery",
+    "--workdir",
+    "/workspace/work/videos"
+  ],
+  "native_cli_return_code": 0,
+  "actual_exit_code": 0,
+  "native_lease_released": true,
+  "archives": [
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/zh-TW.srt",
+        "bytes": 12864,
+        "sha256": "a2552050986a86a461875c1726e13807c3f313ba21613c15b416d3e0e82cca2b"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/zh-TW.srt",
+        "bytes": 12864,
+        "sha256": "a2552050986a86a461875c1726e13807c3f313ba21613c15b416d3e0e82cca2b"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657433,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661847,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/zh-TW.vtt",
+        "bytes": 12504,
+        "sha256": "7945e2b62dcddca1e8c90a7f9521d823c8b38cf207de44a154e0204cbccb466a"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/zh-TW.vtt",
+        "bytes": 12504,
+        "sha256": "7945e2b62dcddca1e8c90a7f9521d823c8b38cf207de44a154e0204cbccb466a"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657434,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661848,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/en.srt",
+        "bytes": 13412,
+        "sha256": "d920b2682b59ce35d69f36387e3f156cbcd5acef86ee4302383b754553880e74"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/en.srt",
+        "bytes": 13412,
+        "sha256": "d920b2682b59ce35d69f36387e3f156cbcd5acef86ee4302383b754553880e74"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657435,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661849,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/en.vtt",
+        "bytes": 12992,
+        "sha256": "0f0809ab6745118295c96ae3969a1840f95c553b383c5b784ca44285cb4c7ba6"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/en.vtt",
+        "bytes": 12992,
+        "sha256": "0f0809ab6745118295c96ae3969a1840f95c553b383c5b784ca44285cb4c7ba6"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657436,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661850,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ja.srt",
+        "bytes": 17616,
+        "sha256": "cbb1a9467808e3362ae988655e22420f77eff0779f78f9447e66589c815178c7"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/ja.srt",
+        "bytes": 17616,
+        "sha256": "cbb1a9467808e3362ae988655e22420f77eff0779f78f9447e66589c815178c7"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657437,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661851,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ja.vtt",
+        "bytes": 16992,
+        "sha256": "7ba607eda9158f07543cbab691ad9f82eac601156c1a4b39a24fd8eb70a0e731"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/ja.vtt",
+        "bytes": 16992,
+        "sha256": "7ba607eda9158f07543cbab691ad9f82eac601156c1a4b39a24fd8eb70a0e731"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657438,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661852,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ko.srt",
+        "bytes": 16476,
+        "sha256": "90ab3acfc6b2b6c2e2c13652efedc01f239ff35a90b720a6dd5fd7e052f6d55e"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/ko.srt",
+        "bytes": 16476,
+        "sha256": "90ab3acfc6b2b6c2e2c13652efedc01f239ff35a90b720a6dd5fd7e052f6d55e"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657439,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661853,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ko.vtt",
+        "bytes": 15864,
+        "sha256": "ffe76c9c7400f83e63168a23c0a74586495ecdfcb7ce1087a0a0c474bea53771"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/ko.vtt",
+        "bytes": 15864,
+        "sha256": "ffe76c9c7400f83e63168a23c0a74586495ecdfcb7ce1087a0a0c474bea53771"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657440,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661854,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/es.srt",
+        "bytes": 15197,
+        "sha256": "883947817e809d40a1ef797b7f7c60678791e15dfe1cf9194e71fac4a9800bff"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/es.srt",
+        "bytes": 15197,
+        "sha256": "883947817e809d40a1ef797b7f7c60678791e15dfe1cf9194e71fac4a9800bff"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657441,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661855,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/es.vtt",
+        "bytes": 14653,
+        "sha256": "5531f7893fb42b65ede06272be4440e8c0412db7058d0936fbb827e199883a76"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/es.vtt",
+        "bytes": 14653,
+        "sha256": "5531f7893fb42b65ede06272be4440e8c0412db7058d0936fbb827e199883a76"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657442,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661856,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/pt.srt",
+        "bytes": 14863,
+        "sha256": "8b8a3b363d5c0b1e6f72b24f8961f694bac1ed60979ad64b8b438315339bc18a"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/pt.srt",
+        "bytes": 14863,
+        "sha256": "8b8a3b363d5c0b1e6f72b24f8961f694bac1ed60979ad64b8b438315339bc18a"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657443,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661857,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/pt.vtt",
+        "bytes": 14347,
+        "sha256": "6d96d4bd8b6056aec4634c7e6316038445e5178d407bcca9908b2325696b31d8"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/pt.vtt",
+        "bytes": 14347,
+        "sha256": "6d96d4bd8b6056aec4634c7e6316038445e5178d407bcca9908b2325696b31d8"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657444,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661858,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/id.srt",
+        "bytes": 14973,
+        "sha256": "fca7fa9ba1c86c562ea8d1462259299b3108089eef1e07941394e09781dca652"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/id.srt",
+        "bytes": 14973,
+        "sha256": "fca7fa9ba1c86c562ea8d1462259299b3108089eef1e07941394e09781dca652"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657445,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661859,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/id.vtt",
+        "bytes": 14433,
+        "sha256": "016ef9c883b6f4c2fad09d3fc016859fd79869b73a29b1b0928238d08123ccd3"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/id.vtt",
+        "bytes": 14433,
+        "sha256": "016ef9c883b6f4c2fad09d3fc016859fd79869b73a29b1b0928238d08123ccd3"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657446,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661860,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/vi.srt",
+        "bytes": 16435,
+        "sha256": "223a19a5c36fb2e63cddd15b6612ddd6b36ef5d6c95fcac709ba8b371e76a760"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/vi.srt",
+        "bytes": 16435,
+        "sha256": "223a19a5c36fb2e63cddd15b6612ddd6b36ef5d6c95fcac709ba8b371e76a760"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657447,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661861,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/vi.vtt",
+        "bytes": 15987,
+        "sha256": "36bcdcf5bc73209db409f3ee9aebeac4e95f5f1ee093fde3d7e5c6e261640866"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/vi.vtt",
+        "bytes": 15987,
+        "sha256": "36bcdcf5bc73209db409f3ee9aebeac4e95f5f1ee093fde3d7e5c6e261640866"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657448,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661862,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/th.srt",
+        "bytes": 25671,
+        "sha256": "761d1d5fa01a536b8e545d95528dbdf2d3538a95fa039a955d852c97cdb5c509"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/th.srt",
+        "bytes": 25671,
+        "sha256": "761d1d5fa01a536b8e545d95528dbdf2d3538a95fa039a955d852c97cdb5c509"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657449,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661863,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/th.vtt",
+        "bytes": 25323,
+        "sha256": "4350270e56a78ed8f0c8d706c933b4d6a340945328b28626e41487def334d2f7"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/th.vtt",
+        "bytes": 25323,
+        "sha256": "4350270e56a78ed8f0c8d706c933b4d6a340945328b28626e41487def334d2f7"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657450,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661864,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/manifest.json",
+        "bytes": 3892,
+        "sha256": "87f6ec5985e2ddaa726b3faf5207b769c40eed73abfe985b86d7f2714d0bb95b"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/captions/manifest.json",
+        "bytes": 3892,
+        "sha256": "87f6ec5985e2ddaa726b3faf5207b769c40eed73abfe985b86d7f2714d0bb95b"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657451,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661865,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    },
+    {
+      "source": {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/state.json",
+        "bytes": 2334,
+        "sha256": "79ac0e5431dea66a4608e8fb4f972f3e4a91c4b4ac1fe9d6cf4369c6627ea9a4"
+      },
+      "archive": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/before-canonical/state.json",
+        "bytes": 2334,
+        "sha256": "79ac0e5431dea66a4608e8fb4f972f3e4a91c4b4ac1fe9d6cf4369c6627ea9a4"
+      },
+      "source_stat_before": {
+        "dev": 27,
+        "ino": 657284,
+        "nlink": 1
+      },
+      "archive_stat_at_copy": {
+        "dev": 27,
+        "ino": 661866,
+        "nlink": 1
+      },
+      "source_archive_inode_distinct_at_copy": true,
+      "copied_with_exclusive_bytes": true
+    }
+  ],
+  "source_full_listening_completed": false,
+  "foreign_checked_M4A": 0,
+  "no_approval": true,
+  "phase_marker": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/caption-pacing-20261027/native/attempts/Kimi-caption-pacing-v1.json",
+    "bytes": 443,
+    "sha256": "cfedc48e5c57808b25a1656ee0e7bc1cdd56b590ca22f004c9a038297d18c3bd"
+  },
+  "native_dispatch_at": "2026-10-27T02:49:18.887Z",
+  "state_event": {
+    "stage": "captions",
+    "at": "2026-10-27T02:49:18.887Z",
+    "locales": [
+      "zh-TW",
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ]
+  },
+  "actual_output_files": [
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/zh-TW.srt",
+      "bytes": 12864,
+      "sha256": "a2552050986a86a461875c1726e13807c3f313ba21613c15b416d3e0e82cca2b"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/zh-TW.vtt",
+      "bytes": 12504,
+      "sha256": "7945e2b62dcddca1e8c90a7f9521d823c8b38cf207de44a154e0204cbccb466a"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/en.srt",
+      "bytes": 13412,
+      "sha256": "53968b53ed54dc8e3c141cd18cd3eb1ba2ba6df17b5162df320c74082d5b6311"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/en.vtt",
+      "bytes": 12992,
+      "sha256": "2045f8a10be75712177db73a61a5be410f47b9e236e9e36f3d58ce6d2db8d9a3"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ja.srt",
+      "bytes": 17616,
+      "sha256": "cbb1a9467808e3362ae988655e22420f77eff0779f78f9447e66589c815178c7"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ja.vtt",
+      "bytes": 16992,
+      "sha256": "7ba607eda9158f07543cbab691ad9f82eac601156c1a4b39a24fd8eb70a0e731"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ko.srt",
+      "bytes": 16476,
+      "sha256": "90ab3acfc6b2b6c2e2c13652efedc01f239ff35a90b720a6dd5fd7e052f6d55e"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/ko.vtt",
+      "bytes": 15864,
+      "sha256": "ffe76c9c7400f83e63168a23c0a74586495ecdfcb7ce1087a0a0c474bea53771"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/es.srt",
+      "bytes": 15197,
+      "sha256": "5c799eb6ee6ee1c0223680edb7a865a6716a8121eeff15bf5ee383e4662e2c1a"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/es.vtt",
+      "bytes": 14653,
+      "sha256": "5d27ca5e32918be2f8193d298d5ebddef47c0b7fc7d5f3bfa6c8f914325bcd07"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/pt.srt",
+      "bytes": 14863,
+      "sha256": "a67e24423b8707d3c5b074c5652c688673545a678d99166de17b43e78bcfaa45"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/pt.vtt",
+      "bytes": 14347,
+      "sha256": "0f2e3394427b351788035cac0f36d990666c053f43ed8ffcb52ef0bd00ede2c7"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/id.srt",
+      "bytes": 14973,
+      "sha256": "b5f0b9a34a57c679436fad5541397fb67da5bdd41613e2f00c0539af7d957cb4"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/id.vtt",
+      "bytes": 14433,
+      "sha256": "f98d0fddcbe6e0309e72bbe0d65b05e38738e435174ebbe86a71f0ad2169304a"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/vi.srt",
+      "bytes": 16435,
+      "sha256": "57dca5a0c26af694c9ad5203be63e5d32c445be73c5a5e0a3228a497cdd94b3c"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/vi.vtt",
+      "bytes": 15987,
+      "sha256": "5a1ab2612a8e92c494ce874be3d12852b04fb6be8b201e2556f0a0cd26d03c53"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/th.srt",
+      "bytes": 25671,
+      "sha256": "4cfcc5c4f0f78637ce276a5e4ad943814e55afa43e379d275dcb33e6bbbf78dd"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/th.vtt",
+      "bytes": 25323,
+      "sha256": "420910851a7be73667d24eb576b0226485146ea2094c13edf20d2b37f568a319"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/captions/manifest.json",
+      "bytes": 2417,
+      "sha256": "9a0afaa1b3372887b3f602a71006a5a5d1caf75a6ae63e17a84f34478d1ead56"
+    }
+  ],
+  "state_after": {
+    "file": "/workspace/work/videos/kimi-k31-3d-delivery/state.json",
+    "bytes": 2569,
+    "sha256": "fbef3b650c9c9d9581f701d72f156fea316d6658f8540ee2a88af443e2ace628"
+  },
+  "unchanged_protected_before_inventory_files": 1583,
+  "original47_whole_QA_findings_preserved": true,
+  "finished_at": "2026-10-27T02:49:22.758Z"
+}

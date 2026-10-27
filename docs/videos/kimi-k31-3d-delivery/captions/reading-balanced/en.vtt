@@ -1,0 +1,520 @@
+WEBVTT
+
+00:00:00.000 --> 00:00:03.957
+On October 26, 2026,
+I opened two self-made
+
+00:00:03.957 --> 00:00:06.867
+washer teaching models on this computer.
+
+00:00:06.867 --> 00:00:10.507
+Kimi K3.1 Pro promotes 3D downloads.
+
+00:00:10.507 --> 00:00:15.967
+I want to know when a
+file is ready to deliver.
+
+00:00:16.567 --> 00:00:20.067
+I switch this viewer to side view,
+
+00:00:20.067 --> 00:00:22.167
+awaiting the
+dimensions-versus-spec result.
+
+00:00:22.167 --> 00:00:28.867
+The closed-mesh result is still folded
+away. What can it actually guarantee?
+
+00:00:28.867 --> 00:00:35.847
+When the hole's section appears, will
+its narrowest point meet the requirement?
+
+00:00:36.467 --> 00:00:41.400
+In one viewer, I first put both
+self-made files at comparable angles.
+
+00:00:41.400 --> 00:00:46.567
+Put the spec, source files and check
+results together to see the difference.
+
+00:00:46.567 --> 00:00:51.267
+Use the same spec to decide whether to
+keep a received file or send it back.
+
+00:00:51.267 --> 00:00:55.017
+What step separates a beautiful
+3D preview from a usable part?
+
+00:01:00.633 --> 00:01:04.022
+I open the spec beside
+both teaching models,
+
+00:01:04.022 --> 00:01:07.000
+lining up required sizes and model data.
+
+00:01:07.000 --> 00:01:12.700
+The new Kimi version, released October
+24 in Taipei time, includes 3D Make.
+
+00:01:12.700 --> 00:01:18.000
+Its 3D Make lets you preview and
+edit online, and download assets.
+
+00:01:18.600 --> 00:01:21.933
+3D printing assets are an official use,
+
+00:01:21.933 --> 00:01:25.267
+but this washer's delivery
+spec is still unset.
+
+00:01:25.267 --> 00:01:31.633
+Full weights are promised before November
+4, separate from today's asset files.
+
+00:01:31.633 --> 00:01:37.473
+Check this washer's asset format and
+purpose; “downloadable” isn't acceptance.
+
+00:01:38.100 --> 00:01:43.033
+It reported a score of 92.7 on
+a 3D reconstruction benchmark.
+
+00:01:43.033 --> 00:01:48.367
+That was with tools, reconstructing a
+3D shape from images at several angles.
+
+00:01:48.367 --> 00:01:55.107
+This open-model test randomly sampled
+1,000 files from a set of 17,900.
+
+00:01:55.733 --> 00:01:59.010
+The metric measures how
+well the reconstructed
+
+00:01:59.010 --> 00:02:01.467
+shape overlaps the target shape.
+
+00:02:01.467 --> 00:02:05.833
+It isn't the share of usable parts
+after printing a hundred of them.
+
+00:02:05.833 --> 00:02:10.993
+Back to this washer: what specific
+requirement is missing before acceptance?
+
+00:02:11.600 --> 00:02:16.933
+A rod must pass through the center; the
+outer ring must keep a contact surface.
+
+00:02:16.933 --> 00:02:25.900
+“Washer-like” can mean different parts
+to both sides, even if it looks good.
+
+00:02:25.900 --> 00:02:32.480
+That difference may hide in a preview.
+A written spec gives us a comparison.
+
+00:02:33.100 --> 00:02:39.100
+Its 40-millimeter outer diameter fixes
+the space this teaching washer occupies.
+
+00:02:39.100 --> 00:02:46.167
+The nominal 16-millimeter hole is a design
+target, not measured minimum clearance.
+
+00:02:46.167 --> 00:02:50.277
+Its 5-millimeter thickness is the distance
+from the bottom surface to the top.
+
+00:02:50.900 --> 00:02:55.667
+These numbers go into a spec file,
+delivered with both STL files.
+
+00:02:55.667 --> 00:03:02.233
+Units, outer diameter, hole diameter and
+height have fields for unambiguous edits.
+
+00:03:02.233 --> 00:03:07.623
+You're changing your requirements.
+The checker must read the same ones.
+
+00:03:08.233 --> 00:03:13.667
+If that 40 is just a coordinate
+value, what makes it millimeters?
+
+00:03:13.667 --> 00:03:20.767
+STL has no unit label. The external spec
+and import settings fix its meaning.
+
+00:03:20.767 --> 00:03:26.637
+Wrong units resize the whole part.
+Fitting on screen isn't enough.
+
+00:03:27.267 --> 00:03:32.233
+Both files opened here are STL files
+containing actual triangle data.
+
+00:03:32.233 --> 00:03:38.367
+Both use the same coordinate
+orientation and this millimeter spec.
+
+00:03:38.367 --> 00:03:44.817
+Both face the same part spec, letting
+us compare the specified through-hole.
+
+00:03:45.433 --> 00:03:52.533
+I deliberately filled one teaching model's
+center as a delivery counterexample.
+
+00:03:52.533 --> 00:03:54.930
+It's no Kimi generation error.
+
+00:03:54.930 --> 00:04:00.067
+The same outer shape tests
+if we asked about a hole.
+
+00:04:00.067 --> 00:04:07.197
+Controlling the filled-hole difference
+makes an outer-size comparison possible.
+
+00:04:07.800 --> 00:04:15.600
+When a model arrives, you may first
+measure its length, width and height.
+
+00:04:15.600 --> 00:04:20.000
+If that were enough, it should reject
+the example with the filled center too.
+
+00:04:20.000 --> 00:04:24.320
+We now put both models, with the
+same outer shape, through that check.
+
+00:04:24.933 --> 00:04:31.067
+Both measure 40 by 40 by 5 for
+the bounding box we specified.
+
+00:04:31.067 --> 00:04:38.567
+Bounds enclose the outermost coordinates;
+central material won't resize them.
+
+00:04:38.567 --> 00:04:45.587
+The ruler got the outer size right,
+but hasn't answered our hole question.
+
+00:04:46.200 --> 00:04:49.767
+Would checking whether the mesh
+is closed be more reliable?
+
+00:04:49.767 --> 00:04:55.067
+This check asks whether neighboring faces
+correctly meet at each triangle edge.
+
+00:04:55.067 --> 00:05:00.847
+Neither file has boundary edges. That
+alone still can't decide acceptance.
+
+00:05:01.467 --> 00:05:07.500
+A washer can have a through-hole and still
+have a complete surface around that space.
+
+00:05:07.500 --> 00:05:13.800
+Outer wall joins top, top joins the hole's
+inner wall, then back along the bottom.
+
+00:05:13.800 --> 00:05:20.570
+“Closed” means no surface gaps; it
+does not require a solid center.
+
+00:05:21.200 --> 00:05:27.667
+The model with a hole uses 512 triangles;
+the filled-hole example uses 256.
+
+00:05:27.667 --> 00:05:32.752
+Having twice as many faces only
+tells us how this mesh was divided;
+
+00:05:32.752 --> 00:05:34.767
+it isn't a quality score.
+
+00:05:34.767 --> 00:05:41.327
+Bounds and closure missed the central
+passage. We need to check somewhere else.
+
+00:05:41.933 --> 00:05:48.233
+The specified central hole runs through
+the thickness, from bottom to top.
+
+00:05:48.233 --> 00:05:54.033
+A hole elsewhere, or a surface
+circle, can't replace that passage.
+
+00:05:54.033 --> 00:06:00.893
+Both teaching models have bottoms at
+zero and tops at the specified thickness.
+
+00:06:01.500 --> 00:06:07.967
+Unzip the teaching files together, then
+open the included viewer in a browser.
+
+00:06:07.967 --> 00:06:15.200
+Switch top and side views to view outer
+size and the central passage separately.
+
+00:06:15.200 --> 00:06:23.250
+Keep the spec beside the original files;
+read triangles with the same program.
+
+00:06:23.867 --> 00:06:29.867
+Open a terminal in the teaching folder
+and paste the complete command on screen.
+
+00:06:29.867 --> 00:06:37.417
+It reads the teaching model with a
+hole and the external spec we just saw.
+
+00:06:38.033 --> 00:06:40.541
+The checker compares
+the file's coordinates
+
+00:06:40.541 --> 00:06:43.153
+and triangles with the same spec.
+
+00:06:43.767 --> 00:06:48.367
+Paste this command, switching input to
+the deliberately filled-hole example.
+
+00:06:48.367 --> 00:06:56.177
+The program and spec stay put; only
+the model being checked changes.
+
+00:06:56.800 --> 00:07:01.660
+Equal sizes but different results let
+us trace the source of the difference.
+
+00:07:02.267 --> 00:07:06.667
+Both pass the external checks.
+Are triangles blocking the center?
+
+00:07:06.667 --> 00:07:10.380
+Inside the hole, the program samples
+
+00:07:10.380 --> 00:07:13.500
+triangle intersections
+along the thickness.
+
+00:07:13.500 --> 00:07:21.750
+Finite samples give blocked-ray counts,
+not guarantees for arbitrary hole shapes.
+
+00:07:22.367 --> 00:07:26.667
+Not one test ray in the teaching
+model with a hole hits material.
+
+00:07:26.667 --> 00:07:30.333
+In the filled-hole counterexample,
+every test ray is blocked.
+
+00:07:30.333 --> 00:07:38.103
+The opening's same-sized but unusable
+file now has a specific rejection reason.
+
+00:07:38.733 --> 00:07:44.300
+At half height, the model with a hole
+leaves an inner and an outer contour.
+
+00:07:44.300 --> 00:07:49.633
+Inside is empty; the filled example has
+just the outer contour and a solid center.
+
+00:07:49.633 --> 00:07:51.464
+At other heights,
+
+00:07:51.464 --> 00:07:54.983
+the same empty-versus-filled
+center difference remains.
+
+00:07:55.600 --> 00:08:00.933
+Material volume also confirms
+that extra piece in the center.
+
+00:08:00.933 --> 00:08:07.367
+The filled-hole example has much more
+volume, yet its bounds stay the same size.
+
+00:08:07.367 --> 00:08:13.477
+That blocked-center example also
+fails this spec's volume condition.
+
+00:08:14.100 --> 00:08:19.667
+Does an empty center mean its narrowest
+point meets the nominal hole diameter?
+
+00:08:19.667 --> 00:08:25.300
+64 straight segments approximate a circle,
+with vertices at the specified radius.
+
+00:08:25.300 --> 00:08:32.280
+The edge between two vertices lies closer
+to the center than the circular arc.
+
+00:08:32.900 --> 00:08:36.871
+The narrowest diameter is
+about 15.98 millimeters,
+
+00:08:36.871 --> 00:08:39.650
+slightly below the nominal size.
+
+00:08:40.267 --> 00:08:46.317
+The gap is under 0.02 millimeters,
+right where the rod must pass.
+
+00:08:46.933 --> 00:08:52.403
+Check the through-hole at its narrowest
+point; having a hole is not enough.
+
+00:08:53.033 --> 00:08:58.243
+Require minimum clearance to
+reach the nominal hole diameter,
+
+00:08:58.243 --> 00:09:01.200
+and this model goes back.
+
+00:09:01.200 --> 00:09:07.100
+That measurement puts the narrowest
+point below the new requirement.
+
+00:09:07.100 --> 00:09:10.009
+Tighten this washer's
+purpose requirements,
+
+00:09:10.009 --> 00:09:14.580
+and its old limited pass won't carry over.
+
+00:09:15.200 --> 00:09:21.767
+How do we state the added minimum
+clearance so the recipient can check it?
+
+00:09:21.767 --> 00:09:24.421
+Delivery notes: the finished part needs
+
+00:09:24.421 --> 00:09:27.500
+minimum clearance of at
+least 16 millimeters.
+
+00:09:27.500 --> 00:09:33.000
+That's a separate written requirement, not
+a field implemented in the original spec.
+
+00:09:33.000 --> 00:09:39.240
+The checker didn't test this new
+condition. Its pass cannot answer it.
+
+00:09:39.867 --> 00:09:47.767
+This pass covers only the specified
+axis, dimensions, mesh edges and volume.
+
+00:09:47.767 --> 00:09:50.495
+Beyond the arbitrary hole
+shapes mentioned earlier,
+
+00:09:50.495 --> 00:09:53.600
+self-intersections and minimum wall
+thickness throughout are unchecked.
+
+00:09:53.600 --> 00:10:00.940
+Slicing, materials, load capacity and
+whether a real print works remain ahead.
+
+00:10:01.567 --> 00:10:07.900
+Back to Kimi downloads: this checker
+reads only text STL, not images directly.
+
+00:10:07.900 --> 00:10:14.167
+For another mesh format, you'll need
+a tool that can read it correctly.
+
+00:10:14.167 --> 00:10:19.127
+Renaming the extension STL doesn't
+convert the contents into triangle data.
+
+00:10:19.733 --> 00:10:24.873
+To keep editing the hole, what else
+does the package need besides this mesh?
+
+00:10:25.500 --> 00:10:30.667
+Previews show the overall shape; mesh
+files let you inspect the actual surface.
+
+00:10:30.667 --> 00:10:37.400
+To keep editing hole diameter, also get
+a source file preserving how to edit it.
+
+00:10:37.400 --> 00:10:44.710
+A mesh like STL doesn't automatically
+retain how you originally drew the circle.
+
+00:10:45.333 --> 00:10:51.733
+I haven't tested which file
+extensions Kimi actually exports.
+
+00:10:51.733 --> 00:10:59.733
+“Downloadable printing assets” isn't
+a verified STL export tutorial.
+
+00:10:59.733 --> 00:11:07.313
+First check account permissions and
+actual files, then choose the next tool.
+
+00:11:07.933 --> 00:11:11.140
+I'll hand over the
+model files we just saw,
+
+00:11:11.140 --> 00:11:14.000
+the same-version spec and
+the check results together.
+
+00:11:14.000 --> 00:11:20.133
+If the original file changes, can
+these check results still go with it?
+
+00:11:20.133 --> 00:11:27.267
+Change the source file, and old results
+stay with the old file, not the new one.
+
+00:11:27.267 --> 00:11:33.747
+Senders can explain what they did;
+recipients have something to verify again.
+
+00:11:34.367 --> 00:11:40.967
+Return the filled-hole example with its
+results as concrete grounds for revision.
+
+00:11:40.967 --> 00:11:45.797
+We can hand over the model with
+a hole and limited results,
+
+00:11:45.797 --> 00:11:47.867
+but no untested manufacturing guarantee.
+
+00:11:47.867 --> 00:11:52.521
+If the recipient adds that
+minimum-clearance requirement,
+
+00:11:52.521 --> 00:11:55.892
+give the independent
+measurement comparison.
+
+00:11:56.500 --> 00:12:02.567
+Good looks invite a download. A clear
+purpose decides what to check afterward.
+
+00:12:02.567 --> 00:12:06.307
+A file meeting your spec,
+with results traced to it,
+
+00:12:06.307 --> 00:12:08.533
+lets you say where it's usable.
+
+00:12:08.533 --> 00:12:14.333
+This washer must deliver an
+answer the next person can verify.

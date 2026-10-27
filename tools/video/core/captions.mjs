@@ -470,6 +470,40 @@ export function inheritBoundaries(weighted, boundaries, rules = null) {
   return worse ? null : cues;
 }
 
+function displayedWidth(text, rules) {
+  return measure(wrapCue(displayText(text, rules), rules).replace(/\n/g, ""), rules);
+}
+
+/**
+ * A foreign narration-reference cue may get too little of its sentence's time from the
+ * spoken weights even though the complete sentence has room at its reading-speed limit.
+ * Keep its text/cuts and outer window, moving each internal boundary only as far as the
+ * unchanged minimum durations require. An overfull sentence keeps its original timing and
+ * warnings; this never borrows the next sentence's time or extends the caption linger.
+ */
+export function balanceReferenceBoundaries(cues, rules) {
+  const widths = cues.map((cue) => displayedWidth(cue.text, rules));
+  if (!cues.some((cue, index) => widths[index] / ((cue.end_ms - cue.start_ms) / 1000) > rules.maxCps)) return cues;
+  const required = widths.map((width) => {
+    const duration = Math.max(MIN_CUE_MS, Math.ceil(width * 1000 / rules.maxCps));
+    // An exact mathematical threshold can still round just above maxCps in the unchanged
+    // division used by checkCues (21 / 1.4, for example). Spend a millisecond, not a tolerance.
+    return width / (duration / 1000) > rules.maxCps ? duration + 1 : duration;
+  });
+  const start = cues[0].start_ms;
+  const end = cues.at(-1).end_ms;
+  let remaining = required.reduce((sum, duration) => sum + duration, 0);
+  if (remaining > end - start) return cues;
+  let cursor = start;
+  return cues.map((cue, index) => {
+    remaining -= required[index];
+    const until = index + 1 === cues.length ? end : Math.max(cursor + required[index], Math.min(cue.end_ms, end - remaining));
+    const balanced = { ...cue, start_ms: cursor, end_ms: until };
+    cursor = until;
+    return balanced;
+  });
+}
+
 /**
  * Cues for one locale. `texts` maps line id to that locale's text (the narration itself for
  * zh-TW); a line missing from it is skipped and reported. A line whose timeline entry carries
@@ -477,8 +511,10 @@ export function inheritBoundaries(weighted, boundaries, rules = null) {
  * first characters are spoken, when the text is the one that was timed (timePieces). A
  * translation keeps its own cut; given `narration` ({ locale, texts }, the narration's texts by
  * line id), its cue changes take their times from the narration's measured ones
- * (inheritBoundaries). Any other text, or a line the narration's times do not fit, shares the
- * line's time by weight.
+ * (inheritBoundaries). Foreign narration-reference cues without matching measured starts
+ * correct a feasible reading-speed imbalance inside the same window, keeping the existing
+ * inheritance result untouched when it already reads comfortably or cannot be repaired.
+ * Other text, or a line the narration's times do not fit, shares the line's time by weight.
  */
 export function buildCues(timeline, texts, locale, narration = null) {
   const rules = LOCALE_RULES[locale];
@@ -496,10 +532,15 @@ export function buildCues(timeline, texts, locale, narration = null) {
     const speechEnd = start + samplesToMs(line.audio_samples);
     const end = Math.min(frameToMs(line.end_frame), speechEnd + LINGER_MS);
     const chars = Array.isArray(line.timing?.chars) ? line.timing.chars : null;
-    let timedPieces = timePieces(splitText(text, rules, canFit), start, end, rules, canFit, chars);
-    if (chars && narration && narration.locale !== locale) {
-      const boundaries = narrationBoundaries(narration.texts?.[line.id], narration.locale, start, end, chars);
+    const pieces = splitText(text, rules, canFit);
+    let timedPieces = timePieces(pieces, start, end, rules, canFit, chars);
+    if (narration && narration.locale !== locale) {
+      const boundaries = chars && narrationBoundaries(narration.texts?.[line.id], narration.locale, start, end, chars);
+      // Preserve the complete old inheritance decision for passing and overfull lines.
       timedPieces = (boundaries && inheritBoundaries(timedPieces, boundaries, rules)) || timedPieces;
+      if (!(chars && measuredStarts(pieces, start, end, chars))) {
+        timedPieces = balanceReferenceBoundaries(timedPieces, rules);
+      }
     }
     for (const cue of timedPieces) {
       cues.push({ ...cue, line: line.id, text: wrapCue(displayText(cue.text, rules), rules) });
@@ -520,9 +561,10 @@ export function checkCues(cues, locale) {
       if (measure(line, rules) > rules.maxChars) problems.push(`${where}: "${line}" is wider than ${rules.maxChars}`);
     }
     const seconds = (cue.end_ms - cue.start_ms) / 1000;
+    const cps = measure(cue.text.replace(/\n/g, ""), rules) / seconds;
     if (seconds <= 0) problems.push(`${where}: ends before it starts`);
-    else if (measure(cue.text.replace(/\n/g, ""), rules) / seconds > rules.maxCps) {
-      problems.push(`${where}: ${(measure(cue.text, rules) / seconds).toFixed(1)} characters a second, above ${rules.maxCps}`);
+    else if (cps > rules.maxCps) {
+      problems.push(`${where}: ${cps.toFixed(1)} characters a second, above ${rules.maxCps}`);
     }
     if (index > 0 && cue.start_ms < cues[index - 1].end_ms) problems.push(`${where}: overlaps the previous cue`);
   });
