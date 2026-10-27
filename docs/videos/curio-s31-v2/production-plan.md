@@ -40,7 +40,9 @@
 - 實際時間軸45秒鉤子檢查0問題，最長41.033秒；24條loops均可定位。開場52.466667秒，片頭插入frame1574；音訊取樣／SHA全匹配，976秒配樂覆蓋正文且餘30.033秒。16個來源URL各GET一次均200且無redirect，最終QA仍需重查完整組合說明欄。
 - 150個正文視覺states的正式pace檢查0問題。本集drama/explainer適用15秒上限，21張字卡最長13.167秒；212字幕strips與另加的品牌片尾不冒充正文畫面state。
 
-最新2026-10-27 08:47台北：129/129插圖與分鏡通過；中文版預覽已合成，29159frames／30fps＝16:11.967，原生播放器可播放、跳轉並正常播畢。-14LUFS／truepeak-1.9dBFS／musicbed-33.1LUFS，當前source/media綁定與原版SHA均核對。完整QA10/11只剩音訊未核准；三張外語縮圖後續實圖檢查均過（28／26／30px），八語文字review SHA最新，配音尚未生成。帳本US$1.3905、包含歷史重試不確定量的保守控制US$1.578，均低於US$6；配樂／clips新購0。三次TTS局部續作均未完成重錄，仍13flags；下一次語音不得早於09:30台北，先核對journal／lease／process。音訊、final及完整交付包仍未完成，詳見[production-preview-r6.json](production-preview-r6.json)與[batch-queue.md](batch-queue.md)。
+預覽完成快照2026-10-27 08:47台北：129/129插圖與分鏡通過；中文版預覽已合成，29159frames／30fps＝16:11.967，原生播放器可播放、跳轉並正常播畢。-14LUFS／truepeak-1.9dBFS／musicbed-33.1LUFS，當前source/media綁定與原版SHA均核對。完整QA10/11只剩音訊未核准；三張外語縮圖後續實圖檢查均過（28／26／30px），八語文字review SHA最新，配音尚未生成。帳本US$1.3905、包含歷史重試不確定量的保守控制US$1.578，均低於US$6；配樂／clips新購0。該快照尚未通過音訊、final或完整交付包，詳見[production-preview-r6.json](production-preview-r6.json)。
+
+最新09:38台北：09:30退避後已正常續試一次13句／242字元，session16091保存native_exit4，仍為Gemini忙碌／用量限制；21個凍結檔案未變，成功重錄輪數0、journal全空且lease已釋放。累計四個語音指令均未完成重錄，不把拒絕請求算成已錄完的品質重錄輪次。下一次不得早於**11:40台北**，先核對journal／WAV／lease／process，只續試一次；若仍受限再延長退避。沒有新WAV就不再跑ASR或重合成，不提早接下一集。見[speech-retry-20261027-0930.json](speech-retry-20261027-0930.json)及[batch-queue.md](batch-queue.md)。
 
 ## 接續順序
 

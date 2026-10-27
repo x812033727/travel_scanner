@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文版16:11.97預覽與播放器抽查通過；QA10/11，13句旁白受服務限制待重錄，09:30台北後才可續試。八語配音尚未開始 |
+| 1 | curio-s31 | curio-s31-v2 | 中文版16:11.97預覽與播放器抽查通過；QA10/11，13句旁白受服務限制待重錄，最新續試仍失敗，11:40台北後才可再試。八語配音尚未開始 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,13 +34,17 @@
 
 ## 當前斷點
 
-**最新實況：2026-10-27 08:47台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+**最新實況：2026-10-27 09:38台北。以下較早紀錄保留為履歷，以本段為續作入口。**
+
+09:30退避後已只續作一次，session16091於09:35:57派送、結束後立即保存並傳遞native_exit=4；仍為Gemini忙碌／用量限制。dry-run13句／242字元，站內月額度5743335。21個凍結檔案全未變、audio_evidence0問題、journal全空、lease已釋放、成功重錄輪數仍0。原始dispatch與native exit收據均保留，見[speech-retry-20261027-0930.json](speech-retry-20261027-0930.json)；不要重跑`tts-after0930`這個已有dispatch/exit的槽位。沒有新WAV，所以沒有啟動ASR、重合成或新集製作。**下次不得早於11:40台北（03:40Z）**，至少120分鐘退避，再只正常續試一次；仍busy/quota則繼續延長退避，不推定日額或重置時間。
+
+已將「Gemini合成429缺少安全結構診斷」另開P2未認領票`2026-10-27-preserve-safe-gemini-tts-429-diagnostics`，只追蹤adapter/serverlog觀測資訊，不在本影片票改共用工具、設定或部署；該票記錄與pilot-budget票的scope碰撞，實作前仍須查持有者。現有accesslog不足分辨provider busy與quota，不為取得錯誤碼而另送付費probe。
 
 09:06台北站主要求「繼續」後再次唯讀核對：source/script/preview SHA、speechHash、visualHash均與驗證收據相同，audio_evidence0問題、13flags未變、journal全空、lease與本集producer皆無。尚未到09:30，不因一般「繼續」提早重送。另以本機無害退出碼對照確認PowerShell會把未明確傳遞的native非零碼包成外層1，見[speech-exit-scope-20261027.json](speech-exit-scope-20261027.json)。未呼叫provider、未改聲音或預算。今後CLI結束後立即保存並傳遞`$LASTEXITCODE`，將native碼與外層shell碼分開記錄；43490當次native碼沒有保存，不能事後追認成4。
 
 目前沒有仍在執行的本集製作指令；最後EN render session98057已exit0，補產CC也已exit0。最新完整驗證收據為[production-preview-r6.json](production-preview-r6.json)（08:46:47台北快照）：當前source/media綁定、129圖、八語文字覆核SHA、配樂與原版成片SHA均核對通過；原版final SHA仍為`64896215da89ee6f978d3d9e0b41600eacf9b3c21827a1462a955429637343af`。
 
-**下一個可行動斷點是09:30台北後的語音續作**，不是再生圖、重跑既有ASR、反覆問policy或開始S15。先核對最新WAV／journal／lease／process，再只正常續試當前13句一次；若仍busy/quota，保留收據並延長退避。音訊未過，所以audio／final／完整八語交付包均未完成；不能勾整集完成。
+**下一個可行動斷點是11:40台北後的語音續作**，不是再生圖、重跑既有ASR、反覆問policy或開始S15。先核對最新WAV／journal／lease／process，再只正常續試當前13句一次並保存native exit；若仍busy/quota，保留收據並延長退避。音訊未過，所以audio／final／完整八語交付包均未完成；不能勾整集完成。
 
 - 配對已恢復，不再要求站主重配。guarded keyframes最後session `7898` 已正常完成：129/129張judge通過，沒有needs_review；官方keyframeProblems為0，visual_hash `4ff8941e6473b9f4`、speechHash `8af0af8b6fb7d1e4`。六頁最新圖板已由代理實際檢視，依站主推薦選擇委託記錄storyboard核准，並非站主本人觀看。manifest SHA `fe9acad25cb819acd8628709e94550699a325408fc3e3e8e1982b6a2fe4dccf2`。
 - 圖片／評審帳本US$1.3905、保守HTTP嘗試控制總額US$1.578（包含歷史重試不確定量US$0.17），低於US$6；無pending media jobs與保留額。原通過圖保留，只修正consort-basket、049、058、072、074、080耗盡take後的prompt，所有paid failed takes與判定已備份；稿件／聲音／敘事核准綁定未變。
