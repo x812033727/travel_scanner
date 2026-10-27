@@ -1,3 +1,17 @@
+# DuckDB 2.0：原始終端文字近拍已可讀，後台40份附件待審
+
+2026-10-27T22:36:44.094341+00:00。已將兩個場景換成原創操作視窗的無損原圖局部：一般模式完整的 `1200 rows (40 shown)`／`5 columns`，以及代理模式 `1160 rows omitted` 與前後 `P0020`／`P1181`。Root和獨立審查均實看兩張1920×1080輸出及480×270預覽，這些原始英文目標現在可讀。代理圖最上緣P0017局部裁掉，未聲稱所有資料列完整顯示或整片視覺QA通過。
+
+兩份素材的每個RGBA像素都與原圖固定視窗相等，沒有生成式重畫、改字／數字或重排輸出；原生screenshot版型負責放大顯示。caption標明原創視窗局部、2026-10-27重現與虛構fixture2026-10-25。Native render實際新繪2／重用62，舊stock／frame／cache／failed flags與全部原素材保持。當前[video.json](video.json) SHA `1193f92cef36974643dca5027fe07e5b6d0256c20943b24f365120da6a84d998`；[script.md](script.md)仍為 `b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa`，111句完整物件、八語全文、claims、聲音、speech `38cf9292f6945199` 與narrative `ffa6912398093790` 不變。
+
+[Mokaair本片後台](https://mokaair.com/zh-TW/admin/videos?video=duckdb-agent-full-export)同一SCRIPT `3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb` 仍pending，原32份參照及summary／payload／審核紀錄完整保持。新增兩份原始像素裁切PNG、兩張當前native畫面、聯絡表、來源JSON、frames manifest與說明共8份，均已實際完整下載並逐bytes／SHA／MIME核對，總數40；原32檔及不變的script未重傳或重下載，未代核准。
+
+[公開文字收據索引](receipts/genuine-closeups-20261027/index.json)、[獨立像素與可讀性驗核](receipts/genuine-closeups-20261027/independent-closeup-review.json)、[獨立完整下載驗核](receipts/genuine-closeups-20261027/independent-delivery-review.json)與[原生製作來源](authoring/genuine-closeups/README.md)分列範圍。舊本機script核准仍stale、worker script-check仍missing，兩份12/13 false與全部歷次失敗／未知紀錄未改。本輪無新TTS／ASR／付費模型請求；舊TTS4程序／12POST／raw0保持。繁中當前旁白、actual CC、第一章後5秒官方片頭／21秒片尾、至少480秒正文／完整QA，以及八語各經當前音檔核驗的M4A與CC仍未完成；已驗外語M4A仍0/8。
+
+---
+
+以下完整保留先前日期的紀錄；source51263／32附件與當時手機無法讀內嵌stdout的結果屬前版，沒有改寫舊失敗。當前兩處近拍與40份附件以本段及production-progress.json的genuine_closeups為準。
+
 # DuckDB 2.0：兩張真實操作截圖已整合，新版腳本含32份附件待審
 
 2026-10-27T21:37:28.742655+00:00。已把一般模式的「1,200筆只顯示40筆」與代理模式的「中間1,160筆未顯示」兩張實測截圖放入 `human-footer`、`agent-omitted` 的正常原生場景，重新 render 2 狀態、重用62狀態。截圖保留操作重現2026-10-27、原始fixture2026-10-25、原創視窗及虛構資料標示。

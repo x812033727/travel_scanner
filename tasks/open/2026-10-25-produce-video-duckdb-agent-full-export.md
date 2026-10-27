@@ -203,3 +203,15 @@ Root實際套用兩景screenshot與真實asset credit，正常script重產及ren
 
 
 2026-10-27T21:38:51.298328+00:00：兩景整合／新版SCRIPT32與七份附件的實際交付及獨審已完成，本票由Root正常release並設blocked，兩命令真exit0，owner／claimed_at空。責任仍同對話codex-duckdb-20261025／同分支／PR1861，尚未done或移交。內嵌stdout在手機無法逐行讀，正式影片需真實近拍與正常視覺QA；另待當前繁中旁白、actual CC、第一章後官方5秒片頭＋21秒片尾、至少480秒正文及八語各經當前音檔查核的M4A／正式包。舊false與未知／上限保持，已問vendorfacts未回不重問或自動第五TTS，不清另一host ASR lease、不另鏈；無背景producer，不merge／deploy／YouTube。
+
+
+## 原始終端文字無損近拍及同一SCRIPT40附件 — 2026-10-27T22:36:44.094341+00:00
+
+Root實際以普通ffmpeg裁取原始PNG視窗，6子程序及native render真exit0；逐RGBA像素與獨立原圖window全等。原生新繪2／重用62，實看1920與480預覽，原始英文1200 rows (40 shown)／5 columns及1160 rows omitted／P0020→P1181可讀；P0017上緣局部裁掉的限制保留，未稱全列或整片畫面QA通過。當前source1193f92c，scriptb917／narrativeffa6／speech38cf、111完整line物件、八語與claims／聲音不變。
+
+同一pending SCRIPT 3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb 原32refs／summary／payload／其他審核與project保持，再添8份無損裁切、當前畫面／聯絡表／來源／manifest／說明，共40refs；8新檔均完整下載並逐bytes／SHA／MIME核對。舊32檔與不變的script未重傳或重下載，未代核准、未建語言批次。公開文字證據見docs/videos/duckdb-agent-full-export/receipts/genuine-closeups-20261027/index.json；前一來源與摘要固定於不可變commit 4964d8753270b587c7c8b07cd1e33d0a39beb162，當次前態另存repo外B/before，沒有重複複製整段history。
+
+舊stale核准、missing工人check、兩份native12/13 false及4TTS程序／12POST／raw0、全部未知／快取／原上限保持。本輪無TTS／ASR／付費模型請求，繁中旁白／actual CC／官方第一章後5+21／至少480秒正文／完整QA及八語各經當前音檔查核M4A和CC仍未完成。Vendorfacts先前已問待回，不重問或自動第五TTS；另一host全域ASR lease不清、不另鏈。本票責任同對話codex-duckdb-20261025／同分支與PR1861，未done／移交；Root正常release／blocked及實際checks另記。no-auto-merge／不merge／deploy／YouTube延續。
+
+
+Root收尾 2026-10-27T22:41:22.276767+00:00：正常release及blocked真exit0，owner／claimed_at空，仍由本對話codex-duckdb-20261025負責，非done／移交。test:docs-videos真0，236 pass／0 fail／0 skip（30997.57602ms）；check:tasks真0，2183檔、151既有其他scope警告。兩檢查原stdout／stderr／exit與實際handoff收據存B/checks及ROOT-task-release.actual.json；只補當前genuine_closeups，不倒改43個舊progress值。停在當前繁中旁白／實際CC／正式第一章後5+21／正文與完整QA，以及八語checked M4A0/8及實際CC；不是已完成整片。已完成的近拍與sameSCRIPT40／8新檔完整下載不重播。

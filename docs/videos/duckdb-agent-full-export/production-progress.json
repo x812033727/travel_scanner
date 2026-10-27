@@ -1,12 +1,12 @@
 {
   "kind": "fifth_episode_production_progress",
   "schema_version": 1,
-  "updated_at_utc": "2026-10-27T21:37:28.742655+00:00",
+  "updated_at_utc": "2026-10-27T22:36:44.094341+00:00",
   "slug": "duckdb-agent-full-export",
-  "stage": "SCRIPT32_revision_pending_two_actual_screens_integrated_audio_and_all8_media_pending",
+  "stage": "SCRIPT40_pending_original_English_closeups_readable_audio_all8_media_pending",
   "overall_production_completed": false,
   "source_import_complete": true,
-  "source_video_sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c",
+  "source_video_sha256": "1193f92cef36974643dca5027fe07e5b6d0256c20943b24f365120da6a84d998",
   "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
   "speech_hash": "38cf9292f6945199",
   "voice_unchanged": {
@@ -1329,6 +1329,229 @@
         "file": "/workspace/work/ai-tech-next/duckdb-screen-integration-20261027/docs-prep/apply.actual.json",
         "bytes": 10409,
         "sha256": "e61659191974357231c4fc5624f66f1121e195e06d7a065108977cc90395d896"
+      }
+    }
+  },
+  "genuine_closeups": {
+    "documentation_updated_at": "2026-10-27T22:36:44.094341+00:00",
+    "previous_commit": "4964d8753270b587c7c8b07cd1e33d0a39beb162",
+    "source_before": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+      "bytes": 58952,
+      "sha256": "51263f2dd9a46645a3849a40fd7ae774eaf1563c090cff65324e01d351bd7c4c"
+    },
+    "source_after": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+      "bytes": 59912,
+      "sha256": "1193f92cef36974643dca5027fe07e5b6d0256c20943b24f365120da6a84d998"
+    },
+    "script_unchanged": {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/script.md",
+      "bytes": 15260,
+      "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+    },
+    "speech_hash": "38cf9292f6945199",
+    "narrative_hash": "ffa6912398093790",
+    "visual_hash": "9689291911828a84",
+    "source_full111_all8_claims_voice_lexicon_unchanged": true,
+    "crop_source_proofs": [
+      {
+        "scene": "human-footer",
+        "original_png": {
+          "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/screens/02-scrolled.png",
+          "bytes": 191668,
+          "sha256": "19fcc33c270f1a94c6190f1cbf63b71ce3a572905f9ca992324fc3f32ca2fb68"
+        },
+        "rectangle": {
+          "x": 80,
+          "y": 700,
+          "w": 960,
+          "h": 250
+        },
+        "crop": {
+          "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/run-once/crops/human-footer.png",
+          "bytes": 26822,
+          "sha256": "700aab7539fc48c86cbb5505566e398a503960bf0c5111d2fd432340b728a9fb"
+        },
+        "stock": {
+          "file": "/workspace/work/videos/duckdb-agent-full-export/stock/700aab7539fc48c86cbb5505566e398a503960bf0c5111d2fd432340b728a9fb.png",
+          "bytes": 26822,
+          "sha256": "700aab7539fc48c86cbb5505566e398a503960bf0c5111d2fd432340b728a9fb"
+        },
+        "RGBA_bytes": 960000,
+        "actual_RGBA_sha256": "c1daafc603f4bd7bbdec92f9fdc4acb927e67494975525ba558ce49fd3f1b2aa",
+        "independent_expected_RGBA_sha256": "c1daafc603f4bd7bbdec92f9fdc4acb927e67494975525ba558ce49fd3f1b2aa",
+        "every_pixel_exact_original_window": true
+      },
+      {
+        "scene": "agent-omitted",
+        "original_png": {
+          "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/screens/03-scrolled.png",
+          "bytes": 197598,
+          "sha256": "2cbd2f34aae16862142f117f39012dbb1c95b894915b57e72418222292478d69"
+        },
+        "rectangle": {
+          "x": 80,
+          "y": 425,
+          "w": 650,
+          "h": 220
+        },
+        "crop": {
+          "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/run-once/crops/agent-omitted.png",
+          "bytes": 24541,
+          "sha256": "42f408248be398cccb1857f5ee9672b07cd09fc3f13e9f96164366e8da605235"
+        },
+        "stock": {
+          "file": "/workspace/work/videos/duckdb-agent-full-export/stock/42f408248be398cccb1857f5ee9672b07cd09fc3f13e9f96164366e8da605235.png",
+          "bytes": 24541,
+          "sha256": "42f408248be398cccb1857f5ee9672b07cd09fc3f13e9f96164366e8da605235"
+        },
+        "RGBA_bytes": 572000,
+        "actual_RGBA_sha256": "7c6c8d91c638b11b10c25b14402132345251fb71794e5ce4cc27155ec15c878c",
+        "independent_expected_RGBA_sha256": "7c6c8d91c638b11b10c25b14402132345251fb71794e5ce4cc27155ec15c878c",
+        "every_pixel_exact_original_window": true
+      }
+    ],
+    "actual_visual_scope": {
+      "actual_fullsize_opened": 2,
+      "actual480_opened": 2,
+      "original_English_keytext_readable_at480": true,
+      "observed_by_scene": {
+        "human-footer": "Original English1200 rows (40 shown) and5columns are legible at480, with completeP1195..P1200 tail context; Chinesekeyband1200total/40shown remains consistent.",
+        "agent-omitted": "Original English1160 rows omitted is legible at480 between completeP0020 andP1181, withP1182/P1183 nearby.",
+        "provenance": "Outsidecaption truthfully says original-window excerpt,2026-10-27replay and2026-10-25fictionalfixture; no secret/personalidentity seen, no CC/key overlap."
+      },
+      "limitations": [
+        "P0017 at verytop of agentcrop is partially clipped; no claim everyrow isfullyshown. Targetomittedmarker/P0020/P1181 arecomplete andreadable.",
+        "This is targeted original-English screenshotkeytext acceptance only, not everyCLI command/row or a continuous wholefilm review.",
+        "No actual narration/audio/listening/ASR/CC/M4A/branding/fullfilmQA/languagebatch orserver/localapproval performed."
+      ]
+    },
+    "targeted_original_English_at480_readable": true,
+    "all_rows_or_wholefilm_visual_QA_accepted": false,
+    "actual_production": {
+      "session": 7430,
+      "pid": 12500,
+      "tool_exit": 0,
+      "stage": {
+        "stage": "render",
+        "at": "2026-10-27T22:24:08.490Z",
+        "states": 64,
+        "drawn": 2,
+        "reused": 62,
+        "strips": 0,
+        "seconds": 8,
+        "channel": "bundled chromium"
+      },
+      "receipt": "receipts/genuine-closeups-20261027/production.actual.json"
+    },
+    "native_script_approval_unchanged": "stale",
+    "worker_script_check_unchanged": "missing",
+    "old_two_native12of13_false_and_all_failure_history_preserved": true,
+    "same_pending_script_review_id": "3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb",
+    "script_review_status": "pending",
+    "old32_refs_summary_payload_all_project_preserved": true,
+    "retained_old_refs": 32,
+    "new_files": 8,
+    "current_refs": 40,
+    "full_new8_binary_readback_verified": true,
+    "actual_delivery": {
+      "session": 25924,
+      "pid": 12954,
+      "tool_exit": 0,
+      "counts": {
+        "auth_reads": 1,
+        "project_GET": 4,
+        "file_PUT": 8,
+        "review_POST": 1,
+        "file_GET": 8,
+        "denied": 0
+      },
+      "receipt": "receipts/genuine-closeups-20261027/delivery.actual.json"
+    },
+    "public_receipts_index": "receipts/genuine-closeups-20261027/index.json",
+    "independent_component_review": "receipts/genuine-closeups-20261027/independent-closeup-review.json",
+    "independent_delivery_review": "receipts/genuine-closeups-20261027/independent-delivery-review.json",
+    "original_source_and_old_mutable_versions_pinned_to_prior_commit_and_Root_before": true,
+    "no_new_recursive_history_copy": true,
+    "new_TTS_ASR_paid_model_calls": 0,
+    "foreign_checked_M4A": 0,
+    "actual_CC": 0,
+    "server_approval": false,
+    "whole_episode_complete": false,
+    "normal_API_no_atomic_CAS_limitation": true,
+    "Root_actual_docs_apply": {
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/docs-prep/apply.actual.json",
+        "bytes": 6862,
+        "sha256": "e56e3c54049b04dc6544fe9e009ff7e1ecfa18dca9b632f59a08f0228d4138a5"
+      },
+      "tool_exit": 0,
+      "tool_chunk": "95e8d1",
+      "applied_paths": 17
+    },
+    "Root_actual_handoff": {
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/ROOT-task-release.actual.json",
+        "bytes": 1031,
+        "sha256": "869a15f5e17dbe2a56f18f6d1830993868da312480766f1f0ceea004199c77b4"
+      },
+      "tool_exit": 0,
+      "tool_chunk": "f52a59",
+      "status": "blocked",
+      "owner": null,
+      "claimed_at": null,
+      "responsibility_unchanged": "codex-duckdb-20261025; same conversation, branch and PR1861",
+      "not_done_or_transferred": true
+    },
+    "Root_actual_checks": {
+      "at": "2026-10-27T22:41:22.276767+00:00",
+      "docs_videos": {
+        "tool_session": 7709,
+        "tool_exit": 0,
+        "tool_chunk": "042c7f",
+        "receipt": {
+          "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/checks/docs-videos.exit.json",
+          "bytes": 342,
+          "sha256": "0c835a6b1da50997f80dcb6411ad9819c85aa9cd1a270ff4d88245db0ba7c356"
+        },
+        "stdout": {
+          "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/checks/docs-videos.stdout",
+          "bytes": 19581,
+          "sha256": "23013c3d610d4341e3fe421c1b64408017b601e85cb87f3074a0f49d57bd25df"
+        },
+        "stderr": {
+          "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/checks/docs-videos.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "tests": 236,
+        "pass": 236,
+        "fail": 0,
+        "skip": 0,
+        "duration_ms": 30997.57602
+      },
+      "tasks": {
+        "tool_session": 93715,
+        "tool_exit": 0,
+        "tool_chunk": "c91604",
+        "receipt": {
+          "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/checks/tasks.exit.json",
+          "bytes": 324,
+          "sha256": "5e2761eab5c94757c0732a8f796678f1efc5b114108d982fe9d77dc6f821dfd3"
+        },
+        "stdout": {
+          "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/checks/tasks.stdout",
+          "bytes": 27341,
+          "sha256": "b67737d117105c7973b3c3e28c42f42b7cf680cc4fdf1ba75d903f47586c8889"
+        },
+        "stderr": {
+          "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/checks/tasks.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "files": 2183,
+        "existing_other_scope_warnings": 151
       }
     }
   }
