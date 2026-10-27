@@ -1,0 +1,415 @@
+{
+  "title": "ARTEX: peretas AI bobol cloud kurang dari 3 jam, bukan tebak sandi tapi ambil kuncimu",
+  "description": "21 Oktober 2026, Microsoft merilis laporan: kelompok peretas terkait pemerintah China dinilai memakai ARTEX, alat uji penetrasi otonom berbasis AI, untuk menyerang ratusan organisasi; beberapa kali, dari target hingga hak admin cloud kurang dari tiga jam. Lalu 91APP di Taiwan juga menulis jejak ARTEX di laporan investigasinya. Lewat tiga laporan resmi, lihat dari mana ia masuk: satu gelombang 150 ribu tebakan sandi gagal semua; jalan masuknya aplikasi yang sudah diizinkan dan kunci database di GitLab. Lalu satu perintah git memulihkan sandi terhapus dari riwayat, dan terakhir tiga tempat menarik kunci kembali.\nUntuk yang login ke banyak layanan pakai akun Google, engineer dan pemula yang mengunggah proyek ke GitHub, serta admin Microsoft 365 kantor.\n\nDirekam 27/10/2026. Tebakan sandi, aplikasi yang diizinkan, kurang dari tiga jam, 2.250 tenant, dan kredensial baru sebagai pintu belakang: Microsoft Threat Intelligence, 21/10. Appsmith, kunci database di GitLab, dan waktunya: laporan 18 hari 91APP, 22/10. AI menurunkan biaya serangan dan saran pertahanan: badan keamanan siber Taiwan, 21/10. Kepala badan soal AI menyerah pada sebagian perusahaan dan serangan serupa di Taiwan pada Juli: iThome, hari yang sama. Kredensial teks polos Zeabur, yang tak terganti di Agustus, dan 3,21 juta variabel lingkungan: laporan awal Zeabur 19/10, yang tidak menyebut ARTEX dan tidak bilang penyerang memakai AI. Pengecualian saat ganti sandi: Bantuan Akun Google; cabut atau rotasi dulu: GitHub Docs. Terminal di video: repositori demo yang sungguh dijalankan 2026-10-27 (Ubuntu 24.04.5, git 2.43.0); sandinya palsu. \"Menurutku\" dan \"yang tak kutemukan\" adalah opini pemilik kanal. Tanpa peragaan serangan maupun tautan alat serangan.\n\nPerintah di video:\ngit log --oneline -G PASSWORD\ngit show a6036e8:.env\ngit log --oneline -G API_KEY\n\nDi daftar izin Google-mu, berapa aplikasi yang sudah tak kamu kenali? Tulis di komentar.",
+  "tags": [
+    "ARTEX",
+    "peretas AI",
+    "91APP keamanan siber",
+    "serangan AI",
+    "Microsoft Storm-0940",
+    "Zeabur kebocoran data",
+    "git sandi terhapus",
+    "aplikasi OAuth",
+    "keamanan siber Taiwan",
+    "berita AI"
+  ],
+  "thumbnail": {
+    "tag": "Berita AI",
+    "headline": "**Ambil kunci**\nbukan bobol",
+    "sub": "ARTEX: cara peretas AI masuk, cara tarik kuncimu"
+  },
+  "chapters": {
+    "open": "Apa itu ARTEX?",
+    "acs": "Bukan perusahaan besar, aman?",
+    "ms-page": "Bagaimana AI bisa masuk?",
+    "route-91app": "Di mana kunci kasus Taiwan?",
+    "google": "Cukup ganti sandi?",
+    "ls": "Cara cari kunciku sendiri",
+    "view": "Pendapatku: lakukan ini dulu"
+  },
+  "source_hashes": {
+    "chapters": {
+      "open": "15121923ce90",
+      "acs": "b5051d10397a",
+      "ms-page": "81c7a6e6c3f5",
+      "route-91app": "5f0715490f6a",
+      "google": "a3f0c745a54b",
+      "ls": "2193a36be479",
+      "view": "f6511ebd3f37"
+    },
+    "title": "45311fe332ff",
+    "description": "f622f6a39e94",
+    "tags": "2ab87fe05065",
+    "thumbnail": "4992c00258f5"
+  },
+  "lines": {
+    "y9kb": {
+      "source_hash": "9ec5aec269f1",
+      "text": "21 Oktober, Microsoft menilai peretas terkait pemerintah China,"
+    },
+    "7tzn": {
+      "source_hash": "16fdbe07f16d",
+      "text": "memakai alat AI ARTEX untuk menyerang ratusan organisasi;"
+    },
+    "tiky": {
+      "source_hash": "b6dccdcd3daa",
+      "text": "beberapa kali, kurang dari tiga jam, menguasai hak admin cloud;"
+    },
+    "cjk6": {
+      "source_hash": "552f1cc343c0",
+      "text": "Lalu, 91APP dari Taiwan juga menulis nama ARTEX di laporan investigasinya."
+    },
+    "3h5e": {
+      "source_hash": "5d339fd29ab2",
+      "text": "Kamu mungkin bertanya: aku bukan perusahaan besar, sandiku panjang; apa urusannya?"
+    },
+    "4irk": {
+      "source_hash": "531b4c28ce9b",
+      "text": "Ada. Microsoft mencatat satu gelombang:"
+    },
+    "6pn9": {
+      "source_hash": "a5648e941f38",
+      "text": "150 ribu tebakan sandi, hasilnya beda dari dugaanmu;"
+    },
+    "yfkf": {
+      "source_hash": "7cc400f1c4a5",
+      "text": "laporan e-commerce Taiwan itu menulis di mana kunci yang ditemukan penyerang berada;"
+    },
+    "v5t8": {
+      "source_hash": "046f85a2f9f1",
+      "text": "lalu soal ganti sandi, tertulis di bantuan Google;"
+    },
+    "vbbm": {
+      "source_hash": "ebab78f91bce",
+      "text": "Ingat satu hal: sandi yang sudah dihapus bisa kembali dari riwayat dengan satu perintah."
+    },
+    "kj3y": {
+      "source_hash": "86a1b1f0a491",
+      "text": "Bukan perusahaan besar? Kata badan keamanan siber Taiwan, AI membuat serangan lebih murah dan cepat;"
+    },
+    "na73": {
+      "source_hash": "048023ba9375",
+      "text": "Kepalanya juga bilang: di sebagian perusahaan yang kokoh, AI menimbang biaya, menyerah, pindah ke yang lemah."
+    },
+    "uny5": {
+      "source_hash": "715c336bbe03",
+      "text": "Peretas AI mirip pencuri yang cek keset, bukan pembobol gembok."
+    },
+    "yfsm": {
+      "source_hash": "d41452698666",
+      "text": "Bobol gembok: pintu demi pintu, dan gembok bagus tak tembus;"
+    },
+    "ugft": {
+      "source_hash": "08610ff7f028",
+      "text": "Cek keset: ribuan rumah semalam; dapat kunci cadangan, masuk."
+    },
+    "52j9": {
+      "source_hash": "28407b4a699f",
+      "text": "Jadi, keset mana saja yang dia periksa?"
+    },
+    "wq9c": {
+      "source_hash": "81683cc5f544",
+      "text": "Jawabannya ada di laporan Microsoft ini, tautannya di deskripsi."
+    },
+    "a6cm": {
+      "source_hash": "5d133bf72de9",
+      "text": "150 ribu yang tadi adalah gelombang ini: 10 sampai 14 Oktober, puncaknya 2.900 per menit;"
+    },
+    "5xut": {
+      "source_hash": "ae4049f81508",
+      "text": "Hampir 98% jawabannya: akun terkunci;"
+    },
+    "krad": {
+      "source_hash": "29bab557afd3",
+      "text": "Login berhasil: nol."
+    },
+    "yqhv": {
+      "source_hash": "e205e657949f",
+      "text": "Kamu pikir: sandi dan verifikasi 2 langkah menahan; aman?"
+    },
+    "bqc5": {
+      "source_hash": "65483ad050c2",
+      "text": "Masalahnya, dia tak perlu lewat pintu itu."
+    },
+    "wqed": {
+      "source_hash": "345448d2a316",
+      "text": "Laporan: dia dapat kredensial aplikasi backup ConnectWise,"
+    },
+    "j7dk": {
+      "source_hash": "d2d299aa8d95",
+      "text": "lalu lewat aplikasi yang sudah diizinkan, masuk ke Microsoft 365 klien;"
+    },
+    "anq3": {
+      "source_hash": "9dee78c7ecdc",
+      "text": "Tak ada yang perlu login, jadi verifikasi 2 langkah tak menahan."
+    },
+    "v7kk": {
+      "source_hash": "0a1c6139e235",
+      "text": "AI membuatnya secepat mesin: mencoba login ke lebih dari 2.250 lingkungan cloud perusahaan."
+    },
+    "zz9s": {
+      "source_hash": "2a56cc7c5822",
+      "text": "Kurang dari tiga jam tadi asalnya dari sini: pintu sudah terbuka, AI hanya berjalan cepat."
+    },
+    "ubmv": {
+      "source_hash": "6d6afad3c162",
+      "text": "Lalu di Taiwan, kali ini kuncinya disimpan di mana?"
+    },
+    "kwit": {
+      "source_hash": "60a04b2cf132",
+      "text": "Ada di laporan e-commerce tadi."
+    },
+    "d7ke": {
+      "source_hash": "a578aae063e7",
+      "text": "Alat internal Appsmith tak diperbarui; dari situ penyerang masuk ke jaringan internal;"
+    },
+    "wzkp": {
+      "source_hash": "c6e6e3406c6e",
+      "text": "lalu di GitLab, dia dapat kunci database;"
+    },
+    "kfdv": {
+      "source_hash": "f5beec9fa00d",
+      "text": "terakhir, dengan kunci itu masuk database pesanan, tanpa data kartu kredit."
+    },
+    "qb46": {
+      "source_hash": "b08630ba2e23",
+      "text": "Tak ada celah baru: hanya pintu tak ditutup rapat dan kunci di repositori."
+    },
+    "g47a": {
+      "source_hash": "85be112cd5ac",
+      "text": "Dan kunci ini belum yang paling sembarangan."
+    },
+    "3j5c": {
+      "source_hash": "4a678bfc51da",
+      "text": "Minggu itu, Zeabur di Taiwan juga dibobol;"
+    },
+    "gpaj": {
+      "source_hash": "055027054734",
+      "text": "Laporannya tak menyebut ARTEX; yang dicatat: cara kuncinya disimpan:"
+    },
+    "nwji": {
+      "source_hash": "f9782dc30d3b",
+      "text": "penyerang memakai kredensial admin awet, dalam teks polos;"
+    },
+    "siri": {
+      "source_hash": "3e3e735bb015",
+      "text": "setelah insiden Agustus kunci diganti, tapi yang ini terlewat."
+    },
+    "29n6": {
+      "source_hash": "092655035988",
+      "text": "Dalam 37 menit, 3,2 juta lebih variabel lingkungan diambil dari database platform."
+    },
+    "fvak": {
+      "source_hash": "d184f18968e7",
+      "text": "Jadi pesan pertamanya: ganti semua sandi dan kunci, walau sudah diganti Agustus."
+    },
+    "kemy": {
+      "source_hash": "8940de443fb0",
+      "text": "Kalau sandiku kuganti, beres, kan?"
+    },
+    "bc63": {
+      "source_hash": "cb0ef5fd77ec",
+      "text": "Bantuan Google: ganti sandi mengeluarkanmu dari semua perangkat;"
+    },
+    "ei35": {
+      "source_hash": "8cf674c9e1d2",
+      "text": "tapi satu pengecualiannya: aplikasi pihak ketiga yang kamu beri akses ke akun."
+    },
+    "qyat": {
+      "source_hash": "026d37580698",
+      "text": "Ganti gembok; kunci di bawah keset membuka pintu lain."
+    },
+    "dqii": {
+      "source_hash": "463b8b5b6001",
+      "text": "Di perusahaan pun sama: penyerang menambah kredensialnya ke aplikasi;"
+    },
+    "f3e5": {
+      "source_hash": "f3cd35bd961c",
+      "text": "meski aplikasinya beres, kunci baru itu bisa tetap jadi pintu belakang."
+    },
+    "urua": {
+      "source_hash": "56b6b614ff09",
+      "text": "Jadi bukan hanya ganti gembok: cari dan tarik kembali kunci yang tersebar."
+    },
+    "8csm": {
+      "source_hash": "1a6f5696f578",
+      "text": "Lalu, apa yang ada di bawah kesetku?"
+    },
+    "9c5b": {
+      "source_hash": "64fd153f9d69",
+      "text": "Aku buat repositori demo, commit file konfigurasi berisi sandi database palsu;"
+    },
+    "7iw4": {
+      "source_hash": "c7044b38646a",
+      "text": "Berikutnya kuhapus, masuk ke .gitignore."
+    },
+    "yzmt": {
+      "source_hash": "85b48813db60",
+      "text": "Lihat isi folder: file konfigurasinya hilang."
+    },
+    "tpcz": {
+      "source_hash": "9c70c5942b84",
+      "text": "Lalu cara paling umum: cari kata PASSWORD di seluruh folder:"
+    },
+    "hvxy": {
+      "source_hash": "ba1686108eb0",
+      "text": "Tak ketemu. Sampai sini, kebanyakan orang mengira sandinya sudah hilang."
+    },
+    "bk5g": {
+      "source_hash": "d14982d9536d",
+      "text": "Masalahnya: benarkah sudah terhapus?"
+    },
+    "qyg2": {
+      "source_hash": "9691cf6c1b50",
+      "text": "Satu perintah ke riwayat git: commit mana yang mengubah baris berisi PASSWORD?"
+    },
+    "tzyy": {
+      "source_hash": "196ff7c71926",
+      "text": "Keduanya muncul: satu menghapus, satu menambahkan."
+    },
+    "a497": {
+      "source_hash": "a5f16b99e9d8",
+      "text": "Lalu git show ke commit penambahan dan nama filenya;"
+    },
+    "5uez": {
+      "source_hash": "387de5574b46",
+      "text": "Seluruh file konfigurasi kembali utuh, sandinya di baris kedua."
+    },
+    "qt6f": {
+      "source_hash": "fe048fb60020",
+      "text": "Dihapus dan di .gitignore, satu perintah tetap mengembalikannya."
+    },
+    "urui": {
+      "source_hash": "126b2bf40b0a",
+      "text": "Kunci database tadi juga ada di repositori GitLab; caranya, laporan tak menulis."
+    },
+    "ishi": {
+      "source_hash": "4644d0db2922",
+      "text": "Di proyekmu, ganti PASSWORD dengan nama kuncimu,"
+    },
+    "asmx": {
+      "source_hash": "582e7addb5b1",
+      "text": "misalnya API KEY atau SECRET;"
+    },
+    "gzty": {
+      "source_hash": "da83b4f39297",
+      "text": "Ketemu? Lihat file commit itu pakai git show;"
+    },
+    "nq6x": {
+      "source_hash": "8f46aacdd4d3",
+      "text": "Kalau tak ada output, riwayat branch saat ini tak punya kata itu."
+    },
+    "rgnn": {
+      "source_hash": "99f883f30c63",
+      "text": "Ketemu? Kamu mungkin pikir: hapus riwayatnya?"
+    },
+    "4qg5": {
+      "source_hash": "a22278c919f1",
+      "text": "GitHub Docs menaruh urutannya paling depan: langkah pertama, cabut atau rotasi kunci itu."
+    },
+    "epn2": {
+      "source_hash": "45b154967e8b",
+      "text": "Jadi matikan kunci itu, buat yang baru;"
+    },
+    "wmyv": {
+      "source_hash": "382ecd2b0feb",
+      "text": "Tulis ulang riwayat bisa nanti, sebab hanya mengubah salinanmu;"
+    },
+    "qb97": {
+      "source_hash": "a8ada1663602",
+      "text": "Riwayat lama di PC lain dan fork tetap ada; kabari pemilik salinan."
+    },
+    "uwmf": {
+      "source_hash": "05c7f0129b7a",
+      "text": "Tapi repositori hanya keset programmer; kalau bukan programmer, di mana?"
+    },
+    "3t35": {
+      "source_hash": "7195d4e40be5",
+      "text": "Di daftar izin akunmu."
+    },
+    "vtxp": {
+      "source_hash": "30bcd9820c12",
+      "text": "Akun Google punya halaman aplikasi terhubung; buka detailnya untuk hapus akses;"
+    },
+    "2wc7": {
+      "source_hash": "899d44c9ed09",
+      "text": "Di pengaturan GitHub ada aplikasi OAuth yang diizinkan; cabut yang tak dikenal."
+    },
+    "yt6t": {
+      "source_hash": "886ae4112912",
+      "text": "Prinsipnya sederhana: tak dikenal atau tak dipakai, hapus dulu; perlu, izinkan lagi."
+    },
+    "78d5": {
+      "source_hash": "82462964a42a",
+      "text": "Perusahaan lebih repot: semua ganti sandi belum tentu cukup."
+    },
+    "masb": {
+      "source_hash": "3a87c85c9d55",
+      "text": "Jadi pengelola Microsoft 365 perlu cek log login aplikasi, bukan hanya karyawan;"
+    },
+    "ji9j": {
+      "source_hash": "82b020f03357",
+      "text": "kredensial baru pada aplikasi;"
+    },
+    "pw7e": {
+      "source_hash": "10b73fddfc13",
+      "text": "perubahan izin dan peran admin."
+    },
+    "jfjh": {
+      "source_hash": "7015f50fac24",
+      "text": "Yang tak bisa ditarik oleh ganti sandi tadi: kunci di tiga tempat ini."
+    },
+    "txje": {
+      "source_hash": "06f674cbbc46",
+      "text": "Tiga tempat beres, peretas AI masih menemukanmu?"
+    },
+    "v4ev": {
+      "source_hash": "001815edc0f4",
+      "text": "Menurutku, peretas AI ini tak menciptakan pintu baru;"
+    },
+    "uesa": {
+      "source_hash": "c9e10a6439c3",
+      "text": "dia hanya membuat kunci tergeletak lebih cepat ketemu."
+    },
+    "2yvb": {
+      "source_hash": "d6b5b97bc3dc",
+      "text": "Jadi ini urusanmu juga: dia memilih pintu paling murah dulu;"
+    },
+    "vkgi": {
+      "source_hash": "1d5df21d8007",
+      "text": "Yang bisa kamu lakukan: jangan jadi pintu itu."
+    },
+    "8e9n": {
+      "source_hash": "7e4aaa5033ca",
+      "text": "Yang tak kutemukan: jumlah member terdampak; laporannya bilang diumumkan nanti;"
+    },
+    "i653": {
+      "source_hash": "d862861d6923",
+      "text": "Juli lalu badan siber lihat serangan AI serupa di Taiwan; alatnya tak disebut."
+    },
+    "hfq9": {
+      "source_hash": "748f2472617e",
+      "text": "Hari ini, cek daftar izin Google dan GitHub;"
+    },
+    "qgux": {
+      "source_hash": "d9b49162edcb",
+      "text": "Minggu ini, jalankan perintah tadi di repositorimu;"
+    },
+    "ijkr": {
+      "source_hash": "8778aa3dbf7b",
+      "text": "Lalu, kunci diberi kedaluwarsa; saran badan siber: matikan akun di hari keluar, cek izin per kuartal."
+    },
+    "wkg5": {
+      "source_hash": "413505d64090",
+      "text": "Tarik kunci, tak cuma gembok."
+    },
+    "zha9": {
+      "source_hash": "e660e332c916",
+      "text": "Hapus berapa? Tulis komentar."
+    },
+    "8y54": {
+      "source_hash": "3bfeebb0032d",
+      "text": "Subscribe: tiap video, satu keputusan untuk diambil."
+    }
+  }
+}
