@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "episode": "kimi-k31-3d-delivery",
-  "updated_at": "2026-10-27T03:08:57.879Z",
+  "updated_at": "2026-10-27T04:35:21.091780+00:00",
   "status": "pending_manual_final_CC9_reading_balanced_metadata9_source_unlistened_audition_verified_foreign_audio_held",
   "owner": "codex-ai-tech-news",
   "branch": "codex/ai-tech-kimi-20261026",
@@ -14,12 +14,12 @@
     "source_approval": false,
     "raw_stage_field": "narration approved",
     "raw_stage_interpretation": "Name of the next reported checklist stage. narration_approved.done and final_video_approved.done are both false; this text is not an approval.",
-    "last_authenticated_readback_at": "2026-10-27T03:05:41.223Z",
+    "last_authenticated_readback_at": "2026-10-27T04:32:19.892Z",
     "readback_is_historical_snapshot": true,
     "binary_media_readback_completed": true,
     "pending_candidate_submission": "actual completed native manual final review, pending undecided",
     "server_language_choices_saved": false,
-    "readback_snapshot_scope": "Current same-pending35: changed narration-reference CCs replaced at original indices, previous changed CC binaries retained; all other references and complete payload/QAfalses/metadata/choices/history exact. Normal full physical readback completed. No dub or approval.",
+    "readback_snapshot_scope": "Same pending42: six concise narration-reference SRT replacements, six old CC archives and one report; all old35 binaries live. Full normal42 binary verification complete; metadata/QAfalses/choices/history exact. No dub or approval.",
     "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
     "normal_manual_review": true,
     "verified_binary_refs": [
@@ -55,14 +55,14 @@
       },
       {
         "role": "evidence_cc_narration_en",
-        "sha256": "53968b53ed54dc8e3c141cd18cd3eb1ba2ba6df17b5162df320c74082d5b6311",
-        "size": 13412,
+        "sha256": "5eef5e16e45889a16e6c8d3af8db31082a5453568e3e2fadf2b3bfdd48a7d36e",
+        "size": 13392,
         "content_type": "text/plain"
       },
       {
         "role": "evidence_cc_narration_ja",
-        "sha256": "cbb1a9467808e3362ae988655e22420f77eff0779f78f9447e66589c815178c7",
-        "size": 17616,
+        "sha256": "745657180097734039c856e2163c199f9601cbc948f251a7e14b078411cd18c8",
+        "size": 17544,
         "content_type": "text/plain"
       },
       {
@@ -73,26 +73,26 @@
       },
       {
         "role": "evidence_cc_narration_es",
-        "sha256": "5c799eb6ee6ee1c0223680edb7a865a6716a8121eeff15bf5ee383e4662e2c1a",
-        "size": 15197,
+        "sha256": "0ee2f1f2eae6f4cd9178d3317aeb48e8a944e83ce21524388904f4589ff8a165",
+        "size": 15138,
         "content_type": "text/plain"
       },
       {
         "role": "evidence_cc_narration_pt",
-        "sha256": "a67e24423b8707d3c5b074c5652c688673545a678d99166de17b43e78bcfaa45",
-        "size": 14863,
+        "sha256": "e827eac750c07a696776854d610b5c420b83eb67b0ea9d20f14c7dc955232388",
+        "size": 14800,
         "content_type": "text/plain"
       },
       {
         "role": "evidence_cc_narration_id",
-        "sha256": "b5f0b9a34a57c679436fad5541397fb67da5bdd41613e2f00c0539af7d957cb4",
-        "size": 14973,
+        "sha256": "b64c26a325b89a2963740fad2107df43fc42b0d5e857bf1dfc6db4b74d484e74",
+        "size": 14885,
         "content_type": "text/plain"
       },
       {
         "role": "evidence_cc_narration_vi",
-        "sha256": "57dca5a0c26af694c9ad5203be63e5d32c445be73c5a5e0a3228a497cdd94b3c",
-        "size": 16435,
+        "sha256": "7efa0748362e060e60191096d42e05df300cff5b0804e012ac4dd936b6e15c8c",
+        "size": 16429,
         "content_type": "text/plain"
       },
       {
@@ -232,9 +232,51 @@
         "sha256": "e729815f8c3d203191fdfdafc0d1d5cf1ed0350223145af21f0c4ca296d2b3ff",
         "size": 4027,
         "content_type": "text/plain"
+      },
+      {
+        "role": "evidence_prev_cc_narration_en_concise_r1",
+        "sha256": "53968b53ed54dc8e3c141cd18cd3eb1ba2ba6df17b5162df320c74082d5b6311",
+        "size": 13412,
+        "content_type": "text/plain"
+      },
+      {
+        "role": "evidence_prev_cc_narration_ja_concise_r1",
+        "sha256": "cbb1a9467808e3362ae988655e22420f77eff0779f78f9447e66589c815178c7",
+        "size": 17616,
+        "content_type": "text/plain"
+      },
+      {
+        "role": "evidence_prev_cc_narration_es_concise_r1",
+        "sha256": "5c799eb6ee6ee1c0223680edb7a865a6716a8121eeff15bf5ee383e4662e2c1a",
+        "size": 15197,
+        "content_type": "text/plain"
+      },
+      {
+        "role": "evidence_prev_cc_narration_pt_concise_r1",
+        "sha256": "a67e24423b8707d3c5b074c5652c688673545a678d99166de17b43e78bcfaa45",
+        "size": 14863,
+        "content_type": "text/plain"
+      },
+      {
+        "role": "evidence_prev_cc_narration_id_concise_r1",
+        "sha256": "b5f0b9a34a57c679436fad5541397fb67da5bdd41613e2f00c0539af7d957cb4",
+        "size": 14973,
+        "content_type": "text/plain"
+      },
+      {
+        "role": "evidence_prev_cc_narration_vi_concise_r1",
+        "sha256": "57dca5a0c26af694c9ad5203be63e5d32c445be73c5a5e0a3228a497cdd94b3c",
+        "size": 16435,
+        "content_type": "text/plain"
+      },
+      {
+        "role": "evidence_concise_caption_reading_report",
+        "sha256": "0fb61ef86cce8d57ffd87a2d6ecca0bed6306f0f9a36a342300ac6195001baaf",
+        "size": 2762,
+        "content_type": "text/plain"
       }
     ],
-    "verified_binary_ref_count": 35,
+    "verified_binary_ref_count": 42,
     "full1080_downloadable_reference_verified": true,
     "full1080_bytes": 65490500,
     "full1080_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
@@ -344,7 +386,9 @@
     "all28_native_manifest": "receipts/production/audio-audition/normal-final28-review-files.json",
     "source_unlistened_audition_M4A": 1,
     "caption_pacing_readback_receipt": "receipts/production/caption-pacing/root-final-binary-readback.json",
-    "caption_pacing_native_manifest": "receipts/production/caption-pacing/normal-caption-review-files.json"
+    "caption_pacing_native_manifest": "receipts/production/caption-pacing/normal-caption-review-files.json",
+    "concise_caption_readback_receipt": "receipts/production/concise-captions/root-final42-binary-proof.json",
+    "concise_caption_native_manifest": "receipts/production/concise-captions/normal-review-files.json"
   },
   "research": {
     "videos": 8,
@@ -471,7 +515,7 @@
     "final_video": true,
     "current_foreign_M4A": 0,
     "timed_CC": 9,
-    "backend_media_delivery": 35,
+    "backend_media_delivery": 42,
     "local_final": {
       "bytes": 65490500,
       "sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
@@ -504,16 +548,16 @@
       },
       "receipt": "receipts/production/thumbnail-subject/current-native-technical-checks.json"
     },
-    "CC_snapshot_notice": "Current actual narration-reference caption component has23 speed findings across1364 cues. Original47 remain in the unchanged dated whole-QA file and original caption snapshots. These are not foreign dub timings or listening acceptance.",
+    "CC_snapshot_notice": "Current actual concise narration-reference component has0 speed/layout findings across1363 cues. Prior23 and original47 remain in unchanged dated caption snapshots/wholeQA.18entries remain overestimated dub text budgets; no actual dub timing or listening acceptance.",
     "full_film_listening_completed": false,
     "normal_final_QA_executed": true,
     "assembly_completed_at": "2026-10-26T16:26:01.228Z",
     "narration_timed_CC": 9,
     "dub_timed_CC": 0,
-    "total_caption_cues": 1364,
-    "caption_speed_warnings": 23,
+    "total_caption_cues": 1363,
+    "caption_speed_warnings": 0,
     "foreign_current_checked_M4A": 0,
-    "backend_media_delivery_unit": "35 actual binary-verified refs, including nine current narration-reference SRTs, retained replaced CC binaries and a current caption component report; source unlistened audition1, foreign checked M4A0/8.",
+    "backend_media_delivery_unit": "42 actual binary-verified refs: nine current narration-reference SRTs, all prior35 binaries retained, six concise CC archives and current component report; source unlistened audition1, foreign checked M4A0/8.",
     "pending_final_ref_count": 35,
     "full1080_binary_readback": true,
     "backend_narration_timed_CC_count_at_verified_fourref_snapshot": 0,
@@ -551,15 +595,15 @@
       "actual_completed_media": false,
       "actual_metadata_text_complete": true,
       "actual_current_checked_downloadable_M4A": false,
-      "CC_followup_status": "Native reading-balanced SRT/VTT preserve literal cue text and each original sentence window;1 current speed findings retained. Narration timing, not dub timing.",
+      "CC_followup_status": "Independent faithful concise translations adopted normally; current narration-reference SRT/VTT have0 speed/layout findings. Not dub timing or audio acceptance.",
       "actual_CC": true,
       "actual_CC_timing": "narration",
       "actual_current_dub_timed_CC": false,
-      "CC_speed_warnings": 1,
+      "CC_speed_warnings": 0,
       "CC_cues": 134,
       "backend_title_description_delivered": true,
       "backend_metadata_exact_native_composition": true,
-      "backend_CC_followup_status": "Current narration-reference SRT under its original role verified in complete35-binary normal readback; prior changed SRT retained separately. Not dub timing or audio acceptance.",
+      "backend_CC_followup_status": "Current reference SRT verified in actual complete42-file normal download; prior binary retained. Foreign checked M4A remains0/8.",
       "backend_narration_timed_CC_delivered": true,
       "backend_CC_actual_full_binary_readback_verified": true,
       "backend_CC_role": "evidence_cc_narration_en"
@@ -571,15 +615,15 @@
       "actual_completed_media": false,
       "actual_metadata_text_complete": true,
       "actual_current_checked_downloadable_M4A": false,
-      "CC_followup_status": "Native reading-balanced SRT/VTT preserve literal cue text and each original sentence window;3 current speed findings retained. Narration timing, not dub timing.",
+      "CC_followup_status": "Independent faithful concise translations adopted normally; current narration-reference SRT/VTT have0 speed/layout findings. Not dub timing or audio acceptance.",
       "actual_CC": true,
       "actual_CC_timing": "narration",
       "actual_current_dub_timed_CC": false,
-      "CC_speed_warnings": 3,
-      "CC_cues": 185,
+      "CC_speed_warnings": 0,
+      "CC_cues": 184,
       "backend_title_description_delivered": true,
       "backend_metadata_exact_native_composition": true,
-      "backend_CC_followup_status": "Current narration-reference SRT under its original role verified in complete35-binary normal readback; prior changed SRT retained separately. Not dub timing or audio acceptance.",
+      "backend_CC_followup_status": "Current reference SRT verified in actual complete42-file normal download; prior binary retained. Foreign checked M4A remains0/8.",
       "backend_narration_timed_CC_delivered": true,
       "backend_CC_actual_full_binary_readback_verified": true,
       "backend_CC_role": "evidence_cc_narration_ja"
@@ -591,7 +635,7 @@
       "actual_completed_media": false,
       "actual_metadata_text_complete": true,
       "actual_current_checked_downloadable_M4A": false,
-      "CC_followup_status": "Native reading-balanced SRT/VTT preserve literal cue text and each original sentence window;0 current speed findings retained. Narration timing, not dub timing.",
+      "CC_followup_status": "Independent faithful concise translations adopted normally; current narration-reference SRT/VTT have0 speed/layout findings. Not dub timing or audio acceptance.",
       "actual_CC": true,
       "actual_CC_timing": "narration",
       "actual_current_dub_timed_CC": false,
@@ -599,7 +643,7 @@
       "CC_cues": 182,
       "backend_title_description_delivered": true,
       "backend_metadata_exact_native_composition": true,
-      "backend_CC_followup_status": "Current narration-reference SRT under its original role verified in complete35-binary normal readback; prior changed SRT retained separately. Not dub timing or audio acceptance.",
+      "backend_CC_followup_status": "Current reference SRT verified in actual complete42-file normal download; prior binary retained. Foreign checked M4A remains0/8.",
       "backend_narration_timed_CC_delivered": true,
       "backend_CC_actual_full_binary_readback_verified": true,
       "backend_CC_role": "evidence_cc_narration_ko"
@@ -611,15 +655,15 @@
       "actual_completed_media": false,
       "actual_metadata_text_complete": true,
       "actual_current_checked_downloadable_M4A": false,
-      "CC_followup_status": "Native reading-balanced SRT/VTT preserve literal cue text and each original sentence window;6 current speed findings retained. Narration timing, not dub timing.",
+      "CC_followup_status": "Independent faithful concise translations adopted normally; current narration-reference SRT/VTT have0 speed/layout findings. Not dub timing or audio acceptance.",
       "actual_CC": true,
       "actual_CC_timing": "narration",
       "actual_current_dub_timed_CC": false,
-      "CC_speed_warnings": 6,
+      "CC_speed_warnings": 0,
       "CC_cues": 165,
       "backend_title_description_delivered": true,
       "backend_metadata_exact_native_composition": true,
-      "backend_CC_followup_status": "Current narration-reference SRT under its original role verified in complete35-binary normal readback; prior changed SRT retained separately. Not dub timing or audio acceptance.",
+      "backend_CC_followup_status": "Current reference SRT verified in actual complete42-file normal download; prior binary retained. Foreign checked M4A remains0/8.",
       "backend_narration_timed_CC_delivered": true,
       "backend_CC_actual_full_binary_readback_verified": true,
       "backend_CC_role": "evidence_cc_narration_es"
@@ -631,15 +675,15 @@
       "actual_completed_media": false,
       "actual_metadata_text_complete": true,
       "actual_current_checked_downloadable_M4A": false,
-      "CC_followup_status": "Native reading-balanced SRT/VTT preserve literal cue text and each original sentence window;4 current speed findings retained. Narration timing, not dub timing.",
+      "CC_followup_status": "Independent faithful concise translations adopted normally; current narration-reference SRT/VTT have0 speed/layout findings. Not dub timing or audio acceptance.",
       "actual_CC": true,
       "actual_CC_timing": "narration",
       "actual_current_dub_timed_CC": false,
-      "CC_speed_warnings": 4,
+      "CC_speed_warnings": 0,
       "CC_cues": 158,
       "backend_title_description_delivered": true,
       "backend_metadata_exact_native_composition": true,
-      "backend_CC_followup_status": "Current narration-reference SRT under its original role verified in complete35-binary normal readback; prior changed SRT retained separately. Not dub timing or audio acceptance.",
+      "backend_CC_followup_status": "Current reference SRT verified in actual complete42-file normal download; prior binary retained. Foreign checked M4A remains0/8.",
       "backend_narration_timed_CC_delivered": true,
       "backend_CC_actual_full_binary_readback_verified": true,
       "backend_CC_role": "evidence_cc_narration_pt"
@@ -651,15 +695,15 @@
       "actual_completed_media": false,
       "actual_metadata_text_complete": true,
       "actual_current_checked_downloadable_M4A": false,
-      "CC_followup_status": "Native reading-balanced SRT/VTT preserve literal cue text and each original sentence window;8 current speed findings retained. Narration timing, not dub timing.",
+      "CC_followup_status": "Independent faithful concise translations adopted normally; current narration-reference SRT/VTT have0 speed/layout findings. Not dub timing or audio acceptance.",
       "actual_CC": true,
       "actual_CC_timing": "narration",
       "actual_current_dub_timed_CC": false,
-      "CC_speed_warnings": 8,
+      "CC_speed_warnings": 0,
       "CC_cues": 164,
       "backend_title_description_delivered": true,
       "backend_metadata_exact_native_composition": true,
-      "backend_CC_followup_status": "Current narration-reference SRT under its original role verified in complete35-binary normal readback; prior changed SRT retained separately. Not dub timing or audio acceptance.",
+      "backend_CC_followup_status": "Current reference SRT verified in actual complete42-file normal download; prior binary retained. Foreign checked M4A remains0/8.",
       "backend_narration_timed_CC_delivered": true,
       "backend_CC_actual_full_binary_readback_verified": true,
       "backend_CC_role": "evidence_cc_narration_id"
@@ -671,15 +715,15 @@
       "actual_completed_media": false,
       "actual_metadata_text_complete": true,
       "actual_current_checked_downloadable_M4A": false,
-      "CC_followup_status": "Native reading-balanced SRT/VTT preserve literal cue text and each original sentence window;1 current speed findings retained. Narration timing, not dub timing.",
+      "CC_followup_status": "Independent faithful concise translations adopted normally; current narration-reference SRT/VTT have0 speed/layout findings. Not dub timing or audio acceptance.",
       "actual_CC": true,
       "actual_CC_timing": "narration",
       "actual_current_dub_timed_CC": false,
-      "CC_speed_warnings": 1,
+      "CC_speed_warnings": 0,
       "CC_cues": 141,
       "backend_title_description_delivered": true,
       "backend_metadata_exact_native_composition": true,
-      "backend_CC_followup_status": "Current narration-reference SRT under its original role verified in complete35-binary normal readback; prior changed SRT retained separately. Not dub timing or audio acceptance.",
+      "backend_CC_followup_status": "Current reference SRT verified in actual complete42-file normal download; prior binary retained. Foreign checked M4A remains0/8.",
       "backend_narration_timed_CC_delivered": true,
       "backend_CC_actual_full_binary_readback_verified": true,
       "backend_CC_role": "evidence_cc_narration_vi"
@@ -691,7 +735,7 @@
       "actual_completed_media": false,
       "actual_metadata_text_complete": true,
       "actual_current_checked_downloadable_M4A": false,
-      "CC_followup_status": "Native reading-balanced SRT/VTT preserve literal cue text and each original sentence window;0 current speed findings retained. Narration timing, not dub timing.",
+      "CC_followup_status": "Independent faithful concise translations adopted normally; current narration-reference SRT/VTT have0 speed/layout findings. Not dub timing or audio acceptance.",
       "actual_CC": true,
       "actual_CC_timing": "narration",
       "actual_current_dub_timed_CC": false,
@@ -699,7 +743,7 @@
       "CC_cues": 116,
       "backend_title_description_delivered": true,
       "backend_metadata_exact_native_composition": true,
-      "backend_CC_followup_status": "Current narration-reference SRT under its original role verified in complete35-binary normal readback; prior changed SRT retained separately. Not dub timing or audio acceptance.",
+      "backend_CC_followup_status": "Current reference SRT verified in actual complete42-file normal download; prior binary retained. Foreign checked M4A remains0/8.",
       "backend_narration_timed_CC_delivered": true,
       "backend_CC_actual_full_binary_readback_verified": true,
       "backend_CC_role": "evidence_cc_narration_th"
@@ -756,7 +800,8 @@
     "backend_CC9_complete": "receipts/production/backend-CC9-complete.json",
     "thumbnail_subject": "receipts/production/thumbnail-subject/README.md",
     "source_audio_audition": "receipts/production/audio-audition/README.md",
-    "caption_pacing": "receipts/production/caption-pacing/README.md"
+    "caption_pacing": "receipts/production/caption-pacing/README.md",
+    "concise_captions": "receipts/production/concise-captions/README.md"
   },
   "master_producer": {
     "native_pid": 304217,
@@ -965,7 +1010,58 @@
         "sha256": "5486ee0bef5012405f7e5f29e275906de1ef5d7ab61d45cdca65e3b2fce32f2e",
         "lines": 114
       }
-    ]
+    ],
+    "concise_caption_translation_update": {
+      "at": "2026-10-27T04:35:21.091780+00:00",
+      "reviewed_entries": 18,
+      "untargeted_entries_unchanged": 894,
+      "all8_metadata_objects_unchanged": true,
+      "native_merge_exit_code": 0,
+      "estimated_dub_budget_over_entries": 18,
+      "actual_dub_fit": false,
+      "current_i18n_files": {
+        "en": {
+          "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/en.json",
+          "bytes": 20240,
+          "sha256": "81cd5bcb11f87a09bfa432ba6477f9ce90986fc3d62fcdc47aacaf7fc3968e90"
+        },
+        "ja": {
+          "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/ja.json",
+          "bytes": 23359,
+          "sha256": "1290b11da178868ae8a297b3fa5552411fa84fe8df53f3b0631dd094ef54da96"
+        },
+        "ko": {
+          "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/ko.json",
+          "bytes": 21773,
+          "sha256": "e17af1c66a044b25b643dc78b111ee41360801718889a1fead8cad72cd1516ea"
+        },
+        "es": {
+          "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/es.json",
+          "bytes": 20978,
+          "sha256": "12a5ffe70e22ced1ec48c50dc31431401f313f71a195535c9564766a1da3fb19"
+        },
+        "pt": {
+          "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/pt.json",
+          "bytes": 20865,
+          "sha256": "0c605f28b2ca2d185bf3691e2d1f9cf52fd63998c7aa0c6f5043833cbb2aff19"
+        },
+        "id": {
+          "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/id.json",
+          "bytes": 20526,
+          "sha256": "7f713537b768b911a4db8b0b3993716a042b8139242b7cc331c5a61aedff587f"
+        },
+        "vi": {
+          "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/vi.json",
+          "bytes": 23252,
+          "sha256": "3254d8b83114ea754b4dcf6c4d9397d730a0fa3403e7f256230d8ced0d654eba"
+        },
+        "th": {
+          "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/i18n/th.json",
+          "bytes": 33652,
+          "sha256": "5486ee0bef5012405f7e5f29e275906de1ef5d7ab61d45cdca65e3b2fce32f2e"
+        }
+      }
+    }
   },
   "render": {
     "first_native_exit": 5,
@@ -1050,13 +1146,13 @@
   "captions": {
     "native_exit_code": 0,
     "producer_true_exit_code": 0,
-    "phase_completed_at": "2026-10-27T02:49:22.758Z",
-    "ROOT_inspection_recorded_at": "2026-10-27T02:57:51.191Z",
-    "manifest": "captions/reading-balanced/manifest.json",
-    "manifest_sha256": "9a0afaa1b3372887b3f602a71006a5a5d1caf75a6ae63e17a84f34478d1ead56",
+    "phase_completed_at": "2026-10-27T04:24:49.007Z",
+    "ROOT_inspection_recorded_at": "2026-10-27T04:27:37.434Z",
+    "manifest": "captions/concise-reviewed/manifest.json",
+    "manifest_sha256": "8ea41e8a3f819827aa0832c3c98451c76808cd301ea8eafe73e9d8b0cb5b1ffe",
     "timing": "narration",
-    "total_cues": 1364,
-    "speed_warnings": 23,
+    "total_cues": 1363,
+    "speed_warnings": 0,
     "skipped": {},
     "locale_rules_unchanged": true,
     "locales": [
@@ -1067,12 +1163,12 @@
         "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/zh-TW.srt",
+          "file": "captions/concise-reviewed/zh-TW.srt",
           "bytes": 12864,
           "sha256": "a2552050986a86a461875c1726e13807c3f313ba21613c15b416d3e0e82cca2b"
         },
         "vtt": {
-          "file": "captions/reading-balanced/zh-TW.vtt",
+          "file": "captions/concise-reviewed/zh-TW.vtt",
           "bytes": 12504,
           "sha256": "7945e2b62dcddca1e8c90a7f9521d823c8b38cf207de44a154e0204cbccb466a"
         }
@@ -1080,41 +1176,35 @@
       {
         "locale": "en",
         "cues": 134,
-        "problems": [
-          "cue 109 (1cox): 22.5 characters a second, above 20"
-        ],
-        "speed_warning_count": 1,
+        "problems": [],
+        "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/en.srt",
-          "bytes": 13412,
-          "sha256": "53968b53ed54dc8e3c141cd18cd3eb1ba2ba6df17b5162df320c74082d5b6311"
+          "file": "captions/concise-reviewed/en.srt",
+          "bytes": 13392,
+          "sha256": "5eef5e16e45889a16e6c8d3af8db31082a5453568e3e2fadf2b3bfdd48a7d36e"
         },
         "vtt": {
-          "file": "captions/reading-balanced/en.vtt",
-          "bytes": 12992,
-          "sha256": "2045f8a10be75712177db73a61a5be410f47b9e236e9e36f3d58ce6d2db8d9a3"
+          "file": "captions/concise-reviewed/en.vtt",
+          "bytes": 12972,
+          "sha256": "c2a2843947db109ef41e46b56b43272673ee40017fc1ce15eb842a94f67c4609"
         }
       },
       {
         "locale": "ja",
-        "cues": 185,
-        "problems": [
-          "cue 14 (gzek): 9.1 characters a second, above 8",
-          "cue 15 (gzek): 9.9 characters a second, above 8",
-          "cue 72 (boyv): 8.4 characters a second, above 8"
-        ],
-        "speed_warning_count": 3,
+        "cues": 184,
+        "problems": [],
+        "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/ja.srt",
-          "bytes": 17616,
-          "sha256": "cbb1a9467808e3362ae988655e22420f77eff0779f78f9447e66589c815178c7"
+          "file": "captions/concise-reviewed/ja.srt",
+          "bytes": 17544,
+          "sha256": "745657180097734039c856e2163c199f9601cbc948f251a7e14b078411cd18c8"
         },
         "vtt": {
-          "file": "captions/reading-balanced/ja.vtt",
-          "bytes": 16992,
-          "sha256": "7ba607eda9158f07543cbab691ad9f82eac601156c1a4b39a24fd8eb70a0e731"
+          "file": "captions/concise-reviewed/ja.vtt",
+          "bytes": 16924,
+          "sha256": "8e17a6cf9d65fb8d2c66b6e9c256be9429208d54fbcdcfd714ccf6259eb33806"
         }
       },
       {
@@ -1124,12 +1214,12 @@
         "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/ko.srt",
+          "file": "captions/concise-reviewed/ko.srt",
           "bytes": 16476,
           "sha256": "90ab3acfc6b2b6c2e2c13652efedc01f239ff35a90b720a6dd5fd7e052f6d55e"
         },
         "vtt": {
-          "file": "captions/reading-balanced/ko.vtt",
+          "file": "captions/concise-reviewed/ko.vtt",
           "bytes": 15864,
           "sha256": "ffe76c9c7400f83e63168a23c0a74586495ecdfcb7ce1087a0a0c474bea53771"
         }
@@ -1137,92 +1227,69 @@
       {
         "locale": "es",
         "cues": 165,
-        "problems": [
-          "cue 13 (gzek): 17.6 characters a second, above 17",
-          "cue 59 (ipjt): 18.0 characters a second, above 17",
-          "cue 104 (8q11): 18.9 characters a second, above 17",
-          "cue 105 (8q11): 18.4 characters a second, above 17",
-          "cue 130 (1cox): 20.1 characters a second, above 17",
-          "cue 131 (1cox): 23.3 characters a second, above 17"
-        ],
-        "speed_warning_count": 6,
+        "problems": [],
+        "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/es.srt",
-          "bytes": 15197,
-          "sha256": "5c799eb6ee6ee1c0223680edb7a865a6716a8121eeff15bf5ee383e4662e2c1a"
+          "file": "captions/concise-reviewed/es.srt",
+          "bytes": 15138,
+          "sha256": "0ee2f1f2eae6f4cd9178d3317aeb48e8a944e83ce21524388904f4589ff8a165"
         },
         "vtt": {
-          "file": "captions/reading-balanced/es.vtt",
-          "bytes": 14653,
-          "sha256": "5d27ca5e32918be2f8193d298d5ebddef47c0b7fc7d5f3bfa6c8f914325bcd07"
+          "file": "captions/concise-reviewed/es.vtt",
+          "bytes": 14594,
+          "sha256": "d355a73b6badc452891b5bbe4687e4bc42bdf00cd72d49e03cb3d05a43c9dabb"
         }
       },
       {
         "locale": "pt",
         "cues": 158,
-        "problems": [
-          "cue 56 (ipjt): 18.0 characters a second, above 17",
-          "cue 57 (0jfv): 18.3 characters a second, above 17",
-          "cue 127 (1cox): 21.3 characters a second, above 17",
-          "cue 128 (1cox): 21.2 characters a second, above 17"
-        ],
-        "speed_warning_count": 4,
+        "problems": [],
+        "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/pt.srt",
-          "bytes": 14863,
-          "sha256": "a67e24423b8707d3c5b074c5652c688673545a678d99166de17b43e78bcfaa45"
+          "file": "captions/concise-reviewed/pt.srt",
+          "bytes": 14800,
+          "sha256": "e827eac750c07a696776854d610b5c420b83eb67b0ea9d20f14c7dc955232388"
         },
         "vtt": {
-          "file": "captions/reading-balanced/pt.vtt",
-          "bytes": 14347,
-          "sha256": "0f2e3394427b351788035cac0f36d990666c053f43ed8ffcb52ef0bd00ede2c7"
+          "file": "captions/concise-reviewed/pt.vtt",
+          "bytes": 14284,
+          "sha256": "23be483f74df2249b2398821c2ea33901d57ee78afed846f5589a46e0680f33d"
         }
       },
       {
         "locale": "id",
         "cues": 164,
-        "problems": [
-          "cue 12 (gzek): 18.7 characters a second, above 17",
-          "cue 27 (dzyw): 17.4 characters a second, above 17",
-          "cue 58 (ipjt): 17.5 characters a second, above 17",
-          "cue 59 (0jfv): 17.1 characters a second, above 17",
-          "cue 64 (boyv): 18.5 characters a second, above 17",
-          "cue 99 (it4f): 18.8 characters a second, above 17",
-          "cue 132 (1cox): 18.2 characters a second, above 17",
-          "cue 133 (1cox): 17.1 characters a second, above 17"
-        ],
-        "speed_warning_count": 8,
+        "problems": [],
+        "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/id.srt",
-          "bytes": 14973,
-          "sha256": "b5f0b9a34a57c679436fad5541397fb67da5bdd41613e2f00c0539af7d957cb4"
+          "file": "captions/concise-reviewed/id.srt",
+          "bytes": 14885,
+          "sha256": "b64c26a325b89a2963740fad2107df43fc42b0d5e857bf1dfc6db4b74d484e74"
         },
         "vtt": {
-          "file": "captions/reading-balanced/id.vtt",
-          "bytes": 14433,
-          "sha256": "f98d0fddcbe6e0309e72bbe0d65b05e38738e435174ebbe86a71f0ad2169304a"
+          "file": "captions/concise-reviewed/id.vtt",
+          "bytes": 14345,
+          "sha256": "5ad173b5db1a91a5b820cb85357ddd5d7ef3b0b3bd273300154d127282a22de8"
         }
       },
       {
         "locale": "vi",
         "cues": 141,
-        "problems": [
-          "cue 9 (gzek): 17.6 characters a second, above 17"
-        ],
-        "speed_warning_count": 1,
+        "problems": [],
+        "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/vi.srt",
-          "bytes": 16435,
-          "sha256": "57dca5a0c26af694c9ad5203be63e5d32c445be73c5a5e0a3228a497cdd94b3c"
+          "file": "captions/concise-reviewed/vi.srt",
+          "bytes": 16429,
+          "sha256": "7efa0748362e060e60191096d42e05df300cff5b0804e012ac4dd936b6e15c8c"
         },
         "vtt": {
-          "file": "captions/reading-balanced/vi.vtt",
-          "bytes": 15987,
-          "sha256": "5a1ab2612a8e92c494ce874be3d12852b04fb6be8b201e2556f0a0cd26d03c53"
+          "file": "captions/concise-reviewed/vi.vtt",
+          "bytes": 15981,
+          "sha256": "17aa04aa5eb55e7d62b048fcd9a410fe2d84f1af259a2974f4bb2229848d8a91"
         }
       },
       {
@@ -1232,12 +1299,12 @@
         "speed_warning_count": 0,
         "timing": "narration",
         "srt": {
-          "file": "captions/reading-balanced/th.srt",
+          "file": "captions/concise-reviewed/th.srt",
           "bytes": 25671,
           "sha256": "4cfcc5c4f0f78637ce276a5e4ad943814e55afa43e379d275dcb33e6bbbf78dd"
         },
         "vtt": {
-          "file": "captions/reading-balanced/th.vtt",
+          "file": "captions/concise-reviewed/th.vtt",
           "bytes": 25323,
           "sha256": "420910851a7be73667d24eb576b0226485146ea2094c13edf20d2b37f568a319"
         }
@@ -1247,7 +1314,7 @@
     "backend_readback_proven": true,
     "backend_SRT_delivered_count": 9,
     "backend_VTT_delivered_count": 0,
-    "backend_readback_receipt": "receipts/production/caption-pacing/root-final-binary-readback.json",
+    "backend_readback_receipt": "receipts/production/concise-captions/root-final42-binary-proof.json",
     "prior_caption_component_and_47_findings": "receipts/production/caption-pacing/original-caption-findings47.json",
     "old_narration_timed_files_preserved": true
   },
@@ -2094,5 +2161,24 @@
     "no_approval": true,
     "no_merge_deploy_YouTube": true,
     "receipt": "receipts/production/caption-pacing/README.md"
+  },
+  "concise_caption_delivery": {
+    "at": "2026-10-27T04:35:21.091780+00:00",
+    "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+    "ref_count": 42,
+    "native_exit_code": 0,
+    "normal_review_files_exit_code": 0,
+    "Root_final42_verified": true,
+    "total_cues": 1363,
+    "current_component_findings": 0,
+    "initial_independent_fixes": 5,
+    "reviewed_translation_entries": 18,
+    "old35_binaries_live": true,
+    "whole_project_payload_metadata_QA_choices_history_preserved": true,
+    "estimate_over_budget": 18,
+    "foreign_checked_M4A": 0,
+    "all114_listening_pending": true,
+    "server_approval": false,
+    "receipt": "receipts/production/concise-captions/README.md"
   }
 }
