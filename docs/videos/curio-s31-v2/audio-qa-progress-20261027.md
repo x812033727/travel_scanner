@@ -1,6 +1,10 @@
 # S31 v2 音訊檢查進度
 
-狀態：**中文master已11/11QA、原生抽查及委託final核准，官方旁白2flags／低分保留；EN完整cohort／binding獨立PASS，正式首檢session46532執行中**。
+狀態：**中文master已11/11QA、原生抽查及委託final核准；EN saved answer恢復合約獨立PASS，fresh232檔一致後正常續檢74735執行中，尚非品質結果**。
+
+20:30台北：lz202 exact request／三真檔／官方16k downsample與hints=[]經PRIVATE replay reused1/send0/fetch0、defaultdeadPID／alive負控全PASS；Root fresh核232檔與journal一致才啟動74735／PID12192，從起點帶同一個尚未dispatch的已審EN bridge。先等nativeexit，clone合約不是canonical已消費或發音已通過。見[dub-en-first-check-saved-answer-recovery.json](dub-en-first-check-saved-answer-recovery.json)。
+
+20:26台北：Windows confirmed升格在113attempt／28160ms排定額外wait後仍EPERM，I/Ov2已按30秒deadline封頂；不增加上限或假稱解決OS。原212音檔／混音／中文final未變，14筆EN cache與第15筆完整paidanswer三真檔已凍結；PID已dead、無lease，尚未第二SSH。先由獨立PRIVATE clone驗exact官方transcribe恢復合約及0send/fetch，再fresh核對後新slot正常續作；不能盲重送或手動promote。見[dub-en-first-check-journal-failure.json](dub-en-first-check-journal-failure.json)。下方running為已結束履歷。
 
 20:21台北：actual212 raw／12 stretched已逐檔與物理fit覆核通過，Root正式首檢從一開始就掛正確EN的已審source-free bridge v3；單一PID46832持lease，先等nativeexit，不開另一check/ASR/TTS/JA。review僅授權實際callback exact-SHA subset及單SSH fresh gates，沒有預稱真ASR/音訊/聆聽pass。見[dub-en-first-check-dispatch.json](dub-en-first-check-dispatch.json)。
 

@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA、原生抽查及委託final核准，原2flags／低分保留。英文212片段與16:09.705混音已native0／fit150窗0over；真cohort／binding獨立PASS，官方EN首檢46532執行中，其餘七語／完整交付包未成 |
+| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA、原生抽查及委託final核准。EN首檢的保存answer已通過獨立安全沿用核對，fresh232檔一致後正常續檢74735執行中；其餘七語／完整包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -33,6 +33,22 @@
 - 完成一集即更新本表與該集任務，再接下一集。進度不變時保持安靜，只通知成品完成、真正失敗、預算超限或需要站主處理的事項。
 
 ## 當前斷點
+
+**最新實況：2026-10-27 20:30台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+保存primary ASR回覆的exact官方PRIVATE clone恢復已PASS，reviewb8f3e596b9b90b1456b3495699a7bc5914b3b63ffd25a44921430847acc53f8b。唯一clip lz202的原48k WAV、官方16k downsample、EN hints=[]及完整request SHA843277…6644匹配；三真檔／generation／answer完整、default producer46832 ESRCH／alive負控hold、reused1/send0/fetch0、原檔不變。不是ASR內容正確或audio pass。
+
+Root fresh核232current檔（含212raw與14cache）、source/translation/lexicon及3journal全SHA／active會員都一致、leasefree／三legacy空／固定ASRstate不存在後，正常續檢已啟動 **session74735／PID12192**，slot `check-en-saved-answer1-resume`、lease12:30:23Z，log private同slot-production.txt；不force、從起點帶同一個尚未dispatch的已審EN bridge/binding。**先等74735 nativeexit，再查實際saved answer consumption／官方flags／second runtime及cleanup／journal；不能啟動另一check、ASR、TTS、JA或下一集。** Clone reuse1不冒充canonical實際已完成沿用；後續不同remaining ASR/Jev仍正常已授權paid-capable。見[dub-en-first-check-saved-answer-recovery.json](dub-en-first-check-saved-answer-recovery.json)。
+
+唯讀OS／source診斷65ed0e…1b7a確認三檔當下ReadOnly=false、未見跨rename保留target FD；原因仍是未知的持續Windows EPERM，既有30秒上限不延長、不動OS安全。中文master及EN原音／混音不變，0/8外語配音已驗收、完整包未成。46532已結束不可重播。
+
+**最新實況：2026-10-27 20:26台北。以本段為續作入口，以下舊斷點保留為履歷。**
+
+EN首檢46532已於20:23:20台北native1結束，原因是完整primary transcribe回覆的confirmed journal升格Windows EPERM，**不是完整品質判定**。14筆原ASR cache已寫妥；第15個已付完整answer、sent及confirmedtmp三真檔保存，req843277d2d41d2402fbb8386c85202b8ad5aba854a2a4257a9b3cdba84abb6644／producer46832已dead、leasefree。22個source/voice/cache/QA/log/journal檔已凍結manifestadd9e1b2a2c95079b4e6522e6da592628315d88b0065a56b8498703c0ee5e4ef；212 EN raw全部仍等原frozen SHA，中文master不變。見[dub-en-first-check-journal-failure.json](dub-en-first-check-journal-failure.json)。
+
+已審I/Ov2這次確實exercise：14普通成功、失敗pair113attempt／排定額外wait28160ms，在30秒deadline封頂後sticky hold，未解除持續EPERM。不能延長上限或宣稱已治好OS，鎖來源尚未證實。ko_es正在全新PRIVATE clone用官方transcribe journal核對exact request／三真檔／defaultdeadPID／0send-fetch與alive負控；Root尚未retry。不得delete／forget／manual promote canonical，也不能拿synthesize四檔規則偽造WAV response。
+
+當前canonical producer0，固定ASR projectstate不存在、v1/v2/v3 direct runs均空；依已審「SSH前先durable reservation」實作，此次尚未進到cachedWhisper第二辨識。當前actual EN cohort／binding仍是未dispatch的同一份；待exact recovery PASS及fresh14cache／全部raw/source/journal核對後，才用**全新slot**正常續原首檢並沿用binding，不能重播46532舊槽位。EN音訊未接受、0/8配音驗收，無JA／下一集／YouTube。
 
 **最新實況：2026-10-27 20:21台北。以本段為續作入口，以下舊斷點保留為履歷。**
 

@@ -4,6 +4,10 @@
 
 ## 當前讀回（2026-10-27）
 
+20:30台北最新：EN已付ASR answer恢復合約的獨立PRIVATE clone覆核通過，Root fresh232檔／lexicon／3journal與unused binding全部一致後，新正常首檢續作74735／PID12192執行中，仍從起點帶已審source-free bridge。不force、不動原音或OS／上限；先等nativeexit及實際journal consumption／品質與second runtime證據，不能先做JA。見[dub-en-first-check-saved-answer-recovery.json](dub-en-first-check-saved-answer-recovery.json)。
+
+20:26台北最新：EN首檢46532在保存完整primary ASR回覆後Windows journal升格EPERM，native1／尚非完整品質結果。14筆已寫cache、新answer三真檔及22份mutable evidence已凍結，212原音及中文final全未變。30秒I/O額外wait已耗盡，沒有解除持續拒絕；不增加全域／本集上限或更動OS安全設定。獨立PRIVATE official-journal恢復核對中，Root未重送；無producer／lease／secondASR dispatch。詳見[dub-en-first-check-journal-failure.json](dub-en-first-check-journal-failure.json)，以下首檢running為歷史。
+
 20:21台北最新：完整EN cohort與binding獨立覆核已PASS，原始212句及12個stretched實際樣本、current source/cache/voice/v4與150窗0over物理fit全部核對。當前唯一本集producer為官方EN首檢46532／PID46832，首檢即帶已審source-free bridge v3；等其nativeexit／原始flags及真runtime/cleanup結果才續做，不先啟動JA。這不是發音驗收或聆聽通過，完整上架包仍未成。見[dub-en-first-check-dispatch.json](dub-en-first-check-dispatch.json)；下段為此前履歷。
 
 20:04台北最新：中文版完整master維持11/11QA及委託final核准。英文首次合成／混音已native0，212句／150窗fit0over，969.705秒／46,583,012B，SHA99141e431c94d33b29d9143af4259f1f083e730f968389cdd68156408ac2adc9；8窗加速≤1.15、cheng-date合法借後停頓0.1秒。兩筆已付答案成功沿用，原172片段全未變且獨立實際覆核通過。I/O限定處理已審啟用但0額外retry，不能當作OS修復證明。正在準備真212WAV cohort及首檢binding，尚無EN音訊接受／其餘七語／完整交付包，未上傳。collector v1僅mock覆核被拒、v2修補；bridge v3 generic PASS尚非實際dispatch批准。圖片／judge上限及帳本完全不變。詳見[dub-en-synthesis-complete.json](dub-en-synthesis-complete.json)與queue；以下172片段等狀態保留為履歷。
