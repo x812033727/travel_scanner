@@ -1,0 +1,33 @@
+{
+  "kind": "projection_of_preserved_actual_V3_admission_failure",
+  "projection": true,
+  "source_original_completion": {
+    "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/continuation-20261027/audio-audition/runs/kimi-audition-media-20261027t004523410/completion.json",
+    "bytes": 25842,
+    "sha256": "71c6c35174c2679d2a9ac1021bdd2a63f5d650e92aa9d8f998317c3ba541cba2"
+  },
+  "original_error_text_preserved_privately": true,
+  "error_text_not_republished": true,
+  "failure_reason": "Output-aware inventory filter retained only new output names instead of excluding them; admission assertion failed before the first tool. Root V4 adds the missing negation.",
+  "pid": 356640,
+  "started_at": "2026-10-27T00:45:39.044Z",
+  "finished_at": "2026-10-27T00:45:39.063Z",
+  "phase": "admission",
+  "ok": false,
+  "actual_exit_code": 1,
+  "native_lease_released": true,
+  "counts": {
+    "AAC_stream_copy_extract": 0,
+    "ffprobe_metadata": 0,
+    "ffprobe_packets": 0,
+    "ffmpeg_decoded_PCM_hash": 0,
+    "ffmpeg_ebur128": 0,
+    "network": 0,
+    "auth": 0,
+    "ASR": 0,
+    "TTS": 0,
+    "QA_policy": 0
+  },
+  "listening_completed": false,
+  "foreign_checked_M4A": 0
+}
