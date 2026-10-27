@@ -2174,6 +2174,10 @@ class VideoToolToken(Timestamped, Base):
     )
     last_used_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
     revoked_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True), nullable=True)
+    # Migration 0142: may this token also fetch a Colab account's CLI credentials from
+    # /admin/ai-accounts (for a cloud session generating video on Colab)? Off unless a pairing
+    # asked for it and the owner allowed it, or the owner set it when making the token.
+    colab_access: Mapped[bool] = mapped_column(Boolean, default=False, server_default=text("false"))
 
 
 # What kind of video a tutorial is, for the list's filters (migration 0116): the pipeline

@@ -254,6 +254,7 @@ def _view(row: VideoToolToken) -> VideoToolTokenView:
         created_at=row.created_at,
         last_used_at=row.last_used_at,
         revoked_at=row.revoked_at,
+        colab_access=bool(row.colab_access),
     )
 
 
@@ -279,7 +280,7 @@ async def _refuse_over_token_limit(session: AsyncSession) -> None:
 
 
 def _mint_token(
-    session: AsyncSession, *, name: str, actor_id: UUID, via: str
+    session: AsyncSession, *, name: str, actor_id: UUID, via: str, colab_access: bool = False
 ) -> tuple[VideoToolToken, str]:
     """A new token row and its plaintext, added to the session with its audit entry."""
     token = new_token()
@@ -292,6 +293,7 @@ def _mint_token(
         created_by_user_id=actor_id,
         created_at=now,
         updated_at=now,
+        colab_access=colab_access,
     )
     session.add(row)
     session.add(
@@ -299,7 +301,12 @@ def _mint_token(
             actor_user_id=actor_id,
             action="video_tool_token_created",
             target=f"video_tool_token:{row.id}",
-            metadata_json={"name": row.name, "prefix": row.token_prefix, "via": via},
+            metadata_json={
+                "name": row.name,
+                "prefix": row.token_prefix,
+                "via": via,
+                "colab_access": colab_access,
+            },
         )
     )
     return row, token
@@ -314,7 +321,11 @@ async def create_video_tool_token(
     )
     await _refuse_over_token_limit(session)
     row, token = _mint_token(
-        session, name=payload.name.strip() or "影片工具", actor_id=user.id, via="admin"
+        session,
+        name=payload.name.strip() or "影片工具",
+        actor_id=user.id,
+        via="admin",
+        colab_access=payload.colab_access,
     )
     await session.commit()
     return VideoToolTokenCreated(**_view(row).model_dump(), token=token)
@@ -349,6 +360,7 @@ def _pairing_view(pairing: Pairing) -> PairingView:
         created_at=pairing.created_at,
         expires_at=pairing.expires_at,
         status=pairing.status,
+        colab=pairing.colab,
     )
 
 
@@ -389,7 +401,11 @@ async def _decide_pairing(
             actor_user_id=user.id,
             action="video_tool_pairing_approved" if approve else "video_tool_pairing_denied",
             target=f"video_tool_pairing:{pairing.user_code}",
-            metadata_json={"client_name": pairing.client_name, "client_ip": pairing.client_ip},
+            metadata_json={
+                "client_name": pairing.client_name,
+                "client_ip": pairing.client_ip,
+                "colab": pairing.colab,
+            },
         )
     )
     await session.commit()
@@ -929,7 +945,10 @@ async def start_video_tool_pairing(payload: PairingStartIn, request: Request) ->
         "video_pairing_start", address, limit=PAIRING_STARTS_PER_HOUR, window_seconds=3600
     )
     device_code, pairing = await start_pairing(
-        get_redis(), client_name=payload.client_name.strip() or "影片工具", client_ip=address
+        get_redis(),
+        client_name=payload.client_name.strip() or "影片工具",
+        client_ip=address,
+        colab=payload.colab,
     )
     return PairingStarted(
         device_code=device_code,
@@ -955,7 +974,11 @@ async def poll_video_tool_pairing(
     # second token for the same approval.
     await _refuse_over_token_limit(session)
     row, token = _mint_token(
-        session, name=f"配對：{grant.client_name}", actor_id=grant.approved_by, via="pairing"
+        session,
+        name=f"配對：{grant.client_name}",
+        actor_id=grant.approved_by,
+        via="pairing",
+        colab_access=grant.colab,
     )
     await session.commit()
     return PairingPollOut(

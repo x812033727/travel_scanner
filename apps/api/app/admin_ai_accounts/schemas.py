@@ -1,8 +1,8 @@
-from typing import Literal
+from typing import Any, Literal
 
 from pydantic import BaseModel, ConfigDict, Field
 
-Tool = Literal["claude", "codex", "agy"]
+Tool = Literal["claude", "codex", "agy", "colab"]
 Slot = Literal["a", "b", "c", "d", "e"]
 LoginStatus = Literal["pending", "verifying", "succeeded", "failed", "cancelled", "expired"]
 TERMINAL_LOGIN_STATUSES: frozenset[str] = frozenset({"succeeded", "failed", "cancelled", "expired"})
@@ -21,10 +21,19 @@ class AiUsageWindow(_AgentModel):
     resets_at: int | None = None
 
 
+class AiComputeUnits(_AgentModel):
+    # Colab has no window: `colab usage` reports a balance of compute units, the rate the
+    # running sessions burn them at, and how many runtimes are assigned.
+    balance: float = Field(ge=0)
+    rate_per_hour: float | None = Field(default=None, ge=0)
+    active_assignments: int | None = Field(default=None, ge=0)
+
+
 class AiUsage(_AgentModel):
     source: Literal["live", "snapshot"]
     recorded_at: int | None = None
     windows: list[AiUsageWindow] = Field(default_factory=list)
+    compute_units: AiComputeUnits | None = None
 
 
 class AiLoginSession(_AgentModel):
@@ -92,3 +101,15 @@ class AiLogoutResult(_AgentModel):
     tool: Tool
     slot: Slot
     logged_in: bool
+
+
+class ColabCredentials(_AgentModel):
+    """A Colab account's CLI token file, for the paired session that runs the CLI.
+
+    The only answer in this module that carries a secret: the agent reads it from the slot's
+    `token.json` and the API passes it through to a video tool token with `colab_access`.
+    """
+
+    tool: Literal["colab"]
+    slot: Slot
+    credentials: dict[str, Any]

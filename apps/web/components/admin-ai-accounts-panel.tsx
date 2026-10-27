@@ -6,19 +6,22 @@ import { FormEvent, useCallback, useEffect, useMemo, useState } from "react";
 import { api } from "@/lib/api";
 import { useModalSheet } from "@/lib/modal-sheet";
 
-type Tool = "claude" | "codex" | "agy";
+type Tool = "claude" | "codex" | "agy" | "colab";
 type Slot = "a" | "b" | "c" | "d" | "e";
 type LoginStatus = "pending" | "verifying" | "succeeded" | "failed" | "cancelled" | "expired";
 type Login = { id: string; tool: Tool; slot: Slot; kind: "device_code" | "paste_code"; status: LoginStatus; url?: string | null; user_code?: string | null; error?: string | null; expires_at: number };
 type UsageWindow = { label?: string | null; window_minutes?: number | null; used_percent: number; resets_at?: number | null };
-type Usage = { source: "live" | "snapshot"; recorded_at?: number | null; windows: UsageWindow[] };
+type ComputeUnits = { balance: number; rate_per_hour?: number | null; active_assignments?: number | null };
+type Usage = { source: "live" | "snapshot"; recorded_at?: number | null; windows: UsageWindow[]; compute_units?: ComputeUnits | null };
 export type AiAccount = { tool: Tool; slot: Slot; is_default: boolean; logged_in: boolean | null; auth_method?: string | null; email?: string | null; organization?: string | null; plan?: string | null; email_allowed?: boolean | null; usage?: Usage | null; usage_error?: string | null; recorder_installed?: boolean | null; usage_refreshing?: boolean | null; checked_at?: number | null; error?: string | null; login?: Login | null };
 export type AiAccountsOverview = { enabled: boolean; agent_reachable: boolean; agent_error?: string | null; slots: AiAccount[]; defaults: Partial<Record<Tool, Slot>>; allowlist_configured: boolean };
 
-const TOOLS: Tool[] = ["claude", "codex", "agy"];
-const TOOL_NAMES: Record<Tool, string> = { claude: "Claude Code", codex: "Codex", agy: "Antigravity" };
+const TOOLS: Tool[] = ["claude", "codex", "agy", "colab"];
+const TOOL_NAMES: Record<Tool, string> = { claude: "Claude Code", codex: "Codex", agy: "Antigravity", colab: "Google Colab" };
 // The sign-in methods billed to a subscription; anything else is API billing.
-const SUBSCRIPTION_METHODS: Record<Tool, string> = { claude: "claude.ai", codex: "chatgpt", agy: "google" };
+const SUBSCRIPTION_METHODS: Record<Tool, string> = { claude: "claude.ai", codex: "chatgpt", agy: "google", colab: "google" };
+// Tools whose usage comes back with the status itself; the others are read by a background probe.
+const LIVE_USAGE = new Set<Tool>(["codex", "colab"]);
 const ACTIVE = new Set<LoginStatus>(["pending", "verifying"]);
 // What each callback page shows: Claude's is base64url pieces joined by `#`, Google's carries a
 // `/` (`4/0A…`). The API and the host agent check the same patterns.
@@ -26,12 +29,15 @@ const CODE_PATTERNS: Record<Tool, RegExp> = {
   claude: /^[A-Za-z0-9._~#-]{10,1024}$/,
   codex: /^[A-Za-z0-9._~#-]{10,1024}$/,
   agy: /^[A-Za-z0-9._~/+-]{10,1024}$/,
+  colab: /^[A-Za-z0-9._~/+-]{10,1024}$/,
 };
 // Why the host could not read an Antigravity account's quota page (ai_accounts_agent.antigravity).
 const AGY_USAGE_ERRORS: Record<string, string> = { setup_needed: "agyUsageSetup", signed_out: "agyUsageSignedOut", unreadable: "agyUsageUnreadable" };
-const LOGIN_TITLES: Record<Tool, string> = { claude: "loginTitleClaude", codex: "loginTitleCodex", agy: "loginTitleAgy" };
-const FALLBACKS: Record<Tool, string> = { claude: "fallbackClaude", codex: "fallbackCodex", agy: "fallbackAgy" };
-const SSH_HINTS: Record<Tool, string> = { claude: "sshHintClaude", codex: "sshHintCodex", agy: "sshHintAgy" };
+const LOGIN_TITLES: Record<Tool, string> = { claude: "loginTitleClaude", codex: "loginTitleCodex", agy: "loginTitleAgy", colab: "loginTitleColab" };
+const FALLBACKS: Record<Tool, string> = { claude: "fallbackClaude", codex: "fallbackCodex", agy: "fallbackAgy", colab: "fallbackColab" };
+const SSH_HINTS: Record<Tool, string> = { claude: "sshHintClaude", codex: "sshHintCodex", agy: "sshHintAgy", colab: "sshHintColab" };
+// The Google code steps, per tool that pastes one.
+const CODE_STEPS: Record<Tool, [string, string]> = { claude: ["claudeStep1", "claudeStep2"], codex: ["claudeStep1", "claudeStep2"], agy: ["agyStep1", "agyStep2"], colab: ["colabStep1", "colabStep2"] };
 const REFRESH_MS = 60_000;
 const LOGIN_POLL_MS = 3_000;
 const USAGE_POLL_MS = 4_000;
@@ -97,6 +103,22 @@ function UsageBars({ usage, now }: { usage: Usage; now: number }) {
   </div>;
 }
 
+/** Colab has no window: what the account has left, in compute units, as `colab usage` reports it. */
+function ComputeUnitsLine({ units }: { units: ComputeUnits }) {
+  const t = useTranslations("admin.aiAccountsPanel");
+  const locale = useLocale();
+  const number = useMemo(() => new Intl.NumberFormat(locale, { maximumFractionDigits: 1 }), [locale]);
+  const low = units.balance < 10;
+  return <div className="mt-4 text-sm">
+    <p className={`font-bold tabular-nums ${low ? "text-red-600" : ""}`}>{t("computeUnits", { units: number.format(units.balance) })}</p>
+    <p className="mt-1 text-xs text-[var(--muted)]">
+      {units.rate_per_hour !== null && units.rate_per_hour !== undefined ? t("computeRate", { rate: number.format(units.rate_per_hour) }) : null}
+      {units.rate_per_hour !== null && units.rate_per_hour !== undefined && units.active_assignments !== null && units.active_assignments !== undefined ? " · " : null}
+      {units.active_assignments !== null && units.active_assignments !== undefined ? t("computeActive", { count: units.active_assignments }) : null}
+    </p>
+  </div>;
+}
+
 type CardProps = {
   account: AiAccount; now: number; busy: boolean;
   onLogin: (account: AiAccount) => void; onLogout: (account: AiAccount) => void; onDefault: (account: AiAccount) => void;
@@ -119,8 +141,9 @@ function AccountCard({ account, now, busy, onLogin, onLogout, onDefault }: CardP
     {apiBilling && <p className="mt-2 flex items-center gap-1 text-xs font-bold text-amber-800"><AlertTriangle size={13} />{t("apiBilling")}</p>}
     {account.error && <p className="mt-2 text-xs text-red-700">{account.error}</p>}
     {signedIn && account.usage?.windows.length ? <UsageBars usage={account.usage} now={now} /> : null}
+    {signedIn && account.usage?.compute_units ? <ComputeUnitsLine units={account.usage.compute_units} /> : null}
     {signedIn && account.usage_refreshing && <p role="status" className="mt-3 flex items-center gap-1.5 text-xs text-[var(--muted)]"><LoaderCircle size={13} className="animate-spin motion-reduce:animate-none" />{t("usageRefreshing")}</p>}
-    {signedIn && account.tool !== "codex" && !account.usage && !account.usage_refreshing && !account.usage_error && <p className="mt-4 rounded-xl bg-[var(--paper)] p-3 text-xs leading-5 text-[var(--muted)]">{t("snapshotMissing")}</p>}
+    {signedIn && !LIVE_USAGE.has(account.tool) && !account.usage && !account.usage_refreshing && !account.usage_error && <p className="mt-4 rounded-xl bg-[var(--paper)] p-3 text-xs leading-5 text-[var(--muted)]">{t("snapshotMissing")}</p>}
     {signedIn && account.tool === "claude" && account.recorder_installed === false && <p className="mt-2 text-xs text-amber-800">{t("recorderMissing")}</p>}
     {signedIn && account.usage_error && <p className="mt-2 text-xs text-amber-800">{usageErrorText(t, account)}</p>}
     <div className="mt-auto flex flex-wrap gap-2 pt-5">
@@ -145,7 +168,7 @@ function LoginDialog({ login, busy, onClose, onCancel, onSubmitCode }: { login: 
   const slot = slotLabel(login.slot);
   const trimmed = code.trim();
   const codeOk = CODE_PATTERNS[login.tool].test(trimmed);
-  const steps = login.tool === "agy" ? ["agyStep1", "agyStep2"] : ["claudeStep1", "claudeStep2"];
+  const steps = CODE_STEPS[login.tool];
 
   function submit(event: FormEvent) {
     event.preventDefault();

@@ -33,11 +33,17 @@ async function detail(response) {
   }
 }
 
-/** Open a pairing; resolves to { device_code, user_code, verification_path, expires_in, interval }. */
-export async function startPairing({ site, clientName, fetchImpl = globalThis.fetch }) {
+/**
+ * Open a pairing; resolves to { device_code, user_code, verification_path, expires_in, interval }.
+ * With `colab`, the request also asks for Colab account credentials: the owner sees that on the
+ * card before allowing it, and the token this pairing collects may then fetch the sign-in of a
+ * Colab account from /admin/ai-accounts (skill minimax-h3-colab).
+ */
+export async function startPairing({ site, clientName, colab = false, fetchImpl = globalThis.fetch }) {
   let response;
   try {
-    response = await post(site, "pairings", { client_name: clientName.slice(0, CLIENT_NAME_MAX) }, fetchImpl);
+    const body = { client_name: clientName.slice(0, CLIENT_NAME_MAX), ...(colab ? { colab: true } : {}) };
+    response = await post(site, "pairings", body, fetchImpl);
   } catch (error) {
     throw new SpeechError(`cannot reach ${site}: ${error.message}`, { code: "network" });
   }
