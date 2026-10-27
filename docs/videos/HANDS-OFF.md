@@ -188,6 +188,7 @@ OAuth 的做法：
 | 設定集、總綱、篇章細綱 | `series_doc_passed(judge, kind)`：查核在新 session 對文件出裁決 `{verdicts: {項目: 有／弱／無}, problems, similar_works, notes}`；該 kind 的必要項目都在、沒有「無」、「弱」最多一個、`problems` 與 `similar_works` 都空才過。過→核准；不過→退回重寫（`series_doc_rewrites` 輪）；重寫用完→停在待審，卡片附查核的問題 | `REQUIRED_VERDICTS`（setting 4 項、outline 5 項、chapter 6 項）、`MAX_WEAK_VERDICTS = 1` |
 | 每集劇本 | `script_check_passed(payload, retention_required)`：`coverage` 的 hook／conflict／turn／cliffhanger 沒有「無」、「弱」≤ 1；`continuity_problems` 與 `similar_works` 空；有節奏規格的題材再看 `coverage.satisfaction`、`retention.hook_seconds`、`retention.satisfaction.count`／`first_seconds`、`retention.cliffhanger_last`。秒數由工人在估計時間軸上量，不是模型估的 | `COVERAGE_BEATS`、`HOOK_MAX_SECONDS = 8.0`、`FIRST_SATISFACTION_MAX_SECONDS = 30.0`、`MIN_SATISFACTION = 2`、`RETENTION_GENRES` |
 | 設定圖、分鏡 | 影片屬於免關卡作品時，`auto_pick_look`／`auto_approve_storyboard` 視為開著，門檻仍是 `judge_min_score`；設定圖沒有一張達到門檻時走上面的備援選法 | `LOOK_FALLBACK_SLACK = 2`、`LOOK_BLOCKING_PROBLEMS` |
+| 關鍵影格（manga 等級） | 工人規則，不是伺服器的：`prompt_fixes.keyframes` 兩輪用完後保留 judge 最佳張（`keyframes --accept-best`，`flow.mjs acceptBestPictures`），影片不卡住；分鏡把保留的鏡標 `accepted` 照上一列自動核准，成片帶 `manual_review` 與 `accepted_pictures` 送審，等站主看。動畫漫劇照舊卡住等人（2026-10-26，票 `2026-10-25-manga-blocked`；`BINGE.md` §畫面等級） | `MAX_PROMPT_FIX_ROUNDS = 2` |
 | 合集成片 | `final_qa_passed` 對合集影片改用六項 `COMPILATION_QA_ITEMS`（報告要有 `kind: "compilation"`）；每集自己已過完 11 項 | `COMPILATION_QA_ITEMS` |
 
 沉默不算通過：少一個鍵、多一句問題、舊工人沒帶的欄位，都留給站主。站主把作品的「免關卡」關掉，就回到逐份核准。門檻先訂成常數，試作（票 `2026-09-27-video-binge-pilot`）後對照站主自己會怎麼判再調。

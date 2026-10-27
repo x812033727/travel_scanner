@@ -43,7 +43,7 @@ import { checksCurrent } from "../package/cli.mjs";
 import { productionForEpisode } from "../production/design.mjs";
 import { localizationPlan, writeLocalizationRetention } from "../production/retention.mjs";
 import { buildSheet, SHEET_PARTS, sheetContext, TITLE_TAG_PROBLEM, titleFits, withoutContext } from "../i18n/cli.mjs";
-import { MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
+import { keepsBestPictures, MAX_KEYFRAME_TAKES, MAX_SEED_OFFSET } from "../media/keyframes.mjs";
 import { resetSheets } from "../media/look.mjs";
 import { imageModelVendor, imagePromptLimit, promptOverhead, shotPromptBudget } from "../media/prompt-budget.mjs";
 import { policyRequest } from "../qa/policy.mjs";
@@ -3159,8 +3159,9 @@ export class Automation {
     // request enough) is retried on other seeds; any other, with its rounds given back.
     const blockedKind = /video_media_job_exhausted|已經失敗 \d+ 次/.test(summary) ? `media_exhausted:${kind}` : `prompt_fixes:${kind}`;
     if (rounds >= MAX_PROMPT_FIX_ROUNDS) {
-      // Illustrated slides keep the judge's best take of each failing shot and go on to the cut,
-      // which the owner reviews; a drama's pictures, and a storyboard the owner sent back, wait here.
+      // Illustrated slides and a manga-tier drama keep the judge's best take of each failing shot
+      // and go on to the cut, which the owner reviews; a drama with clips, and a storyboard the
+      // owner sent back, wait here.
       const kept = kind === "keyframes" && !ownerNote ? await this.acceptBestPictures(state, found, rounds) : null;
       return kept ?? this.block(state, `${kind} still fails after ${rounds} prompt fixes (${summary})`, blockedKind);
     }
@@ -3202,17 +3203,19 @@ export class Automation {
   }
 
   /**
-   * Once the prompt fixes are spent, illustrated slides keep the judge's best take of every shot
-   * still failing (media/keyframes.mjs --accept-best; the owner's decision of 2026-10-06: a video
-   * no longer blocks on its pictures) and go on to the cut, which `gate()` sends for the owner's
-   * manual review with the kept pictures listed (review/sync.mjs). Returns the line, or null when
-   * this is not such a video, or a failing shot has no picture at all (every seed refused: that
-   * one still needs a prompt, and the video waits as before).
+   * Once the prompt fixes are spent, illustrated slides and a manga-tier drama (docs/videos/BINGE.md
+   * §畫面等級, a hands-off series' episode or not) keep the judge's best take of every shot still
+   * failing (media/keyframes.mjs --accept-best, keepsBestPictures; the owner's decision of
+   * 2026-10-06: a video no longer blocks on its pictures) and go on: a drama to its storyboard,
+   * which goes up with the kept shots marked accepted, then the cut, which `gate()` sends for the
+   * owner's manual review with the kept pictures listed (review/sync.mjs). Returns the line, or
+   * null when this is not such a video, or a failing shot has no picture at all (every seed
+   * refused: that one still needs a prompt, and the video waits as before).
    */
   async acceptBestPictures(state, found, rounds) {
     const workdir = this.workdir(state.slug);
     const video = readJson(path.join(docDir(state.slug, this.ctx.root), "video.json"), null);
-    if (!video || !illustrated(video) || isLongAnime(state)) return null;
+    if (!video || !keepsBestPictures(video, state.series) || isLongAnime(state)) return null;
     const manifest = readJson(path.join(workdir, ARTIFACTS.keyframes), null);
     const ids = found.map((target) => target.id);
     if (!ids.length || !ids.every((id) => manifest?.shots?.[id]?.file)) return null;
