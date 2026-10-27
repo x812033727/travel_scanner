@@ -1,13 +1,13 @@
 ---
 id: 2026-10-26-qa-keeps-jev-policy-answer-for
 title: QA keeps Jev's policy answer for films whose site books each Jev request once
-status: review
+status: done
 priority: P1
 area: tools
 owner: claude-opus-5-5-happy-brahmagupta
 claimed_at: 2026-10-26T23:04:41Z
 created_at: 2026-10-26T23:03:58Z
-completed_at:
+completed_at: 2026-10-27T00:28:25Z
 branch: claude/happy-brahmagupta-ibjkpd
 depends_on: []
 scope:
@@ -39,3 +39,4 @@ scope:
 - PR：https://github.com/x812033727/travel_scanner/pull/1888
 - 審查留下、刻意不改的兩點：(1) 這類片只要旁白與 brief 不變，沒過的判斷會一直沿用，因為站方不收同一份請求；要換答案得改旁白或 brief。(2) 沿用的回答來自本機 qa.json，沒有向伺服器核對；`policy_lost` 原本也是這樣信任的。
 - 第一次推上去 CI 紅在 `tools/video/long-form/review.test.mjs`（時長收據綁著 qa 兩檔的雜湊），所以收據跟著這張票一起改。
+- 2026-10-27：#1888 合併為 `f241fceca`。同一天 C11 用它重跑 qa（Jev 回 409 reused 時沿用 `policy_judged`），上傳包已送審。
