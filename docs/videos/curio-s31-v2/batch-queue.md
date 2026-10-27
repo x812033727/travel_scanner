@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA及委託final核准。EN已有130/212辨識cache；38131遇第五筆Windows journal EPERM已結束，保存回覆逐筆恢復覆核PASS，準備fresh核對後新slot續檢。八語驗收／完整包未成 |
+| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA及委託final核准。EN已有137/212辨識cache；54516遇第六筆Windows journal EPERM已結束，第六筆保存回覆逐筆恢復覆核PASS，準備fresh核對後續檢。八語驗收／完整包未成 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -33,6 +33,14 @@
 - 完成一集即更新本表與該集任務，再接下一集。進度不變時保持安靜，只通知成品完成、真正失敗、預算超限或需要站主處理的事項。
 
 ## 當前斷點
+
+**本輪最新核對（2026-10-27）：54516已結束；以下running紀錄均為當時履歷。**
+
+54516／PID53448於13:39:12Z native1，第六筆lz422/request0196f77a6faa75b5cdefa6628d1008e57cb3d784da61f84a3d4943d061a915ec完整回覆confirmed rename再次Windows EPERM。第五128762/v2a0521 actual canonical沿用獨立PASS0544dfd9889796442e34e27e3c67f40c6dc83f5bc660fc370ef1f2c7115dc380，原130cache全保留、current137，212raw／source／EN翻譯／lexicon／中文master均未變。第六筆22項證據凍結manifest3e6fb429661b20b02ea5fca9b4331645c22c3d4b8947d9c0b55bae4f0bcf7fa4，64preserved＋3active全保留；approved generic native0/result39c29efff280d51ccf4e0d7d5550710d4f80d9c6ec0609b01a0cdb786263b27d，唯一lz422／terms0／reused1send0fetch0／default ESRCH／alivehold，逐筆獨立review1af9f5cfa1587162a112093f5307120b6e8e85e1e6e717dba3df705e182f6f89 PASS。
+
+目前無producer／lease／second reservation或run。Root準備新正常slot前的fresh核對，同時以只讀及private離線fixture診斷持續Windows拒絕；原因尚未證實，不改OS／30秒上限。已確認舊transport observer只接受basename，舊runner傳absolute path使其未啟用；而該observer本來只涵蓋synthesis `/api/video/speech`，不涵蓋transcribe/judge。因此歷史observer缺席不能當作無ASR HTTP錯誤的證明。新入口僅修正basename參數，不擴張helper路由。見[dub-en-sixth-check-recovery.json](dub-en-sixth-check-recovery.json)。不得重播54516、手動promote/delete/forget或啟動JA。
+
+最新續作入口：2026-10-27T13:38:05.3498942Z。第五筆保存回覆逐筆覆核及Root fresh550次SHA核對通過：current/private各212raw、current/frozen/consumption三方cache130、原126全保留、58preserved＋3active＝61精確journal會員、terms0與來源/lexicon/unused EN binding均current，原PID32176 dead且無競爭程序/lease/STOP/ASRstate。**唯一正常續檢session54516／PID53448執行中**，slot check-en-saved-answer5-resume，lease 2026-10-27T13:38:06.012Z；同一已審EN source-free bridge從起點帶入，no force／原20分鐘callback及30秒IO上限不變。**先等54516 nativeexit，再核128762實際沿用、完整flags、second runtime/cleanup及journal；不可啟動另一producer或JA，不能重播38131。** 見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。0/8外語驗收，完整包及下一集未成。
 
 **最新實況：2026-10-27 21:36台北。以本段為續作入口，以下舊斷點保留為履歷。**
 

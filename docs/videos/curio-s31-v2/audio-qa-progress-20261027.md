@@ -1,6 +1,10 @@
 # S31 v2 音訊檢查進度
 
-狀態：**中文master已11/11QA及委託final核准；EN已有130/212辨識cache，38131遇第五筆Windows journal EPERM已結束，保存回覆逐筆恢復覆核PASS，準備fresh核對後新slot續檢，尚非完整品質結果**。
+狀態：**中文master已完成委託final核准；EN137/212辨識cache，54516因第六筆Windows journal EPERM結束，第六筆回覆逐筆恢復覆核PASS，準備fresh核對後續檢，尚非完整品質結果**。
+
+本輪核對：第五128762實際沿用已確認，原130cache保留、current137；第六0196/lz422三真檔及64保存檔完整，離線恢復native0/reuse1send0fetch0與逐筆獨立覆核1af9f5…f6f89 PASS，尚未新dispatch或second ASR。舊observer absolute path不符basename契約，未啟用；且它只涵蓋synthesis，缺席／空檔不可當ASR無HTTP錯誤證明。見[dub-en-sixth-check-recovery.json](dub-en-sixth-check-recovery.json)。
+
+最新續作入口：2026-10-27T13:38:05.3498942Z。第五筆保存回覆逐筆覆核及Root fresh550次SHA核對通過：current/private各212raw、current/frozen/consumption三方cache130、原126全保留、58preserved＋3active＝61精確journal會員、terms0與來源/lexicon/unused EN binding均current，原PID32176 dead且無競爭程序/lease/STOP/ASRstate。**唯一正常續檢session54516／PID53448執行中**，slot check-en-saved-answer5-resume，lease 2026-10-27T13:38:06.012Z；同一已審EN source-free bridge從起點帶入，no force／原20分鐘callback及30秒IO上限不變。**先等54516 nativeexit，再核128762實際沿用、完整flags、second runtime/cleanup及journal；不可啟動另一producer或JA，不能重播38131。** 見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。0/8外語驗收，完整包及下一集未成。
 
 21:36台北：ff4b/lz418 actual沿用已獨立確認，原126cache保留、current130。第五128762/v2a0521完整保存回覆離線恢復native0及逐筆獨立review b1a577…ff129 PASS，58歷史保存檔＋3active均保留，等Root fresh核對後新slot正常續作；無producer或second dispatch，原音／中文master／上限不變。見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。
 

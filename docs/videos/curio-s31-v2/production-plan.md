@@ -4,6 +4,10 @@
 
 ## 當前讀回（2026-10-27）
 
+本輪最新：54516已於13:39:12Z native1結束，EN辨識cache137/212；第五保存答案實際沿用獨立確認，第六筆完整回覆離線恢復及逐筆覆核PASS，準備fresh核對後正常續檢。64歷史檔與3active均保留，Windows鎖來源仍未知，沒有OS／供應商／費用／上限變更。舊transport observer因absolute path未啟用，且只涵蓋synthesis，不能把缺席當作ASR未遭HTTP錯誤。見[dub-en-sixth-check-recovery.json](dub-en-sixth-check-recovery.json)。
+
+最新續作入口：2026-10-27T13:38:05.3498942Z。第五筆保存回覆逐筆覆核及Root fresh550次SHA核對通過：current/private各212raw、current/frozen/consumption三方cache130、原126全保留、58preserved＋3active＝61精確journal會員、terms0與來源/lexicon/unused EN binding均current，原PID32176 dead且無競爭程序/lease/STOP/ASRstate。**唯一正常續檢session54516／PID53448執行中**，slot check-en-saved-answer5-resume，lease 2026-10-27T13:38:06.012Z；同一已審EN source-free bridge從起點帶入，no force／原20分鐘callback及30秒IO上限不變。**先等54516 nativeexit，再核128762實際沿用、完整flags、second runtime/cleanup及journal；不可啟動另一producer或JA，不能重播38131。** 見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。0/8外語驗收，完整包及下一集未成。
+
 21:36台北最新：38131已因第五筆完整ASR回覆的Windows journal EPERM native1結束。前四筆保存回覆均實際沿用，current130/212cache、原音與中文master未變；第五筆離線恢復及逐筆獨立覆核PASS，準備fresh核對後新slot續檢。所有58歷史檔與3active保留，沒有提高重試／圖片／全域上限。EN完整品質、八語驗收與交付包仍待完成。見[dub-en-fifth-check-recovery.json](dub-en-fifth-check-recovery.json)。
 
 21:28台北最新：29192於第四筆完整回覆confirmed rename EPERM native1停止；EN辨識cache126/212，新保存回覆已離線恢復及逐筆獨立覆核PASS，準備fresh核對後新slot續檢。52歷史檔與3active三真檔保留，未增加30秒重試上限、圖片支出或全域預算；無新語言合成、無音訊接受。見[dub-en-fourth-check-recovery.json](dub-en-fourth-check-recovery.json)。
