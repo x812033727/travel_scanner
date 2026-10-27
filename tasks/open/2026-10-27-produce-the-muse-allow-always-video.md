@@ -27,8 +27,8 @@ Google's agent access filter.
 
 ## Definition of done
 
-- [ ] The owner has chosen an outline from `brief.md`.
-- [ ] The Claude Code demonstration in 示範或實算 is run and logged, or downgraded to CITED.
+- [x] The owner has chosen an outline from `brief.md` (A, 2026-10-27).
+- [x] The Claude Code demonstration in 示範或實算 is run and logged.
 - [ ] Script, two verifier passes, narration, final cut and publish package approved on the site.
 
 ## Steps
@@ -36,7 +36,7 @@ Google's agent access filter.
 - [x] Search this week's Muse coverage and pull the official pages.
 - [x] Write `brief.md` with three outlines.
 - [ ] Find Meta's own Muse permission help page and its Japan/Taiwan availability announcement.
-- [ ] Run the demonstration.
+- [x] Run the demonstration (2026-10-27, Claude Code 2.1.311, see Notes).
 
 ## How to verify
 
@@ -46,3 +46,10 @@ Google's agent access filter.
 
 - Workdir: the session scratchpad's `muse/` (sources in `muse/src/`).
 - Reports disagree on prices and times; the brief keeps them out.
+- Run log (2026-10-27 14:05–14:13 UTC, Claude Code 2.1.311 in manual mode, the owner asked the
+  agent to run it): the push prompt offered "Yes, and don't ask again for: git push *"; choosing it
+  wrote `Bash(git push *)` to `.claude/settings.local.json`; in a NEW session `git push --force`
+  ran without a prompt and overwrote the remote main (69cd815 -> b2a3d6d); `/permissions` described
+  the rule as "Any Bash command starting with git push / From project local settings"; after
+  deleting it the force push asked again. Pane captures and RUNLOG.md are in the scratchpad's
+  `muse/run/`.
