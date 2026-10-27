@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 中文master已11/11QA及委託final核准。EN首次完整音訊檢查29flags、second runtime覆核PASS；原文retake1額度已讀足夠，獨立付費slot未dispatch／無producer；0/8 accepted，完整包未成 |
+| 1 | curio-s31 | curio-s31-v2 | EN原文retake1 native4／provider busy；212 raw及29目標全未變，plain0/2、無producer；最早15:15:04Z fresh核對新slot。0/8 accepted |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,11 +34,13 @@
 
 ## 當前斷點
 
-最新 checkpoint（2026-10-27）：97854／PID15272已於14:34:07.6598357Z native1結束，這次是**首次完整EN音訊檢查的29個品質flags，不是journal故障**。212/212＝148 exact＋13 Jev通過＋22 second解除＋29 flags；本輪22個新ASR、3次Jev及1個保存答案沿用，primary Jev累計64、second transcript共51。695b／lz514實際沿用已獨立確認，舊189筆primary／語意欄位保留，noul／second新增另列；active journal 0、82份歷史證據與舊take已凍結。**第一輪原文重錄準備，尚無producer；0/8 accepted。** 29 requests／1251官方billable字元僅離線規劃，plain 0/2、shorten 0、listener 0；14:51:49.2388142Z官方dry-run native0已讀Gemini ready／remaining 5,157,762，足夠實際29 requests／1251 billable；681次fresh checks（非unique檔數）。Root按授權準備獨立付費slot，尚未dispatch，quota只是快照並非保留額度。官方dry-run會忽略redo而報0，不能拿它代替本次實算。Second runtime獨立覆核PASS：51 subset的raw／完整實際轉寫／cache全SHA一致，nativeWhisper0／390.379s、callback396.399s，4CPU／nice19／offline／no hints；本機child close0／reaped及三PID已退出，無holds／uncertain／lease。遠端scratch刪除未證，state／runs保留未archive；無runtime阻擋另行TTS，仍非音訊核准。見[dub-en-first-check-complete.json](dub-en-first-check-complete.json)；完整包及下一集未成。
+最新 checkpoint（2026-10-27）：原文retake1的78815／PID10320已於14:55:04.0103260Z native4結束；14:54:20–14:55:03連續5個429 `video_speech_upstream_busy`，Retry-After 10秒。**獨立對帳已確認212 raw全部未變：29個目標0 changed、其餘183亦0 changed；EN mix／timeline／fit／cache／source／approvals／state及82份journal全SHA未變，active／uncertain 0、PID dead／leasefree。沒有完成品質retake輪次（plain 0/2），無producer，0/8 accepted。** 費用尚無usage收據，不能宣稱零費；月quota足夠也不代表Google當日quota未滿。**最早2026-10-27T15:15:04Z才可fresh核對新slot**；冷卻期間不啟新paid job、不換provider／不改quota，不重播已結束的舊slot。新slot須fresh quota／source／lease／journal與exact remaining subset。見[dub-en-quality-retake1-provider-busy.json](dub-en-quality-retake1-provider-busy.json)；原29flags與全部舊take保留，完整包及下一集未成。
 
 窄診斷：[私有 final-diagnosis.md](C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/rename-native-diagnostic-20261027/final-diagnosis.md)，SHA256 `fa648dfc294921661b21f98f795d5f3ef16002325f1358c0d8dd0948fe441f86`。本機fixture可重現EPERM，但未證實production持鎖來源或UTF8因果；沒有OS改動或上限變更。Transport observer只涵蓋synthesis，舊absolute-path配置未啟用；空檔／缺席不能證明ASR無HTTP錯誤。
 
 **歷史快照：以下 running、最新、待核對等文字均描述當時狀態，不得用來判斷目前程序；目前狀態以上段為準。**
+
+最新 checkpoint（2026-10-27）：97854／PID15272已於14:34:07.6598357Z native1結束，這次是**首次完整EN音訊檢查的29個品質flags，不是journal故障**。212/212＝148 exact＋13 Jev通過＋22 second解除＋29 flags；本輪22個新ASR、3次Jev及1個保存答案沿用，primary Jev累計64、second transcript共51。695b／lz514實際沿用已獨立確認，舊189筆primary／語意欄位保留，noul／second新增另列；active journal 0、82份歷史證據與舊take已凍結。**第一輪原文重錄準備，尚無producer；0/8 accepted。** 29 requests／1251官方billable字元僅離線規劃，plain 0/2、shorten 0、listener 0；14:51:49.2388142Z官方dry-run native0已讀Gemini ready／remaining 5,157,762，足夠實際29 requests／1251 billable；681次fresh checks（非unique檔數）。Root按授權準備獨立付費slot，尚未dispatch，quota只是快照並非保留額度。官方dry-run會忽略redo而報0，不能拿它代替本次實算。Second runtime獨立覆核PASS：51 subset的raw／完整實際轉寫／cache全SHA一致，nativeWhisper0／390.379s、callback396.399s，4CPU／nice19／offline／no hints；本機child close0／reaped及三PID已退出，無holds／uncertain／lease。遠端scratch刪除未證，state／runs保留未archive；無runtime阻擋另行TTS，仍非音訊核准。見[dub-en-first-check-complete.json](dub-en-first-check-complete.json)；完整包及下一集未成。
 
 最新續作入口：2026-10-27T14:25:29.6516650Z。第八筆695b／lz514已逐筆恢復覆核，Root fresh573次SHA核對：current/private各212raw、三方cache189及原170全保留、76preserved＋3active＝79精確journal會員、21present／1absent、terms0及來源／lexicon／unused EN binding一致；原PID27636 dead且無競爭程序／lease／STOP／ASRstate。**唯一正常續檢session97854／PID15272執行中**，slot check-en-saved-answer8-resume，lease 2026-10-27T14:25:30.310Z。從起點帶同一已審source-free EN bridge，no force，20分鐘callback與30秒IO上限不變。**先等97854 nativeexit，再核695b實際沿用、完整flags、second runtime/cleanup及journal；不可啟動另一producer／JA或重播97406。** 續檢前checkpoint已push至2651b8a53；本次dispatch另存本機。見[dub-en-eighth-check-recovery.json](dub-en-eighth-check-recovery.json)。0/8外語驗收，完整包及下一集未成。
 
