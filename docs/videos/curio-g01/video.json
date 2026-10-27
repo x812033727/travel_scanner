@@ -1,0 +1,2337 @@
+{
+  "schema_version": 1,
+  "slug": "curio-g01",
+  "format": "drama",
+  "category": "explainer",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    12,
+    14
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。說書人，像在跟朋友講一個等不及要分享的故事。有起伏、有戲：揭曉前刻意停一拍，問句上揚，「你以為」放慢放輕，「其實」亮起來。關鍵數字放慢，清單段落加快。語速像平常聊天，一秒四到五個字，句與句之間不拖。絕不平、絕不像在念稿。",
+    "performance": "像在跟一個朋友講一個睡前聽了會毛毛的真實故事：開場兩句對著觀眾講，壓低、帶一點神祕；一八四八年那一晚放慢放輕，「她彈幾下，房間就響幾下」和「響了兩聲」各停一拍；鄰居擠進臥室那段加快、帶一點熱鬧，「被殺的」壓低；羅徹斯特那一章輕快，「查不出來」一次比一次乾脆，網紅那句帶笑；劇院那一章先熱鬧後安靜，「嗒、嗒、嗒、嗒、嗒」一下一下放慢；改口與過世那幾句收乾、不煽情；打開小冊之後換成翻檔案的語氣，清楚、有一點得意，年紀與骨頭越講越輕鬆；結尾誠懇，不笑任何人，「存檔」兩個字落地。"
+  },
+  "subtitles": {
+    "burn_in": true
+  },
+  "look": {
+    "preset": "cute-mystery"
+  },
+  "characters": [],
+  "music": {
+    "prompt": "light, curious, a little mysterious, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "scenes": [
+    {
+      "id": "open-you",
+      "chapter": "她彈幾下，房間就響幾下",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a sofa at home watching a glowing television, hugging a cushion to her chest, eyes wide, soft light from the screen on her face",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t001",
+          "text": "你在電影裡看過的降神會，背後是一整個招魂術運動。",
+          "emotion": "對觀眾說，壓低，帶一點神祕"
+        }
+      ]
+    },
+    {
+      "id": "open-date",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand circling one square on a blank paper wall calendar with a pencil, the other squares empty, grey morning light from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t002",
+          "text": "它的信徒，自己把起點算在一個晚上：一八四八年三月三十一日。",
+          "emotion": "日期一個字一個字放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-house",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a small one-and-a-half-storey wooden farmhouse in flat empty countryside at night, one upstairs window faintly lit, bare trees beside it, a thin moon above",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t003",
+          "text": "那天是星期五，紐約州鄉下一間木頭農舍，福克斯家早早上了床。",
+          "emotion": "沉穩進場景"
+        }
+      ]
+    },
+    {
+      "id": "open-bed",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of two sisters in long-sleeved white nightgowns and nightcaps sitting up under a thick patchwork quilt in a plain wooden bed, the younger one about twelve raising one hand, both curious, candle light from a bedside table",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t004",
+          "text": "那陣子每天晚上，屋裡都有敲擊聲。"
+        },
+        {
+          "id": "t005",
+          "text": "這一晚，睡在另一張床上的妹妹，學著彈了幾下手指。",
+          "emotion": "輕，像在講悄悄話"
+        }
+      ]
+    },
+    {
+      "id": "open-snap",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a girl of about twelve in a white nightcap with her fingers raised mid-snap, frozen and staring down at the floorboards beside her bed, candle light from the left",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t006",
+          "text": "她彈幾下，房間裡就跟著響幾下。",
+          "emotion": "停一拍，壓低"
+        }
+      ]
+    },
+    {
+      "id": "open-stage",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a middle-aged woman in a dark high-collared dress and small round spectacles stepping onto the boards of a grand theatre stage, clutching a folded sheet of paper, nervous eyes, footlights glowing from below",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t007",
+          "text": "但這還不是最怪的。",
+          "emotion": "升級"
+        },
+        {
+          "id": "t008",
+          "text": "四十年後，兩人裡的姊姊，站上了紐約一座劇院的舞台。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "open-shoe",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's plain black buttoned boot set down on bare stage boards beside a chair leg, a plain wooden board on the floor next to it, footlights from below",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t009",
+          "text": "她脫下一隻鞋，把腳放在一塊木板上。台下坐著大約兩千人。",
+          "emotion": "收著，停在這裡"
+        }
+      ]
+    },
+    {
+      "id": "open-interview",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reporter in a bowler hat sitting at a parlour table with a pencil poised over a blank notebook, leaning forward eagerly, grey daylight from a tall window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t010",
+          "text": "又過了一年，報紙上登出了她的另一段訪談。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "big",
+      "data": {
+        "text": "41 年",
+        "kicker": "1848 年的一張床，到 1889 年的一段訪談",
+        "sub": "兩個女孩的手指，怎麼成了一整個運動的起點？"
+      },
+      "lines": [
+        {
+          "id": "t011",
+          "text": "這份檔案，我們把四十一年的敲擊聲，一下一下數給你聽。",
+          "emotion": "承諾句，語氣篤定"
+        },
+        {
+          "id": "t012",
+          "text": "兩個女孩在床上彈的手指，怎麼會變成一整個運動的起點？",
+          "emotion": "問句上揚，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "mother-up",
+      "chapter": "一八四八年三月，母親問了一句：是靈嗎？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her forties in a frilled white nightcap sitting bolt upright in a wooden bed, clutching the blanket to her chin, staring across the dark bedroom, candle light from the right",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t013",
+          "text": "睡在同一個房間另一張床上的母親，全都聽見了。",
+          "emotion": "接住開場，輕"
+        }
+      ]
+    },
+    {
+      "id": "sister-clap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a girl of about fourteen with dark braids in a long white nightgown kneeling on a quilt and clapping her hands, counting out loud with a nervous grin, candle light from a bedside table",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t014",
+          "text": "姊姊也拍起手來，數著一、二、三、四，",
+          "emotion": "數數的節奏"
+        },
+        {
+          "id": "t015",
+          "text": "聲音照樣一下一下跟上。"
+        }
+      ]
+    },
+    {
+      "id": "sister-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the girl of about fourteen with dark braids peeking over the edge of a patchwork quilt, eyes darting to the floor, candle light on her cheeks",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t016",
+          "text": "姊姊叫瑪姬，十四歲；妹妹叫凱特，大約十二歲。",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "move-in",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a horse-drawn farm wagon piled with trunks and chairs stopped in front of a small wooden farmhouse on a snowy December afternoon, a man in a wool coat lifting a trunk down, overcast light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t017",
+          "text": "一家人去年十二月才從羅徹斯特搬來，",
+          "emotion": "敘述"
+        },
+        {
+          "id": "t018",
+          "text": "這間屋子，只是新房子蓋好以前暫住的地方。"
+        }
+      ]
+    },
+    {
+      "id": "hamlet",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a handful of scattered farmhouses along a muddy country road under a flat grey winter sky, a single crow on a fence post in the foreground, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t019",
+          "text": "這裡叫海茲維爾，只有幾戶人家，連村子都稱不上。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "you-floor",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of bare wooden floorboards beside a bed leg in a dark bedroom, a candle in a tin holder on the floor casting a small circle of light, the only shapes are the boards, the bed leg and the candle",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t020",
+          "text": "你想像一下：搬進一間借住的屋子，每天晚上地板都在響。你睡得著嗎？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "mother-ask",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the woman in a frilled nightcap leaning forward from her bed, lips parted as she speaks into the dark, eyebrows raised, candle light from below",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t021",
+          "text": "母親開口了：是人在敲嗎？",
+          "emotion": "壓低，問句"
+        },
+        {
+          "id": "t022",
+          "text": "房間裡，一點聲音都沒有。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "mother-ask2",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the woman in a frilled nightcap holding a tin candlestick up toward the far corner of the bedroom, her other hand pressed to her chest, holding her breath",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t023",
+          "text": "她又問：那是靈嗎？話才說完，響了兩聲。",
+          "emotion": "放慢，「兩聲」落地"
+        }
+      ]
+    },
+    {
+      "id": "narrator-chill",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a hoodie at a library table in the afternoon reading an old book, rubbing the back of his neck with a shiver, eyes wide, soft daylight from a tall window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t024",
+          "text": "老實說，我讀到這一句，後頸有點涼。",
+          "emotion": "自己的反應，輕"
+        }
+      ]
+    },
+    {
+      "id": "mother-count",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the woman in a frilled nightcap sitting on the edge of her bed counting on her fingers, lips moving silently, a tin candlestick on the bedside table",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t025",
+          "text": "她接著問它幾歲，敲擊聲響了三十一下。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "t026",
+          "text": "它還「說」，它是個男的，在這間屋子裡受過害。",
+          "emotion": "轉述，收著"
+        }
+      ]
+    },
+    {
+      "id": "storyteller",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly storyteller in a knitted cardigan sitting in an armchair by a fireplace, holding one finger to his lips with a sly smile, warm firelight from the right",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t027",
+          "text": "如果你聽過這個故事，可能在等一句很有名的台詞。",
+          "emotion": "對觀眾，帶一點神祕"
+        },
+        {
+          "id": "t028",
+          "text": "先記住，它到這裡都還沒出現。",
+          "emotion": "前向鉤子"
+        }
+      ]
+    },
+    {
+      "id": "mother-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the woman in a shawl over her nightgown standing in an open farmhouse doorway at night, holding up a lantern and calling out toward the dark yard, worried face",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t029",
+          "text": "那天晚上七點半左右，她把隔壁的鄰居叫了過來。",
+          "emotion": "加快"
+        },
+        {
+          "id": "t030",
+          "text": "來的人，問得比她更直接。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "neighbors-door",
+      "chapter": "鄰居擠進臥室，地窖挖到出水",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a cramped farmhouse bedroom doorway packed with neighbours in coats and bonnets craning their necks to look inside, one man holding a candle high above the crowd",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t031",
+          "text": "鄰居瑞德菲爾德太太先到，沒多久，十幾個人擠進了那間臥室。",
+          "emotion": "接住，熱鬧"
+        }
+      ]
+    },
+    {
+      "id": "duesler",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded farmer in a wool waistcoat standing in a crowded bedroom with his head tilted and one hand cupped to his ear, listening hard, candle light from the left",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t032",
+          "text": "其中一位鄰居叫杜斯勒，他一個問題接一個問題地問。"
+        }
+      ]
+    },
+    {
+      "id": "duesler-shock",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the bearded farmer's face, eyebrows shooting up in shock and mouth falling open, candle light flickering on one side",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t033",
+          "text": "敲擊聲「說」：它是五年前，在這間臥室裡被殺的。",
+          "emotion": "壓低，放慢"
+        },
+        {
+          "id": "t034",
+          "text": "你能想像那個房間，當下有多安靜嗎？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "peddler",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a travelling peddler in a long coat and a wide-brimmed hat walking down a muddy country road with a small wooden trunk strapped to his back, mild grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t035",
+          "text": "它還「說」，它是一個帶著箱子的小販，",
+          "emotion": "轉述"
+        },
+        {
+          "id": "t036",
+          "text": "身上帶過五百元，名字開頭是兩個字母。"
+        }
+      ]
+    },
+    {
+      "id": "gossip",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a farm woman in a bonnet in a farmhouse kitchen in the morning, whispering behind her hand toward the viewer, eyes sliding sideways, grey daylight from a window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t037",
+          "text": "五年前住在這屋裡的是誰？話題很快轉到一位以前的房客身上。",
+          "emotion": "加快"
+        },
+        {
+          "id": "t038",
+          "text": "整個地方都在議論他。這個人，後來怎麼了？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "narrator-joke",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a hoodie on a modern sofa clutching a cushion and leaning away from a glowing phone in mock fright, comic expression, soft light from the screen",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t039",
+          "text": "說真的，換成我擠在那個門口，大概已經想回家了。",
+          "emotion": "自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "saturday",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowd of farm folk in coats and bonnets gathered in the muddy yard of a small wooden farmhouse on a grey Saturday afternoon, a boy climbing a fence rail to see better, overcast light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t040",
+          "text": "隔天是星期六，據說來了三百人。",
+          "emotion": "轉述，「據說」放輕"
+        }
+      ]
+    },
+    {
+      "id": "cellar-dig",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a farmer in shirtsleeves digging with a spade in a bare earthen cellar, a lantern hanging from a low beam, muddy water pooling around his boots",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t041",
+          "text": "那天晚上，他們下到地窖開始挖。"
+        },
+        {
+          "id": "t042",
+          "text": "結果，挖到冒出水來，什麼都沒挖到，只好停手。",
+          "emotion": "揭曉，短"
+        }
+      ]
+    },
+    {
+      "id": "cellar-empty",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an empty earthen cellar floor with a puddle of water and a spade leaning against the wall, a lantern on an upturned bucket, the only shapes are the spade, the bucket and the lantern",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t043",
+          "text": "你會不會覺得，故事就該停在這個挖不到東西的地窖？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "city-street",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy 1840s city street of brick shops and horse carts in grey daylight, a woman in a dark bonnet and shawl walking briskly with a music folder under her arm",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t044",
+          "text": "沒想到，讓它走出這個小地方的人，那時候根本不在這間屋子裡。",
+          "emotion": "轉折，收著"
+        }
+      ]
+    },
+    {
+      "id": "leah",
+      "chapter": "一八四九年，四個晚上、三個委員會",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her thirties in a black widow's dress and lace collar sitting at a parlour piano with her hands on the keys, turning toward the viewer with a knowing look, soft daylight from a window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t045",
+          "text": "那個人，是她們的大姊莉亞。",
+          "emotion": "揭曉"
+        },
+        {
+          "id": "t046",
+          "text": "她住在羅徹斯特，是靠教音樂養活妹妹們的寡婦。"
+        }
+      ]
+    },
+    {
+      "id": "knockings-name",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a shopkeeper in an apron leaning over his counter to tell a story to the viewer with wide eyes and one raised finger, jars on the shelves behind him, mild daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t047",
+          "text": "沒過多久，大家把這陣聲音叫作「羅徹斯特的敲擊聲」。"
+        }
+      ]
+    },
+    {
+      "id": "hall",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a large 1840s lecture hall filling up with people in coats and bonnets on rows of wooden benches, a bare platform at the front, warm light from brass wall sconces",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t048",
+          "text": "一八四九年十一月十四日，星期三晚上，城裡的科林斯廳坐滿了人。",
+          "emotion": "敘述"
+        }
+      ]
+    },
+    {
+      "id": "platform",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman of about sixteen in a plain dark dress standing on a lecture hall platform beside an empty chair, hands clasped tightly in front of her, looking out at the audience, warm light from wall sconces",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t049",
+          "text": "莉亞帶著瑪姬站上講台。凱特那時候，人在別的城市。"
+        }
+      ]
+    },
+    {
+      "id": "volunteer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern gentleman in a frock coat rising from a crowded bench and raising one hand high to volunteer, determined frown, warm light from wall sconces",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t050",
+          "text": "台下的聽眾當場選出一個委員會，去查聲音從哪裡來。"
+        },
+        {
+          "id": "t051",
+          "text": "查得出來嗎？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "search-table",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a man in a frock coat crouching beside a plain wooden table in a bare daytime room, peering at the floorboards through a magnifying glass, puzzled, grey daylight from a window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t052",
+          "text": "第一個委員會查不出來，隔天又選了第二個。"
+        }
+      ]
+    },
+    {
+      "id": "ladies",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stern older lady in a grey bonnet and shawl standing outside a closed door in a bare daytime room, arms folded, frowning thoughtfully, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t053",
+          "text": "第二個也查不出來。第三個還請了幾位女士，",
+          "emotion": "加快"
+        },
+        {
+          "id": "t054",
+          "text": "把她們帶進房間，連衣服都檢查了。"
+        }
+      ]
+    },
+    {
+      "id": "four-nights",
+      "template": "big",
+      "data": {
+        "text": "4 晚・3 個委員會",
+        "kicker": "1849 年 11 月 14–17 日，羅徹斯特科林斯廳",
+        "sub": "每一個都說：查不出聲音從哪裡來"
+      },
+      "lines": [
+        {
+          "id": "t055",
+          "text": "連開四個晚上，三個委員會，報告都是同一句：查不出來。",
+          "emotion": "數字放慢"
+        }
+      ]
+    },
+    {
+      "id": "audience-girl",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman in a bonnet on a crowded bench leaning toward the viewer to whisper, eyes shining with excitement, one hand at the side of her mouth, warm light from wall sconces",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t056",
+          "text": "你想想，連查的人都說查不出來，你坐在台下，會怎麼想？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "train",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a busy railway platform in the 1850s with a steam locomotive, a newsboy in a cap holding a stack of papers above his head and shouting, grey daylight under a glass roof",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t057",
+          "text": "這個名字就這樣傳遍美國；到一八六〇年，連歐洲都聽過。"
+        }
+      ]
+    },
+    {
+      "id": "narrator-phone",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman on a modern sofa scrolling a phone and raising her eyebrows, impressed, a mug in her other hand, afternoon daylight from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t058",
+          "text": "在沒有網路的年代，這速度老實講，比很多網紅還快。",
+          "emotion": "自己的反應，帶笑"
+        }
+      ]
+    },
+    {
+      "id": "buffalo",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bald doctor in a dark frock coat standing in a medical school lecture room tapping his own knee with two fingers, a skeptical look, grey daylight from tall windows",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t059",
+          "text": "一八五一年二月，水牛城三位醫師發表聲明：",
+          "emotion": "敘述"
+        },
+        {
+          "id": "t060",
+          "text": "這種聲音，靠關節就弄得出來。"
+        }
+      ]
+    },
+    {
+      "id": "buffalo-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the bald doctor's face with one eyebrow raised and lips pursed in doubt, grey daylight from a tall window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t061",
+          "text": "可是他們只是猜。下一個站出來講這件事的人，要再等三十七年。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "maggie-window",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a middle-aged woman in a dark high-collared dress and small round spectacles sitting alone at a window, staring out with a tight jaw, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t062",
+          "text": "而且，就是瑪姬自己。",
+          "emotion": "反轉，短句"
+        }
+      ]
+    },
+    {
+      "id": "herald",
+      "chapter": "一八八八年十月，她在台上脫下一隻鞋",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the middle-aged woman in small round spectacles sitting in a hotel parlour with her hands clasped tightly in her lap, speaking with a determined face, grey afternoon light from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t063",
+          "text": "一八八八年九月，她已經五十多歲了。"
+        },
+        {
+          "id": "t064",
+          "text": "據同年出版的一本書，紐約一家報紙先登出她的訪談：",
+          "emotion": "敘述"
+        },
+        {
+          "id": "t065",
+          "text": "她要把一切說出來。",
+          "emotion": "停一拍"
+        }
+      ]
+    },
+    {
+      "id": "you-guess",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman in an 1880s feathered hat reading a blank newspaper on a city bench, her mouth falling open, grey daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t066",
+          "text": "你猜，她要說什麼？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "sunday-paper",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newsboy in a flat cap on a city corner on a Sunday morning holding up a thick folded newspaper and shouting, a church spire behind him, pale morning light",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t067",
+          "text": "十月二十一日，星期天。早上的報紙，先登出了她的自白。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "theatre-door",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a grand 1880s theatre entrance on a city street at dusk, gas lamps lit, a crowd in top hats and bustles streaming through the doors under a blank sign",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t068",
+          "text": "晚上，紐約十四街一座大劇院坐得滿滿的。還記得開場那個舞台嗎？",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "dentist",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a dapper dentist with a waxed moustache in evening dress standing at the front of a theatre stage, spreading his arms toward the audience like a showman, footlights from below",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t069",
+          "text": "這一晚的節目，是一位叫理奇蒙的牙醫主辦的，",
+          "emotion": "帶一點看熱鬧"
+        },
+        {
+          "id": "t070",
+          "text": "主題就叫：揭穿招魂術。"
+        }
+      ]
+    },
+    {
+      "id": "stage-read",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the middle-aged woman in small round spectacles standing at the front of the theatre stage holding a sheet of paper in trembling hands, reading aloud nervously, footlights from below",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t071",
+          "text": "她戴著眼鏡，念一份寫好的聲明，念得斷斷續續。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "stage-shoe",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the middle-aged woman in small round spectacles sitting very straight on a plain chair on the theatre stage, one black boot set on the boards beside her and her stockinged foot on a plain wooden board, hushed face, footlights from below",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t072",
+          "text": "然後她坐下來，那隻鞋，就是這時候脫下的。",
+          "emotion": "回呼，收著"
+        }
+      ]
+    },
+    {
+      "id": "balcony",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a packed theatre balcony full of people in evening clothes leaning forward over the rail in total silence, one man cupping his ear, warm stage light from below",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t073",
+          "text": "整座劇院安靜下來。接著，所有人都聽見了：",
+          "emotion": "壓低"
+        },
+        {
+          "id": "t074",
+          "text": "嗒、嗒、嗒、嗒、嗒。",
+          "emotion": "一下一下，放慢"
+        }
+      ]
+    },
+    {
+      "id": "stage-face",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the woman in small round spectacles on stage looking straight out at the audience with a calm, unreadable face, footlights from below",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t075",
+          "text": "這是不是四十年前，那間臥室裡的同一種聲音？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "doctor-up",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an older doctor with a grey beard in a black frock coat bending down on a theatre stage to peer at the floor beside a chair, holding his spectacles in one hand, footlights from below",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t076",
+          "text": "台下幾位醫師走上台，彎下腰去看她的腳。"
+        },
+        {
+          "id": "t077",
+          "text": "他們看完，會怎麼說？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "kate-box",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a woman in her late forties in a dark dress sitting very still in a velvet theatre box, hands folded in her lap, watching the stage silently, warm stage light from the side",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t078",
+          "text": "舞台旁的包廂裡，坐著她的妹妹凱特，一句話也沒說。",
+          "emotion": "輕"
+        }
+      ]
+    },
+    {
+      "id": "narrator-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman at a cafe table in daylight with an old book open in front of her, one hand pressed over her mouth, eyes wide, soft window light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t079",
+          "text": "我讀到這一幕，只想問：四十年的事，就這樣結束了嗎？",
+          "emotion": "自己的反應，問句"
+        }
+      ]
+    },
+    {
+      "id": "recant",
+      "chapter": "一八八九年，同一個人說了相反的話",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the middle-aged woman in small round spectacles sitting upright in a small parlour, speaking firmly with one hand raised, an empty chair and a blank notebook across the table, grey November daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t080",
+          "text": "沒有結束。開場說的那段訪談，在一八八九年十一月登了出來。",
+          "emotion": "接住"
+        },
+        {
+          "id": "t081",
+          "text": "她把一年前的自白，收回了。",
+          "emotion": "揭曉，短"
+        }
+      ]
+    },
+    {
+      "id": "deathblow",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a printer in an ink-stained apron lifting a freshly bound book with a plain cover off a stack in a print shop, proud grin, grey daylight from a skylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t082",
+          "text": "可是前一年，一本經她授權的書已經印出來了，",
+          "emotion": "加快"
+        },
+        {
+          "id": "t083",
+          "text": "書名叫《招魂術的致命一擊》。"
+        }
+      ]
+    },
+    {
+      "id": "two-papers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of an elderly man in a flat cap at a newsstand holding two blank newspapers side by side, looking from one to the other, baffled, grey daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t084",
+          "text": "同一個人、同一件事，兩次公開，說法正好相反。",
+          "emotion": "放慢"
+        },
+        {
+          "id": "t085",
+          "text": "換成你，你會信哪一次？",
+          "emotion": "對觀眾，問句"
+        }
+      ]
+    },
+    {
+      "id": "narrator-two",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man at a desk in daylight with two closed books in front of him, scratching his head with a sheepish smile, soft window light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t086",
+          "text": "我自己讀了好幾遍，還是選不出來。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "kate-street",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet New York street of brownstone houses on a hazy July afternoon, a single bunch of white flowers on one doorstep, pale hazy daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t087",
+          "text": "三年後的七月，凱特在紐約過世。",
+          "emotion": "收乾"
+        }
+      ]
+    },
+    {
+      "id": "maggie-room",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a nurse in a white apron drawing a curtain closed in a small bedroom on a grey March morning, head bowed, pale daylight",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t088",
+          "text": "隔年三月，瑪姬在布魯克林過世，五十九歲。",
+          "emotion": "收乾，不煽情"
+        }
+      ]
+    },
+    {
+      "id": "story-done",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a candle stub burning low on a windowsill at dawn, a thin trail of smoke rising against the glass, pale blue morning light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t089",
+          "text": "故事講到這裡，好像都講完了。"
+        },
+        {
+          "id": "t090",
+          "text": "可是你剛剛聽到的那個一八四八年的晚上，是從哪裡來的？",
+          "emotion": "問句，停一拍"
+        }
+      ]
+    },
+    {
+      "id": "lewis",
+      "chapter": "一八四八年的小冊裡，沒有那句台詞",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a gentleman in a dark coat and cravat at a farmhouse parlour table in daylight, writing carefully with a quill on a blank sheet while listening, soft window light",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t091",
+          "text": "從一本薄薄的小冊。那年四月，坎南代瓜鎮的路易斯，在村裡待了幾天。",
+          "emotion": "接住，像打開檔案"
+        }
+      ]
+    },
+    {
+      "id": "lewis-read",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the gentleman in a dark coat reading a blank sheet aloud to an old farmer who nods along, a quill in his other hand, soft daylight from a window",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t092",
+          "text": "他把每個人說的話寫下來，唸給本人聽，再請他簽名。"
+        }
+      ]
+    },
+    {
+      "id": "signatures",
+      "template": "big",
+      "data": {
+        "text": "22 人簽名",
+        "kicker": "1848 年 4 月，E. E. Lewis 印的小冊",
+        "sub": "母親的聲明，簽於 4 月 11 日"
+      },
+      "lines": [
+        {
+          "id": "t093",
+          "text": "連父母、哥哥和嫂嫂在內，一共二十二個人。",
+          "emotion": "數字放慢"
+        },
+        {
+          "id": "t094",
+          "text": "母親那一份，簽在四月十一日，離那個晚上不到兩週。"
+        }
+      ]
+    },
+    {
+      "id": "narrator-respect",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a library reading table turning the pages of a thin old pamphlet with white cotton gloves, eyebrows raised in respect, soft daylight",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t095",
+          "text": "我覺得，這大概是靈異故事裡最早、也最認真的一份筆錄。",
+          "emotion": "意見，誠懇"
+        }
+      ]
+    },
+    {
+      "id": "mother-dictate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the woman from the first night, now in a plain day dress and white cap, sitting in a parlour chair and speaking slowly with her hands in her lap, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t096",
+          "text": "開頭那句「她彈幾下，房間裡就響幾下」，就是母親的原話。",
+          "emotion": "回呼"
+        },
+        {
+          "id": "t097",
+          "text": "響在房間裡，不是牆裡；次數一樣多，不是一聲。"
+        }
+      ]
+    },
+    {
+      "id": "owen",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a bearded Victorian gentleman in a frock coat writing in a thick leather-bound book at a study desk, a satisfied smile, grey daylight from a window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t098",
+          "text": "還記得那句一直沒出現的台詞嗎？",
+          "emotion": "回呼"
+        },
+        {
+          "id": "t099",
+          "text": "很多版本說，那晚凱特喊了一句：「分趾先生，照我做！」",
+          "emotion": "說故事的語氣"
+        }
+      ]
+    },
+    {
+      "id": "owen-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand turning a page in a thick leather-bound book, the open pages blank, grey daylight on the paper",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t100",
+          "text": "二十二份聲明裡，一個字都沒有。它最早出現在十二年後的一本書。",
+          "emotion": "揭曉"
+        }
+      ]
+    },
+    {
+      "id": "leah-book",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an elderly woman in a black silk dress and lace cap at a writing desk dipping a pen with a determined look, a tall stack of blank manuscript pages beside her, soft afternoon light",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t101",
+          "text": "更怪的是，一八八五年，大姊莉亞自己出的書，",
+          "emotion": "升級"
+        },
+        {
+          "id": "t102",
+          "text": "直接把這句話寫進了「母親的聲明」。"
+        }
+      ]
+    },
+    {
+      "id": "ages",
+      "template": "stats",
+      "data": {
+        "title": "她們幾歲？越寫越小",
+        "stats": [
+          {
+            "value": "14／約 12",
+            "label": "1848 年，母親的聲明"
+          },
+          {
+            "value": "12／9",
+            "label": "1860 年，支持者的書"
+          },
+          {
+            "value": "8／6 歲半",
+            "label": "1888 年，她授權的書"
+          }
+        ],
+        "source": "Lewis 1848；Owen 1860；Davenport 1888；查核 2026-10-27"
+      },
+      "lines": [
+        {
+          "id": "t103",
+          "text": "她們的年紀也一樣。一八六〇年的書，寫她們十二歲和九歲；",
+          "emotion": "一個一個清楚"
+        },
+        {
+          "id": "t104",
+          "text": "到了她授權的那本書，變成八歲和六歲半。"
+        }
+      ]
+    },
+    {
+      "id": "you-fingers",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young man in a hoodie holding up three fingers and staring at them with a baffled frown, afternoon daylight from a window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t105",
+          "text": "你發現了嗎？支持她的書、反對她的書，都把她們講小了。",
+          "emotion": "對觀眾"
+        },
+        {
+          "id": "t106",
+          "text": "為什麼？沒有一本留下說明。",
+          "emotion": "問句，再自己答"
+        }
+      ]
+    },
+    {
+      "id": "pamphlet-end",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a thin old pamphlet with a blank cover lying closed on a wooden table beside a pair of reading glasses, grey daylight",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t107",
+          "text": "那個小販，和那個地窖呢？",
+          "emotion": "問句，收著"
+        }
+      ]
+    },
+    {
+      "id": "duesler-ask",
+      "chapter": "「小販」兩個字，是誰先說出口的？",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the bearded farmer in a wool waistcoat in a crowded bedroom leaning forward with one finger raised as he asks a question, eyebrows lifted, candle light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t108",
+          "text": "翻開杜斯勒自己的聲明，「小販」這兩個字，是他先問出口的。",
+          "emotion": "揭曉"
+        },
+        {
+          "id": "t109",
+          "text": "他問：是不是小販？敲擊聲才響。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "pulver",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman of about nineteen in a plain work dress and apron standing at a farmhouse kitchen window in the morning, frowning as she remembers, a broom in her hand, soft daylight",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t110",
+          "text": "以前在這家幫傭的露克麗霞，另外記得一個冬天來過、",
+          "emotion": "敘述"
+        },
+        {
+          "id": "t111",
+          "text": "後來再也沒見過的小販。"
+        }
+      ]
+    },
+    {
+      "id": "ledger",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a hand flipping through a blank ledger book in a records office in daylight, one finger stopping on an empty page, soft light from a high window",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t112",
+          "text": "後來的書替他取了全名，可是到今天，沒人找到這個人存在過的紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "certificate",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old farmer in a Sunday coat signing a blank sheet of paper on a church bench with a quill, a serious, kind face, soft daylight from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t113",
+          "text": "那位被議論的前房客呢？同一本小冊的最後，",
+          "emotion": "回呼"
+        },
+        {
+          "id": "t114",
+          "text": "印了一份鄰居的聯名書，替他作保。"
+        }
+      ]
+    },
+    {
+      "id": "quote-careful",
+      "template": "quote",
+      "data": {
+        "kicker": "1848 年小冊的最後幾頁，鄰居替前房客作保的聯名書",
+        "quote": "Men should be careful how, on the sole responsibility of an unaccountable rapping, they pass their judgment upon others.",
+        "translation": "別只憑一陣說不清的敲擊聲，就論斷別人。",
+        "source": "E. E. Lewis, A Report of the Mysterious Noises, 1848, p. 38"
+      },
+      "lines": [
+        {
+          "id": "t115",
+          "text": "上面寫著：別只憑一陣說不清的敲擊聲，就論斷別人。",
+          "emotion": "放慢，像念原文"
+        }
+      ]
+    },
+    {
+      "id": "narrator-heart",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman at a library table reading an old pamphlet, smiling softly with one hand on her heart, soft daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t116",
+          "text": "這句話，我私心覺得是整本小冊最清醒的一句。",
+          "emotion": "意見"
+        },
+        {
+          "id": "t117",
+          "text": "查核時，我們也沒找到任何起訴他的紀錄。"
+        }
+      ]
+    },
+    {
+      "id": "cellar-stair",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of an old man in a coat standing on the bottom step of an empty earthen cellar holding his hat, looking at a puddle on the bare floor, a lantern on an upturned bucket",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t118",
+          "text": "還記得那個挖到出水的地窖嗎？",
+          "emotion": "回呼"
+        },
+        {
+          "id": "t119",
+          "text": "三十多年後，大姊莉亞在書裡說，那年夏天又挖了一次，"
+        }
+      ]
+    },
+    {
+      "id": "leah-claim",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the elderly woman in a black silk dress and lace cap seated in a parlour, speaking with a confident nod and one hand raised, soft afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t120",
+          "text": "挖到了碎骨和頭髮。瑪姬翻臉那年說：沒這回事。",
+          "emotion": "轉述"
+        }
+      ]
+    },
+    {
+      "id": "obituary",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a folded newspaper with blank columns lying on a brownstone doorstep on a grey March morning, a black ribbon tied around it, pale light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t121",
+          "text": "到了瑪姬過世隔天，報上的訃聞，已經寫成「他們挖到了骨頭」。"
+        }
+      ]
+    },
+    {
+      "id": "wall-gap",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a carpenter in overalls prying a plank off an old farmhouse wall with a crowbar, peering into the dark gap with a startled look, dusty daylight from a window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t122",
+          "text": "更離奇的是，一九〇四年，報紙說在那間屋子的夾牆裡，找到了骨骸。",
+          "emotion": "升級"
+        }
+      ]
+    },
+    {
+      "id": "journal",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a scholar in a high collar at a desk reading a thin journal and rolling his eyes with a half smile, a cup of tea beside him, soft daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t123",
+          "text": "五年後，一份心靈研究的期刊說，那只是幾根肋骨和零碎的骨頭，"
+        },
+        {
+          "id": "t124",
+          "text": "還混著雞骨；它也寫，有人承認那是惡作劇。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "clipping",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a young woman at a kitchen table holding up a blank newspaper clipping between two fingers and squinting at it skeptically, warm evening light from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t125",
+          "text": "這幾篇的原件我們沒找到，只看得到後人的轉引。"
+        },
+        {
+          "id": "t126",
+          "text": "你看，骨頭一次比一次多，離那個晚上也一次比一次遠。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "eyewitness",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reporter in a straw boater on a crowded wooden bench scribbling in a blank notebook with his tongue between his teeth, warm light from wall sconces",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t127",
+          "text": "那親眼看過她們的人，當年在報上到底寫了什麼？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "northstar",
+      "chapter": "兩個公開的晚上，報紙各寫了什麼",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newspaper editor in shirtsleeves and an ink apron at a small print shop desk, frowning as he writes on a blank sheet with a steel pen, grey daylight from a window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t128",
+          "text": "一八四九年那四個晚上，羅徹斯特一份報紙一週後登了出來。",
+          "emotion": "接住"
+        },
+        {
+          "id": "t129",
+          "text": "記者寫：整件事，也許是一場很大的騙局。"
+        }
+      ]
+    },
+    {
+      "id": "rowdy",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a crowded 1840s lecture hall in uproar, one young man in a cap standing on a bench and shouting with his hands cupped around his mouth, warm light from wall sconces",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t130",
+          "text": "他還寫，最後一晚有人鬧場，",
+          "emotion": "加快"
+        },
+        {
+          "id": "t131",
+          "text": "多到他沒想到羅徹斯特湊得出這麼多搗亂的人。",
+          "emotion": "帶一點好笑"
+        }
+      ]
+    },
+    {
+      "id": "narrator-laugh",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young man in a hoodie at a library table covering a laugh with one hand, shoulders shaking, soft daylight from a tall window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t132",
+          "text": "我第一次讀到這句，真的笑出來。",
+          "emotion": "自己的反應"
+        }
+      ]
+    },
+    {
+      "id": "newsstand",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a newsstand keeper in an 1880s cap holding three folded blank newspapers fanned out in one hand, grinning at the viewer, grey morning light",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t133",
+          "text": "三十九年後那一晚，隔天的報紙也寫得不一樣。"
+        },
+        {
+          "id": "t134",
+          "text": "你在中文網路上，可能看過她是在「音樂學院」懺悔。",
+          "emotion": "對觀眾"
+        }
+      ]
+    },
+    {
+      "id": "theatre-day",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of the grand 1880s theatre facade on a city street in grey daylight, a man in an apron sweeping the front steps under a blank sign",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t135",
+          "text": "其實那是一座劇院；那一晚，是劇院這一季第一場星期天的節目。"
+        }
+      ]
+    },
+    {
+      "id": "sketcher",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a reporter in a bowler hat in the back row of a dark theatre, squinting at the distant stage and sketching fast in a blank notebook, warm stage light from far away",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t136",
+          "text": "三家報紙，連她是坐著、站著，還是踩在小木凳上，都寫得不一樣。",
+          "emotion": "加快"
+        }
+      ]
+    },
+    {
+      "id": "crowd-2000",
+      "template": "big",
+      "data": {
+        "text": "約 2,000 人",
+        "kicker": "1888 年 10 月 21 日，紐約十四街的劇院",
+        "sub": "只有《The Sun》寫了人數；《Tribune》寫「an immense audience」"
+      },
+      "lines": [
+        {
+          "id": "t137",
+          "text": "開頭那大約兩千人，也只有一家報紙這樣寫；另一家只說，人多得不得了。",
+          "emotion": "回呼"
+        }
+      ]
+    },
+    {
+      "id": "doctor-verdict",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the grey-bearded doctor in a black frock coat straightening up on the stage and announcing something with one finger raised, footlights from below",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t138",
+          "text": "那幾位彎腰看她腳的醫師，隔天早上的報紙寫：",
+          "emotion": "回呼"
+        },
+        {
+          "id": "t139",
+          "text": "他們都同意，聲音來自她大腳趾的第一個關節。"
+        }
+      ]
+    },
+    {
+      "id": "kate-parlour",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the woman in her late forties in a dark dress standing in a parlour with her lips pressed together and her hands folded, saying nothing, soft daylight",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t140",
+          "text": "還有一句常被講錯的話：「三姊妹都承認了」。",
+          "emotion": "轉折"
+        },
+        {
+          "id": "t141",
+          "text": "凱特那晚只坐在包廂裡，沒有上台；大姊莉亞，從來沒有承認過。"
+        }
+      ]
+    },
+    {
+      "id": "telegraph-wait",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a telegraph clerk in sleeve garters leaning on a wooden counter with his chin in his hand, staring at a silent brass telegraph key, grey afternoon light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t142",
+          "text": "那一年後的改口，紀錄又是怎麼寫的？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "telegraph",
+      "chapter": "一八八九年的改口，有兩種寫法",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the telegraph clerk in sleeve garters tapping the brass telegraph key fast at his wooden desk, concentrating, grey daylight from a window",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t143",
+          "text": "當年各地轉載的電訊稿說：她收回了自白，",
+          "emotion": "接住，清楚"
+        },
+        {
+          "id": "t144",
+          "text": "還指控教會人士收買她。"
+        }
+      ]
+    },
+    {
+      "id": "doyle",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a stout older gentleman with a large walrus moustache in a tweed suit writing in a thick book with a fountain pen at a study desk, nodding to himself, grey daylight from a window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t145",
+          "text": "另一個版本，出自寫福爾摩斯的柯南·道爾，他自己也是信徒。"
+        }
+      ]
+    },
+    {
+      "id": "doyle-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the moustached gentleman's hand holding a fountain pen above a blank page of a thick book, grey daylight on the paper",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t146",
+          "text": "他一九二六年的書，引了當年紐約一家報紙的訪談："
+        },
+        {
+          "id": "t147",
+          "text": "她說之前的指控全部不實，那時她很缺錢，被人利用了。",
+          "emotion": "轉述，放慢"
+        }
+      ]
+    },
+    {
+      "id": "two-versions",
+      "template": "compare",
+      "data": {
+        "title": "1889 年 11 月，她為什麼改口",
+        "left": {
+          "heading": "同時代的電訊（1889-11-23）",
+          "points": [
+            "收回 1888 年的自白",
+            "指控教會人士收買她"
+          ]
+        },
+        "right": {
+          "heading": "Doyle 1926 年轉引的訪談",
+          "points": [
+            "之前的指控「全部不實」",
+            "當時缺錢，被人利用"
+          ]
+        },
+        "verdict": "兩種說法，各有出處；訪談原件沒找到",
+        "source": "Wheeling Register 1889-11-23；Doyle, The History of Spiritualism, 1926"
+      },
+      "lines": [
+        {
+          "id": "t148",
+          "text": "那份報紙的原件，我們沒找到，只看得到他的轉引。"
+        },
+        {
+          "id": "t149",
+          "text": "一個說被收買，一個說被利用。哪一次才是真心？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "narrator-scale",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a young woman at a desk in daylight holding up two blank letters, one in each hand, weighing them like a scale with a thoughtful frown, soft window light",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t150",
+          "text": "剛剛問你會信哪一次：紀錄沒有替她選，我也不替她選。",
+          "emotion": "誠懇"
+        }
+      ]
+    },
+    {
+      "id": "doyle-start",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of the moustached gentleman's fountain pen underlining a line across a blank page of an open book, grey daylight",
+        "camera": "pan left",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t151",
+          "text": "倒是同一本書的第一章寫著：信徒習慣把開頭那個日子，當成一切的開始，",
+          "emotion": "回呼，放慢"
+        },
+        {
+          "id": "t152",
+          "text": "因為他們的運動，就是從那天算起。"
+        }
+      ]
+    },
+    {
+      "id": "davis",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of a thin young man with long hair and a beard in an 1840s coat writing in a book at a plain table, a dreamy faraway look, grey daylight from a window",
+        "camera": "tilt up",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t153",
+          "text": "可是同一本書也寫，在她們之前，已經有人出過講靈界的書。"
+        },
+        {
+          "id": "t154",
+          "text": "所以說那一晚是起點，是信徒自己的算法。",
+          "emotion": "收著"
+        }
+      ]
+    },
+    {
+      "id": "lilydale",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet clearing among tall trees in a lakeside village on an overcast autumn day, a woman in a raincoat standing beside a small stone marker with her hands folded, soft grey light",
+        "camera": "push in",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t155",
+          "text": "那間農舍，一九一六年被整棟搬到紐約州的莉莉戴爾，一九五〇年代燒掉了。"
+        }
+      ]
+    },
+    {
+      "id": "lilydale-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Wide shot of a quiet lakeside village street of small wooden cottages with porches on an overcast autumn afternoon, a woman in a raincoat walking a bicycle past them, soft grey light",
+        "camera": "drift",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t156",
+          "text": "莉莉戴爾從一八七九年起，就是招魂術信徒的聚會地，到今天都還是。"
+        },
+        {
+          "id": "t157",
+          "text": "所以這個故事，我們只講紀錄，不笑任何一個相信的人。",
+          "emotion": "誠懇"
+        }
+      ]
+    },
+    {
+      "id": "close-answer",
+      "template": "shot",
+      "data": {
+        "prompt": "Medium shot of the girl of about twelve in a white nightcap sitting on the edge of the wooden bed in morning daylight, looking down at her own open hands with a puzzled face, soft light from a window",
+        "camera": "pan right",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t158",
+          "text": "回到開頭的問題：兩個女孩彈的手指，怎麼成了一整個運動的起點？",
+          "emotion": "問句"
+        }
+      ]
+    },
+    {
+      "id": "close-answer-b",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a woman's hand dipping a quill into an inkwell beside a stack of blank signed sheets on a parlour table, soft morning daylight",
+        "camera": "tilt down",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t159",
+          "text": "一個母親問出口的「靈」字，二十二個人的簽名，",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "t160",
+          "text": "四個晚上查不出來的委員會，再加上後來每一次重講。"
+        }
+      ]
+    },
+    {
+      "id": "verdict",
+      "template": "table",
+      "data": {
+        "title": "這份檔案能證明什麼",
+        "columns": [
+          "",
+          "內容",
+          "出處"
+        ],
+        "rows": [
+          [
+            "有紀錄的",
+            "3 月 31 日那晚、四晚三委員會、1888 年的舞台、1889 年的改口",
+            "1848 小冊、1849 與 1888 報紙、1889 電訊"
+          ],
+          [
+            "後來加的",
+            "「分趾先生」那句、越講越小的年紀、越挖越多的骨頭",
+            "1860、1885、1888 的書；1893 訃聞；1904 報導"
+          ],
+          [
+            "還沒解釋的",
+            "1904 年的骨頭是誰放的；她兩次相反的話，哪一次是真心",
+            "1909 期刊說無法斷定；兩種改口理由"
+          ]
+        ]
+      },
+      "lines": [
+        {
+          "id": "t161",
+          "text": "後來加上去的，是那句台詞、越講越小的年紀，和越挖越多的骨頭；"
+        },
+        {
+          "id": "t162",
+          "text": "到現在還沒解釋的，是她兩次相反的話，哪一次才是真心。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "close-file",
+      "template": "shot",
+      "data": {
+        "prompt": "Close-up of a manila folder on a wooden desk being closed by a hand, a rubber stamp beside it, soft afternoon daylight from a window",
+        "camera": "pull out",
+        "visual": "still"
+      },
+      "lines": [
+        {
+          "id": "t163",
+          "text": "這份檔案，存檔。存的是這個故事怎麼來的，不是任何人的信仰。",
+          "emotion": "乾脆，落地"
+        }
+      ]
+    },
+    {
+      "id": "close-outro",
+      "template": "outro",
+      "data": {
+        "title": "1848 年的一晚，1889 年的改口",
+        "cta": "參考資料在說明欄"
+      },
+      "lines": [
+        {
+          "id": "t164",
+          "text": "你第一次聽到這個故事，聽的是哪一個版本？有那句台詞嗎？留言告訴我。",
+          "emotion": "親近"
+        },
+        {
+          "id": "t165",
+          "text": "這個頻道只講紀錄裡有的；想一起把檔案一份一份翻開，就訂閱吧。",
+          "emotion": "乾脆"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "t002",
+      "payoff": "t151",
+      "what": "信徒把起點算在那一晚：誰這樣算的"
+    },
+    {
+      "setup": "t008",
+      "payoff": "t068",
+      "what": "四十年後她站上的那個舞台"
+    },
+    {
+      "setup": "t009",
+      "payoff": "t074",
+      "what": "脫下鞋、腳放上木板之後，兩千人聽到什麼"
+    },
+    {
+      "setup": "t010",
+      "payoff": "t081",
+      "what": "一年後的另一段訪談說了什麼"
+    },
+    {
+      "setup": "t006",
+      "payoff": "t096",
+      "what": "「房間跟著響」是誰留下的說法"
+    },
+    {
+      "setup": "t012",
+      "payoff": "t159",
+      "what": "手指怎麼變成一整個運動的起點"
+    },
+    {
+      "setup": "t027",
+      "payoff": "t098",
+      "what": "那句很有名、卻還沒出現的台詞"
+    },
+    {
+      "setup": "t037",
+      "payoff": "t113",
+      "what": "被議論的前房客後來怎麼了"
+    },
+    {
+      "setup": "t042",
+      "payoff": "t119",
+      "what": "什麼都沒挖到的地窖，後來挖到了什麼"
+    },
+    {
+      "setup": "t051",
+      "payoff": "t055",
+      "what": "委員會查不查得出聲音從哪來"
+    },
+    {
+      "setup": "t061",
+      "payoff": "t062",
+      "what": "三十七年後站出來的人是誰"
+    },
+    {
+      "setup": "t066",
+      "payoff": "t067",
+      "what": "她要說什麼"
+    },
+    {
+      "setup": "t077",
+      "payoff": "t139",
+      "what": "醫師看完她的腳怎麼說"
+    },
+    {
+      "setup": "t085",
+      "payoff": "t150",
+      "what": "兩次相反的話，你會信哪一次"
+    },
+    {
+      "setup": "t090",
+      "payoff": "t091",
+      "what": "那個晚上的故事是從哪裡來的"
+    },
+    {
+      "setup": "t107",
+      "payoff": "t108",
+      "what": "小販從哪裡來"
+    },
+    {
+      "setup": "t127",
+      "payoff": "t128",
+      "what": "親眼看過的人在報上寫了什麼"
+    },
+    {
+      "setup": "t142",
+      "payoff": "t143",
+      "what": "改口的紀錄怎麼寫"
+    }
+  ],
+  "youtube": {
+    "title": "招魂術的起點是兩個女孩？40 年後她上台，敲給約兩千人聽｜奇聞檔案局",
+    "description": "一八四八年三月三十一日，星期五晚上，紐約州鄉下一間暫住的木頭農舍。福克斯家的妹妹在床上彈了幾下手指，房間裡就跟著響幾下。四十年後，兩人裡的姊姊瑪姬站上紐約一座劇院的舞台，脫下一隻鞋，把腳放在一塊木板上；又過了一年，她在訪談裡收回了那番自白。\n\n這一集先跟著福克斯一家走過那幾天和之後的四十年：母親問出口的「是靈嗎」、擠進臥室的鄰居、挖到出水的地窖、一八四九年羅徹斯特科林斯廳的四個晚上與三個委員會、一八八八年十月二十一日的劇院之夜、一八八九年十一月的改口。然後一份一份打開紀錄：一八四八年二十二人簽名的小冊裡沒有「分趾先生，照我做」那句台詞，她們的年紀在後來的書裡越寫越小，地窖裡的骨頭一次比一次多；一八八八年三家報紙連她坐著還是站著都寫得不一樣；一八八九年的改口，同時代的電訊與柯南·道爾一九二六年轉引的訪談，連理由都不同。\n\n招魂術今天仍有信徒。這一集只講文件能證明什麼：誰在什麼時候說了什麼。流傳的說法一律標明是後來的版本；只有轉引、沒找到原件的（一九〇四年的骨骸報導、一八八九年的訪談）照實說沒找到。每個數字、日期與引言的出處列在下方參考資料。\n\n本集插圖由 AI 生成；畫中的歷史人物都是卡通化的角色，不寫名字、不追求相似；過世未滿七十年的人物不入畫。\n\n資料截至 2026-10-27",
+    "tags": [
+      "福克斯姊妹",
+      "招魂術",
+      "通靈",
+      "降神會",
+      "海茲維爾",
+      "羅徹斯特",
+      "靈異事件",
+      "靈異檔案",
+      "奇聞檔案局",
+      "Fox sisters",
+      "Spiritualism"
+    ],
+    "category_id": 27,
+    "made_for_kids": false,
+    "default_language": "zh-TW"
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "她自己\n**敲的？**",
+      "tag": "靈異檔案",
+      "sub": "40 年後上台示範",
+      "shot": "stage-read"
+    }
+  },
+  "sources": [
+    {
+      "title": "E. E. Lewis, A Report of the Mysterious Noises heard in the house of Mr. John D. Fox, Canandaigua, 1848（Internet Archive 掃描）",
+      "url": "https://archive.org/details/ee_lewis_mysterious_noises_1848",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Lewis 1848 掃描頁 n7（印刷第 6 頁：3 月 31 日、彈手指、「the same number of noises」）",
+      "url": "https://archive.org/details/ee_lewis_mysterious_noises_1848/page/n7/mode/1up",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Lewis 1848 掃描頁 n40（印刷第 38 頁：鄰居替前房客作保的聯名書）",
+      "url": "https://archive.org/details/ee_lewis_mysterious_noises_1848/page/n40/mode/1up",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Robert Dale Owen, Footfalls on the Boundary of Another World, 1860（「Rochester Knockings」、12 與 9 歲、「old Splitfoot」）",
+      "url": "https://archive.org/details/footfallsonbound00owen",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "E. W. Capron & H. D. Barron, Singular Revelations, 2nd ed., 1850",
+      "url": "https://archive.org/details/cu31924008149118",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "E. W. Capron, Modern Spiritualism: Its Facts and Fanaticisms, 1855（Corinthian Hall；1851 年 Buffalo 三位醫師的聲明）",
+      "url": "https://archive.org/details/modernspirituali00capr",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "A. Leah Underhill, The Missing Link in Modern Spiritualism, 1885（第 7 頁「Mr. Splitfoot, do as I do」）",
+      "url": "https://archive.org/details/missinglinkinmod00underich/page/n26/mode/1up",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Reuben Briggs Davenport, The Death-Blow to Spiritualism, 1888（Internet Archive）",
+      "url": "https://archive.org/details/deathblowtospiri00daverich",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Davenport 1888（Project Gutenberg 校對本 #33506）",
+      "url": "https://www.gutenberg.org/ebooks/33506",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Arthur Conan Doyle, The History of Spiritualism, vol. 1, 1926（1889 年《New York Press》訪談的轉引；第 1 章「Spiritualists are in the habit of taking March 31, 1848…」）",
+      "url": "https://archive.org/details/historyofspiritu015638mbp",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "The North Star（Rochester）1849-11-23 第 2 頁（Corinthian Hall 四晚、三個委員會）",
+      "url": "https://www.loc.gov/resource/sn84026365/1849-11-23/ed-1/?sp=2",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "The Sun（New York）1888-10-21 第 9 頁（Academy 本季第一場週日節目的預告）",
+      "url": "https://www.loc.gov/resource/sn83030272/1888-10-21/ed-1/?sp=9",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "The Sun（New York）1888-10-22 第 1 頁（「An audience of 2,000 persons」）",
+      "url": "https://www.loc.gov/resource/sn83030272/1888-10-22/ed-1/?sp=1",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "New-York Tribune 1888-10-22 第 7 頁（sounding-board、big toe、Kate 在包廂）",
+      "url": "https://www.loc.gov/resource/sn83030214/1888-10-22/ed-1/?sp=7",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "The Evening World 1888-10-20 第 4 頁（週日版《World》自白的廣告）",
+      "url": "https://www.loc.gov/resource/sn83030193/1888-10-20/ed-1/?sp=4",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "The Evening World 1888-10-22 第 2 頁（社論：「the confession made by Margaret Fox Kane through The World」）",
+      "url": "https://www.loc.gov/resource/sn83030193/1888-10-22/ed-1/?sp=2",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Wheeling Register 1889-11-23 第 2 頁（1889 年 11 月收回自白的電訊）",
+      "url": "https://www.loc.gov/resource/sn86092518/1889-11-23/ed-1/?sp=2",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "New-York Tribune 1892-07-03 第 4 頁（Kate Fox Jencken 過世）",
+      "url": "https://www.loc.gov/resource/sn83030214/1892-07-03/ed-1/?sp=4",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "New-York Tribune 1893-03-10 第 7 頁（Margaret Fox Kane 訃告，59 歲）",
+      "url": "https://www.loc.gov/resource/sn83030214/1893-03-10/ed-1/?sp=7",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "The Sun（New York）1893-03-09 第 2 頁（訃聞把「挖到骨頭」寫成事實）",
+      "url": "https://www.loc.gov/resource/sn83030272/1893-03-09/ed-1/?sp=2",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Skeptical Inquirer 2008 年 7/8 月號：A Skeleton's Tale: The Origins of Modern Spiritualism（1904 年骨骸與 1909 年 JASPR 的轉引、小販查無其人、農舍 1916 年搬到 Lily Dale）",
+      "url": "https://cdn.centerforinquiry.org/wp-content/uploads/sites/29/2008/07/22164505/p17.pdf",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Lily Dale Assembly（「home for spiritualism, mediumship and healing since 1879」）",
+      "url": "https://www.lilydaleassembly.org/",
+      "checked_on": "2026-10-27"
+    },
+    {
+      "title": "Wikipedia（索引）：Fox sisters",
+      "url": "https://en.wikipedia.org/wiki/Fox_sisters",
+      "checked_on": "2026-10-26"
+    }
+  ],
+  "assets": []
+}
