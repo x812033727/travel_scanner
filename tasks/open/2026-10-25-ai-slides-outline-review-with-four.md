@@ -1,11 +1,11 @@
 ---
 id: 2026-10-25-ai-slides-outline-review-with-four
 title: AI slides outline review with four cited pages
-status: in-progress
+status: blocked
 priority: P2
 area: docs
-owner: codex-ai-tech-news
-claimed_at: 2026-10-25T21:01:44Z
+owner:
+claimed_at:
 created_at: 2026-10-25T19:59:13Z
 completed_at:
 branch: codex/ai-tech-slides-20261025
@@ -89,3 +89,14 @@ scope:
 Root真實checked-only ZH text helper完成當前SRT11,607B／b1375188…88969、VTT11,251B／07a2a11a…6761b及native title空行description TXT3,203B／410f0c49…27e62，3個正常PUT／一次same-a0e append／authenticated5roles回讀。118 cues、0閱讀速度提醒，章二00:30；native標題含CC標記、說明精確對上already-existing payload zh-TW。current final11roles，原6refs、manualQA11、old532d superseded review／history refs、八語選擇全保留；沒有新ASR／聽校／QA／核准或foreign媒體。
 
 CC語言現1/9（繁中）；外語8套仍草稿且未上傳，外語已驗M4A0/8，EN仍93/118 partial429 held。不是八語完成。main-only29檔及freeze90bf在任何本輪文件變更前已逐bytes封存，歷次錯誤count summaries與210個完整guards保留；root授權本docs分工待獨立freeze審核通過後精確stage／commit／push同分支，禁止source／i18n／lexicon／core／canonical／media及node_modules。整片仍in-progress，no-auto-merge，不更新PR或CURRENT、不部署、不合併、不上傳YouTube。
+
+
+## 2026-10-27 八語參考字幕／縮圖／完整metadata下載與全36附件實體讀回
+
+- 2026-10-27T07:43:02.791Z Root沿用本票唯一producer。正常既有11附件先全下載驗核，Root session28976真exit0；再實際25小檔PUT＋1 same-a0e append，current11→36，helper session91318真exit0、兩原生LEASE釋放；25完整ack/readback保留。
+- Root正常全36 review-files session78990及full36 verifier session77199均真exit0；逐檔full bytes/hash/size/MIME/role、原11refs與full payload/history/choices/QA、source296fa0c9/speecha805/current118 WAV與完整intended皆實核。Full36 proofSHA 8a5f3f13a9782015719ea37208019075859d2b67b4fd637f376e72cf6eae4b7c。
+- 新交付en/ja/ko/es/pt/id/vi/th各referenceSRT、原生JPEG、完整native標題說明TXT＋報告；SRT依已驗繁中旁白官方時間軸，仍須actual accepted foreign dub後重排，保留27CPS advisories。原圖全8Root實看，PT初縮略疑慮經原尺寸重看排除，未修改圖或i18n。
+- 外語已驗M4A仍0/8，EN93/118 raw、全域ASR/TTS與Kimiunknown journal同。原QA11/11、敘事兩份12/13 false/no_recap／retake／改寫歷史不動。無新音訊／ASR／QA／fit／meter／核准／語言批次／merge／部署／YouTube，整片DoD不勾成done。
+- 原208EP檔只改README/progress，其餘原件、canonical2096與official candidate2102全hash保持。原progress與README新receipts原bytes保留；完整證據見receipts/foreign-reference-assets-20261027/README.md。停止時由Root正常更新本票status/release與CURRENT續作，docs updater不偽造owner變更。
+
+2026-10-27T07:51:31.601384+00:00：本輪可獨立完成的八語reference文字／縮圖與全36binary驗核已完成；正常release後本票blocked／unclaimed，整片未done。責任仍由本對話codex-ai-tech-news與原codex/ai-tech-slides-20261025分支續作，沒有移交其他producer。續作先核CURRENT與實際PID／LEASE；保留全域ASR／TTS與unknown計費原件，待真實結果及正常解除hold後才接續八語已驗M4A及actualdub CC，不能重送付費或清旗。

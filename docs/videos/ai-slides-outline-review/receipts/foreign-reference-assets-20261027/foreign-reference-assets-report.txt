@@ -1,0 +1,85 @@
+AI slides outline review｜八語既有參考字幕、縮圖與完整標題說明
+本次交付既有 en、ja、ko、es、pt、id、vi、th 共八語參考 SRT、原生 JPEG、標題說明 TXT。
+字幕依目前繁中旁白與正式片頭片尾時間軸，是 narration reference CC；不是外語實際配音時間。
+標題說明 TXT 與正常原生 composeMetadata 及後台現有九語 metadata 全文相同；payload metadata 不改。
+原生 QA 11/11 與歷史兩份 narrative 未過紀錄、27 項字幕速度提醒照實保留，不調低門檻或清旗。
+外語經當前音檔聽校 M4A 仍 0/8；EN 僅 93/118 句原始配音，沒有完整 fit／meter／聽校，不在本次交付。
+沒有新 TTS／ASR／fit／meter／音檔聽校、伺服器核准、語言批次或 YouTube 上傳。
+現行繁中含正式片頭片尾成片 SHA-256：c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c
+所有118句、九語完整原生 SRT/VTT、正式片頭5秒（第一章後）與片尾21秒均綁目前素材。
+當前九語共 1133 cues、27 項原有速度提醒。
+
+en: 118 source lines; 119 cues; 0 advisories; timing=narration.
+SRT SHA-256: d02727c5caafce244112b6d2e34aeb4839081be801f8881251fe44d9a12dbdd0
+VTT SHA-256: 21e9199dd08e65f8185f72517be86e2d42f9d7dd5d5c53910b450881366d2f53
+JPEG SHA-256: 8590f9a394643c2e0149df24e589168662688e252e012b9d888698573861513f
+Metadata TXT SHA-256: 4bee426f81825f341bf67464749f542fa64c462a537fbc1865cfe42cc4a511d1
+
+ja: 118 source lines; 138 cues; 1 advisories; timing=narration.
+SRT SHA-256: ea6005a27e14460777a6bd56faf00a491a358d26b8cf310abcfd152af7c84c23
+VTT SHA-256: e4ded48ed273dfa94fc7b1685266aed073d91ec243b5b35f359460099a9b4f4b
+JPEG SHA-256: 230e25641efdc21adceb1950baf770db06b8342cc704721c08e40e81a871ca4a
+Metadata TXT SHA-256: a082d413f05f7f9ec9bf454389cf44bcfaaeae2dc4e2ea61293c328bdc692d16
+cue 137 (yf5s): 8.4 characters a second, above 8
+
+ko: 118 source lines; 145 cues; 0 advisories; timing=narration.
+SRT SHA-256: 778f6730b85c0b68948066b35eac0ea0df05524d5e1903f69e4ceb280858f5dc
+VTT SHA-256: ac56e5067125d0de18543270e875660f1f751a7441ff3e6521a8b89d39e7ba2d
+JPEG SHA-256: 26acdc48a856c9bf8f3e32f1e00d3eec9d801c3f86f94cbc7eada6264c60b183
+Metadata TXT SHA-256: 15974f4de3d3be73deb378ea3a35e1d801faf7feee66ca5b9b208523d6226a9d
+
+es: 118 source lines; 121 cues; 7 advisories; timing=narration.
+SRT SHA-256: eb8bdb50a9722b399d7fa954f603456851b5f5277e83ad844804ba92689ad719
+VTT SHA-256: 30c27d2c3351ad8dc2985fbb058df2c81cc7a18d3634e33e227b25d488e2552a
+JPEG SHA-256: a6c77298e937970a04a2f4e85b747ab673668e591606c6b9415dbe5cd823d4c6
+Metadata TXT SHA-256: 82360a5af62fae2c8a69235ab3e0fad38c6f66698b4a83daa4df46b28b4ed801
+cue 22 (5s9a): 21.0 characters a second, above 17
+cue 30 (uqnr): 19.2 characters a second, above 17
+cue 37 (cht8): 19.3 characters a second, above 17
+cue 41 (wy6f): 18.9 characters a second, above 17
+cue 72 (iswb): 21.1 characters a second, above 17
+cue 120 (yf5s): 17.9 characters a second, above 17
+cue 121 (umdp): 18.3 characters a second, above 17
+
+pt: 118 source lines; 121 cues; 7 advisories; timing=narration.
+SRT SHA-256: 946cb6938f8b9c9cec2834e3e9c8e120f90fdd7a8ced492c94020db43e457bca
+VTT SHA-256: 4300229146f679f17b935e6c5e48b118344c3817f0c11f2f7e9271f1bf6e6278
+JPEG SHA-256: e1dd7b49db48f3e97221fad29dede5fb70b9d6f2dc7d17043fd5bccb28976fd9
+Metadata TXT SHA-256: 6a3ddd611fabef3d704ded05807ff06d615cb8ca4357287353e85b8bf5cf7e53
+cue 30 (uqnr): 21.3 characters a second, above 17
+cue 32 (r3y9): 17.9 characters a second, above 17
+cue 37 (cht8): 18.0 characters a second, above 17
+cue 41 (wy6f): 18.4 characters a second, above 17
+cue 72 (iswb): 20.4 characters a second, above 17
+cue 120 (yf5s): 18.3 characters a second, above 17
+cue 121 (umdp): 17.8 characters a second, above 17
+
+id: 118 source lines; 130 cues; 12 advisories; timing=narration.
+SRT SHA-256: f3309c2e9a69e61dd1f41f5ddbddd9ee9ed432124745d394dc09b2be189bfbf1
+VTT SHA-256: 3a6eeaf466473a2a9c8c3dc885c0d632522cde17065f818357700adc8d825c98
+JPEG SHA-256: 7f015f5d6681c35c52ac0532c73913b3d41f33f461d128970fb3370d21cbb207
+Metadata TXT SHA-256: 03e7647f315de1447990936be8b0ace882f9cc536308010f2129b0bfe3ae06e3
+cue 6 (3vx9): 17.1 characters a second, above 17
+cue 8 (jyx8): 18.6 characters a second, above 17
+cue 27 (g7uh): 18.8 characters a second, above 17
+cue 32 (uqnr): 18.5 characters a second, above 17
+cue 36 (y3nk): 18.9 characters a second, above 17
+cue 38 (7g33): 18.0 characters a second, above 17
+cue 39 (2knx): 18.3 characters a second, above 17
+cue 67 (rzc3): 17.6 characters a second, above 17
+cue 77 (iswb): 18.4 characters a second, above 17
+cue 92 (a9g4): 17.9 characters a second, above 17
+cue 126 (teri): 18.3 characters a second, above 17
+cue 129 (yf5s): 19.1 characters a second, above 17
+
+vi: 118 source lines; 123 cues; 0 advisories; timing=narration.
+SRT SHA-256: c475ae72f5b12391fb9c939264d85a10ea9a79bc57bb9293500d565d68763d5f
+VTT SHA-256: cd25ad719f86fa71fa4cd81d385d3a2bf4d3a753db4ff1a90277bb246800f339
+JPEG SHA-256: 8c16e76909742278c871c52649a4c4ceb75ce98e0a2346a056ef746dcf5c90c3
+Metadata TXT SHA-256: 5d8783bd9f3825ac5938e717cfca0682d2c0c7db679ce94ba8fc9ed426d03e82
+
+th: 118 source lines; 118 cues; 0 advisories; timing=narration.
+SRT SHA-256: 4da000177e710b8328e1a5817391682a3b9bff67ce6ebb96dc7648ce785ff7ad
+VTT SHA-256: 249b1e55a72d4b31140c17fce6f42fdf1ec477765a11b4b1f73b5e5f09b306b8
+JPEG SHA-256: 968ced7937c3b326caf7ed94bc35f42be8a3d1bd65ca428e603b45e39bc39957
+Metadata TXT SHA-256: c2b80092dec0d12a9080dd0628f3b5c595135385f55b1b4aafecad1fda5b6ac3
