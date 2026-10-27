@@ -1,0 +1,319 @@
+{
+  "kind": "actual_Kimi_full_program_AAC_streamcopy_audition_verification",
+  "at": "2026-10-27T00:54:17.850Z",
+  "source_final": {
+    "file": "/workspace/work/videos/kimi-k31-3d-delivery/final.mp4",
+    "bytes": 65490500,
+    "sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa"
+  },
+  "source_body": {
+    "file": "/workspace/work/videos/kimi-k31-3d-delivery/build/body.mp4",
+    "bytes": 59197077,
+    "sha256": "37848b2b9d5bc99af9ae99ca080a629134e749035fd12fb451c32948fd23b819"
+  },
+  "source_doc": {
+    "file": "/workspace/work/travel-scanner-kimi-k31/docs/videos/kimi-k31-3d-delivery/video.json",
+    "bytes": 46668,
+    "sha256": "a8a908f45b96ac6b134fd058db42712c83117f2679f0c9885ead1fdf087a0d10"
+  },
+  "source_timeline": {
+    "file": "/workspace/work/videos/kimi-k31-3d-delivery/timeline.json",
+    "bytes": 46550,
+    "sha256": "12287e1bb53102d5ab4f8cf3082aa4f08445007343955f569f4bc09d79387fba"
+  },
+  "source_checks": {
+    "file": "/workspace/work/videos/kimi-k31-3d-delivery/checks.json",
+    "bytes": 36316,
+    "sha256": "ed9f87846d9eeccf3a77777f2db2c443166a266a2dda5965340157618a724005"
+  },
+  "source_ASR_partial": {
+    "file": "/workspace/work/videos/kimi-k31-3d-delivery/review/check.json",
+    "bytes": 50406,
+    "sha256": "7deda9e04dffd45b8e543d89e6f10d9daebdd216d905c0dcd2ebd05ae2252aa9"
+  },
+  "profile_sha256": "9fcc4fb8e07ca0b97d02f3b297d29ae71334d3c779789554762c58e3ca08c893",
+  "runner_sha256": "becfde2ad17a32803825f13e971ec6b2ded69618f87a9e1e9801198b3d0cfc1d",
+  "release_sha256": "b56cd4feefc77ec982663483551bdd85e6407dae0d67c677504cd36210e22394",
+  "pid": 356844,
+  "artifacts": {
+    "audio": {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/review/current-program-audition-20261027/program.zh-TW.pending.m4a",
+      "bytes": 22272505,
+      "sha256": "74df3b198eda4da18228d8a75629a8ace0a4e4a15af8456bf8aa819b7d11223a"
+    },
+    "index": {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/review/current-program-audition-20261027/program.zh-TW.pending.index.json",
+      "bytes": 119918,
+      "sha256": "e2b4f0911b7e892f9925da1133a878bd7424ffa3e19c4c63925d86755b246be6"
+    },
+    "text": {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/review/current-program-audition-20261027/program.zh-TW.pending.index.txt",
+      "bytes": 57617,
+      "sha256": "50caafafd1c6c8fe222e22df3cba60007b68260cee02f0dfb9b518aeb5fa3b37"
+    }
+  },
+  "source_probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1920,
+        "height": 1080,
+        "coded_width": 1920,
+        "coded_height": 1080,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 2,
+        "pix_fmt": "yuv420p",
+        "level": 40,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "color_transfer": "bt709",
+        "color_primaries": "bt709",
+        "chroma_location": "left",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 11623424,
+        "duration": "756.733333",
+        "bit_rate": "450184",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "22702",
+        "nb_read_packets": "22702",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc61.19.101 libx264"
+        }
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 36326640,
+        "duration": "756.805000",
+        "bit_rate": "233918",
+        "nb_frames": "35473",
+        "nb_read_packets": "35473",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/workspace/work/videos/kimi-k31-3d-delivery/final.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "756.805000",
+      "size": "65490500",
+      "bit_rate": "692284",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf61.7.103"
+      }
+    }
+  },
+  "audition_probe": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "sample_fmt": "fltp",
+        "sample_rate": "48000",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x1",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/48000",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 36326640,
+        "duration": "756.805000",
+        "bit_rate": "233918",
+        "nb_frames": "35473",
+        "nb_read_packets": "35473",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/workspace/work/videos/kimi-k31-3d-delivery/review/current-program-audition-20261027/program.zh-TW.pending.m4a",
+      "nb_streams": 1,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "756.805000",
+      "size": "22272505",
+      "bit_rate": "235437",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "M4A ",
+        "minor_version": "512",
+        "compatible_brands": "M4A isomiso2",
+        "encoder": "Lavf61.7.103"
+      }
+    }
+  },
+  "audio_packet_sequence_exact": true,
+  "ordered_AAC_packet_sequence_sha256": "5b0c6407e6a9a426e6e6e41ce5489ec44135ad50bdd2b99afd062b71d5fb874a",
+  "AAC_packet_count": 35473,
+  "AAC_payload_bytes": 22129467,
+  "source_and_M4A_decoded_PCM_exact": true,
+  "decoded_PCM": {
+    "format": "s16le/48000/2",
+    "source_sha256": "9c3ce246a2493441ad76a112f8a13fc6a5cdd864d4cceacc0c80b40a13be275e",
+    "audition_sha256": "9c3ce246a2493441ad76a112f8a13fc6a5cdd864d4cceacc0c80b40a13be275e"
+  },
+  "genuine_ebur128_meter": {
+    "integrated": -14.1,
+    "truePeak": -1.9
+  },
+  "normal_loudness_gate_problems": [],
+  "canonical_inputs_unchanged": true,
+  "all114_current_WAV_hashes_verified": true,
+  "index_uses_native_presented_timeline": true,
+  "all114_listening_pending": true,
+  "ASR": {
+    "primary_cached": 105,
+    "primary_match": 74,
+    "primary_nonmatch_unjudged": 31,
+    "unfinished": 9,
+    "second_completed": 0,
+    "counts_are_not_listening_approval": true,
+    "unknown_request_sha256": "dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7"
+  },
+  "listening_approval_claimed": false,
+  "actual_listening_performed": false,
+  "foreign_checked_M4A": 0,
+  "no_approval": true,
+  "no_network_auth_ASR_TTS_QA_policy": true,
+  "actual_tool_counts": {
+    "AAC_stream_copy_extract": 1,
+    "ffprobe_metadata": 2,
+    "ffprobe_packets": 2,
+    "ffmpeg_decoded_PCM_hash": 2,
+    "ffmpeg_ebur128": 1,
+    "network": 0,
+    "auth": 0,
+    "ASR": 0,
+    "TTS": 0,
+    "QA_policy": 0
+  }
+}

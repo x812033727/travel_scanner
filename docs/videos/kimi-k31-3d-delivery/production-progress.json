@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "episode": "kimi-k31-3d-delivery",
-  "updated_at": "2026-10-26T23:51:01.629298+00:00",
-  "status": "pending_manual_final_CC9_metadata9_subject9_verified_audio_held",
+  "updated_at": "2026-10-27T01:24:11.654Z",
+  "status": "pending_manual_final_CC9_metadata9_source_unlistened_audition_verified_foreign_audio_held",
   "owner": "codex-ai-tech-news",
   "branch": "codex/ai-tech-kimi-20261026",
   "backend": {
@@ -14,12 +14,12 @@
     "source_approval": false,
     "raw_stage_field": "narration approved",
     "raw_stage_interpretation": "Name of the next reported checklist stage. narration_approved.done and final_video_approved.done are both false; this text is not an approval.",
-    "last_authenticated_readback_at": "2026-10-26T23:47:56.290Z",
+    "last_authenticated_readback_at": "2026-10-27T01:15:36.024Z",
     "readback_is_historical_snapshot": true,
     "binary_media_readback_completed": true,
     "pending_candidate_submission": "actual completed native manual final review, pending undecided",
     "server_language_choices_saved": false,
-    "readback_snapshot_scope": "Actual same-pending unique primary replacement, old primary archive and eight subject JPEGs; whole-project independent GET plus normal full26 physical download verification. Entire old payload, QA false, metadata9, summary, choices and history exact.",
+    "readback_snapshot_scope": "Current same-pending28: all26 prior FileRefs and complete payload/history exact, plus full-program sourcezhTW unlistened M4A and114-line indexTXT; normal complete28 physical readback. No pronunciation or foreign dub approval.",
     "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
     "normal_manual_review": true,
     "verified_binary_refs": [
@@ -178,9 +178,21 @@
         "sha256": "9ddf7a094fe233bdceb11caacde31c981ea9229ea0481d7c27185ca6a45b2a1f",
         "size": 99953,
         "content_type": "image/jpeg"
+      },
+      {
+        "role": "evidence_audio_audition_zh_tw",
+        "sha256": "74df3b198eda4da18228d8a75629a8ace0a4e4a15af8456bf8aa819b7d11223a",
+        "size": 22272505,
+        "content_type": "audio/mp4"
+      },
+      {
+        "role": "evidence_audio_audition_index_zh_tw",
+        "sha256": "50caafafd1c6c8fe222e22df3cba60007b68260cee02f0dfb9b518aeb5fa3b37",
+        "size": 57617,
+        "content_type": "text/plain"
       }
     ],
-    "verified_binary_ref_count": 26,
+    "verified_binary_ref_count": 28,
     "full1080_downloadable_reference_verified": true,
     "full1080_bytes": 65490500,
     "full1080_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
@@ -285,7 +297,10 @@
       "content_type": "image/jpeg"
     },
     "old_primary_retained_role": "evidence_previous_thumbnail_subject",
-    "historical_snapshot_notice": "Existing four/13/17-ref timestamps, keys and receipts describe their dated earlier milestones. Current full binary reference count is 26; all17 older binary contents remain live-referenced."
+    "historical_snapshot_notice": "Four/13/17/26-ref receipt pointers and timestamps describe dated earlier milestones. Current full verified count is28; everyold26 FileRef remains unchanged. The source audition is pending listening and does not count among checked foreign M4A.",
+    "all28_readback_receipt": "receipts/production/audio-audition/root-final28-binary-readback.json",
+    "all28_native_manifest": "receipts/production/audio-audition/normal-final28-review-files.json",
+    "source_unlistened_audition_M4A": 1
   },
   "research": {
     "videos": 8,
@@ -412,7 +427,7 @@
     "final_video": true,
     "current_foreign_M4A": 0,
     "timed_CC": 9,
-    "backend_media_delivery": 26,
+    "backend_media_delivery": 28,
     "local_final": {
       "bytes": 65490500,
       "sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
@@ -454,8 +469,8 @@
     "total_caption_cues": 1364,
     "caption_speed_warnings": 47,
     "foreign_current_checked_M4A": 0,
-    "backend_media_delivery_unit": "26 fully downloaded and independently verified binary refs in one pending review: preview/contact/main1080p, current primary, nine narration-timed SRTs, resource text, three prior mobile thumbnails, archived old primary and eight current subject thumbnails; no foreign audio or approval.",
-    "pending_final_ref_count": 26,
+    "backend_media_delivery_unit": "28 independently binary-verified refs: prior26 unchanged plus sourcezhTW full-program unlistened AAC M4A and114-line indexTXT; foreign checked M4A0/8.",
+    "pending_final_ref_count": 28,
     "full1080_binary_readback": true,
     "backend_narration_timed_CC_count_at_verified_fourref_snapshot": 0,
     "backend_narration_timed_CC_count_at_current_13ref_snapshot": 9,
@@ -480,7 +495,9 @@
     "latest_native_assembly_completed_at": "2026-10-26T23:30:02.107Z",
     "latest_native_assembly_encoded_segments": 0,
     "initial_assembly_completed_at": "2026-10-26T16:26:01.228Z",
-    "current_technical_checks_not_new_whole_QA": true
+    "current_technical_checks_not_new_whole_QA": true,
+    "source_unlistened_audition_M4A": 1,
+    "source_full_listening_completed": false
   },
   "languages": {
     "en": {
@@ -693,7 +710,8 @@
     "normal_review_files13": "receipts/production/backend-final13-review-files.json",
     "earlier_progress_snapshot": "receipts/production/history/pre-media-docs-production-progress.json",
     "backend_CC9_complete": "receipts/production/backend-CC9-complete.json",
-    "thumbnail_subject": "receipts/production/thumbnail-subject/README.md"
+    "thumbnail_subject": "receipts/production/thumbnail-subject/README.md",
+    "source_audio_audition": "receipts/production/audio-audition/README.md"
   },
   "master_producer": {
     "native_pid": 304217,
@@ -947,7 +965,7 @@
       "receipt": "receipts/production/thumbnail-subject/root-actual-native-nine-thumbnail-review.json"
     }
   },
-  "snapshot_notice": "Current same-pending26 full binaries, metadata9 f291 and original-subject9 images are actually delivered and independently read back. Prior13/14/17, mobile-thumbnail, metadata-adoption and DRAFT events keep their original dated values. Same final3cbd/body3784, source114/translation912 lines/audio/CC, complete wholeQAfalse47+3warnings and R4false remain. CurrentcheckedforeignM4A0/8; source/final approvals and approved package/language batch incomplete.",
+  "snapshot_notice": "Current same-pending28 full binaries include one sourcezhTW unlistened full-film audition and114-line presented-time index. This is technical AAC/decodedPCM identity and actual meter, not listening/ASR/approval/foreigndub completion. All114listeningpending; ASR105/74match31unjudged9missing0second, DFA sent andbothholds unchanged. Prior26/17/13, thumbnails/metadata/resource and original falseQA/R4 remain dated unchanged events.",
   "normal_final_QA": {
     "executed": true,
     "native_return_code": 1,
@@ -1794,5 +1812,139 @@
     "global_reservations_unchanged": true,
     "new_topic7_started": false,
     "background_production_running": false
+  },
+  "source_audio_audition": {
+    "kind": "actual_Kimi_source_full_program_unlistened_audition_delivery",
+    "recorded_at": "2026-10-27T01:24:11.654Z",
+    "backend_url": "https://mokaair.com/zh-TW/admin/videos?video=kimi-k31-3d-delivery",
+    "pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+    "pending_status": "pending",
+    "decision": null,
+    "source_unlistened_audition_M4A": 1,
+    "foreign_checked_M4A": 0,
+    "full_film_listening_completed": false,
+    "all114_listening_pending": true,
+    "pronunciation_approval": false,
+    "source_audio_approval": false,
+    "artifacts": [
+      {
+        "locale": "zh-TW",
+        "role": "evidence_audio_audition_zh_tw",
+        "content_type": "audio/mp4",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/review/current-program-audition-20261027/program.zh-TW.pending.m4a",
+        "bytes": 22272505,
+        "sha256": "74df3b198eda4da18228d8a75629a8ace0a4e4a15af8456bf8aa819b7d11223a"
+      },
+      {
+        "locale": "zh-TW",
+        "role": "evidence_audio_audition_index_zh_tw",
+        "content_type": "text/plain",
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/review/current-program-audition-20261027/program.zh-TW.pending.index.txt",
+        "bytes": 57617,
+        "sha256": "50caafafd1c6c8fe222e22df3cba60007b68260cee02f0dfb9b518aeb5fa3b37"
+      }
+    ],
+    "full_program_frames": 22702,
+    "fps": 30,
+    "source_movie_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+    "source_body_sha256": "37848b2b9d5bc99af9ae99ca080a629134e749035fd12fb451c32948fd23b819",
+    "source_doc_sha256": "a8a908f45b96ac6b134fd058db42712c83117f2679f0c9885ead1fdf087a0d10",
+    "index_JSON": {
+      "file": "program.zh-TW.pending.index.json",
+      "bytes": 119918,
+      "sha256": "e2b4f0911b7e892f9925da1133a878bd7424ffa3e19c4c63925d86755b246be6"
+    },
+    "native_producer": {
+      "pid": 356844,
+      "actual_exit_code": 0,
+      "finished_at": "2026-10-27T00:54:23.672Z",
+      "counts": {
+        "AAC_stream_copy_extract": 1,
+        "ffprobe_metadata": 2,
+        "ffprobe_packets": 2,
+        "ffmpeg_decoded_PCM_hash": 2,
+        "ffmpeg_ebur128": 1,
+        "network": 0,
+        "auth": 0,
+        "ASR": 0,
+        "TTS": 0,
+        "QA_policy": 0
+      }
+    },
+    "original_V3_admission_failure": {
+      "actual_exit_code": 1,
+      "pid": 356640,
+      "counts": {
+        "AAC_stream_copy_extract": 0,
+        "ffprobe_metadata": 0,
+        "ffprobe_packets": 0,
+        "ffmpeg_decoded_PCM_hash": 0,
+        "ffmpeg_ebur128": 0,
+        "network": 0,
+        "auth": 0,
+        "ASR": 0,
+        "TTS": 0,
+        "QA_policy": 0
+      },
+      "source": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/continuation-20261027/audio-audition/runs/kimi-audition-media-20261027t004523410/completion.json",
+        "bytes": 25842,
+        "sha256": "71c6c35174c2679d2a9ac1021bdd2a63f5d650e92aa9d8f998317c3ba541cba2"
+      },
+      "raw_error_not_published": true
+    },
+    "Root_independent_media_proof": {
+      "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/continuation-20261027/audio-audition/root-postmedia-review/ROOT-current-program-audition-review.json",
+      "bytes": 126981,
+      "sha256": "1834fd11d9e556c1904774f855c26261182ed7f4be4e27265040e965b4413e87"
+    },
+    "AAC_packet_count": 35473,
+    "AAC_payload_bytes": 22129467,
+    "ordered_AAC_sequence_sha256": "5b0c6407e6a9a426e6e6e41ce5489ec44135ad50bdd2b99afd062b71d5fb874a",
+    "decoded_PCM_sha256": "9c3ce246a2493441ad76a112f8a13fc6a5cdd864d4cceacc0c80b40a13be275e",
+    "actual_loudness": {
+      "integrated": -14.1,
+      "truePeak": -1.9
+    },
+    "ASR": {
+      "primary_cached": 105,
+      "primary_match": 74,
+      "primary_nonmatch_unjudged": 31,
+      "unfinished": 9,
+      "second_completed": 0,
+      "counts_are_not_listening_approval": true,
+      "unknown_request_sha256": "dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7"
+    },
+    "backend_helper": {
+      "pid": 357410,
+      "finished_at": "2026-10-27T01:15:26.398Z",
+      "counts": {
+        "auth_reads": 1,
+        "project_GET": 4,
+        "file_PUT": 7,
+        "review_POST": 1,
+        "file_GET": 2,
+        "denied": 0
+      },
+      "source_completion": {
+        "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/continuation-20261027/audio-audition/backend-helper/runs/kimi-source-audition-20261027t011340218969/completion.json",
+        "bytes": 3526,
+        "sha256": "cb365bcd6a3ad0dec28599709de412dc5c9d77f7b04f0f00c303c8f2506d3b5a"
+      }
+    },
+    "normal_complete_download_count": 28,
+    "normal_fetched_at": "2026-10-27T01:16:33.713Z",
+    "Root_full28_proof": {
+      "file": "/workspace/work/ai-tech-next/new-popular-topic-20261026/continuation-20261027/audio-audition/root-final28-review/ROOT-final28-binary-readback.json",
+      "bytes": 19329,
+      "sha256": "260f89e0b44f204e6733680c566da6624520004a3ec5b7457d08095add9975d5"
+    },
+    "old26_FileRefs_fields_and_order_exact": true,
+    "complete_old_payload_metadata_QA_summary_choices_history_exact": true,
+    "old_QA_false_R4_false_captions_and_global_holds_unchanged": true,
+    "no_approval": true,
+    "no_new_ASR_TTS_QA_policy_calls": true,
+    "no_merge_deploy_or_YouTube": true,
+    "receipt": "receipts/production/audio-audition/README.md"
   }
 }
