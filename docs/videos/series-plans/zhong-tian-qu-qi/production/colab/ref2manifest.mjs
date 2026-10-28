@@ -89,7 +89,10 @@ export function rewritePrompt(text, { people, set }, cast, ffPrompt) {
   }
   if (set) clauses.push(`the location shown in <Picture ${++n}> is the set, keeping its layout and props`);
   const comp = composition(ffPrompt);
-  const anchor = `${clauses.join("; ")}.${comp ? ` Initial composition: ${comp}.` : ""}`;
+  // Reference mode likes to paint the portrait a second time in the background of a close-up:
+  // say how many people the frame holds.
+  const only = people.length === 1 ? ` ${HER.has(people[0].id) ? "She" : "He"} is the only person in the frame; no second copy of anyone appears.` : people.length > 1 ? ` Only these ${people.length} people are in the frame; no second copy of anyone appears.` : "";
+  const anchor = `${clauses.join("; ")}.${comp ? ` Initial composition: ${comp}.` : ""}${only}`;
   const body = out.split("integrated_multimodal_description: [Shot 1] 3D CG. ");
   if (body.length === 2) {
     let rest = body[1];

@@ -120,9 +120,9 @@ test("ref2manifest: portraits plus angle crops then the set, nine at most, and t
   const text = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 3D CG. Tang Xiaotang and Xu Yan shown in <Picture 1> keep the same face, hair, costume and props as the first frame; the set layout stays as it is. Tang Xiaotang speaks a short Mandarin line. The camera holds a static shot. One continuous shot. Smooth, weighty 3D CG character animation; faces, hair and costumes stay as in the first frame.\noverall_soundscape: N/A\nnon_diegetic_music: N/A";
   const cast = { tangxiaotang: { appearance: "East Asian young woman of eighteen" }, xuyan: { appearance: "East Asian young man of twenty-five" } };
   const prompt = rewriteRef(text, pics, cast, "At the yamen gate at dawn: close-up of Xu Yan on screen left, 16:9 frame. Style: 3D. Camera: locked.");
-  assert.match(prompt, /keeping its layout and props\. Initial composition: At the yamen gate at dawn: close-up of Xu Yan on screen left\. Tang Xiaotang speaks/);
+  assert.match(prompt, /keeping its layout and props\. Initial composition: At the yamen gate at dawn: close-up of Xu Yan on screen left\. Only these 2 people/);
   assert.ok(prompt.startsWith("For the target video, <Picture 1>, <Picture 2>, <Picture 3>, <Picture 4> and <Picture 5> are referenced throughout.\n\n"));
-  assert.match(prompt, /\[Shot 1\] 3D CG\. Tang Xiaotang shown in <Picture 1> keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen; Xu Yan shown in <Picture 2>, <Picture 3> and <Picture 4> \(the same man from several angles\) keeps exactly the same face, hair and costume as the pictures: East Asian young man of twenty-five; the location shown in <Picture 5> is the set, keeping its layout and props\. Initial composition: At the yamen gate at dawn: close-up of Xu Yan on screen left\. Tang Xiaotang speaks a short Mandarin line\./);
+  assert.match(prompt, /\[Shot 1\] 3D CG\. Tang Xiaotang shown in <Picture 1> keeps exactly the same face, hair and costume as the pictures: East Asian young woman of eighteen; Xu Yan shown in <Picture 2>, <Picture 3> and <Picture 4> \(the same man from several angles\) keeps exactly the same face, hair and costume as the pictures: East Asian young man of twenty-five; the location shown in <Picture 5> is the set, keeping its layout and props\. Initial composition: At the yamen gate at dawn: close-up of Xu Yan on screen left\. Only these 2 people are in the frame; no second copy of anyone appears\. Tang Xiaotang speaks a short Mandarin line\./);
   assert.ok(!prompt.includes("first frame"), "nothing refers to a first frame any more");
   assert.ok(prompt.endsWith("stay as in their reference pictures.\noverall_soundscape: N/A\nnon_diegetic_music: N/A"));
   // Nine at most: four people with two angles each would be 13, so the last people lose their angles.
@@ -156,5 +156,5 @@ test("ref2manifest: portraits plus angle crops then the set, nine at most, and t
   const written = readFileSync(path.join(out, job.prompt_file), "utf8");
   assert.equal(job.prompt_sha256, createHash("sha256").update(written).digest("hex"));
   assert.match(written, /Tang Xiaotang shown in <Picture 1>, <Picture 2> and <Picture 3> \(the same woman from several angles\) keeps exactly the same face, hair and costume as the pictures: T; Xu Yan shown in <Picture 4>, <Picture 5> and <Picture 6>/);
-  assert.match(written, /Initial composition: At the gate: two-shot\. Tang Xiaotang speaks/);
+  assert.match(written, /Initial composition: At the gate: two-shot\. Only these 2 people are in the frame; no second copy of anyone appears\. Tang Xiaotang speaks/);
 });
