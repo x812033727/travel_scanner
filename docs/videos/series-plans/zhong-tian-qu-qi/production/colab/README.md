@@ -18,7 +18,26 @@
 兩支都讀 `VIDEO_WORKDIR`（沒設時 `~/mokaair-work/videos`），take 號碼自動接在工作區已有的檔案後面，`--take K`
 可以指定；`--only s01,s02` 只做幾鏡。
 
-## 一集的流程
+## 2026-10-28 小樣之後：片段走 Ref2VA，不畫首格
+
+e031 三鏡小樣（票 `2026-10-28-31-colab-h3`）量到：Qwen-Image-Edit 畫的首格臉與皮膚質感到不了海螺那種寫實 CG（三輪提示詞、20 步 base、
+單人特寫都一樣），而 H3 **reference 模式**直接吃 3D 定妝照畫出來的片段就是海螺的畫風；1920×1088 比 1344×768 更能守住低頭、轉頭時的臉。
+所以第 31 集起的片段用 `ref2manifest.mjs`：每鏡的參考圖 = 鏡內角色的定妝照（`refs-dh/<id>-portrait-tK.png`）＋每人最多兩張角度臉
+（`refs-dh/angles/<id>-angle-*.png`，從第 1–30 集的海螺首格裁的；唐小棠的要裁到臉、不帶舊版低領）＋場景圖，最多九張；正文是 gen-dh 的鎖定稿，
+把首格的對齊句與錨句改成逐張點名，並把 `cast.json` 的外貌段逐字放進錨句（動作之前、每鏡同一段字）。首格那兩步（`ff2manifest.mjs`、`h3.sh images`）
+留給需要靜圖或要先審構圖的鏡。
+
+```bash
+node $C/ref2manifest.mjs $H/clips-dh-e031.json $H/ff-dh-e031.json 31 $M/ref        # 預設 1920×1088、每人兩張角度臉、20 鏡一份
+for m in $M/ref/ref-e031-part*.json; do
+  bash $K/h3.sh batch --manifest $m --output-dir $W/clips --progress ${m%.json}.progress.json --session zt31 --timeout 10800
+done
+```
+
+實測：1920×1088 一支 6 秒約 12 分鐘、約 1.5–2 CU（A100 高 RAM 6.77 CU/hr）；同一個 seed 換解析度構圖會變。`output_path` 直接寫
+`clips/sNN-tK.mp4`（上游 runner 會把 `output_name` 的點換成底線，所以不用它）。
+
+## 一集的流程（首格路線，保留）
 
 ```bash
 H=docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo
