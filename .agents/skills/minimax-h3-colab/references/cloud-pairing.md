@@ -81,8 +81,8 @@ Windows 要在 WSL 裡（CLI 只支援 Linux／macOS）。B 不經過 agent，�
 
 - Google AI Pro 每月含 200 compute units、Ultra 另有 Premium GPU 與背景執行；一支 12 秒約 1 CU：這是 kocpc 2026-10 文章與作者 Threads 帖的說法，**本 repo 沒量過**。A100 高 RAM 每小時扣幾 CU 以 `colab usage` 印的 `Usage rate` 為準，第一次跑時抄進收據。
 - 第一次在同一個 session 要裝 ComfyUI、從 Hugging Face 抓 `Comfy-Org/MiniMax-H3` 的模型（notebook 說至少 60 GiB 磁碟，Ref2VA 的 BF16 備援 80 GiB）：冷啟動幾分鐘到更久，所以**一批放同一個 manifest 共用 session**，不要一鏡開一次。
-- 它是 ComfyUI 跑的 **Turbo LoRA 版 H3**（Ref2VA 用官方 4-step LoRA；first_frame 用社群 `drbaph` 的 v4 Turbo LoRA），不是 MiniMax API 或 Hailuo 網頁的 H3：畫質與一致性要自己小樣，不沿用 `providers-and-plans.md` 的 Hailuo 實測。
+- 它是 ComfyUI 跑的 **Turbo LoRA 版 H3**，不是 MiniMax API 或 Hailuo 網頁的 H3：畫質與一致性要自己小樣，不沿用 `providers-and-plans.md` 的 Hailuo 實測。上游 notebook 原本 Ref2VA 用 4 步 `ref2v_turbo_4step_v0.1`、first_frame 用社群 `drbaph` 的 v4 Turbo LoRA；`bootstrap.sh` 抓完就用 `scripts/patch_notebook.py` 套取樣 profile（預設 `smooth`：Ref2VA 換 lightx2v 的 8 步 Ref2V v1.0、first_frame 換官方 Comfy-Org 的 8 步 FL2V v1.0；`hero` 20 步不掛 LoRA；`draft` 上游原樣），理由與來源在 `.agents/skills/minimax-h3-colab/references/motion-quality.md` 第四節。8 步比 4 步慢一倍、`hero` 約三倍，CU 也照時間扣。
 
 ## 6. 上游怎麼釘、怎麼升
 
-上游 `killkli/minimax-h3-colab-skill` 沒有授權檔，所以不複製進 repo；`bootstrap.sh` 用 `MINIMAX_H3_UPSTREAM_COMMIT` 釘 commit clone 到 `MINIMAX_H3_COLAB_HOME`。要升版：先 `h3.sh test` 跑上游的離線測試、對照 `README.zh-TW.md` 的變更，改 `bootstrap.sh` 裡的 commit，再跑本 repo 的 `tools/minimax-h3-colab.test.mjs`。上游的 `install.sh` 只是把檔案複製到 `~/.codex/skills`；Codex 要用同一條路時照樣可以跑它，runner 與 notebook 是同一份。
+上游 `killkli/minimax-h3-colab-skill` 沒有授權檔，所以不複製進 repo；`bootstrap.sh` 用 `MINIMAX_H3_UPSTREAM_COMMIT` 釘 commit clone 到 `MINIMAX_H3_COLAB_HOME`，抓完先 `git checkout -- .` 還原、再套取樣 profile（notebook 在 clone 裡會顯示 modified，是預期的）。要升版：先 `h3.sh test` 跑上游的離線測試、對照 `README.zh-TW.md` 的變更，改 `bootstrap.sh` 裡的 commit，跑 `python3 -I scripts/patch_notebook.py --dry-run`（上游改了那幾行逐字替換會以 2 停下，`UPSTREAM` 表要跟著改），再跑本 repo 的 `tools/minimax-h3-colab.test.mjs`。`wonghanz/minimax-h3-colab-skill` 的 v0.2.0-hardened 分支（17 項可靠度修正）沒合回上游、也沒 LICENSE，2026-10-28 決定不換。上游的 `install.sh` 只是把檔案複製到 `~/.codex/skills`；Codex 要用同一條路時照樣可以跑它，runner 與 notebook 是同一份。

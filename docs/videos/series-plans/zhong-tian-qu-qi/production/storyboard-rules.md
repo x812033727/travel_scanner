@@ -27,3 +27,14 @@
 - 分場調色（`grades`：office／night／river／indoor／day）＋暗角＋顆粒，壓掉 AI 的均勻亮光。
 - 片名卡、角色第一次出場的名牌（`names`）。**字幕用 CC 軟字幕，不燒進畫面（站主 10-16）。**
 - 配樂用 Lyria 依情緒生成幾段 cue（`music-zt.mjs`，每首約 US$0.08），用 sidechain 壓在台詞下；音效用 CC0 音效庫，系統台詞前自動「叮」。
+
+## H3 正文與秒數（2026-10-28 起；站主再看仍有貼圖感後量到的三個原因）
+
+原因與來源寫在 `.agents/skills/minimax-h3-colab/references/motion-quality.md`：每支只買 4 秒（107 幀，低於 H3 訓練範圍 124–362 幀）、剪接用複製幀慢放再停格、正文沒有風格詞與首格錨句而且固定尾句跟運鏡打架。`hailuo/gen-dh.mjs` 與 `hailuo/assemble-v4.mjs` 已照下面改，分鏡要配合：
+
+- **秒數**：`gen-dh.mjs` 預設買 5 秒；畫面上有人說話約 3 秒以上、或 motion 有兩拍（`then`、`;`）買 6 秒；`data.buy_seconds` 可指定。多的在剪接切，比停格便宜（5 秒 60 點、6 秒 72 點；以前 4 秒 48 點）。
+- **motion 寫軌跡，不寫狀態**：起點 → 預備動作（移重心、吸一口氣、先看一眼）→ 主動作加重量與物理的字（weighted step、the sleeve catches the air、momentum carries the arm through、settles）→ 收勢。一鏡一事；兩個動作就拆鏡或買 6 秒。
+- **運鏡只寫在 `camera`**，motion 裡不要再寫 the camera…（`gen-dh.mjs` 會把尾巴的 camera 子句丟掉並列出鏡號）。`locked` 就是 locked：正文寫 `The camera holds a static shot`，不再改成慢推；要推就寫 `slow push in`，整集不要都是同一種推。
+- **說話句照舊放在動作前**；嘴要閉的鏡頭寫 `lips remain closed`。
+- **剪接**：台詞比片段長時 `assemble-v4.mjs` 慢放上限從 1.35 降到 1.25，而且用光流補幀（`minterpolate`）不再複製幀；還不夠的鏡頭 note 會印 `held`，下一集那種鏡頭買 6 秒。補幀慢（1080p 一支慢放鏡約 1–2 分鐘 CPU），所以秒數買夠、少讓它慢放才是正解。`edit-e0NN.json` 可用 `"interpolate": false` 退回舊行為、`"slow_max"` 調上限。
+- 新寫法的效果沒有實拍對照（站主 10-28 定不排小樣）：第 31 集起用新寫法，看成片時特別看說話鏡有沒有在 6 秒內做完動作、locked 鏡有沒有漂。

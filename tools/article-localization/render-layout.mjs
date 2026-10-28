@@ -29,6 +29,11 @@ export function containerFor(original, text) {
 export const edgeClearance = (container, box) =>
   Math.min(box.left - container.left, box.top - container.top, container.right - box.right, container.bottom - box.bottom);
 
+/** Fit overflow and newly introduced edge contact using the same padding as final validation. */
+export const needsFontFit = (container, sourceBox, localizedBox) =>
+  !contains(container, localizedBox) ||
+  (edgeClearance(container, localizedBox) < EDGE_PADDING && edgeClearance(container, sourceBox) >= EDGE_PADDING);
+
 // A shape is in the way of a label when the label crosses it and the shape does not hold the
 // label: a legend's swatch beside its text, a neighbouring card. Shapes do not move in
 // localization, so the source's shapes are the ones measured.
