@@ -1,11 +1,11 @@
 ---
 id: 2026-10-28-h3-motion-quality-smooth-clips
 title: H3 motion quality: smooth clips, fewer failed takes (skill manual, Colab sampling profiles, zhong-tian prompt and cut tools)
-status: review
+status: open
 priority: P1
 area: tools
-owner: claude-fable-5-1-h3-motion
-claimed_at: 2026-10-28T04:45:00Z
+owner:
+claimed_at:
 created_at: 2026-10-28T04:43:58Z
 completed_at:
 branch: claude/pensive-cray-rko0pa
@@ -96,6 +96,10 @@ python3 -I .agents/skills/minimax-h3-colab/scripts/check_manifest.py docs/videos
 ```
 
 ## Notes
+
+- 2026-10-28: PR #1904 carries everything above except the last item (a real Colab batch needs the
+  owner's pairing and compute units), so the ticket goes back to `open` on merge, like
+  `2026-10-27-minimax-h3-on-colab-from-a`: whoever runs the first batch under profile `smooth` ticks it.
 
 - Scope overlaps `2026-10-19-30-1-24` (`docs/videos/series-plans/zhong-tian-qu-qi/production`), whose
   claim was nine days stale; claimed with `--force` per the board's 24-hour rule and only the four
