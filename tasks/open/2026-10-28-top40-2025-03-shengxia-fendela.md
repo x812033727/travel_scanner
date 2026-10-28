@@ -55,4 +55,4 @@ npm run check:tasks
 ## Notes
 
 - 規則說明在 `docs/videos/series-plans/zhong-tian-qu-qi/authoring.md`（欄位）與 `README.md`（讓人停不下來的規則）；這套票唯二的差異是秒數 90–180 與可選的 `extra_hooks`。
-- 進度（每個 session 更新）：reference 階段。
+- 進度（每個 session 更新）：2026-10-28 reference、README、plan.json、setting.json、outline.json 已寫並過 outlineProblems；season-01..05 由五個代理平行撰寫中。
