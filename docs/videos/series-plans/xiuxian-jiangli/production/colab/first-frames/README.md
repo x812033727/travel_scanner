@@ -35,4 +35,17 @@ node tools/video/cli.mjs keyframes import --slug xiuxian-jiangli-e001 --shot s25
 
 ## 收據
 
-（第一次真跑後填：session、冷啟動、每張秒數、CU 前後差、LoRA 有沒有掛上、記憶體）
+### 第一次真跑（2026-10-28 07:48–08:16Z，小樣 s25、s26、s32）
+
+| 項 | 實測 |
+| --- | --- |
+| GPU | A100-SXM4-**80GB**（不是 40 GB；下一批 bf16 直接上 GPU） |
+| 裝套件＋載模型 | 212 秒（含從 Hugging Face 抓約 45 GB） |
+| 取樣 | LoRA 的 repo 名錯（`lightx2v/Qwen-Image-Edit-2509-Lightning` 401），退回 40 步、true CFG 4.0；8-bit transformer 加 CPU offload |
+| 每張 | s25 416 秒（2 參照）、s26 537 秒（3 參照）、s32 408 秒；GPU 總共 1,601 秒 |
+| compute units | 998.18 → 995.22，**2.96 CU／3 張**（含冷啟動） |
+| 畫面 | 場景跟 s34 同一間屋（參照有效）；**人物沒守住**：s25 江小滿的臉變成誇張卡通臉、構圖被切、把參照裡的沈照雪也畫進只有他一人的鏡頭；s26 少了江小滿；s32 畫成沈照雪拿米袋（該是江小滿）。畫風偏一般 3D 動畫，不如 Gemini 的三張像國漫 |
+
+結論（交站主）：以這個設定，身份一致性輸 Gemini 3 Pro 很多，judge 的識別題會擋。要再試就改三件事：bf16 上 GPU（已改）、掛正確的 8 步 LoRA
+（`lightx2v/Qwen-Image-Lightning/Qwen-Image-Edit-2509/…8steps-V1.0-bf16`，已改）、場景參照換成**沒有人的**關鍵影格（s33 的灶）並在 prompt 裡
+把「Picture 1 是誰、Picture 2 是誰、Picture 3 是場景」寫明。一輪三張約 5 分鐘、不到 1 CU。
