@@ -65,8 +65,16 @@ export function pictureSet(refs, { refsDir, angles = 2, limit = 9 }) {
   return { people, set, dropped };
 }
 
-// gen-dh's first_frame prompt -> the reference prompt: pictures named per character, appearance pasted in.
-export function rewritePrompt(text, { people, set }, cast) {
+// The shot's composition from gen-dh's first-frame prompt (everything before ", 16:9 frame."): in
+// reference mode nothing else tells H3 the framing, who stands where and which props are in hand.
+export function composition(ffPrompt) {
+  const head = String(ffPrompt ?? "").split(", 16:9 frame.")[0].trim();
+  return head ? head.replace(/[.;,]+$/, "") : "";
+}
+
+// gen-dh's first_frame prompt -> the reference prompt: pictures named per character, appearance pasted
+// in, then the first-frame prompt's composition as the shot's opening state.
+export function rewritePrompt(text, { people, set }, cast, ffPrompt) {
   const total = people.reduce((a, p) => a + p.pictures.length, 0) + (set ? 1 : 0);
   const tags = Array.from({ length: total }, (_, i) => `<Picture ${i + 1}>`);
   const list = tags.length > 1 ? `${tags.slice(0, -1).join(", ")} and ${tags[tags.length - 1]}` : tags[0];
@@ -80,7 +88,8 @@ export function rewritePrompt(text, { people, set }, cast) {
     clauses.push(`${EN[p.id] ?? p.id} shown in ${own} keeps exactly the same face, hair and costume as the pictures${look}`);
   }
   if (set) clauses.push(`the location shown in <Picture ${++n}> is the set, keeping its layout and props`);
-  const anchor = `${clauses.join("; ")}.`;
+  const comp = composition(ffPrompt);
+  const anchor = `${clauses.join("; ")}.${comp ? ` Initial composition: ${comp}.` : ""}`;
   const body = out.split("integrated_multimodal_description: [Shot 1] 3D CG. ");
   if (body.length === 2) {
     let rest = body[1];
@@ -116,7 +125,7 @@ export function build(clips, ff, { ep, refsDir, clipDir, cast, take, only, seed,
     const absent = all.filter((p) => !existsSync(p));
     if (absent.length) { missing.push(`${shot} (${absent.map((p) => path.basename(p)).join(", ")})`); continue; }
     if (!all.length) { missing.push(`${shot} (no pictures: a shot with no character and no set)`); continue; }
-    const prompt = rewritePrompt(text, pics, cast);
+    const prompt = rewritePrompt(text, pics, cast, entry.prompt);
     const t = take ?? nextClipTake(clipDir, shot);
     const job = {
       id: shot,
