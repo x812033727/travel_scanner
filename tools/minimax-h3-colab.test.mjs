@@ -8,10 +8,13 @@
  * prints the saved token as one base64 line that `bootstrap.sh token` accepts (raw JSON too)
  * and writes with mode 600; `verify` judges the pairing by the balance line, not the exit code
  * (the real CLI exits 0 after printing a sign-in URL to a closed stdin); the wrapper refuses
- * without the upstream runner and otherwise forwards arguments unchanged.
+ * without the upstream runner and otherwise forwards arguments unchanged; the sampling-profile
+ * patcher rewrites exactly the eight upstream lines and refuses anything else; the manifest
+ * check names every error that would otherwise cost compute units.
  */
 import assert from "node:assert/strict";
 import { spawn, spawnSync } from "node:child_process";
+import { createHash } from "node:crypto";
 import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { createServer } from "node:http";
 import { tmpdir } from "node:os";
@@ -248,10 +251,188 @@ test("h3.sh: refuses without the upstream runner, otherwise forwards arguments a
     const withHome = { ...env, MINIMAX_H3_COLAB_HOME: upstream };
     const usage = JSON.parse(run("bash", [H3, "usage"], withHome).out);
     assert.deepEqual(usage, { argv: ["usage", "--json"], gpu: "A100", auth: "oauth2" });
+    // first_frame without a size gets the 16:9-safe canvas appended (see the wrapper test below).
     const single = JSON.parse(run("bash", [H3, "single", "--image", "a.png", "--prompt", "p.txt", "--mode", "first_frame"], { ...withHome, COLAB_GPU: "L4" }).out);
-    assert.deepEqual(single.argv, ["single", "--image", "a.png", "--prompt", "p.txt", "--mode", "first_frame"]);
+    assert.deepEqual(single.argv, ["single", "--image", "a.png", "--prompt", "p.txt", "--mode", "first_frame", "--width", "1312", "--height", "736"]);
     assert.equal(single.gpu, "L4");
   } finally {
     rmSync(home, { recursive: true, force: true });
   }
+});
+
+// ---- sampling profile patch and the offline manifest check (added 2026-10-28) ----
+
+const PATCH = path.join(SCRIPTS, "patch_notebook.py");
+const CHECK = path.join(SCRIPTS, "check_manifest.py");
+
+// The eight lines of the pinned upstream notebook (killkli @ 0a0d3b9c) that the patcher rewrites,
+// in the two code cells they live in. A fixture, so the test needs no clone and no network.
+function fixtureNotebook() {
+  return {
+    cells: [
+      { cell_type: "markdown", metadata: {}, source: ["# fixture"] },
+      { cell_type: "code", metadata: {}, outputs: [], execution_count: null, source: [
+        'INFERENCE_MODE = os.environ.get("H3_INFERENCE_MODE", "first_frame").strip().lower()\n',
+        'STEPS = 4 if INFERENCE_MODE == "reference" else 8\n',
+        "LORA_STRENGTH = 1.0\n", 'SAMPLER_NAME = "euler"\n', 'SCHEDULER_NAME = "beta"\n', "DENOISE = 1.0\n",
+      ] },
+      { cell_type: "code", metadata: {}, outputs: [], execution_count: null, source: [
+        'BASE_REPO = "Comfy-Org/MiniMax-H3"\n', 'if INFERENCE_MODE == "reference":\n',
+        "    LORA_REPO = BASE_REPO\n", '    LORA_REMOTE = "loras/minimax_h3_ref2v_turbo_4step_v0.1_comfyui_bf16.safetensors"\n',
+        "else:\n", '    LORA_REPO = "drbaph/MiniMax-H3-Turbo-Lora-ComfyUI"\n',
+        '    LORA_REMOTE = "minimax_h3_turbo_v4_step600_ema_pruned_comfyui.safetensors"\n', "LORA = Path(LORA_REMOTE).name\n",
+      ] },
+    ],
+    metadata: {}, nbformat: 4, nbformat_minor: 5,
+  };
+}
+const codeOf = (file) => JSON.parse(readFileSync(file, "utf8")).cells.filter((c) => c.cell_type === "code").map((c) => c.source.join("")).join("\n");
+
+test("patch_notebook.py: smooth swaps both LoRAs to the 8-step files once, is idempotent, and stops with 2 when upstream's lines are gone", { skip: !POSIX }, () => {
+  const { home, env } = sandbox();
+  const nb = path.join(home, "nb.ipynb");
+  writeFileSync(nb, JSON.stringify(fixtureNotebook(), null, 1));
+  const first = run(PYTHON, ["-I", PATCH, "--notebook", nb], env);
+  assert.equal(first.code, 0, first.err);
+  assert.match(first.out, /patched steps, ref_repo, ref_file, ff_repo, ff_file, strength, scheduler: profile=smooth/);
+  const code = codeOf(nb);
+  assert.match(code, /STEPS = 8 if INFERENCE_MODE == "reference" else 8/);
+  assert.match(code, /LORA_REPO = "lightx2v\/Minimax-h3-Turbo"\n\s+LORA_REMOTE = "minimax_h3_ref2v_turbo_8step_v1\.0_768p_comfyui_bf16\.safetensors"/);
+  assert.match(code, /LORA_REPO = "Comfy-Org\/MiniMax-H3"\n\s+LORA_REMOTE = "loras\/minimax_h3_fl2v_turbo_8step_v1\.0_comfyui_bf16\.safetensors"/);
+  assert.match(code, /SCHEDULER_NAME = "simple"/);
+  assert.match(code, /SAMPLER_NAME = "euler"/);
+  assert.doesNotMatch(code, /4step_v0\.1|drbaph/);
+  const again = run(PYTHON, ["-I", PATCH, "--notebook", nb], env);
+  assert.equal(again.code, 0, again.err);
+  assert.match(again.out, /already applied: profile=smooth/);
+  assert.equal(codeOf(nb), code, "a second run changes nothing");
+  // A different profile on an already patched notebook is upstream drift from the patcher's view.
+  const drift = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "hero"], env);
+  assert.equal(drift.code, 2);
+  assert.match(drift.err, /expected exactly one `STEPS = 4 if INFERENCE_MODE == "reference" else 8`.*found 0/);
+  assert.equal(codeOf(nb), code, "a refused run writes nothing");
+});
+
+test("patch_notebook.py: hero is 20 steps with the LoRA at strength 0, draft leaves upstream's text, --dry-run writes nothing, env overrides win", { skip: !POSIX }, () => {
+  const { home, env } = sandbox();
+  const nb = path.join(home, "nb.ipynb");
+  const pristine = JSON.stringify(fixtureNotebook(), null, 1);
+  writeFileSync(nb, pristine);
+  const hero = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_PROFILE: "hero" });
+  assert.equal(hero.code, 0, hero.err);
+  const code = codeOf(nb);
+  assert.match(code, /STEPS = 20 if INFERENCE_MODE == "reference" else 20/);
+  assert.match(code, /LORA_STRENGTH = 0\n/);
+  assert.match(code, /SAMPLER_NAME = "res_multistep"/);
+
+  writeFileSync(nb, pristine);
+  const draft = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "draft"], env);
+  assert.equal(draft.code, 0, draft.err);
+  const draftCode = codeOf(nb);
+  assert.match(draftCode, /STEPS = 4 if INFERENCE_MODE == "reference" else 8/);
+  assert.match(draftCode, /ref2v_turbo_4step_v0\.1/);
+  assert.match(draftCode, /drbaph\/MiniMax-H3-Turbo-Lora-ComfyUI/);
+  assert.match(draftCode, /SCHEDULER_NAME = "beta"/);
+
+  writeFileSync(nb, pristine);
+  const dry = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--dry-run"], env);
+  assert.equal(dry.code, 0, dry.err);
+  assert.match(dry.out, /^\+\s+"STEPS = 8 if INFERENCE_MODE/m);
+  assert.equal(readFileSync(nb, "utf8"), pristine, "--dry-run leaves the notebook alone");
+
+  const custom = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_REF_STEPS: "6", H3_SCHEDULER: "beta" });
+  assert.equal(custom.code, 0, custom.err);
+  assert.match(codeOf(nb), /STEPS = 6 if INFERENCE_MODE == "reference" else 8/);
+  assert.match(codeOf(nb), /SCHEDULER_NAME = "beta"/);
+
+  const bad = run(PYTHON, ["-I", PATCH, "--notebook", nb], { ...env, H3_REF_STEPS: "many" });
+  assert.equal(bad.code, 2);
+  assert.match(bad.err, /H3_REF_STEPS='many' is not a int/);
+  const unknown = run(PYTHON, ["-I", PATCH, "--notebook", nb, "--profile", "fastest"], env);
+  assert.equal(unknown.code, 2);
+  assert.match(unknown.err, /unknown profile 'fastest'/);
+});
+
+function manifestDir() {
+  const { home, env } = sandbox();
+  const dir = path.join(home, "batch");
+  mkdirSync(path.join(dir, "first-frames"), { recursive: true });
+  mkdirSync(path.join(dir, "prompts"));
+  // a 1312x736 PNG is not needed: only existence and size are checked without ffprobe, and ffprobe
+  // (when present) is fed a real picture written by ffmpeg below if it is available.
+  const png = path.join(dir, "first-frames", "s01.png");
+  const made = spawnSync("ffmpeg", ["-v", "error", "-y", "-f", "lavfi", "-i", "color=c=gray:s=1920x1080", "-frames:v", "1", png], { encoding: "utf8" });
+  if (made.status !== 0) writeFileSync(png, "not really a png but non-empty");
+  const prompt = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 3D CG. test.\noverall_soundscape: N/A\nnon_diegetic_music: N/A\n";
+  writeFileSync(path.join(dir, "prompts", "s01.txt"), prompt);
+  const sha = createHash("sha256").update(prompt).digest("hex");
+  return { dir, env, sha, hasFfprobe: spawnSync("ffprobe", ["-version"], { encoding: "utf8" }).status === 0 };
+}
+
+test("check_manifest.py: a sound manifest passes; 4 seconds and a stretched first frame only warn", { skip: !POSIX }, () => {
+  const { dir, env, sha, hasFfprobe } = manifestDir();
+  const good = path.join(dir, "jobs.json");
+  writeFileSync(good, JSON.stringify({ jobs: [{ id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 5, width: 1312, height: 736, output_name: "s01-t1.mp4", prompt_sha256: sha }] }));
+  const ok = run(PYTHON, ["-I", CHECK, good], env);
+  assert.equal(ok.code, 0, ok.err + ok.out);
+  assert.match(ok.out, /0 error\(s\), 0 warning\(s\)/);
+
+  const short = path.join(dir, "short.json");
+  writeFileSync(short, JSON.stringify({ jobs: [{ id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 4, width: 1344, height: 768, output_name: "s01-t1.mp4" }] }));
+  const warned = run(PYTHON, ["-I", CHECK, short], env);
+  assert.equal(warned.code, 0, warned.err);
+  assert.match(warned.out, /4 s is 107 frames, under the 124-frame range/);
+  if (hasFfprobe) assert.match(warned.out, /first frame 1920x1080 \(1\.778\) does not match the 1344x768 canvas/);
+  assert.match(warned.out, /0 error\(s\), [12] warning\(s\)/);
+});
+
+test("check_manifest.py: the errors that would otherwise cost compute units exit 1 and are all named", { skip: !POSIX }, () => {
+  const { dir, env } = manifestDir();
+  const bad = path.join(dir, "bad.json");
+  writeFileSync(bad, JSON.stringify({ jobs: [
+    { id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 5, width: 1280, height: 720, output_name: "s01-t1.mp4", prompt_sha256: "deadbeef" },
+    { id: "s01", reference_images: ["first-frames/s01.png", "first-frames/missing.png"], prompt: "<Picture 3> walks [Shot 2] then the camera pans", duration_seconds: 16, width: 1344, height: 768, output_name: "s01-t1.mp4" },
+    { id: "s02", inference_mode: "first_frame", reference_images: ["first-frames/s01.png", "first-frames/s01.png"], prompt: "no picture cited", duration_seconds: 6 },
+  ] }));
+  const result = run(PYTHON, ["-I", CHECK, bad], env);
+  assert.equal(result.code, 1);
+  for (const expected of [
+    /height=720 must be a positive multiple of 32/, /prompt_sha256 deadbeef… does not match/, /duplicate id/, /reference image missing or empty: first-frames\/missing\.png/,
+    /duration_seconds=16 must be 4-15/, /cites <Picture 3> but the job has 2 image\(s\)/, /duplicate output_name s01-t1\.mp4/, /first_frame needs exactly one image, got 2/,
+  ]) assert.match(result.err, expected);
+  assert.match(result.out, /prompt has \[Shot 2\]/);
+  assert.match(result.out, /chains camera moves with 'then'/);
+  assert.match(result.out, /s02: first_frame prompt never cites <Picture 1>/);
+  const none = run(PYTHON, ["-I", CHECK, path.join(dir, "nope.json")], env);
+  assert.equal(none.code, 1);
+  assert.match(none.err, /cannot read as JSON/);
+});
+
+test("h3.sh: check runs the manifest checker without the upstream runner; batch refuses a broken manifest before calling it", { skip: !POSIX }, () => {
+  const { dir, env } = manifestDir();
+  const bad = path.join(dir, "bad.json");
+  writeFileSync(bad, JSON.stringify({ jobs: [{ id: "s01", reference_images: ["first-frames/s01.png"], prompt: "x", duration_seconds: 5, width: 1000, height: 768 }] }));
+  const noRunner = { ...env, MINIMAX_H3_COLAB_HOME: path.join(dir, "no-upstream") };
+  const check = run("bash", [H3, "check", "--manifest", bad], noRunner);
+  assert.equal(check.code, 1);
+  assert.match(check.err, /width=1000 must be a positive multiple of 32/);
+  // A fake upstream runner that records what it was called with.
+  const home = path.join(dir, "upstream");
+  mkdirSync(path.join(home, "scripts"), { recursive: true });
+  writeFileSync(path.join(home, "scripts", "runner.py"), "import sys, pathlib\npathlib.Path(sys.argv[0]).with_name('calls.txt').write_text(' '.join(sys.argv[1:]))\n");
+  const withRunner = { ...env, MINIMAX_H3_COLAB_HOME: home };
+  const refused = run("bash", [H3, "batch", "--manifest", bad, "--output-dir", dir], withRunner);
+  assert.equal(refused.code, 1);
+  assert.match(refused.err, /fix the manifest or pass --no-check/);
+  assert.ok(!existsSync(path.join(home, "scripts", "calls.txt")), "the runner was not called");
+  const forced = run("bash", [H3, "batch", "--manifest", bad, "--no-check", "--output-dir", dir], withRunner);
+  assert.equal(forced.code, 0, forced.err);
+  assert.equal(readFileSync(path.join(home, "scripts", "calls.txt"), "utf8"), `batch --manifest ${bad} --output-dir ${dir}`);
+  // single --mode first_frame without a size gets the 16:9-safe canvas; an explicit size is kept.
+  run("bash", [H3, "single", "--mode", "first_frame", "--image", "a.png", "--prompt", "p.txt", "--output", "o.mp4"], withRunner);
+  assert.equal(readFileSync(path.join(home, "scripts", "calls.txt"), "utf8"), "single --mode first_frame --image a.png --prompt p.txt --output o.mp4 --width 1312 --height 736");
+  run("bash", [H3, "single", "--mode", "first_frame", "--width", "1344", "--height", "768", "--image", "a.png"], withRunner);
+  assert.equal(readFileSync(path.join(home, "scripts", "calls.txt"), "utf8"), "single --mode first_frame --width 1344 --height 768 --image a.png");
+  run("bash", [H3, "single", "--mode", "reference", "--image", "a.png"], withRunner);
+  assert.equal(readFileSync(path.join(home, "scripts", "calls.txt"), "utf8"), "single --mode reference --image a.png");
 });

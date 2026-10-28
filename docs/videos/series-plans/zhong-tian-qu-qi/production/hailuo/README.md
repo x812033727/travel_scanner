@@ -6,7 +6,7 @@
 - `ff-e00N.json`、`mid-e00N.json`、`refs-jobs.json`：頁面直接從 raw.githubusercontent 抓的工作清單（首格提示詞、鎖定包的片段提示詞）。
 - `zt.js`：圖片頁 helper（參考圖上傳、送出、對帳）；影片頁沿用長燈村的 v3／clip helper，改讀 `ztmid*`／`zturls`。
 - `fetch.sh`：把頁面回報的 `label status path` 下載到工作區並記收據。
-- `assemble-zt.mjs <video.json> <overlays.json> <workdir> <out.mp4>`：剪接；`data.source` 切鏡、靜圖緩推（四種運鏡輪替）、系統面板疊字、台詞比片段長時先放慢片段（最多 1.6 倍）才補停格。
+- `assemble-zt.mjs <video.json> <overlays.json> <workdir> <out.mp4>`：剪接；`data.source` 切鏡、靜圖緩推（四種運鏡輪替）、系統面板疊字、台詞比片段長時先放慢片段（最多 1.6 倍）才補停格。第 1–5 集用的；之後都是 `assemble-v4.mjs`（慢放上限 1.25、光流補幀，見最後一節）。
 
 ## 學到的坑（窗格隱藏時）
 
@@ -154,3 +154,11 @@
   - 疊之前看過 6–10 整支的右上角：系統面板在台標的左下方，不重疊；夜景、天空上都讀得到。
 - 第 1–5（`JdeViV2WyCc`）、6–10（`nC_-tNKWd9E`）已經上了 YouTube。YouTube 不能替已上傳的影片換檔，所以重做的版本是新影片：`SUFFIX=-v2 local/prep-import.mjs 1-5` 匯入成 `zhong-tian-qu-qi-e001-005-v2`，舊的由站主在 Studio 改不公開或刪除。
   - 重組前把舊成片改名成 `e001-005-v1.mp4`，舊匯入資料夾的硬連結才不會被覆寫。
+
+### 流暢度（2026-10-28；站主再看仍有貼圖感）
+
+原因、外面的實測與來源在 `.agents/skills/minimax-h3-colab/references/motion-quality.md`；分鏡要配合的寫法在 `../storyboard-rules.md` 最後一節。這裡改了兩支工具：
+
+- `gen-dh.mjs`：`[Shot 1]` 開頭改成官方風格詞 `3D CG.` 加引用 `<Picture 1>` 的錨句；拿掉固定尾句「the camera keeps moving slowly the whole time」（它跟 fast pan、tracking 打架，也讓每鏡都在漂）；`locked` 不再改寫成慢推，運鏡照 `data.camera` 寫成官方「種類＋幅度＋速度」句（`The camera holds a static shot`、`The camera pushes in with small amplitude at slow speed`）；motion 尾巴的 camera 子句丟掉並列出鏡號。秒數 4 → 5，說話約 3 秒以上或兩拍動作 6（4 秒＝107 幀低於 H3 訓練下限 124 幀）。`clips-dh-*.json` 的形狀不變（`[正文, sha, 秒]`），`hailuo-dh*.js` 照讀第三個值買秒數。
+- `assemble-v4.mjs`：片段比台詞短時慢放上限 1.35 → 1.25，慢放用 `minterpolate`（光流補幀）取代複製幀；`edit-*.json` 的 `interpolate: false` 退回舊路、`slow_max` 調上限。補幀吃 CPU：雲端容器量到一支 5.8 秒的 1080p 慢放鏡要 1 分 42 秒（只有真的慢放的鏡頭才跑這條；不慢放的鏡頭跟以前一樣快），一集二十幾支說話鏡約多半小時到一小時；嫌慢就先多買秒數讓它不用慢放。還不夠才停格，note 印 `held`。
+- 沒有排付費小樣（站主 10-28 定）：第 31 集起直接用；舊集不重拍。

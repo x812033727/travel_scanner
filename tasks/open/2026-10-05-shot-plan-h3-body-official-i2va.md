@@ -69,3 +69,21 @@ node .agents/skills/animation-preproduction/scripts/shot_plan.mjs --route hailuo
   in its scope; take this one after it lands.
 - Keep `sha256` of the body as the lock's identity: changing the body re-locks every H3 shot,
   so do it before a batch, not between its phases.
+
+### 2026-10-28: findings from `2026-10-28-h3-motion-quality-smooth-clips` for whoever takes this
+
+The H3 motion manual (`.agents/skills/minimax-h3-colab/references/motion-quality.md`, sources with
+read dates) adds to the list above, all out of that ticket's scope and belonging to `webPrompt`:
+
+- `locked` must stay a real hold: `The camera holds a static shot` (H3 drifts by default; fuser.studio
+  2026-10-28). `H3_SENTENCE.locked` already says still; keep it, never rewrite it into a push.
+- Speed words only from the official pair (`at slow speed` / `at fast speed`), amplitude only
+  `small` / `large`; drop `at a steady speed`.
+- One camera move per clip; never join two with `then` (three `then`s produced two cuts in fuser's
+  test) and never `[Shot 2]`.
+- The anchor sentence should name the people (`Xu Yan shown in <Picture 1> keeps the same face,
+  hair, costume and props as the first frame; the set layout stays as it is.`) rather than the generic
+  `WEB_KEEP`; `gen-dh.mjs` in `docs/videos/series-plans/zhong-tian-qu-qi/production/hailuo/` now
+  writes that form and is a worked example.
+- Plan seconds: `shot_plan.mjs` should not let an H3 shot be bought at 4 s (107 frames, under the
+  124–362 trained range); 5 s is the floor, 6 s for on-screen speech or two beats.
