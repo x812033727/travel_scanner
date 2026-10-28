@@ -52,3 +52,21 @@ public-language verification after release.
 - Source image factual text is unaffected. Original pack remains unchanged.
 - Supporting source: https://tofukuji.jp/guide/
 - No translation/model attempt started for this held article.
+- Fresh 2026-10-28 source review confirmed the fee correction against the
+  operator's July 1 notice and current admission page. A private exact candidate
+  changes only the adult garden fee paragraph and the existing official guide's
+  checked_on date; the article already has the schema limit of twenty sources,
+  so the corroborating notice is retained in evidence rather than adding a
+  twenty-first citation or removing an unrelated source.
+- Fee-only candidate SHA256:
+  `ae4d669bd49de4183b24bd7e3200bda474e789ea4f16c72724f64feb9db39f8e`.
+  It is bound to fresh clean published v4, preserves all four original assets,
+  and remains unapplied without an independent approved correction receipt.
+- Completing that fee fix alone will not unblock translation: new October 25
+  official notices now announce reservation-based November evening/early-morning
+  openings, making the old no-evening/unannounced blanket statements stale.
+  Distinguish these later announcements from the original fee error. Official
+  weekday/time and child-fee inconsistencies remain unresolved; do not invent a
+  resolution or promote those conflicting numbers. Complete source-readiness
+  report SHA256:
+  `6025faf6ce41703508e4f246ecdb126e2d1487593ce75e8db0b1c5bb44a0f9d7`.
