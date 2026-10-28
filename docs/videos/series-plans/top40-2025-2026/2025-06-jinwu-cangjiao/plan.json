@@ -1,0 +1,44 @@
+{
+  "slug": "2025-06-jinwu-cangjiao",
+  "title": "她養的小白臉是世界冠軍",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：他三年前那場事故的真相揭開、他為什麼接這份約揭開、車隊的債還清、他以本名重返賽道替她的車隊拿下總冠軍、兩人把合約撕了。第 300 集最後一格，頒獎台上一個陌生的年輕車手遞給她一張名片：『岑老闆，我也想當妳的小白臉。』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議；賽道鏡頭需要橫式。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市與賽道：車隊基地的鐵與機油、晚宴的金與冷、賽道的速度與塵；女主永遠是畫面裡掌控全局的那一個。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是女方掌控全局的反傳統畫面。",
+    "reuse": "固定場景：岑氏車隊基地（修車間、辦公室、她的車庫）、晚宴廳、賽道與維修區、他的小修車鋪、她的公寓。",
+    "voice": "國語；她低而穩像在發號施令，他軟而黏、認真時變低，第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點；賽道集偏高。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "基地與公寓的文戲用一張首格＋緩推可省四到六成；賽道全景每季拍一組重用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《金屋藏驕》（2025 紅果峰值熱度第 6，聽花島）",
+    "how": "只學套路：女方主導的合約關係、男方藏身分（馬甲）、年下男主撒嬌與護主、女霸總寵養、每集結尾差點露馬甲、季末身分全揭並補前史。職業（車隊老闆與隱退的世界冠軍取代女總裁與豪門太子）、人名、世界、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["她養的小白臉是世界冠軍", "車隊老闆娘的合約男友", "藏起來的冠軍"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}

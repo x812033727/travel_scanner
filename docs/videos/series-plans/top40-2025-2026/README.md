@@ -84,7 +84,9 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2026-04-shaofuren-dongbei` | 租來的女朋友不想退租 | outline；五季細綱代理撰寫中 |
 | `2025-05-qianjin-mou` | 她的當鋪不談愛 | outline（設定集與五季總綱已寫） |
 | `2026-05-hongtang-jiangzhi` | 薑茶要趁熱 | outline（設定集與五季總綱已寫） |
-| 其餘 30 部 | 未定 | reference（套路拆解） |
+| `2025-06-jinwu-cangjiao` | 她養的小白臉是世界冠軍 | outline（設定集與五季總綱已寫） |
+| `2026-06-nuonuo-xiashan` | 小糰糰找哥哥 | outline（設定集與五季總綱已寫） |
+| 其餘 28 部 | 未定 | reference（套路拆解） |
 
 ## 每部怎麼做
 
