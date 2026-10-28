@@ -11,8 +11,9 @@
  * without the upstream runner and otherwise forwards arguments unchanged.
  */
 import assert from "node:assert/strict";
-import { spawnSync } from "node:child_process";
+import { spawn, spawnSync } from "node:child_process";
 import { chmodSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, statSync, writeFileSync } from "node:fs";
+import { createServer } from "node:http";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import test from "node:test";
@@ -71,6 +72,18 @@ function sandbox() {
 function run(cmd, args, env, options = {}) {
   const result = spawnSync(cmd, args, { env, encoding: "utf8", timeout: 60_000, ...options });
   return { code: result.status, out: result.stdout ?? "", err: result.stderr ?? "" };
+}
+
+/** Like run, but without blocking the event loop: a test that also serves HTTP needs it. */
+function runAsync(cmd, args, env) {
+  return new Promise((resolve) => {
+    const child = spawn(cmd, args, { env });
+    let out = "";
+    let err = "";
+    child.stdout.on("data", (chunk) => { out += chunk; });
+    child.stderr.on("data", (chunk) => { err += chunk; });
+    child.on("close", (code) => resolve({ code, out, err }));
+  });
 }
 
 test("pair.py: start prints the sign-in URL, code feeds the same waiting CLI, export gives base64 of the token", { skip: !POSIX }, () => {
@@ -148,6 +161,59 @@ test("bootstrap.sh token: base64 or raw JSON from the secret lands as a 600 toke
     assert.equal(unset.code, 0);
     assert.match(unset.out, /keeping the token already/);
   } finally {
+    rmSync(home, { recursive: true, force: true });
+  }
+});
+
+test("bootstrap.sh token: with a paired video tool token it fetches the account's token.json from the site", { skip: !POSIX }, async () => {
+  const { home, env, token } = sandbox();
+  const requests = [];
+  const server = createServer((request, response) => {
+    requests.push({ url: request.url, authorization: request.headers.authorization });
+    if (request.headers.authorization !== "Bearer mkv_paired") {
+      response.writeHead(401, { "Content-Type": "application/json" });
+      response.end(JSON.stringify({ code: "video_tool_token_invalid", detail: "bad token" }));
+      return;
+    }
+    if (request.url === "/api/video/colab-credentials?slot=c") {
+      response.writeHead(404, { "Content-Type": "application/json" });
+      response.end(JSON.stringify({ code: "colab_not_signed_in", detail: "colab-c has no saved sign-in" }));
+      return;
+    }
+    response.writeHead(200, { "Content-Type": "application/json" });
+    response.end(JSON.stringify({ tool: "colab", slot: "b", credentials: TOKEN }));
+  });
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const site = `http://127.0.0.1:${server.address().port}`;
+  try {
+    const fetched = await runAsync("bash", [BOOTSTRAP, "token"], { ...env, MOKAAIR_SITE: site, MOKAAIR_VIDEO_TOKEN: "mkv_paired" });
+    assert.equal(fetched.code, 0, fetched.out + fetched.err);
+    assert.match(fetched.out, /from the site/);
+    assert.match(fetched.err, /account slot b/);
+    assert.deepEqual(JSON.parse(readFileSync(token, "utf8")), TOKEN);
+    assert.equal(statSync(token).mode & 0o777, 0o600);
+    assert.deepEqual(requests.map((item) => item.url), ["/api/video/colab-credentials?slot=default"]);
+
+    const missing = await runAsync("bash", [BOOTSTRAP, "token"], { ...env, MOKAAIR_SITE: site, MOKAAIR_VIDEO_TOKEN: "mkv_paired", COLAB_ACCOUNT_SLOT: "c" });
+    assert.equal(missing.code, 0, "a refusal keeps the token already there");
+    assert.match(missing.err, /HTTP 404/);
+    assert.match(missing.err, /colab_not_signed_in/);
+    assert.deepEqual(JSON.parse(readFileSync(token, "utf8")), TOKEN);
+
+    // The file `login` writes is read when the environment names no token.
+    mkdirSync(path.join(home, ".mokaair"), { recursive: true });
+    writeFileSync(path.join(home, ".mokaair", "video-tool.json"), JSON.stringify({ site: "https://mokaair.com", token: "mkv_paired" }));
+    rmSync(token);
+    const fromFile = await runAsync("bash", [BOOTSTRAP, "token"], { ...env, MOKAAIR_SITE: site });
+    assert.equal(fromFile.code, 0, fromFile.out + fromFile.err);
+    assert.deepEqual(JSON.parse(readFileSync(token, "utf8")), TOKEN);
+    // A secret in the environment wins over the site.
+    const secret = await runAsync("bash", [BOOTSTRAP, "token"], { ...env, MOKAAIR_SITE: site, MOKAAIR_VIDEO_TOKEN: "mkv_paired", COLAB_CLI_TOKEN_JSON: JSON.stringify({ ...TOKEN, token: "from-secret" }) });
+    assert.equal(secret.code, 0);
+    assert.equal(JSON.parse(readFileSync(token, "utf8")).token, "from-secret");
+    assert.equal(requests.length, 3);
+  } finally {
+    server.close();
     rmSync(home, { recursive: true, force: true });
   }
 });

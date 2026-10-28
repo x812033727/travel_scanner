@@ -9,7 +9,28 @@
 - 要的 scope：`openid`、`userinfo.profile`、`userinfo.email`、**`cloud-platform`**、`colaboratory`、`drive.file`。`cloud-platform` 很寬（等於那個帳號在 GCP 能做的事）。用**沒有 GCP 專案與帳單、只有 Google AI Pro／Ultra 訂閱**的 Google 帳號配對，風險才只有 Colab 的 compute units。
 - 撤銷：Google 帳號的「第三方存取」頁撤掉「Google Cloud SDK」，或刪掉 `token.json` 重新配對（舊的 refresh token 留在誰手上都失效）。
 
-## 2. 為什麼雲端 session 要「權杖配對」而不是每次登入
+## 2. 三條路線，先選哪條
+
+| 路線 | 誰拿著 Google 的權杖 | 什麼時候用 |
+| --- | --- | --- |
+| **C. 跟後台配對（建議）** | 主機：站主在 `/admin/ai-accounts` 的「Google Colab」區登入最多五個帳號、看每個帳號的 compute units、選預設帳號。雲端 session 用影片工具權杖（`node tools/video/cli.mjs login --colab`，站主在後台按允許）向站台要預設帳號（或 `COLAB_ACCOUNT_SLOT=a-e`）的 token.json。換帳號、撤銷都在後台做，session 什麼都不用改 | 正式的做法；多個 Google 帳號輪著用時只有這條管得住 |
+| A. 在雲端 session 配 | session 自己（`pair.py`），之後存成 secret `COLAB_CLI_TOKEN_JSON` | 後台還沒部署這版、或只有一個帳號想快速試 |
+| B. 在自己電腦配 | 站主電腦，再存成 secret | 不想把驗證碼貼進對話 |
+
+`bootstrap.sh token` 照這個順序找：`COLAB_CLI_TOKEN_JSON`（A／B）→ 站台（C：`MOKAAIR_VIDEO_TOKEN` 或 `~/.mokaair/video-tool.json`，`MOKAAIR_SITE` 預設 https://mokaair.com）→ 已經在 `~/.config/colab-cli/token.json` 的。
+
+**C 的一次設定**：
+
+```bash
+node tools/video/cli.mjs login --colab --name "Claude 雲端 session"   # 印驗證碼與後台連結
+# 站主在後台「Azure 語音（影片旁白）」卡核對驗證碼；卡上會標「這台電腦也要求 Google Colab 帳號的憑證」，按允許
+# 工具把 mkv_ 權杖存進 ~/.mokaair/video-tool.json（容器被回收就沒了：存成環境 secret MOKAAIR_VIDEO_TOKEN 才留得住）
+bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh            # token 這一步會向站台拿 token.json 並驗 colab usage
+```
+
+後台那邊：`/admin/ai-accounts`（AI 設定 → 訂閱帳號）多了「Google Colab」區，登入走同一種貼授權碼的流程，卡片直接顯示 `colab usage` 的餘額、每小時耗用與執行中的 runtime；站台每次交出憑證都寫一筆審計（`ai_account.colab_credentials_fetched`，記權杖開頭，不記憑證）。沒有 Colab 權限的影片工具權杖拿到 403 `video_tool_token_no_colab`：重新 `login --colab`，或站主在卡上建權杖時勾「可取得 Colab 帳號憑證」。主機端的安裝與信任邊界在 `ops/ai-accounts/README.md`。
+
+## 2a. 路線 A／B：為什麼雲端 session 要「權杖配對」而不是每次登入
 
 Claude Code 雲端 session 的容器每次新開都是乾淨的，`~/.config` 不會留下來；環境設定裡的 **setup script 讀不到環境的 secret**，所以還原權杖這一步要在 session 裡做（`bootstrap.sh token` 讀環境變數）。做法：
 
@@ -20,7 +41,7 @@ Claude Code 雲端 session 的容器每次新開都是乾淨的，`~/.config` �
 
 權杖**不進 chat、不進 repo、不進 manifest 與 log**；`pair.py` 只有 `export` 會印它，而且是站主要才跑。要換帳號就重新配對再換 secret。
 
-## 3. 兩種配對方式
+## 3. 路線 A 與 B 的配對步驟
 
 **A. 在雲端 session 裡配（agent 跑，站主貼驗證碼）**
 

@@ -5049,6 +5049,21 @@ Ran: Node, Windows: `node tools/video/long-form/cli.mjs check` before any edit (
 Non-claims: this is a one-file incremental source duration review. It does not re-review the other 107 bound files or the unbound files the PR changes, it does not judge the thumbnail design, and it does not accept media, paid production, deployment, upload or publication.
 Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
 
+## Google Colab accounts increment: 6 files (2026-10-27)
+
+Reviewer: `claude-pr-review-colab-accounts-20261027`. Author: `claude-fable-5-1-colab-accounts`. Scope: DURATION_ONLY for `apps/web/messages/en/admin.json`, `apps/web/messages/ja/admin.json`, `apps/web/messages/ko/admin.json`, `apps/web/messages/zh-CN/admin.json`, `apps/web/messages/zh-TW/admin.json` and `tools/video/tts/tts.test.mjs`, changed in `c23fb2d5` ("後台多個 Google 帳號看 Colab 點數，雲端 session 用影片工具權杖配對取憑證") on branch `claude/colab-accounts-admin`, on top of main at `15326961` (#1894); the ticket is `tasks/open/2026-10-27-google-colab-accounts-on-admin-ai.md`. Reviewed as `git diff origin/main -- <each of the 6 files>` (each admin.json 12 added lines, 0 removed; tts.test.mjs 11 added, 0 removed). The same commit also changes unbound files (the host agent's new `colab` tool, the video tool token's `colab_access` column and pairing flag, the admin accounts panel and token card, the `minimax-h3-colab` skill, `ops/ai-accounts`; none listed in `REVIEW_FILES`); they are out of scope and were not reviewed for this receipt. This increment was written in the same session that wrote the change, as a separate pass that read only the six diffs for duration rules; the reviewer identity above is that pass, and it edits only this report and review.json.
+
+Baseline: at `15326961` (origin/main) the 6 files hash to the existing bindings and table rows (`abdd40ec…` en, `c6453e16…` ja, `84c4accd…` ko, `5f7c2ed7…` zh-CN, `159112e7…` zh-TW, `9430c36b…` tts.test.mjs); at HEAD and in the worktree they hash to `6dc1beea…`, `273d1d25…`, `f64e4502…`, `f0e09d6f…`, `405792e4…` and `3817aabb…`, the values in the table below (Node `crypto.createHash('sha256')` over the file bytes). Before this increment `node tools/video/long-form/cli.mjs check` printed `FAIL: stale duration review binding:` for exactly these 6 paths and nothing else (exit 1), so the other 102 registered files hash to their bindings in the worktree. Earlier increments are retained in full.
+
+Question: does the change touch any duration rule (the explainer 10-minute default and its 8–20 range, the drama 1–8 minute range, the brand story 13 minutes, the 8-minute floor for non-drama episodes, the 480 s / 14,400-frame QA floor, the long-form anime production policy and its `runtime_spec` binding, measured-duration evidence or `plans.json`)? Answer: no.
+
+Findings. Each admin.json (+12/−0) gains twelve UI strings, all in the `aiAccountsPanel` and `videoTools` namespaces: the Google Colab section's SSH hint, sign-in title, fallback and two code-paste steps, the compute-unit lines (`computeUnits`, `computeRate`, `computeActive`), and the token card's pairing notice, checkbox label, help text and badge. No existing key changes and no key in a video, series, explainer, drama or QA namespace is touched. tts.test.mjs (+11/−0): one test that `login --colab` sends `{ client_name, colab: true }` to the pairing route, prints that the pairing asks for Colab credentials and saves the collected token; it synthesizes nothing and reads no timeline. A case-insensitive scan of the changed lines of all 6 files for minute, MIN_EPISODE, minEpisode, needsMinimumLength, 480, 14,400, 14400, target_, action_seconds, duration, runtime, floor, anime, plans, frame, second, assemble, length, 分鐘, 秒, 時長 and 長度 finds only the word "runtime" in the new `computeActive` strings ("執行中 {count} 個 runtime" and its translations), which names a Colab machine assignment, not a video length. None of the changed lines touches the explainer default of 10 minutes or its 8–20 range, the drama 1–8 minute range, the brand story 13 minutes, the non-drama 8-minute floor, the 480 s / 14,400-frame QA floor, the long-form anime policy or `runtime_spec`, measured-duration evidence or `plans.json`, and no duration assertion is added, removed or loosened. No duration correction is required.
+
+Ran: Node v22, Linux, in the worktree (HEAD `c23fb2d5`): `git diff origin/main -- <each of the 6 files>` read in full, the hashing and the scan above, and `node tools/video/long-form/cli.mjs check` before any edit (stale for exactly these 6 paths, exit 1). The CLI check and `node --test tools/video/long-form/review.test.mjs` are run again after rebinding, and their results are in the hand-off so this report's hash stays stable. The web, API and tts suites were run for the change itself, not for this report.
+
+Non-claims: this is a 6-file incremental source duration review. It does not re-review the other 102 bound files or the unbound files the commit changes, nor whether the Colab account handling or the credential handoff is right, and it does not accept media, paid production, deployment, upload or publication.
+Verdict: PASS - DURATION_ONLY; required duration fixes remaining: none.
+
 ## Reviewed SHA256 bindings" in the merged report is byte-identical to `dec59b7c5^1`'s report up to that heading followed by main's "Channel intro after the opening condensation increment" section byte-identical to `dec59b7c5^2`'s; main's report is the merge base's report plus that section only, so no earlier section was dropped or altered on either side. After the heading, the table has the same 115 lines as each parent; it differs from `dec59b7c5^1` in exactly the five #1481 rows and from `dec59b7c5^2` in exactly the 15 rows of this branch's increments, and every row equals one parent's row.
 
 Ran (in the worktree at `dec59b7c5`, Node on Windows): `node tools/video/long-form/cli.mjs check` before any edit; a script kept outside the repository that hashes the working tree and the blobs of the merge, both parents and the merge base, and compares both receipts and both reports as in 1 to 4; `git ls-files --eol` (LF in index and worktree for both receipt files). The CLI check and review.test.mjs are run again after rebinding. Their results are in the hand-off, so this report's hash stays stable.
@@ -6673,11 +6688,11 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `apps/web/components/admin-video-series.test.tsx` | `73b243289900507d88bdaef56d488260f844743c4bac02f4e81e49d0d5bd9f38` |
 | `apps/web/components/admin-video-series.tsx` | `8ae6ad52a8912ae43baa883f9f429889e23dc1696fce5f088c6806410d596b64` |
 | `apps/web/components/admin-video-settings-tutorial.tsx` | `3db1fd2060ac395bb231a7016d018f0dc4fc6be6510c4ea0265805feaa4108e4` |
-| `apps/web/messages/en/admin.json` | `abdd40ec80774c5dedcc0dae73b48fa9c699118856935748cef3f92387fc3cfb` |
-| `apps/web/messages/ja/admin.json` | `c6453e163f61ab0b1f393731b3e5f4356e3ec2e238d42a9e0a9fe67b93d558f8` |
-| `apps/web/messages/ko/admin.json` | `84c4accd6595439c084f01d65d675a04188ee5eb3fd5d92b029476eb4c13ea19` |
-| `apps/web/messages/zh-CN/admin.json` | `5f7c2ed7550551e040bdac1315e1eaa35d4636203bf04728eb98745a49adc548` |
-| `apps/web/messages/zh-TW/admin.json` | `159112e70fdcaa705be5af79ee14305ed48e7010d66e5dbcc6308de789274094` |
+| `apps/web/messages/en/admin.json` | `6dc1beea73b92272d06652e0bd9b493bb3149a449f24577986e9d32b74362c26` |
+| `apps/web/messages/ja/admin.json` | `273d1d2566ce80e79d9269a0c2d61fa66266d65243e0aebe350f8dd58c7087c7` |
+| `apps/web/messages/ko/admin.json` | `f64e4502c402b36589afd05a7001909b5d1c6ef11c2b03042a17941314d71beb` |
+| `apps/web/messages/zh-CN/admin.json` | `f0e09d6ff3997b212c46171964e4ef99b7aa554a7016b75d0194412d2ec6f72f` |
+| `apps/web/messages/zh-TW/admin.json` | `405792e4a7e913105c279596d7c95cc26d7af17ac7ac9e18ea8abcf05763bab9` |
 | `docs/videos/DESIGN.md` | `867d485df9b0509a6d16ce2054608e1c9e4ba44eb6ff79da5f326bf2b90c3405` |
 | `docs/videos/KNOWLEDGE-STORIES.md` | `8bf5a55173e25c07c18b865853ffd37e839408ccf731bdc3c4ebf208e195b5b5` |
 | `docs/videos/LONG-ANIME-PRODUCTION.md` | `98775a8f197d6c9ad3eefa9cd1e6f2840d817675956498f6b569f3be72638145` |
@@ -6751,4 +6766,4 @@ These 108 bindings describe the current reviewed bytes after the A01 duration in
 | `tools/video/tts/batch-recovery.test.mjs` | `7594fb398ddf15acec164492bf572ff370de48e656db69a420e5c711c18125dd` |
 | `tools/video/tts/check.test.mjs` | `7ad91cfd7648e93218c98649e2a9ebe647e6325fa2cdae601853928bf9c2b3c8` |
 | `tools/video/tts/synthesis.mjs` | `589ebe665bd281aaefba6749d61148f4c7011f71c962513efd5a6cd6830f3cb3` |
-| `tools/video/tts/tts.test.mjs` | `9430c36b0c1e2f19cb3233cfb99e86d6904fa54ae2a5e72f7c1dea3205e920ad` |
+| `tools/video/tts/tts.test.mjs` | `3817aabb1a394431129b064a9f3b112e2e00b1141bf4ac43025855b8f440d94e` |

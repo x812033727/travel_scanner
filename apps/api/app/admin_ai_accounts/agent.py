@@ -2,7 +2,7 @@ import hashlib
 import hmac
 import json
 import time
-from typing import Any, TypeVar
+from typing import Any, Literal, TypeVar
 from uuid import uuid4
 
 import httpx
@@ -13,6 +13,7 @@ from app.admin_ai_accounts.schemas import (
     AiDefaults,
     AiLoginSession,
     AiLogoutResult,
+    ColabCredentials,
     Slot,
     Tool,
 )
@@ -125,6 +126,12 @@ class AiAccountsAgentClient:
 
     async def set_default(self, tool: Tool, slot: Slot) -> AiDefaults:
         return await self._request("PUT", f"/v1/defaults/{tool}", AiDefaults, {"slot": slot})
+
+    async def colab_credentials(self, slot: Slot | Literal["default"]) -> ColabCredentials:
+        """The saved Colab CLI token of one account; `default` is the default slot."""
+        return await self._request(
+            "GET", f"/v1/accounts/colab/{slot}/credentials", ColabCredentials
+        )
 
     async def run_prompt(
         self,

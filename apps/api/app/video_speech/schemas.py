@@ -77,6 +77,8 @@ class SpeechStatus(BaseModel):
 class VideoToolTokenCreate(BaseModel):
     model_config = ConfigDict(extra="forbid")
     name: str = Field(min_length=1, max_length=80)
+    # May this token also fetch a Colab account's CLI credentials (/admin/ai-accounts)?
+    colab_access: bool = False
 
 
 class VideoToolTokenView(BaseModel):
@@ -86,6 +88,7 @@ class VideoToolTokenView(BaseModel):
     created_at: datetime
     last_used_at: datetime | None
     revoked_at: datetime | None
+    colab_access: bool = False
 
 
 class VideoToolTokenCreated(VideoToolTokenView):
@@ -97,6 +100,8 @@ class PairingStartIn(BaseModel):
     model_config = ConfigDict(extra="forbid")
     # Shown to the owner next to the code, so they can tell their own machine's request apart.
     client_name: str = Field(default="", max_length=60)
+    # The tool also wants a Colab account's credentials; the owner sees this before allowing.
+    colab: bool = False
 
 
 class PairingStarted(BaseModel):
@@ -130,6 +135,7 @@ class PairingView(BaseModel):
     created_at: datetime
     expires_at: datetime
     status: Literal["pending", "approved", "denied"]
+    colab: bool = False
 
 
 # The languages a track is read in: the narration's zh-TW, and the dubs' (docs/videos/DUBS.md),
