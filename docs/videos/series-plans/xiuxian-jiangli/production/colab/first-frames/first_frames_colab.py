@@ -21,7 +21,11 @@ BUNDLE = Path(os.environ.get("FF_BUNDLE", "/content/ff_bundle.tar"))
 OUT_TAR = Path(os.environ.get("FF_OUT", "/content/ff_out.tar"))
 PROFILE = os.environ.get("FF_PROFILE", "lightning").strip().lower()
 MODEL = os.environ.get("FF_MODEL", "Qwen/Qwen-Image-Edit-2509")
-LORA_REPO = os.environ.get("FF_LORA_REPO", "lightx2v/Qwen-Image-Edit-2509-Lightning")
+# The Lightning LoRAs for Qwen-Image-Edit-2509 live in the lightx2v/Qwen-Image-Lightning repo, in its
+# Qwen-Image-Edit-2509 folder (comfy.org's model page points at the 8-step V1.0 bf16 file there);
+# the first run asked a repo of a similar name that answers 401.
+LORA_REPO = os.environ.get("FF_LORA_REPO", "lightx2v/Qwen-Image-Lightning")
+LORA_FILE = os.environ.get("FF_LORA_FILE", "Qwen-Image-Edit-2509/Qwen-Image-Edit-2509-Lightning-8steps-V1.0-bf16.safetensors")
 WORK = Path("/content/ff_work")
 OUT_DIR = Path("/content/ff_out")
 
@@ -53,11 +57,22 @@ jobs = manifest["jobs"]
 log(len(jobs), "jobs in", BUNDLE)
 
 t0 = time.time()
-transformer = QwenImageTransformer2DModel.from_pretrained(
-    MODEL, subfolder="transformer", quantization_config=BitsAndBytesConfig(load_in_8bit=True), torch_dtype=torch.bfloat16
-)
-pipe = QwenImageEditPlusPipeline.from_pretrained(MODEL, transformer=transformer, torch_dtype=torch.bfloat16)
-pipe.enable_model_cpu_offload()
+# An 80 GB card (Colab's A100-SXM4-80GB) holds the whole pipeline in bf16 (~58 GB) and runs it
+# on the GPU; a 40 GB card gets the transformer in 8-bit and the rest offloaded to the CPU
+# (first run 2026-10-28: 8-bit + offload took 416 s a picture at 40 steps, the slow path).
+vram_gb = torch.cuda.get_device_properties(0).total_memory / 2**30 if torch.cuda.is_available() else 0
+EIGHT_BIT = os.environ.get("FF_8BIT", "auto").lower()
+eight_bit = EIGHT_BIT == "on" or (EIGHT_BIT == "auto" and vram_gb < 70)
+if eight_bit:
+    transformer = QwenImageTransformer2DModel.from_pretrained(
+        MODEL, subfolder="transformer", quantization_config=BitsAndBytesConfig(load_in_8bit=True), torch_dtype=torch.bfloat16
+    )
+    pipe = QwenImageEditPlusPipeline.from_pretrained(MODEL, transformer=transformer, torch_dtype=torch.bfloat16)
+    pipe.enable_model_cpu_offload()
+else:
+    pipe = QwenImageEditPlusPipeline.from_pretrained(MODEL, torch_dtype=torch.bfloat16)
+    pipe.to("cuda")
+log("vram", round(vram_gb), "GB", "8-bit" if eight_bit else "bf16 on gpu")
 pipe.set_progress_bar_config(disable=True)
 log("pipeline loaded in", round(time.time() - t0), "s")
 
@@ -65,7 +80,8 @@ steps, true_cfg, lora = 40, 4.0, None
 if PROFILE == "lightning":
     try:
         files = list_repo_files(LORA_REPO)
-        candidates = [f for f in files if f.endswith(".safetensors") and "8step" in f.lower() and "bf16" in f.lower()] or [f for f in files if f.endswith(".safetensors") and "8step" in f.lower()]
+        edit = [f for f in files if f.endswith(".safetensors") and "edit-2509" in f.lower() and "8step" in f.lower()]
+        candidates = [LORA_FILE] if LORA_FILE in files else ([f for f in edit if "bf16" in f.lower()] or edit)
         if candidates:
             lora = sorted(candidates)[-1]
             pipe.load_lora_weights(LORA_REPO, weight_name=lora)
@@ -109,7 +125,7 @@ for job in jobs:
         log(job["id"], "FAILED", exc)
         torch.cuda.empty_cache()
 
-(OUT_DIR / "results.json").write_text(json.dumps({"model": MODEL, "profile": PROFILE, "lora": lora, "steps": steps, "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None, "total_seconds": round(time.time() - started), "results": results}, ensure_ascii=False, indent=1), encoding="utf-8")
+(OUT_DIR / "results.json").write_text(json.dumps({"model": MODEL, "profile": PROFILE, "lora": lora, "steps": steps, "eight_bit": eight_bit, "vram_gb": round(vram_gb), "gpu": torch.cuda.get_device_name(0) if torch.cuda.is_available() else None, "total_seconds": round(time.time() - started), "results": results}, ensure_ascii=False, indent=1), encoding="utf-8")
 with tarfile.open(OUT_TAR, "w") as tar:
     for file in sorted(OUT_DIR.iterdir()):
         tar.add(file, arcname=file.name)
