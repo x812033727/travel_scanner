@@ -53,3 +53,5 @@ Google's agent access filter.
   the rule as "Any Bash command starting with git push / From project local settings"; after
   deleting it the force push asked again. Pane captures and RUNLOG.md are in the scratchpad's
   `muse/run/`.
+
+- 2026-10-28: narration re-approved after splitting long cards (8:25, 63 states); final approved (399ce5f5c8bc, qa 11/11); package built, publish gate pushed — waiting on the owner to upload to Studio as Private and paste the URL. Languages not chosen yet.
