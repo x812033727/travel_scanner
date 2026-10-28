@@ -8,56 +8,49 @@
   ],
   "voice": {
     "provider": "gemini",
-    "name": "Sulafat",
-    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+    "name": "Despina",
+    "style": "標準國語，咬字清楚；平穩、沒有情緒的電子合成女聲，像古書在念自己，一字一頓（百工仙錄）"
   },
   "look": {
     "preset": "custom",
-    "style": "3D Chinese donghua CG animation in the style of high-end domestic 3D animated series and game cinematics, Unreal Engine 5 cinematic render: semi-realistic stylised characters with refined features and slightly enlarged expressive eyes, detailed skin with texture but not photographic, individually rendered hair strands, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field, glamorous flattering beauty lighting on faces; not a photograph, not live action",
-    "negative": "photograph, live action, real person, flat 2D anime, sketch, text, subtitles, watermark, logo, UI panel, extra fingers, deformed hands, blood, gore, wounds, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "style": "Chinese 3D donghua CG, cinematic Unreal Engine 5 render of a high-end animated series: semi-realistic adults with real human proportions and mature faces, slightly enlarged expressive eyes, PBR skin and cloth with wear, cool low-saturation palette with warm accents, rim light, shallow depth of field",
+    "negative": "chibi, child, clay, toy, doll, plastic, cartoon, flat anime, photo, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
     "motion": "",
-    "candidates": 2
+    "candidates": 3
   },
   "characters": [
     {
       "id": "jiangxiaoman",
       "name": "江小滿",
-      "appearance": "East Asian young man of twenty-two, boyish good looks: thick brows, warm double-lidded eyes with a sly glint, straight nose, an easy crooked grin, lean build with forearms toned from tossing a wok, black hair tied in a messy topknot with a grey cloth strip, a faded ash-grey servant's short tunic with both sleeves rolled to the elbow, a rope belt with one wooden ladle tucked in it, straw sandals",
+      "appearance": "East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
       "voice": {
         "provider": "gemini",
         "name": "Puck",
         "style": "標準國語，咬字清楚，台北人平常說話的語調；二十二歲的年輕人，嘴快、愛吐槽、會跟鍋說話，認真起來聲音很穩"
-      }
+      },
+      "sheet_prompt": "turnaround sheet of one adult: front, three-quarter and side view full body side by side, neutral pose, plain light grey studio background, no text"
     },
     {
       "id": "shenzhaoxue",
       "name": "沈照雪",
-      "appearance": "East Asian young woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, flawless porcelain skin that looks as if it has never seen the sun, tall slender upright figure with a slim waist, black hair swept up without a single loose strand and held by one white jade hairpin, a fitted moon-white narrow-sleeved sword robe with a silver sash, a plain-sheathed longsword on her back",
+      "appearance": "East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
       "voice": {
         "provider": "gemini",
         "name": "Achernar",
         "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的內門首席，聲音清、冷、短句，受傷時氣音多一點"
-      }
+      },
+      "sheet_prompt": "turnaround sheet of one adult: front, three-quarter and side view full body side by side, neutral pose, plain light grey studio background, no text"
     },
     {
       "id": "songguanshi",
       "name": "宋管事",
-      "appearance": "East Asian middle-aged man of forty-six, a long narrow face, drooping figure-eight brows, small triangular eyes, two thin rat-whisker moustache strands, a grey-green steward's robe with wide sleeves, a ring of iron keys at his belt, a wooden-covered ledger under one arm",
+      "appearance": "East Asian man of forty-six, a steward: long narrow face, drooping figure-eight brows, small triangular eyes, two thin wispy rat-whisker moustache strands, grey-green wide-sleeved steward's robe, a ring of iron keys hanging from his belt, a wooden-covered ledger tucked under his left arm, cloth shoes",
       "voice": {
         "provider": "gemini",
         "name": "Algenib",
         "style": "標準國語，咬字清楚，台北人平常說話的語調；四十六歲的管事，鼻音重、拖長音、陰陽怪氣"
-      }
-    },
-    {
-      "id": "xianlu",
-      "name": "仙錄",
-      "appearance": "no on-screen body; only a voice and a blue-gold page-shaped panel added in editing",
-      "voice": {
-        "provider": "gemini",
-        "name": "Despina",
-        "style": "標準國語，咬字清楚；平穩、沒有情緒的電子合成女聲，像古書在念自己，一字一頓"
-      }
+      },
+      "sheet_prompt": "turnaround sheet of one adult: front, three-quarter and side view full body side by side, neutral pose, plain light grey studio background, no text"
     }
   ],
   "music": {
@@ -587,7 +580,7 @@
       "lines": [
         {
           "id": "xj1a26a",
-          "speaker": "xianlu",
+          "speaker": "narrator",
           "text": "百工仙錄，開啟。",
           "emotion": "平板電子女聲，一字一頓"
         }
@@ -628,7 +621,7 @@
       "lines": [
         {
           "id": "xj1a28a",
-          "speaker": "xianlu",
+          "speaker": "narrator",
           "text": "獎勵：壓力鍋。",
           "emotion": "平板電子女聲"
         }
@@ -823,7 +816,7 @@
       "lines": [
         {
           "id": "xj1a39a",
-          "speaker": "xianlu",
+          "speaker": "narrator",
           "text": "靈力恢復，百分之三。",
           "emotion": "平板電子女聲"
         }
@@ -903,7 +896,7 @@
       "lines": [
         {
           "id": "xj1a43a",
-          "speaker": "xianlu",
+          "speaker": "narrator",
           "text": "百工仙錄，第二次開啟。",
           "emotion": "平板電子女聲，最後兩個字慢"
         }
