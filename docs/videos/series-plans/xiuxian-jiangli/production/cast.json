@@ -9,7 +9,7 @@
     "仙錄面板不由圖片或影片模型生成：拍江小滿的主觀鏡頭或臉部近景，面板文字在剪接時疊上（藍金色、像一頁書的半透明框，見每集 overlays.json）。prompt 裡不要寫面板、文字或 UI。",
     "沈照雪受傷時（第 1–2 集）在該鏡 prompt 裡寫 her face gone translucent white、one sleeve torn and scorched at the cuff；好了之後不寫。",
     "聲音是代理的建議，試片前照 voice-audition.md 試聽再定。",
-    "站主 2026-10-27：製作路線是 Colab 直接打 MiniMax API（image-01 首格、H3 v2 圖生影片），不走海螺網頁、不走站上伺服器；做法在 production/colab/README.md。"
+    "站主 2026-10-28：片段只用 Colab 的 GPU 跑開源 H3（skill minimax-h3-colab），不打 MiniMax 付費 API、不走海螺網頁、不用伺服器片段模型；設定圖與關鍵影格用產線的 look／keyframes。做法在 production/colab/README.md。"
   ],
   "look": {
     "preset": "custom",

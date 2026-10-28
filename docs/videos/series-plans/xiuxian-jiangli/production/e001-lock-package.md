@@ -6,7 +6,7 @@
 
 ## 0. 站主的決定（2026-10-27）
 
-1 畫風 3D 國漫；2 路線改成 **Colab 直接打 MiniMax API**（image-01 首格、H3 片段，見 `colab/README.md`；下表第 2 列的海螺網頁改為備案）；3 第 1 集約 92 秒；4 聲音照建議、試片前試聽；5 先做小樣 s33–s35。鎖定檔 `e001-plan-lock.json`（`plan_lock.mjs --write`，2026-10-27T22:46Z，AI 潤飾關）。
+1 畫風 3D 國漫；2 路線改成 **Colab 的 GPU 跑開源 H3**（PR #1894 的 skill `minimax-h3-colab`；設定圖與關鍵影格仍用站上產線的 `look`／`keyframes`；見 `colab/README.md`。站主 2026-10-28 補：不在 Colab 打 MiniMax 付費 API；海螺網頁與伺服器片段模型都不用）；3 第 1 集約 92 秒；4 聲音照建議、試片前試聽；5 先做小樣 s33–s35。鎖定檔 `e001-plan-lock.json`（`plan_lock.mjs --write`，2026-10-27T22:46Z，AI 潤飾關）。
 
 原本列給站主選的五件事：
 
