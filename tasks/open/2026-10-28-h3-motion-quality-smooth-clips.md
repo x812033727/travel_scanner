@@ -1,7 +1,7 @@
 ---
 id: 2026-10-28-h3-motion-quality-smooth-clips
 title: H3 motion quality: smooth clips, fewer failed takes (skill manual, Colab sampling profiles, zhong-tian prompt and cut tools)
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-fable-5-1-h3-motion
