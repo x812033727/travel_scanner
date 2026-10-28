@@ -3,10 +3,10 @@
 #
 #   bash ops/ai-accounts/install.sh [--runtime-env /root/travel_scanner/.env]
 #
-# The first run moves root's existing Claude Code, Codex and Antigravity logins into
-# account A and leaves /root/.claude, /root/.claude.json, /root/.codex and
-# /root/.gemini/antigravity-cli as links to it, so anything that runs the CLIs without the
-# shell functions keeps using the same account.
+# The first run moves root's existing Claude Code, Codex, Antigravity and Colab CLI logins
+# into account A and leaves /root/.claude, /root/.claude.json, /root/.codex,
+# /root/.gemini/antigravity-cli and /root/.config/colab-cli as links to it, so anything that
+# runs the CLIs without the shell functions keeps using the same account.
 set -euo pipefail
 # The host's default umask once made deployed files unreadable (2026-09-07); be explicit.
 umask 022
@@ -33,6 +33,9 @@ CODEX_SHARED=(AGENTS.md prompts skills sessions)
 # with account A like the other tools' settings.
 AGY_ROOT_SHARED=(.gitconfig .git-credentials .npmrc .config/gh)
 AGY_DATA=.gemini/antigravity-cli
+# The Colab CLI (google-colab-cli) keeps its OAuth token under ~/.config/colab-cli and has no
+# switch for it either, so each Colab account is a home of its own as well.
+COLAB_DATA=.config/colab-cli
 RUNTIME_ENV=""
 
 while [[ $# -gt 0 ]]; do
@@ -67,13 +70,14 @@ needs_move() {
 getent group travel-api >/dev/null || groupadd --system --gid 10002 travel-api
 install -d -m 0700 "${STATE}" "${STATE}/home"
 for slot in "${SLOTS[@]}"; do
-  install -d -m 0700 "${STATE}/claude-${slot}" "${STATE}/codex-${slot}" "${STATE}/agy-${slot}"
-  install -d -m 0700 "${STATE}/agy-${slot}/.gemini"
+  install -d -m 0700 "${STATE}/claude-${slot}" "${STATE}/codex-${slot}" "${STATE}/agy-${slot}" \
+    "${STATE}/colab-${slot}"
+  install -d -m 0700 "${STATE}/agy-${slot}/.gemini" "${STATE}/colab-${slot}/.config"
 done
 
 # 2. First run: move the existing logins into account A.
 if needs_move /root/.claude || needs_move /root/.claude.json || needs_move /root/.codex ||
-  needs_move "/root/${AGY_DATA}"; then
+  needs_move "/root/${AGY_DATA}" || needs_move "/root/${COLAB_DATA}"; then
   if cli_running; then
     echo "A claude, codex or agy process is running. Close every session, then run this again." >&2
     exit 3
@@ -98,6 +102,10 @@ move_into_slot /root/.codex "${STATE}/codex-a"
 install -d -m 0700 "${STATE}/agy-a/${AGY_DATA}"
 [[ -d /root/.gemini ]] || install -d -m 0700 /root/.gemini
 move_into_slot "/root/${AGY_DATA}" "${STATE}/agy-a/${AGY_DATA}"
+# /root/.config belongs to many tools; only the Colab CLI's own folder moves.
+install -d -m 0700 "${STATE}/colab-a/${COLAB_DATA}"
+[[ -d /root/.config ]] || install -d -m 0700 /root/.config
+move_into_slot "/root/${COLAB_DATA}" "${STATE}/colab-a/${COLAB_DATA}"
 if needs_move /root/.claude.json; then
   if [[ -e "${STATE}/claude-a/.claude.json" ]]; then
     echo "${STATE}/claude-a/.claude.json exists; leaving /root/.claude.json where it is." >&2
@@ -165,7 +173,7 @@ if servers:
 PY
   done
 fi
-for tool in claude codex agy; do
+for tool in claude codex agy colab; do
   [[ -f "${STATE}/default-${tool}" ]] || printf 'a\n' >"${STATE}/default-${tool}"
   chmod 0600 "${STATE}/default-${tool}"
 done
@@ -183,6 +191,7 @@ for slot in "${SLOTS[@]}"; do
   ln -sfn "${LIB}/mokaair-ai-cli" "/usr/local/bin/claude-${slot}"
   ln -sfn "${LIB}/mokaair-ai-cli" "/usr/local/bin/codex-${slot}"
   ln -sfn "${LIB}/mokaair-ai-cli" "/usr/local/bin/agy-${slot}"
+  ln -sfn "${LIB}/mokaair-ai-cli" "/usr/local/bin/colab-${slot}"
 done
 install -m 0644 "${HERE}/profile.sh" /etc/profile.d/mokaair-ai-accounts.sh
 # tmux windows and other non-login shells read only ~/.bashrc.

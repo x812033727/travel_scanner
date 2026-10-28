@@ -183,6 +183,37 @@ async def test_the_whole_pairing_ends_with_one_token_minted_for_the_approver(
 
 
 @pytest.mark.asyncio
+async def test_a_pairing_that_asks_for_colab_says_so_and_marks_its_token(
+    pairing_app: Any,
+) -> None:
+    async with _client() as client:
+        request = {"client_name": "雲端 session", "colab": True}
+        started = (await client.post(PAIRINGS, json=request)).json()
+        code, device_code = started["user_code"], started["device_code"]
+        seen = (await client.get(f"{ADMIN}/{code}")).json()
+        assert seen["colab"] is True
+        assert (await client.post(f"{ADMIN}/{code}/approve")).json()["colab"] is True
+        poll = {"device_code": device_code}
+        collected = (await client.post(f"{PAIRINGS}/poll", json=poll)).json()
+        assert collected["status"] == "approved"
+        plain = (await client.post(PAIRINGS, json={"client_name": "筆電"})).json()
+        assert (await client.get(f"{ADMIN}/{plain['user_code']}")).json()["colab"] is False
+    session = pairing_app["session"]
+    row = next(item for item in session.added if isinstance(item, VideoToolToken))
+    assert row.colab_access is True
+    approved = next(
+        item for item in session.added
+        if isinstance(item, AdminAuditLog) and item.action == "video_tool_pairing_approved"
+    )
+    assert approved.metadata_json["colab"] is True
+    minted = next(
+        item for item in session.added
+        if isinstance(item, AdminAuditLog) and item.action == "video_tool_token_created"
+    )
+    assert minted.metadata_json["colab_access"] is True
+
+
+@pytest.mark.asyncio
 async def test_a_denied_pairing_never_mints_a_token(pairing_app: Any) -> None:
     async with _client() as client:
         body = (await client.post(PAIRINGS, json={})).json()
@@ -206,7 +237,7 @@ async def test_unknown_codes_are_404_and_a_full_token_list_refuses_approval(
         assert malformed.status_code == 404
 
         body = (await client.post(PAIRINGS, json={"client_name": "x"})).json()
-        pairing_app["session"].active = 10
+        pairing_app["session"].active = admin_api.MAX_ACTIVE_TOKENS
         refused = await client.post(f"{ADMIN}/{body['user_code']}/approve")
         assert refused.status_code == 409 and refused.json()["code"] == "video_tool_token_limit"
         # The pairing is still waiting, so the owner can revoke an old token and try again.

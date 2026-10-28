@@ -340,8 +340,8 @@ def test_overview_lists_every_slot_without_starting_clis_for_empty_ones(
     application = AgentApplication(config)
     status, overview = signed(application, "GET", "/v1/accounts")
     assert status == 200
-    assert len(overview["slots"]) == 15
-    assert overview["defaults"] == {"claude": "a", "codex": "a", "agy": "a"}
+    assert len(overview["slots"]) == 20
+    assert overview["defaults"] == {"claude": "a", "codex": "a", "agy": "a", "colab": "a"}
     assert overview["allowlist_configured"] is False
     claude_a = slot_of(overview, "claude", "a")
     # The missing binary was never run: an empty slot is signed out without a CLI call.
@@ -366,7 +366,7 @@ def test_default_slot_is_written_for_the_shell_to_read(tmp_path: Path) -> None:
     application = AgentApplication(config)
     status, payload = signed(application, "PUT", "/v1/defaults/codex", {"slot": "c"})
     assert status == 200
-    assert payload["defaults"] == {"claude": "a", "codex": "c", "agy": "a"}
+    assert payload["defaults"] == {"claude": "a", "codex": "c", "agy": "a", "colab": "a"}
     agy_default = signed(application, "PUT", "/v1/defaults/agy", {"slot": "b"})[1]
     assert agy_default["defaults"]["agy"] == "b"
     assert config.default_path("codex").read_text(encoding="utf-8") == "c\n"

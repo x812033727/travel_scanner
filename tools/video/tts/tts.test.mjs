@@ -1063,6 +1063,17 @@ test("login pairs by default: it prints the code and link, never the token, and 
   assert.ok(polls.every((call) => JSON.parse(call.init.body).device_code === "d".repeat(43)));
 });
 
+test("login --colab asks the owner for Colab account credentials too", async () => {
+  const box = sandbox();
+  const server = pairingServer();
+  const { ctx, out } = capture({ root: box.root, env: {}, home: box.base, fetch: server.fetchImpl, sleep: async () => {} });
+  assert.equal(await main(["login", "--name", "雲端 session", "--colab"], ctx), EXIT.ok, out.stderr);
+  assert.match(out.stdout, /also asks for Colab account credentials/);
+  const start = server.calls.find((call) => call.url.endsWith("/api/video/pairings"));
+  assert.deepEqual(JSON.parse(start.init.body), { client_name: "雲端 session", colab: true });
+  assert.equal(readCredentials({ env: {}, home: box.base }).token, TOKEN);
+});
+
 test("a denied or expired pairing needs the owner and saves nothing", async () => {
   const box = sandbox();
   const denied = capture({ root: box.root, env: {}, home: box.base, fetch: pairingServer({ final: { status: "denied" } }).fetchImpl });

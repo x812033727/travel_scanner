@@ -11,6 +11,7 @@ from app.admin.router import router as admin_router
 from app.admin.router import runtime_router
 from app.admin.security_router import router as admin_security_router
 from app.admin.user_router import router as admin_user_router
+from app.admin_ai_accounts.router import colab_tool_router as colab_credentials_router
 from app.admin_ai_accounts.router import router as ai_accounts_router
 from app.ads.router import router as ads_router
 from app.affiliates.router import router as affiliates_router
@@ -209,6 +210,7 @@ app.include_router(admin_foods_router, prefix="/api/v1")
 app.include_router(line_router, prefix="/api/v1")
 app.include_router(video_tool_tokens_router, prefix="/api/v1")
 app.include_router(video_speech_router, prefix="/api/v1")
+app.include_router(colab_credentials_router, prefix="/api/v1")
 app.include_router(video_speech_align_router, prefix="/api/v1")
 app.include_router(video_reviews_router, prefix="/api/v1")
 app.include_router(admin_video_reviews_router, prefix="/api/v1")
