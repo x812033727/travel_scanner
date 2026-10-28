@@ -200,7 +200,7 @@ export async function mediaStatus(options) {
   return response.json();
 }
 
-/** Submit an image job: `{ slug, purpose, prompt, negative_prompt?, aspect?, references?, seed?, shot_id?, idempotency_key? }`. */
+/** Submit an image job: `{ slug, purpose, prompt, negative_prompt?, aspect?, references?, seed?, shot_id?, size?, image_model?, idempotency_key? }`. */
 export async function submitImage({ request, ...options }) {
   return postPaidJob(options, "images", request);
 }

@@ -15,7 +15,7 @@ from uuid import UUID
 
 from pydantic import BaseModel, ConfigDict, Field, field_validator, model_validator
 
-from app.video_automation.schemas import MediaOptionsView, MediaProvider
+from app.video_automation.schemas import MediaOptionsView, MediaProvider, image_model_problem
 from app.video_reviews.schemas import SHA256_PATTERN
 
 JobKind = Literal["image", "clip", "music"]
@@ -73,6 +73,17 @@ class ImageJobIn(_JobIn):
     shot_id: str | None = Field(default=None, pattern=SHOT_PATTERN, max_length=60)
     # 2K is refused for a model the catalog prices at 1K only.
     size: ImageSize | None = None
+    # The image model the video's own series.json names (docs/videos/SERIES.md 工具端): a video
+    # the site makes no series of draws with it instead of the settings' choice. An episode of a
+    # site series keeps its series row's model, whatever the request says.
+    image_model: str | None = Field(default=None, min_length=1, max_length=128)
+
+    @field_validator("image_model")
+    @classmethod
+    def _image_model(cls, value: str | None) -> str | None:
+        if value is not None and (problem := image_model_problem(value)):
+            raise ValueError(problem)
+        return value
 
 
 class ClipJobIn(_JobIn):

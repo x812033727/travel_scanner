@@ -194,6 +194,17 @@ def _series_image_model(row: VideoAutomationSettings, model_id: str) -> tuple[st
     )
 
 
+def _project_image_model(row: VideoAutomationSettings, model_id: str) -> tuple[str, MediaModel]:
+    """The model a video's own series.json names (``ImageJobIn.image_model``), for a video the
+    site makes no series of; chosen and priced exactly as a series' own model is."""
+    return _named_image_model(
+        row,
+        model_id,
+        f"影片自己指定的圖片模型 {model_id} 不能用；"
+        "請改 series.json 的 image_model，或拿掉它改用設定分頁的模型",
+    )
+
+
 def series_image_vendor(row: VideoAutomationSettings, model_id: str) -> str:
     """The vendor a picture is asked of when a series names ``model_id``, chosen exactly as
     ``submit_job`` chooses it (the settings' image vendor first, a retired model refused), so
@@ -346,7 +357,12 @@ async def submit_job(
         raise MediaJobFailed(503, "video_media_disabled", "配樂生成已關閉")
     # Only the pictures follow a series' own model; its clips and music are the settings'.
     series_image = await series_image_model(ctx.session, payload.slug) if kind == "image" else None
-    if kind == "image" and slides_on and series_image is None:
+    # A video the site makes no series of may name its own model (its series.json's
+    # ``image_model``, sent as ``ImageJobIn.image_model``); an episode's series row wins over it.
+    own_image = getattr(payload, "image_model", None) if kind == "image" else None
+    if kind == "image" and series_image is None and own_image:
+        vendor, model = _project_image_model(row, own_image)
+    elif kind == "image" and slides_on and series_image is None:
         vendor, model = _slides_image_model(row)
     else:
         vendor, model = _model(row, kind, series_image)
