@@ -1,0 +1,52 @@
+{
+  "slug": "2025-01-tai-nainai",
+  "title": "祖奶奶今年十八",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": {
+    "min": 90,
+    "max": 180,
+    "chapter_finale_min": 120
+  },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：顧家百年前的罪當眾定讞、沈記老字號重開、祠堂長明燈的代價揭開，沈月棠在全家飯桌上選擇變回老人；第 300 集最後一格，另一盞燈在顧家祠堂亮起，一個十八歲的少年睜眼，留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": {
+    "decided": null,
+    "suggested": "16:9",
+    "why": "照《種田娶妻打天下》的建議：每集照常上架、每篇章另剪合輯長片，Shorts 從中央裁 9:16。"
+  },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom，需要鉤子類型、主角走向與每集兩個爽點的留存規則）；每季的 season-NN.json 就是六份篇章細綱的來源。target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市家族劇：老宅、藥行、董事會、校園；主角是十八歲外貌但眼神與手勢是老人家，所有首格都帶參考圖。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md：前 3 秒鉤子畫面與第一句台詞，前 10 秒 4–8 個鏡頭，台詞一句 1–10 字，幾乎不用旁白，燒錄繁中字幕。",
+    "reuse": "固定場景先拍一組可重用的空景：沈家老宅大廳與祠堂、老藥櫃、沈記藥行門面、盛通大樓會議室、知遠的小藥局、小滿的高中。",
+    "voice": "國語；沈月棠的聲音要『少女嗓、老人家語氣』，第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json：影片約 12 點／秒，2K 首格約 23 點／張。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "家裡的文戲用一張首格＋緩推可省四到六成；先拍第一季第一篇章 10 集量留存再決定後面的量。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour；每集的 spectacle 與 glamour_shot 都要照它寫。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包（設定集、五季總綱、逐集細綱），還不是逐集分鏡劇本；比例、預算、聲音等站主決定。",
+  "reference": {
+    "work": "《十八歲太奶奶駕到，重整家族榮耀》（2025 紅果峰值熱度第 1，聽花島）",
+    "how": "只學套路：家族長輩以十八歲的樣貌回到敗落的家族、身分錯位被當成小輩、靪一身老本事與老人脈逐個打臉、團寵與身分揭露交替、家族榮耀一步步收回。人名、家族、產業、劇情、台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["祖奶奶今年十八", "老祖回家", "十八歲的鎮宅祖母"],
+  "title_decision": "未定；先用候選第一個《祖奶奶今年十八》，站主可改。"
+}
