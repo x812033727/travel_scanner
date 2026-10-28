@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 英文原文重錄2/2合成完成；15句全新，待新cohort／ASR／品質檢查，舊15flags非新版結果。0/8 accepted |
+| 1 | curio-s31 | curio-s31-v2 | plain2/2＋listener1合成完成，12句新文字／raw、200保留；待新cohort／ASR／品質。0/8 accepted |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,7 +34,15 @@
 
 ## 當前斷點
 
-最新 checkpoint（2026-10-28 10:22Z完成／10:24Z技術讀回）：唯一原文重錄第2輪46368／PID45424已於10:22:11.6039455Z **native0完成合成及新混音，plain2/2已達上限；新品質尚未檢查。** 官方15 requests／643 billable、156 request groups沿用；獨立凍結讀回全212 raw中目標15句全部new SHA、其餘197未變，12 stretched、原108份journal完整保留且active0，PID已退出／lease absent；source／EN／中文master與舊ASR state2／run15／binding均未改。stored fit150窗0 over、7窗≤1.15倍，cheng-date多0.1秒由後停頓吸收；physical fit replay仍待已審collector。新音軌SHA51438e52…8c906，Root decode native0、−14.10 LUFS／−1.95 dBTP／LRA5.10，只是技術驗證。**前輪15flags屬舊take，不能稱新版仍15fail；0/8外語驗收、shorten0／listener0。** 目前只準備新cohort，新的ASR交接／啟用／品質檢查均未執行，generic PASS不等於啟用；不再重錄第三輪原文。圖片US$1.578／6不變，完整包與S15未成。見[第2輪合成結果](dub-en-quality-retake2-result.json)。
+最新 checkpoint（2026-10-28 11:23Z完成／11:27Z稽核）：英文listener改口第1輪96080已於11:23:07.1918944Z **native0完成12句變更文字合成，plain2/2＋listener1完成；新品質仍待檢查。** v3措辭已逐句語意覆核並由官方caption merge套用，EN SHA e6e8e1c3…75ef7；僅12句文字／raw更新、其餘200與metadata保留，Chinese/source／voice/provider不變。官方12 requests／522 billable、159 request groups沿用；獨立actual稽核確認212 raw、153份前件、14 stretched、114歷史journal全保留active0、lease absent，舊ASR state2／run15／binding未改。實測fit150／0over、8窗≤1.15，cheng-date0.1秒由後停頓吸收；新軌a1814473…c729／46,583,753B，full decode native0／−14.1LUFS／LRA5.1／true peak−2.0dBFS，只是技術讀回。**原12flags對應舊take，不能稱新12fail；0/8 accepted、shorten0。** 現只準備新cohort，ASR handoff／新QA尚未執行；圖片預算不變，完整包與S15未成。見[listener1合成結果](dub-en-listener-reword1-result.json)。
+
+歷史第2輪後品質結果（11:01Z；12flags屬listener1改口前take）：37111已native1完成完整品質判定，非infra：**212＝159 exact＋14 Jev通過＋27 second解除＋12 flags，200句通過檢查。** 相較前15句，lz221／lz427／lz520已解除，下一步只針對actual current12準備listener第1輪與語意覆核，目前0套用、0合成；plain2/2已達上限，不再第3輪原文重錄。lz213／4ba7保存答案52B已獨立確認canonical正常沿用；末段CLI為13筆新primary／2次Jev／1保存答案沿用，不推整鏈付費call數。Runtime獨立PASS：新13＋有效舊cache26＝39筆second，Whisper native0／111.381秒、callback115.241秒，4CPU／nice19／int8／offline／無稿／單SSH close0並local reaped；state／run保留，lease absent、無holds，未證遠端scratch刪除。0/8外語驗收，圖片預算不變，完整包與S15未成。見[第2輪後完整品質結果](dub-en-retake2-check-complete.json)。
+
+歷史正常續檢1 dispatch／second-stage快照（37111現已完成）：4ba7／lz213保存答案的原始private checker native0／reused1 send0 fetch0及逐筆actual review已PASS。Root fresh352次原件SHA（已含212 raw）與111份journal後，開新slot的**唯一正常續檢37111執行中（caller51708／official18284，intent10:57:38.380Z、lease10:57:39.183Z），等待native與canonical實際消費驗證。** Root最新讀回fixed ASR state已含1511B的reservation.json，確認已進source-free second stage；native／runtime結果未出，pre-ASR-only continuation現在不可再用。成功closure／activation保持有效，既用slot／封存不重播，不啟動第二producer或第3輪原文重錄。plain2/2、0/8 accepted，新品質尚無結論；圖片預算不變，S15未始。見[正常續檢1收據](dub-en-retake2-check-resume1.json)。
+
+歷史首次check停止快照（10:51Z；保存答案現已覆核並另slot續作）：H2舊scope封存88967已native0，253副本＋11anchors＋18移動原件＋relocation共283檔、ledger6及前次275檔封存均經Root／獨立完整讀回；Root activation、preinstall native0與新binding排他安裝完成，新的212 cohort／physical fit已獨立通過。其後check23135（caller57404／child8156）於10:51:02.478Z **native1停止：primary完整保存答案的confirmed rename遭Windows EPERM，並非音質判決。** request4ba7faf0…fa5899的三檔442／1278／751B保留，已凍結141檔／212 raw／108歷史＋3actual＝111份journal，原始private checker與actual review待完成；不猜line或cache數。兩PID已退出、lease／新ASR state absent、bridge runs empty；closure／activation保持有效，只可覆核後開新正常continuation，不能重播舊slot／封存或再做第3輪原文重錄。plain2/2、shorten0／listener0、0/8 accepted；新品質未成，前15flags屬舊take，private條件式改口草案未套用。圖片US$1.578／6不變，完整包與S15未成。見[第2輪後續檢斷點](dub-en-retake2-check-dispatch.json)。
+
+歷史第2輪合成快照（10:22–10:24；後續handoff與check狀態僅指當時）：唯一原文重錄第2輪46368／PID45424已於10:22:11.6039455Z **native0完成合成及新混音，plain2/2已達上限；新品質尚未檢查。** 官方15 requests／643 billable、156 request groups沿用；獨立凍結讀回全212 raw中目標15句全部new SHA、其餘197未變，12 stretched、原108份journal完整保留且active0，PID已退出／lease absent；source／EN／中文master與舊ASR state2／run15／binding均未改。stored fit150窗0 over、7窗≤1.15倍，cheng-date多0.1秒由後停頓吸收；physical fit replay仍待已審collector。新音軌SHA51438e52…8c906，Root decode native0、−14.10 LUFS／−1.95 dBTP／LRA5.10，只是技術驗證。**前輪15flags屬舊take，不能稱新版仍15fail；0/8外語驗收、shorten0／listener0。** 目前只準備新cohort，新的ASR交接／啟用／品質檢查均未執行，generic PASS不等於啟用；不再重錄第三輪原文。圖片US$1.578／6不變，完整包與S15未成。見[第2輪合成結果](dub-en-quality-retake2-result.json)。
 
 歷史第1輪後品質結果（09:49Z；15flags對應重錄第2輪前take）：正常續檢25284已於09:49:16.779Z **native1完成完整品質判定，並非journal／ASR故障**：212／212＝157 exact＋14 Jev通過＋26 second解除＋15 flags，共197句通過檢查。212 current clip與source／翻譯綁定均核對；本段CLI僅記2筆新primary、2次Jev、1筆保存答案沿用，前兩中斷段沒有完整counters，不用29新take推付費call總數。v2a0751／2a4b的canonical消費已獨立PASS。獨立runtime稽核通過：新19筆完整ASR與有效舊cache22合計41筆second，Whisper native0／219.153秒、callback223.101秒，4CPU／nice19／int8／offline／無稿／單SSH close0與local reaped；lease absent、無holds／uncertain，COMPLETE/state/run保留，未宣稱遠端scratch刪除。**plain完成1/2，下一步只準備剩15句的有界原文重錄第2輪；shorten0／listener0、0/8外語驗收。** 既用slot不重播；下一輪新WAV需新cohort與已審ASR交接。圖片US$1.578／6不變，完整包及S15未成。見[第1輪後完整品質結果](dub-en-retake1-check-complete.json)。
 

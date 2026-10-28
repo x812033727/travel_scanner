@@ -1,0 +1,99 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "EN_RETAKE2_NORMAL_CONTINUATION1_DISPATCHED_AWAIT_NATIVE_EXIT",
+  "snapshot_at": "2026-10-28T10:57:39.183Z",
+  "previous_stopped_checkpoint": {
+    "file": "docs/videos/curio-s31-v2/dub-en-retake2-check-dispatch.json",
+    "sha256": "7be4a1cc5e8b92575219f2e789b3e6d77d5d908852326d2594113ead3aaa2d67"
+  },
+  "continuation": {
+    "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\continuation-en-retake2-primary1.json",
+    "sha256": "e68d2fddeb444641138bfb3dd6e4836baa7421d12c90d14ae494c8098f6f3b5f"
+  },
+  "request_sha256": "4ba7faf001eba80b71060a10a12cd845ce86193ea4218bdd4612bd1f81fa5899",
+  "line_id": "lz213",
+  "private_recovery": {
+    "checker_result": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-transcribe-recovery-prep\\runs\\recovery-e00f057f-fc3b-42f7-9d72-1bca85c7b866\\result.json",
+      "sha256": "6a78ef4a6768c201c91efae3625217116b2a99c4105106868382f39c761e3f0f"
+    },
+    "actual_request_review": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/en-transcribe-recovery-prep/actual-request-review-4ba7faf001eba80b.json",
+      "sha256": "6eea31d35d3cc91313ee2813bae7c3cf67caeacf1c309352fbb1d3ff7f4034d8"
+    },
+    "native_exit": 0,
+    "reused": 1,
+    "send_calls": 0,
+    "fetch_calls": 0,
+    "canonical_consumption_verified": false
+  },
+  "pre_dispatch": {
+    "scope": "Historical readiness immediately before this new slot; not current running state.",
+    "fresh_original_hash_checks": 352,
+    "raw212_included_in_352": true,
+    "journal_members": 111,
+    "historical_journal": 108,
+    "complete_active_saved_triple": 3,
+    "lease_absent": true,
+    "new_ASR_state_absent": true,
+    "legacy_runs_empty": true,
+    "freeze": {
+      "file": "C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/check-en-retake2-rename-failure-before/manifest.json",
+      "sha256": "1e212d08f2d970c8de10c3a99cc3d79f8791692c0cd989b9a76b0a7ddfa72df9"
+    }
+  },
+  "dispatch": {
+    "session": 37111,
+    "slot": "83424fd8-67a3-4721-b6dc-9f2b77e466d1",
+    "caller_pid": 51708,
+    "official_pid": 18284,
+    "intent_at": "2026-10-28T10:57:38.380Z",
+    "lease_acquired_at": "2026-10-28T10:57:39.183Z",
+    "intent": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\fixed-caller-en-retake2-continuations\\83424fd8-67a3-4721-b6dc-9f2b77e466d1\\intent.json",
+      "sha256": "1ec5957254849908d6bf6677c794f4cc39470cb80f20493c7e282103821e3f62"
+    },
+    "child_start": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\fixed-caller-en-retake2-continuations\\83424fd8-67a3-4721-b6dc-9f2b77e466d1\\child-start.json",
+      "sha256": "61d775213d92bc115e0672e53b5a2a9201d2ee78cfde1661700002f35ff67eb6"
+    },
+    "native_exit": null,
+    "mode": "--continue-check",
+    "force": false,
+    "io_extra_wait_cap_ms": 30000,
+    "second_opinion_timeout_ms": 1200000,
+    "second_opinion_source_free": true,
+    "second_opinion_script_basename": "bridge.mjs",
+    "current_second_stage_status": "not_asserted",
+    "automatic_retry": false
+  },
+  "retained_scope": {
+    "operation_sha256": "436cadb29307af41509c72d931d114942589718b02330616944f4703a6191213",
+    "catalog_sha256": "559279c4daf67735df77e55c4dad32e52a7d7d23dca33f63373237b049aa8f50",
+    "activation_sha256": "b8ded6fceedcf373c59317fd52f5e8239540818b159b386338c8c116d7eb3e13",
+    "successful_closure_and_activation_preserved": true,
+    "no_old_slot_or_closure_replay": true
+  },
+  "quality": {
+    "plain_rounds_completed": 2,
+    "plain_cap": 2,
+    "shorten_rounds": 0,
+    "listener_rounds": 0,
+    "new_quality_check_complete": false,
+    "current_new_flags_count": null,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "audio_approved": false,
+    "owner_listened": false
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Wait for this sole continuation native exit and actual canonical saved-answer consumption/current quality. No concurrent producer, slot replay, repeated closure or third unchanged-text plain retake."
+}
