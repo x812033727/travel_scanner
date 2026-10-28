@@ -1,13 +1,13 @@
 ---
 id: 2026-10-05-shot-plan-h3-body-official-i2va
 title: shot_plan.mjs H3 body follows the official I2VA structure
-status: open
+status: done
 priority: P3
 area: tools
-owner:
-claimed_at:
+owner: claude-fable-5.1
+claimed_at: 2026-10-28T06:49:39Z
 created_at: 2026-10-05T16:41:00Z
-completed_at:
+completed_at: 2026-10-28T06:58:11Z
 branch:
 depends_on:
   - 2026-10-05-delivery-promise-and-continuity-locks
@@ -32,29 +32,29 @@ owner of the script.
 
 ## Definition of done
 
-- [ ] `[Shot 1]` opens with an official style word (mapped from the look preset: `anime-2d` →
+- [x] `[Shot 1]` opens with an official style word (mapped from the look preset: `anime-2d` →
       `2D-animated`, `cinematic-3d` → `3D CG`, `ink-wash` → `watercolor` or the nearest, …) and an
       anchor sentence that cites `<Picture 1>` and keeps the first frame's composition, identities,
       costumes and props; the motion follows it. Today `WEB_KEEP` sits at the end and never names
       `<Picture 1>`.
-- [ ] Camera sentences use only the official speed words: `at slow speed` / `at fast speed`;
+- [x] Camera sentences use only the official speed words: `at slow speed` / `at fast speed`;
       a move that is neither slow nor fast carries no speed (`at a steady speed` is not in the
       official table, and "medium amplitude and normal speed are usually omitted").
-- [ ] A shot planned with an end frame writes the FL2VA alignment line (`How the reference
+- [x] A shot planned with an end frame writes the FL2VA alignment line (`How the reference
       pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second
       mark …; Picture 2 (from Shot 1) aligns with the S.SS-second mark …`, two decimals, the
       bought seconds) instead of the I2VA line.
-- [ ] The three fields are separated by a blank line, as every official example is (or the
+- [x] The three fields are separated by a blank line, as every official example is (or the
       pilot shows it makes no difference, written down).
-- [ ] `route-decisions.md` section six shows the new body; `tools/animation-preproduction.test.mjs`
+- [x] `route-decisions.md` section six shows the new body; `tools/animation-preproduction.test.mjs`
       pins the first line, the style word, the anchor sentence and the speed words.
 
 ## Steps
 
-- [ ] Read `model-misreads.md` section six and the official base guide once more; the pilot
+- [x] Read `model-misreads.md` section six and the official base guide once more; the pilot
       ticket `2026-10-04-paid-verification-hailuo-kling-web` decides the two unverified lines
       (`N/A` sound fields, the `no on-screen text` negation).
-- [ ] Change `webPrompt` and `webMove` in `shot_plan.mjs`, update the test and the reference.
+- [x] Change `webPrompt` and `webMove` in `shot_plan.mjs`, update the test and the reference.
 
 ## How to verify
 
@@ -87,3 +87,11 @@ read dates) adds to the list above, all out of that ticket's scope and belonging
   writes that form and is a worked example.
 - Plan seconds: `shot_plan.mjs` should not let an H3 shot be bought at 4 s (107 frames, under the
   124–362 trained range); 5 s is the floor, 6 s for on-screen speech or two beats.
+
+### 2026-10-28：做了什麼（claude-fable-5.1）
+
+- `webMove`：`locked` → `The camera holds a static shot`；速度詞只剩 `with small amplitude at slow speed`／`with large amplitude at fast speed`（fast／quick／whip／snap），不慢不快不寫；回傳多一個 `fast`。
+- `webPrompt`（H3）：`[Shot 1] <風格詞>. <錨句> <motion>. <運鏡句>. <look.motion>. One continuous shot.`；`h3StyleWord(look)` 由預設集名或 custom 的 style 字對官方表，對不到記 note；`h3Anchor(cast)` 點名 `<Picture 1>` 裡的人（拉丁名字才寫）；有 `end_frame` 且知道秒數（`webPrompt` 新的 `seconds` 選項，`planEpisode` 傳 `buy_s`）時第一行換成 `h3AlignLine(seconds)`；`WEB_KEEP` 只剩 Hailuo 2.3 與 Kling 用。三欄之間仍單一換行：2026-10-28 Colab 小樣三支這樣送都成，先不改。
+- 秒數：`HAILUO_MODELS.h3.seconds` 下限 `H3_MIN_SECONDS` 5；`on_screen_speech`（旁白不算）或 `two_beats`（then／after that／分號）時下限 `H3_TALK_SECONDS` 6，兩個旗標寫在 plan 的每鏡上；`twoBeats` 匯出，motion 有兩拍時正文記 note。
+- 修仙第 1 集實測：42 支從 169 秒變 238 秒（28 支 6 秒、14 支 5 秒）。
+- 沒做：風格詞對不到的 look 只記 note 不擋；`overall_soundscape` 仍 `N/A`（產線丟音軌）。
