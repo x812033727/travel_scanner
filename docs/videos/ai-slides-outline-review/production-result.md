@@ -1,3 +1,17 @@
+# 四語參考字幕27處閱讀速度修訂已交後台
+
+2026-10-28T00:59:13.242475+00:00。日／西／葡／印尼語27句保義修訂經語義獨審及正常sheet／merge／captions，原27項CPS提醒→九語manifest零問題，原JA8／ES、PT、ID17門檻。
+
+同pending final `a0e0a6bc-aca6-4182-adf1-00fa8176937e`／成片 `c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c` 保原38完整參照，新四SRT＋四VTT＋TXT共47；新九檔完整GET bytes／SHA／MIME／UTF-8驗。[Mokaair下載](https://mokaair.com/zh-TW/admin/videos?video=ai-slides-outline-review)、[manifest](receipts/caption-pacing-20261028/captions-manifest.json)、[實際收據](receipts/caption-pacing-20261028/index.json)。
+
+只屬已驗繁中旁白及official首章後5＋片尾21時序參考。未來25句仍超字數估計，完整列新增progress；未核准最終翻譯／配音或actual fit／meter／聽校。外語M4A／actualdubCC仍各0/8，無batch／server／整片核准。
+
+原28progress值與歷史品質結果保持。
+
+---
+
+以下舊日期全文保留；舊27提醒為歷史，當前以新增caption_pacing_reference_only為準。
+
 # 繁中完整節目M4A已交後台
 
 2026-10-27T23:35:56.818396+00:00。既有官方v4成片已另交繁中完整節目[M4A下載](https://mokaair.com/zh-TW/admin/videos?video=ai-slides-outline-review)，保留第一章後5秒片頭及21秒片尾；AAC／容器均629.610秒。輸出17283377 bytes／SHA `74a61024d1f235b225b2f4a8945571c0bca5a01c190ca8b3f114b1ef65601b6f`，來源成片 `c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c` 未改。

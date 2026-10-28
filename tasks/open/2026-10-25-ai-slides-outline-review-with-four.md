@@ -115,3 +115,12 @@ Root從既有official v4成片c387製作獨立繁中完整節目M4A，保留首�
 
 
 Root本輪必要檢查：test:docs-videos真exit0，236 pass／0 fail／0 skip（34310.084419ms）；check:tasks真exit0，2183files／151既有其他scope警告。實際stdout／stderr／exit在B/checks，真apply／handoff／checks只補新original_ZH_program_M4A，原27progress值不動。當前M4A／同final38與full2readback已closed，不重播；待八語checkedM4A／actual-dub CC／final核准與正式批次，未整片done。
+
+
+## 四語27處參考CC／待審47附件 — 2026-10-28T00:59:13.242475+00:00
+
+JA1／ES7／PT7／ID12保義修訂經獨審與正常sheet／merge／captions，CPS27→九語0，原JA8／ES、PT、ID17。原38refs／payload／QA／歷史保留，新四SRT＋四VTT＋TXT真完整GET驗共47；詳docs/videos/ai-slides-outline-review/receipts/caption-pacing-20261028/index.json。這是繁中official5＋21參考時序，未核准配音或最終翻譯；未來25字數估計超限句仍逐項列progress，actual fit／meter／聽校未完成。原28progress含QA11、兩12of13false、EN93、held4、failed／unknown／上限全留；ZHprogram依Root另核D。foreignM4A0／actualdubCC0，無batch／server／整片核准或done／移交；無merge／deploy／YouTube。
+
+本輪停止點：四語參考CC27處修訂與同pending final47附件/full9GET已交付；八外語checkedM4A／actual-dubCC／正常批次與遠端final核准尚未完成，未done或移交。正常release及status blocked兩個subprocess exit0 assertions均已通過；隨後Root observer錯把空owner/claimed_at期待為帶空格字形而tool exit1，原失敗與stdout未保存限制留ROOT-task-handoff，另只讀核對blocked／unclaimed，沒有重放任務命令。責任仍codex-ai-tech-news／本對話／同分支與PR1857。
+
+必要檢查：test:docs-videos exit0，236pass／0fail／0skip，38798.934473ms；check:tasks exit0，2183files／151既有其他scope警告。真stdout／stderr／exit留B/checks，apply／handoff／checks僅新增caption_pacing_reference_only，原28值全留。無背景producer，不重播closed製作／上傳／下載，不merge／deploy／YouTube。
