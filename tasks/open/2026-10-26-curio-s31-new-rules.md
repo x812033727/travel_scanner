@@ -16,7 +16,11 @@ scope:
 
 # Complete Curio S31 under the October 25 story rules
 
-## Current checkpoint — 2026-10-28T09:49:16Z
+## Current checkpoint — retake2 native0 at2026-10-28T10:22:11Z
+
+Second original-text retake46368/officialPID45424 completed native0 at10:22:11.6039455Z:15 requests/643 billable,156 request groups reused. Independent completion freeze1888407e…4e7d/readbackef22e7b9…c645e confirm15 target WAVs changed,197 untouched,212 raw/12 stretched,108 historical journal preserved/active0,PID exited/lease absent. Source/translation/Chinese master and old complete ASR state2/run15/binding are unchanged. Stored fit150/0over,7sped≤1.15 and cheng-date0.1s followingpause; physical replay awaits reviewed collector. New track51438e52…8c906 has decode0/-14.10LUFS/-1.95dBTP/LRA5.10, a technical check only. Plain2/2 cap reached, shorten0/listener0,0/8 accepted. New quality is pending; prior15 flags describe old takes, not15 new failures. New cohort is preparation-only; no new ASR handoff/activation/check yet, and generic PASS is not activation. No third unchanged-text retake, image budget unchanged, full package/S15 pending. See [retake2 result](../../docs/videos/curio-s31-v2/dub-en-quality-retake2-result.json).
+
+## Historical retake1 quality result — old takes before retake2
 
 Check25284 completed native1 as a full quality result:212=157 exact+14 Jev-cleared+26 second-cleared+15 flags (197 check-cleared), not another journal/ASR failure. All212 current clip bindings/source/EN translation are verified. Final-slot CLI counters are2 new primary/2 Jev/1 saved reuse only; predecessor interrupted logs have no full counters, so29 new takes do not establish whole-chain provider calls. v2a0751/2a4b canonical consumption independently PASS414ed971…b9eba. Runtime audit ad937e2b…c043b PASS:19 new actual second rows+22 unchanged valid cache=41, Whisper0/219.153s, callback223.101s,4CPU/nice19/int8/offline/no hints/single SSH close0+local reaped. Lease absent/no holds; state/run/COMPLETE retained, remote scratch deletion not proved. Plain1/2, shorten0/listener0,0/8 accepted. Next is preparation for bounded original-text plain retake2 on exact15 flags, with fresh quota/evidence and later new-cohort ASR handoff; no slot replay. Image budget unchanged; package/S15 pending. See [retake1 quality complete](../../docs/videos/curio-s31-v2/dub-en-retake1-check-complete.json).
 
