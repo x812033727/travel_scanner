@@ -16,7 +16,15 @@ scope:
 
 # Complete Curio S31 under the October 25 story rules
 
-## Current checkpoint — JA first synthesis stopped at2026-10-28T13:10:31Z
+## Current checkpoint — JA resume1 stopped at2026-10-28T13:27:47Z
+
+74740/official7608 stopped native1@13:27:47.602Z,new confirmed journal rename EPERM for92b8ccf3…ef486/.json.7608.tmp;not fit/quality. Stable native/log retained,current partialraw/cache/remaining scope wait Root freeze. Prior66d6/v2a0291 canonical consumption still awaits independent readback;log progress is not proof. Post-dispatch static review found inherited CIM path-separator predicate could miss backslash paths;no full independent recipePASS is claimed and this is not a proved EPERM cause. Root requires fresh normalized process guard before further production. Prior145/3058 including saved28→new144/3030 were plans,not actual/billed;fit/QAunknown. Preserve all slots,no212replay/fullredo/autoretry/manualpromotion/journalclear/reset/forget or competingproducer. ENunchecked1/8resolved,0/8accepted;JApartialhold,other6pending,budget/package/S15 unchanged. See [JA resume1 stop](../../docs/videos/curio-s31-v2/dub-ja-first-resume1-stop.json).
+
+## Historical JA normal resume1 dispatch — 2026-10-28T13:26:33Z
+
+66d6/v2a0291 saved synthesis response independently reviewed;original private checker reuse1/send0/fetch0,frozen201files with67 current raw/cache and120history+4actual=124journal. Root checked201 originals/206refs and real dryrun0/quota4,642,806,then dispatched sole normal continuation74740/official7608 at13:26:33.205Z,lease13:26:34.444Z. Plannedpending145/3058 includes saved28→new144/3030,not actual completed/billed. Log past savedline is not canonical consumption proof;await native/reconciliation/fit/quality. Grouped114/3492 estimate is not per-line count. No redo/force/automaticretry/oldslot or212replay/secondproducer. JA-ASR gap299b…a9f8/pins5bfb…c924 is future-only,no executor/cohort/activation;preserve ENcompleted state/run+fourclosures. ENunchecked resolved1/8,0/8accepted;JAactive,other6pending,budget/package/S15 unchanged. See [JA normal resume1](../../docs/videos/curio-s31-v2/dub-ja-first-resume1.json).
+
+## Historical JA first synthesis stop — 2026-10-28T13:10:31Z
 
 9813/official58696 stopped native1@13:10:31.3270782Z on confirmed speech-journal rename EPERM,not fit/quality. Exact request66d6efe4…dd36a/.json.58696.tmp is bound by stable native/log;Root reported PID gone and will freeze/reconcile partialcache/WAV/savedanswer and remaining exact scope. Planned212/4504 is not actual completed/billed/remaining;fit/QA unknown,initial partial synthesis is not a quality-retake round. Empty synthesis-only observer does not prove zero HTTP/charges. Preserve dispatch/originals;no212replay/fullredo/manualpromotion/journalclear/reset/forget or competingproducer. Only Root may choose a new normal continuation after exact saved-answer review. EN unchecked/skip1/8 resolved,0/8 accepted;JApartialhold,other6notstarted,budget/package/S15 unchanged. See [JA first stop](../../docs/videos/curio-s31-v2/dub-ja-first-stop.json).
 

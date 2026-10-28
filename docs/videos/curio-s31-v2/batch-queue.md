@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | EN unchecked／skip結案；JA首次9813部分合成EPERM停止待對帳，其餘6語未始。1/8嘗試已結案、0/8 accepted |
+| 1 | curio-s31 | curio-s31-v2 | EN unchecked／skip結案；JA續作1新EPERM停止待精確對帳，fit／QA未知。1/8嘗試已結案、0/8 accepted，其餘6語待做 |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,7 +34,11 @@
 
 ## 當前斷點
 
-最新 checkpoint（2026-10-28 13:10Z）：JA首次合成9813／official58696於13:10:31.3270782Z **native1停止，confirmed journal rename遭Windows EPERM，非fit／品質判決。** exact request66d6efe4…dd36a與.tmp .58696已由native／完整log固定；Root回報PID已退出，正核partial cache／WAV／保存答案與實際剩餘範圍。原212 requests／4,504僅離線計畫，不當實際完成／計費或剩餘量；實際fit／QA仍未知，初次部分合成不算品質重錄輪。空的synthesis observer不代表零HTTP／零費用。保留舊dispatch及所有原檔，不能重播212、full redo、手動升格／清journal或開第二producer；只待Root凍結與逐筆覆核後決定新正常continuation。**EN unchecked／skip已結案1/8、0/8 accepted；JA部分合成待對帳，其餘6語未始。** 圖片預算不變，完整包與S15未成。見[JA首次合成停止收據](dub-ja-first-stop.json)。
+最新 checkpoint（2026-10-28 13:27Z）：JA正常續作74740／official7608於13:27:47.602Z **native1停止，新request92b8ccf3…ef486的confirmed journal rename再遭Windows EPERM，非fit／品質結果。** native與完整log已固定，partial raw／cache／實際剩餘範圍待Root凍結，前筆66d6／v2a0291雖已越過日誌，canonical正常消費仍待獨立讀回，不先宣稱成功。另披露本slot recipe在dispatch後靜態審查發現CIM路徑分隔符predicate可漏掉反斜線；沒有完整獨立recipe PASS，不把它宣稱為EPERM成因。下一次製作前Root須以fresh normalized process guard與精確journal對帳守門。原145／3,058含saved28、新144／3,030均只是dispatch時計畫，實際完成／計費與fit／QA未知；保留原slot，不重播212／full redo／自動重試／手動升格或清journal。**EN unchecked結案1/8、0/8 accepted；JA部分合成停止，其餘6語待做。** 圖片預算不變，完整包與S15未成。見[JA續作1停止收據](dub-ja-first-resume1-stop.json)。
+
+歷史JA正常續作1 dispatch快照（13:26Z；74740現已停止待新對帳）：66d6／v2a0291的完整保存合成回覆已由原始private checker與獨立actual review通過（private reused1／send0／fetch0）；Root凍結201檔，確認67句raw／cache有效、120歷史＋4actual＝124份journal。Root fresh201原件與206refs、讀官方dry-run native0／ready quota4,642,806後，已開**唯一正常續作74740／official7608（dispatch13:26:33.205Z、lease13:26:34.444Z），等待native。** 待處理145句／3,058字元含保存答案28，故計畫新144請求／3,030；這些都不是實際完成／計費。雖log已越過v2a0291，canonical實際消費仍待native後核驗，fit／QA未知；dryrun分組114／3,492不當逐句量。沿原IO30秒、無redo／force／自動重試，不能重播舊slot／212或啟第二producer。JA-ASR僅唯讀差距方案，未啟用／建cohort，須保留EN完成state／run與四份closure。**EN unchecked結案1/8、0/8 accepted；JA執行中、其餘6語待做。** 圖片預算不變，完整包與S15未成。見[JA正常續作1](dub-ja-first-resume1.json)。
+
+歷史JA首次停止快照（13:10Z；已覆核保存答案另slot續作，canonical消費待驗）：JA首次合成9813／official58696於13:10:31.3270782Z **native1停止，confirmed journal rename遭Windows EPERM，非fit／品質判決。** exact request66d6efe4…dd36a與.tmp .58696已由native／完整log固定；Root回報PID已退出，正核partial cache／WAV／保存答案與實際剩餘範圍。原212 requests／4,504僅離線計畫，不當實際完成／計費或剩餘量；實際fit／QA仍未知，初次部分合成不算品質重錄輪。空的synthesis observer不代表零HTTP／零費用。保留舊dispatch及所有原檔，不能重播212、full redo、手動升格／清journal或開第二producer；只待Root凍結與逐筆覆核後決定新正常continuation。**EN unchecked／skip已結案1/8、0/8 accepted；JA部分合成待對帳，其餘6語未始。** 圖片預算不變，完整包與S15未成。見[JA首次合成停止收據](dub-ja-first-stop.json)。
 
 歷史JA首次合成dispatch快照（13:05Z；9813現已停止待對帳）：Root讀回JA fresh195項refs與英文skip證據、官方dry-run native0後，已開**唯一JA首次合成9813／official58696（dispatch13:05:20.657Z、lease13:05:21.576Z），等待native。** current JA212句有效／missing0，離線逐句計畫212 requests／4,504 billable；官方dry-run分組估計171／5,078不可當逐句實際量，monthly4,689,563只是ready快照。尚無實際合成總量、fit、品質或驗收結論；維持Gemini Sulafat／標準日語、原IOv2額外30秒與file-URL observer，無redo／force／自動重試，不為JA合成清理英文ASR state／run。**EN已unchecked／skip結案1/8、0/8 accepted；JA執行中、其餘6語未開始。** 下一heartbeat先等本slot native並核partial cache／WAV／journal，不能重播212或開第二producer；圖片預算不變，完整包與S15未成。見[JA首次合成dispatch](dub-ja-first-dispatch.json)。
 
