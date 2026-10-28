@@ -36,4 +36,6 @@ scope:
 
 ## Notes for the next person
 
+main 在 2026-10-28 合進 PR #1894 的 skill `minimax-h3-colab`（Colab GPU 跑開源 H3，雲端 session 用權杖配對驅動）。`production/colab/README.md` 現在列兩條路：A 用那個 skill 跑片段（`h3/manifest-pilot.json`，要先配對 `COLAB_CLI_TOKEN_JSON`、首格另外畫），B 筆記本打付費 API。站主要先說走哪條；小樣的三張首格兩條路都要先有。
+
 做法與坑在 `production/colab/README.md`。image-01 的 `subject_reference` 一次只收一張人像，兩人鏡的第二張臉是這條路線最大的風險；不行改 H3 參考生影片（不帶首格）手放。H3 有首格時不能帶參考圖（官方）。1026／1027 是內容被拒，先回報不換字繞。

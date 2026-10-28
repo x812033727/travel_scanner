@@ -1,6 +1,33 @@
-# Colab 路線：在 Google Colab 直接打 MiniMax API 做第 1 集
+# Colab 路線：第 1 集在 Google Colab 做 MiniMax H3
 
-站主 2026-10-27 定：不用海螺網頁、不用站上伺服器，在 Colab 用 MiniMax API 生 H3 影片。這條路線 `animation-production` 的 skill 列為「CLI／MCP 另選方案」，這裡是它的第一次實作。
+站主 2026-10-27 定：不用海螺網頁、不用站上伺服器，「用 Colab 生成 MiniMax H3 影片」。這句有兩種做法，repo 現在兩種都有，**片段建議走 A、首格走 B 或產線的 keyframes**：
+
+| | A. Colab 的 GPU 跑開源 H3（PR #1894 的 skill `minimax-h3-colab`） | B. 在 Colab 筆記本打 MiniMax 付費 API（本資料夾的筆記本） |
+| --- | --- | --- |
+| 模型 | ComfyUI 的 **Turbo LoRA 版 H3**（開源權重），不是 Hailuo 網頁或 API 的 H3，一致性要自己小樣 | MiniMax 官方 H3（跟海螺網頁同一個） |
+| 錢 | Colab 的 compute units（Google AI Pro 每月 200 CU，一支 12 秒約 1 CU，kocpc 的說法、本 repo 沒量過） | H3 2K 每秒 US$0.13：整集 42 支約 US$22、上限 US$44 |
+| 誰跑 | 這個雲端 session 可以直接跑：先一次性配對 Colab CLI 權杖、存成環境 secret `COLAB_CLI_TOKEN_JSON`，每個 session `bootstrap.sh` | 站主在 Colab 開筆記本跑，API key 放 Colab Secrets |
+| 輸出 | 1344×768、24 fps、4 秒變 4.46 秒；`assemble` 重編碼進 1080p，畫質沒驗 | 2K（2560×1440）或 768P |
+| 首格 | 要自己給：產線 `keyframes`（Gemini 圖，45 張約 US$6，有 judge）或 B 的 image-01（45 張 US$0.16，沒 judge） | 同一本筆記本的 image-01 |
+| 進產線 | `clips import --provider external --note "route=colab-h3 …"`，首格要是通過 judge 的關鍵影格才過第 0 格 PSNR；pilot 可手放 | 同左，`route=colab-minimax-api` |
+| 檔 | `h3/manifest.json`（42 支）、`h3/manifest-pilot.json`（s33–s35）、`h3/prompts/<id>.txt`（鎖定檔的正文原封不動） | `e001-jobs.json`、`xiuxian_e001_minimax.ipynb` |
+
+**A 的流程**（照 `.agents/skills/minimax-h3-colab/SKILL.md`）：
+
+```bash
+bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh            # 每個新 session；沒 secret 會說要先配對
+python3 .agents/skills/minimax-h3-colab/scripts/pair.py start         # 第一次：印網址，站主貼驗證碼；之後 export 存成 COLAB_CLI_TOKEN_JSON
+bash .agents/skills/minimax-h3-colab/scripts/h3.sh usage              # 抄餘額
+# 把三張首格放到 <workdir>/colab/first-frames/s33.png … 後：
+bash .agents/skills/minimax-h3-colab/scripts/h3.sh batch --manifest docs/videos/series-plans/xiuxian-jiangli/production/colab/h3/manifest-pilot.json --output-dir <workdir>/colab/out --progress <workdir>/colab/out/progress.json --timeout 10800
+```
+
+manifest 的 `reference_images` 與 `prompt_file` 是相對於 manifest 所在目錄的路徑；跑之前把首格複製進 `h3/first-frames/`（不進 git），或改成絕對路徑。
+
+---
+
+## B. 付費 API 筆記本（原本的做法，保留）
+
 
 ## 檔案
 
