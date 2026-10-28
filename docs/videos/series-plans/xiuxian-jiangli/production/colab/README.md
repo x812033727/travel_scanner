@@ -22,13 +22,13 @@
 ## 流程（照 `.agents/skills/minimax-h3-colab/SKILL.md`，只在這裡寫本集的路徑）
 
 ```bash
-# 0. 每個新 session：裝 CLI、抓上游、從 COLAB_CLI_TOKEN_JSON 還原權杖、驗一次
+# 0. 每個新 session：裝 CLI、抓上游、向站台拿 Colab 憑證（MOKAAIR_VIDEO_TOKEN）、驗一次
 bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh
 
-# 1. 第一次配對（站主貼驗證碼；之後 export 存成環境 secret COLAB_CLI_TOKEN_JSON）
-python3 .agents/skills/minimax-h3-colab/scripts/pair.py start
-python3 .agents/skills/minimax-h3-colab/scripts/pair.py code '4/…'
-python3 .agents/skills/minimax-h3-colab/scripts/pair.py export
+# 1. 配對走 PR #1896 的「跟後台配對」（站主 2026-10-28 定），不用 pair.py 的 OAuth：
+#    主機部署 #1896 後，站主在 /admin/ai-accounts 的「Google Colab」區登入 Google 帳號（用沒有 GCP 專案與帳單的帳號）
+node tools/video/cli.mjs login --colab --name "Claude 雲端 session"   # 印驗證碼與後台連結，站主在卡上允許
+#    工具把 mkv_ 權杖存進 ~/.mokaair/video-tool.json；站主存成環境 secret MOKAAIR_VIDEO_TOKEN 才留得住；COLAB_ACCOUNT_SLOT 選帳號 a–e
 
 # 2. 站上產線先出設定圖與關鍵影格（要站主過 look 與 storyboard 關卡）
 node tools/video/cli.mjs look --slug xiuxian-jiangli-e001 --dry-run && node tools/video/cli.mjs look --slug xiuxian-jiangli-e001
@@ -57,4 +57,5 @@ node tools/video/cli.mjs clips import --slug xiuxian-jiangli-e001 --shot s33 --f
 1. 開源 Turbo LoRA 版的畫質與一致性沒有本 repo 的實測；小樣就是在量這件事。
 2. `colab new`／`exec` 在這個雲端容器經代理走 WebSocket 還沒試過（cloud-pairing.md §4）；卡住先看 `~/.config/colab-cli/colab.log`。
 3. 輸出 1344×768，不是 1080p；放大畫質沒驗。
-4. 權杖帶 `cloud-platform` scope：用沒有 GCP 專案與帳單、只有 Google AI Pro／Ultra 的 Google 帳號配對。
+4. Google 帳號的 token 帶 `cloud-platform` scope，而且會交給配對的雲端 session：後台登入的帳號要是沒有 GCP 專案與帳單、只有 Google AI Pro／Ultra 的帳號。
+5. 配對前主機要先部署 #1896（migration 0142、`colab-credentials` 端點、`login --colab`）；沒部署就 `login --colab` 拿不到帶 Colab 旗標的權杖，`bootstrap.sh` 向站台要憑證會 403。
