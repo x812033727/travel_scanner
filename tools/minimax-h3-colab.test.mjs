@@ -375,7 +375,8 @@ test("check_manifest.py: a sound manifest passes; 4 seconds and a stretched firs
   writeFileSync(good, JSON.stringify({ jobs: [{ id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 5, width: 1312, height: 736, output_name: "s01-t1.mp4", prompt_sha256: sha }] }));
   const ok = run(PYTHON, ["-I", CHECK, good], env);
   assert.equal(ok.code, 0, ok.err + ok.out);
-  assert.match(ok.out, /0 error\(s\), 0 warning\(s\)/);
+  // Without ffprobe (CI's web-checks runner has none) the only warning is that the aspect ratio went unchecked.
+  assert.match(ok.out, hasFfprobe ? /0 error\(s\), 0 warning\(s\)/ : /ffprobe is not on PATH[\s\S]*0 error\(s\), 1 warning\(s\)/);
 
   const short = path.join(dir, "short.json");
   writeFileSync(short, JSON.stringify({ jobs: [{ id: "s01", inference_mode: "first_frame", reference_images: ["first-frames/s01.png"], prompt_file: "prompts/s01.txt", duration_seconds: 4, width: 1344, height: 768, output_name: "s01-t1.mp4" }] }));
