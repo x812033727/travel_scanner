@@ -1,0 +1,2779 @@
+{
+  "version": 3,
+  "route": "hailuo",
+  "plan": "hailuo:pro",
+  "hailuo_model": "h3",
+  "model": null,
+  "resolution": "2k",
+  "handle_s": 0.5,
+  "clip_takes": 2,
+  "expected_takes": {
+    "A": 1.2,
+    "B": 1.5,
+    "C": 2
+  },
+  "pilot": [
+    "s29",
+    "s30",
+    "s31"
+  ],
+  "production": false,
+  "web_assist": "off",
+  "negative": {
+    "text": "photograph, live action, real person, flat 2D anime, sketch, text, subtitles, watermark, logo, UI panel, phone screen text, readable signage, extra fingers, deformed hands, blood, gore, wounds, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "sha256": "e9de6b7dbf041ce9",
+    "entry": "只貼進網頁真的有的負面欄；沒有就不貼"
+  },
+  "hashes": {
+    "look": "4357c357644c09f6",
+    "visual": "7c5d112f6aa70011",
+    "speech": "d3a95b7585245ad1",
+    "script": "bac97b99df56ce3a",
+    "document": "ea91cddb9ebd4eb0"
+  },
+  "order": [
+    "s01",
+    "s02",
+    "s03",
+    "s04",
+    "s05",
+    "s06",
+    "s07",
+    "s08",
+    "s09",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22",
+    "s23",
+    "s24",
+    "s25",
+    "s26",
+    "s27",
+    "s28",
+    "s29",
+    "s30",
+    "s31",
+    "s32",
+    "s33",
+    "s34",
+    "s35",
+    "s36",
+    "s37",
+    "s38",
+    "s39",
+    "s40",
+    "s41",
+    "s42"
+  ],
+  "shots": {
+    "s01": {
+      "visual": "5bcf14572ef6dbc9",
+      "speech": "73ee13dacf1aa0b2",
+      "keyframe": "3e0b7a36078471ec",
+      "chapter": "雨夜",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [
+            "phone"
+          ],
+          "costume": [
+            "hood",
+            "rain hood"
+          ],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye reaches out and sets one fallen foil box upright inside the delivery box while rain hammers the road around him. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "7a2ec13897e2ec38b0d4dd52160cad30c319cb75abd17e23237bb6c2abe90d7f"
+      }
+    },
+    "s02": {
+      "visual": "8db6b5448b0acdbd",
+      "speech": "a19683489da178d3",
+      "keyframe": "033fadf1f40e6671",
+      "chapter": "雨夜",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01"
+        ],
+        "locks": {
+          "prop": [
+            "phone"
+          ],
+          "costume": [
+            "hood",
+            "rain hood"
+          ],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Rain streams down his face and he blinks slowly once without looking away from the phone. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "81a561bd9dff0262791a4c9c4c2078fd55965428b6fdd0e7d3e93d355bdbc2d5"
+      }
+    },
+    "s03": {
+      "visual": "753657ef83a2a0ec",
+      "speech": "c0d3c8b942246261",
+      "keyframe": "52fdade03ca5d606",
+      "chapter": "雨夜",
+      "setup": "C",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02"
+        ],
+        "locks": {
+          "prop": [
+            "phone"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "physics.fluid"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Rain drops strike the glowing screen and the puddle ripples around the phone. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "ff128794acc90af85d99ca47081adfbff8f29489160e793e70f81748b0904abc"
+      }
+    },
+    "s04": {
+      "visual": "18939afd603d3e57",
+      "speech": "7d0b40ecc77aa0a4",
+      "keyframe": "d4d2215b117dab46",
+      "chapter": "雨夜",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02",
+          "s03"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「……再跑一單。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes the lid of the box shut with his palm. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "195fda9b15aec386aed8e7baa3b705cf721c63a6502e7aa7ab859d21b4c563f6"
+      }
+    },
+    "s05": {
+      "visual": "7e87089da94bccac",
+      "speech": "efc01773a9357509",
+      "keyframe": "de53608e6c1b64bb",
+      "chapter": "雨夜",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02",
+          "s03",
+          "s04"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The headlights grow fast and flood the whole road white as Zhou Ye turns his head toward them. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "877c2d60e6a96bfafd26368d9e310ec9220c591152a8319c590dec705725c772"
+      }
+    },
+    "s06": {
+      "visual": "beb8d21697af99cc",
+      "speech": "106d3bbfeb5ba47d",
+      "keyframe": "bb8f700bfe0902f5",
+      "chapter": "雨夜",
+      "setup": "E",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02",
+          "s03",
+          "s04",
+          "s05"
+        ],
+        "locks": {
+          "prop": [
+            "phone"
+          ],
+          "costume": [
+            "hood",
+            "rain hood"
+          ],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] His eyes close slowly as the white glare fills the whole frame. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "4d16299d2f5add03aaee5f5fdce6669b844b8e8eec4a333205b32eec28a67cbb"
+      }
+    },
+    "s07": {
+      "visual": "ea733ac13ab9f7ff",
+      "speech": "59cffa21ab7439bb",
+      "keyframe": "9746cadb7032e467",
+      "chapter": "醒來",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] His eyes snap open and his chest rises with one sharp breath. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "7071f564441e3773b4048eb86ed6aa67ebb85f4b260730ba83b5da6d0bbca494"
+      }
+    },
+    "s08": {
+      "visual": "6805d1659450f5b3",
+      "speech": "da5bb17989eec92c",
+      "keyframe": "de1feda316cb4137",
+      "chapter": "醒來",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The fingers close slowly into a fist and open again. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "594527a8b27ba2328351f2f257ac136c3d89d7120126ae0303c5e6b1e3913ecc"
+      }
+    },
+    "s09": {
+      "visual": "4868f65821e99b15",
+      "speech": "9f9d338dcd6ec5c4",
+      "keyframe": "f06a129c9f5848d3",
+      "chapter": "醒來",
+      "setup": "C",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「十年前？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and looks slowly around the room. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "b334689f86958836b6a710cd5587cd52ef65f9507a423aaa01307d1f396af414"
+      }
+    },
+    "s10": {
+      "visual": "263a62b10468fb9e",
+      "speech": "dc48aa6e5363429b",
+      "keyframe": "ff343de34ce14312",
+      "chapter": "醒來",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08",
+          "s09"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou An speaks a short Mandarin line, 「哥，圖紙帶了沒？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and raps the door frame twice with his knuckles. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "6c8e7e464d78874a52198bbaf829a35630e42b1c3e4916264e82d1d48ec471d6"
+      }
+    },
+    "s11": {
+      "visual": "45266f92d175d03d",
+      "speech": "07063c1334848822",
+      "keyframe": "45ee32959caaeb53",
+      "chapter": "醒來",
+      "setup": "E",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08",
+          "s09",
+          "s10"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "reaction.micro"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] His eyes stay on the blueprints and his jaw slowly tightens. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "ba5d0efdd80b1b3640f5b76fd0e64db367ed293c3f4e2d9e71cf32a4c96053ab"
+      }
+    },
+    "s12": {
+      "visual": "a0dc43823647d621",
+      "speech": "e11eeea1db9e3c4d",
+      "keyframe": "b80b87e3ed01098d",
+      "chapter": "醒來",
+      "setup": "F",
+      "visual_kind": "still",
+      "lines": 1,
+      "source": null,
+      "buy_s": 0,
+      "promise": {
+        "visual_kind": "still",
+        "buy_s": 0,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08",
+          "s09",
+          "s10",
+          "s11"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 0,
+        "expected": 0,
+        "cap": 0,
+        "usd_fee": {
+          "one": 0,
+          "expected": 0,
+          "cap": 0
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": null
+    },
+    "s13": {
+      "visual": "314ff6ce1c97cbc6",
+      "speech": "379b91cf565660ef",
+      "keyframe": "a048621b8796dcdc",
+      "chapter": "醒來",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08",
+          "s09",
+          "s10",
+          "s11",
+          "s12"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「就是今天。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and presses his hand down harder on the roll. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "e7202dd918ce5c7a082e488a691bf23b10b19dbb6600723817e0947cddec5015"
+      }
+    },
+    "s14": {
+      "visual": "11017e1144927cfd",
+      "speech": "48ed97a220958f5f",
+      "keyframe": "0e3788303a014eec",
+      "chapter": "醒來",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08",
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The teal flicker on his face steadies into a constant glow and his pupils widen. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "0ae208bc87f6222bae7841a7df67e116be58f764275f43db2721e232fa71ebbb"
+      }
+    },
+    "s15": {
+      "visual": "d0112285ce115b51",
+      "speech": "69a0549029ebf7d9",
+      "keyframe": "211123e8f1507200",
+      "chapter": "醒來",
+      "setup": "H",
+      "visual_kind": "clip",
+      "lines": 2,
+      "source": null,
+      "buy_s": 5,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 5,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08",
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "physics.fluid"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 60,
+        "expected": 90,
+        "cap": 120,
+        "usd_fee": {
+          "one": 0.7332,
+          "expected": 1.0998,
+          "cap": 1.4664
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The teal reflection in his eyes brightens once and his eyes move left to right as if reading. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "c8fbf3b0d337037531621db9432c71a8265d505cd4606dcd98cbeaf06e992089"
+      }
+    },
+    "s16": {
+      "visual": "fe8a2a276694cece",
+      "speech": "200a1af3c7f1dd5e",
+      "keyframe": "52f8f6cc09c9b692",
+      "chapter": "醒來",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08",
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou An speaks a short Mandarin line, 「哥？你發什麼呆？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and waves one hand in front of him. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "19d828420439bc2885ac8bb430ba08f1ada23d1541aa0053e3b5dc6a8aa1d084"
+      }
+    },
+    "s17": {
+      "visual": "35fadee8ae75481a",
+      "speech": "ad768579244fe386",
+      "keyframe": "32e12a4f42fe1253",
+      "chapter": "醒來",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s07",
+          "s08",
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16"
+        ],
+        "locks": {
+          "prop": [
+            "bundle"
+          ],
+          "costume": [
+            "jacket"
+          ],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「等我五分鐘。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and shrugs the jacket on over one shoulder as he heads for the door. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "35dcdc36dc06c0b7bc74001daf4ab0114a937c226fa625cd879b97efe797aeef"
+      }
+    },
+    "s18": {
+      "visual": "28f7f10731c6208e",
+      "speech": "8356b63c4d8ee1c8",
+      "keyframe": "509ca01867dfad95",
+      "chapter": "醒來",
+      "setup": "I",
+      "visual_kind": "still",
+      "lines": 1,
+      "source": null,
+      "buy_s": 0,
+      "promise": {
+        "visual_kind": "still",
+        "buy_s": 0,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s17"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "jacket"
+          ],
+          "time_of_day": []
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 0,
+        "expected": 0,
+        "cap": 0,
+        "usd_fee": {
+          "one": 0,
+          "expected": 0,
+          "cap": 0
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": null
+    },
+    "s19": {
+      "visual": "62f678de82eaf302",
+      "speech": "72e455ec01748164",
+      "keyframe": "2d05d6e13f29377c",
+      "chapter": "車行",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood",
+            "boots",
+            "work boots"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Manager Wang speaks a short Mandarin line, 「柯老闆，簽這裡就好。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and taps the open folder with two fingers. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "de195c252f4d8123c2c732484a667a52e785a1f6c6c0a1c52f5f765d997f0cb7"
+      }
+    },
+    "s20": {
+      "visual": "47bdf8e0cbb45b02",
+      "speech": "aaa20b66ac7f5dcc",
+      "keyframe": "bde9d146bbfa6ad0",
+      "chapter": "車行",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Manager Wang speaks a short Mandarin line, 「碼頭倉放著也是放著。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and nods encouragingly toward Lao Ke. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "f81ffd817adcfe9a3c0c2f19aa96938f630557615e63d82ae70c606cc24cea93"
+      }
+    },
+    "s21": {
+      "visual": "a3d73c9b8d0d58ba",
+      "speech": "829bab8b6d728187",
+      "keyframe": "32820383bc8c09e7",
+      "chapter": "車行",
+      "setup": "C",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20"
+        ],
+        "locks": {
+          "prop": [
+            "pen"
+          ],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Lao Ke speaks a short Mandarin line, 「嗯。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his pen hand lowers a finger's width toward the page. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "a6e6b4b46c8ded22a673906fb19859cffcfb76649dcea27221e0d7b5c7bfc070"
+      }
+    },
+    "s22": {
+      "visual": "035f40f9764e7946",
+      "speech": "039f833f6ed3ac91",
+      "keyframe": "0a109af5eedc7996",
+      "chapter": "車行",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「等一下。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and steps forward to the counter beside Lao Ke. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "62ce244f8e88ccdc9cf96f3738c8ed111203b36f938ec32520394676643e6478"
+      }
+    },
+    "s23": {
+      "visual": "29d057868e213917",
+      "speech": "dc1b701ecd2c7f47",
+      "keyframe": "265297b479a04fed",
+      "chapter": "車行",
+      "setup": "E",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22"
+        ],
+        "locks": {
+          "prop": [
+            "contract",
+            "page",
+            "paper",
+            "cream paper",
+            "pen"
+          ],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The young hand presses flat on the page and the pen hand beside it does not move. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "64f5a043d15f0d1b16ade6242d773e2c78493b017af4e361ce549cd40c95cb49"
+      }
+    },
+    "s24": {
+      "visual": "288907b79973fcaf",
+      "speech": "8634dd9d69a71662",
+      "keyframe": "f67e255a3d47f7e2",
+      "chapter": "車行",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth",
+        "reaction.micro"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Manager Wang speaks a short Mandarin line, 「你誰啊？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his smile twitches at one corner. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "6d0513f17a88a7829c69699e1f68968e000e5ab46be25e6ea39ea285d7598d7c"
+      }
+    },
+    "s25": {
+      "visual": "6a6a136022e272ed",
+      "speech": "bd6385efd38848cc",
+      "keyframe": "9935f68f0c67576f",
+      "chapter": "車行",
+      "setup": "F",
+      "visual_kind": "still",
+      "lines": 1,
+      "source": null,
+      "buy_s": 0,
+      "promise": {
+        "visual_kind": "still",
+        "buy_s": 0,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24"
+        ],
+        "locks": {
+          "prop": [
+            "contract",
+            "page",
+            "paper",
+            "cream paper"
+          ],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 0,
+        "expected": 0,
+        "cap": 0,
+        "usd_fee": {
+          "one": 0,
+          "expected": 0,
+          "cap": 0
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": null
+    },
+    "s26": {
+      "visual": "a3f48f1ea47d3c85",
+      "speech": "05e1db7e4a6ba75e",
+      "keyframe": "f3fa0eb3847fe849",
+      "chapter": "車行",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「簽了，倉庫就不是你的。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and raises his gaze to Manager Wang. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "56f802e61c0e96a0195381a4839493da458b909b59cb509659d6f859f8bc5073"
+      }
+    },
+    "s27": {
+      "visual": "be7fdbe02e5778ea",
+      "speech": "df6a0782acc14d69",
+      "keyframe": "36b3b11911ad24aa",
+      "chapter": "車行",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26"
+        ],
+        "locks": {
+          "prop": [
+            "page",
+            "pen"
+          ],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Lao Ke speaks a short Mandarin line, 「……什麼？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his jaw works once. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "95f8376d5e530fc2de83a2cd7e7ed365fde572e6540db472c71e03538b7d841b"
+      }
+    },
+    "s28": {
+      "visual": "5f5f6db6bf54c4ac",
+      "speech": "be148e93f105dc53",
+      "keyframe": "23745defde1afac1",
+      "chapter": "車行",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Manager Wang speaks a short Mandarin line, 「小兄弟，別亂講。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and laughs with his hand waving. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "85855d4187ef956fadfbae5caabf46b2bdcb943beb4a279e709c16a1d26c3a19"
+      }
+    },
+    "s29": {
+      "visual": "b695f6ed5722c567",
+      "speech": "6391768d56d1e38c",
+      "keyframe": "6ffb8a43245f25a5",
+      "chapter": "車行",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood",
+            "boots",
+            "work boots"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "cast.three"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Lin Wanqiu rolls out from under the car on the creeper board and sits up. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "f727afc6f752bb0153bdaa0e8e5122c2453c3bffee140c0daad2ff22c22751ce"
+      }
+    },
+    "s30": {
+      "visual": "e3628f0a1801ba56",
+      "speech": "4e5efb09da95c2c9",
+      "keyframe": "c396d32f57874b8b",
+      "chapter": "車行",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29"
+        ],
+        "locks": {
+          "prop": [
+            "contract"
+          ],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Lin Wanqiu speaks a short Mandarin line, 「這合約，我留著。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and slides the folder off the counter toward herself with one flat hand. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "8e3148f0bc5f8b42ece8043f941476ea9fdec79ac0d4ba6ebe9e278ad91a3a01"
+      }
+    },
+    "s31": {
+      "visual": "b81eea9d2b9f9cb1",
+      "speech": "3b72e4b3c84c7daf",
+      "keyframe": "f1f1c6f371961f7b",
+      "chapter": "車行",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] She looks at Zhou Ye and the corner of her mouth lifts a little more. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "bad5cb5f035f0fa8e0842e190b47bf501b9a9773f464a63948f6903e0bc9f128"
+      }
+    },
+    "s32": {
+      "visual": "26462852225a720d",
+      "speech": "ce8f02d7665c5df4",
+      "keyframe": "17b1fdbeb192badf",
+      "chapter": "車行",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "cast.three"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Lao Ke speaks a short Mandarin line, 「小子。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and turns his head toward Zhou Ye. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "226b863547f1a6d7f182acedbeb270eb9f4ea9100ad838e717ef27628f82b25d"
+      }
+    },
+    "s33": {
+      "visual": "0899fa88b8d59f52",
+      "speech": "998998df4dc48c7b",
+      "keyframe": "f789c5a91848bb49",
+      "chapter": "車行",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31",
+          "s32"
+        ],
+        "locks": {
+          "prop": [
+            "pen"
+          ],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Lao Ke speaks a short Mandarin line, 「你怎麼看出來的？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his brows draw together. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "3eecc3231fa8a6735cba2626c0b5f535b3ed4aa4156e22c5b60c56a25c94a6d6"
+      }
+    },
+    "s34": {
+      "visual": "7978172621319e3e",
+      "speech": "47b578be305c644f",
+      "keyframe": "a865d74a966242f7",
+      "chapter": "車行",
+      "setup": "H",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31",
+          "s32",
+          "s33"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「隨便看的。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and gives a small shrug. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "54f34553c71bc421f04c68c2af860eb6f27d2f30eb4e4f642d224ecba3d190fc"
+      }
+    },
+    "s35": {
+      "visual": "9e02ff390f206360",
+      "speech": "2d0314fde48b7790",
+      "keyframe": "260976a22ebfb25f",
+      "chapter": "車行",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31",
+          "s32",
+          "s33",
+          "s34"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The teal glow blooms on his face and his eyes go still as if reading. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "2b7b8c8e358349cf63a9839b28d8bb7ea847c9fdff18ae86e4590931df690954"
+      }
+    },
+    "s36": {
+      "visual": "3baf6654c10d3aca",
+      "speech": "fbf29da2c092da6e",
+      "keyframe": "5b9321fecbc893ea",
+      "chapter": "車行",
+      "setup": "I",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s19",
+          "s20",
+          "s21",
+          "s22",
+          "s23",
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31",
+          "s32",
+          "s33",
+          "s34",
+          "s35"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] His eyes narrow and slide down to the lower right corner. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "07ab447eb4a92fd6fa711d7390a67e82091807de9ce50b2ab208a05b367af07b"
+      }
+    },
+    "s37": {
+      "visual": "6138be21298d76d2",
+      "speech": "24eecddff77f550d",
+      "keyframe": "0c4f1ba693454805",
+      "chapter": "二手",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "cast.three"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Lin Wanqiu and Lao Ke both turn their heads toward Zhou Ye while he stands motionless. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "ae123f3d8db538758ff34c28866095c1f6681ca72d9938fdbfeb13d11c433c1c"
+      }
+    },
+    "s38": {
+      "visual": "1aacba56c239690b",
+      "speech": "68bc029e424fe922",
+      "keyframe": "b382e3abf4646968",
+      "chapter": "二手",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s37"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「筆記？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and his brows draw together. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "620f74ae0c4c54a82b041959befcf54765b7cda87f5c22b7f949a4afb134664c"
+      }
+    },
+    "s39": {
+      "visual": "89a45b4e1fc9e28b",
+      "speech": "6878208ee0df4cff",
+      "keyframe": "3e67f35f4a5bc984",
+      "chapter": "二手",
+      "setup": "C",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s37",
+          "s38"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The smear of light drifts slowly across his pupils and his eyes track it. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "23e468e72681fc7d64806ae4d5e93d67e5b5b951c77c2494e243065aca0d5622"
+      }
+    },
+    "s40": {
+      "visual": "7a1ae0b0e6d44a6f",
+      "speech": "64daf5cd57d137e7",
+      "keyframe": "2e74fbf6bd2bb13c",
+      "chapter": "二手",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": []
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou An speaks a short Mandarin line, 「哥？」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and tilts his head. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "316dc63ede10455c065afc705b66892921ad9c026b80437dbcd0ce87fe684be7"
+      }
+    },
+    "s41": {
+      "visual": "7f697db233e60474",
+      "speech": "1c6fa4cb0972a397",
+      "keyframe": "4943e6039200587e",
+      "chapter": "二手",
+      "setup": "E",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s37",
+          "s38",
+          "s39"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Zhou Ye speaks a short Mandarin line, 「來了。」, lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and the last of the teal light leaves his face. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "cffa64405bb44295c0ea27231468d2558ab49c151c2e99f74d263ef687ca629d"
+      }
+    },
+    "s42": {
+      "visual": "9290fd31e1cf6ac8",
+      "speech": "9c5e146a80f85e8e",
+      "keyframe": "09ed0b42d212cdca",
+      "chapter": "二手",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s37",
+          "s38",
+          "s39",
+          "s41"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hood"
+          ],
+          "time_of_day": [
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] His jaw sets and his eyes stay on the lower right corner as the teal glow holds. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "44b712ae7fdc8f42a5dce80fd51496bd1a142a1f78f57c3bf8047bc8434c20d5"
+      }
+    }
+  },
+  "totals": {
+    "seconds": 89.15,
+    "clip_seconds": 157,
+    "utilisation": 0.5332,
+    "clip": {
+      "unit": "credits",
+      "one": 1884,
+      "expected": 2552.4,
+      "cap": 3768,
+      "usd_fee": {
+        "one": 23.0225,
+        "expected": 31.1903,
+        "cap": 46.045
+      }
+    },
+    "server_side_usd": {
+      "usd_one": 8.432,
+      "usd_cap": 22.832
+    },
+    "setups": [
+      {
+        "chapter": "雨夜",
+        "setups": 5,
+        "shots": 6
+      },
+      {
+        "chapter": "醒來",
+        "setups": 9,
+        "shots": 12
+      },
+      {
+        "chapter": "車行",
+        "setups": 9,
+        "shots": 18
+      },
+      {
+        "chapter": "二手",
+        "setups": 5,
+        "shots": 6
+      }
+    ],
+    "plan_share": {
+      "one": 0.4187,
+      "expected": 0.5672,
+      "cap": 0.8373
+    }
+  },
+  "batches": [
+    {
+      "name": "小樣",
+      "shots": [
+        "s29",
+        "s30",
+        "s31"
+      ],
+      "buys": [
+        "s29",
+        "s30",
+        "s31"
+      ]
+    },
+    {
+      "name": "第 1 場：雨夜",
+      "shots": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05",
+        "s06"
+      ],
+      "buys": [
+        "s03",
+        "s01",
+        "s02",
+        "s04",
+        "s05",
+        "s06"
+      ]
+    },
+    {
+      "name": "第 2 場：醒來",
+      "shots": [
+        "s07",
+        "s08",
+        "s09",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18"
+      ],
+      "buys": [
+        "s10",
+        "s11",
+        "s15",
+        "s16",
+        "s07",
+        "s08",
+        "s09",
+        "s13",
+        "s14",
+        "s17"
+      ]
+    },
+    {
+      "name": "第 3 場：車行",
+      "shots": [
+        "s19",
+        "s20",
+        "s21",
+        "s22",
+        "s23",
+        "s24",
+        "s25",
+        "s26",
+        "s27",
+        "s28",
+        "s32",
+        "s33",
+        "s34",
+        "s35",
+        "s36"
+      ],
+      "buys": [
+        "s20",
+        "s21",
+        "s24",
+        "s26",
+        "s27",
+        "s28",
+        "s32",
+        "s33",
+        "s34",
+        "s36",
+        "s19",
+        "s22",
+        "s23",
+        "s35"
+      ]
+    },
+    {
+      "name": "第 4 場：二手",
+      "shots": [
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41",
+        "s42"
+      ],
+      "buys": [
+        "s37",
+        "s38",
+        "s40",
+        "s41",
+        "s39",
+        "s42"
+      ]
+    }
+  ],
+  "counts": {
+    "shots": 42,
+    "clips": 39,
+    "stills": 3,
+    "cuts": 0,
+    "A": 19,
+    "B": 20,
+    "C": 0
+  },
+  "created_at": "2026-10-28T04:46:56.324Z",
+  "note": "站主 2026-10-28：都市重生系統、3D 國漫 CG、片段只在 Colab 跑開源 H3；鎖定檔由代理先寫，站主確認鎖定包後生效"
+}

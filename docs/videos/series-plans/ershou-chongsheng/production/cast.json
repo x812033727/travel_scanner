@@ -1,0 +1,165 @@
+{
+  "schema_version": 1,
+  "series": "ershou-chongsheng",
+  "purpose": "《我的重生系統是二手的》第一季共用的 look、角色外貌（英文，給圖與影片模型）與聲音。每集 video.json 從這裡照抄用到的角色，不要各自改寫，避免換臉。中文外貌提示詞在 chapter-01.md 到 chapter-06.md 的人物表。",
+  "owner_notes": [
+    "站主 2026-10-28 定：題材都市重生系統（避開古裝修仙，換一個觀眾群）；畫風 3D 國漫 CG，跟《種田娶妻打天下》10-16 之後、《修仙獎勵》一樣，look.style 原句沿用、只把場景字改成現代都市。",
+    "站主 2026-10-28 定：片段只用 Colab 的 GPU 跑開源 H3（skill minimax-h3-colab），不打 MiniMax 付費 API、不走海螺網頁、不用伺服器片段模型；設定圖與關鍵影格用產線的 look／keyframes。做法在 production/colab/README.md。",
+    "美女規則照《修仙》chapter-01.md 的顏值規則：濃顏、合身剪裁（工裝、西裝套裙、襯衫）、每集至少一個顏值鏡頭；不露、不濕身、鏡頭不停在身體部位。雨夜的戲只拍臉、雨衣與燈光，不寫 wet clothes。",
+    "說話的鏡頭一定會動嘴（種田 storyboard-rules.md）：台詞的 speaker 在畫面上時，data.motion 第一句寫他說這句話、嘴唇下巴隨每個音節動；說話鏡頭不用 still、不用 data.source；靜圖一集不超過 10%。",
+    "重啟面板不由圖片或影片模型生成：拍周野的主觀鏡頭或臉部近景，面板文字在剪接時疊上（褪色的青綠色、像舊手機系統更新畫面的半透明框，右下角永遠有一行小字「使用者：2／2」，見每集 overlays.json）。prompt 裡不要寫面板、文字、手機螢幕上的字或 UI；手機只寫 glowing screen。",
+    "全部架空：臨江市、速達、啟程資本、岸行科技、野路、晚秋車行都是虛構名；不寫真實公司、品牌、股票、新聞事件；畫面裡的招牌、合約、便利貼都是 blank 或背對鏡頭，要讀的字剪接時另外合成。",
+    "聲音是代理的建議，試片前照 voice-audition.md 試聽再定。",
+    "第 1 集前 6 鏡是三十二歲的周野（角色 id zhouye32，同一張臉老十年、雨衣加安全帽），之後都是二十二歲的 zhouye；兩個 id 都在這裡，別在 video.json 裡自己改年紀。"
+  ],
+  "look": {
+    "preset": "custom",
+    "style": "3D Chinese donghua CG animation in the style of high-end domestic 3D animated series and game cinematics, Unreal Engine 5 cinematic render: semi-realistic stylised characters with refined features and slightly enlarged expressive eyes, detailed skin with texture but not photographic, individually rendered hair strands, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field, glamorous flattering beauty lighting on faces; not a photograph, not live action",
+    "negative": "photograph, live action, real person, flat 2D anime, sketch, text, subtitles, watermark, logo, UI panel, phone screen text, readable signage, extra fingers, deformed hands, blood, gore, wounds, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "",
+    "candidates": 2
+  },
+  "system_panel": "褪色的青綠色、像舊手機系統更新畫面的半透明框，邊角有像素化的鋸齒；右下角永遠一行小字「使用者：2／2」；「複寫」落地時青綠色的碎格子散開；只在周野的主觀鏡頭裡出現。",
+  "characters": [
+    {
+      "id": "zhouye",
+      "name": "周野",
+      "appearance": "East Asian young man of twenty-two, lean and sharp-jawed with tired eyes that turn hard and bright when he thinks, straight brows, a small old scar through the left brow, short black hair with a stubborn cowlick at the crown, a faded navy work jacket with the sleeves pushed up over a grey t-shirt, worn dark jeans, a steel wristwatch with cracked glass on his left wrist, black canvas sneakers",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；外表二十二歲、心裡三十二歲的男人，聲音低、句子短、不急，看穿事情的時候會笑一下"
+      }
+    },
+    {
+      "id": "zhouye32",
+      "name": "周野（三十二歲）",
+      "appearance": "East Asian man of thirty-two, the same lean sharp-jawed face as the young Zhou Ye aged ten years: deeper lines under tired eyes, dark stubble, the same small old scar through the left brow, short black hair flattened by a scuffed black delivery helmet, a dark rain hood pulled over the helmet, a cheap black delivery raincoat, the same cracked steel wristwatch on his left wrist",
+      "voice": {
+        "provider": "gemini",
+        "name": "Orus",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十二歲、淋了一夜雨的男人，聲音比年輕時更低更啞，只有一句台詞"
+      }
+    },
+    {
+      "id": "zhouan",
+      "name": "周岸",
+      "appearance": "East Asian young man of twenty, handsome and polished: clean bright eyes, a quick easy smile that shows even teeth, neat black hair side-parted and swept back, a crisp white shirt open at the collar under a light grey blazer, slim black trousers, a small silver stud in the left ear, white leather sneakers, a slim laptop bag over one shoulder",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achird",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十歲的弟弟，聲音亮、說話快、永遠在笑，叫「哥」的時候特別親"
+      }
+    },
+    {
+      "id": "linwanqiu",
+      "name": "林晚秋",
+      "appearance": "East Asian young woman of twenty-three, clear-eyed practical beauty: straight brows, large bright double-lidded eyes, a small straight nose, a mouth that smiles with one corner first, fair skin with a smudge of grease on one cheekbone, black hair in a high ponytail tied with a blue elastic, a fitted dark-blue mechanic's jumpsuit with the top half tied around her waist over a fitted black crew-neck t-shirt, a red shop rag hanging from the hip pocket, work boots",
+      "voice": {
+        "provider": "gemini",
+        "name": "Autonoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十三歲的修車行女兒，聲音直、俐落、不客氣，笑起來很脆"
+      }
+    },
+    {
+      "id": "suning",
+      "name": "蘇寧",
+      "appearance": "East Asian young woman of twenty-six, cool composed beauty: long narrow brows, almond eyes with a steady level gaze, high cheekbones, pale matte lips, porcelain skin, black hair in a sleek chin-length bob tucked behind one ear, a fitted ivory-white tailored suit with a silver-grey silk blouse, a thin silver watch, a slim black document folder always under one arm, low heels",
+      "voice": {
+        "provider": "gemini",
+        "name": "Erinome",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十六歲的投資分析師，聲音平、冷、句子完整，說數字的時候最快"
+      }
+    },
+    {
+      "id": "guxin",
+      "name": "顧心",
+      "appearance": "East Asian woman of twenty-eight, striking confident beauty: arched brows, sharp fox-like eyes behind thin black-framed glasses, full lips in deep wine red, fair skin, long black hair in loose waves over one shoulder, a fitted wine-red blazer over a black high-necked top, a slim black pencil skirt to the knee, a thin gold pen clipped at the blazer pocket, black heels",
+      "voice": {
+        "provider": "gemini",
+        "name": "Vindemiatrix",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十八歲的專利律師，聲音低而慢、每個字都像在簽名，笑的時候帶一點鼻音"
+      }
+    },
+    {
+      "id": "xiaomi",
+      "name": "小米",
+      "appearance": "East Asian young woman of nineteen, small and quick with a round face, big lively eyes, a dusting of freckles across the nose, a wide grin with a chipped front tooth, short black hair held back with two yellow hair clips, a fluorescent yellow delivery raincoat worn open over a black hoodie, black leggings, a scuffed delivery helmet hanging from one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Callirrhoe",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；十九歲的外送騎手，聲音高、快、大聲，餓的時候特別大聲"
+      }
+    },
+    {
+      "id": "liangqi",
+      "name": "梁啟",
+      "appearance": "East Asian man of forty-five, lean and quiet with silver at the temples, narrow calm eyes, a thin straight mouth, a black fine-knit turtleneck under a charcoal suit jacket, no tie, a plain steel watch, hands always folded or resting flat on a table",
+      "voice": {
+        "provider": "gemini",
+        "name": "Sadaltager",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十五歲的投資人，聲音低、慢、從不提高，問問題像在下棋"
+      }
+    },
+    {
+      "id": "zhaoqiang",
+      "name": "趙強",
+      "appearance": "East Asian man of thirty-five, thickset with a round belly, small eyes, a loud mouth, a red delivery-station cap worn backwards, a tight red station polo shirt with a lanyard and badge, grey track pants, a phone always in his right hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Zubenelgenubi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的站長，大嗓門、拖長音、愛罰人"
+      }
+    },
+    {
+      "id": "laoke",
+      "name": "老柯",
+      "appearance": "East Asian man of fifty-five, broad and heavy-shouldered, grey stubble, deep-set tired eyes, a receding hairline, a grease-dark grey work apron over a faded checked shirt with rolled sleeves, thick forearms, a wrench always in one back pocket",
+      "voice": {
+        "provider": "gemini",
+        "name": "Rasalgethi",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十五歲的修車行老闆，聲音粗、慢、話少，罵人的時候反而小聲"
+      }
+    },
+    {
+      "id": "zhoumu",
+      "name": "周母",
+      "appearance": "East Asian woman of fifty, warm round face, laughing eyes, hair in a short practical perm with a few grey strands, a floral apron over a plain lilac blouse, sleeves rolled, flour on her forearms, a pair of long steel chopsticks in one hand",
+      "voice": {
+        "provider": "gemini",
+        "name": "Pulcherrima",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十歲的早餐店老闆娘，聲音亮、熱、一句話能講完三件事"
+      }
+    },
+    {
+      "id": "zhoufu",
+      "name": "周父",
+      "appearance": "East Asian man of fifty-six, tall and rangy with a weathered face, deep laugh lines, calm steady eyes, close-cropped grey hair, a faded olive-green truck driver's jacket over a white undershirt, a steel thermos hooked to his belt, strong scarred hands",
+      "voice": {
+        "provider": "gemini",
+        "name": "Alnilam",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；五十六歲的貨車司機，聲音低、慢、沙，一句話說完就不再說"
+      }
+    },
+    {
+      "id": "wangjingli",
+      "name": "王經理",
+      "appearance": "East Asian man of thirty-five, slick and thin, a shiny ill-fitting navy suit, hair gelled flat, a wide practised smile, a thin leather folder held against his chest, pointed brown shoes",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；三十五歲的地產仲介，聲音油、快、笑聲假"
+      }
+    },
+    {
+      "id": "mianban",
+      "name": "面板",
+      "appearance": "no on-screen body; only a voice and a faded teal panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Umbriel",
+        "style": "標準國語，咬字清楚；平穩、略帶雜訊的電子合成聲，像一支舊手機的語音助理，一字一頓，每句最後半個字有一點卡"
+      }
+    }
+  ]
+}
