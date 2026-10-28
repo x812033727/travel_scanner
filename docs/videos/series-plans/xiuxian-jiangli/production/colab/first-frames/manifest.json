@@ -1,0 +1,807 @@
+{
+ "episode": "xiuxian-jiangli-e001",
+ "look_hash": "689ef377d0a63280",
+ "note": "Colab first frames: Qwen-Image-Edit-2509 with the chosen character sheets (and a judged keyframe of the same set) as references; width/height are the H3 first-frame canvas. References are absolute paths in the work directory; ff_runner.py bundles them.",
+ "jobs": [
+  {
+   "id": "s01",
+   "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: wide shot, a dozen servants in ash-grey tunics standing in a ragged line on screen left facing right, Steward Song standing on the well's stone step on screen right with the ledger open in both hands, Jiang Xiaoman third in the line with his hands behind his back. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Wide shot, locked. Characters: 宋管事: East Asian man of forty-six, a steward: long narrow face, drooping figure-eight brows, small triangular eyes, two thin wispy rat-whisker moustache strands, grey-green wide-sleeved steward's robe, a ring of iron keys hanging from his belt, a wooden-covered ledger tucked under his left arm, cloth shoes; 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "宋管事",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/songguanshi/103.jpg"
+    },
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s01.png"
+  },
+  {
+   "id": "s02",
+   "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: medium close-up of Steward Song on screen right on the well step, the ledger held open against his chest, his triangular eyes lifting toward Jiang Xiaoman off screen left. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, slow push in. Characters: 宋管事: East Asian man of forty-six, a steward: long narrow face, drooping figure-eight brows, small triangular eyes, two thin wispy rat-whisker moustache strands, grey-green wide-sleeved steward's robe, a ring of iron keys hanging from his belt, a wooden-covered ledger tucked under his left arm, cloth shoes",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "宋管事",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/songguanshi/103.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s02.png"
+  },
+  {
+   "id": "s03",
+   "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: insert of the open ledger in Steward Song's hands, a wooden-covered book with columns of blurred ink strokes with no legible writing, his bony forefinger hovering above the first column; Steward Song speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the ledger page, locked",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "style",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s03.png"
+  },
+  {
+   "id": "s04",
+   "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: close-up of Jiang Xiaoman standing in the line on screen left, his face half turned toward screen right, a sly easy look that has not yet understood, morning light on his cheek; Steward Song speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s04.png"
+  },
+  {
+   "id": "s05",
+   "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: medium shot of the servants' line from the front, Jiang Xiaoman in the middle, the servants on both sides of him turning their heads to stare at him, the well step with Steward Song blurred far on screen right. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s05.png"
+  },
+  {
+   "id": "s06",
+   "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: medium close-up of Steward Song on screen right, the ledger now closed under his arm, looking down his nose toward Jiang off screen left, the ring of iron keys at his belt catching the light. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, locked. Characters: 宋管事: East Asian man of forty-six, a steward: long narrow face, drooping figure-eight brows, small triangular eyes, two thin wispy rat-whisker moustache strands, grey-green wide-sleeved steward's robe, a ring of iron keys hanging from his belt, a wooden-covered ledger tucked under his left arm, cloth shoes",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "宋管事",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/songguanshi/103.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s06.png"
+  },
+  {
+   "id": "s07",
+   "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: wide shot of the yard, the servants' line breaking up and drifting away toward the huts, leaving Jiang Xiaoman standing alone in the middle of the packed earth on screen left, Steward Song stepping down from the well step on screen right with the ledger under his arm. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Wide shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals; 宋管事: East Asian man of forty-six, a steward: long narrow face, drooping figure-eight brows, small triangular eyes, two thin wispy rat-whisker moustache strands, grey-green wide-sleeved steward's robe, a ring of iron keys hanging from his belt, a wooden-covered ledger tucked under his left arm, cloth shoes",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "character",
+     "name": "宋管事",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/songguanshi/103.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s07.png"
+  },
+  {
+   "id": "s08",
+   "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: insert at Jiang Xiaoman's waist, his right hand closing around the handle of the wooden ladle tucked in his rope belt, ash-grey tunic, morning light from the right. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the ladle at his belt, locked",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "style",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s08.png"
+  },
+  {
+   "id": "s09",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut, Jiang Xiaoman squatting in front of the stove on screen left with his back half to camera, tearing a page from the tattered book with the blank dark cover, the stove mouth glowing on screen right, the cracked bowl on the low table holding a small handful of coarse grey rice. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Wide shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s09.png"
+  },
+  {
+   "id": "s10",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the tattered book with a blank dark cover lying open on the brick stove edge, its yellowed pages blank with only faint faded stains and no legible writing, one torn page already half inside the glowing stove mouth on screen right with its edge curling and blackening. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the book and the stove mouth, slow push in",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "style",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s10.png"
+  },
+  {
+   "id": "s11",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Jiang Xiaoman's face on screen left lit orange from below by the stove, a smear of soot on one cheek, his eyes on the handful of grey rice in the cracked bowl held in his left hand at the bottom of frame. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, slow push in. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s11.png"
+  },
+  {
+   "id": "s12",
+   "prompt": "Outside the servants' yard at night: the yard's low mud-brick wall and open wooden gate on screen left, a stone path, one oil lamp hanging by the gate, cold blue moonlight and mist: wide shot of the yard gate at night, Jiang Xiaoman stepping out through the open gate on screen left carrying an empty wooden bucket, a figure in a moon-white robe slumped against the mud-brick wall on screen right under the oil lamp, face hidden, one white sleeve torn and scorched at the cuff. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Wide shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals; 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s12.png"
+  },
+  {
+   "id": "s13",
+   "prompt": "Outside the servants' yard at night: the yard's low mud-brick wall and open wooden gate on screen left, a stone path, one oil lamp hanging by the gate, cold blue moonlight and mist: close-up of Shen Zhaoxue's face on screen right, eyes closed, her porcelain skin gone translucent white, the white jade hairpin catching the lamp light, the torn scorched cuff of her moon-white sleeve at the bottom of frame; Jiang Xiaoman speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, slow push in. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s13.png"
+  },
+  {
+   "id": "s14",
+   "prompt": "Outside the servants' yard at night: the yard's low mud-brick wall and open wooden gate on screen left, a stone path, one oil lamp hanging by the gate, cold blue moonlight and mist: medium close-up of Shen Zhaoxue slumped against the mud-brick wall on screen right, her eyes half open and fixed on Jiang off screen left, one hand pressed flat against the wall, the longsword still sheathed on her back. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, locked. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s14.png"
+  },
+  {
+   "id": "s15",
+   "prompt": "Outside the servants' yard at night: the yard's low mud-brick wall and open wooden gate on screen left, a stone path, one oil lamp hanging by the gate, cold blue moonlight and mist: two-shot at the gate, Jiang Xiaoman crouching on screen left with one arm held out under Shen Zhaoxue's elbow, Shen Zhaoxue on screen right with one hand on the wall, the oil lamp above them, the open gate behind Jiang. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Two-shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals; 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s15.png"
+  },
+  {
+   "id": "s16",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut, Shen Zhaoxue seated on the straw beside the stove on screen right with her back against the wall and her sword laid across her knees, Jiang Xiaoman kneeling on screen left holding the cracked bowl of plain cooked grey rice out toward her with both hands, the stove glowing between them. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Wide shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals; 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s16.png"
+  },
+  {
+   "id": "s17",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue on screen right, firelight on her pale face, her eyes dropping to the cracked bowl held out at the bottom of frame and then lifting to Jiang off screen left. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, locked. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s17.png"
+  },
+  {
+   "id": "s18",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Jiang Xiaoman kneeling on screen left, firelight on his sooty cheek, a wide crooked grin, his free hand patting his own stomach. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s18.png"
+  },
+  {
+   "id": "s19",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert over the low table of Jiang Xiaoman's sooty hands holding the cracked bowl of grey rice from screen left, Shen Zhaoxue's slender pale hand with the torn moon-white cuff reaching in from screen right, firelight on the rim of the bowl. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the bowl changing hands, slow push in",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "style",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s19.png"
+  },
+  {
+   "id": "s20",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Shen Zhaoxue on screen right seated against the wall, the cracked bowl lowered to her lap with the chopsticks resting across its rim, one grain of grey rice at the corner of her mouth, firelight on her face. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, slow push in. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s20.png"
+  },
+  {
+   "id": "s21",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Jiang Xiaoman kneeling on screen left, watching her eat, his hand rubbing the back of his neck, the stove glow on the right edge of frame. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s21.png"
+  },
+  {
+   "id": "s22",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue's face on screen right, her cool gaze lifting toward Jiang Xiaoman off screen left, firelight along her cheek and on the white jade hairpin. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, locked. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s22.png"
+  },
+  {
+   "id": "s23",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Jiang Xiaoman kneeling on screen left, sitting up straighter, firelight on his sooty cheek, his sly grin gone shy. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s23.png"
+  },
+  {
+   "id": "s24",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the tattered book lying on the stove edge, Jiang Xiaoman's sooty right hand coming down to grab it for the fire, the stove mouth glowing on screen right. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the book under his hand, locked",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s24.png"
+  },
+  {
+   "id": "s25",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Jiang Xiaoman's face on screen left lit from below by a blue-gold glow instead of firelight, eyes wide, his right hand jerking up into frame with the fingers spread. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s25.png"
+  },
+  {
+   "id": "s26",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut, the tattered book lying open on the stove top in the middle, its pages turning by themselves and shedding rising strokes of blue-gold light that are not legible writing, Jiang Xiaoman backed against the low table on screen left, Shen Zhaoxue half risen from the straw on screen right with the bowl still in her hand; the voice of the Xianlu speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Wide shot, slow push in. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals; 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    },
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s26.png"
+  },
+  {
+   "id": "s27",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue's face on screen right lit blue-gold from the left, the cracked bowl against her chest, her phoenix eyes narrowed against the blue-gold light coming from the left. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, locked. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    },
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s27.png"
+  },
+  {
+   "id": "s28",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: low insert of the brick stove top, the open book glowing blue-gold at the bottom of frame, a heavy black iron pot with a domed lid and a small brass valve knob on top descending out of the column of light above the stove; the voice of the Xianlu speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the stove top, low angle, locked",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s28.png"
+  },
+  {
+   "id": "s29",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Jiang Xiaoman on screen left staring at the black iron pot on the stove on screen right, the wooden ladle in his right hand extended toward the pot's lid, firelight back to orange. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s29.png"
+  },
+  {
+   "id": "s30",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Jiang Xiaoman's face on screen left turned down toward the stove at the right edge of frame, deadpan, firelight on his sooty cheek. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s30.png"
+  },
+  {
+   "id": "s31",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the tattered book lying open and dark on the stove top, its blank pages dim and unlit, one sooty fingertip resting on the page from screen left; Jiang Xiaoman speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the book on the stove, slow push in",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s31.png"
+  },
+  {
+   "id": "s32",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium shot of Jiang Xiaoman standing at the stove on screen left, the black iron pot with its lid off on screen right, a small cloth bag of coarse grey rice tipped in his hands over the pot's mouth. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s32.png"
+  },
+  {
+   "id": "s33",
+   "prompt": "Inside Jiang Xiaoman's hut at night, the brick stove in the foreground with orange firelight from its mouth, the cloth-patched window and the straw stack soft and dark behind: extreme close-up insert of the small brass valve knob on top of the domed black iron lid, firelight glinting on the brass, a first thin thread of steam at its base, the hut interior blurred behind it. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the valve knob, locked",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s33.png"
+  },
+  {
+   "id": "s34",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut filling with white steam, Jiang Xiaoman on screen left lifting the domed lid off the pot with a rag, Shen Zhaoxue on screen right waving the steam away from her face with her torn sleeve, the stove between them. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Wide shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals; 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    },
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s34.png"
+  },
+  {
+   "id": "s35",
+   "prompt": "Inside Jiang Xiaoman's hut at night, the brick stove with orange firelight, the straw stack and the tattered book with a completely blank dark cover soft in the background: insert of the open black iron wok full of glistening cooked rice, a wooden ladle whose handle enters from the right edge of frame lifts a heap of rice toward a cracked bowl resting on the brick edge of the stove at the left, no hands or people in frame, faint golden motes rising with the steam. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the ladle in the pot, locked",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "set",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s35.png"
+  },
+  {
+   "id": "s36",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Shen Zhaoxue on screen right seated against the wall, the cracked bowl of glistening rice held just below her chin, her mouth closed, faint golden motes in the steam; Jiang Xiaoman speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium close-up, locked. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s36.png"
+  },
+  {
+   "id": "s37",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue's face on screen right in firelight, a faint flush of colour returning to her translucent cheeks, her pale lips regaining their pink, the white jade hairpin gleaming. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, slow push in. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s37.png"
+  },
+  {
+   "id": "s38",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert over the low table of the cracked bowl, scraped empty, being slid across the wood from screen right toward Jiang Xiaoman's sooty hand resting at screen left, the chopsticks laid neatly across the rim; Shen Zhaoxue speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the bowl on the table, locked",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "style",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s38.png"
+  },
+  {
+   "id": "s39",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut, Jiang Xiaoman kneeling at the low table on screen left with the empty cracked bowl against his knuckles, Shen Zhaoxue seated against the wall on screen right with colour back in her face, the black iron pot steaming on the stove between them; the voice of the Xianlu speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Wide shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals; 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s39.png"
+  },
+  {
+   "id": "s40",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Jiang Xiaoman's face on screen left, firelight in his eyes, a grin starting at one corner of his mouth, the black iron pot blurred on screen right. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, slow push in. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s40.png"
+  },
+  {
+   "id": "s41",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the brass valve knob on the domed iron lid, steam gathering at its base, firelight on the metal. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Insert of the valve knob, locked",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "style",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s41.png"
+  },
+  {
+   "id": "s42",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium shot of Jiang Xiaoman leaping back from the stove on screen left, a low wooden stool toppling behind him, Shen Zhaoxue on screen right already up on one knee with her sheathed sword across her knees. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Medium shot, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals; 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    },
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s42.png"
+  },
+  {
+   "id": "s43",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of the tattered book lying open on the stove top beside the pot, its pages flipping by themselves and then stopping, one short line of small blue-gold strokes of light glowing at the bottom of the page, not legible writing; the voice of the Xianlu speaks off screen. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, slow push in",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "style",
+     "name": "s34",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/keyframes/s34-2.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s43.png"
+  },
+  {
+   "id": "s44",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: extreme close-up of Jiang Xiaoman's eyes and brows on screen left, blue-gold light from the book reflected in his pupils, the soot smear on his cheek. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Extreme close-up, locked. Characters: 江小滿: East Asian man of twenty-two, handsome young adult: thick brows, warm double-lidded eyes with a sly glint, straight nose, easy crooked grin, lean build, black hair in a messy topknot with a grey cloth strip, faded ash-grey servant's tunic with long sleeves rolled to the elbows, grey trousers, rope belt with one wooden ladle, straw sandals",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "江小滿",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/jiangxiaoman/002.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s44.png"
+  },
+  {
+   "id": "s45",
+   "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue on screen right, the blue-gold glow from the book on the left side of her face, her eyes fixed on the book off screen left, her right hand still on her sword hilt at the bottom of frame. Style: Chinese 3D donghua CG animation, like a high-end domestic 3D animated series or a game cinematic, Unreal Engine 5 film-grade render: semi-realistic stylised adults with refined features and slightly enlarged bright eyes, finely textured skin that is not a photograph, every hair strand distinct, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field; not a photo, not live action. Camera: Close-up, locked. Characters: 沈照雪: East Asian woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, porcelain skin, tall slender figure with a slim waist, black hair in a tight updo held by one white jade hairpin, fitted moon-white sword robe with long narrow sleeves to the wrist and a silver sash, white boots, plain-sheathed longsword on her back",
+   "negative": "chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes",
+   "references": [
+    {
+     "role": "character",
+     "name": "沈照雪",
+     "file": "/tmp/claude-0/-home-user-travel-scanner/533f898b-4f68-5035-9a71-924f6d0a8be0/scratchpad/workdir/xiuxian-jiangli-e001/characters/shenzhaoxue/001.jpg"
+    }
+   ],
+   "seed": 1,
+   "width": 1312,
+   "height": 736,
+   "output_name": "s45.png"
+  }
+ ]
+}
