@@ -1,8 +1,8 @@
 # S31 v2 音訊檢查進度
 
-狀態：**EN原文retake1第五次嘗試仍429／native4；212 raw未變、plain0/2、無producer。最早07:27Z（台北15:27）fresh核對；原29flags與舊take保留，0/8 accepted**。
+狀態：**6句新take保存，第7句saved answer恢復已獨立覆核；待fresh核對後只續作剩餘23句。plain0/2、0/8 accepted**。
 
-最新 checkpoint（2026-10-27）：冷卻後的獨立續作 `dub-en-quality-retake1-after-busy4`（59941／PID37224）於23:26:19.0294417Z native4結束，仍是5次429 `video_speech_upstream_busy`。**獨立對帳及Root讀回確認212 raw未變（29目標／183其他皆0 changed），102項來源／mix／fit／timeline／cache／check／approval／state與82份journal全SHA保留，active／uncertain 0、PID已退出、無lease。plain仍0/2，0/8配音接受。** 最早 **2026-10-28T07:27:00Z（台北10/28 15:27）** 才可重新核對，這次延長至至少480分鐘；此前只讀觀察，不重播任何舊slot。23:24:11Z官方quota快照為5,157,716，涵蓋29 requests／1,251字元；現有錯誤未保留供應商細節，不能區分暫時壅塞與每日額度，也無usage收據可宣稱零費用。下次須fresh quota／來源／lease／journal與實際剩餘句子。見[第五次限流對帳](dub-en-quality-retake1-provider-busy5.json)；五次原始紀錄完整保留。完整包尚未完成，S15尚未開始。
+最新 checkpoint（2026-10-28）：冷卻後的 `dub-en-quality-retake1-after-busy5`（session75617／PID20616）於07:51:15.8133662Z native1結束；本次已成功取得新語音回覆，停止原因是保存語音回覆的 confirmed temporary journal 更名 EPERM。已核對212 raw，其中目標29句有6句新take、其他183句未變；82份歷史journal與本筆四檔全部保存。請求076678…63e3精確對應lz311p2；私有SPEECH恢復測試與獨立覆核通過，reused1/send0/fetch0，尚未在canonical實際沿用。**續作只帶剩餘23句（全付費估1013字元；保存答案32沿用後，其餘22句最多981），不可重播原29句。** Root正準備fresh quota／來源／journal／lease核對後的唯一正常續作。原fit/mix/check仍屬舊take，不是新錄音通過；plain完成0/2、0/8外語接受，ASR handoff與S15未開始。見[部分重錄與保存答案](dub-en-quality-retake1-partial-journal.json)。
 
 窄診斷：[私有 final-diagnosis.md](C:/Users/x8120/mokaair-work/curio-s31-v2-preflight/rename-native-diagnostic-20261027/final-diagnosis.md)，SHA256 `fa648dfc294921661b21f98f795d5f3ef16002325f1358c0d8dd0948fe441f86`。本機fixture可重現EPERM，但未證實production持鎖來源或UTF8因果；沒有OS改動或上限變更。Transport observer只涵蓋synthesis，舊absolute-path配置未啟用；空檔／缺席不能證明ASR無HTTP錯誤。
 
