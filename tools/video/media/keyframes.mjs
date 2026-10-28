@@ -610,6 +610,12 @@ export async function run(command, args, ctx) {
   const existing = readJson(manifestFile(workdir), null);
   const sameSetup = existing?.look_hash === hash && sameImage(existing.image, chosenImage) && (!imageVersion || existing.image_selection_version === imageVersion) && !values.force;
   const manifest = sameSetup && bound(existing) ? existing : { look_hash: hash, ...binding, image_selection_version: 1, shots: {} };
+  // A picture brought in by `keyframes import` (keyframes-import.mjs) was not drawn by any
+  // generator, so it stands whatever model this run draws with: kept as long as the look and
+  // the script it was imported under are the current ones.
+  if (manifest !== existing && existing?.look_hash === hash && bound(existing)) {
+    for (const [id, shot] of Object.entries(existing.shots ?? {})) if (shot?.imported_at && shot.file) manifest.shots[id] = shot;
+  }
   manifest.image = { provider: chosenImage.provider, model: chosenImage.model };
   if (plate) manifest.plate = { file: plate.file, sha256: plate.sha256, seed: plate.seed, judge: plate.judge };
   else delete manifest.plate;

@@ -12,6 +12,7 @@ import { lookHash } from "../core/drama.mjs";
 import { dramaFixture, sandbox } from "../core/fixtures/load.mjs";
 import { visualHash } from "../core/timeline.mjs";
 import { KEYFRAME_IMPORT_PROVIDERS, pictureSize } from "./keyframes-import.mjs";
+import { keyframeProblems } from "../core/state.mjs";
 import { importedTotals, readLedger } from "./ledger.mjs";
 
 process.env.VIDEO_MIN_EPISODE_MINUTES ??= "0";
@@ -55,7 +56,7 @@ const STATUS = {
 };
 
 /** A media server for `look` (pictures and judge) and for the import's uploads and judge. */
-function mediaSite({ verdicts = () => ({ overall: 8, passed: true }) } = {}) {
+function mediaSite({ verdicts = () => ({ overall: 8, passed: true }), judgeDown = () => false } = {}) {
   const state = { images: [], judges: [], uploads: [], files: new Map() };
   const fetchImpl = async (url, init = {}) => {
     const { pathname } = new URL(url);
@@ -80,6 +81,7 @@ function mediaSite({ verdicts = () => ({ overall: 8, passed: true }) } = {}) {
       return Response.json({ received: [0], complete: true });
     }
     if (init.method === "POST" && route === "judge") {
+      if (judgeDown()) return Response.json({ code: "video_media_unavailable", detail: "judge down" }, { status: 503 });
       const request = JSON.parse(init.body);
       state.judges.push(request);
       const verdict = verdicts(request.kind, request, state.judges.length);
@@ -196,11 +198,22 @@ test("an imported keyframe is copied under its route's name, bound to the look a
   assert.equal(replaced.file, "keyframes/opening-import-2.jpg");
   assert.equal(replaced.takes.length, 2);
   assert.match(next.out.stdout, /replaces keyframes\/opening-import-1\.png/);
+
+  // A normal keyframes run afterwards draws the other shots and keeps the imported one: no
+  // generator selection was recorded by the import, and none is needed for it to stand.
+  const drawn = context(box, site.fetchImpl);
+  assert.equal(await main(["keyframes", "--slug", box.slug], drawn.ctx), EXIT.ok, drawn.out.stderr || drawn.out.stdout);
+  assert.ok(!site.state.images.some((request) => request.shot_id === "opening"), "the imported shot is not drawn again");
+  assert.match(drawn.out.stdout, /opening: kept \(judge \?\/10\)/);
+  const kept = manifestOf(box).shots.opening;
+  assert.deepEqual([kept.file, kept.provider, Boolean(kept.imported_at)], ["keyframes/opening-import-2.jpg", "colab", true]);
+  assert.ok(manifestOf(box).shots.farewell?.file, "the other shots were drawn");
 });
 
 test("--judge asks the site's judge on the keyframes rubric with the chosen sheets; a failing verdict leaves the shot needs_review with the fixes, --force keeps it, --usd is booked", async () => {
   let fail = true;
-  const site = mediaSite({ verdicts: (kind) => (kind === "keyframe" && fail ? { overall: 5, passed: false, problems: ["identity_jingwei: another face → the girl of the sheet"] } : { overall: 8, passed: true }) });
+  let down = false;
+  const site = mediaSite({ verdicts: (kind) => (kind === "keyframe" && fail ? { overall: 5, passed: false, problems: ["identity_jingwei: another face → the girl of the sheet"] } : { overall: 8, passed: true }), judgeDown: () => down });
   const box = await approvedLook(site);
   const picture = outside(box, "farewell.png", png(1312, 736, "colab farewell"));
   const bring = ["keyframes", "import", "--slug", box.slug, "--shot", "farewell", "--file", picture, "--provider", "colab", "--judge", "--usd", "0.05"];
@@ -226,7 +239,18 @@ test("--judge asks the site's judge on the keyframes rubric with the chosen shee
   const forced = context(box, site.fetchImpl);
   assert.equal(await main([...bring, "--force"], forced.ctx), EXIT.ok, forced.out.stderr);
   assert.match(forced.out.stdout, /kept by --force although judge 5\/10/);
-  assert.deepEqual([manifestOf(box).shots.farewell.needs_review, manifestOf(box).shots.farewell.forced], [false, true]);
+  const kept = manifestOf(box).shots.farewell;
+  assert.deepEqual([kept.needs_review, kept.forced, kept.accepted_with_problems], [false, true, ["judge 5/10: identity_jingwei: another face → the girl of the sheet"]]);
+  const downstream = await keyframeProblems({ doc: dramaFixture(), manifest: manifestOf(box), workdir: box.workdir });
+  assert.ok(!downstream.some((problem) => /farewell/.test(problem)), `the forced picture stands downstream: ${downstream.join("; ")}`);
+
+  // A judge that never answers: the import ends without booking and lets its hold go.
+  down = true;
+  const broken = context(box, site.fetchImpl);
+  assert.notEqual(await main(["keyframes", "import", "--slug", box.slug, "--shot", "sea-storm", "--file", picture, "--provider", "colab", "--judge", "--usd", "0.05"], broken.ctx), EXIT.ok);
+  down = false;
+  assert.equal(readLedger(box.workdir).entries.filter((entry) => entry.status === "reserved").length, 0, "the hold is released");
+  assert.equal(manifestOf(box).shots["sea-storm"], undefined, "nothing was recorded for the shot");
 
   // A passing verdict needs no force; a picture under 1280x720 fails the size check whatever the judge says.
   fail = false;

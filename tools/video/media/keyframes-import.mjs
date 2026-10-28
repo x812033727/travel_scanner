@@ -22,9 +22,9 @@ import { visualHash } from "../core/timeline.mjs";
 import { MediaError, mediaStatus } from "./client.mjs";
 import { clientOptions, requireCredentials } from "./cli.mjs";
 import { chosenSheets, fixClauses, keyframeRubric } from "./keyframes.mjs";
-import { bookImport, ledgerTotals, reserve } from "./ledger.mjs";
+import { bookImport, ledgerTotals, release, reserve } from "./ledger.mjs";
 import { pictureVerdict } from "./qc.mjs";
-import { imageSelectionVersion, imageStatus, mayWriteProject, Stage } from "./stages.mjs";
+import { choiceFor, imageSelectionVersion, imageStatus, mayWriteProject, Stage } from "./stages.mjs";
 
 /** Where an imported keyframe may come from: the Colab GPU route (minimax-h3-colab), a web image tool, anything else. */
 export const KEYFRAME_IMPORT_PROVIDERS = ["colab", "hailuo-web", "external"];
@@ -127,9 +127,18 @@ export async function importKeyframe(args, ctx) {
     reserve(workdir, { stage: "keyframes", kind: "image", id: scene.id, provider: values.provider, model: null, key: reservation, seconds: 0, cost_usd: usd }, ctx.now());
   }
 
+  let booked = false;
+  try {
   const existing = readJson(manifestFile(workdir), null);
   const current = existing?.look_hash === hash && bound(existing);
-  const manifest = current ? existing : { look_hash: hash, ...binding, shots: {} };
+  // A fresh manifest carries the fields `keyframes` binds its own to (image_selection_version;
+  // the image model when the site was asked), so a later `keyframes` run reads it as its own
+  // setup; and `keyframes` keeps imported entries whatever its generator selection.
+  const manifest = current ? existing : { look_hash: hash, ...binding, image_selection_version: 1, shots: {} };
+  if (stage && !manifest.image) {
+    const choice = choiceFor(stage.status, "image", slides ? doc.format : null);
+    if (choice) manifest.image = { provider: choice.provider, model: choice.model };
+  }
   mkdirSync(path.join(workdir, "keyframes"), { recursive: true });
   // The next free keyframes/<shot>-import-<n>.<ext>, numbered across both extensions; the same
   // bytes brought in again keep their name.
@@ -166,7 +175,9 @@ export async function importKeyframe(args, ctx) {
   }
   const verdict = pictureVerdict({ width: size.width, height: size.height, judge, min_width: MIN_KEYFRAME_WIDTH, min_height: MIN_KEYFRAME_HEIGHT });
   const forced = !verdict.ok && Boolean(values.force);
-  const imported = { provider: values.provider, credits, imported_at: ctx.now().toISOString(), ...(values.note ? { note: values.note } : {}), ...(forced ? { forced: true } : {}) };
+  // A picture kept by --force over a failed verdict is recorded as `keyframes --accept-best`
+  // records one (accepted_with_problems): what keyframeProblems and pipelineStatus read as the owner's call.
+  const imported = { provider: values.provider, credits, imported_at: ctx.now().toISOString(), ...(values.note ? { note: values.note } : {}), ...(forced ? { forced: true, accepted_with_problems: [...verdict.problems] } : {}) };
   const take = { import: n, file, sha256, width: size.width, height: size.height, qc: verdict, judge, ...imported };
   const previous = manifest.shots[scene.id];
   const record = {
@@ -190,6 +201,7 @@ export async function importKeyframe(args, ctx) {
   manifest.shots[scene.id] = record;
   writeManifest(workdir, manifest);
   bookImport(workdir, { stage: "keyframes", kind: "image", id: scene.id, provider: values.provider, credits, seconds: 0, cost_usd: usd, file, sha256, ...(reservation ? { key: reservation } : {}) }, ctx.now());
+  booked = true;
   const waiting = Object.entries(manifest.shots).filter(([, shot]) => shot.needs_review).map(([id]) => id);
   recordStage(workdir, "keyframes", { shots: Object.keys(manifest.shots).length, imported: Object.values(manifest.shots).filter((shot) => shot.imported_at).length, generated: 0, needs_review: waiting, usd: ledgerTotals(workdir).usd, seconds: 0 }, ctx.now());
 
@@ -203,4 +215,8 @@ export async function importKeyframe(args, ctx) {
   if (forced) ctx.stdout.write(`${scene.id}: kept by --force although ${verdict.problems.join("; ")}\n`);
   ctx.stdout.write(`next: node tools/video/cli.mjs review-push --slug ${doc.slug} --gate storyboard (the storyboard changed) or node tools/video/cli.mjs keyframes import for the next shot\n`);
   return EXIT.ok;
+  } finally {
+    // An import that ends without booking (the STOP file, an upload or judge failure) lets its hold go.
+    if (reservation && !booked) release(workdir, reservation);
+  }
 }
