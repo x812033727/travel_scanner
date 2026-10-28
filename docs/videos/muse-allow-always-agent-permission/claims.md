@@ -30,6 +30,7 @@ c18｜拒絕規則優先：允許規則不能在拒絕規則裡開例外｜CC〈
 
 c19｜Meta 的 Muse 安全說明：授權「bound to the particular connector/destination and use case」；支援 one-time、session-scoped、task-scoped、time-bounded、perpetual 五種｜https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse（security.muse.ai 轉址）｜2026-10-27｜meta-grants、unknown
 c20｜Google 的例子：允許 Gemini 透過「使用 Google 帳戶登入」登入旅遊應用程式，協助搜尋及預訂度假民宿｜https://support.google.com/accounts/answer/13533235?hl=zh-Hant｜2026-10-27｜google-agent
+c21｜Meta：使用者通常比較願意先給代理讀取權（例：讀行事曆提醒衝突），寫入權（例：排新會議）會先觀察；服務支援時 Muse 把讀與寫分開授權｜https://research.meta.ai/blog/security-and-safety-for-ai-agents-our-approach-with-muse｜2026-10-28｜read-write
 ## 本片自己跑的紀錄
 
 機器：雲端容器（站主 2026-10-27 請撰稿者自己跑），Claude Code 2.1.311，manual mode，模型 Sonnet 5.5；git 2.43.0。示範倉庫 perm-demo，遠端是同一台機器上的 bare repo，不碰任何真實專案或帳號。
@@ -59,6 +60,8 @@ r9｜新 session 請它 `git push -f origin main` → 沒有詢問，遠端 b2a3
 - Muse、ARTEX 之外，`settings.local.json` 的路徑在 Windows 或非 git 目錄會不同（CC 有寫），片中沒講。
 
 ## 進度
+
+- 2026-10-28：旁白第一次合成 7 分 42 秒，不到 8 分鐘。補第 5 章 Meta 的讀寫分開（c21）四句；「准」被聽成「轉」、「只到」被聽成「直到」、「最寬的一律」被聽成「最狂的疑慮」等 11 句改寫。估 8.6 分鐘。
 
 - 2026-10-27 盲讀三次（7→8→7 題沒過，每次沒過的題目不同）：第二輪改寫後開場不再說「答案在按鈕」、Claude Code 的表改兩列、補上「這種按鈕本來就這樣，不只 Meta」、最後一章第一句接上一章、五種授權不逐一念。第三讀仍沒過：no_spoiler、no_toc、payoffs、no_recap、opening_hooks、no_detour（必答）。照 SKILL.md 主幹 4.5 交站主決定。估 8.1 分鐘、87 句，lint 0 錯誤 0 警告。
 
