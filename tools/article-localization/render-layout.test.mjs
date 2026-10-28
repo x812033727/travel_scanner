@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
 
-import { containerFor, contains, EDGE_PADDING, edgeClearance, layoutIssues, MIN_FONT_PX, overlaps } from './render-layout.mjs';
+import { containerFor, contains, EDGE_PADDING, edgeClearance, layoutIssues, MIN_FONT_PX, needsFontFit, overlaps } from './render-layout.mjs';
 
 const box = (left, top, right, bottom) => ({
   left,
@@ -60,6 +60,21 @@ const source = (overrides = {}) => ({
 });
 const SIZE = { width: 760, height: 260 };
 const reasons = issues => issues.map(issue => issue.reason);
+
+test('font fitting repairs a contained translation that newly touches the required inner padding', () => {
+  const original = source();
+  const touchingBox = box(60, 80, 338, 104);
+  assert.equal(contains(card, touchingBox), true, 'ordinary containment previously skipped fitting');
+  assert.equal(needsFontFit(card, original.text[0].box, touchingBox), true);
+  assert.equal(needsFontFit(card, original.text[0].box, box(60, 80, 336, 104)), false, 'exactly four pixels is acceptable');
+  assert.equal(needsFontFit(card, original.text[0].box, box(60, 80, 342, 104)), true, 'overflow still needs fitting');
+});
+
+test('font fitting preserves edge contact that was already present in the source', () => {
+  const sourceBox = box(60, 80, 338, 104);
+  assert.equal(needsFontFit(card, sourceBox, sourceBox), false);
+  assert.equal(needsFontFit(card, sourceBox, box(60, 80, 342, 104)), true, 'inherited edge contact never excuses overflow');
+});
 
 test('a label that is localized cleanly raises nothing, in CJK or in English', () => {
   const localized = source({ text: [{ value: 'Arrival card', box: box(60, 80, 220, 104), size: 20 }, { value: 'Lunar NY', box: box(64, 200, 140, 216), size: 16 }] });

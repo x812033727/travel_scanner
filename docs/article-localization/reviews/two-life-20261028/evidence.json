@@ -1,0 +1,137 @@
+{
+  "schema": "two-life-localization-authoring-v1",
+  "recorded_at": "2026-10-28T02:41:06.374677+00:00",
+  "status": "reviewed_and_locally_installed",
+  "production_published": false,
+  "source_git_commit": "40166c0d33e971f7d38c2374a38fcd3af011b17c",
+  "manifest_sha256": "5717849d1e3407a3dd1fe762a96067236837562aed3fc8c1faeb575c160668d1",
+  "baseline_sha256": "542adedb9ba3dec1971b08350b9d2824b2ab976b58c3341da05e56dd55bed1d3",
+  "source_audit_sha256": "8ac2c99188d5b2cd09aebe445583190f63be13bfc899309208a8e6eab819e52a",
+  "final_independent_review_sha256": "98838ba8367685e9e76dc2fdc6ec7fef4cce3e2d0e106ca2e0c5043052e588c7",
+  "preservation_audit_sha256": "a23ecd9beb2bfe04c31dbbf44fc91b0b1341ec31ce4a899a74c21f14b89fe197",
+  "installation_journal_sha256": "fbc003046add120e7c34fd421082d2e258c2dbf7003e7a0bb77ae3f7dd82180a",
+  "counts": {
+    "articles": 2,
+    "new_locale_documents": 8,
+    "localized_assets": 24,
+    "viewed_final_images": 16,
+    "related_title_corrections": 20,
+    "unchanged_other_content_packs": 1202,
+    "unchanged_original_public_files": 6689
+  },
+  "source_preservation": {
+    "normalized_zh_tw_hashes_unchanged": true,
+    "raw_source_dicts_byte_identical": false,
+    "exact_optional_defaults_added": [
+      {
+        "slug": "ansoff-growth-options",
+        "pointer": "/locales/zh-TW/blocks/27/description",
+        "value": ""
+      },
+      {
+        "slug": "bcg-portfolio-review",
+        "pointer": "/locales/zh-TW/blocks/27/description",
+        "value": ""
+      }
+    ],
+    "root_serializer_defaults": {
+      "aliases": {},
+      "news_date": null,
+      "related": []
+    },
+    "topics_same_multiset": true
+  },
+  "validation": {
+    "selected_pack_lint_errors": 0,
+    "selected_pack_lint_advisories": {
+      "no_summary": 10,
+      "english_text_length": 2
+    },
+    "translation_character_findings": 0,
+    "pipeline_tests_passed": 35,
+    "geometry_and_artifact_tests_passed": 25,
+    "content_pack_tests_passed": 9,
+    "content_pack_tests_skipped": 5,
+    "official_reviewed_document_passed": 8,
+    "automatic_layout_issues": 0
+  },
+  "installer_replay": {
+    "actual_exit": 0,
+    "journal_and_two_receipts_byte_identical": true
+  },
+  "full_windows_tools": {
+    "exit": 1,
+    "passed": 1487,
+    "failed": 64,
+    "skipped": 23,
+    "runtime": "Node v24.13.0 win32 arm64",
+    "direct_native_diagnostic_exit": -1073740791,
+    "followup_task": "2026-10-28-diagnose-windows-native-fast-fail-in"
+  },
+  "targets": [
+    {
+      "slug": "ansoff-growth-options",
+      "locale": "en",
+      "source_sha256": "4bb11afb53360aac604818614a9e131c0df916b4d58864b521544648a78312df",
+      "document_sha256": "1d88f733e29c523936fb2e95415c0b264e01e72c47d15f0356a13e61bba70c55",
+      "artifact_manifest_sha256": "b1301f992a1fa4f7c8787885ad857ded6b72836d0f3862437c3361c2efee831d",
+      "review_sha256": "e2273b23f284389f964a06cc22d3f5e83fbad18b650911a8587f08bc27a602f1"
+    },
+    {
+      "slug": "ansoff-growth-options",
+      "locale": "ja",
+      "source_sha256": "4bb11afb53360aac604818614a9e131c0df916b4d58864b521544648a78312df",
+      "document_sha256": "09236ad60bfe97e2f79a56d9b40e3a3f7cb38dba8f0022c0ee87eed74ac18479",
+      "artifact_manifest_sha256": "dfa3fb221e7b4a16535ed3496e0224ef2b1f72308cd3ceec0cfb2fd2cdeb4a9d",
+      "review_sha256": "2b705da9655552c554619f57db2fae40768b1399acde1ea0a3a7f1cfd6698a9b"
+    },
+    {
+      "slug": "ansoff-growth-options",
+      "locale": "ko",
+      "source_sha256": "4bb11afb53360aac604818614a9e131c0df916b4d58864b521544648a78312df",
+      "document_sha256": "6dd2ece98cce09c42cfb85038a28035ffbc7a2887950e4de8be2f01f81187e2c",
+      "artifact_manifest_sha256": "6399d04bc93fb81986789313068cd7eb19b4409c302ebc26671b86300d36c19d",
+      "review_sha256": "cea490f01cd1078426bf1fc1417cff2f45cd34a655322f67d3d8928a5d1b6f66"
+    },
+    {
+      "slug": "ansoff-growth-options",
+      "locale": "zh-CN",
+      "source_sha256": "4bb11afb53360aac604818614a9e131c0df916b4d58864b521544648a78312df",
+      "document_sha256": "f336a5911e633b9f1aa89f387c2e561aff11ee6df811d0ea4c59e88554af3781",
+      "artifact_manifest_sha256": "c40de036aa7ff70207f81962e6d097014638329a277ee56d2be5540fbe4a322e",
+      "review_sha256": "2064272612e7907bcbb0b1d87c24aeb1256b9d0c9fe880f4117e6b744b5b8eba"
+    },
+    {
+      "slug": "bcg-portfolio-review",
+      "locale": "en",
+      "source_sha256": "556de90a7da2e66c2ef558ad4b9c46c317f022170a8a38eb739e1bf804942880",
+      "document_sha256": "581a7429aedc59142b71dc428165de2496a25b3a90be826c672bf77783ffe397",
+      "artifact_manifest_sha256": "d8d3940544ef6f52eb18b31b514913ecbdb7ceae97b74b8d368f2a8f4d9270ea",
+      "review_sha256": "331f7fef7c1eaf0ba2a2fb6711c4e6a5be7e78e74b755d60ce38d42fbd5df37d"
+    },
+    {
+      "slug": "bcg-portfolio-review",
+      "locale": "ja",
+      "source_sha256": "556de90a7da2e66c2ef558ad4b9c46c317f022170a8a38eb739e1bf804942880",
+      "document_sha256": "bb877f03d5e50b2a0c247c526a1b525ba8aaf393ca1992b85de63a1c826a546b",
+      "artifact_manifest_sha256": "99aad81a7c9a2f6803fa8a539f0873a5f2cd2c8c70bd79024366958af7a43208",
+      "review_sha256": "29579e12cdaa4e99285940e0a7528bb8c861e3740082f7394f7fade2f64ca8e5"
+    },
+    {
+      "slug": "bcg-portfolio-review",
+      "locale": "ko",
+      "source_sha256": "556de90a7da2e66c2ef558ad4b9c46c317f022170a8a38eb739e1bf804942880",
+      "document_sha256": "84bb589579f895b011d8f146db36fe0690c91fc126a1b935ff9fa9977739a054",
+      "artifact_manifest_sha256": "61f1d79b2918a86d8307371821756ea2431d8a754344db0adac37af39ca9b6e1",
+      "review_sha256": "d8531966ddee57b5fab3394618147ad358c20aea765fdc6412e84dc72d4b15f9"
+    },
+    {
+      "slug": "bcg-portfolio-review",
+      "locale": "zh-CN",
+      "source_sha256": "556de90a7da2e66c2ef558ad4b9c46c317f022170a8a38eb739e1bf804942880",
+      "document_sha256": "0b554ba52cebafe60376ab7f181f560731338df7bc7fb5b9836d6705fd6b16c5",
+      "artifact_manifest_sha256": "72ccfb7d605504c4d4045911e1e0560fc4ea4f60ddc075c75aa8e40bdf4ddf10",
+      "review_sha256": "e90dd734f0206fae863d3e141bb40b98e89f892344c221d31e5aeb2c8af3e13c"
+    }
+  ]
+}
