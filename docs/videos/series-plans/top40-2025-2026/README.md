@@ -81,7 +81,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2025-03-shengxia-fendela` | 合約到期前 | outline（設定集與五季總綱已寫） |
 | `2026-03-guimi-chuanyue` | 我和我媽穿去亡國 | outline（設定集與五季總綱已寫） |
 | `2025-04-jiali-jiawai` | 海風吹進門 | outline（設定集與五季總綱已寫） |
-| `2026-04-shaofuren-dongbei` | 租來的女朋友不想退租 | setting（設定集已寫，總綱待寫） |
+| `2026-04-shaofuren-dongbei` | 租來的女朋友不想退租 | outline（設定集與五季總綱已寫） |
 | 其餘 32 部 | 未定 | reference（套路拆解） |
 
 ## 每部怎麼做
