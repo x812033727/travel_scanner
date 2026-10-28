@@ -446,6 +446,8 @@ async function stylePlate({ stage, workdir, look, hash, takes, size, rubric, for
 
 export async function run(command, args, ctx) {
   const { EXIT } = ctx;
+  // `keyframes import …`: a picture drawn elsewhere becomes a shot's keyframe (keyframes-import.mjs; loaded here so the two files need not import each other at load time).
+  if (args[0] === "import") return (await import("./keyframes-import.mjs")).importKeyframe(args.slice(1), ctx);
   const values = parseArgs({
     args,
     options: {
