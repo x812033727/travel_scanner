@@ -92,12 +92,12 @@ MiniMax-H3 官方提示指南（`huggingface.co/MiniMaxAI/MiniMax-H3/blob/main/d
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] <motion>. The camera pushes in with small amplitude at slow speed. <look.motion>. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. Xu Yan shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. <motion>. The camera pushes in with small amplitude at slow speed. <look.motion>. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-`shot_plan.mjs --route hailuo` 照這個外框產生：第一行、欄位名與單鏡照官方；`integrated_multimodal_description` 裡是這一鏡的 `motion`、官方句型的運鏡、`look.motion` 與守首格的一句（官方範例會再寫首格之後的動作起點、發展與結果，我們的 `motion` 本來就照「誰＋動詞＋對象＋幅度＋結束狀態」寫）。官方的運鏡種類：Zoom In／Out、Push In／Pull Out、Pan、Truck、Tilt、Pedestal、Arc Shot、Tracking Shot、Static Shot、Shake、POV、Roll；幅度 `with small／large amplitude`，速度 `at slow／fast speed`。H3 的台詞與畫外音另有格式（`<d>…</d>`、`says in an off-screen voiceover … lips remain completely closed`），產線的配音另外合成，所以正文不寫台詞。
+`shot_plan.mjs --route hailuo` 照這個外框產生（2026-10-28 改成官方的順序，票 `2026-10-05-shot-plan-h3-body-official-i2va`）：第一行、欄位名與單鏡照官方；`[Shot 1]` 先寫**風格詞**（預設集對官方表：cinematic-3d → 3D CG、anime-2d → 2D-animated、ink-wash → watercolor、其餘插畫類 → 2D-animated；custom 看 style 的字，對不到就不寫並記 note）與**錨句**（點名 `<Picture 1>` 裡的人：只有拉丁字母的名字才寫，否則 The person／The people；沒人就 The scene），再寫這一鏡的 `motion`、官方句型的運鏡（`locked` 寫 `The camera holds a static shot`；速度詞只有 `at slow speed`／`at fast speed`，幅度只有 small／large，不慢不快就不寫）、`look.motion`，以 `One continuous shot.` 收尾，不寫 no cuts／no text 這種否定句。計畫有末格的鏡頭第一行改成 FL2VA 的對齊句（`How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark …; Picture 2 (from Shot 1) aligns with the <買的秒數>.00-second mark …`）。三欄之間仍是單一換行：2026-10-28 的 Colab 小樣三支這樣送、三支都成，先不改。秒數：H3 最少買 5 秒（4 秒＝107 幀低於訓練範圍），畫面上有人說話或 motion 兩拍（then／分號）買 6 秒（`minimax-h3-colab/references/motion-quality.md`）。原本的寫法是（官方範例會再寫首格之後的動作起點、發展與結果，我們的 `motion` 本來就照「誰＋動詞＋對象＋幅度＋結束狀態」寫）。官方的運鏡種類：Zoom In／Out、Push In／Pull Out、Pan、Truck、Tilt、Pedestal、Arc Shot、Tracking Shot、Static Shot、Shake、POV、Roll；幅度 `with small／large amplitude`，速度 `at slow／fast speed`。H3 的台詞與畫外音另有格式（`<d>…</d>`、`says in an off-screen voiceover … lips remain completely closed`），產線的配音另外合成，所以正文不寫台詞。
 
 ### Hailuo 2.3（方括號指令）
 
@@ -119,9 +119,9 @@ Single continuous shot, the camera slowly pushes in. <motion>. <look.motion>. Ke
 
 | `camera` 寫 | 三個讀者讀成（group） | H3 句子 | Hailuo 2.3 | Kling 3.0 |
 | --- | --- | --- | --- | --- |
-| `locked`、`static` | locked | The camera is a static shot and stays completely still | `[Static shot]`＋stays completely still | locked-off camera, no camera movement |
+| `locked`、`static` | locked | The camera holds a static shot | `[Static shot]`＋stays completely still | locked-off camera, no camera movement |
 | `slow push in` | push in | The camera pushes in with small amplitude at slow speed | `[Push in]` | the camera slowly pushes in |
-| `pull out` | pull out | The camera pulls out | `[Pull out]` | the camera pulls back |
+| `pull out` | pull out | The camera pulls out（不慢不快就沒有速度詞；`fast pull out` → with large amplitude at fast speed） | `[Pull out]` | the camera pulls back |
 | `pan left`／`pan right` | pan left／pan right | The camera pans left／right | `[Pan left]`／`[Pan right]` | the camera pans left／right |
 | `tilt up`／`tilt down` | tilt up／tilt down | The camera tilts up／down | `[Tilt up]`／`[Tilt down]` | the camera tilts up／down |
 | `tracking`、`follow` | track（craft 也讀成跟拍） | The camera is a tracking shot that follows the subject | `[Tracking shot]` | the camera tracks alongside the subject |
