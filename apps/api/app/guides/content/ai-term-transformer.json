@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "Transformer 架構（Transformer）是什麼",
@@ -116,6 +119,7 @@
           "width": 1600,
           "height": 900,
           "caption": "圖示呈現關係，並非真實模型的層數、注意力權重或量測結果。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -241,6 +245,950 @@
         },
         {
           "title": "TensorFlow：Neural machine translation with a Transformer",
+          "url": "https://www.tensorflow.org/text/tutorials/transformer",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is the Transformer Architecture (Transformer)?",
+      "description": "Transformer is a neural network architecture using attention for sequence relations, a basis for many language and multimodal models. Event notices' pronouns and word order show how self-attention, position data, feed-forward networks and masks cooperate, contrasting the original encoder–decoder with later variants. Learn how models use context, why attention weights are neither human attention nor full decision explanations, and why long sequences still incur compute and verification costs.",
+      "hero": {
+        "src": "/guides/ai-term-transformer/hero-en.jpg",
+        "alt": "Text blocks form relationships through crossing links, while positional bases preserve order, symbolizing a Transformer's exchange of sequence information.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Transformer is a neural network architecture that uses attention to exchange information among sequence elements. Many language models are based on it or related variants.",
+            "It is not a single chat product. “Attention” is a technical term, not a sign of human subjective attention; attention weights are not a complete explanation of decisions either.",
+            "Position information lets models handle word order. Decoder-only generative models typically use a causal mask to avoid looking ahead to positions not yet generated.",
+            "An architecture's name does not certify quality. Test actual capabilities with minimal changes, such as swapping two names in a sentence or adding a negation."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Transformer is a neural network architecture that uses attention to exchange information among sequence elements, letting the model build representations relevant to the current context. It is not a single chat product, nor is it synonymous with all "
+            },
+            {
+              "type": "article",
+              "text": "artificial intelligence",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": ". Many language models are based on it or related variants. Similar ideas can also be applied to images and other data, though the specific components and uses may differ."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "You do not need to work through matrix calculations before understanding Transformer. Start by looking at how different parts of a sentence influence one another. The explanations below use original sentences from community event notices and draw on the original paper and TensorFlow's official implementation tutorial. These are conceptual illustrations; the connections shown are not measurements from a real model. Information verified as of 2026/9/14."
+        },
+        {
+          "type": "heading",
+          "text": "Attention connects the current content to other positions",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The original paper by Vaswani et al. proposed an attention-centered architecture for sequence transduction, replacing the recurrent processing designs common at the time. Self-attention lets a position in a sequence use its current representation to refer to other visible positions, then integrate information useful for the task at hand. “Attention” is a technical name for this computation; it does not mean the model has human subjective attention or intent."
+        },
+        {
+          "type": "paragraph",
+          "text": "Here is an original sentence: “The administrator moved the folding table to the common room because a talk will be held there tomorrow.” Understanding “there” requires referring to the common room and the surrounding context, rather than looking at just one adjacent character. Self-attention provides a way to compute information exchange between positions, but whether it correctly links “there” to the common room still depends on training and the specific input."
+        },
+        {
+          "type": "paragraph",
+          "text": "Common explanations mention query, key, and value. Think of them as different roles transformed from the current representation: making a comparison, providing a basis for comparison, and carrying the content to be integrated. They are all learned numerical operations, rather than someone first manually labeling every Chinese character as a subject, location, or pronoun."
+        },
+        {
+          "type": "heading",
+          "text": "Position information preserves word order",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If words were treated only as a collection, the meanings of many sentences would become confused. For example, “Xiao Lin reminds Xiao Chen” and “Xiao Chen reminds Xiao Lin” use the same names and action, but who reminds whom differs. Transformer needs position-related information to handle order and relative relationships. The original architecture provided positional encodings, and later approaches introduced other ways to represent position. No single formulation should be treated as the only method used by every model."
+        },
+        {
+          "type": "paragraph",
+          "text": "Multi-head attention lets the model process relationships through different learned projections, then combine the results. Thinking of multiple viewpoints can help, but we should not claim that one head always handles grammar while another always handles common sense. The distribution of functions in real models need not fit categories that humans can easily name; the diagram only illustrates how computation is divided."
+        },
+        {
+          "type": "paragraph",
+          "text": "The architecture also contains more than attention. Components such as feed-forward networks, residual connections, and normalization help transform representations and support training. Saying only that “it looks at which words matter most” leaves out much of the actual computation. For general readers, understanding that attention exchanges information between positions while other layers continue processing those representations is enough to avoid mistaking the whole model for a simple system for weighting keywords."
+        },
+        {
+          "type": "heading",
+          "text": "How encoders, decoders, and masks differ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The original Transformer includes an encoder and a decoder, commonly used to transform an input sequence into another sequence, as in translation. The encoder builds input representations; the decoder generates output based on previously generated content and relevant representations. TensorFlow's tutorial demonstrates this structure and the use of masks, providing the context of a runnable official implementation rather than stopping at an abstract block diagram."
+        },
+        {
+          "type": "paragraph",
+          "text": "Later models also include those focused on the encoder and those using only a decoder. Decoder-only generative models typically produce subsequent tokens step by step from the known context, using a causal mask to prevent the relevant computations from looking ahead to positions not yet generated. This is distinct from computing losses for multiple positions at once during training. Parallel training does not mean all the words in an answer are decided simultaneously."
+        },
+        {
+          "type": "paragraph",
+          "text": "For an example of continuing a notice, take the input “The talk is canceled, so”. The expected continuation should be consistent with the cancellation. If the model continues with “please arrive on time,” it may not have adequately handled negation or contextual relationships. Knowing that the architecture can connect information only establishes that it has a mechanism for handling such relationships; it does not guarantee faithful generation every time."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-transformer/diagram-1-en.svg",
+          "alt": "Text units gain position information, pass through self-attention and feed-forward processing, then produce task output; generation uses only the context it is allowed to see.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The diagram illustrates relationships, not a real model's layer count, attention weights, or measurements.",
+          "description": "Text units gain position information, pass through self-attention and feed-forward processing, then produce task output; generation uses only the context it is allowed to see.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Test actual capabilities with reordered and negated sentences",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Prepare two original test sentences: “The administrator asks the speaker to change the time” and “The speaker asks the administrator to change the time.” Ask the model to identify who makes the request. Then change “Open tomorrow” to “Not open tomorrow” and observe whether the summary preserves the negation. These inputs change only slightly but require different outputs, directly testing whether the model bases its judgments on key relationships."
+        },
+        {
+          "type": "paragraph",
+          "text": "The expected answer must change with the sentence and point to support in the original wording. If the model names the same role for both sentences, check whether the prompt is clear, whether the full input was passed through, and how the model handles this word order. Seeing an attention visualization connect to a name does not prove the causal basis of the entire answer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Attention weights help research, but they are not a complete explanation of decisions. The final result also passes through other computations and combinations across multiple layers; a single weight map cannot account for every cause. For application users, reproducible input changes and output checks usually reveal more about task reliability than a heatmap that looks scientific."
+        },
+        {
+          "type": "heading",
+          "text": "Long context brings capabilities and costs",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In a typical full self-attention design, pairing sequence positions with one another increases computation and memory demands. Specific systems can reduce costs through different forms of attention, caching, and implementation optimizations. Context window capacity alone therefore cannot determine speed, price, or quality, and the same cost formula should not be applied indiscriminately to every Transformer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Long files also raise the issue of data selection. Being able to input an entire set of community regulations does not mean every passage is equally useful for answering a question, nor does it guarantee that the model will correctly integrate exceptions far away in the text. Start with relevant, sourced passages, test whether conditions are preserved, and then decide whether to add more content. Architectural capabilities and context engineering jointly influence the results."
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer is an important foundation for understanding modern models, but it describes only part of their technical structure. What a model learns, its training objectives, and how data and tools are organized all affect its actual capabilities. When you read that a product uses this architecture, ask next how it performs with your inputs, language, and acceptance criteria, rather than treating the architecture's name as a certification of quality."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Component or concept",
+            "Main function",
+            "Misconception to avoid"
+          ],
+          "rows": [
+            [
+              "Self-attention",
+              "Integrates information across positions based on visible context",
+              "It is not human subjective attention"
+            ],
+            [
+              "Position information",
+              "Preserves word order and positional relationships",
+              "The same collection of words does not imply the same meaning"
+            ],
+            [
+              "Causal mask",
+              "Restricts visible positions during generation",
+              "Parallel training does not mean generating the entire text simultaneously"
+            ]
+          ],
+          "caption": "Some basic roles in Transformer (verified 2026/9)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Test relationships with minimal changes",
+          "text": "Swap two names in a sentence or add a negation, then check whether the answer changes accordingly. This tests actual task capabilities better than simply checking whether the model can recite the architecture's definition."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is a Large Language Model?",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Are Model Parameters?",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is a Context Window? The Difference Between Capacity and Understanding",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Vaswani et al.: Attention Is All You Need",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TensorFlow: Neural machine translation with a Transformer",
+          "url": "https://www.tensorflow.org/text/tutorials/transformer",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "Transformer アーキテクチャ（Transformer）とは",
+      "description": "Transformer は、アテンション機構で系列内の関係を処理するニューラルネットワークのアーキテクチャで、多くの言語モデルやマルチモーダルモデルの重要な基盤です。本記事では、活動のお知らせに含まれる代名詞や語順を例に、自己アテンション、位置情報、フィードフォワードネットワーク、マスクがどう連携するかを説明し、当初のエンコーダー・デコーダー設計と後の派生形を区別します。モデルが文脈をどう利用するかを理解するとともに、アテンションの重みは人間の注意や意思決定の完全な説明ではなく、長い系列には計算と検証のコストが伴うことも学べます。",
+      "hero": {
+        "src": "/guides/ai-term-transformer/hero-ja.jpg",
+        "alt": "複数の文字ブロックが交差する線で関係を結び、位置を示す台座が順序を保つことで、Transformer による系列情報の交換を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Transformer は、アテンション機構で系列の要素間の情報を交換するニューラルネットワークのアーキテクチャです。多くの言語モデルは、これや関連する派生形を基盤としています。",
+            "単一のチャット製品ではありません。「アテンション（注意）」は技術用語で、モデルに人間の主観的な注意があることを意味せず、その重みも意思決定の完全な説明にはなりません。",
+            "位置情報によってモデルは語順を扱えます。デコーダーのみの生成モデルは通常、因果マスクによって、まだ生成されていない位置の先読みを防ぎます。",
+            "アーキテクチャの名称は品質認証ではありません。文中の二人の名前を入れ替える、否定語を加えるといった最小限の変更で、実際の能力を確認できます。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Transformer は、アテンション機構で系列の要素間の情報を交換し、現在の文脈に関連する表現をモデルに構築させるニューラルネットワークのアーキテクチャです。単一のチャット製品でも、あらゆる"
+            },
+            {
+              "type": "article",
+              "text": "人工知能",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "を指すものでもありません。多くの言語モデルは、これや関連する派生形を基盤としています。画像やその他のデータにも似た考え方を使えますが、具体的な構成要素や用途が同じとは限りません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer を理解するために、最初から行列計算をすべて解く必要はありません。まずは、文の各部分がどう影響し合うかを見てみましょう。以下では、地域活動のお知らせを題材にした独自の例文を使い、原論文と TensorFlow の公式実装チュートリアルを参考に説明します。これは概念図による説明であり、図の接続線を実在するモデルの測定結果として扱うものではありません。情報の確認は 2026 年 9 月 14 日時点です。"
+        },
+        {
+          "type": "heading",
+          "text": "アテンションが現在の内容と他の位置を結ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Vaswani らの原論文は、当時一般的だった再帰型の処理設計に代わる、アテンションを中心とした系列変換アーキテクチャを提案しました。自己アテンションでは、系列内のある位置が現在の表現に基づいて参照可能な他の位置を参照し、現在のタスクに役立つ情報を統合します。この計算における「アテンション（注意）」は技術用語であり、モデルに人間の主観的な注意や意図があることを意味しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "独自の例文は、「管理人は折り畳みテーブルを談話室に移した。明日そこで講座を開くからだ」です。「そこ」を理解するには、隣接する一文字だけを見るのではなく、談話室や前後の関係を参照する必要があります。自己アテンションは、異なる位置の間で情報を交換する計算方法を提供しますが、談話室に正しく結び付けられるかどうかは、学習や具体的な入力に左右されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的な説明には、クエリ、キー、バリュー、つまり query、key、value が登場します。これらは現在の表現から変換された、それぞれ異なる役割を持つものと考えられます。照合を求める役割、照合の手掛かりを提供する役割、統合される内容を担う役割です。いずれも学習された数値演算であり、誰かがあらかじめ中国語の各文字に主語、場所、代名詞といったラベルを手作業で付けているわけではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "位置情報が語順を保つ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "単語の集合しかなければ、多くの文の意味を区別できなくなります。例えば、「小林が小陳に注意を促す」と「小陳が小林に注意を促す」は同じ名前と動作を使っていますが、誰が誰に注意を促すかは異なります。Transformer が順序や相対的な関係を扱うには、位置に関する情報が必要です。当初のアーキテクチャには位置エンコーディングがあり、その後は異なる位置表現の方法も登場しました。ある一つの方法を、すべてのモデルに共通する唯一の方法と見なしてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "マルチヘッドアテンションでは、モデルが学習によって得た異なる射影を使って関係を処理し、その結果を統合します。複数の観察視点に例えると理解の助けになりますが、あるヘッドは文法、別のヘッドは常識を必ず担当すると断言すべきではありません。実際のモデルにおける機能の分布は、人間が名前を付けやすい分類に沿うとは限りません。概念図が示すのは、計算上の役割分担だけです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アーキテクチャには、アテンション以外の要素もあります。フィードフォワードネットワーク、残差接続、正規化などの構成要素が、表現の変換や学習を支えます。「どの文字が最も重要かを見ている」とだけ説明すると、実際の計算の多くが抜け落ちます。一般の読者は、アテンションが異なる位置の間で情報を交換し、他の層がその表現をさらに処理すると知っておけば、モデル全体を単純なキーワードの重み付け装置と誤解せずに済みます。"
+        },
+        {
+          "type": "heading",
+          "text": "エンコーダー、デコーダー、マスクの違い",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "当初の Transformer はエンコーダーとデコーダーを含み、翻訳のように入力系列を別の系列に変換する用途でよく使われます。エンコーダーは入力の表現を構築し、デコーダーは生成済みの内容や関連する表現に基づいて出力を生成します。TensorFlow のチュートリアルでは、この構造とマスクの使い方を示しています。抽象的なブロック図だけにとどまらず、実行可能な公式実装を通じて理解できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "その後、エンコーダーを重視するモデルや、デコーダーのみを使うモデルも登場しました。デコーダーのみの生成モデルは通常、既知の文脈に基づいて後続の token を順に生成し、因果マスクによって、関連する計算でまだ生成されていない位置を先読みすることを防ぎます。これは、学習時に複数の位置の損失を同時に計算できることとは別の概念です。学習の並列化を、回答のすべての文字が同時に決まることだと説明してはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "お知らせの続きを書く場合を例にすると、入力が「講座は中止となりました。そのため、」なら、続きは中止という条件に沿う必要があります。モデルが「時間どおりにお越しください」と続けたなら、否定や文脈上の関係を十分に扱えていない可能性があります。アーキテクチャによって情報を結び付けられると知っても、それはこうした関係を扱う仕組みがあることを示すだけで、毎回忠実に生成できる保証にはなりません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-transformer/diagram-1-ja.svg",
+          "alt": "文字単位に位置情報を加え、自己アテンションとフィードフォワード処理を経て、タスクの出力を生成します。生成時は参照が許可された文脈だけを使います。",
+          "width": 1600,
+          "height": 900,
+          "caption": "図は関係を示したものであり、実在するモデルの層数、アテンションの重み、測定結果を示すものではありません。",
+          "description": "文字単位に位置情報を加え、自己アテンションとフィードフォワード処理を経て、タスクの出力を生成します。生成時は参照が許可された文脈だけを使います。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "語順の入れ替えと否定文で実際の能力を確認する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "独自のテストとして、「管理人が講師に時間の変更を依頼する」と「講師が管理人に時間の変更を依頼する」を用意し、依頼した人をモデルに答えさせます。さらに、「明日は開放する」を「明日は開放しない」に変え、要約で否定が保持されるかを観察します。これらの入力はわずかな変更でも異なる出力を求めるため、モデルが重要な関係に基づいて判断しているかを直接確認できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "期待される答えは文に応じて変わり、根拠となる原文の箇所を示せる必要があります。どちらの文にも同じ役割の人物を答える場合は、プロンプトが明確か、入力全体が渡されているか、その語順でモデルがどう振る舞うかを確認すべきです。アテンションの可視化である名前に線がつながっているのを見ただけで、回答全体の因果的な根拠が証明されたと考えてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "アテンションの重みは研究に役立ちますが、意思決定の完全な説明ではありません。最終結果には他の演算や複数の層の組み合わせも関わるため、単一の重みの図ですべての原因を説明することはできません。アプリケーションの利用者にとっては、再現可能な入力の変更と出力の確認のほうが、科学的に見えるヒートマップよりも、タスクの信頼性を判断するうえで役立つことが一般的です。"
+        },
+        {
+          "type": "heading",
+          "text": "長い文脈には能力とコストの両面がある",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "一般的な完全自己アテンションの設計では、系列内の位置同士を組み合わせることで、計算やメモリの負担が増えます。個々のシステムは、異なる形式のアテンション、キャッシュ、実装の最適化によってコストを抑えられます。そのため、コンテキストウィンドウの容量だけから速度、価格、品質を推測することはできず、すべての Transformer に同じコスト計算式を一律に当てはめるのも適切ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長いファイルには、データ選択の問題もあります。地域の規約全文を入力できても、すべての段落が同じように回答に役立つわけではなく、離れた箇所にある例外をモデルが正しく統合できる保証もありません。まず質問に関連する、出典付きの段落を提供し、条件が保持されるかをテストしてから、内容を増やすかどうかを決められます。アーキテクチャの能力とコンテキストエンジニアリングの両方が結果に影響します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer は現代のモデルを理解するための重要な基盤ですが、技術的な構造の一部を説明するにすぎません。モデルが何を学んだか、学習目標は何か、データやツールをどう配置するかも、実際の能力に影響します。ある製品がこのアーキテクチャを採用していると読んだら、その名称を品質認証と見なすのではなく、自分の入力、言語、受け入れ基準のもとでどのような性能を示すかを、さらに問うべきです。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "構成要素・概念",
+            "主な役割",
+            "避けたい誤解"
+          ],
+          "rows": [
+            [
+              "自己アテンション",
+              "参照可能な文脈に応じて位置情報を統合する",
+              "人間の主観的な注意とは異なる"
+            ],
+            [
+              "位置情報",
+              "語順と位置関係を保持する",
+              "単語の集合が同じでも、意味が同じとは限らない"
+            ],
+            [
+              "因果マスク",
+              "生成時に参照できる位置を制限する",
+              "並列学習は全文の同時生成を意味しない"
+            ]
+          ],
+          "caption": "Transformer の基本的な役割（2026 年 9 月に確認）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "最小限の変更で関係の理解を試す",
+          "text": "文中の二人の名前を入れ替えるか、否定語を加え、答えもそれに応じて変わるかを確認します。アーキテクチャの定義を暗唱できるかを見るだけより、実際のタスク能力を確かめられます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大規模言語モデル（Large Language Model）とは",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "モデルパラメータ（Model Parameters）とは",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "コンテキストウィンドウ（Context Window）とは：容量と理解の違い",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Vaswani ほか：必要なのはアテンションだけ",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TensorFlow：Transformer によるニューラル機械翻訳",
+          "url": "https://www.tensorflow.org/text/tutorials/transformer",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "Transformer 아키텍처(Transformer)란 무엇인가",
+      "description": "Transformer는 어텐션 메커니즘으로 시퀀스 내 관계를 처리하는 신경망 아키텍처로, 많은 언어 모델과 멀티모달 모델의 중요한 기반이다. 이 글은 행사 공지의 대명사와 어순 예시를 통해 셀프 어텐션, 위치 정보, 피드포워드 네트워크, 마스크가 어떻게 협력하는지 설명하고, 원래의 인코더·디코더 설계와 이후 변형을 구분한다. 모델이 컨텍스트를 활용하는 방식을 이해하고, 어텐션 가중치가 인간의 주의나 완전한 의사결정 설명은 아니며 긴 시퀀스에는 여전히 연산과 검증 비용이 든다는 점도 알 수 있다.",
+      "hero": {
+        "src": "/guides/ai-term-transformer/hero-ko.jpg",
+        "alt": "여러 텍스트 블록이 교차 연결선으로 관계를 맺고, 위치 받침대가 순서를 유지해 Transformer의 시퀀스 정보 교환을 상징한다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Transformer는 어텐션 메커니즘을 이용해 시퀀스 요소 사이에서 정보를 교환하는 신경망 아키텍처다. 많은 언어 모델이 이 아키텍처나 관련 변형을 기반으로 한다.",
+            "Transformer는 단일 채팅 제품이 아니다. ‘어텐션’은 기술 용어로, 모델이 인간처럼 주관적으로 주의를 기울인다는 뜻은 아니며, 어텐션 가중치도 완전한 의사결정 설명은 아니다.",
+            "위치 정보는 모델이 어순을 처리하게 한다. 디코더만 사용하는 생성 모델은 보통 인과 마스크로 아직 생성하지 않은 위치를 미리 보지 못하게 한다.",
+            "아키텍처 이름은 품질 인증이 아니다. 문장 속 두 이름을 서로 바꾸거나 부정어 하나를 추가하는 최소한의 변경으로 실제 능력을 점검할 수 있다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Transformer는 어텐션 메커니즘을 이용해 시퀀스 요소 사이에서 정보를 교환하고, 모델이 현재 컨텍스트와 관련된 표현을 구성하게 하는 신경망 아키텍처다. 단일 채팅 제품이 아니며, "
+            },
+            {
+              "type": "article",
+              "text": "인공지능",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 전체를 뜻하지도 않는다. 많은 언어 모델이 이 아키텍처나 관련 변형을 기반으로 한다. 이미지와 다른 데이터에도 비슷한 접근법을 사용할 수 있지만, 구체적인 구성 요소와 용도는 같지 않을 수 있다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer를 이해하려고 먼저 행렬 계산을 전부 해 볼 필요는 없다. 문장의 서로 다른 부분이 어떻게 영향을 주고받는지부터 살펴볼 수 있다. 아래에서는 직접 만든 지역사회 행사 공지 문장으로 설명하고, 원래 논문과 TensorFlow의 공식 구현 튜토리얼을 참고한다. 이는 개념을 보여 주는 예시이며, 그림의 연결선을 특정 실제 모델의 측정 결과로 제시하는 것은 아니다. 자료 검증 기준일은 2026년 9월 14일이다."
+        },
+        {
+          "type": "heading",
+          "text": "어텐션은 현재 내용을 다른 위치와 연결한다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Vaswani 등의 원래 논문은 당시 흔히 쓰이던 순환 처리 설계를 대체하는, 어텐션 중심의 시퀀스 변환 아키텍처를 제안했다. 셀프 어텐션은 시퀀스의 한 위치가 현재 표현을 바탕으로 볼 수 있는 다른 위치들을 참조하고, 현재 작업에 유용한 정보를 통합하게 한다. 이 연산에서 ‘어텐션’은 기술 용어이며, 모델이 인간처럼 주관적으로 주의를 기울이거나 의도를 가진다는 뜻은 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 만든 예문은 다음과 같다. “관리자는 접이식 탁자를 휴게실로 옮겼는데, 내일 그곳에서 강연이 열리기 때문이다.” ‘그곳’을 이해하려면 바로 옆의 한 글자만 볼 것이 아니라 휴게실과 앞뒤 맥락을 참조해야 한다. 셀프 어텐션은 서로 다른 위치가 정보를 교환하는 계산 방식을 제공하지만, 휴게실과 올바르게 연결하는지는 여전히 훈련과 구체적인 입력에 달려 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "흔히 쓰이는 설명에는 쿼리, 키, 값, 즉 query, key, value가 등장한다. 현재 표현을 변환해 만든 서로 다른 역할로 이해할 수 있다. 각각 비교를 요청하고, 비교 기준을 제공하며, 통합할 내용을 담는 데 쓰인다. 모두 학습된 수치 연산이며, 사람이 미리 중국어 글자마다 주어, 장소, 대명사라는 표지를 수작업으로 붙여 놓은 것이 아니다."
+        },
+        {
+          "type": "heading",
+          "text": "위치 정보가 어순을 보존한다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "단어의 집합만 있다면 많은 문장의 의미를 구분하기 어려워진다. 예를 들어 “샤오린이 샤오천에게 알려 준다”와 “샤오천이 샤오린에게 알려 준다”는 같은 이름과 동작을 사용하지만, 누가 누구에게 알려 주는지가 다르다. Transformer가 순서와 상대적 관계를 처리하려면 위치 관련 정보가 필요하다. 원래 아키텍처는 위치 인코딩을 제공했고, 이후에는 다른 위치 표현 방식도 등장했다. 특정 방식을 모든 모델이 사용하는 유일한 방법으로 여겨서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "멀티헤드 어텐션은 모델이 학습된 서로 다른 투영을 통해 관계를 처리하고, 그 결과를 합치게 한다. 여러 관찰 각도에 비유하면 이해에 도움이 되지만, 특정 헤드는 언제나 문법을, 다른 헤드는 언제나 상식을 담당한다고 단정해서는 안 된다. 실제 모델의 기능 분포가 사람이 쉽게 이름 붙일 수 있는 분류와 일치할 필요는 없으며, 개념도는 연산의 역할 분담만 보여 준다."
+        },
+        {
+          "type": "paragraph",
+          "text": "아키텍처에는 어텐션만 있는 것이 아니다. 피드포워드 네트워크, 잔차 연결, 정규화 등의 구성 요소가 표현 변환과 훈련을 돕는다. ‘어떤 글자가 가장 중요한지 살펴본다’고만 설명하면 실제 연산의 상당 부분이 빠진다. 일반 독자는 어텐션이 서로 다른 위치 사이에서 정보를 교환하고, 다른 층들이 이 표현을 계속 가공한다는 점만 알아도 모델 전체를 단순한 키워드 가중치 계산기로 오해하지 않을 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "인코더, 디코더, 마스크의 차이",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "원래 Transformer는 인코더와 디코더를 포함하며, 번역처럼 입력 시퀀스를 다른 시퀀스로 변환하는 데 흔히 쓰인다. 인코더는 입력 표현을 만들고, 디코더는 이미 생성한 내용과 관련 표현을 바탕으로 출력을 생성한다. TensorFlow 튜토리얼은 이 구조와 마스크 사용법을 보여 주며, 추상적인 블록도에 그치지 않고 실행 가능한 공식 구현을 통해 이해할 수 있게 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이후에는 인코더에 중점을 두거나 디코더만 사용하는 모델도 등장했다. 디코더만 사용하는 생성 모델은 보통 주어진 컨텍스트를 바탕으로 다음 token을 차례로 생성하며, 인과 마스크를 통해 관련 연산에서 아직 생성하지 않은 위치를 미리 보지 못하게 한다. 이는 훈련할 때 여러 위치의 손실을 동시에 계산할 수 있다는 것과는 다른 개념이다. 병렬 훈련을 답변의 모든 글자를 동시에 결정한다는 뜻으로 잘못 설명해서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "공지 이어 쓰기를 예로 들면, 입력이 “강연이 취소되었다. 따라서”일 때 이어지는 내용은 취소라는 조건에 부합해야 한다. 모델이 “제시간에 참석해 주세요”라고 이어 쓴다면 부정이나 컨텍스트의 관계를 충분히 처리하지 못했을 수 있다. 아키텍처가 정보를 서로 연결할 수 있다는 사실은 이런 관계를 처리하는 메커니즘이 있다는 점만 설명할 뿐, 생성 결과가 매번 입력에 충실하다고 보장하지는 않는다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-transformer/diagram-1-ko.svg",
+          "alt": "텍스트 단위에 위치 정보를 더한 뒤 셀프 어텐션과 피드포워드 처리를 거쳐 작업 출력을 만든다. 생성할 때는 볼 수 있도록 허용된 컨텍스트만 사용한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "그림은 관계를 보여 주며, 실제 모델의 층수, 어텐션 가중치 또는 측정 결과를 나타내지는 않는다.",
+          "description": "텍스트 단위에 위치 정보를 더한 뒤 셀프 어텐션과 피드포워드 처리를 거쳐 작업 출력을 만든다. 생성할 때는 볼 수 있도록 허용된 컨텍스트만 사용한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "어순 변경과 부정문으로 실제 능력 점검하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "직접 만든 두 테스트 문장인 “관리자가 강사에게 시간을 바꿔 달라고 요청한다”와 “강사가 관리자에게 시간을 바꿔 달라고 요청한다”를 준비하고, 모델에 요청한 사람이 누구인지 답하게 할 수 있다. 이어서 “내일 개방한다”를 “내일 개방하지 않는다”로 바꾸고 요약에 부정이 유지되는지 살펴본다. 이 입력들은 내용이 조금만 달라져도 서로 다른 출력을 요구하므로, 모델이 핵심 관계에 따라 판단하는지 직접 점검할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "기대하는 답은 문장에 따라 달라져야 하며, 원문에서 근거를 짚을 수 있어야 한다. 두 문장에 모두 같은 역할의 인물이라고 답한다면 프롬프트가 명확한지, 입력이 빠짐없이 전달되었는지, 모델이 이런 어순을 얼마나 잘 처리하는지 점검해야 한다. 어텐션 시각화가 특정 이름을 가리킨다는 이유만으로 답변 전체를 만들어 낸 인과관계가 증명됐다고 여겨서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "어텐션 가중치는 연구에 도움이 되지만 완전한 의사결정 설명은 아니다. 최종 결과는 다른 연산과 여러 층의 조합도 거치므로, 가중치 그림 하나로 모든 원인을 설명할 수는 없다. 응용 서비스를 사용하는 사람에게는 재현 가능한 입력 변경과 출력 점검이 과학적으로 보이는 히트맵 한 장보다 작업의 신뢰성을 더 잘 보여 주는 경우가 많다."
+        },
+        {
+          "type": "heading",
+          "text": "긴 컨텍스트에는 능력과 비용이 함께 따른다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 전체 셀프 어텐션 설계에서는 시퀀스의 위치들을 서로 짝지어 계산하므로 연산과 메모리 부담이 커진다. 구체적인 시스템은 다른 어텐션 방식, 캐시, 구현 최적화를 통해 비용을 줄일 수 있다. 따라서 컨텍스트 윈도 용량만 보고 속도, 가격, 품질을 추론해서는 안 되며, 모든 Transformer에 동일한 비용 공식을 일률적으로 적용해서도 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "긴 파일은 데이터 선택 문제도 가져온다. 지역사회 규정 전체를 입력할 수 있다고 해서 모든 문단이 답변에 똑같이 도움이 되는 것은 아니며, 멀리 떨어진 예외 조항을 모델이 올바르게 통합한다고 보장할 수도 없다. 먼저 질문과 관련된 문단을 출처와 함께 제공하고, 조건이 유지되는지 테스트한 뒤 내용을 더 넣을지 결정할 수 있다. 아키텍처의 능력과 컨텍스트 엔지니어링이 함께 결과에 영향을 준다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer는 현대 모델을 이해하는 중요한 기초지만, 기술 구조의 일부만 설명한다. 모델이 무엇을 학습했는지, 훈련 목표가 무엇인지, 데이터와 도구를 어떻게 구성했는지가 모두 실제 능력에 영향을 준다. 어떤 제품이 이 아키텍처를 사용한다는 설명을 읽었다면, 아키텍처 이름을 품질 인증으로 여기기보다 자신의 입력, 언어, 검수 조건에서 어떤 성능을 보이는지 이어서 물어야 한다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "구성 요소 또는 개념",
+            "주요 역할",
+            "피해야 할 오해"
+          ],
+          "rows": [
+            [
+              "셀프 어텐션",
+              "볼 수 있는 컨텍스트에 따라 위치별 정보를 통합",
+              "인간의 주관적 주의와 같지 않음"
+            ],
+            [
+              "위치 정보",
+              "어순과 위치 관계를 보존",
+              "단어 집합이 같아도 의미가 같지는 않음"
+            ],
+            [
+              "인과 마스크",
+              "생성할 때 볼 수 있는 위치를 제한",
+              "병렬 훈련이 전체 텍스트의 동시 생성을 뜻하지는 않음"
+            ]
+          ],
+          "caption": "Transformer의 몇 가지 기본 역할(2026년 9월 검증)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "최소한의 변경으로 관계 테스트하기",
+          "text": "문장 속 두 이름을 서로 바꾸거나 부정어 하나를 추가한 뒤, 답도 그에 따라 달라지는지 확인한다. 모델이 아키텍처의 정의를 외워 말할 수 있는지만 보는 것보다 실제 작업 능력을 더 잘 테스트할 수 있다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "대규모 언어 모델(Large Language Model)이란 무엇인가",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "모델 매개변수(Model Parameters)란 무엇인가",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "컨텍스트 윈도(Context Window)란 무엇인가: 용량과 이해의 차이",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 총색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Vaswani 외: 어텐션만 있으면 된다",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TensorFlow: Transformer를 이용한 신경망 기계 번역",
+          "url": "https://www.tensorflow.org/text/tutorials/transformer",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "Transformer 架构（Transformer）是什么",
+      "description": "Transformer 是以注意力机制处理序列关系的神经网络架构，也是许多语言与多模态模型的重要基础。本文用活动公告中的代词与语序例子，说明自注意力、位置信息、前馈网络和掩码如何协作，区分原始编码器解码器设计与后来的变体。读完能理解模型如何利用上下文，也知道注意力权重不是人类注意力或完整的决策解释，长序列仍有计算与验证成本。",
+      "hero": {
+        "src": "/guides/ai-term-transformer/hero-zh-cn.jpg",
+        "alt": "数个文字积木以交叉连线建立关系，位置底座维持顺序，象征 Transformer 的序列信息交换。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Transformer 是一种神经网络架构，利用注意力机制在序列元素之间交换信息，许多语言模型以它或相关变体为基础。",
+            "它不是单一聊天产品；“注意力”是技术名称，不表示模型具有人的主观注意，注意力权重也不是完整的决策解释。",
+            "位置信息让模型处理语序，只用解码器的生成模型则通常通过因果掩码，避免偷看尚未生成的位置。",
+            "架构名称不是质量认证，实际能力可以用交换句中两个名字或加入一个否定词的最小改动来检查。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Transformer 是一种神经网络架构，利用注意力机制在序列元素之间交换信息，让模型建立与当前上下文有关的表示。它不是单一聊天产品，也不等于所有"
+            },
+            {
+              "type": "article",
+              "text": "人工智能",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "。许多语言模型以它或相关变体为基础，图像与其他数据也能使用相近思路，但具体组件与用途不一定相同。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "读懂 Transformer 不必先算完矩阵，可以先看一句话中不同部分如何相互影响。以下用社区活动公告的原创句子说明，并参考原始论文与 TensorFlow 的官方实现教程。这是概念示意，不把图上的连线当作某个真实模型的测量结果。资料查证截至 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "注意力把当前内容与其他位置连接起来",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Vaswani 等人的原始论文提出以注意力为核心的序列转换架构，取代当时常见的循环式处理设计。自注意力让序列中的一个位置，根据当前的表示参考其他可见位置，再整合对当前任务有用的信息。这种计算中的“注意力”是技术名称，不表示模型具有人的主观注意或意图。"
+        },
+        {
+          "type": "paragraph",
+          "text": "原创句子是：“管理员把折叠桌移到交谊厅，因为那里明天要办讲座。”理解“那里”时，需要参考交谊厅与前后关系，而不是只看相邻的一个字。自注意力提供一种让不同位置交换信息的计算方式，但是否正确关联到交谊厅，仍取决于训练与具体输入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "常见说明会提到查询、键与值，也就是 query、key、value。可以把它们理解为从当前表示转换出的不同角色：用于发起匹配、提供匹配依据和承载被整合的内容。它们都是学到的数值运算，不是有人先把每个中文字手动标成主语、地点或代词。"
+        },
+        {
+          "type": "heading",
+          "text": "位置信息让语序不会消失",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "如果只有词的集合，很多句子的意思会混在一起。例如“小林提醒小陈”与“小陈提醒小林”使用相同名字和动作，但谁提醒谁不同。Transformer 需要位置相关信息，才能处理顺序和相对关系。原始架构提供位置编码，后来也有不同的位置表示方式，不能把某一种写法视为所有模型的唯一做法。"
+        },
+        {
+          "type": "paragraph",
+          "text": "多头注意力则让模型以不同的学习投影处理关系，之后再合并结果。可以用多个观察角度帮助理解，但不应宣称某一头固定负责语法、另一头固定负责常识。真实模型中的功能分布不必符合人类容易命名的分类，示意图只呈现计算分工。"
+        },
+        {
+          "type": "paragraph",
+          "text": "架构也不只有注意力。前馈网络、残差连接与归一化等组件协助转换表示和训练。若只说“它看哪些字最重要”，会省略大量实际计算。对一般读者，知道注意力在不同位置之间交换信息，而其他层继续加工这些表示，就足以避免把整个模型误解成简单的关键词加权器。"
+        },
+        {
+          "type": "heading",
+          "text": "编码器、解码器与掩码的区别",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原始 Transformer 包含编码器与解码器，常用于把输入序列转成另一个序列，例如翻译。编码器建立输入表示；解码器根据已生成内容与相关表示生成输出。TensorFlow 的教程展示这种结构与掩码的使用，提供可运行的官方实现说明，而不是只停留在抽象框图上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "后来也有侧重编码器或只使用解码器的模型。只用解码器的生成模型，通常根据已知上下文逐步生成后续 token，并通过因果掩码避免在相关计算中偷看尚未生成的位置。这与训练时可以同时计算多个位置的损失是不同概念，不能把并行训练误说成回答的所有字都同时决定。"
+        },
+        {
+          "type": "paragraph",
+          "text": "以公告续写为例，输入是“讲座取消，因此”，预期后续应和取消这个条件一致。模型若续写“请准时到场”，可能没有充分处理否定或上下文关系。知道架构能让信息相互连接，只能说明它有处理这种关系的机制，不能保证每次生成都忠实。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-transformer/diagram-1-zh-cn.svg",
+          "alt": "文字单元加入位置信息后进入自注意力与前馈处理，再生成任务输出；生成时只使用允许看见的上下文。",
+          "width": 1600,
+          "height": 900,
+          "caption": "图示呈现关系，并非真实模型的层数、注意力权重或测量结果。",
+          "description": "文字单元加入位置信息后进入自注意力与前馈处理，再生成任务输出；生成时只使用允许看见的上下文。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "用换序与否定句检查实际能力",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以准备两句原创测试：“管理员请讲师改时间”与“讲师请管理员改时间”，要求模型指出提出要求的人。再把“明天开放”改成“明天不开放”，观察摘要是否保留否定。这些输入只改少量内容，却要求不同输出，能直接检查模型是否根据关键关系做判断。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期答案必须随句子改变，且能指向原句作为支持。若两句都回复同一个角色，应检查提示是否清楚、输入有没有完整传入，以及模型在这种语序上的表现。不要看到注意力可视化连向某个名字，就认为已证明整个答案的因果来源。"
+        },
+        {
+          "type": "paragraph",
+          "text": "注意力权重有助研究，但不是完整的决策解释。最终结果还经过其他计算和多层组合，单一权重图无法涵盖所有原因。对应用用户，可复现的输入变化与输出检查，通常比一张看起来很科学的热力图更能说明任务是否可靠。"
+        },
+        {
+          "type": "heading",
+          "text": "长上下文有能力，也有代价",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "在一般完整自注意力设计中，序列位置彼此配对会增加计算与内存负担；具体系统可以用不同注意力形式、缓存与实现优化降低成本。因此不能只看上下文窗口容量就推断速度、价格或质量，也不宜把所有 Transformer 一概套用相同的成本公式。"
+        },
+        {
+          "type": "paragraph",
+          "text": "长文件还带来数据选择问题。能输入整份社区规章，不表示每段都同样有助回答，也不保证模型会正确整合远处的例外。可以先提供与问题相关且带来源的段落，测试是否保留条件，再决定要不要增加内容。架构能力与上下文工程共同影响结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Transformer 是理解现代模型的重要基础，但它只描述技术结构的一部分。模型学到什么、训练目标、数据与工具如何安排，都会影响实际能力。读到某产品采用这种架构时，应接着问它在你的输入、语言和验收条件下表现如何，而不是把架构名称当成质量认证。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "组件或概念",
+            "主要作用",
+            "避免的误解"
+          ],
+          "rows": [
+            [
+              "自注意力",
+              "根据可见上下文整合位置信息",
+              "不等于人的主观注意"
+            ],
+            [
+              "位置信息",
+              "保留语序与位置关系",
+              "相同词集合不代表相同意思"
+            ],
+            [
+              "因果掩码",
+              "限制生成时可见位置",
+              "并行训练不等于全文同时生成"
+            ]
+          ],
+          "caption": "Transformer 的几个基本角色（2026 年 9 月查证）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "用最小改动测关系",
+          "text": "交换句中两个名字，或加入一个否定词，再确认答案是否跟着改变。这比单看模型能否背出架构定义，更能测出实际任务能力。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "大型语言模型（Large Language Model）是什么",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型参数（Model Parameters）是什么",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "上下文窗口（Context Window）是什么：容量与理解的区别",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Vaswani 等：注意力就是你所需要的一切",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "TensorFlow：使用 Transformer 进行神经机器翻译",
           "url": "https://www.tensorflow.org/text/tutorials/transformer",
           "checked_on": "2026-09-14"
         }

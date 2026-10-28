@@ -4,13 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
   "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "過度擬合（過擬合，Overfitting）是什麼：考古題全對、新題卻答錯",
@@ -385,6 +387,1518 @@
         },
         {
           "title": "Recht 等人 2019：Do ImageNet Classifiers Generalize to ImageNet?（arXiv:1902.10811）",
+          "url": "https://arxiv.org/abs/1902.10811",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Overfitting? Acing Past Exam Questions, Failing New Ones",
+      "description": "Overfitting means learning even the noise and exceptions in training data: near-perfect training results, poor performance on unseen data. Illustrative error curves explain training, validation and test sets and contrast underfitting. Covers more data, regularization, dropout and early stopping, research on deep networks memorizing random labels, and leaked benchmark questions that make models appear capable.",
+      "hero": {
+        "src": "/guides/ai-term-overfitting/hero-en.jpg",
+        "alt": "Two lines beside data points: one bends sharply through every point; the other follows the trend smoothly. A new point at the right lies on the smooth line, far from the jagged one.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Overfitting is a common machine learning failure: the model fits training data too closely, learning even noise and exceptions. It gets almost everything right during training but answers incorrectly on new data.",
+            "Detect overfitting using data the model has never seen: training error keeps falling while validation error rises. Google's materials call this divergence a strong signal.",
+            "More data, regularization, dropout and early stopping may not work; adjust them using validation error. Save the test set for one final evaluation: changing settings after seeing test scores makes those scores overly optimistic.",
+            "After benchmark questions leak, scores may measure only memorization. Lower scores on new questions are a warning, but the cause needs separate investigation."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Overfitting is a common "
+            },
+            {
+              "type": "article",
+              "text": "machine learning",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": " failure: the model fits training data too closely, learning even noise and exceptions. It gets almost everything right during training but answers incorrectly on new data, like memorizing past exam questions and stumbling on a different exam. Chinese terminology varies: the National Academy for Educational Research's terminology database uses guodu nihe in most fields and in entries tagged artificial intelligence, and also lists guo nihe and guodu peishi; Google's Traditional Chinese materials mostly use guodu peishi. This article uses guodu nihe for overfitting and follows the database in using didu nihe for the opposite case, underfitting."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The following explains how to split data, read the curves and understand the remedies, then discusses research on networks memorizing random labels and leaked benchmark questions."
+        },
+        {
+          "type": "heading",
+          "text": "Training, Validation and Test Sets Each Have a Job",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "To find out whether a model is overfitting, evaluate it on data it has never seen. Google's Machine Learning Crash Course recommends splitting data into three sets: the training set adjusts parameters; the validation set is used repeatedly during development to compare settings; the test set is reserved for a final check. Each example can belong to only one set."
+        },
+        {
+          "type": "paragraph",
+          "text": "Chapter 5 of Deep Learning by Goodfellow et al. is more explicit: the test set must not influence any choices, including hyperparameters. The validation set should be split off from the training data; a common split is roughly eighty percent for training and twenty percent for validation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's materials also warn that test examples duplicated in the training set produce unrealistically good scores and must be removed first."
+        },
+        {
+          "type": "heading",
+          "text": "Example: Where Two Error Curves Diverge",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Example (invented figures, not actual training results): train a classifier on hotel reviews to predict whether guests will book again. After each training epoch, record the error rates on the training and validation sets:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Epoch 1: training error 30%, validation error 31%.",
+            "Epoch 8: training error 8%, validation error 12%, the lowest validation error.",
+            "Epoch 20: training error falls to 1%, but validation error rises to 20%."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "During the first 8 epochs, both curves fall as the model learns more general patterns. After that, training error keeps falling while validation error rises, indicating that it has begun memorizing particular wording and exceptions. Google's materials describe loss curves that initially fall together and then diverge as a strong signal of overfitting."
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow et al. define underfitting as being unable to reduce training error sufficiently, and overfitting as having too large a gap between training and test error. Looking only at the 1% at epoch 20 would make that model seem best; considering both curves, the version around epoch 8 is more reliable."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-overfitting/diagram-1-en.svg",
+          "alt": "Illustrative error curves: training error keeps falling; validation error rises after its minimum at epoch 8. The gap is largest at epoch 20.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The illustrative figures are invented for teaching. Overfitting appears where validation error starts rising and the curves diverge.",
+          "description": "An illustrative chart with invented teaching values, not actual training results. The horizontal axis shows training epochs; the vertical axis shows error rate. Dark green training error falls from 30% at epoch 1 to 1% at epoch 20. Orange validation error falls from 31% to 12% at epoch 8, then rises to 20% at epoch 20. Before epoch 8, both lines fall, indicating that the model is still learning general patterns. After epoch 8, the lines diverge and the gap grows, indicating overfitting. Early stopping would select the epoch 8 version. Notes on the right: both falling means the model is still learning patterns; falling training error and rising validation error mean overfitting; both high means underfitting.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Distinguishing Underfitting, a Good Fit and Overfitting",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's materials broadly divide the causes into two categories: training data that does not represent real-world data, or an overly complex model. Goodfellow et al. use \"capacity\" to describe the range of functions a model can fit. Excessive capacity may let it memorize details that are useless on new data."
+        },
+        {
+          "type": "table",
+          "header": [
+            "State",
+            "Training and Validation Error",
+            "What to Try First"
+          ],
+          "rows": [
+            [
+              "Underfitting",
+              "Both high, small gap",
+              "Change features, train for more epochs, reduce regularization strength"
+            ],
+            [
+              "Good fit",
+              "Both low, small gap",
+              "Keep this version; evaluate once on the test set at the end"
+            ],
+            [
+              "Overfitting",
+              "Low training error, high validation error, large gap",
+              "Add data, strengthen regularization, stop early"
+            ],
+            [
+              "Leaked questions",
+              "High scores on public questions, substantially lower on new questions",
+              "Retest with new, unpublished questions"
+            ]
+          ],
+          "caption": "Conceptual comparison based on Google's Machine Learning Crash Course, Chapter 5 of Deep Learning and the GSM1k paper; information current through 2026-10."
+        },
+        {
+          "type": "heading",
+          "text": "Common Remedies: What Each One Does",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "More data: Goodfellow et al. consider this the best way to improve generalization—performance on new data—but the data must be representative.",
+            "Data augmentation: create new examples by modifying existing ones without changing their answers, such as shifting an image by a few pixels.",
+            "Regularization: penalize model complexity during training. L2 regularization, also called weight decay, pushes weights toward 0; excessive strength causes underfitting.",
+            "dropout (called \"dropout regularization\" in Google's Traditional Chinese glossary): randomly and temporarily remove some units at each training step so that units cannot rely solely on particular other units.",
+            "Early stopping: stop when validation error no longer improves, retaining the parameters from the epoch with the lowest error. Google's materials say it is fast but rarely optimal.",
+            "Simplify the model: reduce features or model size to lower capacity."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "dropout first appeared in Hinton et al.'s 2012 preprint and was explained fully in Srivastava et al.'s 2014 journal paper. Its purpose is to reduce overfitting in large "
+            },
+            {
+              "type": "article",
+              "text": "neural networks",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": ". None of these remedies is guaranteed to work. Which ones to use, and at what strength, must still be guided by validation error."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Networks Can Memorize Random Answers: Zhang et al.'s 2017 Experiment",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In their paper published at ICLR 2017, Zhang et al. replaced the labels in CIFAR10 (small images in 10 classes) and ImageNet with random labels, then trained standard image classification networks as usual. Training error on CIFAR10 still fell to 0 or nearly 0, and training accuracy on ImageNet reached 95.20%, while test performance on both fell to chance level. On CIFAR10, the networks could even memorize images replaced with pure noise."
+        },
+        {
+          "type": "paragraph",
+          "text": "The comparison in Table 1 of the paper: on CIFAR10, with data augmentation and weight decay disabled, the same network achieved 100% training accuracy and 85.75% test accuracy with real labels. With random labels, training accuracy was still 100%, but test accuracy was only 9.78%, close to the 10% chance level for 10 classes."
+        },
+        {
+          "type": "paragraph",
+          "text": "The authors concluded that these networks have enough effective capacity to memorize the entire training dataset, and that traditional complexity measures cannot distinguish good from poor generalization. Explicit regularization such as weight decay and dropout may improve generalization, but it is neither necessary nor sufficient on its own to control the gap between training and test performance."
+        },
+        {
+          "type": "paragraph",
+          "text": "What the paper did not say also needs to be clear: it did not say large networks always overfit real data—the same network still achieved 85.75% on new images. It did not say regularization is useless, nor did it resolve why networks can generalize. The experiments covered only image classification and cannot be applied directly to large language models."
+        },
+        {
+          "type": "paragraph",
+          "text": "Thus, \"larger models are more prone to overfitting\" is not a universal rule. In 2019, Nakkiran et al. observed that test error first fell, then rose, then fell again as models grew larger in settings including CIFAR-10 and CIFAR-100 image classification and IWSLT'14 German-to-English translation. This is called double descent. The peak occurred where the model could just drive training error close to 0. The effect was strongest with noisy training labels, and in some settings, adding examples actually worsened performance."
+        },
+        {
+          "type": "heading",
+          "text": "Leaked Questions: Apparent Competence on Benchmarks",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "A 2023 position paper by Sainz et al. identifies the most serious form of data contamination as a large language model seeing a "
+            },
+            {
+              "type": "article",
+              "text": "benchmark",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "'s test questions during training and later being evaluated on that same benchmark, inflating its score. A test set measures real ability only if its questions are new to the model; once questions leak, scores may measure only memorization."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Even without leakage, a model can gradually be tuned to a test set: Goodfellow et al. write that evaluations become overly optimistic when the research community uses the same test set for years."
+        },
+        {
+          "type": "paragraph",
+          "text": "In 2024, Hugh Zhang et al. commissioned humans to write 1,205 new questions matching the style and difficulty of GSM8K, a benchmark of grade-school math word problems. This new set, GSM1k, was not public when the paper was released. In their settings, model accuracy dropped by up to about 8%. Models more likely to generate original GSM8K questions generally showed larger gaps (Spearman r² = 0.36), suggesting that some models may have memorized the original questions. However, many models showed almost no gap, and all models overall could still solve new questions."
+        },
+        {
+          "type": "paragraph",
+          "text": "Leakage and overfitting do not have a one-to-one relationship either: some models showed large gaps without appearing to have memorized the original questions. The authors suggested that they might have used data very similar to the benchmark, or selected model versions using benchmark scores. A small amount of leakage does not necessarily cause overfitting, either. In 2019, Recht et al. created new test sets for CIFAR-10 and ImageNet. The various models they evaluated lost 3% to 15% and 11% to 14% in accuracy, respectively. However, they attributed this mainly to insufficient generalization to slightly harder new images, rather than repeated use of the test sets. Lower scores on new questions are a warning; the cause requires separate investigation."
+        },
+        {
+          "type": "heading",
+          "text": "Applying This When Training, Fine-Tuning or Reading Scores",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "On an existing model, "
+            },
+            {
+              "type": "article",
+              "text": "fine-tuning",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": " also continues training using your own data. You still need to set aside validation and test sets first, remove duplicate examples, and pause to compare versions when validation error rises."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "When reading someone else's scores, first ask whether the questions were public and whether the model was retested on new questions. The answers cannot prove that the model is problem-free; they only help you judge how much to discount its scores."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "Use the Test Set to Evaluate, Never to Tune",
+          "text": "If you change settings after seeing test scores, the test set becomes another validation set, making scores overly optimistic. Use the validation set for adjustments, reserve the test set for one final evaluation, and replace it with fresh data once it has been used too much."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "To look up other terms, start with the "
+            },
+            {
+              "type": "article",
+              "text": "AI Terminology Index",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Machine Learning Crash Course: Overfitting (overfitting, underfitting and generalization curves)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: Dividing the original dataset (training, validation and test sets, and duplicate examples)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: Model complexity (model complexity and regularization)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: L2 regularization (regularization rate and early stopping)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/regularization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Glossary (entries for overfitting, underfitting, early stopping and dropout regularization)",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course, Traditional Chinese edition: Overfitting (official Chinese terminology comparison)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "National Academy for Educational Research terminology database: overfitting search results (guodu nihe, guo nihe, guodu peishi)",
+          "url": "https://terms.naer.edu.tw/search/?&query_term=overfitting&query_field=title&query_op=and",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow, Bengio, Courville: Deep Learning, Chapter 5, Machine Learning Basics (full text on the authors' official website)",
+          "url": "https://www.deeplearningbook.org/contents/ml.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow, Bengio, Courville: Deep Learning, Chapter 7, Regularization for Deep Learning (full text on the authors' official website)",
+          "url": "https://www.deeplearningbook.org/contents/regularization.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Srivastava et al. 2014: Dropout: A Simple Way to Prevent Neural Networks from Overfitting (JMLR 15)",
+          "url": "https://jmlr.org/papers/v15/srivastava14a.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hinton et al. 2012: Improving neural networks by preventing co-adaptation of feature detectors (arXiv:1207.0580; earliest dropout preprint)",
+          "url": "https://arxiv.org/abs/1207.0580",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang et al. 2017: Understanding deep learning requires rethinking generalization (ICLR 2017, arXiv:1611.03530)",
+          "url": "https://arxiv.org/abs/1611.03530",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Nakkiran et al. 2019: Deep Double Descent: Where Bigger Models and More Data Hurt (arXiv:1912.02292)",
+          "url": "https://arxiv.org/abs/1912.02292",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Sainz et al. 2023: NLP Evaluation in trouble: On the Need to Measure LLM Data Contamination for each Benchmark (arXiv:2310.18018)",
+          "url": "https://arxiv.org/abs/2310.18018",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang et al. 2024: A Careful Examination of Large Language Model Performance on Grade School Arithmetic (GSM1k, arXiv:2405.00332)",
+          "url": "https://arxiv.org/abs/2405.00332",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Recht et al. 2019: Do ImageNet Classifiers Generalize to ImageNet? (arXiv:1902.10811)",
+          "url": "https://arxiv.org/abs/1902.10811",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "ja": {
+      "title": "過学習（過適合、Overfitting）とは：過去問は全問正解、新しい問題では誤答",
+      "description": "過学習とは、モデルが訓練データのノイズや例外まで学んでしまうことです。訓練ではほぼ全問正解でも、未知のデータでは精度が落ちます。誤差曲線の例で訓練・検証・テストセットの役割を説明し、学習不足との違いや、データの追加、正則化、dropout、早期終了などの対策を整理します。深層ネットワークがランダムなラベルを暗記できるという研究や、ベンチマークの問題流出によって「できるように見える」現象も解説します。",
+      "hero": {
+        "src": "/guides/ai-term-overfitting/hero-ja.jpg",
+        "alt": "データ点のそばに二本の線。一方は激しく折れ曲がって全点を通り、もう一方は全体の傾向に沿って滑らかに伸びる。右端の新しい点は滑らかな線上にあり、折れ曲がる線からは遠い",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "過学習は機械学習でよく起こる失敗です。モデルが訓練データに合わせすぎてノイズや例外まで学び、訓練ではほぼ全問正解でも、新しいデータでは間違えます。",
+            "過学習の判断には、モデルが見たことのないデータでの測定が必要です。訓練誤差が下がり続ける一方で検証誤差が上がり始める分岐を、Google の教材は強い兆候としています。",
+            "データの追加、正則化、dropout、早期終了などの対策は、どれも効果を保証するものではなく、検証誤差を見て調整します。テストセットは最後の一度の測定用に残します。テストスコアを見て設定を変えると、スコアは楽観的になります。",
+            "ベンチマークの問題が流出すると、スコアが測っているのは記憶だけかもしれません。新しい問題でのスコア低下は警告ですが、原因は別途調べる必要があります。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "過学習（overfitting）は、"
+            },
+            {
+              "type": "article",
+              "text": "機械学習",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "でよく起こる失敗です。モデルが訓練データに合わせすぎてノイズや例外まで学び、訓練ではほぼ全問正解でも、新しいデータでは間違えます。過去問を暗記しても、別の試験になると実力を発揮できないようなものです。中国語の訳語は統一されていません。国家教育研究院の樂詞網では、多くの分野と人工知能と明記された項目で「過度擬合」を使い、「過擬合」「過度配適」も収録しています。Google の繁体字中国語教材では主に「過度配適」を使います。本稿の原文では「過度擬合」を採用し、反対の状態である学習不足（underfitting）は、樂詞網に従い「低度擬合」と表記しています。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "以下ではデータの分け方、曲線の読み方、対策の働きを説明し、続いてネットワークがランダムなラベルを暗記する研究と、ベンチマークの問題流出を取り上げます。"
+        },
+        {
+          "type": "heading",
+          "text": "訓練・検証・テストセットはそれぞれ役割が違う",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルが過学習しているかを知るには、見たことのないデータで測定する必要があります。Google の機械学習集中講座は、データを三つに分けることを勧めています。訓練セットでパラメータを調整し、検証セットは開発中に繰り返し使って設定を比較し、テストセットは最後の確認用に残します。各データは、いずれか一つのセットだけに属する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow らの『Deep Learning』第 5 章は、さらに明確に説明しています。テストセットは、ハイパーパラメータも含め、いかなる選択にも使ってはいけません。検証セットは訓練データからさらに切り出し、一般的には約八割を訓練、二割を検証に使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の教材は、テストセットに訓練セットと重複する例が混ざると、不自然なほど良いスコアになるため、先に削除するよう注意しています。"
+        },
+        {
+          "type": "heading",
+          "text": "例：二本の誤差曲線はどこで分かれるか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "例として、ホテルのレビューから旅行者が再予約するかを判定する分類器を訓練します。数値は説明用に作成したもので、実際に訓練した結果ではありません。訓練を一巡するたびに、訓練セットと検証セットの誤り率を記録します。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "1 エポック目：訓練誤差は 30%、検証誤差は 31%。",
+            "8 エポック目：訓練誤差は 8%、検証誤差は 12% で、検証誤差が最小になります。",
+            "20 エポック目：訓練誤差は 1% に下がりますが、検証誤差は 20% に上がります。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "最初の 8 エポックでは両方の線が下がり、モデルはより一般的な規則性を学んでいます。その後、訓練誤差が下がり続ける一方で検証誤差が上がるのは、個別の言葉遣いや例外を覚え始めたことを示します。Google の教材は、初めは一緒に下がり、その後分かれる損失曲線を、過学習の強い兆候としています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow らの定義では、訓練誤差を十分に下げられない状態が学習不足で、訓練誤差とテスト誤差の差が大きすぎる状態が過学習です。20 エポック目の 1% だけを見るとモデルが最良に思えますが、両方の線を見ると、8 エポック目前後のほうが信頼できます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-overfitting/diagram-1-ja.svg",
+          "alt": "誤差曲線の例：訓練誤差は下がり続け、検証誤差は 8 エポック目に最小となった後で上昇する。両者の差は 20 エポック目に最大となる",
+          "width": 1600,
+          "height": 900,
+          "caption": "数値は教材用に作成した例です。検証誤差が上がり始め、二本の線が分かれるところが、過学習の現れる地点です。",
+          "description": "説明用の図。数値は教材用に作成したもので、実際に訓練した結果ではない。横軸は訓練のエポック数、縦軸は誤り率。濃い緑色の訓練誤差は、1 エポック目の 30% から 20 エポック目の 1% まで下がり続ける。オレンジ色の検証誤差は 31% から 8 エポック目の 12% まで下がった後に上昇し、20 エポック目には 20% になる。8 エポック目までは両方の線が下がり、モデルがまだ一般的な規則性を学んでいることを示す。8 エポック目を過ぎると線が分かれ、差が広がっていく。これが過学習で、早期終了では 8 エポック目のバージョンを採用する。右側の説明：両方が下がる間は規則性を学習中、訓練誤差が下がって検証誤差が上がると過学習、両方とも高いと学習不足。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "学習不足・適切な学習・過学習の見分け方",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の教材は、原因を大きく二つに分けています。訓練データが実際のデータを代表していない場合と、モデルが複雑すぎる場合です。Goodfellow らは、モデルがどれほど多様な関数に適合できるかを「容量」と呼びます。容量が大きすぎると、新しいデータには役立たない細部まで覚える可能性があります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "状態",
+            "訓練誤差と検証誤差",
+            "まず試せること"
+          ],
+          "rows": [
+            [
+              "学習不足",
+              "両方とも高く、差は小さい",
+              "特徴量を変える、訓練を数エポック増やす、正則化を弱める"
+            ],
+            [
+              "適切な学習",
+              "両方とも低く、差は小さい",
+              "このバージョンを残し、最後にテストセットで一度測定する"
+            ],
+            [
+              "過学習",
+              "訓練誤差は低く、検証誤差は高い。差が大きい",
+              "データを追加する、正則化を強める、早期終了する"
+            ],
+            [
+              "問題流出",
+              "公開問題のスコアは高く、新しい問題では明らかに低い",
+              "未公開の新しい問題で再評価する"
+            ]
+          ],
+          "caption": "Google 機械学習集中講座、『Deep Learning』第 5 章、GSM1k 論文に基づく概念比較。情報は 2026 年 10 月時点。"
+        },
+        {
+          "type": "heading",
+          "text": "よく使われる対策：それぞれ何をするのか",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "データの追加：Goodfellow らは、汎化（generalization、新しいデータに対する性能）を高める最良の方法としています。ただし、データには代表性が必要です。",
+            "データ拡張：既存のサンプルに正解を変えない変化を加え、新しいサンプルとして使います。例えば画像を数ピクセル平行移動させます。",
+            "正則化：訓練時にモデルの複雑さにもペナルティを与えます。L2 正則化（重み減衰とも呼ばれる）は重みを 0 に近づけますが、強すぎると学習不足になります。",
+            "dropout（Google の繁体字中国語用語集では「丟棄正則化」）：訓練時に毎回ランダムに一部のユニットを一時的に取り除き、特定のほかのユニットだけに依存できないようにします。",
+            "早期終了：検証誤差が改善しなくなったら停止し、検証誤差が最小だったエポックのパラメータを使います。Google の教材は、手早い方法ですが、最善の方法であることはまれだとしています。",
+            "モデルの簡素化：特徴量を減らすかモデルを小さくし、容量を下げます。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "dropout は Hinton らの 2012 年のプレプリントで初めて示され、Srivastava らの 2014 年の学術誌論文で詳しく説明されました。目的は、大規模な"
+            },
+            {
+              "type": "article",
+              "text": "ニューラルネットワーク",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "の過学習を減らすことです。これらの対策は、どれも効果を保証するものではありません。どれを選び、どの程度の強さにするかは、検証誤差を見て判断する必要があります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "ネットワークはランダムな答えも暗記できる：Zhang らの 2017 年の実験",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Zhang らが ICLR 2017 で発表した論文では、CIFAR10（10 クラスの小さな画像）と ImageNet のラベルをランダムなものに置き換え、標準的な画像分類ネットワークを通常どおり訓練しました。CIFAR10 の訓練誤差はそれでも 0 またはほぼ 0 になり、ImageNet の訓練正解率も 95.20% に達しましたが、テストではいずれも当てずっぽうの水準でした。CIFAR10 の画像を純粋なノイズに置き換えても暗記できました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文の表 1 の比較では、CIFAR10 で同じネットワークのデータ拡張と重み減衰を無効にした場合、正しいラベルでは訓練正解率が 100%、テスト正解率が 85.75% でした。ランダムなラベルでは訓練正解率は同じく 100% でも、テスト正解率は 9.78% にとどまり、10 クラスを当てずっぽうで選ぶ 10% に近い値でした。"
+        },
+        {
+          "type": "paragraph",
+          "text": "著者らの結論は、これらのネットワークの実効容量は訓練データ全体を暗記するのに十分であり、従来の複雑さの指標では汎化の良し悪しを見分けられないというものです。重み減衰や dropout などの明示的な正則化は汎化を改善する可能性がありますが、必須ではなく、それだけで訓練とテストの差を抑えることもできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "論文が述べていないことも区別する必要があります。大きなネットワークが実際のデータで必ず過学習するとは述べておらず、同じネットワークは新しい画像でも 85.75% の正解率を保っています。正則化が無意味だとも述べておらず、ネットワークが汎化できる理由も解明していません。実験は画像分類に限られ、大規模言語モデルにそのまま当てはめることはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "そのため、「モデルが大きいほど過学習しやすい」を一般則にはできません。Nakkiran らは 2019 年、CIFAR-10、CIFAR-100 の画像分類や IWSLT'14 のドイツ語から英語への翻訳などの設定で、モデルを大きくするとテスト誤差が下がり、上がり、再び下がる二重降下（double descent）を観察しました。ピークは、モデルがちょうど訓練誤差をほぼ 0 にできる地点にあります。訓練ラベルにノイズがあるときに最も顕著で、一部の設定ではサンプルを増やすとかえって悪化しました。"
+        },
+        {
+          "type": "heading",
+          "text": "問題流出：ベンチマークでの「できるように見える」現象",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Sainz らの 2023 年のポジションペーパーは、最も深刻なデータ汚染として、大規模言語モデルが訓練中にある"
+            },
+            {
+              "type": "article",
+              "text": "ベンチマーク",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "のテスト問題を見た後、同じベンチマークで評価され、成績が過大評価されることを挙げています。テストセットが本当の実力を測れるのは、問題がモデルにとって未知であることが前提です。問題が流出すると、スコアが測っているのは記憶だけかもしれません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "流出がなくても、少しずつテストセットに合わせ込まれる可能性があります。Goodfellow らは、研究コミュニティが同じテストセットを長年使うと、評価が楽観的になると述べています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugh Zhang らは 2024 年、GSM8K（小学校の算数文章題のベンチマーク）の形式と難易度に合わせて、人の手で新たに 1,205 問を作成し、発表時には非公開の GSM1k を用意しました。この実験設定では、モデルの正解率は最大で約 8% 下がりました。モデルが GSM8K の元の問題を生成する確率が高いほど、差もおおむね大きく（Spearman r² = 0.36）、一部のモデルは元の問題を暗記していた可能性があります。ただし、多くのモデルでは差がほぼなく、全体として、すべてのモデルが新しい問題も解けていました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "流出と過学習は一対一で対応するわけでもありません。差が大きくても元の問題を暗記したようには見えないモデルもあり、著者らは、ベンチマークによく似たデータを使ったか、ベンチマークのスコアでバージョンを選んだためではないかと推測しています。少量の流出が必ず過学習を引き起こすわけでもありません。Recht らは 2019 年、CIFAR-10 と ImageNet のテストセットを作り直し、評価した複数のモデルで正解率がそれぞれ 3% から 15%、11% から 14% 下がりました。ただし、主因はテストセットの繰り返し使用ではなく、少し難しい新しい画像にモデルが十分に汎化できないことだとしています。新しい問題でのスコア低下は警告ですが、原因は別途調べる必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "自分で訓練・微調整するときやスコアを読むときの活用法",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "既存のモデルへの"
+            },
+            {
+              "type": "article",
+              "text": "ファインチューニング",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "も、自分のデータを使って訓練を続けることです。同じように、先に検証セットとテストセットを切り出して重複する例を削除し、検証誤差が上がり始めたら停止して比較する必要があります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ほかの人のスコアを読むときは、まず問題が公開済みだったか、新しい問題で再評価したかを確認しましょう。その答えだけでモデルに問題がないとは証明できませんが、スコアをどれだけ割り引いて見るべきかを判断する助けになります。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "テストセットは確認用。調整には使わない",
+          "text": "テストスコアを見て設定を変えると、テストセットはもう一つの検証セットになり、スコアは楽観的になります。調整には検証セットを使い、テストセットは最後の一度の測定用に残しましょう。使い古したら新しいデータに替えます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ほかの用語を調べるには、"
+            },
+            {
+              "type": "article",
+              "text": "AI 用語総索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "から探してみてください。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 機械学習集中講座：過学習（過学習・学習不足・汎化曲線）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 機械学習集中講座：元のデータセットの分割（訓練・検証・テストセットと重複サンプル）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 機械学習集中講座：モデルの複雑さ（モデルの複雑さと正則化）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 機械学習集中講座：L2 正則化（正則化率と早期終了）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/regularization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 機械学習用語集（過学習、学習不足、早期終了、ドロップアウト正則化の項目）",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 機械学習集中講座・繁体字中国語版：過学習（公式訳語「過度配適」との対照）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "国家教育研究院・樂詞網：overfitting の検索結果（訳語「過度擬合」「過擬合」「過度配適」）",
+          "url": "https://terms.naer.edu.tw/search/?&query_term=overfitting&query_field=title&query_op=and",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow、Bengio、Courville：『Deep Learning』第 5 章「機械学習の基礎」（著者公式サイトの全文）",
+          "url": "https://www.deeplearningbook.org/contents/ml.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow、Bengio、Courville：『Deep Learning』第 7 章「深層学習の正則化」（著者公式サイトの全文）",
+          "url": "https://www.deeplearningbook.org/contents/regularization.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Srivastava ら 2014：ドロップアウト：ニューラルネットワークの過学習を防ぐ簡単な方法（JMLR 15）",
+          "url": "https://jmlr.org/papers/v15/srivastava14a.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hinton ら 2012：特徴検出器の共適応を防ぐことによるニューラルネットワークの改善（arXiv:1207.0580、dropout の最初のプレプリント）",
+          "url": "https://arxiv.org/abs/1207.0580",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang ら 2017：深層学習を理解するには汎化を考え直す必要がある（ICLR 2017、arXiv:1611.03530）",
+          "url": "https://arxiv.org/abs/1611.03530",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Nakkiran ら 2019：深層学習の二重降下：大きなモデルと多いデータが逆効果になるとき（arXiv:1912.02292）",
+          "url": "https://arxiv.org/abs/1912.02292",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Sainz ら 2023：危機にある NLP 評価：ベンチマークごとに LLM のデータ汚染を測定する必要性（arXiv:2310.18018）",
+          "url": "https://arxiv.org/abs/2310.18018",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang ら 2024：小学校算数における大規模言語モデルの性能の慎重な検証（GSM1k、arXiv:2405.00332）",
+          "url": "https://arxiv.org/abs/2405.00332",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Recht ら 2019：ImageNet 分類器は ImageNet に汎化するか？（arXiv:1902.10811）",
+          "url": "https://arxiv.org/abs/1902.10811",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "ko": {
+      "title": "과적합(과잉 적합, Overfitting)이란: 기출문제는 다 맞히지만 새 문제는 틀린다",
+      "description": "과적합은 모델이 학습 데이터의 잡음과 예외까지 학습하는 현상이다. 학습할 때는 거의 다 맞히지만 처음 보는 데이터에서는 정확도가 떨어진다. 예시 오차 곡선으로 학습·검증·테스트 세트의 역할을 설명하고 과소적합과 비교하며, 데이터 추가, 정규화, dropout, 조기 종료 등의 대책을 정리한다. 심층 신경망이 무작위 레이블까지 외운다는 연구와 벤치마크 문제 유출로 인한 ‘잘하는 듯한 모습’도 살펴본다.",
+      "hero": {
+        "src": "/guides/ai-term-overfitting/hero-ko.jpg",
+        "alt": "데이터 점 옆에 두 선이 있다. 하나는 심하게 꺾이며 모든 점을 지나고, 다른 하나는 전체 추세를 매끄럽게 따른다. 오른쪽의 새 점은 매끄러운 선 위에 있으며 꺾인 선과는 멀리 떨어져 있다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "과적합은 머신러닝에서 흔히 나타나는 실패다. 모델이 학습 데이터에 지나치게 맞춰져 잡음과 예외까지 학습하면, 학습할 때는 거의 다 맞히지만 새 데이터에서는 틀린다.",
+            "과적합 여부는 모델이 보지 못한 데이터로 측정해야 한다. 학습 오차는 계속 줄지만 검증 오차가 다시 커지는 양상을 Google 교재는 강력한 신호로 본다.",
+            "데이터 추가, 정규화, dropout, 조기 종료 등의 대책은 효과를 보장하지 않으므로 검증 오차를 보며 조정해야 한다. 테스트 세트는 마지막에 한 번 측정하도록 남겨 둔다. 테스트 점수를 보고 설정을 바꾸면 점수가 낙관적으로 치우친다.",
+            "벤치마크 문제가 유출되면 점수가 측정하는 것은 기억력뿐일 수 있다. 새 문제에서 점수가 떨어지면 경고 신호지만, 원인은 따로 조사해야 한다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "과적합(overfitting)은 "
+            },
+            {
+              "type": "article",
+              "text": "머신러닝",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "에서 흔히 나타나는 실패다. 모델이 학습 데이터에 지나치게 맞춰져 잡음과 예외까지 학습하면, 학습할 때는 거의 다 맞히지만 새 데이터에서는 틀린다. 기출문제를 외워 두었다가 시험지가 바뀌면 실력을 발휘하지 못하는 것과 같다. 중국어 번역 명칭은 통일되어 있지 않다. 국가교육연구원 러츠왕은 대부분의 분야와 인공지능으로 표시된 항목에서 ‘過度擬合’을 쓰며, ‘過擬合’과 ‘過度配適’도 수록한다. Google 번체 중국어 교재는 주로 ‘過度配適’을 쓴다. 이 글의 중국어 원문에서는 ‘過度擬合’을 쓰며, 반대 상황인 과소적합(underfitting)은 러츠왕에 따라 ‘低度擬合’으로 표기한다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "아래에서는 데이터를 나누는 방법, 곡선을 읽는 방법, 각 대책의 역할을 설명한 뒤, 신경망이 무작위 레이블을 외운다는 연구와 벤치마크 문제 유출을 살펴본다."
+        },
+        {
+          "type": "heading",
+          "text": "학습·검증·테스트 세트는 각각 역할이 다르다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델이 과적합되었는지 알려면 모델이 보지 못한 데이터로 측정해야 한다. Google 머신러닝 단기집중과정은 데이터를 세 부분으로 나누도록 권한다. 학습 세트는 매개변수를 조정하는 데 쓰고, 검증 세트는 개발 과정에서 설정을 비교하는 데 반복해서 쓰며, 테스트 세트는 마지막 확인을 위해 남겨 둔다. 각 데이터는 이 중 하나에만 속해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow 등의 《Deep Learning》 제 5 장은 더 명확하게 설명한다. 테스트 세트는 하이퍼파라미터를 포함한 어떤 선택에도 관여해서는 안 되며, 검증 세트는 학습 데이터에서 따로 나눠야 한다. 보통 열에 여덟은 학습용, 둘은 검증용으로 나눈다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 교재도 테스트 세트에 학습 세트와 중복되는 예제가 섞이면 점수가 비정상적으로 좋아지므로 먼저 삭제해야 한다고 강조한다."
+        },
+        {
+          "type": "heading",
+          "text": "예시: 두 오차 곡선은 어디서 갈라질까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "예시(수치는 설명을 위해 만든 것으로 실제 학습 결과가 아님): 호텔 리뷰로 분류기를 학습시켜 여행객의 재예약 여부를 판단한다. 학습을 한 회차 마칠 때마다 학습 세트와 검증 세트의 오류율을 기록한다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "1회차: 학습 오차 30%, 검증 오차 31%.",
+            "8회차: 학습 오차 8%, 검증 오차 12%로, 검증 오차가 가장 낮다.",
+            "20회차: 학습 오차는 1%로 내려가지만 검증 오차는 20%로 다시 올라간다."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "처음 8회차까지 두 선이 함께 내려가는 동안 모델은 더 일반적인 규칙을 학습한다. 이후 학습 오차는 계속 줄지만 검증 오차는 커진다면 개별 표현과 예외를 외우기 시작했다는 뜻이다. Google 교재는 이처럼 처음에는 함께 움직이다가 나중에 갈라지는 손실 곡선을 과적합의 강력한 신호로 본다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow 등의 정의에 따르면, 학습 오차를 낮추지 못하는 것은 과소적합이고 학습 오차와 테스트 오차의 차이가 너무 큰 것은 과적합이다. 20회차의 1%만 보면 모델이 가장 좋다고 생각하기 쉽지만, 두 선을 함께 보면 8회차 부근이 더 믿을 만하다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-overfitting/diagram-1-ko.svg",
+          "alt": "예시 오차 곡선: 학습 오차는 계속 내려가고 검증 오차는 8회차에 최저점을 찍은 뒤 다시 올라가며, 두 선의 차이는 20회차에 가장 크다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "예시 수치는 교육용으로 만든 설정이다. 검증 오차가 다시 커지면서 두 선이 갈라지는 지점이 과적합이 나타나는 곳이다.",
+          "description": "예시 그림으로, 수치는 교육용으로 만든 설정이며 실제 학습 결과가 아니다. 가로축은 학습 회차, 세로축은 오류율이다. 짙은 녹색 학습 오차는 1회차의 30%에서 20회차의 1%까지 계속 내려간다. 주황색 검증 오차는 31%에서 8회차의 12%까지 내려갔다가 다시 올라가 20회차에는 20%가 된다. 8회차 전에는 두 선이 함께 내려가며, 모델이 여전히 일반적인 규칙을 학습하고 있음을 뜻한다. 8회차 이후 두 선이 갈라지고 차이가 점점 커지는 것이 과적합이며, 조기 종료는 8회차의 버전을 선택한다. 오른쪽 설명: 함께 내려가면 아직 규칙을 학습하는 중이고, 학습 오차는 내려가는데 검증 오차가 올라가면 과적합이며, 둘 다 높으면 과소적합이다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "과소적합·적정 적합·과적합을 구분하는 법",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 교재는 원인을 크게 두 가지로 나눈다. 학습 데이터가 실제 데이터를 대표하지 못하거나, 모델이 지나치게 복잡한 경우다. Goodfellow 등은 모델이 얼마나 다양한 함수에 맞출 수 있는지를 ‘용량’으로 설명한다. 용량이 너무 크면 새 데이터에는 쓸모없는 세부 사항까지 외울 수 있다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "상태",
+            "학습 오차와 검증 오차",
+            "먼저 시도할 방법"
+          ],
+          "rows": [
+            [
+              "과소적합",
+              "둘 다 높고 차이가 작음",
+              "특성 변경, 학습 회차 추가, 정규화 강도 낮추기"
+            ],
+            [
+              "적정 적합",
+              "둘 다 낮고 차이가 작음",
+              "이 버전을 보관하고 마지막에 테스트 세트로 한 번 측정"
+            ],
+            [
+              "과적합",
+              "학습 오차는 낮고 검증 오차는 높으며 차이가 큼",
+              "데이터 추가, 정규화 강화, 조기 종료"
+            ],
+            [
+              "문제 유출",
+              "공개 문제의 점수는 높고 새 문제에서는 뚜렷하게 낮음",
+              "비공개 새 문제로 다시 평가"
+            ]
+          ],
+          "caption": "Google 머신러닝 단기집중과정, 《Deep Learning》 제 5 장, GSM1k 논문을 바탕으로 정리한 개념 비교. 자료 기준: 2026년 10월."
+        },
+        {
+          "type": "heading",
+          "text": "흔한 대책: 각 방법은 어떤 역할을 할까",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "데이터 추가: Goodfellow 등은 일반화(generalization, 새 데이터에서의 성능)를 높이는 가장 좋은 방법으로 보지만, 데이터에 대표성이 있어야 한다.",
+            "데이터 증강: 기존 샘플에 정답이 바뀌지 않는 변화를 주어 새 샘플로 쓴다. 예를 들어 이미지를 몇 픽셀 평행 이동한다.",
+            "정규화: 학습할 때 모델의 복잡도에도 페널티를 준다. L2 정규화(가중치 감쇠라고도 함)는 가중치를 0에 가깝게 만든다. 강도가 너무 높으면 과소적합이 된다.",
+            "dropout(Google 번체 중국어 용어집에서는 ‘丟棄正則化’로 번역): 학습할 때마다 일부 유닛을 무작위로 잠시 제외해, 유닛이 특정한 다른 유닛에만 의존하지 못하게 한다.",
+            "조기 종료: 검증 오차가 더 좋아지지 않으면 멈추고, 검증 오차가 가장 낮았던 회차의 매개변수를 선택한다. Google 교재는 빠르지만 최선의 방법인 경우는 드물다고 설명한다.",
+            "모델 단순화: 특성을 줄이거나 모델을 작게 만들어 용량을 낮춘다."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "dropout은 Hinton 등의 2012년 프리프린트에서 처음 등장했고, Srivastava 등의 2014년 학술지 논문에서 상세히 설명되었다. 목적은 대규모 "
+            },
+            {
+              "type": "article",
+              "text": "신경망",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "의 과적합을 줄이는 것이다. 이런 방법들이 효과를 보장하지는 않는다. 어떤 방법을 골라 어느 정도 강도로 적용할지는 여전히 검증 오차를 보고 결정해야 한다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "신경망은 무작위 정답도 외운다: Zhang 등의 2017년 실험",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Zhang 등이 ICLR 2017에서 발표한 논문은 CIFAR10(10개 범주의 작은 이미지)과 ImageNet의 레이블을 무작위 레이블로 바꾸고, 표준 이미지 분류 신경망을 평소처럼 학습시켰다. CIFAR10의 학습 오차는 여전히 0 또는 0에 가까운 수준까지 내려갔고, ImageNet의 학습 정확도도 95.20%에 달했다. 반면 테스트 성능은 둘 다 무작위 추측 수준에 그쳤다. CIFAR10에서는 이미지를 순수한 잡음으로 바꿔도 외울 수 있었다."
+        },
+        {
+          "type": "paragraph",
+          "text": "논문 표 1의 비교를 보면, CIFAR10에서 같은 신경망의 데이터 증강과 가중치 감쇠를 끈 경우 실제 레이블을 쓰면 학습 정확도는 100%, 테스트 정확도는 85.75%였다. 무작위 레이블을 쓰면 학습 정확도는 여전히 100%였지만 테스트 정확도는 9.78%에 그쳐, 10개 범주를 무작위로 추측할 때의 10%에 가까웠다."
+        },
+        {
+          "type": "paragraph",
+          "text": "저자들의 결론은 이렇다. 이 신경망들의 유효 용량은 학습 데이터 전체를 외우기에 충분하며, 전통적인 복잡도 지표로는 일반화의 좋고 나쁨을 구분할 수 없다. 가중치 감쇠와 dropout 같은 명시적 정규화는 일반화를 개선할 수 있지만 필수는 아니며, 그것만으로 학습과 테스트 간 격차를 제어하기에도 충분하지 않다."
+        },
+        {
+          "type": "paragraph",
+          "text": "논문에서 말하지 않은 내용도 구분해야 한다. 대규모 신경망이 실제 데이터에서 반드시 과적합된다고 말한 것은 아니다. 같은 신경망은 새 이미지에서도 여전히 85.75%를 기록했다. 정규화가 쓸모없다고 말한 것도 아니며, 신경망이 왜 일반화할 수 있는지도 밝혀내지 못했다. 실험은 이미지 분류만 다뤘으므로 대규모 언어 모델에 바로 적용할 수 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "따라서 ‘모델이 클수록 과적합되기 쉽다’를 일반 법칙으로 삼을 수는 없다. Nakkiran 등은 2019년 CIFAR-10·CIFAR-100 이미지 분류와 IWSLT'14 독일어·영어 번역 등의 설정에서 모델이 커질수록 테스트 오차가 내려갔다가 올라간 뒤 다시 내려가는 이중 하강(double descent)을 관찰했다. 정점은 모델이 학습 오차를 간신히 0에 가깝게 낮출 수 있는 지점이었다. 학습 레이블에 잡음이 있을 때 가장 뚜렷했으며, 일부 설정에서는 샘플이 늘어날수록 오히려 성능이 나빠졌다."
+        },
+        {
+          "type": "heading",
+          "text": "문제 유출: 벤치마크에서 ‘잘하는 듯한 모습’",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Sainz 등의 2023년 입장 논문은 가장 심각한 데이터 오염을 대규모 언어 모델이 학습 중 어떤 "
+            },
+            {
+              "type": "article",
+              "text": "벤치마크",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "의 테스트 문제를 본 뒤 같은 벤치마크로 평가받아 성적이 과대평가되는 경우라고 지적한다. 테스트 세트가 진짜 실력을 측정하려면 모델에게 새로운 문제여야 한다. 문제가 유출되면 점수가 측정하는 것은 기억력뿐일 수 있다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "유출되지 않아도 조금씩 ‘맞춰질’ 수 있다. Goodfellow 등은 연구 공동체가 같은 테스트 세트를 여러 해 쓰면 평가가 낙관적으로 치우친다고 썼다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugh Zhang 등은 2024년 GSM8K(초등학교 수학 문장제 벤치마크)의 스타일과 난이도에 맞춰 사람이 1,205개 문제를 새로 작성하도록 했다. 이렇게 만든 GSM1k의 문제는 발표 당시 공개하지 않았다. 이들의 설정에서 모델 정확도는 최대 약 8% 하락했다. 모델이 GSM8K의 원래 문제를 생성할 확률이 높을수록 대체로 격차도 컸으며(Spearman r² = 0.36), 이는 일부 모델이 원래 문제를 외웠을 가능성을 보여 준다. 하지만 많은 모델은 격차가 거의 없었고, 전체적으로는 모든 모델이 여전히 새 문제를 풀 수 있었다."
+        },
+        {
+          "type": "paragraph",
+          "text": "유출과 과적합이 일대일로 대응하는 것도 아니다. 일부 모델은 격차가 컸지만 원래 문제를 외운 것처럼 보이지 않았다. 저자들은 벤치마크와 매우 비슷한 데이터를 썼거나 벤치마크 점수로 버전을 골랐기 때문이라고 추측했다. 소량의 유출이 반드시 과적합을 일으키는 것도 아니다. Recht 등은 2019년 CIFAR-10과 ImageNet의 테스트 세트를 새로 만들었다. 평가한 여러 모델의 정확도는 각각 3%에서 15%, 11%에서 14%만큼 낮아졌지만, 저자들은 주원인을 테스트 세트의 반복 사용이 아니라 조금 더 어려운 새 이미지에 대한 모델의 일반화 부족으로 보았다. 새 문제에서 점수가 떨어지면 경고 신호지만, 원인은 따로 조사해야 한다."
+        },
+        {
+          "type": "heading",
+          "text": "직접 학습·미세 조정하거나 점수를 읽을 때 활용하는 법",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "기존 모델을 "
+            },
+            {
+              "type": "article",
+              "text": "미세 조정",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "하는 것도 자신의 데이터로 학습을 이어 가는 일이다. 마찬가지로 검증 세트와 테스트 세트를 먼저 나누고 중복 예제를 삭제해야 하며, 검증 오차가 다시 커지면 멈추고 비교해야 한다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 사람의 점수를 읽을 때는 문제가 공개된 적이 있는지, 새 문제로 다시 평가했는지부터 확인하자. 그 답이 모델에 문제가 없음을 증명하지는 못하지만, 점수를 얼마나 낮춰 받아들여야 할지 판단하는 데는 도움이 된다."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "테스트 세트는 평가에만 쓰고 조정에는 쓰지 말자",
+          "text": "테스트 점수를 보고 설정을 바꾸면 테스트 세트는 또 다른 검증 세트가 되고, 점수는 낙관적으로 치우친다. 조정에는 검증 세트를 쓰고, 테스트 세트는 마지막에 한 번 측정하도록 남겨 두자. 오래 사용했다면 새 데이터로 바꾸자."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "다른 용어를 찾아보려면 "
+            },
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "에서 시작하면 된다."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google Machine Learning Crash Course: 과적합(과적합·과소적합·일반화 곡선)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: 원본 데이터 세트 나누기(학습·검증·테스트 세트와 중복 샘플)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: 모델 복잡도(모델 복잡도와 정규화)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Crash Course: L2 정규화(정규화율과 조기 종료)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/regularization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google Machine Learning Glossary(과적합·과소적합·조기 종료·드롭아웃 정규화 항목)",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 머신러닝 단기집중과정 번체 중국어판: 過度配適(공식 번역어 비교)",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "국가교육연구원 러츠왕: overfitting 검색 결과(過度擬合·過擬合·過度配適)",
+          "url": "https://terms.naer.edu.tw/search/?&query_term=overfitting&query_field=title&query_op=and",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow, Bengio, Courville: Deep Learning 제 5 장 머신러닝 기초(저자 공식 사이트 전문)",
+          "url": "https://www.deeplearningbook.org/contents/ml.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow, Bengio, Courville: Deep Learning 제 7 장 딥러닝의 정규화(저자 공식 사이트 전문)",
+          "url": "https://www.deeplearningbook.org/contents/regularization.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Srivastava 등 2014: Dropout: 신경망의 과적합을 방지하는 간단한 방법(JMLR 15)",
+          "url": "https://jmlr.org/papers/v15/srivastava14a.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hinton 등 2012: 특성 검출기의 공동 적응을 방지해 신경망 개선하기(arXiv:1207.0580, dropout의 최초 프리프린트)",
+          "url": "https://arxiv.org/abs/1207.0580",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang 등 2017: 딥러닝을 이해하려면 일반화를 다시 생각해야 한다(ICLR 2017, arXiv:1611.03530)",
+          "url": "https://arxiv.org/abs/1611.03530",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Nakkiran 등 2019: 심층 이중 하강: 더 큰 모델과 더 많은 데이터가 해가 되는 경우(arXiv:1912.02292)",
+          "url": "https://arxiv.org/abs/1912.02292",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Sainz 등 2023: 위기에 놓인 NLP 평가: 벤치마크별 LLM 데이터 오염 측정의 필요성(arXiv:2310.18018)",
+          "url": "https://arxiv.org/abs/2310.18018",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang 등 2024: 초등학교 산술에서 대규모 언어 모델의 성능에 대한 면밀한 검토(GSM1k, arXiv:2405.00332)",
+          "url": "https://arxiv.org/abs/2405.00332",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Recht 등 2019: ImageNet 분류기는 ImageNet에 일반화하는가?(arXiv:1902.10811)",
+          "url": "https://arxiv.org/abs/1902.10811",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "过度拟合（过拟合，Overfitting）是什么：历年真题全对，新题却答错",
+      "description": "过度拟合是模型连训练数据里的噪声与特例都学进去：训练时几乎全对，遇到没见过的数据就失准。用示例误差曲线说明训练集、验证集、测试集的分工，对照低度拟合，整理更多数据、正则化、dropout、提前停止等对策，并解读深度网络能记住随机标签的研究，以及基准测试题目泄露造成的“看起来会”。",
+      "hero": {
+        "src": "/guides/ai-term-overfitting/hero-zh-cn.jpg",
+        "alt": "数据点旁有两条线：一条剧烈弯折，穿过每个点，另一条平顺地沿着走势；右端的新点落在平顺线上，离弯折线很远",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "过度拟合是机器学习的常见失败：模型把训练数据贴得太紧，连噪声和特例都学进去，训练时几乎全对，遇到新数据就答错。",
+            "判断过度拟合要用模型没见过的数据来衡量：训练误差持续下降，验证误差却回升，Google 教材把这种分岔视为强烈信号。",
+            "更多数据、正则化、dropout、提前停止等对策都不保证有效，要根据验证误差调整；测试集留到最后测一次，看了测试分数就回头改设置，分数会偏乐观。",
+            "基准测试题目泄露后，分数衡量的可能只是记忆；新题掉分是警讯，但原因要另外查。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "过度拟合（overfitting）是"
+            },
+            {
+              "type": "article",
+              "text": "机器学习",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            },
+            {
+              "type": "text",
+              "text": "的常见失败：模型把训练数据贴得太紧，连噪声和特例都学进去，训练时几乎全对，遇到新数据就答错，像背熟历年真题，换一份试卷就发挥失常。译名不统一：国家教育研究院乐词网在多数领域以及标注为人工智能的词条中使用“过度拟合”，也收录“过拟合”“过度配适”；Google 繁体中文教材多用“过度配适”。这里采用“过度拟合”，相反情况（underfitting）依照乐词网写作“低度拟合”。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "以下说明数据怎么划分、曲线怎么看、对策在做什么，再谈网络记住随机标签的研究与基准测试的题目泄露。"
+        },
+        {
+          "type": "heading",
+          "text": "训练集、验证集、测试集各管一件事",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "要知道模型有没有过度拟合，得用它没见过的数据来衡量。Google 机器学习速成课程建议把数据分成三份：训练集用来调整参数；验证集在开发中反复用来比较设置；测试集留到最后确认。每条数据只能属于其中一份。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow 等人的《深度学习》第 5 章说得更明确：测试集不能参与任何选择，连超参数也不行，验证集要从训练数据中再划分出来，常见比例约为八成训练、两成验证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 教材也提醒，测试集混入和训练集重复的样本，分数会好得不合理，要先删掉。"
+        },
+        {
+          "type": "heading",
+          "text": "示例：两条误差曲线从哪里分岔",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（数字为编拟，未实际训练）：用酒店评论训练分类器，判断旅客会不会再次预订。每训练一轮，记下训练集与验证集的错误率："
+        },
+        {
+          "type": "list",
+          "items": [
+            "第 1 轮：训练误差 30%，验证误差 31%。",
+            "第 8 轮：训练误差 8%，验证误差 12%，是验证误差最低点。",
+            "第 20 轮：训练误差降到 1%，验证误差却回升到 20%。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "paragraph",
+          "text": "前 8 轮两条线一起往下，模型学到较普遍的规律；之后训练误差持续下降，验证误差上升，表示它开始记住个别用词和特例。Google 教材把这种先同步、后分岔的损失曲线视为过度拟合的强烈信号。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Goodfellow 等人的定义是：训练误差降不下来是低度拟合，训练与测试误差差距太大是过度拟合。只看第 20 轮的 1% 会以为模型最好，两条线一起看，第 8 轮附近才较可靠。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-overfitting/diagram-1-zh-cn.svg",
+          "alt": "示例误差曲线：训练误差一路下降，验证误差在第 8 轮最低后回升，两线差距在第 20 轮最大",
+          "width": 1600,
+          "height": 900,
+          "caption": "示例数字是为教学编拟的设置；验证误差开始回升、两条线分岔的地方，就是过度拟合出现的位置。",
+          "description": "示例图，数字是为教学编拟的设置，未实际训练。横轴是训练轮数，纵轴是错误率。深绿色的训练误差从第 1 轮的 30% 一路降到第 20 轮的 1%；橙色的验证误差从 31% 降到第 8 轮的 12% 后回升，第 20 轮到 20%。第 8 轮以前两条线一起降，代表模型还在学普遍规律；第 8 轮以后两线分岔，差距越拉越大，就是过度拟合，提前停止会取第 8 轮的版本。右侧说明：一起降是还在学规律，训练降而验证升是过度拟合，两条都高是低度拟合。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "低度拟合、刚好、过度拟合怎么分",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 教材把原因粗分为两类：训练数据不能代表真实数据，或模型太复杂。Goodfellow 等人用“容量”形容模型能拟合多少种函数，容量太高就可能记住对新数据没用的细节。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "状态",
+            "训练与验证误差",
+            "可以先试"
+          ],
+          "rows": [
+            [
+              "低度拟合",
+              "两者都高，差距小",
+              "换特征、多训练几轮、降低正则化强度"
+            ],
+            [
+              "刚好",
+              "两者都低，差距小",
+              "保留这个版本，最后用测试集测一次"
+            ],
+            [
+              "过度拟合",
+              "训练低、验证高，差距大",
+              "补数据、加强正则化、提前停止"
+            ],
+            [
+              "题目泄露",
+              "公开题分数高，新题明显较低",
+              "改用未公开的新题重测"
+            ]
+          ],
+          "caption": "概念对照，根据 Google 机器学习速成课程、《深度学习》第 5 章与 GSM1k 论文整理；资料截至 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "常见对策：每一招在做什么",
+          "level": 2
+        },
+        {
+          "type": "list",
+          "items": [
+            "更多数据：Goodfellow 等人认为这是提升泛化（generalization，对新数据的表现）的最佳办法，但数据要有代表性。",
+            "数据增强：对现有样本做不改变答案的变换，将其作为新样本，例如把图像平移几个像素。",
+            "正则化：训练时同时惩罚模型的复杂度。L2 正则化（又称权重衰减）把权重往 0 推，强度太高会变成低度拟合。",
+            "dropout（Google 繁体中文术语表译为“丢弃正则化”）：训练时每次随机暂时移除一部分单元，让单元无法只依赖特定的其他单元。",
+            "提前停止：验证误差不再改善就停，取误差最低那一轮的参数；Google 教材说这种方法很快，但很少是最佳做法。",
+            "简化模型：减少特征或缩小模型，降低容量。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "dropout 最早见于 Hinton 等人 2012 年的预印本，Srivastava 等人 2014 年的期刊论文再完整说明，目的是减少大型"
+            },
+            {
+              "type": "article",
+              "text": "神经网络",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "的过度拟合。这些招数都不保证有效，选哪几招、强度多少，仍要看验证误差。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "网络能记住随机答案：Zhang 等人 2017 年的实验",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Zhang 等人发表于 ICLR 2017 的论文，把 CIFAR10（10 类小图片）与 ImageNet 的标签换成随机标签，再用标准的图像分类网络照常训练：CIFAR10 上训练误差仍降到 0 或接近 0，ImageNet 上训练准确率也有 95.20%，测试则都只剩乱猜的水平；在 CIFAR10 上把图片换成纯噪声也能记住。"
+        },
+        {
+          "type": "paragraph",
+          "text": "论文表 1 的对照：在 CIFAR10 上，同一个网络关闭数据增强与权重衰减，用真实标签时训练准确率 100%、测试准确率 85.75%；用随机标签时训练仍是 100%，测试只有 9.78%，接近 10 类乱猜的 10%。"
+        },
+        {
+          "type": "paragraph",
+          "text": "作者的结论是：这些网络的有效容量足以记住整份训练数据，传统复杂度指标分不出泛化好坏；权重衰减、dropout 等显式正则化可能改善泛化，但既非必要，单靠它也不足以控制训练与测试的差距。"
+        },
+        {
+          "type": "paragraph",
+          "text": "它没说的事也要分清楚：没说大型网络在真实数据上一定过度拟合，同一个网络在新图片上仍有 85.75%；没说正则化没用，也没解开网络为何能泛化。实验只涵盖图像分类，不能直接套到大型语言模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "所以“模型越大越容易过度拟合”不能当通则。Nakkiran 等人 2019 年在 CIFAR-10、CIFAR-100 图像分类与 IWSLT'14 德英翻译等设置下，观察到测试误差随模型变大先降、再升、又降，即双下降（double descent），高峰在模型刚好能把训练误差压到接近 0 之处；训练标签含噪声时最明显，部分设置里样本变多反而更差。"
+        },
+        {
+          "type": "heading",
+          "text": "题目泄露：基准测试上的“看起来会”",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Sainz 等人 2023 年的立场论文指出，最严重的数据污染是大型语言模型训练时见过某个"
+            },
+            {
+              "type": "article",
+              "text": "基准测试",
+              "kind": "life",
+              "slug": "ai-term-benchmark"
+            },
+            {
+              "type": "text",
+              "text": "的测试题，之后又用同一个基准评测，成绩因而被高估。测试集能衡量真本事，前提是题目对模型是新的；题目泄露后，分数衡量的可能只是记忆。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "没泄露也可能被慢慢“调”进去：Goodfellow 等人写道，同一个测试集被研究界用了多年，评估会偏乐观。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Hugh Zhang 等人 2024 年请人工按照 GSM8K（小学数学应用题基准）的风格与难度，另写 1,205 题，组成发表时不公开的 GSM1k。在他们的设置下，模型准确率最多下降约 8%；模型生成 GSM8K 原题的概率越高，差距大致越大（Spearman r² = 0.36），显示部分模型可能背过原题。但许多模型几乎没有差距，所有模型整体上仍能解新题。"
+        },
+        {
+          "type": "paragraph",
+          "text": "泄露和过度拟合也不是一一对应：有的模型差距大，却不像背过原题，作者推测是用了和基准很像的数据，或用基准分数挑选版本；少量泄露也不一定造成过度拟合。Recht 等人 2019 年为 CIFAR-10 与 ImageNet 重做测试集，他们评估的多种模型准确率分别下降 3% 到 15% 与 11% 到 14%，但他们认为主因是模型对稍难一点的新图片泛化不足，不是测试集被反复使用。新题掉分是警讯，原因要另外查。"
+        },
+        {
+          "type": "heading",
+          "text": "自己训练、微调或读分数时怎么用",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "在已有模型上"
+            },
+            {
+              "type": "article",
+              "text": "微调",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "也是用自己的数据继续训练，同样要先划分出验证集与测试集、删掉重复的样本，验证误差回升就停下比较。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "读别人的分数时，先问题目是否公开过、有没有在新题上重测。答案不能证明模型没问题，只能帮你判断分数要打几折。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "测试集只能看，不能拿来调",
+          "text": "看了测试分数就回头改设置，测试集就成了另一份验证集，分数会偏乐观。调整用验证集，测试集留到最后测一次，用旧了就换新数据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想查其他术语，可以从"
+            },
+            {
+              "type": "article",
+              "text": "AI 术语总索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "找起。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google 机器学习速成课程：过度拟合（过度拟合、低度拟合、泛化曲线）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习速成课程：划分原始数据集（训练、验证、测试集与重复样本）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/dividing-datasets",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习速成课程：模型复杂度（模型复杂度与正则化）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/model-complexity",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习速成课程：L2 正则化（正则化率与提前停止）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/regularization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习术语表（过度拟合、低度拟合、提前停止、丢弃正则化词条）",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google 机器学习速成课程繁体中文版：过度配适（官方译名对照）",
+          "url": "https://developers.google.com/machine-learning/crash-course/overfitting/overfitting?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "国家教育研究院乐词网：overfitting 检索结果（过度拟合、过拟合、过度配适）",
+          "url": "https://terms.naer.edu.tw/search/?&query_term=overfitting&query_field=title&query_op=and",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow、Bengio、Courville：《深度学习》第 5 章《机器学习基础》（作者官网全文）",
+          "url": "https://www.deeplearningbook.org/contents/ml.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Goodfellow、Bengio、Courville：《深度学习》第 7 章《深度学习中的正则化》（作者官网全文）",
+          "url": "https://www.deeplearningbook.org/contents/regularization.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Srivastava 等人 2014：Dropout：防止神经网络过度拟合的简单方法（JMLR 15）",
+          "url": "https://jmlr.org/papers/v15/srivastava14a.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hinton 等人 2012：通过防止特征检测器的共同适应来改进神经网络（arXiv:1207.0580，dropout 最早的预印本）",
+          "url": "https://arxiv.org/abs/1207.0580",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang 等人 2017：理解深度学习需要重新思考泛化（ICLR 2017，arXiv:1611.03530）",
+          "url": "https://arxiv.org/abs/1611.03530",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Nakkiran 等人 2019：深度双下降：更大的模型和更多的数据反而有害的情形（arXiv:1912.02292）",
+          "url": "https://arxiv.org/abs/1912.02292",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Sainz 等人 2023：NLP 评估陷入困境：论衡量每个基准中 LLM 数据污染的必要性（arXiv:2310.18018）",
+          "url": "https://arxiv.org/abs/2310.18018",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Zhang 等人 2024：仔细审视大型语言模型在小学算术上的表现（GSM1k，arXiv:2405.00332）",
+          "url": "https://arxiv.org/abs/2405.00332",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Recht 等人 2019：ImageNet 分类器能泛化到 ImageNet 吗？（arXiv:1902.10811）",
           "url": "https://arxiv.org/abs/1902.10811",
           "checked_on": "2026-10-03"
         }

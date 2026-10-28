@@ -4,13 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
   "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "注意力機制（Attention）是什麼：模型怎麼決定要參考哪些 token",
@@ -308,6 +310,1210 @@
         },
         {
           "title": "Hugging Face Transformers 官方文件：How caching works（KV 快取）",
+          "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Attention? How Models Decide Which Tokens to Refer To",
+      "description": "Attention compares queries with keys to compute weights for each position in a sequence, then takes a weighted average of values to form a new representation. From 2014 translation alignment to the 2017 Transformer, examples explain Q, K, V, self-attention, cross-attention and multi-head attention. It also examines standard attention's quadratic cost growth with length and why attention weights cannot directly explain a model's reasons.",
+      "hero": {
+        "src": "/guides/ai-term-attention-mechanism/hero-en.jpg",
+        "alt": "A row of blocks represents words. Curves of varying thickness extend left from the rightmost block to other blocks; the thickest connects to a more distant block.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Attention is a computation: when processing a position, it scores the relevance of each available position, converts the scores into weights summing to 1, then takes a weighted average of those positions' content to form a new representation.",
+            "“Attention” means mathematical weighting, not conscious human focus. It lets distant words be compared directly within a single layer, at the cost of standard attention's computation growing roughly with the square of sequence length.",
+            "Weights describe the proportions used to mix content in a particular head of a particular layer. Weight maps are clues, not proof, and cannot directly explain why a model answered as it did."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Attention is a computation: when processing a position in a sequence, it scores the relevance of every position available to it, including itself in self-attention, converts the scores into weights summing to 1, then takes a weighted average of those positions' content to form a new representation. “Attention” is a name for mathematical weighting, not conscious human focus. It lets two distant words be compared directly within a single layer, at the cost of standard attention's computation growing roughly with the square of sequence length."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article moves from translation alignment to Q, K, V, self-attention and multi-head attention. It also explains why weights cannot directly be read as “the model's reasons” and how length relates to cost. Information is current as of 2026-10; material labeled “example” was devised for teaching and has not been empirically tested."
+        },
+        {
+          "type": "heading",
+          "text": "From translation alignment to attention alone",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "In 2014, Bahdanau et al. worked on machine translation. The encoder–decoder architectures common at the time first compressed the entire source sentence into a fixed-length vector, then generated the translation. Suspecting this was a bottleneck, they instead had the decoder, whenever it generated a target word, score the representations at each source position, convert the scores into weights, and take a weighted average to produce a context vector specific to that step. For scoring, they trained, together with the translation model, a small feedforward "
+            },
+            {
+              "type": "article",
+              "text": "neural network",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": ". In the paper's English–French translation experiments, the baseline architecture's performance declined markedly as sentences grew longer. The alignment-based version, trained on sentences up to 50 words long, showed no decline even on sentences longer than 50 words. This result applies to the paper's experimental setting."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "In 2017, Vaswani et al. noted that attention was usually combined with recurrent networks at the time. They proposed an approach relying entirely on attention, without recurrence or convolution: the "
+            },
+            {
+              "type": "article",
+              "text": "Transformer architecture",
+              "kind": "life",
+              "slug": "ai-term-transformer"
+            },
+            {
+              "type": "text",
+              "text": ". The paper defines attention as mapping a query and a set of key-value pairs to an output. The output is a weighted sum of the values, with weights computed by a compatibility function between the query and each key, measuring how well they match."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Q, K, V: compare, weight, mix",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Each position, usually a "
+            },
+            {
+              "type": "article",
+              "text": "token",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": " in a language model, is transformed through three sets of learned matrices into a query, key and value vector. Roughly speaking, the query is “what I am looking for,” the key is “how I can be matched,” and the value is “the content I supply when selected.” All three consist of learned numerical values; nobody labels words as subjects or pronouns in advance."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "Take the dot product of the query with each position's key to obtain scores.",
+            "Divide the scores by the square root of the key dimension. The original paper hypothesized that this prevents large dot products at high dimensions from making softmax gradients too small.",
+            "Apply softmax to obtain nonnegative weights that sum to 1.",
+            "Take a weighted average of the values at each position to obtain a new representation."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "Example (for teaching; tokenization is illustrative and no real model was measured): “Xiaoya put the suitcase in the trunk because it was too heavy.” When processing “it,” suppose the weights are suitcase 0.55, trunk 0.25, Xiaoya 0.10 and all other words combined 0.10, summing to 1. The new representation of “it” mixes the values, with the suitcase contributing the most."
+        },
+        {
+          "type": "paragraph",
+          "text": "If the weights for suitcase and trunk were swapped, the new representation would lean toward the trunk, and later layers might associate “too heavy” with the wrong object. A real model's weights must be extracted to know what they are, and they are only mixing proportions, not the final answer."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-attention-mechanism/diagram-1-en.svg",
+          "alt": "Using “it” as the query, compare keys for Xiaoya, suitcase, trunk and other words, apply softmax to get example weights, then mix values by those weights.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Read from left to right: compare, convert to weights, then mix. The weights are a teaching example, not measurements.",
+          "description": "Using “it” as the query, compare it with the keys for Xiaoya, suitcase, trunk and other words, then apply softmax to obtain weights. The example weights are 0.10, 0.55, 0.25 and 0.10 respectively, summing to 1. Mix the values at each position according to these weights to obtain a new representation of “it,” with the suitcase's content contributing the most. The weights are a teaching example, not measurements.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Self-attention and cross-attention",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The difference lies in where the queries, keys and values come from; the computation is the same. In self-attention, all three come from the same sequence. In cross-attention, called encoder-decoder attention in the original paper, queries come from the decoder, while keys and values come from the encoder's output. Bahdanau et al.'s mechanism also has the decoder consult the source text, but scores it using a small network rather than dot products. The decoder's self-attention additionally uses a mask so that each position can see only itself and preceding positions."
+        },
+        {
+          "type": "heading",
+          "text": "What multi-head attention does",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Multi-head attention uses separately learned projections to transform queries, keys and values into h sets of smaller vectors. Each set performs attention in parallel, after which the results are concatenated and projected back to the original dimension. The original paper's base configuration used 8 heads, 64 dimensions per head and a model dimension of 512, with total computation similar to a single full-dimensional head. The authors' rationale was that multiple heads let the model access information from different representation subspaces and different positions simultaneously; with only one head, weighted averaging inhibits this."
+        },
+        {
+          "type": "paragraph",
+          "text": "This does not mean each head has a fixed semantic responsibility. The paper's English–German translation ablation experiments, holding total computation fixed, showed that a single head performed worse than the best configuration, while too many heads also reduced quality. An appendix figure plots the weights of two heads in encoder layer 5, out of 6 layers, processing the English pronoun “its.” The authors said these heads “appear” to relate to pronoun reference. However, this was an observation about a particular model, layer and sentence, with no guarantee that it would recur in another model."
+        },
+        {
+          "type": "heading",
+          "text": "Attention weights are not the model's reasons",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Weights are often plotted as heatmaps, seemingly saying, “The model answered this way because of these words.” Jain and Wallace (NAACL 2019) tested this intuition using bidirectional LSTMs with attention on English text classification, question answering and natural language inference. They found that attention weights from recurrent encoders had weak and inconsistent correlations with two other measures of word importance: gradients and changes in output after removing a word. Holding other parameters fixed, they could often construct alternative weights that emphasized different positions yet produced almost unchanged predictions. They argued that standard attention should not be treated as a meaningful explanation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Wiegreffe and Pinter (EMNLP 2019) responded with a double-negative title. They found the correlation experiments persuasive, but disputed the latter part of the argument: the conclusion depends on the definition of “explanation.” Requiring an explanation to faithfully reflect the model's computation differs from merely requiring it to be understandable and plausible. Counterexamples also cannot be constructed by changing only the weights while ignoring the rest of the model. Instead, they trained the weights jointly with the entire model to find “adversarial” weights emphasizing different positions. They then fixed those weights and supplied them to a simple diagnostic model without access to context. On three of four English binary classification datasets, performance was markedly worse than with the originally learned weights. On the remaining dataset, performance was comparable, which the authors attributed to that dataset's characteristics. They therefore argued that prior work had not established that attention was useless for explanation. However, they also confirmed that such adversarial weights could indeed be found for some classification tasks, though they were less extreme than those found by the earlier method."
+        },
+        {
+          "type": "paragraph",
+          "text": "Both papers primarily studied recurrent models with attention and English-language tasks. Neither directly tested today's large Transformer language models, so neither conclusion can be directly extrapolated to them. A cautious interpretation is that weights describe the proportions used to mix content in a particular head of a particular layer, with many layers still to follow. A single weight map is insufficient to establish the causal basis of an answer."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "Weight maps are clues, not proof",
+          "text": "Read a heatmap as “which positions this head in this layer mixed,” not “the model answered this way because of this word.” To investigate whether an answer depends on a passage of input, change or remove it and see whether the answer changes. However, Jain and Wallace also cautioned that removal tests and gradient-based measures should not themselves be treated as ground truth."
+        },
+        {
+          "type": "heading",
+          "text": "The cost of longer sequences and the context window",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Standard self-attention pairs every position with every position. For n tokens, there are n times n scores; doubling the length roughly quadruples the number of pairs. Table 1 in the original paper, excerpted below, compares several layer types, with n denoting sequence length and d representation dimension. Self-attention's computation grows with the square of n, but the maximum path length between any two positions is constant: however far apart two words are, they can be compared directly in a single layer. In a recurrent layer, the path length grows with n."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Layer type",
+            "Computation per layer",
+            "Maximum path length between any two positions"
+          ],
+          "rows": [
+            [
+              "Self-attention",
+              "O(n²·d)",
+              "O(1)"
+            ],
+            [
+              "Recurrent layer",
+              "O(n·d²)",
+              "O(n)"
+            ],
+            [
+              "Self-attention restricted to r nearby positions",
+              "O(r·n·d)",
+              "O(n/r)"
+            ]
+          ],
+          "caption": "Excerpt from Table 1 in Vaswani et al. 2017, omitting the convolution row and sequential-operations column. O() denotes order of growth. Verified in 2026-10."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "This is one reason computation and memory requirements rise as input grows longer, though implementations differ. The FlashAttention paper likewise notes that self-attention has quadratic time and memory complexity with respect to length, and proposes an “exact” algorithm: mathematically, it computes the same attention, but speeds it up by reducing reads and writes to GPU memory. Actual speed therefore cannot be predicted from the quadratic formula alone. Fitting within the window also does not mean the information will be used well. In experiments on multi-document question answering and key-value retrieval, Liu et al. (TACL 2024) observed that performance was often markedly worse when relevant information appeared in the middle of a long input rather than at the beginning or end. See also "
+            },
+            {
+              "type": "article",
+              "text": "context window",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "For token-by-token generation, Hugging Face's official documentation explains that a KV cache can store the keys and values of previous tokens, so each step computes only those of the new token. The tradeoff is memory usage that grows linearly with sequence length."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "To explore related terms, start with the "
+            },
+            {
+              "type": "article",
+              "text": "AI Terms Index",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bahdanau, Cho, Bengio: Neural Machine Translation by Jointly Learning to Align and Translate (arXiv:1409.0473, ICLR 2015)",
+          "url": "https://arxiv.org/abs/1409.0473",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani et al.: Attention Is All You Need (arXiv:1706.03762)",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Jain, Wallace: Attention is not Explanation (arXiv:1902.10186)",
+          "url": "https://arxiv.org/abs/1902.10186",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology: Attention is not Explanation (NAACL 2019, N19-1357)",
+          "url": "https://aclanthology.org/N19-1357/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Wiegreffe, Pinter: Attention is not not Explanation (arXiv:1908.04626)",
+          "url": "https://arxiv.org/abs/1908.04626",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology: Attention is not not Explanation (EMNLP 2019, D19-1002)",
+          "url": "https://aclanthology.org/D19-1002/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Dao et al.: FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness (arXiv:2205.14135)",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liu et al.: Lost in the Middle: How Language Models Use Long Contexts (arXiv:2307.03172, TACL 2024)",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hugging Face Transformers official documentation: How caching works (KV cache)",
+          "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "ja": {
+      "title": "アテンション機構（Attention）とは：モデルは参照する token をどう決めるのか",
+      "description": "アテンション機構は、系列内の各位置について query と key を照合して重みを求め、各位置の value を加重平均して新しい表現を作ります。2014 年の翻訳におけるアライメントから 2017 年の Transformer までをたどり、Q、K、V、自己注意、クロスアテンション、マルチヘッドアテンションを例で説明します。また、標準的な手法では計算量が長さの二乗に比例して増えることや、アテンションの重みをモデルの判断理由と直接みなせない点も取り上げます。",
+      "hero": {
+        "src": "/guides/ai-term-attention-mechanism/hero-ja.jpg",
+        "alt": "単語を表すブロックが一列に並び、右端のブロックから左側のほかのブロックへ太さの異なる弧が伸びている。最も太い弧は、離れたブロックにつながっている",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "アテンション機構（Attention）は計算の一種です。ある位置を処理するとき、参照可能な各位置の関連度を採点し、合計が 1 になる重みに変換して、各位置の内容を加重平均し、新しい表現を作ります。",
+            "「注意」とは数学的な重み付けを指し、人間の意識的な集中ではありません。遠く離れた単語も同じ層で直接照合できますが、標準的な手法では計算量がおおむね系列長の二乗に比例して増えます。",
+            "重みが示すのは、ある層のあるヘッドが内容を混ぜる割合です。重みの図は手がかりであって証明ではなく、モデルがそのように答えた理由として直接読み取ることはできません。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "アテンション機構（Attention）は計算の一種です。系列内のある位置を処理するとき、その位置が参照できるすべての位置（自己注意では自分自身も含む）の関連度を採点し、合計が 1 になる重みに変換して、各位置の内容を加重平均し、新しい表現を作ります。「注意」は訳語であり、数学的な重み付けを指すもので、人間の意識的な集中ではありません。遠く離れた二つの単語も同じ層で直接照合できますが、標準的な手法では計算量がおおむね系列長の二乗に比例して増えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事では、翻訳のアライメント問題から Q、K、V、自己注意、マルチヘッドアテンションまでを取り上げ、重みを「モデルの判断理由」として直接読み取れない理由や、長さとコストの関係を説明します。情報は 2026 年 10 月時点のものです。「例」と記した内容は学習用に作成したもので、実測ではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "翻訳のアライメントからアテンションだけの構成へ",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2014 年、Bahdanau らは機械翻訳に取り組みました。当時一般的だったエンコーダー・デコーダー構成は、原文全体を固定長のベクトルに圧縮してから訳文を生成していました。彼らはこれがボトルネックだと考え、デコーダーが訳文の単語を一つ生成するたびに、原文の各位置の表現を採点して重みに変換し、加重平均によって、そのステップ専用のコンテキストベクトルを求める方式に変更しました。採点には、翻訳モデルと一緒に学習する小規模な順伝播型"
+            },
+            {
+              "type": "article",
+              "text": "ニューラルネットワーク",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "を使いました。この論文の英仏翻訳実験では、基本構成の性能は文が長くなるにつれて明らかに低下しましたが、最大 50 語の文で学習したアライメント版は、50 語を超える文でも性能が低下しませんでした。これは同論文の設定下で得られた結果です。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2017 年、Vaswani らは、当時のアテンションの多くがリカレントネットワークと併用されていると指摘し、再帰や畳み込みを使わず、アテンションに全面的に依存する"
+            },
+            {
+              "type": "article",
+              "text": "Transformer アーキテクチャ",
+              "kind": "life",
+              "slug": "ai-term-transformer"
+            },
+            {
+              "type": "text",
+              "text": "を提案しました。論文では、アテンションを、一つの query と「key-value のペア」の集合を一つの出力に写像するものと定義しています。出力は各 value の加重和で、重みは query と各 key の適合度を測る関数から求めます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Q、K、V：照合、重み付け、混合",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "各位置（言語モデルでは通常、一つの "
+            },
+            {
+              "type": "article",
+              "text": "token",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "）は、学習した三組の行列を使って、それぞれ query、key、value のベクトルに変換されます。大まかに言えば、query は「何を探すか」、key は「自分がどのように照合されるか」、value は「選ばれたときに渡す内容」です。三つとも学習によって得られる数値であり、誰かがあらかじめ単語に主語や代名詞のラベルを付けているわけではありません。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "query と各位置の key の内積を取り、スコアを求めます。",
+            "スコアを key の次元数の平方根で割ります。原論文では、これにより次元数が大きいときに内積が大きくなりすぎ、softmax の勾配が小さくなりすぎるのを防げると推測しています。",
+            "softmax を使い、非負で合計が 1 になる重みに変換します。",
+            "その重みで各位置の value を加重平均し、新しい表現を求めます。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "例（学習用。単語の区切りは説明のためのもので、実際のモデルで測定したものではありません）：「小雅はスーツケースをトランクに入れた。それが重すぎたからだ。」「それ」を処理するとき、重みがスーツケース 0.55、トランク 0.25、小雅 0.10、残りの単語の合計 0.10 で、総和は 1 だと仮定します。「それ」の新しい表現は各 value を混ぜたもので、スーツケースが最も大きな割合を占めます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スーツケースとトランクの重みを入れ替えると、新しい表現はトランク寄りになり、後続の層が「重すぎる」を誤った対象に結び付ける可能性があります。実際のモデルの重みは取り出さなければ分かりませんし、重みは混合比率にすぎず、最終的な答えではありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-attention-mechanism/diagram-1-ja.svg",
+          "alt": "「それ」を query とし、小雅、スーツケース、トランク、残りの単語の key と照合する。softmax で例示の重みを求め、value を重み付きで混合する",
+          "width": 1600,
+          "height": 900,
+          "caption": "左から右へ、照合、重みへの変換、混合の順に見てください。重みは学習用の例であり、実測値ではありません。",
+          "description": "「それ」を query として、小雅、スーツケース、トランク、残りの単語の key と照合し、softmax で重みに変換する。例示の重みは順に 0.10、0.55、0.25、0.10 で、合計は 1。その重みに従って各位置の value を混ぜ、「それ」の新しい表現を得る。スーツケースの内容が最も大きな割合を占める。重みは学習用の例であり、実測値ではない。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "自己注意とクロスアテンション",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "両者の違いは query、key、value の出所であり、計算方法は同じです。自己注意（self-attention）では、三つとも同じ系列から得られます。クロスアテンション（cross-attention、原論文では encoder-decoder attention）では、query はデコーダーから、key と value はエンコーダーの出力から得られます。Bahdanau らの機構もデコーダーが原文を参照する仕組みですが、内積ではなく小規模なネットワークで採点します。デコーダーの自己注意にはさらにマスクを加え、各位置から自分自身とそれ以前の位置だけを参照できるようにします。"
+        },
+        {
+          "type": "heading",
+          "text": "マルチヘッドアテンションは何をするのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "マルチヘッドアテンション（multi-head attention）は、それぞれ学習した射影を使って query、key、value を h 組の小さなベクトルに変換し、各組で並列にアテンションを計算してから、連結して元の次元数に射影します。原論文の基本設定は 8 ヘッド、各ヘッド 64 次元、モデルの次元数 512 で、総計算量は全次元を使う単一ヘッドとほぼ同じです。著者らは、複数のヘッドによって、異なる表現部分空間や異なる位置から同時に情報を取り込めると説明しています。単一ヘッドでは、加重平均がそれを妨げるというのが理由です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ただし、各ヘッドが特定の意味を固定的に担当するということではありません。同論文の英独翻訳におけるアブレーション実験（総計算量を固定）では、単一ヘッドは最良の設定より性能が低く、ヘッド数が多すぎても品質が下がりました。付録の図には、エンコーダーの第 5 層（全 6 層）の二つのヘッドが、英語の代名詞 its を処理する際の重みが示されています。著者らは、これらが代名詞の指示対象に関係している「ように見える」と述べていますが、これは特定のモデル、層、文についての観察であり、別のモデルでも再現するとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "アテンションの重みはモデルの判断理由ではない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "重みはよくヒートマップで示され、まるで「モデルはこの単語があるから、こう答えた」と語っているように見えます。Jain と Wallace（NAACL 2019）は、この直感を検証しました。アテンションを備えた双方向 LSTM を使い、英語のテキスト分類、質問応答、自然言語推論を行いました。その結果、リカレントエンコーダーのアテンションの重みと、「どの単語が重要か」を測るほかの二つの指標（勾配、単語を取り除いた後の出力の変化）との相関は弱めで、一貫性もありませんでした。他のパラメータを固定しても、重みの集中先が異なるのに予測がほとんど変わらない重みを、別途構成できることがよくありました。彼らは、標準的なアテンションを意味のある説明とみなすべきではないと主張しました。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Wiegreffe と Pinter（EMNLP 2019）は、二重否定のタイトルで応答しました。彼らは相関についての実験には説得力があるとしつつ、後半の議論に異を唱えました。結論は「説明」の定義に左右され、モデルの計算を忠実に反映することを求めるのか、人が理解でき、筋が通ることだけを求めるのかでは、基準が異なるというのです。また、反例を作る際に、モデルのほかの部分を考慮せず、重みだけを変えてはいけないとしました。彼らは代わりにモデル全体を一緒に学習させ、集中先の異なる「敵対的」な重みを見つけ、それを固定した重みとして、文脈を参照できない単純な診断モデルに使わせました。英語の二値分類用データセット四つのうち、三つでは、元々学習された重みを使った場合より成績が明らかに劣りました。残る一つでは両者が同程度で、著者らはそのデータセットの特性に関係すると考えました。これを根拠に、先行研究はアテンションが説明に役立たないことを証明していないと主張しました。ただし、一部の分類タスクでは実際にこうした敵対的な重みを見つけられることも確認しており、先行手法で見つかったほど極端ではないという違いがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "両論文が主に研究したのは、アテンションを備えたリカレントモデルと英語のタスクであり、現在の大規模 Transformer 言語モデルを直接検証したものではありません。どちらの結論も、そのまま一般化することはできません。確実に言えるのは、重みが表すのは、ある層のあるヘッドが内容を混ぜる割合であり、その後にも多くの層があるため、一枚の重みの図だけでは、答えを生んだ因果的な根拠として不十分だということです。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "重みの図は手がかりであり、証明ではない",
+          "text": "ヒートマップは「この層のこのヘッドが、どの位置の内容を混ぜたか」と読み取り、「モデルはこの単語があるから、こう答えた」とは解釈しないでください。答えが入力のある部分に依存しているかを知りたい場合は、その部分を変更したり取り除いたりして、答えも変わるかを確認できます。ただし、Jain と Wallace は、こうした除去テストや勾配による指標自体も、正解の基準とみなすべきではないと指摘しています。"
+        },
+        {
+          "type": "heading",
+          "text": "系列が長くなるときのコストとコンテキストウィンドウ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "標準的な自己注意では、すべての位置をすべての位置と組み合わせるため、n 個の token に対して n 掛ける n 個のスコアがあります。長さが倍になると、組み合わせの数は約四倍になります。原論文の Table 1（下表参照。n は系列長、d は表現の次元数）では、いくつかの種類の層を比較しています。自己注意の計算量は n の二乗に比例して増えますが、任意の二つの位置間の最長経路長は定数オーダーです。どれほど離れた二つの単語でも、一つの層で直接照合できます。一方、リカレント層の経路長は n に比例して増えます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "層の種類",
+            "層ごとの計算量",
+            "任意の二つの位置間の最長経路長"
+          ],
+          "rows": [
+            [
+              "自己注意",
+              "O(n²·d)",
+              "O(1)"
+            ],
+            [
+              "リカレント層",
+              "O(n·d²)",
+              "O(n)"
+            ],
+            [
+              "近傍の r 個の位置だけを見る自己注意",
+              "O(r·n·d)",
+              "O(n/r)"
+            ]
+          ],
+          "caption": "Vaswani らの 2017 年の Table 1 から抜粋（畳み込み層の行と逐次演算数の列を省略）。O() は増加のオーダーを表します。2026 年 10 月確認。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "これが、入力が長くなると必要な計算量やメモリ量も増える理由の一つです。ただし、実装によって違いがあります。FlashAttention の論文も、自己注意の時間計算量とメモリ計算量が長さの二乗に比例すると指摘し、「厳密な」（exact）アルゴリズムを提案しています。数学的には同じアテンションを計算しつつ、GPU メモリの読み書きを減らして高速化するため、実際の速度は二乗の式だけでは推定できません。また、ウィンドウに収まることと、うまく活用できることは別です。Liu ら（TACL 2024）は、複数文書を使う質問応答とキー・バリュー検索の実験で、関連情報が長い入力の中ほどにあると、冒頭や末尾にある場合より性能が明らかに劣る傾向を観察しました。関連項目："
+            },
+            {
+              "type": "article",
+              "text": "コンテキストウィンドウ",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "token を一つずつ生成するときは、KV キャッシュを使えると Hugging Face の公式ドキュメントは説明しています。以前の token の key と value を保存し、各ステップでは新しい token の分だけを計算しますが、その代わりにメモリ使用量は系列長に比例して増えます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "関連用語をさらに読むには、"
+            },
+            {
+              "type": "article",
+              "text": "AI 用語総索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "から始めてください。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bahdanau、Cho、Bengio：アライメントと翻訳を同時に学習するニューラル機械翻訳（arXiv:1409.0473、ICLR 2015）",
+          "url": "https://arxiv.org/abs/1409.0473",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani ら：必要なのはアテンションだけ（arXiv:1706.03762）",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Jain、Wallace：アテンションは説明ではない（arXiv:1902.10186）",
+          "url": "https://arxiv.org/abs/1902.10186",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology：アテンションは説明ではない（NAACL 2019、N19-1357）",
+          "url": "https://aclanthology.org/N19-1357/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Wiegreffe、Pinter：アテンションが説明ではないわけではない（arXiv:1908.04626）",
+          "url": "https://arxiv.org/abs/1908.04626",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology：アテンションが説明ではないわけではない（EMNLP 2019、D19-1002）",
+          "url": "https://aclanthology.org/D19-1002/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Dao ら：FlashAttention：IO を考慮した高速でメモリ効率のよい厳密なアテンション（arXiv:2205.14135）",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liu ら：中間で見失う：言語モデルは長いコンテキストをどう使うか（arXiv:2307.03172、TACL 2024）",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hugging Face Transformers 公式ドキュメント：キャッシュの仕組み（KV キャッシュ）",
+          "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "ko": {
+      "title": "어텐션(Attention) 메커니즘이란: 모델은 참고할 토큰을 어떻게 정할까",
+      "description": "어텐션 메커니즘은 시퀀스의 각 위치에서 query와 key를 비교해 가중치를 계산하고, 각 위치의 value를 가중평균해 새로운 표현을 만든다. 2014년 번역 정렬에서 2017년 Transformer까지 살펴보며, 예시로 Q, K, V와 자기 어텐션, 교차 어텐션, 멀티헤드 어텐션을 설명한다. 표준 방식의 연산량이 길이의 제곱에 비례해 증가하는 문제와 어텐션 가중치를 모델의 판단 근거로 곧바로 볼 수 없는 이유도 다룬다.",
+      "hero": {
+        "src": "/guides/ai-term-attention-mechanism/hero-ko.jpg",
+        "alt": "단어를 나타내는 블록들이 나란히 있고, 맨 오른쪽 블록에서 왼쪽의 다른 블록으로 굵기가 다른 곡선들이 이어진다. 가장 굵은 곡선은 멀리 있는 블록에 연결된다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "어텐션(Attention) 메커니즘은 특정 위치를 처리할 때 참고할 수 있는 각 위치에 관련성 점수를 매기고, 이를 합이 1인 가중치로 바꾼 뒤, 각 위치의 내용을 가중평균해 새로운 표현을 만드는 계산 방식이다.",
+            "‘어텐션’은 수학적인 가중치 부여를 뜻하며, 인간의 의식적인 집중을 의미하지 않는다. 멀리 떨어진 단어도 같은 층에서 직접 비교할 수 있지만, 표준 방식의 연산량은 대략 시퀀스 길이의 제곱에 비례해 증가한다.",
+            "가중치는 특정 층의 특정 헤드가 내용을 혼합하는 비율을 나타낸다. 가중치 그림은 단서이지 증거가 아니므로, 모델이 그렇게 답한 이유로 곧바로 해석할 수 없다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "어텐션(Attention) 메커니즘은 시퀀스의 특정 위치를 처리할 때 참고할 수 있는 모든 위치에 관련성 점수를 매기고, 이를 합이 1인 가중치로 바꾼 뒤, 각 위치의 내용을 가중평균해 새로운 표현을 만드는 계산 방식이다. 자기 어텐션에서는 자기 자신도 참고 대상에 포함된다. ‘어텐션’은 수학적인 가중치 부여를 가리키는 이름이며, 인간의 의식적인 집중을 뜻하지 않는다. 멀리 떨어진 두 단어도 같은 층에서 직접 비교할 수 있지만, 표준 방식의 연산량은 대략 시퀀스 길이의 제곱에 비례해 증가한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 번역 정렬 문제에서 시작해 Q, K, V와 자기 어텐션, 멀티헤드 어텐션을 살펴보고, 가중치를 ‘모델의 판단 근거’로 곧바로 해석할 수 없는 이유와 길이와 비용의 관계를 설명한다. 자료 기준은 2026년 10월이다. ‘예시’로 표시한 내용은 교육용으로 구성했으며 실측하지 않았다."
+        },
+        {
+          "type": "heading",
+          "text": "번역 정렬에서 어텐션만 사용하는 방식으로",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2014년 Bahdanau 등은 기계 번역을 연구했다. 당시 흔히 쓰이던 인코더–디코더 구조는 원문 전체를 고정 길이 벡터 하나로 압축한 뒤 번역문을 생성했다. 이들은 이를 병목으로 추정하고, 디코더가 목표 단어 하나를 생성할 때마다 원문의 각 위치 표현에 점수를 매기고 가중치로 바꾼 뒤, 가중평균으로 해당 단계에 사용할 문맥 벡터를 만들도록 변경했다. 점수 계산에는 번역 모델과 함께 학습하는 작은 순방향 "
+            },
+            {
+              "type": "article",
+              "text": "신경망",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "을 사용했다. 이 논문의 영어–프랑스어 번역 실험에서 기본 구조는 문장이 길어질수록 성능이 뚜렷하게 떨어졌다. 반면 최대 50개 단어로 이루어진 문장으로 학습한 정렬 버전은 50개 단어를 넘는 문장에서도 성능이 떨어지지 않았다. 이는 해당 논문의 실험 설정에서 얻은 결과다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2017년 Vaswani 등은 당시 어텐션이 대부분 순환 신경망과 함께 사용된다는 점을 지적하고, 순환과 합성곱 없이 전적으로 어텐션에 의존하는 "
+            },
+            {
+              "type": "article",
+              "text": "Transformer 구조",
+              "kind": "life",
+              "slug": "ai-term-transformer"
+            },
+            {
+              "type": "text",
+              "text": "를 제안했다. 논문에서는 어텐션을 하나의 query와 ‘key-value 쌍’ 집합을 하나의 출력으로 매핑하는 것으로 정의한다. 출력은 각 value의 가중합이며, 가중치는 query와 각 key의 호환성 함수, 즉 둘이 얼마나 잘 맞는지 측정하는 함수로 계산한다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Q, K, V: 비교, 가중치 부여, 혼합",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "각 위치(언어 모델에서는 보통 하나의 "
+            },
+            {
+              "type": "article",
+              "text": "토큰",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": ")는 학습된 세 종류의 행렬을 통해 각각 query, key, value 벡터를 만든다. 대략적으로 query는 ‘무엇을 찾는가’, key는 ‘나는 어떤 기준으로 비교되는가’, value는 ‘선택되면 내놓는 내용’으로 이해할 수 있다. 셋 모두 학습된 수치이며, 누군가 미리 단어에 주어나 대명사라는 표시를 붙여 놓은 것이 아니다."
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "query와 각 위치의 key를 내적해 점수를 구한다.",
+            "점수를 key 차원의 제곱근으로 나눈다. 원 논문에서는 차원이 클 때 내적값이 너무 커지고 softmax의 기울기가 너무 작아지는 현상을 막을 수 있다고 추정했다.",
+            "softmax로 음이 아니며 합이 1인 가중치로 바꾼다.",
+            "가중치에 따라 각 위치의 value를 가중평균해 새로운 표현을 얻는다."
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "예시(교육용이며, 토큰 분할은 개념 설명을 위한 것으로 실제 모델에서 측정하지 않았다): ‘샤오야는 캐리어를 트렁크에 넣었다. 그것이 너무 무거웠기 때문이다.’ ‘그것’을 처리할 때 가중치가 캐리어 0.55, 트렁크 0.25, 샤오야 0.10, 나머지 단어 합계 0.10이라고 가정하면 총합은 1이다. ‘그것’의 새로운 표현은 각 value의 혼합이며, 캐리어가 가장 큰 비중을 차지한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "캐리어와 트렁크의 가중치를 서로 바꾸면 새로운 표현이 트렁크 쪽으로 치우쳐, 뒤의 층에서 ‘너무 무겁다’를 잘못된 대상과 연결할 수 있다. 실제 모델의 가중치는 직접 추출해야 알 수 있으며, 가중치는 혼합 비율일 뿐 최종 답은 아니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-attention-mechanism/diagram-1-ko.svg",
+          "alt": "‘그것’을 query로 삼아 샤오야, 캐리어, 트렁크, 나머지 단어의 key와 비교하고, softmax로 예시 가중치를 얻은 뒤 value를 가중 혼합하는 과정",
+          "width": 1600,
+          "height": 900,
+          "caption": "왼쪽부터 비교, 가중치 변환, 혼합 순으로 읽는다. 가중치는 교육용 예시이며 실측값이 아니다.",
+          "description": "‘그것’을 query로 삼아 샤오야, 캐리어, 트렁크, 나머지 단어의 key와 비교하고 softmax로 가중치로 바꾼다. 예시 가중치는 순서대로 0.10, 0.55, 0.25, 0.10이며 합은 1이다. 이어서 가중치에 따라 각 위치의 value를 혼합해 ‘그것’의 새로운 표현을 얻으며, 캐리어의 내용이 가장 큰 비중을 차지한다. 가중치는 교육용 예시이며 실측값이 아니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "자기 어텐션과 교차 어텐션",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "둘은 query, key, value의 출처가 다르며 계산 방식은 같다. 자기 어텐션(self-attention)은 셋 모두 같은 시퀀스에서 가져온다. 교차 어텐션(cross-attention, 원 논문에서는 인코더–디코더 어텐션이라고 부름)은 query를 디코더에서, key와 value를 인코더 출력에서 가져온다. Bahdanau 등의 메커니즘도 디코더가 원문을 조회하는 방식이지만, 내적 대신 작은 신경망으로 점수를 계산한다. 디코더의 자기 어텐션에는 추가로 마스크를 적용해 각 위치가 자기 자신과 앞선 위치만 볼 수 있게 한다."
+        },
+        {
+          "type": "heading",
+          "text": "멀티헤드 어텐션은 무엇을 할까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "멀티헤드 어텐션(multi-head attention)은 각각 학습한 투영으로 query, key, value를 더 작은 벡터 h개 묶음으로 바꾸고, 각 묶음에서 어텐션을 병렬로 수행한 뒤 이어 붙여 원래 차원으로 다시 투영한다. 원 논문의 기본 설정은 헤드 8개, 헤드당 64차원, 모델 차원 512로, 총연산량은 단일 헤드로 전체 차원을 처리할 때와 비슷하다. 저자들은 여러 헤드가 있으면 서로 다른 표현 부분공간과 서로 다른 위치에서 동시에 정보를 가져올 수 있지만, 단일 헤드만 사용하면 가중평균이 이를 방해한다고 설명했다."
+        },
+        {
+          "type": "paragraph",
+          "text": "그렇다고 각 헤드가 항상 특정 의미를 담당한다는 뜻은 아니다. 해당 논문의 영어–독일어 번역 절제 실험에서는 총연산량을 고정했을 때 단일 헤드의 성능이 최적 설정보다 낮았고, 헤드 수가 너무 많아도 품질이 떨어졌다. 부록 그림은 총 6개 층 중 인코더의 5번째 층에서 두 헤드가 영어 대명사 its를 처리하는 가중치를 보여 준다. 저자들은 이 헤드들이 대명사의 지시 대상과 관련이 ‘있어 보인다’고 했지만, 이는 특정 모델과 층, 문장에 대한 관찰이며 다른 모델에서도 재현된다는 보장은 없다."
+        },
+        {
+          "type": "heading",
+          "text": "어텐션 가중치가 곧 모델의 판단 근거는 아니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "가중치는 흔히 히트맵으로 표시되어 ‘모델은 이 단어들 때문에 이렇게 답했다’는 인상을 준다. Jain과 Wallace(NAACL 2019)는 이러한 직관을 검증했다. 이들은 어텐션을 갖춘 양방향 LSTM으로 영어 텍스트 분류, 질의응답, 자연어 추론을 수행했다. 그 결과 순환 인코더의 어텐션 가중치는 ‘어떤 단어가 중요한가’를 측정하는 다른 두 지표인 기울기와 단어 제거 후 출력 변화와의 상관관계가 약하고 일관되지 않았다. 다른 매개변수를 고정한 채로도, 초점을 두는 위치는 다르지만 예측은 거의 변하지 않는 가중치를 별도로 구성할 수 있는 경우가 많았다. 이들은 표준 어텐션을 의미 있는 설명으로 간주해서는 안 된다고 주장했다."
+        },
+        {
+          "type": "paragraph",
+          "text": "Wiegreffe와 Pinter(EMNLP 2019)는 이중 부정으로 된 제목으로 응답했다. 이들은 상관관계에 관한 실험은 설득력이 있다고 봤으며, 논쟁은 후반부에 있다고 지적했다. 결론은 ‘설명’을 어떻게 정의하느냐에 달려 있다. 모델의 계산을 충실히 반영해야 한다는 요구와 사람이 이해할 수 있고 말이 되기만 하면 된다는 요구는 서로 다른 기준이다. 또한 반례를 구성할 때 모델의 나머지 부분은 무시하고 가중치만 바꿔서는 안 된다고 봤다. 이들은 전체 모델과 함께 학습하는 방식으로 초점이 다른 ‘적대적’ 가중치를 찾은 뒤, 이를 고정 가중치로 삼아 문맥을 볼 수 없는 간단한 진단 모델에 사용했다. 영어 이진 분류 데이터셋 네 개 중 세 개에서 원래 학습된 가중치를 썼을 때보다 성적이 뚜렷하게 낮았다. 나머지 하나에서는 두 방식의 성적이 비슷했으며, 저자들은 해당 데이터셋의 자료 특성과 관련이 있다고 봤다. 이를 근거로 앞선 연구가 어텐션이 설명에 쓸모없음을 입증하지는 못했다고 주장했다. 다만 이들도 일부 분류 과제에서는 이러한 적대적 가중치를 실제로 찾을 수 있음을 확인했으며, 앞선 방식으로 찾은 것만큼 극단적이지는 않았다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 논문은 주로 어텐션을 갖춘 순환 모델과 영어 과제를 연구했으며, 오늘날의 대규모 Transformer 언어 모델을 직접 검증하지 않았다. 따라서 어느 쪽의 결론도 그대로 확장 적용할 수 없다. 신중하게 말하면, 가중치는 특정 층의 특정 헤드가 내용을 혼합하는 비율을 나타낸다. 뒤에는 여전히 많은 층이 있으므로, 가중치 그림 하나만으로 답의 인과적 근거를 설명하기에는 부족하다."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "가중치 그림은 단서이지 증거가 아니다",
+          "text": "히트맵은 ‘이 층의 이 헤드가 어떤 위치들을 혼합했는가’로 읽어야 하며, ‘모델이 이 단어 때문에 이렇게 답했다’고 읽어서는 안 된다. 답이 입력의 특정 부분에 의존하는지 알고 싶다면 그 부분을 바꾸거나 제거하고 답도 바뀌는지 살펴볼 수 있다. 다만 Jain과 Wallace는 이러한 제거 테스트와 기울기 지표 자체도 정답 기준으로 간주해서는 안 된다고 지적했다."
+        },
+        {
+          "type": "heading",
+          "text": "시퀀스가 길어질 때의 비용과 컨텍스트 윈도",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "표준 자기 어텐션은 모든 위치를 모든 위치와 짝짓는다. n개의 토큰에서 n 곱하기 n개의 점수를 계산하므로 길이가 두 배가 되면 쌍의 수는 약 네 배가 된다. 원 논문의 표 1(아래 표 참조. n은 시퀀스 길이, d는 표현 차원)은 여러 종류의 층을 비교한다. 자기 어텐션의 연산량은 n의 제곱에 비례해 증가하지만, 임의의 두 위치 사이 최장 경로는 상수 차수다. 아무리 멀리 떨어진 두 단어도 한 층에서 직접 비교할 수 있다. 반면 순환 층의 경로는 n에 비례해 길어진다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "층 유형",
+            "층별 연산량",
+            "임의의 두 위치 사이 최장 경로"
+          ],
+          "rows": [
+            [
+              "자기 어텐션",
+              "O(n²·d)",
+              "O(1)"
+            ],
+            [
+              "순환 층",
+              "O(n·d²)",
+              "O(n)"
+            ],
+            [
+              "인접한 r개 위치만 보는 자기 어텐션",
+              "O(r·n·d)",
+              "O(n/r)"
+            ]
+          ],
+          "caption": "Vaswani 등(2017)의 표 1에서 발췌(합성곱 층 행과 순차 연산 횟수 열은 생략). O()는 증가 차수를 뜻한다. 2026년 10월 확인."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "이는 입력이 길어질수록 연산과 메모리 요구량이 커지는 이유 중 하나지만, 구현마다 차이가 있다. FlashAttention 논문 역시 자기 어텐션의 시간 및 메모리 복잡도가 길이의 제곱에 비례한다고 지적하면서 ‘정확한’(exact) 알고리즘을 제안했다. 수학적으로 계산하는 어텐션은 같지만 GPU 메모리 읽기와 쓰기를 줄여 속도를 높이므로, 실제 속도를 제곱 공식만으로 추산할 수는 없다. 윈도에 들어간다고 해서 잘 활용한다는 뜻도 아니다. Liu 등(TACL 2024)은 다중 문서 질의응답과 키–값 조회 실험에서 관련 정보가 긴 입력의 중간에 있을 때, 시작이나 끝에 있을 때보다 성능이 뚜렷하게 떨어지는 경우가 많다고 관찰했다. "
+            },
+            {
+              "type": "article",
+              "text": "컨텍스트 윈도",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "도 참고하자."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "토큰을 하나씩 생성할 때는 Hugging Face 공식 문서에서 설명하는 KV 캐시를 사용할 수 있다. 이전 토큰의 key와 value를 저장하고 각 단계에서는 새 토큰의 것만 계산한다. 대신 메모리 사용량이 시퀀스 길이에 비례해 선형으로 증가한다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "관련 용어를 더 읽고 싶다면 "
+            },
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "부터 시작하자."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bahdanau, Cho, Bengio: 정렬과 번역의 공동 학습을 통한 신경망 기계 번역(arXiv:1409.0473, ICLR 2015)",
+          "url": "https://arxiv.org/abs/1409.0473",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani 등: 필요한 것은 어텐션뿐(arXiv:1706.03762)",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Jain, Wallace: 어텐션은 설명이 아니다(arXiv:1902.10186)",
+          "url": "https://arxiv.org/abs/1902.10186",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology: 어텐션은 설명이 아니다(NAACL 2019, N19-1357)",
+          "url": "https://aclanthology.org/N19-1357/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Wiegreffe, Pinter: 어텐션은 설명이 아닌 것은 아니다(arXiv:1908.04626)",
+          "url": "https://arxiv.org/abs/1908.04626",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology: 어텐션은 설명이 아닌 것은 아니다(EMNLP 2019, D19-1002)",
+          "url": "https://aclanthology.org/D19-1002/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Dao 등: FlashAttention: 입출력을 고려한 빠르고 메모리 효율적인 정확한 어텐션(arXiv:2205.14135)",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liu 등: 중간에서 길을 잃다: 언어 모델은 긴 문맥을 어떻게 활용하는가(arXiv:2307.03172, TACL 2024)",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hugging Face Transformers 공식 문서: 캐싱의 작동 방식(KV 캐시)",
+          "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "注意力机制（Attention）是什么：模型怎么决定要参考哪些 token",
+      "description": "注意力机制让序列中的每个位置，根据 query 与 key 的比对算出权重，再把各位置的 value 加权平均成新的表示。内容从 2014 年的翻译对齐讲到 2017 年的 Transformer，用示例说明 Q、K、V、自注意力、交叉注意力与多头注意力，也讨论标准做法的计算量随长度平方增长，以及注意力权重不能直接当成模型的理由。",
+      "hero": {
+        "src": "/guides/ai-term-attention-mechanism/hero-zh-cn.jpg",
+        "alt": "一排方块代表词，最右边的方块向左画出粗细不同的弧线连到其他方块，最粗的一条连到较远的一个",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "注意力机制（Attention）是一种计算：处理某个位置时，给可参考的各位置打相关分数，转成总和为 1 的权重，再把各位置的内容加权平均成新的表示。",
+            "“注意力”指数学上的加权，不是人类有意识的专注，它让相隔很远的词在同一层就能直接比对，代价是标准做法的计算量大约随序列长度的平方增长。",
+            "权重描述的是某层某个头混合内容的比例，权重图是线索而不是证明，不能直接理解为模型这样回答的理由。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "注意力机制（Attention）是一种计算：处理序列中的某个位置时，给它可参考的每个位置（自注意力时也包括它自己）打相关分数，转成总和为 1 的权重，再把各位置的内容加权平均成新的表示。“注意力”是译名，指数学上的加权，不是人类有意识的专注。它让相隔很远的两个词在同一层就能直接比对，代价是标准做法的计算量大约随序列长度的平方增长。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文从翻译对齐问题讲到 Q、K、V、自注意力与多头注意力，并说明权重为何不能直接理解为“模型的理由”，以及长度与成本的关系。资料截至 2026 年 10 月；标“示例”的内容是为教学编写的，未经实测。"
+        },
+        {
+          "type": "heading",
+          "text": "从翻译对齐走到只靠注意力",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2014 年 Bahdanau 等人研究机器翻译。当时常见的编码器—解码器架构先把整句原文压成一个固定长度的向量，再生成译文；他们推测这是瓶颈，改为让解码器每生成一个目标词，就对原文各位置的表示打分、转成权重，加权平均得到这一步专用的上下文向量。打分用的是与翻译模型一起训练的小型前馈"
+            },
+            {
+              "type": "article",
+              "text": "神经网络",
+              "kind": "life",
+              "slug": "ai-term-neural-network"
+            },
+            {
+              "type": "text",
+              "text": "。在该论文的英法翻译实验中，基本架构的表现随句长明显下滑，以最长 50 个词的句子训练的对齐版本，在 50 个词以上的句子上也没有下滑，这是该论文设置下的结果。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "2017 年 Vaswani 等人指出，当时的注意力大多与循环网络并用，于是提出完全依赖注意力、不用循环与卷积的 "
+            },
+            {
+              "type": "article",
+              "text": "Transformer 架构",
+              "kind": "life",
+              "slug": "ai-term-transformer"
+            },
+            {
+              "type": "text",
+              "text": "。论文的定义是：把一个 query 和一组“key-value 配对”映射成一个输出；输出是各 value 的加权总和，权重由 query 与各 key 的相容性函数（衡量两者多相符）算出。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Q、K、V：比对、加权、混合",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "每个位置（语言模型里通常是一个 "
+            },
+            {
+              "type": "article",
+              "text": "token",
+              "kind": "life",
+              "slug": "ai-term-token"
+            },
+            {
+              "type": "text",
+              "text": "）用三组学到的矩阵，分别转换出一个 query、key 和 value 向量。粗略理解：query 是“我要找什么”，key 是“我能被怎样比对”，value 是“被选中时交出的内容”。三者都是学出来的数值，没有人事先给词标好主语或代词。"
+            }
+          ]
+        },
+        {
+          "type": "list",
+          "items": [
+            "query 与每个位置的 key 做内积，得到分数。",
+            "分数除以 key 维度的平方根；原论文推测，这能避免维度大时内积过大、softmax 的梯度过小。",
+            "用 softmax 转成非负、总和为 1 的权重。",
+            "以权重对各位置的 value 加权平均，得到新表示。"
+          ],
+          "ordered": true
+        },
+        {
+          "type": "paragraph",
+          "text": "示例（教学用，分词仅为示意，未对真实模型测量）：“小雅把行李箱放进后备厢，因为它太重了。”处理“它”时，假设权重为行李箱 0.55、后备厢 0.25、小雅 0.10，其余词合计 0.10，总和为 1。“它”的新表示是各 value 的混合，行李箱占最多。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若行李箱与后备厢的权重对调，新表示就偏向后备厢，后面的层可能把“太重”连错对象。真实模型的权重需要提取出来才知道，且它只是混合比例，不是最后答案。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-attention-mechanism/diagram-1-zh-cn.svg",
+          "alt": "以“它”为 query，与小雅、行李箱、后备厢和其余词的 key 比对，经 softmax 得到示例权重，再加权混合 value",
+          "width": 1600,
+          "height": 900,
+          "caption": "从左到右看：先比对，再转成权重，最后混合；权重为教学示例，不是实测。",
+          "description": "以“它”为 query，与小雅、行李箱、后备厢和其余词的 key 比对，经 softmax 转成权重，示例权重依次为 0.10、0.55、0.25、0.10，总和为 1；再依权重混合各位置的 value，得到“它”的新表示，其中行李箱的内容占最多。权重是教学示例，不是实测。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "自注意力与交叉注意力",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "两者差在 query、key、value 的来源，计算方式相同。自注意力（self-attention）的三者来自同一个序列。交叉注意力（cross-attention，原论文称 encoder-decoder attention）的 query 来自解码器，key 与 value 来自编码器输出；Bahdanau 等人的机制也是解码器去查原文，只是用小型网络而非内积打分。解码器的自注意力另加掩码，只让位置看到自己与之前的位置。"
+        },
+        {
+          "type": "heading",
+          "text": "多头注意力在做什么",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "多头注意力（multi-head attention）以各自学到的投影，把 query、key、value 转成 h 组较小的向量，每组并行做注意力，再拼接并投影回原维度。原论文基本设置是 8 个头、每头 64 维、模型维度 512，总计算量与单头全维度相近；作者的理由是多头让模型能同时从不同表示子空间、不同位置取用信息，只用单头时，加权平均会妨碍这一点。"
+        },
+        {
+          "type": "paragraph",
+          "text": "但这不表示每个头固定负责一种语义。该论文的英德翻译消融实验（总计算量固定）显示，单头比最佳设置差，头数过多质量也会下降。附录图画出编码器第 5 层（共 6 层）两个头处理英文代词 its 的权重，作者说它们“似乎”与代词指代有关，但这是对特定模型、层与句子的观察，不保证换个模型会重现。"
+        },
+        {
+          "type": "heading",
+          "text": "注意力权重不等于模型的理由",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "权重常被画成热力图，像在说“模型因为这几个词才这样答”。Jain 与 Wallace（NAACL 2019）检验过这个直觉：他们用带注意力的双向 LSTM，做英文的文本分类、问答与自然语言推理。结果是循环编码器的注意力权重，和另外两种衡量“哪个词重要”的指标（梯度、移除单词后的输出变化）相关性偏弱且不一致；固定其他参数，常能另外构造出重心不同、预测却几乎不变的权重。他们主张标准注意力不该被当成有意义的解释。"
+        },
+        {
+          "type": "paragraph",
+          "text": "Wiegreffe 与 Pinter（EMNLP 2019）以双重否定的标题回应。他们认为相关性那部分的实验有说服力，争议在后半：结论取决于“解释”的定义，要求忠实反映模型的运算，和只要求让人看得懂、说得通，是两种标准；构造反例时也不能只动权重而不顾模型其余部分。他们改为连同整个模型一起训练，找出重心不同的“对抗”权重，再把它当成固定权重，交给看不到上下文的简单诊断模型使用：四个英文二元分类数据集中，有三个的成绩明显不如用原本学到的权重；剩下一个两者相当，作者认为与该数据集的数据特性有关。他们据此主张，先前工作并未证明注意力无助于解释；不过他们也确认，某些分类任务上的确找得到这种对抗权重，只是不像先前做法找到的那么极端。"
+        },
+        {
+          "type": "paragraph",
+          "text": "两篇主要研究带注意力的循环模型与英文任务，没有直接检验如今的大型 Transformer 语言模型，结论都不能直接外推。稳妥的说法是：权重描述某层某个头混合内容的比例，后面还有许多层，单张权重图不足以当成答案的因果来源。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "权重图是线索，不是证明",
+          "text": "把热力图理解为“这一层这个头混合了哪些位置”，不要理解为“模型因为这个词才这样答”。想知道答案是否依赖某段输入，可以改动或移除它，看答案有没有跟着变；但 Jain 与 Wallace 也提醒，这类移除测试与梯度指标本身不该被当成标准答案。"
+        },
+        {
+          "type": "heading",
+          "text": "序列变长时的成本与上下文窗口",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "标准自注意力让每个位置和每个位置配对，n 个 token 有 n 乘 n 个分数，长度加倍，配对数约变四倍。原论文的表 1（见下表，n 为序列长度，d 为表示维度）比较了几种层：自注意力的运算量随 n 平方增长，但任意两个位置的最长路径是常数级，再远的两个词，一层就能直接比对；循环层的路径则随 n 增长。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "层类型",
+            "每层运算量",
+            "任意两位置的最长路径"
+          ],
+          "rows": [
+            [
+              "自注意力",
+              "O(n²·d)",
+              "O(1)"
+            ],
+            [
+              "循环层",
+              "O(n·d²)",
+              "O(n)"
+            ],
+            [
+              "只看邻近 r 个位置的自注意力",
+              "O(r·n·d)",
+              "O(n/r)"
+            ]
+          ],
+          "caption": "节选自 Vaswani 等人 2017 的表 1（略去卷积层一行与顺序运算数一列）；O() 表示增长量级，查证于 2026 年 10 月。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "这是输入变长时，运算与内存需求跟着升高的原因之一，但实现各有不同：FlashAttention 论文同样指出自注意力的时间与内存复杂度对长度是平方，并提出一种“精确”（exact）算法：数学上算的仍是同一个注意力，只是靠减少 GPU 内存的读写来加快，所以实际速度不能只用平方公式推算。窗口放得下，也不等于用得好：Liu 等人（TACL 2024）在多文档问答与键值查找的实验中观察到，相关信息位于长输入的中段时，表现往往明显不如放在开头或结尾。另见"
+            },
+            {
+              "type": "article",
+              "text": "上下文窗口",
+              "kind": "life",
+              "slug": "ai-context-window-explained"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "逐个 token 生成时，Hugging Face 官方文档说明可用 KV 缓存：存下先前 token 的 key 与 value，每步只算新 token 的，代价是内存随序列长度线性增加。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "想继续阅读相关名词，可从 "
+            },
+            {
+              "type": "article",
+              "text": "AI 名词总索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": " 开始。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Bahdanau、Cho、Bengio：通过联合学习对齐与翻译实现神经机器翻译（arXiv:1409.0473，ICLR 2015）",
+          "url": "https://arxiv.org/abs/1409.0473",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Vaswani 等：注意力就是你所需要的一切（arXiv:1706.03762）",
+          "url": "https://arxiv.org/abs/1706.03762",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Jain、Wallace：注意力不是解释（arXiv:1902.10186）",
+          "url": "https://arxiv.org/abs/1902.10186",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology：注意力不是解释（NAACL 2019，N19-1357）",
+          "url": "https://aclanthology.org/N19-1357/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Wiegreffe、Pinter：注意力并非不是解释（arXiv:1908.04626）",
+          "url": "https://arxiv.org/abs/1908.04626",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "ACL Anthology：注意力并非不是解释（EMNLP 2019，D19-1002）",
+          "url": "https://aclanthology.org/D19-1002/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Dao 等：FlashAttention：具备 IO 感知能力、快速且节省内存的精确注意力（arXiv:2205.14135）",
+          "url": "https://arxiv.org/abs/2205.14135",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Liu 等：迷失在中间：语言模型如何使用长上下文（arXiv:2307.03172，TACL 2024）",
+          "url": "https://arxiv.org/abs/2307.03172",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Hugging Face Transformers 官方文档：缓存的工作原理（KV 缓存）",
           "url": "https://huggingface.co/docs/transformers/en/cache_explanation",
           "checked_on": "2026-10-03"
         }
