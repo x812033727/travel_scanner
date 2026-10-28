@@ -8,5 +8,2288 @@
     10,
     12
   ],
-  "scenes": []
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。像一位資深前端工程師坐在同事旁邊，邊打指令邊講：平穩、實在，帶一點乾乾的幽默。英文的產品名、指令和檔名照英文唸。問句上揚，答案接得乾脆；結果出現前停半拍。絕不像在念稿。",
+    "performance": "像在同事螢幕旁邊示範：開場平穩，「一筆都沒有」之後停半拍、「同一把金鑰」亮起來；替觀眾問的疑問上揚，答案乾脆；終端機那幾張放慢跟著打字；兩張分類表一列一頓；「我的看法是」放慢放穩；「我不知道」放輕；留言題輕輕收。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "金鑰沒推上 GitHub，網站上卻有三把：上線前用一行指令找出來",
+    "description": "金鑰沒推上 GitHub、repo 也搜不到，為什麼網站上還是有？這支教你上線前用一行指令搜 build 出來的檔案，把送進瀏覽器的金鑰找出來，分出哪些可以公開、哪些要搬到伺服器並換新。\n給用 Vite、Next.js 自己做網站的人，也給用 AI 工具寫前端、直接部署上線的人。\n\n示範專案 shop-chat 的金鑰全是假的（字串裡帶 FAKE），片中所有指令只在自己的示範專案與 localhost 上執行。執行日期 2026-10-28：Ubuntu 24.04、Node.js v22.22.0、vite/8.3.4、Next.js 16.4.2（Turbopack）、GNU grep 3.11、curl 8.5.0、Claude Code 2.1.312。\n\n片中用到的指令\n1. 拿 .env 的每一個值，搜 build 出來的資料夾（dist/ 換成你的輸出資料夾）：\nsed -n 's/^[A-Z_]*=//p' .env | grep -rnoFf - dist/\n2. 照金鑰的開頭搜（-P 是 GNU grep 的選項；其他系統先用 grep --version 確認）：\ngrep -rnoP 'sk-[\\w-]+|pk_\\w+|AIza[\\w-]+' dist/\n3. Next.js：把網站跑起來，抓自己的首頁搜金鑰：\ncurl -s localhost:3000/ | grep -o 'apiKey[^}]*'\n4. 讓 Claude Code 只用讀取類工具讀 dist/（要求句放在 review-prompt.txt）：\nclaude -p \"$(cat review-prompt.txt)\" --allowedTools \"Read,Grep,Glob\"\n5. 啟動 server.mjs（示範時上游換成本機的假服務；實際使用拿掉 UPSTREAM_URL 這一段）：\nUPSTREAM_URL=http://127.0.0.1:8788 node --env-file=.env server.mjs\n\nserver.mjs 全文 31 行在第 4 章的卡片上；Next.js 的 app/api/chat/route.js 全文 14 行：\nconst UPSTREAM = process.env.UPSTREAM_URL\n  ?? \"https://api.openai.com/v1/responses\";\n\nexport async function POST(req) {\n  const r = await fetch(UPSTREAM, {\n    method: \"POST\",\n    headers: {\n      \"Content-Type\": \"application/json\",\n      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,\n    },\n    body: await req.text(),\n  });\n  return new Response(await r.text(), { status: r.status });\n}\n\n分類：Stripe 的 publishable key、Firebase 只開 Firebase 服務的網頁金鑰、Supabase 的 publishable key、限制了網站來源的 Google Maps 金鑰，設計上可以放在前端，要做的是限制它；OpenAI、Anthropic 的 API key、Stripe 的 secret key、Supabase 的 secret key 不能出現在前端，搬到伺服器之後要換一把新的。Supabase 預計在 2026 年底前淘汰舊的 anon 與 service_role 金鑰。\n\nserver.mjs 只做到金鑰不在瀏覽器；誰能呼叫 /api/chat、能呼叫幾次，要另外做驗證、限流與用量上限。",
+    "tags": [
+      "API key 外洩",
+      "前端 金鑰",
+      "VITE_ 環境變數",
+      "NEXT_PUBLIC",
+      "Vite",
+      "Next.js",
+      "Firebase API key",
+      "source map",
+      "上線前檢查",
+      "vibe coding",
+      "AI 寫程式",
+      "Supabase publishable key",
+      "Stripe publishable key",
+      "Claude Code",
+      "REA 逆向工程"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "上線前檢查",
+      "headline": "搜過\n**dist** 嗎",
+      "sub": "金鑰沒進 git，卻在網站上",
+      "capture": "vite-page"
+    }
+  },
+  "sources": [
+    {
+      "title": "Vite: Env Variables and Modes",
+      "url": "https://vite.dev/guide/env-and-mode",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Vite: Build Options (build.sourcemap)",
+      "url": "https://vite.dev/config/build-options",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Vite: Shared Options (define, envPrefix)",
+      "url": "https://vite.dev/config/shared-options",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Next.js: How to use environment variables",
+      "url": "https://nextjs.org/docs/app/guides/environment-variables",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Next.js: productionBrowserSourceMaps",
+      "url": "https://nextjs.org/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Next.js: How to think about data security",
+      "url": "https://nextjs.org/docs/app/guides/data-security",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Next.js: next CLI",
+      "url": "https://nextjs.org/docs/app/api-reference/cli/next",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Firebase: Learn about and manage API keys for Firebase",
+      "url": "https://firebase.google.com/docs/projects/api-keys",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Stripe: API keys",
+      "url": "https://docs.stripe.com/keys",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Supabase: API keys",
+      "url": "https://supabase.com/docs/guides/getting-started/api-keys",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Google Maps Platform security guidance",
+      "url": "https://developers.google.com/maps/api-security-best-practices",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "OpenAI API Reference: Authentication",
+      "url": "https://developers.openai.com/api/reference/overview",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Claude Help Center: API key best practices",
+      "url": "https://support.claude.com/en/articles/9767949-api-key-best-practices-keep-your-keys-safe-and-secure",
+      "checked_on": "2026-10-28"
+    },
+    {
+      "title": "YouTube 搜尋：REA 逆向工程（2026-10-28）",
+      "url": "https://www.youtube.com/results?search_query=REA%20%E9%80%86%E5%90%91%E5%B7%A5%E7%A8%8B&sp=CAM%3D&hl=zh-TW&gl=TW",
+      "checked_on": "2026-10-28"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "zzwx",
+      "payoff": "43i7",
+      "what": "金鑰沒推上 GitHub，有什麼關係"
+    },
+    {
+      "setup": "prt3",
+      "payoff": "pce7",
+      "what": "一行搜尋"
+    },
+    {
+      "setup": "prt3",
+      "payoff": "krds",
+      "what": "一張分類表"
+    },
+    {
+      "setup": "prt3",
+      "payoff": "d4gj",
+      "what": "31 行的伺服器檔"
+    },
+    {
+      "setup": "3sp5",
+      "payoff": "xhzr",
+      "what": "第一行那句待辦註解"
+    },
+    {
+      "setup": "zps2",
+      "payoff": "mc2b",
+      "what": "拿變數名稱去搜找不找得到"
+    },
+    {
+      "setup": "tz2b",
+      "payoff": "fbvx",
+      "what": "兩行 grep 都漏掉的字串"
+    },
+    {
+      "setup": "4wbg",
+      "payoff": "krds",
+      "what": "搜出來的全都要藏嗎"
+    },
+    {
+      "setup": "cbt5",
+      "payoff": "p5em",
+      "what": "祕密那把要搬去哪"
+    },
+    {
+      "setup": "8y8f",
+      "payoff": "yxkm",
+      "what": "Next.js 沒加前綴總沒事吧"
+    },
+    {
+      "setup": "dku5",
+      "payoff": "jq7y",
+      "what": "別人改打我的聊天網址"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "open-title",
+      "chapter": "金鑰沒進 git，網站上卻有？",
+      "template": "title",
+      "data": {
+        "tag": "Vite · Next.js · 上線前檢查",
+        "title": "金鑰沒進 repo\n卻在**網站上**",
+        "subtitle": "上線前，搜 build 出來的東西",
+        "key": "金鑰沒進 repo，卻在網站上"
+      },
+      "claims": [
+        "r1"
+      ],
+      "lines": [
+        {
+          "id": "vam6",
+          "text": "我把 .env 放進 .gitignore，上線前搜遍整個 repo，一筆金鑰都沒有。",
+          "emotion": "開場平穩，「一筆都沒有」之後停半拍"
+        }
+      ]
+    },
+    {
+      "id": "open-compare",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "搜 repo",
+          "icon": "search",
+          "points": [
+            "git grep -n \"sk-\"",
+            "沒有任何輸出"
+          ]
+        },
+        "right": {
+          "heading": "搜 dist/",
+          "icon": "warning",
+          "points": [
+            "sk-demo-FAKE-0000",
+            "pk_test_DEMOFAKE0000",
+            "AIza-DEMO-FAKE-0000"
+          ]
+        },
+        "source": "實跑 2026-10-28｜shop-chat r1、r2｜金鑰都是假的",
+        "keys": [
+          "搜 repo：沒有任何輸出",
+          "搜 dist：三把都在"
+        ]
+      },
+      "claims": [
+        "r1",
+        "r2"
+      ],
+      "lines": [
+        {
+          "id": "9w6h",
+          "text": "repo 裡搜 sk 開頭的字，沒有任何輸出；",
+          "reveal": 1
+        },
+        {
+          "id": "pabv",
+          "text": "可是 build 完，改搜 dist 資料夾，",
+          "reveal": 1,
+          "emotion": "轉折，「可是」亮起來"
+        },
+        {
+          "id": "7uad",
+          "text": "同一把金鑰，就寫在 JavaScript 裡，旁邊還有兩把。",
+          "emotion": "放慢，一字一字"
+        }
+      ]
+    },
+    {
+      "id": "open-naive",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會想",
+        "text": "金鑰又沒推上 GitHub\n**有什麼關係？**",
+        "key": "沒推上 GitHub，有什麼關係？"
+      },
+      "lines": [
+        {
+          "id": "zzwx",
+          "text": "你可能會想：金鑰又沒推上 GitHub，這有什麼關係？",
+          "emotion": "替觀眾問，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "open-why",
+      "template": "big",
+      "data": {
+        "kicker": "瀏覽器拿到的",
+        "text": "不是你的 repo\n是 **build 出來的檔案**",
+        "key": "瀏覽器拿到的是 build 的結果"
+      },
+      "claims": [
+        "c1",
+        "r2",
+        "r3"
+      ],
+      "lines": [
+        {
+          "id": "43i7",
+          "text": "關係在於，瀏覽器拿到的不是你的 repo，是 build 出來的檔案。",
+          "emotion": "答得乾脆"
+        },
+        {
+          "id": "24wj",
+          "text": "VITE 開頭的變數原樣寫進去；開了 source map，連註解都送出去。"
+        }
+      ]
+    },
+    {
+      "id": "open-stakes",
+      "template": "big",
+      "data": {
+        "kicker": "這兩週",
+        "text": "AI 拆解軟體的影片\n一支**幾十萬次**觀看",
+        "key": "別人的 AI 幾分鐘就讀完"
+      },
+      "claims": [
+        "c2",
+        "s1"
+      ],
+      "lines": [
+        {
+          "id": "fj49",
+          "text": "這兩週，讓 AI 把軟體拆開重做的影片，一支動輒幾十萬次觀看；",
+          "emotion": "平穩"
+        },
+        {
+          "id": "htah",
+          "text": "以前要有人肯打開開發者工具慢慢翻，現在別人的 AI，幾分鐘就讀完你整包 JavaScript。",
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "bullets",
+      "data": {
+        "items": [
+          {
+            "text": "一行搜尋：找出送出去的金鑰",
+            "icon": "search"
+          },
+          {
+            "text": "一張分類表：哪把留、哪把搬",
+            "icon": "checklist"
+          },
+          {
+            "text": "一個 31 行的伺服器檔",
+            "icon": "file"
+          }
+        ],
+        "key": "上線前找出來、搬走"
+      },
+      "lines": [
+        {
+          "id": "phdf",
+          "text": "一行搜尋、一張分類表、一個 31 行的伺服器檔，上線前把它找出來、搬走。",
+          "reveal": 3,
+          "emotion": "承諾句，清楚有力"
+        }
+      ]
+    },
+    {
+      "id": "env-file",
+      "chapter": "為什麼 repo 搜不到、網站卻有？",
+      "template": "code",
+      "data": {
+        "title": ".env：四行，全是假的",
+        "code": "VITE_OPENAI_API_KEY=sk-demo-FAKE-0000\nVITE_STRIPE_PUBLISHABLE_KEY=pk_test_DEMOFAKE0000\nVITE_FIREBASE_API_KEY=AIza-DEMO-FAKE-0000\nOPENAI_API_KEY=sk-server-FAKE-1111",
+        "highlight": [
+          1,
+          2,
+          3
+        ],
+        "caption": "shop-chat/.env 全檔 4 行｜示範用的假金鑰：故意寫短、帶 FAKE",
+        "key": "前三行 VITE_ 開頭，最後一行沒有"
+      },
+      "claims": [
+        "r1"
+      ],
+      "lines": [
+        {
+          "id": "qjxv",
+          "text": "例子是 shop-chat：一顆按鈕，按下去就呼叫 OpenAI。",
+          "emotion": "像在旁邊介紹，平"
+        },
+        {
+          "id": "999v",
+          "text": "它的 .env 有四行，全是假金鑰；前三行 VITE 開頭，最後一行沒有。",
+          "emotion": "「假金鑰」輕輕帶過"
+        }
+      ]
+    },
+    {
+      "id": "main-top",
+      "template": "code",
+      "data": {
+        "title": "src/main.js 前三行",
+        "code": "// TODO: move the OpenAI call to a server before launch\nconst key = import.meta.env.VITE_OPENAI_API_KEY;\nconst serverOnly = import.meta.env.OPENAI_API_KEY;",
+        "highlight": [
+          2,
+          3
+        ],
+        "caption": "shop-chat/src/main.js 第 1–3 行（共 12 行）",
+        "key": "一把拿去呼叫 OpenAI，一把沒前綴"
+      },
+      "lines": [
+        {
+          "id": "wu79",
+          "text": "程式第二行讀 VITE 開頭的那把去呼叫 OpenAI，第三行讀沒有前綴的那把。"
+        },
+        {
+          "id": "c3jb",
+          "text": "第一行那句待辦註解先記著，等一下它會回來。",
+          "emotion": "輕，帶一點神秘"
+        }
+      ]
+    },
+    {
+      "id": "repo-check",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": ".env 進 .gitignore",
+            "detail": "git status：!! .env",
+            "icon": "lock"
+          },
+          {
+            "title": "在 repo 裡搜",
+            "detail": "git grep -n \"sk-\"",
+            "icon": "search"
+          },
+          {
+            "title": "沒有任何輸出",
+            "detail": "exit 1：一筆都沒找到",
+            "icon": "checklist"
+          }
+        ],
+        "source": "實跑 2026-10-28｜shop-chat r1",
+        "keys": [
+          "git 確認 .env 被忽略",
+          "上線前在 repo 裡搜 sk-",
+          "沒有任何輸出"
+        ]
+      },
+      "claims": [
+        "r1"
+      ],
+      "lines": [
+        {
+          "id": "imjm",
+          "text": "你今天的檢查大概是這樣：.env 寫進 .gitignore，git 確認它被忽略；",
+          "reveal": 1,
+          "emotion": "對照觀眾現在的做法，平"
+        },
+        {
+          "id": "8a5x",
+          "text": "上線前，在 repo 裡搜 sk 開頭的字；",
+          "reveal": 1
+        },
+        {
+          "id": "qhi7",
+          "text": "沒有任何輸出。照這個檢查，專案是乾淨的。",
+          "reveal": 1,
+          "emotion": "平，帶一點反諷"
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "template": "terminal",
+      "data": {
+        "title": "照平常一樣 build（節錄）",
+        "command": "npm run build",
+        "output": [
+          "dist/index.html                0.16 kB │ gzip: 0.14 kB\ndist/assets/index-jek3iDuZ.js  1.01 kB │ gzip: 0.59 kB"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "vite/8.3.4 linux-x64 node-v22.22.0",
+        "typing": "human",
+        "keys": [
+          "照平常一樣 build",
+          "每個訪客下載的就是這個檔"
+        ]
+      },
+      "claims": [
+        "r1"
+      ],
+      "lines": [
+        {
+          "id": "uy9q",
+          "text": "接著，照平常一樣 build；",
+          "emotion": "放慢，像在旁邊看他打"
+        },
+        {
+          "id": "9hsi",
+          "text": "dist 裡多了一個 JavaScript 檔，每個訪客打開網站，下載的就是它。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "grep-shape",
+      "template": "terminal",
+      "data": {
+        "title": "同樣的搜尋，改搜 dist/",
+        "command": "grep -rnoP 'sk-[\\w-]+|pk_\\w+|AIza[\\w-]+' dist/",
+        "output": [
+          "dist/assets/index-jek3iDuZ.js:1:sk-demo-FAKE-0000\ndist/assets/index-jek3iDuZ.js:1:pk_test_DEMOFAKE0000\ndist/assets/index-jek3iDuZ.js:1:AIza-DEMO-FAKE-0000"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "GNU grep 3.11",
+        "typing": "human",
+        "keys": [
+          "加上 Stripe、Firebase 的開頭",
+          "三把都在，同一個檔"
+        ]
+      },
+      "claims": [
+        "r2"
+      ],
+      "lines": [
+        {
+          "id": "u6r6",
+          "text": "同樣搜 sk 開頭的字，再加上 Stripe 和 Firebase 金鑰的開頭，改搜 dist；"
+        },
+        {
+          "id": "z5xy",
+          "text": "三把都在，而且都在同一個檔案的第一行。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        },
+        {
+          "id": "agbb",
+          "text": "它們不在 repo 裡，是 build 的那一刻，才被寫進網站的。"
+        }
+      ]
+    },
+    {
+      "id": "vite-page",
+      "template": "screencast",
+      "data": {
+        "caption": "vite.dev｜Env Variables and Modes｜Protecting secrets｜2026-10-28 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://vite.dev/guide/env-and-mode"
+          },
+          {
+            "action": "wait",
+            "selector": "p.custom-block-title:text-is(\"Protecting secrets\")"
+          },
+          {
+            "action": "capture",
+            "focus": "p.custom-block-title:text-is(\"Protecting secrets\")",
+            "zoom": 1.4
+          }
+        ],
+        "key": "VITE_* 不該放 API 金鑰"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "w2wy",
+          "text": "這是 Vite 刻意的設計：VITE 開頭的變數，本來就不該放 API 金鑰；",
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "vite-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Vite：Protecting secrets",
+        "quote": "The values of these variables are bundled into your source code at build time.",
+        "translation": "這些變數的值，會在 build 時打包進你的原始碼。",
+        "source": "vite.dev · Env Variables and Modes · 2026-10-28",
+        "keys": [
+          "值在 build 時打包進程式碼",
+          "VITE_ 開頭＝要送進瀏覽器"
+        ]
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "zps2",
+          "text": "因為它們的值，在 build 的時候就打包進程式碼。"
+        },
+        {
+          "id": "mc2b",
+          "text": "換句話說，VITE 這個前綴的意思就是：這個值，要送進瀏覽器。",
+          "reveal": 1,
+          "emotion": "收穩，「送進瀏覽器」加重"
+        }
+      ]
+    },
+    {
+      "id": "name-search",
+      "chapter": "怎麼搜出 build 裡的每一把金鑰？",
+      "template": "big",
+      "data": {
+        "kicker": "grep -rn OPENAI_API_KEY dist/",
+        "text": "**零筆**",
+        "sub": "實跑 2026-10-28｜r2：沒有輸出，exit 1",
+        "key": "搜變數名稱：一筆都沒有"
+      },
+      "claims": [
+        "r2"
+      ],
+      "lines": [
+        {
+          "id": "pwag",
+          "text": "金鑰在 dist 裡已經確定了；那拿變數的名字去搜，不就找得到？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "jbq6",
+          "text": "拿 OpenAI 金鑰的變數名稱去搜 dist，一筆都沒有。",
+          "emotion": "停半拍，「一筆都沒有」放慢"
+        }
+      ]
+    },
+    {
+      "id": "var-e",
+      "template": "terminal",
+      "data": {
+        "title": "打包後的那一段",
+        "command": "grep -o 'var e=[^,]*' dist/assets/*.js",
+        "output": [
+          "var e=`sk-demo-FAKE-0000`"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "GNU grep 3.11",
+        "typing": "human",
+        "keys": [
+          "名字被換成一個字母",
+          "值原樣寫在等號後面"
+        ]
+      },
+      "claims": [
+        "r2"
+      ],
+      "lines": [
+        {
+          "id": "hzg4",
+          "text": "原因在打包這一步：程式裡的變數名字，被換成了一個字母；"
+        },
+        {
+          "id": "pce7",
+          "text": "金鑰的值，就原樣寫在等號後面。",
+          "reveal": 1,
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "search-values",
+      "template": "big",
+      "data": {
+        "kicker": "所以要搜的是",
+        "text": "**值**，不是名字",
+        "icon": "search",
+        "key": "搜值，不搜名字"
+      },
+      "lines": [
+        {
+          "id": "abx8",
+          "text": "所以要搜的是值，不是名字。",
+          "emotion": "短句，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "grep-values",
+      "template": "terminal",
+      "data": {
+        "title": "拿 .env 的每一個值去搜",
+        "command": "sed -n 's/^[A-Z_]*=//p' .env | grep -rnoFf - dist/",
+        "output": [
+          "dist/assets/index-jek3iDuZ.js:1:sk-demo-FAKE-0000\ndist/assets/index-jek3iDuZ.js:1:pk_test_DEMOFAKE0000\ndist/assets/index-jek3iDuZ.js:1:AIza-DEMO-FAKE-0000"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "GNU grep 3.11",
+        "typing": "human",
+        "keys": [
+          "前半取值，後半拿值去搜 dist/",
+          "三把都在；dist/ 換成你的資料夾"
+        ]
+      },
+      "claims": [
+        "r2"
+      ],
+      "lines": [
+        {
+          "id": "9k8a",
+          "text": "這一行做兩件事：前半段，把 .env 每一行等號後面的值取出來；",
+          "emotion": "放慢，跟著打字"
+        },
+        {
+          "id": "pff7",
+          "text": "後半段拿這些值，一個一個去搜 dist 資料夾。"
+        },
+        {
+          "id": "ime3",
+          "text": "三把都找到了，連在第幾行都標出來。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        },
+        {
+          "id": "e7ch",
+          "text": "沒有前綴的第四把，不在結果裡。"
+        },
+        {
+          "id": "bbyp",
+          "text": "你的輸出資料夾叫 build 或別的名字，就把最後的 dist 換掉。",
+          "emotion": "清楚，給觀眾的動作"
+        }
+      ]
+    },
+    {
+      "id": "sourcemap",
+      "template": "terminal",
+      "data": {
+        "title": "加上 --sourcemap（節錄）",
+        "command": "npm run build -- --sourcemap",
+        "output": [
+          "dist/assets/index-jek3iDuZ.js  1.06 kB │ gzip: 0.62 kB │ map: 1.11 kB"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "vite/8.3.4 linux-x64 node-v22.22.0",
+        "typing": "human",
+        "keys": [
+          "source map：對回原始碼的對照檔",
+          "多了一個 map 檔"
+        ]
+      },
+      "claims": [
+        "r3"
+      ],
+      "lines": [
+        {
+          "id": "9rw4",
+          "text": "但這還不是最容易漏的：source map。",
+          "emotion": "升級，壓低"
+        },
+        {
+          "id": "xhzr",
+          "text": "它是把打包後的程式，對回原始碼的對照檔；"
+        },
+        {
+          "id": "vzeu",
+          "text": "build 加上這個選項，旁邊就多出一個 map 檔。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "todo",
+      "template": "terminal",
+      "data": {
+        "title": "在 map 檔裡搜 TODO",
+        "command": "grep -o '// TODO[^\\\\]*' dist/assets/*.map",
+        "output": [
+          "// TODO: move the OpenAI call to a server before launch"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "GNU grep 3.11",
+        "typing": "human",
+        "keys": [
+          "還記得第一行的註解？",
+          "原封不動送出去"
+        ]
+      },
+      "claims": [
+        "r3"
+      ],
+      "lines": [
+        {
+          "id": "54zf",
+          "text": "在 map 檔裡搜 TODO；還記得第一行那句註解嗎？",
+          "emotion": "回呼，輕"
+        },
+        {
+          "id": "rfa2",
+          "text": "它原封不動在這裡：上線前，把呼叫 OpenAI 的程式搬到伺服器。",
+          "reveal": 1,
+          "emotion": "一字一字"
+        },
+        {
+          "id": "yczi",
+          "text": "待辦事項還沒做，它倒是先跟著網站上線了。",
+          "emotion": "帶一點笑意"
+        }
+      ]
+    },
+    {
+      "id": "srcmap-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Next.js：productionBrowserSourceMaps",
+        "quote": "During production builds, they are disabled to prevent you leaking your source on the client",
+        "translation": "正式版 build 預設關閉，免得你把原始碼洩漏到用戶端。",
+        "source": "nextjs.org · productionBrowserSourceMaps · 2026-10-28",
+        "keys": [
+          "正式版預設不產生 source map",
+          "打開過的，上線前關掉"
+        ]
+      },
+      "claims": [
+        "c3",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "tz2b",
+          "text": "Vite 和 Next.js 的正式版 build，預設都不產生這種檔，就是怕原始碼外洩；"
+        },
+        {
+          "id": "dq67",
+          "text": "為了查錯打開過的，上線前記得關掉，再 build 一次。",
+          "reveal": 1,
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "admin-line",
+      "template": "code",
+      "data": {
+        "title": "寫死的權杖",
+        "code": "const ADMIN = \"demo-admin-7f3a9c\";",
+        "caption": "shop-chat-ai/src/main.js 第 3 行（共 13 行）｜第 8 行把它放進 X-Admin-Token 標頭",
+        "key": "不在 .env，也不像金鑰格式"
+      },
+      "claims": [
+        "r7"
+      ],
+      "lines": [
+        {
+          "id": "jgmp",
+          "text": "不過，搜值只找得到 .env 裡有的，搜開頭只找得到像金鑰的。",
+          "emotion": "轉折，平"
+        },
+        {
+          "id": "uhbc",
+          "text": "換個情況：程式裡寫死一個管理用的權杖，不在 .env，也不像任何一家的格式。"
+        }
+      ]
+    },
+    {
+      "id": "admin-miss",
+      "template": "terminal",
+      "data": {
+        "title": "重新 build，照開頭搜（shop-chat-ai）",
+        "command": "grep -rnoP 'sk-[\\w-]+|pk_\\w+|AIza[\\w-]+' dist/",
+        "output": [
+          "dist/assets/index-Ccxb0Dn6.js:1:sk-demo-FAKE-0000\ndist/assets/index-Ccxb0Dn6.js:1:pk_test_DEMOFAKE0000\ndist/assets/index-Ccxb0Dn6.js:1:AIza-DEMO-FAKE-0000"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "GNU grep 3.11",
+        "typing": "human",
+        "keys": [
+          "重新 build，照開頭搜",
+          "只有原來三把；搜值也一樣"
+        ]
+      },
+      "claims": [
+        "r7"
+      ],
+      "lines": [
+        {
+          "id": "tzdq",
+          "text": "重新 build 之後，再照金鑰的開頭搜一次 dist 資料夾；"
+        },
+        {
+          "id": "2asv",
+          "text": "只有原來那三把，寫死的權杖沒出現；拿 .env 的值去搜，也一樣漏掉它。",
+          "reveal": 1,
+          "emotion": "壓低"
+        }
+      ]
+    },
+    {
+      "id": "ai-prompt",
+      "template": "code",
+      "data": {
+        "title": "給 Claude Code 的一句話",
+        "code": "只讀 dist/ 資料夾，列出每一個看起來像金鑰、\n權杖或密碼的字串：檔案、字串、可能是哪一家的\n什麼金鑰、能不能公開、理由一句。不要修改任何檔案。",
+        "caption": "shop-chat-ai/review-prompt.txt（原檔一行，這裡依寬度換行）",
+        "key": "只讀 dist/，列出像金鑰的字串"
+      },
+      "claims": [
+        "r7"
+      ],
+      "lines": [
+        {
+          "id": "dn4h",
+          "text": "這種就交給 AI 讀；讓它讀之前，先決定它能做什麼。",
+          "emotion": "放慢，信任檢查"
+        },
+        {
+          "id": "nrc4",
+          "text": "要求只有一句：只讀 dist 資料夾，列出每一個看起來像金鑰、權杖或密碼的字串；"
+        },
+        {
+          "id": "fbvx",
+          "text": "檔案、字串、可能是哪一家的什麼金鑰、能不能公開、理由一句；不要修改任何檔案。"
+        }
+      ]
+    },
+    {
+      "id": "ai-run",
+      "template": "terminal",
+      "data": {
+        "title": "它交回的表（節錄 1 列）",
+        "command": "claude -p \"$(cat review-prompt.txt)\" --allowedTools \"Read,Grep,Glob\"",
+        "output": [
+          "| `demo-admin-7f3a9c` | 變數 `t`,送 `X-Admin-Token` 標頭 | 應用自家後端的管理\n權杖 | 不能 | 管理權杖等同後台通行證,外洩可被冒用提權。 |"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "2.1.312 (Claude Code)",
+        "typing": "human",
+        "keys": [
+          "只開三個讀取類的工具",
+          "多了 grep 漏掉的那一個"
+        ]
+      },
+      "claims": [
+        "r7"
+      ],
+      "lines": [
+        {
+          "id": "jkfs",
+          "text": "用不開對話的模式跑一次，允許的工具只有三個：讀取檔案、搜尋內容、列出檔名。",
+          "emotion": "清楚，一個一個點名"
+        },
+        {
+          "id": "3cgv",
+          "text": "它交回的表裡，多了兩行 grep 都沒找到的那一個。",
+          "reveal": 1,
+          "emotion": "亮起來"
+        }
+      ]
+    },
+    {
+      "id": "ai-table",
+      "template": "table",
+      "data": {
+        "columns": [
+          "字串",
+          "它判斷是",
+          "能公開"
+        ],
+        "rows": [
+          [
+            "sk-demo-FAKE-0000",
+            "OpenAI 祕密 API 金鑰",
+            "不能"
+          ],
+          [
+            "demo-admin-7f3a9c",
+            "應用自家後端的管理權杖",
+            "不能"
+          ],
+          [
+            "pk_test_DEMOFAKE0000",
+            "Stripe 可公開金鑰,測試環境",
+            "可以"
+          ],
+          [
+            "AIza-DEMO-FAKE-0000",
+            "Google API 金鑰",
+            "視情況"
+          ]
+        ],
+        "highlight": 1,
+        "source": "實跑 2026-10-28｜Claude Code 2.1.312｜r7 節錄",
+        "keys": [
+          "OpenAI 那把：不能公開",
+          "寫死的權杖：不能",
+          "Stripe 測試金鑰：可以",
+          "Google 那把：視情況"
+        ]
+      },
+      "claims": [
+        "r7"
+      ],
+      "lines": [
+        {
+          "id": "yfdt",
+          "text": "OpenAI 那把：祕密金鑰，不能公開；",
+          "reveal": 1
+        },
+        {
+          "id": "tsqd",
+          "text": "寫死的那個：自家後端的管理權杖，也不能；",
+          "reveal": 1
+        },
+        {
+          "id": "4wbg",
+          "text": "Stripe 測試金鑰：本來就設計成可以公開；",
+          "reveal": 1
+        },
+        {
+          "id": "krds",
+          "text": "Google 那把：要看有沒有設限制。",
+          "reveal": 1
+        },
+        {
+          "id": "n5hs",
+          "text": "搜出來的這幾把，全都要藏起來嗎？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "public-keys",
+      "chapter": "搜到的金鑰，哪些可以公開？",
+      "template": "table",
+      "data": {
+        "columns": [
+          "設計上可以公開的",
+          "前提"
+        ],
+        "rows": [
+          [
+            "Stripe publishable，pk_ 開頭",
+            "本來就給前端用"
+          ],
+          [
+            "Firebase 的網頁金鑰",
+            "只開 Firebase 的服務"
+          ],
+          [
+            "Supabase publishable，舊名 anon",
+            "讀得到什麼由 RLS 決定"
+          ],
+          [
+            "Google Maps 前端金鑰",
+            "限制只有你的網站能用"
+          ]
+        ],
+        "source": "Stripe、Firebase、Supabase、Maps 官方頁 2026-10-28",
+        "keys": [
+          "不必全藏：有一類本來就公開",
+          "Stripe pk_：給前端用",
+          "Firebase：只開 Firebase 服務",
+          "Supabase：靠 RLS",
+          "Maps：限制網站來源"
+        ]
+      },
+      "claims": [
+        "c5",
+        "c6",
+        "c7",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "h3gu",
+          "text": "不用全藏，也藏不住：有一類金鑰，本來就要放在網頁上。",
+          "emotion": "答得乾脆"
+        },
+        {
+          "id": "8vbt",
+          "text": "Stripe 開頭是 pk 的 publishable key，就是給前端用的；",
+          "reveal": 1
+        },
+        {
+          "id": "krnj",
+          "text": "Firebase 網頁版的金鑰，只開 Firebase 的服務，就不必當祕密；",
+          "reveal": 1
+        },
+        {
+          "id": "w4tb",
+          "text": "Supabase 的 publishable key，讀得到什麼，由資料表的存取規則決定；",
+          "reveal": 1
+        },
+        {
+          "id": "3mtx",
+          "text": "Google Maps 網頁用的金鑰，靠限制網站來源保護。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "supabase-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Supabase 的比喻",
+        "quote": "The publishable key is taped to the front door, and it only opens the lobby.",
+        "translation": "publishable key 貼在大門上，只打得開大廳。",
+        "source": "supabase.com · API keys · 2026-10-28",
+        "key": "貼在大門上的那把，只開得了大廳"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "9y72",
+          "text": "Supabase 自己的比喻很好記：可以公開的那把，貼在大門上，只打得開大廳；",
+          "reveal": 1,
+          "emotion": "比喻，輕"
+        },
+        {
+          "id": "y77m",
+          "text": "祕密的那把是萬能鑰匙，要留在你的口袋裡。"
+        }
+      ]
+    },
+    {
+      "id": "secret-keys",
+      "template": "table",
+      "data": {
+        "columns": [
+          "本來就是祕密的",
+          "放前端"
+        ],
+        "rows": [
+          [
+            "OpenAI、Anthropic 的 API key",
+            "不行"
+          ],
+          [
+            "Stripe secret，sk_ 開頭",
+            "不行，只留後端"
+          ],
+          [
+            "Supabase secret，舊名 service_role",
+            "不行，會略過 RLS"
+          ]
+        ],
+        "source": "OpenAI、Anthropic、Stripe、Supabase 官方頁 2026-10-28",
+        "keys": [
+          "祕密的：萬能鑰匙那一類",
+          "AI 服務的 API 金鑰",
+          "Stripe sk_：只留後端",
+          "Supabase secret：略過 RLS"
+        ]
+      },
+      "claims": [
+        "c5",
+        "c7",
+        "c9",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "fmfm",
+          "text": "反過來，OpenAI 和 Anthropic 的 API 金鑰，不能出現在瀏覽器或 App 裡；",
+          "reveal": 1,
+          "emotion": "轉折，壓低"
+        },
+        {
+          "id": "gq45",
+          "text": "Stripe 開頭是 sk 的祕密金鑰，只能留在後端；",
+          "reveal": 1
+        },
+        {
+          "id": "36cr",
+          "text": "Supabase 的 secret key 會略過資料表的存取規則，更不能送出去。",
+          "reveal": 1
+        },
+        {
+          "id": "rkub",
+          "text": "舊的 anon 和 service role，預計今年底前淘汰。"
+        }
+      ]
+    },
+    {
+      "id": "firebase-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Firebase 的例外",
+        "quote": "never include the Gemini Developer API in the allowlist for a publicly accessible API key",
+        "translation": "公開的 API 金鑰，允許清單裡絕不要放 Gemini Developer API。",
+        "source": "firebase.google.com · API keys · 2026-10-20 更新",
+        "keys": [
+          "公開金鑰也有例外",
+          "允許清單不放 Gemini API"
+        ]
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "k67d",
+          "text": "那可以公開的那一類，就完全沒有例外嗎？",
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "h5by",
+          "text": "有：Firebase 的公開金鑰，允許清單裡絕不能加 Gemini 的 API；",
+          "reveal": 1,
+          "emotion": "「絕不能」加重"
+        },
+        {
+          "id": "8j2k",
+          "text": "要用 Gemini，另外做一把不公開的金鑰。"
+        }
+      ]
+    },
+    {
+      "id": "rule-big",
+      "template": "big",
+      "data": {
+        "kicker": "分類之後",
+        "text": "可公開的 → **限制它**\n祕密的 → **搬走**",
+        "key": "公開的限制，祕密的搬走"
+      },
+      "lines": [
+        {
+          "id": "cbt5",
+          "text": "所以分類完只有兩個動作：可公開的，留著、去限制它；祕密的，搬走。",
+          "emotion": "清楚，兩段對稱"
+        }
+      ]
+    },
+    {
+      "id": "shop-three",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "pk_test_DEMOFAKE0000",
+            "detail": "Stripe 可公開：留著",
+            "icon": "checklist"
+          },
+          {
+            "title": "AIza-DEMO-FAKE-0000",
+            "detail": "Firebase 網頁金鑰：留著，去限制",
+            "icon": "lock"
+          },
+          {
+            "title": "sk-demo-FAKE-0000",
+            "detail": "OpenAI 祕密金鑰：搬到伺服器",
+            "icon": "arrow"
+          }
+        ],
+        "source": "站主的分法；依據各家官方頁",
+        "keys": [
+          "Stripe：留著",
+          "Firebase：留著，去限制",
+          "OpenAI：搬走"
+        ]
+      },
+      "lines": [
+        {
+          "id": "p5em",
+          "text": "套回 shop-chat：Stripe 那把留著；",
+          "reveal": 1
+        },
+        {
+          "id": "653c",
+          "text": "Firebase 那把留著，但要去限制；",
+          "reveal": 1
+        },
+        {
+          "id": "g7dn",
+          "text": "OpenAI 那把，搬走。",
+          "reveal": 1,
+          "emotion": "短，乾脆"
+        },
+        {
+          "id": "bkqd",
+          "text": "那它要搬去哪裡？",
+          "emotion": "問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "before-after",
+      "chapter": "金鑰搬到伺服器：31 行的 server.mjs",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "現在",
+          "icon": "globe",
+          "points": [
+            "瀏覽器直接打 OpenAI",
+            "金鑰跟著 JavaScript 出去"
+          ]
+        },
+        "right": {
+          "heading": "改成",
+          "icon": "lock",
+          "points": [
+            "瀏覽器打自己的 /api/chat",
+            "伺服器加上金鑰再轉送"
+          ]
+        },
+        "keys": [
+          "現在：金鑰跟著出去",
+          "改成：伺服器加上金鑰"
+        ]
+      },
+      "lines": [
+        {
+          "id": "d4gj",
+          "text": "只剩 OpenAI 那一把要搬。現在的寫法，是瀏覽器帶著金鑰直接打 OpenAI；",
+          "reveal": 1
+        },
+        {
+          "id": "2r49",
+          "text": "改成瀏覽器只呼叫你自己網站上的一個網址，金鑰由伺服器加上，再轉給 OpenAI。",
+          "reveal": 1,
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "fixed-env",
+      "template": "code",
+      "data": {
+        "title": ".env 改一行",
+        "code": "VITE_STRIPE_PUBLISHABLE_KEY=pk_test_DEMOFAKE0000\nVITE_FIREBASE_API_KEY=AIza-DEMO-FAKE-0000\nOPENAI_API_KEY=sk-demo-FAKE-0000",
+        "highlight": [
+          3
+        ],
+        "caption": "fixed/.env 全檔 3 行｜OpenAI 那行拿掉 VITE_ 前綴",
+        "key": "OpenAI 那行拿掉 VITE_"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "umuu",
+          "text": "先改 .env：OpenAI 那一行拿掉 VITE 前綴，只有伺服器讀得到它。"
+        }
+      ]
+    },
+    {
+      "id": "fixed-main",
+      "template": "code",
+      "data": {
+        "title": "前端改打 /api/chat",
+        "code": "document.querySelector(\"#ask\").onclick = async () => {\n  const r = await fetch(\"/api/chat\", {\n    method: \"POST\",\n    body: JSON.stringify({ input: \"hi\" }),\n  });\n  document.querySelector(\"#out\").textContent = await r.text();\n};",
+        "highlight": [
+          2
+        ],
+        "caption": "fixed/src/main.js 第 1–7 行（共 8 行）",
+        "key": "前端不再帶任何金鑰"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "ura6",
+          "text": "前端只改一個地方：fetch 的網址，換成自己網站的聊天網址，不再帶任何金鑰。"
+        }
+      ]
+    },
+    {
+      "id": "server-1a",
+      "template": "code",
+      "data": {
+        "code": "import http from \"node:http\";\nimport { readFile } from \"node:fs/promises\";\n\nconst UPSTREAM = process.env.UPSTREAM_URL\n  ?? \"https://api.openai.com/v1/responses\";\nconst JSON_TYPE = { \"Content-Type\": \"application/json\" };\n\nhttp.createServer(async (req, res) => {\n  const path = new URL(req.url, \"http://localhost\").pathname;\n  if (req.method === \"POST\" && path === \"/api/chat\") {\n    let body = \"\";\n    for await (const chunk of req) body += chunk;",
+        "highlight": [
+          4,
+          5
+        ],
+        "caption": "fixed/server.mjs 第 1–12 行（共 31 行）｜第 4–5 行：上游網址",
+        "key": "第 4–5 行：上游網址，你可以改"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "88z9",
+          "text": "接著是伺服器檔，整份三十一行，只用 Node.js 內建的模組。",
+          "emotion": "放慢，像在旁邊看"
+        },
+        {
+          "id": "ctv3",
+          "text": "亮起來的第四、五行是上游網址；你要呼叫的不是 OpenAI，就改這裡。"
+        }
+      ]
+    },
+    {
+      "id": "server-1b",
+      "template": "code",
+      "data": {
+        "code": "import http from \"node:http\";\nimport { readFile } from \"node:fs/promises\";\n\nconst UPSTREAM = process.env.UPSTREAM_URL\n  ?? \"https://api.openai.com/v1/responses\";\nconst JSON_TYPE = { \"Content-Type\": \"application/json\" };\n\nhttp.createServer(async (req, res) => {\n  const path = new URL(req.url, \"http://localhost\").pathname;\n  if (req.method === \"POST\" && path === \"/api/chat\") {\n    let body = \"\";\n    for await (const chunk of req) body += chunk;",
+        "highlight": [
+          9,
+          10,
+          11,
+          12
+        ],
+        "caption": "fixed/server.mjs 第 1–12 行（共 31 行）｜第 9–12 行：只處理 /api/chat",
+        "key": "只處理送到 /api/chat 的請求"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "c87u",
+          "text": "第十行起，只處理送到聊天網址的請求，先把瀏覽器送來的內容收齊。"
+        }
+      ]
+    },
+    {
+      "id": "server-2a",
+      "template": "code",
+      "data": {
+        "code": "    const r = await fetch(UPSTREAM, {\n      method: \"POST\",\n      headers: {\n        ...JSON_TYPE,\n        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,\n      },\n      body,\n    });\n    res.writeHead(r.status, JSON_TYPE);\n    return res.end(await r.text());\n  }",
+        "highlight": [
+          5
+        ],
+        "caption": "fixed/server.mjs 第 13–23 行（共 31 行）｜第 17 行：金鑰在這裡加上",
+        "key": "金鑰在伺服器這一行加上"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "dn6k",
+          "text": "然後轉送給上游；金鑰就在亮起來的這一行加上去，"
+        },
+        {
+          "id": "r9cx",
+          "text": "讀的是伺服器的環境變數，瀏覽器看不到；變數叫別的名字，就改這行。",
+          "emotion": "「瀏覽器看不到」清楚"
+        }
+      ]
+    },
+    {
+      "id": "server-2b",
+      "template": "code",
+      "data": {
+        "code": "    const r = await fetch(UPSTREAM, {\n      method: \"POST\",\n      headers: {\n        ...JSON_TYPE,\n        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,\n      },\n      body,\n    });\n    res.writeHead(r.status, JSON_TYPE);\n    return res.end(await r.text());\n  }",
+        "highlight": [
+          9,
+          10
+        ],
+        "caption": "fixed/server.mjs 第 13–23 行（共 31 行）｜第 21–22 行：原樣回傳",
+        "key": "上游的回應原樣傳回"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "xrzz",
+          "text": "上游回什麼狀態、什麼內容，就原樣傳回瀏覽器。"
+        }
+      ]
+    },
+    {
+      "id": "server-3",
+      "template": "code",
+      "data": {
+        "title": "其他網址：從 dist/ 送檔案",
+        "code": "  const file = path === \"/\" ? \"/index.html\" : path;\n  const url = new URL(`./dist${file}`, import.meta.url);\n  try {\n    res.end(await readFile(url));\n  } catch {\n    res.writeHead(404).end();\n  }\n}).listen(8787);",
+        "highlight": [
+          2,
+          4
+        ],
+        "caption": "fixed/server.mjs 第 24–31 行（共 31 行）",
+        "key": "找不到就回 404"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "gq8y",
+          "text": "其他網址，一律到 dist 資料夾找同名的檔案送出去，找不到就回 404；"
+        },
+        {
+          "id": "cpss",
+          "text": "最後一行，讓它在 8787 這個埠等請求。"
+        }
+      ]
+    },
+    {
+      "id": "start-parts",
+      "template": "table",
+      "data": {
+        "title": "啟動伺服器",
+        "columns": [
+          "指令的一段",
+          "做什麼"
+        ],
+        "rows": [
+          [
+            "UPSTREAM_URL=http://127.0.0.1:8788",
+            "示範用：上游換成假的"
+          ],
+          [
+            "node --env-file=.env",
+            "Node.js 讀進 .env 的值"
+          ],
+          [
+            "server.mjs",
+            "跑剛剛那個伺服器檔"
+          ]
+        ],
+        "source": "r5 的啟動指令；完整一行在說明欄",
+        "key": "先 build，再啟動伺服器"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "47nr",
+          "text": "跑起來：先 build，再用 node 加上讀進 .env 的選項，啟動伺服器；"
+        },
+        {
+          "id": "3s45",
+          "text": "示範時上游換成一個假的 OpenAI，只回答有沒有收到 sk 開頭的金鑰。"
+        }
+      ]
+    },
+    {
+      "id": "fixed-grep",
+      "template": "terminal",
+      "data": {
+        "title": "重新 build 後，再搜一次",
+        "command": "sed -n 's/^[A-Z_]*=//p' ../shop-chat/.env | grep -rnoFf - dist/",
+        "output": [
+          "dist/assets/index-DCvaT4J4.js:1:pk_test_DEMOFAKE0000\ndist/assets/index-DCvaT4J4.js:1:AIza-DEMO-FAKE-0000"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "GNU grep 3.11",
+        "typing": "human",
+        "keys": [
+          "拿原本那份 .env 的值來搜",
+          "只剩兩把公開的"
+        ]
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "yzzc",
+          "text": "重新 build，拿原本那份 .env 的四個值，用同一行再搜一次；"
+        },
+        {
+          "id": "8y8f",
+          "text": "只剩 Stripe 和 Firebase 兩把，OpenAI 那把不見了。",
+          "reveal": 1,
+          "emotion": "放鬆，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "fixed-curl",
+      "template": "terminal",
+      "data": {
+        "title": "功能還在嗎",
+        "command": "curl -s -X POST localhost:8787/api/chat -d '{\"input\":\"hi\"}'",
+        "output": [
+          "{\"got_key\":true}"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "curl 8.5.0",
+        "typing": "human",
+        "keys": [
+          "送一個問題給 /api/chat",
+          "上游收到了金鑰"
+        ]
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "zc9b",
+          "text": "功能還在嗎？",
+          "emotion": "問句，輕"
+        },
+        {
+          "id": "a6t3",
+          "text": "伺服器跑起來，用 curl 送一個問題給自己的聊天網址；"
+        },
+        {
+          "id": "m7n3",
+          "text": "上游回答：收到金鑰了，金鑰是在伺服器這一段加上的。",
+          "reveal": 1,
+          "emotion": "放鬆"
+        }
+      ]
+    },
+    {
+      "id": "done-big",
+      "template": "big",
+      "data": {
+        "kicker": "怎麼知道做對了",
+        "text": "那一行搜不到 **sk-**\n功能照常",
+        "key": "搜不到祕密那把，功能照常"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "zifs",
+          "text": "怎麼知道做對了？",
+          "emotion": "問句"
+        },
+        {
+          "id": "u5vn",
+          "text": "那一行搜尋不再找到祕密那一把，功能照常。",
+          "emotion": "收穩"
+        },
+        {
+          "id": "aws8",
+          "text": "那用 Next.js、又沒加前綴的，總沒事了吧？",
+          "emotion": "替觀眾問，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "next-env-quote",
+      "chapter": "沒加 NEXT_PUBLIC_ 也會漏？",
+      "template": "quote",
+      "data": {
+        "kicker": "Next.js：Environment Variables",
+        "quote": "By default, environment variables are only available on the server.",
+        "translation": "預設情況下，環境變數只在伺服器上讀得到。",
+        "source": "nextjs.org · Environment Variables · 2026-10-28",
+        "key": "沒有 NEXT_PUBLIC_ 的，只在伺服器"
+      },
+      "claims": [
+        "c11",
+        "r6"
+      ],
+      "lines": [
+        {
+          "id": "22v7",
+          "text": "Vite 版乾淨了；換到 Next.js，同一把金鑰放進 .env.local，",
+          "reveal": 1
+        },
+        {
+          "id": "ss2k",
+          "text": "刻意不加 NEXT_PUBLIC 前綴；",
+          "say": "刻意不加 Next Public 前綴；",
+          "say_for": "ebb320741514",
+          "emotion": "放慢"
+        },
+        {
+          "id": "t7gx",
+          "text": "照 Next.js 的規則，沒有這個前綴的變數，只在伺服器上讀得到。"
+        }
+      ]
+    },
+    {
+      "id": "next-page",
+      "template": "code",
+      "data": {
+        "title": "app/page.jsx",
+        "code": "import Chat from \"./chat\";\nexport default function Page() {\n  return <Chat apiKey={process.env.OPENAI_API_KEY} />;\n}",
+        "highlight": [
+          3
+        ],
+        "caption": "next-leak/app/page.jsx 全檔 4 行｜.env.local 只有 OPENAI_API_KEY 一行",
+        "key": "金鑰當成參數，傳給 Chat"
+      },
+      "claims": [
+        "r6"
+      ],
+      "lines": [
+        {
+          "id": "m277",
+          "text": "可是首頁這個伺服器元件，把金鑰當成參數，傳給了瀏覽器端的元件；",
+          "emotion": "轉折"
+        },
+        {
+          "id": "yxkm",
+          "text": "那個元件拿到它，直接帶著打 OpenAI。"
+        }
+      ]
+    },
+    {
+      "id": "next-static",
+      "template": "big",
+      "data": {
+        "kicker": "grep -rl \"sk-server-FAKE-1111\" .next/static",
+        "text": "**零筆**",
+        "sub": "實跑 2026-10-28｜Next.js 16.4.2｜r6：沒有輸出，exit 1",
+        "key": "打包出來的 JavaScript：沒有"
+      },
+      "claims": [
+        "r6"
+      ],
+      "lines": [
+        {
+          "id": "kv4t",
+          "text": "在打包出來的 JavaScript 裡搜這把金鑰，一筆都沒有。"
+        }
+      ]
+    },
+    {
+      "id": "next-curl",
+      "template": "terminal",
+      "data": {
+        "title": "抓首頁，搜 apiKey",
+        "command": "curl -s localhost:3000/ | grep -o 'apiKey[^}]*'",
+        "output": [
+          "apiKey\\\":\\\"sk-server-FAKE-1111\\\""
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "curl 8.5.0 · GNU grep 3.11",
+        "typing": "human",
+        "keys": [
+          "抓首頁 HTML，搜參數名",
+          "金鑰就在頁面裡"
+        ]
+      },
+      "claims": [
+        "r6"
+      ],
+      "lines": [
+        {
+          "id": "gkv2",
+          "text": "可是把網站跑起來，用 curl 抓首頁的 HTML，搜那個參數的名字："
+        },
+        {
+          "id": "zhq8",
+          "text": "金鑰就在這裡；前後的反斜線，是頁面資料裡跳脫掉的引號。",
+          "reveal": 1,
+          "emotion": "亮起來，帶一點意外"
+        },
+        {
+          "id": "scs6",
+          "text": "我沒加前綴，每個訪客拿到的首頁裡，還是有它。",
+          "emotion": "放慢"
+        }
+      ]
+    },
+    {
+      "id": "next-datasec",
+      "template": "quote",
+      "data": {
+        "kicker": "Next.js：Data Security",
+        "quote": "…accidentally expose private data through how data is fetched or passed to components",
+        "translation": "資料怎麼取得、怎麼傳給元件，都可能意外洩漏私密資料。",
+        "source": "nextjs.org · Data Security · 2026-10-28",
+        "keys": [
+          "前綴只管打包",
+          "傳給元件的值，跟著頁面走"
+        ]
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "x4yr",
+          "text": "前綴管的只有打包這一步；"
+        },
+        {
+          "id": "t7da",
+          "text": "傳給瀏覽器端元件的每一個值，都會跟著頁面一起送出去。",
+          "reveal": 1,
+          "emotion": "清楚"
+        }
+      ]
+    },
+    {
+      "id": "check-page",
+      "template": "big",
+      "data": {
+        "kicker": "所以檢查要做在",
+        "text": "訪客拿到的**頁面**\n不只是資料夾",
+        "key": "也要搜訪客拿到的頁面"
+      },
+      "lines": [
+        {
+          "id": "tqz6",
+          "text": "所以檢查不能只搜資料夾，還要搜訪客真的拿到的頁面。",
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "route-1",
+      "template": "code",
+      "data": {
+        "code": "const UPSTREAM = process.env.UPSTREAM_URL\n  ?? \"https://api.openai.com/v1/responses\";\n\nexport async function POST(req) {\n  const r = await fetch(UPSTREAM, {\n    method: \"POST\",\n    headers: {",
+        "highlight": [
+          1,
+          2
+        ],
+        "caption": "next-fixed/app/api/chat/route.js 第 1–7 行（共 14 行）",
+        "key": "同一個上游網址"
+      },
+      "claims": [
+        "r6b"
+      ],
+      "lines": [
+        {
+          "id": "7gyb",
+          "text": "修法呢？",
+          "emotion": "問句，輕"
+        },
+        {
+          "id": "bqcq",
+          "text": "一樣搬到伺服器，換成 Next.js 的寫法：一個十四行的 route 檔，上游網址照舊。"
+        }
+      ]
+    },
+    {
+      "id": "route-2",
+      "template": "code",
+      "data": {
+        "code": "      \"Content-Type\": \"application/json\",\n      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,\n    },\n    body: await req.text(),\n  });\n  return new Response(await r.text(), { status: r.status });\n}",
+        "highlight": [
+          2
+        ],
+        "caption": "next-fixed/app/api/chat/route.js 第 8–14 行（共 14 行）",
+        "key": "金鑰在伺服器上加"
+      },
+      "claims": [
+        "r6b"
+      ],
+      "lines": [
+        {
+          "id": "2rm9",
+          "text": "金鑰一樣在伺服器上、在這一行加上，回應原樣傳回去。"
+        }
+      ]
+    },
+    {
+      "id": "next-chat",
+      "template": "code",
+      "data": {
+        "title": "app/chat.jsx",
+        "code": "\"use client\";\nexport default function Chat() {\n  const ask = () => fetch(\"/api/chat\", {\n    method: \"POST\",\n    body: JSON.stringify({ input: \"hi\" }),\n  });\n  return <button onClick={ask}>Ask</button>;\n}",
+        "highlight": [
+          3
+        ],
+        "caption": "next-fixed/app/chat.jsx 全檔 8 行｜page.jsx 改成 <Chat />，不再傳金鑰",
+        "key": "前端改打 /api/chat"
+      },
+      "claims": [
+        "r6b"
+      ],
+      "lines": [
+        {
+          "id": "dgx8",
+          "text": "首頁不再把金鑰傳下去，按鈕改打自己的聊天網址。"
+        }
+      ]
+    },
+    {
+      "id": "next-fixed-curl",
+      "template": "terminal",
+      "data": {
+        "title": "修好後，再抓首頁",
+        "command": "curl -s localhost:3000/ | grep -c sk-server-FAKE-1111",
+        "output": [
+          "0"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "curl 8.5.0 · GNU grep 3.11",
+        "typing": "human",
+        "keys": [
+          "重新 build，再抓首頁",
+          "零次"
+        ]
+      },
+      "claims": [
+        "r6b"
+      ],
+      "lines": [
+        {
+          "id": "hfq3",
+          "text": "重新 build、跑起來，再抓一次首頁，看那把金鑰出現了幾次："
+        },
+        {
+          "id": "qyjm",
+          "text": "零次。",
+          "reveal": 1,
+          "emotion": "短，乾脆"
+        }
+      ]
+    },
+    {
+      "id": "next-fixed-post",
+      "template": "terminal",
+      "data": {
+        "title": "聊天網址照常",
+        "command": "curl -s -X POST localhost:3000/api/chat -d '{\"input\":\"hi\"}'",
+        "output": [
+          "{\"got_key\":true}"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "curl 8.5.0",
+        "typing": "human",
+        "key": "上游一樣收到了金鑰"
+      },
+      "claims": [
+        "r6b"
+      ],
+      "lines": [
+        {
+          "id": "uv9c",
+          "text": "送一個問題給 Next.js 版的聊天網址，上游一樣回答：收到金鑰了。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "define-table",
+      "template": "table",
+      "data": {
+        "columns": [
+          "vite.config.js 裡的一段",
+          "做什麼"
+        ],
+        "rows": [
+          [
+            "loadEnv(mode, process.cwd(), \"\")",
+            "讀進 .env 的全部變數"
+          ],
+          [
+            "define: { \"process.env.OPENAI_API_KEY\": …",
+            "build 時把這串字換掉"
+          ],
+          [
+            "JSON.stringify(env.OPENAI_API_KEY)",
+            "換成 .env 裡的值"
+          ]
+        ],
+        "source": "define-case/vite.config.js 第 3–4 行節錄（共 5 行）",
+        "keys": [
+          "Vite 的同一種失敗：define",
+          "讀進全部變數",
+          "build 時換掉這串字",
+          "換成伺服器金鑰的值"
+        ]
+      },
+      "claims": [
+        "r4",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "kgzt",
+          "text": "Vite 也有同一種失敗，出在設定檔的 define 這一段：",
+          "emotion": "轉折"
+        },
+        {
+          "id": "789w",
+          "text": "第一段把 .env 的全部變數讀進來，連沒前綴的也算；",
+          "reveal": 1
+        },
+        {
+          "id": "y5r5",
+          "text": "第二段叫 Vite 在 build 時，把程式裡這串字換掉；",
+          "reveal": 1
+        },
+        {
+          "id": "pgjt",
+          "text": "換成什麼？",
+          "reveal": 1,
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "ku9y",
+          "text": "換成那把伺服器專用金鑰的值。"
+        }
+      ]
+    },
+    {
+      "id": "define-grep",
+      "template": "terminal",
+      "data": {
+        "title": "define-case：同一行搜尋",
+        "command": "sed -n 's/^[A-Z_]*=//p' .env | grep -rnoFf - dist/",
+        "output": [
+          "dist/assets/index-BtkmPQ5U.js:1:sk-demo-FAKE-0000\ndist/assets/index-BtkmPQ5U.js:1:sk-server-FAKE-1111\ndist/assets/index-BtkmPQ5U.js:1:pk_test_DEMOFAKE0000\ndist/assets/index-BtkmPQ5U.js:1:AIza-DEMO-FAKE-0000"
+        ],
+        "ran_on": "2026-10-28",
+        "tool_version": "GNU grep 3.11",
+        "typing": "human",
+        "key": "沒有前綴的那把也在"
+      },
+      "claims": [
+        "r4"
+      ],
+      "lines": [
+        {
+          "id": "cywb",
+          "text": "build 完用同一行搜一次：四把全在，沒有前綴的那把也進了網站。",
+          "reveal": 1,
+          "emotion": "壓低"
+        },
+        {
+          "id": "nnhu",
+          "text": "所以不管有沒有前綴，最後都用那一行，搜 build 出來的結果。",
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "old-key",
+      "chapter": "舊金鑰怎麼辦：換掉、限制、設上限",
+      "template": "big",
+      "data": {
+        "kicker": "舊的那一把",
+        "text": "已經送出去過\n**重新 build 收不回**",
+        "key": "舊的那把，換一把新的"
+      },
+      "lines": [
+        {
+          "id": "62hq",
+          "text": "兩個版本都乾淨了；可是舊的那把，已經跟著網站送出去過，"
+        },
+        {
+          "id": "e6vq",
+          "text": "重新 build 收不回來；該做的，是換一把新的。",
+          "emotion": "「換一把新的」加重"
+        }
+      ]
+    },
+    {
+      "id": "rotate",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "換新金鑰",
+            "detail": "OpenAI 撤銷、Stripe 輪替",
+            "icon": "gear"
+          },
+          {
+            "title": "舊的失效",
+            "detail": "OpenAI：幾秒內生效",
+            "icon": "lock"
+          },
+          {
+            "title": "新的只放伺服器",
+            "detail": "伺服器的環境變數",
+            "icon": "file"
+          }
+        ],
+        "source": "OpenAI、Stripe 官方頁 2026-10-28",
+        "keys": [
+          "Stripe 輪替：舊的撤銷、給新的",
+          "OpenAI 撤銷：幾秒內生效",
+          "新的只放伺服器"
+        ]
+      },
+      "claims": [
+        "c15",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "e6fa",
+          "text": "Stripe 有輪替的功能，撤銷舊的，同時給你一把馬上能用的新金鑰；",
+          "reveal": 1
+        },
+        {
+          "id": "675b",
+          "text": "OpenAI 的金鑰撤銷之後，幾秒內就失效；",
+          "reveal": 1
+        },
+        {
+          "id": "dku5",
+          "text": "新的那把，只放進伺服器的環境變數。",
+          "reveal": 1,
+          "emotion": "收穩"
+        }
+      ]
+    },
+    {
+      "id": "restrict",
+      "template": "bullets",
+      "data": {
+        "items": [
+          {
+            "text": "Google Maps：只准你的網站",
+            "icon": "globe"
+          },
+          {
+            "text": "Firebase：只開 Firebase 的 API",
+            "icon": "lock"
+          },
+          {
+            "text": "Supabase：資料表開 RLS",
+            "icon": "checklist"
+          }
+        ],
+        "source": "Google Maps、Firebase、Supabase 官方頁 2026-10-28",
+        "keys": [
+          "留著的：到主控台加限制",
+          "Maps：限定你的網站",
+          "Firebase：只開自家服務",
+          "Supabase：開 RLS"
+        ]
+      },
+      "claims": [
+        "c8",
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "jq7y",
+          "text": "留著的公開金鑰，到各家的主控台加限制："
+        },
+        {
+          "id": "4nyd",
+          "text": "Google Maps 的金鑰，限定只有你的網站能用；",
+          "reveal": 1
+        },
+        {
+          "id": "dgjv",
+          "text": "Firebase 的金鑰，只開 Firebase 自己的服務；",
+          "reveal": 1
+        },
+        {
+          "id": "43gp",
+          "text": "Supabase 的資料表，打開資料列層級的存取規則。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "endpoint-q",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會問",
+        "text": "別人不就改打\n我的 **/api/chat**？",
+        "key": "金鑰搬走了，網址還在"
+      },
+      "lines": [
+        {
+          "id": "dcxs",
+          "text": "你可能會問：金鑰搬走了，別人不就改打我的聊天網址？",
+          "emotion": "替觀眾問，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "endpoint-a",
+      "template": "big",
+      "data": {
+        "kicker": "會",
+        "text": "沒有瀏覽器、沒有登入\n一行 **curl** 就打得通",
+        "sub": "實跑 2026-10-28｜curl 8.5.0｜r5",
+        "key": "這個伺服器檔不管誰能打"
+      },
+      "claims": [
+        "r5"
+      ],
+      "lines": [
+        {
+          "id": "3agd",
+          "text": "會。剛剛那行 curl 沒開瀏覽器、也沒登入，一樣拿到回應；",
+          "emotion": "平，坦白"
+        },
+        {
+          "id": "z2v4",
+          "text": "這個伺服器檔只做到金鑰不在瀏覽器，誰能打、能打幾次，它都不管。"
+        }
+      ]
+    },
+    {
+      "id": "limits",
+      "template": "bullets",
+      "data": {
+        "title": "再加一道：上限",
+        "items": [
+          {
+            "text": "定期看 Usage 和 Logs",
+            "icon": "search"
+          },
+          {
+            "text": "設花費上限、速率上限",
+            "icon": "gear"
+          },
+          {
+            "text": "自動儲值：門檻小心設",
+            "icon": "warning"
+          }
+        ],
+        "source": "Claude 說明中心 API key best practices 2026-10-28",
+        "keys": [
+          "定期看用量和紀錄",
+          "上限：防外洩的意外用量",
+          "自動儲值的門檻"
+        ]
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "pjbd",
+          "text": "所以要另外設上限；Anthropic 建議定期看用量和紀錄頁；",
+          "reveal": 1
+        },
+        {
+          "id": "evbx",
+          "text": "能自訂速率的組織，設花費上限和速率上限，防金鑰外洩帶來的意外用量；",
+          "reveal": 1
+        },
+        {
+          "id": "dh5p",
+          "text": "標準方案的組織，開自動儲值時，門檻要設得小心。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "my-view",
+      "chapter": "上線前搜 build，不搜 repo",
+      "template": "big",
+      "data": {
+        "kicker": "我的看法",
+        "text": "**前端沒有祕密**",
+        "key": "送到瀏覽器的，都當成公開"
+      },
+      "lines": [
+        {
+          "id": "5k4s",
+          "text": "我的看法是：前端沒有祕密。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "h5fg",
+          "text": "送到瀏覽器的每一個字，包括你以為 build 掉的變數和註解，都當成貼在公告欄上。"
+        }
+      ]
+    },
+    {
+      "id": "my-ai",
+      "template": "big",
+      "data": {
+        "kicker": "我照樣用 AI 寫前端",
+        "text": "哪些字送到瀏覽器\n**我決定**",
+        "key": "不是 build 工具替我決定"
+      },
+      "lines": [
+        {
+          "id": "7zxx",
+          "text": "我照樣用 AI 寫前端；但哪些字會送到瀏覽器，是我決定，不是 build 工具替我決定。",
+          "emotion": "穩，「我決定」加重"
+        }
+      ]
+    },
+    {
+      "id": "unknown",
+      "template": "big",
+      "data": {
+        "kicker": "我不知道的",
+        "text": "有多少網站\n**這樣漏了金鑰**",
+        "key": "我沒有可靠的數字"
+      },
+      "lines": [
+        {
+          "id": "693a",
+          "text": "我不知道的是，有多少上線的網站這樣漏了金鑰；我沒有可靠的數字。",
+          "emotion": "放輕"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "上線前搜 build\n不搜 repo",
+        "lines": [
+          "sed … .env | grep -rnoFf - dist/",
+          "curl 首頁 | grep apiKey"
+        ],
+        "cta": "訂閱：每支都給你一個上線前能做的檢查",
+        "key": "你的網站 build 完搜過嗎？"
+      },
+      "lines": [
+        {
+          "id": "uyqm",
+          "text": "進沒進 git，搜 repo；上沒上網站，搜 build。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "bhvy",
+          "text": "你的網站 build 完搜過嗎？留言告訴我。",
+          "emotion": "輕輕收，問句"
+        },
+        {
+          "id": "jzy6",
+          "text": "訂閱，每支影片都給你一個上線前能做的檢查。",
+          "emotion": "輕快收"
+        }
+      ]
+    }
+  ]
 }
