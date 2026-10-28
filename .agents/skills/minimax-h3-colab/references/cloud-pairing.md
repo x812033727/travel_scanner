@@ -77,6 +77,8 @@ Windows 要在 WSL 裡（CLI 只支援 Linux／macOS）。B 不經過 agent，�
 
 ## 5. 配額與價格：只記來源，不當實測
 
+- **站主的方案是 Colab Pro+**（2026-10-28 站主說的），登在後台「Google Colab」槽位 A 當預設帳號。Pro+ 是 `--high-mem` 的前提（Colab CLI 註明要 Pro 或 Pro+），也有背景執行，所以 `h3.sh` 預設的 `--gpu A100 --high-mem` 照用。每月點數網路上說法不一（500 或 600），A100 每小時扣 13–15 點也不一致，GPU 配不配得到不保證：**以後台卡片的 `colab usage` 餘額為準**，第一批跑完把前後差額寫進票。
+
 - Google AI Pro 每月含 200 compute units、Ultra 另有 Premium GPU 與背景執行；一支 12 秒約 1 CU：這是 kocpc 2026-10 文章與作者 Threads 帖的說法，**本 repo 沒量過**。A100 高 RAM 每小時扣幾 CU 以 `colab usage` 印的 `Usage rate` 為準，第一次跑時抄進收據。
 - 第一次在同一個 session 要裝 ComfyUI、從 Hugging Face 抓 `Comfy-Org/MiniMax-H3` 的模型（notebook 說至少 60 GiB 磁碟，Ref2VA 的 BF16 備援 80 GiB）：冷啟動幾分鐘到更久，所以**一批放同一個 manifest 共用 session**，不要一鏡開一次。
 - 它是 ComfyUI 跑的 **Turbo LoRA 版 H3**（Ref2VA 用官方 4-step LoRA；first_frame 用社群 `drbaph` 的 v4 Turbo LoRA），不是 MiniMax API 或 Hailuo 網頁的 H3：畫質與一致性要自己小樣，不沿用 `providers-and-plans.md` 的 Hailuo 實測。
