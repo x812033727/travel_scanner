@@ -39,6 +39,12 @@ import {
   webMove,
   webPrompt,
   H3_FIRST_LINE,
+  H3_MIN_SECONDS,
+  H3_TALK_SECONDS,
+  h3AlignLine,
+  h3Anchor,
+  h3StyleWord,
+  twoBeats,
   HAILUO_MODELS,
   expectedTakesFlag,
 } from "../.agents/skills/animation-preproduction/scripts/shot_plan.mjs";
@@ -103,8 +109,10 @@ test("fight wording: thrusts and slashes at the other person are contact, a weap
 });
 
 test("the camera line becomes H3's camera sentence, Hailuo 2.3's bracket command and Kling's phrase, with the pan direction of the camera", () => {
-  assert.deepEqual(webMove("Two-shot, eye level, locked"), { group: "locked", slow: false, unsupported: null, h3: "The camera is a static shot and stays completely still", hailuo: "[Static shot]", kling: "locked-off camera, no camera movement" });
-  assert.equal(webMove("Wide shot, pan left").h3, "The camera pans left at a steady speed", "a move always carries a speed in the H3 sentence");
+  assert.deepEqual(webMove("Two-shot, eye level, locked"), { group: "locked", slow: false, fast: false, unsupported: null, h3: "The camera holds a static shot", hailuo: "[Static shot]", kling: "locked-off camera, no camera movement" }, "locked is a real hold: H3 drifts unless told to hold");
+  assert.equal(webMove("Wide shot, pan left").h3, "The camera pans left", "neither slow nor fast: the official guide omits medium amplitude and normal speed");
+  assert.equal(webMove("Wide shot, fast pan right").h3, "The camera pans right with large amplitude at fast speed", "the official speed words are at slow speed and at fast speed only");
+  assert.equal(webMove("Wide shot, fast pan right").fast, true);
   assert.deepEqual([webMove("Wide shot, slow pan").group, webMove("Wide shot, slow pan").unsupported], [null, "pan"], "a pan with no direction is not guessed as a drift");
   assert.deepEqual([webMove("Wide shot, orbit").group, webMove("Wide shot, orbit").unsupported], [null, "orbit"]);
   assert.equal(webMove("Wide shot, drift").group, "drift");
@@ -121,7 +129,22 @@ test("the camera line becomes H3's camera sentence, Hailuo 2.3's bracket command
   const hailuo = webPrompt("hailuo", s01, look, shotCast(doc, s01));
   assert.equal(hailuo.model, "h3", "H3 is the default Hailuo model");
   assert.ok(hailuo.text.startsWith(H3_FIRST_LINE + "\n\nintegrated_multimodal_description: [Shot 1] "), "the official H3 image-to-video layout");
-  assert.match(hailuo.text, /The camera is a static shot and stays completely still\./);
+  assert.match(hailuo.text, /\[Shot 1\] (?:3D CG|2D-animated|live-action|claymation|watercolor)\. /, "the body opens with an official style word");
+  assert.match(hailuo.text, /shown in <Picture 1> keeps? the same faces?, hair, costumes? and props as the first frame; the set layout stays as it is\. /, "then an anchor sentence that cites the first frame");
+  assert.match(hailuo.text, /The camera holds a static shot\./);
+  assert.match(hailuo.text, / One continuous shot\.\noverall_soundscape/, "a positive single-shot close, not the no-cuts negation");
+  assert.ok(!/Keep the supplied first frame|at a steady speed/.test(hailuo.text), "the old keep-the-first-frame tail and the unofficial speed word are gone (look.motion is the project's own words and stays)");
+  assert.equal(h3StyleWord({ preset: "custom", style: "Chinese 3D donghua CG, Unreal Engine 5 render" }), "3D CG");
+  assert.equal(h3StyleWord({ preset: "custom", style: "2D anime illustration, cel shading" }), "2D-animated");
+  assert.equal(h3StyleWord({ preset: "custom", style: "" }), null);
+  assert.equal(h3Anchor([]), "The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame.");
+  assert.equal(h3Anchor([{ name: "Xu Yan" }, { name: "A Ling" }]), "Xu Yan and A Ling shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is.");
+  assert.equal(h3Anchor([{ name: "許硯" }]), "The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is.", "a non-Latin name means nothing to the model");
+  const withEnd = webPrompt("hailuo", { ...s01, data: { ...s01.data, end_frame: { prompt: "the door now open" } } }, look, shotCast(doc, s01), { seconds: 6 });
+  assert.ok(withEnd.text.startsWith(h3AlignLine(6) + "\n\n"), "an end frame switches the first line to the FL2VA alignment sentence");
+  assert.equal(h3AlignLine(5), "How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the 5.00-second mark of the target video.");
+  assert.ok(webPrompt("hailuo", { ...s01, data: { ...s01.data, end_frame: { prompt: "x" } } }, look, shotCast(doc, s01)).notes.some((note) => /FL2VA/.test(note)), "without the seconds the I2VA line stays and a note says so");
+  assert.ok(webPrompt("hailuo", { ...s01, data: { ...s01.data, motion: "He sits, then he stands." } }, look, shotCast(doc, s01)).notes.some((note) => /兩拍/.test(note)));
   assert.match(hailuo.text, /\noverall_soundscape: N\/A\nnon_diegetic_music: N\/A$/, "silence asked for; the pipeline drops the track anyway");
   assert.ok(!/Avoid:/.test(hailuo.text), "the negative stays out of the text");
   assert.equal(hailuo.negative, look.negative.replace(/[.\s]+$/, ""), "and is listed for a negative field");
@@ -144,7 +167,15 @@ test("seconds bought per route: the route's range plus the tail handle, the serv
   const hailuo = planEpisode(doc, { route: "hailuo" });
   assert.equal(hailuo.plan.id, "hailuo:pro", "the Pro plan is the default for a Hailuo route");
   assert.equal(hailuo.handle_s, DEFAULT_HANDLE_S);
-  for (const shot of hailuo.shots) assert.equal(shot.buy_s, Math.min(HAILUO_CLIP_SECONDS[1], Math.max(HAILUO_CLIP_SECONDS[0], Math.ceil(need(shot.id) + DEFAULT_HANDLE_S - 1e-9))), shot.id);
+  for (const shot of hailuo.shots) {
+    // H3 never buys 4 s (107 frames, under the trained 124): 5 s is the floor, 6 s with on-screen speech or a two-beat motion.
+    const motion = doc.scenes.find((scene) => scene.id === shot.id).data.motion;
+    assert.equal(shot.two_beats, twoBeats(motion), shot.id);
+    assert.equal(shot.on_screen_speech, shot.lines.length > 0 && shot.speakers.some((speaker) => speaker !== "narrator" && shot.characters.includes(speaker)), shot.id);
+    const talk = shot.on_screen_speech || shot.two_beats;
+    assert.equal(shot.buy_s, Math.min(15, Math.max(talk ? H3_TALK_SECONDS : H3_MIN_SECONDS, Math.ceil(need(shot.id) + DEFAULT_HANDLE_S - 1e-9))), shot.id);
+    assert.ok(shot.buy_s >= H3_MIN_SECONDS, `${shot.id} is never bought at 4 s`);
+  }
   const kling = planEpisode(doc, { route: "kling" });
   for (const shot of kling.shots) assert.equal(shot.buy_s, Math.min(15, Math.max(3, Math.ceil(need(shot.id) + DEFAULT_HANDLE_S - 1e-9))), shot.id);
   assert.equal(kling.plan.credits_per_second, PLANS["kling:pro"].credits_per_second["1080p"]);
