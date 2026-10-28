@@ -1,0 +1,4336 @@
+{
+  "number": 4,
+  "title": "馬甲",
+  "theme": "你一直在騙我，還是一直在等我？",
+  "start_state": "她知道事故是關曜變線，知道父親去醫院看過他，不知道他為什麼三年不說、為什麼在她車隊外面開修車鋪。他是岑氏車隊一號車手、分站冠軍。關曜開始用規則與媒體打他。記者小方開始寫『他到底是誰』。",
+  "end_state": "他為什麼接這份約揭開（她父親那句話）；她父親跟他的關係揭開（第一個簽他的人）；關曜為什麼一直盯著岑氏車隊揭開。小方的頭版寫出他三年前的本名與事故真相的一半；他在一場分站賽被凌風撞出賽道，住院；她在病房的椅子上睡了七夜；她第一次讓他替她決定一件事：『下一場，你說上不上。』最後一集，出院那天他們回公寓，客房的門她沒關；深夜他在客房門口站著，她在自己房門口站著，兩扇門都開著；他說：『合約第三條。』她說：『你違約還是我違約？』",
+  "guest_cast": [
+    {
+      "id": "s04-zhuxi",
+      "name": "聶正平",
+      "role": "雲城房車錦標賽賽會聽證主席，六十二歲；主持許聿身分申訴的聽證，第五篇章宣布凌風一號停賽與傳喚關曜，第六篇章主持關曜的傳喚聽證",
+      "appearance": "東亞年長男性，六十二歲，清瘦挺拔：銀白短髮梳得整齊、方臉、濃眉微白、金絲細框眼鏡，深藍西裝配賽會徽章領帶，手握一支木槌，神情嚴肅公正"
+    },
+    {
+      "id": "s04-jishi",
+      "name": "老蔡（蔡永福）",
+      "role": "退役的凌風車隊技師，五十八歲；三年前被叫去拔關曜那台車的記憶卡，偷偷備份了一份，在舊城區開五金行藏了三年",
+      "appearance": "東亞年長男性，五十八歲，瘦、背微駝、灰白平頭、臉上曬斑與皺紋，深色舊工作背心、袖口沾著陳年油漬，手指粗糙，眼神謹慎又疲憊"
+    },
+    {
+      "id": "s04-hushi",
+      "name": "周晴",
+      "role": "雲城醫院病房護理師，二十九歲；照顧許聿七夜，破例讓岑知微留在病房的椅子上",
+      "appearance": "東亞年輕女性，二十九歲，清秀溫和：圓臉、杏眼、短髮別在耳後，淺藍護理師制服、胸前別著名牌與一支筆，笑起來很安心"
+    },
+    {
+      "id": "s04-lvshi",
+      "name": "宋子衡",
+      "role": "凌風車隊的律師，三十六歲；替關曜在記者會上宣布申訴、在聽證會上主張許聿身分不符",
+      "appearance": "東亞男性，三十六歲，斯文冷淡：窄臉、細長眼、無框眼鏡、頭髮梳成油亮的側分，炭灰三件式西裝、手提黑色真皮公事包"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "他為什麼三年不替自己說一句話？",
+      "setup_episode": 1,
+      "payoff_episode": 2
+    },
+    {
+      "id": "s04-t02",
+      "question": "記者小方在查什麼？",
+      "setup_episode": 3,
+      "payoff_episode": 11
+    },
+    {
+      "id": "s04-t03",
+      "question": "她父親為什麼從沒跟她提過他？",
+      "setup_episode": 6,
+      "payoff_episode": 8
+    },
+    {
+      "id": "s04-t04",
+      "question": "關曜的下一步是什麼？",
+      "setup_episode": 6,
+      "payoff_episode": 15
+    },
+    {
+      "id": "s04-t05",
+      "question": "父親檔案櫃的第七格裡是什麼？",
+      "setup_episode": 8,
+      "payoff_episode": 10
+    },
+    {
+      "id": "s04-t06",
+      "question": "老鄧的箱子裡有什麼？",
+      "setup_episode": 17,
+      "payoff_episode": 18
+    },
+    {
+      "id": "s04-t07",
+      "question": "他的積分會不會被取消？",
+      "setup_episode": 15,
+      "payoff_episode": 21
+    },
+    {
+      "id": "s04-t08",
+      "question": "堂哥的家族表決會不會賣掉車隊？",
+      "setup_episode": 16,
+      "payoff_episode": 27
+    },
+    {
+      "id": "s04-t09",
+      "question": "三年前凌風那台車的行車紀錄還在嗎？",
+      "setup_episode": 20,
+      "payoff_episode": 30
+    },
+    {
+      "id": "s04-t10",
+      "question": "凌風三台車會把他圍到什麼程度？",
+      "setup_episode": 24,
+      "payoff_episode": 27
+    },
+    {
+      "id": "s04-t11",
+      "question": "那個退役的凌風技師肯不肯開口？",
+      "setup_episode": 26,
+      "payoff_episode": 29
+    },
+    {
+      "id": "s04-t12",
+      "question": "隨身碟要不要打開？",
+      "setup_episode": 30,
+      "payoff_episode": 31
+    },
+    {
+      "id": "s04-t13",
+      "question": "凌風一號會不會被罰？",
+      "setup_episode": 34,
+      "payoff_episode": 43
+    },
+    {
+      "id": "s04-t14",
+      "question": "她跑掉的那隻高跟鞋去哪了？",
+      "setup_episode": 35,
+      "payoff_episode": 51
+    },
+    {
+      "id": "s04-t15",
+      "question": "她會在病房的椅子上坐幾夜？",
+      "setup_episode": 39,
+      "payoff_episode": 50
+    },
+    {
+      "id": "s04-t16",
+      "question": "老鄧的第三十八份合約簽給誰？",
+      "setup_episode": 42,
+      "payoff_episode": 45
+    },
+    {
+      "id": "s04-t17",
+      "question": "許母會不會反對他回賽道？",
+      "setup_episode": 31,
+      "payoff_episode": 48
+    },
+    {
+      "id": "s04-t18",
+      "question": "下一場他上不上？",
+      "setup_episode": 48,
+      "payoff_episode": 50
+    },
+    {
+      "id": "s04-t19",
+      "question": "關曜的傳喚結果是什麼？",
+      "setup_episode": 43,
+      "payoff_episode": 55
+    },
+    {
+      "id": "s04-t20",
+      "question": "誰先走過那條走廊？",
+      "setup_episode": 53,
+      "payoff_episode": 60
+    },
+    {
+      "id": "s04-t21",
+      "question": "她什麼時候發現他簽了岑氏的約？",
+      "setup_episode": 45,
+      "payoff_episode": 57
+    },
+    {
+      "id": "s04-t22",
+      "question": "凌風一號為什麼從後面推他？",
+      "setup_episode": 33,
+      "payoff_episode": 41
+    },
+    {
+      "id": "s04-t23",
+      "question": "他什麼時候醒？",
+      "setup_episode": 37,
+      "payoff_episode": 40
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "指揮台上的耳機",
+      "youtube_title": "冠軍車手在耳機裡說出三年前的事故，老闆娘當場摘下耳機衝下指揮台",
+      "duration_s": 105,
+      "logline": "岑知微剛在耳機裡第一次聽見那場事故，要許聿當面說清楚，卻被頒獎台上的媒體與關曜擋在中間。",
+      "hook": "指揮台上她握著耳機，他的聲音還在：「他變線，我撞牆。」她摘下耳機，起身。",
+      "hook_type": "line",
+      "mid_hook": "頒獎台下關曜與她擦肩而過，低聲一句：「他沒說的，還多。」",
+      "extra_hooks": [
+        "記者小方的長鏡頭穿過香檳雨，對準他沒笑的半張臉。"
+      ],
+      "conflict": "她要他當面把三年前說清楚，他卻被困在頒獎台與三十支麥克風之間。",
+      "turn": "觀眾以為她要當眾質問他，她卻一把擋掉所有麥克風，把他拖下頒獎台、拖進她的車庫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "車庫鐵門轟然拉下，她把合約拍在引擎蓋上：「今晚說清楚，或解約。」",
+        "question": "他會說，還是被解約？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "nvzhu",
+        "majia",
+        "ganren"
+      ],
+      "spectacle": "頒獎台上香檳雨落下，他站在第一名的位置沒笑；她從維修區逆著人群走上台，把他拉下來。",
+      "glamour_shot": "岑知微在車庫的白燈下摘下一只耳環放上工作台，低馬尾、正紅唇，轉身看他。",
+      "setups": [
+        "s04-t01",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第四場分站冠軍的積分入帳",
+        "她當眾替他擋掉記者，對外第一次說「我的一號車手」"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "guan-yao",
+        "fang-ke",
+        "jizhe",
+        "mi-qi"
+      ],
+      "locations": [
+        "雲城賽道指揮台",
+        "頒獎台",
+        "岑氏車隊基地她的車庫"
+      ],
+      "state": {
+        "time": "第四場分站賽當晚",
+        "knowledge": "她知道三年前是關曜變線、他撞牆；不知道他為什麼三年不說",
+        "carry_forward": "引擎蓋上的合約（第一條撕掉、十二條還在）與「說清楚或解約」"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "三十個人",
+      "youtube_title": "被冤枉三年一句不辯，他終於開口：說了，對手車隊三十個人要失業",
+      "duration_s": 110,
+      "logline": "岑知微逼許聿說出他三年不替自己辯解的理由，他卻怕一開口連她也拖下水。",
+      "hook": "引擎蓋上的合約，他的手指按住第一條的撕痕：「姐，先別解。」她：「說。」",
+      "hook_type": "question",
+      "mid_hook": "他抬起頭：「說了，凌風三十個人失業。」",
+      "extra_hooks": [
+        "鐵門外「哐」一聲，阿昌的扳手掉在地上，他在偷聽。"
+      ],
+      "conflict": "她要知道他為什麼三年不替自己說一句話。",
+      "turn": "觀眾以為他是怕關曜，其實他護的是凌風一整隊技師的飯碗。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把合約收回抽屜，背對他：「明早七點，穿襯衫。」他愣住——她沒解約。",
+        "question": "她為什麼不解約？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "nvzhu",
+        "majia"
+      ],
+      "spectacle": "車庫鐵門的縫裡透進維修區的燈，引擎蓋上一份被撕掉一條的合約，兩個影子隔著車頭。",
+      "glamour_shot": "許聿低頭時頭髮遮住眼睛，抬頭那一秒眼神從撒嬌變成冷靜，維修燈在他側臉切出一道線。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道他三年沉默的理由：不讓凌風三十個技師失業",
+        "合約照舊，沒有解約"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "a-chang"
+      ],
+      "locations": [
+        "岑氏車隊基地她的車庫"
+      ],
+      "state": {
+        "time": "第四場分站賽當晚深夜",
+        "knowledge": "她知道他沉默是為了凌風三十個人",
+        "carry_forward": "明早七點；阿昌聽見了"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "記者在巷口",
+      "youtube_title": "記者堵在修車鋪門口逼問三年前的名字，小白臉一句撒嬌溜走還順手修好她的車",
+      "duration_s": 100,
+      "logline": "許聿要在七點前趕到岑知微那裡，卻被追了一季的記者小方堵在修車鋪門口。",
+      "hook": "清晨修車鋪的鐵捲門拉到一半，門外蹲著小方，鏡頭對準他：「三年前你叫什麼？」",
+      "hook_type": "question",
+      "mid_hook": "小方亮出手機：一張三年前的模糊照片，頭盔下面是一雙一樣的眼睛。",
+      "conflict": "小方要他的舊名字，他要準時出現在她面前。",
+      "turn": "觀眾以為他會逃，他卻蹲下把小方漏氣的機車輪胎三十秒補好：「姐在等我，借過。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他走出巷口，小方在背後喊：「我找到你三年前的醫院了。」",
+        "question": "小方在醫院會挖到什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "majia",
+        "xiju",
+        "nvzhu"
+      ],
+      "spectacle": "巷口晨光裡他單手轉著輪胎，補胎膠一抹、氣嘴一擰，小方的機車「噗」地站穩。",
+      "glamour_shot": "岑知微站在基地門口看錶，黑西裝褲裝、尖頭高跟鞋，七點整他跑進畫面，她抬眼。",
+      "setups": [
+        "s04-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他七點整到基地，陳董的助理笑他遲到，她一句「我的一號車手準時」打回去"
+      ],
+      "characters": [
+        "xu-yu",
+        "jizhe",
+        "cen-zhiwei",
+        "mi-qi"
+      ],
+      "locations": [
+        "許聿的小修車鋪",
+        "巷口",
+        "岑氏車隊基地門口"
+      ],
+      "state": {
+        "time": "隔天清晨七點",
+        "knowledge": "他知道小方在查醫院；她還不知道",
+        "carry_forward": "小方手上三年前的照片與醫院線索；門上的合約十二條"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "為什麼是我的車隊",
+      "youtube_title": "她終於問出口：全雲城那麼多車隊，你為什麼偏偏在我門外修了三年車",
+      "duration_s": 115,
+      "logline": "岑知微要聽許聿親口說他為什麼守在她的車隊外面，他卻先說起一袋橘子。",
+      "hook": "辦公室裡她把一杯黑咖啡推到他面前：「你為什麼在我車隊外面？」",
+      "hook_type": "line",
+      "mid_hook": "他問：「妳爸那年去過醫院，妳知道嗎？」她握杯的手停住。",
+      "extra_hooks": [
+        "米琪推門：「陳董那邊說贊助要加碼。」她頭也不抬：「讓他等。」"
+      ],
+      "conflict": "她要聽醫院那一夜，他要先確定她承受得住。",
+      "turn": "觀眾以為他要講事故，他先說的是她父親那天提來的一袋橘子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他看著窗外的空車位：「那天，只有一個車隊老闆來。」",
+        "question": "她父親在病房說了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "nvzhu"
+      ],
+      "spectacle": "回憶閃一格：白色病房、床頭一袋橘子、一隻戴舊賽車錶的手放下袋子——不拍病人。",
+      "glamour_shot": "岑知微靠在辦公桌邊雙手抱胸，父親的舊賽車錶在腕上，窗光落在她的下顎線。",
+      "setups": [
+        "m02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陳董主動要加碼贊助，被她晾在電話那頭"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "mi-qi",
+        "zanzhu"
+      ],
+      "locations": [
+        "岑氏車隊基地她的辦公室"
+      ],
+      "state": {
+        "time": "隔天上午",
+        "knowledge": "她知道父親去過醫院（岑夫人說過），不知道說了什麼",
+        "carry_forward": "「只有一個車隊老闆來」；門上的合約十二條"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "我的車給你",
+      "youtube_title": "她父親在病房留下一句話，他在她門外守了三年：我不是來當小白臉的",
+      "duration_s": 125,
+      "logline": "許聿把醫院那一夜和這三年全說了，岑知微要聽完，又不想讓他看見她的眼眶。",
+      "hook": "病房回憶：她父親把橘子放在床頭：「你哪天想回來，我的車給你。」",
+      "hook_type": "line",
+      "mid_hook": "「他走後，我在妳基地外開了鋪。」他說：「我看妳關燈，關了三年。」",
+      "conflict": "她要聽完全部的實話，也要守住老闆娘的臉。",
+      "turn": "觀眾以為他是來報恩的，他搖頭：「我不是來當小白臉的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他站起來：「我是來等妳要一個車手的。」她轉身面向窗，錶的秒針一格一格走。",
+        "question": "她會怎麼接這一句？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "nvzhu",
+        "majia"
+      ],
+      "spectacle": "三年的蒙太奇：基地的燈每晚一盞盞關掉，對面修車鋪的暖橘燈每晚最後一個關。",
+      "glamour_shot": "許聿說完那句話時沒有酒窩，眼神低而穩，窗光從他背後打成一圈輪廓。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [
+        "m02"
+      ],
+      "general_payoffs": [
+        "他為什麼接這份約揭開：她父親說「我的車給你」，他在門外等了三年"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "岑氏車隊基地她的辦公室",
+        "回憶：醫院病房"
+      ],
+      "state": {
+        "time": "隔天中午",
+        "knowledge": "她知道父親那句話和他守了三年",
+        "carry_forward": "「我是來等妳要一個車手的」"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "那你為什麼說不開車",
+      "youtube_title": "簽約那天他說不開車，三年後她才懂：因為妳當時要的是新歡，不是車手",
+      "duration_s": 105,
+      "logline": "岑知微要知道他騙了她多少，關曜的一通電話卻搶先打了進來。",
+      "hook": "她頭也不回：「那你簽約那天，為什麼說不開車？」",
+      "hook_type": "question",
+      "mid_hook": "他輕聲：「因為妳當時要的是新歡，不是車手。」",
+      "extra_hooks": [
+        "米琪推門看見兩人對峙，退出去在群組打字：「老闆眼眶紅了。」"
+      ],
+      "conflict": "她要知道他這一年演了多少。",
+      "turn": "觀眾以為她氣他騙她，她氣的是自己那天只看見一個新歡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她的手機亮起「關曜」，接起來是一句：「岑老闆，聊聊妳父親？他沒跟妳提過他吧。」",
+        "question": "關曜知道她父親什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "nvzhu",
+        "xiju",
+        "majia"
+      ],
+      "spectacle": "她在合約背面用紅筆寫下新的一行「職位：一號車手」，筆尖劃破紙。",
+      "glamour_shot": "岑知微轉身、紅唇抿緊，把紅筆往桌上一擲，那一格她比誰都清醒。",
+      "setups": [
+        "s04-t03",
+        "s04-t04",
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "合約背面加一行：他從今天起是車手，不是新歡"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "mi-qi",
+        "guan-yao"
+      ],
+      "locations": [
+        "岑氏車隊基地她的辦公室"
+      ],
+      "state": {
+        "time": "同日下午",
+        "knowledge": "她知道他說「不開車」是因為她要的是新歡",
+        "carry_forward": "關曜約她聊父親"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "關曜的咖啡",
+      "youtube_title": "對手老闆甩出一張老照片想挑撥，她收下照片：帳你付，人我留著",
+      "duration_s": 110,
+      "logline": "關曜想用一張老照片讓岑知微懷疑許聿是衝著她父親的車隊來的，她卻反過來把他晾在原地。",
+      "hook": "咖啡廳裡，關曜把一張老照片推過桌面：她父親和一個十六歲的少年，背對鏡頭。",
+      "hook_type": "image",
+      "mid_hook": "關曜慢慢說：「妳爸簽過他。妳不知道吧？」",
+      "extra_hooks": [
+        "窗外許聿蹲在她車旁假裝打氣，其實一直在看關曜的手。"
+      ],
+      "conflict": "關曜要她懷疑許聿是衝著岑氏的位子來吞的。",
+      "turn": "觀眾以為她會被挑起懷疑，她把照片收進包裡：「照片我留下，帳你付。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "車上她翻過照片，背面是父親的字，只有三個：「第一個」。",
+        "question": "「第一個」是什麼意思？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "nvzhu",
+        "majia",
+        "ganren"
+      ],
+      "spectacle": "落地窗咖啡廳，兩人對坐，桌上一張泛黃照片，窗外是他蹲在車旁的倒影。",
+      "glamour_shot": "岑知微不坐關曜替她拉的椅子，坐他自己的位子，翹腿、扣上西裝釦，抬眼一笑。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她當著關曜的面拿走照片，關曜付了帳"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "guan-yao",
+        "xu-yu"
+      ],
+      "locations": [
+        "雲城落地窗咖啡廳",
+        "咖啡廳外停車格"
+      ],
+      "state": {
+        "time": "隔天上午",
+        "knowledge": "她知道父親簽過一個十六歲的車手，不確定是誰",
+        "carry_forward": "照片背面「第一個」"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "父親的筆記本",
+      "youtube_title": "她翻開父親的舊筆記本，第一頁寫著：知微要強，別讓她知道我在等誰",
+      "duration_s": 115,
+      "logline": "岑知微要在父親的舊辦公室找出「第一個」，七格抽屜卻只有六把鑰匙。",
+      "hook": "父親的舊辦公室，灰塵裡七格抽屜的檔案櫃，她拉開第一格。",
+      "hook_type": "image",
+      "mid_hook": "第三格裡的筆記本一頁：「知微要強。別讓她知道我在等誰。」",
+      "extra_hooks": [
+        "門縫裡遞進一把小螺絲起子，他的聲音：「第七格，我會開。」"
+      ],
+      "conflict": "她要找出父親的「第一個」，第七格沒有鑰匙。",
+      "turn": "觀眾以為父親瞞她是不信她，原來是怕她不肯要一個「等來的」車手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她握著螺絲起子回頭：「你知道裡面是什麼？」他：「知道。」她把起子遞回：「你開，還是我開？」",
+        "question": "她會讓他開第七格嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "majia"
+      ],
+      "spectacle": "檔案櫃抽屜一格一格拉開，畫面角落的抽屜燈從一亮到六，第七格是暗的。",
+      "glamour_shot": "她蹲在檔案櫃前，低馬尾垂到肩上，抬頭看門縫裡遞進來的那把起子。",
+      "setups": [
+        "s04-t05"
+      ],
+      "payoffs": [
+        "s04-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道父親為什麼從不提他：怕她不肯要一個父親替她等來的車手"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu"
+      ],
+      "locations": [
+        "岑氏車隊基地父親的舊辦公室"
+      ],
+      "state": {
+        "time": "隔天晚上",
+        "knowledge": "她知道父親一直在等一個人",
+        "carry_forward": "第七格與他手上的螺絲起子"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "第七格",
+      "youtube_title": "堂哥要收回她父親的辦公室，小白臉一句軟話讓他的筷子都拿不穩",
+      "duration_s": 110,
+      "logline": "岑知微要親手打開第七格，堂哥岑志遠卻帶著家族的名義上門要收回這間辦公室。",
+      "hook": "她說：「我開。」螺絲剛轉一圈，門外傳來岑志遠：「這間辦公室，家族要收回。」",
+      "hook_type": "danger",
+      "mid_hook": "許聿軟軟遞上起子：「志遠哥，櫃子姓岑，你也姓岑，那你先開？」岑志遠接不住。",
+      "conflict": "堂哥想趁她查父親舊檔時，把辦公室和車隊的話語權一起收走。",
+      "turn": "觀眾以為她會跟堂哥吵，她轉身背對他，把第七格的螺絲一顆顆轉完。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "第七格裡一個牛皮紙袋，封口是父親的字：「給知微，等她要車手那天。」",
+        "question": "紙袋裡是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "nvzhu",
+        "xiju",
+        "majia"
+      ],
+      "spectacle": "七格抽屜燈全亮，最後一格的鐵片被起子撬開，灰塵在燈光裡飄起來。",
+      "glamour_shot": "許聿撒嬌時酒窩一閃，轉頭看岑志遠時眼神瞬間冷了半秒。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "岑志遠沒拿到辦公室，悻悻離開"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "cen-zhiyuan"
+      ],
+      "locations": [
+        "岑氏車隊基地父親的舊辦公室"
+      ],
+      "state": {
+        "time": "同夜",
+        "knowledge": "她知道父親替她留了東西",
+        "carry_forward": "牛皮紙袋；堂哥沒死心"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "十六歲",
+      "youtube_title": "父親抽屜裡一份十一年前的合約：車手許聿，十六歲，原來他早就是岑家的人",
+      "duration_s": 135,
+      "logline": "岑知微拆開父親留給她的紙袋，要許聿承認他早就是她父親的車手。",
+      "hook": "紙袋裡一份泛黃的合約：「岑氏車隊，車手許聿，十六歲。」",
+      "hook_type": "image",
+      "mid_hook": "他看著簽名欄：「我十六歲，第一份約。後來我去了大車隊。」",
+      "extra_hooks": [
+        "合約最後一頁，父親的手寫一行：「去更大的車隊吧。」"
+      ],
+      "conflict": "她要知道他是怎麼從父親的車手，變成門外那個修車工。",
+      "turn": "觀眾以為他當年離開是背叛，父親親手在合約上寫了放行。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把十一年前的合約推到他面前：「你十六歲，就是我爸的車手。」",
+        "question": "欠了十一年的約，他怎麼還？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "nvzhu",
+        "majia"
+      ],
+      "spectacle": "十一年前的合約與門上那份十二條的合約並排放在桌上，兩個簽名隔了十一年。",
+      "glamour_shot": "岑知微按住合約的那隻手、腕上父親的錶，鏡頭從手緩緩推到她抬起的眼。",
+      "setups": [],
+      "payoffs": [
+        "m09",
+        "s04-t05"
+      ],
+      "reveals": [
+        "m09"
+      ],
+      "general_payoffs": [
+        "她父親與他的關係揭開：十六歲第一個簽他的車隊老闆，事故後第一個去醫院的人"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu"
+      ],
+      "locations": [
+        "岑氏車隊基地父親的舊辦公室"
+      ],
+      "state": {
+        "time": "同夜",
+        "knowledge": "她知道父親是第一個簽他的人",
+        "carry_forward": "十一年前的合約放在兩人之間"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "頭版",
+      "youtube_title": "頭版一出全行業炸了：修車鋪的小白臉，是三年前消失的世界冠軍",
+      "duration_s": 110,
+      "logline": "小方的頭版把一半的真相攤在全城面前，岑知微要在全行業開口之前先掌控局面。",
+      "hook": "清晨報攤，頭版是他戴頭盔的舊照、三年前的名字，標題底下一行：「另一台車：關曜」。",
+      "hook_type": "image",
+      "mid_hook": "米琪兩支手機同時炸開：「老闆，三百通未接！」",
+      "extra_hooks": [
+        "第一通回撥的是陳董，聲音很甜：「岑老闆，我們聊聊加碼？」"
+      ],
+      "conflict": "一半的真相上了頭版，她要決定車隊怎麼回應。",
+      "turn": "觀眾以為頭版會毀了他，撤過贊助的人反而排隊打來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "凌風官網跳出公告：「今日下午三點，關曜記者會。」",
+        "question": "關曜會怎麼反咬？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "一疊疊報紙從貨車上卸下，整條街的報攤同一張頭版，他的舊頭盔照片鋪滿畫面。",
+      "glamour_shot": "岑知微在基地辦公室攤開報紙，正紅唇一抿，把陳董的來電按成靜音。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳董主動回頭要談加碼，被她晾著"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "jizhe",
+        "mi-qi",
+        "zanzhu",
+        "guan-yao"
+      ],
+      "locations": [
+        "雲城街頭報攤",
+        "岑氏車隊基地她的辦公室"
+      ],
+      "state": {
+        "time": "三天後清晨",
+        "knowledge": "全行業知道他三年前的名字和事故的一半",
+        "carry_forward": "小方的頭版；下午三點關曜記者會"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "修車鋪被圍",
+      "youtube_title": "三十支麥克風堵住修車鋪，她搖下車窗一句話：有問題問我",
+      "duration_s": 100,
+      "logline": "媒體把修車鋪圍成一圈，岑知微要把許聿從麥克風裡撈出來。",
+      "hook": "修車鋪門口三十支麥克風，他抱著輪胎從後門溜出來，撞上她的車門：「姐，救我。」",
+      "hook_type": "danger",
+      "mid_hook": "小方攔在車頭：「那篇少了一半，你肯補嗎？」他：「等我拿冠軍。」",
+      "conflict": "記者要他回應頭版，她不准任何人替他說話，除了她。",
+      "turn": "觀眾以為她會讓他躲，她把車窗搖下：「他是我的一號車手，有問題問我。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "車開出巷口，他把頭靠在她肩上一秒：「姐，報紙上那個人，還是我嗎？」",
+        "question": "她會怎麼回答他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "sajiao",
+        "dalian"
+      ],
+      "spectacle": "巷子裡一圈閃光燈像白色的牆，一台黑車慢慢擠開人群停在鋪門口。",
+      "glamour_shot": "許聿縮在後座撒嬌時的酒窩，車窗外閃光燈把他半張臉打亮又打暗。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她把他從媒體包圍裡帶走，對外只有一句「問我」"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei",
+        "jizhe"
+      ],
+      "locations": [
+        "許聿的小修車鋪",
+        "巷口",
+        "她的車上"
+      ],
+      "state": {
+        "time": "同日上午",
+        "knowledge": "他知道小方還要下篇",
+        "carry_forward": "「還是我嗎」；小方的下篇"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "記者會",
+      "youtube_title": "對手老闆開記者會反咬：他有異議當年為什麼不說？她已經坐在最後一排",
+      "duration_s": 105,
+      "logline": "關曜要把許聿三年的沉默說成心虛，岑知微悄悄坐進了他的記者會。",
+      "hook": "她答他：「是你，只是比較貴。」下一格，凌風記者會，關曜整理袖口：「賽會判意外。」",
+      "hook_type": "line",
+      "mid_hook": "關曜看著鏡頭：「許車手有異議，當年為什麼不說？」全場閃光燈。",
+      "extra_hooks": [
+        "關曜身後的程皓垂下眼，手指在褲縫上敲了兩下。"
+      ],
+      "conflict": "關曜要把「不說」變成「心虛」。",
+      "turn": "觀眾以為她在基地看直播，鏡頭一轉，她坐在記者會最後一排。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她舉手，主持人遞來麥克風：「岑老闆有話說？」她站了起來。",
+        "question": "她要當著全行業說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "凌風記者會的長桌與巨型隊徽，一百支相機鏡頭同時轉向最後一排站起來的女人。",
+      "glamour_shot": "岑知微在最後一排起身，扣上深灰西裝的釦子，低馬尾一甩，全場回頭。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "guan-yao",
+        "cheng-hao",
+        "jizhe"
+      ],
+      "locations": [
+        "她的車上",
+        "凌風車隊記者會廳"
+      ],
+      "state": {
+        "time": "同日下午三點",
+        "knowledge": "全行業聽見關曜說「為什麼不說」",
+        "carry_forward": "她手上的麥克風"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "怕你失業",
+      "youtube_title": "她在對手的記者會上搶過麥克風：他不說，是怕你車隊三十個人失業",
+      "duration_s": 115,
+      "logline": "岑知微要當著全行業說出許聿為什麼不說，關曜卻早有後手。",
+      "hook": "她握著麥克風：「他不說，是怕你車隊的三十個人失業。」",
+      "hook_type": "line",
+      "mid_hook": "全場靜。凌風一排穿隊服的技師同時低下頭，關曜的笑停了一秒。",
+      "conflict": "她要讓全行業知道，三年來是誰在護誰。",
+      "turn": "觀眾以為關曜會反駁，他鼓掌：「說得好。」然後一個律師走上台。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "凌風律師宋子衡舉起一份文件：「我們已向賽會申訴，許聿身分不符。」",
+        "question": "「身分不符」能拿走他什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "sajiao"
+      ],
+      "spectacle": "記者會廳裡凌風三十個技師一排站著，一個接一個低下頭，像骨牌。",
+      "glamour_shot": "岑知微放下麥克風那一秒的側臉，正紅唇、眼神直直看著關曜，不躲閃光燈。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全行業第一次聽見他沉默的理由，輿論倒向岑氏",
+        "直播裡許聿在基地看完，對著螢幕軟軟說：「姐好兇，我好喜歡。」"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "guan-yao",
+        "s04-lvshi",
+        "jizhe",
+        "xu-yu",
+        "mi-qi"
+      ],
+      "locations": [
+        "凌風車隊記者會廳",
+        "岑氏車隊基地休息室"
+      ],
+      "state": {
+        "time": "同日下午",
+        "knowledge": "凌風已向賽會申訴他身分不符",
+        "carry_forward": "宋子衡的申訴書"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "身分不符",
+      "youtube_title": "對手一紙申訴凍結冠軍全部積分，車隊排名從第二摔到第七",
+      "duration_s": 110,
+      "logline": "凌風的申訴要凍結許聿的積分，連帶岑氏車隊的排名一起往下拖。",
+      "hook": "宋子衡翻開申訴書：「三年前他用另一個名字比賽，積分應該歸零。」",
+      "hook_type": "question",
+      "mid_hook": "賽會來電：聽證會五天後，他的積分即刻凍結。",
+      "extra_hooks": [
+        "小方在台下舉手：「那賽會當年調過凌風的車嗎？」宋子衡卡住了。"
+      ],
+      "conflict": "一紙申訴要拿走他所有積分和車隊的名次。",
+      "turn": "觀眾以為他會慌，他在修車間把護腕一圈圈纏緊：「五天，夠了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "基地大螢幕的積分榜一刷新，岑氏車隊從第二直接掉到第七。",
+        "question": "五天後積分還拿得回來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "sajiao",
+        "dalian"
+      ],
+      "spectacle": "積分榜大螢幕上「岑氏車隊」的名字一格一格往下掉，全隊站在螢幕前沒人說話。",
+      "glamour_shot": "許聿在修車間的頂燈下纏護腕，袖子捲到手肘，低頭時睫毛的陰影落在臉上。",
+      "setups": [
+        "s04-t07"
+      ],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿昌、小鹿、米琪又一次舉手：「我跟師傅。」"
+      ],
+      "characters": [
+        "s04-lvshi",
+        "jizhe",
+        "xu-yu",
+        "cen-zhiwei",
+        "a-chang",
+        "xiao-lu",
+        "mi-qi"
+      ],
+      "locations": [
+        "凌風車隊記者會廳",
+        "岑氏車隊基地修車間"
+      ],
+      "state": {
+        "time": "同日晚上",
+        "knowledge": "積分凍結，聽證會五天後",
+        "carry_forward": "積分榜第七；護腕"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "家族會議",
+      "youtube_title": "堂哥拿積分榜逼家族賣車隊，小白臉添一碗湯問出買家是誰",
+      "duration_s": 110,
+      "logline": "岑志遠借積分凍結要家族表決賣掉車隊，岑知微得先弄清楚買家是誰。",
+      "hook": "岑家飯廳，岑志遠把積分榜推到岑夫人面前：「第七了，賣了吧。」",
+      "hook_type": "line",
+      "mid_hook": "許聿替岑夫人添湯，軟軟問：「志遠哥，買家是凌風吧？」岑志遠的筷子停住。",
+      "conflict": "堂哥要在聽證會前讓家族表決賣掉車隊。",
+      "turn": "觀眾以為只是家族內鬥，買家其實是關曜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "岑夫人放下筷子，看著女兒：「知微，妳說賣不賣。」",
+        "question": "她要拿什麼堵住堂哥？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "sajiao",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "長飯桌上一張積分榜壓在青花瓷盤下，湯勺停在半空。",
+      "glamour_shot": "許聿替岑夫人添湯時笑出酒窩，抬眼看岑志遠時笑還在、眼神已經冷了。",
+      "setups": [
+        "s04-t08",
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "岑夫人看出堂哥背後是凌風"
+      ],
+      "characters": [
+        "cen-zhiyuan",
+        "cen-furen",
+        "xu-yu",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "岑家飯廳"
+      ],
+      "state": {
+        "time": "隔天晚上",
+        "knowledge": "她知道堂哥的買家是關曜",
+        "carry_forward": "岑夫人等她開口"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "一箱三年",
+      "youtube_title": "她只說一句誰都別碰我的車隊，樓下老經紀人抱著一箱三年的秘密等著",
+      "duration_s": 105,
+      "logline": "岑知微給了家族期限，可聽證會只剩四天，她手上沒有一張證據。",
+      "hook": "她放下碗：「賽季結束前，誰都別碰我的車隊。」",
+      "hook_type": "line",
+      "mid_hook": "岑志遠冷笑：「聽證會輸了呢？」她：「那我自己關門。」",
+      "extra_hooks": [
+        "公寓樓下停著一台舊賓士，車窗搖下，老鄧懷裡抱著一個紙箱。"
+      ],
+      "conflict": "她把車隊押上了聽證會，手上卻什麼都沒有。",
+      "turn": "觀眾以為援軍是律師，來的是老鄧和一箱三年前的東西。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老鄧把紙箱放在她桌上，拍了拍箱蓋：「三年，全部在這。」",
+        "question": "老鄧的箱子裡有什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "sajiao",
+        "xuanyi"
+      ],
+      "spectacle": "深夜公寓樓下，一台舊賓士的車燈照著一個封了三層膠帶的紙箱。",
+      "glamour_shot": "許聿從老鄧手上接過紙箱扛上肩：「姐，箱子我搬。」回頭一笑，像個乖巧的保鏢。",
+      "setups": [
+        "s04-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "家族答應等到賽季結束"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "cen-zhiyuan",
+        "lao-deng",
+        "xu-yu"
+      ],
+      "locations": [
+        "岑家飯廳",
+        "她的公寓樓下",
+        "她的公寓客廳"
+      ],
+      "state": {
+        "time": "同夜",
+        "knowledge": "聽證會剩四天，家族限期到賽季結束",
+        "carry_forward": "老鄧的紙箱"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "三十六份",
+      "youtube_title": "紙箱打開是三十六份沒簽的合約，最底下一張證明對手的車從沒被查過",
+      "duration_s": 115,
+      "logline": "老鄧的文件能證明許聿是同一個人，卻也可能把他不想翻的事故翻出來。",
+      "hook": "紙箱打開：三十六份沒簽的合約、一張醫院收據、一份賽會更名申請。",
+      "hook_type": "image",
+      "mid_hook": "更名申請上蓋著賽會章：「同一人，合法更名。」積分有救了。",
+      "conflict": "要證明他是同一個人，又不能讓他三年不說的事被硬翻出來。",
+      "turn": "觀眾以為更名書就是王牌，老鄧抽出最底下一張：三年前賽會只調了他的車，凌風的沒調。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "米琪衝進來念新到的律師函：「聽證會要當場檢查他的雙手。」",
+        "question": "他的手當場檢查會露出什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "客廳地毯上三十六份合約攤成一片，每一份的簽名欄都是空的。",
+      "glamour_shot": "岑知微盤腿坐在地毯上翻文件，西裝外套脫在一旁，低馬尾散出一縷髮。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到賽會蓋章的更名證明",
+        "知道三年前賽會沒調凌風的車"
+      ],
+      "characters": [
+        "lao-deng",
+        "cen-zhiwei",
+        "xu-yu",
+        "mi-qi"
+      ],
+      "locations": [
+        "她的公寓客廳"
+      ],
+      "state": {
+        "time": "同夜深夜",
+        "knowledge": "更名證明在手；凌風的車三年前沒被查",
+        "carry_forward": "聽證會要當場檢查他的手"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "袖扣",
+      "youtube_title": "聽證前夜她問他手會不會抖，他把一枚硬幣立在指節上：姐，幫我扣袖扣",
+      "duration_s": 110,
+      "logline": "岑知微要確定許聿扛得住當場驗手，他擔心的卻是她會聽見事故的細節。",
+      "hook": "她念完律師函，抬頭看他：「會抖嗎？」",
+      "hook_type": "question",
+      "mid_hook": "他伸出手，一枚硬幣在指節上翻滾，最後立在中指上，不倒。",
+      "extra_hooks": [
+        "他套上她買的新襯衫：「姐，袖扣扣不上。」她走過去，低頭替他扣。"
+      ],
+      "conflict": "聽證前夜，她要確定他的手和他的心都撐得住。",
+      "turn": "觀眾以為他怕的是手，他怕的是她明天要聽見三年前的那一秒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她扣好最後一顆袖扣：「明天我坐你旁邊。」他輕聲：「姐，別看我的手。看關曜。」",
+        "question": "他為什麼要她看關曜？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "sajiao",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "一枚硬幣在他指節上翻過四根手指，檯燈下立住，影子拉得很長。",
+      "glamour_shot": "她低頭扣袖扣，他低頭看她；兩人之間只隔一隻手腕，暖燈打在她的睫毛上。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她確定他的手不抖了"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu"
+      ],
+      "locations": [
+        "她的公寓客廳"
+      ],
+      "state": {
+        "time": "聽證會前夜",
+        "knowledge": "她知道他的手穩",
+        "carry_forward": "「看關曜」"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "護腕放在桌上",
+      "youtube_title": "聽證會上對手笑他手早廢了，他當場摘下護腕放在桌上，反問一句讓全場靜了",
+      "duration_s": 140,
+      "logline": "關曜要在聽證會上廢掉許聿的積分和他的手，許聿要把三年前那台車拖回桌上。",
+      "hook": "賽會聽證廳，長桌兩端，主席聶正平敲槌：「開始。」",
+      "hook_type": "image",
+      "mid_hook": "老鄧遞上更名書，主席點頭；關曜笑著說：「他三年沒上賽道，手早廢了。」",
+      "extra_hooks": [
+        "許聿當場拉下護腕放在桌上，手平放，穩得像石頭。"
+      ],
+      "conflict": "關曜要在聽證會拿走他的積分，也要讓全行業相信他的手廢了。",
+      "turn": "觀眾以為他只會自證清白，他自證完反手出牌。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他看著關曜：「關老闆，你車上的行車紀錄還在嗎？三年前的。」關曜的笑停了。",
+        "question": "三年前的行車紀錄還在嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "sajiao"
+      ],
+      "spectacle": "聽證長桌正中，一只舊護腕平放在木頭上，旁邊一隻手穩穩攤開，全場的目光都在那裡。",
+      "glamour_shot": "許聿拉下護腕露出那道疤的一秒，抬眼看關曜，沒有酒窩，眼神冷得像在賽道上。",
+      "setups": [
+        "s04-t09"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "更名證明被賽會收下",
+        "他的手當場驗過，穩"
+      ],
+      "characters": [
+        "s04-zhuxi",
+        "guan-yao",
+        "s04-lvshi",
+        "lao-deng",
+        "xu-yu",
+        "cen-zhiwei",
+        "jizhe"
+      ],
+      "locations": [
+        "賽會聽證廳"
+      ],
+      "state": {
+        "time": "聽證會當天",
+        "knowledge": "全場聽見他問關曜的行車紀錄",
+        "carry_forward": "桌上的護腕；行車紀錄"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "積分維持",
+      "youtube_title": "聽證會判積分保住，對手老闆在走廊上說溜一句：三年前就銷了",
+      "duration_s": 105,
+      "logline": "許聿保住了積分，可他在聽證會上那一句等於向關曜宣戰。",
+      "hook": "聽證廳一片靜，主席敲槌：「積分維持。」",
+      "hook_type": "line",
+      "mid_hook": "走廊轉角，關曜壓低聲音對宋子衡：「行車紀錄，三年前就銷了。」方可在門後聽見。",
+      "conflict": "積分回來了，關曜卻不會停手。",
+      "turn": "觀眾以為贏了可以收工，方可走出來：「他說銷了。我不信。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "當夜基地零件倉的燈全滅，手電筒一掃——一整箱煞車碟不見了。",
+        "question": "誰動了岑氏的零件？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "積分榜大螢幕上岑氏車隊的名字從第七一格格爬回第二，全隊在螢幕前吼出來。",
+      "glamour_shot": "聽證廳外台階，岑知微戴上墨鏡、他替她撐傘，她在前、他在後半步。",
+      "setups": [],
+      "payoffs": [
+        "s04-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "積分保住，岑氏回到積分第二",
+        "聽證桌上那只護腕被他戴回去"
+      ],
+      "characters": [
+        "s04-zhuxi",
+        "guan-yao",
+        "s04-lvshi",
+        "fang-ke",
+        "xu-yu",
+        "cen-zhiwei",
+        "a-chang"
+      ],
+      "locations": [
+        "賽會聽證廳",
+        "聽證廳走廊",
+        "岑氏車隊基地零件倉"
+      ],
+      "state": {
+        "time": "聽證會當天夜裡",
+        "knowledge": "關曜說行車紀錄銷了，方可不信",
+        "carry_forward": "失蹤的煞車碟"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "斷零件",
+      "youtube_title": "第五場前夕零件又被斷，他從那台撞過的舊賽車上拆下煞車碟救了全隊",
+      "duration_s": 110,
+      "logline": "第五場分站賽前零件被斷，方可要查出三年來是誰一直在斷岑氏的貨。",
+      "hook": "手電筒掃過空貨架，阿昌一腳踢翻空箱：「又是這招！」",
+      "hook_type": "danger",
+      "mid_hook": "方可翻出兩年前的進貨單：同一家供應商、同一個月突然斷貨——凌風剛入股那家。",
+      "extra_hooks": [
+        "許聿掀開修車鋪後面那塊布，從那台撞過的舊車上拆下一對煞車碟：「用這個。」"
+      ],
+      "conflict": "沒有煞車碟就上不了第五場。",
+      "turn": "觀眾以為這是新的陰招，方可發現這已經是第三次。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "方可在白板上寫下三行：挖程皓、斷零件、動剎車線。",
+        "question": "三件事背後是同一個人嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "saidao"
+      ],
+      "spectacle": "修車鋪後院那塊布被掀起，舊賽車在暖橘燈下露出半張車身，他蹲下拆煞車碟。",
+      "glamour_shot": "方可耳機掛在脖子上，對著白板轉身，麥克筆蓋「啪」一聲扣上。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "那台撞過的舊車的煞車碟裝上岑氏的新車，第五場能上"
+      ],
+      "characters": [
+        "a-chang",
+        "fang-ke",
+        "xu-yu",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "岑氏車隊基地零件倉",
+        "許聿的小修車鋪後院",
+        "基地會議室"
+      ],
+      "state": {
+        "time": "隔天",
+        "knowledge": "斷貨不是第一次，是第三次",
+        "carry_forward": "白板上的三行"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "白板",
+      "youtube_title": "三年的陰招排成一條線，日期全指向同一天：他修車鋪開張那天",
+      "duration_s": 105,
+      "logline": "方可要把三年的日期排成一條線，看關曜到底在盯什麼。",
+      "hook": "白板前她問：「三件事，同一個人？」方可：「同一個目的。」",
+      "hook_type": "question",
+      "mid_hook": "方可接上第四行：三年前許聿退賽後一個月，凌風開始盯岑氏。",
+      "conflict": "方可要找出關曜三年來每一刀的起點。",
+      "turn": "觀眾以為關曜盯的是她父親的老位子，日期指向的卻是修車鋪開張那天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "方可把麥克筆遞給許聿：「最後一行，你自己寫。」",
+        "question": "他會在白板上寫什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "nvzhu"
+      ],
+      "spectacle": "白板上一條時間線，紅色磁鐵一顆顆釘上，最後一顆停在一張修車鋪開張的舊照片上。",
+      "glamour_shot": "岑知微雙手撐在會議桌上看白板，低馬尾、袖子捲起，父親的錶在燈下反光。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她把時間線拍照存進父親的舊檔案"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "fang-ke",
+        "xu-yu"
+      ],
+      "locations": [
+        "岑氏車隊基地會議室"
+      ],
+      "state": {
+        "time": "同日下午",
+        "knowledge": "關曜盯岑氏的起點是修車鋪開張",
+        "carry_forward": "遞到他手上的麥克筆"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "他怕我",
+      "youtube_title": "三年挖人斷貨動剎車線全是為了他：對手怕的不是她的車隊，是他回來",
+      "duration_s": 120,
+      "logline": "岑知微要知道關曜三年來砍的每一刀到底砍向誰。",
+      "hook": "許聿在白板最後一行寫了四個字：「我在這裡。」",
+      "hook_type": "image",
+      "mid_hook": "方可：「他知道你在這。他要在你回來前弄垮岑氏，你就沒車開。」",
+      "extra_hooks": [
+        "許聿放下筆：「他怕我。」她：「他怕你回來。」"
+      ],
+      "conflict": "她要確認關曜三年的目標，以及她父親的車隊為什麼成了靶。",
+      "turn": "觀眾以為她發現自己被當成棋子會怪他，她怒的是關曜拿她父親的車隊當擋箭牌。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "賽會公布第五場排位分組：凌風三台車全排在他的前後。",
+        "question": "三台車要圍他圍到什麼程度？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "saidao"
+      ],
+      "spectacle": "白板上四行字「挖程皓、斷零件、動剎車線、我在這裡」被一條紅線串起來。",
+      "glamour_shot": "岑知微聽完轉身，把父親的錶扣緊，正紅唇冷冷一句：「那就讓他怕到底。」",
+      "setups": [
+        "s04-t10"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "關曜為什麼一直盯著岑氏揭開：他要在許聿回來前讓他沒有車開"
+      ],
+      "characters": [
+        "xu-yu",
+        "fang-ke",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "岑氏車隊基地會議室"
+      ],
+      "state": {
+        "time": "同日傍晚",
+        "knowledge": "她知道關曜三年的目標是許聿",
+        "carry_forward": "凌風三台車的排位分組"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "短跑胎",
+      "youtube_title": "小車手說要替師傅擋一台，他只回兩個字：不准，教的卻是怎麼全身而退",
+      "duration_s": 105,
+      "logline": "三台凌風車要圍許聿，他要找一條不靠隊友犧牲的線。",
+      "hook": "模擬器裡第五場賽道的三個彎亮著紅，他和小鹿並排坐著。",
+      "hook_type": "image",
+      "mid_hook": "小鹿：「師傅，我幫你擋一台。」許聿：「不准。」",
+      "extra_hooks": [
+        "凌風車庫，關曜拍了拍程皓的肩：「第七圈，貼上去。」"
+      ],
+      "conflict": "三台車要圍他，小鹿想用自己去換。",
+      "turn": "觀眾以為他會讓小鹿擋，他教小鹿的是怎麼在被圍時「離開」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "方可把平板轉過來：凌風三台車全調成短跑胎。",
+        "question": "短跑胎要在哪一圈出手？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "saidao",
+        "sajiao",
+        "xuanyi"
+      ],
+      "spectacle": "模擬器螢幕上三台紅色車影像三角形一樣慢慢收攏，中間一台白車。",
+      "glamour_shot": "許聿在模擬器裡戴上耳機，一開口聲音變低：「第三彎，煞車晚半拍。」",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小鹿學會被圍時的脫身線"
+      ],
+      "characters": [
+        "xu-yu",
+        "xiao-lu",
+        "guan-yao",
+        "cheng-hao",
+        "fang-ke"
+      ],
+      "locations": [
+        "岑氏車隊基地模擬器室",
+        "凌風車隊車庫"
+      ],
+      "state": {
+        "time": "第五場前兩天",
+        "knowledge": "凌風三台車用短跑胎",
+        "carry_forward": "第七圈"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "排第四",
+      "youtube_title": "排位賽被三台車壓速，他故意只排第四，起步格正對第一彎內線",
+      "duration_s": 110,
+      "logline": "排位賽三台凌風車壓著許聿的速度，岑知微要決定正賽怎麼押。",
+      "hook": "排位賽，他的車剛出維修區，凌風三台車同時減速擋在前面。",
+      "hook_type": "danger",
+      "mid_hook": "他排第四。她在指揮台問：「為什麼不搶？」他：「正賽再說。」",
+      "extra_hooks": [
+        "維修區角落，一個灰髮瘦老頭盯著他的車看了很久，轉身就走。"
+      ],
+      "conflict": "排位被壓，正賽要從第四格起步。",
+      "turn": "觀眾以為他被壓了，他是故意排第四——第四格的起步角度正對第一彎內線。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "方可說換長跑胎、阿昌說不換，兩人同時看她：「老闆，換不換？」",
+        "question": "她要怎麼押這一把？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "saidao",
+        "xuanyi"
+      ],
+      "spectacle": "排位賽空拍：三台凌風車像一堵移動的牆，壓在一台白色岑氏車前面。",
+      "glamour_shot": "許聿摘下頭盔，頭髮濕成一縷貼在額上，對指揮台比了一個「四」。",
+      "setups": [
+        "s04-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到第四格，正對第一彎內線"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei",
+        "fang-ke",
+        "a-chang",
+        "s04-jishi"
+      ],
+      "locations": [
+        "雲城賽道",
+        "維修區",
+        "指揮台"
+      ],
+      "state": {
+        "time": "第五場排位賽",
+        "knowledge": "他排第四是故意的；有個陌生老技師在看他",
+        "carry_forward": "換不換胎"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "三台車",
+      "youtube_title": "三台車把他圍成三角形，前男友卻在最後一秒鬆了油門",
+      "duration_s": 125,
+      "logline": "凌風三台車在正賽圍堵許聿，岑知微押的胎能不能撐到終點。",
+      "hook": "她：「換長胎。」綠燈亮。",
+      "hook_type": "line",
+      "mid_hook": "第七圈，三台凌風車把他圍成三角，車距不到一個車身。",
+      "extra_hooks": [
+        "左邊那台是程皓，最後一刻他鬆了油門，讓出半個車身的縫。"
+      ],
+      "conflict": "三台車要逼他犯錯或退出。",
+      "turn": "觀眾以為他要被擠出去，程皓那台車突然讓開。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "賽後程皓經過他的車，頭也不回：「下次我不會讓。」",
+        "question": "程皓為什麼讓那一下？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "saidao",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "空拍：三台紅車圍著一台白車進彎，像三角形收口，白車從一條縫裡穿出去。",
+      "glamour_shot": "指揮台上岑知微按著耳機站起來，馬尾一甩，眼睛追著那台白車。",
+      "setups": [],
+      "payoffs": [
+        "s04-t10",
+        "s04-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第五場第二名，岑氏穩住積分第二",
+        "岑家會議上岑夫人關掉電視：「第二。散會。」堂哥賣車隊的表決作廢"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "cheng-hao",
+        "fang-ke",
+        "cen-furen",
+        "cen-zhiyuan"
+      ],
+      "locations": [
+        "雲城賽道",
+        "指揮台",
+        "岑家客廳"
+      ],
+      "state": {
+        "time": "第五場正賽",
+        "knowledge": "程皓讓了他一下",
+        "carry_forward": "程皓那句「下次不會讓」"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "抱了一下",
+      "youtube_title": "第二名回家他從背後抱了她一秒：月薪二十萬值了，她回一句抱久要加錢",
+      "duration_s": 110,
+      "logline": "許聿第二名回家，岑知微想罵他不搶第一又罵不出口。",
+      "hook": "停車場她攔住程皓：「為什麼讓？」程皓：「手滑。」",
+      "hook_type": "question",
+      "mid_hook": "回家她把第二名獎盃擺上鞋櫃，他從背後很快抱了她一下：「月薪二十萬值了。」",
+      "conflict": "她不知道該先罵他還是先謝他。",
+      "turn": "觀眾以為她會推開他，她站著沒動：「下次抱久一點，要加錢。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他回客房後，她一個人站在門上那份合約前，手指描過第三條「住客房」。",
+        "question": "她在想第三條什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "sajiao",
+        "xiju"
+      ],
+      "spectacle": "公寓玄關，鞋櫃上一座銀色獎盃，門上貼著一份十二條的合約。",
+      "glamour_shot": "她背對他站在鞋櫃前，他從後面一抱就鬆手，她的耳朵在暖燈下紅了。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次主動抱她",
+        "程皓第一次在她面前說不出話"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "cheng-hao",
+        "xu-yu"
+      ],
+      "locations": [
+        "賽道停車場",
+        "她的公寓玄關"
+      ],
+      "state": {
+        "time": "第五場當夜",
+        "knowledge": "她沒推開他",
+        "carry_forward": "門上合約第三條"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "退役技師",
+      "youtube_title": "退役技師藏了三年的秘密：三年前賽會要紀錄那天，他被叫去拔記憶卡",
+      "duration_s": 115,
+      "logline": "方可要說服一個怕了三年的退役凌風技師，交出他藏起來的東西。",
+      "hook": "舊城區五金行，老蔡在擦一把凌風的舊扳手，方可推門進來。",
+      "hook_type": "image",
+      "mid_hook": "老蔡：「三年前賽會要紀錄那天，我被叫去拔記憶卡。」",
+      "extra_hooks": [
+        "他從抽屜摸出一個舊隨身碟，又放回去：「我拿了，也怕了三年。」"
+      ],
+      "conflict": "老蔡怕丟命也怕丟良心。",
+      "turn": "觀眾以為他要錢，他只問一句：「那孩子撞牆，是為了不撞我們的車？」方可：「是。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老蔡把隨身碟推過櫃台：「拔的時候，我備份了一份。」",
+        "question": "隨身碟裡真是三年前的紀錄？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "五金行昏黃的燈下，一排排掛著的扳手，櫃台上一個貼著舊膠布的隨身碟。",
+      "glamour_shot": "方可把耳機摘下放上櫃台，短髮俐落，抬眼直視老蔡：「我是他三年前的工程師。」",
+      "setups": [],
+      "payoffs": [
+        "s04-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "方可拿到三年前凌風車的行車紀錄備份"
+      ],
+      "characters": [
+        "fang-ke",
+        "s04-jishi"
+      ],
+      "locations": [
+        "舊城區五金行"
+      ],
+      "state": {
+        "time": "第五場後第三天",
+        "knowledge": "老蔡備份了行車紀錄",
+        "carry_forward": "沒解開的隨身碟"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "你決定",
+      "youtube_title": "能翻三年冤案的隨身碟放在桌上，從不讓人做主的她第一次說：你決定",
+      "duration_s": 130,
+      "logline": "一個隨身碟能翻三年的案，也能讓許聿從比賽變成報仇，岑知微要決定誰來決定。",
+      "hook": "辦公室，她把隨身碟放在他面前：「你要看嗎？」",
+      "hook_type": "line",
+      "mid_hook": "他：「妳決定。」方可補一句：「可能加密，也可能是空的。」",
+      "extra_hooks": [
+        "窗外，一台黑車停在基地對面，車燈閃了一下——是關曜的車。"
+      ],
+      "conflict": "她向來什麼都自己決定，這一件她不想替他決定。",
+      "turn": "觀眾以為她會像往常一樣拍板，她第一次把決定推回去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把手從隨身碟上拿開：「你決定。」",
+        "question": "他會打開隨身碟嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "nvzhu",
+        "saidao"
+      ],
+      "spectacle": "辦公桌正中一個舊隨身碟，三個人的手都停在它周圍，誰也沒碰。",
+      "glamour_shot": "岑知微把手收回、坐回父親的椅子，第一次不是下令的姿勢，而是等他。",
+      "setups": [
+        "s04-t12"
+      ],
+      "payoffs": [
+        "s04-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三年前凌風車的行車紀錄備份到了岑氏手上"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "fang-ke",
+        "guan-yao"
+      ],
+      "locations": [
+        "岑氏車隊基地她的辦公室"
+      ],
+      "state": {
+        "time": "第五場後一週",
+        "knowledge": "隨身碟在桌上，沒人打開",
+        "carry_forward": "「你決定」"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "不看",
+      "youtube_title": "能扳倒對手的證據就在手上，他推回去：看了我就不是比賽，是報仇",
+      "duration_s": 110,
+      "logline": "第六場前，許聿要決定這三年的帳怎麼算，還要瞞住遠方的母親。",
+      "hook": "他把隨身碟推回她手心：「不看。」",
+      "hook_type": "line",
+      "mid_hook": "「看了，我就不是在比賽，是在報仇。」她把隨身碟鎖進父親檔案櫃的第七格。",
+      "extra_hooks": [
+        "他的手機響，接起來聲音立刻軟成一團：「媽，我吃了。」"
+      ],
+      "conflict": "證據在手，他要先贏還是先算帳。",
+      "turn": "觀眾以為他放下了，他說：「先贏。贏了再算。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她在門外聽見他對電話說：「媽，我沒開車，在修車。」",
+        "question": "他為什麼騙他媽？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "majia",
+        "ganren",
+        "saidao"
+      ],
+      "spectacle": "第七格抽屜「喀」一聲鎖上，鑰匙轉了兩圈，抽屜燈熄滅。",
+      "glamour_shot": "許聿講電話時靠著窗，撒嬌的語氣、垂下的睫毛，窗光把他護腕的邊照亮。",
+      "setups": [
+        "s04-t17"
+      ],
+      "payoffs": [
+        "s04-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "隨身碟不開，鎖進父親的第七格"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei",
+        "xu-mu"
+      ],
+      "locations": [
+        "岑氏車隊基地她的辦公室",
+        "父親的舊辦公室"
+      ],
+      "state": {
+        "time": "第六場前五天",
+        "knowledge": "她知道他母親以為他沒開車",
+        "carry_forward": "沒打開的隨身碟；他瞞著母親"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "桿位",
+      "youtube_title": "瞞著媽媽重回賽道的前冠軍拿下桿位，對手只在他正後方留了一台車",
+      "duration_s": 110,
+      "logline": "許聿要拿第六場的桿位，關曜這次只在他背後留了一台車。",
+      "hook": "她：「你媽不知道？」他撒嬌：「姐，幫我保密，加薪也行。」",
+      "hook_type": "question",
+      "mid_hook": "排位賽他第一；凌風一號，一個新簽的年輕車手，排在他正後方。",
+      "extra_hooks": [
+        "凌風車庫，關曜按住凌風一號的肩：「第三彎。」"
+      ],
+      "conflict": "第六場排位，他要桿位，也要瞞住母親。",
+      "turn": "觀眾以為最大的威脅又是三台圍，關曜只留了一台在他背後。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "發車格上，凌風一號拉下頭盔面罩，車鼻正對他的車尾。",
+        "question": "第三彎會發生什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "saidao",
+        "majia",
+        "sajiao"
+      ],
+      "spectacle": "排位賽計時牌跳出他的名字在第一格，維修區的秒錶同時停住。",
+      "glamour_shot": "他戴上頭盔前回頭看指揮台，酒窩一閃，面罩落下那一秒眼神變冷。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到第六場桿位",
+        "小方的快訊標題「前冠軍桿位」讓陳董又打來"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "guan-yao",
+        "jizhe",
+        "zanzhu"
+      ],
+      "locations": [
+        "雲城賽道",
+        "凌風車隊車庫",
+        "發車格"
+      ],
+      "state": {
+        "time": "第六場排位到正賽前",
+        "knowledge": "他知道後面那台車不對勁",
+        "carry_forward": "凌風一號在他正後方；鎖著的隨身碟"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "發車",
+      "youtube_title": "發車前前男友彎腰到他車窗邊：今天小心第三彎，他回耳機兩個字：不讓",
+      "duration_s": 105,
+      "logline": "許聿要領跑到終點，後面那台車卻不跑、只等。",
+      "hook": "發車格上，程皓彎腰到他車窗邊：「今天小心第三彎。」",
+      "hook_type": "line",
+      "mid_hook": "綠燈，他領跑兩圈；凌風一號緊咬在後，不超也不退。",
+      "extra_hooks": [
+        "指揮台上方可盯著數據：「後面那台不是在跑，是在等。」"
+      ],
+      "conflict": "他領先，卻被一台只想撞他的車咬著。",
+      "turn": "觀眾以為程皓是來嗆聲，他是來報信。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "方可：「讓他過，就安全。」她握著麥：「許聿，你說。」耳機裡他：「不讓。」",
+        "question": "不讓的代價是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "saidao",
+        "majia"
+      ],
+      "spectacle": "發車空拍，二十台車同時衝出，白色的岑氏車第一個切進第一彎。",
+      "glamour_shot": "指揮台上岑知微戴著耳機，低馬尾、正紅唇，手指按在麥克風開關上沒鬆。",
+      "setups": [
+        "s04-t22"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他領先第二名兩秒",
+        "程皓第一次站到他這邊報信"
+      ],
+      "characters": [
+        "cheng-hao",
+        "xu-yu",
+        "fang-ke",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "發車格",
+        "雲城賽道",
+        "指揮台"
+      ],
+      "state": {
+        "time": "第六場正賽第三圈",
+        "knowledge": "他決定不讓",
+        "carry_forward": "第三彎就在前面"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "第三彎",
+      "youtube_title": "領跑中的前冠軍在第三彎被對手從後面推出賽道，全場瞬間安靜",
+      "duration_s": 100,
+      "logline": "許聿要撐過第三彎，後面那台車根本不打算超車。",
+      "hook": "第三彎，凌風一號的車鼻貼上了他的車尾。",
+      "hook_type": "danger",
+      "mid_hook": "一聲悶響，遠景裡他的車滑出賽道、翻了半圈，停在草地上，揚起一片塵。",
+      "extra_hooks": [
+        "維修區所有人的耳機同時只剩雜音。"
+      ],
+      "conflict": "他要撐過第三彎。",
+      "turn": "觀眾以為對方會在直線超車，對方從後面直接推。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "草地上的車靜止不動，耳機裡只有雜音。她喊：「許聿？」沒有回答。",
+        "question": "他還能回答她嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "saidao",
+        "ganren"
+      ],
+      "spectacle": "遠景：一台白車滑出賽道、翻半圈停在草地，塵土慢慢落下；觀眾席一整排同時站起，全場無聲。",
+      "glamour_shot": "指揮台上岑知微摘下耳機的那一秒，側臉、馬尾、一動不動的眼睛。",
+      "setups": [
+        "s04-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "賽會紅旗立刻出動，救援車三秒內出發"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei",
+        "fang-ke",
+        "a-chang"
+      ],
+      "locations": [
+        "雲城賽道第三彎",
+        "指揮台"
+      ],
+      "state": {
+        "time": "第六場正賽第三圈",
+        "knowledge": "他被凌風一號從後面推出賽道",
+        "carry_forward": "耳機沒有回應"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "掉了一隻鞋",
+      "youtube_title": "從不在賽道上跑的老闆娘翻過護欄衝向他，高跟鞋掉了一隻也沒回頭",
+      "duration_s": 100,
+      "logline": "岑知微要在救援車之前跑到他身邊。",
+      "hook": "她摘下耳機，一手撐住維修區護欄翻了過去，跑上賽道。",
+      "hook_type": "image",
+      "mid_hook": "跑到一半，她的高跟鞋掉了一隻在跑道邊，她沒回頭。",
+      "extra_hooks": [
+        "阿昌在後面彎腰撿起那隻鞋，塞進工裝口袋。"
+      ],
+      "conflict": "她要比所有人都快跑到他身邊。",
+      "turn": "觀眾以為她會被工作人員攔下，賽會旗手看了她一眼，讓開了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她跑到車邊，車門從裡面推開，一隻戴護腕的手扶住了車頂。",
+        "question": "他自己爬得出來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "saidao",
+        "nvzhu"
+      ],
+      "spectacle": "長鏡頭：紅旗下的空賽道上，一個穿黑西裝的女人光著一隻腳往前跑，跑道邊躺著一隻尖頭高跟鞋。",
+      "glamour_shot": "她奔跑時低馬尾散開，不看鏡頭、只看前方那台車，風把西裝外套吹開。",
+      "setups": [
+        "s04-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一個跑到他車邊"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "a-chang",
+        "xu-yu"
+      ],
+      "locations": [
+        "雲城賽道",
+        "維修區護欄",
+        "第三彎草地"
+      ],
+      "state": {
+        "time": "撞車後一分鐘",
+        "knowledge": "他還能推開車門",
+        "carry_forward": "阿昌口袋裡那隻鞋"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "站著，然後倒下",
+      "youtube_title": "他從車裡爬出來站直，第一句問的是她的鞋，說完就倒在她懷裡",
+      "duration_s": 110,
+      "logline": "許聿要在她面前站著，撐到最後一秒。",
+      "hook": "他從車裡爬出來，站直，看著光著一隻腳的她：「姐，鞋呢？」",
+      "hook_type": "line",
+      "mid_hook": "他抬手對維修區比了個「沒事」，那隻手不抖。",
+      "conflict": "他不想讓她看見他撐不住。",
+      "turn": "觀眾以為他沒事，他說完那句，膝蓋一軟，倒在草地上。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她跪在草地上接住他，一隻腳光著：「許聿，看我。」他的眼睛慢慢閉上。",
+        "question": "他會醒過來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "majia"
+      ],
+      "spectacle": "草地上他站著、她跑到面前；下一格他倒下，她跪下接住，救援人員從四面跑來。",
+      "glamour_shot": "他摘下頭盔，頭髮濕成一縷貼在額上，對她笑出酒窩的最後一秒。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "救援人員一分鐘內把他送上救護車"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei",
+        "a-chang",
+        "fang-ke"
+      ],
+      "locations": [
+        "第三彎草地"
+      ],
+      "state": {
+        "time": "撞車後兩分鐘",
+        "knowledge": "他站起來過，然後倒下",
+        "carry_forward": "救護車；他閉上的眼睛"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "我是他女朋友",
+      "youtube_title": "醫院只准家屬進，她光著一隻腳說：合約上寫了，我是他女朋友",
+      "duration_s": 110,
+      "logline": "岑知微要留在許聿身邊，醫院規定只有家屬能進。",
+      "hook": "救護車門要關，她光著一隻腳踩上去：「我是他家屬。」",
+      "hook_type": "danger",
+      "mid_hook": "護理師周晴翻開病歷：「腦震盪，肋骨兩根，觀察四十八小時。」",
+      "extra_hooks": [
+        "走廊盡頭，小方舉起相機，又放下了。"
+      ],
+      "conflict": "她要待在他身邊，醫院只認家屬。",
+      "turn": "觀眾以為她會用老闆身分硬闖，她說：「合約上寫，我是他女朋友。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "周晴遞來家屬同意書：「簽了，就得留下。」她拔開筆蓋。",
+        "question": "她會簽下「家屬」嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "nvzhu"
+      ],
+      "spectacle": "急診走廊的白燈一盞盞往後退，一個光著一隻腳的女人跟著推床走。",
+      "glamour_shot": "岑知微在急診櫃台前把西裝外套拉直，抬眼看護理師，口紅還在，眼神比誰都穩。",
+      "setups": [
+        "s04-t23"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "凌風公關抱著花來，被她一句「出去」請走"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "s04-hushi",
+        "jizhe"
+      ],
+      "locations": [
+        "救護車",
+        "醫院急診走廊"
+      ],
+      "state": {
+        "time": "撞車當天下午",
+        "knowledge": "觀察四十八小時",
+        "carry_forward": "家屬同意書"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "賽車意外",
+      "youtube_title": "對手老闆在電視上說又是賽車意外，她把父親的錶扣上他的手腕",
+      "duration_s": 115,
+      "logline": "凌風第一時間把撞車說成意外，岑知微選擇留在病房、把仗交給數據。",
+      "hook": "她在同意書上簽下：「岑知微，女朋友。」病房電視裡關曜：「這是賽車意外。」",
+      "hook_type": "reversal",
+      "mid_hook": "她摘下父親的舊賽車錶，扣在他沒戴護腕的那隻手上，錶背那行「給聿，等你回來」朝著他。",
+      "extra_hooks": [
+        "方可傳來訊息：「我有遙測。是推的。」"
+      ],
+      "conflict": "凌風要把撞車定調成意外。",
+      "turn": "觀眾以為她會衝去開記者會，她只對電話說：「方可，數據給賽會。」人沒離開病房。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "方可的數據跳出：撞車前一秒，凌風一號油門踩到底，方向盤一度都沒打。",
+        "question": "是誰叫他踩到底的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "saidao",
+        "majia"
+      ],
+      "spectacle": "病房裡電視上關曜的臉，病床邊一只舊賽車錶慢慢扣上一隻安靜的手腕。",
+      "glamour_shot": "她低頭扣錶扣，髮絲從低馬尾滑到臉側，病房窗光很軟。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "遙測數據送進賽會",
+        "父親的錶回到他手上"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "guan-yao",
+        "fang-ke"
+      ],
+      "locations": [
+        "醫院病房",
+        "岑氏車隊基地數據室"
+      ],
+      "state": {
+        "time": "撞車當天傍晚",
+        "knowledge": "數據顯示凌風一號是故意推的",
+        "carry_forward": "誰下的令"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "探病時間結束",
+      "youtube_title": "護理師說探病時間結束，她拉過一張椅子坐下；對手老闆隔著玻璃看了一眼",
+      "duration_s": 110,
+      "logline": "岑知微要留下來過夜，醫院規定和關曜都在逼她走。",
+      "hook": "晚上十點，周晴輕聲：「探病時間結束了。」她拉過牆邊的椅子，坐下。",
+      "hook_type": "image",
+      "mid_hook": "走廊上關曜出現，隔著玻璃看了一眼病床，放下一束白花。",
+      "extra_hooks": [
+        "阿昌把那隻高跟鞋放在床頭櫃上：「老闆，妳的。」她：「放著。」"
+      ],
+      "conflict": "她不走，醫院要她走，關曜要她怕。",
+      "turn": "觀眾以為她會在病房裡躲著，她走出去把白花塞回關曜懷裡：「下一場，他會贏你。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "關曜走進電梯，回頭一笑：「他還開得了車嗎？」電梯門闔上。",
+        "question": "他還回得了賽道嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "majia",
+        "nvzhu"
+      ],
+      "spectacle": "深夜病房走廊，玻璃一邊是病床和一張空椅子，另一邊是關曜和一束白花。",
+      "glamour_shot": "她把白花推回關曜懷裡時的側臉，一隻腳穿鞋一隻光著，站得比他直。",
+      "setups": [
+        "s04-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "周晴破例讓她留下，還多拿了一條毯子"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "s04-hushi",
+        "guan-yao",
+        "a-chang",
+        "xu-yu"
+      ],
+      "locations": [
+        "醫院病房",
+        "病房走廊",
+        "電梯口"
+      ],
+      "state": {
+        "time": "撞車當夜十點",
+        "knowledge": "關曜來過",
+        "carry_forward": "病房的椅子與床頭那隻鞋"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "病房第一夜",
+      "youtube_title": "他醒來看見她在椅子上睡著只剩一隻鞋，她一句話：那就都違約",
+      "duration_s": 130,
+      "logline": "許聿醒了，想讓她去睡床，又怕吵醒她。",
+      "hook": "畫面打上字幕「第一夜」。病房一盞小燈，她在椅子上睡著，一隻腳穿鞋、一隻光著。",
+      "hook_type": "image",
+      "mid_hook": "他醒來第一眼是她的光腳，伸手想拿床尾的外套給她蓋。",
+      "extra_hooks": [
+        "床頭櫃上，那隻高跟鞋端端正正站著。"
+      ],
+      "conflict": "他要她去睡床，她不會聽。",
+      "turn": "觀眾以為她睡得很沉，他一動，她就醒了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她說：「合約第三條，你住客房，我住椅子。」他：「這是病房。」她：「那就都違約。」",
+        "question": "她要在這張椅子上坐幾夜？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "majia"
+      ],
+      "spectacle": "俯拍病房：一張病床、一張椅子、一盞小燈、床頭櫃上一隻高跟鞋，字幕「第一夜」。",
+      "glamour_shot": "她剛醒時半睜的眼、散下的頭髮，正紅唇淡了，看他的眼神第一次不設防。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他醒了，認得她"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "醫院病房"
+      ],
+      "state": {
+        "time": "第一夜凌晨",
+        "knowledge": "他醒了；她說都違約",
+        "carry_forward": "病房的椅子；第一夜"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "白天",
+      "youtube_title": "白天在基地追查撞車真相晚上回病房，錄音最後一秒傳出對手老闆的聲音",
+      "duration_s": 110,
+      "logline": "岑知微白天要把撞車案送進賽會調查，晚上還要回到那張椅子。",
+      "hook": "清晨她換上米琪送來的新鞋：「我去基地，晚上回來。」他：「姐，不用回。」她：「我說了算。」",
+      "hook_type": "line",
+      "mid_hook": "基地裡方可播出凌風的無線電錄音：「第三彎，推。」",
+      "conflict": "她要把撞車從「意外」翻成「故意」。",
+      "turn": "觀眾以為錄音能直接定罪，那是凌風車隊經理的聲音，不是關曜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "錄音最後一秒，背景裡有人說了兩個字：「照做。」——是關曜的聲音。字幕「第二夜」，她推開病房門。",
+        "question": "那兩個字扳得倒關曜嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "nvzhu",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "基地數據室，一條音波在大螢幕上跳動，最後一秒的波形被放大、標紅。",
+      "glamour_shot": "岑知微在基地走廊大步走，新鞋的鞋跟敲在水泥地上，車隊夾克披在西裝外面。",
+      "setups": [],
+      "payoffs": [
+        "s04-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "無線電錄音交進賽會",
+        "米琪替她買了新鞋，尺寸一次對"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "fang-ke",
+        "mi-qi"
+      ],
+      "locations": [
+        "醫院病房",
+        "岑氏車隊基地數據室"
+      ],
+      "state": {
+        "time": "第二天到第二夜",
+        "knowledge": "錄音裡有關曜的「照做」",
+        "carry_forward": "第二夜；錄音"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "阿昌的便當",
+      "youtube_title": "老技師拎三層便當逼老闆娘吃飯，病人偷吃排骨被她一筷子敲手",
+      "duration_s": 105,
+      "logline": "阿昌要逼三十個小時沒睡的老闆娘吃一頓，許聿只想偷她的排骨。",
+      "hook": "字幕「第二夜」。阿昌拎著三層便當進門：「老闆不吃，我就站著。」",
+      "hook_type": "image",
+      "mid_hook": "許聿偷夾她便當裡的排骨，被她一筷子敲在手背：「病人吃粥。」",
+      "extra_hooks": [
+        "阿昌壓低聲音告訴他：「她三十個小時沒睡。」"
+      ],
+      "conflict": "她白天跑賽會、晚上守病房，阿昌看不下去。",
+      "turn": "觀眾以為她只是逞強，阿昌說出她三十個小時沒闔眼，許聿的筷子放下了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老鄧在門口晃了晃公事包：「第三十八份，簽不簽？」",
+        "question": "第三十八份合約會簽給誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "病房小桌上三層便當一層層打開，熱氣在檯燈下往上飄。",
+      "glamour_shot": "她夾排骨時被他偷走，抬眼瞪他，嘴角卻沒壓住，檯燈在她側臉落一圈暖光。",
+      "setups": [
+        "s04-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她吃完一整個便當",
+        "他乖乖喝完粥"
+      ],
+      "characters": [
+        "a-chang",
+        "cen-zhiwei",
+        "xu-yu",
+        "lao-deng"
+      ],
+      "locations": [
+        "醫院病房"
+      ],
+      "state": {
+        "time": "第二夜",
+        "knowledge": "他知道她三十小時沒睡",
+        "carry_forward": "老鄧的公事包"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "停賽三場",
+      "youtube_title": "撞人的對手車手被停賽三場，對手老闆卻在鏡頭前微笑說我尊重賽會",
+      "duration_s": 110,
+      "logline": "賽會要給撞車一個說法，關曜卻還站得穩穩的。",
+      "hook": "他：「先不簽。」老鄧嘆氣坐下。電視快訊跳出：「凌風一號停賽三場。」",
+      "hook_type": "reversal",
+      "mid_hook": "主席聶正平在快訊裡宣布：關曜本人七日內接受傳喚。",
+      "extra_hooks": [
+        "字幕「第三夜」。米琪抱著一疊文件衝進來：「老闆，簽、簽、簽！」"
+      ],
+      "conflict": "賽會的處分夠不夠，關曜倒不倒。",
+      "turn": "觀眾以為停賽就是贏，關曜在鏡頭前微笑：「我尊重賽會。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "米琪壓低聲音：「陳董說，他不上場，贊助就撤。」",
+        "question": "他不上場，車隊撐得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "病房電視上賽會的處分公告，一行紅字「停賽三場」，床邊一疊文件高過枕頭。",
+      "glamour_shot": "她在病床邊的小桌上一份份簽文件，筆走得飛快，他歪著頭看她簽名的手。",
+      "setups": [
+        "s04-t19"
+      ],
+      "payoffs": [
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "凌風一號停賽三場",
+        "關曜被賽會傳喚"
+      ],
+      "characters": [
+        "xu-yu",
+        "lao-deng",
+        "s04-zhuxi",
+        "guan-yao",
+        "mi-qi",
+        "cen-zhiwei",
+        "zanzhu"
+      ],
+      "locations": [
+        "醫院病房"
+      ],
+      "state": {
+        "time": "第三天到第三夜",
+        "knowledge": "凌風一號被罰、關曜被傳喚",
+        "carry_forward": "陳董要撤贊助"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "小鹿的獎盃",
+      "youtube_title": "贊助商威脅撤資，她開擴音一句撤吧，對方秒改口；小車手抱冠軍獎盃來探病",
+      "duration_s": 110,
+      "logline": "陳董拿贊助逼許聿上場，岑知微當著病床把電話打回去。",
+      "hook": "她把手機放在病床上開擴音：「陳董，撤吧。」那頭安靜三秒：「……我再想想。」",
+      "hook_type": "line",
+      "mid_hook": "字幕「第四夜」。小鹿抱著分站冠軍獎盃衝進來：「師傅，借你抱。」",
+      "conflict": "贊助商要他帶傷上場，她不讓任何人替他決定。",
+      "turn": "觀眾以為她會為了錢妥協，她一句「撤吧」讓陳董先退。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "方可放下平板：「你的反應，比三年前快零點一秒。」",
+        "question": "他的身體還回得了賽道嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "病床上他抱著一座比他頭還大的金色獎盃，小鹿蹲在床邊哭得像個孩子。",
+      "glamour_shot": "許聿抱著獎盃對她笑出酒窩：「姐，像不像我拿的？」窗光落在他的睫毛上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陳董退讓，贊助不撤",
+        "方可的反應測試結果：他比三年前還快"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "zanzhu",
+        "xiao-lu",
+        "xu-yu",
+        "fang-ke"
+      ],
+      "locations": [
+        "醫院病房"
+      ],
+      "state": {
+        "time": "第四天到第四夜",
+        "knowledge": "他的反應比三年前快",
+        "carry_forward": "第四夜；老鄧還沒走"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "第三十八份",
+      "youtube_title": "三年三十七份合約他一份沒簽，第三十八份他在病床上簽了，車隊欄寫著她的名字",
+      "duration_s": 115,
+      "logline": "老鄧帶來第三十八份合約，許聿要簽，又不想讓她知道。",
+      "hook": "字幕「第四夜」。老鄧把公事包放上病床，抽出第三十八份合約。",
+      "hook_type": "image",
+      "mid_hook": "他翻到最後一頁，車隊欄寫著：岑氏車隊。他簽了。",
+      "extra_hooks": [
+        "老鄧：「三年三十七份，你一份沒簽。」他：「這份不一樣。」"
+      ],
+      "conflict": "他要簽下這份約，又要瞞著她。",
+      "turn": "觀眾以為是大車隊的天價約，車隊欄是岑氏，月薪欄寫二十萬。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他把合約塞回公事包：「別告訴她。」門被推開，她拎著熱水壺：「告訴我什麼？」",
+        "question": "他簽的事瞞得住她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "majia"
+      ],
+      "spectacle": "病床的小桌板上，一份合約翻到最後一頁，筆尖落在「車手簽名」那一欄。",
+      "glamour_shot": "許聿簽名時低頭，手腕上是她父親的錶，筆劃穩得一筆不抖。",
+      "setups": [
+        "s04-t21"
+      ],
+      "payoffs": [
+        "s04-t16",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他簽下岑氏車隊的正式車手約",
+        "老鄧三年的第三十八份終於簽了"
+      ],
+      "characters": [
+        "lao-deng",
+        "xu-yu",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "醫院病房"
+      ],
+      "state": {
+        "time": "第四夜",
+        "knowledge": "他簽了岑氏的約，她不知道",
+        "carry_forward": "老鄧的公事包；第三十八份合約（已簽）"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "我想吃橘子",
+      "youtube_title": "他瞞著媽媽重回賽道，媽媽提早來了，第一眼就看見床底下的頭盔",
+      "duration_s": 110,
+      "logline": "許聿要瞞住母親自己又開車，母親卻比約好的早到了一天。",
+      "hook": "他接得很快：「告訴妳……我想吃橘子。」她轉身去買。",
+      "hook_type": "question",
+      "mid_hook": "電梯門開，一個瘦小的中年女人提著布包走進病房：「聿。」他：「媽，我修車摔的。」",
+      "extra_hooks": [
+        "字幕「第五夜」。許母的目光停在床底下露出的半頂頭盔上。"
+      ],
+      "conflict": "他要瞞母親，母親一眼就看穿。",
+      "turn": "觀眾以為母親會罵，她只說：「你瘦了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "許母轉身，看著提著一袋橘子進門的岑知微：「妳就是每天睡椅子的那個？」",
+        "question": "許母要對她說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "病房門口兩個女人對望，一個提著布包，一個提著一袋橘子，病床上的人縮進被子。",
+      "glamour_shot": "岑知微提著橘子站在門口，西裝外套搭在手臂，低馬尾，對陌生長輩微微點頭。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "許母來到雲城"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei",
+        "xu-mu"
+      ],
+      "locations": [
+        "醫院病房",
+        "醫院電梯口"
+      ],
+      "state": {
+        "time": "第五天到第五夜",
+        "knowledge": "許母看見了頭盔",
+        "carry_forward": "許母對她要說的話"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "他熬了三年",
+      "youtube_title": "冠軍的媽媽拉住她：三年前我要他別再開車，他說好，然後熬了三年",
+      "duration_s": 120,
+      "logline": "許母要知道眼前這個女人值不值得兒子回到賽道。",
+      "hook": "許母拉她坐下：「妳知道他這三年在幹嘛嗎？」",
+      "hook_type": "question",
+      "mid_hook": "許母：「三年前我要他別再開車。他說好。他熬了三年。」",
+      "extra_hooks": [
+        "許母從布包拿出一張三年前的照片：病床邊一袋橘子，和一隻戴舊賽車錶的手。"
+      ],
+      "conflict": "許母要判斷這個女人是兒子的退路，還是兒子的賽道。",
+      "turn": "觀眾以為許母是來帶兒子走的，她說：「我是來看他為誰熬的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許母看著她：「妳要他上，還是不上？」她看向病床上的他，沒有回答。",
+        "question": "她會替他決定嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "許母手上那張舊照片和她腕上同一只錶在同一個畫面裡，三年前與今天疊在一起。",
+      "glamour_shot": "岑知微坐在許母對面，雙手放在膝上、背挺直，第一次在長輩面前像個晚輩。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許母知道她父親當年去過醫院，兩家人在照片上對上了"
+      ],
+      "characters": [
+        "xu-mu",
+        "cen-zhiwei",
+        "xu-yu"
+      ],
+      "locations": [
+        "醫院病房"
+      ],
+      "state": {
+        "time": "第五夜",
+        "knowledge": "她知道他答應過母親不開車",
+        "carry_forward": "許母的問題"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "第六夜",
+      "youtube_title": "她說我不替他決定，冠軍的媽媽笑了；記者來了，這一夜她不寫",
+      "duration_s": 110,
+      "logline": "報名截止只剩三天，他上不上，終究要有人說。",
+      "hook": "她答許母：「我不替他決定。」許母看了她很久，笑了：「那我也不。」",
+      "hook_type": "line",
+      "mid_hook": "字幕「第六夜」。小方帶著相機來，她擋在門口，裡面他喊：「讓她進來。」",
+      "extra_hooks": [
+        "病房窗外飄過一艘廣告飛艇：「第七場報名，三天後截止」。"
+      ],
+      "conflict": "下一場的報名期限逼近，他的身體還沒好。",
+      "turn": "觀眾以為小方又要挖新聞，她看著椅子上的外套，把相機蓋上：「這一夜我不寫。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜他自己下床想走到窗邊，腳一軟扶住牆；椅子上的她猛然驚醒。",
+        "question": "他的身體撐得住下一場嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "病房窗外夜空裡一艘發光的廣告飛艇慢慢飄過，窗內一張空椅子披著一件西裝外套。",
+      "glamour_shot": "小方蓋上鏡頭蓋時，鏡頭裡最後一格是她睡著的側臉，短髮的記者看了很久。",
+      "setups": [
+        "s04-t18"
+      ],
+      "payoffs": [
+        "s04-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許母不反對他回賽道",
+        "小方決定不寫病房"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-mu",
+        "jizhe",
+        "xu-yu"
+      ],
+      "locations": [
+        "醫院病房",
+        "病房門口"
+      ],
+      "state": {
+        "time": "第六夜",
+        "knowledge": "許母不反對；報名三天後截止",
+        "carry_forward": "他扶著牆的那一下"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "妳說",
+      "youtube_title": "出院前夜他把決定權交給她：下一場我上不上，妳說；她只回兩個字",
+      "duration_s": 115,
+      "logline": "出院前夜，下一場上不上要有人開口。",
+      "hook": "字幕「第七夜」。她扶住他的手臂：「誰准你下床？」",
+      "hook_type": "danger",
+      "mid_hook": "周晴查房：「明天可以出院了。」",
+      "extra_hooks": [
+        "方可傳訊：「報名表我填好了，車手欄空著。」"
+      ],
+      "conflict": "出院前夜，下一場的車手欄還空著。",
+      "turn": "觀眾以為他會撒嬌求她讓他上，他把決定權交給了她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "他說：「知微，下一場，我上不上，妳說。」她看著他：「你說。」",
+        "question": "他會說上嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "病房桌上一張報名表，車手欄空白，旁邊是那隻高跟鞋和父親的錶。",
+      "glamour_shot": "他第一次叫她「知微」時沒有酒窩，聲音低，她的眼睛在小燈下亮了一下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "醫生准他出院"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "s04-hushi",
+        "fang-ke"
+      ],
+      "locations": [
+        "醫院病房"
+      ],
+      "state": {
+        "time": "第七夜",
+        "knowledge": "她把決定權還給他",
+        "carry_forward": "空著的車手欄"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "上",
+      "youtube_title": "他說上，她說好，然後在椅子上睡著了；冠軍的媽媽說：她比你還倔",
+      "duration_s": 130,
+      "logline": "許聿要說出下一場上不上，岑知微要接住他的答案。",
+      "hook": "他看著她：「上。」",
+      "hook_type": "line",
+      "mid_hook": "她：「好。」然後在椅子上睡著了，這一次鞋穿好了。",
+      "extra_hooks": [
+        "他把那件西裝外套蓋在她身上，手機上方可回一句：「車手欄，填了。」"
+      ],
+      "conflict": "七夜過去，他要給她一個答案。",
+      "turn": "觀眾以為她會反對、會怕，她只說一個字，然後安心睡著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "許母在門口看著椅子上鞋穿好的她，對兒子說：「她比你還倔。」",
+        "question": "下一場，她會在場邊看他過彎嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "七夜的蒙太奇：字幕「第一夜」到「第七夜」，椅子上的她、阿昌的便當、米琪的文件、小鹿的獎盃、方可的平板、老鄧的公事包，一格一格疊上。",
+      "glamour_shot": "她在椅子上睡著，雙腳穿著鞋併攏，外套蓋到下巴，病房小燈落在她平靜的臉上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t15",
+        "s04-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在椅子上坐滿七夜",
+        "下一場的車手欄填上他的名字"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei",
+        "xu-mu",
+        "fang-ke"
+      ],
+      "locations": [
+        "醫院病房",
+        "病房門口"
+      ],
+      "state": {
+        "time": "第七夜深夜",
+        "knowledge": "他決定上，她說好",
+        "carry_forward": "明天出院；第七夜"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "出院",
+      "youtube_title": "被撞出賽道的前冠軍出院，懷裡抱著她跑掉的那隻高跟鞋：姐，當獎盃",
+      "duration_s": 110,
+      "logline": "出院這天，記者在門口等著拍一個被撞出賽道的前冠軍。",
+      "hook": "醫院門口，她推著輪椅，他坐著，懷裡抱著那隻高跟鞋。",
+      "hook_type": "image",
+      "mid_hook": "他把鞋遞給她：「姐，妳的。」她：「你留著幹嘛？」他：「當獎盃。」",
+      "extra_hooks": [
+        "門口一排記者，小方站在最前面，抬手讓其他人退一步。"
+      ],
+      "conflict": "全城的鏡頭都等著拍他坐輪椅的樣子。",
+      "turn": "觀眾以為他會被拍成病人，她鎖上輪椅：「站起來，自己走出去。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "回到公寓樓下，管理員遞來一張名片：關曜。背面一行字：「總決賽，同一個彎。」",
+        "question": "關曜在總決賽要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "nvzhu"
+      ],
+      "spectacle": "醫院大門的自動門打開，一排閃光燈裡他自己站起來走出去，她在前、他在後半步。",
+      "glamour_shot": "她接過那隻高跟鞋穿上，手扶著他的肩，抬起下巴對著鏡頭牆走。",
+      "setups": [],
+      "payoffs": [
+        "s04-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他出院，自己走出醫院",
+        "那隻掉的高跟鞋回到她腳上"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "jizhe",
+        "guan-yao"
+      ],
+      "locations": [
+        "醫院大門",
+        "她的公寓樓下"
+      ],
+      "state": {
+        "time": "第八天上午",
+        "knowledge": "關曜約他總決賽同一個彎",
+        "carry_forward": "關曜的名片；行李袋裡的第三十八份合約"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "門沒關",
+      "youtube_title": "回到合約同居的家，她進門第一件事：把他的客房門推開，還放了門擋",
+      "duration_s": 105,
+      "logline": "兩個人回到合約關係的家，誰也不提病房那七夜。",
+      "hook": "公寓門一開，她先走到客房，把門推開：「通風。」",
+      "hook_type": "line",
+      "mid_hook": "他看了一眼開著的門，沒說話；她彎腰在門底塞了一個門擋。",
+      "extra_hooks": [
+        "冰箱上貼著米琪的字條：「病人不准洗碗」。"
+      ],
+      "conflict": "回家後，她要假裝什麼都沒變。",
+      "turn": "觀眾以為她會像以前一樣關上門畫界線，她連門擋都放好了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她替他拉開行李袋，第三十八份合約的一角露了出來。",
+        "question": "她會翻開那份合約嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "majia",
+        "nvzhu"
+      ],
+      "spectacle": "公寓走廊兩扇門，一扇開著、底下卡著門擋，一扇是她的房門，門上貼著那份合約。",
+      "glamour_shot": "她彎腰放門擋，起身時順手把散下的頭髮勾到耳後，回頭看他。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "客房的門第一次沒關"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "mi-qi"
+      ],
+      "locations": [
+        "她的公寓走廊",
+        "客房"
+      ],
+      "state": {
+        "time": "第八天中午",
+        "knowledge": "她看見行李袋裡有東西",
+        "carry_forward": "合約的一角"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "罰洗碗",
+      "youtube_title": "病人說醫囑不准洗碗，她說我說了算；轉身她卻站到水槽邊陪他擦碗",
+      "duration_s": 105,
+      "logline": "許聿要守住行李袋裡的秘密，岑知微要照常管他。",
+      "hook": "他一把抱起行李袋：「姐，髒衣服我自己洗！」她瞇起眼：「你藏什麼？」",
+      "hook_type": "danger",
+      "mid_hook": "晚餐他照常煮，她照常罰：「太鹹，洗碗。」他：「米琪說病人不准洗。」她：「我說了算。」",
+      "extra_hooks": [
+        "他捲起袖子洗碗，那道疤露在燈下，他沒再拉下來。"
+      ],
+      "conflict": "他要藏住合約，她要照常管他。",
+      "turn": "觀眾以為她在罰他，她拿起抹布站到他旁邊，一個洗一個擦。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "深夜她走過走廊，客房門開著、燈亮著，他坐在床邊低頭看自己的手。",
+        "question": "他在怕什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "xiju",
+        "majia"
+      ],
+      "spectacle": "公寓廚房一盞燈，水槽前兩個人並肩，一個洗一個擦，碗碟一個個疊上架。",
+      "glamour_shot": "許聿捲起袖子洗碗，疤露在暖燈下，回頭對她笑出酒窩：「姐，擦快點。」",
+      "setups": [
+        "s04-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次跟他一起洗碗",
+        "他在家裡不再遮那道疤"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "她的公寓客房",
+        "公寓廚房",
+        "公寓走廊"
+      ],
+      "state": {
+        "time": "第八天深夜",
+        "knowledge": "她看見他一個人看著手",
+        "carry_forward": "開著的客房門；走廊"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "笑了三次",
+      "youtube_title": "助理在群組爆料老闆今天笑了三次，全隊低頭，老技師補刀：第四次了",
+      "duration_s": 105,
+      "logline": "全隊要準備下一場，岑知微要假裝什麼都沒變。",
+      "hook": "清晨米琪的群組訊息跳出：「老闆今天笑了三次」，附三張偷拍。",
+      "hook_type": "image",
+      "mid_hook": "基地會議室她臉一沉：「誰拍的？」全隊低頭，阿昌：「第四次了。」",
+      "extra_hooks": [
+        "方可把總決賽報名表推到她面前，車手欄已經寫好「許聿」。"
+      ],
+      "conflict": "她要在全隊面前守住老闆的臉。",
+      "turn": "觀眾以為她會發火，她把手機扣在桌上：「開會。」嘴角沒壓住。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "會議室大螢幕跳出賽會通知：關曜的傳喚聽證，明天開。",
+        "question": "關曜這次會倒嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "nvzhu",
+        "tianchong"
+      ],
+      "spectacle": "手機螢幕上三張偷拍並排：她在病房、在廚房、在電梯裡，三次都在笑。",
+      "glamour_shot": "岑知微在會議桌首位扣上手機，正紅唇抿了又鬆，那一秒全隊都看見了。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "總決賽報名表車手欄填好"
+      ],
+      "characters": [
+        "mi-qi",
+        "cen-zhiwei",
+        "a-chang",
+        "fang-ke",
+        "xiao-lu",
+        "xu-yu"
+      ],
+      "locations": [
+        "岑氏車隊基地會議室"
+      ],
+      "state": {
+        "time": "第九天",
+        "knowledge": "關曜明天聽證",
+        "carry_forward": "傳喚聽證"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "傳喚",
+      "youtube_title": "對手老闆被傳喚只罰了款，他走過她身邊：總決賽我會坐在指揮台",
+      "duration_s": 115,
+      "logline": "賽會要給關曜一個處分，岑知微要看他倒不倒。",
+      "hook": "賽會聽證廳，主席聶正平：「關曜先生，罰款，禁止進指揮台三場。」",
+      "hook_type": "line",
+      "mid_hook": "關曜微笑接受，走過她身邊：「總決賽，我會坐在指揮台。」",
+      "extra_hooks": [
+        "宋子衡收拾公事包時，不小心把一頁「凌風車隊財務」掉在地上，被小方撿走。"
+      ],
+      "conflict": "賽會罰了，關曜卻沒倒。",
+      "turn": "觀眾以為罰了就是贏，三場禁令剛好在總決賽前結束。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "主席叫住她：「岑老闆，隨身碟的事，賽會可以正式調查——要嗎？」她：「他決定。」",
+        "question": "隨身碟要交給賽會嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "nvzhu",
+        "majia",
+        "xuanyi"
+      ],
+      "spectacle": "聽證廳裡關曜起身扣西裝，對面是她，兩人隔著同一張曾經放過護腕的長桌。",
+      "glamour_shot": "岑知微不讓路，等關曜側身過去，她的視線一秒都沒離開他。",
+      "setups": [],
+      "payoffs": [
+        "s04-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "關曜被罰款、禁進指揮台三場",
+        "小方撿到凌風財務的一頁"
+      ],
+      "characters": [
+        "s04-zhuxi",
+        "guan-yao",
+        "cen-zhiwei",
+        "s04-lvshi",
+        "jizhe"
+      ],
+      "locations": [
+        "賽會聽證廳"
+      ],
+      "state": {
+        "time": "第十天",
+        "knowledge": "關曜被罰但沒倒，總決賽會坐指揮台",
+        "carry_forward": "隨身碟交不交"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "三年前的名字",
+      "youtube_title": "總決賽報名表上他劃掉現在的名字：這次，用我三年前那個名字",
+      "duration_s": 110,
+      "logline": "許聿要決定隨身碟和自己要用什麼身分回到總決賽。",
+      "hook": "她把賽會的問題帶回家：「交不交？」他：「總決賽之後。」",
+      "hook_type": "question",
+      "mid_hook": "他第一次在基地重新坐進賽車，雙手放上方向盤，不抖。",
+      "extra_hooks": [
+        "小鹿在耳機裡喊：「師傅，你的手！」他：「看著。」"
+      ],
+      "conflict": "他要決定以什麼身分回到同一個彎。",
+      "turn": "觀眾以為他會一直用「許聿」躲著，他拿起報名表。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他劃掉報名表上的「許聿」，寫下另一個名字：「這次，用我三年前的名字。」",
+        "question": "他三年前的名字一出，全場會怎樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "majia",
+        "nvzhu",
+        "tianchong"
+      ],
+      "spectacle": "修車間的頂燈下，一台新車的駕駛座裡他雙手握住方向盤，十指穩穩扣住。",
+      "glamour_shot": "他坐進駕駛座，拉下護腕又停住，最後把護腕放在儀表板上，抬眼看她。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他重新坐進賽車，手不抖",
+        "隨身碟留到總決賽之後"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu",
+        "xiao-lu",
+        "a-chang"
+      ],
+      "locations": [
+        "她的公寓",
+        "岑氏車隊基地修車間"
+      ],
+      "state": {
+        "time": "第十一天",
+        "knowledge": "他決定用三年前的名字回到總決賽",
+        "carry_forward": "報名表上的名字；隨身碟還鎖著"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "五年",
+      "youtube_title": "她翻開他藏在行李袋的合約，車隊欄是她的名字，期限五年",
+      "duration_s": 110,
+      "logline": "岑知微要知道許聿藏在行李袋裡的是什麼。",
+      "hook": "洗衣機前，她從他的行李袋裡抽出那份合約：「這是什麼？」",
+      "hook_type": "danger",
+      "mid_hook": "她翻到最後一頁：車隊欄岑氏，期限五年，簽名日期是病房第四夜。",
+      "extra_hooks": [
+        "他靠在門邊撒嬌：「姐，加薪的事，五年後再談。」"
+      ],
+      "conflict": "她要知道他瞞了她什麼。",
+      "turn": "觀眾以為她會氣他又瞞她，她氣的是他簽五年，沒問她要不要十年。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把合約抱在胸前：「五年，你跑不掉了。」他：「我本來就沒想跑。」",
+        "question": "這五年，誰養誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "majia",
+        "nvzhu"
+      ],
+      "spectacle": "洗衣機轉著，她坐在洗衣籃旁翻著一份合約，最後一頁的簽名在燈下發亮。",
+      "glamour_shot": "她抱著合約抬頭看他，正紅唇抿著笑，低馬尾垂在肩上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t21"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道他簽了岑氏五年"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu"
+      ],
+      "locations": [
+        "她的公寓洗衣間"
+      ],
+      "state": {
+        "time": "第十二天",
+        "knowledge": "她知道第三十八份是給岑氏的",
+        "carry_forward": "五年；門上的合約"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "爸，他回來了",
+      "youtube_title": "她帶他到父親墓前放下十一年前的合約：爸，你等的人回來了",
+      "duration_s": 115,
+      "logline": "岑知微要把父親等了三年的人帶到父親面前。",
+      "hook": "墓園清晨，她把十一年前的合約和第三十八份並排放在墓碑前。",
+      "hook_type": "image",
+      "mid_hook": "她對著墓碑：「爸，他回來了。」他在她身後鞠躬三次。",
+      "extra_hooks": [
+        "墓碑旁一個新放的橘子，誰放的沒人知道。"
+      ],
+      "conflict": "她要跟父親交代，也要跟自己交代。",
+      "turn": "觀眾以為她會替他向父親承諾什麼，她說：「從今天起，有一件事我讓他決定。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "下山的路上她停下：「今晚，門關不關，你決定。」",
+        "question": "他會讓門開著嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "nvzhu",
+        "tianchong",
+        "majia"
+      ],
+      "spectacle": "清晨墓園的薄霧裡，墓碑前兩份合約並排，十一年的時間在同一個畫面。",
+      "glamour_shot": "她蹲在墓碑前，黑西裝、低馬尾，手指撫過父親的名字，起身時風吹起衣角。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩份合約都帶到她父親面前"
+      ],
+      "characters": [
+        "cen-zhiwei",
+        "xu-yu"
+      ],
+      "locations": [
+        "雲城墓園"
+      ],
+      "state": {
+        "time": "第十三天清晨",
+        "knowledge": "她把門的決定交給他",
+        "carry_forward": "今晚的門"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "兩扇門",
+      "youtube_title": "深夜兩扇門都開著，中間一條走廊，她房門上的合約第三條被紅筆圈起來",
+      "duration_s": 115,
+      "logline": "兩扇門都開著，誰也沒先走過那條走廊。",
+      "hook": "深夜，客房的門開著，她的房門也開著，中間一條走廊。",
+      "hook_type": "image",
+      "mid_hook": "他站在客房門口，她站在自己房門口，兩人同時看見對方。",
+      "extra_hooks": [
+        "米琪的群組又跳一則：「老闆今天笑了第五次」，她把手機扣在門邊櫃上。"
+      ],
+      "conflict": "她把決定交給了他，他還沒動。",
+      "turn": "觀眾以為他會直接走過去，他先看見了她門上的東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她房門上那份十二條的合約，第三條「住客房」被紅筆圈了起來。",
+        "question": "她圈起第三條是什麼意思？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "majia",
+        "nvzhu"
+      ],
+      "spectacle": "對稱構圖：長走廊兩端兩扇開著的門，兩盞燈，兩個站著的人，中間一條光。",
+      "glamour_shot": "她倚在自己的門框上，頭髮放下來，沒有口紅，只有眼神還是那個老闆娘。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兩扇門都開著"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei",
+        "mi-qi"
+      ],
+      "locations": [
+        "她的公寓走廊"
+      ],
+      "state": {
+        "time": "第十三天深夜",
+        "knowledge": "他看見她圈了第三條",
+        "carry_forward": "被圈起的第三條；一條走廊"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "我違約",
+      "youtube_title": "他走過走廊沒進她的門，撕下合約第三條按在胸口：我違約",
+      "duration_s": 140,
+      "logline": "許聿要回答第三條是誰違約，岑知微要看他走不走過那條走廊。",
+      "hook": "他說：「合約第三條。」她說：「你違約還是我違約？」",
+      "hook_type": "question",
+      "mid_hook": "他：「妳在病房坐了七夜。」她：「那是椅子。」他笑了。",
+      "extra_hooks": [
+        "他走過走廊，在她門前停下，她屏住氣。"
+      ],
+      "conflict": "第三條是誰先違約的，誰要先認。",
+      "turn": "觀眾以為他會走進她的房間，他伸手撕下了門上合約的第三條。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "他把第三條按在自己胸口：「我違約。」轉身回客房，門沒關；她在門口站了很久，笑了。",
+        "question": "他認了違約，下一步誰先走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "nvzhu",
+        "majia"
+      ],
+      "spectacle": "走廊中央他撕下一張紙條，十二條的合約變成十一條，紙條按在他胸口的白襯衫上。",
+      "glamour_shot": "他按著那張紙條說「我違約」時的酒窩，與她倚在門框上慢慢笑開的那一格。",
+      "setups": [],
+      "payoffs": [
+        "s04-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "合約第三條撕了，十二條剩十一條",
+        "兩扇門都開著"
+      ],
+      "characters": [
+        "xu-yu",
+        "cen-zhiwei"
+      ],
+      "locations": [
+        "她的公寓走廊",
+        "客房門口",
+        "她的房門口"
+      ],
+      "state": {
+        "time": "第十三天深夜",
+        "knowledge": "他認了違約，第三條撕了，兩扇門都開著",
+        "carry_forward": "總決賽；關曜的「同一個彎」；鎖著的隨身碟；三年前的名字"
+      }
+    }
+  ]
+}

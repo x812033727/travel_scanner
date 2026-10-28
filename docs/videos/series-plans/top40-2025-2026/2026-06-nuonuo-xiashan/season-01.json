@@ -1,0 +1,4364 @@
+{
+  "number": 1,
+  "title": "刑警大隊",
+  "theme": "第一個哥哥，是最不想當哥哥的那個。",
+  "start_state": "外婆的葬禮剛結束，舅公陶德茂說要『接』糰糰去住，她不肯。她在針線盒底拆出名單：五個名字，第一個是『陶遠，雲城刑警』。她牽著阿財、背著比她大的書包，走進雲城刑警大隊：『我找陶遠。我是他妹妹。』陶遠看了她一眼，叫人送她去兒童收容所。",
+  "end_state": "大哥陶遠從把她當走失兒童的刑警，到在收容所門口把她背回家；名單上第一個名字為什麼是刑警揭開（照年紀排、他是最早被送走也是唯一記得母親的）；大哥沒破的案揭開（二十年前母親的死，記錄是意外）。她用『看過不忘』替他記住一個嫌犯的車牌破了一樁小案，全隊第一次叫她『小隊員』。舅公來收容所要人，被孫姐擋。最後一集，陶遠把她背回老屋，第一次坐上外婆的飯桌；她從書包裡拿出名單，用紅筆劃掉第一個名字，指著第二個：『哥，下一個在江城。他是醫生。』陶遠說：『妳不能一個人去。』她說：『你陪我。』",
+  "guest_cast": [
+    {
+      "id": "s01-xiaozhou",
+      "name": "小周（周子傑）",
+      "role": "刑警大隊值班警員，二十六歲；第十二個帶她去大隊的人，奶奶是外婆的病人",
+      "appearance": "東亞年輕男性，二十六歲，清爽俊朗：短髮、笑起來有一顆虎牙、眼睛彎彎，便服是灰色連帽外套，值班時穿深藍警察制服，手裡常拿一杯便利商店咖啡"
+    },
+    {
+      "id": "s01-ahao",
+      "name": "阿豪",
+      "role": "收容所的大孩子，十二歲；搶過她的書包，後來成了她在收容所的第一個朋友",
+      "appearance": "東亞男童，十二歲，瘦高、膚色曬黑、短短的刺蝟頭、眉毛很濃，穿洗舊的收容所灰色運動服與一雙鞋頭磨破的白球鞋"
+    },
+    {
+      "id": "s01-fan-lushi",
+      "name": "范律師",
+      "role": "舅公的律師，五十歲；拿監護文件與偽造遺囑來要人，他的事務所和二十年前那份寫錯天氣的報告有關",
+      "appearance": "東亞中年男性，五十歲，瘦削、梳得油亮的後梳髮、細框金屬眼鏡、法令紋深，穿深藍細條紋西裝與一雙擦得發亮的黑皮鞋，手提黑色公事包"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s01-t01",
+      "question": "外婆縫在針線盒底的是什麼？",
+      "setup_episode": 1,
+      "payoff_episode": 2
+    },
+    {
+      "id": "s01-t02",
+      "question": "阿財為什麼對舅公低吼？",
+      "setup_episode": 1,
+      "payoff_episode": 3
+    },
+    {
+      "id": "s01-t03",
+      "question": "舅公說「下週一來辦手續」是什麼手續？",
+      "setup_episode": 3,
+      "payoff_episode": 11
+    },
+    {
+      "id": "s01-t04",
+      "question": "那輛一路跟著公車的黑車是誰？",
+      "setup_episode": 4,
+      "payoff_episode": 7
+    },
+    {
+      "id": "s01-t05",
+      "question": "照片裡最大的男孩是誰？",
+      "setup_episode": 2,
+      "payoff_episode": 20
+    },
+    {
+      "id": "s01-t06",
+      "question": "外婆留下的紅筆要用來劃什麼？",
+      "setup_episode": 4,
+      "payoff_episode": 60
+    },
+    {
+      "id": "s01-t07",
+      "question": "她為什麼把停車場的車牌全背下來？",
+      "setup_episode": 9,
+      "payoff_episode": 22
+    },
+    {
+      "id": "s01-t08",
+      "question": "值班警員小周為什麼肯幫她？",
+      "setup_episode": 7,
+      "payoff_episode": 9
+    },
+    {
+      "id": "s01-t09",
+      "question": "陶遠為什麼不肯認她？",
+      "setup_episode": 10,
+      "payoff_episode": 52
+    },
+    {
+      "id": "s01-t10",
+      "question": "收容所登記表的監護人欄能不能改掉舅公？",
+      "setup_episode": 11,
+      "payoff_episode": 53
+    },
+    {
+      "id": "s01-t11",
+      "question": "阿豪為什麼搶她的書包？",
+      "setup_episode": 12,
+      "payoff_episode": 16
+    },
+    {
+      "id": "s01-t12",
+      "question": "阿財會不會被送去動保處？",
+      "setup_episode": 13,
+      "payoff_episode": 15
+    },
+    {
+      "id": "s01-t13",
+      "question": "收容所的帳錯在哪三個地方？",
+      "setup_episode": 14,
+      "payoff_episode": 18
+    },
+    {
+      "id": "s01-t14",
+      "question": "陶遠每天經過收容所，為什麼不進門？",
+      "setup_episode": 15,
+      "payoff_episode": 19
+    },
+    {
+      "id": "s01-t15",
+      "question": "搶案車牌的後半是什麼？",
+      "setup_episode": 21,
+      "payoff_episode": 23
+    },
+    {
+      "id": "s01-t16",
+      "question": "舅公的監護文件是真的嗎？",
+      "setup_episode": 26,
+      "payoff_episode": 28
+    },
+    {
+      "id": "s01-t17",
+      "question": "孫姐會站哪一邊？",
+      "setup_episode": 26,
+      "payoff_episode": 29
+    },
+    {
+      "id": "s01-t18",
+      "question": "陶遠說的「二十年前的」是什麼案？",
+      "setup_episode": 30,
+      "payoff_episode": 32
+    },
+    {
+      "id": "s01-t19",
+      "question": "牛皮紙袋裡照片上的女人是誰？",
+      "setup_episode": 31,
+      "payoff_episode": 33
+    },
+    {
+      "id": "s01-t20",
+      "question": "陶遠的舊錶為什麼不走？",
+      "setup_episode": 20,
+      "payoff_episode": 58
+    },
+    {
+      "id": "s01-t21",
+      "question": "林奶奶認得陶敏嗎？",
+      "setup_episode": 37,
+      "payoff_episode": 40
+    },
+    {
+      "id": "s01-t22",
+      "question": "舅公為什麼說孩子們不想回來？",
+      "setup_episode": 41,
+      "payoff_episode": 51
+    },
+    {
+      "id": "s01-t23",
+      "question": "誰在老屋外面偷拍？",
+      "setup_episode": 43,
+      "payoff_episode": 49
+    },
+    {
+      "id": "s01-t24",
+      "question": "陶遠什麼時候才會在外婆的飯桌坐下？",
+      "setup_episode": 46,
+      "payoff_episode": 60
+    },
+    {
+      "id": "s01-t25",
+      "question": "陶遠請長假要去哪裡？",
+      "setup_episode": 57,
+      "payoff_episode": 60
+    },
+    {
+      "id": "s01-t28",
+      "question": "搶走的錢藏在哪裡？",
+      "setup_episode": 22,
+      "payoff_episode": 24
+    },
+    {
+      "id": "s01-t29",
+      "question": "宿舍樓下那台銀色轎車是誰的？",
+      "setup_episode": 32,
+      "payoff_episode": 36
+    },
+    {
+      "id": "s01-t30",
+      "question": "報告寫晴天，現場照片的地為什麼是濕的？",
+      "setup_episode": 35,
+      "payoff_episode": 38
+    },
+    {
+      "id": "s01-t33",
+      "question": "外婆二十年寄出的信去了哪裡？",
+      "setup_episode": 41,
+      "payoff_episode": 44
+    },
+    {
+      "id": "s01-t36",
+      "question": "舅公拿出的外婆遺囑是真的嗎？",
+      "setup_episode": 53,
+      "payoff_episode": 55
+    },
+    {
+      "id": "s01-t37",
+      "question": "葬禮上舅公要她簽的奠儀簿，用去了哪裡？",
+      "setup_episode": 1,
+      "payoff_episode": 28
+    }
+  ],
+  "episodes": [
+    {
+      "number": 1,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "葬禮上不哭的孩子",
+      "youtube_title": "外婆的葬禮上七歲女孩一滴淚都沒掉，舅公摸她的頭說乖，老狗卻對他低吼",
+      "duration_s": 130,
+      "logline": "七歲的陶糰糰剛送走外婆，舅公要把她接走，她不肯；她只想知道外婆最後那句話是什麼意思。",
+      "hook": "靈堂黑白照前，一個紅棉襖的小女孩站在最前面，眼睛乾乾的；身邊的老黃狗突然露出牙。",
+      "hook_type": "image",
+      "mid_hook": "舅公把一本奠儀簿推到她面前：「乖，簽個名。」她握著筆，筆尖抖出一個墨點。",
+      "extra_hooks": [
+        "夜裡老屋只剩一盞燈，林奶奶睡在她旁邊，她摸黑打開外婆的針線盒。"
+      ],
+      "conflict": "舅公陶德茂要在葬禮當天把她『接回去』，她要守住外婆的老屋一夜。",
+      "turn": "所有大人都以為她不懂，她卻記得外婆走前抓著她的手說的話：『盒子底下，有妳的人。』",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "針線盒底層的絨布下，一道外婆的細密針腳；她的小手一挑，線頭鬆開，露出一角泛黃的紙。",
+        "question": "外婆縫在盒底的是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "靈堂白菊間，一個紅棉襖小女孩與一隻老黃狗並肩站著，滿屋大人在她身後低頭哭。",
+      "glamour_shot": "糰糰抬頭看外婆的照片，兩個小揪揪在燭光裡，臉頰那點紅比燭火還亮。",
+      "setups": [
+        "s01-t01",
+        "s01-t02",
+        "s01-t37",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她拒絕跟舅公走，林奶奶留下來陪她守老屋一夜",
+        "她記下奠儀簿上自己簽名旁的墨點"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-demao",
+        "lin-nainai",
+        "waipo"
+      ],
+      "locations": [
+        "雲城殯儀館靈堂",
+        "外婆的老屋"
+      ],
+      "state": {
+        "time": "葬禮當天夜裡",
+        "knowledge": "外婆說盒子底下有她的人；舅公急著接她；阿財不讓舅公靠近。",
+        "carry_forward": "針線盒底的紙、奠儀簿上的簽名、阿財的低吼"
+      }
+    },
+    {
+      "number": 2,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "五個名字",
+      "youtube_title": "七歲女孩拆開外婆縫死的針線盒，裡面藏著五個名字：妳有五個哥哥，他們不知道妳",
+      "duration_s": 120,
+      "logline": "糰糰拆出外婆藏了多年的名單與舊照片，才知道自己有五個哥哥；當夜老屋外卻來了一輛車。",
+      "hook": "線一根根拆斷，泛黃的紙被小手攤平：五行字、五座城，最上面寫著「陶遠，雲城，刑警」。",
+      "hook_type": "image",
+      "mid_hook": "紙背面是外婆的字：「妳有五個哥哥。」「他們不知道妳。」糰糰把這兩句念了三遍。",
+      "conflict": "她要弄懂名單上的五個人是誰，又不能讓任何大人把它拿走。",
+      "turn": "名單裡夾著一張舊照片：五個男孩站成一排，最大那個沒有笑；她認出照片背景就是老屋的飯桌。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜，老屋外車燈停下，門把被人從外面輕輕轉了一下；阿財站起來，林奶奶在黑暗裡坐直。",
+        "question": "半夜轉門把的是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "針線盒底的布被拆開，一張名單與一張五個男孩的舊照片從布層裡滑出來，落在燈下。",
+      "glamour_shot": "照片特寫：五個男孩裡最大的那個，十二歲，眉眼冷峭，跟後來的刑警一模一樣。",
+      "setups": [
+        "s01-t05",
+        "m01",
+        "m02"
+      ],
+      "payoffs": [
+        "s01-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿到名單與五兄弟的舊照片，把名單收進書包最裡層"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "lin-nainai",
+        "waipo"
+      ],
+      "locations": [
+        "外婆的老屋"
+      ],
+      "state": {
+        "time": "葬禮當夜",
+        "knowledge": "她有五個哥哥：刑警、醫生、拳王、電競、主廚；第一個是雲城的陶遠。",
+        "carry_forward": "照片裡最大的男孩、門外的車燈"
+      }
+    },
+    {
+      "number": 3,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "說謊的鞋",
+      "youtube_title": "舅公的兒子提著水果上門說外婆交代接她走，七歲女孩一句話，老狗一口咬上他的鞋",
+      "duration_s": 105,
+      "logline": "舅公的兒子陶啟天一亮就來要人，糰糰得在林奶奶面前拆穿他。",
+      "hook": "門把又轉了一下，林奶奶拉開門：門外是笑嘻嘻的陶啟，手裡一籃水果。「舅公叫我來接妳。」",
+      "hook_type": "danger",
+      "mid_hook": "陶啟說：「外婆走前交代的。」糰糰從林奶奶身後探頭：「外婆走的時候，只有我在。」",
+      "extra_hooks": [
+        "阿財撲上去咬住陶啟的皮鞋，他跳起來撞翻了水果籃。"
+      ],
+      "conflict": "陶啟要把她帶上車，她要讓林奶奶看清楚這個人在說謊。",
+      "turn": "阿財昨晚不是對舅公一個人低吼：牠衝著說謊的人；陶啟一開口牠就撲了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶啟臨走塞進門縫一張紙：「下週一，舅公來辦手續。」糰糰看看紙，又看看書包裡的名單。",
+        "question": "她要等舅公，還是自己先走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "xuanyi"
+      ],
+      "spectacle": "老黃狗撲向一雙亮皮鞋，水果籃翻倒，橘子滾了一地，陶啟單腳跳出門外。",
+      "glamour_shot": "糰糰站在門檻上抱著阿財，晨光從她背後打進來，揪揪的影子落在地上。",
+      "setups": [
+        "s01-t03",
+        "m05"
+      ],
+      "payoffs": [
+        "s01-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶啟被趕出老屋",
+        "林奶奶第一次看見阿財只咬說謊的人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "lin-nainai",
+        "tao-qi"
+      ],
+      "locations": [
+        "外婆的老屋門口"
+      ],
+      "state": {
+        "time": "葬禮隔天清晨",
+        "knowledge": "舅公一家急著接她；阿財咬說謊的人；下週一舅公要辦手續。",
+        "carry_forward": "門縫裡的紙、離週一還有四天"
+      }
+    },
+    {
+      "number": 4,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "找哥哥",
+      "youtube_title": "七歲女孩背著比她還大的書包牽老狗出門，鄰居奶奶攔門：妳去哪？她說：找哥哥",
+      "duration_s": 110,
+      "logline": "糰糰決定在舅公來之前去找第一個哥哥，林奶奶攔不住，只能陪她走到公車站。",
+      "hook": "糰糰把那張「下週一」的紙對折兩次，塞進針線盒：「不等了。」",
+      "hook_type": "line",
+      "mid_hook": "林奶奶張開手攔在門口：「妳去哪？」她仰頭：「找哥哥。」阿財把繩子叼到林奶奶手裡。",
+      "conflict": "她要出門找雲城的刑警大隊，可她七歲，不能一個人過馬路。",
+      "turn": "林奶奶以為她會哭著回屋，她卻把公車路線、車資、外婆說的過馬路規矩一條條背給林奶奶聽；林奶奶只好牽她去站牌，拜託司機王伯看著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "公車開動，後照鏡裡一輛黑色轎車從巷口滑出來，跟著公車轉彎。",
+        "question": "那輛黑車是在跟她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "ganren"
+      ],
+      "spectacle": "老城區巷口，紅棉襖小女孩背著比她還高的舊書包，書包上晃著針線盒，牽著老狗走向站牌。",
+      "glamour_shot": "她坐在公車窗邊，鼻尖貼玻璃，揪揪隨車晃，阿財把下巴擱在她的小雨鞋上。",
+      "setups": [
+        "s01-t06",
+        "s01-t04",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她數清書包裡的錢：三百二十七元",
+        "外婆的紅筆被她夾在名單旁",
+        "林奶奶託司機王伯一路照看她"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "lin-nainai"
+      ],
+      "locations": [
+        "外婆的老屋",
+        "老城區公車站",
+        "公車上"
+      ],
+      "state": {
+        "time": "葬禮後第二天上午",
+        "knowledge": "第一個哥哥在雲城刑警大隊；她記得整張公車路線圖。",
+        "carry_forward": "跟著公車的黑車、三百二十七元"
+      }
+    },
+    {
+      "number": 5,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "公車上的座位",
+      "youtube_title": "大叔硬說七歲女孩搶了他的座位，她報出他上車的站名和時間，整車乘客都轉頭",
+      "duration_s": 100,
+      "logline": "公車上一個大叔要趕她和老狗下車，她得靠記性保住座位，同時甩不掉那輛黑車。",
+      "hook": "黑車就跟在公車屁股後面，糰糰把臉縮到窗框下，小聲對阿財說：「別出聲。」",
+      "hook_type": "danger",
+      "mid_hook": "大叔指著她：「這位子是我先坐的！」糰糰：「你在第三站上車。」「八點十二分。」",
+      "conflict": "大叔要她讓位、要狗下車，司機王伯被夾在中間。",
+      "turn": "大叔以為一個孩子記不住，她卻把他上車時拿的報紙標題都念出來；全車笑了，大叔紅著臉坐到後面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她在市中心下車，黑車也在對街停下，車窗緩緩降下：裡面是陶啟，對她笑著揮手。",
+        "question": "陶啟會在大街上抓她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "整車乘客同時轉頭看向一個七歲女孩，她身邊的老狗慢慢把頭抬起來。",
+      "glamour_shot": "糰糰說完站名，抿嘴一點頭，兩頰鼓鼓，像外婆教她算帳時那樣認真。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她保住座位，司機王伯替她把阿財的繩子繞好"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai"
+      ],
+      "locations": [
+        "公車上",
+        "雲城市中心站"
+      ],
+      "state": {
+        "time": "第二天中午",
+        "knowledge": "陶啟一路跟著她；她要在市中心找到刑警大隊。",
+        "carry_forward": "對街的陶啟、還不知道刑警大隊在哪"
+      }
+    },
+    {
+      "number": 6,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "問了十一個人",
+      "youtube_title": "七歲女孩在大街上問了十一個人刑警大隊在哪，十一個方向全不一樣，她全記住了",
+      "duration_s": 115,
+      "logline": "糰糰一邊躲陶啟一邊問路，十一個大人給了十一個答案。",
+      "hook": "陶啟推開車門那一秒，糰糰拉著阿財一頭鑽進煎餅攤的布簾後，攤主阿姨把鍋鏟一舉。",
+      "hook_type": "danger",
+      "mid_hook": "第七個人說往東、第八個人說往西；糰糰閉眼一秒：「你們都說過一個路口。」",
+      "extra_hooks": [
+        "煎餅攤阿姨把她護在身後，對陶啟喊：「你誰啊？」陶啟訕訕退回車上。"
+      ],
+      "conflict": "她要找到刑警大隊，又不能被陶啟追上。",
+      "turn": "十一個答案她全記下，在腦子裡疊成一張地圖：每個人都提到同一家便利商店；大人們都說錯了，可錯的地方加起來就是對的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "便利商店門口，陶啟的車又繞回來了；她看看店門，再看看對街的斑馬線。",
+        "question": "她要躲進店裡，還是過馬路？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "十一張陌生大人的臉一格一格閃過，十一隻手指向十一個方向，最後疊成一張發光的路線圖。",
+      "glamour_shot": "她站在路口仰頭問路，紅棉襖在灰色人潮裡像一盞小燈。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她在腦中拼出刑警大隊大概的方位",
+        "煎餅攤阿姨送她一張煎餅"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-qi"
+      ],
+      "locations": [
+        "雲城市中心街頭",
+        "煎餅攤",
+        "便利商店門口"
+      ],
+      "state": {
+        "time": "第二天下午",
+        "knowledge": "刑警大隊在便利商店那一帶；陶啟還在找她。",
+        "carry_forward": "繞回來的黑車、她不能一個人過馬路"
+      }
+    },
+    {
+      "number": 7,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "第十二個人",
+      "youtube_title": "大叔在便利商店說自己是女孩的爸爸，老狗一口咬鞋，排隊買咖啡的男人亮出警員證",
+      "duration_s": 120,
+      "logline": "陶啟在便利商店裡冒充她爸爸要帶走她，店裡排隊的一個年輕男人站了出來。",
+      "hook": "糰糰沒過馬路，推門進便利商店：「外婆說，不能一個人過。」門鈴叮咚，陶啟跟了進來。",
+      "hook_type": "line",
+      "mid_hook": "陶啟對店員笑：「我是她爸爸。」阿財一口咬上他的鞋；糰糰：「他是舅公的兒子。他說謊。」",
+      "conflict": "陶啟要在店員面前把她帶走，她得讓店裡的大人相信她。",
+      "turn": "排隊買咖啡的年輕男人放下杯子，掏出警員證：「先生，證件。」陶啟找了個藉口退出門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "年輕警員蹲下來問她要去哪，她說：「刑警大隊。我找陶遠。」他手上的咖啡一歪：「……隊長？」",
+        "question": "這個警員認識陶遠？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "xuanyi"
+      ],
+      "spectacle": "便利商店的冷光下，老狗咬住亮皮鞋，一張警員證從年輕男人的外套裡翻出來。",
+      "glamour_shot": "小周蹲下與她平視，短髮、便服外套，笑起來有虎牙，拿咖啡的手停在半空。",
+      "setups": [
+        "s01-t08"
+      ],
+      "payoffs": [
+        "s01-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶啟退走",
+        "她遇到第十二個人：剛下班的年輕警員小周"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-qi",
+        "s01-xiaozhou"
+      ],
+      "locations": [
+        "便利商店"
+      ],
+      "state": {
+        "time": "第二天傍晚",
+        "knowledge": "跟著她的黑車是陶啟；小周是刑警大隊的警員。",
+        "carry_forward": "小周為什麼肯幫她、陶遠是他的隊長"
+      }
+    },
+    {
+      "number": 8,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "電視上的哥哥",
+      "youtube_title": "七歲女孩在路邊電視牆第一次看見親哥哥：雲城刑警隊長一張冷臉，跟照片一模一樣",
+      "duration_s": 105,
+      "logline": "小周牽她過馬路去刑警大隊，路上她在電視牆上第一次看見陶遠。",
+      "hook": "小周的咖啡灑了一手，他瞪著她：「妳說妳找誰？」她把名單舉高：「陶遠。第一個。」",
+      "hook_type": "question",
+      "mid_hook": "街口電視牆播新聞：一個黑夾克男人押著嫌犯走出大樓，字幕「雲城刑警大隊隊長 陶遠」。",
+      "conflict": "她要確認名單上的陶遠就是這個刑警，小周卻勸她別抱希望。",
+      "turn": "她把舊照片舉到電視牆前：十二歲的男孩與三十二歲的刑警，眉心同一道皺；小周說隊長最討厭小孩，她說：「那我更要去。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "刑警大隊的燈牌就在前面，街角那輛黑車又停下了，車門一開；小周一把將她拉到身後。",
+        "question": "陶啟敢追到警局門口？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "ganren"
+      ],
+      "spectacle": "整面電視牆上陶遠的冷臉放大十倍，牆下一個舉著舊照片的小女孩與老狗。",
+      "glamour_shot": "電視畫面裡陶遠押人走出大樓，風掀起黑夾克，他慢慢回頭看鏡頭，眼神冷得像刀。",
+      "setups": [
+        "m02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小周牽著她過了三個路口",
+        "她確定陶遠就是照片裡最大的男孩"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "s01-xiaozhou",
+        "tao-yuan"
+      ],
+      "locations": [
+        "雲城街口電視牆",
+        "斑馬線"
+      ],
+      "state": {
+        "time": "第二天晚上",
+        "knowledge": "陶遠是刑警大隊隊長；小周說他最討厭小孩。",
+        "carry_forward": "刑警大隊就在前面"
+      }
+    },
+    {
+      "number": 9,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "停車場的車牌",
+      "youtube_title": "刑警大隊門口不讓帶狗進，七歲女孩在台階坐到天黑，把整個停車場的車牌全背下來",
+      "duration_s": 110,
+      "logline": "門口值勤不放她進大隊，她只能等小周交班，坐在台階上看著停車場。",
+      "hook": "黑車的人看見刑警大隊的燈牌，車門又關上，一踩油門開走；鐵門前門衛伸手一攔：「狗不能進。」",
+      "hook_type": "image",
+      "mid_hook": "小周在台階上看見她書包上的針線盒，愣住：「這繡花……我奶奶也有一個。」",
+      "extra_hooks": [
+        "她一邊等，一邊小聲念：「雲A三七……」把停車場二十六台車的車牌一台台背下來。"
+      ],
+      "conflict": "她要等到小周上班帶她進去，天越來越黑。",
+      "turn": "小周的奶奶十年前腰痛，是外婆替她扎針止的痛；他幫她不是因為好心，是因為還一份人情。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "一台黑色警車駛進來，黑夾克的男人下車，從她身邊走過，連看都沒看她一眼。",
+        "question": "他為什麼不看她？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "mengbao"
+      ],
+      "spectacle": "暮色裡刑警大隊的藍色燈牌亮起，台階上一個小女孩靠著老狗，面前一整排車頭燈。",
+      "glamour_shot": "陶遠從車裡跨出來，夜風吹動短髮，他扣上黑夾克，側臉被大隊燈牌映成冷藍。",
+      "setups": [
+        "s01-t07"
+      ],
+      "payoffs": [
+        "s01-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小周答應交班後帶她進門",
+        "她把停車場二十六個車牌全記住"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "s01-xiaozhou",
+        "tao-yuan",
+        "waipo"
+      ],
+      "locations": [
+        "雲城刑警大隊門口",
+        "大隊停車場"
+      ],
+      "state": {
+        "time": "第二天夜裡",
+        "knowledge": "小周的奶奶是外婆的病人；陶遠就在大隊裡。",
+        "carry_forward": "背下的二十六個車牌、還沒見到陶遠"
+      }
+    },
+    {
+      "number": 10,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "送收容所",
+      "youtube_title": "七歲女孩走進刑警大隊說：我找陶遠，我是他妹妹；冷面隊長看了她三秒：送收容所",
+      "duration_s": 135,
+      "logline": "小周終於帶她進門，她當著全隊說出要找的人；陶遠走出來，只看了她三秒。",
+      "hook": "陶遠的背影消失在玻璃門後，糰糰站起來，把書包帶子拉緊：「換我進去。」",
+      "hook_type": "line",
+      "mid_hook": "小周換上制服坐上值班台，她踮腳趴在台邊：「我找陶遠。我是他妹妹。」小周憋著笑往裡喊：「隊長，有個小朋友說是你妹。」",
+      "extra_hooks": [
+        "整個辦公室的刑警同時抬頭，有人的泡麵叉子停在半空。"
+      ],
+      "conflict": "她要讓陶遠出來見她一面。",
+      "turn": "她以為哥哥看見照片就會認她，陶遠卻連照片都沒接，只是看著她，看了很久的三秒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "高大的男人在她面前停下，看了她三秒，轉身對小周說：「送收容所。」",
+        "question": "哥哥為什麼不認她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "一個紅棉襖小女孩牽著老狗走進冷藍色的刑警大隊，一整排刑警從電腦後同時抬頭。",
+      "glamour_shot": "陶遠從走廊盡頭走出來，燈一盞盞照過他的劍眉與鋒利下顎線，舊錶在袖口一閃。",
+      "setups": [
+        "s01-t09",
+        "m04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她見到第一個哥哥本人",
+        "全隊記住了這個說自己是隊長妹妹的孩子"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "s01-xiaozhou",
+        "tao-yuan"
+      ],
+      "locations": [
+        "雲城刑警大隊值班台",
+        "大隊辦公室"
+      ],
+      "state": {
+        "time": "第二天深夜",
+        "knowledge": "陶遠見過她了，卻要把她送去收容所；他的舊錶停在一個時間。",
+        "carry_forward": "收容所、名單第一個名字還沒劃"
+      }
+    },
+    {
+      "number": 11,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "監護人那一欄",
+      "youtube_title": "刑警哥哥把七歲妹妹送進收容所，主任打開登記表，監護人那欄早就寫好了舅公的名字",
+      "duration_s": 110,
+      "logline": "糰糰被送進雲城兒童收容所，孫姐照章登記，她發現自己的監護人欄已經有人填了。",
+      "hook": "「送收容所」四個字還在耳邊，警車後座的糰糰回頭：陶遠站在大隊門口，沒有揮手。",
+      "hook_type": "image",
+      "mid_hook": "孫姐敲鍵盤：「監護人，陶德茂。」糰糰：「我沒說過他。」孫姐：「他上週就申請了。」",
+      "conflict": "收容所要聯絡監護人來領人，她必須弄清楚舅公憑什麼是她的監護人。",
+      "turn": "陶啟說的「下週一辦手續」根本不是要辦：手續早就辦好了，只差把她交出去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰踮腳看螢幕：申請日期那一格，是外婆過世的前一天。",
+        "question": "舅公怎麼在外婆走前就申請？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xuanyi"
+      ],
+      "spectacle": "收容所登記表的特寫：游標停在『監護人』欄，三個字一個一個跳出來：陶德茂。",
+      "glamour_shot": "孫姐推了推眼鏡，短髮俐落、文件夾夾在臂彎，照章辦事的冷臉被螢幕光照白。",
+      "setups": [
+        "s01-t10",
+        "m06"
+      ],
+      "payoffs": [
+        "s01-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她記下申請日期與案號"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "shourong",
+        "tao-yuan",
+        "s01-xiaozhou"
+      ],
+      "locations": [
+        "警車後座",
+        "雲城兒童收容所登記室"
+      ],
+      "state": {
+        "time": "第三天凌晨",
+        "knowledge": "舅公在外婆過世前一天就申請當她的監護人；收容所要聯絡他。",
+        "carry_forward": "監護人欄、申請日期、陶遠沒揮手"
+      }
+    },
+    {
+      "number": 12,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "三百二十七元",
+      "youtube_title": "七歲女孩在收容所第一晚不哭，她在算：這裡一天花多少錢，舅公幾天會來",
+      "duration_s": 100,
+      "logline": "收容所第一晚，糰糰算清自己能撐幾天，一個大孩子卻盯上了她的書包。",
+      "hook": "熄燈後的通鋪，別的孩子在哭，糰糰在被窩裡打著小手電，一枚一枚數硬幣。",
+      "hook_type": "image",
+      "mid_hook": "她在掌心寫算式：「一天三餐九十元」「舅公週五來」「我撐得住」。",
+      "extra_hooks": [
+        "上鋪的大孩子阿豪探下頭，盯著她書包上的針線盒：「那是什麼？」"
+      ],
+      "conflict": "她要在舅公來之前想辦法再見陶遠，還得守住書包裡的名單。",
+      "turn": "她以為最大的麻煩是舅公，第一晚的麻煩卻是一雙伸過來的手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿豪一把拽住書包帶子往上扯，名單的一角露出來；阿財在床下弓起背，喉嚨裡一聲低吼。",
+        "question": "阿財會撲上去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "黑暗通鋪裡一束小手電光，照著一排排硬幣與一隻老狗混濁卻警醒的眼睛。",
+      "glamour_shot": "手電光從下往上照著糰糰的圓臉，她咬著嘴唇算數，揪揪壓扁了一邊。",
+      "setups": [
+        "s01-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她算清收容所的伙食帳：三百二十七元夠她撐三天"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "s01-ahao"
+      ],
+      "locations": [
+        "收容所通鋪"
+      ],
+      "state": {
+        "time": "第三天夜",
+        "knowledge": "舅公週五會來；她的錢撐得到那天。",
+        "carry_forward": "阿豪拽著書包、阿財弓背"
+      }
+    },
+    {
+      "number": 13,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "牠咬說謊的",
+      "youtube_title": "收容所大孩子搶書包被老狗咬了鞋，主任要把狗送走，七歲女孩：牠只咬說謊的",
+      "duration_s": 120,
+      "logline": "阿財咬了阿豪的鞋，孫姐要把老狗送去動保處，糰糰得當場證明牠不是亂咬。",
+      "hook": "阿財撲上去，一口咬住阿豪的球鞋鞋頭；阿豪鬆手跳開，書包落進糰糰懷裡。",
+      "hook_type": "danger",
+      "mid_hook": "孫姐：「狗明天送動保處。」糰糰抱住阿財：「牠十四歲，不咬人。」「牠咬說謊的。」",
+      "extra_hooks": [
+        "阿豪大喊：「我沒搶！」話一出口，阿財又一口咬上他另一隻鞋，他單腳跳了三下。"
+      ],
+      "conflict": "孫姐要按規定處理會咬人的狗，糰糰要保住阿財。",
+      "turn": "全通鋪的孩子都看見了：阿豪說一句謊，阿財咬一次鞋；孫姐第一次對這孩子皺了眉，不是生氣，是好奇。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "孫姐合上文件夾：「狗明天送走，或妳們一起轉去郊區的所。」糰糰低頭看阿財，阿財舔她的手。",
+        "question": "她要留狗，還是留在雲城？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "fansha",
+        "xiju"
+      ],
+      "spectacle": "老黃狗撲向一雙球鞋，大孩子單腳跳開，滿屋小孩從被窩裡探出頭來尖叫又笑。",
+      "glamour_shot": "糰糰跪在地上抱住阿財的脖子，臉頰貼著牠的老黃毛，眼神倔得像外婆。",
+      "setups": [
+        "s01-t12",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "書包搶回來了",
+        "全收容所知道阿財只咬說謊的"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "s01-ahao",
+        "shourong"
+      ],
+      "locations": [
+        "收容所通鋪",
+        "收容所走廊"
+      ],
+      "state": {
+        "time": "第三天深夜",
+        "knowledge": "孫姐要把阿財送走；轉去郊區就離陶遠更遠。",
+        "carry_forward": "阿財的去留、孫姐的好奇"
+      }
+    },
+    {
+      "number": 14,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "帳本上的錯",
+      "youtube_title": "收容所主任要把老狗送走，七歲女孩瞄一眼她桌上的帳本：妳們的帳錯了三個地方",
+      "duration_s": 105,
+      "logline": "糰糰兩邊都不選，她想找一個讓孫姐不得不聽她說話的理由。",
+      "hook": "糰糰抬頭：「我都不要。」她把阿財的繩子繞在自己手腕上，坐在孫姐辦公室門口不走。",
+      "hook_type": "line",
+      "mid_hook": "孫姐桌上攤著當月的伙食帳，糰糰踮腳看了五秒，眉頭一皺，手指在空中點了三下。",
+      "conflict": "她要讓孫姐收回送狗的決定，又不能哭鬧。",
+      "turn": "外婆教她算帳是為了買菜不被騙，現在她用同一套算法，看出收容所的帳有人動過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "孫姐要關門，糰糰把小手卡在門縫：「主任，妳們的帳，錯了三個地方。」",
+        "question": "七歲的孩子看得懂帳本？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "滿桌的收據與帳本，一隻小手指在空中點出三個看不見的數字，數字在帳頁上一個個亮紅。",
+      "glamour_shot": "糰糰仰臉站在辦公室門口，紅棉襖、黃雨鞋，背後拖著一隻趴著的老狗，認真得像在開會。",
+      "setups": [
+        "s01-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "孫姐答應先不送阿財，等她說清楚帳"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "shourong"
+      ],
+      "locations": [
+        "收容所主任辦公室"
+      ],
+      "state": {
+        "time": "第四天上午",
+        "knowledge": "收容所的帳有三個錯；阿財暫時留下。",
+        "carry_forward": "三個錯、動保處要來"
+      }
+    },
+    {
+      "number": 15,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "動保處來了",
+      "youtube_title": "動保處上門要帶走咬人的老狗，七歲女孩把規定一條一條背出來，官員笑著收起表格",
+      "duration_s": 110,
+      "logline": "孫姐不信她看得懂帳，動保處卻先到了，糰糰得自己替阿財說話。",
+      "hook": "孫姐把門推開一寸：「三個錯？說來聽聽。」話沒說完，院子裡停進一台動保處的車。",
+      "hook_type": "danger",
+      "mid_hook": "動保員拿出表格：「咬傷紀錄？」糰糰：「沒有傷。」「只咬鞋。」「規定說要有傷。」",
+      "conflict": "動保員要依程序帶走阿財，她要用規定擋回去。",
+      "turn": "她背的是動保處貼在收容所布告欄上的規定，一字不差；動保員看了布告欄一眼，笑著把表格收回。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她回頭，收容所的窗外停著一台黑色警車，駕駛座的人看著這邊，車窗沒搖下來就開走了。",
+        "question": "陶遠為什麼來了又走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "fansha",
+        "mengbao"
+      ],
+      "spectacle": "收容所院子裡動保處的白色廂車、一個仰頭背規定的小女孩、一隻打呵欠的老狗。",
+      "glamour_shot": "警車擋風玻璃後陶遠的半張臉，劍眉壓著，手搭在方向盤上，舊錶的錶面反了一下光。",
+      "setups": [
+        "s01-t14"
+      ],
+      "payoffs": [
+        "s01-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿財留下來了，條件是繫繩",
+        "孫姐看她的眼神變了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "shourong",
+        "tao-yuan"
+      ],
+      "locations": [
+        "收容所院子"
+      ],
+      "state": {
+        "time": "第四天中午",
+        "knowledge": "阿財保住了；陶遠的車在收容所外停過。",
+        "carry_forward": "陶遠每天經過、帳的三個錯還沒說"
+      }
+    },
+    {
+      "number": 16,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "破書包",
+      "youtube_title": "搶她書包的大孩子沒有自己的書包，七歲女孩拿出外婆的針線，把他的破袋子縫好了",
+      "duration_s": 115,
+      "logline": "阿豪又來找她，這次不是搶，而是站在床邊不走；舅公的電話也打來了。",
+      "hook": "陶遠的車開走，糰糰還趴在窗台，一個影子罩下來：阿豪手上拎著一個破了洞的塑膠袋。",
+      "hook_type": "image",
+      "mid_hook": "阿豪紅著臉：「我只是想要一個書包。」阿財沒有咬他；糰糰從針線盒拿出外婆的針。",
+      "extra_hooks": [
+        "孫姐在走廊接電話，臉色一變：「陶先生，週五？……好，我們會準備好。」"
+      ],
+      "conflict": "她要弄懂阿豪為什麼搶，也要知道舅公什麼時候來。",
+      "turn": "阿豪不是壞孩子，他下個月要轉學，沒有書包；她把破袋子縫成小書包，阿豪成了收容所第一個站她這邊的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿豪湊過來小聲說：「剛剛有個油頭叔叔在圍牆外，問我妳睡哪一張床。」",
+        "question": "陶啟想幹什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju",
+        "fansha"
+      ],
+      "spectacle": "外婆的細針在燈下穿過塑膠袋，七歲的小手打了一個漂亮的結，破袋子變成一個有背帶的小書包。",
+      "glamour_shot": "阿豪背上新書包轉一圈，十二歲的瘦男孩第一次笑；糰糰抬頭看他，臉頰那點紅更紅了。",
+      "setups": [],
+      "payoffs": [
+        "s01-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿豪成了她在收容所的朋友",
+        "她知道舅公週五來"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "s01-ahao",
+        "shourong"
+      ],
+      "locations": [
+        "收容所通鋪",
+        "收容所走廊"
+      ],
+      "state": {
+        "time": "第四天傍晚",
+        "knowledge": "舅公週五來；陶啟在圍牆外打聽她。",
+        "carry_forward": "陶啟的打聽、還剩兩天"
+      }
+    },
+    {
+      "number": 17,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "送玩具的叔叔",
+      "youtube_title": "油頭叔叔提著玩具來收容所說是女孩的親人，老狗一口咬鞋，主任拿出了訪客登記表",
+      "duration_s": 105,
+      "logline": "陶啟提前跑來收容所『探望』，孫姐開始照著糰糰說的去翻帳。",
+      "hook": "隔天一早，陶啟抱著一個大玩偶站在收容所門口：「我是她親人，來看看她。」",
+      "hook_type": "danger",
+      "mid_hook": "孫姐翻伙食帳，翻到第二頁手指停住：「豬肉這週買了兩次？」",
+      "conflict": "陶啟要進來看她睡在哪，孫姐要決定讓不讓訪客進門。",
+      "turn": "陶啟說「我來過好幾次了」，阿財一口咬鞋；孫姐翻開訪客登記表：他一次都沒登記過——他在說謊，也在探路。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "孫姐用紅筆圈出第一個錯，又在下一頁停住：同一張收據，貼了兩次。",
+        "question": "第三個錯在哪？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "fansha",
+        "xiju"
+      ],
+      "spectacle": "收容所門口，一隻老狗咬住油頭男人的皮鞋，他懷裡的大熊玩偶飛出去落進花圃。",
+      "glamour_shot": "孫姐低頭翻帳，金屬框眼鏡滑到鼻尖，一支紅筆在指間轉了一圈，冷臉第一次露出一點驚訝。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶啟被擋在門外，訪客登記表上被記了一筆",
+        "孫姐找到兩個帳上的錯"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-qi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所門口",
+        "收容所主任辦公室"
+      ],
+      "state": {
+        "time": "第五天上午",
+        "knowledge": "陶啟一直在打聽她；帳上兩個錯對上了。",
+        "carry_forward": "第三個錯、舅公明天來"
+      }
+    },
+    {
+      "number": 18,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "第三個錯",
+      "youtube_title": "主任翻遍帳本只找到兩個錯，七歲女孩說出第三個：有人每個月多報了一個孩子",
+      "duration_s": 120,
+      "logline": "孫姐找不到第三個錯，只好把糰糰叫進辦公室。",
+      "hook": "孫姐把帳本推到糰糰面前，第一次蹲下來跟她說話：「第三個，在哪？」",
+      "hook_type": "question",
+      "mid_hook": "糰糰數著床位表：「通鋪二十三張床。」又翻帳本：「伙食算二十四個人。」",
+      "conflict": "孫姐要知道第三個錯，糰糰要用它換一件事。",
+      "turn": "第三個錯不是算錯，是有人每個月多報一個不存在的孩子；孫姐的臉從驚訝變成鐵青——帳是送菜的廠商做的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "孫姐合上帳本，看著她：「妳要什麼？」糰糰把舊照片放在帳本上：「我要見陶遠。」",
+        "question": "孫姐會替她打這通電話嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "fansha"
+      ],
+      "spectacle": "床位表與帳本並排，二十三張床、二十四份飯，多出來那一份在桌上投下一個空盤子的影子。",
+      "glamour_shot": "孫姐摘下眼鏡揉眉心，制服袖口捲起，第一次看起來像一個會心疼孩子的人。",
+      "setups": [],
+      "payoffs": [
+        "s01-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "收容所的假帳被揪出來，孫姐當天換掉送菜廠商",
+        "孫姐欠她一個人情"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "shourong"
+      ],
+      "locations": [
+        "收容所主任辦公室"
+      ],
+      "state": {
+        "time": "第五天下午",
+        "knowledge": "孫姐站到她這邊一半；她要用人情換見陶遠。",
+        "carry_forward": "照片、孫姐的電話"
+      }
+    },
+    {
+      "number": 19,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "他進來了",
+      "youtube_title": "刑警隊長每天開車經過收容所都不進門，第三天主任一句話，他推開了會客室的門",
+      "duration_s": 115,
+      "logline": "孫姐打給陶遠，只說了一句話；那個每天經過的人第一次走進收容所。",
+      "hook": "孫姐拿起電話，只說一句：「陶隊長，那孩子把我們的帳算出三個錯。」電話那頭沉默三秒。",
+      "hook_type": "line",
+      "mid_hook": "會客室門開，陶遠站在門口，看見糰糰抱著阿財睡在沙發上，手裡還捏著那張舊照片。",
+      "extra_hooks": [
+        "阿財睜開一隻眼看他，沒有叫，也沒有咬，又把眼睛閉上。"
+      ],
+      "conflict": "陶遠來了，可他還是不肯承認是來看她的。",
+      "turn": "他說是來查帳的案子，卻先替她把滑下來的外套拉好；孫姐在門外全看見了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠低頭看孫姐給的帳本，邊角一行歪歪的鉛筆字：「陶遠，三月七日生。」",
+        "question": "她怎麼知道他的生日？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "mengbao"
+      ],
+      "spectacle": "收容所會客室的舊沙發上，小女孩抱著老狗睡著，一個高大的黑影停在門口不敢進來。",
+      "glamour_shot": "陶遠側身站在會客室門口，冷白的燈打在他高額與深目上，他俯身拉外套的手很輕。",
+      "setups": [],
+      "payoffs": [
+        "s01-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠第一次走進收容所"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "shourong",
+        "tao-yuan"
+      ],
+      "locations": [
+        "收容所主任辦公室",
+        "收容所會客室"
+      ],
+      "state": {
+        "time": "第五天傍晚",
+        "knowledge": "陶遠進門了；帳本上寫著他的生日。",
+        "carry_forward": "那行鉛筆字、舊照片"
+      }
+    },
+    {
+      "number": 20,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "第一個是你",
+      "youtube_title": "七歲妹妹把舊照片推到刑警哥哥面前：第一個是你；他看了很久說我沒有妹妹",
+      "duration_s": 130,
+      "logline": "會客室裡兄妹第一次對坐，她把照片推過去，他得決定認不認。",
+      "hook": "糰糰醒了，揉著眼睛：「外婆寫在照片背面的。」她把照片翻過來，背面一行字：「遠，十二歲，三月七日。」",
+      "hook_type": "reversal",
+      "mid_hook": "她把照片轉正推過去，小手指點著最大的那個男孩：「第一個是你。」",
+      "extra_hooks": [
+        "照片裡十二歲的男孩手上戴著一只錶；三十二歲的陶遠低頭，看見自己袖口同一只舊錶。"
+      ],
+      "conflict": "她要他認，他要守住自己『沒有家人』的那條線。",
+      "turn": "他一直說自己沒有妹妹，可他看照片的時間，比看任何一張嫌犯照片都長。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶遠盯著照片很久，說：「我沒有妹妹。」糰糰歪頭：「那你為什麼看這麼久？」",
+        "question": "他會承認嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "會客室小桌上，一張泛黃的五兄弟照片與一只真的舊錶並排，照片裡和照片外是同一只錶。",
+      "glamour_shot": "陶遠低頭看照片，睫毛壓住眼神，舊錶在燈下閃了一下，冷峭的臉第一次有一道裂縫。",
+      "setups": [
+        "s01-t20"
+      ],
+      "payoffs": [
+        "s01-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠確認照片裡的男孩是自己"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan"
+      ],
+      "locations": [
+        "收容所會客室"
+      ],
+      "state": {
+        "time": "第五天夜",
+        "knowledge": "照片裡最大的男孩就是陶遠；他戴著同一只錶，卻說沒有妹妹。",
+        "carry_forward": "她的問題沒有答案、舊錶的來歷"
+      }
+    },
+    {
+      "number": 21,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "走失兒童筆錄",
+      "youtube_title": "刑警哥哥不肯認妹妹，只說要帶她回大隊做走失兒童筆錄，她卻盯上了白板上的搶案",
+      "duration_s": 105,
+      "logline": "陶遠不回答她的問題，用『做筆錄』把她帶回刑警大隊，大隊正為一樁搶案焦頭爛額。",
+      "hook": "陶遠把照片推回去，手機一震：「搶案，車跑了。」他起身，又停住：「妳跟我走。做筆錄。」",
+      "hook_type": "line",
+      "mid_hook": "辦公室白板上貼著一張監視器截圖：一台灰色廂型車，車牌只拍到前半「雲B七」。",
+      "extra_hooks": [
+        "小周端來一杯熱可可，壓低聲音：「隊長從來不帶人回來做筆錄。」"
+      ],
+      "conflict": "大隊追不到搶案的車，陶遠一邊辦案一邊還得面對這個妹妹。",
+      "turn": "大家以為帶她回來只是程序，她卻在白板前站住不走了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰在白板前站了十秒，回頭：「這台車，我見過。」整個辦公室安靜下來。",
+        "question": "她在哪裡見過搶案的車？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "huzai"
+      ],
+      "spectacle": "冷藍色的刑警大隊辦公室，一面貼滿照片與紅線的白板前，站著一個比白板矮一半的紅棉襖小女孩。",
+      "glamour_shot": "陶遠邊走邊套上黑夾克，扣腰帶，回頭叫她跟上，走廊燈從他肩上一盞盞滑過。",
+      "setups": [
+        "s01-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次進到刑警大隊的辦公室"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "s01-xiaozhou"
+      ],
+      "locations": [
+        "收容所會客室",
+        "雲城刑警大隊辦公室"
+      ],
+      "state": {
+        "time": "第六天上午",
+        "knowledge": "大隊在追一台只拍到半張車牌的灰色廂型車。",
+        "carry_forward": "她說見過那台車"
+      }
+    },
+    {
+      "number": 22,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "整個車牌",
+      "youtube_title": "全隊刑警追不到搶匪車牌，七歲女孩站在白板前十秒，把整個車牌一字不差念出來",
+      "duration_s": 115,
+      "logline": "糰糰說出她在哪裡看過那台車，還念出整個車牌；全隊不知道該不該信一個七歲的孩子。",
+      "hook": "陶遠蹲到她面前，第一次跟她平視：「在哪？」糰糰：「昨天，停在收容所對面。」",
+      "hook_type": "question",
+      "mid_hook": "她一口氣念：「雲B七三，四八九一。」小周敲進系統，螢幕跳出一行紅字：比對成功。",
+      "conflict": "全隊要決定信不信一個孩子的記憶。",
+      "turn": "她不是猜的：外婆教她看過的東西都要記住，連刑警大隊停車場的二十六個車牌她都背得出來，小周一台一台去對，全對。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小周調出路口監視器：那台灰色廂型車此刻就停在收容所對面，阿豪正從收容所大門走出來。",
+        "question": "搶匪就在收容所門口？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "shenfen"
+      ],
+      "spectacle": "白板上半截車牌旁，一串數字被她一個一個念出來，系統螢幕跳出整張車籍資料。",
+      "glamour_shot": "陶遠蹲在她面前，冷臉近在咫尺，深目裡第一次有一點吃驚，手上的舊錶滴答作響。",
+      "setups": [
+        "s01-t28"
+      ],
+      "payoffs": [
+        "s01-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "搶案的車找到了",
+        "全隊第一次相信她的記憶"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "s01-xiaozhou",
+        "s01-ahao"
+      ],
+      "locations": [
+        "雲城刑警大隊辦公室"
+      ],
+      "state": {
+        "time": "第六天上午",
+        "knowledge": "搶匪的車就在收容所對面；她記住的車牌全對。",
+        "carry_forward": "收容所門口的孩子們、搶匪還在車上"
+      }
+    },
+    {
+      "number": 23,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "收網",
+      "youtube_title": "搶匪的車就停在收容所門口，刑警隊長下令收網，七歲女孩在監控螢幕前喊出一句話",
+      "duration_s": 110,
+      "logline": "陶遠帶隊趕去收容所，糰糰留在大隊跟小周看監視器，搶匪的後車廂卻是空的。",
+      "hook": "陶遠抓起無線電：「全組出發。」他回頭指著糰糰：「妳留下。」小周把她抱上椅子。",
+      "hook_type": "danger",
+      "mid_hook": "監視器畫面裡，孫姐把阿豪拉回門內；三台便衣車同時堵住灰色廂型車。",
+      "extra_hooks": [
+        "糰糰盯著螢幕突然喊：「左邊那個人，昨天也在。」小周按下無線電轉告，陶遠在畫面裡轉身攔住正要溜走的第三個人。"
+      ],
+      "conflict": "搶匪就在孩子們門口，要抓人又不能讓任何孩子出事。",
+      "turn": "大家以為兩個人，她記得昨天車邊站的是三個；第三個人差點混進路人裡跑掉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "搶匪全被按住，陶遠拉開後車廂：裡面是空的，搶走的錢一張都不在。",
+        "question": "錢藏到哪裡去了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        4
+      ],
+      "tones": [
+        "huzai",
+        "shenfen",
+        "mengbao"
+      ],
+      "spectacle": "收容所門口的街上三台便衣車同時煞停，車門齊開，一排刑警在孩子們隔著玻璃門的注視下收網。",
+      "glamour_shot": "陶遠衝下車的慢動作：黑夾克揚起，單手按住搶匪，回頭確認收容所大門那一眼又冷又準。",
+      "setups": [],
+      "payoffs": [
+        "s01-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三個搶匪全部落網",
+        "收容所的孩子沒有一個受到驚嚇以外的事"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "s01-xiaozhou",
+        "shourong",
+        "s01-ahao"
+      ],
+      "locations": [
+        "雲城刑警大隊監控室",
+        "收容所對面街口"
+      ],
+      "state": {
+        "time": "第六天中午",
+        "knowledge": "搶匪抓到了，但錢不見了。",
+        "carry_forward": "空的後車廂"
+      }
+    },
+    {
+      "number": 24,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "小隊員",
+      "youtube_title": "搶匪落網錢卻不見了，七歲女孩想起車上掛的一個洗衣袋，全隊刑警從此叫她小隊員",
+      "duration_s": 120,
+      "logline": "錢不見了，搶匪不肯開口，糰糰想起昨天那台車上的一個小細節。",
+      "hook": "無線電裡陶遠的聲音：「後車廂是空的。」糰糰從椅子上站起來：「車上有一個藍色袋子。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「袋子上寫白鷺洗衣。」小周查地圖：收容所後巷就有一家白鷺洗衣。",
+      "conflict": "找出藏起來的搶款，搶匪咬死不說。",
+      "turn": "搶匪說錢早花光了，可她記得袋子上的取件單號；刑警到洗衣店一報單號，一包衣服底下全是錢。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "全隊鼓掌時，陶遠只說一句：「明天送妳回收容所。」糰糰低頭摸著書包上的小警徽，沒說話。",
+        "question": "他還是要送她走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "huzai",
+        "shenfen"
+      ],
+      "spectacle": "洗衣店的衣服堆被翻開，一疊疊鈔票露出來；回到大隊，一整隊刑警對著一個七歲女孩起立鼓掌。",
+      "glamour_shot": "小周把一枚小警徽別在她的舊書包上，糰糰低頭看，臉頰紅透，揪揪跟著點頭晃了一下。",
+      "setups": [],
+      "payoffs": [
+        "s01-t28"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "搶款全數找回",
+        "全隊叫她『小隊員』",
+        "她的書包掛上小警徽"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "s01-xiaozhou"
+      ],
+      "locations": [
+        "雲城刑警大隊辦公室",
+        "白鷺洗衣店"
+      ],
+      "state": {
+        "time": "第六天傍晚",
+        "knowledge": "她是全隊的小隊員，但陶遠還是要送她回收容所。",
+        "carry_forward": "書包上的小警徽、陶遠的冷話"
+      }
+    },
+    {
+      "number": 25,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "隊長送便當",
+      "youtube_title": "嘴上說送她回收容所的刑警隊長，從隔天開始每天中午提著便當出現在收容所門口",
+      "duration_s": 100,
+      "logline": "陶遠把她送回收容所，嘴上不認，卻從隔天起每天中午都出現。",
+      "hook": "收容所門口，陶遠把她的書包交給孫姐，轉身就走；糰糰對著他背影喊：「明天見。」他腳步頓了一下。",
+      "hook_type": "image",
+      "mid_hook": "隔天中午，陶遠提著兩個便當站在會客室門口，冷著臉：「多買的。」",
+      "extra_hooks": [
+        "大隊群組裡小周偷拍的照片炸開：「隊長送便當？？」底下二十個驚嘆號。"
+      ],
+      "conflict": "他想用便當代替一句『我是妳哥』，她想讓他把那句話說出來。",
+      "turn": "便當裡的菜全是她不愛吃的青椒，她一口一口吃完了；第三天，便當裡沒有青椒了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "孫姐接起電話，臉色一沉，看向糰糰：「妳舅公明天來。帶著律師。」",
+        "question": "律師能把她帶走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "huzai",
+        "mengbao"
+      ],
+      "spectacle": "收容所會客室的小桌上，兩個一模一樣的便當，一大一小兩雙筷子，老狗的鼻子湊在桌邊。",
+      "glamour_shot": "陶遠靠在會客室門框上看她吃飯，黑夾克敞著，刻意看窗外的側臉被午光勾出一道冷線。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠每天中午出現在收容所",
+        "便當裡的青椒消失了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "shourong",
+        "s01-xiaozhou"
+      ],
+      "locations": [
+        "收容所門口",
+        "收容所會客室"
+      ],
+      "state": {
+        "time": "第七到第九天",
+        "knowledge": "陶遠天天來送飯，但不認她；舅公明天帶律師來。",
+        "carry_forward": "律師、監護文件"
+      }
+    },
+    {
+      "number": 26,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "舅公來了",
+      "youtube_title": "舅公帶著律師和監護文件來收容所接人，主任翻完說手續齊全，然後看了七歲女孩一眼",
+      "duration_s": 115,
+      "logline": "舅公陶德茂帶著律師走進收容所，所有文件都蓋好了章。",
+      "hook": "收容所門口停下一台黑色轎車，車門打開，先落地的是一串佛珠：「乖，舅公來接妳了。」",
+      "hook_type": "image",
+      "mid_hook": "范律師把一疊文件攤開：「監護申請、戶籍、親屬證明。」孫姐一頁頁翻，翻得很慢。",
+      "conflict": "舅公要依法帶走她，孫姐要依法辦事。",
+      "turn": "糰糰以為孫姐會站在舅公那邊，因為手續齊全；孫姐翻完最後一頁，卻沒有蓋章。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "孫姐合上文件：「手續齊全。」她看了糰糰一眼：「但孩子說，她有哥哥。」",
+        "question": "孫姐要站哪邊？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xuanyi"
+      ],
+      "spectacle": "收容所灰白的登記室裡，一張長桌：一邊是唐裝佛珠的老人與西裝律師，一邊是一個抱著老狗的小女孩。",
+      "glamour_shot": "糰糰坐在長桌一端，雙腳碰不到地，黃雨鞋一晃一晃，抬眼看舅公的眼神一點也不軟。",
+      "setups": [
+        "s01-t16",
+        "s01-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她一眼看出文件頁碼跳了一號，孫姐因此翻得更慢",
+        "孫姐沒有當場放人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所門口",
+        "收容所登記室"
+      ],
+      "state": {
+        "time": "第十天上午",
+        "knowledge": "舅公的文件看起來齊全；孫姐提到了哥哥。",
+        "carry_forward": "監護文件是不是真的、孫姐的立場"
+      }
+    },
+    {
+      "number": 27,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "她的簽名",
+      "youtube_title": "律師亮出七歲女孩親筆簽的同意書，她湊過去看了一眼：這不是我在這裡簽的",
+      "duration_s": 110,
+      "logline": "范律師拿出最後一張紙：一份有糰糰簽名的『同意隨舅公同住』。",
+      "hook": "范律師推了推眼鏡：「哥哥？戶籍上沒有。」他抽出一張紙：「而且孩子自己簽了同意書。」",
+      "hook_type": "reversal",
+      "mid_hook": "紙上歪歪扭扭三個字「陶糰糰」，最後一筆旁邊有一個小墨點。糰糰盯著墨點，不眨眼。",
+      "conflict": "律師用她的簽名逼孫姐放人，她得證明自己沒簽過。",
+      "turn": "那個墨點她認得：葬禮那天舅公推給她的奠儀簿，筆尖一抖，就是這個點。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "范律師收起文件起身：「今天就帶走。」舅公伸出手：「乖，跟舅公走。」阿財擋在她前面。",
+        "question": "她今天會被帶走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xuanyi"
+      ],
+      "spectacle": "同意書的簽名特寫與葬禮奠儀簿的簽名在畫面兩邊浮起，連墨點的位置都一模一樣。",
+      "glamour_shot": "舅公蹲下伸手，金絲眼鏡後的笑和氣得過分，佛珠垂在腕上；糰糰往後退半步，揪揪擦過阿財的耳朵。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她認出同意書上的簽名是從奠儀簿上搬來的"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所登記室"
+      ],
+      "state": {
+        "time": "第十天上午",
+        "knowledge": "同意書上的簽名是奠儀簿上那一個。",
+        "carry_forward": "舅公伸出的手、阿財擋在前面"
+      }
+    },
+    {
+      "number": 28,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "我的糰不是這樣寫",
+      "youtube_title": "律師說七歲女孩親筆同意跟舅公走，她當場寫出自己的名字：我的糰不是這樣寫",
+      "duration_s": 120,
+      "logline": "糰糰當著所有人寫下自己的名字，拆穿同意書的來歷。",
+      "hook": "糰糰沒有往後躲，她伸手拿起孫姐桌上的筆：「我寫給你看。」",
+      "hook_type": "line",
+      "mid_hook": "她寫下「陶糰糰」，糰字最後一筆是勾，同意書上是點；她說：「那是奠儀簿上的字。」",
+      "extra_hooks": [
+        "范律師說：「這孩子記錯了。」阿財一口咬上他的皮鞋，他差點把公事包丟出去。"
+      ],
+      "conflict": "律師說孩子的字本來就不穩，她要讓孫姐相信那張紙是搬來的。",
+      "turn": "孫姐打電話給殯儀館調奠儀簿影本，傳真一到：兩個簽名疊起來，連墨點都重合；同意書作廢，可監護申請還在。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "范律師冷冷說：「監護申請照樣有效，我請社工來。」糰糰抱著阿財坐到地上：「我不走。」",
+        "question": "孫姐要怎麼護住她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "shenfen"
+      ],
+      "spectacle": "傳真機吐出一張紙，兩個『陶糰糰』疊在一起對著窗光，墨點完全重合，滿室大人同時倒吸一口氣。",
+      "glamour_shot": "糰糰抬筆寫字，小手握筆很用力，揪揪低垂，寫完抬頭那一下眼睛亮得像燈。",
+      "setups": [],
+      "payoffs": [
+        "s01-t37",
+        "s01-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "假同意書作廢",
+        "孫姐看穿舅公的手法"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所登記室"
+      ],
+      "state": {
+        "time": "第十天中午",
+        "knowledge": "同意書是假的，但監護申請依然有效；律師要請社工來。",
+        "carry_forward": "社工、坐在地上的她"
+      }
+    },
+    {
+      "number": 29,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "十分鐘",
+      "youtube_title": "律師叫社工來帶走七歲女孩，收容所主任走進辦公室打了一通電話：給我十分鐘",
+      "duration_s": 105,
+      "logline": "社工在路上，孫姐關上辦公室門打了一通電話，接下來十分鐘沒人知道會怎樣。",
+      "hook": "糰糰坐在地上不動，孫姐看了她三秒，轉身進辦公室，門「喀」一聲關上。",
+      "hook_type": "image",
+      "mid_hook": "隔著玻璃，孫姐壓低聲音講電話：「陶隊長，你要不要你妹妹？十分鐘。」",
+      "extra_hooks": [
+        "舅公在長椅上撥佛珠，一顆一顆數：「乖，舅公有的是時間。」"
+      ],
+      "conflict": "社工十五分鐘後到，孫姐要在那之前找到能合法留下她的人。",
+      "turn": "大家以為孫姐要放人，她卻是照規定在找『更合適的安置』——規定是她最熟的東西，她用規定擋規定。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第九分鐘，門外一聲急煞，車門上印著「雲城刑警大隊」。",
+        "question": "陶遠要用什麼名義帶她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "mengbao"
+      ],
+      "spectacle": "牆上的時鐘一格一格跳，一邊是撥佛珠的老人、一邊是抱狗坐地的小女孩，中間一扇關著的玻璃門。",
+      "glamour_shot": "孫姐背對玻璃講電話，短髮下的側臉緊繃，掛上電話後扶了一下眼鏡，像換了一個人。",
+      "setups": [],
+      "payoffs": [
+        "s01-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "孫姐站到糰糰這邊"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所登記室",
+        "收容所主任辦公室"
+      ],
+      "state": {
+        "time": "第十天中午",
+        "knowledge": "孫姐替她打給陶遠；刑警大隊的車到了。",
+        "carry_forward": "陶遠下車要說什麼"
+      }
+    },
+    {
+      "number": 30,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "二十年前的",
+      "youtube_title": "律師要帶走七歲女孩，刑警隊長下車：她是本案證人；律師問什麼案，他說二十年前的",
+      "duration_s": 135,
+      "logline": "陶遠趕到收容所，要在社工與律師面前把她留下來，他用的不是哥哥的名義。",
+      "hook": "警車車門打開，黑色皮靴落地；陶遠大步走進來，沒看舅公，先看地上的糰糰：「起來。」",
+      "hook_type": "danger",
+      "mid_hook": "陶遠亮出證件：「她是本案證人。暫時由刑警大隊保護。」范律師笑：「一個孩子，證什麼？」",
+      "extra_hooks": [
+        "社工到了門口，看看證件，看看律師，退到一邊等著。"
+      ],
+      "conflict": "律師要人，社工要依法，陶遠要一個能壓過監護申請的理由。",
+      "turn": "所有人以為他說的是搶案；他說出的是一個他二十年沒在人前提過的案子，舅公撥佛珠的手停了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "范律師問：「什麼案？」陶遠看著舅公：「二十年前的。」佛珠的線斷了，珠子滾了一地。",
+        "question": "二十年前是什麼案？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "shenfen",
+        "mengbao"
+      ],
+      "spectacle": "收容所灰白的地板上，一百零八顆佛珠一顆一顆彈開，滾到一雙小黃雨鞋前。",
+      "glamour_shot": "陶遠站在糰糰身前，高大的背影擋住整個舅公，他側頭說出那四個字時，下顎線冷得發亮。",
+      "setups": [
+        "s01-t18",
+        "m04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "糰糰由刑警大隊保護，暫時不用跟舅公走"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所登記室"
+      ],
+      "state": {
+        "time": "第十天下午",
+        "knowledge": "陶遠以二十年前的案為由把她列為證人；舅公聽到那句話變了臉。",
+        "carry_forward": "二十年前的案、刑警大隊的保護"
+      }
+    },
+    {
+      "number": 31,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "牛皮紙袋",
+      "youtube_title": "刑警哥哥把七歲妹妹帶回宿舍保護，她在他桌上看見一個二十年沒結案的牛皮紙袋",
+      "duration_s": 110,
+      "logline": "陶遠把糰糰帶回刑警大隊宿舍，她在他桌上看見一個他不准任何人碰的紙袋。",
+      "hook": "佛珠還在地上滾，陶遠一把抱起糰糰往外走，回頭只丟下一句：「證人，我帶走了。」",
+      "hook_type": "image",
+      "mid_hook": "宿舍桌上一個發黃的牛皮紙袋，封口貼著一張舊標籤；糰糰剛踮起腳，陶遠就把它收進抽屜鎖上。",
+      "extra_hooks": [
+        "宿舍只有一張床，陶遠把床讓給她和阿財，自己在椅子上坐了一夜。"
+      ],
+      "conflict": "陶遠要保護她，又不想讓她碰自己最深的那件事。",
+      "turn": "他以為鎖上抽屜就沒事了，可她只看了一眼，就什麼都記下了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "熄燈後，黑暗裡傳來她小小的聲音：「八七零四一二。」陶遠在椅子上猛地睜眼——那是紙袋上的案號。",
+        "question": "她看見了多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "單人宿舍一盞檯燈下，發黃的牛皮紙袋被一隻大手按住，旁邊一隻小手停在半空。",
+      "glamour_shot": "陶遠坐在椅子上守夜，黑夾克蓋在膝上，窗外的警燈一下一下掃過他閉著眼的側臉。",
+      "setups": [
+        "s01-t19"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她由刑警大隊保護，住進陶遠的宿舍"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan"
+      ],
+      "locations": [
+        "收容所門口",
+        "刑警大隊宿舍"
+      ],
+      "state": {
+        "time": "第十天夜",
+        "knowledge": "陶遠有一個二十年沒結的案，紙袋鎖在抽屜裡；她記下了案號。",
+        "carry_forward": "案號、上鎖的抽屜"
+      }
+    },
+    {
+      "number": 32,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "意外，結案",
+      "youtube_title": "七歲妹妹只瞄一眼就背出二十年舊案的案號，刑警哥哥第一次說出他當警察的原因",
+      "duration_s": 120,
+      "logline": "陶遠逼問她看見了什麼，她把標籤上的每個字都念了出來。",
+      "hook": "陶遠開燈坐到床邊：「妳還看見什麼？」糰糰抱著被子：「意外。結案。日期是二十年前。」",
+      "hook_type": "line",
+      "mid_hook": "陶遠沉默很久：「所有人都說是意外。」「我當刑警，就為了這一案。」",
+      "extra_hooks": [
+        "窗外，同一台銀色轎車已經在宿舍樓下停了兩個晚上，車裡的煙頭一明一滅。"
+      ],
+      "conflict": "她要知道紙袋裡是誰，他要決定要不要讓一個七歲的孩子知道。",
+      "turn": "她以為他鎖抽屜是怕她亂碰；他是怕她看見以後，會跟他一樣二十年睡不著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "糰糰伸出小手：「可以給我看嗎？」陶遠的手放在抽屜的鎖上，鑰匙轉了一半。",
+        "question": "他會打開抽屜嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "深夜宿舍，標籤上『意外・結案』四個褪色的字在她的念聲裡一個個浮出紙面。",
+      "glamour_shot": "陶遠坐在床沿，手肘撐膝、十指交扣，檯燈從下往上照，他說出那句話時喉結動了一下。",
+      "setups": [
+        "s01-t29"
+      ],
+      "payoffs": [
+        "s01-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠第一次對人說出他當刑警的理由"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan"
+      ],
+      "locations": [
+        "刑警大隊宿舍"
+      ],
+      "state": {
+        "time": "第十天深夜",
+        "knowledge": "二十年前的案記錄是意外，陶遠為它當刑警；樓下有車守了兩夜。",
+        "carry_forward": "抽屜要不要開、樓下的銀色轎車"
+      }
+    },
+    {
+      "number": 33,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "照片上的女人",
+      "youtube_title": "刑警哥哥打開二十年的舊案卷，七歲妹妹把外婆的照片放在旁邊：是同一個人",
+      "duration_s": 125,
+      "logline": "陶遠打開紙袋，糰糰看見案卷裡的照片，從書包裡拿出另一張。",
+      "hook": "鑰匙轉到底，「喀」。陶遠抽出紙袋，第一張就是一個長髮女人的照片，笑起來眼睛彎彎。",
+      "hook_type": "image",
+      "mid_hook": "糰糰從針線盒夾層拿出外婆的照片，放在案卷照片旁邊：同一個女人，同一個笑。",
+      "conflict": "兩個人各自拿著半張答案，誰都不敢先說出口。",
+      "turn": "他以為他追的是一樁別人的命案；她拿出來的照片證明，那是他們兩個人的母親。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "糰糰指著照片，聲音很小：「這是我媽媽。」陶遠握紙袋的手指一根根收緊。",
+        "question": "她怎麼會是他的妹妹？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "檯燈下兩張照片並排：一張是案卷裡蓋著鋼印的，一張是針線盒裡磨圓了角的，同一個女人在兩張紙上笑。",
+      "glamour_shot": "陶遠低頭看照片，眼眶第一次發紅卻沒有掉淚，冷峭的臉在暖燈下柔了一半。",
+      "setups": [],
+      "payoffs": [
+        "s01-t19",
+        "m04"
+      ],
+      "reveals": [
+        "m04"
+      ],
+      "general_payoffs": [
+        "兄妹確認二十年前那樁『意外』的死者是他們的母親陶敏"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "muqin"
+      ],
+      "locations": [
+        "刑警大隊宿舍"
+      ],
+      "state": {
+        "time": "第十天深夜",
+        "knowledge": "大哥沒破的案是母親陶敏二十年前的死，記錄是意外；她說那是她媽媽。",
+        "carry_forward": "兄妹關係、母親的死因"
+      }
+    },
+    {
+      "number": 34,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "時間對不上",
+      "youtube_title": "妹妹說媽媽是生她那天走的，刑警哥哥說媽媽二十年前就走了，而她今年才七歲",
+      "duration_s": 115,
+      "logline": "兩個人把各自知道的母親拼在一起，拼出一個不可能的數字。",
+      "hook": "陶遠蹲下來，聲音發緊：「妳怎麼知道她是妳媽媽？」糰糰：「外婆說，她生我的時候走的。」",
+      "hook_type": "question",
+      "mid_hook": "陶遠一字一句：「妳媽媽，二十年前就走了。」「妳七歲。」兩個人同時愣住。",
+      "extra_hooks": [
+        "阿財在兩人中間打了一個大大的呵欠，下巴擱回糰糰的雨鞋上。"
+      ],
+      "conflict": "兩個人說的都是真話，可是兩個真話拼不起來。",
+      "turn": "他以為她記錯了，她以為他記錯了；她把外婆說過的話一字不差重複，他把案卷日期一字不差念出，誰都沒錯，錯的是有人沒說出的那一段。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "陶遠翻到案卷最後一頁，臉色一變：「死亡證明」那一欄，有人用修正液塗過一次。",
+        "question": "誰塗改了母親的死亡證明？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "案卷日期與一張七歲生日照並排懸在畫面中央，中間空著一道二十減七的縫。",
+      "glamour_shot": "糰糰仰頭看哥哥，嘴巴微張、揪揪歪了一邊；陶遠半跪著，黑夾克垂地，兩人的影子疊成一個。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兄妹把各自知道的母親拼在一起"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan"
+      ],
+      "locations": [
+        "刑警大隊宿舍"
+      ],
+      "state": {
+        "time": "第十天深夜",
+        "knowledge": "母親二十年前過世，她七歲；死亡證明被塗改過一次。",
+        "carry_forward": "時間對不上、塗改的痕跡"
+      }
+    },
+    {
+      "number": 35,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "那天下雨",
+      "youtube_title": "二十年前的意外報告寫著天氣晴，七歲女孩盯著現場照片：地上明明是濕的",
+      "duration_s": 110,
+      "logline": "陶遠熬夜重看案卷，糰糰坐在旁邊看現場照片，看出一個他二十年沒看見的細節。",
+      "hook": "修正液的白痕在燈下發亮，陶遠用指甲輕輕刮了一下，又停手：「不能毀證。」",
+      "hook_type": "image",
+      "mid_hook": "糰糰指著照片：「報告寫晴天。」「可是地上有水。」「外婆說，晴天的水不會反光。」",
+      "conflict": "他要從二十年前的紙裡找到一條能翻案的縫。",
+      "turn": "他看了這疊照片幾百次，看的是人和車；她第一次看，看的是地上的光。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "樓下那台銀色轎車的車窗降下，一支長鏡頭對準宿舍的窗；阿財衝到窗邊低吼。",
+        "question": "誰在拍他們？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "放大鏡下二十年前的黑白現場照：路面一道細細的反光，像一條被所有人忽略的河。",
+      "glamour_shot": "陶遠捲起袖子，舊錶停在手腕上不走，他俯身看照片，檯燈把他的劍眉投成兩道影。",
+      "setups": [
+        "s01-t30"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到報告與照片的矛盾：寫晴天，地是濕的"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan"
+      ],
+      "locations": [
+        "刑警大隊宿舍"
+      ],
+      "state": {
+        "time": "第十一天凌晨",
+        "knowledge": "報告寫晴，照片是濕的；樓下有人在拍宿舍。",
+        "carry_forward": "天氣紀錄、樓下的長鏡頭"
+      }
+    },
+    {
+      "number": 36,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "樓下的車",
+      "youtube_title": "銀色轎車連守刑警宿舍三晚，小隊員一聲令下，全隊刑警穿著拖鞋下樓圍車",
+      "duration_s": 105,
+      "logline": "陶遠帶小周下樓圍住那台車，車裡又是那張熟悉的油頭笑臉。",
+      "hook": "陶遠一把拉上窗簾，按下對講機：「小周，樓下銀色車。」糰糰在旁邊小聲補：「雲C五五，二三零八。」",
+      "hook_type": "danger",
+      "mid_hook": "車門被拉開，陶啟舉著相機乾笑：「我等朋友。」阿財一口咬住他的鞋，他整個人縮回車裡。",
+      "conflict": "陶遠要知道舅公派人盯著他們想幹什麼。",
+      "turn": "陶啟說舅公只是『擔心孩子』，相機裡卻全是宿舍的窗、陶遠的車與抽屜的位置——他們盯的是那個紙袋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "回到宿舍，陶遠把紙袋放在她面前：「妳想知道媽媽的事嗎？」「想知道，就不能哭。」",
+        "question": "她要不要一起查？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "凌晨的宿舍樓下，五個穿拖鞋與睡衣的刑警同時圍住一台銀色轎車，一隻老狗從人腿間鑽出去。",
+      "glamour_shot": "陶遠穿著灰色睡衣外罩黑夾克，單手撐在車頂俯身看進車窗，頭髮微亂、眼神清醒得嚇人。",
+      "setups": [],
+      "payoffs": [
+        "s01-t29"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶啟的相機被扣下，照片全刪",
+        "陶遠知道舅公在盯那個紙袋"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "s01-xiaozhou",
+        "tao-qi"
+      ],
+      "locations": [
+        "刑警大隊宿舍樓下"
+      ],
+      "state": {
+        "time": "第十一天凌晨",
+        "knowledge": "舅公派陶啟盯紙袋；陶遠問她要不要一起查。",
+        "carry_forward": "她的答案"
+      }
+    },
+    {
+      "number": 37,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "媽媽唱過的歌",
+      "youtube_title": "七歲妹妹陪刑警哥哥熬夜查舊案，他無意間哼出一首歌，她跟著唱出下一句",
+      "duration_s": 115,
+      "logline": "糰糰答應不哭，跟陶遠一起一頁頁看案卷；林奶奶打電話說要送衣服來。",
+      "hook": "糰糰用袖子擦了一下眼睛，把小板凳拉到桌邊：「我不哭。你念，我記。」",
+      "hook_type": "line",
+      "mid_hook": "陶遠念一頁，她背一頁，背得比他翻得快；小周在門口看傻了：「隊長被比下去了。」",
+      "extra_hooks": [
+        "林奶奶打來電話，嗓門大到整間宿舍都聽得見：「糰糰的衣服我明天送過去！」"
+      ],
+      "conflict": "案卷有三百頁，兩個人要找出一個被塗改的理由。",
+      "turn": "查到半夜，陶遠累得無意間哼起一首歌；她以為只有外婆會唱，原來哥哥也會。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶遠哼到一半停住，糰糰接著唱出下一句；他轉頭看她：「這是媽媽唱的。」",
+        "question": "他還記得媽媽多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "宿舍地板鋪滿三百頁案卷，一個小女孩坐在紙海中央，一頁一頁像在玩拼圖。",
+      "glamour_shot": "陶遠靠著椅背閉眼哼歌，鬍渣冒出一點，燈影裡冷硬的線條第一次全鬆下來。",
+      "setups": [
+        "s01-t21"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人看完案卷，列出三個被塗改的地方"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "s01-xiaozhou",
+        "lin-nainai"
+      ],
+      "locations": [
+        "刑警大隊宿舍"
+      ],
+      "state": {
+        "time": "第十一天夜",
+        "knowledge": "陶遠記得母親唱的歌；林奶奶明天要來。",
+        "carry_forward": "三處塗改、林奶奶的到訪"
+      }
+    },
+    {
+      "number": 38,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "氣象紀錄",
+      "youtube_title": "二十年前的報告寫著晴天，刑警調出當夜氣象紀錄：整晚大雨，有人寫錯了一個意外",
+      "duration_s": 115,
+      "logline": "陶遠調出二十年前那一夜的氣象紀錄，驗證糰糰看見的那道反光。",
+      "hook": "天亮，陶遠把一張傳真拍在桌上，看著還在打呵欠的糰糰：「妳說對了。」",
+      "hook_type": "reversal",
+      "mid_hook": "傳真是氣象局的存檔：那一夜，雲城整晚大雨。報告上卻寫著：天氣晴，路面乾燥。",
+      "conflict": "他要一個能讓上面重新開案的證據。",
+      "turn": "大家以為報告只是寫錯天氣；可是天氣錯了，整份『路面乾燥、車速正常』的推論就一起垮了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠翻到報告署名欄，愣住：寫報告的承辦員，後來調去了一家律師事務所——范律師的事務所。",
+        "question": "承辦員為什麼去了范律師那裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "氣象局的雨量圖在白板上展開，一整夜的藍色雨柱，旁邊釘著寫著『晴』的舊報告。",
+      "glamour_shot": "晨光從百葉窗切進宿舍，陶遠一手拿傳真、一手撐桌，回頭看她的那一眼帶著一點笑。",
+      "setups": [],
+      "payoffs": [
+        "s01-t30"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二十年前的報告被證明寫錯天氣，案子有了翻案的縫"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan"
+      ],
+      "locations": [
+        "刑警大隊宿舍",
+        "刑警大隊辦公室"
+      ],
+      "state": {
+        "time": "第十二天早上",
+        "knowledge": "舊報告寫錯天氣；承辦員後來去了范律師的事務所。",
+        "carry_forward": "承辦員、重新開案"
+      }
+    },
+    {
+      "number": 39,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "脫下制服",
+      "youtube_title": "刑警隊長拿著新證據要求重開二十年舊案，局長只說一句：再碰這案，制服脫下來",
+      "duration_s": 110,
+      "logline": "陶遠帶著氣象紀錄去找局長申請重開案，糰糰在門外聽著。",
+      "hook": "局長辦公室門口，糰糰踮腳把耳朵貼在門上，小周在旁邊也把耳朵貼上去。",
+      "hook_type": "image",
+      "mid_hook": "局長把傳真推回來：「二十年了。」「家屬都沒人追。」陶遠：「我就是家屬。」",
+      "extra_hooks": [
+        "糰糰推門進去，把小警徽放在局長桌上：「我也是家屬。」"
+      ],
+      "conflict": "陶遠要重開案，局長要擋。",
+      "turn": "局長不是壞人，他擋的是陶遠的前途：一個查自己母親案子的刑警，會被說公報私仇。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "局長站起來，聲音很低：「你再碰這案，這身制服，就脫下來。」陶遠的手按在警徽上。",
+        "question": "他要選案子還是制服？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "mengbao",
+        "ganren"
+      ],
+      "spectacle": "局長辦公室的長桌上，一枚真警徽與一枚玩具般的小警徽並排放著。",
+      "glamour_shot": "陶遠站得筆直，警徽在胸前反光，局長說出那句話時他沒有低頭，只把下巴抬高了一點。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "糰糰把三處塗改一口氣背給局長聽，局長沒有收走證據，只把它鎖進自己的抽屜"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "s01-xiaozhou"
+      ],
+      "locations": [
+        "刑警大隊局長辦公室"
+      ],
+      "state": {
+        "time": "第十二天上午",
+        "knowledge": "局長不准重開案；陶遠的制服被押上。",
+        "carry_forward": "制服與案子、證據在局長抽屜"
+      }
+    },
+    {
+      "number": 40,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "也是你的外婆",
+      "youtube_title": "鄰居奶奶來警局送衣服，看見二十年舊案的照片手一抖：我認識她，也認識你外婆",
+      "duration_s": 135,
+      "logline": "林奶奶提著衣服來刑警大隊，一眼看見陶遠桌上的照片。",
+      "hook": "陶遠走出局長辦公室，一言不發；走廊盡頭，林奶奶提著一大袋衣服喊：「糰糰！」",
+      "hook_type": "line",
+      "mid_hook": "林奶奶經過陶遠桌邊，看見牛皮紙袋上的照片，手一抖，衣服掉了一地：「這是陶敏。」",
+      "extra_hooks": [
+        "小周撿衣服時發現，袋底塞著一個外婆縫的小布包，上面繡著一個『遠』字。"
+      ],
+      "conflict": "陶遠要知道這個老太太為什麼認得他母親。",
+      "turn": "他以為林奶奶只是糰糰的鄰居；她卻是看著他母親長大的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠問：「妳認識我媽？」林奶奶：「我認識你外婆。糰糰的外婆，也是你的外婆。」陶遠的茶杯落地。",
+        "question": "外婆為什麼二十年不找他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "刑警大隊的走廊上，一個碎花衫老太太、一袋散落的紅棉襖與小雨鞋、一只摔碎的茶杯。",
+      "glamour_shot": "茶杯碎裂的慢動作，陶遠的手還停在半空，冷峭的臉上第一次出現全然的空白。",
+      "setups": [],
+      "payoffs": [
+        "s01-t21"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林奶奶認出案卷上的陶敏",
+        "陶遠拿到外婆替他縫的『遠』字布包"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai",
+        "s01-xiaozhou"
+      ],
+      "locations": [
+        "刑警大隊走廊",
+        "刑警大隊辦公室"
+      ],
+      "state": {
+        "time": "第十二天中午",
+        "knowledge": "糰糰的外婆就是他的外婆；林奶奶知道過去。",
+        "carry_forward": "外婆的事、繡著『遠』的布包"
+      }
+    },
+    {
+      "number": 41,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "林奶奶說了一半",
+      "youtube_title": "鄰居奶奶說出一半真相：七歲女孩是外婆一個人帶大的，對外只說是收養的孩子",
+      "duration_s": 120,
+      "logline": "林奶奶坐下來，把二十年前的事說了一半，剩下一半她不肯說。",
+      "hook": "茶杯碎片還在地上，陶遠沒去撿，他拉過一把椅子給林奶奶：「請說。」",
+      "hook_type": "line",
+      "mid_hook": "林奶奶看著糰糰：「妳是妳媽媽的女兒。」「外婆一個人把妳帶大，對外說是收養的。」",
+      "extra_hooks": [
+        "陶遠問時間為什麼對不上，林奶奶搖頭：「那一半，我答應過妳外婆，不說。」"
+      ],
+      "conflict": "陶遠要知道外婆為什麼二十年都沒來找他。",
+      "turn": "他一直以為是家裡不要他；林奶奶說，是有人告訴外婆：『那五個孩子，不想回來。』",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "林奶奶握住陶遠的手：「你外婆每年都寄信給你們，寄了二十年。」陶遠：「我一封都沒收到。」",
+        "question": "那些信去了哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "刑警大隊的會議室裡，老太太的手、刑警的手、小女孩的手疊在一起，桌上是母親的照片。",
+      "glamour_shot": "陶遠聽到『不想回來』四個字時抬眼，深目裡的冷一層層碎掉，下顎線咬得發白。",
+      "setups": [
+        "s01-t22",
+        "s01-t33",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兄妹確認是同一個外婆",
+        "陶遠知道外婆找過他們"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai",
+        "waipo",
+        "muqin"
+      ],
+      "locations": [
+        "刑警大隊會議室"
+      ],
+      "state": {
+        "time": "第十二天下午",
+        "knowledge": "糰糰是母親的女兒，外婆帶大、對外說收養；有人騙外婆說孩子們不想回來；時間的事林奶奶只說一半。",
+        "carry_forward": "二十年的信、時間對不上的那一半"
+      }
+    },
+    {
+      "number": 42,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "老屋的巷子",
+      "youtube_title": "冷面刑警第一次走進外婆住了一輩子的老巷子，整條巷的老鄰居都探出頭來看",
+      "duration_s": 105,
+      "logline": "陶遠決定跟她們回老屋看那些信，整條老巷都認得這個紅棉襖的孩子。",
+      "hook": "陶遠抓起車鑰匙：「信在哪？」糰糰拉住他的衣角：「在家。外婆的家。」",
+      "hook_type": "question",
+      "mid_hook": "巷口賣豆花的阿伯看見陶遠，手裡的勺子停住：「這不是……阿敏的大兒子？」",
+      "extra_hooks": [
+        "阿財走到老屋門口，用頭頂開門，回頭等陶遠，像在等一個晚回家的人。"
+      ],
+      "conflict": "他要走進一個他二十年不敢想的家。",
+      "turn": "他以為沒人記得他，整條巷子的老人卻一個個叫出他小時候的小名。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰拉開老屋的燈，陶遠抬頭：一整面牆貼滿照片，五個男孩，從小到大，一年一張。",
+        "question": "外婆從哪裡拿到這些照片？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "黃昏的老城巷子，兩排老屋的窗一扇扇推開，老人們探頭看一個高大刑警牽著小女孩與老狗走過。",
+      "glamour_shot": "陶遠站在巷口的夕陽裡，黑夾克被風掀起一角，他低頭讓糰糰牽著走，像一頭被牽回家的狼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai"
+      ],
+      "locations": [
+        "老城區巷子",
+        "外婆的老屋"
+      ],
+      "state": {
+        "time": "第十二天黃昏",
+        "knowledge": "老巷的老人都認得陶遠；老屋牆上有五兄弟一年一張的照片。",
+        "carry_forward": "照片怎麼來的、信"
+      }
+    },
+    {
+      "number": 43,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "一年一張",
+      "youtube_title": "外婆老屋的牆上貼滿五個男孩從小到大的照片，刑警哥哥找到自己十八歲那張",
+      "duration_s": 115,
+      "logline": "陶遠站在照片牆前，一張一張找自己；照片牆旁邊是外婆的飯桌。",
+      "hook": "陶遠走到牆前，手指停在一張照片上：十八歲的他穿著警校制服，他從沒寄過這張照片給任何人。",
+      "hook_type": "image",
+      "mid_hook": "林奶奶說：「妳外婆每年託人偷偷去拍。」「她不敢上前。」「她怕你們不認她。」",
+      "extra_hooks": [
+        "阿財慢慢走到飯桌邊，跳上主位旁的那張椅子，把陶遠的位子占了。"
+      ],
+      "conflict": "他要面對一個找了他二十年卻不敢上前的外婆。",
+      "turn": "他以為沒有人看著他長大，原來每一年都有一雙眼睛躲在人群裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "窗外閃光燈一亮，一個人影從巷口的電線桿後縮回去；阿財從椅子上跳下來衝向門口。",
+        "question": "誰在外面偷拍老屋？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "一整面牆的照片：五個男孩從三歲到三十二歲，照片旁用外婆的字寫著每一年的日期。",
+      "glamour_shot": "陶遠站在照片牆前，暖黃的燈從上方打下，他伸手碰十八歲的自己，舊錶的錶面映著那張照片。",
+      "setups": [
+        "s01-t23"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠看見外婆替他存下的每一年"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai",
+        "waipo"
+      ],
+      "locations": [
+        "外婆的老屋"
+      ],
+      "state": {
+        "time": "第十二天夜",
+        "knowledge": "外婆每年託人偷拍五個孩子；有人在老屋外偷拍。",
+        "carry_forward": "窗外的閃光燈、信還沒拿出來"
+      }
+    },
+    {
+      "number": 44,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "查無此人",
+      "youtube_title": "外婆寫給五個外孫的信寄了二十年，全被退回：每一封都蓋著同一個轉寄章",
+      "duration_s": 120,
+      "logline": "人影跑了，糰糰從外婆床底拖出一個鐵盒，裡面是二十年的信。",
+      "hook": "陶遠追到巷口，人影已經上車；他回頭，糰糰抱著一個比她還寬的鐵盒站在門口：「信。」",
+      "hook_type": "danger",
+      "mid_hook": "鐵盒裡一百封信，每一封都蓋著「查無此人，退回」；糰糰翻過來：背面都有同一個轉寄章。",
+      "conflict": "陶遠要知道這些信為什麼從沒送到他手上。",
+      "turn": "信不是寄丟的：外婆把信寄到舅公給的『新地址』，每一封都被同一個轉寄章退回來，章上只有一個沒有名字的郵政信箱號碼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最底下一封信的封面寫著「遠，十三歲生日快樂」，裡面夾著一張外婆畫的生日蛋糕。",
+        "question": "他十三歲那年在哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "老屋飯桌上倒出一百封泛黃的信，每一封上的紅色退回章疊成一片，像一場下了二十年的雨。",
+      "glamour_shot": "陶遠拆開那封生日信，指尖發抖，燈下他的睫毛垂著，冷硬的臉一點點碎成一個十三歲的孩子。",
+      "setups": [],
+      "payoffs": [
+        "s01-t33"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠拿到外婆寫了二十年的信",
+        "糰糰記下轉寄章上的信箱號碼"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai",
+        "waipo"
+      ],
+      "locations": [
+        "外婆的老屋"
+      ],
+      "state": {
+        "time": "第十二天深夜",
+        "knowledge": "外婆的信寄到舅公給的地址，全被同一個信箱的轉寄章退回。",
+        "carry_forward": "十三歲的生日信、那個郵政信箱"
+      }
+    },
+    {
+      "number": 45,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "照年紀排的",
+      "youtube_title": "名單上第一個為什麼是刑警？外婆照年紀排：他最早被送走，也是唯一記得媽媽的人",
+      "duration_s": 125,
+      "logline": "糰糰終於問出那個問題：為什麼名單第一個是他。",
+      "hook": "陶遠把生日信折好收進胸口的口袋：「十三歲，我在一個沒有人叫我名字的地方。」",
+      "hook_type": "line",
+      "mid_hook": "糰糰攤開名單：「為什麼第一個是你？」林奶奶：「照年紀排的。」「他是最早被送走的。」",
+      "extra_hooks": [
+        "陶遠低聲說：「她生日那天會煮一碗麵。」「我記得她的手。」——五個裡，只有他記得媽媽。"
+      ],
+      "conflict": "她想知道外婆排名單的理由，他得承認自己記得的比他願意說的多。",
+      "turn": "她以為第一個是他，是因為他最厲害；原來是因為他最早被送走、也是五個人裡唯一記得母親的那一個——外婆要他第一個回家，替弟弟們記住媽媽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小周打來電話：「隊長，范律師向法院聲請，要把老屋查封保管。」糰糰抱緊了針線盒。",
+        "question": "老屋會被查封嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "名單在飯桌上攤開，第一個名字在燈下被外婆的指印磨淡了一圈，像被摸過很多次。",
+      "glamour_shot": "陶遠坐在門檻上說起媽媽，月光從巷口照進來，他摘下舊錶放在掌心，側臉安靜得像照片。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [
+        "m02"
+      ],
+      "general_payoffs": [
+        "兄妹知道名單是照年紀排的",
+        "陶遠第一次說出他記得的母親"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai",
+        "muqin"
+      ],
+      "locations": [
+        "外婆的老屋"
+      ],
+      "state": {
+        "time": "第十二天深夜",
+        "knowledge": "名單照年紀排；大哥最早被送走、唯一記得母親；范律師要查封老屋。",
+        "carry_forward": "查封聲請、母親生日的那碗麵"
+      }
+    },
+    {
+      "number": 46,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "坐下才是家人",
+      "youtube_title": "七歲妹妹把一碗白飯推到刑警哥哥面前：外婆說坐下才是家人；他沒坐，但他吃了",
+      "duration_s": 110,
+      "logline": "查封的消息讓夜更長，糰糰做了外婆每晚都會做的一件事：盛飯。",
+      "hook": "陶遠掛掉電話：「我明天去法院。」糰糰沒說話，轉身踩上小板凳，打開外婆的電鍋。",
+      "hook_type": "image",
+      "mid_hook": "她把一碗白飯推到飯桌上陶遠的位置：「外婆說，坐下才是家人。」陶遠站著，沒動。",
+      "extra_hooks": [
+        "林奶奶在一旁悄悄把一盤醬瓜推過去，對阿財眨眼。"
+      ],
+      "conflict": "她要他坐下，他還沒準備好當家人。",
+      "turn": "他以為不坐下就不算回家；可他站著吃完了整碗飯，連最後一粒都撿乾淨——那是外婆教每個孩子的規矩，他七歲以前學的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶遠站著吃完，把空碗放回桌上；糰糰看著那張他沒坐的椅子：「明天，再來吃。」",
+        "question": "他什麼時候才會坐下？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "老屋的大飯桌只亮一盞燈，六張椅子只坐一個小女孩，一個高大的男人站在桌邊捧著碗。",
+      "glamour_shot": "陶遠站在飯桌旁低頭扒飯，燈從頭頂照下，他吃得很慢、很乾淨，像在吃一頓遲了二十年的晚飯。",
+      "setups": [
+        "s01-t24"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠在外婆的飯桌吃了第一碗飯"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai"
+      ],
+      "locations": [
+        "外婆的老屋飯桌"
+      ],
+      "state": {
+        "time": "第十二天深夜",
+        "knowledge": "他吃了飯，沒坐下；明天要去法院擋查封。",
+        "carry_forward": "沒坐的椅子、法院"
+      }
+    },
+    {
+      "number": 47,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "外婆的麵",
+      "youtube_title": "七歲女孩照外婆的步驟煮了一碗媽媽生日的麵，刑警哥哥喝一口：不是這個味道",
+      "duration_s": 110,
+      "logline": "隔天陶遠擋下了查封，回來時糰糰和林奶奶正在煮一碗外婆每年只煮一次的麵。",
+      "hook": "法院走廊，陶遠把一張證人保護令拍在范律師面前：「查封，駁回。」",
+      "hook_type": "danger",
+      "mid_hook": "老屋廚房，林奶奶掌火，糰糰站在小板凳上一步一步念：「先煸蔥，再下骨湯，最後……」",
+      "conflict": "她想讓哥哥吃到媽媽生日的那碗麵。",
+      "turn": "她每一步都對，陶遠喝了一口卻放下筷子：「不是這個味道。」——外婆的步驟最後一頁，被人撕掉了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰翻開針線盒裡外婆的食譜小本，最後一頁只剩一道撕痕，撕痕旁寫著一個字：「謙」。",
+        "question": "最後一步去了哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "tuanchong"
+      ],
+      "spectacle": "老屋的廚房蒸氣騰騰，一個踩著小板凳的小女孩與一個碎花衫老太太一起守著一鍋麵。",
+      "glamour_shot": "陶遠捲起袖子站在廚房門口，被蒸氣模糊的臉露出一點笑，又在喝下那口湯時收住。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "查封被駁回，老屋暫時保住",
+        "糰糰記得外婆麵的每一步，只缺最後一頁"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai",
+        "s01-fan-lushi"
+      ],
+      "locations": [
+        "雲城地方法院走廊",
+        "外婆的老屋廚房"
+      ],
+      "state": {
+        "time": "第十三天",
+        "knowledge": "老屋暫時不會被查封；外婆的麵少了最後一步，撕痕旁寫著『謙』。",
+        "carry_forward": "撕掉的那一頁、名單第五個名字"
+      }
+    },
+    {
+      "number": 48,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "電視上的第四個",
+      "youtube_title": "刑警哥哥在電視上看見一個被指控作弊退役的電競天才，七歲妹妹指著名單第四行",
+      "duration_s": 105,
+      "logline": "飯後電視播出一則體育新聞，糰糰發現名單上的第四個名字就在螢幕上。",
+      "hook": "陶遠盯著那個「謙」字：「名單第五個。」糰糰點頭，電視突然傳來主播的聲音：「星城電競天才陶行……」",
+      "hook_type": "question",
+      "mid_hook": "電視畫面：一個長髮遮眼的青年低頭走出記者會，字幕「涉作弊，宣布退役」。糰糰指著名單：「第四個。」",
+      "extra_hooks": [
+        "陶遠盯著螢幕，半晌：「……他是我弟？」糰糰：「你是他哥。」"
+      ],
+      "conflict": "名單上的哥哥一個比一個遠，第四個正在被全網罵。",
+      "turn": "陶遠以為找回弟弟們只是時間問題，電視上的弟弟卻已經被全世界判了罪；糰糰說：「他沒有說謊的臉。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "後院牆頭冒出一顆頭，手裡拿著捲尺；阿財一聲吠，陶遠已經從後門衝了出去。",
+        "question": "牆頭上的人在量什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tuanchong"
+      ],
+      "spectacle": "老屋飯桌上的名單與電視螢幕上的記者會疊在一起，第四行名字與字幕裡的名字同時亮起。",
+      "glamour_shot": "電視裡陶行在閃光燈中摘下耳機抬頭一瞬，長髮下蒼白秀氣的臉、黑眼圈很深。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她認出第四個哥哥是電競選手陶行"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-xing"
+      ],
+      "locations": [
+        "外婆的老屋飯桌",
+        "老屋後院"
+      ],
+      "state": {
+        "time": "第十三天夜",
+        "knowledge": "第四個哥哥陶行被指控作弊退役；有人爬上後牆量老屋。",
+        "carry_forward": "牆頭的人、陶行的新聞"
+      }
+    },
+    {
+      "number": 49,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "捲尺",
+      "youtube_title": "油頭叔叔半夜爬牆量外婆的老屋，被刑警哥哥一把拽下來，老狗咬住他的鞋不放",
+      "duration_s": 110,
+      "logline": "陶遠抓到爬牆的人，又是陶啟，他口袋裡有一份不該出現的文件。",
+      "hook": "陶遠單手把牆頭的人拽下來，捲尺嘩啦啦捲回去；手電一照，油頭、花襯衫——陶啟。",
+      "hook_type": "danger",
+      "mid_hook": "陶啟乾笑：「我路過。」阿財咬住他的鞋，他改口：「舅公叫我來量……估價。」",
+      "extra_hooks": [
+        "糰糰從後門探出頭，舉著小手電照他的臉：「你上次也這樣說。」"
+      ],
+      "conflict": "陶遠要知道舅公為什麼派人量老屋。",
+      "turn": "陶啟以為量房子沒什麼；他掉出來的文件卻是一份老屋的產權查詢單，申請人是舅公，日期是外婆過世前一週。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠撿起那張紙：產權查詢單，申請人陶德茂，底下一行手寫的小字：「地下室，深度？」",
+        "question": "老屋有地下室？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tuanchong",
+        "xuanyi"
+      ],
+      "spectacle": "月光下的老屋後院，一條捲尺從牆頭垂到地上，一隻老狗咬著一隻皮鞋，鞋的主人單腳掛在牆上。",
+      "glamour_shot": "陶遠把陶啟按在牆邊，夜風吹亂他的短髮，手電從下往上照出他的冷臉，像電影海報。",
+      "setups": [],
+      "payoffs": [
+        "s01-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "偷拍與爬牆的人確定是陶啟",
+        "陶遠拿到舅公的產權查詢單"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-qi"
+      ],
+      "locations": [
+        "老屋後院"
+      ],
+      "state": {
+        "time": "第十三天深夜",
+        "knowledge": "舅公在外婆過世前就查老屋產權，還寫了『地下室』。",
+        "carry_forward": "地下室、舅公的下一步"
+      }
+    },
+    {
+      "number": 50,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "二十年沒見",
+      "youtube_title": "舅公帶著律師站在外婆老屋門口要保管房子，刑警哥哥從屋裡走出來：舅公，二十年沒見",
+      "duration_s": 130,
+      "logline": "隔天一早，舅公親自帶律師和兩個人來老屋，要把糰糰和房子一起『保管』。",
+      "hook": "陶啟被放走的第二天早上，老屋門被敲了三下，很有禮貌：「乖，開門，舅公來了。」",
+      "hook_type": "line",
+      "mid_hook": "門外舅公、范律師與兩個壯漢：「孩子，跟舅公回去，這房子舅公替妳保管。」糰糰抱著阿財站在門檻後。",
+      "extra_hooks": [
+        "林奶奶拿著掃把擋在門口，用台語罵了一句，范律師聽不懂，往後退了一步。"
+      ],
+      "conflict": "舅公要用『保管』的名義拿走老屋與孩子，糰糰只有一個老太太和一隻老狗。",
+      "turn": "舅公以為屋裡只有一個孩子和一個老太太；屋裡還有一個他二十年沒見過、也以為永遠不會回來的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "陶遠從屋裡走出來，站到糰糰前面：「舅公。二十年沒見。」舅公臉上的笑一寸寸僵住。",
+        "question": "舅公會怎麼對付陶遠？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "老屋窄門口，一邊是唐裝佛珠的老人帶著西裝律師與兩個壯漢，一邊是門檻上的小女孩、老狗與拿掃把的老太太。",
+      "glamour_shot": "陶遠從昏暗的屋裡走進晨光，黑夾克、舊錶、劍眉，一步一步走到她身前，慢動作像大哥回頭。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠第一次在舅公面前站出來護她"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-demao",
+        "s01-fan-lushi",
+        "lin-nainai"
+      ],
+      "locations": [
+        "外婆的老屋門口"
+      ],
+      "state": {
+        "time": "第十四天早上",
+        "knowledge": "舅公要保管老屋與糰糰；陶遠在舅公面前站了出來。",
+        "carry_forward": "監護權、舅公的反擊"
+      }
+    },
+    {
+      "number": 51,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "最近的血親",
+      "youtube_title": "舅公的律師說外婆沒留遺囑、最近的親人是舅公，刑警哥哥：二十年前的案還沒結",
+      "duration_s": 115,
+      "logline": "舅公在老屋門口搬出法律：外婆沒有遺囑，監護權該歸最近的血親。",
+      "hook": "舅公的笑僵了三秒，又慢慢掛回臉上：「遠啊，長這麼高了。」佛珠在他指間轉了一圈。",
+      "hook_type": "image",
+      "mid_hook": "范律師：「外婆沒留遺囑，最近的血親是陶先生。」陶遠：「二十年前的案沒結。她是證人。」",
+      "extra_hooks": [
+        "舅公嘆氣：「你們五個當年不想回來，現在回來搶房子？」陶遠：「沒有人問過我。」"
+      ],
+      "conflict": "舅公用法律要人要房，陶遠用案子擋。",
+      "turn": "舅公以為『不想回來』那套說法還能用；陶遠一句『沒有人問過我』，把二十年的謊當著林奶奶的面戳破。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "范律師冷笑：「證人也要有監護人。明天社福會議，看誰有資格。」陶遠看著身後的糰糰。",
+        "question": "陶遠要用什麼身分爭她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "fansha"
+      ],
+      "spectacle": "老屋門口的晨光裡，舅公的影子與陶遠的影子在門檻上交疊，糰糰的小黃雨鞋站在兩道影子中間。",
+      "glamour_shot": "陶遠背光站在門口，一手護在糰糰身前，冷峭的側臉對著舅公，連眼睛都沒眨。",
+      "setups": [],
+      "payoffs": [
+        "s01-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舅公『孩子們不想回來』的說法當面被陶遠否認"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-demao",
+        "s01-fan-lushi",
+        "lin-nainai"
+      ],
+      "locations": [
+        "外婆的老屋門口"
+      ],
+      "state": {
+        "time": "第十四天上午",
+        "knowledge": "外婆沒有遺囑；明天社福會議決定監護。",
+        "carry_forward": "社福會議、陶遠的身分"
+      }
+    },
+    {
+      "number": 52,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "我是她哥哥",
+      "youtube_title": "社福會議上律師說證人也要監護人，冷面刑警第一次說出那三個字：我是她哥哥",
+      "duration_s": 125,
+      "logline": "收容所的社福會議上，孫姐主持，舅公與陶遠各坐一邊，要決定糰糰跟誰。",
+      "hook": "收容所會議室，孫姐把登記表放在桌子正中央：「今天，只看誰對孩子最好。」",
+      "hook_type": "line",
+      "mid_hook": "范律師：「陶警官，你以什麼身分？」陶遠沉默兩秒：「我是她哥哥。」整個會議室安靜下來。",
+      "extra_hooks": [
+        "坐在角落的糰糰把小警徽握在手心，握到掌心都紅了。"
+      ],
+      "conflict": "陶遠要讓會議承認他的身分，舅公要讓這個身分不成立。",
+      "turn": "他三十二年沒對任何人說過這三個字，說出來那一刻他才發現，自己早就是了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "范律師推出一張戶籍謄本：「她登記的是陶秀蘭的養女。法律上，她不是你妹妹。」",
+        "question": "戶籍上的收養怎麼辦？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "收容所會議室長桌兩端：唐裝佛珠的老人與黑夾克的刑警，中間一張空白的監護人欄。",
+      "glamour_shot": "陶遠說出那三個字時微微低頭，再抬眼看向糰糰，冷硬的臉第一次露出一個很淺的笑。",
+      "setups": [],
+      "payoffs": [
+        "s01-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠第一次承認她是妹妹"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所會議室"
+      ],
+      "state": {
+        "time": "第十五天上午",
+        "knowledge": "陶遠承認她是妹妹；戶籍上她是外婆的養女。",
+        "carry_forward": "戶籍、監護人欄"
+      }
+    },
+    {
+      "number": 53,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "劃掉一個名字",
+      "youtube_title": "律師拿戶籍說兩人不是兄妹，收容所主任拿起紅筆，把監護人欄的舅公劃掉",
+      "duration_s": 120,
+      "logline": "戶籍上不算兄妹，孫姐要在法律與孩子之間做決定。",
+      "hook": "陶遠盯著戶籍謄本，糰糰卻舉起手：「我可以說話嗎？」孫姐點頭：「孩子的意願，要記錄。」",
+      "hook_type": "question",
+      "mid_hook": "糰糰把照片翻到背面、念出外婆寫的每個生日；林奶奶站起來：「她媽媽是陶敏，我作證。」",
+      "extra_hooks": [
+        "陶遠把手機推到桌上：「親子鑑定，今天送件。」"
+      ],
+      "conflict": "孫姐要依規定選一個暫時監護人，規定只看紙。",
+      "turn": "范律師以為規定站在他那邊；孫姐翻出的是另一條規定：暫時安置要考量孩子意願與實際照顧，而那張同意書，已經被證明是假的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "孫姐剛劃掉陶德茂、寫上陶遠，舅公慢慢站起來：「可惜，外婆留了遺囑。」他抽出一個信封。",
+        "question": "外婆真的留了遺囑？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "fansha",
+        "ganren"
+      ],
+      "spectacle": "登記表特寫：一支紅筆劃過『陶德茂』三個字，旁邊一筆一畫寫上『陶遠』。",
+      "glamour_shot": "孫姐扶正眼鏡落筆，短髮垂到臉側，劃那一筆時嘴角動了一下，像替自己出了一口氣。",
+      "setups": [
+        "s01-t36"
+      ],
+      "payoffs": [
+        "s01-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "收容所登記表的監護人改成陶遠",
+        "親子鑑定送件"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong",
+        "lin-nainai"
+      ],
+      "locations": [
+        "收容所會議室"
+      ],
+      "state": {
+        "time": "第十五天上午",
+        "knowledge": "監護人欄改成陶遠；舅公拿出一份遺囑。",
+        "carry_forward": "遺囑信封"
+      }
+    },
+    {
+      "number": 54,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "外婆的遺囑",
+      "youtube_title": "舅公拿出外婆親筆遺囑：房子和孩子都歸他；七歲女孩只看了日期一眼",
+      "duration_s": 110,
+      "logline": "舅公的『遺囑』寫著老屋與糰糰都交給他，范律師說這是外婆親自來事務所簽的。",
+      "hook": "信封打開，一張蓋著事務所章的紙：「本人陶秀蘭，房屋與外孫女，交由胞弟陶德茂。」",
+      "hook_type": "reversal",
+      "mid_hook": "范律師：「陶老太太親自來我事務所簽的。」糰糰歪頭：「哪一天？」「八月十四。」",
+      "extra_hooks": [
+        "糰糰的眼睛一下子亮了：八月十四，她記得那天外婆在做什麼、吃了什麼、幾點睡著。"
+      ],
+      "conflict": "一份遺囑就能推翻剛才的決定，孫姐也不得不停下筆。",
+      "turn": "大家以為七歲的孩子看不懂遺囑；她不用看懂，她只要記得那一天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "范律師把遺囑推到孫姐面前：「要嘛照遺囑交人，要嘛上法院耗三年。」孫姐的筆停在半空。",
+        "question": "孫姐要怎麼選？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai"
+      ],
+      "spectacle": "遺囑上的事務所紅章在燈下發亮，一隻小手指點在『八月十四日』那一行上。",
+      "glamour_shot": "陶遠雙手抱胸靠在窗邊，冷眼看著律師，窗光從他背後打過來，整個人像一堵牆。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她鎖定遺囑的日期"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所會議室"
+      ],
+      "state": {
+        "time": "第十五天上午",
+        "knowledge": "遺囑說外婆八月十四日去事務所簽字。",
+        "carry_forward": "八月十四那天、孫姐的選擇"
+      }
+    },
+    {
+      "number": 55,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "八月十四",
+      "youtube_title": "律師說外婆八月十四親自去簽遺囑，七歲女孩：那天外婆在醫院打點滴，我陪了一整天",
+      "duration_s": 125,
+      "logline": "糰糰說出八月十四那一天，陶遠一通電話，把遺囑變成一張廢紙。",
+      "hook": "糰糰站上椅子：「八月十四，外婆在雲城醫院打點滴。」「從早上八點到晚上九點。」「我陪了一整天。」",
+      "hook_type": "line",
+      "mid_hook": "陶遠打給醫院調紀錄，擴音傳出護理站的聲音：「陶秀蘭，八月十四日全日住院。」",
+      "extra_hooks": [
+        "范律師說：「我親眼看她簽的。」阿財撲上去一口咬住他的皮鞋，他整個人撞上會議室的門。"
+      ],
+      "conflict": "她要證明遺囑是假的，而且要讓舅公當場退。",
+      "turn": "范律師想說記錯日期；陶遠補上一句：「你事務所的人，二十年前也寫錯過一份報告，寫錯天氣。」律師的臉一下子白了，收起公事包就走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "范律師走了，舅公一個人站在會議室門口，回頭：「你們五個，一個都不會回來的。」",
+        "question": "舅公那句話是什麼意思？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "會議室裡一隻老狗撲向一雙亮皮鞋，律師撞上門，偽造的遺囑從他手裡飄落到孫姐腳邊。",
+      "glamour_shot": "糰糰站在椅子上，比所有坐著的大人都高，紅棉襖、兩個小揪揪，一字一句說完，下巴一抬。",
+      "setups": [],
+      "payoffs": [
+        "s01-t36"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "假遺囑被拆穿，孫姐當場報案",
+        "范律師退出，舅公失去最後一張牌"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-demao",
+        "s01-fan-lushi",
+        "shourong"
+      ],
+      "locations": [
+        "收容所會議室"
+      ],
+      "state": {
+        "time": "第十五天中午",
+        "knowledge": "遺囑是偽造的；范律師的事務所和二十年前的報告有關；舅公放話五個都不會回來。",
+        "carry_forward": "舅公的那句話"
+      }
+    },
+    {
+      "number": 56,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "我回來了",
+      "youtube_title": "舅公臨走放話：你們五個一個都不會回來；刑警哥哥抱起七歲妹妹：我回來了",
+      "duration_s": 115,
+      "logline": "舅公撂下狠話要走，陶遠回了他一句；接著糰糰要跟收容所告別。",
+      "hook": "陶遠走到門口，彎腰把糰糰抱起來，對著舅公的背影：「我回來了。」",
+      "hook_type": "line",
+      "mid_hook": "舅公停了一步，沒回頭：「乖，舅公還會來的。」佛珠的聲音消失在走廊盡頭。",
+      "extra_hooks": [
+        "通鋪裡，阿豪把一張畫塞進她的書包：「出去再看。」"
+      ],
+      "conflict": "她要離開收容所，跟這裡的每一個人好好說再見。",
+      "turn": "她以為收容所只是她借住的地方，走的時候才發現，孫姐、阿豪和那一屋子的孩子都在門口排成一排。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她在車上打開阿豪的畫：一張大飯桌，坐了六個人和一隻狗；底下寫著「妳還有四個要找」。",
+        "question": "另外四個哥哥會坐上飯桌嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "收容所門口，一排大大小小的孩子揮手，一個高大刑警抱著紅棉襖小女孩走向警車，老狗慢慢跟在後面。",
+      "glamour_shot": "陶遠抱著糰糰走出收容所，陽光從他肩後灑下來，她的小手勾著他的脖子，他第一次沒有板著臉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她正式離開收容所",
+        "孫姐把登記表影本交給陶遠"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-demao",
+        "shourong",
+        "s01-ahao"
+      ],
+      "locations": [
+        "收容所走廊",
+        "收容所門口",
+        "警車上"
+      ],
+      "state": {
+        "time": "第十五天下午",
+        "knowledge": "她由陶遠暫時監護；舅公說還會再來；阿豪畫了六個人的飯桌。",
+        "carry_forward": "阿豪的畫、舅公還會來"
+      }
+    },
+    {
+      "number": 57,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "榮譽小隊員",
+      "youtube_title": "刑警大隊全隊起立給七歲女孩頒榮譽小隊員獎狀，局長宣布：二十年前的案，重開",
+      "duration_s": 120,
+      "logline": "陶遠帶糰糰回大隊，全隊準備了一張獎狀，局長也從辦公室走了出來。",
+      "hook": "大隊的門一推開，彩帶噴了糰糰一臉；小周舉著一張獎狀：「榮譽小隊員，陶糰糰！」",
+      "hook_type": "image",
+      "mid_hook": "局長走出來，把鎖在抽屜裡的那份氣象紀錄放回陶遠桌上：「偽造遺囑跟那份舊報告，同一家事務所。重開。」",
+      "extra_hooks": [
+        "陶遠交出一張假單，局長挑眉：「長假？你這輩子沒請過假。」"
+      ],
+      "conflict": "陶遠要保住制服，也要拿到時間去做下一件事。",
+      "turn": "大家以為局長出來是要罵人；他帶來的是二十年來第一個『重開』。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "局長在假單上簽了名：「假批了。你要去哪？」陶遠沒回答，低頭看著身邊的糰糰。",
+        "question": "陶遠請長假要去哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "huzai",
+        "ganren",
+        "fansha"
+      ],
+      "spectacle": "冷藍色的刑警大隊辦公室被彩帶和氣球淹沒，一整隊刑警對一個七歲女孩立正敬禮。",
+      "glamour_shot": "陶遠靠在辦公桌邊看全隊鬧，嘴角壓不住地往上，舊錶在袖口一閃，被燈光鍍了一圈邊。",
+      "setups": [
+        "s01-t25"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二十年前的案正式重開",
+        "糰糰拿到榮譽小隊員獎狀",
+        "陶遠的長假批准"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "s01-xiaozhou"
+      ],
+      "locations": [
+        "刑警大隊辦公室"
+      ],
+      "state": {
+        "time": "第十五天傍晚",
+        "knowledge": "母親的案重開；陶遠請了長假。",
+        "carry_forward": "長假要去哪、舊錶還停著"
+      }
+    },
+    {
+      "number": 58,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "錶走了",
+      "youtube_title": "刑警哥哥的舊錶停了二十年，七歲妹妹照外婆教的方法上弦，錶背刻著媽媽的一句話",
+      "duration_s": 115,
+      "logline": "宿舍裡收拾行李時，糰糰問起那只從不走的舊錶。",
+      "hook": "宿舍裡，糰糰把獎狀小心捲進書包，抬頭：「哥，你的錶為什麼不會走？」",
+      "hook_type": "question",
+      "mid_hook": "陶遠：「媽媽送的。我十二歲生日。」「隔週，我就被送走了。」「那天它停了，我就沒修。」",
+      "extra_hooks": [
+        "糰糰捧起錶：「外婆說，錶要有人上弦。」她用小指甲轉了三圈，秒針跳了一格。"
+      ],
+      "conflict": "他把時間停在被送走的那一天，她要讓它重新走。",
+      "turn": "他以為錶壞了二十年，其實它只是在等人上弦；錶一走，他翻過錶背，看見一行他從沒注意過的刻字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "錶背刻著一行小字：「遠，要照顧弟弟們。媽媽」陶遠握著錶，很久沒說話。",
+        "question": "他會去找弟弟們嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "舊錶的特寫：停了二十年的秒針在一隻小手的指尖下，滴答，跳了一格。",
+      "glamour_shot": "陶遠坐在床沿，低頭看錶背的刻字，檯燈的暖光把他的劍眉與睫毛照得很柔。",
+      "setups": [],
+      "payoffs": [
+        "s01-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舊錶重新走了",
+        "陶遠讀到母親留給他的話"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "muqin"
+      ],
+      "locations": [
+        "刑警大隊宿舍"
+      ],
+      "state": {
+        "time": "第十五天夜",
+        "knowledge": "錶是母親送的，錶背要他照顧弟弟們。",
+        "carry_forward": "回老屋、名單"
+      }
+    },
+    {
+      "number": 59,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "背回家",
+      "youtube_title": "刑警哥哥背著睡著的七歲妹妹走夜路回家，書包裡的名單掉出來，第一個名字是他",
+      "duration_s": 115,
+      "logline": "陶遠背著糰糰走回老屋，路上名單從書包裡掉了出來。",
+      "hook": "陶遠把錶扣回手腕：「走，回家。」糰糰張開手：「背。」他愣了一下，蹲下來。",
+      "hook_type": "line",
+      "mid_hook": "走到第三個路口，她在他背上睡著了，書包一歪，一張摺好的紙飄到地上。",
+      "extra_hooks": [
+        "阿財走在最後，走一段停一段，陶遠就一段一段等牠。"
+      ],
+      "conflict": "他要把她安全背回家，也要面對那張名單。",
+      "turn": "他以為那是她的作業紙，撿起來展開，第一行寫的是他的名字，外婆的字，旁邊一個沒畫完的紅圈。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶遠看著第二行「陶靖，江城，醫生」，手指發抖：「靖……他小時候最怕打針。」",
+        "question": "他還記得多少弟弟的事？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "深夜的雲城老街，路燈一盞盞，一個高大男人背著睡著的紅棉襖小女孩，老狗在後面慢慢跟。",
+      "glamour_shot": "陶遠背著她慢慢走，路燈從上方掃過他的側臉，她的揪揪靠在他肩上，他走得比平常慢一半。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan"
+      ],
+      "locations": [
+        "雲城老街夜路"
+      ],
+      "state": {
+        "time": "第十五天深夜",
+        "knowledge": "他背她回家；名單第一行是他，第二行是江城的醫生陶靖。",
+        "carry_forward": "名單、外婆的飯桌"
+      }
+    },
+    {
+      "number": 60,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "下一個在江城",
+      "youtube_title": "七歲妹妹在外婆的飯桌用紅筆劃掉第一個名字：哥，下一個在江城，他是醫生",
+      "duration_s": 150,
+      "logline": "陶遠把她背回老屋，她醒來坐上外婆的飯桌，名單上該劃掉第一個名字了。",
+      "hook": "陶遠把名單摺好塞回書包，推開老屋的門；糰糰在他背上揉著眼睛醒來：「到家了？」",
+      "hook_type": "image",
+      "mid_hook": "她爬上外婆的飯桌，拍拍旁邊那張椅子；陶遠看了那張椅子很久，拉開，坐下。",
+      "extra_hooks": [
+        "她從針線盒裡拿出外婆留下的紅筆，筆蓋上還有外婆的牙印。"
+      ],
+      "conflict": "她要劃掉第一個名字，也要決定接下來誰陪她去找第二個。",
+      "turn": "他以為坐下就是結束、送她到家就算盡了責任；她劃掉他的名字，卻是把他拉進下一段路。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她用紅筆劃掉第一個名字，指著第二個：「哥，下一個在江城。他是醫生。」陶遠：「妳不能一個人去。」她：「你陪我。」",
+        "question": "陶遠會陪她去江城找醫生嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzai",
+        "fansha"
+      ],
+      "spectacle": "老屋的大飯桌上一盞暖黃的燈，一支紅筆在名單第一行劃下一道，紅墨水慢慢滲進外婆的字。",
+      "glamour_shot": "陶遠坐在外婆的飯桌旁，第一次坐下，暖燈落在他的肩上，他看著她劃名字，冷臉化成一個哥哥的臉。",
+      "setups": [],
+      "payoffs": [
+        "s01-t24",
+        "s01-t06",
+        "s01-t25"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠第一次坐上外婆的飯桌",
+        "名單劃掉第一個名字",
+        "她找回第一個哥哥"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan"
+      ],
+      "locations": [
+        "外婆的老屋飯桌"
+      ],
+      "state": {
+        "time": "第十五天深夜",
+        "knowledge": "第一個哥哥回家了；第二個是江城第一醫院的醫生陶靖。",
+        "carry_forward": "江城、陶遠的長假、舅公還會來"
+      }
+    }
+  ]
+}

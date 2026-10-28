@@ -1,0 +1,4407 @@
+{
+  "number": 2,
+  "title": "買回侯府",
+  "theme": "錢能買回來的，都不算真的丟過。",
+  "start_state": "當鋪第一年賺了三萬兩；侯府欠的三千兩還清，但侯府的宅子已經抵給了安國公府的錢莊。衛熾每月初一來，賴的時間越來越長；她還當他是戶部小吏。安國公的管事開始出現在西市。",
+  "end_state": "她用一場商戰把侯府舊宅買回來，母親在當鋪櫃台上收當；蘇綿與唐越成為第二、三位合股小姐；衛熾為什麼每月來還利息揭開（他看見她第一次不收錢）；老鐘知道多少揭開（帳被改過）；她記得的事第一次不準。最後一集，侯府舊宅的匾重新掛上，宴席上她第一次請衛熾坐主位旁邊，他說『我不配』；她說『你欠我錢，你配』；宴席散後老鐘在舊宅地窖找到一道被封的門，門上是她父親的字：『鹽』。",
+  "guest_cast": [
+    {
+      "id": "s02-yongchang-zhangshi",
+      "name": "賈通",
+      "role": "永昌錢莊掌事，安國公府錢莊在京城的臉；笑著開價、算盤打得比誰都響，最怕現銀見底",
+      "appearance": "東亞中年男性，四十歲，圓臉白胖、細眼總笑成一條縫、八字鬍修得油亮；穿醬色團花綢袍、腰掛一串鑰匙與一枚金算盤墜，十指戴三枚金戒，說話前先撥一下鑰匙"
+    },
+    {
+      "id": "s02-guanshi",
+      "name": "溫九",
+      "role": "安國公府管事，替國公爺在西市走動的人；溫聲細語、從不親手做事，每次出現都在量東西",
+      "appearance": "東亞中年男性，四十五歲，清瘦斯文：長臉、細長眉、薄唇、眼神平靜得像在估價；穿墨灰暗紋直裰、戴黑紗方巾，手裡永遠一把象牙尺，指甲修得極乾淨"
+    },
+    {
+      "id": "s02-su-fu",
+      "name": "蘇長卿",
+      "role": "蘇綿的父親，沒落蘇繡坊的坊主；欠了永昌錢莊八百兩，拿女兒的手去還",
+      "appearance": "東亞中年男性，五十歲，瘦高、背微駝、兩頰凹陷、眼下烏青；穿洗白的寶藍長衫、袖口沾著絲線頭，手指細長卻發抖"
+    },
+    {
+      "id": "s02-tang-fu",
+      "name": "唐鼎",
+      "role": "唐越的父親，被趕出宮的前御廚；脾氣大、舌頭比女兒還刁，十年不肯再碰灶",
+      "appearance": "東亞中年男性，五十二歲，魁梧、濃眉大眼、絡腮鬍花白、聲如洪鐘；穿褪色的赭紅短打、圍一條洗舊的白圍裙，腰間空著一只刀鞘"
+    },
+    {
+      "id": "s02-zhanggui",
+      "name": "趙萬斗",
+      "role": "京城商幫的掌櫃、西市最大銀樓的東家；一開始笑她，後來每次都第一個跟",
+      "appearance": "東亞中年男性，四十八歲，富態、方臉、濃眉、一笑露金牙；穿寶藍錦緞長袍、外罩黑緞馬甲，拇指一枚翡翠扳指，手上一對核桃轉個不停"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s02-t01",
+      "question": "永昌錢莊明天就要賣侯府嗎？",
+      "setup_episode": 61,
+      "payoff_episode": 62
+    },
+    {
+      "id": "s02-t02",
+      "question": "衛熾說「我幫妳」，要怎麼幫？",
+      "setup_episode": 61,
+      "payoff_episode": 97
+    },
+    {
+      "id": "s02-t03",
+      "question": "前世三年後才倒的永昌錢莊，這一世會不會更早倒？",
+      "setup_episode": 62,
+      "payoff_episode": 96
+    },
+    {
+      "id": "s02-t04",
+      "question": "跟蹤阿升的是誰的人？",
+      "setup_episode": 63,
+      "payoff_episode": 64
+    },
+    {
+      "id": "s02-t05",
+      "question": "老鐘翻舊帳時為什麼闔上那一頁？",
+      "setup_episode": 63,
+      "payoff_episode": 107
+    },
+    {
+      "id": "s02-t06",
+      "question": "永昌錢莊的第二本帳藏在哪？",
+      "setup_episode": 64,
+      "payoff_episode": 67
+    },
+    {
+      "id": "s02-t07",
+      "question": "每年固定進永昌的「鹽利」是誰的錢？",
+      "setup_episode": 67,
+      "payoff_episode": 70
+    },
+    {
+      "id": "s02-t08",
+      "question": "蘇綿肯不肯簽下合股契？",
+      "setup_episode": 71,
+      "payoff_episode": 73
+    },
+    {
+      "id": "s02-t09",
+      "question": "衛熾那晚為什麼不告而別？",
+      "setup_episode": 71,
+      "payoff_episode": 76
+    },
+    {
+      "id": "s02-t10",
+      "question": "蘇綿的手還能不能拿針？",
+      "setup_episode": 71,
+      "payoff_episode": 79
+    },
+    {
+      "id": "s02-t11",
+      "question": "蘇家來要人，她怎麼擋？",
+      "setup_episode": 73,
+      "payoff_episode": 77
+    },
+    {
+      "id": "s02-t12",
+      "question": "繡會上說他像陛下的是誰？",
+      "setup_episode": 76,
+      "payoff_episode": 78
+    },
+    {
+      "id": "s02-t13",
+      "question": "借來的銀樓帳房要替她查什麼？",
+      "setup_episode": 80,
+      "payoff_episode": 82
+    },
+    {
+      "id": "s02-t14",
+      "question": "前世那場火，這一世會不會燒到西市？",
+      "setup_episode": 80,
+      "payoff_episode": 86
+    },
+    {
+      "id": "s02-t15",
+      "question": "那十罈假陳年酒是誰當的？",
+      "setup_episode": 84,
+      "payoff_episode": 89
+    },
+    {
+      "id": "s02-t16",
+      "question": "永昌帳房的火是誰放的？",
+      "setup_episode": 86,
+      "payoff_episode": 88
+    },
+    {
+      "id": "s02-t17",
+      "question": "唐越肯不肯跟她合股？",
+      "setup_episode": 89,
+      "payoff_episode": 91
+    },
+    {
+      "id": "s02-t18",
+      "question": "唐家為什麼被趕出宮？",
+      "setup_episode": 89,
+      "payoff_episode": 94
+    },
+    {
+      "id": "s02-t19",
+      "question": "暴漲到二十萬兩的抵押怎麼破？",
+      "setup_episode": 90,
+      "payoff_episode": 98
+    },
+    {
+      "id": "s02-t20",
+      "question": "永昌的抵押品裡藏了多少假貨？",
+      "setup_episode": 92,
+      "payoff_episode": 95
+    },
+    {
+      "id": "s02-t21",
+      "question": "安國公府認不認戶部的官價？",
+      "setup_episode": 97,
+      "payoff_episode": 100
+    },
+    {
+      "id": "s02-t22",
+      "question": "母親肯不肯回侯府？",
+      "setup_episode": 97,
+      "payoff_episode": 102
+    },
+    {
+      "id": "s02-t23",
+      "question": "父親什麼時候肯走進侯府？",
+      "setup_episode": 101,
+      "payoff_episode": 110
+    },
+    {
+      "id": "s02-t24",
+      "question": "裴府為什麼一夜之間敗了？",
+      "setup_episode": 103,
+      "payoff_episode": 105
+    },
+    {
+      "id": "s02-t25",
+      "question": "侯府的匾去哪了？",
+      "setup_episode": 104,
+      "payoff_episode": 110
+    },
+    {
+      "id": "s02-t26",
+      "question": "宴席上他肯不肯坐主位旁邊？",
+      "setup_episode": 111,
+      "payoff_episode": 113
+    },
+    {
+      "id": "s02-t27",
+      "question": "戶部尚書為什麼對一個窮書生彎腰？",
+      "setup_episode": 113,
+      "payoff_episode": 116
+    },
+    {
+      "id": "s02-t28",
+      "question": "父親為什麼不准任何人下地窖？",
+      "setup_episode": 117,
+      "payoff_episode": 120
+    }
+  ],
+  "episodes": [
+    {
+      "number": 61,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "利息漲了",
+      "youtube_title": "皇帝拎酒來還利息，當鋪千金開口就漲價，下一秒門外貼出侯府十萬兩的告示",
+      "duration_s": 105,
+      "logline": "宋銖要把第一年賺的三萬兩翻成買回侯府的本錢，卻發現侯府舊宅已經被安國公府的錢莊貼上了待售。",
+      "hook": "門口的衛熾晃了晃酒壺：「漲多少？」宋銖撥一顆算盤珠：「看你賴多久。」影在他身後三步，面無表情。",
+      "hook_type": "line",
+      "mid_hook": "母親提著燈籠衝進當鋪，手裡一張撕下來的告示：「侯府舊宅，逾期待售。」落款蓋的是永昌錢莊的印。",
+      "extra_hooks": [
+        "衛熾聽完放下酒壺：「我幫妳。」她頭也不抬：「你欠我錢。」他說：「所以利息抵。」"
+      ],
+      "conflict": "宋銖的帳上只有一年賺的三萬兩，侯府舊宅卻押在一家她惹不起的錢莊手裡。",
+      "turn": "她以為抵押的是普通錢莊，翻開母親帶來的抵押契，角落蓋著一枚小小的私印：安國公府。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "夜裡她站到侯府舊宅門口，永昌錢莊的夥計正往大門釘牌子，掌事賈通回頭一笑：「十萬兩，少一文不賣。」",
+        "question": "三萬兩怎麼買十萬兩的宅子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "當鋪櫃台上，算盤一撥到底：三萬兩；鏡頭拉開，門外月光下釘上『待售』牌子的侯府大門。",
+      "glamour_shot": "宋銖在燭光下撥完最後一顆珠子，抬眼看門口的衛熾，嘴角那一點算計的笑。",
+      "setups": [
+        "s02-t01",
+        "s02-t02",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第五個初一，衛熾賴到關門才走，比上個月多賴半個時辰",
+        "帳上確認：第一年淨賺三萬兩"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "ying",
+        "song-mu",
+        "lao-zhong",
+        "a-sheng",
+        "s02-yongchang-zhangshi"
+      ],
+      "locations": [
+        "不虧當鋪櫃台",
+        "永安侯府舊宅門口"
+      ],
+      "state": {
+        "time": "開鋪滿一年後的第五個初一，夜",
+        "knowledge": "宋銖知道侯府舊宅押在永昌錢莊，錢莊背後是安國公府；她還當衛熾是戶部小吏。",
+        "carry_forward": "帳上三萬兩；侯府大門釘了待售牌；衛熾說要幫她。"
+      }
+    },
+    {
+      "number": 62,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "九十日",
+      "youtube_title": "錢莊掌事當街要賣侯府，千金當眾念了一行抵押契，掌事只好親手拆下自己的牌子",
+      "duration_s": 100,
+      "logline": "宋銖要擋下明天就要被賣掉的侯府，手上卻只有一張抵押契和三萬兩。",
+      "hook": "宋銖一把按住釘牌子的錘子：「賈掌事，第七條。」賈通的笑僵在臉上。",
+      "hook_type": "danger",
+      "mid_hook": "她當著圍觀的街坊念出抵押契：逾期須公告九十日方可賣。賈通昨天才貼——人群裡有人噗嗤笑出聲。",
+      "conflict": "永昌錢莊想搶在任何人反應之前把侯府賣進安國公府手裡。",
+      "turn": "牌子拆下來了，可對街停著一頂青呢小轎，轎簾掀起一角，一個拿象牙尺的人在量她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "宋銖握著算盤站在侯府台階上：前世這家錢莊三年後才倒。她低聲：「等三年，還是九十天？」",
+        "question": "她要等錢莊倒，還是先動手？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju"
+      ],
+      "spectacle": "清晨的侯府台階，賈通踮腳親手拔下自己釘的牌子，牌子砸在青石上揚起一片灰。",
+      "glamour_shot": "宋銖站在侯府台階最高一級，墨綠窄袖被晨風吹動，低頭念契時睫毛一抬，人群安靜。",
+      "setups": [
+        "s02-t03"
+      ],
+      "payoffs": [
+        "s02-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "替侯府爭到九十日"
+      ],
+      "characters": [
+        "song-zhu",
+        "s02-yongchang-zhangshi",
+        "s02-guanshi",
+        "a-sheng"
+      ],
+      "locations": [
+        "永安侯府舊宅門口"
+      ],
+      "state": {
+        "time": "第五月初二清晨",
+        "knowledge": "她知道永昌錢莊九十日後才能賣，也看見了一頂替安國公府盯著她的轎子。",
+        "carry_forward": "三萬兩、九十日、一個前世三年後才倒的錢莊。"
+      }
+    },
+    {
+      "number": 63,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "三個人翻帳",
+      "youtube_title": "當鋪千金只給自己九十天，帳房老人翻舊帳翻到一頁突然闔上，小夥計出門就被人盯上",
+      "duration_s": 95,
+      "logline": "宋銖要在九十天內摸清永昌錢莊的底，可她手邊只有一個會算的林雙、一個會跑的阿升和一個不肯說話的老鐘。",
+      "hook": "「九十天。」宋銖一掌拍上桌，阿升嘴裡的包子掉進算盤框。老鐘：「不合算。」",
+      "hook_type": "line",
+      "mid_hook": "老鐘翻侯府舊帳翻到某一頁，手指停住，啪地把帳闔上：「這頁蟲蛀了。」可那一頁平整得很。",
+      "conflict": "她們不知道永昌錢莊有多少現銀、多少債、靠誰撐著。",
+      "turn": "林雙從永昌錢莊公開的放款告示算出：他們放出去的錢是自己存銀的五倍——錢莊是空心的，只是沒人知道。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿升抱著一疊告示拐進後巷，身後兩雙布鞋同時停下。一隻手從暗處伸向他的後領。",
+        "question": "跟著阿升的是誰的人？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "shangzhan",
+        "xuanyi"
+      ],
+      "spectacle": "當鋪後院的長桌上，三把算盤同時響，燭火被算盤聲震得一抖一抖。",
+      "glamour_shot": "林雙在燭光下單手撥算盤、另一手翻告示，髮一絲不亂，抬眼只說一句：「五倍。」",
+      "setups": [
+        "s02-t04",
+        "s02-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "林雙算出永昌錢莊放款是存銀的五倍"
+      ],
+      "characters": [
+        "song-zhu",
+        "lin-shuang",
+        "a-sheng",
+        "lao-zhong"
+      ],
+      "locations": [
+        "不虧當鋪後院",
+        "西市後巷"
+      ],
+      "state": {
+        "time": "第五月初三夜",
+        "knowledge": "她知道永昌錢莊外強中乾；老鐘藏了一頁舊帳她還沒察覺。",
+        "carry_forward": "阿升在後巷被人盯上。"
+      }
+    },
+    {
+      "number": 64,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "屋頂上的影",
+      "youtube_title": "小夥計後巷被人揪住，屋頂飄下一個黑衣人一句話沒說，跟蹤的人落荒而逃還掉了一張紙",
+      "duration_s": 100,
+      "logline": "宋銖要知道是誰在盯當鋪，阿升卻先被人堵在了後巷。",
+      "hook": "那隻手剛碰到阿升的領子，屋頂上一片瓦掉下來，正砸在那人手背上。影落地，一句話不說。",
+      "hook_type": "danger",
+      "mid_hook": "跟蹤的人跑了，地上掉了一張腰牌，背面刻著一把象牙尺——轎子裡那個人的標記。",
+      "extra_hooks": [
+        "阿升抱住影的腿：「大哥，收徒嗎？」影把他拎起來放回當鋪門口，轉身就沒了。"
+      ],
+      "conflict": "她得弄清楚對方盯她是為了侯府，還是為了她這個人。",
+      "turn": "林雙比對腰牌與永昌的帳務告示：永昌每月對外報的現銀數，跟它實際付出去的對不上——它有兩本帳。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林雙把兩疊數字並排推到宋銖面前：「對外一本，對內一本。」宋銖的手指點在空白處：「另一本在哪？」",
+        "question": "永昌錢莊的第二本帳藏在哪？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "shangzhan"
+      ],
+      "spectacle": "月光後巷，一片瓦從屋簷旋轉落下，黑衣的影隨瓦一起落地，衣角未揚。",
+      "glamour_shot": "宋銖接過腰牌，在燈籠下翻到背面，眼神一冷，嘴角卻笑了。",
+      "setups": [
+        "s02-t06"
+      ],
+      "payoffs": [
+        "s02-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿升平安；確認跟蹤的是安國公府管事的人",
+        "林雙算出永昌有兩本帳"
+      ],
+      "characters": [
+        "song-zhu",
+        "a-sheng",
+        "ying",
+        "lin-shuang",
+        "s02-guanshi"
+      ],
+      "locations": [
+        "西市後巷",
+        "不虧當鋪後院"
+      ],
+      "state": {
+        "time": "第五月初三深夜",
+        "knowledge": "她知道盯她的是安國公府管事，永昌錢莊有一本不見光的帳。",
+        "carry_forward": "要找第二本帳；影為什麼會出手救阿升，她記下了。"
+      }
+    },
+    {
+      "number": 65,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "一口破鍋",
+      "youtube_title": "小夥計抱著一口破鍋去錢莊典當，掌事笑出聲，卻沒發現他在偷看每晚抬進後屋的黑匣子",
+      "duration_s": 95,
+      "logline": "宋銖要知道永昌錢莊把第二本帳放在哪，派阿升扮窮人去錢莊當東西。",
+      "hook": "阿升把一口缺角的鐵鍋放上永昌錢莊的櫃台：「當五兩。」賈通笑到鑰匙串叮噹響。",
+      "hook_type": "image",
+      "mid_hook": "櫃台後的屏風被風掀開一角，賈通親手抱著一只黑漆帳匣走進後屋，連夥計都不准跟。",
+      "conflict": "第二本帳就在錢莊裡，可她連後屋的門都進不去。",
+      "turn": "賈通當了鍋給五十文；阿升把五十文放回櫃台：「不當了，鍋比你們的現銀值錢。」排隊的客人全轉頭看錢莊的銀櫃。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿升抱鍋走到門口，賈通在背後慢慢開口：「你是西市那家當鋪的小鬼吧？」兩個夥計堵住了門。",
+        "question": "阿升出得了錢莊嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "金碧輝煌的錢莊大堂，一口缺角鐵鍋擺在金算盤旁邊，滿堂客人回頭看。",
+      "glamour_shot": "宋銖在錢莊對街的茶樓窗邊，捧茶不喝，隔著窗格看阿升，指尖輕敲桌面打拍子算時辰。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道第二本帳每晚由賈通親手收進後屋的黑漆帳匣"
+      ],
+      "characters": [
+        "a-sheng",
+        "song-zhu",
+        "s02-yongchang-zhangshi"
+      ],
+      "locations": [
+        "永昌錢莊大堂",
+        "西市茶樓"
+      ],
+      "state": {
+        "time": "第五月初五午後",
+        "knowledge": "她知道第二本帳在黑漆帳匣裡、只有賈通碰得到。",
+        "carry_forward": "阿升被認出、被堵在錢莊門口；帳上仍是三萬兩。"
+      }
+    },
+    {
+      "number": 66,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "象牙尺",
+      "youtube_title": "當鋪千金一句話把小夥計從錢莊帶出來，回到侯府舊宅，國公府的管事正拿尺量她家",
+      "duration_s": 105,
+      "logline": "宋銖要救出阿升，再看清安國公府到底要侯府的什麼。",
+      "hook": "宋銖推門進錢莊，把三萬兩的銀票往櫃台一拍：「存。」賈通的夥計立刻讓開了門。",
+      "hook_type": "reversal",
+      "mid_hook": "她帶阿升回侯府舊宅取母親的鑰匙，正廳裡有人在量地磚——溫九收起象牙尺：「宋小姐，國公爺喜歡這宅子。」",
+      "conflict": "安國公府第一次站到她面前，客氣得讓她背脊發涼。",
+      "turn": "她轉身走出錢莊時，把剛存的銀票又抽回來：「看過你們櫃裡的銀子了，不存了。」——那一眼，她看見銀櫃只有半滿。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "溫九放下一張燙金名帖：「國公爺請宋小姐過府喝茶。」帖上壓著一片乾茶葉。宋銖看著那片茶，前世最後一杯茶的味道湧上喉嚨。",
+        "question": "她敢去安國公府喝那杯茶嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shangzhan"
+      ],
+      "spectacle": "積了一年灰的侯府正廳，陽光從破窗斜射進來，溫九的象牙尺在地磚上一格一格移動。",
+      "glamour_shot": "宋銖站在灰塵飛舞的光柱裡，指尖抹過舊案几的灰，抬眼看溫九，笑得很禮貌。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿升平安脫身",
+        "親眼看見永昌銀櫃只有半滿"
+      ],
+      "characters": [
+        "song-zhu",
+        "a-sheng",
+        "s02-yongchang-zhangshi",
+        "s02-guanshi",
+        "song-fu"
+      ],
+      "locations": [
+        "永昌錢莊大堂",
+        "永安侯府舊宅正廳"
+      ],
+      "state": {
+        "time": "第五月初五傍晚",
+        "knowledge": "她知道安國公府盯的不只是錢，是這座宅子本身。",
+        "carry_forward": "一張國公府的茶帖；帳上三萬兩。"
+      }
+    },
+    {
+      "number": 67,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "一斤廢紙",
+      "youtube_title": "國公府請喝茶她回了一張茶錢帳單，轉頭花三文錢買下錢莊的廢紙，第二本帳就在裡面",
+      "duration_s": 110,
+      "logline": "宋銖要拿到永昌的第二本帳，又不能讓安國公府知道她在找。",
+      "hook": "宋銖提筆在茶帖背面寫字，阿升唸出來：「茶，不喝。誤工費，十兩。」老鐘差點把茶噴出來。",
+      "hook_type": "line",
+      "mid_hook": "林雙從紙坊扛回一麻袋廢紙：錢莊每月賣的廢紙裡，夾著抄壞的帳頁——黑漆帳匣裡那本的草稿。",
+      "extra_hooks": [
+        "阿升數著三文錢：「小姐，國公府那十兩誤工費，他們真付了。」"
+      ],
+      "conflict": "第二本帳鎖在匣裡，可抄帳的人會寫錯、寫錯的會丟。",
+      "turn": "拼回來的帳頁上，每年正月都有一筆固定進帳，不寫來處，只寫兩個字：鹽利。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "十年的帳頁在桌上拼成一面牆，每一年正月同一個位置寫著同一個詞。宋銖一行行點下去：「鹽利。每年都有。」",
+        "question": "每年進永昌的鹽利是誰的錢？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "shangzhan",
+        "xuanyi"
+      ],
+      "spectacle": "上百張皺巴巴的帳頁被燙平、拼成一面牆，燭光一照，十個『鹽利』排成一列。",
+      "glamour_shot": "林雙跪坐在滿地帳頁中間，冷著臉一張張撫平，宋銖在她身後提燈，兩人的影子疊在帳頁牆上。",
+      "setups": [
+        "s02-t07",
+        "m03"
+      ],
+      "payoffs": [
+        "s02-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到永昌第二本帳十年的草稿",
+        "國公府付了十兩誤工費"
+      ],
+      "characters": [
+        "song-zhu",
+        "lin-shuang",
+        "a-sheng",
+        "lao-zhong"
+      ],
+      "locations": [
+        "不虧當鋪後院",
+        "西市紙坊"
+      ],
+      "state": {
+        "time": "第五月初八夜",
+        "knowledge": "她知道永昌每年正月固定收一筆鹽利。",
+        "carry_forward": "帳頁牆；帳上三萬零十兩。"
+      }
+    },
+    {
+      "number": 68,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "賣廢紙的斷了",
+      "youtube_title": "錢莊發現廢紙裡藏著帳頁，掌事帶人堵上當鋪要她交出來，她反手開價三文一斤",
+      "duration_s": 100,
+      "logline": "宋銖要把鹽利的數算完，永昌卻發現帳頁外流，帶人上門討。",
+      "hook": "紙坊老闆跑進當鋪：「永昌今早把廢紙全燒了！」灶灰撲了阿升一臉。",
+      "hook_type": "danger",
+      "mid_hook": "林雙算出十年鹽利的總數，宋銖腦子裡跳出另一個數：去年官糧事件時，戶部說少掉的鹽稅。兩個數，她還沒敢對。",
+      "conflict": "她手上的帳頁是買來的廢紙，可永昌要說是偷的。",
+      "turn": "賈通帶人堵門要搜，宋銖把帳頁往秤上一放：「廢紙三文一斤，你們親手賣的。要買回去？一斤三十兩。」街坊哄堂大笑。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "賈通沒走，他朝街口抬了抬下巴：溫九的轎子停在那裡，轎旁站著衙門的捕快。「宋小姐，有人告妳收贓。」",
+        "question": "衙門要搜當鋪，帳頁保得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju"
+      ],
+      "spectacle": "當鋪門口一桿大秤，秤盤上是一疊皺帳頁，賈通的臉和秤錘一起往下沉。",
+      "glamour_shot": "宋銖單手扶秤桿，另一手撥算盤報價，眼睛只看賈通，報到「三十兩」時聲音特別溫柔。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "算出十年鹽利總數"
+      ],
+      "characters": [
+        "song-zhu",
+        "lin-shuang",
+        "a-sheng",
+        "s02-yongchang-zhangshi",
+        "s02-guanshi"
+      ],
+      "locations": [
+        "不虧當鋪門口"
+      ],
+      "state": {
+        "time": "第五月初九",
+        "knowledge": "她有了十年鹽利的總數，懷疑它跟國庫有關。",
+        "carry_forward": "捕快要搜當鋪；帳頁在後院。"
+      }
+    },
+    {
+      "number": 69,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "當票上的贓",
+      "youtube_title": "捕快上門搜贓，當鋪千金拿出一張當票，告她的人反被當場問住，連夜三人翻帳翻到天亮",
+      "duration_s": 105,
+      "logline": "宋銖要在衙門搜鋪時保住帳頁，還得在天亮前把十年鹽利對出結果。",
+      "hook": "捕快剛跨過門檻，宋銖遞上一張紙：「收贓？你看畫押。」賣方那一欄，寫的是永昌錢莊。",
+      "hook_type": "reversal",
+      "mid_hook": "捕快一走，老鐘把自己關進帳房，再出來時手上捧著侯府二十年的舊帳：「老奴一起對。」可他翻帳時總跳過同一年。",
+      "conflict": "她們要在安國公府下一步之前，把鹽利的數跟國庫對上。",
+      "turn": "老鐘的舊帳裡有戶部每年公告的鹽稅數；林雙一年一年減，差額一筆一筆冒出來。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "天快亮了，林雙的算盤停在最後一顆珠子上，手抖了一下。她抬頭看宋銖，第一次說不出數字。",
+        "question": "林雙算出了什麼不敢說的數？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "三個人翻帳的長夜：窗外月亮落下、燭台換了三根、桌上帳本疊成一座小山。",
+      "glamour_shot": "黎明的藍光照進帳房，宋銖趴在帳本上睡著又驚醒，額前碎髮沾著墨，眼睛一睜就去看林雙的算盤。",
+      "setups": [
+        "s02-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "衙門撤走，告狀的人被問住",
+        "老鐘拿出侯府二十年舊帳參與對帳"
+      ],
+      "characters": [
+        "song-zhu",
+        "lin-shuang",
+        "lao-zhong",
+        "a-sheng"
+      ],
+      "locations": [
+        "不虧當鋪",
+        "不虧當鋪帳房"
+      ],
+      "state": {
+        "time": "第五月初十黎明",
+        "knowledge": "她知道鹽利與戶部鹽稅有差額，老鐘的舊帳裡缺一年。",
+        "carry_forward": "林雙算出了最後的數，還沒說。"
+      }
+    },
+    {
+      "number": 70,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "杯子很重",
+      "youtube_title": "窮書生初一來還利息還賴到宵禁，聽完一筆鹽利帳，放下杯子那一聲讓整間當鋪安靜了",
+      "duration_s": 135,
+      "logline": "宋銖要知道鹽利的錢從哪來，答案卻是一個她不敢碰的地方。",
+      "hook": "林雙終於開口：「一樣。」宋銖：「跟什麼一樣？」林雙把兩張紙疊在一起，對著晨光，兩行數字完全重合。",
+      "hook_type": "question",
+      "mid_hook": "第六個初一，衛熾抱著一捆當品從門外擠進來：「門口那位大嬸的，我替她搬。」他賴到宵禁鼓響都沒走。",
+      "extra_hooks": [
+        "阿升小聲：「他今天搬了十一件。」老鐘：「不給工錢，合算。」"
+      ],
+      "conflict": "鹽利的數跟戶部每年少掉的鹽稅一模一樣，她手上握的不是錢莊的帳，是國庫的。",
+      "turn": "她以為衛熾只是個欠錢的小吏，可他聽帳時一個字都沒問，好像早就知道少了多少。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林雙把帳推到桌中央：「這不是錢莊的錢，是國庫的。」衛熾手裡的茶杯落回桌上，咚一聲，整間當鋪安靜。",
+        "question": "他為什麼聽到國庫兩個字就變臉？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xuanyi",
+        "daozhui",
+        "xiju"
+      ],
+      "spectacle": "永昌錢莊的金匾在晨光裡反光，切回當鋪桌上兩張疊在一起、數字重合的紙。",
+      "glamour_shot": "衛熾倚著櫃台、舊青袍袖口磨白，聽帳時懶洋洋的眼神一點點沉下去；杯子落下那一格他沒眨眼。",
+      "setups": [
+        "m03",
+        "m07"
+      ],
+      "payoffs": [
+        "s02-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認永昌的鹽利就是國庫少掉的鹽稅",
+        "第六個初一，衛熾賴到宵禁、替客人搬了十一件當品",
+        "收利息十兩，帳上三萬零二十兩"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "lin-shuang",
+        "lao-zhong",
+        "a-sheng",
+        "ying"
+      ],
+      "locations": [
+        "不虧當鋪櫃台",
+        "永昌錢莊門口"
+      ],
+      "state": {
+        "time": "第六個初一，宵禁",
+        "knowledge": "她知道永昌錢莊替安國公府收著國庫的鹽稅；衛熾的反應不像小吏。",
+        "carry_forward": "鹽利帳在她手上；侯府期限剩六十天。"
+      }
+    },
+    {
+      "number": 71,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "繡壞的手",
+      "youtube_title": "繡坊千金把一幅繡放上當鋪櫃台，袖子裡藏著一雙繡壞的手，老闆開價讓全場愣住",
+      "duration_s": 100,
+      "logline": "宋銖要的是錢，可第一個上門的是一個想把自己最後一幅繡當掉的女孩。",
+      "hook": "杯子落桌的回音還沒散，宋銖已經伸手：「杯子磕了，一錢。」衛熾付了錢，起身就走，沒回頭。",
+      "hook_type": "line",
+      "mid_hook": "隔天清早，一個穿淺粉衣裙的女孩把一幅牡丹繡放上櫃台，接繡時宋銖看見她指尖纏滿布條，針痕一路爬到手腕。",
+      "extra_hooks": [
+        "老鐘看了一眼繡：「這針法，十年前蘇繡坊的。」女孩把手縮進袖子：「我叫蘇綿。」"
+      ],
+      "conflict": "蘇綿要當繡換錢，可她的手已經繡壞，家裡還逼她繡完一整套嫁妝。",
+      "turn": "宋銖沒問繡值多少，先問：「這繡誰教妳的？」蘇綿說：「我自己想的。」宋銖眼睛亮了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "宋銖把繡推回去一半：「這繡五百兩。」又把算盤推到蘇綿面前：「妳人，一千兩。」蘇綿的手在袖子裡攥緊。",
+        "question": "蘇綿肯把自己押給一間當鋪嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "xiju"
+      ],
+      "spectacle": "清晨的當鋪櫃台，一幅牡丹繡在晨光下展開，絲線的光一層層亮起來。",
+      "glamour_shot": "蘇綿低頭站在櫃台前，圓臉上一對梨渦沒笑出來，淺粉衣袖下露出一截纏布的手指。",
+      "setups": [
+        "s02-t10",
+        "s02-t08",
+        "s02-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "su-mian",
+        "lao-zhong",
+        "a-sheng"
+      ],
+      "locations": [
+        "不虧當鋪櫃台"
+      ],
+      "state": {
+        "time": "第六月初二清晨",
+        "knowledge": "她知道蘇綿的繡是自己的針法，手已經壞了。",
+        "carry_forward": "一千兩的合股價放在蘇綿面前；衛熾不告而別。"
+      }
+    },
+    {
+      "number": 72,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "林雙的契",
+      "youtube_title": "繡坊千金不敢簽合股契，冷面帳房掏出自己那一張，下一秒她爹帶人堵上門說女兒已經許了人",
+      "duration_s": 100,
+      "logline": "宋銖要留下蘇綿，可蘇綿怕極了再被人買一次。",
+      "hook": "蘇綿往後退了一步：「我爹也說過，我值錢。」宋銖的手停在算盤上。",
+      "hook_type": "line",
+      "mid_hook": "林雙從懷裡拿出一張摺得方正的紙放在蘇綿面前：自己的合股契，「月錢十兩，股一成，可以走。」最後三個字她用指尖點了兩下。",
+      "conflict": "對蘇綿來說，買她的人和救她的人長得一樣。",
+      "turn": "宋銖把契裡「可以走」那一條加粗重寫：「妳想走那天，股照算給妳。」蘇綿第一次抬頭看她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蘇綿的筆剛落下第一筆，門被一腳踹開，蘇長卿揮著一張紅紙：「她許人了！」他指著女兒：「嫁妝沒繡完，誰也別想帶走。」",
+        "question": "蘇綿已經被許人了，契還簽得成嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "dalian"
+      ],
+      "spectacle": "兩張合股契並排放在櫃台上，一張舊、一張新，陽光把『可以走』三個字照得透亮。",
+      "glamour_shot": "林雙冷著臉推過那張舊契，細眉不動，只有指尖點那三個字時微微用力。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "林雙第一次替別的小姐說話"
+      ],
+      "characters": [
+        "song-zhu",
+        "su-mian",
+        "lin-shuang",
+        "s02-su-fu"
+      ],
+      "locations": [
+        "不虧當鋪櫃台"
+      ],
+      "state": {
+        "time": "第六月初二上午",
+        "knowledge": "她知道蘇綿被許給米行的人家，嫁妝是逼她繡的理由。",
+        "carry_forward": "契只簽了一筆；蘇長卿堵在門口。"
+      }
+    },
+    {
+      "number": 73,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "八百兩",
+      "youtube_title": "繡坊老闆當鋪門口搶女兒，當鋪千金反問一句欠誰的錢，答案又是那家錢莊",
+      "duration_s": 105,
+      "logline": "宋銖要保住蘇綿，得先弄清楚蘇家為什麼非逼女兒繡嫁妝不可。",
+      "hook": "蘇長卿伸手去拽女兒，宋銖的算盤橫在兩人中間：「蘇坊主，你欠誰的錢？」他的手停在半空。",
+      "hook_type": "danger",
+      "mid_hook": "宋銖看蘇長卿袖口一圈新縫的補丁、腰間空掉的玉佩扣，報出一個數：「八百兩。」蘇長卿的臉一下白了。",
+      "conflict": "蘇長卿要拿女兒的婚事換一筆聘金還債，蘇綿是他唯一能當的東西。",
+      "turn": "米行那門親的聘金恰好八百兩，借據的債主是永昌錢莊——蘇綿的婚事是錢莊替蘇家安排的。蘇長卿摔門前，蘇綿當著他的面把契上剩下的名字一筆寫完。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "蘇長卿把借據摔在櫃台上，債主一欄蓋著永昌錢莊的金印。宋銖笑了：「又是你們。」蘇長卿：「三天後來接人。」",
+        "question": "三天內，她怎麼替蘇家擋下永昌？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "huzhu",
+        "shangzhan"
+      ],
+      "spectacle": "當鋪門口圍滿街坊，宋銖的算盤橫在父女之間，算盤珠在陽光下一排發亮。",
+      "glamour_shot": "宋銖抬眼看蘇長卿報出八百兩，眼神清亮、語氣溫柔，像在報一筆好生意的價。",
+      "setups": [
+        "s02-t11"
+      ],
+      "payoffs": [
+        "s02-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查出蘇家欠永昌八百兩、婚事是錢莊安排的",
+        "蘇綿簽下合股契，成為第二位合股小姐"
+      ],
+      "characters": [
+        "song-zhu",
+        "su-mian",
+        "s02-su-fu",
+        "lin-shuang",
+        "a-sheng"
+      ],
+      "locations": [
+        "不虧當鋪門口"
+      ],
+      "state": {
+        "time": "第六月初二午",
+        "knowledge": "她知道永昌錢莊在用債逼蘇綿出嫁。",
+        "carry_forward": "三天期限；蘇綿的手需要大夫。"
+      }
+    },
+    {
+      "number": 74,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "三個月不准拿針",
+      "youtube_title": "當鋪千金自掏腰包請大夫，大夫一句三個月不准拿針，繡坊千金半夜偷偷把針藏進袖子",
+      "duration_s": 100,
+      "logline": "宋銖要讓蘇綿的手好起來，也要讓她的繡在三天內值八百兩以上。",
+      "hook": "老大夫解開蘇綿手上的布條，倒抽一口氣：「再繡一個月，這手就廢了。」",
+      "hook_type": "image",
+      "mid_hook": "宋銖在診金單上寫自己的名字，又在旁邊記了一筆：「借蘇綿，免息。」老鐘看見「免息」兩個字，眼鏡差點掉下來。",
+      "extra_hooks": [
+        "唐越的叫賣聲從街口飄進來：「酸梅湯，不酸不要錢！」蘇綿聽笑了，這是她三天來第一次笑。"
+      ],
+      "conflict": "大夫說三個月不准拿針，可宋銖要靠蘇綿的繡在三天內打出名號。",
+      "turn": "宋銖想出辦法：蘇綿不動針，只畫樣、只指點；西市的繡娘們照她的樣繡，她坐在中間當師傅。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "三更，宋銖起夜，看見蘇綿坐在後院月光下偷偷繡，針一下一下扎歪，她咬著唇不出聲，眼淚掉在繡面上。",
+        "question": "蘇綿為什麼寧可廢手也要繡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "huzhu",
+        "xiju"
+      ],
+      "spectacle": "後院月光下一張繡架，絲線在月色裡發亮，一滴眼淚落在牡丹的花心上。",
+      "glamour_shot": "蘇綿在月光下低頭繡，圓臉被月色照得透白，梨渦因咬唇微微陷下去，手指發抖仍不停。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "請到大夫，蘇綿的手開始治",
+        "西市繡娘答應照蘇綿的樣繡"
+      ],
+      "characters": [
+        "song-zhu",
+        "su-mian",
+        "lao-zhong",
+        "tang-yue"
+      ],
+      "locations": [
+        "不虧當鋪後院",
+        "西市街口"
+      ],
+      "state": {
+        "time": "第六月初二夜",
+        "knowledge": "她知道蘇綿的手要三個月才能好，蘇綿卻不肯停。",
+        "carry_forward": "繡會的主意；三天期限剩兩天。"
+      }
+    },
+    {
+      "number": 75,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "誰來看繡",
+      "youtube_title": "小姐要在西市辦繡會，銀樓掌櫃笑說誰會來看，兩人當街打賭，賭注是他的金字招牌",
+      "duration_s": 105,
+      "logline": "宋銖要辦一場讓全京城掏錢的繡會，商幫卻擺明了不讓人來。",
+      "hook": "蘇綿抹掉眼淚：「我娘也繡壞了手。」她低頭：「我不想停在那。」宋銖把燈放下，坐到她旁邊。",
+      "hook_type": "line",
+      "mid_hook": "趙萬斗轉著核桃笑：「小姐辦繡會？誰來看？」宋銖：「賭你銀樓的招牌。」他的核桃停了。",
+      "conflict": "繡會辦不辦得成，看的是京城有錢人肯不肯來；商幫說了算。",
+      "turn": "趙萬斗答應賭，條件是繡會只要賣不到一千兩，不虧當鋪的匾歸他。宋銖立刻簽字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "繡會前一夜，租好的茶樓老闆送回定金：「宋小姐，對不住，有人出了三倍。」宋銖回頭，街上已經沒有一間肯租她的鋪子。",
+        "question": "沒有場地，繡會還辦得成嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "huzhu"
+      ],
+      "spectacle": "銀樓門口，趙萬斗的金字招牌被夕陽照得刺眼，宋銖在賭約上落筆的影子正好壓在招牌上。",
+      "glamour_shot": "宋銖在賭約上簽完字，吹乾墨跡，抬眼對趙萬斗一笑，銅算盤簪在夕陽下一閃。",
+      "setups": [
+        "s02-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇綿說出不肯停針的原因",
+        "和商幫掌櫃立下賭約"
+      ],
+      "characters": [
+        "song-zhu",
+        "su-mian",
+        "s02-zhanggui"
+      ],
+      "locations": [
+        "不虧當鋪後院",
+        "西市銀樓門口",
+        "西市茶樓"
+      ],
+      "state": {
+        "time": "第六月初四夜",
+        "knowledge": "她知道商幫在背後買斷了場地。",
+        "carry_forward": "賭約：繡會不到一千兩，匾歸趙萬斗；沒有場地。"
+      }
+    },
+    {
+      "number": 76,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "一整條街的繡",
+      "youtube_title": "全京城不租場地給她，當鋪千金把繡掛滿一整條街，窮書生扛繡架時有人脫口說他像陛下",
+      "duration_s": 115,
+      "logline": "宋銖要在沒有場地的情況下辦成繡會，還得撐過商幫的冷眼。",
+      "hook": "天一亮，西市的燈籠繩上一幅接一幅掛起繡，從當鋪門口一路掛到街尾。趙萬斗推開銀樓的窗，核桃掉在地上。",
+      "hook_type": "image",
+      "mid_hook": "第七個初一，衛熾一個人扛著三座繡架從街口走來：「上個月我去對了一本帳，回來晚了。」人群裡有個老人瞇眼：「這位公子，怎麼這麼像陛下？」",
+      "extra_hooks": [
+        "衛熾頭也不回：「常有人這麼說。」影在屋頂上默默把帽簷壓低。"
+      ],
+      "conflict": "繡掛上了，可沒人敢第一個掏錢——商幫的人都在看。",
+      "turn": "蘇綿坐在街中央，不動針，只指點繡娘落線；圍觀的夫人們看她一句話改活一朵花，開始往前擠。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "人群忽然分開，一頂紅轎停在街心。正紅衣裙的少女下轎，走到蘇綿那幅繡壞的牡丹前：「這幅，我要。」宋銖認出那張臉——前世的皇后。",
+        "question": "宇文瀟為什麼偏偏要那幅繡壞的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "xiju",
+        "daozhui"
+      ],
+      "spectacle": "清晨的西市，上百幅繡掛滿燈籠繩，一陣風過，整條街的牡丹與鳳凰同時翻起。",
+      "glamour_shot": "衛熾肩上扛著繡架從街口走來，舊青袍、木簪鬆了一縷頭髮，在繡幅下回頭看她一眼。",
+      "setups": [
+        "s02-t12",
+        "m09"
+      ],
+      "payoffs": [
+        "s02-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "繡會在街上辦成",
+        "第七個初一，衛熾一早就來，替繡會扛了三座繡架"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "su-mian",
+        "ying",
+        "s02-zhanggui",
+        "yuwen-xiao"
+      ],
+      "locations": [
+        "京城西市長街"
+      ],
+      "state": {
+        "time": "第七個初一，上午",
+        "knowledge": "她知道宇文瀟來了，前世她是皇后、是安國公的女兒。",
+        "carry_forward": "有人說衛熾像陛下；宇文瀟要那幅繡。"
+      }
+    },
+    {
+      "number": 77,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "兩千兩",
+      "youtube_title": "國公府千金出價買繡，商幫掌櫃跟著喊價，繡壞手的女孩一幅繡賣出兩千兩，她爹當場閉嘴",
+      "duration_s": 115,
+      "logline": "宋銖要讓蘇綿的繡賣出好價，宇文瀟的出價卻讓她分不清這是幫忙還是試探。",
+      "hook": "宇文瀟纖指點在繡面上：「三百兩。」趙萬斗下意識喊：「四百！」說完他自己都愣了。",
+      "hook_type": "reversal",
+      "mid_hook": "價錢喊到一千五，蘇長卿擠到最前面要搶女兒的繡：「這是我蘇家的！」蘇綿站起來，第一次對她爹說：「這是我的手。」",
+      "conflict": "繡賣得越貴，蘇家越要把女兒討回去；賭約要過一千兩，匾才保得住。",
+      "turn": "宋銖讓蘇綿自己落槌：兩千兩成交，八百兩當場替蘇家還永昌的債，借據撕了——蘇長卿手裡再也沒有能逼女兒的東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "宇文瀟付完兩千兩，沒拿繡，看著蘇綿：「這幅歸我。妳，我出三千兩。」整條街安靜，所有人看向蘇綿。",
+        "question": "蘇綿會跟國公府千金走嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "dalian",
+        "shangzhan"
+      ],
+      "spectacle": "長街中央一張繡案，蘇綿親手落下木槌，撕碎的永昌借據像雪一樣飄過繡幅。",
+      "glamour_shot": "蘇綿站在繡幅之間，淺粉衣裙被風吹起，第一次直視父親，梨渦裡沒有笑，只有倔。",
+      "setups": [],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇綿的繡賣出兩千兩，替家裡還清八百兩",
+        "賭約贏了，趙萬斗當眾認輸",
+        "當鋪抽成，帳上三萬五千兩"
+      ],
+      "characters": [
+        "song-zhu",
+        "su-mian",
+        "yuwen-xiao",
+        "s02-zhanggui",
+        "s02-su-fu"
+      ],
+      "locations": [
+        "京城西市長街"
+      ],
+      "state": {
+        "time": "第七個初一，午",
+        "knowledge": "她知道蘇家再也逼不了蘇綿；宇文瀟的意圖還看不透。",
+        "carry_forward": "宇文瀟出三千兩要蘇綿。"
+      }
+    },
+    {
+      "number": 78,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "我不賣了",
+      "youtube_title": "國公府千金開三千兩要買人，繡坊千金說出四個字，人群後的國公府管事卻盯上了窮書生",
+      "duration_s": 105,
+      "logline": "宋銖想替蘇綿開口，卻忍住了：這一場得蘇綿自己贏。",
+      "hook": "宋銖張嘴要報價，蘇綿先開口：「我不賣了。」宇文瀟挑起眉，笑了。",
+      "hook_type": "line",
+      "mid_hook": "宇文瀟留下一張素帖，上面只寫兩個字：「繡莊。」轉身上轎時她低聲對宋銖說：「妳們真好。」",
+      "conflict": "國公府的千金用錢試探當鋪的人心，蘇綿得自己決定值多少。",
+      "turn": "人群後面，那個說衛熾像陛下的老人——銀樓的趙萬斗——正湊在溫九耳邊說話。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "溫九慢慢抽出象牙尺，隔著人群對準衛熾，像在量他的身量。衛熾正彎腰撿繡架，渾然不覺；屋頂上影的劍出鞘一寸。",
+        "question": "溫九認出衛熾是誰了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "紅轎離開長街，轎簾後宇文瀟回頭一瞥；人群後溫九的象牙尺一寸寸舉起。",
+      "glamour_shot": "宇文瀟上轎前回眸，丹鳳眼一彎、紅唇微揚，金步搖輕晃，像什麼都知道。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s02-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇綿自己拒絕了三千兩，贏下她的第一場",
+        "查出把衛熾說成像陛下的是趙萬斗，他把話遞給了溫九"
+      ],
+      "characters": [
+        "song-zhu",
+        "su-mian",
+        "yuwen-xiao",
+        "s02-zhanggui",
+        "s02-guanshi",
+        "wei-chi",
+        "ying"
+      ],
+      "locations": [
+        "京城西市長街"
+      ],
+      "state": {
+        "time": "第七個初一，午後",
+        "knowledge": "她知道宇文瀟想開繡莊，也知道溫九在盯衛熾。",
+        "carry_forward": "宇文瀟的素帖；溫九的尺對著衛熾。"
+      }
+    },
+    {
+      "number": 79,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "第一針",
+      "youtube_title": "大夫說她的手還能好，繡坊千金縫完第一針送給老闆，當鋪千金掏錢的手第一次停住",
+      "duration_s": 100,
+      "logline": "宋銖要把衛熾從溫九的視線裡帶開，還要給蘇綿一個答案：她的手能不能好。",
+      "hook": "宋銖一把將算盤塞進衛熾懷裡：「搬回當鋪，快。」衛熾抱著算盤被她推進巷子，溫九的尺落了空。",
+      "hook_type": "danger",
+      "mid_hook": "老大夫再看蘇綿的手：「三個月能拿針。」他頓了頓：「今天，准一針。」蘇綿捏針的手抖了半天，才落下一針。",
+      "conflict": "衛熾差點被認出，蘇綿的手還在賭。",
+      "turn": "衛熾在當鋪後院賴到宵禁，蘇綿躲在門後看他替宋銖收繡，小聲問林雙：「他不是欠錢的嗎？」林雙：「欠很多。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "蘇綿把一只小布袋放在宋銖掌心，繡著一把小算盤：「謝禮。」宋銖本能地掏錢，掏到一半停住，把錢收了回去。",
+        "question": "她這一次為什麼沒算錢？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "huzhu",
+        "xiju"
+      ],
+      "spectacle": "燭光下一根針穿過繡布，蘇綿縫下的第一針在白緞上亮成一道細細的金線。",
+      "glamour_shot": "宋銖低頭看掌心的小布袋，燭光照在側臉，嘴角那點算計的笑第一次不見了。",
+      "setups": [],
+      "payoffs": [
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇綿的手確定能好",
+        "衛熾賴到宵禁，替當鋪收了一街的繡"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "su-mian",
+        "lin-shuang",
+        "ying"
+      ],
+      "locations": [
+        "西市巷子",
+        "不虧當鋪後院"
+      ],
+      "state": {
+        "time": "第七個初一，夜",
+        "knowledge": "她知道蘇綿的手能好；她剛才沒收錢，自己也嚇了一跳。",
+        "carry_forward": "繡會的帳還沒算完。"
+      }
+    },
+    {
+      "number": 80,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "滿街燈籠",
+      "youtube_title": "繡會賺進大把銀子，當鋪千金算完帳卻忽然停住，前世這條街這一年燒過一場大火",
+      "duration_s": 130,
+      "logline": "宋銖要把繡會的錢算清，可算到最後一筆，她想起了前世這一年的這條街。",
+      "hook": "宋銖把小布袋塞進袖子，假裝沒事：「算帳。」林雙瞥她一眼：「妳臉紅了。」",
+      "hook_type": "line",
+      "mid_hook": "趙萬斗親手把銀樓的金字招牌扛到當鋪門口：「願賭服輸。」宋銖：「招牌不要，你銀樓的帳房借我三天。」",
+      "extra_hooks": [
+        "阿升對著帳本大叫：「三萬五千兩！小姐，侯府還差六萬五！」老鐘：「小聲點，不合算。」"
+      ],
+      "conflict": "她以為這一季順著前世的記憶走就能贏，直到她發現這一年有一件事她差點忘了。",
+      "turn": "她的筆停在帳本日期上：前世這一年的這個月，西市沒有繡會，有的是一場大火——燒的就是她現在站的這條街。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "繡會收攤，滿街燈籠還亮著。宋銖站在街心慢慢抬頭，一盞、兩盞、一百盞——前世的火光在她眼裡和燈籠疊在一起。",
+        "question": "前世的大火，這一世會燒過來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "huzhu",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "夜裡收攤的西市長街，上百盞燈籠沿街亮著，宋銖仰頭站在正中，燈影一層層疊成火光。",
+      "glamour_shot": "宋銖合上帳本那一秒抬眼，燈籠的暖光落在她臉上，眼神從得意一點點變成警覺。",
+      "setups": [
+        "s02-t14",
+        "s02-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "趙萬斗當眾認輸，借出銀樓帳房三天",
+        "帳上三萬五千兩，離侯府十萬兩還差六萬五"
+      ],
+      "characters": [
+        "song-zhu",
+        "lin-shuang",
+        "a-sheng",
+        "lao-zhong",
+        "s02-zhanggui",
+        "su-mian"
+      ],
+      "locations": [
+        "不虧當鋪櫃台",
+        "京城西市長街"
+      ],
+      "state": {
+        "time": "第七月初一深夜",
+        "knowledge": "她想起前世這個月西市燒過一場大火。",
+        "carry_forward": "滿街燈籠；侯府期限剩約三十天。"
+      }
+    },
+    {
+      "number": 81,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "一錢銀的火險",
+      "youtube_title": "前世這條街燒成一片，當鋪千金連夜賣起火險，一整條街的掌櫃笑完全都排隊來買",
+      "duration_s": 105,
+      "logline": "宋銖不賭火會不會來，她要整條街先替她把火擋在外面。",
+      "hook": "天還沒亮，宋銖拎著竹竿一盞一盞挑下燈籠。對面米行掌櫃探頭罵：「瘋了？」她：「是你家的燈，燒的也是你家。」",
+      "hook_type": "image",
+      "mid_hook": "她在當鋪門口立起一塊牌子：「火險：每月一錢銀，燒了，不虧照賠。」趙萬斗笑完，第一個掏出一錢銀。",
+      "extra_hooks": [
+        "阿升邊收錢邊唸：「十八家、十九家……」老鐘捧著心口：「燒了要賠多少，小姐算過嗎？」"
+      ],
+      "conflict": "前世的火只剩十三天，她不能說自己記得，只能讓人自己掏錢防火。",
+      "turn": "銀樓借來的帳房翻商幫的貨帳，翻出一筆奇怪的進貨：這個月有人買了三百桶燈油，記在銀樓的賒帳上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老鐘把火險契疊到櫃台上，疊得比算盤還高：「真燒了，要賠十二萬兩。」宋銖看著那疊契，伸手又在上面放了一張。",
+        "question": "她真要把全副身家押在火不會來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "整條街的火險契在櫃台上疊成一座紙塔，晨光從窗外照進來，紙塔的影子壓住整張櫃台。",
+      "glamour_shot": "宋銖踮腳挑燈籠，竹竿一勾，燈籠落進她懷裡，她低頭吹熄燭芯，晨光勾出側臉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "整條街三十家鋪子買了火險，收進三十兩月費",
+        "銀樓帳房查到三百桶燈油的賒帳"
+      ],
+      "characters": [
+        "song-zhu",
+        "a-sheng",
+        "lao-zhong",
+        "s02-zhanggui"
+      ],
+      "locations": [
+        "京城西市長街",
+        "不虧當鋪門口"
+      ],
+      "state": {
+        "time": "第七月初二",
+        "knowledge": "她記得前世大火在十五夜；有人賒了三百桶燈油。",
+        "carry_forward": "火險賠額十二萬兩，比她全部身家還多。"
+      }
+    },
+    {
+      "number": 82,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "三百桶燈油",
+      "youtube_title": "銀樓帳本上多出三百桶燈油，賒帳的人竟是國公府的管事，油車卻往錢莊後門去了",
+      "duration_s": 100,
+      "logline": "宋銖要知道三百桶燈油是誰買的、要往哪裡去。",
+      "hook": "宋銖把一張紙按在燈籠底下，又在上面放了一張：「再加一家——不虧當鋪自己。」老鐘捂住眼睛。",
+      "hook_type": "line",
+      "mid_hook": "銀樓帳房指著賒帳單的畫押：一個「溫」字。宋銖想起轎子裡那把象牙尺。",
+      "conflict": "她知道油是誰買的，卻猜錯了油要去哪。",
+      "turn": "阿升跟了一整天的油車，油車沒進西市，繞了半個京城停在永昌錢莊後門。她以為那是存放的地方，等十五夜再運過來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "夜裡，阿升趴在牆頭，看見永昌錢莊的夥計把一桶桶油搬進帳房，不是庫房。賈通站在門口，親手鎖上帳房的門。",
+        "question": "油為什麼搬進帳房？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "黃昏的長巷，一列油車吱呀駛過，車輪壓出兩道油痕，一路延伸到錢莊的後門。",
+      "glamour_shot": "宋銖站在銀樓帳房的窗下看賒帳單，夕陽把她的睫毛照成金色，指尖停在那個「溫」字上。",
+      "setups": [],
+      "payoffs": [
+        "s02-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查出賒油的是安國公府管事溫九",
+        "跟到油車的去處"
+      ],
+      "characters": [
+        "song-zhu",
+        "a-sheng",
+        "lao-zhong",
+        "s02-guanshi",
+        "s02-yongchang-zhangshi"
+      ],
+      "locations": [
+        "西市銀樓帳房",
+        "永昌錢莊後門"
+      ],
+      "state": {
+        "time": "第七月初四夜",
+        "knowledge": "她知道溫九買油、油進了永昌帳房；她以為那是要燒西市的備料。",
+        "carry_forward": "離十五夜十一天。"
+      }
+    },
+    {
+      "number": 83,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "我路過",
+      "youtube_title": "當鋪千金帶人夜夜守街，帳房和小夥計守到睡著，窮書生不是初一卻爬上屋頂陪她看了一夜",
+      "duration_s": 105,
+      "logline": "宋銖要守住整條街，可她能信的人只有一個睡著的老鐘和一個睡著的阿升。",
+      "hook": "阿升滑下牆頭摔進草堆，爬起來第一句：「小姐，他們把油搬進帳房！」宋銖：「帳房？」",
+      "hook_type": "question",
+      "mid_hook": "三更，宋銖一個人坐在當鋪屋頂，背後有人遞來一包熱栗子：「我路過。」今天不是初一，衛熾卻來了。",
+      "conflict": "她猜不透對方的棋，只能用最笨的法子：守。",
+      "turn": "衛熾問她怎麼知道會燒，她說：「夢。」他沒笑，只說：「我也常做夢。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "天快亮，衛熾起身拍掉衣上的瓦灰，低頭看她：「這一回，不會燒到妳。」說完跳下屋頂。她攥著栗子袋，栗子還是熱的。",
+        "question": "他憑什麼這麼肯定？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "daozhui",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "夜裡的西市屋頂連成一片，兩個人坐在當鋪屋脊上，底下一條街的守夜燈籠排成一線。",
+      "glamour_shot": "衛熾坐在屋脊上剝栗子，桃花眼在月下半瞇，剝好一顆不吃，放進她手心。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "商幫出人與當鋪一起守夜",
+        "衛熾第一次在初一以外的日子來"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "a-sheng",
+        "lao-zhong",
+        "ying"
+      ],
+      "locations": [
+        "不虧當鋪屋頂",
+        "京城西市長街"
+      ],
+      "state": {
+        "time": "第七月初五黎明",
+        "knowledge": "她知道衛熾也覺得火不會燒到她，卻不知道他憑什麼。",
+        "carry_forward": "離十五夜十天；熱栗子。"
+      }
+    },
+    {
+      "number": 84,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "十罈陳年酒",
+      "youtube_title": "有人抱來十罈三十年陳釀當五百兩，帳房老人都點頭了，對街賣酸梅湯的姑娘衝進來喊假的",
+      "duration_s": 100,
+      "logline": "宋銖要撐到十五夜，偏偏這時候有人送上一筆看起來穩賺的大當。",
+      "hook": "宋銖咬下一顆栗子，門口有人喊：「當酒！」十罈封泥的酒罈一字排開，泥上蓋著三十年前的窯印。",
+      "hook_type": "image",
+      "mid_hook": "老鐘聞了封泥、看了窯印：「真的，五百兩值。」宋銖剛要落章，對街酸梅湯攤的姑娘一腳踩上門檻。",
+      "conflict": "火險的賠額壓在她頭上，她需要每一筆穩當的進帳。",
+      "turn": "當酒的人收了五百兩就跑，連當票都沒拿；宋銖這才覺得不對——真心當東西的人不會不要當票。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "那姑娘一掌拍開封泥，舀一口含在嘴裡，噗地吐回罈裡：「新酒兌陳皮，騙鬼。」她抹嘴抬頭：「我叫唐越。」",
+        "question": "她連當票都沒開，五百兩就這樣沒了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju",
+        "henla"
+      ],
+      "spectacle": "十罈酒排滿當鋪門口，封泥被一掌拍碎，琥珀色的酒在陽光下濺成一道弧。",
+      "glamour_shot": "唐越一腳踩門檻、一手扶刀，圓眼瞪著酒罈，短打袖子捲到手肘，豪爽得像來砸場子。",
+      "setups": [
+        "s02-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "song-zhu",
+        "lao-zhong",
+        "tang-yue",
+        "a-sheng"
+      ],
+      "locations": [
+        "不虧當鋪門口"
+      ],
+      "state": {
+        "time": "第七月十五，上午",
+        "knowledge": "她知道自己被人用假酒騙了五百兩，騙子跑了。",
+        "carry_forward": "帳上三萬四千五百兩；唐越出場。"
+      }
+    },
+    {
+      "number": 85,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "一口舌頭",
+      "youtube_title": "賣酸梅湯的姑娘一口嚐出十罈假酒，當鋪千金當場要聘她，她卻說先讓我看看你們幾兩重",
+      "duration_s": 100,
+      "logline": "宋銖要追回五百兩，也要弄清楚這姑娘的舌頭到底有多準。",
+      "hook": "宋銖沒追騙子，先舀一碗酸梅湯遞給唐越：「再嚐一樣。」唐越一口：「去年的梅。劉家的糖。井水。」",
+      "hook_type": "line",
+      "mid_hook": "宋銖把十罈酒一罈罈開給唐越嚐，第七罈她停住了：「這罈不一樣。這是真的三十年。」——騙子拿一罈真的當樣子。",
+      "conflict": "她虧了五百兩，可騙子留下的那罈真酒，是一條線。",
+      "turn": "真酒的罈底刻著一個極小的記號：永昌錢莊庫房的編號。騙她的酒是從錢莊的抵押庫裡拿出來的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "唐越還在嚐酒，窗外最後一點夕陽沉下去。宋銖手裡的碗晃了一下：今天是十五，天黑了。",
+        "question": "十五夜到了，火會從哪裡起？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "十罈酒排成一列，唐越一罈一罈舀酒、含、吐，第七罈她閉上眼，酒光映在臉上。",
+      "glamour_shot": "唐越仰頭灌下一口真酒，閉眼回味，嗓門大的姑娘第一次安靜，嘴角慢慢揚起。",
+      "setups": [
+        "s02-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐越驗出十罈裡唯一一罈真酒",
+        "查到假酒出自永昌錢莊抵押庫"
+      ],
+      "characters": [
+        "song-zhu",
+        "tang-yue",
+        "lao-zhong",
+        "a-sheng"
+      ],
+      "locations": [
+        "不虧當鋪"
+      ],
+      "state": {
+        "time": "第七月十五，黃昏",
+        "knowledge": "她知道騙她的酒出自永昌庫房；前世的大火就在今夜。",
+        "carry_forward": "十五夜；油在永昌帳房。"
+      }
+    },
+    {
+      "number": 86,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "火在東城",
+      "youtube_title": "前世燒光西市的那一夜到了，全街守到三更，火光卻在東城亮起，燒的是錢莊的帳房",
+      "duration_s": 115,
+      "logline": "宋銖押上全副身家等前世的火，火卻沒有照她記得的來。",
+      "hook": "天一黑，宋銖一聲令下，整條街的燈同時熄滅，只剩守夜人手裡的燈籠。趙萬斗壓低聲音：「要是不來，我的錢算誰的？」",
+      "hook_type": "image",
+      "mid_hook": "三更鼓剛敲完，東邊的天空忽然紅了。阿升爬上屋頂大喊：「不是西市——是東城！永昌錢莊的方向！」",
+      "extra_hooks": [
+        "宋銖站在黑透的長街上，前世的火聲在耳邊響起，可眼前的西市一片安靜，連狗都沒叫。"
+      ],
+      "conflict": "她以為自己記得前世的每一件事，可這一夜，她記得的錯了。",
+      "turn": "燒的是永昌錢莊的帳房，就是油桶搬進去的那一間——他們不是要燒她，是燒自己的帳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她望著東城的火光喃喃：「我改了什麼？」身後一個聲音低了半度：「不是妳改的。」她回頭，衛熾站在黑暗裡。",
+        "question": "不是她改的，那是誰改的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "daozhui"
+      ],
+      "spectacle": "全黑的西市長街，遠處東城的天空一片火紅，整條街的人仰頭看著同一個方向。",
+      "glamour_shot": "宋銖在黑暗裡回頭，遠處火光只照亮她半張臉，眼裡是震動，手裡的算盤攥得發白。",
+      "setups": [
+        "s02-t16",
+        "m06",
+        "m07"
+      ],
+      "payoffs": [
+        "s02-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "西市沒燒，三十家火險一兩都不用賠"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "a-sheng",
+        "s02-zhanggui",
+        "ying"
+      ],
+      "locations": [
+        "京城西市長街",
+        "不虧當鋪屋頂"
+      ],
+      "state": {
+        "time": "第七月十五，三更",
+        "knowledge": "她記得的火第一次不準：沒燒西市，燒了永昌帳房；衛熾說不是她改的。",
+        "carry_forward": "她問那是誰，他還沒答。"
+      }
+    },
+    {
+      "number": 87,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "那是誰",
+      "youtube_title": "前世的記憶第一次失準，窮書生只丟下一句不是妳改的就走，國公府管事帶捕快上門說她放火",
+      "duration_s": 105,
+      "logline": "宋銖要知道衛熾那句話的意思，可她還沒追上他，就被人扣上了放火的罪名。",
+      "hook": "宋銖一把抓住衛熾的袖子：「那是誰？」他看著她的手很久，輕輕把袖子抽回去：「下個初一告訴妳。」",
+      "hook_type": "question",
+      "mid_hook": "天亮，永昌錢莊門口貼出告示：「帳房失火，帳冊全毀。」宋銖讀到一半，忽然覺得冷——前世她靠記憶贏的每一步，從今天起都不能信了。",
+      "conflict": "她最大的本錢是記得，可記得的開始錯了。",
+      "turn": "她把前世記得的這一年大事一條條寫下來，寫到第三條，手停了：她不確定它還會不會發生。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "當鋪門被敲響。溫九帶著兩個捕快站在門外，象牙尺輕敲掌心：「宋小姐，昨夜三更，妳在哪？」",
+        "question": "國公府要把放火的罪栽到她頭上？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "daozhui"
+      ],
+      "spectacle": "清晨的永昌錢莊，焦黑的帳房還在冒白煙，金匾被燻黑了一半，門口告示被風掀起一角。",
+      "glamour_shot": "衛熾在晨霧裡轉身離開，舊青袍下襬沾著瓦灰，走出三步又停了一下，終究沒回頭。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "收進三十兩火險月費，帳上三萬四千五百三十兩"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "s02-guanshi",
+        "lin-shuang"
+      ],
+      "locations": [
+        "京城西市長街",
+        "永昌錢莊門口",
+        "不虧當鋪"
+      ],
+      "state": {
+        "time": "第七月十六清晨",
+        "knowledge": "她知道自己的記憶不再可靠；永昌說帳冊全毀。",
+        "carry_forward": "溫九帶捕快上門；衛熾說下個初一才答。"
+      }
+    },
+    {
+      "number": 88,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "影的一句話",
+      "youtube_title": "國公府管事當眾栽贓她放火，全劇不說話的黑衣侍衛開口了，一句話就說出真正放火的人",
+      "duration_s": 115,
+      "logline": "宋銖要洗掉放火的罪名，她的證人卻全是收了她火險的人。",
+      "hook": "宋銖倚著門框：「昨夜三更，我在屋頂。整條街看著我。」溫九笑：「整條街都收了妳的火險，證詞不算。」",
+      "hook_type": "line",
+      "mid_hook": "屋頂上落下一個人，捕快們同時拔刀。影站在宋銖身前，第一次開口，聲音啞得像很久沒說話：「東城。油。國公府的車。」",
+      "conflict": "國公府燒了自己的帳，再把火推到她身上，一石兩鳥。",
+      "turn": "影從懷裡拿出一片燒焦的車簾，上面繡著安國公府的紋；捕快對望一眼，收刀走人，溫九的尺第一次停在半空。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "人散了，影轉身要走，忽然停步，背對她說：「小姐，這回走前門。」宋銖渾身一僵——前世抄家那夜，有人在後門放她走。",
+        "question": "影怎麼知道前世的後門？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "黑衣的影從屋頂落在當鋪門前，衣袂不揚，兩個捕快的刀同時出鞘，晨光照在刀面上。",
+      "glamour_shot": "宋銖站在影身後，聽他說出「前門」二字，杏眼一點點睜大，手裡的算盤停住。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s02-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "洗清放火的罪名",
+        "查實燒帳房的是安國公府的人"
+      ],
+      "characters": [
+        "song-zhu",
+        "ying",
+        "s02-guanshi",
+        "a-sheng"
+      ],
+      "locations": [
+        "不虧當鋪門口"
+      ],
+      "state": {
+        "time": "第七月十六午",
+        "knowledge": "她知道永昌的帳房是國公府自己燒的；影說了一句只有前世的人知道的話。",
+        "carry_forward": "影的那句「這回走前門」；騙酒的人還沒抓到。"
+      }
+    },
+    {
+      "number": 89,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "唐家的女兒",
+      "youtube_title": "騙走五百兩的酒販又回西市行騙，被賣酸梅湯的姑娘一鼻子聞出來，她卻是被趕出宮的御廚之女",
+      "duration_s": 105,
+      "logline": "宋銖要抓到騙酒的人，唐越的鼻子比阿升的腿還快。",
+      "hook": "宋銖還在想影的話，唐越拖著一個人進門往地上一扔：「這身酒味，跟那九罈一樣。」",
+      "hook_type": "danger",
+      "mid_hook": "酒販招了：酒是賈通的外甥從抵押庫裡拿的，騙她五百兩，是要讓她在十五前周轉不靈。",
+      "conflict": "她追回了五百兩，可她更想要的是唐越那條舌頭。",
+      "turn": "宋銖說要聘唐越，唐越搖頭：「我爹說，唐家的舌頭不賣。」——唐家被趕出宮，就是因為一條舌頭。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "宋銖把一千兩的銀票放在唐越的酸梅湯攤上。唐越看著銀票，又回頭看巷口——她爹抱著手臂站在那裡，一聲不吭。",
+        "question": "唐越要聽爹的，還是收下這一千兩？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju",
+        "henla"
+      ],
+      "spectacle": "西市街口的酸梅湯攤，一張千兩銀票壓在一排瓷碗底下，酸梅湯的冰氣冒成白霧。",
+      "glamour_shot": "唐越抱臂坐在攤子上，圓眼瞪著銀票、嘴裡咬著一顆酸梅，腰上小刀在陽光下一閃。",
+      "setups": [
+        "s02-t18",
+        "s02-t17"
+      ],
+      "payoffs": [
+        "s02-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "追回五百兩，帳上三萬五千零三十兩",
+        "查出假酒是賈通外甥從抵押庫偷拿的"
+      ],
+      "characters": [
+        "song-zhu",
+        "tang-yue",
+        "s02-tang-fu",
+        "a-sheng",
+        "lao-zhong"
+      ],
+      "locations": [
+        "不虧當鋪",
+        "西市街口酸梅湯攤"
+      ],
+      "state": {
+        "time": "第七月十七",
+        "knowledge": "她知道永昌的抵押庫裡拿得出假貨；唐家因舌頭被趕出宮。",
+        "carry_forward": "一千兩聘金放在唐越的攤上；唐父在巷口。"
+      }
+    },
+    {
+      "number": 90,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "二十萬兩",
+      "youtube_title": "錢莊燒了帳冊竟宣布債權重算，侯府抵押一夜漲到二十萬兩，酸梅湯姑娘一句話接下戰帖",
+      "duration_s": 130,
+      "logline": "宋銖以為火燒了永昌的帳，對方就少一張牌，結果對方用一場火換了一張更大的。",
+      "hook": "唐父轉身就走。唐越把銀票推回去：「我爹沒說不准，他說的是不賣。」宋銖：「那合股？」唐越：「先讓我看看妳們幾兩重。」",
+      "hook_type": "line",
+      "mid_hook": "永昌錢莊門口敲鑼：「帳冊遺失，債權重算！」新告示上，侯府舊宅那一行的數字被描成紅的：二十萬兩。",
+      "extra_hooks": [
+        "阿升數手指：「小姐，我們才三萬五……差十六萬五！」老鐘第一次沒說不合算，因為已經算不出來了。"
+      ],
+      "conflict": "帳燒了，永昌說欠多少就是多少，侯府的抵押一夜翻了一倍。",
+      "turn": "宋銖看著告示反而笑了：他們燒帳、漲價、栽贓，三件事只為一個目的——不讓她買回侯府。對方怕了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "宋銖盯著二十萬兩：「他們怕我買回去。」唐越在旁邊咬了一口酸梅，嚼得很響：「那就讓他們賣不出去。」兩人同時看向永昌的金匾。",
+        "question": "二十萬兩的侯府，她怎麼讓它賣不出去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "shangzhan",
+        "xiju"
+      ],
+      "spectacle": "燻黑一半的永昌金匾下，紅字告示被鑼聲震得發抖，人群擠在告示前，二十萬兩三個字特寫。",
+      "glamour_shot": "宋銖站在告示前抬眼，嘴角慢慢揚起那點算計的笑，身邊唐越咬酸梅，兩個姑娘的側影並排。",
+      "setups": [
+        "s02-t19",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看穿永昌燒帳、漲價、栽贓都是為了擋她買侯府"
+      ],
+      "characters": [
+        "song-zhu",
+        "tang-yue",
+        "s02-tang-fu",
+        "a-sheng",
+        "lao-zhong",
+        "s02-yongchang-zhangshi"
+      ],
+      "locations": [
+        "西市街口酸梅湯攤",
+        "永昌錢莊門口"
+      ],
+      "state": {
+        "time": "第七月十八",
+        "knowledge": "她知道侯府的抵押被重算成二十萬兩，對方在怕她。",
+        "carry_forward": "帳上三萬五千零三十兩；侯府期限剩約十四天；唐越還沒點頭。"
+      }
+    },
+    {
+      "number": 91,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "幾兩重",
+      "youtube_title": "御廚之女要先秤秤當鋪幾兩重，三位小姐各露一手，她當場收下一千兩成了第三個合股人",
+      "duration_s": 105,
+      "logline": "宋銖要拉唐越入股，唐越要先看這間當鋪配不配。",
+      "hook": "唐越大步走進當鋪，把一碗酸梅湯放在櫃台：「秤吧。」林雙、蘇綿、老鐘同時抬頭。",
+      "hook_type": "image",
+      "mid_hook": "林雙報帳、蘇綿畫樣、宋銖估價，三招下來唐越都沒說話；直到阿升偷喝了她的酸梅湯，她才笑出聲：「你們連小鬼都養得這麼肥。」",
+      "extra_hooks": [
+        "唐越把一千兩的銀票折成一隻小船，放進酸梅湯碗裡：「這碗算入股的茶。」"
+      ],
+      "conflict": "唐越不缺膽子，缺的是一個不把她的舌頭當工具的地方。",
+      "turn": "宋銖沒問她能嚐出什麼，只問：「妳想嚐出誰？」唐越收起笑：「當年騙我爹的人。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "唐越剛落款，林雙的算盤啪地停下：「永昌的現銀，只剩兩成。」她把算盤轉向宋銖：「八成是空的，只是還沒人來領。」",
+        "question": "沒人知道的兩成，她要怎麼讓全京城知道？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "當鋪櫃台後第一次站滿三位小姐：林雙執算盤、蘇綿持繡繃、唐越扶刀，宋銖站在正中。",
+      "glamour_shot": "三位小姐在櫃台後一字排開，宋銖抬眼看門口，四種氣質同框，暖黃的光從窗格落下。",
+      "setups": [],
+      "payoffs": [
+        "s02-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐越成為第三位合股小姐",
+        "林雙算出永昌現銀只剩兩成"
+      ],
+      "characters": [
+        "song-zhu",
+        "tang-yue",
+        "lin-shuang",
+        "su-mian",
+        "lao-zhong",
+        "a-sheng"
+      ],
+      "locations": [
+        "不虧當鋪櫃台"
+      ],
+      "state": {
+        "time": "第七月十九",
+        "knowledge": "她知道永昌錢莊只剩兩成現銀。",
+        "carry_forward": "帳上三萬四千零三十兩；侯府期限剩約十三天。"
+      }
+    },
+    {
+      "number": 92,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "三招",
+      "youtube_title": "當鋪千金排出三招要讓錢莊撐不下去，第一招才放出風聲，錢莊連夜要把抵押庫運出城",
+      "duration_s": 100,
+      "logline": "宋銖要讓永昌錢莊在侯府到期之前露底，三位小姐一人一招。",
+      "hook": "宋銖在桌上擺三顆算盤珠：「林雙一顆，蘇綿一顆，唐越一顆。」阿升伸手：「我呢？」她把算盤框塞給他：「你跑。」",
+      "hook_type": "line",
+      "mid_hook": "第一招：林雙把「永昌現銀兩成」寫成一張小帖，只給趙萬斗看了一眼。半天後，整個商幫都在小聲問同一件事。",
+      "conflict": "永昌的空是真的，可要讓人信，得有人親眼看見。",
+      "turn": "唐越說：「抵押品是錢莊的底。」她敲桌：「酒能假，別的也能。」宋銖眼睛一亮：第三招就在抵押庫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜，阿升氣喘吁吁衝進門：「永昌的抵押庫在裝車！」城門方向，一排蓋著油布的大車正駛出錢莊後門。",
+        "question": "抵押庫一出城，證據就沒了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "huzhu",
+        "xiju"
+      ],
+      "spectacle": "桌上三顆算盤珠排成一列，鏡頭一轉，夜裡一排蓋油布的大車從錢莊後門魚貫而出。",
+      "glamour_shot": "宋銖用指尖把三顆算盤珠一顆顆推開，燭光下抬眼看三位小姐，笑得像已經贏了。",
+      "setups": [
+        "s02-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "永昌現銀兩成的消息在商幫裡傳開"
+      ],
+      "characters": [
+        "song-zhu",
+        "lin-shuang",
+        "su-mian",
+        "tang-yue",
+        "a-sheng",
+        "s02-zhanggui"
+      ],
+      "locations": [
+        "不虧當鋪後院",
+        "永昌錢莊後門"
+      ],
+      "state": {
+        "time": "第七月二十夜",
+        "knowledge": "她知道永昌要把抵押庫運出城。",
+        "carry_forward": "油布大車往城門去。"
+      }
+    },
+    {
+      "number": 93,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "城門的稅",
+      "youtube_title": "錢莊連夜運貨出城，當鋪千金一張報稅單就讓大車卡在城門，第二場繡會同時把全京城的錢吸走",
+      "duration_s": 105,
+      "logline": "宋銖要攔下運出城的抵押品，又不能動手搶。",
+      "hook": "宋銖不追車，提筆寫了一張紙交給阿升：「送稅關。」她吹乾墨：「有人夾酒漏稅。」",
+      "hook_type": "reversal",
+      "mid_hook": "天亮，大車全被扣在城門口等驗；同一個早上，蘇綿的第二場繡會開張，夫人們拿著永昌的銀票來換繡，錢莊門口第一次排起隊。",
+      "extra_hooks": [
+        "蘇綿坐在繡會中間，手上的布條拆了一半，頭一次自己穿針：「這一幅，我親手縫的。」"
+      ],
+      "conflict": "抵押品扣在城門，可稅關只扣三天，三天後一樣運走。",
+      "turn": "唐越說：「三天夠了。驗貨那天，讓全京城都來看。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "唐越剛要出門，門口站著一個魁梧的身影：唐鼎。「妳要驗國公府的東西？」他堵住門：「跟我回家。」",
+        "question": "唐越會跟爹回家嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "huzhu",
+        "dalian"
+      ],
+      "spectacle": "城門口一排被扣下的油布大車，守城兵掀開油布一角，露出一箱箱貼著永昌封條的木箱。",
+      "glamour_shot": "蘇綿坐在繡會正中，第一次不藏手，淺粉衣袖捲起，捏針對著陽光穿線，梨渦終於笑開。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "抵押品被扣在城門三天",
+        "第二場繡會吸走大筆永昌銀票",
+        "蘇綿第一次親手繡完一幅"
+      ],
+      "characters": [
+        "song-zhu",
+        "a-sheng",
+        "su-mian",
+        "tang-yue",
+        "s02-tang-fu"
+      ],
+      "locations": [
+        "京城城門",
+        "京城西市長街",
+        "不虧當鋪門口"
+      ],
+      "state": {
+        "time": "第七月二十一",
+        "knowledge": "她知道抵押品扣得住三天；永昌門口開始有人排隊領錢。",
+        "carry_forward": "唐鼎堵門要女兒回家。"
+      }
+    },
+    {
+      "number": 94,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "御宴上的酒",
+      "youtube_title": "被趕出宮的御廚堵門要女兒回家，當鋪千金一句話問出十年前御宴上那罈貢酒的真相",
+      "duration_s": 110,
+      "logline": "宋銖要留下唐越，得先解開唐家的心結。",
+      "hook": "宋銖倒了一杯茶給唐鼎：「唐師傅，十年前那罈酒，是誰送進宮的？」唐鼎端茶的手停在半空。",
+      "hook_type": "question",
+      "mid_hook": "唐鼎終於開口：十年前御宴，他一口嚐出貢酒是兌的，當場說了出來，被說成辱沒貢品，全家趕出宮。",
+      "conflict": "唐鼎怕女兒走他的老路，說真話、被趕走。",
+      "turn": "宋銖讓林雙翻出永昌的廢帳頁：十年前那批貢酒的錢，正是永昌錢莊經手。唐鼎盯著帳頁，臉漲得通紅。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "唐鼎解下腰間空刀鞘，把女兒的小刀插進去，放在她手上：「妳要驗，就驗到底。」轉身走出門，背影第一次挺直。",
+        "question": "唐越這一驗，能替唐家討回十年嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "huzhu",
+        "dalian",
+        "shangzhan"
+      ],
+      "spectacle": "燭光下，十年前的廢帳頁攤在唐鼎面前，一行『貢酒』與永昌的戳記被燭光照亮。",
+      "glamour_shot": "唐越雙手接過父親的刀鞘，圓眼含淚卻不掉，嘴角抿得死緊，豪爽的姑娘第一次安靜站著。",
+      "setups": [],
+      "payoffs": [
+        "s02-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查出唐家被趕出宮是因為說破永昌經手的假貢酒",
+        "唐鼎准女兒去驗"
+      ],
+      "characters": [
+        "song-zhu",
+        "tang-yue",
+        "s02-tang-fu",
+        "lin-shuang"
+      ],
+      "locations": [
+        "不虧當鋪"
+      ],
+      "state": {
+        "time": "第七月二十二",
+        "knowledge": "她知道永昌十年前就經手假貢酒。",
+        "carry_forward": "城門驗貨在後天。"
+      }
+    },
+    {
+      "number": 95,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "一條舌頭驗全城",
+      "youtube_title": "御廚之女當著全京城驗錢莊抵押品，假玉假參假酒一樣樣露餡，錢莊門口一夜排滿擠兌人潮",
+      "duration_s": 120,
+      "logline": "唐越要在全京城面前驗出永昌的假貨，這一場，是她自己的。",
+      "hook": "城門口人山人海，唐越把刀鞘往桌上一拍：「第一箱。」守城兵撬開木箱，裡面是一株千年人參。",
+      "hook_type": "image",
+      "mid_hook": "唐越咬下一小片參鬚，吐掉：「蘿蔔根，糖水泡的。」第二箱玉器她用舌尖一碰：「石粉膠。」人群開始往永昌的方向跑。",
+      "extra_hooks": [
+        "賈通擠進人群大喊：「她是當鋪的人，作假！」唐越把刀遞給他：「那你嚐。」賈通不敢接。"
+      ],
+      "conflict": "永昌靠抵押品撐著信用，唐越要當眾把信用驗穿。",
+      "turn": "第十箱是那九罈假酒的同批，唐越把十年前的事也說了出來：「我爹被趕出宮那年，嚐的就是這個味。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "永昌錢莊門口擠滿領錢的人，賈通快撐不住了——街口忽然駛來十輛銀車，車上插著安國公府的旗。賈通大笑：「領！照領！」",
+        "question": "國公府真有這麼多銀子撐場嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "shangzhan",
+        "dalian"
+      ],
+      "spectacle": "城門口一排撬開的木箱，假參、假玉、假酒一字排開，人潮從城門一路湧向永昌錢莊。",
+      "glamour_shot": "唐越站在木箱上，短打、刀鞘在腰，咬一片參鬚吐出，圓眼掃過全場，笑得豪爽張揚。",
+      "setups": [],
+      "payoffs": [
+        "s02-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐越當眾驗出永昌抵押庫十箱假貨，贏下她自己的一場",
+        "替唐家說出十年前的真相"
+      ],
+      "characters": [
+        "tang-yue",
+        "song-zhu",
+        "s02-yongchang-zhangshi",
+        "s02-tang-fu",
+        "a-sheng"
+      ],
+      "locations": [
+        "京城城門",
+        "永昌錢莊門口"
+      ],
+      "state": {
+        "time": "第七月二十四",
+        "knowledge": "她知道永昌的抵押品幾乎全是假的；國公府運銀車來撐場。",
+        "carry_forward": "十輛銀車停在永昌門口。"
+      }
+    },
+    {
+      "number": 96,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "鉛心銀",
+      "youtube_title": "國公府十車白銀來救錢莊，御廚之女咬了一口銀錠，裡面是鉛，擠兌人潮當場炸開",
+      "duration_s": 105,
+      "logline": "宋銖要知道國公府的銀車是真撐場還是唱戲。",
+      "hook": "唐越從銀車上拿起一錠銀子，一口咬下去，牙印底下露出一點灰：「鉛心的。」賈通的笑卡在喉嚨。",
+      "hook_type": "danger",
+      "mid_hook": "消息一傳開，排隊的人從一條街排到兩條街；永昌的夥計把大門拉上一半，賈通在門縫裡喊「明日再領」，石頭沒飛，飛的是一張張銀票。",
+      "conflict": "前世永昌三年後才倒，這一世它正在她眼前搖晃。",
+      "turn": "銀車只有第一層是真銀，底下全是鉛心——國公府沒打算救永昌，只是想撐過侯府到期那一天。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "傍晚，溫九親自走進不虧當鋪，象牙尺收在袖裡：「宋小姐，十萬兩，侯府還妳。」宋銖撥一顆算盤珠，沒抬頭。",
+        "question": "她會接下這個十萬兩的價嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian"
+      ],
+      "spectacle": "永昌錢莊門口兩條街的人潮，大門拉上一半，門縫裡伸出一隻手接銀票，金匾在黃昏裡斜了一點。",
+      "glamour_shot": "宋銖站在對街茶樓的二樓，倚欄看擠兌的人潮，手裡慢慢撥算盤，嘴角一點笑。",
+      "setups": [],
+      "payoffs": [
+        "s02-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "永昌錢莊擠兌，比前世早了兩年多開始倒"
+      ],
+      "characters": [
+        "song-zhu",
+        "tang-yue",
+        "s02-yongchang-zhangshi",
+        "s02-guanshi"
+      ],
+      "locations": [
+        "永昌錢莊門口",
+        "西市茶樓",
+        "不虧當鋪"
+      ],
+      "state": {
+        "time": "第七月二十五",
+        "knowledge": "她知道國公府不救永昌，只想拖過侯府到期日。",
+        "carry_forward": "溫九親自來談價：十萬兩；侯府期限剩約七天。"
+      }
+    },
+    {
+      "number": 97,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "戶部的印",
+      "youtube_title": "國公府管事開價十萬她只還三萬，到期前一天窮書生來還利息，手上一張紙蓋著戶部大印",
+      "duration_s": 115,
+      "logline": "宋銖要用三萬兩買回侯府，可明天就到期，對方寧可拖死也不讓。",
+      "hook": "宋銖終於抬頭：「三萬。」溫九笑了：「不可能。」她把算盤收起來：「那我就等它倒。」",
+      "hook_type": "line",
+      "mid_hook": "第八個初一，到期前一天。衛熾抱著三箱當品進門，一放就挽袖子替母親搬椅子，像在自己家。",
+      "extra_hooks": [
+        "阿升小聲：「他今天從早上賴到現在，中午還吃了兩碗飯。」老鐘：「飯錢記他帳上。」"
+      ],
+      "conflict": "她知道永昌撐不久，可明天一到期，侯府就會被轉進國公府。",
+      "turn": "臨走前，衛熾從袖子裡掏出一張紙放上櫃台：「侯府舊宅，官價三萬兩，准贖。」紙上蓋著戶部的大印。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "宋銖盯著那方紅印：戶部的印，不是假的。她抬頭，衛熾已經倚在門框上：「說了，利息抵。」",
+        "question": "一個欠錢的小吏，怎麼拿得到戶部的印？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "daozhui",
+        "xiju"
+      ],
+      "spectacle": "櫃台上一張白紙，戶部朱紅大印特寫，印泥在燭光下還是濕的。",
+      "glamour_shot": "衛熾倚著門框，舊青袍袖口磨白，桃花眼半瞇看她讀紙，等她抬頭那一刻才笑。",
+      "setups": [
+        "s02-t21",
+        "s02-t22",
+        "m07"
+      ],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到戶部官價三萬兩准贖的文書",
+        "第八個初一，衛熾從早賴到晚，替當鋪搬了三箱當品、替母親搬椅子"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "s02-guanshi",
+        "song-mu",
+        "a-sheng",
+        "lao-zhong"
+      ],
+      "locations": [
+        "不虧當鋪"
+      ],
+      "state": {
+        "time": "第八個初一",
+        "knowledge": "她手上有戶部准贖的文書；她開始懷疑衛熾不是小吏。",
+        "carry_forward": "明天侯府到期；文書要對方認。"
+      }
+    },
+    {
+      "number": 98,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "官價",
+      "youtube_title": "到期當天錢莊不認戶部文書，戶部尚書親自到場念出一條律，二十萬兩的抵押當場作廢",
+      "duration_s": 110,
+      "logline": "宋銖要永昌認下官價，永昌只認國公府。",
+      "hook": "到期當天一早，宋銖把文書拍在永昌櫃台。賈通看都不看：「戶部管國庫，管不到我的錢莊。」",
+      "hook_type": "danger",
+      "mid_hook": "門外有人咳了兩聲。戶部尚書鄭衡踱進來，山羊鬚一抖：「帳冊遺失，以官價為準。」他頓了頓：「大晏律，三百一十二條。」",
+      "conflict": "永昌燒了帳、漲到二十萬，就是在賭沒人管得到。",
+      "turn": "鄭衡看了宋銖一眼，想起當初那張「代保官糧五車」的收據，嘴角抽了一下：「宋小姐，又見面了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "賈通癱在椅上，溫九從後堂走出，慢慢展開象牙尺：「律是戶部的，宅子是國公爺的。國公爺不認。」",
+        "question": "國公爺要跟戶部硬碰硬嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian"
+      ],
+      "spectacle": "永昌錢莊大堂，鄭衡的官袍一進門，滿堂夥計齊齊低頭，二十萬兩的告示被撕下。",
+      "glamour_shot": "宋銖站在鄭衡身側，一手按住文書，抬眼看賈通，報出「三萬兩」時聲音特別溫柔。",
+      "setups": [],
+      "payoffs": [
+        "s02-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二十萬兩的抵押重算作廢，回到官價三萬兩"
+      ],
+      "characters": [
+        "song-zhu",
+        "hubu-shangshu",
+        "s02-yongchang-zhangshi",
+        "s02-guanshi"
+      ],
+      "locations": [
+        "永昌錢莊大堂"
+      ],
+      "state": {
+        "time": "第八月初二",
+        "knowledge": "她知道律站在她這邊，可國公府不認。",
+        "carry_forward": "溫九說國公爺不認。"
+      }
+    },
+    {
+      "number": 99,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "國公爺讓了",
+      "youtube_title": "國公府管事說不認，當夜國公府千金卻親自登門，一句我父親讓了，讓當鋪千金更不安",
+      "duration_s": 105,
+      "logline": "宋銖準備跟國公府耗到底，對方卻突然鬆手。",
+      "hook": "宋銖回當鋪就叫阿升關門：「從今天起，誰來談都不開。」門外響起一個甜而慢的聲音：「我也不開？」",
+      "hook_type": "question",
+      "mid_hook": "宇文瀟坐下，親手替宋銖倒茶：「我父親說，侯府他讓了，三萬兩。」宋銖沒碰那杯茶。",
+      "extra_hooks": [
+        "宇文瀟看著那杯沒動的茶笑了：「妳怕茶？我也怕。」"
+      ],
+      "conflict": "國公府讓得太快，快得像早就不要了。",
+      "turn": "宇文瀟走前留下一句：「宅子給妳。地底下的東西，妳自己小心。」宋銖還沒問，紅轎已經走遠。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "宋銖把文書和宇文瀟的話並排寫在帳上，算盤停住：國公府燒帳、漲價、栽贓，最後一夜之間全讓——她贏得太容易了。",
+        "question": "國公府為什麼突然不要侯府了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "huzhu",
+        "dalian"
+      ],
+      "spectacle": "夜裡的當鋪，紅轎停在門口，轎燈映著『不虧』的匾，宇文瀟的正紅衣裙跨過門檻。",
+      "glamour_shot": "宇文瀟在燭光下替宋銖倒茶，丹鳳眼低垂、金步搖不晃，紅唇一勾，說「我也怕」時聲音輕得像真話。",
+      "setups": [
+        "m09",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "國公府鬆口，侯府三萬兩可贖"
+      ],
+      "characters": [
+        "song-zhu",
+        "yuwen-xiao",
+        "a-sheng"
+      ],
+      "locations": [
+        "不虧當鋪"
+      ],
+      "state": {
+        "time": "第八月初二夜",
+        "knowledge": "她知道國公府讓了侯府，宇文瀟提醒她地底下有東西。",
+        "carry_forward": "明天去簽贖約；衛熾的身分還沒問清。"
+      }
+    },
+    {
+      "number": 100,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "那妳猜",
+      "youtube_title": "侯府贖約簽成那晚，當鋪千金第一次認真看著窮書生說你不是小吏，他只回了一句那妳猜",
+      "duration_s": 125,
+      "logline": "宋銖要贖回侯府，也要知道替她拿到戶部印的人到底是誰。",
+      "hook": "宋銖把宇文瀟那杯茶倒進花盆：「地底下的東西……」她抬頭：「明天先簽，簽完再挖。」",
+      "hook_type": "line",
+      "mid_hook": "永昌錢莊的後堂，賈通按下手印，侯府地契推到宋銖面前。她數出三萬兩銀票，帳上一下子只剩四千兩。",
+      "extra_hooks": [
+        "老鐘捧著地契，眼鏡繩抖個不停：「老奴……這輩子沒想過能再碰它。」"
+      ],
+      "conflict": "侯府就要回來了，可她還不知道是誰在背後替她開門。",
+      "turn": "當夜衛熾來看地契，她沒有趕他，而是把那張蓋了戶部印的紙攤開：「這個印，你借的還是偷的？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她第一次認真看他：「你不是小吏。」他說：「我是欠妳錢的。」「欠錢的拿不到戶部的印。」「那妳猜。」她唇動了一下，一個字沒說出口，把紙收進袖子。",
+        "question": "她猜到的那個字是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "huzhu",
+        "dalian",
+        "daozhui"
+      ],
+      "spectacle": "燭光下的當鋪櫃台，侯府地契與戶部文書並排，一雙手把文書折好、收進墨綠窄袖。",
+      "glamour_shot": "宋銖在燭光裡抬眼直視衛熾，嘴唇微張又闔上，袖口收起那張紙時指尖停了一瞬。",
+      "setups": [],
+      "payoffs": [
+        "s02-t21",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "簽下贖約，拿回侯府地契",
+        "帳上從三萬四千兩花到四千兩"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "lao-zhong",
+        "s02-yongchang-zhangshi",
+        "lin-shuang"
+      ],
+      "locations": [
+        "永昌錢莊後堂",
+        "不虧當鋪櫃台"
+      ],
+      "state": {
+        "time": "第八月初三夜",
+        "knowledge": "她心裡猜到了他是誰，沒說出口。",
+        "carry_forward": "侯府地契在手；帳上四千兩；宇文瀟說地底下有東西。"
+      }
+    },
+    {
+      "number": 101,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "門口站很久",
+      "youtube_title": "當鋪千金用三萬兩買回被抵押的侯府，全家站在門口，當年的侯爺卻一步都不敢跨進去",
+      "duration_s": 105,
+      "logline": "宋銖買回了侯府，可她的父親連門都不敢進。",
+      "hook": "宋銖把袖子裡的紙按得更緊，轉身把一把生鏽的大鑰匙插進侯府鎖孔：「回家。」鎖咔一聲開了。",
+      "hook_type": "image",
+      "mid_hook": "大門推開，灰塵在陽光裡飛成一片。母親捂住嘴，林雙、蘇綿、唐越在後面不敢出聲——父親卻往後退了一步。",
+      "extra_hooks": [
+        "阿升衝進前院又衝回來：「小姐！後院那口井還在！」老鐘：「井又不收錢，嚷什麼。」"
+      ],
+      "conflict": "侯府回來了，可當年把它押出去的是父親，他覺得自己沒資格回來。",
+      "turn": "她以為父親是捨不得，聽他低聲說了一句才懂：「押宅子那天，是我簽的字。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "宋銖把鑰匙放進父親手心：「你簽出去的，我買回來了。」宋彥看著鑰匙，手指一根根鬆開，鑰匙落回她手上。",
+        "question": "父親到底肯不肯進門？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "huzhu"
+      ],
+      "spectacle": "侯府大門緩緩推開，一年的灰塵在光柱裡揚起，門外一家人與三位小姐的剪影。",
+      "glamour_shot": "宋銖站在門檻前回頭看父親，晨光從背後照來，墨綠衣裙鑲了一圈金邊，眼神第一次軟下來。",
+      "setups": [
+        "s02-t23"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "侯府舊宅正式回到宋家手上"
+      ],
+      "characters": [
+        "song-zhu",
+        "song-fu",
+        "song-mu",
+        "lin-shuang",
+        "su-mian",
+        "tang-yue",
+        "a-sheng",
+        "lao-zhong"
+      ],
+      "locations": [
+        "永安侯府舊宅門口",
+        "永安侯府舊宅前院"
+      ],
+      "state": {
+        "time": "第八月初四",
+        "knowledge": "她知道父親覺得是自己把侯府押掉的，不肯進門。",
+        "carry_forward": "帳上四千兩；父親站在門外。"
+      }
+    },
+    {
+      "number": 102,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "空的嫁妝箱",
+      "youtube_title": "母親回到侯府第一件事是搬出當年的嫁妝箱，打開卻空空如也，女兒說了一句娘妳來當鋪",
+      "duration_s": 110,
+      "logline": "宋銖要讓母親重新站起來，可母親心裡最重的，是那只空箱子。",
+      "hook": "父親坐在門外台階上不動，母親卻提起裙子跨進門，直奔後院庫房。",
+      "hook_type": "question",
+      "mid_hook": "母親從庫房拖出一只紅漆嫁妝箱，鎖已經壞了。她掀開蓋子——空的，連襯布都被人拿走了。",
+      "conflict": "母親以為侯府回來，從前的日子就能回來，可箱子是空的。",
+      "turn": "宋銖蹲下來看著空箱：「娘，前世是我倒空的。」她把蓋子推開：「這一世，自己裝。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "宋銖握住母親的手：「娘，妳來當鋪。」母親看著自己手上那只舊玉鐲，很久，輕輕點了一下頭，眼淚掉進空箱裡。",
+        "question": "侯夫人真敢站上當鋪的櫃台？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "huzhu"
+      ],
+      "spectacle": "積灰的庫房裡，一只紅漆嫁妝箱的蓋子掀開，裡面空空蕩蕩，一道光斜照進箱底。",
+      "glamour_shot": "宋母跪坐在空箱前，素色衣袖垂地，手上舊玉鐲在光裡泛著淡綠，宋銖蹲在她身旁仰臉看她。",
+      "setups": [],
+      "payoffs": [
+        "s02-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母親回到侯府，答應去當鋪"
+      ],
+      "characters": [
+        "song-zhu",
+        "song-mu",
+        "song-fu"
+      ],
+      "locations": [
+        "永安侯府舊宅庫房",
+        "永安侯府舊宅門口"
+      ],
+      "state": {
+        "time": "第八月初四午後",
+        "knowledge": "她知道母親願意來當鋪；父親還坐在門外。",
+        "carry_forward": "明天母親第一次上櫃台。"
+      }
+    },
+    {
+      "number": 103,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "侯夫人收當",
+      "youtube_title": "前侯夫人第一天站上當鋪櫃台，估錯價被小夥計糾正，第一位客人一進門全店都安靜了",
+      "duration_s": 105,
+      "logline": "宋銖要讓母親在當鋪站穩，第一天卻來了一位母親最不想見的客人。",
+      "hook": "母親站上櫃台，第一件當品是一只銅壺，她開口：「十兩？」阿升從櫃台底下冒出頭：「夫人，這壺三十文。」",
+      "hook_type": "line",
+      "mid_hook": "趙萬斗來買繡，順口說了一句：「聽說裴府昨夜把馬車都賣了。」宋銖手上的筆停了一下。",
+      "extra_hooks": [
+        "老鐘手把手教母親看銀子的成色，母親學得快，第三件就估準了，老鐘低聲：「夫人當年管家，本來就會算。」"
+      ],
+      "conflict": "母親怕自己丟侯府的臉，更怕丟女兒的臉。",
+      "turn": "母親估到第五件，已經不用看老鐘；她發現自己記得每一樣東西在侯府時值多少——管了二十年家，她本來就是算帳的人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "門簾一掀，一個戴金步搖的中年婦人走進來，看見櫃台後的人，腳步僵住。裴夫人。母親的手按在算盤上，指節發白。",
+        "question": "裴夫人來當鋪，要當什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "huzhu"
+      ],
+      "spectacle": "當鋪櫃台後，前侯夫人一身素衣站在算盤前，身後三位小姐、老鐘與阿升排成一列看她第一單。",
+      "glamour_shot": "宋母低頭看銀子成色，素髻上一根銀簪，溫婉的側臉在窗光裡，第一次露出一點女兒那種算計的神色。",
+      "setups": [
+        "s02-t24"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "母親第一天上櫃台就估準了五件當品"
+      ],
+      "characters": [
+        "song-mu",
+        "song-zhu",
+        "a-sheng",
+        "lao-zhong",
+        "s02-zhanggui",
+        "pei-mu"
+      ],
+      "locations": [
+        "不虧當鋪櫃台"
+      ],
+      "state": {
+        "time": "第八月初五",
+        "knowledge": "她聽說裴府在賣家當；裴夫人上門了。",
+        "carry_forward": "裴夫人站在母親的櫃台前。"
+      }
+    },
+    {
+      "number": 104,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "金步搖",
+      "youtube_title": "當年退婚的裴夫人來當金步搖，前侯夫人沒有冷笑也沒有壓價，一句公道價讓她當場紅了眼",
+      "duration_s": 115,
+      "logline": "宋銖想替母親出氣，母親卻要自己收這一單。",
+      "hook": "裴夫人轉身要走，母親開口：「來了，就當吧。」裴夫人停住，從髮上拔下那支金步搖。",
+      "hook_type": "line",
+      "mid_hook": "宋銖伸手要接，母親把她的手輕輕按下，自己拿起步搖秤了秤：「金十二兩，工三兩，公道價一百八十兩。」",
+      "conflict": "當年退婚的主使站在母親面前，母親要決定怎麼對她。",
+      "turn": "裴夫人等著被壓價、被羞辱，什麼都沒等到。她接過一百八十兩，手在抖：「妳……不恨我？」母親：「當鋪不收恨。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門被撞開，裴硯之衝進來一把搶過當票：「娘！誰准妳來這種地方！」他抬頭撞上宋銖的眼睛，臉一下子白了。",
+        "question": "裴硯之來搶當票，要鬧到什麼地步？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzhu",
+        "xiju"
+      ],
+      "spectacle": "櫃台上一支金步搖在秤盤裡輕輕晃動，母親的手和裴夫人的手隔著秤桿。",
+      "glamour_shot": "宋母報價時抬眼，溫婉的眼神平靜如水，舊玉鐲碰響算盤，一聲清脆。",
+      "setups": [
+        "s02-t25"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "母親公道收下裴夫人的金步搖",
+        "收當閒話裡，母親問宋銖：「侯府的匾呢？」她沒答"
+      ],
+      "characters": [
+        "song-mu",
+        "song-zhu",
+        "pei-mu",
+        "pei-yanzhi"
+      ],
+      "locations": [
+        "不虧當鋪櫃台"
+      ],
+      "state": {
+        "time": "第八月初五午",
+        "knowledge": "她知道母親能自己收這一單；裴府窮到夫人當首飾。",
+        "carry_forward": "裴硯之衝進當鋪；母親問起匾。"
+      }
+    },
+    {
+      "number": 105,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "裴府是怎麼敗的",
+      "youtube_title": "前未婚夫衝進當鋪搶當票，被前丈母娘一句話問住，裴府一夜敗光的原因竟跟那家錢莊有關",
+      "duration_s": 110,
+      "logline": "宋銖要知道裴府為什麼一夜敗光，答案從裴硯之自己嘴裡掉出來。",
+      "hook": "母親淡淡開口：「裴公子，當票撕了，步搖就不是你娘的了。」裴硯之捏著當票，手停在半空。",
+      "hook_type": "danger",
+      "mid_hook": "裴硯之咬牙說出來：裴府把家底全存進永昌錢莊，國公府說保本保息——擠兌那三天，一兩都沒領回來。",
+      "conflict": "裴府攀上的高枝就是永昌，宋銖贏的那一仗，順手把裴府打穿了。",
+      "turn": "宋銖這才明白：國公府連自己養的狗都不救；裴府從頭到尾只是一顆用完就丟的棋。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "裴硯之把玉扇拍在櫃台上：「我知道國公府為什麼讓了侯府。一千兩，我告訴妳。」宋銖低頭撥算盤，算盤珠停在三十文的位置。",
+        "question": "她肯花錢買裴硯之的消息嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "當鋪櫃台上並排一張當票、一支金步搖、一把玉扇，三樣東西都屬於退婚的那一家。",
+      "glamour_shot": "宋銖撥算盤時睫毛不抬，只在報價前一秒抬眼看裴硯之，眼神清亮得像看一件估過價的舊貨。",
+      "setups": [],
+      "payoffs": [
+        "s02-t24"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查出裴府的家底全敗在永昌擠兌"
+      ],
+      "characters": [
+        "song-zhu",
+        "song-mu",
+        "pei-yanzhi",
+        "pei-mu"
+      ],
+      "locations": [
+        "不虧當鋪櫃台"
+      ],
+      "state": {
+        "time": "第八月初五午後",
+        "knowledge": "她知道裴府是被國公府用完就丟的棋。",
+        "carry_forward": "裴硯之要賣一條國公府的消息。"
+      }
+    },
+    {
+      "number": 106,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "三十文的消息",
+      "youtube_title": "前未婚夫開價一千兩賣消息，當鋪千金只給三十文，他卻說出國公府半夜在侯府挖地的事",
+      "duration_s": 105,
+      "logline": "宋銖要知道國公府為什麼讓了侯府，又不肯讓裴硯之再賺她一文。",
+      "hook": "宋銖把三十文推過去：「消息，就這個價。」裴硯之瞪著三十文，咬牙全收進袖子。",
+      "hook_type": "line",
+      "mid_hook": "裴硯之說：侯府押在永昌那一年，他常看見溫九帶人半夜進侯府，扛著鏟子，天亮前出來；這兩個月忽然不去了。",
+      "conflict": "國公府在她家地底下找過東西，她不知道找的是什麼、找到了沒有。",
+      "turn": "母親想起來：侯府後院有一口舊地窖，當年父親不准任何人下去。老鐘聽見「地窖」兩個字，手裡的算盤停了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "夜裡老鐘敲開她的門，眼鏡繩繞在指頭上：「小姐，抄家那年的虧空，」他問：「妳記得多少？」「八千。」老鐘慢慢搖頭：「我記得是一萬八。」",
+        "question": "老鐘和她記得的帳，為什麼差了一萬兩？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "裴硯之回憶裡的侯府夜景：月下空院，幾個提燈的人影扛著鏟子走過迴廊。",
+      "glamour_shot": "宋銖在燭光下聽老鐘說出「一萬八」，手裡的筆尖懸著，一滴墨落在帳頁上，她沒察覺。",
+      "setups": [
+        "m08",
+        "s02-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "用三十文問出國公府曾半夜在侯府挖地"
+      ],
+      "characters": [
+        "song-zhu",
+        "pei-yanzhi",
+        "song-mu",
+        "lao-zhong"
+      ],
+      "locations": [
+        "不虧當鋪櫃台",
+        "不虧當鋪後院"
+      ],
+      "state": {
+        "time": "第八月初五夜",
+        "knowledge": "她知道國公府在侯府挖過地；老鐘記得的帳和她記得的不一樣。",
+        "carry_forward": "老鐘說一萬八，她記得八千。"
+      }
+    },
+    {
+      "number": 107,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "被改過的帳",
+      "youtube_title": "老帳房跟重生千金記得的帳差一萬兩，他翻出藏了二十年的那一頁，才知道前世的罪證是假帳",
+      "duration_s": 120,
+      "logline": "宋銖要弄清楚是她記錯了，還是老鐘記錯了——答案是兩個都沒錯。",
+      "hook": "宋銖搖頭：「我親眼看過抄家的帳，八千。」老鐘從懷裡掏出一頁發黃的紙——正是那天他闔上、說蟲蛀了的那一頁。",
+      "hook_type": "reversal",
+      "mid_hook": "老鐘的原帳上，侯府那一年的虧空寫著一萬八，每一筆他都記得。宋銖前世在抄家堂上看到的那本，數目少了一萬，多了三行她從沒見過的字：「鹽商某，寄銀。」",
+      "extra_hooks": [
+        "老鐘的手抖得握不住紙：「老奴記帳四十年，一筆都沒記錯過。」"
+      ],
+      "conflict": "她靠記得活到今天，可她記得的那本帳，是別人想讓她看見的帳。",
+      "turn": "兩本帳都是真的筆跡、真的格式，差別只在：抄家那本被人改過——少掉的一萬兩被抹平，換成了「私通鹽商」的罪證。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老鐘把兩頁帳並排，手指停在那三行字上，聲音啞了：「小姐，這三行，是仿我的字寫的。」他摘下眼鏡，第一次在她面前紅了眼。",
+        "question": "誰仿了老鐘的字，改了侯府的帳？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzhu"
+      ],
+      "spectacle": "燭光下兩頁帳並排，一頁發黃、一頁是她憑記憶寫下的，三行多出來的字被燭火照得發黑。",
+      "glamour_shot": "宋銖在燭光下把兩頁帳疊在一起對光看，杏眼裡的光一點點冷下去，嘴角那點笑完全消失。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s02-t05",
+        "m08"
+      ],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "確認前世抄家的罪證帳是改過的，老鐘的原帳才是真的",
+        "老鐘說出他藏了二十年的那一頁"
+      ],
+      "characters": [
+        "song-zhu",
+        "lao-zhong"
+      ],
+      "locations": [
+        "不虧當鋪後院"
+      ],
+      "state": {
+        "time": "第八月初六凌晨",
+        "knowledge": "她知道前世的罪證帳被人仿老鐘的字改過，「私通鹽商」是栽的。",
+        "carry_forward": "老鐘的原帳；改帳的人是誰還不知道。"
+      }
+    },
+    {
+      "number": 108,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "母親收了他的當",
+      "youtube_title": "窮書生初一來還利息撞上前侯夫人坐櫃台，被當成窮學生收了茶錢，還留下來幫忙吃了晚飯",
+      "duration_s": 110,
+      "logline": "宋銖心裡全是那三行假帳，衛熾卻在初一撞上了她母親的櫃台。",
+      "hook": "第九個初一，衛熾掀簾進門：「利息。」櫃台後坐的不是宋銖，是她母親：「書生，當什麼？」",
+      "hook_type": "image",
+      "mid_hook": "母親請他喝茶，順手收了兩文茶錢；他乖乖付了，還替母親把一整架當品搬進庫房，搬完留下來吃晚飯，坐在宋銖對面。",
+      "extra_hooks": [
+        "一個駝背的老婦人提著一籃雞蛋進門：「給小宋掌櫃。」她笑出一口缺牙：「去年她沒收錢。」衛熾抬頭看了宋銖一眼。"
+      ],
+      "conflict": "她想找人說那本假帳，可她連自己能信誰都不確定。",
+      "turn": "飯桌上母親說：「這孩子從小最怕欠人。」衛熾看著碗：「她不欠人，人欠她。」宋銖筷子停了一下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "飯吃到一半，屋頂輕響。影倒掛在窗外，對衛熾比了一個手勢，又指向侯府的方向。衛熾放下碗：「有人在妳家後牆。」",
+        "question": "誰半夜摸進了侯府？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "daozhui"
+      ],
+      "spectacle": "當鋪後院的晚飯桌，一盞油燈、一籃雞蛋、一家人加一個欠錢的書生，窗外倒掛著一個黑影。",
+      "glamour_shot": "衛熾挽著袖子扛一架當品走過庫房門口，舊青袍沾了灰，回頭對宋母笑得乖，宋銖在後面看得愣住。",
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第九個初一，衛熾第一次留下吃晚飯、替母親搬完一整架當品",
+        "收利息十兩，帳上四千零十兩"
+      ],
+      "characters": [
+        "wei-chi",
+        "song-mu",
+        "song-zhu",
+        "ying",
+        "a-sheng",
+        "lao-zhong"
+      ],
+      "locations": [
+        "不虧當鋪櫃台",
+        "不虧當鋪後院"
+      ],
+      "state": {
+        "time": "第九個初一，夜",
+        "knowledge": "她知道老婦人記得那次免當金；有人在侯府後牆。",
+        "carry_forward": "影報信：侯府後牆有人。"
+      }
+    },
+    {
+      "number": 109,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "地底下沒讓",
+      "youtube_title": "國公府管事半夜翻進侯府量地窖，被當場撞見還笑說宅子讓了地底下沒讓，門外的老侯爺全聽見了",
+      "duration_s": 110,
+      "logline": "宋銖要把國公府的手擋在侯府外面，對方卻說，他們要的從來不是宅子。",
+      "hook": "宋銖提燈衝進侯府後院，燈光照到一把象牙尺，尺的那頭插在地窖的通風口裡。溫九抬頭：「宋小姐，來得真快。」",
+      "hook_type": "danger",
+      "mid_hook": "溫九收起尺，撣撣衣袖：「國公爺讓的是宅子，沒讓地底下。」影的劍出鞘半寸，溫九笑著翻牆走了。",
+      "conflict": "侯府是她的了，可國公府要的東西還在地底下，而且他們不打算放手。",
+      "turn": "她轉身，發現父親站在大門外的黑暗裡，溫九的話他全聽見了。他看的不是她，是後院地窖的方向。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "宋彥一步步走到大門前，抬起腳停在門檻上方，手扶著門框在發抖。宋銖屏住呼吸，提燈的手不敢動。",
+        "question": "父親這一步，會跨進來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "夜裡侯府後院，一盞提燈照著地窖的通風口，象牙尺從口裡抽出，牆頭一道人影翻過月亮。",
+      "glamour_shot": "宋銖提燈站在後院，燈光從下往上只照到她的臉，眼神冷得像算完最後一筆。",
+      "setups": [
+        "s02-t23"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "把溫九趕出侯府"
+      ],
+      "characters": [
+        "song-zhu",
+        "s02-guanshi",
+        "ying",
+        "song-fu",
+        "wei-chi"
+      ],
+      "locations": [
+        "永安侯府舊宅後院",
+        "永安侯府舊宅門口"
+      ],
+      "state": {
+        "time": "第九個初一，深夜",
+        "knowledge": "她知道國公府要的是侯府地底下的東西；父親似乎知道些什麼。",
+        "carry_forward": "父親站在門檻前。"
+      }
+    },
+    {
+      "number": 110,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "匾在當鋪",
+      "youtube_title": "老侯爺終於跨進侯府大門，抬頭一看正廳的匾是空的，女兒一句話讓他當場說不出話",
+      "duration_s": 130,
+      "logline": "宋銖等父親跨進門等了一個月，他跨進來的第一句話，問的是一塊匾。",
+      "hook": "宋彥的腳落下，跨過門檻。宋銖手裡的燈晃了一下，母親在身後捂住嘴。",
+      "hook_type": "image",
+      "mid_hook": "父親一路走過前院、迴廊，摸過每一根柱子，像在數；走到正廳門口，他停住了。",
+      "extra_hooks": [
+        "衛熾和影站在門外沒進來，衛熾低聲：「他們家的事，我們不收錢也不進。」影難得點了一下頭。"
+      ],
+      "conflict": "父親覺得侯府是他弄丟的，回來了也不像他的家。",
+      "turn": "她以為父親會問地窖，他卻抬頭看正廳上方——那裡本來掛著『永安』的匾，抵押那年被摘了，只剩兩個空釘。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "父親回頭問女兒：「匾呢？」宋銖笑了，眼眶卻紅了：「在當鋪。當年我當給自己的。」父親張了張嘴，一個字也說不出來。",
+        "question": "她什麼時候、為什麼把侯府的匾當給了自己？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzhu",
+        "xiju"
+      ],
+      "spectacle": "燈籠照著空蕩的正廳，正上方兩個生鏽的空釘，父親仰頭的剪影和一家人站在他身後。",
+      "glamour_shot": "宋銖在燈下仰臉看父親，笑著紅了眼，銅算盤簪在燈裡一閃，一滴淚沒掉下來。",
+      "setups": [],
+      "payoffs": [
+        "s02-t23",
+        "s02-t25"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "父親終於走進侯府",
+        "說出侯府的匾一直在當鋪"
+      ],
+      "characters": [
+        "song-zhu",
+        "song-fu",
+        "song-mu",
+        "wei-chi",
+        "ying"
+      ],
+      "locations": [
+        "永安侯府舊宅前院",
+        "永安侯府舊宅正廳"
+      ],
+      "state": {
+        "time": "第九個初一，夜半",
+        "knowledge": "全家知道匾在當鋪；她還沒說是什麼時候當的。",
+        "carry_forward": "匾要從當鋪贖回來掛上；地窖的事父親沒提。"
+      }
+    },
+    {
+      "number": 111,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "自己贖自己的匾",
+      "youtube_title": "侯府的匾竟壓在自家當鋪一年，千金親手贖回還照算利息，匾掛上那一刻全家站在門口",
+      "duration_s": 110,
+      "logline": "宋銖要把侯府的匾掛回去，可她得先從自己的當鋪把它贖出來。",
+      "hook": "天一亮，宋銖站上自己當鋪的櫃台外，遞進一張發黃的當票：「贖當。」櫃台後的母親愣住：「當主……宋銖？」",
+      "hook_type": "image",
+      "mid_hook": "當票上的日子是侯府押給永昌那天：錢莊的人摘下匾要劈了當柴，她用三兩銀子當下來，寫的當主是自己。老鐘算利息：「一年，三錢六分。」她一文不少付了。",
+      "extra_hooks": [
+        "阿升扛著匾的一頭，衛熾不知什麼時候扛起另一頭：「我路過。」今天不是初一。"
+      ],
+      "conflict": "匾回來了，掛匾的宴席她要請誰坐哪，比買侯府還難算。",
+      "turn": "匾一掛上，父親在匾下站了很久，忽然對她作了一個揖：「掌櫃的，這個家，謝了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡她寫宴席的座位帖，寫到主位旁邊那張，筆停在半空。她看了一眼門口那個還沒走的人，在帖上寫下兩個字：衛熾。",
+        "question": "他會坐上主位旁邊那個位子嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "daozhui",
+        "xiju"
+      ],
+      "spectacle": "『永安』匾被繩索緩緩拉上侯府正門，灰塵從匾面落下，全家與三位小姐在階下仰頭。",
+      "glamour_shot": "宋銖站在階下仰望匾額，晨光落在臉上，她抬手擋光，嘴角那點笑終於是真心的。",
+      "setups": [
+        "s02-t26"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "侯府的匾重新掛上",
+        "宋銖照付自己三錢六分利息，帳上四千零九兩六錢四分"
+      ],
+      "characters": [
+        "song-zhu",
+        "song-mu",
+        "song-fu",
+        "lao-zhong",
+        "a-sheng",
+        "wei-chi",
+        "lin-shuang",
+        "su-mian",
+        "tang-yue"
+      ],
+      "locations": [
+        "不虧當鋪櫃台",
+        "永安侯府舊宅門口"
+      ],
+      "state": {
+        "time": "第九月初二",
+        "knowledge": "她決定請衛熾坐主位旁邊。",
+        "carry_forward": "三日後開宴；座位帖寫了他的名字。"
+      }
+    },
+    {
+      "number": 112,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "空著的位子",
+      "youtube_title": "侯府喬遷宴三位小姐各顯神通，賓客全到齊了，當鋪千金替窮書生留的主位旁卻一直空著",
+      "duration_s": 110,
+      "logline": "宋銖要辦一場體面的喬遷宴，最在意的那個位子卻沒人坐。",
+      "hook": "影接過座位帖，看了一眼名字，抬頭看她。宋銖：「看什麼，送。」影消失前，嘴角好像動了一下。",
+      "hook_type": "line",
+      "mid_hook": "宴席上，蘇綿繡的桌巾、唐越掌的灶、林雙排的座次，趙萬斗第一個舉杯：「京城商幫，敬不虧！」連裴夫人都託人送了一盒點心。",
+      "extra_hooks": [
+        "唐鼎在灶房外探頭嚐了女兒一道菜，什麼都沒說，捲起袖子走進灶房。唐越的眼睛一下子亮了。"
+      ],
+      "conflict": "全京城最看不起她的人都來了，她請的那個人卻沒來。",
+      "turn": "菜上到第五道，她第三次看向那張空椅子；林雙低聲：「妳算帳從來不分心。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最後一道菜上桌，主位旁的椅子還空著。宋銖端起酒杯想說話，看了那張椅子一眼，酒杯又放下了。",
+        "question": "他為什麼沒來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "daozhui",
+        "xiju"
+      ],
+      "spectacle": "侯府正廳燈火通明，十桌宴席、蘇綿的繡桌巾、唐家父女同在灶前，主位旁一張空椅子。",
+      "glamour_shot": "宋銖換上一身新的深青窄袖衫，舉杯時燭光落在杏眼裡，眼神卻悄悄落在那張空椅上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "京城商幫當眾敬酒，承認不虧",
+        "唐鼎十年來第一次重新上灶"
+      ],
+      "characters": [
+        "song-zhu",
+        "ying",
+        "su-mian",
+        "tang-yue",
+        "lin-shuang",
+        "s02-zhanggui",
+        "s02-tang-fu",
+        "song-fu",
+        "song-mu"
+      ],
+      "locations": [
+        "永安侯府舊宅正廳",
+        "永安侯府舊宅灶房"
+      ],
+      "state": {
+        "time": "第九月初五，宴席",
+        "knowledge": "她發現自己一直在等他。",
+        "carry_forward": "主位旁的椅子空著。"
+      }
+    },
+    {
+      "number": 113,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "你欠我錢，你配",
+      "youtube_title": "窮書生在宴席最後一刻出現卻說我不配坐，當鋪千金一句你欠我錢你配，全場賓客都笑了",
+      "duration_s": 115,
+      "logline": "宋銖要他坐那個位子，他卻覺得自己坐不起。",
+      "hook": "門外傳來腳步聲。衛熾站在正廳門口，穿著那件洗舊的青袍，手裡拎著一壺酒：「我不配。」",
+      "hook_type": "line",
+      "mid_hook": "宋銖起身走到他面前，抽出袖子裡那疊借據晃了晃：「你欠我錢，你配。」滿廳先是一靜，然後趙萬斗第一個笑出聲。",
+      "conflict": "他坐上那個位子，等於全京城都看見她把他當成了誰。",
+      "turn": "衛熾坐下，她的父親親自替他斟酒：「小女的帳，勞你還了。」衛熾雙手接杯：「還不完。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門外通報：「戶部尚書鄭大人到——」鄭衡踱進正廳，一眼看見主位旁的人，臉色大變，膝蓋一軟就要往下彎。",
+        "question": "鄭衡這一跪，會不會當場拆穿他？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "daozhui",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "燈火通明的正廳，一疊借據在宋銖手裡展開成扇，主位旁的椅子被拉開，滿堂賓客回頭。",
+      "glamour_shot": "衛熾在門口低頭笑，桃花眼裡全是燈火；宋銖晃借據時下巴微揚，報價似的溫柔。",
+      "setups": [
+        "s02-t27"
+      ],
+      "payoffs": [
+        "s02-t26"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "衛熾坐上主位旁的位子",
+        "父親親自替他斟酒"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "song-fu",
+        "s02-zhanggui",
+        "hubu-shangshu"
+      ],
+      "locations": [
+        "永安侯府舊宅正廳"
+      ],
+      "state": {
+        "time": "第九月初五，宴中",
+        "knowledge": "全京城看見她讓他坐在主位旁；鄭衡認出了他。",
+        "carry_forward": "鄭衡的膝蓋正往下彎。"
+      }
+    },
+    {
+      "number": 114,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "地滑",
+      "youtube_title": "戶部尚書看見窮書生差點當眾下跪，他伸手一扶說了兩個字，當鋪千金壓低聲音問出憋了一年的話",
+      "duration_s": 110,
+      "logline": "宋銖要知道他為什麼每個月都來，在他身分快被揭穿的這一刻，她決定先問這個。",
+      "hook": "鄭衡的膝蓋離地只差一寸，衛熾起身托住他手肘：「鄭大人，地滑。」鄭衡僵著被扶上座位，山羊鬚抖個不停。",
+      "hook_type": "danger",
+      "mid_hook": "鄭衡整頓飯坐得像根柱子，每次衛熾夾菜他都先放下筷子。阿升小聲問唐越：「尚書大人是不是吃不慣？」唐越：「他是嚇的。」",
+      "extra_hooks": [
+        "一個紅衣丫鬟送來宇文瀟的賀禮：一幅繡，蘇綿那幅繡壞的牡丹，裱好了。附帖：「物歸原主。」"
+      ],
+      "conflict": "她猜到他是誰，可她更想知道的是另一件事。",
+      "turn": "她沒問「你是誰」，她問的是：「你為什麼每個月都來？」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "衛熾放下酒杯，看著她，聲音低了半度：「第一次來還利息那天——」滿廳的喧鬧好像一下子遠了，她手裡的筷子停在半空。",
+        "question": "第一次還利息那天，他看見了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju",
+        "daozhui"
+      ],
+      "spectacle": "宴席上，一品大員半跪的姿勢被一隻手托住，四周賓客的筷子同時停在半空。",
+      "glamour_shot": "衛熾托住鄭衡時微微側身，燈火映在他左手拇指的玉韘上，臉上還是那副懶懶的笑。",
+      "setups": [
+        "m09",
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "衛熾的身分在宴上沒被拆穿",
+        "宇文瀟把蘇綿那幅繡壞的牡丹送回來"
+      ],
+      "characters": [
+        "wei-chi",
+        "song-zhu",
+        "hubu-shangshu",
+        "a-sheng",
+        "tang-yue",
+        "su-mian"
+      ],
+      "locations": [
+        "永安侯府舊宅正廳"
+      ],
+      "state": {
+        "time": "第九月初五，宴中",
+        "knowledge": "她確定他不是小吏；她問出了為什麼每月都來。",
+        "carry_forward": "他正要說第一次還利息那天的事。"
+      }
+    },
+    {
+      "number": 115,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "妳沒收她的",
+      "youtube_title": "窮書生終於說出每月初一都來的原因，原來第一次還利息那天，他看見只收現銀的她做了一件事",
+      "duration_s": 125,
+      "logline": "宋銖以為他每月來是為了賴帳，答案卻是她自己都快忘了的一件事。",
+      "hook": "衛熾轉著酒杯：「那天有個老婦人。」他頓了頓：「來當棉襖，要五十文抓藥。」宋銖的臉色變了。",
+      "hook_type": "line",
+      "mid_hook": "「妳給了她一兩。」他說：「然後撕了當票。」他看著她：「妳說妳只收現銀。可妳沒收她的。」",
+      "extra_hooks": [
+        "宋銖嘴硬：「那是賒的。」衛熾：「妳連帳都沒記。我後來翻過妳的帳本。」老鐘在旁邊咳了一聲。"
+      ],
+      "conflict": "她最怕的就是不收錢的自己，可他偏偏是因為那個自己才來的。",
+      "turn": "她以為他每月來是為了借據、為了賴、為了錢；他來，是因為他看見她第一次不算帳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "衛熾說完，自己倒了一杯酒喝下：「所以我每月來。」他放下杯：「看妳還收不收。」宋銖愣在原地，算盤從袖子裡滑出來，掉在地上，珠子散了一地。",
+        "question": "她會承認那一次是心軟嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "daozhui",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "回憶的畫面：一年前的初一清晨，當鋪門口，她撕碎一張當票，紙片落在駝背老婦人的腳邊；門外拎著十兩銀子的衛熾停住了腳步。",
+      "glamour_shot": "宋銖聽他說「妳沒收她的」時，杏眼慢慢睜大，嘴角那點算計第一次完全掛不住，燭光在眼裡晃。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [
+        "m05"
+      ],
+      "general_payoffs": [
+        "揭開衛熾每月初一都來的原因：他看見她第一次不收錢"
+      ],
+      "characters": [
+        "wei-chi",
+        "song-zhu",
+        "lao-zhong"
+      ],
+      "locations": [
+        "永安侯府舊宅正廳",
+        "不虧當鋪門口（回憶）"
+      ],
+      "state": {
+        "time": "第九月初五，宴中",
+        "knowledge": "她知道他每月來，是因為看見她替老婦人免了當金。",
+        "carry_forward": "算盤珠散了一地；鄭衡全聽見了。"
+      }
+    },
+    {
+      "number": 116,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "他親手蓋的",
+      "youtube_title": "當鋪千金蹲下撿算盤珠，戶部尚書悄悄告訴她那方戶部大印是誰親手蓋的，她只回了三個字",
+      "duration_s": 110,
+      "logline": "宋銖要撿回散了一地的算盤珠，也要撿回她差點失守的那顆心。",
+      "hook": "宋銖蹲下去撿算盤珠，衛熾也蹲下來，兩人的手同時伸向同一顆珠子。她搶先一步：「這顆，一文。」",
+      "hook_type": "image",
+      "mid_hook": "鄭衡趁衛熾被趙萬斗拉去喝酒，湊到宋銖身邊咳了兩聲：「那方印……」他壓低聲音：「是他親手蓋的。」",
+      "conflict": "她得決定，要不要把心裡那個字說出來。",
+      "turn": "宋銖把最後一顆珠子穿回算盤：「我知道。」鄭衡愣住——她早就知道，卻一個字都沒說破。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門房捧進一只錦盒：「安國公府賀禮。」盒裡只有一塊茶餅，一張帖：「賀宋小姐喬遷。地窖潮，記得通風。」宋銖的笑一下子收住。",
+        "question": "國公爺怎麼知道侯府有地窖？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "daozhui",
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "燭光下滿地散落的算盤珠，兩隻手同時伸向一顆，一顆顆珠子被重新穿回算盤。",
+      "glamour_shot": "宋銖蹲在地上穿算盤珠，低頭時碎髮垂下，說「我知道」時抬眼，眼神清醒得一點都不像在心動。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s02-t27"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鄭衡證實戶部准贖文書的印是衛熾親手蓋的"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "hubu-shangshu",
+        "s02-zhanggui"
+      ],
+      "locations": [
+        "永安侯府舊宅正廳"
+      ],
+      "state": {
+        "time": "第九月初五，宴尾",
+        "knowledge": "她知道印是他親手蓋的；國公府知道侯府有地窖。",
+        "carry_forward": "國公府的茶餅與那張帖。"
+      }
+    },
+    {
+      "number": 117,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "地窖不准開",
+      "youtube_title": "國公府送來一塊茶餅提醒地窖潮，御廚之女要把喜酒搬進地窖，一向溫吞的老侯爺突然拍桌",
+      "duration_s": 115,
+      "logline": "宋銖想知道國公府為什麼盯著地窖，可最先擋在地窖口的，是她的父親。",
+      "hook": "宋銖把茶餅丟進火盆：「茶，不收。」火苗竄起來，滿廳賓客都看著她，她轉頭對林雙笑：「記帳，國公府欠一盒。」",
+      "hook_type": "line",
+      "mid_hook": "父親起身敬酒，聲音發顫：「這個家，是我女兒一兩一兩買回來的。」滿廳安靜，母親在桌下握住他的手。",
+      "extra_hooks": [
+        "唐越扛起剩下的十罈喜酒：「後院有地窖吧？我搬下去。」"
+      ],
+      "conflict": "國公府說地窖潮，父親說地窖不准開，她夾在兩句話中間。",
+      "turn": "一向溫吞、只會嘆氣的父親，第一次拍了桌子：「地窖不准開！誰都不准！」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "父親拍完桌子，自己先怔住，低聲說了一句「喝多了」就離席。宋銖看著他的背影，又看向後院地窖的方向，手指在算盤上停住。",
+        "question": "她要聽父親的，還是打開地窖？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "daozhui"
+      ],
+      "spectacle": "火盆裡一塊茶餅燃起藍綠的火，火光映著滿堂賓客的臉與正廳上方的『永安』匾。",
+      "glamour_shot": "宋銖把茶餅丟進火盆，火光從下往上照亮她的臉，回頭對林雙一笑，銅算盤簪閃了一下。",
+      "setups": [
+        "s02-t28"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "父親當眾說出這個家是女兒買回來的"
+      ],
+      "characters": [
+        "song-zhu",
+        "song-fu",
+        "song-mu",
+        "lin-shuang",
+        "tang-yue",
+        "wei-chi"
+      ],
+      "locations": [
+        "永安侯府舊宅正廳"
+      ],
+      "state": {
+        "time": "第九月初五，宴尾",
+        "knowledge": "她知道父親不准任何人下地窖，而且他在怕什麼。",
+        "carry_forward": "十罈喜酒還沒處放；父親離席。"
+      }
+    },
+    {
+      "number": 118,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "最後一個走",
+      "youtube_title": "侯府喬遷宴散了，賓客走光窮書生還賴著不走，臨別他問利息漲沒漲，她的回答讓他笑出聲",
+      "duration_s": 115,
+      "logline": "宋銖想一個人想地窖的事，衛熾卻成了宴席最後一個走的人。",
+      "hook": "宋銖起身要去追父親，衛熾拉住她袖子：「讓他一個人待會兒。」她低頭看那隻手，他立刻鬆開：「這一下，不收錢吧？」",
+      "hook_type": "line",
+      "mid_hook": "賓客散盡，三位小姐、老鐘、阿升都睡下了，衛熾還坐在台階上幫母親把剩菜一盤盤收進食盒——比任何一個初一都待得久。",
+      "conflict": "她知道他是誰了，他知道她知道了，兩個人都不說破。",
+      "turn": "臨出門，他回頭：「下個初一，利息漲了嗎？」她說：「漲一文。」他笑出聲：「才一文？」她說：「多了你還不起。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "送走他，宋銖回到後院，看見一盞燈在黑暗裡移動——父親一個人提著燈，站在地窖口的石階上，往下看。",
+        "question": "父親半夜一個人去地窖做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "daozhui",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "曲終人散的侯府，滿院燈籠一盞盞熄滅，只剩台階上一個收食盒的身影和門口一盞送客燈。",
+      "glamour_shot": "衛熾站在侯府門口回頭，送客燈照著他半張臉，桃花眼裡全是笑，舊青袍被夜風吹起一角。",
+      "setups": [
+        "s02-t28"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "衛熾待到宴席散盡才走，比任何一個初一都久",
+        "下個初一的利息說好漲一文"
+      ],
+      "characters": [
+        "song-zhu",
+        "wei-chi",
+        "song-mu",
+        "song-fu"
+      ],
+      "locations": [
+        "永安侯府舊宅門口",
+        "永安侯府舊宅後院"
+      ],
+      "state": {
+        "time": "第九月初六，子夜",
+        "knowledge": "她和他都知道彼此不說破；父親半夜去了地窖口。",
+        "carry_forward": "父親提燈站在地窖石階上。"
+      }
+    },
+    {
+      "number": 119,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "父親的石階",
+      "youtube_title": "老侯爺半夜提燈站在地窖口卻不敢下去，女兒問他底下有什麼，他只說年輕時親手封過一道門",
+      "duration_s": 115,
+      "logline": "宋銖要知道父親在怕什麼，可父親自己好像也說不清。",
+      "hook": "宋銖輕聲喊：「爹。」父親手裡的燈一晃，差點掉下石階。他回頭，臉上全是汗。",
+      "hook_type": "danger",
+      "mid_hook": "父親坐在石階上說：他年輕時下去過一次，出來後就讓人把底下封了，從此不准任何人進；底下有什麼，他說「忘了，也不想記得」。",
+      "conflict": "她從前世帶回來的記憶裡，沒有這口地窖；這是她第一次完全不知道的事。",
+      "turn": "隔天一早，老鐘不聽勸，替唐越把喜酒搬下地窖。他說：「老爺怕的，老奴替小姐先看。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "地窖底下傳來酒罈落地的碎響，接著是老鐘發抖的聲音：「小姐……下面有一道門。被封死的門。」",
+        "question": "封死的門後面是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "提燈照下長長的地窖石階，台階上一層厚灰，只有一行新的腳印往下延伸，消失在黑暗裡。",
+      "glamour_shot": "宋銖坐在父親身邊的石階上，燈光從下往上只照到兩人的臉，她把頭靠上父親肩膀，像小時候一樣。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "父親說出自己年輕時封過地窖"
+      ],
+      "characters": [
+        "song-zhu",
+        "song-fu",
+        "lao-zhong",
+        "tang-yue"
+      ],
+      "locations": [
+        "永安侯府舊宅地窖石階"
+      ],
+      "state": {
+        "time": "第九月初六清晨",
+        "knowledge": "她知道父親年輕時封了地窖裡的東西；老鐘在底下發現一道封死的門。",
+        "carry_forward": "地窖底的門。"
+      }
+    },
+    {
+      "number": 120,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "鹽",
+      "youtube_title": "重生千金買回侯府的第二天，帳房在地窖找到一道封死的門，門上一個字竟是她父親的筆跡",
+      "duration_s": 135,
+      "logline": "宋銖以為買回侯府就拿回了家，地窖裡的一道門告訴她：她買回來的，還有前世全家的罪名。",
+      "hook": "宋銖提燈衝下石階，酒香混著陳年霉味撲面而來。老鐘背靠石牆坐著，碎酒罈在腳邊，手指著前方。",
+      "hook_type": "danger",
+      "mid_hook": "燈光照過去：地窖最深處，一道厚木門被鐵條釘死，門縫用灰泥封了一圈，門板正中刻著一個字，被灰蓋住看不清。",
+      "extra_hooks": [
+        "老鐘啞聲說：「老奴在侯府四十年，從不知道這裡有門。」宋銖把燈舉高，燈油晃了一下。"
+      ],
+      "conflict": "她花了一季買回侯府，以為終於把前世輸掉的拿了回來。",
+      "turn": "她一直以為侯府前世是被人栽贓的、清清白白；可這道門是父親親手封的——國公府挖了一年想找的東西，就藏在她家裡。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她用袖子抹開門上的灰：一個字，父親的筆跡——「鹽」。宋銖的手停在門上。前世侯府被抄的罪名，除了官糧，還有一條：私通鹽商。",
+        "question": "父親前世，真的碰過鹽嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "daozhui"
+      ],
+      "spectacle": "幽暗的地窖深處，一盞提燈照亮被鐵條釘死的木門，袖子抹過的灰下浮現一個斗大的『鹽』字。",
+      "glamour_shot": "宋銖舉燈站在門前，燈火在她眼裡跳，手掌貼在『鹽』字上，算盤在腰間靜靜垂著，一動不動。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s02-t28"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "找到父親封死的地窖門，知道國公府在侯府要找的是什麼"
+      ],
+      "characters": [
+        "song-zhu",
+        "lao-zhong",
+        "song-fu"
+      ],
+      "locations": [
+        "永安侯府舊宅地窖"
+      ],
+      "state": {
+        "time": "第九月初六清晨",
+        "knowledge": "她知道侯府地窖裡有一道父親封的門，門上寫著「鹽」；前世的罪名可能不全是栽的。",
+        "carry_forward": "門還沒打開；國公府知道地窖；帳上四千兩；下個初一利息漲一文。"
+      }
+    }
+  ]
+}
