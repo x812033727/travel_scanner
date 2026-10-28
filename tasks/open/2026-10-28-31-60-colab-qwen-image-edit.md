@@ -1,7 +1,7 @@
 ---
 id: 2026-10-28-31-60-colab-qwen-image-edit
 title: 種田娶妻 第 31–60 集：首格與片段都在 Colab 做（Qwen-Image-Edit 首格、H3 FL2VA 片段）
-status: in-progress
+status: review
 priority: P1
 area: tools
 owner: claude-fable-5.1-zt-colab
