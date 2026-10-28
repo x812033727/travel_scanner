@@ -43,6 +43,12 @@ export const EXPECTED_TAKES = { A: 1.2, B: 1.5, C: 2 };
 const GRADE_ORDER = { A: 0, B: 1, C: 2 };
 // 網頁 H3／VIDEO 3.0 的秒數範圍（hailuoai.video 設定面板 2026-10-04 實測 4–15；Kling 官方 user guide 3–15）。
 export const HAILUO_CLIP_SECONDS = [4, 15];
+// H3 的訓練範圍是 124–362 幀（ComfyUI 官方 H3 教學；上游 Colab notebook 對 <124 幀印「低於已訓練下限」），
+// 4 秒＝107 幀在範圍外、動作像貼圖（minimax-h3-colab/references/motion-quality.md 第一、三節）：H3 一支最少買 5 秒；
+// 畫面上有人說話或動作有兩拍（then／after that／分號）買 6 秒（158 幀）。
+export const H3_MIN_SECONDS = 5;
+export const H3_TALK_SECONDS = 6;
+export const twoBeats = (motion) => /\b(?:then|after that|and then)\b|;/i.test(String(motion ?? ""));
 
 // 子句：動詞跟它的對象要在同一個子句裡（逗號、分號、句點、then、while、as 斷開）。
 const clauses = (text) => String(text ?? "").toLowerCase().split(/[,;:.]|\b(?:then|while|as)\b/).map((part) => part.trim()).filter(Boolean);
@@ -287,7 +293,7 @@ export function continuityLocks(shots) {
  * Max 方案點數用完之後 2.3 在 relax 佇列無限生成（tooltip；H3 不在內，排多久沒量）。
  */
 export const HAILUO_MODELS = {
-  h3: { label: "Hailuo H3", seconds: [4, 15], per_second: { "2k": 12, "768p": 7 }, default_resolution: "2k", end_frame: true, output: { "2k": "2560×1440", "768p": "1344×768" } },
+  h3: { label: "Hailuo H3", seconds: [H3_MIN_SECONDS, 15], per_second: { "2k": 12, "768p": 7 }, default_resolution: "2k", end_frame: true, output: { "2k": "2560×1440", "768p": "1344×768" } },
   "2.3": { label: "Hailuo 2.3", per_clip: { "768p": { 6: 25, 10: 50 }, "1080p": { 6: 80 } }, default_resolution: "1080p", end_frame: false, output: { "1080p": "1920×1080", "768p": "未量" }, unlimited_on_max: true },
 };
 
@@ -301,7 +307,7 @@ export const HAILUO_MODELS = {
  * - Kling 3.0：自然語言（官方 3.0 user guide 的 dolly in、pan left 這類字）。
  * pan 的方向照攝影機：我們的 `pan left` 是攝影機往左搖，Hailuo 的 Pan left 也是。
  */
-const H3_SENTENCE = { locked: "The camera is a static shot and stays completely still", "push in": "The camera pushes in", "pull out": "The camera pulls out", "pan left": "The camera pans left", "pan right": "The camera pans right", "tilt up": "The camera tilts up", "tilt down": "The camera tilts down", track: "The camera is a tracking shot that follows the subject", drift: "The camera trucks right with small amplitude at slow speed" };
+const H3_SENTENCE = { locked: "The camera holds a static shot", "push in": "The camera pushes in", "pull out": "The camera pulls out", "pan left": "The camera pans left", "pan right": "The camera pans right", "tilt up": "The camera tilts up", "tilt down": "The camera tilts down", track: "The camera is a tracking shot that follows the subject", drift: "The camera trucks right with small amplitude at slow speed" };
 const HAILUO_BRACKET = { locked: "[Static shot]", "push in": "[Push in]", "pull out": "[Pull out]", "pan left": "[Pan left]", "pan right": "[Pan right]", "tilt up": "[Tilt up]", "tilt down": "[Tilt down]", track: "[Tracking shot]" };
 const KLING_PHRASE = { locked: "locked-off camera, no camera movement", "push in": "the camera pushes in", "pull out": "the camera pulls back", "pan left": "the camera pans left", "pan right": "the camera pans right", "tilt up": "the camera tilts up", "tilt down": "the camera tilts down", track: "the camera tracks alongside the subject", drift: "the camera drifts very slightly" };
 // 運鏡字但不在八組裡（沒方向的 pan／tilt、crane、單獨的 zoom、orbit、truck、handheld、whip…）：網頁正文不替你猜。
@@ -318,12 +324,17 @@ export function webMove(camera) {
   }
   const unsupported = group === null ? OFF_TABLE_MOVE.exec(text)?.[0] ?? null : null;
   const slow = /\b(?:slow|slowly|gentle|gently|subtle|subtly)\b/.test(text);
+  const fast = /\b(?:fast|quick|quickly|rapid|rapidly|whip|snap)\b/.test(text);
   const moving = group !== null && group !== "locked" && group !== "drift";
+  // 官方 H3 指南的速度詞只有 at slow speed／at fast speed，幅度只有 small／large；中等幅度與正常速度不寫
+  // （「medium amplitude and normal speed are usually omitted」）。drift 自己就是小幅慢速。
+  const pace = !moving ? "" : slow ? " with small amplitude at slow speed" : fast ? " with large amplitude at fast speed" : "";
   return {
     group,
     slow,
+    fast,
     unsupported,
-    h3: group === null ? null : `${H3_SENTENCE[group]}${moving ? (slow ? " with small amplitude at slow speed" : " at a steady speed") : ""}`,
+    h3: group === null ? null : `${H3_SENTENCE[group]}${pace}`,
     hailuo: group === null ? null : HAILUO_BRACKET[group] ?? null,
     kling: group === null ? null : KLING_PHRASE[group] ?? null,
   };
@@ -331,6 +342,29 @@ export function webMove(camera) {
 
 // 官方 H3 圖生影片格式的第一行（同上的 H3 提示指南；首格當 Picture 1、在第 0 秒完整參照）。
 export const H3_FIRST_LINE = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.";
+// 有末格（FL2VA）時的第一行：官方指南的對齊句，Picture 2 對在買到的最後一秒（兩位小數）。
+export const h3AlignLine = (seconds) => `How the reference pictures align with the target video — Picture 1 (from Shot 1) aligns with the 0.00-second mark of the target video; Picture 2 (from Shot 1) aligns with the ${Number(seconds).toFixed(2)}-second mark of the target video.`;
+// 官方 base 指南：「At the beginning of [Shot 1], state the overall style and initial composition」，風格詞從官方表挑
+// （Cinematic、live-action、2D-animated、3D CG、claymation、watercolor、vintage film）。預設集照名字對，custom 看 style 的字。
+const H3_STYLE_WORDS = { "cinematic-3d": "3D CG", "anime-2d": "2D-animated", "ink-wash": "watercolor", "flat-explainer": "2D-animated", "cute-cartoon": "2D-animated", "cute-mystery": "2D-animated", "tech-story": "2D-animated", "linocut-teal": "2D-animated" };
+export function h3StyleWord(look) {
+  if (H3_STYLE_WORDS[look?.preset]) return H3_STYLE_WORDS[look.preset];
+  const style = String(look?.style ?? "").toLowerCase();
+  if (/\bclay(?:mation)?\b/.test(style)) return "claymation";
+  if (/\b(?:3d|cg|cgi|render(?:ed|ing)?|unreal|donghua)\b/.test(style)) return "3D CG";
+  if (/\b(?:live[- ]action|photoreal(?:istic)?|film still)\b/.test(style)) return "live-action";
+  if (/\b(?:watercolou?r|ink wash|gouache)\b/.test(style)) return "watercolor";
+  if (/\b(?:anime|2d|cel|illustration|cartoon|line art|flat)\b/.test(style)) return "2D-animated";
+  return null;
+}
+// 錨句：點名 <Picture 1> 裡的人（名字對影片模型沒意義，只有拉丁字母的名字才寫），守住臉、髮、服、道具與場景。
+export function h3Anchor(cast) {
+  const names = (cast ?? []).map((character) => character?.name).filter((name) => typeof name === "string" && /^[A-Za-z][\w' -]*$/.test(name));
+  const people = (cast ?? []).length;
+  if (!people) return "The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame.";
+  const who = names.length === people ? names.join(" and ") : people === 1 ? "The person" : "The people";
+  return `${who} shown in <Picture 1> ${people > 1 ? "keep the same faces, hair, costumes and props" : "keeps the same face, hair, costume and props"} as the first frame; the set layout stays as it is.`;
+}
 // 守住首格與單鏡的一句（animation-camera/references/budaimiao-style.md 第四節的寫法）。「單鏡、不切、不加字」是給模型的
 // 生成指令，Kling 官方範例也這樣寫（a single unbroken shot with no cuts）；「正面寫」的規矩管的是畫面內容的狀態。
 export const WEB_KEEP = "Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.";
@@ -343,7 +377,7 @@ const sentence = (text) => (text ? (/[.!?。！？…"”'’)]$/.test(text) ? t
  * 網頁的 text 不帶 look.negative：H3 的 API 沒有負面欄（官方），網頁有沒有沒驗；否定句又常被畫成正向（試拍把
  * already closed 畫成開著的門）。negative 另外列，表單真的有負面欄才貼。sha256 是 text 的，鎖定檔與收據都記它。
  */
-export function webPrompt(route, scene, look, cast, { hailuoModel = "h3" } = {}) {
+export function webPrompt(route, scene, look, cast, { hailuoModel = "h3", seconds = null } = {}) {
   const data = scene.data ?? {};
   const notes = [];
   let text;
@@ -358,11 +392,19 @@ export function webPrompt(route, scene, look, cast, { hailuoModel = "h3" } = {})
     if (move.unsupported) notes.push(`camera 行的「${move.unsupported}」不在八組運鏡字裡：正文不寫運鏡；改成 push in、pull out、pan left／right、tilt up／down、locked 或 drift`);
     else if (move.group === null) notes.push("camera 行沒有運鏡字：正文不寫運鏡，模型自己決定（要鎖定就寫 locked）");
     if (route === "hailuo" && hailuoModel === "h3") {
-      const body = [`[Shot 1] ${motion}`.trim()];
+      // 官方的順序：風格詞與錨句（首格裡的人與場景）、動作、一個運鏡句、單鏡收尾；否定句（no cuts、no text）不寫
+      // （motion-quality.md 第二節；2026-10-05-shot-plan-h3-body-official-i2va）。
+      const styleWord = h3StyleWord(look);
+      if (!styleWord) notes.push("look 的 preset 與 style 都對不到官方風格詞（3D CG、2D-animated、live-action、claymation、watercolor）：正文沒寫風格詞");
+      if (twoBeats(motion)) notes.push("motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒");
+      const body = [`[Shot 1] ${styleWord ? `${styleWord}. ` : ""}${h3Anchor(cast)}`, motion];
       if (move.h3) body.push(`${move.h3}.`);
       if (lookMotion) body.push(lookMotion);
-      body.push(WEB_KEEP);
-      text = `${H3_FIRST_LINE}\n\nintegrated_multimodal_description: ${body.join(" ")}\noverall_soundscape: N/A\nnon_diegetic_music: N/A`;
+      body.push("One continuous shot.");
+      const endFrame = Boolean(data.end_frame?.prompt);
+      if (endFrame && !(Number(seconds) > 0)) notes.push("有末格但不知道買幾秒：第一行退回 I2VA 的句子（FL2VA 的對齊句要秒數）");
+      const firstLine = endFrame && Number(seconds) > 0 ? h3AlignLine(seconds) : H3_FIRST_LINE;
+      text = `${firstLine}\n\nintegrated_multimodal_description: ${body.filter(Boolean).join(" ")}\noverall_soundscape: N/A\nnon_diegetic_music: N/A`;
     } else if (route === "hailuo") {
       const parts = [`${move.hailuo ? `${move.hailuo} ` : ""}${motion}`.trim()];
       if (move.group === "locked") parts.push("The camera stays completely still.");
@@ -522,7 +564,13 @@ export function planEpisode(doc, options = {}) {
         if (need > lengths.at(-1) + 1e-9) problems.push({ level: "waste", shot: shot.id, what: `需要 ${need.toFixed(1)} s（含把手 ${handle} s），${hailuo.label} ${webResolution} 一支只有 ${lengths.join("／")} s`, fix: "拆成兩鏡，或改用 H3（4–15 秒）" });
         if (shot.end_frame_planned) problems.push({ level: "waste", shot: shot.id, what: `${hailuo.label} 沒有首尾格，計畫的 end_frame 用不上`, fix: "這一鏡改用 H3，或拿掉 end_frame" });
       } else {
-        const [low, high] = route === "hailuo" ? hailuo.seconds : KLING_CLIP_SECONDS;
+        let [low, high] = route === "hailuo" ? hailuo.seconds : KLING_CLIP_SECONDS;
+        // H3：畫面上有人說話（旁白不算）或動作兩拍的鏡頭最少 6 秒（motion-quality.md 第三節）。
+        if (route === "hailuo" && hailuo === HAILUO_MODELS.h3) {
+          shot.on_screen_speech = shot.lines.length > 0 && shot.speakers.some((speaker) => speaker !== "narrator" && shot.characters.includes(speaker));
+          shot.two_beats = twoBeats(sceneById.get(shot.id)?.data?.motion);
+          if (shot.on_screen_speech || shot.two_beats) low = Math.max(low, H3_TALK_SECONDS);
+        }
         shot.buy_s = Math.min(high, Math.max(low, Math.ceil(need + handle - 1e-9)));
         if (need > high + 1e-9) problems.push({ level: "waste", shot: shot.id, what: `需要 ${need.toFixed(1)} s，網頁一支最多 ${high} s`, fix: "拆成兩鏡，或少切幾次這個母鏡頭" });
         else if (need + handle > high + 1e-9) notes.push(`${shot.id}：需要 ${need.toFixed(1)} s，買到上限 ${high} s，尾巴把手不到 ${handle} s`);
@@ -565,7 +613,7 @@ export function planEpisode(doc, options = {}) {
         ? { kind: manifestBound && !entry.needs_review ? "drawn" : manifestBound ? "needs_review" : "stale", file: entry.file, sha256: entry.sha256 ?? null }
         : { kind: "to-draw" };
     shot.end_frame = shot.end_frame_planned ? { planned: true, file: entry?.end_frame?.file ?? null, sha256: entry?.end_frame?.sha256 ?? null } : { planned: false };
-    shot.prompt = shot.visual === "clip" ? webPrompt(route, shot.scene, look, shot.cast, { hailuoModel: hailuoModel ?? undefined }) : null;
+    shot.prompt = shot.visual === "clip" ? webPrompt(route, shot.scene, look, shot.cast, { hailuoModel: hailuoModel ?? undefined, seconds: shot.buy_s }) : null;
     if (shot.visual === "clip" && shot.move.web.unsupported) problems.push({ level: "review", shot: shot.id, what: `camera 行的「${shot.move.web.unsupported}」不在八組運鏡字裡，定稿正文沒寫運鏡`, fix: "改成 push in、pull out、pan left／right、tilt up／down、locked 或 drift（animation-camera 的「寫 camera」）" });
   }
 
