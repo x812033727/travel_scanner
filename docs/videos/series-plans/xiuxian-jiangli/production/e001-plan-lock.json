@@ -1,0 +1,3058 @@
+{
+  "version": 3,
+  "route": "hailuo",
+  "plan": "hailuo:pro",
+  "hailuo_model": "h3",
+  "model": null,
+  "resolution": "2k",
+  "handle_s": 0.5,
+  "clip_takes": 2,
+  "expected_takes": {
+    "A": 1.2,
+    "B": 1.5,
+    "C": 2
+  },
+  "pilot": [
+    "s33",
+    "s34",
+    "s35"
+  ],
+  "production": false,
+  "web_assist": "off",
+  "negative": {
+    "text": "photograph, live action, real person, flat 2D anime, sketch, text, subtitles, watermark, logo, UI panel, extra fingers, deformed hands, blood, gore, wounds, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "sha256": "7554cc79d435713d",
+    "entry": "只貼進網頁真的有的負面欄；沒有就不貼"
+  },
+  "hashes": {
+    "look": "a66de9a7745973c3",
+    "visual": "aa2a49f080cea3b1",
+    "speech": "6b5213d860b0c39b",
+    "script": "3a577d4f7a231cd6",
+    "document": "d556e2bb20944789"
+  },
+  "order": [
+    "s01",
+    "s02",
+    "s03",
+    "s04",
+    "s05",
+    "s06",
+    "s07",
+    "s08",
+    "s09",
+    "s10",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s16",
+    "s17",
+    "s18",
+    "s19",
+    "s20",
+    "s21",
+    "s22",
+    "s23",
+    "s24",
+    "s25",
+    "s26",
+    "s27",
+    "s28",
+    "s29",
+    "s30",
+    "s31",
+    "s32",
+    "s33",
+    "s34",
+    "s35",
+    "s36",
+    "s37",
+    "s38",
+    "s39",
+    "s40",
+    "s41",
+    "s42",
+    "s43",
+    "s44",
+    "s45"
+  ],
+  "shots": {
+    "s01": {
+      "visual": "317c3b41cb43ffc5",
+      "speech": "1cc6543be992a4b1",
+      "keyframe": "feb2c3292ec21d2f",
+      "chapter": "清退",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Steward Song speaks a short Mandarin line, 「清退名單。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lowers the ledger a hand's width and looks along the line. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "8d19abf52f115ce20bded3e38899956ff2729dc1a28c1ce91f8482ac16d949d6"
+      }
+    },
+    "s02": {
+      "visual": "709ae9e4e438c8f2",
+      "speech": "c78442db0eb4dc90",
+      "keyframe": "20945b5caeabc5a0",
+      "chapter": "清退",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Steward Song speaks a short Mandarin line, 「念到的，初一下山。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lifts his chin and narrows his eyes. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "73c313f0267f94a20652048982c0705f903c9bfd36183e46a6a0ad80a2d7a98a"
+      }
+    },
+    "s03": {
+      "visual": "017fc68b657bc581",
+      "speech": "d63a9451389a1c06",
+      "keyframe": "66863127841ab0cf",
+      "chapter": "清退",
+      "setup": "C",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The bony forefinger comes down and presses hard on the first column of the page. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "9d71254f31a8fe7b887c71028907631591e9a3fe36627204e27668cd972a78b2"
+      }
+    },
+    "s04": {
+      "visual": "8ea2868a84845bba",
+      "speech": "f8be8fd6bde07358",
+      "keyframe": "70522d6501a4024b",
+      "chapter": "清退",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02",
+          "s03"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman's easy look freezes and his eyes go wide as he hears his own name. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "de9d793e1f13584ecf5c7781cd7d657124f63a4cc54772418ea2eaafd14f7481"
+      }
+    },
+    "s05": {
+      "visual": "1f4532714b4f7c67",
+      "speech": "9a6fb8d8db378176",
+      "keyframe": "56c6b1cac599278f",
+      "chapter": "清退",
+      "setup": "E",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02",
+          "s03",
+          "s04"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「我？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, pointing at his own nose while the servants on both sides edge a step away from him. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "8bf4d58986835aed8f1d575897f1dd2e6e5cf95d23b6845ebb4fd20132383fec"
+      }
+    },
+    "s06": {
+      "visual": "b54ea7fa2bd3d3fe",
+      "speech": "a76d04ae0e1b63ea",
+      "keyframe": "78eebba2bda7a7e8",
+      "chapter": "清退",
+      "setup": "F",
+      "visual_kind": "clip",
+      "lines": 2,
+      "source": null,
+      "buy_s": 5,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 5,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02",
+          "s03",
+          "s04",
+          "s05"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "belt"
+          ],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 60,
+        "expected": 90,
+        "cap": 120,
+        "usd_fee": {
+          "one": 0.7332,
+          "expected": 1.0998,
+          "cap": 1.4664
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Steward Song speaks 2 short Mandarin lines, 「三年，沒修為。」 then 「妖獸道，自己走。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then flicks his sleeve toward the mountain gate. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "a6b64f57254aba1792097a4b852f0f81ab714900e39739242c345160816da513"
+      }
+    },
+    "s07": {
+      "visual": "191e77f9ff576853",
+      "speech": "a3a8aa73b47856a2",
+      "keyframe": "8fc08fcccf077a39",
+      "chapter": "清退",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02",
+          "s03",
+          "s04",
+          "s05",
+          "s06"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「三十天，妖獸道。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes to himself as the last servant walks past him and Steward Song walks away toward the right edge of frame. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "bbba2e34a07b98c0d7f0770a6a68261a66944af18dbf47d289fcd6169343c899"
+      }
+    },
+    "s08": {
+      "visual": "fde73596041355ee",
+      "speech": "c0d3c8b942246261",
+      "keyframe": "91908735ad80562d",
+      "chapter": "清退",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s01",
+          "s02",
+          "s03",
+          "s04",
+          "s05",
+          "s06",
+          "s07"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "belt"
+          ],
+          "time_of_day": [
+            "dawn",
+            "morning"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "reaction.micro"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] His right hand tightens on the ladle handle until the knuckles whiten, then lets go. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "e1a149986575964227e2dc44e0623e50f8cb1996180f0bb3fa13717fd730c409"
+      }
+    },
+    "s09": {
+      "visual": "e394f427f282d42b",
+      "speech": "e40d2a039a495e66",
+      "keyframe": "8c9d6cfa9f2ecbb7",
+      "chapter": "半碗飯",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks",
+            "page"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「書，至少能燒。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then feeds the torn page into the stove mouth and the flames flare up. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "77374f03f47bc9ab6574d4be1b577b838adf7b8df0e9a111a95e0a2783597fb5"
+      }
+    },
+    "s10": {
+      "visual": "38424b78af402d30",
+      "speech": "efc01773a9357509",
+      "keyframe": "20163c4db80231cb",
+      "chapter": "半碗飯",
+      "setup": "B",
+      "visual_kind": "still",
+      "lines": 0,
+      "source": null,
+      "buy_s": 0,
+      "promise": {
+        "visual_kind": "still",
+        "buy_s": 0,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks",
+            "page"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 0,
+        "expected": 0,
+        "cap": 0,
+        "usd_fee": {
+          "one": 0,
+          "expected": 0,
+          "cap": 0
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": null
+    },
+    "s11": {
+      "visual": "005cda04df2da65d",
+      "speech": "33376ad93aca9516",
+      "keyframe": "44e6fe8b7c7a80ba",
+      "chapter": "半碗飯",
+      "setup": "C",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「一天一碗，撐三十天。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then blows on the rice as if it might multiply. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "7506a472a3fa93a4d1499d040062b7b6de1052ed70a80b642030e34f50c8b43c"
+      }
+    },
+    "s12": {
+      "visual": "b21ed6584ac910dd",
+      "speech": "70993151158bcdb7",
+      "keyframe": "34b50f556cb45731",
+      "chapter": "半碗飯",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "sleeve",
+            "cuff"
+          ],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「誰？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, stops dead and the bucket slips from his hand onto the stone path. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "e871f85e7d376e5f0189323a927693eb90d146dae6864c279a8b71fc1d3707e2"
+      }
+    },
+    "s13": {
+      "visual": "464908621cc162e6",
+      "speech": "aa3f1f269d16d7d2",
+      "keyframe": "e7f1188227956c9b",
+      "chapter": "半碗飯",
+      "setup": "E",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [
+            "hairpin",
+            "jade hairpin",
+            "cuff",
+            "sleeve"
+          ],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Shen Zhaoxue's brows draw together faintly and her eyes open a slit toward the voice off screen left. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "a3486cc0d90395f85dae7d08f8d57105d1cdd2d5809874ec55a28b0290eac569"
+      }
+    },
+    "s14": {
+      "visual": "9477017664981d78",
+      "speech": "d1e4b5ea28a98259",
+      "keyframe": "80d50b705e5bb93b",
+      "chapter": "半碗飯",
+      "setup": "F",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「別叫。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes herself a hand's width up the wall. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "a43a9c2641c75004b9f4ec84ad1eca547bb900b85e97bc8c745864aa52ddb735"
+      }
+    },
+    "s15": {
+      "visual": "39a93750134646d1",
+      "speech": "72755bfb0791825b",
+      "keyframe": "fe574c6267a9ad8e",
+      "chapter": "半碗飯",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14"
+        ],
+        "locks": {
+          "prop": [],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「先進來。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then holds his forearm out toward her and waits. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "a8f4d6b0684aa5967ac6b56d7b0bacd72a61c2508093d1d94db1d438ecd8ec6c"
+      }
+    },
+    "s16": {
+      "visual": "81eec3148f48795f",
+      "speech": "7986e0ce729091da",
+      "keyframe": "4c5abc841fec650c",
+      "chapter": "半碗飯",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「飯，只有一半。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes the bowl another hand's width toward her. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "dda042e6e85f0790e1d4f8a19020b30df6e0f3dc962de05989a39b6b6a2d30ab"
+      }
+    },
+    "s17": {
+      "visual": "ea8ad71a96fb4f5c",
+      "speech": "991fcaa91c66428c",
+      "keyframe": "8a378690e4dec2bf",
+      "chapter": "半碗飯",
+      "setup": "H",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「你自己呢？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her gaze steady on him. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "2ff29641211d5fb88718cbb7aa9d5c9ef2862923e71b506375714f927761c7ce"
+      }
+    },
+    "s18": {
+      "visual": "61668dc7dec8ffd2",
+      "speech": "1da20dffa0ed550d",
+      "keyframe": "c299729c167a0b97",
+      "chapter": "半碗飯",
+      "setup": "I",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16",
+          "s17"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「我吃過了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, patting his stomach twice with a grin that is a little too wide. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "b4d0d8c9b4d025980b94f169c035cecbeef784194bbf4815bf641a894d9a4157"
+      }
+    },
+    "s19": {
+      "visual": "c06dce4b2e208049",
+      "speech": "efc01773a9357509",
+      "keyframe": "ff8469d1dffd29cb",
+      "chapter": "半碗飯",
+      "setup": "J",
+      "visual_kind": "still",
+      "lines": 0,
+      "source": null,
+      "buy_s": 0,
+      "promise": {
+        "visual_kind": "still",
+        "buy_s": 0,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16",
+          "s17",
+          "s18"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [
+            "cuff"
+          ],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 0,
+        "expected": 0,
+        "cap": 0,
+        "usd_fee": {
+          "one": 0,
+          "expected": 0,
+          "cap": 0
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": null
+    },
+    "s20": {
+      "visual": "3e0d2b45c95213c1",
+      "speech": "bf25a918ed310368",
+      "keyframe": "fbf498229e507d22",
+      "chapter": "半碗飯",
+      "setup": "K",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16",
+          "s17",
+          "s18",
+          "s19"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「……粗米。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then brushes the grain of rice from the corner of her mouth with one knuckle. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "67c6649031724e00d5dc28f9f6e4cfb42b771a7f13f414b981ee41e2d605d77a"
+      }
+    },
+    "s21": {
+      "visual": "7ffe84943a66746f",
+      "speech": "32bdd9df01aebcb1",
+      "keyframe": "e7f0d6162e39a537",
+      "chapter": "半碗飯",
+      "setup": "I",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16",
+          "s17",
+          "s18",
+          "s19",
+          "s20"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「碎靈米，最便宜的。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, rubbing the back of his neck. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "ac4ab22381e340231a52ebf108fc09427043b90308f27ab8b3c898ea41f37638"
+      }
+    },
+    "s22": {
+      "visual": "6510eda8e5c079a8",
+      "speech": "c6ba0770e5e4834a",
+      "keyframe": "4ea8e20de66355a0",
+      "chapter": "半碗飯",
+      "setup": "H",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16",
+          "s17",
+          "s18",
+          "s19",
+          "s20",
+          "s21"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [
+            "hairpin",
+            "jade hairpin"
+          ],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「你叫什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her gaze steady on him. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "ef30cfbaceb0403973f0d7b3ca170bd3962ec8447d076ff396d29cae2403c874"
+      }
+    },
+    "s23": {
+      "visual": "8e2239ca67c96d2c",
+      "speech": "803dee2dc518cdfb",
+      "keyframe": "85487ed380693b61",
+      "chapter": "半碗飯",
+      "setup": "I",
+      "visual_kind": "clip",
+      "lines": 2,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s09",
+          "s10",
+          "s11",
+          "s12",
+          "s13",
+          "s14",
+          "s15",
+          "s16",
+          "s17",
+          "s18",
+          "s19",
+          "s20",
+          "s21",
+          "s22"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks 2 short Mandarin lines, 「江小滿。」 then 「雜役院的。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, straightening his back a little. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "132d524c53bf831e187f33df5d4f82fa84379352d51e1afd9c4d307e7976e097"
+      }
+    },
+    "s24": {
+      "visual": "473897af463c255e",
+      "speech": "efc01773a9357509",
+      "keyframe": "fb6acad618e90204",
+      "chapter": "鍋",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "physics.fluid"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The moment the hand closes on the book its dark cover lights up from inside with blue-gold light that spills between his fingers. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "1c78a1ec622cc0b4a9c9ca5442f137ef808a7d325512bc010863b16f85b54714"
+      }
+    },
+    "s25": {
+      "visual": "9b91a3d8710dd134",
+      "speech": "85aa41cf6262ce20",
+      "keyframe": "24b7d87690a99cdc",
+      "chapter": "鍋",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「燙燙燙！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, shaking his right hand hard and blowing on his fingers. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "d6402a7b2de6be120e4f6a481bb54139639fe7a4b2308da1851948f39e8a12c0"
+      }
+    },
+    "s26": {
+      "visual": "3c128143b10a81d2",
+      "speech": "d4236cf00eb910e1",
+      "keyframe": "caff05fbc8d7afd9",
+      "chapter": "鍋",
+      "setup": "C",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks",
+            "pages"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The book's pages flip faster and a column of blue-gold light rises from them toward the ceiling while Jiang Xiaoman leans further back and Shen Zhaoxue rises to one knee. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "4b5d9cd74a531bcf6cf3f03ed8baa71eedd7a98b080177298fc26ddcf08226c0"
+      }
+    },
+    "s27": {
+      "visual": "07fc65b5c8a95075",
+      "speech": "c30eee8318e491b4",
+      "keyframe": "8bc2456be2033617",
+      "chapter": "鍋",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「仙錄？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her eyes narrowing further. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "bae3f7ba9567c9264b34c5a4b3d5919e7ddf26cf8853c717fcc1b347d2bcbed6"
+      }
+    },
+    "s28": {
+      "visual": "d046a02c8d1e13a5",
+      "speech": "359f8e1ad4b92cfa",
+      "keyframe": "f1f950469c3747b6",
+      "chapter": "鍋",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26",
+          "s27"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The iron pot drops the last hand's width out of the light and lands on the stove with a heavy bounce, its lid rattling once, and the blue-gold light fades out. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "2c5b1e126ca5c71722ac6b4675a699346cf33d89fcc223c01a532e264040a546"
+      }
+    },
+    "s29": {
+      "visual": "669e45f96515bfbe",
+      "speech": "113d5883e7fe9c01",
+      "keyframe": "1cd6135846d1fa50",
+      "chapter": "鍋",
+      "setup": "E",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「……鍋？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pokes the domed lid once with the tip of the ladle. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "4310b74cdad53fa8fec51d464555a3f35cb692bf258dd5c4b568f9fb6a65df60"
+      }
+    },
+    "s30": {
+      "visual": "23af44acd53111cc",
+      "speech": "e8b767b82187ab24",
+      "keyframe": "234bef68df8dc524",
+      "chapter": "鍋",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「我要的是修為。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, flatly, to the book. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "b62cb166724a5beed342e64478644fe7d4d8b54acf291ce3ba32e1c1b17c545b"
+      }
+    },
+    "s31": {
+      "visual": "01a10f7077941119",
+      "speech": "24282802be6ec0ef",
+      "keyframe": "d78d3de15bd33c17",
+      "chapter": "鍋",
+      "setup": "F",
+      "visual_kind": "still",
+      "lines": 1,
+      "source": null,
+      "buy_s": 0,
+      "promise": {
+        "visual_kind": "still",
+        "buy_s": 0,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks",
+            "pages"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 0,
+        "expected": 0,
+        "cap": 0,
+        "usd_fee": {
+          "one": 0,
+          "expected": 0,
+          "cap": 0
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": null
+    },
+    "s32": {
+      "visual": "84869e94fbc5aac6",
+      "speech": "c661761caea02a81",
+      "keyframe": "774f71493c680ab6",
+      "chapter": "鍋",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「算了，煮飯。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then dumps the whole bag of grey rice into the pot and slams the domed lid down. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "72ea56ce34e50612815ff7272e8d7bf1c121878f8e474ad4c4e0d26654c29109"
+      }
+    },
+    "s33": {
+      "visual": "c2c8d64681f10a5c",
+      "speech": "efc01773a9357509",
+      "keyframe": "279063c51d706526",
+      "chapter": "鍋",
+      "setup": "H",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31",
+          "s32"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The brass valve knob begins to spin and a thin jet of white steam shoots straight up from it. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "8448b3293664fe9903c121d8c78a44e9226b77efecfe27e236ff5ca14cd69c3b"
+      }
+    },
+    "s34": {
+      "visual": "41d543f54736d87c",
+      "speech": "b2d99af82899a623",
+      "keyframe": "b137720f7578bd4c",
+      "chapter": "鍋",
+      "setup": "I",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31",
+          "s32",
+          "s33"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「好了？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, lifting the lid clear as a burst of steam rolls out across the hut. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "08c82c1c58dfa9795321ed21ca58fd67b918f076c86ffe9120d83dd0c3f652f2"
+      }
+    },
+    "s35": {
+      "visual": "85367fba1015c47b",
+      "speech": "efc01773a9357509",
+      "keyframe": "d81f89bc545edaf6",
+      "chapter": "鍋",
+      "setup": "J",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s24",
+          "s25",
+          "s26",
+          "s27",
+          "s28",
+          "s29",
+          "s30",
+          "s31",
+          "s32",
+          "s33",
+          "s34"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] A heap of glistening rice rises out of the pot on the wooden ladle toward the cracked bowl, golden motes drifting up with the steam. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "54420dc3097e1f0c7ac19dea7e35e3f6e2153b1f09245abadbbe6c23c9363aab"
+      }
+    },
+    "s36": {
+      "visual": "33fb292cb70807ef",
+      "speech": "d5cb858ca2811f03",
+      "keyframe": "1f12a1a4df154b00",
+      "chapter": "再一碗",
+      "setup": "A",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Shen Zhaoxue's jaw goes still and her eyes widen a fraction, and she slowly lowers the bowl from her chin. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "fedfd457aa4b64f4a2d6787b023728f73df4b8a51133287acf454a2c082f5151"
+      }
+    },
+    "s37": {
+      "visual": "af299569e74347dc",
+      "speech": "efc01773a9357509",
+      "keyframe": "111ad572d5d2683d",
+      "chapter": "再一碗",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Colour creeps back into Shen Zhaoxue's cheeks and lips as she slowly lowers the bowl, her eyes closing for one breath and opening again clear. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "17982942b8b51105f5e235e4070e758d4fa98670f74d6ba3f20c67a4e9e06c7e"
+      }
+    },
+    "s38": {
+      "visual": "6e1368ec4f718b99",
+      "speech": "754d7a7cb7900dab",
+      "keyframe": "43d84c01907dca83",
+      "chapter": "再一碗",
+      "setup": "C",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36",
+          "s37"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The slender pale hand pushes the empty bowl across the table until it bumps against Jiang's hand and lets go. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "4e16bd76f121fd48094e3f1c175d8bdc4ed81019d78976e05ca41c0db7029c92"
+      }
+    },
+    "s39": {
+      "visual": "dfff3bc4ea4872c5",
+      "speech": "22e0c1d390826632",
+      "keyframe": "fc73a6bcc6a855c9",
+      "chapter": "再一碗",
+      "setup": "D",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36",
+          "s37",
+          "s38"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman turns the empty bowl over in both hands as if looking for a hole in it, then turns his head toward the steaming pot. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "ee929868029aea67e05663420e8e03d1b9b974e89de374c6a317fb93cfef1ab2"
+      }
+    },
+    "s40": {
+      "visual": "18928829fe41a947",
+      "speech": "5f8f821cae412cbe",
+      "keyframe": "aa7b88759a633606",
+      "chapter": "再一碗",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 2,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36",
+          "s37",
+          "s38",
+          "s39"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks 2 short Mandarin lines, 「這鍋……」 then 「是仙器？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, the grin spreading all the way across his face. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "11bff08ad857416aba083951d111d45f77f3ba78b402e29992a08c9791a448a7"
+      }
+    },
+    "s41": {
+      "visual": "b80666184c1dd51d",
+      "speech": "c0d3c8b942246261",
+      "keyframe": "76b93dbf5f36204e",
+      "chapter": "再一碗",
+      "setup": "E",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36",
+          "s37",
+          "s38",
+          "s39",
+          "s40"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The valve knob jams, shudders, and a violent jet of steam blasts straight up from it. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "70b8f26bed7175af247c883f191d51574dfd016539392ed734de9c2a22f5c69a"
+      }
+    },
+    "s42": {
+      "visual": "117d3f05c75ea713",
+      "speech": "db3a0565f93e71f1",
+      "keyframe": "114d1d91d52f25a6",
+      "chapter": "再一碗",
+      "setup": "F",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36",
+          "s37",
+          "s38",
+          "s39",
+          "s40",
+          "s41"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks",
+            "sword"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「這鍋還會叫？！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, stumbling back over the stool while Shen Zhaoxue grips her sword hilt. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "3cf1bcac3820348a9efe36ce4644d1a6b3b1ec40902fa3c2b716e6cd8128a3b1"
+      }
+    },
+    "s43": {
+      "visual": "2c8010cdd4f59703",
+      "speech": "f892dc16137d2c98",
+      "keyframe": "572d352cb1841947",
+      "chapter": "再一碗",
+      "setup": "B",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36",
+          "s37",
+          "s38",
+          "s39",
+          "s40",
+          "s41",
+          "s42"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "A",
+      "risk_reasons": [],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 57.6,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.7039,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] The pages settle and fall still, and a single short line of small blue-gold strokes glows into being along the bottom edge of the paper. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "806d7722bcec7861678e9cba461916bed41efd94046255505734762c86d3b8a2"
+      }
+    },
+    "s44": {
+      "visual": "960b4d3d846fc3d7",
+      "speech": "e0a58bb46cc3a8cb",
+      "keyframe": "0f5480182b2a5b92",
+      "chapter": "再一碗",
+      "setup": "G",
+      "visual_kind": "clip",
+      "lines": 1,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36",
+          "s37",
+          "s38",
+          "s39",
+          "s40",
+          "s41",
+          "s42",
+          "s43"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "speech.visible-mouth"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「第二次？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, his eyes flicking from the book toward Shen off screen right. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "4a46f6c5d2f3672f8235ae6a7470ce78db445eedbffdc83ec2156add86b1711f"
+      }
+    },
+    "s45": {
+      "visual": "7daac51df64a994b",
+      "speech": "efc01773a9357509",
+      "keyframe": "071394fe47c4ef10",
+      "chapter": "再一碗",
+      "setup": "H",
+      "visual_kind": "clip",
+      "lines": 0,
+      "source": null,
+      "buy_s": 4,
+      "promise": {
+        "visual_kind": "clip",
+        "buy_s": 4,
+        "route": "hailuo",
+        "fit": "auto"
+      },
+      "continuity": {
+        "depends_on": [
+          "s36",
+          "s37",
+          "s38",
+          "s39",
+          "s40",
+          "s41",
+          "s42",
+          "s43",
+          "s44"
+        ],
+        "locks": {
+          "prop": [
+            "book",
+            "tattered book",
+            "bowl",
+            "cracked bowl",
+            "chopsticks",
+            "sword"
+          ],
+          "costume": [],
+          "time_of_day": [
+            "night"
+          ]
+        }
+      },
+      "risk": "B",
+      "risk_reasons": [
+        "reaction.micro"
+      ],
+      "cost": {
+        "unit": "credits",
+        "one": 48,
+        "expected": 72,
+        "cap": 96,
+        "usd_fee": {
+          "one": 0.5866,
+          "expected": 0.8798,
+          "cap": 1.1731
+        }
+      },
+      "first_frame": {
+        "kind": "to-draw"
+      },
+      "end_frame": {
+        "planned": false
+      },
+      "prompt": {
+        "text": "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] Shen Zhaoxue's hand tightens once on the sword hilt and her eyes do not leave the book, her face giving nothing away. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A",
+        "sha256": "ef2f51aa06f99070f8a057b784d909f4cebbfe17f1cfbbb647737b633624435f"
+      }
+    }
+  },
+  "totals": {
+    "seconds": 92.11,
+    "clip_seconds": 169,
+    "utilisation": 0.5067,
+    "clip": {
+      "unit": "credits",
+      "one": 2028,
+      "expected": 2710.8,
+      "cap": 4056,
+      "usd_fee": {
+        "one": 24.7822,
+        "expected": 33.126,
+        "cap": 49.5643
+      }
+    },
+    "server_side_usd": {
+      "usd_one": 7.712,
+      "usd_cap": 21.824
+    },
+    "setups": [
+      {
+        "chapter": "清退",
+        "setups": 7,
+        "shots": 8
+      },
+      {
+        "chapter": "半碗飯",
+        "setups": 11,
+        "shots": 15
+      },
+      {
+        "chapter": "鍋",
+        "setups": 10,
+        "shots": 12
+      },
+      {
+        "chapter": "再一碗",
+        "setups": 8,
+        "shots": 10
+      }
+    ],
+    "plan_share": {
+      "one": 0.4507,
+      "expected": 0.6024,
+      "cap": 0.9013
+    }
+  },
+  "batches": [
+    {
+      "name": "小樣",
+      "shots": [
+        "s33",
+        "s34",
+        "s35"
+      ],
+      "buys": [
+        "s33",
+        "s34",
+        "s35"
+      ]
+    },
+    {
+      "name": "第 1 場：清退",
+      "shots": [
+        "s01",
+        "s02",
+        "s03",
+        "s04",
+        "s05",
+        "s06",
+        "s07",
+        "s08"
+      ],
+      "buys": [
+        "s02",
+        "s06",
+        "s08",
+        "s01",
+        "s03",
+        "s04",
+        "s05",
+        "s07"
+      ]
+    },
+    {
+      "name": "第 2 場：半碗飯",
+      "shots": [
+        "s09",
+        "s10",
+        "s11",
+        "s12",
+        "s13",
+        "s14",
+        "s15",
+        "s16",
+        "s17",
+        "s18",
+        "s19",
+        "s20",
+        "s21",
+        "s22",
+        "s23"
+      ],
+      "buys": [
+        "s11",
+        "s14",
+        "s17",
+        "s18",
+        "s20",
+        "s21",
+        "s22",
+        "s23",
+        "s09",
+        "s12",
+        "s13",
+        "s15",
+        "s16"
+      ]
+    },
+    {
+      "name": "第 3 場：鍋",
+      "shots": [
+        "s24",
+        "s25",
+        "s26",
+        "s27",
+        "s28",
+        "s29",
+        "s30",
+        "s31",
+        "s32"
+      ],
+      "buys": [
+        "s24",
+        "s25",
+        "s27",
+        "s29",
+        "s30",
+        "s26",
+        "s28",
+        "s32"
+      ]
+    },
+    {
+      "name": "第 4 場：再一碗",
+      "shots": [
+        "s36",
+        "s37",
+        "s38",
+        "s39",
+        "s40",
+        "s41",
+        "s42",
+        "s43",
+        "s44",
+        "s45"
+      ],
+      "buys": [
+        "s40",
+        "s44",
+        "s45",
+        "s36",
+        "s37",
+        "s38",
+        "s39",
+        "s41",
+        "s42",
+        "s43"
+      ]
+    }
+  ],
+  "counts": {
+    "shots": 45,
+    "clips": 42,
+    "stills": 3,
+    "cuts": 0,
+    "A": 23,
+    "B": 19,
+    "C": 0
+  },
+  "created_at": "2026-10-27T22:46:03.767Z",
+  "note": "站主 2026-10-27：1 畫風 3D 國漫；2 路線 Colab 直接打 MiniMax API 的 H3（鎖定檔以 hailuo h3 2k 記正文與雜湊，點數換成 API 美元）；3 第 1 集約 92 秒；4 聲音照建議、試片前試聽；5 先做小樣 s33–s35"
+}

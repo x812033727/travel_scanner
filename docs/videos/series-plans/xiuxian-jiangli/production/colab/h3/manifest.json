@@ -1,0 +1,594 @@
+{
+ "episode": "xiuxian-jiangli-e001",
+ "note": "manifest 給 .agents/skills/minimax-h3-colab 的 h3.sh batch：reference_images 的 first-frames/<id>.png 要先放好（通過 judge 的關鍵影格，或 pilot 手放的首格），prompts/<id>.txt 是鎖定檔的定稿正文原封不動（prompt_sha256 等於 e001-plan-lock.json）；1344×768、24 fps、4 秒會變 4.46 秒。",
+ "jobs": [
+  {
+   "id": "s01",
+   "title": "xiuxian-jiangli-e001 s01",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s01.png"
+   ],
+   "prompt_file": "prompts/s01.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s01-t1.mp4",
+   "prompt_sha256": "8d19abf52f115ce20bded3e38899956ff2729dc1a28c1ce91f8482ac16d949d6"
+  },
+  {
+   "id": "s02",
+   "title": "xiuxian-jiangli-e001 s02",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s02.png"
+   ],
+   "prompt_file": "prompts/s02.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s02-t1.mp4",
+   "prompt_sha256": "73c313f0267f94a20652048982c0705f903c9bfd36183e46a6a0ad80a2d7a98a"
+  },
+  {
+   "id": "s03",
+   "title": "xiuxian-jiangli-e001 s03",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s03.png"
+   ],
+   "prompt_file": "prompts/s03.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s03-t1.mp4",
+   "prompt_sha256": "9d71254f31a8fe7b887c71028907631591e9a3fe36627204e27668cd972a78b2"
+  },
+  {
+   "id": "s04",
+   "title": "xiuxian-jiangli-e001 s04",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s04.png"
+   ],
+   "prompt_file": "prompts/s04.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s04-t1.mp4",
+   "prompt_sha256": "de9d793e1f13584ecf5c7781cd7d657124f63a4cc54772418ea2eaafd14f7481"
+  },
+  {
+   "id": "s05",
+   "title": "xiuxian-jiangli-e001 s05",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s05.png"
+   ],
+   "prompt_file": "prompts/s05.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s05-t1.mp4",
+   "prompt_sha256": "8bf4d58986835aed8f1d575897f1dd2e6e5cf95d23b6845ebb4fd20132383fec"
+  },
+  {
+   "id": "s06",
+   "title": "xiuxian-jiangli-e001 s06",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s06.png"
+   ],
+   "prompt_file": "prompts/s06.txt",
+   "duration_seconds": 5,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s06-t1.mp4",
+   "prompt_sha256": "a6b64f57254aba1792097a4b852f0f81ab714900e39739242c345160816da513"
+  },
+  {
+   "id": "s07",
+   "title": "xiuxian-jiangli-e001 s07",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s07.png"
+   ],
+   "prompt_file": "prompts/s07.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s07-t1.mp4",
+   "prompt_sha256": "bbba2e34a07b98c0d7f0770a6a68261a66944af18dbf47d289fcd6169343c899"
+  },
+  {
+   "id": "s08",
+   "title": "xiuxian-jiangli-e001 s08",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s08.png"
+   ],
+   "prompt_file": "prompts/s08.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s08-t1.mp4",
+   "prompt_sha256": "e1a149986575964227e2dc44e0623e50f8cb1996180f0bb3fa13717fd730c409"
+  },
+  {
+   "id": "s09",
+   "title": "xiuxian-jiangli-e001 s09",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s09.png"
+   ],
+   "prompt_file": "prompts/s09.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s09-t1.mp4",
+   "prompt_sha256": "77374f03f47bc9ab6574d4be1b577b838adf7b8df0e9a111a95e0a2783597fb5"
+  },
+  {
+   "id": "s11",
+   "title": "xiuxian-jiangli-e001 s11",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s11.png"
+   ],
+   "prompt_file": "prompts/s11.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s11-t1.mp4",
+   "prompt_sha256": "7506a472a3fa93a4d1499d040062b7b6de1052ed70a80b642030e34f50c8b43c"
+  },
+  {
+   "id": "s12",
+   "title": "xiuxian-jiangli-e001 s12",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s12.png"
+   ],
+   "prompt_file": "prompts/s12.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s12-t1.mp4",
+   "prompt_sha256": "e871f85e7d376e5f0189323a927693eb90d146dae6864c279a8b71fc1d3707e2"
+  },
+  {
+   "id": "s13",
+   "title": "xiuxian-jiangli-e001 s13",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s13.png"
+   ],
+   "prompt_file": "prompts/s13.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s13-t1.mp4",
+   "prompt_sha256": "a3486cc0d90395f85dae7d08f8d57105d1cdd2d5809874ec55a28b0290eac569"
+  },
+  {
+   "id": "s14",
+   "title": "xiuxian-jiangli-e001 s14",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s14.png"
+   ],
+   "prompt_file": "prompts/s14.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s14-t1.mp4",
+   "prompt_sha256": "a43a9c2641c75004b9f4ec84ad1eca547bb900b85e97bc8c745864aa52ddb735"
+  },
+  {
+   "id": "s15",
+   "title": "xiuxian-jiangli-e001 s15",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s15.png"
+   ],
+   "prompt_file": "prompts/s15.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s15-t1.mp4",
+   "prompt_sha256": "a8f4d6b0684aa5967ac6b56d7b0bacd72a61c2508093d1d94db1d438ecd8ec6c"
+  },
+  {
+   "id": "s16",
+   "title": "xiuxian-jiangli-e001 s16",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s16.png"
+   ],
+   "prompt_file": "prompts/s16.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s16-t1.mp4",
+   "prompt_sha256": "dda042e6e85f0790e1d4f8a19020b30df6e0f3dc962de05989a39b6b6a2d30ab"
+  },
+  {
+   "id": "s17",
+   "title": "xiuxian-jiangli-e001 s17",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s17.png"
+   ],
+   "prompt_file": "prompts/s17.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s17-t1.mp4",
+   "prompt_sha256": "2ff29641211d5fb88718cbb7aa9d5c9ef2862923e71b506375714f927761c7ce"
+  },
+  {
+   "id": "s18",
+   "title": "xiuxian-jiangli-e001 s18",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s18.png"
+   ],
+   "prompt_file": "prompts/s18.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s18-t1.mp4",
+   "prompt_sha256": "b4d0d8c9b4d025980b94f169c035cecbeef784194bbf4815bf641a894d9a4157"
+  },
+  {
+   "id": "s20",
+   "title": "xiuxian-jiangli-e001 s20",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s20.png"
+   ],
+   "prompt_file": "prompts/s20.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s20-t1.mp4",
+   "prompt_sha256": "67c6649031724e00d5dc28f9f6e4cfb42b771a7f13f414b981ee41e2d605d77a"
+  },
+  {
+   "id": "s21",
+   "title": "xiuxian-jiangli-e001 s21",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s21.png"
+   ],
+   "prompt_file": "prompts/s21.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s21-t1.mp4",
+   "prompt_sha256": "ac4ab22381e340231a52ebf108fc09427043b90308f27ab8b3c898ea41f37638"
+  },
+  {
+   "id": "s22",
+   "title": "xiuxian-jiangli-e001 s22",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s22.png"
+   ],
+   "prompt_file": "prompts/s22.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s22-t1.mp4",
+   "prompt_sha256": "ef30cfbaceb0403973f0d7b3ca170bd3962ec8447d076ff396d29cae2403c874"
+  },
+  {
+   "id": "s23",
+   "title": "xiuxian-jiangli-e001 s23",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s23.png"
+   ],
+   "prompt_file": "prompts/s23.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s23-t1.mp4",
+   "prompt_sha256": "132d524c53bf831e187f33df5d4f82fa84379352d51e1afd9c4d307e7976e097"
+  },
+  {
+   "id": "s24",
+   "title": "xiuxian-jiangli-e001 s24",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s24.png"
+   ],
+   "prompt_file": "prompts/s24.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s24-t1.mp4",
+   "prompt_sha256": "1c78a1ec622cc0b4a9c9ca5442f137ef808a7d325512bc010863b16f85b54714"
+  },
+  {
+   "id": "s25",
+   "title": "xiuxian-jiangli-e001 s25",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s25.png"
+   ],
+   "prompt_file": "prompts/s25.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s25-t1.mp4",
+   "prompt_sha256": "d6402a7b2de6be120e4f6a481bb54139639fe7a4b2308da1851948f39e8a12c0"
+  },
+  {
+   "id": "s26",
+   "title": "xiuxian-jiangli-e001 s26",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s26.png"
+   ],
+   "prompt_file": "prompts/s26.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s26-t1.mp4",
+   "prompt_sha256": "4b5d9cd74a531bcf6cf3f03ed8baa71eedd7a98b080177298fc26ddcf08226c0"
+  },
+  {
+   "id": "s27",
+   "title": "xiuxian-jiangli-e001 s27",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s27.png"
+   ],
+   "prompt_file": "prompts/s27.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s27-t1.mp4",
+   "prompt_sha256": "bae3f7ba9567c9264b34c5a4b3d5919e7ddf26cf8853c717fcc1b347d2bcbed6"
+  },
+  {
+   "id": "s28",
+   "title": "xiuxian-jiangli-e001 s28",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s28.png"
+   ],
+   "prompt_file": "prompts/s28.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s28-t1.mp4",
+   "prompt_sha256": "2c5b1e126ca5c71722ac6b4675a699346cf33d89fcc223c01a532e264040a546"
+  },
+  {
+   "id": "s29",
+   "title": "xiuxian-jiangli-e001 s29",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s29.png"
+   ],
+   "prompt_file": "prompts/s29.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s29-t1.mp4",
+   "prompt_sha256": "4310b74cdad53fa8fec51d464555a3f35cb692bf258dd5c4b568f9fb6a65df60"
+  },
+  {
+   "id": "s30",
+   "title": "xiuxian-jiangli-e001 s30",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s30.png"
+   ],
+   "prompt_file": "prompts/s30.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s30-t1.mp4",
+   "prompt_sha256": "b62cb166724a5beed342e64478644fe7d4d8b54acf291ce3ba32e1c1b17c545b"
+  },
+  {
+   "id": "s32",
+   "title": "xiuxian-jiangli-e001 s32",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s32.png"
+   ],
+   "prompt_file": "prompts/s32.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s32-t1.mp4",
+   "prompt_sha256": "72ea56ce34e50612815ff7272e8d7bf1c121878f8e474ad4c4e0d26654c29109"
+  },
+  {
+   "id": "s33",
+   "title": "xiuxian-jiangli-e001 s33",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s33.png"
+   ],
+   "prompt_file": "prompts/s33.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s33-t1.mp4",
+   "prompt_sha256": "8448b3293664fe9903c121d8c78a44e9226b77efecfe27e236ff5ca14cd69c3b"
+  },
+  {
+   "id": "s34",
+   "title": "xiuxian-jiangli-e001 s34",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s34.png"
+   ],
+   "prompt_file": "prompts/s34.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s34-t1.mp4",
+   "prompt_sha256": "08c82c1c58dfa9795321ed21ca58fd67b918f076c86ffe9120d83dd0c3f652f2"
+  },
+  {
+   "id": "s35",
+   "title": "xiuxian-jiangli-e001 s35",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s35.png"
+   ],
+   "prompt_file": "prompts/s35.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s35-t1.mp4",
+   "prompt_sha256": "54420dc3097e1f0c7ac19dea7e35e3f6e2153b1f09245abadbbe6c23c9363aab"
+  },
+  {
+   "id": "s36",
+   "title": "xiuxian-jiangli-e001 s36",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s36.png"
+   ],
+   "prompt_file": "prompts/s36.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s36-t1.mp4",
+   "prompt_sha256": "fedfd457aa4b64f4a2d6787b023728f73df4b8a51133287acf454a2c082f5151"
+  },
+  {
+   "id": "s37",
+   "title": "xiuxian-jiangli-e001 s37",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s37.png"
+   ],
+   "prompt_file": "prompts/s37.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s37-t1.mp4",
+   "prompt_sha256": "17982942b8b51105f5e235e4070e758d4fa98670f74d6ba3f20c67a4e9e06c7e"
+  },
+  {
+   "id": "s38",
+   "title": "xiuxian-jiangli-e001 s38",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s38.png"
+   ],
+   "prompt_file": "prompts/s38.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s38-t1.mp4",
+   "prompt_sha256": "4e16bd76f121fd48094e3f1c175d8bdc4ed81019d78976e05ca41c0db7029c92"
+  },
+  {
+   "id": "s39",
+   "title": "xiuxian-jiangli-e001 s39",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s39.png"
+   ],
+   "prompt_file": "prompts/s39.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s39-t1.mp4",
+   "prompt_sha256": "ee929868029aea67e05663420e8e03d1b9b974e89de374c6a317fb93cfef1ab2"
+  },
+  {
+   "id": "s40",
+   "title": "xiuxian-jiangli-e001 s40",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s40.png"
+   ],
+   "prompt_file": "prompts/s40.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s40-t1.mp4",
+   "prompt_sha256": "11bff08ad857416aba083951d111d45f77f3ba78b402e29992a08c9791a448a7"
+  },
+  {
+   "id": "s41",
+   "title": "xiuxian-jiangli-e001 s41",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s41.png"
+   ],
+   "prompt_file": "prompts/s41.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s41-t1.mp4",
+   "prompt_sha256": "70b8f26bed7175af247c883f191d51574dfd016539392ed734de9c2a22f5c69a"
+  },
+  {
+   "id": "s42",
+   "title": "xiuxian-jiangli-e001 s42",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s42.png"
+   ],
+   "prompt_file": "prompts/s42.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s42-t1.mp4",
+   "prompt_sha256": "3cf1bcac3820348a9efe36ce4644d1a6b3b1ec40902fa3c2b716e6cd8128a3b1"
+  },
+  {
+   "id": "s43",
+   "title": "xiuxian-jiangli-e001 s43",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s43.png"
+   ],
+   "prompt_file": "prompts/s43.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s43-t1.mp4",
+   "prompt_sha256": "806d7722bcec7861678e9cba461916bed41efd94046255505734762c86d3b8a2"
+  },
+  {
+   "id": "s44",
+   "title": "xiuxian-jiangli-e001 s44",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s44.png"
+   ],
+   "prompt_file": "prompts/s44.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s44-t1.mp4",
+   "prompt_sha256": "4a46f6c5d2f3672f8235ae6a7470ce78db445eedbffdc83ec2156add86b1711f"
+  },
+  {
+   "id": "s45",
+   "title": "xiuxian-jiangli-e001 s45",
+   "inference_mode": "first_frame",
+   "reference_images": [
+    "first-frames/s45.png"
+   ],
+   "prompt_file": "prompts/s45.txt",
+   "duration_seconds": 4,
+   "width": 1344,
+   "height": 768,
+   "output_name": "s45-t1.mp4",
+   "prompt_sha256": "ef2f51aa06f99070f8a057b784d909f4cebbfe17f1cfbbb647737b633624435f"
+  }
+ ]
+}
