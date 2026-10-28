@@ -72,7 +72,7 @@ Windows 要在 WSL 裡（CLI 只支援 Linux／macOS）。B 不經過 agent，�
 | `uv tool install google-colab-cli` 經代理裝 0.7.5 | 可以（系統 Python 3.13 直接用；低於 3.12 時 bootstrap 用 `--python 3.12`） |
 | `colab --auth=oauth2 usage` 無瀏覽器 | 印出授權網址並等 stdin；stdin 關掉就印 `EOF` 警告、exit 0（所以 `bootstrap.sh verify` 看的是輸出有沒有 `Current balance`，不是 exit code） |
 | 代理放不放 Google | `colab.research.google.com` 200、`accounts.google.com` 302、`oauth2.googleapis.com` 可達 |
-| `colab new`／`exec`／`upload`（走 WebSocket 到 runtime） | **沒試**（要花 compute units、要先配對）。第一次真跑如果卡在 `new` 或 `exec`，先懷疑代理對 WebSocket 的處理，看 `~/.config/colab-cli/colab.log` 與 `--logtostderr` |
+| `colab new`／`exec`／`upload`（走 WebSocket 到 runtime） | **可以**（2026-10-28 第一次真跑，`xiuxian-jiangli-e001` 小樣三支：session `h3-20261028-060722-acfdb4`，A100 高 RAM；`new` 06:07、第一鏡 06:09 開跑，模型已在快取時冷啟動約 2 分鐘；4 秒片段首鏡 5 分 19 秒、其後每支約 2 分 20 秒；`usage` 前後差 0.69 CU／3 支，session 停止 1 分鐘後讀的，Colab 入帳常延遲，下一批再對一次；`rate_per_hour` 在 session 停止後印 0，要在跑的時候讀才看得到 A100 的費率）。卡在 `new` 或 `exec` 時先懷疑代理對 WebSocket 的處理，看 `~/.config/colab-cli/colab.log` 與 `--logtostderr`。另一個坑：上游 runner 把 manifest 的 `reference_images` 當成相對於**目前目錄**，`h3.sh batch` 要 `cd` 到 manifest 的目錄再跑 |
 | 上游 runner 需要的旗標（`new --gpu/--high-mem`、`exec --env/--file/--timeout`、`upload`、`download`、`stop`） | 0.7.5 都有 |
 
 ## 5. 配額與價格：只記來源，不當實測
