@@ -119,7 +119,7 @@ def main():
         notebook = out / "first_frames.ipynb"
         notebook.write_text(json.dumps({
             "nbformat": 4, "nbformat_minor": 5, "metadata": {},
-            "cells": [{"cell_type": "code", "metadata": {}, "execution_count": None, "outputs": [], "source": SCRIPT.read_text(encoding="utf-8")}],
+            "cells": [{"cell_type": "code", "id": "first-frames", "metadata": {}, "execution_count": None, "outputs": [], "source": SCRIPT.read_text(encoding="utf-8")}],
         }), encoding="utf-8")
         state["status"] = "running"
         env = [f"FF_BUNDLE=/content/ff_bundle.tar", f"FF_OUT=/content/ff_out.tar", f"FF_PROFILE={args.profile}"]
