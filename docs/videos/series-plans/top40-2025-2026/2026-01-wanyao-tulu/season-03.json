@@ -1,0 +1,4610 @@
+{
+  "number": 3,
+  "title": "御膳司",
+  "theme": "坐在最高那張桌上的，也餓。",
+  "start_state": "阿滿被御膳司帶走，徵妖冊上寫著『已入長生羹』。食單寫到第三十道。青梧帶怨娘、狐娘子、蕭承霽與鬼兵南下皇都；北境傳來御膳司屠山的消息。她要進御膳司，救阿滿，看清長生羹。",
+  "end_state": "食單寫到第六十道。阿滿救回（他沒被煉，是裴無咎留著他當『引』）；山君從要拆宮的虎妖變成妖市守門人；太子寧昭成為她在宮裡的鑰匙；長生羹的真相揭開：長生的是饕不是皇帝；青梧忘掉的味道去了哪揭開。殘開始從皇都地底往上爬。最後一集，御膳司的鐵鍋全開，裴無咎摘下手套對她說：「妳煮一碗給我。」身後，皇帝的影子張開一張比臉還大的嘴。",
+  "guest_cast": [
+    {
+      "id": "s03-xiao-ya",
+      "name": "小丫",
+      "role": "淨山山腳村廟祝的女兒，十歲；跟著青梧進皇都找爹",
+      "appearance": "東亞女童，十歲，圓臉、大眼、兩條短辮用麻繩綁著，臉頰凍紅，穿補過的粗布襖，背上綁著一只空碗"
+    },
+    {
+      "id": "s03-cunzhang",
+      "name": "村長",
+      "role": "淨山山腳村的村長，怕妖怕官、看不起廚娘",
+      "appearance": "東亞老人，六十五歲，瘦長臉、稀疏白鬚、眉毛下垂，穿深褐棉袍，手裡一根拐杖"
+    },
+    {
+      "id": "s03-song-he",
+      "name": "膳官·宋鶴",
+      "role": "御膳司派去淨山的膳官，傲慢、話多、怕死",
+      "appearance": "東亞青年男性，三十二歲，白淨、尖下巴、細長眼帶笑，墨綠膳官短袍、腰掛符火小勺，說話時愛捻袖口"
+    },
+    {
+      "id": "s03-bai-zhi",
+      "name": "膳官·白芷",
+      "role": "御膳司的女膳官，試羹童出身；從砸鋪的人變成替青梧改符的人",
+      "appearance": "東亞年輕女性，二十六歲，清冷英氣：直眉、細長眼、唇色淡、膚色偏白，黑髮綰成膳官髻，墨綠膳官短袍、袖口束緊，右手指尖常沾著符灰"
+    },
+    {
+      "id": "s03-hu-dashen",
+      "name": "胡大嬸",
+      "role": "御膳司對面小食鋪的房東，嘴快心軟，皇都街坊的消息源",
+      "appearance": "東亞中年女性，五十歲，圓臉、笑眼、鬢邊一支木簪，藍布圍裙，手裡永遠拿著一把蒲扇"
+    },
+    {
+      "id": "s03-xiao-chan",
+      "name": "宮女·小蟬",
+      "role": "太子身邊的小宮女，替寧昭傳信、開御膳司後門",
+      "appearance": "東亞少女，十六歲，清秀瘦小、杏眼、兩頰微紅，淺青宮女裝、雙髻繫淺紅絲帶，走路無聲"
+    },
+    {
+      "id": "s03-zheng-heng",
+      "name": "禮部侍郎·鄭衡",
+      "role": "替御膳司向皇帝報『除妖幾何』的朝臣，吃長生羹吃饞了",
+      "appearance": "東亞中年男性，五十歲，肥白、小眼、八字鬍修得整齊，深紫官袍、玉帶，嘴角常不自覺地抿"
+    },
+    {
+      "id": "s03-miao-zhu",
+      "name": "廟祝·杜老",
+      "role": "淨山山神廟的廟祝，小丫的爹；三十年替山君放碗，被御膳司押進皇都",
+      "appearance": "東亞老人，五十八歲，黝黑精瘦、額上皺紋深、眼神溫和，灰布道袍磨得發白，胸前掛一串木珠"
+    },
+    {
+      "id": "s03-deng-yao",
+      "name": "燈芯妖",
+      "role": "宮門長明燈下餓死的老燈夫長出的妖；第三十一道菜",
+      "appearance": "一盞舊紙燈的燈芯裡一雙老人的眼睛，人形時是個佝僂的老人，身上的衣服像燈紙一樣透光，手裡一根點燈的長竿"
+    },
+    {
+      "id": "s03-jing-yao",
+      "name": "井妖·阿澗",
+      "role": "皇都百姓的井被宮裡引走水源後長出的渴妖；第三十二道菜，連通御膳司地底的路",
+      "appearance": "半透明的東亞少年，十五歲模樣，頭髮濕垂、眼睛是井水的青色，身上滴著水卻不濕地"
+    },
+    {
+      "id": "s03-qing-li",
+      "name": "青狸",
+      "role": "淨山被煉的狸妖，關在御膳司備用鍋裡；第三十三道菜",
+      "appearance": "人形時是個翠眼的東亞少女，十二歲模樣，頭上兩只狸耳、身後一條蓬尾影，穿翠綠短衣"
+    },
+    {
+      "id": "s03-ling-yao",
+      "name": "鈴妖·叮",
+      "role": "宮門前三百年報膳的銅鈴長出的妖；第三十四道菜",
+      "appearance": "一只巴掌大的舊銅鈴，人形時是個銀髮小童，說話每一句結尾都帶一聲清脆的響"
+    },
+    {
+      "id": "s03-shi-po",
+      "name": "石婆",
+      "role": "淨山山神廟門前的石獅長出的妖，守著廟祝；第三十五道菜",
+      "appearance": "灰石色的東亞老婦，六十歲模樣，臉上有獅紋般的刻痕，眼睛濕亮像人，披一件灰麻披風"
+    },
+    {
+      "id": "s03-shu-yao",
+      "name": "倉鼠妖",
+      "role": "皇都糧倉的餓鼠長出的小妖，青梧第一次拒收又收的妖；第四十六道菜",
+      "appearance": "半透明的小鼠，人形時是個灰衣小童，鼻頭一直動，懷裡抱著一粒米"
+    },
+    {
+      "id": "s03-geng-yao",
+      "name": "更妖",
+      "role": "皇都鼓樓打更人餓死後長出的妖；第四十七道菜",
+      "appearance": "一個穿墨藍短打的瘦高黑影，手裡一面梆子，臉在燈下才看得清，是個中年人"
+    },
+    {
+      "id": "s03-can-yi",
+      "name": "殘（阿滿之聲）",
+      "role": "從皇都地底井裡爬上來的殘之一，吞過阿滿鍋邊的餓，開口是阿滿的聲音；第六十道菜",
+      "appearance": "一個沒有臉的黑影，身形像個小孩，坐下時燈影會被它吸暗；不是屍體，是一團會餓的暗"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s03-t01",
+      "question": "山君要的是什麼？",
+      "setup_episode": 122,
+      "payoff_episode": 128
+    },
+    {
+      "id": "s03-t02",
+      "question": "御膳司淨山是為了誰？",
+      "setup_episode": 123,
+      "payoff_episode": 126
+    },
+    {
+      "id": "s03-t03",
+      "question": "山頂那桌空碗誰會吃？",
+      "setup_episode": 127,
+      "payoff_episode": 157
+    },
+    {
+      "id": "s03-t04",
+      "question": "鍋裡的哭聲是不是阿滿？",
+      "setup_episode": 121,
+      "payoff_episode": 135
+    },
+    {
+      "id": "s03-t05",
+      "question": "寧昭夢見的影子是什麼？",
+      "setup_episode": 133,
+      "payoff_episode": 137
+    },
+    {
+      "id": "s03-t06",
+      "question": "誰在宮裡替御膳司遮？",
+      "setup_episode": 134,
+      "payoff_episode": 139
+    },
+    {
+      "id": "s03-t07",
+      "question": "阿滿為什麼說『我不餓了』？",
+      "setup_episode": 140,
+      "payoff_episode": 144
+    },
+    {
+      "id": "s03-t08",
+      "question": "裴無咎為什麼教她配方？",
+      "setup_episode": 142,
+      "payoff_episode": 160
+    },
+    {
+      "id": "s03-t09",
+      "question": "鍋裡另外三隻小妖救得出來嗎？",
+      "setup_episode": 141,
+      "payoff_episode": 148
+    },
+    {
+      "id": "s03-t10",
+      "question": "白芷會不會倒戈？",
+      "setup_episode": 140,
+      "payoff_episode": 175
+    },
+    {
+      "id": "s03-t11",
+      "question": "御膳司為什麼不反擊？",
+      "setup_episode": 153,
+      "payoff_episode": 159
+    },
+    {
+      "id": "s03-t12",
+      "question": "殘從哪裡爬出來？",
+      "setup_episode": 165,
+      "payoff_episode": 170
+    },
+    {
+      "id": "s03-t13",
+      "question": "寧昭知道真相後會怎麼做？",
+      "setup_episode": 150,
+      "payoff_episode": 172
+    },
+    {
+      "id": "s03-t14",
+      "question": "壽宴夜皇帝會不會現形？",
+      "setup_episode": 168,
+      "payoff_episode": 180
+    }
+  ],
+  "episodes": [
+    {
+      "number": 121,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "灰裡的紅布條",
+      "youtube_title": "妖市燒成灰，她翻遍每口鍋只找到阿滿的紅布條，徵妖冊上寫著「已入長生羹」",
+      "duration_s": 110,
+      "logline": "青梧要在妖市的灰裡找到阿滿，找到的只有一條紅布條與一本寫著他下場的徵妖冊；她得決定是留下重建，還是帶著半座妖市南下皇都。",
+      "hook": "青梧跪在灰裡一口一口翻鍋，喊「阿滿！」，翻出來的只有一條燒焦的紅布條。",
+      "hook_type": "image",
+      "mid_hook": "鬼兵長夜哨回報：御膳司的車隊三日前出南門，最小一口鍋裡一路有孩子的哭聲。",
+      "extra_hooks": [
+        "狐娘子從燒掉一半的閣樓裡抽出一張皇都地圖，上面御膳司的位置被煙桿燙了一個洞。"
+      ],
+      "conflict": "妖市燒掉一半、阿滿被帶走，青梧要在天亮前決定走不走，而走就得帶著一群沒了家的妖。",
+      "turn": "所有人以為狐娘子會留下重建妖市，她卻把煙桿往南一指：「妖市跟妳走。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "南下第一夜，官道盡頭一座山整座亮起慘白符火，山裡傳來一聲把霧震散的虎吼。",
+        "question": "那座山在燒什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huoban",
+        "meishi"
+      ],
+      "spectacle": "燒掉一半的妖市俯拍：一半是灰、一半還掛著燭紅的燈；遠處一座山在夜裡亮起整片慘白符火。",
+      "glamour_shot": "青梧在灰裡用半口鍋煮粥，吹掉湯面熱氣的那一秒，灶火把她臉上的灰照成金色。",
+      "setups": [
+        "s03-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "從灰裡救出最後一隻紙人妖",
+        "狐娘子決定帶妖市的妖一起南下"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "xiao-chengji",
+        "douzi",
+        "hu-niangzi",
+        "yuan-niang",
+        "gui-bing"
+      ],
+      "locations": [
+        "雲州妖市廢墟",
+        "南下官道"
+      ],
+      "state": {
+        "time": "妖市大火次日到南下第一夜",
+        "knowledge": "阿滿被御膳司車隊帶往皇都；徵妖冊寫他『已入長生羹』",
+        "carry_forward": "亮著符火的那座山；鍋裡的哭聲是不是阿滿"
+      }
+    },
+    {
+      "number": 122,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "掛滿空碗的山",
+      "youtube_title": "整座山的妖被御膳司煉光，樹上掛滿空碗，夕陽裡站起一隻說人話的虎",
+      "duration_s": 105,
+      "logline": "青梧想進那座被御膳司『淨』過的山找倖存的妖，山裡只剩掛滿樹的空碗，和一隻在碗堆上看著她的虎。",
+      "hook": "符火一下全熄，整座山黑了；一個女孩從山路滾下來，手裡抱著一只碗：「碗，全是碗。」",
+      "hook_type": "line",
+      "mid_hook": "青梧上山，每一棵樹上都掛著空碗，她翻過一只，碗底刻著一個字。",
+      "conflict": "村長說山上妖都死光了不許上山，青梧要進山確認御膳司煉了多少、留了什麼。",
+      "turn": "大家以為山空了，青梧卻嚐出山風裡有一股活的『氣』——有一隻大的，一直在看她。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "夕陽裡，山頂碗堆上站起一個魁梧的人形，背後一道虎尾影掃過落日：「碗，是我掛的。」",
+        "question": "這隻會說話的虎妖是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "ganren",
+        "meishi"
+      ],
+      "spectacle": "被煉光的山的全景：每棵樹上掛滿空碗，風一吹碗與碗相碰，整座山響成一片。",
+      "glamour_shot": "山君人形站在碗堆上，夕陽從背後打來，虎尾影在光裡慢慢散開。",
+      "setups": [
+        "s03-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "村長當眾收回『廚娘懂什麼』：青梧嚐一口山土就說出御膳司煉了七夜",
+        "小丫跟上了驛站的隊"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "xiao-chengji",
+        "douzi",
+        "hu-niangzi",
+        "gui-bing",
+        "shan-jun",
+        "s03-xiao-ya",
+        "s03-cunzhang"
+      ],
+      "locations": [
+        "山腳村",
+        "淨過的山"
+      ],
+      "state": {
+        "time": "南下第二日",
+        "knowledge": "御膳司把整座山煉光；山上有一隻會說話的大妖",
+        "carry_forward": "虎妖要什麼；碗底刻的字"
+      }
+    },
+    {
+      "number": 123,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "我不吃人煮的",
+      "youtube_title": "她端上一碗飯請虎妖上桌，被一掌拍碎：鬼兵擋一夜，虎爪停在她眉心一寸",
+      "duration_s": 100,
+      "logline": "青梧想用一碗〈夜哨飯〉請山君上桌，山君不聽、不吃、不坐，蕭承霽與三百鬼兵只能替村子擋下第一夜。",
+      "hook": "山君一躍落在青梧面前三步，蕭承霽的刀橫在兩人中間：「退。」",
+      "hook_type": "danger",
+      "mid_hook": "青梧端出一碗〈夜哨飯〉，山君一掌把碗拍碎：「我不吃人煮的。」",
+      "extra_hooks": [
+        "小丫說她爹是山神廟的廟祝，御膳司來那天，爹擋在廟門口，就沒回來。"
+      ],
+      "conflict": "山君夜裡下山撕鍋、撞門，青梧第一次遇到餵不飽也不肯吃的妖，要守住村子一夜。",
+      "turn": "所有人以為山君要殺人，他只撕鍋、不碰人——他恨的是鍋。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "山君一爪打飛鬼兵長的面甲，下一爪停在青梧額前一寸，虎目裡映著山頂慘白的符火。",
+        "question": "山君會不會落下這一爪？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "huoban",
+        "henla"
+      ],
+      "spectacle": "三百鬼兵借一日『夜哨』列成黑甲人牆，山君一撲撞開三列，黑甲在月光下翻飛。",
+      "glamour_shot": "蕭承霽持刀擋在青梧身前，披風被山風掀起，回頭看她的那一眼。",
+      "setups": [
+        "s03-t02"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "村子一夜無人受傷",
+        "青梧確認御膳司的榜寫了『淨山一座』卻沒有一個名字"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "xiao-chengji",
+        "gui-bing",
+        "shan-jun",
+        "s03-xiao-ya",
+        "douzi"
+      ],
+      "locations": [
+        "山腳村",
+        "村口"
+      ],
+      "state": {
+        "time": "山下第一夜",
+        "knowledge": "山君不吃人煮的；他恨的是御膳司的鍋",
+        "carry_forward": "那一爪；小丫的爹"
+      }
+    },
+    {
+      "number": 124,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "虎爺爺",
+      "youtube_title": "虎妖的爪停在她眉前，聞到灰味轉頭就走；狐娘子一句「三百年舊識」讓全場安靜",
+      "duration_s": 95,
+      "logline": "青梧想弄清山君到底要什麼，答案不在她身上，在狐娘子三百年前的記憶與一個孩子的喊聲裡。",
+      "hook": "那一爪停住。山君鼻翼動了動，聞到她身上的灰味，轉頭走回山：「妖市的灰。」",
+      "hook_type": "reversal",
+      "mid_hook": "狐娘子吸了一口煙：「他聞的不是灰，是我。三百年舊識。」",
+      "conflict": "山君不說話、不吃，青梧只能從狐娘子與小丫嘴裡拼出他守的是什麼。",
+      "turn": "大家以為山君守的是一座山，狐娘子說：他守的是山上那座廟，廟裡一直有人給他一碗飯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小丫對著黑山喊：「虎爺爺，我爹沒回來。」山裡傳來一聲低低的、不像吼的聲音。",
+        "question": "山君認得這個孩子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "huoban",
+        "zhiguai"
+      ],
+      "spectacle": "狐娘子月下三條尾影與山上一道虎尾影隔著整座黑山遙遙相對。",
+      "glamour_shot": "青梧教小丫把一把米熬成糖粥，兩人湊在鍋邊吹氣，灶火把兩張臉照成一樣的橘色。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "狐娘子承認三百年前就在這一帶，認識山君",
+        "小丫第一次吃到熱的"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "hu-niangzi",
+        "shan-jun",
+        "s03-xiao-ya",
+        "douzi",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "山腳村",
+        "村口石"
+      ],
+      "state": {
+        "time": "山下第二日",
+        "knowledge": "山君守的是山神廟，與狐娘子是舊識",
+        "carry_forward": "小丫的喊聲；山君要的到底是什麼"
+      }
+    },
+    {
+      "number": 125,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "補淨",
+      "youtube_title": "御膳司膳官帶五口鍋回山「補淨」，符火圈住山神廟，虎妖的影子一寸寸縮小",
+      "duration_s": 100,
+      "logline": "御膳司的膳官宋鶴回山要把『剩下那一隻』煉掉，青梧必須在符火圈合上之前擋住五口鍋。",
+      "hook": "清晨村口石上，小丫放的那碗米被翻過來蓋著，碗底朝天，一粒米都沒少。",
+      "hook_type": "image",
+      "mid_hook": "官道上五口鐵鍋拖出長長的痕，膳官宋鶴下馬：「山上還剩一隻，補淨。」",
+      "extra_hooks": [
+        "蕭承霽摸了摸符火的灰：「皇都的制式。這火從宮裡來。」"
+      ],
+      "conflict": "宋鶴帶五口鍋與符火上山，青梧既攔不住官，也勸不動山君下來。",
+      "turn": "觀眾以為這一集的敵人是山君，真正拍鍋的人卻回來了，而山君反而成了要救的那個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "宋鶴的符火在山神廟外圈成一圈慘白，山君被困在圈裡，他的影子開始一寸一寸縮小。",
+        "question": "山君會被煉掉嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhandou",
+        "zhiguai"
+      ],
+      "spectacle": "五口鐵鍋沿山路排開，慘白符火把整座山神廟圈成一個光環，廟裡的虎影越縮越小。",
+      "glamour_shot": "青梧在山路上奔跑，藍布巾被風吹開、碎髮飛起，手裡還提著那把舊菜刀。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "宋鶴被青梧當眾問倒：『淨山一座』上寫了幾個名字？他答不出",
+        "確認符火來自皇都"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "shan-jun",
+        "s03-song-he",
+        "s03-xiao-ya",
+        "gui-bing",
+        "hu-niangzi"
+      ],
+      "locations": [
+        "山腳村",
+        "山路",
+        "山神廟"
+      ],
+      "state": {
+        "time": "山下第三日黃昏",
+        "knowledge": "御膳司回來補煉山君；符火是皇都制式",
+        "carry_forward": "符火圈裡縮小的影子"
+      }
+    },
+    {
+      "number": 126,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "這鍋我借了",
+      "youtube_title": "她提著鍋走進符火圈，校尉喝下九尾湯化成膳官騙開火陣，虎妖反把膳官塞進鐵鍋",
+      "duration_s": 105,
+      "logline": "青梧要在山君被煉掉之前破掉符火圈，手裡只有一碗能借一日的〈九尾湯〉與一個肯喝的人。",
+      "hook": "青梧提著一口鍋走進符火圈，火舌舔到鍋底就矮下去：「這鍋，我借了。」",
+      "hook_type": "danger",
+      "mid_hook": "蕭承霽一口喝乾〈九尾湯〉，臉慢慢變成宋鶴的樣子，對鍋兵冷冷一句：「撤火。」",
+      "extra_hooks": [
+        "宋鶴急得說溜嘴：「壽宴的羹，就差一味！」"
+      ],
+      "conflict": "符火只聽膳官的口令，青梧要讓一個不是膳官的人在一日之內變成膳官。",
+      "turn": "宋鶴以為山君就是壽宴缺的那一味，青梧卻聽出來：裴無咎要的是『餓到極致的妖』，山君不是——那一味是阿滿。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "符火滅了。山君不謝，一掌把宋鶴的鐵鍋拍進土裡，轉頭盯著青梧：「妳，也是鍋。」",
+        "question": "山君為什麼說她也是鍋？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "dalian",
+        "henla"
+      ],
+      "spectacle": "借來一日狐術的蕭承霽臉上浮出宋鶴的五官，符火圈一道一道熄滅，廟裡的虎影重新長高。",
+      "glamour_shot": "變回自己的蕭承霽站在熄滅的符火中央，火星落在雪青披風上，他回頭對青梧點了一下頭。",
+      "setups": [],
+      "payoffs": [
+        "s03-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "山君從符火圈裡救出",
+        "宋鶴被俘，供出御膳司淨山是為皇帝壽宴備羹"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "xiao-chengji",
+        "shan-jun",
+        "s03-song-he",
+        "hu-niangzi",
+        "gui-bing"
+      ],
+      "locations": [
+        "山神廟",
+        "符火圈"
+      ],
+      "state": {
+        "time": "山下第三夜",
+        "knowledge": "御膳司淨山是為壽宴備羹；缺的一味是阿滿；山君稱她為鍋",
+        "carry_forward": "『妳也是鍋』；壽宴"
+      }
+    },
+    {
+      "number": 127,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "當碗",
+      "youtube_title": "虎妖說她也是鍋，她扛一筐空碗上山擺一桌沒人吃的菜，碗底的名字一個一個讀出來",
+      "duration_s": 110,
+      "logline": "青梧要用一桌菜回答山君那句『妳也是鍋』，可這一桌不是請他，是請那些只剩下碗的妖。",
+      "hook": "青梧一個人扛著一筐空碗上山，蕭承霽伸手攔，她側身過去：「他說我是鍋，我當碗。」",
+      "hook_type": "line",
+      "mid_hook": "她把碗底的刻字一個一個讀出來：都是名字——山君掛碗，是在替被煉的妖記名。",
+      "extra_hooks": [
+        "食單紙面冒起熱氣，卻一個字都不寫，第一次拒絕她。"
+      ],
+      "conflict": "山君不吃人煮的，被煉的妖已經不在，青梧還是要把這桌菜擺上山頂。",
+      "turn": "觀眾以為擺桌是在請山君坐下，青梧擺到一半才說：這桌不是給他的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一碗擺上，山頂所有空碗同時微微一震，碗裡浮起一層薄霧；山君的聲音在她背後：「妳聽得見。」",
+        "question": "碗裡浮起的霧是那些妖嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "meishi",
+        "zhiguai"
+      ],
+      "spectacle": "山頂一圈空碗排成一桌，夕陽落下去的同時每只碗裡同時浮起一層薄霧，像一桌剛上的熱菜。",
+      "glamour_shot": "青梧蹲在火前煮山菇湯，一碗一碗盛，抬眼時食單的淡金字光映在她眼裡。",
+      "setups": [
+        "s03-t03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "青梧多了一種『味』：聞得出碗底名字的主人",
+        "山君第一次主動對她開口"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "xiao-chengji",
+        "shan-jun",
+        "douzi"
+      ],
+      "locations": [
+        "山頂",
+        "山神廟前"
+      ],
+      "state": {
+        "time": "山下第四日黃昏",
+        "knowledge": "空碗是山君替被煉的妖記的名；她聽得見碗裡的霧",
+        "carry_forward": "山君要說什麼；那桌菜誰會吃"
+      }
+    },
+    {
+      "number": 128,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "聽完",
+      "youtube_title": "虎妖三百年第一次對人開口：他要的不是報仇，是有人記得名字；村口卻多了一只空碗",
+      "duration_s": 100,
+      "logline": "山君終於開口，青梧想聽懂他要什麼，可山下的膳官沒走，他在村口放下一只刻著廟祝名字的空碗。",
+      "hook": "「妳聽得見，就聽完。」山君在碗堆上坐下，這是他三百年第一次對人說話。",
+      "hook_type": "line",
+      "mid_hook": "山君說：御膳司來那天，廟祝一個人擋在廟門口，鍋隊從他身邊走過去，把他一起帶走了。",
+      "extra_hooks": [
+        "鬼兵長從山下回來：御膳司的鍋隊往皇都去了，最後一口鍋上刻著字。"
+      ],
+      "conflict": "山君開口了，卻不坐桌；青梧要弄明白他要的到底是飯、是仇，還是別的東西。",
+      "turn": "所有人以為山君要青梧替他報仇，他要的卻是：「有人記得。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "山下傳來小丫的尖叫。村口石上多了一只空碗，碗底刻著『杜』，宋鶴站在旁邊：「這一位，已入羹。」",
+        "question": "廟祝已經被煉了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai",
+        "henla"
+      ],
+      "spectacle": "山君坐在碗堆上說話，身後虎尾影隨著話聲一下一下掃過地上的霧。",
+      "glamour_shot": "青梧抱膝聽山君說，火光在她臉上跳，她沒擦眼睛，只把碗往他那邊推了一寸。",
+      "setups": [],
+      "payoffs": [
+        "s03-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "山君要的是有人記得被煉妖的名字",
+        "鍋隊去向確認：皇都"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-jun",
+        "gui-bing",
+        "s03-xiao-ya",
+        "s03-song-he",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "山頂",
+        "山腳村口"
+      ],
+      "state": {
+        "time": "山下第四夜",
+        "knowledge": "山君要的是名字被記得；鍋隊往皇都",
+        "carry_forward": "廟祝的空碗"
+      }
+    },
+    {
+      "number": 129,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "沒名字才入羹",
+      "youtube_title": "她翻過廟祝的碗：碗底沒刻字，沒名字的才入羹！虎妖把膳官丟進空鍋「你也坐坐」",
+      "duration_s": 105,
+      "logline": "青梧要證明廟祝還活著，證據就在御膳司自己的規矩裡；山君則用膳官最怕的方式替她逼問。",
+      "hook": "青梧把那只碗翻過來，碗底光的，沒刻字。她抬頭：「沒名字，才入羹。這是人。」",
+      "hook_type": "reversal",
+      "mid_hook": "宋鶴帶鍋隊要走，山君從山上撲下，蕭承霽的刀第一次與虎爪並肩。",
+      "extra_hooks": [
+        "小丫鑽過符火跑去搶爹的碗，被青梧一把拉回懷裡。"
+      ],
+      "conflict": "宋鶴要押著證據回皇都，青梧要在他走之前逼出廟祝的下落。",
+      "turn": "大家以為山君要殺宋鶴，他把宋鶴整個人扛起來丟進空鐵鍋裡：「你也坐坐。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "宋鶴在鍋裡抖著交代：廟祝活著，押在御膳司柴房。山君抬頭看青梧：「妳去皇都，還是我去？」",
+        "question": "誰去皇都拆御膳司？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhandou",
+        "xiju"
+      ],
+      "spectacle": "山君扛起一個成年膳官塞進空鐵鍋，鍋口只露一顆頭，三百鬼兵在旁一字不吭。",
+      "glamour_shot": "青梧把碗底朝天舉到宋鶴面前，碎髮貼在額上，眼尾一挑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "確認廟祝活著、押在御膳司柴房",
+        "宋鶴被村民看押"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-jun",
+        "xiao-chengji",
+        "s03-song-he",
+        "s03-xiao-ya",
+        "gui-bing",
+        "douzi"
+      ],
+      "locations": [
+        "山腳村口",
+        "村口符火圈"
+      ],
+      "state": {
+        "time": "山下第五日",
+        "knowledge": "廟祝活著、在御膳司柴房；人有名字不入羹",
+        "carry_forward": "誰去皇都"
+      }
+    },
+    {
+      "number": 130,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "鍋上的字",
+      "youtube_title": "她留下一座沒收的山往皇都走，虎妖從山上踢下一口鐵鍋，鍋裡刻著三個字",
+      "duration_s": 130,
+      "logline": "青梧第一次帶著一座沒收成功的山離開，食單一個字沒寫；山君沒跟她走，卻用一口鍋送她上路。",
+      "hook": "青梧對山君說：「我去。你守山。」山君一聲不吭，轉身走回山裡，虎尾影沒入霧中。",
+      "hook_type": "line",
+      "mid_hook": "下山前她翻開食單，紙面冒了熱氣仍是一片空白——這一季她第一次知道，有些妖不是餵飽就行。",
+      "extra_hooks": [
+        "小丫把爹的空碗綁在背上：「我跟妳去皇都。」",
+        "蕭承霽把宋鶴的膳官腰牌收進懷裡：「進城用得上。」"
+      ],
+      "conflict": "山君不坐、食單不寫，青梧要帶著一座沒收的山與一個找爹的孩子，往皇都走。",
+      "turn": "所有人以為山君不會再出現，下山路上背後卻追來一聲吼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "吼聲追來，不是撲她，是一口御膳司鐵鍋從山上滾下來停在她腳邊，鍋裡刻著一行字：「皇都，長生羹，三百年。」",
+        "question": "長生羹煉了三百年？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai",
+        "huoban"
+      ],
+      "spectacle": "一口鐵鍋從掛滿空碗的山上一路滾下，撞飛空碗，碗聲響遍整座山，最後停在青梧腳邊。",
+      "glamour_shot": "青梧站在山路上回頭，整座掛碗的山在她身後，風把藍布巾吹得像一面小旗。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "隊伍新增小丫；得到宋鶴的膳官腰牌",
+        "確認御膳司的鍋上刻著『長生羹，三百年』"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "xiao-chengji",
+        "shan-jun",
+        "s03-xiao-ya",
+        "douzi",
+        "hu-niangzi",
+        "yuan-niang",
+        "gui-bing"
+      ],
+      "locations": [
+        "山路",
+        "山腳村"
+      ],
+      "state": {
+        "time": "離山當日",
+        "knowledge": "山君暫留山上；長生羹已煉三百年",
+        "carry_forward": "鍋上的字；皇都"
+      }
+    },
+    {
+      "number": 131,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "對面開鋪",
+      "youtube_title": "狐妖收尾、鬼兵藏甲混進皇都，她在御膳司正對面租下小食鋪，第一夜門口的燈自己亮了",
+      "duration_s": 100,
+      "logline": "青梧要帶一群妖混進不許妖進的皇都，再在御膳司眼皮底下開一間鋪子，第一夜就有東西上門。",
+      "hook": "皇都城門符火陣下，狐娘子的三條尾影一條一條收進裙底；門衛指著青梧：「什麼人？」她：「廚娘。」",
+      "hook_type": "question",
+      "mid_hook": "御膳司朱紅高牆正對面，一間倒閉的小食鋪貼著招租，胡大嬸開價：「不怕對面，就租。」",
+      "extra_hooks": [
+        "狐娘子抬頭看宮牆，煙桿停了一下：「這道牆，我見過一次。」"
+      ],
+      "conflict": "妖不能進城、沒錢租鋪、對面就是御膳司；青梧要讓一群妖在皇都有一口灶。",
+      "turn": "大家以為進城最難，其實最難的是沒錢；青梧用一碗蔥油拌麵的香把胡大嬸的租金談成『先吃再說』。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "開鋪第一夜，門口那盞沒油的燈自己亮了，燈芯裡睜開一雙眼睛：「餓。」",
+        "question": "皇都城裡也有妖？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhiguai",
+        "meishi"
+      ],
+      "spectacle": "皇都御膳司朱紅高牆與對面一間小食鋪的對切：一邊是慘白符火，一邊是一盞剛點起的灶火。",
+      "glamour_shot": "青梧掄鍋翻麵，蔥油香冒起時她閉眼嚐味的一秒，窩在鋪門口的胡大嬸也跟著閉了眼。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "隊伍全數混進皇都",
+        "御膳司對面的小食鋪租下",
+        "狐娘子透露她曾進過這座宮"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "xiao-chengji",
+        "douzi",
+        "hu-niangzi",
+        "yuan-niang",
+        "gui-bing",
+        "s03-xiao-ya",
+        "s03-hu-dashen"
+      ],
+      "locations": [
+        "皇都城門",
+        "御膳司對面小食鋪"
+      ],
+      "state": {
+        "time": "抵達皇都第一日",
+        "knowledge": "御膳司在對面；狐娘子三百年前進過這座宮",
+        "carry_forward": "燈芯裡的眼睛"
+      }
+    },
+    {
+      "number": 132,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "燈芯羹",
+      "youtube_title": "宮門長明燈下餓死的老燈夫長成燈妖，她煮了第三十一道菜，卻忘了一樣味道",
+      "duration_s": 105,
+      "logline": "青梧要收下皇都的第一隻妖，一盞三百年點給宮裡看的燈，它要的不是飯，是有人替它點一盞到天亮。",
+      "hook": "青梧對著那盞燈：「餓就進來，別站門口。」燈從燈座上跳下來，落進鍋裡。",
+      "hook_type": "image",
+      "mid_hook": "燈妖說它是宮門長明燈下的老燈夫：宮裡夜夜宴，門外沒一口；它要的是有人在宮門口替它點一盞到天亮。",
+      "extra_hooks": [
+        "胡大嬸壓低聲音：御膳司每夜子時抬出十二個空食盒，從來沒人看過裡面。"
+      ],
+      "conflict": "燈妖的怨在宮門口，點燈就是當著御膳司的面挑釁。",
+      "turn": "觀眾以為燈妖要的是飯，青梧端上飯它不吃；她把燈提到宮門口點到天亮，它才變回一團氣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "食單寫下第三十一道〈燈芯羹〉，她端起碗嚐一口，忽然想不起『咖啡』是什麼味；門口一句輕聲：「這盞燈，誰點的？」",
+        "question": "門口站的是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "meishi",
+        "xiju"
+      ],
+      "spectacle": "御膳司大門外一盞小燈點到天亮，宮牆上一排慘白符火與這一盞橘黃燈火對照。",
+      "glamour_shot": "青梧提著燈站在宮門口，夜風吹過，燈光從下往上照亮她的下巴與抬起的眼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第三十一道〈燈芯羹〉（淡黃）",
+        "青梧忘了咖啡的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "douzi",
+        "s03-deng-yao",
+        "s03-hu-dashen",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "小食鋪",
+        "御膳司大門口"
+      ],
+      "state": {
+        "time": "皇都第二夜到第三日清晨",
+        "knowledge": "御膳司每夜抬出十二個空食盒",
+        "carry_forward": "門口的月白身影"
+      }
+    },
+    {
+      "number": 133,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "夜夜夢見父親沒有臉",
+      "youtube_title": "門口站的是太子！他說夜夜夢見父親沒有臉，她端出一碗能「看見」的妖菜",
+      "duration_s": 110,
+      "logline": "大寧太子寧昭找上這間鋪，要一碗能讓他看見夢裡那張臉的菜；青梧要決定敢不敢給太子吃妖。",
+      "hook": "月白衣的年輕人站在門口，手裡一本書，開口第一句：「我夜夜夢見父親沒有臉。」",
+      "hook_type": "line",
+      "mid_hook": "狐娘子從他衣角繡的銀龍認出來，煙桿一頓：「太子。」",
+      "extra_hooks": [
+        "寧昭說父皇每夜喝一碗羹，三十年來一張臉沒變過。"
+      ],
+      "conflict": "給太子吃妖菜是死罪；不給，她失去進宮唯一的門。",
+      "turn": "大家以為他是宮裡派來查鋪的，他卻把太子的身份當籌碼擺上灶台：「我要看見。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "青梧把一碗〈夜哨飯〉放在他面前：「吃了，你會看見。」寧昭的筷子停在碗上一寸。",
+        "question": "太子敢吃妖菜嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xiju",
+        "dalian"
+      ],
+      "spectacle": "御膳司對面的小食鋪裡，一身月白銀龍的太子坐在粗木凳上，灶火在他白臉上跳。",
+      "glamour_shot": "寧昭低頭看碗，燭光把他的睫毛影投在臉頰上，說到『父親』時停了一下。",
+      "setups": [
+        "s03-t05"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "太子寧昭找上門",
+        "得知皇帝夜夜喝羹、三十年容貌不變"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "ning-zhao",
+        "hu-niangzi",
+        "douzi",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "小食鋪"
+      ],
+      "state": {
+        "time": "皇都第三夜",
+        "knowledge": "太子夜夜夢見父親沒有臉；皇帝夜夜喝羹不老",
+        "carry_forward": "寧昭吃不吃；他會看見什麼"
+      }
+    },
+    {
+      "number": 134,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "一日之內",
+      "youtube_title": "太子吃下妖菜一日之內看見父親的影子，深夜御膳司抬出食盒，裡面垂下一條紅布條",
+      "duration_s": 100,
+      "logline": "寧昭吃了〈夜哨飯〉，一日之內看見了父親影子的真樣；他回來把太子玉牌放上灶台，而御膳司的食盒裡露出阿滿的紅布條。",
+      "hook": "寧昭吃下一口，抬頭——青梧背後的牆上他看見了一個黑甲身影：鬼兵長站在那裡。",
+      "hook_type": "image",
+      "mid_hook": "寧昭回宮陪父皇用膳，燭光下父親的影子轉過來：那影子沒有臉。",
+      "extra_hooks": [
+        "寧昭說：朝裡有人替御膳司壓著除妖的帳，他查了三年查不到是誰。"
+      ],
+      "conflict": "借來的『看見』只有一日，寧昭要在這一日裡看清父親，青梧要在這一日裡確定他不會嚇跑。",
+      "turn": "大家以為太子看見真相會逃，他卻回到鋪裡把太子玉牌放在灶台上：「鋪子，我保。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "子夜，御膳司側門開了，十二個食盒抬進去；最後一個食盒的縫裡垂出一條紅布條——阿滿的。",
+        "question": "阿滿在食盒裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "huoban",
+        "dalian"
+      ],
+      "spectacle": "寧昭主觀鏡頭：燭光下皇帝威嚴的側臉，牆上的影子卻沒有臉、嘴比臉大。",
+      "glamour_shot": "寧昭把玉牌放上灶台的手，與青梧沾著麵粉的手在同一格，灶火把兩隻手照得一樣亮。",
+      "setups": [
+        "s03-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "寧昭親眼看見父親無臉的影子，成為青梧在宮裡的鑰匙",
+        "太子玉牌護鋪"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "ning-zhao",
+        "ning-xuan",
+        "gui-bing",
+        "douzi",
+        "xiao-chengji",
+        "hu-niangzi"
+      ],
+      "locations": [
+        "小食鋪",
+        "皇帝寢殿",
+        "御膳司側門"
+      ],
+      "state": {
+        "time": "皇都第四日到子夜",
+        "knowledge": "皇帝的影子沒有臉；朝裡有人替御膳司遮",
+        "carry_forward": "食盒裡的紅布條"
+      }
+    },
+    {
+      "number": 135,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "引子",
+      "youtube_title": "狐妖化成膳官潛進御膳司，最深那間院一排鐵鍋，最小一口鍋上刻著兩個字",
+      "duration_s": 105,
+      "logline": "青梧要確認阿滿是不是在御膳司裡，狐娘子化成膳官的樣子替她走一趟最深的那間院。",
+      "hook": "青梧追著食盒跑到側門，門閂在她面前落下；狐娘子從牆上躍下，臉已變成膳官：「我進去。」",
+      "hook_type": "danger",
+      "mid_hook": "狐娘子回來，臉色難得認真：最深那院一排鐵鍋，最小一口蓋著，鍋裡有孩子的呼吸。",
+      "extra_hooks": [
+        "鬼兵長把耳朵貼在御膳司牆根：「牆下有水聲。地底有井。」"
+      ],
+      "conflict": "御膳司最深的院任何人進不去，青梧要在一夜之內知道阿滿活著還是已入羹。",
+      "turn": "所有人以為徵妖冊寫的是真的，狐娘子帶回來的卻是：他活著，而且鍋上刻的不是『羹』。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "狐娘子點燃煙桿，最後一句：「那口鍋上刻著兩個字——『引子』。」",
+        "question": "『引子』是什麼意思？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "huoban",
+        "xiju"
+      ],
+      "spectacle": "狐娘子化成膳官穿過一排排鐵鍋與慘白符火，裙底一條尾影一閃而過，沒人看見。",
+      "glamour_shot": "狐娘子在月光下變回自己的臉，眉心硃砂亮起，三條尾影慢慢張開。",
+      "setups": [],
+      "payoffs": [
+        "s03-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認阿滿活著、在御膳司最小那口鍋裡",
+        "發現御膳司地底有井"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "hu-niangzi",
+        "gui-bing",
+        "xiao-chengji",
+        "douzi"
+      ],
+      "locations": [
+        "御膳司側門",
+        "御膳司最深院",
+        "小食鋪"
+      ],
+      "state": {
+        "time": "皇都第五夜",
+        "knowledge": "阿滿活著、鍋上刻『引子』；御膳司地底有井",
+        "carry_forward": "引子是什麼"
+      }
+    },
+    {
+      "number": 136,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "當街嚐羹",
+      "youtube_title": "膳官帶鐵鍋砸鋪，她端起長生羹當街一口一口嚐出成分，百姓第一次聽見「羹裡是妖」",
+      "duration_s": 110,
+      "logline": "御膳司的膳官帶鍋來砸鋪立威，青梧不躲，用她忘掉味道換來的『味』當著整條街嚐出長生羹裡煉的是什麼。",
+      "hook": "清晨，四個膳官抬著鐵鍋堵住鋪門，領頭的女膳官白芷亮出一碗深色的羹：「無照賣妖。」",
+      "hook_type": "danger",
+      "mid_hook": "砸到一半，青梧端起白芷帶來驗的那碗長生羹嚐一口，當街一樣一樣念：「狸。鈴。燈。怨。」",
+      "extra_hooks": [
+        "圍觀的百姓第一次聽見有人說『羹裡是妖』，整條街安靜下來。"
+      ],
+      "conflict": "御膳司要砸鋪立威，青梧要保住鋪子，還要讓整條街聽見羹裡煉的是什麼。",
+      "turn": "膳官以為當街砸鋪是立威，結果反而成了御膳司三百年第一次被當街拆開配方。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "念到最後一味時白芷的手一抖，碗摔碎，她低聲：「別念了。」街角一輛墨綠的車停下，車簾掀開一隻白絹手套。",
+        "question": "車裡是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "henla",
+        "meishi"
+      ],
+      "spectacle": "整條街的人圍成一圈，青梧站在砸壞的灶前端著一碗深色的羹，一樣一樣念出妖的名字。",
+      "glamour_shot": "青梧嚐羹時閉眼，再張開時眼裡浮出淡金色的字，碎髮被街風吹起。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "膳官當街被打臉，鋪子保住",
+        "皇都百姓第一次聽見『羹裡是妖』"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-bai-zhi",
+        "douzi",
+        "xiao-chengji",
+        "s03-hu-dashen",
+        "pei-wujiu"
+      ],
+      "locations": [
+        "小食鋪前街"
+      ],
+      "state": {
+        "time": "皇都第六日清晨",
+        "knowledge": "長生羹裡至少煉了狸、鈴、燈、怨四種妖",
+        "carry_forward": "墨綠車裡的白手套"
+      }
+    },
+    {
+      "number": 137,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "讓她開",
+      "youtube_title": "白手套的車簾放下沒下車，膳官退走只留一句「司正說讓她開」；太子白天也看見了影子",
+      "duration_s": 100,
+      "logline": "裴無咎沒下車，反而放她繼續開鋪，青梧要弄清他為什麼不滅鋪；寧昭則帶回朝裡替御膳司遮帳的人是誰的線頭。",
+      "hook": "車簾放下，車走了。白芷帶鍋退開，臨走留一句：「司正說，讓她開。」",
+      "hook_type": "line",
+      "mid_hook": "寧昭帶來消息：禮部侍郎鄭衡每月替御膳司向父皇報『除妖幾何』，三年沒報過一個名字。",
+      "extra_hooks": [
+        "小宮女小蟬深夜送信：殿下今夜又被陛下看了很久，『像看一道菜』。"
+      ],
+      "conflict": "御膳司放她開鋪，比砸鋪更可怕；青梧要在裴無咎的默許裡找出他的算盤。",
+      "turn": "大家以為裴無咎要滅鋪，他卻放她開——他想看她寫到幾道。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "寧昭在鋪裡吃麵忽然停筷：「我夢裡那影子……今天白天也在。」他指著地上：「父皇的影子，嘴比臉大。」",
+        "question": "皇帝影子的嘴為什麼比臉大？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhiguai",
+        "xiju",
+        "dalian"
+      ],
+      "spectacle": "御膳司的墨綠車駛過朱紅宮牆，車簾後只露一隻白絹手套，街上的燈影全往車的方向斜。",
+      "glamour_shot": "寧昭吃麵時燭光下的側臉，說到『父皇』停了一下，筷子在碗邊停著。",
+      "setups": [],
+      "payoffs": [
+        "s03-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "寧昭夢裡的影子確認是父親影子的真樣：嘴比臉大",
+        "鄭衡浮出水面"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "ning-zhao",
+        "s03-bai-zhi",
+        "s03-xiao-chan",
+        "hu-niangzi",
+        "douzi"
+      ],
+      "locations": [
+        "小食鋪"
+      ],
+      "state": {
+        "time": "皇都第六夜",
+        "knowledge": "裴無咎放她開鋪；鄭衡替御膳司報帳",
+        "carry_forward": "影子的嘴；鄭衡"
+      }
+    },
+    {
+      "number": 138,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "井妖換飯",
+      "youtube_title": "鋪後的井夜裡伸出一隻手要用水換飯，井底連著御膳司，鬼兵長下去回來面甲結了霜",
+      "duration_s": 100,
+      "logline": "鋪後院的井裡長出一隻渴妖來換飯，青梧收下第三十二道菜，也拿到一條通往御膳司地底的路。",
+      "hook": "後院的井夜裡伸出一隻手，捧著一碗水；豆子尖叫，那手輕輕放下碗：「換飯。」",
+      "hook_type": "image",
+      "mid_hook": "井妖阿澗說：皇都百姓的井水全被宮裡引走了，地底的水往御膳司底下流，水裡有『餓的聲音』。",
+      "extra_hooks": [
+        "鬼兵長繫繩下井，說井底有一扇石門。"
+      ],
+      "conflict": "井妖的怨在宮裡引走的水，青梧要收它，就得替整條街的井把水引回來。",
+      "turn": "大家以為井妖來鬧，它是來報路——這口井連著御膳司地底。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鬼兵長從井底爬上來，面甲上結了一層白霜：「石門後有東西在敲，一下一下，像在數碗。」",
+        "question": "石門後面是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xiju",
+        "meishi"
+      ],
+      "spectacle": "黑甲鬼兵長繫著繩沉入井底，井口的燈往下照，照出一扇刻著碗紋的石門。",
+      "glamour_shot": "青梧把井水凍成一碗透明青色的〈井水凍〉，端起來對著燈看，光透過凍照在她臉上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第三十二道〈井水凍〉（透明青）",
+        "發現井底石門通御膳司地底"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-jing-yao",
+        "douzi",
+        "gui-bing",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "小食鋪後院",
+        "井底"
+      ],
+      "state": {
+        "time": "皇都第七夜",
+        "knowledge": "井通御膳司地底，石門後有東西在數碗",
+        "carry_forward": "石門後的敲聲"
+      }
+    },
+    {
+      "number": 139,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "侍郎的舌頭",
+      "youtube_title": "禮部侍郎來嚐「邪菜」，一碗白粥吃不出味，太子當街問他除妖榜上的名字，侍郎跪了",
+      "duration_s": 105,
+      "logline": "替御膳司遮帳的禮部侍郎鄭衡親自上門，青梧用一碗白粥讓他當街露出底：他的舌頭早被長生羹吃壞了，他饞。",
+      "hook": "鄭衡的轎子停在鋪前，轎簾掀開：「本官來嚐嚐，什麼叫邪菜。」",
+      "hook_type": "question",
+      "mid_hook": "青梧端給他一碗普通白粥，他一口一口吃，臉色越來越難看——他什麼味都嚐不出來。",
+      "extra_hooks": [
+        "寧昭當街問鄭衡：「除妖榜上的妖，叫什麼？」鄭衡張口答不出。"
+      ],
+      "conflict": "鄭衡來抓『邪菜』的把柄，青梧要當著整條街把他替御膳司遮的事翻出來。",
+      "turn": "大家以為鄭衡是來抓人的，他是來求一道『吃得出味』的菜——他吃了三年長生羹，饞了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "鄭衡自己掀開轎簾跪在鋪門口：「再給一碗。」整條街的人都看見侍郎在流口水。",
+        "question": "連侍郎都饞了，宮裡還有誰在吃？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "henla"
+      ],
+      "spectacle": "一品官服的侍郎跪在小食鋪門口，整條街的百姓從兩側樓窗探出頭。",
+      "glamour_shot": "青梧端著白粥站在門內，一手叉腰，灶火從背後打亮她的輪廓，嘴角露一點牙。",
+      "setups": [],
+      "payoffs": [
+        "s03-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鄭衡當街露底：他替御膳司遮帳，因為他饞",
+        "寧昭當街站到青梧這一邊"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "ning-zhao",
+        "s03-zheng-heng",
+        "douzi",
+        "s03-hu-dashen",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "小食鋪前街"
+      ],
+      "state": {
+        "time": "皇都第八日",
+        "knowledge": "鄭衡替御膳司遮，因為他吃羹吃饞了",
+        "carry_forward": "宮裡還有誰在吃羹"
+      }
+    },
+    {
+      "number": 140,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "最小那口鍋",
+      "youtube_title": "太子帶她從後門進御膳司，一排排鐵鍋沒人守，最小那口鍋裡的孩子抬頭說：我不餓了",
+      "duration_s": 135,
+      "logline": "寧昭帶青梧從御膳司後門進最深那間院，她終於見到阿滿，可阿滿說的第一句話比徵妖冊更可怕。",
+      "hook": "御膳司後門，小蟬把門推開一條縫，寧昭低聲：「只有今夜。」",
+      "hook_type": "danger",
+      "mid_hook": "一排排鐵鍋、慘白符火，鍋蓋上刻著數字；青梧一口一口聞過去，全是沒有名字的妖。",
+      "extra_hooks": [
+        "院角，白芷看見他們，卻轉身走進了暗處。",
+        "最深那間院空無一人——沒人攔，門是開著的。"
+      ],
+      "conflict": "御膳司最深的院只有今夜能進，青梧要在天亮前找到阿滿並帶他走。",
+      "turn": "大家以為最深那間院是殺陣，卻一個人都沒有——裴無咎讓他們進。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最小那口鍋裡坐著阿滿，他抬頭看見她，哭著說：「姐姐，我不餓了。」",
+        "question": "阿滿為什麼說他不餓了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "御膳司最深院的全景：一排排鐵鍋、一排排慘白符火，盡頭最小那口鍋裡一個半透明的小孩抬起頭。",
+      "glamour_shot": "青梧在符火間穿行，白光從下往上打在她臉上，她抬眼看見阿滿時眼眶一下紅了。",
+      "setups": [
+        "s03-t07",
+        "s03-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "青梧親眼見到活著的阿滿",
+        "白芷第一次放過他們"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "ning-zhao",
+        "s03-xiao-chan",
+        "e-gui",
+        "s03-bai-zhi",
+        "gui-bing"
+      ],
+      "locations": [
+        "御膳司後門",
+        "御膳司最深院"
+      ],
+      "state": {
+        "time": "皇都第八夜",
+        "knowledge": "阿滿在最小那口鍋裡，說他不餓了；白芷看見卻放過",
+        "carry_forward": "『我不餓了』；鍋上『引子』"
+      }
+    },
+    {
+      "number": 141,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "鍋沿的火",
+      "youtube_title": "她伸手抱阿滿，鍋沿符火燙掉的不是皮是舌上的味；身後慢慢走來一隻白手套",
+      "duration_s": 100,
+      "logline": "青梧要把阿滿從鍋裡抱出來，符火燙的卻是她的『味』；旁邊三口小鍋裡還關著三隻小妖，而鍋的主人來了。",
+      "hook": "青梧伸手去抱阿滿，鍋沿一圈符火「嗤」一聲燙回她的手——皮沒傷，她舌尖上一樣味道沒了。",
+      "hook_type": "danger",
+      "mid_hook": "旁邊三口小鍋裡各一隻小妖：青狸、鈴妖、石婆，鍋蓋上刻著一個字：「備」。",
+      "extra_hooks": [
+        "阿滿說：「他們天天餵我，餵得我不餓。」"
+      ],
+      "conflict": "符火鍋碰不得，阿滿說自己不餓也不想走，青梧帶不走他。",
+      "turn": "觀眾以為鍋是牢，其實符火鍋只關『不餓』的妖——阿滿被餵到不餓，才出不來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "慢慢的腳步聲。一隻白絹手套掀開門簾，裴無咎溫和地笑：「鍋別碰，手會壞。」",
+        "question": "裴無咎要對她做什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "ganren"
+      ],
+      "spectacle": "最小那口鍋沿一圈慘白符火被青梧的手撥起，火光裡阿滿半透明的臉。",
+      "glamour_shot": "青梧收回被燙的手，咬著唇抬眼，符火的白光把她的杏眼照得發亮。",
+      "setups": [
+        "s03-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看清鍋裡還有三隻能救的小妖",
+        "知道符火鍋鎖的是『不餓』"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "e-gui",
+        "ning-zhao",
+        "pei-wujiu",
+        "s03-qing-li",
+        "s03-ling-yao",
+        "s03-shi-po"
+      ],
+      "locations": [
+        "御膳司最深院"
+      ],
+      "state": {
+        "time": "皇都第八夜深",
+        "knowledge": "阿滿被餵到不餓；三隻小妖在備用鍋裡",
+        "carry_forward": "裴無咎來了"
+      }
+    },
+    {
+      "number": 142,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "餓了嗎",
+      "youtube_title": "御膳司司正像教學徒一樣講長生羹配方，數她食單寫到第幾道，最後推來一碗請她嚐",
+      "duration_s": 110,
+      "logline": "裴無咎第一次見青梧，不拿人，反而像教學徒一樣講配方，送她一碗羹嚐；青梧要在這份溫和裡找出陷阱。",
+      "hook": "裴無咎遞過一杯茶：「阮姑娘，餓了嗎？」",
+      "hook_type": "line",
+      "mid_hook": "他慢慢講長生羹的做法：十二隻無名妖、一隻引、符火七夜——像在講一道家常菜。",
+      "extra_hooks": [
+        "他說：「妳寫到三十二道了。」數得比她自己還準。"
+      ],
+      "conflict": "青梧想救人，裴無咎想聊菜；她要從他嘴裡拿到有用的話，又不能被他留下。",
+      "turn": "大家以為他會拿人，他卻放她走，還親手盛一碗羹推給她：「嚐嚐。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "深色的羹放在她面前，湯面映出她的臉；裴無咎：「嚐了，就知道皇帝吃什麼。」她拿起勺。",
+        "question": "她會嚐長生羹嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "xiju"
+      ],
+      "spectacle": "裴無咎的白絹手套停在一口鐵鍋上方，鍋下慘白符火，鍋裡一碗深色的羹不冒一絲熱氣。",
+      "glamour_shot": "裴無咎燭光下清瘦的側臉，垂眼看羹，像在看一個孩子。",
+      "setups": [
+        "s03-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "得知長生羹的大致做法：十二無名妖、一引、符火七夜",
+        "確認裴無咎在數她的菜"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "pei-wujiu",
+        "ning-zhao",
+        "e-gui"
+      ],
+      "locations": [
+        "御膳司最深院",
+        "司正書房"
+      ],
+      "state": {
+        "time": "皇都第八夜深",
+        "knowledge": "長生羹要一隻『引』；裴無咎數著她的食單",
+        "carry_forward": "那一勺"
+      }
+    },
+    {
+      "number": 143,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "長生的不是人",
+      "youtube_title": "她嚐了一口長生羹，眼前浮出三百年的空碗；回鋪問食單，書自己寫了五個字",
+      "duration_s": 105,
+      "logline": "青梧嚐了長生羹，嚐出裡面沒有一絲壽命只有三百年的餓；她回鋪問食單，食單寫下五個字。",
+      "hook": "勺子入口。她眼前浮出一排排空碗，數不完的空碗，三百年沒盛過一粒米。",
+      "hook_type": "image",
+      "mid_hook": "她放下勺，對裴無咎說：「這裡面沒有壽。只有餓。」裴無咎的笑第一次停了一下。",
+      "extra_hooks": [
+        "寧昭回來：父皇今夜召他獨自用膳。"
+      ],
+      "conflict": "她嚐到了真相的一角，卻說不出那是什麼；只有食單能回答。",
+      "turn": "大家以為長生羹是補人的湯，它只餵一樣東西：餓。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "回到鋪裡她翻開食單，紙面冒起熱氣，浮出一行字：「長生的不是人。」",
+        "question": "長生的是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "青梧主觀鏡頭：一勺羹入口，眼前浮出一條望不到頭的長桌，桌上全是空碗。",
+      "glamour_shot": "青梧嚐羹時閉眼，一滴汗從鬢角滑下，再睜眼時眼裡映著整排空碗的影。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "青梧嚐出長生羹裡沒有壽命，只有三百年的餓",
+        "裴無咎第一次被說中"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "pei-wujiu",
+        "ning-zhao",
+        "douzi",
+        "hu-niangzi"
+      ],
+      "locations": [
+        "御膳司司正書房",
+        "小食鋪"
+      ],
+      "state": {
+        "time": "皇都第九日",
+        "knowledge": "長生羹只有餓；『長生的不是人』",
+        "carry_forward": "長生的是什麼；寧昭獨自面聖"
+      }
+    },
+    {
+      "number": 144,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "像看一道菜",
+      "youtube_title": "皇帝捏著太子的手腕聞了一下說「你瘦了」，太子轉身出殿，父親的影子沒跟著轉",
+      "duration_s": 100,
+      "logline": "寧昭單獨面見父皇，被像一道菜一樣看著；青梧則從白芷那裡知道阿滿『不餓』的真相：他的餓被抽走了。",
+      "hook": "皇帝寧煊看著寧昭，伸手捏了捏他的手腕，湊近聞了一下。",
+      "hook_type": "danger",
+      "mid_hook": "白芷深夜站在鋪門外，不進來，只說一句：「他不餓。餓被抽走，存進引裡。壽宴那夜，引成。」",
+      "extra_hooks": [
+        "小蟬說：陛下今夜吃了十二道菜，一道都沒剩。"
+      ],
+      "conflict": "寧昭要在父親面前活著走出殿；青梧要弄清阿滿『不餓』到底是好是壞。",
+      "turn": "寧昭以為父親要抱他，父親在聞他；青梧以為阿滿不餓是好事，那是他快變成『引』。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "皇帝鬆手笑道：「昭兒，你瘦了。」寧昭轉身出殿；殿門邊，父親的影子沒跟著轉——影子還對著他。",
+        "question": "影子為什麼不跟著人？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "ganren"
+      ],
+      "spectacle": "皇帝寢殿的燭光裡，皇帝轉身，牆上的影子卻不動，一張沒有臉的影子朝門口的太子張著嘴。",
+      "glamour_shot": "寧昭走出殿門時月光打在他慘白的臉上，他沒敢回頭，眼睫在抖。",
+      "setups": [],
+      "payoffs": [
+        "s03-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿滿『不餓』的真相：餓被抽走存進引裡，壽宴那夜成引",
+        "白芷第一次主動給線"
+      ],
+      "characters": [
+        "ning-zhao",
+        "ning-xuan",
+        "ruan-qingwu",
+        "s03-bai-zhi",
+        "s03-xiao-chan",
+        "douzi"
+      ],
+      "locations": [
+        "皇帝寢殿",
+        "小食鋪門口"
+      ],
+      "state": {
+        "time": "皇都第九夜",
+        "knowledge": "阿滿到壽宴那夜會成引；皇帝的影子不跟人動",
+        "carry_forward": "壽宴；影子"
+      }
+    },
+    {
+      "number": 145,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "鍋的時辰",
+      "youtube_title": "女膳官留下一張寫著開鍋時辰的紙，她救出第一隻小妖，阿滿在旁邊說「我也想吃，可是我不餓」",
+      "duration_s": 105,
+      "logline": "白芷留下開鍋的時辰，青梧按時辰救出三隻小妖裡的第一隻青狸，寫下第三十三道菜；阿滿看著，說他不餓。",
+      "hook": "白芷深夜站在鋪門口，放下一張紙轉身就走，紙上只有一行：「鍋，子時三刻，一息。」",
+      "hook_type": "question",
+      "mid_hook": "子時三刻，第一口小鍋的符火暗了一息，青梧一把掀蓋把青狸撈出來抱在懷裡。",
+      "conflict": "白芷的紙可能是局，青梧只有一息能開鍋，救錯了就是人妖一起入羹。",
+      "turn": "大家以為白芷設局，時辰是真的——御膳司裡有人在替她開門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "青狸變回一團氣落進碗裡。阿滿在鍋裡看著，小聲說：「姐姐，我也想吃。」然後搖頭：「可是我不餓。」",
+        "question": "阿滿還能餓回來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "meishi",
+        "shengji"
+      ],
+      "spectacle": "子時三刻，整院符火同時暗了一息，青梧在那一息裡掀鍋、撈妖、蓋鍋，一口氣沒喘。",
+      "glamour_shot": "青梧抱著變回氣的青狸坐在灶前煮〈狸花飯〉，翠綠的飯冒起熱氣，她把第一口餵進豆子嘴裡時笑了。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第三十三道〈狸花飯〉（翠綠）",
+        "青狸救出；白芷的時辰是真的"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-bai-zhi",
+        "s03-qing-li",
+        "e-gui",
+        "douzi",
+        "gui-bing"
+      ],
+      "locations": [
+        "小食鋪",
+        "御膳司最深院"
+      ],
+      "state": {
+        "time": "皇都第十夜子時",
+        "knowledge": "御膳司裡白芷在替她開門；壽宴的日子",
+        "carry_forward": "阿滿不餓；下一口鍋"
+      }
+    },
+    {
+      "number": 146,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "鈴音湯",
+      "youtube_title": "御膳司的鈴一響整院鐵鍋同震，她救出三百年報膳的鈴妖，司正在門口鼓掌數「第三十四」",
+      "duration_s": 100,
+      "logline": "鈴妖叮在鍋裡叫得整院鍋震，青梧救它寫下第三十四道；裴無咎站在門口看，不攔，鼓掌。",
+      "hook": "御膳司的報膳鈴響了，一院鐵鍋同時嗡嗡震起來——鈴妖在鍋裡叫。",
+      "hook_type": "image",
+      "mid_hook": "鈴妖說它是宮門前報膳的鈴，三百年敲的每一響都是『開膳』，從沒人聽過它餓。",
+      "extra_hooks": [
+        "裴無咎坐在院角看她救妖，手套放在膝上，一動不動。"
+      ],
+      "conflict": "鈴妖的怨是三百年沒人聽，青梧要在御膳司主人眼前把它請出鍋。",
+      "turn": "大家以為裴無咎會攔，他看得津津有味，像在看學徒出菜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "鈴妖落碗的那一刻，院門口響起掌聲。裴無咎鼓掌：「好。第三十四。」轉身走時又加一句：「還有六十六。」",
+        "question": "他為什麼數她的菜？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "meishi",
+        "henla"
+      ],
+      "spectacle": "御膳司一院鐵鍋同時嗡震、符火一齊晃動，鈴聲在朱紅高牆間迴盪。",
+      "glamour_shot": "青梧端起銀白色的〈鈴音湯〉吹一口，湯面上一圈圈漣漪像鈴聲的形狀，她抬眼看向門口。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第三十四道〈鈴音湯〉（銀白）",
+        "鈴妖救出"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-ling-yao",
+        "pei-wujiu",
+        "e-gui",
+        "douzi"
+      ],
+      "locations": [
+        "御膳司最深院"
+      ],
+      "state": {
+        "time": "皇都第十一夜",
+        "knowledge": "裴無咎看著她救妖還鼓掌；他數她離一百道還差多少",
+        "carry_forward": "『還有六十六』；石婆"
+      }
+    },
+    {
+      "number": 147,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "我出去就死",
+      "youtube_title": "第三口鍋裡的石婆不肯出來，她在等被押走的廟祝；柴房門開，廟祝面前一碗羹正要入口",
+      "duration_s": 105,
+      "logline": "石婆不肯出鍋，她是山神廟門前的石獅，在等廟祝；青梧要救她，就得先找到柴房裡那個正要喝羹的人。",
+      "hook": "第三口鍋掀開，石婆蜷在裡面不動：「我出去就死。」",
+      "hook_type": "line",
+      "mid_hook": "石婆說她是山神廟門前的石獅，三百年看著廟祝一家給山君放碗；她不走，廟祝還在這院裡。",
+      "extra_hooks": [
+        "小丫在鋪裡忽然抬頭：「我聞到爹的味。」"
+      ],
+      "conflict": "石婆不走、廟祝下落不明，青梧要在一夜裡同時救一人一妖。",
+      "turn": "大家以為石婆怕死，她是在等人——不是人救妖，是妖在等人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "柴房門推開，廟祝坐在裡面，面前一碗深色的羹，他舉起碗正要喝。",
+        "question": "廟祝喝了羹會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai",
+        "huoban"
+      ],
+      "spectacle": "石婆在鍋裡的樣子：一尊灰石老婦蜷著，身上有獅紋，眼睛卻像人一樣濕。",
+      "glamour_shot": "青梧在柴房外側身貼牆，燭光從門縫切過她的半張臉，她屏住氣。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到廟祝所在的柴房",
+        "知道石婆不走的原因"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s03-shi-po",
+        "s03-xiao-ya",
+        "s03-miao-zhu",
+        "douzi",
+        "gui-bing"
+      ],
+      "locations": [
+        "御膳司最深院",
+        "御膳司柴房"
+      ],
+      "state": {
+        "time": "皇都第十二夜",
+        "knowledge": "廟祝在柴房；石婆在等他",
+        "carry_forward": "那碗羹"
+      }
+    },
+    {
+      "number": 148,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "羹是活的",
+      "youtube_title": "她一掌打翻廟祝的羹，羹潑在地上影子縮了一下；廟祝說三百年前這院是御廚房",
+      "duration_s": 110,
+      "logline": "青梧救下廟祝、帶出石婆，寫下第三十五道菜；廟祝一句三百年前的舊事，第一次把『饕』與一個餓死的廚子連在一起。",
+      "hook": "青梧一掌把碗打翻，羹潑在地上，地上的影子縮了一下——羹是活的。",
+      "hook_type": "danger",
+      "mid_hook": "廟祝說：山神廟的碑上刻著，大寧開國那年大饑，皇都御廚房的一個廚子餓死在灶前；這間院，就是當年的御廚房。",
+      "extra_hooks": [
+        "石婆聽見廟祝的聲音，自己從鍋裡爬出來，鍋沿的符火沒攔她。"
+      ],
+      "conflict": "帶一個人、一隻石獅妖、一個孩子走出御膳司，天亮前。",
+      "turn": "大家以為羹是湯，羹會動；大家以為御膳司是煉妖的地方，它三百年前是一間廚房。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "走到院門，阿滿的聲音從背後最小那口鍋傳來：「姐姐，別回頭。」她的腳停在門檻上。",
+        "question": "她會回頭嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai",
+        "meishi"
+      ],
+      "spectacle": "羹潑在青石地上，地上所有的影子像被燙到一樣同時縮了一下，再慢慢爬回原處。",
+      "glamour_shot": "小丫撲進廟祝懷裡，青梧站在柴房門口看著，灶灰的臉上一道淚痕，她伸手把石婆灰白帶金的〈石獅糕〉遞過去。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s03-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第三十五道〈石獅糕〉（灰白帶金）",
+        "廟祝救出，與小丫重逢",
+        "三隻小妖全數救出"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-miao-zhu",
+        "s03-shi-po",
+        "s03-xiao-ya",
+        "e-gui",
+        "douzi"
+      ],
+      "locations": [
+        "御膳司柴房",
+        "御膳司最深院門"
+      ],
+      "state": {
+        "time": "皇都第十二夜將明",
+        "knowledge": "御膳司三百年前是御廚房；開國大饑餓死過一個廚子",
+        "carry_forward": "回不回頭"
+      }
+    },
+    {
+      "number": 149,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "影子的嘴先動",
+      "youtube_title": "她回頭了：阿滿的影子比他還大；太子偷看父皇用膳，皇帝沒動筷，影子的嘴先動",
+      "duration_s": 100,
+      "logline": "青梧回頭看見阿滿正在變成『引』；寧昭躲在柱後看父皇用膳，看見了這個皇帝到底是人是妖。",
+      "hook": "她回頭了。阿滿鍋上的符火變暗，鍋裡的阿滿對她笑了一下——可他的影子比他大了一圈。",
+      "hook_type": "image",
+      "mid_hook": "寧昭躲在殿柱後：父皇沒動筷，牆上影子的嘴先動，盤裡的菜少了一半。",
+      "extra_hooks": [
+        "裴無咎對白芷低聲：「引子快成了，壽宴那夜。」"
+      ],
+      "conflict": "阿滿在變、皇帝在吃，青梧與寧昭要在兩個地方同時看清真相。",
+      "turn": "大家以為阿滿在變好，他在變成引；大家以為皇帝在吃菜，吃菜的是影子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "皇帝停下筷子。影子的頭慢慢轉過來，對著寧昭躲的那根柱子——人沒轉，只有影子轉。",
+        "question": "影子發現寧昭了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "ganren"
+      ],
+      "spectacle": "皇帝寢殿裡十二道菜擺滿一桌，皇帝端坐不動，牆上一張比臉大的嘴一口一口合上，盤子一盤盤空。",
+      "glamour_shot": "寧昭躲在殿柱陰影裡，只有一線燭光照著他的眼，他用手捂住自己的嘴。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "寧昭親眼看見影子吃菜",
+        "確認阿滿壽宴那夜成引"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "e-gui",
+        "ning-zhao",
+        "ning-xuan",
+        "pei-wujiu",
+        "s03-bai-zhi"
+      ],
+      "locations": [
+        "御膳司最深院門",
+        "皇帝寢殿"
+      ],
+      "state": {
+        "time": "皇都第十三夜",
+        "knowledge": "吃菜的是影子不是皇帝；阿滿壽宴那夜成引",
+        "carry_forward": "影子對著寧昭"
+      }
+    },
+    {
+      "number": 150,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "坐在龍椅上",
+      "youtube_title": "太子臉色慘白跑出寢殿：「他吃飯時影子的嘴先動」，食單在『饕』字下自己寫出四個字",
+      "duration_s": 140,
+      "logline": "寧昭逃出寢殿衝進鋪子，青梧翻開食單，『饕』字下面浮出第二行；長生羹的真相此刻說出口：長生的從來不是皇帝。",
+      "hook": "寧昭衝出寢殿，一路跑進鋪子，臉色慘白：「他吃飯的時候，影子的嘴先動。」",
+      "hook_type": "line",
+      "mid_hook": "青梧把三樣事擺在桌上：羹裡只有餓、長生的不是人、影子先吃——她說出口：「長生的是饕。皇帝是碗。」",
+      "extra_hooks": [
+        "狐娘子說：三百年前她見過一次登基夜，新皇從那夜起再沒吃飽過。",
+        "寧昭問：「那我父親……還在嗎？」沒人答。"
+      ],
+      "conflict": "把三集的線索拼成一句沒有人敢說的話，並決定要不要讓太子知道。",
+      "turn": "大家以為是皇帝養妖續命，其實是妖坐在皇帝身體裡續它自己的命。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "青梧翻開食單，『饕』字下面，自己浮出了第二行字：「坐在龍椅上。」",
+        "question": "龍椅上坐的是饕？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "食單最後一頁的特寫：淡金色的『饕』字下面，紙面冒起熱氣，一筆一筆浮出『坐在龍椅上』。",
+      "glamour_shot": "青梧低頭看食單，淡金色的字光從下往上照亮她的臉，她抬眼看寧昭的那一秒。",
+      "setups": [
+        "s03-t13"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "長生羹的真相揭開：長生的是饕，不是皇帝；每一代皇帝都是同一只饕",
+        "寧昭知道父親身體裡坐著別的東西"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "ning-zhao",
+        "hu-niangzi",
+        "xiao-chengji",
+        "douzi",
+        "yuan-niang"
+      ],
+      "locations": [
+        "小食鋪"
+      ],
+      "state": {
+        "time": "皇都第十三夜深",
+        "knowledge": "長生的是饕；饕坐在龍椅上；皇帝是它的碗",
+        "carry_forward": "寧昭會怎麼做；壽宴的日子"
+      }
+    },
+    {
+      "number": 151,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "虎吼進城",
+      "youtube_title": "皇都北門一聲虎吼符火整排熄滅，虎妖扛著鐵鍋走進大街直奔御膳司，一腳踹門",
+      "duration_s": 100,
+      "logline": "山君追著那口鐵鍋來到皇都，要把御膳司連宮一起拆；青梧要在他踹開大門之前趕到。",
+      "hook": "皇都北門外一聲虎吼，城門上的符火整排「噗」地熄滅——山君到了。",
+      "hook_type": "danger",
+      "mid_hook": "山君扛著那口刻字的鐵鍋走進皇都大街，百姓四散，他直奔御膳司的朱紅大門。",
+      "extra_hooks": [
+        "小丫衝出去喊「虎爺爺」，山君彎腰把她放回鋪門口，一句話沒說。"
+      ],
+      "conflict": "山君不是來找她，是來拆御膳司；青梧要在他闖宮之前攔住或跟上。",
+      "turn": "大家以為山君下山是來投奔她，他看都沒看鋪子一眼，直接去踹御膳司的門。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "山君一腳踹上御膳司大門，門不開，門上符火竄起圈住他，牆頭一排符火長勺同時亮起。",
+        "question": "山君會闖進去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "shengji",
+        "xiju"
+      ],
+      "spectacle": "山君扛著鐵鍋走過皇都朱紅長街，兩側百姓散開，他身後的虎尾影掃過一排排燈籠。",
+      "glamour_shot": "青梧提著菜刀從鋪裡衝出，藍布巾飛起，她追著山君的背影在長街上奔跑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "山君抵達皇都",
+        "御膳司大門第一次被妖當面挑戰"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-jun",
+        "s03-xiao-ya",
+        "xiao-chengji",
+        "douzi",
+        "hu-niangzi"
+      ],
+      "locations": [
+        "皇都北門",
+        "皇都長街",
+        "御膳司大門"
+      ],
+      "state": {
+        "time": "皇都第十四日",
+        "knowledge": "山君要拆御膳司",
+        "carry_forward": "符火圈裡的山君"
+      }
+    },
+    {
+      "number": 152,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "別攔他",
+      "youtube_title": "狐妖三條尾影攔不住、三百鬼兵列陣被一掌拍散，她抱著一筐空碗站到虎妖與宮門之間",
+      "duration_s": 100,
+      "logline": "狐娘子、鬼兵、太子令輪番攔山君都攔不住，青梧讓所有人退開，自己站到他與宮門之間。",
+      "hook": "狐娘子三條尾影攔在山君面前：「老虎，坐下。」他一掌把她撥開。",
+      "hook_type": "danger",
+      "mid_hook": "三百鬼兵在御膳司門前列成人牆，山君一掌拍散一列，黑甲在符火裡翻飛。",
+      "extra_hooks": [
+        "寧昭亮太子令勸退宮衛：「宮裡不出兵。」替妖與官之間擋了一刀。"
+      ],
+      "conflict": "妖攔妖、人攔妖都攔不住；青梧要用一樣山君不會撕的東西擋他。",
+      "turn": "大家以為這是妖打妖的場面，青梧卻喊停：「都別攔，讓他。」然後自己站上去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "青梧抱著一筐空碗站到山君與宮門之間：「你要拆，先吃完這桌。」山君的爪舉起來。",
+        "question": "山君會聽嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "huoban",
+        "dalian"
+      ],
+      "spectacle": "御膳司朱紅大門前，三條狐尾影、三百黑甲與一道虎尾影在慘白符火下對峙的全景。",
+      "glamour_shot": "狐娘子被撥開後單膝落地，煙桿一撐站起，披帛在風裡揚起，她笑著擦掉唇邊的塵。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "寧昭用太子令阻止宮衛出兵",
+        "青梧第一次讓所有同伴退開"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-jun",
+        "hu-niangzi",
+        "gui-bing",
+        "ning-zhao",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "御膳司大門前"
+      ],
+      "state": {
+        "time": "皇都第十四日午後",
+        "knowledge": "山君誰都攔不住；宮衛不出兵",
+        "carry_forward": "舉起的爪與一筐空碗"
+      }
+    },
+    {
+      "number": 153,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "叫名字",
+      "youtube_title": "虎爪落在碗筐旁一只沒破，她在御膳司石階上擺碗叫名字，第十個名字叫出虎妖的娘",
+      "duration_s": 105,
+      "logline": "青梧把山頂帶來的空碗擺在御膳司門前的石階上，一個名字一個名字叫；門內每響一口鍋，山君的爪就低一寸。",
+      "hook": "山君的爪落下——落在碗筐旁邊，一只碗沒破。",
+      "hook_type": "reversal",
+      "mid_hook": "青梧把空碗一個個擺上石階，叫出第一個名字；門內一口鍋「噹」地響了一聲。",
+      "extra_hooks": [
+        "御膳司門內靜得像空的，一個膳官都沒出來。"
+      ],
+      "conflict": "叫完所有名字之前山君不能再動，御膳司不能開門，青梧的嗓子不能停。",
+      "turn": "大家以為御膳司會出來打，門內靜得像座空院——他們不反擊。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "第十個名字叫出來，山君的虎目裡掉下什麼，他低聲：「那是我娘。」",
+        "question": "山君的娘也在鍋裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shengji",
+        "zhiguai"
+      ],
+      "spectacle": "御膳司門前石階上一排空碗，青梧每叫一個名字，門內就一口鍋嗡嗡作響，整座院像在應聲。",
+      "glamour_shot": "青梧蹲在石階上擺碗，抬頭喊名字時脖子上的青筋與眼裡的光在同一格。",
+      "setups": [
+        "s03-t11"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "有名字的妖，鍋會應聲——除妖榜不寫名字的規矩被當街反過來用",
+        "山君第一次因為一個名字停住"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "shan-jun",
+        "hu-niangzi",
+        "gui-bing",
+        "xiao-chengji",
+        "douzi"
+      ],
+      "locations": [
+        "御膳司門前石階"
+      ],
+      "state": {
+        "time": "皇都第十四日黃昏",
+        "knowledge": "門內的鍋聽名字；御膳司不反擊",
+        "carry_forward": "山君的娘；為什麼不反擊"
+      }
+    },
+    {
+      "number": 154,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "白額",
+      "youtube_title": "碗底刻著「白額」，她把碗底的名字一個個煮成湯，門縫遞出一張紙：第十三口鍋刻的是誰",
+      "duration_s": 105,
+      "logline": "青梧在御膳司門前架鍋，把碗底的名字一個一個煮成湯，食單從第三十六道寫下去；白芷從門縫遞出一張紙，寫著第十三口鍋的名字。",
+      "hook": "青梧翻過第十只碗，碗底刻著兩個字：「白額。」山君背過身去。",
+      "hook_type": "image",
+      "mid_hook": "她在石階上架起鍋，一個名字煮一碗，鍋裡浮出一團團小小的山妖之氣，食單一道一道寫。",
+      "extra_hooks": [
+        "門縫裡遞出一張紙，白芷的字：「別叫第十三個。」"
+      ],
+      "conflict": "被煉過的妖回不來，但它們留在鍋裡的氣還聽得見名字；青梧要把這些氣一碗一碗請上桌。",
+      "turn": "大家以為名字叫完就結束，第十三個名字卻是誰都沒想到的那一個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "白芷的紙翻到背面：「第十三口鍋，刻的是——山君。」",
+        "question": "御膳司早給山君留了一口鍋？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "meishi",
+        "shengji",
+        "ganren"
+      ],
+      "spectacle": "御膳司門前石階上一口鍋，蒸氣裡一團一團小山妖的氣浮起又落進碗，碗一只只排成一桌。",
+      "glamour_shot": "青梧掄鍋盛湯，第一碗〈白額湯〉是琥珀色的，她端到山君面前時手穩得一滴沒灑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第三十六至三十八道：〈白額湯〉（琥珀）、〈石松飯〉（墨綠）、〈雲雀酥〉（淡紫）",
+        "白芷再給線"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "shan-jun",
+        "s03-bai-zhi",
+        "douzi",
+        "hu-niangzi"
+      ],
+      "locations": [
+        "御膳司門前石階"
+      ],
+      "state": {
+        "time": "皇都第十四夜",
+        "knowledge": "御膳司第十三口鍋刻著山君的名字",
+        "carry_forward": "那口鍋"
+      }
+    },
+    {
+      "number": 155,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "等我自己進",
+      "youtube_title": "虎妖聽見自己名字笑了：鍋早備好，他要自己坐進去換娘的鍋開；大門從裡「咔」地開了一條縫",
+      "duration_s": 100,
+      "logline": "山君打算走進那口刻著自己名字的鍋，換十二口鍋開；青梧與鬼兵要在門縫打開之前攔下一隻自願進鍋的妖。",
+      "hook": "山君聽見「山君」兩字，笑了：「鍋早備好，等我自己進。」",
+      "hook_type": "line",
+      "mid_hook": "蕭承霽借一日『夜行』潛進院裡，回來說：第十三口鍋真的空著，鍋旁擺著十二把鑰匙。",
+      "extra_hooks": [
+        "青梧又叫了兩個名字，兩碗湯落下，食單寫到第四十道。"
+      ],
+      "conflict": "山君要以自己換娘的鍋開，青梧要證明這是裴無咎設的局。",
+      "turn": "大家以為山君衝宮是來打的，他打算把自己交出去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "御膳司大門從裡面「咔」一聲開了一條縫，縫裡透出慘白的光；山君抬起腳。",
+        "question": "山君會走進那口鍋嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "ganren",
+        "zhiguai"
+      ],
+      "spectacle": "蕭承霽借一日夜行術的主觀鏡頭：一排排符火鍋中一口空鍋，鍋旁十二把鑰匙在白光裡發亮。",
+      "glamour_shot": "蕭承霽翻牆落地無聲，披風貼著牆面滑下，火光照出他側臉的輪廓。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第三十九、四十道：〈山棘凍〉（深紅）、〈苔花羹〉（青灰）",
+        "確認第十三口鍋是為山君留的"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "shan-jun",
+        "xiao-chengji",
+        "gui-bing",
+        "hu-niangzi"
+      ],
+      "locations": [
+        "御膳司門前石階",
+        "御膳司最深院"
+      ],
+      "state": {
+        "time": "皇都第十五日",
+        "knowledge": "山君想以自己換十二口鍋開",
+        "carry_forward": "門縫；山君的腳"
+      }
+    },
+    {
+      "number": 156,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "誰記得他們",
+      "youtube_title": "她擠進門縫擋住虎妖：你進去，誰記得他們？鬼兵長摘下面甲，十二口鍋同時開蓋",
+      "duration_s": 105,
+      "logline": "青梧與鬼兵長一起把山君從門縫拉回來，裴無咎卻掀開十二口鍋，放出十二道山妖的殘氣撲向山君。",
+      "hook": "青梧側身擠進門縫，背對著慘白的光擋在山君面前：「你進去，誰記得他們？」",
+      "hook_type": "line",
+      "mid_hook": "鬼兵長摘下面甲，露出那張年輕的臉：「我也沒名字過。」山君的腳停了。",
+      "extra_hooks": [
+        "狐娘子說：三百年前，她爹也擋在一口鍋前，沒人拉他。"
+      ],
+      "conflict": "把一隻決心進鍋的妖拉回來，再擋住鍋裡衝出來的東西。",
+      "turn": "大家以為山君不聽人，他聽了鬼兵長一句；大家以為門開是請他進，是放東西出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門內十二口鍋同時開蓋，十二道灰白的氣沖出撲向山君，他張開雙臂迎上去，青梧喊：「別接！」",
+        "question": "山君接住會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "huoban",
+        "ganren"
+      ],
+      "spectacle": "十二口鍋同時掀蓋，十二道灰白的氣像箭一樣穿過門縫，在山君胸前匯成一團。",
+      "glamour_shot": "鬼兵長面甲摘下的那一格，年輕的臉在符火與灶火之間，他看著山君沒說第二句。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "山君退了一步",
+        "鬼兵長第一次在皇都露臉"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-jun",
+        "gui-bing",
+        "hu-niangzi",
+        "pei-wujiu",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "御膳司大門",
+        "御膳司最深院"
+      ],
+      "state": {
+        "time": "皇都第十五日",
+        "knowledge": "裴無咎放出被煉山妖的殘氣",
+        "carry_forward": "山君接不接"
+      }
+    },
+    {
+      "number": 157,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "第一碗",
+      "youtube_title": "十二道殘氣撞進虎妖胸口，虎紋亮起他沒變殘；山頂那桌空碗終於有人端起第一碗",
+      "duration_s": 110,
+      "logline": "山君接住了十二道殘氣沒有變殘，青梧一道一道把它們從他身上請下來；山頂那桌沒人吃的菜終於有人端起第一碗。",
+      "hook": "氣撞進山君胸口，他單膝跪地，皮膚上的虎紋一條條亮起——他接住了，沒散。",
+      "hook_type": "image",
+      "mid_hook": "青梧把手按在他胸口，一道一道叫名字，每叫一個，一團氣就從他身上出來落進碗裡。",
+      "extra_hooks": [
+        "牆頭上白芷看著，眼眶紅了，轉身走進院裡。"
+      ],
+      "conflict": "十二道殘氣在山君體內會把他燒成『殘』，青梧要在它們認出同族之前把它們請上桌。",
+      "turn": "大家以為氣會毀掉他，氣在他身體裡認出同族，願意上桌——它們等的就是這一桌。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "山君捧起第一碗喝了一口，第一次對人說：「謝。」碗底卻露出一行新刻的字：「還有一碗，給你。」——裴無咎的字。",
+        "question": "裴無咎給山君留了什麼碗？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shengji",
+        "huoban",
+        "ganren",
+        "meishi"
+      ],
+      "spectacle": "山君跪在石階上，十二道灰白的氣從他胸口一道道飄出，在空中各自變成一只妖的影子，再落進一只只碗。",
+      "glamour_shot": "青梧把四碗顏色各異的湯端成一排，吹掉最後一碗的熱氣，抬眼看山君端碗的手。",
+      "setups": [],
+      "payoffs": [
+        "s03-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第四十一至四十四道：〈松風盞〉（乳白）、〈赤岩粥〉（磚紅）、〈夜鴞羹〉（墨藍）、〈山露〉（透明金）",
+        "山頂那桌菜有人吃了：山君端起第一碗",
+        "山君沒變殘"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "shan-jun",
+        "s03-bai-zhi",
+        "hu-niangzi",
+        "gui-bing",
+        "douzi"
+      ],
+      "locations": [
+        "御膳司門前石階"
+      ],
+      "state": {
+        "time": "皇都第十五日黃昏",
+        "knowledge": "殘氣能認同族、能上桌；裴無咎還留了一碗給山君",
+        "carry_forward": "那一碗"
+      }
+    },
+    {
+      "number": 158,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "門口有碗嗎",
+      "youtube_title": "狐妖邀虎妖回妖市守門，門裡飄出一句「你娘的鍋還熱」；太子帶來壽宴的日子",
+      "duration_s": 100,
+      "logline": "狐娘子邀山君去妖市守門，御膳司裡卻傳出一句話拉他回鍋；寧昭帶來皇帝壽宴的日子，阿滿成引的期限有了數。",
+      "hook": "狐娘子把煙桿搭在山君肩上：「跟我回妖市守門，有飯。」他沒回頭。",
+      "hook_type": "line",
+      "mid_hook": "寧昭帶來消息：皇帝壽宴定在月末，御膳司要在那一夜讓『引』成——阿滿。",
+      "extra_hooks": [
+        "蕭承霽問青梧：「妳忘了幾樣？」她數了一下，數不出來。"
+      ],
+      "conflict": "山君要在一隻手與一口鍋之間選，青梧要在壽宴之前想出救阿滿的法子。",
+      "turn": "大家以為山君會拒絕狐娘子，他只問了一句：「門口有碗嗎？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "山君站在御膳司門前，一邊是狐娘子伸出的手，一邊是門內那口刻著他名字的鍋；門裡飄出一聲：「山君，你娘的鍋還熱。」",
+        "question": "山君會選哪邊？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huoban",
+        "zhiguai",
+        "xiju"
+      ],
+      "spectacle": "御膳司門前：一側狐娘子三條尾影在月光下張開，一側門縫裡慘白符火；山君站在正中，虎尾影一動不動。",
+      "glamour_shot": "狐娘子伸出手時披帛滑下手腕，月光照著她眉心的硃砂，她笑著等。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "壽宴日子確定：月末",
+        "狐娘子正式邀山君守門"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-jun",
+        "hu-niangzi",
+        "ning-zhao",
+        "xiao-chengji",
+        "douzi"
+      ],
+      "locations": [
+        "御膳司門前"
+      ],
+      "state": {
+        "time": "皇都第十五夜",
+        "knowledge": "壽宴在月末，那夜阿滿成引",
+        "carry_forward": "山君的選擇；壽宴"
+      }
+    },
+    {
+      "number": 159,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "替饕養的",
+      "youtube_title": "女膳官翻牆出來說出御膳司不反擊的原因：她收的每一隻都是給饕的；牆頭上膳使站起來",
+      "duration_s": 105,
+      "logline": "山君選了狐娘子的手；白芷翻牆出來說出御膳司為什麼一直不反擊，話沒說完，膳使·墨站上了牆頭。",
+      "hook": "山君把手放進狐娘子手裡——門裡那聲音停了。",
+      "hook_type": "image",
+      "mid_hook": "白芷翻牆出來，第一次把話說全：「司正不攔妳。妳收的妖，都是給饕的。他等妳收滿。」",
+      "extra_hooks": [
+        "鄭衡的轎子又來，被山君一聲吼嚇得原路抬回去。"
+      ],
+      "conflict": "青梧終於明白自己這一路在替誰做菜，而說出這件事的人正要被帶回去。",
+      "turn": "大家以為御膳司怕山君、怕妖市，它一直在養她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "白芷說完，身後牆頭一排符火亮起，膳使·墨站在牆上看著她：「白芷，回來。」",
+        "question": "白芷會被怎麼處置？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "dalian"
+      ],
+      "spectacle": "御膳司牆頭一排慘白符火一盞盞亮起，墨的黑影立在最中間，背後鍋形的盾映著火光。",
+      "glamour_shot": "白芷站在牆下仰頭，符火把她的臉照得發白，她沒退一步。",
+      "setups": [],
+      "payoffs": [
+        "s03-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "山君選了妖市",
+        "御膳司不反擊的原因揭開：他們在等她把食單寫滿"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-jun",
+        "hu-niangzi",
+        "s03-bai-zhi",
+        "shan-shi",
+        "s03-zheng-heng",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "御膳司門前",
+        "御膳司牆頭"
+      ],
+      "state": {
+        "time": "皇都第十六日",
+        "knowledge": "御膳司在等她收滿一百道；她收的妖是給饕的",
+        "carry_forward": "白芷；墨"
+      }
+    },
+    {
+      "number": 160,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "山君宴",
+      "youtube_title": "虎妖在御膳司門前坐下，食單寫下第四十五道山君宴；大門打開，司正鼓掌說她每收一隻都在餵饕",
+      "duration_s": 140,
+      "logline": "墨要帶走白芷，山君按滅符火；青梧在御膳司門前擺開最後一桌，山君坐下，食單第四十五道；裴無咎從門內走出來鼓掌。",
+      "hook": "墨從牆頭跳下，一勺符火要收白芷，山君一掌把符火按滅在地上。",
+      "hook_type": "danger",
+      "mid_hook": "青梧在御膳司門前擺開最後一桌，山君坐下，食單寫下第四十五道〈山君宴〉——她忘了第二十樣味道：家裡那條街的早餐。",
+      "extra_hooks": [
+        "狐娘子舉杯：「妖市守門人。」山君沒推。",
+        "白芷沒回御膳司，坐在桌邊最遠的位子。"
+      ],
+      "conflict": "保住白芷、請山君坐下、擺完這一桌——在御膳司的門前。",
+      "turn": "大家以為山君坐下就贏了，大門從裡面打開了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "裴無咎站在打開的門內鼓掌：「好，再收一隻。妳收的每一隻，都替我把饕養得更餓。」",
+        "question": "她收妖是在餵饕？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "shengji",
+        "huoban",
+        "ganren"
+      ],
+      "spectacle": "御膳司門口一桌人妖同坐的俯拍：山君、狐娘子、鬼兵長、白芷、小丫、廟祝圍著一桌金橘色的〈山君宴〉；背後朱紅大門從裡面緩緩打開。",
+      "glamour_shot": "青梧端上〈山君宴〉時閉眼嚐了一口，忽然愣住，碎髮垂下來遮住眼——她想不起那條街早餐的味道。",
+      "setups": [],
+      "payoffs": [
+        "s03-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第四十五道〈山君宴〉（金橘）",
+        "山君成為妖市守門人",
+        "白芷脫離御膳司",
+        "裴無咎教配方的目的揭開：讓她收滿、替饕養餓"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "shan-jun",
+        "hu-niangzi",
+        "gui-bing",
+        "s03-bai-zhi",
+        "shan-shi",
+        "pei-wujiu",
+        "xiao-chengji",
+        "douzi",
+        "s03-xiao-ya",
+        "s03-miao-zhu"
+      ],
+      "locations": [
+        "御膳司門前"
+      ],
+      "state": {
+        "time": "皇都第十六日黃昏",
+        "knowledge": "裴無咎要她寫滿一百道；她每收一隻都在餵饕",
+        "carry_forward": "『養得更餓』；忘掉的味道"
+      }
+    },
+    {
+      "number": 161,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "忘了二十樣",
+      "youtube_title": "司正說破她的代價：寫滿一百道連自己是誰都不記得；她問食單味道去了哪，書一字不寫",
+      "duration_s": 105,
+      "logline": "裴無咎當面說破食單的代價，青梧第一次怕；夜裡她問食單忘掉的味道去了哪，食單第一次不回答。",
+      "hook": "裴無咎走下石階，看著她：「妳忘了二十樣了，對吧？」",
+      "hook_type": "question",
+      "mid_hook": "他說：寫滿一百道，妳什麼味都不記得；連妳是誰，也不記得。",
+      "extra_hooks": [
+        "蕭承霽問她：「妳媽煮的麵，什麼味？」她張口，答不出來。"
+      ],
+      "conflict": "敵人說的是真話，青梧要在這份真話裡找出還能走下去的理由。",
+      "turn": "大家以為代價是忘味道，裴無咎說的代價是忘掉自己。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡她一個人坐在灶前翻開食單：「味道去哪了？」書頁一動不動。她第一次怕。",
+        "question": "食單為什麼不回答？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai",
+        "henla"
+      ],
+      "spectacle": "裴無咎與青梧在御膳司石階上隔一桌殘宴對視，身後妖市的妖與鬼兵一字不吭。",
+      "glamour_shot": "青梧夜裡獨坐灶前，灶火快熄，只剩一線橘光照著她低垂的睫毛與攤開的食單。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "裴無咎說破食單代價的全貌",
+        "青梧確認自己忘了二十樣味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "pei-wujiu",
+        "xiao-chengji",
+        "douzi"
+      ],
+      "locations": [
+        "御膳司門前",
+        "小食鋪灶房"
+      ],
+      "state": {
+        "time": "皇都第十六夜",
+        "knowledge": "寫滿一百道會忘掉自己",
+        "carry_forward": "沉默的食單"
+      }
+    },
+    {
+      "number": 162,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "今天不寫",
+      "youtube_title": "她把食單鎖進米缸發誓今天不寫，一隻餓鼠妖在她腳邊快散成氣，豆子抱著米缸問：寫不寫",
+      "duration_s": 100,
+      "logline": "青梧把食單鎖進米缸，第一次拒收一隻妖；鼠妖在她腳邊越來越淡，她要在忘掉自己與看一隻妖散掉之間選。",
+      "hook": "清晨，她把食單丟進米缸、蓋上蓋子：「今天不寫。」",
+      "hook_type": "line",
+      "mid_hook": "糧倉的鼠妖跑進鋪裡求收，她第一次說「不」；鼠妖在她腳邊慢慢變淡。",
+      "extra_hooks": [
+        "寧昭帶來壽宴菜單的草稿，最後一道寫著：「百妖羹」。"
+      ],
+      "conflict": "不寫就不忘，但不寫這隻妖就散；青梧要決定食單到底是她的刀還是她的碗。",
+      "turn": "大家以為不寫就能保住自己，鼠妖卻在她腳邊餓得快散成氣——不寫，也有人付代價。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "鼠妖的氣在她腳邊越來越淡，豆子抱著米缸站在她面前：「姐，寫不寫？」",
+        "question": "她會為一隻鼠妖再忘一樣嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "meishi"
+      ],
+      "spectacle": "小食鋪灶房裡，一隻半透明的鼠妖蜷在青梧腳邊，身體一寸寸變淡，灶火透過它照在地上。",
+      "glamour_shot": "青梧蹲下來看鼠妖，手裡還握著一把剛切好的蔥，刀光與淚光在同一格。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "壽宴菜單最後一道是『百妖羹』",
+        "青梧第一次拒收，又第一次後悔"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-shu-yao",
+        "douzi",
+        "ning-zhao",
+        "hu-niangzi"
+      ],
+      "locations": [
+        "小食鋪灶房"
+      ],
+      "state": {
+        "time": "皇都第十七日",
+        "knowledge": "壽宴最後一道是百妖羹",
+        "carry_forward": "寫不寫"
+      }
+    },
+    {
+      "number": 163,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "存著",
+      "youtube_title": "她打開米缸，食單自己翻到最後一頁，『饕』字旁浮出兩個小字——忘掉的味道原來都在這",
+      "duration_s": 110,
+      "logline": "青梧打開米缸，食單自己翻到最後一頁回答她：忘掉的味道沒有丟，它們被存起來，是第一百道菜的底味。",
+      "hook": "她打開米缸，食單自己翻頁，一頁一頁翻到最後。",
+      "hook_type": "image",
+      "mid_hook": "『饕』字旁邊浮出兩個小字：「存著。」她懂了——忘掉的味道被食單存起來，是第一百道菜的底味。",
+      "extra_hooks": [
+        "她收了鼠妖，第四十六道〈倉鼠粥〉落碗，這一次忘掉味道時她沒哭。"
+      ],
+      "conflict": "重新相信食單，然後決定接下來的每一道要怎麼寫。",
+      "turn": "大家以為味道丟了，它們在等一道菜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把最後一頁翻到底，『存著』下面還有一行更小的字：「留一樣，最後用。」",
+        "question": "要留哪一樣味道？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai",
+        "meishi"
+      ],
+      "spectacle": "食單最後一頁的特寫：『饕』字旁邊紙面冒起熱氣，『存著』兩個小字一筆一筆浮出，淡金色。",
+      "glamour_shot": "青梧端起米白色的〈倉鼠粥〉嚐一口，閉眼，再張眼時笑了，眼角還是濕的。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [
+        "m06"
+      ],
+      "general_payoffs": [
+        "忘掉的味道去了哪揭開：被食單存著，是第一百道菜的底味",
+        "食單第四十六道〈倉鼠粥〉（米白）",
+        "鼠妖救下"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-shu-yao",
+        "douzi",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "小食鋪灶房"
+      ],
+      "state": {
+        "time": "皇都第十七日",
+        "knowledge": "忘掉的味道存在食單裡；要留一樣最後用",
+        "carry_forward": "留哪一樣"
+      }
+    },
+    {
+      "number": 164,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "只剩五樣",
+      "youtube_title": "她寫下還記得的味道只剩五樣，司正端著一碗白粥來求「家的味道」——他也饞了四十年",
+      "duration_s": 100,
+      "logline": "青梧數出自己只剩五樣味道，要決定留哪一樣；裴無咎端著白粥來求一道有家的味道的菜，第一次露出他也是個饞了一輩子的人。",
+      "hook": "青梧在紙上寫她還記得的味道，寫到第五樣，筆停了——沒了。",
+      "hook_type": "image",
+      "mid_hook": "裴無咎提著一碗白粥上門，不帶鍋不帶火：「煮一道有家的味道的。我想嚐。」",
+      "extra_hooks": [
+        "寧昭說：今夜父皇用膳，我帶妳去看。"
+      ],
+      "conflict": "五樣味道留一樣，四樣要用來寫完食單；而求菜的人是她最大的敵人。",
+      "turn": "大家以為裴無咎來威脅，他來求一口——他吃了四十年羹，什麼味都嚐不出了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把紙上四樣一筆一筆劃掉，筆尖停在最後一樣上：「媽媽煮的麵。」",
+        "question": "她會把媽媽的麵留到最後嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "henla",
+        "meishi"
+      ],
+      "spectacle": "裴無咎坐在小食鋪的粗木凳上，白絹手套捧著一碗白粥，身後對面就是他自己的朱紅高牆。",
+      "glamour_shot": "青梧握筆的手停在紙上，燭光照著紙上剩下的最後一行字，她的影子落在『媽媽』兩個字上。",
+      "setups": [],
+      "payoffs": [
+        "m12",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "青梧決定把媽媽煮的麵留到最後一道",
+        "裴無咎承認自己也饞了四十年"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "pei-wujiu",
+        "ning-zhao",
+        "douzi"
+      ],
+      "locations": [
+        "小食鋪"
+      ],
+      "state": {
+        "time": "皇都第十八日",
+        "knowledge": "只剩五樣味道；裴無咎也饞",
+        "carry_forward": "今夜看皇帝用膳"
+      }
+    },
+    {
+      "number": 165,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "十二道菜",
+      "youtube_title": "她躲在夾道看皇帝一夜吃十二道菜，影子的嘴吞掉旁邊的膳官；影子轉向夾道，太子站了出去",
+      "duration_s": 105,
+      "logline": "寧昭帶青梧躲進御膳司通往大殿的夾道，看皇帝一夜用膳：影子吃人；影子轉向他們時，寧昭走了出去。",
+      "hook": "夾道盡頭的簾縫裡，大殿的燭光下皇帝坐在十二道菜前，一筷未動。",
+      "hook_type": "image",
+      "mid_hook": "影子的嘴比臉大，一口合上，站在皇帝身邊的膳官原地化成一團氣被吸進影子裡——人沒了。",
+      "extra_hooks": [
+        "井妖阿澗在鋪後院叫：「井在響！」"
+      ],
+      "conflict": "看清饕怎麼吃，又不能被它看見。",
+      "turn": "大家以為饕只吃菜，它吃人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "影子的頭轉向夾道，嘴張開；寧昭一手把青梧按低，自己掀簾站出去：「父皇。」",
+        "question": "寧昭會被吞嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "大殿燭光下皇帝端坐，牆上影子的嘴一張一合，站在旁邊的膳官化成一團氣被吸走，燭火一齊矮下去。",
+      "glamour_shot": "寧昭掀簾站出去的那一格，月白銀龍的衣角在燭光裡一揚，他的側臉白得像紙。",
+      "setups": [
+        "s03-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看清饕吃人的方式",
+        "井底有動靜"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "ning-zhao",
+        "ning-xuan",
+        "s03-jing-yao",
+        "douzi"
+      ],
+      "locations": [
+        "御膳司夾道",
+        "大殿",
+        "小食鋪後院"
+      ],
+      "state": {
+        "time": "皇都第十八夜",
+        "knowledge": "饕的影子吃人；井在響",
+        "carry_forward": "寧昭；井"
+      }
+    },
+    {
+      "number": 166,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "井響",
+      "youtube_title": "皇帝笑著讓太子陪他吃，鋪後院的井水倒流，石門開了，爬出一個沒有臉的黑影",
+      "duration_s": 100,
+      "logline": "寧昭坐下來陪父親吃飯換回青梧的命；鋪後院的井水倒流、石門打開，第一隻殘爬上皇都。",
+      "hook": "影子縮回去。皇帝笑了：「昭兒，陪朕吃。」寧昭坐下，拿起筷子。",
+      "hook_type": "reversal",
+      "mid_hook": "鋪後院的井水往下倒流，井底石門「咔」一聲開了。",
+      "extra_hooks": [
+        "鬼兵長說御膳司底下的水全往地底一處流，那裡有一座廟。"
+      ],
+      "conflict": "寧昭要在饕面前吃完一頓飯；青梧要面對井裡爬上來的東西。",
+      "turn": "大家以為危險在殿上，危險從地底上來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "井口慢慢冒出一個黑影，沒有臉，爬到井邊坐下；四周的燈影一盞一盞被它吸暗。",
+        "question": "井裡爬出來的是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla",
+        "huoban"
+      ],
+      "spectacle": "井水倒流的特寫，接井口冒出一個沒有臉的黑影，鋪子後院的燈一盞盞暗下去。",
+      "glamour_shot": "寧昭在父親對面拿起筷子，手沒抖，燭光照著他壓住的嘴角。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "寧昭活著走出大殿",
+        "御膳司地底有一座廟的線頭"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "ning-zhao",
+        "ning-xuan",
+        "gui-bing",
+        "s03-jing-yao",
+        "douzi",
+        "s03-can-yi"
+      ],
+      "locations": [
+        "大殿",
+        "小食鋪後院"
+      ],
+      "state": {
+        "time": "皇都第十八夜深",
+        "knowledge": "地底有廟；井裡爬出無臉之物",
+        "carry_forward": "井邊的黑影"
+      }
+    },
+    {
+      "number": 167,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "殘",
+      "youtube_title": "沒臉的黑影坐在客人的位子上，餵什麼都餓；女膳官認出它腰牌——昨夜被影子吞的那個膳官",
+      "duration_s": 105,
+      "logline": "殘坐進鋪裡吃什麼都不飽，青梧第一次餵不飽一個客人；白芷認出它是昨夜被影子吞掉的膳官——被饕吃過的人也會變成殘。",
+      "hook": "黑影走到鋪門口，拉開凳子坐在客人的位子上，沒有臉。",
+      "hook_type": "image",
+      "mid_hook": "她端什麼它都吃，吃完還是餓；狐娘子吐一口煙：「這就是殘。」",
+      "extra_hooks": [
+        "白芷看見它腰上掛的膳官腰牌，臉白了：「昨夜被吞的那個。」"
+      ],
+      "conflict": "餵一個餵不飽的東西，還要弄明白它從哪來、要去哪。",
+      "turn": "大家以為殘是被煉過的妖，殘也可以是被饕吞過的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "殘站起來，往御膳司的方向走；它走過的街，每一盞燈的影子都跟著失去了臉。",
+        "question": "殘要去哪裡？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "殘走過皇都夜街的長鏡頭：它每經過一盞燈，牆上的人影就少一張臉。",
+      "glamour_shot": "青梧蹲在殘面前，把一碗熱湯推過去，灶火照著她半邊臉，她的眼沒避開那片沒有臉的黑。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認殘是被饕吞過的人變的",
+        "殘往御膳司、往地底走"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s03-can-yi",
+        "hu-niangzi",
+        "s03-bai-zhi",
+        "douzi",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "小食鋪",
+        "皇都夜街"
+      ],
+      "state": {
+        "time": "皇都第十九夜",
+        "knowledge": "殘是被吞過的人或妖；殘往饕的方向走",
+        "carry_forward": "殘往哪去；壽宴"
+      }
+    },
+    {
+      "number": 168,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "百妖羹・引",
+      "youtube_title": "壽宴菜單最後一道：百妖羹，引是餓鬼一隻；太子把太子令放在桌上，說壽宴那夜他開殿門",
+      "duration_s": 105,
+      "logline": "壽宴菜單確定阿滿是引，青梧開始反著寫食單：每收一隻，把最後一口留給阿滿；寧昭把太子令放上桌。",
+      "hook": "寧昭把壽宴菜單攤在灶台上，最後一行：「百妖羹・引：餓鬼一隻。」",
+      "hook_type": "image",
+      "mid_hook": "青梧收下鼓樓的更妖，寫第四十七道〈五更湯〉；她把這碗的最後一口留著不喝：「給阿滿。」",
+      "extra_hooks": [
+        "鄭衡被皇帝召進殿後，再沒出來。"
+      ],
+      "conflict": "壽宴只剩七日，青梧要排出一個能救阿滿、不被饕吞的計畫。",
+      "turn": "大家以為壽宴是宴，壽宴是煉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "寧昭把太子令放在桌上：「壽宴那夜，我開殿門。」蕭承霽按住青梧要去拿令的手：「他會丟命。」",
+        "question": "她會讓太子開殿門嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "meishi",
+        "zhiguai",
+        "huoban"
+      ],
+      "spectacle": "壽宴菜單的特寫：十二道菜名工整排下來，最後一行『百妖羹・引：餓鬼一隻』。",
+      "glamour_shot": "青梧把墨藍色的〈五更湯〉最後一口留在碗底，用手掌蓋住碗口，眼睛看著御膳司的方向。",
+      "setups": [
+        "s03-t14"
+      ],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第四十七道〈五更湯〉（墨藍）",
+        "青梧開始把每道菜的最後一口留給阿滿",
+        "太子令上桌"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "ning-zhao",
+        "xiao-chengji",
+        "s03-geng-yao",
+        "douzi",
+        "s03-zheng-heng"
+      ],
+      "locations": [
+        "小食鋪",
+        "皇都鼓樓"
+      ],
+      "state": {
+        "time": "皇都第二十日，壽宴前七日",
+        "knowledge": "阿滿是百妖羹的引；壽宴夜煉",
+        "carry_forward": "太子令"
+      }
+    },
+    {
+      "number": 169,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "妖市進城",
+      "youtube_title": "她把太子令推回去：門你開命我保；整座妖市借人形一隻隻進皇都，御膳司深夜抬走最小那口鍋",
+      "duration_s": 100,
+      "logline": "青梧接下寧昭的門、不接他的命；狐娘子把整座妖市借人形搬進皇都；御膳司卻在深夜把阿滿的鍋抬走了。",
+      "hook": "青梧把太子令推回寧昭面前：「門你開，命我保。」",
+      "hook_type": "line",
+      "mid_hook": "城門符火下，妖市的妖一隻一隻借了一日人形走進皇都，狐娘子站在城門口數。",
+      "extra_hooks": [
+        "青梧收下城門的燈籠妖，寫第四十八道〈門燈糕〉；又收下更夫的影妖，寫第四十九道〈影子麵〉。"
+      ],
+      "conflict": "七日之內把一座妖市搬進皇都，還要讓每一隻在壽宴夜只借一日。",
+      "turn": "大家以為兵不夠，整座妖市來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "深夜，御膳司側門開了，四個膳官抬著最小那口鍋往大殿走，鍋蓋縫裡垂出一條紅布條。",
+        "question": "阿滿被帶去哪？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huoban",
+        "xiju",
+        "meishi"
+      ],
+      "spectacle": "皇都城門下的長鏡頭：妖市的妖借人形排隊進城，每一隻走過符火時身後的影子都比人形多一點什麼。",
+      "glamour_shot": "狐娘子站在城門口數妖，煙桿在月光下一點一點，披帛在風裡揚起。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第四十八、四十九道：〈門燈糕〉（橘紅）、〈影子麵〉（墨黑）",
+        "妖市全數進皇都"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "ning-zhao",
+        "hu-niangzi",
+        "xiao-chengji",
+        "gui-bing",
+        "shan-jun",
+        "douzi"
+      ],
+      "locations": [
+        "小食鋪",
+        "皇都城門",
+        "御膳司側門"
+      ],
+      "state": {
+        "time": "壽宴前五日",
+        "knowledge": "妖市在皇都；阿滿的鍋被抬往大殿",
+        "carry_forward": "鍋去哪"
+      }
+    },
+    {
+      "number": 170,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "姐姐，我餓",
+      "youtube_title": "她追著阿滿的鍋到殿前門關上，井裡第三隻殘爬出來坐到她鋪前，張嘴發出阿滿的聲音",
+      "duration_s": 135,
+      "logline": "青梧追阿滿的鍋追到大殿門前被關在外面；井裡爬出的第三隻殘走到她鋪前坐下，開口時是阿滿的聲音。",
+      "hook": "青梧追著鍋跑過殿前廣場，鍋抬進殿，殿門在她面前合上。",
+      "hook_type": "danger",
+      "mid_hook": "井口第三隻殘爬出來，沒有臉，不往御膳司走，一路走到她的食鋪前坐下。",
+      "extra_hooks": [
+        "鬼兵長下井探到底：井連著御膳司地底，再往下是一座沒有門的廟——殘從那裡上來。",
+        "她煮了一大鍋〈半碗飯〉，誰來都半碗，第五十道落筆。"
+      ],
+      "conflict": "阿滿進了大殿，殘坐在鋪前，青梧要在兩頭之間先管哪一頭。",
+      "turn": "大家以為殘要去御膳司，這一隻來找她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "殘張開嘴，發出的是阿滿的聲音：「姐姐，我餓。」",
+        "question": "這隻殘是阿滿嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai",
+        "meishi",
+        "henla"
+      ],
+      "spectacle": "井口第三隻殘爬出的俯拍：整條街的燈影失去臉，只有小食鋪門口那盞燈還亮著。",
+      "glamour_shot": "青梧端著一碗〈半碗飯〉蹲在殘面前，灶火照亮她的臉，她把碗往前推時手在抖。",
+      "setups": [],
+      "payoffs": [
+        "s03-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第五十道〈半碗飯〉（米白帶灰）",
+        "殘的來處確認：地底一座沒有門的廟，從井上來"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "e-gui",
+        "s03-can-yi",
+        "gui-bing",
+        "douzi",
+        "hu-niangzi",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "殿前廣場",
+        "小食鋪",
+        "井底"
+      ],
+      "state": {
+        "time": "壽宴前五日夜",
+        "knowledge": "阿滿在大殿；殘從地底的廟經井上來",
+        "carry_forward": "阿滿聲音的殘"
+      }
+    },
+    {
+      "number": 171,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "鍋裡的回聲",
+      "youtube_title": "她抓住殘的手問「阿滿？」殘搖頭說我是鍋裡的聲音；虎妖扛著妖市的旗回來了",
+      "duration_s": 100,
+      "logline": "青梧要確認這隻殘是不是阿滿，答案是一個更壞的消息：它吞過阿滿鍋邊的餓，而阿滿還在，就在壽宴的桌上。",
+      "hook": "青梧抓住殘的手：「阿滿？」殘搖頭，用阿滿的聲音說：「我是鍋裡的聲音。」",
+      "hook_type": "line",
+      "mid_hook": "白芷帶來消息：阿滿還在，鍋已進大殿，壽宴散席後開火。",
+      "extra_hooks": [
+        "山君扛著妖市的一面旗從北門回來，旗插在小食鋪門口。"
+      ],
+      "conflict": "分辨回聲與真人，再把壽宴夜的時辰與位置拼出來。",
+      "turn": "大家以為阿滿變成殘了，殘只是吞過他鍋邊的餓，是回聲。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "殘站起來往地底走，它走過的每條街，牆上燈影的嘴都開始張開。",
+        "question": "殘在召什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla",
+        "huoban"
+      ],
+      "spectacle": "殘走過的街道全景：牆上一排排人影的嘴同時慢慢張開，像一排沒有臉的碗。",
+      "glamour_shot": "山君把妖市的旗插進鋪前的土裡，夕陽從他背後打來，虎尾影掃過旗面。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "確認阿滿活著、在大殿；壽宴散席後開火",
+        "山君帶旗歸隊"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s03-can-yi",
+        "s03-bai-zhi",
+        "shan-jun",
+        "hu-niangzi",
+        "douzi",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "小食鋪",
+        "皇都夜街"
+      ],
+      "state": {
+        "time": "壽宴前四日",
+        "knowledge": "阿滿在大殿，壽宴散席後開火；殘在召影子",
+        "carry_forward": "壽宴夜的位置"
+      }
+    },
+    {
+      "number": 172,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "門我開",
+      "youtube_title": "太子把太子令按進她手裡：壽宴夜門我開；膳使留下一張「別來」的符，背面畫著二十口鍋的位置",
+      "duration_s": 105,
+      "logline": "寧昭做出他的決定：壽宴夜親手開殿門；青梧排好每一隻妖借一日的位置；膳使·墨留下的一張符，背面是御膳司二十口鍋的位置圖。",
+      "hook": "寧昭把太子令按進青梧手裡，不讓她推：「壽宴夜，門我開。」",
+      "hook_type": "line",
+      "mid_hook": "青梧把二十碗菜排在桌上，一碗一個人：怨娘縫進繡房、狐娘子化皇后、鬼兵守門、山君扛鍋。",
+      "extra_hooks": [
+        "墨在鋪門口放下一張符，一個字沒說：「壽宴夜，別來。」"
+      ],
+      "conflict": "二十個人妖各借一日能力，一夜用完；每一碗都只能喝一次。",
+      "turn": "大家以為墨的符是警告，翻過來是幫忙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "墨的符翻過來，背面用符火的灰畫著御膳司二十口鍋的位置，最小那一口圈了紅。",
+        "question": "墨為什麼幫她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huoban",
+        "zhandou",
+        "dalian"
+      ],
+      "spectacle": "小食鋪大桌上二十碗顏色各異的妖菜排成兩排，每一碗後面坐著一個人或一隻妖，俯拍。",
+      "glamour_shot": "寧昭按住青梧的手的那一格，太子令的玉光與灶火的橘光在兩隻手上交疊。",
+      "setups": [],
+      "payoffs": [
+        "s03-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "寧昭的決定：親手開殿門",
+        "壽宴夜的分工定案",
+        "拿到御膳司二十口鍋的位置圖"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "ning-zhao",
+        "shan-shi",
+        "hu-niangzi",
+        "yuan-niang",
+        "gui-bing",
+        "shan-jun",
+        "xiao-chengji",
+        "douzi"
+      ],
+      "locations": [
+        "小食鋪"
+      ],
+      "state": {
+        "time": "壽宴前三日",
+        "knowledge": "二十口鍋的位置；墨在暗中幫",
+        "carry_forward": "墨的動機；壽宴"
+      }
+    },
+    {
+      "number": 173,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "少一碗",
+      "youtube_title": "壽宴前夜御膳司符火全亮白得像雪，她一夜煮二十碗，嚐最後一口時忘了「媽媽」後面接什麼",
+      "duration_s": 105,
+      "logline": "壽宴前夜，青梧一夜煮完二十碗借能力的菜；豆子發現少了一碗，而她嚐最後一口時，離只剩一樣味道更近了一步。",
+      "hook": "壽宴前夜，御膳司的符火全亮，整座院白得像落了雪。",
+      "hook_type": "image",
+      "mid_hook": "豆子數碗：「少一碗。」——沒有阿滿的那一碗。青梧把〈半碗飯〉的最後一口倒進一只空碗，蓋上。",
+      "extra_hooks": [
+        "寧昭進殿陪父親守夜，皇帝摸他的頭：「明日，坐朕旁邊。」"
+      ],
+      "conflict": "一夜煮二十碗，每一碗的能力都要在明晚用掉；她自己卻越煮越空。",
+      "turn": "大家以為二十碗夠，少的那一碗才是明晚的關鍵。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她煮完最後一碗嚐了一口，忽然想不起「媽媽」兩個字後面接什麼——她只剩最後一樣味道。",
+        "question": "她還能記得多久？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "meishi",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "御膳司一院符火全亮的全景，對面小食鋪只有一盞灶火，兩種光在街心相接。",
+      "glamour_shot": "青梧一夜掄鍋翻刀的蒙太奇，最後一碗端起時她的手停在半空，灶火映著她空掉的眼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二十碗借能力的菜煮齊",
+        "寧昭確認壽宴座位：皇帝身邊"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "douzi",
+        "ning-zhao",
+        "ning-xuan",
+        "xiao-chengji",
+        "yuan-niang"
+      ],
+      "locations": [
+        "小食鋪灶房",
+        "大殿"
+      ],
+      "state": {
+        "time": "壽宴前夜",
+        "knowledge": "二十碗齊了；她只剩最後一樣味道",
+        "carry_forward": "壽宴"
+      }
+    },
+    {
+      "number": 174,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "壽宴鐘響",
+      "youtube_title": "狐妖化成皇后走進大殿，三百鬼兵列陣外牆，虎妖推開御膳司大門——院裡只有鍋，一個人都沒有",
+      "duration_s": 105,
+      "logline": "壽宴鐘響，二十個人妖各就各位；青梧帶人闖進御膳司，院裡二十口鍋排好、符火圈起，裴無咎坐在最深處等她。",
+      "hook": "壽宴鐘響，狐娘子化成皇后的樣子走進大殿，身後的影子多了三條尾。",
+      "hook_type": "image",
+      "mid_hook": "山君一掌推開御膳司大門——院裡只有鍋與符火，一個膳官都沒有。",
+      "extra_hooks": [
+        "大殿裡鄭衡的位子空著，無人問。"
+      ],
+      "conflict": "闖進一座不設防的御膳司，比闖一座設防的更危險。",
+      "turn": "大家以為御膳司有守，它把所有人撤了，只留鍋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "二十口鍋排在院中，符火圍成一圈，裴無咎坐在最深處一張椅上，手套放在膝上：「來了。開吧。」符火圈升高。",
+        "question": "她敢在符火裡掀鍋嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "henla",
+        "zhiguai"
+      ],
+      "spectacle": "壽宴夜御膳司二十口鍋排成一圈，慘白符火圍成一道牆，裴無咎坐在圈心。",
+      "glamour_shot": "狐娘子化作皇后走過殿門，鳳冠下她的鳳眼一挑，影子裡三條尾一閃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二十個人妖全數到位",
+        "御膳司大門打開"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "hu-niangzi",
+        "shan-jun",
+        "gui-bing",
+        "pei-wujiu",
+        "ning-zhao",
+        "xiao-chengji",
+        "yuan-niang",
+        "s03-bai-zhi"
+      ],
+      "locations": [
+        "大殿",
+        "御膳司"
+      ],
+      "state": {
+        "time": "壽宴夜",
+        "knowledge": "御膳司撤人留鍋；裴無咎等她",
+        "carry_forward": "符火圈"
+      }
+    },
+    {
+      "number": 175,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "火不燒她",
+      "youtube_title": "她踏進符火圈腳下火不燒——女膳官在圈外改了符；第三口鍋掀開不是妖，是一碗給她的羹",
+      "duration_s": 105,
+      "logline": "青梧踏進符火圈，火不燒她，是白芷改的符；她掀開第一、第二口鍋寫下兩道菜，第三口鍋裡卻是裴無咎給她的一碗羹。",
+      "hook": "青梧一腳踏進符火圈，火從她腳邊矮下去——不燒。圈外白芷的手上沾滿符灰。",
+      "hook_type": "image",
+      "mid_hook": "第一口鍋掀開，蒸氣裡浮出一張妖臉，散成氣落進碗，食單第五十一道；第二口鍋，第五十二道。",
+      "extra_hooks": [
+        "墨站在牆頭看著，長勺沒舉。"
+      ],
+      "conflict": "二十口鍋一口一口掀，裴無咎坐著看；每一口都可能不是妖。",
+      "turn": "大家以為白芷逃了，她留在御膳司改符；大家以為鍋裡全是妖，第三口是一碗羹。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第三口鍋掀開，裡面不是妖，是一碗羹。裴無咎：「這口，給妳。」她的手停在鍋沿。",
+        "question": "她會喝那碗羹嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "dalian",
+        "shengji"
+      ],
+      "spectacle": "符火圈在青梧腳下一寸寸矮下去，她走過的地方留下一條沒有火的路。",
+      "glamour_shot": "白芷在圈外用符灰改符，手指發黑，抬頭看青梧走進去時，第一次笑了。",
+      "setups": [],
+      "payoffs": [
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第五十一、五十二道：〈鶴影羹〉（雪白）、〈鐵鈴飯〉（鐵灰）",
+        "白芷倒戈成真：改符護她"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-bai-zhi",
+        "pei-wujiu",
+        "shan-shi",
+        "shan-jun",
+        "gui-bing"
+      ],
+      "locations": [
+        "御膳司"
+      ],
+      "state": {
+        "time": "壽宴夜",
+        "knowledge": "白芷改了符；裴無咎在鍋裡放了一碗羹給她",
+        "carry_forward": "那碗羹"
+      }
+    },
+    {
+      "number": 176,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "我不吃人煮的妖",
+      "youtube_title": "她把羹倒在地上一口接一口掀鍋，怨娘讓三百年除妖榜的空格全浮出名字；殿裡皇帝停筷：皇后妳有股味",
+      "duration_s": 110,
+      "logline": "青梧倒掉羹，一口接一口掀鍋，怨娘讓三百年除妖榜的空名欄全浮出字；大殿裡，皇帝聞出了皇后身上的妖味。",
+      "hook": "青梧把那碗羹倒在地上，影子縮了一下；她看著裴無咎：「我不吃人煉的妖。」",
+      "hook_type": "line",
+      "mid_hook": "怨娘的手按在除妖榜上，三百年的空名欄一格一格浮出字——滿牆的妖名同時亮起。",
+      "extra_hooks": [
+        "大殿裡狐娘子化的皇后替皇帝布菜，皇帝的影子嘴停了一瞬——它聞出妖。"
+      ],
+      "conflict": "院裡掀鍋、殿裡穩住皇帝，兩頭一頭都不能先破。",
+      "turn": "大家以為掀鍋是戰，鍋裡的妖聽見名字自己飄出來。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "殿裡皇帝停筷：「皇后，妳今日有股味。」他身邊影子的嘴慢慢轉向狐娘子。",
+        "question": "狐娘子會被識破嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "dalian",
+        "zhiguai"
+      ],
+      "spectacle": "除妖榜整面牆三百年的空格同時浮出妖名，淡金的字一排排亮起，照亮一院鐵鍋。",
+      "glamour_shot": "怨娘的手按在榜上，濕過的長髮早已乾了，素紅短衣在金光裡，她第一次抬頭笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第五十三至五十七道：〈紙鶯凍〉（淺粉）、〈灶君粥〉（焦糖）、〈瓦貓羹〉（青灰）、〈夜雀酥〉（深褐）、〈井螢湯〉（螢綠）",
+        "除妖榜三百年的名字全部浮出"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "yuan-niang",
+        "hu-niangzi",
+        "ning-xuan",
+        "pei-wujiu",
+        "shan-jun",
+        "gui-bing"
+      ],
+      "locations": [
+        "御膳司",
+        "大殿"
+      ],
+      "state": {
+        "time": "壽宴夜",
+        "knowledge": "除妖榜的名字全出；皇帝聞出妖味",
+        "carry_forward": "狐娘子"
+      }
+    },
+    {
+      "number": 177,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "引在桌上",
+      "youtube_title": "狐妖舉杯說「臣妾吃了妖」皇帝竟笑了；虎妖扛出最小那口鍋——是空的，阿滿坐在皇帝桌旁",
+      "duration_s": 105,
+      "logline": "狐娘子一句話騙過饕；山君扛出最小那口鍋卻是空的；裴無咎站起來指向大殿：引，當然在桌上。",
+      "hook": "狐娘子笑著舉杯：「臣妾吃了妖。」皇帝笑了，影子的嘴合上。",
+      "hook_type": "line",
+      "mid_hook": "寧昭在席上看見父親的影子一口吞掉一盤菜，盤子空了，父親的筷子沒動。",
+      "extra_hooks": [
+        "山君從殿側扛出最小那口鍋——鍋是空的，只剩一條紅布條。"
+      ],
+      "conflict": "阿滿不在鍋裡，壽宴快散，青梧要在開火之前找到他。",
+      "turn": "大家以為阿滿在鍋裡，鍋是空的——引不在御膳司。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "裴無咎從椅上站起，指向大殿：「引，當然在桌上。」大殿正中皇帝的桌旁多了一張小凳，阿滿坐在上面，面前一碗羹。",
+        "question": "阿滿在皇帝桌上？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "henla",
+        "zhiguai"
+      ],
+      "spectacle": "大殿正中：皇帝的龍桌旁一張小凳，半透明的小孩坐在上面，面前一碗深色的羹，滿朝文武沒人看他。",
+      "glamour_shot": "狐娘子舉杯時鳳冠的珠串垂在眉心硃砂旁，她笑得像在賞月。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第五十八道〈空鍋氣〉（透明）——最小那口鍋裡阿滿留下的餓",
+        "狐娘子穩住了饕"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "hu-niangzi",
+        "ning-xuan",
+        "ning-zhao",
+        "shan-jun",
+        "pei-wujiu",
+        "e-gui"
+      ],
+      "locations": [
+        "大殿",
+        "御膳司"
+      ],
+      "state": {
+        "time": "壽宴夜",
+        "knowledge": "阿滿在皇帝桌旁，面前一碗羹",
+        "carry_forward": "進殿"
+      }
+    },
+    {
+      "number": 178,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "阿滿，吃",
+      "youtube_title": "她提著鍋走進大殿滿朝停筷，當著皇帝把阿滿面前的羹換成一碗白飯；皇帝推開十二道菜：煮一碗給朕",
+      "duration_s": 110,
+      "logline": "青梧提著鍋走進大殿，當著皇帝把阿滿面前的羹換成白飯，阿滿餓回來了；皇帝卻推開十二道菜，要她也煮一碗。",
+      "hook": "青梧提著鍋走進大殿，滿朝文武的筷子同時停住。",
+      "hook_type": "image",
+      "mid_hook": "她端走阿滿面前的羹，放上一碗白飯：「阿滿，吃。」阿滿咬了一口，抬頭：「姐姐，我餓。」",
+      "extra_hooks": [
+        "殿門外鬼兵長一字一頓喊三百個名字，殿裡的燭影一盞一盞穩住，不再張嘴。"
+      ],
+      "conflict": "在饕面前把它的引餵回一個會餓的孩子，然後活著帶他走。",
+      "turn": "大家以為皇帝會怒，他笑著看她：「廚娘，朕也餓。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "皇帝推開面前十二道菜：「煮一碗給朕。」整殿安靜；殿門口裴無咎低聲：「別煮。」",
+        "question": "她會為皇帝煮嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "ganren",
+        "meishi"
+      ],
+      "spectacle": "大殿全景：滿朝文武停筷，殿中一個廚娘提鍋站在龍桌前，龍桌旁的小孩捧著一碗白飯。",
+      "glamour_shot": "青梧盛白飯時低頭，額前碎髮垂下，她把碗推到阿滿面前時眼尾笑出一點光。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿滿餓回來了，不再是引",
+        "食單第五十九道〈小紅布〉（紅）——阿滿吃回自己的餓，寫下的那道",
+        "鬼兵長在殿外喊名穩住影子"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "e-gui",
+        "ning-xuan",
+        "ning-zhao",
+        "pei-wujiu",
+        "gui-bing",
+        "hu-niangzi",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "大殿"
+      ],
+      "state": {
+        "time": "壽宴夜",
+        "knowledge": "阿滿餓回來了；皇帝要她煮",
+        "carry_forward": "煮不煮"
+      }
+    },
+    {
+      "number": 179,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "你不餓，你是饞",
+      "youtube_title": "她當著滿朝對皇帝搖頭：你不餓，你是饞；第六十道菜收了一隻殘，皇帝站起身影子沒跟著站",
+      "duration_s": 110,
+      "logline": "青梧拒絕為皇帝煮，卻把阿滿碗裡剩的半碗餵給那隻阿滿聲音的殘——第六十道菜收了一隻殘；皇帝站起身，影子自己立了起來。",
+      "hook": "青梧對皇帝搖頭：「你不餓，你是饞。」滿殿倒抽一口氣。",
+      "hook_type": "line",
+      "mid_hook": "阿滿聲音的殘走到她腳邊，她把阿滿碗裡剩的半碗餵它——殘變回一團氣落進碗裡，食單寫下第六十道〈殘羹〉。",
+      "extra_hooks": [
+        "殿外廣場，成群的殘從井口往上爬，山君與鬼兵擋在殿前台階。",
+        "寧昭站到父親與青梧之間：「父皇，您的影子在動。」"
+      ],
+      "conflict": "拒絕饕、收一隻殘、擋住殿外的殘群，三件事同一刻。",
+      "turn": "大家以為殘不能收，第六十道菜收了一隻殘。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "皇帝站起來，影子沒站——影子從龍椅上自己慢慢立起，比殿柱還高，嘴先張開。寧昭看見了，整殿的人都看見了。",
+        "question": "皇帝要現形了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhandou",
+        "henla",
+        "shengji"
+      ],
+      "spectacle": "龍椅上皇帝站起，牆上的影子卻比人慢半拍自己立起，一路長到殿柱頂，一張嘴在最上面張開。",
+      "glamour_shot": "青梧端著全黑帶一點金的〈殘羹〉抬眼看龍椅，灶灰的臉在滿殿燭光裡一動不動。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第六十道〈殘羹〉（全黑帶金）——第一隻被請上桌的殘",
+        "殘能被餵飽的方法：吃它吞過的那個人的飯",
+        "寧昭第一次當眾站到父親對面"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "s03-can-yi",
+        "e-gui",
+        "ning-xuan",
+        "ning-zhao",
+        "pei-wujiu",
+        "shan-jun",
+        "gui-bing",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "大殿",
+        "殿前廣場"
+      ],
+      "state": {
+        "time": "壽宴夜將盡",
+        "knowledge": "殘能被收；皇帝的影子自己動了",
+        "carry_forward": "影子立起"
+      }
+    },
+    {
+      "number": 180,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "妳煮一碗給我",
+      "youtube_title": "御膳司二十口鍋全開，司正摘下白手套露出焦黑的手：「妳煮一碗給我」，皇帝的影子張開比臉大的嘴",
+      "duration_s": 150,
+      "logline": "裴無咎掀開最後一口鍋把符火全滅，大殿的影子退回椅上；他走到青梧面前摘下手套；他身後，皇帝站起來，影子張開了嘴。",
+      "hook": "影子的嘴停在半空——殿門口裴無咎拍了一下手：「陛下，羹好了。」影子緩緩合上。",
+      "hook_type": "reversal",
+      "mid_hook": "御膳司最後一口鍋「咔」地開了，符火全滅；皇帝坐回龍椅笑道：「壽宴散。」寧昭沒動，他盯著父親的影子。",
+      "extra_hooks": [
+        "殿外廣場上成群的殘停住，全部轉頭對著大殿。",
+        "阿滿從青梧懷裡探頭看裴無咎，小聲說：「他也餓。」"
+      ],
+      "conflict": "御膳司的鍋全開了、阿滿救回了，可壽宴散不了：裴無咎有一件事要求她，皇帝的影子有一件事要做。",
+      "turn": "大家以為裴無咎是來替皇帝收場，他是來向她求一碗。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "御膳司的鐵鍋全開，裴無咎摘下手套，露出一雙焦黑沒有指甲的手：「妳煮一碗給我。」身後的大殿裡，皇帝站起身，他的影子張開一張比臉還大的嘴。",
+        "question": "她會煮給裴無咎嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "henla",
+        "dalian",
+        "huoban"
+      ],
+      "spectacle": "御膳司二十口鍋同時空開、符火一盞不剩；大殿裡皇帝起身，牆上影子張開一張比臉大的嘴，殿外成群的殘同時轉頭。",
+      "glamour_shot": "裴無咎摘手套的特寫：白絹一寸寸褪下，露出焦黑的手，他抬眼看青梧時第一次沒有笑。",
+      "setups": [],
+      "payoffs": [
+        "s03-t14",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "御膳司二十口鍋全開，妖全數請出",
+        "阿滿救回",
+        "皇帝的影子當眾現形，寧昭知道了父親身體裡坐著饕",
+        "裴無咎的手套下是一雙焦黑沒有指甲的手"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "pei-wujiu",
+        "ning-xuan",
+        "ning-zhao",
+        "e-gui",
+        "hu-niangzi",
+        "shan-jun",
+        "gui-bing",
+        "yuan-niang",
+        "xiao-chengji",
+        "douzi",
+        "s03-bai-zhi",
+        "shan-shi"
+      ],
+      "locations": [
+        "御膳司",
+        "大殿",
+        "殿前廣場"
+      ],
+      "state": {
+        "time": "壽宴夜盡，天將明",
+        "knowledge": "饕坐在龍椅上現形；裴無咎求她煮一碗；殘成群往皇都爬",
+        "carry_forward": "煮不煮給裴無咎；北荒"
+      }
+    }
+  ]
+}

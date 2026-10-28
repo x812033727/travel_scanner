@@ -1,14 +1,14 @@
 ---
 id: 2026-10-28-top40-2025-03-shengxia-fendela
 title: Top40 drama plan 2025-03: adapt the pattern of 盛夏芬德拉 into a 300-episode original
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude
+claimed_at: 2026-10-28T15:00:25Z
 created_at: 2026-10-28T14:03:00Z
 completed_at:
-branch:
+branch: claude/confident-galileo-vfq0j3
 depends_on: []
 scope:
   - docs/videos/series-plans/top40-2025-2026/2025-03-shengxia-fendela

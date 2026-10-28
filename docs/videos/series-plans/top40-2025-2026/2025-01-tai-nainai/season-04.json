@@ -1,0 +1,4701 @@
+{
+  "number": 4,
+  "title": "百年前的火",
+  "theme": "有些帳，一百年都不會過期。",
+  "start_state": "顧承霖走到明面，手上戴著第三枚銀印；周懷安發現自己只是顧家的刀；二房被盛通甩開後走投無路。沈月棠知道了燈有兩盞，知道了山上有誰。",
+  "end_state": "三枚銀印的下落全部揭開；周懷安的身世與動機揭開並反咬顧家；一百年前的大火真相當眾揭開：顧遠山縱火、沈作甫為抱燈而死。二房在家宴上跪回祠堂，沈知行正式回家。但顧承霖吹燈：祠堂的長明燈在最後一集被吹到只剩豆大的一點，沈月棠在一夜之間滿頭白髮。",
+  "guest_cast": [
+    {
+      "id": "s04-qin-guanshi",
+      "name": "秦管事（秦崇）",
+      "role": "顧氏藏館管事，顧承霖在山下的手與嘴，收藏合約、收債清單、文資公文都由他送",
+      "appearance": "東亞中年男性，五十五歲，清瘦斯文：高額、細長眼、嘴角永遠帶著禮貌的笑，灰白短髮梳得服貼，穿墨綠色立領中式外套、黑皮鞋，手裡拿一本黑皮收藏簿"
+    },
+    {
+      "id": "s04-du-lao",
+      "name": "杜老（杜懷清）",
+      "role": "臨江藥行公會老會長，八十四歲，守著一百年的公會老帳與沈作甫的遺囑",
+      "appearance": "東亞老人，瘦小、背微駝、白眉長到眼角、戴老花眼鏡，穿深褐色毛背心與白襯衫，袖口有墨漬，說話前先推眼鏡"
+    },
+    {
+      "id": "s04-a-e",
+      "name": "阿娥（黃秀娥）",
+      "role": "老街麵攤的老闆娘，六十二歲，祖母是沈記當年的煮藥工；顧家買下老街債務後第一個動搖、第一個回到飯桌的人",
+      "appearance": "東亞婦人，圓臉、短捲髮、笑紋深，花布圍裙、袖套，手上總有一條擦手的白毛巾，說話大聲卻眼眶容易紅"
+    },
+    {
+      "id": "s04-gao-jingli",
+      "name": "高經理（高志成）",
+      "role": "顧家資本開在知遠藥局對面的『康樂連鎖藥局』店長，四十歲，負責砸價、斷貨與鬧事",
+      "appearance": "東亞中年男性，體面油亮：中分髮、白淨、笑容像業務，淺藍制服襯衫、名牌掛在胸口，手裡轉著一支計算器"
+    },
+    {
+      "id": "s04-cai-laoban",
+      "name": "蔡老闆（蔡金水）",
+      "role": "放高利貸給沈建業的債務公司老闆，五十歲，公司是顧家的殼",
+      "appearance": "東亞中年男性，矮壯、光頭、戴金框墨鏡、黑色 POLO 衫外套西裝，手腕一串佛珠，說話慢、笑聲短"
+    },
+    {
+      "id": "s04-fang-lushi",
+      "name": "方律師（方子謙）",
+      "role": "顧家的首席律師，四十五歲，替顧承霖辦文資處分、收購合約與『請人問話』",
+      "appearance": "東亞男性，高、瘦、冷：方框眼鏡、鬢角剃得極乾淨、深灰窄版西裝、銀色領帶夾，手裡永遠是一只薄薄的黑色公事包"
+    },
+    {
+      "id": "s04-a-jiu",
+      "name": "阿九",
+      "role": "顧家的『手』，三更爬進沈家後院被抓住的人，身上帶著顧遠山筆跡的手令",
+      "appearance": "東亞青年男性，三十歲，精瘦、短髮、眼神躲閃，深色連帽外套、黑色工作手套，背一只舊帆布工具袋"
+    },
+    {
+      "id": "s04-zhou-shouren",
+      "name": "周守仁（回憶／照片）",
+      "role": "周懷安的父親，老城區『周記元記鹽行』的老闆，三十多年前被顧家用假帳吞掉店，只在照片、回憶與招牌上出現",
+      "appearance": "東亞中年男性（照片中），四十歲，敦厚方臉、短髮、白汗衫外罩深藍工作外套，站在鹽行門口抱著一個小男孩，笑得很憨"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "周懷安父親的店為什麼被顧家吞？",
+      "setup_episode": 2,
+      "payoff_episode": 12
+    },
+    {
+      "id": "s04-t02",
+      "question": "顧承霖要沈記的哪一樣文物？",
+      "setup_episode": 1,
+      "payoff_episode": 7
+    },
+    {
+      "id": "s04-t03",
+      "question": "二房現在在哪？",
+      "setup_episode": 3,
+      "payoff_episode": 8
+    },
+    {
+      "id": "s04-t04",
+      "question": "周懷安真的會倒戈嗎？",
+      "setup_episode": 7,
+      "payoff_episode": 53
+    },
+    {
+      "id": "s04-t05",
+      "question": "老街的地契為什麼一百年沒人動過？",
+      "setup_episode": 14,
+      "payoff_episode": 15
+    },
+    {
+      "id": "s04-t06",
+      "question": "第三枚銀印開的是什麼？",
+      "setup_episode": 16,
+      "payoff_episode": 49
+    },
+    {
+      "id": "s04-t07",
+      "question": "老街誰會第一個賣？",
+      "setup_episode": 21,
+      "payoff_episode": 30
+    },
+    {
+      "id": "s04-t08",
+      "question": "燈還能撐幾天？",
+      "setup_episode": 23,
+      "payoff_episode": 27
+    },
+    {
+      "id": "s04-t09",
+      "question": "顧家下一刀砍誰？",
+      "setup_episode": 21,
+      "payoff_episode": 26
+    },
+    {
+      "id": "s04-t10",
+      "question": "林美鳳會不會跨進祠堂？",
+      "setup_episode": 33,
+      "payoff_episode": 40
+    },
+    {
+      "id": "s04-t11",
+      "question": "沈建業知道父親挖金條的事嗎？",
+      "setup_episode": 32,
+      "payoff_episode": 34
+    },
+    {
+      "id": "s04-t12",
+      "question": "顧承霖放走林美鳳是為了什麼？",
+      "setup_episode": 33,
+      "payoff_episode": 44
+    },
+    {
+      "id": "s04-t13",
+      "question": "顧遠山為什麼肯說？",
+      "setup_episode": 30,
+      "payoff_episode": 49
+    },
+    {
+      "id": "s04-t14",
+      "question": "沈作甫最後抱著燈走到哪？",
+      "setup_episode": 41,
+      "payoff_episode": 50
+    },
+    {
+      "id": "s04-t15",
+      "question": "顧遠山的燈還能亮多久？",
+      "setup_episode": 46,
+      "payoff_episode": 52
+    },
+    {
+      "id": "s04-t16",
+      "question": "燈油倒掉了，燈還能亮嗎？",
+      "setup_episode": 51,
+      "payoff_episode": 57
+    },
+    {
+      "id": "s04-t17",
+      "question": "顧遠山的燈怎麼了？",
+      "setup_episode": 52,
+      "payoff_episode": 59
+    },
+    {
+      "id": "s04-t18",
+      "question": "她還能站多久？",
+      "setup_episode": 55,
+      "payoff_episode": 60
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "這印，我丈夫的",
+      "youtube_title": "仇家把亡夫的銀印戴在手上伸過來，十八歲的祖奶奶當眾只說五個字",
+      "duration_s": 110,
+      "logline": "沈月棠要在新藥發表會上不握顧承霖的手又不翻桌，卻被他當眾一筆一億的捐款逼進死角。",
+      "hook": "發表會的掌聲裡，顧承霖的手停在她面前，戒指上的銀印正對鏡頭；她看了三秒：「這印，我丈夫的。」",
+      "hook_type": "line",
+      "mid_hook": "顧承霖上台宣布捐一億給沈記新藥研發，條件只有一個：顧氏藏館『收藏』沈記的百年文物——全場鼓掌，沈建邦站起來鞠了躬。",
+      "extra_hooks": [
+        "台下的周懷安第一次沒笑，他的手機跳出一條沒有署名的訊息：『你的也差不多了。』"
+      ],
+      "conflict": "當眾拒絕一億捐款會被罵不識大體，接受就是把文物送進仇家的藏館。",
+      "turn": "她沒拒絕也沒答應，她上台把話筒拿過來：「文物在老宅，請顧先生親自來看。」把顧承霖請進沈家的地盤。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "深夜老宅祠堂，福伯守著長明燈；燈焰無風自己朝門口歪了一下，福伯回頭——門關著，沒有人。",
+        "question": "燈為什麼自己晃？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "henla",
+        "xuanyi",
+        "shangzhan"
+      ],
+      "spectacle": "發表會大螢幕上她十八歲的側臉與顧承霖戒指上的銀印同框特寫，全場的手機同時舉起。",
+      "glamour_shot": "沈月棠素色改良旗袍洋裝，在聚光燈下回頭看顧承霖，杏眼一沉、交疊在腹前的手沒有動。",
+      "setups": [
+        "s04-t02",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧承霖的『收藏』被她改成『上門來看』，第一回合把主場拉回老宅",
+        "周懷安第一次收到顧家對他本人的警告"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "zhou-huaian",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "fu-bo",
+        "lin-dao"
+      ],
+      "locations": [
+        "沈記新藥發表會會場",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "新藥發表會當夜",
+        "knowledge": "她知道第三枚銀印在顧承霖手上、知道山上是誰，不知道顧承霖要哪件文物",
+        "carry_forward": "無風自晃的燈焰；顧承霖下週上門"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "一億的信",
+      "youtube_title": "祠堂的燈一夜歪了三次，她翻開孫子的抽屜才知道誰先把家賣了一角",
+      "duration_s": 100,
+      "logline": "沈月棠要找出燈焰歪斜的原因，卻在家主的抽屜裡找到一封已經簽了名的收藏意向書。",
+      "hook": "福伯伸手探燈，燭火燙了他的手背；他抬頭看牆上的全家照，沈建邦那一格歪了。",
+      "hook_type": "image",
+      "mid_hook": "沈建邦書房的抽屜裡，一封顧氏藏館的收藏意向書已經簽了名——昨晚發表會一散場他就簽了。",
+      "extra_hooks": [
+        "小滿在學校被同學圍著看手機，新聞標題寫著『沈家接受顧氏一億』：「妳家把祖宗賣了？」"
+      ],
+      "conflict": "燈暗一分的原因在家裡；建邦簽了意向書，她得讓他自己撕，而不是替他撕。",
+      "turn": "她不罵建邦，她把他帶進祠堂讓他看燈：他昨晚簽字那一刻燈歪了一下——他第一次親眼看見燈跟著他的心走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "建邦撕信的時候，信封裡掉出第二張紙：顧氏藏館已收藏的清單，第一行寫著『周記元記鹽行招牌』。",
+        "question": "周記是誰家的店？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "祠堂裡燈焰在建邦撕信的一瞬間直了回來，牆上一百年的祖先照片被光一排排照亮。",
+      "glamour_shot": "沈月棠在燭光裡側臉看燈，一縷白髮從麻花辮裡滑出來，她抬手慢慢把它別回去。",
+      "setups": [
+        "s04-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "建邦親手撕掉收藏意向書，燈直回來一分",
+        "小滿第一次在同學面前說『我家沒賣』"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "fu-bo",
+        "shen-jianbang",
+        "shen-xiaoman",
+        "shen-yuqin"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈建邦的書房",
+        "小滿的高中走廊"
+      ],
+      "state": {
+        "time": "發表會後第一天",
+        "knowledge": "她知道燈跟著建邦的心晃；知道顧家收藏過一家叫周記的鹽行",
+        "carry_forward": "『周記元記』四個字"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "空掛鉤",
+      "youtube_title": "她把收藏清單拍在收購大王的桌上問一句，對方牆上那個空掛鉤先出了聲",
+      "duration_s": 105,
+      "logline": "沈月棠要從周懷安嘴裡問出周記是誰的店，顧承霖卻比約定早一週站到了老宅門口。",
+      "hook": "她把那張清單拍在周懷安的辦公桌上：「周記，你家的？」周懷安的手停在茶杯上。",
+      "hook_type": "question",
+      "mid_hook": "二房的辦公室空了，沈建業的金錶被當掉——沈知行在當鋪櫃檯裡看見它。",
+      "extra_hooks": [
+        "顧承霖的黑車停在老宅門口，比約定早了一週，秦管事下車對福伯鞠了一個深到腰的躬。"
+      ],
+      "conflict": "周懷安不肯承認，顧承霖提前上門，她得同時應付兩個不說實話的人。",
+      "turn": "周懷安說周記早就沒了；她卻看出他辦公室那面收購來的招牌牆上，正中央留著一個空掛鉤——她問：「這裡等哪一塊？」他走到門口才說：「鹽行。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老宅門口，顧承霖提著一盒點心下車；福伯站在門內，手按在門板上。她在身後說：「開門。」",
+        "question": "她為什麼讓仇家進門？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "盛通頂樓一整面牆的老招牌，鏡頭推到正中央那個空掛鉤，鉤上只掛著一片影子。",
+      "glamour_shot": "周懷安在落地窗前背光站著，鬢角修得極齊，說出『鹽行』兩個字時才第一次轉過臉。",
+      "setups": [
+        "s04-t03"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周懷安說溜了嘴：他父親的店是鹽行",
+        "沈知行找到父親當掉的金錶，知道二房在躲債"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "zhou-huaian",
+        "shen-zhixing",
+        "gu-chenglin",
+        "s04-qin-guanshi",
+        "fu-bo"
+      ],
+      "locations": [
+        "盛通集團頂樓辦公室",
+        "老城區當鋪",
+        "沈家老宅大門"
+      ],
+      "state": {
+        "time": "發表會後第三天",
+        "knowledge": "她知道周懷安的父親開過鹽行，知道二房在躲債",
+        "carry_forward": "顧承霖跨進沈家門檻"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "請喝茶",
+      "youtube_title": "仇家登門看文物，福伯端的那杯茶讓他笑不出來，一個空抽屜更讓她手發抖",
+      "duration_s": 115,
+      "logline": "沈月棠要讓顧承霖看完老宅卻看不出燈的虛實，他卻一開口就點中一百年前的一個空抽屜。",
+      "hook": "顧承霖跨過門檻，抬頭看第一進的老藥櫃，笑：「一百年了，還在。」她：「人也在。」",
+      "hook_type": "line",
+      "mid_hook": "顧承霖走到祠堂門口不進去，隔著門檻看燈；燈焰又歪了一下——這次福伯看清楚，是朝著顧承霖。",
+      "extra_hooks": [
+        "玉琴的輪椅忽然推過來擋在祠堂門口，她抬頭看顧承霖：「你像一個人。」"
+      ],
+      "conflict": "顧承霖『看文物』其實是在數老宅裡有幾個人真心、燈有多亮；她得讓他看不出燈的虛實。",
+      "turn": "她以為他會要燈，他卻停在藥櫃前，指著第三排第七個抽屜：「這個。」裡面是空的——一百年前裝沈作甫藥包的抽屜。他知道的比她想的多。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧承霖走出門，回頭：「老太爺說，他記得妳的辮子。」她的手握住門框，沒有回話。",
+        "question": "顧遠山記得她什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "她一隻手在老藥櫃上一抽一合，三十個抽屜同時歸位，只有第三排第七個停在半開。",
+      "glamour_shot": "顧承霖黑色立領長外套站在暖黃的老宅裡，像一道影子；燭光只描出他桃花眼的輪廓。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "福伯用待客的殘杯奉茶，顧承霖喝了一口才認出這是老規矩裡給仇人的茶",
+        "她確認顧承霖知道沈作甫的事，知道燈會朝他歪"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "fu-bo",
+        "shen-yuqin",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "沈家老宅第一進藥行舊門面",
+        "沈家老宅祠堂門口"
+      ],
+      "state": {
+        "time": "顧承霖登門當天",
+        "knowledge": "她知道顧承霖認得那個抽屜；知道顧遠山記得她年輕的樣子",
+        "carry_forward": "顧遠山的那句話；周懷安的鹽行"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "鹽行的照片",
+      "youtube_title": "收購大王翻出童年照片，背面竟印著仇家的收藏編號，董事會同時要罷免他",
+      "duration_s": 100,
+      "logline": "周懷安要在被架空前弄清顧家為什麼盯上他，沈月棠要在公會老帳被顧家收走前翻到那家鹽行。",
+      "hook": "周懷安打開父親的舊相簿，一張泛黃照片：鹽行門口站著一個小男孩——他翻過照片，背面蓋著顧氏藏館的收藏編號。",
+      "hook_type": "image",
+      "mid_hook": "盛通董事會上兩位董事同時提案罷免周懷安——兩位都是顧家去年才推進董事會的人。",
+      "conflict": "周懷安發現自己正被顧家拆掉；她得在他垮掉前拿到他父親那家店的證據。",
+      "turn": "周懷安原以為顧家會等沈記拆完再處理他，兩位董事的提案說明顧家現在就動手：他跟沈記，是同一刀的兩面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "公會帳房外一輛黑車停下，秦管事下車對杜老鞠躬：「顧家想收藏公會的老帳。」杜老的手壓在帳本上。",
+        "question": "老帳會被顧家先拿走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "藥行公會的老帳房：從地板到天花板的帳冊牆，杜老爬上木梯抽出三十多年前那一本，灰在光裡飄。",
+      "glamour_shot": "周懷安在董事會長桌盡頭坐著，深灰三件式西裝，把兩位董事的持股明細推過去時，薄唇一抿。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "周懷安當場亮出兩位董事的顧家持股，罷免案暫緩",
+        "她在公會老帳裡找到『周記元記鹽行』最後一筆會費，三個月後被併購"
+      ],
+      "characters": [
+        "zhou-huaian",
+        "shen-yuetang",
+        "s04-du-lao",
+        "s04-qin-guanshi",
+        "s04-zhou-shouren"
+      ],
+      "locations": [
+        "盛通集團董事會",
+        "周懷安的辦公室",
+        "臨江藥行公會老帳房"
+      ],
+      "state": {
+        "time": "顧承霖登門後兩天",
+        "knowledge": "她知道周記元記鹽行被併購的年份；周懷安知道自己正在被拆",
+        "carry_forward": "秦管事要收走老帳"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "一千二百頁",
+      "youtube_title": "顧家買下公會整棟樓要收老帳，她把一千二百頁藏進一個誰都不敢搜的地方",
+      "duration_s": 105,
+      "logline": "沈月棠要在顧家搬空公會前保住老帳，顧家的人卻帶著整棟樓的買賣契約直接進門。",
+      "hook": "杜老把帳本抱進懷裡：「這帳，沈家小姑娘先來的。」秦管事笑著遞出一張紙：公會這棟房子，顧家上個月買下了。",
+      "hook_type": "reversal",
+      "mid_hook": "她把老帳搬進知遠的藥局，蘇曉用電子錶計時，倒數三十分鐘逐頁拍照——顧家的人半小時後就會上門。",
+      "extra_hooks": [
+        "小滿發現何曉陽轉學了，轉去顧家資助的私校；臨走塞給她一句：「別讓妳姐上山。」"
+      ],
+      "conflict": "顧家買下公會的房子要連帳一起『收藏』；她得在搬家前把帳保住。",
+      "turn": "顧家的人進藥局搜，帳本不在藥櫃裡——在玉琴的輪椅坐墊下；玉琴推著輪椅在藥局門口曬太陽，對秦管事說：「你也像一個人。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "深夜知遠翻到老帳最前面一頁：沈記藥行，繳費人『沈作甫』——同一天的下一行：顧家藥鋪，繳費人『顧遠山』。她的手指停在兩個名字中間。",
+        "question": "兩家一百年前開在同一條街？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "藥局櫃檯上一千二百頁老帳被一頁頁翻過、拍下，手機閃光跟電子錶的倒數聲重疊成一片。",
+      "glamour_shot": "蘇曉短髮俐落、白袍袖子捲起，盯著電子錶倒數時梨渦沒笑，直到最後一頁拍完才笑出來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "一千二百頁老帳全部拍下備份，原本留在沈家手裡",
+        "林導拍到顧家人在藥局無令搜查，網路上第一次有人罵顧家"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "s04-du-lao",
+        "s04-qin-guanshi",
+        "shen-zhiyuan",
+        "su-xiao",
+        "shen-yuqin",
+        "shen-xiaoman",
+        "xiao-he",
+        "lin-dao"
+      ],
+      "locations": [
+        "臨江藥行公會老帳房",
+        "知遠小藥局",
+        "小滿的高中校門"
+      ],
+      "state": {
+        "time": "公會易主當天到深夜",
+        "knowledge": "她知道一百年前顧家藥鋪與沈記同街同日入會",
+        "carry_forward": "並排的兩個名字；何曉陽的『別上山』"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "四個字",
+      "youtube_title": "仇家的收藏清單終於送到只有四個字，銀行同一天抽貸，她赴了一場仇人的茶",
+      "duration_s": 110,
+      "logline": "沈月棠要守住顧承霖點名要的那樣東西，同時保住被抽貸的新藥，只能去赴周懷安的茶。",
+      "hook": "顧承霖的收藏清單送到：一張宣紙，毛筆四個字——『祠堂長明燈』。福伯捧紙的手抖了。",
+      "hook_type": "image",
+      "mid_hook": "沈建邦接到銀行電話：沈記新藥的研發貸款被抽——放款銀行昨天換了大股東，姓顧。",
+      "extra_hooks": [
+        "周懷安約她喝茶，地點是他父親鹽行的舊址，現在是一家咖啡店。"
+      ],
+      "conflict": "顧承霖以一億換燈、銀行抽貸逼建邦點頭；她不能賣燈，也不能看新藥死。",
+      "turn": "她赴茶約不勸周懷安聯手，只問：「你父親的店叫什麼？」他說周記。她說：「不對，老帳上寫『周記元記』——你父親用了他父親的名。」他沒見過那本帳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "周懷安從西裝內袋拿出一枚銀印放在茶桌中間——第二枚。「幫我拿回我父親的招牌，這個給妳。」她沒伸手。",
+        "question": "她會跟仇人的刀聯手嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "咖啡店的落地窗外是老城區的巷子，桌上一枚銀印，兩個對手隔一壺茶的雙人鏡頭。",
+      "glamour_shot": "沈月棠把那張宣紙翻過來，提筆寫下回信四個字『人在燈在』，筆尖停住時燭光掃過她的下顎線。",
+      "setups": [
+        "s04-t04"
+      ],
+      "payoffs": [
+        "s04-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她以四個字『人在燈在』退回收藏清單，顧承霖第一次收到不是『好』的答覆",
+        "周懷安第一次聽見父親店的全名，第一次把銀印拿出來"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "fu-bo",
+        "shen-jianbang",
+        "zhou-huaian",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "沈家老宅大廳",
+        "沈氏集團大樓家主辦公室",
+        "周記鹽行舊址咖啡店"
+      ],
+      "state": {
+        "time": "公會易主後兩天",
+        "knowledge": "她確定顧承霖要的是長明燈；知道第二枚銀印在周懷安手上",
+        "carry_forward": "茶桌上沒人碰的銀印"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "周記元記",
+      "youtube_title": "收購大王終於說出為什麼專吞老字號，而二房一家正躲在汽車旅館裡哭",
+      "duration_s": 120,
+      "logline": "沈月棠要先聽完周懷安的過去再決定碰不碰那枚印，沈知行同時找到了躲債的父母。",
+      "hook": "她把茶杯倒過來蓋在銀印上：「先聽你說。」周懷安看著牆上鹽行的舊照片：「我十歲那年……」",
+      "hook_type": "line",
+      "mid_hook": "沈知行跟著一輛計程車到郊區汽車旅館——林美鳳在房裡哭，沈建業坐在床邊數剩下的現金。",
+      "extra_hooks": [
+        "福伯量燈油：油面降得比平時快，油上浮著一層看不出來處的灰。"
+      ],
+      "conflict": "周懷安說出顧家給他的那條路：替顧家拆完所有老字號就還他父親的招牌，沈記是最後一塊；她要決定信不信一個拆了二十年老店的人。",
+      "turn": "她以為他要的是報仇，他要的只是把那塊招牌掛回去——跟她一樣。「你跟我，要的是同一樣東西。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "咖啡店對街，秦管事的車窗降下，鏡頭對著玻璃後的兩個人；周懷安把銀印收回口袋：「今天我沒見過妳。」",
+        "question": "顧家看見兩人見面了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "回憶：三十多年前的鹽行門口，招牌被兩個工人卸下來，小男孩抱著門柱不放，鹽從麻袋裡流到街上。",
+      "glamour_shot": "沈月棠聽完沒說話，低頭把倒蓋的茶杯扶正，眼神在少女的臉上老了一百年。",
+      "setups": [],
+      "payoffs": [
+        "s04-t03"
+      ],
+      "reveals": [
+        "m06"
+      ],
+      "general_payoffs": [
+        "周懷安的身世與動機說清：父親的店被顧家吞，他替顧家拆店只為換回一塊招牌",
+        "二房的下落找到：郊區汽車旅館，欠債躲著"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "zhou-huaian",
+        "s04-zhou-shouren",
+        "shen-zhixing",
+        "shen-jianye",
+        "lin-meifeng",
+        "fu-bo",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "周記鹽行舊址咖啡店",
+        "郊區汽車旅館",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "茶約當天下午",
+        "knowledge": "她知道周懷安為什麼專吞老字號；知道二房在哪",
+        "carry_forward": "秦管事的鏡頭；燈油上的灰"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "汽車旅館",
+      "youtube_title": "敲開躲債二房的房門，她不救人只問一句金條花哪了，山上的病床卻動了",
+      "duration_s": 105,
+      "logline": "沈月棠要讓躲債的二房自己走回家，顧承霖卻在山上替周懷安備好了一份牛皮袋。",
+      "hook": "汽車旅館的門被敲開，站在門口的不是債主，是沈月棠；林美鳳的哭聲停了一秒，然後罵：「妳來看笑話？」",
+      "hook_type": "reversal",
+      "mid_hook": "顧承霖在藏館最深處對著一盞燈低聲說：「周懷安見了她。」床上一隻枯手動了一下。",
+      "extra_hooks": [
+        "旅館門外沈建業對兒子吼：「誰讓你帶她來！」沈知行站著不退：「我。」"
+      ],
+      "conflict": "二房欠著高利貸、又被盛通甩開；她不救人、不出錢，只替他們付了旅館的房錢。",
+      "turn": "林美鳳等她開口要什麼，她只留一句：「想回家，自己走回來。」然後走了；沈建業第一次沒有接話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧承霖打開藏館的保險箱，取出一份文件放進牛皮袋，封口寫上『周懷安』；鏡頭掃過封面——『股權收購協議』。",
+        "question": "顧家給周懷安的是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "xuanyi"
+      ],
+      "spectacle": "顧家藏館最深處：一排排老招牌之間一條長廊，盡頭一張病床，床頭一盞與沈家一模一樣的燈。",
+      "glamour_shot": "顧承霖在藏館燈下俯身說話，髮微長紮在後，陰柔俊美的側臉被橘金色燈光描出來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二房第一次被人當面點破『自己走回來』，林美鳳沒能用哭把人趕走",
+        "沈知行在父親面前第一次站到大房這邊"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-zhixing",
+        "gu-chenglin",
+        "gu-yuanshan",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "郊區汽車旅館",
+        "顧氏藏館長廊",
+        "顧遠山的病床"
+      ],
+      "state": {
+        "time": "茶約次日",
+        "knowledge": "她知道二房走投無路；觀眾比她多知道顧家給周懷安備了一份合約",
+        "carry_forward": "寫著周懷安的牛皮袋"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "保險箱",
+      "youtube_title": "等了二十年的父親招牌今晚開箱，保險箱裡卻只有一份收購他自己的合約",
+      "duration_s": 135,
+      "logline": "周懷安要打開顧家給他的保險箱拿回父親的招牌，沈月棠要趕在他開箱前把老帳的真相送到他手上。",
+      "hook": "牛皮袋送到盛通頂樓，秦管事說：「老太爺說，招牌在保險箱裡。」周懷安掌心握著一把鑰匙。",
+      "hook_type": "line",
+      "mid_hook": "她在公會老帳裡找到三十多年前那場併購的簽字人：顧承霖的父親——見證人一欄簽的是江慕白的老師。",
+      "extra_hooks": [
+        "沈建業帶著林美鳳站在老宅門外不進門，福伯把門開了一條縫，沒有再開大。",
+        "燈焰今晚第一次朝屋裡歪——朝著飯桌。"
+      ],
+      "conflict": "周懷安等了二十年的招牌今晚開箱；她要讓他看見真相的時候不是一個人。",
+      "turn": "她把老帳影本送到頂樓；觀眾以為周懷安看完會不開箱，他還是把鑰匙插了進去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "保險箱打開，裡面沒有招牌，一份合約：『盛通集團股權收購協議』，簽名欄已經有顧承霖的字。周懷安盯著那行字，頂樓的燈一盞一盞熄了。",
+        "question": "周懷安會簽，還是會反？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "盛通頂樓全暗，只剩保險箱裡的小燈照著那份合約；窗外整座臨江市的燈火倒映在周懷安的眼睛裡。",
+      "glamour_shot": "周懷安單手撐在保險箱上，高額深眼窩在小燈下像一座雕像，下頷線繃緊到最後一盞燈熄掉。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "杜老當眾把顧家送來的公會收藏合約退回，公會老帳正式交沈家保管",
+        "江慕白的老師簽過顧家的假帳，江慕白第一次主動把這條線交給她"
+      ],
+      "characters": [
+        "zhou-huaian",
+        "s04-qin-guanshi",
+        "shen-yuetang",
+        "s04-du-lao",
+        "jiang-mubai",
+        "shen-jianye",
+        "lin-meifeng",
+        "fu-bo",
+        "gu-chenglin"
+      ],
+      "locations": [
+        "盛通集團頂樓",
+        "臨江藥行公會老帳房",
+        "沈家老宅大門"
+      ],
+      "state": {
+        "time": "開箱之夜",
+        "knowledge": "她知道顧家要拆的不只沈記；周懷安知道顧家從一開始就要他的集團",
+        "carry_forward": "簽名欄上顧承霖的字；門縫外的二房"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "白給的帳",
+      "youtube_title": "頂樓全黑的那一刻她打來電話，一本白給的老帳讓收購大王的筆停在簽名欄上",
+      "duration_s": 100,
+      "logline": "沈月棠要讓周懷安在簽收購合約前看見顧家假帳的全貌，她選擇把證據白給，不談條件。",
+      "hook": "頂樓的燈全暗了，周懷安的手機亮起，是她：「老帳的事，證據我有。」",
+      "hook_type": "line",
+      "mid_hook": "林美鳳在老宅門外站了一夜，福伯把一碗熱粥放在門檻上，退回去把門關了。",
+      "extra_hooks": [
+        "蘇曉教她用手機拍文件，她把手機當印章往紙上壓，蘇曉笑到扶著藥櫃。"
+      ],
+      "conflict": "周懷安要她的證據，她要他拿出假帳的原件，雙方都不想先給。",
+      "turn": "她不談條件，直接把一千二百頁老帳的影本送去盛通，白給；周懷安問為什麼，她說：「帳是公會的，不是我的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "周懷安把收購合約拉到桌前，鋼筆懸在簽名欄上，手機響了——顧承霖：「簽了，招牌今晚送到。」筆尖停住。",
+        "question": "他簽不簽？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "一箱老帳影本在盛通頂樓攤成一地，周懷安跪在地上一頁頁翻，窗外的天從黑到亮。",
+      "glamour_shot": "沈月棠在藥局日光燈下學拍照，皺著眉把手機往紙上壓，少女的臉配一雙認真到可愛的老人家眼睛。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老帳影本進了盛通，周懷安第一次看見兩本帳一支筆的手法",
+        "林美鳳喝了門檻上那碗粥"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "zhou-huaian",
+        "lin-meifeng",
+        "fu-bo",
+        "su-xiao",
+        "gu-chenglin"
+      ],
+      "locations": [
+        "盛通集團頂樓",
+        "沈家老宅大門",
+        "知遠小藥局"
+      ],
+      "state": {
+        "time": "開箱次日",
+        "knowledge": "她知道周懷安手上有顧承霖簽好名的合約；周懷安知道假帳怎麼做的",
+        "carry_forward": "懸在簽名欄上的筆"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "假招牌",
+      "youtube_title": "仇家連夜送來一塊父親的招牌，她一摸就說是假的，真的那塊竟掛在她家後院",
+      "duration_s": 105,
+      "logline": "沈月棠要當場證明顧家送來的招牌是假的，順帶證明三十多年前吞店的帳也是假的。",
+      "hook": "筆尖落下——周懷安在合約上簽的不是名字，是一行字：「先還招牌。」",
+      "hook_type": "reversal",
+      "mid_hook": "顧家送來的『周記』招牌抬進盛通大廳，她伸手一摸：新木頭刷舊漆，連字都刻淺了。",
+      "extra_hooks": [
+        "小滿在大學申請系統看見推薦信狀態變成『已撤回』，撤回人是顧家資助的教授。"
+      ],
+      "conflict": "顧家用假招牌穩住周懷安；她要當場證明招牌是假的，再證明帳也是假的。",
+      "turn": "假的她一摸就知道，真的在哪？杜老翻出三十多年前公會的合照：周記招牌刻著『元記』二字，假的沒刻——而照片裡招牌後面的門牌，她認得。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "杜老指著合照裡招牌後的門牌：臨江老城區沈記巷七號。她愣住：「那是我家後院。」",
+        "question": "周記開在沈記燒掉的後院上？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "盛通大廳裡一塊假招牌被她用指甲在漆上一劃，新木頭的白茬露出來，全廳的員工探頭看。",
+      "glamour_shot": "沈知遠白袍捲袖替太奶奶扶著招牌，低頭看木紋時劍眉一挑，笑出那顆虎牙。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "假招牌被當眾識破，秦管事把它抬了回去",
+        "周記被吞的原因落定：它開在百年前沈記燒掉的後院地上，顧家要的是那塊地"
+      ],
+      "characters": [
+        "zhou-huaian",
+        "shen-yuetang",
+        "s04-du-lao",
+        "s04-qin-guanshi",
+        "shen-zhiyuan",
+        "shen-xiaoman"
+      ],
+      "locations": [
+        "盛通集團大廳",
+        "臨江藥行公會老帳房",
+        "小滿的高中電腦教室"
+      ],
+      "state": {
+        "time": "開箱後第二天",
+        "knowledge": "她知道周記的地就是沈記燒掉的後院；知道顧家還在用假的東西換真的",
+        "carry_forward": "沈記巷七號；小滿被撤回的推薦信"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "燒過的門檻",
+      "youtube_title": "第二枚銀印終於放到她面前，她不接刀只開門，祠堂地板下一只鐵箱抬了出來",
+      "duration_s": 110,
+      "logline": "沈月棠要接下第二枚銀印卻不接『一起拆顧家』的刀，鐵箱剛抬出來顧家的人就到了門口。",
+      "hook": "她蹲在咖啡店後巷摸地上一塊黑石：「這是門檻。燒過的。」",
+      "hook_type": "image",
+      "mid_hook": "周懷安把第二枚銀印放到她面前：「一起拆顧家。」她說：「我不拆人，我開門。」",
+      "extra_hooks": [
+        "玉琴看見銀印，忽然說「爹的印」，然後哭了。"
+      ],
+      "conflict": "周懷安要的是聯手打仗，她要的是那枚印開的門；三枚印的下落今天要一次說清。",
+      "turn": "周懷安說顧承霖曾經炫耀他的戒指『是從一個死人手上拿的』；她把兩枚印並排放好：一枚她的、一枚二房賣的、一枚一百年前從她丈夫身上拿走的——三枚全有了下落。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鐵箱的鎖孔正對銀印，她把印插進去轉了一半——祠堂外傳來秦管事的聲音：「顧家來收藏鐵箱。」福伯的懷錶掉在地上。",
+        "question": "顧家怎麼知道鐵箱？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "福伯與知遠從祠堂地板下抬出一只百年鐵箱，箱身的鏽在燈光裡一片一片掉。",
+      "glamour_shot": "沈月棠把第二枚銀印套在另一隻手上，兩手交疊在腹前，低頭看燈的那一秒燭光描出鵝蛋臉的輪廓。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04",
+        "m05"
+      ],
+      "reveals": [
+        "m05"
+      ],
+      "general_payoffs": [
+        "第二枚銀印回到沈家",
+        "周懷安把印交出來，倒戈的第一步落地"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "zhou-huaian",
+        "shen-yuqin",
+        "fu-bo",
+        "shen-zhiyuan",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "周記鹽行舊址後巷",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "開箱後第三天",
+        "knowledge": "三枚銀印的下落她全知道了：手上、二房賣的在周懷安處已拿回、第三枚在顧承霖手上",
+        "carry_forward": "轉了一半的鎖；門外的秦管事"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "這裡沒有鐵箱",
+      "youtube_title": "顧家拿著家主親筆的文物清單闖祠堂，八十八歲的管家一句話擋在門口",
+      "duration_s": 105,
+      "logline": "沈月棠要在秦管事拿著建邦親筆的清單進門前守住鐵箱，靠的不是律師，是祠堂的規矩。",
+      "hook": "福伯撿起懷錶站到祠堂門口，八十八歲的背挺直：「這裡沒有鐵箱。」身後她把箱蓋合上，坐了上去。",
+      "hook_type": "image",
+      "mid_hook": "秦管事抽出沈建邦簽的收藏意向書附件——文物清單第七行是建邦自己寫的：『祠堂地下鐵箱一只』。",
+      "extra_hooks": [
+        "林導舉著手機衝進老宅直播：「顧家私闖沈宅！」三萬人同時在線。"
+      ],
+      "conflict": "秦管事手上有建邦自己寫的清單，她得讓顧家進不了祠堂，又不能動手。",
+      "turn": "江慕白趕到說意向書不是契約，秦管事不退；她靠的是規矩——祠堂是祭祀的地方，外人不得入；玉琴的輪椅橫在門檻：「我娘的祠堂。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧家的人退了，鐵箱打開——裡面不是一張地契，是一疊：一百零八張，每張地號不同，全是老街。",
+        "question": "整條老街都是沈家的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "祠堂門檻一線：外面是秦管事與四個黑衣人，裡面是一個管家、一台輪椅、一個坐在鐵箱上的少女。",
+      "glamour_shot": "沈月棠坐在鐵箱上背挺直、手交疊，像坐在一百年前藥行的櫃檯後面，燭光把她的影子投在祖先照片上。",
+      "setups": [
+        "s04-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧家的人沒跨進祠堂一步，網路上第一次有『顧家欺負老人家』的聲音",
+        "建邦承認清單是自己寫的，當場把意向書的副本撕了"
+      ],
+      "characters": [
+        "fu-bo",
+        "shen-yuetang",
+        "s04-qin-guanshi",
+        "shen-jianbang",
+        "jiang-mubai",
+        "shen-yuqin",
+        "lin-dao"
+      ],
+      "locations": [
+        "沈家老宅祠堂門檻",
+        "沈家老宅大廳"
+      ],
+      "state": {
+        "time": "鐵箱出土當天",
+        "knowledge": "她知道顧家是從建邦寫的清單知道鐵箱；知道箱裡是整條老街的地契",
+        "carry_forward": "一百零八張地契"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "一百零八張",
+      "youtube_title": "整條老街的地契攤在飯桌上，米行老闆一看地主名字當場跪下，租金一塊錢收了一百年",
+      "duration_s": 115,
+      "logline": "沈月棠要搞清楚這一百零八張地契為什麼一百年沒人動過，老陳在飯桌前先替整條老街跪了。",
+      "hook": "一百零八張地契攤在飯桌上，福伯把老陳請來；老陳看見第一張就站不穩：「德記米行……地主沈作甫？」",
+      "hook_type": "line",
+      "mid_hook": "江慕白查完地政回來：地契的地主是沈作甫——死了一百年的人，產權從沒過戶，所以沒人能賣、沒人能動。",
+      "conflict": "地主是死人，繼承要先證明沈月棠是誰；二房若知道，繼承權會變成下一場家宴。",
+      "turn": "她以為老街人只是租戶；老陳說一百年來每家每年都把一塊錢投進沈記門口那個箱子——福伯打開門邊那只舊木箱，一箱一塊錢硬幣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老陳跪下：「一塊錢，我們交了一百年。」她伸手去扶，玉琴在旁邊忽然說：「娘，妳當年也是這樣扶他阿公的。」她的手停在半空。",
+        "question": "這排地契她要怎麼用？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shangzhan",
+        "tuanchong"
+      ],
+      "spectacle": "一箱一塊錢硬幣倒在飯桌上，鋪滿一百零八張地契，一百年的租金在燈下是一片銀色。",
+      "glamour_shot": "沈月棠扶起老陳時半彎著腰，麻花辮垂到地契上，抬眼時燭光照出一雙看過一百年的杏眼。",
+      "setups": [],
+      "payoffs": [
+        "s04-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老街一百零八張地契全部確認是沈家的",
+        "老街人一百年的一塊錢租金原來一直在交，門邊的木箱是證據"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "fu-bo",
+        "jiang-mubai",
+        "shen-yuqin",
+        "shen-jianbang",
+        "gu-chenglin",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "沈家老宅飯桌",
+        "臨江地政事務所",
+        "顧氏藏館"
+      ],
+      "state": {
+        "time": "鐵箱出土次日",
+        "knowledge": "她知道老街的地一百年沒人動是因為地主是死人；知道顧承霖已經收到地契的照片",
+        "carry_forward": "怎麼把死人的地變成活人的；顧承霖那句『讓她做房東』"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "地主的太太",
+      "youtube_title": "沒有身分證的她去地政過戶一百零八張地契，仇家律師團剛開口，一份百年遺囑展開",
+      "duration_s": 110,
+      "logline": "沈月棠要把死人名下的地過戶給建邦，卡在她在現代沒有身分，顧家律師團已經準備把地標走。",
+      "hook": "地政事務所櫃檯，她把一百零八張地契往上一放：「過戶。」櫃檯小姐：「請問您是……？」她：「地主的太太。」",
+      "hook_type": "line",
+      "mid_hook": "方律師帶顧家律師團進門，主張沈作甫無合法繼承人，地應歸公再標售——顧家的標金已經備好。",
+      "extra_hooks": [
+        "蘇曉教她刷身分證進門，她掏出一塊舊銀戒：「這是我的身分。」警衛看傻了。"
+      ],
+      "conflict": "她在現代沒有身分、地主是死人，顧家律師用這兩件事要把老街的地整塊標走。",
+      "turn": "江慕白沒跟律師團吵，他請杜老來：公會保管了沈作甫的遺囑一百年——『老街之地，交與月棠，由沈家長子孫承之』。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "杜老把遺囑展到最後一行，念出來：「一印開方、一印開地、一印——開燈。」她抬頭看向老宅的方向。",
+        "question": "第三枚印開的是燈？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "地政事務所大廳一排一排的號碼燈，她站在櫃檯前憑記憶背出一百零八個地號，整排櫃檯都停下來聽。",
+      "glamour_shot": "江慕白金絲眼鏡在地政大廳的白光下反光，念遺囑時第一次眼睛也跟著笑。",
+      "setups": [
+        "s04-t06",
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧家律師團的『無人繼承』當場站不住，標售作廢",
+        "沈作甫的遺囑出土，老街過戶給建邦有了法律根據"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "jiang-mubai",
+        "s04-fang-lushi",
+        "s04-du-lao",
+        "su-xiao",
+        "shen-jianbang"
+      ],
+      "locations": [
+        "臨江地政事務所",
+        "臨江藥行公會老帳房"
+      ],
+      "state": {
+        "time": "鐵箱出土後第三天",
+        "knowledge": "她知道遺囑寫了三印各開什麼：方、地、燈",
+        "carry_forward": "『一印開燈』四個字"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "二房也是沈家",
+      "youtube_title": "站了一夜的二房聽見一百零八張地契就衝進門爭產，一張三百萬的古董收據讓她閉嘴",
+      "duration_s": 105,
+      "logline": "林美鳳聽到一百零八張地契就衝進老宅要分家產，沈月棠用二房賣祖印的收據和一張請帖回她。",
+      "hook": "門外站了一夜的林美鳳一聽『一百零八張』，推門就進：「二房也是沈家！」福伯：「門檻，妳自己跨的。」",
+      "hook_type": "reversal",
+      "mid_hook": "沈知行把一份文件交給江慕白：當年二房把第二枚銀印賣給周懷安的收據——三百萬，品名寫『古董』。",
+      "extra_hooks": [
+        "周懷安被叫上山，顧承霖只對他說一句：「地沒了，人還在。」"
+      ],
+      "conflict": "二房主張繼承一半地契；遺囑寫了『賣印者不得承』，她可以一句話打死二房，卻只想讓他們坐下吃飯。",
+      "turn": "收據亮出來林美鳳臉白了，她卻沒趕人，說：「想要，先坐下吃飯。」林美鳳摔門走了——燈暗了一分，這一季第一次。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "林美鳳走出門時燈暗了一分；福伯量油面，少了一指。她回頭看燈，一縷白髮從辮子裡滑出來——第二縷。",
+        "question": "燈還能撐多久？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "dalian",
+        "shangzhan"
+      ],
+      "spectacle": "飯桌上一張三百萬的收據壓在一百零八張地契正中央，林美鳳的紅指甲停在收據上方不敢按下去。",
+      "glamour_shot": "沈知行黑西裝白襯衫站在母親面前，手指轉筆停住，細長眼第一次直視母親沒有低頭。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老街一百零八張地契過戶給建邦，過戶章落下",
+        "二房賣祖印的收據進了江慕白的卷宗"
+      ],
+      "characters": [
+        "lin-meifeng",
+        "shen-yuetang",
+        "fu-bo",
+        "shen-zhixing",
+        "jiang-mubai",
+        "zhou-huaian",
+        "gu-chenglin",
+        "shen-jianbang"
+      ],
+      "locations": [
+        "沈家老宅飯桌",
+        "臨江地政事務所",
+        "顧家老宅"
+      ],
+      "state": {
+        "time": "過戶當天",
+        "knowledge": "她知道二房會為地回來，也知道林美鳳還不肯坐下",
+        "carry_forward": "暗了一分的燈；第二縷白髮"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "掃街",
+      "youtube_title": "房東小姐沿街念出一百年前每家店的名字，一戶三千萬的收購業務當場收攤",
+      "duration_s": 100,
+      "logline": "沈月棠要讓老街的人安心留下，顧氏地產卻在街口擺桌開價一戶三千萬買店面。",
+      "hook": "老街清晨，她走過每一塊門牌，一家一家念出一百年前的店名：「這裡打鐵的、這裡賣香的……」老陳在後面拿本子記。",
+      "hook_type": "image",
+      "mid_hook": "顧氏地產的業務在街口擺桌：每戶三千萬買店面——「地主是誰無所謂，我們買的是人。」",
+      "extra_hooks": [
+        "小滿帶大學同學逛老街，介紹她：「我姐，房東。」同學看著那條麻花辮不敢問年紀。"
+      ],
+      "conflict": "顧家不買地買人；她沒有錢，只有一百年前的租約和一條街的記憶。",
+      "turn": "她當眾宣布租金：一塊錢，再租一百年——條件是『人不能走』。業務拿出合約，老陳第一個撕了自己那份，一條街跟著撕。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "深夜周懷安來電：「顧承霖明天下山，要在老街見妳。」她問為什麼是老街；他說：「因為他家的燈，是在那裡點起來的。」",
+        "question": "顧家的燈是在老街點的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "dalian",
+        "tuanchong"
+      ],
+      "spectacle": "從牌樓拍到街尾的長鏡頭：她一路走、一路指認門牌，身後跟著的人從一個變成一條街。",
+      "glamour_shot": "沈小滿齊瀏海馬尾、校服外套大一號，說『我姐』的時候下巴抬得高高的，書包上的舊鈴鐺響了一聲。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老街一百零八戶全部簽下一塊錢百年租約，顧氏地產收攤",
+        "老陳帶頭撕合約，老街第一次站在她身後"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "shen-xiaoman",
+        "s04-a-e",
+        "zhou-huaian",
+        "fu-bo"
+      ],
+      "locations": [
+        "老街牌樓到街尾",
+        "老街街口"
+      ],
+      "state": {
+        "time": "過戶後第二天",
+        "knowledge": "她知道顧家的燈一百年前是在老街點的；知道顧承霖明天下山",
+        "carry_forward": "顧承霖要在老街見她"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "三張請帖",
+      "youtube_title": "二房坐進顧家的黑車密談，她不攔反而遞了請帖，第三張請帖寫的名字讓管家手抖",
+      "duration_s": 105,
+      "logline": "地契公開儀式前夜，沈月棠要把每個會攪局的人都請上桌，包括坐進顧家黑車的林美鳳和顧承霖本人。",
+      "hook": "林美鳳坐進一輛黑車，車裡是秦管事：「沈太太，二房想不想拿回該拿的？」",
+      "hook_type": "danger",
+      "mid_hook": "她在祠堂把第二枚銀印跟第一枚並排放上燈座——燈座有三個印槽，第三個空著，槽底刻著一個字，被燭蠟蓋住了。",
+      "extra_hooks": [
+        "蘇曉為明天的茶點忙到半夜睡在藥櫃前，知遠把白袍披在她身上，自己坐著等天亮。"
+      ],
+      "conflict": "明天的公開儀式二房要攪局、顧承霖要來；她決定把所有人請上同一張桌。",
+      "turn": "她當面點破林美鳳：「妳坐的車，是顧家的。」林美鳳愣住——是小滿在街口看見的；她不攔，遞上一張請帖。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她在第三張請帖上寫下『顧承霖』三個字，福伯捧著的手抖了：「老太太，請仇人？」她：「飯桌上看得清。」",
+        "question": "顧承霖會來坐下嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "tianchong",
+        "shangzhan"
+      ],
+      "spectacle": "兩枚銀印嵌進燈座，燈焰亮了一分，祠堂裡祖先照片上的玻璃同時映出一點橘金。",
+      "glamour_shot": "沈知遠在深夜藥局把白袍披到蘇曉肩上，捲起的袖子、乾淨的下顎線，低頭看她時收住了笑。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩枚銀印歸位燈座，燈亮了一分",
+        "林美鳳收下請帖，沒有當場撕"
+      ],
+      "characters": [
+        "lin-meifeng",
+        "s04-qin-guanshi",
+        "shen-yuetang",
+        "fu-bo",
+        "shen-xiaoman",
+        "su-xiao",
+        "shen-zhiyuan"
+      ],
+      "locations": [
+        "老街街口",
+        "沈家老宅祠堂",
+        "知遠小藥局"
+      ],
+      "state": {
+        "time": "地契公開前夜",
+        "knowledge": "她知道林美鳳已經跟顧家接觸；知道燈座第三個印槽底下刻著字",
+        "carry_forward": "三張請帖；燭蠟下的那個字"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "地是妳的，人呢？",
+      "youtube_title": "老街地契公開那天二房當眾要驗DNA，她答應了，仇家的車卻停在街口沒下來",
+      "duration_s": 130,
+      "logline": "沈月棠要在地契公開儀式上讓老街安心、讓二房閉嘴，顧承霖卻在最後一刻用一句話關掉整條街的門。",
+      "hook": "老街牌樓下一百零八張地契攤成一條長桌，她站上台階第一句：「地是沈家的，人是老街的。」掌聲裡林美鳳走進來坐下。",
+      "hook_type": "image",
+      "mid_hook": "林美鳳當眾掏出一份 DNA 鑑定申請：「要分，先驗她是誰。」她點頭：「驗。跟玉琴驗。」",
+      "extra_hooks": [
+        "周懷安走上台，把一張周記鹽行的照片放在地契中央，什麼都沒說就下去了。",
+        "顧承霖的車停在街口沒有人下來，街上的人一個接一個低頭看手機。"
+      ],
+      "conflict": "公開儀式要讓老街安心、二房要攪局、顧承霖的刀在最後。",
+      "turn": "DNA 結果當場送到：母女吻合。林美鳳被打了最大的一張臉，卻只說了一句：「驗出來也不代表什麼。」沈建業一個人先走了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "顧承霖下車走到她面前，笑：「地是妳的。人呢？」他身後，一排老鋪的門同時關上。",
+        "question": "老街的人為什麼關門？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "goxue",
+        "shangzhan"
+      ],
+      "spectacle": "從街口拉到街尾的全景：一排老鋪的木門像多米諾一樣一扇一扇關上，只剩牌樓下一張長桌。",
+      "glamour_shot": "沈月棠站在台階上背光回頭看顧承霖，少女的側臉、老人家交疊的手，風把麻花辮上的白髮吹起來。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "DNA 當眾證實她與玉琴是母女，二房無法再公開叫她騙子",
+        "周懷安在老街當眾站到她這邊，第一次公開跟顧家切開"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-yuqin",
+        "zhou-huaian",
+        "gu-chenglin",
+        "lao-chen",
+        "shen-jianbang",
+        "lin-dao",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "老街牌樓",
+        "老街街口"
+      ],
+      "state": {
+        "time": "地契公開儀式當天",
+        "knowledge": "她知道二房在法律上再也否認不了她；不知道顧承霖對老街做了什麼",
+        "carry_forward": "同時關上的一排門"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "債權轉讓",
+      "youtube_title": "整條街的門一夜關上，門縫塞出來的紙讓她明白仇家買的不是地是每一家的債",
+      "duration_s": 100,
+      "logline": "沈月棠要弄清老街為什麼一夜之間不敢見她，答案是顧家買下了每一家的債，而知遠的藥局對面開了一家半價連鎖。",
+      "hook": "關上的門板後老陳的聲音：「小姑娘，妳先回去。」她敲門，門縫塞出一張紙：『債權轉讓通知——債權人：顧氏資產』。",
+      "hook_type": "image",
+      "mid_hook": "知遠藥局對面的鷹架一夜拆光，『康樂藥局』開幕，所有藥品半價，高經理站在門口發氣球。",
+      "extra_hooks": [
+        "福伯量燈：油面又低了一指，他在燈座上用指甲刻了一道。"
+      ],
+      "conflict": "顧家買下老街每一家的債，誰開門誰的債就提前到期；她不能替一條街還債。",
+      "turn": "她以為老陳也欠債，老陳沒欠——他關門是因為顧家說『誰開門，鄰居的債提前』，他在替別人關。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "藏館裡，秦管事把老街的債務清單交給顧承霖，他只圈了一個名字——『德記米行』，旁邊寫：『最後一個』。",
+        "question": "他為什麼留老陳到最後？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "shangzhan"
+      ],
+      "spectacle": "清晨老街一排緊閉的門，每扇門縫下壓著一張白色的通知，風一吹整條街的紙同時掀起一角。",
+      "glamour_shot": "沈知遠站在自己空蕩的藥局門口，隔著馬路看對面的氣球，捲起袖子走回藥櫃前開始整理抽屜。",
+      "setups": [
+        "s04-t07",
+        "s04-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她看出顧家是以三倍面額買債，花的是真錢，急的是顧家",
+        "知遠靠一次把脈留下第一個老客人，高經理的半價沒搶走他"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "shen-zhiyuan",
+        "s04-gao-jingli",
+        "fu-bo",
+        "gu-chenglin",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "老街",
+        "知遠小藥局與對面的康樂藥局",
+        "顧氏藏館"
+      ],
+      "state": {
+        "time": "地契公開次日",
+        "knowledge": "她知道顧家買下老街每一家的債；不知道為什麼留老陳到最後",
+        "carry_forward": "被圈起來的『德記米行』"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "對面",
+      "youtube_title": "對面半價連鎖又斷了他的供應商，太奶奶把一百年的老方子放到曾孫手上",
+      "duration_s": 105,
+      "logline": "知遠的藥局被半價和斷貨夾擊活不過一週，沈月棠把沈記祖方交到他手上。",
+      "hook": "康樂藥局的鞭炮聲裡，知遠的藥局一個客人也沒有；蘇曉把門口『免費量血壓』的牌子翻過來，寫上：「免費把脈」。",
+      "hook_type": "image",
+      "mid_hook": "高經理帶著顧家的三倍收購價進門，知遠搖頭；高經理笑著加一句：「你的供應商，明天起不出貨。」",
+      "extra_hooks": [
+        "小滿收到臨江大學的通知：入學資格『審查中』，理由是推薦信疑偽。"
+      ],
+      "conflict": "斷貨加半價，藥局撐不過一週；顧家能切供應商，切不了一百年前的方子。",
+      "turn": "她抱著祖方進藥局，蘇曉以為是來安慰，她把祖方翻到『安神散』那頁：「老方子，自己做。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "深夜知遠照著祖方在藥櫃前抓藥，抬頭看見太奶奶站在門口；她看著他的手：「你抓藥的手，像他。」她的眼紅了。",
+        "question": "知遠能把老方子做出來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "henla",
+        "tianchong",
+        "tuanchong"
+      ],
+      "spectacle": "深夜藥局只開一盞櫃檯燈，三十個抽屜在知遠手下一抽一合，跟一百年前太奶奶的手勢一模一樣。",
+      "glamour_shot": "沈知遠白袍捲袖專注抓藥，劍眉微鎖、單眼皮長眼只看秤，鼻樑在燈下一道直線。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇曉用藥事法堵住高經理的低於成本促銷，康樂收起一半的半價牌",
+        "沈記祖方第一次交到知遠手上"
+      ],
+      "characters": [
+        "shen-zhiyuan",
+        "su-xiao",
+        "s04-gao-jingli",
+        "shen-yuetang",
+        "shen-xiaoman"
+      ],
+      "locations": [
+        "知遠小藥局",
+        "康樂連鎖藥局",
+        "小滿的高中"
+      ],
+      "state": {
+        "time": "地契公開後第三天",
+        "knowledge": "她知道顧家下一步會切供應商；知道小滿的大學申請被動了手",
+        "carry_forward": "知遠手上的祖方；小滿的審查"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "綠豆糕",
+      "youtube_title": "女兒最愛的點心盒底壓著一張字條回安養院吧，她數了燈油，只剩不到一個月",
+      "duration_s": 105,
+      "logline": "顧家把刀遞到最不會還手的人面前，沈月棠要讓玉琴相信自己不是家裡的麻煩，福伯同時算出燈撐不過一個月。",
+      "hook": "玉琴的點心盒送到，她笑著打開，最上面一塊綠豆糕下壓著一張紙條：『回安養院吧。』她的手停住。",
+      "hook_type": "image",
+      "mid_hook": "福伯跪在燈前量油，用懷錶對著刻度數了三遍：「照這樣，撐不到一個月。」",
+      "extra_hooks": [
+        "建邦在集團收到顧家的提案：把沈記新藥併進顧氏藥廠，『替你救它』。"
+      ],
+      "conflict": "紙條是誰放的要查，玉琴的心更要先穩住；燈油的倒數第一次有了數字。",
+      "turn": "玉琴讀完紙條沒哭，說：「我家在這。」然後撕了；可那晚她一個人推著輪椅去問燈。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "燈前，玉琴一個人推著輪椅進祠堂，對燈說：「娘，我走，燈會亮嗎？」燈焰縮了一下。她在門後聽見了。",
+        "question": "玉琴真的會走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "福伯跪在燈座前用懷錶比著油面刻度，燭光把他的影子拉到整面祖先照片牆上。",
+      "glamour_shot": "沈玉琴銀白短髮、藏青毛衣，撕紙條時握著舊手帕的手很穩，抬頭對母親笑出慈眉。",
+      "setups": [
+        "s04-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她查出紙條用的紙是顧氏藏館的收藏卡，糕餅店上個月被顧家買下",
+        "玉琴當著全家撕了紙條"
+      ],
+      "characters": [
+        "shen-yuqin",
+        "shen-yuetang",
+        "fu-bo",
+        "shen-jianbang",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "沈家老宅飯桌",
+        "沈家老宅祠堂",
+        "沈氏集團大樓家主辦公室"
+      ],
+      "state": {
+        "time": "地契公開後一週",
+        "knowledge": "她知道燈撐不到一個月；知道顧家這一刀是砍玉琴的心",
+        "carry_forward": "玉琴在燈前的那句話"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "第一張飯桌",
+      "youtube_title": "她不反擊只辦飯桌，第一個請回來的人卻已經簽了賣掉麵攤的意向書",
+      "duration_s": 105,
+      "logline": "沈月棠開始每晚請一個動搖的人回來吃飯，第一個是麵攤的阿娥，她已經簽了賣攤的意向書。",
+      "hook": "她推開祠堂門把玉琴的輪椅轉過來：「走？先吃飯。」飯桌上擺了四副碗，第四副前坐著低著頭的阿娥。",
+      "hook_type": "line",
+      "mid_hook": "阿娥在飯桌上哭出來：顧家說賣了攤債就免，她昨天已經簽了意向書。",
+      "extra_hooks": [
+        "藏館裡秦管事問下一刀砍誰，顧承霖看著燈：「不急，燈自己會暗。」"
+      ],
+      "conflict": "阿娥簽了意向書，債還在；她沒有錢，只有一百年前阿娥祖母的名字。",
+      "turn": "她叫出阿娥祖母的名字——沈記當年的煮藥工黃阿春；阿娥哭著撕了意向書；而阿娥的債，當晚被一個第三方悄悄買走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "飯後阿娥回麵攤，攤前站著高經理和兩個人：「阿娥姨，債轉手了，新債主要見妳。」她看見新債主的車牌——周懷安的車。",
+        "question": "周懷安買阿娥的債要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "henla"
+      ],
+      "spectacle": "四副碗的飯桌俯拍，鏡頭慢慢拉高，桌子周圍的空椅子一張一張排進畫面。",
+      "glamour_shot": "沈月棠替阿娥盛湯，手腕上的舊銀戒在湯的蒸氣裡一閃，少女的手、老人家的穩。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿娥撕了意向書回到飯桌，第一個動搖的人坐回來",
+        "玉琴吃完一整碗飯，沒再提安養院"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-yuqin",
+        "s04-a-e",
+        "fu-bo",
+        "s04-gao-jingli",
+        "zhou-huaian",
+        "gu-chenglin",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "沈家老宅飯桌",
+        "老街阿娥麵攤",
+        "顧氏藏館"
+      ],
+      "state": {
+        "time": "飯桌第一晚",
+        "knowledge": "她知道顧家在等燈自己暗；知道周懷安在暗處買債",
+        "carry_forward": "周懷安的車牌"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "新債主",
+      "youtube_title": "新債主下車遞出的是清償證明，仇家一通電話威脅今晚把他父親的招牌送進碎木機",
+      "duration_s": 100,
+      "logline": "周懷安公開替老街擋債，顧家用他父親的招牌逼他回頭，他上山去看那塊招牌。",
+      "hook": "周懷安下車，把一張債務清償證明交到阿娥手上：「還清了。」阿娥愣住，他抬頭看對街老宅的燈。",
+      "hook_type": "reversal",
+      "mid_hook": "顧承霖來電，聲音溫柔：「你父親的招牌，今晚進碎木機。」周懷安握著電話沒說話。",
+      "conflict": "周懷安護老街就是公開跟顧家翻臉；顧家手裡有他等了二十年的那塊木頭。",
+      "turn": "他連夜上山，顧承霖帶他看招牌——完好掛著。「你還有用。」周懷安明白了：顧家不會毀掉牽著他的那條繩。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "飯桌第二晚多了一副碗——周懷安坐下，福伯替他盛飯時手停了一下；玉琴看他：「你爹，賣鹽的。」他的筷子掉了。",
+        "question": "玉琴認得周懷安的父親？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "藏館裡一整排老招牌在走道兩側，周記元記那一塊掛在最深處的牆上，燈光只打在它身上。",
+      "glamour_shot": "周懷安站在父親的招牌下仰頭看，深灰西裝、高額、深眼窩在頂光下第一次露出孩子的表情。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿娥的債清零，老街第一戶從顧家手裡脫身",
+        "周懷安坐上沈家的飯桌，五個人"
+      ],
+      "characters": [
+        "zhou-huaian",
+        "s04-a-e",
+        "gu-chenglin",
+        "shen-yuetang",
+        "shen-yuqin",
+        "fu-bo",
+        "s04-zhou-shouren"
+      ],
+      "locations": [
+        "老街阿娥麵攤",
+        "顧氏藏館",
+        "沈家老宅飯桌"
+      ],
+      "state": {
+        "time": "飯桌第二晚",
+        "knowledge": "她知道顧家用招牌牽著周懷安；周懷安知道顧家不會毀招牌",
+        "carry_forward": "玉琴記得的鹽行老闆"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "安養院的車",
+      "youtube_title": "安養院的車停在門口，入住單上簽的是二房的名字，家主把單子撕了說我媽在家",
+      "duration_s": 110,
+      "logline": "顧家借二房的名義要把玉琴送進安養院，沈建邦要替母親擋下，沈知行把二房的全部資料搬給了江慕白。",
+      "hook": "一輛安養院的車停在老宅門口，兩個看護拿著入住單：「沈玉琴女士，家屬申請。」簽名欄：林美鳳。",
+      "hook_type": "danger",
+      "mid_hook": "沈知行把一只紙箱搬到江慕白的事務所桌上：二房的帳、合約、賣印的收據。「我爸媽的。全部。」",
+      "extra_hooks": [
+        "燈又暗一分，她梳頭時辮子裡的白髮已經是一束，福伯站在門外沒敢進來。"
+      ],
+      "conflict": "林美鳳有家屬身分，看護有合法申請；要擋，法律上得由玉琴的兒子沈建邦簽字拒絕，而顧家併購新藥的提案還壓在他桌上。",
+      "turn": "建邦沒猶豫，把入住單撕了：「我媽，在家。」他把顧家的併購提案也一起撕了——這一刀砍的是玉琴，接的是建邦。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "江慕白翻到紙箱最底下一張紙：林美鳳與顧氏資產簽的委託書——委託顧家代理二房對沈家的一切權利，日期是地契公開那天。",
+        "question": "二房把自己賣給顧家了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "ganren"
+      ],
+      "spectacle": "安養院的白色廂車停在老宅暖黃的大門前，建邦撕掉的入住單碎片落在門檻兩側。",
+      "glamour_shot": "沈建邦襯衫扣到頂、細框眼鏡後面第一次沒有愁容，撕紙的手很慢很穩。",
+      "setups": [],
+      "payoffs": [
+        "s04-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "玉琴留在家裡，建邦第一次替母親和奶奶擋了一刀",
+        "二房的全部資料進了江慕白的事務所"
+      ],
+      "characters": [
+        "shen-jianbang",
+        "shen-yuqin",
+        "lin-meifeng",
+        "shen-zhixing",
+        "jiang-mubai",
+        "shen-yuetang",
+        "fu-bo"
+      ],
+      "locations": [
+        "沈家老宅大門",
+        "江慕白事務所",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "飯桌第三晚",
+        "knowledge": "她知道顧家下一刀砍的是玉琴、借的是二房的名；知道林美鳳簽了委託書給顧家",
+        "carry_forward": "那份委託書"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "二十一天",
+      "youtube_title": "燈座上刻著一天一道的倒數只剩二十一道，藥局裡鬧事的人衝進來，她擋在他身前",
+      "duration_s": 105,
+      "logline": "燈剩二十一天，沈月棠坐到老陳的門檻上吃飯，知遠的藥局被人鬧場，蘇曉替他擋了。",
+      "hook": "福伯把油面刻度一天一道刻在燈座上，數了三遍剩下的空白：「二十一天。」她在門口聽完，轉身進了廚房。",
+      "hook_type": "image",
+      "mid_hook": "藥局裡一個被康樂花錢請來的人掃翻櫃檯上的藥盒大吼，蘇曉從櫃檯後面繞出來擋在知遠身前，知遠伸手握住了她的手。",
+      "extra_hooks": [
+        "林導的影片揭出教授收了顧家的錢，臨江大學宣布重啟小滿的審查。"
+      ],
+      "conflict": "燈只剩二十一天，她每晚要請回一個人；今晚的人是不肯開門的老陳。",
+      "turn": "她把飯端到米行門口，坐在門檻上吃；門開了一條縫，老陳遞出一碗米——他沒賣，可他在想：顧家說只要他一個人賣，整條街的債都清。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老陳隔著門縫說：「他們說我賣了，大家的債就清。」門縫裡一隻手遞出米行的鑰匙。她沒接。",
+        "question": "老陳會為大家賣掉米行嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "tuanchong"
+      ],
+      "spectacle": "燈座側面二十一道指甲刻痕的特寫，福伯的懷錶放在旁邊，秒針在走。",
+      "glamour_shot": "蘇曉梨渦收起、短髮被吹亂，擋在知遠身前時握住的那隻手在日光燈下輕輕發抖。",
+      "setups": [],
+      "payoffs": [
+        "s04-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知遠與蘇曉第一次牽手，鬧事的人被林導的鏡頭嚇走",
+        "小滿的大學審查重啟，顧家買的教授被校方停職"
+      ],
+      "characters": [
+        "fu-bo",
+        "shen-yuetang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "lao-chen",
+        "shen-xiaoman",
+        "lin-dao",
+        "s04-gao-jingli"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "知遠小藥局",
+        "德記米行門口"
+      ],
+      "state": {
+        "time": "飯桌第四晚",
+        "knowledge": "她知道燈剩二十一天；知道顧家留老陳到最後是因為他一人賣可清全街的債",
+        "carry_forward": "門縫裡那把鑰匙"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "第八副碗",
+      "youtube_title": "飯桌從四副碗坐到八副，仇家卻走進藥局買了一包老方子說可惜只剩二十天",
+      "duration_s": 100,
+      "logline": "飯桌坐到八個人，沈知行要坐下得先過建邦那一關，顧承霖則親自到藥局買了一包安神散。",
+      "hook": "第五晚的飯桌擺了八副碗，第八副放在老陳常坐的位子，空著；小滿說：「他會來。」門口鈴鐺響了——進來的是沈知行。",
+      "hook_type": "image",
+      "mid_hook": "顧承霖以客人身分走進知遠的藥局，買了一包安神散：「老方子，好。可惜只剩二十天。」",
+      "extra_hooks": [
+        "林美鳳在顧家律師的辦公室外，看見沈建業在一張文件上簽字，那是蔡老闆的借據。"
+      ],
+      "conflict": "知行是二房的人，建邦不肯讓他坐；顧承霖的那句『二十天』說明顧家能數沈家的燈。",
+      "turn": "玉琴替知行拉開椅子；顧承霖要買祖方，知遠說：「方子不賣，藥賣。」顧承霖付了三百塊走了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "飯桌散了，福伯鎖門時發現門外放著一塊招牌——德記米行的，連夜被人卸下來放在沈家門口；招牌背面貼著一張顧氏藏館的收藏卡。",
+        "question": "老陳賣了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "henla",
+        "xiju"
+      ],
+      "spectacle": "八副碗的飯桌俯拍疊上前四晚的鏡頭，人一晚一個坐進畫面，只有一張椅子始終空著。",
+      "glamour_shot": "顧承霖在藥局白色日光燈下接過藥包，長眉桃花眼、唇色深，笑得溫柔得讓蘇曉後退了半步。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈知行坐上大房的飯桌，八個人",
+        "知遠當面拒賣祖方，顧承霖沒拿到方子"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-xiaoman",
+        "shen-zhixing",
+        "shen-jianbang",
+        "shen-yuqin",
+        "gu-chenglin",
+        "shen-zhiyuan",
+        "su-xiao",
+        "lin-meifeng",
+        "shen-jianye",
+        "fu-bo"
+      ],
+      "locations": [
+        "沈家老宅飯桌",
+        "知遠小藥局",
+        "顧家律師事務所外"
+      ],
+      "state": {
+        "time": "飯桌第五晚",
+        "knowledge": "她知道顧家能數燈剩幾天；知道建業在借高利貸",
+        "carry_forward": "門口的米行招牌"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "空米缸",
+      "youtube_title": "她抱著招牌衝到米行，老闆坐在空米缸上說不是我卸的，顧家先動手再談價",
+      "duration_s": 105,
+      "logline": "顧家先拆招牌再談價，老陳決定為整條街簽字，沈月棠只求他等一晚。",
+      "hook": "她抱著米行招牌衝到老街，米行門開著，老陳坐在空米缸上：「不是我卸的。」",
+      "hook_type": "reversal",
+      "mid_hook": "顧家的合約擺在米缸上：簽了，老街所有債清零——老陳的手已經拿起了筆。",
+      "extra_hooks": [
+        "玉琴獨自在祠堂對燈小聲說：「娘的手，皺了。」"
+      ],
+      "conflict": "老陳要替大家扛，她給不了比債清零更大的東西，只有一百年前他阿公送米的那段事。",
+      "turn": "她把那段事說完，老陳說：「我知道，所以我要替大家扛。」阿娥帶著整條街的人站到他身後：「我們不要你扛。」他還是拿著筆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老陳落筆前，她按住合約：「等一晚。」老陳看她的手——她也看見了：手背上的皮，鬆了一分。",
+        "question": "老陳會等她一晚嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "henla",
+        "tuanchong"
+      ],
+      "spectacle": "空米缸上一份合約、一支筆，米行門外站滿整條街的人，從門內往外拍是一片人的剪影。",
+      "glamour_shot": "沈月棠按住合約的手背特寫，皮膚鬆了一分；鏡頭上移是一張十八歲的臉，眼神沒有慌。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她當場指出顧家先拆招牌是違法，秦管事的人把招牌掛回去",
+        "整條街站到老陳身後，說不要他一個人扛"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "s04-a-e",
+        "s04-qin-guanshi",
+        "shen-yuqin",
+        "fu-bo"
+      ],
+      "locations": [
+        "德記米行",
+        "老街",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "飯桌第六晚",
+        "knowledge": "她知道老陳簽字是為了全街的債；她看見自己手背的皮鬆了",
+        "carry_forward": "老陳答應等的一晚"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "我老了",
+      "youtube_title": "天亮米行貼出頂讓紅紙，她伸手去撕，手背的皺紋一道道浮上來，第一次說我老了",
+      "duration_s": 125,
+      "logline": "老陳沒等她一晚，紅紙貼了出來；沈月棠要查清他為什麼突然簽，答案是顧家給他看了一張假照片。",
+      "hook": "天亮，米行門上貼出一張紅紙：『頂讓』。老陳沒等她。",
+      "hook_type": "image",
+      "mid_hook": "藏館裡顧承霖對枯床上的老太爺說：「老街第一戶賣了。」顧遠山的燈亮了一分，他睜開眼：「叫她上山。」",
+      "extra_hooks": [
+        "飯桌第七晚九個人，老陳的位子空著；周懷安說「我去買回米行」，她說：「人不是買回來的。」",
+        "小滿收到臨江大學的復審通過通知，她把通知放在玉琴的輪椅上。"
+      ],
+      "conflict": "老陳簽了意向、紅紙貼了出來；她不能用錢、不能用氣，只能用真相。",
+      "turn": "她以為老陳是為了債；其實顧家給他看了一張照片：玉琴站在安養院門口——假的。老陳信了沈家散了，燈就暗了一分。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她走到紅紙前伸手去撕；紅紙撕下一半，她的手背上皺紋一道一道浮上來。她看著自己的手，第一次說：「我老了。」",
+        "question": "燈還能亮回來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "henla",
+        "tuanchong"
+      ],
+      "spectacle": "一條街的門上只有一張紅紙在風裡；她撕紅紙時手背皺紋一道道浮現的特寫，紅紙的半張還黏在門上。",
+      "glamour_shot": "沈月棠站在紅紙前，十八歲的側臉、一束白髮、一隻起了皺紋的手，三樣東西在同一個鏡頭裡。",
+      "setups": [
+        "s04-t13"
+      ],
+      "payoffs": [
+        "s04-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在米行門口當眾拆穿顧家的假照片，秦管事的人退了",
+        "飯桌第七晚坐到九個人；小滿的大學復審通過"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "gu-chenglin",
+        "gu-yuanshan",
+        "zhou-huaian",
+        "shen-xiaoman",
+        "shen-yuqin",
+        "s04-qin-guanshi",
+        "fu-bo"
+      ],
+      "locations": [
+        "德記米行門口",
+        "顧氏藏館",
+        "沈家老宅飯桌"
+      ],
+      "state": {
+        "time": "飯桌第七晚到次日清晨",
+        "knowledge": "她知道老街第一個賣的是老陳、是被假照片騙的；知道顧遠山要見她；她看見自己手背的皺紋",
+        "carry_forward": "半張紅紙；顧遠山的『叫她上山』"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "半張紅紙",
+      "youtube_title": "米行老闆看見她的手當場跪下，二房的兒子接著跪下求她救欠高利貸的父母",
+      "duration_s": 105,
+      "logline": "沈月棠要替老陳撤掉已簽的意向書，同時面對跪在她面前求救父母的沈知行。",
+      "hook": "她握著半張紅紙，手背的皺紋還在；老陳從門裡出來看見她的手，撲通跪下：「我賣了招牌，妳就老了？」",
+      "hook_type": "question",
+      "mid_hook": "汽車旅館門口，沈建業被蔡老闆的人堵住：欠高利貸兩千萬，三天。",
+      "extra_hooks": [
+        "林美鳳在娘家門口被兩個西裝男『請』上車問話，車是顧家律師事務所的。"
+      ],
+      "conflict": "老陳的意向書已簽，顧家要違約金；二房欠的高利貸三天到期，知行跪著求她救人。",
+      "turn": "周懷安看了一眼意向書：沒有對價，是廢紙；老陳自己把剩下半張紅紙撕了。她以為二房會自己垮，沈知行卻跪到她面前：「救我爸媽。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "知行跪著說完，手機跳出一段影片：林美鳳被兩個西裝的人請上車，車窗後她回頭看鏡頭，嘴型是「救我」。",
+        "question": "顧家把林美鳳帶去哪了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "老街清晨，老陳跪在門口、她站著，整條街的門一扇一扇打開，人都站到門口看。",
+      "glamour_shot": "沈知行跪在老宅門前，黑西裝沾了灰，一絲不亂的髮型第一次亂了，細長眼抬起來看她。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老陳的意向書確認無效，米行保住，招牌掛回去",
+        "沈知行第一次當面向大房開口求救，而不是替二房打前鋒"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "zhou-huaian",
+        "shen-zhixing",
+        "shen-jianye",
+        "s04-cai-laoban",
+        "lin-meifeng"
+      ],
+      "locations": [
+        "德記米行門口",
+        "郊區汽車旅館",
+        "林美鳳的娘家門口"
+      ],
+      "state": {
+        "time": "紅紙撕掉當天",
+        "knowledge": "她知道二房欠兩千萬高利貸、林美鳳被顧家帶走問話",
+        "carry_forward": "車窗後的『救我』"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "兩千萬",
+      "youtube_title": "她抽出三張老街地契抵債，債主說顧家吩咐不收，律師一句話讓他當場改口",
+      "duration_s": 105,
+      "logline": "沈月棠要在林美鳳簽字放棄繼承前清掉二房的高利貸，債主奉顧家之命拒收擔保。",
+      "hook": "她從一百零八張地契中抽出三張放在桌上：「拿去抵。」福伯：「老太太，那是老街的……」她：「人比地要緊。」",
+      "hook_type": "line",
+      "mid_hook": "蔡老闆推開地契：「顧家說了，二房的債只能顧家清。」",
+      "extra_hooks": [
+        "顧家律師事務所的『會客室』裡，林美鳳面前放著一份放棄沈家一切繼承權的文件，筆已經遞到手上。"
+      ],
+      "conflict": "顧家要的是二房的繼承權，債是繩子；她要在林美鳳落筆前把繩子剪斷。",
+      "turn": "江慕白查出蔡老闆的公司是顧家的殼、利率違法，一句『我現在就檢舉』，蔡老闆改口收地契作擔保，照法定利率。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "建業簽完擔保，蔡老闆遞來收據和一張照片：三十年前建業的父親與顧遠山並肩站著，兩人中間一只敞開的箱子。「你爸的本錢，顧家給的箱子。」建業：「我爸……？」",
+        "question": "建業不知道金條的事？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "goxue",
+        "shangzhan"
+      ],
+      "spectacle": "債務公司的鐵皮辦公室裡，三張百年地契攤在一張塑膠桌上，日光燈管在上面閃。",
+      "glamour_shot": "江慕白把金絲眼鏡推上去，拿著手機對蔡老闆說『我現在就檢舉』，笑的時候這次眼睛也在笑。",
+      "setups": [
+        "s04-t11"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二房兩千萬高利貸以三張地契作擔保轉成合法借款，林美鳳的放棄書來不及簽",
+        "江慕白第一次主動替大房出面對付顧家的殼公司"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "fu-bo",
+        "s04-cai-laoban",
+        "jiang-mubai",
+        "shen-jianye",
+        "lin-meifeng",
+        "s04-fang-lushi",
+        "gu-yuanshan"
+      ],
+      "locations": [
+        "沈家老宅飯桌",
+        "蔡老闆的債務公司",
+        "顧家律師事務所會客室"
+      ],
+      "state": {
+        "time": "紅紙撕掉後第二天",
+        "knowledge": "她知道顧家要的是二房的繼承權；知道建業可能不知道父親挖金條的事",
+        "carry_forward": "那張三十年前的照片；還沒簽的放棄書"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "找我孫媳婦",
+      "youtube_title": "她帶著律師和直播闖進仇家律師樓說找我孫媳婦，玻璃後的二房把筆摔了",
+      "duration_s": 110,
+      "logline": "沈月棠要把林美鳳從顧家律師手裡帶出來，林美鳳卻寧願自己走出去也不要她救。",
+      "hook": "顧家律師事務所的玻璃門被推開，她身後是江慕白、周懷安和舉著手機直播的林導；櫃檯：「請問……」她：「找我孫媳婦。」",
+      "hook_type": "line",
+      "mid_hook": "玻璃牆後林美鳳的筆落在放棄書上，方律師在她耳邊：「簽了，妳兒子的工作保住。」她抬頭看見了沈月棠。",
+      "extra_hooks": [
+        "藏館裡秦管事問要不要留人，顧承霖看著燈笑：「放她走。」"
+      ],
+      "conflict": "林美鳳是『自願』留在那裡的，法律上沒人押她；她得讓林美鳳自己走出來。",
+      "turn": "林美鳳沒簽——她把筆摔在放棄書上，可她不是走向沈月棠，是對她喊：「我不用妳救！」然後一個人走出玻璃門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "事務所門外，林美鳳站在街上不知道往哪走。她說：「回家吃飯。」林美鳳：「誰家？」她：「妳家。」林美鳳沒動。",
+        "question": "林美鳳會上這張飯桌嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "律師樓冷藍玻璃牆的兩側：一邊是四個人與一支直播，一邊是一個女人與一份文件，中間一道玻璃映著兩邊的影子。",
+      "glamour_shot": "林美鳳大波浪捲髮亂了、珍珠項鍊歪了、紅指甲捏著筆，摔筆的那一秒表情從尖變成空。",
+      "setups": [
+        "s04-t10",
+        "s04-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "林美鳳沒有簽放棄書，顧家拿不到二房的繼承權",
+        "林導的直播讓顧家律師事務所當天就被網友找上門"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "jiang-mubai",
+        "zhou-huaian",
+        "lin-dao",
+        "lin-meifeng",
+        "s04-fang-lushi",
+        "gu-chenglin",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "顧家律師事務所",
+        "事務所外的街",
+        "顧氏藏館"
+      ],
+      "state": {
+        "time": "紅紙撕掉後第三天",
+        "knowledge": "她知道顧承霖是故意放走林美鳳的，不知道為什麼",
+        "carry_forward": "站在街上的林美鳳；顧承霖的『放她走』"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "第十二副碗",
+      "youtube_title": "飯桌擺了十二副碗坐了十一個人，掏空家族的二房叔叔在桌上說出他真的不知道",
+      "duration_s": 115,
+      "logline": "飯桌坐到十一個人，沈建業要在桌上認帳，建邦差一點把桌子翻了。",
+      "hook": "老宅飯桌擺了十二副碗；福伯數人：福伯、玉琴、建邦、知遠、小滿、知行、蘇曉、周懷安、老陳、建業、她——十一個。第十二副，對著門口。",
+      "hook_type": "image",
+      "mid_hook": "建業把一只檔案袋放上桌，認下賣第二枚銀印的事，然後說：「金條的事，我真的不知道。」玉琴接話：「你爹說，是你阿公給的。」",
+      "extra_hooks": [
+        "門外下雨，林美鳳站在門口不進來；小滿拿傘出去，她沒接。"
+      ],
+      "conflict": "建業要今晚跪祠堂，建邦不准他坐這張桌；兄弟三十年的帳在飯桌上炸開。",
+      "turn": "建邦站起來：「你掏空集團的時候想過這張桌子嗎？」手按在桌沿——玉琴說：「吃飯。」他坐下了；建業坐下的那一秒，燈亮了一分。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "飯後建業走進祠堂跪下；林美鳳站在門口不進來，玉琴推著輪椅過去拉她的手——林美鳳縮手，轉身走進雨裡。燈焰縮了一下。",
+        "question": "林美鳳為什麼寧願走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "十一人飯桌俯拍，一張空椅子對著門口，門外雨裡一個女人的剪影站著不動。",
+      "glamour_shot": "沈月棠坐在主位把第十二副碗轉向門口，燭光描出她低頭時的睫毛，手背的皺紋淡了一道。",
+      "setups": [],
+      "payoffs": [
+        "s04-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "飯桌十一個人，燈亮一分，她手背的皺紋淡了一道",
+        "建業不知道父親挖金條的事落定，他是貪的，不是最壞的"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "shen-zhixing",
+        "su-xiao",
+        "zhou-huaian",
+        "lao-chen",
+        "shen-jianye",
+        "lin-meifeng"
+      ],
+      "locations": [
+        "沈家老宅飯桌",
+        "沈家老宅祠堂",
+        "沈家老宅門口"
+      ],
+      "state": {
+        "time": "飯桌十一人之夜",
+        "knowledge": "她知道建業對金條不知情；知道林美鳳到了門口卻不肯進",
+        "carry_forward": "門外雨裡縮回去的那隻手"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "叫早了",
+      "youtube_title": "跪了一夜的二房叔叔叫她祖奶奶，她說叫早了先還帳，董事會上股權當場歸位",
+      "duration_s": 105,
+      "logline": "沈建業要用一聲『祖奶奶』換回家，沈月棠要他先在董事會把掏空的股權還回來，而顧家把一份禮送到了林美鳳的娘家。",
+      "hook": "祠堂裡沈建業跪了一夜，天亮她進來，他抬頭叫了一聲：「祖奶奶。」她說：「叫早了，先把帳還清。」",
+      "hook_type": "line",
+      "mid_hook": "顧家的人到林美鳳的娘家送上一只禮盒，裡面是一張顧氏藏館的收藏卡：『沈家老宅（含祠堂）——預定』。",
+      "conflict": "認祖要付代價：建業得在董事會上把掏空的股權還回大房；林美鳳還在外面，顧家在她身邊轉。",
+      "turn": "董事會上建業簽字返還股權，大房重新過半；沈知行趕到娘家當眾頂撞母親：「妳怕的不是沈家，是丟臉。」林美鳳第一次沒有罵回去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林美鳳打開禮盒的夾層：一把鑰匙——老宅後門的鑰匙，她當年偷配的那把。顧家拿去用過了。",
+        "question": "顧家進過老宅後門？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "goxue",
+        "shangzhan"
+      ],
+      "spectacle": "沈氏集團董事會長桌上，建業的簽字筆落下，大螢幕上的持股餅圖當場轉成大房過半。",
+      "glamour_shot": "沈建業眉間那道刀疤狀皺紋在董事會的冷光下更深，簽完字他第一次沒有笑得太滿。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二房掏空的股權返還大房，集團重新由大房過半",
+        "沈知行當眾頂撞母親，林美鳳開始鬆動"
+      ],
+      "characters": [
+        "shen-jianye",
+        "shen-yuetang",
+        "shen-jianbang",
+        "lin-meifeng",
+        "shen-zhixing",
+        "s04-qin-guanshi",
+        "gu-chenglin"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈氏集團董事會",
+        "林美鳳的娘家"
+      ],
+      "state": {
+        "time": "飯桌十一人之後第二天",
+        "knowledge": "她知道建業認祖了、股權歸位；知道顧家手裡有老宅後門的鑰匙",
+        "carry_forward": "那把鑰匙"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "後門",
+      "youtube_title": "後門鎖上有刮痕，燈座第三個印槽被人試過，而她換了新油燈竟然一點都不亮",
+      "duration_s": 105,
+      "logline": "沈月棠要查出顧家從後門進來動了什麼，發現他們試過第三個印槽，也發現燈油從來不是油。",
+      "hook": "老宅後門，福伯把懷錶鏈掛上門鎖：「換鎖。」她看著門板上的刮痕：有人進來過。",
+      "hook_type": "image",
+      "mid_hook": "蘇曉化驗燈油：油量一滴都沒少——刻度降的是燈焰，不是油。福伯愣住：「油不是油。」",
+      "extra_hooks": [
+        "林美鳳打電話給知行，第一句不是罵：「後門的鑰匙，是我配的。」"
+      ],
+      "conflict": "顧家進過後門動了燈座，燈座第三個印槽有新刮痕；燈油沒少燈卻暗，家裡的恐慌比小偷更傷燈。",
+      "turn": "她以為顧家來偷油，刮痕說明他們用第三枚印試過燈座——沒開；就在全家慌的時候，林美鳳帶著鎖匠出現在後門：「我配的，我換。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "新鎖裝好當晚，蘇曉裝的監視器拍到後巷：秦管事對著老宅的屋頂比了一個手勢，屋頂上，一個人影站了起來。",
+        "question": "顧家的人在屋頂做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "燈座第三個印槽的刮痕特寫，旁邊兩枚銀印嵌著，燭光在刮痕裡積成一道亮線。",
+      "glamour_shot": "林美鳳在後門口親手把舊鑰匙交給福伯，紅指甲擦掉了，珍珠項鍊沒戴，第一次沒說一句帶刺的話。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "燈油不是油這件事全家都知道了，燈不再被當成油燈看",
+        "林美鳳自己換了後門的鎖，交出鑰匙"
+      ],
+      "characters": [
+        "fu-bo",
+        "shen-yuetang",
+        "su-xiao",
+        "lin-meifeng",
+        "shen-zhixing",
+        "s04-qin-guanshi",
+        "shen-zhiyuan"
+      ],
+      "locations": [
+        "沈家老宅後門",
+        "沈家老宅祠堂",
+        "老宅後巷"
+      ],
+      "state": {
+        "time": "後門換鎖之夜",
+        "knowledge": "她知道顧家用第三枚印試過燈座但開不了；知道燈油不是油",
+        "carry_forward": "屋頂上的人影"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "屋頂上的桶",
+      "youtube_title": "屋頂上留下一桶油，老管家一聞就說是顧家的，一百年前的那種桶",
+      "duration_s": 105,
+      "logline": "屋頂上的油桶讓福伯認出一百年前的東西，警方卻說一桶油不算犯罪，顧承霖同一夜把一把鑰匙交回林美鳳手上。",
+      "hook": "知遠和知行爬上屋頂，人影已經走了，留下一只桶——福伯打開一聞：「燈油。顧家的。」",
+      "hook_type": "image",
+      "mid_hook": "建邦報警，警察看了一眼：一桶油，沒有犯罪；江慕白說這是縱火的前置，可沒法證明。",
+      "extra_hooks": [
+        "林美鳳在娘家巷口見到顧承霖本人，他遞回那把後門鑰匙：「用它進去，妳是沈家人；不用，妳是我的人。」"
+      ],
+      "conflict": "顧家在老宅屋頂放了油，警方不管；她得決定是等警察還是先把一百年前的水缸裝滿。",
+      "turn": "福伯認出油桶的樣式——一百年前顧家藥鋪用的油桶，沈記火場的廢墟裡就撿到過同一種。桶，是證據，也是預告。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林美鳳握著那把鑰匙站在巷口，顧承霖的車開走了；她看向遠處老宅的燈光，手慢慢握緊。",
+        "question": "林美鳳會選哪邊？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "goxue"
+      ],
+      "spectacle": "老宅屋頂的夜景：兩個年輕人蹲在瓦上，一只舊油桶立在他們中間，遠處新城區的玻璃大樓亮著冷光。",
+      "glamour_shot": "沈知遠在屋頂的月光下單手拎起油桶，襯衫袖子捲到手肘，低頭看桶身時下顎線一條直線。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知遠與知行第一次並肩做一件事，兩房的曾孫站到同一片屋頂上",
+        "福伯認出油桶是百年前顧家的樣式，一百年前的火第一次有了實物線索"
+      ],
+      "characters": [
+        "shen-zhiyuan",
+        "shen-zhixing",
+        "fu-bo",
+        "shen-jianbang",
+        "jiang-mubai",
+        "lin-meifeng",
+        "gu-chenglin",
+        "shen-yuetang"
+      ],
+      "locations": [
+        "沈家老宅屋頂",
+        "沈家老宅大廳",
+        "林美鳳娘家的巷口"
+      ],
+      "state": {
+        "time": "後門換鎖後第二天",
+        "knowledge": "她知道顧家在準備對老宅動火、用的是一百年前同樣的桶；不知道哪一天",
+        "carry_forward": "林美鳳手裡的鑰匙"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "兄弟跪",
+      "youtube_title": "二房叔叔當眾跪祠堂，家主不肯認，八十二歲的母親一句話讓兩兄弟一起跪下",
+      "duration_s": 110,
+      "logline": "沈建業要在全家面前跪祠堂認祖，建邦不肯接，玉琴讓兩個兒子一起跪了。",
+      "hook": "祠堂裡建業對著燈跪下，第一句不是認錯：「祖奶奶，我爸的金條，我真的不知道。」她：「我知道。你爹不說，是怕你學。」",
+      "hook_type": "line",
+      "mid_hook": "顧家透過二房當年的人頭帳戶拋售沈氏股票，股價一天掉了兩成，建邦在祠堂門口接電話的手在抖。",
+      "extra_hooks": [
+        "臨江大學開學第一堂課，小滿坐到十八歲的太奶奶旁邊，對全班說：「我姐。」"
+      ],
+      "conflict": "建業認祖要二房全家到，林美鳳不在；建邦不肯接受弟弟，兄弟在祠堂裡吵起來。",
+      "turn": "玉琴推著輪椅進來：「兄弟吵，娘聽著。」兩兄弟同時閉嘴，一起跪到母親面前；燈亮了一分，二房正式認了她是沈月棠。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "建業起身時看見門檻外放著一碟醃菜——林美鳳每次家宴必帶的那一碟。人不在，菜在。玉琴說：「她來過。」",
+        "question": "林美鳳為什麼只留一碟菜？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "兩個五十多歲的男人並排跪在母親的輪椅前，祠堂的燈在他們頭頂亮了一分，照亮一牆的祖先。",
+      "glamour_shot": "沈月棠坐在藥學系教室最後一排，素色洋裝、麻花辮，低頭做筆記的側臉像一張老照片。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二房的沈建業正式認祖，第二枚銀印的來龍去脈他當眾說清",
+        "小滿以大學生身分重新站進校園，把太奶奶介紹成姐姐"
+      ],
+      "characters": [
+        "shen-jianye",
+        "shen-yuetang",
+        "shen-jianbang",
+        "shen-yuqin",
+        "shen-xiaoman",
+        "lin-meifeng",
+        "fu-bo"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "臨江大學藥學系教室",
+        "沈家老宅門檻"
+      ],
+      "state": {
+        "time": "建業認祖之日",
+        "knowledge": "她知道二房的男人們回家了；知道林美鳳到了門檻外",
+        "carry_forward": "門檻外的一碟醃菜"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "一碟菜",
+      "youtube_title": "那碟菜被擺到飯桌正中央，二房太太哭著拿起仇家給的卡片，顧家說今晚",
+      "duration_s": 105,
+      "logline": "林美鳳手裡握著顧承霖告訴她的日子，沈月棠在後院挖出一百年前的消防水缸。",
+      "hook": "林美鳳坐在娘家樓梯上，手機裡是知行傳來的照片：那碟醃菜放在飯桌正中央。她哭了，手裡捏著顧承霖的卡片。",
+      "hook_type": "image",
+      "mid_hook": "顧承霖親自登門娘家，對林美鳳只說兩個字：「今晚。」然後補一句：「妳去不去都行。」",
+      "extra_hooks": [
+        "她與福伯在後院挖出三口一百年前的消防水缸，玉琴在旁邊忽然說：「娘，缸要滿。」",
+        "周懷安告訴江慕白，他找到了三十多年前那本假帳的原件。"
+      ],
+      "conflict": "林美鳳知道顧家今晚要燒老宅；顧承霖故意讓她知道，她不懂為什麼；她要選回家還是閉嘴。",
+      "turn": "建業接到顧家最後一次電話，開價清掉所有債換他離開沈家；他說：「我回家了。」掛了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "藏館裡秦管事問：「她會說嗎？」顧承霖看著自己的燈：「會。她一說，他們就全都在。」「那不就……」「對。我就要他們都在。」",
+        "question": "他為什麼要全家都在老宅？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "後院土裡三口百年水缸被一口一口挖出來，缸身上還有當年的裂痕，雨水先落了進去。",
+      "glamour_shot": "林美鳳坐在樓梯上哭，沒有妝、頭髮用一條髮圈紮著，手裡那張卡片被淚水打皺。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "三口百年水缸出土，老街的人答應今晚來幫忙裝水",
+        "建業掛了顧家最後一通電話，二房的男人們選定了家"
+      ],
+      "characters": [
+        "lin-meifeng",
+        "shen-zhixing",
+        "gu-chenglin",
+        "shen-yuetang",
+        "fu-bo",
+        "shen-yuqin",
+        "zhou-huaian",
+        "jiang-mubai",
+        "shen-jianye",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "林美鳳的娘家",
+        "沈家老宅後院",
+        "顧氏藏館"
+      ],
+      "state": {
+        "time": "顧家動手前一天",
+        "knowledge": "觀眾知道今晚；她只知道水缸要滿；林美鳳知道日子",
+        "carry_forward": "顧承霖的『我就要他們都在』"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "今晚",
+      "youtube_title": "雨夜她終於跨進祠堂那一步，燈亮了一分，她轉身說出的話讓全家站起來",
+      "duration_s": 130,
+      "logline": "林美鳳要跨過祠堂門檻，沈月棠要全家接住她，而她帶來的消息讓這個家今晚無法入睡。",
+      "hook": "雨夜，林美鳳站在祠堂門外鞋都濕了；屋裡建業跪著，玉琴推輪椅過來拉她的手——這一次她沒縮。",
+      "hook_type": "image",
+      "mid_hook": "建邦開口：「進來吧。」林美鳳隔著門檻看沈月棠：「妳……真是奶奶？」她說：「進來就知道。」",
+      "extra_hooks": [
+        "山上，顧承霖穿上黑色立領長外套，秦管事把車鑰匙遞上：「下山。」",
+        "福伯把最後一口水缸裝滿，數了三遍。"
+      ],
+      "conflict": "林美鳳要在全家面前跨過門檻，面子與家要選一樣；她手裡還握著今晚的秘密。",
+      "turn": "她跨了過去，燈亮了一分，全家還沒來得及高興——她忽然轉身。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "林美鳳跨進祠堂那一步，燈亮了一分；她忽然轉身對沈月棠說：「他們要燒老宅。今晚。」窗外，雨停了。",
+        "question": "今晚誰來燒？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "dalian"
+      ],
+      "spectacle": "祠堂門檻上一隻濕的高跟鞋停住又跨過去的特寫，燈亮一分的瞬間整間祠堂的木頭都變成橘金色。",
+      "glamour_shot": "沈月棠在亮起來的燈前抬眼，白髮束在辮子裡、手背皺紋淡去一道，杏眼裡映著兩個人影走近。",
+      "setups": [],
+      "payoffs": [
+        "s04-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林美鳳跨進祠堂，二房全部回家，燈亮一分",
+        "林美鳳把顧家今晚縱火的消息帶回家，沈家第一次比顧家早知道一步"
+      ],
+      "characters": [
+        "lin-meifeng",
+        "shen-yuqin",
+        "shen-jianye",
+        "shen-jianbang",
+        "shen-yuetang",
+        "fu-bo",
+        "shen-zhixing",
+        "gu-chenglin",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈家老宅後院",
+        "顧家老宅"
+      ],
+      "state": {
+        "time": "顧家動手之夜，入夜",
+        "knowledge": "她知道今晚顧家要燒老宅；知道林美鳳回家了",
+        "carry_forward": "『今晚』兩個字；三口滿的水缸"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "水缸",
+      "youtube_title": "聽到今晚要燒老宅她沒逃，捲起袖子說水缸裝滿，整條老街的人湧進門排成人牆",
+      "duration_s": 110,
+      "logline": "沈月棠要用一百年前的辦法擋今晚的火：水缸、人牆、不逃；三更時一個人翻進了後院。",
+      "hook": "『今晚』兩個字落下，她沒跑，她把袖子捲起來：「水缸，裝滿。」福伯一聲「是」，整條老街的人從門口湧進來。",
+      "hook_type": "line",
+      "mid_hook": "林美鳳把話說完：顧家的人說火會從後院起——一百年前同一個地方。",
+      "extra_hooks": [
+        "山路上顧承霖的車停在半山，秦管事報告：「人牆排好了。」顧承霖：「好。」他本來就知道。"
+      ],
+      "conflict": "防火與等待；人牆排在老宅四周，周懷安帶盛通的保全守後巷，誰都不知道火從哪一秒來。",
+      "turn": "午夜顧家沒來；三更，一個人翻過後牆落在後院，被知行和老陳按住——縱火沒成，顧家的人被抓到一個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "被抓的人身上搜出一張手令：『後院，油，三更。』落款一個「山」字——福伯看了一眼，整個人僵住：「跟那張一樣。」",
+        "question": "哪張字條跟它一樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "tuanchong"
+      ],
+      "spectacle": "老宅四周一圈人牆、牆下一排排裝滿水的缸，月光照在水面上像一圈燈。",
+      "glamour_shot": "沈月棠捲起袖子站在水缸前，髮辮被夜風吹到肩後，杏眼盯著黑暗的後牆，手沒有抖。",
+      "setups": [
+        "s04-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "縱火沒成，顧家的手阿九被抓住",
+        "整條老街的人第一次為沈家排成人牆"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "fu-bo",
+        "lin-meifeng",
+        "lao-chen",
+        "shen-zhixing",
+        "zhou-huaian",
+        "s04-a-jiu",
+        "gu-chenglin",
+        "s04-qin-guanshi",
+        "s04-a-e"
+      ],
+      "locations": [
+        "沈家老宅四周",
+        "沈家老宅後院",
+        "顧家山路"
+      ],
+      "state": {
+        "time": "縱火之夜到三更",
+        "knowledge": "她知道顧家的手令上有一個『山』字；知道顧承霖早知道人牆",
+        "carry_forward": "福伯說的『那張』"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "同一支筆",
+      "youtube_title": "老管家從樑上取下一百年前的字條，跟今晚的手令並排一看，同一支筆",
+      "duration_s": 105,
+      "logline": "兩張隔了一百年的字條出自同一支筆，警方卻在一小時內放走了縱火的人，顧家送來一張上山的請帖。",
+      "hook": "福伯從祠堂樑上取下一只鐵盒，裡面一張發黃的紙：『沈記已燼，善鄰自珍。』落款也是一個「山」。兩張紙並排——同一支筆。",
+      "hook_type": "image",
+      "mid_hook": "警察到了，阿九說：「我是沈家請來看水缸的。」方律師一小時內把他保了出去。",
+      "extra_hooks": [
+        "蘇曉在警察帶走手令前把它逐字拍下，林導的直播同步放出去。"
+      ],
+      "conflict": "手令是一百年與今天的第一條實線，警方把它收走了，顧家的人走了；她要的是手令背後那個人。",
+      "turn": "她想上山，知遠擋在門口：「那是仇人的家。」她：「一百年前，是鄰居。」話沒說完，門外有人敲門——不是警察。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "秦管事站在門口，雙手遞上一張請帖：「老太爺請沈小姐上山喝茶。一個人。」她接過了。",
+        "question": "她會一個人上山嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "兩張紙並排在飯桌上，一張發黃一張全新，鏡頭推到兩個「山」字的最後一筆，一樣的勾。",
+      "glamour_shot": "沈月棠在燭光裡看那兩個字，白髮一束垂在胸前，眼神從少女變成一個老人家認出了舊仇。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "百年前大火隔天貼在沈記門口的字條出土，跟今晚的手令同一筆跡",
+        "江慕白以手令與影片對顧家提出告訴，方律師第一次沒有笑"
+      ],
+      "characters": [
+        "fu-bo",
+        "shen-yuetang",
+        "s04-a-jiu",
+        "s04-fang-lushi",
+        "su-xiao",
+        "lin-dao",
+        "jiang-mubai",
+        "shen-zhiyuan",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈家老宅飯桌",
+        "沈家老宅大門"
+      ],
+      "state": {
+        "time": "縱火之夜的次日",
+        "knowledge": "她知道一百年前的字條與今晚的手令是同一人寫的：顧遠山",
+        "carry_forward": "手上的請帖"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "一枚銅錢",
+      "youtube_title": "請帖裡沒有字只有一枚舊銅錢，背面刻著她的名字，全家不准她一個人上山",
+      "duration_s": 100,
+      "logline": "請帖裡的一枚銅錢讓沈月棠確定顧遠山在等她，全家不讓她一個人去，林美鳳第一次下廚。",
+      "hook": "請帖打開，裡面不是字，是一枚老銅錢——一百年前沈記門口那個一塊錢箱裡的第一枚，背面刻著一個「棠」。她的手抖了。",
+      "hook_type": "image",
+      "mid_hook": "周懷安攤開顧家的平面圖：藏館只有一道門，上山的人顧家說留就留。",
+      "extra_hooks": [
+        "飯桌十一個人坐著，林美鳳端菜出來不坐，站著吃：「我站著就好。」沒人笑她。"
+      ],
+      "conflict": "一個人上山是顧家開的條件；建邦要警察陪、知遠要自己去、福伯只說了一句話。",
+      "turn": "福伯說出一百年前的事：顧遠山與沈作甫是同窗，那枚銅錢是作甫丟進箱裡的第一枚——火那夜就不見了。顧遠山拿了一百年。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "深夜林導的直播帳號被封；蘇曉與知遠的手機同時收到一張匿名照片：藏館最深處一盞燈，燈下一張空椅子。「等妳。」",
+        "question": "顧遠山在等她做什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "一枚銅錢在飯桌正中央，十一個人的手都放在桌邊沒人去碰，燭光把它的影子拉得很長。",
+      "glamour_shot": "林美鳳繫著圍裙端菜出來，沒化妝、頭髮紮起，站在桌邊吃飯時眼眶紅了又笑。",
+      "setups": [
+        "s04-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "林美鳳第一次替沈家下廚，站在飯桌邊吃完一頓飯",
+        "福伯說出顧遠山與沈作甫是同窗，顧家與沈家的仇有了起點"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "zhou-huaian",
+        "fu-bo",
+        "lin-meifeng",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "lin-dao",
+        "gu-yuanshan"
+      ],
+      "locations": [
+        "沈家老宅飯桌",
+        "知遠小藥局"
+      ],
+      "state": {
+        "time": "請帖送到當天",
+        "knowledge": "她知道顧遠山與作甫是同窗、知道銅錢是作甫的",
+        "carry_forward": "燈下的空椅子"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "餌",
+      "youtube_title": "二房太太天亮衝進祠堂說想通了，顧家放她回來是為了讓祖奶奶離開這間屋",
+      "duration_s": 105,
+      "logline": "林美鳳想通顧承霖放她的用意，沈月棠知道上山是餌卻還是決定去，但把老宅留給了福伯。",
+      "hook": "林美鳳天亮衝進祠堂：「我想通了——他放我，是要妳走。」",
+      "hook_type": "line",
+      "mid_hook": "顧承霖公開宣布顧氏藏館將辦『臨江百年老店特展』，開幕當天展出沈記長明燈；記者問建邦，他說：「燈在沈家。」",
+      "extra_hooks": [
+        "小滿在大學圖書館的舊報紙裡找到一則百年前的新聞：『沈記大火，店主沈作甫殉』，配圖是沈記的門口。"
+      ],
+      "conflict": "上山是餌：顧承霖要她離開老宅；不去，顧遠山知道的那一夜就永遠沒人說。",
+      "turn": "她決定去，但把規矩立好：福伯一步不離燈，老街的人留在老宅，建邦守家主的位子——「我走的是人，不是家。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "出門前夜她解開麻花辮重新梳，福伯在門外說：「老太太，當年您出門也是這樣梳。」她的手停住，鏡子裡的白髮已經藏不進辮子。",
+        "question": "她還能以十八歲的臉上山嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "大學圖書館的舊報紙微縮片投影在牆上，一百年前沈記門口的黑白照片放大到整面牆。",
+      "glamour_shot": "沈月棠坐在老鏡子前梳辮子，鏡中的臉十八歲，辮子裡一半白；她看著鏡子，眼神沒有躲。",
+      "setups": [],
+      "payoffs": [
+        "s04-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧承霖放走林美鳳的用意被林美鳳自己拆穿：引她離開老宅",
+        "建邦在記者面前守住『燈在沈家』，特展成了顧家的笑話"
+      ],
+      "characters": [
+        "lin-meifeng",
+        "shen-yuetang",
+        "gu-chenglin",
+        "shen-jianbang",
+        "shen-xiaoman",
+        "fu-bo",
+        "lin-dao"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "顧氏藏館記者會",
+        "臨江大學圖書館"
+      ],
+      "state": {
+        "time": "上山前夜",
+        "knowledge": "她知道上山是餌；她把老宅的守法立好",
+        "carry_forward": "明早上山；藏不進辮子的白髮"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "一排招牌",
+      "youtube_title": "山上的鐵門開了，仇家領她走過一百年吞掉的招牌，盡頭的玻璃櫃讓她停下腳步",
+      "duration_s": 110,
+      "logline": "顧承霖要用一百年的戰利品壓垮沈月棠，她卻在長廊盡頭看見一座跟自家一模一樣的燈座。",
+      "hook": "山路盡頭顧家的鐵門開了，顧承霖站在門內，身後一排排老招牌：「歡迎。妳的在最後。」",
+      "hook_type": "image",
+      "mid_hook": "長廊裡她看見周記元記的真招牌，再往前——盛通的招牌已經掛上去了，收藏編號是新的。",
+      "extra_hooks": [
+        "老宅，秦管事帶著自稱文化局的人上門：「文資普查，請開祠堂。」福伯：「不開。」"
+      ],
+      "conflict": "顧承霖帶她走過一百年的戰利品，每一塊招牌都是一句『妳也會在這』；她不能在他面前慢下一步。",
+      "turn": "長廊盡頭一只玻璃櫃：一座燈座，三個印槽全空，跟沈家的一模一樣——兩盞燈同一個師傅做的，顧承霖沒想到她會先開口說出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "藏館最深處的門打開，床上一隻枯手舉起來，顧遠山的聲音：「月棠。坐。」門在她身後關了一半。",
+        "question": "顧遠山要跟她說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "xuanyi",
+        "shangzhan"
+      ],
+      "spectacle": "顧承霖在藏館一排排老招牌之間走過，墨綠與金的燈光一盞盞亮起，招牌上的店名從近到遠排了一百年。",
+      "glamour_shot": "沈月棠走在長廊中央背挺直、手交疊在腹前，兩側招牌的影子掠過她十八歲的側臉。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當著顧承霖認出每塊招牌的木料與年代，他的笑停了",
+        "福伯把文資普查的人擋在祠堂外，老宅沒有少一個人"
+      ],
+      "characters": [
+        "gu-chenglin",
+        "shen-yuetang",
+        "s04-qin-guanshi",
+        "fu-bo",
+        "gu-yuanshan",
+        "zhou-huaian"
+      ],
+      "locations": [
+        "顧家山門",
+        "顧氏藏館長廊",
+        "顧遠山的病床",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "上山當天",
+        "knowledge": "她知道兩盞燈是同一個師傅做的；知道盛通已經被顧家『收藏』",
+        "carry_forward": "關了一半的門"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "隔一盞燈",
+      "youtube_title": "十八歲和九十八歲隔一盞燈對坐，她把了他的脈只說一句你撐不過這盞油",
+      "duration_s": 110,
+      "logline": "沈月棠與顧遠山隔燈對坐，他開出說出那一夜的條件：聽完，就留下。",
+      "hook": "一個十八歲，一個九十八歲，隔一盞燈對坐；顧遠山先開口：「妳的辮子，還是那樣。」她：「你的燈，比我亮。」",
+      "hook_type": "line",
+      "mid_hook": "顧遠山把一樣東西推到燈前——沈作甫的圓框眼鏡，一邊鏡片碎了。她沒眨眼：「他近視，看不清你。」",
+      "extra_hooks": [
+        "老宅祠堂，蘇曉在燈座旁拆下一個小東西：文化局的人留下的攝影機，鏡頭對著燈。"
+      ],
+      "conflict": "顧遠山要說那一夜，條件是她聽完留在藏館；她要真相，也要回家。",
+      "turn": "她伸手把了他的脈，說：「你撐不過這盞油。」他笑了——這是一百年來第一個敢對他說這句話的人；他答應說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "顧遠山：「我說完，妳留在這裡；妳不留，我不說。」她看了燈一眼，坐直：「說。」",
+        "question": "她真的要留下來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "兩個百歲的對手隔燈對坐的對稱構圖：左邊少女的臉、右邊枯瘦的臉，中間一盞燈把兩張臉照成同一種顏色。",
+      "glamour_shot": "沈月棠伸手把脈，少女的手指搭在老人的腕上，燭光描出她低垂的睫毛與一百年沒變的沉穩。",
+      "setups": [
+        "s04-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她看見作甫的眼鏡沒有亂，顧遠山第一次收起試探",
+        "顧家留在祠堂的攝影機被拆掉，老宅不再被看"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "gu-chenglin",
+        "su-xiao",
+        "fu-bo"
+      ],
+      "locations": [
+        "顧遠山的病床前",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "上山當天夜裡",
+        "knowledge": "她知道顧遠山的燈撐不久；知道他要她留下才肯說",
+        "carry_forward": "她說的『說』"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "一百年前的街",
+      "youtube_title": "燈影裡回到一百年前的街，兩個十六歲的少年隔街遞藥，一個是她丈夫一個是他",
+      "duration_s": 115,
+      "logline": "顧遠山說起一百年前的同一條街與兩盞燈的規矩，山下顧承霖拿著法院的假處分到了祠堂門口。",
+      "hook": "燈影裡一百年前的沈記巷：兩個少年隔街遞一包藥，一個是作甫，一個是遠山。顧遠山的聲音：「那年我們都十六。」",
+      "hook_type": "image",
+      "mid_hook": "老宅門口，顧承霖親自下山，手裡是法院的文資暫時處分：「依法進祠堂看燈。」江慕白擋在門口念條文念到天亮。",
+      "extra_hooks": [
+        "知遠、知行坐上周懷安的車：「上山接她。」"
+      ],
+      "conflict": "真相要時間，顧承霖趁她不在對老宅動法律的手；兩邊同時在倒數。",
+      "turn": "顧遠山說出師傅的規矩：「兩盞燈，一個師傅，誰先滅誰家散。」他信了一百年，作甫從來不信。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "回憶裡，少年顧遠山夜裡站在沈記後院牆外，手裡一桶油——跟老宅屋頂那桶一樣的桶。畫面停在他抬手的那一刻。",
+        "question": "火真的是他放的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "一百年前的老街夜景：兩家藥鋪隔街相望，門口各掛一盞燈，兩盞燈的光在街心接在一起。",
+      "glamour_shot": "回憶裡的沈作甫，長衫、圓框眼鏡、溫潤書生氣，隔街遞藥時笑起來像沈知遠。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩盞燈的規矩說清：同一個師傅、誰先滅誰家散",
+        "江慕白以宗教場所條款擋下顧承霖的假處分到天亮"
+      ],
+      "characters": [
+        "gu-yuanshan",
+        "shen-yuetang",
+        "shen-zuofu",
+        "gu-chenglin",
+        "jiang-mubai",
+        "shen-zhiyuan",
+        "shen-zhixing",
+        "zhou-huaian",
+        "fu-bo"
+      ],
+      "locations": [
+        "顧遠山的病床前",
+        "回憶中的沈記巷",
+        "沈家老宅門口"
+      ],
+      "state": {
+        "time": "上山第二天",
+        "knowledge": "她知道兩盞燈的規矩；知道顧承霖已經走到老宅門口",
+        "carry_forward": "少年遠山手裡的油桶"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "火光",
+      "youtube_title": "火光映在少年的臉上他沒跑，濃煙裡一個人影抱著東西走出來，老人說我以為他會先救妳",
+      "duration_s": 110,
+      "logline": "顧遠山說到火光那一刻停下來，老宅這邊福伯抱著燈座睡在祠堂，知遠的車被顧家的山門擋住。",
+      "hook": "火光映在少年顧遠山的臉上，他沒跑，他看著沈記後院的濃煙裡一個人影抱著什麼走出來。現在的顧遠山閉上眼：「我以為他會先救妳。」",
+      "hook_type": "image",
+      "mid_hook": "老宅，顧承霖連夜另申請處分；福伯不走，抱著燈座靠著睡了，燈焰在他頭頂亮了一點。",
+      "extra_hooks": [
+        "知遠的車被顧家山門擋住，知行打給母親：「媽，顧家的門怎麼開？」林美鳳：「我知道。」"
+      ],
+      "conflict": "顧遠山說到最關鍵的一步停住，反問她那夜在哪；她不能慌，老宅那邊更不能散。",
+      "turn": "她以為兩盞燈各點各的；顧遠山說，顧家的燈是從作甫那盞燈上引的火——所以他一百年都怕沈家的燈先滅。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧遠山把作甫的碎眼鏡推到她手裡：「他倒下的時候，看的是我。」她握住眼鏡沒哭，手背的皺紋深了一道。",
+        "question": "作甫最後說了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "一百年前沈記後院的火光與濃煙，一個抱著燈的剪影從煙裡走出來；畫面只有光、煙與影。",
+      "glamour_shot": "沈月棠握著碎眼鏡低頭，白髮垂到手上，少女的臉與起了皺紋的手在同一格裡。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "福伯守住燈過了一夜，顧承霖第二次處分沒進門",
+        "林美鳳用自己知道的門禁替知遠開了顧家的外門"
+      ],
+      "characters": [
+        "gu-yuanshan",
+        "shen-yuetang",
+        "shen-zuofu",
+        "fu-bo",
+        "gu-chenglin",
+        "shen-zhiyuan",
+        "shen-zhixing",
+        "lin-meifeng"
+      ],
+      "locations": [
+        "顧遠山的病床前",
+        "回憶中的沈記後院",
+        "沈家老宅祠堂",
+        "顧家山門"
+      ],
+      "state": {
+        "time": "上山第二天夜裡",
+        "knowledge": "她知道顧家的燈是從沈家的燈引火點的；知道作甫倒下時看的是顧遠山",
+        "carry_forward": "手裡的碎眼鏡；外門開了"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "第三枚印",
+      "youtube_title": "老太爺摘下孫子的戒指放到燈前，說出第三枚印開的是什麼，孫子走進來把它拿了回去",
+      "duration_s": 110,
+      "logline": "顧遠山說出第三枚印開的是燈座與他肯說的原因，顧承霖走進來把戒指戴了回去。",
+      "hook": "顧遠山伸出枯手，手上是顧承霖的戒指——他摘下來放在燈前：「第三枚，妳要知道它開什麼。」",
+      "hook_type": "image",
+      "mid_hook": "秦管事報告戒指被老太爺拿走，顧承霖只說：「老的不行了。鎖門。」",
+      "extra_hooks": [
+        "知遠、知行、周懷安站在藏館內門前，門禁滅了——林美鳳的密碼只開得了外門。"
+      ],
+      "conflict": "顧遠山為什麼肯說、第三枚印開什麼，他要一次說完；顧承霖已經在鎖門。",
+      "turn": "『一印開燈』不是點燈，是開燈座：三印齊了燈座才開，裡面是作甫留給她的話。他肯說的原因只有一句：「吹了一百年別人的燈，我的沒亮過一分。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "顧承霖走進來把戒指戴回手上，對床上的老人說：「爺爺，接下來是我的事。」轉頭對她笑：「妳聽完再走——如果走得了。」",
+        "question": "顧承霖會讓她走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "第三枚銀印放在燈前，燈焰在它上面跳了一下，床上的老人與椅上的少女同時看著那一點光。",
+      "glamour_shot": "顧承霖把戒指戴回去的手部特寫，抬眼時桃花眼在燈光裡溫柔得發冷。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t06",
+        "s04-t13",
+        "s04-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第三枚印開的是燈座，三印齊才開，燈座裡是作甫留給她的話",
+        "顧遠山肯說的原因落定：他承認吹別人的燈從沒讓自己的燈亮過；他的燈撐不過今年"
+      ],
+      "characters": [
+        "gu-yuanshan",
+        "shen-yuetang",
+        "gu-chenglin",
+        "s04-qin-guanshi",
+        "shen-zhiyuan",
+        "shen-zhixing",
+        "zhou-huaian"
+      ],
+      "locations": [
+        "顧遠山的病床前",
+        "顧氏藏館內門"
+      ],
+      "state": {
+        "time": "上山第三天",
+        "knowledge": "她知道第三枚印開的是燈座；知道顧遠山為什麼肯說、他的燈撐不過今年",
+        "carry_forward": "顧承霖的『如果走得了』"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "門口",
+      "youtube_title": "九十八歲的老太爺把孫子趕出門，說出一百年前那夜的真相，燈光裡她的影子是老人",
+      "duration_s": 140,
+      "logline": "顧遠山要在孫子鎖門前把一百年前那一夜說完，沈月棠聽到了丈夫最後走到的地方。",
+      "hook": "顧遠山對孫子說：「出去。」顧承霖沒動；老人第一次提高聲音：「出去！」燈焰跳了一下，顧承霖退到門外。",
+      "hook_type": "line",
+      "mid_hook": "他說出那夜：火是他放的，從後院的油桶；作甫沒救人也沒救貨，他轉身跑回去抱燈。",
+      "extra_hooks": [
+        "老宅，秦管事午夜帶著文資封條到祠堂，福伯坐在燈座上不走，玉琴、小滿、蘇曉把手勾在一起圍住燈。",
+        "周懷安在藏館內門外撥了一通電話：「記者會，明天。」"
+      ],
+      "conflict": "一百年前的真相與她的自由在同一個房間裡，顧承霖在門外等她聽完。",
+      "turn": "她以為作甫是在火裡倒下的；顧遠山說作甫抱著燈走出火場，走到門口，把燈交到他手上——燈在仇人的手裡亮了一夜，沒滅。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧遠山說完，枯手舉起燈罩：「他是在門口倒下的。燈沒滅。」她站起身，燈光裡她看見自己的影子是老人的。身後，顧承霖關上了藏館的門。",
+        "question": "她被鎖在藏館了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "一百年前大火中抱燈走出的剪影疊在今夜的她身上：同一盞燈、同一個門口、一個是他、一個是她。",
+      "glamour_shot": "沈月棠站起來的那一秒，燈光把她的影子投在牆上——影子是駝背的老人，臉還是十八歲，她看著影子沒有閃。",
+      "setups": [],
+      "payoffs": [
+        "s04-t14"
+      ],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "一百年前大火的真相全部說出：顧遠山縱火，沈作甫為抱燈走到門口倒下",
+        "老宅的燈被玉琴、小滿、蘇曉圍住，封條沒貼上"
+      ],
+      "characters": [
+        "gu-yuanshan",
+        "gu-chenglin",
+        "shen-yuetang",
+        "shen-zuofu",
+        "s04-qin-guanshi",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-xiaoman",
+        "su-xiao",
+        "zhou-huaian"
+      ],
+      "locations": [
+        "顧遠山的病床前",
+        "回憶中的沈記門口",
+        "沈家老宅祠堂",
+        "顧氏藏館內門外"
+      ],
+      "state": {
+        "time": "上山第三天深夜",
+        "knowledge": "她知道了作甫是怎麼死的、走到了哪；她知道自己的影子已經是老人",
+        "carry_forward": "關上的藏館門；明天的記者會"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "鎖",
+      "youtube_title": "鐵門關上的回音裡仇家說我的才開始，老宅被貼封條，二房太太第一次替沈家罵人",
+      "duration_s": 105,
+      "logline": "沈月棠被鎖在藏館，顧家的人帶著封條進了老宅第一進，林美鳳第一次替沈家擋在門口。",
+      "hook": "鐵門關上的回音裡，顧承霖的聲音從門外傳來：「爺爺的話說完了，我的才開始。」她回頭，顧遠山的燈暗了一分。",
+      "hook_type": "line",
+      "mid_hook": "天亮，顧家的人拿著文資封條進了老宅第一進；林美鳳站到門口：「我是沈家二房，你是哪房？」",
+      "extra_hooks": [
+        "周懷安在盛通頂樓從父親留下的舊鹽罐裡取出一本帳——三十多年前那本假帳的原件。"
+      ],
+      "conflict": "她被鎖著，顧遠山的脈越來越弱；她是這屋裡唯一會把脈的人，而他是一百年的仇人。",
+      "turn": "她沒拍門，她坐回床邊替顧遠山把脈、按穴，老人氣息穩了，說：「這屋有第二道門，招牌後面。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "顧遠山忽然抓住她的手腕：「他會倒油。倒油燈不滅，滅的是——」話沒說完，他的手鬆了。",
+        "question": "顧遠山說不完的是什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "ganren"
+      ],
+      "spectacle": "藏館鐵門內外：外面一排老招牌的燈一盞盞熄滅，裡面只剩病床前一盞燈與兩個人。",
+      "glamour_shot": "林美鳳站在老宅門檻上雙手叉腰，大波浪重新吹好、珍珠項鍊戴回去，罵人的時候眼睛亮得像換了個人。",
+      "setups": [
+        "s04-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧遠山的氣息被她穩住，說出藏館第二道門的位置",
+        "林美鳳當眾替沈家擋門，二房的嘴第一次替大房說話"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "gu-yuanshan",
+        "lin-meifeng",
+        "s04-qin-guanshi",
+        "zhou-huaian",
+        "fu-bo"
+      ],
+      "locations": [
+        "顧遠山的病床前",
+        "沈家老宅第一進",
+        "盛通集團頂樓"
+      ],
+      "state": {
+        "time": "被鎖的第一天",
+        "knowledge": "她知道藏館有第二道門；顧遠山的話只說了一半",
+        "carry_forward": "『滅的是——』"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "第二道門",
+      "youtube_title": "招牌後面藏著一道門，門後的展櫃空著等沈記的燈，收藏卡上捐贈人竟是二房叔叔",
+      "duration_s": 105,
+      "logline": "沈月棠找到藏館的第二道門，門後的特展展櫃已經替沈記的燈留好位子，捐贈人寫著沈建業。",
+      "hook": "她把手指搭回顧遠山的腕上——脈還在，弱得像燈芯；她把他的燈罩扶正，去找那道門。",
+      "hook_type": "image",
+      "mid_hook": "文化局門口，建邦當著記者撤回自己當初簽的收藏意向書：「那是我糊塗。燈不是文物，是我家。」",
+      "extra_hooks": [
+        "知遠、知行、周懷安、老陳和整條街的人聚在顧家山門外，老陳開來了米行的貨車。"
+      ],
+      "conflict": "第二道門在一塊燒過的沈記老招牌後面，鎖在外側；門後有人在搬東西。",
+      "turn": "門推開是特展的展廳：一排展櫃，正中央一個空的，標籤寫『沈記長明燈』，開幕日期——明天。他們要先滅燈，再把死的燈搬進來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "展櫃旁一張收藏卡已經印好：『沈記長明燈，熄於本年』——下面一行小字：捐贈人，沈建業。",
+        "question": "建業又背叛了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "特展展廳一排亮著燈的展櫃，中央一個空櫃，燈光打在一張標籤上：沈記長明燈。",
+      "glamour_shot": "沈建邦在文化局門口的鏡頭前把眼鏡拿下來擦，說『是我家』時第一次直視鏡頭。",
+      "setups": [
+        "s04-t17"
+      ],
+      "payoffs": [
+        "s04-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "建邦當眾撤回收藏意向書，顧家文資處分的根據塌了一半",
+        "她找到第二道門，知道顧家明天要讓死的燈進展櫃"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "shen-jianbang",
+        "jiang-mubai",
+        "lin-dao",
+        "shen-zhiyuan",
+        "shen-zhixing",
+        "zhou-huaian",
+        "lao-chen"
+      ],
+      "locations": [
+        "顧遠山的病床前",
+        "顧氏藏館特展展廳",
+        "文化局門口",
+        "顧家山門外"
+      ],
+      "state": {
+        "time": "被鎖的第二天",
+        "knowledge": "她知道顧家明天要讓熄滅的燈進展櫃；知道顧遠山的燈正在熄；看見捐贈人寫的是建業",
+        "carry_forward": "捐贈人沈建業"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "我賣顧家",
+      "youtube_title": "收購大王開記者會把假帳與收購合約投影在同一面牆，說我今天不賣招牌我賣顧家",
+      "duration_s": 115,
+      "logline": "周懷安要在記者會上公開顧家三十多年的假帳與收購合約，顧家律師要讓他說不下去。",
+      "hook": "盛通大樓一樓，周懷安把兩份文件投影在同一面牆：左邊是父親店的假帳，右邊是顧承霖簽好名的收購合約。「我今天不賣招牌，我賣顧家。」",
+      "hook_type": "line",
+      "mid_hook": "藏館走廊裡顧承霖用手機看直播，對秦管事說：「刀鈍了，換一把。」然後：「今晚，老宅。」",
+      "extra_hooks": [
+        "建業看見網路上的收藏卡照片，衝進顧家律師事務所撕掉當年林美鳳簽的委託書。"
+      ],
+      "conflict": "方律師當場指控妨害名譽，記者會可能十分鐘就散；周懷安要讓證據站住。",
+      "turn": "杜老帶著公會老帳上台，江慕白當眾念出收購合約的條款——然後他說出自己老師在假帳上的簽名。他替自己的門派付了代價。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "記者會散場，周懷安的手機響，秦管事的聲音：「周先生，你父親的招牌，今晚跟沈家的燈一起進展櫃。」",
+        "question": "今晚顧家要動燈了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "shangzhan",
+        "henla"
+      ],
+      "spectacle": "記者會上兩家合約並排投影在一整面白牆上，閃光燈把牆照成一片白，周懷安的影子站在中間。",
+      "glamour_shot": "周懷安站在投影前，深灰三件式西裝、鬢角齊整，說『我賣顧家』時第一次笑得像一個兒子。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周懷安公開反咬顧家，盛通與顧家當眾決裂，顧承霖簽名的收購合約作廢",
+        "建業撕掉二房的委託書，顧家再無法用二房的名義動老宅"
+      ],
+      "characters": [
+        "zhou-huaian",
+        "s04-fang-lushi",
+        "s04-du-lao",
+        "jiang-mubai",
+        "gu-chenglin",
+        "s04-qin-guanshi",
+        "shen-jianye",
+        "lin-dao"
+      ],
+      "locations": [
+        "盛通大樓記者會",
+        "顧氏藏館走廊",
+        "顧家律師事務所"
+      ],
+      "state": {
+        "time": "被鎖的第三天",
+        "knowledge": "周懷安徹底倒戈；觀眾知道顧家今晚動老宅",
+        "carry_forward": "今晚的燈與招牌"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "撞門",
+      "youtube_title": "米行的貨車車頭對準仇家鐵門，老闆說坐穩，一排老招牌像骨牌一樣倒下",
+      "duration_s": 110,
+      "logline": "老街的人衝進藏館救沈月棠，她走到鐵門前卻回頭看了一眼留在最深處的那點光。",
+      "hook": "顧家山門外，老陳開著米行的貨車，車頭對準鐵門；知遠在副駕：「陳叔。」老陳：「坐穩。」",
+      "hook_type": "image",
+      "mid_hook": "撞門的聲音傳進最深處，顧遠山說：「去。燈我自己守。」她跑過長廊，兩側老招牌一排排倒下。",
+      "extra_hooks": [
+        "老宅，秦管事帶著新的文資暫時處分與警察到祠堂門口，林美鳳和建業跪在門檻上不讓。"
+      ],
+      "conflict": "藏館的保全與老街的人在鐵門兩邊；顧承霖不在——他已經下山。",
+      "turn": "她被救出來的那一刻說的第一句不是謝，是：「他去老宅了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她跑到鐵門前，回頭看藏館最深處那一點光；知遠拉她：「太奶奶，走！」她：「他一個人。」她停了一步。",
+        "question": "她會回去救仇人嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "藏館鐵門被撞開，一排老招牌從門口到長廊盡頭一塊接一塊倒下，灰塵在墨綠與金的燈光裡揚起。",
+      "glamour_shot": "沈月棠在倒下的招牌之間奔跑，辮子甩到身後，白髮與黑髮在燈光裡分成兩色。",
+      "setups": [
+        "s04-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她被老街的人救出藏館",
+        "知行對秦管事的人說出『我是沈家的』，二房的兒子正式站在門檻上"
+      ],
+      "characters": [
+        "lao-chen",
+        "shen-zhiyuan",
+        "shen-yuetang",
+        "gu-yuanshan",
+        "shen-zhixing",
+        "zhou-huaian",
+        "s04-qin-guanshi",
+        "lin-meifeng",
+        "shen-jianye",
+        "s04-a-e"
+      ],
+      "locations": [
+        "顧家山門",
+        "顧氏藏館長廊",
+        "沈家老宅祠堂門口"
+      ],
+      "state": {
+        "time": "被鎖的第三天夜裡",
+        "knowledge": "她知道顧承霖已經在老宅；顧遠山一個人守著自己的燈",
+        "carry_forward": "最深處那一點光"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "下山",
+      "youtube_title": "後照鏡裡她的辮子白了一半，趕回老宅時仇家坐在飯桌主位說坐，等妳一起看",
+      "duration_s": 105,
+      "logline": "沈月棠趕回老宅，顧承霖已經坐在她家的飯桌主位等她看燈被倒掉。",
+      "hook": "她沒回去，把作甫的碎眼鏡收進袖子轉身上車：「老宅。」車下山時，她在後照鏡裡看見自己的辮子白了一半。",
+      "hook_type": "image",
+      "mid_hook": "祠堂裡秦管事拿著處分對坐在燈座上的福伯說：「福伯八十八了，別摔。」福伯：「九十了。」他不動，警察站在旁邊不知道該扶誰。",
+      "extra_hooks": [
+        "林美鳳打開老宅大門，整條老街的人湧進院子，燈焰在顧家的人面前亮了一點。"
+      ],
+      "conflict": "下山要一小時，顧承霖已經在老宅，處分讓他能碰燈；他卻不碰，他等她。",
+      "turn": "顧承霖沒倒油，他坐在飯桌主位面前擺一碗飯；他要她親眼看。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她衝進老宅大門，飯桌主位坐著顧承霖，面前一碗飯；他說：「坐。等妳一起看。」祠堂裡，秦管事的手已經握住燈座。",
+        "question": "他要她看什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "xiju",
+        "goxue"
+      ],
+      "spectacle": "老宅院子擠滿老街的人，飯桌上只坐著一個黑衣人，一碗飯在他面前冒著煙。",
+      "glamour_shot": "沈月棠從車上下來，後照鏡裡半白的辮子、十八歲的臉，眼神是回家的老人家。",
+      "setups": [
+        "s04-t18"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "福伯一步沒離開燈座，顧家處分期間燈沒被碰",
+        "老街的人填滿老宅院子，燈焰在人多時亮了一點"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "s04-qin-guanshi",
+        "fu-bo",
+        "lin-meifeng",
+        "gu-chenglin",
+        "shen-zhiyuan",
+        "lao-chen",
+        "s04-a-e"
+      ],
+      "locations": [
+        "顧家下山的車上",
+        "沈家老宅祠堂",
+        "沈家老宅飯桌"
+      ],
+      "state": {
+        "time": "下山之夜",
+        "knowledge": "她知道顧承霖要她親眼看燈被倒掉",
+        "carry_forward": "握住燈座的手"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "一滴，兩滴",
+      "youtube_title": "燈油沿著燈座流下來，老管家用手去接，家主第一次站到仇家面前說我是家主",
+      "duration_s": 110,
+      "logline": "顧承霖在法律允許的二十分鐘裡倒掉一半燈油，沈建邦第一次以家主的身分擋在燈前。",
+      "hook": "秦管事把燈座傾斜，燈油沿著邊緣流下來，一滴，兩滴；福伯撲上去用手接。她喊：「別碰。」",
+      "hook_type": "danger",
+      "mid_hook": "江慕白在電話裡找到值夜法官撤銷處分，可顧家還有二十分鐘；建邦站到秦管事與燈之間：「我是家主。」",
+      "extra_hooks": [
+        "山上，顧遠山一個人躺著，他的燈忽然亮了一下，然後暗下去。"
+      ],
+      "conflict": "處分二十分鐘內顧家可以『移動』燈；她不能動手，只能靠人站在那裡。",
+      "turn": "顧承霖親自接過燈座，倒掉三分之一；燈焰縮小，她的白髮一縷一縷多起來——他看的不是燈，是她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "燈只剩一半，她走到燈前，顧承霖讓開一步；她低頭看燈，一縷白髮從辮子裡掉出來落在燈座上——燈焰一跳，又縮回去。",
+        "question": "她還撐得住幾口氣？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "ganren"
+      ],
+      "spectacle": "燈油從燈座邊緣滑落的慢動作特寫，背景是一排人站著不動的腳，福伯的手掌裡盛著油。",
+      "glamour_shot": "沈建邦擋在燈前，襯衫扣到頂、眼鏡後的眼睛沒有愁容，說『我是家主』時背第一次挺直。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "建邦第一次以家主身分站到顧承霖面前，處分在撤銷令到的那一秒失效",
+        "燈保住一半，福伯接的油被倒回燈座"
+      ],
+      "characters": [
+        "s04-qin-guanshi",
+        "fu-bo",
+        "shen-yuetang",
+        "jiang-mubai",
+        "shen-jianbang",
+        "gu-chenglin",
+        "gu-yuanshan"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "顧遠山的病床前"
+      ],
+      "state": {
+        "time": "下山之夜，午夜前",
+        "knowledge": "她知道燈只剩一半、顧承霖要看的是她變老",
+        "carry_forward": "跳了一下又縮回去的燈焰"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "油不是油",
+      "youtube_title": "她把新油倒進燈座燈焰不理，老管家說油不是油，天亮前送來的不是處分是疏散令",
+      "duration_s": 105,
+      "logline": "沈月棠想把燈油補回去卻發現燈不認油，顧家天亮前送來的文件要全家離開老宅。",
+      "hook": "顧家的人退出大門，她跪在燈前把新油倒進燈座——燈焰不理，還是一半。福伯：「老太太，油不是油。」",
+      "hook_type": "line",
+      "mid_hook": "周懷安帶杜老來，公會老帳上記著點燈師傅的規矩：『燈油為守家人之心』——一百年前就寫在那裡。",
+      "extra_hooks": [
+        "山上，顧承霖回來看爺爺的燈：暗了三分之一，跟他倒掉的沈家燈油一樣多。他盯著那盞燈很久。",
+        "小滿打開直播對著飯桌：「這是我家，我姐在這。」留言刷成一片。"
+      ],
+      "conflict": "燈不認油；顧家天亮還會來；全家要變成燈油，就得一個都不走。",
+      "turn": "林美鳳把顧遠山沒說完的那句話補完：「倒油燈不滅，滅的是人。」顧家下一步不是倒油，是讓人走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "天亮前秦管事送來的不是處分，是消防局的『危險建物疏散令』：老宅全員今晨八點前撤離。她看完第一行：「他要的不是油。」",
+        "question": "他要全家離開老宅？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "祠堂裡全家圍著一盞只剩一半的燈坐了一夜，天色從窗紙透進來，燈的光與晨光接在一起。",
+      "glamour_shot": "沈小滿舉著手機直播，哭完抬頭的那一刻眼睛亮，書包上的鈴鐺在鏡頭邊響。",
+      "setups": [],
+      "payoffs": [
+        "s04-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "燈油是守家人的心這條規矩找到百年前的字據，全家不再補油",
+        "顧承霖親眼看見自家的燈跟著他倒掉的量一起暗"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "fu-bo",
+        "zhou-huaian",
+        "s04-du-lao",
+        "lin-meifeng",
+        "gu-chenglin",
+        "gu-yuanshan",
+        "shen-xiaoman",
+        "s04-qin-guanshi"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "顧遠山的病床前",
+        "沈家老宅飯桌"
+      ],
+      "state": {
+        "time": "天亮前",
+        "knowledge": "她知道倒油滅不了燈、人走才會；知道顧家要全家離開",
+        "carry_forward": "八點的疏散令"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "八點整",
+      "youtube_title": "八點整女兒的輪椅被推過門檻燈暗一分，燈剩豆大一點，她走回門內鏡子裡滿頭白髮",
+      "duration_s": 110,
+      "logline": "疏散令把全家一個一個請出老宅，每走一人燈暗一分，沈月棠守法走出去再走回來時已經滿頭白髮。",
+      "hook": "八點整，消防的人把玉琴的輪椅推出門，玉琴抓著門框：「我家。」輪椅過門檻那一刻，燈暗了一分。",
+      "hook_type": "image",
+      "mid_hook": "祠堂裡，顧承霖拿著『明火危險』的安全理由，秦管事把剩下的油倒進一只金屬罐——燈只剩豆大一點。",
+      "extra_hooks": [
+        "消防局裡，建業在局長面前撕掉自己名字的捐贈紀錄：「我二房，我家主是我哥，疏散令是假申請。」"
+      ],
+      "conflict": "守法就得出門，出門燈就暗；她選擇守法，再用法律把人帶回來。",
+      "turn": "建業的撤銷讓疏散令作廢，消防撤走；她第一個跨回門檻，經過大廳的老鏡子——滿頭白髮。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她跨回門檻，大廳的老鏡子映出她——滿頭白髮，十八歲的臉。她停了一秒，沒看鏡子，往祠堂走。",
+        "question": "她還有多少時間？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "ganren"
+      ],
+      "spectacle": "老宅大門口一個一個被請出來的人排在街上，門裡的燈每出一人縮一分，最後只剩豆大一點在黑暗裡。",
+      "glamour_shot": "大廳老鏡子裡，滿頭白髮的麻花辮配一張十八歲的臉，她走過鏡子沒有停。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "疏散令作廢，全家與老街的人走回老宅",
+        "建業在消防局當眾認下二房的錯，顧家再借不到二房的名"
+      ],
+      "characters": [
+        "shen-yuqin",
+        "shen-yuetang",
+        "gu-chenglin",
+        "s04-qin-guanshi",
+        "shen-jianye",
+        "zhou-huaian",
+        "jiang-mubai",
+        "fu-bo"
+      ],
+      "locations": [
+        "沈家老宅大門",
+        "沈家老宅祠堂",
+        "臨江市消防局",
+        "沈家老宅大廳"
+      ],
+      "state": {
+        "time": "疏散之晨",
+        "knowledge": "她知道燈只剩豆大一點、自己滿頭白髮",
+        "carry_forward": "豆大的燈；門口的顧承霖"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "看妳跪",
+      "youtube_title": "仇家站在豆大的燈旁說我等妳看妳跪，山上一通電話說老太爺的燈跟著暗了",
+      "duration_s": 110,
+      "logline": "顧承霖要看沈月棠跪，山上傳來的消息讓他第一次不確定自己的燈。",
+      "hook": "祠堂裡燈只剩豆大一點，顧承霖站在燈旁沒碰它：「我等妳。」她：「等我做什麼？」他：「看妳跪。」",
+      "hook_type": "line",
+      "mid_hook": "秦管事接到山上的電話，臉色變了：「老太爺的燈——跟著暗了。」顧承霖的手指動了一下。",
+      "extra_hooks": [
+        "老街的人跟著全家走回院子，六十個人，豆大的燈焰在人進來時穩住了。"
+      ],
+      "conflict": "她不會跪他；顧承霖認定沈家的燈滅了顧家的燈就會亮，山上的消息說的是相反的事。",
+      "turn": "顧遠山在山上打來，電話開著擴音：「承霖，回來。」顧承霖沒有走——他看著那一點火，第一次不知道該吹還是該等。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她在燈前跪下——不是對他，是對燈；福伯跟著跪在她身後。顧承霖走到門口深深吸了一口氣：「我吹一口，就完了。」她沒回頭：「吹。」",
+        "question": "他真的會吹嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "祠堂裡一點豆大的火，火前一個白髮少女與一個老管家跪著，門口一個黑衣人的剪影，院子裡六十個人的影子。",
+      "glamour_shot": "沈月棠跪下時白髮辮子垂到地上，抬眼看燈的那一秒，豆大的火光只照亮她一雙杏眼。",
+      "setups": [],
+      "payoffs": [
+        "s04-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧家的燈跟著沈家的燈一起暗，顧承霖的信念第一次動搖",
+        "老街六十個人走回老宅院子，豆大的燈焰穩住"
+      ],
+      "characters": [
+        "gu-chenglin",
+        "shen-yuetang",
+        "s04-qin-guanshi",
+        "gu-yuanshan",
+        "fu-bo",
+        "lao-chen",
+        "s04-a-e"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈家老宅院子"
+      ],
+      "state": {
+        "time": "疏散之晨之後",
+        "knowledge": "她知道顧家的燈跟著暗了；知道顧承霖在門口",
+        "carry_forward": "她說的『吹』"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "吹燈",
+      "youtube_title": "全家一個一個跪在豆大的燈火前，二房太太跪下叫了奶奶，門口那個人笑著吹了一口氣",
+      "duration_s": 150,
+      "logline": "沈家十一個人要一個一個跪到燈前，顧承霖在門口等人齊了再吹那一口氣。",
+      "hook": "「吹。」她說完，顧承霖的氣停在胸口；他沒吹——他在等人齊。門外，玉琴的輪椅先進來。",
+      "hook_type": "line",
+      "mid_hook": "林美鳳跟著建業跪在知行後面，開口叫了一聲：「奶奶。」二房三個人全跪了；建邦數人：「十一個，到了。」",
+      "extra_hooks": [
+        "周懷安站在門口不進來：「我不是沈家人。」她：「門口站著也算。」他站住了。",
+        "山上，顧遠山一個人睜開眼：「承霖……」他的燈焰跳了一下。"
+      ],
+      "conflict": "燈只剩豆大一點，全家跪在燈前，顧承霖在門口等著吹；誰都不知道人齊了燈會怎樣。",
+      "turn": "最後一個人跪下，燈光一跳——亮了。顧承霖看見了，笑了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她跪在只剩一點火的燈前，福伯、玉琴、建邦、知遠、小滿、知行、蘇曉一個一個跪在她身後；燈光一跳——顧承霖在門口看見，笑著吹了一口氣。畫面黑。",
+        "question": "燈滅了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        5,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "祠堂裡一排人跪在豆大的燈火前，從燈的位置往門口拍：十一個人的背、一個門口的黑影、一口氣。",
+      "glamour_shot": "沈月棠滿頭白髮、十八歲的臉，跪在燈前抬眼，燈光一跳的那一秒把她整張臉照亮——全家沒有一個人移開眼睛。",
+      "setups": [],
+      "payoffs": [
+        "s04-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二房全家跪回祠堂、林美鳳叫了奶奶，沈知行正式回家",
+        "十一個人跪齊的那一秒，豆大的燈光跳了一下"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "shen-yuqin",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-zhixing",
+        "shen-jianbang",
+        "fu-bo",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "su-xiao",
+        "zhou-huaian",
+        "gu-yuanshan"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈家老宅門口",
+        "顧遠山的病床前"
+      ],
+      "state": {
+        "time": "第四季最後一夜",
+        "knowledge": "全家跪齊、燈光跳了一下；顧承霖吹了那一口氣；她一夜之間滿頭白髮",
+        "carry_forward": "黑掉的畫面：燈滅了沒有"
+      }
+    }
+  ]
+}

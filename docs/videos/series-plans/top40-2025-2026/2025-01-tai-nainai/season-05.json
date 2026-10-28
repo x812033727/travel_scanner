@@ -1,0 +1,4952 @@
+{
+  "number": 5,
+  "title": "坐滿的飯桌",
+  "theme": "家不是撐住的，是坐滿的。",
+  "start_state": "燈只剩一點，沈月棠滿頭白髮、走不快了，但沒滅。顧承霖吹不滅它。顧遠山的燈反而開始暗。周懷安倒戈，二房回家，老街站回來。百年前的縱火進了檢方，沈記要在原址重開。",
+  "end_state": "顧家的縱火與侵占當眾定讞，顧遠山在自己的燈前說出兩盞燈的真相；第三枚銀印回到她手上，第三份家底不是東西，是沈作甫刻在燈座底下的那一句話。沈記老字號在原址重開。最後一集全家十二個人坐滿飯桌，她把年輕還給燈，一秒秒變回九十六歲，燈反而最亮。最後一格：山上顧家祠堂裡，另一盞燈亮起，一個十八歲的少年睜開眼。",
+  "guest_cast": [
+    {
+      "id": "s05-zheng-shouyi",
+      "name": "鄭守義",
+      "role": "臨江地方法院審理縱火侵占案的法官，六十歲，話少、看手不看嘴；第二、三篇章法庭戲的裁判",
+      "appearance": "東亞中年男性，六十歲，清瘦、短白髮、方框眼鏡，黑色法袍，神情平靜，開口前習慣先看當事人的手"
+    },
+    {
+      "id": "s05-du-mingzhe",
+      "name": "杜明哲",
+      "role": "顧承霖請來的首席律師，四十八歲，全城最貴的律師團之首，擅長用程序與身分攻防",
+      "appearance": "東亞中年男性，俊朗冷峭：高鼻、薄唇、短髮抹得極齊，深藍訂製西裝與銀色領帶夾，笑的時候只動一側嘴角"
+    },
+    {
+      "id": "s05-xu-ruohan",
+      "name": "許若涵",
+      "role": "負責縱火侵占案的檢察官，三十六歲，追加顧承霖為被告的人",
+      "appearance": "東亞年輕女性，俐落清秀：中長髮低馬尾、細框眼鏡、黑西裝外套與白襯衫，眼神直、語速快，手上永遠拿著一份卷宗"
+    },
+    {
+      "id": "s05-wen-lin",
+      "name": "文琳",
+      "role": "臨江大學歷史系副教授，三十八歲，一九二六年鄰居教授文崇山的曾孫女，帶著曾祖父的手札出庭鑑定老帳與文書",
+      "appearance": "東亞女性，書卷氣的美：俐落短髮、白襯衫、淺色針織外套，隨身一個放大鏡與一本舊手札，看文件時眼神專注得像在讀一百年前的人"
+    },
+    {
+      "id": "s05-lao-cen",
+      "name": "老岑",
+      "role": "顧家管家，七十二歲，在顧家做了五十年，擦了五十年顧家的印章；在法庭上站到沈家這邊，把顧遠山送下山",
+      "appearance": "東亞老人，瘦、背微駝、灰白短髮、深色立領中山裝，手上常戴白手套，說話前先看老太爺一眼"
+    },
+    {
+      "id": "s05-he-zhicheng",
+      "name": "何志成",
+      "role": "何曉陽的父親，五十歲，前盛通高層，盛通倒台後失業，恨沈家卻在最後把道歉信塞給女兒",
+      "appearance": "東亞中年男性，體面但疲憊：微胖、短髮、襯衫領口有一點舊、沒打領帶，手裡常握著一支熄了的菸"
+    },
+    {
+      "id": "s05-shaonian",
+      "name": "燈前的少年",
+      "role": "第三百集最後一格，山上顧家祠堂另一盞燈亮起時睜開眼的十八歲少年；身分留給第二部",
+      "appearance": "東亞少年，十八歲，清俊：長眉、桃花眼、唇色淺，黑髮略長垂到眉上，穿一件過大的墨綠色舊長衫，眼神清亮得像剛醒又像看過一百年；只拍睜眼與看自己的手，不說話"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s05-t01",
+      "question": "燈為什麼吹不滅？",
+      "setup_episode": 241,
+      "payoff_episode": 250
+    },
+    {
+      "id": "s05-t02",
+      "question": "顧遠山的燈為什麼暗？",
+      "setup_episode": 241,
+      "payoff_episode": 250
+    },
+    {
+      "id": "s05-t03",
+      "question": "她還剩多少天？",
+      "setup_episode": 242,
+      "payoff_episode": 249
+    },
+    {
+      "id": "s05-t04",
+      "question": "顧遠山會不會出庭？",
+      "setup_episode": 245,
+      "payoff_episode": 261
+    },
+    {
+      "id": "s05-t05",
+      "question": "顧承霖還有什麼牌？",
+      "setup_episode": 248,
+      "payoff_episode": 258
+    },
+    {
+      "id": "s05-t06",
+      "question": "第三枚銀印能不能討回？",
+      "setup_episode": 251,
+      "payoff_episode": 262
+    },
+    {
+      "id": "s05-t07",
+      "question": "燈座底下那行字是什麼？",
+      "setup_episode": 268,
+      "payoff_episode": 281
+    },
+    {
+      "id": "s05-t08",
+      "question": "顧承霖知道燈座的事之後會做什麼？",
+      "setup_episode": 263,
+      "payoff_episode": 267
+    },
+    {
+      "id": "s05-t09",
+      "question": "顧遠山回山上之後怎麼了？",
+      "setup_episode": 264,
+      "payoff_episode": 284
+    },
+    {
+      "id": "s05-t10",
+      "question": "顧承霖還會回來嗎？",
+      "setup_episode": 271,
+      "payoff_episode": 280
+    },
+    {
+      "id": "s05-t11",
+      "question": "她重開那天為什麼沒出來？",
+      "setup_episode": 274,
+      "payoff_episode": 280
+    },
+    {
+      "id": "s05-t12",
+      "question": "周懷安父親的招牌能不能拿回來？",
+      "setup_episode": 272,
+      "payoff_episode": 280
+    },
+    {
+      "id": "s05-t13",
+      "question": "福伯走了燈會暗嗎？",
+      "setup_episode": 287,
+      "payoff_episode": 288
+    },
+    {
+      "id": "s05-t14",
+      "question": "顧承霖會不會回頭？",
+      "setup_episode": 285,
+      "payoff_episode": 296
+    },
+    {
+      "id": "s05-t15",
+      "question": "她要不要把年輕留下來？",
+      "setup_episode": 282,
+      "payoff_episode": 297
+    },
+    {
+      "id": "s05-t16",
+      "question": "她閉眼之後燈還亮嗎？",
+      "setup_episode": 299,
+      "payoff_episode": 300
+    },
+    {
+      "id": "s05-t17",
+      "question": "顧家的燈接給了誰？",
+      "setup_episode": 284,
+      "payoff_episode": 300
+    }
+  ],
+  "episodes": [
+    {
+      "number": 241,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "第二口氣",
+      "youtube_title": "他對著只剩一點的燈再吹一口，火沒滅，反而把他的手燙了一下",
+      "duration_s": 120,
+      "logline": "顧承霖要在這一夜吹滅沈家的燈，沈月棠滿頭白髮跪在燈前，要的只是這口火撐到天亮。",
+      "hook": "黑畫面裡一聲極小的「噗」。燈亮回來，豆大的火還在。顧承霖站在門口，笑著吸了第二口氣。",
+      "hook_type": "danger",
+      "mid_hook": "第三口氣吹過去，火竄高了一寸。顧承霖低頭看自己的手——戴著第三枚銀印的那根手指，紅了。",
+      "extra_hooks": [
+        "沈月棠從燈前回頭，一夜白透的頭髮在燈光裡像雪：「吹完了嗎？」"
+      ],
+      "conflict": "顧承霖要吹滅長明燈；全家跪在燈後，沈月棠一夜白頭、站不穩，要讓這一口火撐到天亮。",
+      "turn": "觀眾以為火會滅；火卻在第三口氣後穩了，因為福伯、玉琴、建邦、知遠、小滿、知行、蘇曉七個人跪成一排，一個也沒退——她不守燈，反而叫福伯去生爐子：「餓了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧承霖退到門外，手機亮起，是山上老岑的聲音：「少爺，老太爺的燈……暗了。」他回頭看老宅那一點火，第一次沒笑。",
+        "question": "顧遠山的燈為什麼暗了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tuanchong",
+        "henla"
+      ],
+      "spectacle": "祠堂長明燈只剩豆大一點，三口氣吹過去火反而一寸寸站直的微距延時；燈後七個人跪成一排的背影。",
+      "glamour_shot": "沈月棠白髮垂在肩上回頭看門口，少女的側臉被豆大的火光描出輪廓，眼神是一百年的穩。",
+      "setups": [
+        "s05-t01",
+        "s05-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "燈過了這一夜沒滅",
+        "全家七個人第一次一起跪在燈前到天亮"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "shen-zhixing",
+        "su-xiao",
+        "s05-lao-cen"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "老宅門口"
+      ],
+      "state": {
+        "time": "第四季最後一夜到天亮",
+        "knowledge": "她知道燈吹不滅，但不知道為什麼；也不知道顧家的燈開始暗",
+        "carry_forward": "顧遠山的燈暗了一格；她滿頭白髮、走得慢；全家在老宅"
+      }
+    },
+    {
+      "number": 242,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "一桌人",
+      "youtube_title": "全家排班守燈，她卻把輪班表撕了：「守燈沒用，吃飯。」",
+      "duration_s": 105,
+      "logline": "全家要輪班守燈，沈月棠偏要每天煮一桌飯，她想證明吃飯的人越多燈越穩，知遠卻算出她還剩二十天。",
+      "hook": "山上，顧遠山床頭那盞燈真的暗了一格，枯瘦的老人在黑裡笑出聲：「來了。」",
+      "hook_type": "image",
+      "mid_hook": "知遠拿量杯接下燈座滴出的油，手機上算了三遍，壓低聲音對建邦說：「照這速度，二十天。」",
+      "extra_hooks": [
+        "她端著一鍋粥從廚房走出來，走三步歇一步，小滿衝過去接，她不給：「我端得動。」"
+      ],
+      "conflict": "建邦排好輪班守燈表，沈月棠不要人守燈，她要人坐下吃飯；兩邊各做各的，直到燈自己給了答案。",
+      "turn": "守燈的人越多燈越不穩——輪到知行一個人守時火矮了一分；而她煮好早飯、七個人坐滿一桌的那一刻，火跳亮了一分。原來燈認的不是守，是坐。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第七個人坐下，燈亮了一分。門鈴響。門外站著林美鳳，拎著行李箱，知行在她身後：「媽說，要搬回來住。」建邦看向燈，又看向她。",
+        "question": "林美鳳住進來，燈會亮還是暗？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "七個人坐滿飯桌、第一碗粥放下的瞬間，背景祠堂門內的豆大火光跳亮一分的對切。",
+      "glamour_shot": "沈月棠白髮綰成一條麻花辮，站在灶前側身看火，少女的臉在蒸氣裡慢慢抬眼。",
+      "setups": [
+        "s05-t03"
+      ],
+      "payoffs": [
+        "s05-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一桌七個人",
+        "建邦撕了守燈表，改排煮飯表"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "shen-zhiyuan",
+        "shen-jianbang",
+        "shen-xiaoman",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-zhixing",
+        "su-xiao",
+        "lin-meifeng"
+      ],
+      "locations": [
+        "顧家藏館",
+        "沈家老宅廚房",
+        "沈家老宅大廳飯桌",
+        "老宅門口"
+      ],
+      "state": {
+        "time": "吹燈後第一天",
+        "knowledge": "她確定人坐滿燈就穩；知遠算出燈油只剩二十天",
+        "carry_forward": "林美鳳帶著行李要搬進老宅；二十天的倒數"
+      }
+    },
+    {
+      "number": 243,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "燈不認我",
+      "youtube_title": "二房的惡婆婆搬回老宅那天，燈一動不動，她哭著說「燈不認我」",
+      "duration_s": 100,
+      "logline": "林美鳳搬進老宅想幫忙，燈卻對她一動不動；沈月棠讓她進廚房切藥，看她什麼時候能讓燈動一下。",
+      "hook": "林美鳳一腳跨進祠堂門檻，所有人盯著燈。火一動不動。她的高跟鞋停在半空。",
+      "hook_type": "image",
+      "mid_hook": "林美鳳在二房舊房間翻出一個信封，是當年賣掉第二枚銀印的收據——收款人那欄寫的不是周懷安，是「遠山」。",
+      "extra_hooks": [
+        "她把一把切藥刀放到林美鳳手上：「切三十年沒切過的東西，手會抖，正常。」"
+      ],
+      "conflict": "林美鳳想用錢、用人情證明自己是沈家人，燈不理她；沈月棠要她做一件沒人看的事——在廚房切一下午的藥。",
+      "turn": "林美鳳切壞了半簍藥材，氣得要走；玉琴推著輪椅進廚房，把一塊她切壞的藥片放進自己嘴裡：「苦，像美鳳剛嫁來那年。」林美鳳站住了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "晚飯，林美鳳替玉琴夾了一筷子菜，端菜的手一抖——祠堂裡的火亮了一分。她盯著燈，鮮紅的指甲捏著筷子：「它……認我了？」",
+        "question": "燈認的是林美鳳，還是那一筷子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        2,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "廚房俯拍：白髮的沈月棠、鮮紅指甲的林美鳳、輪椅上的玉琴，三個女人圍著一簍切壞的藥材。",
+      "glamour_shot": "沈月棠站在廚房窄窄的光裡示範切藥，手背已有皺紋，臉卻是十八歲，刀落下時眼睛不看刀。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林美鳳住進老宅，燈第一次因她亮了一分",
+        "第二枚銀印的收據浮出「遠山」兩個字"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lin-meifeng",
+        "shen-yuqin",
+        "shen-zhixing",
+        "fu-bo",
+        "shen-xiaoman",
+        "shen-jianbang"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "二房舊房間",
+        "沈家老宅廚房",
+        "沈家老宅大廳飯桌"
+      ],
+      "state": {
+        "time": "吹燈後第二天",
+        "knowledge": "她知道燈認『真心的一筷子』；知道第二枚銀印的錢一開始就是顧家的",
+        "carry_forward": "林美鳳留下；收據上的「遠山」要交給江慕白"
+      }
+    },
+    {
+      "number": 244,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "周懷安的筷子",
+      "youtube_title": "吞了沈家半條街的收購王來吃飯，福伯把他的禮盒擋在門外：吃飯不帶禮",
+      "duration_s": 110,
+      "logline": "周懷安第一次坐上沈家飯桌，他帶來顧承霖的下一步；二房在桌上和他翻舊帳，沈月棠要這一桌吃完。",
+      "hook": "周懷安捧著一盒禮站在老宅門口，福伯一手擋住：「吃飯不用帶禮。」他愣了兩秒，把禮盒放在門檻外。",
+      "hook_type": "line",
+      "mid_hook": "周懷安放下筷子：「顧承霖在翻藏館，找的不是帳，是『點燈的方子』。」全桌安靜，只有玉琴還在吃。",
+      "extra_hooks": [
+        "沈建業拍桌：「你害我沒了盛通那筆錢！」沈月棠夾了一塊肉放進他碗裡：「桌上不談帳。」"
+      ],
+      "conflict": "周懷安想坐上這張桌，二房不讓他坐；沈月棠要兩個互相咬過的人在同一桌吃完一頓飯。",
+      "turn": "觀眾以為周懷安是來投靠的；他其實是來還的——他把父親老店唯一留下的一道菜親手做了端上桌，說這是他三十年第一次下廚。燈亮了一分，沈建業的筷子停了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "周懷安走到門口回頭：「他找方子，是要把兩盞燈的油換掉。」一輛黑車停在門外，下來的是顧家管家老岑：「老太爺，要見沈小姐。」",
+        "question": "顧遠山要見她做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "goxue",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "八個人的飯桌俯拍，周懷安端上的那一道老店菜放在正中央，燈光從祠堂門裡斜照到桌面。",
+      "glamour_shot": "周懷安捲起深灰西裝的袖子在廚房切菜，冷硬的側臉第一次有一點不確定，油煙燈下顴骨的光。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周懷安第一次坐上沈家飯桌，八個人",
+        "顧承霖在找『點燈的方子』這件事傳到她耳裡"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "zhou-huaian",
+        "fu-bo",
+        "shen-jianye",
+        "lin-meifeng",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "s05-lao-cen"
+      ],
+      "locations": [
+        "老宅門口",
+        "沈家老宅大廳飯桌",
+        "沈家老宅廚房"
+      ],
+      "state": {
+        "time": "吹燈後第三天晚上",
+        "knowledge": "顧承霖在找點燈的方子，想換兩盞燈的油；顧遠山要見她",
+        "carry_forward": "老岑在門外等她上山"
+      }
+    },
+    {
+      "number": 245,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "山上的床",
+      "youtube_title": "白髮的她被扶上山見仇人，九十八歲的老太爺只問一句：「妳的燈，為什麼不滅」",
+      "duration_s": 115,
+      "logline": "沈月棠上山見顧遠山，顧承霖把門擋在藏館外，兩個一百年前的對手隔著一盞暗了一格的燈第一次說話。",
+      "hook": "知遠背著她走上顧家的石階，白髮垂在他肩上。顧承霖站在藏館門口：「她不能進。」",
+      "hook_type": "danger",
+      "mid_hook": "顧遠山枯手指著自己床頭的燈：「妳吹的？」她搖頭：「我沒碰。」他笑：「那更糟。」",
+      "extra_hooks": [
+        "知遠從外套裡掏出一張檢方的傳票放在藏館門口的石獅上：「這是給你的。」顧承霖的笑停了半秒。"
+      ],
+      "conflict": "顧承霖不讓她見老太爺，老太爺偏要見；她腿軟、走不快，卻要親眼看一次顧家的燈。",
+      "turn": "觀眾以為顧遠山會威脅她；他卻問她燈為什麼不滅，聽完「我家坐滿了」四個字之後閉上眼，第一次對顧承霖說：「讓她走。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧承霖關上藏館的門。老岑追到石階下，往她手裡塞一張紙條就走。紙條上四個字：「老太爺想出庭。」",
+        "question": "顧遠山要出庭說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "顧家藏館最深處：墨綠與金的牆、一張床、一盞暗了一格的燈，白髮少女坐在床邊，兩個老人隔著火光對望。",
+      "glamour_shot": "沈知遠背著她走石階，白藥師袍換成深色外套，側臉線條在山上的霧光裡，虎牙咬著下唇不喘。",
+      "setups": [
+        "s05-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她親眼確認顧家的燈在暗",
+        "檢方傳票送到顧承霖手上"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-zhiyuan",
+        "gu-chenglin",
+        "gu-yuanshan",
+        "s05-lao-cen",
+        "fu-bo"
+      ],
+      "locations": [
+        "顧家老宅石階",
+        "顧家藏館"
+      ],
+      "state": {
+        "time": "吹燈後第四天",
+        "knowledge": "顧遠山知道自己的燈為什麼暗，但沒說；他想出庭",
+        "carry_forward": "老岑的紙條；檢方的縱火侵占案要開了"
+      }
+    },
+    {
+      "number": 246,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "沒寫的火候",
+      "youtube_title": "祖方上沒寫的那一步，她在廚房教了一整夜：「火候是用耳朵聽的」",
+      "duration_s": 120,
+      "logline": "沈月棠趕著把祖方裡沒寫的火候教給知遠與蘇曉，她知道自己剩的天數不多，兩個年輕人卻一鍋一鍋燒焦。",
+      "hook": "鍋裡冒出一股黑煙，蘇曉手足無措。白髮的沈月棠連眼都沒抬，用鍋鏟敲了敲鍋邊：「再來。」",
+      "hook_type": "image",
+      "mid_hook": "蘇曉忍不住問她為什麼教得這麼急。她沒答。知遠在旁邊量燈油，壓低聲音：「十二天。」",
+      "extra_hooks": [
+        "第五鍋，她閉著眼聽：「聲音對了。」鍋裡的藥湯第一次沒焦。蘇曉差點哭。"
+      ],
+      "conflict": "祖方上寫的是材料，沒寫的是火候；她要在剩下的天數裡把一百年的手感塞進兩個現代藥師的手裡。",
+      "turn": "觀眾以為她教的是手藝；第五鍋成了之後她才說，這一帖不是祖方上的任何一帖，是她要兩個人自己開的新藥——祖方最後一頁是空的，留給他們寫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "半夜知遠回廚房，她坐在矮凳上睡著了，手裡握著寫了一半的火候筆記。他替她蓋上外套，祠堂裡的火亮了一分。筆記最後一行寫著：「給知遠與曉曉。」",
+        "question": "她來得及寫完嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        2,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "廚房五口鍋一排、蒸氣裡白髮少女閉眼側耳聽火的慢鏡頭；燈光從祠堂門照到她的辮子上。",
+      "glamour_shot": "沈知遠替她蓋外套時低頭的側臉，捲到手肘的袖子、乾淨的下顎線，在爐火餘光裡。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知遠與蘇曉第一次聽出火候",
+        "祖方最後一頁留給他們寫"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "fu-bo"
+      ],
+      "locations": [
+        "沈家老宅廚房",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "吹燈後第五天夜",
+        "knowledge": "她確定要把新藥交給知遠與蘇曉；燈油還剩十二天的量",
+        "carry_forward": "火候筆記寫了一半；小滿明天要學看帳"
+      }
+    },
+    {
+      "number": 247,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "小滿的帳",
+      "youtube_title": "高中生看一眼帳本就說「這筆不對」，二房的叔公臉綠了",
+      "duration_s": 110,
+      "logline": "沈月棠教小滿看帳，小滿第一天就看出一筆流進「遠山控股」的錢，檢方要這份帳，沈建業卻不肯簽證詞。",
+      "hook": "小滿把鉛筆尖按在帳本上一行數字：「這筆，不對。」沈建業咳了一聲，整桌看向他。",
+      "hook_type": "line",
+      "mid_hook": "沈建業把筆推回去：「我不簽。簽了我是共犯。」林美鳳把筆撿起來：「你不簽，我簽。」",
+      "extra_hooks": [
+        "沈月棠翻開一頁泛黃的一九二六年手寫帳，和今天的帳攤在同一張桌上：「一百年，同一個洞。」"
+      ],
+      "conflict": "檢方要二房的帳當縱火侵占案的證據；沈建業承認就是承認自己挖過家底，不認就是替顧家擋。",
+      "turn": "觀眾以為沈建業會死撐；沈月棠把他父親三十年前挖走金條的地點寫在紙上推給他，他看了十秒鐘，簽了：「那箱金條，我爸挖的。我知道。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "檢察官許若涵的電話打到建邦手機：「顧家律師團聲請駁回，理由是追訴期。明天聽證。」建邦看著一桌人，說不出話。",
+        "question": "一百年前的案，還能告嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "goxue",
+        "tuanchong",
+        "shangzhan"
+      ],
+      "spectacle": "長桌上百年前的手寫帳本與今天的列印帳並排，小滿的鉛筆尖同時點在兩本帳的同一個數字上。",
+      "glamour_shot": "沈小滿咬著鉛筆抬頭的那一秒，大眼睛裡有算出來的光，齊瀏海被檯燈照得微亮。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈建業簽了證詞，承認父親挖走金條",
+        "小滿第一次自己看出一筆假帳"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-xiaoman",
+        "shen-jianye",
+        "lin-meifeng",
+        "shen-jianbang",
+        "shen-zhixing",
+        "s05-xu-ruohan"
+      ],
+      "locations": [
+        "沈家老宅大廳飯桌",
+        "老宅書房"
+      ],
+      "state": {
+        "time": "吹燈後第六天",
+        "knowledge": "二房的帳與證詞進了檢方；顧家用追訴期當第一道盾",
+        "carry_forward": "明天聽證：追訴期"
+      }
+    },
+    {
+      "number": 248,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "看人看手",
+      "youtube_title": "顧家律師團拿「一百年追訴期」擋案，牆頭草律師一句話讓法官翻了頁",
+      "duration_s": 115,
+      "logline": "追訴期聽證，江慕白要讓法官接受「侵占還在持續」；沈月棠教建邦看人，顧家卻丟出一張沒人想到的反訴。",
+      "hook": "建邦在鏡子前打領帶，手抖。她坐在他身後的椅子上：「看人看手，不看嘴。」",
+      "hook_type": "line",
+      "mid_hook": "顧家首席律師杜明哲站起來：「原告自稱九十六歲，請法庭先確認她是誰。」旁聽席笑了一聲。",
+      "extra_hooks": [
+        "江慕白把一張放大的照片放上投影：顧承霖手上的戒指。「這枚銀印還在他手上，侵占就沒結束。」"
+      ],
+      "conflict": "顧家要用追訴期讓案子開不了；江慕白要證明侵占是持續犯，第三枚銀印今天還在被告手上。",
+      "turn": "觀眾以為法官會因為「一百年」駁回；法官鄭守義看了一眼顧承霖縮進袖子的手，當場裁定案件續行。建邦第一次在法庭上沒低頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "散場時杜明哲把一份文件遞給江慕白。封面：「反訴狀」。顧家主張沈家祠堂那盞燈，一百年前是從顧家偷走的。",
+        "question": "燈，到底是誰家的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "法庭投影上顧承霖戴著銀印的手的放大照，與他本人在被告席把手縮進袖子的動作同框。",
+      "glamour_shot": "沈建邦在法院走廊第一次把扣到頂的襯衫領口鬆開一顆，鬢角微白，窄窄的窗光打在細框眼鏡上。",
+      "setups": [
+        "s05-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "追訴期聽證過關，縱火侵占案續行",
+        "建邦學會在法庭上看人"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-jianbang",
+        "jiang-mubai",
+        "s05-du-mingzhe",
+        "s05-zheng-shouyi",
+        "gu-chenglin",
+        "lin-dao"
+      ],
+      "locations": [
+        "沈家老宅",
+        "臨江地方法院",
+        "法院走廊"
+      ],
+      "state": {
+        "time": "吹燈後第七天",
+        "knowledge": "案子開得成；顧家反咬燈是顧家的",
+        "carry_forward": "顧家的反訴狀；她要不要親自出庭"
+      }
+    },
+    {
+      "number": 249,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "不用數了",
+      "youtube_title": "全家勸她別出庭：說自己是九十六歲會被當瘋子，她只回兩個字",
+      "duration_s": 115,
+      "logline": "燈油還剩七天，老街的人每晚來吃飯，知遠卻發現燈油不再掉；檢察官要她以「沈月棠本人」出庭，全家反對。",
+      "hook": "知遠把量杯舉到燈前：「七天。」她接過去看了一眼：「夠煮七桌。」",
+      "hook_type": "line",
+      "mid_hook": "福伯站在門邊數人頭：「十個。」知遠回頭再量燈油——和昨天一樣。一滴都沒少。",
+      "extra_hooks": [
+        "老陳扛著一袋米衝進來：「整條街輪著來吃，一天一家！」玉琴拍手。"
+      ],
+      "conflict": "每個人都在偷偷把自己的事放下回家吃飯；她要的不是人陪，是人坐；而檢方的要求讓她必須當眾說「我是沈月棠」。",
+      "turn": "觀眾以為倒數在繼續；桌坐滿第三天，燈油停止下降——知遠量了三次。她看著十個人的背影對福伯說：「我好像不用數了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許若涵把一份證人通知放在桌上：「以本人身分出庭，妳會被當成瘋子。」全家同時說不行。她把通知拿過來，摺好收進袖子：「我去。」",
+        "question": "她在法庭上要怎麼說自己是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "連續七個晚上的飯桌疊成一個延時：人從八個坐到十個，燈從豆大穩到一顆蠟燭的亮。",
+      "glamour_shot": "沈月棠站在廚房門口看一桌人的背影，白髮麻花辮垂在素色布衫上，少女的嘴角第一次鬆下來。",
+      "setups": [],
+      "payoffs": [
+        "s05-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "燈油停止下降，倒數結束",
+        "老街的人輪著來吃飯",
+        "她決定以本人身分出庭"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-zhiyuan",
+        "fu-bo",
+        "lao-chen",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-xiaoman",
+        "su-xiao",
+        "shen-zhixing",
+        "lin-meifeng",
+        "s05-xu-ruohan"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈家老宅大廳飯桌",
+        "沈家老宅廚房"
+      ],
+      "state": {
+        "time": "吹燈後第十天",
+        "knowledge": "桌坐滿燈油就不掉；她要以本人身分出庭",
+        "carry_forward": "顧承霖知道燈穩了，他會親自再來一次"
+      }
+    },
+    {
+      "number": 250,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "吹別人的燈",
+      "youtube_title": "他帶著記者衝進祠堂要當眾吹燈，火沒滅，他手上的戒指先燙紅了",
+      "duration_s": 160,
+      "logline": "顧承霖帶媒體闖進沈家祠堂，要證明燈是顧家的、要當眾吹滅它；沈月棠讓他吹，全家在他身後坐下吃早飯。",
+      "hook": "天剛亮，顧承霖帶著三台攝影機站在祠堂門口：「這盞燈，是顧家的。」她坐在燈前，白髮未綰：「那你吹。」",
+      "hook_type": "line",
+      "mid_hook": "第一口氣吹過去，火沒動；他身後傳來碗筷的聲音——全家十個人在飯桌坐下，沒有一個人看他。他手上的戒指開始發燙。",
+      "extra_hooks": [
+        "林啟明把直播手機舉過記者的頭頂：「各位，顧董事長在吹一盞燈。」留言刷成一片。",
+        "周懷安走進門，直接坐到飯桌最後一個空位，拿起筷子：「十一。」"
+      ],
+      "conflict": "顧承霖要在鏡頭前證明燈是顧家的、證明他吹得滅；她要用一桌早飯證明這燈認人不認印。",
+      "turn": "觀眾以為這是一場對決；其實是一場早飯——他每吹一口，桌上多坐一個人，火就亮一分；吹到第三口他甩開發燙的手，戒指在地上轉了一圈。她撿起來還他：「這燈認人，不認印。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧承霖回山上，發現顧家的燈暗了一半；顧遠山躺在床上看著他：「我早說過，吹別人的燈，滅的是自己的。」",
+        "question": "顧家的燈還能救嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "tuanchong",
+        "xuanyi",
+        "ganren",
+        "henla"
+      ],
+      "spectacle": "豆大的火在一桌人的碗筷聲裡一點點站直的延時；白髮的她在廚房、十一道菜的俯拍；山上顧家的燈暗了一半。",
+      "glamour_shot": "沈月棠撿起地上的戒指遞還給顧承霖，仰頭看他的那一秒，燭光把少女的下頜線描成一條金邊，眼睛裡沒有一點怒。",
+      "setups": [],
+      "payoffs": [
+        "s05-t01",
+        "s05-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧承霖在鏡頭前吹不滅燈",
+        "飯桌十一個人",
+        "顧家的燈暗了一半"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "lin-dao",
+        "zhou-huaian",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "shen-zhixing",
+        "su-xiao",
+        "lin-meifeng",
+        "shen-jianye",
+        "gu-yuanshan"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈家老宅大廳飯桌",
+        "顧家藏館"
+      ],
+      "state": {
+        "time": "吹燈後第十一天早上到夜",
+        "knowledge": "她知道燈吹不滅是因為桌坐滿；顧遠山的燈暗，是因為顧承霖吹別人的燈",
+        "carry_forward": "開庭在即；顧家反訴燈的歸屬；顧遠山想出庭"
+      }
+    },
+    {
+      "number": 251,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "開庭",
+      "youtube_title": "一百年前的縱火案今天開庭，老街的人站滿法院門口，白髮少女坐著輪椅進場",
+      "duration_s": 115,
+      "logline": "縱火侵占案開庭，顧家律師團用「一百年前的事無法舉證」當盾，江慕白要用消防局的一頁老紀錄撬開第一道縫。",
+      "hook": "法院門口站滿了人，老陳舉著一塊「德記」的舊木牌。林啟明對著手機：「一百年前的官司，今天開庭。」",
+      "hook_type": "image",
+      "mid_hook": "杜明哲亮出一份一九二六年的顧家文書：「火是沈記自己的燈翻的。」她在原告席上輕聲說：「燈在前廳。」",
+      "extra_hooks": [
+        "法警推她進場，白髮麻花辮、素色布衫、輪椅，整個旁聽席站了起來。法官敲了三下槌。"
+      ],
+      "conflict": "顧家說一百年前的火沒有證據；江慕白要在第一庭就讓法庭相信那一夜有紀錄，而她被要求證明自己有資格坐在原告席。",
+      "turn": "觀眾以為第一庭只是程序；江慕白拿出檔案局剛解封的一九二六年消防紀錄，起火點寫的是「後院柴房」而不是「前廳燈下」——顧家的文書在第一天就對不上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "休庭。江慕白走到停車場，雨刷下壓著一個牛皮信封。抽出來，是十年前他親手塗掉合約附件的那一頁，角落有他的簽名。顧承霖的車從他身邊慢慢開過。",
+        "question": "顧家要先拉下江慕白嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "dalian"
+      ],
+      "spectacle": "法院門口站滿老街的人與舉著直播手機的手；法庭裡一九二六年消防紀錄放大在投影上，兩個不同的起火點。",
+      "glamour_shot": "沈月棠坐在原告席，白髮麻花辮垂在肩前，少女的側臉在法庭冷白燈下像一張老照片，手交疊在腹前。",
+      "setups": [
+        "s05-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第一庭開成",
+        "一九二六年消防紀錄進入法庭"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "jiang-mubai",
+        "s05-du-mingzhe",
+        "s05-zheng-shouyi",
+        "s05-xu-ruohan",
+        "gu-chenglin",
+        "lao-chen",
+        "lin-dao",
+        "shen-jianbang"
+      ],
+      "locations": [
+        "臨江地方法院",
+        "法院門口",
+        "法院停車場"
+      ],
+      "state": {
+        "time": "開庭第一天",
+        "knowledge": "顧家的文書與消防紀錄對不上；顧家手上有江慕白十年前塗掉附件的證據",
+        "carry_forward": "江慕白的把柄落在顧家手裡"
+      }
+    },
+    {
+      "number": 252,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "律師的底",
+      "youtube_title": "顧家拿出他十年前的把柄逼他棄案，他隔天在法庭上自己把那一頁念出來",
+      "duration_s": 120,
+      "logline": "顧家用江慕白塗掉附件的舊帳逼他退出；江慕白在沈家飯桌上認了，沈月棠要他自己去法庭說。",
+      "hook": "江慕白把那一頁放在飯桌上，一桌人沒人動筷子：「十年前，那附件是我塗掉的。」她把一碗飯推到他面前：「吃飯。」",
+      "hook_type": "line",
+      "mid_hook": "杜明哲站起來：「被告聲請，解除代理人資格。」法官還沒答，江慕白把自己的律師證放到桌上：「我先說完。」",
+      "extra_hooks": [
+        "知行把一支錄音筆推過桌：「顧家找我爸簽的那份，我錄了。」沈建業看了兒子一眼。"
+      ],
+      "conflict": "顧家要把江慕白從案子裡踢出去；江慕白要在被踢之前，把顧家藏在那頁附件底下的名字念出來。",
+      "turn": "觀眾以為江慕白會被解職；他當庭自首塗改，再拿出附件原件——沈記商標過戶的真正受益人是「遠山控股」，顧家的名字第一次在法庭被念出來。杜明哲的威脅成了江慕白的證據。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "檢察官許若涵站起來：「檢方追加被告：顧承霖，持續侵占。」旁聽席的顧承霖嘴角的笑停在原處，戴著銀印的手慢慢握成拳。",
+        "question": "顧承霖會被傳喚上證人席嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "江慕白把律師證、塗掉的影本與附件原件三樣並排放上證物台，投影上「遠山控股」四個字一格一格放大。",
+      "glamour_shot": "江慕白摘下金絲眼鏡擦了一下再戴上，第一次笑的時候眼睛也在笑，法庭側窗光打在鏡框邊。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江慕白當庭自首塗改，留在案子裡",
+        "附件原件：受益人遠山控股",
+        "檢方追加顧承霖為被告"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "jiang-mubai",
+        "s05-du-mingzhe",
+        "s05-zheng-shouyi",
+        "s05-xu-ruohan",
+        "gu-chenglin",
+        "shen-zhixing",
+        "shen-jianye",
+        "shen-jianbang",
+        "fu-bo"
+      ],
+      "locations": [
+        "沈家老宅大廳飯桌",
+        "臨江地方法院"
+      ],
+      "state": {
+        "time": "開庭第二天",
+        "knowledge": "顧家是沈記商標的真正受益人，法庭已知；顧承霖成了被告",
+        "carry_forward": "藥行公會的老帳明天進法庭"
+      }
+    },
+    {
+      "number": 253,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "公會的老帳",
+      "youtube_title": "老米行扛著一箱一百年的帳本進法院，火後第二天誰買走了沈記的藥材一翻就有",
+      "duration_s": 110,
+      "logline": "藥行公會一百年的老帳進法庭，要證明顧家在火後第二天用一成的價錢收走沈記的藥材；顧家說帳是假的，法官要她決定是否親自作證。",
+      "hook": "老陳和兩個夥計抬著一口木箱走進法庭，米糠從箱縫撒下來：「公會的帳，一百年。」",
+      "hook_type": "image",
+      "mid_hook": "杜明哲把顧家反訴狀遞上去：「燈是顧家的。沈家一百年前偷走了它。」她第一次抬眼看顧承霖。",
+      "extra_hooks": [
+        "歷史學者文琳用放大鏡看了三分鐘墨跡：「一九二六年的松煙墨，紙是臨江手工紙。沒有假。」杜明哲坐下了。"
+      ],
+      "conflict": "顧家說老帳是沈家偽造；文琳要用墨與紙證明它是真的；法官則要知道原告本人願不願意上證人席說那一夜。",
+      "turn": "觀眾以為焦點是帳；老帳的最後一行才是刀——火後第三天，顧家用「沈記存貨」名義一次賣掉了那些藥材，賣給的是當年的顧家藥鋪自己。預謀，不是撿便宜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "法官鄭守義看向原告席：「原告本人，願意具結作證？」具結，就是以九十六歲的身分發誓。建邦抓住她的手。她把手抽出來，點頭。",
+        "question": "她在證人席上要怎麼說那一夜？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "一百年的公會帳本一本本從木箱裡取出排成一列，文琳的放大鏡下墨跡的纖維。",
+      "glamour_shot": "文琳推開放大鏡抬頭的瞬間，俐落的短髮與白襯衫，眼神像剛從一百年前走回來。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "公會老帳被認定為真",
+        "火後顧家預謀收走沈記藥材的證據入卷"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "s05-wen-lin",
+        "s05-du-mingzhe",
+        "s05-zheng-shouyi",
+        "jiang-mubai",
+        "gu-chenglin",
+        "shen-jianbang"
+      ],
+      "locations": [
+        "臨江地方法院"
+      ],
+      "state": {
+        "time": "開庭第三天",
+        "knowledge": "顧家火後預謀收走沈記藥材有帳可查；她要以本人身分具結作證",
+        "carry_forward": "周懷安的保險箱明天進法庭"
+      }
+    },
+    {
+      "number": 254,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "手令",
+      "youtube_title": "收購王把保險箱推進法庭，顧家一百年前的手令四個字：火後收沈記",
+      "duration_s": 120,
+      "logline": "周懷安把盛通的保險箱推進法庭，裡面有顧家給他的合約與一份一九二六年顧遠山的手令；顧承霖說是偽造，顧家自己的管家被傳上證人席。",
+      "hook": "周懷安把一個保險箱推進法庭，放到證物台前，轉開密碼：「顧家給我的。全部。」",
+      "hook_type": "image",
+      "mid_hook": "老岑被傳上證人席。杜明哲問他顧家藏館的印章是否只有一枚。老岑看了顧承霖三秒：「是。這一枚。」",
+      "extra_hooks": [
+        "休庭時顧承霖在走廊對周懷安說：「明天，盛通的銀行額度沒了。」周懷安：「我知道。」"
+      ],
+      "conflict": "手令上寫著「火後三日，收沈記」，顧承霖說它是偽造；要證明它是真的，只能靠顧家自己的人。",
+      "turn": "觀眾以為老岑會替主子說謊；他確認了印章——那是他擦了五十年的東西。顧承霖在被告席上第一次沒看老岑，看的是自己的手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡，盛通大樓的燈一層一層熄下去。周懷安站在頂樓看最後一層黑掉，手機跳出銀行的簡訊。他把手機放進口袋，往沈家老宅的方向走。",
+        "question": "周懷安會撐住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "dalian"
+      ],
+      "spectacle": "法庭上一百年的證物排成一列：消防紀錄、公會老帳、手令、附件原件、保險箱；盛通大樓從頂層往下一層層熄燈的全景。",
+      "glamour_shot": "周懷安在黑掉的頂樓辦公室，只剩城市的光描出他的高額與深眼窩，三件式西裝的領結被他自己拉開。",
+      "setups": [],
+      "payoffs": [
+        "m08",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧遠山的手令被認定為真",
+        "老岑在法庭上站到了沈家這邊"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "zhou-huaian",
+        "s05-lao-cen",
+        "s05-du-mingzhe",
+        "s05-zheng-shouyi",
+        "jiang-mubai",
+        "gu-chenglin",
+        "s05-xu-ruohan"
+      ],
+      "locations": [
+        "臨江地方法院",
+        "法院走廊",
+        "盛通大樓頂樓"
+      ],
+      "state": {
+        "time": "開庭第四天夜",
+        "knowledge": "縱火的預謀有顧遠山的手令為證；盛通被斷貸",
+        "carry_forward": "周懷安往老宅走；教授的手札明天作證"
+      }
+    },
+    {
+      "number": 255,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "教授的手札",
+      "youtube_title": "一百年前鄰居教授的日記念到那一句，整個法庭沒人出聲：他抱著燈倒在門口",
+      "duration_s": 125,
+      "logline": "文琳帶來曾祖父文崇山一九二六年的手札，記下那一夜沈作甫抱燈倒在門口；顧家的「燈是顧家的」反訴當場破了，杜明哲只剩一條路：攻她的身分。",
+      "hook": "文琳翻開一本手札，念：「廿四日夜，顧宅燈滅一刻，沈記火起。」法庭裡只有翻頁的聲音。",
+      "hook_type": "line",
+      "mid_hook": "杜明哲放棄反訴，換了方向：「原告根本不是沈月棠。她是誰？」他把一份戶政文件舉過頭頂。",
+      "extra_hooks": [
+        "她在原告席上聽到「抱燈出，倒於門，燈不滅」，手指在腹前握緊，白髮沒動，眼淚先掉在布衫上。"
+      ],
+      "conflict": "手札證明燈一百年前就在沈家、也證明沈作甫怎麼死的；顧家守不住反訴，只能把矛頭轉向她的身分。",
+      "turn": "觀眾以為手札只是旁證；手札裡還寫著「顧宅燈滅一刻」——顧家的燈在那一夜確實暗過，是顧遠山放火之後才又亮起來。文琳念完，顧承霖轉頭看了法庭的門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "杜明哲把戶政紀錄放上投影：「沈月棠，一年前已申報死亡。」申報人那欄：沈建業。旁聽席所有人轉頭看二房的位置。",
+        "question": "建業替誰申報了她的死亡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shangzhan",
+        "henla",
+        "goxue"
+      ],
+      "spectacle": "手札的毛筆字在投影上一格格放大到「燈不滅」三個字；法庭後排顧承霖側頭看門的剪影。",
+      "glamour_shot": "沈月棠聽到那一句時垂眼，淚從少女的睫毛掉到皺紋的手背上，法庭冷光裡只有這一處是暖的。",
+      "setups": [],
+      "payoffs": [
+        "m08",
+        "s05-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧家的反訴失守，燈的歸屬在法庭上落定",
+        "沈作甫抱燈而死的那一夜有了文字記錄"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "s05-wen-lin",
+        "s05-du-mingzhe",
+        "s05-zheng-shouyi",
+        "jiang-mubai",
+        "gu-chenglin",
+        "shen-jianye",
+        "lin-meifeng",
+        "shen-jianbang",
+        "shen-zuofu"
+      ],
+      "locations": [
+        "臨江地方法院"
+      ],
+      "state": {
+        "time": "開庭第五天",
+        "knowledge": "燈是沈家的；作甫的死有手札為證；二房一年前替她申報了死亡",
+        "carry_forward": "身分攻防：死亡申報怎麼撤銷"
+      }
+    },
+    {
+      "number": 256,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "死亡申報",
+      "youtube_title": "法庭說她一年前就死了，八十二歲的女兒坐著輪椅上證人席：「那是我媽」",
+      "duration_s": 120,
+      "logline": "要撤銷死亡申報，得證明沈月棠活著；玉琴上證人席，杜明哲說失智老人證詞無效，沈月棠用一百年前的帳背出自己是誰。",
+      "hook": "沈建業站在飯桌邊，一桌人看著他：「申報是顧承霖叫我簽的。他說人都不見了，不算假。」",
+      "hook_type": "line",
+      "mid_hook": "杜明哲對法官說：「證人有失智診斷，證詞不應採信。」玉琴在證人席上握著手帕，忽然很清楚地說：「我沒忘她。」",
+      "extra_hooks": [
+        "她閉著眼背出一九二六年公會老帳第三頁第七行的數字，文琳翻到那一頁，一個字不差。"
+      ],
+      "conflict": "顧家要用死亡申報把她從原告席拉下來；沈家要證明她活著，而唯一能認她的女兒被說成不可信。",
+      "turn": "觀眾以為身分要靠 DNA；她說「我自己證」，背出沒有人看過的老帳與福伯入沈家那天的日期，法官命鑑定機關比對一九二六年照片與她的臉——顧承霖在被告席上翻開手機，給沈建業發了一則訊息。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "法院門口，顧承霖擋住沈建業：「申報是你簽的。翻供，偽造文書是你的。」建業抬頭，看見遠處老宅的方向，祠堂的燈正亮著。他沒答。",
+        "question": "建業明天會翻供嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shangzhan",
+        "dalian",
+        "goxue"
+      ],
+      "spectacle": "證人席上輪椅裡的玉琴與原告席上白髮的少女隔著法庭對望，兩個人的手同時握緊。",
+      "glamour_shot": "沈月棠閉眼背帳時的正面特寫，少女的臉一動不動，只有嘴唇在動，法庭的光停在她的彎眉上。",
+      "setups": [],
+      "payoffs": [
+        "m02",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "玉琴在法庭上認了母親",
+        "法官命鑑定一九二六年照片與她的臉"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-yuqin",
+        "shen-jianye",
+        "s05-du-mingzhe",
+        "s05-zheng-shouyi",
+        "jiang-mubai",
+        "s05-wen-lin",
+        "fu-bo",
+        "gu-chenglin",
+        "shen-jianbang",
+        "lin-meifeng"
+      ],
+      "locations": [
+        "沈家老宅大廳飯桌",
+        "臨江地方法院",
+        "法院門口"
+      ],
+      "state": {
+        "time": "開庭第六天",
+        "knowledge": "她活著這件事在法庭上有了第一個證人；顧承霖在逼建業翻供",
+        "carry_forward": "建業的選擇"
+      }
+    },
+    {
+      "number": 257,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "二房的證詞",
+      "youtube_title": "掏空家族的叔公上證人席說了三個字「因為貪」，他老婆在旁聽席站起來補一刀",
+      "duration_s": 115,
+      "logline": "沈建業上證人席，承認死亡申報與金條都是他，指著顧承霖是指使；杜明哲反咬他上週還收顧家的錢，林美鳳在旁聽席亮出退款單。",
+      "hook": "沈建業坐上證人席，法官問他為什麼簽死亡申報。他看著自己金錶上的反光：「因為貪。」",
+      "hook_type": "line",
+      "mid_hook": "杜明哲丟出一張匯款紀錄：「證人上週，收了顧家三百萬。」林美鳳在旁聽席站起來：「那錢我退了！」她舉著一張退款單。",
+      "extra_hooks": [
+        "建業下證人席時經過顧承霖，顧承霖低聲說了一句，建業停了半步，沒回頭。"
+      ],
+      "conflict": "沈建業要用一次當眾的認罪把自己從顧家的手裡拔出來；顧家要證明他的證詞是被買的，不可信。",
+      "turn": "觀眾以為二房的證詞會被推翻；林美鳳的退款單日期比匯款早一天——她在收到錢的隔天就退了。法官採信了。二房在法庭上第一次站在同一邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "晚飯，沈建業坐回自己三十年前的老位子，林美鳳替他夾了一筷子，他低頭吃，肩膀在抖。燈亮了一分。福伯在門邊數：「十一個。」",
+        "question": "第十二個人會是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "dalian",
+        "ganren",
+        "shangzhan"
+      ],
+      "spectacle": "旁聽席上林美鳳舉著退款單站起來，整個法庭的頭同時轉過去，珍珠項鍊在燈下晃。",
+      "glamour_shot": "沈知行在法庭走廊靠在牆上轉筆，看父親走出來，第一次沒轉筆，筆停在指間。",
+      "setups": [],
+      "payoffs": [
+        "m07",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈建業當庭認罪並指證顧承霖",
+        "二房的證詞被法官採信",
+        "飯桌十一人"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-jianye",
+        "lin-meifeng",
+        "s05-du-mingzhe",
+        "s05-zheng-shouyi",
+        "jiang-mubai",
+        "gu-chenglin",
+        "shen-zhixing",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-jianbang"
+      ],
+      "locations": [
+        "臨江地方法院",
+        "法院走廊",
+        "沈家老宅大廳飯桌"
+      ],
+      "state": {
+        "time": "開庭第七天",
+        "knowledge": "二房徹底回到大房這一邊；顧承霖只剩身分與鑑定兩張牌",
+        "carry_forward": "鑑定通知；顧承霖對建業說的那一句"
+      }
+    },
+    {
+      "number": 258,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "最貴的律師團",
+      "youtube_title": "他們把她送去精神鑑定，想證明「自稱九十六歲」是瘋了，一百支手機在門外直播",
+      "duration_s": 120,
+      "logline": "顧家聲請把她送精神鑑定，又買下直播平台讓林啟明下架；她去了鑑定室，林啟明把一條街的手機變成一百個直播。",
+      "hook": "法警把一張精神鑑定通知遞到她手上。她看完摺好：「幾點？」",
+      "hook_type": "line",
+      "mid_hook": "林啟明的直播畫面黑了：「帳號已停用。」他抬頭看老街，從德記開始，一家一家的老闆掏出手機。",
+      "extra_hooks": [
+        "鑑定室裡醫師問她今年幾歲，她說九十六；問她今天幾號，她看了窗外的光：「初九，未時。」醫師看了錶。"
+      ],
+      "conflict": "顧家要用一張鑑定報告把她打成瘋子、用錢把直播關掉；她什麼都不反抗，只是去了。",
+      "turn": "觀眾以為鑑定對她不利；醫師問她一九二六年的事她句句有細節，問現代的事她句句不懂，報告寫不出「妄想」兩個字。顧承霖的兩張牌一張接一張落空。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鑑定報告封進牛皮袋送往法院。同一時間，老岑的電話打到江慕白手機上，聲音很低：「老太爺要出庭。少爺把藏館的門鎖了。」",
+        "question": "顧遠山出得了那道門嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "dalian",
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "老街一百支手機同時舉起來的全景，每一個螢幕都是法院門口；鑑定室白牆前白髮少女交疊著手坐著。",
+      "glamour_shot": "沈月棠在鑑定室的白光下看窗外判斷時辰，少女的側臉與白髮像一張過曝的老照片。",
+      "setups": [],
+      "payoffs": [
+        "s05-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鑑定報告寫不出妄想",
+        "老街一百支手機接起直播"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lin-dao",
+        "lao-chen",
+        "s05-du-mingzhe",
+        "jiang-mubai",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "gu-yuanshan",
+        "shen-zhiyuan"
+      ],
+      "locations": [
+        "臨江地方法院",
+        "精神鑑定室",
+        "老街",
+        "顧家藏館"
+      ],
+      "state": {
+        "time": "開庭第八天",
+        "knowledge": "顧承霖的鑑定與媒體兩張牌都失手；顧遠山被鎖在藏館裡",
+        "carry_forward": "老岑想把老太爺送下山"
+      }
+    },
+    {
+      "number": 259,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "第十二張椅子",
+      "youtube_title": "鑑定報告當庭打開只有一行：記憶超出常理；顧家律師的筆掉了",
+      "duration_s": 115,
+      "logline": "鑑定報告出爐，杜明哲的最後一張牌斷了；老岑來沈家求救想把顧遠山送下山，顧承霖把藏館鎖得更緊。",
+      "hook": "山上，顧承霖把藏館的門鏈拉上三道鎖，隔著門說：「您不會去。」門內顧遠山的聲音：「我去過的地方，比你多。」",
+      "hook_type": "line",
+      "mid_hook": "老岑坐在沈家飯桌邊，第一次吃沈家的飯，筷子沒動：「我想把老太爺送下山。靠我一個人，不行。」周懷安放下碗：「我有車。」",
+      "extra_hooks": [
+        "法官念鑑定報告：「認知清晰，記憶超出常理。」杜明哲手裡的筆滾下桌。"
+      ],
+      "conflict": "鑑定報告要在庭上宣讀；而顧遠山要出庭，只能靠顧家的管家與昔日的刀合力把他從曾孫手裡接出來。",
+      "turn": "觀眾以為第十二張椅子是給老岑的；她把椅子放在玉琴旁邊，誰也不讓坐：「等人。」老岑看著那張空椅子，突然明白她在等誰。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "法官宣布：明日原告具結作證，並傳喚證人顧遠山。走廊上顧承霖的手機響起，老岑的號碼：「少爺，老太爺的車，下山了。」他衝向電梯。",
+        "question": "顧遠山真的來得了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "tuanchong",
+        "xuanyi"
+      ],
+      "spectacle": "三道門鎖的特寫到門內一盞暗了一半的燈；沈家飯桌上一張沒人坐的空椅子，燈光從祠堂照到椅背上。",
+      "glamour_shot": "周懷安放下碗、起身拿車鑰匙的動作，冷硬的臉線第一次帶著一點急，門口的光掃過他的鬢角。",
+      "setups": [],
+      "payoffs": [
+        "s05-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鑑定報告替她擋下瘋子這張牌",
+        "老岑與周懷安聯手送顧遠山下山"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "gu-yuanshan",
+        "s05-lao-cen",
+        "zhou-huaian",
+        "s05-zheng-shouyi",
+        "s05-du-mingzhe",
+        "jiang-mubai",
+        "shen-yuqin",
+        "fu-bo"
+      ],
+      "locations": [
+        "顧家藏館",
+        "沈家老宅大廳飯桌",
+        "臨江地方法院",
+        "法院走廊"
+      ],
+      "state": {
+        "time": "開庭第九天",
+        "knowledge": "明天她具結作證、顧遠山被傳喚；顧遠山的車已經下山",
+        "carry_forward": "明天的證人席"
+      }
+    },
+    {
+      "number": 260,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "第一枚",
+      "youtube_title": "法官問她怎麼證明身分，白髮少女摘下戒指放上證物台：這是第一枚銀印",
+      "duration_s": 165,
+      "logline": "沈月棠具結作證，坐著輪椅、白髮麻花辮，一句一句講出一百年前那一夜；顧遠山的車沒到，顧承霖獨自到場，法官最後問她的身分。",
+      "hook": "法警推她進來，整個旁聽席站起來。她先看了一眼證人席旁那張空椅子——顧遠山的。沒人。她開口：「那一夜，風從南邊來。」",
+      "hook_type": "line",
+      "mid_hook": "杜明哲交互詰問：「妳說妳是她。證據？」她沒答，看向法庭的門——顧承霖一個人走進來，身後沒有輪椅。",
+      "extra_hooks": [
+        "林啟明在法院門口把直播人數念出來：「一百萬。」老街的人全舉著手機。",
+        "她講到「他把燈抱出來，倒在門口」時，法庭裡只有一個人出聲——顧承霖輕輕笑了一下。"
+      ],
+      "conflict": "她要在證人席上把那一夜說完、說到法庭相信；顧遠山沒到，顧承霖要用「妳證明不了妳是誰」把一切推翻。",
+      "turn": "觀眾以為她會拿出照片或鑑定；她什麼都不拿，講的是一九二六年那一夜每一個鄰居的名字與他們後來的下落——文琳一個個對上手札。法官不再問證據，只問身分。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "法官問：「原告，妳的身分如何證明？」她摘下手上的銀戒，放到證物台：「第一枚銀印。顧先生手上的，是第三枚。」顧承霖的手縮進了袖子。",
+        "question": "法官會扣押顧承霖手上的戒指嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shangzhan",
+        "dalian",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "法庭上一百年的證物排成一列；法院門口站滿老街的人與直播手機；銀戒放上證物台的微距，戒圈內側的印文在燈下浮出。",
+      "glamour_shot": "沈月棠摘戒指的手背全是皺紋，抬眼的臉是十八歲，證物台的燈從下方照亮她的彎眉與杏眼。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在法庭上完整說出一百年前那一夜",
+        "第一枚銀印進入證物",
+        "直播破百萬"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "s05-zheng-shouyi",
+        "s05-du-mingzhe",
+        "jiang-mubai",
+        "gu-chenglin",
+        "s05-wen-lin",
+        "lin-dao",
+        "lao-chen",
+        "shen-jianbang",
+        "shen-yuqin",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "s05-xu-ruohan"
+      ],
+      "locations": [
+        "臨江地方法院",
+        "法院門口"
+      ],
+      "state": {
+        "time": "開庭第十天",
+        "knowledge": "法庭已有她的完整證詞；第一枚銀印在證物台上；顧遠山的車沒到",
+        "carry_forward": "顧遠山在哪裡；顧承霖手上的第三枚"
+      }
+    },
+    {
+      "number": 261,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "輪椅對輪椅",
+      "youtube_title": "法庭後門推進來一台輪椅，九十八歲的老太爺開口第一句：「我燒的」",
+      "duration_s": 120,
+      "logline": "顧遠山終究到了法庭，坐著輪椅自己認下一百年前的火；顧承霖說老太爺被下藥，法官休庭，兩個老人在走廊第一次並排坐著。",
+      "hook": "法庭後門推開，老岑推著一台輪椅進來。顧遠山枯瘦的手舉起來：「我到了。」顧承霖站起來又坐下。",
+      "hook_type": "image",
+      "mid_hook": "顧承霖搶著開口：「老太爺被沈家下了藥！」顧遠山一字一頓：「我吃的，是沈記的藥。好得很。」",
+      "extra_hooks": [
+        "法官問顧遠山一百年前那一夜。他說了三個字：「我燒的。」整個法庭沒有一個人動。"
+      ],
+      "conflict": "顧遠山要在有生之年把罪認下；顧承霖要證明老太爺神智不清，把這份證詞作廢。",
+      "turn": "觀眾以為顧遠山是來替顧家擋的；他是來還的。他說完「我燒的」之後看向原告席：「月棠，妳老了。」她回他：「你也是。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "休庭。走廊上兩台輪椅並排停著，九十八歲與九十六歲，誰也不看誰。顧遠山說：「一百年，我欠妳一樣東西。」她：「不只一樣。」",
+        "question": "顧遠山要先還哪一樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "goxue"
+      ],
+      "spectacle": "法庭後門推開、一盞自然光照進來、輪椅上的老人逆光的畫面；走廊上兩台輪椅並排的對稱構圖。",
+      "glamour_shot": "沈月棠側頭看顧遠山的那一秒，少女的鼻樑線條與老人的皺紋在同一個焦平面上，走廊的光從窗口斜進來。",
+      "setups": [],
+      "payoffs": [
+        "s05-t04",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧遠山出庭並當庭認下縱火",
+        "兩個百年對手第一次並排坐下"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "s05-zheng-shouyi",
+        "s05-du-mingzhe",
+        "jiang-mubai",
+        "shen-jianbang",
+        "lin-dao"
+      ],
+      "locations": [
+        "臨江地方法院",
+        "法院走廊"
+      ],
+      "state": {
+        "time": "開庭第十一天",
+        "knowledge": "顧遠山親口認了火；他想還的不只一樣",
+        "carry_forward": "復庭後顧遠山要說兩盞燈的事"
+      }
+    },
+    {
+      "number": 262,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "該還了",
+      "youtube_title": "老太爺親手把曾孫手上的戒指摘下來交給她：一百年，該還了",
+      "duration_s": 135,
+      "logline": "復庭，顧遠山要顧承霖摘下第三枚銀印，顧承霖不肯，老太爺自己伸手摘下來交到她手上，並說出兩盞燈的真相。",
+      "hook": "顧遠山的輪椅停在被告席前，枯手伸向顧承霖的手：「摘下來。」顧承霖把手收進袖子。",
+      "hook_type": "danger",
+      "mid_hook": "顧遠山說：「兩盞燈是同一盞的兩半。」法庭安靜。「燈油是各家的人心。我點了一百年，點錯方向。」",
+      "extra_hooks": [
+        "法官命法警扣押證物，法警還沒走到，顧遠山自己握住曾孫的手，把戒指一圈一圈轉下來，掌心朝她：「一百年，該還了。」"
+      ],
+      "conflict": "第三枚銀印要回到她手上，顧承霖不肯放；顧遠山要在法庭上把兩盞燈的真相說出來，這會毀掉顧家一百年的信念。",
+      "turn": "觀眾以為兩盞燈是互相吃的；顧遠山說它們是一盞燈的兩半，誰家的人心滿誰家的燈亮，吹別人的燈從來不會讓自己的亮——顧家一百年的拆人心，拆的是自己。顧承霖的臉白了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "三枚銀印在證物台上並排，法官宣布：「銀印歸還原告。」顧承霖站起來，聲音很輕：「那我也作證。放火的，吹燈的，都是他一個人。」他指著自己的曾祖父。",
+        "question": "顧承霖要把一百年的罪全扣在老太爺頭上？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "goxue",
+        "dalian"
+      ],
+      "spectacle": "三枚銀印在證物台上俯拍，三個印文拼成一個完整的「沈」字；顧遠山一圈圈轉下曾孫手上戒指的微距。",
+      "glamour_shot": "顧承霖被摘下戒指時低頭，微長的髮垂下遮住桃花眼，黑色立領外套在法庭白光裡像一道裂縫。",
+      "setups": [],
+      "payoffs": [
+        "s05-t06",
+        "m05",
+        "m10"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "第三枚銀印回到她手上，三枚合齊",
+        "兩盞燈的真相在法庭上說出",
+        "顧遠山與沈月棠百年的帳當眾結清一半"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "gu-chenglin",
+        "s05-zheng-shouyi",
+        "s05-du-mingzhe",
+        "jiang-mubai",
+        "s05-lao-cen",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "lin-dao"
+      ],
+      "locations": [
+        "臨江地方法院"
+      ],
+      "state": {
+        "time": "開庭第十一天下午",
+        "knowledge": "兩盞燈是一盞的兩半，燈油是各家人心；三枚銀印都在她手上",
+        "carry_forward": "顧承霖當庭翻臉，要把罪扣在顧遠山頭上"
+      }
+    },
+    {
+      "number": 263,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "翻臉",
+      "youtube_title": "曾孫當庭把一百年的罪全推給老太爺，牆頭草律師甩出他去年簽的名",
+      "duration_s": 115,
+      "logline": "顧承霖上證人席把一切推給顧遠山，想讓顧氏集團與罪切割；江慕白拿出他自己簽名的老街租約收購文件，顧遠山把罪又接回自己身上。",
+      "hook": "顧承霖坐上證人席，對著法官：「顧家的罪，是顧遠山一個人的。」顧遠山在輪椅上笑了一聲。",
+      "hook_type": "line",
+      "mid_hook": "江慕白把一份文件放上投影：「遠山控股收購老街租約，三十二份，簽名人——顧承霖。」日期是去年。",
+      "extra_hooks": [
+        "顧遠山打斷江慕白：「他是我教的。他的罪，算我的。」顧承霖轉頭看曾祖父，第一次說不出話。"
+      ],
+      "conflict": "顧承霖要把罪全丟給老太爺、保住顧氏；江慕白要證明他自己的手也不乾淨；顧遠山偏要把一切都扛回去。",
+      "turn": "觀眾以為顧遠山會順勢讓曾孫脫身；他反而說「他是我教的」，把顧承霖的罪也接走——不是護他，是不讓他逃。顧承霖懂了，眼神第一次有恨。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "法官宣布三日後宣判。顧承霖走過原告席，停下來，低聲對她說：「燈座，妳敢開嗎？」她抬眼。他已經走了。",
+        "question": "顧承霖知道燈座底下有什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "dalian",
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "投影上顧承霖去年的簽名與一百年前顧遠山手令上的印章並排，一樣的姓。",
+      "glamour_shot": "顧承霖走過原告席時俯身低語，陰柔的側臉幾乎貼到她的白髮，法庭冷光裡兩個人的輪廓像一幅對照。",
+      "setups": [
+        "s05-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧承霖自己的侵占證據進入法庭",
+        "宣判日定了"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "gu-yuanshan",
+        "jiang-mubai",
+        "s05-zheng-shouyi",
+        "s05-du-mingzhe",
+        "shen-jianbang",
+        "s05-lao-cen"
+      ],
+      "locations": [
+        "臨江地方法院"
+      ],
+      "state": {
+        "time": "開庭第十二天",
+        "knowledge": "顧承霖知道燈座是第三份家底的所在；宣判在三日後",
+        "carry_forward": "宣判；燈座"
+      }
+    },
+    {
+      "number": 264,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "定讞",
+      "youtube_title": "判決念完那一秒老街放了一條街的鞭炮，老太爺卻說：帶我去看她的燈",
+      "duration_s": 125,
+      "logline": "宣判：縱火與侵占定讞；顧遠山要求回山之前去沈家祠堂看一眼那盞燈，顧承霖不許，老岑照推。",
+      "hook": "法官鄭守義念判決，念到「顧家縱火、侵占屬實」時，法院外老街的鞭炮炸成一條街。",
+      "hook_type": "image",
+      "mid_hook": "顧遠山在法院門口對老岑說：「去沈家。我要看那盞燈。」顧承霖攔住輪椅：「不行。」老岑推開他的手。",
+      "extra_hooks": [
+        "林啟明直播鏡頭掃過法院門口，老陳抹眼淚，手上還拎著米袋。"
+      ],
+      "conflict": "判決落定，顧遠山的最後一個願望是看沈家的燈；顧承霖要把老太爺帶回山上鎖起來。",
+      "turn": "觀眾以為顧遠山要去認罪；他到了祠堂把枯手伸到燈前，說了一個字：「暖。」然後她說「今天不談燈，吃飯」——顧遠山被推到飯桌邊，坐進那張一直空著的椅子；建業還在檢方那裡，福伯數了一遍：「十一。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧遠山拿起筷子，手抖得夾不住菜。她替他夾了一塊放進碗裡：「你當年也坐過這桌。」他看著那塊菜：「坐過。」祠堂裡的燈亮了一分——山上，老岑的手機傳來一張照片：顧家的燈也亮了一分。",
+        "question": "顧家的燈為什麼跟著沈家的桌亮？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tuanchong",
+        "dalian"
+      ],
+      "spectacle": "法院門口一條街的鞭炮煙與紙屑；顧遠山的輪椅停在沈家祠堂燈前，枯手與火光之間一寸的距離。",
+      "glamour_shot": "沈月棠替顧遠山夾菜時俯身，白髮麻花辮垂下來掃過桌沿，少女的側臉在飯桌暖光裡沒有一點恨。",
+      "setups": [
+        "s05-t09"
+      ],
+      "payoffs": [
+        "s05-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "縱火與侵占定讞",
+        "顧遠山第一次坐上沈家飯桌",
+        "顧家的燈第一次亮了一分"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "s05-zheng-shouyi",
+        "lin-dao",
+        "lao-chen",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "su-xiao",
+        "shen-zhixing",
+        "lin-meifeng",
+        "shen-jianye",
+        "zhou-huaian"
+      ],
+      "locations": [
+        "臨江地方法院",
+        "法院門口",
+        "沈家老宅祠堂",
+        "沈家老宅大廳飯桌",
+        "顧家藏館"
+      ],
+      "state": {
+        "time": "宣判日",
+        "knowledge": "判決定讞；顧遠山的燈會因為沈家的桌而亮",
+        "carry_forward": "燈座還沒開；顧承霖的車停在門外"
+      }
+    },
+    {
+      "number": 265,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "三個凹槽",
+      "youtube_title": "法警要來封祠堂，顧家說燈座是他們的文物，法官回了一句話",
+      "duration_s": 110,
+      "logline": "顧承霖聲請保全燈座，說兩盞燈同一師傅所以燈座是顧家財產；法官駁回，福伯卻在燈座上發現第四個刻痕。",
+      "hook": "三枚銀印放在燈座前，三個凹槽剛好。她的手伸到一半停住——門外，顧承霖的車燈亮了一整夜。",
+      "hook_type": "image",
+      "mid_hook": "福伯擦燈座時指著凹槽旁一個小小的刻痕：「這不是沈家的印。」她湊近看：是點燈師傅的記號——和顧家燈上那個一樣。",
+      "extra_hooks": [
+        "法警帶著封條走到祠堂門口，江慕白舉著手機讓他們聽法官的裁定：「判決已定讞，駁回。」封條收回去。"
+      ],
+      "conflict": "顧承霖要用一張保全聲請把燈座封起來，不讓她開；她要弄清楚燈座上為什麼有顧家燈上的記號。",
+      "turn": "觀眾以為顧承霖還在搶家底；他真正怕的是燈座一開，兩半的燈會變成一盞——那時顧家的燈就不再「只屬於顧家」。福伯拿出一九二六年的照片，燈座在照片裡就有那個刻痕。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老岑的電話打進老宅：「老太爺回山上了。燈——」他停了一下，「一百年來第一次，亮了兩分。」她看著自己燈座上的刻痕。",
+        "question": "顧家的燈為什麼跟著亮？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "ganren"
+      ],
+      "spectacle": "燈座三個凹槽與第四個刻痕的微距，三枚銀印在旁邊排成一列；門外整夜不滅的車燈透過祠堂門縫。",
+      "glamour_shot": "沈月棠湊近燈座看刻痕，火光把少女的睫毛投影在皺紋的手背上。",
+      "setups": [],
+      "payoffs": [
+        "s05-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "保全聲請被駁回",
+        "燈座上發現點燈師傅的記號"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "fu-bo",
+        "jiang-mubai",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "gu-yuanshan",
+        "shen-zhiyuan"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "老宅門口",
+        "顧家藏館"
+      ],
+      "state": {
+        "time": "宣判後第一天",
+        "knowledge": "燈座上有與顧家燈相同的師傅記號；顧家的燈跟著亮",
+        "carry_forward": "她還沒決定什麼時候開燈座；顧承霖沒走"
+      }
+    },
+    {
+      "number": 266,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "停電",
+      "youtube_title": "工程車撞斷老宅電線，全屋只剩一盞燈亮著，他走進來說：現在開",
+      "duration_s": 115,
+      "logline": "顧承霖買下老宅周邊的地開工，噪音與停電逼她在他面前開燈座；她看見百年前的影子，決定等人坐齊。",
+      "hook": "祠堂的燭光裡她看見一個穿長衫的影子坐在燈旁——沈作甫。她伸手，影子沒了，只剩燈。",
+      "hook_type": "image",
+      "mid_hook": "顧承霖站在工程圍籬外：「燈座底下的東西，一半是顧家的。師傅說的。」她隔著圍籬：「那就一起看。」",
+      "extra_hooks": [
+        "挖土機從早上六點響到晚上，小滿在飯桌上戴耳塞寫功課，玉琴跟著敲碗打拍子。"
+      ],
+      "conflict": "顧承霖要她在他眼前開燈座，用施工噪音與停電逼她；她要等全家都在、顧家的人也在的那一刻。",
+      "turn": "觀眾以為她被逼到了；停電之後老宅只剩祠堂的燈亮，全家反而都擠到了祠堂——這是她想要的。她看著一屋子人：「人沒坐齊。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "工程車撞斷電線，全屋黑了，只剩祠堂那一點火。顧承霖踩著黑走進來：「現在開。」她坐在燈前沒動：「等人坐齊。」他：「等誰？」她：「等你祖父。」",
+        "question": "顧承霖會把顧遠山帶來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "全宅停電、只有祠堂一點火光的大全景，黑裡一個個人影往燈的方向走；一百年前抱燈的剪影與今天她坐在燈前的疊影。",
+      "glamour_shot": "沈月棠在停電的黑裡被唯一的火光描出半張臉，少女的杏眼直直看向門口的黑影。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在燭光裡看見沈作甫的影子",
+        "她定下開燈座的條件：人坐齊"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "shen-zuofu",
+        "shen-xiaoman",
+        "shen-yuqin",
+        "fu-bo",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "老宅周邊工地",
+        "沈家老宅大廳飯桌"
+      ],
+      "state": {
+        "time": "宣判後第二天夜",
+        "knowledge": "顧承霖知道師傅說過燈座底下的東西一半是顧家的",
+        "carry_forward": "等顧遠山來才開燈座"
+      }
+    },
+    {
+      "number": 267,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "等人坐齊",
+      "youtube_title": "顧家管家把老太爺偷運下山，曾孫報警說綁架，老太爺對警察說了四個字",
+      "duration_s": 120,
+      "logline": "老岑不顧顧承霖把顧遠山推下山來開燈座，顧承霖報警說綁架；人終於坐齊，顧承霖卻在最後一秒抓走第三枚銀印。",
+      "hook": "警車停在老宅門口，警察敲門：「有人報案，綁架老人。」門開，輪椅上的顧遠山自己說：「我自己來的。」",
+      "hook_type": "line",
+      "mid_hook": "顧遠山與她在燈前並排坐著，全家站在身後，顧承霖站在門口。顧遠山：「開吧。」她拿起第一枚銀印。",
+      "extra_hooks": [
+        "林美鳳把警察拉到飯桌邊：「先吃一碗。」警察看了看筆錄，又看了看那鍋湯。"
+      ],
+      "conflict": "顧承霖用警察、用「綁架」要把老太爺帶回山上；她要的「人坐齊」就差這一個。",
+      "turn": "觀眾以為人到齊就能開；第一枚銀印剛要放進凹槽，顧承霖一步跨進來，拿走證物台上判還給她的第三枚：「這枚，我上訴。」——他有十天上訴期。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "顧承霖把第三枚銀印握進掌心，退出祠堂門：「上訴期還有十天。」車門關上。顧遠山在輪椅上閉了一下眼：「他會後悔。」",
+        "question": "第三枚銀印又丟了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "xuanyi",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "祠堂裡兩個老人並排坐在燈前、身後十一個人站成一排的全景；顧承霖握著銀印退出門框的那一格。",
+      "glamour_shot": "沈月棠拿起第一枚銀印時指尖的皺紋與少女的側臉同時入鏡，燈光從下方照上來。",
+      "setups": [],
+      "payoffs": [
+        "s05-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧遠山住進沈家老宅",
+        "老岑完全站到沈家這邊"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "lin-meifeng",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "su-xiao",
+        "shen-zhixing",
+        "shen-jianye",
+        "zhou-huaian"
+      ],
+      "locations": [
+        "老宅門口",
+        "沈家老宅祠堂",
+        "沈家老宅大廳飯桌"
+      ],
+      "state": {
+        "time": "宣判後第三天",
+        "knowledge": "顧承霖用上訴拖十天；顧遠山留在老宅",
+        "carry_forward": "十天上訴期；第三枚銀印在顧承霖手裡"
+      }
+    },
+    {
+      "number": 268,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "十六歲的藥櫃",
+      "youtube_title": "曾孫申請宣告老太爺無行為能力，九十八歲的他當庭背出一百年前三十六家店名",
+      "duration_s": 115,
+      "logline": "顧承霖聲請宣告顧遠山無行為能力好把他接回山上；顧遠山在老宅摸老藥櫃、在法庭背出一百年前的三十六家店，並告訴她第三枚印會自己回來。",
+      "hook": "顧遠山的輪椅停在老藥櫃前，枯手摸到一個抽屜：「十六歲，我在這裡抓過藥。」她在他身後：「你抓錯過三次。」",
+      "hook_type": "line",
+      "mid_hook": "法官問顧遠山一九二六年藥行公會有幾家店。他閉眼：「三十六。」然後一家一家念，念到第三十六家，法官放下筆。",
+      "extra_hooks": [
+        "顧遠山低聲說：「師傅說過，燈座底下有一句話。他沒說是什麼。」她看著燈座：「那就等它亮。」"
+      ],
+      "conflict": "顧承霖要法院宣告老太爺無行為能力，好名正言順把他鎖回山上；顧遠山要證明自己清醒，並在清醒時把知道的都說完。",
+      "turn": "觀眾以為第三枚銀印要靠法院追回；顧遠山說「印認主，他手會燙」——同一時間顧承霖在車裡打開手帕，掌心一塊紅。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "法官駁回監護聲請。顧遠山回到老宅，對她說：「燈座底下有一句話。師傅刻的不是，是作甫刻的。」她的手停在燈座上。",
+        "question": "作甫刻了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "goxue",
+        "dalian"
+      ],
+      "spectacle": "老藥櫃前輪椅上的老人與白髮少女的側影；法庭上顧遠山閉眼念店名，投影上文琳一家一家打勾。",
+      "glamour_shot": "沈月棠一手搭在老藥櫃的抽屜上回頭，少女的下頜線與白髮辮子在藥櫃木紋的暖光裡。",
+      "setups": [
+        "s05-t07"
+      ],
+      "payoffs": [
+        "s05-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "監護聲請被駁回",
+        "她知道燈座底下的字是作甫刻的"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "gu-chenglin",
+        "s05-zheng-shouyi",
+        "s05-du-mingzhe",
+        "jiang-mubai",
+        "s05-wen-lin",
+        "s05-lao-cen",
+        "fu-bo"
+      ],
+      "locations": [
+        "沈家老宅大廳老藥櫃",
+        "臨江地方法院",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "宣判後第五天",
+        "knowledge": "燈座底下有作甫刻的一句話；第三枚印在顧承霖手裡會燙他",
+        "carry_forward": "顧承霖的掌心；上訴期剩五天"
+      }
+    },
+    {
+      "number": 269,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "印回來了",
+      "youtube_title": "他握著搶來的銀印守在自家燈前，燈一小時暗一格，他終於撐不住了",
+      "duration_s": 110,
+      "logline": "顧承霖抱著第三枚銀印守在顧家的燈前，燈每小時暗一格；周懷安上山勸他，他撤回上訴，把印送下山，附一張紙條。",
+      "hook": "山上，顧承霖握著第三枚銀印坐在顧家的燈前，燈暗了一格。他把印握得更緊，掌心冒汗。",
+      "hook_type": "image",
+      "mid_hook": "周懷安走進藏館，站在他身後：「你燈快滅了。」顧承霖沒回頭：「那妳家呢？」周懷安：「我家在沈家吃飯。」",
+      "extra_hooks": [
+        "老岑捧著一個木盒進老宅，盒裡是第三枚銀印和一張紙條：「開的時候，我要在。」"
+      ],
+      "conflict": "顧承霖要靠搶來的印賭一把，看顧家的燈能不能靠「拿回沈家的東西」亮；燈用每小時一格告訴他答案。",
+      "turn": "觀眾以為顧承霖會撐完十天；他撐了一夜。天亮時他把印放進木盒，撤回上訴——但他要在開燈座的時候在場。他要親眼看那一半是不是顧家的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把三枚銀印攤在掌心，顧遠山在旁邊：「明天開。」她搖頭：「今晚。全家都在。」福伯把第十二張椅子搬到祠堂門邊，玉琴握住她的手。",
+        "question": "燈座底下到底是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "顧家藏館裡一盞每小時暗一格的燈與握印的手的延時；老宅祠堂裡三枚銀印攤在皺紋的掌心上。",
+      "glamour_shot": "顧承霖在暗下去的燈前抬頭看周懷安，桃花眼裡第一次沒有算計，只有累。",
+      "setups": [],
+      "payoffs": [
+        "s05-t06",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧承霖撤回上訴，第三枚銀印回到她手上",
+        "三枚銀印合齊，今夜開燈座"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "zhou-huaian",
+        "s05-lao-cen",
+        "gu-yuanshan",
+        "fu-bo",
+        "shen-yuqin"
+      ],
+      "locations": [
+        "顧家藏館",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "宣判後第六天",
+        "knowledge": "三枚銀印都在她手上；顧承霖要在開燈座時在場",
+        "carry_forward": "今夜開燈座；顧承霖在路上"
+      }
+    },
+    {
+      "number": 270,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "一行字",
+      "youtube_title": "三枚銀印合進燈座轉開，底下沒有金條沒有地契，只有一行刻字",
+      "duration_s": 160,
+      "logline": "三枚銀印合進燈座的三個凹槽，全家站在祠堂裡，顧遠山坐在她身邊，顧承霖在路上；燈座轉開，底下只有一行字。",
+      "hook": "第一枚銀印落進凹槽，「喀」一聲，燈亮了一分。全家屏住呼吸。她的手去拿第二枚。",
+      "hook_type": "image",
+      "mid_hook": "顧承霖的電話打進老宅：「我在路上。別開。」她把第二枚放進去。燈又亮一分。顧遠山：「他來得及。」",
+      "extra_hooks": [
+        "第三枚放進去的時候燈座沒動。她用老人家的手法把三枚印像鎖一樣各轉半圈——燈座底下傳來齒輪的聲音。",
+        "林美鳳在門口守著：「他敢進來我就——」玉琴接話：「就讓他進。」"
+      ],
+      "conflict": "一百年等的第三份家底就在燈座底下；全家要在顧承霖到之前看見它，而她要等所有人都在。",
+      "turn": "觀眾以為燈座底下是金、是地契、是第三份祖方；燈座轉開，底下沒有任何東西——只有一行刻在木頭裡的字，字小得要靠燈最亮才看得清。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "三枚銀印合進燈座的三個凹槽，燈座轉開，底下沒有金、沒有紙，只有一行字；她還沒讀完，顧承霖的車燈從老宅門口直直照進祠堂。",
+        "question": "那行字寫了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "goxue",
+        "tuanchong"
+      ],
+      "spectacle": "三枚銀印在燈座上合成一枚的俯拍；顧遠山與她兩個老人第一次並排坐著的構圖；燈座轉開、刻字在光裡浮出。",
+      "glamour_shot": "燈座轉開的那一秒她俯身，火光從下往上照亮少女的臉，白髮辮子垂進光裡，眼睛裡映著一行還讀不清的字。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "燈座打開",
+        "三枚銀印合成一枚",
+        "全家與顧遠山同在祠堂"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "gu-chenglin",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "su-xiao",
+        "shen-zhixing",
+        "lin-meifeng",
+        "shen-jianye",
+        "zhou-huaian",
+        "s05-lao-cen"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "老宅門口"
+      ],
+      "state": {
+        "time": "宣判後第六天夜",
+        "knowledge": "第三份家底不是東西，是一行字；字還沒讀完",
+        "carry_forward": "顧承霖的車燈照進祠堂；那行字"
+      }
+    },
+    {
+      "number": 271,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "車燈",
+      "youtube_title": "他的車燈照進祠堂要搶那行字，白髮的她只說：字太小，我老了看不清",
+      "duration_s": 115,
+      "logline": "顧承霖衝進祠堂要讀燈座底下的字，字只在燈最亮時才看得清；他轉而宣布老街所有租約已被買斷，老陳拿出地契。",
+      "hook": "車燈直直照進祠堂，她用手背擋光，燈座底下那行字在白光裡反而看不見了。顧承霖跨進門：「念。」",
+      "hook_type": "danger",
+      "mid_hook": "顧承霖收起手機：「老街三十二份租約，從今天起，房東是遠山控股。」老陳從圍裙裡掏出一卷紙：「地契在我這。」",
+      "extra_hooks": [
+        "她湊近燈座，只讀出兩個字：「月棠」。後面的字小得像針，她直起身：「我老了，看不清。」顧承霖湊過去——也看不清。"
+      ],
+      "conflict": "顧承霖要那行字，字卻只在燈最亮時浮出；他轉而用買斷的租約要把整條老街變成顧家的房客。",
+      "turn": "觀眾以為顧承霖又贏一局；老陳的地契是第四季找回的第二份家底，地在她名下，租約簽給了不是地主的人——三十二份全是廢紙。顧承霖的笑第一次僵住。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧承霖走出門，每個人的手機同時響起推播。新聞標題：「老城區活了一百年的『妖』」，配圖是她的白髮與十八歲的臉。小滿的手機掉在地上。",
+        "question": "全城明天會怎麼看她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "車燈從祠堂門口直射到燈座的長光束，塵埃在光裡飄；老陳掏出地契與顧承霖手機上三十二份租約的對比。",
+      "glamour_shot": "沈月棠用皺紋的手背擋住車燈，少女的臉在逆光裡只剩輪廓與一雙杏眼。",
+      "setups": [
+        "s05-t10"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老街租約因地契而作廢",
+        "燈座的字要等燈最亮才讀得清"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "lao-chen",
+        "shen-xiaoman",
+        "fu-bo",
+        "gu-yuanshan",
+        "shen-jianbang",
+        "shen-zhiyuan"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "老宅門口"
+      ],
+      "state": {
+        "time": "開燈座當夜",
+        "knowledge": "那行字只在燈最亮時可讀；顧承霖轉向媒體",
+        "carry_forward": "全城新聞「妖」；沈記重開的事"
+      }
+    },
+    {
+      "number": 272,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "妖",
+      "youtube_title": "全城新聞叫她妖，高中生站上講台：她是我姐，也是我太奶奶",
+      "duration_s": 115,
+      "logline": "全城新聞把她打成活了一百年的妖，媒體圍住老宅；她不辯，只宣布沈記七天後原址重開，顧承霖立刻斷了所有藥材。",
+      "hook": "小滿的班上，全班的手機都是那張照片。小滿走上講台，拿起粉筆寫了四個字：「她是我姐。」然後補了一行：「也是我太奶奶。」",
+      "hook_type": "line",
+      "mid_hook": "知遠拉開小藥局的藥櫃，一格一格空的。供應商的簡訊只有一句：「顧家包了。」",
+      "extra_hooks": [
+        "記者把麥克風伸到她面前：「妳是不是妖？」她看了一眼麥克風：「這東西要插電嗎？」記者愣住。"
+      ],
+      "conflict": "媒體要她解釋自己，她不解釋；顧承霖斷了全城藥材，她七天後要開門。",
+      "turn": "觀眾以為沒有藥材開不了門；老陳打了一通電話給藥行公會，三十六家老鋪每家出一味——一百年前她救過的三十六家，今天回頭救沈記。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "深夜，周懷安站在廚房門口：「我父親的招牌，能掛在沈記旁邊嗎？」她擦著手：「先拿回來。」他看了一眼山上的方向。",
+        "question": "周懷安父親的招牌在哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "tuanchong",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "小滿在黑板前寫字的背影與全班舉著手機的手；小藥局一格格空藥櫃被拉開的連續鏡頭。",
+      "glamour_shot": "沈小滿在講台上寫完粉筆字轉身，大眼睛紅著卻不眨，齊瀏海下一張倔強的圓臉。",
+      "setups": [
+        "s05-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈記重開日期定下",
+        "藥行公會三十六家各出一味",
+        "小滿在全班面前替家人說話"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-xiaoman",
+        "xiao-he",
+        "shen-zhiyuan",
+        "su-xiao",
+        "lao-chen",
+        "lin-dao",
+        "zhou-huaian",
+        "fu-bo"
+      ],
+      "locations": [
+        "小滿的高中",
+        "老宅門口",
+        "知遠小藥局",
+        "沈家老宅廚房"
+      ],
+      "state": {
+        "time": "開燈座後第一天",
+        "knowledge": "藥材由公會出；周懷安要拿回父親的招牌",
+        "carry_forward": "周懷安上山；重開倒數七天"
+      }
+    },
+    {
+      "number": 273,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "藏館的招牌",
+      "youtube_title": "他說招牌早燒了，管家卻帶他走進地下室：滿牆都是被吞掉的老字號",
+      "duration_s": 120,
+      "logline": "周懷安帶著法院歸還令上山拿回父親的招牌，顧承霖說早燒了；老岑帶他走進藏館地下，滿牆都是老字號。",
+      "hook": "顧氏藏館的大門打開，滿牆的老招牌。周懷安站在門口，手裡的歸還令在抖。",
+      "hook_type": "image",
+      "mid_hook": "老岑拉開地下室的鐵門，燈一亮：幾十塊招牌靜靜立著，正中央一塊「懷記」。周懷安的腿軟了一下。",
+      "extra_hooks": [
+        "顧承霖靠在門邊：「你爸的早燒了。」老岑看了他一眼：「少爺，您沒下去過。」"
+      ],
+      "conflict": "周懷安要親手把父親的招牌拿回來；顧承霖要讓他空手下山，哪怕說謊。",
+      "turn": "觀眾以為招牌真的燒了；藏館的地下室裡幾十塊老字號全在——顧家一百年沒燒過一塊招牌，他們收藏別人的家。周懷安抱起「懷記」時法警替他開了門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "周懷安的車開到山腳，警車攔在路中央。警察敲窗：「有人檢舉，你偷顧家文物。」他看了一眼後座的招牌，把歸還令放到方向盤上。",
+        "question": "招牌會被扣下嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "ganren",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "藏館地下室燈亮起，幾十塊老字號招牌一排排立在黑裡的大全景；周懷安抱著「懷記」走上樓梯的仰拍。",
+      "glamour_shot": "周懷安抱著招牌站在藏館門口，深灰西裝沾了灰，冷硬的臉在山上的日光裡第一次像個兒子。",
+      "setups": [],
+      "payoffs": [
+        "s05-t12",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周懷安拿回父親的招牌「懷記」",
+        "顧家藏館地下的老字號被看見"
+      ],
+      "characters": [
+        "zhou-huaian",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "shen-yuetang"
+      ],
+      "locations": [
+        "顧氏藏館",
+        "藏館地下室",
+        "山腳公路"
+      ],
+      "state": {
+        "time": "開燈座後第二天",
+        "knowledge": "顧家藏了幾十塊老字號招牌；周懷安拿回懷記",
+        "carry_forward": "警車攔車；新藥要在開門前做出來"
+      }
+    },
+    {
+      "number": 274,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "沈記的味",
+      "youtube_title": "新藥第一帖端到她面前，她閉著眼嚐了一口：差三分火",
+      "duration_s": 115,
+      "logline": "知遠與蘇曉做出新藥第一帖，要過沈月棠的舌頭；她的身體更慢了，卻在半夜說了一句讓知遠睡不著的話。",
+      "hook": "警察翻著歸還令看了三遍，把它遞回車窗：「走吧。」周懷安踩下油門，後座的招牌晃了一下。",
+      "hook_type": "reversal",
+      "mid_hook": "蘇曉翻到祖方最後一頁——空白。她抬頭。沈月棠：「那頁，是給你們寫的。」",
+      "extra_hooks": [
+        "知遠要把新藥叫「月棠丸」，她把藥匣蓋上：「叫沈記。」"
+      ],
+      "conflict": "新藥要在開門前定下，她的舌頭是最後一關；她越來越老，手握不穩藥匙。",
+      "turn": "觀眾以為她在挑新藥的毛病；她說「差三分火」之後把火候筆記交給蘇曉：「下一鍋，妳聽。」她不再自己試火，開始放手。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "半夜知遠拎著熱豆漿回來，她坐在老藥櫃前睡著了，白髮辮子搭在抽屜上。他把豆漿放到她手邊，她睜眼：「開門那天，我可能不出去。」",
+        "question": "她為什麼不出去看沈記重開？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "tianchong",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "藥局後間五口鍋、蘇曉閉眼聽火、知遠握著計時器，牆上掛著一張寫滿的火候筆記。",
+      "glamour_shot": "沈知遠低頭把豆漿放到她手邊，白袍袖子捲到手肘，藥櫃暖光裡乾淨的下顎線與一顆虎牙。",
+      "setups": [
+        "s05-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "新藥第一帖成形，名叫沈記",
+        "周懷安帶著招牌回到老街",
+        "祖方最後一頁交給知遠與蘇曉"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "zhou-huaian",
+        "fu-bo"
+      ],
+      "locations": [
+        "山腳公路",
+        "知遠小藥局",
+        "沈家老宅大廳老藥櫃"
+      ],
+      "state": {
+        "time": "開燈座後第三天夜",
+        "knowledge": "新藥定了；她說開門那天可能不出去",
+        "carry_forward": "老街要掛一百年前的招牌"
+      }
+    },
+    {
+      "number": 275,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "一百年前的招牌",
+      "youtube_title": "老米行拆下樓板翻過來，背面是一百年前的招牌，整條街開始翻倉庫",
+      "duration_s": 110,
+      "logline": "老街每一家翻出一百年前的招牌準備重開那天一起掛；顧承霖告老街妨害，林美鳳想請網紅剪綵，福伯的懷錶停了。",
+      "hook": "老陳爬上米行二樓，拆下一塊樓板翻過來——反面兩個字：「德記」。他拍掉灰塵：「我爺爺釘上去的。」",
+      "hook_type": "image",
+      "mid_hook": "林美鳳拿著手機：「我請了三個網紅剪綵。」她放下菜刀：「請街坊。」林美鳳：「街坊沒流量！」玉琴：「街坊有嘴。」",
+      "extra_hooks": [
+        "顧承霖的律師送來三十二張告訴狀，告老街「妨害使用」。老陳把它們墊在米袋下面：「剛好。」"
+      ],
+      "conflict": "老街要在重開那天掛出一百年前的招牌；顧承霖用訴訟和房客身分阻擋，林美鳳用網紅思維攪局。",
+      "turn": "觀眾以為一百年前的招牌早就沒了；三十六家一家一家從倉庫、樓板、床底翻出來——沈月棠一塊一塊叫出店名與當年的掌櫃，沒有一塊認錯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "開門前夜，福伯坐進沈記門邊那張老位子試了試：「這位子，我坐了七十年。」他掏出懷錶看時間——錶停了。他沒說，把錶放回口袋。",
+        "question": "福伯的懷錶為什麼停了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "dalian",
+        "ganren"
+      ],
+      "spectacle": "三十六塊百年招牌一塊塊從倉庫、樓板、床底被抬出來擦亮的蒙太奇，最後一起靠在沈記門前的牆上。",
+      "glamour_shot": "福伯坐在門邊老位子上掏懷錶，熨過的灰唐裝、理得極短的白髮，夕陽從門口斜進來落在錶蓋上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "三十六塊百年招牌到齊",
+        "顧承霖的告訴狀被當米袋墊"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "lin-meifeng",
+        "shen-yuqin",
+        "fu-bo",
+        "gu-chenglin",
+        "shen-xiaoman",
+        "zhou-huaian"
+      ],
+      "locations": [
+        "老街",
+        "德記米行",
+        "沈家老宅廚房",
+        "沈記藥行門面"
+      ],
+      "state": {
+        "time": "開門前夜",
+        "knowledge": "招牌到齊；福伯的錶停了，他沒說",
+        "carry_forward": "開門前還有顧承霖的最後一手"
+      }
+    },
+    {
+      "number": 276,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "執照",
+      "youtube_title": "開門前兩天衛生局突襲檢查，她看著條碼機問：這要插電嗎",
+      "duration_s": 115,
+      "logline": "顧承霖檢舉沈記執照與藥事法規，衛生局突襲；她不懂條碼與現代法規，蘇曉與江慕白替她補上現代這一課，顧遠山在山上給曾孫下了一道命令。",
+      "hook": "衛生局的人推開沈記的門：「檢查。」她看著他們手裡的條碼機：「這要插電嗎？」蘇曉衝過來。",
+      "hook_type": "line",
+      "mid_hook": "山上，顧遠山對顧承霖說：「開門那天，去買一帖藥。」顧承霖：「我去拆。」顧遠山：「你去買。」",
+      "extra_hooks": [
+        "江慕白把一疊執照、藥師證、登記表排在櫃台上，一張一張對衛生局念編號，念到第九張對方說：「好了。」"
+      ],
+      "conflict": "顧承霖用現代法規當最後一道牆；她一百年的手藝在條碼機與登記表面前一字不識，得靠家裡的年輕人與律師。",
+      "turn": "觀眾以為衛生局會找到漏洞；蘇曉三個月前就把所有登記辦齊了，她把那天的收據拍在櫃台上：「我早知道他會來。」檢查過關，她看著蘇曉：「這家以後妳管。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "顧承霖站在藏館的燈前，燈暗了一半。老太爺的聲音從床上傳來：「去買。」他盯著火：「買了，顧家就認了。」老人：「認了，燈才亮。」他沒答。",
+        "question": "顧承霖開門那天會去買藥還是去拆？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "dalian",
+        "shangzhan",
+        "xuanyi"
+      ],
+      "spectacle": "沈記櫃台上一排整整齊齊的現代證照與一面牆的一百年前招牌同框；山上一盞暗了一半的燈與兩代人的剪影。",
+      "glamour_shot": "蘇曉把收據拍到櫃台上抬頭笑，梨渦、短髮、格子襯衫袖口翻起，白日光燈下乾淨俐落。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈記執照檢查過關",
+        "蘇曉接下沈記的現代管理",
+        "顧遠山命顧承霖開門那天去買藥"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "su-xiao",
+        "jiang-mubai",
+        "shen-zhiyuan",
+        "gu-chenglin",
+        "gu-yuanshan",
+        "s05-lao-cen"
+      ],
+      "locations": [
+        "沈記藥行門面",
+        "顧家藏館"
+      ],
+      "state": {
+        "time": "開門前兩天",
+        "knowledge": "顧承霖沒有法規上的牌了；他的祖父要他去買藥",
+        "carry_forward": "第十二味藥材還缺"
+      }
+    },
+    {
+      "number": 277,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "第十二味",
+      "youtube_title": "新藥缺最後一味藥材，全城都被買光，一個木盒卻在半夜送到門口",
+      "duration_s": 110,
+      "logline": "新藥的第十二味藥材被顧承霖買光全城；周懷安翻盛通的舊倉庫、公會翻存貨都沒有，開門前夜一個木盒送到沈記門口。",
+      "hook": "蘇曉把十一個藥包排在桌上，第十二個位置空著：「全城沒了。他買光的。」",
+      "hook_type": "danger",
+      "mid_hook": "周懷安在盛通的舊倉庫翻到第三排貨架，老岑的電話進來：「周先生，別找了。少爺今晚下山。」",
+      "extra_hooks": [
+        "她聞了聞空的藥包：「這味，一百年前也缺過。那年我用另一味替。」知遠：「哪一味？」她搖頭：「現在不替。等。」"
+      ],
+      "conflict": "沒有第十二味，新藥就不是新藥；全城的貨都在顧承霖手裡，而她偏要等而不替。",
+      "turn": "觀眾以為她會用老辦法替代；她不替——她在等顧承霖自己送來。半夜木盒送到，裡面是第十二味與一張字條：「老太爺要的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "知遠打開木盒：第十二味藥材，滿滿一盒。盒底一張字條，顧承霖的字：「老太爺要的。」她把字條放到燈前，燈亮了一分——顧家的人心，第一次算進了沈家的燈。",
+        "question": "顧承霖是在幫，還是另有打算？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "tuanchong",
+        "dalian",
+        "ganren"
+      ],
+      "spectacle": "桌上十一個藥包與一個空位的俯拍；半夜沈記門口一個木盒在路燈下，門打開的光落在盒上。",
+      "glamour_shot": "沈月棠閉眼聞空藥包，白髮垂落，少女的鼻樑在藥局暖白燈下乾淨得像畫；睜眼時眼神是老人的篤定。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第十二味到手，新藥可以配齊",
+        "顧承霖的字條讓燈亮了一分"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "su-xiao",
+        "shen-zhiyuan",
+        "zhou-huaian",
+        "s05-lao-cen",
+        "gu-chenglin",
+        "lao-chen"
+      ],
+      "locations": [
+        "知遠小藥局",
+        "盛通舊倉庫",
+        "沈記藥行門面",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "開門前夜",
+        "knowledge": "顧承霖照祖父的話送來藥材；燈認了這份心",
+        "carry_forward": "明天開門；她說她可能不出去"
+      }
+    },
+    {
+      "number": 278,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "門邊的位子",
+      "youtube_title": "記者會上有人問「那個妖是妳什麼人」，家主第一次當眾說：我奶奶",
+      "duration_s": 120,
+      "logline": "顧承霖邀媒體到開幕現場「驗妖」，建邦開記者會迎戰；福伯替門邊的老位子換了椰墊，問她開門那天出不出來。",
+      "hook": "福伯跪在沈記門邊修那張老椅子，她坐在旁邊：「七十年沒換過墊。」福伯：「換了，就不是我的位子了。」",
+      "hook_type": "line",
+      "mid_hook": "記者：「那個活了一百年的妖，是你什麼人？」建邦握著麥克風三秒：「我奶奶。」會場安靜了。",
+      "extra_hooks": [
+        "福伯低聲問她：「開門那天，您出來嗎？」她看著燈：「我在燈前坐著就好。」福伯：「是。」"
+      ],
+      "conflict": "顧承霖要把開幕變成一場「驗妖」直播；建邦要在記者面前第一次當眾認她；福伯想知道她會不會走出來。",
+      "turn": "觀眾以為建邦會躲；他說完「我奶奶」還補了一句：「六十年前她抱過我。」記者的筆停了——林啟明在人群後面把這段剪成了直播最高點。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡，福伯把懷錶上緊了弦，錶又走了。他把錶貼在耳邊聽了一會兒，對著祠堂的燈說：「撐到開門。」燈亮了一分。",
+        "question": "福伯撐得到開門那天嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "dalian"
+      ],
+      "spectacle": "記者會上建邦說「我奶奶」的瞬間，二十台相機的閃光同時亮；沈記門邊一張換了新墊的老椅子在門光裡。",
+      "glamour_shot": "沈建邦在記者會上摘下細框眼鏡擦了一下再戴回去，兩鬢的白在閃光燈下第一次不像愁，像定。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "建邦第一次當眾稱她奶奶",
+        "福伯的懷錶再走"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "fu-bo",
+        "shen-jianbang",
+        "lin-dao",
+        "gu-chenglin",
+        "shen-zhixing"
+      ],
+      "locations": [
+        "沈記藥行門面",
+        "沈氏集團記者會",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "開門前一天",
+        "knowledge": "建邦當眾認了她；顧承霖的媒體要來驗妖",
+        "carry_forward": "開門前夜的布置"
+      }
+    },
+    {
+      "number": 279,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "開門前夜",
+      "youtube_title": "全家熬夜布置藥行，她一個人試著走到門口，走到一半坐在了門檻上",
+      "duration_s": 115,
+      "logline": "開門前夜全家在藥行布置到半夜，燈亮得照滿祠堂；她發現燈越亮自己越老，獨自試著走到藥行門口，走不到。",
+      "hook": "林美鳳把一張紅紙貼在沈記門上，歪的。小滿：「歪了。」林美鳳：「紅就好！」玉琴推著輪椅過去，用手帕把紙角壓正。",
+      "hook_type": "image",
+      "mid_hook": "祠堂裡燈亮得照滿整間，她看著自己的手——比昨天更皺。燈越亮，她越老。她把手收進袖子，沒告訴任何人。",
+      "extra_hooks": [
+        "老岑來電：「少爺把媒體全退了。老太爺的命令。」建邦放下電話，看了燈一眼。"
+      ],
+      "conflict": "全家為開門忙到半夜，誰都以為她明天會站在門口；她知道自己走不到。",
+      "turn": "觀眾以為燈亮她就年輕；這一夜燈最亮，她卻最老——規則反了，她懂了什麼，卻沒說，只是一個人推開祠堂的門往藥行的方向試著走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "深夜她一個人走出祠堂，要走到藥行門口。走了十步，腿不聽使喚，她慢慢坐在祠堂門檻上，回頭對燈說：「明天，別叫我。」",
+        "question": "她明天出不出得了門？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "藥行裡全家各忙一角的長鏡頭：貼紅紙、擦招牌、裝藥匣、練算盤；祠堂裡燈亮到照出每一塊磚，門檻上一個白髮的身影。",
+      "glamour_shot": "沈月棠坐在門檻上回頭看燈，燈光把少女的臉照得透亮，白髮像被光鍍過，眼睛裡沒有怕。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "藥行布置完成",
+        "顧承霖退了媒體"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lin-meifeng",
+        "shen-xiaoman",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "zhou-huaian",
+        "fu-bo",
+        "s05-lao-cen",
+        "shen-zhixing",
+        "shen-jianye"
+      ],
+      "locations": [
+        "沈記藥行門面",
+        "沈家老宅祠堂",
+        "祠堂門檻"
+      ],
+      "state": {
+        "time": "開門前夜深夜",
+        "knowledge": "她知道燈越亮自己越老；她走不到藥行門口",
+        "carry_forward": "明天開門，她不出去"
+      }
+    },
+    {
+      "number": 280,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "原址",
+      "youtube_title": "沈記在原址重開那天，整條街掛出一百年前的招牌，他帶著現金來卻沒有一家收",
+      "duration_s": 170,
+      "logline": "沈記老字號在原址開門：老街同時掛出百年招牌、公會供藥、新藥上架、小滿收銀、建邦迎客、福伯坐門邊；顧承霖來了，沒有一家收他的錢；收攤時小滿跑進祠堂找她。",
+      "hook": "捲門拉起的聲音。整條老街三十六塊一百年前的招牌同一秒掛上牆，老陳喊：「開門！」",
+      "hook_type": "image",
+      "mid_hook": "顧承霖提著一箱現金站在街中央：「今天這條街的藥，我全買。」一家、一家、一家搖頭。他走到沈記櫃台前，小滿打著算盤沒抬頭：「不賣。」",
+      "extra_hooks": [
+        "周懷安把「懷記」掛到沈記隔壁的牆上，釘子敲下去的時候他的手停了一下，老陳拍他的背。",
+        "顧承霖最後把一張鈔票放在櫃台：「一帖藥。給我祖父。」知遠看了蘇曉一眼，蘇曉包了藥。"
+      ],
+      "conflict": "沈記重開第一天要撐住整條街與全城的眼睛；顧承霖最後一次用錢來買這條街，而她不在門口。",
+      "turn": "觀眾以為高潮是顧承霖被整條街拒絕；真正的高潮在收攤後——全家在藥行後院數錢，笑聲滿院，小滿跑進祠堂叫她出來看，她坐在燈前，燈比任何時候都亮，她的頭髮白得像雪。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "開門第一天收攤，全家在藥行後院數錢，小滿跑進去叫她出來看——祠堂裡，她坐在燈前，燈比任何時候都亮，而她的頭髮，白得像雪。",
+        "question": "燈越亮她越老，為什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "tuanchong",
+        "xiju",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "一條街同時掛出百年前招牌的全景；沈記門口排到街尾的人龍；燈前白髮的她與最亮的燈。",
+      "glamour_shot": "小滿推開祠堂門的那一格：燈光漫出來，白得像雪的頭髮垂在少女的肩上，她回頭，眼睛被光照得清亮。",
+      "setups": [],
+      "payoffs": [
+        "s05-t10",
+        "s05-t11",
+        "s05-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈記老字號在原址重開",
+        "整條街沒有一家收顧承霖的錢",
+        "懷記的招牌掛在沈記旁邊",
+        "顧承霖買了一帖藥給祖父"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "lao-chen",
+        "zhou-huaian",
+        "shen-xiaoman",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "fu-bo",
+        "shen-yuqin",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-zhixing",
+        "lin-dao",
+        "jiang-mubai"
+      ],
+      "locations": [
+        "老街",
+        "沈記藥行門面",
+        "藥行後院",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "重開第一天夜",
+        "knowledge": "沈記重開成功；她的白髮與燈的亮是同一件事",
+        "carry_forward": "燈最亮，那行字可以讀了"
+      }
+    },
+    {
+      "number": 281,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "那句話",
+      "youtube_title": "燈最亮的那一夜她終於讀完燈座底下那行字，全家聽完沒有一個人說得出話",
+      "duration_s": 130,
+      "logline": "燈亮到足以讀字，她念出沈作甫刻在燈座底下的那一句；全家想用「散開」讓燈暗、讓她年輕，建邦拎起了行李。",
+      "hook": "全家擠進祠堂，燈亮得像白天。她俯身到燈座前：「現在看得清了。」一個字一個字念：「月棠，家不是撐住的，是坐滿的。」",
+      "hook_type": "line",
+      "mid_hook": "知遠盯著她的白髮：「燈越亮妳越老——規則反了？」她沒答，看著那行字笑了。",
+      "extra_hooks": [
+        "林美鳳第一個哭出聲：「那我們走啊！人少燈暗，妳就年輕了！」她：「誰敢走。」"
+      ],
+      "conflict": "一百年等的第三份家底是一句話；全家聽懂了那句話，卻想用相反的方式救她——散開。",
+      "turn": "觀眾以為那句話是安慰；它是答案——家不是她一個人撐住的，是所有人坐滿的；她變老，是因為她不用再撐了。建邦卻聽成了另一個意思：他走，她就能年輕。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "建邦拎著行李站在門口：「我走，妳年輕。」燈暗了一分，她的白髮裡竄出一縷黑。全家看傻了。她坐著沒動：「你走，我就在這老下去。」",
+        "question": "建邦會跨出那道門嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "goxue"
+      ],
+      "spectacle": "燈座刻字的整句在光裡浮出的微距；建邦站在門口、燈暗一分、她白髮裡一縷黑的對切。",
+      "glamour_shot": "沈月棠讀字時被燈光從下方照亮的臉，少女的唇一字一字動，白髮像雪，眼眶是濕的。",
+      "setups": [],
+      "payoffs": [
+        "s05-t07"
+      ],
+      "reveals": [
+        "m12"
+      ],
+      "general_payoffs": [
+        "燈座底下的那句話讀完",
+        "第三份家底揭開：一句話"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "lin-meifeng",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-xiaoman",
+        "su-xiao",
+        "shen-zhixing",
+        "shen-jianye",
+        "shen-zuofu"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "祠堂門口"
+      ],
+      "state": {
+        "time": "重開第一天深夜",
+        "knowledge": "那句話：家不是撐住的，是坐滿的；人少燈暗她就年輕",
+        "carry_forward": "建邦在門口；她要不要年輕"
+      }
+    },
+    {
+      "number": 282,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "燈油",
+      "youtube_title": "她終於說出長明燈的燈油是什麼，八十二歲的女兒說：媽，妳老了我才認得",
+      "duration_s": 125,
+      "logline": "建邦放下行李，她把燈油的真相說給全家聽：燈不是為了讓她年輕，是為了讓她看見誰在；年輕是借的，要還。",
+      "hook": "建邦把行李放下，燈亮回來。她白髮裡那縷黑又沒了。她說：「坐。我說燈油。」",
+      "hook_type": "line",
+      "mid_hook": "蘇曉在藥局抽屜裡摸到一個小絨盒，打開——戒指。她趕快關上，知遠在門口咳了一聲。",
+      "extra_hooks": [
+        "她說：「年輕是借的。借的東西，要還。」小滿：「還給誰？」她指著燈。"
+      ],
+      "conflict": "全家要她留住年輕；她要全家明白燈到底在做什麼，再決定要不要還。",
+      "turn": "觀眾以為燈油是某種實物；她說燈油是家人真心守家的心意，燈不是為了讓她年輕，是為了讓她看見這個家還有誰真的在——她變老那一刻燈最亮，因為大家都回來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "玉琴推著輪椅到她面前，伸手摸她的白髮，忽然很清楚：「媽，妳老了我才認得。」她把女兒抱進懷裡，燈亮得照到門外。",
+        "question": "她會把年輕還給燈嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tianchong",
+        "tuanchong"
+      ],
+      "spectacle": "全家圍坐在祠堂地上聽她說燈油，燈光從中央照亮每一張臉的環形構圖。",
+      "glamour_shot": "沈月棠抱著玉琴，白髮的少女與銀髮的老婦兩張臉靠在一起，燈光把兩人的輪廓描成一條線。",
+      "setups": [
+        "s05-t15"
+      ],
+      "payoffs": [
+        "m01",
+        "m09"
+      ],
+      "reveals": [
+        "m09"
+      ],
+      "general_payoffs": [
+        "燈油的真相說給全家",
+        "玉琴認得老了的母親",
+        "蘇曉發現戒指"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-jianbang",
+        "shen-yuqin",
+        "shen-xiaoman",
+        "su-xiao",
+        "shen-zhiyuan",
+        "fu-bo",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-zhixing"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "知遠小藥局"
+      ],
+      "state": {
+        "time": "重開第二天",
+        "knowledge": "燈油是家人真心；年輕是借的",
+        "carry_forward": "她要不要還；知遠的戒指"
+      }
+    },
+    {
+      "number": 283,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "一日一次",
+      "youtube_title": "藥師把戒指裝進藥匣寫上「一日一次」，整間藥局的人屏住呼吸等她打開",
+      "duration_s": 115,
+      "logline": "知遠在藥局向蘇曉求婚，全藥局屏息；顧承霖出現在門口，說顧遠山要見她，就在今晚。",
+      "hook": "知遠把一個藥匣放在蘇曉面前，標籤寫著：「一日一次，終身服用。」蘇曉打開——戒指。",
+      "hook_type": "image",
+      "mid_hook": "藥局門口站著顧承霖，手裡捧著一個盒：「老太爺要見妳。」她看著他：「什麼時候？」他：「今晚。」",
+      "extra_hooks": [
+        "蘇曉說「好」的時候整間藥局的人同時吐氣，老陳在門口放了一串鞭炮，被林美鳳罵吵。"
+      ],
+      "conflict": "知遠要在太奶奶還在的時候把蘇曉娶進家門；顧遠山的時間卻不等人。",
+      "turn": "觀眾以為她會把銀戒給蘇曉當聘禮；她給的是祖方最後一頁，說：「你們寫。」然後讓知遠背她上車——她要上山。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "顧承霖低聲說：「他說，今晚。」她看著自己的腿，知遠一把背起她：「我送。」車燈往山上去，老宅的燈在後視鏡裡亮著。",
+        "question": "顧遠山怎麼了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "知遠求婚時整間藥局的人屏住呼吸的廣角；車燈往山上蜿蜒、後視鏡裡老宅一點燈火的對切。",
+      "glamour_shot": "蘇曉打開藥匣看見戒指抬頭的那一秒，梨渦、濕眼、短髮被藥局的白光描出一圈。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知遠與蘇曉訂婚",
+        "祖方最後一頁交出去"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "gu-chenglin",
+        "lao-chen",
+        "lin-meifeng",
+        "shen-xiaoman"
+      ],
+      "locations": [
+        "知遠小藥局",
+        "上山的車上"
+      ],
+      "state": {
+        "time": "重開第三天夜",
+        "knowledge": "顧遠山要見她最後一次",
+        "carry_forward": "上山；顧家的燈"
+      }
+    },
+    {
+      "number": 284,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "山上的燈",
+      "youtube_title": "九十八歲的老太爺在自己的燈前笑著閉上眼，燈沒滅，曾孫一個人坐在長桌前",
+      "duration_s": 130,
+      "logline": "顧遠山在自己的燈前對她說完最後的話，要把燈接給顧承霖，顧承霖說不要；老人笑著閉上眼，燈沒滅。",
+      "hook": "顧遠山床頭的燈亮得像沈家的那一盞。他看見她進來，枯手指著燈：「亮了。妳看。」",
+      "hook_type": "image",
+      "mid_hook": "顧遠山對顧承霖說：「燈接給你。」顧承霖往後退了一步：「我不要。」老人笑：「不要也是你的。」",
+      "extra_hooks": [
+        "顧遠山低聲對她說：「師傅說，兩半合一，就不滅。我試了一百年，用錯了法子。」她握住他的手：「我知道。」"
+      ],
+      "conflict": "顧遠山要在閉眼前把燈交出去，顧承霖不肯接；她要讓一百年前同一條街長大的對手，走得安心。",
+      "turn": "觀眾以為顧遠山閉眼顧家的燈就滅；他閉眼時笑著，燈沒滅，反而穩了一分——因為那一刻床邊坐著三個人：她、顧承霖、老岑。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧遠山閉上眼，笑著。燈沒滅。顧承霖走出藏館，一個人坐到顧家那張十二人的長飯桌前，老岑端上一碗飯。他沒動筷。",
+        "question": "顧家的燈接給了誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "顧家藏館最深處的床、一盞亮起來的燈、三個人坐在床邊的構圖只拍臉與手；顧家長飯桌上一個人、一碗飯的俯拍。",
+      "glamour_shot": "顧承霖一個人坐在長桌盡頭，微長的髮垂下，黑立領外套在墨綠與金的牆前像一道影子，桃花眼看著那碗飯。",
+      "setups": [
+        "s05-t17"
+      ],
+      "payoffs": [
+        "s05-t09",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧遠山安心閉眼",
+        "顧家的燈沒滅",
+        "顧遠山與沈月棠的一百年結清"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-yuanshan",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "shen-zhiyuan"
+      ],
+      "locations": [
+        "顧家藏館",
+        "顧家長飯桌"
+      ],
+      "state": {
+        "time": "重開第三天深夜",
+        "knowledge": "顧家的燈沒滅；顧承霖不肯接燈",
+        "carry_forward": "顧遠山的告別式；顧承霖一個人"
+      }
+    },
+    {
+      "number": 285,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "一個人的飯桌",
+      "youtube_title": "仇人的告別式她坐著輪椅上山，曾孫擋在門口不讓進，她只說：他是我同一條街的人",
+      "duration_s": 115,
+      "logline": "顧遠山的告別式，顧承霖不讓沈家的人上山；她坐輪椅上去，在顧家祠堂上一柱香，顧家的燈亮了一分。",
+      "hook": "老岑端上第二碗飯，顧承霖還是沒動。長桌盡頭的燈穩穩亮著。他問：「燈油是什麼？」老岑：「您去沈家問。」",
+      "hook_type": "question",
+      "mid_hook": "她在顧家祠堂上完香，顧承霖在她身後：「燈油是什麼？」她：「回家吃飯就知道。」",
+      "extra_hooks": [
+        "顧承霖擋在山門口：「沈家的人不上山。」她：「我不是沈家人。我是他同一條街的人。」他讓開了。"
+      ],
+      "conflict": "顧承霖要把老太爺的告別式關在顧家門內；她要去送一個一百年的對手。",
+      "turn": "觀眾以為她去是為了結仇；她上的那一柱香讓顧家的燈亮了一分——顧承霖第一次看見顧家的燈因為「別人的心」亮。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她被推下山門前回頭：「初一，來吃飯。」顧承霖站在門裡沒答。他身後，顧家的燈跳了一下。",
+        "question": "顧承霖會不會下山吃飯？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "xuanyi"
+      ],
+      "spectacle": "顧家祠堂裡輪椅上的白髮少女上香，香煙與燈火在墨綠的牆前交疊；山門口一個人的背影。",
+      "glamour_shot": "沈月棠在顧家祠堂裡舉香，少女的側臉被兩種光照亮：香的紅與燈的金，手背的皺紋在前景。",
+      "setups": [
+        "s05-t14"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她送了顧遠山最後一程",
+        "顧家的燈因她的一柱香亮了一分"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "shen-zhiyuan",
+        "zhou-huaian"
+      ],
+      "locations": [
+        "顧家長飯桌",
+        "顧家祠堂",
+        "顧家山門"
+      ],
+      "state": {
+        "time": "重開第五天",
+        "knowledge": "顧承霖知道燈油要去沈家問；初一的邀請",
+        "carry_forward": "初一；小滿的榜"
+      }
+    },
+    {
+      "number": 286,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "小滿的榜",
+      "youtube_title": "查榜網站當機，她說「用紙」；通知書寄到那天，欺負過小滿的女孩也在門口",
+      "duration_s": 115,
+      "logline": "小滿考上臨江大學藥學系；她去找父親失業的何曉陽，把人帶回家吃飯；福伯在廚房摔了碗。",
+      "hook": "小滿刷著手機：「當機了！當機了！」她在旁邊剝豆子：「用紙。」小滿：「什麼紙？」門鈴響，郵差。",
+      "hook_type": "line",
+      "mid_hook": "何曉陽站在巷口不敢進來：「顧承霖找過我爸，說只要我爆料你們，就給他工作。」小滿：「然後？」何曉陽：「我沒說。」",
+      "extra_hooks": [
+        "通知書拆開——臨江大學藥學系。小滿跑進祠堂把紙放在燈前：「太奶奶，藥學系。」燈亮了一分。"
+      ],
+      "conflict": "小滿上榜了，想把這份高興分給曾經欺負她的人；何曉陽的父親因盛通倒台失業，顧承霖想買她的嘴。",
+      "turn": "觀眾以為何曉陽是來道歉的；她是來說「我沒說」——顧承霖開的價她沒接。小滿拉她進門坐下，玉琴對她說：「坐。」燈亮了一分。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "廚房裡「啪」一聲，福伯手裡的碗碎在地上。她扶住他的手：「你坐。」福伯站直：「我坐門邊。」他走向門邊的老位子，腳步比她還慢。",
+        "question": "福伯怎麼了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "小滿把錄取通知放在燈前、燈亮一分的微距；飯桌上何曉陽第一次坐在小滿旁邊的俯拍。",
+      "glamour_shot": "沈小滿拆通知書時哭完抬頭的那一刻，大眼睛亮得像剛洗過，齊瀏海黏在額頭上。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小滿考上臨江大學藥學系",
+        "何曉陽坐上沈家飯桌",
+        "顧承霖買嘴的事被拒"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-xiaoman",
+        "xiao-he",
+        "shen-yuqin",
+        "fu-bo",
+        "shen-jianbang",
+        "su-xiao",
+        "shen-zhiyuan"
+      ],
+      "locations": [
+        "沈家老宅大廳",
+        "老宅巷口",
+        "沈家老宅祠堂",
+        "沈家老宅廚房"
+      ],
+      "state": {
+        "time": "重開第七天",
+        "knowledge": "沈記有下一代了；福伯的身體慢下來",
+        "carry_forward": "福伯要歇一天"
+      }
+    },
+    {
+      "number": 287,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "門邊的老位子",
+      "youtube_title": "八十八歲的老管家說今天歇一天，坐在門邊曬太陽，她端飯過去叫他：福伯，吃飯",
+      "duration_s": 125,
+      "logline": "福伯說今天歇一天，坐在門邊曬太陽；她第一次自己煮完一桌飯，端一碗到門邊叫他，他睡著了，陽光照著懷錶。",
+      "hook": "早上，福伯坐進門邊的老位子，把懷錶放在膝上：「今天，我歇一天。」她看了他一眼：「好。」",
+      "hook_type": "line",
+      "mid_hook": "玉琴推著輪椅到她身邊，忽然很清楚：「福伯年輕時，喜歡過妳。」她手裡的菜刀停了一下：「我知道。」",
+      "extra_hooks": [
+        "七十年第一次沒有福伯幫手，她一個人煮完一桌，走三步歇一步，誰要幫都被她趕出廚房。"
+      ],
+      "conflict": "福伯第一次在沈家歇一天；她要讓他歇得安心，自己把這一桌撐完。",
+      "turn": "觀眾以為福伯只是累了；她端著碗走到門邊叫他吃飯，他睡在椅子上，陽光照著膝上的懷錶，錶還在走。她懂了，沒叫第二聲，在他旁邊坐下來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她在福伯身邊坐了很久，然後輕聲說：「福伯，先走一步。」全家在飯桌邊看著祠堂——燈跳了一下。",
+        "question": "福伯走了，燈會暗嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "福伯睡在門邊老位子上、陽光從門口斜進來照著膝上的懷錶的靜止長鏡頭；她端著碗站在光的邊緣。",
+      "glamour_shot": "沈月棠端著碗站在門光裡，白髮辮子被陽光照成一條金線，少女的臉上沒有哭，只有懂。",
+      "setups": [
+        "s05-t13"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她一個人煮完一桌",
+        "福伯在門邊的老位子上安睡"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "fu-bo",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "shen-xiaoman",
+        "su-xiao",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-zhixing"
+      ],
+      "locations": [
+        "沈記藥行門邊老位子",
+        "沈家老宅廚房",
+        "沈家老宅大廳飯桌"
+      ],
+      "state": {
+        "time": "重開第八天午後",
+        "knowledge": "福伯先走一步",
+        "carry_forward": "燈跳了一下；告別式"
+      }
+    },
+    {
+      "number": 288,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "添油",
+      "youtube_title": "老管家走了，全家等著燈暗，燈卻更亮；她替他添了最後一次油",
+      "duration_s": 115,
+      "logline": "福伯走了燈卻更亮；她替福伯添最後一次燈油，懷錶背面刻著他進沈家那一天；顧承霖拿著香站到門外。",
+      "hook": "燈跳了一下之後——沒暗，反而亮了一分。全家看著燈，誰也沒說話。她說：「他沒走遠。」",
+      "hook_type": "image",
+      "mid_hook": "知遠把福伯的懷錶放進她手裡。她翻到錶背，一行小字：「一九二六，入沈家。」那是她照片掛上牆的那一天。",
+      "extra_hooks": [
+        "林美鳳一個人把告別式的事全接下來，打電話、訂花、排座位，掛掉電話哭一下再打下一通。"
+      ],
+      "conflict": "全家怕福伯走了燈會暗；她要讓這一盞燈記住福伯的油。",
+      "turn": "觀眾以為人走燈就暗；燈亮了——因為福伯的心留在這個家裡。她替他添最後一次燈油，說：「他的油，我替他添。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她添完油直起身，燈亮得照到門外——門外站著一個人，手裡拿著三支香。顧承霖。他沒有進來。",
+        "question": "顧承霖是來弔唁，還是來看燈？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "她把燈油一滴滴添進燈座的微距，火光隨著油面升起；懷錶背面刻字的特寫。",
+      "glamour_shot": "沈月棠俯身添油，白髮垂到燈旁，火把少女的側臉與老人的手照成同一種金色。",
+      "setups": [],
+      "payoffs": [
+        "s05-t13",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "福伯走後燈沒暗",
+        "她替福伯添了最後一次油",
+        "懷錶留在她手上"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-zhiyuan",
+        "lin-meifeng",
+        "shen-jianbang",
+        "shen-yuqin",
+        "shen-xiaoman",
+        "su-xiao",
+        "gu-chenglin",
+        "shen-jianye",
+        "shen-zhixing"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈家老宅大廳",
+        "老宅門口"
+      ],
+      "state": {
+        "time": "重開第八天夜",
+        "knowledge": "福伯走了燈反而亮；顧承霖來了",
+        "carry_forward": "告別式；顧承霖在門外"
+      }
+    },
+    {
+      "number": 289,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "告別式",
+      "youtube_title": "他拿著香走進仇家的告別式，惡婆婆要擋，收購王說了一句：讓他",
+      "duration_s": 120,
+      "logline": "福伯的告別式在老宅大廳，老街全到；顧承霖執香進門，林美鳳要擋，周懷安放他進來；她向全家要一件事。",
+      "hook": "顧承霖執著香跨進門檻。林美鳳一步擋上去：「你——」周懷安按住她的肩：「讓他。」",
+      "hook_type": "danger",
+      "mid_hook": "江慕白遞來一份戶政文件：「死亡申報撤銷了。妳在法律上活著，九十六歲。」新證件上的照片：白髮，十八歲的臉。小滿笑出聲，又摀住嘴。",
+      "extra_hooks": [
+        "顧承霖上完香沒走，站到門邊——福伯的老位子旁。她：「別坐。那是福伯的。」他：「我站。」"
+      ],
+      "conflict": "告別式上仇人進門，全家要擋；她要讓所有人看清楚誰該站哪裡，然後向全家要一件事。",
+      "turn": "觀眾以為她要趕顧承霖；她讓他站在門邊、不許坐福伯的位子——他站了一整場。式後她對全家說：「初一，坐滿。」建邦數了一遍：「還差一個。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "建邦：「十一個。還差一個。」她看向門口——顧承霖的背影正走進夜裡。她沒叫他。她說：「差的不是他。」",
+        "question": "第十二個人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "老宅大廳的告別式，老街的人站滿、顧承霖獨自站在門邊老位子旁一整場的長鏡頭；新證件上白髮少女的照片特寫。",
+      "glamour_shot": "顧承霖執香站在門光裡，陰柔的側臉第一次低著頭，黑外套上落了一片白花瓣。",
+      "setups": [],
+      "payoffs": [
+        "s05-t14",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "福伯的告別式",
+        "她的死亡申報撤銷",
+        "顧承霖在沈家站了一整場"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "lin-meifeng",
+        "zhou-huaian",
+        "jiang-mubai",
+        "shen-xiaoman",
+        "shen-jianbang",
+        "lao-chen",
+        "shen-yuqin",
+        "shen-zhiyuan",
+        "su-xiao",
+        "shen-jianye",
+        "shen-zhixing",
+        "lin-dao"
+      ],
+      "locations": [
+        "沈家老宅大廳",
+        "老宅門口"
+      ],
+      "state": {
+        "time": "重開第十天",
+        "knowledge": "法律上她活著；初一要坐滿十二個",
+        "carry_forward": "第十二個人；她要不要把年輕留下來"
+      }
+    },
+    {
+      "number": 290,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "我撐夠了",
+      "youtube_title": "告別式後她一個人推門進祠堂，對燈說了四個字，燈光大亮照出她身後的人",
+      "duration_s": 150,
+      "logline": "告別式後的深夜，她一個人在祠堂想清楚要不要把年輕還給燈；知遠量燈油發現油不再掉，她對燈說了四個字。",
+      "hook": "深夜，她推著輪椅進祠堂，關上門。回頭看燈：「只剩我們兩個了。」燈跳了一下。",
+      "hook_type": "line",
+      "mid_hook": "門外知遠舉著量杯對建邦說：「油不會掉了。瓶子是滿的。」建邦：「那她還在怕什麼？」知遠：「她不是怕。她在選。」",
+      "extra_hooks": [
+        "她把三枚銀印從燈座裡一枚枚取出來，排在燈前：「一枚給知遠，一枚給小滿，一枚給建邦。」",
+        "山上，顧承霖把老太爺的床從燈前搬走，搬來一張桌子，一張椅子。他坐下。"
+      ],
+      "conflict": "年輕是借的，她可以留，也可以還；她要在沒人看的時候自己選。",
+      "turn": "觀眾以為她在跟燈告別；她是在跟燈說「夠了」——不是撐不住，是不用撐了。她說完，燈光大亮，照出身後站著的全家人，門不知道什麼時候開了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "福伯的告別式後，她一個人在祠堂對燈說：「我撐夠了。」燈光大亮——照出她身後站著的全家人，一個也沒少。",
+        "question": "她要把年輕還回去了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tuanchong",
+        "tianchong"
+      ],
+      "spectacle": "祠堂裡一盞燈與一個白髮的身影，燈光大亮的那一秒整個畫面從一點火擴成滿屏的暖金，照出門內一排人影。",
+      "glamour_shot": "燈光大亮時她回頭，少女的臉在滿屏的暖金裡只有一雙眼睛是清的，白髮像被光融掉了邊。",
+      "setups": [],
+      "payoffs": [
+        "s05-t15",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她決定把年輕還給燈",
+        "三枚銀印分給三代",
+        "全家一個也沒少地站在她身後"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-zhiyuan",
+        "shen-jianbang",
+        "shen-yuqin",
+        "shen-xiaoman",
+        "su-xiao",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-zhixing",
+        "gu-chenglin",
+        "s05-lao-cen"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "祠堂門外",
+        "顧家藏館"
+      ],
+      "state": {
+        "time": "重開第十天深夜",
+        "knowledge": "她選了還；全家都聽見了",
+        "carry_forward": "初一的家宴；十二個人"
+      }
+    },
+    {
+      "number": 291,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "初一",
+      "youtube_title": "全家聽見她要把年輕還給燈，惡婆婆第一個哭著堵門：妳不能走",
+      "duration_s": 115,
+      "logline": "全家聽見了「我撐夠了」，一家人在祠堂裡吵起來不讓她還；她定下初一的最後一場家宴，深夜卻走不到床邊。",
+      "hook": "燈光裡全家站著。建邦開口：「我們都聽見了。」林美鳳衝上來跪在她輪椅前：「妳不能走！」她：「誰說我走？」",
+      "hook_type": "line",
+      "mid_hook": "老岑送來一張請帖——空白的。他說：「少爺說，請妳寫。」她看著空白的紙，沒寫。",
+      "extra_hooks": [
+        "玉琴在吵聲裡拍了一下輪椅扶手，全家靠住。她說：「讓媽坐滿。」"
+      ],
+      "conflict": "全家不讓她把年輕還回去；她要的不是留下年輕，是一場十二個人的家宴。",
+      "turn": "觀眾以為家宴是告別；她說是「坐滿」——她活著變回九十六歲，不是走。林美鳳聽懂了，從地上爬起來去廚房燒水。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "深夜，她從輪椅起身想走到床邊，腿一軟坐回地上。知遠衝進來抱起她，她笑著拍他的手：「初一前，別讓我倒。」",
+        "question": "她撐得到初一嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "燈光大亮的祠堂裡全家圍著一台輪椅爭吵的環形構圖，林美鳳跪在最前面，玉琴一掌拍在扶手上。",
+      "glamour_shot": "沈知遠抱起她時低頭的側臉，白髮辮子垂過他的手臂，藥師袍下深色襯衫的袖口捲著。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "初一的家宴定下",
+        "全家接受她要變回九十六歲"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-jianbang",
+        "lin-meifeng",
+        "shen-yuqin",
+        "shen-zhiyuan",
+        "s05-lao-cen",
+        "shen-xiaoman",
+        "su-xiao",
+        "shen-jianye",
+        "shen-zhixing"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "她的房間"
+      ],
+      "state": {
+        "time": "重開第十一天",
+        "knowledge": "初一家宴；她的身體撐在最後一段",
+        "carry_forward": "十二張請帖"
+      }
+    },
+    {
+      "number": 292,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "十二張請帖",
+      "youtube_title": "她寫到第十二張請帖筆停了，寫下的名字是當年欺負曾孫女的那個女孩",
+      "duration_s": 115,
+      "logline": "她手寫十二張請帖，第十二張寫給何曉陽；何曉陽的父親不讓她去，顧承霖在山上解散遠山控股、把藏館捐出去。",
+      "hook": "她握著毛筆寫請帖，寫到第十二張，筆停了。寫下去：何曉陽。小滿：「她？」她：「她沒說。」",
+      "hook_type": "line",
+      "mid_hook": "周懷安讀新聞：「遠山控股解散，顧氏藏館捐出。」老岑在電話裡補一句：「少爺在燈前坐了一夜。」",
+      "extra_hooks": [
+        "何志成把請帖摔回小滿手上：「我們家不去沈家。」何曉陽從父親身後把請帖撿起來：「我去。」"
+      ],
+      "conflict": "第十二個人要請的是曾經欺負小滿的女孩；她的父親恨沈家，不讓她去。",
+      "turn": "觀眾以為第十二個人會是顧承霖；她請的是何曉陽——一個「沒說」的人。何志成最後把一封道歉信塞進女兒口袋，沒進門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "十二張請帖擺在燈前，燈光照出十二個名字。她數到第十二張，又拿出一只空碗放在旁邊——福伯的。她說：「他的位子，門邊。」",
+        "question": "初一那天門邊的位子誰會站？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "goxue"
+      ],
+      "spectacle": "十二張手寫請帖在燈前排成一排的俯拍，毛筆字在火光裡；旁邊一只空碗。",
+      "glamour_shot": "沈月棠執毛筆寫請帖，皺紋的手穩穩握筆，少女的臉低著，白髮辮子垂在紙邊。",
+      "setups": [
+        "s05-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "十二張請帖寫完",
+        "何曉陽答應來",
+        "顧承霖解散遠山控股、捐出藏館"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-xiaoman",
+        "xiao-he",
+        "s05-he-zhicheng",
+        "zhou-huaian",
+        "s05-lao-cen",
+        "gu-chenglin",
+        "fu-bo"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "何家門口",
+        "沈家老宅大廳"
+      ],
+      "state": {
+        "time": "重開第十二天",
+        "knowledge": "十二個人：全家、二房、周懷安、老陳、何曉陽；顧承霖沒在名單上",
+        "carry_forward": "備菜；顧家的燈怎麼接"
+      }
+    },
+    {
+      "number": 293,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "十二道菜",
+      "youtube_title": "她堅持自己煮十二道菜，整條街的人替她拎菜，二房的叔公跪在祠堂燒掉一張收據",
+      "duration_s": 115,
+      "logline": "她要自己煮十二道菜，全街替她拎菜；沈建業把當年賣第二枚銀印的收據在祠堂燒掉，要把挖走的金條還回去；周懷安帶來顧承霖要搬燈的消息。",
+      "hook": "德記米行前，她走一步歇一步挑米，老陳在旁邊舉著袋子。整條街的人每人手上拎著她買的一樣東西，跟在後面。",
+      "hook_type": "image",
+      "mid_hook": "沈建業跪在祠堂，把那張「遠山」收據放進燈火裡燒了：「金條的地方，我填回去。」她：「填回去，種樹。」",
+      "extra_hooks": [
+        "林美鳳要幫她切菜，她把刀搶回來；林美鳳改去洗菜，洗了三遍，玉琴：「夠乾淨了。」"
+      ],
+      "conflict": "她要親手做這十二道菜；全家搶著幫；二房要在初一之前把最後一筆帳認清。",
+      "turn": "觀眾以為二房的認祖在法庭就結束了；沈建業在燈前燒收據那一秒燈亮了一分，他回頭看林美鳳，兩人第一次在祠堂裡並排跪著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周懷安進門，帽子上還有山上的霧：「顧承霖要把燈搬下山。搬到妳祠堂旁邊。」她手裡的菜刀停在半空。",
+        "question": "兩盞燈能放在一起嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren",
+        "goxue",
+        "xiju"
+      ],
+      "spectacle": "老街上白髮少女在前、整條街的人拎著菜在後的長鏡頭；祠堂裡一張收據在燈火裡捲成灰。",
+      "glamour_shot": "沈月棠在米行門口捧起一把米聞，白髮辮子被街口的風吹起一縷，少女的臉在日光裡。",
+      "setups": [],
+      "payoffs": [
+        "m07",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二房燒掉收據、要把金條還回去",
+        "十二道菜的材料備齊"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "lao-chen",
+        "shen-jianye",
+        "lin-meifeng",
+        "shen-yuqin",
+        "zhou-huaian",
+        "shen-zhixing",
+        "shen-xiaoman"
+      ],
+      "locations": [
+        "老街",
+        "德記米行",
+        "沈家老宅祠堂",
+        "沈家老宅廚房"
+      ],
+      "state": {
+        "time": "初一前三天",
+        "knowledge": "顧承霖要把顧家的燈搬到沈家",
+        "carry_forward": "兩盞燈；顧承霖下山"
+      }
+    },
+    {
+      "number": 294,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "兩盞燈",
+      "youtube_title": "他抱著顧家的燈站在沈家門檻上一步不進，她說：帶回去，初一你上山坐",
+      "duration_s": 120,
+      "logline": "顧承霖抱著顧家的燈下山，要把兩半合一；她不許燈離家，要他回山上自己坐滿顧家的桌。",
+      "hook": "顧承霖抱著一盞燈走進老街，整條街的人讓出一條路。燈在他懷裡亮著，他的手在抖。",
+      "hook_type": "image",
+      "mid_hook": "廚房裡，沈建業和沈知行第一次並肩和麵，父子誰也不說話，麵粉撒了一地，林美鳳在門口拍照。",
+      "extra_hooks": [
+        "她對顧承霖說：「顧家的燈，要顧家的人坐顧家的桌。」他：「顧家只剩我。」她：「那就坐。」"
+      ],
+      "conflict": "顧承霖以為把兩盞燈放在一起就是「兩半合一」；她要他懂燈不是搬的，是坐出來的。",
+      "turn": "觀眾以為她會收下顧家的燈；她拒絕——燈不離家。顧承霖站在門檻上進不得退不得，懷裡的燈暗了一分，他第一次聽見自己說：「我不會煮飯。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "顧承霖抱著燈站在門檻上，一步不進一步不退。她：「帶回去。初一你上山坐。」他看著懷裡暗了一分的燈，門外，老岑在車邊等。",
+        "question": "顧承霖會把燈帶回山上嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "顧承霖抱著一盞燈走過整條老街、人群讓路的長鏡頭；兩盞燈隔著一道門檻一亮一暗。",
+      "glamour_shot": "顧承霖抱燈站在門檻上，燈光從下方照亮他的桃花眼與唇，陰柔的臉在沈家的門光與自家燈光的夾縫裡。",
+      "setups": [],
+      "payoffs": [
+        "s05-t14",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧承霖懂了燈不能搬",
+        "建業與知行父子第一次並肩做事"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "shen-jianye",
+        "shen-zhixing",
+        "lin-meifeng",
+        "lao-chen",
+        "shen-yuqin"
+      ],
+      "locations": [
+        "老街",
+        "老宅門口",
+        "沈家老宅廚房"
+      ],
+      "state": {
+        "time": "初一前兩天",
+        "knowledge": "顧家的燈要在顧家亮；顧承霖初一要在山上坐",
+        "carry_forward": "初一前夜"
+      }
+    },
+    {
+      "number": 295,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "初一前夜",
+      "youtube_title": "曾孫女替她梳麻花辮，一縷白髮落下來，她說：明天就這條辮子",
+      "duration_s": 120,
+      "logline": "初一前夜，小滿替她梳麻花辮，周懷安把盛通分給老字號；她寫下最後一道菜，深夜咳了，知遠把脈說脈像九十六。",
+      "hook": "小滿站在她身後梳辮子，一縷白髮落到地上。小滿：「姐。」她：「嗯。」小滿：「明天還梳這條嗎？」她：「就這條。」",
+      "hook_type": "image",
+      "mid_hook": "周懷安把一份文件放在桌上：「盛通解散，分給三十六家老字號。」建邦：「那你坐哪？」周懷安：「哪有空位。」她：「有。」",
+      "extra_hooks": [
+        "她寫下第十二道菜的名字：桂花糯米藕。知遠：「這是——」她：「作甫愛吃的。」"
+      ],
+      "conflict": "初一前最後一夜，所有人都想多陪她一分鐘；她要的是把菜單寫完、把辮子梳好。",
+      "turn": "觀眾以為她會把最後一道菜留給家人；她寫的是一百年前丈夫愛吃的——明天的桌上有一個看不見的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "深夜她咳了幾聲，知遠把手搭上她的脈，臉色變了：「脈像九十六。」她看著亮得照滿屋的燈：「剛好。」",
+        "question": "她能坐上明天的桌嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "tianchong"
+      ],
+      "spectacle": "小滿替她梳麻花辮的背影特寫，一縷白髮落地；桌上十二道菜名的毛筆菜單。",
+      "glamour_shot": "沈月棠閉眼讓小滿梳頭，少女的臉在燈光裡安靜，白髮辮子一圈圈成形，手交疊在腹前。",
+      "setups": [],
+      "payoffs": [
+        "m03",
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "盛通分給老字號",
+        "十二道菜單寫完",
+        "麻花辮梳好"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-xiaoman",
+        "zhou-huaian",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "shen-yuqin",
+        "shen-zuofu"
+      ],
+      "locations": [
+        "沈家老宅大廳",
+        "沈家老宅廚房",
+        "她的房間"
+      ],
+      "state": {
+        "time": "初一前夜",
+        "knowledge": "她的身體到了九十六歲的邊；菜單十二道",
+        "carry_forward": "初一"
+      }
+    },
+    {
+      "number": 296,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "十二個人",
+      "youtube_title": "門上的報信鈴一響一個人進門，第十二個人坐下那一秒燈照亮了整條街",
+      "duration_s": 125,
+      "logline": "初一，十二個人一個一個進門，顧承霖站在門邊福伯的位子旁不坐；她端出最後一道菜坐下，燈亮得照滿整條街。",
+      "hook": "門上的報信鈴響了。第一個進門的是何曉陽，手裡抱著一束花，站在門口不敢動。小滿拉她進來：「坐。」",
+      "hook_type": "image",
+      "mid_hook": "燈亮到祠堂裝不下，光漫到街上，鄰居一家一家開門出來看。老陳站在門口喊：「沈家開飯了！」",
+      "extra_hooks": [
+        "顧承霖出現在門口，她看他一眼：「你山上的桌呢？」他：「老岑坐著。我先來看。」他站到門邊，沒坐。"
+      ],
+      "conflict": "十二個人要坐滿；她要親手端出最後一道菜；顧承霖來了，卻不在名單上。",
+      "turn": "觀眾以為第十二個人是顧承霖；鈴響十二次，第十二個進門的是老陳——他說整條街派他來。顧承霖站在門邊，是第十三個，不坐。她端出桂花糯米藕，走到桌邊坐下：「坐滿了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧承霖在門邊接起電話，老岑的聲音在哭：「少爺，山上的燈——亮了。沒人添油，它自己亮了。」他抬頭看沈家的桌。",
+        "question": "山上的燈是誰點亮的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren",
+        "goxue"
+      ],
+      "spectacle": "十二人坐滿的長飯桌俯拍，十二道菜擺成一圈；燈光漫出祠堂照亮整條老街、鄰居開門的全景。",
+      "glamour_shot": "沈月棠端著最後一道菜從廚房走出來，白髮麻花辮、素色布衫，少女的臉在燈光裡像第一集走出祠堂時那樣，只是慢。",
+      "setups": [],
+      "payoffs": [
+        "s05-t14",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "飯桌坐滿十二個人",
+        "顧承霖站在門邊",
+        "顧家的燈自己亮了"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "xiao-he",
+        "shen-xiaoman",
+        "lao-chen",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "shen-jianye",
+        "lin-meifeng",
+        "shen-zhixing",
+        "zhou-huaian"
+      ],
+      "locations": [
+        "沈家老宅大廳飯桌",
+        "老宅門口",
+        "老街",
+        "顧家藏館"
+      ],
+      "state": {
+        "time": "初一午時",
+        "knowledge": "桌坐滿十二個；顧家的燈自己亮了",
+        "carry_forward": "她舉杯；把年輕還回去"
+      }
+    },
+    {
+      "number": 297,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "這桌坐滿了",
+      "youtube_title": "她在飯桌上舉杯說「這桌坐滿了」，然後在全家眼前一秒一秒變回九十六歲",
+      "duration_s": 150,
+      "logline": "她舉杯，把年輕還給燈：在飯桌上一秒秒變回九十六歲，白髮、皺紋、彎下去的背，全家沒有一個人移開眼睛，燈亮得照滿整條街。",
+      "hook": "她舉起杯：「這桌，坐滿了。」喝下去。放下杯的手背，皺紋一道一道浮上來。",
+      "hook_type": "image",
+      "mid_hook": "林美鳳尖叫著要衝去吹燈，沈建業一把拉住她：「讓奶奶坐。」她跌坐回椅子上，用手摀住嘴。",
+      "extra_hooks": [
+        "她的背一寸寸彎下去，臉上十八歲的皮一層層退成九十六歲的，眼睛沒閉過，一直看著桌上每一個人。",
+        "燈亮到祠堂的門框像著了火，整條街的人站在門外，沒有一個人出聲。"
+      ],
+      "conflict": "她要在全家眼前把借來的年輕還回去；全家要看著，不能移開眼，也不能阻止。",
+      "turn": "觀眾以為變老是她的終點；她變老完睜開眼，用九十六歲的沙啞嗓子說了兩個字：「吃飯。」全家笑著哭、哭著笑，燈最亮。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "玉琴伸手摸她九十六歲的臉，一道一道皺紋：「媽，像了。」她握住女兒的手：「像。」燈的光照到街尾，一盞一盞店門口的燈跟著亮。",
+        "question": "變回九十六歲的她，還有多少時間？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "goxue",
+        "xuanyi"
+      ],
+      "spectacle": "她在飯桌上變老的連續特寫與燈越來越亮的對切；十二個人沒有一個人移開眼睛的環形推軌；燈光照滿整條街。",
+      "glamour_shot": "變老的最後一格：九十六歲的沈月棠睜開眼，眼神還是那雙杏眼，白髮麻花辮垂在肩前，手交疊在腹前。",
+      "setups": [],
+      "payoffs": [
+        "s05-t15",
+        "m09",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把年輕還給了燈",
+        "燈在她變老的那一刻最亮",
+        "全家沒有一個人移開眼"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-yuqin",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "shen-xiaoman",
+        "shen-zhixing",
+        "zhou-huaian",
+        "lao-chen",
+        "xiao-he",
+        "gu-chenglin"
+      ],
+      "locations": [
+        "沈家老宅大廳飯桌",
+        "沈家老宅祠堂",
+        "老街"
+      ],
+      "state": {
+        "time": "初一午後",
+        "knowledge": "她是九十六歲的沈月棠；燈最亮",
+        "carry_forward": "三枚銀印；顧承霖上山"
+      }
+    },
+    {
+      "number": 298,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "老人家",
+      "youtube_title": "九十六歲的她夾了一筷子菜給門邊的仇人：吃了再走，回去點你家的燈",
+      "duration_s": 115,
+      "logline": "飯後，九十六歲的她把三枚銀印分給三代，叫顧承霖吃了再上山點自己家的燈；她說要一個人去添油。",
+      "hook": "九十六歲的手夾起一塊藕，伸向門邊：「吃了再走。」顧承霖走過來接，咬了一口，眼睛紅了。她：「回去，點你家的燈。」",
+      "hook_type": "line",
+      "mid_hook": "知遠把手搭上她的脈，皺眉。她：「老人家脈都慢，正常。」蘇曉在旁邊笑出來，又哭。",
+      "extra_hooks": [
+        "她把三枚銀印放進三個人手裡：知遠——祖方；小滿——帳；建邦——地。「一人一枚，別再丟。」"
+      ],
+      "conflict": "飯後全家搶著扶她、守她；她要把該交的交出去，把顧承霖送上山，自己去做最後一件事。",
+      "turn": "觀眾以為她會把銀印戴回去；她把三枚分給三代，手上空了——然後說她要自己一個人去祠堂添油。全家說陪，她說不用。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她扶著桌沿站起來，九十六歲的背彎著：「我去添油。」全家同時站起：「我們陪。」她搖頭：「我自己。」門口，顧承霖的車燈往山上去。",
+        "question": "她為什麼要一個人去添油？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "三枚銀印放進三雙年輕的手裡的俯拍；九十六歲的她扶著桌沿站起來、十一個人同時站起的廣角。",
+      "glamour_shot": "顧承霖站在門邊咬那一口藕，低頭時微長的髮遮住眼睛，門光打在黑外套的肩上。",
+      "setups": [],
+      "payoffs": [
+        "m05",
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三枚銀印分給三代",
+        "顧承霖上山去點自己的燈"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "gu-chenglin",
+        "shen-zhiyuan",
+        "su-xiao",
+        "shen-xiaoman",
+        "shen-jianbang",
+        "shen-yuqin",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-zhixing",
+        "zhou-huaian",
+        "lao-chen",
+        "xiao-he"
+      ],
+      "locations": [
+        "沈家老宅大廳飯桌",
+        "老宅門口"
+      ],
+      "state": {
+        "time": "初一傍晚",
+        "knowledge": "三枚銀印在三代手上；她要一個人添油",
+        "carry_forward": "顧承霖上山；她進祠堂"
+      }
+    },
+    {
+      "number": 299,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "上山",
+      "youtube_title": "他帶著一碗沈家的菜回到山上，坐上顧家空了一百年的長桌，老管家坐到他對面",
+      "duration_s": 120,
+      "logline": "顧承霖帶著一碗沈家的菜回山上，坐到顧家的長桌前，老岑坐到他對面，顧家的燈亮了；老宅裡全家收碗，她坐在門邊福伯的老位子上看他們，然後一個人推門進祠堂。",
+      "hook": "顧承霖把一碗桂花糯米藕放在顧家長桌正中央，坐下。老岑端著碗站著。他說：「坐。」老岑坐到他對面。燈亮了一分。",
+      "hook_type": "image",
+      "mid_hook": "沈知行一邊洗碗一邊說：「我搬回來住。永久。」林美鳳手裡的盤子差點掉，沈建業接住了。",
+      "extra_hooks": [
+        "九十六歲的她坐在門邊福伯的老位子上，膝上放著福伯的懷錶，看一屋子人洗碗、吵嘴、笑。"
+      ],
+      "conflict": "顧承霖要第一次把顧家的桌坐出人；她要在全家最熱鬧的時候，一個人走進祠堂。",
+      "turn": "觀眾以為顧家的燈要靠她；燈因為兩個人——一個曾孫、一個管家——坐在同一張桌上亮了一分。老岑說：「老太爺等這一桌，等了一百年。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她從門邊的老位子站起來，推開祠堂的門，回頭看了全家一眼：「別跟。」門關上。門縫底下的燈光暗了一下。",
+        "question": "她一個人進祠堂要做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xuanyi"
+      ],
+      "spectacle": "顧家長桌上一碗菜、兩個人對坐、燈亮一分的俯拍；老宅廚房一屋子人洗碗的長鏡頭，門邊老位子上一個九十六歲的身影。",
+      "glamour_shot": "九十六歲的沈月棠坐在門邊老位子上微笑，白髮麻花辮、皺紋、膝上的懷錶，門光把她的輪廓描成第一集那張照片的樣子。",
+      "setups": [
+        "s05-t16"
+      ],
+      "payoffs": [
+        "s05-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧家的桌第一次坐了兩個人，燈亮",
+        "知行永久搬回老宅"
+      ],
+      "characters": [
+        "gu-chenglin",
+        "s05-lao-cen",
+        "shen-yuetang",
+        "shen-zhixing",
+        "lin-meifeng",
+        "shen-jianye",
+        "shen-jianbang",
+        "shen-yuqin",
+        "shen-zhiyuan",
+        "su-xiao",
+        "shen-xiaoman"
+      ],
+      "locations": [
+        "顧家長飯桌",
+        "沈家老宅廚房",
+        "沈記藥行門邊老位子",
+        "沈家老宅祠堂"
+      ],
+      "state": {
+        "time": "初一夜",
+        "knowledge": "顧家的燈靠顧家的桌亮；她一個人進了祠堂",
+        "carry_forward": "祠堂門關著；燈光暗了一下"
+      }
+    },
+    {
+      "number": 300,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "祖奶奶今年十八",
+      "youtube_title": "九十六歲的她回到第一集的祠堂替燈添油，笑著閉上眼；山上另一盞燈亮了",
+      "duration_s": 180,
+      "logline": "回到第一集的祠堂：九十六歲的她替燈添油，摸一遍老藥櫃，對燈影裡的沈作甫說「坐滿了」，笑著閉上眼；老宅燈火通明；山上顧家祠堂另一盞燈亮起，一個十八歲的少年睜開眼。",
+      "hook": "九十六歲的手舉起油壺，油一滴滴落進燈座。她對燈說：「我回來了。」——和第一集同一句話，同一個位置。",
+      "hook_type": "line",
+      "mid_hook": "燭影裡，一個穿長衫的影子坐到她身邊。她沒看他，只說：「坐滿了。」影子點頭。她笑著閉上眼。燈火一跳——門外全家屏住呼吸。",
+      "extra_hooks": [
+        "她走到老藥櫃前，一隻手在抽屜上一抽一合——只合上了一個，她笑了，再一抽一合，三十個抽屜同時歸位。",
+        "燈光大亮，照穿門縫，照到街上。老宅燈火通明的全景，鏡頭慢慢拉遠，一盞一盞慢慢暗下去。"
+      ],
+      "conflict": "她要在沒有人看的時候，把一百年的這一盞燈添滿、把這個家交出去；全家在門外，誰也不敢推門。",
+      "turn": "觀眾以為燈滅了——燈火跳了一下，暗了一秒，然後亮得比任何時候都亮，門自己開了，全家看見她坐在燈前，手交疊在腹前，麻花辮垂在肩上，笑著。玉琴推著輪椅到她旁邊，握住她的手。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "老宅燈火通明的全景漸暗；畫面切到山上顧家祠堂，另一盞燈亮起，床上的顧遠山不在了，燈前一個十八歲的少年睜開眼，看著自己的手。",
+        "question": "那個少年是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xuanyi",
+        "goxue"
+      ],
+      "spectacle": "她替燈添油的微距與第一集同機位的疊影；三十個抽屜同時歸位；老宅燈火通明的大全景漸暗；山上另一盞燈前少年睜眼。",
+      "glamour_shot": "最後一次顏值鏡頭給兩個人：九十六歲的她笑著閉眼、燈光描出與十八歲一樣的側臉輪廓；山上少年睜眼的第一格，一雙清亮得像看過一百年的眼。",
+      "setups": [],
+      "payoffs": [
+        "s05-t16",
+        "s05-t17",
+        "m09",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "燈添滿、最亮",
+        "她把這個家交出去，笑著閉眼",
+        "老宅燈火通明",
+        "顧家的燈接到了一個十八歲的少年身上"
+      ],
+      "characters": [
+        "shen-yuetang",
+        "shen-zuofu",
+        "shen-yuqin",
+        "shen-jianbang",
+        "shen-zhiyuan",
+        "su-xiao",
+        "shen-xiaoman",
+        "shen-zhixing",
+        "lin-meifeng",
+        "shen-jianye",
+        "zhou-huaian",
+        "lao-chen",
+        "xiao-he",
+        "gu-chenglin",
+        "s05-lao-cen",
+        "s05-shaonian"
+      ],
+      "locations": [
+        "沈家老宅祠堂",
+        "沈家老宅大廳老藥櫃",
+        "沈家老宅全景",
+        "顧家祠堂"
+      ],
+      "state": {
+        "time": "初一夜到初二清晨",
+        "knowledge": "燈添滿；這桌坐滿了；顧家的燈接給了一個少年",
+        "carry_forward": "第二部：山上那個十八歲的少年是誰的故事"
+      }
+    }
+  ]
+}

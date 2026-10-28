@@ -1,0 +1,44 @@
+{
+  "slug": "2025-03-shengxia-fendela",
+  "title": "合約到期前",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：那本修了五季的日記修完、兩家二十年前的事講清、她找到母親、他說出第一句沒有克制的話，兩人在合約到期那天重簽——這次沒有期限。第 300 集最後一格，修復坊收到一本新送來的破書，夾頁裡掉出一張兩人小時候的合照，留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議；這部的賣點是電影感構圖，更需要橫式。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代海島城市：自然光、長鏡頭、留白；修復坊的紙與膠、船廠的鐵與海；兩人的距離是鏡頭語言。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md，但這部允許前 3 秒是一個構圖＋一句壓低的話，不一定是衝突。",
+    "reuse": "固定場景：舊書修復坊、謝家老宅的兩間房與長餐桌、船廠、燈塔、渡輪。",
+    "voice": "國語；男主低而少，女主亮而快，第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 130 秒一集 ≈ 3,200–4,000 點；文戲多、用一張首格＋緩推可省很多。",
+    "per_season": "60 集 ≈ 19–24 萬點；五季 ≈ 95–120 萬點。",
+    "levers": "兩人對坐的文戲是這部的主體，首格＋緩推可省四到六成。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《盛夏芬德拉》（2025 紅果峰值熱度第 3，馬廄製片廠）",
+    "how": "只學套路：聯姻契約、極度克制的男主、同住不同房、慢熱拉扯、誤會、分離再重逢、電影感構圖與壓低的對話開場。人物、家族、職業（古籍修復師與船東）、城市、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["合約到期前", "潮嶼有風", "一年之約"],
+  "title_decision": "未定；先用候選第一個《合約到期前》，站主可改。"
+}

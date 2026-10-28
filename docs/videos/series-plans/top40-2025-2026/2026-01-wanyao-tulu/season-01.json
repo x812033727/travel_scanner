@@ -1,0 +1,4686 @@
+{
+  "number": 1,
+  "title": "霧關",
+  "theme": "妖不是用來殺的，是用來餵飽的。",
+  "start_state": "現代廚藝比賽的廚房裡阮青梧被油鍋的火光吞掉，醒來是北境霧關驛站同名的小廚娘，驛丞老崔正要把她趕走；每夜有霧攻關、驛站快被裁撤、灶台上一本空白舊書。鎮妖營的蕭承霽帶兵駐進驛站，御膳司的『除妖榜』貼到了關上。",
+  "end_state": "食單寫到第九道。餓鬼阿滿、怨娘繡繡被她收上桌，霧關的霧散了；老崔把驛站的印交給她；蕭承霽第一次替她擋御膳司的人。御膳司膳使·墨帶著鐵鍋來到霧關要『徵收』她收的妖，青梧第一次看見妖被煉。最後一集，墨的鐵鍋裡冒出的煙凝成一張沒有臉的影子，食單自己翻到最後一頁，寫了一個字：「饕。」",
+  "guest_cast": [
+    {
+      "id": "s01-pingshen",
+      "name": "評審",
+      "role": "第一集冷開場的現代廚藝比賽評審",
+      "appearance": "東亞中年男性，五十歲，白廚師服、黑領結、銀框眼鏡、鬢角微白，手持評分板站在比賽廚房的聚光燈下"
+    },
+    {
+      "id": "s01-wang-da",
+      "name": "驛卒王大",
+      "role": "霧關驛站的老驛卒，嗓門大、嘴快、心軟",
+      "appearance": "東亞男性，三十五歲，黝黑結實、方臉、濃眉、下巴一撮短鬚，灰褐驛卒短打、腰間掛鐵叉，笑起來缺一顆門牙"
+    },
+    {
+      "id": "s01-xiao-liu",
+      "name": "驛卒小劉",
+      "role": "霧關驛站跑州城送信的年輕驛卒",
+      "appearance": "東亞青年男性，十九歲，瘦高、單眼皮、臉頰凍得發紅，灰褐驛卒短打外罩舊羊皮背心，背一個油布信袋"
+    },
+    {
+      "id": "s01-han-jin",
+      "name": "韓勁",
+      "role": "鎮妖營副將，蕭承霽的副手，先輕視青梧後服她",
+      "appearance": "東亞男性，三十歲，粗壯、短鬚、眉骨突出、眼神直，黑鐵輕甲與灰披風，手上一把符火長叉"
+    },
+    {
+      "id": "s01-lizheng",
+      "name": "里正鄒有德",
+      "role": "霧關下鎮子的里正，賣女子換錢、付御膳司買榜的人",
+      "appearance": "東亞中年男性，五十二歲，白胖、小眼、下巴圓、嘴角下垂，一身嶄新的靛藍綢衫，手上一枚祖傳的青玉戒"
+    },
+    {
+      "id": "s01-zhou-po",
+      "name": "周婆",
+      "role": "鎮上賣豆腐的婆婆，三十年前沉塘的見證人，第一個站到青梧這邊的鎮民",
+      "appearance": "東亞老年女性，六十五歲，瘦小、白髮梳得乾淨、眼角深紋、眼神清亮，灰藍粗布衣、藍布圍裙，手上永遠端著一塊豆腐板"
+    },
+    {
+      "id": "s01-xiao-tao",
+      "name": "小桃",
+      "role": "里正家的使女，十五夜被賣往州城又被救回的女子",
+      "appearance": "東亞少女，十七歲，圓臉、杏眼、唇色淡、兩條辮子，淺褐布裙，袖口有一枝自己繡的桃花"
+    },
+    {
+      "id": "s01-xiao-zhu",
+      "name": "燭妖小燭",
+      "role": "鎮上廟裡一盞不滅燭火長出的小妖，怨是『沒人點我』；食單第二道菜",
+      "appearance": "燭火裡浮出的一張東亞孩童的小臉，眉眼像畫上去的，火苗是它的頭髮；收服後是一小簇跟在青梧肩頭的暖黃火光"
+    },
+    {
+      "id": "s01-hui-dou",
+      "name": "鼠妖灰豆",
+      "role": "偷鹽的鼠妖，為鹽稅年餓死的一窩家人囤鹽；收服後是驛站的試鹹；食單第四道菜",
+      "appearance": "人形的東亞小個子少年，十四歲樣貌，灰布短衣、尖尖的耳朵、圓亮的黑眼、兩顆小門牙，手裡永遠捏著一小撮鹽"
+    },
+    {
+      "id": "s01-pan",
+      "name": "石妖磐",
+      "role": "守關外石橋百年的石妖，守的是沒刻名的修橋工匠；食單第五、第九道菜",
+      "appearance": "石橋石縫裡浮出的一張石頭臉，青苔是眉、兩個發光的孔是眼，說話像石頭磨石頭；人形時是一個灰衣、肩寬、臉如石刻的沉默壯漢；被煉後只剩一塊拇指大的灰石"
+    },
+    {
+      "id": "s01-qing-san",
+      "name": "傘妖青傘",
+      "role": "只在雨天出現的傘妖，等一個把它忘在橋頭的女孩；食單第六道菜",
+      "appearance": "一把青布舊傘，傘柄磨得發亮，雨天會自己撐開行走；人形時是一個穿青衣、撐傘低頭的東亞少女剪影，看不清臉"
+    },
+    {
+      "id": "s01-jing-yao",
+      "name": "井妖",
+      "role": "鎮上廟後水井的小妖，被御膳司煉掉又從墨的鐵鍋裡被請出來；食單第七道菜",
+      "appearance": "湖藍色的一團氣凝成的東亞少年臉，頭髮像水往下流，收服後住在驛站的水缸裡，說話帶回音"
+    },
+    {
+      "id": "s01-deng-yao",
+      "name": "燈妖",
+      "role": "鎮上廟檐下的燈妖，被御膳司煉掉又從墨的鐵鍋裡被請出來；食單第八道菜",
+      "appearance": "琥珀色的一團氣凝成的東亞老人臉，眉長而白，收服後住在驛站門口的燈籠裡，入夜自己亮"
+    },
+    {
+      "id": "s01-ma-zhanggui",
+      "name": "馬掌櫃",
+      "role": "北境商隊的掌櫃，飯鋪的第一個客人與消息來源",
+      "appearance": "東亞中年男性，四十五歲，紅臉、八字鬚、嗓門大，皮帽、羊皮襖、腰間一串銅錢，馬鞭不離手"
+    },
+    {
+      "id": "s01-cha-guan",
+      "name": "文大人",
+      "role": "州城來查驛站賣飯的查官",
+      "appearance": "東亞中年男性，四十歲，清瘦、山羊鬚、細長眼，青色七品官袍、烏紗帽，手裡一支隨時記錯的筆"
+    },
+    {
+      "id": "s01-shan-yi",
+      "name": "膳役阿鐵",
+      "role": "膳使·墨帶來的膳役頭，搬鍋、點符火、不說話",
+      "appearance": "東亞男性，二十八歲，高壯、剃短髮、面無表情，黑色膳役短打、臂上纏符布，背一只符火箱"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s01-t01",
+      "question": "霧裡舔鍋的是什麼？",
+      "setup_episode": 1,
+      "payoff_episode": 3
+    },
+    {
+      "id": "s01-t02",
+      "question": "老崔為什麼不肯讓驛站被裁撤？",
+      "setup_episode": 4,
+      "payoff_episode": 43
+    },
+    {
+      "id": "s01-t03",
+      "question": "灶台上的舊書是從哪裡來的？",
+      "setup_episode": 2,
+      "payoff_episode": 8
+    },
+    {
+      "id": "s01-t04",
+      "question": "霧裡的小孩為什麼只吃米？",
+      "setup_episode": 3,
+      "payoff_episode": 6
+    },
+    {
+      "id": "s01-t05",
+      "question": "鎮妖營為什麼來霧關？",
+      "setup_episode": 7,
+      "payoff_episode": 10
+    },
+    {
+      "id": "s01-t06",
+      "question": "蕭承霽為什麼聽不得『餓』這個字？",
+      "setup_episode": 11,
+      "payoff_episode": 18
+    },
+    {
+      "id": "s01-t07",
+      "question": "山下的村子是怎麼餓死的？",
+      "setup_episode": 12,
+      "payoff_episode": 17
+    },
+    {
+      "id": "s01-t08",
+      "question": "符火是哪裡來的？",
+      "setup_episode": 11,
+      "payoff_episode": 19
+    },
+    {
+      "id": "s01-t09",
+      "question": "十五失蹤的女子真的死了嗎？",
+      "setup_episode": 21,
+      "payoff_episode": 25
+    },
+    {
+      "id": "s01-t10",
+      "question": "里正跟御膳司有什麼交易？",
+      "setup_episode": 22,
+      "payoff_episode": 36
+    },
+    {
+      "id": "s01-t11",
+      "question": "被賣走的女子在哪？",
+      "setup_episode": 24,
+      "payoff_episode": 39
+    },
+    {
+      "id": "s01-t12",
+      "question": "繡繡的嫁鞋藏在哪？",
+      "setup_episode": 24,
+      "payoff_episode": 27
+    },
+    {
+      "id": "s01-t13",
+      "question": "蕭承霽違抗御膳司會有什麼後果？",
+      "setup_episode": 35,
+      "payoff_episode": 48
+    },
+    {
+      "id": "s01-t14",
+      "question": "鼠妖偷鹽要給誰？",
+      "setup_episode": 42,
+      "payoff_episode": 44
+    },
+    {
+      "id": "s01-t15",
+      "question": "名單上的女子怎麼救回？",
+      "setup_episode": 40,
+      "payoff_episode": 46
+    },
+    {
+      "id": "s01-t16",
+      "question": "驛站變飯鋪算不算違法？",
+      "setup_episode": 42,
+      "payoff_episode": 47
+    },
+    {
+      "id": "s01-t17",
+      "question": "墨的鐵鍋裡哭的是誰？",
+      "setup_episode": 50,
+      "payoff_episode": 55
+    },
+    {
+      "id": "s01-t18",
+      "question": "石妖還救得回來嗎？",
+      "setup_episode": 52,
+      "payoff_episode": 59
+    },
+    {
+      "id": "s01-t19",
+      "question": "三十年前是誰推繡繡下水？",
+      "setup_episode": 25,
+      "payoff_episode": 38
+    },
+    {
+      "id": "s01-t20",
+      "question": "十五那夜被帶走的人去了哪？",
+      "setup_episode": 21,
+      "payoff_episode": 23
+    },
+    {
+      "id": "s01-t21",
+      "question": "里正的符火藏在哪？",
+      "setup_episode": 28,
+      "payoff_episode": 29
+    },
+    {
+      "id": "s01-t22",
+      "question": "黑漆馬車上的人是誰？",
+      "setup_episode": 49,
+      "payoff_episode": 51
+    }
+  ],
+  "episodes": [
+    {
+      "number": 1,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "油鍋起火",
+      "youtube_title": "廚藝比賽油鍋起火，她醒來成了邊關小廚娘，霧裡有東西在舔她的鍋",
+      "duration_s": 140,
+      "logline": "阮青梧在比賽廚房被油鍋的火光吞掉，醒來成了霧關驛站的小廚娘，第一夜就得面對舔鍋的霧。",
+      "hook": "現代比賽廚房，油鍋轟地竄起火，評審喊：「阮青梧！」下一格，她在漏風的灶房裡睜眼，手裡還握著鍋鏟。",
+      "hook_type": "image",
+      "mid_hook": "門被一腳踹開，矮壯的老頭吼：「廚娘，霧又來了！」門外白霧裡，有舌頭舔過鐵鍋的聲音。",
+      "extra_hooks": [
+        "她把一盤剩飯端出門放在地上，霧像被人往後拉，退了三步。"
+      ],
+      "conflict": "搞清楚自己在哪、為什麼灶房外的霧會舔鍋，還要在被驛丞趕走前證明自己會做飯。",
+      "turn": "她以為霧要吃人，結果霧只舔鍋、只吃剩飯；把飯端出去，霧就退。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "灶台上那本沒字的舊書自己翻開一頁，紙面像鍋面一樣冒出一縷熱氣；她伸手去摸，紙是溫的。",
+        "question": "沒字的書為什麼會自己翻頁？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhiguai",
+        "meishi"
+      ],
+      "spectacle": "油鍋的火光吞掉整個現代廚房，火光未滅就切成古代灶房的灶火，同一團橘色、同一個她的臉。",
+      "glamour_shot": "青梧在灶火前抬眼，藍布巾下幾縷碎髮被熱氣吹起，杏眼裡映著火光，嘴角還掛著比賽時沒笑完的那一點倔。",
+      "setups": [
+        "m01",
+        "m02",
+        "s01-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "霧退了一次，驛站撐過這一夜",
+        "老崔沒當場把她趕出門"
+      ],
+      "characters": [
+        "s01-pingshen",
+        "ruan-qingwu",
+        "lao-cui",
+        "s01-wang-da",
+        "shidan"
+      ],
+      "locations": [
+        "現代比賽廚房",
+        "霧關驛站灶房",
+        "驛站門口"
+      ],
+      "state": {
+        "time": "第一夜",
+        "knowledge": "她穿成霧關驛站同名的小廚娘；外面的霧每夜來、會舔鍋、吃剩飯就退；灶台上有一本會自己翻頁的舊書。",
+        "carry_forward": "溫的舊書、霧裡舔鍋的東西、老崔要不要留她"
+      }
+    },
+    {
+      "number": 2,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "浪費柴",
+      "youtube_title": "現代廚藝做出一盤糖醋肉，被驛丞罰倒掉：邊關沒糖，妳在浪費柴",
+      "duration_s": 110,
+      "logline": "青梧想用現代廚藝讓驛站的人認她這個廚娘，卻被老崔罰、被驛卒笑，而關上貼來一張除妖榜。",
+      "hook": "書頁上的熱氣散了，一個字都沒有；老崔從門外探頭：「發什麼呆？煮飯！」",
+      "hook_type": "line",
+      "mid_hook": "驛卒小劉從州城帶回一張榜貼在關上：「怨妖作祟，御膳司已除三次。」榜上寫了功勞，卻沒寫一隻妖的名字。",
+      "conflict": "用僅有的粗米、鹹菜和半罈醋做出像樣的飯，讓老崔與驛卒閉嘴。",
+      "turn": "她做出的糖醋肉驛卒搶著吃，老崔卻一把倒掉：驛站的柴與糖是官糧，她用錯了東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜她去收鍋，鐵鍋外面的霧氣上，印著一個小小的、五指張開的手印。",
+        "question": "是誰的手印印在鍋上？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "meishi"
+      ],
+      "spectacle": "一盤糖醋肉淋上醋汁的瞬間冒起白煙，驛卒圍過來的臉在煙裡發亮，下一格整盤被倒進灶灰。",
+      "glamour_shot": "青梧翻鍋時手腕一抖，整鍋肉在空中翻了一圈，火舌從鍋邊竄起照亮她咬著唇的側臉。",
+      "setups": [
+        "m04",
+        "s01-t03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "驛卒王大偷吃了一口，承認好吃",
+        "她注意到舊書是老崔從灶底挖出來的"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "s01-wang-da",
+        "s01-xiao-liu",
+        "shidan"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "驛站大堂",
+        "關門榜牆"
+      ],
+      "state": {
+        "time": "第二日",
+        "knowledge": "驛站快被裁撤、糧柴都是官的；御膳司的除妖榜不寫妖名；舊書是從灶底挖出來的。",
+        "carry_forward": "鍋上的小手印、除妖榜、老崔的刁難"
+      }
+    },
+    {
+      "number": 3,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "只吃米",
+      "youtube_title": "她在門口擺三碗試吃，霧裡的東西只吃米不吃肉，驛丞下最後通牒",
+      "duration_s": 105,
+      "logline": "青梧用三碗不同的食物試霧裡的東西，發現它只吃米；老崔卻給她一夜時間決定走留。",
+      "hook": "她把掌心貼上鍋上的手印，比她的手小一圈——是個孩子的。",
+      "hook_type": "image",
+      "mid_hook": "豆子被她抓到偷鍋巴，灶灰糊了一臉：「我不是妖！」她笑出聲，把鍋巴整塊給他。",
+      "conflict": "弄清霧裡的東西吃什麼、怕什麼，順便留下來。",
+      "turn": "肉與鹹菜原封不動，只有白米那碗乾了；舔鍋的不是野獸，是一個只認得米的小孩。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老崔把一張路條拍在桌上：「明早跟商隊走，或留下來餵五十張嘴。」窗外霧裡，碗被輕輕放回門檻。",
+        "question": "她會走，還是留？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhiguai"
+      ],
+      "spectacle": "三碗食物擺在門檻上，霧像一隻看不見的手，只把中間那碗白米慢慢吃空，碗底一粒米都不剩。",
+      "glamour_shot": "青梧蹲在門檻邊，拿一根筷子輕敲空碗，燭光下她側頭聽霧的樣子，眼尾微微一挑。",
+      "setups": [
+        "s01-t04"
+      ],
+      "payoffs": [
+        "s01-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認舔鍋的是一個只吃米的小孩般的東西",
+        "收了豆子當跟班兼試菜員"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "douzi",
+        "s01-wang-da",
+        "shidan"
+      ],
+      "locations": [
+        "驛站門檻",
+        "霧關驛站灶房"
+      ],
+      "state": {
+        "time": "第三日夜",
+        "knowledge": "霧裡的是個孩子，只吃米；驛站裁撤在即；老崔給她一夜決定。",
+        "carry_forward": "走或留的選擇、碗為什麼被放回來"
+      }
+    },
+    {
+      "number": 4,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "一鍋高湯",
+      "youtube_title": "她用骨頭熬一夜高湯，嘲笑她的驛卒喝到不說話，驛丞醉後說漏一句",
+      "duration_s": 120,
+      "logline": "青梧選擇留下，用一鍋高湯收服五十個驛卒的嘴，卻聽見老崔醉後說出他不肯走的半句話。",
+      "hook": "天亮，商隊的車輪聲遠去；她把路條折成兩半丟進灶火：「我留。」",
+      "hook_type": "line",
+      "mid_hook": "老崔喝醉了，抱著酒葫蘆對著霧說：「三年了，我沒送到……」話沒說完就睡死。",
+      "extra_hooks": [
+        "豆子舔完碗，小聲問：「霧裡的小孩，也能喝這個嗎？」"
+      ],
+      "conflict": "用驛站的下腳料做出讓驛卒服氣的飯，證明她留下不是白吃。",
+      "turn": "驛卒說她用骨頭是在糟蹋柴火，結果一夜文火熬出的高湯讓王大喝了三碗、一句話都說不出。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡霧漲到窗口，第一次有聲音從霧裡擠出來，又細又短：「餓。」",
+        "question": "霧裡的小孩開口了，它要什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "meishi",
+        "xiju",
+        "zhiguai"
+      ],
+      "spectacle": "文火上的湯面冒著細泡，她掀蓋、吹開熱氣，一勺清湯倒進粗碗，燭光把湯面照成琥珀色。",
+      "glamour_shot": "青梧閉眼嚐湯的那一秒，灶火從下往上照亮她的下顎線，額前碎髮被蒸氣黏在皮膚上。",
+      "setups": [
+        "s01-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "驛卒王大、小劉開始叫她『青梧姐』而不是『廚娘』",
+        "老崔醉後說漏他三年前沒送到什麼"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "douzi",
+        "s01-wang-da",
+        "s01-xiao-liu"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "驛站大堂"
+      ],
+      "state": {
+        "time": "第四日夜",
+        "knowledge": "她留下了；驛卒認了她的手藝；老崔三年前沒送到某樣東西，和霧有關。",
+        "carry_forward": "霧裡的那聲『餓』、老崔沒說完的話"
+      }
+    },
+    {
+      "number": 5,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "你餓嗎",
+      "youtube_title": "她提著燈走進霧裡，看見一個肚子鼓鼓的小孩，蹲下只問了一句話",
+      "duration_s": 115,
+      "logline": "青梧提燈走進霧，第一次看見那個肚子鼓鼓的半透明小孩，問他餓不餓。",
+      "hook": "她端著一碗飯推開門：「餓？那就出來吃。」霧裡沒有回答，一盞燭火被吹得橫倒。",
+      "hook_type": "line",
+      "mid_hook": "王大舉著鐵叉從她身後衝出來：「妖！」她一把攔在小孩前面，鐵叉停在她肩膀上方一寸。",
+      "conflict": "在不被驛卒嚇跑、也不被老崔攔住的情況下，見到霧裡的那個孩子。",
+      "turn": "她以為孩子怕人，其實孩子怕的是鐵叉上的符紙；她把符紙撕了，孩子才走近。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小孩伸手去抓她碗裡的飯，手指穿過碗底；他抬頭看她，眼睛又大又黑，點了一下頭。",
+        "question": "吃不到飯的小孩，要怎麼餵？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "霧裡浮出一個半透明的小孩，肚子鼓鼓、腰上繫著一條破布，燈光穿過他的身體照在身後的關牆上。",
+      "glamour_shot": "青梧提著紙燈蹲下，燈光由下照亮她的臉，她對著霧裡的小孩笑，露出一點牙。",
+      "setups": [
+        "m02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "見到霧裡的小孩，確認他會點頭",
+        "擋下王大的鐵叉，王大第一次聽她的"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "e-gui",
+        "s01-wang-da",
+        "douzi",
+        "lao-cui"
+      ],
+      "locations": [
+        "霧關關外",
+        "驛站門口"
+      ],
+      "state": {
+        "time": "第五日夜",
+        "knowledge": "霧裡是一個餓著的半透明小孩，怕符紙，吃不到實物。",
+        "carry_forward": "怎麼餵一個手會穿過碗的孩子"
+      }
+    },
+    {
+      "number": 6,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "一鍋粥",
+      "youtube_title": "驛丞說餵妖是死罪，她照樣熬了一鍋粥端出關，書上冒出第一個字",
+      "duration_s": 120,
+      "logline": "青梧違抗老崔熬一鍋粥餵霧裡的孩子，孩子吃到第一口，舊書冒出第一個字。",
+      "hook": "老崔把柴抽走：「餵妖，是罪！」她抱著米缸不放：「餓死人才是罪。」",
+      "hook_type": "line",
+      "mid_hook": "豆子偷偷把自己的柴抱來塞進灶裡，灶火一下亮了：「我也餓過。」",
+      "conflict": "沒有柴、沒有老崔的允許，還要讓一個吃不到實物的孩子吃到東西。",
+      "turn": "實物他吃不到，熱氣他吃得到：粥一冒煙，小孩就把臉埋進蒸氣裡，一下子變實了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "灶台上的舊書啪地翻開，紙面冒出熱氣，一個淡金色的字慢慢浮出來：「餓」。",
+        "question": "書要寫什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "meishi",
+        "ganren",
+        "zhiguai"
+      ],
+      "spectacle": "一鍋白粥掀蓋，蒸氣沖上夜空，半透明的小孩把臉埋進蒸氣，身體由透明一寸寸變成實的。",
+      "glamour_shot": "青梧端著粥鍋站在關門口，蒸氣往上飄過她的臉，她眨掉睫毛上的水珠回頭看老崔，眼睛很亮。",
+      "setups": [],
+      "payoffs": [
+        "s01-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小孩吃到了粥的熱氣，第一次變實",
+        "豆子站到她這邊",
+        "老崔雖罰她，但沒再提趕人"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "douzi",
+        "e-gui",
+        "shidan"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "霧關關外"
+      ],
+      "state": {
+        "time": "第六日夜",
+        "knowledge": "妖吃的是『氣』：粥的熱氣能餵他；他只記得粥，因為餓死的村子最後只剩粥。",
+        "carry_forward": "書上浮出的『餓』字、小孩吃飽後的霧會不會退"
+      }
+    },
+    {
+      "number": 7,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "餓鬼粥",
+      "youtube_title": "舊書自己寫下第一道菜名，還開口跟她說話，驛卒卻看見山下來了馬隊",
+      "duration_s": 125,
+      "logline": "舊書寫下第一道菜〈餓鬼粥〉並第一次對她開口；老崔要去告她，驛卒卻先看見山下來了馬隊。",
+      "hook": "淡金色的字一筆一筆浮完：「餓鬼粥」。一個低沉的聲音在她耳邊念：「第一道。」",
+      "hook_type": "line",
+      "mid_hook": "老崔抓著她的手腕要去州城告她餵妖，一出門就看見關牆上的除妖榜被人用紅筆圈了「霧關」兩字。",
+      "extra_hooks": [
+        "書聲又說了一句：「九十九道。」然後再不出聲。"
+      ],
+      "conflict": "弄懂這本會說話的書要她做什麼，同時不讓老崔把她告到官府。",
+      "turn": "她以為書是鬼物，書卻只會念菜名；老崔要告她，卻發現官府早已盯上霧關。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小劉從關牆上滾下來，指著山下：「馬隊！鎮妖營的旗！」霧裡，小孩的身影縮進她身後。",
+        "question": "鎮妖營為什麼來霧關？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xiju"
+      ],
+      "spectacle": "書頁上的字像在鍋面上浮起的泡，一筆一筆冒出來，寫完整頁紙微微鼓起，熱氣散掉。",
+      "glamour_shot": "青梧捧著書抬眼的那一刻，淡金色的字光映在她眼底，她的瞳孔縫了一下，像被燙到。",
+      "setups": [
+        "m01",
+        "s01-t05"
+      ],
+      "payoffs": [
+        "s01-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第一道菜〈餓鬼粥〉寫下",
+        "確認食單會說話、只有她聽得見",
+        "老崔暫時沒去告她"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "lao-cui",
+        "s01-xiao-liu",
+        "e-gui",
+        "douzi"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "關牆"
+      ],
+      "state": {
+        "time": "第七日",
+        "knowledge": "書叫食單，寫下第一道菜，說要寫九十九道；舔鍋的就是這個餓死的孩子；鎮妖營往霧關來。",
+        "carry_forward": "鎮妖營的馬隊、紅筆圈起的『霧關』、藏起小孩"
+      }
+    },
+    {
+      "number": 8,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "灶底",
+      "youtube_title": "鎮妖營先鋒進驛站搜妖，她把會寫字的書藏回灶底，發現底下還埋著東西",
+      "duration_s": 110,
+      "logline": "鎮妖營先鋒進站搜查，青梧把食單藏回灶底，卻在灶底發現三百年前埋書的痕跡。",
+      "hook": "馬隊還在山腰，先鋒五人已經踢開驛站門：「搜。」她把食單往懷裡一塞。",
+      "hook_type": "danger",
+      "mid_hook": "先鋒舉起慘白的符火往霧裡一照，整片霧發出孩子哭一樣的尖聲，往後縮了一丈。",
+      "conflict": "在搜查裡藏住食單與小孩，還要在今夜替五十個兵煮出飯。",
+      "turn": "她把書塞回灶底的洞，摸到洞底刻著一行小字與一只空碗的印子：書不是老崔的，是三百年前有人埋的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "先鋒的手伸向灶門：「灶裡也搜。」老崔擋在灶前看她；她手裡握著火鉗，往灶裡丟，還是往他手上去？",
+        "question": "她會護住書，還是讓他搜？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xiju"
+      ],
+      "spectacle": "灶底的洞口，她伸手摸出一把三百年前的灶灰，灰裡一只碗形的印子，書放進去正好嵌合。",
+      "glamour_shot": "青梧跪在灶前往洞裡探，灶火只照亮她的半邊臉，另一邊在黑裡，她抬眼時眼白很亮。",
+      "setups": [],
+      "payoffs": [
+        "s01-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認食單是三百年前埋在灶底的，洞底有碗印與刻字",
+        "先鋒的符火證實小孩怕符火，不是怕人"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "shidan",
+        "s01-han-jin",
+        "e-gui",
+        "douzi"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "驛站大堂",
+        "霧關關外"
+      ],
+      "state": {
+        "time": "第八日",
+        "knowledge": "食單是三百年前有人埋進灶底的；鎮妖營帶著符火來，符火會傷小孩。",
+        "carry_forward": "灶門前的先鋒、灶底的刻字、五十個兵的飯"
+      }
+    },
+    {
+      "number": 9,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "五十人的飯",
+      "youtube_title": "沒米沒肉卻要餵五十個兵，她用一鍋雜糧飯讓先鋒閉嘴，霧裡的小孩說了第一個字",
+      "duration_s": 120,
+      "logline": "青梧用現代的分批法在一夜內餵飽五十個兵，霧裡的小孩卻被飯香引到窗邊。",
+      "hook": "火鉗插進灶裡，灶火轟地竄起，先鋒縮手；她頭也不回：「鍋熱，別碰。」",
+      "hook_type": "line",
+      "mid_hook": "灶房窗口浮出一張半透明的小臉，就在先鋒副將韓勁背後三尺，鼻子一抽一抽地聞。",
+      "conflict": "用三斗雜糧、一桶鹹菜在天亮前餵五十個兵，不讓他們餓了翻驛站。",
+      "turn": "韓勁斷定她只會糟蹋糧，結果雜糧飯一掀蓋全營安靜，連韓勁也端了碗。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "兵都睡了，她把最後一碗飯放上窗台；小孩把臉貼過來，第一次說出一個字：「香。」",
+        "question": "這孩子還會說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "meishi",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "三口大鍋同時掀蓋，雜糧飯的蒸氣在大堂裡匯成一片白雲，五十個兵的臉在雲裡抬起來。",
+      "glamour_shot": "青梧掄起鍋鏟翻飯，一臂的力氣讓整鍋飯翻起、落下，火光照著她額頭上的汗，她吹了一下碎髮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "五十個兵吃飽，副將韓勁改口叫她『阮廚娘』",
+        "小孩說出第一個字"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-han-jin",
+        "s01-wang-da",
+        "s01-xiao-liu",
+        "e-gui",
+        "douzi",
+        "lao-cui"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "驛站大堂"
+      ],
+      "state": {
+        "time": "第九日夜",
+        "knowledge": "兵可以用飯餵服；小孩能說話；韓勁對她改觀，但校尉還沒到。",
+        "carry_forward": "窗台的那碗飯、明早到的校尉"
+      }
+    },
+    {
+      "number": 10,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "校尉",
+      "youtube_title": "校尉一腳踩滅她放在門口的粥：餵妖？妳知道這叫什麼罪",
+      "duration_s": 135,
+      "logline": "鎮妖營校尉蕭承霽進駐霧關，青梧照常把粥放在門口，被他一腳踩滅。",
+      "hook": "小孩把那個「香」字說了第二遍，她還在笑，關外響起整齊的馬蹄聲。",
+      "hook_type": "danger",
+      "mid_hook": "蕭承霽翻身下馬，雪青披風掃過她的粥碗，他左臂護甲上一道妖爪的舊痕擦過她眼前。",
+      "extra_hooks": [
+        "老崔小聲說：「校尉十年前全軍覆沒，就剩他。」"
+      ],
+      "conflict": "在鎮妖營校尉面前把今夜的粥照常送出去，不讓小孩餓著。",
+      "turn": "韓勁替她說話，說廚娘餵的是驛卒；蕭承霽卻一眼看見碗放在門外霧裡，不是門內。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鎮妖營的馬隊踏進驛站，校尉蕭承霽翻身下馬，一腳踩滅她放在門口的那碗粥：「餵妖？你知道這叫什麼罪？」",
+        "question": "餵妖的罪，是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xiju",
+        "meishi"
+      ],
+      "spectacle": "馬隊踏進驛站，火把把霧照成橘色，蕭承霽的披風在風裡張開，他腳下那碗粥的熱氣散進霧裡。",
+      "glamour_shot": "蕭承霽火光下的側臉，劍眉長眼、下顎線鋒利，額前一縷不聽話的髮被風吹起，他低頭看那碗粥。",
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [
+        "s01-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "韓勁第一次替她說話",
+        "她看見蕭承霽左臂的妖爪舊痕",
+        "知道鎮妖營是奉御膳司的榜來清霧的"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-han-jin",
+        "lao-cui",
+        "e-gui",
+        "douzi",
+        "s01-wang-da"
+      ],
+      "locations": [
+        "霧關驛站門口",
+        "驛站大堂"
+      ],
+      "state": {
+        "time": "第十日夜",
+        "knowledge": "鎮妖營是照御膳司的榜來清霧的；校尉蕭承霽左臂有妖爪舊痕、十年前全軍覆沒；餵妖在他眼裡是罪。",
+        "carry_forward": "踩滅的粥、蕭承霽的質問、藏在她身後的小孩"
+      }
+    },
+    {
+      "number": 11,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "交出妖",
+      "youtube_title": "校尉要她交出妖，她端出一鍋粥：妖在這裡，你喝不喝",
+      "duration_s": 115,
+      "logline": "蕭承霽要青梧交出霧裡的妖，她交出一鍋粥；他下令用符火圍關，霧卻越圍越厚。",
+      "hook": "她看著地上的粥，抬頭：「罪？餓死人才是罪。」蕭承霽的手按上刀柄。",
+      "hook_type": "line",
+      "mid_hook": "韓勁打開軍車上的木箱：一排排慘白的符火，箱蓋烙著三個字「御膳司」。",
+      "conflict": "在不交出小孩的前提下，讓校尉相信霧關的霧不是來攻關的。",
+      "turn": "她以為校尉會抓她，他卻把那鍋粥一勺一勺倒進霧裡試；霧退了，他說「不夠」，下令布符火。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "符火沿關牆一盞盞點亮，霧被圍在中間；霧裡「餓」的聲音從一個變成幾十個，一聲疊一聲。",
+        "question": "霧裡到底有多少個餓著的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhiguai",
+        "zhandou"
+      ],
+      "spectacle": "關牆上三十盞慘白符火同時點燃，白光把霧照得像一面牆，牆裡幾十個模糊的小影子同時轉頭。",
+      "glamour_shot": "蕭承霽站在符火前，白光打亮他半邊臉，他說「餓」這個字時停了一下，喉頭動了動。",
+      "setups": [
+        "s01-t06",
+        "s01-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承霽當眾承認粥確實能讓霧退",
+        "確認符火來自御膳司"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-han-jin",
+        "lao-cui",
+        "e-gui",
+        "shidan"
+      ],
+      "locations": [
+        "霧關驛站門口",
+        "關牆"
+      ],
+      "state": {
+        "time": "第十一日",
+        "knowledge": "符火是御膳司配給鎮妖營的；蕭承霽聽到『餓』會停頓；霧裡不只一個。",
+        "carry_forward": "被符火圍住的霧、幾十聲餓、蕭承霽對餓的反應"
+      }
+    },
+    {
+      "number": 12,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "餓會傳染",
+      "youtube_title": "驛卒吃飽了還餓到發抖，餓妖的怨會傳染，小孩的碗卻留在關門口",
+      "duration_s": 110,
+      "logline": "符火圍住霧後驛卒吃飽還發抖，青梧發現餓妖的怨會傳染，而豆子不見了。",
+      "hook": "王大捧著第三碗飯手還在抖：「我、我還餓。」碗裡的飯一粒沒少。",
+      "hook_type": "danger",
+      "mid_hook": "老崔把驛站的門鎖上，鑰匙吞進酒葫蘆：「誰也不准下山！」他的眼睛在躲她。",
+      "conflict": "止住驛卒身上傳開的『餓』，說服老崔讓她順著霧下山找源頭。",
+      "turn": "她以為霧是來攻關的，豆子一句話點醒她：「它們是在找飯啊。」霧厚不是因為怒，是因為餓得更厲害。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "關門口放著豆子的小碗，碗旁一行小腳印走進霧裡，霧合起來，什麼都看不見了。",
+        "question": "豆子去了霧裡哪裡？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "ganren"
+      ],
+      "spectacle": "二十個驛卒坐在大堂裡抱著滿碗的飯發抖，窗外霧壓在窗紙上，整個大堂的燭火同時變暗。",
+      "glamour_shot": "青梧把掌心貼在發抖的王大額上，燭光下她咬著下唇，一滴汗從鼻尖滑到唇邊。",
+      "setups": [
+        "s01-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "弄懂餓妖的怨會傳染、霧厚是因為餓",
+        "豆子說出霧是來找飯的"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "douzi",
+        "s01-wang-da",
+        "xiao-chengji",
+        "e-gui"
+      ],
+      "locations": [
+        "驛站大堂",
+        "霧關關門"
+      ],
+      "state": {
+        "time": "第十二日夜",
+        "knowledge": "餓妖的怨會傳染給活人；霧是在找飯；老崔死也不讓人下山；豆子進了霧裡。",
+        "carry_forward": "豆子失蹤、被鎖的門、山下有什麼"
+      }
+    },
+    {
+      "number": 13,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "下山",
+      "youtube_title": "她摘下符火衝進霧裡找孩子，走到山下看見一座空村，碑上一個名字都沒有",
+      "duration_s": 120,
+      "logline": "青梧闖進霧裡找豆子，被小孩牽著走到山下一座餓死的空村。",
+      "hook": "她抽出一盞符火往地上一砸，白火滅了，霧裡伸出一隻半透明的小手，牽住她的手指。",
+      "hook_type": "image",
+      "mid_hook": "豆子蹲在一間破屋前，面前擺著一只空碗，他沒哭，只說：「這裡有人叫我。」",
+      "extra_hooks": [
+        "村口一塊石碑，正面刻著『義倉』，背面該刻名字的地方全是空白。"
+      ],
+      "conflict": "在被餓傳染之前找到豆子，弄清霧是從哪裡長出來的。",
+      "turn": "她以為小孩要帶她去危險的地方，他帶她去的，是他的家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小孩停在一間塌了半邊的屋子前，指著門裡一只倒扣的鍋，第一次說出第二個字：「家。」",
+        "question": "這個村子是怎麼空的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai"
+      ],
+      "spectacle": "霧在她腳下退開一條路，路盡頭是一座被霧包著的空村，每一扇門前都放著一只空碗。",
+      "glamour_shot": "青梧被小孩牽著走進霧裡，回頭看關上的符火像一排小星，霧水掛在她眉梢，眼神卻沒退。",
+      "setups": [
+        "m02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到豆子，他沒受傷",
+        "知道霧的源頭是山下的空村",
+        "小孩說出『家』"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "e-gui",
+        "douzi",
+        "xiao-chengji",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "霧關關外",
+        "山下空村",
+        "村口義倉碑"
+      ],
+      "state": {
+        "time": "第十三日夜",
+        "knowledge": "霧是山下餓死的那個村子長出來的；碑背面沒有名字；小孩是這村的孩子。",
+        "carry_forward": "空村、空碗、沒有名字的碑、關上追來的蕭承霽"
+      }
+    },
+    {
+      "number": 14,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "餓霧",
+      "youtube_title": "每夜攻關的霧根本不是妖怪攻城，是一整村餓死的人在找飯，校尉卻舉起了符火",
+      "duration_s": 125,
+      "logline": "青梧在空村裡弄懂霧關的霧不是來攻關而是找飯；蕭承霽追到村口，舉起符火。",
+      "hook": "她掀開那只倒扣的鍋，鍋底結著一層三年前的米糊；小孩把鼻子貼上去，霧在整座村裡輕輕嘆了一口氣。",
+      "hook_type": "image",
+      "mid_hook": "蕭承霽帶著十個兵追到村口，火把照亮他的臉：「阮青梧，妳走進妖窟了。」",
+      "conflict": "讓蕭承霽相信這霧不是妖禍，是餓；在他燒村前攔住他。",
+      "turn": "她以為霧每夜是攻關，站在村裡才看懂：關上有灶火、有飯香，霧是循著飯味往上爬的；它從來沒碰過關門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蕭承霽把符火舉到村口的碑前，白光照亮空白的碑背；她站到碑與火之間：「要燒，先燒我。」",
+        "question": "校尉會不會放下符火？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "從空村往上看霧關：霧像一條白色的河倒著往山上流，流向關上那一點灶火的橘光。",
+      "glamour_shot": "青梧站在碑前，符火的白光從背後打過來，把她的輪廓與碎髮鑲成一道白邊，她直視蕭承霽。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [
+        "m02"
+      ],
+      "general_payoffs": [
+        "揭開霧關的霧是山下餓死村子的怨氣，在找飯不是攻關",
+        "蕭承霽第一次停下來聽她說完"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "e-gui",
+        "douzi",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "山下空村",
+        "村口義倉碑"
+      ],
+      "state": {
+        "time": "第十四日夜",
+        "knowledge": "霧是餓死村子的怨氣，循著關上的飯香往上爬，從沒攻過關；燒掉村子只會讓怨更深。",
+        "carry_forward": "符火與碑之間的她、蕭承霽的決定、怎麼餵一整個村"
+      }
+    },
+    {
+      "number": 15,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "一桌飯",
+      "youtube_title": "她要替一整個餓死的村子煮一桌飯，校尉不給軍糧，驛丞卻把整座驛站的糧推了下山",
+      "duration_s": 120,
+      "logline": "青梧要在空村擺一桌飯餵飽整村的怨，軍糧不給、驛糧不夠，老崔卻把驛站的糧全推下山。",
+      "hook": "符火在蕭承霽手裡滅了，他把火把插進土裡：「妳要怎麼餵一個村？」她：「煮一桌。」",
+      "hook_type": "line",
+      "mid_hook": "韓勁嘲她「一個廚娘餵鬼」，下一格他被蕭承霽一個眼色點去扛米，一袋一袋扛下山。",
+      "conflict": "在一夜之內找到夠餵一整村的米、柴與鍋，還要讓鎮妖營不來拆。",
+      "turn": "蕭承霽說軍糧一粒不能動；老崔卻駕著驛站的車下山，整車官糧壓得車軸吱呀響。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第一鍋飯掀蓋，飯香一散，整座村的霧同時往那口鍋撲過來，蕭承霽的刀出了半鞘。",
+        "question": "幾百個餓著的，會不會一口吞了這桌飯？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "meishi",
+        "huoban"
+      ],
+      "spectacle": "空村的破屋前擺出一張用門板拼的長桌，十口鍋同時燒，蒸氣在霧裡匯成一團白，白裡有幾百個影子。",
+      "glamour_shot": "青梧挽袖掄起鍋鏟，整鍋飯翻起時火光照亮她小麥色的手臂與左手腕那道舊疤，她咬牙笑著。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承霽放下符火，默許她擺桌",
+        "韓勁被打臉後乖乖扛米",
+        "老崔送來驛站的糧"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-han-jin",
+        "lao-cui",
+        "douzi",
+        "e-gui",
+        "s01-wang-da"
+      ],
+      "locations": [
+        "山下空村",
+        "驛站糧庫"
+      ],
+      "state": {
+        "time": "第十五日夜",
+        "knowledge": "鎮妖營默許她；驛站的糧全在這張桌上了；霧撲向飯鍋。",
+        "carry_forward": "撲向鍋的霧、半出鞘的刀、怎麼讓餓鬼坐下吃"
+      }
+    },
+    {
+      "number": 16,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "叫名字",
+      "youtube_title": "她一碗一碗叫出活人記得的名字，霧跟著一碗一碗退，只剩一碗沒人叫得出",
+      "duration_s": 130,
+      "logline": "青梧讓老崔一碗一碗叫出村裡人的名字，霧跟著一碗一碗退，最後一碗卻沒人記得。",
+      "hook": "她把第一碗飯放上桌，對霧說：「坐下，吃。」霧停在鍋邊一尺，沒動。",
+      "hook_type": "line",
+      "mid_hook": "老崔哆嗦著叫出第一個名字：「陳二嫂。」一團霧從幾百個影子裡飄出來，落在那碗飯前，碗裡的熱氣一下被吸空。",
+      "extra_hooks": [
+        "蕭承霽突然開口叫了一個名字，沒有人問他怎麼知道的。"
+      ],
+      "conflict": "讓每一團餓著的怨都有自己的碗與名字，不漏掉一個。",
+      "turn": "她以為有飯就夠，霧卻不動；要等有人叫出名字，怨才肯坐下——它們要的是被記得。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "桌上只剩最後一碗，老崔搖頭說不記得了；小孩走到那碗前坐下，指著自己：「我。」",
+        "question": "沒人記得的那個孩子叫什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "meishi",
+        "zhiguai"
+      ],
+      "spectacle": "長桌上一碗碗飯的熱氣一碗一碗被吸空，霧一塊一塊散開，露出星空；每散一塊，碑背面就多一個淡金色的名字。",
+      "glamour_shot": "青梧站在長桌盡頭，每叫一個名字就低頭把一碗飯擺正，燭光下她的睫毛上掛著霧水。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "霧退了大半，碑上浮出名字",
+        "蕭承霽也叫了一個名字",
+        "老崔第一次正面面對這個村"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "xiao-chengji",
+        "e-gui",
+        "douzi",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "山下空村",
+        "村口義倉碑"
+      ],
+      "state": {
+        "time": "第十六日夜",
+        "knowledge": "怨要被叫名字才肯上桌；蕭承霽認得這村的人；最後一碗是那個小孩的。",
+        "carry_forward": "小孩沒人記得的名字、老崔的愧、蕭承霽怎麼認得村人"
+      }
+    },
+    {
+      "number": 17,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "阿滿",
+      "youtube_title": "驛丞跪下說出三年前糧車為什麼沒到，她給那個沒人記得的孩子取了名字，霧全散了",
+      "duration_s": 135,
+      "logline": "老崔說出三年前糧車被州城扣下的真相，青梧替無名的孩子取名阿滿，霧關的霧散盡。",
+      "hook": "老崔跪在那碗飯前：「我送糧的車，被州倉扣了。」碗裡的熱氣一動不動。",
+      "hook_type": "line",
+      "mid_hook": "蕭承霽接過話，說出州倉扣糧的公文上蓋的是御膳司的『徵用』印：糧沒進州倉，進了符火的爐。",
+      "conflict": "讓最後一碗飯有一個名字，讓一整座村的怨真正散掉。",
+      "turn": "沒有人記得孩子的名字，她就當場給他一個：「你吃飽了，叫阿滿。」孩子把臉埋進碗裡，變實了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "霧散盡，星空下阿滿牽著她的手變成半透明的跟班；懷裡的食單發熱，書聲低低地說：「煮。」",
+        "question": "食單要她煮什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shengji",
+        "huoban"
+      ],
+      "spectacle": "最後一碗的熱氣被吸空，整座村的霧像被風一口吹走，露出滿天星，碑背面的名字寫到最後一個：「阿滿」。",
+      "glamour_shot": "青梧蹲下替阿滿繫上一條紅布條，抬頭時星光落在她的杏眼裡，她笑著眨掉一滴眼淚。",
+      "setups": [],
+      "payoffs": [
+        "s01-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揭開村子餓死的原因：驛站的糧被御膳司徵用去燒符火",
+        "收服第一隻妖：阿滿跟著她",
+        "霧關的霧散了"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "xiao-chengji",
+        "e-gui",
+        "douzi",
+        "shidan",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "山下空村",
+        "村口義倉碑"
+      ],
+      "state": {
+        "time": "第十七日夜",
+        "knowledge": "村子的糧被御膳司徵用；阿滿是她收的第一隻妖；食單要她把〈餓鬼粥〉煮出來。",
+        "carry_forward": "食單的『煮』、老崔的愧沒有解、御膳司的徵用印"
+      }
+    },
+    {
+      "number": 18,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "第一口",
+      "youtube_title": "她第一次吃自己煮的妖菜，三里外誰在餓都聞得到，卻忘了一樣家鄉的味道",
+      "duration_s": 125,
+      "logline": "青梧煮出〈餓鬼粥〉吃下第一口，得到一日聞餓的能力，順著味道找到兩天沒吃飯的蕭承霽。",
+      "hook": "她照食單把粥煮到第二滾，掀蓋，蒸氣裡浮出阿滿的臉，散成一團氣落進碗裡。",
+      "hook_type": "image",
+      "mid_hook": "她閃過一個念頭想喝一口可樂，卻怎麼也想不起可樂是什麼味道，手裡的勺子停了。",
+      "extra_hooks": [
+        "她聞見三里外有一個人餓了兩天，順著味道走到營帳：是蕭承霽。"
+      ],
+      "conflict": "弄懂妖菜的能力與代價，用這一日的能力做一件事。",
+      "turn": "她以為能力是賞，吃下去才知道代價：寫一道菜忘一樣味道；而營裡餓得最厲害的，是那位校尉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蕭承霽喝完那碗粥放下碗：「明天，給全營每人一碗。」她手裡的食單燙了一下。",
+        "question": "她該不該讓全營吃妖菜？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shengji",
+        "ganren",
+        "meishi"
+      ],
+      "spectacle": "一碗白粥掀蓋，蒸氣凝成阿滿的笑臉再散成一團淡金色的氣落進碗裡；她閉眼嚐味，眼前浮出淡金色的字。",
+      "glamour_shot": "青梧閉眼嚐粥的那一秒，燭光從側面打亮她的鼻尖與唇，再睜眼時瞳孔裡有一圈淡金。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s01-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一次吃妖菜：一日之內聞得出三里外誰在餓",
+        "蕭承霽說出十年前北關全營餓死、只剩他一個，他聽不得『餓』",
+        "她忘了可樂的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "e-gui",
+        "xiao-chengji",
+        "douzi"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "鎮妖營營帳"
+      ],
+      "state": {
+        "time": "第十八日",
+        "knowledge": "妖菜的能力只有一日；每寫一道菜她忘一樣現代的味道；蕭承霽十年前在北關餓過。",
+        "carry_forward": "全營吃妖菜的要求、聞餓的能力還剩半日、忘掉的可樂"
+      }
+    },
+    {
+      "number": 19,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "符火的印",
+      "youtube_title": "她當著全營拒絕校尉：妖菜吃多了會饞，而副將竟拿符火去抓阿滿",
+      "duration_s": 115,
+      "logline": "青梧拒絕讓全營吃妖菜，說出饞的代價；韓勁私自用符火抓阿滿，符火箱裡的公文揭出御膳司的規矩。",
+      "hook": "她把食單合上：「不給。吃多了會饞。」蕭承霽：「饞？」她：「想吃更多妖。」",
+      "hook_type": "line",
+      "mid_hook": "韓勁舉著符火把阿滿逼到牆角，白光一照，阿滿的影子縮成巴掌大。",
+      "conflict": "守住妖菜一日一次的規矩，同時把阿滿從符火底下救出來。",
+      "turn": "韓勁以為符火能抓妖，她把一碗熱粥往符火上一澆，白火滋地滅了；箱底的公文寫著：所有妖物以鐵鍋封送皇都。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "關門外一騎快馬停下，騎手舉著一卷封蠟的公文：「御膳司令，鎮妖營校尉接。」",
+        "question": "御膳司的公文寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhandou",
+        "zhiguai"
+      ],
+      "spectacle": "一碗粥澆在符火上，慘白的火滋地化成一團白煙，煙裡阿滿的影子從巴掌大一下子漲回來。",
+      "glamour_shot": "青梧端著粥碗跨步擋在阿滿前，符火的白光與灶火的橘光各照亮她半邊臉，她眼神一冷。",
+      "setups": [],
+      "payoffs": [
+        "s01-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揭開符火是御膳司配給、所有捕獲妖物須以鐵鍋封送皇都",
+        "救下阿滿，韓勁被當眾訓斥",
+        "蕭承霽接受『一日一次』的規矩"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-han-jin",
+        "e-gui",
+        "shidan",
+        "lao-cui"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "鎮妖營營帳",
+        "關門"
+      ],
+      "state": {
+        "time": "第十九日",
+        "knowledge": "御膳司要所有妖物裝鐵鍋送皇都；熱食能滅符火；韓勁服了。",
+        "carry_forward": "御膳司的公文、阿滿藏哪、蕭承霽會怎麼回"
+      }
+    },
+    {
+      "number": 20,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "妳算不算",
+      "youtube_title": "御膳司公文要校尉押送霧關妖物進京，他看著她問：妳，算不算",
+      "duration_s": 130,
+      "logline": "御膳司公文要鎮妖營押送霧關的『妖物』進京；蕭承霽第一次與阿滿同桌吃飯後，問青梧算不算。",
+      "hook": "封蠟剝開，蕭承霽讀出第一行：「霧關妖物一宗，押送皇都。」他抬眼看她。",
+      "hook_type": "line",
+      "mid_hook": "大堂的大桌上，阿滿坐在板凳上吃第一口變實的飯，蕭承霽的筷子停在半空，沒有阻止。",
+      "extra_hooks": [
+        "老崔悄悄把阿滿的碗往桌子裡側推了推，離那張官紙遠一點。"
+      ],
+      "conflict": "御膳司要押走『妖物』，而霧關只剩一隻會吃飯的小孩，與一本會寫字的書。",
+      "turn": "韓勁以為校尉會照令抓人，蕭承霽卻在公文的回執上寫：「霧已散，妖無所得。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蕭承霽看著散掉的霧沒說話，從懷裡掏出一張御膳司的公文拍在桌上：「他們要我把『妖物』押送皇都。妳，算不算？」",
+        "question": "他會把她當妖押走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huoban",
+        "dalian",
+        "zhiguai"
+      ],
+      "spectacle": "驛站大桌第一次坐了人與妖：阿滿捧碗、老崔倒酒、豆子搶菜，蕭承霽的披風搭在凳背上，俯拍整張桌。",
+      "glamour_shot": "蕭承霽一手撐在桌上、一手把公文拍下，燭光從下照亮他的下顎與長眼，他問出那句話時沒眨眼。",
+      "setups": [
+        "m04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承霽在回執上寫『妖無所得』，第一次替她擋公文",
+        "阿滿第一次坐上大桌吃飯"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "e-gui",
+        "lao-cui",
+        "douzi",
+        "s01-han-jin",
+        "shidan"
+      ],
+      "locations": [
+        "驛站大堂",
+        "霧關關門"
+      ],
+      "state": {
+        "time": "第二十日夜",
+        "knowledge": "御膳司要押送霧關的妖物；蕭承霽回了『妖無所得』；阿滿已經坐上大桌。",
+        "carry_forward": "『妳算不算』、御膳司會不會再來、食單第一道已成"
+      }
+    },
+    {
+      "number": 21,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "我算廚娘",
+      "youtube_title": "校尉問她算不算妖，她答我算廚娘；鎮上每月十五失蹤一個女子，榜上說妖已除三次",
+      "duration_s": 115,
+      "logline": "青梧答『我算廚娘』，蕭承霽收起公文；鎮上傳來每月十五女子失蹤的消息，御膳司的榜說怨妖已除三次。",
+      "hook": "她把阿滿往身後一拉，直視蕭承霽：「我算廚娘。」他把公文折好收回懷裡，什麼也沒說。",
+      "hook_type": "line",
+      "mid_hook": "鎮上的驛卒小劉帶回消息：昨夜十五，布坊的女兒又不見了；鎮口的榜寫著「怨妖作祟，已除三次」。",
+      "conflict": "御膳司的壓力暫退，鎮上的失蹤案與除妖榜卻把她往山下拉。",
+      "turn": "榜上寫除了三次妖，失蹤卻沒停；阿滿聞了聞榜，說紙上「沒有名字」，和碑一樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿滿的鼻子貼上榜紙，往後縮了一下：「這紙上，有妖哭過。」榜的角落一滴乾掉的墨像眼淚。",
+        "question": "榜上除掉的三隻妖，是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "zhiguai",
+        "dalian"
+      ],
+      "spectacle": "鎮口的除妖榜在風裡掀角，字寫得滿滿都是功勞，墨色新舊三層，三次「已除」疊在一起。",
+      "glamour_shot": "青梧站在榜前回頭看阿滿，陰天的灰光把她的輪廓描得乾淨，藍布巾被風吹得貼著臉。",
+      "setups": [
+        "s01-t09",
+        "s01-t20",
+        "m04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承霽收起公文，沒把她當妖",
+        "知道鎮上每月十五有女子失蹤、榜上除了三次妖"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "e-gui",
+        "s01-xiao-liu",
+        "lao-cui",
+        "douzi"
+      ],
+      "locations": [
+        "驛站大堂",
+        "鎮口榜牆"
+      ],
+      "state": {
+        "time": "第二十一日",
+        "knowledge": "鎮上每月十五失蹤一名女子；御膳司榜上寫已除三次怨妖；榜紙上有妖哭過。",
+        "carry_forward": "失蹤的女子、哭過的榜、下鎮"
+      }
+    },
+    {
+      "number": 22,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "廟前的味",
+      "youtube_title": "她帶著小妖下鎮，廟前聞到的不是餓是冤，里正穿著新綢衫叫她灶下婢",
+      "duration_s": 110,
+      "logline": "青梧帶阿滿、豆子下鎮，在廟前聞到『冤』；里正鄒有德一身新綢衫，把她趕出廟前。",
+      "hook": "阿滿站在鎮上的廟前打了個哆嗦：「這裡，不是餓。」廟門後一條紅線掛在門環上。",
+      "hook_type": "image",
+      "mid_hook": "里正鄒有德穿著新綢衫走出來，門上貼著御膳司的封條：「灶下婢，廟前不許擺攤。」",
+      "extra_hooks": [
+        "賣豆腐的周婆趁人不注意塞給她一塊豆腐，壓低聲音：「十五，別出門。」"
+      ],
+      "conflict": "在里正的眼皮下弄清廟前的『冤』是誰的，以及失蹤跟御膳司的榜有什麼關係。",
+      "turn": "她以為里正怕妖，他怕的卻是有人靠近廟；而御膳司的封條是新貼的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "入夜，她回頭看廟：廟門後露出一截濕的紅嫁衣袖子，一滴水從袖口落在門檻上。",
+        "question": "門後穿紅嫁衣的是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla",
+        "meishi"
+      ],
+      "spectacle": "鎮上廟前的石階濕了一片，水痕是從廟門裡往外流的，周圍的地卻是乾的。",
+      "glamour_shot": "青梧咬了一口周婆的豆腐，閉眼嚐出一點鹽鹵的苦，睜眼時廟門的紅線在她眼後晃。",
+      "setups": [
+        "s01-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿滿聞出廟前有冤不是餓",
+        "里正與御膳司有牽連的第一個線索：新綢衫與新封條",
+        "周婆站到她這邊"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "e-gui",
+        "douzi",
+        "s01-lizheng",
+        "s01-zhou-po"
+      ],
+      "locations": [
+        "鎮上的廟前",
+        "鎮街"
+      ],
+      "state": {
+        "time": "第二十二日夜",
+        "knowledge": "廟前有冤；里正穿新綢衫、廟上有御膳司封條；周婆說十五別出門。",
+        "carry_forward": "濕的紅嫁衣袖、十五、里正與御膳司"
+      }
+    },
+    {
+      "number": 23,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "十五",
+      "youtube_title": "十五夜全鎮鎖門說怨妖來了，她躲在廟後看見里正的人把一個女子裝上車",
+      "duration_s": 120,
+      "logline": "十五夜，全鎮閉戶說怨妖出來；青梧埋伏在廟後，看見里正的人把一名女子裝上馬車。",
+      "hook": "紅袖子縮回門後，她沒逃，往廟門走了一步：「妳想說什麼？」門內只有水聲。",
+      "hook_type": "line",
+      "mid_hook": "廟後巷子裡，里正家的使女小桃被兩個人堵住嘴塞進一輛蒙布的馬車，馬車往州城的方向走。",
+      "conflict": "弄清十五夜失蹤的是被妖帶走，還是被人帶走。",
+      "turn": "全鎮都說怨妖吃人，她親眼看見帶走人的是里正的家丁；怨妖只是替他們背了鍋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "馬車的輪聲往南，廟門卻在這時自己開了，紅嫁衣整個飄出來站在門口看她；追車，還是進廟？",
+        "question": "她追車還是面對怨娘？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla"
+      ],
+      "spectacle": "十五的滿月下整條鎮街門窗緊閉，只有廟門洞開，紅嫁衣在門口被夜風吹得鼓起，長髮滴水。",
+      "glamour_shot": "青梧貼在廟後牆上，月光把她的側臉切成一半亮一半暗，她屏住氣，睫毛不動。",
+      "setups": [],
+      "payoffs": [
+        "s01-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "看清十五夜帶走女子的是里正的人，往州城去",
+        "確認怨妖沒有碰人"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "e-gui",
+        "douzi",
+        "s01-lizheng",
+        "s01-xiao-tao",
+        "yuan-niang"
+      ],
+      "locations": [
+        "鎮上的廟前",
+        "廟後巷",
+        "往州城的路"
+      ],
+      "state": {
+        "time": "第二十三日十五夜",
+        "knowledge": "失蹤的女子是被里正的人帶走送往州城的；怨娘每十五在廟前現形。",
+        "carry_forward": "遠去的馬車、門口的紅嫁衣、她的選擇"
+      }
+    },
+    {
+      "number": 24,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "看著我",
+      "youtube_title": "她放走馬車面對怨娘，怨娘只說了三個字就消失，豆腐婆婆說出三十年前的十五",
+      "duration_s": 115,
+      "logline": "青梧讓豆子去報鎮妖營追車，自己面對怨娘；怨娘只說『看著我』便消失，周婆說出三十年前的事。",
+      "hook": "她把豆子往驛站的方向一推：「去叫校尉追車。」自己轉身走向紅嫁衣：「我在。」",
+      "hook_type": "line",
+      "mid_hook": "怨娘走近到一臂之內，濕髮滴在她手背上，開口只有三個字：「看著我。」然後散成一團水氣。",
+      "extra_hooks": [
+        "雨下起來，鎮口的除妖榜被雨淋花，「已除」兩字第一個化掉。"
+      ],
+      "conflict": "不逃，聽怨娘要說什麼；同時讓被帶走的小桃有人去追。",
+      "turn": "她以為怨娘要害人，怨娘只要她看著；周婆說三十年前也是十五，新娘蘇繡繡被夫家沉塘，全鎮在廟前看著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周婆的手在抖：「三十年前的十五，繡繡也是這麼站在廟前的。」她指著地上那片濕，形狀像一雙鞋印。",
+        "question": "繡繡的鞋在哪？她被誰推下水？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "zhiguai",
+        "ganren"
+      ],
+      "spectacle": "御膳司的除妖榜在雨裡一字一字化開，墨水順著牆流進石縫，整面牆像在哭。",
+      "glamour_shot": "青梧站在雨裡不躲，雨水順著她的鼻尖滑下，她看怨娘的眼神不是怕，是在聽。",
+      "setups": [
+        "m03",
+        "s01-t11",
+        "s01-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "怨娘沒有害她，只要她看",
+        "知道怨娘是三十年前被沉塘的新娘蘇繡繡",
+        "鎮妖營去追馬車"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "yuan-niang",
+        "s01-zhou-po",
+        "douzi",
+        "e-gui"
+      ],
+      "locations": [
+        "鎮上的廟前",
+        "鎮口榜牆"
+      ],
+      "state": {
+        "time": "第二十四日夜",
+        "knowledge": "怨娘是蘇繡繡，三十年前十五在廟前被沉塘；她要人『看著』她；被帶走的女子往州城。",
+        "carry_forward": "繡繡的鞋印、追車的結果、里正知道她在查"
+      }
+    },
+    {
+      "number": 25,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "沉塘",
+      "youtube_title": "校尉追回馬車：失蹤的女子都活著，被賣去了州城；里正砸了豆腐婆婆的攤",
+      "duration_s": 120,
+      "logline": "蕭承霽追回馬車證明失蹤的女子都活著被賣往州城；周婆說出沉塘那天的事，里正帶人砸她的攤。",
+      "hook": "韓勁押著馬車回來，掀開蒙布，小桃被綁著嘴卻活著；蕭承霽：「車上有州城布坊的契。」",
+      "hook_type": "reversal",
+      "mid_hook": "周婆用一碗清水、一只空碗比給她看：三十年前繡繡被推下水時，她的婆家人站在岸上，推她的那隻手戴著里正家的玉戒。",
+      "conflict": "把失蹤案從『怨妖吃人』扳回『有人賣人』，又不能讓周婆因為開口被里正報復。",
+      "turn": "她以為怨娘的怨是對整個鎮，周婆說繡繡要的不是報仇；而里正聽說周婆開口了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "里正帶著四個家丁踹翻周婆的豆腐攤，豆腐摔成一地白：「妖言惑眾，抓起來！」",
+        "question": "周婆會被里正抓走嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "ganren",
+        "meishi"
+      ],
+      "spectacle": "周婆用桌上的一碗清水比沉塘：水面上一只空碗慢慢沉下去，燭影在水底晃，沒有人、沒有過程，只有碗。",
+      "glamour_shot": "青梧接過小桃解開繩子，低頭替她抹掉臉上的灰，燭光下她的睫毛投在臉上一道影。",
+      "setups": [
+        "s01-t19"
+      ],
+      "payoffs": [
+        "s01-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揭開失蹤的女子都活著，是被賣去州城布坊",
+        "救回小桃",
+        "周婆說出推繡繡的手戴著里正家的玉戒"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-han-jin",
+        "s01-xiao-tao",
+        "s01-zhou-po",
+        "s01-lizheng",
+        "e-gui"
+      ],
+      "locations": [
+        "鎮街",
+        "周婆的豆腐攤",
+        "驛站大堂"
+      ],
+      "state": {
+        "time": "第二十五日",
+        "knowledge": "女子都活著被賣往州城布坊；推繡繡的人戴里正家的玉戒；里正動手了。",
+        "carry_forward": "周婆被抓、州城布坊的契、里正家的玉戒"
+      }
+    },
+    {
+      "number": 26,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "除了三次",
+      "youtube_title": "御膳司來除妖三次除的全是無辜小妖，廟裡最後一盞燭火小妖說：下一個是我",
+      "duration_s": 120,
+      "logline": "青梧救下周婆，在廟裡找到唯一活著的小妖燭妖小燭，它看見御膳司三次除妖煉掉的是誰。",
+      "hook": "青梧擋在周婆前，蕭承霽的刀鞘橫在里正胸口：「鎮妖營辦案，里正退下。」",
+      "hook_type": "danger",
+      "mid_hook": "廟裡最深處一盞不滅的燭火開口說話了，火苗裡浮出一張小臉：「我都看見了。」",
+      "conflict": "保住周婆，弄清御膳司三次『除妖』除的到底是什麼。",
+      "turn": "榜上三次除怨妖，小燭說三次煉的是廟門的獅妖、井裡的井妖和檐下的燈妖，全是沒傷過人的；怨娘一次都沒被碰到。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小燭的火苗縮成一粒豆大：「里正說，第四次要除的，是我。」火苗抖了一下，快滅了。",
+        "question": "小燭還能撐到十五嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "ganren"
+      ],
+      "spectacle": "廟裡的神龕下，一盞燭火的火苗裡浮出一張孩子的臉，它說話時整座廟的影子跟著火苗一起抖。",
+      "glamour_shot": "青梧蹲到燭前，燭火由下把她的臉照成暖黃，她用手掌替火苗擋風，指縫透光。",
+      "setups": [
+        "m04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "周婆被救下，里正退了",
+        "知道御膳司三次煉的都是無辜小妖，榜上才不寫名字",
+        "找到燭妖小燭"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-lizheng",
+        "s01-zhou-po",
+        "s01-xiao-zhu",
+        "e-gui",
+        "douzi"
+      ],
+      "locations": [
+        "鎮街",
+        "鎮上的廟內"
+      ],
+      "state": {
+        "time": "第二十六日夜",
+        "knowledge": "御膳司三次除妖煉的是獅妖、井妖、燈妖；怨娘沒被碰過；小燭是下一個。",
+        "carry_forward": "快滅的小燭、第四次除妖、里正的下一步"
+      }
+    },
+    {
+      "number": 27,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "一盞燭",
+      "youtube_title": "小妖求她把自己收進食單，她煮出第二道菜，一夜能在黑裡看見廟底藏的嫁鞋",
+      "duration_s": 125,
+      "logline": "小燭求青梧收它上桌，食單寫下第二道菜〈一盞燭〉；她借一夜夜視在廟的水井底找到繡繡的嫁鞋。",
+      "hook": "她把掌心攏住豆大的火苗：「跟我走。」小燭：「收我。沒人點我了。」",
+      "hook_type": "line",
+      "mid_hook": "她吃下一口燭黃色的蛋羹，閉眼再睜眼，黑透的廟裡每一道縫都亮了，井口邊有一塊石板比別處新。",
+      "extra_hooks": [
+        "她伸手去拿一塊洋芋片當夜宵，才想起這世上沒有，也想不起它是什麼味道了。"
+      ],
+      "conflict": "收服小燭、煮出第二道菜，用一夜的能力找出廟裡藏的東西。",
+      "turn": "她以為小燭要的是被救，小燭要的是上桌：怨是『沒人點我』，收它就是替它點一次；而井底藏的不是人是鞋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "井底的石板下一雙紅嫁鞋，鞋底用金線繡著兩個字：「繡繡」；井水在她手邊無風自動。",
+        "question": "是誰把鞋藏進井裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shengji",
+        "meishi",
+        "zhiguai"
+      ],
+      "spectacle": "一碗燭黃色的蛋羹掀蓋，蒸氣凝成小燭的小臉再散成金色的氣落進碗裡；她睜眼，漆黑的廟亮得像白晝。",
+      "glamour_shot": "青梧在黑暗的廟裡抬眼，瞳孔裡兩點燭光般的金色，她伸手摸向井口的石板，髮絲垂在肩前。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s01-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第二道菜〈一盞燭〉，小燭跟著她",
+        "找到繡繡的嫁鞋，繡著名字",
+        "她忘了洋芋片的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-xiao-zhu",
+        "shidan",
+        "e-gui",
+        "douzi"
+      ],
+      "locations": [
+        "鎮上的廟內",
+        "廟裡的井"
+      ],
+      "state": {
+        "time": "第二十七日夜",
+        "knowledge": "食單第二道已成；嫁鞋藏在廟的井底；夜視只剩到天亮。",
+        "carry_forward": "繡著名字的嫁鞋、動的井水、下個十五"
+      }
+    },
+    {
+      "number": 28,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "擺桌",
+      "youtube_title": "她要在廟前擺一桌請怨娘上座，里正暗中把御膳司的符火埋在廟前",
+      "duration_s": 110,
+      "logline": "青梧決定下個十五在廟前擺桌請怨娘上座；里正不許，暗中把御膳司留下的符火埋在廟前的石階下。",
+      "hook": "她把嫁鞋擦乾放在廟前的石階上：「十五，我在這裡擺桌。」身後里正：「我不許。」",
+      "hook_type": "line",
+      "mid_hook": "夜裡小燭的火苗照見里正的家丁在廟前石階下埋東西，掀開布角，一排慘白的符火。",
+      "extra_hooks": [
+        "蕭承霽帶著兩個兵駐進鎮上的驛亭，什麼理由都沒說。"
+      ],
+      "conflict": "在里正的阻撓下替怨娘擺出一張桌，還要防他借現形時燒了她。",
+      "turn": "里正嘴上說怕妖害人，手上卻偷埋御膳司的符火：他要的不是除妖，是在怨娘開口前把她燒掉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "黃昏，里正帶著十個家丁扛著木棍走向廟前，第一棍落在她剛擺好的桌角上。",
+        "question": "桌子保得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "meishi"
+      ],
+      "spectacle": "廟前石階下掀開的布角裡一排排慘白的符火，像埋了一排牙；小燭的火苗照過去，符火微微發亮。",
+      "glamour_shot": "青梧把一張舊桌擦得發亮，俯身擺上第一只碗，夕陽從廟門斜進來照在她額角的碎髮上。",
+      "setups": [
+        "s01-t21"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看見里正埋符火，知道他要燒怨娘",
+        "蕭承霽駐進鎮上，不說理由"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-lizheng",
+        "s01-xiao-zhu",
+        "xiao-chengji",
+        "e-gui",
+        "douzi",
+        "s01-zhou-po"
+      ],
+      "locations": [
+        "鎮上的廟前",
+        "鎮上驛亭"
+      ],
+      "state": {
+        "time": "第二十八日",
+        "knowledge": "里正在廟前埋了符火；蕭承霽進鎮駐守；十五還有兩天。",
+        "carry_forward": "埋在石階下的符火、被砸的桌、兩天後的十五"
+      }
+    },
+    {
+      "number": 29,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "砸桌",
+      "youtube_title": "里正砸了她的桌，全鎮的女人卻一碗一碗把桌擺了回來；子時鐘響，紅嫁衣來了",
+      "duration_s": 120,
+      "logline": "里正砸桌，周婆與鎮上的女人一碗一碗把桌擺回來；青梧挖出埋的符火，子時怨娘現形。",
+      "hook": "木棍落下的瞬間，蕭承霽的刀鞘架住棍子：「廟前，不許動手。」里正的家丁僵在原地。",
+      "hook_type": "danger",
+      "mid_hook": "周婆端著一碗豆腐放上桌，布坊被賣走女兒的娘端著一碗麵跟上，一盞燭一碗菜，廟前的桌又滿了。",
+      "conflict": "保住桌子、起出符火，在十五子時前把廟前變成一張能坐下來聽的桌。",
+      "turn": "里正砸的桌被鎮上的女人擺回來；她照小燭看見的位置掀開石階，起出整排符火，里正臉色發白。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "子時鐘響，廟門後紅光一閃；里正手裡竄起最後一盞符火：「燒，還是看她掀了全鎮？」她端起鍋。",
+        "question": "她會用鍋澆滅符火嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "meishi",
+        "dalian"
+      ],
+      "spectacle": "廟前的石階一塊塊被掀開，底下整排符火被夜風吹得發白，青梧一盞一盞拔出來插進裝水的鍋裡滅掉。",
+      "glamour_shot": "青梧端著整鍋湯站在桌前，湯面的熱氣飄過她的臉，她側頭聽子時的鐘，耳邊的碎髮被氣流吹起。",
+      "setups": [],
+      "payoffs": [
+        "s01-t21"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "起出里正埋的符火",
+        "鎮上的女人第一次公開站到她這邊",
+        "蕭承霽護住了桌"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-lizheng",
+        "s01-zhou-po",
+        "s01-xiao-zhu",
+        "e-gui",
+        "douzi",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "鎮上的廟前"
+      ],
+      "state": {
+        "time": "第二十九日十五夜子時",
+        "knowledge": "符火起出大半，里正手裡只剩一盞；桌擺好了；怨娘要現形。",
+        "carry_forward": "最後一盞符火、滿桌的菜、廟門後的紅光"
+      }
+    },
+    {
+      "number": 30,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "我不餓",
+      "youtube_title": "紅嫁衣從廟門飄出全鎮跪倒，她端上一碗菜，怨娘開口第一句：我不餓",
+      "duration_s": 135,
+      "logline": "怨娘在十五子時現形，全鎮跪倒；青梧請她上座，怨娘卻說她不餓，她要他們聽。",
+      "hook": "她把整鍋湯潑向里正手裡的符火，白火滋地滅成一團煙；煙散時，紅嫁衣已經站在廟門口。",
+      "hook_type": "image",
+      "mid_hook": "雨落下來，鎮口的除妖榜整張被雨水淋化，墨順著牆流進街心，全鎮的人一個一個跪倒。",
+      "extra_hooks": [
+        "里正跪在最前面，臉埋進泥裡，手上的玉戒在雨裡發亮。"
+      ],
+      "conflict": "在怨娘現形、全鎮跪倒的時候，請她坐上這張桌。",
+      "turn": "她以為一桌菜能請怨娘上座，怨娘看著菜說她不餓；這張桌不是給她吃的，是給全鎮坐著聽的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "怨娘的紅嫁衣從廟門後飄出來，整個鎮的人跪了一地；她看著青梧桌上那碗菜，開口第一句：「我不餓。我要他們聽。」",
+        "question": "怨娘要全鎮聽什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "henla",
+        "meishi",
+        "ganren"
+      ],
+      "spectacle": "廟前一桌菜與整個鎮跪倒的全景俯拍，紅嫁衣在夜風裡張開如一面旗，雨把除妖榜淋成一牆黑淚。",
+      "glamour_shot": "怨娘濕髮垂肩、紅嫁衣鼓起，蒼白的臉在燭光下像一張紙；青梧站在桌前抬眼看她，兩個女人隔著一碗菜對視。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "符火全滅，里正當眾跪倒",
+        "怨娘現形沒傷人，第一次開口",
+        "全鎮看見御膳司的榜被雨淋化"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "yuan-niang",
+        "s01-lizheng",
+        "xiao-chengji",
+        "s01-zhou-po",
+        "e-gui",
+        "douzi",
+        "s01-xiao-zhu",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "鎮上的廟前",
+        "鎮口榜牆"
+      ],
+      "state": {
+        "time": "第三十日十五夜",
+        "knowledge": "怨娘不要吃，要全鎮聽她說；里正怕她開口；御膳司的榜已經被鎮民看穿。",
+        "carry_forward": "『我要他們聽』、里正的玉戒、下一步怎麼讓全鎮坐下"
+      }
+    },
+    {
+      "number": 31,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "我讓他們聽",
+      "youtube_title": "怨娘要全鎮聽她說完，里正卻把最後一盞符火扔向她，她用一口鍋接住了",
+      "duration_s": 120,
+      "logline": "青梧答應讓全鎮聽怨娘說完；里正把藏的符火扔向怨娘，青梧用鐵鍋接住，怨娘給了一個月的期限。",
+      "hook": "青梧放下碗：「好。我讓他們聽。」里正從泥裡抬頭，袖裡滑出一盞沒被起出的符火。",
+      "hook_type": "line",
+      "mid_hook": "符火擲向紅嫁衣，青梧掄起鐵鍋迎上去，白火撞在鍋底炸成一團白煙，鍋底燙出一個手印形的白痕。",
+      "conflict": "護住怨娘不被符火燒掉，同時替她爭到一個能讓全鎮坐下聽的場子。",
+      "turn": "她以為怨娘要當場說，怨娘卻退回廟門：下個十五全鎮不坐下聽，她就掀翻這個鎮；她給的是期限不是寬恕。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "里正的家丁翻身上馬往州城狂奔，馬鞍上掛著一封蓋御膳司火漆的信；怨娘在廟門後說：「一個月。」",
+        "question": "信送到御膳司會帶來什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "zhandou",
+        "zhiguai",
+        "henla"
+      ],
+      "spectacle": "符火撞在鐵鍋底炸成白煙，煙裡紅嫁衣往後退了三步、長髮飄起，青梧舉鍋的剪影印在廟牆上。",
+      "glamour_shot": "青梧雙手舉鍋擋在怨娘身前，白光從鍋後炸開照亮她繃緊的側臉與下顎，她沒有閉眼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "擋下符火，怨娘沒被燒",
+        "怨娘給了一個月期限：全鎮坐下聽",
+        "里正的信去了州城"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "yuan-niang",
+        "s01-lizheng",
+        "xiao-chengji",
+        "e-gui",
+        "s01-zhou-po"
+      ],
+      "locations": [
+        "鎮上的廟前",
+        "往州城的路"
+      ],
+      "state": {
+        "time": "第三十一日",
+        "knowledge": "怨娘要全鎮在下個十五坐下聽；里正向御膳司求援；鐵鍋能擋符火。",
+        "carry_forward": "一個月的期限、去州城的信、怎麼讓全鎮坐下"
+      }
+    },
+    {
+      "number": 32,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "鎮宴",
+      "youtube_title": "她要全鎮一家出一道菜坐下聽妖說話，被罵灶下婢也辦宴，深夜怨娘在窗外哼起嫁歌",
+      "duration_s": 110,
+      "logline": "青梧提出鎮宴：每家出一道菜坐下聽怨娘；鎮民不肯，里正嘲她灶下婢；夜裡怨娘在驛站窗外哼嫁歌。",
+      "hook": "她在鎮口的空榜牆上寫下四個字：「一家一菜。」里正啐了一口：「灶下婢也辦宴？」",
+      "hook_type": "line",
+      "mid_hook": "周婆第一個把豆腐攤的招牌掛到榜牆下，鎮民卻一個個關上門，全鎮只有這一塊牌子。",
+      "extra_hooks": [
+        "蕭承霽對韓勁說：「調五十人下鎮。」韓勁問為什麼，他沒答。"
+      ],
+      "conflict": "讓一整個害怕又羞愧的鎮子，同意在十五坐下來聽一隻妖說話。",
+      "turn": "她以為鎮民怕怨娘，周婆說他們怕的是坐下來就得承認三十年前自己也在岸上看著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "深夜，驛站窗外飄來一段嫁歌，怨娘的影子映在窗紙上輕輕晃；阿滿拉她的袖子：「她在等。」",
+        "question": "全鎮會不會有人肯坐下？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "空了的榜牆上只掛著一塊豆腐攤的小木牌，整條街的門一扇一扇在她眼前關上，像一排牙合攏。",
+      "glamour_shot": "青梧站在窗後聽嫁歌，窗紙上紅影晃動映在她臉上，她側著頭，眼睫慢慢垂下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "周婆第一個報名",
+        "蕭承霽調兵下鎮",
+        "知道鎮民怕的是羞愧不是妖"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-lizheng",
+        "s01-zhou-po",
+        "xiao-chengji",
+        "s01-han-jin",
+        "e-gui",
+        "yuan-niang",
+        "lao-cui"
+      ],
+      "locations": [
+        "鎮口榜牆",
+        "鎮街",
+        "霧關驛站"
+      ],
+      "state": {
+        "time": "第三十二日夜",
+        "knowledge": "鎮宴只有周婆一家；鎮民羞愧勝於怕；蕭承霽調兵下鎮。",
+        "carry_forward": "一家一菜、窗外的嫁歌、蕭承霽的五十人"
+      }
+    },
+    {
+      "number": 33,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "同一個地方",
+      "youtube_title": "她半夜走進廟裡問怨娘為什麼非要在廟前現形，怨娘的答案讓她說不出話",
+      "duration_s": 125,
+      "logline": "青梧夜裡進廟問怨娘為什麼非要在廟前，怨娘說出三十年前全鎮就在這裡看著她；怨娘向她討一件事。",
+      "hook": "她推開廟門，把一盞小燭放在地上：「妳為什麼一定要在廟前？」水聲從神龕後傳出來。",
+      "hook_type": "question",
+      "mid_hook": "韓勁在驛亭裡拆開軍報：御膳司以兵部名義令鎮妖營『協助除妖』，蕭承霽把軍報壓在刀下。",
+      "conflict": "弄懂怨娘的怨到底要什麼，才能設計出一場她會滿意的鎮宴。",
+      "turn": "她以為怨娘恨的是夫家，怨娘說她被沉塘那天整個鎮在廟前看著，沒有一個人出聲；她要那些人在同一個地方聽她說完。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "怨娘從神龕後伸出一隻蒼白的手，攤開掌心裡一根繡針：「妳替我做一件事。」",
+        "question": "怨娘要她做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiguai"
+      ],
+      "spectacle": "廟裡的神龕後一片水面無風自動，水面上浮出三十年前廟前的倒影：滿街的人影、沒有一張臉，一件紅嫁衣在中間。",
+      "glamour_shot": "青梧蹲在小燭的火光裡仰頭看神龕，暖光只照亮她的臉與鎖骨上方的藍布衣領，眼裡有淚光沒掉下來。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [
+        "m03"
+      ],
+      "general_payoffs": [
+        "揭開怨娘非在廟前現形的原因：三十年前全鎮在這裡看著她沉塘",
+        "御膳司逼鎮妖營協助除妖的軍報到了"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "yuan-niang",
+        "s01-xiao-zhu",
+        "xiao-chengji",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "鎮上的廟內",
+        "鎮上驛亭"
+      ],
+      "state": {
+        "time": "第三十三日夜",
+        "knowledge": "怨娘要全鎮在當年看著她的同一個地方聽她說完；御膳司令鎮妖營協助除妖。",
+        "carry_forward": "怨娘的一件事與繡針、壓在刀下的軍報"
+      }
+    },
+    {
+      "number": 34,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "一家一道菜",
+      "youtube_title": "布坊老闆不肯出菜，她就在他門口生火做飯，全鎮聞著香一家一家開了門",
+      "duration_s": 115,
+      "logline": "青梧替怨娘縫補嫁衣的破口，再挨家挨戶請菜；布坊老闆拒絕，她在他門口煮飯，鎮民一家家開門。",
+      "hook": "怨娘要她做的事：把嫁衣肩上三十年前被扯破的那道口縫起來。青梧拿起針，手在抖。",
+      "hook_type": "image",
+      "mid_hook": "布坊老闆隔著門喊「不出菜」，她在他門口架鍋炒了一道蒜香小白菜，香味飄過半條街，第一扇門開了。",
+      "extra_hooks": [
+        "小燭的火苗夜裡照見里正的家丁拿著符火在廟裡翻找，一寸一寸找神龕後的燭。"
+      ],
+      "conflict": "把一家一菜從一塊豆腐牌變成半個鎮，還要讓里正知道鎮宴停不了。",
+      "turn": "鎮民不是被說服的，是被飯香勾出來的；開門的第一人是當年站岸邊最前面的老漁夫，他端出一碗魚湯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "廟裡傳出瓦器碎裂的聲音，小燭的光在廟門後亂晃，里正的聲音：「燭呢？找出來燒了！」",
+        "question": "小燭躲得過嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "meishi",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "布坊門口一口鍋，蒜片在油裡炸開的瞬間火舌竄起，鏡頭沿著街一扇一扇門打開，每扇門後一碗菜。",
+      "glamour_shot": "青梧蹲在布坊門口翻鍋，火光從下照亮她捲到手肘的袖子與俐落的手腕，她吹了一口鍋裡的熱氣。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "十五家報名出菜，布坊老闆也開了門",
+        "替怨娘縫上嫁衣的破口",
+        "知道里正在找小燭"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "yuan-niang",
+        "s01-zhou-po",
+        "s01-lizheng",
+        "s01-xiao-zhu",
+        "douzi",
+        "e-gui"
+      ],
+      "locations": [
+        "鎮街",
+        "布坊門口",
+        "鎮上的廟內"
+      ],
+      "state": {
+        "time": "第三十四日夜",
+        "knowledge": "半個鎮同意出菜；里正要燒小燭；嫁衣已縫好。",
+        "carry_forward": "廟裡的小燭、里正的符火、十五倒數"
+      }
+    },
+    {
+      "number": 35,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "兵站哪邊",
+      "youtube_title": "里正拿御膳司的令要鎮妖營動手，校尉當眾撕了令：我的兵，站廟門口",
+      "duration_s": 120,
+      "logline": "里正拿御膳司令逼鎮妖營抓小燭，蕭承霽把兵排在廟門口擋住里正的人，當眾撕了令。",
+      "hook": "青梧撲進廟裡，把小燭的火苗攏進掌心，里正的家丁舉著符火圍上來：「交出來。」",
+      "hook_type": "danger",
+      "mid_hook": "里正舉著蓋了兵部印的御膳司令念：「鎮妖營協助除妖。」五十個鎮妖營的兵卻在他身後排成一線，刀朝外。",
+      "extra_hooks": [
+        "韓勁低聲對蕭承霽說：「校尉，這是抗令。」蕭承霽：「我知道。」"
+      ],
+      "conflict": "在里正拿御膳司令逼鎮妖營動手的時候，讓蕭承霽的兵站到廟門這一邊。",
+      "turn": "里正以為兵部印能壓住校尉，蕭承霽接過令看了一眼，撕成兩半丟進周婆的豆腐水裡。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "蕭承霽把撕成兩半的御膳司令丟進水桶：「我的兵，站廟門口。」里正的符火在他披風前滅了。",
+        "question": "校尉抗令會付出什麼代價？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "dalian",
+        "huoban"
+      ],
+      "spectacle": "五十個黑鐵輕甲的兵在廟前排成一線，雪青披風在隊首揚起，里正的十個家丁手裡的符火一盞一盞被風吹暗。",
+      "glamour_shot": "蕭承霽撕令時側臉逆光，披風在風裡張開，他回頭看青梧的那一眼在火光裡停了半秒。",
+      "setups": [
+        "s01-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小燭被救下",
+        "鎮妖營第一次公開站在青梧這一邊",
+        "御膳司令被撕"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-han-jin",
+        "s01-lizheng",
+        "s01-xiao-zhu",
+        "s01-zhou-po",
+        "e-gui"
+      ],
+      "locations": [
+        "鎮上的廟前",
+        "鎮上的廟內"
+      ],
+      "state": {
+        "time": "第三十五日",
+        "knowledge": "蕭承霽抗了御膳司令；里正暫退；兵守住廟。",
+        "carry_forward": "抗令的後果、里正的帳本、鎮宴倒數"
+      }
+    },
+    {
+      "number": 36,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "里正的帳",
+      "youtube_title": "小妖看了三年的帳全說出來：里正每賣一個女子就付御膳司一筆除妖費，長桌下卻埋著符火",
+      "duration_s": 115,
+      "logline": "小燭與布坊帳本揭出里正賣人、付御膳司『除妖費』換榜遮掩；鎮宴長桌擺好，桌下卻被埋了符火。",
+      "hook": "小燭的火苗在帳本上一行一行照過去：「每除一次妖，里正付御膳司五十兩。」蕭承霽的手指停在那行字上。",
+      "hook_type": "reversal",
+      "mid_hook": "里正在鎮口當眾喊冤，說帳是假的，阿滿卻從他袖子裡聞出一股符火的焦味，一直聞到長桌底下。",
+      "conflict": "把里正與御膳司的交易當眾揭穿，同時保住明天的鎮宴不被燒。",
+      "turn": "御膳司三次除妖不是來除怨娘，是里正花錢買的榜：每賣走一個女子，就借一次『怨妖作祟』遮掩。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "十五的夜來了，長桌從廟門一直擺到鎮口；阿滿趴在桌下，指著桌腳邊新翻的土：「這下面，是火。」",
+        "question": "桌下的符火來得及起出來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "dalian"
+      ],
+      "spectacle": "一條用全鎮門板拼成的長桌從廟門擺到鎮口，上面空著，夜風吹過桌面；桌腳邊一排新翻的土微微發白。",
+      "glamour_shot": "青梧舉著帳本在鎮口念出數字時，燭光把她的臉照得鋒利，她念完抬眼直視里正，眼尾一挑。",
+      "setups": [],
+      "payoffs": [
+        "s01-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揭開里正與御膳司的交易：賣人換榜，每次五十兩",
+        "鎮民看見帳本，開始出菜",
+        "長桌擺好"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-xiao-zhu",
+        "xiao-chengji",
+        "s01-lizheng",
+        "e-gui",
+        "s01-zhou-po",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "鎮口",
+        "鎮街長桌"
+      ],
+      "state": {
+        "time": "第三十六日十五夜前",
+        "knowledge": "里正每賣一人付御膳司五十兩買榜；長桌下埋了符火；怨娘今夜要說。",
+        "carry_forward": "桌下的火、里正還沒被抓、怨娘要來"
+      }
+    },
+    {
+      "number": 37,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "長桌",
+      "youtube_title": "全鎮一家一道菜坐滿長桌，怨娘現形，里正點火，校尉的披風擋在她面前",
+      "duration_s": 125,
+      "logline": "鎮宴開席，怨娘現形，里正點燃桌下的符火；蕭承霽的披風擋在青梧身前，怨娘問全鎮是聽還是跑。",
+      "hook": "阿滿指著土，青梧跪下來用手挖，挖出第一盞符火時鎮民已經端著菜坐滿了長桌。",
+      "hook_type": "danger",
+      "mid_hook": "紅嫁衣從廟門走出來，長桌兩側兩百個人同時站起又同時坐下，沒有一個人跑。",
+      "extra_hooks": [
+        "里正從人群後面點燃最後一處沒挖出的符火，火沿著桌腳竄起來。"
+      ],
+      "conflict": "讓鎮宴開得下去，讓全鎮坐著不跑，在火起時護住桌與人。",
+      "turn": "她以為火一起全鎮就會散，鎮民卻坐著沒動；蕭承霽的披風擋下竄到她面前的火，披風燒出一個洞。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "火光裡怨娘站到長桌正中，看著兩百張臉：「要聽，還是要跑？」沒有人動，里正往後退了一步。",
+        "question": "全鎮會聽完嗎？里正跑得掉嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "ganren",
+        "meishi"
+      ],
+      "spectacle": "長桌上兩百道菜在火光裡冒著熱氣，紅嫁衣站在桌子正中，火沿著桌腳竄起，雪青披風擋在最前面。",
+      "glamour_shot": "蕭承霽回頭的那一眼：披風被火燒出一個洞，火光在他身後，他的長眼只看著青梧沒看火。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "鎮宴開席，兩百人坐滿長桌",
+        "蕭承霽替她擋火",
+        "全鎮沒有一個人跑"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "yuan-niang",
+        "xiao-chengji",
+        "s01-lizheng",
+        "s01-zhou-po",
+        "e-gui",
+        "douzi",
+        "s01-han-jin",
+        "s01-xiao-zhu"
+      ],
+      "locations": [
+        "鎮街長桌",
+        "鎮上的廟前"
+      ],
+      "state": {
+        "time": "第三十七日十五夜",
+        "knowledge": "全鎮坐下了；火起過但被擋住；怨娘開口前一刻。",
+        "carry_forward": "怨娘要說的三十年前、退後的里正"
+      }
+    },
+    {
+      "number": 38,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "她說完",
+      "youtube_title": "怨娘說完三十年前那一夜，說出推她下水的人是誰，里正當場跪下",
+      "duration_s": 130,
+      "logline": "怨娘當著全鎮說完三十年前的事，推她下水的人是里正的父親；怨散了，嫁衣在火光裡褪成素紅。",
+      "hook": "沒有人跑。怨娘開口：「三十年前的十五，我也站在這裡。」整條長桌的燭火同時矮了一寸。",
+      "hook_type": "line",
+      "mid_hook": "她說到岸上伸出來的那隻手、手上的玉戒時，全鎮兩百雙眼睛轉向里正手上的玉戒，里正的父親三十年前也戴著它。",
+      "extra_hooks": [
+        "老漁夫站起來說：「我在岸上。我沒出聲。」接著第二個人站起來。"
+      ],
+      "conflict": "讓怨娘把話說完、讓全鎮聽完，讓三十年前的事落在該落的人身上。",
+      "turn": "鎮民以為怨娘要報仇，她說完後只問了一句「你們聽見了嗎」，全鎮應了一聲「聽見了」，怨就散了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "怨娘指著跪在地上的里正：「推我的，是鄒有財。你爹。」里正的玉戒掉在桌上，滾進一碗湯裡。",
+        "question": "里正會怎麼下場？怨娘往哪裡去？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "dalian",
+        "zhiguai"
+      ],
+      "spectacle": "怨娘說完時，紅嫁衣從下襬開始一寸寸褪成素紅，濕髮一根根乾了，火光裡她的臉第一次有了血色。",
+      "glamour_shot": "怨娘乾了的長髮被夜風吹起，素紅短衣襯著蒼白的臉，她抬眼看青梧時眼裡的水氣散了。",
+      "setups": [],
+      "payoffs": [
+        "s01-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揭開推繡繡下水的是里正的父親鄒有財",
+        "全鎮承認當年看著沒出聲",
+        "怨娘的怨散了，嫁衣褪成素紅"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "yuan-niang",
+        "s01-lizheng",
+        "xiao-chengji",
+        "s01-zhou-po",
+        "e-gui",
+        "douzi",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "鎮街長桌"
+      ],
+      "state": {
+        "time": "第三十八日十五夜深",
+        "knowledge": "推繡繡的是里正的父親；全鎮聽完了；怨娘的怨散了，可以上桌。",
+        "carry_forward": "里正的下場、怨娘上桌、食單的第三道"
+      }
+    },
+    {
+      "number": 39,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "紅嫁衣",
+      "youtube_title": "怨娘坐上她的桌，食單寫下第三道菜，校尉搜出被賣女子的名單，里正卻跑了",
+      "duration_s": 125,
+      "logline": "怨娘坐上青梧的桌，食單寫下第三道菜〈紅嫁衣〉；蕭承霽從里正家搜出被賣女子的名單，里正卻帶著符火逃向驛站。",
+      "hook": "怨娘走到長桌盡頭青梧的座位旁坐下，拿起筷子：「這一碗，我吃。」",
+      "hook_type": "line",
+      "mid_hook": "蕭承霽從里正家的床底搜出一本名冊：十一個女子的名字、賣價、州城布坊的買主，最後一行是小桃。",
+      "extra_hooks": [
+        "她想替繡繡做一杯甜的，想起草莓奶昔，卻只剩這個名字，味道空了。"
+      ],
+      "conflict": "收服怨娘、煮出第三道菜，同時把被賣走的女子名單拿到手。",
+      "turn": "她以為里正會被押走，他卻趁兵搜家時溜了；怨娘吃第一口時說：「他往驛站去了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "豆子從驛站的方向跑來，上氣不接下氣：「里正……拿著火……往灶房去了！」灶房裡，食單還放在灶台上。",
+        "question": "里正要燒的是食單嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shengji",
+        "meishi",
+        "ganren",
+        "huoban"
+      ],
+      "spectacle": "一碗正紅的紅糟肉掀蓋，蒸氣凝成繡繡的笑臉散成紅金色的氣落進碗裡；食單寫下第三道：〈紅嫁衣〉。",
+      "glamour_shot": "青梧閉眼嚐紅糟的那一秒，唇上沾了一點紅，睜眼時眼裡一圈淡金；怨娘在她旁邊第一次笑了。",
+      "setups": [],
+      "payoffs": [
+        "s01-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第三道菜〈紅嫁衣〉，怨娘繡繡上桌",
+        "搜出被賣女子的名單與州城買主",
+        "她忘了草莓奶昔的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "yuan-niang",
+        "shidan",
+        "xiao-chengji",
+        "s01-han-jin",
+        "s01-lizheng",
+        "douzi",
+        "e-gui",
+        "s01-xiao-tao"
+      ],
+      "locations": [
+        "鎮街長桌",
+        "里正家",
+        "霧關驛站灶房"
+      ],
+      "state": {
+        "time": "第三十九日清晨",
+        "knowledge": "食單三道；被賣女子的名單在手；里正帶火逃向驛站灶房。",
+        "carry_forward": "灶台上的食單、逃跑的里正、名單上的十一個名字"
+      }
+    },
+    {
+      "number": 40,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "他們要的是書",
+      "youtube_title": "里正被押走時回頭大喊：御膳司要的不是妖，是妳那本書！食單自己翻到了空白頁",
+      "duration_s": 130,
+      "logline": "青梧趕回驛站，蕭承霽與阿滿在灶房前截住里正；里正被押走時喊出御膳司要的是食單，食單翻到空白頁。",
+      "hook": "灶房門被撞開，里正舉著符火站在灶台前，阿滿從灶底竄出來擋在食單前面，影子被白光照得發抖。",
+      "hook_type": "danger",
+      "mid_hook": "蕭承霽的刀鞘從門外飛進來打掉符火，里正撲向食單，老崔一酒葫蘆砸在他後腦上，他倒在灶灰裡。",
+      "extra_hooks": [
+        "怨娘站在門口，拿起針線替蕭承霽披風上燒出的洞縫了第一針。"
+      ],
+      "conflict": "護住食單、抓住里正，弄清他背後那句話。",
+      "turn": "她以為御膳司要的是她收的妖，里正卻喊出他們要的是書；食單在她手裡自己翻到了下一頁，一片空白。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "里正被押走時回頭喊：「御膳司的人已經在路上了，他們要的不是妖，是妳那本書！」青梧低頭，食單自己翻到了空白的下一頁。",
+        "question": "御膳司為什麼要食單？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "dalian",
+        "huoban",
+        "zhiguai"
+      ],
+      "spectacle": "灶房裡阿滿半透明的小身子擋在食單前，白光照得他的影子像紙一樣薄；刀鞘飛進來打掉符火，火在灶灰裡滅成一縷煙。",
+      "glamour_shot": "青梧捧著食單低頭，灶火從下照亮她的臉，空白的紙頁把一點金光反進她的眼裡，她慢慢抬眼看門外。",
+      "setups": [
+        "s01-t15",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "里正被鎮妖營押走",
+        "食單保住",
+        "怨娘開始替所有人縫衣"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-lizheng",
+        "e-gui",
+        "lao-cui",
+        "yuan-niang",
+        "douzi",
+        "shidan",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "驛站門口"
+      ],
+      "state": {
+        "time": "第四十日",
+        "knowledge": "御膳司要的是食單不是妖；里正被押走；名單上十一個女子要救。",
+        "carry_forward": "空白的下一頁、御膳司在路上、名單上的女子"
+      }
+    },
+    {
+      "number": 41,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "裁撤",
+      "youtube_title": "霧散了驛站就沒用了，裁撤公文到了，驛丞喝醉說出三年前那個村是他沒送到",
+      "duration_s": 115,
+      "logline": "驛站裁撤的公文到了：霧散了，驛站就沒用了；怨娘一夜縫好全站的衣，老崔醉倒說出他不肯走的原因。",
+      "hook": "她盯著空白的那一頁：「下一道，是誰？」老崔推門進來，手裡一卷公文：「驛站，裁了。」",
+      "hook_type": "line",
+      "mid_hook": "天亮時全驛站的人發現身上的破衣都被縫好了，怨娘坐在門檻上收針，豆子的衣服小了一號剛好合身。",
+      "extra_hooks": [
+        "蕭承霽把一封寫給州城的軍報封好，上面寫著「霧關已平，請留驛」。"
+      ],
+      "conflict": "驛站要被裁撤，她剛收的妖與剛認的家都在這裡；要留下驛站，得先知道老崔為什麼死守它。",
+      "turn": "她以為老崔不走是捨不得官職，他喝醉後對著山下的方向磕頭：那個村的糧，是他沒送到。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老崔抱著酒葫蘆跪在門口對著山下：「那村子，是我沒送到……」酒葫蘆滾到她腳邊，裡面是空的。",
+        "question": "老崔三年前到底發生了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "huoban",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "驛站大堂裡二十件縫好的衣服掛成一排在晨光裡晃，怨娘坐在門檻上，針線在她指間反光。",
+      "glamour_shot": "青梧拿起縫好的圍裙聞了聞，晨光從門外照進來，她把圍裙繫上時回頭對怨娘笑，露出一點牙。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全驛站的衣被怨娘縫好",
+        "蕭承霽替驛站寫請留軍報",
+        "老崔說出半句真相"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "yuan-niang",
+        "douzi",
+        "xiao-chengji",
+        "e-gui",
+        "shidan"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "驛站大堂",
+        "驛站門口"
+      ],
+      "state": {
+        "time": "第四十一日",
+        "knowledge": "驛站裁撤公文到了；老崔與山下餓死的村有關；蕭承霽替驛站上書。",
+        "carry_forward": "裁撤、老崔的愧、驛站還能是什麼"
+      }
+    },
+    {
+      "number": 42,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "飯鋪",
+      "youtube_title": "她把驛站改成人妖同桌的飯鋪，商隊掌櫃嘲笑完吃了三碗，鹽罈卻被偷走了",
+      "duration_s": 115,
+      "logline": "青梧把驛站改成飯鋪，第一個客人商隊馬掌櫃嘲笑完吃了三碗；夜裡整罈鹽被偷走，豆子追進黑裡。",
+      "hook": "她把裁撤公文翻過來，在背面寫下兩個大字貼在門上：「飯鋪」。老崔：「驛站賣飯，犯法！」",
+      "hook_type": "line",
+      "mid_hook": "阿滿對著鹽罈抽鼻子：「罈子裡，有東西餓。」罈蓋自己動了一下。",
+      "extra_hooks": [
+        "馬掌櫃第一碗吃完，把銅錢往桌上一拍：「再來。再來兩碗。」"
+      ],
+      "conflict": "讓驛站變成一個有人來吃飯的地方，才有留下的理由；而第一夜就出了竊案。",
+      "turn": "馬掌櫃進門嘲笑「驛站的飯餵馬都嫌」，一碗阿滿聞出火候的燜肉讓他吃了三碗、留下整隊人過夜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半夜一聲悶響，整罈鹽不見了，一道灰影從灶房竄進夜裡；豆子抓起燭台追出門：「站住！」",
+        "question": "偷鹽的是誰？豆子追進黑裡會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "meishi",
+        "huoban"
+      ],
+      "spectacle": "一鍋燜肉掀蓋，醬色的湯面冒著細泡，阿滿趴在鍋邊聞出「再燜一刻」，商隊十幾個人圍著鍋的臉在蒸氣裡。",
+      "glamour_shot": "青梧站在門口把「飯鋪」兩字貼正，回頭對老崔挑眉的那一刻，陽光照在她抬起的手腕上。",
+      "setups": [
+        "s01-t14",
+        "s01-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "飯鋪開張，第一隊客人留宿付錢",
+        "馬掌櫃從嘲笑到叫好"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "s01-ma-zhanggui",
+        "e-gui",
+        "douzi",
+        "yuan-niang",
+        "s01-hui-dou"
+      ],
+      "locations": [
+        "驛站大堂",
+        "霧關驛站灶房",
+        "驛站門口"
+      ],
+      "state": {
+        "time": "第四十二日夜",
+        "knowledge": "飯鋪有人來；驛站賣飯是否違法還沒定；鹽罈被一隻會餓的東西偷了。",
+        "carry_forward": "偷鹽的灰影、追出去的豆子、老崔的『犯法』"
+      }
+    },
+    {
+      "number": 43,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "老崔的糧",
+      "youtube_title": "地窖裡找到抱著鹽罈的鼠妖，驛丞終於說出三年前糧車被誰扣下，要把印交給她",
+      "duration_s": 120,
+      "logline": "青梧在地窖找到抱著鹽罈的鼠妖與豆子；老崔說出三年前糧車被州城以『除妖軍需』扣下的全部，要把驛站的印交給她。",
+      "hook": "豆子的燭光停在地窖口，底下兩隻發亮的眼睛抱著鹽罈：「別搶。我家的。」",
+      "hook_type": "image",
+      "mid_hook": "老崔把驛站的印放在桌上，印底還沾著三年前的封泥：「我送糧那天，州城的榜說霧關有妖，糧全被徵去燒符火。」",
+      "conflict": "把豆子與鼠妖從地窖哄出來，聽老崔把三年前的事說完。",
+      "turn": "她以為老崔是沒送、是失職，其實糧車被御膳司的榜扣在州城；他每夜看霧，是在看那個村。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老崔把印往她面前推：「驛丞簽了拒裁的文，驛站就留；妳簽，還是我簽？」印下壓著一張空白的公文。",
+        "question": "她會接下驛站的印嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "huoban"
+      ],
+      "spectacle": "地窖裡一隻灰衣小妖抱著比自己大的鹽罈縮在角落，兩隻眼睛在燭光裡亮，耳朵尖尖地動。",
+      "glamour_shot": "青梧蹲在地窖口往下伸手，燭光由下照亮她的臉，她對鼠妖笑：「不搶，分你。」",
+      "setups": [],
+      "payoffs": [
+        "s01-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揭開老崔不肯走的原因：三年前糧車被御膳司的榜扣在州城、那村餓死",
+        "找到豆子與鼠妖灰豆",
+        "老崔要把印交給她"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "douzi",
+        "s01-hui-dou",
+        "e-gui",
+        "yuan-niang"
+      ],
+      "locations": [
+        "驛站地窖",
+        "驛站大堂"
+      ],
+      "state": {
+        "time": "第四十三日",
+        "knowledge": "老崔的糧車被御膳司徵用；鼠妖灰豆抱著鹽說是『我家的』；印在桌上。",
+        "carry_forward": "印的選擇、鼠妖偷鹽的原因、拒裁的文"
+      }
+    },
+    {
+      "number": 44,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "偷鹽",
+      "youtube_title": "鼠妖偷鹽是為了一窩餓死的家人，她給它一個試鹹的差事，橋那頭卻傳來一聲別過",
+      "duration_s": 120,
+      "logline": "鼠妖灰豆偷鹽是為鹽稅下餓死的一窩家人；青梧給它『試鹹』的差事，食單寫下第四道〈鹽霜〉；路上的石橋突然開口。",
+      "hook": "她在印前停住手，先轉身問鼠妖：「鹽，要給誰？」灰豆的耳朵垂下來：「給家。」",
+      "hook_type": "question",
+      "mid_hook": "她把一小撮鹽放在灰豆掌心：「以後每鍋湯你先嚐。」灰豆嚐了一口鹽，身子一抖變實了，食單冒出熱氣。",
+      "extra_hooks": [
+        "商隊傳開消息，第二天門口排了三隻她不認得的小妖，老崔數了三遍。"
+      ],
+      "conflict": "聽懂鼠妖的怨、給它一個留下的理由，再煮出第四道菜。",
+      "turn": "她以為鼠妖是賊，它偷鹽是因為鹽稅那年它的一窩家人沒鹽吃全餓死了；它要的不是鹽，是有人分它鹽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "馬掌櫃的車隊走到關外的石橋，橋身震了一下，石縫裡傳出一聲低低的、石頭磨石頭的話：「別過。」",
+        "question": "石橋為什麼會說話？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shengji",
+        "xiju",
+        "ganren",
+        "meishi"
+      ],
+      "spectacle": "一碟雪白的鹽霜花生掀開蓋布，鹽粒在燭光下像霜，蒸氣凝成灰豆尖耳朵的小臉再散成白色的氣落進碟裡。",
+      "glamour_shot": "青梧捻一撮鹽從指縫撒下，鹽粒在火光裡落成一道細線，她閉眼嚐鹹、睫毛顫了一下。",
+      "setups": [],
+      "payoffs": [
+        "s01-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第四道菜〈鹽霜〉，鼠妖灰豆上桌當試鹹",
+        "知道鼠妖偷鹽是為餓死的家人",
+        "她忘了薯條的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-hui-dou",
+        "shidan",
+        "lao-cui",
+        "s01-ma-zhanggui",
+        "douzi",
+        "e-gui"
+      ],
+      "locations": [
+        "驛站大堂",
+        "霧關驛站灶房",
+        "關外石橋"
+      ],
+      "state": {
+        "time": "第四十四日",
+        "knowledge": "食單四道；鼠妖是試鹹；關外的石橋會說話。",
+        "carry_forward": "會說話的橋、堵住的商隊、印還沒簽"
+      }
+    },
+    {
+      "number": 45,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "守橋",
+      "youtube_title": "石妖守了一百年不讓人過橋，她在橋頭架鍋做飯，橋卻在商隊的車輪下裂了",
+      "duration_s": 110,
+      "logline": "石妖磐守橋百年不讓人過，青梧在橋頭架鍋聽它說兩個字一句的話；商隊硬闖，橋開始裂。",
+      "hook": "橋面上石縫裡慢慢浮出一張石頭臉，只有一雙眼：「別過。」馬掌櫃的馬人立起來。",
+      "hook_type": "image",
+      "mid_hook": "韓勁從州城回來，臉色難看：校尉的請留軍報被退回，上面多了一行小字，他沒敢念。",
+      "conflict": "弄懂石妖為什麼不讓人過，在商隊硬闖之前。",
+      "turn": "石妖兩個字兩個字地說：「名字。沒有。」它守的不是橋，是修橋時死在河裡、沒被刻上橋碑的工匠。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "商隊的頭車硬壓上橋，橋身喀地一聲裂開一道縫，石妖的眼睛閃了一下、暗下去。",
+        "question": "橋會塌嗎？石妖撐得住嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhiguai",
+        "meishi"
+      ],
+      "spectacle": "百年石橋的石縫裡浮出一張石頭的臉，青苔是它的眉，整座橋像在呼吸；頭車壓上去，橋面一道縫在月光下張開。",
+      "glamour_shot": "青梧坐在橋頭的鍋邊，火光照著她一手撐臉聽石妖說話的側臉，她忍著不笑，眼尾卻挑起來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道石妖守的是沒名字的工匠",
+        "蕭承霽的請留軍報被退回"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-pan",
+        "s01-ma-zhanggui",
+        "s01-han-jin",
+        "e-gui",
+        "douzi",
+        "xiao-chengji"
+      ],
+      "locations": [
+        "關外石橋",
+        "橋頭"
+      ],
+      "state": {
+        "time": "第四十五日",
+        "knowledge": "石妖磐守的是修橋死去、沒刻名的工匠；橋裂了；軍報被退。",
+        "carry_forward": "裂開的橋、工匠的名字去哪找、軍報上那行小字"
+      }
+    },
+    {
+      "number": 46,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "石頭的名字",
+      "youtube_title": "她翻出驛站百年舊檔在橋頭念出工匠的名字，石妖放手，被賣的女子也回來了",
+      "duration_s": 125,
+      "logline": "青梧從驛站舊檔找出修橋工匠的名字在橋頭念出，石妖放手，食單寫下第五道〈青石豆腐〉；蕭承霽帶回三名被賣的女子。",
+      "hook": "橋縫張開，青梧跳上橋面把鍋頂在裂縫上：「撐住。我去找名字。」石妖的眼睛又亮了一點。",
+      "hook_type": "danger",
+      "mid_hook": "關門口一隊人馬回來，蕭承霽的馬後跟著三個穿布坊粗衣的女子，小桃第一個撲進周婆懷裡。",
+      "extra_hooks": [
+        "她想替石妖做點甜的，巧克力三個字在腦子裡轉了一圈，味道卻怎麼也想不起來。"
+      ],
+      "conflict": "找到百年前工匠的名字念給石妖聽，救橋、救商隊，也收下第五道菜。",
+      "turn": "老崔抱出驛站的舊檔，一百年前驛站替工匠記過工錢：十四個名字，石妖聽到第十四個才鬆開橋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "三個救回的女子坐上大桌，怨娘的手停在一人袖口的繡花上，聲音很輕：「這針法，是我娘家的。」",
+        "question": "被賣的女子跟繡繡有什麼關係？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "shengji",
+        "huoban",
+        "meishi"
+      ],
+      "spectacle": "一方青灰色的豆腐在砂鍋裡輕輕晃，蒸氣凝成石妖的石頭臉再散成青灰的氣落進鍋裡；橋縫在月光下慢慢合上。",
+      "glamour_shot": "青梧站在橋面上一字一字念名字，夜風吹起她的藍布巾，念到最後一個名字時她閉了一下眼。",
+      "setups": [],
+      "payoffs": [
+        "s01-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第五道菜〈青石豆腐〉，石妖磐上桌",
+        "救回名單上的三名女子",
+        "她忘了巧克力的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-pan",
+        "lao-cui",
+        "shidan",
+        "xiao-chengji",
+        "s01-xiao-tao",
+        "s01-zhou-po",
+        "yuan-niang",
+        "e-gui",
+        "s01-han-jin"
+      ],
+      "locations": [
+        "關外石橋",
+        "驛站大堂"
+      ],
+      "state": {
+        "time": "第四十六日夜",
+        "knowledge": "食單五道；橋好了；名單上三人救回，其餘八人在州城更深的地方。",
+        "carry_forward": "怨娘認出的針法、剩下八個名字、州城的查官要來"
+      }
+    },
+    {
+      "number": 47,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "算不算違法",
+      "youtube_title": "州城查官來查驛站賣飯是否違法，吃完一碗抬頭問：驛律哪一條說不行",
+      "duration_s": 115,
+      "logline": "州城查官文大人來查驛站賣飯是否違法，青梧用驛律與一碗飯讓他改口；雨天路上一把傘自己走過來帶走了豆子。",
+      "hook": "州城的查官文大人站在「飯鋪」兩字前，拿出筆：「驛站售食，哪條律許？」老崔的手在抖。",
+      "hook_type": "question",
+      "mid_hook": "下雨了，官道上一把青布傘自己撐著走過來，傘下沒有人，傘柄一轉，停在門口的豆子頭頂。",
+      "conflict": "讓驛站賣飯合法，讓查官帶回去的不是罪名而是飯香。",
+      "turn": "查官翻律要抓錯，老崔翻出驛律第七條「驛站供官道行旅飲食，驛丞核准」，查官吃完一碗紅糟肉，筆沒再動。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "青傘罩住豆子，整個人連傘一起往雨裡飄，豆子的腳離了地：「青梧姐！」雨把他的聲音吞掉。",
+        "question": "傘要帶豆子去哪？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "dalian",
+        "meishi"
+      ],
+      "spectacle": "雨裡一把青布傘自己撐著走在官道上，傘下空無一人，傘面上雨水滑成一條線，停在一個孩子頭頂。",
+      "glamour_shot": "青梧端著紅糟肉放到查官面前，俏皮地用下巴點了點碗，雨光從門外照亮她眼裡的笑。",
+      "setups": [],
+      "payoffs": [
+        "s01-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "驛站賣飯被查官認可，驛律第七條",
+        "查官吃了一碗沒再動筆"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "s01-cha-guan",
+        "douzi",
+        "s01-qing-san",
+        "e-gui",
+        "yuan-niang"
+      ],
+      "locations": [
+        "驛站門口",
+        "驛站大堂",
+        "官道"
+      ],
+      "state": {
+        "time": "第四十七日雨天",
+        "knowledge": "驛站賣飯合法；查官回州城會寫什麼未知；傘妖帶走了豆子。",
+        "carry_forward": "飄走的豆子與傘、雨、印還沒簽"
+      }
+    },
+    {
+      "number": 48,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "雨天的傘",
+      "youtube_title": "傘妖只是想替一個人擋雨，軍報退回寫著校尉養妖，驛丞問她：印，接還是不接",
+      "duration_s": 120,
+      "logline": "傘妖青傘帶走豆子只為替人擋雨，它等的是一個沒回來的女孩；蕭承霽的軍報退回寫著『校尉養妖』；老崔正式把印推給她。",
+      "hook": "她追進雨裡，傘停在橋頭，豆子坐在傘下一點沒濕，傘柄輕輕地說：「她沒回來。」",
+      "hook_type": "line",
+      "mid_hook": "韓勁終於念出軍報上退回的那行小字：「校尉養妖。」蕭承霽把軍報折成四折，放進火裡。",
+      "extra_hooks": [
+        "石妖磐坐在門檻上，一句話兩個字：「橋好。謝謝。」全桌的人笑了。"
+      ],
+      "conflict": "聽懂傘妖的怨、把豆子帶回來，同時面對蕭承霽因她付出的代價。",
+      "turn": "她以為傘妖要害人，它只是替人擋雨：三年前一個女孩把它忘在橋頭說會回來拿，再沒回來，它每個雨天都在等。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老崔把驛站的印放進她掌心，蓋住她的手：「接，還是不接？」門外蕭承霽的軍報在火裡燒成灰。",
+        "question": "她會成為霧關的驛丞嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "huoban",
+        "xiju"
+      ],
+      "spectacle": "雨裡一把青傘停在橋頭，傘下的孩子乾乾的，傘外的雨像簾子；青梧走進傘下，雨聲一下靜了。",
+      "glamour_shot": "蕭承霽把軍報放進火裡，火光映著他側臉，額前那縷髮被熱氣吹起，他沒看火、看著門口的她。",
+      "setups": [],
+      "payoffs": [
+        "s01-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "豆子平安帶回",
+        "揭開蕭承霽抗令的後果：軍報退回、被記『校尉養妖』",
+        "知道傘妖在等一個沒回來的女孩"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "s01-qing-san",
+        "douzi",
+        "xiao-chengji",
+        "s01-han-jin",
+        "lao-cui",
+        "s01-pan",
+        "e-gui"
+      ],
+      "locations": [
+        "關外石橋",
+        "驛站大堂"
+      ],
+      "state": {
+        "time": "第四十八日",
+        "knowledge": "傘妖在等一個去了州城沒回來的女孩；蕭承霽被御膳司記了一筆；印在她手裡。",
+        "carry_forward": "接印、傘妖的女孩、蕭承霽的軍職還保不保"
+      }
+    },
+    {
+      "number": 49,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "驛站的印",
+      "youtube_title": "她接下驛站的印，食單寫到第六道，人妖同桌坐滿，商隊卻帶來御膳司北上的消息",
+      "duration_s": 120,
+      "logline": "青梧接下驛站的印，收傘妖寫下第六道〈雨前傘〉；大桌第一次坐滿人與妖，商隊帶來御膳司膳使北上的消息。",
+      "hook": "她把手握緊，印的涼透進掌心：「接。」老崔轉身去倒酒，背對著所有人抹了一下眼。",
+      "hook_type": "line",
+      "mid_hook": "大桌坐滿了：阿滿、怨娘、灰豆、磐、青傘靠在凳邊，商隊與驛卒擠在另一頭，俯拍下來桌上一道菜都看不見了。",
+      "extra_hooks": [
+        "她端起一杯涼的茶想加點檸檬，卻發現檸檬茶只剩名字，酸味從記憶裡消失了。"
+      ],
+      "conflict": "接下印、收下傘妖，讓驛站真正變成人妖同桌的地方。",
+      "turn": "傘妖不要她找到那個女孩，只要有人每個雨天記得它；她答應下雨就把它撐出去，它便散成一團青氣落進碗裡。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "馬掌櫃從州城回來，壓低聲音：「御膳司的膳使出了州城，往北走。」桌上所有的妖同時安靜了。",
+        "question": "膳使來霧關要什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shengji",
+        "huoban",
+        "meishi",
+        "xiju"
+      ],
+      "spectacle": "驛站大桌第一次坐滿人與妖的俯拍：半透明的阿滿、素紅的怨娘、灰衣的灰豆、石頭臉的磐、靠在凳邊的青傘，桌面一片蒸氣。",
+      "glamour_shot": "青梧端著一碗青綠的雨前筍湯掀蓋，蒸氣飄過她的臉，她回眸看滿桌的人與妖，眼尾一挑笑了。",
+      "setups": [
+        "s01-t22"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "青梧成為霧關驛丞",
+        "食單第六道菜〈雨前傘〉，傘妖青傘上桌",
+        "大桌第一次坐滿人與妖",
+        "她忘了檸檬茶的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "lao-cui",
+        "s01-qing-san",
+        "shidan",
+        "e-gui",
+        "yuan-niang",
+        "s01-hui-dou",
+        "s01-pan",
+        "s01-ma-zhanggui",
+        "douzi",
+        "xiao-chengji",
+        "s01-wang-da"
+      ],
+      "locations": [
+        "驛站大堂",
+        "霧關驛站灶房"
+      ],
+      "state": {
+        "time": "第四十九日",
+        "knowledge": "她是驛丞了；食單六道；御膳司膳使北上。",
+        "carry_forward": "膳使北上、妖們的安靜、蕭承霽的軍職"
+      }
+    },
+    {
+      "number": 50,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "黑漆的車",
+      "youtube_title": "商隊後面跟來一輛黑漆馬車，車上下來背鐵鍋的人，小妖躲到她身後發抖",
+      "duration_s": 130,
+      "logline": "驛站的日子剛安穩，商隊的車隊後跟來一輛黑漆馬車，下來一個背鐵鍋的人；阿滿第一次發抖。",
+      "hook": "妖們安靜了一夜，天亮她照常掀鍋：「不管誰來，先吃飯。」滿桌的人這才動筷。",
+      "hook_type": "line",
+      "mid_hook": "蕭承霽收到州城來信：兵部查他「養妖」一事，令他留在霧關候查，不得離關。",
+      "extra_hooks": [
+        "石妖磐突然從門檻上站起來，兩個字：「橋上。來了。」"
+      ],
+      "conflict": "在膳使到來之前把驛站與桌上的妖安頓好，弄清他要什麼。",
+      "turn": "她以為會先來一隊兵，來的卻只有一輛黑漆馬車、一個人、一口鍋；可桌上所有的妖都退到了牆邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "商隊的馬車後面跟來一輛黑漆的車，車上走下一個背著鐵鍋的人；阿滿第一次躲到青梧身後發抖：「他身上，有好多妖在哭。」",
+        "question": "他的鐵鍋裡裝著什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "huoban",
+        "henla",
+        "meishi"
+      ],
+      "spectacle": "黑漆馬車停在霧關門口，車夫不下車，一個黑衣人背著一口鐵鍋走下來，鍋蓋縫裡滲出一絲慘白的光。",
+      "glamour_shot": "青梧站在驛站門檻上，一手把阿滿往身後按，逆著晨光看來人，眉頭不動，下顎線繃緊。",
+      "setups": [
+        "s01-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承霽被令留關候查，沒走",
+        "滿桌的妖在她一句話下重新坐回來"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "e-gui",
+        "shan-shi",
+        "xiao-chengji",
+        "lao-cui",
+        "yuan-niang",
+        "s01-hui-dou",
+        "s01-pan",
+        "s01-qing-san",
+        "douzi",
+        "s01-ma-zhanggui"
+      ],
+      "locations": [
+        "霧關驛站門口",
+        "驛站大堂",
+        "官道"
+      ],
+      "state": {
+        "time": "第五十日清晨",
+        "knowledge": "御膳司的人到了，背著一口鐵鍋，鍋裡有妖在哭；蕭承霽被令候查。",
+        "carry_forward": "鐵鍋、來人要什麼、桌上的六隻妖"
+      }
+    },
+    {
+      "number": 51,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "徵收",
+      "youtube_title": "御膳司膳使把鐵鍋放上她的桌只說一個字：徵收。鍋蓋掀開裡面空的卻有哭聲",
+      "duration_s": 120,
+      "logline": "御膳司膳使·墨走進驛站，把鐵鍋放上大桌宣布徵收霧關一切妖物；青梧亮出驛丞的印，他掀開鍋蓋。",
+      "hook": "背鐵鍋的人走進大堂，把鍋放上她的桌，只說一個字：「徵收。」桌上的碗全跟著震了一下。",
+      "hook_type": "line",
+      "mid_hook": "墨對著牆邊的妖一個一個看過去，鼻子動了一下，目光停在阿滿身上：「餓妖。一。」",
+      "extra_hooks": [
+        "老崔把驛丞的印拍在鍋邊：「此地歸驛丞管。」墨看了印一眼，像看一塊石頭。"
+      ],
+      "conflict": "御膳司的人要徵收她桌上所有的妖；她是驛丞，可他有御膳司的令。",
+      "turn": "她以為對方會先亮兵，他只亮一張令與一口鍋；而韓勁認出他：州城三次除妖的，都是這個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "墨掀開鍋蓋，鍋裡什麼都沒有，只有一層慘白的符火在鍋底燒；哭聲卻從鍋裡一聲一聲傳上來。",
+        "question": "空鍋裡哭的是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai"
+      ],
+      "spectacle": "一口黑鐵鍋放在滿是菜的大桌正中，鍋蓋掀開，鍋底一層慘白的符火像一面冰，牆邊所有的妖同時往後縮。",
+      "glamour_shot": "青梧站在桌對面，一手按著印、一手按著食單，燭光下她直視墨的細眼，嘴角一點都沒動。",
+      "setups": [],
+      "payoffs": [
+        "s01-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "認出黑車上的人是御膳司膳使·墨，鎮上三次除妖的執行者",
+        "老崔以驛丞印正面對抗御膳司"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-shi",
+        "lao-cui",
+        "xiao-chengji",
+        "s01-han-jin",
+        "e-gui",
+        "yuan-niang",
+        "s01-hui-dou",
+        "s01-pan",
+        "s01-qing-san",
+        "douzi",
+        "shidan"
+      ],
+      "locations": [
+        "驛站大堂"
+      ],
+      "state": {
+        "time": "第五十一日",
+        "knowledge": "墨是御膳司膳使，鎮上三次除妖是他做的；他要徵收霧關所有妖；鍋裡有哭聲。",
+        "carry_forward": "空鍋裡的哭聲、墨的下一步、牆邊的妖"
+      }
+    },
+    {
+      "number": 52,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "第一鍋",
+      "youtube_title": "膳使第一個要的是守橋的石妖，校尉拔刀攔路，他只說一句：校尉，讓",
+      "duration_s": 120,
+      "logline": "墨第一個徵收的是守橋的石妖磐；蕭承霽攔在橋頭，墨亮出兵部令；磐被裝進鐵鍋。",
+      "hook": "哭聲裡，墨把鍋蓋合上，轉身走向關外：「先收橋上的。」磐從門檻上站起來，石頭臉第一次有了表情。",
+      "hook_type": "danger",
+      "mid_hook": "蕭承霽橫刀在橋頭，墨從袖裡抽出兵部令，上面寫著「鎮妖營校尉蕭承霽，養妖候查」；他只說：「校尉，讓。」",
+      "conflict": "保住石妖不被裝進鐵鍋，而她的驛丞印、蕭承霽的刀都壓不過御膳司的令。",
+      "turn": "她以為磐會躲，磐卻自己走上橋站在鍋前：「橋。別碰。」它用自己換橋不被拆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "墨把鍋口對準磐，磐的影子像被抽進鍋裡一樣縮成一團灰，鍋蓋合上，鍋底的符火『嘶』地燒亮。",
+        "question": "磐還救得出來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "橋頭上石妖的影子被鐵鍋口吸進去，像一團灰煙倒著流，鍋蓋合上時整座石橋的青苔同時枯了一層。",
+      "glamour_shot": "蕭承霽橫刀在橋頭，雪青披風被河風吹得貼在身上，他看兵部令的那一眼長睫垂下，再抬起時眼神像鐵。",
+      "setups": [
+        "s01-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "磐用自己換下橋不被拆",
+        "蕭承霽的刀第一次對御膳司出鞘，雖然沒落下"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-shi",
+        "s01-pan",
+        "xiao-chengji",
+        "s01-han-jin",
+        "s01-shan-yi",
+        "e-gui",
+        "douzi"
+      ],
+      "locations": [
+        "關外石橋",
+        "橋頭"
+      ],
+      "state": {
+        "time": "第五十二日",
+        "knowledge": "墨拿著兵部令，蕭承霽的刀攔不住；磐被裝進鐵鍋。",
+        "carry_forward": "鍋裡的磐、燒亮的符火、下一個被收的"
+      }
+    },
+    {
+      "number": 53,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "煉",
+      "youtube_title": "她第一次看見妖被煉成一碗羹，鍋裡冒出的煙沒有臉，膳使遞過碗：喝了妳就懂",
+      "duration_s": 125,
+      "logline": "墨當著青梧的面在驛站院裡煉磐，鍋裡升起的煙沒有臉；他把煉出的一碗羹遞給她。",
+      "hook": "院子裡鐵鍋架上符火，墨蹲下看火：「一刻。」鍋裡磐的聲音兩個字一句：「名字。有了。」",
+      "hook_type": "line",
+      "mid_hook": "老崔趁墨背對，把阿滿、怨娘、灰豆和青傘一個一個塞進地窖，自己坐在窖門上喝酒。",
+      "extra_hooks": [
+        "鍋裡的影子越縮越小，最後一縷煙升上來，煙裡該是臉的地方，什麼都沒有。"
+      ],
+      "conflict": "眼看磐被煉卻攔不住；她要從這口鍋前帶走點什麼。",
+      "turn": "她以為煉妖是殺，看見的卻是一碗深色的羹與一縷沒有臉的煙：妖沒有死，變成了別的東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "墨把那碗深色的羹推到她面前：「喝了，妳就懂。」她捧起碗，懷裡的食單低低地說：「別喝。」",
+        "question": "這碗羹是什麼？她會喝嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai"
+      ],
+      "spectacle": "院子裡一口鐵鍋、一圈慘白符火，鍋裡灰色的影子一寸寸縮小；最後一縷煙升到半空凝成一個人形，沒有臉。",
+      "glamour_shot": "青梧捧著那碗深色的羹，熱氣往上飄過她的臉，燭光下她的睫毛濡濕，她看著碗沒有看墨。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "其他妖被老崔藏進地窖",
+        "青梧第一次看見煉妖與沒有臉的煙",
+        "拿到那碗羹"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-shi",
+        "s01-pan",
+        "lao-cui",
+        "shidan",
+        "xiao-chengji",
+        "s01-shan-yi",
+        "e-gui",
+        "yuan-niang",
+        "s01-hui-dou",
+        "s01-qing-san"
+      ],
+      "locations": [
+        "驛站院子",
+        "驛站地窖"
+      ],
+      "state": {
+        "time": "第五十三日夜",
+        "knowledge": "煉妖出一碗羹與一縷沒有臉的煙；妖沒有死；食單叫她別喝。",
+        "carry_forward": "那碗羹、沒有臉的煙、地窖裡的妖"
+      }
+    },
+    {
+      "number": 54,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "不喝",
+      "youtube_title": "她把那碗羹放進灶上溫著不喝，膳使對校尉開價：交出那本書，軍職我替你保",
+      "duration_s": 115,
+      "logline": "青梧不喝那碗羹，把它溫在灶上；墨宣布天亮徵收地窖裡的一切，私下對蕭承霽開價：交出食單換軍職。",
+      "hook": "她把碗放到灶邊最小的火上：「不喝。溫著。」墨看了碗一眼，第一次多說一句：「會涼。」",
+      "hook_type": "line",
+      "mid_hook": "墨從袖裡抽出一張名冊，上面有蕭承霽的名字和一行小字「北關餘生」，他說：「你的名字，司正記得。」",
+      "conflict": "墨要天亮徵收地窖裡所有的妖，也要食單；她只有一夜、一口鍋與一碗不肯喝的羹。",
+      "turn": "她以為墨會直接搜地窖，他卻先去找蕭承霽：御膳司要的是書，妖只是順手；拿書就能換回軍職。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "墨對蕭承霽伸出手：「廚娘的書，換你的軍職。天亮前。」蕭承霽看著地窖的門沒有回答。",
+        "question": "蕭承霽會拿書換軍職嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "ganren"
+      ],
+      "spectacle": "灶上最小的一簇火溫著一碗深色的羹，羹面不冒泡只微微發亮；窗外院子裡的鐵鍋還在冒一縷灰煙。",
+      "glamour_shot": "蕭承霽背對燭火站在地窖門前，披風上怨娘縫的新線在火光裡一閃，他側臉的下顎線咬緊。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "那碗羹被溫住沒喝",
+        "知道御膳司要的是食單，妖只是順手",
+        "知道御膳司司正記得蕭承霽的名字"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-shi",
+        "xiao-chengji",
+        "lao-cui",
+        "shidan",
+        "s01-han-jin",
+        "e-gui"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "驛站院子",
+        "驛站地窖門前"
+      ],
+      "state": {
+        "time": "第五十四日夜",
+        "knowledge": "墨天亮要徵收地窖裡的妖；他向蕭承霽開價換食單；羹溫在灶上。",
+        "carry_forward": "蕭承霽的回答、天亮、鍋裡還在哭的聲音"
+      }
+    },
+    {
+      "number": 55,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "鍋裡哭的",
+      "youtube_title": "她趁夜聽出鐵鍋裡哭的是廟裡被煉掉的小妖，用一碗湯把井妖從鍋裡請了出來",
+      "duration_s": 125,
+      "logline": "青梧讓阿滿聞、小燭照，聽出鐵鍋裡哭的是鎮上被煉掉的井妖與燈妖；她用一碗湯把井妖從鍋的蒸氣裡請出來，食單寫下第七道。",
+      "hook": "蕭承霽沒回答，把墨關在門外，自己進了灶房：「書在哪？」她：「在我身上。」他：「藏好。」",
+      "hook_type": "line",
+      "mid_hook": "小燭的火苗照進鍋縫，鍋底符火下兩團被壓扁的影子：一團是井的形狀、一團是燈的形狀；阿滿說：「廟裡的。」",
+      "extra_hooks": [
+        "她想在湯裡放一點冰涼的東西，想起冰淇淋這個詞，舌尖卻一片空白。"
+      ],
+      "conflict": "在天亮前弄清鍋裡哭的是誰，看能不能從御膳司的鍋裡把妖請出來。",
+      "turn": "她以為被煉掉的妖沒救，鍋裡卻還有兩團沒煉完的氣；她把一碗涼井水湯擺在鍋邊叫出「廟後井」，井妖的氣順著蒸氣爬出來落進碗裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鐵鍋突然輕了一分，院子裡的墨猛地回頭看向灶房，手已經搭上鍋蓋。",
+        "question": "墨發現鍋裡少了東西嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "shengji",
+        "meishi",
+        "henla"
+      ],
+      "spectacle": "鍋縫裡爬出一縷湖藍色的氣，順著蒸氣落進一碗涼湯裡，湯面立刻起了一圈漣漪，井妖的小臉在湯裡浮了一下。",
+      "glamour_shot": "青梧貼著鍋縫輕聲叫「廟後井」，燭光只照亮她的唇與睫毛，她屏住氣時鼻尖微微發紅。",
+      "setups": [],
+      "payoffs": [
+        "s01-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揭開鍋裡哭的是鎮上被煉掉的井妖與燈妖的殘氣",
+        "食單第七道菜〈井水涼〉，井妖上桌",
+        "蕭承霽拒絕交書",
+        "她忘了冰淇淋的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "s01-xiao-zhu",
+        "e-gui",
+        "s01-jing-yao",
+        "shidan",
+        "shan-shi",
+        "s01-deng-yao"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "驛站院子"
+      ],
+      "state": {
+        "time": "第五十五日凌晨",
+        "knowledge": "鍋裡還有燈妖沒救；井妖已上桌；墨察覺鍋變輕。",
+        "carry_forward": "墨的手在鍋蓋上、天亮的徵收、燈妖"
+      }
+    },
+    {
+      "number": 56,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "拔刀",
+      "youtube_title": "天亮膳使來收地窖裡的妖，校尉拔刀擋在鍋前被當場奪了軍職，怨娘卻自己走進了符火圈",
+      "duration_s": 125,
+      "logline": "天亮墨來徵收地窖的妖，蕭承霽拔刀擋在鍋前被當場奪職；怨娘自己走進符火圈，紅光把符火壓暗。",
+      "hook": "墨掀鍋看了一眼，合上，什麼都沒說，轉身走向地窖：「天亮了。」蕭承霽的刀出了鞘。",
+      "hook_type": "danger",
+      "mid_hook": "墨當著全驛站念出兵部令：「蕭承霽，奪校尉職。」韓勁跪下接令，蕭承霽的刀沒有放下。",
+      "extra_hooks": [
+        "地窖門自己開了，怨娘從裡面走出來，拂了拂素紅的衣袖：「我自己來。」"
+      ],
+      "conflict": "擋住墨徵收地窖裡的妖；蕭承霽的刀換來的是當場奪職。",
+      "turn": "兵以為奪了職蕭承霽就會退，他把官牌摘下丟在地上還是不讓；怨娘卻自己走出來走進符火圈。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "怨娘走進符火圈，素紅的衣角一碰白火，火反而暗下去；墨第一次變了臉色：「她沒有怨。」",
+        "question": "沒有怨的妖，為什麼煉不了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "henla",
+        "huoban"
+      ],
+      "spectacle": "驛站院子裡一圈慘白符火，怨娘走進去，紅色從她衣角漫開像水染進火裡，符火一盞盞暗成灰。",
+      "glamour_shot": "蕭承霽拔刀擋在鍋前回頭看她的那一眼，披風在晨風裡張開，火光照著他鋒利的下顎，他說：「別出來。」",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承霽第一次替她擋御膳司的人，軍職被奪",
+        "怨娘走進符火圈，符火壓不住沒有怨的妖"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-shi",
+        "xiao-chengji",
+        "s01-han-jin",
+        "yuan-niang",
+        "lao-cui",
+        "e-gui",
+        "s01-shan-yi",
+        "douzi"
+      ],
+      "locations": [
+        "驛站院子",
+        "驛站地窖門前"
+      ],
+      "state": {
+        "time": "第五十六日清晨",
+        "knowledge": "蕭承霽被奪職；符火煉不了沒有怨的妖；墨知道了這件事。",
+        "carry_forward": "墨下一步要找有怨的、沒有軍職的蕭承霽、鍋裡的燈妖"
+      }
+    },
+    {
+      "number": 57,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "燈",
+      "youtube_title": "煉不了沒有怨的妖，膳使轉身請走了豆子，她從鍋裡救出燈妖，黑車卻往橋上去了",
+      "duration_s": 120,
+      "logline": "墨發現沒有怨的妖煉不了，轉而『請』豆子上車逼她交書；青梧從鍋裡救出燈妖寫下第八道，黑車卻已往橋上去。",
+      "hook": "墨收回符火，看了一圈，目光落在豆子身上：「孩子，上車。」豆子還沒反應，膳役已經把他抱上了黑車。",
+      "hook_type": "danger",
+      "mid_hook": "她把一盞油燈放在鍋邊點亮，叫出「廟檐燈」，琥珀色的氣從鍋縫裡爬出來落進燈油裡，燈妖的臉在火苗裡浮了一下。",
+      "extra_hooks": [
+        "她想替豆子留一杯甜的珍珠奶茶，才發現這五個字只剩字，什麼味道都沒有了。"
+      ],
+      "conflict": "豆子被帶上黑車，墨要她拿食單去橋上換人；她手裡只剩一口鍋裡最後一團氣。",
+      "turn": "她以為墨會用妖逼她，他用的是孩子；而她在他轉身的時候，把鍋裡最後一團氣也救了出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "黑漆馬車往橋上去，豆子的臉貼在車窗上；墨站在車旁回頭：「書，橋上換。」天邊壓下來一層雨雲。",
+        "question": "她會拿食單去換豆子嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "zhiguai",
+        "ganren"
+      ],
+      "spectacle": "一盞油燈放在鐵鍋邊，琥珀色的氣順著鍋縫爬進燈油，火苗猛地漲高一寸，燈光把整個灶房照成金黃。",
+      "glamour_shot": "青梧舉著那盞燈抬頭看窗外遠去的黑車，燈火從下照亮她的臉，她的眼淚停在眼眶沒掉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "食單第八道菜〈燈油香〉，燈妖上桌",
+        "墨的鐵鍋空了，只剩那碗溫著的羹",
+        "她忘了珍珠奶茶的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shan-shi",
+        "douzi",
+        "s01-shan-yi",
+        "s01-deng-yao",
+        "shidan",
+        "e-gui",
+        "xiao-chengji",
+        "lao-cui"
+      ],
+      "locations": [
+        "驛站院子",
+        "霧關驛站灶房",
+        "官道"
+      ],
+      "state": {
+        "time": "第五十七日",
+        "knowledge": "豆子在墨的車上；墨要在橋上用豆子換食單；鍋裡的妖救完了，羹還溫著；雨要來了。",
+        "carry_forward": "橋上的交換、那碗羹、雨雲"
+      }
+    },
+    {
+      "number": 58,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "一日的雨",
+      "youtube_title": "她煮下傘妖的菜借一日喚雨之力趕去橋頭，膳使點燃所有符火逼她選：鍋，還是孩子",
+      "duration_s": 125,
+      "logline": "青梧煮下〈雨前傘〉借一日喚雨之力，與無甲的蕭承霽趕到橋頭；墨點燃全部符火，逼她在鍋與豆子之間選。",
+      "hook": "她掀開鍋，一碗青綠的雨前筍湯一口喝盡，抬頭時雨雲在她眼裡聚起來：「青傘，借我一日。」",
+      "hook_type": "image",
+      "mid_hook": "橋頭上墨把豆子放在鐵鍋旁，繞著鍋點燃三十盞符火，白火把整座橋照成一面雪牆。",
+      "extra_hooks": [
+        "蕭承霽脫下的黑鐵甲丟在驛站門口，他只穿一身勁裝就上了馬。"
+      ],
+      "conflict": "趕到橋頭救豆子，不交書，還要讓鍋裡那碗羹有機會變回磐。",
+      "turn": "她以為墨要的是書，他把書與孩子都不要了：他要她親眼看見自己選不了，鍋裡放著的是她溫了三天的那碗羹。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "墨站在三十盞符火中間，一手按著鍋蓋、一手指著豆子：「鍋，還是孩子？」雨雲在她頭頂壓到最低。",
+        "question": "她會選鍋還是豆子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhandou",
+        "shengji",
+        "zhiguai"
+      ],
+      "spectacle": "橋頭三十盞慘白符火圍成一圈，中間一口鐵鍋與一個孩子；雨雲在青梧頭頂壓成一個漩渦，她的髮被氣流吹起。",
+      "glamour_shot": "蕭承霽沒穿甲、一身勁裝在馬上回頭看她，雨前的風把他的頭髮吹散一縷，他說：「上來。」",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "借到一日喚雨的能力",
+        "蕭承霽無軍職仍然跟她上橋",
+        "豆子還安全站著"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "shan-shi",
+        "douzi",
+        "s01-shan-yi",
+        "s01-qing-san",
+        "shidan",
+        "e-gui"
+      ],
+      "locations": [
+        "霧關驛站灶房",
+        "關外石橋"
+      ],
+      "state": {
+        "time": "第五十八日",
+        "knowledge": "她有一日喚雨的能力；墨要她在鍋與豆子之間選；鍋裡是那碗羹。",
+        "carry_forward": "選擇、雨、三十盞符火"
+      }
+    },
+    {
+      "number": 59,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "澆熄",
+      "youtube_title": "她把整座關的雨灌進鐵鍋澆熄符火，用那碗羹煮出第九道菜，石妖回來了只剩一塊小石頭",
+      "duration_s": 130,
+      "logline": "青梧把整座關的雨灌進鐵鍋澆熄符火，豆子被蕭承霽抱出火圈；她用那碗羹煮出第九道菜〈碎石羹〉，磐變成一塊會說話的小石頭回來；墨撤走。",
+      "hook": "她抬手：「兩個都要。」雨從天上砸下來，像有人把整條河倒進橋頭。",
+      "hook_type": "line",
+      "mid_hook": "符火全滅，墨站在雨裡沒動，看著她把那碗羹倒進自己的小鐵鍋，往裡加了一把橋頭的青苔。",
+      "extra_hooks": [
+        "她想在羹裡加一點深夜便利商店的關東煮味，那個味道卻已經不在了。"
+      ],
+      "conflict": "滅符火、救豆子，把煉成羹的磐請回來，看御膳司的人會不會再動手。",
+      "turn": "墨以為煉成羹的妖回不來，她卻把羹重煮成一道菜，碗底浮出一塊拇指大的石頭，石頭說了一個字：「過。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "墨背起空鍋上車，留下一句：「皇都會記得妳。」車走了，院子裡那口被澆熄的鐵鍋，鍋底還有一絲灰煙在冒。",
+        "question": "皇都會怎麼記得她？鍋裡還有什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhandou",
+        "shengji",
+        "meishi",
+        "zhiguai"
+      ],
+      "spectacle": "雨裡青梧撐著傘妖的青傘站在橋頭，整座關的雨像被傘面牽著往鐵鍋裡灌，三十盞符火一盞盞滋滅成白煙。",
+      "glamour_shot": "青梧撐傘立在雨裡，雨從傘沿垂成一簾，她閉眼嚐羹的那一秒睫毛上掛著雨珠，睜眼時眼裡一圈淡金。",
+      "setups": [],
+      "payoffs": [
+        "s01-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "符火全滅，豆子平安",
+        "食單第九道菜〈碎石羹〉，磐以一塊小石頭的樣子回來",
+        "墨撤走，留下『皇都會記得妳』",
+        "她忘了關東煮的味道"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "xiao-chengji",
+        "shan-shi",
+        "douzi",
+        "s01-pan",
+        "s01-qing-san",
+        "shidan",
+        "s01-shan-yi",
+        "e-gui"
+      ],
+      "locations": [
+        "關外石橋",
+        "驛站院子"
+      ],
+      "state": {
+        "time": "第五十九日",
+        "knowledge": "食單九道；磐回來了但只有一塊小石頭大；墨回皇都；被澆熄的鍋還在冒煙。",
+        "carry_forward": "鍋底的灰煙、皇都、沒有軍職的蕭承霽"
+      }
+    },
+    {
+      "number": 60,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "饕",
+      "youtube_title": "人妖同桌吃第一口熱飯，膳使的鍋裡最後一縷煙凝成沒臉的影子，食單寫下一個她沒見過的字",
+      "duration_s": 150,
+      "logline": "驛站大桌人妖同桌，怨娘替蕭承霽縫披風、阿滿吃第一口熱飯；墨留下的鐵鍋裡最後一縷煙凝成沒有臉的影子飄向南方，食單自己翻到最後一頁寫下「饕」。",
+      "hook": "鍋底那絲灰煙還在冒，她把鍋倒扣在院子裡：「先吃飯。」大堂裡滿桌的人與妖同時抬頭。",
+      "hook_type": "line",
+      "mid_hook": "怨娘把蕭承霽的披風攤在桌上，一針一針縫上被燒出的洞；蕭承霽第一次在大桌坐下，沒戴官牌。",
+      "extra_hooks": [
+        "阿滿捧著碗吃下第一口真正的熱飯，整個身子變實了一刻，紅布條在燭光裡發亮。",
+        "磐那塊小石頭被放在桌子正中當鎮紙，兩個字：「人多。」"
+      ],
+      "conflict": "御膳司的人走了，可鍋裡的煙、食單的空頁與蕭承霽丟掉的軍職都還在桌上。",
+      "turn": "她以為第九道寫完這一季的仗就打完了；鍋裡那最後一縷煙卻沒散，食單在她手裡自己翻到了最後一頁。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "墨的鐵鍋裡最後一縷煙凝成一張沒有臉的影子飄向南方；食單在她手裡自己翻到最後一頁，紙面冒出一個她從沒寫過的字：「饕。」",
+        "question": "饕是誰？為什麼寫在最後一頁？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huoban",
+        "zhiguai",
+        "meishi",
+        "henla"
+      ],
+      "spectacle": "院子裡倒扣的鐵鍋縫隙裡最後一縷灰煙升起，在月光下凝成一個沒有臉的人形，慢慢飄向南方的夜空。",
+      "glamour_shot": "青梧在燭光下低頭看食單最後一頁，淡金色的『饕』字映進她的瞳孔，她抬眼看向南方的那一格，桌上所有人都在笑，只有她沒有。",
+      "setups": [
+        "m01",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "人妖同桌：阿滿、怨娘、灰豆、磐、青傘、井妖、燈妖與全驛站的人坐滿大桌",
+        "怨娘替蕭承霽縫好披風",
+        "食單寫到第九道，最後一頁出現『饕』"
+      ],
+      "characters": [
+        "ruan-qingwu",
+        "shidan",
+        "xiao-chengji",
+        "lao-cui",
+        "douzi",
+        "e-gui",
+        "yuan-niang",
+        "s01-hui-dou",
+        "s01-pan",
+        "s01-qing-san",
+        "s01-jing-yao",
+        "s01-deng-yao",
+        "s01-han-jin",
+        "s01-wang-da"
+      ],
+      "locations": [
+        "驛站大堂",
+        "驛站院子"
+      ],
+      "state": {
+        "time": "第六十日夜",
+        "knowledge": "食單九道已成；煉過的妖會變成沒有臉的煙往南飄；食單最後一頁寫著『饕』；蕭承霽沒有軍職了。",
+        "carry_forward": "『饕』、飄向南方的無臉影子、皇都會記得她、傘妖等的女孩在州城"
+      }
+    }
+  ]
+}
