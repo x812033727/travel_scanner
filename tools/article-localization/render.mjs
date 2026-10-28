@@ -7,7 +7,7 @@ import process from 'node:process';
 import sharp from 'sharp';
 import { fileURLToPath } from 'node:url';
 import { loadBoundJob, finishRenderBinding } from './artifact-integrity.mjs';
-import { containerFor, contains, layoutIssues, MIN_FONT_PX } from './render-layout.mjs';
+import { containerFor, layoutIssues, MIN_FONT_PX, needsFontFit } from './render-layout.mjs';
 
 const args = process.argv.slice(2);
 if (args.length !== 2 || args[0] !== '--job') throw new Error('Usage: node tools/article-localization/render.mjs --job <staged job directory>');
@@ -69,7 +69,7 @@ try {
         const originalText = original.text[textIndex];
         if (!originalText) return;
         const container = containerFor(original, originalText) ?? { left: 0, top: 0, right: size.width, bottom: size.height, width: size.width, height: size.height };
-        if (contains(container, text.box)) return;
+        if (!needsFontFit(container, originalText.box, text.box)) return;
         const horizontalRoom = Math.max(1, container.right - container.left - 12);
         const verticalRoom = Math.max(1, container.bottom - container.top - 8);
         const ratio = Math.min(horizontalRoom / text.box.width, verticalRoom / text.box.height, 0.9);
