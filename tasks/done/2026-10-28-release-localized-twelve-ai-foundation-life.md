@@ -1,13 +1,13 @@
 ---
 id: 2026-10-28-release-localized-twelve-ai-foundation-life
 title: Release localized twelve AI foundation life guides
-status: in-progress
+status: done
 priority: P1
 area: docs
 owner: codex-gpt6-ai-foundations-release
 claimed_at: 2026-10-28T11:01:31Z
 created_at: 2026-10-28T07:58:43Z
-completed_at:
+completed_at: 2026-10-28T13:25:21Z
 branch: codex/release-ai-foundations-20261028
 depends_on:
   - 2026-10-28-localize-twelve-ai-foundation-life-guides
@@ -26,12 +26,12 @@ task owns the guarded release and its public acceptance evidence.
 
 ## Definition of done
 
-- [ ] The exact merged content revision has green checks and is present in the deployed revision.
-- [ ] A fresh production snapshot, publish holds, source versions and a pinned native bundle authorize exactly 48 missing target locale rows.
-- [ ] The owner approves the concrete deployment/publication scope; a fresh database backup is verified before any production write.
-- [ ] All four native publisher phases and their replay pass, with no pending journal operation and no change to the twelve zh-TW sources.
-- [ ] All sixty public pages pass document/image/canonical/hreflang/link checks and actual desktop/mobile visual acceptance.
-- [ ] Only sanitized release evidence is committed under the declared release directory.
+- [x] The exact merged content revision has green checks and is present in the deployed revision.
+- [x] A fresh production snapshot, publish holds, source versions and a pinned native bundle authorize exactly 48 missing target locale rows.
+- [x] The owner approves the concrete deployment/publication scope; a fresh database backup is verified before any production write.
+- [x] All four native publisher phases and their replay pass, with no pending journal operation and no change to the twelve zh-TW sources.
+- [x] All sixty public pages pass document/image/canonical/hreflang/link checks and actual desktop/mobile visual acceptance.
+- [x] Only sanitized release evidence is committed under the declared release directory.
 
 ## Steps
 
@@ -39,11 +39,11 @@ task owns the guarded release and its public acceptance evidence.
 - [x] Inspect the full pending deployment range, migrations, active hold/lock state and production publish holds before proposing deployment.
 - [x] Bind a fresh repeatable-read snapshot, source versions and current absence of target rows to the reviewed native bundle; stop on drift.
 - [x] Run a candidate-only native dry-run against production state and present the exact create/publish counts for owner approval.
-- [ ] Repeat native dry-run after verifying the actual deployed runtime; never reuse the candidate journal for publication.
-- [ ] Take and verify a fresh pg_dump backup, then deploy the approved content revision under the release driver's hold ownership.
-- [ ] Execute drafts, publish-articles and publish-hubs using the same bundle, baseline, manifest SHA and durable state directory; rebuild/check links.
-- [ ] Reconcile database rows and journal, replay without writes, verify all public pages/images and inspect desktop/mobile screenshots.
-- [ ] Write README.md and evidence.json, close this task in the evidence PR, and remove only the release driver's own hold after successful final verification.
+- [x] Repeat native dry-run after verifying the actual deployed runtime; never reuse the candidate journal for publication.
+- [x] Take and verify a fresh pg_dump backup, then deploy the approved content revision under the release driver's hold ownership.
+- [x] Execute drafts, publish-articles and publish-hubs using the same bundle, baseline, manifest SHA and durable state directory; rebuild/check links.
+- [x] Reconcile database rows and journal, replay without writes, verify all public pages/images and inspect desktop/mobile screenshots.
+- [x] Write README.md and evidence.json, close this task in the evidence PR, and remove only the release driver's own hold after successful final verification.
 
 ## How to verify
 
@@ -125,3 +125,64 @@ persistent directory outside Git. Inspect release-safety CI with real PostgreSQL
 - The four extra API shard warnings match the existing aiosqlite teardown family.
   Follow-up task `2026-10-28-close-sqlite-test-engines-before-event` preserves that
   test-quality work separately; no warning suppression is part of this release.
+
+- Actual guarded backup completed at 12:06:05 UTC: full dump 566709335 bytes,
+  SHA `73986f5b6671a71b73b160fdf912826db89a3c0bf5351bbd1b1510557e8e09c3`.
+  Both pg_dump and a real isolated pg_restore exited zero; fresh source/schema
+  comparisons passed. The dump remains on the host.
+- Actual deployment completed at 12:11:16 UTC to `911443f2d0fb`; native deployment
+  exit zero and health 3/3. All eleven services sharing the API image were checked
+  against the new image, and installed runtime dependency versions matched the
+  repair. The unchanged verifier's expected own-hold/lock failure is retained;
+  a final unlocked zero-failure verifier is still required after acceptance.
+- New-image isolated rehearsal completed at 12:26:35 UTC, including the four
+  native phases and exact whole-database replay. This does not itself publish
+  production translations. Fresh production dry-run/link baseline is in progress.
+- Production publication and same-journal replay completed at 12:32:14 UTC:
+  48 target documents are public v2; all 60 five-language documents match their
+  expected versions and authored hashes. The twelve complete source rows and
+  selected state/history remain unchanged. The journal has no pending operation.
+- Link maintenance completed at 12:35:36 UTC. All 140 added findings (35 per
+  target language, zero zh-TW) are authored references from this cohort to other
+  articles without a published version in the same locale. Unexpected new findings: zero.
+  Actual public API/DOM plain-text confirmation remains part of acceptance.
+- Independent actual-publication review passed; downloaded evidence transfer
+  verified all 1864 files. The public collector is now running with the sealed
+  collector and actual publication gate; visual acceptance is not yet claimed.
+- Final acceptance supersedes the earlier pending observations: all 60 public
+  documents, 168 verified public media files and 120 original desktop/mobile screenshots
+  passed mechanical checks and three independent visual reviews. All 140 new
+  unpublished-reference findings were confirmed as authored, non-clickable plain
+  text using saved API resolution and actual DOM evidence.
+- One of the 460 request-start intervals measured 1299 ms against the configured
+  1300 ms minimum. The original strict failure remains intact. Independent review
+  and a hash-bound operational decision accepted this exact one-millisecond
+  deviation for content acceptance; strict pacing remains explicitly false.
+  All 461 actual requests returned 200 and none overlapped. This is not a general
+  threshold change or an owner waiver. The unclaimed settled-chrome follow-up
+  preserves future capture-readiness and deadline-recheck work.
+- The original Simplified Chinese inference desktop capture showed a loading
+  header. A separate settled-header PNG was actually viewed and accepted, with
+  its 19 HTTP 200 requests and an earlier local selector failure preserved. The
+  English SFT desktop copyright-strip boundary and mobile horizontal regions
+  remain explicit visual-review limitations; original images were not replaced.
+- Finalization completed at 13:16:29 UTC. Fresh runtime, all 60 database documents,
+  all twelve complete source rows and the actual publisher journal passed again.
+  Only the driver's own hold was cleared. The unchanged final host verifier
+  returned 11 PASS / 0 FAIL; the full backup and isolated restored sandbox remain
+  on the host. Final receipt SHA-256:
+  `96fe30d5420cb6e044a852e1e5c5ffc247c73caf67b0d30ad65eac47ecf1aa06`.
+  Actual QA receipt SHA-256:
+  `dfd03cec4282d1424bf64108a77c76d93263d7b6cf661b19099dbfa87f2433e5`.
+- A fresh complete public-sitemap enumeration found 48 missing travel-information
+  locale versions across twelve articles and 2616 missing life locale versions
+  across 654 articles. This 2664 total is a captured public view, not an atomic
+  database census or a claim that draft rows are absent. The broader localization
+  backlog is not complete.
+- Native `report_progress.py` exited zero with all seven stages completed 48/48,
+  zero article-locale issues and zero batch evidence errors. It uses the original
+  baseline, reviewed jobs, bundle, actual publication journal and a new reviewed
+  browser wrapper. Original evidence hashes remain unchanged. This is historical
+  journal accounting, not a further live database query; detailed QA retains the
+  explicit timing deviation. Progress JSON SHA-256:
+  `0c095660f87dc2a806db0af092aff65058db5cb26d21ee2422c0ca0a9fc85abb`.
