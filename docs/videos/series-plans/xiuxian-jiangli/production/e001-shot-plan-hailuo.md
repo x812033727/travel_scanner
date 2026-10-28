@@ -2,8 +2,8 @@
 
 - 路線：Hailuo Pro，Hailuo H3 2k（12 點／秒）；秒數依據：lint 的估法（estimateTimeline）；尾巴把手 0.5 s；clip take 上限 2
 - 45 鏡：clip 42、still 3、切 0；clip 風險 A 23、B 19、C 0；約 92.1 s
-- 片段：買 169 s，利用率 51%；一次 2028 點、期望 2711 點、上限 4056 點（月費攤 US$24.78／33.13／49.56；占月額 45%／60%／90%）
-- 伺服器端（設定圖、關鍵影格與其 judge、音樂）：一次 US$7.71、上限 US$21.82
+- 片段：買 238 s，利用率 36%；一次 2856 點、期望 3830 點、上限 5712 點（月費攤 US$34.90／46.81／69.80；占月額 63%／85%／127%）
+- 伺服器端（設定圖、關鍵影格與其 judge、音樂）：一次 US$7.86、上限 US$22.11
 - 鏡位：清退 7 個鏡位／8 鏡；半碗飯 11 個鏡位／15 鏡；鍋 10 個鏡位／12 鏡；再一碗 8 個鏡位／10 鏡
 - 關鍵影格 manifest：還沒畫
 
@@ -11,51 +11,51 @@
 
 | 鏡 | 場／鏡位 | 景別、運鏡 | 角色 | 台詞 | 秒 | 類型 | 買 | 首格 | 末格 | 風險 | 一次／期望／上限 |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| s01 | 清退／A | Wide shot, locked | songguanshi, jiangxiaoman | songguanshi：清退名單。 | 2.0 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s02 | 清退／B | Medium close-up, slow push in | songguanshi | songguanshi：念到的，初一下山。 | 2.7 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s03 | 清退／C | Insert of the ledger page, locked | — | songguanshi：第一個， | 1.7 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s04 | 清退／D | Close-up, locked | jiangxiaoman | songguanshi：江小滿。 | 1.7 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s05 | 清退／E | Medium shot, locked | jiangxiaoman | jiangxiaoman：我？ | 1.3 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s06 | 清退／F | Medium close-up, locked | songguanshi | songguanshi：三年，沒修為。 ／ songguanshi：妖獸道，自己走。 | 4.0 | clip | 5 | 待畫 | — | B speech.visible-mouth | 60 點／90 點／120 點 |
-| s07 | 清退／A | Wide shot, locked | jiangxiaoman, songguanshi | jiangxiaoman：三十天，妖獸道。 | 2.5 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s08 | 清退／G | Insert of the ladle at his belt, locked | — | （動作 1 s） | 1.0 | clip | 4 | 待畫 | — | B reaction.micro | 48 點／72 點／96 點 |
-| s09 | 半碗飯／A | Wide shot, locked | jiangxiaoman | jiangxiaoman：書，至少能燒。 | 2.2 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
+| s01 | 清退／A | Wide shot, locked | songguanshi, jiangxiaoman | songguanshi：清退名單。 | 2.0 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s02 | 清退／B | Medium close-up, slow push in | songguanshi | songguanshi：念到的，初一下山。 | 2.7 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s03 | 清退／C | Insert of the ledger page, locked | — | songguanshi：第一個， | 1.7 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s04 | 清退／D | Close-up, locked | jiangxiaoman | songguanshi：江小滿。 | 1.7 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s05 | 清退／E | Medium shot, locked | jiangxiaoman | jiangxiaoman：我？ | 1.3 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s06 | 清退／F | Medium close-up, locked | songguanshi | songguanshi：三年，沒修為。 ／ songguanshi：妖獸道，自己走。 | 4.0 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s07 | 清退／A | Wide shot, locked | jiangxiaoman, songguanshi | jiangxiaoman：三十天，妖獸道。 | 2.5 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s08 | 清退／G | Insert of the ladle at his belt, locked | — | （動作 1 s） | 1.0 | clip | 6 | 待畫 | — | B reaction.micro | 72 點／108 點／144 點 |
+| s09 | 半碗飯／A | Wide shot, locked | jiangxiaoman | jiangxiaoman：書，至少能燒。 | 2.2 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
 | s10 | 半碗飯／B | Insert of the book and the stove mouth, slow push in | — | （動作 2 s） | 2.0 | still | — | 待畫 | — | A | — |
-| s11 | 半碗飯／C | Close-up, slow push in | jiangxiaoman | jiangxiaoman：一天一碗，撐三十天。 | 2.9 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s12 | 半碗飯／D | Wide shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：誰？ | 1.3 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s13 | 半碗飯／E | Close-up, slow push in | shenzhaoxue | jiangxiaoman：……沈首席？ | 1.7 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s14 | 半碗飯／F | Medium close-up, locked | shenzhaoxue | shenzhaoxue：別叫。 | 1.5 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s15 | 半碗飯／G | Two-shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：先進來。 | 1.7 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s16 | 半碗飯／A | Wide shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：飯，只有一半。 | 2.2 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s17 | 半碗飯／H | Close-up, locked | shenzhaoxue | shenzhaoxue：你自己呢？ | 2.0 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s18 | 半碗飯／I | Medium close-up, locked | jiangxiaoman | jiangxiaoman：我吃過了。 | 2.0 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
+| s11 | 半碗飯／C | Close-up, slow push in | jiangxiaoman | jiangxiaoman：一天一碗，撐三十天。 | 2.9 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s12 | 半碗飯／D | Wide shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：誰？ | 1.3 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s13 | 半碗飯／E | Close-up, slow push in | shenzhaoxue | jiangxiaoman：……沈首席？ | 1.7 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s14 | 半碗飯／F | Medium close-up, locked | shenzhaoxue | shenzhaoxue：別叫。 | 1.5 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s15 | 半碗飯／G | Two-shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：先進來。 | 1.7 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s16 | 半碗飯／A | Wide shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：飯，只有一半。 | 2.2 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s17 | 半碗飯／H | Close-up, locked | shenzhaoxue | shenzhaoxue：你自己呢？ | 2.0 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s18 | 半碗飯／I | Medium close-up, locked | jiangxiaoman | jiangxiaoman：我吃過了。 | 2.0 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
 | s19 | 半碗飯／J | Insert of the bowl changing hands, slow push in | — | （動作 2 s） | 2.0 | still | — | 待畫 | — | A | — |
-| s20 | 半碗飯／K | Medium close-up, slow push in | shenzhaoxue | shenzhaoxue：……粗米。 | 1.5 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s21 | 半碗飯／I | Medium close-up, locked | jiangxiaoman | jiangxiaoman：碎靈米，最便宜的。 | 2.7 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s22 | 半碗飯／H | Close-up, locked | shenzhaoxue | shenzhaoxue：你叫什麼？ | 2.0 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s23 | 半碗飯／I | Medium close-up, locked | jiangxiaoman | jiangxiaoman：江小滿。 ／ jiangxiaoman：雜役院的。 | 3.0 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s24 | 鍋／A | Insert of the book under his hand, locked | — | （動作 2 s） | 2.0 | clip | 4 | 待畫 | — | B physics.fluid | 48 點／72 點／96 點 |
-| s25 | 鍋／B | Close-up, locked | jiangxiaoman | jiangxiaoman：燙燙燙！ | 1.7 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s26 | 鍋／C | Wide shot, slow push in | jiangxiaoman, shenzhaoxue | xianlu：百工仙錄，開啟。 | 2.5 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s27 | 鍋／B | Close-up, locked | shenzhaoxue | shenzhaoxue：仙錄？ | 1.5 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s28 | 鍋／D | Insert of the stove top, low angle, locked | — | xianlu：獎勵：壓力鍋。 | 2.2 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s29 | 鍋／E | Medium close-up, locked | jiangxiaoman | jiangxiaoman：……鍋？ | 1.3 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s30 | 鍋／B | Close-up, locked | jiangxiaoman | jiangxiaoman：我要的是修為。 | 2.5 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
+| s20 | 半碗飯／K | Medium close-up, slow push in | shenzhaoxue | shenzhaoxue：……粗米。 | 1.5 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s21 | 半碗飯／I | Medium close-up, locked | jiangxiaoman | jiangxiaoman：碎靈米，最便宜的。 | 2.7 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s22 | 半碗飯／H | Close-up, locked | shenzhaoxue | shenzhaoxue：你叫什麼？ | 2.0 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s23 | 半碗飯／I | Medium close-up, locked | jiangxiaoman | jiangxiaoman：江小滿。 ／ jiangxiaoman：雜役院的。 | 3.0 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s24 | 鍋／A | Insert of the book under his hand, locked | — | （動作 2 s） | 2.0 | clip | 5 | 待畫 | — | B physics.fluid | 60 點／90 點／120 點 |
+| s25 | 鍋／B | Close-up, locked | jiangxiaoman | jiangxiaoman：燙燙燙！ | 1.7 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s26 | 鍋／C | Wide shot, slow push in | jiangxiaoman, shenzhaoxue | narrator：百工仙錄，開啟。 | 2.5 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s27 | 鍋／B | Close-up, locked | shenzhaoxue | shenzhaoxue：仙錄？ | 1.5 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s28 | 鍋／D | Insert of the stove top, low angle, locked | — | narrator：獎勵：壓力鍋。 | 2.2 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s29 | 鍋／E | Medium close-up, locked | jiangxiaoman | jiangxiaoman：……鍋？ | 1.3 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s30 | 鍋／B | Close-up, locked | jiangxiaoman | jiangxiaoman：我要的是修為。 | 2.5 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
 | s31 | 鍋／F | Insert of the book on the stove, slow push in | — | jiangxiaoman：換一個行不行？ | 2.5 | still | — | 待畫 | — | A | — |
-| s32 | 鍋／G | Medium shot, locked | jiangxiaoman | jiangxiaoman：算了，煮飯。 | 2.0 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s33 | 鍋／H | Insert of the valve knob, locked | — | （動作 2 s） | 2.0 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s34 | 鍋／I | Wide shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：好了？ | 1.5 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s35 | 鍋／J | Insert of the ladle in the pot, locked | — | （動作 2 s） | 2.0 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s36 | 再一碗／A | Medium close-up, locked | shenzhaoxue | jiangxiaoman：怎麼樣？ | 1.7 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s37 | 再一碗／B | Close-up, slow push in | shenzhaoxue | （動作 2 s） | 2.0 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s38 | 再一碗／C | Insert of the bowl on the table, locked | — | shenzhaoxue：再一碗。 | 1.7 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s39 | 再一碗／D | Wide shot, locked | jiangxiaoman, shenzhaoxue | xianlu：靈力恢復，百分之三。 | 2.9 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s40 | 再一碗／B | Close-up, slow push in | jiangxiaoman | jiangxiaoman：這鍋…… ／ jiangxiaoman：是仙器？ | 2.5 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s41 | 再一碗／E | Insert of the valve knob, locked | — | （動作 1 s） | 1.0 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s42 | 再一碗／F | Medium shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：這鍋還會叫？！ | 2.2 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s43 | 再一碗／B | Close-up, slow push in | — | xianlu：百工仙錄，第二次開啟。 | 3.2 | clip | 4 | 待畫 | — | A | 48 點／58 點／96 點 |
-| s44 | 再一碗／G | Extreme close-up, locked | jiangxiaoman | jiangxiaoman：第二次？ | 1.7 | clip | 4 | 待畫 | — | B speech.visible-mouth | 48 點／72 點／96 點 |
-| s45 | 再一碗／H | Close-up, locked | shenzhaoxue | （動作 2 s） | 2.0 | clip | 4 | 待畫 | — | B reaction.micro | 48 點／72 點／96 點 |
+| s32 | 鍋／G | Medium shot, locked | jiangxiaoman | jiangxiaoman：算了，煮飯。 | 2.0 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s33 | 鍋／H | Insert of the valve knob, locked | — | （動作 2 s） | 2.0 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s34 | 鍋／I | Wide shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：好了？ | 1.5 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s35 | 鍋／J | Insert of the ladle in the pot, locked | — | （動作 2 s） | 2.0 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s36 | 再一碗／A | Medium close-up, locked | shenzhaoxue | jiangxiaoman：怎麼樣？ | 1.7 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s37 | 再一碗／B | Close-up, slow push in | shenzhaoxue | （動作 2 s） | 2.0 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s38 | 再一碗／C | Insert of the bowl on the table, locked | — | shenzhaoxue：再一碗。 | 1.7 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s39 | 再一碗／D | Wide shot, locked | jiangxiaoman, shenzhaoxue | narrator：靈力恢復，百分之三。 | 2.9 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s40 | 再一碗／B | Close-up, slow push in | jiangxiaoman | jiangxiaoman：這鍋…… ／ jiangxiaoman：是仙器？ | 2.5 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s41 | 再一碗／E | Insert of the valve knob, locked | — | （動作 1 s） | 1.0 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s42 | 再一碗／F | Medium shot, locked | jiangxiaoman, shenzhaoxue | jiangxiaoman：這鍋還會叫？！ | 2.2 | clip | 6 | 待畫 | — | A | 72 點／86 點／144 點 |
+| s43 | 再一碗／B | Close-up, slow push in | — | narrator：百工仙錄，第二次開啟。 | 3.2 | clip | 5 | 待畫 | — | A | 60 點／72 點／120 點 |
+| s44 | 再一碗／G | Extreme close-up, locked | jiangxiaoman | jiangxiaoman：第二次？ | 1.7 | clip | 6 | 待畫 | — | B speech.visible-mouth | 72 點／108 點／144 點 |
+| s45 | 再一碗／H | Close-up, locked | shenzhaoxue | （動作 2 s） | 2.0 | clip | 5 | 待畫 | — | B reaction.micro | 60 點／90 點／120 點 |
 
 ## 風險與重設計
 
@@ -100,7 +100,7 @@
 
 ## 承諾與連戲鎖（鎖定時寫進 plan/lock.json）
 
-- 承諾（類型、買幾秒、路線、fit）：s01 clip 4 s、s02 clip 4 s、s03 clip 4 s、s04 clip 4 s、s05 clip 4 s、s06 clip 5 s、s07 clip 4 s、s08 clip 4 s、s09 clip 4 s、s10 still、s11 clip 4 s、s12 clip 4 s、s13 clip 4 s、s14 clip 4 s、s15 clip 4 s、s16 clip 4 s、s17 clip 4 s、s18 clip 4 s、s19 still、s20 clip 4 s、s21 clip 4 s、s22 clip 4 s、s23 clip 4 s、s24 clip 4 s、s25 clip 4 s、s26 clip 4 s、s27 clip 4 s、s28 clip 4 s、s29 clip 4 s、s30 clip 4 s、s31 still、s32 clip 4 s、s33 clip 4 s、s34 clip 4 s、s35 clip 4 s、s36 clip 4 s、s37 clip 4 s、s38 clip 4 s、s39 clip 4 s、s40 clip 4 s、s41 clip 4 s、s42 clip 4 s、s43 clip 4 s、s44 clip 4 s、s45 clip 4 s。鎖定後 clip 改成 still、切或 fit freeze，drama_preflight.mjs 以 exit 1 擋，直到站主的變更單
+- 承諾（類型、買幾秒、路線、fit）：s01 clip 6 s、s02 clip 6 s、s03 clip 5 s、s04 clip 5 s、s05 clip 6 s、s06 clip 6 s、s07 clip 6 s、s08 clip 6 s、s09 clip 6 s、s10 still、s11 clip 6 s、s12 clip 6 s、s13 clip 5 s、s14 clip 6 s、s15 clip 6 s、s16 clip 6 s、s17 clip 6 s、s18 clip 6 s、s19 still、s20 clip 6 s、s21 clip 6 s、s22 clip 6 s、s23 clip 6 s、s24 clip 5 s、s25 clip 6 s、s26 clip 5 s、s27 clip 6 s、s28 clip 5 s、s29 clip 6 s、s30 clip 6 s、s31 still、s32 clip 6 s、s33 clip 5 s、s34 clip 6 s、s35 clip 5 s、s36 clip 5 s、s37 clip 5 s、s38 clip 5 s、s39 clip 6 s、s40 clip 6 s、s41 clip 5 s、s42 clip 6 s、s43 clip 5 s、s44 clip 6 s、s45 clip 5 s。鎖定後 clip 改成 still、切或 fit freeze，drama_preflight.mjs 以 exit 1 擋，直到站主的變更單
 - s01：時刻 「dawn」「morning」
 - s02：接 s01；時刻 「dawn」「morning」
 - s03：接 s01、s02；時刻 「dawn」「morning」
@@ -133,9 +133,9 @@
 - s30：接 s24、s25、s26、s27、s28、s29；道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」、時刻 「night」
 - s31：接 s24、s25、s26、s27、s28、s29、s30；道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」「pages」、時刻 「night」
 - s32：接 s24、s25、s26、s27、s28、s29、s30、s31；道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」、時刻 「night」
-- s33：接 s24、s25、s26、s27、s28、s29、s30、s31、s32；道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」、時刻 「night」
+- s33：接 s24、s25、s26、s27、s28、s29、s30、s31、s32；時刻 「night」
 - s34：接 s24、s25、s26、s27、s28、s29、s30、s31、s32、s33；道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」、時刻 「night」
-- s35：接 s24、s25、s26、s27、s28、s29、s30、s31、s32、s33、s34；道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」、時刻 「night」
+- s35：接 s24、s25、s26、s27、s28、s29、s30、s31、s32、s33、s34；道具 「book」「tattered book」「bowl」「cracked bowl」、時刻 「night」
 - s36：道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」、時刻 「night」
 - s37：接 s36；道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」、時刻 「night」
 - s38：接 s36、s37；道具 「book」「tattered book」「bowl」「cracked bowl」「chopsticks」、時刻 「night」
@@ -149,519 +149,531 @@
 
 ## 定稿正文（照貼；鎖定後改字要走變更單）
 
-負面欄（網頁真的有負面欄才貼；沒有就不貼，否定句會被畫成正向）：`photograph, live action, real person, flat 2D anime, sketch, text, subtitles, watermark, logo, UI panel, extra fingers, deformed hands, blood, gore, wounds, nudity, cleavage, see-through clothing, bare back, wet clothes`
+負面欄（網頁真的有負面欄才貼；沒有就不貼，否定句會被畫成正向）：`chibi, child, clay, toy, doll, figurine, mannequin, plastic, flat anime, photo, live action, text, watermark, extra fingers, blood, nudity, cleavage, wet clothes`
 
-### s01：買 4 s，首格：待畫
-
-```text
-For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
-
-integrated_multimodal_description: [Shot 1] Steward Song speaks a short Mandarin line, 「清退名單。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lowers the ledger a hand's width and looks along the line. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
-overall_soundscape: N/A
-non_diegetic_music: N/A
-```
-
-610 字，sha256 8d19abf52f115ce2
-
-### s02：買 4 s，首格：待畫
+### s01：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Steward Song speaks a short Mandarin line, 「念到的，初一下山。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lifts his chin and narrows his eyes. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. Steward Song speaks a short Mandarin line, 「清退名單。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lowers the ledger a hand's width and looks along the line. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-593 字，sha256 73c313f0267f94a2
+600 字，sha256 a6fd30656c091897
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s03：買 4 s，首格：待畫
+### s02：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] The bony forefinger comes down and presses hard on the first column of the page. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Steward Song speaks a short Mandarin line, 「念到的，初一下山。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lifts his chin and narrows his eyes. The camera pushes in with small amplitude at slow speed. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-482 字，sha256 9d71254f31a8fe7b
+606 字，sha256 99865a235b05142e
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s04：買 4 s，首格：待畫
+### s03：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman's easy look freezes and his eyes go wide as he hears his own name. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. The bony forefinger comes down and presses hard on the first column of the page. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-482 字，sha256 de9d793e1f13584e
+441 字，sha256 e6b720385bd0eb4b
 
-### s05：買 4 s，首格：待畫
+### s04：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「我？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, pointing at his own nose while the servants on both sides edge a step away from him. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman's easy look freezes and his eyes go wide as he hears his own name. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-629 字，sha256 8bf4d58986835aed
+471 字，sha256 0e8b15050b9dfd0a
 
-### s06：買 5 s，首格：待畫
+### s05：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Steward Song speaks 2 short Mandarin lines, 「三年，沒修為。」 then 「妖獸道，自己走。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then flicks his sleeve toward the mountain gate. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「我？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, pointing at his own nose while the servants on both sides edge a step away from him. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-614 字，sha256 a6b64f57254aba17
+618 字，sha256 fdfc301f550089ea
 
-### s07：買 4 s，首格：待畫
+### s06：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「三十天，妖獸道。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes to himself as the last servant walks past him and Steward Song walks away toward the right edge of frame. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Steward Song speaks 2 short Mandarin lines, 「三年，沒修為。」 then 「妖獸道，自己走。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then flicks his sleeve toward the mountain gate. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-655 字，sha256 bbba2e34a07b98c0
+603 字，sha256 e9c63c72d0dd5034
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s08：買 4 s，首格：待畫
+### s07：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] His right hand tightens on the ladle handle until the knuckles whiten, then lets go. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「三十天，妖獸道。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes to himself as the last servant walks past him and Steward Song walks away toward the right edge of frame. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-486 字，sha256 e1a1499865759642
+645 字，sha256 394907ede7dddbaa
 
-### s09：買 4 s，首格：待畫
+### s08：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「書，至少能燒。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then feeds the torn page into the stove mouth and the flames flare up. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. His right hand tightens on the ladle handle until the knuckles whiten, then lets go. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-620 字，sha256 77374f03f47bc9ab
+445 字，sha256 c578b52226243c35
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s11：買 4 s，首格：待畫
+### s09：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「一天一碗，撐三十天。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then blows on the rice as if it might multiply. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「書，至少能燒。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then feeds the torn page into the stove mouth and the flames flare up. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-601 字，sha256 7506a472a3fa93a4
+609 字，sha256 0116014cec74054c
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s12：買 4 s，首格：待畫
+### s11：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「誰？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, stops dead and the bucket slips from his hand onto the stone path. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「一天一碗，撐三十天。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then blows on the rice as if it might multiply. The camera pushes in with small amplitude at slow speed. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-611 字，sha256 e871f85e7d376e5f
+614 字，sha256 3967a6aee5584089
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s13：買 4 s，首格：待畫
+### s12：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Shen Zhaoxue's brows draw together faintly and her eyes open a slit toward the voice off screen left. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「誰？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, stops dead and the bucket slips from his hand onto the stone path. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-504 字，sha256 a3486cc0d90395f8
+601 字，sha256 6869e30f084de0fc
 
-### s14：買 4 s，首格：待畫
+### s13：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「別叫。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes herself a hand's width up the wall. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Shen Zhaoxue's brows draw together faintly and her eyes open a slit toward the voice off screen left. The camera pushes in with small amplitude at slow speed. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-591 字，sha256 a43a9c2641c75004
+517 字，sha256 d13a62a2c46e5b1b
 
-### s15：買 4 s，首格：待畫
+### s14：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「先進來。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then holds his forearm out toward her and waits. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Shen Zhaoxue speaks a short Mandarin line, 「別叫。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes herself a hand's width up the wall. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-595 字，sha256 a8f4d6b0684aa596
+580 字，sha256 9455082f8cd29d0c
 
-### s16：買 4 s，首格：待畫
+### s15：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「飯，只有一半。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes the bowl another hand's width toward her. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「先進來。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then holds his forearm out toward her and waits. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-602 字，sha256 dda042e6e85f0790
+585 字，sha256 4c3db7daeff870de
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s17：買 4 s，首格：待畫
+### s16：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「你自己呢？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her gaze steady on him. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「飯，只有一半。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes the bowl another hand's width toward her. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-570 字，sha256 2ff29641211d5fb8
+592 字，sha256 ad5c83c1a3131834
 
-### s18：買 4 s，首格：待畫
+### s17：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「我吃過了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, patting his stomach twice with a grin that is a little too wide. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Shen Zhaoxue speaks a short Mandarin line, 「你自己呢？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her gaze steady on him. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-612 字，sha256 b4d0d8c9b4d02598
+559 字，sha256 a99318cd8b51d54a
 
-### s20：買 4 s，首格：待畫
+### s18：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「……粗米。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then brushes the grain of rice from the corner of her mouth with one knuckle. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「我吃過了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, patting his stomach twice with a grin that is a little too wide. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-625 字，sha256 67c6649031724e00
+601 字，sha256 dd5d744ae0d44cc6
 
-### s21：買 4 s，首格：待畫
+### s20：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「碎靈米，最便宜的。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, rubbing the back of his neck. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Shen Zhaoxue speaks a short Mandarin line, 「……粗米。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then brushes the grain of rice from the corner of her mouth with one knuckle. The camera pushes in with small amplitude at slow speed. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-581 字，sha256 ac4ab22381e34023
+638 字，sha256 6122d9279c31561d
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s22：買 4 s，首格：待畫
+### s21：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「你叫什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her gaze steady on him. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「碎靈米，最便宜的。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, rubbing the back of his neck. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-570 字，sha256 ef30cfbaceb04039
+570 字，sha256 41fbbd468b685b2a
 
-### s23：買 4 s，首格：待畫
+### s22：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks 2 short Mandarin lines, 「江小滿。」 then 「雜役院的。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, straightening his back a little. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Shen Zhaoxue speaks a short Mandarin line, 「你叫什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her gaze steady on him. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-593 字，sha256 132d524c53bf831e
+559 字，sha256 6b3972b1329b2d79
 
-### s24：買 4 s，首格：待畫
+### s23：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] The moment the hand closes on the book its dark cover lights up from inside with blue-gold light that spills between his fingers. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks 2 short Mandarin lines, 「江小滿。」 then 「雜役院的。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, straightening his back a little. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-531 字，sha256 1c78a1ec622cc0b4
+582 字，sha256 7629693fb63f1f92
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s25：買 4 s，首格：待畫
+### s24：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「燙燙燙！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, shaking his right hand hard and blowing on his fingers. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. The moment the hand closes on the book its dark cover lights up from inside with blue-gold light that spills between his fingers. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-602 字，sha256 d6402a7b2de6be12
+490 字，sha256 fb1f8e4358ab838e
 
-### s26：買 4 s，首格：待畫
+### s25：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] The book's pages flip faster and a column of blue-gold light rises from them toward the ceiling while Jiang Xiaoman leans further back and Shen Zhaoxue rises to one knee. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「燙燙燙！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, shaking his right hand hard and blowing on his fingers. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-573 字，sha256 4b5d9cd74a531bcf
+591 字，sha256 1034d69f1263d927
 
-### s27：買 4 s，首格：待畫
+### s26：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Shen Zhaoxue speaks a short Mandarin line, 「仙錄？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her eyes narrowing further. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. The book's pages flip faster and a column of blue-gold light rises from them toward the ceiling while Jiang Xiaoman leans further back and Shen Zhaoxue rises to one knee. The camera pushes in with small amplitude at slow speed. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-572 字，sha256 bae3f7ba9567c926
+587 字，sha256 d46cb3a2ddfbd7e5
 
-### s28：買 4 s，首格：待畫
+### s27：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] The iron pot drops the last hand's width out of the light and lands on the stove with a heavy bounce, its lid rattling once, and the blue-gold light fades out. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Shen Zhaoxue speaks a short Mandarin line, 「仙錄？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her eyes narrowing further. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-561 字，sha256 2c5b1e126ca5c717
+561 字，sha256 d33040587ecc9d41
 
-### s29：買 4 s，首格：待畫
+### s28：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「……鍋？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pokes the domed lid once with the tip of the ladle. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. The iron pot drops the last hand's width out of the light and lands on the stove with a heavy bounce, its lid rattling once, and the blue-gold light fades out. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-602 字，sha256 4310b74cdad53fa8
+520 字，sha256 fa1800036594bc02
 
-### s30：買 4 s，首格：待畫
+### s29：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「我要的是修為。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, flatly, to the book. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「……鍋？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pokes the domed lid once with the tip of the ladle. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-570 字，sha256 b62cb166724a5bee
+591 字，sha256 ca9df69557acf150
 
-### s32：買 4 s，首格：待畫
+### s30：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「算了，煮飯。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then dumps the whole bag of grey rice into the pot and slams the domed lid down. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「我要的是修為。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, flatly, to the book. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-629 字，sha256 72ea56ce34e50612
+559 字，sha256 76c801695dd82ab5
 
-### s33：買 4 s，首格：待畫
+### s32：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] The brass valve knob begins to spin and a thin jet of white steam shoots straight up from it. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「算了，煮飯。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then dumps the whole bag of grey rice into the pot and slams the domed lid down. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-495 字，sha256 8448b3293664fe99
+618 字，sha256 20ea4451b3e228e0
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s34：買 4 s，首格：待畫
+### s33：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「好了？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, lifting the lid clear as a burst of steam rolls out across the hut. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. The brass valve knob begins to spin and a thin jet of white steam shoots straight up from it. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-613 字，sha256 08c82c1c58dfa979
+454 字，sha256 ac6857ef397c5dcc
 
-### s35：買 4 s，首格：待畫
+### s34：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] A heap of glistening rice rises out of the pot on the wooden ladle toward the cracked bowl, golden motes drifting up with the steam. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「好了？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, lifting the lid clear as a burst of steam rolls out across the hut. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-534 字，sha256 54420dc3097e1f0c
+603 字，sha256 b13daf0d5abb569f
 
-### s36：買 4 s，首格：待畫
+### s35：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Shen Zhaoxue's jaw goes still and her eyes widen a fraction, and she slowly lowers the bowl from her chin. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. A heap of glistening rice rises out of the pot on the wooden ladle toward the cracked bowl, golden motes drifting up with the steam. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-508 字，sha256 fedfd457aa4b64f4
+493 字，sha256 439ab8a33246988d
 
-### s37：買 4 s，首格：待畫
+### s36：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Colour creeps back into Shen Zhaoxue's cheeks and lips as she slowly lowers the bowl, her eyes closing for one breath and opening again clear. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Shen Zhaoxue's jaw goes still and her eyes widen a fraction, and she slowly lowers the bowl from her chin. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-545 字，sha256 17982942b8b51105
+497 字，sha256 0f6159975bd53761
 
-### s38：買 4 s，首格：待畫
+### s37：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] The slender pale hand pushes the empty bowl across the table until it bumps against Jiang's hand and lets go. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Colour creeps back into Shen Zhaoxue's cheeks and lips as she slowly lowers the bowl, her eyes closing for one breath and opening again clear. The camera pushes in with small amplitude at slow speed. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-511 字，sha256 4e16bd76f121fd48
+558 字，sha256 98968d9919445f5e
 
-### s39：買 4 s，首格：待畫
+### s38：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman turns the empty bowl over in both hands as if looking for a hole in it, then turns his head toward the steaming pot. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. The slender pale hand pushes the empty bowl across the table until it bumps against Jiang's hand and lets go. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-532 字，sha256 ee929868029aea67
+470 字，sha256 b91c457649e00ad0
 
-### s40：買 4 s，首格：待畫
+### s39：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks 2 short Mandarin lines, 「這鍋……」 then 「是仙器？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, the grin spreading all the way across his face. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. Jiang Xiaoman turns the empty bowl over in both hands as if looking for a hole in it, then turns his head toward the steaming pot. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-608 字，sha256 11bff08ad857416a
+522 字，sha256 3a45f081d7909aa4
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s41：買 4 s，首格：待畫
+### s40：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] The valve knob jams, shudders, and a violent jet of steam blasts straight up from it. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks 2 short Mandarin lines, 「這鍋……」 then 「是仙器？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, the grin spreading all the way across his face. The camera pushes in with small amplitude at slow speed. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-487 字，sha256 70b8f26bed7175af
+621 字，sha256 c8e72c1b6310577f
+- motion 有兩拍（then／分號）：H3 常把 then 畫成切鏡；一鏡一事，或接受 6 秒
 
-### s42：買 4 s，首格：待畫
+### s41：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「這鍋還會叫？！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, stumbling back over the stool while Shen Zhaoxue grips her sword hilt. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. The valve knob jams, shudders, and a violent jet of steam blasts straight up from it. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-620 字，sha256 3cf1bcac3820348a
+446 字，sha256 7de0899c4308d153
 
-### s43：買 4 s，首格：待畫
+### s42：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] The pages settle and fall still, and a single short line of small blue-gold strokes glows into being along the bottom edge of the paper. The camera pushes in with small amplitude at slow speed. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The people shown in <Picture 1> keep the same faces, hair, costumes and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「這鍋還會叫？！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, stumbling back over the stool while Shen Zhaoxue grips her sword hilt. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-539 字，sha256 806d7722bcec7861
+610 字，sha256 d4473504ab7347a5
 
-### s44：買 4 s，首格：待畫
+### s43：買 5 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Jiang Xiaoman speaks a short Mandarin line, 「第二次？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, his eyes flicking from the book toward Shen off screen right. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The scene shown in <Picture 1> keeps its composition, props and set layout as in the first frame. The pages settle and fall still, and a single short line of small blue-gold strokes glows into being along the bottom edge of the paper. The camera pushes in with small amplitude at slow speed. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-608 字，sha256 4a46f6c5d2f3672f
+522 字，sha256 834c696685472817
 
-### s45：買 4 s，首格：待畫
+### s44：買 6 s，首格：待畫
 
 ```text
 For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
 
-integrated_multimodal_description: [Shot 1] Shen Zhaoxue's hand tightens once on the sword hilt and her eyes do not leave the book, her face giving nothing away. The camera is a static shot and stays completely still. Keep the supplied first frame's composition, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Jiang Xiaoman speaks a short Mandarin line, 「第二次？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, his eyes flicking from the book toward Shen off screen right. The camera holds a static shot. One continuous shot.
 overall_soundscape: N/A
 non_diegetic_music: N/A
 ```
 
-519 字，sha256 ef2f51aa06f99070
+597 字，sha256 10b50ce7fd17bfae
+
+### s45：買 5 s，首格：待畫
+
+```text
+For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.
+
+integrated_multimodal_description: [Shot 1] 3D CG. The person shown in <Picture 1> keeps the same face, hair, costume and props as the first frame; the set layout stays as it is. Shen Zhaoxue's hand tightens once on the sword hilt and her eyes do not leave the book, her face giving nothing away. The camera holds a static shot. One continuous shot.
+overall_soundscape: N/A
+non_diegetic_music: N/A
+```
+
+508 字，sha256 a810734a2b4982d2
 
 ## 批次順序
 
-- **小樣**：買 s33, s34, s35；鏡頭 s33, s34, s35；一次 144 點。鎖定包指定的小樣鏡頭：先驗身份、動作、剪接與匯入，站主看過才放量
-- **第 1 場：清退**：買 s02, s06, s08, s01, s03, s04, s05, s07；鏡頭 s01, s02, s03, s04, s05, s06, s07, s08；一次 396 點。母鏡頭先（切鏡等它）、高風險先（早失敗）；這一場做完先停下來看漂移與連戲，再開下一場【檢查點】
-- **第 2 場：半碗飯**：買 s11, s14, s17, s18, s20, s21, s22, s23, s09, s12, s13, s15, s16；鏡頭 s09, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23；一次 624 點。母鏡頭先、高風險先
-- **第 3 場：鍋**：買 s24, s25, s27, s29, s30, s26, s28, s32；鏡頭 s24, s25, s26, s27, s28, s29, s30, s31, s32；一次 384 點。母鏡頭先、高風險先
-- **第 4 場：再一碗**：買 s40, s44, s45, s36, s37, s38, s39, s41, s42, s43；鏡頭 s36, s37, s38, s39, s40, s41, s42, s43, s44, s45；一次 480 點。母鏡頭先、高風險先
+- **小樣**：買 s33, s34, s35；鏡頭 s33, s34, s35；一次 192 點。鎖定包指定的小樣鏡頭：先驗身份、動作、剪接與匯入，站主看過才放量
+- **第 1 場：清退**：買 s02, s06, s08, s01, s03, s04, s05, s07；鏡頭 s01, s02, s03, s04, s05, s06, s07, s08；一次 552 點。母鏡頭先（切鏡等它）、高風險先（早失敗）；這一場做完先停下來看漂移與連戲，再開下一場【檢查點】
+- **第 2 場：半碗飯**：買 s11, s14, s17, s18, s20, s21, s22, s23, s09, s12, s13, s15, s16；鏡頭 s09, s10, s11, s12, s13, s14, s15, s16, s17, s18, s19, s20, s21, s22, s23；一次 924 點。母鏡頭先、高風險先
+- **第 3 場：鍋**：買 s24, s25, s27, s29, s30, s26, s28, s32；鏡頭 s24, s25, s26, s27, s28, s29, s30, s31, s32；一次 540 點。母鏡頭先、高風險先
+- **第 4 場：再一碗**：買 s40, s44, s45, s36, s37, s38, s39, s41, s42, s43；鏡頭 s36, s37, s38, s39, s40, s41, s42, s43, s44, s45；一次 648 點。母鏡頭先、高風險先
 
 ## 槓桿（episode_estimate 的找法，伺服器模型下算）
 
@@ -679,7 +691,6 @@ non_diegetic_music: N/A
 - 可切：s37 從 s11 的素材 0 s 切（data.source），省一支
 - 可切：s39 從 s09 的素材 0 s 切（data.source），省一支
 - 可切：s40 從 s11 的素材 0 s 切（data.source），省一支
-- 可切：s41 從 s33 的素材 2 s 切（data.source），省一支
 - 可切：s42 從 s32 的素材 0 s 切（data.source），省一支
 - 可切：s43 從 s11 的素材 0 s 切（data.source），省一支
 - 可切：s45 從 s17 的素材 2 s 切（data.source），省一支

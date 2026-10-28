@@ -15,7 +15,7 @@
 
 - `h3/manifest-pilot.json`：小樣三支 s33、s34、s35。
 - `h3/manifest.json`：整集 42 支（靜圖 s10、s19、s31 不買）。
-- `h3/prompts/<id>.txt`：鎖定檔（`../e001-plan-lock.json`）的 H3 定稿正文原封不動；每個 job 的 `prompt_sha256` 等於鎖定檔。
+- `gen-h3-manifest.mjs`：從鎖定檔（`../e001-plan-lock.json`，由 `<VIDEO_WORKDIR>/xiuxian-jiangli-e001/plan/lock.json` 抄來）產生 `h3/prompts/<id>.txt`（H3 定稿正文原封不動）、`h3/manifest.json`、`h3/manifest-pilot.json`；每個 job 的 `prompt_sha256` 等於鎖定檔，畫布 1312×736，秒數照鎖定檔的 `buy_s`（H3 最少 5 秒、說話鏡 6 秒）。重鎖之後重跑它。
 - `reference_images` 指 `first-frames/<id>.png`（相對於 manifest 所在目錄，不進 git）：跑之前把通過 judge 的關鍵影格複製成這個名字。
 - 1344×768、24 fps；4 秒會變 4.46 秒、5 秒變 5.17 秒；`assemble` 重編碼進 1080p，畫質沒驗。
 
@@ -34,10 +34,10 @@ node tools/video/cli.mjs login --colab --name "Claude 雲端 session"   # 印驗
 node tools/video/cli.mjs look --slug xiuxian-jiangli-e001 --dry-run && node tools/video/cli.mjs look --slug xiuxian-jiangli-e001
 node tools/video/cli.mjs keyframes --slug xiuxian-jiangli-e001 --dry-run && node tools/video/cli.mjs keyframes --slug xiuxian-jiangli-e001
 
-# 3. 小樣：把 s33–s35 通過 judge 的關鍵影格放到 h3/first-frames/sNN.png，抄餘額，跑
+# 3. 小樣：把 s33–s35 通過 judge 的關鍵影格用 fit_first_frame.sh 裁成 h3/first-frames/sNN.png（1312×736），h3.sh check 過了再抄餘額、跑（profile 預設 smooth）
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh usage
-bash .agents/skills/minimax-h3-colab/scripts/h3.sh batch \
-  --manifest docs/videos/series-plans/xiuxian-jiangli/production/colab/h3/manifest-pilot.json \
+cd docs/videos/series-plans/xiuxian-jiangli/production/colab/h3 && bash ../../../../../../../.agents/skills/minimax-h3-colab/scripts/h3.sh batch \
+  --manifest manifest-pilot.json \
   --output-dir <VIDEO_WORKDIR>/xiuxian-jiangli-e001/colab-out --progress <VIDEO_WORKDIR>/xiuxian-jiangli-e001/colab-out/progress.json --timeout 10800
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh usage
 
@@ -59,3 +59,17 @@ node tools/video/cli.mjs clips import --slug xiuxian-jiangli-e001 --shot s33 --f
 3. 輸出 1344×768，不是 1080p；放大畫質沒驗。
 4. Google 帳號的 token 帶 `cloud-platform` scope，而且會交給配對的雲端 session：後台登入的帳號要是沒有 GCP 專案與帳單、只有 Google AI Pro／Ultra 的帳號。
 5. 配對前主機要先部署 #1896（migration 0142、`colab-credentials` 端點、`login --colab`）；沒部署就 `login --colab` 拿不到帶 Colab 旗標的權杖，`bootstrap.sh` 向站台要憑證會 403。
+
+## 小樣結果（2026-10-28，第一次真跑）
+
+| 項 | 實測 |
+| --- | --- |
+| session | `h3-20261028-060722-acfdb4`，A100 高 RAM，`colab new` 經代理成功 |
+| 冷啟動 | 06:07 起、06:09 開始第一鏡：裝 ComfyUI 與抓模型（qwen3vl 14.6 GiB、H3 16 GiB 級、VAE、Turbo LoRA）約 2 分鐘（模型已在快取；第一次抓會更久） |
+| 每支 4 秒（排程 107 幀＝4.46 秒） | s33 5 分 19 秒（含首鏡暖機）、s34 2 分 20 秒、s35 2 分 18 秒 |
+| compute units | `h3.sh usage` 前 1000.00、後 999.31（**0.69 CU，3 支，session 停止後 1 分鐘讀的；Colab 的用量常延遲入帳，下一批前再抄一次**） |
+| 第 0 格對關鍵影格 PSNR | s33 35.4 dB、s34 31.9 dB、s35 32.2 dB（首格 1376×768 被拉到 1344×768，runner 有提醒） |
+| 畫面 | 三支動作都做完：閥門噴氣直上、掀蓋蒸氣撲出而兩人臉同設定圖、勺子把飯倒回鍋；蒸汽沒畫成火、金色光點沒變文字 |
+| 沒驗 | s34 嘴型（要站主聽原音看）；`clips import` 還進不了：`timeline.json` 要 `tts` 先成功，Gemini 語音 01:50Z 起一直 429 |
+
+輸出在 `<VIDEO_WORKDIR>/xiuxian-jiangli-e001/colab-out/`（`s33-t1_mp4_s33.mp4` 等三支，`progress.json` 有 seed）。上游 runner 把 `reference_images` 當成相對於**目前目錄**而不是 manifest，所以 `h3.sh batch` 要在 `h3/` 目錄裡跑（第一次在 repo 根目錄起跑就是這樣失敗的，沒花到點數）。

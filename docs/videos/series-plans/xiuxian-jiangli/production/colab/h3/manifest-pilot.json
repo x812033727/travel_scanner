@@ -1,6 +1,8 @@
 {
  "episode": "xiuxian-jiangli-e001",
- "note": "manifest 給 .agents/skills/minimax-h3-colab 的 h3.sh batch：reference_images 的 first-frames/<id>.png 要先放好（通過 judge 的關鍵影格，或 pilot 手放的首格），prompts/<id>.txt 是鎖定檔的定稿正文原封不動（prompt_sha256 等於 e001-plan-lock.json）；1344×768、24 fps、4 秒會變 4.46 秒。",
+ "generated_from": "e001-plan-lock.json",
+ "locked_at": null,
+ "note": "manifest 給 .agents/skills/minimax-h3-colab 的 h3.sh batch（在 h3/ 目錄裡跑）：reference_images 的 first-frames/<id>.png 要先放好（通過 judge 的關鍵影格經 fit_first_frame.sh 裁成 1312×736），prompts/<id>.txt 是鎖定檔的定稿正文原封不動（prompt_sha256 等於鎖定檔）；秒數照鎖定檔（H3 最少 5 秒、說話鏡 6 秒）；取樣 profile smooth。小樣 s33、s34、s35。",
  "jobs": [
   {
    "id": "s33",
@@ -10,11 +12,11 @@
     "first-frames/s33.png"
    ],
    "prompt_file": "prompts/s33.txt",
-   "duration_seconds": 4,
-   "width": 1344,
-   "height": 768,
+   "duration_seconds": 5,
+   "width": 1312,
+   "height": 736,
    "output_name": "s33-t1.mp4",
-   "prompt_sha256": "8448b3293664fe9903c121d8c78a44e9226b77efecfe27e236ff5ca14cd69c3b"
+   "prompt_sha256": "ac6857ef397c5dcc38229721ca395888cd6a5db880e6232d96380951c2192236"
   },
   {
    "id": "s34",
@@ -24,11 +26,11 @@
     "first-frames/s34.png"
    ],
    "prompt_file": "prompts/s34.txt",
-   "duration_seconds": 4,
-   "width": 1344,
-   "height": 768,
+   "duration_seconds": 6,
+   "width": 1312,
+   "height": 736,
    "output_name": "s34-t1.mp4",
-   "prompt_sha256": "08c82c1c58dfa9795321ed21ca58fd67b918f076c86ffe9120d83dd0c3f652f2"
+   "prompt_sha256": "b13daf0d5abb569f7c32c9ff9ef1d7db5063541664f15b00e538214eb3656f62"
   },
   {
    "id": "s35",
@@ -38,11 +40,11 @@
     "first-frames/s35.png"
    ],
    "prompt_file": "prompts/s35.txt",
-   "duration_seconds": 4,
-   "width": 1344,
-   "height": 768,
+   "duration_seconds": 5,
+   "width": 1312,
+   "height": 736,
    "output_name": "s35-t1.mp4",
-   "prompt_sha256": "54420dc3097e1f0c7ac19dea7e35e3f6e2153b1f09245abadbbe6c23c9363aab"
+   "prompt_sha256": "439ab8a33246988d4c4836f8f1910c502945776447d6862a7164493f50cf6a24"
   }
  ]
 }
