@@ -3,6 +3,14 @@
 // reference donghua never holds a frame), characters come from the dh- portraits, sets from the
 // dh- set pictures. A shot whose speaker is on screen gets the speaking clause first.
 //   node gen-dh.mjs <video.json> <lock.json> <ep> <ff-out.json> <clips-out.json>
+//
+// Clip body since 2026-10-28 (.agents/skills/minimax-h3-colab/references/motion-quality.md §2):
+// `[Shot 1]` opens with the official style word and an anchor sentence that cites <Picture 1>, the
+// speaking clause and the shot's own motion follow, the camera line is the storyboard's own move in
+// the official "type + amplitude + speed" sentence (`locked` stays `holds a static shot`; it used to
+// be rewritten into a push-in), and the fixed "camera keeps moving slowly the whole time" tail is
+// gone. Seconds: 5 by default (4 s = 107 frames, under the 124 frames H3 was trained on), 6 when
+// someone on screen speaks for about 3 s or the motion has two beats; `data.buy_seconds` overrides.
 import { createHash } from "node:crypto";
 import { readFileSync, writeFileSync } from "node:fs";
 
@@ -49,10 +57,36 @@ const EN = { zhengbo: "Steward Zheng", tangwanjin: "Tang Wanjin", weijihuoji: "t
 const PORTRAIT = { tangxiaotang: "dh-tangxiaotang-portrait-t2" };
 const portrait = (id) => PORTRAIT[id] ?? `dh-${id}-portrait-t1`;
 const HER = new Set(["aling", "qinshuang", "tangxiaotang", "xiaohe", "mianshiguan"]);
-const P = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] ";
-const S = " 3D Chinese donghua CG animation with smooth, weighty, expressive character animation; the camera keeps moving slowly the whole time; faces, hair and costumes stay the same; no morphing, no cuts. Keep the supplied first frame's composition, art style, character identities, costumes and props; one continuous shot with no cuts and no on-screen text.\noverall_soundscape: N/A\nnon_diegetic_music: N/A";
+const P = "For the target video, at 0.00 seconds into the target video, <Picture 1> (from [Shot 1]) is fully referenced.\n\nintegrated_multimodal_description: [Shot 1] 3D CG. ";
+const S = " One continuous shot. Smooth, weighty 3D CG character animation; faces, hair and costumes stay as in the first frame.\noverall_soundscape: N/A\nnon_diegetic_music: N/A";
+// Seconds to buy at 12 points a second (H3 2K): 5 s = 124 frames is the trained minimum; a line
+// that fills the shot or a two-beat motion gets 6 s (158 frames). Estimated speech: ~4.3 zh
+// characters a second at the cut's 1.07x tempo, plus the cut's lead, gap and tail.
+const SECONDS_DEFAULT = 5, SECONDS_TALK = 6, POINTS_PER_SECOND = 12, TALK_THRESHOLD = 3.0;
+const speechSeconds = (lines) => (lines.length ? 0.12 + 0.22 + 0.12 * (lines.length - 1) + lines.reduce((a, l) => a + l.text.replace(/[，。！？、…「」\s]/g, "").length / 4.3, 0) : 0);
+const twoBeats = (motion) => /\b(then|after that|and then)\b|;/.test(motion);
+// The storyboard's camera line in the official H3 sentence (type + amplitude + speed; medium is
+// omitted). `locked` is a real choice, not a gap: H3 drifts unless told to hold.
+function cameraSentence(camera) {
+  const c = String(camera ?? "").toLowerCase();
+  const slow = /\b(slow|slowly|gentle|gently|subtle)\b/.test(c);
+  const fast = /\b(fast|quick|quickly|whip|snap)\b/.test(c);
+  const speed = slow ? " with small amplitude at slow speed" : fast ? " at fast speed" : "";
+  if (/\b(locked|static|held still|stays still)\b/.test(c)) return "The camera holds a static shot.";
+  if (/\b(track|tracking|follow|follows|following)\b/.test(c)) return `The camera is a tracking shot that follows the subject${slow ? " at slow speed" : ""}.`;
+  if (/\b(orbit|arc)\b/.test(c)) return `The camera is an arc shot around the subject${speed}.`;
+  if (/\b(push in|dolly in|move in|pushes in)\b/.test(c)) return `The camera pushes in${speed}.`;
+  if (/\b(pull out|pull back|dolly out|pulls out)\b/.test(c)) return `The camera pulls out${speed}.`;
+  if (/\bpan (left|right)\b/.test(c)) return `The camera pans ${/pan left/.test(c) ? "left" : "right"}${speed}.`;
+  if (/\btilt (up|down)\b/.test(c)) return `The camera tilts ${/tilt up/.test(c) ? "up" : "down"}${speed}.`;
+  if (/\btruck (left|right)\b/.test(c)) return `The camera trucks ${/truck left/.test(c) ? "left" : "right"}${speed}.`;
+  if (/\b(zoom in)\b/.test(c)) return `The camera zooms in${speed}.`;
+  if (/\b(zoom out)\b/.test(c)) return `The camera zooms out${speed}.`;
+  return ""; // no camera word: the model decides (write `locked` to hold)
+}
 const ff = [];
 const clips = {};
+const cameraInMotion = [];
 for (const scene of video.scenes) {
   if (scene.template !== "shot" || scene.data.source) continue;
   const d = scene.data;
@@ -90,9 +124,20 @@ for (const scene of video.scenes) {
   const prompt = `${d.prompt}, 16:9 frame. Style: ${modern ? MODERN : STYLE}. Camera: ${d.camera}.${cast.length ? ` Characters: ${cast.join("; ")}.` : ""}${notes.length ? ` Reference images: ${notes.join("; ")}.` : ""} Not a photograph, not live action. No text, no letters, no watermark, no UI.`;
   ff.push({ id: scene.id, kind: "clip", refs: unique.map((n) => `${n}.png`), want: `1 ${20 + unique.length} 創建`, prompt });
 
-  // Clip: the shot's own motion from the plan lock (or the storyboard), with the speaking clause first.
-  let orig = lock.shots[scene.id]?.prompt?.text?.split("[Shot 1] ")[1]?.split(" Natural, realistic human motion")[0] ?? `${d.motion}. ${/push|pull|dolly|track|orbit|pan|tilt/i.test(d.camera) ? `Camera: ${d.camera}.` : "The camera pushes in slowly."}`;
-  orig = orig.replace(/The camera is a static shot[^.]*.|The camera (stays|is held) [^.]*still[^.]*./g, "The camera pushes in slowly.");
+  // Clip: anchor on the first frame, then the speaking clause, the shot's own motion and its own camera move.
+  const english = (d.characters ?? []).filter((id) => DH.has(id)).map((id) => EN[id] ?? C[id]?.name).concat(people.filter((n) => !(d.characters ?? []).some((id) => C[id]?.name === n)).map((n) => EN[Object.keys(C).find((id) => C[id].name === n)] ?? n));
+  const who = [...new Set(english)];
+  const named = who.length ? `${who.join(" and ")} shown in <Picture 1> ${who.length > 1 ? "keep" : "keeps"} the same face, hair, costume and props as the first frame; the set layout stays as it is.` : "The scene shown in <Picture 1> keeps the first frame's set layout and props.";
+  const locked = lock.shots[scene.id]?.prompt?.text?.split("[Shot 1] ")[1]?.split(" Natural, realistic human motion")[0];
+  // A trailing ", the camera panning left toward him" in motion duplicates data.camera: the clip
+  // gets one camera sentence, from data.camera, so the clause is dropped and the shot is listed.
+  let motion = String(d.motion ?? "").trim().replace(/[.。]+$/, "");
+  if (/\bcamera\b/i.test(motion)) {
+    cameraInMotion.push(scene.id);
+    motion = motion.replace(/,?\s*(?:the|with the|as the|while the)\s+camera\b[^.;]*$/i, "").trim();
+  }
+  const camera = cameraSentence(d.camera);
+  const orig = locked ?? `${motion}. ${camera}`.trim();
   const on = (scene.lines ?? []).filter((l) => l.speaker !== "xitong" && (d.characters ?? []).includes(l.speaker));
   const by = {};
   for (const l of on) (by[l.speaker] ??= []).push(`「${l.text.replace(/[。]$/, "")}」`);
@@ -100,11 +145,16 @@ for (const scene of video.scenes) {
   // Her collar sentence opens the clip (e25 on): a fixed look the clip must keep, and it keeps a re-shot
   // clip from matching the card of the one it replaces.
   const collar = (d.characters ?? []).includes("tangxiaotang") && /stand-up mandarin collar/.test(C.tangxiaotang?.appearance ?? "") ? "Tang Xiaotang's high stand-up collar stays closed at her throat. " : "";
-  const text = `${P}${collar}${talk && !/ speaks /.test(orig) ? `${talk}, while: ` : ""}${orig}${S}`;
-  if (d.visual !== "still") clips[`a${ep}-${scene.id}`] = [text, createHash("sha256").update(text).digest("hex").slice(0, 16), 4];
+  const text = `${P}${named} ${collar}${talk && !/ speaks /.test(orig) ? `${talk}, while: ` : ""}${orig}${S}`;
+  const seconds = Number(d.buy_seconds) || (speechSeconds(on) > TALK_THRESHOLD || twoBeats(motion) ? SECONDS_TALK : SECONDS_DEFAULT);
+  if (d.visual !== "still") clips[`a${ep}-${scene.id}`] = [text, createHash("sha256").update(text).digest("hex").slice(0, 16), seconds];
 }
 writeFileSync(ffOut, JSON.stringify(ff, null, 1));
 writeFileSync(clipOut, JSON.stringify(clips));
 const pts = ff.reduce((a, j) => a + 20 + j.refs.length, 0);
-console.log(`${ff.length} first frames ≈ ${pts} points; ${Object.keys(clips).length} clips ≈ ${Object.keys(clips).length * 48} points; total ≈ ${pts + Object.keys(clips).length * 48}`);
-console.log("max ff prompt", Math.max(...ff.map((j) => j.prompt.length)), "max clip prompt", Math.max(...Object.values(clips).map((c) => c[0].length)));
+const clipList = Object.values(clips);
+const clipPts = clipList.reduce((a, c) => a + c[2] * POINTS_PER_SECOND, 0);
+const bySeconds = clipList.reduce((a, c) => ((a[c[2]] = (a[c[2]] ?? 0) + 1), a), {});
+console.log(`${ff.length} first frames ≈ ${pts} points; ${clipList.length} clips (${Object.entries(bySeconds).map(([s, n]) => `${n} × ${s} s`).join(", ")}) ≈ ${clipPts} points; total ≈ ${pts + clipPts}`);
+console.log("max ff prompt", Math.max(...ff.map((j) => j.prompt.length)), "max clip prompt", Math.max(...clipList.map((c) => c[0].length)));
+if (cameraInMotion.length) console.log(`motion mentioned the camera in ${cameraInMotion.join(", ")}: a trailing camera clause was dropped (the clip gets its one camera sentence from data.camera); keep camera words out of motion in the storyboard`);

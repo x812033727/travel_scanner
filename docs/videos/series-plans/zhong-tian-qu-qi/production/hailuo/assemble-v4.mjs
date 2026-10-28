@@ -1,6 +1,8 @@
 // v4 cut of a 種田娶妻 episode, built from the same clips as v3 (no new generation):
 //   - tighter timing (dialogue sped 7%, shorter lead/gap/tail) and long shots split into a wide
 //     part and a punch-in part, so the cut reads at short-drama pace;
+//   - a clip shorter than its lines is slowed at most 1.25x with optical-flow interpolation
+//     (`interpolate: false` / `slow_max` in the edit list change that), then held;
 //   - a grade per setting (lower saturation, deeper blacks, cool/warm split, vignette, grain);
 //   - burned-in subtitles, a name card the first time a character matters, a title card;
 //   - a mix: dialogue, Lyria music cues ducked under dialogue, CC0 effects and synthetic beds.
@@ -19,7 +21,7 @@ const video = JSON.parse(readFileSync(file, "utf8"));
 const overlays = overlaysFile && overlaysFile !== "-" && existsSync(overlaysFile) ? JSON.parse(readFileSync(overlaysFile, "utf8")) : {};
 const edit = JSON.parse(readFileSync(editFile, "utf8"));
 const DUB = process.env.DUB || null;
-const TEMPO = edit.tempo ?? 1.07, LEAD = 0.12, GAP = 0.12, TAIL = 0.22, MIN = 1.2, ACTION_MAX = 2.4, SPLIT = 3.0, PUNCH = 1.3;
+const TEMPO = edit.tempo ?? 1.07, LEAD = 0.12, GAP = 0.12, TAIL = 0.22, MIN = 1.2, ACTION_MAX = 2.4, SPLIT = 3.0, PUNCH = 1.3, SLOW_MAX = edit.slow_max ?? 1.25;
 const FONT = "C\\:/Windows/Fonts/msjhbd.ttc";
 const probe = (f) => Number(execFileSync("ffprobe", ["-v", "error", "-show_entries", "format=duration", "-of", "csv=p=0", f]).toString().trim());
 const segDir = path.join(work, "segments-v4");
@@ -115,8 +117,14 @@ for (const scene of video.scenes) {
     const from = src ? Number(src.from_s ?? 0) : 0;
     const clipLen = probe(clip) - from;
     args.push("-ss", from.toFixed(3), "-i", clip);
-    const slow = dur > clipLen ? Math.min(dur / clipLen, 1.35) : 1;
-    const base = `[0:v]setpts=${slow.toFixed(4)}*(PTS-STARTPTS),scale=1920:1080:flags=lanczos,fps=24,format=yuv420p,tpad=stop_mode=clone:stop_duration=${Math.max(0, dur - clipLen * slow + 0.1).toFixed(3)},trim=duration=${dur.toFixed(3)},setpts=PTS-STARTPTS`;
+    // A clip shorter than its lines is slowed, at most SLOW_MAX (1.25 by default; the old 1.35 with
+    // duplicated frames is what read as "stickers"). Slowing synthesises the missing frames with
+    // motion-compensated interpolation (minterpolate) instead of repeating them; `interpolate: false`
+    // in the edit list restores the old frame-duplicating path. Whatever is still missing after
+    // that is a held last frame, reported as "held" so the shot can be bought longer next time.
+    const slow = dur > clipLen ? Math.min(dur / clipLen, SLOW_MAX) : 1;
+    const smooth = slow > 1 && edit.interpolate !== false ? ",minterpolate=fps=24:mi_mode=mci:mc_mode=aobmc:me_mode=bidir:vsbmc=1" : ",fps=24";
+    const base = `[0:v]setpts=${slow.toFixed(4)}*(PTS-STARTPTS),scale=1920:1080:flags=lanczos${smooth},format=yuv420p,tpad=stop_mode=clone:stop_duration=${Math.max(0, dur - clipLen * slow + 0.1).toFixed(3)},trim=duration=${dur.toFixed(3)},setpts=PTS-STARTPTS`;
     const split = edit.split?.[scene.id] ?? (dur > SPLIT && !overlays[scene.id] && edit.nosplit?.includes(scene.id) !== true);
     if (split) {
       // Cut at the start of the second line when there is one, else in the middle; the second part is a punch-in.

@@ -8,6 +8,8 @@
 #                           access fetches the account signed in on /admin/ai-accounts), or
 #                           from the COLAB_CLI_TOKEN_JSON secret
 #   bootstrap.sh verify     prove the pairing: `colab usage` must print the balance (exit 4 if not)
+#   bootstrap.sh patch      re-apply the sampling profile to the upstream notebook (H3_PROFILE:
+#                           smooth (default) | hero | draft; H3_NOTEBOOK_PATCH=off leaves upstream's)
 #
 # Idempotent: re-running changes nothing that is already right. Nothing here needs sudo.
 # The upstream repository has no licence file, so it is not vendored: it is cloned at a
@@ -61,6 +63,8 @@ install_upstream() {
   fi
   local head
   head="$(git -C "$SKILL_HOME" rev-parse HEAD 2>/dev/null || true)"
+  # The notebook may carry our sampling patch: restore upstream's bytes before moving or re-patching.
+  git -C "$SKILL_HOME" checkout --quiet -- . 2>/dev/null || true
   if [[ "$head" != "$UPSTREAM_COMMIT" ]]; then
     git -C "$SKILL_HOME" fetch --quiet origin "$UPSTREAM_COMMIT" || git -C "$SKILL_HOME" fetch --quiet origin
     git -C "$SKILL_HOME" checkout --quiet "$UPSTREAM_COMMIT"
@@ -69,6 +73,20 @@ install_upstream() {
     [[ -f "$SKILL_HOME/$required" ]] || die "upstream checkout is missing $required" 2
   done
   say "upstream skill at $SKILL_HOME @ ${UPSTREAM_COMMIT:0:12}"
+  patch_notebook
+}
+
+patch_notebook() {
+  # Upstream samples Ref2VA with the 4-step turbo LoRA (references barely apply) and both modes
+  # with euler + beta; the patch swaps in the 8-step LoRAs (profile `smooth`) or the base-model
+  # settings (`hero`). Exact-string edits on the pristine notebook; see scripts/patch_notebook.py.
+  if [[ "${H3_NOTEBOOK_PATCH:-on}" == "off" ]]; then
+    say "notebook patch off (H3_NOTEBOOK_PATCH=off): upstream's 4-step Ref2VA / drbaph FL2VA settings"
+    return
+  fi
+  [[ -f "$SKILL_HOME/assets/MiniMax_H3_Turbo_Colab.ipynb" ]] || die "no notebook to patch; run: bootstrap.sh install" 2
+  git -C "$SKILL_HOME" checkout --quiet -- assets/ 2>/dev/null || true
+  MINIMAX_H3_COLAB_HOME="$SKILL_HOME" python3 -I "$(dirname "$0")/patch_notebook.py" || die "the sampling profile could not be applied (see above)" "$?"
 }
 
 site_token() {
@@ -183,7 +201,8 @@ case "$step" in
   install) install_cli; install_upstream ;;
   token) write_token ;;
   verify) verify ;;
+  patch) patch_notebook ;;
   all) install_cli; install_upstream; write_token; verify ;;
-  -h|--help) sed -n '2,15p' "$0" ;;
-  *) die "unknown step: $step (install | token | verify | all)" 2 ;;
+  -h|--help) sed -n '2,17p' "$0" ;;
+  *) die "unknown step: $step (install | token | verify | patch | all)" 2 ;;
 esac
