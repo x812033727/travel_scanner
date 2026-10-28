@@ -1,13 +1,13 @@
 ---
 id: 2026-10-28-fit-localized-svg-labels-to-required
 title: Fit localized SVG labels to required inner padding
-status: in-progress
+status: done
 priority: P1
 area: tools
 owner: codex-gpt6-article-locales-20261028
 claimed_at: 2026-10-28T02:21:33Z
 created_at: 2026-10-28T02:21:28Z
-completed_at:
+completed_at: 2026-10-28T02:51:44Z
 branch: codex/article-locales-completion-20261028
 depends_on: []
 scope:
@@ -51,3 +51,9 @@ validation. It changes only font sizes through the existing rendering transactio
 it does not edit text, anchors, positions, shapes, source SVGs or guard thresholds.
 Independent code review binds all three changed files and found no actionable
 defect. Failed render receipts and before-images remain in private external evidence.
+
+### Reviewable fix PR
+
+The exact three-file fix is in draft PR [#1901](https://github.com/x812033727/travel_scanner/pull/1901), created and read back at 2026-10-28T02:51:39.018829+00:00 with `no-auto-merge`. Focused 25-test and actual-render evidence is retained; broader Windows tools failures remain tracked separately. This task closes the implemented local fix inside its PR, without merging or deploying it.
+
+The official done command wrote the completed copy but could not remove the old Windows open copy. After verifying the copies differ only in status/completion fields, the two stale open files were removed explicitly and task validation was rerun.

@@ -1,13 +1,13 @@
 ---
 id: 2026-10-28-localize-ansoff-and-bcg-life-guides
 title: Localize Ansoff and BCG life guides in four languages
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-gpt6-article-locales-20261028
 claimed_at: 2026-10-28T02:08:48Z
 created_at: 2026-10-28T02:08:31Z
-completed_at:
+completed_at: 2026-10-28T02:51:39Z
 branch: codex/article-locales-completion-20261028
 depends_on: []
 scope:
@@ -38,7 +38,7 @@ their text-bearing images without changing the published originals.
 - [x] Eight complete target documents and localized image text pass the official pipeline.
 - [x] Independent final text, glyph and image reviews bind exact source/document/artifact hashes.
 - [x] Official assembly and installation preserve both zh-TW documents and original assets.
-- [ ] Selected lint, translation/content checks and task validation pass; content PR is reviewable.
+- [x] Selected lint, translation/content checks and task validation pass; content PR is reviewable.
 - [x] A separate release task retains merge, deployment, fresh dry-run, backup, publication and public acceptance gates.
 
 ## Steps
@@ -48,7 +48,7 @@ their text-bearing images without changing the published originals.
 - [x] Bind current public zh-TW v4 documents and prepare eight jobs from the current official baseline.
 - [x] Translate and render all eight jobs without retrying quota/auth failures.
 - [x] Apply independent review findings, revalidate and install only reviewed artifacts.
-- [ ] Prepare the content PR and separate publication handoff.
+- [x] Prepare the content PR and separate publication handoff.
 
 ## How to verify
 
@@ -88,3 +88,9 @@ is separate and must use fresh actual database guards, backup and public checks.
   character checks have zero findings. Pipeline 35, geometry/artifact 25 and
   content-pack nine tests pass; five database tests skip. Full Windows tools exits
   1 (1,487 pass, 64 fail, 23 skip); the native-fast-fail follow-up retains diagnostics.
+
+### Reviewable content PR
+
+Draft PR [#1901](https://github.com/x812033727/travel_scanner/pull/1901) was created and read back at 2026-10-28T02:51:39.018829+00:00. Initial head `4d9723471dc6de366760d7d433b5cfb283dd456b` is protected by `no-auto-merge`. The shared task validator exits 0; inherited warnings remain. No merge, deployment, new-two-article publication or broad Windows tools PASS is claimed. The separately open release task owns those outstanding release gates.
+
+The official done command wrote the completed copy but could not remove the old Windows open copy. After verifying the copies differ only in status/completion fields, the two stale open files were removed explicitly and task validation was rerun.

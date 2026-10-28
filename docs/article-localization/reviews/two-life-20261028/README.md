@@ -36,3 +36,5 @@ The full local Windows tools run exits 1 (1,487 pass, 64 fail, 23 skip). A direc
 unchanged camera-test import terminates with native exit `0xC0000409` on Node
 v24.13.0 ARM64. The separate October 28 Windows task retains these unresolved
 diagnostics; no successful broad local tools run is claimed.
+
+Draft content PR: [#1901](https://github.com/x812033727/travel_scanner/pull/1901), protected by `no-auto-merge`. This record does not establish green exact-head CI, merge, deployment or production publication.

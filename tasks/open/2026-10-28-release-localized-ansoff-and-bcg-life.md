@@ -52,3 +52,5 @@ Authoring manifest SHA256:
 `5717849d1e3407a3dd1fe762a96067236837562aed3fc8c1faeb575c160668d1`.
 The seventeen-article release decision on October 28 does not authorize this new
 two-article merge, deployment or publication. Keep this release task open/unclaimed.
+
+Content candidate: draft PR [#1901](https://github.com/x812033727/travel_scanner/pull/1901), protected by `no-auto-merge`. Authoring and renderer tasks close inside that PR; this release task remains open and unclaimed. Exact-head required CI, merge, deployment and production release are still pending.
