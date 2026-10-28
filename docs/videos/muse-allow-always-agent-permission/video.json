@@ -266,18 +266,12 @@
       ]
     },
     {
-      "id": "robb",
-      "chapter": "那個按鈕到底准了什麼？",
-      "template": "quote",
+      "id": "robb-setup",
+      "template": "big",
       "data": {
-        "kicker": "當事人 Matt Robb，9 月 29 日",
-        "quote": "I didn't think it would send it out to everyone that gave me an offer",
-        "source": "Matt Robb 在 X 上（Yahoo Tech 轉述）",
-        "translation": "我沒想到，它會把它送給每一個出價的人。",
-        "keys": [
-          "一開始就按了 Allow Always",
-          "沒想到會送給每個出價的人"
-        ]
+        "kicker": "Matt Robb 事後貼出經過",
+        "text": "賣鍵盤時\n按了 **Allow Always**",
+        "key": "他以為接受出價前還會先問"
       },
       "lines": [
         {
@@ -288,7 +282,28 @@
         {
           "id": "e3as",
           "text": "他以為，Muse 接受出價之前，還會先問他。"
-        },
+        }
+      ],
+      "claims": [
+        "c5",
+        "c6"
+      ],
+      "chapter": "那個按鈕到底准了什麼？"
+    },
+    {
+      "id": "robb",
+      "template": "quote",
+      "data": {
+        "kicker": "當事人 Matt Robb，9 月 29 日",
+        "quote": "I didn't think it would send it out to everyone that gave me an offer",
+        "source": "Matt Robb 在 X 上（Yahoo Tech 轉述）",
+        "translation": "我沒想到，它會把它送給每一個出價的人。",
+        "keys": [
+          "回覆範本裡有取貨地址",
+          "沒想到會送給每個出價的人"
+        ]
+      },
+      "lines": [
         {
           "id": "v7uf",
           "text": "結果這個允許，讓 Muse 用一份回覆範本替他發訊息；",
@@ -451,7 +466,18 @@
         {
           "id": "mrwt",
           "text": "卡上不會寫：只能收包裹。"
-        },
+        }
+      ]
+    },
+    {
+      "id": "meta-or-button",
+      "template": "big",
+      "data": {
+        "kicker": "那麼",
+        "text": "是 Meta 沒做好\n還是**按鈕本來就這樣**？",
+        "key": "拿 Claude Code 試一次"
+      },
+      "lines": [
         {
           "id": "4bsn",
           "text": "那這是 Meta 做得不好，還是這種按鈕本來就這樣？",
@@ -481,7 +507,21 @@
           "id": "ataa",
           "text": "它停下來問我；第二個選項寫著：以後不用再問 git push，後面跟著一顆星號。",
           "emotion": "「一顆星號」放慢"
-        },
+        }
+      ],
+      "claims": [
+        "r1"
+      ]
+    },
+    {
+      "id": "two-options",
+      "template": "big",
+      "data": {
+        "kicker": "兩個選項",
+        "text": "1 只准這一次\n2 存成**一條規則**",
+        "key": "關鍵在那顆星號"
+      },
+      "lines": [
         {
           "id": "579i",
           "text": "第一個選項只准這一次；第二個，才會存成一條規則。",
@@ -609,14 +649,25 @@
       "data": {
         "kicker": "我只准過",
         "text": "一次普通推送\n它記得的是**全部**",
-        "key": "那 Google 的代理呢？"
+        "key": "連強制推送都在裡面"
       },
       "lines": [
         {
           "id": "iscs",
           "text": "我只允許過一次普通的推送；換了對話，它記得的是全部的推送，連強制推送都在裡面。",
           "emotion": "放慢，「全部」加重"
-        },
+        }
+      ]
+    },
+    {
+      "id": "not-only-meta",
+      "template": "big",
+      "data": {
+        "kicker": "所以",
+        "text": "按鈕**本來就這樣**\n不只 Meta",
+        "key": "那 Google 的代理呢？"
+      },
+      "lines": [
         {
           "id": "56zp",
           "text": "所以剛剛那個問題的答案是：這種按鈕本來就這樣，不只 Meta。",
@@ -630,16 +681,12 @@
       ]
     },
     {
-      "id": "google-agent",
-      "template": "quote",
+      "id": "gemini-apps",
+      "template": "big",
       "data": {
-        "kicker": "Google 帳戶說明：Gemini 和代理權限",
-        "quote": "移除代理的存取權，並不會中斷或刪除 Google 帳戶與該應用程式的連結。",
-        "source": "support.google.com/accounts/answer/13533235",
-        "keys": [
-          "代理透過連結的 App 替你做事",
-          "停用代理不等於中斷連結"
-        ]
+        "kicker": "Google 帳戶說明",
+        "text": "准 Gemini 用一個 App\n它就能**替你辦事**",
+        "key": "例子：搜尋、預訂度假民宿"
       },
       "lines": [
         {
@@ -651,7 +698,23 @@
           "id": "5hhq",
           "text": "它自己舉的例子，是登入旅遊 App，替你搜尋、預訂度假民宿。",
           "emotion": "「預訂」加重"
-        },
+        }
+      ],
+      "claims": [
+        "c12"
+      ],
+      "chapter": "別的 AI 的「一律」，也一直有效嗎？"
+    },
+    {
+      "id": "google-agent",
+      "template": "quote",
+      "data": {
+        "kicker": "Google 帳戶說明：Gemini 和代理權限",
+        "quote": "移除代理的存取權，並不會中斷或刪除 Google 帳戶與該應用程式的連結。",
+        "source": "support.google.com/accounts/answer/13533235",
+        "key": "停用代理不等於中斷連結"
+      },
+      "lines": [
         {
           "id": "n2s7",
           "text": "說明裡有一句很容易漏看：停止讓代理使用，不會中斷你帳戶跟那個 App 的連結。",
@@ -665,8 +728,7 @@
       ],
       "claims": [
         "c12"
-      ],
-      "chapter": "別的 AI 的「一律」，也一直有效嗎？"
+      ]
     },
     {
       "id": "cc-table",
@@ -728,7 +790,21 @@
           "id": "9g8d",
           "text": "星號前面少一個空格，列出檔案的那條規則，連名字開頭一樣的別的程式都算進去。",
           "emotion": "「少一個空格」放慢"
-        },
+        }
+      ],
+      "claims": [
+        "c10"
+      ]
+    },
+    {
+      "id": "one-sentence",
+      "template": "big",
+      "data": {
+        "kicker": "按下去的那一刻",
+        "text": "看的是一句話\n存下的是**一條規則**",
+        "key": "那提示上有寫嗎？"
+      },
+      "lines": [
         {
           "id": "3788",
           "text": "你按下不要再問的時候，看的是一句話，存下來的是一條規則。",
@@ -740,12 +816,12 @@
       ]
     },
     {
-      "id": "shows-scope",
+      "id": "fair",
       "template": "big",
       "data": {
         "kicker": "公平地說",
-        "text": "提示上**有寫**\n只是那顆星很小",
-        "key": "看不完整的，只給「這一次」"
+        "text": "提示上**有寫**",
+        "key": "Claude Code 有說明這條規矩"
       },
       "lines": [
         {
@@ -756,12 +832,40 @@
         {
           "id": "3q7g",
           "text": "只有在提示能把會允許的範圍全部顯示出來時，"
-        },
+        }
+      ],
+      "claims": [
+        "c16"
+      ]
+    },
+    {
+      "id": "shows-scope",
+      "template": "big",
+      "data": {
+        "kicker": "只在看得完整時",
+        "text": "看得完整\n才給**不要再問**",
+        "key": "看不完整的，只給「這一次」"
+      },
+      "lines": [
         {
           "id": "bs4b",
           "text": "它才會給你不要再問這個選項；顯示不完整的，只給這一次。",
           "emotion": "清楚"
-        },
+        }
+      ],
+      "claims": [
+        "c16"
+      ]
+    },
+    {
+      "id": "small-star",
+      "template": "big",
+      "data": {
+        "kicker": "問題在哪",
+        "text": "那顆星很小\n我們**按得很快**",
+        "key": "這還不是範圍最大的允許"
+      },
+      "lines": [
         {
           "id": "fp5b",
           "text": "問題不在它藏起來，在那顆星很小，而我們按得很快。",
@@ -795,7 +899,21 @@
           "id": "unhr",
           "text": "它自己的警告很直接：只在容器或虛擬機這種壞了也沒關係的環境裡用。",
           "emotion": "「只在」加重"
-        },
+        }
+      ],
+      "claims": [
+        "c17"
+      ]
+    },
+    {
+      "id": "only-once-q",
+      "template": "big",
+      "data": {
+        "kicker": "那麼",
+        "text": "哪些事\n該**永遠只准一次**？",
+        "key": "我的答案是三條"
+      },
+      "lines": [
         {
           "id": "dkqg",
           "text": "那到底哪些事，應該永遠只准這一次？",
@@ -900,11 +1018,8 @@
         "kicker": "當事人的建議",
         "quote": "double-check what permissions AI has in your life",
         "source": "Matt Robb（Yahoo Tech 轉述）",
-        "translation": "檢查一下，AI 在你生活裡有哪些權限。",
-        "keys": [
-          "檢查 AI 有哪些權限",
-          "按過的，去哪裡收回？"
-        ]
+        "key": "檢查 AI 有哪些權限",
+        "translation": "檢查一下，AI 在你生活裡有哪些權限。"
       },
       "lines": [
         {
@@ -1029,13 +1144,33 @@
       ]
     },
     {
+      "id": "deny-first",
+      "template": "big",
+      "data": {
+        "kicker": "折衷的做法",
+        "text": "**拒絕規則**\n永遠比允許優先",
+        "key": "留著方便，只擋最危險的"
+      },
+      "lines": [
+        {
+          "id": "xaxz",
+          "text": "那能不能留著方便，只把最危險的擋掉？拒絕規則永遠比允許規則優先；",
+          "emotion": "問句接說明，平"
+        }
+      ],
+      "claims": [
+        "c18",
+        "r7"
+      ]
+    },
+    {
       "id": "deny-file",
       "template": "terminal",
       "data": {
-        "title": "設定檔第 2–9 行（共 10 行）",
+        "title": "設定檔第 3–8 行（共 10 行）",
         "command": "cat .claude/settings.local.json",
         "output": [
-          "  \"permissions\": {\n    \"allow\": [\n      \"Bash(git push *)\"\n    ],\n    \"deny\": [\n      \"Bash(git push --force *)\"\n    ]\n  }"
+          "    \"allow\": [\n      \"Bash(git push *)\"\n    ],\n    \"deny\": [\n      \"Bash(git push --force *)\"\n    ]"
         ],
         "ran_on": "2026-10-27",
         "tool_version": "Claude Code 2.1.311",
@@ -1044,11 +1179,6 @@
         ]
       },
       "lines": [
-        {
-          "id": "xaxz",
-          "text": "那能不能留著方便，只把最危險的擋掉？拒絕規則永遠比允許規則優先；",
-          "emotion": "問句接說明，平"
-        },
         {
           "id": "84vx",
           "text": "所以我把允許加回去，再加一條拒絕：git push 加強制旗標開頭的，都擋。",
@@ -1156,7 +1286,21 @@
           "id": "22hq",
           "text": "擋住的只是那幾個字；簡寫的減號 f，被 git push 星號那條允許規則通過了。",
           "emotion": "清楚"
-        },
+        }
+      ],
+      "claims": [
+        "c18"
+      ]
+    },
+    {
+      "id": "ask-every-time",
+      "template": "big",
+      "data": {
+        "kicker": "所以我的做法",
+        "text": "改寫歷史的推送\n**每次都問**",
+        "key": "不存允許規則，不靠拒絕清單"
+      },
+      "lines": [
         {
           "id": "bgg2",
           "text": "所以我不靠拒絕清單列完所有寫法：會改寫歷史的推送，乾脆不存允許規則，每次都問。",
@@ -1218,13 +1362,12 @@
       ]
     },
     {
-      "id": "view",
-      "chapter": "我的看法：代理還要不要用？",
+      "id": "my-view",
       "template": "big",
       "data": {
         "kicker": "我的看法",
-        "text": "錯的不只是 AI\n還有**按鈕的範圍**",
-        "key": "照規則做，規則是你按出來的"
+        "text": "代理**要用**\n它照規則做事",
+        "key": "規則的範圍，是你按出來的"
       },
       "lines": [
         {
@@ -1236,7 +1379,19 @@
           "id": "5vtz",
           "text": "我的看法是：要用；但它照規則做事，而規則的範圍，是你按出來的。",
           "emotion": "放慢放穩"
-        },
+        }
+      ],
+      "chapter": "我的看法：代理還要不要用？"
+    },
+    {
+      "id": "view",
+      "template": "big",
+      "data": {
+        "kicker": "Muse 那晚也出了錯",
+        "text": "錯的不只是 AI\n還有**按鈕的範圍**",
+        "key": "地址照按鈕准的範圍送出"
+      },
+      "lines": [
         {
           "id": "g4t7",
           "text": "Muse 那晚也出了錯；但地址送得出去，還是剛剛那個按鈕准的範圍。"
