@@ -1,0 +1,4331 @@
+{
+  "number": 2,
+  "title": "急診室",
+  "theme": "第二個哥哥不敢看小孩的眼睛。",
+  "start_state": "大哥陶遠成了監護人，請了假陪她去江城找第二個：陶靖，江城第一醫院急診外科醫生。舅公沒放棄，開始查老屋的產權。阿財走得慢了一點。",
+  "end_state": "二哥陶靖從把她當小病人的醫生，到替她背書包；糰糰為什麼看過不忘揭開（母親也是）；二哥沒救回的病人揭開（一個七歲的女孩）。她用外婆教的穴位替急診室一個喊痛的病人止痛，被醫院當成『怪事』上了新聞；老何從雲城來作證她的本事是外婆教的；大哥在江城的醫院走廊第一次叫陶靖『老二』。舅公的人進了老屋量尺寸。最後一集，兩個哥哥一人牽她一隻手走出醫院，她劃掉第二個名字，指著第三個：『港城，拳王。』陶靖說：『拳王？』陶遠說：『……那個陶烈？』",
+  "guest_cast": [
+    {
+      "id": "s02-guahao",
+      "name": "小周（周小婷）",
+      "role": "江城第一醫院急診掛號員，二十五歲；先笑她，後來偷偷站到她這邊，替她蓋了「妹妹」那張掛號單",
+      "appearance": "東亞年輕女性，二十五歲，圓臉、短瀏海、馬尾，淺藍色醫院行政制服背心，胸前掛識別證，笑起來有兩顆小虎牙"
+    },
+    {
+      "id": "s02-huli",
+      "name": "阿芳（許芳）",
+      "role": "急診資深護理師，三十八歲；知道陶靖三年前的事，嘴硬心軟，最後幫他寫完兒童止痛流程",
+      "appearance": "東亞中年女性，三十八歲，俐落短髮、細框眼鏡、深藍色護理師制服、護理鞋，口袋插著三支筆，眼神精明"
+    },
+    {
+      "id": "s02-mama",
+      "name": "鄭雅文",
+      "role": "三年前沒救回的七歲女孩安安的媽媽，三十六歲；每週到急診大廳同一張椅子坐，最後來說「我不怪你了」",
+      "appearance": "東亞女性，三十六歲，清瘦、齊肩黑髮、素顏、灰色長外套，手裡常拿一朵白花，眼神安靜溫柔"
+    },
+    {
+      "id": "s02-zhuren",
+      "name": "方主任（方建華）",
+      "role": "江城第一醫院急診部主任，五十五歲；照章辦事、愛面子，先停陶靖的職，被糰糰按好脖子後批了兒童止痛流程",
+      "appearance": "東亞中年男性，五十五歲，鬢角灰白、梳整齊的短髮、方臉、白袍下是襯衫領帶，總是一手揉後頸"
+    },
+    {
+      "id": "s02-jizhe",
+      "name": "白欣",
+      "role": "江城電視台記者，二十八歲；跟其他記者不同，只想聽糰糰自己說，查出重剪影片背後是陶啟，最後只拍流程不拍孩子的臉",
+      "appearance": "東亞年輕女性，二十八歲，清秀、低馬尾、米色風衣、電視台識別證，手拿麥克風，眼神直率"
+    },
+    {
+      "id": "s02-baoquan",
+      "name": "老馬",
+      "role": "醫院保全，五十歲；收了陶啟的錢趕糰糰、拍她，被阿財咬鞋後當眾認了",
+      "appearance": "東亞中年男性，五十歲，微胖、平頭、黑色保全制服與對講機、肩章，臉上總是不耐煩"
+    },
+    {
+      "id": "s02-xiaoyu",
+      "name": "小雨",
+      "role": "七歲的車禍女孩，右手臂擦傷；糰糰在急診第一次替她按住一個位置止痛",
+      "appearance": "東亞女童，七歲，短髮、圓眼，粉色外套，右手臂包著乾淨的白紗布，鏡頭只拍臉與手"
+    },
+    {
+      "id": "s02-xiaonan",
+      "name": "豆豆",
+      "role": "從溜滑梯摔下、手臂腫著的小男孩，五歲；陶靖三年來第一個自己接的小病人",
+      "appearance": "東亞男童，五歲，西瓜頭、淚汪汪的大眼，藍色恐龍 T 恤，手臂上一個冰敷袋"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s02-t01",
+      "question": "舅公去產權處查什麼？",
+      "setup_episode": 61,
+      "payoff_episode": 97
+    },
+    {
+      "id": "s02-t02",
+      "question": "第四針真的太緊嗎？",
+      "setup_episode": 62,
+      "payoff_episode": 63
+    },
+    {
+      "id": "s02-t03",
+      "question": "掛號員會不會讓她掛上號？",
+      "setup_episode": 62,
+      "payoff_episode": 66
+    },
+    {
+      "id": "s02-t04",
+      "question": "大哥怎麼跟二哥開口？",
+      "setup_episode": 63,
+      "payoff_episode": 70
+    },
+    {
+      "id": "s02-t05",
+      "question": "三年前陶靖出了什麼事？",
+      "setup_episode": 72,
+      "payoff_episode": 92
+    },
+    {
+      "id": "s02-t06",
+      "question": "舅公的人量老屋要做什麼？",
+      "setup_episode": 73,
+      "payoff_episode": 108
+    },
+    {
+      "id": "s02-t07",
+      "question": "護理師阿芳在瞞什麼？",
+      "setup_episode": 72,
+      "payoff_episode": 76
+    },
+    {
+      "id": "s02-t08",
+      "question": "誰把感謝影片剪成「無照女童」？",
+      "setup_episode": 81,
+      "payoff_episode": 87
+    },
+    {
+      "id": "s02-t09",
+      "question": "院方會不會記陶靖一筆？",
+      "setup_episode": 82,
+      "payoff_episode": 89
+    },
+    {
+      "id": "s02-t10",
+      "question": "保全到底有沒有推她？",
+      "setup_episode": 82,
+      "payoff_episode": 86
+    },
+    {
+      "id": "s02-t11",
+      "question": "安安的媽媽會不會原諒他？",
+      "setup_episode": 91,
+      "payoff_episode": 118
+    },
+    {
+      "id": "s02-t12",
+      "question": "陶靖敢不敢再看小病人的眼睛？",
+      "setup_episode": 94,
+      "payoff_episode": 100
+    },
+    {
+      "id": "s02-t13",
+      "question": "林奶奶被請去喝茶，聽到了什麼？",
+      "setup_episode": 101,
+      "payoff_episode": 103
+    },
+    {
+      "id": "s02-t14",
+      "question": "外婆最後一年清不清楚？",
+      "setup_episode": 103,
+      "payoff_episode": 106
+    },
+    {
+      "id": "s02-t15",
+      "question": "兒童止痛流程院方批不批？",
+      "setup_episode": 111,
+      "payoff_episode": 113
+    },
+    {
+      "id": "s02-t16",
+      "question": "白袍摺進行李，他真的會走嗎？",
+      "setup_episode": 113,
+      "payoff_episode": 119
+    },
+    {
+      "id": "s02-t17",
+      "question": "舅公派來的車能不能把她帶走？",
+      "setup_episode": 77,
+      "payoff_episode": 78
+    },
+    {
+      "id": "s02-t18",
+      "question": "記者白欣到底想拍什麼？",
+      "setup_episode": 84,
+      "payoff_episode": 116
+    },
+    {
+      "id": "s02-t19",
+      "question": "舅公會不會親自出面？",
+      "setup_episode": 101,
+      "payoff_episode": 107
+    },
+    {
+      "id": "s02-t20",
+      "question": "律師函能不能逼大哥回雲城？",
+      "setup_episode": 109,
+      "payoff_episode": 110
+    }
+  ],
+  "episodes": [
+    {
+      "number": 61,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "請假單",
+      "youtube_title": "七歲妹妹說要去江城找醫生哥哥，冷面刑警隊長默默掏出一張早就簽好的假單",
+      "duration_s": 110,
+      "logline": "糰糰要去江城找第二個哥哥陶靖，大哥陶遠陪她；醫院的門還沒找到，舅公已經在雲城查起老屋。",
+      "hook": "外婆的飯桌上，她剛說完「你陪我」，陶遠沒答話，從夾克內袋抽出一張摺成四折的假單推到碗邊——日期、簽名都填好了：「昨天請的。」",
+      "hook_type": "reversal",
+      "mid_hook": "江城車站的長樓梯，阿財走到第五階就趴下不動；陶遠彎腰把十四歲的老狗抱起來，一階一階往上走，阿財在他懷裡打了個噴嚏。",
+      "extra_hooks": [
+        "陶遠的手機響，林奶奶的聲音壓得很低：「你舅公今天去了產權處。」"
+      ],
+      "conflict": "一個七歲的孩子、一隻老狗、一個不會帶小孩的刑警，第一次離開雲城，要在陌生的江城找一個不知道有妹妹的醫生。",
+      "turn": "陶遠打算住一晚明天慢慢找；糰糰在火車上看過一次江城第一醫院官網的值班表，一字不差背出來：「陶靖，今晚大夜。」兩人改成今晚就去。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "江城第一醫院急診門口，救護車鳴笛衝進來，擔架床直直推向站在門口的她；陶遠一把將她撈起，擔架擦身而過，旁邊跑著一個白袍，胸前名牌兩個字：陶靖。",
+        "question": "跑過去的那個白袍就是二哥嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        2,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "夜裡的江城第一醫院，急診紅色燈箱亮著，救護車的藍光掃過一個紅棉襖小女孩與一隻黃狗。",
+      "glamour_shot": "陶遠在車站樓梯上抱著老黃狗往上走，黑夾克被穿堂風掀起一角，側臉冷，手托得很穩。",
+      "setups": [
+        "s02-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "大哥正式請假陪她去江城",
+        "查到二哥今晚值大夜"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai",
+        "tao-jing"
+      ],
+      "locations": [
+        "外婆的老屋飯桌",
+        "江城車站",
+        "江城第一醫院急診門口"
+      ],
+      "state": {
+        "time": "第二季第 1 天，夜裡十一點",
+        "knowledge": "她知道二哥今晚在急診值大夜；舅公去了產權處。",
+        "carry_forward": "進度條：名單第二個名字還空著；阿財第一次上樓要人抱。擔架床剛擦過她身邊。"
+      }
+    },
+    {
+      "number": 62,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "掛號窗口",
+      "youtube_title": "七歲女孩在醫院掛號窗口說要找醫生哥哥，掛號員笑了，下一秒她背出整面牆的院規",
+      "duration_s": 105,
+      "logline": "糰糰要見陶靖一面，卻被掛號窗口擋住：急診不能指定醫生，她也不是病人。",
+      "hook": "陶遠抱著她退到牆邊，擔架床推過；那個白袍回頭喊了一聲「讓開」，眼鏡後面是單眼皮的長眼，跟舊照片裡第二個男孩一模一樣。糰糰小聲說：「找到了。」",
+      "hook_type": "danger",
+      "mid_hook": "掛號員小周笑著說：「陶醫生沒有家人，全醫院都知道。」糰糰歪頭：「妳怎麼知道？」小周愣住，答不出來。",
+      "conflict": "掛號窗口只收病人；陶遠亮了警徽，小周說：「警察也要排隊。」",
+      "turn": "糰糰把大廳那面牆的院規從第一條背到第十二條，背到第七條「家屬得詢問醫師所在診間」停下：「我是家屬。」小周笑不出來了，往右一指：「縫合室。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "縫合室門縫裡，陶靖戴著手套替一個工人縫手背，白紗布、藍縫線，手穩得像機器；他剛縫完第四針，門口一個清亮的聲音：「第四針太緊。」縫合室裡三個人一起回頭。",
+        "question": "七歲的孩子怎麼看得出針太緊？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        2,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "mengbao"
+      ],
+      "spectacle": "掛號大廳的電子叫號牌一路跳號，紅棉襖小女孩站在窗口前，只比櫃台高半顆頭。",
+      "glamour_shot": "陶靖在縫合室的白光下低頭，黑框眼鏡滑到鼻樑中間，袖口捲到手肘，戴手套的手指穩穩打結。",
+      "setups": [
+        "s02-t02",
+        "s02-t03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到二哥所在的縫合室"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-guahao"
+      ],
+      "locations": [
+        "江城第一醫院掛號大廳",
+        "急診縫合室門口"
+      ],
+      "state": {
+        "time": "第二季第 2 天，清晨六點",
+        "knowledge": "她確認陶靖的臉跟照片裡第二個男孩一樣。",
+        "carry_forward": "進度條：名單第二個名字還空著；她在縫合室門口開了口。"
+      }
+    },
+    {
+      "number": 63,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "第四針",
+      "youtube_title": "冷靜外科醫生被七歲女孩當眾挑錯，他不服氣拆線重看，結果工人大叔先喊了一聲痛",
+      "duration_s": 115,
+      "logline": "陶靖要把門口亂說話的小孩請出去，卻被病人一句「其實真的很痛」釘在原地。",
+      "hook": "陶靖的手停在半空，鑷子夾著線頭：「小朋友，急診不是看戲的地方。」糰糰：「第一個哥哥也這樣說。」門外的陶遠咳了一聲。",
+      "hook_type": "line",
+      "mid_hook": "工人大叔舉著手小聲說：「醫生……第四針那邊，一直在抽。」縫合室安靜了三秒。",
+      "extra_hooks": [
+        "陶遠在門口張開嘴想說「我是你哥」，三個字卡在喉嚨，最後只說：「……打擾了。」"
+      ],
+      "conflict": "一個醫生的手被一個孩子當眾質疑，他要嘛承認，要嘛趕人。",
+      "turn": "陶靖沒說話，剪開第四針重縫，大叔的眉頭鬆開；他頭也不抬：「誰教妳看針的？」她說：「外婆。線拉太緊，布會哭。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶靖脫下手套，始終沒看她的臉，只看著她腳上那雙黃色小雨鞋，對護理師阿芳說：「那孩子，別讓她再進來。」糰糰聽見了，把阿財的繩子握緊。",
+        "question": "二哥為什麼連看都不看她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "mengbao"
+      ],
+      "spectacle": "無影燈下一根藍色縫線被剪斷、重新穿過紗布邊，鏡頭從針尖一路拉到門口那雙黃色小雨鞋。",
+      "glamour_shot": "陶靖剪線時抬眼一瞬，黑框鏡片反著無影燈的白光，長眼裡一點被冒犯的冷。",
+      "setups": [
+        "s02-t04"
+      ],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她的眼力第一次在急診被證明"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-huli"
+      ],
+      "locations": [
+        "急診縫合室"
+      ],
+      "state": {
+        "time": "第二季第 2 天，上午",
+        "knowledge": "二哥不肯看她的臉，只看她的鞋；大哥開不了口。",
+        "carry_forward": "進度條：名單第二個名字還空著；陶靖下令不讓她進縫合室。"
+      }
+    },
+    {
+      "number": 64,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "同一罐咖啡",
+      "youtube_title": "刑警哥哥和醫生弟弟二十年沒見，在販賣機前沉默十分鐘，最後按下同一罐咖啡",
+      "duration_s": 100,
+      "logline": "陶遠想跟陶靖說一句話，兩個不會說話的男人卻在販賣機前站了十分鐘。",
+      "hook": "急診外的塑膠椅上，糰糰晃著腿：「他不看我的眼睛。」陶遠：「他看妳鞋子。」阿財在兩人腳邊打呵欠。",
+      "hook_type": "image",
+      "mid_hook": "兩個男人一前一後按販賣機，掉下來兩罐一模一樣的無糖黑咖啡；他們低頭看罐子，又抬頭看對方。",
+      "conflict": "大哥要開口，二哥要回去上班，中間只有一台販賣機的時間。",
+      "turn": "先開口的是陶靖，問的卻是「你是哪個分局的？」——他在打量一個警察為什麼帶著小孩跟了他一整個早上。糰糰發現陶靖左手拿罐、右手寫病歷——跟陶遠一模一樣；她在小本子上畫了兩隻左手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠說：「雲城刑警大隊。」陶靖的咖啡罐停在嘴邊，喉結動了一下，把那兩個字重複了一遍：「雲城……」念得像很久沒念過。",
+        "question": "二哥還記得雲城？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "mengbao"
+      ],
+      "spectacle": "急診走廊盡頭一台發亮的販賣機，兩個高個子男人並排站，中間一隻黃狗、一個紅棉襖小女孩仰頭看。",
+      "glamour_shot": "陶遠靠著販賣機拉開罐環，冷臉斜斜望過去；陶靖鬆開領口，白袍下擺一晃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兩個哥哥第一次並排站著"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing"
+      ],
+      "locations": [
+        "急診走廊販賣機前",
+        "急診外候診椅"
+      ],
+      "state": {
+        "time": "第二季第 2 天，中午",
+        "knowledge": "二哥對「雲城」兩個字有反應。",
+        "carry_forward": "進度條：名單第二個名字還空著；兩罐一樣的黑咖啡。"
+      }
+    },
+    {
+      "number": 65,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "阿財咬了鞋",
+      "youtube_title": "醫生哥哥嘴硬說不記得老家，十四歲老狗撲上去咬住他的鞋，刑警淡淡說：牠只咬說謊的",
+      "duration_s": 110,
+      "logline": "糰糰要陶靖承認他記得雲城，陶靖一句「不記得」，換來阿財一口咬在他的皮鞋上。",
+      "hook": "陶靖把罐子丟進回收桶：「我不記得雲城。」糰糰：「你說謊。」阿財撲上去咬住他的皮鞋頭，陶靖往後跳了半步。",
+      "hook_type": "line",
+      "mid_hook": "陶遠面無表情：「牠只咬說謊的。」陶靖低頭看鞋，再看他：「你們到底是誰？」廣播響起：「陶醫生，二號床。」",
+      "extra_hooks": [
+        "掛號窗口後，小周對同事說：「陶醫生在這八年，過年都替人值班。」"
+      ],
+      "conflict": "二哥的嘴和一隻老狗的嘴，哪一張比較誠實。",
+      "turn": "陶靖被廣播叫走，她以為又輸了一次；掛號員小周卻從窗口探出頭，對她招手。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "小周把一張空白掛號單推出窗口：「八年，沒人來找過他。」又把筆放上去：「妳要不要當第一個？」糰糰踮腳看著那張單子，手伸向筆。",
+        "question": "她敢在單子上寫下自己嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "老黃狗撲上皮鞋的一瞬慢動作，白袍下擺翻起，醫生往後跳半步，走廊的人全轉頭。",
+      "glamour_shot": "陶靖被廣播叫走，邊跑邊把聽診器甩上肩，白袍在走廊燈下劃出一道弧。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道二哥八年來一個人在醫院過年",
+        "掛號員小周站到她這邊"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-guahao"
+      ],
+      "locations": [
+        "急診走廊",
+        "掛號窗口"
+      ],
+      "state": {
+        "time": "第二季第 2 天，下午",
+        "knowledge": "二哥說了謊；他在這家醫院八年，沒有人找過他。",
+        "carry_forward": "進度條：名單第二個名字還空著；一張空白掛號單在她手邊。"
+      }
+    },
+    {
+      "number": 66,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "陶糰糰，妹妹",
+      "youtube_title": "掛號員給七歲女孩一張空白掛號單，她歪歪扭扭寫下四個字，急診主任當場愣住",
+      "duration_s": 110,
+      "logline": "糰糰要正正當當在急診等二哥，急診部主任卻要把狗和孩子一起請出去。",
+      "hook": "她握著筆，一筆一畫在「姓名」欄寫下「陶糰糰」，「關係」那欄寫了兩個大字：「妹妹」。小周笑出聲，蓋了章。",
+      "hook_type": "image",
+      "mid_hook": "急診部方主任巡房經過，看見大廳地上趴著一隻黃狗，臉一沉：「誰帶狗進急診？」整個大廳安靜下來。",
+      "conflict": "醫院不准狗進來，她不能丟下阿財，陶遠的警徽在這裡沒有用。",
+      "turn": "從二號床走出來的陶靖脫口而出：「那是我病人的狗。」話說出口，他自己先愣住。方主任：「誰的病人？」糰糰把蓋了章的掛號單高高舉起：「我。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "方主任瞇眼：「她哪裡病？」糰糰把手按在紅棉襖的盤扣上：「想哥哥。」大廳裡有人笑，有人沒笑；陶靖轉身走回二號床，耳朵紅到眼鏡腳。",
+        "question": "二哥這樣算不算認了她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "shenfen",
+        "xiju"
+      ],
+      "spectacle": "一張掛號單被小手高高舉過頭，紅印「已掛號」在大廳燈下發亮，四周病人家屬都轉頭看。",
+      "glamour_shot": "陶靖從二號床的布簾後走出來，一手摘口罩，眼鏡後的眼睛第一次往她這邊停了半秒。",
+      "setups": [],
+      "payoffs": [
+        "s02-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在醫院有了一張合法的掛號單",
+        "二哥第一次替她擋人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-guahao",
+        "s02-zhuren"
+      ],
+      "locations": [
+        "急診掛號大廳"
+      ],
+      "state": {
+        "time": "第二季第 2 天，傍晚",
+        "knowledge": "二哥會替她擋，但不肯承認。",
+        "carry_forward": "進度條：名單第二個名字還空著；掛號單上寫著「妹妹」。"
+      }
+    },
+    {
+      "number": 67,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "沒地方睡",
+      "youtube_title": "刑警哥哥找不到旅館只好陪妹妹睡醫院門口，半夜三點她醒來，老狗不見了",
+      "duration_s": 105,
+      "logline": "陶遠要在江城給妹妹找一張床，全城旅館卻被醫學會議訂滿，只能在急診外過夜。",
+      "hook": "方主任冷冷丟下一句：「不是病人，十點清場。」陶遠的手機跳出第七家旅館的回覆：「客滿」。",
+      "hook_type": "question",
+      "mid_hook": "糰糰把陶遠手機上的訂房頁看了一遍就背出來：江城這週辦全國醫學會議，醫院附近的旅館全滿到週日。「哥，我們睡這裡。」",
+      "conflict": "一個七歲孩子要在醫院門口過夜，大哥不能讓她凍著，又不肯去求那個不認她的弟弟。",
+      "turn": "十點清場，小周偷偷指了急診外一排有屋簷、靠暖氣口的候車椅；陶遠脫下黑夾克蓋在她身上，自己坐著不睡。值班室的窗後，陶靖端著一杯熱牛奶站了很久，沒有出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "凌晨三點，糰糰在夾克下醒來，手裡的狗繩空了，扣環鬆開掛在椅腳；急診的自動門剛剛滑上。",
+        "question": "十四歲的阿財跑去哪了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "mengbao"
+      ],
+      "spectacle": "凌晨的急診外屋簷，一排空椅子只有一張蓋著黑夾克，夾克下露出兩個小揪揪和一雙黃雨鞋。",
+      "glamour_shot": "陶遠坐在路燈下守夜，手肘撐膝，舊錶的錶面反光，冷臉朝著街口一動不動。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小周替他們找到能擋風的位子"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-zhuren",
+        "s02-guahao"
+      ],
+      "locations": [
+        "急診掛號大廳",
+        "急診外候車椅"
+      ],
+      "state": {
+        "time": "第二季第 3 天，凌晨三點",
+        "knowledge": "江城的旅館滿到週日；二哥在窗後看過他們。",
+        "carry_forward": "進度條：名單第二個名字還空著；阿財不見了，自動門剛關上。"
+      }
+    },
+    {
+      "number": 68,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "值班室的狗",
+      "youtube_title": "半夜老狗失蹤，七歲妹妹衝進醫院找到值班室，醫生哥哥抱著熱牛奶一動都不敢動",
+      "duration_s": 110,
+      "logline": "糰糰要找回阿財，循著走廊找到值班室，門後的畫面讓她和陶遠都說不出話。",
+      "hook": "自動門再滑開，糰糰掉了一隻雨鞋也不管，沿著急診走廊一間一間看；陶遠追在她身後兩步，一手拎著那隻雨鞋。",
+      "hook_type": "danger",
+      "mid_hook": "值班室門縫透出光，推開：阿財趴在陶靖的皮鞋上睡得打呼，陶靖僵坐在椅子上，手裡一杯熱牛奶，一動不敢動。",
+      "conflict": "二哥要把這兩個人一狗擋在門外，可是老狗已經睡在他腳上。",
+      "turn": "陶靖把那杯熱牛奶遞過來，眼睛看著她光著的那隻腳：「本來就是……給妳的。」他把值班床讓出來：「睡這裡。我值班。」陶靖：「牠自己跟進來的。」阿財沒有醒，也沒有咬——這句是真的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她躺上值班床，臉轉向桌子，看見玻璃桌墊下壓著半張舊照片——跟她針線盒裡那張一樣，只剩右邊兩個小男孩，邊緣被撕得毛毛的。",
+        "question": "二哥一直留著那張照片？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "值班室一盞檯燈，老黃狗壓在醫生的皮鞋上睡著，醫生舉著牛奶杯像被定住。",
+      "glamour_shot": "陶靖坐在檯燈旁，眼鏡推到額上揉眼角，燈下的側臉疲憊又溫和。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿財找回來了",
+        "她第一次睡在二哥的地方"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing"
+      ],
+      "locations": [
+        "急診走廊",
+        "急診值班室"
+      ],
+      "state": {
+        "time": "第二季第 3 天，凌晨三點半",
+        "knowledge": "二哥桌墊下壓著同一張舊照片的一半。",
+        "carry_forward": "進度條：名單第二個名字還空著；半張照片在桌墊下。"
+      }
+    },
+    {
+      "number": 69,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "半張照片",
+      "youtube_title": "醫生哥哥桌墊下壓著半張全家福，七歲妹妹拿出另一半，他說出一句藏了二十年的話",
+      "duration_s": 120,
+      "logline": "糰糰要用兩張照片讓陶靖承認，陶靖卻說出他撕照片的原因：他以為是家人先不要他。",
+      "hook": "她把半張照片從桌墊下抽出來，門同時打開，陶靖站在門口：「放下。」",
+      "hook_type": "line",
+      "mid_hook": "陶靖坐下，聲音很低：十歲那年被送走，口袋裡只有這張照片；有人告訴他，家裡不要他了，他就把其他人撕掉。",
+      "extra_hooks": [
+        "門外的陶遠握緊拳頭，一字一字：「舅公也這樣跟我說。」"
+      ],
+      "conflict": "一張被撕掉的照片，和一句騙了兄弟二十年的話。",
+      "turn": "糰糰從針線盒拿出完整的那張，跟他的半張並排：「外婆說，你們不知道我。不是不要你。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶遠走進來，把一張紙條壓在兩張照片上：「早上八點，醫院門口。你來，我就把二十年前的事全說給你聽。」他轉身出去。陶靖看著紙條，沒有動。",
+        "question": "二哥下了班，會走出那扇門嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "兩張舊照片在檯燈下並排，撕開的毛邊對著完整的五個男孩，一隻小手把它們推近。",
+      "glamour_shot": "陶靖低頭看照片，眼鏡滑下一點，長眼泛紅卻不眨，燈光落在他捲起的袖口上。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兩個哥哥發現被同一個人騙了同一句話"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-demao"
+      ],
+      "locations": [
+        "急診值班室"
+      ],
+      "state": {
+        "time": "第二季第 3 天，清晨五點",
+        "knowledge": "兄弟倆都被舅公說過「家裡不要你」。",
+        "carry_forward": "進度條：名單第二個名字還空著；一張早上八點的紙條。"
+      }
+    },
+    {
+      "number": 70,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "也是你妹",
+      "youtube_title": "醫生哥哥想從側門偷偷下班，七歲妹妹早背好醫院逃生圖在側門等他，刑警大哥一句話讓他眼鏡滑落",
+      "duration_s": 135,
+      "logline": "陶靖要避開醫院門口那兩個人，從側門下班，卻發現糰糰早一步站在那裡。",
+      "hook": "早上八點，正門口陶遠看錶；同一時間，陶靖換下白袍，推開員工側門——門外站著一個紅棉襖小女孩，牽著狗，仰頭看他。",
+      "hook_type": "reversal",
+      "mid_hook": "糰糰說：「走廊牆上有逃生圖，員工門在這裡。」她指指腦袋：「我看過一次。」陶靖第一次正眼看了她一秒，又移開。",
+      "extra_hooks": [
+        "掛號員小周和方主任剛好從停車場走過來，停下腳步看著這一幕。"
+      ],
+      "conflict": "大哥要開口，二哥要逃，中間只隔著一個七歲的孩子。",
+      "turn": "陶靖不跑了，走到正門對陶遠說：「你是警察，帶走失兒童該去派出所。」陶遠說不出口的那三個字，這回被逼到嘴邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "陶遠：「她不是走失的。她是我妹。」停了一秒：「也是你妹。」陶靖的眼鏡從鼻樑滑下一截，他沒有去推；阿財趴在兩人腳邊打了個呵欠。",
+        "question": "二哥會認這個妹妹嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "mengbao",
+        "ganren"
+      ],
+      "spectacle": "晨光裡的醫院正門台階，兩個高大的男人面對面，中間一個紅棉襖小女孩，路過的人放慢腳步。",
+      "glamour_shot": "陶靖在晨光裡脫下口罩，白襯衫領口微開，眼鏡滑下時露出一雙泛紅的長眼。",
+      "setups": [],
+      "payoffs": [
+        "s02-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大哥終於當面說出「也是你妹」",
+        "醫院的人第一次知道她是陶醫生的妹妹"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-guahao",
+        "s02-zhuren"
+      ],
+      "locations": [
+        "醫院員工側門",
+        "醫院正門台階"
+      ],
+      "state": {
+        "time": "第二季第 3 天，早上八點",
+        "knowledge": "二哥聽見了「也是你妹」。",
+        "carry_forward": "進度條：名單第二個名字還空著；陶靖的眼鏡滑下了。"
+      }
+    },
+    {
+      "number": 71,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "宿舍鑰匙",
+      "youtube_title": "被刑警大哥當街說出「也是你妹」，醫生哥哥沉默五秒，丟出一把鑰匙",
+      "duration_s": 105,
+      "logline": "陶靖不肯認也不肯趕，糰糰要在他不信的情況下住進他的生活。",
+      "hook": "眼鏡滑下一截，陶靖把它推回去，沉默五秒，從口袋掏出一把鑰匙丟給陶遠：「醫院宿舍，二樓，空的。」",
+      "hook_type": "line",
+      "mid_hook": "宿舍沒有電梯，阿財走到樓梯轉角就趴下；陶遠還在搬行李，陶靖一句話沒說，彎腰把老狗抱上二樓。",
+      "conflict": "二哥不信這個妹妹，可是也狠不下心讓她再睡醫院門口。",
+      "turn": "糰糰本來以為他抱阿財是被逼的；陶遠低聲說：「他小時候，也是這樣抱流浪貓上樓。」隔著薄薄一面牆，她聽見陶靖在講電話：「我不信。」停了很久：「……也不趕。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡她敲開隔壁的門，從針線盒拿出一塊外婆縫的布名牌遞給他：「陶靖」，背面繡著一個小小的「二」。陶靖接過去，門關上；門後傳來一聲東西掉在地上的悶響。",
+        "question": "外婆縫的名牌讓他想起了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "mengbao"
+      ],
+      "spectacle": "老宿舍的窄樓梯，白袍醫生抱著一隻老黃狗一步一步往上，後面跟著紅棉襖小女孩拎著狗繩。",
+      "glamour_shot": "陶靖抱著狗上樓，眼鏡後的眼睛垂著，捲起的袖口露出前臂，樓梯間的黃燈打在他側臉上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "住進醫院宿舍",
+        "外婆縫的名牌交到二哥手上"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing"
+      ],
+      "locations": [
+        "醫院宿舍樓梯",
+        "醫院宿舍二樓"
+      ],
+      "state": {
+        "time": "第二季第 3 天，夜裡",
+        "knowledge": "二哥說「不信，也不趕」；外婆替五個哥哥各縫了一塊名牌。",
+        "carry_forward": "進度條：名單第二個名字還空著；阿財上二樓要人抱。"
+      }
+    },
+    {
+      "number": 72,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "讓別人接",
+      "youtube_title": "醫生哥哥一天把七個小病人全讓給別人，七歲妹妹數到第七次，護理師說溜了嘴",
+      "duration_s": 110,
+      "logline": "糰糰想知道二哥為什麼不看她，她在急診一角數，數出一件全醫院都不敢提的事。",
+      "hook": "清晨急診，一個哭著的小男孩被抱進來，陶靖頭也不抬：「劉醫生，你接。」糰糰在候診椅上豎起一根手指：「一。」",
+      "hook_type": "image",
+      "mid_hook": "天黑時她豎到第七根手指：一天七個小孩，七次讓人。她跑過去問：「為什麼？」陶靖：「我手上有大人。」阿財一口咬住他的鞋。",
+      "conflict": "二哥的謊被一隻狗戳破，可是他寧可被咬也不說。",
+      "turn": "護理師阿芳把糰糰拉到一邊，蹲下來，聲音很輕：「小朋友，別問陶醫生小孩的事。」她的手在抖。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿芳嘆了口氣，脫口而出：「那是陶醫生三年前的事……」說完自己先捂住嘴，起身就走，護理鞋踩得很快。",
+        "question": "三年前，二哥出了什麼事？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "同一扇急診門，一個接一個小病人被推進來，白袍醫生每一次都轉身，七根小手指一根一根豎起。",
+      "glamour_shot": "陶靖背對門口寫病歷，肩線筆直，窗外的晨光把他的白袍邊緣照得發亮。",
+      "setups": [
+        "s02-t05",
+        "s02-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看出二哥避開所有小病人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-huli"
+      ],
+      "locations": [
+        "急診候診區",
+        "急診護理站"
+      ],
+      "state": {
+        "time": "第二季第 4 天，傍晚",
+        "knowledge": "二哥三年前出過一件事，全急診都不提。",
+        "carry_forward": "進度條：名單第二個名字還空著；一天七次讓人接小病人。"
+      }
+    },
+    {
+      "number": 73,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "捲尺",
+      "youtube_title": "七歲妹妹在醫院等哥哥，老家鄰居奶奶突然視訊：有人拿捲尺在量外婆的房子",
+      "duration_s": 105,
+      "logline": "糰糰還在追問三年前的事，雲城老屋卻先出了事：舅公的人拿著捲尺進門。",
+      "hook": "阿芳的背影消失在走廊盡頭，糰糰喃喃重複：「三年前。」大廳那面「優良醫師」牌上，陶靖的名字每年都在，只有三年前那一年是空的。",
+      "hook_type": "question",
+      "mid_hook": "陶遠的手機視訊響起，林奶奶的臉擠在螢幕裡：「有人來量你外婆的房子！拿著捲尺，說是你舅公派的！」",
+      "extra_hooks": [
+        "鏡頭一轉，一個穿花襯衫、梳油頭的男人把捲尺拉過外婆的飯桌，邊量邊笑：「這桌子不值錢。」"
+      ],
+      "conflict": "人在江城，老屋在雲城；外婆的飯桌和針線盒架子，被一把捲尺量來量去。",
+      "turn": "糰糰一眼認出花襯衫：葬禮那天站在舅公身後遞傘的人——陶啟，舅公的兒子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "視訊裡陶啟把捲尺搭上放針線盒的架子，林奶奶伸手去攔：「那是她外婆的！」一隻手搶走手機，畫面翻轉，最後一格是天花板，然後全黑。",
+        "question": "林奶奶出事了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "手機螢幕裡老屋的飯桌被捲尺拉過，黃色的尺身橫在外婆的空椅子前。",
+      "glamour_shot": "陶遠接視訊時從椅子上站起，黑夾克一甩，冷臉在手機光裡一寸寸沉下去。",
+      "setups": [
+        "s02-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "認出量老屋的人是陶啟"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "lin-nainai",
+        "tao-qi"
+      ],
+      "locations": [
+        "急診大廳",
+        "外婆的老屋（視訊）"
+      ],
+      "state": {
+        "time": "第二季第 4 天，晚上",
+        "knowledge": "舅公的兒子陶啟帶人進老屋量尺寸。",
+        "carry_forward": "進度條：名單第二個名字還空著；舅公的人第一次量老屋。視訊斷了。"
+      }
+    },
+    {
+      "number": 74,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "老二，三天",
+      "youtube_title": "刑警大哥要連夜趕回老家，把妹妹託給醫生弟弟，一句童年糗事讓整個護理站笑翻",
+      "duration_s": 115,
+      "logline": "陶遠必須回雲城護住老屋和林奶奶，唯一能託付妹妹的，是一個還不肯叫他哥的弟弟。",
+      "hook": "黑掉的螢幕重新亮起，林奶奶喘著氣：「沒事！他們搶我手機，阿財的狗碗被踢翻了。」陶遠握著手機的指節發白。",
+      "hook_type": "danger",
+      "mid_hook": "陶遠找到陶靖：「老二，三天。」陶靖：「我不是你老二。」陶遠：「你小時候尿床，尿到我床上，我記得。」整個護理站安靜一秒，然後阿芳笑出聲。",
+      "conflict": "大哥要走，二哥說他不會帶小孩，中間的妹妹不肯被丟來丟去。",
+      "turn": "陶遠把江城警局的委託手續辦到後天晚上，才能上夜車；這兩天，糰糰要跟著陶靖。陶靖耳朵通紅：「那是你打翻水杯！」陶遠：「你也記得。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶遠把糰糰的小手放進陶靖手裡，轉身就走，沒回頭；陶靖的手僵著。糰糰仰頭：「你要牽，還是放？」",
+        "question": "二哥會放開她的手嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "護理站前，一隻小手被放進一隻戴錶的大手裡，再被移到一隻帶著洗手液味的手裡。",
+      "glamour_shot": "陶靖被揭糗事時摘下眼鏡揉鼻樑，臉一路紅到耳後，白袍領口歪了一邊。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林奶奶平安",
+        "大哥證明他記得兄弟倆小時候的事"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "lin-nainai",
+        "s02-huli"
+      ],
+      "locations": [
+        "急診護理站"
+      ],
+      "state": {
+        "time": "第二季第 4 天，深夜",
+        "knowledge": "大哥是唯一記得小時候的人；他後天晚上回雲城。",
+        "carry_forward": "進度條：名單第二個名字還空著；她的手在二哥手裡。"
+      }
+    },
+    {
+      "number": 75,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "地板底下",
+      "youtube_title": "七歲女孩只看了一次視訊，就畫出舅公手下量的每個數字，醫生哥哥看完臉色變了",
+      "duration_s": 115,
+      "logline": "陶靖把糰糰帶在身邊卻不看她；糰糰要證明陶啟量老屋不是為了賣桌子。",
+      "hook": "陶靖沒放手，也沒低頭，牽著她走進急診：「妳坐這，不准動。」她坐好，攤開小本子，開始畫。",
+      "hook_type": "image",
+      "mid_hook": "小本子上是視訊裡每一格：捲尺量過的每個數字、每個位置，連陶啟踩了幾下地板都畫了。「他量的不是牆。」她說：「他在量地板。」",
+      "conflict": "大人都當她在畫畫，只有她知道那些數字不對勁。",
+      "turn": "陶靖本來只瞥了一眼，眼神卻停住：數字精確到公分，是把整個一樓地板切成格子在量。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰指著格子正中間：「這裡是飯桌。外婆說，飯桌底下的地板，誰都不能踩。」陶靖手裡的病歷夾停住：「外婆還說過什麼？」",
+        "question": "外婆為什麼不准人踩那塊地板？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "一本兒童小本子攤在急診桌上，鉛筆畫的格子與數字密密麻麻，正中間一張小小的飯桌。",
+      "glamour_shot": "陶靖彎腰看小本子，眼鏡滑到鼻尖，從鏡框上方看她，長眼裡第一次有了好奇。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "把陶啟量的數字全記下來交給大哥"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "tao-yuan"
+      ],
+      "locations": [
+        "急診護理站旁"
+      ],
+      "state": {
+        "time": "第二季第 5 天，上午",
+        "knowledge": "陶啟在量老屋一樓的地板，飯桌底下是中心。",
+        "carry_forward": "進度條：名單第二個名字還空著；舅公的人量的是地板。"
+      }
+    },
+    {
+      "number": 76,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "一盒貼紙",
+      "youtube_title": "醫生哥哥抽屜裡藏著一盒三年沒開的兒童貼紙，資深護理師終於說出他以前的外號",
+      "duration_s": 120,
+      "logline": "糰糰陪二哥值夜班，想弄懂他為什麼怕小孩，卻在抽屜裡找到他以前的樣子。",
+      "hook": "夜班的值班室，糰糰拉開抽屜找筆，抽屜裡躺著一盒兒童貼紙，蓋子上積了一層灰，封口拆開過，貼紙一張都沒少。",
+      "hook_type": "image",
+      "mid_hook": "阿芳端熱水進來，看見貼紙盒，愣了很久，坐下說：「他以前是全急診小孩最愛的醫生，大家叫他貼紙醫生。每個小孩看完都拿一張。」",
+      "conflict": "阿芳答應過不提，可是這個孩子問的不是八卦，是她哥哥。",
+      "turn": "阿芳說到「三年前那天之後，他就再也沒打開過」便停住，起身：「剩下的，要他自己說。」凌晨四點，陶靖一個人吃泡麵，把蔥一根根挑出來；糰糰小聲說：「外婆也這樣挑。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶靖趴在桌上睡著，糰糰把他的白袍蓋到他肩上；他在夢裡皺眉，喃喃說：「對不起……」後面是一個名字，輕得聽不見。",
+        "question": "二哥在跟誰說對不起？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "mengbao"
+      ],
+      "spectacle": "檯燈下一盒彩色貼紙打開，星星、小熊、小火車整整齊齊，灰塵在光裡飄。",
+      "glamour_shot": "陶靖伏在桌上睡著，眼鏡擱在一旁，睫毛的影子落在疲憊的臉上，白袍滑到肩頭。",
+      "setups": [],
+      "payoffs": [
+        "s02-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道二哥以前是貼紙醫生",
+        "知道二哥跟外婆一樣挑蔥"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-huli"
+      ],
+      "locations": [
+        "急診值班室"
+      ],
+      "state": {
+        "time": "第二季第 5 天，凌晨",
+        "knowledge": "二哥三年前以前是小孩最愛的醫生，之後再沒開過貼紙盒。",
+        "carry_forward": "進度條：名單第二個名字還空著；貼紙盒三年沒少一張。"
+      }
+    },
+    {
+      "number": 77,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "舅公的電話",
+      "youtube_title": "二十年沒聯絡的舅公突然打給醫生外甥，一開口就說：那孩子不是你妹妹",
+      "duration_s": 110,
+      "logline": "陶靖剛開始動搖，舅公陶德茂就親自打來，要他把孩子送回雲城。",
+      "hook": "天亮，陶靖的手機響，一個二十年沒見的號碼；他接起來，那頭的聲音很和氣：「阿靖，是舅公。」",
+      "hook_type": "line",
+      "mid_hook": "舅公慢慢說：「那孩子是你外婆收養的，不是你妹妹。乖，送她回來，舅公替她安排。」陶靖握著手機，看向正在餵阿財的糰糰。",
+      "conflict": "一邊是二十年前把他送走的長輩，一邊是一個只認識三天的孩子。",
+      "turn": "陶靖沒反駁，只問：「你怎麼知道她在我這？」電話那頭停了一拍。阿財抬起頭，對著陶靖手裡的手機低低吼了一聲。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "舅公笑了：「舅公什麼都知道。明天我派人去江城接她，手續都帶齊。」電話掛斷，窗外一輛黑色轎車從醫院門口慢慢開過。",
+        "question": "舅公的人要來醫院把她帶走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "清晨宿舍窗前，醫生握著手機，玻璃上映出身後蹲著餵狗的小女孩。",
+      "glamour_shot": "陶靖靠在窗邊接電話，晨光從側面打亮他半邊臉，另一半落在陰影裡，眼鏡反著窗外的天。",
+      "setups": [
+        "s02-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿財對舅公的電話低吼，糰糰記下了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "tao-demao"
+      ],
+      "locations": [
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 6 天，清晨",
+        "knowledge": "舅公知道她在江城，明天要派人來接。",
+        "carry_forward": "進度條：名單第二個名字還空著；舅公親自打電話給二哥。"
+      }
+    },
+    {
+      "number": 78,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "接人的車",
+      "youtube_title": "舅公派律師拿著監護文件到醫院搶人，七歲女孩一眼看出文件日期不對",
+      "duration_s": 115,
+      "logline": "舅公的人帶著監護文件來醫院接人，陶遠在警局辦手續，只有陶靖能擋。",
+      "hook": "黑色轎車停在急診門口，一個拿公事包的男人走進大廳，舉起一份文件：「陶糰糰的監護人委託，我來接人。」",
+      "hook_type": "danger",
+      "mid_hook": "陶靖擋在前面，那人笑：「陶醫生，你跟她什麼關係？」陶靖張了張嘴，沒說出來。",
+      "conflict": "文件看起來齊全，二哥說不出自己是誰，大哥不在。",
+      "turn": "糰糰踮腳看了一眼文件：「監護人改成我大哥了，雲城收容所的登記表寫的。你的這張是舊的。」陶靖立刻打給陶遠，陶遠在電話裡只說了一句：「讓他等我。」那人臉色一變，收起文件。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "那人走到門口又回頭，把一張名片塞進陶靖的白袍口袋，壓低聲音：「陶醫生，你三年前的事，舅公也知道。」陶靖的臉一下子白了。",
+        "question": "舅公拿三年前的事威脅二哥？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "急診大廳的白光下，一份監護文件被舉高，一隻小手指著角落一行日期。",
+      "glamour_shot": "陶靖擋在小女孩前面，白袍下擺垂直，雙手插在口袋裡，眼鏡後的眼神第一次冷下來。",
+      "setups": [],
+      "payoffs": [
+        "s02-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舅公的人空手離開"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "tao-yuan"
+      ],
+      "locations": [
+        "急診大廳",
+        "急診門口"
+      ],
+      "state": {
+        "time": "第二季第 6 天，下午",
+        "knowledge": "舅公也知道二哥三年前的事，拿來當把柄。",
+        "carry_forward": "進度條：名單第二個名字還空著；一張名片在二哥口袋裡。"
+      }
+    },
+    {
+      "number": 79,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "第一張貼紙",
+      "youtube_title": "七歲妹妹追問醫生哥哥三年前的事，他第一次對她吼，晚上卻偷偷做了一件事",
+      "duration_s": 110,
+      "logline": "糰糰想替二哥分擔名片上的那句話，二哥卻第一次對她發脾氣。",
+      "hook": "名片在陶靖手裡捏皺，糰糰拉他的白袍：「三年前是什麼事？」陶靖第一次吼出來：「妳不要問！」",
+      "hook_type": "line",
+      "mid_hook": "走廊所有人都轉頭。糰糰沒哭，只是把手收回來：「好。我不問。」停一下：「我等。」她牽著阿財走回候診椅坐好。",
+      "conflict": "二哥守著三年前的事，連一個七歲的孩子都不讓靠近。",
+      "turn": "他以為她會跑去告訴大哥；結果她只是坐在那裡，一整個下午替每一個進急診的小孩數數。陶靖在洗手台前把手洗了三次，鏡子裡的人一直沒抬頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "晚上陶靖回到候診椅，手裡捏著一張小熊貼紙——三年來第一張；他伸出手，卻貼在了阿財的紅繩上，轉身就走。糰糰看著阿財脖子上的小熊，嘴角翹起來。",
+        "question": "二哥什麼時候敢把貼紙給她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "mengbao"
+      ],
+      "spectacle": "老黃狗脖子的紅繩上多了一張小熊貼紙，在急診大廳的燈下閃一下。",
+      "glamour_shot": "陶靖蹲下貼貼紙的那一秒，白袍鋪在地上，低頭的側臉溫柔得不像白天吼人的那個人。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥三年來第一次拿出貼紙"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing"
+      ],
+      "locations": [
+        "急診走廊",
+        "急診候診椅"
+      ],
+      "state": {
+        "time": "第二季第 6 天，晚上",
+        "knowledge": "二哥不肯說三年前的事，但他開始讓步。",
+        "carry_forward": "進度條：名單第二個名字還空著；阿財的紅繩上一張小熊貼紙。"
+      }
+    },
+    {
+      "number": 80,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "外婆教的",
+      "youtube_title": "刑警大哥剛上夜車，急診推進一個七歲車禍女孩，醫生哥哥站在門口手發抖，妹妹先衝了進去",
+      "duration_s": 140,
+      "logline": "大哥一走，急診進來一個跟糰糰同年的女孩；陶靖站在門口進不去，糰糰先鑽了進去。",
+      "hook": "夜車月台，陶遠隔著車窗比了一個「三」；糰糰揮手，陶靖站在她身後，車還沒開遠，他的手機就響了：「急診，車禍，女童七歲。」",
+      "hook_type": "danger",
+      "mid_hook": "處置室門口，陶靖戴好手套卻沒推門，手在抖；裡面女孩一直喊痛，阿芳回頭：「陶醫生？」劉醫生在另一間手術。",
+      "extra_hooks": [
+        "白板上寫著：小雨，七歲，右手臂擦傷，意識清楚。陶靖盯著「七歲」兩個字，喉嚨發緊。"
+      ],
+      "conflict": "一個跟三年前同年的孩子在喊痛，唯一能進去的醫生邁不開腳。",
+      "turn": "糰糰從他身後鑽進去，阿芳一愣沒攔；她踮腳握住女孩沒受傷的那隻手，按住手上的一個位置，女孩的哭聲慢慢停了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "處置室安靜下來，陶靖終於走進去，看著她按在女孩手上的小手指，聲音很輕：「誰教妳的？」糰糰抬頭：「外婆。」角落裡，一支手機的錄影紅點亮著。",
+        "question": "是誰在錄影？外婆到底教了她多少？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "mengbao"
+      ],
+      "spectacle": "處置室的白光下，一隻小手按在另一隻小手上，喊痛的女孩慢慢停下哭，所有大人都停住。",
+      "glamour_shot": "陶靖站在處置室門口戴手套，口罩上的眼睛在白光裡發紅，手指微抖卻把手套邊緣拉得筆直。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小雨不再喊痛，二哥接手處理",
+        "二哥第一次走進有小病人的房間"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-huli",
+        "s02-xiaoyu"
+      ],
+      "locations": [
+        "江城車站月台",
+        "急診處置室"
+      ],
+      "state": {
+        "time": "第二季第 6 天，深夜",
+        "knowledge": "二哥知道她會外婆教的止痛；有人錄下了這一幕。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥第一次走進小病人的處置室。大哥回雲城了。"
+      }
+    },
+    {
+      "number": 81,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "上了網",
+      "youtube_title": "七歲女孩在急診替同齡女孩止痛的影片爆紅，一夜之間被剪成「無照女童亂碰病人」",
+      "duration_s": 110,
+      "logline": "一支感謝影片被人重新剪輯，糰糰一夜之間從「小天使」變成「無照女童」，連累二哥。",
+      "hook": "錄影的紅點熄滅，小雨的爸爸放下手機，紅著眼對糰糰鞠了一躬：「謝謝妳。我要讓大家知道。」",
+      "hook_type": "image",
+      "mid_hook": "第二天早上，同一段影片換了標題在網上瘋傳：「無照女童在急診亂碰病人，醫生在旁邊看」。底下的留言一頁一頁往上跳。",
+      "conflict": "一支感謝影片被剪成指控，醫院要給外面一個交代。",
+      "turn": "糰糰把兩個版本各看一遍：原版有小雨爸爸的聲音，新版把聲音拿掉、只剩她的手和陶靖的背影——有人故意剪的。院方廣播：「急診外科陶靖醫生，請到主任室。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "宿舍樓梯口，保全老馬擋住她：「上面交代，妳不准再進醫院。」他伸手推了她的肩，她往後坐在台階上，書包裡的針線盒摔出來，針散了一地；老馬抬腳要踩過去，阿財擋在盒子前，露出牙。",
+        "question": "阿財會撲上去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "fansha"
+      ],
+      "spectacle": "手機螢幕上同一段影片兩個標題並排，一個寫「謝謝」，一個寫「無照」，留言數字瘋狂往上跳。",
+      "glamour_shot": "陶靖被叫去主任室，走廊上他邊走邊扣白袍釦子，背影筆直，眼鏡後的眼神冷得像手術刀。",
+      "setups": [
+        "s02-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小雨爸爸公開道謝"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-baoquan",
+        "s02-xiaoyu"
+      ],
+      "locations": [
+        "急診處置室",
+        "醫院宿舍樓梯口"
+      ],
+      "state": {
+        "time": "第二季第 7 天，上午",
+        "knowledge": "有人故意把感謝影片剪成指控。",
+        "carry_forward": "進度條：名單第二個名字還空著；保全被下令不准她進醫院。外婆的針散了一地。"
+      }
+    },
+    {
+      "number": 82,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "簽不簽",
+      "youtube_title": "院方要醫生哥哥簽字說妹妹是「闖入者」就不追究，他拿起筆，七歲妹妹在門外聽著",
+      "duration_s": 115,
+      "logline": "院方給陶靖一條退路：把糰糰寫成闖入者，他就沒事；糰糰在門外聽見了。",
+      "hook": "阿財撲上去咬住老馬的鞋，老馬跳開大喊：「我沒推她！」阿財咬得更緊。阿芳衝過來，一把把糰糰抱起來。",
+      "hook_type": "danger",
+      "mid_hook": "主任室裡，方主任把一份報告推到陶靖面前：「寫她是闖入的，你就是被牽連。不寫，停職調查，讓無照人員接觸病人。」",
+      "extra_hooks": [
+        "主任室門外，糰糰抱著撿回來的針線盒，把耳朵貼在門板上。"
+      ],
+      "conflict": "一張紙，一邊是二哥的工作，一邊是她的名字。",
+      "turn": "陶靖問：「那個保全推她的事呢？」方主任：「他說沒有。」陶靖看著報告，第一次想起她說過的話：她記得每一個對她說謊的人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "方主任把一支筆放在報告上：「簽了，你沒事。」陶靖伸手，把筆拿了起來；門外的糰糰屏住呼吸。",
+        "question": "二哥會簽字把她說成闖入者嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai"
+      ],
+      "spectacle": "主任室的長桌上一份報告、一支筆，門縫底下露出一雙黃色小雨鞋的鞋尖。",
+      "glamour_shot": "陶靖坐在主任室桌前，十指交握抵著下巴，鏡片後的眼睛垂著看那支筆，窗光切過他的顴骨。",
+      "setups": [
+        "s02-t09",
+        "s02-t10"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿財擋下保全，外婆的針線盒撿回來了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-baoquan",
+        "s02-huli",
+        "s02-zhuren"
+      ],
+      "locations": [
+        "醫院宿舍樓梯口",
+        "急診部主任室"
+      ],
+      "state": {
+        "time": "第二季第 7 天，中午",
+        "knowledge": "院方要二哥把她寫成闖入者；保全說他沒推她。",
+        "carry_forward": "進度條：名單第二個名字還空著；一支筆在二哥手裡。"
+      }
+    },
+    {
+      "number": 83,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "記者圍門",
+      "youtube_title": "醫生哥哥說要想一想，走出主任室就被記者團團圍住：那個女孩是你什麼人？",
+      "duration_s": 110,
+      "logline": "陶靖還沒決定簽不簽，記者已經圍到宿舍門口，糰糰被關在門裡。",
+      "hook": "陶靖把筆放回桌上：「我想一想。」方主任冷笑：「明天早上之前。」門外的糰糰鬆了一口氣，又握緊針線盒。",
+      "hook_type": "reversal",
+      "mid_hook": "宿舍樓下擠滿記者和手機，有人敲門喊：「小朋友！妳家大人呢？」糰糰坐在門後，一個一個數：「十一個。」",
+      "conflict": "所有人都想從一個七歲孩子嘴裡挖新聞，大哥在雲城，二哥還沒決定站哪邊。",
+      "turn": "陶靖從醫院走回來，記者一擁而上把他圍在樓梯口：「陶醫生，那女孩是你什麼人？」「你讓無照的孩子碰病人？」門縫底下塞進來一張紙條，字很工整：「我只想聽妳自己說。——白欣，江城電視台」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶靖站在宿舍門前，手握著門把，背後是閃光燈和一句一句的質問；門裡傳來一個很小的聲音：「哥？」他的手停在門把上。",
+        "question": "他會當著記者說出那兩個字嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "huzai"
+      ],
+      "spectacle": "老宿舍窄窄的樓梯口擠滿手機與麥克風，閃光燈一片白，門後只有一雙黃雨鞋的影子。",
+      "glamour_shot": "閃光燈裡陶靖側過臉，下顎線繃緊，眼鏡反著一排白光，看不見眼睛。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥沒有簽字"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-zhuren",
+        "s02-jizhe"
+      ],
+      "locations": [
+        "急診部主任室",
+        "醫院宿舍門口"
+      ],
+      "state": {
+        "time": "第二季第 7 天，傍晚",
+        "knowledge": "院方給二哥一夜考慮；記者白欣想聽她自己說。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥沒簽字，期限明早。"
+      }
+    },
+    {
+      "number": 84,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "她是我妹妹",
+      "youtube_title": "記者逼問七歲女孩是誰，一向不看小孩的醫生打開門站到她前面：她是我妹妹",
+      "duration_s": 125,
+      "logline": "陶靖要在記者面前決定這個孩子是誰，他說了，然後這句話被院方拿去對付他。",
+      "hook": "門開了。陶靖站在糰糰前面，背對著她，面對一排鏡頭：「她是我妹妹。她在等我下班。」",
+      "hook_type": "line",
+      "mid_hook": "記者們安靜了一秒，白欣舉起麥克風，蹲下來只問糰糰一句：「誰教妳的？」糰糰說：「外婆。外婆是針灸師。」",
+      "extra_hooks": [
+        "人群後，保全老馬悄悄把手機收進口袋，往停車場的方向走。"
+      ],
+      "conflict": "他說出「妹妹」，等於把自己押了上去。",
+      "turn": "白欣當場打開直播，把原版影片和小雨爸爸的聲音放出來；網上的風向開始轉。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "方主任擠到門口，冷冷看著陶靖：「你剛剛自己承認了：讓家屬進急診碰病人。家屬，也是無照。」他把手機轉過來：「停職令，明天生效。」",
+        "question": "二哥說出妹妹，反而害自己被停職？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "huzai",
+        "fansha"
+      ],
+      "spectacle": "一扇門打開，白袍醫生把紅棉襖小女孩擋在身後，對面一整排閃光燈同時亮起。",
+      "glamour_shot": "陶靖擋在門口，白袍被走廊的風吹起一角，眼鏡後的眼睛第一次直直看著鏡頭，不躲。",
+      "setups": [
+        "s02-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥當眾說出「她是我妹妹」",
+        "記者白欣放出原版影片"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-jizhe",
+        "s02-zhuren",
+        "s02-baoquan"
+      ],
+      "locations": [
+        "醫院宿舍門口"
+      ],
+      "state": {
+        "time": "第二季第 7 天，夜裡",
+        "knowledge": "二哥公開認了她；院方拿這句話停他的職。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥明天停職。"
+      }
+    },
+    {
+      "number": 85,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "無照",
+      "youtube_title": "醫生哥哥為了認妹妹被停職，七歲女孩不哭，翻開外婆的針線盒找到一個電話號碼",
+      "duration_s": 110,
+      "logline": "陶靖因為她被停職，糰糰要找到能證明外婆本事的人。",
+      "hook": "停職令貼在急診布告欄上，陶靖把識別證交出去；糰糰在角落看著，第一次低下頭：「是我害的。」",
+      "hook_type": "image",
+      "mid_hook": "她打開針線盒，盒蓋內側有外婆的字，一排電話號碼，最下面一行：「老何，雲城。」她撥過去，那頭的聲音很慢很溫：「糰糰？我明天到。」",
+      "extra_hooks": [
+        "白欣把兩個版本的影片給糰糰看：「重剪的帳號，三天前才開的。」"
+      ],
+      "conflict": "一個七歲孩子要證明自己沒有亂碰病人，她能拿出來的只有外婆。",
+      "turn": "陶靖蹲下來，第一次看著她的眼睛說話——只有一秒：「不是妳害的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡，糰糰從宿舍窗口往下看：醫院停車場，一個穿花襯衫的男人把一個信封塞給保全老馬；老馬收下，抬頭，正好看向她的窗口。",
+        "question": "花襯衫給了保全什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai"
+      ],
+      "spectacle": "夜裡的停車場，路燈下一個信封從花襯衫的手遞到保全手裡，鏡頭從二樓窗口往下拍。",
+      "glamour_shot": "陶靖交出識別證時解開白袍最上面一顆釦子，臉色平靜，手卻在口袋裡握成拳。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到老何，老何答應明天來作證"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "lao-he",
+        "s02-jizhe",
+        "s02-baoquan",
+        "tao-qi"
+      ],
+      "locations": [
+        "急診布告欄",
+        "醫院宿舍窗口",
+        "醫院停車場"
+      ],
+      "state": {
+        "time": "第二季第 8 天，夜裡",
+        "knowledge": "重剪帳號是新開的；陶啟收買了保全。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥停職中，舅公的人在醫院停車場。"
+      }
+    },
+    {
+      "number": 86,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "咬鞋的真話",
+      "youtube_title": "保全當著全院說沒推過七歲女孩，她一字不差背出他說的每一句話，老狗當場咬住他的鞋",
+      "duration_s": 120,
+      "logline": "院方開會要定陶靖的處分，保全老馬作證說糰糰亂闖病房、他從沒碰過她。",
+      "hook": "老馬看見窗口的她，轉身鑽進車裡；糰糰在小本子上寫下車牌和時間：晚上九點十二分。",
+      "hook_type": "danger",
+      "mid_hook": "院方會議室，老馬對方主任說：「那孩子到處亂闖，我好言相勸，從沒碰過她。」糰糰站起來，把那天樓梯口他說的每一個字、每一個時間一口氣背出來。",
+      "extra_hooks": [
+        "老馬說到「我沒推她」，阿財從桌子底下竄出來，一口咬住他的鞋頭。"
+      ],
+      "conflict": "一個大人的證詞，對上一個七歲孩子的記憶。",
+      "turn": "糰糰再背一句：「九點十二分，停車場，花襯衫，一個信封。」老馬的臉一下子垮了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "老馬癱在椅子上：「是……是一個姓陶的給我錢，叫我別讓她進醫院，還叫我拍她。」方主任猛地抬頭：「姓陶？」整個會議室的人一起轉頭看向陶靖。",
+        "question": "給錢的那個姓陶的是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "shenfen"
+      ],
+      "spectacle": "會議室長桌下竄出一隻老黃狗，咬住保全的鞋，保全連人帶椅往後一倒。",
+      "glamour_shot": "陶靖坐在會議室最末，便服襯衫、沒穿白袍，聽見「姓陶」時慢慢摘下眼鏡，抬眼。",
+      "setups": [],
+      "payoffs": [
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "保全承認推過她、收過錢"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-baoquan",
+        "s02-zhuren"
+      ],
+      "locations": [
+        "醫院停車場",
+        "院方會議室"
+      ],
+      "state": {
+        "time": "第二季第 9 天，上午",
+        "knowledge": "有個姓陶的人付錢讓保全趕她、拍她。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥停職中，保全認了。"
+      }
+    },
+    {
+      "number": 87,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "花襯衫的公司",
+      "youtube_title": "記者查到抹黑七歲女孩的帳號背後是一家公司，負責人的名字讓醫生哥哥臉色鐵青",
+      "duration_s": 115,
+      "logline": "眾人懷疑陶靖自己人搞鬼，記者白欣去查重剪影片的帳號，查出真正的姓陶的人。",
+      "hook": "所有人看著陶靖，糰糰站到他前面：「不是他。給錢的人穿花襯衫，我看見了。」",
+      "hook_type": "line",
+      "mid_hook": "老何拄著傘走進會議室，長衫被雨打濕一角，把一個舊牛皮紙袋放上桌：「陶秀蘭，針灸師執照，三十年。我是她的學生。」",
+      "extra_hooks": [
+        "老何看見糰糰，蹲下來端詳她瞇眼的樣子，愣住：「跟妳媽媽小時候一模一樣。」"
+      ],
+      "conflict": "只要找不到花襯衫，嫌疑就還在陶靖身上。",
+      "turn": "白欣衝進來，手機上是重剪帳號的登記資料：一家三天前才開的公關公司。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "白欣把螢幕轉給陶靖：「負責人，陶啟。地址，雲城。」陶靖盯著那兩個字，聲音冷下來：「陶啟……舅公的兒子。」",
+        "question": "舅公為什麼要毀掉一個七歲的孩子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "huzai",
+        "xuanyi"
+      ],
+      "spectacle": "雨天的會議室，一個舊牛皮紙袋攤開，一張泛黃的執照照片上，外婆盤著白髻看著鏡頭。",
+      "glamour_shot": "陶靖接過手機時推了推眼鏡，指節分明，眼底的溫和退得乾乾淨淨。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s02-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查出重剪影片背後是陶啟",
+        "老何帶著外婆的執照趕到"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "lao-he",
+        "s02-jizhe",
+        "s02-zhuren",
+        "tao-qi",
+        "waipo"
+      ],
+      "locations": [
+        "院方會議室"
+      ],
+      "state": {
+        "time": "第二季第 9 天，下午",
+        "knowledge": "重剪影片和收買保全的都是陶啟。",
+        "carry_forward": "進度條：名單第二個名字還空著；舅公的兒子伸手伸到江城。"
+      }
+    },
+    {
+      "number": 88,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "按錯就停職",
+      "youtube_title": "院方主任要七歲女孩當場證明本事：按錯了，妳哥就停職，她看了主任脖子一眼",
+      "duration_s": 120,
+      "logline": "院方的聽證會上，方主任要糰糰當場證明外婆教的是真的，賭注是陶靖的工作。",
+      "hook": "聽證會開場，方主任敲桌：「執照是外婆的，不是她的。一個七歲的孩子，憑什麼碰病人？」",
+      "hook_type": "question",
+      "mid_hook": "老何作證：「師父只教她止痛、安神，按一個位置，不用針、不治病。」方主任不買帳：「那就證明給我看。」",
+      "conflict": "一個七歲的孩子要在一屋子醫生面前證明自己，按錯了，二哥停職。",
+      "turn": "方主任乾脆解開領口坐到她面前：「好，就按我。」陶靖想攔，老何搖頭。糰糰說：「你今天揉了脖子四十七次。」方主任的手僵在後頸上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "方主任閉上眼：「按。按錯了，陶醫生停職。」糰糰的小手停在他肩頸上方，回頭看陶靖；陶靖看著她的眼睛，點了一下頭。",
+        "question": "她這一按，會不會害了二哥？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "mengbao",
+        "fansha"
+      ],
+      "spectacle": "聽證會長桌前，一個紅棉襖小女孩站在椅子上，小手懸在主任的肩頸上方，一屋子白袍屏息。",
+      "glamour_shot": "陶靖坐在聽證席，對她點頭的那一秒摘下眼鏡，眼裡只有她，溫和又篤定。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老何作證外婆教的只是止痛安神"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "lao-he",
+        "s02-zhuren",
+        "s02-huli"
+      ],
+      "locations": [
+        "醫院聽證會議室"
+      ],
+      "state": {
+        "time": "第二季第 10 天，上午",
+        "knowledge": "院方要她當場證明。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥的停職押在她一按上。"
+      }
+    },
+    {
+      "number": 89,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "院方閉嘴",
+      "youtube_title": "主任閉眼等七歲女孩出錯，她一按下去，主任的脖子三年來第一次能轉，全場鴉雀無聲",
+      "duration_s": 120,
+      "logline": "糰糰一按定輸贏；按完之後，老何發現她記得的不只是穴位。",
+      "hook": "小手按下去，方主任皺眉，三秒、五秒……他慢慢轉了轉脖子，睜開眼，沒說話，又轉了一次。",
+      "hook_type": "image",
+      "mid_hook": "方主任清了清喉嚨：「調查結束。陶醫生明天復職。」他看向保全老馬：「你，去跟她道歉。」老馬低頭鞠躬，阿財對他吼了一聲。",
+      "conflict": "一屋子大人要決定這件事怎麼收尾，而陶啟的名字還擺在桌上。",
+      "turn": "老何問糰糰還記不記得他上個月在外婆靈前說的話，她一字一句背了出來，連他咳了兩聲都沒漏。阿芳在門口偷偷鼓掌，被方主任瞪了一眼，鼓得更大聲。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老何的臉一下子白了，喃喃說：「一模一樣……跟妳媽媽一模一樣。」陶靖猛地抬頭：「你說什麼？」",
+        "question": "媽媽也跟她一樣看過不忘？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai",
+        "shenfen"
+      ],
+      "spectacle": "聽證室裡主任慢慢轉動脖子，一屋子白袍醫生同時往後靠，有人手裡的筆掉了。",
+      "glamour_shot": "陶靖聽到「復職」時沒有笑，只是把眼鏡戴回去，低頭看她，嘴角動了一下。",
+      "setups": [],
+      "payoffs": [
+        "s02-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥復職",
+        "保全當眾道歉",
+        "院方撤回調查"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "lao-he",
+        "s02-zhuren",
+        "s02-baoquan",
+        "s02-huli"
+      ],
+      "locations": [
+        "醫院聽證會議室"
+      ],
+      "state": {
+        "time": "第二季第 10 天，中午",
+        "knowledge": "二哥復職；老何說她跟媽媽一模一樣。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥復職了。"
+      }
+    },
+    {
+      "number": 90,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "她記得我的",
+      "youtube_title": "七歲妹妹為什麼看過就不忘？外婆的學生說出答案，醫生哥哥沉默很久，只說了一句話",
+      "duration_s": 140,
+      "logline": "老何把糰糰看過不忘的來歷說給兩兄妹聽，陶靖想起了一個二十年沒想起的生日。",
+      "hook": "老何坐下，手裡的茶冒著煙：「你媽媽陶敏，也是看過就不忘的。」糰糰抱著阿財，豎起耳朵。",
+      "hook_type": "line",
+      "mid_hook": "老何說：「你外婆說，陶敏記得每一個人的生日，從沒漏過一個——鄰居的、學生的、送報的。」糰糰小聲問：「也記得我的嗎？」老何的手一頓。",
+      "extra_hooks": [
+        "白欣的追蹤報導在大廳電視播出：「七歲女孩的外婆，是執業三十年的針灸師。」"
+      ],
+      "conflict": "兩兄妹第一次一起聽媽媽的事，一個從沒見過她，一個不敢想起她。",
+      "turn": "老何說：「妳出生的時候，她來不及記。可是妳記得每一個人——這是她留給妳的。」糰糰低頭摸了摸針線盒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶靖沉默很久，望著窗外，說：「我記得她記得我的。」他的聲音發啞：「十歲那年生日，她煮了一碗麵。」糰糰把手放進他手裡，他沒有放開。",
+        "question": "那碗生日麵，是什麼味道？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzai",
+        "shenfen"
+      ],
+      "spectacle": "醫院宿舍的窗邊，老人、醫生、小女孩和老狗並排坐著，窗外江城的燈一盞一盞亮起。",
+      "glamour_shot": "陶靖背光坐在窗邊，摘下眼鏡，泛紅的長眼望著遠處，夜色把他的側臉描成一條溫柔的線。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [
+        "m03"
+      ],
+      "general_payoffs": [
+        "揭開她看過不忘的來歷",
+        "二哥第一次主動握住她的手"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "lao-he",
+        "muqin",
+        "s02-jizhe"
+      ],
+      "locations": [
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 10 天，夜裡",
+        "knowledge": "她看過不忘是遺傳媽媽的；媽媽記得每一個人的生日。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥牽了她的手。"
+      }
+    },
+    {
+      "number": 91,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "同一張椅子",
+      "youtube_title": "七歲女孩發現急診大廳每週同一時間坐著同一個女人，醫生哥哥一看見她就轉身逃走",
+      "duration_s": 105,
+      "logline": "陶靖復職第一天，糰糰在大廳發現一個每週都來的女人，二哥一見她就逃。",
+      "hook": "復職的早上，糰糰問：「那碗生日麵，什麼味道？」陶靖扣著白袍：「忘了。」阿財抬頭看他，沒有咬——他是真的忘了。",
+      "hook_type": "question",
+      "mid_hook": "大廳第三排靠窗的椅子上，坐著一個穿灰外套的女人，手裡一朵白花。糰糰說：「她上週也在。同一張椅子，同一個時間，同一朵花。」",
+      "conflict": "二哥能面對主任、記者和舅公的人，卻不敢經過一張椅子。",
+      "turn": "糰糰撿起病歷，想起大廳那塊「優良醫師」牌：空掉的那一年，就是三年前的今天這個月。陶靖穿過大廳，女人站了起來；他轉身就走，病歷夾掉在地上，紙散了一地。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿芳蹲下幫她撿紙，看著那個女人的背影，輕聲說：「那是三年前那個孩子的媽媽。」女人把白花放在椅子上，走出了自動門。",
+        "question": "三年前的那個孩子是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "ganren"
+      ],
+      "spectacle": "晨光照進急診大廳，第三排空椅子上一朵白花，四周人來人往沒人停下。",
+      "glamour_shot": "陶靖重新別上識別證，對著值班室的鏡子扣好白袍最上面一顆釦子，鏡中的人眉眼清朗。",
+      "setups": [
+        "s02-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥復職第一天"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-huli",
+        "s02-mama"
+      ],
+      "locations": [
+        "急診大廳",
+        "急診值班室"
+      ],
+      "state": {
+        "time": "第二季第 11 天，上午",
+        "knowledge": "三年前那個孩子的媽媽每週來大廳坐。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥看見那個女人就逃。"
+      }
+    },
+    {
+      "number": 92,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "七歲",
+      "youtube_title": "醫生哥哥終於說出三年前沒救回的病人，七歲妹妹聽完只說了一句：你沒說謊",
+      "duration_s": 135,
+      "logline": "糰糰拿著那朵白花去找二哥，陶靖第一次說出三年前的事。",
+      "hook": "值班室門口，糰糰把椅子上那朵白花遞給陶靖。他看著花，不接，也不趕她走，只是把門關上，坐下：「妳想知道，我就說。」",
+      "hook_type": "image",
+      "mid_hook": "「三年前一個女孩，車禍送進來，七歲，跟妳一樣大。我主刀。」他停很久：「沒救回來。她媽媽在走廊上跪著，求我再試一次。」",
+      "extra_hooks": [
+        "回憶只有三個畫面：一張空掉的小病床、一隻掉在走廊的粉紅小鞋、走廊盡頭一個跪著的背影。"
+      ],
+      "conflict": "他守了三年的事說出來了，可是他不覺得說出來會比較好。",
+      "turn": "糰糰說：「那不是你的錯。」他苦笑：「妳七歲，妳不懂。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "糰糰站到他面前，一字一句：「我七歲。我記得每一個對我說謊的人。你沒說謊。」陶靖看著她，嘴唇動了一下，猛地轉過身去背對她。",
+        "question": "二哥會在她面前哭出來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "回憶的白光裡，一隻粉紅色小鞋躺在空蕩的醫院走廊，遠處一個跪著的背影。",
+      "glamour_shot": "陶靖說到一半摘下眼鏡，用手背壓住眼睛，檯燈只照亮他緊抿的嘴和白袍的領口。",
+      "setups": [],
+      "payoffs": [
+        "s02-t05"
+      ],
+      "reveals": [
+        "m07"
+      ],
+      "general_payoffs": [
+        "二哥說出三年前沒救回的病人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-mama"
+      ],
+      "locations": [
+        "急診值班室",
+        "回憶：三年前的急診走廊"
+      ],
+      "state": {
+        "time": "第二季第 11 天，夜裡",
+        "knowledge": "二哥三年前沒救回一個七歲女孩，從那天起不敢看小病人。",
+        "carry_forward": "進度條：名單第二個名字還空著；白花在二哥桌上。"
+      }
+    },
+    {
+      "number": 93,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "安安",
+      "youtube_title": "醫生哥哥背對妹妹哭了，十四歲老狗慢慢走過去，把頭放在他膝蓋上",
+      "duration_s": 120,
+      "logline": "糰糰不知道怎麼讓二哥不難過，她只能把外婆留下的阿財推過去。",
+      "hook": "陶靖背對著她，肩膀一抖一抖，沒有聲音。糰糰沒去拉他，輕輕推了推阿財：「去。」",
+      "hook_type": "image",
+      "mid_hook": "老狗慢慢走過去，把頭放在陶靖膝上。陶靖的手落在狗頭上，終於開口：「她叫安安。很愛貼紙。」那盒貼紙，是三年前替她拆的。",
+      "extra_hooks": [
+        "糰糰問：「安安的媽媽呢？」陶靖搖頭：「三年，我一次都不敢見她。」"
+      ],
+      "conflict": "他把安安藏了三年，把安安的媽媽也躲了三年。",
+      "turn": "糰糰本來以為二哥怕的是小孩；原來他怕的是那個媽媽的眼睛。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "糰糰把那朵白花放進陶靖手心：「她每週都來。這朵，你要拿著，還是還給她？」陶靖看著手心的花，手指慢慢收攏。",
+        "question": "二哥敢去見安安的媽媽嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "mengbao"
+      ],
+      "spectacle": "值班室的檯燈下，老黃狗的頭靠在白袍膝上，一隻手慢慢落在狗毛上。",
+      "glamour_shot": "陶靖低頭撫著阿財，眼淚滴在鏡片上，他沒擦，燈下的側臉安靜而柔軟。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥哭出來了",
+        "知道貼紙盒是替安安拆的"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-mama"
+      ],
+      "locations": [
+        "急診值班室"
+      ],
+      "state": {
+        "time": "第二季第 11 天，深夜",
+        "knowledge": "女孩叫安安，愛貼紙；二哥三年不敢見安安的媽媽。",
+        "carry_forward": "進度條：名單第二個名字還空著；白花在二哥手心。"
+      }
+    },
+    {
+      "number": 94,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "看我三秒",
+      "youtube_title": "醫生哥哥不敢看小孩的眼睛，七歲妹妹想出一個練習：先看我三秒，他撐不到兩秒",
+      "duration_s": 110,
+      "logline": "陶靖還不敢見安安的媽媽，糰糰改從最小的一步開始：先看她的眼睛。",
+      "hook": "陶靖把白花插進水杯：「還不行。」糰糰點頭，拉張椅子坐到他對面：「那先看我。三秒。」",
+      "hook_type": "line",
+      "mid_hook": "他看了一秒半就轉開，糰糰面無表情：「一點五。再來。」第二次，一秒七。阿芳在門口憋笑憋到咳嗽。",
+      "conflict": "一個醫生要重新學會看一個小孩的眼睛，老師是一個七歲的小孩。",
+      "turn": "下午一個小孩被抱進來，陶靖往前走了一步，又退了回去；劉醫生接了。糰糰在小本子上寫：「前進一步。」陶遠視訊打來，看見這一幕：「你們在幹嘛？」兩個人同時說：「練習。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "候診大廳突然一聲尖叫：一個五歲小男孩捂著喉嚨，臉漲紅，說不出話；他媽媽喊：「糖卡住了！」劉醫生在手術室，離他最近的白袍，是陶靖。",
+        "question": "二哥衝得過去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju",
+        "zhiyu"
+      ],
+      "spectacle": "值班室裡一大一小對坐，中間一個小沙漏，沙子流到一半，大人先轉開了眼睛。",
+      "glamour_shot": "陶靖被逼著對視時推了推眼鏡，耳根發紅，憋著不笑的嘴角往下壓。",
+      "setups": [
+        "s02-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥能對視一點七秒"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "tao-yuan",
+        "s02-huli"
+      ],
+      "locations": [
+        "急診值班室",
+        "急診候診大廳"
+      ],
+      "state": {
+        "time": "第二季第 12 天，下午",
+        "knowledge": "二哥開始練習看小孩的眼睛。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥今天讓人接小病人六次，往前走了一步。"
+      }
+    },
+    {
+      "number": 95,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "背對著救",
+      "youtube_title": "五歲男孩被糖果噎住，不敢看小孩的醫生從背後衝上去，三秒救回一條命",
+      "duration_s": 115,
+      "logline": "陶靖要救一個噎住的孩子，他用了一個不必看見孩子臉的方法。",
+      "hook": "陶靖衝過去，從背後抱住小男孩，雙手一收、一收——一顆糖彈出來滾到地上，男孩「哇」地哭出聲。",
+      "hook_type": "danger",
+      "mid_hook": "男孩的媽媽抓住他的白袍想道謝，陶靖一直沒轉身，只說了一句「沒事了」，快步走進洗手間，把門鎖上。",
+      "conflict": "他救了人，卻還是連那個孩子的臉都沒看一眼。",
+      "turn": "糰糰站在洗手間外：「你從後面救，就不用看他的臉。」門裡安靜了很久：「……妳怎麼知道。」洗手間鏡子前，他的手抖得連水龍頭都轉不開。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶靖叫她去置物櫃拿外套，櫃子一開，一個信封滑出來：收件人「鄭雅文」，沒貼郵票，日期是三年前，裡面塞著厚厚一疊寫了又劃掉的信紙。",
+        "question": "這封信，他為什麼三年都沒寄？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "候診大廳慢動作，白袍從背後抱住小男孩，一顆糖從空中彈出，在地板上滾了三圈。",
+      "glamour_shot": "陶靖撐著洗手台低頭，額前碎髮垂下，眼鏡擱在台邊，水珠沿著下顎滑落。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "救回噎住的小男孩"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing"
+      ],
+      "locations": [
+        "急診候診大廳",
+        "醫院洗手間外",
+        "醫生置物櫃"
+      ],
+      "state": {
+        "time": "第二季第 12 天，傍晚",
+        "knowledge": "二哥寫過一封給安安媽媽的信，三年沒寄。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥救了小孩，但還沒看他的臉。"
+      }
+    },
+    {
+      "number": 96,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "差一步的麵",
+      "youtube_title": "七歲妹妹站在椅子上指揮醫生哥哥煮外婆的麵，他吃第一口就愣住：這是媽媽生日那碗",
+      "duration_s": 115,
+      "logline": "糰糰不拆那封信，她想先讓二哥吃一碗熱的；可是外婆的麵，她只看過一半。",
+      "hook": "陶靖衝出洗手間，看見她手裡的信封：「妳看了？」糰糰：「我只看信封。」阿財坐在旁邊，嘴巴閉著。",
+      "hook_type": "line",
+      "mid_hook": "宿舍小廚房，糰糰站在椅子上指揮：「水滾三次，蔥先不放，蛋要等。」陶靖手忙腳亂，鍋鏟掉了兩次。",
+      "conflict": "一碗麵能不能讓一個三年沒好好吃飯的人坐下來。",
+      "turn": "陶靖吃了一口，筷子停住：「這是……媽媽生日煮的那碗？」糰糰搖頭：「差一步。外婆最後一步，從來不讓我看。」她搆不到爐子，陶靖一手護著椅背、一手攪鍋，嘴裡念：「站好，不准往前。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶靖把整碗麵吃完，連湯都喝了，放下碗看著她的眼睛——三秒、四秒、五秒：「明天，下一個小孩，我自己接。」",
+        "question": "二哥真的敢自己接小病人嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "mengbao",
+        "ganren"
+      ],
+      "spectacle": "宿舍小廚房的蒸氣裡，一個小女孩站在椅子上指揮，一個醫生拿鍋鏟手忙腳亂，阿財蹲在腳邊等掉下來的蛋。",
+      "glamour_shot": "陶靖捲著袖子在爐前，蒸氣糊了眼鏡，他摘下來隨手掛在領口，素著一張溫潤的臉低頭嚐湯。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥看她的眼睛撐過五秒"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "waipo"
+      ],
+      "locations": [
+        "醫院宿舍小廚房"
+      ],
+      "state": {
+        "time": "第二季第 12 天，夜裡",
+        "knowledge": "外婆的麵還差最後一步，她沒看過；二哥記得那個味道。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥說明天自己接小病人。"
+      }
+    },
+    {
+      "number": 97,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "簽名的人",
+      "youtube_title": "刑警大哥在雲城查到二十年前送走弟弟的那張單子，簽名的不是外婆",
+      "duration_s": 120,
+      "logline": "陶遠在雲城查舅公的動作，查到產權處的申請，也查到一張二十年前的單子。",
+      "hook": "半夜陶遠視訊打來，陶靖接起第一句是：「小聲點，她睡了。」陶遠愣了一下，把聲音壓低。",
+      "hook_type": "line",
+      "mid_hook": "陶遠：「舅公去產權處申請代管老屋，理由是『無人繼承』。」他舉起一份影本：「上面寫，外婆沒有後人。」",
+      "extra_hooks": [
+        "鏡頭裡，陶遠身後的老屋飯桌被推到牆邊，地板上畫著粉筆格子。"
+      ],
+      "conflict": "舅公要把外婆的房子寫成沒人要的，兄弟倆一個在雲城、一個在江城。",
+      "turn": "陶靖說：「她在。我們都在。」陶遠沉默一下，第一次笑了半聲：「你說『我們』。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠把另一張發黃的紙貼近鏡頭：「二十年前送你去江城的寄養單。簽名的不是外婆。」紙上的字跡工整秀氣：陶德茂。陶靖的手握緊了手機。",
+        "question": "舅公為什麼要瞞著外婆送走他們？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "mengbao"
+      ],
+      "spectacle": "手機螢幕裡一張發黃的寄養單貼近鏡頭，簽名欄三個字在燈下清清楚楚。",
+      "glamour_shot": "陶遠在老屋昏黃的燈下拿著影本，冷臉上第一次掛著一絲半笑，舊錶在手腕上反光。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s02-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查到舅公申請代管老屋",
+        "找到二十年前寄養單上的簽名"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "tao-jing",
+        "tao-yuan",
+        "tao-demao"
+      ],
+      "locations": [
+        "醫院宿舍",
+        "外婆的老屋（視訊）"
+      ],
+      "state": {
+        "time": "第二季第 12 天，深夜",
+        "knowledge": "舅公申請代管老屋，二十年前簽寄養單的也是他。",
+        "carry_forward": "進度條：名單第二個名字還空著；舅公的人在老屋地板畫了格子。"
+      }
+    },
+    {
+      "number": 98,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "勾手指",
+      "youtube_title": "醫生哥哥說要自己接小病人，七歲妹妹伸出小指：你敢不敢跟我打勾勾",
+      "duration_s": 110,
+      "logline": "陶靖說要自己接小病人，糰糰要他拿出一個七歲孩子會信的保證。",
+      "hook": "早上陶靖照鏡子扣白袍，糰糰站在門口：「你昨天說的，還算嗎？」他扣到最後一顆，停住。",
+      "hook_type": "question",
+      "mid_hook": "上午進來一個發燒的小女孩，陶靖拿起病歷，走到簾子前，手放上布簾——劉醫生剛好從旁邊走過，順手接了過去。陶靖鬆了一口氣，又很生氣自己鬆了一口氣。",
+      "conflict": "他想做到，可是每一次都有人替他接住，他也每一次都讓了。",
+      "turn": "糰糰沒罵他，在小本子上畫了一顆星：「今天差一點，也算。」阿芳看著他：「陶醫生，你剛剛差一點。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "晚上糰糰伸出小指頭：「下一個小孩，不管有沒有劉醫生，你都自己接。打勾勾。」陶靖看著那根小指頭，手抬起來，停在半空。",
+        "question": "二哥敢跟她打這個勾勾嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "zhiyu"
+      ],
+      "spectacle": "急診一道淺藍布簾，一隻戴錶的大手放在簾子上，旁邊伸來另一隻手先掀開了它。",
+      "glamour_shot": "陶靖站在晨光裡扣白袍，最後一顆釦子停在指尖，鏡片後的長眼看著門口的小女孩。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥第一次把手放上小病人的布簾"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-huli"
+      ],
+      "locations": [
+        "醫院宿舍",
+        "急診觀察區"
+      ],
+      "state": {
+        "time": "第二季第 13 天，晚上",
+        "knowledge": "二哥差一點就自己接了小病人。",
+        "carry_forward": "進度條：名單第二個名字還空著；二哥今天讓人接小病人一次。"
+      }
+    },
+    {
+      "number": 99,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "三十九度六",
+      "youtube_title": "半夜七歲妹妹發高燒，不敢看小孩的醫生哥哥抱著她衝進急診，這次他只能自己來",
+      "duration_s": 120,
+      "logline": "糰糰半夜發燒，急診裡能看她的只有陶靖。",
+      "hook": "兩根小指勾在一起，陶靖說：「好。」糰糰笑了，打了個大噴嚏。",
+      "hook_type": "line",
+      "mid_hook": "凌晨兩點阿財狂抓陶靖的房門，他推開隔壁的門：糰糰縮在被子裡，臉頰燙得通紅，小聲喊：「外婆……」",
+      "conflict": "一個發燒的七歲孩子在他懷裡，他沒辦法再讓給任何人。",
+      "turn": "劉醫生不在，值班表上只剩他一個名字；阿芳把體溫計遞給他，沒有說「要不要叫別人」。他抱著她下樓，阿財跟不上，在樓梯口哀哀叫；阿芳剛下夜班，把老狗抱起來跟在後面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "體溫計「嗶」一聲：三十九度六。糰糰抓著他袖子的小手慢慢鬆開，眼睛閉上了；陶靖拿著手電筒，站在床邊，手在抖。",
+        "question": "她會不會有事？二哥敢看她嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "凌晨的宿舍樓梯，一個醫生抱著小女孩往下衝，後面護理師抱著一隻老黃狗緊跟。",
+      "glamour_shot": "陶靖只穿一件白襯衫抱著她跑，髮絲凌亂，眼鏡斜了也顧不上扶，臉上全是急。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "及時把她送進急診"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-huli"
+      ],
+      "locations": [
+        "醫院宿舍",
+        "宿舍樓梯",
+        "急診觀察床"
+      ],
+      "state": {
+        "time": "第二季第 14 天，凌晨兩點",
+        "knowledge": "她發高燒，只有二哥能看她。",
+        "carry_forward": "進度條：名單第二個名字還空著；阿財下樓也要人抱了。"
+      }
+    },
+    {
+      "number": 100,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "哥哥幫你看",
+      "youtube_title": "不敢看小孩眼睛三年的醫生，蹲下來對小男孩說：哥哥幫你看看，七歲妹妹在名單上畫了一個勾",
+      "duration_s": 150,
+      "logline": "陶靖替發燒的妹妹看病，看了她的眼睛；第二天，他要兌現那個勾勾。",
+      "hook": "陶靖深吸一口氣，打開手電筒，輕輕撥開她的眼皮：「糰糰，看我。」她迷迷糊糊睜眼：「你看我了。」",
+      "hook_type": "line",
+      "mid_hook": "退燒藥下去，天亮時她的臉不紅了；陶靖整夜坐在床邊沒闔眼，阿財睡在他腳上。",
+      "conflict": "看自己的妹妹是一回事，看一個陌生的小病人是另一回事。",
+      "turn": "上午急診抱進來一個從溜滑梯摔下的小男孩，手臂腫著，哭個不停；劉醫生就在旁邊，伸手要接——陶靖說：「我來。」阿芳替他披上一件外套：「三年了，你第一次看完一個小孩。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶靖走進簾子，蹲下來，看著小男孩的眼睛：「哥哥幫你看看。」男孩不哭了。糰糰站在門口，拿出名單，用紅筆在第二個名字旁邊畫了一個小小的勾——還沒劃掉。",
+        "question": "勾已經畫了，什麼時候才能劃掉？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "mengbao"
+      ],
+      "spectacle": "急診淺藍布簾後，白袍醫生蹲到跟小男孩一樣高，兩雙眼睛平平對著，門口一枝紅筆在名單上畫勾。",
+      "glamour_shot": "陶靖蹲下時白袍下擺鋪在地上，摘下口罩對小男孩笑，眼角彎起，三年來第一次。",
+      "setups": [],
+      "payoffs": [
+        "s02-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥重新接小病人",
+        "她退燒了",
+        "名單第二個名字旁多了紅勾"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-huli",
+        "s02-xiaonan"
+      ],
+      "locations": [
+        "急診觀察床",
+        "急診處置區"
+      ],
+      "state": {
+        "time": "第二季第 15 天，上午",
+        "knowledge": "二哥能看小病人的眼睛了；名單第二個名字旁畫了勾。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾（還沒劃掉）；二哥不再讓人接小病人。"
+      }
+    },
+    {
+      "number": 101,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "臉色不好",
+      "youtube_title": "刑警大哥從老家趕回醫院，臉色鐵青：舅公的人進了外婆的房子，鄰居奶奶被請去喝茶",
+      "duration_s": 115,
+      "logline": "陶遠從雲城趕回江城，帶回一連串壞消息；兩個哥哥得第一次一起決定怎麼辦。",
+      "hook": "陶靖問：「勾了，為什麼不劃掉？」糰糰把名單收進書包：「要等你自己說。」話沒說完，宿舍門被推開，陶遠站在門口，臉色鐵青。",
+      "hook_type": "question",
+      "mid_hook": "陶遠一口氣說完：舅公的人進了老屋量尺寸，林奶奶被「請」去喝茶一下午，產權處有人調過老屋的地契。",
+      "extra_hooks": [
+        "陶靖沒等他說完：「我請假。」陶遠愣住——假單已經在桌上，簽好了。"
+      ],
+      "conflict": "舅公在雲城一步一步收網，兩個哥哥和一個妹妹都在江城。",
+      "turn": "陶遠本來準備好要求弟弟；結果是弟弟先把假單推過來，跟他在雲城飯桌上做的一模一樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠把手機推到桌子中間：一張舅公的人忘在老屋的圖紙，整個一樓切成格子，飯桌底下的那一格，被人用紅筆打了一個叉。",
+        "question": "舅公在飯桌底下打叉做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "手機照片裡一張工程圖紙，格子密密麻麻，正中間一個鮮紅的叉。",
+      "glamour_shot": "陶遠推門進來，黑夾克上還沾著夜車的寒氣，冷臉在門框的陰影裡只露出一雙眼。",
+      "setups": [
+        "s02-t13",
+        "s02-t19"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥主動請假"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "lin-nainai",
+        "tao-demao"
+      ],
+      "locations": [
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 16 天，晚上",
+        "knowledge": "舅公的人在老屋飯桌底下打了紅叉；林奶奶被請去喝茶。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；舅公的人第二次量老屋，飯桌底下打了叉。"
+      }
+    },
+    {
+      "number": 102,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "兩個哥哥一張桌",
+      "youtube_title": "刑警大哥和醫生二哥第一次同桌吃飯，為了誰給七歲妹妹夾雞腿吵了起來",
+      "duration_s": 110,
+      "logline": "兩個哥哥第一次跟她坐同一張桌子吃飯，雲城那邊的電話卻不讓這頓飯吃完。",
+      "hook": "宿舍樓下的小飯館，兩雙筷子同時夾住盤子裡唯一一隻雞腿，誰也不放；糰糰坐在中間，左看右看。",
+      "hook_type": "image",
+      "mid_hook": "陶遠：「我是老大。」陶靖：「我是醫生，她剛退燒。」糰糰把雞腿夾起來，放進阿財的碗裡。兩個哥哥同時閉嘴。",
+      "conflict": "三個人第一次像一家人吃飯，可是誰都還沒學會怎麼當一家人。",
+      "turn": "陶遠說舅公的事，陶靖默默把她碗裡的蔥挑掉；陶遠看見了：「你跟外婆一樣。」老闆娘端湯過來：「三兄妹啊？長得真像。」三個人同時抬頭，誰都沒否認。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陶遠的手機視訊響起，林奶奶壓著聲音：「他又來了。」鏡頭對著門縫：陶啟提著茶葉禮盒站在她家門口，身後兩個高大的男人，敲門聲一下比一下重。",
+        "question": "陶啟找上林奶奶，要做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "xuanyi"
+      ],
+      "spectacle": "小飯館的方桌，三個人一隻狗，兩雙筷子夾著一隻雞腿在空中僵持。",
+      "glamour_shot": "陶遠和陶靖並肩坐著，一個黑夾克一個白襯衫，同時側頭看她，燈下兩張輪廓相似的臉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "三兄妹第一次同桌吃飯"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "lin-nainai",
+        "tao-qi"
+      ],
+      "locations": [
+        "醫院樓下小飯館"
+      ],
+      "state": {
+        "time": "第二季第 16 天，夜裡",
+        "knowledge": "陶啟又找上林奶奶。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；飯桌從兩個人坐成三個人。"
+      }
+    },
+    {
+      "number": 103,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "請去喝茶",
+      "youtube_title": "舅公的兒子提著茶葉上門逼鄰居奶奶簽字，奶奶假裝耳背，一句話把他氣到說不出話",
+      "duration_s": 115,
+      "logline": "林奶奶要擋住陶啟，也要把那天被請去喝茶時聽到的事告訴孩子們。",
+      "hook": "林奶奶打開門，對陶啟大聲喊：「啊？你說什麼？茶葉蛋？我不吃茶葉蛋！」砰地把門關上。",
+      "hook_type": "line",
+      "mid_hook": "林奶奶在視訊裡說：那天喝茶，舅公一直問外婆有沒有留下一個「箱子」，還拿出一張紙，要她簽字證明外婆最後一年「糊塗了」。",
+      "extra_hooks": [
+        "糰糰小聲說：「外婆最後一年，每天都記帳，一筆都沒錯。」"
+      ],
+      "conflict": "只要外婆被寫成糊塗，她留下的任何東西都可以不算數。",
+      "turn": "陶遠一聽就懂：外婆糊塗，老屋就能被說成沒人管；舅公要的不是林奶奶的簽名，是外婆的清醒。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林奶奶的聲音發抖：「他說，三天內不簽，就告我私闖老屋。」她看著螢幕裡的糰糰：「奶奶簽不簽？」",
+        "question": "林奶奶要不要簽那張紙？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "xuanyi"
+      ],
+      "spectacle": "老城區窄巷，一扇鐵門砰地關上，門外油頭花襯衫的男人提著茶葉禮盒愣在原地。",
+      "glamour_shot": "陶靖靠在窗邊聽視訊，眼鏡後的眼睛慢慢冷下來，修長的手指在窗框上敲了兩下。",
+      "setups": [
+        "s02-t14"
+      ],
+      "payoffs": [
+        "s02-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道舅公在找外婆的箱子",
+        "林奶奶擋下陶啟"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "tao-yuan",
+        "tao-jing",
+        "lin-nainai",
+        "tao-qi",
+        "tao-demao"
+      ],
+      "locations": [
+        "林奶奶家門口（視訊）",
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 17 天，上午",
+        "knowledge": "舅公要證明外婆糊塗，還在找一個箱子。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；舅公給林奶奶三天。"
+      }
+    },
+    {
+      "number": 104,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "十天",
+      "youtube_title": "七歲女孩一句「外婆每天記帳」，刑警哥哥立刻想到能推翻舅公的證據，但只剩十天",
+      "duration_s": 110,
+      "logline": "三兄妹要證明外婆最後一年是清醒的，期限比他們想的更短。",
+      "hook": "糰糰對著螢幕說：「奶奶不要簽。」她轉向兩個哥哥：「外婆的帳本，在針線盒架子下面第二個抽屜。」",
+      "hook_type": "line",
+      "mid_hook": "陶遠打給產權處的老同學，掛了電話臉更沉：代管申請的審核日，十天後；審核那天，舅公會親自到場。",
+      "conflict": "帳本在老屋裡，老屋裡有舅公的人；審核只剩十天。",
+      "turn": "陶遠想叫隊上的人去拿，又停住——警察進民宅拿東西，正好落人口實；能進老屋的只有一個人，林奶奶。陶靖翻開手機上外婆的舊照片：每一張裡她都在記帳，筆挺挺地握著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠念出審核單上最後一行：「申請人：陶德茂。理由：被繼承人晚年失智，無有效遺囑，無直系後人。」糰糰站起來：「我是後人。」陶遠：「在他的紙上，妳不存在。」",
+        "question": "在舅公的紙上，她為什麼不存在？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "一張審核單特寫，「無直系後人」五個字，一隻小手按在字上。",
+      "glamour_shot": "陶遠站在窗邊講電話，背脊筆直，舊錶在燈下反光，眉間鎖成一道刻痕。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道帳本的位置",
+        "查到審核日在十天後"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "waipo",
+        "tao-demao"
+      ],
+      "locations": [
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 17 天，下午",
+        "knowledge": "審核在十天後，舅公把她寫成不存在。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；倒數十天。"
+      }
+    },
+    {
+      "number": 105,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "夜裡的抽屜",
+      "youtube_title": "七歲女孩隔著視訊指揮鄰居奶奶夜闖外婆老屋拿帳本，手電筒一照，背後站著舅公的兒子",
+      "duration_s": 110,
+      "logline": "林奶奶要趁夜進老屋拿帳本，糰糰在江城隔著手機替她指路。",
+      "hook": "夜裡十一點，老屋後門，林奶奶穿著藍白拖，手機夾在碎花衫口袋，鏡頭晃晃地對著一片黑。糰糰：「往前七步，左轉。」",
+      "hook_type": "danger",
+      "mid_hook": "糰糰一步一步報：「門檻高，抬腳。第三塊地板會響，跨過去。」林奶奶跨過去，地板沒響。兩個哥哥在旁邊不敢出聲。",
+      "extra_hooks": [
+        "抽屜拉開，一本藍色布面的帳本躺在最底下，壓著一包外婆的針。"
+      ],
+      "conflict": "一個七十五歲的奶奶在黑暗裡，靠一個七歲孩子的記憶走路，老屋外有人守著。",
+      "turn": "帳本拿到了，林奶奶轉身要走，一道手電筒光從飯桌那頭照過來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "手電筒光打在林奶奶臉上，陶啟的聲音從光後面傳來：「林奶奶，這麼晚了，來找什麼？」鏡頭一歪，最後一格是林奶奶背在身後、緊緊抓著帳本的手。",
+        "question": "林奶奶能把帳本帶出來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "fansha"
+      ],
+      "spectacle": "手機鏡頭裡漆黑的老屋，一束手電筒光照過外婆的空椅子，停在一個老人的臉上。",
+      "glamour_shot": "陶遠和陶靖一左一右盯著手機，螢幕的藍光照著兩張繃緊的臉，同一個角度的下顎線。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到外婆的帳本"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "tao-yuan",
+        "tao-jing",
+        "lin-nainai",
+        "tao-qi"
+      ],
+      "locations": [
+        "外婆的老屋（視訊）",
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 18 天，夜裡十一點",
+        "knowledge": "帳本拿到了，但陶啟守在老屋。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；舅公的人夜裡守著老屋。倒數九天。"
+      }
+    },
+    {
+      "number": 106,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "五份車票",
+      "youtube_title": "鄰居奶奶裝糊塗騙過舅公的兒子，帶出外婆的帳本，最後一頁寫著七歲女孩的名字",
+      "duration_s": 120,
+      "logline": "林奶奶要騙過陶啟把帳本帶出老屋，糰糰要從帳本裡證明外婆是清醒的。",
+      "hook": "林奶奶眨眨眼，拉高嗓門：「阿啟啊？我找我家的貓！你有沒有看到一隻花貓？」陶啟愣住：「妳……沒養貓啊。」",
+      "hook_type": "line",
+      "mid_hook": "林奶奶一邊喊貓一邊慢慢往外走，帳本塞在碎花衫裡；陶啟被她纏得一頭霧水，揮手：「回去回去。」她走出巷口，對手機比了個勝利手勢。",
+      "conflict": "帳本要證明外婆清醒，也要讓一個七歲的孩子再看一次外婆的字。",
+      "turn": "翻到最後一頁，日期是外婆走的前一天，糰糰忽然不說話了。視訊裡林奶奶一頁頁翻帳本，糰糰一筆一筆對：每一天、每一筆，跟她記得的一模一樣。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最後一筆，外婆的字端端正正：「糰糰的車票錢，五份。」糰糰看著螢幕，嘴巴抿著，眼淚一顆一顆掉下來；陶靖伸手把她抱到腿上，陶遠的手放在她頭上。",
+        "question": "外婆早就知道她會去找哥哥？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "tuanchong",
+        "ganren"
+      ],
+      "spectacle": "一本藍布帳本的最後一頁，外婆的毛筆小楷寫著一行字，旁邊壓著五張摺好的鈔票。",
+      "glamour_shot": "陶靖把她抱上膝時低頭，下巴輕輕抵著她的揪揪，眼鏡後的眼睛紅了；陶遠的手掌蓋在她頭頂。",
+      "setups": [],
+      "payoffs": [
+        "s02-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "帳本帶出來了",
+        "證明外婆最後一年天天記帳不出錯"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "tao-yuan",
+        "tao-jing",
+        "lin-nainai",
+        "tao-qi",
+        "waipo"
+      ],
+      "locations": [
+        "外婆的老屋巷口（視訊）",
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 18 天，深夜",
+        "knowledge": "外婆清醒到最後一天，還替她存了五份車票錢。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；帳本在林奶奶手上。倒數九天。"
+      }
+    },
+    {
+      "number": 107,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "你說謊了三次",
+      "youtube_title": "舅公打電話假裝關心七歲外孫女，她聽完只說一句：舅公，你說謊了三次",
+      "duration_s": 125,
+      "logline": "舅公親自打電話來要跟孩子說話，糰糰決定自己接。",
+      "hook": "陶遠的手機響，來電顯示「陶德茂」。兩個哥哥對看一眼，糰糰伸出手：「我來。」",
+      "hook_type": "question",
+      "mid_hook": "舅公的聲音和氣得像糖：「乖，舅公好想妳。外婆最後糊塗了，房子舅公不要，舅公只是替妳保管。」阿財對著手機低低吼起來。",
+      "extra_hooks": [
+        "陶靖看著妹妹握著手機的小手，第一次對她笑出聲。"
+      ],
+      "conflict": "一個六十五歲的長輩對一個七歲的孩子說話，每一句都裹著糖。",
+      "turn": "糰糰聽完，平平地說：「舅公，你說謊了三次。第一次是『我想妳』。第二次是『外婆糊塗了』。第三次是『房子我不要』。」電話那頭安靜了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "安靜很久，舅公輕輕笑了：「乖，真聰明。那妳叫哥哥看看老屋門口。」林奶奶的訊息同時跳出來：一張照片，一輛貨車停在老屋門口，車身印著四個字：「地層探測」。",
+        "question": "舅公要對老屋的地板做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "tuanchong",
+        "xuanyi"
+      ],
+      "spectacle": "一支手機被小手捧著，螢幕上「陶德茂」三個字，一隻老黃狗對著手機齜牙。",
+      "glamour_shot": "陶靖聽妹妹拆穿舅公，靠在椅背上笑出聲，眼鏡滑下也不推，眼角的笑紋第一次那麼深。",
+      "setups": [],
+      "payoffs": [
+        "s02-t19",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "當面拆穿舅公三句謊",
+        "二哥第一次對她笑出聲"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-demao",
+        "lin-nainai"
+      ],
+      "locations": [
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 19 天，上午",
+        "knowledge": "舅公沒否認，還派了探測車到老屋。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；一輛探測車停在老屋門口。倒數八天。"
+      }
+    },
+    {
+      "number": 108,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "探測車",
+      "youtube_title": "舅公派探測車開到外婆老屋門口，刑警大哥查出租約，委託人欄寫著兩個字：找箱子",
+      "duration_s": 115,
+      "logline": "陶遠要查清楚舅公為什麼要量地板、為什麼要探測車；查到的答案讓三兄妹都安靜了。",
+      "hook": "陶遠盯著照片上的貨車：「車牌。」糰糰立刻念出來，一個字不差——照片裡那塊車牌只有指甲大。",
+      "hook_type": "line",
+      "mid_hook": "陶遠打回刑警大隊，十分鐘後回電：那是一家探地雷達出租公司，租約時間下週三，地點雲城老城區，外婆的老屋。",
+      "extra_hooks": [
+        "陶靖低聲說：「探地雷達……是找地底下的東西用的。」"
+      ],
+      "conflict": "舅公量了地板、打了叉、現在租了機器，他要的東西在地底下。",
+      "turn": "糰糰想起外婆的規矩：飯桌底下誰都不能踩。她從來以為那是怕人絆倒。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠把租約傳真念出來：「委託人：陶德茂。探測範圍：一樓飯桌下方。備註——」他停了一下：「找箱子。」糰糰抱緊了書包上的針線盒。",
+        "question": "外婆在飯桌底下藏了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "一張租約傳真紙從機器裡慢慢吐出來，「找箱子」三個字一點一點露出。",
+      "glamour_shot": "陶遠撥電話時一手撐在桌上，黑夾克繃出肩線，冷臉低垂，睫毛的陰影壓在眼下。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s02-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查出舅公租了探地雷達、要找飯桌底下的箱子"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-demao",
+        "waipo"
+      ],
+      "locations": [
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 19 天，下午",
+        "knowledge": "舅公量老屋是為了找飯桌底下的箱子，下週三要探測。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；舅公的人量老屋，原來是找箱子。倒數八天。"
+      }
+    },
+    {
+      "number": 109,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "律師函",
+      "youtube_title": "舅公的兒子寄律師函告刑警大哥濫用職權，七歲女孩看一眼就找出律師寫錯的那一行",
+      "duration_s": 120,
+      "logline": "陶啟要把陶遠逼回雲城，一封律師函寄到刑警大隊。",
+      "hook": "刑警大隊的電話打到陶遠手機上，隊上的老鄭聲音很急：「隊長，有人寄律師函告你。」",
+      "hook_type": "danger",
+      "mid_hook": "律師函寫著：陶遠「未經監護人同意，擅自將兒童帶離雲城，並濫用警力調查私人糾紛」。陶靖一把拿過手機：「他就是監護人！」",
+      "extra_hooks": [
+        "糰糰看了一眼律師函：「這裡寫，監護人是舅公，日期是上個月十號。我的登記表，十二號就改了。」"
+      ],
+      "conflict": "律師函送到了陶遠的上司桌上，真話假話，上面要的是一個交代。",
+      "turn": "糰糰找到的那一行讓律師函整封站不住；可是上司的電話已經先打來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陶遠的上司在電話裡說：「明天早上八點回隊報到，當面說清楚，不然先停職。」陶遠掛了電話，看著兩個人：「下週三，我可能不在老屋。」窗外一聲雷。",
+        "question": "大哥被逼回去，老屋誰來守？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "xuanyi"
+      ],
+      "spectacle": "一封律師函攤在桌上，紅色印章旁，一根小手指按在一行日期上。",
+      "glamour_shot": "陶靖搶過手機時鏡片一閃，平日溫和的臉第一次漲紅，白襯衫袖口捲得一高一低。",
+      "setups": [
+        "s02-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找出律師函上的錯日期"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-qi"
+      ],
+      "locations": [
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 20 天，晚上",
+        "knowledge": "律師函的監護日期是錯的，但大哥明天被叫回隊上。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；大哥被叫回雲城。倒數七天。"
+      }
+    },
+    {
+      "number": 110,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "第三個名字",
+      "youtube_title": "舅公想用律師函逼走刑警大哥，整個刑警大隊反過來替七歲小隊員出頭，名單上第三個名字讓兩個哥哥愣住",
+      "duration_s": 140,
+      "logline": "陶遠要在不離開妹妹的情況下保住職位，糰糰拿出她記得的日期，雲城那邊有一整隊人等著她開口。",
+      "hook": "陶遠撥給上司，糰糰湊到手機邊，清清楚楚：「隊長的上司你好，我是小隊員。」電話那頭沉默一秒，然後傳來一陣笑聲——整個辦公室都在聽。",
+      "hook_type": "line",
+      "mid_hook": "她把律師函上的錯日期、收容所登記表改監護人的日期、孫姐簽名的時間一口氣背完。上司說：「律師函我退回了。陶遠，案子你繼續查。」",
+      "extra_hooks": [
+        "老鄭搶過電話：「小隊員放心！下週三我們全隊去老屋門口『巡邏』！」"
+      ],
+      "conflict": "舅公的律師函，對上一個記得每個日期的孩子和一整隊護短的刑警。",
+      "turn": "大哥不用回去了。飯桌上三個人鬆了一口氣，糰糰從書包拿出名單攤開：「那我們規劃下一個。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶靖低頭看名單第三個名字——「陶烈，港城」——手裡的筷子停住：「陶烈？拳王陶烈？」陶遠皺眉：「……那個被指控打假拳的？」糰糰抬頭：「什麼是假拳？」",
+        "question": "第三個哥哥，是被指控打假拳的拳王？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "fansha",
+        "xuanyi"
+      ],
+      "spectacle": "一張攤開的名單在飯館方桌上，紅勾旁的第三個名字被兩個男人的手指同時按住。",
+      "glamour_shot": "兩個哥哥同時湊近名單，一個黑夾克一個白襯衫，燈下兩張俊臉同一個皺眉的角度。",
+      "setups": [],
+      "payoffs": [
+        "s02-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "律師函被退回",
+        "大哥保住職位",
+        "刑警大隊答應去守老屋"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing"
+      ],
+      "locations": [
+        "醫院樓下小飯館"
+      ],
+      "state": {
+        "time": "第二季第 20 天，夜裡",
+        "knowledge": "大哥保住職位；第三個哥哥是被指控打假拳的拳王陶烈。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾，第三個名字被兩個哥哥看見了；刑警大隊下週三守老屋。"
+      }
+    },
+    {
+      "number": 111,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "什麼是假拳",
+      "youtube_title": "七歲妹妹問什麼是假拳，刑警大哥和醫生二哥解釋了十分鐘，被她一句話問倒",
+      "duration_s": 110,
+      "logline": "兩個哥哥要跟妹妹解釋第三個哥哥的處境，陶靖也要在走之前替急診留下一樣東西。",
+      "hook": "陶遠想了很久：「假拳就是……故意輸。」糰糰：「那是說謊。」陶靖：「對。」糰糰：「那他說謊了嗎？」兩個哥哥同時答不出來。",
+      "hook_type": "question",
+      "mid_hook": "陶靖把筷子放下：「走之前，我想替急診做一件事。」他打開筆電，新建一個檔案，標題打了一半：「兒童止痛……」",
+      "conflict": "他要走，可是急診裡下一個喊痛的小孩，不能等他回來。",
+      "turn": "陶靖本來只想留一張紙條給劉醫生；看到外婆畫的那隻小手，他決定寫一整套流程，送進院方。糰糰翻開外婆的帳本，背面幾頁是外婆的小字，只寫著「止痛」「安神」，旁邊畫著一個小孩的手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "方主任看完草稿，抬頭：「流程可以試。但要有人負責推，至少三個月。」他看著陶靖：「你要留下來推，還是跟她走？」",
+        "question": "二哥要選醫院，還是選妹妹？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "飯館的桌上一本攤開的藍布帳本，旁邊一台筆電，螢幕上的游標在標題後面一閃一閃。",
+      "glamour_shot": "陶靖在筆電前推眼鏡，螢幕的光映在鏡片上，專注時微抿的唇線乾淨好看。",
+      "setups": [
+        "s02-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥開始寫兒童止痛流程"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-zhuren",
+        "waipo"
+      ],
+      "locations": [
+        "醫院樓下小飯館",
+        "急診部主任室"
+      ],
+      "state": {
+        "time": "第二季第 21 天，上午",
+        "knowledge": "院方願意試流程，但要二哥留下來負責。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；二哥要在醫院和妹妹之間選。"
+      }
+    },
+    {
+      "number": 112,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "獻給安安",
+      "youtube_title": "醫生哥哥說醫院和妹妹兩個都要，熬了一整夜寫流程，天亮時封面上多了一個名字",
+      "duration_s": 120,
+      "logline": "陶靖要在三天內把流程寫到能交接，讓別人也能推；他找來了所有能幫忙的人。",
+      "hook": "陶靖沒想太久：「兩個都要。流程我寫到別人也能推，三天。」方主任挑眉：「三天？」",
+      "hook_type": "line",
+      "mid_hook": "宿舍裡擠滿人：阿芳拿著護理紀錄，老何在視訊裡慢慢講，糰糰站在椅子上把外婆說過的話一句一句背出來，陶靖打字打到手指發麻。",
+      "conflict": "一整套流程，要在三天裡從一個人的手變成每個醫生都能用的規矩。",
+      "turn": "老何說：「師父教的只是讓小孩先不怕；止痛，還是要醫生的藥。」陶靖把這句話打進第一頁。凌晨三點，陶遠抱著阿財在沙發上睡著，打呼聲跟老狗一模一樣，阿芳笑到把咖啡灑在紀錄上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "天亮時陶靖趴在桌上睡著，糰糰替他蓋上外套，看見螢幕上的封面：「兒童急診止痛流程」，底下一行小字：「給安安」。她伸手把螢幕輕輕闔上。",
+        "question": "二哥把流程獻給了安安？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "凌晨的小宿舍擠滿人：醫生打字、護理師翻紀錄、手機裡老人講話、小女孩站在椅子上，沙發上一人一狗打呼。",
+      "glamour_shot": "陶靖熬夜後趴在桌邊，襯衫袖子捲到手肘，眼鏡推到額上，晨光落在他閉著的眼睛上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "流程寫完",
+        "老何、阿芳都進來幫忙"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "lao-he",
+        "s02-huli",
+        "s02-zhuren"
+      ],
+      "locations": [
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 22 天，清晨",
+        "knowledge": "流程寫完了，封面寫著「給安安」。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；阿財打呼聲比以前大，走路更慢。"
+      }
+    },
+    {
+      "number": 113,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "院方批了",
+      "youtube_title": "院方批准醫生哥哥的兒童止痛流程，全急診起立鼓掌，回宿舍時妹妹看見他在摺白袍",
+      "duration_s": 120,
+      "logline": "流程送上院方，批不批決定陶靖能不能放心走。",
+      "hook": "院方會議室，方主任翻到最後一頁，拿起筆，停了很久——簽下名字：「試行，即日起。」",
+      "hook_type": "image",
+      "mid_hook": "急診護理站有人帶頭鼓掌，劉醫生、阿芳、小周一個接一個站起來；方主任彎腰對糰糰說：「小顧問，謝謝妳外婆。」",
+      "extra_hooks": [
+        "白欣拿著麥克風等在門口：「陶醫生，我想拍這套流程，不拍小孩的臉。」"
+      ],
+      "conflict": "流程批了，接下來是他自己的事：真的要走嗎？",
+      "turn": "大家以為陶靖會留下來推；他把三個月的推行表交給劉醫生，一欄一欄寫好了名字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "回到宿舍，糰糰推開門：陶靖正把白袍一摺、兩摺、三摺，平平放進行李箱最上層，回頭看她：「三天。」",
+        "question": "二哥真的要跟我們走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "急診護理站一排白袍醫護一個接一個站起來鼓掌，中間一個紅棉襖小女孩被方主任彎腰致意。",
+      "glamour_shot": "陶靖在窗光裡摺白袍，修長的手指把袖子壓平，低頭的側臉安靜而篤定。",
+      "setups": [
+        "s02-t16"
+      ],
+      "payoffs": [
+        "s02-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兒童止痛流程試行",
+        "院方正式向她道謝"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-jing",
+        "s02-zhuren",
+        "s02-huli",
+        "s02-guahao",
+        "s02-jizhe"
+      ],
+      "locations": [
+        "院方會議室",
+        "急診護理站",
+        "醫院宿舍"
+      ],
+      "state": {
+        "time": "第二季第 22 天，下午",
+        "knowledge": "流程批了；二哥把白袍摺進行李。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；白袍摺好放進行李箱。"
+      }
+    },
+    {
+      "number": 114,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "我是",
+      "youtube_title": "刑警大哥問：你不是說你不是我老二？醫生弟弟只回了兩個字，老家那邊整隊刑警站在門口",
+      "duration_s": 120,
+      "logline": "陶靖最後一個班前，兄弟倆要把那句沒說完的話說完；雲城那邊，探測車按時開到了老屋。",
+      "hook": "陶遠靠在門邊看著行李箱：「你上次說，你不是我老二。」陶靖拉上拉鍊，頭也不抬：「我是。」",
+      "hook_type": "line",
+      "mid_hook": "林奶奶的視訊：探測車開到老屋門口，車門一開，十個刑警排成一排在巷子裡「巡邏」，老鄭笑著問司機：「挖什麼呀？」司機看了一眼，把車開走了。",
+      "extra_hooks": [
+        "糰糰拍手，阿財跟著叫了一聲，叫完咳了兩下，趴回地上。"
+      ],
+      "conflict": "舅公擋下了一次，二哥最後一個班還沒上完。",
+      "turn": "大家以為今天能平平靜靜過去；陶靖的呼叫器響了：校外教學的遊覽車急煞，一車小學生撞上前座。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "急診白板上，一行一行寫上去：兒童，九名，輕傷，哭鬧。劉醫生在另一頭手術，九張床一起拉開簾子；所有人轉頭看向陶靖。",
+        "question": "九個哭著的小孩，二哥接得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "老城區窄巷裡十個刑警排成一排，一輛探測車在他們面前慢慢倒車離開。",
+      "glamour_shot": "陶靖聽見「我是」說出口後，抬眼看大哥，鏡片後的眼睛帶著一點不好意思的笑。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兄弟倆說開了",
+        "刑警大隊逼走探測車"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "lin-nainai"
+      ],
+      "locations": [
+        "醫院宿舍",
+        "外婆的老屋巷口（視訊）",
+        "急診大廳"
+      ],
+      "state": {
+        "time": "第二季第 23 天，上午",
+        "knowledge": "二哥說了「我是」；探測車被趕走了。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；白袍又拿出來穿上最後一班；阿財咳了兩聲。"
+      }
+    },
+    {
+      "number": 115,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "九個小孩",
+      "youtube_title": "九個小學生同時送進急診，不敢看小孩三年的醫生一個一個蹲下來，七歲妹妹牽著每一隻小手",
+      "duration_s": 125,
+      "logline": "陶靖要在最後一班接住九個受驚的孩子，糰糰只負責牽手和說一句話。",
+      "hook": "陶靖把白袍從行李箱翻出來穿上，扣子扣到一半就衝出去：「一號床我。二號床我。三號——都我。」",
+      "hook_type": "image",
+      "mid_hook": "他一床一床蹲下來，看著每一個孩子的眼睛；糰糰在他身後，一個一個牽住哭著的小手：「他是我哥，很厲害。」孩子們一個接一個不哭了。",
+      "conflict": "九個孩子同時喊痛，照流程，要醫生、護理師和藥一起到。",
+      "turn": "最後一個女孩一直哭，陶靖照流程下了藥，回頭說：「糰糰，那個位置。」阿芳在旁邊看著，糰糰按下去，女孩慢慢停了。家長們在走廊上交頭接耳：「那就是新聞上那個女孩？」「她哥是陶醫生？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "九張床都安靜了，白欣的攝影師站在門口舉著機器：「陶醫生，可以拍嗎？」陶靖看著九個孩子，再看看糰糰。",
+        "question": "二哥會讓記者拍嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "急診九張床一字排開，白袍醫生從第一床蹲到第九床，紅棉襖小女孩跟在後面一隻一隻牽起小手。",
+      "glamour_shot": "陶靖一路蹲在床邊，白袍下擺沾地，口罩上的眼睛彎著，對每個孩子都是同一個溫柔的眼神。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "九個孩子都安頓好",
+        "流程第一次正式用上"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "tao-jing",
+        "s02-huli",
+        "s02-jizhe"
+      ],
+      "locations": [
+        "急診大廳",
+        "急診觀察區"
+      ],
+      "state": {
+        "time": "第二季第 23 天，中午",
+        "knowledge": "流程用起來了；家長們知道她是陶醫生的妹妹。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；二哥一口氣接了九個小病人。"
+      }
+    },
+    {
+      "number": 116,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "上了新聞",
+      "youtube_title": "記者拍下醫生蹲在九個孩子床邊的畫面，新聞播出時，一個媽媽在家裡站了起來",
+      "duration_s": 115,
+      "logline": "白欣要拍的是流程，不是女孩；新聞播出去，有一個人一直在等這一則。",
+      "hook": "陶靖點頭：「只拍手，不拍臉。」白欣的鏡頭對準九雙小手和一雙戴手套的大手，一雙紅棉襖的小手牽在中間。",
+      "hook_type": "line",
+      "mid_hook": "白欣跟糰糰說：「我第一天就想拍的，不是『七歲神童』，是妳哥哥這樣蹲下來。」她把稿子給糰糰看，標題沒有她的名字。",
+      "extra_hooks": [
+        "傍晚新聞：「江城第一醫院兒童止痛新流程上路。」小周在掛號窗口把音量調到最大。"
+      ],
+      "conflict": "新聞能讓更多孩子不怕醫院，也可能讓舅公更清楚他們在哪。",
+      "turn": "陶遠看完新聞說：「舅公一定也在看。」陶靖說：「讓他看。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "江城一間小公寓，一個穿灰外套的女人坐在電視前，看著畫面裡蹲在床邊的白袍，手裡握著一隻粉紅色的小鞋；她站起來，拿起外套。",
+        "question": "安安的媽媽要去哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "電視畫面裡九雙小手和一雙大手，鏡頭拉遠，是一間小公寓裡一個女人握著一隻粉紅小鞋的背影。",
+      "glamour_shot": "新聞畫面裡陶靖蹲在床邊的側影，白袍、口罩、低垂的長睫毛，被攝影燈打出一圈柔光。",
+      "setups": [],
+      "payoffs": [
+        "s02-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "流程上了新聞，沒拍任何孩子的臉"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "tao-yuan",
+        "tao-jing",
+        "s02-jizhe",
+        "s02-guahao",
+        "s02-mama"
+      ],
+      "locations": [
+        "急診觀察區",
+        "掛號窗口",
+        "鄭太太的公寓"
+      ],
+      "state": {
+        "time": "第二季第 23 天，傍晚",
+        "knowledge": "新聞播出了；安安的媽媽看到了。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；白袍摺回行李箱，明天出發。"
+      }
+    },
+    {
+      "number": 117,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "台階下的人",
+      "youtube_title": "醫生哥哥要陪妹妹離開醫院，走到門口愣住：三年前那個女孩的媽媽站在台階下",
+      "duration_s": 120,
+      "logline": "出發的早上要跟醫院道別，陶靖以為最難的是說再見。",
+      "hook": "清晨宿舍樓梯，阿財站在第一階不動了，怎麼叫都不肯走；陶靖彎腰把牠抱起來，陶遠扛兩個行李箱，糰糰背著比她還大的書包。",
+      "hook_type": "image",
+      "mid_hook": "大廳裡小周遞給她一個相框，裡面是那張寫著「陶糰糰，妹妹」的掛號單；阿芳塞給她一盒貼紙：「陶醫生以後每個小孩都發。」",
+      "conflict": "走出這扇門，二哥就要離開他待了八年的地方。",
+      "turn": "他們走到正門，陶靖腳步一頓——他以為自己會捨不得醫院，結果讓他停下的是台階下的一個人。方主任遠遠站在走廊盡頭，沒過來，只舉手點了一下頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "台階最下面，一個穿灰外套的女人站著，手裡一朵白花，看著陶靖：「陶醫生。」陶靖抱著阿財的手收緊了，一步都邁不出去。",
+        "question": "安安的媽媽要對他說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "醫院正門長長的台階，上面兩個男人一個孩子一隻狗，最下面一個女人手拿白花，中間隔著十幾階。",
+      "glamour_shot": "陶靖抱著老黃狗站在台階頂，晨風吹開他的外套，眼鏡後的眼睛一下子失了神。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "跟醫院的人道別",
+        "她收到掛號單相框與一盒貼紙"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-guahao",
+        "s02-huli",
+        "s02-zhuren",
+        "s02-mama"
+      ],
+      "locations": [
+        "醫院宿舍樓梯",
+        "急診大廳",
+        "醫院正門台階"
+      ],
+      "state": {
+        "time": "第二季第 24 天，早上",
+        "knowledge": "安安的媽媽來了。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；阿財站在第一階就不走，要人抱。"
+      }
+    },
+    {
+      "number": 118,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "我不怪你了",
+      "youtube_title": "三年前沒救回的女孩的媽媽，對醫生說出一句話，再從包裡拿出女孩最後握著的東西",
+      "duration_s": 130,
+      "logline": "陶靖要面對他躲了三年的人，這一次他沒有逃。",
+      "hook": "糰糰從他懷裡接過阿財，輕輕推他的背：「去。」陶靖走下台階，一階、兩階，在她面前停住——抬起頭，看著她的眼睛。",
+      "hook_type": "image",
+      "mid_hook": "鄭太太說：「陶醫生，我不怪你了。」她的聲音很輕：「我看了新聞。你還在救小孩。安安會高興。」",
+      "extra_hooks": [
+        "陶靖從外套口袋拿出那封三年沒寄的信，雙手遞過去；鄭太太接下，沒有拆，貼在胸口。"
+      ],
+      "conflict": "一句話要放下三年，兩個人都在等對方先開口。",
+      "turn": "陶靖以為她來是要一個交代；她來，是要把一樣東西還給他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "鄭太太從包裡拿出一張皺皺的小熊貼紙，翻過來，背面是歪歪的蠟筆字：「給貼紙醫生——安安」。「那天，她一直握著。」陶靖接過去，手指發抖。",
+        "question": "安安一直想把貼紙給他？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "醫院台階下，一張皺皺的小熊貼紙在晨光裡翻過來，蠟筆字一筆一畫露出來。",
+      "glamour_shot": "陶靖站在台階下看著鄭太太的眼睛，眼淚順著鏡框邊滑下，他沒有擦，也沒有轉開。",
+      "setups": [],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "安安的媽媽原諒了二哥",
+        "三年沒寄的信送到了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-mama"
+      ],
+      "locations": [
+        "醫院正門台階"
+      ],
+      "state": {
+        "time": "第二季第 24 天，早上",
+        "knowledge": "安安的媽媽不怪他了；安安生前想把貼紙給他。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；一張小熊貼紙在二哥手裡。"
+      }
+    },
+    {
+      "number": 119,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "三個月",
+      "youtube_title": "院方主任追到醫院門口要醫生留下升主任，他只說一句：我要陪妹妹去找哥哥",
+      "duration_s": 125,
+      "logline": "鄭太太走了，陶靖要把那張貼紙放好，也要把最後一個留下來的理由還回去。",
+      "hook": "陶靖蹲下打開行李箱，摺好的白袍在最上層；他把安安的貼紙放進白袍胸前口袋，扣上，再把箱子闔上。",
+      "hook_type": "image",
+      "mid_hook": "方主任從大廳追出來，喘著氣：「陶靖，急診副主任的缺，是你的。留下來。」",
+      "extra_hooks": [
+        "陶靖站起來：「給我三個月留職停薪。我要陪我妹妹，去找我哥哥。」"
+      ],
+      "conflict": "一邊是他用八年換來的位置，一邊是兩個人和一張名單。",
+      "turn": "方主任看了他很久，從口袋掏出一張留職停薪單和一支筆，墊在行李箱上簽字：「三個月。少一天都不行。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶遠提起兩個行李箱，糰糰把那個比她還大的書包舉起來，舉得手直抖：「誰背？」兩個哥哥同時伸手。",
+        "question": "誰替她背這個書包？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "醫院門口一個行李箱打開，摺好的白袍胸前口袋露出一角小熊貼紙，箱蓋慢慢闔上。",
+      "glamour_shot": "陶靖蹲在行李箱前扣白袍口袋，晨光從他背後打過來，抬頭看方主任時眼神乾淨而堅定。",
+      "setups": [],
+      "payoffs": [
+        "s02-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二哥拿到三個月假",
+        "白袍收進行李跟著走"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "s02-zhuren"
+      ],
+      "locations": [
+        "醫院正門台階"
+      ],
+      "state": {
+        "time": "第二季第 24 天，早上",
+        "knowledge": "二哥要跟他們走三個月。",
+        "carry_forward": "進度條：名單第二個名字旁一個紅勾；白袍摺在行李箱，口袋裡一張貼紙。"
+      }
+    },
+    {
+      "number": 120,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "港城，拳王",
+      "youtube_title": "醫生二哥替七歲妹妹背起比行李還重的書包，她在醫院台階上劃掉第二個名字：下一個，拳王",
+      "duration_s": 150,
+      "logline": "三兄妹要離開江城；兩個哥哥以為下一站是回雲城守老屋，糰糰早就決定了別的方向。",
+      "hook": "陶靖的手先碰到書包帶，一提，整個人往下一沉：「妳裝了什麼？」糰糰扳手指：「針線盒、帳本、外婆的針、五份車票錢、阿財的碗。」",
+      "hook_type": "line",
+      "mid_hook": "兩個哥哥一人牽她一隻手往外走，大廳兩邊站滿了人：小周舉著掛號單揮手，阿芳、劉醫生、小雨和她爸爸、溜滑梯摔傷的小男孩，一個接一個喊：「小顧問再見！」",
+      "extra_hooks": [
+        "林奶奶傳來語音：帳本交上去了，審核延期；可是昨晚舅公的人又進老屋量了一次尺寸。",
+        "陶遠說：「先回雲城。」陶靖點頭：「守老屋。」糰糰沒說話，從書包側袋抽出紅筆。"
+      ],
+      "conflict": "老屋那邊還被盯著，名單上還有三個名字；下一步往哪走，兩個哥哥說了不算。",
+      "turn": "兩個哥哥都以為要先回雲城；糰糰把紅筆蓋子咬開，在台階上坐下，攤開名單——外婆的五份車票錢，她早就算好了第三份的去處。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "醫院門口的台階上，她用紅筆把第二個名字旁的勾拉成一條線，劃掉，指著第三個：「港城，拳王。」陶靖：「拳王？」陶遠：「……那個陶烈？」阿財趴在台階上，下巴貼著石階，不想走。",
+        "question": "港城的拳王哥哥，會比前兩個更難嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huzai",
+        "xiju"
+      ],
+      "spectacle": "醫院正門台階，兩個高大的哥哥一左一右牽著紅棉襖小女孩，醫生背上一個比行李還大的舊書包，一枝紅筆在名單上劃下第二道線。",
+      "glamour_shot": "陶靖背著妹妹的舊書包站在台階上，書包帶勒在白襯衫肩頭，他低頭看名單，眼鏡後的長眼帶著笑；陶遠在另一邊冷臉微揚。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "名單劃掉第二個名字",
+        "二哥替她背書包",
+        "兩個哥哥陪她去港城"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "lin-nainai",
+        "s02-guahao",
+        "s02-huli",
+        "s02-xiaoyu",
+        "s02-xiaonan"
+      ],
+      "locations": [
+        "急診大廳",
+        "醫院正門台階"
+      ],
+      "state": {
+        "time": "第二季第 24 天，上午",
+        "knowledge": "第二個名字劃掉了；下一個是港城的拳王陶烈。",
+        "carry_forward": "進度條：名單劃掉兩個名字；白袍在行李箱裡；舅公的人又量了老屋；阿財趴在台階上不想走。"
+      }
+    }
+  ]
+}

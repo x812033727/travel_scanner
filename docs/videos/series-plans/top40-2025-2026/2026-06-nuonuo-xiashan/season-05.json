@@ -1,0 +1,4521 @@
+{
+  "number": 5,
+  "title": "飯桌",
+  "theme": "最後一個哥哥，要做一碗做不出來的麵。",
+  "start_state": "四個哥哥陪她回雲城找第五個：陶謙，雲城頂樓餐廳主廚，米其林、完美、不碰家常菜。舅公拿假遺囑申請老屋產權，產權處通知三十天內異議。老何守著地契，林奶奶守著老屋。阿財不太走了，陶烈抱著。",
+  "end_state": "五哥陶謙從把她當『來鬧的小客人』到在外婆的老屋廚房做出那道菜；外婆做不出來那道菜揭開（母親最愛的一碗麵，糰糰記得每一步）；老屋底下藏的東西揭開（母親的日記與五個孩子的出生證明）；最後敲門的小男孩揭開。舅公的假遺囑被母親的日記與出生證明堵住，五個哥哥在飯桌上一起堵住他，陶啟先跪。老屋回到六個人手上；外婆的飯桌坐滿六個人，阿財在桌下睡著。第 300 集最後一格，門鈴響，門外一個跟她長得一樣的小男孩。",
+  "guest_cast": [
+    {
+      "id": "s05-lingban",
+      "name": "領班周先生",
+      "role": "雲城頂樓餐廳領班，四十歲，勢利、看人先看鞋；本季的第一個『欺幼者』",
+      "appearance": "東亞男性，四十歲，瘦高、油亮背頭、黑色燕尾背心與領結、白手套，下巴抬著看人"
+    },
+    {
+      "id": "s05-gongzheng",
+      "name": "公證人方律師",
+      "role": "替舅公的假遺囑蓋章的公證人，五十五歲，舅公公司多年的法律顧問",
+      "appearance": "東亞男性，五十五歲，微胖、灰色三件式西裝、金邊老花眼鏡掛在胸前、手提公事包"
+    },
+    {
+      "id": "s05-jianzheng",
+      "name": "見證人老錢",
+      "role": "假遺囑的見證人，五十歲，其實是舅公開了十五年車的司機",
+      "appearance": "東亞男性，五十歲，矮壯、平頭、深色夾克、手上一串車鑰匙、說話前會先擦汗"
+    },
+    {
+      "id": "s05-chanquan",
+      "name": "產權處人員小葉",
+      "role": "雲城產權處承辦員，二十八歲，照章辦事、說話一板一眼，三十天倒數的計時人",
+      "appearance": "東亞女性，二十八歲，短馬尾、白襯衫藍背心、識別證、抱著一疊卷宗、手上一支紅筆"
+    },
+    {
+      "id": "s05-xiaonanhai",
+      "name": "門外的小男孩",
+      "role": "第 300 集按門鈴的小男孩，七歲，長得跟糰糰一樣；舅公家的小孫子",
+      "appearance": "東亞男童，七歲，圓臉、大眼、短短的瀏海、臉頰有一點紅；深藍小外套，背一個比他還大的舊書包"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s05-t01",
+      "question": "誰冒充過陶謙的妹妹？",
+      "setup_episode": 241,
+      "payoff_episode": 246
+    },
+    {
+      "id": "s05-t02",
+      "question": "產權處的異議要什麼條件？",
+      "setup_episode": 241,
+      "payoff_episode": 243
+    },
+    {
+      "id": "s05-t03",
+      "question": "看不起她的領班會不會低頭？",
+      "setup_episode": 242,
+      "payoff_episode": 249
+    },
+    {
+      "id": "s05-t04",
+      "question": "那碗麵做得出來嗎？",
+      "setup_episode": 250,
+      "payoff_episode": 297
+    },
+    {
+      "id": "s05-t05",
+      "question": "外婆的第七步是什麼？",
+      "setup_episode": 253,
+      "payoff_episode": 256
+    },
+    {
+      "id": "s05-t06",
+      "question": "外婆為什麼每年都做那碗麵？",
+      "setup_episode": 252,
+      "payoff_episode": 257
+    },
+    {
+      "id": "s05-t07",
+      "question": "三十天內擋得住舅公的假遺囑嗎？",
+      "setup_episode": 241,
+      "payoff_episode": 287
+    },
+    {
+      "id": "s05-t08",
+      "question": "公證人和見證人是誰的人？",
+      "setup_episode": 261,
+      "payoff_episode": 265
+    },
+    {
+      "id": "s05-t09",
+      "question": "遺囑上外婆的字為什麼不抖？",
+      "setup_episode": 262,
+      "payoff_episode": 264
+    },
+    {
+      "id": "s05-t10",
+      "question": "地契上為什麼是陶敏的名字？",
+      "setup_episode": 268,
+      "payoff_episode": 273
+    },
+    {
+      "id": "s05-t11",
+      "question": "老屋角落那扇小門裡有什麼？",
+      "setup_episode": 270,
+      "payoff_episode": 271
+    },
+    {
+      "id": "s05-t12",
+      "question": "舅公沒說完的那句話是什麼？",
+      "setup_episode": 288,
+      "payoff_episode": 289
+    },
+    {
+      "id": "s05-t13",
+      "question": "斷掉的佛珠，外婆為什麼也有？",
+      "setup_episode": 290,
+      "payoff_episode": 293
+    },
+    {
+      "id": "s05-t14",
+      "question": "陶謙會不會坐上外婆的飯桌？",
+      "setup_episode": 248,
+      "payoff_episode": 283
+    },
+    {
+      "id": "s05-t15",
+      "question": "陶謙會不會收陶啟的支票？",
+      "setup_episode": 254,
+      "payoff_episode": 261
+    },
+    {
+      "id": "s05-t16",
+      "question": "阿財還會醒來嗎？",
+      "setup_episode": 292,
+      "payoff_episode": 296
+    },
+    {
+      "id": "s05-t17",
+      "question": "劃掉五個名字的名單最後放回哪裡？",
+      "setup_episode": 291,
+      "payoff_episode": 299
+    },
+    {
+      "id": "s05-t18",
+      "question": "陶謙的餐廳租約真的在舅公手上嗎？",
+      "setup_episode": 282,
+      "payoff_episode": 283
+    }
+  ],
+  "episodes": [
+    {
+      "number": 241,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "三十天的通知",
+      "youtube_title": "四個大佬哥哥剛下車，舅公的兒子就遞來一張通知：三十天後，外婆的房子歸別人",
+      "duration_s": 115,
+      "logline": "糰糰帶著四個哥哥回到雲城，一下車就收到產權處的三十天通知；她要在倒數裡找到第五個哥哥。",
+      "hook": "車站出口，陶啟把一張紙塞進糰糰手裡：「三十天。房子是舅公的。」",
+      "hook_type": "danger",
+      "mid_hook": "糰糰把通知看了一眼就背出來：「代理人電話，0912……」她記住了陶啟的號碼。",
+      "extra_hooks": [
+        "陶烈抱著阿財往前一步，陶啟往後跳了兩步。"
+      ],
+      "conflict": "舅公的假遺囑已送進產權處，三十天內沒人異議就照遺囑登記；四個哥哥剛到，第五個還沒找到。",
+      "turn": "大家以為這張紙只是嚇人，糰糰指出通知第三條：異議人要是『所有權人的直系親屬』——舅公在等他們湊不齊人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "頂樓餐廳門口，領班抬著下巴：「主廚交代了，這個月第三個『妹妹』，一律請走。」",
+        "question": "誰冒充過陶謙的妹妹？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "雲城車站出口的人潮裡，四個高大的男人圍著一個紅棉襖的小女孩，她低頭讀一張比她臉還大的通知。",
+      "glamour_shot": "陶遠在車站出口冷臉回頭看陶啟，黑夾克的領子被風掀起，舊錶在路燈下一閃。",
+      "setups": [
+        "s05-t01",
+        "s05-t02",
+        "s05-t07"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到產權處通知與陶啟的代理人電話",
+        "四個哥哥決定當晚就去頂樓餐廳"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qi",
+        "s05-lingban"
+      ],
+      "locations": [
+        "雲城車站出口",
+        "雲城頂樓餐廳門口"
+      ],
+      "state": {
+        "time": "產權處倒數第 30 天，晚上",
+        "knowledge": "舅公要用假遺囑三十天內拿走老屋；第五個哥哥在頂樓餐廳",
+        "carry_forward": "領班說的『第三個妹妹』"
+      }
+    },
+    {
+      "number": 242,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "狗不能進",
+      "youtube_title": "米其林餐廳說狗跟小孩都不能進，拳王一手抱狗、刑警一手抱妹妹直接走進去",
+      "duration_s": 105,
+      "logline": "糰糰要進頂樓餐廳見陶謙，領班擋狗又擋小孩，四個哥哥一個一個把門撐開。",
+      "hook": "領班伸出白手套：「狗不能進。」陶烈彎腰把阿財抱起來：「那我抱。」",
+      "hook_type": "line",
+      "mid_hook": "領班又擋：「兒童也不行。」陶遠一聲不吭，把糰糰抱上肩膀，走了進去。",
+      "conflict": "餐廳訂位三個月，領班看人先看鞋，一隻老狗和一雙黃雨鞋進不了門。",
+      "turn": "大家以為硬闖會被趕，廚房門卻自己開了——主廚親自出來了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陶謙聽完「我是你妹妹」，只說一句：「這個月第三個。」他抬手：「保全。」兩個保全朝她走來。",
+        "question": "保全會把她請出去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "mengbao"
+      ],
+      "spectacle": "金色水晶燈的米其林餐廳裡，一個拳王抱著老黃狗、一個刑警肩上坐著紅棉襖的小女孩，滿廳客人放下刀叉。",
+      "glamour_shot": "陶謙推開廚房門走出來，白色主廚服一塵不染，髮絲不亂，在金色燈下抬眼。",
+      "setups": [
+        "s05-t03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "進了頂樓餐廳的門",
+        "第一次見到陶謙本人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-lingban"
+      ],
+      "locations": [
+        "雲城頂樓餐廳門口",
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 30 天，晚上",
+        "knowledge": "陶謙不信；這個月已有兩個人冒充過妹妹",
+        "carry_forward": "保全朝她走來"
+      }
+    },
+    {
+      "number": 243,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "四樣東西",
+      "youtube_title": "主廚要保全請走七歲妹妹，四個哥哥往桌上放了四樣東西，他看完說本店請客",
+      "duration_s": 120,
+      "logline": "保全要請走糰糰，四個哥哥各放一樣東西在桌上，陶謙第一次停下來看他們。",
+      "hook": "保全的手還沒碰到她，陶遠把警證拍在桌上：「雲城刑警大隊。」",
+      "hook_type": "image",
+      "mid_hook": "陶靖放醫師證、陶烈放拳王腰帶，陶行想了很久，放了……一支手機。",
+      "extra_hooks": [
+        "陶行的手機亮著：直播間三十萬人在問「四哥你在哪」。"
+      ],
+      "conflict": "陶謙只信證據；四個陌生男人帶著一個小孩，說自己是他哥哥。",
+      "turn": "大家以為四樣東西是來壓人的，陶行把產權處通知投在手機上：異議要五個直系親屬一起簽，少一個都不行——他們需要陶謙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶謙看完四樣東西：「請坐。本店請客。」他頓一下：「吃完這頓，請別再來。」",
+        "question": "糰糰會答應他嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shenfen",
+        "xiju"
+      ],
+      "spectacle": "白桌巾上一字排開：警證、醫師證、金色拳王腰帶、一支亮著彈幕的手機，水晶燈的光落在上面。",
+      "glamour_shot": "陶謙低頭看那四樣東西，桃花眼在燈下停了一秒，手指輕輕摸過拳王腰帶的扣環。",
+      "setups": [],
+      "payoffs": [
+        "s05-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "保全退下，入座",
+        "確定異議要五個哥哥一起簽"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-lingban"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 30 天，晚上",
+        "knowledge": "異議要五個人一起簽；陶謙只答應請一頓",
+        "carry_forward": "吃完別再來"
+      }
+    },
+    {
+      "number": 244,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "訂位簿",
+      "youtube_title": "領班把七歲女孩當騙子，她瞄了一眼訂位簿，就找出前兩個假妹妹是誰派來的",
+      "duration_s": 110,
+      "logline": "糰糰答應吃完這頓，卻在領班的訂位簿上看見前兩個『妹妹』留下的電話。",
+      "hook": "糰糰點頭：「好。吃完。」她轉頭看見領班台上攤開的訂位簿。",
+      "hook_type": "image",
+      "mid_hook": "前兩個「妹妹」的訂位，留的是同一支電話；糰糰的手指停在那一行。",
+      "conflict": "陶謙被騙了兩次，不肯再信；領班故意把她的座位排在廁所旁邊。",
+      "turn": "大家以為糰糰只是在看菜單，她其實一眼記下整頁訂位簿——領班臉色變了，那一頁不該讓客人看到。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰念出那支電話，陶行把通知翻過來對：「代理人，陶啟。」同一個號碼。",
+        "question": "陶啟為什麼要派假妹妹？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "她踮腳在領班台前，燭光照著一本攤開的皮面訂位簿，小手指順著一行字往下走。",
+      "glamour_shot": "陶行撥開遮眼的長髮看那支號碼，眼下的黑眼圈在燭光裡，嘴角慢慢勾起來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "發現前兩個假妹妹留的是陶啟的電話",
+        "座位從廁所旁換到窗邊"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-lingban"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 30 天，晚上",
+        "knowledge": "陶啟派人冒充妹妹，讓陶謙不再信任何『妹妹』",
+        "carry_forward": "撥那支電話"
+      }
+    },
+    {
+      "number": 245,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "小騙子",
+      "youtube_title": "刑警哥哥一通電話打過去，對方先接了，餐廳領班卻當眾罵七歲女孩是小騙子",
+      "duration_s": 120,
+      "logline": "陶遠撥通陶啟的電話抓到他，陶謙卻說『你們也可能是他派的』，領班當眾叫她小騙子。",
+      "hook": "陶遠撥出號碼，桌下陶啟的聲音從手機裡傳出來：「喂？又一個？」",
+      "hook_type": "line",
+      "mid_hook": "陶謙冷冷地說：「你們也可能是他派的。」領班立刻接：「小騙子，出去。」",
+      "extra_hooks": [
+        "阿財從陶烈懷裡探頭，對著領班低吼——他剛剛說了謊。"
+      ],
+      "conflict": "證據指向陶啟，可是陶謙被騙怕了，誰都不信；領班趁機羞辱她。",
+      "turn": "大家以為抓到陶啟就能讓陶謙信，他反而更不信：「越像真的，越可能是假的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "糰糰從書包裡拿出那張五個小男孩的舊照片，推到陶謙面前：「最小的這個，是你。」",
+        "question": "他認得照片裡的自己嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "窗外雲城夜景鋪滿玻璃，一張泛黃的舊照片在白桌巾上被一隻小手推過去。",
+      "glamour_shot": "陶謙垂眼看照片，睫毛的影子落在臉上，手指懸在照片上方沒有碰。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "錄下陶啟接電話的聲音"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-lingban",
+        "tao-qi"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 30 天，深夜",
+        "knowledge": "陶謙懷疑一切；她拿出了舊照片",
+        "carry_forward": "照片裡最小的男孩"
+      }
+    },
+    {
+      "number": 246,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "耳後的痣",
+      "youtube_title": "主廚說照片誰都找得到，七歲妹妹只說了一句他耳朵後面有什麼，他當場摸了耳朵",
+      "duration_s": 115,
+      "logline": "陶謙說照片誰都找得到，糰糰說出一件照片上看不到的事；前兩個假妹妹的底也被掀了。",
+      "hook": "陶謙把照片推回去：「照片，誰都找得到。」糰糰說：「你左耳後面有一顆痣。」",
+      "hook_type": "line",
+      "mid_hook": "陶謙的手不自覺摸到左耳後——他問：「前兩個也帶了照片，妳跟她們差在哪？」",
+      "conflict": "要讓陶謙分清真假：前兩個假妹妹也有照片、也會哭。",
+      "turn": "大家以為照片就是證據，糰糰說照片是陶啟給的，痣是外婆說的——前兩個都沒說出痣，因為陶啟不知道。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "餐廳大門被推開，陶啟帶著一個律師走進來，笑著高聲說：「主廚，這幾個人在騙你。」",
+        "question": "陶啟要怎麼反咬？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "燭光裡主廚的手停在耳後，對面一個七歲女孩安靜地看著他，窗外整座城的燈。",
+      "glamour_shot": "陶謙側過臉摸耳後那顆痣，燈從側面打過來，下顎線乾淨，像一張停住的劇照。",
+      "setups": [],
+      "payoffs": [
+        "s05-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "證明前兩個假妹妹是陶啟派的",
+        "陶謙第一次動搖"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi",
+        "waipo"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 30 天，深夜",
+        "knowledge": "假妹妹是陶啟派的；陶謙開始動搖",
+        "carry_forward": "陶啟帶律師闖進來"
+      }
+    },
+    {
+      "number": 247,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "狗只咬說謊的",
+      "youtube_title": "舅公的兒子闖進餐廳說七歲女孩是詐騙，老狗撲上去咬了他的鞋，全場安靜",
+      "duration_s": 120,
+      "logline": "陶啟帶律師闖進餐廳反咬糰糰詐騙，阿財撲上去咬了他的鞋；他留下一句讓陶謙站不穩的話。",
+      "hook": "陶啟指著糰糰：「網上都說了，孤女詐騙。」阿財從陶烈懷裡撲下去，一口咬住他的鞋。",
+      "hook_type": "danger",
+      "mid_hook": "陶行舉起手機：「那張照片，是你發的。」上面是陶啟帳號的發文紀錄。",
+      "extra_hooks": [
+        "領班趕緊站到陶啟身邊：「陶先生是本店的貴賓。」"
+      ],
+      "conflict": "陶啟要在陶謙面前把他們打成騙子，領班站在陶啟那邊。",
+      "turn": "大家以為阿財咬人會讓他們被趕出去，陶謙卻看著阿財問：「牠為什麼咬他？」糰糰：「他說謊。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶啟退到門口，回頭對陶謙說：「舅公說，你七歲那年，是你自己要走的。」",
+        "question": "陶謙真的是自己要走的嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "mengbao"
+      ],
+      "spectacle": "金色地毯上一隻老黃狗撲上去咬住一隻亮皮鞋，穿花襯衫的男人單腳跳開，滿廳客人站起來。",
+      "glamour_shot": "陶烈蹲下把阿財抱回懷裡，手上的繃帶與臉上的淺疤在水晶燈下，抬頭瞪著陶啟。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拆穿陶啟就是發網路照片的人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi",
+        "s05-lingban"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 30 天，深夜",
+        "knowledge": "陶啟發了照片；他說陶謙是自己要走的",
+        "carry_forward": "陶謙站不穩"
+      }
+    },
+    {
+      "number": 248,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "本店不接待你",
+      "youtube_title": "七歲妹妹一句「他說謊」，米其林主廚當場對舅公的兒子說：本店不接待你",
+      "duration_s": 110,
+      "logline": "陶謙被『你自己要走的』刺中，糰糰一句話撐住他；他第一次替她把人趕出去。",
+      "hook": "陶謙的手扶住桌沿。糰糰站上椅子：「他說謊。」阿財對著門口低吼。",
+      "hook_type": "line",
+      "mid_hook": "陶謙說他只記得一件事：上車前，外婆給他煮了一碗麵，然後他就被抱上車。",
+      "conflict": "陶謙十九年都以為自己是被嫌棄、被放棄的那一個。",
+      "turn": "大家以為陶謙會信舅公，他卻轉身對陶啟說：「本店不接待你。」——他選了一個七歲的孩子。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶啟走了，陶謙低聲問：「外婆……她還好嗎？」糰糰說：「外婆走了。」",
+        "question": "陶謙知道外婆已經走了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "shenfen",
+        "mengbao",
+        "xiju"
+      ],
+      "spectacle": "餐廳玻璃門外，陶啟被兩個保全請出去，門內一個站在椅子上的小女孩與一個白衣主廚。",
+      "glamour_shot": "陶謙轉身面向門口，白色主廚服的背影挺直，袖口一塵不染，聲音很輕。",
+      "setups": [
+        "s05-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶啟被請出餐廳",
+        "陶謙第一次站在她這邊"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi",
+        "s05-lingban"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 29 天，凌晨",
+        "knowledge": "陶謙記得外婆的一碗麵；他不知道外婆走了",
+        "carry_forward": "外婆走了"
+      }
+    },
+    {
+      "number": 249,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "領班的臉",
+      "youtube_title": "罵七歲女孩小騙子的領班，查完四個男人是誰之後，彎腰九十度跟她道歉",
+      "duration_s": 115,
+      "logline": "陶謙回廚房做菜，領班終於查清楚這四個男人是誰，輪到他低頭。",
+      "hook": "陶謙一句話沒說，轉身回廚房；廚房門關上的那一聲，整個餐廳都聽見了。",
+      "hook_type": "image",
+      "mid_hook": "領班滑著手機，臉色一格一格變白：刑警隊長、急診外科、港城拳王、電競冠軍。",
+      "extra_hooks": [
+        "他又滑到一則新聞：『七歲女孩在急診室止痛』，配圖就是她。"
+      ],
+      "conflict": "領班罵過她小騙子、把她排在廁所旁，現在要上菜給她。",
+      "turn": "大家以為領班會繼續擺臉，他端著第一道菜走到她面前，彎腰九十度：「小姐，對不起。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "產權處的小葉打電話給陶遠：「異議要五個人本人到場。」陶遠看向廚房：「他會來嗎？」",
+        "question": "陶謙會跟他們一起簽嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "shenfen",
+        "xiju"
+      ],
+      "spectacle": "穿燕尾背心的領班端著一盤精緻前菜，在紅棉襖小女孩面前彎腰九十度，四個哥哥同時抬眼。",
+      "glamour_shot": "陶靖摘下黑框眼鏡擦了擦，溫和地對領班說「沒關係」，袖口捲到手肘，窗光落在側臉。",
+      "setups": [],
+      "payoffs": [
+        "s05-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "領班道歉",
+        "陶謙開始為他們出菜"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-lingban",
+        "s05-chanquan"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 29 天，凌晨",
+        "knowledge": "異議要五人到場；陶謙還沒答應",
+        "carry_forward": "吃完這一桌"
+      }
+    },
+    {
+      "number": 250,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "不是外婆的",
+      "youtube_title": "米其林主廚端出一整桌招牌菜，七歲妹妹吃了一口說：好吃，但不是外婆的",
+      "duration_s": 140,
+      "logline": "陶謙端出一整桌，糰糰一道一道吃，最後一句話讓他手裡的盤子停在半空。",
+      "hook": "第一道菜放下：一顆像露珠的番茄。陶烈小聲：「這能吃？」",
+      "hook_type": "image",
+      "mid_hook": "糰糰吃到第六道，說：「這個鹽，比菜單上寫的多一點。」陶謙在廚房門口愣住——他今晚手抖，多放了。",
+      "extra_hooks": [
+        "陶行把每道菜拍下來，彈幕刷：「四哥你去哪了？這是米其林？」"
+      ],
+      "conflict": "陶謙用最好的一桌菜回答她：他是主廚，不是誰的哥哥。",
+      "turn": "大家以為她會被一桌精緻的菜收服，她吃完說好吃，然後說了外婆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰放下湯匙：「好吃。但不是外婆的。外婆說，你小時候吃過她一碗麵，然後就被送走了。」陶謙的手停住。",
+        "question": "那碗麵是什麼麵？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "xiju",
+        "shenfen"
+      ],
+      "spectacle": "長桌上一道一道精緻得像藝術品的菜，最後只剩一隻小手放下的湯匙，與一個停在半空的盤子。",
+      "glamour_shot": "陶謙親手端上最後一道，擦刀、放盤，桃花眼看她的那一秒，燈下的側臉像在發光。",
+      "setups": [
+        "s05-t04"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "吃完陶謙一整桌",
+        "第一次說出外婆的麵"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-lingban"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 29 天，凌晨",
+        "knowledge": "陶謙七歲被送走前吃過外婆一碗麵",
+        "carry_forward": "那碗麵"
+      }
+    },
+    {
+      "number": 251,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "我七歲，我記得",
+      "youtube_title": "做遍全世界菜的米其林主廚，唯一做不出來的是外婆的一碗麵，七歲妹妹說她記得",
+      "duration_s": 125,
+      "logline": "陶謙說出他的結：他做得出全世界的菜，做不出外婆那一碗；糰糰說她記得每一步。",
+      "hook": "陶謙抓住桌沿：「妳怎麼知道那碗麵？」糰糰說：「外婆每年做一次。」",
+      "hook_type": "question",
+      "mid_hook": "陶謙說：「我不碰家常菜。因為做不出那一碗。」他試了十九年。",
+      "extra_hooks": [
+        "他從廚師服口袋掏出一本翻爛的小本子，每一頁都寫著同一個字：「不對」。"
+      ],
+      "conflict": "陶謙十九年做不出那碗麵，不肯讓任何人碰他的傷口，更不肯讓一個小孩碰。",
+      "turn": "大家以為他會說妳在亂講，他卻聽完她一句：「我七歲，我記得。」——他也是七歲那年記住那碗麵的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶謙看了她很久，起身推開廚房的門：「進來。」整個廚房的人回頭。",
+        "question": "米其林廚房會讓一個小孩進去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "mengbao"
+      ],
+      "spectacle": "一本翻爛的小本子攤在白桌巾上，滿頁的「不對」，一隻小手按在其中一頁。",
+      "glamour_shot": "陶謙在空蕩的餐廳裡解下圍裙，燈只剩一盞，打在他低垂的眼睛上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶謙說出他的結",
+        "他讓她進廚房"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian"
+      ],
+      "locations": [
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "產權處倒數第 29 天，凌晨",
+        "knowledge": "陶謙的結是外婆那碗麵；糰糰記得每一步",
+        "carry_forward": "進廚房"
+      }
+    },
+    {
+      "number": 252,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "舊碗量麵",
+      "youtube_title": "米其林廚房第一次走進一個七歲小孩，她說主廚的秤是錯的，外婆用舊碗量",
+      "duration_s": 115,
+      "logline": "糰糰戴上一頂小廚師帽走進米其林廚房，一步一步說外婆的做法。",
+      "hook": "整排廚師同時停刀。一個戴著小廚師帽的七歲女孩，站在不鏽鋼台前。",
+      "hook_type": "image",
+      "mid_hook": "陶謙拿出電子秤，糰糰搖頭：「外婆不用秤。用舊碗，三碗。」",
+      "conflict": "米其林廚房有一百條規矩，外婆的做法一條都不合。",
+      "turn": "大家以為她只是在玩，陶謙照舊碗量出來的麵粉，比他十九年算的配方少了一成。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶謙翻開那本小本子的第一頁，十九年前的童稚字跡寫著：「媽媽生日」。",
+        "question": "為什麼是媽媽生日？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "zhiyu"
+      ],
+      "spectacle": "一整排不鏽鋼台與穿白衣的廚師之間，一個戴小廚師帽的女孩踮腳往鍋裡看，阿財趴在門口的黃線外。",
+      "glamour_shot": "陶謙替她把小廚師帽戴正，彎腰的那一刻白袍落下一道乾淨的線，手上那把自己的刀擱在台邊。",
+      "setups": [
+        "s05-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "進了米其林廚房",
+        "前三步做對了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian"
+      ],
+      "locations": [
+        "頂樓餐廳廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 29 天，清晨",
+        "knowledge": "外婆用舊碗量；陶謙的本子第一頁寫著媽媽生日",
+        "carry_forward": "媽媽生日"
+      }
+    },
+    {
+      "number": 253,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "媽媽生日的麵",
+      "youtube_title": "主廚十九年做不出來的那碗麵終於知道是什麼：每年只做一天，給一個人吃",
+      "duration_s": 130,
+      "logline": "那碗麵的來歷說開了：母親最愛的一碗麵，外婆每年母親生日都做。",
+      "hook": "陶謙指著「媽媽生日」四個字：「那天，是媽的生日。」",
+      "hook_type": "line",
+      "mid_hook": "陶遠站在廚房門口開口了：「媽生日，都吃這碗。」——五個人裡，只有他記得母親。",
+      "extra_hooks": [
+        "糰糰說：「外婆做到第七步，都會停一下。」"
+      ],
+      "conflict": "陶謙要知道他十九年追的到底是什麼味道。",
+      "turn": "大家以為那只是外婆的拿手菜，原來是母親最愛的一碗麵：外婆每年做，陶謙七歲吃過一次就被送走——而糰糰站在外婆旁邊看了七年。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶遠說完那句，轉身走出廚房。陶謙看著他的背影：「大哥……還記得媽的樣子？」",
+        "question": "陶遠記得母親什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "不鏽鋼廚房的晨光裡，一口大鍋冒著白氣，五個大人圍著一個踮腳說話的小女孩。",
+      "glamour_shot": "陶遠靠在廚房門框上，冷峭的側臉第一次鬆動，舊錶在晨光裡反光。",
+      "setups": [
+        "s05-t05"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "揭開那碗麵：母親最愛、外婆每年生日做",
+        "做到第六步"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "muqin",
+        "waipo"
+      ],
+      "locations": [
+        "頂樓餐廳廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 29 天，早上",
+        "knowledge": "那碗麵是母親最愛的、外婆每年母親生日做；糰糰記得每一步",
+        "carry_forward": "第七步"
+      }
+    },
+    {
+      "number": 254,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "第七步",
+      "youtube_title": "做到第七步主廚拿起自己的刀，七歲妹妹喊停：不對，可是她說不出哪裡不對",
+      "duration_s": 115,
+      "logline": "陶謙做到第七步，拿起他的刀；糰糰說不對，卻說不出外婆是怎麼做的。",
+      "hook": "陶謙拿起他的刀，刀鋒對著麵團。糰糰喊：「停！」",
+      "hook_type": "danger",
+      "mid_hook": "糰糰閉上眼：她記得外婆的手、記得那個聲音，卻想不起那個字。",
+      "conflict": "第七步她記得畫面不記得說法，陶謙不肯放下他的刀。",
+      "turn": "大家以為看過不忘的她什麼都記得，原來她只記得聲音——「嘶」一聲。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "停車場，陶謙剛下班，陶啟從車邊走出來，遞上一張支票：「簽放棄書，這是你那份。」",
+        "question": "陶謙會收那張支票嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "mengbao",
+        "ganren"
+      ],
+      "spectacle": "麵團在不鏽鋼台上，一把亮刀懸在半空，一隻小手按住了刀背旁的檯面。",
+      "glamour_shot": "陶謙手腕一翻收刀，刀光在他臉側一閃，眼神冷下來。",
+      "setups": [
+        "s05-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "確定第七步不是用刀"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi"
+      ],
+      "locations": [
+        "頂樓餐廳廚房",
+        "頂樓餐廳地下停車場"
+      ],
+      "state": {
+        "time": "產權處倒數第 28 天，夜裡",
+        "knowledge": "第七步是一個聲音；陶啟拿支票找上陶謙",
+        "carry_forward": "支票"
+      }
+    },
+    {
+      "number": 255,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "我沒住過那裡",
+      "youtube_title": "舅公的兒子拿支票收買主廚哥哥，七歲妹妹問：你要賣外婆的房子嗎",
+      "duration_s": 120,
+      "logline": "陶謙沒收支票也沒撕；糰糰知道後問他一句話，他回了一句讓所有人都痛的話。",
+      "hook": "支票夾在陶謙指間。他沒收，也沒還。陶啟笑：「你考慮。」",
+      "hook_type": "image",
+      "mid_hook": "第二天陶烈知道了，一把揪住陶謙的衣領——陶遠一句「放手」，他放了。",
+      "extra_hooks": [
+        "糰糰站在兩個人中間，小手各拉一隻袖子。"
+      ],
+      "conflict": "陶謙跟老屋沒有一天的記憶，一張支票比一間沒住過的房子實在。",
+      "turn": "大家以為陶謙會說不賣，他說：「我沒住過那裡。」糰糰沒哭，把舊照片放在他的刀架上，走了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "空廚房裡，陶謙看著刀架上那張舊照片：照片背面，是外婆抖抖的字——「小謙，愛吃麵」。",
+        "question": "陶謙會回頭嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "一排亮刀的刀架上，夾著一張泛黃的舊照片，夜裡廚房只開一盞燈。",
+      "glamour_shot": "陶謙一個人站在空廚房擦刀，燈從頭頂落下，桃花眼裡的光一點一點暗。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶烈與陶謙第一次衝突又被陶遠攔下"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi"
+      ],
+      "locations": [
+        "頂樓餐廳地下停車場",
+        "頂樓餐廳廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 27 天，夜裡",
+        "knowledge": "陶謙沒收也沒撕支票；照片背面有外婆的字",
+        "carry_forward": "照片背面"
+      }
+    },
+    {
+      "number": 256,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "用手撕",
+      "youtube_title": "主廚整夜試遍每一把刀都不對，七歲妹妹天亮跑來說：外婆是用手撕的",
+      "duration_s": 125,
+      "logline": "陶謙整夜用每一把刀試第七步，天亮糰糰找到了那個字。",
+      "hook": "凌晨四點，陶謙的台面上排滿了切壞的麵團，每一塊都不對。",
+      "hook_type": "image",
+      "mid_hook": "天亮，陶烈抱著阿財、牽著糰糰站在廚房門口：她一路想，終於想到那個聲音是什麼。",
+      "conflict": "第七步差一個字，陶謙的刀切了十九年。",
+      "turn": "大家以為她回來是要罵他，她說：「不對，外婆是用手撕的。」——陶謙這輩子第一次不用刀碰麵。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "麵團在他手裡撕開，「嘶」一聲。陶謙愣住：「這個聲音……我聽過。」",
+        "question": "他七歲那天聽見了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "mengbao"
+      ],
+      "spectacle": "晨光打進廚房，一雙主廚的手第一次用手把麵團撕開，麵粉在光裡飄。",
+      "glamour_shot": "陶謙捲起一塵不染的袖口，雙手撕開麵團，低頭的側臉在晨光裡有一層細細的粉。",
+      "setups": [],
+      "payoffs": [
+        "s05-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第七步：用手撕"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-lie",
+        "tao-qian"
+      ],
+      "locations": [
+        "頂樓餐廳廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 26 天，清晨",
+        "knowledge": "第七步是用手撕",
+        "carry_forward": "那個聲音"
+      }
+    },
+    {
+      "number": 257,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "七碗",
+      "youtube_title": "老鄰居捧著外婆的舊碗走進米其林廚房，說外婆每年都做六碗，最後一年做了七碗",
+      "duration_s": 130,
+      "logline": "林奶奶捧著外婆的舊碗來了，說出外婆每年做那碗麵的原因。",
+      "hook": "廚房門口，林奶奶捧著一個缺口的舊碗：「你們外婆的。」",
+      "hook_type": "image",
+      "mid_hook": "林奶奶說：每年你媽生日，外婆做六碗，擺在桌上等，等到半夜，一碗一碗倒掉。",
+      "extra_hooks": [
+        "陶謙接過舊碗，碗底刻著一個小小的「謙」。"
+      ],
+      "conflict": "陶謙以為外婆做那碗麵只是懷念母親。",
+      "turn": "大家以為那是給母親的，林奶奶說：是給五個沒回來的孩子的——外婆在等。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "林奶奶抹了眼睛：「她最後一年，做了七碗。」糰糰小聲：「第七碗是我的。」",
+        "question": "外婆最後一年在想什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "不鏽鋼台上一字排開六個缺口的舊碗，每個碗底刻著一個字：遠、靖、烈、行、謙，還有一個空的。",
+      "glamour_shot": "陶謙用拇指摸過碗底那個「謙」字，長睫毛垂下，一滴水落在碗沿。",
+      "setups": [],
+      "payoffs": [
+        "s05-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到外婆的舊碗",
+        "知道外婆每年做麵是在等他們"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lin-nainai",
+        "waipo"
+      ],
+      "locations": [
+        "頂樓餐廳廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 25 天，下午",
+        "knowledge": "外婆每年做麵等五個孩子；最後一年做七碗",
+        "carry_forward": "第七碗"
+      }
+    },
+    {
+      "number": 258,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "狗進了廚房",
+      "youtube_title": "舅公的兒子檢舉米其林廚房有狗，稽查員上門，七歲妹妹背出牆上的衛生規定",
+      "duration_s": 120,
+      "logline": "陶啟檢舉『狗進廚房』，稽查員上門要開罰；糰糰與四個哥哥一起把它擋回去。",
+      "hook": "稽查員把一張照片拍在不鏽鋼台上：「有人檢舉，狗進廚房。」",
+      "hook_type": "danger",
+      "mid_hook": "糰糰指著牆上的衛生規定，一條一條背：「第四條，寵物不得進入作業區。牠在黃線外。」",
+      "extra_hooks": [
+        "陶行調出監視器：七天，阿財的爪子一次都沒過黃線。"
+      ],
+      "conflict": "餐廳被罰就要停業，陶謙十九年蓋起來的東西會被一隻狗拖垮。",
+      "turn": "大家以為檢舉照是實拍，陶靖指出照片的角度只能從窗外的對街拍——檢舉人就是蹲在對街的陶啟。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "稽查員走了。陶謙轉身對全廚房說：「今晚不營業。我煮一碗麵。」",
+        "question": "第八步之後還會出錯嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "mengbao",
+        "zhiyu"
+      ],
+      "spectacle": "廚房地上一條黃線，一隻老黃狗的鼻子正好停在線前，稽查員彎腰看了很久。",
+      "glamour_shot": "陶靖摘下眼鏡對著光看檢舉照片，袖口捲到手肘，溫和地說「角度不對」。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "檢舉被駁回",
+        "陶謙第一次為那碗麵停業一晚"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian"
+      ],
+      "locations": [
+        "頂樓餐廳廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 23 天，傍晚",
+        "knowledge": "陶啟還在搗亂；陶謙今晚只煮一碗麵",
+        "carry_forward": "今晚"
+      }
+    },
+    {
+      "number": 259,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "十二步",
+      "youtube_title": "米其林餐廳整晚停業只煮一碗麵，七歲妹妹一步一步念，四個哥哥站在出菜口",
+      "duration_s": 125,
+      "logline": "停業的晚上，糰糰把十二步念完，陶謙一步一步照做。",
+      "hook": "空蕩的餐廳只亮一盞燈。糰糰站在小板凳上：「第八步，蔥要先爆。」",
+      "hook_type": "line",
+      "mid_hook": "第十步，一直沒動的阿財抬起頭，鼻子朝著鍋，尾巴動了一下。",
+      "conflict": "十二步一步都不能錯，陶謙要做出十九年前那碗。",
+      "turn": "大家以為最難的是第七步，最難的是第十一步：外婆會停下來「看一下窗外」——糰糰說，外婆在等門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "麵盛進外婆的舊碗，白氣往上冒。陶遠在出菜口說：「……是這個味道。」",
+        "question": "陶謙自己嚐，會是什麼表情？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "空蕩餐廳的出菜口站著四個高大的男人，裡面一個主廚和一個站在小板凳上的小女孩，一口鍋冒著白氣。",
+      "glamour_shot": "陶謙在火前翻鍋，火光照亮他半張臉，白袍上第一次沾了一點油。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "十二步全部做完",
+        "阿財抬頭"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian"
+      ],
+      "locations": [
+        "頂樓餐廳廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 23 天，夜裡",
+        "knowledge": "十二步做完；大哥說是這個味道",
+        "carry_forward": "陶謙嚐第一口"
+      }
+    },
+    {
+      "number": 260,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "少外婆",
+      "youtube_title": "主廚照七歲妹妹說的每一步煮完那碗麵，嚐了一口說少一樣，她說：少外婆",
+      "duration_s": 140,
+      "logline": "陶謙嚐第一口，站了很久；他知道少了什麼，卻是她先說出來。",
+      "hook": "陶謙拿起湯匙，所有人都不敢呼吸。阿財的尾巴停了。",
+      "hook_type": "image",
+      "mid_hook": "他吞下去，站了十秒、二十秒，然後說：「不對。少一樣。」",
+      "extra_hooks": [
+        "陶烈忍不住：「哪裡不對？大哥說對了！」陶遠沒說話。"
+      ],
+      "conflict": "陶謙用盡十九年的手藝和她的記憶，還是差一點。",
+      "turn": "大家以為少的是哪個調味，糰糰說：「少外婆。」——那一樣東西，誰都做不出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶謙把鍋放下，雙手撐著台面，肩膀一下一下抖；十九年第一次在廚房裡失態。糰糰抱住他的腿。",
+        "question": "陶謙會回老屋嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "mengbao"
+      ],
+      "spectacle": "一碗冒著白氣的麵放在缺口的舊碗裡，主廚雙手撐著不鏽鋼台低頭，一個小女孩抱住他的腿。",
+      "glamour_shot": "陶謙低著頭，髮絲第一次亂了一縷落在額前，燈從頭頂打下，看不見眼睛只看見下顎在抖。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "那碗麵差一點就成了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian"
+      ],
+      "locations": [
+        "頂樓餐廳廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 23 天，深夜",
+        "knowledge": "那碗麵少外婆；陶謙第一次失態",
+        "carry_forward": "回老屋"
+      }
+    },
+    {
+      "number": 261,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "第五個站在門口",
+      "youtube_title": "十九年沒回過家的主廚，背著自己的刀站在外婆老屋門口：我來簽",
+      "duration_s": 120,
+      "logline": "陶謙十九年第一次站到老屋門口，五個哥哥第一次在同一張飯桌前簽下異議。",
+      "hook": "清晨，老屋的門被敲響。門外是陶謙，背著刀卷：「我來簽。」",
+      "hook_type": "image",
+      "mid_hook": "陶謙當著所有人撕掉陶啟的支票，碎片丟進外婆的灶裡。",
+      "extra_hooks": [
+        "他沒坐下，站在灶台邊；飯桌留著一張空椅子。"
+      ],
+      "conflict": "異議要五個人一起簽，產權處的小葉要每一個人本人到場。",
+      "turn": "大家以為簽完就擋住了，小葉說：遺囑有公證人、有見證人，異議要拿出證據推翻，否則第三十天照登。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰看著遺囑影本上的兩個簽名，林奶奶湊過來，臉色一變：「這個見證人……我認得。」",
+        "question": "見證人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "huzai",
+        "xuanyi"
+      ],
+      "spectacle": "老屋的大飯桌上，五隻大手輪流在同一張異議書上簽名，一隻小手按著紙角。",
+      "glamour_shot": "陶謙站在老屋門口的晨光裡，刀卷斜背，白襯衫取代了主廚服，十九年第一次抬頭看這扇門。",
+      "setups": [
+        "s05-t08"
+      ],
+      "payoffs": [
+        "s05-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "五人簽下異議",
+        "陶謙撕掉支票"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lin-nainai",
+        "s05-chanquan"
+      ],
+      "locations": [
+        "外婆的老屋",
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 22 天，早上",
+        "knowledge": "異議已送；要拿證據推翻遺囑",
+        "carry_forward": "見證人"
+      }
+    },
+    {
+      "number": 262,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "字不抖",
+      "youtube_title": "舅公拿出外婆的遺囑，急診醫生哥哥看了一眼簽名：外婆的手會抖，這個字不會",
+      "duration_s": 115,
+      "logline": "陶靖看出遺囑的破綻：外婆有帕金森，手抖，遺囑上的字一筆都不抖。",
+      "hook": "陶靖把遺囑影本舉到燈下：「外婆有帕金森。」",
+      "hook_type": "line",
+      "mid_hook": "糰糰說：「外婆寫字會抖。我幫她穿針，因為她的手穿不進去。」",
+      "conflict": "要證明遺囑是假的，得有外婆同一時期的真跡。",
+      "turn": "大家以為簽名像就是真的，陶靖指出：簽名的日期，外婆已經病了六年——字反而比年輕時穩。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶靖說要外婆最近的真跡。糰糰抱起針線盒：「最底層有。可是外婆說，不能隨便開。」",
+        "question": "要不要打開針線盒最底層？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "huzai"
+      ],
+      "spectacle": "老屋的燈下，一張遺囑影本被舉起來，光從背面透過簽名的每一筆。",
+      "glamour_shot": "陶靖推了推黑框眼鏡，燈從上方打下，溫和的長眼第一次透出冷光。",
+      "setups": [
+        "s05-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到遺囑第一個破綻"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "waipo"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 21 天，晚上",
+        "knowledge": "外婆手抖，遺囑字不抖；真跡在針線盒裡",
+        "carry_forward": "針線盒最底層"
+      }
+    },
+    {
+      "number": 263,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "公證人",
+      "youtube_title": "刑警哥哥去查替遺囑蓋章的公證人，發現他替舅公的公司做了二十年",
+      "duration_s": 120,
+      "logline": "糰糰決定先開針線盒的中層；陶遠去查公證人，查出他是誰的人。",
+      "hook": "糰糰打開針線盒中層，一疊外婆的小紙條，每一張的字都抖。",
+      "hook_type": "image",
+      "mid_hook": "陶遠坐在公證人辦公室外的車上，看著舅公的車停在門口。",
+      "extra_hooks": [
+        "陶烈數紙條：「三十七張！外婆寫這麼多？」糰糰：「她怕忘記。」"
+      ],
+      "conflict": "公證人有執照、有章，要讓他倒下需要證據。",
+      "turn": "大家以為公證人是中立的，陶遠查出他是舅公公司二十年的法律顧問。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶遠把一張舊合約拍在飯桌上：「方律師。舅公公司的顧問，二十年。」",
+        "question": "見證人又是誰的人？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "huzai"
+      ],
+      "spectacle": "針線盒的中層打開，三十七張抖抖的小紙條像落葉一樣攤滿飯桌。",
+      "glamour_shot": "陶遠坐在車裡盯著公證人事務所，車窗映著他鋒利的下顎線，手指在方向盤上敲了兩下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到外婆三十七張真跡紙條",
+        "查出公證人是舅公的人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-gongzheng",
+        "tao-demao"
+      ],
+      "locations": [
+        "老屋飯桌",
+        "公證人事務所外"
+      ],
+      "state": {
+        "time": "產權處倒數第 20 天，晚上",
+        "knowledge": "公證人是舅公公司的顧問",
+        "carry_forward": "見證人"
+      }
+    },
+    {
+      "number": 264,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "三十七張紙條",
+      "youtube_title": "外婆留下三十七張發抖的紙條，醫生哥哥對完筆跡，舅公的遺囑破了第一個洞",
+      "duration_s": 115,
+      "logline": "陶靖把三十七張紙條和遺囑放在一起比，當晚陶啟帶著見證人上門。",
+      "hook": "三十七張紙條排成一排，最後放上遺囑。陶靖：「你們看。」",
+      "hook_type": "image",
+      "mid_hook": "陶靖拿出外婆六年前的病歷：同一週，外婆連筷子都拿不穩。",
+      "conflict": "要把『字不抖』變成產權處會收的證據。",
+      "turn": "大家以為對筆跡要等鑑定，糰糰指著遺囑上的「蘭」字：外婆寫蘭，最後一筆永遠往回勾——這個沒有。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門被敲響，陶啟帶著一個擦汗的男人站在門口：「見證人老錢。老人家那天精神很好。」",
+        "question": "老錢會怎麼說謊？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "fansha"
+      ],
+      "spectacle": "長飯桌上三十七張顫抖的紙條排成一條線，盡頭是一張字跡平穩的遺囑。",
+      "glamour_shot": "陶靖在燈下對筆跡，摘下眼鏡揉了揉鼻梁，再戴上時眼神篤定。",
+      "setups": [],
+      "payoffs": [
+        "s05-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "筆跡與病歷證明遺囑可疑"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi",
+        "s05-jianzheng"
+      ],
+      "locations": [
+        "老屋飯桌",
+        "老屋門口"
+      ],
+      "state": {
+        "time": "產權處倒數第 19 天，晚上",
+        "knowledge": "遺囑的字與外婆的真跡對不上",
+        "carry_forward": "見證人上門"
+      }
+    },
+    {
+      "number": 265,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "拜訪見證人",
+      "youtube_title": "拳王哥哥說要去拜訪見證人，他沒動手，只坐下來，七歲妹妹問了一句外婆穿什麼",
+      "duration_s": 125,
+      "logline": "陶烈『拜訪』見證人老錢：不動手，只坐著；糰糰一句問話讓老錢的謊破了。",
+      "hook": "陶烈拉開椅子坐在老錢對面，什麼都沒說，只把手上的繃帶一圈一圈纏好。",
+      "hook_type": "image",
+      "mid_hook": "糰糰問：「那天外婆穿什麼？」老錢說：「紅色的外套。」阿財站起來低吼。",
+      "extra_hooks": [
+        "老錢擦汗的手帕已經濕透，陶烈遞了一張紙巾給他。"
+      ],
+      "conflict": "見證人咬定親眼看外婆簽字，口供一致。",
+      "turn": "大家以為陶烈會嚇他，陶烈只是坐著；是糰糰問到外婆的袖套——外婆每天戴袖套，那天也戴，老錢說沒有。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老錢的手機響了，螢幕上兩個字：「陶董」。他脫口而出：「我只是照陶董說的……」",
+        "question": "舅公接下來要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai"
+      ],
+      "spectacle": "老屋門口的小桌，一個魁梧的拳王與一個擦汗的中年人對坐，中間趴著一隻盯人的老黃狗。",
+      "glamour_shot": "陶烈坐著纏繃帶，黝黑的手臂與臉上的淺疤在燈下，一句話都不說，只抬眼。",
+      "setups": [],
+      "payoffs": [
+        "s05-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "見證人說溜嘴：照陶董說的",
+        "公證人與見證人都是舅公的人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-lie",
+        "tao-yuan",
+        "s05-jianzheng",
+        "tao-qi"
+      ],
+      "locations": [
+        "老屋門口"
+      ],
+      "state": {
+        "time": "產權處倒數第 19 天，深夜",
+        "knowledge": "公證人、見證人都是舅公的人",
+        "carry_forward": "舅公來電"
+      }
+    },
+    {
+      "number": 266,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "抵押",
+      "youtube_title": "舅公還沒拿到外婆的房子，電競哥哥翻出他的公司紀錄：房子早就被他抵押了",
+      "duration_s": 120,
+      "logline": "舅公在電話裡和氣地威脅；陶行把舅公公司二十年的紀錄翻出來，翻到一件更大的事。",
+      "hook": "老錢的手機開了擴音，舅公和氣的聲音傳出來：「乖，跟舅公回家。」",
+      "hook_type": "line",
+      "mid_hook": "陶行的三個螢幕同時亮著，舅公公司二十年的債、訴訟、轉帳，一頁一頁往下滾。",
+      "conflict": "舅公說『遺囑登記之後，你們都是外人』；他們要知道他為什麼急。",
+      "turn": "大家以為舅公要的是房子，陶行查到他欠了一屁股債——他急，是因為債主等不了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陶行停在一頁：「他還沒拿到房子，就拿老屋去跟人借了錢。」陶遠：「借給誰？」「下個月到期。」",
+        "question": "老屋會被債主收走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "huzai"
+      ],
+      "spectacle": "老屋二樓三個螢幕的光照亮整面牆，數字一行一行往下滾，一個小女孩坐在螢幕前的小板凳上看。",
+      "glamour_shot": "陶行撥開長髮盯著螢幕，蒼白的臉被藍光照著，手指快得像在彈琴。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "查出舅公負債與拿老屋抵押的紀錄"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao",
+        "s05-jianzheng"
+      ],
+      "locations": [
+        "老屋門口",
+        "老屋二樓"
+      ],
+      "state": {
+        "time": "產權處倒數第 18 天，夜裡",
+        "knowledge": "舅公負債、拿老屋抵押借錢",
+        "carry_forward": "債主"
+      }
+    },
+    {
+      "number": 267,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "主廚在打仗",
+      "youtube_title": "四個哥哥查案查到半夜，主廚哥哥只負責煮飯，七歲妹妹說：五哥也在打仗",
+      "duration_s": 110,
+      "logline": "四個哥哥輪流查證據，陶謙只負責煮飯；糰糰說他也在打仗。老何帶著地契來了。",
+      "hook": "凌晨兩點，四個哥哥趴在飯桌上，陶謙端出五碗粥：「吃。」",
+      "hook_type": "image",
+      "mid_hook": "陶烈問：「你只會煮飯？」糰糰說：「五哥也在打仗。沒有他，你們撐不到天亮。」",
+      "extra_hooks": [
+        "老何敲門，懷裡抱著一個牛皮紙袋：「地契在我這，守了二十年。」"
+      ],
+      "conflict": "陶謙覺得自己最沒用，四個哥哥都有本事查，他只會做菜。",
+      "turn": "大家以為陶謙在旁邊沒事做，陶行查到的每一份紀錄，都是陶謙在頂樓餐廳聽來的客人名字串起來的——舅公的債主都在他店裡吃過飯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老何不肯打開紙袋：「外婆交代，要看，五個人都得在。」陶謙剛走到門口要回店裡。",
+        "question": "陶謙會留下來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "huzai",
+        "fansha"
+      ],
+      "spectacle": "凌晨的老屋飯桌，五碗冒煙的粥、滿桌文件，四個男人趴著，一個主廚站在灶前。",
+      "glamour_shot": "陶謙在老屋的舊灶前攪粥，白襯衫袖口捲起，灶火映著他的桃花眼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶謙的人脈串起舅公的債主",
+        "老何帶著地契來了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lao-he"
+      ],
+      "locations": [
+        "老屋飯桌",
+        "老屋廚房"
+      ],
+      "state": {
+        "time": "產權處倒數第 17 天，凌晨",
+        "knowledge": "地契在老何手上，要五人都在才開",
+        "carry_forward": "陶謙留不留"
+      }
+    },
+    {
+      "number": 268,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "陶敏",
+      "youtube_title": "針灸師守了二十年的地契打開，所有權人不是外婆，舅公連名字都搞錯了",
+      "duration_s": 125,
+      "logline": "陶謙留下，老何打開地契：所有權人是母親陶敏，不是外婆。",
+      "hook": "陶謙放下刀卷，回到飯桌邊：「開吧。」老何抽出地契。",
+      "hook_type": "line",
+      "mid_hook": "所有權人：陶敏。老何說：「你舅公連名字都搞錯了。」",
+      "conflict": "外婆不是屋主，外婆的遺囑——不管真假——都給不出這間房子。",
+      "turn": "大家以為這下贏定了，小葉打電話來：屋主過世，房子歸她的子女——要出生證明。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陶遠問：「我們的出生證明在哪？」五個人翻出各自的收養文件，上面的生母欄全是空的。",
+        "question": "他們要怎麼證明自己是陶敏的孩子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "fansha"
+      ],
+      "spectacle": "泛黃的地契在飯桌中央攤開，所有權人欄兩個字「陶敏」，五個男人同時低頭。",
+      "glamour_shot": "老何長衫袖口一抖抽出地契，陶遠在他身後低頭看那個名字，冷臉第一次失神。",
+      "setups": [
+        "s05-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "地契所有權人是陶敏，外婆的遺囑無效"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lao-he",
+        "s05-chanquan",
+        "muqin"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 16 天，早上",
+        "knowledge": "屋主是母親；要出生證明才能證明是她的孩子",
+        "carry_forward": "出生證明不見了"
+      }
+    },
+    {
+      "number": 269,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "證明不了自己",
+      "youtube_title": "五個大佬哥哥翻遍文件，發現自己連是誰的孩子都證明不了，舅公在電話那頭笑了",
+      "duration_s": 120,
+      "logline": "五個人的收養文件都沒有生母，舅公打電話來笑他們證明不了自己是誰。",
+      "hook": "陶烈把收養文件摔在桌上：「生母不詳？我媽就在照片上！」",
+      "hook_type": "line",
+      "mid_hook": "舅公來電，聲音和氣：「你們證明不了自己是誰。乖，把房子給舅公。」",
+      "extra_hooks": [
+        "陶遠低聲：「二十年，我連自己是誰都證明不了。」"
+      ],
+      "conflict": "沒有出生證明，他們在法律上不是陶敏的孩子；倒數只剩十五天。",
+      "turn": "大家以為收養文件會有線索，每一份都是舅公辦的、每一份都把生母塗掉——他早在二十年前就把路堵死了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰把地契翻過來。背面有一行抖抖的字，五個哥哥同時湊過來。",
+        "question": "地契背面寫了什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "fansha",
+        "huzai"
+      ],
+      "spectacle": "飯桌上五份收養文件攤開，每一份的生母欄都被同一種黑墨塗掉，一個小女孩的手在翻地契。",
+      "glamour_shot": "陶遠一個人站在老屋窗邊，背影高瘦，舊錶貼著窗框，窗外是老城區的屋頂。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認舅公二十年前塗掉了五份生母欄"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 15 天，夜裡",
+        "knowledge": "舅公塗掉了生母欄；地契背面有字",
+        "carry_forward": "那一行字"
+      }
+    },
+    {
+      "number": 270,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "等五個都回來",
+      "youtube_title": "地契背面有外婆的一行字，五個哥哥同時看向老屋角落那扇二十年沒開過的小門",
+      "duration_s": 135,
+      "logline": "地契背面是外婆的遺言；五個哥哥第一次知道，老屋角落那扇小門是留給他們的。",
+      "hook": "糰糰一個字一個字念：「等、五、個、都、回、來——」",
+      "hook_type": "line",
+      "mid_hook": "「——開地下室。」五個哥哥同時抬頭，看向老屋角落那扇從沒開過的小門。",
+      "extra_hooks": [
+        "陶烈：「那扇門我以為是櫃子。」林奶奶：「你外婆不准任何人碰。」"
+      ],
+      "conflict": "外婆把唯一的證據藏在一扇要五個人才能開的門後面。",
+      "turn": "大家以為外婆什麼都沒留，外婆留了——但她要的是五個人一起回來，不是一張紙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "糰糰說：「外婆說要五個。」陶行一個一個數過去：「一、二、三、四……五個了。」五隻手同時伸向門把。",
+        "question": "地下室裡藏著什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "huzai"
+      ],
+      "spectacle": "老屋昏黃的燈下，五個高大的男人與一個小女孩站在角落一扇矮小的木門前，門上一把生鏽的舊鎖。",
+      "glamour_shot": "五個哥哥並肩站在小門前的背影：刑警、醫生、拳王、電競選手、主廚，燈把五道影子拉長在牆上。",
+      "setups": [
+        "s05-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道外婆的證據在地下室"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lin-nainai",
+        "waipo"
+      ],
+      "locations": [
+        "老屋飯桌",
+        "老屋角落的小門前"
+      ],
+      "state": {
+        "time": "產權處倒數第 15 天，深夜",
+        "knowledge": "地下室要五個人回來才開；五個都在了",
+        "carry_forward": "開門"
+      }
+    },
+    {
+      "number": 271,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "針線盒的鑰匙",
+      "youtube_title": "老屋小門上了二十年的鎖，七歲妹妹從外婆的針線盒最底層摸出一把小鑰匙",
+      "duration_s": 120,
+      "logline": "小門鎖著，鑰匙在針線盒最底層；五個哥哥第一次走下外婆的地下室。",
+      "hook": "五隻手拉門把，門不動。糰糰把針線盒翻過來：「最底層，外婆說不能隨便開。」",
+      "hook_type": "image",
+      "mid_hook": "鑰匙縫在針線盒最底層的布裡，旁邊一張紙條：「五個都在了嗎？」",
+      "extra_hooks": [
+        "陶烈抱著阿財走下窄梯，阿財的鼻子一路朝著最裡面的牆角。"
+      ],
+      "conflict": "外婆的針線盒最底層不能隨便開，可是不開，門就打不開。",
+      "turn": "大家以為地下室堆滿雜物，底下乾乾淨淨，只有一塊木地板的顏色比別的新。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶烈撬起那塊木板，底下躺著一個生鏽的鐵盒，盒上一個四位數的密碼鎖。",
+        "question": "密碼是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "手電筒的光照下窄窄的木梯，五個男人一個接一個彎腰走進地下室，最前面是一個背針線盒的小女孩。",
+      "glamour_shot": "陶烈單手抱著阿財彎腰下樓，另一隻纏繃帶的手護著糰糰的頭，手電筒光掃過他鼻樑的舊傷。",
+      "setups": [],
+      "payoffs": [
+        "s05-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "打開地下室",
+        "找到鐵盒"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "waipo"
+      ],
+      "locations": [
+        "老屋地下室"
+      ],
+      "state": {
+        "time": "產權處倒數第 14 天，凌晨",
+        "knowledge": "鐵盒有四位數密碼鎖",
+        "carry_forward": "密碼"
+      }
+    },
+    {
+      "number": 272,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "密碼是生日",
+      "youtube_title": "外婆藏了二十年的鐵盒要四位數密碼，七歲妹妹想起主廚小本子的第一頁",
+      "duration_s": 115,
+      "logline": "糰糰用母親的生日打開鐵盒；車燈照進老屋的窗。",
+      "hook": "陶行要拿工具撬，糰糰按住鐵盒：「外婆不喜歡東西被弄壞。」",
+      "hook_type": "line",
+      "mid_hook": "她想起陶謙本子第一頁的「媽媽生日」，轉了四個數字——咔一聲。",
+      "conflict": "撬開會毀了裡面的紙，密碼只有一次機會般的緊張。",
+      "turn": "大家以為密碼是外婆的生日，是母親的——外婆把一切都鎖在女兒的那一天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鐵盒蓋剛掀開一條縫，地下室的小窗外一道車燈掃過——陶啟的車停在老屋門口。",
+        "question": "陶啟知道他們找到了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "手電筒光裡一隻小手轉動生鏽的密碼鎖，四個數字對上，鐵盒蓋輕輕彈開一條縫。",
+      "glamour_shot": "陶謙蹲在她身邊看那四個數字，桃花眼映著手電筒的光，輕輕說「是媽的生日」。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "打開鐵盒"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi"
+      ],
+      "locations": [
+        "老屋地下室"
+      ],
+      "state": {
+        "time": "產權處倒數第 14 天，凌晨",
+        "knowledge": "鐵盒開了；陶啟的車在門口",
+        "carry_forward": "盒裡的東西"
+      }
+    },
+    {
+      "number": 273,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "五張出生證明",
+      "youtube_title": "鐵盒打開，裡面是母親的日記與五張出生證明，五個哥哥終於證明自己是誰",
+      "duration_s": 135,
+      "logline": "陶烈守住門口，地下室裡的鐵盒打開：母親的日記、五張出生證明、一張摺起來的紙。",
+      "hook": "陶烈走上樓梯，站到門口，陶啟的車沒熄火也沒下車。",
+      "hook_type": "danger",
+      "mid_hook": "鐵盒裡第一樣：五張出生證明，母親欄全寫著「陶敏」——陶遠、陶靖、陶烈、陶行、陶謙。",
+      "extra_hooks": [
+        "日記第一頁，母親的字：「這間房子，我用自己的錢買的，寫我的名字，媽住一輩子。」"
+      ],
+      "conflict": "他們要證明自己是陶敏的孩子，還要知道外婆為什麼藏這些。",
+      "turn": "大家以為裡面只有出生證明，日記寫著母親早就知道弟弟想要這房子——五個孩子是被送走的，不是自己走的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後是一張摺起來的紙，醫院的抬頭。陶靖打開，看了一眼，臉色變了。",
+        "question": "那張紙上寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "手電筒的光照進打開的鐵盒：一本舊日記、五張泛黃的出生證明、一張摺起來的紙。",
+      "glamour_shot": "五個哥哥各自握著自己的出生證明，燈從下方照上來，五張臉同時安靜。",
+      "setups": [],
+      "payoffs": [
+        "s05-t10",
+        "m11"
+      ],
+      "reveals": [
+        "m11"
+      ],
+      "general_payoffs": [
+        "拿到五張出生證明",
+        "地契為什麼是陶敏：母親買給外婆住的",
+        "日記證明孩子是被送走的"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi",
+        "muqin"
+      ],
+      "locations": [
+        "老屋地下室",
+        "老屋門口"
+      ],
+      "state": {
+        "time": "產權處倒數第 14 天，凌晨",
+        "knowledge": "出生證明與日記在手；還有一張醫院的紙",
+        "carry_forward": "醫院的紙"
+      }
+    },
+    {
+      "number": 274,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "二十年的案",
+      "youtube_title": "醫院那張紙上有舅公的簽名，刑警哥哥看完說：二十年的案，結了",
+      "duration_s": 130,
+      "logline": "陶靖說出那張紙的意思：母親過世那夜，舅公以家屬身分簽字放棄搶救。",
+      "hook": "陶靖的手在抖，他把紙放在鐵盒蓋上：「這是媽那天晚上的紀錄。」",
+      "hook_type": "line",
+      "mid_hook": "簽名欄寫著：陶德茂。註記：家屬意願。陶靖說：「外婆才是家屬。沒人問她。」",
+      "conflict": "陶遠當了十年刑警，就是為了這一案；答案在一張紙上。",
+      "turn": "大家以為會是一場謀殺，是一個簽名——舅公沒碰任何人，他只是替外婆做了決定。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶遠說：「二十年的案，結了。」他沒哭。他身後，陶烈先哭出聲。",
+        "question": "舅公會被追究嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "地下室裡一張醫院紀錄攤在鐵盒蓋上，手電筒光停在簽名欄三個字上，五個男人的影子圍著它。",
+      "glamour_shot": "陶遠站在暗處，冷峭的臉一動不動，只有握著舊錶的手指節泛白。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大哥二十年的案有了答案"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "muqin",
+        "tao-demao"
+      ],
+      "locations": [
+        "老屋地下室"
+      ],
+      "state": {
+        "time": "產權處倒數第 14 天，清晨",
+        "knowledge": "舅公以家屬身分簽字放棄搶救",
+        "carry_forward": "日記最後一頁"
+      }
+    },
+    {
+      "number": 275,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "孩子們別分開",
+      "youtube_title": "七歲妹妹念出母親日記的最後一頁，五個哥哥站在地下室裡很久沒有說話",
+      "duration_s": 125,
+      "logline": "糰糰把母親的日記從頭念到尾，五個哥哥各自在日記裡找到自己。",
+      "hook": "陶烈還在哭，糰糰翻開日記：「我念。我念得很快。」",
+      "hook_type": "line",
+      "mid_hook": "每個哥哥都有一頁：「小遠會照顧弟弟」「小靖手很巧」「小烈愛哭」「小行一直看人」「小謙愛吃麵」。",
+      "extra_hooks": [
+        "陶烈抹臉：「誰愛哭！」四個人同時看他。"
+      ],
+      "conflict": "五個哥哥一直以為自己是被丟下的，從來不知道母親怎麼看他們。",
+      "turn": "大家以為最後一頁會寫給外婆，最後一頁寫的是舅公。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一頁：「我弟弟想要這房子。別給他。孩子們別分開。」日記下面還夾著一張便條：舅公去過醫院。",
+        "question": "舅公那天在醫院做了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "地下室的木梯上，五個大男人擠著坐成一排，聽一個小女孩捧著日記念。",
+      "glamour_shot": "陶行坐在最低一階，長髮遮眼，聽到「小行一直看人」時抬起頭，眼眶紅了。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "五個哥哥各在日記裡找到自己",
+        "母親的遺願：孩子們別分開"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "muqin"
+      ],
+      "locations": [
+        "老屋地下室"
+      ],
+      "state": {
+        "time": "產權處倒數第 13 天，早上",
+        "knowledge": "母親不要舅公拿房子，不要孩子分開",
+        "carry_forward": "舅公知不知道鐵盒"
+      }
+    },
+    {
+      "number": 276,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "找到了什麼",
+      "youtube_title": "舅公的兒子在老屋門口等了一夜，敲門問找到了什麼，老狗一口咬住他的鞋",
+      "duration_s": 110,
+      "logline": "陶啟敲門試探，五個哥哥把鐵盒藏好；陶遠把醫院紀錄送回刑警大隊。",
+      "hook": "早上七點，陶啟敲門，笑得很油：「表弟們，找到什麼好東西了？」",
+      "hook_type": "line",
+      "mid_hook": "陶遠把醫院紀錄裝進證物袋，交給大隊的老同事：「二十年前的案，補件。」",
+      "conflict": "舅公不知道鐵盒裡有什麼，陶啟來探口風。",
+      "turn": "大家以為陶啟是來搶的，他其實什麼都不知道——舅公連自己兒子都沒說底下有什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陶啟走前回頭，壓低聲音：「我爸說了，接收那天，他會帶公證人來。你們最好別在。」",
+        "question": "接收那天會發生什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "老屋的木門開了一半，一隻老黃狗從門縫鑽出去咬住一雙亮皮鞋，門內五個男人站成一排。",
+      "glamour_shot": "陶遠把證物袋遞出去，黑夾克在刑警大隊門口的晨光裡，冷臉回頭看了一眼老屋的方向。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "醫院紀錄送進刑警大隊補件"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi"
+      ],
+      "locations": [
+        "老屋門口",
+        "雲城刑警大隊"
+      ],
+      "state": {
+        "time": "產權處倒數第 12 天，早上",
+        "knowledge": "舅公會在接收日帶公證人來",
+        "carry_forward": "接收日"
+      }
+    },
+    {
+      "number": 277,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "車上的小孩",
+      "youtube_title": "五個大佬第一次一起睡在外婆的老屋，半夜監視器拍到舅公兒子的車上坐著一個小孩",
+      "duration_s": 120,
+      "logline": "五個哥哥第一次一起住進老屋守鐵盒，糰糰分房間；半夜陶行在監視器上看見陶啟的車。",
+      "hook": "糰糰站在樓梯口發房間：「大哥睡門口，三哥睡樓梯，四哥睡二樓……」",
+      "hook_type": "line",
+      "mid_hook": "陶謙做了六人份的早餐，自己站在灶邊吃；飯桌上那張空椅子還是空的。",
+      "extra_hooks": [
+        "陶烈睡樓梯睡到滾下來，阿財在下面接住——其實是被他壓住。"
+      ],
+      "conflict": "鐵盒在屋裡，舅公的人在外面，五個哥哥要守到接收日。",
+      "turn": "大家以為今晚會平安，陶行裝在門口的監視器拍到陶啟的車又來了——副駕駛座上，一個小小的身影。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶行把畫面放大：副駕駛座上一個小男孩，背著一個比他還大的書包，朝老屋的窗戶看。",
+        "question": "陶啟車上的小孩是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "xuanyi"
+      ],
+      "spectacle": "夜裡的老屋，五扇窗各亮一盞燈，二樓窗前螢幕的藍光照出一個放大的車窗畫面。",
+      "glamour_shot": "陶行戴著耳機守夜，連帽外套罩著頭，螢幕藍光照亮他蒼白的側臉，他忽然摘下耳機。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "五個哥哥第一次一起住在老屋"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi"
+      ],
+      "locations": [
+        "外婆的老屋",
+        "老屋二樓"
+      ],
+      "state": {
+        "time": "產權處倒數第 11 天，深夜",
+        "knowledge": "陶啟車上有個小男孩",
+        "carry_forward": "那個小孩"
+      }
+    },
+    {
+      "number": 278,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "沒有小孩",
+      "youtube_title": "七歲妹妹問舅公兒子車上的小孩是誰，他說沒有小孩，老狗一聽就站了起來",
+      "duration_s": 115,
+      "logline": "陶啟早上來開條件，糰糰問他車上的小孩，他說謊；林奶奶說她見過那孩子。",
+      "hook": "陶啟把一份文件放在門口：「給我盒子，我爸不追究。」",
+      "hook_type": "danger",
+      "mid_hook": "糰糰問：「你車上的小孩是誰？」陶啟一僵：「沒有小孩。」阿財站起來低吼。",
+      "extra_hooks": [
+        "林奶奶在隔壁門口小聲說：「那孩子，我見過。」"
+      ],
+      "conflict": "陶啟要用『不追究』換鐵盒；他身邊多了一個不能說的人。",
+      "turn": "大家以為陶啟只是來談判，他最怕的問題竟然是那個小孩。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陶啟丟下一句：「明天中午前不給，我爸就把房子的債轉給你們。」他的車開走，後座的小臉貼在窗上。",
+        "question": "債真的會轉到他們身上嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "老屋門口的石階上，一份文件被風吹動，一隻老黃狗站起來擋在小女孩前面。",
+      "glamour_shot": "陶靖站在糰糰身後，白襯衫袖口捲著，溫和的眼神冷冷落在陶啟的臉上。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶啟露出破綻：車上的小孩"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi",
+        "lin-nainai"
+      ],
+      "locations": [
+        "老屋門口"
+      ],
+      "state": {
+        "time": "產權處倒數第 10 天，早上",
+        "knowledge": "陶啟藏著一個小孩；林奶奶見過他",
+        "carry_forward": "明天中午"
+      }
+    },
+    {
+      "number": 279,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "最後一張",
+      "youtube_title": "鐵盒裡還剩最後一張出生證明，七歲妹妹拿起來的手停了：要看嗎",
+      "duration_s": 120,
+      "logline": "陶行查清債轉不到他們身上；鐵盒裡還剩最後一張出生證明，糰糰猶豫了。",
+      "hook": "陶行敲著鍵盤：「債是他的，轉不過來。他在嚇人。」陶烈：「嚇誰？」",
+      "hook_type": "line",
+      "mid_hook": "小葉來老屋核對五張出生證明，抄完說：「還有一張？」她指著鐵盒最底下。",
+      "conflict": "鐵盒最底下壓著一張出生證明，糰糰一直沒拿出來。",
+      "turn": "大家以為五張就是全部，第六張一直壓在最底下——糰糰早就看見了，她不敢拿。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶遠蹲下來：「要看嗎？」糰糰點頭，拿起最後一張，上面是她的名字。",
+        "question": "她的出生證明上寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "飯桌上五張出生證明排成一排，一隻小手從鐵盒最底下抽出第六張。",
+      "glamour_shot": "陶遠單膝蹲在她面前，冷峭的臉第一次放得很低很軟，舊錶貼著她的小手。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶啟的威脅不成立",
+        "產權處核對五張出生證明"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-chanquan"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 9 天，下午",
+        "knowledge": "五張證明已核對；第六張是她的",
+        "carry_forward": "她的出生證明"
+      }
+    },
+    {
+      "number": 280,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "媽走的那天",
+      "youtube_title": "七歲妹妹的出生證明上，母親的名字和一個日期，五個哥哥看完同時沉默",
+      "duration_s": 145,
+      "logline": "糰糰的出生證明上是母親的名字，日期是母親走的那一天；大人們的臉說完了剩下的事。",
+      "hook": "出生證明上：母親，陶敏。陶靖的手指停在出生日期那一欄。",
+      "hook_type": "image",
+      "mid_hook": "日期是母親走的那一天——十三年後的同一天。陶靖翻開日記，找到母親最後寫給外婆的一行：「我在醫院留了一個還沒來的孩子。是妹妹。等時候到了，讓她來。」",
+      "extra_hooks": [
+        "林奶奶在門口捂住嘴：「所以你外婆說，妳是她收的……」"
+      ],
+      "conflict": "她一直知道媽媽『生她的時候走的』，大哥說過時間對不上；答案在這張紙和那一行字裡。",
+      "turn": "大家以為她是外婆收養的，她是母親留下的最後一個孩子——外婆等了十三年，在母親走的那一天，把她接回這個家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶靖輕聲說：「媽走的那天，留下了妳。」陶遠盯著醫院那張紙：「舅公簽字放棄的，是媽。」",
+        "question": "五個哥哥要怎麼面對舅公？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xuanyi"
+      ],
+      "spectacle": "飯桌上六張出生證明排成一排，最後一張最小、最新，一隻小手壓在上面。",
+      "glamour_shot": "陶靖摘下眼鏡，溫潤的長眼紅著，蹲下把糰糰抱進懷裡，白襯衫的肩膀被她的小手抓皺。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "糰糰是母親的孩子：六張出生證明齊了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lin-nainai",
+        "muqin",
+        "waipo"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 9 天，夜裡",
+        "knowledge": "六個人都是陶敏的孩子；舅公簽字放棄的是母親",
+        "carry_forward": "接收日"
+      }
+    },
+    {
+      "number": 281,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "等他來",
+      "youtube_title": "舅公通知接收日要帶公證人來收房子，五個大佬哥哥決定：坐在外婆的飯桌上等他",
+      "duration_s": 115,
+      "logline": "舅公打來定下接收日；五個哥哥不搬走、不躲，決定在飯桌上等他。",
+      "hook": "糰糰坐在門檻上不說話。陶謙蹲下，遞給她一個小小的、歪掉的蛋糕。",
+      "hook_type": "image",
+      "mid_hook": "舅公來電，和氣地說：「最後一天，舅公帶公證人來接收。乖，收拾好。」",
+      "extra_hooks": [
+        "陶烈把蛋糕上歪掉的字念出來：「妹、妹、生、日、快……」糰糰：「還沒到。」"
+      ],
+      "conflict": "糰糰知道自己的生日是母親走的日子，第一次不想過生日；舅公定了接收日。",
+      "turn": "大家以為她在害怕舅公，她說：「外婆每年我生日都哭一下。我以為是我不乖。」——五個哥哥同時明白了外婆的七年。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶遠把六張椅子拉開：「不搬。不躲。」五個哥哥同時坐下：「等他來。」",
+        "question": "五個哥哥要怎麼堵舅公？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "老屋門檻上一個小女孩抱著膝蓋，五個男人各端著一樣東西蹲在她面前：蛋糕、熱牛奶、毛毯、遊戲機、一顆糖。",
+      "glamour_shot": "陶謙蹲在門檻前遞蛋糕，白襯衫沾著奶油，桃花眼笑得有點笨拙。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "五個哥哥決定守在老屋等接收日"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao"
+      ],
+      "locations": [
+        "老屋門口",
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 7 天，晚上",
+        "knowledge": "舅公最後一天帶公證人來",
+        "carry_forward": "排兵布陣"
+      }
+    },
+    {
+      "number": 282,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "六張椅子",
+      "youtube_title": "七歲妹妹排好飯桌的座位，五個哥哥各領一個任務，舅公的兒子卻私下找上主廚",
+      "duration_s": 120,
+      "logline": "糰糰排座位、哥哥們各領一份任務；陶啟私下拿陶謙的餐廳威脅他。",
+      "hook": "糰糰拿紅筆在紙上畫飯桌：「大哥坐這裡，放紀錄。二哥坐這裡，講簽名。」",
+      "hook_type": "line",
+      "mid_hook": "陶謙又煮一次那碗麵，嚐了一口，搖頭：「還是少一樣。」",
+      "conflict": "接收日只有一次機會，五個人的每一步都要對上。",
+      "turn": "大家以為陶謙只負責端麵，陶啟單獨打給他：「你的餐廳，那棟樓是我爸公司的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陶啟在電話裡笑：「你敢坐上那張桌，明天你的廚房就關門。」陶謙握著電話，看向飯桌上那張屬於他的空椅子。",
+        "question": "陶謙會為了餐廳退出嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzai",
+        "fansha"
+      ],
+      "spectacle": "一張手畫的飯桌座位圖，紅筆寫著六個名字，旁邊一個歪歪的狗頭。",
+      "glamour_shot": "陶謙站在老屋後門講電話，夜風吹亂他一絲不亂的髮，下顎線繃緊。",
+      "setups": [
+        "s05-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "接收日的分工排好"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi"
+      ],
+      "locations": [
+        "老屋飯桌",
+        "老屋後門"
+      ],
+      "state": {
+        "time": "產權處倒數第 5 天，夜裡",
+        "knowledge": "陶啟拿餐廳租約威脅陶謙",
+        "carry_forward": "陶謙的選擇"
+      }
+    },
+    {
+      "number": 283,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "坐下才是家人",
+      "youtube_title": "舅公拿米其林餐廳威脅主廚哥哥，電競哥哥一查發現樓根本不是他的，主廚終於坐下",
+      "duration_s": 125,
+      "logline": "陶謙把威脅說出來，陶行一查就破；陶謙十九年來第一次坐上外婆的飯桌。",
+      "hook": "陶謙把手機放在飯桌上，開了擴音重播：「明天你的廚房就關門。」",
+      "hook_type": "line",
+      "mid_hook": "陶行三秒查到：那棟樓早就被舅公抵給銀行，他連租約都不能動。",
+      "extra_hooks": [
+        "糰糰說：「他騙你。」阿財在桌下同意地打了個噴嚏。"
+      ],
+      "conflict": "陶謙習慣一個人扛，他差點又一個人退出。",
+      "turn": "大家以為陶謙會悄悄退出，他選擇把威脅攤在飯桌上——第一次把自己的事交給哥哥們。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陶謙拉開那張空椅子坐下。糰糰把一碗飯推到他面前：「外婆說，坐下才是家人。」",
+        "question": "六個人坐滿了，舅公還能怎樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "外婆的大飯桌六張椅子第一次全坐滿，一碗白飯被一隻小手推到最後一個空位前。",
+      "glamour_shot": "陶謙在飯桌前坐下，低頭看那碗飯，燈下的側臉安靜，嘴角終於鬆開一點。",
+      "setups": [],
+      "payoffs": [
+        "s05-t14",
+        "s05-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶謙坐上外婆的飯桌",
+        "舅公的餐廳威脅破了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 4 天，晚上",
+        "knowledge": "六個人都坐上飯桌了",
+        "carry_forward": "林奶奶要說話"
+      }
+    },
+    {
+      "number": 284,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "二十年前那一夜",
+      "youtube_title": "老鄰居林奶奶終於在飯桌上說出二十年前那一夜，舅公站在醫院走廊說了一句話",
+      "duration_s": 130,
+      "logline": "林奶奶在飯桌上說出二十年前那一夜，也說出舅公七歲時的事。",
+      "hook": "林奶奶坐到飯桌邊，放下茶杯：「那一夜，我在。」",
+      "hook_type": "line",
+      "mid_hook": "她說，舅公七歲那年也被他爸媽送去親戚家，十年後才回來——回來就一直盯著這個家。",
+      "conflict": "五個哥哥只有紙，沒有人親眼看過二十年前的事。",
+      "turn": "大家以為林奶奶只是送孩子上車的那個鄰居，那一夜她在醫院走廊，看見舅公簽字的手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林奶奶說：「那晚你舅公跟我說：『這個家，以後我說了算。』」",
+        "question": "舅公明天會怎麼開口？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "fansha"
+      ],
+      "spectacle": "老屋的飯桌邊，一個碎花衫的老婦人說話，六個人一動不動，牆上五個小男孩的舊照片。",
+      "glamour_shot": "陶烈坐在林奶奶旁邊替她倒茶，魁梧的身子縮得很小，纏繃帶的手很輕。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林奶奶成為那一夜的證人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lin-nainai",
+        "tao-demao"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數第 2 天，夜裡",
+        "knowledge": "林奶奶親眼看過舅公簽字；舅公七歲也被送走過",
+        "carry_forward": "接收日"
+      }
+    },
+    {
+      "number": 285,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "舅公來了",
+      "youtube_title": "倒數最後一天，舅公帶著公證人與兒子來外婆老屋接收，五個哥哥已經坐在飯桌上等",
+      "duration_s": 120,
+      "logline": "最後一天早上，舅公帶著公證人、陶啟與產權處的小葉來接收老屋。",
+      "hook": "老屋門口停下三輛車。舅公撥著佛珠走下來，金絲眼鏡反著光。",
+      "hook_type": "image",
+      "mid_hook": "舅公推開門，五個哥哥坐在飯桌兩邊，沒人起身。陶啟的腳步停了。",
+      "extra_hooks": [
+        "小葉抱著卷宗走在最後，紅筆別在胸前：「今天第三十天。」"
+      ],
+      "conflict": "照遺囑，今天是登記日；舅公帶齊了公證人和見證人的文件。",
+      "turn": "大家以為五個哥哥會擋在門口，他們只是坐著——讓舅公自己走進來，坐到飯桌對面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "舅公笑著朝糰糰伸手：「乖，舅公來接妳回家。」桌下，阿財慢慢站起來。",
+        "question": "阿財會撲上去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai"
+      ],
+      "spectacle": "老屋窄巷口三輛黑車停成一排，唐裝白髮的老人走下車，身後一串人，巷子裡鄰居探出頭。",
+      "glamour_shot": "陶遠坐在飯桌主位旁，黑夾克，抬眼看向門口，冷臉回頭的那一秒像刀。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "舅公坐上了飯桌對面"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao",
+        "tao-qi",
+        "s05-gongzheng",
+        "s05-chanquan"
+      ],
+      "locations": [
+        "老屋巷口",
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數最後一天，早上",
+        "knowledge": "舅公來接收；五個哥哥在等",
+        "carry_forward": "飯桌對質"
+      }
+    },
+    {
+      "number": 286,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "外婆是家屬",
+      "youtube_title": "舅公說簽字放棄是家屬意願，七歲妹妹在飯桌上問：外婆是家屬，你問過她嗎",
+      "duration_s": 130,
+      "logline": "飯桌對質開始：陶遠放紀錄、陶靖解釋簽名，舅公說合法，糰糰問了他一句。",
+      "hook": "阿財站在糰糰椅子邊，沒有撲。陶遠把醫院紀錄放在桌上：「舅公，認得嗎？」",
+      "hook_type": "danger",
+      "mid_hook": "陶靖一句一句解釋：這個簽名，代表那一夜沒有人再試一次。",
+      "extra_hooks": [
+        "舅公把佛珠撥得更快：「家屬意願，合法。」"
+      ],
+      "conflict": "舅公不怕紙：簽名是合法的，二十年前的事早過了。",
+      "turn": "大家以為舅公會慌，他一點不慌；糰糰說：「外婆是家屬。你沒問她。」阿財對他低吼——他剛剛說外婆同意了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陶行起身關燈，投影機打在牆上：舅公公司二十年的紀錄，一行一行亮起來。",
+        "question": "牆上的紀錄會揭穿什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "ganren"
+      ],
+      "spectacle": "老屋的飯桌兩側，一邊五個哥哥一個小女孩，一邊一個撥佛珠的老人，中間一張醫院紀錄。",
+      "glamour_shot": "陶靖摘下眼鏡放在紀錄旁，溫潤的臉第一次冷下來，聲音還是很慢。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舅公在飯桌上被拆穿說謊"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao",
+        "tao-qi",
+        "s05-gongzheng"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數最後一天，上午",
+        "knowledge": "舅公說外婆同意，是謊",
+        "carry_forward": "投影"
+      }
+    },
+    {
+      "number": 287,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "我撤銷",
+      "youtube_title": "電競哥哥把舅公二十年的帳投在牆上，替假遺囑蓋章的公證人看完說：我撤銷",
+      "duration_s": 135,
+      "logline": "牆上的紀錄、陶謙的那碗麵、公證人的撤銷；三十天的倒數在飯桌上停住。",
+      "hook": "牆上亮起一行：老屋抵押，申請人陶德茂——日期在外婆過世之前。",
+      "hook_type": "image",
+      "mid_hook": "陶謙端出那碗麵，放在糰糰面前。她嚐一口，抬頭：「夠了，有哥哥了。」",
+      "extra_hooks": [
+        "牆上下一行：公證費，由陶德茂公司支付，二十年。公證人的臉白了。"
+      ],
+      "conflict": "公證人的章是遺囑最後的盾。",
+      "turn": "大家以為公證人會死守，他看完牆上自己收錢的紀錄，摘下老花眼鏡：「我撤銷。」小葉在遺囑上蓋下駁回。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "ending",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "陶啟的膝蓋先碰到地上：「爸，我不幹了。」舅公低頭看著跪著的兒子。",
+        "question": "陶啟要說出什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai",
+        "ganren"
+      ],
+      "spectacle": "黑暗的老屋牆上投影一行行帳目，飯桌中央一碗冒白氣的麵，一枚紅色駁回章蓋下去。",
+      "glamour_shot": "陶行站在投影光裡，長髮後的眼睛被光照亮，嘴毒地說了一句「看清楚」。",
+      "setups": [],
+      "payoffs": [
+        "s05-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "公證人撤銷",
+        "產權處駁回遺囑登記",
+        "三十天倒數擋住了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao",
+        "tao-qi",
+        "s05-gongzheng",
+        "s05-chanquan"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數最後一天，中午",
+        "knowledge": "遺囑被駁回；陶啟跪下",
+        "carry_forward": "陶啟的話"
+      }
+    },
+    {
+      "number": 288,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "該什麼",
+      "youtube_title": "舅公看著五個哥哥說二十年前我就該，七歲妹妹問：該什麼？老狗站了起來",
+      "duration_s": 120,
+      "logline": "陶啟招出假妹妹與假遺囑；舅公看著五個人說了半句話，糰糰問他下半句。",
+      "hook": "陶啟跪著，一口氣說完：遺囑是他照外婆的信描的，假妹妹是他找的。",
+      "hook_type": "line",
+      "mid_hook": "見證人老錢在門外被陶烈「請」進來，一進門就說：「我作證，都是陶董交代的。」",
+      "conflict": "舅公的人一個一個倒向五個哥哥，他只剩自己。",
+      "turn": "大家以為舅公會求饒，他站起來，看著五個人：「你們五個，二十年前我就該——」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "糰糰問：「該什麼？」阿財從她腳邊站起來，盯著舅公，喉嚨裡一聲低吼。",
+        "question": "舅公會說完那句話嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "huzai"
+      ],
+      "spectacle": "飯桌邊跪著的花襯衫男人、站著的唐裝老人，一個小女孩與一隻老黃狗並排看著他。",
+      "glamour_shot": "陶烈站在門口，魁梧的身影擋住整扇門，手臂交叉，臉上的淺疤在逆光裡。",
+      "setups": [
+        "s05-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶啟與老錢都招了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao",
+        "tao-qi",
+        "s05-jianzheng"
+      ],
+      "locations": [
+        "老屋飯桌",
+        "老屋門口"
+      ],
+      "state": {
+        "time": "產權處倒數最後一天，下午",
+        "knowledge": "舅公身邊沒人了",
+        "carry_forward": "那半句話"
+      }
+    },
+    {
+      "number": 289,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "下半句",
+      "youtube_title": "舅公沒把話說完，刑警大哥替他說了下半句：你該把我們分得更遠",
+      "duration_s": 120,
+      "logline": "舅公沒說完；陶遠替他說完了。產權處的小葉當場告訴他接下來會怎樣。",
+      "hook": "舅公看著阿財，嘴唇動了一下，沒有聲音。整張飯桌都在等。",
+      "hook_type": "image",
+      "mid_hook": "陶遠開口：「你該把我們分得更遠。可是我們找回來了。」",
+      "extra_hooks": [
+        "小葉合上卷宗：「偽造文件的部分，我們會移送。」"
+      ],
+      "conflict": "舅公還想用輩分壓人，一句話都說不出口。",
+      "turn": "大家以為下半句會是威脅，陶遠說出來的是一個事實：他拆了二十年，拆不散。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "舅公轉身要走，經過飯桌時停下來，低頭看著那碗麵，手伸向桌上的筷子。",
+        "question": "舅公會吃那碗麵嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "fansha",
+        "ganren"
+      ],
+      "spectacle": "飯桌一端的老人低著頭，另一端五個男人和一個小女孩看著他，窗外整條巷子的鄰居。",
+      "glamour_shot": "陶遠起身說那句話，黑夾克、短髮，低沉的聲音裡第一次有了溫度，舊錶貼在桌上。",
+      "setups": [],
+      "payoffs": [
+        "s05-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "偽造文件移送",
+        "舅公被當眾堵住"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao",
+        "s05-chanquan"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數最後一天，傍晚",
+        "knowledge": "舅公被堵住；他看著那碗麵",
+        "carry_forward": "那雙筷子"
+      }
+    },
+    {
+      "number": 290,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "斷掉的佛珠",
+      "youtube_title": "舅公走前想吃那碗麵，主廚說這碗你沒吃過，他手上的佛珠突然斷了滾了一地",
+      "duration_s": 140,
+      "logline": "舅公伸手拿筷子，陶謙說了一句話；舅公的佛珠斷了，糰糰撿起一顆。",
+      "hook": "舅公的手碰到筷子，陶謙伸手按住碗沿。",
+      "hook_type": "danger",
+      "mid_hook": "陶謙說：「舅公，這碗你沒吃過。你七歲就不在這張桌上了。」",
+      "extra_hooks": [
+        "舅公的手停在半空，林奶奶在門口別過頭。"
+      ],
+      "conflict": "舅公想用一碗麵假裝自己還是家裡人。",
+      "turn": "大家以為陶謙會把麵讓出去，他只說了一個事實——跟舅公對他們做的一樣：七歲，就離開這張桌。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "舅公手上的佛珠斷了，珠子滾了一地；糰糰撿起一顆，看了看：「這個我外婆也有。」",
+        "question": "外婆為什麼也有一樣的佛珠？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "ganren",
+        "huzai"
+      ],
+      "spectacle": "老屋的木地板上，一串佛珠斷開，深色的珠子一顆一顆滾進桌腳、門檻與阿財的爪子旁。",
+      "glamour_shot": "陶謙按著碗沿抬眼看舅公，桃花眼冷而靜，袖口一塵不染。",
+      "setups": [
+        "s05-t13"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舅公空手離開老屋"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-demao",
+        "lin-nainai"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "產權處倒數結束，夜裡",
+        "knowledge": "舅公走了；佛珠斷了，外婆也有一樣的",
+        "carry_forward": "外婆的佛珠"
+      }
+    },
+    {
+      "number": 291,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "寫幾個名字",
+      "youtube_title": "外婆的房子回來了，產權處的人問新地契要寫幾個名字，七歲妹妹舉起六根手指",
+      "duration_s": 115,
+      "logline": "產權處要換新地契，糰糰說要寫六個名字；她把劃掉五個名字的名單收好。",
+      "hook": "糰糰握著那顆佛珠，打開針線盒，從最底層拿出外婆的佛珠——少了一顆。",
+      "hook_type": "image",
+      "mid_hook": "小葉帶著新地契的申請表來：「所有權人，寫幾個？」",
+      "extra_hooks": [
+        "糰糰把劃掉五個名字的名單疊好，壓在針線盒蓋下：「等一下再放。」"
+      ],
+      "conflict": "老屋要從母親的名字換成她的孩子，誰的名字要寫上去。",
+      "turn": "大家以為會寫五個哥哥，糰糰舉起六根手指——她自己也是。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "小葉問：「確定六個？」五個哥哥同時說：「六個。」糰糰握著筆，站上椅子。",
+        "question": "她要怎麼寫自己的名字？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "飯桌上一張空白的新地契申請表，五支筆放在旁邊，一隻小手舉起六根胖胖的手指。",
+      "glamour_shot": "陶行趴在桌上看她舉手指，長髮散在手臂上，蒼白的臉笑出一點酒窩。",
+      "setups": [
+        "s05-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "遺囑駁回後，新地契申請開始"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-chanquan"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "新地契申請日，早上",
+        "knowledge": "地契要寫六個名字；外婆的佛珠少一顆",
+        "carry_forward": "寫名字"
+      }
+    },
+    {
+      "number": 292,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "六個名字",
+      "youtube_title": "新地契上寫了五個大佬哥哥和一個七歲妹妹的名字，她的字最大最歪",
+      "duration_s": 120,
+      "logline": "六個人在新地契上簽名；那天晚上，糰糰怎麼叫阿財，阿財都沒醒。",
+      "hook": "糰糰一筆一筆寫「陶糰糰」，三個字占了半張紙。陶烈笑出聲。",
+      "hook_type": "image",
+      "mid_hook": "小葉把新地契舉起來：陶遠、陶靖、陶烈、陶行、陶謙、陶糰糰。她說：「好了。」",
+      "conflict": "老屋終於回到六個人手上，可是阿財越睡越久。",
+      "turn": "大家以為今天只有好事，晚上糰糰叫「阿財，吃飯」，桌下的老狗一動不動。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "糰糰趴到桌下，摸著阿財的背：「阿財？」牠的肚子很慢很慢地起伏。",
+        "question": "阿財還會醒嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren"
+      ],
+      "spectacle": "新地契上六個名字由上往下，最後三個字又大又歪，旁邊一枚紅色產權章。",
+      "glamour_shot": "陶靖第一個趴到桌下，摘了眼鏡，手放在阿財胸口，溫和的臉在桌下的暗影裡很專注。",
+      "setups": [
+        "s05-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "新地契寫上六個名字"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "s05-chanquan"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "新地契核發日，夜裡",
+        "knowledge": "老屋是六個人的；阿財叫不醒",
+        "carry_forward": "阿財"
+      }
+    },
+    {
+      "number": 293,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "佛珠串回去",
+      "youtube_title": "老狗累得睡不醒，醫生哥哥說牠撐到了；七歲妹妹把舅公掉的那顆佛珠串回外婆的那串",
+      "duration_s": 125,
+      "logline": "陶靖說阿財只是老了、累了；糰糰把撿來的佛珠串回外婆那串，門外有人在看。",
+      "hook": "陶靖抬頭：「牠沒事。只是老了，很累。」糰糰問：「牠撐到了嗎？」",
+      "hook_type": "line",
+      "mid_hook": "林奶奶看著兩串佛珠：「你外婆和舅公的媽媽留的，一人一半。」",
+      "extra_hooks": [
+        "糰糰把那顆珠子穿進外婆的佛珠，剛好補上缺的那一格。"
+      ],
+      "conflict": "外婆和舅公是姐弟，那顆珠子要還給誰。",
+      "turn": "大家以為她會把珠子還給舅公，她把它串回外婆那串：「外婆少了一顆，二十年。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "糰糰抬頭，老屋門外的巷子口，一個背著大書包的小小身影一閃，跑掉了。",
+        "question": "門外那個小孩是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "一隻小手把一顆深色的珠子穿進一串舊佛珠，佛珠在燈下剛好合成一圈。",
+      "glamour_shot": "陶靖坐在地上讓阿財的頭枕在腿上，白襯衫袖口捲著，低頭輕撫，燈光暖黃。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s05-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "外婆的佛珠補齊"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lin-nainai"
+      ],
+      "locations": [
+        "老屋飯桌",
+        "老屋巷口"
+      ],
+      "state": {
+        "time": "新地契核發後第二天",
+        "knowledge": "佛珠是外婆和舅公的母親留的；門外有個小孩",
+        "carry_forward": "搬回來"
+      }
+    },
+    {
+      "number": 294,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "各自回來",
+      "youtube_title": "刑警哥哥調回雲城、醫生哥哥在雲城醫院兼診，五個大佬一個一個搬回外婆的老屋",
+      "duration_s": 115,
+      "logline": "五個哥哥各自回去處理自己的事，又各自回來。",
+      "hook": "陶遠把一張調職令貼在冰箱上：「雲城刑警大隊。不走了。」",
+      "hook_type": "image",
+      "mid_hook": "陶靖拎著行李箱出現：「雲城第一醫院，每週三天。」糰糰：「另外四天呢？」",
+      "extra_hooks": [
+        "陶烈扛著一個沙袋走進巷子，林奶奶：「這什麼？」"
+      ],
+      "conflict": "五個哥哥在五座城都有自己的生活，回來要放下什麼。",
+      "turn": "大家以為他們只是偶爾回來吃飯，每一個都把一半的人生搬回了老屋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶烈指著隔壁空店面：「我要在這開拳館。」房東探出頭——是林奶奶：「叫一聲奶奶就租你。」",
+        "question": "陶烈會開口叫嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "tuanchong"
+      ],
+      "spectacle": "老屋冰箱門上一張接一張貼上調職令、排班表、租約，最後一張是小女孩畫的六個人。",
+      "glamour_shot": "陶遠把調職令貼上冰箱，回頭時冷臉被糰糰一句話逗出第一個笑。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶遠調回雲城",
+        "陶靖在雲城醫院兼診"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lin-nainai"
+      ],
+      "locations": [
+        "外婆的老屋",
+        "老屋巷口"
+      ],
+      "state": {
+        "time": "地契換好後一週",
+        "knowledge": "五個哥哥都搬回來了",
+        "carry_forward": "拳館"
+      }
+    },
+    {
+      "number": 295,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "外婆的麵上菜單",
+      "youtube_title": "米其林頂樓餐廳的菜單多了一道家常菜，一年只賣一天，名字叫外婆的麵",
+      "duration_s": 115,
+      "logline": "陶行把訓練室搬上二樓，陶謙把一碗麵加進頂樓餐廳的菜單。",
+      "hook": "陶烈紅著臉喊了一聲「奶奶」，林奶奶把鑰匙丟給他。巷子裡的人都笑了。",
+      "hook_type": "line",
+      "mid_hook": "陶謙的新菜單最後一行：「外婆的麵——一年一天。」領班看了，親手把它放進菜單夾。",
+      "extra_hooks": [
+        "陶行的電線拉滿二樓，糰糰一條一條貼上名字：「這是螢幕，這是哥哥的頭。」"
+      ],
+      "conflict": "陶謙要把那碗麵放上菜單，可是他還沒做出來過。",
+      "turn": "大家以為他做出來了才敢放，他說：「放上去，我就得做出來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "糰糰翻開外婆的日曆，指著明天：紅筆圈著，旁邊外婆的字——「敏的生日」。",
+        "question": "明天，那碗麵做得出來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "頂樓餐廳燙金的菜單最後一行，一道家常麵的名字，旁邊是城市夜景。",
+      "glamour_shot": "陶謙在頂樓餐廳窗邊寫新菜單，白色主廚服，筆尖停在「外婆」兩個字上，燈下側臉很柔。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陶烈的拳館開在隔壁",
+        "陶行的訓練室搬上二樓",
+        "外婆的麵上了菜單"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "lin-nainai",
+        "s05-lingban"
+      ],
+      "locations": [
+        "老屋巷口",
+        "老屋二樓",
+        "雲城頂樓餐廳大廳"
+      ],
+      "state": {
+        "time": "母親生日前一天",
+        "knowledge": "明天是母親的生日",
+        "carry_forward": "那碗麵"
+      }
+    },
+    {
+      "number": 296,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "阿財醒了",
+      "youtube_title": "母親生日那天主廚在外婆的廚房煮麵，睡了好幾天的老狗聞到味道抬起頭",
+      "duration_s": 125,
+      "logline": "母親生日，陶謙在老屋廚房做那碗麵；睡了好幾天的阿財聞到味道醒了。",
+      "hook": "老屋廚房的舊灶點火。糰糰站上小板凳：「第一步，舊碗，三碗。」",
+      "hook_type": "line",
+      "mid_hook": "第五步，蔥下鍋，桌下的阿財鼻子動了，眼睛慢慢睜開。",
+      "extra_hooks": [
+        "阿財搖搖晃晃走到灶邊，趴在糰糰的小板凳下。"
+      ],
+      "conflict": "這是第一次在外婆的灶上做這碗麵，也是阿財最後的力氣。",
+      "turn": "大家以為阿財再也不會起來，牠為了外婆的味道起來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第七步，糰糰剛張口，陶謙已經捲起袖子，雙手把麵團撕開：「用手撕。我記得。」",
+        "question": "這一次，還會少一樣嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "外婆老屋的舊灶冒著白氣，一隻老黃狗搖搖晃晃走到一個站在小板凳上的小女孩腳邊趴下。",
+      "glamour_shot": "陶謙在外婆的舊灶前捲起袖子，雙手撕麵，灶火照亮他的桃花眼與一縷落下的髮。",
+      "setups": [],
+      "payoffs": [
+        "s05-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿財醒了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "waipo",
+        "muqin"
+      ],
+      "locations": [
+        "老屋廚房"
+      ],
+      "state": {
+        "time": "母親生日，傍晚",
+        "knowledge": "阿財醒了；陶謙記得第七步",
+        "carry_forward": "那碗麵"
+      }
+    },
+    {
+      "number": 297,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "我記得了",
+      "youtube_title": "主廚哥哥十九年做不出來的那碗麵，在外婆的舊灶上做好了，他說：我記得了",
+      "duration_s": 130,
+      "logline": "陶謙不用她提醒做完十二步，那碗麵在外婆的灶上做好了。",
+      "hook": "第八步、第九步，陶謙一句沒問。糰糰站在板凳上，嘴巴張開又閉上。",
+      "hook_type": "image",
+      "mid_hook": "第十一步，陶謙停下來，看了一眼窗外——跟外婆一樣。他說：「我記得了。」",
+      "extra_hooks": [
+        "陶遠在門口低聲：「是媽的味道。」"
+      ],
+      "conflict": "這一次沒有人念步驟，陶謙要自己做完。",
+      "turn": "大家以為他是背下來了，他說他想起來了——七歲那天，外婆在窗前停下來，是在等他們一個一個回家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陶謙把第一碗盛進那個刻著「謙」的舊碗，遞出湯匙：「妳嚐。夠不夠？」",
+        "question": "這一次，糰糰會怎麼說？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "外婆的飯桌上擺滿八個缺口的舊碗：六個人的、外婆的、母親的，每一碗都冒著白氣。",
+      "glamour_shot": "陶謙盛麵的手很穩，白襯衫沾了麵粉，抬頭看糰糰的那一秒笑了，像十九年前的小男孩。",
+      "setups": [],
+      "payoffs": [
+        "s05-t04",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "那碗麵做出來了"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "waipo",
+        "muqin"
+      ],
+      "locations": [
+        "老屋廚房",
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "母親生日，晚上",
+        "knowledge": "那碗麵做出來了",
+        "carry_forward": "糰糰嚐"
+      }
+    },
+    {
+      "number": 298,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "有外婆了",
+      "youtube_title": "七歲妹妹嚐了一口主廚哥哥做的麵，說了三個字，五個大佬哥哥同時低下頭",
+      "duration_s": 125,
+      "logline": "糰糰嚐那碗麵，說出三個字；外婆的飯桌坐滿六個人。",
+      "hook": "糰糰吹了吹湯匙，喝一口，閉上眼睛。廚房裡只剩灶火的聲音。",
+      "hook_type": "image",
+      "mid_hook": "她睜開眼：「有外婆了。」陶謙轉過身，對著灶台很久沒回頭。",
+      "conflict": "那碗麵『少外婆』，這一次要靠什麼補上。",
+      "turn": "大家以為少的那一樣永遠補不回來，糰糰說補上的是他們——外婆等的就是六個人坐在這裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "六個人坐滿飯桌，阿財在桌下睡著；糰糰從書包裡拿出那張劃掉五個名字的名單。",
+        "question": "名單要放回哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "外婆的大飯桌第一次坐滿六個人，暖黃的燈、八碗冒白氣的麵、桌下睡著一隻老黃狗。",
+      "glamour_shot": "六個人的構圖：小女孩坐在主位中間，五個哥哥圍在兩側，燈從上方落下，像一張全家福。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "外婆的飯桌坐滿六個人"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "母親生日，夜裡",
+        "knowledge": "飯桌坐滿；名單在她手上",
+        "carry_forward": "縫回去"
+      }
+    },
+    {
+      "number": 299,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "縫回盒底",
+      "youtube_title": "七歲妹妹用外婆的針把劃掉五個名字的名單縫回針線盒，盒底還藏著外婆一行字",
+      "duration_s": 125,
+      "logline": "糰糰把名單縫回針線盒底，在最底層發現外婆留的最後一行字。",
+      "hook": "糰糰拿起外婆的針，穿了三次都沒穿進去。陶謙伸手：「我來。」",
+      "hook_type": "image",
+      "mid_hook": "她一針一針把名單縫回盒底的布裡——第一集她拆開的地方。",
+      "extra_hooks": [
+        "陶烈小聲：「她縫得比外婆歪。」陶靖：「外婆手抖，她手小。」"
+      ],
+      "conflict": "名單完成了，要讓它回到外婆放它的地方。",
+      "turn": "大家以為縫回去就結束了，布下面還有一行外婆的字，是那天拆名單時被布摺住的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "布摺裡，外婆抖抖的字：「如果還有人來找哥哥，開門。」",
+        "question": "還會有誰來找哥哥？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "一個紅色舊針線盒打開，盒底的布上縫著一張劃掉五個名字的名單，針腳又歪又密。",
+      "glamour_shot": "陶謙替她穿針，修長的手指捏著細線，低頭靠近她的那一秒，兩張臉一樣認真。",
+      "setups": [],
+      "payoffs": [
+        "s05-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "名單縫回針線盒"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "waipo"
+      ],
+      "locations": [
+        "老屋飯桌"
+      ],
+      "state": {
+        "time": "母親生日，深夜",
+        "knowledge": "外婆說如果有人來找哥哥，開門",
+        "carry_forward": "開飯"
+      }
+    },
+    {
+      "number": 300,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "門鈴",
+      "youtube_title": "外婆的飯桌坐滿六個人，筷子剛舉起來門鈴響了，門外站著一個跟她長得一樣的小男孩",
+      "duration_s": 170,
+      "logline": "第二天的晚飯，六個人第一次正式坐滿飯桌；筷子舉起的那一刻，門鈴響了。",
+      "hook": "糰糰把針線盒蓋上：「好了。開飯。」五個哥哥同時拿起筷子。",
+      "hook_type": "line",
+      "mid_hook": "陶行把手機架在桌邊：「第一張全家福。」快門響的那一刻，阿財在桌下打了個呼。",
+      "extra_hooks": [
+        "巷口一輛熟悉的車停了三秒，開走了——陶遠看了一眼，是陶啟的車。"
+      ],
+      "conflict": "六個人、一隻狗、外婆的飯桌——這一頓飯，等了二十年。",
+      "turn": "大家以為故事停在這頓飯，門鈴響了；陶遠打開門，門外站著一個背大書包的小男孩，臉跟糰糰一樣——他是舅公家的小孫子，陶啟把他送到門口就走了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "小男孩說：「我找陶遠。我也是來找哥哥的。」糰糰從桌上探頭：「你是誰？」小男孩說：「舅公說，我是你弟弟。」",
+        "question": "他真的是她的弟弟嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "外婆的飯桌坐滿六個人，六雙筷子同時舉起，門口一個背大書包的小男孩站在門燈下。",
+      "glamour_shot": "六個人的全家福：小女孩在中間，五個哥哥在後面——刑警、醫生、拳王、電競選手、主廚，同時看向門口。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [
+        "m12"
+      ],
+      "general_payoffs": [
+        "六個人坐滿外婆的飯桌",
+        "第一張全家福"
+      ],
+      "characters": [
+        "tao-tuantuan",
+        "a-cai",
+        "tao-yuan",
+        "tao-jing",
+        "tao-lie",
+        "tao-xing",
+        "tao-qian",
+        "tao-qi",
+        "s05-xiaonanhai"
+      ],
+      "locations": [
+        "老屋飯桌",
+        "老屋門口"
+      ],
+      "state": {
+        "time": "母親生日隔天，晚上",
+        "knowledge": "門外的小男孩是舅公家的小孫子，說他是她弟弟",
+        "carry_forward": "第二部：門外的弟弟"
+      }
+    }
+  ]
+}
