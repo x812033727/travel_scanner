@@ -1,0 +1,169 @@
+{
+  "kind": "public_Formal_foreign_assets_receipts_index",
+  "documentation_updated_at": "2026-10-28T02:01:24.968666+00:00",
+  "scope": "Seven non-English thumbnails and complete native metadata TXT plus guide only.",
+  "prior_immutable_commit": "8859b486f55fd0c28e19afba31fa9e2d7933f67e",
+  "same_pending_final_review_id": "e66d6661-c991-42fc-abde-30e942c9fe5b",
+  "main_sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+  "old_refs_retained": 25,
+  "new_files": 15,
+  "current_refs": 40,
+  "backend_observed_at_utc": "2026-10-28T01:51:56.891Z",
+  "copies": [
+    {
+      "input": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/completion.json",
+        "bytes": 44795,
+        "sha256": "ddeb7a1ece08285bd57a759ef84855055efb00ee33831f5596ba5d650c9e5407"
+      },
+      "public_path": "docs/videos/claude-formal-verification-255/receipts/foreign-assets-20261028/native-export.actual.json"
+    },
+    {
+      "input": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/peer/actual-component-review.json",
+        "bytes": 11710,
+        "sha256": "3587eaff08025b4f1432d73b9ebe640849912e644ae1158f289c29b4964f81b0"
+      },
+      "public_path": "docs/videos/claude-formal-verification-255/receipts/foreign-assets-20261028/independent-component-review.json"
+    },
+    {
+      "input": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/completion.json",
+        "bytes": 17248,
+        "sha256": "273435e949a2fb5f44f0875792ac6983af950e3da8f73680c8239b17a409b2dc"
+      },
+      "public_path": "docs/videos/claude-formal-verification-255/receipts/foreign-assets-20261028/delivery.actual.json"
+    },
+    {
+      "input": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/peer/actual-delivery-readback-review.json",
+        "bytes": 26879,
+        "sha256": "196676eef75ed9bd18f29ce807461fec5663d6ed04d99e2f200b28f21d512610"
+      },
+      "public_path": "docs/videos/claude-formal-verification-255/receipts/foreign-assets-20261028/independent-delivery-review.json"
+    }
+  ],
+  "Root_baseline": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/baseline.json",
+    "bytes": 2782,
+    "sha256": "a61b336e12678c2457236f6cabe3c82f03fb16f027ac3b9d3616e1e51d1a6cdb"
+  },
+  "Root_producer_exit": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/ROOT-native-actual-exit.json",
+    "bytes": 730,
+    "sha256": "97091cb111fefb2cc35f1a8cbcd60b05779b084723e8f12f57523839191325ee"
+  },
+  "Root_delivery_exit": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/ROOT-delivery-actual-exit.json",
+    "bytes": 821,
+    "sha256": "f484e7fa830e49d4d2f070829ed3d8a02ba3444c522115b83e676380004b3cbd"
+  },
+  "Root_baseline_GET_exit": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/ROOT-baseline-GET-exit.json",
+    "bytes": 764,
+    "sha256": "73ceb375d2934ec79960dd20de555d74490002d68fbb51157fac8bc66dc80dcf"
+  },
+  "local_native_export_counts": {
+    "composeMetadata": 1,
+    "write_metadata_TXT": 7,
+    "write_guide_TXT": 1,
+    "native_video_CLI": 0,
+    "auth": 0,
+    "network": 0,
+    "ASR": 0,
+    "TTS": 0,
+    "QA": 0,
+    "ffmpeg": 0
+  },
+  "Mokaair_append_transport_counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 15,
+    "review_POST": 1,
+    "file_GET": 15,
+    "denied": 0
+  },
+  "Mokaair_append_HTTP_responses": 35,
+  "Mokaair_initial_baseline_GET_counts": {
+    "auth_reads": 1,
+    "project_GET": 1,
+    "paid": 0
+  },
+  "Mokaair_transport_HTTP_total": 36,
+  "Mokaair_transport_auth_reads_total": 2,
+  "API_no_atomic_CAS_limitation_preserved": true,
+  "peer_readback_initial_compile_failure_preserved": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/peer/readback-checker-syntax-failure.json",
+    "bytes": 501,
+    "sha256": "1d03a1dce7e9743020a3e648254b53264be7e596e2c228ccd80d98d2476a05cf"
+  },
+  "peer_compile_failure_scope": "Read-only observer compile failure before checks; retained. Successful later checker supports actual readback; no production or API replay.",
+  "mobile_title_list_advisories": [
+    {
+      "locale": "es",
+      "threshold": 36,
+      "source_title_width": 38.5,
+      "composed_title_width": 40.5,
+      "source_warnings": [
+        "es.title: 38.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ],
+      "composed_warnings": [
+        "es.title: 40.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ]
+    },
+    {
+      "locale": "pt",
+      "threshold": 36,
+      "source_title_width": 37.5,
+      "composed_title_width": 43,
+      "source_warnings": [
+        "pt.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ],
+      "composed_warnings": [
+        "pt.title: 43 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ]
+    },
+    {
+      "locale": "vi",
+      "threshold": 36,
+      "source_title_width": 43,
+      "composed_title_width": 47.5,
+      "source_warnings": [
+        "vi.title: 43 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ],
+      "composed_warnings": [
+        "vi.title: 47.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ]
+    },
+    {
+      "locale": "th",
+      "threshold": 36,
+      "source_title_width": 38,
+      "composed_title_width": 42,
+      "source_warnings": [
+        "th.title: 38 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ],
+      "composed_warnings": [
+        "th.title: 42 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ]
+    }
+  ],
+  "existing_EN_image_not_new": true,
+  "dirty_JA_preserved_unstaged": {
+    "file": "/workspace/work/travel-scanner-formal-255/docs/videos/claude-formal-verification-255/i18n/ja.json",
+    "bytes": 19155,
+    "sha256": "de739653e8ac7e02f02fd67153f22749dda84babb5dc59fa1615f1035020fc41"
+  },
+  "separate_external_D_program_protection": [
+    {
+      "file": "/workspace/work/videos/_formal-zh-program-audio/claude-formal-verification-255/program.original-timing.zh-TW.m4a",
+      "bytes": 15950408,
+      "sha256": "f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f"
+    }
+  ],
+  "existing_checked_foreign_M4A": 1,
+  "new_checked_foreign_M4A": 0,
+  "new_actual_dub_CC": 0,
+  "server_approval": false,
+  "whole_episode_complete": false
+}

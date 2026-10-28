@@ -1,3 +1,15 @@
+# 七語縮圖與完整標題說明已補交後台
+
+2026-10-28T02:01:24.968666+00:00。已將 ja／ko／es／pt／id／vi／th 的七張既有原生 JPEG、七份完整標題說明 TXT，以及使用說明送到[本片 Mokaair 後台](https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255)。TXT 含官方片頭尾版實際章節時間與來源；原生組成值與同片既有九語 metadata 相同。
+
+同一待審 FINAL `e66d6661-c991-42fc-abde-30e942c9fe5b` 的原 25 附件、完整 payload／QA／歷史保持，新 15 檔完整讀回 bytes／SHA／MIME 一致，共 40 附件。既有英文縮圖位元已在歷史附件中，本輪沒有重傳或當成新品。[實際證據索引](receipts/foreign-assets-20261028/index.json)
+
+這批是縮圖與文字下載：已驗外語 M4A 仍為 EN 1/8，JA 14 flags／stale、原生 QA false 10/11 與既有 CPS、失敗／未知計費及原上限保持，沒有新增配音、CC、正式語言批次或核准。四個 YouTube 手機清單標題寬度提醒繼續列出，原始標題與帶 CC 標示後的實際標題分開記錄；這不是縮圖字型裁切判斷。
+
+本地輸出沒有新網路或語音請求；後台 append 的 35 筆 HTTP 與之前獨立 baseline GET 1 筆另列，沒有把整輪稱為網路 0；這些數量只計 Mokaair，GitHub 查重與版本操作另記。以下原日期全文及原 32 個 progress 值保持。
+
+---
+
 # Claude形式驗證255：繁中完整節目M4A已新增交付
 
 2026-10-27T20:08:27.137379+00:00。已將當前官方片頭尾版的繁中完整節目M4A與實際使用說明追加到[本片後台](https://mokaair.com/zh-TW/admin/videos?video=claude-formal-verification-255)，同一待審final由23增為25附件。新音檔15950408B，SHA `f6edafd3ab0dc173a86ba4c8a9828ad2973b2ae2923f846f8e1d5791119ba42f`；AAC節目時長586.510秒，第一章後5秒片頭／21秒片尾保持。兩個新檔均完整下載後核對bytes／SHA／MIME，原23附件、完整payload／QA／choices及歷史審核保留。

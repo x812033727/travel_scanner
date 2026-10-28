@@ -1,0 +1,616 @@
+{
+  "kind": "independent_Formal_foreign_assets_delivery_readback_review",
+  "verdict": "CLEAR_SAME_PENDING_FINAL_APPEND15_40REFS_FULL_NEW_BINARY_READBACK_ONLY",
+  "at": "2026-10-28T01:57:44.097817+00:00",
+  "reviewer": "/root/formal_assets_peer",
+  "actual_delivery_completion": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/completion.json",
+    "bytes": 17248,
+    "sha256": "273435e949a2fb5f44f0875792ac6983af950e3da8f73680c8239b17a409b2dc"
+  },
+  "root_delivery_exit": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/ROOT-delivery-actual-exit.json",
+    "bytes": 821,
+    "sha256": "f484e7fa830e49d4d2f070829ed3d8a02ba3444c522115b83e676380004b3cbd"
+  },
+  "component_review": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/peer/actual-component-review.json",
+    "bytes": 11710,
+    "sha256": "3587eaff08025b4f1432d73b9ebe640849912e644ae1158f289c29b4964f81b0"
+  },
+  "baseline": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/baseline.json",
+    "bytes": 2782,
+    "sha256": "a61b336e12678c2457236f6cabe3c82f03fb16f027ac3b9d3616e1e51d1a6cdb"
+  },
+  "actual_profile": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/actual-profile.json",
+    "bytes": 15624,
+    "sha256": "516008afde32b14ba580557421d71e6c2f3f4ee86325c6b72f99eacd085fbd83"
+  },
+  "before_project": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/baseline-project.private.json",
+    "bytes": 164643,
+    "sha256": "7b9b831e08c26ad2490ff9f7c6f8b98debc5086df99309fc535f61a3121a0490"
+  },
+  "after_binary_project": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/after-binary-project.json",
+    "bytes": 187541,
+    "sha256": "4814c57c2abfde3218c726d3246e47d03178b0ba3c172d72f6515cfbb5de278e"
+  },
+  "counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 15,
+    "review_POST": 1,
+    "file_GET": 15,
+    "denied": 0
+  },
+  "raw_HTTP_responses_verified": 35,
+  "HTTP200_count": 34,
+  "HTTP201_count": 1,
+  "raw_HTTP_receipts": [
+    {
+      "receipt": "HTTP-response-project_GET-1.json",
+      "HTTP": 200,
+      "bytes": 164643,
+      "sha256": "7b9b831e08c26ad2490ff9f7c6f8b98debc5086df99309fc535f61a3121a0490",
+      "receipt_sha256": "4613408d1ec9f83115199ab5dc04d4c77c636b5f12a0b44e43974666c59813da"
+    },
+    {
+      "receipt": "HTTP-response-project_GET-2.json",
+      "HTTP": 200,
+      "bytes": 164643,
+      "sha256": "7b9b831e08c26ad2490ff9f7c6f8b98debc5086df99309fc535f61a3121a0490",
+      "receipt_sha256": "e9aee51431a283e79224b2371ee69d0d4f1ac44f18c515c96262e01546822a2d"
+    },
+    {
+      "receipt": "HTTP-response-project_GET-3.json",
+      "HTTP": 200,
+      "bytes": 167027,
+      "sha256": "ef4e0e35e67f1fbef85ee83e310b232f3b2faeceed897ecf09b0884908251089",
+      "receipt_sha256": "606d3a8d66d41ffdc6cc8463db97cec0a89e52cf1215734a99830ad97f72dfc9"
+    },
+    {
+      "receipt": "HTTP-response-project_GET-4.json",
+      "HTTP": 200,
+      "bytes": 167027,
+      "sha256": "ef4e0e35e67f1fbef85ee83e310b232f3b2faeceed897ecf09b0884908251089",
+      "receipt_sha256": "eba705c9910c608b28683045f5c8213e476549ea1d40b0e3c749186744894fea"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-1.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "0d8ee9856d45765a00046b3030f07b67a217fbc1e4b419707406319fb5427f9d"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-2.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "3e13408aa8b329284e13750548420b2e8e8ae812cbee66f9e4700779ff9191de"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-3.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "24872127fa1600fb9cdbe0c1f7bb1dd59a376c705b429e5488a102bb74efe508"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-4.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "902d5ccd80189dfa10e8d3c437d653f1816e94269baccd281f847096391bd7ea"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-5.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "bdf6de2de7e938a4f355898133640bfca396a7dc9ad9dd789fe71d056d803842"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-6.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "67eae9519a49c26807e681d39af7c88702e676acba00edefe836a800c9a54d70"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-7.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "7352d7e4d79ced71db1cd99bd9ad2aaf1f3c09ee177477f10e89a985f28a133a"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-8.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "7f0936f65c9336414df68c2c6adda41624d02bc246cac370d398d6d167482715"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-9.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "e1d929d140346de3b3c340abab9b53f300aa85f769f13da903d7b973a92ada2e"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-10.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "98747d06b286cba93bef2ea1381ed26c0f56933983cc4790f48e3da12ae3260c"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-11.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "3949311cd319108f6a9be0b029a6b8b48088ccc3025a5ba7448510b3803a72df"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-12.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "c4968c1d8e01e2e632521382270ca134b8990f98ddbe4fe69c07b40596f35f8b"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-13.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "be5efae336184681b5e38b9214e0a05a742fe7558cdd18373b38eecb4b6ede66"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-14.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "1bcbde8a049ad89e6fac8b59e02b157659605d8faf3c17732ff0672a9921b556"
+    },
+    {
+      "receipt": "HTTP-response-file_PUT-15.json",
+      "HTTP": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "receipt_sha256": "193e746b53f2207741592c0ed6ee10582a3155639c41801f14ec052409219dd7"
+    },
+    {
+      "receipt": "HTTP-response-review_POST-1.json",
+      "HTTP": 201,
+      "bytes": 59543,
+      "sha256": "70d1f0ef08f5c4dcc742f714803309012b67eabeab17263b4d6cc28b2f450d87",
+      "receipt_sha256": "f07b8569c43a15d9b8df8b5fe14ab12cb3c5176058db8dc007cce07bf65c0699"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-1.json",
+      "HTTP": 200,
+      "bytes": 91896,
+      "sha256": "e4f133903202701061804886bbf3d91c3377564a83f93e9152dea22017ba5114",
+      "receipt_sha256": "98088310192c70b716ddf4a3426f636c7e296d70c8d820f3efcef42aca651fd3"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-2.json",
+      "HTTP": 200,
+      "bytes": 3200,
+      "sha256": "cdad92e2136448b7b79aa4a8dac990b3cf7fcbcf88c41dd3f92295b05ba36dae",
+      "receipt_sha256": "caded73b59862dc3f295177fcd932e604c21af20fd65ad562c3ecbeb7f7b856b"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-3.json",
+      "HTTP": 200,
+      "bytes": 88885,
+      "sha256": "da3dc40badecce1d0b5a288eba93965c19538535080faa85d10efe6b27bb694d",
+      "receipt_sha256": "43f00cb33e04e6b68fdbc673aa5bc3f7af7c8e3c912dff019608da9982dcd121"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-4.json",
+      "HTTP": 200,
+      "bytes": 3152,
+      "sha256": "e1279b7439a628c2c8bc54bab809b3a649eb098918a142df49b7c10bdfcc8b9a",
+      "receipt_sha256": "ac10dab7af2b4c77c24e186ea3fd84ff8cc183b87f0822daf2709828869c8159"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-5.json",
+      "HTTP": 200,
+      "bytes": 95341,
+      "sha256": "30014b9a4febf5d5eef93a495f090a93ad4e468d8e7055d62cacbe9b7a7b1001",
+      "receipt_sha256": "5a5d69392a13b4ec9df45c5be106889040403458325c4736b47c07f94af7f3f6"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-6.json",
+      "HTTP": 200,
+      "bytes": 3059,
+      "sha256": "c0f958c8e44650cf399bfb8b86b18fad3cf4e3886489b57634099d60ad6cf375",
+      "receipt_sha256": "f46b16e2cd17b53e478b65f2ef1e2a9d68e5960f2eebba2230d9ccfbc6ee265e"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-7.json",
+      "HTTP": 200,
+      "bytes": 96136,
+      "sha256": "6f29b69ca3460fc9e494a3da9aff1c1c40cb6e23d883f3530c3f47bb36d0a912",
+      "receipt_sha256": "247275cfd61eec7e57572d5ee472c8764e319d0a96c7a612950360bfd54e6340"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-8.json",
+      "HTTP": 200,
+      "bytes": 3050,
+      "sha256": "6b168c158e112629a763378e875c8c5692043ef51174e4c63cd5eabe3e46e848",
+      "receipt_sha256": "f23b4684ee5528c85011c48cb58f2c59a0fd67e1811c1af880fbcea6b113312f"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-9.json",
+      "HTTP": 200,
+      "bytes": 95389,
+      "sha256": "85aa389351777fc72ad00fb5910d6d0b7b1b524fbf20c1c7154831d22049f3ae",
+      "receipt_sha256": "9927b5b9e1ba46a6981064ea09d51bb7bbc965b48218e9b57e2e133036f39092"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-10.json",
+      "HTTP": 200,
+      "bytes": 2956,
+      "sha256": "774a2add42b645686bd9e962a4fe2efff304583a9d6b415179b42ff037ee43bb",
+      "receipt_sha256": "87eb43fe497fdcd1c68ffed402af8cccde53ff19bb0619e619f95c5f2ee0e9dc"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-11.json",
+      "HTTP": 200,
+      "bytes": 93673,
+      "sha256": "2f631fb0e570c6347d25976d154a8d69b9ebc538c72f540ab8064049aca70d32",
+      "receipt_sha256": "1d18e45fe2a4011d8764eaf6050979b51b4e285a03f32781f9f182a3b59e5660"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-12.json",
+      "HTTP": 200,
+      "bytes": 3189,
+      "sha256": "079debb2ed1ed037684926f64b1df3e40e8a28de804ad95d86bffb3d95b73483",
+      "receipt_sha256": "9139935697531e062fd094a642d10be4c9b44de53e683196b225bcf3e9b60e56"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-13.json",
+      "HTTP": 200,
+      "bytes": 90674,
+      "sha256": "ec0263ca6485d4aefda51f641baae51b1906ad89dfeab40f6f85dc298a5ec220",
+      "receipt_sha256": "d476eb58ddf86bdc4f64c4c1bfeccd0caca0f8046f456a5d07bd54654dcd637b"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-14.json",
+      "HTTP": 200,
+      "bytes": 4381,
+      "sha256": "ee0fbef8239e8012108fb9b463bf4f49df45268cc152af257000aa895b820604",
+      "receipt_sha256": "e9d0102810c8026a812352837695475bf484639cccac28ba058f71b15e350181"
+    },
+    {
+      "receipt": "HTTP-response-file_GET-15.json",
+      "HTTP": 200,
+      "bytes": 3127,
+      "sha256": "9940c76e54f1163e7920c1bc08bdebee0c2f8f9982629f210a63abe05909dfc1",
+      "receipt_sha256": "98a9a3b13ffc04e03eab835b1a31770ca71d749c64e9b56b5442d2440fe5b265"
+    }
+  ],
+  "project_snapshots_verified": 4,
+  "same_review_id": "e66d6661-c991-42fc-abde-30e942c9fe5b",
+  "same_pending_final_source_movie_sha256": "b635269e24134b2c2c0e300a77d03f51ce4c15f2a9bc31cd6e61c0ec87c1162a",
+  "prior_ref_count": 25,
+  "final_ref_count": 40,
+  "prior25_full_ref_objects_and_order_preserved": true,
+  "whole_project_except_same_review15_files_and_last_synced_exact": true,
+  "original_full_payload_QA_dubs_metadata_choices_statuses_and_history_preserved": true,
+  "exact15_post_body": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/exact-outbound-ReviewIn.json",
+    "bytes": 68224,
+    "sha256": "7f30a465d0688728c5e4e90dbcdad693bb78b42a4f469c68e1248e3e70cd0911"
+  },
+  "compact_post_body_sha256": "52692b2e0813e33b0f655ba35b3e4e3d6d8184003bb3dc35cf5ead8d7af00c49",
+  "full_new_binary_readbacks": [
+    {
+      "role": "evidence_foreign_thumbnail_ja",
+      "content_type": "image/jpeg",
+      "locale": "ja",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/ja.jpg",
+      "bytes": 91896,
+      "sha256": "e4f133903202701061804886bbf3d91c3377564a83f93e9152dea22017ba5114",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_thumbnail_ja.jpg",
+        "bytes": 91896,
+        "sha256": "e4f133903202701061804886bbf3d91c3377564a83f93e9152dea22017ba5114"
+      },
+      "HTTP": 200,
+      "response_content_type": "image/jpeg",
+      "byte_for_byte_equal": true
+    },
+    {
+      "locale": "ja",
+      "role": "evidence_foreign_metadata_ja_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.ja.txt",
+      "bytes": 3200,
+      "sha256": "cdad92e2136448b7b79aa4a8dac990b3cf7fcbcf88c41dd3f92295b05ba36dae",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_metadata_ja_txt.txt",
+        "bytes": 3200,
+        "sha256": "cdad92e2136448b7b79aa4a8dac990b3cf7fcbcf88c41dd3f92295b05ba36dae"
+      },
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_foreign_thumbnail_ko",
+      "content_type": "image/jpeg",
+      "locale": "ko",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/ko.jpg",
+      "bytes": 88885,
+      "sha256": "da3dc40badecce1d0b5a288eba93965c19538535080faa85d10efe6b27bb694d",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_thumbnail_ko.jpg",
+        "bytes": 88885,
+        "sha256": "da3dc40badecce1d0b5a288eba93965c19538535080faa85d10efe6b27bb694d"
+      },
+      "HTTP": 200,
+      "response_content_type": "image/jpeg",
+      "byte_for_byte_equal": true
+    },
+    {
+      "locale": "ko",
+      "role": "evidence_foreign_metadata_ko_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.ko.txt",
+      "bytes": 3152,
+      "sha256": "e1279b7439a628c2c8bc54bab809b3a649eb098918a142df49b7c10bdfcc8b9a",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_metadata_ko_txt.txt",
+        "bytes": 3152,
+        "sha256": "e1279b7439a628c2c8bc54bab809b3a649eb098918a142df49b7c10bdfcc8b9a"
+      },
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_foreign_thumbnail_es",
+      "content_type": "image/jpeg",
+      "locale": "es",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/es.jpg",
+      "bytes": 95341,
+      "sha256": "30014b9a4febf5d5eef93a495f090a93ad4e468d8e7055d62cacbe9b7a7b1001",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_thumbnail_es.jpg",
+        "bytes": 95341,
+        "sha256": "30014b9a4febf5d5eef93a495f090a93ad4e468d8e7055d62cacbe9b7a7b1001"
+      },
+      "HTTP": 200,
+      "response_content_type": "image/jpeg",
+      "byte_for_byte_equal": true
+    },
+    {
+      "locale": "es",
+      "role": "evidence_foreign_metadata_es_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.es.txt",
+      "bytes": 3059,
+      "sha256": "c0f958c8e44650cf399bfb8b86b18fad3cf4e3886489b57634099d60ad6cf375",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_metadata_es_txt.txt",
+        "bytes": 3059,
+        "sha256": "c0f958c8e44650cf399bfb8b86b18fad3cf4e3886489b57634099d60ad6cf375"
+      },
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_foreign_thumbnail_pt",
+      "content_type": "image/jpeg",
+      "locale": "pt",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/pt.jpg",
+      "bytes": 96136,
+      "sha256": "6f29b69ca3460fc9e494a3da9aff1c1c40cb6e23d883f3530c3f47bb36d0a912",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_thumbnail_pt.jpg",
+        "bytes": 96136,
+        "sha256": "6f29b69ca3460fc9e494a3da9aff1c1c40cb6e23d883f3530c3f47bb36d0a912"
+      },
+      "HTTP": 200,
+      "response_content_type": "image/jpeg",
+      "byte_for_byte_equal": true
+    },
+    {
+      "locale": "pt",
+      "role": "evidence_foreign_metadata_pt_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.pt.txt",
+      "bytes": 3050,
+      "sha256": "6b168c158e112629a763378e875c8c5692043ef51174e4c63cd5eabe3e46e848",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_metadata_pt_txt.txt",
+        "bytes": 3050,
+        "sha256": "6b168c158e112629a763378e875c8c5692043ef51174e4c63cd5eabe3e46e848"
+      },
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_foreign_thumbnail_id",
+      "content_type": "image/jpeg",
+      "locale": "id",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/id.jpg",
+      "bytes": 95389,
+      "sha256": "85aa389351777fc72ad00fb5910d6d0b7b1b524fbf20c1c7154831d22049f3ae",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_thumbnail_id.jpg",
+        "bytes": 95389,
+        "sha256": "85aa389351777fc72ad00fb5910d6d0b7b1b524fbf20c1c7154831d22049f3ae"
+      },
+      "HTTP": 200,
+      "response_content_type": "image/jpeg",
+      "byte_for_byte_equal": true
+    },
+    {
+      "locale": "id",
+      "role": "evidence_foreign_metadata_id_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.id.txt",
+      "bytes": 2956,
+      "sha256": "774a2add42b645686bd9e962a4fe2efff304583a9d6b415179b42ff037ee43bb",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_metadata_id_txt.txt",
+        "bytes": 2956,
+        "sha256": "774a2add42b645686bd9e962a4fe2efff304583a9d6b415179b42ff037ee43bb"
+      },
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_foreign_thumbnail_vi",
+      "content_type": "image/jpeg",
+      "locale": "vi",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/vi.jpg",
+      "bytes": 93673,
+      "sha256": "2f631fb0e570c6347d25976d154a8d69b9ebc538c72f540ab8064049aca70d32",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_thumbnail_vi.jpg",
+        "bytes": 93673,
+        "sha256": "2f631fb0e570c6347d25976d154a8d69b9ebc538c72f540ab8064049aca70d32"
+      },
+      "HTTP": 200,
+      "response_content_type": "image/jpeg",
+      "byte_for_byte_equal": true
+    },
+    {
+      "locale": "vi",
+      "role": "evidence_foreign_metadata_vi_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.vi.txt",
+      "bytes": 3189,
+      "sha256": "079debb2ed1ed037684926f64b1df3e40e8a28de804ad95d86bffb3d95b73483",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_metadata_vi_txt.txt",
+        "bytes": 3189,
+        "sha256": "079debb2ed1ed037684926f64b1df3e40e8a28de804ad95d86bffb3d95b73483"
+      },
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_foreign_thumbnail_th",
+      "content_type": "image/jpeg",
+      "locale": "th",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/th.jpg",
+      "bytes": 90674,
+      "sha256": "ec0263ca6485d4aefda51f641baae51b1906ad89dfeab40f6f85dc298a5ec220",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_thumbnail_th.jpg",
+        "bytes": 90674,
+        "sha256": "ec0263ca6485d4aefda51f641baae51b1906ad89dfeab40f6f85dc298a5ec220"
+      },
+      "HTTP": 200,
+      "response_content_type": "image/jpeg",
+      "byte_for_byte_equal": true
+    },
+    {
+      "locale": "th",
+      "role": "evidence_foreign_metadata_th_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.th.txt",
+      "bytes": 4381,
+      "sha256": "ee0fbef8239e8012108fb9b463bf4f49df45268cc152af257000aa895b820604",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_metadata_th_txt.txt",
+        "bytes": 4381,
+        "sha256": "ee0fbef8239e8012108fb9b463bf4f49df45268cc152af257000aa895b820604"
+      },
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_foreign_assets_report",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/foreign-assets-usage.txt",
+      "bytes": 3127,
+      "sha256": "9940c76e54f1163e7920c1bc08bdebee0c2f8f9982629f210a63abe05909dfc1",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/append-run/readback/evidence_foreign_assets_report.txt",
+        "bytes": 3127,
+        "sha256": "9940c76e54f1163e7920c1bc08bdebee0c2f8f9982629f210a63abe05909dfc1"
+      },
+      "HTTP": 200,
+      "response_content_type": "text/plain; charset=utf-8",
+      "byte_for_byte_equal": true
+    }
+  ],
+  "all15_saved_raw_current_bytes_SHA_MIME_equal": true,
+  "all8_new_TXT_UTF8_and_seven_JPEG_dimensions_verified": true,
+  "native_single_part_ACKs_verified": 15,
+  "inventory_counts": {
+    "E": 265,
+    "W": 1865,
+    "C": 1872
+  },
+  "E_W_C_full_inventory_and_dirty_JA_preserved": true,
+  "dirty_JA_unstaged": true,
+  "held4_and_external_D_preserved": true,
+  "native_W_C_leases_absent": true,
+  "native_pins_preserved": true,
+  "existing_EN_M4A_ready": 1,
+  "seven_thumbnails_added": 7,
+  "seven_complete_metadata_TXT_added": 7,
+  "report_added": 1,
+  "foreign_completed_added": 0,
+  "actual_dub_CC_added": 0,
+  "server_approval": false,
+  "whole_episode_complete": false,
+  "new_TTS": 0,
+  "new_ASR": 0,
+  "new_ASR_or_listening": false,
+  "paid_calls": 0,
+  "additional_network_by_peer": 0,
+  "additional_downloads_by_peer": 0,
+  "canonical_writes_by_peer": 0,
+  "separate_initial_baseline_GET_HTTP": 1,
+  "Mokaair_API_HTTP_total_with_initial_GET": 36,
+  "readback_checker_compile_failure_preserved": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/peer/readback-checker-syntax-failure.json",
+    "bytes": 501,
+    "sha256": "1d03a1dce7e9743020a3e648254b53264be7e596e2c228ccd80d98d2476a05cf"
+  },
+  "readback_checker": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/peer/readback_check.py",
+    "bytes": 15734,
+    "sha256": "8862cedf3db225b8906ac142155cd07f48851a7aa50b3efaf8f5c1d0a6920337"
+  },
+  "review_method": "Offline comparison of all35 saved raw responses,4 wholeproject snapshots,exact onePOST body/response,15 ACKs and15 saved fullbinary buffers against accepted current15assets. Fullcurrent E/W/C/dirtyJA/nativepins/held4 plus separate externalD verified. A read-only Node JSON serializer was used for the native compact-body SHA. No new authentication/network/download, no old25 binary downloads, no producer/CLI/audio-video decoder or canonical mutation by peer.",
+  "limitations": [
+    "The API has no atomic compare-and-swap; exact immediate-before and after snapshots prove observed preservation, not every possible external concurrent race.",
+    "Old25 reference objects/order and original project/payload/history are preserved; old25 binaries were not downloaded again. Prior closed binary evidence is inherited, not called a fresh40-file verification.",
+    "Only seven images, seven complete title-description TXT and guide delivered. EN1of8,JA14/stale,QAfalse10/11 and original budgets/unknowns remain; no new checked foreignaudio/CC/batch/approval.",
+    "The first JavaScript observer failed at compile time before executing checks. Its failure is retained; only this completed independent checker supports the verdict."
+  ]
+}

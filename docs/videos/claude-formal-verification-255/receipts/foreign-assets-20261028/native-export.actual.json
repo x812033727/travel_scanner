@@ -1,0 +1,449 @@
+{
+  "kind": "actual_Formal_foreign_assets_native_export",
+  "pid": 20601,
+  "started_at": "2026-10-28T01:39:22.296Z",
+  "ok": true,
+  "helper": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/export-metadata.mjs",
+    "bytes": 15366,
+    "sha256": "ec2628c60de745a0cbe38336b1be6a84c29c9fea5835fa339fef4b817b46cd7b"
+  },
+  "Root_inputs": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/ROOT-native-inputs.json",
+    "bytes": 62795,
+    "sha256": "ad5e59f89f739d81d786ec785c0a063d3f623b4eab1e8560405a3e2c93713c79"
+  },
+  "baseline": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/baseline.json",
+    "bytes": 2782,
+    "sha256": "a61b336e12678c2457236f6cabe3c82f03fb16f027ac3b9d3616e1e51d1a6cdb"
+  },
+  "backend_project": {
+    "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/delivery-prep/baseline-project.private.json",
+    "bytes": 164643,
+    "sha256": "7b9b831e08c26ad2490ff9f7c6f8b98debc5086df99309fc535f61a3121a0490"
+  },
+  "counts": {
+    "composeMetadata": 1,
+    "write_metadata_TXT": 7,
+    "write_guide_TXT": 1,
+    "native_video_CLI": 0,
+    "auth": 0,
+    "network": 0,
+    "ASR": 0,
+    "TTS": 0,
+    "QA": 0,
+    "ffmpeg": 0
+  },
+  "metadataAll": {
+    "zh-TW": {
+      "title": "Claude形式驗證研究：用255看懂程式保證｜CC字幕",
+      "description": "容量只有8byte，為什麼長度255會被接受？\n給想看懂AI程式證明、會請AI改程式的你；接受合法輸入和能否結束，分別留下可重跑紀錄。\n\n把條件寫清楚，再用兩個真實C範例修正並核對結果。\n\n2026-10-22，Anthropic與Theorem公開合作研究。研究報告239個入口／123個函式庫；本片引用的公開release為60個入口／25個函式庫。僅該公開release未提供halts命題的證明，不外推整個研究。\n\n本地原創guard限定n=0..255、容量8byte、另需1byte結尾，只執行接受判斷；另一支獨立程式檢查計數後的返回。方法是實際C執行、完整列舉、guard命題SAT與loop有限控制圖，未執行供應商Rocq checker。\n\n原創C、執行結果及完整來源資料包：https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\n原創SVG為本片依程式結果與官方流程重繪，沒有冒充產品操作畫面。\n\n📌 章節\n00:00 本地檢查竟接受255\n00:29 紀錄先寫下能收哪些長度\n01:55 總長留下256，檢查改判拒絕\n03:42 全部拒絕，也拒了合法輸入\n04:45 返回欄遇到一個循環\n06:50 紀錄對上正式證明的條件\n09:13 把自己的要求寫進紀錄\n\n📚 參考資料\nAnthropic：Claude形式驗證研究：https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README：https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型：https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 圖片來源\nMokaair原創概念圖1（原創；保留權利）\nMokaair原創概念圖2（原創；保留權利）\nMokaair原創概念圖3（原創；保留權利）\nMokaair原創概念圖4（原創；保留權利）\nMokaair原創概念圖5（原創；保留權利）\nMokaair原創概念圖6（原創；保留權利）\nMokaair原創專用縮圖：接受判斷（原創；保留權利）\nMokaair原創C：guard.c（原創；保留權利）\nMokaair原創C：loop.c（原創；保留權利）\nMokaair原創專用縮圖SVG（原創；保留權利）\n\n#Claude #形式驗證 #AI新聞拆解"
+    },
+    "en": {
+      "title": "Claude Formal Verification: What 255 Reveals About Code Guarantees｜CC Subtitles",
+      "description": "Why does a program with only 8 bytes of capacity accept length 255?\nFor anyone who wants to understand AI-written code proofs or asks AI to edit code: we keep reproducible records of accepting valid inputs and of whether execution ends.\n\nWe make the requirements explicit, then fix two real C examples and check their results.\n\nOn 2026-10-22, Anthropic and Theorem published joint research. The study reports 239 entry points across 123 libraries; the public release cited here contains 60 entry points across 25 libraries. The statement that no halts proof is provided applies only to that public release, not to the entire study.\n\nOur original local guard has n=0..255 and a capacity of 8 bytes, with 1 of those bytes reserved for the terminator. It only decides acceptance. A separate, independent program checks the return after counting. Methods: actual C execution, exhaustive enumeration, propositional SAT for the guard, and a finite control graph for the loop. We did not run the vendor's Rocq checker.\n\nOriginal C code, execution results, and the complete source bundle: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nThe original SVG diagrams were redrawn for this video from program results and the official workflow. They are not presented as product UI footage.\n\n📌 Chapters\n00:00 Local check accepts 255\n00:29 Record the valid lengths\n01:55 Keep 256; reject the input\n03:42 Reject-all rejects valid input\n04:45 A cycle in the return check\n06:50 Match formal proof conditions\n09:13 Record your own requirements\n\n📚 Sources\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 Image credits\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #formalverification #AI新聞拆解"
+    },
+    "ja": {
+      "title": "Claudeの形式検証研究：255から分かるプログラムの保証｜字幕付き",
+      "description": "容量は8バイトなのに、なぜ長さ255を受理するのでしょうか。\nAIによるプログラムの証明を理解したい方、AIにコードの修正を頼む方へ。有効入力の受理と実行の終了を分け、再実行できる記録に残します。\n\n条件を明確にし、実際に動かす二つのCプログラムを修正して結果を照合します。\n\n2026-10-22、AnthropicとTheoremが共同研究を公開しました。研究報告は239エントリーポイント／123ライブラリ、本動画が引用する公開releaseは60エントリーポイント／25ライブラリです。halts命題の証明を提供していないのは、その公開releaseについての話であり、研究全体には外挿しません。\n\n本動画独自のローカルguardはn=0..255、容量8バイトで、そのうち1バイトを終端用に確保し、受理判定だけを行います。別の独立したプログラムで、計数後の戻りを検査します。方法は実際のC実行、全列挙、guardの命題SAT、loopの有限制御グラフです。提供元のRocq checkerは実行していません。\n\n独自のCコード、実行結果、完全な出典資料一式：https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\n独自のSVGは、プログラムの結果と公式の検査手順を基に本動画用に描き直したものです。製品の操作画面を装ったものではありません。\n\n📌 チャプター\n00:00 ローカル判定が255を受理\n00:29 受理できる長さを記録\n01:55 256を保持して正しく拒否\n03:42 全拒否は有効入力も拒否\n04:45 戻り欄で見つかった循環\n06:50 記録を形式的な証明の条件と照合\n09:13 自分の要件を記録する\n\n📚 参考資料\nAnthropic：Claude形式驗證研究：https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README：https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題：https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型：https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 画像の出典\nMokaair原創概念圖1（原創；保留權利）\nMokaair原創概念圖2（原創；保留權利）\nMokaair原創概念圖3（原創；保留權利）\nMokaair原創概念圖4（原創；保留權利）\nMokaair原創概念圖5（原創；保留權利）\nMokaair原創概念圖6（原創；保留權利）\nMokaair原創專用縮圖：接受判斷（原創；保留權利）\nMokaair原創C：guard.c（原創；保留權利）\nMokaair原創C：loop.c（原創；保留權利）\nMokaair原創專用縮圖SVG（原創；保留權利）\n\n#Claude #形式検証 #AI新聞拆解"
+    },
+    "ko": {
+      "title": "Claude 형식 검증 연구: 255로 이해하는 프로그램의 보장｜CC 자막",
+      "description": "용량이 8바이트뿐인데 왜 길이 255를 허용할까요?\nAI가 작성한 프로그램 증명을 이해하고 싶거나 AI에 코드 수정을 맡기는 분을 위해, 유효 입력의 허용과 실행 종료를 구분해 재실행 가능한 기록으로 남깁니다.\n\n조건을 명확히 쓰고, 실제 C 예제 두 개를 수정해 결과를 대조합니다.\n\n2026-10-22, Anthropic과 Theorem이 공동 연구를 공개했습니다. 연구 보고는 진입점 239개／라이브러리 123개를 다루며, 이 영상이 인용하는 공개 release는 진입점 60개／라이브러리 25개입니다. halts 명제의 증명이 없다는 설명은 해당 공개 release에만 한정하며, 연구 전체로 확대하지 않습니다.\n\n이 영상의 독자적인 로컬 guard는 n=0..255, 용량 8바이트 중 종료자용 1바이트를 남겨야 합니다. 허용 판정만 실행합니다. 별도의 독립 프로그램으로 계수 후 반환을 검사합니다. 실제 C 실행, 전수 열거, guard의 명제 SAT, loop의 유한 제어 그래프를 사용했으며, 공급자의 Rocq checker는 실행하지 않았습니다.\n\n직접 작성한 C 코드, 실행 결과 및 전체 출처 자료 묶음: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\n직접 만든 SVG는 프로그램 결과와 공식 절차를 바탕으로 이 영상용으로 다시 그렸습니다. 제품 조작 화면을 가장한 것이 아닙니다.\n\n📌 챕터\n00:00 로컬 판정이 255를 허용하다\n00:29 허용할 길이를 기록하다\n01:55 256을 보존해 제대로 거부하다\n03:42 전부 거부하면 유효 입력도 막힌다\n04:45 반환란에서 만난 순환\n06:50 기록을 형식적 증명 조건과 맞추다\n09:13 나의 요구를 기록하다\n\n📚 참고 자료\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 이미지 출처\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #형식검증 #AI新聞拆解"
+    },
+    "es": {
+      "title": "Claude y la verificación formal: qué garantiza un programa, explicado con 255｜CC",
+      "description": "Si solo caben 8 bytes, ¿por qué se acepta una longitud de 255?\nPara ti, que quieres entender las pruebas de programas con AI y le pides que modifique código: dejamos registros reproducibles de la aceptación de entradas válidas y de la terminación.\n\nDefinimos las condiciones y corregimos dos ejemplos reales en C para comprobar sus resultados.\n\nEl 2026-10-22, Anthropic y Theorem publicaron su investigación conjunta. El informe abarca 239 puntos de entrada de 123 bibliotecas; la versión pública citada aquí abarca 60 puntos de entrada de 25 bibliotecas. La ausencia de pruebas de la proposición halts se refiere solo a esa versión pública; no extrapolamos al estudio completo.\n\nNuestro control de aceptación original y local limita n a 0..255, con capacidad de 8 bytes, de los que reserva 1 byte para el terminador; solo decide si aceptar. Otro programa independiente comprueba el retorno tras contar. Usamos ejecuciones reales en C, enumeración exhaustiva, SAT proposicional para el control y un grafo de control finito para el bucle. No ejecutamos el verificador Rocq del proveedor.\n\nCódigo C original, resultados de ejecución y paquete completo de fuentes: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nLos SVG originales se redibujaron para este video a partir de los resultados del código y el procedimiento oficial; no se presentan como capturas del producto en uso.\n\n📌 Capítulos\n00:00 El control local acepta 255\n00:29 Anotar las longitudes válidas\n01:55 Total 256: ahora se rechaza\n03:42 Rechazar todo excluye válidos\n04:45 Un ciclo impide el retorno\n06:50 Condiciones de prueba formal\n09:13 Anota tus requisitos\n\n📚 Fuentes\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 Créditos de las imágenes\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #verificaciónformal #AI新聞拆解"
+    },
+    "pt": {
+      "title": "Verificação formal com Claude: o que um programa garante, explicado com 255｜Legendado",
+      "description": "Se a capacidade é de só 8 bytes, por que um comprimento de 255 é aceito?\nPara você que quer entender provas de programas com AI e pede à AI para alterar código: deixamos registros reproduzíveis da aceitação de entradas válidas e da terminação.\n\nDefinimos as condições e corrigimos dois exemplos reais em C, conferindo os resultados.\n\nEm 2026-10-22, Anthropic e Theorem publicaram sua pesquisa conjunta. O relatório abrange 239 pontos de entrada de 123 bibliotecas; a versão pública citada neste vídeo abrange 60 pontos de entrada de 25 bibliotecas. A afirmação de que faltam provas da proposição halts se limita a essa versão pública; não se estende à pesquisa inteira.\n\nNosso teste de aceitação original e local limita n a 0..255, com capacidade de 8 bytes, reservando 1 byte dessa capacidade para o terminador; ele só decide se aceita. Outro programa independente verifica o retorno após contar. Os métodos são execução real em C, enumeração completa, SAT proposicional no teste de aceitação e grafo de controle finito no laço. Não executamos o verificador Rocq do fornecedor.\n\nCódigo C original, resultados de execução e pacote completo de fontes: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nOs SVGs originais foram redesenhados para este vídeo a partir dos resultados do código e do fluxo oficial; não se passam por telas de uso do produto.\n\n📌 Capítulos\n00:00 Teste local aceita 255\n00:29 Anotar comprimentos aceitos\n01:55 Total 256: agora rejeitado\n03:42 Rejeitar tudo exclui válidos\n04:45 Um ciclo impede o retorno\n06:50 Condições da prova formal\n09:13 Registre seus requisitos\n\n📚 Fontes\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 Créditos das imagens\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #verificaçãoformal #AI新聞拆解"
+    },
+    "id": {
+      "title": "Verifikasi formal Claude: arti jaminan program lewat angka 255｜Sub Indo",
+      "description": "Kapasitasnya hanya 8 byte, jadi mengapa panjang 255 diterima?\nUntuk kamu yang ingin memahami bukti program AI dan meminta AI mengubah kode: kita simpan catatan yang bisa diulang untuk penerimaan input sah dan apakah program berakhir.\n\nKita perjelas syaratnya, lalu perbaiki dua contoh C nyata dan cocokkan hasilnya.\n\nPada 2026-10-22, Anthropic dan Theorem menerbitkan riset bersama. Laporan riset mencakup 239 titik masuk dari 123 pustaka; rilis publik yang dikutip video ini mencakup 60 titik masuk dari 25 pustaka. Pernyataan bahwa bukti proposisi halts tidak tersedia hanya berlaku untuk rilis publik itu; kesimpulan ini tidak diperluas ke seluruh riset.\n\nPemeriksa penerimaan lokal orisinal membatasi n=0..255, kapasitas 8 byte, dengan 1 byte dari kapasitas itu dicadangkan untuk terminator; program ini hanya memutuskan penerimaan. Program lain yang terpisah memeriksa return setelah menghitung. Metodenya adalah eksekusi C nyata, enumerasi menyeluruh, SAT proposisional untuk pemeriksa penerimaan, dan graf kontrol berhingga untuk loop. Kami tidak menjalankan pemeriksa Rocq milik penyedia.\n\nKode C orisinal, hasil eksekusi, dan paket sumber lengkap: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nSVG orisinal digambar ulang untuk video ini berdasarkan hasil kode dan alur resmi, tanpa mengaku sebagai tangkapan layar penggunaan produk.\n\n📌 Bab\n00:00 Uji lokal menerima 255\n00:29 Catat panjang yang sah\n01:55 Total 256: kini ditolak\n03:42 Tolak semua, input sah gagal\n04:45 Siklus di kolom return\n06:50 Cocokkan syarat bukti formal\n09:13 Catat kebutuhanmu sendiri\n\n📚 Sumber\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 Sumber gambar\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #verifikasiformal #AI新聞拆解"
+    },
+    "vi": {
+      "title": "Nghiên cứu kiểm chứng hình thức của Claude: số 255 nói gì về bảo đảm của chương trình?｜Vietsub",
+      "description": "Dung lượng chỉ 8 byte, vì sao vẫn chấp nhận độ dài 255?\nDành cho bạn muốn hiểu chứng minh chương trình của AI và thường nhờ AI sửa mã; lưu riêng bản ghi có thể chạy lại về nhận đầu vào hợp lệ và khả năng kết thúc.\n\nViết rõ điều kiện, rồi sửa và kiểm kết quả bằng hai ví dụ C chạy thật.\n\nNgày 22/10/2026, Anthropic và Theorem công bố nghiên cứu hợp tác. Báo cáo nêu 239 điểm vào/123 thư viện; bản công khai được video trích dẫn có 60 điểm vào/25 thư viện. Chỉ bản công khai này chưa cung cấp chứng minh mệnh đề halts; không suy rộng ra cả nghiên cứu.\n\nGuard tự viết cục bộ chỉ xét nhận hay từ chối với n=0..255, sức chứa 8 byte và thêm 1 byte kết thúc; chương trình độc lập khác kiểm tra việc trả về sau khi đếm. Phương pháp: chạy C thật, liệt kê hết, SAT mệnh đề cho guard và đồ thị điều khiển hữu hạn cho vòng lặp; chưa chạy bộ kiểm Rocq của bên nghiên cứu.\n\nMã C tự viết, kết quả chạy và bộ dữ liệu nguồn đầy đủ: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nSVG tự vẽ cho video dựa trên kết quả chương trình và quy trình chính thức, không giả làm cảnh thao tác sản phẩm.\n\n📌 Chương\n00:00 Kiểm tra cục bộ nhận cả 255\n00:29 Ghi rõ độ dài được chấp nhận\n01:55 Giữ tổng 256, kiểm lại từ chối\n03:42 Từ chối hết cả đầu vào hợp lệ\n04:45 Ô trả về gặp vòng lặp\n06:50 Đối chiếu điều kiện chứng minh\n09:13 Ghi yêu cầu của bạn vào phiếu\n\n📚 Nguồn tham khảo\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 Nguồn hình ảnh\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #kiểmchứnghìnhthức #AI新聞拆解"
+    },
+    "th": {
+      "title": "งานวิจัยการทวนสอบเชิงรูปนัยของ Claude: ใช้ 255 เข้าใจสิ่งที่โปรแกรมรับประกัน｜ซับไทย",
+      "description": "จุแค่ 8 byte ทำไมรับความยาว 255 ได้?\nสำหรับคนอยากเข้าใจการพิสูจน์โปรแกรมของ AI และให้ AI แก้โค้ด เก็บบันทึกที่รันซ้ำได้ แยกการรับอินพุตถูกต้องกับการสิ้นสุด\n\nเขียนเงื่อนไขให้ชัด แล้วแก้และตรวจผลด้วยตัวอย่าง C ที่รันจริงสองตัว\n\n22 ตุลาคม 2026 Anthropic กับ Theorem เผยงานวิจัยร่วม รายงานมี 239 จุดเข้า/123 ไลบรารี ส่วนฉบับสาธารณะที่อ้างในวิดีโอนี้มี 60 จุดเข้า/25 ไลบรารี เฉพาะฉบับนี้ที่ไม่ได้ให้บทพิสูจน์ประพจน์ halts ไม่สรุปถึงงานวิจัยทั้งหมด\n\nguard ที่เขียนเองในเครื่องจำกัด n=0..255 ความจุ 8 byte เผื่อท้ายอีก 1 byte และตัดสินรับเท่านั้น อีกโปรแกรมแยกอิสระตรวจการคืนค่าหลังนับ วิธีคือรัน C จริง ไล่ครบทุกค่า ใช้ SAT แบบประพจน์กับ guard และกราฟควบคุมจำกัดกับลูป ไม่ได้รันตัวตรวจ Rocq ของผู้วิจัย\n\nโค้ด C ที่เขียนเอง ผลรัน และชุดข้อมูลแหล่งที่มาครบ: https://github.com/x812033727/travel_scanner/tree/9c65d31a80ac9622676db460c9ed3d52716b6496/docs/videos/claude-formal-verification-255/data\nเราวาด SVG เองตามผลโปรแกรมและขั้นตอนทางการ ไม่ใช่ภาพการใช้งานผลิตภัณฑ์จริง\n\n📌 สารบัญ\n00:00 ตรวจในเครื่องกลับรับ 255\n00:29 บันทึกความยาวที่รับได้ก่อน\n01:55 เก็บ 256 แล้วตรวจว่าปฏิเสธ\n03:42 ปฏิเสธหมด แม้ค่าที่ถูกต้อง\n04:45 ช่องคืนค่าพบวงรอบ\n06:50 เทียบบันทึกกับเงื่อนไขพิสูจน์\n09:13 เขียนข้อกำหนดของคุณลงบันทึก\n\n📚 แหล่งข้อมูล\nAnthropic：Claude形式驗證研究: https://www.anthropic.com/research/formal-verification\nTheorem公開proof：README: https://github.com/theorem-labs/oss-verify-proofs/blob/main/README.md\nTheorem：證明來源與固定命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/origin.md\nTheorem：實際checker流程: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/checking.md\nTheorem：agreement與halts命題: https://github.com/theorem-labs/oss-verify-proofs/blob/main/docs/statements.md\nC11委員會草案：整數提升與無號轉型: https://www.open-std.org/jtc1/sc22/wg14/www/docs/n1570.pdf\n\n📷 ที่มาของภาพ\nMokaair原創概念圖1 (原創；保留權利)\nMokaair原創概念圖2 (原創；保留權利)\nMokaair原創概念圖3 (原創；保留權利)\nMokaair原創概念圖4 (原創；保留權利)\nMokaair原創概念圖5 (原創；保留權利)\nMokaair原創概念圖6 (原創；保留權利)\nMokaair原創專用縮圖：接受判斷 (原創；保留權利)\nMokaair原創C：guard.c (原創；保留權利)\nMokaair原創C：loop.c (原創；保留權利)\nMokaair原創專用縮圖SVG (原創；保留權利)\n\n#Claude #การทวนสอบเชงรปนย #AI新聞拆解"
+    }
+  },
+  "chapters": [
+    {
+      "at": "00:00",
+      "title": "本地檢查竟接受255"
+    },
+    {
+      "at": "00:29",
+      "title": "紀錄先寫下能收哪些長度"
+    },
+    {
+      "at": "01:55",
+      "title": "總長留下256，檢查改判拒絕"
+    },
+    {
+      "at": "03:42",
+      "title": "全部拒絕，也拒了合法輸入"
+    },
+    {
+      "at": "04:45",
+      "title": "返回欄遇到一個循環"
+    },
+    {
+      "at": "06:50",
+      "title": "紀錄對上正式證明的條件"
+    },
+    {
+      "at": "09:13",
+      "title": "把自己的要求寫進紀錄"
+    }
+  ],
+  "metadata_native_problems": [],
+  "mobile_title_advisories": [
+    {
+      "locale": "es",
+      "threshold": 36,
+      "source_title_width": 38.5,
+      "composed_title_width": 40.5,
+      "source_warnings": [
+        "es.title: 38.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ],
+      "composed_warnings": [
+        "es.title: 40.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ]
+    },
+    {
+      "locale": "pt",
+      "threshold": 36,
+      "source_title_width": 37.5,
+      "composed_title_width": 43,
+      "source_warnings": [
+        "pt.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ],
+      "composed_warnings": [
+        "pt.title: 43 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ]
+    },
+    {
+      "locale": "vi",
+      "threshold": 36,
+      "source_title_width": 43,
+      "composed_title_width": 47.5,
+      "source_warnings": [
+        "vi.title: 43 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ],
+      "composed_warnings": [
+        "vi.title: 47.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ]
+    },
+    {
+      "locale": "th",
+      "threshold": 36,
+      "source_title_width": 38,
+      "composed_title_width": 42,
+      "source_warnings": [
+        "th.title: 38 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ],
+      "composed_warnings": [
+        "th.title: 42 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      ]
+    }
+  ],
+  "original_title_warning_threshold": 36,
+  "thumbnails": [
+    {
+      "role": "evidence_foreign_thumbnail_ja",
+      "content_type": "image/jpeg",
+      "locale": "ja",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/ja.jpg",
+      "bytes": 91896,
+      "sha256": "e4f133903202701061804886bbf3d91c3377564a83f93e9152dea22017ba5114"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_ko",
+      "content_type": "image/jpeg",
+      "locale": "ko",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/ko.jpg",
+      "bytes": 88885,
+      "sha256": "da3dc40badecce1d0b5a288eba93965c19538535080faa85d10efe6b27bb694d"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_es",
+      "content_type": "image/jpeg",
+      "locale": "es",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/es.jpg",
+      "bytes": 95341,
+      "sha256": "30014b9a4febf5d5eef93a495f090a93ad4e468d8e7055d62cacbe9b7a7b1001"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_pt",
+      "content_type": "image/jpeg",
+      "locale": "pt",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/pt.jpg",
+      "bytes": 96136,
+      "sha256": "6f29b69ca3460fc9e494a3da9aff1c1c40cb6e23d883f3530c3f47bb36d0a912"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_id",
+      "content_type": "image/jpeg",
+      "locale": "id",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/id.jpg",
+      "bytes": 95389,
+      "sha256": "85aa389351777fc72ad00fb5910d6d0b7b1b524fbf20c1c7154831d22049f3ae"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_vi",
+      "content_type": "image/jpeg",
+      "locale": "vi",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/vi.jpg",
+      "bytes": 93673,
+      "sha256": "2f631fb0e570c6347d25976d154a8d69b9ebc538c72f540ab8064049aca70d32"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_th",
+      "content_type": "image/jpeg",
+      "locale": "th",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/th.jpg",
+      "bytes": 90674,
+      "sha256": "ec0263ca6485d4aefda51f641baae51b1906ad89dfeab40f6f85dc298a5ec220"
+    }
+  ],
+  "new_text_outputs": [
+    {
+      "locale": "ja",
+      "role": "evidence_foreign_metadata_ja_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.ja.txt",
+      "bytes": 3200,
+      "sha256": "cdad92e2136448b7b79aa4a8dac990b3cf7fcbcf88c41dd3f92295b05ba36dae"
+    },
+    {
+      "locale": "ko",
+      "role": "evidence_foreign_metadata_ko_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.ko.txt",
+      "bytes": 3152,
+      "sha256": "e1279b7439a628c2c8bc54bab809b3a649eb098918a142df49b7c10bdfcc8b9a"
+    },
+    {
+      "locale": "es",
+      "role": "evidence_foreign_metadata_es_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.es.txt",
+      "bytes": 3059,
+      "sha256": "c0f958c8e44650cf399bfb8b86b18fad3cf4e3886489b57634099d60ad6cf375"
+    },
+    {
+      "locale": "pt",
+      "role": "evidence_foreign_metadata_pt_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.pt.txt",
+      "bytes": 3050,
+      "sha256": "6b168c158e112629a763378e875c8c5692043ef51174e4c63cd5eabe3e46e848"
+    },
+    {
+      "locale": "id",
+      "role": "evidence_foreign_metadata_id_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.id.txt",
+      "bytes": 2956,
+      "sha256": "774a2add42b645686bd9e962a4fe2efff304583a9d6b415179b42ff037ee43bb"
+    },
+    {
+      "locale": "vi",
+      "role": "evidence_foreign_metadata_vi_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.vi.txt",
+      "bytes": 3189,
+      "sha256": "079debb2ed1ed037684926f64b1df3e40e8a28de804ad95d86bffb3d95b73483"
+    },
+    {
+      "locale": "th",
+      "role": "evidence_foreign_metadata_th_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.th.txt",
+      "bytes": 4381,
+      "sha256": "ee0fbef8239e8012108fb9b463bf4f49df45268cc152af257000aa895b820604"
+    },
+    {
+      "role": "evidence_foreign_assets_report",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/foreign-assets-usage.txt",
+      "bytes": 3127,
+      "sha256": "9940c76e54f1163e7920c1bc08bdebee0c2f8f9982629f210a63abe05909dfc1"
+    }
+  ],
+  "artifacts": [
+    {
+      "role": "evidence_foreign_thumbnail_ja",
+      "content_type": "image/jpeg",
+      "locale": "ja",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/ja.jpg",
+      "bytes": 91896,
+      "sha256": "e4f133903202701061804886bbf3d91c3377564a83f93e9152dea22017ba5114"
+    },
+    {
+      "locale": "ja",
+      "role": "evidence_foreign_metadata_ja_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.ja.txt",
+      "bytes": 3200,
+      "sha256": "cdad92e2136448b7b79aa4a8dac990b3cf7fcbcf88c41dd3f92295b05ba36dae"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_ko",
+      "content_type": "image/jpeg",
+      "locale": "ko",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/ko.jpg",
+      "bytes": 88885,
+      "sha256": "da3dc40badecce1d0b5a288eba93965c19538535080faa85d10efe6b27bb694d"
+    },
+    {
+      "locale": "ko",
+      "role": "evidence_foreign_metadata_ko_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.ko.txt",
+      "bytes": 3152,
+      "sha256": "e1279b7439a628c2c8bc54bab809b3a649eb098918a142df49b7c10bdfcc8b9a"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_es",
+      "content_type": "image/jpeg",
+      "locale": "es",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/es.jpg",
+      "bytes": 95341,
+      "sha256": "30014b9a4febf5d5eef93a495f090a93ad4e468d8e7055d62cacbe9b7a7b1001"
+    },
+    {
+      "locale": "es",
+      "role": "evidence_foreign_metadata_es_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.es.txt",
+      "bytes": 3059,
+      "sha256": "c0f958c8e44650cf399bfb8b86b18fad3cf4e3886489b57634099d60ad6cf375"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_pt",
+      "content_type": "image/jpeg",
+      "locale": "pt",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/pt.jpg",
+      "bytes": 96136,
+      "sha256": "6f29b69ca3460fc9e494a3da9aff1c1c40cb6e23d883f3530c3f47bb36d0a912"
+    },
+    {
+      "locale": "pt",
+      "role": "evidence_foreign_metadata_pt_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.pt.txt",
+      "bytes": 3050,
+      "sha256": "6b168c158e112629a763378e875c8c5692043ef51174e4c63cd5eabe3e46e848"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_id",
+      "content_type": "image/jpeg",
+      "locale": "id",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/id.jpg",
+      "bytes": 95389,
+      "sha256": "85aa389351777fc72ad00fb5910d6d0b7b1b524fbf20c1c7154831d22049f3ae"
+    },
+    {
+      "locale": "id",
+      "role": "evidence_foreign_metadata_id_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.id.txt",
+      "bytes": 2956,
+      "sha256": "774a2add42b645686bd9e962a4fe2efff304583a9d6b415179b42ff037ee43bb"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_vi",
+      "content_type": "image/jpeg",
+      "locale": "vi",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/vi.jpg",
+      "bytes": 93673,
+      "sha256": "2f631fb0e570c6347d25976d154a8d69b9ebc538c72f540ab8064049aca70d32"
+    },
+    {
+      "locale": "vi",
+      "role": "evidence_foreign_metadata_vi_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.vi.txt",
+      "bytes": 3189,
+      "sha256": "079debb2ed1ed037684926f64b1df3e40e8a28de804ad95d86bffb3d95b73483"
+    },
+    {
+      "role": "evidence_foreign_thumbnail_th",
+      "content_type": "image/jpeg",
+      "locale": "th",
+      "ext": "jpg",
+      "file": "/workspace/work/videos/_formal-bookend-candidate/claude-formal-verification-255/thumbnails/th.jpg",
+      "bytes": 90674,
+      "sha256": "ec0263ca6485d4aefda51f641baae51b1906ad89dfeab40f6f85dc298a5ec220"
+    },
+    {
+      "locale": "th",
+      "role": "evidence_foreign_metadata_th_txt",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/description.th.txt",
+      "bytes": 4381,
+      "sha256": "ee0fbef8239e8012108fb9b463bf4f49df45268cc152af257000aa895b820604"
+    },
+    {
+      "role": "evidence_foreign_assets_report",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/formal-foreign-assets-20261028/native-prep/run-once/foreign-assets-usage.txt",
+      "bytes": 3127,
+      "sha256": "9940c76e54f1163e7920c1bc08bdebee0c2f8f9982629f210a63abe05909dfc1"
+    }
+  ],
+  "all9_metadata_exact_fresh_project": true,
+  "EN_image_already_historical_not_new": true,
+  "foreign_checked_M4A": 1,
+  "JA_flags": 14,
+  "QA_ok": false,
+  "QA_passed": 10,
+  "QA_total": 11,
+  "new_ASR_or_listening": false,
+  "new_language_batch": false,
+  "server_approval": false,
+  "whole_episode_complete": false,
+  "E_W_C_task_dirtyJA_held4_external_D_and_native_pins_preserved": true,
+  "no_existing_files_modified": true,
+  "no_package_final_collector_or_unchecked_dub_used": true,
+  "finished_at": "2026-10-28T01:39:24.634Z",
+  "denied_fetch_attempts": 0,
+  "subprocess_Git_reads": 6
+}

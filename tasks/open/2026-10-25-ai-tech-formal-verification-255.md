@@ -121,3 +121,14 @@ Root委派/root/formal_branded_main_peer為本輪唯一文件editor，沿用code
 
 
 2026-10-27T20:14:55.644700+00:00：本輪繁中原版完整節目M4A與說明已實際交付並完成獨立完整讀回，任務正常release／blocked兩命令真exit0，owner／claimed_at空；責任同對話codex-ai-tech-news及原branch／PR1856，尚未done／移交。外語仍EN1/8；JA14flags／stale及其餘六語媒體、captions QAfalse10/11、正式核准與languages batch仍待完成。保留原始快取、重錄／改寫上限、未知計費與另一host全球ASR LEASE；不重送、forget或清旗。沒有背景媒體／ASR工人，未merge／deploy／YouTube。
+
+
+## 七語縮圖與完整標題說明／待審 40 附件 — 2026-10-28T02:01:24.968666+00:00
+
+七語各 JPEG＋完整 native 標題說明 TXT，加使用說明共 15 新附件，已在同一待審 FINAL e66d6661-c991-42fc-abde-30e942c9fe5b 保原 25 refs／payload／QA／歷史後追加，完整新檔讀回一致。既有英文圖沒有重傳。見 docs/videos/claude-formal-verification-255/receipts/foreign-assets-20261028/index.json。
+
+這批只有縮圖與文字，EN 1/8 已驗外語、JA 14／stale、QA false 10/11、CPS／失敗／未知／上限不改。四項手機清單標題寬度注意保留，與 JPEG 裁切判斷分開。原 32 progress 值及 dirty JA 原檔全留且不 stage；外部 D 音訊另以 descriptor 保護。沒有新語音／ASR／QA、CC、正式語言批次或伺服器／整片核准；沒有 done／移交／merge／deploy／YouTube。Root 的正常 handoff 與實際 checks 另補新增 object。
+
+本輪停止點：七語縮圖／完整標題說明與guide15檔已交同一待審FINAL40，全部新檔完整讀回及獨審通過。正常release＋blocked兩命令與Roottool均exit0，stdout／stderr／receipt留B/ROOT-task-handoff.json；owner／claimed_at空，責任仍codex-ai-tech-news／本對話／同分支與PR1856，未done或移交。EN1/8已驗M4A／actualCC保持，其餘七語音軌、配音對時CC及正常批次未完成；QAfalse10、JA14／stale、所有unknown／failed／caps與全域ASR他host保留，dirtyJA19155/de739不改、不stage。
+
+必要檢查：test:docs-videos exit0，236pass／0fail／0skip，43157.625619ms；check:tasks exit0，2185files／151既有其他scope警告。本輪apply／handoff／checks只補foreign_assets_backend_delivery，原32progress值全留。無背景producer，不重播closed GET/export/append/新15下載，不合併／部署／YouTube。
