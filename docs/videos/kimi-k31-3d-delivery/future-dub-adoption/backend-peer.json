@@ -1,0 +1,178 @@
+{
+  "kind": "independent_actual_six_reference_caption_backend_delivery_review",
+  "at": "2026-10-28T05:27:55.117719+00:00",
+  "ok": true,
+  "verdict": "CLEAR_ACTUAL_SIX_REFERENCE_SRT_REPLACEMENTS_FULL_READBACK_AND_OLD42_REFERENCE_PRESERVATION",
+  "scope": "same pending Kimi FINAL; six narration-reference SRTs only; no audio/QA/server approval",
+  "review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+  "main_sha256_reference_unchanged": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+  "actual_completion": {
+    "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/completion.json",
+    "bytes": 4614,
+    "sha256": "d01830d541d9625d49ccbfeff76db8907128dd87c4e4e069effda56950ccffb7"
+  },
+  "baseline_GET_receipt": {
+    "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/baseline-GET.actual.json",
+    "bytes": 815,
+    "sha256": "4a800d7c39a264f828795dfe5330b4dd0282915379c27f088091775f71f24cb8"
+  },
+  "actual_helper": {
+    "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/replace-reference-captions.mjs",
+    "bytes": 23025,
+    "sha256": "b1706b5ca27b4a024406bc27b0d40e7bdc354d1c441681a755d419e6675e9622"
+  },
+  "started_at": "2026-10-28T05:26:11.987Z",
+  "finished_at": "2026-10-28T05:26:29.824Z",
+  "actual_pid": 28032,
+  "project_lease_released": true,
+  "transport_verified": {
+    "replacement_HTTP": 17,
+    "replacement_project_GET": 4,
+    "replacement_file_PUT": 6,
+    "replacement_review_POST": 1,
+    "replacement_full_new_file_GET": 6,
+    "replacement_HTTP200": 16,
+    "replacement_HTTP201": 1,
+    "separate_baseline_GET": 1,
+    "phase_Mokaair_HTTP_total": 18,
+    "auth_reads_reported_by_bound_actual_helpers": 2,
+    "paid_calls": 0,
+    "project_PUT": 0,
+    "denied_routes": 0
+  },
+  "project_verification": {
+    "baseline_before_prePOST_deep_equal": true,
+    "after_and_final_deep_equal": true,
+    "whole_project_only_allowed_delta": "six current SRT FileRefs replaced in place, six exact old SRTs appended as unique history roles, normal last_synced_at",
+    "old_refs": 42,
+    "new_refs": 48,
+    "all42_old_binary_SHA_size_MIME_tuples_retained": true,
+    "other36_full_FileRefs_and_order_exact": true,
+    "six_old_SRT_history_refs_exact": true,
+    "whole_payload_and_QA_false_preserved": true,
+    "summary_metadata_choices_languages_history_and_all_other_project_values_preserved": true,
+    "dubs_or_QA_field_added": false,
+    "undecided_pending_FINAL_preserved": true,
+    "post_raw_response_matches_saved_current_review": true
+  },
+  "six_full_new_readbacks": [
+    {
+      "role": "evidence_cc_narration_en",
+      "content_type": "text/plain",
+      "HTTP": 200,
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/readback/evidence_cc_narration_en.srt",
+      "bytes": 13385,
+      "sha256": "903fd8daeb74f886cc86a2531b4b8d564b22cc1ec61fc3fa1ea0b701c730619d",
+      "response_content_type": "text/plain; charset=utf-8"
+    },
+    {
+      "role": "evidence_cc_narration_ja",
+      "content_type": "text/plain",
+      "HTTP": 200,
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/readback/evidence_cc_narration_ja.srt",
+      "bytes": 17508,
+      "sha256": "e8c812d3d9c25d8719e57db9a14dddc062e2c4f9d137af80b09ebd757b372716",
+      "response_content_type": "text/plain; charset=utf-8"
+    },
+    {
+      "role": "evidence_cc_narration_es",
+      "content_type": "text/plain",
+      "HTTP": 200,
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/readback/evidence_cc_narration_es.srt",
+      "bytes": 15113,
+      "sha256": "5da823021368a03752b4b42465e7bf729546bc74375343aa03860adafc91167f",
+      "response_content_type": "text/plain; charset=utf-8"
+    },
+    {
+      "role": "evidence_cc_narration_pt",
+      "content_type": "text/plain",
+      "HTTP": 200,
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/readback/evidence_cc_narration_pt.srt",
+      "bytes": 14776,
+      "sha256": "eb3cd9e4a217f107d77287260adfbc305c8b849ef6e99d686e307579e5ab9bdd",
+      "response_content_type": "text/plain; charset=utf-8"
+    },
+    {
+      "role": "evidence_cc_narration_id",
+      "content_type": "text/plain",
+      "HTTP": 200,
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/readback/evidence_cc_narration_id.srt",
+      "bytes": 14837,
+      "sha256": "4ecede5f53e8692b02c02100b49eb96cf7d51091ab917a5833e595f29177d0ef",
+      "response_content_type": "text/plain; charset=utf-8"
+    },
+    {
+      "role": "evidence_cc_narration_vi",
+      "content_type": "text/plain",
+      "HTTP": 200,
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/readback/evidence_cc_narration_vi.srt",
+      "bytes": 16412,
+      "sha256": "99666ffa4899f69210b4d359a31e7a994e1bf794d9e456fe8400e59180037e68",
+      "response_content_type": "text/plain; charset=utf-8"
+    }
+  ],
+  "all6_part0_ACKs_complete": true,
+  "project_observation_descriptors": [
+    {
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/before-project.private.json",
+      "bytes": 46924,
+      "sha256": "ec5077d8a3568b70e0e16fda26f47917dacac7b83bfdae5b8433585243513009"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/pre-POST-project.private.json",
+      "bytes": 46924,
+      "sha256": "ec5077d8a3568b70e0e16fda26f47917dacac7b83bfdae5b8433585243513009"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/after-project.private.json",
+      "bytes": 48322,
+      "sha256": "e2a878d099c832d4470bb19724a6eb8c1d83842be13752ca3b9b47a6ffebfe00"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/after-binary-project.private.json",
+      "bytes": 48322,
+      "sha256": "e2a878d099c832d4470bb19724a6eb8c1d83842be13752ca3b9b47a6ffebfe00"
+    }
+  ],
+  "post_intent": {
+    "descriptor": {
+      "file": "/workspace/work/ai-tech-next/kimi-voice-text-adoption-20261028/backend/run/review-POST-dispatch-intent.json",
+      "bytes": 179,
+      "sha256": "007062cfa84765973a30299338ce8bbf6810731277994faf47f9537518a64355"
+    },
+    "original_unknown_until_response_and_full_GET_flag_preserved": true,
+    "actual_POST201_and_both_following_whole_project_GETs_now_observed": true,
+    "body_sha256": "1812073211f496e5f9ed4ed7620bbb4c0a536b54db5ce8477ea0eddb079ec8c6"
+  },
+  "held4_unchanged": [
+    {
+      "file": "/workspace/work/ai-tech-next/forty-asr-coordination.json",
+      "bytes": 1104,
+      "sha256": "342d7b1aafbf751f0eddc60531a7fb4c42a2a4be74f8a03da777c179e1b74c9d"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/series-tts-service-hold.json",
+      "bytes": 5127,
+      "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/.global-check-audio-slot/LEASE",
+      "bytes": 292,
+      "sha256": "18b629d2f1ab8243977bc0bb0ce5a0cfdaab6306c72e46fad75678e66dc85764"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/audio/speech-journal/dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7.json",
+      "bytes": 422,
+      "sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f"
+    }
+  ],
+  "findings": [],
+  "limits": [
+    "The API provides no atomic compare-and-swap; raw before/prePOST/after/final snapshots establish actual observed equality only.",
+    "Old42 binary contents were not re-downloaded or locally full-hashed/decoded in this review. Their exact existing reference tuples are retained; only six new SRTs got fresh complete GET bytes/MIME/SHA/current comparisons.",
+    "QA false and its historical warning list remain exactly preserved rather than being rewritten as a new QA run.",
+    "This delivers narration-reference CC only. Foreign checked M4A0/8, actual dub-timed CC0/8, source listening/unknown outcomes and other existing gates remain incomplete.",
+    "Auth-read count2 is corroborated by the two bound actual helper receipts and helper code; saved raw receipts establish18 Mokaair HTTP requests. No external request was issued by this reviewer."
+  ],
+  "reviewer_mutation": "Only this new scratch post-delivery-peer.json; no auth/network/native stage/repo/W/lease/journal mutation."
+}
