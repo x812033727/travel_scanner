@@ -1,7 +1,7 @@
 ---
 id: 2026-10-28-ershou-chongsheng-season-one-plan-e001
 title: 新漫劇《我的重生系統是二手的》第一季 72 集企劃包與第 1 集製作檔
-status: in-progress
+status: review
 priority: P2
 area: docs
 owner: claude-fable
@@ -27,7 +27,7 @@ scope:
 - [x] 每集三個不同的鉤子、兩個以上爽點、結尾類型相鄰不重複、主角不連輸、連續四集至少收一條線、謎團照表揭一次（人工逐集對過；跨篇一致性由另一個分身對過一輪）
 - [x] 第 1 集：brief.md、video.json（42 鏡）、overlays.json、storyboard.md、script.md；lint 0 錯誤、`drama_craft_check` 30 列全過、`shot_reading --route hailuo --strict` 0 陷阱、`shot_plan --strict` 沒有「會白花」（C 級 0）
 - [x] 開拍鎖定包 `production/e001-lock-package.md`、鎖定檔 `e001-plan-lock.json`（`plan_lock --write --assist off`）、H3 與伺服器兩份分鏡表、Colab 的 manifest 與正文（SHA-256 等於鎖定檔）
-- [ ] 站主看過鎖定包第 0 節的五件事（片名、集長、聲音、小樣、zhouye32）；改了就重寫鎖定檔
+- [x] 站主看過鎖定包第 0 節的五件事（片名、集長、聲音、小樣、zhouye32）：2026-10-28「五件事都照建議」，鎖定檔已帶原話重寫
 
 ## Steps
 
@@ -36,7 +36,7 @@ scope:
 - [x] chapter-02…06 由五個平行分身照 spine 寫，再由一個分身對跨篇一致性
 - [x] 第 1 集用一支一次性生成腳本（scratchpad，不進 repo）從同一份資料出 video.json、storyboard.md、overlays.json
 - [x] 四個離線檢查、shot_plan、plan_lock、colab manifest
-- [ ] 站主確認鎖定包 → 票 `2026-10-28-ershou-e001-colab-pilot-to-cut`
+- [x] 站主確認鎖定包 → 票 `2026-10-28-ershou-e001-colab-pilot-to-cut`
 
 ## How to verify
 
