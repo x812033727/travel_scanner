@@ -1,3 +1,17 @@
+# DuckDB 完整教材下載指南已補到後台：41份附件待審
+
+2026-10-28T03:26:14.482Z。已在[Mokaair本片後台](https://mokaair.com/zh-TW/admin/videos?video=duckdb-agent-full-export)同一pending SCRIPT `3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb` 補交1份4,251B的可下載TXT，包含固定版本ZIP連結、大小／SHA及原操作指南全文。新增TXT已完整HTTP200下載，逐bytes／SHA／MIME與當前檔案核對一致；原40份完整FileRefs及順序、payload、summary、其他審核與project其餘欄位保持，只允許正常last_synced_at更新；當前共41份。
+
+**ZIP實體仍由既有GitHub固定版本提供，未附到Mokaair。** 正式附件MIME目前不支援ZIP，本輪沒有以假MIME上傳、修改API或部署。公開ZIP的HTTP200／SHA是2026-10-26既有紀錄，本輪沒有重抓或重跑示範。原42檔教材包含1,200筆虛構輸入、六份SQL、480筆嚴格晚到結果、720筆需求變式（其中240筆剛好準時）、Parquet與完整讀回／執行紀錄。這不是AI模型、效能、token或費用測試。
+
+[公開收據索引](receipts/existing-kit-backend-20261028/index.json)、[教材與指南獨立查核](receipts/existing-kit-backend-20261028/kit-and-guide-review.json)及[完整下載獨立查核](receipts/existing-kit-backend-20261028/independent-delivery-review.json)分列本輪範圍。既有[完整教材與命令](public-run/README.md)及[ZIP](duckdb-public-fixtures.zip)原bytes不變；這輪只新增後台下載入口。
+
+繁中旁白／actual CC、第一章後官方5秒片頭與21秒片尾、至少480秒正文／完整QA及八語各經當前音檔查核的M4A與CC仍未完成，已驗外語M4A仍0/8。原TTS4程序／12POST／raw0、敘事false、未知計費／failed flags／上限和全域另一host ASR reservation均保持。未代核准、未送語言批次，沒有merge／deploy／YouTube。
+
+---
+
+以下完整保留先前日期的紀錄；當前新增下載入口與41份附件以本段及production-progress.json的`existing_public_kit_backend_delivery`為準。
+
 # DuckDB 2.0：原始終端文字近拍已可讀，後台40份附件待審
 
 2026-10-27T22:36:44.094341+00:00。已將兩個場景換成原創操作視窗的無損原圖局部：一般模式完整的 `1200 rows (40 shown)`／`5 columns`，以及代理模式 `1160 rows omitted` 與前後 `P0020`／`P1181`。Root和獨立審查均實看兩張1920×1080輸出及480×270預覽，這些原始英文目標現在可讀。代理圖最上緣P0017局部裁掉，未聲稱所有資料列完整顯示或整片視覺QA通過。

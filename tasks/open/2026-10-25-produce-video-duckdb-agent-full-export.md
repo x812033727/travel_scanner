@@ -215,3 +215,15 @@ Root實際以普通ffmpeg裁取原始PNG視窗，6子程序及native render真ex
 
 
 Root收尾 2026-10-27T22:41:22.276767+00:00：正常release及blocked真exit0，owner／claimed_at空，仍由本對話codex-duckdb-20261025負責，非done／移交。test:docs-videos真0，236 pass／0 fail／0 skip（30997.57602ms）；check:tasks真0，2183檔、151既有其他scope警告。兩檢查原stdout／stderr／exit與實際handoff收據存B/checks及ROOT-task-release.actual.json；只補當前genuine_closeups，不倒改43個舊progress值。停在當前繁中旁白／實際CC／正式第一章後5+21／正文與完整QA，以及八語checked M4A0/8及實際CC；不是已完成整片。已完成的近拍與sameSCRIPT40／8新檔完整下載不重播。
+
+
+## 完整教材下載入口補交後台 — 2026-10-28T03:26:14.482Z
+
+同一pending SCRIPT `3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb` 保留原40refs及順序／payload／summary與project其餘欄位，只新增可下載TXT指南1份並允許正常last_synced_at更新；當前41refs。TXT4,251B／SHA `f03f5bc2975a5f16ed0245383d67e2c9c9f0acc41d3580d3aa23eb97fe93d148` 完整HTTP200讀回與current逐bytes／SHA／MIME相符，獨立實件查核通過；[公開收據索引](../../docs/videos/duckdb-agent-full-export/receipts/existing-kit-backend-20261028/index.json)保留真實輸出。
+
+ZIP實體仍由既有不可變GitHub版本提供，沒有MokaairZIP附件宣稱；2026-10-26既有公開200不是本輪重抓。TXT保留原README全文、ZIP26889B／SHA和42檔內容說明。原1200虛構資料／480嚴格晚到／720含240準時，無重測、AI推理、效能、token或成本測試。
+
+本輪無新TTS／ASR／付費模型請求，原4程序／12POST／raw0、111句／八語文字、敘事false／stale／missing／未知／原上限及他host全球ASR lease全留。繁中旁白、actual CC、官方第一章後5+21、正文／成片QA及八語checkedM4A0/8仍待完成；本票尚未done或移交，責任同對話codex-duckdb-20261025／原branch／PR1861。Root後續正常release／blocked、checks與Git真實退出另記；不merge／deploy／上傳YouTube。
+
+
+Root收尾 2026-10-28T03:33:06.672680+00:00：本輪指南41交付及獨立完整讀回完成；正常release／blocked兩命令exit0，owner／claimed_at空，責任同對話codex-duckdb-20261025／原branch／PR1861。docs-videos真0：236 pass／0 fail／0 skip；tasks真0：2183檔／151既有其他scope警告／0本scope警告。首getter消費inventory排序誤報在once/auth/network前真1，原code／staticmiss／failure全留，只consumer canonical sort修正，沒有重送API或改門檻。當前音訊／實際CC／成片及八語M4A0/8仍未完成；既有vendorfacts等待與他hostASRhold延續，無背景producer，不merge／deploy／YouTube。
