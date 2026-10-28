@@ -19,7 +19,7 @@ scope:
 
 ## Why
 
-第 1 集的分鏡、鎖定包、鎖定檔與 Colab 路線都在 PR #1893（`docs/videos/series-plans/xiuxian-jiangli/production/`）。站主 2026-10-27 定：3D 國漫、Colab 直接打 MiniMax API（image-01 首格、H3 v2 片段）、約 92 秒、聲音照建議、先做小樣 s33–s35。花錢的部分要站主在 Colab 跑，之後的配音與剪接在本機。
+第 1 集的分鏡、鎖定包、鎖定檔與 Colab 路線都在 PR #1893（`docs/videos/series-plans/xiuxian-jiangli/production/`）。站主 2026-10-27 定：3D 國漫、約 92 秒、聲音照建議、先做小樣 s33–s35；2026-10-28 定：片段只在 Colab 的 GPU 跑開源 H3（skill `minimax-h3-colab`），設定圖與關鍵影格用產線的 look／keyframes，不打 MiniMax 付費 API。
 
 ## Definition of done
 
@@ -38,4 +38,4 @@ scope:
 
 main 在 2026-10-28 合進 PR #1894 的 skill `minimax-h3-colab`（Colab GPU 跑開源 H3，雲端 session 用權杖配對驅動）。`production/colab/README.md` 現在列兩條路：A 用那個 skill 跑片段（`h3/manifest-pilot.json`，要先配對 `COLAB_CLI_TOKEN_JSON`、首格另外畫），B 筆記本打付費 API。站主 2026-10-28 定走 A，B 已刪；首格用產線 `keyframes`。
 
-做法與坑在 `production/colab/README.md`。image-01 的 `subject_reference` 一次只收一張人像，兩人鏡的第二張臉是這條路線最大的風險；不行改 H3 參考生影片（不帶首格）手放。H3 有首格時不能帶參考圖（官方）。1026／1027 是內容被拒，先回報不換字繞。
+做法與坑在 `production/colab/README.md` 與 `.agents/skills/minimax-h3-colab/`。開源 Turbo LoRA 版 H3 的一致性沒實測，小樣先量；`colab new`／`exec` 經代理的 WebSocket 沒試過，卡住看 `~/.config/colab-cli/colab.log`；輸出 1344×768。

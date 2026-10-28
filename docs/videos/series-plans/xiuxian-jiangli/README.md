@@ -5,7 +5,7 @@
 - 類型：修仙＋系統＋生活用品反差喜劇＋慢熱多女主；3D 國漫 CG 動畫（站主 2026-10-27 定）
 - 規模：**第一季 6 篇 × 12 集 = 72 集**；每集約 90–120 秒，篇末 150–180 秒
 - 來源：站主請 Codex 寫的 72 集綱要（2026-10-27），由 Claude 照《種田娶妻打天下》的寫法規則全部重寫；評估與五個病因在 PR #1893 的說明
-- 製作：Colab 直接打 MiniMax API（image-01 首格、H3 v2 圖生影片），見 [production/colab/README.md](production/colab/README.md)
+- 製作：片段在 Colab 的 GPU 跑開源 H3（skill `minimax-h3-colab`），設定圖與關鍵影格用產線的 `look`／`keyframes`，見 [production/colab/README.md](production/colab/README.md)
 
 ## 閱讀順序
 
