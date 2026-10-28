@@ -1,11 +1,11 @@
 ---
 id: 2026-10-27-produce-the-frontend-key-video-ai
 title: Produce the frontend key video: AI reads your bundled site in a minute (frontend-keys-ai-reverse-engineering)
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude-frontend-key-video
+claimed_at: 2026-10-28T13:26:26Z
 created_at: 2026-10-27T11:03:18Z
 completed_at:
 branch:
