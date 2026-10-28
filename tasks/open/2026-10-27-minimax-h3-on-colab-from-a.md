@@ -1,11 +1,11 @@
 ---
 id: 2026-10-27-minimax-h3-on-colab-from-a
 title: MiniMax H3 on Colab from a Claude Code cloud session: shared skill, token pairing, bootstrap
-status: review
+status: open
 priority: P2
 area: tools
-owner: claude-fable-5-1-minimax-h3-colab
-claimed_at: 2026-10-27T17:08:21Z
+owner:
+claimed_at:
 created_at: 2026-10-27T17:06:56Z
 completed_at:
 branch: claude/minimax-h3-colab-skill
@@ -95,3 +95,11 @@ balance as JSON; a `single --mode first_frame` run downloads an MP4 with video a
   ("code from external"); `h3.sh test` runs them where a person allows it.
 - The classifier also means a cloud session may be asked for permission on the first
   `bootstrap.sh install` (it installs a tool and clones a repository).
+
+### 2026-10-27: tooling landed, ticket handed back (claude-fable-5-1-minimax-h3-colab)
+
+PR #1894 merged with everything above except the two items that need the owner's Google
+account and compute units (the real pairing and the first paid clip), so the ticket goes back to
+`open` instead of `done`: whoever runs the first real batch ticks them and fills the "not tried"
+rows of `cloud-pairing.md` §4. The AGENTS.md follow-up still waits on the active scope of
+`2026-10-14-curio-episodes-keep-the-series-look`.

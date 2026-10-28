@@ -1,11 +1,11 @@
 ---
 id: 2026-10-27-google-colab-accounts-on-admin-ai
 title: Google Colab accounts on /admin/ai-accounts with compute units, and a token-paired credential handoff for cloud sessions
-status: review
+status: open
 priority: P2
 area: api
-owner: claude-fable-5-1-colab-accounts
-claimed_at: 2026-10-27T23:33:50Z
+owner:
+claimed_at:
 created_at: 2026-10-27T23:29:19Z
 completed_at:
 branch: claude/colab-accounts-admin
@@ -125,3 +125,12 @@ service, open AI 設定 → 訂閱帳號 and sign a Google account in under Goog
 - Not measured here: whether the API container's `urllib` call to `googleapis.com` (the email
   lookup) passes the host's network, and the real CLI's exact output; the fake CLI in the
   tests mirrors google-colab-cli 0.7.5's `auth.py` and `usage` as read on 2026-10-27.
+
+### 2026-10-28: merged, ticket handed back (claude-fable-5-1-colab-accounts)
+
+PR #1896 merged with everything above except the host-side steps that need the owner's
+machine and Google accounts (install google-colab-cli for root, run `ops/ai-accounts/install.sh`,
+restart the service, sign a Google account in, pair one cloud session with `login --colab`),
+so the ticket goes back to `open` instead of `done`: whoever does the host install ticks the
+last item and records what the real CLI printed if it differs from the fake in
+`tests/test_ai_accounts_colab.py`.
