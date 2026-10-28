@@ -213,7 +213,7 @@ describe("AdminAiAccountsPanel", () => {
       account("colab", "a", { logged_in: true, auth_method: "google", email: "colab@example.com", usage: { source: "live", windows: [], compute_units: { balance: 187.5, rate_per_hour: 4.82, active_assignments: 1 } } }),
       account("colab", "b", { logged_in: false, usage_error: "the saved sign-in no longer works; sign in again" }),
     );
-    const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
       const url = String(input);
       if (url.endsWith("/admin/ai-accounts/colab/a/login")) return response(login({ tool: "colab", slot: "a", kind: "paste_code", url: google, user_code: null }), 201);
       if (url.includes("/admin/ai-accounts")) return response(state);
