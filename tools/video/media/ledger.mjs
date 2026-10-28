@@ -159,8 +159,9 @@ export function savedTotals(entries) {
  */
 export function bookImport(workdir, entry, now = new Date()) {
   const ledger = readLedger(workdir);
-  const { key = null, ...fields } = entry;
-  const recorded = { at: now.toISOString(), ...fields, kind: "clip", status: "imported" };
+  const { key = null, kind = "clip", ...fields } = entry;
+  // `kind` is "clip" unless the import is a keyframe (`keyframes import`, kind "image").
+  const recorded = { at: now.toISOString(), ...fields, kind, status: "imported" };
   const held = reservedIndex(ledger.entries, key);
   const index = ledger.entries.findIndex((previous) => previous.status === "imported" && previous.id === entry.id && previous.sha256 === entry.sha256);
   if (index >= 0) {
@@ -176,7 +177,8 @@ export function importedTotals(entries) {
   const imported = { clips: 0, clip_seconds: 0, credits: 0, usd: 0 };
   for (const entry of entries) {
     if (entry.status !== "imported") continue;
-    imported.clips += 1;
+    // An imported keyframe (kind "image") is money and credits, not a clip.
+    if (entry.kind === "clip") imported.clips += 1;
     imported.clip_seconds += Number(entry.seconds || 0);
     imported.credits += Number(entry.credits || 0);
     imported.usd = round(imported.usd + Number(entry.cost_usd || 0));
