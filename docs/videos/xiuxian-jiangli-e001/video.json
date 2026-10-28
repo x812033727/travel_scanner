@@ -1,0 +1,953 @@
+{
+  "schema_version": 1,
+  "slug": "xiuxian-jiangli-e001",
+  "format": "drama",
+  "target_minutes": [
+    1,
+    2
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調；沉穩的說書人"
+  },
+  "look": {
+    "preset": "custom",
+    "style": "3D Chinese donghua CG animation in the style of high-end domestic 3D animated series and game cinematics, Unreal Engine 5 cinematic render: semi-realistic stylised characters with refined features and slightly enlarged expressive eyes, detailed skin with texture but not photographic, individually rendered hair strands, cloth with physical weight, wear and dust; cool low-saturation palette with warm accents, volumetric light and thin haze, strong rim light, shallow depth of field, glamorous flattering beauty lighting on faces; not a photograph, not live action",
+    "negative": "photograph, live action, real person, flat 2D anime, sketch, text, subtitles, watermark, logo, UI panel, extra fingers, deformed hands, blood, gore, wounds, nudity, cleavage, see-through clothing, bare back, wet clothes",
+    "motion": "",
+    "candidates": 2
+  },
+  "characters": [
+    {
+      "id": "jiangxiaoman",
+      "name": "江小滿",
+      "appearance": "East Asian young man of twenty-two, boyish good looks: thick brows, warm double-lidded eyes with a sly glint, straight nose, an easy crooked grin, lean build with forearms toned from tossing a wok, black hair tied in a messy topknot with a grey cloth strip, a faded ash-grey servant's short tunic with both sleeves rolled to the elbow, a rope belt with one wooden ladle tucked in it, straw sandals",
+      "voice": {
+        "provider": "gemini",
+        "name": "Puck",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十二歲的年輕人，嘴快、愛吐槽、會跟鍋說話，認真起來聲音很穩"
+      }
+    },
+    {
+      "id": "shenzhaoxue",
+      "name": "沈照雪",
+      "appearance": "East Asian young woman of twenty-one, cold ethereal beauty: long distant-mountain brows, upturned phoenix eyes with a pale cool gaze, small pale lips, flawless porcelain skin that looks as if it has never seen the sun, tall slender upright figure with a slim waist, black hair swept up without a single loose strand and held by one white jade hairpin, a fitted moon-white narrow-sleeved sword robe with a silver sash, a plain-sheathed longsword on her back",
+      "voice": {
+        "provider": "gemini",
+        "name": "Achernar",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；二十一歲的內門首席，聲音清、冷、短句，受傷時氣音多一點"
+      }
+    },
+    {
+      "id": "songguanshi",
+      "name": "宋管事",
+      "appearance": "East Asian middle-aged man of forty-six, a long narrow face, drooping figure-eight brows, small triangular eyes, two thin rat-whisker moustache strands, a grey-green steward's robe with wide sleeves, a ring of iron keys at his belt, a wooden-covered ledger under one arm",
+      "voice": {
+        "provider": "gemini",
+        "name": "Algenib",
+        "style": "標準國語，咬字清楚，台北人平常說話的語調；四十六歲的管事，鼻音重、拖長音、陰陽怪氣"
+      }
+    },
+    {
+      "id": "xianlu",
+      "name": "仙錄",
+      "appearance": "no on-screen body; only a voice and a blue-gold page-shaped panel added in editing",
+      "voice": {
+        "provider": "gemini",
+        "name": "Despina",
+        "style": "標準國語，咬字清楚；平穩、沒有情緒的電子合成女聲，像古書在念自己，一字一頓"
+      }
+    }
+  ],
+  "music": {
+    "prompt": "cold sparse morning: a single low guqin note and wind over a mountain yard, a dry woodblock tick as names are read; at night a soft bamboo flute and crackling-fire warmth as a bowl is shared; a sudden shimmer of bells and rising strings when the book lights up, a comic bassoon-like low reed when the pot lands, a warm plucked pipa as colour returns to her face, and a sharp string sting and silence at the very end; ancient Chinese cultivation comedy drama, no vocals",
+    "gain_db": -20,
+    "duck_db": -10
+  },
+  "subtitles": {
+    "burn_in": false,
+    "style": "drama"
+  },
+  "youtube": {
+    "category_id": 24,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "清退名單第一名，破書卻掉出一口會叫的鍋｜修仙獎勵發錯了 第1集",
+    "description": "白玉宗雜役江小滿排在清退名單第一名，三十天內拿不出修為就要走妖獸道下山。夜裡受傷的內門首席沈照雪倒在院門外，他把唯一的半碗飯分給她。撕來墊灶的破書卻在他手裡亮起，「百工仙錄」開啟，第一個獎勵是一口壓力鍋。碎靈米煮出來的飯讓首席的臉色回血，她把空碗推回來：「再一碗。」鍋突然尖叫，書頁底浮出一行小字：百工仙錄，第二次開啟。《我的修仙獎勵是不是發錯了？》第 1 集。",
+    "tags": [
+      "我的修仙獎勵是不是發錯了",
+      "AI短劇",
+      "修仙",
+      "系統",
+      "喜劇"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "獎勵是口鍋？",
+      "tag": "修仙獎勵發錯了",
+      "shot": "s26"
+    }
+  },
+  "scenes": [
+    {
+      "id": "s01",
+      "chapter": "清退",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a01a",
+          "speaker": "songguanshi",
+          "text": "清退名單。",
+          "emotion": "拖長音，慢條斯理"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: wide shot, a dozen servants in ash-grey tunics standing in a ragged line on screen left facing right, Steward Song standing on the well's stone step on screen right with the ledger open in both hands, Jiang Xiaoman third in the line with his hands behind his back",
+        "motion": "Steward Song speaks a short Mandarin line, 「清退名單。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lowers the ledger a hand's width and looks along the line",
+        "characters": [
+          "songguanshi",
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s02",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a02a",
+          "speaker": "songguanshi",
+          "text": "念到的，初一下山。",
+          "emotion": "陰陽怪氣，像在宣判"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: medium close-up of Steward Song on screen right on the well step, the ledger held open against his chest, his triangular eyes lifting toward Jiang Xiaoman off screen left",
+        "motion": "Steward Song speaks a short Mandarin line, 「念到的，初一下山。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then lifts his chin and narrows his eyes",
+        "characters": [
+          "songguanshi"
+        ]
+      }
+    },
+    {
+      "id": "s03",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a03a",
+          "speaker": "songguanshi",
+          "text": "第一個，",
+          "emotion": "停頓，吊人胃口"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the ledger page, locked",
+        "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: insert of the open ledger in Steward Song's hands, a wooden-covered book with columns of blurred ink strokes with no legible writing, his bony forefinger hovering above the first column; Steward Song speaks off screen",
+        "motion": "The bony forefinger comes down and presses hard on the first column of the page",
+        "characters": []
+      }
+    },
+    {
+      "id": "s04",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a04a",
+          "speaker": "songguanshi",
+          "text": "江小滿。",
+          "emotion": "念得很響"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: close-up of Jiang Xiaoman standing in the line on screen left, his face half turned toward screen right, a sly easy look that has not yet understood, morning light on his cheek; Steward Song speaks off screen",
+        "motion": "Jiang Xiaoman's easy look freezes and his eyes go wide as he hears his own name",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s05",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a05a",
+          "speaker": "jiangxiaoman",
+          "text": "我？",
+          "emotion": "傻住，指著自己"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: medium shot of the servants' line from the front, Jiang Xiaoman in the middle, the servants on both sides of him turning their heads to stare at him, the well step with Steward Song blurred far on screen right",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「我？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, pointing at his own nose while the servants on both sides edge a step away from him",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s06",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a06a",
+          "speaker": "songguanshi",
+          "text": "三年，沒修為。",
+          "emotion": "數落"
+        },
+        {
+          "id": "xj1a06b",
+          "speaker": "songguanshi",
+          "text": "妖獸道，自己走。",
+          "emotion": "冷笑，甩袖"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: medium close-up of Steward Song on screen right, the ledger now closed under his arm, looking down his nose toward Jiang off screen left, the ring of iron keys at his belt catching the light",
+        "motion": "Steward Song speaks 2 short Mandarin lines, 「三年，沒修為。」 then 「妖獸道，自己走。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then flicks his sleeve toward the mountain gate",
+        "characters": [
+          "songguanshi"
+        ]
+      }
+    },
+    {
+      "id": "s07",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a07a",
+          "speaker": "jiangxiaoman",
+          "text": "三十天，妖獸道。",
+          "emotion": "小聲，自己算"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: wide shot of the yard, the servants' line breaking up and drifting away toward the huts, leaving Jiang Xiaoman standing alone in the middle of the packed earth on screen left, Steward Song stepping down from the well step on screen right with the ledger under his arm",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「三十天，妖獸道。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes to himself as the last servant walks past him and Steward Song walks away toward the right edge of frame",
+        "characters": [
+          "jiangxiaoman",
+          "songguanshi"
+        ]
+      }
+    },
+    {
+      "id": "s08",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the ladle at his belt, locked",
+        "prompt": "In the servants' yard of the Baiyu Sect at dawn: a packed-earth courtyard ringed by low mud-brick huts with grey tile roofs, a mossy stone well with a stone step on screen right, bamboo laundry poles, thin mist on the ground, pale cold morning light from screen right: insert at Jiang Xiaoman's waist, his right hand closing around the handle of the wooden ladle tucked in his rope belt, ash-grey tunic, morning light from the right",
+        "motion": "His right hand tightens on the ladle handle until the knuckles whiten, then lets go",
+        "characters": []
+      }
+    },
+    {
+      "id": "s09",
+      "chapter": "半碗飯",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a09a",
+          "speaker": "jiangxiaoman",
+          "text": "書，至少能燒。",
+          "emotion": "自嘲"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut, Jiang Xiaoman squatting in front of the stove on screen left with his back half to camera, tearing a page from the tattered book with the blank dark cover, the stove mouth glowing on screen right, the cracked bowl on the low table holding a small handful of coarse grey rice",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「書，至少能燒。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then feeds the torn page into the stove mouth and the flames flare up",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s10",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the book and the stove mouth, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the tattered book with a blank dark cover lying open on the brick stove edge, its yellowed pages blank with only faint faded stains and no legible writing, one torn page already half inside the glowing stove mouth on screen right with its edge curling and blackening",
+        "motion": "The torn page curls and blackens inside the stove mouth",
+        "characters": [],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s11",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a11a",
+          "speaker": "jiangxiaoman",
+          "text": "一天一碗，撐三十天。",
+          "emotion": "邊算邊苦笑"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Jiang Xiaoman's face on screen left lit orange from below by the stove, a smear of soot on one cheek, his eyes on the handful of grey rice in the cracked bowl held in his left hand at the bottom of frame",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「一天一碗，撐三十天。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then blows on the rice as if it might multiply",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s12",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a12a",
+          "speaker": "jiangxiaoman",
+          "text": "誰？",
+          "emotion": "嚇一跳"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Outside the servants' yard at night: the yard's low mud-brick wall and open wooden gate on screen left, a stone path, one oil lamp hanging by the gate, cold blue moonlight and mist: wide shot of the yard gate at night, Jiang Xiaoman stepping out through the open gate on screen left carrying an empty wooden bucket, a figure in a moon-white robe slumped against the mud-brick wall on screen right under the oil lamp, face hidden, one white sleeve torn and scorched at the cuff",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「誰？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, stops dead and the bucket slips from his hand onto the stone path",
+        "characters": [
+          "jiangxiaoman",
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s13",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a13a",
+          "speaker": "jiangxiaoman",
+          "text": "……沈首席？",
+          "emotion": "認出來了，不敢信"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Outside the servants' yard at night: the yard's low mud-brick wall and open wooden gate on screen left, a stone path, one oil lamp hanging by the gate, cold blue moonlight and mist: close-up of Shen Zhaoxue's face on screen right, eyes closed, her porcelain skin gone translucent white, the white jade hairpin catching the lamp light, the torn scorched cuff of her moon-white sleeve at the bottom of frame; Jiang Xiaoman speaks off screen",
+        "motion": "Shen Zhaoxue's brows draw together faintly and her eyes open a slit toward the voice off screen left",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s14",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a14a",
+          "speaker": "shenzhaoxue",
+          "text": "別叫。",
+          "emotion": "虛弱但命令"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Outside the servants' yard at night: the yard's low mud-brick wall and open wooden gate on screen left, a stone path, one oil lamp hanging by the gate, cold blue moonlight and mist: medium close-up of Shen Zhaoxue slumped against the mud-brick wall on screen right, her eyes half open and fixed on Jiang off screen left, one hand pressed flat against the wall, the longsword still sheathed on her back",
+        "motion": "Shen Zhaoxue speaks a short Mandarin line, 「別叫。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes herself a hand's width up the wall",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s15",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a15a",
+          "speaker": "jiangxiaoman",
+          "text": "先進來。",
+          "emotion": "壓低聲音，很急"
+        }
+      ],
+      "data": {
+        "camera": "Two-shot, locked",
+        "prompt": "Outside the servants' yard at night: the yard's low mud-brick wall and open wooden gate on screen left, a stone path, one oil lamp hanging by the gate, cold blue moonlight and mist: two-shot at the gate, Jiang Xiaoman crouching on screen left with one arm held out under Shen Zhaoxue's elbow, Shen Zhaoxue on screen right with one hand on the wall, the oil lamp above them, the open gate behind Jiang",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「先進來。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then holds his forearm out toward her and waits",
+        "characters": [
+          "jiangxiaoman",
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s16",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a16a",
+          "speaker": "jiangxiaoman",
+          "text": "飯，只有一半。",
+          "emotion": "老實交代，有點不好意思"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut, Shen Zhaoxue seated on the straw beside the stove on screen right with her back against the wall and her sword laid across her knees, Jiang Xiaoman kneeling on screen left holding the cracked bowl of plain cooked grey rice out toward her with both hands, the stove glowing between them",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「飯，只有一半。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pushes the bowl another hand's width toward her",
+        "characters": [
+          "jiangxiaoman",
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s17",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a17a",
+          "speaker": "shenzhaoxue",
+          "text": "你自己呢？",
+          "emotion": "淡淡的，但在看他"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue on screen right, firelight on her pale face, her eyes dropping to the cracked bowl held out at the bottom of frame and then lifting to Jiang off screen left",
+        "motion": "Shen Zhaoxue speaks a short Mandarin line, 「你自己呢？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her gaze steady on him",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s18",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a18a",
+          "speaker": "jiangxiaoman",
+          "text": "我吃過了。",
+          "emotion": "笑得太用力，明顯在撒謊"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Jiang Xiaoman kneeling on screen left, firelight on his sooty cheek, a wide crooked grin, his free hand patting his own stomach",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「我吃過了。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, patting his stomach twice with a grin that is a little too wide",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s19",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the bowl changing hands, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert over the low table of Jiang Xiaoman's sooty hands holding the cracked bowl of grey rice from screen left, Shen Zhaoxue's slender pale hand with the torn moon-white cuff reaching in from screen right, firelight on the rim of the bowl",
+        "motion": "Both pairs of hands hold the cracked bowl between them for a breath",
+        "characters": [],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s20",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a20a",
+          "speaker": "shenzhaoxue",
+          "text": "……粗米。",
+          "emotion": "嫌棄，但又吃了一口"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Shen Zhaoxue on screen right seated against the wall, the cracked bowl lowered to her lap with the chopsticks resting across its rim, one grain of grey rice at the corner of her mouth, firelight on her face",
+        "motion": "Shen Zhaoxue speaks a short Mandarin line, 「……粗米。」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then brushes the grain of rice from the corner of her mouth with one knuckle",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s21",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a21a",
+          "speaker": "jiangxiaoman",
+          "text": "碎靈米，最便宜的。",
+          "emotion": "搓後頸，不好意思"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Jiang Xiaoman kneeling on screen left, watching her eat, his hand rubbing the back of his neck, the stove glow on the right edge of frame",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「碎靈米，最便宜的。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, rubbing the back of his neck",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s22",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a22a",
+          "speaker": "shenzhaoxue",
+          "text": "你叫什麼？",
+          "emotion": "淡淡的"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue's face on screen right, her cool gaze lifting toward Jiang Xiaoman off screen left, firelight along her cheek and on the white jade hairpin",
+        "motion": "Shen Zhaoxue speaks a short Mandarin line, 「你叫什麼？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her gaze steady on him",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s23",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a23a",
+          "speaker": "jiangxiaoman",
+          "text": "江小滿。",
+          "emotion": "坐直，有點緊張"
+        },
+        {
+          "id": "xj1a23b",
+          "speaker": "jiangxiaoman",
+          "text": "雜役院的。",
+          "emotion": "補一句，更小聲"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Jiang Xiaoman kneeling on screen left, sitting up straighter, firelight on his sooty cheek, his sly grin gone shy",
+        "motion": "Jiang Xiaoman speaks 2 short Mandarin lines, 「江小滿。」 then 「雜役院的。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, straightening his back a little",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s24",
+      "chapter": "鍋",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the book under his hand, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the tattered book lying on the stove edge, Jiang Xiaoman's sooty right hand coming down to grab it for the fire, the stove mouth glowing on screen right",
+        "motion": "The moment the hand closes on the book its dark cover lights up from inside with blue-gold light that spills between his fingers",
+        "characters": []
+      }
+    },
+    {
+      "id": "s25",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a25a",
+          "speaker": "jiangxiaoman",
+          "text": "燙燙燙！",
+          "emotion": "被燙到，甩手"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Jiang Xiaoman's face on screen left lit from below by a blue-gold glow instead of firelight, eyes wide, his right hand jerking up into frame with the fingers spread",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「燙燙燙！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, shaking his right hand hard and blowing on his fingers",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s26",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a26a",
+          "speaker": "xianlu",
+          "text": "百工仙錄，開啟。",
+          "emotion": "平板電子女聲，一字一頓"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut, the tattered book lying open on the stove top in the middle, its pages turning by themselves and shedding rising strokes of blue-gold light that are not legible writing, Jiang Xiaoman backed against the low table on screen left, Shen Zhaoxue half risen from the straw on screen right with the bowl still in her hand; the voice of the Xianlu speaks off screen",
+        "motion": "The book's pages flip faster and a column of blue-gold light rises from them toward the ceiling while Jiang Xiaoman leans further back and Shen Zhaoxue rises to one knee",
+        "characters": [
+          "jiangxiaoman",
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s27",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a27a",
+          "speaker": "shenzhaoxue",
+          "text": "仙錄？",
+          "emotion": "瞇眼，聲音很輕"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue's face on screen right lit blue-gold from the left, the cracked bowl against her chest, her phoenix eyes narrowed against the blue-gold light coming from the left",
+        "motion": "Shen Zhaoxue speaks a short Mandarin line, 「仙錄？」, her lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, her eyes narrowing further",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s28",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a28a",
+          "speaker": "xianlu",
+          "text": "獎勵：壓力鍋。",
+          "emotion": "平板電子女聲"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the stove top, low angle, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: low insert of the brick stove top, the open book glowing blue-gold at the bottom of frame, a heavy black iron pot with a domed lid and a small brass valve knob on top descending out of the column of light above the stove; the voice of the Xianlu speaks off screen",
+        "motion": "The iron pot drops the last hand's width out of the light and lands on the stove with a heavy bounce, its lid rattling once, and the blue-gold light fades out",
+        "characters": []
+      }
+    },
+    {
+      "id": "s29",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a29a",
+          "speaker": "jiangxiaoman",
+          "text": "……鍋？",
+          "emotion": "不可置信"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Jiang Xiaoman on screen left staring at the black iron pot on the stove on screen right, the wooden ladle in his right hand extended toward the pot's lid, firelight back to orange",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「……鍋？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, and pokes the domed lid once with the tip of the ladle",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s30",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a30a",
+          "speaker": "jiangxiaoman",
+          "text": "我要的是修為。",
+          "emotion": "面無表情，對著書說"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Jiang Xiaoman's face on screen left turned down toward the stove at the right edge of frame, deadpan, firelight on his sooty cheek",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「我要的是修為。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, flatly, to the book",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s31",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a31a",
+          "speaker": "jiangxiaoman",
+          "text": "換一個行不行？",
+          "emotion": "跟書討價還價"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the book on the stove, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the tattered book lying open and dark on the stove top, its blank pages dim and unlit, one sooty fingertip resting on the page from screen left; Jiang Xiaoman speaks off screen",
+        "motion": "The page stays dark under the sooty fingertip",
+        "characters": [],
+        "visual": "still"
+      }
+    },
+    {
+      "id": "s32",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a32a",
+          "speaker": "jiangxiaoman",
+          "text": "算了，煮飯。",
+          "emotion": "認命"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium shot of Jiang Xiaoman standing at the stove on screen left, the black iron pot with its lid off on screen right, a small cloth bag of coarse grey rice tipped in his hands over the pot's mouth",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「算了，煮飯。」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, then dumps the whole bag of grey rice into the pot and slams the domed lid down",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s33",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the valve knob, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the small brass valve knob on top of the domed iron lid, firelight on the metal, a first thin thread of steam at its base",
+        "motion": "The brass valve knob begins to spin and a thin jet of white steam shoots straight up from it",
+        "characters": []
+      }
+    },
+    {
+      "id": "s34",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a34a",
+          "speaker": "jiangxiaoman",
+          "text": "好了？",
+          "emotion": "半信半疑"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut filling with white steam, Jiang Xiaoman on screen left lifting the domed lid off the pot with a rag, Shen Zhaoxue on screen right waving the steam away from her face with her torn sleeve, the stove between them",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「好了？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, lifting the lid clear as a burst of steam rolls out across the hut",
+        "characters": [
+          "jiangxiaoman",
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s35",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the ladle in the pot, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the open iron pot, glistening cooked rice inside it, the wooden ladle scooping a heap of it up toward the cracked bowl held at the left edge of frame, faint golden motes rising with the steam",
+        "motion": "A heap of glistening rice rises out of the pot on the wooden ladle toward the cracked bowl, golden motes drifting up with the steam",
+        "characters": []
+      }
+    },
+    {
+      "id": "s36",
+      "chapter": "再一碗",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a36a",
+          "speaker": "jiangxiaoman",
+          "text": "怎麼樣？",
+          "emotion": "緊張地問"
+        }
+      ],
+      "data": {
+        "camera": "Medium close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium close-up of Shen Zhaoxue on screen right seated against the wall, the cracked bowl of glistening rice held just below her chin, her mouth closed, faint golden motes in the steam; Jiang Xiaoman speaks off screen",
+        "motion": "Shen Zhaoxue's jaw goes still and her eyes widen a fraction, and she slowly lowers the bowl from her chin",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s37",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue's face on screen right in firelight, a faint flush of colour returning to her translucent cheeks, her pale lips regaining their pink, the white jade hairpin gleaming",
+        "motion": "Colour creeps back into Shen Zhaoxue's cheeks and lips as she slowly lowers the bowl, her eyes closing for one breath and opening again clear",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s38",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a38a",
+          "speaker": "shenzhaoxue",
+          "text": "再一碗。",
+          "emotion": "平靜，理所當然"
+        }
+      ],
+      "data": {
+        "camera": "Insert of the bowl on the table, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert over the low table of the cracked bowl, scraped empty, being slid across the wood from screen right toward Jiang Xiaoman's sooty hand resting at screen left, the chopsticks laid neatly across the rim; Shen Zhaoxue speaks off screen",
+        "motion": "The slender pale hand pushes the empty bowl across the table until it bumps against Jiang's hand and lets go",
+        "characters": []
+      }
+    },
+    {
+      "id": "s39",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a39a",
+          "speaker": "xianlu",
+          "text": "靈力恢復，百分之三。",
+          "emotion": "平板電子女聲"
+        }
+      ],
+      "data": {
+        "camera": "Wide shot, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: wide shot of the hut, Jiang Xiaoman kneeling at the low table on screen left with the empty cracked bowl against his knuckles, Shen Zhaoxue seated against the wall on screen right with colour back in her face, the black iron pot steaming on the stove between them; the voice of the Xianlu speaks off screen",
+        "motion": "Jiang Xiaoman turns the empty bowl over in both hands as if looking for a hole in it, then turns his head toward the steaming pot",
+        "characters": [
+          "jiangxiaoman",
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s40",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a40a",
+          "speaker": "jiangxiaoman",
+          "text": "這鍋……",
+          "emotion": "慢慢笑出來"
+        },
+        {
+          "id": "xj1a40b",
+          "speaker": "jiangxiaoman",
+          "text": "是仙器？",
+          "emotion": "興奮，壓著聲音"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Jiang Xiaoman's face on screen left, firelight in his eyes, a grin starting at one corner of his mouth, the black iron pot blurred on screen right",
+        "motion": "Jiang Xiaoman speaks 2 short Mandarin lines, 「這鍋……」 then 「是仙器？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, the grin spreading all the way across his face",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s41",
+      "template": "shot",
+      "action_seconds": 1,
+      "lines": [],
+      "data": {
+        "camera": "Insert of the valve knob, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: insert of the brass valve knob on the domed iron lid, steam gathering at its base, firelight on the metal",
+        "motion": "The valve knob jams, shudders, and a violent jet of steam blasts straight up from it",
+        "characters": []
+      }
+    },
+    {
+      "id": "s42",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a42a",
+          "speaker": "jiangxiaoman",
+          "text": "這鍋還會叫？！",
+          "emotion": "嚇得跳起來"
+        }
+      ],
+      "data": {
+        "camera": "Medium shot, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: medium shot of Jiang Xiaoman leaping back from the stove on screen left, a low wooden stool toppling behind him, Shen Zhaoxue on screen right already up on one knee with her sheathed sword across her knees",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「這鍋還會叫？！」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, stumbling back over the stool while Shen Zhaoxue grips her sword hilt",
+        "characters": [
+          "jiangxiaoman",
+          "shenzhaoxue"
+        ]
+      }
+    },
+    {
+      "id": "s43",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a43a",
+          "speaker": "xianlu",
+          "text": "百工仙錄，第二次開啟。",
+          "emotion": "平板電子女聲，最後兩個字慢"
+        }
+      ],
+      "data": {
+        "camera": "Close-up, slow push in",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of the tattered book lying open on the stove top beside the pot, its pages flipping by themselves and then stopping, one short line of small blue-gold strokes of light glowing at the bottom of the page, not legible writing; the voice of the Xianlu speaks off screen",
+        "motion": "The pages settle and fall still, and a single short line of small blue-gold strokes glows into being along the bottom edge of the paper",
+        "characters": []
+      }
+    },
+    {
+      "id": "s44",
+      "template": "shot",
+      "lines": [
+        {
+          "id": "xj1a44a",
+          "speaker": "jiangxiaoman",
+          "text": "第二次？",
+          "emotion": "愣住，小聲"
+        }
+      ],
+      "data": {
+        "camera": "Extreme close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: extreme close-up of Jiang Xiaoman's eyes and brows on screen left, blue-gold light from the book reflected in his pupils, the soot smear on his cheek",
+        "motion": "Jiang Xiaoman speaks a short Mandarin line, 「第二次？」, his lips, jaw and cheeks moving clearly with every syllable in natural talking mouth shapes, his eyes flicking from the book toward Shen off screen right",
+        "characters": [
+          "jiangxiaoman"
+        ]
+      }
+    },
+    {
+      "id": "s45",
+      "template": "shot",
+      "action_seconds": 2,
+      "lines": [],
+      "data": {
+        "camera": "Close-up, locked",
+        "prompt": "Inside Jiang Xiaoman's hut at night: a tiny room with a brick stove against the back wall, a black iron wok on it, a stack of straw and a tattered book with a blank dark cover beside the stove, a low table with one cracked bowl and one pair of chopsticks, orange firelight from the stove mouth, a cloth-patched window: close-up of Shen Zhaoxue on screen right, the blue-gold glow from the book on the left side of her face, her eyes fixed on the book off screen left, her right hand still on her sword hilt at the bottom of frame",
+        "motion": "Shen Zhaoxue's hand tightens once on the sword hilt and her eyes do not leave the book, her face giving nothing away",
+        "characters": [
+          "shenzhaoxue"
+        ]
+      }
+    }
+  ]
+}
