@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | 6句新take已保存；第7句saved answer恢復已審，待正常續作剩餘23句。plain0/2、0/8 accepted |
+| 1 | curio-s31 | curio-s31-v2 | 第一輪29句重錄與新混音完成，212音檔已保存；待新品質檢查。plain1/2、0/8 accepted |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,7 +34,11 @@
 
 ## 當前斷點
 
-最新 checkpoint（2026-10-28）：冷卻後的 `dub-en-quality-retake1-after-busy5`（session75617／PID20616）於07:51:15.8133662Z native1結束；本次已成功取得新語音回覆，停止原因是保存語音回覆的 confirmed temporary journal 更名 EPERM。已核對212 raw，其中目標29句有6句新take、其他183句未變；82份歷史journal與本筆四檔全部保存。請求076678…63e3精確對應lz311p2；私有SPEECH恢復測試與獨立覆核通過，reused1/send0/fetch0，尚未在canonical實際沿用。**續作只帶剩餘23句（全付費估1013字元；保存答案32沿用後，其餘22句最多981），不可重播原29句。** Root正準備fresh quota／來源／journal／lease核對後的唯一正常續作。原fit/mix/check仍屬舊take，不是新錄音通過；plain完成0/2、0/8外語接受，ASR handoff與S15未開始。見[部分重錄與保存答案](dub-en-quality-retake1-partial-journal.json)。
+最新 checkpoint（2026-10-28）：唯一partial21續作session46336／PID48028於08:28:25.3401679Z以native0完成。Root核對全212 raw：目標29句全部為新take、其他183句未變，先完成的8句原樣保留；96份journal歷史證據保留、active0。新混音16分9.705秒（46,584,728 bytes），decode native0，−14.10 LUFS／−1.94 dBTP；150視窗0 over、7個加速至多1.15倍，cheng-date的0.1秒由下一停頓吸收。**第一輪原文重錄完成1/2；新音訊品質尚待檢查，0/8外語驗收。** 新212音檔與實測fit已獨立覆核通過；lz403保存答案亦確認正常沿用；舊check屬歷史take，不能當新版通過。ASR交接僅準備、尚未移檔或啟動新check，完整交付包與S15仍未開始。見[第一輪重錄完成證據](dub-en-quality-retake1-complete.json)。
+
+歷史 partial21 dispatch 快照（已由完成紀錄取代；段內running狀態僅指當時）：`dub-en-quality-retake1-partial23`（session31833／PID22012）於08:13:33.6032742Z native1結束，停止於下一筆語音 confirmation 更名 EPERM；212 raw累計8句新take、其他183句未變，93份journal＝82歷史＋上一筆orphan1／recovery6＋新四檔。上一筆076678／lz311p2已實際canonical沿用，原32字元與本次reuse 0分開保存；新79e359／lz403的exact whole-body、私有SPEECH恢復及剩餘21句binding均獨立通過。剩21句全付估938字元，saved41沿用後其餘20句為897。**Root已於08:23:03.9453180Z dispatch唯一partial21續作（session46336），目前等待native exit，不能開另一producer或重播full29／partial23。** fresh quota 5,070,852（08:21:47Z）僅為快照。原fit／mix／check仍非新take的品質證明，plain完成0/2、0/8外語接受；無ASR handoff，完整包未完成，S15未開始。見[剩餘21句與保存答案](dub-en-quality-retake1-partial21-journal.json)。
+
+歷史 partial23 準備快照（已由本次partial21斷點取代；段內狀態僅指當時）：冷卻後的 `dub-en-quality-retake1-after-busy5`（session75617／PID20616）於07:51:15.8133662Z native1結束；本次已成功取得新語音回覆，停止原因是保存語音回覆的 confirmed temporary journal 更名 EPERM。已核對212 raw，其中目標29句有6句新take、其他183句未變；82份歷史journal與本筆四檔全部保存。請求076678…63e3精確對應lz311p2；私有SPEECH恢復測試與獨立覆核通過，reused1/send0/fetch0，尚未在canonical實際沿用。**續作只帶剩餘23句（全付費估1013字元；保存答案32沿用後，其餘22句最多981），不可重播原29句。** Root正準備fresh quota／來源／journal／lease核對後的唯一正常續作。原fit/mix/check仍屬舊take，不是新錄音通過；plain完成0/2、0/8外語接受，ASR handoff與S15未開始。見[部分重錄與保存答案](dub-en-quality-retake1-partial-journal.json)。
 
 歷史 busy5 快照（已由10/28部分重錄狀態取代）：冷卻後的獨立續作 `dub-en-quality-retake1-after-busy4`（59941／PID37224）於23:26:19.0294417Z native4結束，仍是5次429 `video_speech_upstream_busy`。**獨立對帳及Root讀回確認212 raw未變（29目標／183其他皆0 changed），102項來源／mix／fit／timeline／cache／check／approval／state與82份journal全SHA保留，active／uncertain 0、PID已退出、無lease。plain仍0/2，0/8配音接受。** 最早 **2026-10-28T07:27:00Z（台北10/28 15:27）** 才可重新核對，這次延長至至少480分鐘；此前只讀觀察，不重播任何舊slot。23:24:11Z官方quota快照為5,157,716，涵蓋29 requests／1,251字元；現有錯誤未保留供應商細節，不能區分暫時壅塞與每日額度，也無usage收據可宣稱零費用。下次須fresh quota／來源／lease／journal與實際剩餘句子。見[第五次限流對帳](dub-en-quality-retake1-provider-busy5.json)；五次原始紀錄完整保留。完整包尚未完成，S15尚未開始。
 
