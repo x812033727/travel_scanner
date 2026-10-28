@@ -1,13 +1,13 @@
 ---
 id: 2026-10-28-top40-2025-03-shengxia-fendela
 title: Top40 drama plan 2025-03: adapt the pattern of 盛夏芬德拉 into a 300-episode original
-status: in-progress
+status: done
 priority: P2
 area: docs
 owner: claude
 claimed_at: 2026-10-28T15:00:25Z
 created_at: 2026-10-28T14:03:00Z
-completed_at:
+completed_at: 2026-10-28T22:54:42Z
 branch: claude/confident-galileo-vfq0j3
 depends_on: []
 scope:
@@ -27,11 +27,11 @@ scope:
 
 ## Definition of done
 
-- [ ] `docs/videos/series-plans/top40-2025-2026/2025-03-shengxia-fendela/` 有 README.md（一句話、類型、規模、參考劇與原創聲明、季表、等站主決定）、reference.md、plan.json、
+- [x] `docs/videos/series-plans/top40-2025-2026/2025-03-shengxia-fendela/` 有 README.md（一句話、類型、規模、參考劇與原創聲明、季表、等站主決定）、reference.md、plan.json、
   setting.json、outline.json、season-01.json … season-05.json。
-- [ ] `node docs/videos/series-plans/top40-2025-2026/lib/validate.mjs docs/videos/series-plans/top40-2025-2026/2025-03-shengxia-fendela` 零錯誤（300 集）。
-- [ ] `node docs/videos/series-plans/top40-2025-2026/lib/build.mjs docs/videos/series-plans/top40-2025-2026/2025-03-shengxia-fendela --check` 乾淨（setting.md、outline.md、season-NN.md、episodes.csv 由它產生，不手改）。
-- [ ] `rankings.json` 這筆的 `original_title` 與 `status` 更新到 `done`；README 進度表同步。
+- [x] `node docs/videos/series-plans/top40-2025-2026/lib/validate.mjs docs/videos/series-plans/top40-2025-2026/2025-03-shengxia-fendela` 零錯誤（300 集）。
+- [x] `node docs/videos/series-plans/top40-2025-2026/lib/build.mjs docs/videos/series-plans/top40-2025-2026/2025-03-shengxia-fendela --check` 乾淨（setting.md、outline.md、season-NN.md、episodes.csv 由它產生，不手改）。
+- [x] `rankings.json` 這筆的 `original_title` 與 `status` 更新到 `done`；README 進度表同步。
 
 ## Steps
 
@@ -55,4 +55,6 @@ npm run check:tasks
 ## Notes
 
 - 規則說明在 `docs/videos/series-plans/zhong-tian-qu-qi/authoring.md`（欄位）與 `README.md`（讓人停不下來的規則）；這套票唯二的差異是秒數 90–180 與可選的 `extra_hooks`。
-- 進度（每個 session 更新）：2026-10-28 reference、README、plan.json、setting.json、outline.json 已寫並過 outlineProblems；season-01..05 由五個代理平行撰寫中。
+- 進度：2026-10-28 全部完成。五季各由一個代理平行寫成（部分季因額度中斷後以 Opus 5.5 重寫），`validate.mjs` 零錯誤、`build.mjs --check` 乾淨。
+- 代理回報的取捨（站主可改）：第一季年祭拉成多日、第 60 集她自己撕第一條；第二季 m06 只 payoff（setting 的 reveal_season 是 4）、第 220 集改為 reveal（本 session 手動補）；第三季時間線與 outline『剩三個月』對不上、用週數帶過；第四季把『柱子』放到對岸碼頭；第五季加外公的帳藏在潮汐表封底、懷錶要兩個人一起上發條、『十一年』與十六到三十一歲的年差未調。
+- 已知小瑕疵：篇章末幾句照 outline 抄的台詞超過 10 字。

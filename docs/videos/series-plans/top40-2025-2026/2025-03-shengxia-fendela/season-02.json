@@ -1,0 +1,4260 @@
+{
+  "number": 2,
+  "title": "走廊",
+  "theme": "違約的人，先承認。",
+  "start_state": "第十三條寫在牆上：他違約了。她沒撕也沒回。顏家的聯姻提案擺在謝家桌上，老太太沒答；合約過了四個月。兩間房還隔一條走廊，但走廊的燈每晚都亮著。",
+  "end_state": "合約第四條（對外是夫妻）與第七條（不干涉工作）被撕掉：她陪他去船廠、他陪她去外島修一本老書；霧面玻璃的原因揭開；日記修到第十頁，寫出二十年前那艘船掛的旗；顏若溪回潮嶼的原因由她自己說破一半。他第一次說『我在』。最後一集，日記第十頁的船名與船廠裡一艘待拆的舊船一樣，她在船身上找到母親的名字，而他站在船塢上面，手裡拿著那艘船的航海日誌：『妳母親，是我父親請上船的。』",
+  "guest_cast": [
+    {
+      "id": "s02-cai-bo",
+      "name": "蔡伯",
+      "role": "謝家船廠的老工人，六十二歲，在船廠做了四十年；二十年前望川出港那夜在碼頭上，守著船塢那艘不准拆的舊船，是第一個接納她的工人",
+      "appearance": "東亞老年男性，六十二歲，精瘦硬朗：黝黑的方臉、花白平頭、濃眉下一雙溫和而精明的眼、笑起來眼角紋很深但五官端正；穿洗舊的深藍船廠工裝、袖口捲起、脖子上掛一條毛巾，手上有老繭與舊油漬"
+    },
+    {
+      "id": "s02-miaozhu",
+      "name": "阿蘭婆（鄭阿蘭）",
+      "role": "外島老廟的廟祝，六十五歲，點了四十年燈、眼尖嘴快；二十年來替謝懷山點一盞「望川平安」，見過一個修書的姑娘",
+      "appearance": "東亞老年女性，六十五歲，清瘦精神：銀灰短髮整齊別在耳後、圓臉慈和、眼睛明亮帶笑、皮膚曬成健康的麥色；穿素色斜襟布衫與黑長褲、腰繫深藍圍裙，手腕一串木珠"
+    },
+    {
+      "id": "s02-ke-mishu",
+      "name": "柯秘書（柯以誠）",
+      "role": "顏家的人：顏慕白的特助，四十歲，以股東與併購為名進出謝家船廠，打聽望川與船名冊，帶拆船令進船塢",
+      "appearance": "東亞中年男性，四十歲，體面俐落的斯文型：五官端正、細框眼鏡、頭髮梳得一絲不亂、笑容禮貌而不到眼底；穿合身的炭灰西裝與白襯衫、不打領帶，左腕一只亮面金錶，手裡永遠一只黑色文件夾"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s02-t01",
+      "question": "老太太週日要怎麼答顏家的提案？",
+      "setup_episode": 61,
+      "payoff_episode": 63
+    },
+    {
+      "id": "s02-t02",
+      "question": "他為什麼要等到合約到期那天？",
+      "setup_episode": 64,
+      "payoff_episode": 66
+    },
+    {
+      "id": "s02-t03",
+      "question": "週日十點來修復坊的匿名客人是誰？",
+      "setup_episode": 62,
+      "payoff_episode": 63
+    },
+    {
+      "id": "s02-t04",
+      "question": "謝懷山會不會回老宅吃飯？",
+      "setup_episode": 65,
+      "payoff_episode": 110
+    },
+    {
+      "id": "s02-t05",
+      "question": "誰把她打包的紙箱拆了？",
+      "setup_episode": 67,
+      "payoff_episode": 68
+    },
+    {
+      "id": "s02-t06",
+      "question": "他母親也怕海嗎？",
+      "setup_episode": 74,
+      "payoff_episode": 83
+    },
+    {
+      "id": "s02-t07",
+      "question": "倉庫裡那張剛好她高度的桌子是誰擺的？",
+      "setup_episode": 76,
+      "payoff_episode": 78
+    },
+    {
+      "id": "s02-t08",
+      "question": "船塢那艘二十年沒人敢拆的舊船是什麼？",
+      "setup_episode": 77,
+      "payoff_episode": 111
+    },
+    {
+      "id": "s02-t09",
+      "question": "外島族譜裡為什麼年年有謝懷山的名字？",
+      "setup_episode": 84,
+      "payoff_episode": 88
+    },
+    {
+      "id": "s02-t10",
+      "question": "顏若溪為什麼要單獨找她？",
+      "setup_episode": 90,
+      "payoff_episode": 98
+    },
+    {
+      "id": "s02-t11",
+      "question": "顏家為什麼在意船塢那艘舊船？",
+      "setup_episode": 95,
+      "payoff_episode": 115
+    },
+    {
+      "id": "s02-t12",
+      "question": "望川是哪一艘船？",
+      "setup_episode": 97,
+      "payoff_episode": 100
+    },
+    {
+      "id": "s02-t13",
+      "question": "他說「合約上」是什麼意思？",
+      "setup_episode": 93,
+      "payoff_episode": 99
+    },
+    {
+      "id": "s02-t14",
+      "question": "她會怎麼回答「妳呢」？",
+      "setup_episode": 104,
+      "payoff_episode": 110
+    },
+    {
+      "id": "s02-t15",
+      "question": "外公紙條上的「等她」是什麼意思？",
+      "setup_episode": 80,
+      "payoff_episode": 89
+    },
+    {
+      "id": "s02-t16",
+      "question": "她蓋毯子那晚，他是醒著的嗎？",
+      "setup_episode": 70,
+      "payoff_episode": 71
+    },
+    {
+      "id": "s02-t17",
+      "question": "第十三條的違約，超過二十四小時了嗎？",
+      "setup_episode": 64,
+      "payoff_episode": 90
+    },
+    {
+      "id": "s02-t18",
+      "question": "外島的廟為什麼只給一間房？",
+      "setup_episode": 84,
+      "payoff_episode": 87
+    },
+    {
+      "id": "s02-t19",
+      "question": "倉庫最底層那本沒蓋章的書是什麼？",
+      "setup_episode": 79,
+      "payoff_episode": 80
+    },
+    {
+      "id": "s02-t20",
+      "question": "望川艙板底下夾著什麼？",
+      "setup_episode": 114,
+      "payoff_episode": 117
+    },
+    {
+      "id": "s02-t21",
+      "question": "謝懷山要對她說什麼？",
+      "setup_episode": 111,
+      "payoff_episode": 120
+    },
+    {
+      "id": "s02-t22",
+      "question": "他是不是在替謝家藏那艘船？",
+      "setup_episode": 115,
+      "payoff_episode": 119
+    },
+    {
+      "id": "s02-t23",
+      "question": "早餐的座位還會不會再靠近？",
+      "setup_episode": 94,
+      "payoff_episode": 99
+    },
+    {
+      "id": "s02-t24",
+      "question": "陸醫生送來的裂書修得好嗎？",
+      "setup_episode": 63,
+      "payoff_episode": 69
+    },
+    {
+      "id": "s02-t25",
+      "question": "外公為什麼留著母親消失那天的船票？",
+      "setup_episode": 65,
+      "payoff_episode": 97
+    }
+  ],
+  "episodes": [
+    {
+      "number": 61,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "第十三條",
+      "youtube_title": "契約妻子回家看見牆上多了他親手寫的一條違約，她沒撕也沒回，第二天早餐他坐到了她這一側",
+      "duration_s": 110,
+      "logline": "林晚晴看見第十三條，想回應卻被合約和自己的怕擋住，只能用一整夜不關的走廊燈回答。",
+      "hook": "走廊牆上，第十三條的墨還沒乾；他站在門裡：「看到了？」她的手指停在燈的開關上。",
+      "hook_type": "line",
+      "mid_hook": "凌晨三點，走廊燈還亮著；他那扇門的門縫底下，影子來回走了第七趟。",
+      "extra_hooks": [
+        "早餐，他端著盤子從長桌那端站起來，穿過一整排空椅，在她這側隔兩個座位坐下。"
+      ],
+      "conflict": "回了第十三條就是承認自己也違約，不回又像拒絕；她兩樣都不敢。",
+      "turn": "她不撕、不寫，只是一整夜不關走廊燈；他讀懂了，第二天把座位從長桌另一端移到她這一側。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老太太放下筷子：「顏家的提案，週日答。」她轉向晚晴：「妳說，怎麼答？」全桌的筷子同時停了。",
+        "question": "晚晴會替自己開口嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "lache",
+        "waitiao"
+      ],
+      "spectacle": "長餐桌一端他起身，盤子穿過一整排空椅，停在她那側隔兩個座位的俯拍長鏡頭。",
+      "glamour_shot": "謝廷舟站在走廊門框裡的逆光半身，袖口扣好，看她一眼就移開，說「看到了」前停了半拍。",
+      "setups": [
+        "s02-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "早餐座位從長桌兩端移到同一側，隔兩個座位"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-laotaitai",
+        "xie-tingye",
+        "zhou-yi"
+      ],
+      "locations": [
+        "謝家老宅走廊",
+        "謝家老宅長餐桌"
+      ],
+      "state": {
+        "time": "第二季第 1 天（合約第四個月末），清晨",
+        "knowledge": "她知道第十三條是他的字，也知道他知道她看見了。",
+        "carry_forward": "老太太要她決定怎麼答顏家；日記第六頁還黏著，只有邊角鬆了一點；走廊燈第一次亮到天亮。"
+      }
+    },
+    {
+      "number": 62,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "週日有約",
+      "youtube_title": "被逼表態要不要讓位，她只回一句合約還有八個月，豪門老太太笑了，情敵卻約他週日去船廠",
+      "duration_s": 120,
+      "logline": "林晚晴要在顏若溪的週末飯上守住位置，卻發現他週日有一個不肯說的約。",
+      "hook": "她把筷子放平：「合約還有八個月。」老太太嘴角動了一下；廷野在桌下比了個讚。",
+      "hook_type": "line",
+      "mid_hook": "週六晚飯，顏若溪替他倒茶：「我回來，不是為了玩。」說完看的是晚晴，不是他。",
+      "conflict": "顏若溪的週末飯照舊，坐在她對面；她這次不畫線，也不知道該不該笑。",
+      "turn": "顏若溪邀他週日去船廠看新船，他只說「週日有約」，連老太太都不知道是什麼約。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她的手機亮了，小魚傳來修復坊門口的照片：「那位匿名客人，這週約了週日十點。」她抬頭，他正看了一眼牆上的鐘。",
+        "question": "週日十點，來的會是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "waitiao",
+        "lache"
+      ],
+      "spectacle": "長餐桌三角構圖：顏若溪與晚晴隔桌對坐，他在中間，一壺茶的熱氣把三張臉隔開。",
+      "glamour_shot": "林晚晴說完笑話自己先笑，眼下的小痣跟著彎，鉛筆從髮間滑下來一半。",
+      "setups": [
+        "s02-t03",
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次在顏若溪面前沒有退，把合約當成自己的位置"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-laotaitai",
+        "xie-tingye",
+        "yan-ruoxi",
+        "xiao-yu"
+      ],
+      "locations": [
+        "謝家老宅長餐桌"
+      ],
+      "state": {
+        "time": "第二季第 2 天，週六晚上",
+        "knowledge": "她知道顏若溪回來另有目的，也知道他週日有約。",
+        "carry_forward": "週日十點的匿名客人；顏若溪那句「不是為了玩」；日記第六頁晾在老宅工作間，邊角又鬆了一格。"
+      }
+    },
+    {
+      "number": 63,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "十點的門鈴",
+      "youtube_title": "她躲在書架後面等神祕客人現身，進門的竟是他最好的朋友，同一秒豪門老太太當著顏家認了她",
+      "duration_s": 125,
+      "logline": "林晚晴想抓到週日的匿名客人，卻只等到一個替人送書、什麼都不肯說的陸醫生。",
+      "hook": "九點五十八分，她和小魚縮在書架後面，一人抱一捆紙；門上的鈴響了。",
+      "hook_type": "image",
+      "mid_hook": "她的手機震動，是廷野：「老太太剛回了顏家：『廷舟有太太了。』」她手一鬆，紙散了一地。",
+      "extra_hooks": [
+        "布包打開，是一本裂成兩半的舊船書，扉頁上沒有名字，只有一句：「不急。」"
+      ],
+      "conflict": "她以為只要守在店裡就能知道他週日去哪，可是門開了，她認錯了人。",
+      "turn": "進門的是陸醫生，說是替朋友送書；她還沒想通，老太太已經當著顏家替她回了話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陸醫生走到門口回頭：「他沒說，對吧？」門鈴響完，她把臉埋進布包，布上是船廠機油的味道。",
+        "question": "陸醫生口中的「他」是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "waitiao",
+        "lache"
+      ],
+      "spectacle": "晴川修復坊的暖黃光裡，兩個女孩從書架縫裡探頭，門外逆光走進一道白色身影。",
+      "glamour_shot": "陸醫生站在修復坊門口的逆光裡，溫和地笑，布包放上工作台的手很穩。",
+      "setups": [
+        "m11",
+        "s02-t24"
+      ],
+      "payoffs": [
+        "s02-t01",
+        "s02-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太太公開回絕顏家：謝家已有媳婦",
+        "她接下一本匿名客人的修復"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xiao-yu",
+        "lu-yisheng",
+        "xie-tingye"
+      ],
+      "locations": [
+        "晴川修復坊"
+      ],
+      "state": {
+        "time": "第二季第 3 天，週日上午",
+        "knowledge": "她知道老太太替她回絕了顏家；送書的是陸醫生，背後還有一個「他」。",
+        "carry_forward": "那本裂成兩半的船書要她修；布包上的機油味；日記第六頁在老宅等她回去揭。"
+      }
+    },
+    {
+      "number": 64,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "每一條都違了",
+      "youtube_title": "閨蜜把結婚合約抄成一整面牆用紅筆打勾，十二條全違，最要命的那條她自己也超時了",
+      "duration_s": 105,
+      "logline": "林晚晴想證明自己一條都沒違，卻被小魚用紅筆把每一條都勾成違約。",
+      "hook": "修復坊牆上貼著一張大字抄本，小魚舉著紅筆：「第一條，違。」咚，一個勾。",
+      "hook_type": "line",
+      "mid_hook": "紅筆停在第十二條：「動了真心，二十四小時內告知。」小魚回頭：「他寫第十三條，幾天了？」",
+      "extra_hooks": [
+        "小魚又補一刀：「他打算拖到什麼時候？」晚晴張嘴，答不出來。"
+      ],
+      "conflict": "她一條一條辯，每一條都辯輸：餐桌、走廊、燈、宵夜，全部有人越線。",
+      "turn": "她算出第十三條已經寫了五天，才發現第十二條對她也一樣：她也超時了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她半夜回老宅，門口停著顏家的黑車；書房門縫透出光，顏父在笑：「一年，很快的。」",
+        "question": "顏父深夜來謝家談什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "lache"
+      ],
+      "spectacle": "修復坊整面牆的十二條抄本，紅勾一個一個落下，鏡頭退到最後只剩一面紅。",
+      "glamour_shot": "林晚晴靠在工作台邊雙手抱胸跟小魚辯，金粉沾在指尖，越說越快，最後自己先笑出來。",
+      "setups": [
+        "s02-t17",
+        "s02-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她承認自己也超過了第十二條的二十四小時"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xiao-yu",
+        "yan-fu"
+      ],
+      "locations": [
+        "晴川修復坊",
+        "謝家老宅門口"
+      ],
+      "state": {
+        "time": "第二季第 5 天，深夜",
+        "knowledge": "她知道第十二條兩個人都違了，誰都沒說。",
+        "carry_forward": "顏父深夜在書房；修復坊牆上多了一張全是紅勾的合約；日記第六頁今晚該揭了。"
+      }
+    },
+    {
+      "number": 65,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "第六頁",
+      "youtube_title": "她半夜偷聽到顏家嘲諷公公二十年不回家吃飯，回房揭開外公日記第六頁，裡面夾著母親失蹤那天的船票",
+      "duration_s": 130,
+      "logline": "林晚晴想知道謝懷山的空椅子是怎麼回事，卻在外公的日記裡揭出一張不該在那裡的船票。",
+      "hook": "書房門縫裡，顏父慢慢說：「懷山二十年不上桌，謝家還撐得住？」老太太沒回話。",
+      "hook_type": "question",
+      "mid_hook": "她回房揭開第六頁，外公的字浮出來：「懷山從那年起，不回家吃飯。」",
+      "conflict": "謝家的長餐桌永遠空一張椅子，沒人說為什麼；她問不出口，只能自己揭。",
+      "turn": "第六頁寫的不是謝家的規矩，是一個父親的逃；而這一頁夾著外公留下的一張票根。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第六頁背面黏著一張褪色的渡輪票根，日期是她八歲那年、母親在碼頭消失的那一天。她的鑷子掉在桌上。",
+        "question": "外公為什麼留著那天的船票？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chenjing",
+        "lache"
+      ],
+      "spectacle": "燈下鑷子揭開第六頁，水漬慢慢退開，一行字從紙纖維裡浮出來的微距。",
+      "glamour_shot": "林晚晴在燈下低頭，鼻尖幾乎貼著紙，屏住呼吸，眼下的小痣被燈照得很清楚。",
+      "setups": [
+        "m08",
+        "s02-t04",
+        "s02-t25"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "日記修開第六頁"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "yan-fu",
+        "xie-laotaitai",
+        "waigong"
+      ],
+      "locations": [
+        "謝家老宅書房外",
+        "老宅工作間"
+      ],
+      "state": {
+        "time": "第二季第 5 天，凌晨",
+        "knowledge": "她知道謝懷山從某一年起不回家吃飯，也知道外公留著母親消失那天的船票。",
+        "carry_forward": "日記第六頁開了，第七頁還黏著；票根；長餐桌上那張空椅子。"
+      }
+    },
+    {
+      "number": 66,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "到期那天",
+      "youtube_title": "冷面總裁被好友追問打算什麼時候說，他只答了四個字，傳到她耳裡卻變成到期就走",
+      "duration_s": 115,
+      "logline": "謝廷舟對陸醫生說了實話的一半，林晚晴聽到的卻是另一半。",
+      "hook": "她捏著票根站在他門前，手舉起來要敲，停住；門裡沒有人，他不在家。",
+      "hook_type": "image",
+      "mid_hook": "餐廳裡陸醫生問：「你打算什麼時候說？」他看著窗外的海：「到期那天。」隔一桌的廷野手機已經舉起來。",
+      "conflict": "他要等一個不會讓她逃的時機；她要等他先開口；兩個等的人中間隔著一個傳話的。",
+      "turn": "廷野只聽到「到期那天」，小魚轉給她，她讀成：到期那天，他就走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她讀完小魚的訊息，走到走廊，第一次自己把燈關了。黑裡，她的手還按在開關上。",
+        "question": "她會讓燈黑一整晚嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "lache",
+        "waitiao"
+      ],
+      "spectacle": "海景餐廳的玻璃窗前兩個男人的剪影，窗外一艘渡輪慢慢橫過整片海。",
+      "glamour_shot": "謝廷舟側臉對著窗，指尖轉著沒喝的咖啡杯，說「到期那天」前停了半拍。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "lu-yisheng",
+        "xie-tingye",
+        "xiao-yu"
+      ],
+      "locations": [
+        "海景餐廳",
+        "謝家老宅走廊"
+      ],
+      "state": {
+        "time": "第二季第 6 天，夜",
+        "knowledge": "她以為他打算到期就走；觀眾知道他是打算到期那天說。",
+        "carry_forward": "陸醫生問「那本書，她修了沒？」他說「不急」；走廊第一次黑了。"
+      }
+    },
+    {
+      "number": 67,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "到期用",
+      "youtube_title": "誤會老公到期就要走，她連夜把修書工具裝進三個寫著到期用的紙箱，他半夜站在箱子前不動",
+      "duration_s": 100,
+      "logline": "林晚晴決定先走一步，連箱子都標好了；他看見箱子，一句話也沒說。",
+      "hook": "黑的走廊裡，他的門開了；他站在開關前看了很久，手抬起來，又放下。",
+      "hook_type": "image",
+      "mid_hook": "周姨端湯經過，看著箱子上的字：「少爺不是那個意思。」話說到一半，她自己停了。",
+      "extra_hooks": [
+        "廷野抱著衝浪板路過：「妳在搬家？」她面不改色：「提早準備。」"
+      ],
+      "conflict": "她要比他先走才不會被留下；可是每一個箱子都裝不滿，她捨不得放進去。",
+      "turn": "她以為他會問，他沒問；她以為他不在意，可他在箱子前站到半夜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "深夜，他蹲在她房門口的三個紙箱前，拿起她的那捲膠帶。撕開的那一聲，在走廊裡很響。",
+        "question": "他是要替她封箱，還是拆箱？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "lache",
+        "waitiao"
+      ],
+      "spectacle": "三個寫著「到期用」的紙箱並排在房門口，走廊盡頭一盞燈都沒有，只有門縫的光。",
+      "glamour_shot": "謝廷舟蹲在紙箱前，深灰襯衫扣到第二顆，低頭時劍眉壓著眼，膠帶在指間停住。",
+      "setups": [
+        "s02-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "zhou-yi",
+        "xie-tingye"
+      ],
+      "locations": [
+        "謝家老宅走廊",
+        "晚晴的房間門口"
+      ],
+      "state": {
+        "time": "第二季第 7 天，深夜",
+        "knowledge": "她以為到期那天他就走，所以先打包。",
+        "carry_forward": "三個紙箱；他撕開的膠帶；日記第七頁開始鬆動。"
+      }
+    },
+    {
+      "number": 68,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "拆箱",
+      "youtube_title": "早上醒來三個紙箱全被拆平，工具照她的習慣排回原位，全家只有一個人知道她怎麼擺",
+      "duration_s": 115,
+      "logline": "林晚晴要找出拆箱的人算帳，答案只有一個，他卻用合約堵她。",
+      "hook": "早晨，三個紙箱壓得平平的靠在牆邊；工作台上，骨刀在毛刷左邊，跟她每天擺的一模一樣。",
+      "hook_type": "reversal",
+      "mid_hook": "顏若溪捧著一本顏家的舊書進門：「聽說妳修得比外公好。」他放下杯子：「她的工作，排隊。」",
+      "conflict": "她要他承認動了她的東西；他只用一句「第一條撕了」擋回來。",
+      "turn": "她吼「那是不過問，不是不動手！」，廷野笑到嗆，老太太第一次在餐桌上笑出聲；顏若溪也被排到後面。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "當晚走廊燈又亮了，開關旁貼了一張小紙條，他的字：「妳關，我開。」她看了很久，沒撕。",
+        "question": "她會怎麼回那張紙條？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "waitiao",
+        "lache"
+      ],
+      "spectacle": "工作台俯拍：每一件工具照她的手勢順序排好，鏡頭慢慢拉起，三個壓平的紙箱靠在牆邊。",
+      "glamour_shot": "林晚晴雙手撐著餐桌瞪他，頭髮用鉛筆胡亂別著，氣得臉頰泛紅；他低頭喝咖啡，嘴角動了一下。",
+      "setups": [],
+      "payoffs": [
+        "s02-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他用行動解了「到期就走」的誤會：箱子拆了，工具歸位",
+        "他當著顏若溪說她的工作要排隊"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-laotaitai",
+        "xie-tingye",
+        "yan-ruoxi"
+      ],
+      "locations": [
+        "老宅工作間",
+        "謝家老宅長餐桌",
+        "謝家老宅走廊"
+      ],
+      "state": {
+        "time": "第二季第 8 天",
+        "knowledge": "她知道是他拆的箱子，也知道只有一直看著她工作的人才排得出那個順序。",
+        "carry_forward": "開關旁那張「妳關，我開」；陸醫生送的船書還在修。"
+      }
+    },
+    {
+      "number": 69,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "他會很高興",
+      "youtube_title": "她一夜修好神祕客人的裂書，送書的醫生脫口說出他會很高興，下一秒修復坊屋頂開始漏雨",
+      "duration_s": 120,
+      "logline": "林晚晴想從陸醫生口中套出那個「他」，卻先遇上一場要泡壞日記的暴雨。",
+      "hook": "她把紙條撕下來，在背面寫：「電費誰付？」又貼回去。早上，下面多了一個字：「我。」",
+      "hook_type": "line",
+      "mid_hook": "陸醫生摸著修好的書脊，笑了：「他會很高興。」她抬頭：「他是誰？」陸醫生：「說溜了。」",
+      "conflict": "她要知道是誰十年來送這種書，陸醫生守口如瓶；天又在變。",
+      "turn": "陸醫生多說了一句「他送了十年」，她還沒追問，屋頂的水就滴到了日記旁邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "雷聲壓下來，屋頂一角開始漏，一滴水落在晾著的日記旁邊，第二滴正往第六頁上掉。",
+        "question": "外公的日記會被雨泡壞嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "lache"
+      ],
+      "spectacle": "裂成兩半的船書在她手裡合回一本，書脊的線一針一針收緊的微距，窗外天色一格一格暗下來。",
+      "glamour_shot": "林晚晴熬夜後頭髮亂亂地別著鉛筆，把修好的書推給陸醫生，得意地抬下巴。",
+      "setups": [],
+      "payoffs": [
+        "s02-t24"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一夜修好匿名客人的裂書"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "lu-yisheng",
+        "xiao-yu"
+      ],
+      "locations": [
+        "謝家老宅走廊",
+        "晴川修復坊"
+      ],
+      "state": {
+        "time": "第二季第 10 天，傍晚暴雨",
+        "knowledge": "她知道有一個人十年來透過陸醫生送書來修。",
+        "carry_forward": "屋頂漏水，日記第六頁晾在桌上；小魚已經下班。"
+      }
+    },
+    {
+      "number": 70,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "毯子",
+      "youtube_title": "暴雨夜她撲在外公日記上擋雨，冷面老公撐傘衝進修復坊，凌晨她第一次走過那條走廊",
+      "duration_s": 150,
+      "logline": "林晚晴要救下日記，也要守住自己不先越線；暴雨和他都讓她守不住。",
+      "hook": "她整個人撲在日記上，雨打在她背上；門被撞開，他撐著傘、扛著一捲防水布站在門口。",
+      "hook_type": "danger",
+      "mid_hook": "他爬上梯子把防水布釘上屋頂，下來時整個人濕透，只問一句：「書呢？」",
+      "extra_hooks": [
+        "回老宅的車上，她抱著日記，他把暖氣開到最大，一路沒說話；小魚傳來訊息：「我打的電話，不用謝。」"
+      ],
+      "conflict": "她怕欠他，更怕被他看見自己在等；可是今晚是他來的。",
+      "turn": "她修日記的濕邊修到三點，抬頭才發現他一直沒關門，坐在門邊等她修完，等到睡著。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她第一次走過走廊，把毯子蓋在他身上；毯子落下的那一秒，他的睫毛動了一下。",
+        "question": "他是真的睡著，還是醒著？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "waitiao",
+        "xiju"
+      ],
+      "spectacle": "暴雨裡修復坊的屋頂，一道人影在梯子上釘防水布，屋裡暖黃燈下她護著一本書。",
+      "glamour_shot": "謝廷舟坐在門邊的地上睡著，濕過又乾的襯衫袖口還扣著，手裡一杯涼掉的牛奶，走廊燈落在他的眉骨上。",
+      "setups": [
+        "s02-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "日記第六頁保住了",
+        "她第一次走過那條走廊"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xiao-yu"
+      ],
+      "locations": [
+        "晴川修復坊",
+        "謝家老宅走廊"
+      ],
+      "state": {
+        "time": "第二季第 10 天，凌晨三點",
+        "knowledge": "她知道他為了她和日記冒雨來；她不知道他是不是醒著。",
+        "carry_forward": "毯子；他手裡那杯涼掉的牛奶；早餐座位還隔兩個。"
+      }
+    },
+    {
+      "number": 71,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "折好的毯子",
+      "youtube_title": "她以為他睡著了，早餐椅子上的毯子卻被摺成方塊，管家一句話揭穿他坐到天亮，下一秒公公病倒",
+      "duration_s": 110,
+      "logline": "林晚晴想知道他昨晚是不是醒著，答案還沒落地，老太太就把她派去她最怕的船廠。",
+      "hook": "早餐，她的椅子上放著那條毯子，摺成一個方塊，上面一杯熱牛奶；他在兩個座位外看報。",
+      "hook_type": "image",
+      "mid_hook": "老太太接完電話：「懷山發燒，不肯離開船廠。」她看向晚晴：「妳送飯。」",
+      "extra_hooks": [
+        "廷野咬著吐司：「哥，你昨晚睡走廊？」他翻一頁報紙：「門口涼快。」"
+      ],
+      "conflict": "她要問他昨晚醒著沒，又不能問；老太太要她去一個看得見海的地方。",
+      "turn": "周姨收碗時小聲說：「少爺五點就醒了，毯子沒捨得拿下來，坐到天亮。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "船廠大門外，海風把她的頭髮吹亂，鐵門後面是一整片海；她抱著保溫盒，腳尖停在門檻前。",
+        "question": "她敢走進船廠嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xijiechong",
+        "chenjing"
+      ],
+      "spectacle": "船廠大門的遠景：她一個小小的身影站在巨大的鐵門與吊車前，後面是一整片灰藍的海。",
+      "glamour_shot": "謝廷舟在早餐桌上翻報紙，晨光落在他的劍眉與高直的鼻樑上，嘴角壓著一點沒藏好的笑。",
+      "setups": [],
+      "payoffs": [
+        "s02-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道他昨晚為她守到天亮"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "zhou-yi",
+        "xie-tingye",
+        "xie-laotaitai"
+      ],
+      "locations": [
+        "謝家老宅長餐桌",
+        "謝家船廠大門"
+      ],
+      "state": {
+        "time": "第二季第 11 天，上午",
+        "knowledge": "她知道他昨晚醒著坐到天亮；她要第一次進船廠。",
+        "carry_forward": "保溫盒裡的粥；第七條「不干涉工作」即將被她踩過去；日記第七頁的邊角翹起來了。"
+      }
+    },
+    {
+      "number": 72,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "鐵與海",
+      "youtube_title": "怕海的少奶奶第一次走進船廠，冷面老公從吊車上一路走下來，始終站在她和海之間",
+      "duration_s": 125,
+      "logline": "林晚晴要把飯送到謝懷山手上，路上的每一步都看得見海。",
+      "hook": "她跨過門檻，吊車的影子掃過她；一個老工人揮手：「少奶奶？」她嚇得保溫盒差點落地。",
+      "hook_type": "danger",
+      "mid_hook": "謝懷山接過粥，看著長餐桌那個方向：「那張桌子，我坐不起。」",
+      "conflict": "船廠沒有一條路看不見海；她每走一步都要抓住什麼。",
+      "turn": "他從吊車平台下來，接過保溫盒說「這邊」，一路走在她靠海的那一側，她一次都沒看見海。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "回程經過碼頭邊，他走開接電話；一艘船突然長鳴，她的腿一軟，手往旁邊抓，抓到的是空的欄杆缺口。",
+        "question": "她會在碼頭邊站得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xijiechong",
+        "chenjing",
+        "ganren"
+      ],
+      "spectacle": "船廠的長鏡頭：吊車、鐵殼、海；他和她並肩走，他的身體始終擋在她和海之間。",
+      "glamour_shot": "謝廷舟換上深色工裝從吊車平台走下來，袖子捲到小臂，左腕那只舊錶反著光。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把飯送到謝懷山手上",
+        "聽到謝懷山說自己坐不起那張桌子"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "謝家船廠",
+        "船廠辦公室",
+        "船廠碼頭邊"
+      ],
+      "state": {
+        "time": "第二季第 11 天，中午",
+        "knowledge": "她知道謝懷山覺得自己不配坐謝家的餐桌。",
+        "carry_forward": "碼頭邊的長鳴；他不在她身邊的那十秒。"
+      }
+    },
+    {
+      "number": 73,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "一排舊書",
+      "youtube_title": "她在碼頭邊腿軟的瞬間被他從背後扣住手腕，他帶她走進沒有海的倉庫，裡面是二十年的舊書",
+      "duration_s": 135,
+      "logline": "林晚晴想知道他為什麼有一倉庫的舊書，他只給她一條可以不問的路。",
+      "hook": "她的手抓空的那一秒，另一隻手從背後扣住她的手腕，跟年祭那天一樣；他的聲音很低：「我在後面。」",
+      "hook_type": "danger",
+      "mid_hook": "老工人蔡伯說溜嘴：「少爺十六歲起就送書，一年沒斷過。」",
+      "extra_hooks": [
+        "他推開倉庫門：沒有窗、沒有海，只有一排排頂到天花板的舊書。"
+      ],
+      "conflict": "第七條寫著不干涉工作；這倉庫是他的工作，還是他的祕密？",
+      "turn": "她一本一本翻，每一本的扉頁都蓋著晴川修復坊的章：二十年的書，全是她外公修的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他說：「第七條。妳可以不問。」她把一本書轉向他，扉頁上外公的章：「我問。」他看著那枚章，沒有回答。",
+        "question": "他為什麼二十年都送晴川修書？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chenjing",
+        "ganren"
+      ],
+      "spectacle": "倉庫的大門推開，一束光照進去，頂到天花板的舊書一排排亮起來，每一本扉頁都是同一枚紅章。",
+      "glamour_shot": "林晚晴站在書架之間仰頭，光從門口落在她的側臉，指尖的金粉沾上書脊。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她進到他不讓人進的倉庫",
+        "第七條被她親口踩過去"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "船廠碼頭邊",
+        "船廠倉庫"
+      ],
+      "state": {
+        "time": "第二季第 11 天，下午",
+        "knowledge": "她知道他十六歲起把買來的舊書都送去晴川修。",
+        "carry_forward": "一倉庫的舊書；他沒答的那句「我問」；第七條。"
+      }
+    },
+    {
+      "number": 74,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "阿寧也怕海",
+      "youtube_title": "公公在船廠昏倒送醫，病床上握住她的手說了一句對不起，他兒子卻站在門外不肯進來",
+      "duration_s": 120,
+      "logline": "林晚晴守在謝懷山床邊，聽見一句她不該聽懂的道歉。",
+      "hook": "倉庫的電話響，蔡伯臉色變了：「老廠長倒了。」他已經跑出門，回頭只說：「跟上。」",
+      "hook_type": "danger",
+      "mid_hook": "謝懷山醒過來，看著她指尖的金粉：「阿寧也怕海。修書的人，都怕。」",
+      "conflict": "病房裡只有她和謝懷山；他兒子站在門外，一步都不進來。",
+      "turn": "她以為謝懷山在說他的妻子，可是他看著她的臉，像在看另一個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "謝懷山握住她的手，眼睛閉上前說：「對不起。」她回頭，玻璃門外的他把臉轉開了。",
+        "question": "謝懷山為什麼向她道歉？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "chenjing"
+      ],
+      "spectacle": "醫院長廊的對稱構圖：玻璃門內病床邊的她，玻璃門外背靠牆的他，中間一道冷白的光。",
+      "glamour_shot": "謝廷舟靠在病房外的牆上，喉結動了一下，扣著的袖口被他自己握皺。",
+      "setups": [
+        "s02-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "謝懷山平安送醫"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan",
+        "lu-yisheng",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "船廠倉庫",
+        "潮嶼醫院病房"
+      ],
+      "state": {
+        "time": "第二季第 12 天，傍晚",
+        "knowledge": "她知道阿寧也怕海；謝懷山對她說了對不起，卻沒說為什麼。",
+        "carry_forward": "那句對不起；他不進病房；她口袋裡那只修了一半的錶。"
+      }
+    },
+    {
+      "number": 75,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "錶走了",
+      "youtube_title": "她把婆婆留下的壞錶修到重新走動，病床上的公公一聽見秒針聲就紅了眼，終於說出外公的名字",
+      "duration_s": 130,
+      "logline": "林晚晴想讓兩個不說話的男人走進同一間病房，她手上只有一只壞了十年的錶。",
+      "hook": "她推門出來：「你為什麼不進去？」他看著地板：「他不想見我。」",
+      "hook_type": "question",
+      "mid_hook": "她轉開錶背最後一顆螺絲，秒針跳了一格，又一格；門外的他抬起頭。",
+      "extra_hooks": [
+        "陸醫生在走廊另一頭看著兩個人，低聲：「十年了，第一次。」"
+      ],
+      "conflict": "父子二十年不同桌，他母親的錶也停了十年；她要讓其中一樣先動起來。",
+      "turn": "錶一走，謝懷山聽見秒針就哭了；她回頭，他第一次跨進病房的門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "謝懷山摸著錶面，半夢半醒：「晴川的林老，是阿寧的老師。也是……我欠的人。」說完睡著了。",
+        "question": "謝懷山欠了外公什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xijiechong"
+      ],
+      "spectacle": "錶的微距：秒針停在一格十年，輕輕一震，開始走；鏡頭拉開，病房裡第一次站了三個人。",
+      "glamour_shot": "林晚晴低頭轉錶背的螺絲，屏住呼吸，碎髮落在眼前；他站在門邊看她，看了一眼就移開。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "修好他母親的錶",
+        "父子二十年來第一次同在一間病房"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan",
+        "lu-yisheng"
+      ],
+      "locations": [
+        "潮嶼醫院病房",
+        "醫院長廊"
+      ],
+      "state": {
+        "time": "第二季第 12 天，夜",
+        "knowledge": "她知道外公是阿寧的老師，謝懷山覺得自己欠外公。",
+        "carry_forward": "那只重新走動的錶；謝懷山沒說完的「欠」。"
+      }
+    },
+    {
+      "number": 76,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "一盞燈",
+      "youtube_title": "她決定每天去船廠修那一倉庫的書，隔天倉庫裡多了一張剛好她高度的桌子，老工人說不是我",
+      "duration_s": 110,
+      "logline": "林晚晴要一個人把一倉庫的書修完，有人比她先把位置準備好了。",
+      "hook": "謝懷山閉上眼不再說；他拿起那只錶，沒戴在自己手上，扣在了父親的手腕。",
+      "hook_type": "image",
+      "mid_hook": "倉庫角落多了一張桌子、一盞燈、一張剛好她高度的凳子；她謝蔡伯，蔡伯搖頭：「不是我。」",
+      "conflict": "第七條還在牆上；她每天去他的船廠修他的書，算不算干涉？",
+      "turn": "那盞燈跟修復坊裡外公用了三十年的是同一款，連燈罩的缺口都一樣。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "桌上放著一把鑰匙，牌子上寫：「七點後，自己鎖門。」七點以後，倉庫外就是黑的海。",
+        "question": "她敢一個人留到天黑嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xijiechong",
+        "ganren"
+      ],
+      "spectacle": "空曠的倉庫裡，一張小桌與一盞暖黃的燈，像把修復坊的一角搬進了鐵灰色的船廠。",
+      "glamour_shot": "林晚晴坐上那張剛好的凳子，晃了晃腳，對著燈笑出聲，眼下的小痣被燈照亮。",
+      "setups": [
+        "s02-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她開始在船廠修那一倉庫的書"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "潮嶼醫院病房",
+        "船廠倉庫"
+      ],
+      "state": {
+        "time": "第二季第 13 天",
+        "knowledge": "她知道有人照修復坊的樣子替她準備了位置。",
+        "carry_forward": "那把鑰匙；七點以後的海；日記第七頁今晚可以試著揭。"
+      }
+    },
+    {
+      "number": 77,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "工人們的午飯",
+      "youtube_title": "怕海的少奶奶在船廠留到天黑，對面辦公室的燈也一直亮著，隔天工人說出船塢裡那艘不能碰的船",
+      "duration_s": 115,
+      "logline": "林晚晴在船廠過了第一夜，也聽到了船廠沒人敢說的事。",
+      "hook": "七點，倉庫外的海黑了，浪聲一下一下；她抬頭，對面他辦公室的燈還亮著。",
+      "hook_type": "image",
+      "mid_hook": "午飯時她跟工人們擠在一張長桌，話多得大家笑翻；蔡伯扒著飯：「船塢那艘待拆的，二十年沒人敢動。」",
+      "conflict": "她要融進他的世界，又不想被看出她在找什麼。",
+      "turn": "整張桌突然安靜，所有工人都看向蔡伯；蔡伯低頭吃飯，不再說了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她走到船塢邊看那艘蓋著帆布的舊船，風一吹，固定帆布的鐵鍊嘎地一聲斷開，整片帆布朝她壓下來。",
+        "question": "她躲得開那片帆布嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xijiechong",
+        "chenjing"
+      ],
+      "spectacle": "船塢深處一艘蓋著灰帆布的舊船，帆布在風裡鼓起來，像一面沒有字的旗。",
+      "glamour_shot": "林晚晴在工人長桌上邊比手畫腳邊講笑話，袖口捲到手肘，滿桌黝黑的臉都在笑。",
+      "setups": [
+        "s02-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她一個人在船廠撐過天黑",
+        "工人們接納了這位話多的少奶奶"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "船廠倉庫",
+        "船廠工人食堂",
+        "船塢"
+      ],
+      "state": {
+        "time": "第二季第 14 天，下午",
+        "knowledge": "她知道船塢有一艘二十年沒人敢動的舊船。",
+        "carry_forward": "那片壓下來的帆布；工人們突然的安靜。"
+      }
+    },
+    {
+      "number": 78,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "燈太高",
+      "youtube_title": "帆布壓下來的瞬間他把她拽回懷裡，夜裡她從倉庫窗外看見他踩著梯子替她調那盞燈",
+      "duration_s": 125,
+      "logline": "林晚晴要找出是誰替她布置倉庫，答案在一個她不該看見的晚上。",
+      "hook": "帆布落地，塵土揚起；她在他懷裡，他的手扣著她的肩：「別過去。」聲音比平常低。",
+      "hook_type": "danger",
+      "mid_hook": "她修到一本舊航海書，書頁裡夾著一朵壓乾的茉莉，是晴川後巷那株才有的品種。",
+      "extra_hooks": [
+        "她追問「別過去」是什麼意思，他只說：「那艘船，危險。」"
+      ],
+      "conflict": "他不讓她靠近那艘船，也不承認倉庫的燈是他放的。",
+      "turn": "她假裝七點就走，繞回倉庫窗外，看見燈亮著。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "窗裡，他踩在梯子上，把那盞燈往下調了兩格，比了比她凳子的高度，又調了一格。",
+        "question": "她要不要推開那扇窗？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xijiechong",
+        "ganren",
+        "chenjing"
+      ],
+      "spectacle": "倉庫的窗框住一格暖光，窗裡一個高大的人影踩著梯子調燈，窗外是黑的海和她的倒影。",
+      "glamour_shot": "謝廷舟站在梯子上抬手調燈，深色工裝的肩線繃直，燈光從他下顎線滑到喉結。",
+      "setups": [],
+      "payoffs": [
+        "s02-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她確定倉庫的位置是他準備的"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou"
+      ],
+      "locations": [
+        "船塢",
+        "船廠倉庫"
+      ],
+      "state": {
+        "time": "第二季第 15 天，夜",
+        "knowledge": "她知道那盞燈、那張桌、那張凳子都是他。",
+        "carry_forward": "那朵晴川後巷的茉莉；他說那艘船危險。"
+      }
+    },
+    {
+      "number": 79,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "我修得更好",
+      "youtube_title": "她推開窗當場抓包他偷偷調燈，雨夜回家的車上她問為什麼都送晴川，他只回了三個字",
+      "duration_s": 120,
+      "logline": "林晚晴要他親口承認，他承認的卻是另一件事。",
+      "hook": "她推開窗：「你在做什麼？」梯子上的他停住，過了很久：「燈太高。」",
+      "hook_type": "line",
+      "mid_hook": "車窗外下著雨，她問：「為什麼都送晴川？」他：「外公修得好。」她：「我修得更好。」他：「我知道。」",
+      "extra_hooks": [
+        "那夜她揭開日記第七頁，外公寫：「阿寧上船前，總要有人在旁邊說話。」"
+      ],
+      "conflict": "她要他承認在照顧她；他寧可承認一盞燈太高。",
+      "turn": "他那句「我知道」說得太快，像早就準備好的答案。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "半夜蔡伯打來：「少奶奶，最底層還有一本書，沒有章，少爺不讓任何人碰。」停了一下：「妳要看嗎？」",
+        "question": "她要背著他去看那本書嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chenjing"
+      ],
+      "spectacle": "雨夜的車內，雨刷一下一下，兩張側臉被路燈一格一格照亮又暗下。",
+      "glamour_shot": "林晚晴靠著車窗轉頭看他，雨光在她圓圓的眼睛裡晃；他直視前方，指節在方向盤上收緊。",
+      "setups": [
+        "s02-t19"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "日記修開第七頁"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "s02-cai-bo",
+        "waigong"
+      ],
+      "locations": [
+        "船廠倉庫",
+        "雨夜的車上",
+        "老宅工作間"
+      ],
+      "state": {
+        "time": "第二季第 15 天，深夜",
+        "knowledge": "她知道阿寧上船要人說話；知道倉庫最底層有一本不能碰的書。",
+        "carry_forward": "日記第七頁開了；蔡伯的電話；他房裡的燈還亮著。"
+      }
+    },
+    {
+      "number": 80,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "等她",
+      "youtube_title": "她天沒亮獨自潛進船廠倉庫，翻出那本他不讓人碰的書，封面裡夾著外公寫給他的紙條",
+      "duration_s": 150,
+      "logline": "林晚晴要知道他藏了什麼，天亮前她一個人走過整座看得見海的船廠。",
+      "hook": "清晨五點，她一個人走過碼頭邊，海就在左手邊；她沒閉眼，數著步子走到倉庫門口。",
+      "hook_type": "image",
+      "mid_hook": "最底層，一本用油布包著的書，沒有章，紙黏成一整塊，跟她修了三年的日記一模一樣；她揭不開。",
+      "extra_hooks": [
+        "身後，倉庫門的鐵鍊響了一下，有人在外面。"
+      ],
+      "conflict": "她背著他打開他最不讓人碰的東西；那本書她修不開，連他的祕密都修不開。",
+      "turn": "書揭不開，可是封面內頁夾著一張小紙條，字是她最熟悉的那一手。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她翻開封面內頁，一張小紙條，外公的字：「廷舟，這本她修不好，等她。」日期是她十八歲那年。",
+        "question": "外公要他等誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chenjing",
+        "xijiechong"
+      ],
+      "spectacle": "黎明的船廠，一個小小的身影沿著碼頭邊走，左邊是剛亮的海，右邊是一排巨大的吊車影子。",
+      "glamour_shot": "林晚晴跪在最底層的書架前，晨光從門縫切進來落在她的睫毛上，雙手捧著那本油布包的書。",
+      "setups": [
+        "s02-t15",
+        "m01"
+      ],
+      "payoffs": [
+        "s02-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次獨自走過看得見海的碼頭",
+        "找到外公留給他的紙條"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "waigong"
+      ],
+      "locations": [
+        "船廠碼頭邊",
+        "船廠倉庫"
+      ],
+      "state": {
+        "time": "第二季第 16 天，清晨",
+        "knowledge": "她知道外公在她十八歲那年要他「等她」。",
+        "carry_forward": "紙條；那本揭不開的書；倉庫門外的人。"
+      }
+    },
+    {
+      "number": 81,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "明早七點",
+      "youtube_title": "她偷翻他最寶貝的書被當場撞見，他沒生氣只把書包好，回家老太太卻丟給她一張船票",
+      "duration_s": 115,
+      "logline": "林晚晴藏起外公的紙條，回到老宅卻被要求做她最怕的事：上船。",
+      "hook": "鐵鍊落地，門口站的是他；她把紙條塞進袖口，手裡的書來不及放。他看著油布：「妳看了。」",
+      "hook_type": "danger",
+      "mid_hook": "老太太把一張船票放上長餐桌：「外島的廟要修族譜，廟祝指名晴川。三天。」",
+      "conflict": "她怕船、怕海、怕離開岸邊三天；謝家的規矩說媳婦要能上船。",
+      "turn": "她以為他會發火，他只是把油布重新包好，說：「揭不開，正常。」沒問她看了什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她說：「我不去。」老太太把船票推到她面前：「明早七點。」長餐桌兩端，沒有人說話。",
+        "question": "她會上那艘船嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "fenli",
+        "lache"
+      ],
+      "spectacle": "長餐桌正中一張小小的船票，兩端的人影在燈下拉得很長。",
+      "glamour_shot": "謝廷舟站在倉庫門口逆光，晨光勾出他的肩線，低頭看那本書時長睫毛壓住了眼神。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他沒有追究她偷看那本書"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-laotaitai",
+        "xie-tingye"
+      ],
+      "locations": [
+        "船廠倉庫",
+        "謝家老宅長餐桌"
+      ],
+      "state": {
+        "time": "第二季第 16 天，晚飯",
+        "knowledge": "她知道自己被要求上船去外島三天。",
+        "carry_forward": "袖口裡的紙條；明早七點的船票；第四條與第七條還在牆上。"
+      }
+    },
+    {
+      "number": 82,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "我陪",
+      "youtube_title": "怕海的她當眾拒絕上船，冷面老公只說了兩個字，當晚親手撕下牆上兩條合約交到她手裡",
+      "duration_s": 120,
+      "logline": "林晚晴想守住岸，他替她把合約上兩條路都拆了。",
+      "hook": "她還沒起身，他在長桌那端放下杯子：「我陪。」廷野嘴裡的湯噴了出來。",
+      "hook_type": "line",
+      "mid_hook": "走廊牆前，他把第四條和第七條一起撕下來，放在她手心：「陪妳去，這兩條會違。」",
+      "extra_hooks": [
+        "小魚在電話那頭尖叫：「他撕的？他自己撕的？」"
+      ],
+      "conflict": "上船就要違約：對外是夫妻要變成真的同行，不干涉工作要變成他去她的工作。",
+      "turn": "她以為他會拿規矩壓她，他卻先把規矩撕了，讓她不用違約。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "清晨碼頭，汽笛響了；她停在登船板前，他伸出手，手心向上，不抓她：「妳自己來。」",
+        "question": "她會把手放進他手裡嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "lache"
+      ],
+      "spectacle": "走廊牆上十二條合約，兩條紙被撕下的空白格子，像兩扇打開的窗。",
+      "glamour_shot": "謝廷舟在走廊燈下撕下紙條，扣好的袖口一動不動，把紙放進她手心時指尖沒有碰到她。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "合約第四條、第七條被撕",
+        "他答應陪她上船"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-laotaitai",
+        "xie-tingye",
+        "xiao-yu"
+      ],
+      "locations": [
+        "謝家老宅長餐桌",
+        "謝家老宅走廊",
+        "潮嶼碼頭"
+      ],
+      "state": {
+        "time": "第二季第 17 天，清晨",
+        "knowledge": "她知道他是為了讓她不必違約才自己撕的。",
+        "carry_forward": "牆上少了兩條；登船板；他伸出的手。"
+      }
+    },
+    {
+      "number": 83,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "你話好多",
+      "youtube_title": "一輩子話少的冷面總裁在船上講了一整路，她閉著眼聽完只說你話好多，他回了兩個字",
+      "duration_s": 130,
+      "logline": "林晚晴閉著眼撐過一趟航程，他用一生最多的話替她撐著。",
+      "hook": "她的手放上去，閉上眼跨過登船板；他的聲音在耳邊：「左腳。右腳。到了。」",
+      "hook_type": "image",
+      "mid_hook": "她閉著眼：「你話好多。」他：「妳怕。」停了半拍：「我媽也怕。小時候，我這樣陪她。」",
+      "extra_hooks": [
+        "浪一晃，她一把抓住他的袖子；他沒抽開，繼續數下一座島的名字。"
+      ],
+      "conflict": "一小時的海；她能做的只有閉眼，他能做的只有說話。",
+      "turn": "她以為他在背資料，原來他是從小學會的：陪一個怕海的人，就是一直說話。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "船到一半，引擎突然停了；他的聲音也停了，起身去看。四周只剩浪拍船身的聲音，她一個人閉著眼。",
+        "question": "船為什麼停在海中間？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "lache",
+        "fenli"
+      ],
+      "spectacle": "海中央一艘小客船的空拍，船上兩個人影並肩坐著，四周是一望無際的灰藍。",
+      "glamour_shot": "謝廷舟側身對著閉眼的她說話，海風吹亂他的額髮，嘴唇在動，眼睛一直看著她。",
+      "setups": [],
+      "payoffs": [
+        "s02-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次撐過一段航程",
+        "知道他母親也怕海"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou"
+      ],
+      "locations": [
+        "潮嶼碼頭",
+        "去外島的船上"
+      ],
+      "state": {
+        "time": "第二季第 17 天，上午",
+        "knowledge": "她知道他母親怕海，他從小陪母親說話。",
+        "carry_forward": "停在海中間的引擎；袖子上她抓皺的那一塊。"
+      }
+    },
+    {
+      "number": 84,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "一間房",
+      "youtube_title": "船停在海中間他邊修邊數秒陪她，上了外島廟祝卻笑著說少爺少奶奶只有一間房",
+      "duration_s": 115,
+      "logline": "林晚晴熬過海，到了外島，卻要和他在一間房裡過三夜。",
+      "hook": "他的聲音回來了：「漁網纏到螺旋槳。十分鐘。」然後他真的開始數：「一、二……」",
+      "hook_type": "line",
+      "mid_hook": "廟祝阿蘭婆笑咪咪推開一扇門：「謝家少爺少奶奶，一間房，備好了。」房裡一張床。",
+      "conflict": "合約寫同住不同房，外島只有一間；她要守約，也要守住自己的臉。",
+      "turn": "他一句話沒說，先把草蓆攤在地上；她準備好的一長串抗議全用不上。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿蘭婆搬出族譜，翻開第一頁捐獻名錄，二十年裡每一年都有同一個名字：謝懷山。",
+        "question": "謝家的名字為什麼在外島的族譜裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "lache"
+      ],
+      "spectacle": "外島山腳的老廟，紅牆與香煙，背後是一整面沒有海的青山。",
+      "glamour_shot": "林晚晴站在廟門口，風吹起棉麻洋裝的裙角，她回頭對他翻了個白眼，卻沒藏住笑。",
+      "setups": [
+        "s02-t18",
+        "s02-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "平安抵達外島"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "s02-miaozhu"
+      ],
+      "locations": [
+        "去外島的船上",
+        "外島老廟",
+        "廟裡的客房"
+      ],
+      "state": {
+        "time": "第二季第 17 天，午後",
+        "knowledge": "她知道外島的族譜裡有謝懷山的名字，每年都有。",
+        "carry_forward": "一間房、一張床、一張草蓆；族譜蟲蛀了一半。"
+      }
+    },
+    {
+      "number": 85,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "最後一班船",
+      "youtube_title": "她一頁一頁補好被蟲蛀的族譜，廟祝看著她的手說像一個姑娘，颱風前最後一班船只剩一小時",
+      "duration_s": 125,
+      "logline": "林晚晴要修完族譜，也要決定今晚走不走。",
+      "hook": "她的指尖一行一行劃過：謝懷山，捐燈油；謝懷山，捐燈油；二十年，一年不缺。",
+      "hook_type": "question",
+      "mid_hook": "阿蘭婆看她補紙的手：「妳的手，像以前一個姑娘。也是修書的。」說完轉身去點香。",
+      "extra_hooks": [
+        "她把一張補紙浸進米漿，蟲蛀的洞一個一個合起來，族譜上的名字重新連成一行。"
+      ],
+      "conflict": "族譜修到一半，颱風要來；走，就修不完，也問不到那個姑娘是誰。",
+      "turn": "她以為他會替她決定，他只把兩張船票放在她手邊：「妳選。我都在。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "碼頭廣播：颱風前最後一班船，一小時後開。她看看族譜，看看船票，再看他。",
+        "question": "她要走，還是留下來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fenli",
+        "lache"
+      ],
+      "spectacle": "米漿裡的補紙貼上蟲蛀的族譜，一個洞一個洞合起來的微距延時。",
+      "glamour_shot": "林晚晴低頭補紙，鉛筆別在髮間，米漿沾在指尖，專注得連阿蘭婆走近都沒發現。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "族譜修好一半"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "s02-miaozhu"
+      ],
+      "locations": [
+        "外島老廟"
+      ],
+      "state": {
+        "time": "第二季第 18 天，傍晚",
+        "knowledge": "她知道以前有一個修書的姑娘來過這座廟。",
+        "carry_forward": "最後一班船；兩張船票；那個姑娘是誰。"
+      }
+    },
+    {
+      "number": 86,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "停電",
+      "youtube_title": "颱風夜她選擇留在外島，停電後只剩一間房和海浪聲，她說了一句說話，他講了一整夜",
+      "duration_s": 130,
+      "logline": "林晚晴留下來了，可是颱風夜裡的海聲比白天的海更可怕。",
+      "hook": "她把船票撕了一張：「修完再走。」窗外第一陣風打上來，燈閃了兩下，全黑。",
+      "hook_type": "image",
+      "mid_hook": "黑裡她在床上，他在地上；她小聲說：「說話。」他開始說，說到他母親睡前哼的一首歌。",
+      "conflict": "她怕的不是黑，是海的聲音；他能給的只有聲音。",
+      "turn": "她的手垂到床沿，他的手從地上抬起來，在黑裡停在一寸外，誰都沒動。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "兩隻手差一寸的那一秒，燈啪地亮了。兩個人同時看著那一寸，誰都沒收回去。",
+        "question": "那一寸，誰會先過去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "fenli"
+      ],
+      "spectacle": "停電的客房，窗外颱風的雨橫著打，屋裡只有兩個人呼吸的輪廓；燈一亮，兩隻手在畫面正中。",
+      "glamour_shot": "謝廷舟仰躺在草蓆上看天花板說話，黑暗裡只有他乾淨的下顎線與一點點喉結的輪廓。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她選擇留下把族譜修完"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou"
+      ],
+      "locations": [
+        "廟裡的客房"
+      ],
+      "state": {
+        "time": "第二季第 18 天，颱風夜",
+        "knowledge": "她知道他記得母親睡前哼的歌。",
+        "carry_forward": "燈亮了，那一寸還在；族譜剩最後幾頁。"
+      }
+    },
+    {
+      "number": 87,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "看人準",
+      "youtube_title": "燈亮那秒兩人同時縮手，隔天廟祝笑說老太太早就打電話交代只給一間房，她才知道被算計了",
+      "duration_s": 115,
+      "logline": "林晚晴想證明這段婚姻是假的，外島的廟祝一眼就不信。",
+      "hook": "燈亮，兩隻手同時縮回；她大聲：「燈亮了！真好！」他對著天花板：「嗯。」",
+      "hook_type": "reversal",
+      "mid_hook": "早上阿蘭婆端粥：「老太太電話裡交代的，只給一間。」她嘴裡的粥差點噴出來。",
+      "extra_hooks": [
+        "阿蘭婆看著兩個人：「你們不像假的。」她：「合約的。」阿蘭婆：「我點了四十年燈，看人準。」"
+      ],
+      "conflict": "她要守住「合約的」這三個字，連一個外人都說服不了。",
+      "turn": "一間房不是巧合，是老太太安排的；而他前一晚在電話裡就知道了，還是先攤了草蓆。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿蘭婆帶她走上樓梯，停在燈堂門口：「謝家點的那盞，在裡面。」她回頭：「妳要看嗎？」",
+        "question": "謝家二十年點的燈為了誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "lache"
+      ],
+      "spectacle": "颱風過後的外島清晨，廟頂的瓦還滴著水，遠山一層一層出霧。",
+      "glamour_shot": "林晚晴捧著粥碗被嗆紅了臉，瞪著他；他低頭喝粥，耳尖紅了一點。",
+      "setups": [],
+      "payoffs": [
+        "s02-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道一間房是老太太安排的"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "s02-miaozhu",
+        "xie-laotaitai"
+      ],
+      "locations": [
+        "廟裡的客房",
+        "外島老廟",
+        "燈堂門口"
+      ],
+      "state": {
+        "time": "第二季第 19 天，早晨",
+        "knowledge": "她知道老太太在撮合；知道謝家在這座廟點了一盞燈。",
+        "carry_forward": "燈堂裡那盞謝家的燈；族譜剩最後一頁。"
+      }
+    },
+    {
+      "number": 88,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "望川平安",
+      "youtube_title": "她走進燈堂看見謝家點了二十年的長明燈，牌位上寫的不是人名，是一艘船的名字",
+      "duration_s": 125,
+      "logline": "林晚晴想知道謝懷山為誰點燈，答案是一條她從沒聽過的船。",
+      "hook": "燈堂裡上百盞小燈，阿蘭婆指著最角落一盞，燈牌上四個字：「望川平安」。",
+      "hook_type": "image",
+      "mid_hook": "阿蘭婆：「懷山每年託人點，二十年。望川是一條船的名字。別的，我不說。」",
+      "conflict": "族譜裡的名字有了答案，答案卻變成一個更大的問題。",
+      "turn": "她以為謝懷山是替妻子點燈，燈牌上寫的卻是一條船。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "族譜補完，她翻到最後一頁，阿蘭婆自己寫的一行小字：「望川那夜，有人沒回來。」",
+        "question": "望川那夜，沒回來的是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "chenjing",
+        "fenli"
+      ],
+      "spectacle": "燈堂裡上百盞小燈的暖光，鏡頭慢慢推近角落一盞，燈牌上的字在火光裡晃。",
+      "glamour_shot": "林晚晴站在燈堂中央，上百盞燈的光從下方照亮她的臉，眼睛裡全是火點。",
+      "setups": [],
+      "payoffs": [
+        "s02-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "族譜修完",
+        "知道謝懷山二十年為「望川」點燈"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "s02-miaozhu"
+      ],
+      "locations": [
+        "外島老廟燈堂"
+      ],
+      "state": {
+        "time": "第二季第 19 天，下午",
+        "knowledge": "她知道有一條叫望川的船，有人在那一夜沒回來。",
+        "carry_forward": "望川；有人沒回來；她要不要問他。"
+      }
+    },
+    {
+      "number": 89,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "我在",
+      "youtube_title": "她拿出外公留給他的紙條問等誰，冷面總裁在廟前看著沒有海的那面山，第一次說了兩個字",
+      "duration_s": 135,
+      "logline": "林晚晴問了兩個問題：望川是什麼、外公要他等誰；他只回答得了一個。",
+      "hook": "她問：「望川是什麼？」他看著山很久：「回去，我查。」沒有說不知道。",
+      "hook_type": "question",
+      "mid_hook": "她把袖口裡那張紙條攤在石階上：「外公要你等誰？」他看了紙條很久：「等妳修好。」",
+      "conflict": "她怕他騙她，更怕他不騙她；兩個問題的答案都會把她推得更近。",
+      "turn": "她以為他會躲，他把紙條摺好還給她，說了第一句沒有用合約包起來的話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "廟前石階上，他看著那面沒有海的山：「我在。」她轉頭看他，他沒轉過來；她的頭差一點靠上他的肩。",
+        "question": "「我在」是什麼意思？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "fenli"
+      ],
+      "spectacle": "外島廟前的石階對稱構圖，兩個人坐在中央，背對海，面向一整面月光下的青山。",
+      "glamour_shot": "謝廷舟坐在石階上，月光從他的眉骨落到鼻樑，說「我在」之前停了半拍，喉結動了一下。",
+      "setups": [],
+      "payoffs": [
+        "s02-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次說「我在」"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou"
+      ],
+      "locations": [
+        "外島老廟前的石階"
+      ],
+      "state": {
+        "time": "第二季第 19 天，夜",
+        "knowledge": "她知道外公要他等她；他說了「我在」。",
+        "carry_forward": "回程的船；她還沒回答第十二條；日記第八頁在行李裡。"
+      }
+    },
+    {
+      "number": 90,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "回程",
+      "youtube_title": "回程船上怕海的她第一次睜眼看海，他說合約那條我超過很久了，船一進港碼頭上站著情敵",
+      "duration_s": 150,
+      "logline": "林晚晴要在回程的船上撐住，也要撐住他那句話。",
+      "hook": "回程的船，她沒有閉眼；她看著海三秒，手抓緊欄杆，然後轉頭看他。",
+      "hook_type": "image",
+      "mid_hook": "他看著前面：「第十二條，二十四小時內告知。我超過很久了。」她的嘴張開，一個字都沒出來。",
+      "extra_hooks": [
+        "她剛要開口，船長的汽笛響了：進港。他的臉一下子收回去，恢復成平常的樣子。"
+      ],
+      "conflict": "她怕海，更怕回答；兩樣都在船上等她。",
+      "turn": "她第一次睜眼看海，不是因為不怕了，是因為她想看他看的方向。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "船靠岸，碼頭上站著顏若溪，手裡一只文件夾；她沒看他，對晚晴揮手：「晚晴，有空吃個飯嗎？」",
+        "question": "顏若溪為什麼找的是她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "fenli",
+        "xiju"
+      ],
+      "spectacle": "回程船頭的長鏡頭：她睜著眼看海，海面閃著光，鏡頭轉到他的側臉，再轉回港口一個小小的人影。",
+      "glamour_shot": "林晚晴迎著海風睜開眼，碎髮貼在臉頰上，圓眼裡映著一整片亮的海，然後轉向他。",
+      "setups": [
+        "s02-t10"
+      ],
+      "payoffs": [
+        "s02-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次睜眼看海",
+        "他承認第十二條早就超時"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "yan-ruoxi"
+      ],
+      "locations": [
+        "回程的船上",
+        "潮嶼碼頭"
+      ],
+      "state": {
+        "time": "第二季第 20 天，中午",
+        "knowledge": "她知道他動了真心而且早就超過了二十四小時；顏若溪要單獨找她。",
+        "carry_forward": "她沒回答的第十二條；顏若溪的文件夾；早餐座位回去後會不會變。"
+      }
+    },
+    {
+      "number": 91,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "隔一個座位",
+      "youtube_title": "外島回來第一頓早餐，冷面老公的盤子又往她身邊挪了一格，情敵卻傳訊息說別告訴他",
+      "duration_s": 105,
+      "logline": "林晚晴答應了顏若溪的飯局，卻不知道該不該讓他知道。",
+      "hook": "碼頭上，她對顏若溪說：「週四。」身邊的他一個字都沒說，只把她的行李換到自己那隻手。",
+      "hook_type": "line",
+      "mid_hook": "隔天早餐，他坐下的位置離她只隔一張椅子；廷野嘴裡塞著蛋：「一趟船，一個座位。」",
+      "extra_hooks": [
+        "老太太低頭喝湯，湯匙停了一下，沒抬頭。"
+      ],
+      "conflict": "外島回來，兩個人的距離近了一格；顏若溪卻在這時候插進來。",
+      "turn": "她以為顏若溪要談他，可是顏若溪的訊息第一句就是：「跟他無關。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "週三深夜，顏若溪傳來最後一則：「別告訴廷舟。」她抬頭，走廊對面的門縫裡，他的燈還亮著。",
+        "question": "她要不要告訴他？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "waitiao",
+        "xiju"
+      ],
+      "spectacle": "早餐桌的俯拍對比：一張椅子的距離，比上一季那張長餐桌的兩端近了一整排。",
+      "glamour_shot": "謝廷舟提著兩只行李走在碼頭上，海風吹開他沒扣的外套，側臉冷靜，步子為了配合她放慢。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "早餐座位從隔兩個移到隔一個"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "yan-ruoxi",
+        "xie-tingye",
+        "xie-laotaitai"
+      ],
+      "locations": [
+        "潮嶼碼頭",
+        "謝家老宅長餐桌",
+        "謝家老宅走廊"
+      ],
+      "state": {
+        "time": "第二季第 22 天，深夜",
+        "knowledge": "她知道顏若溪要說的事跟他無關，還要她瞞著他。",
+        "carry_forward": "週四的飯局；他門縫的燈；日記第八頁晾在燈下，邊緣開始翹。"
+      }
+    },
+    {
+      "number": 92,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "說了一半",
+      "youtube_title": "情敵約她單獨吃飯坦白回潮嶼不是為了他，說到一半卻停住，只丟下一句他比妳早知道",
+      "duration_s": 130,
+      "logline": "林晚晴想聽顏若溪說完，顏若溪只肯說一半。",
+      "hook": "小桌對坐，顏若溪先開口：「我回來，不是為了他。」晚晴的叉子停在半空。",
+      "hook_type": "line",
+      "mid_hook": "「是我父親要我進謝家。」顏若溪看著窗外：「但老太太的意思，我也懂。」然後她不說了。",
+      "conflict": "兩個被安排的女人坐在一張小桌前，都不確定對方是敵人還是同類。",
+      "turn": "她以為顏若溪是來搶人的，顏若溪卻像是來提醒她什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顏若溪起身買單，走到她身邊停下：「有些事，他比妳早知道。」晚晴手裡的湯匙碰上碗緣，叮一聲。",
+        "question": "他比她早知道什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "waitiao",
+        "wuhui"
+      ],
+      "spectacle": "兩個女人隔一張小圓桌對坐的對稱構圖，窗外是潮嶼的夜港，兩盞桌燈各照一張臉。",
+      "glamour_shot": "顏若溪優雅地托著下巴，長髮從絲質襯衫的肩上滑下；晚晴對面挺直背，眼下的小痣在燈下很清楚。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道顏若溪回潮嶼是父親的安排"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "yan-ruoxi"
+      ],
+      "locations": [
+        "潮嶼港邊的小餐館"
+      ],
+      "state": {
+        "time": "第二季第 23 天，週四晚",
+        "knowledge": "她知道顏若溪是被父親派進謝家的，也知道有件事他比她早知道。",
+        "carry_forward": "顏若溪沒說的另一半；「他比妳早知道」。"
+      }
+    },
+    {
+      "number": 93,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "合約上",
+      "youtube_title": "她第一次主動問他對顏家婚事怎麼想，冷面總裁說我已經結婚了，她心跳停一拍，他又補了三個字",
+      "duration_s": 110,
+      "logline": "林晚晴第一次主動問了，答案先把她捧起來，又把她摔回走廊。",
+      "hook": "她一路跑回老宅，在走廊攔住他，喘著氣：「顏家的事，你怎麼想？」",
+      "hook_type": "question",
+      "mid_hook": "他看著她：「我已經結婚了。」她的手指鬆開門框。他補一句：「合約上。」",
+      "conflict": "她用掉了「可以問」的勇氣，換來一句她聽不懂的話。",
+      "turn": "她把「合約上」聽成「只是合約」；他說的其實是「我不會拿合約綁妳」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她說：「好。」轉身；他也轉身。兩扇門在同一秒關上，走廊裡只響了一聲。",
+        "question": "「合約上」到底是什麼意思？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "wuhui",
+        "lache"
+      ],
+      "spectacle": "走廊正中的對稱構圖：兩扇門同時關上，牆上合約少了兩條的空格在中間。",
+      "glamour_shot": "謝廷舟站在走廊燈下，說「我已經結婚了」時直視她，說「合約上」時移開了眼睛。",
+      "setups": [
+        "s02-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou"
+      ],
+      "locations": [
+        "謝家老宅走廊"
+      ],
+      "state": {
+        "time": "第二季第 23 天，深夜",
+        "knowledge": "她以為他的意思是：這只是合約。",
+        "carry_forward": "兩扇同時關上的門；走廊燈第一次沒人管。"
+      }
+    },
+    {
+      "number": 94,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "退回兩格",
+      "youtube_title": "早餐她把盤子往後挪回兩個座位，全桌都看見了，他沒動，管家卻悄悄說了少爺那句話的另一半",
+      "duration_s": 115,
+      "logline": "林晚晴退回她以為安全的距離，所有人都看見了，只有他不動。",
+      "hook": "早餐，她端著盤子，在他旁邊空著的那張椅子前停了一秒，往後坐了兩格。",
+      "hook_type": "image",
+      "mid_hook": "周姨收碗時在她耳邊：「少爺說『合約上』，是怕妳覺得被綁住。」她笑了笑：「周姨，您想多了。」",
+      "extra_hooks": [
+        "廷野在桌下傳訊息給小魚：「倒退了。」小魚秒回：「我殺過去。」"
+      ],
+      "conflict": "她要退回安全的地方；可是全家都在看，退本身就是一句話。",
+      "turn": "周姨把答案說了一半，她不信；她寧可相信是合約，比相信是真的容易。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蔡伯打來，聲音壓得很低：「少奶奶，顏家的人來船廠了，指名要看船塢。」電話那頭有皮鞋聲靠近。",
+        "question": "顏家的人要在船塢找什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "wuhui",
+        "waitiao",
+        "xiju"
+      ],
+      "spectacle": "早餐桌的俯拍：兩張空椅子橫在兩人中間，像上一季那條長餐桌又長了回來。",
+      "glamour_shot": "林晚晴端著盤子低頭坐下，嘴角掛著笑，眼睛卻沒看任何人；陽光打在她齊肩的黑髮上。",
+      "setups": [
+        "s02-t23"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "zhou-yi",
+        "xie-tingye",
+        "xiao-yu",
+        "xie-laotaitai",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "謝家老宅長餐桌"
+      ],
+      "state": {
+        "time": "第二季第 24 天，早上",
+        "knowledge": "她聽了周姨的話，選擇不信。",
+        "carry_forward": "倒退的兩個座位；顏家的人在船廠。"
+      }
+    },
+    {
+      "number": 95,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "同一個托盤",
+      "youtube_title": "顏家秘書闖船廠打聽一艘舊船，當晚管家把兩份宵夜放上同一個托盤，兩扇門同時打開",
+      "duration_s": 125,
+      "logline": "林晚晴想擋住顏家的人，回到老宅又被周姨擋進同一個托盤前。",
+      "hook": "船廠，戴金錶的柯秘書笑著對蔡伯：「那艘，還在吧？」蔡伯擋在船塢入口：「在修。」",
+      "hook_type": "danger",
+      "mid_hook": "深夜走廊正中，一個托盤，兩碗湯；兩扇門同時打開，兩個人同時彎腰。",
+      "extra_hooks": [
+        "周姨在樓梯口小聲：「少爺小時候，我也這樣放：他和他媽媽，一個盤。」"
+      ],
+      "conflict": "兩個人都在躲，一個托盤讓他們躲不了。",
+      "turn": "他們坐在走廊地上喝湯，誰都不提那三個字，卻是十天來第一次並排坐著。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他的手機在地上亮起來，她看見訊息預覽：柯秘書：「顏董想看看『望川』。」他把手機翻了過去。",
+        "question": "顏家為什麼也知道望川？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "waitiao",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "走廊正中一個木托盤，兩碗湯冒著熱氣，兩扇門的光從兩邊照到托盤上交會。",
+      "glamour_shot": "兩個人並排坐在走廊地上，他長腿屈著，她抱膝捧碗；走廊燈從上面落下，兩個側影一模一樣地低著頭。",
+      "setups": [
+        "s02-t11"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蔡伯擋下顏家的人",
+        "兩個人在走廊並排坐了一次"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "zhou-yi",
+        "s02-cai-bo",
+        "s02-ke-mishu"
+      ],
+      "locations": [
+        "船塢入口",
+        "謝家老宅走廊"
+      ],
+      "state": {
+        "time": "第二季第 24 天，深夜",
+        "knowledge": "她知道顏家也在找望川。",
+        "carry_forward": "翻過去的手機；「望川」兩個字；兩碗喝完的湯。"
+      }
+    },
+    {
+      "number": 96,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "合約太太",
+      "youtube_title": "顏家秘書笑她合約太太也修書，她當著他的面三分鐘補好一頁破書，當晚倉庫的櫃子被翻開",
+      "duration_s": 120,
+      "logline": "林晚晴要守住船廠倉庫的書，顏家的人卻在找倉庫裡的另一樣東西。",
+      "hook": "她問：「望川是什麼？」他沒躲：「我在查。」停了半拍：「查到，先告訴妳。」",
+      "hook_type": "line",
+      "mid_hook": "柯秘書站在她的工作桌前：「合約太太也修書？」她拿起一頁破紙，三分鐘補好，推到他面前：「修好了。您呢？」",
+      "conflict": "顏家的人以參觀為名在倉庫走動，眼睛一直看著最裡面那排檔案櫃。",
+      "turn": "柯秘書被她頂得說不出話，轉身問蔡伯的卻是：「船名冊還在嗎？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡蔡伯開倉庫門，手電筒一照：最裡面的檔案櫃抽屜全拉開了，紙散了一地。",
+        "question": "誰翻了倉庫？船名冊還在嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "wuhui",
+        "waitiao"
+      ],
+      "spectacle": "倉庫的手電筒光束掃過拉開的檔案櫃，散了一地的舊文件上浮著灰塵。",
+      "glamour_shot": "林晚晴抬起下巴把補好的紙推過去，指尖的金粉在燈下一閃，笑得很甜也很硬。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "當面頂回顏家秘書",
+        "他答應查到望川先告訴她"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "s02-ke-mishu",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "謝家老宅走廊",
+        "船廠倉庫"
+      ],
+      "state": {
+        "time": "第二季第 25 天，夜",
+        "knowledge": "她知道顏家在找望川的船名冊。",
+        "carry_forward": "被翻亂的檔案櫃；船名冊不知道在不在；日記第八頁只差最後一角。"
+      }
+    },
+    {
+      "number": 97,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "第八頁",
+      "youtube_title": "她揭開外公日記第八頁，上面寫著那艘船叫望川，出港的日子和母親失蹤那天的船票同一天",
+      "duration_s": 135,
+      "logline": "林晚晴想知道望川是什麼，外公的日記先替她回答了一半。",
+      "hook": "蔡伯蹲在散亂的文件裡翻了一遍，抬頭：「名冊不在這。少爺很早就移走了。」",
+      "hook_type": "reversal",
+      "mid_hook": "她回老宅揭開第八頁，外公的字浮出來：「那艘船叫望川。那天夜裡出港。」",
+      "conflict": "她握著第八頁和那張票根，第一次不敢把兩樣東西放在一起。",
+      "turn": "她把票根放在第八頁旁邊：同一天。母親消失的那一夜，望川出港。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把票根壓在「望川」兩個字旁邊，手在抖；走廊對面他敲了兩下門：「睡了嗎？」她沒有回答。",
+        "question": "她敢告訴他自己查到了什麼嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chenjing"
+      ],
+      "spectacle": "燈下第八頁揭開，「望川」兩個字從水漬裡浮出來，旁邊放著一張褪色的票根，日期對日期。",
+      "glamour_shot": "林晚晴在燈下屏住呼吸揭開那一頁，睫毛不動，唇抿成一條線，金粉在指尖發亮。",
+      "setups": [
+        "s02-t12"
+      ],
+      "payoffs": [
+        "s02-t25"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "日記修開第八頁：那艘船叫望川"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "s02-cai-bo",
+        "waigong"
+      ],
+      "locations": [
+        "船廠倉庫",
+        "老宅工作間"
+      ],
+      "state": {
+        "time": "第二季第 25 天，深夜",
+        "knowledge": "她知道母親消失那一夜，望川出港。",
+        "carry_forward": "名冊被他移走了；門外那兩下敲門。"
+      }
+    },
+    {
+      "number": 98,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "另一半",
+      "youtube_title": "情敵再約她見面說完了另一半：我父親在找一本船名冊，妳離它遠一點，她卻決定比顏家先拿到",
+      "duration_s": 120,
+      "logline": "林晚晴從顏若溪那裡拿到警告，也拿到了方向。",
+      "hook": "門外安靜了很久，一張紙從門縫塞進來，他的字：「醒了，叫我。」",
+      "hook_type": "image",
+      "mid_hook": "顏若溪在海堤邊等她：「我父親在找一本船名冊。妳離它遠一點。」停了一下：「我不想再有人出事。」",
+      "conflict": "所有人都叫她離望川遠一點；那是她母親最後去的地方。",
+      "turn": "她以為顏若溪是顏家的眼睛，顏若溪卻是來替她擋的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蔡伯說：「名冊在少爺的檔案室。鑰匙，只有他有。」她看著手機上他的名字，拇指停在撥號鍵上。",
+        "question": "她要開口跟他要鑰匙嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "waitiao",
+        "ganren"
+      ],
+      "spectacle": "潮嶼海堤的長鏡頭，兩個女人背對城市面對海，一個看海、一個看她。",
+      "glamour_shot": "顏若溪站在海堤上，長髮被海風往後吹，西裝褲筆挺，看著晚晴的眼神第一次沒有客氣。",
+      "setups": [],
+      "payoffs": [
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顏若溪站到她這一邊"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "yan-ruoxi",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "晚晴的房間門口",
+        "潮嶼海堤"
+      ],
+      "state": {
+        "time": "第二季第 26 天",
+        "knowledge": "她知道顏父在找船名冊，名冊在他的檔案室。",
+        "carry_forward": "顏家明晚來老宅談併購；鑰匙在他手上。"
+      }
+    },
+    {
+      "number": 99,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "妳的位置",
+      "youtube_title": "顏家父女上門談併購，老太太把情敵安排在他身邊，他起身拉開另一張椅子：妳的位置",
+      "duration_s": 140,
+      "logline": "林晚晴以為「合約上」就是全部，他當著顏家用一個動作改了答案。",
+      "hook": "晚飯前，她在書房門口開口：「檔案室的鑰匙。」他從口袋拿出來，放在她手心，什麼都沒問。",
+      "hook_type": "reversal",
+      "mid_hook": "顏家入座，周姨照老太太的安排把顏若溪的碗放在他旁邊；他站起來，拉開另一側的椅子，看著晚晴：「妳的位置。」",
+      "extra_hooks": [
+        "顏父笑著提併購，他放下筷子：「船廠不併。」整桌安靜。"
+      ],
+      "conflict": "顏家帶著併購案與聯姻案一起上桌，所有人都在等他選。",
+      "turn": "他沒說一句「她是我太太」，只拉開一張椅子；她坐下時，兩個人之間一張空椅子都沒有了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "顏父擦了擦金絲眼鏡，笑容更滿：「廷舟，二十年前的事，你父親沒跟你說？」老太太的鐲子碰上桌面。",
+        "question": "顏父說的二十年前是什麼事？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "wuhui",
+        "waitiao",
+        "ganren"
+      ],
+      "spectacle": "長餐桌的全景：顏家坐一側、謝家坐一側，他起身拉開椅子的那一格，全桌的目光跟著椅子移動。",
+      "glamour_shot": "謝廷舟站著拉開椅子，袖口扣好，手搭在椅背上等她，說「妳的位置」前停了半拍。",
+      "setups": [],
+      "payoffs": [
+        "s02-t13",
+        "s02-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他當著顏家選了她的位置",
+        "拒絕顏家併購",
+        "她拿到檔案室鑰匙"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "yan-fu",
+        "yan-ruoxi",
+        "xie-laotaitai",
+        "zhou-yi",
+        "xie-tingye"
+      ],
+      "locations": [
+        "謝家老宅書房",
+        "謝家老宅長餐桌"
+      ],
+      "state": {
+        "time": "第二季第 27 天，晚飯",
+        "knowledge": "她知道「合約上」不是推開她；知道顏父手上握著二十年前的事。",
+        "carry_forward": "口袋裡的鑰匙；顏父的那句話；她坐在他旁邊，第一次沒有空椅子。"
+      }
+    },
+    {
+      "number": 100,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "名冊",
+      "youtube_title": "顏父當眾逼問二十年前的事，他只答一個字，深夜她打開檔案室的船名冊，看見母親的名字",
+      "duration_s": 160,
+      "logline": "林晚晴拿著他給的鑰匙，去找一本可能毀掉這個家的名冊。",
+      "hook": "全桌等著，他看著顏父：「說了。」顏父的笑停了一秒。",
+      "hook_type": "line",
+      "mid_hook": "深夜檔案室，她翻開泛黃的船名冊，指尖停在一行：望川，謝家船運，二十年前那一夜出港。",
+      "extra_hooks": [
+        "船主那一欄：謝懷山。她的手指往下移了一行。"
+      ],
+      "conflict": "她要知道真相，又怕真相裡有他的家人。",
+      "turn": "她以為會看到一個陌生人的名字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "押運文書那一欄，清清楚楚三個字：林書儀。她母親的名字。檔案室的燈嗡了一聲。",
+        "question": "母親為什麼在謝家的船上？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "wuhui",
+        "chenjing"
+      ],
+      "spectacle": "檔案室裡一盞吊燈下泛黃的船名冊，指尖一行一行往下移，最後停在三個字上的微距。",
+      "glamour_shot": "林晚晴站在檔案室的吊燈下，臉被冷光照得很白，眼睛睜大，鉛筆從髮間掉下來落在名冊上。",
+      "setups": [],
+      "payoffs": [
+        "s02-t12",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "找到望川的船名冊"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "yan-fu",
+        "xie-laotaitai"
+      ],
+      "locations": [
+        "謝家老宅長餐桌",
+        "船廠檔案室"
+      ],
+      "state": {
+        "time": "第二季第 27 天，深夜",
+        "knowledge": "她知道望川是謝家的船，船主是謝懷山，押運文書是她母親。",
+        "carry_forward": "母親的名字；他那一個字「說了」；他早就知道多少。"
+      }
+    },
+    {
+      "number": 101,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "第一句謊",
+      "youtube_title": "她在船名冊上看見母親的名字卻不敢問，早餐他默默替她剝好蛋，她還鑰匙時第一次對他說謊",
+      "duration_s": 115,
+      "logline": "林晚晴握著母親的名字，坐在他身邊，一個字都問不出口。",
+      "hook": "她把名冊那一頁拍下來，原樣放回，鎖門；鑰匙在她手心被握得發燙。",
+      "hook_type": "image",
+      "mid_hook": "早餐，她坐在他身邊，粥一口沒動；他沒問，把剝好的蛋放進她碗裡，又把她那碗粥往她面前推了一寸。",
+      "extra_hooks": [
+        "露台那面霧面玻璃後，海是一片模糊的藍；她看著那片藍，想的是母親上船的那一夜。"
+      ],
+      "conflict": "日記讀得越多，她越不敢問他；母親的名字就在謝家的船上。",
+      "turn": "她以為只要不問就安全；可是他沒問的每一件事，都在替她留路。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把鑰匙還給他。他接過：「找到了？」她笑：「沒有。」那是她第一次騙他。他看了她三秒，說：「好。」",
+        "question": "她為什麼要騙他？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xijiechong",
+        "ganren"
+      ],
+      "spectacle": "露台霧面玻璃後的海，一片沒有邊的模糊藍，前面是她一個小小的背影。",
+      "glamour_shot": "謝廷舟低頭剝蛋，修長的手指把蛋殼剝得一片不碎，放進她碗裡時眼睛沒抬。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "早餐座位已經相鄰"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou"
+      ],
+      "locations": [
+        "船廠檔案室",
+        "謝家老宅長餐桌",
+        "謝家老宅露台"
+      ],
+      "state": {
+        "time": "第二季第 28 天",
+        "knowledge": "她知道母親在望川上；她騙他說沒找到。",
+        "carry_forward": "手機裡那張名冊照片；他那句「好」；日記第九頁開始鬆動。"
+      }
+    },
+    {
+      "number": 102,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "第一天",
+      "youtube_title": "她不敢問他只敢問管家，霧面玻璃到底為什麼換，管家說出她搬進來第一天深夜他做的事",
+      "duration_s": 140,
+      "logline": "林晚晴繞過他去問周姨一件小事，問出了這個家最大的一件溫柔。",
+      "hook": "她把話吞回去，轉身去廚房：「周姨，露台的玻璃，什麼時候換的？」周姨洗碗的手停了。",
+      "hook_type": "question",
+      "mid_hook": "周姨擦乾手：「妳來第一天，抓著門框。少爺看見了。當晚，就叫人換了。」",
+      "extra_hooks": [
+        "回憶剪影：半夜的雨，工人在梯子上換玻璃，他站在梯子下面扶著，淋了一整夜。"
+      ],
+      "conflict": "她一直以為那面玻璃是巧合、是謝家的習慣；她從來沒想過要問。",
+      "turn": "那不是合約的一部分，是他看見她害怕的那一秒，就決定的事；而他從沒說過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她走到露台，霧面玻璃上有一個小小的窗栓，打開就是真的海；她的手放上窗栓，指節發白。",
+        "question": "她敢打開那扇窗看海嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xijiechong"
+      ],
+      "spectacle": "雨夜的回憶剪影：一面透明玻璃被換成霧面，海在玻璃後一格一格變模糊，梯子下站著一個濕透的人。",
+      "glamour_shot": "回憶裡的謝廷舟站在雨裡扶著梯子，襯衫濕透仍扣到第二顆，抬頭看玻璃，雨水順著下顎線滴下。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [
+        "m03"
+      ],
+      "general_payoffs": [
+        "她知道霧面玻璃是他為她換的"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "zhou-yi"
+      ],
+      "locations": [
+        "老宅廚房",
+        "謝家老宅露台"
+      ],
+      "state": {
+        "time": "第二季第 28 天，傍晚",
+        "knowledge": "她知道他從第一天就看見她怕海，當晚換了玻璃，一直沒說。",
+        "carry_forward": "窗栓；他快到家了。"
+      }
+    },
+    {
+      "number": 103,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "換回去",
+      "youtube_title": "她知道霧面玻璃的真相後在露台站了一整晚，他回家隔著玻璃看見她，她說了一句我想試",
+      "duration_s": 125,
+      "logline": "林晚晴想自己打開那扇窗，他卻說不急。",
+      "hook": "窗栓沒有轉；她的手鬆開，退了一步。玻璃上映出一道人影：他回來了，站在另一邊。",
+      "hook_type": "image",
+      "mid_hook": "她隔著霧面玻璃：「換回去。我想試。」他的輪廓停了很久：「不急。」",
+      "conflict": "她想證明自己不怕了，可是手還在抖；他不想她為了他逞強。",
+      "turn": "她以為他會高興，他卻怕她硬撐；他要的不是她看海，是她不用怕。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他把手掌貼上霧面玻璃。她看著那個模糊的手印，也把手貼上去，兩隻手只隔一層玻璃。",
+        "question": "隔著玻璃的兩隻手，誰會先繞過去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "chenjing"
+      ],
+      "spectacle": "霧面玻璃的兩側：兩個模糊的輪廓、兩隻貼在同一個位置的手掌，後面是一片看不清的海。",
+      "glamour_shot": "霧面玻璃後謝廷舟的輪廓只剩肩線與側臉的剪影，他把手貼上玻璃時頭微微低下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次說想試著看海"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou"
+      ],
+      "locations": [
+        "謝家老宅露台"
+      ],
+      "state": {
+        "time": "第二季第 28 天，夜",
+        "knowledge": "她知道他寧可她慢慢來。",
+        "carry_forward": "兩隻手掌貼在同一塊玻璃上。"
+      }
+    },
+    {
+      "number": 104,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "妳呢",
+      "youtube_title": "隔著霧面玻璃她問你一直在等我對不對，冷面總裁反問一句妳呢，她還沒答公公那邊就出事了",
+      "duration_s": 120,
+      "logline": "林晚晴終於問了他，他把問題丟回給她。",
+      "hook": "她對著玻璃上的手印：「你一直在等我，對不對？」玻璃那邊安靜了很久。",
+      "hook_type": "question",
+      "mid_hook": "他沒答，只說：「第十二條。妳呢？」她的手從玻璃上滑下來。",
+      "extra_hooks": [
+        "廷野拎著相機衝上露台：「你們在演默劇？」閃光燈一亮，兩個人同時退開一步。"
+      ],
+      "conflict": "她要他先承認，他要她先回答；兩個人都在等對方。",
+      "turn": "她以為自己在問，其實是她被問了；第十二條對她也一樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他的手機響了，是蔡伯：「老廠長出院了。他問，少奶奶去過檔案室？」他抬頭看她。",
+        "question": "謝懷山知道她查到望川了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "lache",
+        "xijiechong"
+      ],
+      "spectacle": "閃光燈在霧面玻璃上炸開一片白，兩個人影各退一步，照片裡只剩兩隻還沒放下的手。",
+      "glamour_shot": "謝廷舟推開露台門走出來，夜風吹動他的額髮，看她的那一眼沒有移開。",
+      "setups": [
+        "s02-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-tingye",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "謝家老宅露台"
+      ],
+      "state": {
+        "time": "第二季第 28 天，深夜",
+        "knowledge": "她知道他也在等她回答第十二條；謝懷山知道她去過檔案室。",
+        "carry_forward": "「妳呢」；她騙他的那句「沒有」被拆穿了一半。"
+      }
+    },
+    {
+      "number": 105,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "名冊沒錯",
+      "youtube_title": "公公出院後找她攤牌：名冊妳看了，名冊沒錯，接著說出一句讓她渾身發冷的話",
+      "duration_s": 130,
+      "logline": "林晚晴去找謝懷山，想要一個答案，只拿到一個更重的問題。",
+      "hook": "他看著她，沒有質問，只說：「我爸要見妳。我送妳去。」",
+      "hook_type": "line",
+      "mid_hook": "船廠宿舍，謝懷山把行李一件件收好：「名冊，妳看了。」她點頭。他說：「名冊沒錯。」",
+      "extra_hooks": [
+        "他在門外等，背靠著牆；她進門前回頭，他說：「我在。」"
+      ],
+      "conflict": "謝懷山知道她母親上了他的船；她要問，他卻說要等他想好怎麼說。",
+      "turn": "她以為謝懷山會否認，他承認了，卻不肯說下去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "謝懷山看著她的手：「妳母親修書的手，跟妳一樣。」她退了半步：「您認識她？」謝懷山閉上眼。",
+        "question": "謝懷山為什麼認識她的母親？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "lache"
+      ],
+      "spectacle": "船廠宿舍的窄房，一扇小窗外是灰海，老人收拾行李的背影，門外一個靠牆站著的身影。",
+      "glamour_shot": "謝廷舟背靠宿舍外的鐵牆，雙手插袋低頭，海風吹起工裝的衣角，側臉安靜得像在等一場判決。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "謝懷山承認名冊記載屬實"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan"
+      ],
+      "locations": [
+        "謝家老宅走廊",
+        "船廠宿舍"
+      ],
+      "state": {
+        "time": "第二季第 29 天",
+        "knowledge": "她知道謝懷山認識她母親，名冊上寫的都是真的。",
+        "carry_forward": "謝懷山要「想好怎麼說」；他在門外說的「我在」。"
+      }
+    },
+    {
+      "number": 106,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "他做過的事",
+      "youtube_title": "她走出宿舍外面正下雨，他撐著傘在門口等，那晚她和閨蜜列出他做過的事，寫了整整兩頁",
+      "duration_s": 115,
+      "logline": "林晚晴想弄清楚這個人到底為她做了多少，結果寫滿了兩頁。",
+      "hook": "她推開宿舍門，外面下著雨，他撐著傘站在台階下，傘往她那邊傾，他的左肩全濕。",
+      "hook_type": "image",
+      "mid_hook": "修復坊裡，小魚念著她的清單：「霧面玻璃、走廊的燈、熱牛奶、咖啡多一份糖、拆箱、倉庫的燈……」停下：「這叫合約？」",
+      "extra_hooks": [
+        "清單寫到第二頁，小魚把筆搶過去，在最上面寫了個標題：「不是合約。」"
+      ],
+      "conflict": "她一直以為他只是盡責；寫下來才發現，盡責不會盡到這種地步。",
+      "turn": "每一件她以為是周姨、是巧合、是謝家規矩的事，筆跡一換，全是他。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她寫下最後一條：「他說：我在。」下一行她寫了個「我：」，筆尖停在紙上，一個字都寫不出來。",
+        "question": "她為他做過什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xijiechong",
+        "lache"
+      ],
+      "spectacle": "雨中船廠宿舍前，一把黑傘斜向一邊，傘下一個人乾的、一個人半邊濕。",
+      "glamour_shot": "林晚晴坐在修復坊工作台前咬著筆桿，燈下側臉專注，眼下的小痣旁沾了一點金粉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她承認他做的不是合約"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xiao-yu"
+      ],
+      "locations": [
+        "船廠宿舍門口",
+        "晴川修復坊"
+      ],
+      "state": {
+        "time": "第二季第 29 天，夜",
+        "knowledge": "她把他做過的事全寫了下來。",
+        "carry_forward": "那張清單；空著的「我：」。"
+      }
+    },
+    {
+      "number": 107,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "一格",
+      "youtube_title": "她瞞著他找師傅把一格霧面玻璃換成透明，看了海三秒抓住的不是門框是他的袖子，師傅卻說少爺早交代過",
+      "duration_s": 125,
+      "logline": "林晚晴想為他做一件事：自己去看海，一格就好。",
+      "hook": "週六上午，露台上站著一個玻璃師傅，她指著角落最小的一格：「這格，換透明。」",
+      "hook_type": "line",
+      "mid_hook": "他回到家，看見那一格透明玻璃，看見她。她說：「我自己換的。一格。」然後轉身看出去。",
+      "extra_hooks": [
+        "三秒，她看見真的海；腿一軟，她抓住的不是門框，是他的袖子。"
+      ],
+      "conflict": "她要自己往前一步，不靠他換、不靠他擋。",
+      "turn": "她抓住的是他，不是門框；她第一次在怕的時候選了一個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "師傅收工具時說：「少爺當初交代過，哪天少奶奶說要換，就全換回去。」他看著師傅：「全換嗎？」她看著他。",
+        "question": "她要把整面玻璃換回透明嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xijiechong",
+        "lache",
+        "ganren"
+      ],
+      "spectacle": "整面霧面玻璃中只有角落一格透明，透明的那一格裡是一小塊清清楚楚的藍海。",
+      "glamour_shot": "林晚晴站在那一格透明玻璃前，陽光從那一格照進來落在她半邊臉上，她咬著唇看出去。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "露台換上第一格透明玻璃",
+        "她第一次在怕的時候抓住他"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou"
+      ],
+      "locations": [
+        "謝家老宅露台"
+      ],
+      "state": {
+        "time": "第二季第 31 天，週六",
+        "knowledge": "她知道他早就安排好：她說換，就換。",
+        "carry_forward": "一格透明；他問的「全換嗎」。"
+      }
+    },
+    {
+      "number": 108,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "第九頁",
+      "youtube_title": "她說一格就好，他卻承認第一天就交代過，那晚她揭開外公日記第九頁，寫的是母親說過的話",
+      "duration_s": 130,
+      "logline": "林晚晴一格一格往前，外公的日記也一頁一頁往前。",
+      "hook": "她說：「一格就好。」轉頭問他：「你交代過？什麼時候？」他：「第一天。」",
+      "hook_type": "question",
+      "mid_hook": "第九頁揭開，外公的字：「書儀說，她女兒怕等。」她的鑷子停在半空。",
+      "extra_hooks": [
+        "她把剩下黏成一塊的日記舉到燈前，透過紙看見最後一頁有兩個簽名。"
+      ],
+      "conflict": "外公認識母親，還記下母親說過的話；她從來不知道。",
+      "turn": "她以為自己怕等是母親走了以後才有的，原來母親那時候就知道了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "燈光透過黏住的紙，最後一頁兩個簽名重疊：一個是外公的，另一個，跟走廊牆上合約見證人的筆畫一樣。",
+        "question": "日記最後一頁的另一個簽名是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "lache"
+      ],
+      "spectacle": "燈下把一整塊黏住的日記舉起來，光從紙的背面透過來，深處兩個簽名一個疊一個地顯形。",
+      "glamour_shot": "林晚晴把日記舉到燈前，燈光從紙後面透到她臉上，睫毛的影子落在臉頰。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "日記修開第九頁"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "waigong"
+      ],
+      "locations": [
+        "謝家老宅露台",
+        "老宅工作間"
+      ],
+      "state": {
+        "time": "第二季第 31 天，深夜",
+        "knowledge": "她知道外公認識母親，母親說過她怕等；日記最後一頁有兩個簽名。",
+        "carry_forward": "兩個簽名；走廊牆上的合約見證人一欄。"
+      }
+    },
+    {
+      "number": 109,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "草稿",
+      "youtube_title": "她想回答他那句妳呢，寫了十幾張草稿全撕掉，老太太把她叫進書房說我等你們兩個等了四個月",
+      "duration_s": 120,
+      "logline": "林晚晴要回答第十二條，她修得好一本書，卻寫不好一句話。",
+      "hook": "她站在走廊牆前，對著合約見證人那一欄的簽名，跟第九頁透出來的筆畫比了一次，又一次。",
+      "hook_type": "image",
+      "mid_hook": "地上十幾張揉爛的紙；小魚撿起一張念：「我好像……」廷野搶過另一張：「如果你也……」兩人同時喊：「爛！」",
+      "extra_hooks": [
+        "老太太把她叫進書房，轉著鐲子：「我等妳們兩個，等了四個月。」"
+      ],
+      "conflict": "她要回答一句一輩子沒說過的話：「留下。」",
+      "turn": "她以為要寫一句很長的告白，最後發現自己要的只是不再假裝不能問。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "深夜，她拿著筆站在合約前，第一條的位置只剩一道撕過的殘邊；她的指甲扣住那道殘邊。",
+        "question": "她要怎麼回答他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "lache",
+        "xijiechong"
+      ],
+      "spectacle": "走廊地板上十幾團揉爛的紙，鏡頭拉起來，中央一個抱著膝的女孩和牆上的合約。",
+      "glamour_shot": "謝老太太坐在書房深紫的旗袍裡，銀髮盤髻，翡翠鐲在燈下轉了一圈，嘴角第一次沒壓住。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老太太親口承認在等兩人"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xiao-yu",
+        "xie-tingye",
+        "xie-laotaitai"
+      ],
+      "locations": [
+        "謝家老宅走廊",
+        "謝家老宅書房"
+      ],
+      "state": {
+        "time": "第二季第 32 天，深夜",
+        "knowledge": "她知道老太太一直在等；她知道自己要寫什麼了。",
+        "carry_forward": "第一條的殘邊；他明早回來。"
+      }
+    },
+    {
+      "number": 110,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "可以問",
+      "youtube_title": "她撕掉合約第一條的殘角親手寫上可以問，隔天早餐二十年不回家吃飯的公公坐到了她對面",
+      "duration_s": 150,
+      "logline": "林晚晴用一張紙回答了第十二條，換來一個二十年沒坐上餐桌的人。",
+      "hook": "她把第一條的殘邊撕乾淨，貼上一張新紙條，一筆一筆寫：「可以問。」",
+      "hook_type": "image",
+      "mid_hook": "半夜他回來，在牆前站了很久，指尖碰了碰那三個字；走廊燈下，他第一次笑出了聲音。",
+      "extra_hooks": [
+        "清晨，周姨在長餐桌上多擺了一副碗筷，擺在她的正對面，擺好後自己愣了一下。"
+      ],
+      "conflict": "她回答了他，也等於答應自己：以後可以問，包括母親的事。",
+      "turn": "她以為第一個問她的會是他；第一個坐下來的，卻是那個二十年不敢坐的人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "早餐，謝懷山拉開她對面的椅子坐下，全桌安靜；他把一本泛黃的航海日誌放在桌上，手壓在封面上。",
+        "question": "謝懷山的航海日誌裡寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "lache",
+        "xijiechong"
+      ],
+      "spectacle": "走廊牆上的合約，第一條的位置貼著一張新紙「可以問」；長餐桌上二十年空著的那張椅子被拉開。",
+      "glamour_shot": "謝廷舟在走廊燈下看著那三個字笑出聲，低頭時劍眉鬆開，扣到第二顆的領口下喉結輕輕一動。",
+      "setups": [],
+      "payoffs": [
+        "s02-t04",
+        "s02-t14",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她用「可以問」回答了第十二條",
+        "謝懷山二十年來第一次回老宅吃早餐"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan",
+        "zhou-yi",
+        "xie-laotaitai",
+        "xie-tingye"
+      ],
+      "locations": [
+        "謝家老宅走廊",
+        "謝家老宅長餐桌"
+      ],
+      "state": {
+        "time": "第二季第 33 天，早晨",
+        "knowledge": "她知道謝懷山回來是為了說望川的事。",
+        "carry_forward": "航海日誌；可以問；日記第十頁還黏著。"
+      }
+    },
+    {
+      "number": 111,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "先去船塢",
+      "youtube_title": "二十年不上桌的公公帶著航海日誌回家，卻不給她先看，只說跟我去船廠，船塢裡那艘船二十年沒拆",
+      "duration_s": 120,
+      "logline": "林晚晴以為答案就在餐桌上，謝懷山卻要她先去看一艘船。",
+      "hook": "謝懷山的手從日誌上移開，把它推向的不是她，是兒子：「你先看。看完，帶來船塢。」",
+      "hook_type": "reversal",
+      "mid_hook": "船塢最深處，謝懷山扯下那片灰帆布：一艘鏽了半身的舊船。「我沒讓人拆。二十年。」",
+      "conflict": "她要知道母親的事，謝懷山卻一步一步帶她走，不肯一次說完。",
+      "turn": "工人們說「待拆」的那艘船，不是沒人敢拆，是船主不准。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "謝懷山把一把刮刀放在她手心：「名字在漆底下。妳修書的，妳來揭。」船身上的漆一層疊一層。",
+        "question": "她敢親手揭開那個名字嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "fenli"
+      ],
+      "spectacle": "帆布被扯下的一瞬間，灰塵在船塢的光柱裡炸開，一艘鏽船的船首從陰影裡露出來。",
+      "glamour_shot": "謝廷舟坐在長餐桌前低頭翻開航海日誌，晨光從他身後照過來，翻頁的手停在某一頁不動。",
+      "setups": [
+        "s02-t21"
+      ],
+      "payoffs": [
+        "s02-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道船塢那艘舊船是謝懷山二十年不准拆的"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "謝家老宅長餐桌",
+        "船塢"
+      ],
+      "state": {
+        "time": "第二季第 33 天，上午",
+        "knowledge": "她知道那艘待拆的舊船被謝懷山留了二十年。",
+        "carry_forward": "刮刀；他在老宅讀日誌；日記第十頁在她的包裡。"
+      }
+    },
+    {
+      "number": 112,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "一層一層",
+      "youtube_title": "她用修書的手法一層一層揭開舊船的漆，揭到第三層，顏家秘書帶著人和一紙拆船令走進船塢",
+      "duration_s": 125,
+      "logline": "林晚晴要揭開漆底下的名字，有人要在她揭開之前把船拆掉。",
+      "hook": "她把刮刀換成蒸氣筆和手術刀：「漆跟膠一樣，要先軟，再揭。」謝懷山愣住。",
+      "hook_type": "line",
+      "mid_hook": "第一層是謝家的藍，第二層是灰，第三層是白；白漆底下，露出半個字的一撇。",
+      "extra_hooks": [
+        "蔡伯在梯子下壓低聲音：「二十年，沒人敢碰這層。」"
+      ],
+      "conflict": "揭漆急不得，一急就把底下的字一起刮掉；可是時間不多。",
+      "turn": "她以為最大的敵人是漆，船塢的大門卻被推開了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "柯秘書帶著兩個工人走進船塢，舉起一張紙：「顏家是股東。董事會今天表決，這艘船，今天拆。」",
+        "question": "望川今天會被拆掉嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "fenli"
+      ],
+      "spectacle": "船身上三層漆的剖面微距：藍、灰、白一層層揭開，白漆底下露出一道墨黑的筆畫。",
+      "glamour_shot": "林晚晴站在船邊的梯子上，袖口捲到手肘，頭髮用鉛筆別起，蒸氣把她的側臉籠得朦朧。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "揭開三層漆"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-huaishan",
+        "s02-cai-bo",
+        "s02-ke-mishu"
+      ],
+      "locations": [
+        "船塢"
+      ],
+      "state": {
+        "time": "第二季第 33 天，中午",
+        "knowledge": "她知道顏家要趕在名字露出來前拆船。",
+        "carry_forward": "拆船令；董事會下午表決；他不在船塢。"
+      }
+    },
+    {
+      "number": 113,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "望川",
+      "youtube_title": "顏家秘書拿著拆船令逼人，船主公公一句我的船我說了算，她手上最後一層漆揭開露出兩個字",
+      "duration_s": 130,
+      "logline": "林晚晴要在董事會表決前揭完最後一層，謝懷山第一次為了這艘船站出來。",
+      "hook": "謝懷山擋在船前，二十年第一次挺直了背：「我的船，我說了算。」柯秘書的笑僵在臉上。",
+      "hook_type": "danger",
+      "mid_hook": "柯秘書看錶：「董事會三點表決。您擋得了三個小時？」她手上的刀沒停。",
+      "extra_hooks": [
+        "她的手機在口袋裡震了一下又一下，她沒空看。"
+      ],
+      "conflict": "三點前揭不開，名字就跟著船一起沒了。",
+      "turn": "她以為要揭的是一個陌生的船名，揭開的卻是外公日記裡寫了三頁的那兩個字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "ending",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一層白漆剝落，兩個墨黑的大字從鏽裡浮出來：望川。她的手停在第二個字上。",
+        "question": "船上還藏著什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "fenli"
+      ],
+      "spectacle": "船身上「望川」兩個大字從剝落的漆裡浮出來的延時，光柱從船塢頂上打在字上。",
+      "glamour_shot": "謝懷山站在船前的逆光裡，工裝洗得發白，灰白短髮被風吹亂，像一面終於豎起來的旗。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "謝懷山擋下拆船",
+        "她揭開船名：望川"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-huaishan",
+        "s02-ke-mishu",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "船塢"
+      ],
+      "state": {
+        "time": "第二季第 33 天，下午兩點",
+        "knowledge": "她確認船塢裡這艘就是望川。",
+        "carry_forward": "口袋裡一直震的手機；三點的表決；船艙還沒進去。"
+      }
+    },
+    {
+      "number": 114,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "書儀",
+      "youtube_title": "她爬進二十年沒人進過的船艙，艙壁上刻著母親的名字，筆跡跟她八歲收到的那張紙條一模一樣",
+      "duration_s": 135,
+      "logline": "林晚晴走進母親最後待過的地方，那裡留著母親的字。",
+      "hook": "她踩進船艙，鏽味撲上來；艙裡很暗，只有舷窗漏進一道光，照在一面艙壁上。",
+      "hook_type": "image",
+      "mid_hook": "艙壁上一行刻字：「書儀」。她從錢包裡抽出一張發黃的紙條，八歲那年母親留的：「晴晴，等我。」筆畫一模一樣。",
+      "conflict": "她怕等了二十年，原來母親最後的地方離她只有一座船廠的距離。",
+      "turn": "她以為母親是被海帶走的，刻字的手很穩，母親是自己決定留下記號的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把臉貼上那兩個字，小聲叫了一聲：「媽。」膝蓋下的艙板動了一下，縫裡露出一角泛黃的紙。",
+        "question": "艙板底下夾著什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren"
+      ],
+      "spectacle": "黑暗的船艙裡一道舷窗光，照著艙壁上兩個刻字，旁邊舉著一張發黃的紙條，字疊著字。",
+      "glamour_shot": "林晚晴跪在船艙裡，舷窗的光落在她的側臉，眼淚停在眼下那顆小痣上沒有掉。",
+      "setups": [
+        "s02-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到母親在望川上的刻字"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "lin-mu"
+      ],
+      "locations": [
+        "望川船艙"
+      ],
+      "state": {
+        "time": "第二季第 33 天，下午兩點半",
+        "knowledge": "她知道母親在望川上，而且留下了記號。",
+        "carry_forward": "艙板底下的紙；三點的表決；手機裡的未接來電。"
+      }
+    },
+    {
+      "number": 115,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "藏了二十年",
+      "youtube_title": "她在船艙找到母親的字，出艙卻被顏家秘書一句話刺中：謝家把這艘船藏了二十年，妳以為為什麼",
+      "duration_s": 120,
+      "logline": "林晚晴還沒揭開艙板，顏家先在她心裡揭開一道縫。",
+      "hook": "她剛伸手摸那一角紙，艙外傳來柯秘書的聲音：「少奶奶，出來聊聊？」",
+      "hook_type": "danger",
+      "mid_hook": "柯秘書站在艙口，聲音很輕：「這船，謝家藏了二十年。不好的東西，才要藏。妳以為呢？」",
+      "extra_hooks": [
+        "她撥他的電話，響到斷線；再撥，還是沒人接。"
+      ],
+      "conflict": "她要相信他，可他早知道名冊、拿著日誌、此刻卻不在。",
+      "turn": "顏家要的從來不是拆一艘舊船，是拆掉船上留下的東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "船塢外的吊車轉過來，吊鉤一格一格降向望川的甲板；她站在船首，沒有讓開。",
+        "question": "吊鉤會落在望川上嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "wuhui",
+        "fenli"
+      ],
+      "spectacle": "巨大的吊車臂橫過船塢的天空，吊鉤的影子落在船首一個小小的人身上。",
+      "glamour_shot": "林晚晴站在鏽船的船首，風把她的棉麻洋裝吹向一邊，她仰頭看吊鉤，下巴抬得很高。",
+      "setups": [
+        "s02-t22"
+      ],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她看穿顏家要毀的是船上的證據"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "s02-ke-mishu",
+        "xie-huaishan"
+      ],
+      "locations": [
+        "望川船艙",
+        "船塢"
+      ],
+      "state": {
+        "time": "第二季第 33 天，下午兩點五十",
+        "knowledge": "她知道顏家要毀掉望川上的東西，也開始懷疑謝家為什麼藏船。",
+        "carry_forward": "降下來的吊鉤；沒人接的電話。"
+      }
+    },
+    {
+      "number": 116,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "第十頁",
+      "youtube_title": "吊鉤落下前一秒對講機傳來他的聲音說停，她卻在外公日記第十頁讀到那艘船掛的是謝家的旗",
+      "duration_s": 130,
+      "logline": "林晚晴保住了船，卻在日記裡讀到她最不想讀到的一行。",
+      "hook": "吊鉤停在甲板上方一公尺，對講機裡一個低低的聲音：「停。董事會否決。」是他。",
+      "hook_type": "reversal",
+      "mid_hook": "她坐在船首揭開帶在包裡的日記第十頁，外公的字：「望川那夜，掛的是謝家的旗。」",
+      "extra_hooks": [
+        "船艙角落一只鐵箱裡，摺著一面褪色的旗，展開是謝家船運的旗。"
+      ],
+      "conflict": "他救了船，可他為什麼不來？他早知道，卻讓她一個人揭。",
+      "turn": "她以為對講機那一聲是他在乎她，讀完第十頁，她開始懷疑那是他在乎這艘船藏著的事。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把謝家的旗攤在甲板上，旗角縫著一行小字：「押運：林」。她抬頭看向船塢入口，那裡還是空的。",
+        "question": "他為什麼還不來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "wuhui",
+        "ganren"
+      ],
+      "spectacle": "鏽船甲板上攤開一面褪色的謝家旗，旗角的小字特寫，背景是一動不動的吊鉤。",
+      "glamour_shot": "林晚晴坐在船首讀日記，海風翻動她齊肩的黑髮，下午的斜光把她的側臉切成一半亮一半暗。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "望川保住",
+        "日記修開第十頁：望川掛謝家的旗"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "waigong"
+      ],
+      "locations": [
+        "望川甲板",
+        "船塢"
+      ],
+      "state": {
+        "time": "第二季第 33 天，下午三點",
+        "knowledge": "她知道望川那夜掛的是謝家的旗，母親是押運文書。",
+        "carry_forward": "他沒有來；艙板底下那張紙還沒拿出來。"
+      }
+    },
+    {
+      "number": 117,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "艙板底下",
+      "youtube_title": "她撬開艙板找到母親記事本撕下的一頁，上面只寫了半句話：這批貨不乾淨，到了對岸我",
+      "duration_s": 125,
+      "logline": "林晚晴拿到母親留下的最後一頁，只讀得到一半。",
+      "hook": "她回到船艙，用骨刀撬開那塊艙板；一張摺成四折的紙，邊緣被水泡過，中間還乾著。",
+      "hook_type": "image",
+      "mid_hook": "母親的字：「這批貨不乾淨。到了對岸，我……」後面的字被水洗掉了。",
+      "extra_hooks": [
+        "紙的背面還有一行更小的字，被鏽黏住，她不敢硬揭。"
+      ],
+      "conflict": "母親最後寫的話只剩一半，另一半可能永遠揭不開。",
+      "turn": "她一直以為母親是出了意外，這一頁寫得很清楚：母親是發現了什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把那一頁按在胸口，蹲在船艙裡；艙口有一道影子落下來，她抬頭，影子沒有動。",
+        "question": "母親到了對岸要做什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "fenli"
+      ],
+      "spectacle": "船艙裡骨刀撬開艙板的微距，木屑落下，一張摺成四折的泛黃紙從縫裡被慢慢抽出來。",
+      "glamour_shot": "林晚晴跪在艙裡展開那一頁，舷窗的光打在紙上也打在她的臉上，嘴唇抿得發白。",
+      "setups": [],
+      "payoffs": [
+        "s02-t20",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到母親記事本的一頁"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "lin-mu"
+      ],
+      "locations": [
+        "望川船艙"
+      ],
+      "state": {
+        "time": "第二季第 33 天，下午三點半",
+        "knowledge": "她知道母親發現了貨不乾淨，到對岸要做一件事。",
+        "carry_forward": "母親的半句話；艙口那道影子。"
+      }
+    },
+    {
+      "number": 118,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "船塢上面",
+      "youtube_title": "她爬出船艙看見公公一直站在船塢上面看著她，手機裡是他十七通未接來電，公公說妳要聽我就說",
+      "duration_s": 125,
+      "logline": "林晚晴要謝懷山把話說完，謝懷山要她先想清楚聽不聽。",
+      "hook": "她爬出艙口，抬頭：謝懷山站在船塢上面的邊緣，一直看著她，像站了二十年。",
+      "hook_type": "image",
+      "mid_hook": "她終於看了手機：十七通未接來電，全是他；最後一則訊息：「等我。我在路上。」",
+      "extra_hooks": [
+        "蔡伯在下面小聲：「少爺擋了董事會三小時。一散會就跑來了。」"
+      ],
+      "conflict": "她懷疑了他一整個下午，十七通電話把懷疑拆了一半，另一半還在謝懷山嘴裡。",
+      "turn": "她以為他在躲，原來是她沒接；她在船艙裡，聽不見手機。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "謝懷山低頭看她：「妳要聽，我就說。聽了，就不能當作不知道。」海風把她手裡那張紙吹得嘩嘩響。",
+        "question": "她要聽謝懷山說出真相嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "wuhui",
+        "fenli",
+        "waitiao"
+      ],
+      "spectacle": "仰拍：船塢上方的邊緣站著一個老人，背後是整片天空；俯拍：船首一個女孩握著一張紙。",
+      "glamour_shot": "林晚晴從艙口爬出來，臉上沾著鏽灰，抬頭時眼睛很亮，風把她的頭髮全吹到後面。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "誤會拆了一半：他一直在找她"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-huaishan",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "船塢"
+      ],
+      "state": {
+        "time": "第二季第 33 天，傍晚",
+        "knowledge": "她知道他打了十七通電話，正在趕來。",
+        "carry_forward": "謝懷山要說了；他在路上。"
+      }
+    },
+    {
+      "number": 119,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "我來",
+      "youtube_title": "她說我要聽的那一秒他衝進船塢，手裡拿著那本航海日誌站到父親身邊，對父親說了兩個字",
+      "duration_s": 135,
+      "logline": "林晚晴準備好要聽了，他在最後一秒趕到，站在父親那一邊。",
+      "hook": "她把紙握緊：「我要聽。」謝懷山剛張嘴，船塢的鐵門被撞開。",
+      "hook_type": "line",
+      "mid_hook": "他跑進來，喘著氣，西裝外套沒了、袖口第一次沒扣，手裡那本航海日誌；他沒走向她，走上了船塢邊緣，站到父親身邊。",
+      "extra_hooks": [
+        "她抬頭看著上面兩個人：一個點了二十年燈，一個等了她不知道多久。"
+      ],
+      "conflict": "她剛放下懷疑，他卻站到了另一邊；她分不清那是護著父親，還是要替父親扛。",
+      "turn": "他不是來阻止父親說的，他是來替父親說的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "謝懷山深吸一口氣，他把手按在父親的手臂上：「我來。」謝懷山看著兒子，退了半步。",
+        "question": "他要替父親說出什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "wuhui",
+        "ganren"
+      ],
+      "spectacle": "仰拍：船塢上方兩個男人並肩站著，一老一少，背後是傍晚燒紅的天；下方鏽船上一個小小的她。",
+      "glamour_shot": "謝廷舟站在船塢邊緣喘著氣，袖口第一次沒扣，額髮被汗打濕，夕陽勾出他高直的鼻樑與緊抿的唇。",
+      "setups": [],
+      "payoffs": [
+        "s02-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他用行動證明自己沒有藏：他帶著日誌來了"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan",
+        "s02-cai-bo"
+      ],
+      "locations": [
+        "船塢"
+      ],
+      "state": {
+        "time": "第二季第 33 天，日落",
+        "knowledge": "她知道他沒有在躲，他要替父親說。",
+        "carry_forward": "他手裡的航海日誌；「我來」。"
+      }
+    },
+    {
+      "number": 120,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "請上船",
+      "youtube_title": "她終於可以問了，船塢上他替父親說出二十年前的真相，母親留下的那頁紙被海風吹走，他縱身跳了下去",
+      "duration_s": 165,
+      "logline": "林晚晴問了她不敢問的那一句，答案從她最想聽、也最怕聽的人口中說出來。",
+      "hook": "夕陽裡，她仰頭對著船塢上的兩個人：「可以問。我現在問。」",
+      "hook_type": "line",
+      "mid_hook": "她問謝懷山：「二十年，點燈、留船、不拆，為了什麼？」謝懷山的聲音很啞：「為了等一個人回來。」",
+      "extra_hooks": [
+        "她把母親那一頁紙舉起來：「我母親，為什麼在你們的船上？」謝懷山吸了一口氣。"
+      ],
+      "conflict": "她要一個答案，答案可能讓她再也坐不上那張長餐桌。",
+      "turn": "她以為要聽謝懷山的懺悔，先開口的卻是他：一直站在她這邊的人，說出了他家欠她的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "謝懷山開口前，謝廷舟先說了：「妳母親，是我父親請上船的。」她手裡母親的那一頁紙被海風吹走，他跳下船塢去撿，她沒動。",
+        "question": "他早就知道了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fenli",
+        "ganren",
+        "wuhui"
+      ],
+      "spectacle": "船塢的長鏡頭：一張紙被海風捲起飛過鏽船的船名，他從船塢邊緣縱身跳下，她站在船首一動不動。",
+      "glamour_shot": "謝廷舟站在船塢邊緣說出那句話，夕陽在他背後，說「妳母親」前停了半拍，說完沒有移開眼睛。",
+      "setups": [],
+      "payoffs": [
+        "s02-t21",
+        "m08",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次當面問出母親的事",
+        "謝家承認林書儀是被請上望川的"
+      ],
+      "characters": [
+        "lin-wanqing",
+        "xie-tingzhou",
+        "xie-huaishan"
+      ],
+      "locations": [
+        "船塢",
+        "望川甲板"
+      ],
+      "state": {
+        "time": "第二季第 33 天，日落後",
+        "knowledge": "她知道母親是謝懷山請上望川的，而說出這句話的是他。",
+        "carry_forward": "被風吹走的那一頁；他跳下船塢；她沒有動。第十二條她還沒答，第一條她問了。"
+      }
+    }
+  ]
+}

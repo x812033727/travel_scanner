@@ -1,0 +1,4379 @@
+{
+  "number": 3,
+  "title": "雁門關",
+  "theme": "書裡會失守的關，守關的是個傻子。",
+  "start_state": "國師是現代人，比母女早來三年；他沒說自己是誰就跟著使臣團走了。第三個子任務：『九十日內，使雁門關斷糧。』書裡第三十五章雁門關失守、北昭從此守不住。守關的將軍顧青山在書裡是個敗將。",
+  "end_state": "任務用漏洞交差：斷的是南國的糧（顧青山斷了南國在關外的糧道）；雁門關為什麼會失守揭開（糧被戶部賣去南國，帳在御史手上）；後半本是誰寫的揭開（裴九，與小滿同一個網站的寫手）。顧青山被太后收為『徒弟』，阿桃與他成了一對；皇帝在雁門關上第一次在眾人面前不裝。最後一集，雁門關守住了，面板跳出：『子任務失敗。壽命 −20 年。』母女看著數字，太后說：『我五十，扣二十，三十。還能賣三十年滷味。』然後面板下面多了一行手打的字：『方小滿，妳的坑我填了三年。該還了。』",
+  "guest_cast": [
+    {
+      "id": "s03-lao-ma",
+      "name": "老馬",
+      "role": "雁門關的伙頭軍兼管糧小校，五十歲，跟著顧青山守了三年空倉，懷裡一本油污的小冊子記著每一袋真正到關的糧",
+      "appearance": "東亞中年男性，五十歲，精瘦結實、黝黑、滿臉風霜笑紋、灰白短鬚，頭纏舊布巾，穿洗白的舊皮甲外繫油漬圍裙，腰間掛一把木勺，眼神溫厚"
+    },
+    {
+      "id": "s03-shi-tou",
+      "name": "石頭",
+      "role": "雁門關的小兵，十七歲，守牢房時第一個認出太后的人，跑腿探路最快",
+      "appearance": "東亞少年，十七歲，清瘦高個、圓眼濃眉、曬得黑亮的臉頰、笑起來有虎牙，短髮從過大的頭盔下翹出來，穿打過補丁的布甲，乾淨爽朗"
+    },
+    {
+      "id": "s03-wu-ye",
+      "name": "烏野",
+      "role": "南國的斥候頭領，二十五歲，替國師盯雁門關的糧道，自己的兵也被國師餓著",
+      "appearance": "東亞青年男性，二十五歲，精悍俊朗、深膚、劍眉細長眼、高鼻，黑髮兩側編細辮綴銅環，穿土黃色斗篷與輕皮甲，身形修長，騎術極好"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s03-t01",
+      "question": "碗底寫「我姓裴」的國師，在現代是誰？",
+      "setup_episode": 121,
+      "payoff_episode": 123
+    },
+    {
+      "id": "s03-t02",
+      "question": "皇帝、攝政王、太后，誰去雁門關？",
+      "setup_episode": 123,
+      "payoff_episode": 124
+    },
+    {
+      "id": "s03-t03",
+      "question": "戶部三年撥給雁門關的十二萬石糧去了哪？",
+      "setup_episode": 124,
+      "payoff_episode": 140
+    },
+    {
+      "id": "s03-t04",
+      "question": "皇帝留下的另外半枚銅錢，什麼時候會出現？",
+      "setup_episode": 126,
+      "payoff_episode": 160
+    },
+    {
+      "id": "s03-t05",
+      "question": "顧青山為什麼三年不再向京城要糧？",
+      "setup_episode": 133,
+      "payoff_episode": 135
+    },
+    {
+      "id": "s03-t06",
+      "question": "阿桃為什麼一見顧青山就臉紅？",
+      "setup_episode": 136,
+      "payoff_episode": 156
+    },
+    {
+      "id": "s03-t07",
+      "question": "老馬那本護得比命還緊的小冊子記了什麼？",
+      "setup_episode": 134,
+      "payoff_episode": 138
+    },
+    {
+      "id": "s03-t08",
+      "question": "系統會不會把「斷南國的糧」算成完成任務？",
+      "setup_episode": 141,
+      "payoff_episode": 150
+    },
+    {
+      "id": "s03-t09",
+      "question": "賣糧的帳藏在流放的鄭元身上哪裡？",
+      "setup_episode": 147,
+      "payoff_episode": 148
+    },
+    {
+      "id": "s03-t10",
+      "question": "被南國斥候帶走的阿桃回得來嗎？",
+      "setup_episode": 152,
+      "payoff_episode": 155
+    },
+    {
+      "id": "s03-t11",
+      "question": "南國王子赫連最後站哪一邊？",
+      "setup_episode": 162,
+      "payoff_episode": 176
+    },
+    {
+      "id": "s03-t12",
+      "question": "太后手上的擦痕停得下來嗎？",
+      "setup_episode": 170,
+      "payoff_episode": 175
+    },
+    {
+      "id": "s03-t13",
+      "question": "小滿忘掉的第一章找得回來嗎？",
+      "setup_episode": 172,
+      "payoff_episode": 179
+    },
+    {
+      "id": "s03-t14",
+      "question": "子任務「期滿結算」那天會扣多少？",
+      "setup_episode": 150,
+      "payoff_episode": 180
+    },
+    {
+      "id": "s03-t15",
+      "question": "御史臺一本本參太后的彈章最後會怎樣？",
+      "setup_episode": 124,
+      "payoff_episode": 179
+    },
+    {
+      "id": "s03-t16",
+      "question": "錢通安插在雁門關裡的內應是誰？",
+      "setup_episode": 137,
+      "payoff_episode": 138
+    }
+  ],
+  "episodes": [
+    {
+      "number": 121,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "阿姨，還有嗎",
+      "youtube_title": "敵國國師一句現代話嚇掉太后的勺子，天一亮亡國系統又派新任務：九十天讓邊關斷糧",
+      "duration_s": 110,
+      "logline": "方美玲要在國宴散場前套出白衣國師的來歷，對方卻只吃了一碗滷味，第二天就跟著南國使臣團出城。",
+      "hook": "勺子「噹」一聲落地，滷汁濺上國師的白衫下襬；他沒躲，只笑：「三年了。」",
+      "hook_type": "image",
+      "mid_hook": "天剛亮，母女眼前同時彈出紅色面板：「第三子任務：九十日內，使雁門關斷糧。」總倒數停在 241。",
+      "extra_hooks": [
+        "小滿壓低聲音試他一句：「你哪個網站的？」國師的眉毛動了一下，沒答。"
+      ],
+      "conflict": "國師隔天就要隨使臣團回南國，母女只有一夜能弄清他是誰、想要什麼。",
+      "turn": "母女以為國師會到壽康宮攤牌，他卻真的只來吃了一碗滷味，一句正事都不說，吃完把碗洗乾淨放回灶台。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "使臣團的車出了北門，阿桃捧回那只洗乾淨的碗；碗底用滷汁寫著三個字：「我姓裴。」",
+        "question": "姓裴的國師，到底是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju",
+        "muny"
+      ],
+      "spectacle": "國宴殿地上一灘滷汁倒映著紅色面板的倒數 241，白衣國師的影子從面板中間走過。",
+      "glamour_shot": "小滿在燭光下猛一回頭，髻上那支毛筆跟著一晃，長眼盯住國師離去的背影。",
+      "setups": [
+        "s03-t01",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "南國使臣當面嘲太后「市井婆子」，被一句「吃完再說」堵到吃了三碗",
+        "確認國師是現代人，三年沒吃過滷味；第三子任務到手"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "pei-jiu",
+        "nan-wang",
+        "a-tao",
+        "xiao-fuzi",
+        "xitong-ui"
+      ],
+      "locations": [
+        "國宴殿",
+        "壽康宮偏殿滷味廚房",
+        "京城北門"
+      ],
+      "state": {
+        "time": "倒數 241 日・子任務第 1 日清晨",
+        "knowledge": "國師是比她們早來三年的現代人；第三子任務是使雁門關斷糧",
+        "carry_forward": "碗底的「我姓裴」"
+      }
+    },
+    {
+      "number": 122,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "裴九",
+      "youtube_title": "碗底三個字讓公主手裡的筆當場折斷，她想起當年有人留言：妳棄的坑，我接了",
+      "duration_s": 100,
+      "logline": "小滿要從現代的記憶裡挖出「姓裴的」是誰，太后卻只想先弄清楚女兒為什麼臉色發白。",
+      "hook": "小滿盯著碗底三個字，手裡的毛筆「啪」一聲斷成兩截：「裴……九？」",
+      "hook_type": "line",
+      "mid_hook": "回憶裡的手機螢幕：她棄坑的《北昭亡國記》留言區頂著一則留言——「這坑我接了。續寫中。——裴九」。",
+      "conflict": "母女要確認南國國師就是現代那個接了小滿坑的寫手。",
+      "turn": "太后以為女兒怕的是國師，其實小滿怕的是自己：裴九的續寫她讀過幾章，罵過一句「寫得比我狠」，然後再也沒點開。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小滿終於想起裴九最後一次更新的標題：「全文完。我回家了。」她抬頭看媽媽：「他寫完就不見了。」",
+        "question": "寫完就不見，是穿進書裡了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "muny"
+      ],
+      "spectacle": "昭華院牆上的原書章節頁被夜風吹得翻動，疊影浮出現代手機螢幕上的留言區與「續寫中」三個字；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 241 日」。",
+      "glamour_shot": "太后燈下替女兒把斷筆用棉線纏好，笑紋在燭光裡很深，抬眼那一下很溫柔。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "太后用菜市場記帳法替小滿把記憶排成兩欄：記得的、記不得的",
+        "想起接坑續寫的人叫裴九"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "a-tao",
+        "xitong-ui",
+        "pei-jiu"
+      ],
+      "locations": [
+        "昭華院"
+      ],
+      "state": {
+        "time": "倒數 241 日・子夜",
+        "knowledge": "國師很可能是現代接她坑的寫手裴九；他的續寫寫完了",
+        "carry_forward": "裴九寫完的後半本，和系統的任務有沒有關係"
+      }
+    },
+    {
+      "number": 123,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "後半本是他寫的",
+      "youtube_title": "她寫的書只寫了一半，另一半被別人寫完了，系統派的每個任務都照那個人的章節走",
+      "duration_s": 125,
+      "logline": "小滿要對出系統的任務是不是全照裴九的續寫走，對完才知道她手上的書只是半張地圖。",
+      "hook": "小滿把記得的續寫章名一行行寫上牆，寫到第三十五章停筆：「雁門關斷糧。」面板同時跳出同一行字。",
+      "hook_type": "image",
+      "mid_hook": "第二十六章到第五十章她只記得一半章名，可每一個記得的，都是系統出過或正要出的任務。",
+      "conflict": "弄清楚出任務的劇本是誰寫的。",
+      "turn": "小滿以為自己是書的作者、最懂這本書，結果她寫的前半本只是地圖的一半；後半本的主人是同一個網站的寫手裴九，他接坑寫完那一夜就穿了進來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "皇帝推門進來，看著牆上「雁門關」三個字：「我去雁門關。」",
+        "question": "皇帝真要去書裡會失守的關？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "muny",
+        "xiju"
+      ],
+      "spectacle": "昭華院一整面牆的章名紙在燭光下排成兩色：小滿的墨字與她憑記憶抄下的裴九章名，中間一道紅色面板光切開。",
+      "glamour_shot": "母女並肩站在牆前同時抬眼，一富態一清秀的兩張臉被面板紅光照成同一個表情。",
+      "setups": [
+        "s03-t02",
+        "m09"
+      ],
+      "payoffs": [
+        "s03-t01"
+      ],
+      "reveals": [
+        "m05"
+      ],
+      "general_payoffs": [
+        "母女第一次知道對手是誰：裴九，小滿同站的寫手，接坑寫完後半本當夜穿進書裡",
+        "太后定調：「那就不照他的寫。」"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "xiao-yun",
+        "xitong-ui",
+        "pei-jiu"
+      ],
+      "locations": [
+        "昭華院"
+      ],
+      "state": {
+        "time": "倒數 240 日・子任務第 2 日早上",
+        "knowledge": "後半本是裴九寫的；第三十五章是他寫的雁門關斷糧失守",
+        "carry_forward": "誰去雁門關"
+      }
+    },
+    {
+      "number": 124,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "三個人搶著去",
+      "youtube_title": "皇帝說他去、攝政王說不准、簾後的太后拍桌：我去！御史當場遞上第十七本彈章",
+      "duration_s": 115,
+      "logline": "朝堂要決定誰去雁門關：皇帝去，書裡他活不過第四十章；太后去，不合禮制。",
+      "hook": "朝堂上皇帝說「我去」，攝政王一步出班：「皇上不能去。」簾後太后拍桌：「我去。」",
+      "hook_type": "line",
+      "mid_hook": "新任御史出班念彈章：「太后擅議軍務，不合禮制。」小福子在簾後比了個數：第十七本。",
+      "extra_hooks": [
+        "面板角落：「子任務進度 64%。」雁門關存糧不足三成——任務沒人動，已經自己完成了一大半。"
+      ],
+      "conflict": "朝堂要定下北上的人選。",
+      "turn": "大家以為攝政王會壓下太后，他卻轉身對群臣說：「太后去，臣派人。」等於第一個替她站台。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "退朝時戶部尚書錢通笑著遞上撥糧冊：「雁門關的糧，戶部三年撥了十二萬石。」太后翻開一頁，笑容停住。",
+        "question": "撥了十二萬石，關怎麼還會斷糧？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "muny",
+        "xuanyi"
+      ],
+      "spectacle": "冷白與朱紅的朝堂上，太后的簾子被她自己一把掀開，滿朝文武齊齊回頭，簾後的紅色面板浮著 64%。",
+      "glamour_shot": "太后掀簾一手叉腰、一手指著御史，袖子捲到手肘，腰間的鑰匙串叮噹作響。",
+      "setups": [
+        "s03-t03",
+        "s03-t15"
+      ],
+      "payoffs": [
+        "s03-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "太后一句「禮制能當糧吃？」堵住新任御史",
+        "定案：太后北上雁門關，攝政王派人，皇帝留京"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-yun",
+        "shen-du",
+        "hubu",
+        "xiao-fuzi",
+        "xitong-ui"
+      ],
+      "locations": [
+        "朝堂"
+      ],
+      "state": {
+        "time": "倒數 240 日・子任務第 2 日",
+        "knowledge": "太后要去雁門關；戶部帳上三年撥了十二萬石",
+        "carry_forward": "帳和關對不上"
+      }
+    },
+    {
+      "number": 125,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "十二萬石",
+      "youtube_title": "戶部尚書的帳一個字都挑不出錯，菜市場大嬸改查城門簿，三年只出過四十趟糧車",
+      "duration_s": 120,
+      "logline": "方美玲要用菜市場的算法查出戶部撥給雁門關的糧撥去了哪，錢通卻帳帳都對得上。",
+      "hook": "太后把戶部的帳冊攤在滷鍋旁，袖子一捲：「錢尚書，坐，對帳。」",
+      "hook_type": "line",
+      "mid_hook": "太后算到一半停下：十二萬石，三年少說要走三千趟車；北門的城門簿上，三年只出過四十趟糧車。",
+      "conflict": "拆穿戶部的帳。",
+      "turn": "帳本本身毫無破綻，破綻在帳本外：太后不查帳、查城門簿與車行——菜市場的人都知道，貨一定要過門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "錢通袖裡的算盤滑落，他彎腰撿起，壓低聲音：「太后，這帳查下去，關就再沒人送糧了。」",
+        "question": "戶部尚書這是在威脅太后？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "muny"
+      ],
+      "spectacle": "滷鍋的蒸氣裡，帳冊上一行行「已撥」浮起又散開，疊在城門簿寥寥四十行糧車紀錄上；面板顯示子任務 65%。",
+      "glamour_shot": "太后捲袖拍帳、一手叉腰，笑紋裡全是殺氣；小滿在她身後用毛筆尾巴敲著算盤偷笑。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "用城門簿拆穿戶部：糧在帳上撥了，車沒出過門"
+      ],
+      "characters": [
+        "fang-meiling",
+        "hubu",
+        "fang-xiaoman",
+        "xiao-fuzi",
+        "xitong-ui"
+      ],
+      "locations": [
+        "壽康宮偏殿滷味廚房"
+      ],
+      "state": {
+        "time": "倒數 239 日・子任務第 3 日",
+        "knowledge": "戶部撥了糧，城門沒出過糧車",
+        "carry_forward": "錢通背後是誰、糧去了哪"
+      }
+    },
+    {
+      "number": 126,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "半枚銅錢",
+      "youtube_title": "昏君皇帝深夜塞給公主半枚銅錢，還偷學她的字寫好一章：皇帝在第四十章沒死",
+      "duration_s": 105,
+      "logline": "皇帝要小滿答應在雁門關遇險就把半枚銅錢送回來，小滿卻怕他照書跟來送命。",
+      "hook": "夜裡御花園，皇帝把一枚掰成兩半的銅錢塞進小滿手心：「另一半在我這。」",
+      "hook_type": "image",
+      "mid_hook": "皇帝從袖裡拿出一張紙：他學她的字，寫了半頁「第四十章」，最後一句是「皇帝沒死」。",
+      "conflict": "他想去，她不讓。",
+      "turn": "小滿以為皇帝在逞強，其實他早寫好了自己的第四十章，只差她在紙尾簽名。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小滿在紙尾簽了名，面板閃紅：「偵測到未授權劇本。」皇帝看不見面板，只看見她笑著掉眼淚。",
+        "question": "改劇本的代價，會落在誰身上？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "muny",
+        "xuanyi"
+      ],
+      "spectacle": "御花園池面上，兩半銅錢的倒影合成一枚，旁邊浮著紅色面板的倒數 239。",
+      "glamour_shot": "皇帝在宮燈下從渙散到極亮的那一秒眼神，冠還歪著；小滿低頭簽名，毛筆在髻上晃。",
+      "setups": [
+        "s03-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "皇帝學會小滿的字，替自己寫了不死的第四十章；兩人各持半枚銅錢",
+        "太后在花園另一頭假裝賞月，對女兒比了個「好」"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "xiao-yun",
+        "fang-meiling",
+        "xitong-ui"
+      ],
+      "locations": [
+        "御花園"
+      ],
+      "state": {
+        "time": "倒數 239 日・子任務第 3 日夜",
+        "knowledge": "皇帝自己寫了第四十章；兩人各持半枚銅錢",
+        "carry_forward": "未授權劇本的警告會不會扣壽命"
+      }
+    },
+    {
+      "number": 127,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "對著空氣喊",
+      "youtube_title": "亡國系統一早扣掉公主一年壽命，媽媽對著空氣開罵，面板後面的人第一次回話",
+      "duration_s": 110,
+      "logline": "母女要逼面板後面的裴九回話，對方卻只用扣壽命回答，還開了一個條件。",
+      "hook": "天亮面板結算：「未授權劇本：壽命 −1 年。」太后一把拉起女兒：「誰扣妳的？我找他。」",
+      "hook_type": "danger",
+      "mid_hook": "小滿在牆上寫一行：「你為什麼要北昭亡？」面板靜了十秒，跳出一行手打的字：「因為我想回家。」",
+      "conflict": "弄清裴九要什麼。",
+      "turn": "母女以為裴九只是要害她們，他的第一句回話卻像求救：他只是想回家。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "面板再跳一行：「妳們不去雁門關，我就不扣了。」小滿看媽媽，媽媽看著門口那一車剛買好的滷料。",
+        "question": "為了壽命，母女還去不去？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "muny",
+        "xiju"
+      ],
+      "spectacle": "昭華院牆上的墨字被紅色面板的光一行行照亮，最後一行手打的字像從牆裡滲出來。",
+      "glamour_shot": "小滿光著腳站在牆前提筆，晨光從窗格斜照，袖口的墨漬一路染到手腕。",
+      "setups": [
+        "m12",
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "母女發現能在牆上寫字向面板後面的人問話"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-fuzi",
+        "xitong-ui",
+        "pei-jiu"
+      ],
+      "locations": [
+        "昭華院"
+      ],
+      "state": {
+        "time": "倒數 238 日・子任務第 4 日",
+        "knowledge": "裴九在面板後面，想回家，會扣壽命",
+        "carry_forward": "不去就不扣——去不去"
+      }
+    },
+    {
+      "number": 128,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "阿渡的地圖",
+      "youtube_title": "太后把滷料全倒進鍋說去就去，攝政王端著空碗上門，送來一張被戶部換過人的路線圖",
+      "duration_s": 115,
+      "logline": "攝政王要替太后的北上鋪好路，卻不能讓朝堂知道他把王府的暗衛派給了太后。",
+      "hook": "太后把滷料全倒進大鍋：「去。」話剛落，門口攝政王端著空碗：「臣來還碗，順便送東西。」",
+      "hook_type": "reversal",
+      "mid_hook": "攝政王攤開地圖：京城到雁門關十三日，路上三處驛站，上個月全換成了戶部的人。",
+      "conflict": "北上的路要安全。",
+      "turn": "攝政王以為太后會收下王府暗衛，她只收地圖，把暗衛推回去：「你在京城比我危險。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "攝政王走到門口停步，背對她說：「錢通昨夜出城一趟，往北。」",
+        "question": "戶部尚書往北去給誰報信？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "muny",
+        "xiju",
+        "huduan",
+        "xuanyi"
+      ],
+      "spectacle": "滷鍋大火翻滾，蒸氣裡浮出京城到雁門關的一條紅線地圖，三個驛站逐一亮起；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 237 日・子任務第 5 日」。",
+      "glamour_shot": "攝政王捧著空碗站在門口逆光，被太后塞進一塊滷牛腱時面無表情地愣住。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到攝政王的北上地圖，知道三個驛站被換人",
+        "太后對他說：「你殺的那些人，我信。」攝政王停頓了一下"
+      ],
+      "characters": [
+        "fang-meiling",
+        "shen-du",
+        "fang-xiaoman",
+        "xitong-ui"
+      ],
+      "locations": [
+        "壽康宮偏殿滷味廚房"
+      ],
+      "state": {
+        "time": "倒數 237 日・子任務第 5 日",
+        "knowledge": "北上路上三個驛站被戶部換人；錢通往北出城",
+        "carry_forward": "錢通去見誰"
+      }
+    },
+    {
+      "number": 129,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "誰跟我北上",
+      "youtube_title": "最膽小的宮女哭著說要跟去邊關，曾經的死對頭嬪妃接過鑰匙：我等妳們回來吃飯",
+      "duration_s": 120,
+      "logline": "方美玲要挑北上的人手，又要找人守住壽康宮，偏偏御史臺又送來第十八本彈章。",
+      "hook": "阿桃跪在太后面前發著抖：「奴婢也去。」小福子跪得更快：「奴才也去！」",
+      "hook_type": "line",
+      "mid_hook": "麟妃接過壽康宮的鑰匙串，一把一把數過，抬頭說：「我等妳們回來吃飯。」",
+      "extra_hooks": [
+        "第十八本彈章：「太后攜宮婢太監遠行，有失體統。」太后拿它包了一包滷豆乾。"
+      ],
+      "conflict": "安排北上人手與後方。",
+      "turn": "大家以為最怕死的阿桃會留下，她卻第一個要跟；當年跟太后鬥得最兇的麟妃，第一個說要替她守家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小福子把北門外一塊新匾的拓字攤在桌上，小滿把那只碗翻過來擺在旁邊——匾上「南國糧行」四個字，和碗底「我姓裴」是同一個筆跡。",
+        "question": "戶部的糧，是不是賣給了國師？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "muny",
+        "xiju",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "壽康宮前一排人跪著請命，麟妃一身正紅接過鑰匙串，金步搖與鑰匙在夕陽裡一起閃；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 236 日・子任務第 6 日」。",
+      "glamour_shot": "麟妃丹鳳眼微垂數鑰匙，紅唇一彎，第一次對太后笑得不冷。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "北上人手定案：太后、小滿、阿桃、小福子",
+        "麟妃接管壽康宮",
+        "小福子查到錢通去的是國師筆跡的南國糧行"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "a-tao",
+        "xiao-fuzi",
+        "lin-fei",
+        "xitong-ui"
+      ],
+      "locations": [
+        "壽康宮",
+        "京城北門外南國糧行"
+      ],
+      "state": {
+        "time": "倒數 236 日・子任務第 6 日",
+        "knowledge": "錢通出城去了國師筆跡的南國糧行",
+        "carry_forward": "糧和國師是什麼關係"
+      }
+    },
+    {
+      "number": 130,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "別去",
+      "youtube_title": "太后帶一車滷味出城北上，戶部攔車要開鍋查驗，出了城門系統跳出一行手打的警告",
+      "duration_s": 140,
+      "logline": "太后帶小滿、阿桃、小福子與一車滷味出城北上，要在系統與戶部的眼皮底下上路。",
+      "hook": "北門外，南國糧行的匾一夜之間摘了，只剩兩個釘孔；太后摸了摸：「跑得比菜販還快。」",
+      "hook_type": "image",
+      "mid_hook": "出城時錢通帶著戶部的人攔車「依例查驗」，要開車上的滷鍋；太后掀蓋請他聞：「查，查完吃一塊。」",
+      "extra_hooks": [
+        "城樓上皇帝沒穿龍袍，扶著垛口，對小滿舉了舉手裡的半枚銅錢。"
+      ],
+      "conflict": "安全出城。",
+      "turn": "錢通以為太后在車上藏了查糧的人，實際上她一個兵都沒帶——她帶的是一車滷味，打算到關上「做生意」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "車輪剛出城門洞，母女眼前同時彈出一行手打的字：「別去。那一章我寫得很細。」",
+        "question": "裴九在那一章裡寫了什麼等她們？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "muny",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "一車滷味出北門，西市百姓夾道送行，車頂的滷鍋冒著白煙，城門洞的陰影裡亮起紅色手打字；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 235 日・子任務第 7 日」。",
+      "glamour_shot": "小滿坐在車尾回眸望城樓，髻上的毛筆被風吹歪，她笑著舉起自己那半枚銅錢。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "錢通吃了一塊滷味說不出話，查車無功而返",
+        "西市百姓喊「太后早點回來開攤」，面板：民心 +2、亡國值 −2",
+        "上路：一車滷味、四個人、攝政王的地圖"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "a-tao",
+        "xiao-fuzi",
+        "hubu",
+        "xiao-yun",
+        "xitong-ui",
+        "pei-jiu"
+      ],
+      "locations": [
+        "京城北門",
+        "西市"
+      ],
+      "state": {
+        "time": "倒數 235 日・子任務第 7 日",
+        "knowledge": "裴九知道她們上路了，雁門關那一章他寫得很細",
+        "carry_forward": "路上等著她們的是什麼"
+      }
+    },
+    {
+      "number": 131,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "歪脖子樹",
+      "youtube_title": "邊關路上公主一眼認出別人書裡寫過的那棵樹，南國斥候從坡後冒出來，太后開嗓叫賣",
+      "duration_s": 115,
+      "logline": "母女要在快到雁門關的最後一段路上躲過裴九「寫得很細」的那場劫車，可小滿只記得他寫過，不記得怎麼寫。",
+      "hook": "第十三天，官道風沙裡，小滿忽然叫停車：「這棵歪脖子樹，他寫過。」",
+      "hook_type": "danger",
+      "mid_hook": "樹後沙地上全是馬蹄印，一隊披土色斗篷的南國斥候從坡後冒頭，領頭的烏野舉手比了一個「圍」。",
+      "extra_hooks": [
+        "面板角落：「子任務進度 71%。雁門關存糧：一成。」"
+      ],
+      "conflict": "不被劫車。",
+      "turn": "斥候以為車上的人會逃，太后卻叫大家敲起滷鍋，像西市收攤一樣扯開嗓子吆喝——風往關那邊吹，關上的哨兵聽見了，鼓聲一響，斥候退了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "天黑到了關下，關門開了一條縫，十幾張弓對準他們：「南國細作，拿下！」門洞裡站著顧青山。",
+        "question": "守關的將軍為什麼要抓太后？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "dalian",
+        "xitong"
+      ],
+      "spectacle": "黃沙官道上一棵歪脖子樹，一隊土色斗篷的騎影從沙坡後浮出，遠處雁門關的旗在風裡翻。",
+      "glamour_shot": "烏野在坡頂勒馬回望，辮上的銅環在夕陽裡一閃，細長眼盯著那一車冒白煙的滷鍋。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "菜市場嗓門喊來關上的鼓，逼退南國斥候"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "a-tao",
+        "xiao-fuzi",
+        "s03-wu-ye",
+        "gu-qingshan",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關外官道",
+        "雁門關門洞"
+      ],
+      "state": {
+        "time": "倒數 222 日・子任務第 20 日黃昏",
+        "knowledge": "裴九寫過的路上有南國斥候；關上的人不認太后",
+        "carry_forward": "為什麼被當細作"
+      }
+    },
+    {
+      "number": 132,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "太后坐牢",
+      "youtube_title": "守關將軍把太后當南國細作關進牢裡，她坐在乾草上一夜餵飽整座牢房的兵",
+      "duration_s": 110,
+      "logline": "顧青山要審出這四個「細作」的來路，方美玲卻要先讓他的兵吃一頓飽的。",
+      "hook": "牢門「哐」地落鎖，太后拍拍乾草坐下：「行，正好歇腳。」顧青山隔著柵欄：「太后不會來邊關。」",
+      "hook_type": "line",
+      "mid_hook": "守牢的小兵石頭盯著牢裡飄出的滷香，肚子叫得整條走廊都聽得見——他三天沒吃過一頓乾的。",
+      "extra_hooks": [
+        "小滿看面板：「子任務進度 73%。」她低聲：「媽，他們真的撐不住了。」太后已經在拆油紙。"
+      ],
+      "conflict": "證明身分、出牢。",
+      "turn": "太后不證明身分，反而隔著柵欄把滷味一塊塊遞出去；一夜之後全關都知道「牢裡那位大嬸是太后」，因為只有太后會這樣罵人又這樣餵人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "天亮時石頭偷偷開了牢門，跪著遞回空油紙：「娘娘，我娘也這樣罵我。」",
+        "question": "顧青山發現兵都倒向太后會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "huduan"
+      ],
+      "spectacle": "牢房走廊一排柵欄後伸出一排手，滷味的油紙在火把下反光，紅色倒數 222 浮在牢頂。",
+      "glamour_shot": "太后坐在乾草上捲起袖子、嘴裡罵手上遞，火光把她的笑紋照得很亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "石頭第一個認了太后",
+        "牢房的兵一夜吃飽"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "a-tao",
+        "xiao-fuzi",
+        "gu-qingshan",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關牢房"
+      ],
+      "state": {
+        "time": "倒數 222 日・子任務第 20 日夜",
+        "knowledge": "雁門關的兵三天沒乾糧；石頭認了太后",
+        "carry_forward": "顧青山怎麼收場"
+      }
+    },
+    {
+      "number": 133,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "叫我師父",
+      "youtube_title": "書裡注定打敗仗的傻將軍跪在黃沙裡請罪，太后的懲罰讓全關的兵一起大喊",
+      "duration_s": 105,
+      "logline": "顧青山要向太后請罪，方美玲卻要罰他一件誰都想不到的事。",
+      "hook": "校場上顧青山「咚」一聲跪下，鐵甲砸起一圈黃沙：「末將有眼無珠！」",
+      "hook_type": "image",
+      "mid_hook": "太后宣布懲罰：「以後叫我師父，學滷味。」顧青山愣了三秒，大喊：「師父！」全關的兵跟著喊。",
+      "conflict": "收服顧青山。",
+      "turn": "大家以為太后要問罪抓她的將軍，她只問了一句：「你多久沒吃飽了？」顧青山答不上來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "太后問他三年怎麼不向京城要糧，顧青山抓抓頭：「要過一次。戶部回信說，皇上都減膳了。」",
+        "question": "那封戶部的回信是誰寫的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "huduan",
+        "dalian"
+      ],
+      "spectacle": "黃沙校場上千名瘦兵同時高喊「師父」，聲浪把關牆上的旗吹得一齊翻起；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 221 日・子任務第 21 日」。",
+      "glamour_shot": "顧青山跪在沙裡抬頭一口白牙傻笑，臉上的淺疤在晨光裡很清楚。",
+      "setups": [
+        "s03-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "收顧青山為徒，全關改口叫太后「師父」"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "a-tao",
+        "xiao-fuzi",
+        "s03-shi-tou",
+        "s03-lao-ma",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關校場"
+      ],
+      "state": {
+        "time": "倒數 221 日・子任務第 21 日",
+        "knowledge": "顧青山只要過一次糧，戶部回信說皇上減膳",
+        "carry_forward": "戶部的信"
+      }
+    },
+    {
+      "number": 134,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "空的糧倉",
+      "youtube_title": "糧倉門一推開只剩回音，牆上卻貼滿戶部一百多張蓋紅印的撥糧單，張張都是真的",
+      "duration_s": 110,
+      "logline": "小滿要查雁門關的糧倉與帳，帳上卻寫滿了戶部的「已撥」。",
+      "hook": "老馬推開糧倉的門，門軸的聲音在空倉裡迴了三圈。小滿：「……空的。」",
+      "hook_type": "image",
+      "mid_hook": "倉牆上貼滿戶部的撥糧單，三年一百多張，每張都蓋著紅印；地上只剩一層穀殼。",
+      "extra_hooks": [
+        "老馬從懷裡掏出一本油污的小冊子，護得比命還緊：「真到的，我都記著。」"
+      ],
+      "conflict": "找出帳和糧差在哪。",
+      "turn": "小滿以為撥糧單是偽造的，可印是真的——戶部真的撥了，只是糧從沒進過這扇門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "糧倉外鼓聲突響，南國斥候在關前喊話：「北昭的兵，餓了就開門！」",
+        "question": "沒糧的雁門關撐得過今晚嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "huduan",
+        "xiju"
+      ],
+      "spectacle": "空倉頂的天窗漏下一束光，照在牆上一百多張紅印撥糧單上，面板浮著「子任務進度 76%」。",
+      "glamour_shot": "小滿蹲在穀殼上抬眼，抽下髻上的毛筆在撥糧單上點數，倔強的嘴角繃緊。",
+      "setups": [
+        "s03-t07"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認戶部的印是真的、糧沒進關"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "s03-lao-ma",
+        "gu-qingshan",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關糧倉"
+      ],
+      "state": {
+        "time": "倒數 221 日・子任務第 21 日黃昏",
+        "knowledge": "戶部三年真撥了糧，糧沒進關；老馬記著真到的",
+        "carry_forward": "今晚斥候喊話"
+      }
+    },
+    {
+      "number": 135,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "別讓皇上餓",
+      "youtube_title": "傻將軍三年不要糧只因一封信說皇上在減膳，太后聽完紅了眼，衝上城牆開罵",
+      "duration_s": 120,
+      "logline": "方美玲要弄清這個將軍為什麼三年不再要糧，答案讓她當場紅了眼。",
+      "hook": "關前喊話聲裡，顧青山把自己那碗稀粥倒進小兵碗裡：「喊什麼，我們不餓。」",
+      "hook_type": "line",
+      "mid_hook": "顧青山掏出戶部唯一的回信：「國庫已空，皇上減膳，望將軍自籌。」他說：「皇上都餓著，我怎麼好意思要。」",
+      "extra_hooks": [
+        "面板跳出：「雁門關民心 +5。」太后罵：「民心有什麼用，他要的是飯！」"
+      ],
+      "conflict": "穩住軍心，弄清真相。",
+      "turn": "大家以為顧青山傻到不敢上報，其實他用自己的俸祿帶兵打獵挖野菜撐了三年，只為了「別讓皇上餓」——而那時的皇上每天在宮裡吃八道菜裝昏。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "太后把那封信折好收進袖子：「這封信，我帶回京城。」顧青山第一次紅了眼，問的卻是：「師父，那皇上沒餓著吧？」",
+        "question": "傻將軍知道真相後會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huduan",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "夜色關牆上火把一字排開，太后一人站在垛口對關外大罵，南國斥候的火把一支支退遠。",
+      "glamour_shot": "太后叉腰站在垛口，風把歪掉的髮髻吹散一縷，回頭看顧青山的那一眼很軟。",
+      "setups": [
+        "m02"
+      ],
+      "payoffs": [
+        "s03-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "太后一嗓子罵退關前喊話的斥候",
+        "當眾告訴全關：「皇上不餓，你們該吃。」"
+      ],
+      "characters": [
+        "gu-qingshan",
+        "fang-meiling",
+        "fang-xiaoman",
+        "s03-shi-tou",
+        "s03-lao-ma",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 220 日・子任務第 22 日",
+        "knowledge": "戶部用假信騙顧青山自籌三年",
+        "carry_forward": "寫信的人是誰"
+      }
+    },
+    {
+      "number": 136,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "阿桃姑娘",
+      "youtube_title": "兵油子伸手要碰太后的小宮女，一隻鐵手套扣住他手腕，傻將軍說話突然結巴",
+      "duration_s": 100,
+      "logline": "阿桃要在伙房幫太后備滷，兵油子卻想欺負她；顧青山第一次替別人擋。",
+      "hook": "伙房裡一個大個子兵伸手要捏阿桃的臉：「京城來的丫頭——」一隻鐵手套扣住他手腕。",
+      "hook_type": "danger",
+      "mid_hook": "顧青山把兵油子扔出伙房，回頭對阿桃說話時忽然結巴：「阿、阿桃姑娘，妳別抖。」阿桃不抖了，臉紅了。",
+      "conflict": "護住阿桃，立伙房的規矩。",
+      "turn": "顧青山當眾立新規：「伙房的人，誰碰誰挑三天水。」第一個被罰的是他自己——他扶阿桃時碰了她的手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "太后在門邊對小滿使了個眼色，小滿點頭。太后清清嗓子：「青山，阿桃還沒許人。」顧青山的勺子停在半空。",
+        "question": "傻將軍會怎麼接這句話？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "huduan",
+        "xiju"
+      ],
+      "spectacle": "伙房爐火映著一排大鍋，鐵手套扣住手腕那一格慢動作，蒸氣後面紅色倒數 219 浮著。",
+      "glamour_shot": "阿桃臉紅低頭，雙丫髻上的綠絲帶在爐火的熱氣裡飄。",
+      "setups": [
+        "s03-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧青山替阿桃擋人，立伙房軍規"
+      ],
+      "characters": [
+        "a-tao",
+        "gu-qingshan",
+        "fang-meiling",
+        "fang-xiaoman",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關伙房"
+      ],
+      "state": {
+        "time": "倒數 219 日・子任務第 23 日",
+        "knowledge": "顧青山對阿桃動了心；太后與小滿都看見了",
+        "carry_forward": "傻將軍怎麼接"
+      }
+    },
+    {
+      "number": 137,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "第十九本彈章",
+      "youtube_title": "京城御史快馬送來彈章要太后回京，還說不回就停撥邊關糧，她一句話反手討債",
+      "duration_s": 110,
+      "logline": "方美玲在關上用菜市場的法子收了將軍，京城御史臺立刻送來第十九本彈章，要她即刻回京。",
+      "hook": "驛馬衝進關門，小福子拆開急件就念：「御史臺劾太后：擅入軍營，私收將軍為徒。」",
+      "hook_type": "line",
+      "mid_hook": "彈章後面附了一行：「若太后不歸，戶部停撥雁門關本季糧。」——用從沒撥到的糧來威脅。",
+      "conflict": "應付彈章，不回京。",
+      "turn": "大家以為太后要回信吵架，她卻讓顧青山回奏：「本季不必撥，請戶部把前三年的補來。」——一句話把威脅變成討債。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "急件最底下夾著攝政王的密信，只有一行：「彈章我壓。錢通的人，已在關內。」",
+        "question": "戶部的人藏在關裡哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "huduan",
+        "xiju"
+      ],
+      "spectacle": "驛馬踏起黃沙衝進關門，一卷黃綾彈章在風裡展開，關上千個兵同時抬頭；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 218 日・子任務第 24 日」。",
+      "glamour_shot": "小滿坐在城垛上蹺腳寫回奏，毛筆在指間轉了一圈，嘴角壓不住地上揚。",
+      "setups": [
+        "s03-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "回奏把戶部的威脅變成討三年的欠糧"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-fuzi",
+        "gu-qingshan",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關帥帳"
+      ],
+      "state": {
+        "time": "倒數 218 日・子任務第 24 日",
+        "knowledge": "戶部拿不存在的糧威脅；錢通的人在關內",
+        "carry_forward": "內應是誰"
+      }
+    },
+    {
+      "number": 138,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "老馬的冊子",
+      "youtube_title": "戶部押糧官扛來一袋黑米說糧到了，伙夫老兵把三年記的小冊子拍在米袋上",
+      "duration_s": 115,
+      "logline": "方美玲要當眾拆穿戶部派來的押糧小吏，靠的是老馬三年一筆筆記下的真帳。",
+      "hook": "押糧小吏抱著一袋發黑的米進帳：「戶部本季的糧到了。」老馬「啪」地把小冊子拍在米袋上。",
+      "hook_type": "image",
+      "mid_hook": "太后把老馬的冊子和倉牆上的撥糧單並排對：撥了十二萬石，真到的只有一千四百石，每一袋都是黑米。",
+      "extra_hooks": [
+        "面板：「子任務進度 88%。」太后瞄一眼：「它倒是比我還急。」"
+      ],
+      "conflict": "抓出內應。",
+      "turn": "小吏以為只有帳本能抓他，太后卻隨口問他黑米一斗多少錢——他脫口報了南國的價，他是在南國糧行領錢的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小吏被押走前大喊：「你們不知道糧在哪！」顧青山揪住他：「在哪？」小吏閉嘴，眼睛卻往關外瞟。",
+        "question": "糧為什麼會在關外？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "huduan"
+      ],
+      "spectacle": "帥帳裡一袋黑米倒在桌上，老馬油污的小冊子與一百多張紅印撥糧單並排鋪開，燭火在兩疊紙之間跳。",
+      "glamour_shot": "太后一手按冊子一手叉腰，笑紋一收，眼神比燭火還亮。",
+      "setups": [],
+      "payoffs": [
+        "s03-t07",
+        "s03-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老馬的冊子對出十二萬石只到一千四百石",
+        "抓出錢通安插的押糧小吏"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "s03-lao-ma",
+        "gu-qingshan",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關帥帳"
+      ],
+      "state": {
+        "time": "倒數 217 日・子任務第 25 日",
+        "knowledge": "撥了十二萬石只到一千四百石；內應在南國糧行領錢",
+        "carry_forward": "糧在關外？"
+      }
+    },
+    {
+      "number": 139,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "進度九十二",
+      "youtube_title": "亡國系統的任務進度衝到百分之九十二，再過三天邊關就自己斷糧，母女卻不能等",
+      "duration_s": 110,
+      "logline": "南國用一袋白米動搖雁門關的軍心，面板上的子任務一路衝到 92%；母女要在任務自己完成之前想出辦法。",
+      "hook": "天未亮，烏野縱馬到城下，往關上拋上一袋白米：「北昭的兵，這是南國賞的。」",
+      "hook_type": "danger",
+      "mid_hook": "面板：「子任務進度 92%。雁門關存糧：三日。」小滿算：「媽，再三天，不用動手，任務自己就完成了。」",
+      "conflict": "穩住軍心，不讓關自己斷糧。",
+      "turn": "母女以為完成任務就能保住壽命，可任務完成就代表關會照書失守——系統要的正是她們什麼都不做。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "太后看著 92%，回頭對女兒說：「完成，保命；不完成，保關。」小滿還沒開口，顧青山已經在喊她們上城牆。",
+        "question": "保命還是保關？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "huduan",
+        "dalian",
+        "xitong"
+      ],
+      "spectacle": "天未亮的關牆下一騎揚沙，一袋白米高高拋上垛口，在晨光裡畫出一道弧，面板 92% 的紅字壓在畫面上方。",
+      "glamour_shot": "顧青山一把接住米袋，赤手揚臂把它擲回關外，鐵甲在晨光裡反光。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧青山把白米擲回：「我們有師父。」軍心沒散"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "s03-wu-ye",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 216 日・子任務第 26 日",
+        "knowledge": "南國手上有戶部印的米；任務三天後會自己完成",
+        "carry_forward": "城牆上看見什麼"
+      }
+    },
+    {
+      "number": 140,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "糧在他們那",
+      "youtube_title": "傻將軍帶太后爬上關牆最高處，關外十里的敵營中間，一條糧道的車三年沒斷過",
+      "duration_s": 135,
+      "logline": "顧青山帶母女上關牆，讓她們親眼看見雁門關三年的糧去了哪。",
+      "hook": "顧青山把太后拉上關牆最高的垛口，遞過一支千里鏡：「師父，妳看。」",
+      "hook_type": "image",
+      "mid_hook": "關外十里，南國營帳一排排像菜市場的攤子，營帳中間一條長長的糧道，車隊從沒斷過。",
+      "conflict": "找到糧。",
+      "turn": "大家以為南國斷北昭的糧靠打，其實南國從沒打過——它是買的，用北昭自己的糧圍北昭的關。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "千里鏡的鏡頭推近，糧袋上一個個紅印——北昭戶部。太后放下千里鏡：「我們的糧，在他們那。」",
+        "question": "北昭的糧，怎麼搶回來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "huduan",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "黃沙落日下的關牆，垛口外十里南國營帳連成一片，一條糧道像金線穿過營帳中間；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 215 日」。",
+      "glamour_shot": "顧青山在落日的關牆上咧嘴遞千里鏡，臉上的淺疤被金光勾出輪廓；阿桃在他身後偷看。",
+      "setups": [],
+      "payoffs": [
+        "s03-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧青山三年盯著的糧道交到太后手上",
+        "確認戶部的糧在南國營裡"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "a-tao",
+        "s03-lao-ma",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆最高垛口"
+      ],
+      "state": {
+        "time": "倒數 215 日・子任務第 27 日黃昏",
+        "knowledge": "戶部的糧在南國營裡；南國用北昭的糧圍雁門關",
+        "carry_forward": "任務沒說斷誰的糧"
+      }
+    },
+    {
+      "number": 141,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "沒說斷誰的",
+      "youtube_title": "公主盯著亡國任務一個字一個字念，突然笑出聲：系統只說斷糧，沒說斷誰的糧",
+      "duration_s": 105,
+      "logline": "小滿要替母女找出任務的漏洞，讓「斷糧」斷在南國頭上，卻得先說服只會直來直往的顧青山。",
+      "hook": "小滿對著面板一個字一個字念：「使、雁門關、斷糧。」她突然笑出聲：「它沒說斷誰的。」",
+      "hook_type": "line",
+      "mid_hook": "顧青山聽完計畫，第一句是：「搶回自己的糧，算偷嗎？」太后：「菜市場叫這個退貨。」",
+      "extra_hooks": [
+        "面板：「子任務進度 93%。雁門關存糧：兩日。」"
+      ],
+      "conflict": "定下夜襲糧道的計畫。",
+      "turn": "小滿以為傻將軍會反對投機取巧，他卻說這條糧道他盯了三年，只缺一樣東西：一頓讓兵有力氣的飽飯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "太后把關裡最後兩日的米全倒進鍋：「今晚吃光，明晚去搶。」老馬臉都白了：「娘娘，那後天呢？」",
+        "question": "吃光最後的米，搶不回來怎麼辦？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xitong",
+        "fanxiang",
+        "muny"
+      ],
+      "spectacle": "紅色面板懸在帥帳中央，「斷糧」兩個字被小滿的毛筆尖隔空點住，字的影子落在南國糧道的地圖上。",
+      "glamour_shot": "小滿說到「沒說斷誰的」時捂嘴偷笑，眼睛彎成兩道，髻上的毛筆跟著抖。",
+      "setups": [
+        "s03-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到任務漏洞：斷南國的糧",
+        "顧青山說出糧道三年的換班規律"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "gu-qingshan",
+        "s03-lao-ma",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關帥帳"
+      ],
+      "state": {
+        "time": "倒數 214 日・子任務第 28 日",
+        "knowledge": "要斷南國的糧；關裡的米今晚吃光",
+        "carry_forward": "搶不回來怎麼辦"
+      }
+    },
+    {
+      "number": 142,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "五更進貨",
+      "youtube_title": "菜市場大嬸用三十年進貨經驗算出敵軍糧車最鬆的時辰，小兵探路回來頭盔上插著一支箭",
+      "duration_s": 100,
+      "logline": "方美玲要用三十年進貨的經驗算出南國糧車哪一刻最鬆，石頭卻在探路時被斥候發現了。",
+      "hook": "太后在關牆上用炭筆畫南國的糧道，畫到一半：「菜市場的貨，都是五更進。」",
+      "hook_type": "line",
+      "mid_hook": "石頭探回來：糧車每天五更換班，換班時押車的人全去吃早飯——跟菜市場的進貨攤一模一樣。",
+      "conflict": "定下夜襲的時刻與路線。",
+      "turn": "大家以為要趁半夜最黑時偷襲，太后說不對：要趁天快亮、人最餓、最想吃早飯的時候。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "石頭翻回關牆，頭盔上插著一支南國的箭，箭桿綁著一張紙：「五更，我們等你們。」",
+        "question": "南國早就知道他們要搶？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fanxiang",
+        "xiju",
+        "dalian"
+      ],
+      "spectacle": "月下沙丘間，一個小兵貼地匍匐，遠處南國糧車的火把一盞盞換班熄滅；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 213 日・子任務第 29 日」。",
+      "glamour_shot": "太后蹲在垛口用炭筆畫圖，月光照著她捲起的袖子與手上的刀繭。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "摸清南國糧車五更換班",
+        "顧青山帶人接應，把被追的石頭拉回關牆"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "s03-shi-tou",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆",
+        "關外沙丘"
+      ],
+      "state": {
+        "time": "倒數 213 日・子任務第 29 日",
+        "knowledge": "五更是糧道最鬆時；南國好像知道",
+        "carry_forward": "誰洩了計畫"
+      }
+    },
+    {
+      "number": 143,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "糧車掉頭",
+      "youtube_title": "敵軍照著書伏在東坡等北昭夜襲，北昭的兵卻從書裡沒寫的乾河床冒出來",
+      "duration_s": 140,
+      "logline": "裴九把北昭的夜襲寫成了中伏，小滿要在他寫好的章節裡找一條他沒寫的路，讓顧青山搶回糧。",
+      "hook": "小滿看著箭上的紙條，臉色一變：「這是他寫的——北昭夜襲，中伏。」",
+      "hook_type": "reversal",
+      "mid_hook": "小滿想起讀過的那一句：「北昭兵自東坡下。」她把顧青山的兵改走西邊乾河床，五更未到，先到。",
+      "extra_hooks": [
+        "五更，東坡上南國的伏兵等到天亮，只等到一頭驢子馱著一口滷鍋，鍋蓋上寫：「早。」"
+      ],
+      "conflict": "夜襲成功。",
+      "turn": "南國以為照書伏在東坡就贏，北昭的兵卻從書裡沒寫的河床冒出來——糧車一輛輛掉頭往關裡走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一車進了關門，面板沒有閃綠也沒有閃紅，只跳出四個灰字：「判定中……」",
+        "question": "系統會怎麼算這一次？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "fanxiang",
+        "xitong",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "五更天的乾河床上一排火把像火龍從西邊壓過去，糧車在黃沙裡一輛輛掉頭，煙塵與旗影漫過畫面。",
+      "glamour_shot": "顧青山鐵甲立在糧車頂、回頭一口白牙大喊「回家」，火光照亮臉上的疤。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "搶回北昭的糧，南國糧道斷了",
+        "南國伏兵照書撲空"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "gu-qingshan",
+        "fang-meiling",
+        "s03-shi-tou",
+        "s03-lao-ma",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "關外乾河床",
+        "南國糧道"
+      ],
+      "state": {
+        "time": "倒數 212 日・子任務第 30 日五更",
+        "knowledge": "糧搶回來了，南國斷糧；系統判定中",
+        "carry_forward": "判定結果"
+      }
+    },
+    {
+      "number": 144,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "關上大鍋",
+      "youtube_title": "太后在關牆上架起能裝三個人的大鍋，三年沒吃飽的邊關兵第一次排隊吃白飯",
+      "duration_s": 115,
+      "logline": "方美玲要讓三年沒吃飽的雁門關兵吃上第一頓飽飯，系統卻卡在判定中，誰也不知道代價。",
+      "hook": "太后在關牆上架起一口能裝下三個人的大鍋，舀起第一勺白飯：「排隊！誰插隊誰洗鍋！」",
+      "hook_type": "line",
+      "mid_hook": "面板在大鍋的蒸氣裡閃了三下：「民心 +20。亡國值 −8。」然後又回到「判定中」。",
+      "conflict": "吃飽、穩關。",
+      "turn": "系統以為斷了雁門關的糧它就贏，結果雁門關第一次吃飽——任務的字還在，意思反了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "關外南國營裡第一次升不起炊煙；烏野站在營門口望著關上的飯香，慢慢抽出了刀。",
+        "question": "斷了糧的南國會不會打過來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fanxiang",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "關牆上千人排成一條長龍，大鍋的白煙直上黃昏，面板「判定中」的灰字在煙裡浮沉。",
+      "glamour_shot": "阿桃把碗推給顧青山時抬眼一笑，雙丫髻被鍋氣熏得鬆鬆的。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "雁門關三年來第一頓飽飯；民心 +20、亡國值 −8"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "a-tao",
+        "s03-shi-tou",
+        "s03-lao-ma",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 211 日・子任務第 31 日",
+        "knowledge": "雁門關吃飽，南國斷糧；判定中第一日",
+        "carry_forward": "南國的反應"
+      }
+    },
+    {
+      "number": 145,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "那是我們買的",
+      "youtube_title": "南國使者在關下討糧說是花銀子買的，太后笑著問：跟誰買的？發票呢？",
+      "duration_s": 105,
+      "logline": "南國派使者到關下要糧，方美玲要讓他自己說出這批糧是怎麼來的。",
+      "hook": "南國使者站在關下大喊：「搶我南國軍糧，北昭要給個交代！」",
+      "hook_type": "danger",
+      "mid_hook": "使者急了：「那是我們花銀子買的！」太后在關上笑：「跟誰買的？發票呢？」使者張口，又閉上。",
+      "extra_hooks": [
+        "面板角落：「判定中，第 1 日。」"
+      ],
+      "conflict": "頂住南國討糧，套出賣家。",
+      "turn": "使者以為「軍糧」兩個字能嚇住北昭，太后一句「誰賣你的」就把南國變成收贓的買家，關上關下的兵都聽見了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "使者退走前回頭丟下一句：「賣糧的是你們的尚書，收糧的是我們的國師。」",
+        "question": "戶部和國師做了幾年生意？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xitong",
+        "xiju"
+      ],
+      "spectacle": "關下南國使者的綠金旗在風沙裡獵獵作響，關上一排吃飽的兵端著碗看熱鬧。",
+      "glamour_shot": "太后倚著垛口、手裡還拿著飯勺，回頭對小滿眨眼。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "逼南國使者當眾說出「買的」，買賣兩頭現形"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 211 日・子任務第 31 日午後",
+        "knowledge": "戶部尚書賣糧、南國國師收糧",
+        "carry_forward": "京城的錢通"
+      }
+    },
+    {
+      "number": 146,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "皇帝的畫",
+      "youtube_title": "昏君皇帝寄到邊關的信只有一張豬啃豬腳的畫，翻到背面公主臉紅了",
+      "duration_s": 100,
+      "logline": "小滿要從皇帝的信裡讀出京城局勢，信卻畫得像小孩塗鴉——裝昏的人寫信也要裝。",
+      "hook": "驛馬又到，這次是皇帝親筆。小滿拆信，掉出來一張畫：一隻歪戴冠的豬在啃滷豬腳。",
+      "hook_type": "image",
+      "mid_hook": "畫的背面，用她教他的現代標點寫著：「錢通，已被阿渡請進王府喝茶。」",
+      "conflict": "弄清京城動向。",
+      "turn": "大家以為皇帝不會管邊關，他卻已經讓攝政王把戶部尚書「請」進王府——京城那頭早就動手了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "信尾一行小字：「別困在第三十五章。朕會去接。」小滿把信按在心口，抬頭看見媽媽在偷笑。",
+        "question": "皇帝真的會來雁門關嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xitong",
+        "muny"
+      ],
+      "spectacle": "疊影：京城御書房燭下，皇帝咬著筆桿畫豬；邊關帥帳裡同一張畫被小滿攤開，兩個畫面合成一格；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 210 日・子任務第 32 日」。",
+      "glamour_shot": "小滿捂著信紅了臉，偷笑時咬住下唇，燭光落在她袖口的墨漬上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "得知錢通已被攝政王請進王府"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "xiao-yun",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關帥帳",
+        "京城御書房（疊影）"
+      ],
+      "state": {
+        "time": "倒數 210 日・子任務第 32 日",
+        "knowledge": "錢通被請進王府；皇帝說會來接",
+        "carry_forward": "錢通在王府說了什麼"
+      }
+    },
+    {
+      "number": 147,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "帳不在我這",
+      "youtube_title": "攝政王用一桌滷味撬開戶部尚書的嘴，他招了賣糧三年，卻說帳在流放的御史手上",
+      "duration_s": 115,
+      "logline": "攝政王要在王府撬開戶部尚書的嘴，錢通卻把最要命的那本帳推給了已經流放的人。",
+      "hook": "疊影切回京城王府：錢通被按在一桌滷味前，攝政王只說一句：「吃，吃完說。」",
+      "hook_type": "line",
+      "mid_hook": "錢通吃到第三塊終於開口：三年十二萬石，全賣給南國糧行，收錢的是白衣國師。「可帳，不在我這。」",
+      "conflict": "拿到賣糧的帳。",
+      "turn": "大家以為錢通是主謀，他卻說自己只是辦事的；記帳的一直是當年的御史大夫鄭元，帳在他手上，誰也動不了他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "信的最後一行：「鄭元流放北荒，明日過雁門關。」太后抬頭看關外官道，一輛囚車正從黃沙裡駛來。",
+        "question": "帳在鄭元身上的哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xitong",
+        "xuanyi"
+      ],
+      "spectacle": "墨黑與銀的王府書房，一桌滷味的熱氣裡錢通的算盤散了一地，畫面一轉接上邊關黃沙裡駛來的囚車；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 210 日」。",
+      "glamour_shot": "攝政王坐在燈下一動不動，鳳眼垂著看錢通吃，指尖輕扣桌面。",
+      "setups": [
+        "s03-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "錢通招認：三年十二萬石賣給南國糧行，收錢的是國師"
+      ],
+      "characters": [
+        "shen-du",
+        "hubu",
+        "fang-meiling",
+        "gu-qingshan",
+        "fang-xiaoman",
+        "yushi-dafu",
+        "xitong-ui"
+      ],
+      "locations": [
+        "攝政王府書房",
+        "雁門關伙房"
+      ],
+      "state": {
+        "time": "倒數 210 日・子任務第 32 日夜",
+        "knowledge": "錢通招了，帳在鄭元手上；鄭元明日過關",
+        "carry_forward": "帳在哪"
+      }
+    },
+    {
+      "number": 148,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "囚車過關",
+      "youtube_title": "流放路上的老御史還在念禮法參太后，她只回三個字，用一件棉襖跟他砍價",
+      "duration_s": 110,
+      "logline": "方美玲要從流放路上的鄭元身上拿到賣糧帳，這個一輩子靠嘴吃飯的老御史卻只想談條件。",
+      "hook": "囚車停在關門口，鄭元咳了一聲，開口就引經據典：「太后擅出宮闈，《禮》云——」太后：「先吃飯。」",
+      "hook_type": "line",
+      "mid_hook": "鄭元開價：帳可以給，換北荒一件棉襖、一路三頓熱飯。太后：「棉襖給，飯兩頓。」",
+      "extra_hooks": [
+        "面板：「判定中，第 3 日。」灰字開始閃。"
+      ],
+      "conflict": "拿到帳。",
+      "turn": "大家以為鄭元會死扛到底，他卻是全朝最怕冷的人——太后用一件棉襖和菜市場的砍價，三句話就談成了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "鄭元拆開官袍內襯，抽出一本薄薄的帳冊：「三年，每一石都在這。」封面上蓋著一個朱紅的「裴」字。",
+        "question": "帳上的「裴」是國師的印嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "xitong"
+      ],
+      "spectacle": "黃沙關門前一輛囚車，車欄上掛著一件新棉襖，一本帳冊從官袍內襯裡抽出，朱紅的「裴」字在夕陽下發亮。",
+      "glamour_shot": "太后叉腰站在囚車前，一隻手比著「兩頓」，笑紋裡全是菜市場的得意。",
+      "setups": [],
+      "payoffs": [
+        "s03-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "用一件棉襖兩頓飯換到賣糧帳"
+      ],
+      "characters": [
+        "fang-meiling",
+        "yushi-dafu",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "s03-lao-ma",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關關門"
+      ],
+      "state": {
+        "time": "倒數 209 日・子任務第 33 日",
+        "knowledge": "帳到手，封面蓋著「裴」字",
+        "carry_forward": "帳裡寫了什麼"
+      }
+    },
+    {
+      "number": 149,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "關為什麼會破",
+      "youtube_title": "公主翻開老御史的帳才知道，書裡注定失守的邊關不是天災，是三年被人賣光了糧",
+      "duration_s": 130,
+      "logline": "小滿要用鄭元的帳把書裡「雁門關斷糧失守」的真相拼完，拼出來的是一場三個人的買賣。",
+      "hook": "小滿翻開帳冊第一頁，手指停在一行字上：「承平三年，雁門關，十二萬石，售南國。」",
+      "hook_type": "image",
+      "mid_hook": "帳冊每一頁三個簽押：戶部錢通出貨，御史鄭元記帳抽三成，南國國師收貨——簽押處都是那個「裴」字。",
+      "conflict": "揭開雁門關失守的真因。",
+      "turn": "小滿以為斷糧是天災、是書的慣性，帳一攤開才知道是人禍：戶部賣、御史記、國師收，書只替他們寫好了藉口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "太后把帳念給全關的兵聽，念完最後一頁，面板的灰字忽然不閃了，跳出一行：「判定結果：子時公布。」",
+        "question": "子時，系統會給她們什麼結果？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xitong",
+        "fanxiang",
+        "muny"
+      ],
+      "spectacle": "關牆上太后高舉帳冊，千名兵士安靜站著聽，每念一筆，落日裡就有一面舊旗被風吹起。",
+      "glamour_shot": "小滿捧帳冊立在太后身側，夕陽從側面照亮她咬緊的下唇與髻上的毛筆。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [
+        "m06"
+      ],
+      "general_payoffs": [
+        "雁門關失守的真因揭開：戶部把糧賣給南國，賣糧的帳在御史大夫鄭元手上",
+        "全關的兵知道三年的苦是誰造成的"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "gu-qingshan",
+        "yushi-dafu",
+        "s03-lao-ma",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 209 日・子任務第 33 日黃昏",
+        "knowledge": "雁門關會失守是因為戶部賣糧給南國，帳在鄭元手上，收貨的是國師",
+        "carry_forward": "子時的判定"
+      }
+    },
+    {
+      "number": 150,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "妳改了我的章",
+      "youtube_title": "亡國系統判定任務失敗，懲罰卻不扣，面板後面的人第一次直接叫出公主的名字",
+      "duration_s": 135,
+      "logline": "判定結果揭曉，系統要給母女一個答案，而面板後面的人終於直接對小滿說話。",
+      "hook": "子時，全關都睡了，只有母女坐在大鍋旁盯著面板。小滿：「媽，失敗會扣多少？」太后：「先吃。」",
+      "hook_type": "question",
+      "mid_hook": "面板亮了：「子任務判定：失敗。」紅字一閃，下面還有一行：「懲罰：期滿結算。」",
+      "conflict": "面對判定。",
+      "turn": "母女以為「失敗」就是最壞的消息，接下來的手打字才是：裴九不只看得見，他一直在看小滿。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "手打的字一個一個跳出來：「小滿，妳改了我的章。」小滿對著空氣回了一句：「那是我的坑。」",
+        "question": "被頂回去的裴九會怎麼報復？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xitong",
+        "fanxiang",
+        "muny"
+      ],
+      "spectacle": "雁門關牆上大鍋餘火未熄，紅色面板懸在夜空，「失敗」兩個字照亮一整排吃飽熟睡的兵。",
+      "glamour_shot": "母女並肩坐在鍋邊同時抬眼看面板，小滿抽下髻上的毛筆，像握刀一樣握著。",
+      "setups": [
+        "s03-t14"
+      ],
+      "payoffs": [
+        "s03-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "雁門關沒斷糧，亡國值再 −10",
+        "懲罰延到期滿結算"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "xitong-ui",
+        "pei-jiu",
+        "gu-qingshan"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 209 日・子任務第 33 日子時",
+        "knowledge": "子任務判定失敗、期滿結算；裴九直接對小滿說話",
+        "carry_forward": "裴九會怎麼反擊"
+      }
+    },
+    {
+      "number": 151,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "妳棄了",
+      "youtube_title": "公主頂了一句那是我的坑，系統面板瘋狂刷字罵她，媽媽伸手像趕蒼蠅一樣一揮",
+      "duration_s": 100,
+      "logline": "裴九被小滿頂回去後在面板上刷字施壓，母女要決定還要不要跟他對話，南國營裡同時有了動靜。",
+      "hook": "小滿那句「那是我的坑」剛出口，面板瘋狂刷字：「妳棄了。妳棄了。妳棄了。」",
+      "hook_type": "danger",
+      "mid_hook": "刷字停了，最後一行：「期滿那天，我會讓妳看見妳欠了多少。」總倒數 209 旁邊多了一個小數字：「結算：57 日。」",
+      "extra_hooks": [
+        "太后伸手在面板前一揮，像趕蒼蠅：「欠多少我替她還。」紅字停了一秒。"
+      ],
+      "conflict": "頂住裴九的施壓。",
+      "turn": "小滿以為自己會被罵得抬不起頭，媽媽一句「欠多少我還」就讓刷字停住——面板後面的人第一次遲疑。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "關外鼓聲大作，南國夜襲隊的火把摸到關下，照亮了送飯的那段城牆——阿桃正提著食盒走在那裡。",
+        "question": "阿桃在城牆上躲得過嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "muny",
+        "huduan",
+        "xitong"
+      ],
+      "spectacle": "夜空裡紅色面板被「妳棄了」三個字刷滿，一隻手從畫面下方伸進來一揮，紅字像蒼蠅一樣散開。",
+      "glamour_shot": "太后一揮手時袖子滑下又被她捲回去，回頭對女兒笑，笑紋在紅光裡很深。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母女發現裴九在意的是「棄坑」，而且怕太后"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "xitong-ui",
+        "pei-jiu",
+        "a-tao",
+        "s03-wu-ye"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 209 日・結算 57 日・夜",
+        "knowledge": "裴九在意小滿「棄坑」；南國夜襲",
+        "carry_forward": "阿桃在城牆上"
+      }
+    },
+    {
+      "number": 152,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "城牆上的食盒",
+      "youtube_title": "敵軍夜襲邊關，膽小宮女抱著食盒不肯丟，太后敲鍋指揮全關，火把退了人卻不見了",
+      "duration_s": 115,
+      "logline": "南國夜襲要搶回糧，顧青山要守住關門，阿桃卻在混亂裡被斥候盯上。",
+      "hook": "一支火箭落在阿桃腳邊的城磚上，她抱著食盒沒丟，反而往垛口跑：「飯不能灑！」",
+      "hook_type": "danger",
+      "mid_hook": "太后在關上敲鍋指揮，像西市收攤一樣喊：「左邊搬石頭！右邊抬水！」全關的兵第一次照「師父」的口令動。",
+      "extra_hooks": [
+        "面板：「雁門關遭襲。亡國值 +3。」小滿罵：「它在替南國加油！」"
+      ],
+      "conflict": "擊退夜襲。",
+      "turn": "大家以為南國要搶的是糧倉，烏野的目標卻是城牆上送飯的那個小宮女——太后身邊的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "南國的火把退了，全關正要歡呼，城牆下只剩阿桃的食盒，蓋子開著——人不見了。",
+        "question": "阿桃被帶去了哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huduan",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "夜色裡關牆上火把成串，鼓聲與旗影翻動，一只食盒從垛口慢動作墜落，米飯灑成一道白線。",
+      "glamour_shot": "阿桃抱著食盒在火光裡回頭，雙丫髻散了一邊，眼睛很亮。",
+      "setups": [
+        "s03-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全關照太后口令守住關門，擊退第一次夜襲"
+      ],
+      "characters": [
+        "a-tao",
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "s03-wu-ye",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 209 日・結算 57 日・夜",
+        "knowledge": "阿桃被南國斥候帶走",
+        "carry_forward": "阿桃在哪"
+      }
+    },
+    {
+      "number": 153,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "三十里",
+      "youtube_title": "傻將軍鐵甲沒扣好就翻上馬，一個人追出關外三十里，公主想起書裡這段寫著中伏",
+      "duration_s": 110,
+      "logline": "顧青山要一個人追出關外把阿桃帶回來，太后要守住剩下的關，只能看著他的火把越來越小。",
+      "hook": "顧青山鐵甲都沒扣好就翻上馬：「誰都別跟！」太后一把抓住韁繩：「你一個人？」",
+      "hook_type": "line",
+      "mid_hook": "小滿翻出記得的那幾行裴九的字：「宮婢被擄，將軍追出關，中伏。」",
+      "extra_hooks": [
+        "面板：「偵測到劇情偏離。」關外的火把一閃一閃。"
+      ],
+      "conflict": "追回阿桃。",
+      "turn": "小滿以為這是裴九寫好的陷阱，太后卻問：「那一章裡，他身後有人接應嗎？」——她讓石頭帶十個人走另一條沙溝，遠遠跟著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "顧青山的火把停在關外三十里的沙丘上，接著熄了。",
+        "question": "顧青山中了裴九寫的伏嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "huduan",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "夜色大漠裡一支火把越跑越遠，關牆上千雙眼睛看著它，最後在沙丘頂上熄滅。",
+      "glamour_shot": "顧青山翻身上馬回頭的那一格，月光照著他的濃眉與臉上的疤，眼神只有一個方向。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "太后派石頭帶十人遠遠接應"
+      ],
+      "characters": [
+        "gu-qingshan",
+        "fang-meiling",
+        "fang-xiaoman",
+        "s03-shi-tou",
+        "xitong-ui",
+        "pei-jiu"
+      ],
+      "locations": [
+        "雁門關關門",
+        "關外沙丘"
+      ],
+      "state": {
+        "time": "倒數 208 日・結算 56 日・凌晨",
+        "knowledge": "裴九寫過「將軍追出關，中伏」",
+        "carry_forward": "火把為什麼熄了"
+      }
+    },
+    {
+      "number": 154,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "沙丘後面",
+      "youtube_title": "將軍摸進敵營救人，被綁的小宮女正在教敵國斥候滷蛋，滷到一半斥候頭領拔刀",
+      "duration_s": 110,
+      "logline": "顧青山要在斥候營裡帶走阿桃，阿桃卻已經用太后教的本事替他拖住了時間。",
+      "hook": "沙丘後，顧青山自己吹熄火把貼地爬行；前面斥候火堆旁，阿桃被綁在車邊，正在教斥候怎麼滷蛋。",
+      "hook_type": "image",
+      "mid_hook": "阿桃一邊發抖一邊說：「蛋要泡一夜才入味。」斥候們聽得入神，烏野不耐煩地走過來。",
+      "conflict": "救人。",
+      "turn": "大家以為阿桃只會哭，她卻用滷蛋拖了一個時辰——守夜的斥候全圍在火堆邊聽她講，沒人看外面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "顧青山從黑暗裡站起來，烏野把刀架在糧車上：「你放糧，我放人。」顧青山看著阿桃，又回頭看遠處的關。",
+        "question": "顧青山會拿關裡的糧換阿桃嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huduan",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "大漠夜裡一圈斥候圍著火堆，火光外一個高大的黑影從沙裡慢慢站起來；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 208 日・結算 56 日」。",
+      "glamour_shot": "阿桃在火光裡抬頭看見顧青山，含淚的大眼睛一下子亮了。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿桃用滷蛋拖住斥候營一個時辰"
+      ],
+      "characters": [
+        "gu-qingshan",
+        "a-tao",
+        "s03-wu-ye",
+        "fang-meiling",
+        "fang-xiaoman",
+        "xitong-ui"
+      ],
+      "locations": [
+        "南國斥候營"
+      ],
+      "state": {
+        "time": "倒數 208 日・結算 56 日・凌晨",
+        "knowledge": "烏野要拿糧換人",
+        "carry_forward": "顧青山怎麼選"
+      }
+    },
+    {
+      "number": 155,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "我沒守規矩",
+      "youtube_title": "敵將要他拿全關的糧換人，傻將軍扔出一包滷牛腱，天亮時他背著小宮女走回關門",
+      "duration_s": 120,
+      "logline": "顧青山要在不交出關裡一粒米的情況下帶阿桃回家，烏野卻要他二選一。",
+      "hook": "顧青山把身上唯一的東西扔給烏野——太后塞給他的一包滷牛腱：「糧沒有，這個有。」",
+      "hook_type": "line",
+      "mid_hook": "烏野咬了一口滷牛腱，愣住，回頭看他那群三天沒吃飽的斥候；他鬆手了：「帶走。下次別讓我遇到。」",
+      "conflict": "帶阿桃回來。",
+      "turn": "烏野以為北昭的將軍會用糧換人，顧青山卻用一包滷肉讓一個餓肚子的人放了人——兩邊都是被國師餓著的兵。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧青山把阿桃放下，跪在太后面前：「師父，我沒守規矩，先去救人了。」太后拍了一下他的頭盔：「傻子，這就是規矩。」",
+        "question": "阿桃會怎麼回應這個傻子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "huduan",
+        "tianchong"
+      ],
+      "spectacle": "晨光裡關外沙地上一大一小兩個影子拉得很長，關牆上的兵一排排站起來；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 207 日・結算 55 日」。",
+      "glamour_shot": "顧青山背著阿桃逆光走回，鐵甲上全是沙，咧嘴一口白牙。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿桃平安回來，一粒糧都沒交出去"
+      ],
+      "characters": [
+        "gu-qingshan",
+        "a-tao",
+        "s03-wu-ye",
+        "fang-meiling",
+        "fang-xiaoman",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "關外沙地",
+        "雁門關關門"
+      ],
+      "state": {
+        "time": "倒數 207 日・結算 55 日・清晨",
+        "knowledge": "阿桃回來了；烏野也是被國師餓著的兵",
+        "carry_forward": "阿桃和顧青山"
+      }
+    },
+    {
+      "number": 156,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "挑水",
+      "youtube_title": "將軍違了自己立的軍規罰挑三天水，最膽小的宮女在井邊攔住他，遞上一件縫好的披風",
+      "duration_s": 105,
+      "logline": "顧青山自罰挑三天水，阿桃要把話說出口，全關的兵卻都在看戲。",
+      "hook": "顧青山挑著兩桶水走過校場，全關都在笑——他違了自己立的伙房規矩，因為背了阿桃一路。",
+      "hook_type": "image",
+      "mid_hook": "阿桃在井邊攔住他，遞上一件縫好的披風——被斥候扯破的那件，裡襯繡了一顆歪歪的桃子。",
+      "conflict": "讓兩人把話說開。",
+      "turn": "大家以為傻將軍會先開口，他卻一句都說不出來；是全關最膽小的阿桃先問：「你下次還追嗎？」「追。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "太后看著兩人笑，回頭卻發現小滿不見了；營房牆上貼滿新寫的紙，最上面一張：「第三十五章　雁門關沒有失守。」",
+        "question": "小滿要自己重寫第三十五章？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "校場井邊黃沙裡，一件繡著桃子的披風在風裡展開，挑水的扁擔斜靠在井欄上；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 204 日・結算 52 日」。",
+      "glamour_shot": "阿桃踮腳替顧青山披上披風、低頭不敢看他，耳根通紅。",
+      "setups": [],
+      "payoffs": [
+        "s03-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿桃與顧青山的心意落定一半"
+      ],
+      "characters": [
+        "gu-qingshan",
+        "a-tao",
+        "fang-meiling",
+        "fang-xiaoman",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關校場井邊",
+        "營房"
+      ],
+      "state": {
+        "time": "倒數 204 日・結算 52 日",
+        "knowledge": "阿桃和顧青山說開了；小滿開始寫自己的第三十五章",
+        "carry_forward": "寫了會怎樣"
+      }
+    },
+    {
+      "number": 157,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "我的第三十五章",
+      "youtube_title": "公主在營房牆上重寫別人寫好的亡國章節，每寫一行系統就警告一次，另一張紙自己長出字",
+      "duration_s": 110,
+      "logline": "小滿要用自己的筆把第三十五章寫成「雁門關沒失守」，每寫一行，系統就警告一次。",
+      "hook": "小滿在營房牆前寫，毛筆每落一個字，牆上另一張紙——她憑記憶抄下的裴九版第三十五章——就捲起一角。",
+      "hook_type": "image",
+      "mid_hook": "面板一行行刷：「警告。」「警告。」「未授權劇本達三百字。」小滿沒停：「我寫了二十五章，不差這一章。」",
+      "conflict": "寫完自己的第三十五章。",
+      "turn": "母女以為系統會直接扣壽命逼她停，系統卻開始「搶寫」：裴九那張紙上的字自己變多，兩個版本比誰快。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "裴九那張紙上自己長出一行新字：「宮婢再被擄，將軍不歸。」小滿的筆尖停在紙上。",
+        "question": "小滿寫得比裴九快嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "muny",
+        "huduan"
+      ],
+      "spectacle": "營房牆上兩張紙並排，一張的墨字在燭光裡自己生長，一張被小滿的毛筆追著寫，紅色警告像雪片飄落。",
+      "glamour_shot": "小滿燭光下側臉咬唇寫字，髻散了一縷，袖口的墨漬一路染到手腕。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小滿的第三十五章寫到一半"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "xitong-ui",
+        "pei-jiu",
+        "a-tao"
+      ],
+      "locations": [
+        "雁門關營房"
+      ],
+      "state": {
+        "time": "倒數 198 日・結算 46 日・夜",
+        "knowledge": "系統會搶寫；裴九寫了「將軍不歸」",
+        "carry_forward": "誰寫得快"
+      }
+    },
+    {
+      "number": 158,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "那一頁燒了",
+      "youtube_title": "公主寫完自己的最後一句，牆上別人寫的那一頁自己燒成灰，她扣了兩年壽命看都沒看",
+      "duration_s": 120,
+      "logline": "小滿要寫完自己的第三十五章，代價是系統扣在她身上的壽命。",
+      "hook": "小滿把筆蘸滿，一口氣寫下最後一句：「顧青山回來了，阿桃在等他吃飯。」",
+      "hook_type": "line",
+      "mid_hook": "最後一筆落下，牆上裴九的那一頁從角落開始捲黑，燒成一片灰飄出窗外——火只燒那一頁，牆沒事。",
+      "extra_hooks": [
+        "面板：「未授權改寫完成。壽命 −2 年。」小滿沒看，太后看了。"
+      ],
+      "conflict": "寫完。",
+      "turn": "小滿以為贏的是自己的筆，太后看見的卻是面板：壽命扣在女兒身上，女兒連看都沒看。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "太后伸手擋住面板上「−2 年」那一行，像擋女兒的眼睛：「別看，媽記著。」小滿靠上她肩膀，窗外的鼓聲又響了。",
+        "question": "南國第二次夜襲要來了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "muny",
+        "huduan"
+      ],
+      "spectacle": "燭光營房裡一頁紙從角落捲黑，灰燼像黑蝶飛出窗外，飛進雁門關的夜空。",
+      "glamour_shot": "母女並肩靠著牆，太后一手擋面板一手攬女兒，小滿閉眼笑著，睫毛上還有淚。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小滿的第三十五章寫完，裴九那一頁燒掉"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "xitong-ui",
+        "pei-jiu"
+      ],
+      "locations": [
+        "雁門關營房"
+      ],
+      "state": {
+        "time": "倒數 198 日・結算 46 日・夜",
+        "knowledge": "裴九的第三十五章燒了，小滿扣了兩年",
+        "carry_forward": "鼓聲"
+      }
+    },
+    {
+      "number": 159,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "關門快破",
+      "youtube_title": "敵軍傾營夜襲撞木三撞關門裂開，傻將軍一個人頂在門後回頭大喊：師父快走",
+      "duration_s": 115,
+      "logline": "南國傾營夜襲要奪回雁門關，顧青山的兵吃飽了卻不夠多，關門快撐不住。",
+      "hook": "六天後的夜裡，南國的撞木第三次撞上關門，門閂裂開一道縫。",
+      "hook_type": "danger",
+      "mid_hook": "顧青山把阿桃推進伙房：「鎖門，別出來。」阿桃反手把門扣上——扣在外面，她自己站在門外遞石頭。",
+      "extra_hooks": [
+        "面板：「雁門關失守機率：87%。」小滿咬牙：「他把我的第三十五章當廢紙。」"
+      ],
+      "conflict": "守住關門。",
+      "turn": "大家以為裴九那一頁燒了書就改了，結果書換了個方式：不是斷糧破關，是南國不顧一切來撞門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "門閂斷了，關門開出一人寬的縫，火把擠進來；顧青山一個人頂在門後，回頭大喊：「師父，走！」",
+        "question": "太后會丟下徒弟走嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        5,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "huduan",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "關門後一排人用肩膀頂門，門縫外火把與煙塵擠進來，撞木的鼓點一聲比一聲重。",
+      "glamour_shot": "阿桃站在伙房門外一手抱石頭，散亂的雙丫髻下眼神第一次不抖。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全關照太后口令排人鏈運石頂門",
+        "顧青山把被撞倒的石頭拖到門後"
+      ],
+      "characters": [
+        "gu-qingshan",
+        "a-tao",
+        "fang-meiling",
+        "fang-xiaoman",
+        "s03-shi-tou",
+        "s03-lao-ma",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關關門",
+        "伙房"
+      ],
+      "state": {
+        "time": "倒數 192 日・結算 40 日・夜",
+        "knowledge": "書換了方式要讓關破；關門裂開",
+        "carry_forward": "太后走不走"
+      }
+    },
+    {
+      "number": 160,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "皇帝穿鐵甲",
+      "youtube_title": "關門將破之際關外響起北昭鼓聲，全朝以為在宮裡睡覺的昏君穿著鐵甲勒馬關下",
+      "duration_s": 145,
+      "logline": "關門將破的一刻，皇帝帶禁軍從京城趕到，要在全關面前第一次不裝昏。",
+      "hook": "太后沒走，她扛起一袋米頂在顧青山旁邊：「我是你師父，我走哪去？」",
+      "hook_type": "line",
+      "mid_hook": "關外忽然響起另一種鼓聲——不是南國的，是北昭禁軍的；南國的火把陣從後面亂了。",
+      "extra_hooks": [
+        "小滿從袖裡摸出半枚銅錢，手心發燙。"
+      ],
+      "conflict": "守住關。",
+      "turn": "大家以為援軍是攝政王派的，馬上的人卻沒穿龍袍、穿著鐵甲——是全朝都以為在宮裡睡覺的皇帝。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "皇帝在關下勒馬，舉起半枚銅錢，大喊：「顧青山！開門，朕來接人！」全關的兵第一次看見皇帝的眼神那麼亮。",
+        "question": "不裝昏的皇帝要怎麼面對全關？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "huduan",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "關下黃沙裡禁軍火把一字排開，鐵甲皇帝勒馬舉起半枚銅錢，關上千張臉同時回頭；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 192 日・結算 40 日」。",
+      "glamour_shot": "皇帝鐵甲在火光裡抬頭，從渙散到極亮的那一秒眼神，盔下一縷髮被風吹起。",
+      "setups": [],
+      "payoffs": [
+        "s03-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "禁軍到關，南國夜襲陣腳大亂",
+        "皇帝帶著另外半枚銅錢來接小滿"
+      ],
+      "characters": [
+        "fang-meiling",
+        "gu-qingshan",
+        "fang-xiaoman",
+        "xiao-yun",
+        "a-tao",
+        "s03-shi-tou",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關關門",
+        "關下"
+      ],
+      "state": {
+        "time": "倒數 192 日・結算 40 日・夜",
+        "knowledge": "皇帝親自到關，全關看見他不裝昏",
+        "carry_forward": "皇帝怎麼打這一仗"
+      }
+    },
+    {
+      "number": 161,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "朕不裝了",
+      "youtube_title": "被罵了三年的昏君一進邊關就連下三道軍令，一筆標出敵國三處糧倉，全關的兵看傻了",
+      "duration_s": 120,
+      "logline": "皇帝要在雁門關上第一次當眾指揮，全關的兵卻還記得他是個「昏君」。",
+      "hook": "關門一開，皇帝第一句話不是問安：「左翼三百，上西牆。弓手，等鼓。」",
+      "hook_type": "line",
+      "mid_hook": "南國撞門隊被禁軍與關上兩面夾住，退了；鼓聲一停，整座關靜得只剩風聲——所有兵都在看皇帝。",
+      "extra_hooks": [
+        "面板：「皇帝民心 +40。亡國值 −12。」太后小聲：「這次它算得對。」"
+      ],
+      "conflict": "擊退南國第二次夜襲。",
+      "turn": "兵以為皇帝來邊關是被攝政王逼的，他卻在佈防圖上一筆標出南國三處糧倉——裝昏三年，每一份邊報他都看過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天亮南國退回營中，一騎舉白旗來到關下：「南國使臣，求見北昭皇帝。」皇帝看小滿一眼：「書裡這段，誰寫的？」",
+        "question": "南國使臣這一趟來談什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "tianchong",
+        "xitong"
+      ],
+      "spectacle": "晨光裡的關牆上，皇帝鐵甲立在佈防圖前，身後千名兵士一齊單膝跪下，旗影掠過。",
+      "glamour_shot": "皇帝下令時側臉冷峻、眼神極亮，冠沒戴，鬢髮被晨風吹亂；小滿在他身後看呆了。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "擊退第二次夜襲",
+        "皇帝當眾不裝，民心 +40、亡國值 −12"
+      ],
+      "characters": [
+        "xiao-yun",
+        "gu-qingshan",
+        "fang-meiling",
+        "fang-xiaoman",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 191 日・結算 39 日",
+        "knowledge": "皇帝當眾不裝；南國求見",
+        "carry_forward": "使臣來談什麼"
+      }
+    },
+    {
+      "number": 162,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "一字一句",
+      "youtube_title": "敵國使臣照禮念了三百字，北昭皇帝只回四個字，接著把一本賣糧帳一頁頁念完",
+      "duration_s": 115,
+      "logline": "皇帝要在南國使臣面前把雁門關的帳討回來，使臣卻想用「軍糧」二字反咬北昭搶劫。",
+      "hook": "南國使臣在關下照禮念了三百字，皇帝只回四個字：「糧，是我的。」",
+      "hook_type": "line",
+      "mid_hook": "小滿遞上鄭元帳冊的抄本，皇帝一頁頁念出年份、石數、價錢——使臣的臉一頁比一頁白。",
+      "conflict": "外交對峙。",
+      "turn": "使臣以為北昭皇帝是昏君、念不完一本帳，皇帝卻連南國糧行哪一天收貨都背得出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "使臣臨走前丟下一句：「我國王子要親自來見。」又看了太后一眼：「國師說，帶滷味。」",
+        "question": "赫連親自來，國師打什麼算盤？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "關下南國綠金旗隊列整齊，關上皇帝捧帳朗讀，每念一頁，關下就有一面旗低下去；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 190 日・結算 38 日」。",
+      "glamour_shot": "小滿遞帳時與皇帝指尖相碰，他沒看她，嘴角卻往上一提。",
+      "setups": [
+        "s03-t11"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "用賣糧帳當眾壓住南國使臣"
+      ],
+      "characters": [
+        "xiao-yun",
+        "fang-xiaoman",
+        "fang-meiling",
+        "gu-qingshan",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 190 日・結算 38 日",
+        "knowledge": "赫連要親自來，國師點名要滷味",
+        "carry_forward": "赫連來做什麼"
+      }
+    },
+    {
+      "number": 163,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "替皇上看椅子",
+      "youtube_title": "皇帝離京龍椅空著，御史要攝政王擔罪，他把二十一本彈章拍上御案，坐在台階上",
+      "duration_s": 110,
+      "logline": "皇帝離京，御史臺把矛頭轉向攝政王；攝政王要替遠在邊關的皇帝與太后擋下整個朝堂。",
+      "hook": "疊影切回京城朝堂：龍椅空著，群臣譁然，新任御史出班：「皇上擅離京城，攝政王當擔其罪！」",
+      "hook_type": "danger",
+      "mid_hook": "攝政王把一疊彈章放上御案：二十一本參太后的彈章，全蓋著同一個御史臺小吏的私印——那人是錢通的外甥。",
+      "conflict": "穩住京城。",
+      "turn": "群臣以為攝政王要趁皇帝不在奪權，他卻當眾坐在龍椅下的台階上：「臣替皇上看著椅子。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "攝政王信的最後一行：「皇上何時回？朝堂最多撐一個月。」皇帝把信遞給小滿，等她開口。",
+        "question": "皇帝要先回京，還是留在關上？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huduan",
+        "dalian",
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "冷白朱紅的朝堂上一把空龍椅，攝政王墨色蟒袍坐在椅下第一級台階，滿朝文武不敢出聲；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 188 日・結算 36 日」。",
+      "glamour_shot": "攝政王坐在台階上抬眼看群臣，鳳眼冷得像霜；麟妃派人送來的滷味食盒就放在他腳邊。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "攝政王揭出彈章全出自錢通的外甥，京城壓住了"
+      ],
+      "characters": [
+        "shen-du",
+        "lin-fei",
+        "xiao-yun",
+        "fang-xiaoman",
+        "fang-meiling",
+        "xitong-ui"
+      ],
+      "locations": [
+        "朝堂",
+        "雁門關帥帳"
+      ],
+      "state": {
+        "time": "倒數 188 日・結算 36 日",
+        "knowledge": "攝政王撐朝堂，最多一個月",
+        "carry_forward": "皇帝留還是回"
+      }
+    },
+    {
+      "number": 164,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "隔關喊話",
+      "youtube_title": "敵國王子帶百騎到關下嘲北昭皇帝是昏君，兩國的兵都拔刀，太后扯開嗓子：先吃飯",
+      "duration_s": 110,
+      "logline": "赫連親自到關下談判，皇帝與他隔關喊話越喊越僵，太后要在兩個年輕人打起來之前插一嘴。",
+      "hook": "小滿說：「留。」話音未落，關下號角長鳴：南國王子赫連帶著百騎，親自到了關前。",
+      "hook_type": "image",
+      "mid_hook": "赫連在關下大笑：「北昭皇帝，聽說你是昏君？」皇帝在關上：「聽說你們國師替你打仗？」兩邊的兵同時拔刀。",
+      "extra_hooks": [
+        "面板：「雁門關失守機率：61%。」數字還在跳。"
+      ],
+      "conflict": "不讓談判變開戰。",
+      "turn": "大家以為太后會出面講理，她卻扯開嗓子喊：「都別打，先吃飯！」兩邊的兵全愣住了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "赫連仰頭看太后：「吃飯？那我上去。」他獨自下馬，空著手走向關門。",
+        "question": "敵國王子獨自上關，是誠意還是陷阱？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "關下百騎金飾在陽光下閃成一片，關上北昭的鐵甲一排，中間黃沙裡一個人下馬步行。",
+      "glamour_shot": "赫連長辮披肩、仰頭大笑，皮甲上的金飾閃光；皇帝在關上冷冷俯視，兩張臉隔著一道關牆對切。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "太后一嗓子把隔關叫陣變成請吃飯"
+      ],
+      "characters": [
+        "xiao-yun",
+        "nan-wang",
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆",
+        "關下"
+      ],
+      "state": {
+        "time": "倒數 186 日・結算 34 日",
+        "knowledge": "赫連要獨自上關吃飯",
+        "carry_forward": "他上來做什麼"
+      }
+    },
+    {
+      "number": 165,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "赫連吃滷味",
+      "youtube_title": "敵國王子獨自上關一口氣吃了三碗滷味，說出國宴那天白衣國師吃完偷偷哭了",
+      "duration_s": 115,
+      "logline": "赫連獨自上關吃飯，方美玲要用一桌滷味讓敵國王子說真話，皇帝卻全程冷著臉盯著他看小滿。",
+      "hook": "赫連跨進關門，顧青山的兵全指著他；他只聞了一下：「是那個味道。」",
+      "hook_type": "line",
+      "mid_hook": "赫連吃到第三碗停不下來，太后再添一勺：「國宴那碗好吃，還是這碗？」「這碗。國宴那天國師也吃了，他哭了。」",
+      "conflict": "讓赫連說真話。",
+      "turn": "大家以為赫連是來施壓的，他卻是來問：「國師說北昭必亡，可你們怎麼越打越飽？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "赫連放下碗：「國師說，照書打就行，書寫完他就回家。」母女同時抬頭：「回家？」",
+        "question": "書寫完，國師就能回家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "關上一張長桌，敵我兩國的兵分坐兩邊，滷鍋白煙從中間升起，面板倒數 186 在煙裡若隱若現。",
+      "glamour_shot": "赫連捧碗大笑，金飾在燭光裡閃；對面皇帝冷著臉夾走小滿的滷蛋，耳根卻紅了。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "赫連卸下戒心，說出國師的話"
+      ],
+      "characters": [
+        "nan-wang",
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-yun",
+        "gu-qingshan",
+        "a-tao",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關帥帳"
+      ],
+      "state": {
+        "time": "倒數 186 日・結算 34 日・夜",
+        "knowledge": "國師說書寫完就能回家；他要南國照書打",
+        "carry_forward": "回家的條件"
+      }
+    },
+    {
+      "number": 166,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "書不聽他的",
+      "youtube_title": "敵國王子說國師每晚寫一卷紙寫完就燒，燒完總說一句又改了，公主聽完笑了",
+      "duration_s": 105,
+      "logline": "母女要從赫連嘴裡問出國師給南國的「書」寫了什麼，赫連卻只聽國師說過，從沒看過。",
+      "hook": "太后把赫連的碗收走：「你再說一次，國師怎麼說的？」赫連：「北昭必亡。照書打就行。」",
+      "hook_type": "line",
+      "mid_hook": "赫連說國師每晚對著一卷紙寫字，寫完就燒，燒完總說：「又改了。」",
+      "conflict": "摸清國師的計畫。",
+      "turn": "母女以為國師在南國呼風喚雨，赫連卻說他每天都很焦躁，因為「書不聽他的了」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "赫連起身要走：「我回去，國師會問我看見什麼。」他看著太后：「我該怎麼說？」",
+        "question": "太后要讓赫連帶什麼話回去？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "muny"
+      ],
+      "spectacle": "疊影：南國宮殿深處一盞孤燈，白衣人把寫滿字的紙卷投進火盆，火光映出半張臉；切回母女的主觀鏡頭，紅色面板角落跳著「倒數 185 日・結算 33 日」。",
+      "glamour_shot": "小滿聽到「又改了」時偷偷握拳，眼睛亮得像點了燈，嘴角那點倔全露出來。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道國師的書「不聽他的」，每次改寫他都要重寫"
+      ],
+      "characters": [
+        "nan-wang",
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-yun",
+        "xitong-ui",
+        "pei-jiu"
+      ],
+      "locations": [
+        "雁門關帥帳",
+        "南國國師居所（疊影）"
+      ],
+      "state": {
+        "time": "倒數 185 日・結算 33 日",
+        "knowledge": "國師每晚寫書又燒，書不聽他的",
+        "carry_forward": "赫連帶什麼話回去"
+      }
+    },
+    {
+      "number": 167,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "不在他的書裡",
+      "youtube_title": "敵國王子臨走說出一句話：國師的書裡有昏君有權奸有傻將軍，就是沒有妳們母女",
+      "duration_s": 115,
+      "logline": "赫連臨走前說出一句他一直想不通的話，小滿從這句話裡聽懂了裴九最怕的事。",
+      "hook": "太后把一包滷味塞進赫連懷裡：「就說北昭太后請他回來吃飯。」赫連笑了，又停住：「可是……」",
+      "hook_type": "line",
+      "mid_hook": "「國師的書裡，北昭有昏君、權奸、傻將軍。」赫連看著母女：「沒有太后，也沒有長公主。」",
+      "extra_hooks": [
+        "面板閃了一下又穩住，像有人倒抽一口氣。"
+      ],
+      "conflict": "理解裴九的弱點。",
+      "turn": "小滿以為裴九的後半本只是寫得狠，原來他根本沒寫她們——母女是他書裡的空白，所以每一步都在他意料之外。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小滿翻出記憶裡自己的前半本：太后是個沒名字的配角，長公主只有一句台詞。她抬頭看媽媽，張口又閉上。",
+        "question": "小滿寫的太后，照的是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "muny",
+        "tianchong"
+      ],
+      "spectacle": "關門口夕陽裡赫連懷抱一包滷味回望，身後母女的影子長長地鋪在黃沙上，面板紅光在兩人頭頂一閃。",
+      "glamour_shot": "太后塞滷味時順手替赫連理了理歪掉的辮子，像替自家孩子理衣領；赫連愣住。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "母女知道自己不在裴九的書裡，是他算不到的人"
+      ],
+      "characters": [
+        "nan-wang",
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-yun",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關關門"
+      ],
+      "state": {
+        "time": "倒數 185 日・結算 33 日・黃昏",
+        "knowledge": "裴九的書裡沒有母女",
+        "carry_forward": "小滿寫太后時想的是誰"
+      }
+    },
+    {
+      "number": 168,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "沒名字的配角",
+      "youtube_title": "公主承認書裡那個沒名字的太后是照誰寫的，媽媽聽完只問一句：我演得怎樣？",
+      "duration_s": 105,
+      "logline": "小滿要跟媽媽承認書裡那個沒名字的太后寫得很少，太后卻只想知道自己在書裡有沒有好好吃飯。",
+      "hook": "太后沒等女兒說完就笑了：「妳寫我了？我演得怎樣？」",
+      "hook_type": "line",
+      "mid_hook": "小滿念出原書裡太后唯一一段：「太后嘮叨，愛罵人，罵完給人盛飯。」太后：「這不就是我嗎。」母女同時笑出聲。",
+      "conflict": "母女說開。",
+      "turn": "小滿以為媽媽會怪她寫得太少，媽媽卻說：「一段就夠了，妳記得我。」——兩人都沒注意，面板角落「異常角色」四個小字一閃。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "那四個小字又閃了一下，變成一整行：「異常角色掃描中：2。」",
+        "question": "系統要對兩個「異常角色」做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "muny",
+        "ganren",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "營房裡燭火一跳，牆上小滿的章節紙全被風掀起，紅色面板在紙縫間掃過一道細線。",
+      "glamour_shot": "母女頭靠頭笑成一團，太后歪掉的髻抵著女兒的雙環髻，毛筆從髻上滑下來。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母女說開：書裡那段太后就是媽媽的樣子"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-yun",
+        "gu-qingshan",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關營房"
+      ],
+      "state": {
+        "time": "倒數 184 日・結算 32 日",
+        "knowledge": "系統在掃描兩個異常角色",
+        "carry_forward": "掃描完會怎樣"
+      }
+    },
+    {
+      "number": 169,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "南國的兵也餓",
+      "youtube_title": "斷糧第三十天敵軍斥候跪在關下，不求糧只求一鍋湯，太后說湯給糧不給",
+      "duration_s": 110,
+      "logline": "南國營斷糧太久，烏野帶人來關下討一鍋湯；方美玲要決定給不給敵人飯吃。",
+      "hook": "天亮，關外南國營裡傳來的不是鼓聲，是一片空鍋碗的碰撞聲——南國斷糧第三十天。",
+      "hook_type": "image",
+      "mid_hook": "烏野跪在關下：「不求糧，求一鍋湯，給營裡那些十五歲的。」顧青山看師父，皇帝也看太后。",
+      "extra_hooks": [
+        "面板：「南國斷糧值：100%。」——子任務那一欄，反著完成了一整條。"
+      ],
+      "conflict": "給不給。",
+      "turn": "大家以為太后會說「活該」，她說：「湯給，糧不給。」一鍋湯讓南國的兵知道北昭不是書裡寫的樣子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "南國營升起一縷炊煙，三十天來第一縷；關上沒有人歡呼，石頭小聲說：「他們也有娘。」",
+        "question": "喝了北昭湯的南國，還會再打嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "dalian",
+        "tianchong"
+      ],
+      "spectacle": "晨光大漠裡一口大鍋被抬出關門，兩國的兵隔著鍋對望，南國營升起第一縷細細的炊煙。",
+      "glamour_shot": "太后站在關門口親手舀湯，捲袖的手臂被熱氣熏紅，回頭對皇帝挑眉。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "子任務反著完成：南國斷糧值 100%",
+        "一鍋湯換來南國斥候的敬意"
+      ],
+      "characters": [
+        "fang-meiling",
+        "gu-qingshan",
+        "xiao-yun",
+        "fang-xiaoman",
+        "s03-wu-ye",
+        "s03-shi-tou",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關關門"
+      ],
+      "state": {
+        "time": "倒數 182 日・結算 30 日",
+        "knowledge": "南國斷糧值 100%，北昭給了一鍋湯",
+        "carry_forward": "赫連的回應"
+      }
+    },
+    {
+      "number": 170,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "書的錯誤",
+      "youtube_title": "敵國王子帶回國師的話：妳們母女是書的錯誤，他要改掉；太后手背浮出一道擦痕",
+      "duration_s": 140,
+      "logline": "赫連帶回國師的話，母女第一次知道裴九打算怎麼對付她們。",
+      "hook": "赫連帶著空湯鍋回到關下，親手把鍋還給太后：「國師說不准收北昭的東西。我還是收了。」",
+      "hook_type": "line",
+      "mid_hook": "赫連壓低聲音：「國師說，妳們是書的錯誤。他要把錯誤改掉。」",
+      "extra_hooks": [
+        "皇帝一步站到小滿前面，手按劍柄：「誰敢改她。」"
+      ],
+      "conflict": "聽懂國師的威脅。",
+      "turn": "大家以為國師要派兵或派人潛進關，他用的方式比兵更可怕：直接從書裡擦掉她們。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "面板跳出：「偵測到異常角色：太后、長公主。修正中。」太后低頭，手背上浮出一道淡淡的、像紙被橡皮擦過的白痕。",
+        "question": "被「修正」的母女會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "tianchong"
+      ],
+      "spectacle": "關下黃沙裡赫連單騎遠去，關上紅色面板「修正中」的字一個個亮起，太后手背上的白痕在夕陽裡發著淡光。",
+      "glamour_shot": "皇帝一步擋在小滿前面，夕陽把他的側臉與盔纓照成金色，小滿抬眼看他。",
+      "setups": [
+        "s03-t12"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "赫連當眾違了國師一次：收了北昭的湯"
+      ],
+      "characters": [
+        "nan-wang",
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-yun",
+        "gu-qingshan",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關關門"
+      ],
+      "state": {
+        "time": "倒數 180 日・結算 28 日",
+        "knowledge": "系統開始修正母女；太后手上出現第一道擦痕",
+        "carry_forward": "擦痕會怎麼長"
+      }
+    },
+    {
+      "number": 171,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "藏起來的手",
+      "youtube_title": "太后把手藏進袖子說是油濺的，女兒一把抓出來：油濺的不會是白的",
+      "duration_s": 110,
+      "logline": "方美玲要瞞住女兒手上的擦痕，小滿卻在一夜之間數到了兩道。",
+      "hook": "太后把手縮進寬袖裡笑著舀湯：「沒事，油濺的。」小滿一把抓出她的手：「媽，油濺的不是白的。」",
+      "hook_type": "line",
+      "mid_hook": "面板：「修正進度：2%。」第二道白痕浮在第一道旁邊，像有人拿橡皮擦慢慢擦一張紙。",
+      "conflict": "面對擦痕。",
+      "turn": "太后以為只要瞞住女兒就行，小滿早就在算：一天一道，到期滿那天，媽媽的手就沒了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "小滿抓起毛筆：「他擦妳，我就寫妳。」太后按住她的手：「上次寫扣了兩年。」母女的手疊在同一支筆上。",
+        "question": "小滿會不會拿壽命換媽媽？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "muny",
+        "ganren",
+        "xitong"
+      ],
+      "spectacle": "燭光下一隻有刀繭的手背，兩道白痕像被擦掉的紙，紅色面板的「2%」倒映在湯面上。",
+      "glamour_shot": "小滿握著媽媽的手抬眼，含淚卻倔，髻上的毛筆被她一把抽下來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小滿算出修正的速度：一天一道"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "a-tao",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關伙房"
+      ],
+      "state": {
+        "time": "倒數 179 日・結算 27 日",
+        "knowledge": "修正一天一道擦痕；小滿想用寫的對抗",
+        "carry_forward": "寫還是不寫"
+      }
+    },
+    {
+      "number": 172,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "第一章",
+      "youtube_title": "公主提筆想把媽媽寫回來，筆停在紙上：我寫的第一章第一句，是什麼？",
+      "duration_s": 115,
+      "logline": "小滿要用筆對抗系統的修正，卻發現系統擦的不只是媽媽的手，還有她自己的記憶。",
+      "hook": "小滿提筆要寫「太后在」，筆停在紙上一動不動：「媽……我第一章第一句寫的是什麼？」",
+      "hook_type": "question",
+      "mid_hook": "她翻遍牆上的紙與腦子裡的章，第一章一片空白；面板：「修正進度：4%。長公主記憶修正中。」",
+      "conflict": "守住記憶。",
+      "turn": "母女以為擦痕只是身體的事，原來系統在擦小滿這個「作者」——擦掉她寫過的，書就只剩裴九的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "太后握著女兒的手：「沒事，媽記得。」小滿看著她：「妳又沒看過。」太后笑了：「妳每寫一章都念給我聽，妳忘了？」",
+        "question": "媽媽真的記得女兒的第一章嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "muny",
+        "ganren",
+        "xitong"
+      ],
+      "spectacle": "營房牆上第一章的那張紙墨字一點點變淡，像被水洗過，紅色面板的字從空白處浮出。",
+      "glamour_shot": "太后燈下把女兒的頭按在肩上，笑紋很深，眼眶紅卻不掉淚。",
+      "setups": [
+        "s03-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看穿系統的手法：擦作者，書就只剩後半本"
+      ],
+      "characters": [
+        "fang-xiaoman",
+        "fang-meiling",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關營房"
+      ],
+      "state": {
+        "time": "倒數 177 日・結算 25 日",
+        "knowledge": "系統在擦小滿的記憶；太后說她記得",
+        "carry_forward": "第一章能不能回來"
+      }
+    },
+    {
+      "number": 173,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "媽也怕",
+      "youtube_title": "半夜母女第一次說出害怕還大吵一架，吵得整個營房都聽見，系統的修正竟然倒退了",
+      "duration_s": 120,
+      "logline": "母女第一次承認自己怕，要在不翻臉的前提下決定接下來怎麼辦。",
+      "hook": "半夜，小滿縮在營房角落，太后端著兩碗宵夜進來，坐下第一句：「媽也怕。」",
+      "hook_type": "line",
+      "mid_hook": "小滿說：「是我棄的坑，是我害妳來的。」太后放下碗：「坑是妳的，命是我的，我願意。」母女吵了起來，吵得整個營房都聽見。",
+      "extra_hooks": [
+        "吵架聲裡面板閃了一下：「修正進度：5%。」又閃：「4.8%。」——數字倒退了一點。"
+      ],
+      "conflict": "母女和好、找方法。",
+      "turn": "母女吵得最大聲的時候，修正進度竟然倒退了——被人吵著、記著的時候，系統擦不動。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小滿盯著倒退的數字：「媽，妳再罵我一次。」太后愣了：「罵什麼？」「隨便，大聲一點。」",
+        "question": "被罵、被記著，就能擋住修正嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "muny",
+        "ganren",
+        "xitong",
+        "xiju"
+      ],
+      "spectacle": "昏暗營房裡兩碗宵夜冒著熱氣，母女的影子在牆上吵成兩個手舞足蹈的剪影，面板數字倒跳。",
+      "glamour_shot": "小滿哭著吵、吵著笑，鼻子紅紅的；太后叉著腰罵，眼角全是笑紋。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "發現被叫著、記著，修正會慢",
+        "母女吵完一起把宵夜吃光"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關營房"
+      ],
+      "state": {
+        "time": "倒數 177 日・結算 25 日・子夜",
+        "knowledge": "被記著、被叫著，修正會變慢",
+        "carry_forward": "怎麼讓人一直記著"
+      }
+    },
+    {
+      "number": 174,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "太后在",
+      "youtube_title": "傻將軍站在營房門口整夜大吼太后在公主在，全關輪班喊，系統卻開始加速",
+      "duration_s": 110,
+      "logline": "母女發現被人叫著名字修正就變慢，顧青山與阿桃要輪班守在她們身邊，一刻都不停地喊。",
+      "hook": "天亮，顧青山站在營房門口大吼：「太后在！公主在！」面板的修正進度從 5% 跳回 4.7%。",
+      "hook_type": "image",
+      "mid_hook": "阿桃喊啞了換石頭，石頭喊累了換老馬；顧青山整夜站在門口，一個人喊了三百遍。",
+      "conflict": "擋住修正。",
+      "turn": "大家以為這只是傻辦法，皇帝卻把它變成軍令：雁門關每個時辰點一次卯，名冊第一行寫「太后」，第二行寫「長公主」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "點卯聲裡面板閃紅：「偵測到干擾。修正加速。」太后手背上一口氣多了三道白痕。",
+        "question": "系統加速了，喊得過它嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "muny",
+        "huduan"
+      ],
+      "spectacle": "營房門口一排兵輪班站崗、張口大喊，晨光裡每喊一聲，面板上的數字就往回跳一格。",
+      "glamour_shot": "顧青山站在晨光裡喊到嗓子啞，濃眉皺著卻一臉傻笑；阿桃在旁邊遞水。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "皇帝下令全關點卯，名冊第一行寫太后"
+      ],
+      "characters": [
+        "gu-qingshan",
+        "a-tao",
+        "s03-shi-tou",
+        "s03-lao-ma",
+        "xiao-yun",
+        "fang-meiling",
+        "fang-xiaoman",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關營房門口"
+      ],
+      "state": {
+        "time": "倒數 175 日・結算 23 日",
+        "knowledge": "點卯能讓修正變慢，系統卻開始加速",
+        "carry_forward": "怎麼喊得更大聲"
+      }
+    },
+    {
+      "number": 175,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "全關喊在",
+      "youtube_title": "皇帝親自登關擂鼓，一萬個邊關兵一起大喊太后在，連關外的敵軍營裡也有人跟著喊",
+      "duration_s": 125,
+      "logline": "系統加速修正，皇帝要整座雁門關一起喊，用一萬個聲音蓋過一塊面板。",
+      "hook": "皇帝登上關牆最高處，親手擂鼓：「雁門關，點卯！」",
+      "hook_type": "image",
+      "mid_hook": "鼓一響，全關的兵一個接一個喊：「太后在！」「公主在！」聲音從關牆一路推到關外。",
+      "extra_hooks": [
+        "面板的修正進度一格一格往回退：6%、5%、4%……停在 4%。"
+      ],
+      "conflict": "停住修正。",
+      "turn": "母女以為只有自己人會喊，關外南國營裡竟也有人跟著喊了一聲——是喝過那鍋湯的烏野。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "喊聲最大的時候，小滿忽然想起第一章的一句話，下一秒又忘了；她抓住媽媽的袖子：「媽，剛剛有一句回來了一下。」",
+        "question": "小滿的記憶還找得回來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "muny",
+        "xitong"
+      ],
+      "spectacle": "雁門關牆上萬人同時舉手呼喊，鼓聲與旗影翻動，聲浪推到關外的南國營帳，紅色面板的數字一格格往回退。",
+      "glamour_shot": "母女站在關牆中央被萬人的喊聲包圍，太后仰頭大笑，小滿含淚抬眼。",
+      "setups": [],
+      "payoffs": [
+        "s03-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "萬人點卯把修正壓在 4%",
+        "烏野在關外跟著喊了一聲"
+      ],
+      "characters": [
+        "xiao-yun",
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "a-tao",
+        "s03-shi-tou",
+        "s03-lao-ma",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆"
+      ],
+      "state": {
+        "time": "倒數 172 日・結算 20 日",
+        "knowledge": "喊聲能把修正壓住；小滿的記憶時有時無",
+        "carry_forward": "南國會不會趁機打"
+      }
+    },
+    {
+      "number": 176,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "國師不高興",
+      "youtube_title": "斷糧三十八天的敵軍終於拆營退兵，敵國王子留下一句：國師要親自來收帳",
+      "duration_s": 120,
+      "logline": "南國退兵，赫連最後一次到關下，要留一句話給太后，也要留一點南國王子的面子。",
+      "hook": "三天後清晨，關外南國的營帳一頂頂在拆——斷糧第三十八天，南國要退了。",
+      "hook_type": "image",
+      "mid_hook": "赫連隔關喊：「這次不是輸給你們，是輸給一鍋湯。」皇帝在關上回：「下次來，帶碗。」",
+      "extra_hooks": [
+        "面板：「雁門關失守機率：0%。」那一行字停了很久，才不情不願地消失。"
+      ],
+      "conflict": "讓南國體面地退。",
+      "turn": "大家以為赫連退兵是因為打不過，他說是國師要他「照書再等三十天」，他的兵等不了——他第一次沒照國師的話做。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "赫連調轉馬頭前留下最後一句：「國師不高興。他說，他會親自來收帳。」",
+        "question": "裴九親自來，要收的是什麼帳？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xitong",
+        "ganren",
+        "muny"
+      ],
+      "spectacle": "晨光大漠裡南國營帳一頂頂倒下，長長的隊伍往南退，雁門關上的北昭旗第一次完整地迎風展開。",
+      "glamour_shot": "赫連在馬上回眸一笑，長辮甩過肩頭；關上的皇帝第一次對他抬了抬下巴。",
+      "setups": [],
+      "payoffs": [
+        "s03-t11",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "雁門關守住，南國退兵",
+        "赫連第一次違抗國師"
+      ],
+      "characters": [
+        "nan-wang",
+        "xiao-yun",
+        "fang-meiling",
+        "fang-xiaoman",
+        "gu-qingshan",
+        "s03-wu-ye",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關城牆",
+        "關外"
+      ],
+      "state": {
+        "time": "倒數 168 日・結算 16 日",
+        "knowledge": "雁門關守住、南國退兵；國師要親自收帳",
+        "carry_forward": "收什麼帳"
+      }
+    },
+    {
+      "number": 177,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "他叫什麼",
+      "youtube_title": "慶功宴上皇帝把兩半銅錢合成一枚，公主笑著抬頭，卻想不起眼前這個人叫什麼",
+      "duration_s": 115,
+      "logline": "雁門關守住了，皇帝要在全關面前牽小滿的手，小滿卻在那一刻想不起他的名字。",
+      "hook": "慶功宴上皇帝把半枚銅錢放進小滿手心，和她那半枚對上：「說好的，朕來接妳。」小滿抬頭，笑容慢慢停住：「你是……」",
+      "hook_type": "danger",
+      "mid_hook": "三秒，全關的兵安靜下來。皇帝沒有慌，只把她的手按在銅錢上：「蕭昀。妳寫的，第一章就有我。」",
+      "conflict": "找回皇帝的名字。",
+      "turn": "大家以為皇帝會被這一忘傷到，他卻在全關面前第一次大聲說出自己的名字——裝昏三年的人，第一次要別人記住他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小滿想起來了，握緊他的手：「蕭昀。」皇帝笑了；面板卻在兩人中間亮起：「長公主記憶修正：5%。」",
+        "question": "下一次她忘掉的，會是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "muny",
+        "ganren"
+      ],
+      "spectacle": "慶功宴的篝火旁兩半銅錢在兩隻手心裡合成一枚，火光照著千名兵士安靜的臉。",
+      "glamour_shot": "皇帝在篝火前握著小滿的手，從緊張到極亮的眼神；小滿含淚笑，髻上的毛筆歪了。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "皇帝當眾說出自己的名字，牽住小滿的手",
+        "兩半銅錢合成一枚"
+      ],
+      "characters": [
+        "xiao-yun",
+        "fang-xiaoman",
+        "fang-meiling",
+        "gu-qingshan",
+        "a-tao",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關校場慶功宴"
+      ],
+      "state": {
+        "time": "倒數 167 日・結算 15 日",
+        "knowledge": "小滿差點忘了皇帝；皇帝當眾說出名字",
+        "carry_forward": "下次忘的是誰"
+      }
+    },
+    {
+      "number": 178,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "提親",
+      "youtube_title": "傻將軍捧著新滷鍋跪下說想跟師父要一個人，太后用菜市場的規矩開了三個條件",
+      "duration_s": 110,
+      "logline": "顧青山要在太后回京前向她要阿桃，方美玲卻用菜市場的規矩跟他「談價錢」。",
+      "hook": "啟程回京的前一夜，顧青山捧著一口新滷鍋跪在太后面前：「師父，徒弟想跟您要一個人。」",
+      "hook_type": "line",
+      "mid_hook": "太后開價：「三個條件：每月寫信、不准再一個人追出關、學會我十二道滷。」顧青山一條一條大聲答：「好！」阿桃在旁邊捂著臉。",
+      "extra_hooks": [
+        "面板跳出：「偵測到非劇本婚約。」太后：「它管得真寬。」"
+      ],
+      "conflict": "落定阿桃與顧青山。",
+      "turn": "大家以為太后會捨不得阿桃，她答應得最快——最難的一條其實是說給阿桃聽的：「妳先跟我回京，等他來娶。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "回京的車隊出了關門，太后回頭看關牆，手背上的白痕在晨光裡又多了一道——喊聲離她越來越遠。",
+        "question": "離開雁門關，修正還壓得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "muny",
+        "xiju"
+      ],
+      "spectacle": "關門口千名兵士列隊送行，一口新滷鍋綁在車頂，車隊在晨光黃沙裡越走越小。",
+      "glamour_shot": "阿桃捂著臉從指縫偷看顧青山，雙丫髻上綁著他給的紅繩；顧青山跪得筆直、笑得像個傻子。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿桃許給顧青山，先回京等他來娶"
+      ],
+      "characters": [
+        "gu-qingshan",
+        "a-tao",
+        "fang-meiling",
+        "fang-xiaoman",
+        "xiao-yun",
+        "s03-shi-tou",
+        "s03-lao-ma",
+        "xitong-ui"
+      ],
+      "locations": [
+        "雁門關帥帳",
+        "雁門關關門"
+      ],
+      "state": {
+        "time": "倒數 166 日・結算 14 日",
+        "knowledge": "阿桃與顧青山定了；離開關後修正又動了",
+        "carry_forward": "修正壓不壓得住"
+      }
+    },
+    {
+      "number": 179,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "媽記得",
+      "youtube_title": "回京路上公主又忘了一章，媽媽閉著眼一字不差念出女兒寫的第一章",
+      "duration_s": 125,
+      "logline": "回京的路上沒有萬人喊聲，母女要靠自己撐到期滿結算那天，而攝政王已經在城門口等著。",
+      "hook": "回京路上第十三天，馬車裡小滿醒來，看著媽媽：「媽，我又忘了第二章。」",
+      "hook_type": "line",
+      "mid_hook": "太后閉著眼，一字一字念出來：「北昭承平元年，壽康宮的太后……」——小滿寫的第一章，她一字不差。",
+      "extra_hooks": [
+        "京城北門，攝政王端著一只空碗站在城門口，身後一大疊彈章；他說：「拿來生火。」"
+      ],
+      "conflict": "找回第一章，回到京城。",
+      "turn": "小滿以為媽媽沒看過她的書，原來每一章她念的時候，媽媽在滷味攤後面都記著——小滿的第一個讀者一直是她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "期滿前一夜，壽康宮的滷鍋重新點火，面板只剩一行：「結算：00:00:59。」小滿握住媽媽的手：「要不要先吃？」",
+        "question": "期滿結算，系統會扣多少？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "muny",
+        "xitong",
+        "xiju"
+      ],
+      "spectacle": "京城北門外攝政王捧空碗立在城門洞口，身後一堆彈章被點成滷鍋的柴火，火光把城門照得通紅。",
+      "glamour_shot": "太后閉眼念章節時神情極靜，笑紋都鬆開了；小滿靠在她肩上，眼淚無聲地往下掉。",
+      "setups": [],
+      "payoffs": [
+        "s03-t13",
+        "s03-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小滿的第一章被媽媽念回來",
+        "二十一本彈章被攝政王拿來燒滷鍋",
+        "回到壽康宮，麟妃、阿渡、小福子都在"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "shen-du",
+        "lin-fei",
+        "hubu",
+        "a-tao",
+        "xiao-fuzi",
+        "xitong-ui"
+      ],
+      "locations": [
+        "回京馬車",
+        "京城北門",
+        "壽康宮偏殿滷味廚房"
+      ],
+      "state": {
+        "time": "倒數 152 日・子任務第 90 日夜",
+        "knowledge": "第一章回來了，媽媽記得；回到京城",
+        "carry_forward": "期滿結算"
+      }
+    },
+    {
+      "number": 180,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "該還了",
+      "youtube_title": "亡國任務期滿結算扣掉二十年壽命，太后掐指一算笑了，面板最底下卻浮出一行手打的字",
+      "duration_s": 150,
+      "logline": "期滿結算，系統要從母女身上拿走二十年，方美玲要用一句話讓女兒不怕，而面板後面的人開始討帳。",
+      "hook": "子時一到，面板「叮」一聲轉成結算頁，紅字一行行往下排：「第三子任務：使雁門關斷糧。」",
+      "hook_type": "image",
+      "mid_hook": "結算頁往下捲：「雁門關存糧：充足。南國斷糧值：100%。亡國值：−41。」——任務反著完成了一整頁。",
+      "extra_hooks": [
+        "攝政王、皇帝、麟妃、阿桃、小福子圍在滷鍋邊，看不見面板，只看見母女同時抬眼。"
+      ],
+      "conflict": "面對結算。",
+      "turn": "母女以為扣二十年會是最重的一擊，太后卻把它算成了一筆生意——扣完還有三十年；真正的一擊在最後一行手打的字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "面板跳出：「子任務失敗。壽命 −20 年。」太后算了算：「我五十，扣二十，三十。還能賣三十年滷味。」面板下面慢慢多出一行手打的字：「方小滿，妳的坑我填了三年。該還了。」",
+        "question": "裴九要小滿還的是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "muny",
+        "ganren",
+        "xitong",
+        "xiju"
+      ],
+      "spectacle": "壽康宮偏殿滷鍋的白煙裡，紅色結算頁一行行展開，最後一行手打的字從面板底部一個字一個字浮上來。",
+      "glamour_shot": "母女在滷鍋燈下同時抬眼看面板，太后笑紋很深，小滿髻上的毛筆被蒸氣熏得微微發亮。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "雁門關守住、南國斷糧、亡國值 −41",
+        "太后把二十年算成「還能賣三十年滷味」"
+      ],
+      "characters": [
+        "fang-meiling",
+        "fang-xiaoman",
+        "shen-du",
+        "xiao-yun",
+        "lin-fei",
+        "a-tao",
+        "xiao-fuzi",
+        "xitong-ui",
+        "pei-jiu"
+      ],
+      "locations": [
+        "壽康宮偏殿滷味廚房"
+      ],
+      "state": {
+        "time": "倒數 151 日・第三子任務期滿",
+        "knowledge": "子任務失敗扣二十年；後半本是裴九寫的，他要小滿「還坑」",
+        "carry_forward": "裴九要她還什麼；第四季南國"
+      }
+    }
+  ]
+}
