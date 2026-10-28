@@ -1,14 +1,14 @@
 ---
 id: 2026-10-09-localize-reviewed-web-design-wave6
 title: Localize reviewed web design and reuse WordPress locales wave6
-status: review
+status: done
 priority: P1
 area: docs
-owner: codex-gpt6-root-wave6
-claimed_at: 2026-10-09T13:06:48Z
+owner: codex-gpt6-article-locales-20261028
+claimed_at: 2026-10-28T02:09:52Z
 created_at: 2026-10-09T13:01:47Z
-completed_at:
-branch: codex/article-source-audit-wave6-20261009
+completed_at: 2026-10-28T02:09:57Z
+branch: codex/article-locales-completion-20261028
 depends_on:
   - 2026-10-08-audit-next-web-design-locales-source
 scope:
@@ -73,7 +73,7 @@ five packs need one further removal each, preserving visible words and source da
 - [x] Author, materialize, render and independently review the 48 missing documents.
 - [x] Assemble/install the exact 17-article bundle and pass the selected content/tool checks.
 - [x] Open the reviewed content draft PR #1409.
-- [ ] Verify the current PR HEAD has green CI before merge.
+- [x] Verify the current PR HEAD has green CI before merge.
 - [x] Record sanitized source/translation evidence and file a separate release task.
 
 ## Steps
@@ -261,6 +261,23 @@ Independent report/execution binding review SHA:
 `59a849f433797521cb869de00128d31e496c35bc3cc4206895f86924ad7a89b6`.
 This local checkpoint performs no provider, host, publication or ledger write.
 
+## 2026-10-28 merged-content reconciliation
+
+Live GitHub readback confirms PR #1409 merged on 2026-10-10 as
+`d4f074c4da1473fac04b46aa9e70d7a733bcc560`; the merged PR records all
+22 checks passing on `4adc3fc054472a78a3ec8abd42b142c2d3fb8136`.
+The ordinary task claim adopted the expired claim after confirming the sealed
+stage has no active localization process or running job lock.
+Current official `verify_bundle` and all 68 `reviewed_document` checks pass.
+All 240 manifest-bound files match. The fresh production snapshot confirms all
+17 original database/version/hash/taxonomy guards remain unchanged and all
+68 target rows are still absent. Content work is complete; the separate release
+task owns the remaining approval, publication and acceptance gates.
+
+The original external peer-report/screenshot directory is no longer present.
+Retained self-contained artifact/review bindings validate, but this reconciliation
+does not claim those original screenshots or full peer-report files were reopened.
+
 ## Actual draft PR checkpoint
 
 Draft PR [#1409](https://github.com/x812033727/travel_scanner/pull/1409) is open and was read back at 2026-10-09T18:13:34.250500+00:00.
@@ -269,3 +286,12 @@ The authoring task was moved to review through the official task CLI.
 CI was pending at this checkpoint; the current HEAD must be checked before
 merge. The separate release task remains open/unclaimed. This records no
 owner release approval, production mutation or completion-ledger increment.
+
+### Current release outcome, 2026-10-28
+
+The October 9 draft checkpoint above is historical. PR #1409 was subsequently
+merged; current exact-head CI readback confirmed 22 successes. On October 28,
+after the owner's separate exact backup/publication approval, all 68 targets and
+thirteen source-link corrections were published and fully verified. The approved
+driver completed and cleared its own hold. See the separate release task and
+`docs/article-localization/releases/wave6-web-design-20261009/README.md`.

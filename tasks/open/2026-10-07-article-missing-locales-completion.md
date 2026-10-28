@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-07T04:49:38Z
 completed_at:
-branch: codex/article-locales-wave3-20261007
+branch: codex/article-locales-wave6-receipt-20261028
 depends_on: []
 scope:
   - docs/article-localization/coverage-20261007.md
@@ -180,3 +180,43 @@ The owner approved PR #1370 head `403d8204c27fd89653990cb1b8e624a1f87c5bcc`; all
 The full production snapshot captured at 14:17:26 UTC has 1,259 eligible public articles; 830 remain incomplete and 3,320 language documents remain missing. Counts are intel 13/52, howto 108/432 and life 709/2,836, with 830 gaps in each of en/ja/ko/zh-CN. The original 862 queue rows and historical 3,448 observation remain retained; the durable ledger now appends the verified 32/128 publication and actual census. Coverage and four scoped sanitized release records preserve these states and outstanding unpublished related-link targets. Release-record draft PR: https://github.com/x812033727/travel_scanner/pull/1373.
 
 The next twelve web-design/SEO life articles have 48 staged translations. Four Korean token spelling repairs retained the original attempts; official materialization and all 48 renders passed. Independent target reviews are in progress, with source corrections separately reviewed and bound. That cohort has no production publication yet. This global ticket stays open until a later fresh census reports zero eligible missing language documents.
+
+### 2026-10-28 current request and verified wave6 continuation
+
+The current owner request covers intel and life. A fresh complete census initially
+observed 2,788 missing documents. The preserved, already merged wave6 payload was
+revalidated instead of retranslating it. After the owner's exact approval, the
+guarded release backed up and actually restored the database, rehearsed all four
+phases and identical replay in isolation, then published 68 new locale documents
+and thirteen hash-bound source-link corrections. The 85 public documents,
+218 manifest/original media files, full sitemaps and 170 actual independently
+viewed desktop/mobile screenshots passed. Native postpublication dry-run/final
+guards and independent GUIDE preservation auditing passed. The driver completed
+at 03:50:45 UTC and its own hold was confirmed absent at 03:51:09 UTC.
+
+The original external program ledger was unavailable. No historical counter was
+reconstructed or advanced: a new exact-cohort completion epoch and sanitized
+receipts are recorded in
+`docs/article-localization/releases/wave6-web-design-20261009/`. Original failed
+checks and their independently reviewed recoveries remain intact; global links
+are not claimed green. A reporting-only source-pack issue affecting twenty
+old review-only jobs has its own unclaimed followup; all 68 actual target
+publication/browser results remain independently evidenced.
+
+The new 158-response public census observes intel 12 incomplete / 48 missing and
+life 668 incomplete / 2,672 missing: 680 incomplete articles / 2,720 documents.
+Both public source sets are unchanged; exactly 17 articles / 68 documents were
+added. Census SHA `938fe7336b20327ffd5e342c33100b650971ace30741fd8eef5573dcf1b1a4f5`.
+This is not a howto completion claim and does not close this global task.
+
+Eight new Ansoff/BCG translations and sixteen reviewed images are prepared in
+draft PR #1901 with `no-auto-merge`. The tested c776d6c8 head has 22 green checks;
+main advanced by one commit, so synchronize/recheck before any owner-authorized
+merge. The owner merge choice remains pending; no new2 deploy/publication occurred.
+Two current-source issues have unclaimed correction tickets for Thailand cash
+financial proof and Korea nicotine-liquid conditions. Other ten incomplete intel
+articles have triage only and are not certified release-ready.
+
+Release this coverage-only claim after the receipt PR is reviewable. Resume by
+claiming the task and using the new cohort record plus a fresh eligible census;
+retain historical queue/release evidence and check exact current ownership.

@@ -1,0 +1,2979 @@
+{
+  "schema": "sanitized-wave6-release-v1",
+  "status": "verified_complete",
+  "cohort_epoch": "2026-10-28-wave6-94239e01",
+  "manifest_sha256": "94239e012d0bf4a858c47b7e94f767c9aebf6ea51d481981fa0f7ae37894629a",
+  "content_PR": "https://github.com/x812033727/travel_scanner/pull/1409",
+  "content_merge_commit": "d4f074c4da1473fac04b46aa9e70d7a733bcc560",
+  "release_baseline_sha256": "3b908b57bfaf425bae75f3ffa31137a0c5d4fc26d284ed5fce17e9d8db92c300",
+  "content_PR_head_CI_successes": 22,
+  "already_deployed_revision": "00b1e5bce65fd27c97f2c01e98c5402a7dc773dd",
+  "deployment_performed": false,
+  "owner_authorization": "先備份並發布這批 68 份譯文及 13 篇連結修正",
+  "publication_completed_at": "2026-10-28T03:03:07.567259+00:00",
+  "driver_completed_at": "2026-10-28T03:50:45.080106+00:00",
+  "hold_absence_verified_at": "2026-10-28T03:51:09.681564+00:00",
+  "counts": {
+    "articles": 17,
+    "new_locale_documents": 68,
+    "source_corrections": 13,
+    "removed_wrong_glossary_links": 15,
+    "native_drafts": 81,
+    "native_publications": 81,
+    "hub_publications": 0,
+    "public_documents_verified": 85,
+    "actual_desktop_mobile_screenshots_reviewed": 170,
+    "manifest_media_verified": 210,
+    "unchanged_supplemental_source_media_verified": 8
+  },
+  "backup": {
+    "bytes": 562993673,
+    "sha256": "bf843aed67cce9a4f069c7467e8bf3128f2e8c38155cd7126d39fef3ff90738e",
+    "dump_exit": 0,
+    "restore_verified": true,
+    "restore_exit": 0
+  },
+  "isolated_rehearsal": {
+    "four_phases_and_identical_replay_passed": true,
+    "protected_base_tables": 167,
+    "proof_scope": "Rows in all167 public base tables, excluding authorized new revisions/audits; not schema/sequence equality."
+  },
+  "production_postpublication": {
+    "native_dry_run_and_final_guards": "PASS",
+    "four_phase_production_replay_claimed": false,
+    "GUIDE_preservation": {
+      "schema": "postpublication-guide-preservation-audit-v1",
+      "status": "PASS",
+      "manifest_sha256": "94239e012d0bf4a858c47b7e94f767c9aebf6ea51d481981fa0f7ae37894629a",
+      "selected_public_documents": 85,
+      "selected_native_journal_equal": true,
+      "reference_native_journal_equal": true,
+      "selected_versions_hashes_equal_sandbox": true,
+      "protected_guide_tables_equal": true,
+      "native_journal_and_reference_inputs_unchanged": true,
+      "isolated_only_protected_base_table_count": 167,
+      "operational_tables_compared_in_production": 0,
+      "historical_progress_ledger_advanced": false,
+      "historical_progress_ledger_reconstructed": false,
+      "production_proof_scope": "GUIDE only; operational-table preservation is isolated-only; graph identity excluded after global rebuild",
+      "production_writes": false,
+      "private_report_sha256": "b1567afa5e2739d86db525012bf6caf85d69b9fa2f763e1b43e02603f0d77e55",
+      "native_journal_sha256": "d01a46e26f1bc0e1a73aba43763b5bb2ba114da0478ef3b271dd2ef1f2db1901",
+      "reference_journal_sha256": "a40b7fe8d1a92973dafc0942604407ab4b467ce858c8042aa3644396776f4305",
+      "preexisting_guide_manifest_sha256": "321c0e38c5c5f349adab99e8dfc60110cb028df9e7b9949d50bd40519f297136",
+      "protected_differences": {
+        "guide_articles": {
+          "reference_rows": 2311,
+          "production_rows": 2311,
+          "added": 0,
+          "deleted": 0,
+          "changed": 0
+        },
+        "guide_topics": {
+          "reference_rows": 71,
+          "production_rows": 71,
+          "added": 0,
+          "deleted": 0,
+          "changed": 0
+        },
+        "guide_article_topics": {
+          "reference_rows": 4477,
+          "production_rows": 4477,
+          "added": 0,
+          "deleted": 0,
+          "changed": 0
+        },
+        "guide_article_aliases": {
+          "reference_rows": 5344,
+          "production_rows": 5344,
+          "added": 0,
+          "deleted": 0,
+          "changed": 0
+        },
+        "guide_article_locales": {
+          "reference_rows": 8322,
+          "production_rows": 8322,
+          "added": 0,
+          "deleted": 0,
+          "changed": 0
+        },
+        "guide_search_entries": {
+          "reference_rows": 7777,
+          "production_rows": 7777,
+          "added": 0,
+          "deleted": 0,
+          "changed": 0
+        },
+        "all_preexisting_guide_revisions": {
+          "reference_rows": 23283,
+          "production_rows": 23283,
+          "added": 0,
+          "deleted": 0,
+          "changed": 0
+        },
+        "all_preexisting_guide_audits": {
+          "reference_rows": 17227,
+          "production_rows": 17227,
+          "added": 0,
+          "deleted": 0,
+          "changed": 0
+        }
+      },
+      "new_selected_row_checks": {
+        "new_revision_count": 162,
+        "new_guide_audit_count": 162,
+        "expected_new_revision_count": 162,
+        "expected_new_guide_audit_count": 162,
+        "revision_multiset_matches": true,
+        "audit_multiset_matches": true
+      },
+      "derived_graph_observation": {
+        "reference_rows": 10983,
+        "production_rows": 10983,
+        "same_row_keys_and_hashes": false,
+        "added_count": 10500,
+        "deleted_count": 10500,
+        "changed_count": 0,
+        "identity_required_for_pass": false,
+        "reason": "Production ran the separately required global guides-links-rebuild; graph row identity is not a content preservation claim."
+      }
+    },
+    "runtime_API_and_web_identities_and_bound_files_unchanged": true,
+    "own_deploy_hold_cleared": true,
+    "backup_and_isolated_database_retained": true
+  },
+  "public_acceptance": {
+    "API_documents": 85,
+    "manifest_media": 210,
+    "supplemental_unchanged_source_images": 8,
+    "full_API_and_XML_sitemaps_read": true,
+    "independent_visual_partition_pages": [
+      29,
+      28,
+      28
+    ],
+    "actual_original_screenshots": 170,
+    "new_word_by_word_editorial_reaudit_claimed": false,
+    "owner_personal_visual_acceptance_claimed": false,
+    "original_collector_exit": 1,
+    "original_body_miscomparisons": 3,
+    "derived_body_independent_review": "PASS; all6103 expected fragments verified",
+    "originals_and_original_failure_flags_preserved": true,
+    "browser_network": {
+      "HTTP200": 673,
+      "optional_post_capture_analytics_transport_cancellations": 1,
+      "all_network_success_claimed": false,
+      "disposition": "Separate independent PASS addendum after exact teardown classification; original HOLD receipt retained."
+    }
+  },
+  "global_link_checks": {
+    "rebuild_exit": 0,
+    "locale_exit_codes": {
+      "zh-TW": 1,
+      "en": 1,
+      "ja": 1,
+      "ko": 1,
+      "zh-CN": 1
+    },
+    "global_PASS_claimed": false,
+    "selected_public_link_behavior_verified": true,
+    "note": "Inherited/unpublished related targets remain a separate backlog. Unavailable ArticleInline targets remain unlinked in selected public pages."
+  },
+  "native_report": {
+    "exit": 0,
+    "batch_errors": 0,
+    "required_target_publications_and_browser_verified": 68,
+    "all_selected_publications_and_browser_verified": 81,
+    "translated_rendered_reviewed_stage_counts": 48,
+    "review_only_stage_source_pack_issues_retained": 20,
+    "followup": "2026-10-28-report-installed-review-only-locales-without"
+  },
+  "fresh_coverage": {
+    "observation_started_at": "2026-10-28T03:29:27.2252443+00:00",
+    "observation_completed_at": "2026-10-28T03:35:46.0315161+00:00",
+    "requests": 158,
+    "http_status_counts": {
+      "200": 158
+    },
+    "minimum_request_start_spacing_ms": 1301.1760000000002,
+    "summary": [
+      {
+        "kind": "intel",
+        "public_articles": 23,
+        "published_by_locale": {
+          "en": 11,
+          "ja": 11,
+          "ko": 11,
+          "zh-CN": 11,
+          "zh-TW": 23
+        },
+        "incomplete_articles": 12,
+        "missing_documents": 48
+      },
+      {
+        "kind": "life",
+        "public_articles": 2020,
+        "published_by_locale": {
+          "en": 1352,
+          "ja": 1352,
+          "ko": 1352,
+          "zh-CN": 1352,
+          "zh-TW": 2020
+        },
+        "incomplete_articles": 668,
+        "missing_documents": 2672
+      }
+    ],
+    "total_incomplete_articles": 680,
+    "total_missing_documents": 2720,
+    "observed_missing_document_reduction": 68
+  },
+  "historical_ledger": {
+    "reconstructed": false,
+    "advanced": false,
+    "reason": "Original external program ledger unavailable. This record starts an explicit new exact-cohort completion epoch; historical release records are preserved."
+  },
+  "unavailable_historical_evidence": "Original external screenshots/full peer-report directory was not recovered. Preserved self-contained native approvals were verified; all current public views were newly captured and reviewed.",
+  "proof_sha256": {
+    "fresh_authoring_baseline": "542adedb9ba3dec1971b08350b9d2824b2ab976b58c3341da05e56dd55bed1d3",
+    "initial_public_census": "ab57825298558e4e9fd20e1f66e879a474736e94068f51cd4feef211ba1895d5",
+    "full_original_snapshot": "f9507fed81612279957c68d3138b0ed7c6575b52c0ce47375dfef731ed1a6862",
+    "snapshot_independent_audit": "dfbaa63a415920d8908be93825f1600bb79f1724b5aad242eb19da6fec5f8c9b",
+    "native_publication_journal": "d01a46e26f1bc0e1a73aba43763b5bb2ba114da0478ef3b271dd2ef1f2db1901",
+    "publication_complete_gate": "340bf0aa61476edb7591685b76d51f8e20fe269b481d276f56b4057dd187a065",
+    "GUIDE_preservation_summary": "003be54d2c50df15ead65f6030a87a4dcf3fdc979fe92ebc37c381ac0e03f9d2",
+    "GUIDE_preservation_independent_review": "0097dea78b4f2d3569718b421f2f8d471e4c3e5521fc147aad0874e2847b9f5b",
+    "public_HTTP_report": "70a1318493a5cedd80536e35eacd389c3310160092d551beb770fc67eb0821a3",
+    "original_browser_report": "e300b7fa3981fe1d50c8297e0101b210dd8772d24eba0e77d48748273efd7b2e",
+    "original_network_log": "c74e2098bd94810ac0dc6803b92f2e15d2e1e3d3ee98ca66dfd7f71a5dc44079",
+    "derived_body_recovery": "3ea24e02e98e004b92d8eecf7bd4636071094aa4238e2cd18df0dcbc15d3db1e",
+    "body_independent_review": "8be6e2c7eb495200a0908ab4e3da8b0f9da23689bc603358c7948b0735eac674",
+    "article_public_acceptance": "1a41262708a38beef4df7c35175e3e1165c903b3120222ea3f4051642861d3e2",
+    "independent_acceptance_original_HOLD": "0fa24b6ffcb23e63a7f88f029777081736b1a108527bc50467ca72e405b7478d",
+    "optional_teardown_classification": "e7c3f8b7d9d1cda216aec92b7f88de64d40b173ecf5149e2ce7752fb57434b73",
+    "independent_acceptance_addendum_PASS": "d6c4a64ca8ee3ff5212bc8b7d7fdf1771c87f11fab75d574f7b60698a294ddd4",
+    "final_public_acceptance": "b81731f338b54de647a1384dcc899ed6819717fb66ae046f52beca1eb27e0ad1",
+    "production_acceptance_marker": "9b6cf57b900bd7b909158eb9a41044d3bfc7f144fce0848abd93e16bd53de606",
+    "new_cohort_native_progress": "7729a2f1f08b50e4d039fb2394169f787ec2738b7d322c6396bfc1e38e2baf2f",
+    "fresh_public_census": "938fe7336b20327ffd5e342c33100b650971ace30741fd8eef5573dcf1b1a4f5",
+    "fresh_census_independent_audit": "b748b0f0d94e2ec583bec85a4e5dde0f074d10850b7d81ca94db797c50828c48",
+    "fresh_census_independent_review": "50779451b5e0e8ed139a91b4cbfcf842dae857599c2dfb4fc61b273e4584b1d4",
+    "final_driver_state": "6ea9b55f439be3f021122fdd029e0cf4fed3081f9285714d5793eeda2f6f493c",
+    "final_runtime_and_hold_verification": "895ce624fb2336bf161d1296ccd8ce03c345df8e895403c880a8a8e96be69b3b",
+    "capture_archive": "848507f8c9a36289fcaa98d0d2a28765c620a23bac5ccc7b8b6a5da5c214e036",
+    "final_QA_archive": "b5a65490d4fe1d6b4a77958cfb3af587f1ae8850b1285240fa20f75a3ffa616a",
+    "QA_provenance_supplement": "ba84b5a82d5e9298832df00ea1f58ab4f29bf797a77c8e36762d58e9d4e61f07",
+    "visual_review_partition_0": "606577dca31ff47423e20321f544851ba5759ea10f6b8ec4e8db764d409a48f7",
+    "visual_review_partition_1": "df5611ed2ba27b35000e6b9958e377910c1ae74fb6d52143dbb20ab191c16405",
+    "visual_review_partition_2": "c5ae3e7003432b8d22f14ef1ec6430da0e6a4d3164786af178f8efc0bb57e7e6"
+  },
+  "public_documents": [
+    {
+      "slug": "design-thinking-practice",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/design-thinking-practice",
+      "document_sha256": "de53a8889b941dbe6672cd2b7c61dd9c8dd5ffa641204514a246637ae3f67543",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "6b9ebfdfe8a4713b5e5dc9313be4885f5f2714e1974106e6e179f1fbc323ce39"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "1b701cf3cdb44584f4c6799488eeaf1f635e22651b4d838217a536cb73c3c20d"
+        }
+      ]
+    },
+    {
+      "slug": "design-thinking-practice",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/design-thinking-practice",
+      "document_sha256": "cbd9ecf4244485017eb29746cfc21a093119191494100fc2cfb7d91c5b3843f1",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "8e5aa68f6d7d35e69a8157b1885512de82110844f7aa974c45c13bc1d1899a10"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "7a296aefbe04b482a126192a35ff99011f3bbe70498e4cdcb58e2267595b4831"
+        }
+      ]
+    },
+    {
+      "slug": "design-thinking-practice",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/design-thinking-practice",
+      "document_sha256": "569d3409cf2413eeb039a6a85d003ad70d7ab21b7ad00451ac6539258b0d0862",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "a70f25fe13d16e0e7834d1fc618e8acc12f80df1c4f6ce405273fd7b4a8aac07"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "a74dcb5bf5c8e8928ccf504ac97757716c8d67db166a4497311d7a41c663e0bf"
+        }
+      ]
+    },
+    {
+      "slug": "design-thinking-practice",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/design-thinking-practice",
+      "document_sha256": "01859d7ac504d94de9403cbf3b3fc0db72fbd6c74e7d99167c67bf04472ee207",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "93226d72a3314da31f44054f239f26925dc8cbbe01226d8e9e73a7bbed5ef9e7"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "79bf2aacdf3aa0e1bc6694976b2fb5577ec295b96282dfbc347a36bdedf1ebe9"
+        }
+      ]
+    },
+    {
+      "slug": "design-thinking-practice",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/design-thinking-practice",
+      "document_sha256": "6a62d4835fb953bf74386655a5a3ca0744d33a1fde961eb27ead3bf33edffbf7",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "766a91be21081d2f1145c05497e8fe8f4877cf28d4dc3c37022411fa39ab3ac3"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "908044a8bf5e131f6777849b8577df3e72d30b17d87333e9cb989d5c6e07f308"
+        }
+      ]
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/portfolio-case-study",
+      "document_sha256": "77b7e654e56aec4edb57501e589cb2eb8666debe8feb77838accef932a74d0a9",
+      "published_version": 4,
+      "new_locale": false,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "101251663ffeba6a27ba156d1b01ff1bb8bde8b00cf174f9fbeb2860749fdd21"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "9ea2e399717c9b54e66d38b49894d6622797b1a1e0aaf9f2a090c07bcf899abc"
+        }
+      ]
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/portfolio-case-study",
+      "document_sha256": "93c3b58aed0276fc5f8e046b4aebd4ae23e3afe756d2daf5930e56d44574b6b8",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "6293cec863fb095b722f3c5a71318b7d339c71e4e944dfc9d394a6fb5d91c622"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "6c0b0c0f4e804e8830add2c8f58985379d2160605d2f2328123f465c808e68f2"
+        }
+      ]
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/portfolio-case-study",
+      "document_sha256": "b1184c9faf8401873f6150176e02887f04c39a0208765e3360553f4f52067321",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "a9d94e3297c29d6d64d2352e438b606ab3b44a49c97e661924f869aed3752885"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "1b9a1c97dbea3c45e9093c73ecaa23002185008bcd6e923f6190b90f1083c31d"
+        }
+      ]
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/portfolio-case-study",
+      "document_sha256": "0dbad045ee017d09ac706e01c853d64a2d0f50139a4d7dbe0432a459b853e838",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "204345a56aa999a511e1f0243eded619795da651a84de83e74547f36c0d7847f"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "115c8de06c6998e7701fb5219efb152bdb7971a98753fdee401e546064cc8644"
+        }
+      ]
+    },
+    {
+      "slug": "portfolio-case-study",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/portfolio-case-study",
+      "document_sha256": "5a7f6f84408cc3b14230ec6ce2aa6436b9c79ee15f7d1dd31f60a8f68282af41",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "6f169f8e1f3da27cf9bc1d57447193324c16a91b780c85c2545b933672f5c702"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "19f893ed644123807d091da9abe0ee2c573f7fe2697fc159b1178dee354c26d0"
+        }
+      ]
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/brand-identity-logo-brief",
+      "document_sha256": "81e4730d2f1025abc947462877573f3ef0195b252593225ae8a7a1aaf43219da",
+      "published_version": 4,
+      "new_locale": false,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "69fb0872890ca0fdf44feefdff8ab0e254dcaed00219dac3c6f7b28c1bd4c714"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "1e0433971c0182cc78857852cead4ee53d550c0fac8cbdf45479a16ecfd44153"
+        }
+      ]
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/brand-identity-logo-brief",
+      "document_sha256": "df4506f4d7391eb169dd11e96af3ab0a4033be39171a5ad07e3db0d0d04221e2",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "02c611ded6c07fcc190a8df4281aefd70b5b7f73c5ce05698b7043e334fd6b72"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "315b65ce729cff9f41fcf0a765cb7276be894314feea27581b340a5cc215b78c"
+        }
+      ]
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/brand-identity-logo-brief",
+      "document_sha256": "bf557661e1463973239e561b89afea5c3d01d03e77835ca430692cf3c3224ec1",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "dbbdc9b12e60f49d02b46320f0ab5ab706f73e1810ec3c69e34db9a4e7fe92fa"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "f4c689d43151a79085a91a2b0275e0843cbcea76ffb701c12127bb50451f881d"
+        }
+      ]
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/brand-identity-logo-brief",
+      "document_sha256": "de3b6c1bac78bf31cbd4aac7c1220859345575de040f2c58cda34b2da21dab3f",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "74ca550ac443a016f1d0df366b4ce505dcbf9480b9228986256f17687371b674"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "56454ed7af2cd1b3b1afb4943ae440e6b1e89c41a448408434d0f8c6c88e6d1e"
+        }
+      ]
+    },
+    {
+      "slug": "brand-identity-logo-brief",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/brand-identity-logo-brief",
+      "document_sha256": "cf2d81894b8bee47ad114a0c423dbe40f6be832d97dece58a51c2187f87deb81",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "6d533a9324ac7fadb6fac3528cc8c36d655468176b9ba6df338a917414722f45"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "30a9ab94638a30f326cb2cc788a746d2d54df3ec3f373c396be20031a2309091"
+        }
+      ]
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/web-design-agency-brief",
+      "document_sha256": "8f9728acc2f9e587b6162df382217d6d1d02e2fca8cc3adae60b97daf04aec7a",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "8aeb006fc62d412d844dd7025ed98a3b8626be2305c8186807ac2c41d4d4bcc7"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "1fec8ffd24767d5340a40217b55dcd514c34275bf27334913006329e6668a703"
+        }
+      ]
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/web-design-agency-brief",
+      "document_sha256": "73003c7b000c34e48ce2b4c878bd6edfedb2e70bf35bbd9193c7321e3234dbd3",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "dd070923f0446fc911fee21141636e34f7b45d92b67bfdddbb4862f1e52232c4"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "e46dec13627b1cd370ad896052f821bbaf12de567c135f4095c3969f4855df6e"
+        }
+      ]
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/web-design-agency-brief",
+      "document_sha256": "dfcdf2b83a978f4df511402bd22dd4d8eaeff9cb622a9911a7b39debbe632743",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "b23c488995c8e96902144fda2eae0a318c5dda20bf08fb45b01f4d320a9988dd"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "642dd14ba79464bb0336edf74f1478c225eff2b26ac137bc8acc1fd9ffdbab4e"
+        }
+      ]
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/web-design-agency-brief",
+      "document_sha256": "6629d92e87cdb92ea3b8ba76407c80dbbb4b145d2900772d1ce3fc7f29718281",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "e4b6a17f72bd85325e7826d46e6733a462e498abf821d77e5274faf3c461ab02"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "45be9c7dcf9cbfa39873e995be040547c8cf37949620e5c9869275abef3937e0"
+        }
+      ]
+    },
+    {
+      "slug": "web-design-agency-brief",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/web-design-agency-brief",
+      "document_sha256": "b3234dc29013e9c7ddf05d962bdd92c61515eef0be7e597464d3920d2c1eb8d1",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "83c2320b52527d526134d88656c31ba1426ca28740ca4ada5f9348d518ff3273"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "7a41daa00f13aed4408949d4a53273ed9d580ffeccc416ec35593ede4a85c3c1"
+        }
+      ]
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/website-404-recovery",
+      "document_sha256": "768acf5dc69a9f3a47c7a4dc27a3cb7732d944baaa2afc1671f2135919cfc9ba",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "06cf5d468471c7a333b7c1b2803d787c148bfb5a71ca6ea4c0d32e20e390df3d"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "87fdcb076631edc1a602a6be8d4639dc40bb5857968e939b26117b5d9512960c"
+        }
+      ]
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/website-404-recovery",
+      "document_sha256": "22ab7d84c0b9b31e9116952cfa7296258430983ba830c641071d03085e1bc467",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "26515600b8c74961ca40c78c69a698a7021c89a7f75e112865abe15c8d0145e7"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "c7e302072b704a0fe9d008bfadc733678b70d55848dbaf1c5fd97cf1c3e81bf7"
+        }
+      ]
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/website-404-recovery",
+      "document_sha256": "29dd5c912e027cdb8594044f0b96bfa14af3afe68cdf536cf147a012fe115a2c",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "c37c2c8a8c2791df2b55f853afafc01b4fc77c8498e0e57b4af56d279c88047f"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "833e5dd3efd1d900d300d388eed10b286ba2d69be542cdf64a6ccff3738d10b2"
+        }
+      ]
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/website-404-recovery",
+      "document_sha256": "8f916a0333e2daa292660f0813b7f46dae72740be17a8b350ad9a220f148cce9",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "4e911d509ba535606b1d31daf6e5f8e40246e2a4fea4b56acddc9650f596965f"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "d0206d6db033bbfcf4b5ad9181d390c238c8c5445b00657d6463ec26dc09f582"
+        }
+      ]
+    },
+    {
+      "slug": "website-404-recovery",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/website-404-recovery",
+      "document_sha256": "2f24b4f655d95fbe33612272bef2412c4fba0e99ae1002307aa1da437f6aedc9",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "84495226960bb5c624ffcc0573419f217a3d3e173313a78069c102d9016ffa2a"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "ff0fd1827c6ad9e2ab94a17729f86c91af42e0380568abaade5cc948375d2b5d"
+        }
+      ]
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/website-www-subdomains",
+      "document_sha256": "8c4b14c1cf900832082cc33e4a20eb78442ab086d82b83a59a3cfc3cbfae08a5",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "cebb90cffdb46196a48ef7118a598821f83cda18b29f12b683ea8d0f3a69f575"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "3985d4890d3dd53309987aa6bcfc3618248c0b25d0745110e984236f70fee9d3"
+        }
+      ]
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/website-www-subdomains",
+      "document_sha256": "f3790e1ac7fa1df63c2a1fdca1f8e0ce15954b0bfb6bdb4ab13757c13bc6955b",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "31316bd55a3185db78b7ce47be773ff898815aa0174132df4b8c038e2791b5ad"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "6ca46d09424ae47379a2799bcfff0650fce130940e6cfa5c3a9f8e9115b951cb"
+        }
+      ]
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/website-www-subdomains",
+      "document_sha256": "ed0c8aa9f15e3522488723d932ec67445a8c754d9de7b10981a937887c03a6d8",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "204f4f6cdf3ac95ca277df4a132e077015e6cbfb992c65de930a77c712d319f3"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "616a532ea9b2a54b2b59945c0a42606a421ae7e06c808946b09272025c759f74"
+        }
+      ]
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/website-www-subdomains",
+      "document_sha256": "2e901559504768e0d716b130bd66fd8668909a72f771fb2bf757b55af1bb79e6",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "fdcb2e9ad1146ea425a466ef1eb8e2b6f9714be1e349f383f1f923f38e6d60b6"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "acb59c2b24289a638f941ad5ca5cfda3cfb409554ef2485a1ad59f371ea78793"
+        }
+      ]
+    },
+    {
+      "slug": "website-www-subdomains",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/website-www-subdomains",
+      "document_sha256": "9f3342b5a35233e89a5fbc2eae4b5cb3f47c2ee93d65a942e17ab115faff871a",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "b2a46894a31e99856d8a7e160b920bb1b8915e93ae84a6845c54f453b293eb52"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "afc2e04b9e4dbf469a8064b979e375d6912efb585942e4a73abd638a27532a02"
+        }
+      ]
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/ai-design-prompt-workflow",
+      "document_sha256": "2261ceff3642706250a06a4c7f3e86329e94e5208bb0c3df4e8fd8db764fafd7",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "44d7518fcb2317e7c2e79b1dd35bccb62ddcfb02dd362e19d229aa1c428542e8"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "00601398b50dc4fada991f2216e9da0b0603247e7d5d5268b188bddbe7b838f3"
+        }
+      ]
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/ai-design-prompt-workflow",
+      "document_sha256": "9d7ad518c6d093708550d410a5a0459cd03cbad3c77c0cbb283e288f4750eae2",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "66520916c62ce486f2a28fea7d06033f6031573c7c8889b514858b2b21a68b67"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "0e557c66e14768858bc9fa862d9a0aac6a256c7498a4dc0404031a71607ebe24"
+        }
+      ]
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/ai-design-prompt-workflow",
+      "document_sha256": "537cc82b89d486c14655704f42e75e8a013a5b17019b86dc2e435723464a1dc4",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "d70d4e3528a7bc753ab2f9931dbd15e94a8d37927247ae67f42fbf3dd66b7984"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "9fc7d2fb4ef5882eaa34950187fa3972f4f9555a74007a8e2765f2b4d150bc64"
+        }
+      ]
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/ai-design-prompt-workflow",
+      "document_sha256": "d741f385c457f64352c30a03e4b43e52da0effcc5f997f8335ecb311a74470ff",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "681a7d8ea0e9a381c3075be8f4bd455c1cbf02afa9625e7ac426175155b1754e"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "5f2ea783e2c84c53e5df51cd9cafba9ac6254321bd81254a7ce2a469fc520474"
+        }
+      ]
+    },
+    {
+      "slug": "ai-design-prompt-workflow",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/ai-design-prompt-workflow",
+      "document_sha256": "881080d5f0f3facca79617ca7a4acdd3d4155b13c0da07651f736c2a651eec04",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "33edffcdb4f6599c83d9d2e097488a8bcfc4f70fa91330508c7a70a639d1725c"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "5879e539e09cc90b7d4ecd918ad049468e02d7372911c91dc13c297dceed242a"
+        }
+      ]
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/canva-design-workflow",
+      "document_sha256": "63359207372cf1bfde33700ace7ca5a07f821d969d93796752692309631ab939",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "61a5593077574d7acd3380e4c4d0cfc48abb70e947a9d01e40396d482a150e48"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "9fee8f2df8b79e53ce483aa90aa06078c8711f7f187af8ecd0bbb3767aea4a67"
+        }
+      ]
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/canva-design-workflow",
+      "document_sha256": "e16222b87d185c7a97c79fa4db30f1e734da774a85e9be66977cd14b2b8e1cb1",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "dc0e2a5f8a504a50e8f7950f3dd59012f084c843e14fdfa2a2cd944eb0ed0122"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "60cdec0fd0d0c5d56fd0b75ea757a551b09a42739cd30f646762da2c365087a6"
+        }
+      ]
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/canva-design-workflow",
+      "document_sha256": "80af67abede77f39f449a6938c4d063ba0723faeebefc9e4c0b74cd1cfbdbf08",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "4922fa967c0cfdc75fb3ec7459891c41b696448e89335c0ebd6c336e3acb47b5"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "cbafa6feecd98e1abe3de144dcccb04c49adc96615292b4cbd5780c1a0b9b5a9"
+        }
+      ]
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/canva-design-workflow",
+      "document_sha256": "4b7877a518f8ce0636d902cb9fe2bc13721bff6404a669f86953a8d3d7b1a903",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "5dd27ee94bc3d4b808086830d90e2d8ea7cada365282eb6a0c18e51d467b43c7"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "cd03ae4ba024bf4334f7a5cb1351298be548c0f89ba45a84d26a5ce74d0352f0"
+        }
+      ]
+    },
+    {
+      "slug": "canva-design-workflow",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/canva-design-workflow",
+      "document_sha256": "535b94e0d4c242d33117ec7014576e8543ea119c8b20c3510280eea63bff390b",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "074311fd0f4e4436613b2fb4bdeb32d19f6ea7251d331c616a230fd16c717a4a"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "20015e4a037bae55794be4bdc861844231133c068e4efe37b567a941a9d964bf"
+        }
+      ]
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/customer-journey-funnel",
+      "document_sha256": "879d9ee8ebf60d7f6eb9f88ffe7cfcac5af563c9558aab848cc371963100cd33",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "7bee788faaea67c389da8714676a8939d7537144799022be822c6ac53ba161de"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "6f0b0fff5de3f5336270ba4ef3a3ce31032b9493bb3cf8461c0830322b94eb83"
+        }
+      ]
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/customer-journey-funnel",
+      "document_sha256": "f8d17d0959aee64187bb106b5910aa90abf569f3ff46bc915fd6605b14fcda4a",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "91ffb1d0bb4c7be57ebc30cf08c60ecc293c95d3225c89b028abcf79e8a929d1"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "de508e2c911e8a8b842ff454d516ca9f4152f808572493cf09dae9da6f08f96c"
+        }
+      ]
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/customer-journey-funnel",
+      "document_sha256": "e1f4e927ae928e7963e9077e70296d2c2c5be7d50cbfb76caba7c47a85b18bf2",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "0fc48a5e55eefa1aa7ca33ca9e652d21b6b7c8e0b7c237f8fbdead2976229cbb"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "37cafc39b05563e4586adefa2aa2cefe72551537e3a02722dd93d5553138eb6e"
+        }
+      ]
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/customer-journey-funnel",
+      "document_sha256": "8fa060b6880625cbf52809c16154c68d2c20a4e924d6ef018419e170f72ce169",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "080a05a4c68e233057132c3a83a01e001725dc8b1d039bed89aaaa8b687502ef"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "1d308d411efe2ca27064bcc929ffa0b58ca54be2d359a58f3bbd86f6a10a559e"
+        }
+      ]
+    },
+    {
+      "slug": "customer-journey-funnel",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/customer-journey-funnel",
+      "document_sha256": "d3783ac4ef763611b1c9f9d082baa8e26b38aa82b59715a3523072b43ba3d602",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "872bf9ed726d958402a08ffc5b102968f94f2ce4f4717ae85f7208942247ee01"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "45e7c773a22af5f304fca608d94b2e9662af3b0607ac9867276e843d75549e6b"
+        }
+      ]
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/marketing-copywriting",
+      "document_sha256": "e00b538b56cb63eaf0a944ee62aa48ae516c3b189731d7f8953397c3e17d4bab",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "75a426c6b097777f5e83afc7f19ad5fcc86591edb088aabba7011cf3aa7c42de"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "87a43d182941ab1d556b6253e8f4849f38cca423396ee150784106c678cbb171"
+        }
+      ]
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/marketing-copywriting",
+      "document_sha256": "8da248ee18f459e32b4b351e4b2f0919610e42a4123dd6db5b6301bf2d254732",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "e0aefc84a82199cfbf6f3a836a80e532a16655d231da9ea6f98c595b02a4f142"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "c6bb8e96f38c7ad85b022f5d50067f62c333f7bb6b06a4c87490b04691c5cb6b"
+        }
+      ]
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/marketing-copywriting",
+      "document_sha256": "6b26c3385500710ea2132610bbdd2c08460318c52b6ef58db51685f429ccfd0d",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "c77bec5be40009452aaddb8acce6251a99f3ec37508210af3ba97446bb31f108"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "a1c110eb66830499bc511babbba76a5c8a82500b44c562fbf4eaf615823e9f2c"
+        }
+      ]
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/marketing-copywriting",
+      "document_sha256": "152c1d829dc7827da3c003461f355d320917293e25c8ab114c670bbf5b951855",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "5d2d1acb820d70969ecd09198e0442ad6a8f0875860528320d762a69d6798531"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "c8dbd025f263ba14668a0d466c3e785d27ce69a3e84a0715c1b5e71a5ca0118f"
+        }
+      ]
+    },
+    {
+      "slug": "marketing-copywriting",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/marketing-copywriting",
+      "document_sha256": "ac62665836dffcbcaa9c807316f0b5d7d2375c7966c3399abf4fafecff8b7767",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "f7efa5ad47fa9d1b63c5dd2cbabe37639b50df84b282460ff21c07189937d811"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "cd224e27f2c809ad03ef741ff6958071700e903c22896badf319d4103d022073"
+        }
+      ]
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/seo-domain-authority",
+      "document_sha256": "f2b1cbb9ddb7a108e66f1d7f41c4a726074948e38c260ab03ff4fdd2ebfb16a5",
+      "published_version": 4,
+      "new_locale": false,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "43ea7792b3122cc2c5a66200e7d92c5b5bd8c158056bed9372fa7668008571d1"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "41fe4607adad8596515cb1407afbac464a5f257b6f8b3f4b34bd9f1da8e3f9ab"
+        }
+      ]
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/seo-domain-authority",
+      "document_sha256": "eba4480bf65decf880256aa34ad689c7c53f762216348d57e0884dc1b7693af3",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "0b93e30bfced6cfca1fe51e1556d482bc80542c2fe77fd576f97ad5ec1da6bec"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "f065790ba31b61e544e490347104bf9f025d6f3404a30be73bc68a2a05518305"
+        }
+      ]
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/seo-domain-authority",
+      "document_sha256": "201911b108d8f7276dc3d4291a645b6b03acf7cbfabff5c38a1fb2a3780b52b6",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "d13548ae56f13e34bdbe74bb3435dd27c6d8de69b8e2ebc68713a0b798fd39aa"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "b9197928b198a8b1b62d12face3e73e38c751295fe133d5fafcee06a1633a965"
+        }
+      ]
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/seo-domain-authority",
+      "document_sha256": "5d67889fb700b6f861db7c5fe48685a81bbc2baae9173c708d13cec381ac7062",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "5bc4e13c8955b4bae30ff3ce8b38ba632782d18cef0dc34fe918c3d6c2511e33"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "78e89094e11dfcd4fc68b444fc93c141b8c0c2c0706a9d76491e89bd27d71374"
+        }
+      ]
+    },
+    {
+      "slug": "seo-domain-authority",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/seo-domain-authority",
+      "document_sha256": "935c17eb39daf766a498275c30cb697f0f8d2d2abcbbb224612b30a6dba1f0be",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "8c13429c0447c36481592ea3b67885e9407b359609f4ca90f826efbacc57e3ec"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "81f1000bbbb789dd31621d720eac71109ee8bff422272256fb8fe36eb1d2f8aa"
+        }
+      ]
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/seo-trust-sensitive-topics",
+      "document_sha256": "03410f1d693595a3e645cded719378d314139b30d2702f4b4856b7b40c06abca",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "ad3b4218bb9a30d784310231c9b6da7d76da625ccd8b059cd9e6751e6baadb1e"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "cfa00781d867bb1d89fc7bb84e15d3778dcf646452f1d567d76dd66a2239c652"
+        }
+      ]
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/seo-trust-sensitive-topics",
+      "document_sha256": "aee20e3db3e3d0c84cafee9b39dd4d053b4a297bd9d90b656ad55bd7ecfbac4d",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "8f67162d756c11099f597a5b404cfebf68fb9ee5bcfd8beeac21d6ee6f6bc4e1"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "1c27665d67895870a2a2ad018323dd661f478fa9b96873944a88c2be2b81192f"
+        }
+      ]
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/seo-trust-sensitive-topics",
+      "document_sha256": "2bd67659d279161d4d9e6cb612dcc5c7cd94217d2e897179558e5680c374100c",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "9beb2067a6586ecbbb2a6a473a7b7bc6699d41f5db1c17e3fd55ce262f2c0a54"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "c5b7e870b10e5641a11b27810d5de2edc22b0939150909599701c11cb0a1fe5e"
+        }
+      ]
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/seo-trust-sensitive-topics",
+      "document_sha256": "137071a98d17b19068fb02a54c5d845f1404741f3c78850a464e233447249b96",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "fb78948ffa80c3d0efdb23b9cd8b3c5c488deafabc653c770d91bf8de25b1f13"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "4971ab1c8c16a9a3d319385a833fa1e9644c419245bdeb4017a6c2810e9ad7f3"
+        }
+      ]
+    },
+    {
+      "slug": "seo-trust-sensitive-topics",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/seo-trust-sensitive-topics",
+      "document_sha256": "ee0b23f12333606b241341123e94932736cf730793398284407b38037af05631",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "f981a022329cf015a1d784d870afa3255e86407408c27eefa968d6a98ac90c92"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "51bd92ffd4fe4ebbf92db24306b0becdb41ec576d2d187d0f9f796d5f3c880f4"
+        }
+      ]
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/paid-vs-organic-marketing",
+      "document_sha256": "5e1a8e1569da09bc78c46a3dfc8e465550ecebf9722b21be6756023e80ff8f16",
+      "published_version": 4,
+      "new_locale": false,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "2426400f435e627a04c96f0cdb1f4dbf6f3ad8a3dfe23833bcb143a8f1d25bdc"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "554a6ae2d5fddf1cabfb6ebfd94ffea9a6fc193edbae388ae45b2ca48f3a35af"
+        }
+      ]
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/paid-vs-organic-marketing",
+      "document_sha256": "f40be0cb197bdfc97e484b029b23e689dbad1b9e923d9b079b55fbbd4bc27cdf",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "10bcf1d5844c448c94949d52a17fc9ccb3b1a00afbb6bb688d4b4f7548b2121f"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "0c8555454629b15a8fae14a7701d25ec013faf71e0ab5ce350ee2c2b92cf65c2"
+        }
+      ]
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/paid-vs-organic-marketing",
+      "document_sha256": "d38f3343354ff4073b16480ef09850415cfdb074a0078fe6f0bc107747d4cd00",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "d2f70b9140726d306c5767963b5a4d8788a98bee1d90c04f8357ffccbb018ddf"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "a760562f7c0ea7165e554764ede63a59a6d714f6729de966b59d429316847aa2"
+        }
+      ]
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/paid-vs-organic-marketing",
+      "document_sha256": "ea1cd0608228020ccdcd683a97e555e2eaddb90ac38a0add7875abd4f16ab097",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "11e9fdecd780b1ea045dcb6a4d409181f18906f02890b656193d8dc2441daa56"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "e9a6a9933506800f03d16bbbc58e79534d214c31e4381e3a0d9b0dfcf3c505b7"
+        }
+      ]
+    },
+    {
+      "slug": "paid-vs-organic-marketing",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/paid-vs-organic-marketing",
+      "document_sha256": "295d0ab3d9733771a3dfda26c225a3581f038af2c6046c2e762b2056258e2145",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "2c78f644d61f4528492466c6df2d46a06d38f16b155a8a58ef5ea77c25544ad8"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "5ee7ab5e859c4c97016e682d443ebcc8ee261642162d97388d86d0aaea27dfd8"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-blog-build",
+      "document_sha256": "7635cdee0e7c8cca6492be45d552ae88828f9899feea78a41e270ad4c5d176c8",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "c250cf4b3cbbc402e103f79e3c711bf631e2596a675bd40f3f606da69b51ad43"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "cf0db8b14f40b421b5610c3fe1434dd1871c4e1226c94dd4172a83b4018677ad"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-blog-build",
+      "document_sha256": "398890e5dea5c6b83e616cf80223d46927c533f0412a676f15b69dc97d912388",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "c31d8222b69edd6cd6594151a1d50cf139e5fe67bb7a8987b2ef37ecdbc2decb"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "e7c883ef4279b26ceaec4191210a0c1ed27e105fe59730f9f5ef3546d009e0bf"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-blog-build",
+      "document_sha256": "f6acf847c21dbd40600fe27350b13b323cdaf955ad01146fb21ab80325e72838",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "f6ca328b6ac854654b0b1913eb1328da45a87bf4a28f2cbd88e9b65bc4bca071"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "b56eff859c5877750240caab1565288c298fb3b02688f35b05e564048076e2c8"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-blog-build",
+      "document_sha256": "93e92248a2dbbd89ff5b369b0433e8b07f93d2976bd77f7cfa3660a18f464ca7",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "dd086fcde75ea2a5b21ec3340eb6896429f4297706da1eaae30e46851526396e"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "978adc46cdce2c6fb56e6ec17a05d633e6e86c78032735a073f9a470b58780e1"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-blog-build",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-blog-build",
+      "document_sha256": "80fc34ce7b2c7db8c710d92a3809958415e079be8aea4061e50e2dbe25581187",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "9b593d08df97decf6fdce4ebc5bacbc318535643f4b066532cfe1d125733fc34"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "dedc438b59184e3bfc0f0a3f743541762c8802eb8d71d6507778bc69ccdc0104"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-comment-spam",
+      "document_sha256": "afcbecbc203a0f5b0d273b396a81bce703b917429802ba4269c6ec976721c332",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "860446b0cf1b18182a09d98e11665a0ed9a938c88214a9035fe1da51456f9bad"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "0014954c555bb67eb6dced68fed4267584d90b02eae505f6cd7ee7589f0c3a8a"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-comment-spam",
+      "document_sha256": "60fae4a3655c7293adde5e3089033a8ec7d2bca96cf3262098a8a4e7fba5cbb9",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "3fbab1834b8d0a934682180abb2ebda9e026b046e9eb09067f0a4127fc3479d3"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "ff16ac8acf90820ab684fb705f0bfbbc7a4b22afc128b8962597815739c5902c"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-comment-spam",
+      "document_sha256": "bf38e6d967ed5bb9331ffbeadc21dce4b1bba5f7bc7d7d3ac3c1dde070ad7792",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "9bb162594b21c49d6e3e00b410b3f76d7bac02a035025804c077c13ab7b2a27d"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "00498b68eefcc1e1db93b842cf96db1c3eab68d4a4a77e98dfcfa5315aa422c9"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-comment-spam",
+      "document_sha256": "67abed741d62718f31b2980438edef5352e95528b3bed96fc5a4220f5485a650",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "c34d1eaa302bd879a2ebd47e28f2ab1187daff32c922a3cf89ccb6e39d299715"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "8e49d8ee9cc3c1e21c720cd69aae8ace6297b0a26ac7c1c5ca03a054118ebad3"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-comment-spam",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-comment-spam",
+      "document_sha256": "6ea578d2e36d6c9b50cf4721cdc3f25baaa823d23250224f04c1bf9147550f10",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "89d41b063fa8d0648d820d806f10add18f36be4d78dcee7f5811d54f39f27ee8"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "4edcf1b8323418acaf7f86a04797e86fbdc7335fc662a6bd32bf34664799d699"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-performance-plugins",
+      "document_sha256": "cf547f499451f30ddebd951f5edd3442a5cb2606d52aba29d417744611b6c65a",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "c2b061b6972ed0cbcef62c260def776c49731a0b0b2d3334ca9103c3c9e98dba"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "2a251212c15a013fe01eb9ad63dd4a1af6ec160a68de1cf07fbb850085829f51"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-performance-plugins",
+      "document_sha256": "10c7b463597f0c29a99e1a596b76d203afd234cc8afe5c49744095c9bbf4eb13",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "704b6fe71b3f9a82628c2fa644a0ecc10396666740c6e88f0c6066cc675f5798"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "e588acd9a23b9171ce64478a7d02faaad168856544973114fb7d3568369810a4"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-performance-plugins",
+      "document_sha256": "79612e67a241c96dde9b40c0b22b5cad773d546d06c5ac3bdc57c76d37286cd3",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "6227ddcdb34eeaeea60d829747e10ac0ea26cfccb9fe8bf15d10eca707f9c816"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "950d55de29c48d04542f2b5c21fb823c4d8f3ddedbf8553ab215b6cdc1cf6ca5"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-performance-plugins",
+      "document_sha256": "dfa00cb8470ef34a32648de86117e84355eb131f4e6164d9bc28a8600bef163b",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "4f4b56113ca46cf219a1b27ac174b0741b54b53842028ec2a0a7feb3450b176a"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "704e87a6c290e37722ef0f500278f3fe9d9a935f15e48157b50fbdad22bcf519"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-performance-plugins",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-performance-plugins",
+      "document_sha256": "b9dc04bf864df6827d06cb99a9ec9602699b7e0df91d6d9427d58f364368f70e",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "d17c1c377cb319aa913e92078d3d66a88ffcd2bc173be294ba6d23b046999795"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "ab8750eb9b51b0951903dfb35911c4363f81b54d0fd9c62b8ff93816b85515d5"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "zh-TW",
+      "url": "https://mokaair.com/zh-TW/life/wordpress-reset-safely",
+      "document_sha256": "631ed336116212e02260fd628999f0ffd421ec34c155c3614c7c777af3d25514",
+      "published_version": 6,
+      "new_locale": false,
+      "source_correction": true,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "658392394af0c01e2c42cc21330654e51a356633da41bfb5f7cbbb3bbb531f61"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "20f2a168e0bebc0ca945d7aafccbe887caf20a60cb2f5ad5035d7e0c41d1bae2"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "en",
+      "url": "https://mokaair.com/en/life/wordpress-reset-safely",
+      "document_sha256": "3f11659364044c301eeb522b9c78faef125abdc6184d76aeda19b1a3f4fb97f5",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "8d52b1d915f0bd29011eecacf5532e614361ea6c62db6e9a068c832eb286500b"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "3b52747df553897be2e492d30c26de7313a0881b9d06c1eefbfaf73ed15efa52"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "ja",
+      "url": "https://mokaair.com/ja/life/wordpress-reset-safely",
+      "document_sha256": "93d361d00d3442861495f67716ea6976b16b1b7cda775bceaaccb466a6c39f70",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "5e926dfef6050aa67cb23979e119e1f87573d775cfe505f64bb9b923b441b95b"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "f2b5ec150463050d84f8c76ddcdeba79f6067d84571b0bec5b5550f1d9c4616d"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "ko",
+      "url": "https://mokaair.com/ko/life/wordpress-reset-safely",
+      "document_sha256": "df7c4fb39cae4e6f4e1b51515a20c960cdcb791d61ca1bf1660faeddc9c3a360",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "44857d2d3e8f7b227be01ffb23f0bf36de863698353124af2ff2b699ff39c925"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "4ebef9517627448588a54ef9d73ca59067c8a693812ee10d5e247631b803a94c"
+        }
+      ]
+    },
+    {
+      "slug": "wordpress-reset-safely",
+      "locale": "zh-CN",
+      "url": "https://mokaair.com/zh-CN/life/wordpress-reset-safely",
+      "document_sha256": "cea32d91a2b50a90e827eec8cca7a756c0601d322f25f08fdca0b22d8ea758c7",
+      "published_version": 2,
+      "new_locale": true,
+      "source_correction": false,
+      "screenshots": [
+        {
+          "viewport": "desktop",
+          "sha256": "588df46153ef2622ae70f1fa1d180f7a16a5947c7dcdcaa5cc2a0652001c7449"
+        },
+        {
+          "viewport": "mobile",
+          "sha256": "661451b1785882cfb728a229c3fae1f0c61b1108ba227957afee5a3f27073cfc"
+        }
+      ]
+    }
+  ],
+  "public_media": [
+    {
+      "path": "public/guides/ai-design-prompt-workflow/diagram-1-en.svg",
+      "sha256": "148be30c0f9f67bf16c7e46913c1c754985616abaf3d606e43d2e9e5d9088a90",
+      "bytes": 3251
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/diagram-1-ja.svg",
+      "sha256": "a1d61354ae7745711aa342b930cb93324c7f08c2dc1bb1bf921baaf00726c1fa",
+      "bytes": 3157
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/diagram-1-ko.svg",
+      "sha256": "4e16a780b710684df87d00b2f6f2634207f74b98327f60d3e944e17055bed324",
+      "bytes": 3249
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/diagram-1-zh-cn.svg",
+      "sha256": "006def6affdbade668c338c39b980b4f8b9fd65a1b02d07e76a988ff26d64de8",
+      "bytes": 2921
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/diagram-1.svg",
+      "sha256": "7e0b06a2993afc0f7be664029bd34627bd141a73e33231eaa307a5bab487148d",
+      "bytes": 2910
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero-en.jpg",
+      "sha256": "3926ba3a0647baee58939c283767ccd99cbac24c5a406bc18cd3ddb83d10133c",
+      "bytes": 74927
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero-en.svg",
+      "sha256": "86880fa621249c41ac496ac7a12e999df945d82cadaf5dff6487b7ad327fe147",
+      "bytes": 2426
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero-ja.jpg",
+      "sha256": "7370708d90cf3f36a8caf3af9e8fef073ffb028141d0c42b16c9b1766eabf8b2",
+      "bytes": 74451
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero-ja.svg",
+      "sha256": "0926d490bf2c932c88cca1ee9e450486c6fcb3e007d718afea4b3438dc3a9101",
+      "bytes": 2469
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero-ko.jpg",
+      "sha256": "95510830632e4a24b2ca733ccebafc924839ad5501ed7c60c63e4edd1d66fe1e",
+      "bytes": 71178
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero-ko.svg",
+      "sha256": "0384e849ed706b828bcd59544a69e968cf2afa868e06192326a2c37273a9e2ee",
+      "bytes": 2488
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero-zh-cn.jpg",
+      "sha256": "19fb8f3d16d4566edff4dadef11b4ae4cc19f45d091c4db10643dd3608d6f9a5",
+      "bytes": 68690
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero-zh-cn.svg",
+      "sha256": "864ab5ec695fc9e8613c7a0b8f37a88c5a0af9c4f4d6592f94b3d2c8f7a0042a",
+      "bytes": 2350
+    },
+    {
+      "path": "public/guides/ai-design-prompt-workflow/hero.jpg",
+      "sha256": "019de5bc3e9c4f16ace7ae39d6c067b1788163785c69dfcb2a3dbe5c957aae19",
+      "bytes": 56943
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/diagram-1-en.svg",
+      "sha256": "7b5a8ab98cd6bb7d16673d658143079869fd6381292a96add6402555227e3bc4",
+      "bytes": 3024
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/diagram-1-ja.svg",
+      "sha256": "a4e0c61dd2f71954671884fe577e66459c6dd7b1aeb16210b03a60723f999088",
+      "bytes": 3047
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/diagram-1-ko.svg",
+      "sha256": "0c5668c5a2a03b5c9d0c6a9c559fe28bba7293d4ed841fcf3936ea98849c2d4d",
+      "bytes": 3050
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/diagram-1-zh-cn.svg",
+      "sha256": "3f49a6445c097c39f3b8caed8cb348abe3bcd948231a7a00c29383dfb3b8606d",
+      "bytes": 2823
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero-en.jpg",
+      "sha256": "75d71439a763eb07ee575ff0996a71d8d92880f408492e89553b0f0d69ccc27a",
+      "bytes": 78374
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero-en.svg",
+      "sha256": "073814e4aab9e0901ec241954f38bd80874e17ac3914ed6168e929cd339e50f5",
+      "bytes": 2388
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero-ja.jpg",
+      "sha256": "aa934ac1ae1c8603236d962450b188403a3cdbc3d94b58015e021a1661845f3d",
+      "bytes": 68650
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero-ja.svg",
+      "sha256": "8a53a0276a87ab1931787ecc974d7ce929a3629b314ac8ee38386525c968663b",
+      "bytes": 2455
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero-ko.jpg",
+      "sha256": "41624355c2952f6bd45f1890883c0fbc369eff8a91c3558ab58df39aa1ad5f40",
+      "bytes": 68577
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero-ko.svg",
+      "sha256": "473509670e8bc7405f338761a794a13a6c355ba198d61d00b137d7976a92684a",
+      "bytes": 2446
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero-zh-cn.jpg",
+      "sha256": "8850905e6ecc1826c505c67a00f273fda575f379b332ca34d67f9bc369a581aa",
+      "bytes": 68485
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero-zh-cn.svg",
+      "sha256": "3f1ff39edb09fa1567af6978d038698dfa3d83fb839b92f953653efa2905cc3d",
+      "bytes": 2334
+    },
+    {
+      "path": "public/guides/canva-design-workflow/diagram-1-en.svg",
+      "sha256": "259186a6f02bcda50c8d3529bd6f0f8c0a81300c080c320b59421772b21c4f4a",
+      "bytes": 3235
+    },
+    {
+      "path": "public/guides/canva-design-workflow/diagram-1-ja.svg",
+      "sha256": "17ba464a4f519a1d71ce2bd59d05f0d973b738593c90da1ad0ce33402919c030",
+      "bytes": 3388
+    },
+    {
+      "path": "public/guides/canva-design-workflow/diagram-1-ko.svg",
+      "sha256": "ed7b01dda7e56e316b636a38feb84e3c741c0a32a82765f12830256ca62c5351",
+      "bytes": 3277
+    },
+    {
+      "path": "public/guides/canva-design-workflow/diagram-1-zh-cn.svg",
+      "sha256": "b47f8a2ba1e771bb4aab1e22c4c3902bfa88c289d58e37c58356d276da1e4830",
+      "bytes": 2933
+    },
+    {
+      "path": "public/guides/canva-design-workflow/diagram-1.svg",
+      "sha256": "b99a49597fda0361aa4b899a64abd7e8627e51edbd27cc05eabdf831108fd3af",
+      "bytes": 2919
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero-en.jpg",
+      "sha256": "ccb40e3b408f06866f0e6770d552a0b60059d850f27423cf461a28d5121a4da7",
+      "bytes": 75134
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero-en.svg",
+      "sha256": "729131f6b2b1ba25c1aa39e1ef16d95f1e14f2ad5c5db969fd9c9410c9c788da",
+      "bytes": 2361
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero-ja.jpg",
+      "sha256": "3b67a9ee529b43c9ddca561f3f41fffea794e7f620775f3a217b5fe9818309f8",
+      "bytes": 73534
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero-ja.svg",
+      "sha256": "a29c36c0d9b95c99e60e089a2193bb71c3643efa499cc89ef3731a1081feba9b",
+      "bytes": 2453
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero-ko.jpg",
+      "sha256": "5c3b09345afd61fa5179bcb7cfd553fc6706ec8e06dbdb229af9de6d887e0a0d",
+      "bytes": 67954
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero-ko.svg",
+      "sha256": "8b27933daf3875cce975da054a273f59b4652ac36a20b5d8da4fd68ad7ab7ce8",
+      "bytes": 2410
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero-zh-cn.jpg",
+      "sha256": "251d4c0e349a1a28e7c5a1450261e99ff1fd9d03c4154ec4502e65ef3bbe8441",
+      "bytes": 68927
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero-zh-cn.svg",
+      "sha256": "c0e03e9f4e940f82cb602aaad59d7ea44821e187590fed02d14c257f8af75f19",
+      "bytes": 2332
+    },
+    {
+      "path": "public/guides/canva-design-workflow/hero.jpg",
+      "sha256": "3090a152062f40444ff5fd46d9bec00a9aaf85706b5fcfc3a89b4f88675f53ff",
+      "bytes": 57737
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/diagram-1-en.svg",
+      "sha256": "22c90a7935b16c07385d0ee108cde6902b6fa12b62fc707a1f05d3be54c952f7",
+      "bytes": 3838
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/diagram-1-ja.svg",
+      "sha256": "0020f93c2cb7cfc51bea8d21e530cc6799fd6c27c7065679a981dd4291087d00",
+      "bytes": 3945
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/diagram-1-ko.svg",
+      "sha256": "3ab01372ee5d07a90e27da74944ec5ef0ab16159e5e23224972dabb09e19d9c1",
+      "bytes": 3736
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/diagram-1-zh-cn.svg",
+      "sha256": "8f97e31839a18d812335f582c028c114c95580f318fe338964d51a201d625d59",
+      "bytes": 3421
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/diagram-1.svg",
+      "sha256": "74500782f974746fa65d290557ff79a0d2cd1e554045134e25d0ac030272b064",
+      "bytes": 3416
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero-en.jpg",
+      "sha256": "ad64c164fb614e5908fa7f52eeb80692e2e742babb12d1ab2d351a52ef2a6351",
+      "bytes": 73485
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero-en.svg",
+      "sha256": "01a713c8a8e56e976e3820c3a1a6723b3f22dca0dab6dab107a4913ba6cc4969",
+      "bytes": 2397
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero-ja.jpg",
+      "sha256": "2c4b21021c101a2444e6a0ebd17a23fa1278cd381ec3645cb94c982a2bbef6e0",
+      "bytes": 63010
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero-ja.svg",
+      "sha256": "6973c137934784dfd934082a263b00a667987a9894a3e9637191d26029dca7dd",
+      "bytes": 2418
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero-ko.jpg",
+      "sha256": "43b2ebd07cacf8cb830cfa44e23839689123d4d7357163772b780a55f44e6b55",
+      "bytes": 62090
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero-ko.svg",
+      "sha256": "0a7117b3e8685ef3513b609d6506cff15b4f55f59f2b2bbafbca0b1412dc0a63",
+      "bytes": 2381
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero-zh-cn.jpg",
+      "sha256": "7f3f299e640a6bf26d238b4ec664ffaea2cb98f569e9792c38c031cef93b6a48",
+      "bytes": 66008
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero-zh-cn.svg",
+      "sha256": "a06415eeb9126b665ec6364d469d95addc27f1ebe6646aba6ca0cb5c2881eb85",
+      "bytes": 2337
+    },
+    {
+      "path": "public/guides/customer-journey-funnel/hero.jpg",
+      "sha256": "de522f9d8722cd1d1a9c6807c1981695dd08a919cac101416eb004e68a94e8a7",
+      "bytes": 55147
+    },
+    {
+      "path": "public/guides/design-thinking-practice/diagram-1-en.svg",
+      "sha256": "36a6513aafab5895546ef98707353c99de8ff178011b9f754667f8a335dc9479",
+      "bytes": 3186
+    },
+    {
+      "path": "public/guides/design-thinking-practice/diagram-1-ja.svg",
+      "sha256": "4ca7e0599c559251a5b14c23dcb6512f2bddad43117aa7974a74e98edb20e524",
+      "bytes": 3144
+    },
+    {
+      "path": "public/guides/design-thinking-practice/diagram-1-ko.svg",
+      "sha256": "2e7d003863740fb4c46e3dd62f8fe23363d11383be29e14d608310207455a054",
+      "bytes": 3104
+    },
+    {
+      "path": "public/guides/design-thinking-practice/diagram-1-zh-cn.svg",
+      "sha256": "5785573301e3544694ab6b0cf15446dab244d52bb411eadba6902fa0fdb758ef",
+      "bytes": 2855
+    },
+    {
+      "path": "public/guides/design-thinking-practice/diagram-1.svg",
+      "sha256": "9fc76b7bc6e489e90d51806e9f4095efcc269594a3e29b489390d130395222ed",
+      "bytes": 2850
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero-en.jpg",
+      "sha256": "9ee99525e3951bfd418258635c00d33444164338152e5160e93b62e272575ddb",
+      "bytes": 81611
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero-en.svg",
+      "sha256": "b98c14b63b79fac4fa774b55c463317dbdd17f060e55d014c03510e90beabdc4",
+      "bytes": 2396
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero-ja.jpg",
+      "sha256": "5bd70377a4bc1f5473093fb5d27b549d1f45981c05057e3f964440bf22480d80",
+      "bytes": 72327
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero-ja.svg",
+      "sha256": "f339bc2907b96392ca0dd864d56239e2b8bea711d43978a7f5562c8dc4822bc6",
+      "bytes": 2412
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero-ko.jpg",
+      "sha256": "17b4160597643517c0dc67328d50ccd9883965278a942b7196c21fa2d05eed5d",
+      "bytes": 66693
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero-ko.svg",
+      "sha256": "31a30ed3ab88ea9be6da8fc54625ab563570f3516712d74dbd579c20eda9acb0",
+      "bytes": 2385
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero-zh-cn.jpg",
+      "sha256": "ebc5c438726d3e850dc265a147bb773b9a6a0b09738ea2cfba3576520aa840e5",
+      "bytes": 68301
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero-zh-cn.svg",
+      "sha256": "27c419ac6c23697f102389a6f070238ded2b06d7e8d06fd6fa18f1c88719c26e",
+      "bytes": 2316
+    },
+    {
+      "path": "public/guides/design-thinking-practice/hero.jpg",
+      "sha256": "54d9fea159ac3207732d779ea6aa77cb3361b67acc8748b78bdb77628ea73d5a",
+      "bytes": 57815
+    },
+    {
+      "path": "public/guides/marketing-copywriting/diagram-1-en.svg",
+      "sha256": "17cb8e7d007a6d1247f19a3bc1b519ba38ba9437011093f6ab49ed4718fc7801",
+      "bytes": 3262
+    },
+    {
+      "path": "public/guides/marketing-copywriting/diagram-1-ja.svg",
+      "sha256": "f02c51091448dce244c4a8347c01e4258e7fb94d2ed08156954ed872a4bcd489",
+      "bytes": 3104
+    },
+    {
+      "path": "public/guides/marketing-copywriting/diagram-1-ko.svg",
+      "sha256": "83a54bfd14386d730d688c2185df620d38a97e0493975f103b1c58bb56f72ce1",
+      "bytes": 3168
+    },
+    {
+      "path": "public/guides/marketing-copywriting/diagram-1-zh-cn.svg",
+      "sha256": "915beca08e7cc69bdb2e3057184bfd59db9fe029050488a24b46de1c9bb91571",
+      "bytes": 2897
+    },
+    {
+      "path": "public/guides/marketing-copywriting/diagram-1.svg",
+      "sha256": "49e58e37dd19f5e7227880fef10bc56ea3d4b87d33c2fc50a96ece08a6649d8c",
+      "bytes": 2892
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero-en.jpg",
+      "sha256": "97ce19b03e036a101f1485737e1f3691fa326b709f211f00f12655a076b525ef",
+      "bytes": 72296
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero-en.svg",
+      "sha256": "46d5de88ebfc3813bf0eafcad5cea3ad211a008929e1401c9c64554bd5c73041",
+      "bytes": 2387
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero-ja.jpg",
+      "sha256": "5c183848106c9a2e741744f6db9cf995a3ea0c9f67ef208a6bc96855e53b501d",
+      "bytes": 71713
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero-ja.svg",
+      "sha256": "82734984d167ec54f7ec5a3c2357b3411e70d272d0798497f187a9706f4107bf",
+      "bytes": 2419
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero-ko.jpg",
+      "sha256": "cc2f9e8370904e22147f72dbb133e655098dd3b19b906297fd4e237ec04d27c4",
+      "bytes": 68494
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero-ko.svg",
+      "sha256": "86fdc2e96e1fd3407eaa2920411786d47573c93bd152d42685a6e71e12fe7563",
+      "bytes": 2414
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero-zh-cn.jpg",
+      "sha256": "369f90e212dccd2881648e27e6756207828ff92af3ed55ab6e8d4edb1f01927a",
+      "bytes": 67974
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero-zh-cn.svg",
+      "sha256": "413b237c9809cb034fba762ce16f87ae6fa8150b7be4b9c33eff191cda2d8a26",
+      "bytes": 2350
+    },
+    {
+      "path": "public/guides/marketing-copywriting/hero.jpg",
+      "sha256": "621b945ba9498a2d8b861583a0967d5f52234220d89732830b666a132c2be529",
+      "bytes": 57294
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/diagram-1-en.svg",
+      "sha256": "1b572a3d802c0cd6eed17da6378e39295c76baecfe08587950f29ca0f3a3a0bc",
+      "bytes": 2973
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/diagram-1-ja.svg",
+      "sha256": "d5c2ea5c062f2e1cbffc260237f38e482dc59a63a560537bd21e0a050831ee6e",
+      "bytes": 3057
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/diagram-1-ko.svg",
+      "sha256": "f05cca16b98a25d2af02ec06b0e7edbb51544d68491259156aab3c549cb65910",
+      "bytes": 3058
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/diagram-1-zh-cn.svg",
+      "sha256": "e32ea5312b201410004ca1c6c462ddcd1d4d9d52f85d90cc26079b13642c8b5d",
+      "bytes": 2940
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/hero-en.jpg",
+      "sha256": "17f6283ed1e739533e90d26514f0c5abd2fbd89ac01727be11b1b3bcf3c2c3a3",
+      "bytes": 80652
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/hero-ja.jpg",
+      "sha256": "1f094b48562e21acd2c4e5b5e3e7beac2c7f120305103b70514e66aaabce640d",
+      "bytes": 71974
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/hero-ko.jpg",
+      "sha256": "dd28fee2b4978a8fdf3ba6498bb66823d918686d037a3b6269276d9fadae2c4b",
+      "bytes": 67551
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/hero-zh-cn.jpg",
+      "sha256": "5ac585ec2912f63c9d2576a2571a77c6104883f4ded01bd5e6c29b7d3cd1f41f",
+      "bytes": 69933
+    },
+    {
+      "path": "public/guides/portfolio-case-study/diagram-1-en.svg",
+      "sha256": "6f821e9546c4d31f0c773ccfac3e5ae26603b060a9447fff29efb71cb22c81f2",
+      "bytes": 3185
+    },
+    {
+      "path": "public/guides/portfolio-case-study/diagram-1-ja.svg",
+      "sha256": "e627ddcb9eede0eb6457543514b7e8cec2e5b90d19ac38877abaa0769302dc38",
+      "bytes": 3062
+    },
+    {
+      "path": "public/guides/portfolio-case-study/diagram-1-ko.svg",
+      "sha256": "5c71886583a0f275964a0c97dcd122cdb49c71994050463eea9f2c3761ca00bf",
+      "bytes": 3178
+    },
+    {
+      "path": "public/guides/portfolio-case-study/diagram-1-zh-cn.svg",
+      "sha256": "244d6cf43d823b870cb6c8e4de83813418063747a0467667a60db174c8e2c7c9",
+      "bytes": 2891
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero-en.jpg",
+      "sha256": "a6b816d87642688d8828f2cdfbff010f5b07b8395b493a838bec4c36656e9216",
+      "bytes": 78927
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero-en.svg",
+      "sha256": "dec174188269cad637f755ace38163aa5380de785f8542d2902f7b51fc9caff6",
+      "bytes": 2393
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero-ja.jpg",
+      "sha256": "26a8ed28a27591ceea6402e0090f56ccd30d9966688eaaf853548ace99c806e5",
+      "bytes": 75963
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero-ja.svg",
+      "sha256": "9f6ccc8fb3541c8b9ebb1abb7f6210fd57ea098da4a94a418ca13458e9dfde51",
+      "bytes": 2463
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero-ko.jpg",
+      "sha256": "4d0d789876954dca21a6df5bc4b22b5d150e00be89a657c655dde3213444cf05",
+      "bytes": 66855
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero-ko.svg",
+      "sha256": "64eb5daaed8594948d9ea73f4d3729ca24b64bbab2e84d61a8de0d2fcae33504",
+      "bytes": 2416
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero-zh-cn.jpg",
+      "sha256": "96ea6ac5903666ead02a521b9b65f40f2386bbbfecb2c3c4de64f198d380fad0",
+      "bytes": 70339
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero-zh-cn.svg",
+      "sha256": "0eab0b2f2645c2836d36987dd7df8c235f646f5ffdd8086474ee7b1c3820cd1b",
+      "bytes": 2336
+    },
+    {
+      "path": "public/guides/seo-domain-authority/diagram-1-en.svg",
+      "sha256": "6831d93f61563748f4d5c6b45ae75478392a7f9674180116b396ec863710858c",
+      "bytes": 3084
+    },
+    {
+      "path": "public/guides/seo-domain-authority/diagram-1-ja.svg",
+      "sha256": "8f355c4ff51635620d60336da361ab69d4c69eeb139d1cbed4ed1bdaa3b32f3a",
+      "bytes": 3113
+    },
+    {
+      "path": "public/guides/seo-domain-authority/diagram-1-ko.svg",
+      "sha256": "4f80ec32f1d77ea9e17989626c2d001ebbcf1db2687ee30530e586fd9d55c9ad",
+      "bytes": 3061
+    },
+    {
+      "path": "public/guides/seo-domain-authority/diagram-1-zh-cn.svg",
+      "sha256": "445b4d680a9c63dc995cad2e35f03bc28f82ec6e43d9fd473cacdd5f490ea567",
+      "bytes": 2855
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero-en.jpg",
+      "sha256": "f514337f866a7e475b08a421b87b5039e31ae727650354c7697a1a64f2caf8ce",
+      "bytes": 85927
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero-en.svg",
+      "sha256": "fb06c0c4d4f610d1c257fa4595175dd454a86510c9d2e42d23e92b85dfc9c1f0",
+      "bytes": 3307
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero-ja.jpg",
+      "sha256": "5e0ba260629c46f8e4df5ff6c3bc78aaf14a807d2dc38ac53e750e65f6da3869",
+      "bytes": 71892
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero-ja.svg",
+      "sha256": "0d9f86bda00492c61e76e1c05c9960c6357ec269c266174505f05bfa3facee69",
+      "bytes": 3303
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero-ko.jpg",
+      "sha256": "84edb6386f8b8547a5e5405f49333c1334eb4416b840a6d81de80b30ca0918be",
+      "bytes": 72109
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero-ko.svg",
+      "sha256": "09708ce20b2717356dca98e6a27b192e7954fb2beba5a25ea357493b69d6a7c3",
+      "bytes": 3312
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero-zh-cn.jpg",
+      "sha256": "8f21cc1eb973ef9a694f5b311c239b80775a4ee7165f5392659870e5ffd27891",
+      "bytes": 74307
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero-zh-cn.svg",
+      "sha256": "afe578adf95427f1a334a0a393d2d77488ae8b199bc872abc40a39a6b6aeb707",
+      "bytes": 3255
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/diagram-1-en.svg",
+      "sha256": "a74e6c37ce01bc644aaa2aa12efaffa3bcf83ede1c2ade835a56576f9e89da72",
+      "bytes": 3661
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/diagram-1-ja.svg",
+      "sha256": "b2ed35afea746981fe13d3748a533b77369ef396716840b55e54eff196878145",
+      "bytes": 3618
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/diagram-1-ko.svg",
+      "sha256": "c2c46f14ee341904a4318eba89164752f1f9f11c5206a4ad9a9b2945022a988d",
+      "bytes": 3593
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/diagram-1-zh-cn.svg",
+      "sha256": "c932af518b6787d1bedd597fbae88fd8e663b959b5d84b27779d55290047b4b9",
+      "bytes": 3376
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/diagram-1.svg",
+      "sha256": "97ad922a72956faeca9b2799eac369a2b41c224da7e128e828f30222fac7d9d1",
+      "bytes": 3368
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero-en.jpg",
+      "sha256": "c1824545a42e1f00900b089d541ebe26b87974f6c3908d9d536a49ccf12040c1",
+      "bytes": 81591
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero-en.svg",
+      "sha256": "e7cd11b1f87911c5a5dee6495d7d6826852db649f9b667d5ae67e578b16b72e2",
+      "bytes": 2189
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero-ja.jpg",
+      "sha256": "4e826fa16b440204de482c53e338170b10617161e9fc6d483308466f98431bce",
+      "bytes": 74920
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero-ja.svg",
+      "sha256": "30f791171aea778ec728cc76bfd5f2e6d5b2365a04261e61af3537d2a887ee3c",
+      "bytes": 2180
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero-ko.jpg",
+      "sha256": "e7d9c969d103ed6a642cc59a5d6ed8559497ccff15338552634dbdea075eeceb",
+      "bytes": 74631
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero-ko.svg",
+      "sha256": "b87c0acc0bdd46931f58a58948aa490d726b70cf25ad3b77ad83e21766f15720",
+      "bytes": 2194
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero-zh-cn.jpg",
+      "sha256": "2aec86e9a8836601194ddb818d32a63652a02cada09d45e05f676944e3c2d249",
+      "bytes": 72296
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero-zh-cn.svg",
+      "sha256": "b45c3006cf4b2be70f9a870ea1fafabf9ae4dcb85d769687dc66e003d043f285",
+      "bytes": 2138
+    },
+    {
+      "path": "public/guides/seo-trust-sensitive-topics/hero.jpg",
+      "sha256": "043ee8bcf8028f2a1f63ff3a196b8458fe65f2c94d26b728a7e2d2792e62d3fa",
+      "bytes": 60749
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/diagram-1-en.svg",
+      "sha256": "94b652e6b383df6d0ec96ce74d5a3ee69372fe6ed3a23c81abd6099c778ad924",
+      "bytes": 3668
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/diagram-1-ja.svg",
+      "sha256": "6de34b72932b836a9ee2ecc4eb7a4d39c7bea1f74016ee6070cb247e21f71b2d",
+      "bytes": 3796
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/diagram-1-ko.svg",
+      "sha256": "cd3ebf14e5ccf0ec9159dae4f2bd1fe81168e4012152ffd3b1c5b8455cbaad8d",
+      "bytes": 3598
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/diagram-1-zh-cn.svg",
+      "sha256": "2be388f9edd23cc136f4293c604052708ba59f85a2f4f21961096df25ff9e0e6",
+      "bytes": 3358
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/diagram-1.svg",
+      "sha256": "ddacce5af59edb95870cdd21d825b679df87492157794573ade1412c2ef4cce6",
+      "bytes": 3344
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero-en.jpg",
+      "sha256": "1174cb1df561f17f12ae2c47d130643981656c3f92c367f698f15819e728df91",
+      "bytes": 72755
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero-en.svg",
+      "sha256": "1c8f88ea52708ab52e660a7f505d88be59f61b0dc00b2f53dd0c399da23e4044",
+      "bytes": 2345
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero-ja.jpg",
+      "sha256": "85adf8868af5023154a9c0769a80360036b298cb538e417de7d5eead537542a4",
+      "bytes": 70871
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero-ja.svg",
+      "sha256": "c5c9b58c45beadd226bb37cb9a2e922d66bd8f7a910abba585a6b7a0fe9b8ccd",
+      "bytes": 2359
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero-ko.jpg",
+      "sha256": "0a63f818ad014ba69f3be4f26e87018303f4efc7bb153126e93342951dc1f394",
+      "bytes": 66615
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero-ko.svg",
+      "sha256": "ebf960c40e60b1dac92a06ea3b45c68128b7a827f1f7c81c40eeda3590e88d47",
+      "bytes": 2368
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero-zh-cn.jpg",
+      "sha256": "eb8980e1c24a4cf3a3f353de0bfa768689d63b0b5cfcef85950b79bef55c9047",
+      "bytes": 68657
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero-zh-cn.svg",
+      "sha256": "484c19cc7963a39bd7d5a4a53ad4ba487fc0fba183e99a7f321f258799d2b187",
+      "bytes": 2302
+    },
+    {
+      "path": "public/guides/web-design-agency-brief/hero.jpg",
+      "sha256": "bc1e6645d7cb6c9f5b2a34c39b0709b5b8d7abec0d913dc4ca0c967b7926c448",
+      "bytes": 58057
+    },
+    {
+      "path": "public/guides/website-404-recovery/diagram-1-en.svg",
+      "sha256": "0ea8f3186a292ed89ad927283eceeccc93dce4f76b62b94980eb495f98d9a9f6",
+      "bytes": 3080
+    },
+    {
+      "path": "public/guides/website-404-recovery/diagram-1-ja.svg",
+      "sha256": "59493a68b5eee3b658e6b0c108077cfb1a383bab6046d08f2c8d71ed86af1a69",
+      "bytes": 3161
+    },
+    {
+      "path": "public/guides/website-404-recovery/diagram-1-ko.svg",
+      "sha256": "cecb017fc809ea726d016b42caf5f02ba123c81a6b1f0be6c7e5c72c5b7cef23",
+      "bytes": 3143
+    },
+    {
+      "path": "public/guides/website-404-recovery/diagram-1-zh-cn.svg",
+      "sha256": "52095ffea798b30ed7083c4a30d4345a26ec93473252589539fdcb4c487de5f1",
+      "bytes": 2915
+    },
+    {
+      "path": "public/guides/website-404-recovery/diagram-1.svg",
+      "sha256": "63aee70cd010c52d73a8e12c2e370bf251c2b5407ed76b87f074fc6823f4760a",
+      "bytes": 2902
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero-en.jpg",
+      "sha256": "3f5a7dadac32f2761ee85ec30e72368a1a30ce8c401b0262171206fdf3bcc5d7",
+      "bytes": 71959
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero-en.svg",
+      "sha256": "fe00adb9e1d4ecaa1fb5a619efc81abf18dd34d35e820b6b4ed0a5ae23ae1024",
+      "bytes": 2371
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero-ja.jpg",
+      "sha256": "2c5f108539057f764d9bf0884eeaa6816a4c0abae1f4e16a8ae1daf9d32eafb6",
+      "bytes": 70758
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero-ja.svg",
+      "sha256": "56db39e791634c07fcc329135742ddca9f1d318d67b361498d615d8d6c40b7c3",
+      "bytes": 2437
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero-ko.jpg",
+      "sha256": "faa5cc299a65fabd637adc17017cee47a4034673657e0b7ad613785400f46289",
+      "bytes": 66784
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero-ko.svg",
+      "sha256": "9a4ea205dd52139d1d31adaafbcb6d568967c9120ac2028aa149d803c6ad64ef",
+      "bytes": 2404
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero-zh-cn.jpg",
+      "sha256": "0069a26d66fcdcaf834fff619f0f69c291ad1670b2bca3c84c3eeffa1d39d982",
+      "bytes": 68680
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero-zh-cn.svg",
+      "sha256": "0ebbeabc23b736da71a577ea155a4c64d7cb627be9eb0d7d7e89a8bd69c0b2f3",
+      "bytes": 2333
+    },
+    {
+      "path": "public/guides/website-404-recovery/hero.jpg",
+      "sha256": "2c3a87bbefcc95e1208ab678e8b975dad69dba14beb4ea5c91eba8579c292cc4",
+      "bytes": 58121
+    },
+    {
+      "path": "public/guides/website-www-subdomains/diagram-1-en.svg",
+      "sha256": "89355654820128f8c3e71fb142480480e7be605035686a378e334e5452f736b3",
+      "bytes": 3187
+    },
+    {
+      "path": "public/guides/website-www-subdomains/diagram-1-ja.svg",
+      "sha256": "1dd6a0b7a64b147b249af16f6b99fe8ffbe40fbfce7f5df444d3d30503e8a46a",
+      "bytes": 3190
+    },
+    {
+      "path": "public/guides/website-www-subdomains/diagram-1-ko.svg",
+      "sha256": "e6f7529a860bf7b1dbe97fb5f32c75ce8fe594480a196a887e0ccce5ce8887de",
+      "bytes": 3115
+    },
+    {
+      "path": "public/guides/website-www-subdomains/diagram-1-zh-cn.svg",
+      "sha256": "d3450c28764ab5ad4a65d41e807eaef26912fc0b55d75d7398e28c9382041bd0",
+      "bytes": 2880
+    },
+    {
+      "path": "public/guides/website-www-subdomains/diagram-1.svg",
+      "sha256": "21ea23ed949fa019ad794daf6a71484eafa0801c5b60fa7ae594498652841ab1",
+      "bytes": 2861
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero-en.jpg",
+      "sha256": "25acf3e797ceda79d5263156843ae28741144c41e1297a4aa5ac00234e9f386f",
+      "bytes": 79420
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero-en.svg",
+      "sha256": "34e55bb49aa4d4c8b283fa553253afd55b711bcd9d5eeec787cad850f2dc50a9",
+      "bytes": 2194
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero-ja.jpg",
+      "sha256": "77865e2a318c12e2a5e57443f79536f3644fad792f2edabf893141d2842ff629",
+      "bytes": 74956
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero-ja.svg",
+      "sha256": "d9297e07d71e49a2aa670f7711a8f2bdc6f56cb79b9c64283c3eb34976dd7318",
+      "bytes": 2235
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero-ko.jpg",
+      "sha256": "051961ea3679bd8a63ba8cdd8e719d2f8d45f0132d66f6dcf24dcd3658e61a11",
+      "bytes": 70817
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero-ko.svg",
+      "sha256": "aeb553e3f5bbcafe489f6fa6813541f43d18e3e23097267b0a0755d0897386c0",
+      "bytes": 2212
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero-zh-cn.jpg",
+      "sha256": "7b9b580b0501ddb33f10dffc83ded9fd3ecb7eb45629d2368da9e90e9f9baa3f",
+      "bytes": 73137
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero-zh-cn.svg",
+      "sha256": "bbe35c5d3b3edb46c47898c7febb6d6e543681c4c2eb3dc10ac1b6fd0fd29344",
+      "bytes": 2169
+    },
+    {
+      "path": "public/guides/website-www-subdomains/hero.jpg",
+      "sha256": "8926fb8eaba9a51302251c4879961b752d8bce1a075bd5924009dc6ad4abdb0e",
+      "bytes": 60908
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/diagram-1-en.svg",
+      "sha256": "119ff9cbd6624d28f828eea5e4349f805f0ff26963371e9e5f45c9723e63f04c",
+      "bytes": 3273
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/diagram-1-ja.svg",
+      "sha256": "1d98db680294277c9d47ca5ff4b71b3a264b9a1f603bf6c30b8f8729bdc0f03d",
+      "bytes": 3304
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/diagram-1-ko.svg",
+      "sha256": "adcde322fb5a47a6c01a181c6e4b9e7b6f740a8a3bd56e112236dcb64c008986",
+      "bytes": 3327
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/diagram-1-zh-cn.svg",
+      "sha256": "e2fe901dddf09f7d0cbf02f9ba3822c129e1a5dcbf8ed8ac2d3e4ee1a7599755",
+      "bytes": 3263
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/diagram-1.svg",
+      "sha256": "a2f252a62a64584be1f7aa74f26b72825edc842249e0c2a19b962f078ddfc9a1",
+      "bytes": 3284
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/hero-en.jpg",
+      "sha256": "fe6a9a5e3837857f2eb46b28ee481c01fb6c3632d39a2b37d6b421fd08c9f14b",
+      "bytes": 109319
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/hero-ja.jpg",
+      "sha256": "a18f502813b36ba83c44e2a21eeacdaff1738771301fc1a5ee4d7fa7750f038e",
+      "bytes": 108853
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/hero-ko.jpg",
+      "sha256": "bff254d2d601ebf110b750a5e172730c7213c7d8003e6bb99dad9b37c099f339",
+      "bytes": 97316
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/hero-zh-cn.jpg",
+      "sha256": "31cb87847cea06f478af901695c78e811deff69ea9702b36719d134e0cd253d0",
+      "bytes": 111676
+    },
+    {
+      "path": "public/guides/wordpress-blog-build/hero.jpg",
+      "sha256": "74c96a509c7bc89e9a4d1842bfc4d921c648ccff46fe683277bdec4b8e8c46d6",
+      "bytes": 59782
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/diagram-1-en.svg",
+      "sha256": "82fa502d6025b076e8022c3d6aa23778115a84d8307ea3a1e704fbcd5ec23e48",
+      "bytes": 2912
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/diagram-1-ja.svg",
+      "sha256": "932522259b8377b6244eca8f396ec65e35d1f9a48dbdb9dbe94e5a142b8c0a46",
+      "bytes": 2947
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/diagram-1-ko.svg",
+      "sha256": "1d3fe47c806f1645fab8960e845b9acadc07590552b8a92d48eb71798a9975da",
+      "bytes": 2920
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/diagram-1-zh-cn.svg",
+      "sha256": "7490d53313871375a934287139a31c9b525bfb108b64632b3a264e4bd7d6a622",
+      "bytes": 2857
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/diagram-1.svg",
+      "sha256": "b5902241492e648c0645d4879ae799185352bb9e5a89a34943d33b07c6416ff2",
+      "bytes": 2826
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/hero-en.jpg",
+      "sha256": "c5d12de2068da2420a4eb3688a8bc94a24ea1fbc0a006b014b7029f60f38b3f8",
+      "bytes": 105647
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/hero-ja.jpg",
+      "sha256": "40f53efc4d5d9424ac7b1f04a82f3ca58774fbd81d3ffa7e7f2e1ac5dc1ec3c4",
+      "bytes": 108110
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/hero-ko.jpg",
+      "sha256": "8cf82f94e8448d7b89a4fb2b3929213828683aab31f2e6638c53b3a63d6ce451",
+      "bytes": 101524
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/hero-zh-cn.jpg",
+      "sha256": "4967c698c2367f1a449180272463423c8e571a53df467ce2feaf1d3fce59587a",
+      "bytes": 105759
+    },
+    {
+      "path": "public/guides/wordpress-comment-spam/hero.jpg",
+      "sha256": "4501f8c3eff42c1872125c623f75c7de80986c4a03455aa426d3a93fe4dedd3b",
+      "bytes": 59799
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/diagram-1-en.svg",
+      "sha256": "c8f417be0fe77d71abafd5eb4fd8b7f1af95a374a1456ed1db30dbf7bc5cf148",
+      "bytes": 3449
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/diagram-1-ja.svg",
+      "sha256": "e639c022d459b8443d17c9cca594bd06563b940afe27582a6a4b91dbd655a159",
+      "bytes": 3515
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/diagram-1-ko.svg",
+      "sha256": "dd351c254f26b40a0c0e97f79ab902f8c57304f181a383899871ed36d2085da8",
+      "bytes": 3503
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/diagram-1-zh-cn.svg",
+      "sha256": "159bf82e124cf57377f2dbcbb724c0040d8e9eb101b8c630495880c7c557452a",
+      "bytes": 3424
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/diagram-1.svg",
+      "sha256": "753447cfcb1b5759981a3a9fafc686e3f76a48f3bb019e84cada21b84471d668",
+      "bytes": 3390
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/hero-en.jpg",
+      "sha256": "250e666aeaabe1dd0a55f3bc52b90194155983d24d98b5b33606f3381bdf0bd7",
+      "bytes": 95100
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/hero-ja.jpg",
+      "sha256": "6af1d86b0670766fc529f6e5a5e65d511f0e21aaf87862cdf9b430447565a980",
+      "bytes": 92262
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/hero-ko.jpg",
+      "sha256": "d83411c10ed7375a5ef2f1dac3de22cf5a78757095eda82cf1fb732802a4a3ae",
+      "bytes": 86873
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/hero-zh-cn.jpg",
+      "sha256": "5a671f7657e5e86140caee7d292aaaae04c8182df17c566f18ac3dc714d65092",
+      "bytes": 89532
+    },
+    {
+      "path": "public/guides/wordpress-performance-plugins/hero.jpg",
+      "sha256": "dc8892ceb6b56fef998e7c7fd805877ed950bd9db2e7c96490c4232d6deb9126",
+      "bytes": 54325
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/diagram-1-en.svg",
+      "sha256": "14ab95efd28f03c3c0a8c8508f7ac55c1254c168a7bb152f0a2f538b8c91fb52",
+      "bytes": 2918
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/diagram-1-ja.svg",
+      "sha256": "94de6770d38fde5308944f758bbdfc7ff3b82241ead14e23c5765663679cfeae",
+      "bytes": 2969
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/diagram-1-ko.svg",
+      "sha256": "3d88b15ce81f17d3cb42ff4fe1e52f16cfd18ff52f91e381a265a2ba71840e38",
+      "bytes": 2976
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/diagram-1-zh-cn.svg",
+      "sha256": "34c9af5a9275c8516e98eed7cbee95fb92637acc4c234904fd8d476da705e5aa",
+      "bytes": 2869
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/diagram-1.svg",
+      "sha256": "67b9192aa4c0698bb7306d7517ebb193c9f5a0b6fa87d099dfc66ca8e9624d41",
+      "bytes": 2829
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/hero-en.jpg",
+      "sha256": "f0b189736769799ea56b99bc0e27a8bc0ff20005c4bbabcea9a26f5f710d710c",
+      "bytes": 104346
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/hero-ja.jpg",
+      "sha256": "7e57cd9ccbb6f36e11b68a51bb1ca342c8b0e67dd80a9a446634214db282c973",
+      "bytes": 102341
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/hero-ko.jpg",
+      "sha256": "f722b8fae08c269f609cefded33058d66b4b45116dadd5e1b70ece73159c76c9",
+      "bytes": 96248
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/hero-zh-cn.jpg",
+      "sha256": "8e7eff3453b853fc1d0f615a567617b8739c852d834ef1f12dbb414fa734df82",
+      "bytes": 99685
+    },
+    {
+      "path": "public/guides/wordpress-reset-safely/hero.jpg",
+      "sha256": "510aaaf226670502d655a41b980fadc3a3dd686eaa3c37331324334e0cec0ee8",
+      "bytes": 61972
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/diagram-1.svg",
+      "sha256": "d6d0ed32b8e17411eb941cd1f38e0f21bb17cae747cabefa140ed4963261135e",
+      "bytes": 2819
+    },
+    {
+      "path": "public/guides/brand-identity-logo-brief/hero.jpg",
+      "sha256": "b7cc60087c40b29de6d3ad7d7ec0258aec2345055710b881588551d1f9d80788",
+      "bytes": 58081
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/diagram-1.svg",
+      "sha256": "8244038548eb887e75d12af0dc2db6b83a99fa34030eaa23fba636a307914ff1",
+      "bytes": 2936
+    },
+    {
+      "path": "public/guides/paid-vs-organic-marketing/hero.jpg",
+      "sha256": "33032cbb79ec1923bec9774b0f3986f4ceef0a6c59562240b0c83bcc5736d992",
+      "bytes": 59938
+    },
+    {
+      "path": "public/guides/portfolio-case-study/diagram-1.svg",
+      "sha256": "9fa9baf7a7a2ea0d490fd3663e6eb926ac41be0b4f86f35e9d7a973154fe26bd",
+      "bytes": 2886
+    },
+    {
+      "path": "public/guides/portfolio-case-study/hero.jpg",
+      "sha256": "d42bcbc680e8d55819f16e29fd01b822573c22882c3116698274c8e9a974a1ce",
+      "bytes": 59475
+    },
+    {
+      "path": "public/guides/seo-domain-authority/diagram-1.svg",
+      "sha256": "49eba792b7d80e881a411989e9f6534a1c5a8a4ed20a652ee181780e1801111d",
+      "bytes": 2848
+    },
+    {
+      "path": "public/guides/seo-domain-authority/hero.jpg",
+      "sha256": "ac240183730ab5b76394f5f1fa26751b854a4fe785a03003104fb008dc88e2e6",
+      "bytes": 61953
+    }
+  ]
+}
