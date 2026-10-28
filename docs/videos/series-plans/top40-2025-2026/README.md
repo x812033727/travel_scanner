@@ -80,7 +80,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2026-02-fujia-zhouli` | 我們穿進了自己審的稿 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-03-shengxia-fendela` | 合約到期前 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-03-guimi-chuanyue` | 我和我媽穿去亡國 | **done**：5 季 300 集，validate 零錯誤 |
-| `2025-04-jiali-jiawai` | 海風吹進門 | outline；五季細綱代理撰寫中 |
+| `2025-04-jiali-jiawai` | 海風吹進門 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-04-shaofuren-dongbei` | 租來的女朋友不想退租 | outline；五季細綱代理撰寫中 |
 | `2025-05-qianjin-mou` | 她的當鋪不談愛 | outline（設定集與五季總綱已寫） |
 | `2026-05-hongtang-jiangzhi` | 薑茶要趁熱 | outline（設定集與五季總綱已寫） |

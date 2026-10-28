@@ -1,0 +1,4575 @@
+{
+  "number": 4,
+  "title": "暫代",
+  "theme": "假的演到真的，就要替真的打一仗。",
+  "start_state": "邵亦辰被暫停執行長職務，二叔暫代。她回邵家說『現在也是我家』。繼母想吃麵、小妹叫她姐、弟弟從墳前回來、大妹還差一步、祖母看戲、陳叔在中間。二叔手裡有契約原件與邵亦辰的助理。",
+  "end_state": "二叔手裡有什麼揭開（契約原件，助理是他的人）；邵亦辰無名指的疤揭開（父親的戒指）；陳叔的家鄉揭開（海口村隔壁，四十年沒回）；大妹的結解開（她把同居的對象帶回家，海若替她擋）；堂弟邵亦恒發現自己也是父親的棋。董事會攤牌：二叔把契約原件投在大螢幕上說『長孫用假女友騙祖母』，她自己走進會議室。最後一集，她在董事會上說完一句話，祖母推門進來，坐上主位：『景隆，那張契約是我讓亦辰簽的。』二叔的笑停了。",
+  "guest_cast": [
+    {
+      "id": "s04-zhuli",
+      "name": "何敬文",
+      "role": "邵亦辰的特助，三十四歲，跟了他五年；三年前起就是二叔的人，契約原件、林家欠錢與三年前的調查都經他的手送出去",
+      "appearance": "東亞男性，三十四歲，乾淨斯文：短髮側分、無框眼鏡、細長眼、下頷線清楚；灰色合身西裝、領帶夾，腋下永遠夾著一台平板，鞠躬的角度總是深了一點"
+    },
+    {
+      "id": "s04-jiang-baishan",
+      "name": "江柏山（阿山）",
+      "role": "大妹邵亦寧同居三年的對象，三十歲，在星港開修車廠；話少、手巧、不卑不亢，退回過二叔的錢",
+      "appearance": "東亞男性，三十歲，粗獷俊朗：方臉、濃眉、笑起來眼角有紋、短髮推高，膚色曬深，肩寬手臂結實，指縫有淡淡機油痕；平常穿深灰工作連身服捲起袖子，第一次上邵家吃飯穿一件燙歪的白襯衫"
+    },
+    {
+      "id": "s04-ershen",
+      "name": "二嬸（羅美鳳）",
+      "role": "二叔邵景隆的太太、邵亦恒的母親，五十二歲；愛聊天、愛烤餅乾，心裡比丈夫清楚，二十年沒人陪她吃晚飯，被林海若聊了一下午後站到她這邊",
+      "appearance": "東亞中年女性，五十二歲，圓潤和氣：燙短捲髮、圓臉、笑紋深，戴一副細金邊眼鏡與珍珠耳環，穿淺杏色套裝，出門加一副大墨鏡，手上常端著一盤自己烤焦的餅乾"
+    },
+    {
+      "id": "s04-jizhe",
+      "name": "范小晴",
+      "role": "星港八卦週刊記者，二十八歲；鼻子靈、臉皮厚，登了二叔給的料，也吃了林海若的麵",
+      "appearance": "東亞年輕女性，二十八歲，機靈俏麗：齊瀏海短髮、大框眼鏡、圓臉、一顆虎牙，牛仔外套配球鞋，脖子上掛一台長鏡頭相機"
+    },
+    {
+      "id": "s04-dongshi",
+      "name": "邵氏航運董事們",
+      "role": "邵氏航運董事會的七位董事；第一篇章通過讓邵亦辰在家休養，第六篇章表決長孫繼承人資格",
+      "appearance": "東亞中老年男女七人，五十到七十歲，深色西裝與套裝、銀髮或整齊的短髮，面前立著名牌與一杯沒動過的水，神情克制"
+    },
+    {
+      "id": "s04-wu-dong",
+      "name": "吳振邦（吳董）",
+      "role": "最資深的董事，七十歲，祖母當年的老部下；在茶樓看穿二叔偷聽，董事會表決時握著最後一票",
+      "appearance": "東亞老年男性，七十歲，清瘦硬朗：銀白短髮梳得整齊、濃眉、老花眼鏡掛在胸前，深灰三件式西裝，手指關節粗大像跑過船"
+    },
+    {
+      "id": "s04-zheng-shao",
+      "name": "鄭以翔",
+      "role": "二叔帶來介紹給大妹的世交之子，二十九歲；教養好、搞不清楚狀況，最後只想吃一碗麵",
+      "appearance": "東亞青年男性，二十九歲，斯文體面：三七分短髮、圓眼、一對酒窩，淺藍訂製西裝配口袋巾，緊張時不停折餐巾"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "繼母等了三天的那碗麵，誰來煮？",
+      "setup_episode": 1,
+      "payoff_episode": 2
+    },
+    {
+      "id": "s04-t02",
+      "question": "被「請」回家休養的他，要怎麼過日子？",
+      "setup_episode": 3,
+      "payoff_episode": 6
+    },
+    {
+      "id": "s04-t03",
+      "question": "契約原件封面上三年前的日期是怎麼回事？",
+      "setup_episode": 4,
+      "payoff_episode": 60
+    },
+    {
+      "id": "s04-t04",
+      "question": "小妹的休學申請書，家長欄誰來簽？",
+      "setup_episode": 5,
+      "payoff_episode": 9
+    },
+    {
+      "id": "s04-t05",
+      "question": "在夜市看著這一家的堂弟邵亦恒，站在哪一邊？",
+      "setup_episode": 9,
+      "payoff_episode": 30
+    },
+    {
+      "id": "s04-t06",
+      "question": "書房保險箱裡的錄音筆是誰放的？",
+      "setup_episode": 10,
+      "payoff_episode": 11
+    },
+    {
+      "id": "s04-t07",
+      "question": "留下助理，錄音筆裡的話會送到誰手上？",
+      "setup_episode": 13,
+      "payoff_episode": 14
+    },
+    {
+      "id": "s04-t08",
+      "question": "對著保險箱喊的「我早就想走了」，是演的還是真的？",
+      "setup_episode": 13,
+      "payoff_episode": 49
+    },
+    {
+      "id": "s04-t09",
+      "question": "二叔的太太為什麼說她等很久了？",
+      "setup_episode": 15,
+      "payoff_episode": 16
+    },
+    {
+      "id": "s04-t10",
+      "question": "二叔派堂弟去接近的修車廠男人是誰？",
+      "setup_episode": 16,
+      "payoff_episode": 17
+    },
+    {
+      "id": "s04-t11",
+      "question": "大妹敢不敢把江柏山帶回家吃飯？",
+      "setup_episode": 17,
+      "payoff_episode": 21
+    },
+    {
+      "id": "s04-t12",
+      "question": "二叔買下修車廠的地要做什麼？",
+      "setup_episode": 18,
+      "payoff_episode": 28
+    },
+    {
+      "id": "s04-t13",
+      "question": "助理偷走的江柏山檔案，二叔會拿去哪裡用？",
+      "setup_episode": 19,
+      "payoff_episode": 24
+    },
+    {
+      "id": "s04-t14",
+      "question": "江柏山修得好祖母四十年沒發動的老車嗎？",
+      "setup_episode": 22,
+      "payoff_episode": 23
+    },
+    {
+      "id": "s04-t15",
+      "question": "二叔帶來的世交兒子，能不能讓江柏山出局？",
+      "setup_episode": 23,
+      "payoff_episode": 25
+    },
+    {
+      "id": "s04-t16",
+      "question": "江柏山真的收了二叔的錢嗎？",
+      "setup_episode": 24,
+      "payoff_episode": 25
+    },
+    {
+      "id": "s04-t17",
+      "question": "被父親趕出家門的亦恒，今晚去哪？",
+      "setup_episode": 25,
+      "payoff_episode": 29
+    },
+    {
+      "id": "s04-t18",
+      "question": "祖母單獨把江柏山叫進佛堂要說什麼？",
+      "setup_episode": 26,
+      "payoff_episode": 27
+    },
+    {
+      "id": "s04-t19",
+      "question": "二叔買下的八卦週刊版面要登什麼？",
+      "setup_episode": 29,
+      "payoff_episode": 39
+    },
+    {
+      "id": "s04-t20",
+      "question": "他無名指的疤，為什麼要問繼母？",
+      "setup_episode": 31,
+      "payoff_episode": 32
+    },
+    {
+      "id": "s04-t21",
+      "question": "父親那枚缺角的戒指，最後會在誰手上？",
+      "setup_episode": 32,
+      "payoff_episode": 33
+    },
+    {
+      "id": "s04-t22",
+      "question": "叫得出「海口烏」的陳叔，家鄉在哪裡？",
+      "setup_episode": 35,
+      "payoff_episode": 36
+    },
+    {
+      "id": "s04-t23",
+      "question": "八卦登出的那張一百萬支票，去哪了？",
+      "setup_episode": 37,
+      "payoff_episode": 38
+    },
+    {
+      "id": "s04-t24",
+      "question": "麵休三天，三天後她還煮不煮？",
+      "setup_episode": 41,
+      "payoff_episode": 47
+    },
+    {
+      "id": "s04-t25",
+      "question": "周律說「他不讓我說」的是什麼事？",
+      "setup_episode": 44,
+      "payoff_episode": 45
+    },
+    {
+      "id": "s04-t26",
+      "question": "那本寫了三年的記事本，她翻不翻？",
+      "setup_episode": 45,
+      "payoff_episode": 46
+    },
+    {
+      "id": "s04-t27",
+      "question": "三天後的董事會，二叔要怎麼用契約原件？",
+      "setup_episode": 46,
+      "payoff_episode": 53
+    },
+    {
+      "id": "s04-t28",
+      "question": "說「我老了」的祖母，真的不去董事會？",
+      "setup_episode": 47,
+      "payoff_episode": 60
+    },
+    {
+      "id": "s04-t29",
+      "question": "二叔手上那段整段錄音，會在董事會上播嗎？",
+      "setup_episode": 48,
+      "payoff_episode": 54
+    },
+    {
+      "id": "s04-t30",
+      "question": "被叫「明天妳別來」的她，進得了董事會嗎？",
+      "setup_episode": 51,
+      "payoff_episode": 56
+    },
+    {
+      "id": "s04-t31",
+      "question": "罷免長孫的那一票，董事會會怎麼投？",
+      "setup_episode": 53,
+      "payoff_episode": 60
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "魚乾開路",
+      "youtube_title": "被停職的總裁一落地就被記者包圍，漁村女友舉起一袋魚乾：借過，很臭！",
+      "duration_s": 115,
+      "logline": "林海若要把被停職的邵亦辰帶回邵家，卻被機場的記者、收走的公司車和坐在他位子上的二叔一路擋住。",
+      "hook": "星港機場出口閃光燈炸成一片，記者把麥克風塞到邵亦辰嘴邊：「停職是真的嗎？」林海若把一袋魚乾舉到最前面：「借過，很臭！」",
+      "hook_type": "line",
+      "mid_hook": "路邊沒有車。助理何敬文撐著傘，鞠了一個太深的躬：「邵總，車被二叔收回了。」",
+      "extra_hooks": [
+        "機場巴士上，邵亦辰對著刷卡機站了五秒；林海若替他嗶了兩下：「我請，男朋友。」",
+        "大宅車道上小妹衝出來抱住她，壓低聲音：「姐，媽說想吃麵，等妳三天了。」"
+      ],
+      "conflict": "二叔暫代執行長的第一天，邵亦辰連車都沒有，林海若要在一夜之間把他平平安安帶回大宅。",
+      "turn": "大家以為他會先衝回公司，他上了巴士只說兩個字：「回家。」她補一句：「現在也是我家。」——大宅的長餐桌卻已經有人坐好了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大宅長餐桌，邵亦辰的位子上坐著二叔，助理何敬文走到他身後站定；二叔舉杯：「亦辰，坐客位吧。」",
+        "question": "他會坐客位嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "fancha",
+        "shangzhan"
+      ],
+      "spectacle": "機場出口一整面閃光燈牆裡，夾腳拖與皮鞋並肩往外走，一袋魚乾高舉過記者的頭。",
+      "glamour_shot": "邵亦辰在巴士最後一排西裝筆挺抓著吊環，窗外星港的霓虹一格一格掃過他的側臉，他低頭看她一眼又移開。",
+      "setups": [
+        "s04-t01",
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "林海若用一袋魚乾突破記者包圍，沒讓邵亦辰在鏡頭前說一個字",
+        "邵亦辰第一次搭公車，沒有公司的車也回到了家"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "s04-zhuli",
+        "s04-jizhe",
+        "shao-yian",
+        "shao-jinglong"
+      ],
+      "locations": [
+        "星港機場出口",
+        "機場巴士",
+        "邵家大宅長餐桌"
+      ],
+      "state": {
+        "time": "從海口村回星港當晚",
+        "knowledge": "二叔暫代執行長、收走公司的車，助理站到了二叔身後；繼母等她的麵等了三天",
+        "carry_forward": "二叔要他坐客位；繼母等的那碗麵"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "鹹",
+      "youtube_title": "二叔坐上總裁的位子要他坐客位，她拉著他進廚房煮麵，二叔想吃一碗都沒有",
+      "duration_s": 110,
+      "logline": "林海若要替等了三天的繼母煮一碗麵，卻得先把邵亦辰從二叔讓出的客位上拉走。",
+      "hook": "邵亦辰的手已經搭上客位的椅背；林海若一把按住：「吃什麼牛排，我煮麵。」拉著他走出飯廳，留二叔一個人舉著杯。",
+      "hook_type": "reversal",
+      "mid_hook": "廚房門被推開，披著絲質外袍的繼母站在門口——二十年沒進過廚房的人，坐上廚師的板凳：「一碗。」",
+      "extra_hooks": [
+        "二叔跟進廚房看著鍋：「我的呢？」林海若撈起最後一筷：「家裡人的份，煮完了。」"
+      ],
+      "conflict": "二叔把邵家的飯桌當成自己的董事會，林海若要用一鍋魚乾湯麵讓這個家先在廚房坐下。",
+      "turn": "繼母喝了一口湯，說「鹹」，大家以為她要放下筷子——她把整碗吃到見底。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "廚房門口，祖母拄著柺杖，陳叔扶著她；她看著那口鍋：「我九十年，沒在廚房吃過。」",
+        "question": "祖母要坐哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "zhiqiu",
+        "xiju"
+      ],
+      "spectacle": "不鏽鋼備料台上一碗冒煙的魚乾湯麵，繼母的珍珠耳環倒映在湯面上。",
+      "glamour_shot": "林海若馬尾紮高、袖子捲到手肘，一手撈麵一手甩水，蒸氣裡她回頭大笑，鼻尖的雀斑被燈照亮。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "繼母二十年來第一次走進廚房，把一碗麵吃到見底",
+        "二叔在邵家廚房沒拿到一碗麵，站在門口笑不出來"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "zhou-wan",
+        "shao-jinglong",
+        "shao-laofuren",
+        "chen-shu"
+      ],
+      "locations": [
+        "邵家大宅長餐桌",
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "回邵家第一晚九點",
+        "knowledge": "繼母吃了她的麵，說鹹，吃完了；二叔被留在廚房門外",
+        "carry_forward": "祖母站在廚房門口"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "九十歲的板凳",
+      "youtube_title": "九十歲的豪門祖母第一次坐進廚房吃麵，總裁卻在碗底收到一封停職信",
+      "duration_s": 105,
+      "logline": "林海若讓邵家全家第一次擠在廚房吃麵，卻在同一張桌上收到董事會把邵亦辰「請」回家的信。",
+      "hook": "祖母在廚師的塑膠板凳上坐下，陳叔要扶，她揮開，捧起碗喝了一口：「鹹得剛好。」",
+      "hook_type": "image",
+      "mid_hook": "助理何敬文站在廚房門口，雙手遞上一個信封：董事會函，請邵亦辰即日在家休養，交出辦公室鑰匙。",
+      "extra_hooks": [
+        "大妹搶過信掃了一眼：「合法的。」整個廚房的筷子停了。"
+      ],
+      "conflict": "全家難得坐在一起，二叔的信卻要在今晚把邵亦辰從公司拔掉。",
+      "turn": "大家以為他會拍桌，他把信墊在碗底當杯墊，繼續吃麵。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "助理伸出手：「鑰匙，我替您交給二叔？」邵亦辰捏著鑰匙懸在麵碗上，林海若一把抓走：「我去送。」",
+        "question": "她要親手把鑰匙送給二叔？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "俯拍：八個人擠在一張不鏽鋼備料台四周，祖母的旗袍、小妹的藍髮、弟弟的吉他、陳叔的白手套，八碗麵一起冒煙。",
+      "glamour_shot": "大妹邵亦寧紅唇未卸、西裝外套搭在肩上，坐在板凳上低頭吹麵，頭頂的燈打下來，冷豔裡第一次有一點笑。",
+      "setups": [
+        "s04-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "祖母、繼母、大妹、小妹、弟弟第一次全在廚房吃同一鍋麵",
+        "邵亦辰沒讓助理把辦公室鑰匙拿走"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "shao-laofuren",
+        "zhou-wan",
+        "shao-yining",
+        "shao-yian",
+        "shao-yichuan",
+        "chen-shu",
+        "s04-zhuli"
+      ],
+      "locations": [
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "回邵家第一晚十點",
+        "knowledge": "董事會請他在家休養，要交出辦公室鑰匙",
+        "carry_forward": "她明天要去送鑰匙；他明天起沒有班可上"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "還鑰匙",
+      "youtube_title": "漁村女友踩著夾腳拖闖進集團大樓還鑰匙，暫代總裁笑著說：他停職，是因為妳",
+      "duration_s": 110,
+      "logline": "林海若要親手把辦公室鑰匙還給二叔、順便打他的臉，卻被二叔一本藍色裝訂本打了回來。",
+      "hook": "邵氏大樓冷藍玻璃大廳，夾腳拖啪啪踩過大理石；保全攔住她：「訪客請登記。」她把鑰匙舉高：「我來還東西。」",
+      "hook_type": "image",
+      "mid_hook": "執行長辦公室已經換了一張椅子；她把鑰匙和一袋魚乾放上桌：「暫代的，記得吃飯。」二叔笑出聲。",
+      "conflict": "她想替邵亦辰討一口氣，卻正好走進二叔最想要的證人席。",
+      "turn": "她以為自己是來打臉的，二叔卻讓她看見：董事會停他職的理由，每一條都是她的事。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "二叔翻開一本藍色裝訂本：封面是邵亦辰的簽名、三年前的日期。「下一步是繼承權。證據，是妳。」",
+        "question": "她會變成二叔的證據嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiqiu",
+        "fancha",
+        "shangzhan"
+      ],
+      "spectacle": "冷藍玻璃大廳的大理石倒影裡，一雙夾腳拖穿過一整排黑西裝。",
+      "glamour_shot": "林海若在電梯玻璃前把馬尾一甩，陽光從幕牆斜切過她的臉，她把下巴抬得很高。",
+      "setups": [
+        "s04-t03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "鑰匙沒經助理的手，她當面交還，二叔收下了一袋魚乾",
+        "她看見二叔下一步要動的是繼承權"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-jinglong",
+        "s04-zhuli"
+      ],
+      "locations": [
+        "邵氏航運大樓大廳",
+        "執行長辦公室"
+      ],
+      "state": {
+        "time": "回星港第二天上午",
+        "knowledge": "二叔手上有契約原件，封面是三年前的日期；他下一步要審長孫的繼承人資格",
+        "carry_forward": "原件封面的日期；她開始怕自己是他的累贅"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "三天沒有星期二",
+      "youtube_title": "被停職的冷面總裁在家三天不知道要幹嘛，把整面書牆按顏色重排了一遍",
+      "duration_s": 100,
+      "logline": "邵亦辰被請回家三天，第一次沒有行程；林海若要把一個只會上班的人拉回家裡。",
+      "hook": "早上六點，邵亦辰西裝筆挺站在玄關，手握門把；門外沒有車。陳叔輕聲：「少爺，今天不用出門。」",
+      "hook_type": "image",
+      "mid_hook": "第三天中午，林海若在花園池邊找到他，領帶還打著：「我三十一年，沒有星期二。」",
+      "extra_hooks": [
+        "門縫底下塞進一張紙：小妹的休學申請書，家長欄空著，旁邊寫著：「姐，救我。」"
+      ],
+      "conflict": "他把整個人押在公司，公司一拿走，他連一個下午都不知道怎麼過。",
+      "turn": "大家以為他在家生悶氣，原來他把書牆按顏色重排、替陳叔擦銀器擦壞三支湯匙——他只是不知道怎麼停。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第三天傍晚他又穿上西裝：「我去公司樓下站著。」林海若擋在門口，一把扯掉他的領帶：「今天你跟我走。」",
+        "question": "她要把他拖去哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhiyu",
+        "fancha"
+      ],
+      "spectacle": "一整面書牆被按顏色重排成彩虹，最上層的梯子上站著一個穿西裝、拿抹布的總裁。",
+      "glamour_shot": "邵亦辰在池邊鬆開袖扣，第一次把袖子捲起一折，午後的光從熱帶樹葉間落在他的手腕上。",
+      "setups": [
+        "s04-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "繼母連三天差陳叔來廚房點麵，每天多點一碗",
+        "邵亦辰第一次說出口：他不知道怎麼過日子"
+      ],
+      "characters": [
+        "shao-yichen",
+        "lin-hairuo",
+        "chen-shu",
+        "shao-yian",
+        "zhou-wan"
+      ],
+      "locations": [
+        "邵家大宅玄關",
+        "書房",
+        "花園池邊",
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "停職第一到第三天",
+        "knowledge": "他在家什麼都不會；小妹要休學，家長欄空著",
+        "carry_forward": "她扯掉他的領帶要帶他出門"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "邵總？",
+      "youtube_title": "停職總裁第一次逛夜市就被認出來，全場手機對準他，他只說一句：我是她男朋友",
+      "duration_s": 115,
+      "logline": "林海若把邵亦辰拖去夜市當她的跟班，卻讓全夜市的人認出了被停職的邵總。",
+      "hook": "夜市入口，他遞出黑卡；蚵仔煎攤的阿姨指著紙牌：「只收現金。」林海若把一把銅板拍在桌上：「我請，跟班。」",
+      "hook_type": "line",
+      "mid_hook": "隔壁攤的阿伯瞇著眼看他：「欸，你不是電視上那個……邵總？」半個夜市轉過頭來。",
+      "extra_hooks": [
+        "一圈手機舉起來，有人喊：「被停職了喔？」林海若往前一站要擋。"
+      ],
+      "conflict": "他第一次站在人群中央，沒有助理、沒有講稿，所有人等他說被停職是怎麼回事。",
+      "turn": "她以為他會轉身就走，他卻往前一步，站到了她前面。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "邵亦辰握住她的手，對著一排鏡頭：「我是她男朋友。」林海若的手指在他掌心裡縮了一下。",
+        "question": "這句是演的嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "lache",
+        "fancha"
+      ],
+      "spectacle": "暖橘的夜市燈串下，一圈手機螢幕的光把兩個人圍成一個圓。",
+      "glamour_shot": "夜市燈下他的側臉停了半拍，先看她一眼才轉向鏡頭；她嘴邊還沾著蚵仔煎的醬，愣住的那一格。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "邵亦辰停職後第一次走出大宅",
+        "他當眾承認她是女朋友，沒提公司一個字"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen"
+      ],
+      "locations": [
+        "星港夜市"
+      ],
+      "state": {
+        "time": "停職第三天晚上",
+        "knowledge": "夜市的人都認出他了",
+        "carry_forward": "那句話被一百支手機拍了下來"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "一句話上熱搜",
+      "youtube_title": "總裁夜市一句「我是她男朋友」衝上熱搜，暫代的二叔想拿來做文章，反被網友罵翻",
+      "duration_s": 105,
+      "logline": "夜市影片一夜爆紅，二叔要把它說成停職長孫在外玩樂；同一晚，小妹要在飯桌上說出休學。",
+      "hook": "清晨，大妹把平板摔在早餐桌上：「上熱搜了。」影片裡他說：「我是她男朋友。」小妹尖叫：「哥，好帥！」",
+      "hook_type": "line",
+      "mid_hook": "助理來電：二叔發了聲明，說停職長孫「在夜市玩樂」；底下第一則留言：「你們家誰講得出這種話？」",
+      "extra_hooks": [
+        "廚房裡小妹抓著鍋鏟對牆排練：「媽，我要休學！」林海若糾正：「大聲一點，用台語。」"
+      ],
+      "conflict": "二叔要用影片把他打成不務正業；小妹要在全家面前說出她準備了兩年的那句話。",
+      "turn": "大家怕影片害了他，網友卻把它剪成「最會說話的總裁」——二叔的聲明被罵到撤下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "晚餐，小妹站起來：「我要休學，去學廚。」繼母的刀叉噹一聲落盤：「妳敢休學，就別進這個廚房。」",
+        "question": "誰敢替小妹說話？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tuanchong",
+        "zhiqiu"
+      ],
+      "spectacle": "早餐桌上平板螢幕裡夜市的燈，對著長餐桌上一排停在半空的銀叉。",
+      "glamour_shot": "小妹邵亦安藍色挑染、圍裙綁在潮牌外面，在廚房舉著鍋鏟對牆排練，眼睛亮得像要哭。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二叔拿影片做文章的聲明被網友罵到撤下",
+        "小妹在全家面前說出要休學學廚"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "shao-yining",
+        "shao-yian",
+        "zhou-wan",
+        "s04-zhuli",
+        "shao-jinglong"
+      ],
+      "locations": [
+        "邵家早餐桌",
+        "邵家廚房",
+        "邵家大宅長餐桌"
+      ],
+      "state": {
+        "time": "停職第四天",
+        "knowledge": "影片爆紅，二叔的聲明撤了；小妹說了要休學，繼母說不准她進廚房",
+        "carry_forward": "全桌看向林海若"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "我也是吃飯的人",
+      "youtube_title": "豪門繼母不准女兒休學當廚師，漁村女友一句話頂回去：她煮的比我好吃",
+      "duration_s": 110,
+      "logline": "林海若要替小妹說話，卻得先過繼母那一句「這是邵家的事」。",
+      "hook": "全桌沒人出聲，林海若放下筷子：「阿姨，她煮的比我好吃。」繼母：「這是邵家的事。」",
+      "hook_type": "line",
+      "mid_hook": "林海若：「我現在也是邵家吃飯的人。」繼母的手停在餐巾上，祖母低頭喝湯，嘴角動了一下。",
+      "extra_hooks": [
+        "小妹從廚房端出一盤糕——繼母家鄉的那一種，她偷學了兩年。"
+      ],
+      "conflict": "繼母要女兒拿文憑，小妹要拿鍋鏟，林海若要讓兩個人至少在同一張桌上把話說完。",
+      "turn": "繼母咬了一口糕，大家以為她要罵，她說的卻是：「……糖放多了。」——她吃得出那是她媽的做法。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林海若開出條件：「明晚夜市讓她擺一攤。陌生人肯付錢，妳就聽她說。」繼母放下糕：「……好。我去看。」",
+        "question": "繼母真的會去夜市嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "zhiyu",
+        "zhiqiu"
+      ],
+      "spectacle": "長餐桌正中一盤樸素的家鄉糕，被一整桌銀器與水晶杯圍住。",
+      "glamour_shot": "繼母周婉珍珠耳環、絲質襯衫，咬下第一口糕時睫毛垂下，燈從身後打出一圈柔光。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "繼母答應去夜市看小妹擺攤",
+        "小妹第一次在全家面前端出自己做的菜"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "zhou-wan",
+        "shao-yian",
+        "shao-laofuren",
+        "shao-yichen",
+        "shao-yichuan"
+      ],
+      "locations": [
+        "邵家大宅長餐桌"
+      ],
+      "state": {
+        "time": "停職第四天晚上",
+        "knowledge": "繼母吃出那盤糕是她媽的做法；明晚小妹擺攤",
+        "carry_forward": "夜市的攤位與繼母會不會來"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "小妹的攤位",
+      "youtube_title": "豪門千金在夜市擺攤賣麵，戴墨鏡偷偷來吃的貴婦，竟是最反對她的親媽",
+      "duration_s": 115,
+      "logline": "小妹要在夜市賣出第一碗麵證明自己，林海若要讓繼母坐上塑膠凳，人群外還有一雙眼睛。",
+      "hook": "借來的夜市攤位，小妹的第一鍋湯滾了，十分鐘沒有一個客人。林海若跳上板凳大喊：「千金煮麵，難吃免錢！」",
+      "hook_type": "line",
+      "mid_hook": "一個戴墨鏡、穿絲質套裝的女人坐上塑膠凳：「一碗。」小妹的勺子停住——是媽。",
+      "extra_hooks": [
+        "弟弟邵亦川背著吉他走上夜市小舞台：「給我妹的攤子，一首。」人潮往攤位湧。",
+        "人群外，堂弟邵亦恒站在燈籠下看著這一家人，手機螢幕上亮著「爸」的來電，他按掉了。"
+      ],
+      "conflict": "陌生人不付錢，小妹的夢就得收起來；繼母坐在攤前，每一口都是審判。",
+      "turn": "大家以為繼母是來挑錯的，她吃完一碗說「鹹」，又把碗推回去：「再一碗。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "繼母摘下墨鏡看著滿頭汗的女兒：「休學可以。」小妹哭出來，繼母又補一句：「畢業證書，妳拿回來給我。」",
+        "question": "繼母為什麼不反對到底？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "夜市一排紅燈籠下，一個借來的小攤冒出白煙，攤前從空無一人排成長龍。",
+      "glamour_shot": "小妹邵亦安滿頭汗、藍髮貼在額上，抬頭對媽媽笑的那一秒，夜市暖橘的光打亮她的眼淚。",
+      "setups": [
+        "s04-t05"
+      ],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小妹賣出第一碗麵，攤前一路排到收攤",
+        "繼母答應小妹休學學廚，只要她把畢業證書拿回來"
+      ],
+      "characters": [
+        "shao-yian",
+        "lin-hairuo",
+        "zhou-wan",
+        "shao-yichuan",
+        "shao-yichen",
+        "shao-yiheng"
+      ],
+      "locations": [
+        "星港夜市小妹的攤位",
+        "夜市小舞台"
+      ],
+      "state": {
+        "time": "停職第五天晚上",
+        "knowledge": "繼母點頭讓小妹休學學廚；堂弟在夜市看見了全家，按掉了父親的電話",
+        "carry_forward": "繼母為什麼沒反對到底"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "錄音筆",
+      "youtube_title": "一家人從夜市吃飽回家，老管家戴著白手套等在門口：少爺，保險箱裡多了一樣東西",
+      "duration_s": 130,
+      "logline": "夜市回家的路上，林海若聽懂了繼母沒反對到底的原因；大宅門口卻有一樣不該出現的東西在等邵亦辰。",
+      "hook": "回家的車上，繼母看著窗外：「我十九歲，沒畢業就嫁了。」車裡一下子靜了，小妹抱住她的手臂。",
+      "hook_type": "line",
+      "mid_hook": "林海若的手機響，二叔的聲音很和氣：「林小姐，麵很香。可惜等妳出錯的，不只我一個。」",
+      "extra_hooks": [
+        "邵亦辰把一把銅板塞回她手心：「跟班的錢，還妳。」她愣住，他已經轉頭看窗外。"
+      ],
+      "conflict": "她剛替這個家贏下一晚，二叔就提醒她：他還有別的眼睛。",
+      "turn": "大家以為二叔只會在董事會動手，原來他的手已經伸進了大宅的書房。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陳叔站在門口，白手套托著一份文件：「少爺，助理今天開了書房的保險箱。」「少了什麼？」「什麼都沒少。多了一樣——」他攤開手：一支錄音筆。",
+        "question": "錄音筆是誰放的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "shangzhan"
+      ],
+      "spectacle": "大宅門廊的燈下，陳叔白手套的掌心裡，一支錄音筆的紅燈還在一閃一閃。",
+      "glamour_shot": "邵亦辰在車窗邊轉頭看窗外，街燈一盞盞掠過他的眉骨，耳根卻有一點紅。",
+      "setups": [
+        "m12",
+        "s04-t06"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "繼母說出自己十九歲沒畢業就嫁進邵家，小妹抱住了她",
+        "陳叔當天就發現書房的保險箱被動過"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "zhou-wan",
+        "shao-yian",
+        "shao-jinglong",
+        "chen-shu"
+      ],
+      "locations": [
+        "回大宅的車上",
+        "邵家大宅門廊"
+      ],
+      "state": {
+        "time": "停職第五天深夜",
+        "knowledge": "繼母十九歲沒畢業就嫁進來；二叔說等她出錯的不只他一個；書房保險箱裡多了一支錄音筆",
+        "carry_forward": "錄音筆錄了什麼、是誰放的"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "錄了三天",
+      "youtube_title": "總裁按下書房保險箱裡的錄音筆，第一句竟是女友罵他的台語，監視器拍到放筆的人",
+      "duration_s": 105,
+      "logline": "書房保險箱被裝了三天耳朵，邵亦辰要找出是誰、錄了什麼、送去了哪裡。",
+      "hook": "書房，邵亦辰按下錄音筆的播放鍵——第一句是林海若的台語：「你那條領帶，醜死了。」全家擠在書房門口憋笑。",
+      "hook_type": "line",
+      "mid_hook": "監視器倒帶到下午兩點：助理何敬文背對鏡頭，輸入保險箱密碼——那組密碼，只有邵亦辰和他知道。",
+      "extra_hooks": [
+        "大妹對著錄音檔的時間戳：「三天。從你停職那天就開始錄。」"
+      ],
+      "conflict": "錄音筆在保險箱裡錄了三天，他得知道這三天的每一句話去了哪裡。",
+      "turn": "大家以為是外人闖進來，錄音筆卻是用他自己的密碼放進去的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "邵亦辰撥出電話：「現在來大宅。」十分鐘後助理站在書房門口微笑：「邵總，這麼晚有事？」錄音筆就握在邵亦辰掌心。",
+        "question": "他會當場揭穿助理嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju",
+        "lache"
+      ],
+      "spectacle": "書房暗燈下，監視器螢幕一格一格倒帶，保險箱的數字鍵盤在畫面裡一顆一顆亮起。",
+      "glamour_shot": "邵亦辰站在書房窗前只開一盞檯燈，半張臉在光裡、半張在暗裡，捏著錄音筆的指節泛白。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳叔與大妹查出錄音筆錄了三天、用的是邵亦辰自己的密碼",
+        "監視器拍到助理何敬文開保險箱"
+      ],
+      "characters": [
+        "shao-yichen",
+        "lin-hairuo",
+        "shao-yining",
+        "chen-shu",
+        "shao-yian",
+        "s04-zhuli"
+      ],
+      "locations": [
+        "書房"
+      ],
+      "state": {
+        "time": "停職第五天深夜",
+        "knowledge": "放錄音筆的是跟了他五年的助理",
+        "carry_forward": "助理就站在書房門口"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "三年前就是",
+      "youtube_title": "跟了總裁五年的助理，三年來每個月十五號都收到同一個人的錢，第一筆就在三年前",
+      "duration_s": 120,
+      "logline": "邵亦辰不拆穿助理，要先查清他替二叔送出了多少東西，而且不能讓他發現。",
+      "hook": "邵亦辰沒有攤開手，反而把一份文件遞給助理：「明早，送去給二叔。」助理接過，指尖頓了半秒。",
+      "hook_type": "reversal",
+      "mid_hook": "助理一走，周律推門進來，把一疊轉帳紀錄攤上桌：三年來每個月十五號，二叔的公司匯一筆錢進助理的戶頭。",
+      "extra_hooks": [
+        "大妹把三個信封排成一排：契約原件、林家欠錢的資料、三年前的調查報告——信封上全是助理的字。"
+      ],
+      "conflict": "他們要弄清楚助理替二叔送了多少東西出去，又不能讓助理知道他們已經知道。",
+      "turn": "大家以為助理是最近才被收買，帳上第一筆錢卻在三年前——就在邵亦辰從屏東回來那個月。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林海若盯著第三個信封：「三年前查我，是誰叫他查的？」邵亦辰：「我。」他停了半拍：「他多印了一份。」",
+        "question": "他三年前為什麼查她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "lache",
+        "zhiqiu"
+      ],
+      "spectacle": "書房長桌上三個牛皮紙信封排成一排，同一個人的字跡在檯燈下發亮。",
+      "glamour_shot": "周律白袍外罩一件風衣斜靠書架，推了推眼鏡抬眼一笑，溫和得像來看病。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [
+        "m07"
+      ],
+      "general_payoffs": [
+        "他們查清助理三年前就是二叔的人：契約原件、她家欠錢、三年前的調查都是他送出去的",
+        "邵亦辰丟出一份假文件，等著看它在哪裡出現"
+      ],
+      "characters": [
+        "shao-yichen",
+        "lin-hairuo",
+        "zhou-lv",
+        "shao-yining",
+        "s04-zhuli"
+      ],
+      "locations": [
+        "書房"
+      ],
+      "state": {
+        "time": "停職第六天凌晨",
+        "knowledge": "助理三年前就是二叔的人；二叔手上的契約原件就是他給的",
+        "carry_forward": "他三年前查她的原因；那份假文件會送到哪"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "不開除",
+      "youtube_title": "發現助理是內鬼，總裁卻不開除他，漁村女友乾脆對著保險箱大吵一架給內鬼聽",
+      "duration_s": 110,
+      "logline": "邵亦辰決定留著助理，林海若就得每天在錄音筆前面演——而她最不會的就是演。",
+      "hook": "林海若抓起第三個信封：「你查我家幹嘛？」邵亦辰看著信封：「想知道那家人，過得好不好。」",
+      "hook_type": "question",
+      "mid_hook": "天亮，林海若衝進書房：「開除他！」邵亦辰把錄音筆放回保險箱，門一關，紅燈還亮著：「不開。留著。」",
+      "extra_hooks": [
+        "她瞪著保險箱，忽然壓低聲音比手勢：「那……我們吵一架給它聽？」"
+      ],
+      "conflict": "留著助理才看得到他把什麼送出去，可每一句在保險箱前說的話都會進二叔的耳朵。",
+      "turn": "大家以為她會演砸，她在保險箱前吵得比誰都真；吵完，邵亦辰對著保險箱補一句：「週四，我去茶樓見吳董。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她對著保險箱大喊：「我早就想走了！」書房靜了三秒。邵亦辰看著她：「這句，是演給它聽的？」她沒回答。",
+        "question": "她是真的想走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "lache",
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "保險箱門縫裡一點紅光，兩個人對著它比手勢、壓低聲音排練吵架。",
+      "glamour_shot": "林海若赤腳站在書房地毯上，雙手扠腰對著保險箱開罵，晨光從百葉窗切成一條條落在她臉上。",
+      "setups": [
+        "m01",
+        "m12",
+        "s04-t07",
+        "s04-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "錄音筆留在保險箱裡，成了他們的傳聲筒",
+        "他們對著錄音筆放出假消息：週四邵亦辰要在茶樓見吳董"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "chen-shu"
+      ],
+      "locations": [
+        "書房"
+      ],
+      "state": {
+        "time": "停職第六天早上",
+        "knowledge": "錄音筆留在保險箱裡；他們放出週四見吳董的假消息；她喊了一句「我早就想走了」",
+        "carry_forward": "那句話已經錄進去了；週四的茶樓"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "週四的茶樓",
+      "youtube_title": "暫代總裁偷聽姪子行程趕去茶樓，簾子一掀，坐在桌邊的是泡著魚乾茶的漁村女友",
+      "duration_s": 105,
+      "logline": "林海若要讓二叔自己走進茶樓，證明錄音筆的每一句都送到他手上。",
+      "hook": "週四，星港老茶樓，二叔掀簾進包廂，滿臉笑——桌邊坐的不是吳董，是林海若，面前一壺泡著魚乾的茶：「二叔，坐。」",
+      "hook_type": "reversal",
+      "mid_hook": "隔壁包廂的簾子掀開，吳董探出頭：「景隆？你怎麼知道我今天在這？」二叔的笑僵在臉上。",
+      "conflict": "要抓住二叔偷聽，就得讓他在一個不該知道的地方出現，還要有人親眼看見。",
+      "turn": "二叔被抓個正著卻不慌，從西裝內袋抽出一張照片放上桌。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "照片上是海口村海產店的門口，貼著舊的催繳單。二叔笑：「妳家的帳我比妳清楚。妳以為我只有一支錄音筆？」",
+        "question": "二叔手上還有什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "zhiqiu",
+        "fancha"
+      ],
+      "spectacle": "老茶樓的竹簾一掀，蒸籠白煙裡，一壺泡著魚乾的茶對著一只金錶。",
+      "glamour_shot": "林海若難得穿上洋裝、腳下仍是平底鞋，坐在茶樓窗邊替二叔倒茶，竹簾的影子一條條落在她的笑上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二叔自己走進茶樓，證實保險箱的錄音筆通到他手上",
+        "吳董親眼看見二叔掌握長孫的私人行程"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-jinglong",
+        "s04-wu-dong",
+        "shao-yichen"
+      ],
+      "locations": [
+        "星港老茶樓包廂"
+      ],
+      "state": {
+        "time": "停職第九天（週四）",
+        "knowledge": "錄音筆通到二叔；吳董看見了；二叔手上還有她家的舊帳",
+        "carry_forward": "二叔說他不只一支錄音筆"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "我會看人",
+      "youtube_title": "全家對著股權圖開會她一句也聽不懂，漁村女友拎起一袋魚乾：二叔家，我去",
+      "duration_s": 100,
+      "logline": "林海若不會商戰，她要用自己會的方法，從二叔家裡找出他們看不見的那張牌。",
+      "hook": "書房白板畫滿股權圖，保險箱的紅燈在背後閃；林海若從麵碗裡抬頭：「你們講的我聽不懂。」三個人轉頭看她。",
+      "hook_type": "line",
+      "mid_hook": "「我不會商戰，我會看人。」她拎起一袋魚乾：「二叔家，我去送。」邵亦辰：「危險。」她：「送魚乾，又不是送命。」",
+      "extra_hooks": [
+        "二叔家的門開了，開門的是二嬸，手上端著一盤烤焦的餅乾，眼睛先亮了。"
+      ],
+      "conflict": "二叔的牌一張張攤在他們不知道的地方，她要走進敵人的家裡把它找出來。",
+      "turn": "大家以為二叔家是龍潭虎穴，二叔家裡只有一個二十年沒人陪她說話的女人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "二嬸一把拉住她的手：「妳就是那個賣魚的？進來，我等妳很久了。」客廳一整面牆，全是兒子的照片。",
+        "question": "二嬸為什麼等她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhiqiu",
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "二叔家客廳的整面照片牆，從嬰兒到西裝全是同一個兒子，沒有一張全家福。",
+      "glamour_shot": "二嬸羅美鳳淺杏色套裝、細金邊眼鏡、珍珠耳環，站在門口的陽光裡，笑起來眼角的細紋像個少女。",
+      "setups": [
+        "s04-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她不靠股權圖，靠一袋魚乾走進了二叔家",
+        "二嬸主動請她進門"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "shao-yining",
+        "zhou-lv",
+        "s04-ershen"
+      ],
+      "locations": [
+        "書房",
+        "二叔家門口",
+        "二叔家客廳"
+      ],
+      "state": {
+        "time": "停職第十天下午",
+        "knowledge": "二叔家白天只有二嬸一個人",
+        "carry_forward": "二嬸說她等很久了"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "一個下午",
+      "youtube_title": "她坐在二叔家沙發上吃完二嬸一整盤餅乾，二叔提早回家，二嬸頭也不回：她比你會聊",
+      "duration_s": 110,
+      "logline": "林海若在敵營的客廳坐了一下午，要在二叔回來之前聽到他不會說的事。",
+      "hook": "二嬸的茶倒到第三壺，話沒停過：「他二十年沒在家吃晚飯。」林海若剝著餅乾的焦邊：「我們家吃飯，吵到鄰居報警。」二嬸笑到嗆。",
+      "hook_type": "line",
+      "mid_hook": "大門開了，二叔提早回家，看見林海若坐在他的沙發上吃他太太的餅乾。二嬸頭也不回：「她比你會聊。」",
+      "extra_hooks": [
+        "二叔沉著臉進書房；二嬸壓低聲音：「亦恒最近天天去修車廠。」「去幹嘛？」「他爸叫他去交朋友。」"
+      ],
+      "conflict": "二叔隨時會回來，她要在這一個下午裡聽見二叔家的祕密。",
+      "turn": "大家以為二嬸是二叔的眼線，她只是二十年沒人聽她說話——一個下午，她把家裡的事全說了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "二嬸滑開手機：亦恒和一個穿工作服的男人在修車廠喝酒。「他爸說這個人，是亦寧的……」她抬頭，「妳知道吧？」",
+        "question": "修車的男人跟大妹什麼關係？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhiqiu",
+        "lache"
+      ],
+      "spectacle": "兩個女人在大沙發兩頭對聊，茶几上的餅乾從一盤吃到見底，窗外的光從白天移到黃昏。",
+      "glamour_shot": "林海若盤腿坐在真皮沙發上、馬尾晃著大笑，二嬸低頭滑手機的側影被黃昏照成一層金。",
+      "setups": [
+        "s04-t10"
+      ],
+      "payoffs": [
+        "s04-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二嬸把二叔家的事全說了，第一次有人聽她說一整個下午",
+        "她當著二叔的面，大大方方吃完了一盤餅乾"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "s04-ershen",
+        "shao-jinglong",
+        "shao-yiheng",
+        "s04-jiang-baishan"
+      ],
+      "locations": [
+        "二叔家客廳"
+      ],
+      "state": {
+        "time": "停職第十天黃昏",
+        "knowledge": "二叔派亦恒去接近一個修車的男人，那人跟大妹有關",
+        "carry_forward": "照片裡的男人"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "謝謝",
+      "youtube_title": "冷豔律師妹妹看見一張照片，鋼筆掉在卷宗上：她藏了三年的人，被二叔盯上了",
+      "duration_s": 105,
+      "logline": "林海若要把照片交給大妹，讓她知道二叔的手已經伸進她男人的修車廠。",
+      "hook": "林海若衝進大妹的律師事務所，把手機拍在桌上；大妹看了一眼照片，鋼筆掉在卷宗上。",
+      "hook_type": "image",
+      "mid_hook": "大妹撥出電話：「阿山，有個戴眼鏡的常去？」電話那頭：「來兩週了，說要買車，人很好。」",
+      "extra_hooks": [
+        "大妹拉開抽屜，把一份泛黃的同居協議推到她面前：「他叫江柏山。這份我簽了三年。」"
+      ],
+      "conflict": "二叔把手伸向了大妹最怕被家裡知道的人，而大妹是最後一個知道的。",
+      "turn": "大家以為一向冷的大妹會怪她多管閒事，大妹卻把鋼筆蓋好，很久沒說話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "大妹站起來，背對她看著窗外，聲音很小：「……謝謝。」那是她第一次對林海若說這兩個字。",
+        "question": "大妹接下來要怎麼做？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhiqiu",
+        "lache",
+        "ganren"
+      ],
+      "spectacle": "律師事務所落地窗外是星港的玻璃天際線，桌上一份泛黃的手寫協議壓在一疊精裝卷宗上。",
+      "glamour_shot": "大妹邵亦寧背對鏡頭站在落地窗前，紅唇、長髮、西裝線條筆直，玻璃上映出她第一次垮下來的眼神。",
+      "setups": [
+        "s04-t11"
+      ],
+      "payoffs": [
+        "s04-t10",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大妹知道了二叔派亦恒接近江柏山",
+        "大妹第一次對林海若說謝謝"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yining",
+        "s04-jiang-baishan"
+      ],
+      "locations": [
+        "邵亦寧的律師事務所"
+      ],
+      "state": {
+        "time": "停職第十一天",
+        "knowledge": "大妹的同居對象叫江柏山，開修車廠；亦恒已經去了兩週",
+        "carry_forward": "大妹的下一步；保險箱裡的錄音筆還在錄"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "修車廠",
+      "youtube_title": "漁村女孩鑽進修車廠車底，三分鐘修好老闆修不好的引擎，二叔的兒子剛好開車進門",
+      "duration_s": 110,
+      "logline": "林海若要親眼看看大妹的男人值不值得擋，也要看清二叔的兒子在這裡做什麼。",
+      "hook": "江柏山的修車廠，一具漁船用的舊柴油引擎吊在半空；林海若捲起袖子鑽到底下：「這個我家船上就有。」江柏山愣住。",
+      "hook_type": "image",
+      "mid_hook": "引擎轟一聲發動，江柏山笑出一口白牙；同一秒，亦恒的車開進廠門，看見林海若，整個人僵住。",
+      "extra_hooks": [
+        "亦恒拎著兩罐飲料站在工具檯邊，跟江柏山說話時一直看著地板，像一個被押來的人。"
+      ],
+      "conflict": "二叔的兒子每天來這裡交朋友，她要知道這是一場戲，還是一個陷阱。",
+      "turn": "大家以為亦恒是來挖坑的，他在修車廠一句話都不敢多說；江柏山則對他們兩個一樣客氣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "亦恒把她拉到廠外：「別告訴我爸妳見過我。」他袖口掉出一張收據：二叔名下的公司，剛買下這間修車廠的地。",
+        "question": "二叔買下這塊地要做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fancha",
+        "lache",
+        "zhiqiu"
+      ],
+      "spectacle": "修車廠的天車吊著一具舊柴油引擎，火花與機油味裡，一雙夾腳拖從車底伸出來。",
+      "glamour_shot": "江柏山短髮推高、曬深的手臂沾滿機油，引擎發動時仰頭大笑，廠門外的逆光把他的輪廓勾成一圈金邊。",
+      "setups": [
+        "s04-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "林海若修好了江柏山修不好的漁船引擎，江柏山第一次對邵家的人笑",
+        "她看出亦恒不想當這顆棋"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "s04-jiang-baishan",
+        "shao-yiheng"
+      ],
+      "locations": [
+        "江柏山修車廠"
+      ],
+      "state": {
+        "time": "停職第十二天",
+        "knowledge": "江柏山是真心的；亦恒不想做；二叔買下了修車廠的地",
+        "carry_forward": "二叔要拿地逼江柏山"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "送出去的那一份",
+      "youtube_title": "內鬼助理偷走妹妹男友的調查檔案，總裁看著監視器不攔：讓他拿",
+      "duration_s": 110,
+      "logline": "二叔要江柏山的把柄，邵亦辰要二叔拿錯把柄，林海若和大妹卻以為他拿妹妹做交易。",
+      "hook": "書房監視器畫面：助理何敬文影印一份「江柏山修車廠調查」，塞進公事包。林海若一拍桌子：「你讓他拿？那是你妹！」",
+      "hook_type": "line",
+      "mid_hook": "邵亦辰頭也不抬：「讓他拿。」大妹站在書房門口，全聽見了：「哥，你拿我當餌？」",
+      "extra_hooks": [
+        "邵亦辰把原本那份抽出來放上桌：他早換過了——助理拿走的，是修車廠十年乾乾淨淨的報稅單。"
+      ],
+      "conflict": "他要讓二叔用錯牌，但他一句不解釋，就讓家裡的兩個女人同時以為他冷血。",
+      "turn": "大家以為他拿妹妹當餌，其實他早把檔案換成一份什麼都查不到的報稅單——只是沒先說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大妹不聽解釋：「你們都知道，只有我不知道。」她轉身就走，手機亮起二叔的訊息：「週日家宴，二叔帶世交的兒子來見亦寧。」",
+        "question": "二叔要逼大妹相親嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "lache",
+        "zhiqiu"
+      ],
+      "spectacle": "書房監視器的九宮格裡，助理的公事包合上，角落的保險箱紅燈一閃一閃。",
+      "glamour_shot": "邵亦辰在檯燈下翻文件，袖口扣得一絲不苟；她吼完，他才抬眼，停了半拍。",
+      "setups": [
+        "s04-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "邵亦辰把江柏山的檔案掉包成乾淨的報稅單",
+        "二叔把相親定在週日家宴"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "shao-yining",
+        "s04-zhuli",
+        "shao-jinglong"
+      ],
+      "locations": [
+        "書房"
+      ],
+      "state": {
+        "time": "停職第十三天",
+        "knowledge": "助理拿走的是掉包過的檔案；大妹以為被哥哥當餌；二叔週日要帶世交的兒子來",
+        "carry_forward": "週日家宴"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "全部",
+      "youtube_title": "冷豔妹妹半夜敲門要她擋全家：我要帶修車的男人回家吃飯，祖母我媽我哥我叔，全部",
+      "duration_s": 125,
+      "logline": "林海若要把關在房裡的大妹叫出來，大妹得在三天內決定：再藏三年，還是一次說出來。",
+      "hook": "深夜廚房，林海若煮麵給邵亦辰當道歉：「我剛剛罵錯了。」他接過碗：「妳罵得對。我該先說。」",
+      "hook_type": "line",
+      "mid_hook": "錄音筆、二叔的地、週日的相親擠在同一晚；陳叔來報：大妹把自己關在房裡，晚飯沒吃。",
+      "extra_hooks": [
+        "林海若端著麵敲大妹的門，門沒開；她乾脆坐在門口自己吃，邊吃邊講海口村的八卦。",
+        "麵吃到第二碗，門開了一條縫。"
+      ],
+      "conflict": "週日二叔就要把相親塞到大妹面前，大妹得先走出房門。",
+      "turn": "大家以為大妹會答應相親把事情壓下去，她開門要的卻是另一件事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "凌晨，大妹站在她房門口：「週日我要帶他回家吃飯。妳替我擋。」「擋什麼？」「擋我祖母、我媽、我哥、我叔。全部。」",
+        "question": "她擋得住整個邵家嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "ganren",
+        "zhiqiu"
+      ],
+      "spectacle": "大妹緊閉的房門外，走廊地毯上坐著一個人、兩只麵碗，門縫透出一條光。",
+      "glamour_shot": "大妹素顏、長髮放下、穿著家居服站在門口，第一次沒擦口紅，眼眶紅著，下巴還抬著。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "邵亦辰第一次承認他該先說",
+        "大妹決定週日把江柏山帶回家，請林海若替她擋"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "shao-yining",
+        "chen-shu"
+      ],
+      "locations": [
+        "邵家廚房",
+        "大妹房門外"
+      ],
+      "state": {
+        "time": "停職第十三天深夜到凌晨",
+        "knowledge": "週日家宴：二叔帶世交的兒子來，大妹要帶江柏山回家",
+        "carry_forward": "她要替大妹擋全部"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "別洗了",
+      "youtube_title": "妹妹帶修車的男友回豪門吃飯，他在門口拚命洗手上的機油，漁村女友一把關掉水龍頭",
+      "duration_s": 105,
+      "logline": "林海若要讓江柏山用一雙洗不乾淨的手坐上邵家的長餐桌，二叔今晚還要帶另一個人來。",
+      "hook": "週日傍晚，江柏山站在大宅車道邊，用花園的水管拚命搓手，指縫的機油搓不掉。林海若關掉水龍頭：「別洗了。洗不掉的才是你。」",
+      "hook_type": "line",
+      "mid_hook": "大妹緊張得把刀叉順序教了三遍；林海若把刀叉從江柏山手裡抽走：「第一天我也不會。別學。」",
+      "extra_hooks": [
+        "陳叔遞上一條熱毛巾，低聲說：「少爺小時候手上的墨水，也洗不掉。」"
+      ],
+      "conflict": "二叔今晚也會帶世交的兒子來，江柏山得原樣走進一個看手、看鞋、看刀叉的家。",
+      "turn": "大家以為她會把江柏山打扮成邵家能接受的樣子，她卻要他原樣走進去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "飯廳的門推開，長餐桌一整排人同時抬頭；所有人的眼睛，落在他那雙洗不乾淨的手上。",
+        "question": "全家會怎麼看他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "zhiqiu",
+        "fancha"
+      ],
+      "spectacle": "大宅車道的噴水池邊，一雙沾滿機油的手在水管下搓，夕陽把水花照成金色。",
+      "glamour_shot": "江柏山穿一件燙歪的白襯衫、短髮推高剛修過，站在大宅門口深吸一口氣，大妹替他扣好最上面那顆扣子。",
+      "setups": [],
+      "payoffs": [
+        "s04-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江柏山原樣走進邵家大門，沒有換掉自己",
+        "陳叔第一個對江柏山伸出手"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "s04-jiang-baishan",
+        "shao-yining",
+        "chen-shu"
+      ],
+      "locations": [
+        "邵家大宅車道",
+        "邵家大宅長餐桌"
+      ],
+      "state": {
+        "time": "週日家宴傍晚",
+        "knowledge": "江柏山帶著洗不掉的機油走進飯廳；二叔還沒到",
+        "carry_forward": "全桌的眼睛"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "刀叉停了",
+      "youtube_title": "修車工一坐上豪門長餐桌全家刀叉停住，漁村女友搶先開口：第一天你們也這樣看我",
+      "duration_s": 110,
+      "logline": "全家等著看大妹帶回來的人出醜，林海若要在第一句話之前就替他擋下來。",
+      "hook": "叮——長餐桌上所有刀叉同時停在半空，跟她第一天走進來時一模一樣。繼母剛開口，林海若先開：「阿姨，第一天你們也這樣看我。」",
+      "hook_type": "image",
+      "mid_hook": "祖母笑出聲來。繼母只好換一句：「府上做什麼的？」江柏山：「修車。」邵亦辰放下刀叉：「他修的車，比我們多。」",
+      "extra_hooks": [
+        "小妹吹了一聲口哨，被繼母瞪了一眼，又吹了半聲。"
+      ],
+      "conflict": "繼母的每一個問題都是一道門檻，江柏山一句都還沒答，全家就已經在打分數。",
+      "turn": "大家以為邵亦辰會跟繼母站同一邊，他卻把第一天替她說過的那種話，原封不動替江柏山說了一次。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "祖母放下湯匙看著江柏山：「會修老車嗎？車庫那台，四十年沒發動了。」大妹的臉一下子白了。",
+        "question": "他修得好那台老車嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiqiu",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "長餐桌從頭到尾一排銀叉停在半空，燭光在每一支叉尖上跳。",
+      "glamour_shot": "邵亦辰放下刀叉的那半秒，他沒看任何人，燭光照著他扣得整齊的袖口與冷峭的側臉。",
+      "setups": [
+        "s04-t14"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林海若一句話把全家的眼光擋回去，祖母笑了",
+        "邵亦辰當眾替江柏山說話"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "s04-jiang-baishan",
+        "shao-yining",
+        "zhou-wan",
+        "shao-laofuren",
+        "shao-yichen",
+        "shao-yian",
+        "shao-yichuan"
+      ],
+      "locations": [
+        "邵家大宅長餐桌"
+      ],
+      "state": {
+        "time": "週日家宴第一道菜",
+        "knowledge": "全家的第一眼被擋回去；祖母要江柏山修四十年沒發動的老車",
+        "carry_forward": "車庫裡那台老車"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "四十年的車",
+      "youtube_title": "豪門祖母要修車工修好四十年沒發動的老車，引擎一響，她說出那是提親那天開的車",
+      "duration_s": 115,
+      "logline": "江柏山要修好祖母四十年不讓人碰的老車；修好了，他碰到的是祖母不願提的一段過去。",
+      "hook": "車庫帆布一掀，灰塵在燈下飄，一台四十年前的老轎車。江柏山捲起白襯衫袖子，大妹：「那是新襯衫！」他已經鑽進車底。",
+      "hook_type": "image",
+      "mid_hook": "祖母坐在車庫的藤椅上看著，輕聲說：「他來提親那天開的。我不想坐。」林海若回頭，祖母已經閉上眼。",
+      "extra_hooks": [
+        "引擎咳了三聲熄了；全家屏住呼吸，江柏山敲了兩下：「再一次。」"
+      ],
+      "conflict": "修不好，他就是坐錯桌的人；修好了，他要面對祖母四十年沒說出口的心事。",
+      "turn": "大家以為祖母在刁難他，她只是想再聽那台車響一次——那是她十八歲那天聽見的聲音。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "引擎轟然發動，祖母睜開眼——車庫外一束車燈照進來，二叔下車，身後跟著一個西裝年輕人：「媽，我帶亦寧的對象來了。」",
+        "question": "二叔帶來的人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "車庫的帆布被掀起，滿天灰塵在燈下飄，一台老轎車的大燈慢慢亮起來。",
+      "glamour_shot": "江柏山從車底滑出來，臉上一道機油，白襯衫袖子捲到肩頭，對著大妹咧嘴一笑。",
+      "setups": [
+        "m11",
+        "s04-t15"
+      ],
+      "payoffs": [
+        "s04-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江柏山讓祖母那台四十年沒發動的車重新響起",
+        "祖母第一次在外人面前提起提親那天"
+      ],
+      "characters": [
+        "s04-jiang-baishan",
+        "shao-yining",
+        "shao-laofuren",
+        "lin-hairuo",
+        "shao-jinglong",
+        "s04-zheng-shao"
+      ],
+      "locations": [
+        "邵家車庫"
+      ],
+      "state": {
+        "time": "週日家宴中段",
+        "knowledge": "老車發動了；祖母說那是提親那天開的、她不想坐；二叔帶著世交的兒子到了",
+        "carry_forward": "二叔帶來的人"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "邵家的女兒",
+      "youtube_title": "二叔當眾嫌棄妹妹的修車工男友，漁村女友只回一句：邵家的女兒，自己選",
+      "duration_s": 115,
+      "logline": "二叔帶來體面的對象和一份檔案，要讓江柏山在全家面前出局；林海若要擋住這一整桌。",
+      "hook": "回到長餐桌，二叔盯著江柏山袖口的油：「邵家的女兒，跟一個修車的？」",
+      "hook_type": "line",
+      "mid_hook": "林海若放下筷子：「邵家的女兒，自己選。」世交的兒子尷尬地把餐巾折了又折。",
+      "extra_hooks": [
+        "二叔不跟她吵，抽出一個檔案夾：「宋先生的修車廠，我查過了。」翻開，是十年乾乾淨淨的報稅單，他的笑停了一格。"
+      ],
+      "conflict": "二叔要在祖母面前證明江柏山配不上邵家，他手上有人、有檔案、有照片。",
+      "turn": "二叔翻開檔案要揭江柏山的底，翻出來的卻是一疊什麼都查不到的報稅單——那是邵亦辰換的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "二叔換了張臉，把手機推到大妹面前：照片裡江柏山和亦恒在修車廠喝酒。「他跟我兒子喝了兩週，收了我的錢。」",
+        "question": "江柏山真的收了二叔的錢？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiqiu",
+        "shangzhan",
+        "tuanchong"
+      ],
+      "spectacle": "長餐桌上一份檔案攤開，一頁頁報稅單在燭光裡翻過，二叔的金錶停在半空。",
+      "glamour_shot": "林海若站起來說「自己選」時，燭光映在她眼裡，手腕上的紅繩跟著一晃。",
+      "setups": [
+        "s04-t16"
+      ],
+      "payoffs": [
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二叔拿出的江柏山檔案只有乾淨的報稅單，當場落空",
+        "林海若當著二叔說出「邵家的女兒自己選」"
+      ],
+      "characters": [
+        "shao-jinglong",
+        "s04-jiang-baishan",
+        "lin-hairuo",
+        "shao-yining",
+        "s04-zheng-shao",
+        "shao-yichen",
+        "shao-yiheng"
+      ],
+      "locations": [
+        "邵家大宅長餐桌"
+      ],
+      "state": {
+        "time": "週日家宴主菜",
+        "knowledge": "二叔的檔案落空，他改說江柏山收了他的錢",
+        "carry_forward": "大妹看向江柏山"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "爸，夠了",
+      "youtube_title": "二叔指控修車工收錢，坐在他身邊的親兒子站起來：爸，夠了",
+      "duration_s": 120,
+      "logline": "二叔要讓大妹懷疑江柏山，唯一能證明江柏山清白的，是二叔自己的兒子。",
+      "hook": "大妹盯著江柏山。江柏山放下刀叉，一點也不慌：「他給了，我退了。」二叔笑：「誰證明？」",
+      "hook_type": "line",
+      "mid_hook": "坐在二叔旁邊的亦恒站了起來：「爸，夠了。」整張長餐桌第一次聽見他對父親大聲。",
+      "extra_hooks": [
+        "亦恒拿出手機：那個被退回的信封上是江柏山的字——「免費換機油一次，錢收回去」。",
+        "世交的兒子小聲舉手：「請問……麵還有嗎？」小妹噗哧笑出來。"
+      ],
+      "conflict": "二叔一句「收了錢」就能讓大妹三年的感情變成一場交易，江柏山自己說的話沒人會信。",
+      "turn": "大家以為亦恒會替父親作證，他作的卻是反證。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "二叔站起來扣好西裝，走到門口才回頭看兒子：「今晚，你不用回家了。」亦恒站在原地，手還握著手機。",
+        "question": "亦恒今晚要去哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiqiu",
+        "tuanchong"
+      ],
+      "spectacle": "長餐桌兩端，一對父子隔著燭光對站，全桌沒有一個人敢動刀叉。",
+      "glamour_shot": "亦恒摘下細框眼鏡又戴回去，淺色西裝站得筆直，燭光在鏡片上一閃，他第一次沒有笑。",
+      "setups": [
+        "s04-t17"
+      ],
+      "payoffs": [
+        "s04-t15",
+        "s04-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江柏山的清白由二叔的兒子當眾證明",
+        "亦恒第一次對父親說「夠了」"
+      ],
+      "characters": [
+        "s04-jiang-baishan",
+        "shao-yining",
+        "shao-jinglong",
+        "shao-yiheng",
+        "s04-zheng-shao",
+        "shao-yian",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "邵家大宅長餐桌"
+      ],
+      "state": {
+        "time": "週日家宴尾聲",
+        "knowledge": "江柏山退過錢；亦恒倒戈；二叔叫兒子別回家",
+        "carry_forward": "亦恒無處可去"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "一半",
+      "youtube_title": "繼母擋在女兒面前不是反對修車工，她說：我怕妳跟我一樣，進一個不歡迎妳的家",
+      "duration_s": 110,
+      "logline": "江柏山過了二叔這關，還有繼母那關；林海若要讓繼母把真正怕的事說出來。",
+      "hook": "二叔的車開走了，亦恒還站在飯廳。林海若從廚房端出一碗麵放在他面前：「先吃。」",
+      "hook_type": "line",
+      "mid_hook": "廚房裡繼母擋在大妹面前：「我不反對他。我怕妳像我，進一個不歡迎妳的家。」大妹愣住。",
+      "extra_hooks": [
+        "大妹：「那妳歡迎他嗎？」繼母沉默很久，盛了一碗麵，放在江柏山面前。"
+      ],
+      "conflict": "繼母沒說好，也沒說不好；她的一句話，決定大妹是不是又要藏三年。",
+      "turn": "大家以為繼母反對的是修車的，她怕的是女兒變成二十年前的自己。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陳叔走進廚房：「老夫人請宋先生去佛堂，一個人。」大妹抓住江柏山的手，江柏山輕輕抽開：「我去。」",
+        "question": "祖母單獨找他說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "tuanchong"
+      ],
+      "spectacle": "廚房的不鏽鋼台邊多了兩張板凳：一個修車的、一個被趕出家門的堂弟，各捧一碗麵。",
+      "glamour_shot": "繼母周婉在廚房燈下盛麵，盤髮落下一縷，她伸手撥回去時，珍珠耳環輕輕一晃。",
+      "setups": [
+        "s04-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "繼母親手替江柏山盛了一碗麵，大妹的結解了一半",
+        "亦恒在邵家廚房吃到一碗麵"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yiheng",
+        "zhou-wan",
+        "shao-yining",
+        "s04-jiang-baishan",
+        "chen-shu"
+      ],
+      "locations": [
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "週日家宴後深夜",
+        "knowledge": "繼母盛了麵卻還沒說好；祖母單獨找江柏山",
+        "carry_forward": "佛堂裡的談話"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "祖母的車鑰匙",
+      "youtube_title": "九十歲祖母單獨召見修車工，把一把四十年的舊車鑰匙放在他手心",
+      "duration_s": 100,
+      "logline": "祖母一句話就能定江柏山的去留；大妹在佛堂外等一個判決，二叔在外面等下一步。",
+      "hook": "佛堂沉香裡，祖母把一把舊車鑰匙放在江柏山掌心：「它四十年沒動，你讓它動了。」",
+      "hook_type": "image",
+      "mid_hook": "「明天，載亦寧去兜風。用那台。」江柏山走出佛堂，大妹在門口等著，他把鑰匙舉起來晃了晃。",
+      "conflict": "祖母要親自看這個人，大妹三年的祕密在今晚等一句話。",
+      "turn": "大家以為祖母要考他，祖母給的卻是那台她自己一輩子不想坐的車。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "隔天一早江柏山的手機響：「房東說，地換了主人，月底以前搬走。」他看著修車廠的鐵門，大妹的車還停在門口。",
+        "question": "修車廠月底真的要搬？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "shangzhan"
+      ],
+      "spectacle": "佛堂的沉香煙繞著一把舊車鑰匙，祖母的沉香珠與鑰匙圈在燈下一起晃。",
+      "glamour_shot": "祖母銀髮盤髻、旗袍挺直坐在佛堂，抬眼看江柏山的那一下，九十歲的眼睛亮得像十八歲。",
+      "setups": [],
+      "payoffs": [
+        "s04-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "祖母把老車鑰匙交給江柏山，等於點了頭",
+        "大妹第一次在家裡光明正大牽江柏山的手"
+      ],
+      "characters": [
+        "shao-laofuren",
+        "s04-jiang-baishan",
+        "shao-yining",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "佛堂",
+        "江柏山修車廠"
+      ],
+      "state": {
+        "time": "週日深夜到週一早上",
+        "knowledge": "祖母點頭；二叔買下的地要江柏山月底搬走",
+        "carry_forward": "修車廠的去留"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "修車廠的一夜",
+      "youtube_title": "二叔買下土地逼修車工搬走，律師妹妹在油污工具檯上寫了一封信，全家來修車廠吃麵",
+      "duration_s": 115,
+      "logline": "二叔買下土地要逼走江柏山，大妹要用自己的本事保住他，邵家全家第一次走進一間修車廠。",
+      "hook": "修車廠鐵門上貼著搬遷通知，大妹一把撕下，掏出鋼筆：「租約還有三年。他趕不走你。」",
+      "hook_type": "line",
+      "mid_hook": "那一夜邵家全來了：小妹在工具檯上煮麵，弟弟坐在輪胎上彈吉他，林海若跟江柏山的師傅們用台語划拳。",
+      "extra_hooks": [
+        "邵亦辰最後到，西裝外面套著江柏山借的工作服，手上一份公司登記：買地的公司，董事欄只有一個名字——邵景隆。"
+      ],
+      "conflict": "二叔買地是要讓江柏山知難而退，大妹得證明邵家的女兒不只會選，也會守。",
+      "turn": "大家以為大妹要找哥哥出手，她自己寫了律師函，邵亦辰只負責遞文件。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "凌晨，修車廠鐵門外，亦恒拖著一只行李箱站在雨裡：「我能在這睡一晚嗎？」江柏山看了他三秒，拉開鐵門。",
+        "question": "亦恒要站到哪一邊？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiqiu",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "修車廠天車底下一張折疊桌，邵家一家人坐在輪胎與工具箱上吃麵，鐵皮屋頂的燈泡晃著。",
+      "glamour_shot": "大妹邵亦寧挽起袖子在油污的工具檯上寫律師函，紅唇咬著筆蓋，燈泡在她頭頂晃出一圈光。",
+      "setups": [],
+      "payoffs": [
+        "s04-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大妹用租約保住修車廠，二叔的搬遷通知失效",
+        "邵家全家第一次一起坐在一間修車廠裡吃麵"
+      ],
+      "characters": [
+        "shao-yining",
+        "s04-jiang-baishan",
+        "shao-yian",
+        "shao-yichuan",
+        "lin-hairuo",
+        "shao-yichen",
+        "shao-yiheng"
+      ],
+      "locations": [
+        "江柏山修車廠"
+      ],
+      "state": {
+        "time": "週一深夜",
+        "knowledge": "修車廠保住了；買地的是邵景隆本人；亦恒拖著行李來借住",
+        "carry_forward": "亦恒的去向"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "堂弟的行李",
+      "youtube_title": "被親爸趕出家門的豪門少爺在修車廠醒來，捧著一碗麵說出他爸的下一步",
+      "duration_s": 105,
+      "logline": "亦恒被父親斷了卡、斷了家，他手上只剩一樣東西：父親的下一步。",
+      "hook": "早上，修車廠的折疊床上，亦恒穿著江柏山的工作服醒來，江柏山丟給他一把扳手：「住這，要幹活。」",
+      "hook_type": "image",
+      "mid_hook": "林海若送早餐來，亦恒捧著麵說：「我爸買了八卦週刊的版面。下個月，全星港都會看到妳的契約。」",
+      "extra_hooks": [
+        "她手一抖，麵湯灑了一點；亦恒把手機遞過來：週刊排版的截圖，標題只有三個字——「租來的」。"
+      ],
+      "conflict": "二叔在董事會之外還要開第二個戰場，她得先知道那是什麼。",
+      "turn": "大家以為亦恒來借住是為了躲，他是來還一件事——把父親的計畫先說出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "截圖的封面照片是她第一天光腳站在大宅門口，下面一行大字：「一百萬，一週」。",
+        "question": "契約會被登上八卦版嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "zhiqiu",
+        "shangzhan"
+      ],
+      "spectacle": "修車廠的鐵捲門升起一半，陽光斜進來，一個戴細框眼鏡的少爺穿著工作服、握著扳手。",
+      "glamour_shot": "亦恒穿著不合身的工作服，細框眼鏡上沾一點機油，陽光從鐵捲門下照進來，他第一次笑得不客氣。",
+      "setups": [
+        "s04-t19"
+      ],
+      "payoffs": [
+        "s04-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "亦恒在修車廠住下，第一次自己掙一頓飯",
+        "她提前知道二叔買下了八卦週刊的版面"
+      ],
+      "characters": [
+        "shao-yiheng",
+        "s04-jiang-baishan",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "江柏山修車廠"
+      ],
+      "state": {
+        "time": "週二早上",
+        "knowledge": "二叔買了八卦週刊的版面，要登她的契約",
+        "carry_forward": "封面那張照片"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "終於有人不演了",
+      "youtube_title": "修車工第二次坐上豪門長餐桌沒人再停刀叉，飯後二叔的兒子在花園說出藏了一年的話",
+      "duration_s": 130,
+      "logline": "大妹的結解了一半、亦恒倒戈了一半，今晚林海若要聽亦恒說出他到底站在哪一邊。",
+      "hook": "週日又是家宴，江柏山坐上長餐桌，這一次沒有一支刀叉停下來；祖母還替亦恒留了一個位子。",
+      "hook_type": "image",
+      "mid_hook": "繼母把一碗麵推到江柏山面前，什麼都沒說；大妹低頭笑了，那是她三年來第一次在家裡笑。",
+      "extra_hooks": [
+        "飯後，亦恒在花園魚池邊叫住她，手裡轉著那副細框眼鏡。"
+      ],
+      "conflict": "八卦週刊的版面還在路上，亦恒是唯一知道二叔下一步的人，他得先決定自己是誰的兒子。",
+      "turn": "大家以為亦恒只是在氣父親，他說出口的是：他從一開始就沒照做。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "亦恒：「我爸讓我接近阿山，叫他離開。我沒做。」「為什麼？」「因為妳第一天赤腳走進來，我就想，這個家終於有人不演了。」",
+        "question": "亦恒會跟二叔正面對上嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "zhiqiu"
+      ],
+      "spectacle": "長餐桌從頭到尾坐滿，修車的、被趕出家的、漁村來的，燭光下沒有一個空位。",
+      "glamour_shot": "花園魚池邊，亦恒淺色西裝、細框眼鏡拿在手上，月光落在他第一次不帶笑的臉上；林海若赤腳站在草地上聽。",
+      "setups": [],
+      "payoffs": [
+        "s04-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江柏山第二次坐上邵家長餐桌，沒有人再停下刀叉",
+        "亦恒說出他從頭就沒照父親的話做"
+      ],
+      "characters": [
+        "s04-jiang-baishan",
+        "shao-yining",
+        "zhou-wan",
+        "shao-laofuren",
+        "shao-yiheng",
+        "lin-hairuo",
+        "shao-yichen"
+      ],
+      "locations": [
+        "邵家大宅長餐桌",
+        "邵家花園魚池邊"
+      ],
+      "state": {
+        "time": "一週後的週日家宴",
+        "knowledge": "大妹的結解了一半；亦恒站到這邊；二叔的八卦還沒登",
+        "carry_forward": "八卦週刊的版面"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "疤",
+      "youtube_title": "她的手指擦過冷面總裁無名指那道舊疤，他第一次把手抽回去，窗外有鏡頭在拍",
+      "duration_s": 100,
+      "logline": "林海若想知道邵亦辰藏了三次的那道疤，同一時間，有人開始盯著邵家的廚房。",
+      "hook": "廚房，林海若替邵亦辰擦掉手背上的麵湯，拇指擦過他無名指那道淡疤；他把手抽了回去。",
+      "hook_type": "image",
+      "mid_hook": "「這個，我問過三次了。」他：「麵要糊了。」小妹在旁邊小聲說：「姐，這個要問我媽。」",
+      "extra_hooks": [
+        "窗外樹叢一閃，一顆相機鏡頭正對著廚房的窗。"
+      ],
+      "conflict": "他把每一件痛的事都藏進一句「麵要糊了」；而窗外的人，要把這間廚房登上報紙。",
+      "turn": "大家以為那道疤是小時候頑皮，小妹一句話，讓它變成跟繼母有關的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她走出去拎起樹叢裡的記者，塞給她一碗麵；范小晴吃完最後一口，抬起相機：「林小姐，一週一百萬，是真的嗎？」",
+        "question": "記者知道多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "lache"
+      ],
+      "spectacle": "廚房窗外的樹叢裡一顆鏡頭反光，窗內兩個人的手停在麵碗邊。",
+      "glamour_shot": "邵亦辰把手抽回去時垂下眼，睫毛在廚房燈下投出一道影，沒扣好的袖口露出那道淡疤。",
+      "setups": [
+        "m04",
+        "s04-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她把蹲點的記者請進來吃了一碗麵",
+        "她知道了疤的事要問繼母"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "shao-yian",
+        "s04-jizhe"
+      ],
+      "locations": [
+        "邵家廚房",
+        "大宅門外樹叢"
+      ],
+      "state": {
+        "time": "家宴後第二天",
+        "knowledge": "八卦記者盯上大宅；疤跟繼母有關",
+        "carry_forward": "記者那句一百萬"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "佛堂的盒子",
+      "youtube_title": "繼母從佛堂香案下拿出一個木盒，裡面那枚缺角的戒指，就是總裁手上那道疤的答案",
+      "duration_s": 120,
+      "logline": "林海若要知道那道疤，就得走進繼母最不讓人進的佛堂。",
+      "hook": "林海若一把蓋住鏡頭：「一碗麵換一個問題，妳問完了。」范小晴笑著收起相機：「下次換我請。」",
+      "hook_type": "line",
+      "mid_hook": "佛堂裡，繼母在替亦辰的父親上香，看見她，沒有趕她，從香案下取出一個小木盒。",
+      "extra_hooks": [
+        "盒子打開：一枚男式戒指，內圈缺了一角，缺口邊緣磨得發亮。"
+      ],
+      "conflict": "繼母二十年沒跟任何人說過那一天，她要讓繼母自己開口。",
+      "turn": "大家以為繼母會像從前一樣客氣地請她出去，繼母卻先開口，說了那一天。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "繼母摸著缺口：「他爸走那天手腫了，戒指拔不下來。亦辰硬拔，被這裡割的。他一句話沒說，放在我手上。」她把戒指放進林海若掌心：「二十年了，妳拿給他。」",
+        "question": "他會收下父親的戒指嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "lache"
+      ],
+      "spectacle": "佛堂長明燈下，小木盒裡一枚缺角的戒指，旁邊是邵亦辰父親的照片。",
+      "glamour_shot": "繼母周婉跪坐在佛堂，素色旗袍、盤髮一絲不亂，低頭說話時燭光照亮她卸了妝的臉。",
+      "setups": [
+        "s04-t21"
+      ],
+      "payoffs": [
+        "s04-t20"
+      ],
+      "reveals": [
+        "m04"
+      ],
+      "general_payoffs": [
+        "繼母第一次對人說起亦辰父親過世那天",
+        "她知道了疤的來歷：拔父親的戒指時被缺口割的"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "s04-jizhe",
+        "zhou-wan"
+      ],
+      "locations": [
+        "大宅門外",
+        "佛堂"
+      ],
+      "state": {
+        "time": "家宴後第二天晚上",
+        "knowledge": "疤是那天硬拔父親戒指時割的；他把戒指給了繼母，一句話沒說",
+        "carry_forward": "她掌心裡的戒指"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "給她留著",
+      "youtube_title": "她把父親的遺物戒指放回總裁面前，他沒碰，只說四個字，第一次說出那天想叫的一聲",
+      "duration_s": 110,
+      "logline": "一枚戒指在兩個人之間來回，邵亦辰二十年沒說的話，今晚可能說，也可能又吞回去。",
+      "hook": "書房，林海若把戒指放在邵亦辰的文件上。他看了很久，沒碰：「給她留著。」",
+      "hook_type": "line",
+      "mid_hook": "她不走：「你為什麼給她？」他停了很久：「那天，我想叫她一聲。沒叫出口。」",
+      "extra_hooks": [
+        "保險箱的紅燈在他背後閃；林海若轉頭對保險箱用台語說：「這段不准聽。」把自己的外套蓋了上去。"
+      ],
+      "conflict": "他用安排代替說話用了二十年，這枚戒指是他唯一沒安排好的事。",
+      "turn": "大家以為他把戒指給繼母，是不要父親的東西；其實那是他唯一叫不出口的那個字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "深夜佛堂，繼母打開木盒，戒指回來了，下面壓著一張便條，是邵亦辰的字，只有兩個：「給妳。」繼母捂住了嘴。",
+        "question": "他什麼時候叫得出那一聲？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "lache",
+        "zhiyu"
+      ],
+      "spectacle": "書房長桌上一枚缺角的戒指壓在董事會文件上，牆角的保險箱蓋著一件女孩的外套。",
+      "glamour_shot": "邵亦辰低頭看著戒指，檯燈只照到他的手和那道疤；他抬頭時眼眶有一點紅，停了半拍又移開。",
+      "setups": [],
+      "payoffs": [
+        "m04",
+        "s04-t21"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "邵亦辰第一次說出父親過世那天他想叫繼母一聲",
+        "戒指回到繼母手上，多了一張他寫的便條"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "zhou-wan"
+      ],
+      "locations": [
+        "書房",
+        "佛堂"
+      ],
+      "state": {
+        "time": "家宴後第三天凌晨",
+        "knowledge": "他想叫繼母一聲沒叫出口；戒指留在繼母那裡",
+        "carry_forward": "戒指與那一聲"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "八卦版",
+      "youtube_title": "夜市書報攤一整排封面都是她：邵氏長孫女友是租來的？她一口氣買了十本",
+      "duration_s": 105,
+      "logline": "二叔開始在報上動手，第一刀不砍邵亦辰，砍林海若。",
+      "hook": "夜市書報攤，一整排八卦週刊的封面：「邵氏長孫女友，是租來的？」林海若捧著一盒剛買的蚵仔煎站在攤前。",
+      "hook_type": "image",
+      "mid_hook": "攤販阿姨指指封面又指指她：「這是妳喔？」她翻開內頁，一行粗體：「知情人士錄音：『我早就想走了』」。",
+      "extra_hooks": [
+        "隔壁蚵仔煎攤的阿姨把鍋鏟一揮：「她請過我們吃麵！誰說她是租的？」半條街跟著起鬨。",
+        "手機震個不停，小芸視訊大吼：「妳上新聞了！海口村全村都在看！」"
+      ],
+      "conflict": "二叔用她自己的聲音說她想走，全星港的人都在等她怎麼回應。",
+      "turn": "大家以為她會躲，她把週刊買了十本：「寄回去給我阿嬤看。」——直到她翻到最後一頁。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "最後一頁一行預告：「下期獨家：契約原件全文」。她一轉身，邵亦辰就站在攤位後面，手上拿著同一本。",
+        "question": "契約原件會被登出來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "xiju",
+        "shangzhan"
+      ],
+      "spectacle": "夜市書報攤一整排同一張封面，暖橘的燈下她的臉被印了十次。",
+      "glamour_shot": "林海若站在書報攤前抬頭看封面，夜風把馬尾吹到臉側，她把下巴抬起來，像在等誰來比。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "夜市的攤販替她說話：「她請過我們吃麵」",
+        "她買了十本週刊寄回海口村"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "xiao-yun",
+        "shao-yichen"
+      ],
+      "locations": [
+        "星港夜市書報攤"
+      ],
+      "state": {
+        "time": "家宴後第五天",
+        "knowledge": "八卦週刊登了「租來的女友」與她那句「我早就想走了」；下期要登契約原件",
+        "carry_forward": "邵亦辰看到了那句話"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "陳叔的口音",
+      "youtube_title": "老管家整理她從漁村帶來的魚乾，脫口叫出一個只有她家那幾個村才叫的名字",
+      "duration_s": 100,
+      "logline": "林海若從一袋魚乾聽出陳叔藏了四十年的事，同時八卦記者的電話打進了大宅。",
+      "hook": "陳叔把早餐桌上的週刊收走，轉身整理她從海口村帶來的魚乾，隨口一句：「這是海口烏，要曬三日。」林海若的湯匙停住。",
+      "hook_type": "line",
+      "mid_hook": "林海若：「陳叔，海口烏？這只有我們那邊叫。」陳叔的手停在魚乾上：「……林小姐聽錯了。」",
+      "extra_hooks": [
+        "八卦記者又打來，陳叔接起電話，一句字正腔圓的國語把對方擋掉；掛上電話的手在抖。"
+      ],
+      "conflict": "陳叔看著邵亦辰長大，從沒說過自己從哪裡來；她一句魚乾，碰到了他四十年沒碰的地方。",
+      "turn": "大家以為陳叔手抖是替她擋記者擋得緊張，他抖是因為她剛剛說出了他家鄉的叫法。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "深夜廚房，陳叔一個人把那袋魚乾拿出來聞，聽見腳步聲回頭，看見是她：「……我四十年，沒聞過這個味道。」",
+        "question": "陳叔的家鄉在哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "fancha"
+      ],
+      "spectacle": "銀器櫃前，一袋粗麻袋的魚乾攤在白手套上，旁邊是一整排發亮的銀湯匙。",
+      "glamour_shot": "林海若坐在早餐桌邊咬著吐司抬頭，晨光從長窗照進來，她瞇眼的那一下，鼻尖的雀斑全亮了。",
+      "setups": [
+        "m09",
+        "s04-t22"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陳叔替她擋掉八卦週刊的電話",
+        "她聽出陳叔叫得出海口村一帶才有的魚名"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "chen-shu",
+        "shao-yichen"
+      ],
+      "locations": [
+        "邵家早餐桌",
+        "銀器室",
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "週刊出刊隔天",
+        "knowledge": "陳叔叫得出海口村一帶的魚名，四十年沒聞過那個味道",
+        "carry_forward": "陳叔的家鄉"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "隔壁村",
+      "youtube_title": "看著總裁長大的老管家摘下白手套：我是海口村隔壁的人，四十年沒回去了",
+      "duration_s": 120,
+      "logline": "陳叔說出四十年沒說的家鄉，林海若要讓他至少隔著螢幕看一眼。",
+      "hook": "廚房，陳叔放下魚乾，慢慢摘下白手套：「我是屏東人。海口村隔壁那一村。」",
+      "hook_type": "line",
+      "mid_hook": "「十八歲上船到星港。說明年就回去。」他笑了一下：「四十年了。」",
+      "extra_hooks": [
+        "林海若已經撥出視訊，螢幕裡阿嬤在港邊殺魚：「做什麼？」她把手機轉向陳叔。"
+      ],
+      "conflict": "陳叔替邵家守了四十年的門，自己的家門一次都沒敲過。",
+      "turn": "大家以為陳叔不回去是忘了，他是不敢——四十年沒回去，那扇門要怎麼敲。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿嬤瞇著眼看螢幕裡的白髮老人，殺魚刀停在半空：「那村的人我認識。你姓陳？」陳叔整個人僵住。",
+        "question": "阿嬤認得陳叔的家嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "jiaxiang"
+      ],
+      "spectacle": "視訊畫面一邊是星港大宅的白瓷廚房，一邊是海口村港邊的鐵皮與海藍，中間是一張白髮管家的臉。",
+      "glamour_shot": "陳叔摘下白手套，白髮理得短短的，廚房燈下他的眼裡有水光，背還挺得很直。",
+      "setups": [],
+      "payoffs": [
+        "s04-t22"
+      ],
+      "reveals": [
+        "m09"
+      ],
+      "general_payoffs": [
+        "陳叔四十年來第一次說出自己的家鄉",
+        "她讓陳叔隔著視訊看見了海口村的港"
+      ],
+      "characters": [
+        "chen-shu",
+        "lin-hairuo",
+        "a-ma"
+      ],
+      "locations": [
+        "邵家廚房",
+        "海口村港邊（視訊）"
+      ],
+      "state": {
+        "time": "週刊出刊第二天深夜",
+        "knowledge": "陳叔是海口村隔壁村的人，十八歲離家，四十年沒回去；阿嬤認識那村姓陳的人家",
+        "carry_forward": "阿嬤知道陳家的什麼"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "榕樹還在",
+      "youtube_title": "漁村阿嬤隔著視訊說老管家的老家還在，第二期八卦卻登出一張一百萬的支票",
+      "duration_s": 110,
+      "logline": "陳叔找回了家鄉的消息，二叔的八卦卻跟著找到了海口村。",
+      "hook": "阿嬤把刀往砧板一插：「姓陳那幾戶我熟！你家那間厝還在！門口榕樹也在！」",
+      "hook_type": "line",
+      "mid_hook": "陳叔對著手機深深鞠了一個躬，很久沒起來；林海若撐著鏡頭，另一隻手偷偷擦眼睛。",
+      "extra_hooks": [
+        "小芸擠進鏡頭：「海若！又一本週刊！這次寫妳家欠錢！」阿嬤搶過手機：「欠的早還了！叫寫的人來，我請他吃魚！」"
+      ],
+      "conflict": "陳叔的老家還在等他；而二叔要讓全星港以為，林家是來要錢的。",
+      "turn": "大家以為這一晚是陳叔的，第二期週刊卻把林家的舊債和一張支票一起翻了出來。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第二期封面：一張一百萬支票的影本，抬頭寫著林海若。標題：「漁村女友，收錢走人？」",
+        "question": "那張支票去哪了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiqiu",
+        "jiaxiang"
+      ],
+      "spectacle": "手機螢幕裡海口村港邊的夕陽，阿嬤舉著殺魚刀大聲說話，身後一排漁船。",
+      "glamour_shot": "林海若捧著手機替陳叔撐著鏡頭，側臉被螢幕光照亮，眼睛紅了卻在笑。",
+      "setups": [
+        "s04-t23"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳叔知道老家的房子和門口的榕樹都還在",
+        "阿嬤隔著視訊把第二期週刊罵了回去"
+      ],
+      "characters": [
+        "a-ma",
+        "chen-shu",
+        "lin-hairuo",
+        "xiao-yun"
+      ],
+      "locations": [
+        "邵家廚房",
+        "海口村港邊（視訊）"
+      ],
+      "state": {
+        "time": "週刊第二期出刊",
+        "knowledge": "陳叔的老家還在；二叔登了林家欠債和一張一百萬支票",
+        "carry_forward": "支票的去向"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "支票",
+      "youtube_title": "八卦說她收了一百萬走人，她拉開抽屜：那張支票一年沒兌現，她也不准他花錢壓新聞",
+      "duration_s": 105,
+      "logline": "錢能讓頭版消失，但林海若在海口村就說過：她不要邵亦辰用錢。",
+      "hook": "林海若衝進書房拉開抽屜：一年前那張一百萬的支票還在，沒兌現，邊角都黃了。",
+      "hook_type": "image",
+      "mid_hook": "公關經理來電：下一期要登契約原件全文，「花點錢可以壓下來」。邵亦辰看向她。",
+      "extra_hooks": [
+        "她把支票拍在桌上：「不准用錢。上次我說過了。」"
+      ],
+      "conflict": "壓下新聞只要一通電話，可那等於承認她真的是用錢租來的。",
+      "turn": "大家以為她會讓他壓新聞自保，她選擇讓它登出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她拿起那張沒兌現的支票：「讓他登。我沒做的事，不用錢擋。」邵亦辰看著她，把電話掛了。",
+        "question": "明天的頭版會登出什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "zhiqiu",
+        "shangzhan"
+      ],
+      "spectacle": "書房抽屜裡一張泛黃的一百萬支票，壓在一疊董事會文件最底下，一年沒動過。",
+      "glamour_shot": "邵亦辰掛上電話時停了半拍才抬眼看她，檯燈光從側面切過他的眉骨，嘴角一點幾乎看不見的笑。",
+      "setups": [],
+      "payoffs": [
+        "s04-t23",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到那張一年沒兌現的支票",
+        "她拒絕用錢壓新聞，邵亦辰照她的意思掛了電話"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen"
+      ],
+      "locations": [
+        "書房"
+      ],
+      "state": {
+        "time": "週刊第二期出刊當晚",
+        "knowledge": "支票從沒兌現；她不讓他用錢壓；下一期要登契約原件",
+        "carry_forward": "明天的頭版"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "明天的頭版",
+      "youtube_title": "凌晨三點二叔的太太打來道歉，天一亮，一百萬租來的孫媳登上了全星港的頭版",
+      "duration_s": 110,
+      "logline": "頭版明天就要登，林海若只剩一個晚上，決定用什麼樣子面對這個家。",
+      "hook": "凌晨三點，二嬸打來，壓低聲音：「他明天要登契約照片。我攔不住，對不起。」",
+      "hook_type": "line",
+      "mid_hook": "林海若一個人煮麵一個人吃；回到房裡，她坐在床邊撕下一張便條，寫了一行字，折成小方塊塞進紅繩小布袋。",
+      "extra_hooks": [
+        "天一亮，大宅門口的報箱被塞滿，陳叔一份一份抱進來，抱到手抖。"
+      ],
+      "conflict": "全星港都會看到那張契約，她得先想好要怎麼走進今天的飯廳。",
+      "turn": "大家以為二嬸是二叔派來探口風的，她是唯一一個在登報前替她難過的人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "頭版整版：裝訂成冊的契約原件，翻開那頁是她在機場紙巾上的簽名，旁邊是邵亦辰的。大標題：「一百萬，租來的孫媳」。",
+        "question": "祖母看到了會怎樣？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "大宅門口報箱被塞爆，一份份頭版鋪滿玄關的大理石，每一張都是同一張紙巾契約。",
+      "glamour_shot": "凌晨廚房只開一盞燈，林海若素著臉、頭髮散著，一個人捧碗吃麵，燈下她的睫毛很長。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二嬸登報前一晚打來道歉，站到了她這邊",
+        "陳叔把門口的報紙一份份收進來，沒讓祖母先看到"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "s04-ershen",
+        "chen-shu"
+      ],
+      "locations": [
+        "邵家廚房",
+        "大宅玄關"
+      ],
+      "state": {
+        "time": "週刊第三期出刊清晨",
+        "knowledge": "契約原件登上頭版；她寫了一張只給自己看的紙，收進紅繩小布袋",
+        "carry_forward": "祖母的反應"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "現在呢",
+      "youtube_title": "契約登上頭版當晚，九十歲祖母把全家叫上飯桌：丫頭，妳是假的？她只答四個字",
+      "duration_s": 130,
+      "logline": "祖母一句話就能讓林海若留下或離開，全家坐在長餐桌邊，等她怎麼答。",
+      "hook": "長餐桌坐滿，桌上攤著那份頭版，沒人動筷子；祖母最後一個進來，坐下：「都在了。」",
+      "hook_type": "image",
+      "mid_hook": "祖母不看報紙，只看她：「丫頭，妳是假的？」林海若：「一開始是。」",
+      "extra_hooks": [
+        "繼母的手在桌下握住小妹的手；大妹伸手把那份頭版翻過去，蓋住。"
+      ],
+      "conflict": "這一年她解開的每一個結都可能在今晚被一張頭版推翻，祖母要她自己回答。",
+      "turn": "大家以為她會辯解，她第一句就承認了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "祖母：「現在呢？」林海若看向邵亦辰。他放下刀叉，第一次在全家面前看著她：「現在是我沒說清楚。」",
+        "question": "他要怎麼說清楚？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "lache",
+        "zhiyu"
+      ],
+      "spectacle": "長餐桌正中攤著那份頭版，一整桌燭光都照在那張紙巾契約上，沒有一雙筷子動。",
+      "glamour_shot": "邵亦辰放下刀叉看向她的那一格，燭光在他眼裡停了半拍，冷峭的臉第一次沒有移開。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在全家面前親口承認一開始是假的",
+        "邵亦辰第一次在全家面前說是自己沒說清楚"
+      ],
+      "characters": [
+        "shao-laofuren",
+        "lin-hairuo",
+        "shao-yichen",
+        "zhou-wan",
+        "shao-yining",
+        "shao-yian",
+        "shao-yichuan",
+        "chen-shu"
+      ],
+      "locations": [
+        "邵家大宅長餐桌"
+      ],
+      "state": {
+        "time": "頭版登出當天晚餐",
+        "knowledge": "她承認一開始是假的；他說是他沒說清楚",
+        "carry_forward": "他到底要說什麼"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "我先處理",
+      "youtube_title": "全家等他說清楚，冷面總裁接了一通電話：我先處理。漁村女友在冰箱貼上一張紙條",
+      "duration_s": 100,
+      "logline": "邵亦辰說了「沒說清楚」，卻又一次用「處理」代替說清楚；林海若等了一年，今晚不想再等。",
+      "hook": "全桌等他說下一句；他的手機震動——吳董。他看了一眼，站起來：「我先處理。」走出了飯廳。",
+      "hook_type": "reversal",
+      "mid_hook": "祖母嘆一口氣：「他小時候打破花瓶，先掃乾淨，才來認。」林海若盯著那張空椅子。",
+      "extra_hooks": [
+        "小妹小聲：「哥是不是又……」大妹：「又。」"
+      ],
+      "conflict": "他每一次都去處理，她每一次都等；這一次，她不想被處理。",
+      "turn": "大家以為他去處理是為了她，她知道是——可她要的不是被處理，是一句話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "深夜，她把廚房的燈關了，在冰箱門上貼一張紙：「麵，休三天。」邵亦辰回來，站在冰箱前看了很久。",
+        "question": "三天後她還會煮麵嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "lache",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "長餐桌盡頭那張空椅子，燭光把椅背的影子拉得很長，一直拉到她的碗邊。",
+      "glamour_shot": "林海若在暗下來的廚房把紙條貼上冰箱，馬尾一甩轉身，月光從窗外照亮她半張側臉。",
+      "setups": [
+        "s04-t24"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "祖母當著全家說：她孫子欠人家一句話",
+        "她第一次不替他找理由"
+      ],
+      "characters": [
+        "shao-yichen",
+        "lin-hairuo",
+        "shao-laofuren",
+        "shao-yian",
+        "shao-yining"
+      ],
+      "locations": [
+        "邵家大宅長餐桌",
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "頭版登出當晚深夜",
+        "knowledge": "他又去處理了；她宣布麵休三天",
+        "carry_forward": "冰箱上的紙條"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "沒麵的大宅",
+      "youtube_title": "漁村女友罷工不煮麵，豪門全家輪流進廚房又失望走出來，貴婦繼母只說：不是這個味道",
+      "duration_s": 105,
+      "logline": "一個家已經離不開那碗麵，林海若卻不煮了；而邵亦辰一整天都在外面見董事。",
+      "hook": "清晨，繼母站在廚房門口看著冰箱上的紙條，愣了很久，轉身吩咐廚師：「……做麵。」",
+      "hook_type": "image",
+      "mid_hook": "廚師端出一碗精緻的龍蝦湯麵，繼母吃一口就放下：「不是這個味道。」全家輪流進廚房，輪流失望地出來。",
+      "extra_hooks": [
+        "小妹自己下廚，煮出一碗跟林海若一模一樣的麵，端到她房門口——門沒開。"
+      ],
+      "conflict": "全家想要回那碗麵，可她要的那句話，沒有人能替他說。",
+      "turn": "大家以為她在鬧脾氣，她床尾放著第一天從機場拎來的那個舊行李袋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她坐在床尾，舊行李袋的拉鍊拉開一半；她從紅繩小布袋抽出那張折好的紙，打開一半，又折了回去。",
+        "question": "那張紙上寫了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "一整排人輪流從廚房門口探頭又縮回去，冰箱門上的紙條在正中間。",
+      "glamour_shot": "小妹邵亦安繫著圍裙端著麵站在她房門口，藍髮在走廊燈下發亮，嘴噘得老高。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小妹煮出了跟她一模一樣的那碗麵",
+        "全家第一次發現自己離不開那碗麵"
+      ],
+      "characters": [
+        "zhou-wan",
+        "shao-yian",
+        "lin-hairuo",
+        "shao-yichuan"
+      ],
+      "locations": [
+        "邵家廚房",
+        "林海若的房間"
+      ],
+      "state": {
+        "time": "麵休第一天",
+        "knowledge": "她把舊行李袋拉開一半，那張紙打開一半又折回去",
+        "carry_forward": "行李袋與那張紙"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "弟弟的歌",
+      "youtube_title": "當年被她拖上夜市舞台的豪門弟弟，這次自己上台為她唱歌：我哥不會說，妳要等",
+      "duration_s": 110,
+      "logline": "林海若氣邵亦辰不說，全家最懂「說不出口」的弟弟，自己把她拖去了夜市。",
+      "hook": "夜市小舞台，邵亦川把麥克風對準台下：「這首，給我嫂……給林海若。」全場起鬨。",
+      "hook_type": "line",
+      "mid_hook": "他唱的是她第一次拖他上台時唱走音的那首台語歌，這一次一個音都沒走。",
+      "extra_hooks": [
+        "唱完他跳下台，坐到她旁邊的塑膠凳上，遞給她一串烤魷魚。"
+      ],
+      "conflict": "她要一個人想清楚走不走，弟弟偏偏要她先聽完一首歌。",
+      "turn": "大家以為弟弟是哥哥派來求情的，他是自己來的——因為一年前，她也這樣把他拖出來過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "弟弟看著舞台：「我爸說完那句，三天後就走了。我哥不會說，妳要等。」他停一下：「但別等到三天後。」",
+        "question": "她還要等他多久？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "lache"
+      ],
+      "spectacle": "夜市小舞台的燈泡串下，一個長髮、耳骨釘的男孩抱著吉他，台下塑膠凳坐滿了人。",
+      "glamour_shot": "邵亦川長髮垂肩、黑T、耳骨釘在燈下一閃，唱到副歌時抬眼看向台下的她，頹裡有一點亮。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "弟弟主動上台為她唱歌，一個音都沒走",
+        "弟弟把父親那場架的教訓說給她聽：別等三天後"
+      ],
+      "characters": [
+        "shao-yichuan",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "星港夜市小舞台"
+      ],
+      "state": {
+        "time": "麵休第二天晚上",
+        "knowledge": "弟弟要她等，也要她別等太久",
+        "carry_forward": "「別等到三天後」"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "妳也沒說",
+      "youtube_title": "她氣總裁什麼都不說，十九歲的小妹一句話問倒她：姐，那妳說了嗎",
+      "duration_s": 105,
+      "logline": "林海若氣邵亦辰不說，卻沒發現自己也一直在等對方先開口。",
+      "hook": "回到家，小妹蹲在廚房門口等她：「姐，妳說哥不說。」她點頭。小妹：「那妳說了嗎？」",
+      "hook_type": "question",
+      "mid_hook": "林海若張開嘴，發現自己一句都說不出來——一年了，她也沒說過。",
+      "extra_hooks": [
+        "繼母從廚房走出來，手上一碗煮糊的麵：「我第一次煮。」放在她面前，轉身就走。"
+      ],
+      "conflict": "她一直在等他說，但這個家裡沒人聽過她說「我想留下來」。",
+      "turn": "大家以為只有他欠一句話，小妹讓她看見：她自己也欠。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她吃著那碗糊掉的麵，周律站在廚房門口：「海若，有一件事他不讓我說。我想了很久，還是要說。」",
+        "question": "周律要說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "廚房不鏽鋼台上一碗糊成一團的麵，冰箱門上的紙條還貼著。",
+      "glamour_shot": "繼母周婉第一次繫上圍裙，袖口沾了麵粉，把碗放下就轉身，耳根紅了。",
+      "setups": [
+        "s04-t25"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "繼母第一次下廚，煮了一碗麵給她",
+        "她發現自己也一年沒說出口"
+      ],
+      "characters": [
+        "shao-yian",
+        "lin-hairuo",
+        "zhou-wan",
+        "zhou-lv"
+      ],
+      "locations": [
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "麵休第二天深夜",
+        "knowledge": "她也沒說；繼母為她煮了第一碗麵；周律要說一件他不讓說的事",
+        "carry_forward": "周律的話"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "三年的本子",
+      "youtube_title": "醫生好友說出總裁的祕密：三年前從漁村回來，他買了一本記事本，每天寫一行",
+      "duration_s": 115,
+      "logline": "周律要說出邵亦辰三年沒說的事；林海若只要伸手，就能看到答案。",
+      "hook": "周律坐在廚房板凳上：「三年前他從屏東回來，沒先去公司。他去買了一本記事本。」",
+      "hook_type": "line",
+      "mid_hook": "「他把那一夜寫下來，然後每天寫一行，寫了三年。」林海若手裡的筷子掉在地上。",
+      "extra_hooks": [
+        "周律：「我問他寫什麼，他說：『沒什麼，吃了什麼。』」"
+      ],
+      "conflict": "她氣他不說，原來他每天都在說，只是說給一本本子聽。",
+      "turn": "大家以為他冷，原來他三年來每天都寫一行——寫的是同一件事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周律站起來，把一把鑰匙放在桌上：「本子在他書房，左邊第二個抽屜。他今晚在公司。」",
+        "question": "她會去翻那本記事本嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "lache",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "廚房板凳上兩個人，桌上一把書房鑰匙在燈下發亮，冰箱門上的紙條在他們身後。",
+      "glamour_shot": "周律白袍搭在臂彎，靠著冰箱溫和地笑，眼鏡後的眼睛替好友藏了三年的話。",
+      "setups": [
+        "s04-t26"
+      ],
+      "payoffs": [
+        "s04-t25",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道了他三年來每天寫一行的記事本",
+        "周律把書房鑰匙交給她"
+      ],
+      "characters": [
+        "zhou-lv",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "麵休第三天凌晨",
+        "knowledge": "他三年來每天在記事本上寫一行；本子在書房左邊第二個抽屜",
+        "carry_forward": "書房的鑰匙"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "沒翻",
+      "youtube_title": "總裁寫了三年的記事本就在她手上，契約沒寫不准翻，她卻把本子抱在胸前：我不翻",
+      "duration_s": 110,
+      "logline": "答案就在林海若手上，翻開就能知道他三年在想什麼；她要決定翻不翻。",
+      "hook": "凌晨的書房，左邊第二個抽屜，一本磨舊的黑色記事本。保險箱的紅燈在她背後閃。",
+      "hook_type": "image",
+      "mid_hook": "她的拇指按在封面上，停了很久：「契約沒寫不能翻。」她把本子抱在胸前：「是我自己不翻。」",
+      "extra_hooks": [
+        "她轉身對保險箱用台語說：「你也不准聽。」"
+      ],
+      "conflict": "翻開就有答案，可那就不是他說的了。",
+      "turn": "大家以為她一定會翻，她選擇不翻——她要他自己說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "手機一震，二叔群發給全家：「董事會改在三天後。議程：審議邵亦辰繼承人資格。附件：契約原件。」",
+        "question": "三天後的董事會怎麼辦？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "shangzhan",
+        "ganren"
+      ],
+      "spectacle": "凌晨書房只開一盞檯燈，一本磨舊的黑色記事本被一雙手抱在胸前，牆角保險箱的紅燈一閃一閃。",
+      "glamour_shot": "林海若赤腳站在書房地毯上抱著記事本，頭髮散著，檯燈把她的影子投在整面書牆上。",
+      "setups": [
+        "s04-t27"
+      ],
+      "payoffs": [
+        "s04-t26"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到記事本，選擇不翻",
+        "她把記事本帶在身上，不留在錄音筆聽得見的書房"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-jinglong"
+      ],
+      "locations": [
+        "書房"
+      ],
+      "state": {
+        "time": "麵休第三天凌晨",
+        "knowledge": "記事本在她手上，她沒翻；董事會改在三天後，議程是他的繼承權",
+        "carry_forward": "三天倒數"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "全家，吃麵",
+      "youtube_title": "董事會三天後要罷免總裁，她撕掉罷工紙條，全家擠在廚房邊吃麵邊排對策",
+      "duration_s": 115,
+      "logline": "三天後二叔要把邵亦辰踢出繼承，全家要在一碗麵的時間裡排出對策。",
+      "hook": "清晨，林海若撕下冰箱上的紙條，開火：「全家，吃麵。」樓梯上的腳步聲一下子全響了。",
+      "hook_type": "line",
+      "mid_hook": "廚房擠滿人：大妹翻章程、小妹煮麵、弟弟記筆記、亦恒帶著父親的行程表從修車廠趕來；邵亦辰最後進門，看見她在煮麵，站在門口沒動。",
+      "extra_hooks": [
+        "大妹：「二叔有原件、有錄音、有頭版。我們有什麼？」整個廚房安靜。"
+      ],
+      "conflict": "二叔手上有三張牌，他們手上只有一鍋麵和一家人。",
+      "turn": "大家以為她恢復煮麵是原諒他了，她只是知道——這個家打仗前要先吃飽。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陳叔走進廚房：「老夫人說，董事會她不去。『我老了。』」整個廚房的筷子同時停住。",
+        "question": "祖母真的不去董事會？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "tuanchong",
+        "lache"
+      ],
+      "spectacle": "俯拍：廚房不鏽鋼台被章程、行程表與麵碗鋪滿，一家人圍著一口滾著的鍋。",
+      "glamour_shot": "邵亦辰站在廚房門口，西裝還沒脫，看著她撈麵的背影停了半拍，蒸氣漫過他的臉。",
+      "setups": [
+        "s04-t28"
+      ],
+      "payoffs": [
+        "s04-t24"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她恢復煮麵，全家在廚房排出董事會的對策",
+        "亦恒帶來父親的行程表，正式站到這一邊"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yining",
+        "shao-yian",
+        "shao-yichuan",
+        "shao-yiheng",
+        "shao-yichen",
+        "chen-shu"
+      ],
+      "locations": [
+        "邵家廚房"
+      ],
+      "state": {
+        "time": "董事會前三天早上",
+        "knowledge": "全家在廚房作戰；祖母說她不去董事會",
+        "carry_forward": "祖母為什麼不去"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "魚攤前的密報",
+      "youtube_title": "二叔的太太戴墨鏡約她在菜市場挑魚，壓低聲音說：他手上還有一段妳的聲音",
+      "duration_s": 105,
+      "logline": "二嬸冒險來報信：二叔的最後一張牌沒登報，要留到董事會上。",
+      "hook": "二嬸約她在菜市場，戴著墨鏡挑魚：「他手上還有一樣，沒登報。」",
+      "hook_type": "line",
+      "mid_hook": "二嬸把手機遞過來：二叔書房裡的一個隨身碟，標籤寫著「保險箱・三」。「是妳的聲音。整段的。」",
+      "extra_hooks": [
+        "林海若在魚攤前教二嬸看魚眼：「眼睛亮的才新鮮。」二嬸笑：「那妳很新鮮。」"
+      ],
+      "conflict": "頭版只登了一句「我早就想走了」，二叔卻有整段；董事會上一放，全場都會聽見她說要走。",
+      "turn": "大家以為二叔的牌只剩原件，原來他把最狠的那段留到了董事會。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "二嬸摘下墨鏡：「他要在董事會上放。從妳那句『我早就想走了』開始。」魚攤老闆的刀剁下來，咚一聲。",
+        "question": "那段錄音會在董事會上播嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "zhiqiu",
+        "xiju"
+      ],
+      "spectacle": "菜市場的魚攤前，一個戴墨鏡穿淺杏色套裝的貴婦和一個踩夾腳拖的女孩並肩挑魚。",
+      "glamour_shot": "二嬸羅美鳳摘下墨鏡、換回細金邊眼鏡的那一刻，菜市場的燈泡照在鏡片上，她的眼神第一次很硬。",
+      "setups": [
+        "s04-t29"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二嬸冒險把二叔的最後一張牌告訴她",
+        "她提前知道董事會上會播她的整段錄音"
+      ],
+      "characters": [
+        "s04-ershen",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "星港傳統菜市場魚攤"
+      ],
+      "state": {
+        "time": "董事會前兩天",
+        "knowledge": "二叔有一段整段的錄音，要在董事會上播",
+        "carry_forward": "那句「我早就想走了」"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "一半是真的",
+      "youtube_title": "他問那句「我早就想走了」是不是演的，她看著保險箱的紅燈，答了兩個字",
+      "duration_s": 110,
+      "logline": "董事會上那句話會被全場聽見，邵亦辰要先知道那句是演的還是真的。",
+      "hook": "書房，邵亦辰聽完二嬸的消息，只說一句：「那句，是演的。」不是問句。",
+      "hook_type": "line",
+      "mid_hook": "林海若看著保險箱的紅燈，很久才開口：「……一半。」他的手停在桌上。",
+      "extra_hooks": [
+        "他沒問另一半是什麼，只說：「另一半，我來。」拿起外套又出了門。"
+      ],
+      "conflict": "她可以說是演的，讓他安心上董事會；也可以說實話。",
+      "turn": "大家以為她會說是演的，她說了實話：一半是真的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她抱著記事本站在空書房裡，保險箱的紅燈一閃一閃；她從紅繩小布袋抽出那張紙，在那行字底下補上一個日期。",
+        "question": "她給自己定了哪一天？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "ganren",
+        "shangzhan"
+      ],
+      "spectacle": "書房保險箱的紅燈與手機螢幕的藍光，一起照在一個抱著黑色記事本的女孩臉上。",
+      "glamour_shot": "邵亦辰聽到「一半」時抬眼看她，停的不只半拍；檯燈把他的睫毛照得很清楚。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她對他說了實話：那句話一半是真的",
+        "他沒有逼問另一半，說他來"
+      ],
+      "characters": [
+        "shao-yichen",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "書房"
+      ],
+      "state": {
+        "time": "董事會前兩天深夜",
+        "knowledge": "那句一半是真的；她在那張紙上補了一個日期",
+        "carry_forward": "紙上的日期與記事本"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "第一行",
+      "youtube_title": "董事會前夜她把記事本放在總裁面前：我沒翻，你要說就自己說。他翻開第一頁",
+      "duration_s": 135,
+      "logline": "明天二叔要拿契約原件把他踢出繼承；今晚林海若要的不是對策，是一句他自己說的話。",
+      "hook": "董事會前夜，書房桌上放著那本黑色記事本，旁邊一碗麵。林海若坐在對面：「我沒翻。你要說，就自己說。」",
+      "hook_type": "line",
+      "mid_hook": "他看著本子很久，坐下，先吃了一口麵：「鹹。」她瞪他。他把本子推到兩人中間。",
+      "extra_hooks": [
+        "他起身打開保險箱，拿出那支錄音筆，第一次按下了關機鍵。紅燈熄了。"
+      ],
+      "conflict": "他一輩子用安排代替說話；今晚沒有人替他安排，只有一本本子和一碗麵。",
+      "turn": "大家以為他又會說「明天再說」，他翻開了本子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他把第一頁轉向她：三年前的日期，一行字——「今天在一個漁村吃了一頓飯。想再吃一次。」",
+        "question": "她紙上的期限還算數嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "lache",
+        "ganren",
+        "shangzhan"
+      ],
+      "spectacle": "書房檯燈下一本攤開的黑色記事本，第一頁的字跡工整，旁邊一碗麵冒著熱氣，牆角保險箱的紅燈第一次熄了。",
+      "glamour_shot": "邵亦辰翻開本子時沒有看本子，看著她；檯燈的光落在他無名指的疤上，停了半拍，他把本子轉向她。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他關掉保險箱裡的錄音筆，不再演給任何人聽",
+        "他把記事本第一頁給她看——三年前那頓飯，他想再吃一次"
+      ],
+      "characters": [
+        "shao-yichen",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "書房"
+      ],
+      "state": {
+        "time": "董事會前夜",
+        "knowledge": "記事本第一行：三年前在漁村吃了一頓飯，想再吃一次；錄音筆關了；她紅繩布袋裡那張紙還在",
+        "carry_forward": "明天的董事會與她布袋裡那張紙"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "明天妳別來",
+      "youtube_title": "他翻開記事本第一頁，她說明天陪他上董事會，冷面總裁第一次說出口：我怕",
+      "duration_s": 105,
+      "logline": "邵亦辰要一個人上董事會扛下一切，林海若的紅繩布袋裡有一張只給自己看的紙。",
+      "hook": "她看完那一行，把本子闔上：「明天，我也去。」他：「明天，妳別來。」",
+      "hook_type": "line",
+      "mid_hook": "「董事會上他們會問妳每一句真話。」他看著她：「我怕妳站在那裡被問。」",
+      "extra_hooks": [
+        "她把麵推回他面前：「那你吃完。」他吃完了，湯也喝了。"
+      ],
+      "conflict": "他要她留在家裡等結果，她從來不是等結果的人。",
+      "turn": "大家以為他不讓她去是不信她，他說的卻是——他怕。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "董事會當天早上，大宅門口停滿記者的車；林海若推開大門，閃光燈一起亮起，范小晴擠在最前面：「林小姐，今天會出席嗎？」",
+        "question": "她能走到董事會嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "lache",
+        "zhiqiu"
+      ],
+      "spectacle": "大宅鐵門一開，門外一整排記者的車與長鏡頭，晨光裡的閃光燈像一面白牆。",
+      "glamour_shot": "林海若推開大門，T恤、牛仔褲、夾腳拖，馬尾高高紮起，閃光燈打在她臉上，她連眼都沒眨。",
+      "setups": [
+        "s04-t30"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次說出口：他怕她被問",
+        "他把那碗麵吃到見底"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-yichen",
+        "s04-jizhe"
+      ],
+      "locations": [
+        "書房",
+        "大宅門口"
+      ],
+      "state": {
+        "time": "董事會前夜到當天早上",
+        "knowledge": "他不要她去；記者堵在大宅門口",
+        "carry_forward": "她要不要去董事會"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "出門",
+      "youtube_title": "上董事會前，繼母叫住總裁替他重打領帶：你爸出門前，也是我打的",
+      "duration_s": 115,
+      "logline": "邵亦辰要獨自去打一場可能失去一切的仗，出門前，這個家要先送他一程。",
+      "hook": "林海若一句話不說，把一袋魚乾塞到范小晴手裡：「借過。」——跟機場那天一樣。記者們笑出來，讓出一條路。",
+      "hook_type": "line",
+      "mid_hook": "大宅玄關，邵亦辰正要出門，繼母叫住他，伸手把他的領帶解開重打：「你爸出門前，也是我打的。」",
+      "extra_hooks": [
+        "繼母的手停在他的領口，看了一眼他無名指那道疤，什麼都沒說，把領結推緊。"
+      ],
+      "conflict": "他要一個人去扛，而繼母二十年沒在他出門前說過一句話。",
+      "turn": "大家以為繼母叫住他是要勸他別去，她只是要替他把領帶打好。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他走到門口回頭，嘴唇動了兩次，最後只說：「……我走了。」繼母扶著門框點頭，等門關上，才紅了眼眶。",
+        "question": "他什麼時候叫得出那一聲？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiqiu",
+        "xiju"
+      ],
+      "spectacle": "大宅玄關的晨光裡，繼母踮腳替一個高大的男人重打領帶，門外一排閃光燈還沒散。",
+      "glamour_shot": "邵亦辰深色西裝、低頭讓繼母打領帶，晨光從門外照進來，袖口露出那道疤，冷峭的側臉第一次沒繃住。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "繼母第一次在他出門前替他打領帶",
+        "她用一袋魚乾讓記者讓出一條路"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "s04-jizhe",
+        "zhou-wan",
+        "shao-yichen"
+      ],
+      "locations": [
+        "大宅門口",
+        "大宅玄關"
+      ],
+      "state": {
+        "time": "董事會當天早上",
+        "knowledge": "繼母替他打了領帶；他差一點叫出那一聲，一個人出門",
+        "carry_forward": "董事會即將開始"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "大螢幕",
+      "youtube_title": "二叔在董事會把一年前的租女友契約投上大螢幕：三年前就簽好了，各位自己看日期",
+      "duration_s": 110,
+      "logline": "二叔要用一份三年前就簽好的契約，證明長孫騙了祖母三年；邵亦辰一個人坐在長桌另一頭。",
+      "hook": "邵氏大樓頂樓會議室，七位董事坐定；二叔坐在主位按下遙控器，大螢幕亮起——那張紙巾契約的原件，裝訂封面上是邵亦辰的簽名和三年前的日期。",
+      "hook_type": "image",
+      "mid_hook": "二叔：「長孫用假女友騙祖母。三年前就簽好了，各位看日期。」七雙眼睛一起轉向邵亦辰。",
+      "extra_hooks": [
+        "吳董戴上老花眼鏡湊近螢幕：「景隆，這東西你從哪拿的？」二叔笑：「重要嗎？」"
+      ],
+      "conflict": "原件、日期、簽名都是真的，邵亦辰只要說錯一個字，就坐實了「騙」。",
+      "turn": "大家以為邵亦辰會逐條反駁，他只說了一句：「契約是真的。我不辯。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大樓一樓，林海若被保全攔在閘門外：「今天頂樓只准董事。」閘門上方的電視正直播大樓外景：「邵氏今日表決長孫去留」。",
+        "question": "她要怎麼上頂樓？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "zhiqiu",
+        "ganren"
+      ],
+      "spectacle": "頂樓會議室的大螢幕上，契約原件被放大成一整面牆，簽名與三年前的日期在冷藍的光裡發亮。",
+      "glamour_shot": "邵亦辰一個人坐在長桌一端，深色西裝、袖口扣得一絲不苟，螢幕的藍光打在他沒有表情的臉上。",
+      "setups": [
+        "s04-t31"
+      ],
+      "payoffs": [
+        "s04-t27"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "吳董當場質疑二叔契約原件的來源",
+        "邵亦辰不說謊，一個字都沒替契約辯"
+      ],
+      "characters": [
+        "shao-jinglong",
+        "shao-yichen",
+        "s04-dongshi",
+        "s04-wu-dong",
+        "lin-hairuo",
+        "s04-zhuli"
+      ],
+      "locations": [
+        "邵氏航運大樓頂樓會議室",
+        "邵氏航運大樓大廳閘門"
+      ],
+      "state": {
+        "time": "董事會當天上午十點",
+        "knowledge": "契約原件上了大螢幕；他不辯；她被擋在一樓",
+        "carry_forward": "表決與一樓的閘門"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "錄音",
+      "youtube_title": "董事會上播出她那句「我早就想走了」，被擋在一樓的她，聽著自己的聲音在大廳迴盪",
+      "duration_s": 110,
+      "logline": "林海若的一句台詞被當成證詞播給七位董事聽，而她被隔在二十八層樓下。",
+      "hook": "吳董抬手：「表決前，我要聽當事人。」二叔：「當事人說過了。」他按下播放——會議室響起林海若的聲音：「我早就想走了！」",
+      "hook_type": "line",
+      "mid_hook": "一樓大廳，亦恒擠到她身邊，手機開著擴音：頂樓的聲音傳下來，她自己的聲音在大理石大廳裡迴盪。",
+      "extra_hooks": [
+        "頂樓，邵亦辰開口：「那句，是演給錄音筆聽的。」二叔笑出聲：「各位聽到了，他們自己承認在演。」"
+      ],
+      "conflict": "錄音是真的，解釋也是真的，可在董事會上，兩句真話加起來變成了「在演」。",
+      "turn": "大家以為邵亦辰替她解釋能扳回來，那句解釋反而成了「他們在演」的證據。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她攥緊那本黑色記事本，抬頭看閘門上方二十八樓的燈：「我要上去。」保全往前一步，她也往前一步。",
+        "question": "她要怎麼闖上頂樓？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "zhiqiu",
+        "ganren"
+      ],
+      "spectacle": "大理石大廳裡，一支手機擴音放著頂樓的聲音，迴音一層層撞在玻璃幕牆上。",
+      "glamour_shot": "林海若站在閘門前抬頭看樓層燈，大廳冷藍的光從上方落下，她手腕上的紅繩是畫面裡唯一的紅。",
+      "setups": [],
+      "payoffs": [
+        "s04-t29"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "亦恒在一樓接通頂樓，讓她聽見會議室裡的每一句",
+        "吳董堅持表決前要聽當事人"
+      ],
+      "characters": [
+        "s04-wu-dong",
+        "shao-jinglong",
+        "shao-yichen",
+        "lin-hairuo",
+        "shao-yiheng",
+        "s04-dongshi"
+      ],
+      "locations": [
+        "邵氏航運大樓頂樓會議室",
+        "邵氏航運大樓大廳閘門"
+      ],
+      "state": {
+        "time": "董事會當天上午十點半",
+        "knowledge": "錄音在董事會上播了；他的解釋被說成在演",
+        "carry_forward": "她要上頂樓"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "大廳",
+      "youtube_title": "保全死守閘門，豪門全家提著麵、背著吉他、拿著章程衝進集團大廳替她開路",
+      "duration_s": 110,
+      "logline": "保全守著閘門，章程寫得清清楚楚：她不是董事，也沒有人請她。",
+      "hook": "大廳旋轉門轉個不停：大妹拎著公事包、小妹提著保溫箱、弟弟背著吉他、江柏山穿著工作服、二嬸戴著墨鏡——一家人同時擠了進來。",
+      "hook_type": "image",
+      "mid_hook": "小妹打開保溫箱，一碗一碗麵遞給保全：「辛苦了，先吃。」保全們愣住，大妹趁機翻開章程，對主管一條一條念。",
+      "extra_hooks": [
+        "弟弟在大廳中央刷了一下吉他弦：「各位，給我三分鐘。」整個大廳的人都轉過頭。"
+      ],
+      "conflict": "閘門一關，她就只能在一樓聽著自己被定罪。",
+      "turn": "大家以為全家是來擋保全的，真正打開閘門的，是二叔的兒子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "亦恒把一張通行卡貼上閘門，嗶一聲，綠燈亮了：「頂樓。我爸停了我的卡，忘了這一張。」",
+        "question": "二叔看到她會怎樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiqiu",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "冷藍玻璃大廳裡，一個保溫箱的麵、一把吉他、一件工作服、一只公事包，把一排黑西裝保全圍在中間。",
+      "glamour_shot": "大妹邵亦寧紅唇、西裝，一手公事包一手章程，在保全面前一頁頁翻，長髮一甩，聲音又快又準。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全家趕到大樓替她開路",
+        "亦恒用自己的通行卡替她打開閘門"
+      ],
+      "characters": [
+        "shao-yining",
+        "shao-yian",
+        "shao-yichuan",
+        "s04-jiang-baishan",
+        "s04-ershen",
+        "shao-yiheng",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "邵氏航運大樓大廳"
+      ],
+      "state": {
+        "time": "董事會當天上午十一點",
+        "knowledge": "閘門開了，她往頂樓去",
+        "carry_forward": "頂樓會議室的門"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "證據自己來了",
+      "youtube_title": "沒人邀請，漁村女友踩著夾腳拖推開董事會大門：你說我是證據，證據自己來了",
+      "duration_s": 115,
+      "logline": "沒有人請林海若，她只要說錯一個字，就是二叔最好的證據。",
+      "hook": "頂樓走廊，她站在會議室門口，手伸進口袋，摸到紅繩小布袋裡那張折好的紙，又抽出手，推開了門。",
+      "hook_type": "image",
+      "mid_hook": "全場轉頭。二叔先笑：「林小姐，妳不是董事。」她：「我不是。你說我是證據。」她走進來：「證據自己來了。」",
+      "extra_hooks": [
+        "邵亦辰站起來：「妳——」她瞪他一眼：「坐好。」他坐下了，董事們互看一眼。"
+      ],
+      "conflict": "二叔第一天就說她是證據，今天她自己站上了證人席。",
+      "turn": "大家以為她是來哭的，她走到大螢幕底下，站在那張契約的正中央。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她背對大螢幕站定，契約原件的影子落在她身上；二叔把遙控器往桌上一放：「好，那請證據說說，妳收了多少錢？」",
+        "question": "她要怎麼回答二叔？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "zhiqiu",
+        "ganren"
+      ],
+      "spectacle": "頂樓會議室的門被推開，逆光裡一雙夾腳拖踩上地毯，大螢幕上的契約投影照在她身上。",
+      "glamour_shot": "林海若站在大螢幕下，T恤、馬尾、夾腳拖，冷藍的投影光在她臉上流過，她的眼睛一點都沒躲。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t30"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她自己走進董事會，沒人請她",
+        "她把二叔那句「證據是妳」原封不動還了回去"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-jinglong",
+        "shao-yichen",
+        "s04-dongshi",
+        "s04-wu-dong"
+      ],
+      "locations": [
+        "邵氏航運大樓頂樓會議室"
+      ],
+      "state": {
+        "time": "董事會當天上午十一點",
+        "knowledge": "她站上了董事會；口袋裡有那張折好的紙",
+        "carry_forward": "二叔問她收了多少錢"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "這張桌子",
+      "youtube_title": "她站在董事會大螢幕下說：我演了一週，然後沒走，因為這個家沒人煮飯沒人叫媽",
+      "duration_s": 125,
+      "logline": "二叔要林海若承認是為了錢，董事們要一個理由；她只有一年的麵、一聲媽和一首歌。",
+      "hook": "「一百萬，我沒拿。」她看著二叔：「支票還在他抽屜，一年了。」",
+      "hook_type": "line",
+      "mid_hook": "她轉向七位董事：「契約是真的。我演了一週。然後我沒走——」她停一下：「因為這個家沒人煮飯、沒人叫媽、沒人唱歌。」",
+      "extra_hooks": [
+        "她把手按在長桌上：「你們要的，是一個會坐在這張桌上不說話的人。」她敲了一下桌面：「我不是。」"
+      ],
+      "conflict": "這張桌子從來只有數字和沉默，她要在這裡說一件不是數字的事。",
+      "turn": "大家以為她會說她愛他，她一個字都沒提愛，講的全是這個家。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "全場沒有一個人說話。邵亦辰站起來，把自己的椅子拉開，推到她身後。七位董事看著那張椅子，又看著他。",
+        "question": "董事們怎麼看那張椅子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiqiu",
+        "ganren",
+        "lache"
+      ],
+      "spectacle": "頂樓長桌邊一整排董事一動不動，大螢幕的契約底下，一個女孩的手平放在桌面上。",
+      "glamour_shot": "邵亦辰站起來拉開椅子的那一下，他沒說話，只看著她，停了半拍——袖口下那道疤一閃。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當著董事會說出那張支票從沒兌現",
+        "邵亦辰當眾把自己的椅子讓給她"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-jinglong",
+        "s04-dongshi",
+        "s04-wu-dong",
+        "shao-yichen"
+      ],
+      "locations": [
+        "邵氏航運大樓頂樓會議室"
+      ],
+      "state": {
+        "time": "董事會當天中午",
+        "knowledge": "她說完了留下來的理由；他把椅子讓給她",
+        "carry_forward": "董事們的反應與二叔的下一張牌"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "三年前的調查",
+      "youtube_title": "跟了總裁五年的助理當眾作證：三年前，邵總要我查一個漁村女孩",
+      "duration_s": 115,
+      "logline": "跟了邵亦辰五年的人站到二叔身邊作證，林海若剛贏回來的那一點，正在一句一句流掉。",
+      "hook": "她沒坐那張椅子，把它推回去：「你的位子，你坐。」二叔慢慢鼓掌：「說得好。何敬文，你說，三年前邵總叫你查誰。」",
+      "hook_type": "line",
+      "mid_hook": "牆邊的助理走上前，聲音平穩：「三年前，邵總要我查一個漁村女孩。名字、家裡、欠誰的錢。」",
+      "extra_hooks": [
+        "二叔轉向董事們：「三年前查好人、簽好約，一週一百萬——各位，這叫騙。」"
+      ],
+      "conflict": "助理說的每一句都是真的，真到她沒有一句可以反駁。",
+      "turn": "大家以為助理會念在五年情分不開口，他開口了，而且每一句都對得上日期。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "邵亦辰站起來：「查她的是我。要罷，罷我。」二叔笑了：「那就成全你。」吳董敲了一下桌面：「表決。」",
+        "question": "表決會通過嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "zhiqiu",
+        "lache"
+      ],
+      "spectacle": "大螢幕上，三年前的調查報告被投在契約原件旁邊，兩份文件上是同一個月份。",
+      "glamour_shot": "邵亦辰站起來說「罷我」的那一刻，背挺得筆直，窗外天光打在他冷峭的側臉。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把邵亦辰讓的椅子推回去：「你的位子，你坐」",
+        "邵亦辰當眾把所有事攬到自己身上"
+      ],
+      "characters": [
+        "shao-jinglong",
+        "s04-zhuli",
+        "s04-dongshi",
+        "s04-wu-dong",
+        "shao-yichen",
+        "lin-hairuo"
+      ],
+      "locations": [
+        "邵氏航運大樓頂樓會議室"
+      ],
+      "state": {
+        "time": "董事會當天中午",
+        "knowledge": "助理當眾作證三年前的調查；他攬下一切；表決開始",
+        "carry_forward": "表決"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "最後一票",
+      "youtube_title": "董事會罷免總裁四票已舉，只差最後一票，二叔笑著問她：所以妳承認妳是假的",
+      "duration_s": 115,
+      "logline": "表決只差吳董一票，二叔要在吳董舉手之前，讓林海若親口說出那個字。",
+      "hook": "吳董：「同意罷免長孫繼承人資格的，舉手。」第一隻手舉起來，第二隻，第三隻。",
+      "hook_type": "image",
+      "mid_hook": "第四隻。七票過四票就通過；吳董自己的手停在桌面上方，沒有舉，看著林海若。",
+      "extra_hooks": [
+        "她的手伸進口袋，隔著紅繩小布袋捏住那張折好的紙，捏到發皺，沒讓任何人看見。",
+        "玻璃門外，大妹、小妹、弟弟、亦恒、二嬸、江柏山擠成一排，小妹雙手合十。"
+      ],
+      "conflict": "吳董的手是最後一票，二叔只差一句話。",
+      "turn": "大家以為吳董會跟著二叔舉手，他的手一直沒落下來——他在等她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "二叔看著吳董懸在半空的手，笑著轉向她：「林小姐，最後一句——所以妳承認，妳是假的。」全場等她開口。",
+        "question": "她會承認嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "ganren",
+        "zhiqiu"
+      ],
+      "spectacle": "頂樓長桌上一隻接一隻舉起的手，大螢幕的契約在它們背後亮著，第五隻手停在半空。",
+      "glamour_shot": "林海若站在大螢幕下，投影的冷光從她頭頂流過，她把垂下的一縷頭髮撥到耳後，直直看著二叔。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "吳董停住最後一票，要聽她說",
+        "全家趕到會議室門外"
+      ],
+      "characters": [
+        "s04-wu-dong",
+        "s04-dongshi",
+        "shao-jinglong",
+        "lin-hairuo",
+        "shao-yichen",
+        "shao-yining",
+        "shao-yian",
+        "shao-yichuan",
+        "shao-yiheng",
+        "s04-ershen",
+        "s04-jiang-baishan"
+      ],
+      "locations": [
+        "邵氏航運大樓頂樓會議室",
+        "頂樓會議室門外走廊"
+      ],
+      "state": {
+        "time": "董事會當天中午",
+        "knowledge": "表決四票已舉，只差吳董一票；她口袋裡捏著那張只給自己看的紙",
+        "carry_forward": "她要怎麼答「妳是假的」"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "主位",
+      "youtube_title": "她在董事會承認一開始是假的，門一推開，九十歲祖母坐上主位：那張契約是我讓他簽的",
+      "duration_s": 150,
+      "logline": "表決只差一票，二叔的笑已經掛了一年；林海若說完最後一句話，門外還有一個人沒進來。",
+      "hook": "林海若迎著二叔的笑：「我承認，一開始是。」話剛說完，會議室的門被推開。",
+      "hook_type": "line",
+      "mid_hook": "陳叔扶著祖母走進來，柺杖一下一下點在地毯上；她走到長桌盡頭，二叔下意識站起來，主位空了出來。祖母坐下。",
+      "extra_hooks": [
+        "吳董把懸在半空的手慢慢放下；門外的一家人擠到玻璃門邊，小妹捂住嘴。",
+        "祖母看了一眼大螢幕上的契約原件，又看了一眼林海若：「丫頭，說完了？」她點頭。"
+      ],
+      "conflict": "二叔要用一張契約讓長孫出局，而這張契約真正的主人，一直沒有開口。",
+      "turn": "大家以為祖母是來替孫子求情的，她坐上主位，第一句話就把契約認成了自己的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "祖母看著二叔：「景隆，那張契約是我讓亦辰簽的。我要一個不照契約演的人，她演了一週就不演了，很好。」二叔的笑停了。祖母補一句：「還有，助理是你的人，我知道三年了。」",
+        "question": "祖母三年前為何讓他簽約？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "zhiqiu",
+        "ganren"
+      ],
+      "spectacle": "頂樓會議室長桌盡頭，大螢幕上還亮著契約原件，九十歲的祖母坐上主位，柺杖靠在椅邊，一整排董事的手慢慢放下。",
+      "glamour_shot": "祖母銀髮盤髻、墨綠旗袍、沉香珠在腕上，坐上主位抬眼的那一刻，窗外的光從她身後照進來；林海若站在大螢幕下，紅繩在手腕上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t03",
+        "s04-t28",
+        "s04-t31",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "祖母當著董事會認下契約是她讓亦辰簽的",
+        "祖母揭穿助理是二叔的人，二叔的表決當場停下"
+      ],
+      "characters": [
+        "lin-hairuo",
+        "shao-laofuren",
+        "chen-shu",
+        "shao-jinglong",
+        "shao-yichen",
+        "s04-zhuli",
+        "s04-dongshi",
+        "s04-wu-dong",
+        "shao-yining",
+        "shao-yian",
+        "shao-yichuan",
+        "shao-yiheng",
+        "s04-ershen",
+        "s04-jiang-baishan"
+      ],
+      "locations": [
+        "邵氏航運大樓頂樓會議室"
+      ],
+      "state": {
+        "time": "董事會當天中午",
+        "knowledge": "契約是祖母讓亦辰簽的；祖母三年前就知道助理是二叔的人",
+        "carry_forward": "祖母三年前為什麼讓他簽約；二叔還剩什麼；她布袋裡那張紙"
+      }
+    }
+  ]
+}

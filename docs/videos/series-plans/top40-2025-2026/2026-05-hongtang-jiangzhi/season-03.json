@@ -1,0 +1,4217 @@
+{
+  "number": 3,
+  "title": "台北",
+  "theme": "回去一次，才知道自己已經回來了。",
+  "start_state": "她知道了錶、蛋餅、三年前的火、十年的換班；兩個人在長椅上的距離少了一點。債剩兩百四十萬，法律程序開始，她要回台北出庭。哥哥還是反對。江野的父親第一次打電話來。",
+  "end_state": "江野等了她多久揭開（十年，從她十九歲去台北那天）；她在台北當面拒絕林致遠的回頭；許以寧自己來鹿川鎮道歉；她從台北回來那班車上發現自己在算到站的時間——她開始等他（對觀眾揭，她自己還沒承認）。蔣醫生提了一句『隔壁空屋』。最後一集，她下車，門口長椅上沒人、沒薑茶，她站了十分鐘，然後往消防隊走——車庫裡江野正在替她煮薑茶，他說：『今天想讓妳自己走過來。』",
+  "guest_cast": [
+    {
+      "id": "s03-faguan",
+      "name": "楊法官",
+      "role": "台北地方法院審這件借貸案的法官，五十出頭；不偏誰，只看帳",
+      "appearance": "東亞中年女性，五十二歲，短髮齊耳、灰白相間，細框眼鏡，法袍深黑、領口白，神情平穩、說話不抬聲，翻卷宗時手指很輕"
+    },
+    {
+      "id": "s03-lin-lvshi",
+      "name": "高律師",
+      "role": "林致遠的律師，四十歲；客氣、專業，替他主張『借款原告同意』",
+      "appearance": "東亞男性，四十歲，梳得服貼的油頭、深灰西裝與藏青領帶、無框眼鏡，公事包永遠扣著，笑容禮貌但眼神在算"
+    },
+    {
+      "id": "s03-dianyuan",
+      "name": "小澄",
+      "role": "台北法院附近咖啡店的店員，二十二歲；聽見兩個女人的對話，多送了一杯熱水",
+      "appearance": "東亞年輕女性，二十二歲，圓臉、齊瀏海短髮、深綠圍裙、耳上夾一支筆，手腕上一串彩色橡皮筋，笑起來有酒窩"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s03-t01",
+      "question": "她背包裡那個保溫瓶，裡面是什麼？",
+      "setup_episode": 124,
+      "payoff_episode": 130
+    },
+    {
+      "id": "s03-t02",
+      "question": "法院會判林致遠還那三百萬嗎？",
+      "setup_episode": 122,
+      "payoff_episode": 151
+    },
+    {
+      "id": "s03-t03",
+      "question": "許以寧為什麼坐在旁聽席？",
+      "setup_episode": 126,
+      "payoff_episode": 131
+    },
+    {
+      "id": "s03-t04",
+      "question": "許以寧說要還的一百五十萬，會怎麼還？",
+      "setup_episode": 133,
+      "payoff_episode": 154
+    },
+    {
+      "id": "s03-t05",
+      "question": "她在車上為什麼一直看錶？",
+      "setup_episode": 138,
+      "payoff_episode": 176
+    },
+    {
+      "id": "s03-t06",
+      "question": "她會追問十年前那句話嗎？",
+      "setup_episode": 142,
+      "payoff_episode": 144
+    },
+    {
+      "id": "s03-t07",
+      "question": "哥哥揪了江野的領子，兄弟會不會翻臉？",
+      "setup_episode": 145,
+      "payoff_episode": 149
+    },
+    {
+      "id": "s03-t08",
+      "question": "她會不會接下隔壁那間空屋？",
+      "setup_episode": 150,
+      "payoff_episode": 155
+    },
+    {
+      "id": "s03-t09",
+      "question": "江父的電話，到底要說什麼？",
+      "setup_episode": 123,
+      "payoff_episode": 157
+    },
+    {
+      "id": "s03-t10",
+      "question": "陳阿公真的要當第一個住民？",
+      "setup_episode": 155,
+      "payoff_episode": 159
+    },
+    {
+      "id": "s03-t11",
+      "question": "江父這次回來，會留下嗎？",
+      "setup_episode": 161,
+      "payoff_episode": 170
+    },
+    {
+      "id": "s03-t12",
+      "question": "照護所什麼時候動工？",
+      "setup_episode": 171,
+      "payoff_episode": 178
+    },
+    {
+      "id": "s03-t13",
+      "question": "她回來那天，門口有沒有人？",
+      "setup_episode": 177,
+      "payoff_episode": 180
+    }
+  ],
+  "episodes": [
+    {
+      "number": 121,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "台北來的信",
+      "youtube_title": "被前男友用名字借走三百萬，法院一封掛號信要她回台北出庭，消防員一句話都沒說",
+      "duration_s": 115,
+      "logline": "周念慈要回台北出庭討回三百萬的公道，卻得先過哥哥要陪、她不要陪這一關。",
+      "hook": "清晨長椅，她往中間坐了一點；郵差的機車停下：「周念慈，掛號。」信封上印著「臺灣臺北地方法院」。",
+      "hook_type": "image",
+      "mid_hook": "早餐店裡哥哥把鍋鏟一放：「我陪妳去。」她說：「不用。」周媽在兩人中間把蛋餅翻面，誰都不看。",
+      "extra_hooks": [
+        "她看錶確認庭期，江野低頭看了她的錶一眼，又移開。"
+      ],
+      "conflict": "她要決定一個人去台北面對林致遠，還是讓哥哥陪；債剩兩百四十萬，庭期在三天後。",
+      "turn": "大家以為她怕回台北，她怕的是哥哥在法庭外替她發火；她要自己站上去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜班交班，她把車票夾進值班表；窗外長椅上江野抬頭，把保溫瓶轉了半圈，沒開口。",
+        "question": "他會說要陪她去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "jiaren"
+      ],
+      "spectacle": "清晨的鎮口，郵差機車的燈劃過消防隊門口的長椅與一杯冒熱氣的薑茶。",
+      "glamour_shot": "念慈下夜班摘口罩、把低馬尾放下，晨光落在她拆信的側臉上。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她決定自己出庭，不讓哥哥代替她"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "zhou-nianzu",
+        "zhou-ma"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "周家早餐店",
+        "鹿川鎮衛生所"
+      ],
+      "state": {
+        "time": "第三季第一天清晨，庭期在三天後",
+        "knowledge": "法院要她回台北出庭；哥哥要陪，她拒絕",
+        "carry_forward": "債剩兩百四十萬；她手腕上的錶；江野還沒開口"
+      }
+    },
+    {
+      "number": 122,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "七年的帳",
+      "youtube_title": "交往七年的轉帳紀錄一筆一筆印出來，護理師夜班整理證據，對方律師先開價了",
+      "duration_s": 110,
+      "logline": "她要在夜班空檔把七年的轉帳整理成法庭看得懂的流向表，卻接到對方律師的和解電話。",
+      "hook": "凌晨兩點，衛生所的印表機一張一張吐紙，地上排滿七年的轉帳紀錄；小芸推門：「妳在印族譜？」",
+      "hook_type": "line",
+      "mid_hook": "流向表畫到一半，她發現同一天轉出三筆：學妹的學費、公寓訂金、他爸的貨款，那天是她生日。",
+      "conflict": "把三百萬的流向畫清楚，讓法官一眼看懂錢去了哪。",
+      "turn": "她以為自己會哭，結果畫完最後一條線，她只覺得帳終於對了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "手機響，陌生號碼：「我是林醫師的律師。」「建議和解。」「五十萬。」她手裡的螢光筆停在『三百萬』三個字上。",
+        "question": "她會收下五十萬和解嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "shipo",
+        "xiju"
+      ],
+      "spectacle": "日光燈下，七年的轉帳紀錄從值班室的桌子一路鋪到走廊盡頭。",
+      "glamour_shot": "念慈跪在紙堆裡畫線，日光燈打在她垂下的睫毛上，筆尖很穩。",
+      "setups": [
+        "s03-t02"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三百萬的流向表完成",
+        "小芸答應替她代一晚班"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun",
+        "s03-lin-lvshi"
+      ],
+      "locations": [
+        "鹿川鎮衛生所值班室"
+      ],
+      "state": {
+        "time": "庭期前兩天凌晨",
+        "knowledge": "三百萬的流向畫清楚了；對方開價五十萬和解",
+        "carry_forward": "債剩兩百四十萬；流向表捲成一捲放進背包"
+      }
+    },
+    {
+      "number": 123,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "爸打來了",
+      "youtube_title": "前男友律師開價五十萬想和解，她一句話回絕，守候十年的消防員卻接到父親第一通電話",
+      "duration_s": 105,
+      "logline": "她要回絕和解、守住三百萬的底線，同一晚江野接到多年不聯絡的父親的電話。",
+      "hook": "她對著電話說：「三百萬。」「不是五十萬。」掛掉，手還在抖；長椅上的江野把薑茶往她那邊推。",
+      "hook_type": "line",
+      "mid_hook": "江野的手機響，螢幕上一個字：「爸」。阿凱從值班室探頭，嘴張成一個圓：「江哥的爸打來了？」",
+      "extra_hooks": [
+        "她第一次注意到，他接電話前先站起來，背對她。"
+      ],
+      "conflict": "她要守住底線不被五十萬打發；江野要接一通十年沒響過幾次的電話。",
+      "turn": "她以為江野什麼都不缺，原來他也有一個不打電話的家人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "通話只有八秒。他坐回長椅，看著保溫瓶說：「我爸。」她第一次聽他提起家人。",
+        "question": "江父打來要說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shipo",
+        "jiaren"
+      ],
+      "spectacle": "夜裡消防隊門口只亮一盞燈，長椅兩端兩個人的影子之間隔著一杯熱氣。",
+      "glamour_shot": "江野背對鏡頭接電話，消防隊的紅燈打在他肩上，掛掉後他低頭的那一下。",
+      "setups": [
+        "s03-t09",
+        "m11"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她回絕五十萬和解"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "s03-lin-lvshi",
+        "jiang-fu"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "消防隊值班室"
+      ],
+      "state": {
+        "time": "庭期前一晚",
+        "knowledge": "她拒絕和解；江野的父親打來了八秒",
+        "carry_forward": "債剩兩百四十萬；江父的電話；明早的車"
+      }
+    },
+    {
+      "number": 124,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "背包裡的瓶子",
+      "youtube_title": "她一個人搭三小時公車回台北出庭，打開背包才發現多了一個保溫瓶，上面只寫五個字",
+      "duration_s": 100,
+      "logline": "她一個人搭車回台北，發現背包裡多了一個不是她放的保溫瓶。",
+      "hook": "清晨公車站，司機阿忠探頭：「又要去台北喔？」她回頭看消防隊——長椅上沒人。",
+      "hook_type": "question",
+      "mid_hook": "公車開上國道，她拉開背包拿流向表，手碰到一個冰冷的東西：深藍色的保溫瓶，瓶身貼著膠帶。",
+      "conflict": "她要撐過三小時、在腦子裡把明天要說的話排好。",
+      "turn": "她以為今天門口沒人送，人其實早在她出門前就來過她家早餐店。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "膠帶上一行字：「開完庭再開。」她的指尖已經扣在瓶蓋上。",
+        "question": "她會現在打開，還是等開完庭？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "jiaren"
+      ],
+      "spectacle": "晨霧裡公車駛離鹿川鎮，車窗外消防隊的紅色車庫門一點一點變小。",
+      "glamour_shot": "念慈靠著車窗，晨光從她耳邊的碎髮穿過，手裡握著那個深藍保溫瓶。",
+      "setups": [
+        "s03-t01",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "siji",
+        "zhou-ma"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "鹿川往台北的公車"
+      ],
+      "state": {
+        "time": "庭期前一天清晨",
+        "knowledge": "背包裡多了一個保溫瓶，要她開完庭再開",
+        "carry_forward": "債剩兩百四十萬；保溫瓶沒開；周媽說早上有人來過"
+      }
+    },
+    {
+      "number": 125,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "穿那件白的",
+      "youtube_title": "回台北前一晚收到前男友訊息要她穿白洋裝，她打開衣櫃選了一件他最討厭的",
+      "duration_s": 100,
+      "logline": "她在台北的小旅館準備出庭，前男友一則訊息想把她拉回七年的習慣。",
+      "hook": "台北的冷白街燈，她拖著背包走進小旅館，手機跳出林致遠：「明天見，穿那件白的。」",
+      "hook_type": "line",
+      "mid_hook": "她用手機繳這個月的兩萬，畫面跳出：剩餘本金 2,380,000。她把數字截圖，存進一個叫『回家』的相簿。",
+      "conflict": "在陌生的房間把明天要說的每一句練到不會抖。",
+      "turn": "她以為自己還會照他的喜好穿，結果她拿出的是衛生所的白外套：白的，但是她的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "法院走廊，她剛轉過轉角，林致遠從律師身後走出來，笑得跟七年前一樣溫和：「念慈。」",
+        "question": "他想在開庭前說什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "shipo"
+      ],
+      "spectacle": "台北法院的走廊又長又白，她的影子被頂燈切成一節一節。",
+      "glamour_shot": "念慈在旅館鏡前把頭髮紮成低馬尾，穿上衛生所的白外套，抬眼看鏡子。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "這個月的兩萬繳了：債剩兩百三十八萬"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan",
+        "s03-lin-lvshi"
+      ],
+      "locations": [
+        "台北小旅館",
+        "台北地方法院走廊"
+      ],
+      "state": {
+        "time": "開庭當天早上",
+        "knowledge": "林致遠要在庭前攔她",
+        "carry_forward": "債剩兩百三十八萬；保溫瓶還沒開"
+      }
+    },
+    {
+      "number": 126,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "你還，我不回",
+      "youtube_title": "前男友在法院走廊攔她說七年感情，她只回三個字，旁聽席上卻坐著他的白月光",
+      "duration_s": 120,
+      "logline": "林致遠想用七年把她勸回去，她要用一句話把七年關上。",
+      "hook": "他擋在法庭門口：「念慈，我們七年。」她看著他：「三百萬。」",
+      "hook_type": "line",
+      "mid_hook": "他壓低聲音：「我可以還，妳回來。」她說：「你還，我不回。」推門進法庭——旁聽席第一排坐著許以寧。",
+      "extra_hooks": [
+        "高律師在一旁把公事包扣得更緊，替他看了一眼錶。"
+      ],
+      "conflict": "在進法庭前不被七年動搖。",
+      "turn": "林致遠以為她回來是要談感情，她回來只談帳。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "高律師遞上一份文件：「被告主張。」「借款經原告同意。」最後一頁，有她的簽名。",
+        "question": "她什麼時候簽過同意書？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shipo",
+        "duli",
+        "fansha"
+      ],
+      "spectacle": "法庭的木門推開，冷白燈下一排空椅，旁聽席上一個穿洋裝的女人抬起頭。",
+      "glamour_shot": "念慈白外套、低馬尾，站在走廊盡頭不退半步的背影。",
+      "setups": [
+        "s03-t03"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當面拒絕回頭：『你還，我不回』"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan",
+        "xu-yining",
+        "s03-lin-lvshi"
+      ],
+      "locations": [
+        "台北地方法院走廊",
+        "法庭"
+      ],
+      "state": {
+        "time": "開庭當天上午",
+        "knowledge": "對方拿出一份有她簽名的同意書；許以寧在旁聽席",
+        "carry_forward": "債剩兩百三十八萬；同意書的日期"
+      }
+    },
+    {
+      "number": 127,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "那天我在值班",
+      "youtube_title": "對方律師拿出她簽名的同意書，她看一眼日期就笑了，那天她整晚都在醫院值班",
+      "duration_s": 125,
+      "logline": "她要在法官面前拆穿一份有她簽名的同意書。",
+      "hook": "楊法官推了推眼鏡：「原告，這是妳的簽名？」她看著紙：「是我的字。」",
+      "hook_type": "question",
+      "mid_hook": "她翻開背包最底層的舊值班表：同意書的日期那晚，她在台北的醫院值大夜，簽到簿上一整晚都是她的名字。",
+      "conflict": "證明同意書上的簽名是被拿去用的。",
+      "turn": "所有人以為簽名就是同意；她記得的不是那張紙，是那天晚上她在哪裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "楊法官看完值班表，問：「原告是否同意調解？」高律師、林致遠、旁聽席的許以寧，全看向她。",
+        "question": "她會點頭調解嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shipo",
+        "duli"
+      ],
+      "spectacle": "法庭上一份同意書與一張泛黃的值班表並排放在法官桌上，冷白燈照著兩個日期。",
+      "glamour_shot": "念慈站在原告席，手指壓著值班表，抬眼看法官的那一下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "同意書的效力被打了一個問號"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "s03-faguan",
+        "s03-lin-lvshi",
+        "lin-zhiyuan",
+        "xu-yining"
+      ],
+      "locations": [
+        "台北地方法院法庭"
+      ],
+      "state": {
+        "time": "開庭中",
+        "knowledge": "同意書那晚她在值班，簽名是被拿去用的",
+        "carry_forward": "債剩兩百三十八萬；調解還是判"
+      }
+    },
+    {
+      "number": 128,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "攤開",
+      "youtube_title": "她拒絕調解，把七年轉帳紀錄在法庭上一次攤開，前男友的白月光看見自己的名字",
+      "duration_s": 130,
+      "logline": "她要讓法官看清三百萬的每一筆，也讓旁聽席的人看清。",
+      "hook": "她說：「不同意。」然後把那捲流向表在原告席上攤開，一路垂到地上。",
+      "hook_type": "image",
+      "mid_hook": "流向表上一條線寫著『許以寧・留學』，旁聽席上許以寧的手指慢慢收緊了包包的帶子。",
+      "extra_hooks": [
+        "高律師低聲對林致遠說了一句，林致遠的笑第一次掉下來。"
+      ],
+      "conflict": "讓法庭看懂錢去了哪，而不是誰比較可憐。",
+      "turn": "林致遠以為她會說感情，她只念數字；數字念完，旁聽席先坐不住。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "許以寧站起來，沒看任何人，走出法庭；林致遠回頭看門，再回頭時她正看著他，他第一次低下頭。",
+        "question": "許以寧為什麼走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shipo",
+        "duli",
+        "fansha"
+      ],
+      "spectacle": "三公尺長的流向表從原告席垂到法庭地板，紅藍兩色的線像一張地圖。",
+      "glamour_shot": "念慈逐條念數字，側臉在冷白燈下很靜，聲音一次也沒抖。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "七年的帳在法庭上攤開",
+        "法官要被告補提資金用途"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "s03-faguan",
+        "s03-lin-lvshi",
+        "lin-zhiyuan",
+        "xu-yining"
+      ],
+      "locations": [
+        "台北地方法院法庭"
+      ],
+      "state": {
+        "time": "第一次開庭結束前",
+        "knowledge": "法官要被告補提資料；許以寧看見自己的名字後離席",
+        "carry_forward": "債剩兩百三十八萬；判決日下個月"
+      }
+    },
+    {
+      "number": 129,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "妳變了",
+      "youtube_title": "開完庭前男友追出來說她變了，她只回一句，白月光卻在法院門口等她遞了一張名片",
+      "duration_s": 110,
+      "logline": "她要走出法院，林致遠想留住最後一點面子，許以寧卻有話要說。",
+      "hook": "法院台階上，林致遠追出來：「妳變了。」她沒停：「我是醒了。」",
+      "hook_type": "line",
+      "mid_hook": "手機兩則訊息：哥哥「幾點回來」；江野只有四個字：「幾點的車」。她盯著第二則看了很久。",
+      "conflict": "走出法院，不被他最後的話絆住。",
+      "turn": "她以為今天最難的是他，最難的是許以寧在門口等她。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許以寧遞來一張咖啡店的名片：「明天，能聊嗎？」她手裡的車票是今晚的。",
+        "question": "她會為了許以寧留下嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "jiaren",
+        "shipo"
+      ],
+      "spectacle": "法院前的長台階，一個白外套的身影往下走，一個白袍的身影停在上面。",
+      "glamour_shot": "念慈在台階上回頭的一眼，風把她的碎髮吹過臉頰。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan",
+        "xu-yining",
+        "zhou-nianzu",
+        "jiang-ye"
+      ],
+      "locations": [
+        "台北地方法院門口台階"
+      ],
+      "state": {
+        "time": "開庭當天下午",
+        "knowledge": "判決日訂在下個月；許以寧約她明天喝咖啡",
+        "carry_forward": "債剩兩百三十八萬；保溫瓶還沒開；今晚的車票"
+      }
+    },
+    {
+      "number": 130,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "涼了也喝",
+      "youtube_title": "出庭後她在台北街頭打開保溫瓶，薑茶早就涼了，瓶底一張紙條讓她站了很久",
+      "duration_s": 140,
+      "logline": "她把車票改到明天，終於打開那個說好開完庭再開的保溫瓶。",
+      "hook": "她撥給客運：「改明天。」掛掉，在法院外的花台邊坐下，旋開保溫瓶。",
+      "hook_type": "image",
+      "mid_hook": "薑茶涼透了，她還是喝了一口——太辣，跟她第一次煮壞的一樣辣。",
+      "extra_hooks": [
+        "她回江野：「改明天。」對方秒回：「好。」"
+      ],
+      "conflict": "在一個人的台北，讓自己好好喝完這一瓶。",
+      "turn": "她以為瓶子裡是安慰，瓶子裡是一個約定。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "瓶底貼著一張紙，他的字：「涼了也喝。回來我煮熱的。」台北的車流從她身邊過去，她站了很久。",
+        "question": "她回去那天，他真的在嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "jiaren",
+        "shipo"
+      ],
+      "spectacle": "台北傍晚的車流光帶從她身邊流過，她手裡一個深藍保溫瓶，瓶口沒有熱氣。",
+      "glamour_shot": "念慈站在台北街頭讀紙條，路燈亮起的那一秒照在她泛紅的眼角。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一次開庭撐完",
+        "她決定留一天見許以寧"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye"
+      ],
+      "locations": [
+        "台北地方法院外",
+        "台北街頭"
+      ],
+      "state": {
+        "time": "開庭當天傍晚",
+        "knowledge": "保溫瓶裡是涼掉的薑茶和一張『回來我煮熱的』",
+        "carry_forward": "債剩兩百三十八萬；保溫瓶空了收進背包；明天見許以寧"
+      }
+    },
+    {
+      "number": 131,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "我不是來道歉的",
+      "youtube_title": "前男友的白月光約她喝咖啡，一坐下就說不是來道歉，接著說出他七年來怎麼介紹她",
+      "duration_s": 115,
+      "logline": "她留在台北見許以寧，想知道對方坐在旁聽席的理由。",
+      "hook": "咖啡店櫃台，店員小澄在杯子上寫錯名字：「周……小姐？」許以寧已經坐在窗邊等她。",
+      "hook_type": "image",
+      "mid_hook": "許以寧把手機推過來：林致遠傳的訊息，「那筆錢是我存的。」「妳安心去讀。」日期是她去法院那年。",
+      "conflict": "弄清楚許以寧為什麼來，以及她到底知道多少。",
+      "turn": "她以為許以寧是來示威的，許以寧是來說：她也被騙了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "許以寧抬頭：「他跟我說，妳是他妹妹。」念慈手裡的熱水杯停在半空。",
+        "question": "七年，他在別人面前說她是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shipo",
+        "ganren"
+      ],
+      "spectacle": "台北咖啡店的落地窗，兩個女人隔著一張小桌，窗外的雨把城市洗成冷白。",
+      "glamour_shot": "許以寧洋裝端坐，念慈舊帽 T 坐下，兩人同時抬眼的那一格。",
+      "setups": [],
+      "payoffs": [
+        "s03-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許以寧坐在旁聽席的理由說清楚了"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xu-yining",
+        "s03-dianyuan"
+      ],
+      "locations": [
+        "台北法院附近咖啡店"
+      ],
+      "state": {
+        "time": "開庭隔天上午",
+        "knowledge": "林致遠對許以寧說她是『妹妹』，說那筆錢是他存的",
+        "carry_forward": "債剩兩百三十八萬；保溫瓶在背包裡"
+      }
+    },
+    {
+      "number": 132,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "同一個人",
+      "youtube_title": "兩個被同一個男人騙的女人對坐，白月光拿出他的訊息，一句鄉下人好打發讓她笑了",
+      "duration_s": 105,
+      "logline": "兩個女人一起把林致遠這個人看清楚。",
+      "hook": "「妹妹？」她笑了一下：「我們同居了五年。」許以寧的臉一點一點白下去。",
+      "hook_type": "line",
+      "mid_hook": "許以寧翻出另一則訊息，林致遠寫給朋友的：「她鄉下來的，好打發。」念慈看完，把手機推回去。",
+      "extra_hooks": [
+        "店員小澄放下兩杯熱水，多看了念慈一眼。"
+      ],
+      "conflict": "不吵、不比，把同一個人的兩套說法對齊。",
+      "turn": "觀眾以為兩個女人會互相怪罪，她們最後看的是同一張臉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "許以寧把一張存摺放上桌：「那一百五十萬，我還妳。」念慈的手指離存摺只有一寸。",
+        "question": "她會收下那一百五十萬嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shipo",
+        "ganren",
+        "fansha"
+      ],
+      "spectacle": "咖啡桌上兩支手機並排，同一個人傳的兩種訊息在螢幕上亮著。",
+      "glamour_shot": "念慈聽完訊息後低頭一笑，窗光落在她淡淡的眼下陰影上。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩個女人看清同一個人"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xu-yining",
+        "s03-dianyuan"
+      ],
+      "locations": [
+        "台北法院附近咖啡店"
+      ],
+      "state": {
+        "time": "開庭隔天上午",
+        "knowledge": "林致遠對兩個人說了兩套話",
+        "carry_forward": "債剩兩百三十八萬；許以寧想還一百五十萬"
+      }
+    },
+    {
+      "number": 133,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "那是他的債",
+      "youtube_title": "白月光要替前男友還一百五十萬，她把存摺推回去說那是他的債，他的電話正好打來",
+      "duration_s": 100,
+      "logline": "她要拒絕許以寧的錢，因為她要的不是有人替他還。",
+      "hook": "她把存摺推回去：「不用。」「那是他的債。」",
+      "hook_type": "line",
+      "mid_hook": "她手機響，林致遠：「以寧找妳了？她亂說的。」她沒回話，把手機翻過來蓋在桌上。",
+      "conflict": "守住『誰欠的誰還』，不讓許以寧變成第二個替他揹的人。",
+      "turn": "許以寧以為還錢能讓自己好過，念慈讓她明白：她也不該揹。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "咖啡店的門鈴響，林致遠推門進來，西裝外套還沒脫，眼睛先找到她們這一桌。",
+        "question": "他當著兩個人想說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "ganren",
+        "shipo"
+      ],
+      "spectacle": "咖啡店門口的風鈴晃動，雨水從他的傘尖滴在地上。",
+      "glamour_shot": "許以寧紅著眼收回存摺，念慈遞過一張紙巾，兩人的手在桌面上錯過。",
+      "setups": [
+        "s03-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她拒絕許以寧代還"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xu-yining",
+        "lin-zhiyuan",
+        "s03-dianyuan"
+      ],
+      "locations": [
+        "台北法院附近咖啡店"
+      ],
+      "state": {
+        "time": "開庭隔天中午",
+        "knowledge": "許以寧說會用自己的方式還；林致遠找來了",
+        "carry_forward": "債剩兩百三十八萬；兩個女人與一個男人同桌"
+      }
+    },
+    {
+      "number": 134,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "三百萬的戒指",
+      "youtube_title": "前男友闖進咖啡店想同時安撫兩個女人，還掏出戒指盒說本來要求婚，她只問了一句",
+      "duration_s": 115,
+      "logline": "林致遠想在兩個女人面前把一切說成誤會，她要當場收尾。",
+      "hook": "他拉開椅子：「妳們別誤會。」念慈說：「沒有誤會。」「帳單都在。」",
+      "hook_type": "line",
+      "mid_hook": "許以寧起身，在櫃台替兩杯咖啡買單，回頭對他說：「我不是誰的妹妹。」門鈴一響，她走了。",
+      "conflict": "不讓他用『誤會』兩個字把七年和三百萬一筆勾銷。",
+      "turn": "他以為自己能同時哄兩個人，最後只剩他一個人坐在桌邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "他從口袋掏出一個戒指盒放上桌：「我本來要求婚的。」念慈看著盒子，沒有伸手。",
+        "question": "她會打開那個盒子嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "shipo"
+      ],
+      "spectacle": "咖啡桌上一個絲絨戒指盒，旁邊是一張流向表的影本，兩樣東西放在一起。",
+      "glamour_shot": "念慈不動聲色地把咖啡杯從他伸過來的手邊移開，側臉冷靜。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許以寧當面離開林致遠"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan",
+        "xu-yining",
+        "s03-dianyuan"
+      ],
+      "locations": [
+        "台北法院附近咖啡店"
+      ],
+      "state": {
+        "time": "開庭隔天中午",
+        "knowledge": "林致遠拿出戒指想挽回",
+        "carry_forward": "債剩兩百三十八萬；戒指盒在桌上"
+      }
+    },
+    {
+      "number": 135,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "睡了嗎",
+      "youtube_title": "前男友求婚她只問那是不是三百萬買的，轉身離開，深夜接到消防員第一通電話",
+      "duration_s": 110,
+      "logline": "她拒絕林致遠的戒指，深夜一個人在台北的旅館，等不到也不承認自己在等。",
+      "hook": "她看著戒指盒：「這是三百萬買的嗎？」起身，把咖啡錢留在桌上。",
+      "hook_type": "line",
+      "mid_hook": "旅館裡她用手機繳下個月的錢提前扣款，剩餘本金 2,360,000；她把截圖存進『回家』相簿，第二張。",
+      "extra_hooks": [
+        "凌晨手機響，來電顯示「江野」——十年來他沒打過她的電話。"
+      ],
+      "conflict": "撐過拒絕之後的那一晚。",
+      "turn": "她以為今晚會想起七年，結果整晚她在想的是：鹿川現在幾點下班。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "電話那頭只有消防隊試警報的嗡聲，過了三十秒他才說：「睡了嗎。」她說：「明天下午那班。」他說：「嗯。」",
+        "question": "她為什麼主動告訴他車次？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "ganren"
+      ],
+      "spectacle": "台北旅館的窗，城市燈海一片冷白，窗玻璃上映著她拿手機貼耳的影子。",
+      "glamour_shot": "念慈抱膝坐在旅館床邊接電話，檯燈把她的側臉照得很暖。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拒絕戒指",
+        "提前繳款：債剩兩百三十六萬"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan",
+        "jiang-ye"
+      ],
+      "locations": [
+        "台北法院附近咖啡店",
+        "台北小旅館"
+      ],
+      "state": {
+        "time": "開庭隔天深夜",
+        "knowledge": "江野打來，她主動說了車次",
+        "carry_forward": "債剩兩百三十六萬；明天下午的車"
+      }
+    },
+    {
+      "number": 136,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "樓下",
+      "youtube_title": "回鹿川前她一個人走到前男友用她名字付頭期款的公寓樓下，管理員還認得她",
+      "duration_s": 105,
+      "logline": "她要在離開台北前看一眼那間公寓，然後真正離開。",
+      "hook": "她站在一棟大樓前抬頭，十二樓的陽台上掛著她挑的窗簾。管理員從櫃台探頭：「周小姐？」",
+      "hook_type": "image",
+      "mid_hook": "大樓自動門打開，走出來的是林致遠的媽媽，手裡提著菜：「念慈？妳回來了？」",
+      "conflict": "看一眼，不上去，不回頭。",
+      "turn": "她以為自己來是要恨，看到窗簾那一刻她發現，她只是來確認自己不想要了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林媽媽拉住她的手：「上來坐？」電梯門在她身後打開，叮一聲。",
+        "question": "她會上去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shipo",
+        "ganren"
+      ],
+      "spectacle": "她仰頭看十二樓，一排陽台在台北的午後陽光裡一模一樣，只有一扇掛著淡綠窗簾。",
+      "glamour_shot": "念慈站在大樓前仰頭，風吹動她的帽 T 帽繩，眼神很平靜。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan"
+      ],
+      "locations": [
+        "林致遠的公寓大樓樓下"
+      ],
+      "state": {
+        "time": "回程那天中午",
+        "knowledge": "公寓頭期款用的是她的名字借的錢；林媽媽要她上去",
+        "carry_forward": "債剩兩百三十六萬；下午的車"
+      }
+    },
+    {
+      "number": 137,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "阿姨，那是他的事",
+      "youtube_title": "前男友的媽媽拉著她說那筆錢的苦衷，她只回一句就走，回程公車卻遇上豪雨",
+      "duration_s": 100,
+      "logline": "她要溫和地拒絕林媽媽，搭上回鹿川的車。",
+      "hook": "她把手輕輕抽回：「不了，阿姨。」電梯門在她面前慢慢關上。",
+      "hook_type": "line",
+      "mid_hook": "林媽媽在後面低聲說：「那筆錢……我們家的生意……」她停步，回頭：「阿姨，那是他的事。」",
+      "conflict": "不被長輩的苦衷拖回去，也不失禮。",
+      "turn": "林媽媽以為她會怨，她連怨都放下了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "轉運站廣播：「國道豪雨。」「往鹿川班次延誤一小時。」司機阿忠拍拍方向盤：「今天要開久一點。」",
+        "question": "延誤一小時，門口還會有人嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shipo",
+        "ganren"
+      ],
+      "spectacle": "台北轉運站的玻璃頂被豪雨打得一片模糊，一排公車的紅尾燈在雨裡暈開。",
+      "glamour_shot": "念慈在轉運站坐著，把背包抱在胸前，保溫瓶的藍從拉鍊口露出一角。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她跟林家的最後一點牽扯放下了"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan",
+        "siji"
+      ],
+      "locations": [
+        "林致遠的公寓大樓樓下",
+        "台北轉運站"
+      ],
+      "state": {
+        "time": "回程那天下午",
+        "knowledge": "車延誤一小時",
+        "carry_forward": "債剩兩百三十六萬；她的手機剩一格電"
+      }
+    },
+    {
+      "number": 138,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "第九次",
+      "youtube_title": "回小鎮的三小時公車上，她第一次一直看手上的電子錶，算到站時間算到自己都嚇一跳",
+      "duration_s": 110,
+      "logline": "她在回程車上，發現自己一直在算到站的時間。",
+      "hook": "公車開上國道，雨刷左右甩。她低頭看錶：四點十分。",
+      "hook_type": "image",
+      "mid_hook": "阿忠從後照鏡說：「晚一小時。」「等的人要等久囉。」她說：「沒人等。」說完又看了一次錶。",
+      "extra_hooks": [
+        "隔壁座的阿婆問她幾點，她答得比手機還快。"
+      ],
+      "conflict": "她要撐過三小時，不承認自己在數。",
+      "turn": "她以為自己在擔心延誤，其實她擔心的是那張長椅。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她在車窗的霧氣上畫了一道，才發現自己已經看了九次錶。她把手腕藏進袖子裡。",
+        "question": "她到底在等什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shipo"
+      ],
+      "spectacle": "雨中的國道，公車車窗上一條一條水痕，窗內一隻手腕上的舊電子錶亮著冷光。",
+      "glamour_shot": "念慈靠窗，霧氣玻璃上映著她的眼睛，她低頭看錶的那一下。",
+      "setups": [
+        "s03-t05",
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "siji"
+      ],
+      "locations": [
+        "鹿川往台北的公車（回程）"
+      ],
+      "state": {
+        "time": "回程車上，傍晚",
+        "knowledge": "她第一次在車上看錶算到站的時間",
+        "carry_forward": "債剩兩百三十六萬；她看了九次錶；手機快沒電"
+      }
+    },
+    {
+      "number": 139,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "紅光過去",
+      "youtube_title": "回鎮的公車在雨裡跟一台出勤的消防車擦身而過，她手機沒電，不知道他在不在車上",
+      "duration_s": 105,
+      "logline": "快到鹿川了，她想告訴他車延誤，手機卻沒電了。",
+      "hook": "她按下傳送：「車晚一小時。」螢幕一黑，關機。",
+      "hook_type": "danger",
+      "mid_hook": "對向車道一台消防車鳴笛衝過去，紅光掃過整排車窗；她整個人轉過去，貼著玻璃找車上的人。",
+      "conflict": "她聯絡不到人，也不知道門口會不會有人。",
+      "turn": "她以為自己怕的是沒人接，看見紅光那一秒，她怕的是他在那台車上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿忠的無線電沙沙響：「鹿川消防。」「鎮口那邊有沒有……」雜訊吃掉後半句，公車轉進鹿川鎮的路口。",
+        "question": "消防車上是不是江野？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shipo"
+      ],
+      "spectacle": "雨夜國道上消防車的紅光從對向掃過公車整排車窗，像一道移動的火。",
+      "glamour_shot": "念慈額頭貼著車窗，紅光從她臉上掃過去，她睫毛上有霧氣。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "siji"
+      ],
+      "locations": [
+        "鹿川往台北的公車（回程）",
+        "鹿川鎮路口"
+      ],
+      "state": {
+        "time": "回程車上，入夜",
+        "knowledge": "她手機沒電；一台消防車出勤",
+        "carry_forward": "債剩兩百三十六萬；門口有沒有人"
+      }
+    },
+    {
+      "number": 140,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "十年",
+      "youtube_title": "延誤一小時的公車到站，長椅上的消防員手裡薑茶還是熱的，他第一次說出那兩個字",
+      "duration_s": 140,
+      "logline": "她下車，想知道他怎麼知道她搭哪一班——答案是十年。",
+      "hook": "車門打開，雨停了。消防隊門口的長椅上有人，手裡的保溫瓶冒著熱氣。",
+      "hook_type": "image",
+      "mid_hook": "阿凱從車庫跑出來：「江哥。」「剛才那台是阿輝他們——」江野抬手讓他閉嘴，眼睛沒離開公車門。",
+      "extra_hooks": [
+        "她走過去，第一次先開口：「你怎麼知道這班？」"
+      ],
+      "conflict": "她要知道，這杯薑茶是怎麼剛好熱的、怎麼剛好在。",
+      "turn": "她以為他問了阿忠或看了延誤，他說的是一個數字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他把薑茶遞給她：「妳每次回來都搭這班。」停了一下：「十年。」她接過杯子的手停在半空。",
+        "question": "十年，是從哪一天開始算？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "peiban",
+        "shipo"
+      ],
+      "spectacle": "雨後的鎮口，公車的大燈照亮消防隊門口那張濕漉漉的長椅和一杯熱氣。",
+      "glamour_shot": "江野坐在長椅上抬頭，保溫瓶遞出去的手，路燈從他身後打成一圈輪廓。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [
+        "m01"
+      ],
+      "general_payoffs": [
+        "她回到鹿川，第一次先開口問他",
+        "他第一次說出『十年』"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "siji"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "回到鹿川當晚",
+        "knowledge": "江野等了她十年，每次她回來的那班車他都在",
+        "carry_forward": "債剩兩百三十六萬；她手裡一杯熱的；十年從哪天算"
+      }
+    },
+    {
+      "number": 141,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "從妳十九歲",
+      "youtube_title": "他說等了她十年，她追問從哪天開始，他只說四個字，她才發現他在雨裡多坐了一小時",
+      "duration_s": 115,
+      "logline": "她要知道十年從哪一天算，他只給一個起點。",
+      "hook": "她握著杯子：「十年？」他說：「從妳十九歲。」",
+      "hook_type": "line",
+      "mid_hook": "她算起來：十九歲，她去台北念書那天，就在這個站牌。她坐下來，這次坐得比上次更靠中間。",
+      "extra_hooks": [
+        "阿凱在車庫門口小聲說：「這是今天第三壺。」"
+      ],
+      "conflict": "她要把『十年』接住，不逃、不裝沒聽見。",
+      "turn": "她以為十年是一句誇張的話，阿凱一句『第三壺』讓她知道是真的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她伸手碰他的袖子——濕透了。他在雨裡多坐了一小時，薑茶換了三壺，他一句都沒提。",
+        "question": "他為什麼一句都不說？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "peiban",
+        "ganren"
+      ],
+      "spectacle": "雨後長椅，兩個人中間只剩一個保溫瓶的距離，熱氣在路燈下往上飄。",
+      "glamour_shot": "念慈低頭喝薑茶，熱氣模糊了她的睫毛；江野濕透的袖口捲在手肘。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她往長椅中間坐了一點"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai"
+      ],
+      "locations": [
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "回到鹿川當晚",
+        "knowledge": "十年從她十九歲去台北那天算",
+        "carry_forward": "債剩兩百三十六萬；保溫瓶裡第三壺；長椅中間少了一點"
+      }
+    },
+    {
+      "number": 142,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "車門關上",
+      "youtube_title": "十年前的公車站他想對她說一句話，車門在他開口那一秒關上，十年後她問那句是什麼",
+      "duration_s": 125,
+      "logline": "他第一次說起十年前那天；她想知道他當時要說什麼。",
+      "hook": "十年前，晨霧的站牌：十九歲的她提著行李，二十歲的他手裡一個紙袋，嘴才張開——車門關上。",
+      "hook_type": "image",
+      "mid_hook": "回到現在，他看著站牌說：「那天我想說一句話。」「車來了。」",
+      "conflict": "她要聽完那天的事，他要決定說到哪裡。",
+      "turn": "她以為那天他沒去送她，他其實在，只是她上車時沒回頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她問：「那句話是什麼？」他把保溫瓶蓋轉緊：「過了。」她張口，第二個問題停在嘴邊。",
+        "question": "她會逼他說出那句話嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "ganren"
+      ],
+      "spectacle": "十年前的晨霧站牌與今天的夜站牌疊在一起，同一個位置，兩個年紀的他。",
+      "glamour_shot": "二十歲的江野在霧裡追了半步的背影；三十歲的他坐在同一個站牌下，側臉很靜。",
+      "setups": [
+        "s03-t06",
+        "m06"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次說起十年前那天"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye"
+      ],
+      "locations": [
+        "鎮口公車站（十年前）",
+        "鎮口公車站"
+      ],
+      "state": {
+        "time": "回到鹿川隔天凌晨",
+        "knowledge": "十年前那天他在站牌想說一句話，車門關了",
+        "carry_forward": "債剩兩百三十六萬；那句話是什麼"
+      }
+    },
+    {
+      "number": 143,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "照片的邊邊",
+      "youtube_title": "閨蜜罵她瞎了十年，她翻出十九歲離家那天的照片，照片邊邊站著一個拿紙袋的人",
+      "duration_s": 110,
+      "logline": "她要從舊東西裡找十年前那天他在哪。",
+      "hook": "值班室，小芸手搖杯一放：「十年？」「妳是瞎了嗎？」",
+      "hook_type": "line",
+      "mid_hook": "她翻出十九歲那天媽媽拍的照片：她在站牌前比耶，照片最右邊，被切掉一半的人影，手裡一個紙袋。",
+      "conflict": "證明自己記憶裡空白的那一角真的有人。",
+      "turn": "她以為照片只有她一個人，放大才看見邊邊那一半的身影。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把照片拿到日光燈下：紙袋上印著『周家早餐店』，袋口露出一角蛋餅。",
+        "question": "他那天手裡為什麼拿著她家的蛋餅？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "xiju"
+      ],
+      "spectacle": "日光燈下一張十年前的照片，女孩在左邊比耶，右邊半個男孩握著早餐店的紙袋。",
+      "glamour_shot": "念慈在燈下舉著照片細看，眼睛慢慢睜大，嘴角還來不及有表情。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到十年前那天他在場的證據"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun"
+      ],
+      "locations": [
+        "鹿川鎮衛生所值班室"
+      ],
+      "state": {
+        "time": "回到鹿川第二晚，夜班",
+        "knowledge": "十年前他拿著她家的蛋餅在站牌",
+        "carry_forward": "債剩兩百三十六萬；照片收進錶盒旁"
+      }
+    },
+    {
+      "number": 144,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "等你想說",
+      "youtube_title": "媽媽說那天他五點就站在站牌，她去長椅只說了一句，換來他十年來最快的一個好",
+      "duration_s": 115,
+      "logline": "她要決定，那句話是要追出來，還是讓他自己說。",
+      "hook": "早餐店，周媽看著照片嘆氣：「那天他五點就在站牌。」「蛋餅是要給妳路上吃的。」",
+      "hook_type": "line",
+      "mid_hook": "她走到長椅，坐下，沒問那句話，只說：「那句話，等你想說再說。」",
+      "extra_hooks": [
+        "他握保溫瓶的手鬆了一下，指節的顏色變回來。"
+      ],
+      "conflict": "不逼他，也不再假裝不知道。",
+      "turn": "所有人以為她會追問到底，她選擇把那句話留給他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他說：「好。」把保溫瓶往中間推了一寸；她伸手接，順勢又往中間坐了一個拳頭。",
+        "question": "長椅中間的距離，還剩多少？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "jielu"
+      ],
+      "spectacle": "清晨長椅，兩個人的影子之間只剩一個保溫瓶，早餐店的油煙從街角飄過來。",
+      "glamour_shot": "江野低頭說『好』時眉眼鬆開的一瞬，晨光在他的下顎線上。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t06",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她不再追問，兩人的距離少了一個拳頭"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "zhou-ma"
+      ],
+      "locations": [
+        "周家早餐店",
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "回到鹿川第三天清晨",
+        "knowledge": "十年前那天他五點就在；她不追問那句話",
+        "carry_forward": "債剩兩百三十六萬；長椅中間少了一個拳頭"
+      }
+    },
+    {
+      "number": 145,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "說了十年",
+      "youtube_title": "哥哥騎車送貨看見妹妹跟兄弟坐得太近，衝進消防隊洗車場揪住他的領子",
+      "duration_s": 110,
+      "logline": "哥哥看見兩人坐近了，要江野給一個交代。",
+      "hook": "早餐店的送貨機車猛地煞住，周念祖看見長椅上兩個人中間只剩一個保溫瓶。",
+      "hook_type": "image",
+      "mid_hook": "洗車場，水管還在噴，哥哥問：「你跟她說了？」江野：「說了十年。」哥哥：「沒說那句。」",
+      "extra_hooks": [
+        "她在衛生所繳了這個月的兩萬：剩兩百三十四萬，截圖第三張。"
+      ],
+      "conflict": "兄弟要對一件十年沒說破的事。",
+      "turn": "哥哥以為江野終於說了喜歡，江野說的只有十年；哥哥更氣，因為那是他最怕的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "哥哥一把揪住江野的領子，水管落地亂噴，老蔡正好從車庫走進來。",
+        "question": "兩兄弟會不會打起來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "peiban",
+        "jiaren"
+      ],
+      "spectacle": "消防隊洗車場，水管甩動噴出一道水幕，夕陽在水霧裡拉出一道彩光。",
+      "glamour_shot": "江野被揪著領子也沒退，濕透的深藍 T 貼著肩，眼神平靜地看著哥哥。",
+      "setups": [
+        "s03-t07"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "繳款：債剩兩百三十四萬"
+      ],
+      "characters": [
+        "zhou-nianzu",
+        "jiang-ye",
+        "lao-cai",
+        "zhou-nianci"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "消防隊洗車場"
+      ],
+      "state": {
+        "time": "回到鹿川第三天傍晚",
+        "knowledge": "哥哥知道兩人坐近了，揪了江野的領子",
+        "carry_forward": "債剩兩百三十四萬；兄弟的領子"
+      }
+    },
+    {
+      "number": 146,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "要打去訓練場",
+      "youtube_title": "消防隊長一句話拆開揪領子的兩兄弟，她從菜鳥嘴裡聽說了，衝回早餐店找哥哥",
+      "duration_s": 100,
+      "logline": "她從阿凱那裡聽說哥哥動手，要去問哥哥到底要她怎樣。",
+      "hook": "老蔡一手一個把兩人拉開：「要打去訓練場打。」「洗車場的水要錢。」",
+      "hook_type": "line",
+      "mid_hook": "阿凱在衛生所量血壓量到一半說溜嘴：「妳哥今天差點揍江哥。」她的手停在壓脈帶上。",
+      "conflict": "她要知道哥哥的反對到底要她做什麼。",
+      "turn": "她以為哥哥氣的是江野，哥哥氣的是他攔不住她。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "早餐店打烊後，她推門進去：「哥，你要我選嗎？」哥哥背對她，手裡的鍋停在半空。",
+        "question": "哥哥會逼她在兄弟和自己之間選嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "打烊的早餐店只亮一排燈，鐵捲門拉到一半，地上一條光。",
+      "glamour_shot": "念慈站在半拉的鐵捲門下，夜風吹起她的帽 T 下擺，眼神直直看著哥哥。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "lao-cai",
+        "jiang-ye",
+        "zhou-nianzu",
+        "a-kai",
+        "zhou-nianci"
+      ],
+      "locations": [
+        "消防隊洗車場",
+        "鹿川鎮衛生所",
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "回到鹿川第三天夜裡",
+        "knowledge": "她知道哥哥動手了",
+        "carry_forward": "債剩兩百三十四萬；她要哥哥說清楚"
+      }
+    },
+    {
+      "number": 147,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "她已經在等了",
+      "youtube_title": "哥哥在早餐店摔鍋說他擋的是妹妹等人，媽媽一句話讓全家安靜，她低頭看了錶",
+      "duration_s": 125,
+      "logline": "哥哥把反對說到最兇，媽媽替她說出她還不敢承認的事。",
+      "hook": "鍋子砸在流理台上，哐一聲：「我擋的是妳等！」",
+      "hook_type": "danger",
+      "mid_hook": "周媽擦著手走出來：「念祖，你擋不了。」哥哥：「我擋得了。」周媽：「她已經在等了。」",
+      "conflict": "一家人第一次把『等』這個字放上飯桌。",
+      "turn": "她以為媽媽會站哥哥那邊，媽媽站的是她還沒看見的那一邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她說：「我沒有。」周媽看了她手腕一眼：「那妳一直看錶做什麼？」她把手縮回袖子裡。",
+        "question": "她到底有沒有在等？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiaren",
+        "jielu"
+      ],
+      "spectacle": "早餐店的鐵鍋在燈下轉了兩圈才停，油漬在牆上的影子晃動。",
+      "glamour_shot": "念慈被說中時低頭的側臉，耳尖慢慢紅了，舊電子錶從袖口露出一角。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "媽媽在全家面前說出她在等"
+      ],
+      "characters": [
+        "zhou-nianzu",
+        "zhou-ma",
+        "zhou-nianci"
+      ],
+      "locations": [
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "回到鹿川第三天深夜",
+        "knowledge": "媽媽說她已經在等了；她不承認",
+        "carry_forward": "債剩兩百三十四萬；手腕上的錶；哥哥的鍋"
+      }
+    },
+    {
+      "number": 148,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "凌晨三點的阿公",
+      "youtube_title": "夜班凌晨三點獨居阿公打來說頭暈，她一個人衝到阿公家，手機訊號只剩一格",
+      "duration_s": 110,
+      "logline": "她要在凌晨一個人照顧頭暈的陳阿公。",
+      "hook": "凌晨三點，衛生所電話響，陳阿公的台語很慢：「囡仔，我頭殼暈。」",
+      "hook_type": "danger",
+      "mid_hook": "阿公坐在藤椅上，抓著她的手說：「那個消防的。」「等妳等到頭髮都……」話沒說完先咳。",
+      "extra_hooks": [
+        "她撥衛生所的轉接，螢幕跳出『無服務』。"
+      ],
+      "conflict": "她一個人要讓阿公撐到能送醫。",
+      "turn": "她以為自己只是來量血壓，阿公的手越來越冰。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿公的頭往旁邊一歪，她手機只剩一格訊號，屋外巷口傳來消防隊救護車的燈光。",
+        "question": "阿公撐得住嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "xiaozhen"
+      ],
+      "spectacle": "凌晨的老屋只點一盞黃燈，窗外巷口一道救護車的紅藍光慢慢接近。",
+      "glamour_shot": "念慈蹲在藤椅前握住阿公的手，黃燈把她的護理師外套照成暖色，額角一層薄汗。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "a-gong"
+      ],
+      "locations": [
+        "鹿川鎮衛生所",
+        "陳阿公家"
+      ],
+      "state": {
+        "time": "回到鹿川第四天凌晨",
+        "knowledge": "阿公頭暈，她一個人在阿公家",
+        "carry_forward": "債剩兩百三十四萬；救護車的燈"
+      }
+    },
+    {
+      "number": 149,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "兩碗粥",
+      "youtube_title": "消防員趕到一起把阿公送進衛生所，哥哥提著粥進門，兩個冷戰的兄弟坐在台階上",
+      "duration_s": 115,
+      "logline": "她跟江野一起把阿公顧好；哥哥來了，三個人要在同一個台階上待到天亮。",
+      "hook": "救護車門一拉，江野跳下來：「衛生所轉過來的。」她鬆開咬著的嘴唇。",
+      "hook_type": "image",
+      "mid_hook": "天快亮，哥哥提著兩碗熱粥進門，看見江野，愣住；他把一碗放在阿公床邊，另一碗——遞給江野。",
+      "extra_hooks": [
+        "兩個男人坐在衛生所台階上，各吃各的，一句話都沒說。"
+      ],
+      "conflict": "顧好阿公，也看兩兄弟能不能坐在一起。",
+      "turn": "她以為哥哥會掉頭走，哥哥手裡本來就提著兩碗。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿公醒來，看著江野，用台語慢慢說：「阿野。」「十年前在車站。」「你喊的那句。」「我有聽到。」說完又睡著了。",
+        "question": "阿公聽到了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "jiaren"
+      ],
+      "spectacle": "黎明前衛生所的台階，兩個男人並排坐著，手裡兩碗粥的熱氣在藍色天光裡往上飄。",
+      "glamour_shot": "江野坐在台階上低頭喝粥，晨光從他背後亮起，消防外套搭在膝上。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s03-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿公沒事",
+        "哥哥遞了一碗粥給江野：兩兄弟沒翻臉"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "zhou-nianzu",
+        "a-gong"
+      ],
+      "locations": [
+        "陳阿公家",
+        "鹿川鎮衛生所",
+        "衛生所台階"
+      ],
+      "state": {
+        "time": "回到鹿川第四天清晨",
+        "knowledge": "阿公說十年前聽到江野在車站喊了一句",
+        "carry_forward": "債剩兩百三十四萬；阿公聽到了什麼"
+      }
+    },
+    {
+      "number": 150,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "隔壁那間空屋",
+      "youtube_title": "阿公醒來說自己老了忘了，老醫生卻在值班室問她一句話，她轉頭看見隔壁空屋的窗",
+      "duration_s": 135,
+      "logline": "她想追問阿公聽到的那句話，卻被蔣醫生問了一個更大的問題。",
+      "hook": "她俯身：「阿公，你聽到什麼？」阿公眨眨眼：「我老了。」「忘了。」",
+      "hook_type": "line",
+      "mid_hook": "江野在門口聽見，轉身去開救護車，耳朵紅到脖子；小芸剛好上白班，看見了：「妳是瞎了嗎？」",
+      "extra_hooks": [
+        "蔣醫生泡了一杯茶放在她面前，看著窗外：「阿公一個人住，第幾次了？」"
+      ],
+      "conflict": "她要面對：鎮上像阿公這樣的老人，夜裡沒人顧。",
+      "turn": "她以為今天的事是阿公的那句話，蔣醫生讓她看見的是窗外那間屋子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蔣醫生說：「隔壁那間空屋，妳想過嗎？」「鎮上的阿公阿嬤。」「沒人照顧。」「妳會。」她轉頭，看著那扇蒙灰的窗。",
+        "question": "她會接下那間空屋嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "jielu"
+      ],
+      "spectacle": "衛生所值班室的窗外，隔壁一間空屋的窗蒙著灰，晨光把灰照成金色。",
+      "glamour_shot": "念慈值完夜班坐在窗邊，把頭髮放下，陽光從空屋的方向打在她臉上。",
+      "setups": [
+        "s03-t08",
+        "m10"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿公平安回家",
+        "蔣醫生把空屋的事放到她面前"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "a-gong",
+        "jiang-ye",
+        "xiao-yun",
+        "jiang-yisheng"
+      ],
+      "locations": [
+        "鹿川鎮衛生所",
+        "衛生所值班室"
+      ],
+      "state": {
+        "time": "回到鹿川第四天早上",
+        "knowledge": "蔣醫生要她想隔壁空屋：給鎮上的老人一個地方",
+        "carry_forward": "債剩兩百三十四萬；隔壁空屋的窗；阿公說忘了"
+      }
+    },
+    {
+      "number": 151,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "判了",
+      "youtube_title": "法院判前男友償還三百萬，她在長椅上看完判決書，他第一通電話就說判了也沒錢",
+      "duration_s": 115,
+      "logline": "判決下來了，她要面對：判了，不等於有人還。",
+      "hook": "長椅上，她滑開手機的判決書，念出來：「被告應償還三百萬，分期。」江野說：「恭喜。」",
+      "hook_type": "line",
+      "mid_hook": "銀行客服在電話裡說：「判決是判決。」「借款人還是周小姐。」她看著帳單上那行『兩百三十四萬』，沒有少一塊。",
+      "conflict": "她要把判決變成她能用的東西，而不是一張紙。",
+      "turn": "她以為判了就輕了，結果債還在她名下，一塊也沒少。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "手機響，林致遠：「判了也沒錢。」他背後有人在笑，像在聚餐。她握著手機的指節發白。",
+        "question": "他打算賴掉嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "fansha"
+      ],
+      "spectacle": "冬天清晨長椅，手機螢幕上判決書的白光照在兩張臉上，保溫瓶冒著熱氣。",
+      "glamour_shot": "念慈讀判決時咬著下唇的側臉；江野轉頭看她，嘴角微微一動。",
+      "setups": [],
+      "payoffs": [
+        "s03-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "法院判林致遠償還三百萬"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "lin-zhiyuan"
+      ],
+      "locations": [
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "第一次開庭後一個月，十二月",
+        "knowledge": "判決下來了；債仍在她名下",
+        "carry_forward": "債剩兩百三十四萬；判決書；他說沒錢"
+      }
+    },
+    {
+      "number": 152,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "那是法院的事",
+      "youtube_title": "前男友說判了也沒錢，她回一句那是法院的事就封鎖，接著把他送的七年禮物全裝箱",
+      "duration_s": 105,
+      "logline": "她要切斷林致遠，再把七年的禮物變成還債的錢。",
+      "hook": "她對著電話：「那是法院的事。」按下封鎖，把手機扣在長椅上。",
+      "hook_type": "line",
+      "mid_hook": "她把七年他送的東西搬出來：包、項鍊、一支錶。小芸蹲在箱子旁邊：「賣掉。」「我幫妳開直播。」",
+      "extra_hooks": [
+        "高律師寄來一封信：每月五千，懇請體諒。她把信轉給法院。"
+      ],
+      "conflict": "不再接他的電話，把力氣放在還債上。",
+      "turn": "大家以為她捨不得那些東西，她只是在想怎麼賣比較好。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她舉起第一個包，是他求和那年送的；小芸的手機已經對準她：「直播三秒後開始。」",
+        "question": "她真的賣得下手嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "duli",
+        "xiju"
+      ],
+      "spectacle": "她家二樓的木地板上一字排開七年的禮物，冬陽從窗格切進來，一格一格。",
+      "glamour_shot": "念慈盤腿坐在禮物堆中間，把長髮隨手挽起，拿起一個包看了一眼就放進箱子。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "封鎖林致遠",
+        "對方每月五千的提議交給法院處理"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun",
+        "lin-zhiyuan",
+        "s03-lin-lvshi"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "周家二樓她的房間"
+      ],
+      "state": {
+        "time": "判決當天",
+        "knowledge": "她封鎖林致遠；決定賣掉他送的東西",
+        "carry_forward": "債剩兩百三十四萬；直播要開始了"
+      }
+    },
+    {
+      "number": 153,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "鎮民喊價",
+      "youtube_title": "閨蜜幫她開直播賣前男友送的名牌包，全鎮阿公阿嬤上線喊價，最後一筆匯款嚇到她",
+      "duration_s": 120,
+      "logline": "她要把七年的禮物賣成十二萬，換一筆實實在在的還款。",
+      "hook": "直播畫面上，小芸舉著包：「前任送的，七年，九成新！」留言第一則：「陳阿公：我要給我老伴。」",
+      "hook_type": "image",
+      "mid_hook": "全部賣完：十二萬。加上這個月的兩萬，她按下還款：剩餘本金 2,200,000。截圖第四張。",
+      "extra_hooks": [
+        "最貴那支錶被一個沒頭像的帳號用高出兩成的價錢買走。"
+      ],
+      "conflict": "把東西賣掉、把錢還進去。",
+      "turn": "她以為鎮上的人只是來看熱鬧，結果每一筆都是真的匯款。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "銀行通知跳出：一筆十萬的匯款，匯款人只寫一個字：「許」。",
+        "question": "許以寧為什麼匯十萬給她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "duli"
+      ],
+      "spectacle": "直播畫面上留言像雨一樣往上刷，早餐店的客人、阿公阿嬤、消防隊全在喊價。",
+      "glamour_shot": "念慈在鏡頭前第一次笑出聲，夕陽打在她臉上；鏡頭外江野站在門口看。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "七年的禮物賣了十二萬",
+        "債剩兩百二十萬"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun",
+        "a-gong",
+        "a-kai",
+        "jiang-ye"
+      ],
+      "locations": [
+        "周家二樓她的房間",
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "判決隔天",
+        "knowledge": "賣掉禮物還了十二萬；許以寧匯來十萬",
+        "carry_forward": "債剩兩百二十萬；那十萬怎麼辦"
+      }
+    },
+    {
+      "number": 154,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "退回去",
+      "youtube_title": "前男友的白月光偷偷匯十萬替他還債，她一通電話把錢退回去，對方卻說要來小鎮",
+      "duration_s": 105,
+      "logline": "她要把許以寧的十萬退回去，守住『誰欠的誰還』。",
+      "hook": "她撥出電話：「許以寧，我說過不用。」對方安靜了三秒：「妳怎麼知道是我？」",
+      "hook_type": "line",
+      "mid_hook": "她在郵局填退款單，郵局阿姨問：「十萬欸，確定？」她簽名：「確定。」",
+      "conflict": "不收別人替林致遠付的錢。",
+      "turn": "許以寧以為匿名就能讓她收下，她看的不是錢，是誰該還。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "電話那頭，許以寧說：「那我自己去跟他要。」停了一下：「還有，我想去鹿川一趟。」",
+        "question": "許以寧來鹿川要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "duli"
+      ],
+      "spectacle": "鹿川郵局的老櫃台，一張退款單被蓋上紅色郵戳，窗外是冬天的海。",
+      "glamour_shot": "念慈在郵局窗口簽名，低馬尾垂在肩上，筆停的那一下很乾脆。",
+      "setups": [],
+      "payoffs": [
+        "s03-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把十萬退回許以寧"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xu-yining"
+      ],
+      "locations": [
+        "鹿川郵局"
+      ],
+      "state": {
+        "time": "判決後第三天",
+        "knowledge": "十萬退回；許以寧要自己去討、還要來鹿川",
+        "carry_forward": "債剩兩百二十萬；許以寧要來"
+      }
+    },
+    {
+      "number": 155,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "算我一份",
+      "youtube_title": "她開始在夜班畫隔壁空屋的平面圖，閨蜜罵她瘋了，下一秒說算我一份，阿公也要報名",
+      "duration_s": 110,
+      "logline": "她要把隔壁空屋變成照護所，第一步是一張圖。",
+      "hook": "凌晨，值班室的桌上一張方格紙，她用尺畫下第一條牆：「浴室要有扶手。」",
+      "hook_type": "image",
+      "mid_hook": "小芸看了圖：「妳瘋了。」吸一口手搖：「算我一份。」陳阿公在門口舉手：「我要當第一個住民。」",
+      "extra_hooks": [
+        "阿凱湊過來看：「這裡畫個消防車位？」被小芸一掌拍走。"
+      ],
+      "conflict": "把一個念頭變成能跟人說的計畫。",
+      "turn": "她以為大家會勸她先還債，結果第一個報名的是她的病人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她去問蔣醫生能不能租；蔣醫生把一把舊鑰匙放上桌：「不收租。」「但妳得撐下去。」",
+        "question": "她接得下這把鑰匙嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "xiju"
+      ],
+      "spectacle": "日光燈下一張越畫越滿的平面圖，窗外隔壁空屋黑著，只有月光照在門牌上。",
+      "glamour_shot": "念慈咬著筆尾看圖，碎髮落在方格紙上，日光燈照著她認真的眉。",
+      "setups": [
+        "s03-t10",
+        "m10"
+      ],
+      "payoffs": [
+        "s03-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所的第一張平面圖",
+        "小芸、陳阿公加入"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun",
+        "a-gong",
+        "a-kai",
+        "jiang-yisheng"
+      ],
+      "locations": [
+        "衛生所值班室",
+        "隔壁空屋門口"
+      ],
+      "state": {
+        "time": "十二月中，夜班",
+        "knowledge": "她決定把空屋做成照護所；蔣醫生不收租",
+        "carry_forward": "債剩兩百二十萬；一把舊鑰匙"
+      }
+    },
+    {
+      "number": 156,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "洋裝下車",
+      "youtube_title": "前男友的白月光一個人搭三小時公車來小鎮，走進衛生所第一件事就是鞠躬",
+      "duration_s": 115,
+      "logline": "許以寧來鹿川，要把一句話當面說完。",
+      "hook": "鎮口公車站，阿忠扶著一個拖行李箱的洋裝女人下車：「小姐，妳找誰？」",
+      "hook_type": "image",
+      "mid_hook": "早餐店裡哥哥看見她，以為是林致遠派來的，鍋鏟一指：「妳誰？」周媽一把把他推回去煎蛋。",
+      "extra_hooks": [
+        "她走進衛生所，對著念慈深深鞠躬：「我來道歉。」"
+      ],
+      "conflict": "許以寧要道歉；念慈要決定怎麼接。",
+      "turn": "所有人以為她來討人情，她來是要把『對不起』自己說出口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她看見江野把薑茶放在值班室窗台就走，低聲說：「他看妳的樣子。」「林致遠從來沒有。」",
+        "question": "念慈聽懂了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "xiju",
+        "duli"
+      ],
+      "spectacle": "冬天的鎮口，一個穿淺色洋裝的女人拖著行李箱走過消防隊的紅色車庫門。",
+      "glamour_shot": "許以寧鞠躬時長髮垂下，念慈扶起她的手；窗台上一杯薑茶冒著熱氣。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許以寧當面道歉"
+      ],
+      "characters": [
+        "xu-yining",
+        "siji",
+        "zhou-nianzu",
+        "zhou-ma",
+        "zhou-nianci",
+        "jiang-ye"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "周家早餐店",
+        "鹿川鎮衛生所"
+      ],
+      "state": {
+        "time": "十二月中",
+        "knowledge": "許以寧來鹿川道歉",
+        "carry_forward": "債剩兩百二十萬；窗台上的薑茶"
+      }
+    },
+    {
+      "number": 157,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "過年回去",
+      "youtube_title": "白月光搭車離開小鎮，消防員接到父親第二通電話說要回來過年，第一次主動開口",
+      "duration_s": 110,
+      "logline": "她送走許以寧；江野接到父親第二通電話。",
+      "hook": "公車門關上前，許以寧回頭：「他的車跟股票。」「我寫給法院了。」車開走了。",
+      "hook_type": "line",
+      "mid_hook": "長椅上江野的手機又亮了：「爸」。這次通話一分鐘，她聽見電話那頭一句沙啞的「過年回去」。",
+      "conflict": "許以寧把最後一件事做完；江野要決定說不說。",
+      "turn": "她以為江野會像上次一樣只說『我爸』，這次他多說了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "江野掛掉電話，看著保溫瓶，第一次主動說自己的事：「我爸要回來。」她轉頭看他。",
+        "question": "江父為什麼現在要回來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "duli"
+      ],
+      "spectacle": "公車駛離鎮口，車窗裡許以寧揮手，車後的長椅上兩個人並坐。",
+      "glamour_shot": "江野講電話時低頭的側臉，耳後一道舊疤，路燈在他睫毛下留一道影。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "s03-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許以寧把林致遠的資產資料交給法院"
+      ],
+      "characters": [
+        "xu-yining",
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-fu",
+        "siji"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "十二月下旬",
+        "knowledge": "江父要回來過年",
+        "carry_forward": "債剩兩百二十萬；江父過年回來"
+      }
+    },
+    {
+      "number": 158,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "他家的時刻表",
+      "youtube_title": "她去幫他打掃老屋迎接父親，在抽屜裡翻到十年份的公車時刻表，每一張都畫了圈",
+      "duration_s": 115,
+      "logline": "她幫江野整理老屋迎接江父，翻到一疊她不該看見的紙。",
+      "hook": "江家老屋的院子，她仰頭看那棵小時候爬過的樹：「還在。」江野拎著水桶：「一直在。」",
+      "hook_type": "image",
+      "mid_hook": "她擦抽屜，翻出一疊公車時刻表：鹿川—台北，十年，一年一張，每張上都用紅筆圈著同一班。",
+      "extra_hooks": [
+        "最舊那張的邊上，鉛筆寫著『念慈 寒假』。"
+      ],
+      "conflict": "把老屋整理好；她要決定看見了要不要說。",
+      "turn": "她以為十年是一句話，十張紙放在她手上，十年有重量。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "消防隊的呼叫器在江野腰上尖響：「鎮上有火警。」他把水桶一放就跑，她站在他家窗邊看紅光衝出去。",
+        "question": "火警在哪裡？他會沒事嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "xiju"
+      ],
+      "spectacle": "老屋窗外，消防車的紅光衝過巷口，把一院子的樹影照成紅色。",
+      "glamour_shot": "念慈站在老屋窗邊，紅光掃過她的臉，手裡還握著那疊時刻表。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye"
+      ],
+      "locations": [
+        "江家老屋",
+        "江家院子"
+      ],
+      "state": {
+        "time": "十二月下旬",
+        "knowledge": "她看見十年份的公車時刻表；鎮上火警",
+        "carry_forward": "債剩兩百二十萬；她一個人在他家等"
+      }
+    },
+    {
+      "number": 159,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "試住",
+      "youtube_title": "她第一次一個人在他家等他出勤回來，火警原因竟是阿公在空屋試住煮粥",
+      "duration_s": 110,
+      "logline": "她在江家等江野回來，才發現火警跟照護所有關。",
+      "hook": "她把時刻表放回抽屜，坐在門檻上，看錶：九點零五分。她在等。",
+      "hook_type": "image",
+      "mid_hook": "江野回來，身上一股煙味：「沒事，鍋子燒焦。」停一下：「在妳的空屋。」",
+      "extra_hooks": [
+        "陳阿公被老蔡扶著，手裡還端著燒焦的鍋：「我試住看看嘛。」"
+      ],
+      "conflict": "她要確定他沒事，也要面對：照護所還沒開，就差點出事。",
+      "turn": "她以為火警是別人的事，結果是她的第一個住民。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她看他手臂，沒有新傷，才鬆一口氣；他看見她手腕上的錶，九點四十，她等了三十五分鐘。他沒說話。",
+        "question": "她自己知道她在等嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "duli"
+      ],
+      "spectacle": "空屋門口，消防車的燈還在轉，阿公端著一口燒黑的鍋，老蔡在旁邊扶額。",
+      "glamour_shot": "江野從紅光裡走回老屋院子，摘下頭盔、頭髮被汗壓扁，看見門檻上的她時腳步一頓。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿公沒事，真的要住進照護所"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-gong",
+        "lao-cai"
+      ],
+      "locations": [
+        "江家老屋門檻",
+        "隔壁空屋門口"
+      ],
+      "state": {
+        "time": "十二月下旬夜裡",
+        "knowledge": "阿公在空屋試住煮粥，鍋子燒焦",
+        "carry_forward": "債剩兩百二十萬；她等了三十五分鐘"
+      }
+    },
+    {
+      "number": 160,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "這裡我來",
+      "youtube_title": "她把照護所平面圖貼上值班室牆，他站著看了很久，問她要不要見他爸",
+      "duration_s": 130,
+      "logline": "她把照護所正式貼上牆；他第一次開口邀她走進他的家事。",
+      "hook": "她踮腳把平面圖貼上值班室的牆，膠帶撕一聲：「從這裡開始。」",
+      "hook_type": "image",
+      "mid_hook": "蔣醫生拿紅筆在圖上補了一道門：「通衛生所，夜班一步就到。」小芸在旁邊打拍子：「開、開、開！」",
+      "extra_hooks": [
+        "江野路過窗外，停住，站了很久。"
+      ],
+      "conflict": "讓照護所從一張草圖變成一面牆上的事。",
+      "turn": "她以為他會說『加油』，他問的是一件完全不同的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "他問：「我爸回來，妳要見嗎？」她說：「我見他做什麼？」他沒答，指著圖上一角：「這裡要裝消防警報。」「我來。」",
+        "question": "她會去見江父嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "xiju",
+        "fansha"
+      ],
+      "spectacle": "值班室的白牆上一張手繪平面圖，紅筆補的門通向衛生所，日光燈照得每條線都清楚。",
+      "glamour_shot": "江野站在平面圖前，日光燈打在他的眉骨上，他伸手點那個角落的手指。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所平面圖上牆",
+        "江野說要裝消防警報"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-yisheng",
+        "xiao-yun"
+      ],
+      "locations": [
+        "衛生所值班室"
+      ],
+      "state": {
+        "time": "十二月底",
+        "knowledge": "照護所平面圖上牆；他問她要不要見江父",
+        "carry_forward": "債剩兩百二十萬；過年江父回來"
+      }
+    },
+    {
+      "number": 161,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "他也會等",
+      "youtube_title": "等了她十年的消防員第一次坐在長椅上等別人，下車的是十年沒回家的父親",
+      "duration_s": 115,
+      "logline": "江父回來了；她第一次看見江野等的不是她。",
+      "hook": "除夕前三天，公車進站，長椅上江野站起來——她在衛生所窗後看著：他在等的不是她。",
+      "hook_type": "image",
+      "mid_hook": "父子並肩走過鎮上，一路沒說話；阿凱在消防隊門口扳手指數：「三句。今天三句。」",
+      "extra_hooks": [
+        "江父在早餐店門口停下，看著招牌很久。"
+      ],
+      "conflict": "一對十年說不到幾句話的父子，要一起走回老屋。",
+      "turn": "她以為江野只會等她，原來他也這樣等過一個人，等了更久。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "江父走進早餐店，對周媽點頭：「這些年，謝謝妳的蛋餅。」周媽手裡的鍋鏟停了，眼眶一熱。",
+        "question": "江父知道多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren",
+        "xiaozhen"
+      ],
+      "spectacle": "年前的鎮口掛滿紅燈籠，公車停下，一老一少兩個沉默的背影走進小鎮。",
+      "glamour_shot": "江野在長椅前站起來的那一下，深藍外套、肩背挺直，看見父親時喉結動了一下。",
+      "setups": [
+        "s03-t11",
+        "m11"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江父回到鹿川"
+      ],
+      "characters": [
+        "jiang-ye",
+        "jiang-fu",
+        "zhou-nianci",
+        "a-kai",
+        "zhou-ma",
+        "siji"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "鹿川鎮衛生所",
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "除夕前三天",
+        "knowledge": "江父回來，謝了周媽十年的蛋餅",
+        "carry_forward": "債剩兩百二十萬；江父住幾天"
+      }
+    },
+    {
+      "number": 162,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "年終",
+      "youtube_title": "她拿到年終獎金全數還債，陪消防員做獨居老人訪視，阿公卻當著他爸的面多嘴",
+      "duration_s": 110,
+      "logline": "她要把年終還進去，再跑完年前最後一輪獨居長者訪視。",
+      "hook": "衛生所，蔣醫生遞紅包：「年終。」她當場滑手機還款：剩餘本金 2,160,000。截圖第五張。",
+      "hook_type": "image",
+      "mid_hook": "她跟江野做年前訪視，一家一家送春聯、量血壓；陳阿公家門口，江父正好散步經過。",
+      "extra_hooks": [
+        "阿公用台語大聲問：「你兒子等的那個。」「你看過了沒？」"
+      ],
+      "conflict": "把鎮上獨居的老人一個一個看過，年才過得去。",
+      "turn": "她以為阿公是在鬧，江父卻真的停下來看她。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "江父看著她，慢慢說：「除夕，來家裡吃飯嗎？」江野手裡的春聯掉在地上。",
+        "question": "她會去江家吃飯嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiaozhen",
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "冬天的小巷，一戶一戶紅春聯被貼上門，獨居老人站在門口揮手。",
+      "glamour_shot": "念慈在老人家門口幫忙貼春聯，踮腳時圍巾滑下來，冬陽照在她鼻尖。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "年終還進去：債剩兩百一十六萬",
+        "年前獨居長者訪視跑完"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-yisheng",
+        "jiang-ye",
+        "a-gong",
+        "jiang-fu"
+      ],
+      "locations": [
+        "衛生所",
+        "陳阿公家門口",
+        "鹿川鎮小巷"
+      ],
+      "state": {
+        "time": "除夕前兩天",
+        "knowledge": "江父邀她吃飯",
+        "carry_forward": "債剩兩百一十六萬；去不去江家"
+      }
+    },
+    {
+      "number": 163,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "年菜",
+      "youtube_title": "媽媽叫她提年菜去江家，哥哥偷偷多塞一盒蘿蔔糕，除夕夜消防隊的警鈴卻先響了",
+      "duration_s": 105,
+      "logline": "她要提著媽媽的年菜去江家，哥哥嘴上反對、手上卻在幫。",
+      "hook": "周媽把一籃年菜塞給她：「去。」哥哥在後面摔菜刀：「除夕在別人家？」",
+      "hook_type": "line",
+      "mid_hook": "她提著籃子出門，掀開布一看，多了一盒哥哥做的蘿蔔糕，蓋子上用油性筆寫：『給阿野，不是給妳。』",
+      "conflict": "她要走進江家，家裡要學著讓她走。",
+      "turn": "大家以為哥哥最反對，結果最早準備好東西的是哥哥。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "除夕夜，她剛走到江家院子，消防隊的警鈴從鎮上傳來；江野抓起外套衝出門：「廟口。」",
+        "question": "除夕的火警，大不大？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "除夕夜的老屋院子，屋簷下一盞紅燈，遠處警鈴響起，一道紅光越過樹梢。",
+      "glamour_shot": "念慈提著年菜站在樹下，紅燈籠的光落在她臉上，江野從她身邊跑過時回頭看了一眼。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "哥哥偷偷做了蘿蔔糕給江野"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-ma",
+        "zhou-nianzu",
+        "jiang-ye",
+        "jiang-fu"
+      ],
+      "locations": [
+        "周家早餐店",
+        "江家院子"
+      ],
+      "state": {
+        "time": "除夕傍晚",
+        "knowledge": "江野除夕出勤",
+        "carry_forward": "債剩兩百一十六萬；她和江父留在老屋"
+      }
+    },
+    {
+      "number": 164,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "兩個人等一個人",
+      "youtube_title": "除夕夜消防員出勤，她跟他沉默的父親坐在老屋等，父親說了一句他為什麼離開",
+      "duration_s": 115,
+      "logline": "她跟江父坐在老屋的飯桌前，等同一個人回來。",
+      "hook": "老屋飯桌，年菜蓋著布，兩副碗筷；江父看著門：「他常這樣？」她說：「常。」",
+      "hook_type": "line",
+      "mid_hook": "電視裡跨年倒數，窗外紅光一閃一閃；江父倒了兩杯茶：「我也等過。」「等他媽媽。」",
+      "extra_hooks": [
+        "她看錶：十點十分。江父也看錶：十點十分。"
+      ],
+      "conflict": "兩個人要撐過等的那幾個小時。",
+      "turn": "她以為江父不會說話，原來江父是太懂等，才不說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "江父低頭：「我不會等，所以我走了。」茶杯放下的聲音很輕，她抬頭看他。",
+        "question": "江父當年為什麼走？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiaren"
+      ],
+      "spectacle": "除夕的老屋只亮一盞燈，窗外遠處廟口的紅光一明一滅，屋裡兩個人對坐。",
+      "glamour_shot": "念慈對著江父坐得端正，燈下她的側臉安靜，手指搭在茶杯上。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "jiang-fu"
+      ],
+      "locations": [
+        "江家老屋飯廳"
+      ],
+      "state": {
+        "time": "除夕夜",
+        "knowledge": "江父說他當年不會等，所以走了",
+        "carry_forward": "債剩兩百一十六萬；江野還沒回來"
+      }
+    },
+    {
+      "number": 165,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "你們等我？",
+      "youtube_title": "除夕出勤回家的消防員推門看見父親跟她坐在桌前等他，三個人吃了第一頓年夜飯",
+      "duration_s": 115,
+      "logline": "江野回來，發現有兩個人在等他。",
+      "hook": "門推開，江野一身煙味站在門口，看著桌上沒動的年菜：「你們……等我？」",
+      "hook_type": "question",
+      "mid_hook": "三個人終於開飯；江父一直看她手腕上的錶，看了很久：「這錶，他存了半年買的。」",
+      "extra_hooks": [
+        "江野正要夾菜，筷子停了。"
+      ],
+      "conflict": "三個人第一次在同一張桌上過年。",
+      "turn": "江野以為家裡會是冷的，進門時桌上的菜還蓋著保溫的布。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "廚房傳來一聲碗碎；江野背對著他們蹲下撿碎片，半天沒起來。",
+        "question": "江野為什麼不轉身？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "除夕的老屋飯桌，三副碗筷、一籃年菜、一盒蘿蔔糕，窗外煙火升起。",
+      "glamour_shot": "江野站在門口摘下頭盔，汗濕的頭髮貼在額前，看見桌邊兩個人時眼神一下子軟了。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三個人一起吃了年夜飯"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-fu"
+      ],
+      "locations": [
+        "江家老屋飯廳",
+        "江家廚房"
+      ],
+      "state": {
+        "time": "除夕深夜",
+        "knowledge": "江父說錶是江野存了半年買的",
+        "carry_forward": "債剩兩百一十六萬；江野在廚房"
+      }
+    },
+    {
+      "number": 166,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "十六歲以後",
+      "youtube_title": "他在廚房洗碗，沉默的父親對她說兒子十六歲以後沒哭過，又說了一句他等的人",
+      "duration_s": 125,
+      "logline": "江父趁兒子在廚房，把一件事告訴她。",
+      "hook": "廚房水聲嘩嘩，江父壓低聲音：「他媽媽走的時候。」「他十六歲。」「從那天沒哭過。」",
+      "hook_type": "line",
+      "mid_hook": "她不知道怎麼接，只能把茶杯推近一點；江父看著她：「他說他在等一個人。」「等了很久。」",
+      "conflict": "她要接住一個父親遲到十四年的話。",
+      "turn": "她以為江父不知道兒子在等誰，他確實不知道——直到剛才。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "江父說：「我不知道是妳。」她輕聲：「我也剛知道。」廚房的水聲停了。",
+        "question": "江野聽見了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "老屋飯廳與廚房之間一扇半開的門，門這邊兩個人低聲說話，門那邊水龍頭的水停了。",
+      "glamour_shot": "念慈聽江父說話時微微傾身，燈光照在她泛紅的眼角，手腕上的錶反了一下光。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江父知道兒子等的是她"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-fu",
+        "jiang-ye"
+      ],
+      "locations": [
+        "江家老屋飯廳",
+        "江家廚房"
+      ],
+      "state": {
+        "time": "除夕深夜",
+        "knowledge": "江父說江野十六歲以後沒哭過；江父剛知道是她",
+        "carry_forward": "債剩兩百一十六萬；廚房的水停了"
+      }
+    },
+    {
+      "number": 167,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "回來守歲",
+      "youtube_title": "除夕午夜全鎮放煙火，哥哥一通電話要她回家守歲，她站在他家門口兩邊都捨不得",
+      "duration_s": 110,
+      "logline": "她要在除夕午夜決定：回家，還是留在這裡。",
+      "hook": "江野從廚房走出來，手上還有水，像什麼都沒聽見：「茶涼了，我再煮。」",
+      "hook_type": "image",
+      "mid_hook": "零點，鹿川海邊的煙火一朵一朵開，三個人站在院子裡抬頭；她的手機響：「哥」。",
+      "extra_hooks": [
+        "哥哥在電話裡說：「回來守歲。媽在等。」"
+      ],
+      "conflict": "她要在兩個家之間選今晚。",
+      "turn": "她以為自己會毫不猶豫回家，結果她站在院子裡沒動。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她握著手機看江野；江野拿起外套：「我送妳。」江父在門口說：「去吧。」三個人都在等她邁步。",
+        "question": "她會走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "xiaozhen",
+        "ganren"
+      ],
+      "spectacle": "除夕零點，鹿川海邊的煙火在老屋院子那棵樹的樹梢上炸開，照亮三個仰起的臉。",
+      "glamour_shot": "念慈在煙火下仰頭，臉被一陣金色照亮，江野站在她身後半步看她，不看煙火。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-fu",
+        "zhou-nianzu"
+      ],
+      "locations": [
+        "江家院子"
+      ],
+      "state": {
+        "time": "除夕零點",
+        "knowledge": "哥哥要她回家守歲",
+        "carry_forward": "債剩兩百一十六萬；江野要送她"
+      }
+    },
+    {
+      "number": 168,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "新年快樂",
+      "youtube_title": "消防員除夕送她回家，冷戰兩個月的哥哥守在早餐店門口，兩個男人終於開口",
+      "duration_s": 115,
+      "logline": "江野送她回家，在門口要面對哥哥。",
+      "hook": "她說：「走吧。」江野跟上，兩個人走過煙火後的街，地上滿是紅紙屑。",
+      "hook_type": "image",
+      "mid_hook": "早餐店門口，哥哥坐在小板凳上，手裡一罐沒開的汽水，看見兩個人走來，站起來。",
+      "extra_hooks": [
+        "周媽從二樓窗戶探頭，手裡拿著一個保溫壺，隨時準備下來。"
+      ],
+      "conflict": "兩個冷戰的兄弟要在除夕夜面對面。",
+      "turn": "大家以為哥哥會開罵，結果他先低頭看了看江野手上的燙傷。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "哥哥看了江野很久：「新年快樂。」兩個月來第一句話。江野說：「新年快樂。」她站在中間，眼淚掉下來。",
+        "question": "兄弟的冷戰，這樣就解了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren",
+        "xiaozhen"
+      ],
+      "spectacle": "煙火散去的小街鋪滿紅紙屑，早餐店門口一盞燈下，兩個男人隔著三步站著。",
+      "glamour_shot": "江野在早餐店門口的燈下站定，煙火的餘光在他身後，他看哥哥的眼神很穩。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "哥哥與江野說了兩個月來第一句話"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "zhou-nianzu",
+        "zhou-ma"
+      ],
+      "locations": [
+        "鹿川鎮街道",
+        "周家早餐店門口"
+      ],
+      "state": {
+        "time": "大年初一凌晨",
+        "knowledge": "兄弟說了新年快樂",
+        "carry_forward": "債剩兩百一十六萬；江父初五走"
+      }
+    },
+    {
+      "number": 169,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "初五走",
+      "youtube_title": "沉默的父親陪兒子修了三天屋頂，臨走前在空屋塞給她一個紅包，又說出十年前那天",
+      "duration_s": 120,
+      "logline": "江父要走了，走之前他想做一件事。",
+      "hook": "初二，老屋屋頂，父子一人一邊鋪瓦，一句話都沒說；底下阿凱數：「零句。」",
+      "hook_type": "line",
+      "mid_hook": "初四，江父走進隔壁空屋，看著牆上貼的平面圖，塞給她一個紅包：「給照護所。」",
+      "extra_hooks": [
+        "紅包很薄，裡面一張紙條：『先買扶手。』"
+      ],
+      "conflict": "江父要在走之前，把該說的說一點。",
+      "turn": "她以為江父只是來看兒子，他看的是兒子十年守的每一樣東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "江父站在空屋窗邊，看著鎮口站牌：「他二十歲那年。」「在那裡站了一整天。」「我在樓上看著，沒下去。」",
+        "question": "那一天，江父為什麼沒下去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "xiaozhen",
+        "ganren"
+      ],
+      "spectacle": "初春的老屋屋頂，父子各蹲一邊鋪新瓦，背景是鹿川的山與海。",
+      "glamour_shot": "江野在屋頂上捲起袖子鋪瓦，手臂的舊傷在陽光下，抬頭看父親的那一眼。",
+      "setups": [
+        "m10",
+        "m11"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江父替照護所出了第一筆扶手錢",
+        "老屋屋頂修好"
+      ],
+      "characters": [
+        "jiang-ye",
+        "jiang-fu",
+        "a-kai",
+        "zhou-nianci"
+      ],
+      "locations": [
+        "江家老屋屋頂",
+        "隔壁空屋"
+      ],
+      "state": {
+        "time": "初二到初四",
+        "knowledge": "江父說江野二十歲那天在站牌站了一整天",
+        "carry_forward": "債剩兩百一十六萬；江父明天走"
+      }
+    },
+    {
+      "number": 170,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "妳上車那次",
+      "youtube_title": "父親吃完最後一頓飯搭車離開，她走出老屋，樹下的他問父親說了什麼，最後一句讓她愣住",
+      "duration_s": 140,
+      "logline": "江父走前的最後一頓飯吃完，她要把江父的話說給江野聽。",
+      "hook": "初五中午，老屋飯桌，三副碗筷再擺一次；江父放下筷子：「明年，我留久一點。」",
+      "hook_type": "line",
+      "mid_hook": "公車到站，江父上車前拍了拍兒子的肩，第一次，拍了兩下；車開走，江野站在站牌下很久。",
+      "extra_hooks": [
+        "她回老屋拿外套，走出院子時，那棵樹下站著一個人。"
+      ],
+      "conflict": "她要決定，把江父那句『十六歲以後沒哭過』說不說給他聽。",
+      "turn": "她以為說出那句話會讓他難堪，他給的答案讓她想起十年前的自己。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他問：「我爸跟妳說了什麼？」她說：「說你十六歲以後沒哭過。」他說：「騙人。」她問：「哪一次？」他說：「妳上車那次。」",
+        "question": "十年前那天，他哭了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiaren",
+        "xiaozhen"
+      ],
+      "spectacle": "老屋院子那棵老樹下，冬末的陽光穿過枝椏落在兩個人之間，樹皮上還有小時候刻的記號。",
+      "glamour_shot": "江野靠著老樹，低頭說『妳上車那次』，陽光落在他的眉眼，眼眶紅了一圈卻沒掉淚。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s03-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江父答應明年留久一點",
+        "她把江父的話告訴江野"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-fu",
+        "siji"
+      ],
+      "locations": [
+        "江家老屋飯廳",
+        "鎮口公車站",
+        "江家院子老樹下"
+      ],
+      "state": {
+        "time": "大年初五",
+        "knowledge": "江野說十年前她上車那次他哭了",
+        "carry_forward": "債剩兩百一十六萬；照護所要動了"
+      }
+    },
+    {
+      "number": 171,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "鑰匙給妳",
+      "youtube_title": "過完年債剩兩百一十萬，老醫生把空屋鑰匙交到她手上，全鎮的人開始排隊說要出錢",
+      "duration_s": 110,
+      "logline": "過完年，照護所的事要真的動起來，她得先接下那把鑰匙。",
+      "hook": "樹下那句話之後的早上，長椅上她坐在中間偏左一點；他遞薑茶，她接得比上次快。",
+      "hook_type": "image",
+      "mid_hook": "她繳完兩個月的錢加夜班加給：剩餘本金 2,100,000。截圖第六張，她把相簿名改成『回來』。",
+      "extra_hooks": [
+        "蔣醫生把租約推過來，租金欄寫著『零』，期限欄寫著『到妳不做為止』。"
+      ],
+      "conflict": "她要從『想開』變成『簽名』。",
+      "turn": "她以為最難的是錢，最難的是簽下自己名字那一筆——上一次簽名，是那張被拿去用的同意書。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蔣醫生把鑰匙放在租約上：「鑰匙給妳。」她的筆尖停在簽名欄，手腕上的錶滴答響。",
+        "question": "她敢再簽一次自己的名字嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "peiban",
+        "ganren"
+      ],
+      "spectacle": "初春的衛生所值班室，桌上一份手寫租約、一把舊銅鑰匙，窗外空屋的灰被雨洗掉了一半。",
+      "glamour_shot": "念慈握筆時深吸一口氣的側臉，日光燈下睫毛的影子落在眼下。",
+      "setups": [
+        "s03-t12",
+        "m10"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "債剩兩百一十萬",
+        "蔣醫生無償讓出空屋"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-yisheng"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "衛生所值班室"
+      ],
+      "state": {
+        "time": "過完年，二月初",
+        "knowledge": "蔣醫生把空屋讓給她",
+        "carry_forward": "債剩兩百一十萬；租約等她簽"
+      }
+    },
+    {
+      "number": 172,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "餅乾盒",
+      "youtube_title": "她簽下租約，鎮上阿公阿嬤一個個拿出存錢的餅乾盒說要合資，消防員半夜卻在問她哥一件事",
+      "duration_s": 115,
+      "logline": "鎮民要合資開照護所；她把自己的存款也全拿出來。",
+      "hook": "她簽完名，把筆一放：「簽了。」小芸在門外放了一支拉炮，碎紙落在蔣醫生的白髮上。",
+      "hook_type": "line",
+      "mid_hook": "早餐店裡陳阿公放上一個鐵製餅乾盒，掀開，滿滿的十元硬幣：「我的，入股。」後面排著一串阿嬤。",
+      "extra_hooks": [
+        "她把存摺上的十八萬全部轉進照護所帳戶，哥哥瞪大眼：「妳還欠兩百多萬！」"
+      ],
+      "conflict": "把一間空屋變成全鎮的事。",
+      "turn": "她以為只有自己在扛，結果鎮上的人早就在等這間屋子。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "深夜空屋，哥哥看見江野拿捲尺量天花板裝警報的位置；江野沒回頭：「她的存款，夠嗎？」哥哥：「你要幹嘛？」江野沒答。",
+        "question": "江野打算做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "ganren",
+        "peiban"
+      ],
+      "spectacle": "早餐店長桌上一排各式各樣的餅乾盒、鐵罐與紅包，鎮民排隊排到門外。",
+      "glamour_shot": "江野在空屋裡踩著梯子拉捲尺，手電筒的光打在他仰起的下顎線上。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所租約簽了",
+        "鎮民合資開始",
+        "她把十八萬存款投進去"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun",
+        "jiang-yisheng",
+        "a-gong",
+        "zhou-nianzu",
+        "jiang-ye"
+      ],
+      "locations": [
+        "衛生所值班室",
+        "周家早餐店",
+        "隔壁空屋"
+      ],
+      "state": {
+        "time": "二月初",
+        "knowledge": "鎮民合資；江野問哥哥她的存款夠不夠",
+        "carry_forward": "債剩兩百一十萬；照護所帳戶開了"
+      }
+    },
+    {
+      "number": 173,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "這次熱的",
+      "youtube_title": "她要去台北辦最後三天的債務文件，第一次自己把保溫瓶遞給他說：這次裝熱的",
+      "duration_s": 110,
+      "logline": "她要再去台北三天，把債務的最後一批文件辦完。",
+      "hook": "清晨長椅，她把那個深藍保溫瓶遞給他：「這次裝熱的。」",
+      "hook_type": "line",
+      "mid_hook": "他接過去，倒進剛煮好的薑茶，旋緊，放回她背包的側袋：「涼了也喝。」她說：「不會涼。」",
+      "extra_hooks": [
+        "阿忠按喇叭：「台北的，上車囉！」"
+      ],
+      "conflict": "她要一個人去把最後一段路走完。",
+      "turn": "上次保溫瓶是偷偷塞進背包的，這次是她自己伸手要的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "公車開動，她從後窗看：他站在長椅前，低頭在手心寫了幾個字，握起來放進口袋。",
+        "question": "他在手心寫了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "duli"
+      ],
+      "spectacle": "晨霧裡公車駛離鎮口，後窗框住消防隊門口那張長椅和一個站著的人。",
+      "glamour_shot": "念慈把保溫瓶遞出去時的手，晨光裡她舊電子錶的錶面亮了一下。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "保溫瓶第一次是她開口要的"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "siji"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "鎮口公車站"
+      ],
+      "state": {
+        "time": "二月中，出發去台北",
+        "knowledge": "她要去台北三天",
+        "carry_forward": "債剩兩百一十萬；背包側袋裡的熱薑茶"
+      }
+    },
+    {
+      "number": 174,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "兩百萬",
+      "youtube_title": "她在台北解掉自己存了四年的結婚定存，債務終於跌破兩百萬，前男友卻在法院等她",
+      "duration_s": 115,
+      "logline": "她用自己存的結婚定存還債，然後在法院遇見林致遠。",
+      "hook": "台北銀行櫃台，行員問：「結婚定存，確定解約？」她說：「確定。我不結那個婚了。」",
+      "hook_type": "line",
+      "mid_hook": "還款完成：剩餘本金 2,000,000。她在銀行門口打開保溫瓶，還是熱的。截圖第七張。",
+      "conflict": "把能還的都還進去，把該辦的都辦完。",
+      "turn": "她以為結婚定存會是最後一點捨不得，按下確認時她只覺得輕。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "法院執行處門口，林致遠瘦了一圈：「我現在真的沒錢。」她說：「我知道。」他低聲：「鹿川有人在等妳吧？」",
+        "question": "她會回答他嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "ganren"
+      ],
+      "spectacle": "台北銀行的玻璃門外，她捧著一個冒熱氣的保溫瓶，身後是冷白的高樓。",
+      "glamour_shot": "念慈在銀行門口低頭喝一口熱薑茶，冷風吹起她的圍巾，她閉了一下眼。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "結婚定存解約還債：債剩兩百萬"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan"
+      ],
+      "locations": [
+        "台北銀行櫃台",
+        "台北地方法院執行處"
+      ],
+      "state": {
+        "time": "台北第二天",
+        "knowledge": "債跌到兩百萬；林致遠問有沒有人在等她",
+        "carry_forward": "債剩兩百萬；明天最後一份文件"
+      }
+    },
+    {
+      "number": 175,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "十二點十分",
+      "youtube_title": "她簽完最後一份債務文件衝向轉運站，回鹿川那班車的門在她眼前開始關上",
+      "duration_s": 105,
+      "logline": "她把最後一份文件簽完，要趕上那一班車。",
+      "hook": "她看著林致遠：「那不關你的事。」轉身走進執行處，沒有回頭。",
+      "hook_type": "line",
+      "mid_hook": "第三天，她在最後一份文件簽下名字，承辦人蓋章：「好了。」許以寧傳來訊息：「謝謝妳那天的咖啡。」",
+      "extra_hooks": [
+        "她抬頭看牆上的鐘：十一點五十。那班車十二點十分開。"
+      ],
+      "conflict": "她要趕上那班車——那一班。",
+      "turn": "她以為自己隨便搭哪班都行，跑起來才發現她只要那一班。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "轉運站月台，十二點零九分，她背包拍著背狂奔，前方那輛公車的門嘶一聲開始關。",
+        "question": "她趕得上那一班嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "ganren"
+      ],
+      "spectacle": "台北轉運站的長月台，她逆著人潮奔跑，車頭上的『鹿川』兩個字越來越近。",
+      "glamour_shot": "念慈奔跑時馬尾甩起，臉頰跑得泛紅，伸手去拍車門的那一下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "債務文件全部辦完"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "lin-zhiyuan",
+        "xu-yining"
+      ],
+      "locations": [
+        "台北地方法院執行處",
+        "台北轉運站"
+      ],
+      "state": {
+        "time": "台北第三天中午",
+        "knowledge": "文件辦完；她在追十二點十分那班車",
+        "carry_forward": "債剩兩百萬；車門在關"
+      }
+    },
+    {
+      "number": 176,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "我在等",
+      "youtube_title": "她趕上回小鎮的公車，三小時全程盯著電子錶，心跳跟著算，終於對自己承認一件事",
+      "duration_s": 125,
+      "logline": "她在回程車上，承認了自己一直不肯承認的事。",
+      "hook": "車門停住，又打開。阿忠探頭：「我等妳啦。」她喘著上車，愣了一下——有人等她。",
+      "hook_type": "image",
+      "mid_hook": "國道上她低頭看錶，十二點四十；一點零五；一點半；心跳一下一下，跟著秒數在算。",
+      "extra_hooks": [
+        "阿忠從後照鏡問：「今天有人等嗎？」她說：「不知道。」"
+      ],
+      "conflict": "三小時，她要面對自己在數什麼。",
+      "turn": "她以為自己在算到站，其實她在算的是：門口有沒有人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她打開手機備忘錄，打了三個字：「我在等。」游標在後面閃，她沒有刪。",
+        "question": "她會讓他知道嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "ganren",
+        "peiban"
+      ],
+      "spectacle": "國道公車的車窗外山一層一層往後退，窗內電子錶的秒數一格一格跳，配上心跳聲。",
+      "glamour_shot": "念慈靠著車窗，陽光落在她半閉的眼睛上，手指在錶面上輕輕按著。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她對自己承認：她在等"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "siji"
+      ],
+      "locations": [
+        "鹿川往台北的公車（回程）"
+      ],
+      "state": {
+        "time": "台北回程車上，下午",
+        "knowledge": "她承認自己在等門口有沒有人（對自己，沒對任何人）",
+        "carry_forward": "債剩兩百萬；三點十分到站"
+      }
+    },
+    {
+      "number": 177,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "今天不去",
+      "youtube_title": "她在車上數著到站時間，消防隊裡的他卻在三點前打開爐火，說今天不去長椅",
+      "duration_s": 105,
+      "logline": "她在路上；他在消防隊裡，做了一個十年來沒做過的決定。",
+      "hook": "消防隊車庫，牆上的鐘兩點五十。江野把一鍋水放上爐子，薑片一片一片落下去。",
+      "hook_type": "image",
+      "mid_hook": "阿凱抱著長椅的坐墊站在門口：「江哥，三點十分了，你不去？」江野切薑：「今天不去長椅。」",
+      "extra_hooks": [
+        "老蔡在值班室裡探頭，看了一眼，又把頭縮回去，嘴角是笑的。"
+      ],
+      "conflict": "他要讓她做一次自己的選擇。",
+      "turn": "觀眾以為他終於累了，他手上的薑茶照樣算著她下車的時間在煮。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿凱把坐墊往前遞：「真的不去？」江野搖頭，把爐火轉大；窗外遠處傳來公車的喇叭聲。",
+        "question": "他為什麼不去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren"
+      ],
+      "spectacle": "消防隊車庫裡紅色消防車旁一個小瓦斯爐，鍋裡薑片翻滾，熱氣往上飄過車身的反光。",
+      "glamour_shot": "江野捲起袖子切薑，刀落得很穩，車庫的頂光打在他低垂的眉眼上。",
+      "setups": [
+        "s03-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "jiang-ye",
+        "a-kai",
+        "lao-cai"
+      ],
+      "locations": [
+        "消防隊車庫"
+      ],
+      "state": {
+        "time": "回程當天兩點五十",
+        "knowledge": "江野今天不去長椅，在車庫煮薑茶",
+        "carry_forward": "債剩兩百萬；公車快到了"
+      }
+    },
+    {
+      "number": 178,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "動工日",
+      "youtube_title": "回鎮的公車上她收到照護所動工日，阿公舉牌當第一號住民，她在到站前就站了起來",
+      "duration_s": 110,
+      "logline": "她在回程最後一段，收到照護所要動工的消息。",
+      "hook": "公車上她手機震動，蔣醫生：「動工，下週一。」附一張照片：陳阿公舉著紙牌「第一號住民」。",
+      "hook_type": "line",
+      "mid_hook": "第二張照片是合資名單，二十六個名字，最後一行是哥哥的字：『周家早餐店，蛋餅一年份』。",
+      "extra_hooks": [
+        "小芸的語音：「妳到了沒？有人等嗎？」她沒回。"
+      ],
+      "conflict": "她要帶著好消息回去，不知道誰會在門口接住。",
+      "turn": "她以為照護所只是她的事，名單最後一行是哥哥。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "車窗外出現『鹿川』的路牌，她在車還沒停穩前就站了起來；阿忠喊：「坐好啦！」她沒坐。",
+        "question": "門口會有人嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "ganren"
+      ],
+      "spectacle": "公車轉過海邊的彎，車窗外一整片冬末的海，路牌『鹿川』從海的那頭出現。",
+      "glamour_shot": "念慈站在晃動的車廂裡抓著扶手，海光映在她臉上，眼睛一直看著前方。",
+      "setups": [],
+      "payoffs": [
+        "s03-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所動工日訂了",
+        "哥哥加入合資"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "siji",
+        "jiang-yisheng",
+        "a-gong",
+        "xiao-yun",
+        "zhou-nianzu"
+      ],
+      "locations": [
+        "鹿川往台北的公車（回程）"
+      ],
+      "state": {
+        "time": "回程當天三點零五分",
+        "knowledge": "照護所下週一動工",
+        "carry_forward": "債剩兩百萬；快到站了"
+      }
+    },
+    {
+      "number": 179,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "空的長椅",
+      "youtube_title": "公車到站車門打開，十年來每一次都在的長椅上，今天沒有人，也沒有薑茶",
+      "duration_s": 110,
+      "logline": "她下車，第一次看見那張長椅是空的。",
+      "hook": "公車停穩，車門打開，她第一個衝下去，抬頭——",
+      "hook_type": "question",
+      "mid_hook": "長椅上沒有人，沒有保溫瓶，只有早上的露水乾掉的痕跡。她在原地站著，看錶：三點十分。",
+      "extra_hooks": [
+        "她拿出手機，沒有訊息；她打開備忘錄，那三個字還在。"
+      ],
+      "conflict": "她要面對：今天沒有人等。",
+      "turn": "她以為自己會失望，結果她發現自己最在意的不是薑茶，是人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她在長椅正中間坐下——第一次坐中間，左右都空著。手腕上的錶滴答響。",
+        "question": "他今天去哪了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren"
+      ],
+      "spectacle": "公車開走後揚起一陣風，鎮口只剩一張空長椅和一個站著的人，消防隊的紅門關著。",
+      "glamour_shot": "念慈坐在空長椅正中間，背挺直，風把她的頭髮吹亂，她沒有去撥。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "zhou-nianci",
+        "siji"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "回程當天三點十分",
+        "knowledge": "長椅上沒人、沒薑茶",
+        "carry_forward": "債剩兩百萬；她坐在長椅中間"
+      }
+    },
+    {
+      "number": 180,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "自己走過來",
+      "youtube_title": "長椅上沒人她等了十分鐘，第一次自己走向消防隊，車庫裡的他正在煮薑茶抬起頭",
+      "duration_s": 150,
+      "logline": "她在空長椅上等了十分鐘，然後第一次自己往他那裡走。",
+      "hook": "她看錶：三點十五。三點十八。三點二十——她等了十分鐘，十年來他每一天都這樣等。",
+      "hook_type": "image",
+      "mid_hook": "她站起來，背上背包，第一次往消防隊走；阿凱在門口看見，一句話都沒說，把車庫門往上拉開。",
+      "extra_hooks": [
+        "車庫裡飄出薑的味道，熱的。"
+      ],
+      "conflict": "沒有人在門口；她要決定自己走不走那十步。",
+      "turn": "她以為今天沒人等她，原來他一直在等——等她自己走過來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "車庫裡，江野站在爐子前，抬頭看她：「今天想讓妳自己走過來。」她說：「我走了十分鐘。」他說：「我等了十年。」",
+        "question": "她會說出自己在等嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "duli",
+        "ganren"
+      ],
+      "spectacle": "消防隊車庫門緩緩升起，午後的光一寸一寸照進來，照亮紅色消防車與爐上一鍋冒著熱氣的薑茶。",
+      "glamour_shot": "江野在爐前回頭，熱氣模糊了他的輪廓，眼裡只有門口那個背著背包的人。",
+      "setups": [],
+      "payoffs": [
+        "s03-t13",
+        "m12",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次自己走向他",
+        "債剩兩百萬、照護所下週動工"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "消防隊車庫"
+      ],
+      "state": {
+        "time": "回程當天三點二十分",
+        "knowledge": "他今天故意不在長椅，等她自己走過來；她自己走了",
+        "carry_forward": "債剩兩百萬；照護所下週一動工；她手機裡的『我在等』還沒說出口"
+      }
+    }
+  ]
+}
