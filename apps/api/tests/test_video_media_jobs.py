@@ -16,6 +16,7 @@ from uuid import uuid4
 import fakeredis
 import httpx
 import pytest
+from pydantic import ValidationError
 from sqlalchemy.dialects import postgresql
 
 from app.config import Settings
@@ -814,6 +815,45 @@ async def test_a_series_model_whose_vendor_has_no_key_is_refused_before_anything
         await submit_job(ctx, "image", _image())
     assert (refused.value.status, refused.value.code) == (503, "video_media_not_configured")
     assert await meter.used(ctx.redis, meter.IMAGES) == 0
+
+
+@pytest.mark.asyncio
+async def test_a_video_the_site_has_no_series_of_draws_with_the_model_its_own_series_json_names(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value=None))
+    fake_provider.submit_result = Submitted(inline=PNG, content_type="image/png")
+    ctx = _context(
+        tmp_path, fake_provider, row=_row(image_provider="minimax", image_model="image-01")
+    )
+    job, created = await submit_job(ctx, "image", _image(image_model="gemini-3-pro-image"))
+    assert created and job.status == "ready"
+    assert (job.provider, job.model) == ("gemini", "gemini-3-pro-image")
+    assert float(job.usd_estimate) == 0.134, "priced as the named model, not the settings' choice"
+    assert [request.model for request in fake_provider.requests] == ["gemini-3-pro-image"]
+    plain, created_plain = await submit_job(ctx, "image", _image())
+    assert created_plain and (plain.provider, plain.model) == ("minimax", "image-01"), (
+        "a request naming no model still follows the settings tab"
+    )
+
+
+@pytest.mark.asyncio
+async def test_an_episode_of_a_site_series_keeps_its_series_model_over_the_request(
+    tmp_path: Path, fake_provider: FakeProvider, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    monkeypatch.setattr(service, "series_image_model", AsyncMock(return_value="image-01"))
+    fake_provider.submit_result = Submitted(inline=PNG, content_type="image/png")
+    ctx = _context(tmp_path, fake_provider, row=_row(image_model="gemini-3-pro-image"))
+    job, _ = await submit_job(ctx, "image", _image(image_model="gemini-3.1-flash-image"))
+    assert (job.provider, job.model) == ("minimax", "image-01"), (
+        "the server's series row decides an episode's model"
+    )
+
+
+def test_an_own_image_model_outside_the_catalog_is_refused_by_the_request_schema() -> None:
+    with pytest.raises(ValidationError):
+        _image(image_model="nope")
+    assert _image(image_model="gemini-3-pro-image").image_model == "gemini-3-pro-image"
 
 
 def test_the_vendor_of_a_series_model_is_chosen_as_the_first_picture_will_choose_it() -> None:

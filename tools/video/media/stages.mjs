@@ -290,6 +290,10 @@ export class Stage {
   /** Generate one image: a character sheet, a keyframe, an end frame; `size` "2K" asks for a larger picture (IMAGE_SIZES). */
   async image({ id, purpose, prompt, negative = "", aspect = "16:9", references = [], seed = null, shotId = null, size = null, target }) {
     const key = this.imageKey({ prompt, negative, references, seed, size });
+    // A series.json that names its own image model (imageVersion 1; `imageStatus` made it the
+    // expected choice) asks the server for that model by name, so a video the site makes no
+    // series of is drawn with it too; an episode's series row still wins on the server.
+    const own = this.imageVersion ? choiceFor(this.status, "image", this.format)?.model : null;
     const request = {
       slug: this.slug,
       purpose,
@@ -300,6 +304,7 @@ export class Stage {
       ...(seed !== null ? { seed } : {}),
       ...(shotId ? { shot_id: shotId } : {}),
       ...(size ? { size } : {}),
+      ...(own ? { image_model: own } : {}),
     };
     return this.generate({ kind: "image", key, submit: submitImage, request, id, target, usd: imagePrice(this.status, this.format, size) });
   }

@@ -169,6 +169,21 @@ function fakeStage(effective, { actualModel = effective.image.model, actualProvi
   return { stage, workdir, calls, bodies, ready, generate };
 }
 
+test("a series.json that names its own image model asks the server for it by name; one that names none sends no model", async () => {
+  // The server draws a video the site makes no series of with the model the request names
+  // (ImageJobIn.image_model); an episode's series row wins on the server, so sending it is safe.
+  const effective = imageStatus(status(), story(MINI));
+  const own = fakeStage(effective, { actualModel: MINI, actualProvider: "minimax", actualPrice: 0.0035 });
+  own.stage.imageVersion = 1;
+  await own.generate();
+  assert.equal(own.bodies.length, 1);
+  assert.equal(own.bodies[0].image_model, MINI);
+  const plain = fakeStage(status());
+  await plain.generate();
+  assert.equal(plain.bodies.length, 1);
+  assert.equal("image_model" in plain.bodies[0], false, "without a series model the settings tab decides, and the request names none");
+});
+
 test("a slides video draws with the slides choice only while the slides switch is on; off, it is the drama's model, size and price", () => {
   const off = status();
   off.image.usd_per_image_2k = 0.134;
