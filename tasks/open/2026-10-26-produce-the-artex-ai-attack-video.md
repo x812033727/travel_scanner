@@ -55,3 +55,5 @@ channels covered who attacked whom; nobody gave viewers a check they can run. Th
 - Still to open before writing: the security office's own press release on moda.gov.tw (only the
   iThome report was read), and CrowdStrike's Korean-bank write-up if outline B is chosen.
 - GMO's own numbers are about 20 companies on one host plus 6 more hosts; "about 80" is a media figure.
+
+- 2026-10-28: all 8 dubs made (two retake rounds, then rewording in 7 locales; about 17 lines stay flagged as transcription spelling only: pt tá/está, id udah/client, th ค่ะ, ja アプリの資格情報 kept as the Google page name). 8 locale thumbnails fitted. Package 4/4; languages gate pushed — waiting on the owner (upload the dub tracks in Studio, then tick the dubs-uploaded box). Publish card still needs the Studio URL.
