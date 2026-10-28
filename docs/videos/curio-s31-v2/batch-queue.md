@@ -12,7 +12,7 @@
 
 | 順序 | 原集 | 新版工作 | 目前狀態 |
 | --- | --- | --- | --- |
-| 1 | curio-s31 | curio-s31-v2 | plain2/2＋listener1合成完成，12句新文字／raw、200保留；待新cohort／ASR／品質。0/8 accepted |
+| 1 | curio-s31 | curio-s31-v2 | plain2/2＋listener2/2合成完成，5句新raw／207保留；待新cohort／ASR／品質。0/8 accepted |
 | 2 | curio-s15 | 先查既有新版與持有者，再決定隔離路徑 | 等 S31 完成 |
 | 3 | curio-s12 | 同上 | 等 S15 完成 |
 | 4 | curio-s16 | 同上 | 等 S12 完成 |
@@ -34,7 +34,17 @@
 
 ## 當前斷點
 
-最新 checkpoint（2026-10-28 11:23Z完成／11:27Z稽核）：英文listener改口第1輪96080已於11:23:07.1918944Z **native0完成12句變更文字合成，plain2/2＋listener1完成；新品質仍待檢查。** v3措辭已逐句語意覆核並由官方caption merge套用，EN SHA e6e8e1c3…75ef7；僅12句文字／raw更新、其餘200與metadata保留，Chinese/source／voice/provider不變。官方12 requests／522 billable、159 request groups沿用；獨立actual稽核確認212 raw、153份前件、14 stretched、114歷史journal全保留active0、lease absent，舊ASR state2／run15／binding未改。實測fit150／0over、8窗≤1.15，cheng-date0.1秒由後停頓吸收；新軌a1814473…c729／46,583,753B，full decode native0／−14.1LUFS／LRA5.1／true peak−2.0dBFS，只是技術讀回。**原12flags對應舊take，不能稱新12fail；0/8 accepted、shorten0。** 現只準備新cohort，ASR handoff／新QA尚未執行；圖片預算不變，完整包與S15未成。見[listener1合成結果](dub-en-listener-reword1-result.json)。
+最新 checkpoint（2026-10-28 12:33Z完成／12:34Z稽核）：listener2合成48611已於12:33:05.2651135Z **native0完成五句新文字／raw與混音；plain2/2、listener2/2已合成完成，新品質待檢。** 官方5 requests／262 billable、166 request groups沿用；獨立actual覆核確認目標5句全部new SHA、其餘207文字／raw／metadata保留，全212 raw、177前件副本、120歷史journal active0與舊ASR state2／run15／binding全18檔不變。實測150窗0over、8窗≤1.15，cheng-date0.1秒及v2-add-0790.03秒由後停頓吸收；新軌a56fc2ea…10d45／46,585,183B／969.705秒，full decode native0／−14.1LUFS／LRA5.1／true peak−2.0dBFS，只是技術驗證。前6flags中5句對應更新前take；lz513保留同一take／文字、原0.17／0.16與flag，不是自動清除或實聽。新cohort／ASR／QA須另走實際關卡，generic PASS不是啟用；shorten0，不做第3輪原文或listener合成。**0/8 accepted**，圖片預算不變，完整包與S15未成。見[listener2合成結果](dub-en-listener-reword2-result.json)。
+
+歷史listener2合成dispatch快照（12:28Z；48611現已完成）：listener2五句措辭已獨立語意覆核、官方merge完成（EN3b1f40f2…43501，其他207句／metadata不變）；Root已dispatch **唯一合成48611／official46588（12:28:27.467Z，lease12:28:28.592Z），等待native與實際音檔／fit對帳。** 本輪計畫5 requests／262 billable、207行沿用，尚非完成量；plain2/2、listener1已合成，listener2僅本次執行中。最新官方dry-run native0讀quota4,733,976≥262，為共享額度快照；前置alias錯誤與時區解析誤判都在CLI／paid dispatch前，原時間並未過期，舊recipe保留，並非付費重試。lz513依current兩ASR的Mount Li／Lee同音證據保留原文字／take，原0.17／0.16及flag不清，不是音訊驗收／實聽。舊6flags保留，新版品質未檢；0/8 accepted，圖片預算不變，完整包與S15未成。見[listener2合成dispatch](dub-en-listener-reword2-dispatch.json)。
+
+歷史listener1完整品質快照（12:00–12:08；listener2尚未套用僅指當時）：listener1正常續檢76955已**native1完成完整品質判定，非infra：212＝163 exact＋14 Jev通過＋29 second解除＋6 flags，206句解除。** 實際6句為lz213／lz411／v2a0611／lz506／lz513／v2a0791；新版cache與flags已另存immutable副本，原分數／flags保留。lz513／76efd的58B保存答案已獨立確認canonical正常沿用，210筆有效primary保留、6處合法annotation更新、120份journal active0。末段CLI僅1筆新primary／2次Jev／1保存沿用，不推整鏈付費call數。Runtime獨立PASS：新8＋有效舊cache27＝35 second，Whisper native0／90.718秒、callback94.414秒，4CPU／nice19／int8／offline／無稿／單SSH close0與local reaped；lease absent、無holds，state／run保留，遠端scratch刪除未證。plain2/2＋listener1合成完成、shorten0，下一步只準備受限listener2候選與語意覆核，尚未套用／合成，不做第3輪原文重錄。**0/8 accepted**，圖片預算不變，完整包與S15未成。見[listener1完整品質結果](dub-en-listener-reword1-check-complete.json)。
+
+歷史listener1正常續檢1 dispatch快照（11:59Z；76955現已完成）：76efd／lz513的58B完整保存答案已由原始private checker native0／reused1 send0 fetch0與逐筆actual review通過；148份凍結、212 raw、114歷史＋3actual＝117份journal及Root fresh358次原件SHA已核。Root另開新slot的**唯一正常續檢76955執行中（caller32228／official43356，intent11:58:59.322Z、lease11:59:00.092Z），等待native與保存答案canonical消費／新品質證據。** 不宣稱second已完成或零費用；closure／activation保持有效，既用slot不重播，不能開第二producer或第3輪原文重錄。plain2/2＋listener1合成完成、shorten0；舊12flags歷史，0/8 accepted，圖片預算不變，完整包與S15未成。見[listener1正常續檢1](dub-en-listener-reword1-check-resume1.json)。
+
+歷史listener1首次check停止快照（11:51Z；已另slot正常續檢，保存答案消費待驗）：listener1 的新cohort封存／啟用已完成，H3 closure23025 native0；新283檔／ledger6及兩份前封存275＋6、283＋6均完整保留。唯一品質檢查15049（caller41372／official55244，11:49Z dispatch）於11:51:27.708Z **native1停止：primary完整保存答案的confirmed rename遭Windows EPERM，尚無新版品質結果。** request76efd856…dbea83的sent／answer／tmp為443／1286／758B，Root正凍結並安排原始private checker與逐筆覆核；不猜line、cache、second完成或費用。成功closure／activation維持有效，舊slot不重播；只能對帳後由Root另開正常continuation。plain2/2＋listener1合成完成、shorten0，**舊12flags只屬前take；0/8 accepted。** 圖片預算不變，完整包與S15未成。見[listener1品質檢查停止快照](dub-en-listener-reword1-check-dispatch.json)。
+
+歷史listener1合成快照（11:23–11:27；後續handoff／check狀態僅指當時）：英文listener改口第1輪96080已於11:23:07.1918944Z **native0完成12句變更文字合成，plain2/2＋listener1完成；新品質仍待檢查。** v3措辭已逐句語意覆核並由官方caption merge套用，EN SHA e6e8e1c3…75ef7；僅12句文字／raw更新、其餘200與metadata保留，Chinese/source／voice/provider不變。官方12 requests／522 billable、159 request groups沿用；獨立actual稽核確認212 raw、153份前件、14 stretched、114歷史journal全保留active0、lease absent，舊ASR state2／run15／binding未改。實測fit150／0over、8窗≤1.15，cheng-date0.1秒由後停頓吸收；新軌a1814473…c729／46,583,753B，full decode native0／−14.1LUFS／LRA5.1／true peak−2.0dBFS，只是技術讀回。**原12flags對應舊take，不能稱新12fail；0/8 accepted、shorten0。** 現只準備新cohort，ASR handoff／新QA尚未執行；圖片預算不變，完整包與S15未成。見[listener1合成結果](dub-en-listener-reword1-result.json)。
 
 歷史第2輪後品質結果（11:01Z；12flags屬listener1改口前take）：37111已native1完成完整品質判定，非infra：**212＝159 exact＋14 Jev通過＋27 second解除＋12 flags，200句通過檢查。** 相較前15句，lz221／lz427／lz520已解除，下一步只針對actual current12準備listener第1輪與語意覆核，目前0套用、0合成；plain2/2已達上限，不再第3輪原文重錄。lz213／4ba7保存答案52B已獨立確認canonical正常沿用；末段CLI為13筆新primary／2次Jev／1保存答案沿用，不推整鏈付費call數。Runtime獨立PASS：新13＋有效舊cache26＝39筆second，Whisper native0／111.381秒、callback115.241秒，4CPU／nice19／int8／offline／無稿／單SSH close0並local reaped；state／run保留，lease absent、無holds，未證遠端scratch刪除。0/8外語驗收，圖片預算不變，完整包與S15未成。見[第2輪後完整品質結果](dub-en-retake2-check-complete.json)。
 
