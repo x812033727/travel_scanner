@@ -100,6 +100,8 @@
 - **換裝與變化**（2026-10-01）：角色在某幾集換了樣子（脫下外套、坐上輪椅、穿病人服、老了幾十歲）或換了說話方式，寫在設定集人物表那個角色底下的 `looks`：`[{ id, from, to?, appearance, sheet_prompt?, voice_style? }]`。`id` 小寫英數 2–24 字、同一角色內不重複；`from`／`to` 是集數（含頭尾，沒有 `to` 就到全劇最後一集）；同一角色兩個 look 不能涵蓋同一集。`appearance` 是那幾集**完整的**外觀提示詞（取代基底、不是在基底上加減，因為生圖模型每一鏡都整段讀它），`sheet_prompt`、`voice_style`（只限 Gemini 聲音）給了才取代基底的。工人開始一集時 `castFrom(setting, 集數)` 把涵蓋這一集的 look 換進 `series.json` 的人物表，之後撰稿、`settle()`、lint、`look` 的 `sheetPrompt`、`keyframes` 的 `shotPrompt`、旁白請求的聲音都照舊讀那份人物表，所以不用另外改：外觀不同，`sheetKey` 就不同，look 的設定圖在第一集用到它時畫一次、站主核准一次，存在同一個角色資料夾裡基底那張旁邊，之後它涵蓋的集數都沿用；它結束後的集數又回到基底那張。沒有 `looks` 的作品，每一集的人物表、提示詞、設定圖鍵都跟以前一樣。工人送設定集前用 `documentProblem` 檢查 `looks` 的形狀，伺服器的 `doc_problem`（`_looks_problem`）用同一套規則再查一次，站主在後台手改的設定集在核准時也一樣，不合的會被擋下並說明是哪個 look（企劃模型的設定集提示詞還沒教它寫 `looks`，見票 `2026-10-01-setting-planner-writes-character-looks-and`）。同一集之內的變化（同一場戲裡老了幾十歲）不是 look：另立一個角色 id（例如 `lin-old`），那一集兩個都上場。
 - 詞彙表：設定集階段就把人名、門派名、術語連同讀音寫進 `docs/videos/lexicon.json`（`speechHash` 只含這一集的句子用到的條目，所以之後才加的詞，只有唸到它的集要重錄那幾句；2026-09-29 以前的做法是整份詞彙表都算）。
 
+- **影片自己的圖片模型**（2026-10-28）：`series.json` 的 `image_model` 原本只有站上作品的集才生效（伺服器照作品列查）。現在工具端在 `series.json` 有 `image_model` 時，每個圖片請求帶 `image_model`（`ImageJobIn.image_model`，`tools/video/media/stages.mjs` `Stage.image`），伺服器對**站上沒有作品的影片**照目錄驗證、計價後用它畫（`jobs.py` `_project_image_model`：退役或不存在的模型以 422 `video_media_model_not_allowed` 拒絕）；站上作品的集仍以作品列的模型為準，請求裡的名字不算。本機自己寫分鏡的漫劇（例如 `xiuxian-jiangli-e001`）就能選 Gemini 畫設定圖與關鍵影格而不動設定分頁，其他影片不受影響。
+
 ## 後台（`apps/web`）
 
 - `/admin/videos` 三個分頁：**教學影片**（現有列表，篩 `format !== "drama"`）、**漫劇**（新）、**設定**（`?tab=settings` 深連結保留）。查詢鍵 `series`（`?tab=drama&series=<slug>`），`video=` 仍優先開單集頁。
