@@ -1,0 +1,4391 @@
+{
+  "number": 4,
+  "title": "照護所",
+  "theme": "債還完那天，才敢抬頭。",
+  "start_state": "她承認了自己在等，沒說出口；他知道，沒逼。照護所要開：空屋、合資、她的存款、江野的消防警報。債剩兩百萬。哥哥的反對變成沉默。江父留在鎮上。阿凱在一場火裡出事。",
+  "end_state": "江野為什麼不說揭開（十九歲那天他說了，公車開走了）；江野手臂的傷揭開（三年前救的是她媽媽，沒人告訴她）；照護所的錢從哪來揭開（江野匿名投了一筆，哥哥知道）；江父為什麼在外地揭開。阿凱在火場被江野拉出來，她在衛生所替阿凱處理，第一次怕——怕的是下一次是江野。債還完：最後一筆她自己匯的。最後一集，照護所開幕，鎮民坐滿院子；她還完債那天站在消防隊門口，第一次主動坐到長椅的中間，對他說：『我還完了。』他說：『那我可以說了嗎？』她說：『你說。』警鈴響了。",
+  "guest_cast": [
+    {
+      "id": "s04-a-shu",
+      "name": "阿樹師傅",
+      "role": "照護所工地的工頭，五十六歲，泥水水電一把抓、嘴硬心軟；動工第一天攔下她敲承重牆，第五篇章交出照護所的鑰匙",
+      "appearance": "東亞中年男性，五十六歲，黝黑精瘦、平頭花白、眼角笑紋深、笑起來露一顆金牙；白色汗衫外罩螢光反光背心，腰間掛捲尺與木工鉛筆，脖子上一條擦汗的毛巾，安全帽推在後腦"
+    },
+    {
+      "id": "s04-xiuqin",
+      "name": "秀琴姨",
+      "role": "鎮上雜貨店老闆娘，六十歲，合資的鎮民裡帶頭記帳的人；早餐店的老鄰居，三年前那場火的目擊者",
+      "appearance": "東亞中年女性，六十歲，圓臉福相、燙捲的灰黑短髮、老花眼鏡用珠鍊掛在胸前，碎花襯衫配深色袖套，手裡永遠一本綠色封皮的帳簿和一台大按鍵計算機"
+    },
+    {
+      "id": "s04-wu-ama",
+      "name": "吳阿嬤",
+      "role": "江家老屋隔壁的獨居阿嬤，七十八歲，念慈到府換藥的病人；念慈在她家門階上聽見江家父子說了一整夜的話",
+      "appearance": "東亞老年女性，七十八歲，瘦小、銀白短髮梳得整齊、慈眉細眼、笑起來滿臉皺紋，深藍碎花上衣外罩毛線背心，膝上一條格子毯；只拍臉與手"
+    },
+    {
+      "id": "s04-peishan",
+      "name": "佩珊",
+      "role": "鹿川鎮農會的櫃台行員，三十歲，替照護所開戶、管帳戶通知，第五篇章調出那張存款憑條",
+      "appearance": "東亞年輕女性，三十歲，清爽端正：及肩短直髮、細框眼鏡、淡妝、笑起來有酒窩，農會淺藍制服襯衫配深藍背心，胸前別名牌，坐在櫃台後"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "阿凱為什麼最近都不來工地？",
+      "setup_episode": 182,
+      "payoff_episode": 189
+    },
+    {
+      "id": "s04-t02",
+      "question": "誰要替她還那一百五十萬？",
+      "setup_episode": 183,
+      "payoff_episode": 184
+    },
+    {
+      "id": "s04-t03",
+      "question": "照護所帳上多出來的三十萬是誰的？",
+      "setup_episode": 184,
+      "payoff_episode": 227
+    },
+    {
+      "id": "s04-t04",
+      "question": "哥哥為什麼知道那三十萬是誰的？",
+      "setup_episode": 185,
+      "payoff_episode": 227
+    },
+    {
+      "id": "s04-t05",
+      "question": "江父門邊那只行李箱，會打開還是提走？",
+      "setup_episode": 188,
+      "payoff_episode": 225
+    },
+    {
+      "id": "s04-t06",
+      "question": "江野說「這裡要有人」，說的是誰？",
+      "setup_episode": 189,
+      "payoff_episode": 239
+    },
+    {
+      "id": "s04-t07",
+      "question": "阿公說朝東那間是他的，會留給他嗎？",
+      "setup_episode": 190,
+      "payoff_episode": 236
+    },
+    {
+      "id": "s04-t08",
+      "question": "十年前公車站那句話，到底是什麼？",
+      "setup_episode": 191,
+      "payoff_episode": 194
+    },
+    {
+      "id": "s04-t09",
+      "question": "那天對面早餐店門口站的人，聽見了嗎？",
+      "setup_episode": 193,
+      "payoff_episode": 200
+    },
+    {
+      "id": "s04-t10",
+      "question": "她會不會提前把債還完？",
+      "setup_episode": 195,
+      "payoff_episode": 240
+    },
+    {
+      "id": "s04-t11",
+      "question": "八個月，他等得了嗎？",
+      "setup_episode": 197,
+      "payoff_episode": 240
+    },
+    {
+      "id": "s04-t12",
+      "question": "三年前是誰說「別告訴念慈」？",
+      "setup_episode": 201,
+      "payoff_episode": 203
+    },
+    {
+      "id": "s04-t13",
+      "question": "知道了三年前的事，她要對他說什麼？",
+      "setup_episode": 205,
+      "payoff_episode": 210
+    },
+    {
+      "id": "s04-t14",
+      "question": "阿凱為什麼總是搶著衝進去？",
+      "setup_episode": 206,
+      "payoff_episode": 215
+    },
+    {
+      "id": "s04-t15",
+      "question": "哥哥的四十分鐘，她懂了嗎？",
+      "setup_episode": 212,
+      "payoff_episode": 220
+    },
+    {
+      "id": "s04-t16",
+      "question": "她說怕的不是阿凱，那她怕的是什麼？",
+      "setup_episode": 215,
+      "payoff_episode": 216
+    },
+    {
+      "id": "s04-t17",
+      "question": "他會不會為了她換工作？",
+      "setup_episode": 216,
+      "payoff_episode": 217
+    },
+    {
+      "id": "s04-t18",
+      "question": "債還剩多少？",
+      "setup_episode": 221,
+      "payoff_episode": 230
+    },
+    {
+      "id": "s04-t19",
+      "question": "照護所什麼時候開幕？",
+      "setup_episode": 225,
+      "payoff_episode": 239
+    },
+    {
+      "id": "s04-t20",
+      "question": "她會不會把三十萬退給他？",
+      "setup_episode": 228,
+      "payoff_episode": 229
+    },
+    {
+      "id": "s04-t21",
+      "question": "長椅中間，她敢不敢坐？",
+      "setup_episode": 230,
+      "payoff_episode": 240
+    },
+    {
+      "id": "s04-t22",
+      "question": "照護所的招牌上寫什麼？",
+      "setup_episode": 231,
+      "payoff_episode": 239
+    },
+    {
+      "id": "s04-t23",
+      "question": "他開口的時候，她會怎麼回答？",
+      "setup_episode": 231,
+      "payoff_episode": 240
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "明早七點",
+      "youtube_title": "她從台北回來沒人在車站等，走到消防隊才看見他在煮薑茶；隔天全鎮把存款搬上早餐店的桌",
+      "duration_s": 110,
+      "logline": "念慈要讓衛生所隔壁的空屋明早七點動工改成照護所，卻被最後一截湊不齊的合資款擋住。",
+      "hook": "車庫的黃燈下，她從江野手裡接過薑茶，比十年來任何一次都快；他只問一句：「明早七點？」",
+      "hook_type": "line",
+      "mid_hook": "早餐店桌上排滿鎮民的信封，哥哥從灶台後走出來，放下一個厚信封就走回去；門口他停了八年的機車位，空了。",
+      "conflict": "合資款今晚要湊齊，工班明早七點才肯進場；她的存款已經全放進去，秀琴姨的計算機還是差最後一截。",
+      "turn": "大家以為今晚湊不齊、動工要延，打烊後鎮民還一個一個來敲鐵門，阿公那罐銅板倒出來，剛好補上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "清晨七點，空屋前站滿了人，她舉起大槌對準第一面牆，回頭看人群：江野站在最後面，對她點了一下頭。",
+        "question": "她這一槌，敲得下去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiaozhen",
+        "duli",
+        "xiju"
+      ],
+      "spectacle": "早餐店的長桌上，一個個寫著名字的牛皮紙信封排成一列，鎮民從門口排到街角。",
+      "glamour_shot": "念慈下夜班把低馬尾放下，接過薑茶時被熱氣熏得瞇起眼的側臉，車庫的黃燈落在她手背上。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "合資款在打烊後湊齊，工班明早七點進場",
+        "哥哥賣了機車把錢放上桌，一個字都沒說",
+        "觀眾看見：江野外套口袋露出的請假單，日期是兩個月前，動工日一定下來他就請了"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "zhou-nianzu",
+        "zhou-ma",
+        "a-gong",
+        "xiao-yun",
+        "s04-xiuqin"
+      ],
+      "locations": [
+        "消防隊車庫",
+        "周家早餐店",
+        "衛生所隔壁的空屋"
+      ],
+      "state": {
+        "time": "三月初，動工前一夜到週一清晨七點",
+        "knowledge": "債剩兩百萬（值班室還款表上白格還有四十格）；照護所：今天動工；合資款剛好湊齊",
+        "carry_forward": "舉起的第一槌；哥哥不見的機車；江野早就請好的假"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "承重牆",
+      "youtube_title": "全鎮看著她敲下照護所第一槌，工頭突然衝出來大吼，原來她瞄準的是整棟房子最不能碰的那面牆",
+      "duration_s": 100,
+      "logline": "念慈想在動工第一天把舊隔間拆完，卻被自己連哪面牆能敲都不知道擋住。",
+      "hook": "大槌揮到一半，阿樹師傅一把抓住槌柄：「停！那是承重牆！」全場爆笑，她的臉紅到耳根。",
+      "hook_type": "danger",
+      "mid_hook": "消防隊沒值班的人都來幫忙，老蔡點名少一個：「阿凱呢？」江野低頭扛水泥，沒答。",
+      "conflict": "她要第一天就把隔間拆完省工錢，可是空屋的牆哪面能動、哪面不能動，她一面都看不懂。",
+      "turn": "以為她會被師傅趕去旁邊遞水，阿樹師傅卻照著每面牆上淡淡的粉筆叉，把槌子交回她手上：「這面。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第一面隔間牆倒下，灰塵裡露出一整排發黑的老電線，接頭劈啪冒出火花；江野一把把她往後拉：「退！」",
+        "question": "空屋的電，怎麼還通著？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        2,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xiaozhen"
+      ],
+      "spectacle": "第一面隔間牆轟然倒下，陽光從牆洞斜射進漫天灰塵，十幾個人同時咳嗽、同時笑。",
+      "glamour_shot": "江野深藍消防 T 袖口捲到肘，扛著兩袋水泥從她身後走過，汗沿著下顎線滴下，他沒回頭。",
+      "setups": [
+        "s04-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第一面隔間牆拆掉了",
+        "她學會看粉筆叉找能拆的牆",
+        "觀眾看見：粉筆叉是昨晚有人來畫的，江野的袖口沾著白粉"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "s04-a-shu",
+        "lao-cai",
+        "a-gong",
+        "xiao-yun"
+      ],
+      "locations": [
+        "照護所工地（衛生所隔壁的空屋）"
+      ],
+      "state": {
+        "time": "三月初，動工第一天上午",
+        "knowledge": "債剩兩百萬；照護所：拆隔間；阿凱沒來幫忙",
+        "carry_forward": "牆裡還通電的老電線"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "差三十萬",
+      "youtube_title": "照護所剛動工就挖出一牆老電線，工頭一算要多三十萬，她手上的錢只夠還這個月的債",
+      "duration_s": 105,
+      "logline": "念慈要把空屋的電線全部重拉，卻被多出來的三十萬和同一天到期的還款擋住。",
+      "hook": "火花還在劈啪，江野已經衝到電箱前一把拉下總開關，整間空屋一黑；他回頭第一句：「誰都別碰。」",
+      "hook_type": "danger",
+      "mid_hook": "阿樹師傅按完計算機：全屋重拉電線、加埋消防警報的管線，工程款要多三十萬。秀琴姨的綠帳簿上，合資一毛不剩。",
+      "extra_hooks": [
+        "觀眾看見：隔天清晨，哥哥在江野的蛋餅袋上用奇異筆寫了三個字「差三十」，江野看完，把袋子摺進口袋。"
+      ],
+      "conflict": "還款日就是今天，她手上的錢只夠還這個月的五萬；工地停工一天，工班就要多算一天。",
+      "turn": "以為她會先挪還款去補工地，她在農會提款機前還是按下了五萬：債是債，照護所是照護所。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "走出農會，手機響，銀行專員的聲音：「周小姐，有人要替您還款。一百五十萬。」",
+        "question": "誰要替她還一百五十萬？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "xiaozhen"
+      ],
+      "spectacle": "總開關拉下的一瞬，整間空屋暗掉，只剩門口斜進來的一道日光照著飄浮的灰。",
+      "glamour_shot": "念慈在提款機的藍光前低頭按密碼，耳後散下一縷髮，眼下是夜班的淡影。",
+      "setups": [
+        "s04-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "江野及時斷電，沒有人受傷",
+        "她照常還了三月的五萬：債剩一百九十五萬，還款表塗掉一格"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "s04-a-shu",
+        "s04-xiuqin",
+        "zhou-nianzu",
+        "s04-peishan"
+      ],
+      "locations": [
+        "照護所工地",
+        "周家早餐店",
+        "農會"
+      ],
+      "state": {
+        "time": "三月初，動工第二天",
+        "knowledge": "債剩一百九十五萬；照護所：停工等重拉電線；工程款缺三十萬",
+        "carry_forward": "一百五十萬的電話；蛋餅袋上的「差三十」"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "我不要再欠人",
+      "youtube_title": "前男友的白月光突然替她還了一百五十萬，她剛說完不要再欠任何人，帳戶又多出一筆沒有名字的錢",
+      "duration_s": 120,
+      "logline": "念慈不肯讓任何人替她還債，卻被已經直接沖掉本金、退不回去的一百五十萬擋住。",
+      "hook": "「不用。」她站在農會門口對電話說。銀行專員停了一秒：「周小姐，已經入帳了。」",
+      "hook_type": "reversal",
+      "mid_hook": "視訊接通，台北辦公室裡的許以寧沒化妝：「那是我的留學費。我還我自己的。」",
+      "extra_hooks": [
+        "她對著手機說：「我不要再欠人。」身後扛著磚的江野，腳步停住了。"
+      ],
+      "conflict": "錢是第三人直接清償給銀行的，退不回去；她不想欠許以寧，更不想欠任何人。",
+      "turn": "以為許以寧是來施捨，她卻說那筆錢本來就是她爸媽要出的留學費，林致遠搶著付、她以為是他存的；她還的是她自己那一筆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "值班室裡，她用藍筆把還款表連塗三十格，寫上「許以寧」；剛放下筆，手機跳出照護所帳戶的通知：無摺存入三十萬，存款人空白。",
+        "question": "這三十萬，又是誰的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "duli",
+        "ganren"
+      ],
+      "spectacle": "值班室日光燈下，牆上的還款表被藍筆一格一格塗過去，三十格連成一片，只剩九格白的。",
+      "glamour_shot": "念慈戴著安全帽站在工地門口講電話，夕陽打在她抿住的嘴角，眉眼一點一點收緊。",
+      "setups": [
+        "s04-t03"
+      ],
+      "payoffs": [
+        "s04-t02",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許以寧替自己那一百五十萬清償：債剩四十五萬，還款表剩九格",
+        "她說出「我不要再欠人」，江野聽見了，她不知道"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xu-yining",
+        "jiang-ye",
+        "s04-a-shu"
+      ],
+      "locations": [
+        "農會門口",
+        "照護所工地",
+        "衛生所值班室"
+      ],
+      "state": {
+        "time": "三月初，動工第二天傍晚到夜",
+        "knowledge": "債剩四十五萬（白格九格）；照護所帳戶多了三十萬，存款人空白",
+        "carry_forward": "沒有名字的三十萬"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "不用查",
+      "youtube_title": "照護所帳上憑空多了三十萬，她把全鎮的帳攤滿一桌也查不出是誰，只有哥哥一句話說得太快",
+      "duration_s": 105,
+      "logline": "念慈要查出三十萬是誰的才肯用，卻被一桌對不出名字的帳和哥哥的沉默擋住。",
+      "hook": "早餐店打烊後，她把合資帳簿、估價單、帳戶明細攤滿一桌：「三十萬，誰的？」",
+      "hook_type": "question",
+      "mid_hook": "她撥給許以寧，對方愣了一下：「這筆不是我。」",
+      "extra_hooks": [
+        "一直背對她煎蛋的哥哥，鍋鏟沒停：「不用查。」"
+      ],
+      "conflict": "她要知道錢從哪來才肯動，可是全鎮合資的名字一個一個對完，沒有一個人多給三十萬。",
+      "turn": "以為哥哥跟她一樣不知道，他那句「不用查」說得太快——他知道。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她盯著哥哥的背：「你知道是誰。」哥哥關火，把一個裝好明早蛋餅的紙袋塞進她手裡：「明早拿去消防隊。」袋底朝下那面有兩個奇異筆字，她沒翻過來看。",
+        "question": "哥哥為什麼不說？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "xiju",
+        "duli"
+      ],
+      "spectacle": "早餐店的長桌被帳簿、估價單、手寫收據鋪滿，一盞黃燈吊在正中間，油煙在燈下慢慢轉。",
+      "glamour_shot": "念慈把頭髮夾起、筆夾在耳後，對著計算機算帳，綠色的螢幕光映在她眼裡。",
+      "setups": [
+        "s04-t04"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "秀琴姨對出缺口：合資一百二十萬、工程款一百五十萬，多出的剛好三十萬",
+        "許以寧、媽媽都排除了"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-nianzu",
+        "zhou-ma",
+        "s04-xiuqin",
+        "xu-yining"
+      ],
+      "locations": [
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "三月初，動工第三天夜",
+        "knowledge": "債剩四十五萬；照護所：停工；三十萬不是許以寧、不是媽媽，哥哥知道",
+        "carry_forward": "蛋餅袋底那兩個字"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "先用",
+      "youtube_title": "她死也不肯動那三十萬，工頭說再不拉電線就要拆兩次牆，消防隊那個人只說了兩個字",
+      "duration_s": 100,
+      "logline": "念慈不肯動用來路不明的三十萬，卻被今天不拉電線就得拆兩次牆的工期擋住。",
+      "hook": "消防隊門口，她把蛋餅袋遞給江野，袋底的字朝著他；他接過去，翻都沒翻就收進外套。",
+      "hook_type": "image",
+      "mid_hook": "阿樹師傅下最後通牒：「今天不拉，牆就白封了。」",
+      "conflict": "她寧可停工也不想欠一個不知道名字的人，可是照護所的牆等不了她查完。",
+      "turn": "以為江野會勸她別用，他卻說：「先用。」她瞪他：「你怎麼知道不是壞錢？」阿公在旁邊：「錢哪有壞的，人才有。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "紅圈畫完，她對著整個工地說：「不管是誰，我會還。」梯子上江野手裡的鐵鎚，停在半空。",
+        "question": "她查得到是誰嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "duli",
+        "xiaozhen"
+      ],
+      "spectacle": "電工把一捲捲紅藍新電線拉過空屋，像新長出的筋脈一樣沿著牆面爬上天花板。",
+      "glamour_shot": "江野靠在消防隊門口的長椅邊，把蛋餅袋收進外套，抬頭看她的那一眼，晨光從側邊打亮他的眉骨。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "電線開工，消防警報的管線一起埋進牆裡",
+        "帳簿上多了一個紅圈：「三十萬？」"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "s04-a-shu",
+        "a-gong",
+        "lao-cai"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "照護所工地"
+      ],
+      "state": {
+        "time": "三月中，動工第四天",
+        "knowledge": "債剩四十五萬；照護所：重拉電線、埋警報管線；三十萬先用，記成紅圈",
+        "carry_forward": "她說「我會還」"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "凌晨兩點",
+      "youtube_title": "凌晨兩點衛生所的門被推開，消防隊最愛鬧的小隊員抱著手腕求她：千萬別讓江哥知道",
+      "duration_s": 95,
+      "logline": "念慈要替半夜受傷的阿凱處理傷口，卻被他死都不肯說的祕密擋住。",
+      "hook": "夜班，她在帳簿紅圈旁列名字：許以寧，劃掉；媽，劃掉；哥，問號——門被推開，阿凱抱著腫起來的手腕：「念慈姐，別跟江哥說。」",
+      "hook_type": "line",
+      "mid_hook": "她剪開他的袖子：手臂上一道一道新的擦傷和繩索勒痕——他每天半夜都在練什麼？",
+      "conflict": "阿凱要她保密，她要知道他在拿自己的手做什麼。",
+      "turn": "以為阿凱是去跟人打架，他痛到說漏嘴：「繩索救援，我每天練到兩點。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "包紮完，阿凱走到門口又回頭：「念慈姐，江哥十年沒升，妳知道嗎？」",
+        "question": "江野為什麼十年不升？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiaozhen",
+        "xiju"
+      ],
+      "spectacle": "凌晨的衛生所只亮一盞燈，窗外消防隊訓練塔頂上，一條繩索還在夜風裡晃。",
+      "glamour_shot": "念慈戴著口罩低頭替阿凱纏彈性繃帶，日光燈把她的睫毛影子投在口罩上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿凱的手腕扭傷處理好了，沒有骨折",
+        "觀眾看見：窗外長椅上放著一杯冒熱氣的薑茶——她今天夜班"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "a-kai"
+      ],
+      "locations": [
+        "鹿川鎮衛生所",
+        "消防隊訓練塔（窗外）"
+      ],
+      "state": {
+        "time": "三月中，深夜兩點",
+        "knowledge": "債剩四十五萬；照護所：埋管線；阿凱半夜偷練繩索救援",
+        "carry_forward": "江野十年沒升"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "三個不說話的男人",
+      "youtube_title": "工地上三個男人整個下午一句話都沒說，她卻發現，消防隊那個人十年來每次升官都說不要",
+      "duration_s": 110,
+      "logline": "念慈想弄清楚江野為什麼十年不升，同時捨不得花錢換照護所的舊窗框，卻被一個比一個沉默的男人擋住。",
+      "hook": "工地裡老蔡一槌敲下去：「升了就要調市區。他每次都說不要。」",
+      "hook_type": "line",
+      "mid_hook": "哥哥遞鐵鎚、江野接、江父蹲在一旁把舊窗框刨得跟新的一樣，三個男人一下午沒一句話；小芸：「這裡在拍默劇嗎？」",
+      "extra_hooks": [
+        "傍晚江父收起刨刀走回老屋，門邊立著一只從過年就沒拆過的行李箱；江野看著那只箱子，把門輕輕帶上。"
+      ],
+      "conflict": "換新窗框要多花一筆，她想省；可是沒有人開口說要修，連江野的事也沒人肯說完。",
+      "turn": "以為江父只是路過，他一聲不吭把整排舊窗框拆下來，一扇一扇修好；阿樹師傅看傻了：「老師傅，哪裡學的？」「以前蓋房子。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜班前她經過訓練塔，塔頂一條繩索上吊著一個人在晃，只用一隻手——是手腕還腫著的阿凱。",
+        "question": "阿凱的手還傷著，他在幹嘛？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "xiaozhen",
+        "jiaren"
+      ],
+      "spectacle": "一整排舊木窗框靠牆立著，被刨得發亮，夕陽穿過窗格在水泥地上排成一列光格子。",
+      "glamour_shot": "江野站在梯子上裝回窗框，袖子捲到肘，手臂上的舊疤在夕陽裡一閃，他低頭看她遞上來的螺絲。",
+      "setups": [
+        "s04-t05",
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "江父修好整排舊窗框，省下一筆錢",
+        "她知道江野十年來每次升遷都因為要調走而拒絕",
+        "觀眾看見：江父門邊那只行李箱從過年立到現在"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "zhou-nianzu",
+        "jiang-fu",
+        "lao-cai",
+        "xiao-yun",
+        "s04-a-shu",
+        "a-kai"
+      ],
+      "locations": [
+        "照護所工地",
+        "江家老屋門口",
+        "消防隊訓練塔"
+      ],
+      "state": {
+        "time": "三月中，週末到入夜",
+        "knowledge": "債剩四十五萬；照護所：管線埋好一半、舊窗框修好；三十萬還是紅圈",
+        "carry_forward": "江父門邊的行李箱；塔上單手吊著的阿凱"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "替他升",
+      "youtube_title": "愛鬧的小隊員偷練到手受傷也不說，原來他想替那個十年不肯調走的人，把小隊長考回來",
+      "duration_s": 115,
+      "logline": "念慈夾在想偷考小隊長的阿凱和什麼都看在眼裡的江野中間，卻被一句沒說完的「這裡要有人」擋住。",
+      "hook": "她衝到塔下大喊，阿凱一滑落地，腫著的手往背後藏：「念慈姐，妳沒說吧？」塔的陰影裡，江野拎著保溫瓶走出來。",
+      "hook_type": "reversal",
+      "mid_hook": "江野不罵他，只丟過去一本筆記：「繩結，第三頁錯了。」——他每天半夜都在訓練塔下看。",
+      "extra_hooks": [
+        "阿凱紅著眼說出理由：「江哥十年不肯調，那我替他升小隊長。」"
+      ],
+      "conflict": "阿凱怕被罵、怕被禁考，她答應過保密，卻被當場抓包。",
+      "turn": "以為江野會禁止，他早就知道，每晚在塔下記阿凱的錯：「升可以。不准逞強。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿凱走了，她問：「你為什麼十年不調？」江野看向對街衛生所亮著燈的門口，牌子上寫著「夜班護理師：周念慈」：「這裡要有人。」",
+        "question": "「這裡要有人」，說的是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xiaozhen",
+        "ganren"
+      ],
+      "spectacle": "夜裡的訓練塔下，塔燈照著三個人，攤開的筆記本每一頁都是紅筆圈出的繩結，塔頂的繩索還在晃。",
+      "glamour_shot": "江野站在訓練塔的陰影裡，塔燈從他背後打下來，只剩肩線和低頭看筆記時的側臉。",
+      "setups": [
+        "s04-t06"
+      ],
+      "payoffs": [
+        "s04-t01",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿凱得到江野點頭，可以考小隊長",
+        "觀眾看見：那本筆記最後一頁，是一整列她的班表時間"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai"
+      ],
+      "locations": [
+        "消防隊訓練塔下",
+        "鹿川鎮衛生所門口（對街）"
+      ],
+      "state": {
+        "time": "三月中，夜班前",
+        "knowledge": "債剩四十五萬；照護所：埋管線；阿凱想替江野升小隊長，江野准了但「不准逞強」",
+        "carry_forward": "「這裡要有人」"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "按錯了",
+      "youtube_title": "裝警報器時她遞螺絲，他接過去指尖碰到她的，兩個人都停了一秒，下一秒整個工地警鈴大作",
+      "duration_s": 125,
+      "logline": "念慈要在封天花板前和江野把照護所的消防警報全部裝好測完，卻被兩個人一下午都不敢說的話擋住。",
+      "hook": "「這裡要有人」——她把這句話在心裡轉了一週；一週後，梯子上的江野伸出手：「螺絲。」她遞上去。",
+      "hook_type": "image",
+      "mid_hook": "秀琴姨在帳簿上劃掉「動工」，寫上「管線完成」；最後一行的紅圈裡，三十萬還是一個問號。",
+      "extra_hooks": [
+        "阿凱掛著三角巾跑來：「我今天休！」門口監工的阿公叼著沒點的菸：「朝東那間，是我的。」"
+      ],
+      "conflict": "警報器要在封天花板前全部鎖好、測過，她遞他接，整個下午兩個人一句話都沒說。",
+      "turn": "以為今天就這樣安安靜靜收工，最後一顆螺絲她遞上去時，他的手指碰到她的——兩個人都停了一秒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "那一秒過去，他手一滑按到測試鈕，天花板上一排警報器同時尖叫；全工地的人回頭，阿凱大喊：「江哥按錯了！」",
+        "question": "那一秒，他到底在想什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xiaozhen",
+        "duli"
+      ],
+      "spectacle": "天花板上一排新裝的白色警報器同時紅燈閃爍、鳴響，整個工地的人一起抬頭、一起回頭。",
+      "glamour_shot": "梯子上的江野低頭接螺絲，日光從天花板的洞落在他眉骨上；梯子下的念慈仰著臉，安全帽下幾縷碎髮。",
+      "setups": [
+        "s04-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所的消防警報全部裝好，測試成功（雖然是按錯的）",
+        "管線階段完工，可以封天花板"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "a-gong",
+        "s04-xiuqin",
+        "jiang-fu",
+        "zhou-nianzu",
+        "s04-a-shu"
+      ],
+      "locations": [
+        "照護所工地"
+      ],
+      "state": {
+        "time": "三月下旬，動工滿三週",
+        "knowledge": "債剩四十五萬；照護所：管線完成、警報器裝好；三十萬還是紅圈",
+        "carry_forward": "那一秒；阿公說朝東那間是他的"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "那一秒之後",
+      "youtube_title": "他按錯警報被全工地笑了一整天，她卻一直想著那一秒，下夜班沒坐下，直接站到他面前問",
+      "duration_s": 105,
+      "logline": "念慈想問十年前公車站那句話是什麼，卻被上一次他一句「過了」、她就沒再追的自己擋住。",
+      "hook": "警報還在尖叫，江野一掌拍掉測試鈕，耳朵紅到脖子；老蔡笑到蹲下：「十年沒見他手滑。」",
+      "hook_type": "line",
+      "mid_hook": "四月五日，她在農會按下這個月的五萬，還款表又塗掉一格，剩八格白的；回值班室的路上，她低頭看電子錶，想起他手指停住的那一秒。",
+      "conflict": "她想知道十年前公車站那句話；上一次他說「過了」，她沒追，這一次她不想再讓它過。",
+      "turn": "以為她又會把話吞回去，下夜班經過長椅，她沒坐到平常那一端，而是站到他面前。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "清晨的長椅，她站著不坐：「十年前那句話，是什麼？」江野手裡的保溫瓶蓋，轉到一半停住。",
+        "question": "這一次，他會說嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "清晨的消防隊門口，長椅、保溫瓶、兩個人一站一坐，背後的鐵捲門剛拉起一半。",
+      "glamour_shot": "念慈下夜班把口罩拉到下巴，站在長椅前低頭看他，晨光把她的睫毛照成淡金色。",
+      "setups": [
+        "s04-t08"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所的警報器全數測過，可以封天花板",
+        "四月的五萬還了：債剩四十萬，白格剩八格"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "lao-cai",
+        "a-kai"
+      ],
+      "locations": [
+        "照護所工地",
+        "農會",
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "四月五日到隔天清晨",
+        "knowledge": "債剩四十萬（白格八格）；照護所：封天花板、拉水電；她決定問那句話；帳簿紅圈裡的三十萬還沒有名字",
+        "carry_forward": "她站著，沒坐"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "明天六點",
+      "youtube_title": "她追問十年前那句話，他沉默很久，只約了一個地方：就是她十九歲離開小鎮的那個公車站",
+      "duration_s": 100,
+      "logline": "念慈要江野把十年前那句話說出來，卻被他十年來「只做不說」的習慣擋住。",
+      "hook": "「過了。」他說。她沒動：「沒過。」",
+      "hook_type": "line",
+      "mid_hook": "江野沉默很久，把保溫瓶蓋轉緊：「明天六點，公車站。」",
+      "conflict": "他十年沒說，她不知道自己逼這一下，會不會讓他又退回長椅的另一端。",
+      "turn": "以為他會像上次一樣起身回隊，他卻自己選了地方——就在十年前那個公車站。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "清晨五點五十，她提早十分鐘到公車站——他已經在了，站的位置，跟她記憶裡十年前某個模糊的影子疊在一起。",
+        "question": "十年前，他就站在這裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "jielu"
+      ],
+      "spectacle": "天還沒亮的鎮口公車站，一盞路燈、一個站牌、一個人影，遠處山頭剛透出一線白。",
+      "glamour_shot": "江野站在站牌下，深藍外套領子立著，手裡的保溫瓶冒出一縷熱氣，路燈落在他低垂的眼睫上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "江野答應把十年前那天說出來",
+        "照護所的天花板封好一半"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "xiao-yun"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "衛生所值班室",
+        "鎮口公車站"
+      ],
+      "state": {
+        "time": "四月上旬，隔天清晨五點五十",
+        "knowledge": "債剩四十萬；照護所：封天花板；他答應說",
+        "carry_forward": "十年前的站位"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "紅色行李箱",
+      "youtube_title": "她連自己十九歲那天穿什麼都忘了，他卻記得她的紅色行李箱壞了哪一個輪子",
+      "duration_s": 115,
+      "logline": "念慈要聽完十年前那天的事，卻被自己幾乎什麼都不記得、和一班準時進站的公車擋住。",
+      "hook": "他沒看她，看著站牌：「妳那天提紅色行李箱，輪子壞一個。」",
+      "hook_type": "line",
+      "mid_hook": "回憶：十九歲的她拖著紅色行李箱，周媽在旁邊擦眼淚；二十歲的江野從街角跑來，手裡拎著一個保溫瓶。",
+      "extra_hooks": [
+        "觀眾看見：回憶的畫面角落，對面早餐店門口，穿圍裙的少年周念祖站著，沒有過來。"
+      ],
+      "conflict": "她連那天穿什麼都忘了，他卻連行李箱壞了哪個輪子都記得；她想聽完，又怕聽完。",
+      "turn": "以為他會從頭慢慢講，六點那班車真的進站了，阿忠探出頭：「念慈！要上車嗎？」她說：「不上。」——跟十年前相反。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "回憶裡，少年江野衝到車門口：「念慈——」車門「嘶」一聲關上，把他的話夾斷。",
+        "question": "他那天沒說完的話是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "ganren"
+      ],
+      "spectacle": "同一個公車站疊兩個時間：十年前的晨霧與紅色行李箱，今天的路燈與兩個大人。",
+      "glamour_shot": "回憶裡十九歲的念慈紮高馬尾、穿白色帽 T，回頭朝家人揮手的笑；今天的她站在同一個位置，眼眶慢慢紅了。",
+      "setups": [
+        "s04-t09"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道那天他也在公車站",
+        "這一次阿忠的車開走，她沒有上車"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "siji",
+        "zhou-ma",
+        "zhou-nianzu"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "鎮口公車站（十年前）"
+      ],
+      "state": {
+        "time": "四月上旬，清晨六點",
+        "knowledge": "債剩四十萬；照護所：封天花板；十年前那天他跑到了車門口",
+        "carry_forward": "被車門夾斷的那句話"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "等妳回來",
+      "youtube_title": "十年前公車門關上的那一秒，他說了一句她沒聽見的話，從那天起他決定再也不說",
+      "duration_s": 130,
+      "logline": "念慈終於要聽見那句晚了十年的話，卻被她得一個人接住「十年」這件事擋住。",
+      "hook": "車聲遠了，他把那句話接完：「念慈，等妳回來，我有話說。」停一下：「我那天說的。」",
+      "hook_type": "line",
+      "mid_hook": "「車開走，我站了一個小時。」回憶：空蕩的站牌下，少年江野一動不動，保溫瓶一直沒打開。",
+      "extra_hooks": [
+        "「從那天，我決定不說。妳回來過十次，我都沒說。」"
+      ],
+      "conflict": "她十年都以為他只是哥哥的死黨；現在她得接住一句晚了十年、而且她根本沒聽見的話。",
+      "turn": "以為他是終於忍不住，她問為什麼現在才說，他只答：「妳問了。」——他一直在等她問。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她吸一口氣：「那現在呢？」江野看著她，嘴唇動了一下——",
+        "question": "他會說「現在」嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "ganren",
+        "peiban"
+      ],
+      "spectacle": "回憶裡空蕩的公車站，少年站在站牌下，站旁的時鐘從六點走到七點；疊回今天，同一個站牌下站著兩個人。",
+      "glamour_shot": "江野說完那句話垂下眼，晨光從側面描亮他的鼻樑和下顎線；念慈仰頭看他，風把她的瀏海吹亂。",
+      "setups": [],
+      "payoffs": [
+        "s04-t08"
+      ],
+      "reveals": [
+        "m06"
+      ],
+      "general_payoffs": [
+        "十年前那句話揭開：「等妳回來，我有話說」",
+        "她知道他從那天起決定只做不說，十年、十次都沒說"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "鎮口公車站（十年前）"
+      ],
+      "state": {
+        "time": "四月上旬，清晨六點半",
+        "knowledge": "債剩四十萬；照護所：封天花板；她知道他十九歲那天說過、她沒聽見、他從此不說",
+        "carry_forward": "「那現在呢？」"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "等妳還完",
+      "youtube_title": "她問他現在呢，他說等妳還完；她追問為什麼，他回了一句她三月講過、以為沒人聽見的話",
+      "duration_s": 115,
+      "logline": "念慈想知道「現在」，卻被江野把答案押在她的債上擋住。",
+      "hook": "「等妳還完。」他說。她愣住：「為什麼？」他說：「妳說過，妳不要再欠人。」",
+      "hook_type": "line",
+      "mid_hook": "她想起三月工地那通電話——他扛著磚站在她身後，聽見了。",
+      "conflict": "他把「現在」押在她的債上；她分不清這是體貼，還是又一次把話往後推。",
+      "turn": "以為她會生氣，她拿出手機按計算機：四十萬，一個月五萬——「八個月。」他說：「十年都等了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "回到衛生所，她在加班登記表上每一個空格填上自己的名字；小芸一把抓住她的手腕：「妳瘋了？」她說：「八個月太久。」",
+        "question": "她撐得住這樣拚嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "duli"
+      ],
+      "spectacle": "加班登記表上一整排空格被同一個名字填滿，「周念慈」三個字從月初寫到月底。",
+      "glamour_shot": "念慈在公車站的晨光裡低頭按計算機，嘴角壓著一點笑，耳邊的碎髮被風吹起。",
+      "setups": [
+        "s04-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她有了一個日期：四十萬，八個月",
+        "她知道他三月就聽見了她那句「我不要再欠人」"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "xiao-yun"
+      ],
+      "locations": [
+        "鎮口公車站",
+        "衛生所值班室"
+      ],
+      "state": {
+        "time": "四月上旬，早上",
+        "knowledge": "債剩四十萬，她算出要八個月；照護所：拉水電；他說等她還完；帳簿紅圈裡的三十萬還沒有名字",
+        "carry_forward": "填滿的加班表"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "一天睡三小時",
+      "youtube_title": "為了把八個月壓成六個月，她一天只睡三小時，直到凌晨四點那支針筒在她眼前糊成一片",
+      "duration_s": 105,
+      "logline": "念慈要把八個月壓成六個月，卻被自己一天只睡三小時的身體擋住。",
+      "hook": "凌晨四點，她把夜班的白袍塞進機車車廂，騎往鎮上的診所；車籃裡一個保溫瓶，還是熱的。",
+      "hook_type": "image",
+      "mid_hook": "觀眾看見：消防隊的排班表上，江野的名字這兩週被改了六次，每一格都對著她新的下班時間。",
+      "conflict": "夜班、診所兼差、到府換藥、下午還去工地，她把每一個醒著的小時都換成錢。",
+      "turn": "以為她撐得住，凌晨到府替陳阿公抽胰島素，針筒上的刻度在她眼前糊成一片。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "凌晨四點半，阿公家昏黃的燈下，她看著針筒上的刻度，手停住：剛剛抽的，是幾單位？",
+        "question": "她差一點打錯針了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "duli"
+      ],
+      "spectacle": "一天的蒙太奇：夜班的日光燈、清晨的診所鐵門、阿公家的黃燈、午後工地的灰，同一個人一直在跑。",
+      "glamour_shot": "念慈靠在診所牆邊閉眼三十秒，口罩拉到下巴，眼下的影子更深，嘴角卻還繃著。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "這兩週她多賺了一萬多",
+        "觀眾看見江野跟著她的新班表又換了六次班"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-yisheng",
+        "a-gong"
+      ],
+      "locations": [
+        "鹿川鎮衛生所",
+        "鎮上的診所",
+        "陳阿公家",
+        "照護所工地"
+      ],
+      "state": {
+        "time": "四月中，連續兩週",
+        "knowledge": "債剩四十萬；照護所：鋪地坪；她一天睡三小時",
+        "carry_forward": "針筒上的刻度"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "手不能用來趕路",
+      "youtube_title": "差點打錯針的那個清晨，老醫生把她按在椅子上說了一句話，她當場劃掉了一半的加班",
+      "duration_s": 110,
+      "logline": "念慈想快一點還完債，卻被差點出錯、還在發抖的手擋住。",
+      "hook": "她把針筒舉到燈下再對一次：四單位，沒錯——她沒打錯，可是她的手在抖。",
+      "hook_type": "image",
+      "mid_hook": "天亮，蔣醫生在衛生所門口等她，把她按在椅子上：「護理師的手，不能用來趕路。」她拿起筆，劃掉加班表上一半的名字。",
+      "extra_hooks": [
+        "小芸咬著吸管：「八個月，他等得了嗎？」門口量血壓的阿公：「人家等十年，妳問這個？」"
+      ],
+      "conflict": "快的代價是她的手；她得承認八個月就是八個月，而且得有人肯等。",
+      "turn": "以為她會覺得對不起誰，長椅上江野只說：「那就八個月。」——他不催。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她低頭看他的保溫瓶：漆掉了、凹了一角，瓶底貼著一張褪色的貼紙。她問：「這瓶幾年了？」他說：「十年。」",
+        "question": "這個保溫瓶，十年前就在？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        2,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "清晨的長椅，兩個人中間放著一個凹了角的舊保溫瓶，熱氣在冷空氣裡往上飄。",
+      "glamour_shot": "江野把保溫瓶遞過去時袖口滑上去，手臂的舊疤露出來；她接過去的手比以前都快，他眼角動了一下。",
+      "setups": [
+        "s04-t11"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她沒有打錯針，阿公沒事",
+        "她退掉一半加班、留著兼差：還是八個月",
+        "她接薑茶的手比任何一次都快"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-yisheng",
+        "xiao-yun",
+        "a-gong"
+      ],
+      "locations": [
+        "陳阿公家",
+        "鹿川鎮衛生所",
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "四月中，清晨",
+        "knowledge": "債剩四十萬；照護所：鋪地坪；她退掉一半加班，八個月就八個月",
+        "carry_forward": "十年的保溫瓶"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "後照鏡",
+      "youtube_title": "公車司機十年前從後照鏡看見一個人在站牌下站了一小時，手裡的保溫瓶始終沒打開",
+      "duration_s": 105,
+      "logline": "念慈想知道十年前那天的全部，卻被兩個當事人一個沒聽見、一個不肯多說擋住，只剩開車的人看見了。",
+      "hook": "她直接去了公車總站：「十年前那天，他手裡拿著什麼？」阿忠擦著方向盤：「保溫瓶啊。」",
+      "hook_type": "line",
+      "mid_hook": "「我從後照鏡看，他站了一個鐘頭，保溫瓶一直沒打開。後來每年妳回來那班，他都在。我還以為他在等我。」",
+      "conflict": "她要把那天拼完整，可是江野說到「站了一小時」就不再說了。",
+      "turn": "以為阿忠只是來補一段笑話，他突然收起笑：那天站在公車站附近的，不只江野一個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿忠拿起一根菸又放回去：「那天對面早餐店門口，也站了一個人。」",
+        "question": "對面站的人是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "公車總站的老巴士車頭，後照鏡裡疊出十年前的公車站，一個人影越來越小。",
+      "glamour_shot": "念慈坐在公車第一排，下巴擱在椅背上聽阿忠講，車窗的光一格一格滑過她的臉。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道他那天手裡拿著保溫瓶，一直沒打開",
+        "她知道他十年來每一年都在她回來的那班車"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "siji"
+      ],
+      "locations": [
+        "鹿川公車總站"
+      ],
+      "state": {
+        "time": "四月下旬，午後",
+        "knowledge": "債剩四十萬；照護所：地坪完成；那天他站了一小時",
+        "carry_forward": "對面還站了一個人"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "十九歲的照片",
+      "youtube_title": "她翻出十九歲離家那天的照片，放到最大，才發現說要顧店沒來送她的哥哥站在哪裡",
+      "duration_s": 110,
+      "logline": "念慈想把十年前那天的人一個一個認出來，卻被一張照片裡最遠的角落擋住。",
+      "hook": "「對面？」她回家翻出十九歲那天媽媽拍的照片：紅色行李箱、她在笑；站牌後面，露出半個拎保溫瓶的少年。",
+      "hook_type": "image",
+      "mid_hook": "她把照片拿到長椅給江野看，他看著二十歲的自己：「拍得很醜。」她笑出聲——十年來第一次為那天笑。",
+      "conflict": "照片裡的人她一個一個認出來，還少一個她以為不在場的人。",
+      "turn": "以為照片裡只有他們，她把照片放到最大，對面早餐店門口那個穿圍裙的少年——是哥哥。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她盯著照片裡的哥哥：「他說要顧店，沒去送我……他在對面。」她把照片塞進口袋，往早餐店走。",
+        "question": "哥哥那天聽見了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "peiban",
+        "jiaren"
+      ],
+      "spectacle": "一張十年前的照片被手機放到最大，像素裂開的角落裡，一個穿圍裙的少年慢慢清晰。",
+      "glamour_shot": "長椅上兩個人頭靠頭看同一張照片，江野難得嘴角上揚，晨光裡他的側臉柔下來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次為十九歲那天笑",
+        "照片裡的三個人都找到了"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "zhou-ma"
+      ],
+      "locations": [
+        "周家二樓她的房間",
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "四月下旬，清晨",
+        "knowledge": "債剩四十萬；照護所：裝扶手；照片裡哥哥在對面；帳簿紅圈裡的三十萬還沒有名字",
+        "carry_forward": "口袋裡的照片"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "我在對面",
+      "youtube_title": "她把十年前的照片拍在哥哥面前，問他知不知道那天公車站說了什麼，哥哥只回了四個字",
+      "duration_s": 130,
+      "logline": "念慈要哥哥說出十年前在公車站對面看見的事，卻被哥哥十年的沉默擋住。",
+      "hook": "早餐店打烊，她把照片拍在哥哥的工作台上：「阿野十年前在公車站，說了什麼，你知道嗎？」",
+      "hook_type": "question",
+      "mid_hook": "哥哥看了照片很久，說：「我在對面。」她愣住：「你聽見了？」",
+      "conflict": "她要哥哥把十年前的事說出來；哥哥十年沒說，現在也不打算說太多。",
+      "turn": "以為哥哥會否認，他承認了——他不只看見，還聽見了，聽得比她清楚。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "哥哥說：「我聽見了，妳沒聽見。所以我反對——他等的那個人，連他說的話都沒聽見。」",
+        "question": "她現在聽見了，還來得及嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "ganren",
+        "jiaren"
+      ],
+      "spectacle": "打烊後的早餐店只剩工作台一盞燈：一張舊照片、一把鍋鏟，兄妹隔著台面對站。",
+      "glamour_shot": "念慈站在工作台前，頭髮放下、眼眶發紅卻不躲，燈從上面落在她挺直的鼻樑和繃緊的下顎。",
+      "setups": [],
+      "payoffs": [
+        "s04-t09",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "哥哥承認十年前他在對面、聽見了那句話",
+        "她懂了哥哥反對的另一半理由"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-nianzu",
+        "zhou-ma"
+      ],
+      "locations": [
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "四月底，早餐店打烊後",
+        "knowledge": "債剩四十萬（白格八格）；照護所：扶手裝好、地坪完成；哥哥十年前聽見了那句話",
+        "carry_forward": "哥哥十年不說的理由"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "跟三年前一樣",
+      "youtube_title": "哥哥說瞞她跟三年前一樣，她站到老倉庫前，鄰居阿姨脫口而出：那天妳媽是被揹出來的",
+      "duration_s": 110,
+      "logline": "念慈要弄清楚哥哥那句「跟三年前一樣」還瞞了她什麼，卻被一條街的人都把話吞回去擋住。",
+      "hook": "「那你為什麼不告訴我？」哥哥把火關掉：「跟三年前一樣。」說完走進後面。",
+      "hook_type": "line",
+      "mid_hook": "她站到隔壁中正路十二號的倉庫前：牆重新漆過，屋簷下還有一根燒黑的樑。秀琴姨拿著掃把：「那天妳媽是被揹出來的。」",
+      "extra_hooks": [
+        "觀眾看見：早餐店廚房的小窗後，周媽看著站在倉庫前的女兒，一隻手按在胸口。"
+      ],
+      "conflict": "她以為三年前的火她已經知道了——江野救了媽媽；可是「跟三年前一樣」，表示還有人瞞著她。",
+      "turn": "以為秀琴姨只是聊起舊事，她說出一個念慈不知道的細節：媽媽不是自己走出來的，是被揹出來的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "秀琴姨的掃把停了：「那孩子揹妳媽出來，第一句話是——」她看見念慈身後的周媽，把話吞了回去。",
+        "question": "他揹人出來的第一句話是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "jielu"
+      ],
+      "spectacle": "早餐店隔壁的老倉庫，新漆的牆上一根燒黑的木樑橫在屋簷下，像一道沒好的疤。",
+      "glamour_shot": "念慈站在倉庫前仰頭看那根黑樑，風把低馬尾吹到肩前，側臉被午後的光切成明暗兩半。",
+      "setups": [
+        "s04-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道媽媽三年前是被揹出來的"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-nianzu",
+        "s04-xiuqin",
+        "zhou-ma"
+      ],
+      "locations": [
+        "周家早餐店",
+        "中正路十二號倉庫"
+      ],
+      "state": {
+        "time": "五月初，午後",
+        "knowledge": "債剩四十萬；照護所：灌無障礙坡道；哥哥說「跟三年前一樣」",
+        "carry_forward": "被吞回去的第一句話"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "勿通知",
+      "youtube_title": "消防隊長假裝去廁所讓她偷看三年前的出勤紀錄，頁邊一行手寫字讓她當場愣住",
+      "duration_s": 110,
+      "logline": "念慈要看三年前那場火的出勤紀錄，卻被紀錄不能給外人看的規定擋住。",
+      "hook": "她轉身，周媽提著菜籃站在那裡：「回家。」她沒回家，往消防隊走。",
+      "hook_type": "line",
+      "mid_hook": "老蔡把三年前的出勤紀錄放在桌上：「我去廁所，桌上那本別看。」她翻開：受困一名周姓婦人，由隊員江野揹出；隊員左前臂灼傷，現場自行處理。",
+      "conflict": "消防隊的紀錄不能給外人看，她只有老蔡「去廁所」的三分鐘。",
+      "turn": "以為紀錄只寫火怎麼燒，頁邊有一行老蔡的原子筆字：「家屬要求：勿通知其女。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "老蔡回來：「看完了？」她指著那行字：「誰要求的？」老蔡嘆氣：「家屬是妳媽。第一個說的，是阿野。」",
+        "question": "他為什麼不讓她知道？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "消防隊值班室的鐵桌上一本泛黃的出勤紀錄，頁邊一行原子筆字被日光燈照得發亮。",
+      "glamour_shot": "念慈低頭讀紀錄，手指壓在「江野」兩個字上，長睫毛垂著，日光燈在她顴骨上打出一道冷光。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她讀到三年前的出勤紀錄：江野揹出媽媽、左前臂灼傷",
+        "她知道「別告訴她」是有人要求的"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-ma",
+        "lao-cai"
+      ],
+      "locations": [
+        "中正路十二號倉庫前",
+        "消防隊值班室"
+      ],
+      "state": {
+        "time": "五月初，傍晚",
+        "knowledge": "債剩四十萬；照護所：坡道；紀錄上寫著勿通知其女，第一個說的是江野",
+        "carry_forward": "江野的理由"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "別告訴念慈",
+      "youtube_title": "三年前他從火場揹出她媽媽，面罩都沒拿下，第一句話竟然是：別告訴她",
+      "duration_s": 115,
+      "logline": "念慈要知道為什麼全家、全鎮三年來替一個人守住一句話，卻被每個人都說「我只是照做」擋住。",
+      "hook": "老蔡點了根菸沒抽：「他揹妳媽出來，面罩剛拉下來，第一句：『別告訴念慈。』」",
+      "hook_type": "line",
+      "mid_hook": "五月五日，她在農會按下五萬，手還在抖，還款表剩七格；她直接走進早餐店：「你們都知道。」",
+      "extra_hooks": [
+        "哥哥擦著鐵板不抬頭：「我在外面等了四十分鐘。他出來，手臂在冒煙，還在說別告訴妳。」"
+      ],
+      "conflict": "她是全鎮唯一被瞞的人，而瞞她的理由，每個人都推給下一個人。",
+      "turn": "以為是江野一個人的主意，後面的布簾掀開——周媽擦著手走出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周媽站在布簾前，手上還有麵粉：「是我不准的。」",
+        "question": "媽媽為什麼不准？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren",
+        "duli"
+      ],
+      "spectacle": "早餐店的布簾一掀，麵粉在燈下飛起，母親的身影從一片白霧裡走出來。",
+      "glamour_shot": "念慈在農會提款機前按下確認時閉了一下眼，額前碎髮垂下來遮住半邊眉。",
+      "setups": [],
+      "payoffs": [
+        "s04-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "五月的五萬還了：債剩三十五萬，白格七格",
+        "她知道「別告訴念慈」是江野揹人出來的第一句話"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "lao-cai",
+        "zhou-nianzu",
+        "zhou-ma"
+      ],
+      "locations": [
+        "消防隊值班室",
+        "農會",
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "五月五日",
+        "knowledge": "債剩三十五萬（白格七格）；照護所：坡道灌漿；江野要求、媽媽准了：別告訴她；帳簿紅圈裡的三十萬還沒有名字",
+        "carry_forward": "媽媽的理由"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "不是欠",
+      "youtube_title": "她質問媽媽為什麼讓她欠那個人三年，媽媽握住她的手說：那不是欠",
+      "duration_s": 115,
+      "logline": "念慈要媽媽給一個理由，卻被那個理由是愛、而那個愛讓她在台北等錯人等了三年擋住。",
+      "hook": "打烊後的長桌，母女對坐。她問：「為什麼？」周媽說：「妳那時候，以為台北那個會娶妳。」",
+      "hook_type": "line",
+      "mid_hook": "「她在台北，有人等她，別讓她回來。」周媽說，這是她三年前對全家、對全鎮說的話。",
+      "extra_hooks": [
+        "她的聲音發顫：「所以妳們讓我欠他三年。」"
+      ],
+      "conflict": "媽媽護著的是她當時的幸福，可是那個幸福是假的，被瞞的三年是真的。",
+      "turn": "以為媽媽會道歉，媽媽搖頭——她不認為女兒欠了誰。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "周媽把她的手握住：「不是欠。是他不要妳知道。」",
+        "question": "他為什麼不要她知道？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "早餐店打烊後的長桌，一盞燈、兩杯涼掉的豆漿，母女四隻手疊在桌面正中間。",
+      "glamour_shot": "念慈在眼淚掉下來前把臉轉向窗外，路燈在她濕的睫毛上碎成光點。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "媽媽說出三年前不准說的理由",
+        "母女第一次談台北那七年"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-ma"
+      ],
+      "locations": [
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "五月五日夜",
+        "knowledge": "債剩三十五萬；照護所：坡道；媽媽不准說，因為她以為女兒在台北有人等",
+        "carry_forward": "「是他不要妳知道」"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "紅光",
+      "youtube_title": "三年前那場火的真相：他揹著她媽媽走出濃煙，手臂還在冒煙，只交代一句不准打擾她",
+      "duration_s": 135,
+      "logline": "念慈要看完三年前那一夜，卻被看完就再也不能假裝不知道的重量擋住。",
+      "hook": "「他為什麼不要我知道？」周媽看著隔壁那面牆：「那天，我在倉庫數麵粉。」",
+      "hook_type": "question",
+      "mid_hook": "回憶：倉庫門縫透出紅光、煙往外湧；一個人影從煙裡走出來，背上揹著周媽；他把她放下，左手袖子還在冒煙，抓起濕毛巾纏住前臂。",
+      "extra_hooks": [
+        "回憶裡，哥哥衝過來，江野拉下面罩第一句：「別告訴念慈。」周媽問為什麼，他說：「她在等人。別吵她。」"
+      ],
+      "conflict": "她得一次看完三年前那一夜：火、媽媽、哥哥的四十分鐘，和一個不讓她知道的人。",
+      "turn": "以為他瞞她是怕她擔心，周媽說出他的原話——他是不想打擾她在台北的等待。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她解下圍裙：「他今天在哪？」周媽看了一眼牆上的月曆：「訓練日。」",
+        "question": "她要去對他說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jielu",
+        "ganren",
+        "jiaren"
+      ],
+      "spectacle": "回憶裡倉庫門縫的紅光一明一滅，煙往外湧，一個揹著人的剪影從煙裡慢慢走出來。",
+      "glamour_shot": "回憶裡二十七歲的江野拉下面罩，滿臉灰、眼神很定，路燈在他額角的汗上反光；他回頭看了一眼鎮口的方向。",
+      "setups": [
+        "s04-t13"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [
+        "m09"
+      ],
+      "general_payoffs": [
+        "三年前那場火完整揭開：他揹出媽媽、手臂燙傷，第一句是別告訴她",
+        "她知道哥哥在外面等的四十分鐘，等的是兩個人"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-ma",
+        "jiang-ye",
+        "zhou-nianzu"
+      ],
+      "locations": [
+        "周家早餐店",
+        "中正路十二號倉庫（三年前）"
+      ],
+      "state": {
+        "time": "五月五日深夜",
+        "knowledge": "債剩三十五萬；照護所：坡道；三年前的火她全部知道了",
+        "carry_forward": "訓練日"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "訓練日",
+      "youtube_title": "她跑到訓練場想跟他說話，卻隔著鐵絲網看見他把衝太快的小隊員一把拖出濃煙",
+      "duration_s": 105,
+      "logline": "念慈跑去找江野，卻被一道鐵絲網和自己還不知道第一句要說什麼擋住。",
+      "hook": "消防隊訓練場，水柱在太陽下劃出一道弧；她停在鐵絲網外，江野一身全套裝備，背對著她。",
+      "hook_type": "image",
+      "mid_hook": "濃煙訓練貨櫃前，口令還沒下，阿凱已經衝進去；江野一把揪住他的領子拖出來：「等口令！」",
+      "conflict": "她跑來了，可是隔著一道鐵絲網，三年的事一句話裝不下。",
+      "turn": "以為她會喊他，她轉身要走——阿凱眼尖，大喊：「江哥！念慈姐——」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她沒等他回頭就走了；身後老蔡的大嗓門追上來：「他訓練完，都去坐那張長椅！」",
+        "question": "她會去長椅等他嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "jielu"
+      ],
+      "spectacle": "正午的訓練場，水柱在陽光裡拉出一道小彩虹，濃煙從貨櫃門口滾出來。",
+      "glamour_shot": "江野摘下頭盔，汗沿著額角滑下，捲起袖子露出前臂的疤，轉頭時下顎線被太陽描得很利。",
+      "setups": [
+        "s04-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次在白天看清他手臂的疤",
+        "江野把衝太快的阿凱拖了回來"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "lao-cai"
+      ],
+      "locations": [
+        "消防隊訓練場"
+      ],
+      "state": {
+        "time": "五月上旬，正午",
+        "knowledge": "債剩三十五萬；照護所：坡道完成、開始做浴室防滑；阿凱總是搶第一個衝",
+        "carry_forward": "長椅"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "這間做完",
+      "youtube_title": "替照護所做得最多的老師傅一句話也不肯多說，卻在工地上丟下一句：這間做完我就走",
+      "duration_s": 105,
+      "logline": "念慈想替江野問一句父親的理由，卻被跟兒子一樣話到嘴邊就收的江父擋住。",
+      "hook": "她沒去長椅，回到工地；江父蹲在新坡道邊鎖扶手，頭也不抬：「看到疤了？」",
+      "hook_type": "line",
+      "mid_hook": "她問：「三年前他受傷，你在哪？」江父的扳手停了：「外地。後來才知道。」「為什麼不回來？」他起身走開。",
+      "conflict": "那不是她的家事，她只能用照護所的扶手、坡道和一句又一句的「為什麼」去問。",
+      "turn": "以為江父只是不想談，他對阿樹師傅說了一句比不談更糟的話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "江父把扳手放進工具箱：「這間做完，我就走。」梯子上的江野，手裡的電鑽停了。",
+        "question": "江父真的又要走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "新灌好的無障礙坡道在夕陽裡反光，一道不鏽鋼扶手從門口一路延伸到院子。",
+      "glamour_shot": "江野站在梯子上鑽浴室扶手的孔，袖子捲起、疤露在外面，聽見父親那句話時側臉一點一點冷下來。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "坡道與扶手完成，輪椅可以從院子直接進門"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-fu",
+        "jiang-ye",
+        "s04-a-shu"
+      ],
+      "locations": [
+        "照護所工地"
+      ],
+      "state": {
+        "time": "五月上旬，傍晚",
+        "knowledge": "債剩三十五萬；照護所：坡道扶手完成、浴室防滑施工；江父說做完就走",
+        "carry_forward": "江父的離開"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "多一顆蛋",
+      "youtube_title": "媽媽凌晨四點教她煎蛋餅，打進第二顆蛋時才說：給他的那份，三年前開始就多一顆",
+      "duration_s": 110,
+      "logline": "念慈跟媽媽還有一口氣沒順過來，卻被早餐店不等人的早晨擋住。",
+      "hook": "凌晨四點，江家老屋的燈還亮著，江父坐在行李箱旁，沒走；她走進早餐店，周媽遞給她一顆蛋：「來，學。」",
+      "hook_type": "line",
+      "mid_hook": "母女一起煎蛋餅，周媽打進第二顆蛋：「他的，三年前起多一顆。」她問：「他知道嗎？」「他吃得出來。」",
+      "extra_hooks": [
+        "哥哥下樓，把一個空蛋餅袋推到她面前，沒看她：「今天妳送。」"
+      ],
+      "conflict": "媽媽沒有再解釋，她也沒有再問；兩個人只能用一張鐵板把話說完。",
+      "turn": "以為媽媽要再道一次歉，媽媽什麼都不說，只教她煎蛋——用十年的蛋餅說完了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把蛋餅裝好，拿起袋子，這次翻過來看：袋底用奇異筆寫著四個字——「她知道了」。",
+        "question": "哥哥一直在袋子上跟他說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiaren",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "凌晨四點的早餐店，鐵板上兩顆蛋同時滋滋作響，熱氣把母女的臉蒸得模糊。",
+      "glamour_shot": "念慈紮起頭髮、套上媽媽的舊圍裙，低頭翻蛋餅的側臉被鐵板的熱氣烘得微紅。",
+      "setups": [
+        "s04-t04"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母女和好",
+        "她學會煎他那份多一顆蛋的蛋餅"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-ma",
+        "zhou-nianzu"
+      ],
+      "locations": [
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "五月中，凌晨四點",
+        "knowledge": "債剩三十五萬；照護所：浴室防滑；哥哥用蛋餅袋跟江野傳話；帳簿紅圈裡的三十萬還沒有名字",
+        "carry_forward": "「她知道了」"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "長椅這一端",
+      "youtube_title": "她拎著蛋餅坐上消防隊門口的長椅，這一次沒放下就走，坐的位置比上次又往中間挪了一點",
+      "duration_s": 105,
+      "logline": "念慈在長椅上等江野訓練結束，卻被等到了要說什麼、自己也還沒想好擋住。",
+      "hook": "消防隊門口，她拎著蛋餅坐上長椅——坐的地方，比上一次往中間多了一個手掌。",
+      "hook_type": "image",
+      "mid_hook": "阿凱跑來傳話：「江哥說他十分鐘。」老蔡在後面補一句：「三年前他燙傷，在值班室自己包，包得很醜。」",
+      "extra_hooks": [
+        "觀眾看見：訓練塔上的江野往下看，看見長椅上的她，手裡的繩子差點放錯。"
+      ],
+      "conflict": "以前都是他在長椅等她；這一次換她等，她不知道等的時候手要放哪裡。",
+      "turn": "以為她會像以前一樣放下蛋餅就走，她坐著不動，一直等到訓練結束。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "訓練結束，他走過來，袖子捲著，疤在太陽下發亮；她站起來，把蛋餅袋翻過來，讓他看那四個字。",
+        "question": "他看到「她知道了」會說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "peiban"
+      ],
+      "spectacle": "消防隊門口長椅上一個人、一袋蛋餅，背後訓練塔上的人影沿著繩索一節一節降下來。",
+      "glamour_shot": "念慈坐在長椅上仰頭看訓練塔，下巴微抬，脖頸的線條被陽光照亮，馬尾垂在椅背後。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她在長椅上往中間坐近了一個手掌",
+        "她第一次在消防隊門口等他，不是他等她"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "lao-cai"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "消防隊訓練塔"
+      ],
+      "state": {
+        "time": "五月中，上午",
+        "knowledge": "債剩三十五萬；照護所：浴室完成、換門窗；長椅上她往中間多了一個手掌",
+        "carry_forward": "翻過來的蛋餅袋"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "我的事",
+      "youtube_title": "全隊躲在鐵捲門後偷看，她伸手碰了他手臂上那道疤，他說那是妳媽的事，她只回了三個字",
+      "duration_s": 130,
+      "logline": "念慈要把三年前的事跟江野說開，卻被三年一句話裝不下、和全隊躲在鐵捲門後偷看擋住。",
+      "hook": "他看了袋底的字一眼，抬頭看她：「蛋餅，妳煎的？」她說：「兩顆蛋。」",
+      "hook_type": "line",
+      "mid_hook": "長椅前沒有人說話；阿凱和老蔡躲在車庫鐵捲門後，阿凱的手機舉到一半被老蔡按下去。",
+      "conflict": "她不想再讓任何一件事「過了」，可是謝謝太輕、對不起太重。",
+      "turn": "以為她會說謝謝，她伸手，碰了他手臂上的疤——第一次碰他；他沒動。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她的指尖停在疤上：「三年前。」他說：「妳媽的事。」她說：「我的事。」",
+        "question": "這句「我的事」，他聽懂了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jielu",
+        "jiaren"
+      ],
+      "spectacle": "正午的消防隊門口，長椅前兩個人站著，她的手指輕輕放在他前臂的疤上，背後車庫裡的紅色消防車一動不動。",
+      "glamour_shot": "江野低頭看她碰著自己手臂的手，喉結動了一下，眼神很靜；念慈抬眼看他，日光在她眼裡亮成兩點。",
+      "setups": [],
+      "payoffs": [
+        "s04-t13",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次碰他",
+        "她把三年前的事從「媽的事」說成「我的事」"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "lao-cai"
+      ],
+      "locations": [
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "五月中，正午",
+        "knowledge": "債剩三十五萬（白格七格）；照護所：門窗裝好，下一步油漆；她碰了他的疤",
+        "carry_forward": "「我的事」"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "油漆日",
+      "youtube_title": "全鎮拿著滾筒來刷照護所的牆，熱鬧到深夜，凌晨兩點十三分消防車的紅光掃過她的窗",
+      "duration_s": 105,
+      "logline": "念慈要趁好天氣把照護所的牆一天刷完，卻被越刷越鬧的鎮民和夜裡的一聲警笛擋住。",
+      "hook": "她的指尖還停在疤上，車庫裡「喀嚓」一聲——阿凱的手機快門；老蔡一巴掌拍在他後腦。",
+      "hook_type": "image",
+      "mid_hook": "六月五日，照護所油漆日，全鎮拿著滾筒來刷牆；阿凱在牆上偷畫一顆愛心，小芸追著他打：「我剛刷白的！」",
+      "extra_hooks": [
+        "哥哥一邊刷牆一邊跟周媽說：「她會開始等了。」周媽沒停手：「她早就在等了。」"
+      ],
+      "conflict": "牆要趁晴天刷完，阿凱還一路吹噓自己過了搜救測驗、下次要第一個衝；她今晚還要接夜班。",
+      "turn": "以為這是一個熱鬧的晴天，觀眾看見消防隊的值班表：今晚她夜班，江野又跟人換到同一晚。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "凌晨兩點十三分，衛生所窗外紅光掃過，消防車鳴笛衝出鎮口；她低頭看錶，想起值班表上今晚那個名字。",
+        "question": "這一趟，他去了哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        2,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "xiaozhen",
+        "xiju"
+      ],
+      "spectacle": "照護所院子裡二十幾個鎮民拿滾筒刷牆，白漆一面一面亮起來，小孩在牆角按手印。",
+      "glamour_shot": "念慈戴著報紙摺的帽子、臉頰沾一點白漆，踮腳刷高處時回頭笑，陽光從她背後透過來。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "六月的五萬還了：債剩三十萬，白格六格",
+        "照護所刷完一半的牆"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "lao-cai",
+        "xiao-yun",
+        "zhou-nianzu",
+        "zhou-ma"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "照護所工地",
+        "鹿川鎮衛生所"
+      ],
+      "state": {
+        "time": "六月五日到深夜兩點",
+        "knowledge": "債剩三十萬（白格六格）；照護所：油漆刷了一半；今晚他值班；帳簿紅圈裡的三十萬還沒有名字",
+        "carry_forward": "兩點十三分的紅光"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "四十分鐘",
+      "youtube_title": "鎮外倉庫起火，愛逞強的小隊員衝進去沒出來，她在衛生所盯著錶，終於懂了哥哥的四十分鐘",
+      "duration_s": 115,
+      "logline": "念慈在衛生所只能守著電話和錶，火場那頭卻有一個人進去沒出來。",
+      "hook": "紅光掃過衛生所的一排空椅，她盯著錶上的分鐘：十分鐘、二十分鐘。",
+      "hook_type": "image",
+      "mid_hook": "鎮外的倉庫只拍得到紅光、煙和消防車：阿凱聽見裡面有人喊，沒等口令就衝進去，對講機只剩雜音。江野丟下對講機，拉上面罩，往回走進煙裡。",
+      "extra_hooks": [
+        "衛生所裡，錶跳到四十分鐘——她忽然懂了哥哥說過的那四十分鐘。"
+      ],
+      "conflict": "她什麼都做不了，只能把處置室備好，等一通不知道會帶來誰的電話。",
+      "turn": "以為出事的會是江野，觀眾先看見衝進去的是阿凱——接著江野也走進了煙裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "衛生所電話響，她接起來，對方只說：「隊員受傷，五分鐘到。」她問：「誰？」電話斷了。",
+        "question": "受傷的，是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "xiaozhen",
+        "ganren"
+      ],
+      "spectacle": "夜裡鎮外的山坳被紅光染亮，濃煙往上翻，消防車的燈在煙裡一圈一圈轉。",
+      "glamour_shot": "念慈站在衛生所門口，白色制服在紅光裡一明一暗，她把頭髮重新紮緊、戴上口罩的那一下，眼神定住。",
+      "setups": [
+        "s04-t15"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她照流程備好處置室：燒燙傷敷料、點滴、保暖毯"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "lao-cai"
+      ],
+      "locations": [
+        "鹿川鎮衛生所",
+        "鎮外三號倉庫（火場外）"
+      ],
+      "state": {
+        "time": "六月上旬，凌晨兩點到三點",
+        "knowledge": "債剩三十萬；照護所：油漆停在一半；有隊員受傷，不知道是誰",
+        "carry_forward": "五分鐘"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "是阿凱",
+      "youtube_title": "擔架推進衛生所的那一刻她才看清是誰，替小隊員處理傷口時，她當了護理師這麼多年第一次手抖",
+      "duration_s": 120,
+      "logline": "念慈要替阿凱處理燒燙傷、脫水和驚嚇，卻被第一次不聽話的手和一直往走廊飄的眼睛擋住。",
+      "hook": "消防車的紅光停在衛生所門口，擔架推進來——是阿凱，一臉黑灰，閉著眼。",
+      "hook_type": "image",
+      "mid_hook": "她剪開阿凱的袖子，剪刀在抖；她用左手握住右手腕，數三秒，再剪。",
+      "extra_hooks": [
+        "玻璃門外的走廊，江野一身煙味站著，臉上全是灰——活著。"
+      ],
+      "conflict": "她是今晚唯一的護理師，手抖也得做完；而她最想確認的那個人就站在玻璃門外。",
+      "turn": "以為她會撐不住，她把手腕握穩，一步一步照流程做完：敷料、點滴、保暖毯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "處理完，她走出處置室，看了江野一眼，一句話沒說，走進值班室關上門，背靠著門慢慢蹲下去。",
+        "question": "她關上門，是在怕什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren"
+      ],
+      "spectacle": "衛生所走廊的日光燈下，一扇關上的值班室門，門外站著一身灰的消防員，門內一個蹲著的影子。",
+      "glamour_shot": "江野站在走廊，頭盔夾在臂彎，臉上的灰被汗沖出兩道痕，眼睛只看著那扇門。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿凱的傷處理好：手臂包紮、點滴、保暖，沒有生命危險",
+        "江野把阿凱從倉庫裡拉了出來"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "a-kai",
+        "jiang-ye",
+        "lao-cai"
+      ],
+      "locations": [
+        "衛生所處置室",
+        "衛生所走廊",
+        "衛生所值班室"
+      ],
+      "state": {
+        "time": "六月上旬，凌晨三點半",
+        "knowledge": "債剩三十萬；照護所：停工；阿凱燒燙傷但沒事；她第一次手抖",
+        "carry_forward": "關上的門"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "門外一夜",
+      "youtube_title": "她把自己關在值班室裡一整夜，他就在門外站了一整夜，舉起的手始終沒有敲下去",
+      "duration_s": 110,
+      "logline": "念慈和江野隔著一扇門，一個想開又怕開、一個想敲又怕敲。",
+      "hook": "門內，她蹲在地上捂住嘴；門外，他舉起手要敲，停在半空，又放下來。",
+      "hook_type": "image",
+      "mid_hook": "清晨四點，老蔡來了：「回去洗澡。」江野沒動。病床上的阿凱醒來第一句：「江哥呢？」",
+      "conflict": "一扇門隔了一整夜：門裡的人一開門就會說出來，門外的人一敲門就會逼她說出來。",
+      "turn": "以為她會在裡面哭到天亮，天一亮，門把轉了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "門開了。她穿好制服、病歷夾抱在胸前，眼睛紅著，聲音很平：「阿凱沒事。」然後吸了一口氣。",
+        "question": "那口氣後面，她要說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "xiaozhen"
+      ],
+      "spectacle": "從深夜到天亮的同一個走廊鏡頭：窗外由黑轉藍轉白，門外的人一直站在同一塊地磚上。",
+      "glamour_shot": "天亮時念慈開門，頭髮重新紮好、制服扣到最上面一顆，紅著眼卻站得很直，晨光從走廊盡頭照在她臉上。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他在門外站了一整夜",
+        "她自己走出來，照常上班"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "lao-cai",
+        "a-kai",
+        "xiao-yun"
+      ],
+      "locations": [
+        "衛生所值班室",
+        "衛生所走廊"
+      ],
+      "state": {
+        "time": "六月上旬，清晨",
+        "knowledge": "債剩三十萬；照護所：停工；他在門外站了一夜",
+        "carry_forward": "她吸的那一口氣"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "回去有薑茶",
+      "youtube_title": "她說怕的不是那個受傷的小隊員，小隊員卻說出火場裡江哥一直對他喊的那句話",
+      "duration_s": 110,
+      "logline": "念慈要讓阿凱好起來、要把話吞回去，阿凱卻什麼都說，包括她不想聽的。",
+      "hook": "「我怕的不是阿凱。」她說完就從他身邊走過去。他沒接，看著她的背影。",
+      "hook_type": "line",
+      "mid_hook": "病床上，手臂纏著繃帶的阿凱說：「我聽見裡面有人喊，衝進去才知道，是倉庫的收音機。」",
+      "extra_hooks": [
+        "阿凱紅著眼：「江哥找到我，一直說：『撐著，回去有薑茶。』」"
+      ],
+      "conflict": "她得照顧一個差點回不來的人，聽他一遍一遍講另一個差點回不來的人。",
+      "turn": "以為阿凱只會說江哥多神，他說出搶著衝的真正理由：他想證明自己夠格當小隊長，好讓江哥不用再衝第一個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿凱看著天花板：「江哥說，差一點，就換他了。」",
+        "question": "如果下一次換他呢？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiaozhen"
+      ],
+      "spectacle": "衛生所病床邊，鎮民送來的雞湯、水果、阿公的一罐銅板，擺滿整張床頭櫃。",
+      "glamour_shot": "念慈坐在病床邊替阿凱換點滴，低頭的側臉沒有表情，捏著輸液管的指節卻泛白。",
+      "setups": [
+        "s04-t16"
+      ],
+      "payoffs": [
+        "s04-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿凱說出為什麼總搶著衝：想快點當上小隊長，替江哥擋在前面",
+        "鎮民開始排隊送吃的來衛生所"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "a-gong"
+      ],
+      "locations": [
+        "衛生所走廊",
+        "衛生所病床"
+      ],
+      "state": {
+        "time": "六月上旬，上午",
+        "knowledge": "債剩三十萬；照護所：停工；阿凱說江野差一點換他",
+        "carry_forward": "「我怕的不是阿凱」"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "調職單",
+      "youtube_title": "她承認怕的是他，當天下午他就拿來一張簽好名的調職單，放在她面前只問一句",
+      "duration_s": 105,
+      "logline": "念慈承認自己怕，卻被不知道有沒有資格叫一個人為她不做他的工作擋住。",
+      "hook": "阿凱轉過頭：「念慈姐，妳怕的是江哥吧？」她沒否認：「嗯。」阿凱：「我會轉告。」她：「你敢。」",
+      "hook_type": "line",
+      "mid_hook": "小芸在護理站問她：「那妳要他換工作嗎？」她拿著筆，答不出來。",
+      "conflict": "她怕下一次是他，可是叫他換工作，等於叫他不要是他。",
+      "turn": "以為這個問題只是小芸隨口問，下午江野走進衛生所，手裡拿著一張紙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "他把一張內勤調職申請放在護理站檯面上，申請人欄已經簽好名：「要我換嗎？」",
+        "question": "她會叫他換嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xiaozhen",
+        "peiban"
+      ],
+      "spectacle": "衛生所門口，鎮民提著鍋子和保溫袋排成一列，秀琴姨捧著一鍋雞湯：「給那個消防的也一碗。」",
+      "glamour_shot": "江野換上乾淨的深藍 T，臉上的灰洗掉了，眼下有一夜沒睡的青，站在護理站前把紙推過去的那一下低頭。",
+      "setups": [
+        "s04-t17"
+      ],
+      "payoffs": [
+        "s04-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她承認她怕的是江野",
+        "鎮民替阿凱和消防隊送了一週的飯"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "a-kai",
+        "xiao-yun",
+        "s04-xiuqin",
+        "jiang-ye"
+      ],
+      "locations": [
+        "衛生所病床",
+        "衛生所護理站",
+        "衛生所門口"
+      ],
+      "state": {
+        "time": "六月上旬，午後",
+        "knowledge": "債剩三十萬；照護所：停工；她承認怕的是他；他拿來一張調職單",
+        "carry_forward": "簽好名的調職單"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "不要",
+      "youtube_title": "他願意為她調去坐辦公室，她卻把簽好名的調職單推回去：你是消防的",
+      "duration_s": 110,
+      "logline": "念慈可以把江野留在最安全的地方，卻被那樣就不是他了擋住。",
+      "hook": "她看著那張紙，申請人欄「江野」兩個字寫得很用力，筆尖把紙壓出了凹痕。",
+      "hook_type": "image",
+      "mid_hook": "她把紙推回去：「不要。你是消防的。」他說：「妳會怕。」她說：「我會怕。你還是要去。」",
+      "conflict": "留他在身邊最安全，可是她不要一個為她不做自己的人；這一次得她自己選。",
+      "turn": "以為她會讓他換，她把紙推了回去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他把紙摺起來收進口袋，剛走到門口，消防隊的鈴響了；他拔腿就跑，她的手抓住護理站的檯面，低頭看錶。",
+        "question": "這一趟，多久才回來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "衛生所門口，他跑向消防隊的背影，車庫鐵捲門同時拉起，紅色的車頭探出來。",
+      "glamour_shot": "念慈站在護理站後，聽見鈴聲的一瞬間挺直背，下巴繃緊，手指扣住檯面邊緣。",
+      "setups": [],
+      "payoffs": [
+        "s04-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拒絕讓他換工作",
+        "他把調職單收回去，留在第一線"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "a-kai",
+        "xiao-yun"
+      ],
+      "locations": [
+        "衛生所護理站",
+        "消防隊車庫"
+      ],
+      "state": {
+        "time": "六月上旬，傍晚",
+        "knowledge": "債剩三十萬；照護所：停工；她選了讓他留在第一線，從此每一聲鈴都要數",
+        "carry_forward": "錶上的分鐘"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "怕妳等",
+      "youtube_title": "從那天起每一聲鈴她都數分鐘，清晨在長椅上問他怕不怕，他的答案跟哥哥一模一樣",
+      "duration_s": 110,
+      "logline": "念慈選了不叫他換，就得學會跟每一聲鈴相處，卻被不知道自己做不做得到擋住。",
+      "hook": "錶跳到三十一分鐘，消防車回來了：鎮東一位阿伯在家跌倒，送回家。她鬆開手，掌心四個指甲印。",
+      "hook_type": "image",
+      "mid_hook": "一週裡消防車出去五次，她在值班室的便條紙上記：十八分、四十二分、二十五分……車回來，她才放下筆。",
+      "extra_hooks": [
+        "清晨長椅，她問：「你怕嗎？」他說：「怕。」「怕什麼？」「怕妳等。」"
+      ],
+      "conflict": "她以為只有她在怕，怕到把每一趟出勤寫成一排數字。",
+      "turn": "以為他不會怕，他承認他也怕——怕的是她等，跟哥哥一樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他把保溫瓶放在長椅正中間，起身回隊；她伸手去拿，指尖停在長椅中間那塊油漆剝落的地方。",
+        "question": "她什麼時候敢坐到那裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        2,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "peiban",
+        "ganren",
+        "xiaozhen"
+      ],
+      "spectacle": "清晨長椅的特寫：中間一塊油漆剝落的木紋、一個保溫瓶、一隻停在旁邊的手。",
+      "glamour_shot": "江野坐在長椅另一端說「怕」的那一刻轉過頭，晨光從他背後打來，眼睛很深、很靜。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她學會在每一聲鈴之後數到他回來",
+        "他說出他也怕"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye"
+      ],
+      "locations": [
+        "衛生所值班室",
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "六月中，一週後的清晨",
+        "knowledge": "債剩三十萬；照護所：停工，牆刷到一半；她每一聲鈴都數分鐘",
+        "carry_forward": "長椅中間那塊剝落的漆"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "歸隊",
+      "youtube_title": "小隊員纏著繃帶出院，全隊排成兩列鼓掌，她卻在收工後走到早餐店門口，叫住正要拉鐵門的哥哥",
+      "duration_s": 105,
+      "logline": "念慈等著阿凱歸隊、等著照護所復工，也在等自己能不能把那句話說給哥哥聽。",
+      "hook": "她的指尖在那塊剝落的漆上停了三秒，縮回去；兩週後，衛生所門口，阿凱纏著新繃帶出院，整個消防隊排成兩列鼓掌。",
+      "hook_type": "image",
+      "mid_hook": "阿凱回到工地，用沒受傷的左手刷完最後一面牆，歪歪扭扭：「江哥說，手好了再考小隊長。」照護所的油漆終於刷完。",
+      "conflict": "停了兩週的工地要重新開工，大家等一個人回來；她也欠哥哥一句話。",
+      "turn": "以為哥哥還是不跟她談那件事，收工時他主動等她一起走——但一路沒開口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "傍晚早餐店拉鐵門，鐵門拉到一半，她站在門外：「哥。」哥哥的手停在鐵門上。",
+        "question": "她要跟哥哥說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiaozhen",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "衛生所門口兩列消防員鼓掌，中間纏著繃帶的年輕人笑著走出來，陽光把一排頭盔照得發亮。",
+      "glamour_shot": "念慈站在衛生所門口替阿凱整理繃帶，抬頭時笑了一下，這是火災後她第一次笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿凱出院歸隊",
+        "照護所的油漆全部刷完"
+      ],
+      "characters": [
+        "a-kai",
+        "zhou-nianci",
+        "jiang-ye",
+        "lao-cai",
+        "zhou-nianzu",
+        "xiao-yun"
+      ],
+      "locations": [
+        "衛生所門口",
+        "照護所工地",
+        "周家早餐店門口"
+      ],
+      "state": {
+        "time": "六月下旬",
+        "knowledge": "債剩三十萬；照護所：油漆完成；阿凱歸隊；帳簿紅圈裡的三十萬還沒有名字",
+        "carry_forward": "拉到一半的鐵門"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "先吃飯",
+      "youtube_title": "她對反對了一整年的哥哥說，我懂你的四十分鐘了，哥哥問她那妳還等嗎",
+      "duration_s": 130,
+      "logline": "念慈要告訴哥哥她懂了、她還是要等，卻被哥哥反對了一整年的理由就是怕她等擋住。",
+      "hook": "鐵門停在半空，她說：「我懂你的四十分鐘了。」",
+      "hook_type": "line",
+      "mid_hook": "哥哥慢慢把鐵門推回去，轉身看她：「那妳還等嗎？」",
+      "extra_hooks": [
+        "她說：「等。」"
+      ],
+      "conflict": "哥哥怕的是妹妹等一個可能回不來的人；現在她說她懂了，還是要等。",
+      "turn": "以為哥哥會罵、會摔鍋，他把鍋鏟放下——第一次沒有反對。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "哥哥把鍋鏟放下，沒有反對，也沒有答應，拉開一張椅子：「先吃飯。」",
+        "question": "哥哥這一句，算答應了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "peiban",
+        "xiaozhen"
+      ],
+      "spectacle": "早餐店的鐵門半開，門裡一盞燈、門外一條街，兄妹站在門檻兩邊。",
+      "glamour_shot": "念慈站在門檻外說「等」的那一刻，眼神很定，晚風把她的瀏海吹開，露出整張乾淨的臉。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t15",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她跟哥哥說了她懂那四十分鐘",
+        "哥哥第一次沒反對，說「先吃飯」"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-nianzu",
+        "zhou-ma"
+      ],
+      "locations": [
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "六月底，傍晚",
+        "knowledge": "債剩三十萬（白格六格）；照護所：油漆完成，準備進家具；哥哥的沉默變成「先吃飯」",
+        "carry_forward": "飯桌"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "單程票",
+      "youtube_title": "照護所快完工了，她卻發現替照護所做得最多的老師傅，偷偷買了完工那天離開小鎮的單程票",
+      "duration_s": 105,
+      "logline": "念慈的照護所眼看要完工，卻發現做得最多的江父打算完工那天就走。",
+      "hook": "飯桌上，哥哥把一顆荷包蛋夾到她碗裡，一句話沒說；周媽看了兩個人一眼，低頭扒飯。",
+      "hook_type": "image",
+      "mid_hook": "七月五日，她還了五萬，還款表剩五格；照護所的床一張一張搬進來，江父裝床欄，手比年輕人穩。",
+      "conflict": "照護所越接近完工，江父那句「這間做完，我就走」就越近。",
+      "turn": "以為江父那句話只是說說，他真的去買了票。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "公車總站，阿忠把一張票根給她看：「江伯買的，八月一號，單程。」那天，是照護所完工的日子。",
+        "question": "江父真的要在完工那天走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "照護所走廊上十張新床一字排開，白床單在穿堂風裡輕輕鼓起。",
+      "glamour_shot": "江野和江父一人一頭抬床進門，父子同樣的濃眉、同樣的沉默，夕陽把兩個人的側臉疊成一樣的線條。",
+      "setups": [
+        "s04-t18"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "七月的五萬還了：債剩二十五萬，白格五格",
+        "照護所的床全部進場"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-nianzu",
+        "zhou-ma",
+        "jiang-fu",
+        "jiang-ye",
+        "siji"
+      ],
+      "locations": [
+        "周家早餐店",
+        "農會",
+        "照護所",
+        "鹿川公車總站"
+      ],
+      "state": {
+        "time": "七月五日",
+        "knowledge": "債剩二十五萬（白格五格）；照護所：床與家具進場；江父買了完工那天的單程票",
+        "carry_forward": "那張票"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "缺一個工友",
+      "youtube_title": "她想留下要走的老師傅，搬出照護所缺工友當理由，老人卻說出他離不開的不是小鎮",
+      "duration_s": 105,
+      "logline": "念慈想留下江父，卻被那不是她的家事、她只能用照護所的名義開口擋住。",
+      "hook": "她把票根放在江父的工具箱上：「完工那天？」江父把票收進口袋：「說好的。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「照護所缺一個工友。」江父：「我老了。」她：「阿公比你老。」門口監工的阿公：「欸！」",
+      "conflict": "她想替江野留下父親，可是江野自己都沒開口。",
+      "turn": "以為江父會一口回絕，他沉默了，看著老屋的方向說出一句實話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "江父看著老屋的方向：「工友可以。那間屋子，我待不下去。」他捏著口袋裡的票，沒說要不要退。",
+        "question": "那間屋子裡，有什麼讓他待不下去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "照護所院子裡一個老人、一只工具箱、一張票根，背後是新刷白的牆和還沒拆封的招牌木框。",
+      "glamour_shot": "念慈蹲在江父的工具箱旁仰頭跟他說話，陽光從修好的舊窗框斜進來，照亮她認真的眉眼。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "江父不排斥當工友",
+        "她知道他離不開的不是鹿川，是那間老屋"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-fu",
+        "a-gong",
+        "jiang-ye"
+      ],
+      "locations": [
+        "照護所"
+      ],
+      "state": {
+        "time": "七月上旬",
+        "knowledge": "債剩二十五萬；照護所：家具進場；江父說他待不下老屋；帳簿紅圈裡的三十萬還沒有名字",
+        "carry_forward": "口袋裡的票"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "隔壁的院子",
+      "youtube_title": "她到隔壁阿嬤家換藥，隔著一道矮牆，聽見那對十幾年不說話的父子終於開口",
+      "duration_s": 110,
+      "logline": "念慈聽見了不該聽的話，卻被進去不對、走開也不對擋住。",
+      "hook": "夜裡她到吳阿嬤家換藥，阿嬤朝牆那頭努努嘴：「隔壁那對父子，坐了一個鐘頭，沒講話。」",
+      "hook_type": "line",
+      "mid_hook": "隔著矮牆，江家院子那棵樹下，江父先開口：「你媽走了，我在這個屋子待不下去。」",
+      "conflict": "江野十四年沒問過父親一句為什麼；今晚父親開口了，她就在牆的另一邊。",
+      "turn": "以為江野會沉默到底，他開口了，問了一句十四年沒問的話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "樹下的江野沒看父親：「那我呢？」",
+        "question": "江父會怎麼回答兒子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "夜裡兩戶相連的老院子，一道矮牆隔開：這邊一盞小燈、兩個女人和一條毯子，那邊一棵老樹、兩個男人和一片黑。",
+      "glamour_shot": "念慈跪坐在吳阿嬤家的門階上換藥，聽見牆那邊的聲音時停住手，月光落在她的側臉和停住的指尖。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "吳阿嬤的腿傷換好藥",
+        "江父第一次對兒子說起妻子走後的事"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "s04-wu-ama",
+        "jiang-fu",
+        "jiang-ye"
+      ],
+      "locations": [
+        "吳阿嬤家門階",
+        "江家老屋院子"
+      ],
+      "state": {
+        "time": "七月中，夜裡",
+        "knowledge": "債剩二十五萬；照護所：家具進場；江父開口了",
+        "carry_forward": "「那我呢？」"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "不敢看你",
+      "youtube_title": "離家十四年的父親終於說出原因：我不是不要你，是你長得太像她，我不敢看",
+      "duration_s": 130,
+      "logline": "江野等父親把話說完，念慈在牆的另一邊陪著，兩個不會說話的男人只能坐著。",
+      "hook": "江父的聲音很沙：「我不是不要你。是不敢看你。」",
+      "hook_type": "line",
+      "mid_hook": "「你長得像她。」江父說完，父子在樹下並排坐著，一整夜沒有再說話。",
+      "conflict": "十四年的距離不是一句話補得上的，可是今晚誰都沒有起身離開。",
+      "turn": "以為江野會發火，他只問：「你知道我守著這屋子，在等誰？」又自己答：「等你。也等一個人。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "天亮，江家的院門打開，江野走出來，看見坐在隔壁門階上的她，停住：「妳聽見了？」",
+        "question": "她會說她聽見了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren"
+      ],
+      "spectacle": "從深夜到天亮的固定長鏡頭：老樹下兩個並排的背影，矮牆這邊門階上一個抱著膝、沒有進去的她，天色從黑變藍變白，三個人都沒動。",
+      "glamour_shot": "天亮時江野推開院門，一夜沒睡的眼睛有點紅，晨光從他背後打來，看見她時肩膀鬆了一下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [
+        "m11"
+      ],
+      "general_payoffs": [
+        "江父為什麼在外地揭開：妻子走後他不敢看長得像她的兒子",
+        "江野說出他一個人守著老屋，等父親、也等一個人",
+        "父子在院子裡坐了一整夜"
+      ],
+      "characters": [
+        "jiang-fu",
+        "jiang-ye",
+        "zhou-nianci",
+        "s04-wu-ama"
+      ],
+      "locations": [
+        "江家老屋院子",
+        "吳阿嬤家門階"
+      ],
+      "state": {
+        "time": "七月中，深夜到天亮",
+        "knowledge": "債剩二十五萬；照護所：家具進場；江父的理由說出來了",
+        "carry_forward": "「妳聽見了？」"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "行李箱打開了",
+      "youtube_title": "那只從過年立到現在的行李箱終於打開了，照護所也交了鑰匙，立案表上卻有一欄她填不出來",
+      "duration_s": 115,
+      "logline": "念慈的照護所完工了，卻被立案表上那筆說不出來源的三十萬擋住。",
+      "hook": "「聽見了。」她說。他在她旁邊的門階坐下，兩個人隔著一個人的距離，跟長椅一樣。",
+      "hook_type": "line",
+      "mid_hook": "江家老屋門邊，那只從過年立到現在的行李箱被打開，江父把衣服一件一件掛進衣櫃；票根，他交還給了阿忠。",
+      "extra_hooks": [
+        "阿樹師傅把一串鑰匙放進她掌心：「完工。」照護所門上貼出「預定開幕：十一月五日」。"
+      ],
+      "conflict": "完工了，可是照護所要開門得先立案；立案表要寫清楚每一筆錢從哪裡來。",
+      "turn": "以為完工就能開門，縣府的立案表上有一欄她最怕的：「資金來源，逐筆列明。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "立案表上「三十萬」那一行空著，承辦人在電話裡說：「來源不明，不予立案。」",
+        "question": "三十萬查不出來，照護所就開不了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "一串新鑰匙落在掌心，照護所的門第一次完整地關上又打開，院子裡多了一張江父新做的長椅。",
+      "glamour_shot": "念慈握著鑰匙站在照護所門口，第一次推開那扇門，門裡的光照在她臉上，她笑得像小時候。",
+      "setups": [
+        "s04-t19"
+      ],
+      "payoffs": [
+        "s04-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江父打開行李箱留下來，當照護所的工友",
+        "照護所完工、交了鑰匙",
+        "江父在院子裡做了一張長椅，跟消防隊門口那張一樣長"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-fu",
+        "siji",
+        "s04-a-shu"
+      ],
+      "locations": [
+        "吳阿嬤家門階",
+        "江家老屋",
+        "照護所"
+      ],
+      "state": {
+        "time": "七月中到八月一日",
+        "knowledge": "債剩二十五萬；照護所：完工、送立案；三十萬那一行空著",
+        "carry_forward": "來源不明，不予立案"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "鹿消07",
+      "youtube_title": "農會調出那張三十萬的存款憑條，存款人欄沒有名字，只有四個字，她一路追到消防隊的置物櫃",
+      "duration_s": 110,
+      "logline": "念慈要立案就得寫出三十萬的來源，卻被一張只寫了四個字的存款憑條擋住。",
+      "hook": "農會櫃台，佩珊把一張影印的存款憑條推過來：「存款人那欄有寫字，可是不是名字。」",
+      "hook_type": "line",
+      "mid_hook": "八月五日，她順手還了五萬，還款表剩四格；然後低頭看那張憑條：存款人欄四個字——「鹿消07」。",
+      "conflict": "她要寫出來源，就得知道這四個字是誰。",
+      "turn": "以為「鹿消」是哪家公司，她走進消防隊找老蔡問，抬頭看見一整排置物櫃的編號。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她的指尖停在一格置物櫃上：「07　江野」。身後，他端著兩杯薑茶走進來。",
+        "question": "他會承認嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "消防隊一整排深藍置物櫃，每一格貼著白底黑字的編號，鏡頭沿著編號一格一格滑到「07」。",
+      "glamour_shot": "江野端著兩杯冒熱氣的薑茶站在門口，看見她手上那張憑條，表情第一次沒藏住。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "八月的五萬還了：債剩二十萬，白格四格",
+        "她拿到三十萬的存款憑條"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "s04-peishan",
+        "jiang-ye",
+        "lao-cai"
+      ],
+      "locations": [
+        "農會",
+        "消防隊置物櫃間"
+      ],
+      "state": {
+        "time": "八月五日",
+        "knowledge": "債剩二十萬（白格四格）；照護所：完工，立案卡在三十萬；存款人寫著鹿消07",
+        "carry_forward": "07號置物櫃"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "我早知道",
+      "youtube_title": "她拿著那張存款憑條質問哥哥，哥哥說他早就知道，連差多少都是他寫在蛋餅袋上告訴那個人的",
+      "duration_s": 125,
+      "logline": "念慈最不想欠的就是江野，卻發現照護所的每一面牆裡都有他那三十萬，而哥哥從頭到尾都知道。",
+      "hook": "她沒接他的薑茶，拿著憑條直接走去早餐店，拍在哥哥面前：「鹿消07。」",
+      "hook_type": "line",
+      "mid_hook": "哥哥擦著鐵板：「我早知道。他問我差多少，我寫在他的蛋餅袋上。」——三月那個袋底朝下的字。",
+      "extra_hooks": [
+        "周媽在後面一樣一樣數給她聽：「蔣醫生的空屋。全鎮的合資。妳的存款。」頓了一下：「再加他這筆，才夠。」"
+      ],
+      "conflict": "她說過不管是誰她都會還；現在知道是誰了，她反而不知道怎麼還。",
+      "turn": "以為哥哥會替自己辯解，他只說了一句：「他存了十年。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她問：「他存十年要做什麼？」哥哥：「他說，以後用。」她問：「以後是什麼？」哥哥：「妳問他。」",
+        "question": "江野的「以後」是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "早餐店工作台上一張存款憑條，鏡頭疊回三月那個清晨：蛋餅袋底的奇異筆字「差三十」。",
+      "glamour_shot": "念慈站在工作台前，頭髮放下、外套沒脫，眼睛很亮，手按在憑條上不放。",
+      "setups": [],
+      "payoffs": [
+        "s04-t03",
+        "s04-t04"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "照護所的錢從哪來全部揭開：蔣醫生讓出的空屋、鎮民合資、她的存款、江野匿名的三十萬",
+        "她知道哥哥用蛋餅袋告訴江野差三十萬"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "zhou-nianzu",
+        "zhou-ma"
+      ],
+      "locations": [
+        "周家早餐店"
+      ],
+      "state": {
+        "time": "八月上旬",
+        "knowledge": "債剩二十萬；照護所：立案表可以填了；三十萬是江野存了十年的錢",
+        "carry_forward": "「以後」是什麼"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "字寫太大了",
+      "youtube_title": "她把憑條放在長椅上問三十萬，他裝傻問什麼三十萬，她說出那四個字，他只回了一句",
+      "duration_s": 105,
+      "logline": "念慈要把三十萬退給江野才不算欠，卻被那筆錢已經變成照護所的牆和警報器擋住。",
+      "hook": "長椅上，她把憑條放在兩人中間：「三十萬。」他看著遠方：「什麼三十萬？」",
+      "hook_type": "line",
+      "mid_hook": "她說：「鹿消07。」他沉默三秒：「……字寫太大了。」她差點笑出來，又忍住。",
+      "extra_hooks": [
+        "她說：「我不要再欠人。」他說：「不是欠。」——跟媽媽說的一模一樣。"
+      ],
+      "conflict": "錢退不出來，也不該退；可是不退，她就欠他。",
+      "turn": "以為她會把錢退回去，她從包裡拿出照護所的帳本和一支筆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把帳本攤在長椅中間，翻到最後一頁，筆尖懸在紙上。他問：「寫什麼？」",
+        "question": "她要在帳本上寫什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "長椅中間攤開一本帳本，左邊一個保溫瓶，右邊一張存款憑條，晨風把紙頁吹起一角。",
+      "glamour_shot": "江野被識破時偏過頭，耳根紅了，嘴角卻壓不住；念慈看著他，眼睛彎起來。",
+      "setups": [
+        "s04-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他承認了那三十萬",
+        "她說「我不要再欠人」，他回「不是欠」"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye"
+      ],
+      "locations": [
+        "消防隊門口長椅"
+      ],
+      "state": {
+        "time": "八月上旬，清晨",
+        "knowledge": "債剩二十萬；照護所：立案中；他承認了",
+        "carry_forward": "懸在紙上的筆"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "不收利息",
+      "youtube_title": "她在帳本最後一頁寫下他的名字和三十萬，後面加了四個字，他說我沒說要，她說是我說的",
+      "duration_s": 115,
+      "logline": "念慈要讓照護所過最後一關消防檢查，也要決定那三十萬在帳上怎麼寫。",
+      "hook": "她在帳本最後一頁寫下：「江野，三十萬，不收利息。」他說：「我沒說要利息。」她：「我說的。」",
+      "hook_type": "line",
+      "mid_hook": "九月，老蔡穿上制服來照護所做消防檢查，一個一個按測試鈕——全過；他在驗收單上簽名：「這次沒人按錯。」",
+      "conflict": "立案的最後一關是消防隊長本人；而她自己的那筆債，還剩最後幾格。",
+      "turn": "以為十月的還款又只是一格，網銀跳出的餘額讓她停住——九月、十月兩筆下去，只剩最後一截。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "十月五日，她看著手機上的貸款餘額：100,000。還款表上，只剩最後兩格白的。",
+        "question": "最後十萬，她什麼時候還？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "duli"
+      ],
+      "spectacle": "照護所天花板上一排警報器依序亮起綠燈，老蔡在每一盞下面打勾。",
+      "glamour_shot": "念慈低頭寫字時髮絲垂到帳本上，他伸手想撥又收回，最後只把保溫瓶往她那邊推了一寸。",
+      "setups": [],
+      "payoffs": [
+        "s04-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三十萬寫進帳本：「江野，三十萬，不收利息」；合資帳簿紅圈裡的問號劃掉，換成他的名字",
+        "照護所通過消防檢查",
+        "九月、十月各還五萬：債剩十萬，白格兩格"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "lao-cai"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "照護所",
+        "衛生所值班室"
+      ],
+      "state": {
+        "time": "八月上旬到十月五日",
+        "knowledge": "債剩十萬（白格兩格）；照護所：消防檢查通過、立案送件；三十萬記成不收利息",
+        "carry_forward": "最後兩格"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "下個月",
+      "youtube_title": "還款表只剩最後兩格，閨蜜問她還完之後呢，她說出的那句話讓閨蜜手搖的吸管掉了出來",
+      "duration_s": 125,
+      "logline": "念慈下個月就能還完最後十萬，她得決定還完那天，要不要走到長椅中間。",
+      "hook": "值班室裡，她看著還款表最後兩格白的，把帳本合上。",
+      "hook_type": "image",
+      "mid_hook": "立案通過的公文寄到衛生所，蔣醫生戴著老花眼鏡看了三遍：「十一月五日，可以開了。」",
+      "extra_hooks": [
+        "她對小芸說：「下個月。」小芸咬著吸管：「然後呢？」"
+      ],
+      "conflict": "債、照護所、長椅：三件事都要在下個月同一天落地。",
+      "turn": "以為她會像以前一樣說「再看看」，她連想都沒想。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她說：「然後我去坐長椅中間。」小芸愣了兩秒，手搖的吸管掉出來：「妳終於不瞎了。」",
+        "question": "長椅中間，她真的會坐下去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "jiaren"
+      ],
+      "spectacle": "值班室的牆：還款表只剩兩格白的，旁邊釘著立案公文，日光燈照得紙面發白。",
+      "glamour_shot": "念慈說「長椅中間」時微微抬起下巴，眼裡有笑，日光燈下她的臉第一次沒有夜班的疲憊。",
+      "setups": [
+        "s04-t21"
+      ],
+      "payoffs": [
+        "s04-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所立案通過，開幕日定在十一月五日",
+        "她第一次說出要去坐長椅中間"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun",
+        "jiang-yisheng"
+      ],
+      "locations": [
+        "衛生所值班室"
+      ],
+      "state": {
+        "time": "十月上旬",
+        "knowledge": "債剩十萬（白格兩格）；照護所：立案通過，十一月五日開幕；她說要坐長椅中間",
+        "carry_forward": "下個月"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "開幕那天",
+      "youtube_title": "全鎮都在等照護所開幕，消防隊的白板上卻偷偷開了一個賭盤：那個十年不說話的人，到底會說什麼",
+      "duration_s": 105,
+      "logline": "念慈要在開幕那天用自己的錢還完最後一筆，這個月一塊錢都不能多花，全鎮卻都在等另一件事。",
+      "hook": "小芸一把搶過帳本：「下個月幾號？」她說：「五號。發薪日，也是開幕。」",
+      "hook_type": "line",
+      "mid_hook": "消防隊車庫的白板上，老蔡寫了一行「他會說什麼」，底下下注：阿凱「我喜歡妳」、小芸「嫁給我」、老蔡「我等妳」、阿公「薑茶」。賭注是蛋餅。",
+      "extra_hooks": [
+        "江野走進來把白板擦乾淨；阿凱等他走了，又一字一字寫回去。觀眾看見：江野走出車庫時，嘴角是彎的。"
+      ],
+      "conflict": "最後十萬要在五號自己匯出去；招牌也送到了，她用紅布蓋著，不准任何人偷看。",
+      "turn": "以為全鎮都在等開幕，大家其實在等另一件事——他什麼時候說、說什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡到府換藥的最後一站，陳阿公家燈亮著、電視開得很大聲，她敲了三次門，沒人應。",
+        "question": "阿公怎麼了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "duli"
+      ],
+      "spectacle": "消防隊車庫的白板上一排歪歪扭扭的下注，每個名字旁邊畫一個蛋餅。",
+      "glamour_shot": "江野擦白板時背對眾人，肩背的線條在 T 恤下繃著，轉身時嘴角那一點彎被鏡頭抓到。",
+      "setups": [
+        "s04-t22",
+        "s04-t23"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "最後一筆定在十一月五日、開幕當天，由她自己匯",
+        "照護所的招牌送到，蓋著紅布"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun",
+        "lao-cai",
+        "a-kai",
+        "jiang-ye"
+      ],
+      "locations": [
+        "衛生所值班室",
+        "消防隊車庫",
+        "照護所院子",
+        "陳阿公家門口"
+      ],
+      "state": {
+        "time": "十月中",
+        "knowledge": "債剩十萬；照護所：招牌送到、蓋紅布；全鎮在賭他會說什麼",
+        "carry_forward": "阿公沒應門"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "地板比較涼",
+      "youtube_title": "照護所的第一個住民在開幕前三週跌倒了，她和他一頭一尾把阿公抬上擔架，醫生卻說以後要坐輪椅",
+      "duration_s": 110,
+      "logline": "念慈要把照護所的第一個住民送醫，卻被阿公再也站不起來的消息擋住。",
+      "hook": "她推開沒鎖的門：阿公倒在床邊的地上，睜著眼：「我沒事，地板比較涼。」",
+      "hook_type": "line",
+      "mid_hook": "她撥了電話，五分鐘後救護車的燈停在巷口，跳下來的是江野；兩個人一頭一尾把阿公抬上擔架，沒說一句多的話。",
+      "extra_hooks": [
+        "擔架上的阿公抓住她的手：「朝東那間，還留給我嗎？」"
+      ],
+      "conflict": "阿公是照護所的第一個住民，現在他連自己站都站不起來。",
+      "turn": "以為阿公只是扭到，蔣醫生看完片子：「髖骨裂了，以後要坐輪椅。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蔣醫生摘下老花眼鏡：「坐輪椅的，照護所收不收，看妳。」阿公看著她，不敢再問。",
+        "question": "照護所收不收坐輪椅的阿公？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren"
+      ],
+      "spectacle": "夜裡的窄巷，救護車的紅燈一圈一圈掃過老房子的牆，兩個人抬著擔架從門裡出來。",
+      "glamour_shot": "江野半跪在地上替阿公固定擔架，袖子捲起，抬頭跟她對上眼，一個眼神就分好誰抬頭、誰抬腳。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿公被及時送醫",
+        "她和江野不用說話就抬穩了擔架"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "a-gong",
+        "jiang-ye",
+        "jiang-yisheng"
+      ],
+      "locations": [
+        "陳阿公家",
+        "鹿川鎮衛生所"
+      ],
+      "state": {
+        "time": "十月中，深夜",
+        "knowledge": "債剩十萬；照護所：開幕前三週；阿公髖骨裂，要坐輪椅",
+        "carry_forward": "收不收"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "寬五公分",
+      "youtube_title": "阿公的輪椅比房門寬了五公分，那天夜裡三個從不說話的男人扛著工具，把門框拆了重做",
+      "duration_s": 110,
+      "logline": "念慈答應收阿公，卻被比輪椅窄了五公分的房門和不能多花的錢擋住。",
+      "hook": "「收。」她說：「朝東第一間，留著。」阿公別過頭，用袖子擦眼睛。",
+      "hook_type": "line",
+      "mid_hook": "她拿捲尺量輪椅：比房門寬五公分。當晚江父、江野、哥哥三個男人扛著工具來拆門框，整夜沒一句話——跟三月一樣。",
+      "extra_hooks": [
+        "半夜周媽送宵夜來，哥哥把那份多一顆蛋的蛋餅遞給江野，兩個人的手扶在同一個門框上。"
+      ],
+      "conflict": "開幕前三週，第一間房的門得加寬，她一塊錢都不能多花。",
+      "turn": "以為三個不說話的男人會像三月一樣各做各的，這一次哥哥遞工具，江野接得剛剛好。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把這個月能存的錢算了又算：九萬八千五——替阿公買輪椅坐墊的那一千五，剛好讓她差一千五。",
+        "question": "差一千五，她要怎麼補？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiaren",
+        "duli"
+      ],
+      "spectacle": "深夜的照護所走廊，一扇拆下的門靠在牆邊，三個男人的影子在工作燈下忙成一團。",
+      "glamour_shot": "江野和哥哥一左一右扶著新門框，燈從下方打上來，兩個人同樣專注的側臉第一次在同一個畫面裡。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "朝東第一間的門加寬五公分，輪椅進得去",
+        "哥哥和江野第一次一起做完一件事"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "a-gong",
+        "jiang-fu",
+        "jiang-ye",
+        "zhou-nianzu",
+        "zhou-ma"
+      ],
+      "locations": [
+        "鹿川鎮衛生所",
+        "照護所朝東第一間"
+      ],
+      "state": {
+        "time": "十月下旬",
+        "knowledge": "債剩十萬；照護所：門框加寬；她算出最後一筆差一千五",
+        "carry_forward": "差一千五"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "最後一件",
+      "youtube_title": "最後一筆債差一千五，全鎮搶著塞錢給她，她一張一張放回去，賣掉了從台北帶回來的最後一樣東西",
+      "duration_s": 110,
+      "logline": "念慈的最後一筆必須是自己的錢，卻被差一千五和所有人塞過來的好意擋住。",
+      "hook": "「我借妳！」小芸掏出錢包；阿凱遞上紅包；周媽把兩千塊塞進她圍裙口袋——她一張一張放回檯面上。",
+      "hook_type": "line",
+      "mid_hook": "律師打來：「林致遠那邊，還在分期。」她說：「隨他。」掛掉電話，她把台北帶回來的最後一件大衣拍照上架：一千五。",
+      "conflict": "這筆錢只要拿了任何一個人的，就不是她自己還完的。",
+      "turn": "以為她會收下媽媽的兩千塊，她賣掉台北的最後一件東西——買家在台北，大衣回台北去了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "大衣寄出那天清晨，消防車回來了；江野下車，沒走向長椅，一個人坐在車庫的台階上，手在抖。她第一次看見他這樣。",
+        "question": "他出了什麼事？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "xiju",
+        "peiban"
+      ],
+      "spectacle": "一件駝色大衣攤在早餐店的長桌上，旁邊一張填好的超商寄件單，收件地址寫著台北。",
+      "glamour_shot": "念慈把大衣摺好放進紙箱，手在領口停了一秒，然後封箱，膠帶「嘶」的一聲，她的眼神是輕的。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她拒絕所有人的錢",
+        "賣掉台北的最後一件大衣：最後十萬湊齊，全是她自己的"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "xiao-yun",
+        "a-kai",
+        "zhou-ma",
+        "jiang-ye"
+      ],
+      "locations": [
+        "衛生所護理站",
+        "周家早餐店",
+        "消防隊車庫"
+      ],
+      "state": {
+        "time": "十月底到十一月初",
+        "knowledge": "債剩十萬，最後一筆湊齊；照護所：開幕前一週；林致遠還在分期，她說隨他",
+        "carry_forward": "車庫台階上手在抖的他"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "趁熱",
+      "youtube_title": "那個永遠在等她的人第一次坐在台階上發抖，她什麼都沒問，煮了一杯薑茶塞進他手裡",
+      "duration_s": 115,
+      "logline": "念慈要接住一向接住她的人，卻被她不知道他看見了什麼、也不能問擋住。",
+      "hook": "她沒問他看見了什麼，走進值班室煮薑茶；十分鐘後端出來，坐到他旁邊的台階上，把杯子塞進他手裡：「趁熱。」",
+      "hook_type": "image",
+      "mid_hook": "他喝了一口：「妳煮的。」她說：「嗯。」他說：「不辣了。」——她第一次煮壞的那五杯，他都喝完了。",
+      "conflict": "這一次需要被接住的是他；她得學會不問、只陪。",
+      "turn": "以為要他先開口，她什麼都沒問——就像十年來他對她那樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "杯子空了，他看著鎮口的方向：「五號那天，妳幾點下班？」她說：「為什麼？」他說：「我煮。」",
+        "question": "五號晚上，他要煮給她什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "peiban",
+        "ganren"
+      ],
+      "spectacle": "清晨的消防車庫台階，兩個人並肩坐著，一杯薑茶的熱氣在冷空氣裡往上飄，背後紅色的車頭還在滴水。",
+      "glamour_shot": "念慈把杯子塞進他手裡時包住他的手一秒，晨光打在她低垂的睫毛；江野低頭看著那雙手，眼神一點一點鬆開。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次接住他",
+        "她煮的薑茶不辣了"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "lao-cai"
+      ],
+      "locations": [
+        "消防隊值班室",
+        "消防隊車庫台階"
+      ],
+      "state": {
+        "time": "十一月初，清晨",
+        "knowledge": "債剩十萬，錢已湊齊；照護所：開幕前三天；她第一次替他煮薑茶、接住他",
+        "carry_forward": "五號晚上"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "朝東那間",
+      "youtube_title": "阿公坐著輪椅住進照護所朝東那間，躺下第一句話就把全鎮都知道、只有她裝傻的事說了出來",
+      "duration_s": 105,
+      "logline": "念慈的照護所要收第一個住民試住，卻被阿公一句話把全房間的目光都轉到她身上擋住。",
+      "hook": "阿公的輪椅滑進朝東那間，一寸都沒卡；他躺下第一句：「那個消防的，在問妳五號幾點下班。」",
+      "hook_type": "image",
+      "mid_hook": "全房間的人都轉頭看她；阿公還把消防隊白板上的下注報了一遍：「老蔡押『我等妳』，我押『薑茶』。」",
+      "conflict": "開幕前三天，照護所的每一樣東西都要第一次真的用起來。",
+      "turn": "以為阿公只是嘴碎，他把全鎮都知道、只有她裝不知道的事說了出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "大家散了，阿公拉住她的袖子：「五號晚上，長椅中間，妳坐不坐？」",
+        "question": "她會回答阿公嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "peiban"
+      ],
+      "spectacle": "朝東的房間，窗一打開，早上的陽光從修好的舊窗框斜進來，照滿新床單和一台輪椅。",
+      "glamour_shot": "念慈蹲在輪椅旁替阿公調腳踏板，陽光照在她的髮頂，她抬頭對阿公笑的那一下。",
+      "setups": [],
+      "payoffs": [
+        "s04-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳阿公成為照護所第一個住民，住進朝東那間",
+        "坡道、門框、扶手第一次真的派上用場"
+      ],
+      "characters": [
+        "a-gong",
+        "zhou-nianci",
+        "zhou-ma",
+        "jiang-fu",
+        "jiang-yisheng"
+      ],
+      "locations": [
+        "照護所朝東第一間",
+        "照護所院子"
+      ],
+      "state": {
+        "time": "十一月二日",
+        "knowledge": "債剩十萬，錢已湊齊；照護所：第一個住民入住；阿公問她坐不坐中間",
+        "carry_forward": "五號晚上"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "明天",
+      "youtube_title": "開幕前夜一陣風掀起招牌的紅布一角，他只看了一眼上面的字，就站在院子裡紅了眼眶",
+      "duration_s": 110,
+      "logline": "念慈想在開幕前夜把每一件事再檢查一次，卻被一陣風掀開了她最想藏到明天的東西。",
+      "hook": "她沒回答阿公，替他把窗簾拉上一半：「睡吧。」阿公閉上眼：「那就是坐。」",
+      "hook_type": "line",
+      "mid_hook": "開幕前夜，空蕩的照護所只亮走廊的燈，江野一盞一盞按警報器的測試鈕，她跟在後面在本子上打勾。",
+      "extra_hooks": [
+        "走廊盡頭，兩個人停下，她說：「明天。」他說：「明天。」"
+      ],
+      "conflict": "明天要開幕、要還完債、要走到長椅中間；今晚她只想把每一顆警報器再按一次。",
+      "turn": "以為今晚就這樣安靜過去，院子裡起了風，掀起招牌紅布的一角。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "風把紅布掀起一角，江野看見招牌上的字，整個人定在原地；她回頭：「不准看。」他沒說話，眼眶紅了。",
+        "question": "招牌上寫了什麼，讓他愣住？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peiban",
+        "ganren"
+      ],
+      "spectacle": "夜裡的照護所院子，一陣風把蓋著招牌的紅布掀起一角，路燈的光落在半露的字上。",
+      "glamour_shot": "江野站在院子裡仰頭看招牌，路燈從上方打下來，眉骨和眼睛藏在陰影裡，只有喉結動了一下。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所所有警報器開幕前最後一次測試全過"
+      ],
+      "characters": [
+        "a-gong",
+        "zhou-nianci",
+        "jiang-ye"
+      ],
+      "locations": [
+        "照護所朝東第一間",
+        "照護所走廊",
+        "照護所院子"
+      ],
+      "state": {
+        "time": "十一月四日夜",
+        "knowledge": "債剩十萬，錢在帳戶裡；照護所：開幕前夜；他看見了招牌",
+        "carry_forward": "紅布下的字"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "一百份蛋餅",
+      "youtube_title": "開幕當天凌晨四點，早餐店煎出一百份蛋餅，哥哥和他一起扛桌子，下一秒有人大喊阿公不見了",
+      "duration_s": 110,
+      "logline": "念慈要在開幕當天辦一場全鎮的流水席、剪綵、匯出最後一筆，什麼都不能出錯。",
+      "hook": "她連夜用曬衣夾把紅布夾死；凌晨四點，早餐店的鐵板上一排蛋餅同時翻面，周媽喊：「第八十七！」",
+      "hook_type": "image",
+      "mid_hook": "天亮，哥哥和江野一頭一尾扛著早餐店的長桌走進照護所院子，一句話沒說，桌子放下的位置剛剛好；江父已經把院子掃了第三遍。",
+      "extra_hooks": [
+        "她看著手機：帳戶裡十萬整。她把轉帳畫面設好——等剪綵完。"
+      ],
+      "conflict": "流水席、剪綵、最後一筆，全擠在同一個早上。",
+      "turn": "以為今天最怕的是下雨，最怕的事從朝東那間傳出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小芸從朝東那間衝出來：「阿公不見了！」房間空著，輪椅也不見了。",
+        "question": "坐輪椅的阿公跑去哪了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duli",
+        "xiaozhen",
+        "jiaren"
+      ],
+      "spectacle": "天剛亮的照護所院子，一張長桌上一百份蛋餅疊成小山，熱氣在晨光裡升起。",
+      "glamour_shot": "念慈穿著媽媽的舊圍裙在鐵板前翻蛋餅，臉被熱氣蒸得微紅，頭髮紮得一絲不亂，回頭對媽媽喊數字。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一百份蛋餅做好",
+        "哥哥和江野一起把長桌搬進院子",
+        "最後十萬在帳戶裡，轉帳設好了"
+      ],
+      "characters": [
+        "zhou-ma",
+        "zhou-nianci",
+        "zhou-nianzu",
+        "jiang-ye",
+        "jiang-fu",
+        "xiao-yun"
+      ],
+      "locations": [
+        "周家早餐店",
+        "照護所院子",
+        "照護所朝東第一間"
+      ],
+      "state": {
+        "time": "十一月五日，凌晨四點到早上八點",
+        "knowledge": "債剩十萬，轉帳設好；照護所：開幕當天早上；阿公不見了",
+        "carry_forward": "空著的房間"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "有人在",
+      "youtube_title": "照護所開幕紅布落下，招牌底下那一行小字，是他十年前說過、她以為自己早就忘了的一句話",
+      "duration_s": 125,
+      "logline": "念慈要在開幕的每一秒都被人看著的時候，找到一個沒人看見的角落，把最後一筆匯出去。",
+      "hook": "一群人跑到消防隊門口：阿公坐在長椅正中間，輪椅停在一旁，阿凱在後面舉手：「他逼我扶的。」阿公叼著沒點的菸：「我先佔著。」",
+      "hook_type": "image",
+      "mid_hook": "十點，鎮民坐滿照護所的院子，蔣醫生剪綵，紅布落下——招牌寫著「鹿川照護所」，底下一行小字：「有人在」。",
+      "extra_hooks": [
+        "人群後面，江野看著那三個字，又看向她；她別開臉，耳朵紅了。"
+      ],
+      "conflict": "院子裡每一雙眼睛都看著她，她卻要找一個角落按下最後一筆。",
+      "turn": "以為招牌只是一個名字，「有人在」是三月江野那句「這裡要有人」——她一直記著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她躲到招牌後面打開網銀：轉帳十萬，「確認」——拇指停在按鍵上；院子另一頭，江野抬起頭，像聽見了什麼。",
+        "question": "最後一筆，她按得下去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiaozhen",
+        "duli"
+      ],
+      "spectacle": "開幕的院子：紅布從招牌上滑落，「有人在」三個字露出來，掌聲和彩帶一起飛起。",
+      "glamour_shot": "念慈穿著白色護理師外套站在招牌下，剪綵時被陽光照得瞇起眼，笑容乾淨；人群後的江野一身深藍制服，只看著她。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06",
+        "s04-t19",
+        "s04-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "照護所開幕，鎮民坐滿院子，消防隊全員到",
+        "招牌「鹿川照護所——有人在」揭開",
+        "阿公替她在長椅中間佔了位子"
+      ],
+      "characters": [
+        "a-gong",
+        "zhou-nianci",
+        "jiang-ye",
+        "jiang-yisheng",
+        "zhou-ma",
+        "zhou-nianzu",
+        "jiang-fu",
+        "xiao-yun",
+        "lao-cai",
+        "a-kai",
+        "s04-xiuqin"
+      ],
+      "locations": [
+        "消防隊門口長椅",
+        "照護所院子"
+      ],
+      "state": {
+        "time": "十一月五日，上午十點",
+        "knowledge": "債剩十萬，轉帳畫面停在確認；照護所：開幕；招牌寫著有人在",
+        "carry_forward": "停在確認鍵上的拇指"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "還完了",
+      "youtube_title": "她用自己的錢還完最後一筆，晚上第一次坐到長椅中間說我還完了，他剛要開口，警鈴響了",
+      "duration_s": 160,
+      "logline": "念慈還完了債，要走去長椅坐到中間，聽那句等了十年的話，卻被一聲警鈴擋住。",
+      "hook": "拇指按下去：「轉帳成功。貸款餘額：0。」俯拍的院子坐滿了人，沒有人發現，她一個人站在招牌後面。",
+      "hook_type": "image",
+      "mid_hook": "她走回衛生所值班室，用自己的筆把還款表最後兩格塗滿——比她四月算的八個月，早了一個月。",
+      "extra_hooks": [
+        "傍晚院子散場，周媽收蛋餅、江父掃地、哥哥搬桌子、消防隊全員幫忙；哥哥抬頭看她往消防隊走，沒有叫住她。"
+      ],
+      "conflict": "債還完了，她要走到長椅，坐進那個她看了一整年、阿公替她佔過的位子。",
+      "turn": "以為十年的話終於要說出口，他剛問完可不可以說，消防隊的警鈴響了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "長椅中間，她說：「我還完了。」他說：「那我可以說了嗎？」她說：「你說。」警鈴響了。他站起來看著她：「等我。」她說：「快去。」——沒說「我等」。他跑進車庫，她坐在長椅中間，薑茶還熱。",
+        "question": "他要說的那句，下次說得完嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "duli",
+        "ganren",
+        "peiban"
+      ],
+      "spectacle": "照護所開幕的俯拍：院子坐滿鎮民、一張長桌、一百份蛋餅，招牌後一個人低頭看手機；入夜後消防隊門口，長椅中間的她，和衝出車庫的紅光。",
+      "glamour_shot": "夜裡坐在長椅中間的念慈抬頭看他，車庫的紅燈在她臉上一閃一閃；江野站起來回頭說「等我」的那一眼，肩線被車燈勾亮。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t10",
+        "s04-t11",
+        "s04-t21",
+        "s04-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "最後一筆十萬是她自己的錢：債還完，還款表全部塗滿",
+        "照護所開幕，阿公住進朝東那間",
+        "她第一次主動坐到長椅中間"
+      ],
+      "characters": [
+        "zhou-nianci",
+        "jiang-ye",
+        "zhou-ma",
+        "zhou-nianzu",
+        "jiang-fu",
+        "lao-cai",
+        "a-kai"
+      ],
+      "locations": [
+        "照護所院子",
+        "衛生所值班室",
+        "消防隊門口長椅",
+        "消防隊車庫"
+      ],
+      "state": {
+        "time": "十一月五日，傍晚到夜裡",
+        "knowledge": "債：零；照護所開幕；她坐到長椅中間，他還沒說出口",
+        "carry_forward": "警鈴、他說「等我」、她說「快去」；長椅中間那杯還熱的薑茶"
+      }
+    }
+  ]
+}
