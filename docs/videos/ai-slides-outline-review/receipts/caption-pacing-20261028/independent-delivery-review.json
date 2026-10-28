@@ -1,0 +1,624 @@
+{
+  "kind": "independent_Slides_caption_pacing_delivery_readback_review",
+  "verdict": "CLEAR_SAME_PENDING_FINAL_APPEND9_47REFS_FULL_NEW_BINARY_READBACK_ONLY",
+  "at": "2026-10-28T00:53:42.645Z",
+  "reviewer": "/root/slides_cc_peer",
+  "actual_delivery_completion": {
+    "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/completion.json",
+    "bytes": 6705,
+    "sha256": "d57f6a9e47c3397486715131f44e5369d8e4569f2e915fcfd998e1d4f4a1d2ce"
+  },
+  "root_delivery_exit": {
+    "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/ROOT-delivery-actual-exit.json",
+    "bytes": 846,
+    "sha256": "ce8ba80d32ea9bf10efefa9d9207682187fa330901db754363cf0aa9b3d2f467"
+  },
+  "component_review": {
+    "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/peer/actual-caption-component-review.json",
+    "bytes": 9580,
+    "sha256": "adddc423973a88cf4afe02b77b9df608800c891bb84a1723103e61c4ee0a8098"
+  },
+  "actual_profile": {
+    "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/actual-profile.json",
+    "bytes": 11921,
+    "sha256": "c5b85a7657ad50d2a6d0222edd9f19b7660cbe7cab86ad3350d6b2c654c14ee8"
+  },
+  "before_project": {
+    "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/baseline-project.private.json",
+    "bytes": 161672,
+    "sha256": "6f40d0a45a0d9d1a6e57fc8a2df31894c30b12c282d67bc645d2040d4eb26733"
+  },
+  "after_binary_project": {
+    "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/after-binary-project.json",
+    "bytes": 200345,
+    "sha256": "ff738ebc71cb4eb058c5f58cb88d007ee6073c8d9bdbdba34dd6236e68e48b33"
+  },
+  "counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 9,
+    "review_POST": 1,
+    "file_GET": 9,
+    "denied": 0
+  },
+  "raw_HTTP_responses_verified": 23,
+  "HTTP200_count": 22,
+  "HTTP201_count": 1,
+  "raw_receipts": [
+    {
+      "kind": "project_GET",
+      "index": 1,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-project_GET-1.json",
+        "bytes": 458,
+        "sha256": "d4e7bea5c2ec00fa2095b36e766985b07df254b9010fa90aeba044d9fed61192"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-project_GET-1.private.bin",
+        "bytes": 161672,
+        "sha256": "6f40d0a45a0d9d1a6e57fc8a2df31894c30b12c282d67bc645d2040d4eb26733"
+      }
+    },
+    {
+      "kind": "project_GET",
+      "index": 2,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-project_GET-2.json",
+        "bytes": 458,
+        "sha256": "744d7820e03fe0e2b2f650a687c961a7c80551d73491efccf3c17663c91c1582"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-project_GET-2.private.bin",
+        "bytes": 161672,
+        "sha256": "6f40d0a45a0d9d1a6e57fc8a2df31894c30b12c282d67bc645d2040d4eb26733"
+      }
+    },
+    {
+      "kind": "project_GET",
+      "index": 3,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-project_GET-3.json",
+        "bytes": 458,
+        "sha256": "f06af720d428adc4001938562bc86fab878639b02f9af03e8381dcabe9836383"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-project_GET-3.private.bin",
+        "bytes": 163066,
+        "sha256": "34a56054a62abf31a13e11ec0068df9a363cc8708b7a271e20c469f2ef8627b0"
+      }
+    },
+    {
+      "kind": "project_GET",
+      "index": 4,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-project_GET-4.json",
+        "bytes": 458,
+        "sha256": "7f571472cf22dc82f718c8d52893dca6a229d2ffb54456959b0a5af398b21180"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-project_GET-4.private.bin",
+        "bytes": 163066,
+        "sha256": "34a56054a62abf31a13e11ec0068df9a363cc8708b7a271e20c469f2ef8627b0"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 1,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-1.json",
+        "bytes": 447,
+        "sha256": "42a8ecba205a96803be83b44632a9f258faa963e50248203d4e73188d39312e8"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-1.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 2,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-2.json",
+        "bytes": 447,
+        "sha256": "b87b5b9ad4e38fde277f6a42f1f58ee3dcbfb3a11d1f64464da1fd917f415d54"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-2.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 3,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-3.json",
+        "bytes": 447,
+        "sha256": "fafd624b8a77a7b9db2c423398b8af2d911559d03fd128cee34060daa91318f8"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-3.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 4,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-4.json",
+        "bytes": 447,
+        "sha256": "90dca5aa43404b3cc63f81d459b50cebf18f1b8374179931d381c0b53d8158b5"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-4.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 5,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-5.json",
+        "bytes": 447,
+        "sha256": "c27ebaf2b62acca443c898d75673fe8f8177306570292aefac8fa77465aea4e4"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-5.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 6,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-6.json",
+        "bytes": 447,
+        "sha256": "b9165f272a77545d52c90fd8a014c8d7c9e9283dbc8a600779804eebdb1e4c41"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-6.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 7,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-7.json",
+        "bytes": 447,
+        "sha256": "1baba761832d02b05c9b465a657f5ce31b637eeeb3324fd614a32c0ba2f6480e"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-7.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 8,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-8.json",
+        "bytes": 447,
+        "sha256": "79a664fec0887cd4525e37d3a11cd0007a5b5537c4b9705288c49f4d1087e116"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-8.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "file_PUT",
+      "index": 9,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-9.json",
+        "bytes": 447,
+        "sha256": "6a0a9816b16b23b09f408c7f8d0823ada54923c21397a39630c00fc009d86343"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_PUT-9.private.bin",
+        "bytes": 32,
+        "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251"
+      }
+    },
+    {
+      "kind": "review_POST",
+      "index": 1,
+      "HTTP": 201,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-review_POST-1.json",
+        "bytes": 456,
+        "sha256": "96c4e909fa26308db22561e2eb526a9ac98cc6c3251d86e6df1b782482391aca"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-review_POST-1.private.bin",
+        "bytes": 54707,
+        "sha256": "15f25daea0745709e3b1a2da21998b4b76483b972a2a3ebeb77a84cb55c9b3b0"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 1,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-1.json",
+        "bytes": 462,
+        "sha256": "331e6f58468758ac4b4f2e14ecf62ac47b2c8e4da0be5b53f044e1cb4e81fb0f"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-1.private.bin",
+        "bytes": 14188,
+        "sha256": "f26e1fb5fb8a8652ff2c1ede67a074963656e1d1fce1c436dabcdae38b45fad5"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 2,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-2.json",
+        "bytes": 462,
+        "sha256": "9d058e1ec95137f91580b941481a77a7bd8c3a90cbe65f79b1755abd43100169"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-2.private.bin",
+        "bytes": 13752,
+        "sha256": "e394211a6721627f7ed8addb73fd59d87b0e07f4d8bdb14a04aa3761480b2440"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 3,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-3.json",
+        "bytes": 462,
+        "sha256": "93ebf460bf7f5d47aca495810c0f85b7b4bd42c0ffddacf7b7ed3dcd4b7196be"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-3.private.bin",
+        "bytes": 11612,
+        "sha256": "e8135823585c8616d4492402f42196a114e998056451af490388c98248b10ab5"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 4,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-4.json",
+        "bytes": 462,
+        "sha256": "a33d7e2982b36df5441fb09e1aefa586935fa5b4739be7597d281166c2b71e5b"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-4.private.bin",
+        "bytes": 11244,
+        "sha256": "dde6eed48591d5a2820e64a35deb7c0b89e7772daddaf99e27d08b532986545d"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 5,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-5.json",
+        "bytes": 462,
+        "sha256": "56e4a6210708a13fab7be959db519278377a909e10b40ceb77947dab5ae6b50a"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-5.private.bin",
+        "bytes": 11423,
+        "sha256": "d64034f18605a6fe2fe4da0821995d6f91f58322151df8446efc2cd0aa52ce8d"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 6,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-6.json",
+        "bytes": 462,
+        "sha256": "b0568f837820fa5a72647e606ee0e7a1b65fa52b886580145173dff440add5c6"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-6.private.bin",
+        "bytes": 11055,
+        "sha256": "76b1cf552086595a000045965220f83cd8813c02c4cb2762f0278ba67de8e582"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 7,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-7.json",
+        "bytes": 462,
+        "sha256": "1d824d58b240ba29014b95fdb9c327ec2f5c23d4da00ae4a9af08247410f72c1"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-7.private.bin",
+        "bytes": 11667,
+        "sha256": "e0120f8694df5ea0d3df1dc6b876a65a31d06af920e58c6691f43cda816a03a9"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 8,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-8.json",
+        "bytes": 462,
+        "sha256": "bd6df48532a80a8694ef41c91ae6e8f59f1988e2414e9b79ebd7f3e8cde44b1a"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-8.private.bin",
+        "bytes": 11283,
+        "sha256": "76b1b268ae14bfef7e59927134b4c00048b1803f2e3348fc6a58f86084905cd9"
+      }
+    },
+    {
+      "kind": "file_GET",
+      "index": 9,
+      "HTTP": 200,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-9.json",
+        "bytes": 460,
+        "sha256": "d89148a88ec0d338fa3b67bac23dd48075561ee0efbe8653b3f9c205376dad6b"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-9.private.bin",
+        "bytes": 1821,
+        "sha256": "0e05fd3fd3871a73cfc0637e952277fd9bb64792707f37309f0b6b7f2f23ee6a"
+      }
+    }
+  ],
+  "project_snapshots_verified": 4,
+  "same_review_id": "a0e0a6bc-aca6-4182-adf1-00fa8176937e",
+  "same_pending_final_source_movie_sha256": "c387af9dcd36a5f351ac6d347808e8d47b58bdd740b6db4814f30a019f111d1c",
+  "prior_ref_count": 38,
+  "final_ref_count": 47,
+  "prior38_full_ref_objects_and_order_preserved": true,
+  "whole_project_except_same_review9_files_and_last_synced_exact": true,
+  "original_full_payload_QA_dubs_metadata_choices_statuses_and_history_preserved": true,
+  "exact9_post_body": {
+    "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/exact-outbound-ReviewIn.json",
+    "bytes": 59666,
+    "sha256": "b1a76df0dce3c7f84ec3991c888ec243f4c557900493bdd2c1c01fb25b17c198"
+  },
+  "full_new_binary_readbacks": [
+    {
+      "role": "evidence_cc_reading_ja_srt",
+      "content_type": "text/plain",
+      "locale": "ja",
+      "ext": "srt",
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/ja.srt",
+      "bytes": 14188,
+      "sha256": "f26e1fb5fb8a8652ff2c1ede67a074963656e1d1fce1c436dabcdae38b45fad5",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_ja_srt.srt",
+        "bytes": 14188,
+        "sha256": "f26e1fb5fb8a8652ff2c1ede67a074963656e1d1fce1c436dabcdae38b45fad5"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-1.private.bin",
+        "bytes": 14188,
+        "sha256": "f26e1fb5fb8a8652ff2c1ede67a074963656e1d1fce1c436dabcdae38b45fad5"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_cc_reading_ja_vtt",
+      "content_type": "text/plain",
+      "locale": "ja",
+      "ext": "vtt",
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/ja.vtt",
+      "bytes": 13752,
+      "sha256": "e394211a6721627f7ed8addb73fd59d87b0e07f4d8bdb14a04aa3761480b2440",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_ja_vtt.vtt",
+        "bytes": 13752,
+        "sha256": "e394211a6721627f7ed8addb73fd59d87b0e07f4d8bdb14a04aa3761480b2440"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-2.private.bin",
+        "bytes": 13752,
+        "sha256": "e394211a6721627f7ed8addb73fd59d87b0e07f4d8bdb14a04aa3761480b2440"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_cc_reading_es_srt",
+      "content_type": "text/plain",
+      "locale": "es",
+      "ext": "srt",
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/es.srt",
+      "bytes": 11612,
+      "sha256": "e8135823585c8616d4492402f42196a114e998056451af490388c98248b10ab5",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_es_srt.srt",
+        "bytes": 11612,
+        "sha256": "e8135823585c8616d4492402f42196a114e998056451af490388c98248b10ab5"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-3.private.bin",
+        "bytes": 11612,
+        "sha256": "e8135823585c8616d4492402f42196a114e998056451af490388c98248b10ab5"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_cc_reading_es_vtt",
+      "content_type": "text/plain",
+      "locale": "es",
+      "ext": "vtt",
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/es.vtt",
+      "bytes": 11244,
+      "sha256": "dde6eed48591d5a2820e64a35deb7c0b89e7772daddaf99e27d08b532986545d",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_es_vtt.vtt",
+        "bytes": 11244,
+        "sha256": "dde6eed48591d5a2820e64a35deb7c0b89e7772daddaf99e27d08b532986545d"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-4.private.bin",
+        "bytes": 11244,
+        "sha256": "dde6eed48591d5a2820e64a35deb7c0b89e7772daddaf99e27d08b532986545d"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_cc_reading_pt_srt",
+      "content_type": "text/plain",
+      "locale": "pt",
+      "ext": "srt",
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/pt.srt",
+      "bytes": 11423,
+      "sha256": "d64034f18605a6fe2fe4da0821995d6f91f58322151df8446efc2cd0aa52ce8d",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_pt_srt.srt",
+        "bytes": 11423,
+        "sha256": "d64034f18605a6fe2fe4da0821995d6f91f58322151df8446efc2cd0aa52ce8d"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-5.private.bin",
+        "bytes": 11423,
+        "sha256": "d64034f18605a6fe2fe4da0821995d6f91f58322151df8446efc2cd0aa52ce8d"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_cc_reading_pt_vtt",
+      "content_type": "text/plain",
+      "locale": "pt",
+      "ext": "vtt",
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/pt.vtt",
+      "bytes": 11055,
+      "sha256": "76b1cf552086595a000045965220f83cd8813c02c4cb2762f0278ba67de8e582",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_pt_vtt.vtt",
+        "bytes": 11055,
+        "sha256": "76b1cf552086595a000045965220f83cd8813c02c4cb2762f0278ba67de8e582"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-6.private.bin",
+        "bytes": 11055,
+        "sha256": "76b1cf552086595a000045965220f83cd8813c02c4cb2762f0278ba67de8e582"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_cc_reading_id_srt",
+      "content_type": "text/plain",
+      "locale": "id",
+      "ext": "srt",
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/id.srt",
+      "bytes": 11667,
+      "sha256": "e0120f8694df5ea0d3df1dc6b876a65a31d06af920e58c6691f43cda816a03a9",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_id_srt.srt",
+        "bytes": 11667,
+        "sha256": "e0120f8694df5ea0d3df1dc6b876a65a31d06af920e58c6691f43cda816a03a9"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-7.private.bin",
+        "bytes": 11667,
+        "sha256": "e0120f8694df5ea0d3df1dc6b876a65a31d06af920e58c6691f43cda816a03a9"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_cc_reading_id_vtt",
+      "content_type": "text/plain",
+      "locale": "id",
+      "ext": "vtt",
+      "file": "/workspace/work/videos/_ai-tech-bookend-renewal/ai-slides-outline-review/captions/id.vtt",
+      "bytes": 11283,
+      "sha256": "76b1b268ae14bfef7e59927134b4c00048b1803f2e3348fc6a58f86084905cd9",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_id_vtt.vtt",
+        "bytes": 11283,
+        "sha256": "76b1b268ae14bfef7e59927134b4c00048b1803f2e3348fc6a58f86084905cd9"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-8.private.bin",
+        "bytes": 11283,
+        "sha256": "76b1b268ae14bfef7e59927134b4c00048b1803f2e3348fc6a58f86084905cd9"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    },
+    {
+      "role": "evidence_cc_reading_report",
+      "content_type": "text/plain",
+      "ext": "txt",
+      "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/native-prep/run-once/caption-pacing-usage.txt",
+      "bytes": 1821,
+      "sha256": "0e05fd3fd3871a73cfc0637e952277fd9bb64792707f37309f0b6b7f2f23ee6a",
+      "saved_readback": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/readback/evidence_cc_reading_report.txt",
+        "bytes": 1821,
+        "sha256": "0e05fd3fd3871a73cfc0637e952277fd9bb64792707f37309f0b6b7f2f23ee6a"
+      },
+      "raw_response": {
+        "file": "/workspace/work/ai-tech-next/slides-caption-pacing-20261028/delivery-prep/append-run/HTTP-response-file_GET-9.private.bin",
+        "bytes": 1821,
+        "sha256": "0e05fd3fd3871a73cfc0637e952277fd9bb64792707f37309f0b6b7f2f23ee6a"
+      },
+      "response_content_type": "text/plain; charset=utf-8",
+      "HTTP": 200,
+      "byte_for_byte_equal": true
+    }
+  ],
+  "all9_saved_raw_current_bytes_SHA_MIME_UTF8_equal": true,
+  "native_single_part_ACKs_verified": 9,
+  "held4_preserved": true,
+  "native_lease_released": true,
+  "narration_reference_captions_only": true,
+  "foreign_checked_M4A": 0,
+  "actual_dub_CC_added": 0,
+  "foreign_completed_added": 0,
+  "server_approval": false,
+  "whole_episode_complete": false,
+  "paid_calls": 0,
+  "new_TTS": 0,
+  "new_ASR": 0,
+  "new_ASR_or_listening": false,
+  "additional_network_by_peer": 0,
+  "additional_downloads_by_peer": 0,
+  "canonical_writes_by_peer": 0,
+  "review_method": "Offline independent comparison of all23 saved raw HTTP receipts,4 complete project snapshots, exact onePOST body/response and9 full saved binary readbacks against the independently accepted current9 files. No further authentication/network/downloads; no old38 binary downloads."
+}
