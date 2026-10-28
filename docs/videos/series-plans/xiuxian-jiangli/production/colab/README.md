@@ -15,7 +15,7 @@
 
 - `h3/manifest-pilot.json`：小樣三支 s33、s34、s35。
 - `h3/manifest.json`：整集 42 支（靜圖 s10、s19、s31 不買）。
-- `h3/prompts/<id>.txt`：鎖定檔（`../e001-plan-lock.json`）的 H3 定稿正文原封不動；每個 job 的 `prompt_sha256` 等於鎖定檔。
+- `gen-h3-manifest.mjs`：從鎖定檔（`../e001-plan-lock.json`，由 `<VIDEO_WORKDIR>/xiuxian-jiangli-e001/plan/lock.json` 抄來）產生 `h3/prompts/<id>.txt`（H3 定稿正文原封不動）、`h3/manifest.json`、`h3/manifest-pilot.json`；每個 job 的 `prompt_sha256` 等於鎖定檔，畫布 1312×736，秒數照鎖定檔的 `buy_s`（H3 最少 5 秒、說話鏡 6 秒）。重鎖之後重跑它。
 - `reference_images` 指 `first-frames/<id>.png`（相對於 manifest 所在目錄，不進 git）：跑之前把通過 judge 的關鍵影格複製成這個名字。
 - 1344×768、24 fps；4 秒會變 4.46 秒、5 秒變 5.17 秒；`assemble` 重編碼進 1080p，畫質沒驗。
 
@@ -34,7 +34,7 @@ node tools/video/cli.mjs login --colab --name "Claude 雲端 session"   # 印驗
 node tools/video/cli.mjs look --slug xiuxian-jiangli-e001 --dry-run && node tools/video/cli.mjs look --slug xiuxian-jiangli-e001
 node tools/video/cli.mjs keyframes --slug xiuxian-jiangli-e001 --dry-run && node tools/video/cli.mjs keyframes --slug xiuxian-jiangli-e001
 
-# 3. 小樣：把 s33–s35 通過 judge 的關鍵影格放到 h3/first-frames/sNN.png，抄餘額，跑
+# 3. 小樣：把 s33–s35 通過 judge 的關鍵影格用 fit_first_frame.sh 裁成 h3/first-frames/sNN.png（1312×736），h3.sh check 過了再抄餘額、跑（profile 預設 smooth）
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh usage
 cd docs/videos/series-plans/xiuxian-jiangli/production/colab/h3 && bash ../../../../../../../.agents/skills/minimax-h3-colab/scripts/h3.sh batch \
   --manifest manifest-pilot.json \
