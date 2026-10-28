@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "at": "2026-10-27T10:59:33.520Z",
+  "failed_session": 87402,
+  "native_exit": 1,
+  "staged_request": "0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5",
+  "confirmed_companion_request": "11afb86830e29b59d2e07cfad7d15b636526f2777c72da0e7fef8ffc4604c717",
+  "staged_generic_checker_review_sha256": "0b26727f92aeab5184fa872b53b36717ef3a47aa51c24b7e830f6a2007dbd93f",
+  "actual_staged_recovery_review_sha256": "9898ec61df1031193b56748941034ef096ecac465fd1387147d4776238a3f68f",
+  "joint_six_file_review_sha256": "82722d63287cfea89d8fd7517069bc88ca2718746c604f782ed8e877a33a0a61",
+  "actual_joint_private_reused": 2,
+  "mock_send_calls": 0,
+  "global_fetch_calls": 0,
+  "original_paid_billables_preserved": [
+    36,
+    27
+  ],
+  "root_fresh_preflight": {
+    "at": "2026-10-27T10:57:07.906Z",
+    "staged_review_sha256": "9898ec61df1031193b56748941034ef096ecac465fd1387147d4776238a3f68f",
+    "confirmed_companion_review_sha256": "82722d63287cfea89d8fd7517069bc88ca2718746c604f782ed8e877a33a0a61",
+    "manifest_sha256": "2dd16f17b392d75d6cb24aff093dfc9c48a31e54a66d1480ca7d935b3a5b4723",
+    "companion_manifest_sha256": "e371b343dc8cdafd3f1a84bb0eee97b3698cd054daaef61d6ba31d5e16610ed2",
+    "all_files_checked": 177,
+    "partial_en_wavs": 161,
+    "drift": [],
+    "active_journal_entries": [
+      "0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5.json",
+      "11afb86830e29b59d2e07cfad7d15b636526f2777c72da0e7fef8ffc4604c717.json"
+    ],
+    "producer": "8488 ESRCH",
+    "lease": null,
+    "source_video_sha256": "6e0dd44b07a5bef457438b18d75371d214acde1f3c37718d08ac4661203f3b86",
+    "final_sha256": "b8bc3fcfe22e73cff79422124d89da99630bbf7c7e59b0480ef9804db11d2c60",
+    "allow": "normal unchanged EN resume in a new slot; reuse both exact saved paid answers; other distinct remaining work paid-capable"
+  },
+  "actual_saved_answers_delivered_after_official_trim_encode": [
+    {
+      "request_sha256": "0f3df992e0b4acdc31657e3d6fe044bae5b96bd77483106b3eb3f6a6184211a5",
+      "raw_sha256": "cc296df8b9df333d72ad06d5aa0d0f1ebbd53a9ef291851f44b0ff00be3bba1c",
+      "expected_trimmed_sha256": "e77caa21e4ff3caaf3823985542d542f50f098b262f0af7f0b3c569723f56838",
+      "actual_new_clip_files": [
+        "lz433p2.wav"
+      ],
+      "actual_bytes_equal": true
+    },
+    {
+      "request_sha256": "11afb86830e29b59d2e07cfad7d15b636526f2777c72da0e7fef8ffc4604c717",
+      "raw_sha256": "09c843493a36b5ae327e452f010d085d816e8db54e97ce20a604de248e092e52",
+      "expected_trimmed_sha256": "017a6461a9d7b9376c4312a4a1ac5488d278f0d29342a5a797eb6ae5a903329c",
+      "actual_new_clip_files": [
+        "lz433.wav"
+      ],
+      "actual_bytes_equal": true
+    }
+  ],
+  "old161_wavs_readback_unchanged": true,
+  "normal_resume": {
+    "session": 77232,
+    "slot": "dub-en-saved-answer3-resume",
+    "still_running": true,
+    "native_exit": null,
+    "line_by_line": true,
+    "force": false,
+    "remaining_requests_estimate": 39,
+    "characters_estimate": 2572,
+    "existing_monthly_quota_before": 5438586
+  },
+  "extra_sidecar_or_tmp_fabricated_for_confirmed_companion": false,
+  "exact_saved_answers_not_bought_again": true,
+  "other_distinct_remaining_work_paid_capable": true,
+  "quality_retake_rounds": 0,
+  "fit_shortening_rounds": 0,
+  "reword_rounds": 0,
+  "complete_en_fit_or_audio_qa": false,
+  "next": "Wait77232 actual exit, then full EN fit/cohort/journal checks and reviewed source-free second-ASR bridge; no other producer meanwhile."
+}

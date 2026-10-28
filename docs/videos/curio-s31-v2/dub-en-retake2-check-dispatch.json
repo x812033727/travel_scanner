@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "locale": "en",
+  "status": "EN_RETAKE2_CHECK_STOPPED_PRIMARY_JOURNAL_EPERM_PENDING_RECOVERY",
+  "snapshot_at": "2026-10-28T10:51:02.478Z",
+  "recorded_at": "2026-10-28T10:54:53.052Z",
+  "retake2_synthesis_snapshot": {
+    "file": "docs/videos/curio-s31-v2/dub-en-quality-retake2-result.json",
+    "sha256": "b30d45a4ea4afeb9251934057ddff680ae8e1cbda168e5bfcbc9c22b780e884a"
+  },
+  "closure": {
+    "session": 88967,
+    "native_exit": 0,
+    "completed_at": "2026-10-28T10:45:15.5718594Z",
+    "native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\execute-close-en-retake2-native.json",
+      "sha256": "a43248caeaf6275a379da21358ae6a20b00883f02633f3fec430f0f37f071ad6"
+    },
+    "operation_sha256": "436cadb29307af41509c72d931d114942589718b02330616944f4703a6191213",
+    "complete_sha256": "a56adf0ec17b6892ca3658fa8935ae71715bc2f738598f6c86f71cdabecf6e95",
+    "archive_manifest_sha256": "3dd92f164a77721fa531509c7d513eace2b28a91fe0cfac7c8eed5a9552c70f3",
+    "copies": 253,
+    "operation_anchors": 11,
+    "moved_files": 18,
+    "relocation_files": 1,
+    "total_archive_files": 283,
+    "ledger_files": 6,
+    "root_readback": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\root-post-close-readback-en-retake2.json",
+      "sha256": "be59706c93365ad24847fc8d7a6b060b2d64a533803d5767a24850a62e2097e7"
+    },
+    "independent_post_close": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\actual-post-close-review-en-retake2.json",
+      "sha256": "1d2eb641fcafb3ff973ac712dbcb315b19769760296e1b9426767160c7233c2f"
+    },
+    "predecessor_closed_sibling275_preserved": true
+  },
+  "activation": {
+    "receipt": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\activation-en-retake2.json",
+      "sha256": "b8ded6fceedcf373c59317fd52f5e8239540818b159b386338c8c116d7eb3e13"
+    },
+    "preinstall_gate_native_exit": 0,
+    "exclusive_binding_install": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\binding-install-en-retake2.json",
+      "sha256": "31192ce9241deba914502f90326fb7c210d72c8b72d339def0d33edbd6084328"
+    },
+    "binding_sha256": "ff5aa6f00883be233c3c7ab59d4208a7288cc9922e0d96da8bc1703c01eba049",
+    "new_catalog_sha256": "559279c4daf67735df77e55c4dad32e52a7d7d23dca33f63373237b049aa8f50",
+    "actual_full_cohort_review_sha256": "8ffb0916c0fb19c470df6d7e010c19fb60928c0fb7ed21b65953b413309145a6",
+    "success_remains_valid_after_primary_error": true
+  },
+  "check_dispatch": {
+    "session": 23135,
+    "caller_pid": 57404,
+    "child_pid": 8156,
+    "intent_at": "2026-10-28T10:50:17.089Z",
+    "lease_acquired_at": "2026-10-28T10:50:19.454Z",
+    "intent": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\fixed-caller-en-retake2\\intent.json",
+      "sha256": "a1fe79c4bafef6aeca5cef158512969f1e17f29ef18f30f0012fbbd797cc3977"
+    },
+    "child_start": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\fixed-caller-en-retake2\\child-start.json",
+      "sha256": "7062dca62bd477f0db6cd504edccd4905d8ece037121f1934434418fb26fce26"
+    },
+    "native_exit": 1,
+    "ended_at": "2026-10-28T10:51:02.478Z",
+    "outer_native": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\en-retake1-complete-handoff-prep\\check-en-retake2-outer-native.json",
+      "sha256": "a88ab4ddfde81eb0f31a0e9c3855b21d02cce87348119918089d20f6605c5278"
+    },
+    "mode": "--check-once",
+    "force": false,
+    "io_extra_wait_cap_ms": 30000,
+    "second_opinion_timeout_ms": 1200000,
+    "second_opinion_source_free": true,
+    "second_opinion_script_basename": "bridge.mjs",
+    "automatic_retry": false
+  },
+  "infrastructure_hold": {
+    "category": "PRIMARY_TRANSCRIBE_CONFIRMED_JOURNAL_RENAME_EPERM",
+    "request_sha256": "4ba7faf001eba80b71060a10a12cd845ce86193ea4218bdd4612bd1f81fa5899",
+    "producer_pid": 8156,
+    "matched_line_id": null,
+    "sent_bytes": 442,
+    "answer_bytes": 1278,
+    "confirmed_tmp_bytes": 751,
+    "complete_answer_preserved": true,
+    "freeze": {
+      "file": "C:\\Users\\x8120\\mokaair-work\\curio-s31-v2-preflight\\check-en-retake2-rename-failure-before\\manifest.json",
+      "sha256": "1e212d08f2d970c8de10c3a99cc3d79f8791692c0cd989b9a76b0a7ddfa72df9"
+    },
+    "frozen_files": 141,
+    "raw_wavs": 212,
+    "journal_historical": 108,
+    "journal_active_saved_triple": 3,
+    "journal_total": 111,
+    "actual_recovery_review_complete": false,
+    "canonical_saved_consumption_verified": false
+  },
+  "post_stop_Root_observation": {
+    "both8156_and57404_ESRCH": true,
+    "lease_absent": true,
+    "new_fixed_ASR_state_absent": true,
+    "new_bridge_runs_empty": true,
+    "current_quality_verdict": false,
+    "current_cache_count_not_inferred": true
+  },
+  "quality": {
+    "plain_rounds_completed": 2,
+    "plain_cap": 2,
+    "shorten_rounds": 0,
+    "listener_rounds": 0,
+    "new_quality_check_complete": false,
+    "current_new_flags_count": null,
+    "old15flags_are_old_take_evidence": true,
+    "conditional_private_reword_candidate_unapplied": true,
+    "accepted_dubs": 0,
+    "selected_dubs": 8,
+    "audio_approved": false,
+    "owner_listened": false
+  },
+  "image_budget": {
+    "conservative_image_and_judge_usd": 1.578,
+    "approved_cap_usd": 6,
+    "changed": false
+  },
+  "delivery_complete": false,
+  "s15_started": false,
+  "next": "Root must complete exact saved-answer private recovery and actual review before a new normal continuation slot. Preserve closure/activation and all old slots. No replay, third unchanged-text retake, new producer or inferred quality result."
+}

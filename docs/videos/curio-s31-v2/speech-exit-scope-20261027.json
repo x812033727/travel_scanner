@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "slug": "curio-s31-v2",
+  "at": "2026-10-27T01:07:06.586Z",
+  "status": "exit_scope_clarified_no_production_retry",
+  "companion_sha256": "d1d11deb1b548c65c36c2826ea3be9d62eda485557698ce2ea3c9ea3213be576",
+  "actual_observed_controls": [
+    {
+      "node_program": "process.exit(4)",
+      "powershell_explicit_native_exit_propagation": false,
+      "programmed_node_exit_code": 4,
+      "saved_native_exit_code": null,
+      "observed_exec_shell_exit_code": 1
+    },
+    {
+      "node_program": "process.exit(4)",
+      "powershell_explicit_native_exit_propagation": true,
+      "propagation": "$capture=$LASTEXITCODE; exit $capture",
+      "programmed_node_exit_code": 4,
+      "saved_native_exit_code": 4,
+      "observed_exec_shell_exit_code": 4
+    }
+  ],
+  "command_43490": {
+    "observed_exec_shell_exit_code": 1,
+    "original_native_exit_code_saved": false,
+    "actual_native_exit_code": null,
+    "conclusion": "The observed1 is the PowerShell wrapper-layer result, not a saved Node native exit or a provider error classification. The same wrapper behavior was demonstrated by the harmless control.",
+    "retrospective_native_exit_4_assertion_allowed": false,
+    "source_code_expected_busy_exit": 4,
+    "source_expectation_is_not_an_observed_native_exit": true
+  },
+  "future_paid_cli_rule": "Immediately capture the actual native exit code after the CLI and before other commands or output handling; record it explicitly and exit the PowerShell wrapper with that captured code. Keep the native CLI result distinct from outer shell status.",
+  "original_receipts_preserved": true,
+  "provider_calls_during_diagnostic": 0,
+  "source_and_audio_unchanged": true,
+  "speech_not_before_taipei": "2026-10-27 09:30",
+  "note": "The observed shell1 must not be treated as evidence of a different provider failure or retrospectively replaced with native4."
+}
