@@ -1,14 +1,14 @@
 ---
 id: 2026-10-28-top40-2026-04-shaofuren-dongbei
 title: Top40 drama plan 2026-04: adapt the pattern of 少夫人來自東北 into a 300-episode original
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: claude
+claimed_at: 2026-10-28T15:25:44Z
 created_at: 2026-10-28T14:03:14Z
 completed_at:
-branch:
+branch: claude/confident-galileo-vfq0j3
 depends_on: []
 scope:
   - docs/videos/series-plans/top40-2025-2026/2026-04-shaofuren-dongbei

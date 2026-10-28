@@ -1,0 +1,4718 @@
+{
+  "number": 1,
+  "title": "第三章",
+  "theme": "炮灰想活，先別照書演。",
+  "start_state": "退稿會停電，程知夏與柳一鳴醒來成了顧家二少奶奶與三少奶奶；原稿字浮在空中告訴她們：第三章老太太壽宴，她們會『失手』打碎蘇家送的玉屏風，被逐出顧家、路上遇劫。壽宴在七天後。兩個丈夫話都不說，大少奶奶蘇錦瑟對她們笑得很好看。",
+  "end_state": "她們活過了第三章：屏風沒碎、碎的是蘇錦瑟的局；她們用原書知識賺到第一桶金三十塊大洋到三千塊；春杏成了第一個夥伴；第三章她們為什麼會死的真相揭開；原稿字為什麼只在兩人都在場時清楚揭開。顧硯舟第一次說了一句原稿沒有的話。最後一集，顧家飯廳上空的原稿字第一次變成紅色，自己重寫了一行：『顧家船隊，沉一艘。』",
+  "guest_cast": [
+    {
+      "id": "s01-cuixi",
+      "name": "翠喜",
+      "role": "蘇錦瑟的貼身丫頭，壽宴上推屏風的人；第三章後被逐出顧家，投了報館",
+      "appearance": "東亞少女，十七歲，清秀伶俐：尖下巴、杏眼、兩條細長的辮子垂在胸前，藕荷色短衫配黑裙，手永遠藏在袖子裡，笑起來先看主子"
+    },
+    {
+      "id": "s01-chaofeng",
+      "name": "當鋪朝奉",
+      "role": "海寧當鋪的朝奉，兩人第一筆錢的經手人",
+      "appearance": "東亞中年男性，五十五歲，乾瘦、禿頂、一副老花鏡架在鼻尖、灰布長衫袖口磨得發亮，說價錢時眼睛不離算盤"
+    },
+    {
+      "id": "s01-lu-mujiang",
+      "name": "魯師傅",
+      "role": "海寧的木匠，替兩人仿做木屏風",
+      "appearance": "東亞中年男性，四十八歲，結實、方臉、濃眉、短鬚，藍布短褂外罩木屑圍裙，耳後夾一支炭筆，量尺寸時一句話不多說"
+    },
+    {
+      "id": "s01-hu-laoban",
+      "name": "胡老闆",
+      "role": "海寧米行老闆，從看笑話到站隊的第一個生意人",
+      "appearance": "東亞中年男性，四十五歲，圓臉、小鬍子、笑起來一口白牙，綢面長衫外罩馬甲、手裡一把摺扇，算帳時扇子點著桌面"
+    },
+    {
+      "id": "s01-kuang-dongjia",
+      "name": "鄺東家",
+      "role": "《海寧日報》東家，報館快倒時把印刷機租給兩人",
+      "appearance": "東亞男性，五十歲，瘦高、長臉、眼袋深、花白分頭，西裝背心上沾著油墨，袖口永遠捲到手肘，嘆氣時先摘眼鏡"
+    },
+    {
+      "id": "s01-ma-shifu",
+      "name": "馬師傅",
+      "role": "報館排字房的老排字工，十年來替匿名主筆上版的人",
+      "appearance": "東亞老人，六十二歲，矮壯、花白平頭、手指粗而靈、指甲縫裡全是鉛灰，深藍工裝、腰間一條擦墨的布巾，說話前先在圍裙上擦手"
+    },
+    {
+      "id": "s01-meng-zhanggui",
+      "name": "孟掌櫃",
+      "role": "海寧洋布行掌櫃，兩人第三筆生意的賣家",
+      "appearance": "東亞中年男性，四十歲，白淨、細眉、梳得油亮的分頭，淺灰西裝配絲質領結，捲布時手指修長、動作像在展示珠寶"
+    },
+    {
+      "id": "s01-liu-mu",
+      "name": "柳母",
+      "role": "柳一鳴在書裡的娘家母親，勢利、愛錢、怕女婿不說話",
+      "appearance": "東亞中年女性，五十歲，保養得好、略豐腴、柳眉、嘴角下垂，暗紅緞面旗袍配金鐲，說話時手一直摸著鐲子"
+    },
+    {
+      "id": "s01-lao-duo",
+      "name": "老舵",
+      "role": "顧家船隊的老舵工，跟了顧硯舟十年，碼頭的消息從他嘴裡來",
+      "appearance": "東亞老人，五十八歲，黝黑、精瘦、滿臉風霜、花白短髮，粗布水手衫、赤腳或草鞋，手掌全是繩索磨出的厚繭，一開口就是碼頭的腔"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s01-t01",
+      "question": "隔牆念同一句的是誰？",
+      "setup_episode": 1,
+      "payoff_episode": 2
+    },
+    {
+      "id": "s01-t02",
+      "question": "蘇錦瑟的茶裡有什麼？",
+      "setup_episode": 3,
+      "payoff_episode": 8
+    },
+    {
+      "id": "s01-t03",
+      "question": "兩個丈夫為什麼不說話？",
+      "setup_episode": 4,
+      "payoff_episode": 30
+    },
+    {
+      "id": "s01-t04",
+      "question": "花園那一池水，誰會落下去？",
+      "setup_episode": 5,
+      "payoff_episode": 6
+    },
+    {
+      "id": "s01-t05",
+      "question": "分開住，原稿字還看得見嗎？",
+      "setup_episode": 7,
+      "payoff_episode": 10
+    },
+    {
+      "id": "s01-t06",
+      "question": "姑奶奶為誰做事？",
+      "setup_episode": 11,
+      "payoff_episode": 25
+    },
+    {
+      "id": "s01-t07",
+      "question": "顧謹言為什麼看她？",
+      "setup_episode": 13,
+      "payoff_episode": 15
+    },
+    {
+      "id": "s01-t08",
+      "question": "玉屏風為什麼在顧家帳上記了兩次？",
+      "setup_episode": 13,
+      "payoff_episode": 17
+    },
+    {
+      "id": "s01-t09",
+      "question": "春杏會不會說出去？",
+      "setup_episode": 14,
+      "payoff_episode": 19
+    },
+    {
+      "id": "s01-t10",
+      "question": "原稿重寫的『丫頭被逐』是什麼意思？",
+      "setup_episode": 25,
+      "payoff_episode": 27
+    },
+    {
+      "id": "s01-t11",
+      "question": "蘇錦瑟會怎麼報復？",
+      "setup_episode": 28,
+      "payoff_episode": 51
+    },
+    {
+      "id": "s01-t12",
+      "question": "米價為什麼先跌？",
+      "setup_episode": 32,
+      "payoff_episode": 33
+    },
+    {
+      "id": "s01-t13",
+      "question": "錢賺到哪一步會引起蘇家注意？",
+      "setup_episode": 32,
+      "payoff_episode": 40
+    },
+    {
+      "id": "s01-t14",
+      "question": "印刷機要用來做什麼？",
+      "setup_episode": 34,
+      "payoff_episode": 49
+    },
+    {
+      "id": "s01-t15",
+      "question": "蘇家為什麼搶先送洋布？",
+      "setup_episode": 36,
+      "payoff_episode": 37
+    },
+    {
+      "id": "s01-t16",
+      "question": "老太太為什麼突然問帳？",
+      "setup_episode": 37,
+      "payoff_episode": 39
+    },
+    {
+      "id": "s01-t17",
+      "question": "分開三天會不會還有別的代價？",
+      "setup_episode": 41,
+      "payoff_episode": 45
+    },
+    {
+      "id": "s01-t18",
+      "question": "顧硯舟到底知不知道書？",
+      "setup_episode": 43,
+      "payoff_episode": 47
+    },
+    {
+      "id": "s01-t19",
+      "question": "社論寫給誰看？",
+      "setup_episode": 48,
+      "payoff_episode": 50
+    },
+    {
+      "id": "s01-t20",
+      "question": "蘇錦瑟知道她們改書嗎？",
+      "setup_episode": 52,
+      "payoff_episode": 55
+    },
+    {
+      "id": "s01-t21",
+      "question": "蘇錦瑟審帳那天要帶什麼？",
+      "setup_episode": 55,
+      "payoff_episode": 57
+    }
+  ],
+  "episodes": [
+    {
+      "number": 1,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "退稿會停電",
+      "youtube_title": "兩個編輯退稿會上吵到停電，再亮燈竟躺在自己退掉的小說裡，成了第三章就死的炮灰妯娌",
+      "duration_s": 150,
+      "logline": "程知夏與柳一鳴在退稿會上為《顧門雙姝》吵翻，停電後醒在小說裡，想弄清自己在哪、是誰。",
+      "hook": "深夜會議室，知夏把稿子拍在桌上：「這妯娌第三章就死，寫來幹嘛？」一鳴推眼鏡：「結局硬寫。」",
+      "hook_type": "line",
+      "mid_hook": "沈總編眼袋深陷，抬手把退稿章蓋下去——兩隻手同時按在稿上——「你們行你們改。」全樓停電。",
+      "extra_hooks": [
+        "知夏在黑暗裡摸到稿子封面，手指停在作者欄：那裡是空的，沒有署名。"
+      ],
+      "conflict": "停電後醒來，知夏躺在一間雕花木床的民國房裡，丫頭叫她二少奶奶，她要先弄清這是夢還是書。",
+      "turn": "她以為是整人節目，直到低頭看見手上別著的鋼筆換成了一支舊式自來水筆，而鏡子裡的臉是自己——梳著民國的齊肩捲。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "知夏對著鏡子念出《顧門雙姝》第一章第一句：「海寧的春天從碼頭開始。」隔牆傳來一個慢而低的聲音，和她同時念到「碼頭」。",
+        "question": "隔牆念同一句的是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "停電、再亮燈的對切：現代會議室的日光燈熄滅，下一格民國雕花窗透進晨光，兩間房裡兩個人同時睜眼，淡紫色的字在知夏頭頂閃了一下又隱去。",
+      "glamour_shot": "知夏坐起身，杏色寢衣、齊肩捲髮亂翹，大眼睛在晨光裡眨了三下，眼角的笑紋先皺起來才想起要害怕。",
+      "setups": [
+        "m01",
+        "s01-t01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知夏確認自己在《顧門雙姝》裡，而且是顧家二少奶奶",
+        "春杏第一次出場：端水盆進房、嘴快話多"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "shen-bianji",
+        "chun-xing"
+      ],
+      "locations": [
+        "現代出版社會議室",
+        "顧家二房"
+      ],
+      "state": {
+        "time": "穿書第一日清晨",
+        "knowledge": "知夏知道自己穿進了《顧門雙姝》，成了二少奶奶；書的作者欄是空的；隔牆有人會念同一句。",
+        "carry_forward": "隔牆的聲音、空白的作者欄、頭頂一閃而過的淡紫色字"
+      }
+    },
+    {
+      "number": 2,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "走廊相撞",
+      "youtube_title": "穿進小說的兩個編輯在走廊撞上，抱著哭三秒就開始對章節：我們第三章就死",
+      "duration_s": 110,
+      "logline": "知夏衝出房找那個聲音，與一鳴在走廊相撞，兩人要在被叫去飯廳之前把全書對一遍。",
+      "hook": "知夏光著腳衝出房門，走廊盡頭一個墨藍旗袍的身影也衝出來，兩人撞個正著，慢動作裡眼鏡飛起。",
+      "hook_type": "image",
+      "mid_hook": "一鳴撿起眼鏡戴上，只說一句：「第三章。」知夏臉色一白：「壽宴。屏風。」兩人同時說出：「死。」",
+      "extra_hooks": [
+        "春杏在拐角偷看兩位少奶奶抱頭痛哭，嘀咕：「書裡沒寫她們感情好啊。」——她不知道自己說了什麼。"
+      ],
+      "conflict": "確認彼此是誰、現在是第幾章、離壽宴還有幾天，並在春杏叫她們去飯廳之前把臉收拾好。",
+      "turn": "知夏記得情節，一鳴記得每個錯字——她說出第二章的日期：壽宴不是『一個月後』，原稿寫錯了，是七天後。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "兩人並肩站到飯廳門口，門邊兩副碗。她們抬頭，飯廳上空第一次浮出淡紫色的宋體字：『七日後，壽宴。』",
+        "question": "七天，怎麼改掉第三章？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiemei",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "走廊兩端兩人相向狂奔、相撞的慢動作，一鳴的細框眼鏡在空中翻了一圈；飯廳上空第一次浮起的淡紫色原稿字，兩人同時抬頭。",
+      "glamour_shot": "一鳴蹲下撿眼鏡，單眼皮長眼抬起看知夏，先推一下眼鏡再開口；窗格的晨光切在她白淨的側臉上。",
+      "setups": [
+        "m02"
+      ],
+      "payoffs": [
+        "s01-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人認出彼此，確定一起穿進了同一本書",
+        "一鳴校對出原稿的日期錯誤：壽宴在七天後"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家走廊",
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "穿書第一日早飯前",
+        "knowledge": "兩人都在書裡，是第三章要死的二房三房；壽宴七天後；原稿字只在飯廳上空出現過一次。",
+        "carry_forward": "七天倒數、門邊的兩副碗、飯廳上空的原稿字"
+      }
+    },
+    {
+      "number": 3,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "門邊的碗",
+      "youtube_title": "飯廳上空浮出下一頁劇情，原書女主端茶笑著說妹妹們喝茶，書裡寫的是一飲而盡",
+      "duration_s": 120,
+      "logline": "第一頓顧家早飯，兩人要在老太太的挑剔與蘇錦瑟的茶之間，不照書演又不露餡。",
+      "hook": "老太太的沉香珠「喀」一聲落在桌上：「二房三房，站著吃。」兩副碗擱在門邊的小几上。",
+      "hook_type": "line",
+      "mid_hook": "顧明遠放下筷子，字正腔圓：「母親萬福，闔家同樂。」一鳴盯著他頭頂——原稿字一字不差地跟著他的嘴浮出來。",
+      "extra_hooks": [
+        "顧硯舟與顧謹言坐在桌邊，從頭到尾一句話沒有；知夏數到第四十秒，小聲說：「真的是背景板。」"
+      ],
+      "conflict": "撐過這頓飯：老太太照書挑剔她們的坐姿、口音、娘家，蘇錦瑟端茶來看兩個『妹妹』。",
+      "turn": "知夏以為最難的是老太太，可一鳴看見蘇錦瑟端茶時原稿字先浮出了下一行：『二人一飲而盡。』——書早就寫好她們會喝。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蘇錦瑟雙手把兩杯茶遞到她們面前，笑著：「妹妹們，喝茶。」頭頂的原稿字停在『一飲而盡』四個字上。",
+        "question": "這杯茶，喝還是不喝？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "顧明遠每說一句，淡紫色原稿字就在他頭頂同步浮出一行；鏡頭掃過全桌：只有兩個人抬著頭看字。",
+      "glamour_shot": "蘇錦瑟端茶轉身，珍珠耳墜一晃，丹鳳眼笑得彎彎卻不見笑意；暖黃的燈從她背後打過來。",
+      "setups": [
+        "s01-t02",
+        "m05",
+        "m02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老太太挑口音時，知夏一句『海寧官話照《海寧日報》社論讀的』讓她噎住",
+        "確認顧明遠的每句話都是原稿"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-laotaitai",
+        "gu-mingyuan",
+        "su-jinse",
+        "gu-yanzhou",
+        "gu-jinyan",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "穿書第一日早飯",
+        "knowledge": "顧明遠只說原稿台詞；兩個丈夫一句話沒有；蘇錦瑟的茶在書裡會被一飲而盡。",
+        "carry_forward": "手裡那杯茶、門邊的碗、蘇錦瑟的笑"
+      }
+    },
+    {
+      "number": 4,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "茶澆盆栽",
+      "youtube_title": "原書寫她們把茶一飲而盡，兩個編輯把茶澆進盆栽，當晚背景板丈夫進了房",
+      "duration_s": 115,
+      "logline": "兩人要把蘇錦瑟的茶不喝又不失禮地處理掉，夜裡還得面對一個不說話的丈夫。",
+      "hook": "知夏端起茶杯，手一抖，整杯澆進身後的萬年青：「哎呀，手滑。」一鳴同時「失手」把茶潑在自己袖口。",
+      "hook_type": "image",
+      "mid_hook": "蘇錦瑟看著萬年青，笑了一聲：「妹妹，花也渴了。」原稿字在她頭頂重寫一行：『二人未飲。錦瑟記下。』",
+      "conflict": "白天躲過茶，夜裡知夏回到二房，顧硯舟推門進來——書上寫他『無話』，她不知道他會不會照書走。",
+      "turn": "她把一本《顧門雙姝》原稿裡的厚帳簿擱在床中間當界線，顧硯舟看了帳簿一眼，什麼也沒說，去睡榻上。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧硯舟吹熄燈，黑暗裡原稿字浮在他頭頂：『二少，無話。』他沒看她，把自己的長衫搭在她露出來的腳上。",
+        "question": "他真的只是背景板嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhuiqi",
+        "xuanyi"
+      ],
+      "spectacle": "兩杯茶同時「失手」的雙畫面；夜裡二房熄燈，黑暗中只剩頭頂一行淡紫色的『二少，無話』靜靜亮著。",
+      "glamour_shot": "顧硯舟背對燭光解下袖釦，手背上一道繩索磨出的舊痕在火光裡一閃；他把袖口重新扣好才轉身。",
+      "setups": [
+        "s01-t03",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人躲過了書裡的茶，蘇錦瑟第一次『記下』她們",
+        "知夏與顧硯舟立下床中間放書的規矩"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "su-jinse",
+        "gu-yanzhou",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家二房"
+      ],
+      "state": {
+        "time": "穿書第一日夜",
+        "knowledge": "蘇錦瑟察覺她們沒喝茶；顧硯舟不說話，但會把衣服蓋在她腳上。",
+        "carry_forward": "蘇錦瑟『記下』的那一行、床中間的帳簿、腳上的長衫"
+      }
+    },
+    {
+      "number": 5,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "這段太硬",
+      "youtube_title": "校對主任把三少留在桌上的稿子紅筆改了一遍，原書女主派人來請：花園喝茶",
+      "duration_s": 105,
+      "logline": "一鳴在三房當起校對，知夏把全書情節寫成章節表，兩人要趕在蘇錦瑟的花園茶會前排好第二章的雷。",
+      "hook": "一鳴拿起顧謹言留在桌上的一頁稿，紅筆已經圈了三處，嘴裡念：「這段太硬。」顧謹言在門口停住。",
+      "hook_type": "image",
+      "mid_hook": "知夏在二房把全書章節寫在春杏的紅紙上，寫到第二章手一停：「花園，我落水。」",
+      "extra_hooks": [
+        "春杏湊近看紅紙：「二少奶奶，這寫的是誰的命？」知夏：「我的。」"
+      ],
+      "conflict": "第二章寫知夏在花園失足落水、被蘇錦瑟救起欠下人情；兩人要讓這場茶會不照書走。",
+      "turn": "一鳴發現原稿裡『失足』那一句有個錯字——『足』寫成『促』——她當校對時圈過；書裡知夏不是失足，是被『促』：有人推。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "翠喜站在門口，笑得乖巧：「大少奶奶請兩位去花園喝茶。」門外的花園方向，原稿字浮出：『池邊。』",
+        "question": "池邊，誰會落水？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiemei",
+        "xuanyi"
+      ],
+      "spectacle": "知夏的紅紙章節表鋪滿二房地板的俯拍，三十章一行一行，第三章用紅圈圈死；原稿字『池邊』浮在門外花園的方向。",
+      "glamour_shot": "一鳴推眼鏡抬眼看門口的顧謹言，三秒不眨；他鏡片後桃花眼一閃，手指上的油墨沾到了門框。",
+      "setups": [
+        "s01-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全書章節表寫好，兩人有了共同的『稿』",
+        "一鳴從錯字看出第二章落水是人為"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-jinyan",
+        "chun-xing",
+        "s01-cuixi"
+      ],
+      "locations": [
+        "顧家三房",
+        "顧家二房"
+      ],
+      "state": {
+        "time": "穿書第二日午後",
+        "knowledge": "第二章花園落水是被推的；翠喜是蘇錦瑟的人；顧謹言看見一鳴改他的稿。",
+        "carry_forward": "花園茶會、池邊那一推、顧謹言被紅筆改過的稿"
+      }
+    },
+    {
+      "number": 6,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "池邊一步",
+      "youtube_title": "原書寫她在花園失足落水被女主救起，兩個編輯提前把池邊那一步算準，書當場重寫一行",
+      "duration_s": 120,
+      "logline": "花園茶會上，兩人要避開池邊那一推而不讓蘇錦瑟看出她們知道。",
+      "hook": "花園的燈白天也亮著。蘇錦瑟指著池邊的石凳：「二妹坐這裡，風景好。」原稿字：『知夏坐下。』",
+      "hook_type": "danger",
+      "mid_hook": "翠喜端茶從知夏背後走過，裙角一掃——一鳴伸腳擋住自己的椰子凳，知夏順勢往一鳴那邊歪，翠喜撲空扶住了石欄。",
+      "extra_hooks": [
+        "蘇錦瑟低頭喝茶，說了一句不像對她們說的話：「這一章，寫得真穩。」"
+      ],
+      "conflict": "坐哪、站哪、誰走在誰後面，每一步都是書裡寫好的；兩人要用眼神替對方把每一步『校對』掉。",
+      "turn": "落水沒有發生——原稿字當場消掉『落水』一段，自己重寫一行；兩人第一次看見書會改自己。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "重寫的那一行在池水上方浮出：『姑奶奶顧蘭，明日回府。』一鳴低聲：「書裡她半個月後才回來。」",
+        "question": "書為什麼把姑奶奶提前叫回來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiemei",
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "池水上方淡紫色的『落水』一段像被橡皮擦掉一樣一字一字消去，再從左到右重寫一行新字，倒映在水面。",
+      "glamour_shot": "知夏往一鳴肩上一歪、笑出聲，捲髮掃過一鳴的眼鏡；兩人一杏一藍並肩坐在池邊的雙人構圖，花園的燈在身後。",
+      "setups": [
+        "m06",
+        "m05"
+      ],
+      "payoffs": [
+        "s01-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二章落水沒有發生，知夏不欠蘇錦瑟人情",
+        "兩人第一次親眼看見『改一處、重寫一行』"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "su-jinse",
+        "s01-cuixi"
+      ],
+      "locations": [
+        "顧家花園"
+      ],
+      "state": {
+        "time": "穿書第二日傍晚",
+        "knowledge": "書會在她們改掉一處後自己重寫一行；蘇錦瑟說了句『這一章寫得真穩』；顧蘭提前回府。",
+        "carry_forward": "重寫的那一行、提前回府的姑奶奶、蘇錦瑟那句話"
+      }
+    },
+    {
+      "number": 7,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "姑奶奶回府",
+      "youtube_title": "姑奶奶提前回府第一句就叫她們鄉下來的，二少奶奶拿紅筆圈出她禮單的三個錯字",
+      "duration_s": 110,
+      "logline": "顧蘭提前回府，第一天就要重排兩個侄媳的住處；兩人要擋下換房又不能跟長輩頂嘴。",
+      "hook": "大門口翡翠耳環一晃，顧蘭扯著嗓子：「哪兩個是鄉下來的？」知夏和一鳴同時舉手，又同時放下。",
+      "hook_type": "line",
+      "mid_hook": "顧蘭把娘家送的禮單遞給知夏炫耀，知夏掃一眼就抽出鋼筆圈了三處：「姑奶奶，『翡翠』寫錯了。」滿屋人憋笑。",
+      "conflict": "顧蘭提議二房搬去東院、三房留西院『各守各的』，老太太聽得進去；兩人還不知道分開會怎樣，但知道不能分。",
+      "turn": "顧蘭站到她們中間說話時，一鳴看見頭頂的原稿字忽然糊成一片——人一走開，字又清了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老太太撥一下沉香珠：「換。今晚就搬。」知夏張嘴要爭，一鳴握住她的手腕，字在兩人頭頂閃了一下。",
+        "question": "分開住，原稿字還看得見嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "知夏紅筆圈禮單錯字的特寫三連；顧蘭走到兩人中間時，淡紫色原稿字像隔著毛玻璃一樣糊開，她一走開又聚回清晰的宋體。",
+      "glamour_shot": "知夏拔筆蓋、低頭圈字，捲髮垂下來遮住半邊笑臉；圈完抬頭那一眼俏得很欠打。",
+      "setups": [
+        "m04",
+        "s01-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧蘭第一次挑撥被三個錯字噎回去",
+        "一鳴發現字會因為兩人之間隔了人而模糊"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-lan",
+        "gu-laotaitai",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家大門",
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "穿書第三日",
+        "knowledge": "顧蘭回府要拆她們；字在兩人之間隔人時會糊；老太太下令換房。",
+        "carry_forward": "今晚換房、字會不會消失、顧蘭的敵意"
+      }
+    },
+    {
+      "number": 8,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "半夜走廊",
+      "youtube_title": "換房第一夜原稿字糊成一片，兩個少奶奶半夜在走廊會合，字浮出：茶裡什麼都沒有",
+      "duration_s": 115,
+      "logline": "分住東西兩院的第一夜，字糊得看不清；兩人要在不驚動人的情況下會合，弄清字到底認什麼。",
+      "hook": "東院二房，知夏盯著天花板，原稿字糊得像潑了水的墨：「一鳴——」她抓起外衣翻窗。",
+      "hook_type": "image",
+      "mid_hook": "走廊中段兩個黑影撞上，又是慢動作：這次是知夏的鋼筆飛了。字在兩人頭頂「啪」一下聚回清晰。",
+      "extra_hooks": [
+        "春杏舉著燭台從拐角冒出來：「兩位少奶奶……半夜賞月？」知夏：「對，賞月。」一鳴：「月亮在那邊。」"
+      ],
+      "conflict": "弄清字的規矩：隔多遠會糊、什麼時候清；順便讀出她們一直沒讀到的第二章補寫段落。",
+      "turn": "字清了之後，補寫的段落第一句就是茶：『茶無物。錦瑟觀其飲否。』——茶裡什麼都沒有，蘇錦瑟只是在看她們會不會照書喝。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "段落最後一行在燭光裡慢慢浮全：『錦瑟知其未飲，笑。』一鳴抬眼：「她在測我們。」",
+        "question": "蘇錦瑟在測什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiemei",
+        "xuanyi"
+      ],
+      "spectacle": "兩人從東西兩院朝走廊中央走近的對切，每靠近一步頭頂糊成一片的字就清一分，會合那格字清得像剛印出來。",
+      "glamour_shot": "燭光下一鳴披著墨藍外衣、長髮難得散了一半，推眼鏡時單眼皮長眼映著燭火，一句「她在測我們」把人定住。",
+      "setups": [
+        "m04",
+        "m05"
+      ],
+      "payoffs": [
+        "s01-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認字只在兩人靠近時清楚",
+        "知道茶裡沒有東西，蘇錦瑟在測她們照不照書"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家東院二房",
+        "顧家走廊"
+      ],
+      "state": {
+        "time": "穿書第三日夜",
+        "knowledge": "字認的是『兩個人』，隔開就糊；蘇錦瑟在測她們是否照書走，而且已經知道她們沒喝。",
+        "carry_forward": "蘇錦瑟的測試、分住兩院的困境、春杏撞見半夜會合"
+      }
+    },
+    {
+      "number": 9,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "三妹讀過書",
+      "youtube_title": "原書女主單獨請三少奶奶賞花，一句三妹讀過很多書吧，讓校對主任背後發涼",
+      "duration_s": 110,
+      "logline": "蘇錦瑟把一鳴單獨請去花園，知夏一個人在東院面對模糊的字；兩人要各自撐住不露底。",
+      "hook": "翠喜堵在西院門口：「大少奶奶只請三少奶奶。」一鳴回頭，知夏在走廊另一端對她比了個「撐住」的手勢。",
+      "hook_type": "danger",
+      "mid_hook": "東院的知夏對著糊掉的字乾瞪眼，顧硯舟推門進來，把一張寫著『壽宴座次』的紅紙放在桌上，仍一句話沒有。",
+      "extra_hooks": [
+        "蘇錦瑟剪下一枝花遞給一鳴：「三妹讀過很多書吧？」一鳴：「略識幾個字。」蘇錦瑟：「我也是。」"
+      ],
+      "conflict": "一鳴單獨面對蘇錦瑟的試探，字糊了只能靠校對的記性；知夏要讀懂顧硯舟為什麼送座次來。",
+      "turn": "一鳴以為蘇錦瑟是在探她的娘家，可蘇錦瑟問的全是『書』——她讀過哪些書、信不信書裡寫的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蘇錦瑟替一鳴把花別在衣襟上，輕聲說：「壽宴那天，我送屏風。」她頭頂的原稿字慢慢浮出兩個字：『玉屏』。",
+        "question": "屏風提早送來，是書寫的還是她寫的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhuiqi",
+        "jiemei"
+      ],
+      "spectacle": "花園永遠亮著的暖白燈下，蘇錦瑟的剪刀剪斷花枝的特寫；對切東院知夏頭頂糊成一團的字，顧硯舟推門時字微微晃了一下。",
+      "glamour_shot": "蘇錦瑟低頭替一鳴別花，燙捲的短髮垂下，珍珠在燈下泛光；一鳴站得筆直，眼睛沒有看花，看著她頭頂。",
+      "setups": [
+        "m05",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "一鳴沒露底，蘇錦瑟沒套出娘家與來路",
+        "知夏拿到壽宴座次：兩人被排在最末席，門邊"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "su-jinse",
+        "s01-cuixi",
+        "gu-yanzhou"
+      ],
+      "locations": [
+        "顧家花園",
+        "顧家東院二房"
+      ],
+      "state": {
+        "time": "穿書第四日",
+        "knowledge": "蘇錦瑟對『書』有興趣；屏風會提早送到；壽宴座次把二房三房排在門邊。",
+        "carry_forward": "提早送來的屏風、顧硯舟送的座次、蘇錦瑟的試探"
+      }
+    },
+    {
+      "number": 10,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "多出來的一行",
+      "youtube_title": "半夜推開閨蜜房門要對第三章，天花板上浮出一行她們沒讀過的字：二少奶奶今夜會來",
+      "duration_s": 130,
+      "logline": "第一章收尾：兩人說服老太太讓她們搬回隔壁，夜裡要把第三章從頭對一遍，卻發現書也在看她們。",
+      "hook": "老太太飯桌上一句：「東院潮，三房搬過去陪二房。」顧蘭的筷子停在半空，知夏差點笑出聲。",
+      "hook_type": "reversal",
+      "mid_hook": "飯廳門邊的碗還在門邊，但老太太多看了她們一眼：「明天開始，不用站著。」春杏在門外捂住嘴。",
+      "extra_hooks": [
+        "一鳴把壽宴座次攤開，用紅筆在『門邊』兩個字旁寫了一個校對符號：刪。"
+      ],
+      "conflict": "搬回隔壁後，兩人要在壽宴前的最後六天裡把第三章每一句拆開：誰推、誰證、誰信。",
+      "turn": "她們一直以為書是『已經寫好的』，可當夜天花板上多出一行她們從沒讀過的字——書在寫她們此刻正在做的事。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "知夏推開一鳴的房門要對第三章，兩人同時抬頭：原稿字浮在天花板上，多了一行她們沒讀過的：『二少奶奶今夜會去三少奶奶房裡。』",
+        "question": "書怎麼知道她今晚會來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiemei",
+        "xuanyi",
+        "tuanchong"
+      ],
+      "spectacle": "天花板上整章原稿字排成一面紫色的牆，最底下一行是嶄新的，筆畫一筆一筆浮出，寫的是此刻門口的兩個人。",
+      "glamour_shot": "知夏推門的那一格：杏色短旗袍、鋼筆別在領口、捲髮沾著夜露；一鳴在燈下抬眼，兩人同時仰頭的雙人構圖。",
+      "setups": [
+        "m01",
+        "m02"
+      ],
+      "payoffs": [
+        "s01-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人搬回隔壁，字恢復清楚",
+        "老太太第一次鬆口『不用站著』",
+        "顧蘭換房的算盤落空"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-laotaitai",
+        "gu-lan",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家三房"
+      ],
+      "state": {
+        "time": "穿書第四日夜，壽宴前六天",
+        "knowledge": "書會寫她們正在做的事；字認兩個人；蘇錦瑟在測她們；壽宴座次在門邊。",
+        "carry_forward": "多出來的那一行、第三章的拆解、六天倒數"
+      }
+    },
+    {
+      "number": 11,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "拆第三章",
+      "youtube_title": "離壽宴只剩六天，兩個編輯把第三章拆成三件事：誰推屏風、誰作證、老太太為什麼信",
+      "duration_s": 110,
+      "logline": "六天改掉第三章，兩人要先把屏風為什麼碎、誰作證、老太太為什麼信拆成三件可以動手的事。",
+      "hook": "天花板那行『今夜會來』還亮著，知夏對著它說：「寫吧，我們也在改你。」一鳴：「先改第三章。」",
+      "hook_type": "line",
+      "mid_hook": "一鳴把第三章逐句念出來，念到『丫頭翠喜不慎碰倒』時停住：「不慎兩個字，原稿改過，墨色不同。」",
+      "extra_hooks": [
+        "老太太差春杏送來一本家訓抄本：「壽宴上要念的，二房三房各抄一百遍。」"
+      ],
+      "conflict": "第三章三根柱子：翠喜推、顧蘭證、老太太信她們蠢；六天內要抽掉至少兩根。",
+      "turn": "知夏想從翠喜下手，一鳴反而指向最難的那根：老太太——只要老太太不信她們蠢，剩下兩根自己會倒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "知夏翻開家訓抄本，第一頁就看見三個錯字，鋼筆已經拔了蓋；一鳴按住她的手：「指出來，還是抄一百遍？」",
+        "question": "挑老太太的錯字，是找死還是活路？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "jiemei",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "第三章整頁原稿字浮在三房牆上，一鳴用手指一句一句往下劃，劃到『不慎』時那兩個字的紫色比別處深了一層。",
+      "glamour_shot": "一鳴站在整牆紫字前抬手指字，墨藍長旗袍、盤髮一絲不亂，燭光從側面切出她的下顎線。",
+      "setups": [
+        "s01-t06"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第三章的死因拆成三根柱子，有了可動手的計畫",
+        "發現原稿裡『不慎』兩字是後來改上去的"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "gu-laotaitai"
+      ],
+      "locations": [
+        "顧家三房",
+        "顧家走廊"
+      ],
+      "state": {
+        "time": "壽宴前六天",
+        "knowledge": "三章死因有三根柱子；『不慎』是改過的字；老太太要她們抄家訓。",
+        "carry_forward": "家訓抄本上的三個錯字、顧蘭與翠喜的耳語"
+      }
+    },
+    {
+      "number": 12,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "三個錯字",
+      "youtube_title": "二少奶奶當眾圈出老太太家訓的三個錯字，姑奶奶正要告她頂嘴，老太太說：再找",
+      "duration_s": 115,
+      "logline": "知夏決定指出家訓的錯字，要賭老太太寧要對的字不要乖的媳婦；顧蘭等著看她被罰。",
+      "hook": "佛堂裡，知夏把抄本攤在老太太面前，紅筆圈著三個字：「老太太，這三個字，錯了。」沉香珠停了。",
+      "hook_type": "danger",
+      "mid_hook": "顧蘭從屏風後閃出來：「母親，二房頂嘴！」老太太沒抬頭，盯著那三個紅圈足足十秒，吐出兩個字：「再找。」",
+      "extra_hooks": [
+        "春杏在佛堂外跟一鳴咬耳朵：「老太太二十年沒讓人改過字。」"
+      ],
+      "conflict": "指出錯字只是開頭，老太太把整本家訓丟給她『再找』：找少了是敷衍，找多了是打臉。",
+      "turn": "知夏找出十一處，一鳴在最後一頁補了第十二處——老太太年輕時親手寫的那一頁；老太太看完，第一次叫她們坐下。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡顧蘭把翠喜拉到廊下，鮮紅的指甲戳著她：「告訴大少奶奶，二房會識字了。」翠喜點頭跑開。",
+        "question": "顧蘭替誰在傳話？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "goxue"
+      ],
+      "spectacle": "家訓抄本一頁頁翻過，紅筆圈出的錯字在佛堂燭光裡一個個亮起，與原稿字裡『二房抄錯三處』那一行同框——書寫的是抄錯，她們做的是改對。",
+      "glamour_shot": "知夏在佛堂裡站直身、單手把抄本遞上去，杏色旗袍配小西裝外套，下巴微揚，笑紋先於害怕出現。",
+      "setups": [
+        "s01-t06"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太太第一次讓她們坐下，『她們蠢』這根柱子開始鬆",
+        "顧蘭的頂嘴指控撲空"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-laotaitai",
+        "gu-lan",
+        "chun-xing",
+        "s01-cuixi"
+      ],
+      "locations": [
+        "顧家佛堂",
+        "顧家走廊"
+      ],
+      "state": {
+        "time": "壽宴前五天",
+        "knowledge": "老太太肯認錯字；顧蘭與翠喜在替蘇錦瑟傳話。",
+        "carry_forward": "『二房會識字了』這句話傳向蘇錦瑟、第十二處錯字是老太太親筆"
+      }
+    },
+    {
+      "number": 13,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "帳上兩次",
+      "youtube_title": "三少奶奶闖帳房對出一筆重複入帳，帳房老先生要趕人，那筆帳竟是蘇家送的玉屏風",
+      "duration_s": 115,
+      "logline": "一鳴要用顧家的帳證明她們不蠢，老周守著帳房『不合規矩』；她對出一處重複，卻對出了更大的事。",
+      "hook": "帳房門口，老周的算盤橫在門檻上：「女眷不入帳房，不合規矩。」一鳴：「規矩第幾頁？」",
+      "hook_type": "line",
+      "mid_hook": "顧謹言從報館回來，站在帳房窗外，看一鳴撥算盤看了整整三秒——她抬頭，他沒躲。",
+      "conflict": "老周不讓看帳，一鳴只能從他念出的帳目裡聽；她要在老周趕人之前聽出一處錯。",
+      "turn": "她聽出一筆重複：同一座『玉屏風』入了兩次帳，一次是蘇家的『賀禮』，一次是顧家付給蘇家的『貨款』——顧家替自己的賀禮付了錢。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老周翻到那頁，花白鬍子抖了一下：「這一筆……是大少奶奶親自記的。」原稿字在帳本上方浮出：『屏風，價三千。』",
+        "question": "蘇家送的屏風為什麼要顧家付錢？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "zhuiqi"
+      ],
+      "spectacle": "一鳴撥算盤的手與頭頂一行行浮出的原稿帳目並行的分割畫面：算珠每落一顆，字就往下走一行，到『玉屏風』那一行時兩邊同時停住。",
+      "glamour_shot": "顧謹言站在窗外，圓框眼鏡反著午後的光，白襯衫、吊帶、指尖一抹油墨；一鳴從算盤抬眼，推眼鏡，兩人隔窗對視。",
+      "setups": [
+        "s01-t07",
+        "s01-t08",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老周第一次沒把一鳴趕出去",
+        "發現玉屏風在顧家帳上記了兩次"
+      ],
+      "characters": [
+        "liu-yiming",
+        "cheng-zhixia",
+        "lao-zhou",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家帳房"
+      ],
+      "state": {
+        "time": "壽宴前五天午後",
+        "knowledge": "玉屏風價三千，顧家付了錢；那筆帳是蘇錦瑟記的；顧謹言看了一鳴三秒。",
+        "carry_forward": "屏風那筆帳、顧謹言的目光、老周鬆動的門檻"
+      }
+    },
+    {
+      "number": 14,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "中邪",
+      "youtube_title": "丫頭偷聽到兩位少奶奶半夜念第三章我們都會死，嚇得去買符，姑奶奶一把拉住她",
+      "duration_s": 105,
+      "logline": "春杏偷聽到兩人對章節，以為她們中邪；顧蘭盯上這個嘴快的丫頭，要從她嘴裡套出東西。",
+      "hook": "窗外，春杏抱著燭台聽見屋裡一句：「第三章我們都會死。」她手一抖，燭台「哐」地掉在地上。",
+      "hook_type": "danger",
+      "mid_hook": "春杏揣著買來的黃符溜回來，正撞見顧蘭倚在廊柱上：「丫頭，你家少奶奶半夜念什麼經？」",
+      "extra_hooks": [
+        "知夏撿起地上的燭台，對一鳴苦笑：「我們的讀者只有一個，還嚇跑了。」"
+      ],
+      "conflict": "春杏知道得太多又太少，兩人要在顧蘭套話之前先把她穩住——但穩住的方法只有一個：說實話或說謊。",
+      "turn": "知夏追出去想解釋，一鳴卻攔她：原稿第三章寫著『丫頭春杏，同逐』——春杏在書裡也是炮灰，她們沒有資格瞞她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "顧蘭的紅指甲搭在春杏肩上，聲音又尖又快：「說。」春杏嘴唇抖著，開口：「兩位少奶奶……」",
+        "question": "春杏會說出去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "goxue",
+        "jiemei"
+      ],
+      "spectacle": "春杏在夜市符攤前抖著手挑黃符的手持鏡頭，背後原稿字無聲浮在巷口：『丫頭春杏，同逐。』——她看不見，觀眾看得見。",
+      "glamour_shot": "知夏追到廊下停住，捲髮被夜風吹起，大眼睛望著春杏的背影，第一次不是笑紋而是心疼。",
+      "setups": [
+        "s01-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人決定不瞞春杏——她在書裡也會死",
+        "知夏把『我們的讀者』這個念頭說出口"
+      ],
+      "characters": [
+        "chun-xing",
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-lan"
+      ],
+      "locations": [
+        "顧家三房窗外",
+        "海寧夜市符攤",
+        "顧家走廊"
+      ],
+      "state": {
+        "time": "壽宴前四天夜",
+        "knowledge": "春杏聽見了『第三章會死』；顧蘭正在套她的話；春杏在書裡與她們同逐。",
+        "carry_forward": "春杏嘴邊那句話、黃符、顧蘭的追問"
+      }
+    },
+    {
+      "number": 15,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "報館的符號",
+      "youtube_title": "丫頭對姑奶奶說少奶奶在念經，三少留在桌上的紙條只有一句：報館的符號，你是誰",
+      "duration_s": 110,
+      "logline": "春杏替她們圓了謊，一鳴卻收到顧謹言的紙條：他認出了她的校對符號；兩人要決定告訴他多少。",
+      "hook": "春杏閉著眼大聲說：「在念經！兩位少奶奶每晚念經！」顧蘭翻了個白眼鬆手，春杏腿一軟坐在地上。",
+      "hook_type": "line",
+      "mid_hook": "一鳴回房，桌上那頁被她紅筆改過的稿旁多了一張紙條，字跡清瘦：「報館的符號。你是誰？」",
+      "extra_hooks": [
+        "知夏盯著紙條：「背景板會寫字？」一鳴：「書裡寫了，他『會寫字』。只是沒寫他寫什麼。」"
+      ],
+      "conflict": "顧謹言認出校對符號是《海寧日報》排字房用的那一套；一鳴不知道他是來查她還是來認她。",
+      "turn": "她本想撕掉紙條，知夏卻把它翻過來：背面是半篇社論草稿，字跡與紙條相同——三少不只會寫字，他在替報館寫。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "一鳴在紙條下面用校對符號寫了一個『存』字，放回桌上。顧謹言推門進來，看她，超過三秒，然後把眼鏡推了一下——和她一樣的動作。",
+        "question": "他為什麼看她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhuiqi",
+        "jiemei"
+      ],
+      "spectacle": "紙條正面的清瘦字跡與背面半篇社論草稿的翻面特寫；一鳴頭頂的原稿字只有一行舊的：『三少，會寫字。』",
+      "glamour_shot": "顧謹言在門口推眼鏡，桃花眼在鏡片後低垂又抬起，油墨手指停在門框上；一鳴坐在燈下，長眼斜斜看他三秒。",
+      "setups": [],
+      "payoffs": [
+        "s01-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "春杏替她們擋住顧蘭",
+        "一鳴與顧謹言用紙條與符號有了第一次交流：他認出她是『校對』"
+      ],
+      "characters": [
+        "chun-xing",
+        "gu-lan",
+        "liu-yiming",
+        "cheng-zhixia",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家走廊",
+        "顧家三房"
+      ],
+      "state": {
+        "time": "壽宴前四天夜",
+        "knowledge": "顧謹言替報館寫社論且認得校對符號；春杏站在她們這邊但還沒被告知全部。",
+        "carry_forward": "『存』字紙條、顧謹言的社論草稿、春杏的忠心"
+      }
+    },
+    {
+      "number": 16,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "提前一日",
+      "youtube_title": "姑奶奶設計她們在佛堂打翻香灰，提前拆台撲空，原稿卻自己改了：壽宴提前一天",
+      "duration_s": 115,
+      "logline": "顧蘭在佛堂設局，兩人提前拆台；可她們改得越多，書重寫得越狠——壽宴被提前了一天。",
+      "hook": "佛堂裡顧蘭把一盤香灰塞到知夏手上：「二房上香。」原稿字浮出：『知夏失手，灰撒佛前。』",
+      "hook_type": "danger",
+      "mid_hook": "知夏把香灰盤交給一鳴，自己拿了香；一鳴把盤子穩穩擱上供桌——顧蘭伸出去要『不小心』碰的手撲了個空。",
+      "extra_hooks": [
+        "老太太看著乾乾淨淨的供桌，對顧蘭說了一句：「你小時候才撒過灰。」顧蘭的臉綠了。"
+      ],
+      "conflict": "每拆一個局，原稿就重寫一行；一鳴開始數：這是第四次重寫，重寫的字越來越靠近壽宴那一頁。",
+      "turn": "她們以為拆台是淨賺，可當晚原稿第三章的日期自己改了：『壽宴，提前一日』——她們少了一天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "翠喜在飯廳門口傳話：「大少奶奶說，老太太的壽辰算錯了，壽宴提前一天。」兩人頭頂的原稿字正把『七』改成『六』。",
+        "question": "書是在幫蘇錦瑟，還是蘇錦瑟在幫書？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "goxue",
+        "xuanyi"
+      ],
+      "spectacle": "供桌上香灰盤穩穩落下、顧蘭的手撲空的慢動作；夜裡原稿字裡『七日』的『七』一筆一筆被抹掉、重寫成『六』。",
+      "glamour_shot": "知夏雙手持香、閉眼拜下，再睜眼時嘴角一彎——轉頭看顧蘭那一眼俏得像在說『來啊』。",
+      "setups": [
+        "m06",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "佛堂局拆了，老太太當眾損了顧蘭",
+        "一鳴數出重寫的次數並發現重寫在逼近壽宴"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-lan",
+        "gu-laotaitai",
+        "s01-cuixi"
+      ],
+      "locations": [
+        "顧家佛堂",
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "壽宴前三天，被改成前兩天",
+        "knowledge": "書會用重寫把她們拉回原路；蘇錦瑟的話與重寫同步；少了一天。",
+        "carry_forward": "兩天倒數、重寫逼近壽宴、翠喜傳的話"
+      }
+    },
+    {
+      "number": 17,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "三千塊的賀禮",
+      "youtube_title": "帳房老先生翻出原始單據，蘇家送的玉屏風是顧家付的三千塊，二少奶奶當了髮簪去找木匠",
+      "duration_s": 115,
+      "logline": "一鳴拿到屏風的原始單據，知夏用當髮簪的錢去定做一座同尺寸的木屏；兩天內要備好替身。",
+      "hook": "老周把一張泛黃單據推過桌面，聲音壓得很低：「三少奶奶，這是蘇家的收據。」上頭的金額：三千。",
+      "hook_type": "image",
+      "mid_hook": "當鋪朝奉把知夏的髮簪舉到燈下：「五塊。」知夏：「這是嫁妝。」朝奉：「六塊。」她把簪子拍在櫃上。",
+      "extra_hooks": [
+        "木匠魯師傅量完尺寸抬頭：「少奶奶，做這麼大的屏風，擋什麼？」知夏：「擋命。」"
+      ],
+      "conflict": "屏風單據證明蘇家把賀禮算成了顧家的貨款；可證據要等壽宴後才能用，眼下要先有一座一模一樣的木屏。",
+      "turn": "知夏以為木屏是備用，一鳴卻說出真正的用法：壽宴上碎的不能是玉屏，但一定要有東西倒——書要一個『倒』，她們給它一個不碎的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "木匠的板車拉著蓋布的木屏進後門，顧蘭正站在二樓窗口，翡翠耳環一晃，她把窗推開了一條縫。",
+        "question": "顧蘭看見了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "gaoqian",
+        "jiemei",
+        "xuanyi"
+      ],
+      "spectacle": "泛黃收據上『三千』兩個字的特寫，疊上原稿字『屏風，價三千』；當鋪櫃上六塊大洋排成一小行——這部劇的第一筆錢。",
+      "glamour_shot": "知夏拔下髮簪，捲髮一下散到肩上，對著朝奉揚眉：「六塊」——轉身出門時裙角帶風。",
+      "setups": [],
+      "payoffs": [
+        "s01-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到蘇家收據：賀禮是顧家付的錢",
+        "六塊大洋，第一筆錢；木屏定做完成"
+      ],
+      "characters": [
+        "liu-yiming",
+        "lao-zhou",
+        "cheng-zhixia",
+        "s01-chaofeng",
+        "s01-lu-mujiang",
+        "gu-lan"
+      ],
+      "locations": [
+        "顧家帳房",
+        "海寧當鋪",
+        "木匠鋪",
+        "顧家後門"
+      ],
+      "state": {
+        "time": "壽宴前兩天",
+        "knowledge": "蘇家收了顧家三千塊屏風錢；木屏做好了；顧蘭可能看見木屏進門。",
+        "carry_forward": "藏在三房的木屏、顧蘭的那條窗縫、六塊大洋"
+      }
+    },
+    {
+      "number": 18,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "門口的三少",
+      "youtube_title": "姑奶奶闖進三房要搜屏風，三少奶奶拿她的禮單錯字拖住她，三少一聲不響堵在門口",
+      "duration_s": 110,
+      "logline": "顧蘭闖三房搜木屏，一鳴要用一張禮單拖住她，顧謹言的沉默成了最後一道門。",
+      "hook": "顧蘭一腳踹開三房的門：「我聞到木頭味！」一鳴從桌邊抬頭：「姑奶奶，你的禮單又錯了四個字。」",
+      "hook_type": "line",
+      "mid_hook": "顧蘭被四個錯字纏住的工夫，顧謹言不知何時站到了裡間門口，靠著門框翻一本書，一動不動。",
+      "conflict": "木屏就在裡間蓋著布，顧蘭要搜，一鳴只能拖；拖到最後總要有人擋在門口。",
+      "turn": "顧蘭推門，顧謹言沒讓也沒說話，只是把書翻了一頁——原稿字在他頭頂浮出：『三少，無事』；可他一個『無事』的人擋住了整個第三章。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧蘭甩門走後，顧謹言把書翻到夾著紙條的那一頁遞給一鳴，紙條上寫著：「木頭，用我的墨染黑。」",
+        "question": "他知道她們要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhuiqi",
+        "dalian",
+        "jiemei"
+      ],
+      "spectacle": "顧蘭一手戳著禮單、一手指著裡間，顧謹言在門框前翻書不動的三格對切；原稿字『三少，無事』浮在門楣上，字下面是一個擋門的人。",
+      "glamour_shot": "顧謹言倚門翻書，白襯衫袖子捲到手肘、油墨指尖壓著書頁，鏡片後的桃花眼在一鳴看過來時低了一下。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "木屏沒被搜到",
+        "顧謹言用紙條主動幫忙：木屏可用油墨染成玉色"
+      ],
+      "characters": [
+        "gu-lan",
+        "liu-yiming",
+        "gu-jinyan",
+        "cheng-zhixia",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家三房"
+      ],
+      "state": {
+        "time": "壽宴前兩天午後",
+        "knowledge": "顧謹言站在她們這邊但從不說話；木屏要染色；顧蘭已經確信她們藏了東西。",
+        "carry_forward": "染黑的木屏、顧謹言的第二張紙條、顧蘭的懷疑"
+      }
+    },
+    {
+      "number": 19,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "我幫你們搬",
+      "youtube_title": "丫頭終於聽懂兩位少奶奶在說什麼，她在書裡也會死，她說：我幫你們搬屏風",
+      "duration_s": 115,
+      "logline": "春杏聽全了她們的計畫，知夏要決定是否把『你也會死』說出口；一個丫頭成了第一個站進局裡的人。",
+      "hook": "春杏端著染料盆推門進來，盆裡是黑的，她的臉也是黑的：「少奶奶，我都聽見了。」",
+      "hook_type": "line",
+      "mid_hook": "一鳴把木屏翻過來，春杏指著背面：「這裡有個記號，跟大少奶奶屏風上的一樣。」——木匠照著真的仿的，連記號都仿了。",
+      "extra_hooks": [
+        "老太太的壽宴座次貼出來了：二房三房，還是門邊；春杏小聲：「我站你們後面。」"
+      ],
+      "conflict": "春杏要一個解釋；說實話她可能嚇跑，說謊她可能被顧蘭套走；而壽宴只剩一天半。",
+      "turn": "知夏沒說穿書，只說了一句：「書上說，你跟我們一起被趕出去。」春杏愣了很久，然後挽起袖子：「那我幫你們搬。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "春杏問：「什麼書？」知夏看一鳴，一鳴看知夏，頭頂的原稿字浮出：『丫頭春杏，同逐。』知夏開口：「有一本書——」",
+        "question": "要把書的事告訴春杏嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiemei",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "三個人跪在地上用油墨把木屏一寸寸染成玉的青色的俯拍；染到一半，木屏背面蘇家的記號在墨裡浮出來。",
+      "glamour_shot": "知夏蹲在染料盆邊，兩手全黑、臉上一道墨，抬頭對春杏笑得眼角起紋；一鳴在旁邊一絲墨都沒沾，推眼鏡。",
+      "setups": [],
+      "payoffs": [
+        "s01-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "春杏沒有說出去，而且加入了",
+        "木屏染色完成，連背面記號都對上"
+      ],
+      "characters": [
+        "chun-xing",
+        "cheng-zhixia",
+        "liu-yiming"
+      ],
+      "locations": [
+        "顧家三房",
+        "顧家飯廳門口"
+      ],
+      "state": {
+        "time": "壽宴前一天半",
+        "knowledge": "春杏站進局裡；木屏可以亂真；座次仍在門邊。",
+        "carry_forward": "要不要跟春杏講書、明晚蘇錦瑟會送屏風來"
+      }
+    },
+    {
+      "number": 20,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "先放一夜",
+      "youtube_title": "壽宴前夜原書女主親自把玉屏風送進二房先放一夜：這屏風碎了誰也賠不起，門關上空中浮出：明日碎",
+      "duration_s": 135,
+      "logline": "壽宴前夜，蘇錦瑟親自把玉屏風送進二房『先放一夜』；兩人要在一夜之間完成替換而不被任何人看見。",
+      "hook": "知夏對春杏說完「有一本書」，春杏只問一句：「書上我活不活？」知夏：「這次活。」",
+      "hook_type": "line",
+      "mid_hook": "飯廳裡顧蘭忽然開口：「屏風就擱二房吧，二房離大堂近。」蘇錦瑟接得又快又甜：「正好，我親自送去。」",
+      "extra_hooks": [
+        "顧硯舟在二房門口放下一捲船上用的粗繩，什麼也沒說就走了；知夏拎起繩子：「他讓我們綁什麼？」"
+      ],
+      "conflict": "玉屏風進了二房，整夜都會有人盯著二房的門；替換必須在門裡完成，而木屏在三房。",
+      "turn": "一鳴想出的不是搬木屏過來，而是把玉屏風留在二房、鎖進床後的壁櫥，明早用棉被裹著木屏出門——書寫的是『二房抬屏風進大堂』，沒寫抬的是哪一座。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蘇錦瑟親手把玉屏風扶正，笑著說：「兩位妹妹小心，這屏風碎了，誰也賠不起。」門關上，原稿字在屏風上方浮出：『明日，碎。』",
+        "question": "明天碎的，會是哪一座？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "jiemei",
+        "xuanyi",
+        "zhuiqi"
+      ],
+      "spectacle": "玉屏風在二房燭光裡被抬進來、蘇錦瑟的珍珠在玉面上映出一串光點；門關上後，『明日，碎』三個淡紫色的字浮在玉屏上方，倒映在玉裡。",
+      "glamour_shot": "蘇錦瑟扶著屏風回眸，燈從門外打進來勾出她的輪廓，丹鳳眼裡沒有笑；對面知夏與一鳴並肩站著，一杏一藍，誰也沒低頭。",
+      "setups": [
+        "m02",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "春杏知道了『書』的存在並留下",
+        "替換計畫定案：玉屏鎖壁櫥，明早抬木屏",
+        "顧硯舟第一次主動送東西——一捲船繩"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "gu-lan",
+        "su-jinse",
+        "gu-yanzhou",
+        "gu-laotaitai",
+        "s01-cuixi"
+      ],
+      "locations": [
+        "顧家三房",
+        "顧家飯廳",
+        "顧家二房"
+      ],
+      "state": {
+        "time": "壽宴前夜",
+        "knowledge": "玉屏風在二房，書寫明天碎；木屏在三房染好；春杏入局；顧硯舟送了繩。",
+        "carry_forward": "明早的替換、蘇錦瑟那句『誰也賠不起』、那捲船繩"
+      }
+    },
+    {
+      "number": 21,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "怕碎",
+      "youtube_title": "壽宴當天兩個少奶奶用兩層棉被裹著屏風抬進大堂，當眾說怕碎，滿堂人回頭看",
+      "duration_s": 115,
+      "logline": "壽宴早晨，兩人要把裹著棉被的木屏抬進大堂，而玉屏還鎖在二房壁櫥裡，翠喜一直想『幫忙』。",
+      "hook": "天剛亮，知夏跪在壁櫥前把最後一道鎖扣上，一鳴在外間把第二層棉被裹上木屏：「現在它是玉的。」",
+      "hook_type": "image",
+      "mid_hook": "翠喜在門口伸手：「我來抬一角。」春杏一肩頂開她：「你手滑，大少奶奶說的。」翠喜的臉僵住。",
+      "extra_hooks": [
+        "大堂上顧明遠起身祝壽，一字一句：「母親福壽，闔家團圓。」原稿字如影隨形，一字不差。"
+      ],
+      "conflict": "裹著棉被的屏風要穿過半個大宅、經過蘇錦瑟與顧蘭的眼皮底下，進大堂、擺到老太太座前。",
+      "turn": "她們以為難的是搬，難的是『看』：老太太盯著那團棉被皺起眉——書裡這一頁老太太根本沒看屏風一眼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老太太的沉香珠一停：「拆了被子，讓我看。」滿堂目光落在兩人身上，知夏的手停在棉被角上。",
+        "question": "拆不拆？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "jiemei",
+        "xiju"
+      ],
+      "spectacle": "兩層棉被裹著的屏風被三個女人抬過長長的迴廊、進大堂的推軌長鏡頭，滿堂賓客一排排回頭；屏風上方原稿字跟著走：『抬入大堂。』",
+      "glamour_shot": "知夏與一鳴一前一後抬屏風，一杏一藍穿過大堂門口的逆光，捲髮與盤髮各自一絲光邊。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "木屏安全進了大堂",
+        "翠喜沒碰到屏風一下"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "s01-cuixi",
+        "gu-laotaitai",
+        "gu-mingyuan",
+        "su-jinse",
+        "gu-lan",
+        "gu-yanzhou",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家二房",
+        "顧家迴廊",
+        "顧家大堂"
+      ],
+      "state": {
+        "time": "壽宴當日上午",
+        "knowledge": "木屏在大堂、玉屏在壁櫥；老太太要看屏風；翠喜沒得手。",
+        "carry_forward": "拆不拆被子、翠喜的下一步"
+      }
+    },
+    {
+      "number": 22,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "倒而不碎",
+      "youtube_title": "原書女主的丫頭終於推了屏風，屏風慢慢倒下去，全堂人等著碎——它沒碎",
+      "duration_s": 120,
+      "logline": "被子拆到一半，翠喜照書推了屏風；這一推兩人等了二十天，要讓它倒得所有人都看見，而且不碎。",
+      "hook": "知夏笑著掀起棉被一角：「老太太壽宴後再看，吉利。」顧蘭尖聲：「現在看！」翠喜已經繞到了屏風背後。",
+      "hook_type": "danger",
+      "mid_hook": "翠喜的手按上屏風背面，原稿字在她頭頂亮起：『推。』一鳴看見了，卻沒有動——她在等。",
+      "extra_hooks": [
+        "春杏站在知夏身後，小聲數：「一、二——」"
+      ],
+      "conflict": "書需要屏風倒；她們需要它倒得慢、倒得響、倒得人人看見是誰推的，而且倒下去不碎。",
+      "turn": "屏風倒下去的那一刻全堂人都在等碎裂聲，等到的是一聲悶響——染黑的木屏躺在地上，一道裂也沒有。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "木屏躺在大堂中央完好無損，翠喜兩手還舉在半空；原稿字『碎』在她頭頂停了一秒，然後——一筆一筆消掉。",
+        "question": "書寫的『碎』沒發生，接下來誰來頂？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "goxue",
+        "jiemei"
+      ],
+      "spectacle": "屏風傾倒的慢動作：棉被滑落、黑木的屏面在滿堂燈光裡轉過來、落地時震起地上一層塵，沒有碎裂聲；頭頂的『碎』字一筆一筆消去。",
+      "glamour_shot": "屏風倒下時一鳴一動不動站在原地，長眼半垂、眼鏡反光，等它落地才慢慢推一下眼鏡；知夏在旁邊憋笑憋到眼角起紋。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "屏風倒了、沒碎，第三章的『碎』沒有發生",
+        "全堂人看見是翠喜推的"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "s01-cuixi",
+        "gu-laotaitai",
+        "gu-lan",
+        "su-jinse",
+        "gu-mingyuan"
+      ],
+      "locations": [
+        "顧家大堂"
+      ],
+      "state": {
+        "time": "壽宴當日午前",
+        "knowledge": "書裡的碎沒發生，原稿正在消字；翠喜當眾被看見推屏風。",
+        "carry_forward": "消掉的『碎』、翠喜的下一句話、老太太的臉色"
+      }
+    },
+    {
+      "number": 23,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "丫頭嚇哭",
+      "youtube_title": "丫頭當場嚇哭說出大少奶奶讓我推的，原書女主笑著把事推給丫頭，老太太只問一句：屏風在哪",
+      "duration_s": 115,
+      "logline": "翠喜嚇哭說出『大少奶奶讓我推的』，蘇錦瑟要把事推回丫頭自作主張；兩人要讓老太太記住這句話。",
+      "hook": "翠喜跪在木屏旁放聲大哭：「大少奶奶讓我推的！」滿堂一靜，蘇錦瑟的茶杯輕輕放回桌上。",
+      "hook_type": "line",
+      "mid_hook": "顧蘭張嘴要說「我親眼看見二房——」話到一半發現屏風沒碎、推的人跪在地上，硬生生改口：「看見……丫頭手滑。」",
+      "conflict": "蘇錦瑟一句「丫頭自作主張，我管教不嚴」就想收場；兩人沒有證據，只有滿堂人的眼睛。",
+      "turn": "老太太沒有罵翠喜、沒有看蘇錦瑟，只看著那座黑木屏風問了一句：「這不是蘇家送的那座。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "一鳴站出來：「蘇家那座在二房，完好。」老太太：「抬來。」知夏想起——早上翠喜曾在二房門口站了很久。",
+        "question": "壁櫥裡的玉屏還完好嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "dalian",
+        "jiemei"
+      ],
+      "spectacle": "大堂俯拍：倒下的黑木屏、跪哭的丫頭、滿堂站起的賓客，和蘇錦瑟獨自坐著喝茶的那一小圈空地；原稿字正在她頭頂重寫，看不清寫什麼。",
+      "glamour_shot": "蘇錦瑟放下茶杯抬頭，唇紅、丹鳳眼微彎，用燈與距離拍她端坐的側影——全堂只有她沒站起來。",
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "『大少奶奶讓我推的』這句話當眾說出口",
+        "顧蘭的證詞落空",
+        "老太太認出木屏不是蘇家那座"
+      ],
+      "characters": [
+        "s01-cuixi",
+        "su-jinse",
+        "gu-lan",
+        "gu-laotaitai",
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家大堂"
+      ],
+      "state": {
+        "time": "壽宴當日午前",
+        "knowledge": "老太太知道屏風被換；翠喜指了蘇錦瑟；玉屏還鎖在壁櫥，但翠喜早上去過二房。",
+        "carry_forward": "抬玉屏來、翠喜在二房門口站過的那一段"
+      }
+    },
+    {
+      "number": 24,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "過來坐",
+      "youtube_title": "玉屏風完好抬進大堂，原書女主伸手要摸，三少奶奶一把拉住她袖子，老太太開口：二房三房過來坐",
+      "duration_s": 120,
+      "logline": "玉屏風完好抬進大堂，蘇錦瑟伸手要『看看』；兩人要擋住她的手，還要在壽宴上坐到不是門邊的位子。",
+      "hook": "壁櫥打開，玉屏風在暗處閃著青光，一道裂都沒有；知夏吐出憋了一上午的氣：「活著。」",
+      "hook_type": "image",
+      "mid_hook": "蘇錦瑟起身走向玉屏：「我看看有沒有傷著。」她頭頂的原稿字亮起：『錦瑟，伸手。』一鳴的手先一步搭上她的袖子。",
+      "extra_hooks": [
+        "老太太：「放我房裡。誰也別碰。」她看了蘇錦瑟一眼，那一眼有一秒鐘。"
+      ],
+      "conflict": "蘇錦瑟還有最後一個機會讓玉屏『傷著』；兩人要在不翻臉的前提下不讓她碰到。",
+      "turn": "她們以為擋下這一手就結束了，老太太卻開了口，說的不是屏風：「二房三房，過來坐。」兩副碗從門邊被春杏端到了桌尾。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "桌尾，知夏小聲：「活過第三章了？」一鳴看著還沒散的席：「還沒散席。」頭頂的原稿字忽然開始一大段一大段地淡去。",
+        "question": "書在消什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "tuanchong",
+        "jiemei"
+      ],
+      "spectacle": "玉屏風在大堂燈下轉過來，青玉的光映在每張臉上；兩副碗被春杏端著、從門邊走到桌尾的跟拍長鏡頭。",
+      "glamour_shot": "一鳴一手搭在蘇錦瑟袖口、一手推眼鏡，單眼皮長眼直直看她，慢而低地說「大嫂，小心」；蘇錦瑟低頭看那隻手，笑了。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "玉屏完好，蘇錦瑟沒碰到",
+        "兩人的碗從門邊挪到桌尾——第一次挪"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "su-jinse",
+        "gu-laotaitai",
+        "chun-xing",
+        "gu-lan",
+        "gu-mingyuan",
+        "gu-yanzhou",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家二房",
+        "顧家大堂"
+      ],
+      "state": {
+        "time": "壽宴當日午後",
+        "knowledge": "玉屏在老太太房裡；碗挪到桌尾；原稿字正在大段淡去。",
+        "carry_forward": "淡去的原稿字、散席之後會發生什麼"
+      }
+    },
+    {
+      "number": 25,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "丫頭被逐",
+      "youtube_title": "壽宴散場原稿當場消掉一整段又重寫一行：丫頭被逐，姑奶奶被堵在廊下說出替誰做事",
+      "duration_s": 115,
+      "logline": "壽宴散場，原稿消掉第三章一整段、重寫一行；知夏趁亂把顧蘭堵在廊下，要她說出替誰做事。",
+      "hook": "散席的喧鬧裡，大堂上空整段原稿字像被水沖掉一樣消失，只剩一行新的慢慢寫出：『丫頭被逐。』",
+      "hook_type": "image",
+      "mid_hook": "廊下，知夏堵住顧蘭：「姑奶奶，蘇家替你還了多少？」顧蘭的翡翠耳環晃了一下，沒晃第二下。",
+      "extra_hooks": [
+        "一鳴盯著『丫頭被逐』四個字：「逐的不是我們，書換了人。」"
+      ],
+      "conflict": "重寫的那一行是書的新安排，她們看不懂代價落在誰身上；顧蘭這根柱子也得拔掉，否則下一章還會有證人。",
+      "turn": "顧蘭沒有否認——她的亡夫欠了蘇家一筆錢，蘇振邦每月替她還，條件是在顧家『看著點』；她不是壞，是窮。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧蘭甩袖走開前回頭一句：「你們以為逐的是丫頭？蘇家要的從來不是丫頭。」她的耳環這次晃了。",
+        "question": "蘇家要的到底是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "goxue",
+        "dalian"
+      ],
+      "spectacle": "大堂上空整段淡紫色原稿字像被水沖掉般從右到左消失、再從左到右寫出『丫頭被逐』四字的動畫，賓客在字下面散去。",
+      "glamour_shot": "知夏倚著廊柱雙手抱胸，捲髮被廊風吹起，大眼睛不笑地看顧蘭——她第一次用『審稿』的眼神看人。",
+      "setups": [
+        "s01-t10"
+      ],
+      "payoffs": [
+        "s01-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧蘭為誰做事說清了：蘇家替她還亡夫的債",
+        "原稿重寫的一行讀到了：『丫頭被逐』"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-lan",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家大堂",
+        "顧家走廊"
+      ],
+      "state": {
+        "time": "壽宴當日傍晚",
+        "knowledge": "顧蘭受蘇家的錢；書重寫成『丫頭被逐』；蘇家要的不是丫頭。",
+        "carry_forward": "顧蘭那句『蘇家要的不是丫頭』、翠喜的命運"
+      }
+    },
+    {
+      "number": 26,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "改一處重寫一行",
+      "youtube_title": "原書女主主動替丫頭求情又求老太太把她趕走，兩個編輯發現：書在補位，要不要救那個推屏風的丫頭",
+      "duration_s": 110,
+      "logline": "蘇錦瑟當眾『寬恕』翠喜、又請老太太逐她出府——正是原稿那一行；兩人要決定要不要再改一次書。",
+      "hook": "飯廳裡蘇錦瑟拉著翠喜的手落淚：「是我管教不嚴。」下一句：「母親，把她送出府吧。」",
+      "hook_type": "reversal",
+      "mid_hook": "一鳴在桌下用指尖在知夏手心寫了四個字：改、一、重、一——改一處、重寫一行；救翠喜，書就會再寫一行。",
+      "conflict": "翠喜是棋子，不救她良心過不去；救她，書會重寫更狠的一行，而她們已經看見重寫在逼近『船』那一章。",
+      "turn": "知夏本來堅持救，直到一鳴說出她漏看的一句：原稿第四章第一句是『翠喜出府後，投蘇家』——翠喜出府反而是她離開蘇錦瑟的機會。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老太太：「二房三房，你們說。」滿桌人看過來，知夏嘴唇動了動，一鳴握住她的手——頭頂原稿字：『丫頭被逐。』",
+        "question": "救翠喜，還是讓書寫下去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "jiemei",
+        "xuanyi"
+      ],
+      "spectacle": "飯廳長桌俯拍：蘇錦瑟拉著翠喜的手落淚，桌子另一端兩人在桌下交握的手，桌子上空一行原稿字在兩種燈光之間浮著。",
+      "glamour_shot": "蘇錦瑟落淚：睫毛濕、唇紅、珍珠在燈下微顫，美得讓全桌人心軟——鏡頭最後停在她沒有濕的眼睛裡。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看懂了書的補位邏輯：改一處，書就找別人頂那一行",
+        "讀出翠喜出府後的去向"
+      ],
+      "characters": [
+        "su-jinse",
+        "s01-cuixi",
+        "gu-laotaitai",
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-lan",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "壽宴次日午飯",
+        "knowledge": "書會補位；翠喜出府後會投蘇家；老太太把決定丟給她們。",
+        "carry_forward": "救不救翠喜的決定、重寫逼近船的那一章"
+      }
+    },
+    {
+      "number": 27,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "出府那一句",
+      "youtube_title": "丫頭被逐出門前塞給二少奶奶五塊大洋和一句話：大少奶奶早知道屏風會碎",
+      "duration_s": 115,
+      "logline": "兩人沒攔翠喜被逐，卻在大門口給了她一條退路；翠喜臨走留下一句話，讓第三章的真相露出邊。",
+      "hook": "知夏站起來：「送她走。」一鳴接：「送到報館門口。」老太太的沉香珠轉了一圈，沒再問。",
+      "hook_type": "line",
+      "mid_hook": "大門口，知夏把五塊大洋和一張寫著報館地址的紙塞進翠喜手裡：「別去蘇家。」翠喜看著她，忽然哭了。",
+      "extra_hooks": [
+        "一鳴抬頭：重寫的那一行沒再變——『丫頭被逐』寫完了，書沒有多寫第二行。"
+      ],
+      "conflict": "翠喜一出門就會照書投蘇家；兩人只有大門到巷口這一段路能改變她。",
+      "turn": "翠喜在巷口停下，回頭說了一句她們沒問的話：「大少奶奶早知道屏風會碎。送來之前她摸過三遍裂的地方。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "一鳴追上一步：「裂在哪？」翠喜比了比屏風的邊角：「錦套底下。」大門在她身後合上，原稿字浮出：『第三章，終。』",
+        "question": "屏風從一開始就是裂的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "jiemei"
+      ],
+      "spectacle": "大門慢慢合上的縫隙裡翠喜越來越小的身影，門楣上淡紫色的『第三章，終』四字一筆一筆寫全，兩人站在門內仰頭。",
+      "glamour_shot": "知夏把大洋按進翠喜手心、抬眼看她時眼角有光；風掀起杏色旗袍的下擺，她沒有笑。",
+      "setups": [
+        "m02"
+      ],
+      "payoffs": [
+        "s01-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "翠喜拿到五塊大洋與報館地址，沒投蘇家",
+        "得知屏風在送來前就裂了，裂在錦套底下",
+        "『丫頭被逐』是書的補位：第三章需要有人被逐"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "s01-cuixi",
+        "gu-laotaitai",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家大門",
+        "海寧巷口"
+      ],
+      "state": {
+        "time": "壽宴次日午後",
+        "knowledge": "玉屏在送來前就裂了、裂在錦套下；蘇錦瑟摸過三遍；第三章已『終』。",
+        "carry_forward": "錦套底下的裂、翠喜去了報館、第四章開始"
+      }
+    },
+    {
+      "number": 28,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "錦套底下",
+      "youtube_title": "兩個編輯溜進老太太房掀開玉屏風的錦套，一道早就裂好的縫：她們第三章為什麼會死，答案全在這",
+      "duration_s": 125,
+      "logline": "兩人要親眼驗證翠喜的話：玉屏風的裂是蘇錦瑟事先做的；真相揭開，蘇錦瑟也走到了她們背後。",
+      "hook": "老太太去佛堂的半個時辰，知夏跪在玉屏風前掀起錦套一角，一鳴舉燭：青玉邊角，一道髮絲細的裂。",
+      "hook_type": "image",
+      "mid_hook": "一鳴把原稿第三章最後一段念出來，念到『屏風應聲而碎』：「應聲——玉不會應聲碎，除非本來就裂。」",
+      "extra_hooks": [
+        "老周送來的收據背面寫著『瑕品，折價』——顧家付三千塊買的，是一座蘇家賣不出去的裂玉。"
+      ],
+      "conflict": "拼出全部真相：裂是舊的、折價是真的、丫頭是被指使的、顧蘭是被收買的——第三章從頭到尾是蘇錦瑟布的局，碎的不是屏風，是她們。",
+      "turn": "知夏以為蘇錦瑟布局是為了趕走兩個礙事的妯娌，一鳴卻指出更冷的事：原稿裡二房三房被逐之後，顧家二房三房的產業全歸了大房——這是一本從頭到尾在寫蘇錦瑟贏的書。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "身後一個甜而慢的聲音：「這道裂，妹妹也看得見？」蘇錦瑟站在門口，燈在她背後，她頭頂的原稿字是一片空白。",
+        "question": "她頭頂為什麼沒有字？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "jiemei"
+      ],
+      "spectacle": "燭光貼著青玉邊角推近，錦套掀開露出一道髮絲細的裂，裂縫上方原稿第三章整段字浮著，『應聲而碎』四字被一鳴的手指按住。",
+      "glamour_shot": "蘇錦瑟站在門口逆光，燙捲短髮鑲著一圈金邊，洋裝與珍珠都在暗處，只有唇紅看得清；她頭頂沒有字。",
+      "setups": [
+        "s01-t11",
+        "m05"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [
+        "m02"
+      ],
+      "general_payoffs": [
+        "第三章死因全拼出來：裂玉、折價、指使、收買，局是蘇錦瑟的",
+        "知道原書是一本寫蘇錦瑟贏的書"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "su-jinse",
+        "lao-zhou"
+      ],
+      "locations": [
+        "顧老太太的房間",
+        "顧家帳房"
+      ],
+      "state": {
+        "time": "壽宴後第二天",
+        "knowledge": "第三章她們為什麼會死——屏風是蘇錦瑟自己碎的局，已完整揭開；蘇錦瑟頭頂沒有字。",
+        "carry_forward": "蘇錦瑟在門口、她頭頂的空白、她會怎麼報復"
+      }
+    },
+    {
+      "number": 29,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "會算",
+      "youtube_title": "原書女主反咬二房丫頭碰裂了玉屏風，三少奶奶甩出一張折價收據，丫頭當眾說：原來你們不是中邪是會算",
+      "duration_s": 120,
+      "logline": "蘇錦瑟在飯廳反咬春杏碰裂玉屏，要逐第二個丫頭；兩人要用那張收據當眾翻盤，保住第一個夥伴。",
+      "hook": "飯廳裡蘇錦瑟放下筷子，聲音又甜又慢：「母親，玉屏有道裂——春杏昨天去過您房裡。」春杏手裡的湯碗一斜。",
+      "hook_type": "danger",
+      "mid_hook": "一鳴把一張單據攤在老太太面前：「蘇家收據，背面四個字：瑕品、折價。裂是舊的，顧家付了三千。」",
+      "extra_hooks": [
+        "顧蘭張了張嘴想替蘇錦瑟接話，看見知夏盯著她，把話嚥了回去，改成：「這湯涼了。」"
+      ],
+      "conflict": "蘇錦瑟要春杏頂裂玉的罪，書裡沒有這一段——這是她臨時寫的；兩人要用證據把這一段當場刪掉。",
+      "turn": "老太太看完收據沒有發作，只把它折好收進袖子，說了一句：「蘇家的禮，以後不收。」——這句話在原書裡要到第二十章才出現。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "回房路上春杏忽然停住，抹了把臉：「原來你們不是中邪，是會算。」她把黃符撕了，塞進知夏手裡：「以後我也算。」",
+        "question": "有了第一個夥伴，下一步算什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "goxue",
+        "tuanchong",
+        "jiemei"
+      ],
+      "spectacle": "收據攤在長桌中央的俯拍，『瑕品，折價』四個字在燈下與桌上空浮著的原稿字『蘇家的禮，以後不收』同框——書提前了十七章。",
+      "glamour_shot": "一鳴把收據推過桌面、指尖停在『折價』上，推眼鏡，慢而低地說「裂是舊的」；燈光從她鏡片上滑過。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "春杏保住了，而且正式成了夥伴",
+        "老太太提前說出『蘇家的禮以後不收』",
+        "蘇錦瑟臨時加的一段被當場刪掉"
+      ],
+      "characters": [
+        "su-jinse",
+        "gu-laotaitai",
+        "chun-xing",
+        "liu-yiming",
+        "cheng-zhixia",
+        "gu-lan",
+        "gu-mingyuan",
+        "gu-yanzhou",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家走廊"
+      ],
+      "state": {
+        "time": "壽宴後第三天",
+        "knowledge": "老太太開始不信蘇家；春杏入夥；蘇錦瑟會在書外臨時寫新的局。",
+        "carry_forward": "蘇錦瑟的報復、撕掉的黃符、『以後不收蘇家的禮』"
+      }
+    },
+    {
+      "number": 30,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "用我的船",
+      "youtube_title": "活過第三章的那晚，從不說話的二少走進房看著裹屏風的棉被，說了書裡沒有的第一句話",
+      "duration_s": 140,
+      "logline": "第三章正式翻頁，兩人在二房清點活下來的代價；顧硯舟走進來，第一次說了一句原稿沒有的話。",
+      "hook": "二房地上堆著兩層棉被，知夏一腳踢開：「第三章，刪。」一鳴在牆上的章節表第三章打了一個紅叉。",
+      "hook_type": "image",
+      "mid_hook": "老太太差春杏送來兩碗湯，碗底各壓著一張紙：『明日起，隨桌坐。』——門邊的碗，正式進了桌。",
+      "extra_hooks": [
+        "原稿字在天花板上換了一頁，標題浮出：『第四章 米價』。知夏：「有錢賺了。」"
+      ],
+      "conflict": "活下來只是第一步：下一章原書寫她們『被逐後窮困潦倒』，現在沒被逐，書會怎麼讓她們窮？",
+      "turn": "她們以為顧硯舟只是進來睡覺，他卻在棉被前站住，看了很久；原稿字在他頭頂浮出『二少，無話』——他開口了，字沒有跟。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "顧硯舟看著裹屏風的棉被，第一次開口，說了一句原稿裡沒有的話：「下次，別用棉被。用我的船。」他頭頂的『無話』兩個字還亮著。",
+        "question": "他怎麼會說出書裡沒有的話？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiemei",
+        "tuanchong",
+        "zhuiqi",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "天花板上整頁第三章原稿字淡去、翻頁般換成『第四章 米價』的動畫；顧硯舟開口時頭頂『無話』兩字紋絲不動——人與字第一次分開。",
+      "glamour_shot": "顧硯舟站在棉被前，燭光從側面勾出濃眉與直鼻，他解開一顆袖釦又扣回去，抬眼看知夏，說那句話時嘴角沒動。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s01-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第三章翻頁，兩人正式活過了死局",
+        "碗進桌：老太太准她們隨桌坐",
+        "顧硯舟說了第一句原稿沒有的話"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "gu-yanzhou",
+        "gu-laotaitai"
+      ],
+      "locations": [
+        "顧家二房"
+      ],
+      "state": {
+        "time": "壽宴後第三天夜，第三章終",
+        "knowledge": "活過第三章；下一章是米價；顧硯舟會說書外的話，而字不跟他。",
+        "carry_forward": "『用我的船』、第四章米價、隨桌坐的碗"
+      }
+    },
+    {
+      "number": 31,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "三十塊大洋",
+      "youtube_title": "活下來的第一天兩個少奶奶把首飾全當了，三十塊大洋排成一行，書上說第五章米價會漲三成",
+      "duration_s": 115,
+      "logline": "活過第三章後要有錢；兩人把首飾當成三十塊大洋，照原書第五章去買米，米行老闆卻不把她們當回事。",
+      "hook": "當鋪櫃上，知夏把一捧首飾倒出來：「全當。」朝奉：「少奶奶，這是嫁妝。」一鳴：「所以是我們的。」",
+      "hook_type": "line",
+      "mid_hook": "二房桌上，三十塊大洋排成一行，春杏一塊一塊數：「三十。」原稿字浮在銀元上方：『第五章，米價漲三成。』",
+      "extra_hooks": [
+        "米行門口胡老闆打量兩個穿旗袍的女人：「買米？買幾斤？」知夏：「三十塊大洋的。」他笑了。"
+      ],
+      "conflict": "炮灰之所以炮灰是沒錢沒人；書裡第五章米價漲三成，她們有三十塊和一個不把她們當買主的米行老闆。",
+      "turn": "胡老闆以為她們是少奶奶鬧著玩，一鳴把原稿裡米價的日期背出來當作『聽來的行情』，老闆的笑停了——那是他自己都還不知道的消息。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "兩人抱著米票走出米行，街角一輛馬車簾子掀開，顧蘭的翡翠耳環一晃：「當嫁妝買米？我這就去告訴母親。」",
+        "question": "老太太知道了會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "gaoqian",
+        "xiju",
+        "jiemei"
+      ],
+      "spectacle": "三十塊大洋在桌上排成一行的俯拍慢推，每一塊上都映著燭光；銀元上方一行淡紫色原稿字——這部劇的錢從這一行開始。",
+      "glamour_shot": "知夏把首飾倒上櫃台時手腕一翻、捲髮一甩，對朝奉揚眉；一鳴站在她身後半步，墨藍旗袍、手裡捏著米價的紙條。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第一桶金的本錢：三十塊大洋",
+        "米行老闆開始正眼看她們"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "s01-chaofeng",
+        "chun-xing",
+        "s01-hu-laoban",
+        "gu-lan"
+      ],
+      "locations": [
+        "海寧當鋪",
+        "顧家二房",
+        "海寧米行"
+      ],
+      "state": {
+        "time": "第四章第一天",
+        "knowledge": "三十塊大洋全買了米；顧蘭看見了。",
+        "carry_forward": "米票、顧蘭要告狀、米價什麼時候漲"
+      }
+    },
+    {
+      "number": 32,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "米價跌了",
+      "youtube_title": "姑奶奶告狀說二房當嫁妝買米，老太太只回一句嫁妝是她的，當天米價卻不漲反跌",
+      "duration_s": 110,
+      "logline": "顧蘭告狀撲空，米價卻與書寫的相反往下跌；兩人要搞清是書在報復還是她們讀錯了。",
+      "hook": "飯廳裡顧蘭一口氣說完「當嫁妝買米」，老太太夾了一筷子菜：「嫁妝是她的。」顧蘭的嘴張著合不上。",
+      "hook_type": "line",
+      "mid_hook": "春杏跑進二房，臉白：「米價跌了。跌了一成。」桌上的原稿字還寫著『漲三成』。",
+      "extra_hooks": [
+        "一鳴盯著『漲三成』三個字，第一次懷疑自己的校對：「我記得這裡有個錯字。」"
+      ],
+      "conflict": "書說漲、市場說跌；三十塊大洋變成二十七塊；知夏想立刻賣，一鳴要先弄清為什麼。",
+      "turn": "一鳴想起來了：原稿第五章寫的是『先跌後漲』，被她校對時圈過『先跌』兩字重複——書沒錯，是她們只記住了結果。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "胡老闆親自登門，笑容滿面：「少奶奶，米我原價買回，不讓您虧。」一鳴看著他笑：「他知道要漲了。」",
+        "question": "米價為什麼先跌？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "gaoqian",
+        "xuanyi"
+      ],
+      "spectacle": "米行門口的黑板價格被夥計擦掉一行、寫低一行的特寫，與二房桌上原稿字『漲三成』並排；一鳴閉眼回憶，眼前浮出校對稿上的紅圈。",
+      "glamour_shot": "一鳴閉眼回憶、再睜眼時推一下眼鏡：「先跌後漲」——四個字說得慢而低，燭光在鏡片上跳。",
+      "setups": [
+        "s01-t12",
+        "s01-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧蘭告狀撲空，老太太護住了她們的嫁妝",
+        "一鳴想起原稿寫的是『先跌後漲』"
+      ],
+      "characters": [
+        "gu-lan",
+        "gu-laotaitai",
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "s01-hu-laoban"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家二房"
+      ],
+      "state": {
+        "time": "第四章第二天",
+        "knowledge": "米價會先跌後漲；胡老闆想低價買回；老太太不管她們的嫁妝怎麼花。",
+        "carry_forward": "要不要賣給胡老闆、米價為什麼先跌"
+      }
+    },
+    {
+      "number": 33,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "先跌後漲",
+      "youtube_title": "米行老闆壓價想把米買回去，兩個少奶奶死守三天，米價漲三成，三十塊變一百二",
+      "duration_s": 115,
+      "logline": "胡老闆壓價是為了在漲價前吃回米；兩人要守住三天不賣，再把米賣在最高點。",
+      "hook": "知夏把米票按在桌上：「不賣。」胡老闆的笑收了一半：「少奶奶，跌了還能再跌。」一鳴：「三天。」",
+      "hook_type": "line",
+      "mid_hook": "第二天夜裡，春杏從米行後門打聽回來：「碼頭的米船被扣了，後天才放。」——跌是老闆放的話，壓價收米。",
+      "conflict": "三天裡米價又跌了一成，顧蘭天天在飯廳報價錢看她們笑話；兩人要撐住不賣，還要撐住臉。",
+      "turn": "第三天米船放行、米價一天漲三成，胡老闆反過來上門求她們賣——一鳴開的價不是三成，是三成外加他壓價那兩成。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "一百二十塊大洋排了四行。胡老闆擦著汗：「少奶奶，下個月的米，要不要再收一倍？」原稿字浮出：『第六章，報館倒。』",
+        "question": "再押米，還是換下一章？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "gaoqian",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "三天三格：米行黑板上的價格一天一改，第三天夥計寫價寫到一半被擠進來的買米人潮淹沒；二房桌上一行大洋變成四行。",
+      "glamour_shot": "知夏把米票推過桌面、對胡老闆一笑眼角起紋：「加兩成」——說完轉身，杏色旗袍下擺一掃。",
+      "setups": [],
+      "payoffs": [
+        "s01-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一筆進帳：三十塊變一百二十",
+        "胡老闆從看笑話變成求她們賣"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "s01-hu-laoban",
+        "chun-xing",
+        "gu-lan"
+      ],
+      "locations": [
+        "顧家二房",
+        "海寧米行",
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "第四章第五天",
+        "knowledge": "書的經濟線能用，但要讀全；米行老闆站到她們這邊；下一章是報館倒。",
+        "carry_forward": "一百二十塊、胡老闆的提議、第六章報館倒"
+      }
+    },
+    {
+      "number": 34,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "報館要倒",
+      "youtube_title": "書裡下一章報館會倒，兩個編輯提前上門談印刷機租約，排字房裡站著她們的三少",
+      "duration_s": 115,
+      "logline": "書裡第六章《海寧日報》會倒，兩人要搶在倒之前拿到印刷機的廉價租約，卻在排字房撞見顧謹言。",
+      "hook": "報館排字房的油墨味撲面而來，知夏深吸一口氣：「這味道，像回家。」一鳴已經伸手改了一個排錯的鉛字。",
+      "hook_type": "image",
+      "mid_hook": "排字架後面站起一個人，白襯衫、油墨手——顧謹言看著一鳴，一鳴看著他，兩人誰也沒說話，鄺東家在旁邊：「三少，你認識？」",
+      "extra_hooks": [
+        "鄺東家把帳簿攤給她們看：「下月付不出工錢。」一鳴翻一頁就找出一筆記錯的收入——報館其實沒那麼窮。"
+      ],
+      "conflict": "鄺東家想賣報館不想租機器；兩人只有一百二十塊，租得起機器買不起報館，還得解釋為什麼兩個少奶奶要印刷機。",
+      "turn": "顧謹言始終沒說話，但在鄺東家猶豫時把一疊排好的鉛字版推到桌上——那是明天的報，排字工昨天全走了，只有他排完了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鄺東家把租約推過來：「租給你們。條件：明早的報，你們印出來。」牆上的鐘指著晚上九點，排字房空無一人。",
+        "question": "一夜之間，三個人能印出一份報嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "gaoqian",
+        "xiju",
+        "zhuiqi"
+      ],
+      "spectacle": "排字房全景：一排排鉛字架、停著的印刷機、油墨黑與紙白；原稿字浮在印刷機上方：『第六章，報館倒』，顧謹言從字下面站起來。",
+      "glamour_shot": "顧謹言從排字架後站起，鏡片上一層油墨的霧，桃花眼看向一鳴；一鳴指尖還捏著那枚她剛改正的鉛字。",
+      "setups": [
+        "s01-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到印刷機租約的口頭承諾",
+        "確認顧謹言天天在報館"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-jinyan",
+        "s01-kuang-dongjia",
+        "s01-ma-shifu"
+      ],
+      "locations": [
+        "《海寧日報》排字房"
+      ],
+      "state": {
+        "time": "第四章第六天夜",
+        "knowledge": "報館快倒但帳有錯；顧謹言替報館排字也寫稿；租約要用一夜印報換。",
+        "carry_forward": "今夜印報、租約、顧謹言在不在"
+      }
+    },
+    {
+      "number": 35,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "一夜排字",
+      "youtube_title": "兩個編輯一個丫頭通宵排字印報，三少一聲不響站到排字架前，天亮時報紙上多了一行字",
+      "duration_s": 110,
+      "logline": "一夜之內印出明早的報，兩個編輯、一個丫頭和一個不說話的三少，要讓這台機器轉起來。",
+      "hook": "知夏捲起袖子抓起一把鉛字，第一個就排反了；一鳴頭也不抬：「反了。」春杏：「什麼是反？」",
+      "hook_type": "line",
+      "mid_hook": "凌晨兩點印刷機卡紙，三個人束手無策；顧謹言走過來，一腳踩下踏板、一手抽出卡紙，機器重新吼起來。",
+      "extra_hooks": [
+        "老周半夜找到報館，看見兩個少奶奶滿手油墨，花白鬍子抖了半天：「不合規矩。」然後替她們拿起了一疊紙。"
+      ],
+      "conflict": "排字、校對、上機、印刷，四個人沒一個是排字工，而天亮前要印一千份。",
+      "turn": "天亮時報印完了，一鳴校最後一版才發現第四版底下多了一行她們沒排的字：「校對，辛苦。」——顧謹言排的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "晨光裡顧謹言靠著印刷機睡著了，眼鏡滑到鼻尖；一鳴走過去把眼鏡推回去，又替他把袖子放下來——他的手指動了一下。",
+        "question": "他是在睡，還是在等她推眼鏡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhuiqi",
+        "tuanchong",
+        "jiemei"
+      ],
+      "spectacle": "通宵的排字房：鉛字在燈下一枚枚落入字盤的特寫、印刷機吼起來吐出第一張報的慢動作、天光從高窗照進滿地的紙。",
+      "glamour_shot": "顧謹言踩踏板、抽卡紙的一秒，白襯衫上一道油墨、下顎線在機器的光裡；一鳴在旁邊第一次沒推眼鏡，看著他。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "報印出來了，租約到手：印刷機每月二十塊",
+        "老周第一次替她們做事",
+        "顧謹言在報上排了一行只給一鳴看的字"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "gu-jinyan",
+        "lao-zhou",
+        "s01-kuang-dongjia"
+      ],
+      "locations": [
+        "《海寧日報》排字房"
+      ],
+      "state": {
+        "time": "第四章第七天清晨",
+        "knowledge": "印刷機是她們的了；顧謹言會用鉛字說話；老周開始護著她們。",
+        "carry_forward": "租約、報上那行字、第九章洋布"
+      }
+    },
+    {
+      "number": 36,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "洋布到了",
+      "youtube_title": "書裡顧家下個月會缺一批洋布，兩人把米錢全押進洋布，到貨那天才發現蘇家已經先送了一批",
+      "duration_s": 115,
+      "logline": "第三筆要押洋布：書裡第九章顧家會缺一批冬衣洋布；可洋布到貨那天，蘇家先一步把布送進了顧家。",
+      "hook": "洋布行孟掌櫃捲起一匹藏青洋布：「少奶奶，一百匹，九十塊。」知夏：「一百二十匹。」一鳴：「八十塊。」",
+      "hook_type": "line",
+      "mid_hook": "飯廳裡顧蘭忽然放軟聲音拉著知夏：「二房，姑奶奶手頭緊，借二十。」知夏看她：「借據，我寫。」顧蘭的臉一陣紅一陣白。",
+      "extra_hooks": [
+        "春杏在洋布行後院數布：「一百二十匹，一匹不少。」她數對了，第一次。"
+      ],
+      "conflict": "一百二十塊全押進洋布，要等第九章顧家缺布那天賣給老太太；中間還要撐住顧蘭借錢、老周問帳。",
+      "turn": "洋布到的那天，蘇錦瑟的車先進了大門：蘇家送來了一百匹洋布，『孝敬母親過冬』——她把顧家這個缺口先補了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "蘇錦瑟從洋布堆後面抬頭，對兩人笑：「妹妹們也進了布？真巧。」她頭頂的原稿字第九章那一頁，正在一行行變淡。",
+        "question": "蘇錦瑟怎麼會先一步補上洋布？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "gaoqian",
+        "goxue",
+        "xuanyi"
+      ],
+      "spectacle": "蘇家的洋布車隊駛進顧家大門的仰拍，一百匹藏青洋布在院子裡堆成一座小山，蘇錦瑟從布山後面抬頭。",
+      "glamour_shot": "知夏對顧蘭說「借據我寫」時拔下領口鋼筆、單手開蓋，捲髮一甩；顧蘭的翡翠耳環晃到一半停住。",
+      "setups": [
+        "s01-t15",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "一百二十匹洋布到手，第三筆押下去了",
+        "顧蘭借錢被借據嚇退",
+        "春杏學會數貨"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "s01-meng-zhanggui",
+        "gu-lan",
+        "chun-xing",
+        "su-jinse",
+        "gu-laotaitai"
+      ],
+      "locations": [
+        "海寧洋布行",
+        "顧家飯廳",
+        "顧家院子"
+      ],
+      "state": {
+        "time": "第四章第十二天",
+        "knowledge": "蘇錦瑟搶先補了顧家的洋布缺口；她們的一百二十匹賣不進顧家。",
+        "carry_forward": "一百二十匹洋布、蘇錦瑟的『真巧』、第九章在變淡"
+      }
+    },
+    {
+      "number": 37,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "缺的是海寧",
+      "youtube_title": "洋布賣不進顧家，三少奶奶重讀原稿發現缺布的不是顧家是整個海寧，商會會首親自上門，一千二百塊",
+      "duration_s": 115,
+      "logline": "洋布被蘇錦瑟堵死了去路，一鳴重讀第九章讀出一個字的差別，一百二十匹賣進了商會。",
+      "hook": "知夏癱在一百二十匹布上：「她也看得見字？」一鳴沒答，手指在第九章原稿上一字一字劃過去。",
+      "hook_type": "question",
+      "mid_hook": "一鳴的手指停住：「『海寧缺洋布』。不是顧家，是海寧。」知夏跳起來：「編輯讀稿只看主角，校對看每個字。」",
+      "extra_hooks": [
+        "老太太差春杏來傳話：「二房三房，晚飯後帳房。」春杏小聲：「老太太從不自己問帳的。」"
+      ],
+      "conflict": "顧家不缺布，但書寫整個海寧會缺；誰在缺、誰出得起價，兩人要在三天內找到買主。",
+      "turn": "買主自己上門了：商會會首周掌櫃接了洋行的大單缺布，滿城只剩她們這一百二十匹——他以為能壓價，一鳴把洋行的交期背給他聽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "一千二百塊銀票剛收進袖子，帳房的門開了：老太太坐在老周的位子上，手按著一本帳：「帳本。」",
+        "question": "老太太為什麼突然要查她們的帳？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "gaoqian",
+        "jiemei",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "第九章原稿字特寫，一鳴的手指按住『海寧』兩個字，鏡頭拉開——整頁字裡只有這兩個字她們一直沒看；商會的車隊把一百二十匹布運出顧家後門。",
+      "glamour_shot": "一鳴推眼鏡抬眼，對周掌櫃慢慢說出洋行交期的日子，一句一個邏輯；周掌櫃的金錶鏈不晃了。",
+      "setups": [
+        "s01-t16"
+      ],
+      "payoffs": [
+        "s01-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二筆大進帳：洋布賣進商會，一千二百塊",
+        "周掌櫃第一次正眼看兩個少奶奶",
+        "明白蘇錦瑟搶先補布，是因為她讀的也是這一章"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "zhou-zhanggui",
+        "chun-xing",
+        "gu-laotaitai",
+        "lao-zhou"
+      ],
+      "locations": [
+        "顧家二房",
+        "顧家後門",
+        "顧家帳房"
+      ],
+      "state": {
+        "time": "第四章第十五天",
+        "knowledge": "蘇錦瑟與她們讀同一本書；校對式讀法比編輯式讀法可靠；老太太親自坐進帳房。",
+        "carry_forward": "一千二百塊、老太太的帳本、蘇錦瑟也會看字的疑心"
+      }
+    },
+    {
+      "number": 38,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "帳本遞上去",
+      "youtube_title": "老太太親自坐進帳房要看二房三房的帳，一筆一筆乾乾淨淨，帳房老先生第一次說：沒錯",
+      "duration_s": 115,
+      "logline": "老太太坐在帳房要看她們的帳；兩人把三個月的進出遞上去，一筆都不能錯，一筆都不能藏。",
+      "hook": "一鳴從袖子裡抽出一本薄薄的帳，雙手遞過去：「老太太，從三十塊起。」老太太翻開第一頁：『首飾，當，三十。』",
+      "hook_type": "image",
+      "mid_hook": "老周拿著算盤在旁邊一筆一筆對，對到洋布那頁手停了：「一百二十匹……八十塊？」孟掌櫃從沒給過這個價。",
+      "extra_hooks": [
+        "老太太忽然問：「誰教你們做帳？」知夏脫口：「書上。」一鳴補：「校對過的書。」"
+      ],
+      "conflict": "帳要乾淨到老周挑不出錯、老太太看不出藏，而租印刷機、給翠喜的五塊、顧蘭想借的二十，每一筆都在裡面。",
+      "turn": "老周最後把算盤一推：「不合規矩……但沒錯。」老太太合上帳本，問的卻不是帳：「這些錢，顧家該不該抽三成？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老太太的沉香珠停在指間：「三成，給還是不給？」知夏看一鳴，一鳴看帳本——原稿字浮在帳本上：『二房三房，無產。』",
+        "question": "給三成，還是守住第一桶金？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "gaoqian"
+      ],
+      "spectacle": "帳房俯拍：老太太居中、老周的算盤、兩人的薄帳攤開，帳本上空一行原稿字『二房三房，無產』與帳上的一千二百塊同框。",
+      "glamour_shot": "一鳴雙手遞帳、低頭時盤髮一絲不亂、頸線筆直，老太太抬眼看她那一秒，兩人都沒有笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "帳過了老周的算盤",
+        "老太太第一次把她們當『有帳的人』問話"
+      ],
+      "characters": [
+        "liu-yiming",
+        "cheng-zhixia",
+        "gu-laotaitai",
+        "lao-zhou"
+      ],
+      "locations": [
+        "顧家帳房"
+      ],
+      "state": {
+        "time": "第四章第十五天夜",
+        "knowledge": "帳乾淨；老太太在考她們怎麼對顧家；書仍把她們寫成無產。",
+        "carry_forward": "三成給不給、老太太為什麼突然查帳"
+      }
+    },
+    {
+      "number": 39,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "坐這",
+      "youtube_title": "兩個少奶奶主動把三成交給顧家，老太太飯桌上一句坐這，碗往上挪了一位，原書男主照稿說恭喜",
+      "duration_s": 115,
+      "logline": "兩人把三成交給顧家公帳，老太太在飯桌上把她們的碗往上挪了一位；顧蘭告狀的底細也浮出來。",
+      "hook": "知夏開口：「三成給。」一鳴接：「但記二房三房名下。」老太太看了她們很久，說：「老周，記。」",
+      "hook_type": "line",
+      "mid_hook": "飯廳裡老太太敲了敲自己身邊第二個位子：「坐這。」春杏端著兩副碗從桌尾走過來，顧蘭的筷子掉了。",
+      "extra_hooks": [
+        "顧明遠放下茶杯，字正腔圓：「母親歡喜，兒等便歡喜。」原稿字一字不差——可這句書裡是對蘇錦瑟說的。"
+      ],
+      "conflict": "三成交了，位子挪了，但老太太為什麼忽然查帳？答案在飯桌上，在顧蘭與蘇錦瑟交換的那一眼裡。",
+      "turn": "春杏從廚房聽來：是蘇錦瑟勸老太太『管管兩個妹妹』，老太太不喜歡被人安排，才自己去看了帳——查帳不是為了罰，是為了不聽蘇錦瑟的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老太太夾了一塊魚放進一鳴碗裡，沒看她，說：「下回帳，直接拿來。」一鳴低頭，眼鏡後的眼睫動了一下。",
+        "question": "老太太這是護她們了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "gaoqian",
+        "goxue",
+        "ganren"
+      ],
+      "spectacle": "兩副碗從桌尾被端到老太太身邊第二位的跟拍，全桌人的目光跟著碗走；碗落桌那一格，桌上空的原稿字『門邊』兩字淡掉。",
+      "glamour_shot": "一鳴低頭看碗裡那塊魚，長眼睫在鏡片後一顫，沒說話；燭光把她白淨的側臉切成一半亮一半暗。",
+      "setups": [],
+      "payoffs": [
+        "s01-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "碗挪到老太太身邊第二位",
+        "三成入公帳、記在二房三房名下",
+        "老太太查帳的原因清楚了：她不想聽蘇錦瑟的"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-laotaitai",
+        "lao-zhou",
+        "chun-xing",
+        "gu-lan",
+        "su-jinse",
+        "gu-mingyuan",
+        "gu-yanzhou",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家帳房",
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "第四章第十六天",
+        "knowledge": "老太太開始護她們；蘇錦瑟在老太太面前失了一分；顧明遠的原稿台詞開始錯位。",
+        "carry_forward": "老太太身邊的碗、蘇錦瑟的下一步、第三筆進帳"
+      }
+    },
+    {
+      "number": 40,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "三千塊",
+      "youtube_title": "第三千塊進帳的那晚兩人把大洋排成一行數，銀元上空浮出一行新字：蘇家米行本月虧三成",
+      "duration_s": 135,
+      "logline": "第二批米、商會的洋布尾款、報館的廣告費同一天進帳，第一桶金湊滿三千；而她們賺的每一塊都從蘇家流出來。",
+      "hook": "胡老闆、周掌櫃、鄺東家三個人在二房門口排隊，春杏拿著帳本點名：「米、布、報，一個一個進。」",
+      "hook_type": "image",
+      "mid_hook": "顧硯舟走進來，把一張船隊的貨單放在銀元旁邊，上面只有四個字：『下批，走船』——他第二次用紙，仍沒說話。",
+      "extra_hooks": [
+        "春杏把大洋排成一行數到第三千塊，數錯了兩次，第三次數對，三個人同時鬆了一口氣。"
+      ],
+      "conflict": "三筆進帳要分清、三成要入公帳、顧蘭要來借、老周要來對；而一鳴一直在想一件事：錢是從哪裡來的。",
+      "turn": "三千塊排成一行的那一刻，原稿字忽然在銀元上方浮出一行新寫的字——不是她們的帳，是蘇家的：『蘇家米行，本月虧三成。』",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "三千塊銀元上方，原稿字一行寫完：『蘇家米行，本月虧三成。』一鳴推眼鏡：「她會發現的。」窗外花園的燈正好亮起。",
+        "question": "蘇錦瑟發現了會做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "gaoqian",
+        "tuanchong",
+        "xiju",
+        "xuanyi",
+        "zhuiqi"
+      ],
+      "spectacle": "三千塊大洋在二房桌上排成一長行、燭光一路點過去的推軌；銀元上方一行淡紫色原稿字從左到右寫出『蘇家米行，本月虧三成』。",
+      "glamour_shot": "知夏趴在桌邊看銀元，捲髮垂在銀光上、眼睛亮得發光，笑出聲；一鳴站著，推眼鏡那一秒燭火映在鏡片上，笑意只有一絲。",
+      "setups": [
+        "m05",
+        "m03"
+      ],
+      "payoffs": [
+        "s01-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一桶金：三十塊到三千塊",
+        "三個生意夥伴排隊進門：米行、商會、報館",
+        "顧硯舟給出下一批走船的貨單"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "s01-hu-laoban",
+        "zhou-zhanggui",
+        "s01-kuang-dongjia",
+        "gu-yanzhou",
+        "lao-zhou"
+      ],
+      "locations": [
+        "顧家二房"
+      ],
+      "state": {
+        "time": "第四章末，穿書約第四十天",
+        "knowledge": "三千塊到手；每一筆都讓蘇家虧；蘇錦瑟很快會發現有人在改書的經濟線。",
+        "carry_forward": "蘇家虧三成、顧硯舟的船、一鳴即將回娘家"
+      }
+    },
+    {
+      "number": 41,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "三天",
+      "youtube_title": "原書設定三少奶奶要回娘家三天，馬車一出門空中的字就開始糊，二少奶奶說：三天撐得住",
+      "duration_s": 115,
+      "logline": "原書設定一鳴要回娘家三天；兩人只知道隔開會糊，不知道三天會怎樣，而顧家後天就有家宴。",
+      "hook": "柳家的信送到飯廳：「柳母壽辰，請女兒歸寧三日。」一鳴抬頭：原稿第十章第一句一字不差。",
+      "hook_type": "line",
+      "mid_hook": "飯廳裡顧蘭笑吟吟：「後天的家宴，三房不在，二房主持吧。」原稿字跟著浮出：『知夏主持家宴，失禮。』",
+      "extra_hooks": [
+        "春杏替一鳴收拾包袱，往裡面塞了一支知夏的鋼筆：「兩位少奶奶的東西，混著放，保平安。」"
+      ],
+      "conflict": "書寫一鳴回娘家、知夏主持家宴失禮；不去是改書、去是分開；她們不知道哪個代價更大。",
+      "turn": "一鳴提出不去，知夏反而逼她去：「書寫你去，你就去。我撐三天。」她第一次替一鳴做了『收』的那個決定。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "大門口馬車已經套好，一鳴回頭：「我不去了？」知夏：「去。」馬車駛出大門，她頭頂的字從邊緣開始一筆一筆糊開。",
+        "question": "三天之後，字還在嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "jiemei",
+        "goxue",
+        "xuanyi"
+      ],
+      "spectacle": "馬車駛出顧家大門的仰拍，鏡頭回到門內的知夏：她頭頂整頁原稿字從最外一行開始像墨遇水般糊開，一行行往裡蔓延。",
+      "glamour_shot": "一鳴從馬車簾後回頭，細框眼鏡、盤髮、墨藍旗袍的領口在車簾的影子裡；她看了知夏兩秒，放下簾子。",
+      "setups": [
+        "s01-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知夏替一鳴做了決定——兩人第一次換了角色",
+        "春杏把鋼筆塞進一鳴的包袱"
+      ],
+      "characters": [
+        "liu-yiming",
+        "cheng-zhixia",
+        "gu-lan",
+        "chun-xing",
+        "gu-laotaitai",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家大門"
+      ],
+      "state": {
+        "time": "第十章第一天",
+        "knowledge": "一鳴走了；字開始糊；後天家宴知夏主持，書寫她失禮。",
+        "carry_forward": "三天倒數、家宴、糊掉的字"
+      }
+    },
+    {
+      "number": 42,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "字糊了",
+      "youtube_title": "閨蜜走的第二天原稿字糊到讀錯一行，二少奶奶把商會的信當退稿退了回去，二少默默撿回來",
+      "duration_s": 110,
+      "logline": "第二天字糊到只剩輪廓，知夏讀錯一行闖了禍；一鳴在柳家對著一片空白第一次叫出知夏的名字。",
+      "hook": "知夏瞇著眼讀天花板上糊成一團的字：「商會……退？」她提筆在商會送來的信上寫了個「退」字。",
+      "hook_type": "image",
+      "mid_hook": "柳家老屋裡，柳母拉著一鳴的手數落女婿不說話；一鳴抬頭——她頭頂什麼也沒有，連糊的都沒有了。",
+      "extra_hooks": [
+        "春杏抱著被退回的商會信跑回來：「周掌櫃問，二少奶奶是不是嫌價低？」知夏：「我寫了什麼？」"
+      ],
+      "conflict": "沒有字的知夏要靠記憶撐住顧家，可她記得情節不記得字；一鳴沒有字只有柳母的催問與一屋子舊書。",
+      "turn": "商會的信被退回去了，周掌櫃以為顧家二房嫌價低要抬價；顧硯舟一言不發騎馬去了商會，回來時把那封信放回她桌上，信上「退」字旁多了一個「價」——退價，不是退信。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "柳家舊房裡，一鳴摘下眼鏡對著空蕩蕩的天花板，第一次小聲叫出：「知夏。」窗外沒有燈，也沒有字。",
+        "question": "沒有彼此，她們還讀得了這本書嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhuiqi",
+        "jiemei",
+        "xuanyi"
+      ],
+      "spectacle": "三連格：第一天糊、第二天只剩紫色的輪廓、柳家的天花板一片空白；知夏在二房瞇眼讀字的主觀鏡頭，字像隔著水波。",
+      "glamour_shot": "一鳴摘下眼鏡的一秒：沒有鏡片的單眼皮長眼在燈下顯得更冷也更軟，她抬頭對著空白，說那兩個字。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "顧硯舟把知夏退錯的信救回來，還替她抬了價",
+        "一鳴在柳家撐住了柳母的索求"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "chun-xing",
+        "liu-yiming",
+        "s01-liu-mu",
+        "gu-yanzhou",
+        "zhou-zhanggui"
+      ],
+      "locations": [
+        "顧家二房",
+        "柳家老屋",
+        "海寧商會"
+      ],
+      "state": {
+        "time": "第十章第二天",
+        "knowledge": "字快沒了；顧硯舟會替她接錯；柳母要錢。",
+        "carry_forward": "明天家宴、完全消失的字、顧硯舟寫的那個『價』字"
+      }
+    },
+    {
+      "number": 43,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "我娘子先敬祖母",
+      "youtube_title": "字全看不見那天家宴上二少奶奶敬酒順序卡住，姑奶奶正要笑，二少開口替她接了一句書裡沒有的話",
+      "duration_s": 115,
+      "logline": "第三天字完全看不見，知夏主持家宴，被顧蘭設計在敬酒順序上失禮；顧硯舟第二次說了書外的話。",
+      "hook": "第三天清晨，知夏睜眼：天花板乾乾淨淨，一個字也沒有。她摸到枕邊的鋼筆：「今天靠自己。」",
+      "hook_type": "image",
+      "mid_hook": "家宴上顧蘭把敬酒的順序換了，笑著：「二房，先敬誰？」知夏端著杯子，全桌十二雙眼睛，書裡這一頁她記得的只有『失禮』兩個字。",
+      "extra_hooks": [
+        "顧明遠舉杯：「家宴和樂，母親長壽。」這一句書裡有；但接下來的話，書裡沒有。"
+      ],
+      "conflict": "敬酒順序錯一個，老太太面前就失了禮；顧蘭等這一刻等了四十集，而知夏手裡沒有字。",
+      "turn": "顧硯舟放下筷子，在全桌靜默裡開口：「我娘子先敬祖母。」——沒有頭頂的字跟著他；顧蘭的笑卡在臉上，老太太抬手受了這杯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "家宴散後，知夏追到廊下：「書裡沒有這句。」顧硯舟停步沒回頭，袖口扣得整整齊齊：「書裡也沒有你。」",
+        "question": "他知道書？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "zhuiqi",
+        "dalian",
+        "jiemei"
+      ],
+      "spectacle": "家宴長桌的環繞鏡頭：十二雙眼睛、顧蘭的笑、知夏舉杯的手；顧硯舟開口時鏡頭推上他頭頂——空的，這一次連『無話』都沒有。",
+      "glamour_shot": "顧硯舟說完那句話抬眼看知夏，濃眉深目、燭光從側面打亮直挺的鼻樑，他把袖釦扣上，轉回去吃飯。",
+      "setups": [
+        "s01-t18",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "家宴沒有失禮，顧蘭的設計落空",
+        "顧硯舟第二次說出原稿沒有的話，而且替知夏擋了全桌"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "gu-lan",
+        "gu-laotaitai",
+        "gu-yanzhou",
+        "gu-mingyuan",
+        "su-jinse",
+        "chun-xing",
+        "zhou-zhanggui"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家走廊"
+      ],
+      "state": {
+        "time": "第十章第三天",
+        "knowledge": "分開三天字會完全消失；顧硯舟不照書說話，而且知道『書』這個詞。",
+        "carry_forward": "『書裡也沒有你』、一鳴明天回來、字會不會回來"
+      }
+    },
+    {
+      "number": 44,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "字回來了",
+      "youtube_title": "三少奶奶提前一天趕回顧家，馬車一進大門空中的字一行行重新浮現，最底下多了一行她們沒讀過的",
+      "duration_s": 115,
+      "logline": "一鳴提前趕回，字隨著她靠近一行行回來；兩人在走廊會合，讀到書對她們的第一句評語，和一行她們看不懂的新字。",
+      "hook": "柳家門口，一鳴把十塊大洋和一張校對過的借據塞給柳母：「娘，字我改過了，利息不合規矩。」轉身上車。",
+      "hook_type": "line",
+      "mid_hook": "馬車進顧家大門，知夏頭頂的字從最裡一行開始重新浮現；她衝到走廊，一鳴從另一頭走來，字一行一行清到底。",
+      "conflict": "字回來了，但三天裡書沒閒著；兩人要把這三天重寫的部分找出來——可她們都沒看見那三天的字。",
+      "turn": "會合的瞬間，天花板上浮出一行從沒出現過的字：『二人同在，字明。』——書第一次直接寫她們兩個，而且寫的是規則本身。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "『二人同在，字明』的下面又浮出一行：『第六章，已重寫。』兩人同時翻章節表——第六章她們已經走過了，可書說它被改了。",
+        "question": "分開三天，書改了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiemei",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "馬車進門到走廊會合的一鏡到底：字從知夏頭頂最內一行開始、隨著一鳴每走近一步往外清一行，會合時整面紫字亮得像剛印出來。",
+      "glamour_shot": "走廊兩端兩人相向走來的雙人構圖：一杏一藍、一快一慢，知夏快步、一鳴不跑；會合時兩人同時抬頭，光從天井落在兩張臉上。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一鳴提前回來，柳母的債用一張校對過的借據解決",
+        "字回來了，而且書親口說了規則：二人同在，字明"
+      ],
+      "characters": [
+        "liu-yiming",
+        "s01-liu-mu",
+        "cheng-zhixia",
+        "chun-xing"
+      ],
+      "locations": [
+        "柳家門口",
+        "顧家大門",
+        "顧家走廊"
+      ],
+      "state": {
+        "time": "第十章第四天",
+        "knowledge": "書把她們當『二人』；第六章在她們分開時被重寫了。",
+        "carry_forward": "重寫的第六章、『二人同在，字明』、顧硯舟那句話"
+      }
+    },
+    {
+      "number": 45,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "一個改稿人",
+      "youtube_title": "兩個編輯翻回重寫的第六章，三少的名字第一次被書寫了進去，她們終於明白書為什麼把她們當成一個人",
+      "duration_s": 125,
+      "logline": "兩人翻回重寫的第六章，找出書趁她們分開時改掉的東西，也從退稿會的夾頁裡讀懂了字為什麼只認兩個人。",
+      "hook": "一鳴把章節表翻回第六章，手指在新字上停住：「這裡，多了一個名字。」知夏湊過去：『顧謹言，報館。』",
+      "hook_type": "image",
+      "mid_hook": "畫面切進『夾頁』：出版社會議室，兩隻手同時按在退稿章上，沈總編疲倦地說：「你們行你們改。」——兩個人，一個章。",
+      "extra_hooks": [
+        "知夏忽然笑出來：「書以為我們是一個編輯。」一鳴：「不是以為。退的時候，就是一個。」"
+      ],
+      "conflict": "第六章原本沒有顧謹言，現在有了——書在把背景板寫進情節；而她們必須先弄清楚：為什麼她們的字只認兩個人。",
+      "turn": "一鳴推出答案：書不認『人』，認『改稿的人』；退稿會上那份稿是兩個人一起退的，兩隻手同時蓋的章——書把她們當一個改稿人，分開就等於不存在。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "天花板上整面字中央，一行浮得比別處都亮：『改稿者：二人，為一。』知夏握住一鳴的手，字更亮了。",
+        "question": "書把她們當一個人，那另一個改書的人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiemei",
+        "ganren"
+      ],
+      "spectacle": "『夾頁』：畫面從民國的二房切進現代會議室的日光燈，兩隻手同時按下退稿章的特寫，再切回二房——天花板上『改稿者：二人，為一』一行比全頁都亮。",
+      "glamour_shot": "知夏伸手握住一鳴的手、兩人同時抬頭的雙人構圖，紫光從上方落在一張俏臉一張冷臉上，眼鏡與鋼筆各閃一下。",
+      "setups": [
+        "m01",
+        "m03"
+      ],
+      "payoffs": [
+        "s01-t17",
+        "m04"
+      ],
+      "reveals": [
+        "m04"
+      ],
+      "general_payoffs": [
+        "讀出重寫的第六章：顧謹言被寫進了情節",
+        "原稿字為什麼只在兩人都在場時清楚——因為書把她們當一個改稿人——揭開"
+      ],
+      "characters": [
+        "liu-yiming",
+        "cheng-zhixia",
+        "shen-bianji",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家二房",
+        "現代出版社會議室（夾頁）"
+      ],
+      "state": {
+        "time": "第十章第四天夜",
+        "knowledge": "字認的是『改稿人』，她們兩個是一個；顧謹言已被書寫進情節；她們分開時書會動手。",
+        "carry_forward": "顧謹言的名字、報館、另一個會改書的人"
+      }
+    },
+    {
+      "number": 46,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "門縫裡的稿",
+      "youtube_title": "排字房老師傅說社論十年來都從門縫塞進來沒人見過主筆，三少奶奶看一眼字跡就認出是誰",
+      "duration_s": 110,
+      "logline": "一鳴去報館追『顧謹言，報館』這一行，知夏留下來試探顧硯舟；兩人各自撞上一個不照書走的丈夫。",
+      "hook": "排字房裡馬師傅把一疊泛黃的社論拍在桌上：「十年了，都從門縫塞進來，沒人見過主筆。」一鳴翻開第一頁。",
+      "hook_type": "line",
+      "mid_hook": "顧家碼頭邊，知夏問顧硯舟：「壽宴那天，你知道屏風會碎？」他沒答，天忽然下雨，他把傘撐到她頭上。",
+      "extra_hooks": [
+        "一鳴指著社論裡一個字：「這個『的』他永遠多寫一筆。紙條上也是。」馬師傅：「三少奶奶認得主筆？」"
+      ],
+      "conflict": "匿名主筆十年來的社論都在說同一件事：顧家的船；而這十年書裡一個字都沒提過——書沒寫的，他在寫。",
+      "turn": "一鳴以為顧謹言是這幾年才開始寫，馬師傅卻說第一篇社論是十年前——那年顧謹言十七歲，而原書裡他『無事』。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "雨裡顧硯舟撐著傘，知夏抬頭問：「你為什麼不照書說話？」他握傘的手緊了一下，袖口那道舊痕露出來。",
+        "question": "他會回答嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "zhuiqi",
+        "jiemei"
+      ],
+      "spectacle": "十年的社論在排字房長桌上攤成一條河，一鳴的手指順著每一篇裡那個多一筆的『的』字劃過去；碼頭雨中，一把傘下兩個人，原稿字在傘面上方被雨打糊。",
+      "glamour_shot": "顧硯舟單手撐傘、雨順著傘骨落在他肩上，深色長衫濕了一片，他低頭看知夏時睫毛上有水；知夏仰臉問他，捲髮貼在頰邊。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "確定匿名主筆是顧謹言，而且寫了十年",
+        "十年的社論全在說一件事：顧家的船"
+      ],
+      "characters": [
+        "liu-yiming",
+        "s01-ma-shifu",
+        "cheng-zhixia",
+        "gu-yanzhou",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "《海寧日報》排字房",
+        "海寧碼頭"
+      ],
+      "state": {
+        "time": "第十章第五天",
+        "knowledge": "顧謹言寫了十年社論、全在講船；顧硯舟被問到『書』時沒有否認。",
+        "carry_forward": "傘下的問題、十年的社論、船"
+      }
+    },
+    {
+      "number": 47,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "什麼書",
+      "youtube_title": "二少奶奶問丈夫你為什麼不照書說話，他說什麼書，眼神卻說他知道，臨走留一句：別照著它活",
+      "duration_s": 115,
+      "logline": "顧硯舟給了知夏一個不像不知道的『什麼書』；一鳴在報館讀到顧謹言還沒印的社論，上面有顧家的船。",
+      "hook": "雨裡顧硯舟看著她，慢慢說：「什麼書？」——可他的眼睛沒有問號；知夏：「你在撒謊。」他沒否認。",
+      "hook_type": "line",
+      "mid_hook": "報館裡，馬師傅遞給一鳴一疊還沒上機的鉛字版：「三少剛排的，明天見報。」一鳴讀了第一行，臉色變了。",
+      "extra_hooks": [
+        "春杏在二房對著天花板發問：「字，你聽得見嗎？」字沒理她；知夏回來時字抖了一下。"
+      ],
+      "conflict": "顧硯舟不說，但每一個動作都在說；一鳴手裡的社論明天就要印，上面寫著顧家的船——她們掌握著印刷機，能攔。",
+      "turn": "顧硯舟走到馬車前停下，回頭補了一句：「別照著它活。」——他知道那是一本書，而且他說『它』的語氣像在說一個舊對手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "一鳴把鉛字版攤在知夏面前：「社論，明天見報。講顧家的船。」她停了一下：「印刷機是我們的，要攔嗎？」",
+        "question": "攔下這篇社論，還是讓它見報？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhuiqi",
+        "jiemei"
+      ],
+      "spectacle": "雨停後碼頭上顧硯舟回頭說『別照著它活』的一格，他身後的船隊桅杆林立，原稿字在船上方浮著，沒有一行提到他。",
+      "glamour_shot": "顧硯舟回頭，雨後的光從碼頭盡頭打過來，勾出他的下顎線；他扣上最後一顆袖釦，上車。",
+      "setups": [
+        "m10",
+        "m03"
+      ],
+      "payoffs": [
+        "s01-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧硯舟承認了書的存在——用『別照著它活』",
+        "一鳴拿到明天要印的社論鉛字版"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "gu-yanzhou",
+        "liu-yiming",
+        "s01-ma-shifu",
+        "chun-xing"
+      ],
+      "locations": [
+        "海寧碼頭",
+        "《海寧日報》排字房",
+        "顧家二房"
+      ],
+      "state": {
+        "time": "第十章第五天夜",
+        "knowledge": "顧硯舟知道書；明天的社論寫顧家的船；她們能攔。",
+        "carry_forward": "攔不攔社論、『別照著它活』"
+      }
+    },
+    {
+      "number": 48,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "一百份",
+      "youtube_title": "社論照印，天沒亮原書女主就到報館買走一百份，站在門口問：三妹，社論寫給誰的",
+      "duration_s": 110,
+      "logline": "兩人決定讓社論照印，天沒亮蘇錦瑟就來買走一百份；她在報館門口問出了兩人也想問的那句話。",
+      "hook": "知夏把鉛字版推回去：「印。我們是編輯，不是審查。」一鳴推眼鏡：「校對完再印。」",
+      "hook_type": "line",
+      "mid_hook": "天沒亮，報館門口停了一輛車，蘇家的車夫抱走一百份報；蘇錦瑟在車裡掀簾：「三妹也起得早。」",
+      "extra_hooks": [
+        "周掌櫃捧著第二批洋布的訂單追到報館：「再來一百二十匹！」春杏在旁邊算：「二百四。」"
+      ],
+      "conflict": "社論印了，蘇錦瑟比誰都先讀到；她買一百份不是為了讀，是為了讓全商會讀——顧家的船成了話題。",
+      "turn": "一鳴本想問蘇錦瑟為什麼買，蘇錦瑟先問了她：「社論寫得好。寫給誰的？」——她也在找『改書的人』。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蘇錦瑟放下車簾前補一句：「這封信，我也等了很久。」車走了，一鳴站在報館門口，手裡的報紙被晨風掀開第一頁。",
+        "question": "社論寫給誰看？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gaoqian",
+        "jiemei"
+      ],
+      "spectacle": "天沒亮的報館門口，一百份報從門裡搬上車、蘇錦瑟的車燈在油墨味的晨霧裡；原稿字浮在報館招牌上：『第十一章 商會』。",
+      "glamour_shot": "蘇錦瑟掀簾的一格，車內的暖燈與門外的冷晨光交在她臉上一半一半，珍珠在暗處發光，她的笑只有嘴角。",
+      "setups": [
+        "s01-t19",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "社論見報，顧家的船成了全城話題",
+        "第二批洋布訂單：二百四十塊",
+        "蘇錦瑟把社論叫做『信』"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "su-jinse",
+        "zhou-zhanggui",
+        "chun-xing",
+        "s01-ma-shifu"
+      ],
+      "locations": [
+        "《海寧日報》排字房",
+        "報館門口"
+      ],
+      "state": {
+        "time": "第十一章第一天清晨",
+        "knowledge": "蘇錦瑟也在等這封『信』；下一章是商會。",
+        "carry_forward": "『我也等了很久』、社論的內容、商會"
+      }
+    },
+    {
+      "number": 49,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "海寧商報",
+      "youtube_title": "兩個編輯用租來的印刷機辦了一份只印行情的商報，帳房老先生偷偷送來數字，二少帶她去看一艘新船",
+      "duration_s": 115,
+      "logline": "印刷機終於有了用處：兩人辦《海寧商報》只印行情，老周偷偷供數字；顧硯舟帶知夏去碼頭看一艘沒在書裡的船。",
+      "hook": "知夏把一張白紙拍在排字桌上：「《海寧商報》，只印行情，不印故事。」一鳴：「校對我來。」馬師傅：「主筆呢？」",
+      "hook_type": "line",
+      "mid_hook": "老周半夜敲二房的窗，遞進一張寫滿數字的紙：「商會的價，明天的。不合規矩，別說是我。」",
+      "extra_hooks": [
+        "第一份商報印出來，周掌櫃買了五十份：「這比社論有用。」一鳴：「社論你也買了。」"
+      ],
+      "conflict": "商報要有人信，數字要準、要早；老周的數字是顧家帳房的，用了會不會害了他。",
+      "turn": "一鳴把老周的數字和原稿第十一章的商會價對照——原稿每一個數字都和老周的一樣，只有一處不同：原稿寫顧家洋布『無』，老周寫『二百四』——她們改掉的那一行，在帳上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "碼頭黃昏，顧硯舟指著一艘剛漆好的新船，船頭名牌蓋著布；他掀開——『夏鳴』兩個字。他說：「這艘，不在書裡。」",
+        "question": "他為什麼用她們的名字命名一艘船？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "gaoqian",
+        "tuanchong",
+        "zhuiqi",
+        "jiemei"
+      ],
+      "spectacle": "第一份《海寧商報》從印刷機吐出來的慢動作，只有數字沒有故事；碼頭黃昏，新船船頭的布掀開露出『夏鳴』兩字，船上方的原稿字一片空白。",
+      "glamour_shot": "顧硯舟掀布的那一秒，夕陽從海面打上來映亮他的側臉，袖口第一次沒扣；知夏看船名，大眼睛裡的光比夕陽亮。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s01-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "印刷機有了用處：《海寧商報》創刊",
+        "老周成了她們的『數據庫』",
+        "顧硯舟造了一艘不在書裡的船，名叫夏鳴"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "s01-ma-shifu",
+        "lao-zhou",
+        "zhou-zhanggui",
+        "gu-yanzhou",
+        "chun-xing",
+        "s01-lao-duo"
+      ],
+      "locations": [
+        "《海寧日報》排字房",
+        "顧家二房",
+        "海寧碼頭"
+      ],
+      "state": {
+        "time": "第十一章第三天",
+        "knowledge": "商報有了信用；她們的改動已經寫進顧家的帳；顧硯舟造了書外的船。",
+        "carry_forward": "夏鳴號、老周的數字、社論第一句還沒讀"
+      }
+    },
+    {
+      "number": 50,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "致改稿的人",
+      "youtube_title": "三少奶奶把社論攤在閨蜜面前，第一句話是寫給她們的：致改稿的人，第四十章之前別動船",
+      "duration_s": 140,
+      "logline": "一鳴終於把社論從頭讀完：它不是社論，是一封信，寫給改書的人；信裡說的那艘船，正停在窗外。",
+      "hook": "一鳴把社論攤在二房桌上，用紅筆圈出第一句的四個字：「致改稿的人。」知夏的鋼筆掉在桌上。",
+      "hook_type": "image",
+      "mid_hook": "『夾頁』：退稿會上，沈總編把稿子推回來，封面上除了書名什麼都沒有——沒有作者，沒有收件人；知夏在二房抬頭：「那時候就沒有作者。」",
+      "extra_hooks": [
+        "春杏抱著一疊商報進門：「第二期賣光了。」沒人理她，她看了看桌上的社論：「這是信吧？」"
+      ],
+      "conflict": "社論每一段都用校對的格式寫成——段首一個符號、段尾一個『存』；顧謹言十年來每篇都是留言，留給一個他不知道會不會來的人。",
+      "turn": "她們一直以為社論寫船是在談生意，讀到最後一行才懂：『第四十章之前，別動船』——他知道第四十章，而第四十章是顧家垮掉的那一章。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "一鳴把社論攤在知夏面前，第一句是：「致改稿的人：第四十章之前，別動船。」兩人同時抬頭看向窗外的碼頭——夏鳴號的燈剛亮。",
+        "question": "第四十章的船，到底會發生什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiemei",
+        "zhuiqi",
+        "ganren"
+      ],
+      "spectacle": "社論全文在桌上攤開、紅筆圈出的『致改稿的人』與『第四十章』兩處特寫；鏡頭從兩人抬頭的臉搖到窗外，碼頭上一排船燈逐一亮起，原稿字在燈上方浮出：『第四十章』。",
+      "glamour_shot": "一鳴與知夏同時抬頭看向窗外的雙人構圖：一鳴推眼鏡、知夏握緊鋼筆，窗外碼頭的燈映在兩張臉上，一冷一俏。",
+      "setups": [
+        "m10",
+        "m01"
+      ],
+      "payoffs": [
+        "s01-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "讀懂社論是寫給改稿人的信",
+        "確認顧謹言知道第四十章",
+        "《海寧商報》第二期賣光"
+      ],
+      "characters": [
+        "liu-yiming",
+        "cheng-zhixia",
+        "shen-bianji",
+        "chun-xing",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家二房",
+        "現代出版社會議室（夾頁）",
+        "海寧碼頭"
+      ],
+      "state": {
+        "time": "第十一章第四天夜",
+        "knowledge": "社論是給改稿人的信；顧謹言知道第四十章；船不能動；書沒有作者也沒有收件人。",
+        "carry_forward": "第四十章的船、顧謹言的信、商會下個月開會"
+      }
+    },
+    {
+      "number": 51,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "商會壓價",
+      "youtube_title": "原書女主終於出手，蘇家在商會把顧家的布價米價壓到底，會首倒戈，姑奶奶衝回家說：她告了你們",
+      "duration_s": 115,
+      "logline": "蘇錦瑟的報復從商會開始：蘇家把顧家的布價米價壓到底，周掌櫃倒戈；兩人只能在商會門外聽。",
+      "hook": "商會大堂朱紅的門關上，兩個少奶奶被攔在門外；門縫裡傳來蘇振邦和氣的聲音：「顧家的布，減半。」",
+      "hook_type": "line",
+      "mid_hook": "周掌櫃從門裡出來，金錶鏈晃著，不看她們：「少奶奶，行情變了。」他昨天還買了五十份商報。",
+      "extra_hooks": [
+        "顧硯舟在商會裡始終沒開口；散會時他從兩人身邊走過，把一張紙塞進知夏手裡：『價，壓不過三月。』"
+      ],
+      "conflict": "蘇家聯手商會十二家壓顧家的價，顧家的船隊有貨無路；書裡這一段寫在第十二章——她們提前把蘇錦瑟逼出手了。",
+      "turn": "她們以為蘇錦瑟的報復是商會，顧蘭卻慌慌張張從家裡跑來：真正的報復在家裡——蘇錦瑟把『二房三房擅自經商』告到了老太太面前。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "顧蘭扶著商會的門喘氣：「她告了你們。老太太說——三天後，飯廳審帳。」門上方的原稿字：『第十二章 逐。』",
+        "question": "老太太會站哪一邊？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "xuanyi",
+        "jiemei"
+      ],
+      "spectacle": "商會大堂朱紅與金的全景：十二家掌櫃分坐兩邊、蘇振邦居中、顧硯舟坐在最末一聲不響；門外兩個少奶奶的側影；門楣上原稿字『第十二章 逐』。",
+      "glamour_shot": "兩人被關在朱紅大門外、並肩貼門聽的雙人構圖：知夏耳朵貼門、一鳴推眼鏡看門楣上的字。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s01-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇錦瑟的報復看清了：商會壓價加家裡告狀",
+        "顧硯舟給出價格壓不過三個月的判斷"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "su-zhenbang",
+        "zhou-zhanggui",
+        "gu-yanzhou",
+        "gu-lan"
+      ],
+      "locations": [
+        "海寧商會大堂",
+        "商會門外"
+      ],
+      "state": {
+        "time": "第十二章第一天",
+        "knowledge": "蘇家與商會聯手壓顧家；三天後飯廳審帳；書把這一章叫『逐』。",
+        "carry_forward": "三天後審帳、壓價、『逐』"
+      }
+    },
+    {
+      "number": 52,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "第二次逐",
+      "youtube_title": "書在第十二章又寫了一次把她們逐出顧家，原書女主送來一樣東西：玉屏風的錦套",
+      "duration_s": 110,
+      "logline": "書第二次寫『逐』，蘇錦瑟送來玉屏風的錦套當作提醒；兩人要在三天內決定是跟她翻臉還是把帳做完。",
+      "hook": "二房天花板上，第十二章整頁浮現，最後一行寫得比別處都大：『二房三房，逐出顧家。』知夏：「又來。」",
+      "hook_type": "image",
+      "mid_hook": "蘇錦瑟差新丫頭送來一個錦盒，裡頭是玉屏風的錦套，摺得整整齊齊，附一張字條：「兩位妹妹，像換了人。」",
+      "extra_hooks": [
+        "知夏抓起錦套要去找蘇錦瑟，一鳴按住她：「先把帳做完。翻臉是她的章，不是我們的。」"
+      ],
+      "conflict": "三天後審帳，蘇錦瑟手裡有什麼她們不知道；錦套是提醒：她知道屏風被換，而她還沒說。",
+      "turn": "一鳴翻過錦套，裡面縫著一張紙——第三章原稿的一段，手抄的，字跡娟秀：蘇錦瑟不只知道有書，她抄過書。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "一鳴把手抄的那一段舉到燈下，與天花板上的原稿字逐字對：一字不差，只多了一行批註——「此處，應碎。」",
+        "question": "蘇錦瑟知道她們在改書嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "goxue",
+        "jiemei"
+      ],
+      "spectacle": "天花板上第十二章整頁浮現、『逐出顧家』四字比別處大一倍的仰拍；燈下手抄紙與天花板原稿字逐字對照的分割畫面。",
+      "glamour_shot": "一鳴把手抄紙舉到燈下，紙的暖光透過來映在她的眼鏡上，長眼一眨不眨；知夏在她身後握著錦套，指節發白。",
+      "setups": [
+        "s01-t20",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "確認蘇錦瑟抄過原稿",
+        "兩人定下：翻臉之前先把帳做完"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "su-jinse",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家二房"
+      ],
+      "state": {
+        "time": "第十二章第一天夜",
+        "knowledge": "蘇錦瑟抄過書、批過『應碎』；書第二次寫逐。",
+        "carry_forward": "審帳倒數三天、蘇錦瑟手裡還有什麼"
+      }
+    },
+    {
+      "number": 53,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "蘇老爺登門",
+      "youtube_title": "蘇家老爺親自登門要替顧家保船，老太太當著他的面問兩個兒媳：你們說",
+      "duration_s": 115,
+      "logline": "蘇振邦親自登門，提出蘇家低價收顧家的洋布存貨、再替顧家的船隊『保險』；老太太把答話的權利丟給兩個兒媳。",
+      "hook": "蘇振邦的金絲眼鏡在飯廳燈下一閃，他對老太太和氣地笑：「顧家的船，該保險了。」原稿字浮出：『第四十章 船』。",
+      "hook_type": "danger",
+      "mid_hook": "蘇錦瑟替父親斟茶，蘇振邦低聲：「照規矩走。」蘇錦瑟更低：「爹，規矩變了。」知夏在門邊聽見了這六個字。",
+      "extra_hooks": [
+        "老舵從碼頭跑來報信：「蘇家的人在量船。」一鳴：「量船做什麼？」老舵：「保單要寫噸數。」"
+      ],
+      "conflict": "蘇振邦的提議體面又好聽：收布解圍、保船安心；可書裡第四十章顧家垮在一批沉掉的洋貨與一份保單上。",
+      "turn": "老太太沒有答，轉頭看向門邊：「二房三房，你們說。」——她把對蘇家的回話交給了兩個三個月前還站著吃飯的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "滿桌靜默，蘇振邦笑著等；知夏看一鳴，一鳴看天花板——『第四十章 船』四個字還亮著。她開口：「蘇老爺——」",
+        "question": "收不收蘇家的『保險』？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "goxue",
+        "dalian"
+      ],
+      "spectacle": "飯廳長桌：蘇振邦與老太太對坐、蘇錦瑟斟茶、兩人站在門邊；桌上空原稿字第一次浮出『第四十章』——離現在還有二十八章。",
+      "glamour_shot": "蘇錦瑟低頭斟茶、說『規矩變了』時唇幾乎不動，燈從上方打下讓睫毛在臉上落一道影；知夏在門邊的側臉全是光。",
+      "setups": [
+        "m10",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "看見蘇家對船隊下手的第一步：量船、保單",
+        "老太太把對蘇家的話語權交給她們"
+      ],
+      "characters": [
+        "su-zhenbang",
+        "gu-laotaitai",
+        "su-jinse",
+        "cheng-zhixia",
+        "liu-yiming",
+        "s01-lao-duo",
+        "gu-mingyuan",
+        "gu-yanzhou"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家大門"
+      ],
+      "state": {
+        "time": "第十二章第二天",
+        "knowledge": "蘇家在量船、要寫保單；第四十章的垮是船與保單；蘇錦瑟對父親說規矩變了。",
+        "carry_forward": "答不答應保險、量船、明天審帳"
+      }
+    },
+    {
+      "number": 54,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "船不會沉",
+      "youtube_title": "三少奶奶用三個數字婉拒蘇家的保險，二少帶二少奶奶登船看整支船隊，說了一句：船不會沉",
+      "duration_s": 115,
+      "logline": "一鳴用三個數字婉拒蘇家，蘇振邦和氣地退場；顧硯舟帶知夏登船看整支船隊，而船上方的字她讀不全。",
+      "hook": "一鳴對蘇振邦說了三個數字：「噸數、保費、賠率。蘇家的保單，賠率寫錯了。」蘇振邦的笑停了一秒。",
+      "hook_type": "line",
+      "mid_hook": "碼頭上顧硯舟把知夏扶上夏鳴號的跳板，整支船隊在她腳下排開；船上方的原稿字浮出一行，中間有個字糊得看不清。",
+      "extra_hooks": [
+        "蘇振邦離開時對蘇錦瑟低聲：「這兩個，誰教的？」蘇錦瑟：「書。」他沒聽懂。"
+      ],
+      "conflict": "蘇家退了一步，但保單只是開頭；知夏要看懂那艘會沉的船在哪，而字第一次在船上方糊了一個字。",
+      "turn": "知夏以為糊的字是距離問題，一鳴就在碼頭邊——不是距離，是那個字還沒寫完：書在船這一頁上猶豫。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "甲板上顧硯舟看著整支船隊，說了這一季最長的一句話：「船，不會沉。我數過。」知夏：「數過什麼？」他沒答。",
+        "question": "他數過什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "zhuiqi",
+        "xuanyi",
+        "jiemei"
+      ],
+      "spectacle": "夏鳴號甲板上的環繞鏡頭：整支顧家船隊在鐵灰的海面上排開，船上方一行淡紫色原稿字，中間一個字像被手指抹過一樣糊著。",
+      "glamour_shot": "顧硯舟扶知夏上跳板的手，手背上那道繩痕在海光裡清楚；他站在船頭、袖口敞著，海風掀起長衫，知夏在他身後仰頭看字。",
+      "setups": [
+        "m03",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇家的保單被擋下",
+        "知夏第一次登上顧家的船，看見整支船隊",
+        "蘇錦瑟對父親說出『書』"
+      ],
+      "characters": [
+        "liu-yiming",
+        "su-zhenbang",
+        "su-jinse",
+        "cheng-zhixia",
+        "gu-yanzhou",
+        "s01-lao-duo",
+        "gu-laotaitai"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "海寧碼頭",
+        "夏鳴號甲板"
+      ],
+      "state": {
+        "time": "第十二章第二天傍晚",
+        "knowledge": "保單暫時擋住；船上方的字有一個沒寫完；顧硯舟『數過』什麼。",
+        "carry_forward": "糊掉的那個字、『我數過』、明天審帳前蘇錦瑟的邀約"
+      }
+    },
+    {
+      "number": 55,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "屏風本該碎的",
+      "youtube_title": "審帳前夜原書女主把兩人請進花園，燈下只說一句：屏風本該碎的，妹妹們別改太多",
+      "duration_s": 120,
+      "logline": "審帳前夜，蘇錦瑟把兩人請進永遠亮著燈的花園，第一次當面承認她知道她們在改書，並提出一筆交易。",
+      "hook": "花園的燈全亮著，蘇錦瑟背對她們修花枝，剪刀一響：「屏風本該碎的。」她沒有回頭。",
+      "hook_type": "line",
+      "mid_hook": "蘇錦瑟把剪下的花遞給知夏：「妹妹們改得很好。但別改太多——書會不高興。」她頭頂仍是一片空白。",
+      "extra_hooks": [
+        "一鳴問：「大嫂看得見字嗎？」蘇錦瑟笑：「三妹，這花園的燈為什麼永遠亮著？」她沒有回答，也沒有否認。"
+      ],
+      "conflict": "蘇錦瑟知道她們改書——這是確定的；她要的不是撕破臉，是一筆交易：把商報與印刷機讓給蘇家，她撤回告狀。",
+      "turn": "知夏以為蘇錦瑟在威脅，一鳴聽出了另一層：『書會不高興』——蘇錦瑟怕的不是她們，是書；她比她們更清楚改書的代價。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "兩人拒絕交易，蘇錦瑟不惱，把剪刀放回花架：「那明天審帳，我會帶一樣東西。」燈下她的影子裡沒有字，只有花。",
+        "question": "她會帶什麼來審帳？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "goxue",
+        "jiemei",
+        "ganren"
+      ],
+      "spectacle": "永遠亮著的暖白燈下，蘇錦瑟修花的背影、剪刀一響；鏡頭上搖——花園上空什麼字都沒有，是全劇第一個沒有原稿字的場景，而兩人頭頂各有一行。",
+      "glamour_shot": "蘇錦瑟回眸遞花，燈從四面打亮她的臉，唇紅、珍珠、燙捲的髮，美得像海報；她的眼睛第一次有一點點累。",
+      "setups": [
+        "s01-t21",
+        "m05",
+        "m01"
+      ],
+      "payoffs": [
+        "s01-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇錦瑟知道她們改書——當面承認",
+        "兩人拒絕了交易，商報與印刷機守住了",
+        "聽出蘇錦瑟怕的是書"
+      ],
+      "characters": [
+        "su-jinse",
+        "cheng-zhixia",
+        "liu-yiming"
+      ],
+      "locations": [
+        "顧家花園"
+      ],
+      "state": {
+        "time": "第十二章第三天夜，審帳前夜",
+        "knowledge": "蘇錦瑟知道她們改書、怕書；她明天會帶一樣東西來審帳。",
+        "carry_forward": "審帳、蘇錦瑟要帶的東西、花園裡沒有字"
+      }
+    },
+    {
+      "number": 56,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "帳做完",
+      "youtube_title": "審帳前的通宵，帳房老先生帶著算盤來了，三少印了一夜行情單，只剩一張船隊貨單不知該不該放進帳",
+      "duration_s": 110,
+      "logline": "審帳前的最後一夜，老周、春杏、顧謹言各自到位；三個月的帳做完，只剩顧硯舟那張船隊貨單不知該不該放進去。",
+      "hook": "二房門被推開，老周抱著算盤站在門口，花白鬍子一抖：「不合規矩。帳，我來對。」",
+      "hook_type": "line",
+      "mid_hook": "報館那邊顧謹言把三個月的《海寧商報》行情一期一期印成合訂本，天亮前送到二房桌上，封面上一行鉛字：『證。』",
+      "extra_hooks": [
+        "知夏改老周帳上的錯字改到第七個，老周忍無可忍：「帳房不校對！」一鳴：「現在校了。」"
+      ],
+      "conflict": "三個月的每一筆都要有來龍去脈；帳做完了，只剩一張貨單：顧硯舟讓她們下批洋布走船——放進帳，就把二少拖進審帳。",
+      "turn": "春杏在整理時發現老周的帳裡早就有這一筆——『二少船隊，載二房布，免費』——老周看也不看：「他自己記的。」顧硯舟早把自己寫進她們的帳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "天亮，帳本合上，貨單還在桌上。知夏拿起來：「放進去，他就在局裡。」一鳴：「不放，他就在書裡。」兩人看著那張紙。",
+        "question": "要不要把顧硯舟寫進帳裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "jiemei",
+        "zhuiqi"
+      ],
+      "spectacle": "通宵的二房俯拍：老周的算盤、春杏的毛筆、三個月的帳與商報合訂本鋪滿一桌；天亮時桌上空的原稿字只剩一行：『明日，審。』",
+      "glamour_shot": "一鳴通宵未眠、盤髮仍一絲不亂，晨光裡摘下眼鏡揉一下眼再戴上；知夏趴在帳上睡著了，鋼筆還握在手裡。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "三個月的帳做完，老周對過",
+        "商報合訂本當證據",
+        "發現顧硯舟早把自己寫進她們的帳"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "lao-zhou",
+        "chun-xing",
+        "gu-jinyan",
+        "gu-yanzhou"
+      ],
+      "locations": [
+        "顧家二房",
+        "《海寧日報》排字房"
+      ],
+      "state": {
+        "time": "第十二章第四天清晨，審帳日",
+        "knowledge": "帳齊了；顧硯舟自願入帳；蘇錦瑟會帶東西來。",
+        "carry_forward": "審帳、貨單放不放、蘇錦瑟的東西"
+      }
+    },
+    {
+      "number": 57,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "飯廳大審",
+      "youtube_title": "飯廳大審帳本攤滿一桌，原書女主三條罪狀兩條撲空，第三條她拿出一張當票：那三天的帳呢",
+      "duration_s": 120,
+      "logline": "飯廳大審，蘇錦瑟列三條罪狀；兩人一條一條用帳回；第三條，蘇錦瑟拿出她帶來的東西。",
+      "hook": "飯廳長桌上三個月的帳攤滿一桌，老太太坐在正中，沉香珠一落：「開始。」蘇錦瑟：「第一條，當嫁妝。」",
+      "hook_type": "line",
+      "mid_hook": "第二條『勾結報館』，一鳴把租約與合訂本推過去：「租機器，印行情，商會十二家都買。」周掌櫃在門外咳了一聲。",
+      "extra_hooks": [
+        "顧蘭被蘇錦瑟點名作證『當鋪』，她站起來，看了知夏一眼，說：「我看見了。當的是她自己的。」——她第一次沒有照蘇家的話說。"
+      ],
+      "conflict": "三條罪狀兩條撲空，蘇錦瑟不急，她要的是第三條：一鳴回娘家那三天，二房的帳有三天空白。",
+      "turn": "蘇錦瑟帶來的東西是一張當票——不是知夏的，是柳母的：一鳴那三天在柳家當了東西還債，蘇家把當票買了回來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蘇錦瑟把當票放在老太太面前：「三少奶奶回娘家那三天，當了顧家的東西。」她看向一鳴：「那三天的帳呢？」",
+        "question": "那三天的帳，一鳴怎麼解釋？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "dalian",
+        "jiemei"
+      ],
+      "spectacle": "飯廳大審的俯拍：帳本攤滿一桌、老太太居中、兩人一邊、蘇錦瑟一邊，顧蘭站起來作證那一格全桌人回頭；桌上空的原稿字『逐』在燈裡閃。",
+      "glamour_shot": "知夏站著回第一條，一手按帳、一手把鋼筆往桌上一擱，笑紋先出來：「嫁妝是我的」；蘇錦瑟坐著，珍珠不動。",
+      "setups": [],
+      "payoffs": [
+        "s01-t21"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "前兩條罪狀當眾撲空",
+        "顧蘭第一次沒替蘇家作證",
+        "看清蘇錦瑟帶來的東西：柳母的當票"
+      ],
+      "characters": [
+        "gu-laotaitai",
+        "su-jinse",
+        "cheng-zhixia",
+        "liu-yiming",
+        "gu-lan",
+        "lao-zhou",
+        "chun-xing",
+        "zhou-zhanggui",
+        "gu-mingyuan",
+        "gu-yanzhou",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "第十二章第四天，審帳上半場",
+        "knowledge": "蘇錦瑟的殺招是那三天的空白與柳母的當票。",
+        "carry_forward": "三天的帳、當票、老太太還沒翻頁"
+      }
+    },
+    {
+      "number": 58,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "半把鑰匙",
+      "youtube_title": "三少奶奶把回娘家三天的每一筆攤開，老太太一頁頁翻完帳說：二房三房的帳以後老周看著，半把鑰匙推過桌面",
+      "duration_s": 125,
+      "logline": "一鳴把那三天的每一筆攤開，老太太一頁頁翻完全部的帳；審帳的結果不是逐，是半把帳房鑰匙。",
+      "hook": "一鳴從袖裡抽出第二本更薄的帳，雙手遞上：「三天，七筆。當的是我娘家的東西，贖回的也是。」",
+      "hook_type": "line",
+      "mid_hook": "老太太一頁一頁翻，翻了很久，全桌沒人說話；翻到最後一頁——老周的筆跡：『二少船隊，載二房布，免費。』她抬頭看了顧硯舟一眼。",
+      "extra_hooks": [
+        "蘇錦瑟的當票被老太太折起來推回去：「柳家的事，柳家管。」蘇錦瑟接過，笑著收進袖子。"
+      ],
+      "conflict": "帳全攤開了，罪狀全撲空了，剩下的是老太太怎麼說——書裡這一頁寫的是『逐』。",
+      "turn": "老太太合上帳本，說了一句原書裡沒有的話：「二房三房的帳，以後老周看著。」老周把一半的帳房鑰匙從桌子那頭推過來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "蘇錦瑟在桌對面舉杯，笑得很好看：「恭喜妹妹們。這一章，比原來的熱鬧。」老太太：「碗，挪過來。」春杏把兩副碗放到老太太身邊。",
+        "question": "她說的『原來』，是哪一本？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "tuanchong",
+        "goxue",
+        "ganren"
+      ],
+      "spectacle": "老太太把半把鑰匙推過桌面的特寫：鑰匙在帳本之間滑過一整張長桌；兩副碗被端到老太太身邊的跟拍；桌上空的『逐』字一筆一筆淡掉。",
+      "glamour_shot": "一鳴接過鑰匙、低頭的那一秒眼鏡後的睫毛顫了一下；知夏在她旁邊笑出聲又立刻捂嘴，眼角的紋藏不住。",
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "審帳翻盤：半把帳房鑰匙到手",
+        "兩人的碗挪到老太太身邊",
+        "蘇錦瑟的三條罪狀全空"
+      ],
+      "characters": [
+        "liu-yiming",
+        "cheng-zhixia",
+        "gu-laotaitai",
+        "lao-zhou",
+        "su-jinse",
+        "chun-xing",
+        "gu-yanzhou",
+        "gu-lan",
+        "gu-mingyuan",
+        "gu-jinyan"
+      ],
+      "locations": [
+        "顧家飯廳"
+      ],
+      "state": {
+        "time": "第十二章第四天，審帳結束",
+        "knowledge": "半把鑰匙；碗在老太太身邊；蘇錦瑟說『比原來的熱鬧』。",
+        "carry_forward": "鑰匙、碗、蘇錦瑟的『原來』、桌上空淡掉的『逐』"
+      }
+    },
+    {
+      "number": 59,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "風來了",
+      "youtube_title": "審帳贏了的當晚，天花板的字開始發暖，碼頭急報風來了，二少站起來只說兩個字：等我",
+      "duration_s": 115,
+      "logline": "贏了審帳的當晚，原稿字開始變色，碼頭急報風來了；顧硯舟離席前對知夏說了兩個字。",
+      "hook": "散席後的飯廳，一鳴仰頭：「字的顏色不對。」淡紫色的原稿字邊緣泛起一點暖，像紙被烤過。",
+      "hook_type": "image",
+      "mid_hook": "老舵渾身濕透衝進飯廳：「二少，風來了！碼頭的船——」顧硯舟已經站起來了。",
+      "extra_hooks": [
+        "老太太在佛堂拉住一鳴的手，說了一句與帳無關的話：「我剛嫁來時，碗也在門邊。」然後放開。"
+      ],
+      "conflict": "贏了審帳，書卻沒有翻頁——第十二章的『逐』淡了，什麼都沒有補上來；一鳴覺得不對：改一處，重寫一行，這一行還沒來。",
+      "turn": "字沒重寫，是因為它還在寫：一鳴看見天花板上的字從邊緣一點一點變暖、變深，不是消失，是在換顏色。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧硯舟走到知夏面前，第一次沒扣袖口，說：「等我。」他轉身出門，她頭頂的字紅了一個角。",
+        "question": "他要去碼頭做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "zhuiqi",
+        "tuanchong"
+      ],
+      "spectacle": "飯廳上空整頁原稿字從邊緣開始泛暖的慢推，像紙在火邊慢慢烤出顏色；窗外雨打在玻璃上，碼頭方向的燈在雨裡晃。",
+      "glamour_shot": "顧硯舟站在知夏面前，袖口敞著、繩痕露著，濃眉下的眼睛第一次直直看她兩秒；他說『等我』時燈在他身後的雨窗裡。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老太太對一鳴說了自己剛嫁來時的碗",
+        "確認字在變色而不是消失"
+      ],
+      "characters": [
+        "liu-yiming",
+        "cheng-zhixia",
+        "gu-laotaitai",
+        "s01-lao-duo",
+        "gu-yanzhou",
+        "chun-xing"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家佛堂"
+      ],
+      "state": {
+        "time": "第十二章第四天夜，審帳當晚",
+        "knowledge": "字在變色；風到了碼頭；顧硯舟去了船隊。",
+        "carry_forward": "變色的字、碼頭的風、『等我』"
+      }
+    },
+    {
+      "number": 60,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "紅字",
+      "youtube_title": "活過第三章賺到三千塊贏了審帳的那一夜，飯廳上空的字第一次變紅，自己寫下：顧家船隊，沉一艘",
+      "duration_s": 150,
+      "logline": "第一季終：她們活過了第三章、賺到了第一桶金、贏了審帳；當夜飯廳上空的原稿字第一次變紅，自己重寫了一行。",
+      "hook": "空了的飯廳，兩副碗還擺在老太太身邊；知夏坐進自己的位子，伸手摸碗：「挪過來了。」一鳴沒看碗，看天花板。",
+      "hook_type": "image",
+      "mid_hook": "春杏抱著三千塊的帳本跑進來：「少奶奶，第一季——我是說，這三個月，都在這裡了。」她把帳本放在碗旁邊，字的顏色已經紅了一半。",
+      "extra_hooks": [
+        "知夏忽然笑：「我們改了多少處？」一鳴數：「十七處。」知夏：「書重寫了幾行？」一鳴：「十六行。」——少一行。"
+      ],
+      "conflict": "這一季她們改了十七處，書重寫了十六行；最後一行沒有來，是因為它要用另一種顏色來。",
+      "turn": "她們以為贏了——碗挪了、鑰匙到了、蘇錦瑟撤了；可書不認輸：原稿字變成紅色，自己寫下一行她們從沒讀過也改不掉的新情節。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "紅字在飯廳上空一字一字寫出：『顧家船隊，沉一艘。』知夏看向一鳴，一鳴看向窗外——碼頭方向，顧硯舟的馬車正衝出大門。",
+        "question": "沉的是哪一艘？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "goxue",
+        "jiemei",
+        "dalian",
+        "ganren"
+      ],
+      "spectacle": "飯廳上空整頁淡紫色原稿字一寸寸轉紅，然後紅色的宋體一筆一筆寫出『顧家船隊，沉一艘』；鏡頭從兩人的臉搖到窗外，一輛馬車在雨裡衝出顧家大門。",
+      "glamour_shot": "紅字浮起時兩人同時抬眼的雙人構圖：知夏的大眼睛映著紅光、一鳴的鏡片上一行紅字倒影；一俏一冷，一杏一藍，這一季的縮圖。",
+      "setups": [
+        "m06",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第一季的帳合上：活過第三章、三十塊到三千塊、半把鑰匙、碗在老太太身邊",
+        "第一次看見紅字與書的自動重寫"
+      ],
+      "characters": [
+        "cheng-zhixia",
+        "liu-yiming",
+        "chun-xing",
+        "gu-yanzhou"
+      ],
+      "locations": [
+        "顧家飯廳",
+        "顧家大門"
+      ],
+      "state": {
+        "time": "第十二章第四天深夜，第一季終",
+        "knowledge": "書會用紅字重寫；重寫的是顧家船隊沉一艘；顧硯舟衝向碼頭。",
+        "carry_forward": "紅字『顧家船隊，沉一艘』、顧硯舟的馬車、哪一艘會沉"
+      }
+    }
+  ]
+}

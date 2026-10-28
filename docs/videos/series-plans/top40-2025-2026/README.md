@@ -76,11 +76,13 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | --- | --- | --- |
 | `2025-01-tai-nainai` | 祖奶奶今年十八 | **done**：5 季 300 集逐集細綱齊，validate 零錯誤 |
 | `2026-01-wanyao-tulu` | 百妖食單 | **done**：5 季 300 集逐集細綱齊，validate 零錯誤 |
-| `2025-02-furen-bufu` | 少奶奶不好惹 | outline（設定集與五季總綱已寫） |
-| `2026-02-fujia-zhouli` | 我們穿進了自己審的稿 | outline（設定集與五季總綱已寫） |
+| `2025-02-furen-bufu` | 少奶奶不好惹 | s02–s05 已寫，s01 重寫中 |
+| `2026-02-fujia-zhouli` | 我們穿進了自己審的稿 | s01–s04 已寫，s05 重寫中 |
 | `2025-03-shengxia-fendela` | 合約到期前 | outline（設定集與五季總綱已寫） |
 | `2026-03-guimi-chuanyue` | 我和我媽穿去亡國 | outline（設定集與五季總綱已寫） |
-| 其餘 34 部 | 未定 | reference（套路拆解） |
+| `2025-04-jiali-jiawai` | 海風吹進門 | outline（設定集與五季總綱已寫） |
+| `2026-04-shaofuren-dongbei` | 租來的女朋友不想退租 | setting（設定集已寫，總綱待寫） |
+| 其餘 32 部 | 未定 | reference（套路拆解） |
 
 ## 每部怎麼做
 

@@ -1,0 +1,4530 @@
+{
+  "number": 3,
+  "title": "地下室",
+  "theme": "最狠的帳，在最深的地方。",
+  "start_state": "母親不是病逝，白鴻達親口說的。碼頭罷工僵持，官司開打，遺囑期限剩五個月。她知道真帳在白家地下室與金鷺的保險櫃，兩處都有第三雙眼睛。白景謙開始跟她『談生意』。",
+  "end_state": "她以白景謙的『同盟』身分進了白家地下室，拿到洋行二十年的轉帳原件；白景謙不揭穿她的原因揭開（他要白家不要碼頭）；原書——不，顧家——不，陸老太太——婆婆與白景謙都正式知道她是拳王；九爺被她一拳『談』下來後交出一半的帳；沈婉清發現自己也是白家的棋，倒向她。官司第一審她贏了。最後一集，白家公館的地下室被人放火，白鴻達把罪推給她，警察來陸家抓人，她被帶走時回頭看見周買辦坐在白家的車裡。",
+  "guest_cast": [
+    {
+      "id": "s03-cui-guanjia",
+      "name": "崔管家",
+      "role": "白家公館的管家，守地下室兩道門的人，替白鴻達跑腿、替白景謙留門",
+      "appearance": "東亞中年男性，五十二歲，瘦長、背微駝、鬢角花白、臉上沒有表情，深藍長衫外罩黑馬甲，腰間一串銅鑰匙，走路無聲"
+    },
+    {
+      "id": "s03-gong-lawyer",
+      "name": "龔律師",
+      "role": "白家請的大律師，婚姻無效官司的原告代理人，擅長在法庭上激人哭",
+      "appearance": "東亞中年男性，四十八歲，圓臉、鷹眼、油亮的背頭、金錶鏈橫過馬甲，深棕西裝，說話時愛用食指點桌"
+    },
+    {
+      "id": "s03-fang-lawyer",
+      "name": "方律師",
+      "role": "陸家的家族律師，溫玦的辯護人，慢條斯理、一句話釘一個洞",
+      "appearance": "東亞中年女性，四十歲，清瘦、短髮、細框眼鏡、淡色唇、黑色套裝配白襯衫，手上永遠一支鋼筆"
+    },
+    {
+      "id": "s03-he-judge",
+      "name": "何法官",
+      "role": "滄港地方法院審婚姻無效案的法官，老派、怕洋行也怕民意",
+      "appearance": "東亞老年男性，六十二歲，方臉、濃白眉、金絲眼鏡、黑色法袍、說話前先咳一聲"
+    },
+    {
+      "id": "s03-zou-reporter",
+      "name": "鄒記者",
+      "role": "《滄港日報》跑法院線的年輕記者，第一個當面問她是不是拳王的人",
+      "appearance": "東亞青年男性，二十六歲，清瘦、平頭、圓框眼鏡、袖口捲到肘、脖子上掛一台相機，筆記本夾在腋下"
+    },
+    {
+      "id": "s03-kuang-jingzhang",
+      "name": "鄺警長",
+      "role": "滄港警察廳的巡警長，奉命辦事卻看得懂帳；兩次站在陸家門口",
+      "appearance": "東亞中年男性，四十五歲，黝黑、方下巴、短髭、深藍警服筆挺、警帽壓得很低，右手總按在皮帶上"
+    },
+    {
+      "id": "s03-da-niu",
+      "name": "大牛",
+      "role": "九爺四個保鏢的頭，艙房裡第一個『滑倒』的人，後來替她扶門",
+      "appearance": "東亞青年男性，三十二歲，高壯、剃光頭、粗眉、黑西裝撐得很緊、脖子上一條金鏈，笨拙但不兇"
+    },
+    {
+      "id": "s03-a-kun",
+      "name": "阿坤",
+      "role": "溫玦南洋拳館的師兄，被白鴻達重金請來滄港『指認拳王』，帶來師父的一句話",
+      "appearance": "東亞青年男性，三十歲，膚色深、短髮、眉骨有一道舊疤、身形精瘦、白色對襟短衫、布鞋，站著時重心永遠在前腳"
+    },
+    {
+      "id": "s03-mai-jingli",
+      "name": "麥經理",
+      "role": "怡和洋行駐滄港的洋人經理，周買辦名義上的上司、實際上的傳聲筒",
+      "appearance": "西方中年男性，五十歲，高大、紅臉、金髮稀疏、淺灰西裝三件式、袖口銀扣、手裡一支雪茄只拿不點"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s03-t01",
+      "question": "白景謙約她到戲院包廂，真正要的是什麼？",
+      "setup_episode": 122,
+      "payoff_episode": 123
+    },
+    {
+      "id": "s03-t02",
+      "question": "白家地下室裡除了洋行的箱子，還有什麼？",
+      "setup_episode": 124,
+      "payoff_episode": 128
+    },
+    {
+      "id": "s03-t03",
+      "question": "白鴻達會不會當場撕破臉？",
+      "setup_episode": 125,
+      "payoff_episode": 130
+    },
+    {
+      "id": "s03-t04",
+      "question": "地下室的鑰匙，是誰讓白景謙給她的？",
+      "setup_episode": 129,
+      "payoff_episode": 134
+    },
+    {
+      "id": "s03-t05",
+      "question": "沈婉清為什麼在證人席上翻供？",
+      "setup_episode": 133,
+      "payoff_episode": 138
+    },
+    {
+      "id": "s03-t06",
+      "question": "二審白家會出什麼牌？",
+      "setup_episode": 138,
+      "payoff_episode": 171
+    },
+    {
+      "id": "s03-t07",
+      "question": "白景謙在旁聽席鼓掌，是為誰？",
+      "setup_episode": 139,
+      "payoff_episode": 165
+    },
+    {
+      "id": "s03-t08",
+      "question": "《滄港日報》的拳王頭版是誰餵的？",
+      "setup_episode": 138,
+      "payoff_episode": 140
+    },
+    {
+      "id": "s03-t09",
+      "question": "金鷺保險櫃裡另一半帳在哪？",
+      "setup_episode": 141,
+      "payoff_episode": 150
+    },
+    {
+      "id": "s03-t10",
+      "question": "九爺為什麼只給一半？",
+      "setup_episode": 144,
+      "payoff_episode": 150
+    },
+    {
+      "id": "s03-t11",
+      "question": "陸承宴親眼看見她出手，會怎樣？",
+      "setup_episode": 145,
+      "payoff_episode": 146
+    },
+    {
+      "id": "s03-t12",
+      "question": "白鴻達去南洋接的是誰？",
+      "setup_episode": 148,
+      "payoff_episode": 155
+    },
+    {
+      "id": "s03-t13",
+      "question": "陸父在那半本帳上見證了什麼？",
+      "setup_episode": 151,
+      "payoff_episode": 156
+    },
+    {
+      "id": "s03-t14",
+      "question": "白景謙知道陸老爺手上那一半嗎？",
+      "setup_episode": 151,
+      "payoff_episode": 157
+    },
+    {
+      "id": "s03-t15",
+      "question": "側光下第三頁寫了什麼？",
+      "setup_episode": 161,
+      "payoff_episode": 170
+    },
+    {
+      "id": "s03-t16",
+      "question": "白景謙要連父親一起賣給洋行，是真的嗎？",
+      "setup_episode": 162,
+      "payoff_episode": 168
+    },
+    {
+      "id": "s03-t17",
+      "question": "沈婉清為什麼拎著皮箱來投靠？",
+      "setup_episode": 161,
+      "payoff_episode": 164
+    },
+    {
+      "id": "s03-t18",
+      "question": "白家地下室的火是誰放的？",
+      "setup_episode": 168,
+      "payoff_episode": 180
+    },
+    {
+      "id": "s03-t19",
+      "question": "周買辦為什麼現在才走到明面？",
+      "setup_episode": 176,
+      "payoff_episode": 179
+    },
+    {
+      "id": "s03-t20",
+      "question": "警察會不會踏進陸家的門？",
+      "setup_episode": 173,
+      "payoff_episode": 178
+    }
+  ],
+  "episodes": [
+    {
+      "number": 121,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "不是現在",
+      "youtube_title": "繼父親口說母親不是病死的，她當眾握拳，丈夫一句「不是現在」按住她的手",
+      "duration_s": 115,
+      "logline": "罷工夜的碼頭上，溫玦要在三百工人、警察與洋行面前守住保護色，同時把繼父那句「不是病死的」吞下去。",
+      "hook": "白鴻達的嘴還貼在她耳邊，陸承宴的手按在她手腕上。她的拳沒鬆，眼睛慢慢垂下，眼淚掉下來：「爹，您說什麼？」",
+      "hook_type": "line",
+      "mid_hook": "鄺警長翻著陸家律師遞來的傳票，抬頭對白鴻達說：「碼頭歸誰，法院還沒判。今晚誰都不卸貨。」洋行的船在外港鳴了一聲笛。",
+      "extra_hooks": [
+        "周買辦坐在車裡沒下車，搖下半扇車窗，對白鴻達搖了搖頭。"
+      ],
+      "conflict": "白鴻達要帶洋行的人今夜接管碼頭；溫玦要讓警察站在『誰都不動』這一邊，又不能讓任何人看出她剛才那一拳差點出去。",
+      "turn": "眾人以為警察是白家帶來的，鄺警長卻當場宣布碼頭凍結：他要的是不出事，不是替誰站隊。白鴻達笑著收隊，臨走再補一句：「病死的。我說錯了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "天亮回到洋樓，她站在母親的照片前，第一次開口：「媽，他說妳不是病死的。」陸承宴把父親的懷錶放到照片旁邊：「我爹也不是。」",
+        "question": "兩家的死，是同一樁嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "ganren"
+      ],
+      "spectacle": "碼頭貨堆上三百工人一動不動，洋行的船在外港打著燈，警車的燈在雨裡轉；三本帳攤在貨箱上被雨點打濕。",
+      "glamour_shot": "溫玦垂眼掉淚的那一秒，鏡頭繞到她背後：她的拳在陸承宴掌心裡慢慢鬆開，指節發白。",
+      "setups": [
+        "m01",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "碼頭凍結：法院判決前洋行不得卸貨，三百工人守住貨堆",
+        "陸承宴第一次把懷錶放到她母親照片旁"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "bai-hongda",
+        "zhou-maiban",
+        "a-si",
+        "lu-laoye",
+        "s03-kuang-jingzhang",
+        "s03-fang-lawyer",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "蘆洲碼頭",
+        "陸家洋樓溫玦的房間"
+      ],
+      "state": {
+        "time": "罷工夜到隔天清晨；遺囑期限剩五個月",
+        "knowledge": "母親不是病逝，白鴻達親口說的又收回；碼頭被法院凍結，官司開打",
+        "carry_forward": "白鴻達為什麼要在那一刻說出口；陸父與母親的死放在同一張照片前"
+      }
+    },
+    {
+      "number": 122,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "包廂的燭",
+      "youtube_title": "繼兄一張名片送進陸家飯廳，約她戲院包廂談生意，一開口就報出她南洋三屆拳王",
+      "duration_s": 100,
+      "logline": "白景謙的名片送進陸家飯廳，溫玦要在婆婆的眼皮下接下這場約，再走進一個只有一盞燭的包廂。",
+      "hook": "小桃端著粥，粥碗底下壓一張名片，白底金字：白景謙。背面一行小字：「包廂，今晚。談生意。」婆婆的筷子停了。",
+      "hook_type": "image",
+      "mid_hook": "金姨在戲院後台壓低聲音：「二號包廂有暗門，通後巷。他訂的就是二號。」",
+      "conflict": "溫玦要去見白景謙，又要讓婆婆相信她只是『去看戲』；金姨要她別去，陸承宴要跟。",
+      "turn": "觀眾以為白景謙要談的是官司，燭光下他把一張南洋的舊剪報推過來：擂台上的女拳手戴著護具，眼睛是她的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "包廂裡只有一盞燭。白景謙把剪報翻過來，笑著說：「南洋三屆拳王。妹妹，坐。」",
+        "question": "他知道多久了，要拿這個換什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "shenfen",
+        "xuanyi"
+      ],
+      "spectacle": "大光明戲院的台上鑼鼓正響，二號包廂的簾子落下，一盞燭把兩個人的影子拉到紅牆上。",
+      "glamour_shot": "溫玦走進包廂前在簾子外停了一秒，垂著的眼抬起來變冷，然後又垂下去才掀簾。",
+      "setups": [
+        "s03-t01"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認白景謙早知道她是拳王，而且手上有南洋的剪報"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-mingzhu",
+        "xiao-tao",
+        "jin-yi",
+        "bai-jingqian"
+      ],
+      "locations": [
+        "陸家飯廳",
+        "大光明戲院後台",
+        "大光明戲院二號包廂"
+      ],
+      "state": {
+        "time": "罷工後第二天夜裡；期限剩四個月又二十九天",
+        "knowledge": "白景謙手上有她在南洋擂台的剪報",
+        "carry_forward": "包廂裡的『生意』是什麼；陸承宴在後巷暗門外等"
+      }
+    },
+    {
+      "number": 123,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "他要白家",
+      "youtube_title": "繼兄攤牌：碼頭可以給妳，條件是幫我把親爹擠下去，一把地下室鑰匙推到她面前",
+      "duration_s": 105,
+      "logline": "白景謙開出全部條件：他要白家，不要碼頭；溫玦要在不答應的前提下，弄清他為什麼從不揭穿她。",
+      "hook": "她沒坐。白景謙替她把椅子拉開：「我爹不知道。我知道一年了。」她的手放在椅背上，指節一緊，椅背的木頭輕輕響了一聲。",
+      "hook_type": "line",
+      "mid_hook": "白景謙說出他為什麼從不揭穿：「我要的是白家。碼頭是我爹的命，不是我的。」他要她把白鴻達擠下去，碼頭當謝禮。",
+      "extra_hooks": [
+        "簾子外一聲輕響，白景謙頭也不回：「妹夫在外面吧？讓他聽。」"
+      ],
+      "conflict": "聽完條件而不答應；他要她出手對付白鴻達，她不能讓白家任何人握住她的把柄。",
+      "turn": "觀眾以為他要用剪報威脅她，他卻把剪報點在燭上燒了：「我不揭穿妳，因為妳不弱，我才用得上。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "他從馬甲口袋拿出一把銅鑰匙，放在燭與她之間：「地下室的。拿不拿，妹妹自己決定。」她的手指停在鑰匙上方一寸。",
+        "question": "她會拿那把鑰匙嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "剪報在燭上燒起來，擂台上那雙眼睛最後才化成灰，灰落在銅鑰匙上。",
+      "glamour_shot": "白景謙燭光下的側臉，薄唇含笑，袖口的鑽石袖扣在他推鑰匙時閃了一下；溫玦的眼睛沒看鑰匙，看他。",
+      "setups": [],
+      "payoffs": [
+        "s03-t01"
+      ],
+      "reveals": [
+        "m07"
+      ],
+      "general_payoffs": [
+        "白景謙的目的說清：要白家、不要碼頭，要她做刀",
+        "剪報燒掉，他手上少了一樣把柄"
+      ],
+      "characters": [
+        "wen-jue",
+        "bai-jingqian",
+        "lu-chengyan"
+      ],
+      "locations": [
+        "大光明戲院二號包廂"
+      ],
+      "state": {
+        "time": "同一夜；期限剩四個月又二十九天",
+        "knowledge": "白景謙不揭穿她是因為要用她擠下父親；地下室鑰匙在她面前",
+        "carry_forward": "鑰匙拿了沒有；陸承宴聽見了多少"
+      }
+    },
+    {
+      "number": 124,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "不准一個人去",
+      "youtube_title": "她把鑰匙揣回家，丈夫第一次反過來立規矩，老爺子一句話：白家地下室有兩道門",
+      "duration_s": 95,
+      "logline": "鑰匙到手，溫玦要定下進地下室的法子；陸承宴第一次替她立規矩，陸老爺則告訴她鑰匙只開得了一道門。",
+      "hook": "回家的車上，她攤開手心，銅鑰匙躺在上面。陸承宴看了一眼：「他要的不只是白家。」她把手合上：「我知道。」",
+      "hook_type": "line",
+      "mid_hook": "陸老爺在書房裡，眼睛半闔：「白家地下室兩道門。這把開裡面那道。外面那道，鑰匙在管家腰上。」",
+      "conflict": "她想一個人去，陸承宴不准；她想瞞著陸家，陸老爺已經知道。",
+      "turn": "觀眾以為馴夫的規矩是她立的，這一集陸承宴把她的話原樣還回去：「不准一個人去。犯了就罰。」她愣了一秒，點頭。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大門口，崔管家站在雨裡，雙手遞上一張帖子：「老爺請少奶奶回家吃飯。明晚。周先生也在。」",
+        "question": "白鴻達知道鑰匙的事了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xunfu",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "陸家書房裡，陸老爺用手杖在地毯上畫出白家公館的地下室：兩道門、一條煤道、一個天窗。",
+      "glamour_shot": "陸承宴倚在車門邊，解開第一顆鈕扣，認真時聲音低了半度：「不准一個人去。」她抬眼看他，燈光打在她挺直的背上。",
+      "setups": [
+        "s03-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "定下規矩：進地下室一定兩個人",
+        "知道地下室有兩道門與一條煤道"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-laoye",
+        "xiao-tao",
+        "s03-cui-guanjia"
+      ],
+      "locations": [
+        "陸家的車",
+        "陸家書房",
+        "陸家洋樓大門"
+      ],
+      "state": {
+        "time": "第三天夜裡；期限剩四個月又二十八天",
+        "knowledge": "地下室兩道門，外門鑰匙在崔管家腰上；白鴻達請她回白家吃飯",
+        "carry_forward": "白家的晚宴是鴻門宴還是試探"
+      }
+    },
+    {
+      "number": 125,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "白家的飯",
+      "youtube_title": "回繼父家吃飯，買辦當面問她南洋讀的什麼書，一張剪報壓在她碗底",
+      "duration_s": 110,
+      "logline": "白家公館的晚宴上，溫玦要用最軟的哭包擋住白鴻達要她簽字的筆，再擋住周買辦第一次正眼打量。",
+      "hook": "白家公館的長桌，冷白的燈。白鴻達替她夾菜：「玦兒，官司撤了吧。碼頭當妳的陪嫁，記在陸家名下。」一支筆推到她面前。",
+      "hook_type": "line",
+      "mid_hook": "桌布底下，白景謙的手指把一張摺成方塊的紙塞進她掌心：地下室的平面圖，煤道用紅筆圈起來。",
+      "extra_hooks": [
+        "周買辦第一次開口，推了一下眼鏡：「蘆洲是深水碼頭。全滄港就這一個。」"
+      ],
+      "conflict": "白鴻達要她當場簽字放棄官司；周買辦坐在對面看她每一個表情；她只能哭，不能錯。",
+      "turn": "觀眾以為她會被逼簽，她哭著把筆推回去：「爹，我不識字多。要簽，讓我婆婆看過。」白鴻達的笑僵在金絲眼鏡後面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "散席時，周買辦走過她身邊，溫和地說：「少奶奶在南洋讀的什麼書？」他把一張南洋的剪報放到她碗底，上面是同一座擂台。",
+        "question": "周買辦也知道她是拳王？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "shenfen"
+      ],
+      "spectacle": "白家長桌從上往下拍：冷白燈、金邊盤、一支筆橫在正中央，桌布底下一隻手把紙塞進另一隻手。",
+      "glamour_shot": "溫玦哭著推筆時，眼淚掛在睫毛上，鏡頭切到她桌下握紙的手：手腕線條繃直，一點不抖。",
+      "setups": [
+        "m11",
+        "s03-t03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沒簽字；拿到白景謙畫的地下室平面圖，煤道被圈了出來"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "bai-hongda",
+        "bai-jingqian",
+        "zhou-maiban",
+        "s03-cui-guanjia",
+        "s03-mai-jingli"
+      ],
+      "locations": [
+        "白家公館飯廳"
+      ],
+      "state": {
+        "time": "第四天夜裡；期限剩四個月又二十七天",
+        "knowledge": "周買辦也握有她南洋的剪報；煤道通地下室；洋行要的是深水碼頭",
+        "carry_forward": "白鴻達看沒看見桌布底下那一手；周買辦為什麼要讓她知道他知道"
+      }
+    },
+    {
+      "number": 126,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "作戰室",
+      "youtube_title": "戲院後台變作戰室，老工頭一張木料單騙開白家大門，白家卻連夜往賭船搬帳",
+      "duration_s": 100,
+      "logline": "溫玦在戲院後台排兵：阿泗的木料單、金姨的後巷、陸承宴的酒；白家卻在同一夜開始往金鷺搬帳。",
+      "hook": "戲院後台的化妝鏡前，溫玦把平面圖貼在鏡子上，口紅畫了一條線：「煤道，進。管家，交給他。」她指向陸承宴。",
+      "hook_type": "image",
+      "mid_hook": "阿泗衝進後台，碼頭腔吼得全後台回頭：「白家三輛車，半夜往外港開！帳本一箱一箱往金鷺搬！」",
+      "conflict": "白家要把地下室搬空，她要趕在搬完之前進去，又不能讓白家看出有人通風報信。",
+      "turn": "觀眾以為一切要搬光了，陸承宴翻開他在金鷺記的船期：九爺的保險櫃只收碼頭的帳，洋行那一箱九爺從不碰——那箱還在地下室。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "白景謙的電話打到戲院：「明晚我爹上金鷺。崔管家守門。妳只有一個鐘頭。」電話那頭，背景裡有白鴻達在叫他。",
+        "question": "一個鐘頭，兩道門，夠嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "外港夜色裡三輛黑車車燈排成一線，車尾箱裡帳本的書脊在路燈下一閃；戲院後台鏡子上的口紅地圖。",
+      "glamour_shot": "溫玦在化妝鏡前把長髮紮緊的動作，鏡子裡映著她的眼睛，後台的燭光從側面打過來。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認洋行的那一箱還在白家地下室；拿到明晚一個鐘頭的空檔",
+        "作戰室成立：戲院後台"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "a-si",
+        "jin-yi",
+        "bai-jingqian",
+        "xiao-tao"
+      ],
+      "locations": [
+        "大光明戲院後台",
+        "外港公路"
+      ],
+      "state": {
+        "time": "第五天深夜；期限剩四個月又二十六天",
+        "knowledge": "碼頭的帳在往金鷺搬，洋行的那一箱留在地下室；明晚只有一個鐘頭",
+        "carry_forward": "崔管家這一關怎麼過"
+      }
+    },
+    {
+      "number": 127,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "兩道門",
+      "youtube_title": "哭著說來拿母親遺物，管家放她進白家，第二道門後原件堆到天花板",
+      "duration_s": 105,
+      "logline": "溫玦與陸承宴走進白家公館，一道門靠眼淚、一道門靠鑰匙；地下室裡的原件比她想的多十倍。",
+      "hook": "白家公館的鐵門，崔管家擋在中間。溫玦紅著眼：「崔叔，我娘的遺物，我只拿一樣。」陸承宴在她身後打了個酒嗝。",
+      "hook_type": "line",
+      "mid_hook": "第二道門打開，手電筒掃過去：從地板到天花板一排一排的帳本與單據，二十年的紙，灰塵在光柱裡飄。她站住了。",
+      "extra_hooks": [
+        "陸承宴裝醉把崔管家拉到樓上喝酒，崔管家腰上那串鑰匙在樓梯上響了一路。"
+      ],
+      "conflict": "過崔管家這一關、找到洋行的箱子，一個鐘頭之內出來。",
+      "turn": "觀眾以為崔管家放人是看在眼淚的份上，他低聲說的是：「大少爺交代的。一個鐘頭。」他在替白景謙留門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "身後一盞燈亮了。白景謙倚在門框上，看了一眼手錶：「只拿一箱。拿多了，我爹會發現。」她的手電筒停在兩個箱子中間：一箱印著洋行的字，一箱寫著母親的名字。",
+        "question": "她會拿洋行的，還是母親的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "白家地下室的全景：手電筒光柱從下往上掃，原件堆到天花板，光柱盡頭兩個箱子並排。",
+      "glamour_shot": "溫玦在手電筒的硬光下抬頭看那一牆帳本，眼神全冷，鏡頭慢慢推到她手上握緊的鑰匙。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "兩道門都過了；找到洋行的箱子與母親的箱子"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "bai-jingqian",
+        "s03-cui-guanjia"
+      ],
+      "locations": [
+        "白家公館大門",
+        "白家公館地下室"
+      ],
+      "state": {
+        "time": "第六天夜裡；期限剩四個月又二十五天",
+        "knowledge": "崔管家聽白景謙的；地下室裡有洋行的箱子，也有母親名字的箱子",
+        "carry_forward": "只能拿一箱"
+      }
+    },
+    {
+      "number": 128,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "母親的箱子",
+      "youtube_title": "母親的帳本就在手邊卻只能拿一箱，她拿了洋行的，丈夫偷偷揣走一支鉛筆",
+      "duration_s": 110,
+      "logline": "溫玦要在洋行的箱子與母親的箱子之間選一個；她選了能贏官司的那箱，陸承宴替她留住母親的東西。",
+      "hook": "她掀開母親那箱的蓋子：帳本第一頁是鉛筆字，筆跡跟遺囑一模一樣。最後一行寫著：「玦兒去南洋。學到能護住自己再回來。」",
+      "hook_type": "image",
+      "mid_hook": "樓上傳來崔管家的腳步聲，陸承宴在樓梯口壓著聲音唱戲文，一邊唱一邊用腳跟踢門三下：「三」是他們約好的——還有一刻鐘。",
+      "conflict": "只能拿一箱；母親的箱子是她的命，洋行的箱子是官司的命。",
+      "turn": "觀眾以為她會抱走母親的帳，她合上蓋子，抱起洋行的箱子：「贏了官司，再回來拿。」陸承宴從母親的箱裡拿了一樣東西塞進袖口——一支削得很短的鉛筆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "樓上崔管家突然大喊：「老爺回來了！」車燈從天窗掃進地下室，照亮她懷裡洋行的箱子。",
+        "question": "白鴻達怎麼提前回來了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "手電筒照著母親帳本上的鉛筆字，筆跡與遺囑並排；天窗外車燈掃進來，把整面帳牆照成白色。",
+      "glamour_shot": "溫玦合上母親箱蓋時手停了一秒，睫毛垂下，抬起來的時候眼睛是乾的。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s03-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到洋行二十年轉帳原件的那一箱",
+        "陸承宴帶走母親的鉛筆",
+        "母親的箱子還在地下室，位置記住了"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "s03-cui-guanjia",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "白家公館地下室",
+        "白家公館樓梯"
+      ],
+      "state": {
+        "time": "同一夜，還差一刻鐘；期限剩四個月又二十五天",
+        "knowledge": "母親的帳本在地下室，上面有送她去南洋的理由的一半",
+        "carry_forward": "白鴻達提前回來；箱子還在地下室裡"
+      }
+    },
+    {
+      "number": 129,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "煤道",
+      "youtube_title": "繼父提前回家，丈夫裝醉滾下樓梯拖時間，她抱著箱子鑽煤道卻聽見一句話",
+      "duration_s": 105,
+      "logline": "白鴻達進了公館，溫玦要帶著箱子從煤道出去，陸承宴要用一場假醉替她買時間。",
+      "hook": "陸承宴從樓梯上滾下來，正滾到白鴻達腳邊，抱著他的腿：「岳父——不對，爹——陪我喝一杯。」白鴻達低頭看他，沒笑。",
+      "hook_type": "image",
+      "mid_hook": "煤道只有一人寬，箱子卡住了。她把箱子推上去、人跟著爬，煤灰落在臉上，頭頂鐵蓋外就是白家的後院，有人在踱步。",
+      "conflict": "從煤道把箱子帶出去，不讓白鴻達看見；陸承宴要拖住白鴻達又不能讓他下地下室。",
+      "turn": "觀眾以為白鴻達在追問陸承宴，他卻轉身問白景謙：「鑰匙，你給她了？」白景謙沒答。白鴻達笑了：「鑰匙是我讓你給的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她在煤道的鐵蓋底下聽見那句「是我讓你給的」，手停在鐵蓋上。白鴻達的聲音接著說：「讓她拿。拿了才好辦。」",
+        "question": "白鴻達放她進來，想辦什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "煤道的剖面鏡頭：上面是白家大廳的水晶燈與父子對話，下面是她抱著箱子在黑裡爬，中間一層地板。",
+      "glamour_shot": "陸承宴躺在樓梯底下裝醉，頭髮亂了，抬眼看白鴻達那一秒眼裡沒有一點醉意。",
+      "setups": [
+        "s03-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸承宴把白鴻達拖在大廳，沒讓他下地下室"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "bai-hongda",
+        "bai-jingqian",
+        "s03-cui-guanjia"
+      ],
+      "locations": [
+        "白家公館大廳",
+        "白家公館煤道"
+      ],
+      "state": {
+        "time": "同一夜；期限剩四個月又二十五天",
+        "knowledge": "鑰匙是白鴻達讓白景謙給的；他要她拿走那箱",
+        "carry_forward": "她還在煤道裡，箱子在她頭頂"
+      }
+    },
+    {
+      "number": 130,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "樓梯口",
+      "youtube_title": "抱著箱子爬出地下室，繼父站在樓梯口笑：妳母親當年也拿過一箱，隔天就上了賭船",
+      "duration_s": 135,
+      "logline": "煤道的出口被封死，溫玦只能從正門的樓梯上來；樓梯口站著白鴻達，他要讓她知道母親當年也走過這一步。",
+      "hook": "鐵蓋被人從外面壓住了，上面有人用腳踩了三下。她退回煤道，箱子在前面，黑裡只剩她的呼吸。她抬頭：只能從樓梯上去了。",
+      "hook_type": "danger",
+      "mid_hook": "她抱著箱子走到地下室樓梯的第一階，看見樓梯口站著一雙擦得發亮的皮鞋。白鴻達的聲音從上面落下來：「玦兒。」",
+      "extra_hooks": [
+        "白景謙站在父親身後半步，手插在口袋裡，看著她，眼裡沒有一點驚訝。",
+        "陸承宴還躺在大廳地上，聽見「玦兒」兩個字，整個人彈起來。"
+      ],
+      "conflict": "從白鴻達面前把箱子抱出去，不哭、不出手、不讓他看出她聽見了煤道上那句話。",
+      "turn": "觀眾以為白鴻達要搶箱子，他卻側身讓開：「拿吧。」然後說出母親也拿過一箱。她第一次知道母親死前一天做了什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "白鴻達看著她手裡的箱子，笑了：「玦兒，拿吧。妳母親當年也拿過一箱，隔天就上了金鷺。」陸承宴衝過來把她拉到身後。",
+        "question": "母親拿的那一箱，是不是這一箱？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "henla",
+        "shangzhan",
+        "shenfen"
+      ],
+      "spectacle": "地下室樓梯從下往上拍：她抱著箱子站在底階，樓梯口白鴻達的剪影被大廳的水晶燈打成一圈光。",
+      "glamour_shot": "陸承宴把她拉到身後那一秒，他的背擋住整個鏡頭，她從他肩後抬起眼，眼神冷得發亮。",
+      "setups": [],
+      "payoffs": [
+        "s03-t03",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "洋行二十年轉帳原件的箱子抱出白家",
+        "白鴻達撕破臉：他不搶，他要她知道母親的路"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "bai-hongda",
+        "bai-jingqian",
+        "s03-cui-guanjia"
+      ],
+      "locations": [
+        "白家公館煤道",
+        "白家公館地下室樓梯",
+        "白家公館大廳"
+      ],
+      "state": {
+        "time": "第六天夜裡到天亮；期限剩四個月又二十四天",
+        "knowledge": "母親死前一天也從這裡拿走一箱，隔天上了金鷺；白鴻達刻意讓她拿",
+        "carry_forward": "白鴻達放她拿箱子要『辦』什麼；箱子進陸家"
+      }
+    },
+    {
+      "number": 131,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "開審",
+      "youtube_title": "婚姻無效官司開審，白家律師當庭說她嫁人是為了碼頭，法官一句「妳自己說」全場等她哭",
+      "duration_s": 105,
+      "logline": "一審開庭，白家律師要證明溫玦的婚姻是為了碼頭；溫玦要在整個法庭等她哭的時候，決定用哪一種聲音說話。",
+      "hook": "法院門口，白鴻達扶著她下台階，像一個好繼父：「玦兒，輸了也別哭。」她點頭，眼眶先紅了。旁邊鄒記者的相機閃了一下。",
+      "hook_type": "image",
+      "mid_hook": "龔律師食指點著桌子：「原告請求傳閱遺囑第一頁原件。」方律師慢慢抬頭：「原件？白家怎麼會有溫家的遺囑原件？」法庭靜了三秒。",
+      "conflict": "白家律師要把她釘成『為碼頭結婚』，陸家律師要先問白家手上為什麼有遺囑原件；她要在第一天就讓法官記住她。",
+      "turn": "觀眾以為白家要拿婚姻說事，龔律師的第一張牌卻是她本人：「請被告自述結婚的理由。」他要她當庭哭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "何法官咳了一聲：「陸溫玦，妳自己說。」她站起來，整個旁聽席等著她哭。她閉了一下眼，再睜開。",
+        "question": "她會用軟的聲音，還是冷的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "goxue",
+        "shenfen"
+      ],
+      "spectacle": "滄港地方法院的高窗把光切成一條一條，落在原告、被告兩張長桌上；旁聽席上陸家與白家各坐一邊。",
+      "glamour_shot": "溫玦站起來那一秒，淺色旗袍在高窗的光裡，背挺直，眼睛垂著，然後慢慢抬起來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "白家被迫當庭解釋為什麼手上有遺囑原件，法官記下了這一條"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "bai-hongda",
+        "bai-jingqian",
+        "s03-gong-lawyer",
+        "s03-fang-lawyer",
+        "s03-he-judge",
+        "s03-zou-reporter"
+      ],
+      "locations": [
+        "滄港地方法院門口",
+        "滄港地方法院法庭"
+      ],
+      "state": {
+        "time": "罷工後第十四天，開審日；期限剩四個月又十六天",
+        "knowledge": "白家手上有遺囑第一頁原件，來路不明；法官要她自述",
+        "carry_forward": "她要用哪種聲音"
+      }
+    },
+    {
+      "number": 132,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "冷的聲音",
+      "youtube_title": "全場等她哭，她第一次用冷的聲音開口：我嫁的是人不是碼頭，白家律師當場傳了一個沒人想到的證人",
+      "duration_s": 110,
+      "logline": "溫玦第一次在人前用冷的聲音說話，把白家的『動機』論點拆掉；白家律師立刻換牌，傳一個誰都沒想到的證人。",
+      "hook": "她開口，聲音低、短、一句一個字：「我嫁的是人。不是碼頭。」旁聽席上婆婆的佛珠停了，白景謙的嘴角動了一下。",
+      "hook_type": "line",
+      "mid_hook": "龔律師翻到遺囑第一頁：「成婚，婚後一年內對帳——這不是為碼頭是什麼？」她看著他：「遺囑沒寫我不能愛他。」陸承宴在旁聽席低下頭，耳根紅了。",
+      "extra_hooks": [
+        "何法官問她為什麼不哭，她說：「哭給外人看。這裡是法院。」"
+      ],
+      "conflict": "把『動機』從遺囑的字面上拆掉；守住保護色的最後一層——她可以冷，但不能讓法庭知道她能打。",
+      "turn": "觀眾以為她用冷聲就是攤牌，她冷的只有聲音：問到南洋她照樣說「讀書」，問到碼頭她照樣說「不懂帳」，整個法庭只記住了那個聲音。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "龔律師合上卷宗：「原告傳證人——陸家丫頭，小桃。」旁聽席最後一排，小桃站起來，手裡攥著一本小本子，臉白了。",
+        "question": "小桃的本子裡記了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "shangzhan",
+        "tianchong"
+      ],
+      "spectacle": "她說「不是碼頭」那一秒，法庭從側面拍：整排旁聽席的臉同時轉向她，窗光裡的灰塵都停了。",
+      "glamour_shot": "溫玦說冷聲時下巴微抬、眼神直視龔律師，鏡頭從陸承宴的肩後拍她，他看她的眼神是第一次認真。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "『動機』論點被她一句話拆掉，法官記錄『遺囑未限制婚姻動機』",
+        "全法庭記住了她的聲音，沒人知道她的拳"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-mingzhu",
+        "bai-hongda",
+        "bai-jingqian",
+        "xiao-tao",
+        "s03-gong-lawyer",
+        "s03-fang-lawyer",
+        "s03-he-judge"
+      ],
+      "locations": [
+        "滄港地方法院法庭"
+      ],
+      "state": {
+        "time": "開審日下午；期限剩四個月又十六天",
+        "knowledge": "她當庭用冷聲說話，陸家全看見了；白家傳小桃作證",
+        "carry_forward": "小桃曾是婆婆的眼線，本子裡記的是她每一夜的去向"
+      }
+    },
+    {
+      "number": 133,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "小桃的本子",
+      "youtube_title": "白家傳小丫頭作證，本子裡記的全是少奶奶半夜拖少爺回家，法庭笑成一片，情敵卻走了進來",
+      "duration_s": 100,
+      "logline": "白家要用小桃的本子證明溫玦夜夜出門，本子念出來卻成了她馴夫的證據；阿泗接著上台，然後沈婉清走進來。",
+      "hook": "小桃站上證人席，龔律師要她念本子：「三月初七，少奶奶十一點出門。」他停住等效果。小桃接著念：「十一點半，把少爺從牌桌拖回來。」旁聽席笑了。",
+      "hook_type": "line",
+      "mid_hook": "阿泗站上證人席，赤腳踩在法院的木地板上：「她扛了兩百袋。她娘也扛過。」龔律師問他怎麼證明，他把手臂上的繩痕亮出來：「這個證明。」",
+      "conflict": "白家要證明她夜夜不在家、婚姻是假；小桃的本子反過來證明她每夜都在把丈夫帶回家。",
+      "turn": "觀眾以為小桃會被白家嚇得胡說，她念完本子抬頭看婆婆：「這本子是夫人讓我記的。夫人後來不要了，我自己留著。」婆婆閉上眼。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "法庭後門開了。沈婉清走進來，珍珠、紅唇、洋裝一絲不亂；崔管家在她身後半步。她看了溫玦一眼，立刻移開。",
+        "question": "沈婉清會說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "dalian",
+        "xunfu",
+        "shangzhan"
+      ],
+      "spectacle": "小桃念本子時整個旁聽席從忍笑到笑出聲的連續鏡頭，法官的木槌舉起來又放下。",
+      "glamour_shot": "沈婉清走進法庭，逆著後門的光，紅唇、珍珠、完美的側臉，走到一半停下來看溫玦。",
+      "setups": [
+        "s03-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小桃的本子成了婚姻是真的證據",
+        "阿泗當庭替她與母親作證"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "xiao-tao",
+        "a-si",
+        "shen-wanqing",
+        "bai-hongda",
+        "s03-gong-lawyer",
+        "s03-fang-lawyer",
+        "s03-he-judge",
+        "s03-cui-guanjia"
+      ],
+      "locations": [
+        "滄港地方法院法庭"
+      ],
+      "state": {
+        "time": "開審第二天；期限剩四個月又十五天",
+        "knowledge": "小桃站在她這邊了；沈婉清被白家帶來作證",
+        "carry_forward": "沈婉清為什麼來"
+      }
+    },
+    {
+      "number": 134,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "是白家逼的",
+      "youtube_title": "名媛在證人席上看了繼父一眼，當庭翻供「是白家逼的」，繼父站起來加告一條竊盜",
+      "duration_s": 110,
+      "logline": "沈婉清要替白家證明陸夫人原本選的是她；她說了實話，白鴻達當庭換了一張更狠的牌。",
+      "hook": "沈婉清坐進證人席，聲音甜、慢、客氣：「陸夫人原本選的，是我。」龔律師滿意地點頭。她的手指在扶手上掐出一道白。",
+      "hook_type": "line",
+      "mid_hook": "龔律師問她陸家為什麼換人，她抬頭，看見白鴻達在旁聽席上推了推眼鏡。她停了很久，說：「是白家逼的。」整個法庭安靜得聽見窗外的電車。",
+      "extra_hooks": [
+        "方律師追問一句：「白家拿什麼逼？」沈婉清看著自己的手：「沈家欠白家的債。」"
+      ],
+      "conflict": "沈婉清的證詞能定陸家的罪也能定白家的罪；溫玦要讓她敢說，白鴻達要讓她閉嘴。",
+      "turn": "觀眾以為白鴻達會慌，他站起來，和氣得像在家裡飯桌上：「法官，我要加一條告訴。竊盜。我家地下室少了一箱帳。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "白鴻達指著被告席：「箱子在陸家。她親手抱出去的，我兒子看見了。」白景謙慢慢站起來，所有人看他。",
+        "question": "白景謙會替父親作證嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "henla",
+        "shangzhan"
+      ],
+      "spectacle": "沈婉清說「是白家逼的」那一秒，法庭從天花板往下拍：旁聽席兩邊的人同時探身，中間一條空走道。",
+      "glamour_shot": "沈婉清抬頭看白鴻達的那一眼，丹鳳眼在高窗的光裡，紅唇抿緊，完美得讓人冷。",
+      "setups": [],
+      "payoffs": [
+        "s03-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈婉清當庭證實換親是白家逼的",
+        "白鴻達放她拿箱子的目的揭開：要在法庭上告她竊盜"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "shen-wanqing",
+        "bai-hongda",
+        "bai-jingqian",
+        "lu-furen",
+        "s03-gong-lawyer",
+        "s03-fang-lawyer",
+        "s03-he-judge"
+      ],
+      "locations": [
+        "滄港地方法院法庭"
+      ],
+      "state": {
+        "time": "開審第二天下午；期限剩四個月又十五天",
+        "knowledge": "鑰匙與箱子是白鴻達布的局，為了告她竊盜；沈家欠白家的債",
+        "carry_forward": "白景謙站起來要說什麼"
+      }
+    },
+    {
+      "number": 135,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "少了哪一箱",
+      "youtube_title": "繼父告她偷帳，陸家律師只問一句「少的是哪一箱」，繼父當場撤告，婆婆站上證人席",
+      "duration_s": 105,
+      "logline": "竊盜的告訴只要成立，箱子就會被扣；方律師要白家先說清楚少的是什麼，白鴻達說不出口；婆婆接著上台。",
+      "hook": "白景謙站著，對法官說：「我看見了。她抱了一箱。」停了一秒：「箱子上印什麼，太暗，沒看清。」白鴻達的臉僵住。",
+      "hook_type": "line",
+      "mid_hook": "婆婆站上證人席，佛珠一圈一圈轉：「換親是我安排的。白鴻達拿陸家的舊債逼我。我認。」她看向溫玦：「我這個兒媳，是我自己留下的。」",
+      "conflict": "白家要法院扣箱子，陸家要白家先承認那箱裡是洋行的轉帳；婆婆要在法庭上第一次公開替她說話。",
+      "turn": "觀眾以為竊盜會成案，方律師只問龔律師一句：「貴當事人少的是哪一箱？請列清單。」白鴻達與周買辦對了一眼，撤告。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "散庭的台階上，白景謙與她擦肩而過，聲音壓得只有她聽得見：「我爹明天動陸夫人。」他沒停步。",
+        "question": "白鴻達要對婆婆做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "shangzhan",
+        "ganren"
+      ],
+      "spectacle": "法庭上方律師的鋼筆停在清單的第一行，白鴻達與周買辦隔著三排旁聽席對了一眼。",
+      "glamour_shot": "婆婆在證人席上，墨綠絲絨旗袍、珍珠耳環，說「我自己留下的」時眼睛沒看法官，看溫玦。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "竊盜告訴撤回，箱子留在陸家",
+        "婆婆當庭承認換親是被白家逼的，公開站在她這邊"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "bai-hongda",
+        "bai-jingqian",
+        "zhou-maiban",
+        "s03-gong-lawyer",
+        "s03-fang-lawyer",
+        "s03-he-judge"
+      ],
+      "locations": [
+        "滄港地方法院法庭",
+        "滄港地方法院台階"
+      ],
+      "state": {
+        "time": "開審第三天；期限剩四個月又十四天",
+        "knowledge": "白家不敢承認洋行那箱的存在；白景謙說父親明天要動婆婆",
+        "carry_forward": "婆婆明天去哪"
+      }
+    },
+    {
+      "number": 136,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "戲院的茶",
+      "youtube_title": "繼父約婆婆戲院喝茶，撤律師就撤告，婆婆一句「陸家的兒媳白家管不著」，後巷三個人等著她",
+      "duration_s": 100,
+      "logline": "白鴻達約婆婆在戲院談條件：陸家撤律師，白家撤告；婆婆要當面拒絕，溫玦要在後台盯著後巷。",
+      "hook": "大光明戲院的茶座，白鴻達替婆婆倒茶：「陸夫人，撤了律師，我撤告。兩家還是親家。」婆婆沒碰茶杯：「我陸家的兒媳，白家管不著。」",
+      "hook_type": "line",
+      "mid_hook": "後台的小窗，金姨用長菸嘴指著後巷：「三個。白家的。等陸夫人的車。」溫玦看了一眼自己淺色的旗袍。",
+      "conflict": "婆婆要拒絕白鴻達，又要平安走出戲院；溫玦要護她，而婆婆是第三雙眼睛。",
+      "turn": "觀眾以為白鴻達會翻臉，他笑著送婆婆到門口；真正的手在後巷。婆婆的司機被人叫走了，車門鎖著。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "後巷。三個人圍住婆婆的車，一個人的手搭上車門。後台的門開了，溫玦走出來站在巷口；婆婆從車窗裡看見她。",
+        "question": "她會在婆婆面前出手嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "henla",
+        "shenfen"
+      ],
+      "spectacle": "戲院後巷：朱紅後門、一盞燈、三個人影圍著一輛車，巷口站著一個穿淺色旗袍的人。",
+      "glamour_shot": "溫玦站在巷口，背後是戲院後台的燭光，正面是巷子的硬光；她抬手把長髮紮緊。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "婆婆當面拒絕白鴻達的交換條件"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-furen",
+        "bai-hongda",
+        "jin-yi",
+        "s03-cui-guanjia"
+      ],
+      "locations": [
+        "大光明戲院茶座",
+        "大光明戲院後台",
+        "大光明戲院後巷"
+      ],
+      "state": {
+        "time": "開審第四天傍晚；期限剩四個月又十三天",
+        "knowledge": "白鴻達的『動』是嚇婆婆；後巷三個人，婆婆在車裡看著",
+        "carry_forward": "保護色與救人只能選一個"
+      }
+    },
+    {
+      "number": 137,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "先生地滑",
+      "youtube_title": "為救婆婆她在巷口出了一拳，三個人滑倒，婆婆在車裡一句「妳母親也是這樣扶人的」",
+      "duration_s": 115,
+      "logline": "溫玦在保護色與婆婆之間選了婆婆：一拳一個，三個人滑倒，她蹲下去扶；婆婆在車窗後面全看見了。",
+      "hook": "第一個人的手還在車門上，她已經到了他身後。一拳，倒下的剪影。她蹲下來扶他：「先生，地滑。」第二個人轉身——",
+      "hook_type": "danger",
+      "mid_hook": "陸承宴的車衝進巷口，他跳下來看見的是：三個人坐在地上揉腰，他媳婦在替最後一個人拍灰，他母親在車窗後面一動不動。",
+      "extra_hooks": [
+        "第三個人爬起來要跑，撞上陸承宴，陸承宴笑著扶住：「地滑。慢點。」"
+      ],
+      "conflict": "在婆婆面前出手、收尾、再演回去；婆婆看見了，她不知道婆婆會怎麼說。",
+      "turn": "觀眾以為婆婆會嚇壞或翻臉，回家的車上婆婆看著窗外，說：「妳母親也是這樣扶人的。扶完說地滑。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "當夜飯廳，婆婆放下筷子：「從今天起，家裡不用裝。」她轉頭看陸老爺：「爹，您早就知道。」陸老爺的眼睛睜開了一條縫。",
+        "question": "陸老爺知道了多久？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "shenfen",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "三個倒下的剪影連續剪接，中間穿插她蹲下扶人的三次；後巷的燈把她的影子投到朱紅的門上。",
+      "glamour_shot": "拳收回去的那一秒她抬眼，看向車窗後的婆婆；硬光打在她的側臉上，然後她的眼神軟下來，像什麼都沒發生。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "婆婆親眼看見她出手，保護色對婆婆褪掉",
+        "三個人一個沒傷著，全『滑倒』"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-furen",
+        "lu-chengyan",
+        "lu-laoye",
+        "lu-mingzhu",
+        "xiao-tao"
+      ],
+      "locations": [
+        "大光明戲院後巷",
+        "陸家的車",
+        "陸家飯廳"
+      ],
+      "state": {
+        "time": "開審第四天夜裡；期限剩四個月又十三天",
+        "knowledge": "婆婆知道她會打，而且認得母親的扶法；婆婆說家裡不用裝",
+        "carry_forward": "陸老爺從第一天看穿到現在，瞞了什麼"
+      }
+    },
+    {
+      "number": 138,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "家裡不用裝",
+      "youtube_title": "老爺子承認第一天就看穿她，情敵深夜登門說出翻供真相，隔天報紙頭版：陸少奶奶是拳王？",
+      "duration_s": 110,
+      "logline": "陸老爺承認從第一天就看穿她；沈婉清深夜來說出翻供的理由與白家的二審底牌；天亮報紙把『拳王』登上頭版。",
+      "hook": "陸老爺把手杖放到桌上：「妳下車那天，先看了四個出口。」他半闔著眼：「我看戲看了兩季。」陸明珠張大嘴：「哥，你知道？」陸承宴低頭喝湯。",
+      "hook_type": "line",
+      "mid_hook": "深夜，沈婉清從後門進來，沒帶珍珠：「我翻供，是因為我爹的債白家不要了，白家要我。我不想當白家的棋。」她停一下：「二審，白鴻達要從南洋接一個證人。」",
+      "conflict": "家裡不用裝了，可她的保護色對外還要守；沈婉清的消息要不要信。",
+      "turn": "觀眾以為沈婉清是來求收留，她放下一樣東西就走：陸家與沈家的舊債契約，白鴻達給她的，她沒交給白家。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "天亮，陸明珠拎著小皮包衝進飯廳，手裡一份《滄港日報》，頭版大字：「陸少奶奶是南洋拳王？」底下一張擂台的照片。",
+        "question": "報紙是誰餵的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "goxue",
+        "xuanyi"
+      ],
+      "spectacle": "陸家飯廳從正上方拍：一家人圍著桌子，陸老爺的手杖橫在中央，窗外天慢慢亮；最後一格是報紙攤在桌布上。",
+      "glamour_shot": "沈婉清不戴珍珠、不塗紅唇站在後門的燈下，第一次像一個二十三歲的人。",
+      "setups": [
+        "s03-t06",
+        "s03-t08"
+      ],
+      "payoffs": [
+        "s03-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸家全家正式知道她不弱；陸老爺承認第一天看穿",
+        "沈婉清交出陸沈兩家的舊債契約",
+        "知道二審白家要傳南洋證人"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-laoye",
+        "lu-furen",
+        "lu-mingzhu",
+        "shen-wanqing",
+        "xiao-tao"
+      ],
+      "locations": [
+        "陸家飯廳",
+        "陸家洋樓後門"
+      ],
+      "state": {
+        "time": "開審第五天到第六天清晨；期限剩四個月又十一天",
+        "knowledge": "沈婉清翻供是不想當白家的棋；二審有南洋證人；報紙登了拳王",
+        "carry_forward": "報紙是誰餵的；判決就在今天"
+      }
+    },
+    {
+      "number": 139,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "一審",
+      "youtube_title": "法官宣判婚姻有效她贏了一審，繼兄在旁聽席鼓掌，法院門口記者堵成一堵牆",
+      "duration_s": 105,
+      "logline": "一審宣判，溫玦贏了；白景謙在旁聽席鼓掌，法院門口的記者要她回答報紙上那個問題。",
+      "hook": "何法官咳了一聲，念判決：「婚姻有效。原告之訴駁回。」旁聽席安靜了一秒，然後一個人開始鼓掌——白景謙，慢慢的，一下一下。",
+      "hook_type": "image",
+      "mid_hook": "龔律師起身：「原告上訴。二審將傳南洋證人到庭，指認被告身分。」白鴻達看著她：「玦兒，二審見。」",
+      "conflict": "贏了一審卻要面對報紙與記者：走前門她得回答拳王，走後門她就坐實了。",
+      "turn": "觀眾以為白景謙鼓掌是在替她高興，鏡頭推過去：他看的不是她，是父親輸掉的臉。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "法院大門外，記者堵成一堵牆，鄒記者的相機舉在最前面。方律師低聲說：「走後門。」她看著那扇門，說：「走前門。」",
+        "question": "她要怎麼回答拳王這個問題？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "shangzhan",
+        "goxue"
+      ],
+      "spectacle": "判決落下那一秒，法庭兩側的旁聽席：陸家這邊的人同時站起來，白家那邊只有白景謙一個人鼓掌。",
+      "glamour_shot": "白景謙鼓掌時的側臉，深灰三件式、袖扣閃光，笑著看父親；他的眼神是這一季最冷的一格。",
+      "setups": [
+        "s03-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "一審勝訴：婚姻有效，碼頭歸屬凍結到二審"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "bai-hongda",
+        "bai-jingqian",
+        "s03-he-judge",
+        "s03-gong-lawyer",
+        "s03-fang-lawyer",
+        "s03-zou-reporter"
+      ],
+      "locations": [
+        "滄港地方法院法庭",
+        "滄港地方法院大門"
+      ],
+      "state": {
+        "time": "開審三週後，判決日；期限剩三個月又二十天",
+        "knowledge": "一審贏了；二審白家要南洋證人指認；白景謙鼓掌為的不是她",
+        "carry_forward": "大門外記者的問題"
+      }
+    },
+    {
+      "number": 140,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "不勞你們問",
+      "youtube_title": "記者當面問她是不是南洋拳王，她還沒答，婆婆走過來替她披上外套：我兒媳會什麼不勞你們問",
+      "duration_s": 130,
+      "logline": "法院門口，鄒記者問出那句話；溫玦要在全城的鏡頭前守住最後一層保護色，答案卻由婆婆替她說。",
+      "hook": "大門推開，閃光燈一片白。鄒記者擠到最前面：「陸少奶奶，妳真的是南洋拳王嗎？」她站在台階上，風把旗袍吹貼在背上。",
+      "hook_type": "question",
+      "mid_hook": "白景謙從她身後走過，像路人一樣低聲說：「報紙是我爹餵的。他要妳當眾自己說。」然後他上了車。",
+      "extra_hooks": [
+        "鄒記者把相機舉高：「南洋拳館說，三屆女拳王叫溫玦。」人群喧起來。",
+        "陸承宴往前跨了一步要擋，婆婆的手先一步按住他的肩。"
+      ],
+      "conflict": "回答『是』就坐實身分、成為白家的目標；回答『不是』就是當眾說謊；她要第三條路。",
+      "turn": "觀眾以為陸承宴會替她擋話，擋在她前面的是婆婆：她從陸承宴手裡拿過外套，走上台階，替溫玦披上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "婆婆替她把外套的領子攏好，對著一片相機慢慢說：「我兒媳婦會什麼，不勞你們問。」閃光燈裡，溫玦的眼眶紅了，這一次不是裝的。",
+        "question": "全城都在問了，白家下一步會動誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "dalian",
+        "goxue",
+        "tianchong"
+      ],
+      "spectacle": "法院大門的台階：一片相機與閃光燈往上，台階上三個人往下——婆婆、溫玦、陸承宴，外套披上去的慢動作。",
+      "glamour_shot": "閃光燈裡溫玦的側臉，外套領子攏到下巴，眼眶紅了，眼睛卻沒有垂下去。",
+      "setups": [],
+      "payoffs": [
+        "s03-t08",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "報紙是白鴻達餵的，為了逼她當眾承認；她沒答，婆婆替她擋了",
+        "婆婆在全城面前站到她前面"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "bai-jingqian",
+        "s03-zou-reporter",
+        "s03-fang-lawyer",
+        "lu-mingzhu"
+      ],
+      "locations": [
+        "滄港地方法院大門台階"
+      ],
+      "state": {
+        "time": "判決日中午；期限剩三個月又二十天",
+        "knowledge": "全城在問她是不是拳王；婆婆公開護她；二審要南洋證人",
+        "carry_forward": "金鷺保險櫃裡那一半帳還沒拿到；九爺的價"
+      }
+    },
+    {
+      "number": 141,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "另一半",
+      "youtube_title": "洋行二十年轉帳攤開一桌，每一筆都停在賭船，丈夫坦白十年來每一局都是故意輸的",
+      "duration_s": 105,
+      "logline": "洋行的箱子攤開，每一筆轉帳都在金鷺轉手；溫玦要補上賭船那一半，九爺的價她付不起。",
+      "hook": "戲院後台，洋行的原件攤滿化妝台。溫玦用口紅在鏡子上畫出一條線：白家——金鷺——洋行。每一筆都在中間那個字停住。",
+      "hook_type": "image",
+      "mid_hook": "陸承宴把十年的籌碼帳本翻開：「我每一局都輸。輸到九爺肯讓我坐到保險櫃那張桌。」她看著他：「十年？」「十年。」",
+      "conflict": "洋行的帳缺金鷺洗過的那一半才對得上；九爺開的價是碼頭十年三成，她不付。",
+      "turn": "觀眾以為陸承宴只是常客，他的輸是算好的：九爺的艙房只讓輸夠錢的人進，他已經買到門口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小桃送來一張燙金的帖子，九爺的字：「金鷺，初八，少奶奶一個人來。」帖子背面印著四個人影。",
+        "question": "一個人上船，九爺要做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "化妝鏡上口紅畫的三個字與鏡前攤開的二十年單據，鏡子裡映著兩個人的臉。",
+      "glamour_shot": "陸承宴翻籌碼帳本時低著頭，油亮的頭髮亂了一綹，抬眼時聲音低半度：「十年。」",
+      "setups": [
+        "s03-t09"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "洋行二十年轉帳清楚了：全部經金鷺洗過",
+        "知道陸承宴十年的輸是買進艙房的門票"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "jin-yi",
+        "xiao-tao",
+        "a-si"
+      ],
+      "locations": [
+        "大光明戲院後台"
+      ],
+      "state": {
+        "time": "判決後第三天；期限剩三個月又十六天",
+        "knowledge": "洋行的帳要配金鷺那一半才算完；九爺約她初八一個人上船",
+        "carry_forward": "要不要一個人去"
+      }
+    },
+    {
+      "number": 142,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "哨子",
+      "youtube_title": "她不准丈夫進艙房只准守門，教他三聲哨子當暗號，婆婆深夜送來母親的一件舊短衫",
+      "duration_s": 100,
+      "logline": "溫玦定下上船的規矩：陸承宴守門不進艙；婆婆送來母親當年出手穿的短衫；金鷺甲板上九爺把人分開。",
+      "hook": "陸家後院，陸承宴叼著哨子：「一聲是什麼？」她：「我沒事。」「兩聲？」「別進來。」「三聲？」她看他：「不會有三聲。」",
+      "hook_type": "line",
+      "mid_hook": "婆婆把一個包袱放到她床上，打開：一件深色窄袖短衫，袖口磨白了。「妳母親的。二十年前她穿這個替我出過一次頭。」",
+      "extra_hooks": [
+        "陸明珠偷聽到哨子的規矩，舉手：「我也要一個哨子。」被小桃拖走。"
+      ],
+      "conflict": "讓陸承宴答應不進艙房；穿上母親的短衫上船，不帶一點哭包。",
+      "turn": "觀眾以為陸承宴會不服，他把哨子掛到脖子上：「十點前回家。妳說的。」他第一次用她的規矩約束她。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "金鷺的甲板，九爺的四個保鏢排成一排，大牛站在最前面。九爺的金牙在燈下一閃：「少奶奶一個人進來。少爺，留下。」陸承宴的手握住哨子。",
+        "question": "他會聽她的，留在門外嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xunfu",
+        "xiju",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "母親的短衫攤在床上，袖口的磨痕特寫；切到金鷺甲板，四個黑西裝一字排開，墨綠絨幕在風裡動。",
+      "glamour_shot": "溫玦穿上母親的短衫，在鏡前把頭髮紮緊，鏡頭從背後拍她肩背的線條；婆婆在門口看著沒出聲。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "哨子的暗號定下；陸承宴答應守門",
+        "母親的短衫到她手上"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-mingzhu",
+        "xiao-tao",
+        "jiu-ye",
+        "s03-da-niu"
+      ],
+      "locations": [
+        "陸家後院",
+        "溫玦的房間",
+        "賭船金鷺甲板"
+      ],
+      "state": {
+        "time": "初八夜；期限剩三個月又十二天",
+        "knowledge": "母親二十年前也替婆婆出過一次頭；九爺要她一個人進艙",
+        "carry_forward": "艙房裡有四個保鏢"
+      }
+    },
+    {
+      "number": 143,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "這張椅子",
+      "youtube_title": "艙房裡四個保鏢關上門，船主笑著說妳母親也坐過這張椅子，今晚少奶奶不下船了",
+      "duration_s": 105,
+      "logline": "艙房裡溫玦先用哭包談價，九爺卻把門關上：這是母親坐過的椅子，而今夜他不打算讓她下船。",
+      "hook": "艙門在她身後關上，鎖響了一聲。九爺指著對面的絨椅：「坐。」她坐下，眼淚說來就來：「九爺，我不懂帳，我只想要我娘的東西。」",
+      "hook_type": "danger",
+      "mid_hook": "九爺用茶杯蓋撥著茶葉：「妳母親也坐過這張椅子。二十年前，也是這麼晚。」他抬眼：「她沒哭。」",
+      "conflict": "談下保險櫃的一半帳，不出手；九爺不要碼頭了，他要看她是不是她母親。",
+      "turn": "觀眾以為四個保鏢是九爺的人牆，九爺笑著說他們不是守他的，是守門的：「少奶奶今晚不下船。白家出的價，比妳高。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大牛的手搭上她的肩。她低頭看那隻手，眼淚還掛在臉上，手慢慢伸到腦後，把長髮紮緊。",
+        "question": "四個人，沒有第三雙眼睛，她要怎麼出去？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "金鷺最深的艙房：墨綠絨牆、黃銅燈、一張絨椅、四個黑西裝圍成半圈，茶煙從中間升上去。",
+      "glamour_shot": "溫玦哭著把頭髮紮緊的動作，眼淚與硬光同時在她臉上，紮完抬眼的那一格眼神全冷。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道母親二十年前坐過這張椅子、沒哭"
+      ],
+      "characters": [
+        "wen-jue",
+        "jiu-ye",
+        "s03-da-niu",
+        "lu-chengyan"
+      ],
+      "locations": [
+        "賭船金鷺艙房"
+      ],
+      "state": {
+        "time": "初八夜；期限剩三個月又十二天",
+        "knowledge": "白家出價讓九爺留下她；九爺見過母親坐在這裡",
+        "carry_forward": "陸承宴在門外，哨子還沒響"
+      }
+    },
+    {
+      "number": 144,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "四聲地滑",
+      "youtube_title": "艙房裡四個保鏢依序滑倒，她坐下來跟船主喝茶，門外丈夫聽見四聲「先生地滑」",
+      "duration_s": 110,
+      "logline": "溫玦一拳一個，四個人『滑倒』，然後坐回絨椅喝茶；九爺笑著打開保險櫃，卻只拿出一半。",
+      "hook": "大牛的手還在她肩上。她站起來，一拳。大牛的剪影往後倒，撞在絨牆上滑下去。她蹲下：「先生，地滑。」第二個人撲上來——",
+      "hook_type": "danger",
+      "mid_hook": "艙門外，陸承宴背靠著門，聽見裡面一聲悶響、一句「地滑」，又一聲、又一句，一共四次。他的手從哨子上放下來，笑了。",
+      "extra_hooks": [
+        "九爺從頭到尾沒動，茶喝完了，自己又倒了一杯。"
+      ],
+      "conflict": "四個人全放倒、全收尾，九爺還肯談；談下保險櫃的帳。",
+      "turn": "觀眾以為打完九爺會翻臉，他拍了兩下手：「妳母親那年，放倒的是三個。」他起身去開保險櫃。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "保險櫃打開，九爺拿出一疊帳，放到她面前，用手壓住一半推過去：「一半。」他的金牙在燈下一閃。",
+        "question": "為什麼只給一半？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "shenfen",
+        "xiju"
+      ],
+      "spectacle": "四個倒下的剪影連續剪接，每一個倒的方向不同，最後一格四個人坐成一排靠著絨牆揉腰，中間她在喝茶。",
+      "glamour_shot": "拳收回去時她抬眼，黃銅燈從上方打下來，她坐回絨椅，背挺直，眉毛都沒動一下。",
+      "setups": [
+        "s03-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "四個保鏢放倒、全部收尾",
+        "九爺交出金鷺保險櫃一半的帳"
+      ],
+      "characters": [
+        "wen-jue",
+        "jiu-ye",
+        "s03-da-niu",
+        "lu-chengyan"
+      ],
+      "locations": [
+        "賭船金鷺艙房",
+        "賭船金鷺艙門外走廊"
+      ],
+      "state": {
+        "time": "初八夜；期限剩三個月又十二天",
+        "knowledge": "金鷺的帳到手一半；母親當年放倒三個",
+        "carry_forward": "另一半在哪；門外的陸承宴"
+      }
+    },
+    {
+      "number": 145,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "我都看見了",
+      "youtube_title": "丈夫推門看見她在替保鏢扶帽子，回家車上說我都看見了，她回一句以後十點前回家",
+      "duration_s": 100,
+      "logline": "陸承宴推門進來，看見她替最後一個保鏢扶正帽子；回家的車上，兩個人第一次把彼此的底全攤開。",
+      "hook": "艙門推開。陸承宴站在門口，她正蹲著替大牛把歪掉的帽子扶正，抬頭看他，手還在帽簷上。「你進來了。」「一聲都沒響。」",
+      "hook_type": "image",
+      "mid_hook": "回家的車上，他說：「我都看見了。」她看著窗外：「那你以後十點前回家。」他笑了，然後翻開那一半帳——最後一頁是一九二五年，再翻就是撕口。",
+      "conflict": "被丈夫看見出手之後，怎麼繼續做夫妻；帳只到母親死的前一年。",
+      "turn": "觀眾以為他看見會變，他變的只是一件事：把哨子解下來掛到她脖子上，「換妳吹。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她把帳翻到最後：一九二五年十二月，下一頁是整齊的撕口。母親死的那一年、陸父死的那一夜，都在撕掉的那一半裡。",
+        "question": "另一半被誰拿走了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "xunfu",
+        "xuanyi"
+      ],
+      "spectacle": "艙房門框裡的畫面：四個保鏢靠牆坐成一排，她蹲著扶帽子，九爺在後面倒茶，陸承宴站在門口的逆光裡。",
+      "glamour_shot": "陸承宴倚在門框上，解開第一顆鈕扣，看她的眼神從懶變認真；她抬眼看他，帽簷還在她指尖。",
+      "setups": [
+        "s03-t11"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸承宴親眼看見她的拳，兩人之間最後一層假的沒了",
+        "九爺的一半帳到一九二五年止，確認那兩夜的帳在另一半"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "jiu-ye",
+        "s03-da-niu"
+      ],
+      "locations": [
+        "賭船金鷺艙房",
+        "陸家的車"
+      ],
+      "state": {
+        "time": "初八夜到初九凌晨；期限剩三個月又十一天",
+        "knowledge": "九爺的一半帳止於一九二五年十二月；兩家死亡那兩夜在另一半",
+        "carry_forward": "陸承宴看見之後會怎樣；另一半的撕口"
+      }
+    },
+    {
+      "number": 146,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "我媳婦會打拳",
+      "youtube_title": "丈夫在飯桌上宣布我媳婦會打拳我陪她，婆婆一句坐下吃飯，老爺子聽到一九二五年手杖掉了",
+      "duration_s": 100,
+      "logline": "陸承宴在飯廳宣布他要陪她練；陸老爺聽到帳止於一九二五年，第一次掉了手杖。",
+      "hook": "早飯桌上，陸承宴放下碗：「我媳婦會打拳。我陪她練。」婆婆頭也不抬：「坐下吃飯。」陸明珠：「我也——」「妳也坐下。」",
+      "hook_type": "line",
+      "mid_hook": "陸老爺問那一半帳到哪一年，她說一九二五年十二月。陸老爺的筷子停在半空，很久，說：「夠了。」",
+      "extra_hooks": [
+        "後院，陸承宴第一次擺拳架，三秒就被她一腳掃倒：「風好大。」"
+      ],
+      "conflict": "一家人知道了以後怎麼過日子；陸老爺聽到那個年份為什麼變了臉。",
+      "turn": "觀眾以為陸承宴看見拳會退，他是第一個跟著她晨練的；真正退的是陸老爺——他離席了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陸老爺起身離席，走到飯廳門口，手杖從手裡滑下去，敲在地板上。他沒回頭撿。婆婆看著那根手杖，臉白了。",
+        "question": "陸老爺怕的是哪一年？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "xunfu",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "飯廳的地板上一根手杖橫著，鏡頭從手杖拍到長桌：一家人全看著門口。",
+      "glamour_shot": "後院晨光裡溫玦一腳掃倒陸承宴，收腳、站直、把一綹頭髮別回耳後，說「風好大」時嘴角第一次有笑。",
+      "setups": [],
+      "payoffs": [
+        "s03-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸承宴開始跟她晨練；陸家飯廳公開接受她會打",
+        "陸老爺聽到一九二五年掉了手杖——他知道另一半"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-laoye",
+        "lu-mingzhu",
+        "xiao-tao"
+      ],
+      "locations": [
+        "陸家飯廳",
+        "陸家後院"
+      ],
+      "state": {
+        "time": "初九早上；期限剩三個月又十一天",
+        "knowledge": "陸老爺對一九二五年有反應；陸承宴看見她的拳之後反而更近",
+        "carry_forward": "陸老爺離席之後去了哪"
+      }
+    },
+    {
+      "number": 147,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "中立",
+      "youtube_title": "繼父上賭船逼船主燒帳，船主一句我這船從今天不洗白家的帳，牌桌對面坐著她繼兄",
+      "duration_s": 105,
+      "logline": "白鴻達上金鷺要九爺燒掉另一半，九爺拒絕；他轉而打電話給溫玦：船上有她要見的人。",
+      "hook": "金鷺的牌桌，白鴻達把一疊銀票推到九爺面前：「燒了。」九爺用金牙咬了咬雪茄：「白老闆，我這船只洗帳，不燒帳。」",
+      "hook_type": "line",
+      "mid_hook": "九爺的電話打到戲院：「少奶奶，我船上還有妳要見的人。今晚。」她問是誰，他笑：「妳叫他哥。」",
+      "conflict": "白鴻達要九爺燒帳、趕她下船；九爺要保持中立，但中立也有價。",
+      "turn": "觀眾以為九爺收了白家的錢，他把銀票推回去：「少奶奶放倒四個，一個沒傷。白老闆的人上回打傷我兩個。」中立是打出來的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "金鷺牌桌，白景謙坐在九爺對面，面前一疊籌碼。他抬頭看走進來的她：「妹妹，坐。我替妳買了九爺的中立。」",
+        "question": "他替她買中立，要她還什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "shenfen"
+      ],
+      "spectacle": "金鷺牌桌：墨綠絨面、黃銅燈、一疊銀票推過去又推回來，煙在燈下停著。",
+      "glamour_shot": "九爺推回銀票時墨鏡往下滑一點，露出眼睛看白鴻達；白鴻達的金絲眼鏡反光，看不見眼神。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "九爺拒絕替白家燒帳，金鷺不再洗白家的帳"
+      ],
+      "characters": [
+        "wen-jue",
+        "jiu-ye",
+        "bai-hongda",
+        "bai-jingqian",
+        "lu-chengyan",
+        "jin-yi"
+      ],
+      "locations": [
+        "賭船金鷺牌桌",
+        "大光明戲院後台"
+      ],
+      "state": {
+        "time": "初十夜；期限剩三個月又九天",
+        "knowledge": "九爺中立了，白家的帳不再經金鷺；白景謙在船上等她",
+        "carry_forward": "白景謙的中立是用什麼買的"
+      }
+    },
+    {
+      "number": 148,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "一局",
+      "youtube_title": "丈夫十年來第一次贏了一局卻把籌碼全推回去，船主開價：另一半的下落換他永不上船",
+      "duration_s": 105,
+      "logline": "溫玦坐上牌桌，陸承宴十年來第一次贏；九爺開出新價：另一半的下落，換陸承宴永不再上金鷺。",
+      "hook": "她坐下，白景謙發牌。陸承宴在她旁邊，第一把就贏了，籌碼推到他面前。他看了一眼，整疊推回去：「我不賭了。」",
+      "hook_type": "image",
+      "mid_hook": "白景謙壓低聲音：「我爹下週去南洋。接一個人回來，給二審用。」她的牌停在半空。",
+      "conflict": "從白景謙嘴裡套出他買中立的目的；從九爺手裡拿到另一半的下落。",
+      "turn": "觀眾以為九爺會再開碼頭的價，他開的是陸承宴：「少爺永遠不上我的船，我就告訴妳另一半在哪。」他要的是這十年的常客走人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "九爺看著陸承宴：「少爺，妳爹的帳在那一半裡。你不上船，就永遠自己查不了。」陸承宴手裡的懷錶停在十年前，他看了她一眼。",
+        "question": "他會為了她放棄自己查父親嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xunfu",
+        "xuanyi"
+      ],
+      "spectacle": "牌桌上陸承宴推出所有籌碼、抬眼看她的那一格；燈下籌碼的黃銅色與墨綠絨面。",
+      "glamour_shot": "陸承宴推籌碼時眼睛沒看籌碼，看她；油亮的頭髮在黃銅燈下，嘴角那一點笑沒了。",
+      "setups": [
+        "s03-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "知道白鴻達下週去南洋接二審的證人",
+        "九爺開出另一半下落的價：陸承宴永不上船"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "jiu-ye",
+        "bai-jingqian",
+        "s03-da-niu"
+      ],
+      "locations": [
+        "賭船金鷺牌桌"
+      ],
+      "state": {
+        "time": "初十夜；期限剩三個月又九天",
+        "knowledge": "白鴻達要從南洋接人；九爺要陸承宴永不上船",
+        "carry_forward": "陸承宴的選擇"
+      }
+    },
+    {
+      "number": 149,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "牆角",
+      "youtube_title": "他答應永不上船卻半夜偷溜去問船主，被罰站牆角，站著說出：另一半十年前就被人買走了",
+      "duration_s": 100,
+      "logline": "陸承宴答應九爺的價，卻又半夜偷上船去問清楚，回家被罰站牆角；他在牆角說出九爺的話：另一半十年前就被買走了。",
+      "hook": "凌晨兩點，陸承宴翻牆回來，鞋還沒脫，溫玦坐在樓梯上：「十點。」他：「我去問九爺——」她指牆角：「站。」",
+      "hook_type": "line",
+      "mid_hook": "白家管家崔管家帶人到碼頭，拿著『白家貨主搬運令』要搬走凍結的貨；阿泗的三百工人把貨堆圍成一圈，她到場只哭了一句：「法院說不能動。」崔管家的人走了。",
+      "extra_hooks": [
+        "陸明珠端著點心去餵牆角的哥哥，被溫玦一個眼神趕回去：「罰站不吃。」"
+      ],
+      "conflict": "罰完丈夫還要聽他帶回來的話；碼頭的貨白家想趁亂搬。",
+      "turn": "觀眾以為他偷上船是犯規，他帶回來的是九爺不肯在牌桌上說的：「另一半不在船上。十年前就被人買走了。」他是用『永不上船』換來的最後一趟。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸承宴站在牆角，背對著她說：「九爺說，買走的人，他今晚送我們下船時親口告訴妳。」他轉過身：「他還說，妳會不想聽。」",
+        "question": "買走另一半的人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xunfu",
+        "xiju",
+        "dalian",
+        "shangzhan"
+      ],
+      "spectacle": "碼頭：三百工人把貨堆圍成一個圈，崔管家的人站在圈外，溫玦哭著站在圈口；切到陸承宴在洋樓牆角的剪影。",
+      "glamour_shot": "溫玦坐在樓梯上等門，一盞壁燈打在她側臉，腿上放著那個哨子；陸承宴站牆角回頭看她那一眼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "碼頭的貨守住，白家搬運令被三百工人擋回去",
+        "確認另一半帳不在金鷺，十年前被人買走"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-mingzhu",
+        "a-si",
+        "s03-cui-guanjia",
+        "xiao-tao"
+      ],
+      "locations": [
+        "陸家洋樓樓梯",
+        "蘆洲碼頭",
+        "陸家洋樓牆角"
+      ],
+      "state": {
+        "time": "十一日凌晨到白天；期限剩三個月又八天",
+        "knowledge": "另一半十年前被人買走；九爺要在船梯口親口說",
+        "carry_forward": "九爺說她會不想聽"
+      }
+    },
+    {
+      "number": 150,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "妳叫他爺爺",
+      "youtube_title": "船主送他們下船時低聲說另一半十年前被人買走了，買走的那個人，妳叫他爺爺",
+      "duration_s": 130,
+      "logline": "最後一次上金鷺：陸承宴把籌碼帳本交還九爺，正式不再上船；九爺送他們到船梯口，說出買走另一半的人。",
+      "hook": "金鷺的牌桌前，陸承宴把十年的籌碼帳本放到九爺面前：「最後一次。」九爺收下，推給他一杯茶：「少爺，十年了。」四個保鏢站在後面，大牛替她拉開椅子。",
+      "hook_type": "image",
+      "mid_hook": "九爺說起二十年前那一夜：「妳母親從這裡下船，天亮前。我送她到船梯。她說了一句話：『帳我拿了，人我不怕。』」溫玦握緊了茶杯。",
+      "extra_hooks": [
+        "大牛替她披上外套，小聲說：「少奶奶，上回謝謝妳扶帽子。」",
+        "船梯下，陸家的車等著；車燈後面，另一輛車熄了燈停在暗處。"
+      ],
+      "conflict": "跟九爺好聚好散，換到另一半的下落；聽到母親在這艘船上最後一句話。",
+      "turn": "觀眾以為買走另一半的是白家或洋行，九爺說的卻是陸家的人：那半本帳十年來一直在半山上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "船梯口，九爺彎下腰，聲音壓得只有兩個人聽見：「另一半，不在我這。十年前就被人拿走了——拿走的人，妳叫他爺爺。」陸承宴的懷錶從手裡滑了一下。",
+        "question": "陸老爺為什麼瞞了十年？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "ganren",
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "金鷺船梯口：墨綠絨幕、黃銅扶手、海面的燈；九爺彎腰低語的剪影，身後四個保鏢一排站著目送。",
+      "glamour_shot": "溫玦聽到「妳叫他爺爺」時沒回頭，海風把她的外套吹開，她的側臉在船梯的燈下，眼睛慢慢變冷。",
+      "setups": [],
+      "payoffs": [
+        "s03-t09",
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸承宴正式不再上船，九爺保持中立",
+        "另一半帳的下落：陸老爺十年前買走的",
+        "母親在金鷺的最後一句話"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "jiu-ye",
+        "s03-da-niu",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "賭船金鷺牌桌",
+        "賭船金鷺船梯"
+      ],
+      "state": {
+        "time": "十二日夜；期限剩三個月又七天",
+        "knowledge": "另一半在陸老爺手上；九爺只給一半是因為另一半早被陸老爺買走",
+        "carry_forward": "回陸家質問陸老爺；暗處那輛熄燈的車"
+      }
+    },
+    {
+      "number": 151,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "佛龕底下",
+      "youtube_title": "深夜回家質問祖父，他不否認，從佛龕底下抽出那半本帳：帳上有我兒子的簽名",
+      "duration_s": 110,
+      "logline": "溫玦與陸承宴半夜回到陸家質問陸老爺；他不否認，從佛龕底下抽出那半本帳，上面有陸承宴父親的簽名。",
+      "hook": "陸家書房的燈還亮著。陸老爺坐在裡面，像等了十年：「九爺說了？」溫玦站在門口：「說了。」陸承宴站在她身後，沒進門。",
+      "hook_type": "line",
+      "mid_hook": "佛堂。陸老爺跪下去，從佛龕底下的暗格抽出一本用油紙包著的帳，油紙已經脆了。婆婆站在佛堂門外，手裡的佛珠一顆一顆往下掐。",
+      "conflict": "問出陸老爺為什麼買下帳又瞞了十年；他要兩個孩子看帳，又怕他們看。",
+      "turn": "觀眾以為陸老爺是為了護陸家的面子，他翻到那一頁：「一九二六年一月，陸景行。」他兒子的簽名，就在白鴻達借據的旁邊。他怕兒子是共犯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "帳頁攤在佛堂的燭光下：白鴻達向洋行借款買碼頭的借據，旁邊一個簽名——陸景行。陸承宴盯著父親的名字，懷錶在他掌心裡發出一聲很輕的響。",
+        "question": "陸父是共犯嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "goxue"
+      ],
+      "spectacle": "佛堂裡：佛龕底下的暗格、油紙包著的半本帳、一盞燭；三個人的影子投在佛像後面的牆上。",
+      "glamour_shot": "陸老爺跪在佛龕前抽帳的背影，山羊鬚在燭光裡顫；婆婆在門外，珍珠耳環晃了一下。",
+      "setups": [
+        "s03-t13",
+        "s03-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "另一半帳拿到：十年前陸老爺從金鷺買走的",
+        "知道帳上有陸父的簽名，在白鴻達的借據旁"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-laoye",
+        "lu-furen"
+      ],
+      "locations": [
+        "陸家書房",
+        "陸家佛堂"
+      ],
+      "state": {
+        "time": "十二日深夜；期限剩三個月又七天",
+        "knowledge": "另一半帳在陸家佛龕底下；陸父的簽名在白鴻達借據旁",
+        "carry_forward": "陸父簽的到底是什麼"
+      }
+    },
+    {
+      "number": 152,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "見證",
+      "youtube_title": "兩半帳合在一張桌上看了一夜，她找到簽名旁兩個小字「見證」：他不是共犯，他是證人",
+      "duration_s": 105,
+      "logline": "溫玦把兩半帳合在一張桌上看了一夜，在陸父簽名旁找到兩個小字；陸承宴第一次在父親的牌位前哭。",
+      "hook": "書房的長桌，九爺的一半與陸老爺的一半第一次拼在一起，撕口對上了。她用母親的老帳法，一筆一筆往下對，窗外從黑到灰。",
+      "hook_type": "image",
+      "mid_hook": "天亮前她停在那一行。簽名的右下角有兩個比米粒小的字，被油漬蓋住一半。她湊近去看：「見——證。」",
+      "conflict": "一夜之內把兩半帳對上，證明陸父不是共犯；陸承宴不敢看，她替他看。",
+      "turn": "觀眾以為簽名就是同謀，那是見證人的簽名：陸父在白鴻達向洋行借錢買碼頭的借據上簽的是『見證』——他看見了那筆錢怎麼來的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "佛堂。陸承宴跪在父親的牌位前，把懷錶放到牌位下面，肩膀第一次垮下來。她站在門口沒進去，等到他哭出聲，才把門關上。",
+        "question": "陸父見證那張借據之後，怎麼就死了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "兩半帳在長桌上拼成一本的俯拍，撕口嚴絲合縫；『見證』二字的特寫，油漬下的墨。",
+      "glamour_shot": "溫玦趴在帳上湊近看那兩個字，晨光從側面打在她的睫毛上；她抬起頭來的時候眼睫是濕的。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩半帳合成一本：金鷺二十年的洗帳完整",
+        "陸父不是共犯，是借據的見證人"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-laoye",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "陸家書房",
+        "陸家佛堂"
+      ],
+      "state": {
+        "time": "十三日天亮；期限剩三個月又六天",
+        "knowledge": "陸父在白鴻達洋行借據上簽的是見證；兩半帳合上了",
+        "carry_forward": "見證之後一週他就死了；陸老爺還瞞著什麼"
+      }
+    },
+    {
+      "number": 153,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "您瞞了我十年",
+      "youtube_title": "婆婆對公公說您瞞了我十年，老爺子把自己關進佛堂一天，隔著門說出妳母親來過這裡",
+      "duration_s": 100,
+      "logline": "陸老爺把自己關在佛堂一天不出來；婆婆第一次對公公發火；溫玦隔著門聽見母親曾來過這間佛堂。",
+      "hook": "飯廳的主位空著。婆婆站在佛堂門外，第一次大聲說話：「爹，您瞞了我十年。我丈夫的名字在那上面，您一個字都不說。」門裡沒有聲音。",
+      "hook_type": "line",
+      "mid_hook": "崔管家送來法院的二審開庭通知，日期在三週後；夾在裡面的字條：「南洋的證人下週到。」陸明珠把字條撕了，又撿起來拼好。",
+      "conflict": "陸家因為那半本帳裂開：婆婆怪公公，陸明珠哭，陸承宴不說話；溫玦要把一家人攏回來。",
+      "turn": "觀眾以為陸老爺是躲，他隔著門對溫玦說：「妳母親來過這間佛堂。死前一週。」他不是躲家人，是在等她一個人來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "佛堂門內，陸老爺的聲音很慢：「她坐在妳現在站的地方。手裡抱一個木盒。她說，等那孩子結了婚。」門沒開。",
+        "question": "母親託給他的木盒裡是什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "陸家飯廳的長桌，主位的椅子空著，一家人各坐一邊沒動筷；佛堂的門從外面拍，門縫底下一條燭光。",
+      "glamour_shot": "婆婆在佛堂門外，一絲不亂的盤髮第一次鬆了一綹，她抬手按回去，手在抖。",
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "二審日期定在三週後，南洋證人下週到",
+        "知道母親死前一週來過陸家佛堂，抱著一個木盒"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-laoye",
+        "lu-furen",
+        "lu-mingzhu",
+        "xiao-tao",
+        "s03-cui-guanjia",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "陸家飯廳",
+        "陸家佛堂門外"
+      ],
+      "state": {
+        "time": "十三日白天；期限剩三個月又六天",
+        "knowledge": "母親死前一週抱著木盒來過陸家佛堂，託陸老爺等她結婚",
+        "carry_forward": "木盒；陸老爺還沒出來；南洋證人下週到"
+      }
+    },
+    {
+      "number": 154,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "屋頂晨練",
+      "youtube_title": "她在洋樓屋頂教丈夫一拳要收尾，小姑翻出婆婆的舊相冊，照片上三個少女有一個是戲院老闆娘",
+      "duration_s": 100,
+      "logline": "陸家裂著，溫玦用晨練把陸承宴從佛堂拉出來；陸明珠翻出婆婆的舊相冊，照片上的第三個人是金姨。",
+      "hook": "洋樓屋頂，天剛亮。她把陸承宴的拳接住，往下一壓：「出拳容易。收。」他收回來，差點把自己絆倒。小桃在天窗後面偷看，捂著嘴笑。",
+      "hook_type": "image",
+      "mid_hook": "陸明珠抱著婆婆的舊相冊衝上屋頂：三個少女站在戲院門口，中間是婆婆，左邊是短髮的溫映真，右邊那個燙著大波浪的——「這是金姨！」",
+      "extra_hooks": [
+        "阿泗帶來消息：洋行的測量員半夜到碼頭量水深，周買辦親自付的錢。"
+      ],
+      "conflict": "把陸承宴從父親的死裡拉回來；三個手帕交的照片要問誰。",
+      "turn": "觀眾以為手帕交只有婆婆與母親，照片上有第三個人：金姨。她知道的，比她說過的多。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "電話響了。白景謙的聲音：「我爹明天帶南洋的人上你家門。飯廳見。」他掛了電話，留下忙音。",
+        "question": "南洋來的人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "xiju",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "洋樓屋頂的晨練：半山的霧還沒散，兩個人影在屋脊上一來一回，遠處碼頭的吊桿露出霧面。",
+      "glamour_shot": "溫玦接住陸承宴的拳往下一壓，兩個人的手腕疊在一起，晨光從海面打上來；她抬眼時嘴角有一點笑。",
+      "setups": [
+        "m08",
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸承宴走出佛堂，跟她晨練",
+        "發現金姨是第三個手帕交",
+        "洋行在量碼頭水深"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-mingzhu",
+        "xiao-tao",
+        "a-si",
+        "bai-jingqian",
+        "jin-yi",
+        "wen-yingzhen",
+        "lu-furen"
+      ],
+      "locations": [
+        "陸家洋樓屋頂",
+        "陸家後院"
+      ],
+      "state": {
+        "time": "十四日清晨；期限剩三個月又五天",
+        "knowledge": "金姨二十年前與母親、婆婆是三個手帕交；洋行量碼頭水深；南洋證人明天到",
+        "carry_forward": "南洋的人是誰"
+      }
+    },
+    {
+      "number": 155,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "師兄",
+      "youtube_title": "繼父帶南洋拳館的人上門指認拳王，那人看她一眼叫了聲師妹，轉身對繼父說這位少奶奶我不認識",
+      "duration_s": 110,
+      "logline": "白鴻達帶著南洋的證人阿坤走進陸家飯廳要他指認拳王；阿坤認出師妹，當著白鴻達的面否認。",
+      "hook": "陸家飯廳，白鴻達讓出半步，身後走進一個膚色很深的男人，白色對襟短衫。他看見溫玦，重心往前腳一壓，脫口叫了一聲：「師妹。」",
+      "hook_type": "line",
+      "mid_hook": "阿坤經過她身邊時手指一彈，一張摺得極小的紙落進她袖口。飯廳外她打開：師父的字，兩個字：「回來。」",
+      "conflict": "阿坤已經叫出師妹，白鴻達要他當場指認；陸家一桌人要看她怎麼接。",
+      "turn": "觀眾以為身分就此被釘死，阿坤轉身對白鴻達一字一句說：「這位少奶奶，我不認識。剛才認錯人。」他收了白家的錢，退回去一半。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "白鴻達走到飯廳門口，回頭對空著的主位說：「陸老爺，十年前那半本帳，您還留著吧？」飯廳裡誰都沒動。",
+        "question": "白鴻達怎麼知道陸老爺有帳？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "陸家飯廳：一桌人同時轉頭看門口進來的南洋人；他叫「師妹」那一秒，鏡頭從他的腳拍——重心在前腳。",
+      "glamour_shot": "阿坤說「我不認識」時眉骨的舊疤在燈下，眼神直視白鴻達；溫玦垂著眼，桌下的手把那張小紙攥緊。",
+      "setups": [],
+      "payoffs": [
+        "s03-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "南洋證人反水，二審少了一張牌",
+        "師父的話到手：回來"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-mingzhu",
+        "bai-hongda",
+        "bai-jingqian",
+        "s03-a-kun",
+        "xiao-tao",
+        "shifu"
+      ],
+      "locations": [
+        "陸家飯廳",
+        "陸家飯廳外的走廊"
+      ],
+      "state": {
+        "time": "十五日午飯；期限剩三個月又四天",
+        "knowledge": "師兄替她擋了指認；師父要她回南洋；白鴻達知道陸老爺有那半本帳",
+        "carry_forward": "白鴻達怎麼知道的；師父為什麼要她回去"
+      }
+    },
+    {
+      "number": 156,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "一週",
+      "youtube_title": "她把三個日期排成一列：借據、母親、陸父，中間各隔一週；婆婆把她的碗挪到主位旁邊",
+      "duration_s": 105,
+      "logline": "溫玦把借據、母親的死、陸父的死排在一張紙上，看出陸父見證了什麼；婆婆在飯廳把她的碗挪到主位旁。",
+      "hook": "一張紙，三個日期：一月三日借據、一月十日母親、一月十七日陸父。她用母親的鉛筆在中間畫了兩道線，一樣長。",
+      "hook_type": "image",
+      "mid_hook": "陸老爺隔著佛堂的門說：「他見證那張借據的那天，回來跟我說：那筆錢是賣碼頭的訂金。碼頭還是溫家的，就已經賣了。」",
+      "conflict": "弄清陸父見證了什麼、為什麼一週後就死；陸家要怎麼回到一張桌上吃飯。",
+      "turn": "觀眾以為陸父是死於牌桌，他見證的是碼頭還在母親手裡時白鴻達就已經收了洋行的訂金——他知道碼頭是先賣再奪的。母親知道了，一週後死；他知道，再一週。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "晚飯。婆婆端起溫玦的碗，走過半張桌子，放到主位旁邊那個空位：「坐這。等他出來。」陸明珠的筷子停了，陸承宴低頭笑了。",
+        "question": "陸老爺會出來坐回主位嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "那張紙的特寫：三個日期、兩道鉛筆線；切到飯廳長桌，婆婆端著碗走過半張桌子的俯拍。",
+      "glamour_shot": "婆婆把碗放下時手停了一下，珍珠耳環在燭光裡晃；溫玦看著那隻碗，眼睛慢慢紅了，沒哭。",
+      "setups": [],
+      "payoffs": [
+        "s03-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸父見證的是碼頭被先賣再奪的訂金",
+        "她的碗從婆婆身邊挪到了主位旁"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-laoye",
+        "lu-mingzhu",
+        "xiao-tao",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "陸家書房",
+        "陸家佛堂門外",
+        "陸家飯廳"
+      ],
+      "state": {
+        "time": "十五日夜；期限剩三個月又四天",
+        "knowledge": "借據是賣碼頭的訂金；母親與陸父各在知情一週後死",
+        "carry_forward": "白景謙知不知道這一半；陸老爺還在佛堂"
+      }
+    },
+    {
+      "number": 157,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "是他賣的",
+      "youtube_title": "繼兄登門提議陸白合股，她當面問他知不知道那半本帳，他臨走丟下一句：我爹知道，因為是他賣的",
+      "duration_s": 100,
+      "logline": "白景謙公開登門談陸白合股碼頭，溫玦當面問他知不知道陸老爺那半本帳；他說不知道，臨走卻說父親知道。",
+      "hook": "白景謙的車停在陸家門口，他下車，手裡一份合股契：「陸白合股，碼頭一人一半。妹妹，我爹不知道我來。」婆婆在二樓窗後看著。",
+      "hook_type": "line",
+      "mid_hook": "沈婉清坐在白家車的後座沒下來，從車窗裡看溫玦，手裡一條手帕掐成一團。",
+      "conflict": "白景謙的合股是圈套還是誠意；她要用這一面套出他知道多少。",
+      "turn": "觀眾以為白景謙什麼都知道，他對那半本帳的事是真的不知道；真正知道的是白鴻達——因為十年前帳是他賣給陸老爺的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "白景謙上車前回頭：「那半本帳我不知道。我爹知道。」他拉開車門：「因為是他賣的。」車門關上，沈婉清的臉在車窗後一閃。",
+        "question": "白鴻達把帳賣給陸老爺，圖什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "shangzhan",
+        "xuanyi",
+        "goxue"
+      ],
+      "spectacle": "陸家洋樓門口：白家的黑車、白景謙的深灰三件式、二樓窗後婆婆的剪影；車窗裡沈婉清的半張臉。",
+      "glamour_shot": "白景謙回頭說「是他賣的」時嘴角帶笑，袖扣在門口的燈下閃；溫玦站在台階上，淺色旗袍，一點表情都沒給他。",
+      "setups": [],
+      "payoffs": [
+        "s03-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "合股契沒簽；白景謙不知道那半本帳，白鴻達知道",
+        "沈婉清還在白家手裡"
+      ],
+      "characters": [
+        "wen-jue",
+        "bai-jingqian",
+        "shen-wanqing",
+        "lu-furen",
+        "lu-chengyan",
+        "xiao-tao"
+      ],
+      "locations": [
+        "陸家洋樓門口"
+      ],
+      "state": {
+        "time": "十六日午後；期限剩三個月又二天",
+        "knowledge": "十年前那半本帳是白鴻達賣給陸老爺的；白景謙不知情",
+        "carry_forward": "白鴻達賣帳給陸老爺的目的"
+      }
+    },
+    {
+      "number": 158,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "買一個不開口",
+      "youtube_title": "她隔著佛堂門說破十年前的買賣：繼父賣帳不是為錢，是買祖父十年不開口，老爺子終於開門",
+      "duration_s": 105,
+      "logline": "溫玦看穿白鴻達賣帳的目的：讓陸老爺拿著有兒子簽名的帳，就永遠不敢開口；她隔著門說破，陸老爺開門。",
+      "hook": "佛堂門外，她把那張三個日期的紙從門縫底下推進去：「爹，他賣您帳，不是為錢。是買您十年不開口。」門裡的燭光晃了一下。",
+      "hook_type": "line",
+      "mid_hook": "婆婆站在她身後，忽然說：「映真那天抱的木盒，上了鎖。她說鑰匙在孩子身上。」溫玦摸了一下脖子上母親留下的小銅鎖片。",
+      "conflict": "讓陸老爺明白自己被白鴻達綁了十年，走出佛堂；碼頭那邊洋行的船正在進港。",
+      "turn": "觀眾以為陸老爺是為了護面子瞞帳，他是被白鴻達算死的：有兒子簽名的帳在他手上，他一開口陸家就是共犯。他開門時說的第一句話是：「我被他當了十年的鎖。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿泗的聲音從半山底下喊上來：「少奶奶！洋行的船硬靠碼頭了！周買辦在甲板上！」佛堂的門這時候開了，陸老爺站在門裡。",
+        "question": "洋行的船為什麼現在進港？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "shangzhan"
+      ],
+      "spectacle": "佛堂門縫底下那張紙被推進去，燭光從門縫漏出來照亮三個日期；門開那一格，陸老爺的影子倒在走廊上。",
+      "glamour_shot": "溫玦跪在佛堂門外推紙，側臉在門縫的燭光裡，說話的聲音低、短、一字一字；婆婆的手搭在她肩上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸老爺走出佛堂，知道自己被白鴻達綁了十年",
+        "木盒的鑰匙線索：她脖子上的銅鎖片"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-laoye",
+        "lu-furen",
+        "lu-chengyan",
+        "a-si",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "陸家佛堂門外",
+        "陸家洋樓半山路"
+      ],
+      "state": {
+        "time": "十六日傍晚；期限剩三個月",
+        "knowledge": "白鴻達賣帳是為了用陸父的簽名鎖住陸老爺；木盒的鑰匙可能在她身上",
+        "carry_forward": "洋行的船硬靠碼頭；陸老爺出來了"
+      }
+    },
+    {
+      "number": 159,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "深水",
+      "youtube_title": "洋行大船硬靠碼頭，買辦親自登岸，她哭著遞上一紙判決：法院凍結，一箱貨都卸不了",
+      "duration_s": 105,
+      "logline": "洋行的遠洋船硬靠蘆洲碼頭，周買辦親自登岸要卸貨；溫玦用一審判決與三百工人把船擋在岸邊。",
+      "hook": "蘆洲碼頭，一艘洋行的遠洋大船黑壓壓靠在岸邊，船梯放下來，周買辦走到梯口，推了一下眼鏡。三百工人站在貨堆上沒動。",
+      "hook_type": "image",
+      "mid_hook": "周買辦看著水面：「少奶奶，深水碼頭，滄港只有這一個。遠洋船只能停這。妳母親懂這個，所以她死了。」他說得像在講天氣。",
+      "extra_hooks": [
+        "麥經理在甲板上第一次開口，一句滄港話：「卸。」阿泗吼回去：「卸你試試！」"
+      ],
+      "conflict": "洋行要在二審前先造成『碼頭已被洋行使用』的事實；她要擋，又只能哭著擋。",
+      "turn": "觀眾以為洋行會硬卸，她哭著遞上一審判決的副本：「碼頭凍結，卸了就是違法。」周買辦看了一眼，對船上揮手：船梯收起來。他不違法，他等。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "回到洋樓，婆婆在門口等她，壓著聲音：「爹出來了。他在飯廳。桌上放著一個木盒，等妳。」",
+        "question": "木盒裡是遺囑第三頁嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "蘆洲碼頭全景：一艘遠洋大船的黑色船身壓著碼頭，船梯口一個灰西裝，岸上三百工人站滿貨堆。",
+      "glamour_shot": "溫玦哭著遞判決書，眼淚掛在睫毛上；周買辦接過去那一秒她抬眼，兩個人隔著一張紙對視，誰都沒眨眼。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "洋行的船沒卸貨，船梯收回",
+        "周買辦第一次說出『深水碼頭』與母親的死有關"
+      ],
+      "characters": [
+        "wen-jue",
+        "zhou-maiban",
+        "s03-mai-jingli",
+        "a-si",
+        "lu-chengyan",
+        "lu-furen"
+      ],
+      "locations": [
+        "蘆洲碼頭",
+        "陸家洋樓門口"
+      ],
+      "state": {
+        "time": "十六日夜；期限剩三個月",
+        "knowledge": "洋行要深水碼頭，周買辦把母親的死與此掛在一起；陸老爺出來了，木盒在桌上",
+        "carry_forward": "木盒"
+      }
+    },
+    {
+      "number": 160,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "空白的第三頁",
+      "youtube_title": "祖父把母親託付的上鎖木盒交到她手上，她用脖子上的銅鎖片打開，遺囑第三頁——空白的",
+      "duration_s": 135,
+      "logline": "陸老爺坐回主位，把母親託付的木盒交給溫玦；她用脖子上的銅鎖片打開，第三頁遺囑是一張空白的紙。",
+      "hook": "飯廳。陸老爺坐在主位上，手杖靠在椅邊，面前一個上鎖的小木盒。他推過來：「妳母親託我的。等妳結了婚再給。」溫玦坐在主位旁，那個碗還在。",
+      "hook_type": "image",
+      "mid_hook": "鎖打不開。婆婆說鑰匙在孩子身上，她摸到脖子上那片小銅鎖片，拆下來，插進鎖孔，一轉。全家屏住呼吸。",
+      "extra_hooks": [
+        "陸老爺說出母親託付時的最後一句：「她說，這孩子若是嫁對了人，這頁才有用。」",
+        "陸承宴握著懷錶，手指在錶蓋上敲了三下——他們屋頂上的暗號：我在。"
+      ],
+      "conflict": "打開母親留了二十年的盒子；一家人第一次完整地坐在一張桌上。",
+      "turn": "觀眾以為盒子裡是改變官司的第三頁，她拿出來的是一張紙——遺囑用的紙、母親用的紙，上面什麼字都沒有。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她把紙舉到燈下，正面、反面、對著光。空白。陸老爺慢慢說：「妳母親說，這頁妳自己會看懂。」她看著那張空白的紙，手開始抖。",
+        "question": "空白的第三頁，母親想讓她看懂什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "goxue",
+        "tianchong"
+      ],
+      "spectacle": "陸家飯廳的長桌從正上方拍：主位坐著陸老爺，她的碗在他右手邊，木盒打開，一張空白的紙在燈下。",
+      "glamour_shot": "溫玦把紙舉到燈下，燈光透過紙打在她臉上，她的眼睛在紙的另一面，睫毛的影子落在空白上。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "遺囑第三頁到手——空白",
+        "陸老爺回到主位，陸家重新坐成一桌",
+        "她的碗定在主位旁"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-laoye",
+        "lu-furen",
+        "lu-mingzhu",
+        "xiao-tao",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "陸家飯廳"
+      ],
+      "state": {
+        "time": "十六日夜；期限剩三個月",
+        "knowledge": "第三頁在陸老爺手上二十年，現在在她手上，空白；母親說她自己會看懂",
+        "carry_forward": "空白的紙要用什麼才看得見"
+      }
+    },
+    {
+      "number": 161,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "火",
+      "youtube_title": "空白遺囑拿到戲院後台用火烤，丈夫差點把紙燒了被罰站牆角，後門外情敵拎著皮箱站在雨裡",
+      "duration_s": 100,
+      "logline": "溫玦帶著空白的第三頁到戲院後台，金姨用老法子試第一樣——火；陸承宴幫倒忙；沈婉清拎著皮箱出現在後門。",
+      "hook": "戲院後台，金姨把燭移到紙底下：「老法子。火。」紙慢慢變黃，什麼都沒浮出來。陸承宴伸手想把紙拿近一點，紙角冒了煙。溫玦一掌拍滅：「牆角。」",
+      "hook_type": "image",
+      "mid_hook": "金姨看著照片上三個少女，長菸嘴停在嘴邊：「映真寫東西，只用一樣。我記得，但想不起來。」她把菸嘴放下，第一次沒說俏皮話。",
+      "conflict": "找出第三頁要用什麼才看得見；金姨知道一半，想不起另一半。",
+      "turn": "觀眾以為火會逼出字，火只烤黃了紙角；真正的線索在金姨的話裡：母親寫東西只用一樣東西。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "後台的後門被敲了三下。金姨拉開：沈婉清站在雨裡，沒帶珍珠，一只皮箱放在腳邊。「我沒地方去了。」她看向溫玦。",
+        "question": "沈婉清來投靠是真的嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "xunfu"
+      ],
+      "spectacle": "戲院後台的化妝鏡前，一張紙在燭火上方慢慢變黃，鏡子裡映著三個人盯著紙看的臉。",
+      "glamour_shot": "陸承宴被罰站牆角，回頭偷看，被溫玦一個眼神瞪回去；燭光下她的側臉，嘴角壓著笑。",
+      "setups": [
+        "s03-t15",
+        "s03-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "火的法子排除",
+        "金姨想起母親寫東西只用一樣東西"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "jin-yi",
+        "shen-wanqing",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "大光明戲院後台",
+        "大光明戲院後門"
+      ],
+      "state": {
+        "time": "十七日夜；期限剩兩個月又二十八天",
+        "knowledge": "火試不出字；母親寫東西只用一樣東西；沈婉清來投靠",
+        "carry_forward": "沈婉清帶來什麼"
+      }
+    },
+    {
+      "number": 162,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "門邊的碗",
+      "youtube_title": "情敵帶來白家的祕密：繼兄要連親爹一起賣給洋行，婆婆把她的碗放在門邊那個位子",
+      "duration_s": 105,
+      "logline": "沈婉清帶來白家的祕密：白景謙在跟洋行談，要把白鴻達一起賣掉；婆婆不情願地讓她住下，碗放在門邊。",
+      "hook": "陸家飯廳，沈婉清坐在門邊的位子——溫玦進門第一天坐的那個位子。婆婆親手把一只碗放到她面前，沒說話。陸明珠小聲：「那是姐以前的碗。」",
+      "hook_type": "image",
+      "mid_hook": "沈婉清放下筷子：「白景謙在跟洋行談。他要把白鴻達一起賣掉——假帳全推給他爹，碼頭的股讓給洋行，他拿白家。」全桌靜了。",
+      "extra_hooks": [
+        "陸承宴把紙泡進水盆：水的法子。紙濕了，透了，還是白的。"
+      ],
+      "conflict": "收不收沈婉清；她帶來的消息要不要信；水的法子試完了。",
+      "turn": "觀眾以為婆婆會把沈婉清趕出去，婆婆讓她住下了，碗放在門邊——跟當年對溫玦一樣。溫玦看著那只碗，想起自己的第一天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "飯後，溫玦走過去，把沈婉清那只碗從門邊端起來，放到自己旁邊的位子：「明天坐這。」沈婉清看著那只碗，紅唇抿緊，眼眶紅了。",
+        "question": "沈婉清說的是真的，還是白景謙讓她說的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "陸家飯廳：門邊的位子一只碗，長桌另一頭主位旁一只碗；兩只碗之間一整張桌子的距離。",
+      "glamour_shot": "沈婉清坐在門邊的位子，沒有珍珠與紅唇，低著頭，窗光打在她燙捲的短髮上；她抬頭看溫玦端碗的那一秒。",
+      "setups": [
+        "s03-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈婉清住進陸家",
+        "水的法子排除",
+        "知道白景謙在跟洋行談賣父親"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-mingzhu",
+        "shen-wanqing",
+        "xiao-tao",
+        "lu-laoye"
+      ],
+      "locations": [
+        "陸家飯廳"
+      ],
+      "state": {
+        "time": "十八日晚飯；期限剩兩個月又二十六天",
+        "knowledge": "白景謙要連父親一起賣給洋行（沈婉清說的）；火、水都試過",
+        "carry_forward": "沈婉清的消息是誰讓她帶的"
+      }
+    },
+    {
+      "number": 163,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "檸檬",
+      "youtube_title": "檸檬汁塗上空白遺囑還是白的，深夜繼兄的車停在陸家門口：她是我的人，交出來",
+      "duration_s": 100,
+      "logline": "檸檬是第三個法子，也失敗；陸承宴把懷錶交給她保管；深夜白景謙的車停在陸家門口要人。",
+      "hook": "陸明珠拎著半顆檸檬衝進書房：「金姨說試這個！」檸檬汁塗上去，烤。紙上浮出一片黃斑，沒有字。陸明珠：「這不算我弄壞的吧？」",
+      "hook_type": "line",
+      "mid_hook": "夜裡，陸承宴把父親的懷錶放到她手上：「妳替我拿著。它停在那一夜。等我們對上了，妳替我上弦。」她握住錶，錶殼是暖的。",
+      "conflict": "三個法子都試過了；沈婉清在陸家住下第二夜；白家會不會來要人。",
+      "turn": "觀眾以為沈婉清是逃出來的，白景謙的車深夜停在陸家門口，他下車說的是：「她是我的人。」——不是來搶，是來宣告。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陸家大門外，白景謙倚著車門，對門裡說：「沈婉清是我的人。交出來。」二樓窗後，沈婉清把窗簾攥得死緊。",
+        "question": "沈婉清是白景謙派來的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "書房桌上三樣東西排成一列：燭、水盆、半顆檸檬；中間那張紙黃了一角、濡了一邊、斑了一片，還是空白。",
+      "glamour_shot": "陸承宴把懷錶放到她掌心，兩隻手疊著，燭光從側面來；他說「替我上弦」時聲音低了半度。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "檸檬的法子排除",
+        "陸承宴把父親的懷錶交給她保管"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-mingzhu",
+        "shen-wanqing",
+        "bai-jingqian",
+        "jin-yi",
+        "xiao-tao"
+      ],
+      "locations": [
+        "陸家書房",
+        "溫玦的房間",
+        "陸家洋樓大門"
+      ],
+      "state": {
+        "time": "十九日深夜；期限剩兩個月又二十四天",
+        "knowledge": "火水檸檬都不是；懷錶在她手上；白景謙來要沈婉清",
+        "carry_forward": "沈婉清到底是誰的人"
+      }
+    },
+    {
+      "number": 164,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "她是我的人",
+      "youtube_title": "她哭著擋在門口不交人，繼兄留下一句下週洋行簽約我爹不知道，情敵夜裡坦白：是他讓我來的",
+      "duration_s": 105,
+      "logline": "溫玦在白家司機面前用哭包擋住白景謙要人；陸明珠第一次替沈婉清擋話；沈婉清夜裡承認是白景謙讓她來的。",
+      "hook": "陸家大門，溫玦站在門裡，眼淚說來就來：「大哥，她是客人。陸家不趕客人。」白景謙看著她哭，笑了：「妹妹，演給我司機看？」她哭得更大聲。",
+      "hook_type": "line",
+      "mid_hook": "陸明珠從她身後擠出來，拎著小皮包指著白景謙：「她是我朋友！你再喊，我哥揍你！」陸承宴在後面：「我不揍人。我媳婦揍。」",
+      "extra_hooks": [
+        "白景謙上車前說：「下週洋行簽約。我爹不知道。妹妹，想看就來。」"
+      ],
+      "conflict": "不交出沈婉清，又不在白家司機面前露底；弄清沈婉清到底是誰的人。",
+      "turn": "觀眾以為沈婉清是逃出白家的，她夜裡坐在溫玦房裡說：「我來，是白景謙讓我來的。他要妳知道洋行的事。」停一下：「但我說的都是真的。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "沈婉清低著頭：「他說，妳知道了就會動手。他要妳替他動手。」她抬起頭：「可我留下來，是我自己要的。」",
+        "question": "白景謙要她替他動什麼手？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "xiju",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "陸家大門：門裡一個哭著的淺色旗袍、一個拎皮包的洋裝、一個倚門的西裝；門外一輛黑車與一個笑著的深灰三件式。",
+      "glamour_shot": "陸明珠站出來擋話，捲髮亂了、大眼睛瞪圓；鏡頭切到溫玦，哭著的臉上眼睫後面是一個很淺的笑。",
+      "setups": [],
+      "payoffs": [
+        "s03-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈婉清留在陸家，身分說清：白景謙派來的，但她自己選了留下",
+        "陸明珠第一次替別人擋話",
+        "拿到洋行簽約的時間：下週"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-mingzhu",
+        "shen-wanqing",
+        "bai-jingqian",
+        "lu-furen"
+      ],
+      "locations": [
+        "陸家洋樓大門",
+        "溫玦的房間"
+      ],
+      "state": {
+        "time": "二十日夜；期限剩兩個月又二十三天",
+        "knowledge": "沈婉清是白景謙送來的刀，但她倒向了這邊；洋行下週簽約",
+        "carry_forward": "白景謙要她動什麼手；鼓掌是為誰"
+      }
+    },
+    {
+      "number": 165,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "鼓掌是為誰",
+      "youtube_title": "她看穿繼兄從頭到尾在借她的手：法庭鼓掌是為親爹輸了，白家律師再遞告訴，這次承認了洋行那一箱",
+      "duration_s": 105,
+      "logline": "溫玦看穿白景謙的全局：他把每一步都算成她替他出手；白家二審卻遞上新告訴，這次承認了洋行那一箱。",
+      "hook": "書房。她把一季的事排在桌上：剪報、鑰匙、鼓掌、沈婉清。「他每一步都讓我動手。鼓掌，是為他爹輸了。」陸承宴：「那我們就不動。」她：「不，動，但動我們的。」",
+      "hook_type": "line",
+      "mid_hook": "方律師帶來二審的新告訴：白家這次列了清單——「洋行往來帳一箱」。她抬眼：「他們敢承認了？」方律師：「敢承認，就是打算讓它消失。」",
+      "conflict": "不做白景謙的刀又要用他的消息；白家突然敢承認洋行那箱，一定有後手。",
+      "turn": "觀眾以為白家承認那一箱是失誤，方律師說破：承認存在，是為了把它定成『贓物』——只要原件在白家消失，她手上這箱就是她唯一的罪證。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "方律師合上卷宗：「二審十天後。白家列了那一箱，就會想辦法讓地下室剩下的消失。」窗外，白家公館的方向亮著燈，地下室的方向是黑的。",
+        "question": "白家會怎麼讓地下室『消失』？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "xuanyi",
+        "henla"
+      ],
+      "spectacle": "書房桌上排成一列的物證：燒剩的剪報灰、銅鑰匙、法院的傳票、沈婉清的手帕；她的手指從第一樣劃到最後一樣。",
+      "glamour_shot": "溫玦說「動我們的」時抬眼，書房的燭光從下方打上來，她的眼神全冷；陸承宴倚在書架上看她，嘴角壓著。",
+      "setups": [],
+      "payoffs": [
+        "s03-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "看穿白景謙鼓掌與每一步都是在借她的手",
+        "知道二審日期與白家把那箱定成贓物的打算"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "s03-fang-lawyer",
+        "shen-wanqing",
+        "lu-laoye"
+      ],
+      "locations": [
+        "陸家書房"
+      ],
+      "state": {
+        "time": "二十一日；期限剩兩個月又二十一天",
+        "knowledge": "白景謙鼓掌是為父親輸；白家承認洋行那箱是為了把它定成贓物",
+        "carry_forward": "地下室剩下的原件危險了"
+      }
+    },
+    {
+      "number": 166,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "後院拳館",
+      "youtube_title": "她在後院教小姑與情敵防身，丈夫自願當沙包，老工頭跑來報信：洋行又在量水深，電報說簽約提前到明晚",
+      "duration_s": 100,
+      "logline": "溫玦把後院變成小拳館，教陸明珠與沈婉清一招『推開就跑』；阿泗報信洋行再量水深；白景謙的電報把簽約提前到明晚金鷺。",
+      "hook": "後院，陸承宴套著兩個棉枕頭站著當沙包：「來。」陸明珠一掌推過去，自己坐到地上。沈婉清在旁邊忍笑忍到肩膀抖。溫玦：「推完要跑。不是坐。」",
+      "hook_type": "image",
+      "mid_hook": "阿泗翻牆進來，腳上還是草鞋：「洋行的測量員又來了，這回帶著樁！他們要在凍結的碼頭先打樁！」",
+      "conflict": "讓家裡的女人都能護住自己；洋行在凍結的碼頭動工，簽約卻提前了。",
+      "turn": "觀眾以為簽約還有一週，沈婉清收到白景謙的電報：提前到明晚，金鷺。白景謙是在邀她去看——他的刀他自己送到手裡。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "沈婉清把電報遞過來，一行字：「簽約提前，明晚，金鷺。來看。」溫玦看完，把電報摺好，塞進母親短衫的袖口。",
+        "question": "他們要在金鷺簽什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "shangzhan"
+      ],
+      "spectacle": "陸家後院：一個套著棉枕頭的西裝男人站在中間，兩個穿洋裝的姑娘輪流推他；牆頭上坐著一個光頭老人在吼。",
+      "glamour_shot": "沈婉清第一次出手推人，燙捲的短髮甩起來，推完真的跑了三步，回頭笑——這一季她第一次笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸明珠與沈婉清學會『推開就跑』",
+        "洋行打樁的消息到阿泗手上",
+        "簽約的時間地點到手"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-mingzhu",
+        "shen-wanqing",
+        "a-si",
+        "xiao-tao",
+        "bai-jingqian"
+      ],
+      "locations": [
+        "陸家後院"
+      ],
+      "state": {
+        "time": "二十二日下午；期限剩兩個月又十八天",
+        "knowledge": "明晚金鷺簽約，白景謙邀她去看；洋行要在碼頭打樁",
+        "carry_forward": "上金鷺看簽約——陸承宴答應過永不上船"
+      }
+    },
+    {
+      "number": 167,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "暗艙",
+      "youtube_title": "船主開暗艙讓他們看簽約，繼兄與買辦一筆一筆把親爹的罪寫進契約，買辦一句：等了二十年",
+      "duration_s": 105,
+      "logline": "九爺讓溫玦與陸承宴從暗艙看簽約：白景謙與周買辦把白鴻達的假帳寫進契約；九爺拍她的肩：白鴻達的車到了。",
+      "hook": "金鷺的暗艙，一扇格窗。九爺低聲：「少爺沒上船，是我請他上來的。」陸承宴：「這不算。」格窗外，白景謙與周買辦隔桌坐下，契約攤開。",
+      "hook_type": "image",
+      "mid_hook": "周買辦推了一下眼鏡，念契約的一條：「碼頭二十年假帳之責，由白鴻達一人承擔。」白景謙簽字。周買辦：「等了二十年，就等這一筆。」",
+      "extra_hooks": [
+        "麥經理坐在角落，雪茄只拿不點，第一次對周買辦說滄港話：「深水。只要深水。」"
+      ],
+      "conflict": "看完整場簽約不被發現；周買辦為什麼等了二十年。",
+      "turn": "觀眾以為洋行要的是白家的股，契約上洋行拿的是碼頭的『深水泊位獨家使用權』，白家父子誰當家他們都不在乎。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "九爺的手搭上她的肩，墨鏡後面的眼睛看向舷窗：「白老闆的車到了。他不該來的。」船梯上，白鴻達一步一步往上走。",
+        "question": "白鴻達撞見兒子賣他，會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "shangzhan"
+      ],
+      "spectacle": "暗艙格窗的視角：窗格把牌桌切成一格一格，白景謙的筆尖、周買辦的眼鏡、麥經理的雪茄各在一格裡。",
+      "glamour_shot": "溫玦與陸承宴並肩擠在格窗後，暗艙裡只有窗格漏進來的光條打在兩個人的側臉上，她的手握著他的懷錶。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "親眼看見白景謙簽下把假帳推給父親的契約",
+        "洋行要的是深水泊位獨家使用權，不是股份"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "jiu-ye",
+        "bai-jingqian",
+        "zhou-maiban",
+        "s03-mai-jingli",
+        "bai-hongda",
+        "s03-da-niu"
+      ],
+      "locations": [
+        "賭船金鷺暗艙",
+        "賭船金鷺牌桌",
+        "賭船金鷺船梯"
+      ],
+      "state": {
+        "time": "二十三日夜；期限剩兩個月又十七天",
+        "knowledge": "白景謙簽了把假帳全推給父親的契約；洋行要的是深水泊位；周買辦等了二十年",
+        "carry_forward": "白鴻達正走上船"
+      }
+    },
+    {
+      "number": 168,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "你以為洋行要的是你",
+      "youtube_title": "繼父撞見兒子賣他卻大笑：你以為洋行要的是你？買辦起身只說一句，地下室該清了",
+      "duration_s": 110,
+      "logline": "白鴻達撞見兒子賣他，卻笑著拆穿兒子也是棋子；周買辦兩邊都不接，起身說地下室該清了。",
+      "hook": "白鴻達走到牌桌邊，拿起契約看了一眼，笑出聲：「景謙，你以為洋行要的是你？」他把契約放回去：「他們要的是碼頭。你跟我一樣，是給碼頭墊腳的。」",
+      "hook_type": "line",
+      "mid_hook": "周買辦對九爺說：「九爺，暗艙該清一清了。」九爺咬著雪茄：「我這船，看戲的不趕。」周買辦笑了，沒再說。",
+      "conflict": "父子撕破臉時溫玦要不被發現；周買辦為什麼不在乎誰贏。",
+      "turn": "觀眾以為白鴻達會跟兒子翻桌，他坐下來，替兒子倒了一杯茶：「簽吧。簽完，我們都是他的。」周買辦起身，一句話定了下一步。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周買辦扣上西裝鈕扣，對白鴻達說：「白老闆，地下室該清了。」他推了一下眼鏡：「二審之前。」白鴻達沒抬頭：「我知道。」",
+        "question": "「清」地下室，是什麼意思？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "xuanyi",
+        "shangzhan"
+      ],
+      "spectacle": "牌桌上父子對坐，中間一份契約與一杯茶；周買辦站起來的剪影遮住黃銅燈，整張桌子暗下來一半。",
+      "glamour_shot": "白景謙聽父親說「墊腳」時臉上的笑沒掉，眼睛卻垂下去看契約上自己的簽名——這一季他第一次像被打中。",
+      "setups": [
+        "s03-t18"
+      ],
+      "payoffs": [
+        "s03-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "白景謙賣父親是真的，而父子都是洋行的棋",
+        "聽見周買辦要在二審前清地下室"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "jiu-ye",
+        "bai-jingqian",
+        "bai-hongda",
+        "zhou-maiban",
+        "s03-mai-jingli"
+      ],
+      "locations": [
+        "賭船金鷺牌桌",
+        "賭船金鷺暗艙"
+      ],
+      "state": {
+        "time": "二十三日夜；期限剩兩個月又十七天",
+        "knowledge": "白家父子都是洋行的棋；周買辦要在二審前『清』地下室",
+        "carry_forward": "地下室剩下的原件、母親的箱子"
+      }
+    },
+    {
+      "number": 169,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "全家抄帳",
+      "youtube_title": "全家連夜抄洋行二十年原件，小丫頭掉了一支鉛筆滾到遺囑旁，丈夫撿起來問：妳母親是不是也用這個寫的",
+      "duration_s": 105,
+      "logline": "怕原件被清，陸家全家連夜抄洋行的二十年轉帳；小桃掉了母親的鉛筆，陸承宴撿起來，問出那個問題。",
+      "hook": "陸家飯廳的長桌上堆滿洋行原件，婆婆、陸明珠、沈婉清、小桃一人一疊在抄。陸老爺在主位磨墨。溫玦：「抄一份，藏一份。天亮前。」",
+      "hook_type": "image",
+      "mid_hook": "小桃手裡的鉛筆滾下桌，滾到那張空白的第三頁旁邊停住。陸承宴彎腰撿起來——那是他從白家地下室帶出來的、母親的鉛筆，削得很短。",
+      "extra_hooks": [
+        "陸明珠抄到一半睡著了，臉壓在帳上，醒來臉上印著一個數字，全家笑了一回。"
+      ],
+      "conflict": "天亮前抄完二十年；守住那一箱；第三頁還是空白。",
+      "turn": "觀眾以為這一夜是守帳，陸承宴拿著鉛筆看了很久，說：「妳母親用鉛筆寫帳。是不是也用鉛筆寫這個？」鉛筆的字，要側著光才看得見。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿泗撞開門：「白家公館的傭人今晚走了一半！崔管家在搬油桶！」陸承宴站起來要走，溫玦握著那張紙與鉛筆：「等一下。先看這個。」",
+        "question": "先去救帳，還是先讀第三頁？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "陸家飯廳的長桌從正上方拍：一家人圍著桌子低頭抄帳，紙堆到桌沿，中間一盞燈，一支短鉛筆滾到紙邊停住。",
+      "glamour_shot": "陸承宴彎腰撿鉛筆，抬頭時燭光從下面打在他臉上，他看著鉛筆說「側著光」時，溫玦第一次先看他、再看紙。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "洋行二十年原件抄出一份副本",
+        "找到讀第三頁的法子：鉛筆、側光"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-laoye",
+        "lu-mingzhu",
+        "shen-wanqing",
+        "xiao-tao",
+        "a-si",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "陸家飯廳"
+      ],
+      "state": {
+        "time": "二十四日夜到凌晨；期限剩兩個月又十四天",
+        "knowledge": "第三頁可能是鉛筆寫的，要側光；白家在搬油桶",
+        "carry_forward": "側光；白家地下室"
+      }
+    },
+    {
+      "number": 170,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "側光",
+      "youtube_title": "側著燭光，空白遺囑浮出母親的鉛筆字，她剛讀完第一句，窗外白家公館的方向燒起來了",
+      "duration_s": 135,
+      "logline": "溫玦把第三頁側向燭光，母親的鉛筆字浮出來；她讀完第一句，白家公館地下室的方向燒起來了。",
+      "hook": "她把紙舉起來，燭放在紙的側邊，眼睛貼著紙面。一條很淺的壓痕浮出來，再一條，鉛筆的灰在光裡亮了一下——是字。全家不呼吸了。",
+      "hook_type": "image",
+      "mid_hook": "第一行慢慢連成一句，是母親的筆跡：「碼頭只給玦兒與她自己選的那個人——」她念到這裡，聲音停了。陸承宴握著懷錶的手一緊。",
+      "extra_hooks": [
+        "陸老爺慢慢說：「妳母親說妳自己會看懂。她說的是這個人。」他看向陸承宴。",
+        "沈婉清小聲說：「後面還有字。」溫玦把燭再側一點，第二行的壓痕剛浮出一個字——"
+      ],
+      "conflict": "讀出第三頁；每一行都要側光慢慢找，而白家那邊已經在搬油桶。",
+      "turn": "觀眾以為第三頁寫的是碼頭的條件，第一句寫的是她選的人：母親怕她為了碼頭嫁一個不是自己選的人。她抬眼看陸承宴，第一次沒躲開。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第二行的第一個字剛浮出來，窗外一片紅光打進飯廳，所有人轉頭：半山下白家公館的方向燒起來了，火從地下室的天窗往上冒。",
+        "question": "地下室的火，是誰放的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tianchong",
+        "henla"
+      ],
+      "spectacle": "側光下鉛筆字一筆一筆浮出來的特寫，字的壓痕在紙上投出細影；切到窗外，白家公館的方向一片紅光，火從地下室天窗往上竄。",
+      "glamour_shot": "溫玦把眼睛貼近紙面讀字，燭光從側面打在她的睫毛與鼻樑上，她念到「自己選的那個人」時抬眼看陸承宴，兩個人隔著一張紙。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "讀出第三頁第一句：碼頭只給玦兒與她自己選的那個人",
+        "確認第三頁是母親的鉛筆字，要側光",
+        "洋行原件副本抄完"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-laoye",
+        "lu-mingzhu",
+        "shen-wanqing",
+        "xiao-tao",
+        "a-si",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "陸家飯廳",
+        "陸家洋樓窗外半山"
+      ],
+      "state": {
+        "time": "二十四日凌晨；期限剩兩個月又十四天",
+        "knowledge": "第三頁第一句讀出來了，第二行只浮出一個字；白家地下室起火",
+        "carry_forward": "火；地下室剩下的原件與母親的箱子；第三頁沒讀完"
+      }
+    },
+    {
+      "number": 171,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "是她放的",
+      "youtube_title": "白家地下室燒成一片，繼父站在火光裡指著她報警：縱火、竊帳，她手上那箱成了唯一證據",
+      "duration_s": 110,
+      "logline": "溫玦與陸承宴衝到白家，地下室的原件全毀；白鴻達在火光裡指著她報警，她抱出來的那箱成了她唯一的罪證。",
+      "hook": "白家公館門口，火光把整條街照成橘色。白鴻達站在台階上，頭髮亂了，金絲眼鏡反著火光，指著剛下車的溫玦：「是她！縱火！竊帳！」",
+      "hook_type": "danger",
+      "mid_hook": "人群裡，白景謙雙手插在口袋，看著火，沒有看任何人。崔管家站在他身後，腰上的鑰匙串少了一把。",
+      "conflict": "火是她放的——白鴻達已經對警察這麼說；她要證明不是，而她手上有白家唯一倖存的一箱。",
+      "turn": "觀眾以為白家承認洋行那箱是失誤，這一夜看懂了：地下室一燒，全滄港只剩她那一箱洋行的帳——她是唯一拿過的人，就是唯一的縱火嫌犯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "白鴻達對鄺警長遞上一張清單：「白家地下室唯一倖存的一箱，在陸家。她抱出去的。」他看著她，笑了：「玦兒，妳救下來的，是妳自己的罪證。」",
+        "question": "那一箱會變成她縱火的證據嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "shangzhan"
+      ],
+      "spectacle": "白家公館的地下室天窗往上噴著火，整面冷白的外牆被照成橘色；街上人群的剪影一排排，中間一個穿深灰三件式的人站著不動。",
+      "glamour_shot": "火光打在溫玦的側臉上，她看著火，眼睛裡沒有慌，只有冷；陸承宴站在她半步前，肩膀擋住白鴻達的手指。",
+      "setups": [
+        "s03-t18"
+      ],
+      "payoffs": [
+        "s03-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二審白家的牌揭開：燒掉原件，把她的那箱定成贓物、把她定成縱火犯",
+        "母親的箱子在火裡（下落未明）"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "bai-hongda",
+        "bai-jingqian",
+        "s03-cui-guanjia",
+        "s03-kuang-jingzhang"
+      ],
+      "locations": [
+        "白家公館門口",
+        "白家公館地下室天窗外"
+      ],
+      "state": {
+        "time": "二十四日凌晨；期限剩兩個月又十四天",
+        "knowledge": "白家原件全毀，她那一箱是唯一倖存；白鴻達報警說她縱火竊帳",
+        "carry_forward": "警察什麼時候來陸家；那一箱藏在哪"
+      }
+    },
+    {
+      "number": 172,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "繩堆",
+      "youtube_title": "律師說那箱帳只要進了法院就是證據進了警局就是贓物，老工頭把箱子藏進碼頭繩堆，情敵卻不見了",
+      "duration_s": 100,
+      "logline": "方律師說那一箱進法院是證據、進警局是贓物；阿泗把箱子藏進碼頭的繩堆；沈婉清留下一張字條不見了。",
+      "hook": "天亮，方律師的鋼筆敲著桌子：「那箱進了法院，是洋行的罪證。進了警局，是妳的贓物。」她看溫玦：「現在看誰先拿到。」",
+      "hook_type": "line",
+      "mid_hook": "警察廳門口，周買辦的車停著，他下車走進去，沒帶律師，手裡只有一份文件。鄒記者在對街拍了一張。",
+      "conflict": "趕在警察搜陸家前把箱子轉到法院；周買辦正在警察廳做什麼。",
+      "turn": "觀眾以為箱子要運去法院，法院三日後才開門收證，阿泗想出來的地方是碼頭貨棚最深處的繩堆——他三年前坐著修繩的那堆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小桃衝進書房：「沈小姐的床是空的！」床上一張字條，沈婉清的字：「我去問他。」溫玦看著窗外白家的方向，火熄了，煙還在。",
+        "question": "沈婉清去白家會出事嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "henla",
+        "xuanyi"
+      ],
+      "spectacle": "碼頭貨棚最深處，阿泗把箱子推進繩堆、再把一圈圈粗繩蓋上去的手部特寫；貨棚外三百工人若無其事地搬貨。",
+      "glamour_shot": "溫玦站在書房窗前看白家方向的煙，晨光從她背後來，她的肩背挺直，手裡攥著沈婉清的字條。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "那一箱藏進碼頭繩堆，三百工人看守",
+        "知道法院三日後收證"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "s03-fang-lawyer",
+        "a-si",
+        "xiao-tao",
+        "shen-wanqing",
+        "zhou-maiban",
+        "s03-zou-reporter"
+      ],
+      "locations": [
+        "陸家書房",
+        "蘆洲碼頭貨棚",
+        "警察廳門口"
+      ],
+      "state": {
+        "time": "二十四日白天；期限剩兩個月又十三天",
+        "knowledge": "箱子在繩堆；法院三日後收證；周買辦進了警察廳；沈婉清去了白家",
+        "carry_forward": "沈婉清"
+      }
+    },
+    {
+      "number": 173,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "兩把鑰匙",
+      "youtube_title": "她哭著上白家要人，當著繼父說破：地下室兩道門只有兩把鑰匙，情敵走出來只帶回一句話",
+      "duration_s": 105,
+      "logline": "溫玦上白家公館要回沈婉清，當著白鴻達說破地下室只有兩把鑰匙；沈婉清走出來，帶回白景謙的一句話。",
+      "hook": "白家公館燒黑的大門前，溫玦哭著喊：「爹，婉清姐在裡面，我帶她回去。」白鴻達站在門裡：「玦兒，妳燒了我的家，還敢來？」",
+      "hook_type": "line",
+      "mid_hook": "她抹了眼淚，聲音忽然低下去，只讓白鴻達一個人聽見：「地下室兩道門。兩把鑰匙。一把在崔管家腰上，一把在大哥手裡。我的那把，在法院。」白鴻達的笑停了。",
+      "extra_hooks": [
+        "陸家大門口，兩個警察站崗了，鄺警長不在。小桃從門縫往外看。"
+      ],
+      "conflict": "要回沈婉清，又要讓白鴻達知道她不怕；警察已經在陸家門口站崗。",
+      "turn": "觀眾以為白鴻達會扣下沈婉清，白景謙從燒黑的樓梯上走下來，把沈婉清送到門口：「她是客人。白家不留客人。」——用的是溫玦擋他時的話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "回去的車上，沈婉清臉色發白：「他什麼都沒說。只讓我轉告一句：明早，警察帶傳票進陸家。」她停一下：「傳票不是法院批的。」",
+        "question": "不是法院批的傳票，是誰批的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "dalian",
+        "henla"
+      ],
+      "spectacle": "白家公館燒黑的大門：冷白的牆上一道道煙痕，白鴻達站在門裡，溫玦哭著站在門外，兩個人之間一道燒焦的門檻。",
+      "glamour_shot": "溫玦抹掉眼淚、聲音低下去的那一秒，鏡頭貼著她的側臉，從柔光切到硬光；白鴻達的金絲眼鏡裡映著她的眼睛。",
+      "setups": [
+        "s03-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈婉清帶回陸家",
+        "白鴻達聽見她知道鑰匙只有兩把",
+        "知道明早警察帶傳票來，傳票不是法院批的"
+      ],
+      "characters": [
+        "wen-jue",
+        "bai-hongda",
+        "bai-jingqian",
+        "shen-wanqing",
+        "s03-cui-guanjia",
+        "xiao-tao",
+        "lu-chengyan"
+      ],
+      "locations": [
+        "白家公館大門",
+        "陸家的車",
+        "陸家洋樓大門"
+      ],
+      "state": {
+        "time": "二十五日；期限剩兩個月又十二天",
+        "knowledge": "明早警察帶傳票來陸家；傳票不是法院批的",
+        "carry_forward": "誰批的傳票；婆婆會不會讓警察進門"
+      }
+    },
+    {
+      "number": 174,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "保全證據",
+      "youtube_title": "陸家律師趕在警察之前申請保全證據，法院封了那一箱，警察廳自己批的傳票到了半山",
+      "duration_s": 100,
+      "logline": "方律師趕在警察前申請保全證據，法院派人封了繩堆裡的箱子；傳票是警察廳自己批的，鄺警長帶著它上了半山。",
+      "hook": "法院的書記官跟著方律師走進碼頭貨棚，阿泗掀開繩堆，書記官在箱子上貼了封條。方律師：「從現在起，這是法院的。」阿泗吼：「聽見沒！法院的！」",
+      "hook_type": "image",
+      "mid_hook": "法院書記官翻著傳票的副本，皺眉：「縱火的傳票，怎麼是警察廳自己批的？」方律師：「因為法院不會批。有人不想等法院。」窗外，周買辦的車從法院門口開走。",
+      "conflict": "箱子先進法院的封條；傳票繞過法院，警察照樣能抓人。",
+      "turn": "觀眾以為箱子封了就安全了，方律師說破：箱子安全了，人不安全——傳票不要箱子，只要她。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "半山的路上，一輛警車慢慢開上來，鄺警長坐在前座，手裡一張傳票。陸家大門內，婆婆站起來，把佛珠繞到手腕上：「我去開門。」",
+        "question": "婆婆會讓警察進門嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shangzhan",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "碼頭貨棚：繩堆掀開，一只箱子，法院的封條貼上去的特寫；三百工人圍著看，沒人出聲。",
+      "glamour_shot": "婆婆把佛珠繞到手腕上站起來，墨綠絲絨旗袍、珍珠耳環，一絲不亂，鏡頭從她背後拍大門。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "那一箱進了法院的封條，白家與警察都動不了",
+        "確認縱火傳票是警察廳繞過法院批的，背後是洋行"
+      ],
+      "characters": [
+        "wen-jue",
+        "s03-fang-lawyer",
+        "a-si",
+        "lu-furen",
+        "s03-kuang-jingzhang",
+        "zhou-maiban",
+        "lu-chengyan"
+      ],
+      "locations": [
+        "蘆洲碼頭貨棚",
+        "滄港地方法院",
+        "陸家洋樓大門內"
+      ],
+      "state": {
+        "time": "二十六日清晨；期限剩兩個月又十天",
+        "knowledge": "箱子封在法院；傳票是警察廳批的，洋行推的",
+        "carry_forward": "婆婆在門口；警車上來了"
+      }
+    },
+    {
+      "number": 175,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "我陸家沒有縱火犯",
+      "youtube_title": "婆婆擋在門口一句我陸家沒有縱火犯，老爺子拄杖站在身後，警長退了一天，她卻半夜翻後門出去了",
+      "duration_s": 105,
+      "logline": "婆婆擋在陸家門口，陸老爺拄杖站在她身後，鄺警長退回去補法院的章；當夜溫玦自己翻後門去了白家。",
+      "hook": "陸家大門開了。婆婆站在門正中：「鄺警長，我陸家沒有縱火犯。」鄺警長舉起傳票。她看都沒看：「法院的章呢？」陸老爺的手杖在她身後點了一下地。",
+      "hook_type": "line",
+      "mid_hook": "半山路上，阿泗帶著三百工人從碼頭走上來，一個一個在路邊坐下，把半山的路坐滿了。鄺警長看著那條路，把傳票收回口袋：「明天。我補章。」",
+      "extra_hooks": [
+        "陸明珠從二樓窗戶探出來喊：「鄺警長，我嫂子在家繡花！」被小桃拉回去。"
+      ],
+      "conflict": "擋住今天的警察；她知道明天擋不住，要在今晚自己找到火的源頭。",
+      "turn": "觀眾以為擋住一天是贏了，溫玦知道那只是一天；夜裡她穿上母親的短衫，從後門翻出去，陸承宴跟在她後面——她沒攔。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "後門外的小路，她停下來，對身後的陸承宴說：「去了，就是私闖火場。」他把哨子掛到脖子上：「十點前回家。」兩個人往白家走。",
+        "question": "她半夜去燒過的地下室找什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "goxue",
+        "dalian",
+        "ganren"
+      ],
+      "spectacle": "陸家洋樓門口的人牆：婆婆在門口、陸老爺拄杖在後、二樓窗上的陸明珠；半山的路上三百工人坐成一條線，警車停在線的那頭。",
+      "glamour_shot": "婆婆說「我陸家沒有縱火犯」時眼睛直視鄺警長，句尾不帶問號；陸老爺在她身後半闔著眼，山羊鬚在風裡。",
+      "setups": [],
+      "payoffs": [
+        "s03-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "警察第一次被擋在陸家門外",
+        "三百工人坐滿半山路"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-laoye",
+        "lu-mingzhu",
+        "xiao-tao",
+        "a-si",
+        "s03-kuang-jingzhang"
+      ],
+      "locations": [
+        "陸家洋樓大門",
+        "陸家半山路",
+        "陸家洋樓後門小路"
+      ],
+      "state": {
+        "time": "二十六日白天到深夜；期限剩兩個月又十天",
+        "knowledge": "警察明天補章再來；她今夜要去火場找火源",
+        "carry_forward": "火場"
+      }
+    },
+    {
+      "number": 176,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "火從哪一排起",
+      "youtube_title": "她在燒黑的地下室找到起火點就在洋行那一排，樓梯上傳來買辦的聲音：少奶奶又來拿東西？",
+      "duration_s": 105,
+      "logline": "溫玦在燒黑的地下室找到起火點——洋行那一排帳架；周買辦與白鴻達從樓梯上下來，周買辦第一次正面跟她說話。",
+      "hook": "燒黑的地下室，手電筒掃過去：帳架全塌了，只有一排燒得比別的都深——洋行那一排。她蹲下，從灰裡撿起一根火柴梗，梗上印著半個字：「鷺」。",
+      "hook_type": "image",
+      "mid_hook": "母親那箱的位置，灰堆裡露出一角燒剩的木箱邊，上面「溫」字只剩一半。陸承宴用袖口擦了擦，把那一角木片放進口袋。",
+      "conflict": "找出火是從哪裡、用什麼點的；火場不是她的，被撞見就是私闖。",
+      "turn": "觀眾以為火場已經空了，樓梯上傳來皮鞋聲：周買辦與白鴻達走下來，周買辦像在自己家：「少奶奶夜訪，又是來拿東西？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周買辦走到她面前，推了一下眼鏡：「明天，警察會從陸家的正門進去。」他壓低聲音：「妳母親那一箱，也是從這裡拿的。她也以為拿了就贏。」",
+        "question": "周買辦為什麼現在才走到她面前？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "henla",
+        "shenfen"
+      ],
+      "spectacle": "燒黑的地下室全景：手電筒光柱掃過塌掉的帳架，洋行那一排燒成一道更深的黑，光柱停在一根火柴梗上。",
+      "glamour_shot": "溫玦蹲在灰裡撿火柴梗，手電筒的硬光從下面打上來，她抬頭看樓梯，眼神全冷；周買辦的眼鏡在樓梯上反光。",
+      "setups": [
+        "s03-t19"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "起火點在洋行那一排，火柴是金鷺的",
+        "母親的箱子燒了，陸承宴留下一角木片"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "zhou-maiban",
+        "bai-hongda",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "白家公館地下室火場",
+        "白家公館地下室樓梯"
+      ],
+      "state": {
+        "time": "二十六日深夜；期限剩兩個月又十天",
+        "knowledge": "火從洋行那一排起，火柴是金鷺的；周買辦明天讓警察進陸家正門",
+        "carry_forward": "金鷺的火柴；周買辦的話"
+      }
+    },
+    {
+      "number": 177,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "我媽沒跑",
+      "youtube_title": "老爺子看穿洋行要的是陸白兩家一起出局，丈夫提議逃去南洋她一句我媽沒跑，天亮警笛上了半山",
+      "duration_s": 100,
+      "logline": "陸老爺看穿洋行的局：縱火案要的是陸家在二審前失去站位；陸承宴提議先去南洋，溫玦不走；天亮警笛上了半山。",
+      "hook": "陸家書房，天還沒亮。陸老爺用手杖在地毯上畫了兩個圈：「白家、陸家。洋行要的是兩個圈都沒了。縱火案不是抓妳，是抓陸家的臉。」",
+      "hook_type": "line",
+      "mid_hook": "陸承宴拿出兩張船票：「南洋。師父那裡。等二審完再回來。」她看著船票，把母親的鉛筆放到票上：「我媽沒跑。」",
+      "conflict": "走還是留；洋行的局要的是陸家在二審前被拖下水。",
+      "turn": "觀眾以為陸承宴是要她逃，他拿出的第二張船票是給自己的：「妳不走，我也不走。票是備著的。」她把兩張票收進母親短衫的袖口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "警笛從半山底下響上來。窗外，三百工人從路邊站起來，站滿整條路；警車的燈在人牆外面轉。鄺警長下車，手裡的傳票這次蓋了章。",
+        "question": "三百工人擋得住蓋了章的傳票嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tianchong",
+        "henla"
+      ],
+      "spectacle": "書房地毯上手杖畫的兩個圈；切到窗外，半山的路上三百工人同時站起來，警車的燈在人牆外面打成一片紅。",
+      "glamour_shot": "溫玦把母親的鉛筆放到船票上，說「我媽沒跑」時抬眼，燭光下她的眼睛是乾的；陸承宴看她，把第二張票翻過來給她看。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "看懂洋行的局：陸白兩家一起出局，深水碼頭無主",
+        "兩張南洋船票收進袖口（為第四季備著）"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-laoye",
+        "lu-furen",
+        "a-si",
+        "s03-kuang-jingzhang",
+        "shifu"
+      ],
+      "locations": [
+        "陸家書房",
+        "陸家半山路"
+      ],
+      "state": {
+        "time": "二十七日天亮；期限剩兩個月又八天",
+        "knowledge": "洋行要兩家一起出局；傳票蓋了章；她決定不走",
+        "carry_forward": "門口"
+      }
+    },
+    {
+      "number": 178,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "我去",
+      "youtube_title": "婆婆祖父三百工人堵在門口，她自己走出來說我去，丈夫要跟，她只說十點前回家",
+      "duration_s": 110,
+      "logline": "蓋了章的傳票到了門口；婆婆、陸老爺、阿泗的三百工人堵成人牆；溫玦自己走出來說「我去」，臨走只留一句規矩。",
+      "hook": "陸家大門，婆婆還站在正中：「章呢？」鄺警長把傳票舉起來，法院的紅章。婆婆看了很久，沒讓。陸老爺的手杖在她身後點了第二下。",
+      "hook_type": "danger",
+      "mid_hook": "人牆後面，門慢慢開了。溫玦穿著淺色的旗袍走出來，頭髮鬆鬆挽著，像第一天進門那樣。她把手搭在婆婆肩上：「媽，我去。」",
+      "extra_hooks": [
+        "陸明珠衝出來擋在她前面：「要抓先抓我！我也會打！」溫玦摸了摸她的頭：「妳不會。」",
+        "鄺警長看著這一家人，把帽簷壓低了一點，說了一句不像警察的話：「少奶奶，車上有毯子。」"
+      ],
+      "conflict": "家人要擋，她要自己走；陸承宴要跟，她不許。",
+      "turn": "觀眾以為人牆會把警察擋回去第二次，擋開人牆的是她自己：她不要陸家為她跟警察衝突，二審要的是陸家乾乾淨淨。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陸承宴追到車門邊：「我跟。」她回頭，手搭在車門上：「十點前回家。」婆婆把一樣東西塞進她手心——母親的鉛筆。車門關上。",
+        "question": "她還回得來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "goxue",
+        "ganren",
+        "dalian",
+        "tianchong"
+      ],
+      "spectacle": "陸家洋樓門口的人牆全景：婆婆、陸老爺、陸明珠、小桃、沈婉清在門口，三百工人站滿半山路，中間一條讓出來的路，她一個人走過去。",
+      "glamour_shot": "溫玦穿淺色旗袍走過人牆，長髮鬆鬆挽著，像第一天；走到車門回頭說「十點前回家」那一格，眼睛是軟的，背是直的。",
+      "setups": [],
+      "payoffs": [
+        "s03-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "警察沒踏進陸家的門，她自己走出去",
+        "母親的鉛筆到她手上",
+        "陸家全家、三百工人、沈婉清都站在門口"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "lu-furen",
+        "lu-laoye",
+        "lu-mingzhu",
+        "xiao-tao",
+        "shen-wanqing",
+        "a-si",
+        "s03-kuang-jingzhang",
+        "wen-yingzhen"
+      ],
+      "locations": [
+        "陸家洋樓大門",
+        "陸家半山路"
+      ],
+      "state": {
+        "time": "二十七日早上；期限剩兩個月又六天",
+        "knowledge": "她被帶走，陸家沒有跟警察衝突；鉛筆在她手上",
+        "carry_forward": "警車下山；路邊的車"
+      }
+    },
+    {
+      "number": 179,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "車裡的人",
+      "youtube_title": "警車下山經過白家的車，買辦坐在裡面推了一下眼鏡，警長卻在車上低聲說火柴盒不是白家的",
+      "duration_s": 105,
+      "logline": "警車下山，溫玦從車窗看見周買辦坐在白家的車裡；鄺警長在車上低聲告訴她火場的火柴盒是誰的。",
+      "hook": "警車下山，轉彎處停著白家的黑車。後座的車窗搖下一半，周買辦坐在裡面，看著她，推了一下眼鏡。白鴻達在他旁邊，沒看她。",
+      "hook_type": "image",
+      "mid_hook": "陸承宴的車跟在警車後面，不超、不停，一路跟到山腳；三百工人在路邊沒動，阿泗第一個轉身，往碼頭走——去守那一箱。",
+      "conflict": "被帶走的路上看清誰坐在哪輛車裡；周買辦為什麼要親自來看。",
+      "turn": "觀眾以為鄺警長只是奉命辦事，他在車上背對著她低聲說：「火場的火柴盒，不是白家的。是金鷺的。」他看了一眼後視鏡：「少奶奶，我也看得懂帳。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "鄺警長的聲音更低：「周先生今早來警察廳，就為了看妳上這輛車。他要二審那天，陸家沒人敢坐進法院。」後視鏡裡，白家的車跟了上來。",
+        "question": "金鷺的火柴盒，是誰留在火場的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "xuanyi",
+        "shangzhan"
+      ],
+      "spectacle": "警車從半山下來的全景：前面一輛警車、後面一輛陸家的車、轉彎處一輛白家的黑車；三輛車在同一個彎道上。",
+      "glamour_shot": "溫玦坐在警車後座，淺色旗袍、鬆挽的頭髮，從車窗看周買辦那一秒眼睛慢慢變冷，然後垂下去，像一個被帶走的孤女。",
+      "setups": [],
+      "payoffs": [
+        "s03-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周買辦現身的目的：要陸家在二審前失去出庭的臉",
+        "鄺警長站到了看得懂帳的一邊：火柴盒是金鷺的"
+      ],
+      "characters": [
+        "wen-jue",
+        "s03-kuang-jingzhang",
+        "zhou-maiban",
+        "bai-hongda",
+        "lu-chengyan",
+        "a-si"
+      ],
+      "locations": [
+        "陸家半山路",
+        "警車"
+      ],
+      "state": {
+        "time": "二十七日上午；期限剩兩個月又六天",
+        "knowledge": "周買辦親自來看她被帶走；火柴盒是金鷺的；鄺警長看得懂帳",
+        "carry_forward": "白景謙站在路邊"
+      }
+    },
+    {
+      "number": 180,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "不是我放的",
+      "youtube_title": "警車開走，繼兄站在路邊掏出一盒火柴轉了一圈，對身後的情敵說：不是我放的，是他",
+      "duration_s": 140,
+      "logline": "警車開走，白景謙站在路邊看著車尾；他掏出一盒金鷺的火柴在手裡轉，對沈婉清說出放火的人是誰。",
+      "hook": "警車在山腳的路口停了一下，等一輛貨車過。溫玦從後窗看出去：路邊站著白景謙，深灰三件式，手插在口袋裡，看著她。他沒有笑。",
+      "hook_type": "image",
+      "mid_hook": "沈婉清從人牆裡走下來，走到白景謙身後三步停住：「你為什麼來？」他沒回頭：「看她走。」他從口袋裡掏出一盒火柴——金鷺的綠色火柴盒。沈婉清的呼吸停了。",
+      "extra_hooks": [
+        "陸承宴的車經過白景謙身邊時慢了下來，兩個男人隔著車窗對看了一秒，誰都沒說話。",
+        "警車後座，溫玦把母親的鉛筆握在手心，鄺警長從後視鏡看她一眼，把車開上了去警察廳的路。"
+      ],
+      "conflict": "她被帶走了；放火的人站在路邊，而全城只有她一個嫌犯。",
+      "turn": "觀眾以為火柴盒在白景謙手裡就是他放的，他把火柴盒在手裡轉了一圈，說出來的名字不是他自己。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "警車開走，白景謙站在路邊看著車尾，掏出一盒火柴在手裡轉了一圈，對身後的沈婉清說：「不是我放的。是他。」他看向白家的車。",
+        "question": "「他」是白鴻達，還是周買辦？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "henla",
+        "goxue",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "山腳路口：警車尾燈遠去，路邊一個深灰三件式的人影，手裡一盒綠色火柴盒轉了一圈，鏡頭順著他的視線搖到白家的黑車。",
+      "glamour_shot": "白景謙看著車尾的側臉，薄唇、髮絲一絲不亂、袖扣在晨光裡閃；他說「是他」時眼睛看向白家的車，這一季他第一次不笑。",
+      "setups": [],
+      "payoffs": [
+        "s03-t18",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "放火的人不是白景謙，他指向白家的車",
+        "鄺警長看得懂帳，陸家與三百工人全站在她這邊",
+        "那一箱封在法院，副本在陸家"
+      ],
+      "characters": [
+        "wen-jue",
+        "lu-chengyan",
+        "bai-jingqian",
+        "shen-wanqing",
+        "bai-hongda",
+        "zhou-maiban",
+        "s03-kuang-jingzhang"
+      ],
+      "locations": [
+        "陸家半山路山腳路口",
+        "警車"
+      ],
+      "state": {
+        "time": "二十七日上午；期限剩兩個月又六天",
+        "knowledge": "白景謙說火是『他』放的，看向白家的車；她在去警察廳的路上；第三頁只讀了第一句",
+        "carry_forward": "警察廳；白景謙說的『他』；兩張南洋船票在袖口"
+      }
+    }
+  ]
+}
