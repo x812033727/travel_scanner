@@ -1,13 +1,13 @@
 ---
 id: 2026-10-28-localize-twelve-ai-foundation-life-guides
 title: Localize twelve AI foundation life guides into four languages
-status: in-progress
+status: done
 priority: P1
 area: api
 owner: codex-gpt6-life-ai-foundations-20261028
 claimed_at: 2026-10-28T07:12:50Z
 created_at: 2026-10-28T07:12:47Z
-completed_at:
+completed_at: 2026-10-28T08:23:21Z
 branch: codex/localize-travel-life-20261028-next
 depends_on: []
 scope:
@@ -59,7 +59,7 @@ have separate tasks and evidence.
 - [x] All twelve live sources have fresh source/visibility/version bindings and a source fact review before translation.
 - [x] All 48 missing documents and text-bearing images are complete, schema-valid and independently reviewed with exact artifact/document/asset hashes.
 - [x] Original repository documents/images and existing live source rows are preserved; any repository-only source-description difference has explicit preservation admission.
-- [ ] Native bundle assembly/install and replay pass, applicable content checks pass, and a guarded content PR exists.
+- [x] Native bundle assembly/install and replay pass, applicable content checks pass, and a guarded content PR exists.
 - [x] A separate release task depends on this task; no authored or rendered document is mislabeled published.
 
 ## Steps
@@ -70,7 +70,7 @@ have separate tasks and evidence.
 - [x] Pin a scoped baseline and prepare all 48 missing locales.
 - [x] Complete the ChatGPT-authenticated native translation run, retaining every attempt and failure.
 - [x] Render, independently review each locale and apply only reviewed corrections.
-- [ ] Assemble/install the native bundle, check source preservation and idempotency, test and open the content/release PR cycle.
+- [x] Assemble/install the native bundle, check source preservation and idempotency, test and open the content/release PR cycle.
 
 ## How to verify
 
@@ -217,3 +217,5 @@ application, native materialization, rendering and independent re-review.
 | ai-term-transformer | ja | Transformer アーキテクチャ（Transformer）とは | `c3f67339bda928d8eb4d20ba4830e2b7387817e77618d27435b2027c6e2079f0` |
 | ai-term-transformer | ko | Transformer 아키텍처(Transformer)란 무엇인가 | `10b08afaac0ba5fb881b79f81c784fadc2c993bf9a51cadc6e8b2cec831c46c9` |
 | ai-term-transformer | zh-CN | Transformer 架构（Transformer）是什么 | `108815f960c665d80ab04710afda38c435caae3e84914e95c8044db159cd32cd` |
+
+- Content PR: https://github.com/x812033727/travel_scanner/pull/1911, protected by no-auto-merge. Production remains a separate release task.
