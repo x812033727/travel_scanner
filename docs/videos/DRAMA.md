@@ -155,6 +155,21 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> --p
 
 `assemble`：`layoutDrama` 每場景給 `stills`（卡片，走原路）或 `clip`；`clipSegmentArgs`＝scale/pad → `setpts` → `fps=30` → `tpad` → `trim` → `overlay` 字幕條，編碼參數與投影片段相同但 `-tune film`、獨立 `CLIP_ENCODER_VERSION`，所以 `-c copy` 串接照舊；`dissolve` 在段內用上一鏡最後一格做。音訊：旁白 `asplit` 一路當側鏈，音樂 `stream_loop`＋淡入淡出＋`volume`，`sidechaincompress`，`amix=duration=first`（長度精確等於旁白），再兩段式 loudnorm；沒有 `music` 走原路。檢查：片段格數、第 0 格 PSNR、凍格 >60、音樂床 ≤ −24 LUFS、既有探測與響度。煙霧測試用 `lavfi testsrc2` 與 `sine` 造替身，不碰任何服務。
 
+### 外面畫的首格：`keyframes import`（2026-10-28 加，票 `2026-10-28-keyframes-import-keyframes-manifest-judge`）
+
+站主要在 Colab 的 GPU 畫首格（開源模型拿定妝照當參照）再做片段，所以關鍵影格也有了跟 `clips import` 對稱的入口：
+
+```bash
+node tools/video/cli.mjs keyframes import --slug <SLUG> --shot <id> --file <png|jpg> --provider colab|hailuo-web|external [--judge] [--credits N] [--usd N] [--note "…"] [--force]
+```
+
+- **前提與 `keyframes` 一樣**：lint 零錯誤（否則 1）；有角色時 look 關卡 `approved` 且每角色有選定的設定圖（否則 3）；鏡頭要有自己的關鍵影格（從別鏡切的 `source` 鏡沒有，2）。檔案要是 PNG 或 JPEG，至少 1280×720（小於就 `needs_review`，`--force` 留下）。
+- **做什麼**：複製成 `keyframes/<shot>-import-<n>.<png|jpg>`（同一個檔再匯入沿用編號，不同的檔編下一號並取代這一鏡的圖），寫進 `keyframes/manifest.json`，綁現在的 `look_hash` 與 `visual_hash`（投影片是 `pictures_hash`），跟 `keyframes` 畫的一樣；manifest 變了，storyboard 關卡的核准就 stale，站主再看一次。
+- **judge**：沒有 `--judge` 是站主自己的選擇，`needs_review: false`、`judge: null`；`--judge` 把圖與該鏡角色選定的設定圖送站上 judge，問 `keyframeRubric` 同一組題（每角色一題識別題、prompt、style、clean、no_text、字幕帶），沒過就跟畫失敗的 take 一樣 `needs_review: true` 帶 `problems` 與 `fixes`、結束碼 1，`--force` 留下（`forced: true`）。judge 一次 US$0.01，跟 `--usd` 一樣過 `spend` 與每片上限。
+- **manifest 的形狀**：`file`、`sha256`、`key: null`、`seed: null`、`width`、`height`、`qc`、`judge`、`takes`（每次匯入一筆）、`needs_review`，加 `provider`、`credits`、`imported_at`（與 `note`、`forced`）。`clips import` 與 `clips` 用它當首格（第 0 格 PSNR），`entryStands` 把沒有 judge 戳記而 `needs_review: false` 的圖當站得住的。
+- **帳本**：一筆 `{ stage: "keyframes", kind: "image", id, provider, credits, seconds: 0, cost_usd, file, sha256, status: "imported" }`；`importedTotals` 只把 `kind: "clip"` 算成片段，首格只算點數與美元。`--usd` 先以 `import:<shot>:<sha256>` 預留，記成就取代。
+- **沒做**：不重畫接觸表（contact sheet），後台看到的縮圖是上一次 `keyframes` 畫的；要更新就再跑一次 `keyframes`（從快取拿圖、每鏡再 judge 一次）。
+
 ### manga 等級的關鍵影格用是非題（2026-10-24 加，票 `2026-10-04-fault-checks-for-the-drama-judges`）
 
 打分數的 judge 把「挑不出毛病」打成 7、從不往上，站主的門檻也是 7（[`ILLUSTRATED.md`](ILLUSTRATED.md) §judge 的刻度與判定沿用，2026-10-04 量的）。貼圖漫劇把這件事放大了：《系統說我是 BUG》第 1 集 46 鏡在 2026-10-23 兩輪提示詞修正後仍擋在關鍵影格，每鏡最佳分 5.08–7.03、≥ 7 的只有 1 鏡，判詞最多的是 image-01 的上下黑邊（42 次）與 `clean`（85 次）。所以 `visual_tier === "manga"` 的作品（單集或合集，`series.json` 的 `visual_tier`）在伺服器宣告 `limits.judge_checks` 時改送是非題（`media/keyframes.mjs` 的 `keyframeChecks({ characters, subtitleBand, craft: false })`），`judge_min_score` 不動；動畫漫劇（`clips`／`hybrid`／`stills`）的設定圖、關鍵影格、片段照舊打分數，它們的出圖還沒量過。
