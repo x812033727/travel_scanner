@@ -437,3 +437,127 @@ test("h3.sh: check runs the manifest checker without the upstream runner; batch 
   run("bash", [H3, "single", "--mode", "reference", "--image", "a.png"], withRunner);
   assert.equal(readFileSync(path.join(home, "scripts", "calls.txt"), "utf8"), "single --mode reference --image a.png");
 });
+
+// ---- First frames on Colab: the Qwen-Image-Edit notebook, its manifest check and runner (route B) ----
+
+const IMAGES = path.join(SCRIPTS, "images.py");
+const CHECK_IMAGES = path.join(SCRIPTS, "check_images_manifest.py");
+const NOTEBOOK = path.join(ROOT, ".agents", "skills", "minimax-h3-colab", "assets", "qwen_image_edit.ipynb");
+
+// A colab CLI for the first-frame runner: records every call, prints the seed line on exec, and
+// writes a PNG whose IHDR says 1312x736 on download (the runner reads only the header).
+const FAKE_COLAB_IMAGES = `#!/usr/bin/env bash
+echo "$*" >> "$FAKE_COLAB_LOG"
+case " $* " in
+  *" new "*|*" upload "*|*" stop "*) exit 0 ;;
+  *" exec "*) echo "QIE_SEED_USED: 42"; exit 0 ;;
+  *" download "*) out="\${@: -1}"; printf '\\x89PNG\\r\\n\\x1a\\n\\0\\0\\0\\rIHDR\\0\\0\\x05\\x20\\0\\0\\x02\\xe0' > "$out"; exit 0 ;;
+  *) echo "fake colab: unexpected $*" >&2; exit 9 ;;
+esac
+`;
+
+function imagesDir() {
+  const { home, env } = sandbox();
+  writeFileSync(path.join(home, "bin", "colab"), FAKE_COLAB_IMAGES);
+  const dir = path.join(home, "ff");
+  mkdirSync(path.join(dir, "refs"), { recursive: true });
+  mkdirSync(path.join(dir, "prompts"));
+  for (const name of ["xuyan.png", "aling.png", "set.png"]) writeFileSync(path.join(dir, "refs", name), "ref");
+  writeFileSync(path.join(dir, "prompts", "s01.txt"), "Xu Yan and A-ling at the gate. Reference images: image 1 is the character sheet of Xu Yan; image 2 is A-ling; image 3 is the location.");
+  const job = { id: "s01", title: "e031 s01", reference_images: ["refs/xuyan.png", "refs/aling.png", "refs/set.png"], prompt_file: "prompts/s01.txt", width: 1312, height: 736, output_name: "s01-t1.png" };
+  return { home, env: { ...env, FAKE_COLAB_LOG: path.join(home, "calls.log") }, dir, job };
+}
+
+test("qwen_image_edit.ipynb: valid notebook, every code cell compiles, and it reads the settings images.py sends", { skip: !POSIX }, () => {
+  const notebook = JSON.parse(readFileSync(NOTEBOOK, "utf8"));
+  assert.equal(notebook.nbformat, 4);
+  const code = notebook.cells.filter((c) => c.cell_type === "code").map((c) => c.source.join(""));
+  assert.ok(code.length >= 5);
+  const compiled = run(PYTHON, ["-I", "-c", "import json, sys\nnb = json.load(open(sys.argv[1], encoding='utf-8'))\nfor i, c in enumerate(nb['cells']):\n    if c['cell_type'] == 'code': compile(''.join(c['source']), f'cell {i}', 'exec')\nprint('compiled')", NOTEBOOK], process.env);
+  assert.equal(compiled.code, 0, compiled.err);
+  const text = code.join("\n");
+  for (const name of ["QIE_WIDTH", "QIE_HEIGHT", "QIE_PROMPT_FILE", "QIE_REFERENCE_IMAGES", "QIE_OUTPUT_PATH", "QIE_SEED", "QIE_LATENT", "QIE_LORA", "QIE_JOB_TIMEOUT_SECONDS", "QIE_NEGATIVE_FILE", "QIE_STEPS", "QIE_CFG"]) {
+    assert.match(text, new RegExp(`os\\.environ\\.get\\("${name}"`), `${name} is read from the environment`);
+  }
+  for (const node of ["TextEncodeQwenImageEditPlus", "ModelSamplingAuraFlow", "CFGNorm", "KSampler", "EmptySD3LatentImage", "SaveImage"]) assert.ok(text.includes(`"${node}"`), node);
+  assert.match(text, /qwen_image_edit_2509_fp8_e4m3fn\.safetensors/);
+  assert.match(text, /Qwen-Image-Edit-2509-Lightning-8steps-V1\.0-bf16\.safetensors/);
+  assert.match(text, /QIE_SEED_USED:/, "the seed the notebook used is printed for the receipt");
+  assert.match(text, /made\.size == \(WIDTH, HEIGHT\)/, "the output must be the canvas size");
+});
+
+test("check_images_manifest.py: a sound first-frame manifest passes; H3's <Picture> tag and a prompt that never names its images only warn", { skip: !POSIX }, () => {
+  const { env, dir, job } = imagesDir();
+  const good = path.join(dir, "ff.json");
+  writeFileSync(good, JSON.stringify({ jobs: [job] }));
+  const ok = run(PYTHON, ["-I", CHECK_IMAGES, good], env);
+  assert.equal(ok.code, 0, ok.err + ok.out);
+  assert.match(ok.out, /0 error\(s\), 0 warning\(s\)/);
+  const warn = path.join(dir, "warn.json");
+  writeFileSync(warn, JSON.stringify({ jobs: [{ ...job, prompt_file: undefined, prompt: "<Picture 1> stays. A gate at dawn.", width: 1344, height: 768 }] }));
+  const warned = run(PYTHON, ["-I", CHECK_IMAGES, warn], env);
+  assert.equal(warned.code, 0, warned.err);
+  assert.match(warned.out, /uses <Picture N>/);
+  assert.match(warned.out, /never says which image is which/);
+  assert.match(warned.out, /1344x768 is not 16:9/);
+});
+
+test("check_images_manifest.py: the errors that would cost compute units exit 1 and are all named", { skip: !POSIX }, () => {
+  const { env, dir, job } = imagesDir();
+  const bad = path.join(dir, "bad.json");
+  writeFileSync(bad, JSON.stringify({ jobs: [
+    { ...job, reference_images: [...job.reference_images, "refs/xuyan.png"] },
+    { ...job, id: "s02", reference_images: ["refs/missing.png"], width: 1000, height: 736, seed: -1, latent: "image2" },
+    { ...job, id: "s02", prompt_file: undefined, prompt: "image 4 is the sky", width: 1344, height: 1024 },
+    { id: "s03", reference_images: ["refs/set.png"], prompt: "   " },
+  ] }));
+  const result = run(PYTHON, ["-I", CHECK_IMAGES, bad], env);
+  assert.equal(result.code, 1);
+  for (const pattern of [/s01: reference_images must list 1-3 images/, /s02: reference image missing or empty: refs\/missing\.png/, /width=1000 must be a positive multiple of 16/, /seed=-1/, /latent='image2'/, /s02: duplicate id/, /prompt names image 4 but the job has 3 image\(s\)/, /1344x1024 exceeds the 1344x768 area/, /duplicate output_name s01-t1\.png/, /s03: the prompt is empty/]) {
+    assert.match(result.err, pattern);
+  }
+  const many = path.join(dir, "many.json");
+  writeFileSync(many, JSON.stringify({ jobs: Array.from({ length: 41 }, (_, i) => ({ ...job, id: `s${i}`, output_name: `s${i}.png` })) }));
+  assert.match(run(PYTHON, ["-I", CHECK_IMAGES, many], env).err, /41 jobs; a batch takes at most 40/);
+});
+
+test("h3.sh images: refuses a broken manifest before any upload; otherwise paints each job on the given session and keeps the seed", { skip: !POSIX }, () => {
+  const { home, env, dir, job } = imagesDir();
+  const bad = path.join(dir, "bad.json");
+  writeFileSync(bad, JSON.stringify({ jobs: [{ ...job, width: 1000 }] }));
+  const refused = run("bash", [H3, "images", "--manifest", bad, "--output-dir", path.join(dir, "out")], env);
+  assert.equal(refused.code, 1);
+  assert.match(refused.err, /fix the manifest or pass --no-check/);
+  assert.ok(!existsSync(env.FAKE_COLAB_LOG), "colab was never called");
+
+  const good = path.join(dir, "ff.json");
+  writeFileSync(good, JSON.stringify({ jobs: [job, { ...job, id: "s02", output_name: "s02-t1.png", seed: 7, lora: false, latent: "image1" }] }));
+  const progress = path.join(dir, "progress.json");
+  const painted = run("bash", [H3, "images", "--manifest", good, "--output-dir", path.join(dir, "out"), "--progress", progress, "--session", "zt31"], env);
+  assert.equal(painted.code, 0, painted.err + painted.out);
+  const state = JSON.parse(readFileSync(progress, "utf8"));
+  assert.equal(state.status, "completed");
+  assert.equal(state.session_status, "active", "a session given by name is left running for the clips");
+  assert.deepEqual(state.jobs.map((j) => [j.id, j.status, j.seed]), [["s01", "completed", 42], ["s02", "completed", 42]]);
+  assert.equal(statSync(path.join(dir, "out", "s01-t1.png")).size, 24);
+  const calls = readFileSync(env.FAKE_COLAB_LOG, "utf8").trim().split("\n");
+  assert.ok(!calls.some((c) => / new /.test(c)), "no session was created");
+  assert.equal(calls.filter((c) => / upload /.test(c)).length, 8, "three pictures and one prompt per job");
+  const execs = calls.filter((c) => / exec /.test(c));
+  assert.equal(execs.length, 2);
+  assert.match(execs[0], /--env QIE_WIDTH=1312 --env QIE_HEIGHT=736 --env QIE_PROMPT_FILE=\/content\/qie_s01_prompt\.txt --env QIE_REFERENCE_IMAGES=\["\/content\/qie_s01_reference_1\.img","\/content\/qie_s01_reference_2\.img","\/content\/qie_s01_reference_3\.img"\]/);
+  assert.match(execs[0], /QIE_LATENT=empty --env QIE_LORA=on/);
+  assert.match(execs[1], /QIE_LATENT=image1 --env QIE_LORA=off .*--env QIE_SEED=7/);
+  assert.match(execs[1], /--file \S+qwen_image_edit\.ipynb$/);
+  assert.match(calls.at(-1), /download --session zt31 \/content\/qie_s02_output\.png .*s02-t1\.png$/);
+
+  // Without --session the runner creates one and stops it; --only narrows the jobs.
+  rmSync(env.FAKE_COLAB_LOG);
+  const owned = run(PYTHON, ["-I", IMAGES, "batch", "--manifest", good, "--output-dir", path.join(dir, "out2"), "--only", "s02"], env);
+  assert.equal(owned.code, 0, owned.err);
+  const ownedCalls = readFileSync(env.FAKE_COLAB_LOG, "utf8");
+  assert.match(ownedCalls, /new --session qie-\S+ --gpu A100 --high-mem/);
+  assert.match(ownedCalls, /stop --session qie-/);
+  assert.ok(!/qie_s01_/.test(ownedCalls), "s01 was skipped");
+  assert.ok(existsSync(path.join(dir, "out2", "s02-t1.png")));
+});
