@@ -38,3 +38,30 @@ node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <mp4> \
 ## 4. 之後
 
 照常 `music`、`assemble`；`status` 會列「imported: external N」，`run_report.mjs` 把匯入的跟買的分開。`clips --force` 會把匯入的那鏡重買，要重做別的鏡用 `--shot`。
+
+## 5. 首格也在 Colab 畫（Qwen-Image-Edit-2509）
+
+海螺時期的首格是圖片頁用定妝照、三視圖與場景圖當參照畫的；沒有海螺時，`scripts/images.py` 用本 repo 自己的
+`assets/qwen_image_edit.ipynb`（ComfyUI 原生 Qwen-Image-Edit-2509，Apache 2.0，官方 2509 範本的節點與 8 步 Lightning LoRA）
+在同一個 Colab session 畫，`h3.sh images` 包起來、`h3.sh images-check` 先在本機擋錯。模型兩組約 29 GiB
+（`Comfy-Org/Qwen-Image-Edit` 的 `qwen_image_edit_2509_fp8_e4m3fn`、`Comfy-Org/Qwen-Image` 的 `qwen_2.5_vl_7b_fp8_scaled` 與
+`qwen_image_vae`、`lightx2v/Qwen-Image-Lightning` 的 Edit-2509 8 步 LoRA），跟 H3 的 40 GiB 以上同在 `/content`：第一次跑先看磁碟。
+
+manifest（`jobs[]`，相對路徑以 manifest 所在目錄為準；一批最多 40 張）：
+
+| 欄位 | 怎麼填 |
+| --- | --- |
+| `reference_images` | 1–3 張（`TextEncodeQwenImageEditPlus` 只有 image1–image3）：定妝照在前、場景圖在後 |
+| `prompt_file` / `prompt` | 畫面描述加一句對應表：`image 1 is the character sheet of Xu Yan: keep his face, hair, costume …; image 3 is the location …`。`<Picture N>` 是 H3 的標記，這裡會被警告 |
+| `width` / `height` | 預設 **1312×736**（16 的倍數、面積 ≤ 1344×768），直接是 H3 首格鏡的畫布，不用再 `fit_first_frame.sh` |
+| `seed`、`steps`、`cfg`、`lora`、`latent` | 都可省略：LoRA 開時 8 步、CFG 1；`lora: false` 走 20 步、CFG 4 的 base 設定；`latent: "image1"` 從第一張參照圖編碼（只改一點的重畫），預設 `empty` 畫新構圖 |
+| `output_name` | `<id>.png`；《種田》用 `sNN-tK.png`（`assemble-v4.mjs` 的 `pick` 讀最大的 take） |
+
+跑法：`h3.sh start --session NAME` 開一個 A100 高 RAM runtime，`h3.sh images --manifest ff.json --output-dir first-frames/
+--progress ff.progress.json --session NAME` 畫完留著 session，再用同一個 `--session NAME` 跑 `h3.sh batch` 的片段，最後
+`h3.sh stop`。沒給 `--session` 時 `images.py` 自己開一個並在結束時關掉。`progress.json` 記每張的 seed（筆記本印
+`QIE_SEED_USED:`）、尺寸與 bytes；`exec` 逾時後遠端可能還在跑，用 `--only s01,s02` 只重跑沒 `completed` 的。
+
+首格畫完要審（內容規則、臉像不像定妝照），過了才進 `first_frame` 的片段 manifest；它不是 judge 過的關鍵影格，所以
+`clips import` 的第 0 格 PSNR 對的是這張圖本身。第一次實跑要記：一張幾秒、幾 CU、空白 latent 的構圖是否照提示詞、三人同框
+第三人（只剩文字描述）的臉。本 repo 2026-10-28 沒實拍過。

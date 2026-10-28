@@ -7,6 +7,10 @@
 #   h3.sh batch --manifest jobs.json --output-dir out/ --progress out/progress.json
 #   h3.sh start --session NAME | h3.sh stop --session NAME
 #   h3.sh test                               upstream's offline tests (fake colab, no credits)
+#   h3.sh images-check --manifest ff.json    offline first-frame manifest check (check_images_manifest.py)
+#   h3.sh images --manifest ff.json --output-dir first-frames/ [--session NAME] [--progress p.json]
+#                                            paint first frames with Qwen-Image-Edit (scripts/images.py);
+#                                            runs the check first (--no-check skips it)
 #
 # Every other argument goes to scripts/runner.py of the upstream skill unchanged.
 # Defaults (override with the environment): COLAB_GPU=A100, COLAB_EXEC_TIMEOUT=3600,
@@ -38,6 +42,35 @@ case "${1:-}" in
     done
     [[ -n "$manifest" ]] || { echo "[minimax-h3-colab] check needs --manifest <jobs.json>" >&2; exit 2; }
     exec python3 -I "$HERE/check_manifest.py" "$manifest" ;;
+  images-check)
+    shift
+    manifest=""
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --manifest) manifest="${2:-}"; shift 2 ;;
+        --manifest=*) manifest="${1#--manifest=}"; shift ;;
+        *) manifest="${manifest:-$1}"; shift ;;
+      esac
+    done
+    [[ -n "$manifest" ]] || { echo "[minimax-h3-colab] images-check needs --manifest <ff.json>" >&2; exit 2; }
+    exec python3 -I "$HERE/check_images_manifest.py" "$manifest" ;;
+  images)
+    # This skill's own runner and notebook: no upstream runner needed, only the colab CLI.
+    shift
+    args=(); manifest=""; check=1
+    while [[ $# -gt 0 ]]; do
+      case "$1" in
+        --no-check) check=0; shift ;;
+        --manifest) manifest="${2:-}"; args+=("$1" "${2:-}"); shift 2 ;;
+        --manifest=*) manifest="${1#--manifest=}"; args+=("$1"); shift ;;
+        *) args+=("$1"); shift ;;
+      esac
+    done
+    [[ -n "$manifest" ]] || { echo "[minimax-h3-colab] images needs --manifest <ff.json>" >&2; exit 2; }
+    if [[ $check -eq 1 ]]; then
+      python3 -I "$HERE/check_images_manifest.py" "$manifest" || { echo "[minimax-h3-colab] fix the manifest or pass --no-check" >&2; exit 1; }
+    fi
+    exec python3 -I "$HERE/images.py" batch "${args[@]}" ;;
 esac
 
 [[ -f "$RUNNER" ]] || { echo "[minimax-h3-colab] upstream runner missing at $RUNNER; run bootstrap.sh install" >&2; exit 2; }

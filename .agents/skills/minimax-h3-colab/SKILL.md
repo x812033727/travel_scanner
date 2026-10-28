@@ -15,6 +15,7 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 | **片段僵硬、像貼圖、不流暢**：原因、正文的軌跡寫法、秒數與畫布、三個取樣 profile、錯誤目錄、收工看什麼 | `.agents/skills/minimax-h3-colab/references/motion-quality.md` |
 | 後台「Google Colab」區與主機 agent 的安裝、信任邊界 | `ops/ai-accounts/README.md` |
 | 片段進產線：哪些作品收得進、每鏡的 manifest 欄位、收據與 `clips import` 的寫法 | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` |
+| **首格也在 Colab 畫**（Qwen-Image-Edit-2509，吃定妝照與場景圖）：筆記本、`h3.sh images` 的 manifest、檢查器、跟 H3 共用 session | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` §5；《種田》的轉檔與一集流程在 `docs/videos/series-plans/zhong-tian-qu-qi/production/colab/README.md` |
 | 匯入程序本身（唯一的一份） | `.agents/skills/animation-production/references/stage-preconditions.md` 最後一節 |
 | 開拍前的鎖定包、每鏡秒數與定稿正文 | `.agents/skills/animation-preproduction/SKILL.md` |
 | H3 正文的官方外框、模型會誤讀什麼 | `.agents/skills/animation-camera/references/model-misreads.md` 第六節 |
@@ -25,7 +26,7 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 2. **權杖不進 chat、repo、manifest、log。** 只有站主要存 secret 時才跑 `pair.py export`，印出來那一行是 Google refresh token，當密碼看。那個權杖帶 `cloud-platform` scope：**用沒有 GCP 專案與帳單的 Google 帳號配對**（cloud-pairing.md §1）。
 3. **花 compute units 之前站主要點頭。** 每一批先 `h3.sh usage` 抄餘額，批完再抄一次；冷啟動要裝 ComfyUI 與抓模型，所以一批放同一個 manifest 共用 session，不要一鏡開一次。GPU 配不到（方案、餘額、A100 沒貨）就如實回報，試 `--no-high-mem` 或換 GPU 前先問。
 4. **目的地先查**：有 `series.production.profile` 的作品 `clips import` 以 3 拒絕，Colab 輸出最大 1344×768 也過不了原生 1080p 的檢查。這條路給沒有 profile 的 pilot 與作品（pipeline-handoff.md §1）。
-5. **首格用通過 judge 的關鍵影格**（`first_frame` 模式），16:9 的首格用 **1312×736** 畫布（1344×768 會拉伸；`fit_first_frame.sh` 裁比例）；**買 ≥5 秒**（4 秒＝107 幀低於訓練下限，說話鏡 6 秒）；正文用鎖定包的定稿、原封不動放進 prompt 檔，寫法照 motion-quality.md 第二節（風格詞＋`<Picture 1>` 錨句、動作軌跡、一個運鏡、`holds a static shot`）；runner 與 notebook 不改寫 prompt。
+5. **首格用通過 judge 的關鍵影格**（`first_frame` 模式），16:9 的首格用 **1312×736** 畫布（1344×768 會拉伸；`fit_first_frame.sh` 裁比例；`h3.sh images` 畫出來的首格本來就是這個尺寸）；**買 ≥5 秒**（4 秒＝107 幀低於訓練下限，說話鏡 6 秒）；正文用鎖定包的定稿、原封不動放進 prompt 檔，寫法照 motion-quality.md 第二節（風格詞＋`<Picture 1>` 錨句、動作軌跡、一個運鏡、`holds a static shot`）；runner 與 notebook 不改寫 prompt。
 6. **送出前 `h3.sh check --manifest`**（`batch` 會自己先跑）：32 的倍數、`<Picture N>`、首格比例、秒數、`prompt_sha256` 對鎖定檔；有錯就不上傳。
 7. **取樣 profile 預設 `smooth`**（Ref2VA 換 8 步 LoRA）；顏值與身份鏡用 `H3_PROFILE=hero`（20 步、不掛 LoRA）另開一批；只看構圖才 `draft`。profile、seed、秒數寫進收據。
 8. **逾時不要盲目重試**：`colab exec` 逾時時遠端 kernel 可能還在跑，runner 會停掉自己開的 session 並把做完的記進 `progress.json`；重跑會重扣。
@@ -51,6 +52,12 @@ bash .agents/skills/minimax-h3-colab/scripts/h3.sh usage
 bash .agents/skills/minimax-h3-colab/scripts/fit_first_frame.sh <關鍵影格.png> <first-frames/s01.png>
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh check --manifest <jobs.json>
 
+# 3b. 首格也在 Colab 畫（沒有關鍵影格的作品；1–3 張參照圖、提示詞用「image 1 is …」指它們）：
+#     先 images-check（免費），再 images；--session 跟之後的片段共用同一個 runtime
+bash .agents/skills/minimax-h3-colab/scripts/h3.sh images-check --manifest <ff.json>
+bash .agents/skills/minimax-h3-colab/scripts/h3.sh start --session <NAME>
+bash .agents/skills/minimax-h3-colab/scripts/h3.sh images --manifest <ff.json> --output-dir <first-frames/> --progress <ff.progress.json> --session <NAME>
+
 # 4. 一支（首格 = 關鍵影格；first_frame 沒給尺寸就是 1312×736）
 H3_DURATION_SECONDS=5 bash .agents/skills/minimax-h3-colab/scripts/h3.sh single \
   --mode first_frame --image <first-frames/s01.png> --prompt <正文.txt> --output <out.mp4>
@@ -75,7 +82,7 @@ manifest 的形狀（`jobs[]`：`id`、`title`、`inference_mode`、`reference_i
 ## 離線驗證（不花錢、不碰權杖）
 
 ```bash
-node --test tools/minimax-h3-colab.test.mjs        # pair.py、bootstrap.sh token/verify、h3.sh、patch_notebook.py、check_manifest.py，用假的 colab
+node --test tools/minimax-h3-colab.test.mjs        # pair.py、bootstrap.sh token/verify、h3.sh、patch_notebook.py、check_manifest.py、images.py 與它的筆記本和檢查器，用假的 colab
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh test   # 上游 runner 的 unittest（要先 bootstrap.sh install）
 python3 -I .agents/skills/minimax-h3-colab/scripts/patch_notebook.py --dry-run   # 對抓下來的上游 notebook 印 profile 的 diff
 ```
