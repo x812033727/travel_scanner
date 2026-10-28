@@ -44,7 +44,10 @@ test("the composed description opens on the hook and the audience, links the art
 test("the body is laid out as hook, audience, then the rest as the writer paragraphed it", () => {
   assert.deepEqual(splitFirstSentence("Token 是什麼？這集回答 AI 在數什麼。"), ["Token 是什麼？", "這集回答 AI 在數什麼。"]);
   assert.deepEqual(splitFirstSentence("First 2.5% of Omni 1.1 is fine. Then more."), ["First 2.5% of Omni 1.1 is fine.", "Then more."], "a Latin period ends a sentence only before a space");
-  assert.deepEqual(splitFirstSentence("「真的嗎？」她問。"), ["「真的嗎？」", "她問。"], "the closing quote stays with its sentence");
+  assert.deepEqual(splitFirstSentence("他說：「我走了。」然後離開。"), ["他說：「我走了。」", "然後離開。"], "the closing quote stays with its sentence");
+  assert.deepEqual(splitFirstSentence("「連你也，布魯圖斯？」大概是最常被借用的遺言。這一集跟著它。"), ["「連你也，布魯圖斯？」大概是最常被借用的遺言。", "這一集跟著它。"], "a question the quote closes on does not end the sentence");
+  assert.deepEqual(splitFirstSentence("ค.ศ. 210 จิวยี่ตายที่ปากิว. ตอนนี้"), ["ค.ศ. 210 จิวยี่ตายที่ปากิว.", "ตอนนี้"], "a Thai era abbreviation does not end the sentence");
+  assert.deepEqual(splitFirstSentence("En el 44 a.C. murió César. Después vino Augusto."), ["En el 44 a.C. murió César.", "Después vino Augusto."], "a dotted Latin abbreviation does not end the sentence");
   assert.deepEqual(splitFirstSentence("沒有句點"), ["沒有句點", ""]);
   assert.deepEqual(splitFirstSentence("「徵求男子，參加危險的旅程。工資很少。」據說是廣告。後來呢？"), ["「徵求男子，參加危險的旅程。工資很少。」", "據說是廣告。後來呢？"], "a full stop inside a quote does not end the sentence");
   assert.deepEqual(splitFirstSentence("「沒有結尾。真的"), ["「沒有結尾。", "真的"], "a quote that never closes falls back to the first terminator");

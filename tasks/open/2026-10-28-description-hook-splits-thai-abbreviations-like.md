@@ -1,11 +1,11 @@
 ---
 id: 2026-10-28-description-hook-splits-thai-abbreviations-like
 title: Description hook splits Thai abbreviations like ค.ศ. as a sentence end
-status: open
+status: in-progress
 priority: P2
 area: tools
-owner:
-claimed_at:
+owner: claude-opus-curio-v2
+claimed_at: 2026-10-28T10:37:52Z
 created_at: 2026-10-28T08:07:07Z
 completed_at:
 branch:

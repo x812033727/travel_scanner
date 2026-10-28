@@ -328,10 +328,14 @@ export function dedupeLinks(body, article = null) {
 // Where the first sentence ends: a CJK terminator, or a Latin one followed by a space or the end
 // (so "2.5%" and "Omni 1.1" stay whole), and the quote or bracket that closes it. A terminator
 // inside a corner-bracket quote that the quote does not close on is the quote's own
-// (「徵求男子，參加危險的旅程。工資很少…」), so the sentence runs on to the next one; a quote that
-// never closes falls back to the first terminator.
+// (「徵求男子，參加危險的旅程。工資很少…」), so the sentence runs on to the next one; so is a
+// question or exclamation the quote closes on (「連你也，布魯圖斯？」大概是…), which a sentence
+// usually goes on past; a full stop the quote closes on ends it. A quote that never closes falls
+// back to the first terminator. A dotted abbreviation such as the Thai era marks ค.ศ. and พ.ศ.
+// (or a.C.) does not end a sentence either.
 const SENTENCE_END = /[。！？]|[.!?](?=\s|$)/gu;
 const CLOSERS = /^[」』）)\]"']/u;
+const DOTTED_ABBREVIATION = /(?:^|[\s(（])(?:\p{L}{1,3}\.)+\p{L}{1,3}$/u;
 
 function insideQuote(text, index) {
   let depth = 0;
@@ -346,7 +350,11 @@ function insideQuote(text, index) {
 export function splitFirstSentence(text) {
   const matches = [...text.matchAll(SENTENCE_END)];
   if (!matches.length) return [text.trim(), ""];
-  const ends = (each) => !insideQuote(text, each.index) || CLOSERS.test(text[each.index + each[0].length] ?? "");
+  const ends = (each) => {
+    if (each[0] === "." && DOTTED_ABBREVIATION.test(text.slice(0, each.index))) return false;
+    if (!insideQuote(text, each.index)) return true;
+    return each[0] === "。" && CLOSERS.test(text[each.index + 1] ?? "");
+  };
   const match = matches.find(ends) ?? matches[0];
   let end = match.index + match[0].length;
   while (end < text.length && CLOSERS.test(text[end])) end += 1;
