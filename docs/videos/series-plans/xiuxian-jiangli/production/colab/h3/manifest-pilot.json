@@ -1,6 +1,6 @@
 {
  "episode": "xiuxian-jiangli-e001",
- "note": "manifest 給 .agents/skills/minimax-h3-colab 的 h3.sh batch：reference_images 的 first-frames/<id>.png 要先放好（通過 judge 的關鍵影格，或 pilot 手放的首格），prompts/<id>.txt 是鎖定檔的定稿正文原封不動（prompt_sha256 等於 e001-plan-lock.json）；1344×768、24 fps、4 秒會變 4.46 秒。",
+ "note": "manifest 給 .agents/skills/minimax-h3-colab 的 h3.sh batch：reference_images 的 first-frames/<id>.png 要先放好（通過 judge 的關鍵影格，或 pilot 手放的首格），prompts/<id>.txt 是鎖定檔的定稿正文原封不動（prompt_sha256 等於 e001-plan-lock.json）；1312×736（離 16:9 不到 0.005，1344×768 會把 16:9 的首格拉伸；首格先用 .agents/skills/minimax-h3-colab/scripts/fit_first_frame.sh 裁好）、24 fps、至少 5 秒＝124 幀＝5.17 秒（4 秒只有 107 幀，低於 H3 訓練下限；見 .agents/skills/minimax-h3-colab/references/motion-quality.md）。",
  "jobs": [
   {
    "id": "s33",
@@ -10,9 +10,9 @@
     "first-frames/s33.png"
    ],
    "prompt_file": "prompts/s33.txt",
-   "duration_seconds": 4,
-   "width": 1344,
-   "height": 768,
+   "duration_seconds": 5,
+   "width": 1312,
+   "height": 736,
    "output_name": "s33-t1.mp4",
    "prompt_sha256": "8448b3293664fe9903c121d8c78a44e9226b77efecfe27e236ff5ca14cd69c3b"
   },
@@ -24,9 +24,9 @@
     "first-frames/s34.png"
    ],
    "prompt_file": "prompts/s34.txt",
-   "duration_seconds": 4,
-   "width": 1344,
-   "height": 768,
+   "duration_seconds": 5,
+   "width": 1312,
+   "height": 736,
    "output_name": "s34-t1.mp4",
    "prompt_sha256": "08c82c1c58dfa9795321ed21ca58fd67b918f076c86ffe9120d83dd0c3f652f2"
   },
@@ -38,9 +38,9 @@
     "first-frames/s35.png"
    ],
    "prompt_file": "prompts/s35.txt",
-   "duration_seconds": 4,
-   "width": 1344,
-   "height": 768,
+   "duration_seconds": 5,
+   "width": 1312,
+   "height": 736,
    "output_name": "s35-t1.mp4",
    "prompt_sha256": "54420dc3097e1f0c7ac19dea7e35e3f6e2153b1f09245abadbbe6c23c9363aab"
   }

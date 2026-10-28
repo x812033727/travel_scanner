@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-27T23:38:58Z
 completed_at:
-branch:
+branch: claude/pensive-cray-rko0pa
 depends_on: []
 scope:
   - docs/videos/xiuxian-jiangli-e001
@@ -35,6 +35,9 @@ scope:
 `node tools/video/cli.mjs lint --slug xiuxian-jiangli-e001` 0 錯誤；`drama_craft_check.mjs`、`shot_reading.mjs --route hailuo`、`shot_plan.mjs --strict` 照 `e001-lock-package.md` 第 2 節重跑；剪出的 mp4 開聲音看，說話的人嘴要動、面板字要對 `overlays.json`。
 
 ## Notes for the next person
+
+2026-10-28（claude-fable-5-1-h3-motion，只改 manifest、沒跑小樣）：`colab/h3/manifest.json` 與 `manifest-pilot.json` 全部改成至少 5 秒（124 幀；4 秒只有 107 幀低於 H3 訓練下限）與 1312×736 畫布（1344×768 會拉伸 16:9 首格），`colab/README.md` 第 3 步加 `fit_first_frame.sh` 與 `h3.sh check`，鎖定包多了變更單 8a；理由在 PR #1904 的 `.agents/skills/minimax-h3-colab/references/motion-quality.md`。`h3.sh check` 現在只剩「first-frames 缺檔」的錯，把通過 judge 的關鍵影格裁好放進去就能跑。鎖定檔的 `buy_s: 4` 沒改（`shot_plan.mjs` 的 H3 下限是另票的 scope）。
+
 
 main 在 2026-10-28 合進 PR #1894 的 skill `minimax-h3-colab`（Colab GPU 跑開源 H3，雲端 session 用權杖配對驅動）。`production/colab/README.md` 現在列兩條路：A 用那個 skill 跑片段（`h3/manifest-pilot.json`，要先配對 `COLAB_CLI_TOKEN_JSON`、首格另外畫），B 筆記本打付費 API。站主 2026-10-28 定走 A，B 已刪；首格用產線 `keyframes`。
 

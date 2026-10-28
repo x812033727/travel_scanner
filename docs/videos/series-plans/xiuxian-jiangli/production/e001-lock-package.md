@@ -96,7 +96,10 @@
 
 人工打勾（送第一支之前）：海螺帳號與方案（hailuo:pro）、餘額 ≥ 期望 2,711 點＋一成；首格上傳的路（雲端 session 做不到，要站主的瀏覽器）；生成頁 H3、2K、16:9、4 秒、單鏡；AI 潤飾關；負面欄真的有才貼；無水印下載；收據檔與停損規則；`drama_preflight.mjs --stage clips` 沒有 refuse。
 
-## 9. 還沒驗的事
+## 8a. 變更單（2026-10-28）：Colab 路線每鏡至少買 5 秒、畫布 1312×736
+
+PR #1904 的 H3 流暢度手冊（`.agents/skills/minimax-h3-colab/references/motion-quality.md`）量到 4 秒＝107 幀低於 H3 訓練範圍 124–362 幀（《種田》貼圖感的主因之一），而 1344×768 是 7:4、節點會把 16:9 的首格拉伸。站主 2026-10-28 定：`colab/h3/manifest.json` 與 `manifest-pilot.json` 的 4 秒全部改成 `duration_seconds: 5`（＝124 幀＝5.17 秒；s06 本來就是 5）、畫布改 `1312×736`；首格先用 `fit_first_frame.sh` 裁。正文沒變，`prompt_sha256` 與鎖定檔一致。鎖定檔每鏡的 `buy_s: 4` 是 `shot_plan.mjs` 對 H3 的下限，另票（`2026-10-05-shot-plan-h3-body-official-i2va`）改；在那之前 Colab 的秒數以 manifest 為準。片段的 compute units 估計照時間 ×1.25（5／4）。
+
 
 - 3D 國漫 look 的英文 `look.style` 是照 refs-dh-jobs.json 的中文定妝照提示詞翻的，沒有出過圖；定妝照出來站主要看臉。
 - 仙錄的藍金色面板只在 overlays.json 寫了文字，剪接樣式（像一頁書的半透明框）還沒做，要在 `assemble` 時照《種田》的 panel 樣式改色。
