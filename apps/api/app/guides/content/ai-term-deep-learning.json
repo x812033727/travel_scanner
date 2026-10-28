@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "深度學習（Deep Learning）是什麼",
@@ -101,6 +104,7 @@
           "width": 1600,
           "height": 900,
           "caption": "層級圖是概念示意，並不宣稱真實模型每一層都有固定人類名稱。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -246,6 +250,970 @@
         },
         {
           "title": "scikit-learn：Common pitfalls and recommended practices",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Deep Learning?",
+      "description": "Deep learning uses multilayer neural networks to learn representations at different levels, often for image, speech and text tasks. Classifying recyclables in photos illustrates hidden layers, nonlinearity, training and inference, why models may memorize backgrounds rather than objects, and trade-offs in data, compute and interpretability. Learn its relation to machine learning and use new shooting conditions to check whether a model has learned useful patterns.",
+      "hero": {
+        "src": "/guides/ai-term-deep-learning/hero-en.jpg",
+        "alt": "Three translucent geometric panels gradually transform pixel blocks into object outlines, illustrating how multilayer representations are learned.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Deep learning is a type of machine learning that uses multilayer neural networks to gradually transform raw input into representations useful for a task.",
+            "“Deep” refers to multiple computational layers, not deeper thinking. Deep learning and generative AI are not synonyms either: the former describes a technical method, while the latter describes output capabilities.",
+            "A model may rely on unsuitable shortcuts, such as classifying by tabletop color instead of object shape. Photograph the same type of object against different backgrounds, angles and lighting to see whether its classifications remain consistent.",
+            "For tabular problems with few fields and clear rules, simpler models or explicit rules may suffice. More layers alone do not make a model a more professional choice."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Deep learning is a type of machine learning that uses multilayer neural networks to gradually transform raw input into representations useful for a task. Here, “deep” refers to multiple computational layers, not deeper thinking, and having lots of data alone does not make something deep learning. It is particularly good at handling patterns for which rules are difficult to write out individually, but results still depend on data, training and validation."
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a community wants to use photos to help identify recyclables. You might want the system to distinguish cardboard boxes, metal cans and other objects. The following original scenario breaks down how multilayer networks learn and why getting demonstration photos right does not yet prove reliability in real recycling situations. Information fact-checked through 2026/9/14."
+        },
+        {
+          "type": "heading",
+          "text": "Multiple Computational Layers Gradually Transform Representations",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The paper by LeCun, Bengio and Hinton explains deep learning through multiple processing layers and representations at multiple levels of abstraction. Google's neural network teaching materials explain how hidden layers and nonlinear operations handle complex relationships in data. Simply put, the network does more than receive input and fit a straight line: it applies repeated transformations to gradually form internal representations useful for the task."
+        },
+        {
+          "type": "paragraph",
+          "text": "For images, you can think of early processing as focusing on local edges and textures, with later processing combining more complex shapes and relationships. But this is only a conceptual illustration to aid understanding. It does not mean every layer has a fixed human-readable name, or that a particular node is necessarily dedicated to “cardboard boxes.” Actual representations are usually distributed across many numerical values and operations."
+        },
+        {
+          "type": "paragraph",
+          "text": "Nonlinearity is an important part. If every layer were merely a linear transformation without nonlinear changes, the stacked layers could still be mathematically combined into a single linear transformation. Their expressive power would not automatically increase just because the network looked deep. Different network architectures arrange computations differently, and image, speech and text tasks do not necessarily use exactly the same components."
+        },
+        {
+          "type": "heading",
+          "text": "How Training Tells the Network What to Adjust",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Supervised training data for classifying recyclables might consist of a photo paired with a verified category. The model first produces scores for each category, then uses a loss function to measure the difference from the label. Backpropagation calculates how parameters affect the loss, and an optimizer updates the parameters based on those signals. This is a numerical adjustment procedure, not someone teaching nodes one by one to recognize particular objects."
+        },
+        {
+          "type": "paragraph",
+          "text": "The model encounters training examples repeatedly, but improvement during training does not mean it has met the requirements of its intended use. Photos excluded from training must be reserved to check new angles, new lighting and different appearances. If similar photos taken in a burst of the same object are split between training and testing, the test may be easier than encountering genuinely new objects, leading to an overestimate of the model's capabilities."
+        },
+        {
+          "type": "paragraph",
+          "text": "During inference, the model usually uses its trained parameters to produce results for new photos. A single user query does not necessarily update the entire network. If a product can improve through feedback, that also involves separate processes for data collection, retraining or personalization. Distinguishing training, inference and updates based on feedback makes it easier to understand what the model currently knows and how it changes."
+        },
+        {
+          "type": "heading",
+          "text": "Models May Learn Background Shortcuts",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "In this original data setup, all cardboard boxes are photographed on green tabletops, while all metal cans are photographed on white tabletops. The model may classify them using tabletop color instead of learning object shapes. If test photos follow the same shooting setup, it will appear highly accurate, yet suddenly make many errors when the tabletop changes. This illustrates the typical risk of using correlations in data in place of signals genuinely relevant to the task."
+        },
+        {
+          "type": "paragraph",
+          "text": "One check is to photograph the same type of object against different backgrounds, from different angles and under different lighting, then observe whether classifications remain consistent. Add photos showing damage, stains or partial obstruction to determine whether the system needs to flag cases it cannot classify. The expectation is not that it must get every photo right, but that you identify the conditions to which the model is overly sensitive and clearly state its scope of use."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a cardboard box is classified as a metal can after the background changes, simply adjusting the tone of the response is not enough. You need to reexamine the data distribution, labels and training settings so that object categories are no longer tied to fixed backgrounds. The reasons for failure should also guide further data collection, rather than continuing to take more nearly identical photos on the same table."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-deep-learning/diagram-1-en.svg",
+          "alt": "A photo passes through multilayer representations to a classification. A reminder below suggests changing backgrounds to check reliance on tabletop color alone.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The layer diagram is conceptual; it does not claim that every layer in a real model has a fixed human-readable name.",
+          "description": "A photo passes through multilayer representations to a classification result. A reminder below suggests testing photos with different backgrounds to check whether the model relies only on tabletop color.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Depth Is Not the Best Answer to Every Problem",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Deep learning generally requires considering training data, computing resources and deployment constraints, but not every application must train a large model from scratch. Existing models can serve as starting points and then be adapted to the task. Suitability still depends on the type of input, amount of data, accuracy requirements and maintenance costs. More layers alone do not make a model a more professional choice."
+        },
+        {
+          "type": "paragraph",
+          "text": "For tabular problems with few fields and clear rules, simpler models or explicit rules may suffice and be easier to understand. Conversely, when recognizing complex appearances from pixels, writing every rule by hand may be difficult, making multilayer representations attractive. When comparing methods, use the same data and task metrics, and consider speed and maintainability as well."
+        },
+        {
+          "type": "paragraph",
+          "text": "Interpretability is another trade-off. A model outputting a category does not mean it can provide causal reasons that humans can directly verify. A map highlighting areas of focus does not necessarily reveal the full reasons for its decision either. Users can ask to observe how the model responds to changes in its input and examine failure cases, rather than simply accepting a plausible explanation it generates separately."
+        },
+        {
+          "type": "heading",
+          "text": "Turning Technical Capabilities into Usable Features",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If a recycling classification tool is intended for ordinary residents, its interface should make clear that it identifies visual appearances in photos. Actual recycling rules may still differ depending on material processing, contamination levels or local regulations. Recognizing an object does not mean the model has verified every local disposal method. Providing disposal advice requires a separate connection to applicable, verifiable rules data."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Deep learning and generative "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " are not synonyms either. Classifying photos is one application of deep learning, but it need not generate new images; text generation models may also use deep neural networks. The former describes a technical method, while the latter describes output capabilities. Understanding this distinction helps avoid treating every neural network as a chat model."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "The most practical check for readers is to test the model with new data that reflects its actual intended use: different phones, lighting, backgrounds and uncommon objects. If it performs well only on photos carefully selected by the demonstrator, its claimed capabilities should be limited to those conditions. A model's depth is a design feature; whether it can provide reliable help in real situations still requires evidence."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Term",
+            "Meaning in This Example",
+            "What It Should Not Be Confused With"
+          ],
+          "rows": [
+            [
+              "Deep learning",
+              "Processing photos with a multilayer network",
+              "Does not mean deep thinking"
+            ],
+            [
+              "Training",
+              "Adjusting parameters based on labels",
+              "Does not mean relearning with every use"
+            ],
+            [
+              "Inference",
+              "Producing category scores for new photos",
+              "Does not mean local recycling rules have been verified"
+            ]
+          ],
+          "caption": "Deep Learning: Technical and Application Boundaries (Verified in 2026/9)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Change Irrelevant Conditions and Test Again",
+          "text": "If the same object is assigned to a different category when its background changes, the model may be relying on an unsuitable shortcut. This can reveal data problems more effectively than simply adding similar demonstration photos."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Machine Learning?",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Are Model Parameters?",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Generative AI?",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LeCun, Bengio, Hinton: Deep learning",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Neural networks",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "scikit-learn: Common pitfalls and recommended practices",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "深層学習（Deep Learning）とは",
+      "description": "深層学習は多層のニューラルネットワークを使い、データからさまざまな階層の表現を学習する手法で、画像・音声・テキストのタスクによく使われます。本記事では資源ごみの写真分類を例に、隠れ層、非線形性、訓練、推論の役割を説明し、モデルが物品ではなく背景を覚える可能性や、データ・計算資源・解釈可能性のトレードオフを解説します。深層学習と機械学習全般の関係を理解し、撮影条件を変えてモデルが本当に有用なパターンを学んだか確認できるようになります。",
+      "hero": {
+        "src": "/guides/ai-term-deep-learning/hero-ja.jpg",
+        "alt": "三層の半透明な幾何学パネルが画素のブロックを物体の輪郭へ段階的に変換し、多層の表現を学ぶ過程を示しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "深層学習は機械学習の手法の一種で、多層のニューラルネットワークを使い、生の入力をタスクに利用できる表現へ段階的に変換します。",
+            "「深い」は多層の計算構造を指し、思考が深いという意味ではありません。深層学習と生成AIも同義ではなく、前者は技術的な手法、後者は出力能力に基づく呼び方です。",
+            "モデルは、物品の形ではなく机の天板の色で分類するなど、不適切な近道に頼ることがあります。同じ種類の物品を背景・角度・照明を変えて撮影し、分類が安定するか確認できます。",
+            "項目が少なくルールが明確な表形式の問題では、より単純なモデルや明示的なルールで十分な場合があります。層が多いというだけで、より専門的だとは判断できません。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "深層学習は機械学習の手法の一種で、多層のニューラルネットワークを使い、生の入力をタスクに利用できる表現へ段階的に変換します。ここでの「深い」は多層の計算構造を指し、思考が深いという意味ではありません。また、データが多ければ深層学習と呼ぶわけでもありません。ルールを一つずつ手書きするのが難しいパターンの処理を特に得意としますが、成果は依然としてデータ、訓練、検証に左右されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "地域のコミュニティが写真を使って資源ごみの識別を補助したいと考えたとします。システムに紙箱、金属缶、その他の物品を見分けてほしいでしょう。以下では、このオリジナルの想定例を使って多層ネットワークの学習の仕組みを解きほぐし、実演用の写真で正解できても、実際の資源回収の場面で信頼できるとは限らない理由を説明します。情報の確認は2026年9月14日時点です。"
+        },
+        {
+          "type": "heading",
+          "text": "多層の計算が表現を段階的に変える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LeCun、Bengio、Hintonの論文は、多層の処理と階層的な抽象表現を使って深層学習を説明しています。Googleのニューラルネットワーク教材では、隠れ層と非線形な計算が、データの複雑な関係をどのように扱うかを解説しています。簡単にいえば、ネットワークは入力を受け取って直線を一本当てはめるだけではなく、変換を何度も重ね、タスクに役立つ内部表現を段階的に形成します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "画像の例では、初期の処理は局所的なエッジやテクスチャに着目し、その後の処理はより複雑な形や関係を組み合わせるものと考えられます。ただし、これは理解を助けるための概念図です。各層に人間が理解できる固定の名前があるわけでも、あるノードが必ず「紙箱」だけを担当するわけでもありません。実際の表現は通常、多くの数値や計算に分散しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "非線形性は重要な要素です。各層が非線形な変化を含まない線形変換だけであれば、何層重ねても数学的には一つの線形変換にまとめられます。深く見えるだけで表現力が自動的に増すわけではありません。ネットワークの構造によって計算の組み方は異なり、画像・音声・テキストのタスクがまったく同じ構成要素を使うとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "訓練はネットワークに調整箇所をどう伝えるか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "資源ごみ分類の教師あり学習では、写真と確認済みの分類を組にした訓練データを使えます。モデルはまず各クラスのスコアを出し、損失関数でラベルとの差を測ります。誤差逆伝播法でパラメータが損失に与える影響を計算し、最適化アルゴリズムがその信号に基づいてパラメータを更新します。これは数値を調整する処理であり、誰かがノードに一つずつ特定の物品を教えるわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルは訓練サンプルに繰り返し触れますが、訓練が進んだからといって、実際の用途の要求を満たしたとは限りません。訓練に使わない写真を残し、新しい角度や照明、異なる外観で確かめる必要があります。同じ物品を連写した似た写真を訓練用とテスト用の両方に振り分けると、本当に新しい物品を扱う場合より簡単になり、能力を過大評価するおそれがあります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "推論では通常、訓練済みのパラメータを使って新しい写真への結果を出します。利用者が一度質問しただけで、必ずネットワーク全体が更新されるわけではありません。製品がフィードバックに応じて改善できる場合には、別途、データ収集や再訓練、個人化の工程も関わります。訓練、推論、フィードバックによる更新を分けると、モデルが現在何を知り、どう変わるのかを理解しやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "モデルは背景に頼る近道を学ぶことがある",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "このオリジナルのデータ設定では、紙箱の写真はすべて緑色の天板の上で、金属缶はすべて白色の天板の上で撮影されています。モデルは物品の形を学ぶ代わりに、天板の色で分類するかもしれません。テスト写真も同じ撮り方なら非常に正確に見えますが、天板を変えた途端に大量の誤りが生じる可能性があります。これは、本来のタスクの手がかりをデータ上の相関で代用してしまう、典型的なリスクの例です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "確認方法として、同じ種類の物品を背景・角度・照明を変えて撮影し、分類が安定するか観察できます。さらに、破損や汚れ、部分的な遮蔽のある写真も加え、システムが「判定できない」と表示する必要があるか確かめます。すべての写真で必ず正解することを期待するのではなく、モデルがどの条件に過敏なのかを見つけ、適用範囲を明確にすることが目的です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "背景を変えたら紙箱が金属缶と判定された場合、回答の口調を調整するだけでは済みません。データの分布、ラベル、訓練設定を見直し、物品の種類と背景が固定的に結び付かないようにする必要があります。追加するデータの方向性も失敗の原因に基づいて決めるべきであり、同じ机の上でほぼ同じ写真をさらに撮り続けるべきではありません。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-deep-learning/diagram-1-ja.svg",
+          "alt": "写真が多層の表現を経て分類結果に至る図。下部では、背景を変えた写真でモデルが天板の色だけに頼っていないか確認するよう促しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "階層図は概念を示したものであり、実際のモデルの各層に人間が理解できる固定の名前があると主張するものではありません。",
+          "description": "写真が多層の表現を経て分類結果に至る図。下部では、背景を変えた写真でモデルが天板の色だけに頼っていないか確認するよう促しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "深さがすべての問題の最適解とは限らない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "深層学習では通常、訓練データ、計算資源、導入時の制約を考慮する必要があります。ただし、どの用途でも大規模モデルをゼロから訓練しなければならないわけではありません。既存のモデルを出発点にして、タスクに合わせて調整できます。適しているかどうかは、入力の種類、データ量、正確性の要求、保守コストによって判断すべきで、モデルの層が多いというだけで、より専門的だとはいえません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "項目が少なくルールが明確な表形式の問題では、より単純なモデルや明示的なルールで十分な場合があり、理解もしやすくなります。一方、画素から複雑な外観を識別するには、すべてのルールを手書きするのが難しいことがあり、多層の表現が魅力を持ちます。手法を比較する際は、同じデータとタスクの評価指標を使い、速度や保守のしやすさも考慮すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "解釈可能性にもトレードオフがあります。モデルがあるクラスを出力しても、人間が直接検証できる因果的な理由を示せるとは限りません。注目した領域を示す図も、判断理由のすべてを表すとは限りません。利用者は、モデルが別途生成したもっともらしい説明を受け入れるだけでなく、入力の変化に対する反応の観察や、失敗例の確認を求めることができます。"
+        },
+        {
+          "type": "heading",
+          "text": "技術的な能力を利用できる機能にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "資源ごみ分類ツールを一般の住民向けに提供するなら、写真の外観を識別していることを画面上で伝えるべきです。実際の資源回収ルールは、材質の処理方法、汚染の程度、地域の規定によって異なる場合があります。モデルが物品を識別できても、地域でのすべての処分方法を確認済みとは限りません。処分方法を提案するには、適用可能で検証できるルールのデータを別途組み込む必要があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "深層学習と生成"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "も同義ではありません。写真の分類は深層学習の用途の一つですが、新しい画像を生成する必要はありません。文章生成モデルも深層ニューラルネットワークを使うことがあります。前者は技術的な手法、後者は出力能力に基づく呼び方です。この違いを理解すれば、すべてのニューラルネットワークをチャットモデルと見なさずに済みます。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "読者にとって最も実用的な確認方法は、実際の用途に合う新しいデータで試すことです。異なるスマートフォン、照明、背景、珍しい物品を使います。実演者が厳選した写真でしか良い結果が出ないなら、能力をその条件の範囲に限定して捉えるべきです。モデルの深さは設計上の特徴であり、実際の場面で信頼できる支援を提供できるかどうかは、依然として証拠で確かめる必要があります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "用語",
+            "例の中での意味",
+            "混同してはいけない概念"
+          ],
+          "rows": [
+            [
+              "深層学習",
+              "多層ネットワークで写真を処理する",
+              "深く思考するという意味ではない"
+            ],
+            [
+              "訓練",
+              "ラベルに基づいてパラメータを調整する",
+              "使うたびに学び直すわけではない"
+            ],
+            [
+              "推論",
+              "新しい写真のクラス別スコアを得る",
+              "地域の資源回収ルールを確認済みという意味ではない"
+            ]
+          ],
+          "caption": "深層学習の技術と用途の境界（2026年9月確認）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "無関係な条件を変えてもう一度試す",
+          "text": "同じ物品でも背景を変えるだけで違うクラスに判定されるなら、モデルが不適切な近道に頼っている可能性があります。似た実演用写真を増やすだけよりも、データの問題を明らかにできます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "機械学習（Machine Learning）とは",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "モデルパラメータ（Model Parameters）とは",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成AI（Generative AI）とは",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI用語総索引：Loop Engineeringから生成AIまで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LeCun、Bengio、Hinton：深層学習",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：ニューラルネットワーク",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "scikit-learn：よくある落とし穴と推奨される実践方法",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "딥러닝(Deep Learning)이란",
+      "description": "딥러닝은 다층 신경망으로 데이터에서 여러 수준의 표현을 학습하며, 이미지·음성·텍스트 작업에 널리 쓰인다. 이 글은 재활용품 사진 분류를 예로 은닉층, 비선형성, 훈련과 추론의 역할을 설명하고, 모델이 물건 대신 배경을 기억할 수 있다는 점과 데이터·연산 자원·해석 가능성 사이의 절충을 살펴본다. 읽고 나면 딥러닝과 일반적인 머신러닝의 관계를 구분하고, 새로운 촬영 조건으로 모델이 유용한 패턴을 실제로 배웠는지 확인할 수 있다.",
+      "hero": {
+        "src": "/guides/ai-term-deep-learning/hero-ko.jpg",
+        "alt": "반투명 기하학 패널 세 층이 픽셀 블록을 물체의 윤곽으로 점차 바꾸며, 여러 층의 표현을 학습하는 과정을 보여준다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "딥러닝은 머신러닝의 한 방법으로, 다층 신경망을 이용해 원시 입력을 작업에 활용할 수 있는 표현으로 점차 바꾼다.",
+            "‘깊다’는 여러 층의 연산 구조를 뜻하며, 더 깊이 사고한다는 의미가 아니다. 딥러닝과 생성형 AI도 동의어가 아니다. 전자는 기술적 방법을, 후자는 결과물을 만들어 내는 능력을 기준으로 설명한다.",
+            "모델은 물건의 모양 대신 탁자 색깔로 분류하는 등 부적절한 지름길에 의존할 수 있다. 같은 종류의 물건을 배경·각도·조명을 바꿔 촬영하고, 분류가 여전히 일정한지 살펴볼 수 있다.",
+            "열이 적고 규칙이 명확한 표 형식의 문제에는 단순한 모델이나 명시적인 규칙만으로 충분할 수 있다. 층수가 많다는 이유만으로 더 전문적이라고 판단해서는 안 된다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "딥러닝은 머신러닝의 한 방법으로, 다층 신경망을 이용해 원시 입력을 작업에 활용할 수 있는 표현으로 점차 바꾼다. 여기서 ‘깊다’는 여러 층의 연산 구조를 뜻하며, 더 깊이 사고한다는 의미가 아니다. 데이터가 많다고 해서 딥러닝이라고 부르는 것도 아니다. 딥러닝은 규칙을 하나하나 직접 작성하기 어려운 패턴을 처리하는 데 특히 강하지만, 성과는 여전히 데이터와 훈련, 검증에 달려 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "지역사회에서 사진으로 재활용품을 식별하려 한다고 가정해 보자. 시스템이 종이 상자, 금속 캔, 그 밖의 물건을 구분하기를 바랄 수 있다. 아래에서는 이 글에서 구성한 사례를 통해 다층 신경망이 학습하는 방식을 살펴보고, 시연용 사진을 맞혔다고 해서 실제 재활용 현장에서의 신뢰성이 입증되지는 않는 이유를 설명한다. 자료 확인 기준일은 2026년 9월 14일이다."
+        },
+        {
+          "type": "heading",
+          "text": "다층 연산으로 표현이 단계적으로 바뀐다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LeCun, Bengio, Hinton의 논문은 여러 층의 처리와 여러 수준의 추상적 표현으로 딥러닝을 설명한다. Google의 신경망 교재는 은닉층과 비선형 연산이 복잡한 데이터 관계를 처리하는 방식을 설명한다. 쉽게 말해, 신경망은 입력을 받은 뒤 직선 하나를 적용하는 데 그치지 않고, 여러 차례 변환을 거쳐 작업에 유용한 내부 표현을 점차 형성한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이미지 사례에서는 초기 처리가 국소적인 경계와 질감에 주목하고, 이후 처리가 더 복잡한 모양과 관계를 결합한다고 생각할 수 있다. 다만 이는 이해를 돕기 위한 개념적 설명이다. 각 층에 사람이 붙인 고정된 이름이 있다는 뜻도, 특정 노드가 반드시 ‘종이 상자’만 전담한다는 뜻도 아니다. 실제 표현은 대개 수많은 수치와 연산에 분산되어 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "비선형성은 중요한 요소다. 각 층이 비선형 변화 없는 선형 변환만 수행한다면, 여러 층을 쌓아도 수학적으로는 하나의 선형 변환으로 합칠 수 있다. 깊어 보인다는 이유만으로 표현력이 저절로 커지지는 않는다. 신경망 구조마다 연산을 구성하는 방식이 다르며, 이미지·음성·텍스트 작업이 반드시 완전히 같은 구성 요소를 사용하는 것도 아니다."
+        },
+        {
+          "type": "heading",
+          "text": "훈련은 신경망에 조정할 부분을 어떻게 알려 줄까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "재활용품 분류를 위한 지도 훈련 데이터는 사진 한 장과 확인을 마친 범주 하나의 쌍으로 구성할 수 있다. 모델은 먼저 각 범주의 점수를 산출하고, 손실 함수로 정답 레이블과의 차이를 측정한다. 역전파가 매개변수가 손실에 미치는 영향을 계산하면, 최적화 프로그램이 이 신호를 바탕으로 매개변수를 갱신한다. 이는 수치를 조정하는 과정이지, 사람이 노드마다 특정 물건을 알아보도록 하나씩 가르치는 과정이 아니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델은 훈련 샘플을 반복해서 접하지만, 훈련 성능이 향상되었다고 실제 용도의 기준까지 충족한 것은 아니다. 훈련에 사용하지 않은 사진을 따로 남겨 새로운 각도, 새로운 조명, 다양한 외형을 확인해야 한다. 같은 물건을 연속 촬영한 비슷한 사진들을 훈련용과 테스트용 양쪽에 나누어 넣으면, 실제로 새로운 물건을 접할 때보다 문제가 쉬워져 능력을 과대평가할 수 있다."
+        },
+        {
+          "type": "paragraph",
+          "text": "추론할 때는 보통 훈련된 매개변수로 새 사진의 결과를 산출한다. 사용자가 한 번 질문했다고 해서 신경망 전체가 반드시 갱신되는 것은 아니다. 제품이 피드백을 통해 개선된다면, 여기에는 별도의 데이터 수집, 재훈련 또는 개인화 과정이 관여한다. 훈련과 추론, 피드백에 따른 갱신을 구분해야 모델이 현재 무엇을 알고 있으며 어떻게 바뀌는지 이해하기 쉽다."
+        },
+        {
+          "type": "heading",
+          "text": "모델이 배경을 지름길로 배울 수 있다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글에서 설정한 데이터에서는 종이 상자 사진을 모두 초록색 탁자 위에서, 금속 캔 사진을 모두 흰색 탁자 위에서 촬영했다. 모델은 물건의 모양을 배우는 대신 탁자 색깔로 분류할 수 있다. 테스트 사진도 같은 방식으로 촬영하면 매우 정확해 보이지만, 탁자를 바꾸면 갑자기 오류가 대량으로 발생할 수 있다. 이는 실제 작업에 필요한 신호 대신 데이터의 상관관계를 이용하는 전형적인 위험 사례다."
+        },
+        {
+          "type": "paragraph",
+          "text": "확인하는 방법은 같은 종류의 물건을 배경·각도·조명을 바꿔 촬영하고, 분류가 여전히 일정한지 살펴보는 것이다. 여기에 파손되거나 얼룩이 있거나 일부가 가려진 사진을 추가해 시스템이 ‘판단 불가’를 표시해야 하는지도 확인한다. 모든 사진을 반드시 맞히리라 기대하는 것이 아니라, 모델이 어떤 조건에 지나치게 민감한지 찾아내고 적용 범위를 명확히 밝히는 것이 목적이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "배경을 바꾼 뒤 종이 상자를 금속 캔으로 판단한다면, 답변의 말투만 조정해서는 안 된다. 데이터 분포와 레이블, 훈련 설정을 다시 살펴 물건의 범주가 배경과 고정적으로 묶이지 않도록 해야 한다. 추가로 수집할 데이터의 방향도 실패 원인에 따라 정해야 한다. 같은 탁자 위에서 거의 똑같은 사진을 계속 더 찍는 방식으로는 해결할 수 없다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-deep-learning/diagram-1-ko.svg",
+          "alt": "사진이 여러 층의 표현을 거쳐 분류 결과로 이어진다. 아래에서는 배경을 바꾼 사진으로 모델이 탁자 색깔에만 의존하는지 확인하도록 안내한다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "층별 도식은 개념을 보여 주는 것으로, 실제 모델의 각 층에 사람이 붙인 고정된 이름이 있다고 주장하지 않는다.",
+          "description": "사진이 여러 층의 표현을 거쳐 분류 결과로 이어진다. 아래에서는 배경을 바꾼 사진으로 모델이 탁자 색깔에만 의존하는지 확인하도록 안내한다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "깊이가 모든 문제의 최선의 답은 아니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "딥러닝에서는 보통 훈련 데이터, 연산 자원, 배포 제약을 고려해야 한다. 그렇다고 모든 응용에서 대형 모델을 처음부터 훈련해야 한다는 뜻은 아니다. 기존 모델을 출발점으로 삼아 작업에 맞게 조정할 수 있다. 적합성은 여전히 입력 종류, 데이터양, 정확성 요구 수준, 유지보수 비용에 따라 판단해야 한다. 모델의 층수가 많다는 이유만으로 더 전문적이라고 판단해서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "열이 적고 규칙이 명확한 표 형식의 문제에는 단순한 모델이나 명시적인 규칙만으로 충분할 수 있으며, 이해하기도 더 쉽다. 반면 픽셀에서 복잡한 외형을 식별하려면 규칙을 하나하나 직접 작성하기 어려울 수 있으므로 다층 표현이 매력적이다. 방법을 비교할 때는 같은 데이터와 작업 평가 지표를 사용하고, 속도와 유지보수 용이성도 함께 고려해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "해석 가능성에도 절충이 따른다. 모델이 특정 범주를 출력한다고 해서 사람이 직접 검증할 수 있는 인과적 이유까지 제공할 수 있는 것은 아니다. 주목한 영역을 보여 주는 그림도 반드시 전체 판단 이유를 나타내지는 않는다. 사용자는 모델이 별도로 생성한 그럴듯한 설명만 받아들이기보다, 입력 변화에 대한 모델의 반응을 관찰하고 실패 사례를 검토하도록 요구할 수 있다."
+        },
+        {
+          "type": "heading",
+          "text": "기술적 능력을 실제로 쓸 수 있는 기능으로 바꾸기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "재활용품 분류 도구를 일반 주민이 사용한다면, 인터페이스는 사진 속 외형을 식별하는 도구라는 점을 알려야 한다. 실제 재활용 규칙은 재질 처리 방식, 오염 정도, 지역 규정에 따라 달라질 수 있다. 모델이 물건을 식별할 수 있다고 해서 해당 지역의 모든 처리 방법까지 확인한 것은 아니다. 처리 방법을 안내하려면 적용 가능하고 검증할 수 있는 규칙 데이터를 별도로 연결해야 한다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "딥러닝과 생성형 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "도 동의어가 아니다. 사진 분류는 딥러닝의 응용 중 하나지만 새 이미지를 생성할 필요는 없다. 텍스트 생성 모델 역시 심층 신경망을 사용할 수 있다. 전자는 기술적 방법을, 후자는 결과물을 만들어 내는 능력을 기준으로 설명한다. 이 차이를 이해하면 모든 신경망을 채팅 모델로 여기지 않게 된다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "독자에게 가장 실용적인 확인 방법은 실제 용도에 맞는 새 데이터로 시험하는 것이다. 다른 휴대전화, 조명, 배경과 드문 물건을 사용해 보자. 시연자가 엄선한 사진에서만 좋은 성능을 보인다면, 그 능력도 해당 조건으로 한정해서 보아야 한다. 모델의 깊이는 설계상의 특징이며, 실제 상황에서 신뢰할 수 있는 도움을 주는지는 여전히 증거로 확인해야 한다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "용어",
+            "사례에서의 의미",
+            "혼동하면 안 되는 개념"
+          ],
+          "rows": [
+            [
+              "딥러닝",
+              "다층 신경망으로 사진 처리",
+              "깊이 사고한다는 뜻은 아님"
+            ],
+            [
+              "훈련",
+              "레이블에 따라 매개변수 조정",
+              "사용할 때마다 다시 배운다는 뜻은 아님"
+            ],
+            [
+              "추론",
+              "새 사진의 범주별 점수 산출",
+              "지역 재활용 규정까지 확인했다는 뜻은 아님"
+            ]
+          ],
+          "caption": "딥러닝의 기술과 용도 범위(2026년 9월 확인)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "무관한 조건을 바꿔 다시 시험하기",
+          "text": "같은 물건도 배경을 바꾸자 다른 범주로 판단한다면, 모델이 부적절한 지름길에 의존한다는 신호일 수 있다. 비슷한 시연용 사진만 더 늘리는 것보다 이런 시험이 데이터 문제를 더 잘 드러낸다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "머신러닝(Machine Learning)이란",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "모델 매개변수(Model Parameters)란",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "생성형 AI(Generative AI)란",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LeCun, Bengio, Hinton: 딥러닝",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 신경망",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "scikit-learn: 흔한 함정과 권장 실무 지침",
+          "url": "https://scikit-learn.org/stable/common_pitfalls.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "深度学习（Deep Learning）是什么",
+      "description": "深度学习利用多层神经网络，从数据中学习不同层次的表示，常用于图像、语音与文本任务。本文以回收物照片分类为例，说明隐藏层、非线性、训练和推理的作用，解释模型可能记住背景而非物品，以及数据、算力与可解释性的取舍。读完能分辨深度学习和一般机器学习的关系，也能用新的拍摄条件检查一个模型是否真的学到了有用模式。",
+      "hero": {
+        "src": "/guides/ai-term-deep-learning/hero-zh-cn.jpg",
+        "alt": "三层半透明几何面板把像素方块逐步转成物体轮廓，表达多层表示的学习过程。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "深度学习是机器学习的一类方法，利用多层神经网络，逐步把原始输入转成可供任务使用的表示。",
+            "“深”指向多层运算结构，不代表思考比较深刻；深度学习和生成式 AI 也不是同义词，前者按技术方法描述，后者按产出能力描述。",
+            "模型可能依赖不合适的捷径，例如利用桌面颜色而不是物品形状做分类；可以给同一类物品换背景、角度与光线拍摄，观察类别是否仍稳定。",
+            "对于字段少、规则清楚的表格问题，较简单的模型或明确规则可能已足够，不能只因为层数多就认定比较专业。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "深度学习是机器学习的一类方法，利用多层神经网络，逐步把原始输入转成可供任务使用的表示。这里的“深”指向多层运算结构，不代表思考比较深刻，也不是只要数据很多就叫深度学习。它尤其擅长处理难以逐条手写规则的模式，但成果仍取决于数据、训练与验证。"
+        },
+        {
+          "type": "paragraph",
+          "text": "假设社区想用照片协助识别回收物，你可能希望系统分辨纸盒、金属罐和其他物品。以下用这个原创情境拆解多层网络如何学习，以及为什么展示照片答对，还不能证明真实回收场景可靠。资料核查截至 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "多层运算让表示逐步改变",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "LeCun、Bengio 与 Hinton 的论文用多层处理与多层次抽象表示说明深度学习。Google 的神经网络教材则解释隐藏层与非线性运算如何处理复杂的数据关系。简单说，网络不只接收输入后套一条直线，而是经过多次转换，逐步形成对任务有用的内部表示。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在图像例子里，可以把早期处理想成关注局部边缘与纹理，后续处理结合更复杂的形状与关系。但这只是帮助理解的概念图，不代表每一层都有固定的人类名称，也不表示某个节点一定专门负责“纸盒”。实际表示通常分散在许多数值与运算之间。"
+        },
+        {
+          "type": "paragraph",
+          "text": "非线性是重要部分。若每层都只是没有非线性变化的线性变换，多层堆叠在数学上仍可合并成一个线性变换，表达能力不会因为看起来很深就自动增加。不同网络架构安排不同的运算方式，图像、语音和文本任务也未必使用完全相同的组件。"
+        },
+        {
+          "type": "heading",
+          "text": "训练如何告诉网络该调整哪里",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "回收物分类的有监督训练数据可以是一张照片配上一个已核对的类别。模型先产生各类别的分数，再用损失函数衡量与标签的差距。反向传播计算参数对损失的影响，优化程序再依据这些信号更新参数。这是一种数值调整过程，不是有人逐个教节点认识某种物品。"
+        },
+        {
+          "type": "paragraph",
+          "text": "模型会重复接触训练样本，但训练进步不等于实际用途已达标。需要保留未参与训练的照片，检查新角度、新光线与不同外观。若把同一件物品连拍的近似照片分到训练和测试两边，结果可能比面对真正的新物品容易，因而高估能力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "推理时通常使用已训练的参数，对新照片产生结果，不会因为用户问了一次就必然更新整个网络。若产品能依据反馈改善，还涉及另外的数据收集、重新训练或个性化流程。把训练、推理和反馈更新分开，才容易理解模型目前知道什么、又如何改变。"
+        },
+        {
+          "type": "heading",
+          "text": "模型可能学到背景捷径",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原创数据设定中，纸盒照片都拍在绿色桌面，金属罐都拍在白色桌面。模型可能利用桌面颜色做分类，而不是学到物品的形状。测试照片若也维持同样拍摄方式，就会看起来很准；换个桌面后却突然大量出错。这是用数据关联代替真正任务信号的典型风险示例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以做的检查是给同一类物品换背景、角度与光线拍摄，观察类别是否仍稳定。再加入破损、污渍或部分遮挡的照片，确认系统是否需要标示无法判断。预期不是每张都一定答对，而是找出模型对哪些条件过度敏感，并把适用范围说清楚。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果换背景后纸盒被判成金属罐，不能只调整回答语气。需要重新检查数据分布、标签及训练设置，让物品类别不再和背景固定绑在一起。多收集数据的方向也应由失败原因决定，而不是继续在同一张桌子上拍更多几乎相同的照片。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-deep-learning/diagram-1-zh-cn.svg",
+          "alt": "照片经多层表示进入分类结果，下方提醒用更换背景的照片检查模型是否只依赖桌面颜色。",
+          "width": 1600,
+          "height": 900,
+          "caption": "层级图是概念示意，并不声称真实模型每一层都有固定的人类名称。",
+          "description": "照片经多层表示进入分类结果，下方提醒用更换背景的照片检查模型是否只依赖桌面颜色。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "深度不是所有问题的最佳答案",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "深度学习通常需要考虑训练数据、运算资源与部署限制，但不代表每个应用都必须从零训练大模型。现有模型可以作为起点，再依据任务调整适配。是否适用仍要看输入种类、数据量、准确性要求和维护成本，不能只因为模型层数多就认定比较专业。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对于字段少、规则清楚的表格问题，较简单的模型或明确规则可能已足够，也更容易理解。相反，要从像素识别复杂外观，手写每条规则可能很困难，多层表示就有吸引力。比较方法时，应使用相同数据与任务指标，并把速度和可维护性一起考虑。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可解释性也是取舍。模型输出某类别，不等于能提供人类可直接验证的因果理由；显示关注区域的图也不一定就是完整决策原因。用户可以要求观察模型对输入变化的反应、查看失败案例，而不是只接受它另外生成的一段合理说明。"
+        },
+        {
+          "type": "heading",
+          "text": "把技术能力转成可使用的功能",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "回收分类工具若是给一般住户使用，界面应让人知道它识别的是照片外观，实际回收规则仍可能因材质处理、污染程度或地方规定而不同。模型能识别物品，不等于已核对当地所有处置方式。若要提供处置建议，需要另外接入适用且可查证的规则数据。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "深度学习与生成式 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 也不是同义词。分类照片是深度学习的一种应用，却不必生成新图片；文本生成模型也可能使用深度神经网络。前者按技术方法描述，后者按产出能力描述，理解这个差别，就不会把所有神经网络都当成聊天模型。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "对读者最实用的检查，是拿符合真实用途的新数据测试它：不同手机、光线、背景与少见物品。如果只能在展示者精选的照片上表现良好，就应把能力限制在那些条件。模型的深度是设计特征，能否在实际情境中提供可靠帮助，仍然要靠证据。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "术语",
+            "在例子中的意思",
+            "不应混同的概念"
+          ],
+          "rows": [
+            [
+              "深度学习",
+              "用多层网络处理照片",
+              "不等于有深刻思考"
+            ],
+            [
+              "训练",
+              "依据标签调整参数",
+              "不等于每次使用都重新学习"
+            ],
+            [
+              "推理",
+              "新照片得到类别分数",
+              "不等于已核对地方回收规定"
+            ]
+          ],
+          "caption": "深度学习的技术与用途边界（2026 年 9 月核查）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "换掉无关条件再测一次",
+          "text": "同一物品换背景就被判成不同类别，可能表示模型依赖了不合适的捷径。这比只增加相似展示照片更能揭露数据问题。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "机器学习（Machine Learning）是什么",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "模型参数（Model Parameters）是什么",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成式 AI（Generative AI）是什么",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "LeCun、Bengio、Hinton：深度学习",
+          "url": "https://www.nature.com/articles/nature14539",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：神经网络",
+          "url": "https://developers.google.com/machine-learning/crash-course/neural-networks",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "scikit-learn：常见陷阱与推荐实践",
           "url": "https://scikit-learn.org/stable/common_pitfalls.html",
           "checked_on": "2026-09-14"
         }

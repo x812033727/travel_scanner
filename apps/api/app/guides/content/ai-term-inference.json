@@ -4,13 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
   "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "推論（Inference）是什麼：模型訓練完之後，每次回答都在做的計算",
@@ -302,6 +304,1186 @@
         },
         {
           "title": "國家教育研究院樂詞網：inference engine 精確檢索結果（各詞表譯為推理引擎、推理機）",
+          "url": "https://terms.naer.edu.tw/search/?query_term=inference+engine&query_field=title&query_op=&match_type=phrase",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Inference? The Computation Behind Every Response After Model Training",
+      "description": "Inference uses a trained model to process new inputs and produce outputs, with weights fixed throughout. This article breaks language model inference into prefill and decode, explains the differences between time to first token, end-to-end latency and throughput, distinguishes inference from reasoning and cloud from local execution, and shows what batching, quantization and caching each save.",
+      "hero": {
+        "src": "/guides/ai-term-inference/hero-en.jpg",
+        "alt": "A stack of prompt text enters a model block with locked weights, while small blocks emerge one after another on the right.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Inference uses a trained model to process new inputs and produce outputs. Every time you submit a question, all computation from reading the prompt to generating the final token is inference, with weights fixed throughout.",
+            "An inference request to a large language model has two phases: processing the prompt (prefill) and generating tokens one by one (decode). More output tokens require more repeated steps, so longer outputs usually take longer.",
+            "Inference is often confused with reasoning, the ability to work through multiple steps. They are different concepts, and Traditional Chinese translations vary, so terms such as \"inference engine\" need context."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Inference uses a trained model to process new inputs and produce outputs. Each time you press send, all computation from reading the prompt to generating the final token is inference. Model parameters, such as weights, remain fixed throughout; adjusting weights is part of training. Another term often confused with inference is reasoning, which refers to a model's ability to derive conclusions through multiple steps. This site uses the Traditional Chinese term \"tuilun\" for inference and \"tuili\" for reasoning; the reason is explained at the end."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article uses a fictional guesthouse booking assistant to explain the two phases of a response, why longer outputs usually take longer, the difference between two latency metrics, and what batching, quantization and caching each save. It mainly draws on Google's glossary, two research papers and official documentation from various providers. It lists no prices or speed figures, since these change with the model and hardware."
+        },
+        {
+          "type": "heading",
+          "text": "How Inference Differs from Training",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's Machine Learning Glossary defines inference in traditional machine learning as applying a trained model to unlabeled examples to make predictions; for large language models, it means using a trained model to generate a response to an input prompt. Training is the process of determining model parameters, including weights and biases: the system reads examples and gradually adjusts its parameters. The dividing line is whether parameters are changed. The glossary also notes that inference has a slightly different meaning in statistics; this article uses its machine learning meaning."
+        },
+        {
+          "type": "paragraph",
+          "text": "During inference, weights do not change because of your particular question. If you include a few examples in the prompt, the model can follow their format, but those examples are simply inputs to this computation. Whether a provider stores conversations and later uses them for training is a matter of product terms and settings, separate from inference itself."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Aspect",
+            "Training",
+            "Inference"
+          ],
+          "rows": [
+            [
+              "Weights",
+              "Gradually adjusted",
+              "Fixed; used only for computation"
+            ],
+            [
+              "Frequency",
+              "Concentrated before model completion or during version updates",
+              "Computation required for every request"
+            ],
+            [
+              "Cost structure",
+              "Compute and data investment before model completion",
+              "Accumulates with request count and length"
+            ]
+          ],
+          "caption": "Compiled from Google's Machine Learning Glossary and Pope et al.; verified in month 10 of 2026."
+        },
+        {
+          "type": "heading",
+          "text": "The Two Phases of a Response: Process the Prompt, Then Generate Tokens",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "An inference request to a large language model has two phases. The first is processing the prompt (prefill): all prompt tokens are already known, so they can be processed together in parallel. This also computes probabilities for the first new token and stores intermediate results for each position—keys and values, collectively called the KV cache. The vLLM paper calls this the prompt phase; Pope et al. call it prefill."
+        },
+        {
+          "type": "paragraph",
+          "text": "The second phase is generating tokens one by one (decode): each step feeds only the previous new token into the model to compute the next one, until an end token or the length limit is reached. The KV cache for earlier tokens is already stored, so each step only needs to compute the new token's contribution. However, each step must wait for the preceding one, so the steps cannot run in parallel. The vLLM paper notes that this phase struggles to fully utilize GPU compute capacity, is constrained by memory reads, and accounts for most of a single request's latency."
+        },
+        {
+          "type": "paragraph",
+          "text": "This is why longer outputs take longer: more tokens require more repeated steps, and each step must read model weights and the KV cache. Longer inputs mainly increase the work in the single prefill phase and enlarge the KV cache that subsequent steps must read. OpenAI's latency guide likewise notes that generating tokens is almost always the step with the highest latency; unless the input is very long, it is usually not the main cause."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-inference/diagram-1-en.svg",
+          "alt": "Timeline of queuing and networking, prefill, and token-by-token decode, with end-to-end latency above and time to first token and generation time below.",
+          "width": 1600,
+          "height": 900,
+          "caption": "End-to-end latency equals time to first token plus generation time. Input length mainly affects the first part; output length mainly affects the second.",
+          "description": "Timeline. A request first passes through queuing and networking, then enters prefill, where the entire prompt is processed in parallel in one pass. It then enters decode, generating one token per step until completion. Time to first token covers queuing, networking and prefill; generation time covers the tokens generated one by one afterward. Their sum is end-to-end latency. Longer inputs mainly increase time to first token; longer outputs mainly increase generation time. Weights remain fixed throughout, with no updates.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: Two Ways to Ask a Guesthouse Assistant",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The following examples have not been tested. Prompt A: paste in lengthy check-in instructions and ask, \"What time is checkout?\" The input is long and the output is one sentence. Prompt B: provide no reference material and simply request a very long introduction to walks around the neighborhood. The input is short and the output is long. A is expected to take longer to display its first character because the instructions must be processed first, but it should finish quickly afterward. B should display its first character quickly, but most of its end-to-end latency will be spent generating many tokens one by one."
+        },
+        {
+          "type": "paragraph",
+          "text": "If measurements differ from these expectations, do not force this model to fit. A long time to first token may result from queuing, network round trips, or a longer prompt than expected. Slow generation may result from many concurrent requests or a longer output than expected. NVIDIA's documentation notes that TTFT typically includes queuing, prefill and network latency; identifying the bottleneck requires measuring each phase separately."
+        },
+        {
+          "type": "heading",
+          "text": "Two Kinds of Slowness: Time to First Token and End-to-End Latency",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Time to first token (TTFT) runs from submitting a request to receiving the first token. End-to-end latency runs through the final token; NVIDIA's documentation expresses it as TTFT plus generation time. Anthropic's documentation notes that TTFT is especially important for streaming output: streaming lets users see the beginning sooner, improving perceived speed, but does not change the total token count."
+        },
+        {
+          "type": "paragraph",
+          "text": "Throughput measures how many tokens the entire system can generate per second. NVIDIA's documentation explains that as more requests are processed concurrently, total system throughput increases until resources are fully utilized, but each user's individual speed decreases. Latency and throughput therefore involve a trade-off."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "Align Measurement Methods Before Comparing Speeds",
+          "text": "Tools measure things differently. For example, they differ on whether the first token is included when measuring token intervals. NVIDIA's documentation cautions that comparisons require consistent definitions."
+        },
+        {
+          "type": "heading",
+          "text": "Reducing Costs: Batching, Quantization and Caching",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The cost of each request comes from how much hardware time it occupies; Pope et al. measure this as chip time or money per token. In their analysis of very large Transformer inference across multiple accelerator chips, they note that small batches can offer lower latency but cost more per token; for offline processing, larger batches are usually the most economical. Three common approaches to reducing costs are outlined here:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Batching: combining multiple requests for computation. The vLLM paper notes that the KV cache is large and grows and shrinks dynamically, so wasted memory limits batch size; it proposes PagedAttention to address this.",
+            "Quantization: representing weights with lower-precision numbers to reduce memory requirements. Pope et al.'s experiments compare bfloat16 weights with weights quantized to int8.",
+            "Caching: reusing previously computed results, such as the KV cache for an identical prefix. OpenAI's guide recommends placing variable content toward the end of the prompt."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "For details, see "
+            },
+            {
+              "type": "article",
+              "text": "Quantization",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            },
+            {
+              "type": "text",
+              "text": " and "
+            },
+            {
+              "type": "article",
+              "text": "Prompt Caching",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "; prompt caching saves work only during prefill and does not shorten decode."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Cloud vs. Local: Whose Hardware, and Who Is Queuing?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Cloud inference runs on a provider's cluster, serving many people simultaneously. Requests must queue, may be batched with other people's requests, and involve network round trips, all of which contribute to your wait. The main things you can adjust are prompt and output length, whether to stream, and model size. Both Anthropic's and OpenAI's latency documentation list these options."
+        },
+        {
+          "type": "paragraph",
+          "text": "Local inference usually avoids network round trips and other people's requests, but you must supply the compute and memory, and your device limits model size. The llama.cpp project describes its goal as local and cloud inference across a range of hardware, offering integer quantization to reduce memory usage. Both environments have prefill and decode; the difference is who supplies the resources and how many people share them."
+        },
+        {
+          "type": "heading",
+          "text": "Terminology: Inference, Reasoning and Test-Time Compute",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Traditional Chinese translations of inference and reasoning are inconsistent. Google's Traditional Chinese Machine Learning Glossary translates inference as \"tuilun\" and uses \"tuili\" to describe a model's reasoning. The National Academy for Educational Research's LeCi terminology site lists both translations across subject glossaries: statistical terminology uses \"tuilun,\" while computer terminology uses \"tuili\"; inference engine is rendered as \"tuili yinqing\" (reasoning engine) or \"tuili ji\" (reasoning machine). Thus, \"tuilun = inference, tuili = reasoning\" is this site's convention for distinguishing the two concepts, not a dictionary rule; terms such as \"inference engine\" must be read in context."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Related concepts: "
+            },
+            {
+              "type": "article",
+              "text": "Reasoning Models",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": " are a class of models designed for multistep problems; generating their answers still involves inference. "
+            },
+            {
+              "type": "article",
+              "text": "Test-Time Compute",
+              "kind": "life",
+              "slug": "ai-term-test-time-compute"
+            },
+            {
+              "type": "text",
+              "text": " is a strategy of investing more compute during inference. For other terms, see the "
+            },
+            {
+              "type": "article",
+              "text": "AI Terminology Index",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: Machine Learning Glossary (entries including inference and training)",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google: Machine Learning Glossary (Traditional Chinese version; inference translated as tuilun)",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Kwon et al.: Efficient Memory Management for Large Language Model Serving with PagedAttention (vLLM, SOSP 2023)",
+          "url": "https://arxiv.org/abs/2309.06180",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Pope et al.: Efficiently Scaling Transformer Inference (2022)",
+          "url": "https://arxiv.org/abs/2211.05102",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "NVIDIA: NIM LLMs Benchmarking, Metrics (definitions of TTFT, ITL and throughput)",
+          "url": "https://docs.nvidia.com/nim/benchmarking/llm/latest/metrics.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic: Reducing latency (official documentation)",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI: Latency optimization (official documentation)",
+          "url": "https://platform.openai.com/docs/guides/latency-optimization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "llama.cpp: Project overview (official implementation documentation for local inference)",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "National Academy for Educational Research's LeCi: inference entry (translation comparison across subject glossaries)",
+          "url": "https://terms.naer.edu.tw/detail/8bc45e654bd178e8380ebefabc5e389b/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "National Academy for Educational Research's LeCi: exact-match results for inference engine (glossaries use tuili yinqing or tuili ji)",
+          "url": "https://terms.naer.edu.tw/search/?query_term=inference+engine&query_field=title&query_op=&match_type=phrase",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "ja": {
+      "title": "推論（Inference）とは：モデルの学習後、回答するたびに行われる計算",
+      "description": "推論は、学習済みのモデルで新しい入力を処理し、出力を生成する過程で、この段階では重みは固定されています。言語モデルの推論をプロンプトの読み込み（prefill）と逐次生成（decode）の二段階に分け、最初の token までの時間、回答完了までの時間、スループットの違いを説明します。推論（inference）と推理（reasoning）、クラウドとローカルを区別し、バッチ処理、量子化、キャッシュがそれぞれ何を節約するのかを解説します。",
+      "hero": {
+        "src": "/guides/ai-term-inference/hero-ja.jpg",
+        "alt": "積み重なったプロンプトの文章が、重みを固定したモデルのブロックに入り、右側から小さなブロックが一つずつ出力される",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "推論（inference）は、学習済みのモデルで新しい入力を処理し、出力を生成することです。質問を送信するたびに、プロンプトの読み込みから最後の token の生成まで、すべてが推論に当たります。この間、重みは固定されています。",
+            "大規模言語モデルの一回の推論は、プロンプトの読み込み（prefill）と逐次生成（decode）の二段階に分かれます。出力する token が多いほど繰り返すステップも増えるため、通常は出力が長いほど時間がかかります。",
+            "推論は、複数の段階を踏んで導出する能力を指す推理（reasoning）と混同されがちですが、別のものです。繁体字中国語の訳語も統一されていないため、「推理エンジン」のような言葉は文脈を確認する必要があります。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "推論（inference）とは、学習済みのモデルで新しい入力を処理し、出力を生成することです。送信ボタンを押すたびに、モデルがプロンプトを読み込んでから最後の token を生成するまでの計算全体が推論に当たります。この間、重みなどのモデルパラメータは固定されており、重みの調整は学習で行います。よく混同されるもう一つの言葉が推理（reasoning）で、モデルが複数の段階を踏んで導出する能力を指します。当サイトでは inference を「推論」、reasoning を「推理」と表記しており、その理由は記事の末尾で説明します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この記事では架空の民宿予約アシスタントを例に、一回の回答がどう二段階に分かれるのか、なぜ通常は出力が長いほど時間がかかるのか、二種類の遅延指標はどう違うのか、バッチ処理、量子化、キャッシュがそれぞれどの部分を節約するのかを説明します。主な根拠は Google の用語集、二編の論文、各社の公式ドキュメントです。料金や速度の数値は、モデルやハードウェアによって変わるため掲載しません。"
+        },
+        {
+          "type": "heading",
+          "text": "推論と学習は何が違うのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の機械学習用語集では、従来の機械学習における推論を、学習済みモデルをラベルの付いていないサンプルに適用して予測することと定義しています。大規模言語モデルでは、学習済みモデルを使い、入力されたプロンプトに対する応答を生成することです。学習はモデルのパラメータ（重みとバイアス）を決める過程で、システムが事例を読み込み、パラメータを段階的に調整します。境界は、パラメータが変更されるかどうかにあります。用語集には、統計学では inference の意味が少し異なるとも記されています。ここでは機械学習での意味を使います。"
+        },
+        {
+          "type": "paragraph",
+          "text": "推論時には、今回の質問によって重みが変わることはありません。プロンプトにいくつかの例を入れると、モデルはその形式に沿って回答できますが、その例は今回の計算への入力にすぎません。サービス提供者が会話を保存し、後日学習に使うかどうかは、製品の利用規約や設定の問題であり、推論そのものには含まれません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "観点",
+            "学習",
+            "推論"
+          ],
+          "rows": [
+            [
+              "重み",
+              "段階的に調整",
+              "固定され、計算にのみ使用"
+            ],
+            [
+              "実行頻度",
+              "モデルの完成前やバージョン更新時に集中",
+              "リクエストごとに計算"
+            ],
+            [
+              "コスト構造",
+              "モデル完成前に投入する計算とデータ",
+              "リクエスト数と長さに応じて積み上がる"
+            ]
+          ],
+          "caption": "Google の機械学習用語集と Pope ほかの論文に基づいて整理。2026 年 10 月に確認。"
+        },
+        {
+          "type": "heading",
+          "text": "一回の回答の二段階：プロンプトを読み込み、一つずつ生成",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "大規模言語モデルの一回の推論は二段階に分かれます。第一段階はプロンプトの読み込み（prefill）です。プロンプトの token はすべて既知なので、まとめて並列処理でき、同時に最初の新しい token の確率を計算し、各位置の中間結果（key と value、合わせて KV キャッシュ）を保存します。vLLM の論文ではこの段階を prompt phase、Pope ほかは prefill と呼んでいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二段階は逐次生成（decode）です。各ステップでは直前の新しい token だけをモデルに入力し、次の token を計算します。終了記号または長さの上限に達するまで、これを繰り返します。それ以前の token の KV キャッシュは保存済みなので、各ステップでは新しい一つ分だけを追加計算します。ただし、次のステップは前のステップを待つ必要があり、並列化できません。vLLM の論文は、この段階では GPU の計算能力を使い切るのが難しく、メモリの読み出しに制約され、単一リクエストの遅延の大部分を占めると指摘しています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "これが、出力が長いほど時間がかかる理由です。token が多いほど繰り返すステップも増え、各ステップでモデルの重みと KV キャッシュを読み出す必要があります。入力が長くなると、主に一度だけ行う prefill の負荷が増え、その後の各ステップで読み出す KV キャッシュも大きくなります。OpenAI の遅延ガイドも、token の生成はほぼ常に最も遅延が大きいステップであり、入力は極端に長くない限り、通常は主な原因ではないとしています。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-inference/diagram-1-ja.svg",
+          "alt": "待ち行列とネットワーク、プロンプトの読み込み（prefill）、token の逐次生成（decode）を示す時間軸。上に回答完了までの時間、下に最初の token までの時間と生成時間を表示",
+          "width": 1600,
+          "height": 900,
+          "caption": "回答完了までの時間は、最初の token までの時間と生成時間の合計です。入力の長さは主に前半、出力の長さは主に後半に影響します。",
+          "description": "時間軸の図。リクエストはまず待ち行列とネットワークを経て、プロンプトの読み込み（prefill）に進み、プロンプト全体をまとめて並列処理します。次に逐次生成（decode）に入り、終了まで各ステップで token を一つずつ生成します。最初の token までの時間には、待ち行列とネットワーク、プロンプトの読み込みが含まれます。生成時間は、その後の token を一つずつ生成する時間です。両者の合計が回答完了までの時間になります。入力が長いほど、主に最初の token までの時間が延び、出力が長いほど、主に生成時間が延びます。重みは全過程で固定され、更新されません。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "例：民宿アシスタントへの二通りの質問",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下は実測していない例です。質問 A：長い宿泊案内を貼り付けて「チェックアウトは何時ですか」と尋ねます。入力は長く、出力は一文です。質問 B：資料を貼り付けず、周辺の散策について非常に長い紹介文を書くよう求めるだけです。入力は短く、出力は長くなります。A は案内を先に読み終える必要があるため、最初の文字が表示されるまで時間がかかる一方、回答はすぐに終わると予想されます。B は最初の文字がすぐに表示されますが、回答完了までの時間の大部分は、大量の token を一つずつ生成する処理にかかります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実測結果が予想と異なる場合は、このモデルを無理に当てはめないでください。最初の token までの時間が長い原因は、待ち行列やネットワークの往復、想像以上に長いプロンプトかもしれません。生成が遅い原因は、同時に処理するリクエストが多いことや、出力が予想より長いことかもしれません。NVIDIA のドキュメントによると、TTFT には通常、待ち行列、prefill、ネットワークの遅延が含まれます。どこが遅いのかを知るには、区間ごとに測る必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "二種類の遅さ：最初の token までの時間と回答完了までの時間",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "最初の token までの時間（time to first token、TTFT）は、リクエストを送信してから最初の token を受信するまでの時間です。回答完了までの時間（end-to-end latency）は最後の token までを測り、NVIDIA のドキュメントでは TTFT と生成時間の合計とされています。Anthropic のドキュメントは、ストリーミング出力では TTFT が特に重要だと指摘しています。ストリーミングにより利用者は冒頭から先に見ることができ、体感速度は改善しますが、token の総数は変わりません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "スループット（throughput）は、システム全体で一秒間に生成できる token 数を見る指標です。NVIDIA のドキュメントでは、同時に処理するリクエストが増えると、リソースを使い切るまではシステム全体のスループットが上がる一方、利用者一人ひとりの速度は下がると説明されています。つまり、遅延とスループットはトレードオフの関係にあります。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "速度を比べる前に、測定方法をそろえる",
+          "text": "測定方法はツールによって異なり、例えば token ごとの間隔の測定に最初の token を含めるかどうかにも違いがあります。NVIDIA のドキュメントは、比較するには定義をそろえる必要があると注意を促しています。"
+        },
+        {
+          "type": "heading",
+          "text": "コスト削減：バッチ処理、量子化、キャッシュ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "リクエストごとのコストは、ハードウェアの時間をどれだけ占有するかによって生じます。Pope ほかは、token 当たりのチップ使用時間または金額で測っています。複数のアクセラレータチップ上での超大規模 Transformer の推論を分析し、バッチが小さいと遅延を短くできる一方、token 当たりのコストは高くなり、オフライン処理ではバッチを大きくするのが通常は最も経済的だと指摘しています。よく使われるコスト削減策は三種類あり、ここでは簡単に挙げます。"
+        },
+        {
+          "type": "list",
+          "items": [
+            "バッチ処理（batching）：複数のリクエストをまとめて計算します。vLLM の論文は、KV キャッシュは大きく、動的に増減するため、メモリの無駄がバッチサイズを制限すると指摘し、その対策として PagedAttention を提案しています。",
+            "量子化（quantization）：重みをより低い精度の数値で表し、必要なメモリを減らします。Pope ほかの実験では、bfloat16 の重みと int8 に量子化した重みを比較しています。",
+            "キャッシュ（caching）：同じ先頭部分の KV キャッシュなど、計算済みの結果を再利用します。OpenAI のガイドは、変動する内容をプロンプトの後半に置くことを推奨しています。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "詳しくは"
+            },
+            {
+              "type": "article",
+              "text": "量子化（Quantization）",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            },
+            {
+              "type": "text",
+              "text": "と"
+            },
+            {
+              "type": "article",
+              "text": "プロンプトキャッシュ（Prompt Caching）",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "を参照してください。プロンプトキャッシュで省けるのはプロンプトの読み込み部分だけで、逐次生成は短縮されません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "クラウドとローカル：誰のハードウェアを使い、誰が順番を待つのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "クラウド推論はサービス提供者のクラスタで実行され、多数の利用者に同時に対応します。リクエストは順番を待ち、他人のリクエストとまとめてバッチ処理されることもあり、ネットワークの往復も必要です。これらはすべて待ち時間に含まれます。調整できるのは主に、プロンプトと出力の長さ、ストリーミングの有無、モデルのサイズで、Anthropic と OpenAI の遅延に関するドキュメントもこれらを挙げています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ローカル推論では通常、ネットワークの往復や他人のリクエストの影響はなくなりますが、計算資源とメモリを自分で用意する必要があり、モデルのサイズは端末によって制限されます。llama.cpp プロジェクトは、さまざまなハードウェアでのローカル推論とクラウド推論を目標に掲げ、メモリ使用量を減らす整数量子化を提供しています。どちらにも prefill と decode があり、違いはリソースを誰が用意し、何人で共有するかです。"
+        },
+        {
+          "type": "heading",
+          "text": "用語：推論、推理、推論時の計算",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "繁体字中国語では、inference と reasoning の訳語が統一されていません。Google の機械学習用語集の繁体字中国語版では inference を「推論」と訳し、モデルの導出を「推理」と表現しています。一方、国家教育研究院「楽詞網」の分野別用語集には両方の訳があり、統計学用語では「推論」、電子計算機用語では「推理」、inference engine は「推理エンジン」または「推理機」と訳されています。このため、「推論＝inference、推理＝reasoning」は二つの概念を区別するための当サイトの用法であり、辞書で定められたものではありません。「推理エンジン」という言葉を見たら、文脈を確認する必要があります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "関連する概念："
+            },
+            {
+              "type": "article",
+              "text": "推理モデル（Reasoning Model）",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "は、複数の段階を要する問題向けに設計されたモデルの一種で、回答時に行うのはやはり推論です。"
+            },
+            {
+              "type": "article",
+              "text": "推論時の計算（Test-time Compute）",
+              "kind": "life",
+              "slug": "ai-term-test-time-compute"
+            },
+            {
+              "type": "text",
+              "text": "は、推論の段階でより多くの計算資源を投入する戦略です。その他の用語は"
+            },
+            {
+              "type": "article",
+              "text": "AI 用語総索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "をご覧ください。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：機械学習用語集（inference、training などの項目）",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google：機械学習用語集（繁体字中国語版、inference を「推論」と訳出）",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Kwon ほか：PagedAttention による大規模言語モデル配信の効率的なメモリ管理（vLLM、SOSP 2023）",
+          "url": "https://arxiv.org/abs/2309.06180",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Pope ほか：Transformer 推論の効率的なスケーリング（2022）",
+          "url": "https://arxiv.org/abs/2211.05102",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "NVIDIA：NIM LLMs のベンチマーク、指標（TTFT、ITL、スループットの定義）",
+          "url": "https://docs.nvidia.com/nim/benchmarking/llm/latest/metrics.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic：遅延の削減（公式ドキュメント）",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：遅延の最適化（公式ドキュメント）",
+          "url": "https://platform.openai.com/docs/guides/latency-optimization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "llama.cpp：プロジェクトの説明（ローカル推論の公式実装ドキュメント）",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "国家教育研究院「楽詞網」：inference の項目（分野別用語集の訳語比較）",
+          "url": "https://terms.naer.edu.tw/detail/8bc45e654bd178e8380ebefabc5e389b/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "国家教育研究院「楽詞網」：inference engine の完全一致検索結果（各用語集では推理エンジン、推理機と訳出）",
+          "url": "https://terms.naer.edu.tw/search/?query_term=inference+engine&query_field=title&query_op=&match_type=phrase",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "ko": {
+      "title": "추론(Inference)이란: 모델 학습이 끝난 뒤 매번 응답할 때 수행하는 계산",
+      "description": "추론은 학습된 모델로 새로운 입력을 처리하고 출력을 만드는 과정이며, 이 단계에서 가중치는 고정된다. 언어 모델의 추론을 프롬프트 읽기(prefill)와 순차 생성(decode)으로 나누어 첫 토큰 수신 시간, 전체 응답 시간, 처리량의 차이를 설명한다. 추론(inference)과 추리(reasoning), 클라우드와 로컬을 구분하고, 배치 처리·양자화·캐싱이 각각 무엇을 줄이는지 살펴본다.",
+      "hero": {
+        "src": "/guides/ai-term-inference/hero-ko.jpg",
+        "alt": "여러 장의 프롬프트 텍스트가 가중치가 잠긴 모델 블록으로 들어가고, 오른쪽에서 작은 블록이 하나씩 출력되는 모습",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "추론(inference)은 학습된 모델로 새로운 입력을 처리하고 출력을 만드는 과정이다. 질문을 보낼 때마다 프롬프트를 읽고 마지막 토큰을 생성하기까지의 모든 계산이 추론이며, 이 동안 가중치는 고정된다.",
+            "대규모 언어 모델의 추론은 프롬프트 읽기(prefill)와 순차 생성(decode)으로 나뉜다. 출력 토큰이 많을수록 반복할 단계가 늘어나므로, 보통 출력이 길수록 시간이 오래 걸린다.",
+            "추론(inference)은 여러 단계에 걸쳐 답을 도출하는 능력인 추리(reasoning)와 혼용되곤 하지만 서로 다르다. 중국어 번체에서도 번역어가 통일되어 있지 않으므로, ‘추리 엔진’ 같은 용어는 문맥을 살펴야 한다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "추론(inference)은 학습된 모델로 새로운 입력을 처리하고 출력을 만드는 과정이다. 전송 버튼을 누를 때마다 모델이 프롬프트를 읽고 마지막 토큰을 생성하기까지 수행하는 모든 계산이 추론이다. 이 동안 가중치 등 모델 매개변수는 고정되며, 가중치를 조정하는 것은 학습의 역할이다. 자주 혼용되는 또 다른 용어인 추리(reasoning)는 모델이 여러 단계에 걸쳐 답을 도출하는 능력을 뜻한다. 이 사이트에서는 inference를 ‘추론’, reasoning을 ‘추리’로 구분하며, 그 이유는 글 끝에서 설명한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글에서는 가상의 민박 예약 도우미를 예로 들어, 한 번의 응답이 어떻게 두 단계로 나뉘는지, 출력이 길수록 보통 시간이 오래 걸리는 이유, 두 지연 시간 지표의 차이, 배치 처리·양자화·캐싱이 각각 무엇을 줄이는지 설명한다. 주로 Google 용어집, 논문 두 편, 각 업체의 공식 문서를 근거로 삼았다. 가격이나 속도 수치는 모델과 하드웨어에 따라 달라지므로 제시하지 않는다."
+        },
+        {
+          "type": "heading",
+          "text": "추론과 학습은 어떻게 다른가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 머신러닝 용어집은 전통적인 머신러닝에서 추론을 학습된 모델을 라벨이 없는 예시에 적용해 예측하는 과정으로 정의한다. 대규모 언어 모델에서는 학습된 모델로 입력 프롬프트에 대한 응답을 생성하는 과정이다. 학습은 모델 매개변수인 가중치와 편향을 결정하는 과정으로, 시스템이 예시를 읽고 매개변수를 점진적으로 조정한다. 둘을 가르는 기준은 매개변수가 바뀌는지 여부다. 용어집은 통계학에서 inference의 의미가 조금 다르다고도 명시한다. 여기서는 머신러닝에서의 의미를 사용한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "추론 중에는 이번 질문으로 인해 가중치가 바뀌지 않는다. 프롬프트에 예시를 몇 개 넣으면 모델이 그 형식대로 답할 수 있지만, 예시는 이번 계산의 입력일 뿐이다. 서비스 제공자가 대화를 저장하거나 나중에 학습에 사용하는지는 제품 약관과 설정의 문제이며, 추론 자체에 해당하지 않는다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "구분",
+            "학습",
+            "추론"
+          ],
+          "rows": [
+            [
+              "가중치",
+              "점진적으로 조정",
+              "고정된 상태로 계산에만 사용"
+            ],
+            [
+              "발생 빈도",
+              "모델 완성 전이나 버전 업데이트 시 집중",
+              "요청마다 계산"
+            ],
+            [
+              "비용 구조",
+              "모델 완성 전의 연산·데이터 투입",
+              "요청 수와 길이에 따라 누적"
+            ]
+          ],
+          "caption": "Google 머신러닝 용어집과 Pope 등의 논문을 바탕으로 정리. 2026년 10월 확인."
+        },
+        {
+          "type": "heading",
+          "text": "한 번의 응답을 이루는 두 단계: 프롬프트 읽기와 순차 생성",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "대규모 언어 모델의 추론은 두 단계로 나뉜다. 첫 단계는 프롬프트 읽기(prefill)다. 프롬프트의 모든 토큰이 이미 주어져 있으므로 한꺼번에 병렬로 처리할 수 있다. 이때 첫 번째 새 토큰의 확률을 계산하고, 각 위치의 중간 결과인 key와 value를 저장한다. 이를 통틀어 KV 캐시라고 한다. vLLM 논문은 이 단계를 prompt phase, Pope 등은 prefill이라고 부른다."
+        },
+        {
+          "type": "paragraph",
+          "text": "두 번째 단계는 순차 생성(decode)이다. 각 단계에서 직전에 생성한 새 토큰만 모델에 넣어 다음 토큰을 계산하며, 종료 기호나 길이 상한에 도달할 때까지 반복한다. 앞선 토큰의 KV 캐시가 이미 저장되어 있어 매번 새 토큰 하나만 추가로 계산하지만, 다음 단계는 이전 단계가 끝나야 시작할 수 있으므로 병렬로 처리할 수 없다. vLLM 논문은 이 단계에서 GPU 연산 능력을 충분히 활용하기 어렵고, 메모리 읽기의 제약을 받으며, 단일 요청 지연 시간의 대부분을 차지한다고 설명한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "출력이 길수록 시간이 오래 걸리는 이유가 여기에 있다. 토큰이 많을수록 반복할 단계가 늘어나고, 매 단계마다 모델 가중치와 KV 캐시를 읽어야 한다. 입력이 길어지면 주로 한 번 수행하는 prefill의 부담이 커지며, 이후 각 단계에서 읽어야 할 KV 캐시도 커진다. OpenAI의 지연 시간 가이드도 토큰 생성이 거의 항상 가장 오래 걸리는 단계이며, 입력이 아주 길지 않다면 보통 주된 원인은 아니라고 설명한다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-inference/diagram-1-ko.svg",
+          "alt": "대기열·네트워크, 프롬프트 읽기(prefill), 토큰 순차 생성(decode)을 보여 주는 시간축. 위에는 전체 응답 시간, 아래에는 첫 토큰 수신 시간과 생성 시간이 표시되어 있다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "전체 응답 시간은 첫 토큰 수신 시간과 생성 시간을 더한 값이다. 입력 길이는 주로 앞부분에, 출력 길이는 주로 뒷부분에 영향을 준다.",
+          "description": "시간축 그림. 요청은 먼저 대기열과 네트워크를 거친 뒤 프롬프트 읽기(prefill) 단계로 들어가 프롬프트 전체를 한꺼번에 병렬 처리한다. 이어 순차 생성(decode) 단계에서 끝날 때까지 한 단계에 토큰 하나씩 생성한다. 첫 토큰 수신 시간에는 대기열·네트워크와 프롬프트 읽기가 포함되고, 생성 시간에는 그 이후의 토큰을 하나씩 생성하는 시간이 포함된다. 둘을 더하면 전체 응답 시간이 된다. 입력이 길수록 주로 첫 토큰 수신 시간이 길어지고, 출력이 길수록 주로 생성 시간이 길어진다. 가중치는 전 과정에서 고정되며 갱신되지 않는다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 민박 도우미에게 묻는 두 가지 방식",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "다음은 실제 측정하지 않은 예시다. 질문 A는 긴 숙박 안내문을 붙여 넣고 ‘체크아웃이 몇 시인가요?’라고 묻는 방식으로, 입력은 길고 출력은 한 문장이다. 질문 B는 자료를 붙이지 않고 주변 산책 코스를 아주 길게 소개해 달라고 요청하는 방식으로, 입력은 짧고 출력은 길다. A는 안내문을 먼저 읽어야 하므로 첫 글자가 늦게 나타나지만, 응답은 금방 끝날 것으로 예상된다. B는 첫 글자가 빨리 나타나지만, 전체 응답 시간은 주로 많은 토큰을 하나씩 생성하는 데 쓰일 것이다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실측 결과가 예상과 다르다면 이 설명을 억지로 적용하지 말자. 첫 토큰 수신 시간이 길다면 대기열, 네트워크 왕복, 예상보다 긴 프롬프트가 원인일 수 있다. 생성이 느리다면 동시에 처리하는 요청이 많거나 출력이 예상보다 길 수 있다. NVIDIA 문서에 따르면 TTFT에는 보통 대기열, prefill, 네트워크 지연이 포함된다. 어디서 시간이 걸리는지 알려면 구간별로 측정해야 한다."
+        },
+        {
+          "type": "heading",
+          "text": "두 가지 느림: 첫 토큰 수신 시간과 전체 응답 시간",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "첫 토큰 수신 시간(time to first token, TTFT)은 요청을 보낸 순간부터 첫 토큰을 받을 때까지의 시간이다. 전체 응답 시간(end-to-end latency)은 마지막 토큰을 받을 때까지 측정하며, NVIDIA 문서는 이를 TTFT와 생성 시간을 더한 값으로 나타낸다. Anthropic 문서는 스트리밍 출력에서 TTFT가 특히 중요하다고 설명한다. 스트리밍은 사용자가 응답의 앞부분을 먼저 보게 해 체감 속도를 높이지만, 전체 토큰 수는 바뀌지 않는다."
+        },
+        {
+          "type": "paragraph",
+          "text": "처리량(throughput)은 전체 시스템이 초당 생성할 수 있는 토큰 수를 나타낸다. NVIDIA 문서는 동시에 처리하는 요청이 많아지면 자원을 모두 활용할 때까지 시스템의 총처리량이 증가하지만, 사용자별 속도는 떨어진다고 설명한다. 따라서 지연 시간과 처리량 사이에는 절충이 필요하다."
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "속도를 비교하기 전에 측정 기준부터 맞추자",
+          "text": "도구마다 측정 방식이 다르다. 예를 들어 토큰 간 간격을 계산할 때 첫 토큰까지 포함하는지부터 차이가 있다. NVIDIA 문서는 정의가 같아야 비교할 수 있다고 강조한다."
+        },
+        {
+          "type": "heading",
+          "text": "비용 절감: 배치 처리, 양자화, 캐싱",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "요청별 비용은 하드웨어를 얼마나 오래 점유하는지에서 비롯된다. Pope 등은 이를 토큰당 칩 사용 시간이나 금액으로 측정한다. 여러 가속 칩에서 실행되는 초대형 Transformer의 추론을 분석하면서, 배치가 작으면 지연 시간이 짧을 수 있지만 토큰당 비용은 높아지며, 오프라인 처리에서는 배치를 크게 하는 편이 보통 가장 경제적이라고 설명한다. 흔히 쓰는 비용 절감 방법은 세 가지이며, 여기서는 간단히 짚는다."
+        },
+        {
+          "type": "list",
+          "items": [
+            "배치 처리(batching): 여러 요청을 묶어 계산한다. vLLM 논문은 KV 캐시가 크고 동적으로 늘거나 줄기 때문에 낭비되는 메모리가 배치 크기를 제한한다고 지적하며, 이를 해결하기 위해 PagedAttention을 제안했다.",
+            "양자화(quantization): 가중치를 더 낮은 정밀도의 수치로 표현해 메모리 요구량을 줄인다. Pope 등의 실험은 bfloat16 가중치와 int8로 양자화한 가중치를 비교했다.",
+            "캐싱(caching): 동일한 접두부의 KV 캐시처럼 이미 계산한 결과를 재사용한다. OpenAI 가이드는 바뀌는 내용을 프롬프트 뒷부분에 배치하도록 권장한다."
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "자세한 내용은 "
+            },
+            {
+              "type": "article",
+              "text": "양자화(Quantization)",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            },
+            {
+              "type": "text",
+              "text": "와 "
+            },
+            {
+              "type": "article",
+              "text": "프롬프트 캐싱(Prompt Caching)",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하자. 프롬프트 캐싱은 프롬프트를 읽는 단계만 줄이며, 순차 생성 시간은 줄이지 않는다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "클라우드와 로컬: 누구의 하드웨어를 쓰고, 누가 기다리는가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "클라우드 추론은 서비스 제공자의 클러스터에서 실행되며 많은 사람을 동시에 지원한다. 요청은 대기열을 거치고 다른 사람의 요청과 배치로 묶일 수 있으며, 네트워크 왕복도 필요하다. 이 모든 시간이 대기 시간에 포함된다. 사용자가 조정할 수 있는 것은 대부분 프롬프트와 출력의 길이, 스트리밍 여부, 모델 크기다. Anthropic과 OpenAI의 지연 시간 문서 모두 이러한 항목을 제시한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "로컬 추론에서는 보통 네트워크 왕복과 다른 사람의 요청이 빠지지만, 연산 자원과 메모리를 직접 마련해야 하며 모델 크기도 기기의 제약을 받는다. llama.cpp 프로젝트는 다양한 하드웨어에서 로컬 및 클라우드 추론을 실행하는 것을 목표로 한다고 설명하며, 메모리 사용량을 줄이기 위한 정수 양자화를 제공한다. 양쪽 모두 prefill과 decode가 있으며, 차이는 누가 자원을 제공하고 몇 명이 공유하느냐에 있다."
+        },
+        {
+          "type": "heading",
+          "text": "용어: 추론, 추리, 추론 시 연산",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "중국어 번체에서는 inference와 reasoning의 번역어가 통일되어 있지 않다. Google 머신러닝 용어집 중국어 번체판은 inference를 ‘추론’으로 번역하고, 모델이 답을 도출하는 과정을 ‘추리’로 설명한다. 국가교육연구원 러츠왕의 학문별 용어집에는 두 번역어가 모두 쓰인다. 통계학 용어집은 ‘추론’, 전자계산기 용어집은 ‘추리’로 번역하며, inference engine은 ‘추리 엔진’ 또는 ‘추리 기계’로 옮긴다. 따라서 ‘추론=inference, 추리=reasoning’은 이 사이트가 두 개념을 구분하기 위해 택한 용법이지, 사전이 정한 규칙은 아니다. ‘추리 엔진’이라는 용어를 만나면 문맥을 살펴야 한다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "관련 개념: "
+            },
+            {
+              "type": "article",
+              "text": "추리 모델(Reasoning Model)",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "은 여러 단계가 필요한 문제를 풀도록 설계된 모델 유형이며, 응답할 때 수행하는 계산은 여전히 추론이다. "
+            },
+            {
+              "type": "article",
+              "text": "추론 시 연산(Test-time Compute)",
+              "kind": "life",
+              "slug": "ai-term-test-time-compute"
+            },
+            {
+              "type": "text",
+              "text": "은 추론 단계에서 연산 자원을 더 투입하는 전략이다. 다른 용어는 "
+            },
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "을 참고하자."
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google: 머신러닝 용어집(inference, training 등 항목)",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google: 머신러닝 용어집(중국어 번체판, inference를 ‘추론’으로 번역)",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Kwon 등: PagedAttention을 활용한 대규모 언어 모델 서빙의 효율적인 메모리 관리(vLLM, SOSP 2023)",
+          "url": "https://arxiv.org/abs/2309.06180",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Pope 등: Transformer 추론의 효율적인 확장(2022)",
+          "url": "https://arxiv.org/abs/2211.05102",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "NVIDIA: NIM LLMs 벤치마킹, 지표(TTFT, ITL, 처리량의 정의)",
+          "url": "https://docs.nvidia.com/nim/benchmarking/llm/latest/metrics.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic: 지연 시간 줄이기(공식 문서)",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI: 지연 시간 최적화(공식 문서)",
+          "url": "https://platform.openai.com/docs/guides/latency-optimization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "llama.cpp: 프로젝트 소개(로컬 추론의 공식 구현 문서)",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "국가교육연구원 러츠왕: inference 항목(학문별 용어집의 번역어 비교)",
+          "url": "https://terms.naer.edu.tw/detail/8bc45e654bd178e8380ebefabc5e389b/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "국가교육연구원 러츠왕: inference engine 정확 일치 검색 결과(용어집별로 ‘추리 엔진’, ‘추리 기계’로 번역)",
+          "url": "https://terms.naer.edu.tw/search/?query_term=inference+engine&query_field=title&query_op=&match_type=phrase",
+          "checked_on": "2026-10-03"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "推论（Inference）是什么：模型训练完成后，每次回答都在做的计算",
+      "description": "推论是用已训练好的模型处理新输入、生成输出的过程，权重在这个阶段固定不变。内容拆解语言模型推论的两个阶段：读入提示（prefill）与逐个生成（decode），说明首个 token 时间、完整回答时间与吞吐量的区别，区分推论（inference）与推理（reasoning）、云端与本地，并看懂批处理、量化与缓存各自节省在哪里。",
+      "hero": {
+        "src": "/guides/ai-term-inference/hero-zh-cn.jpg",
+        "alt": "一叠提示文字送进锁住权重的模型方块，右侧输出一个接一个出现的小方块",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "推论（inference）是用训练好的模型处理新输入、生成输出，每次提交提问，从读入提示词到生成最后一个 token 都是推论，权重在这段时间固定不变。",
+            "大语言模型的一次推论分为读入提示（prefill）与逐个生成（decode）两个阶段，输出的 token 越多，需要重复的步数越多，所以输出越长通常耗时越久。",
+            "推论常与指多步推导能力的推理（reasoning）混用，两者是不同的事，繁体中文的译名也不统一，读到“推理引擎”这类词要看上下文。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "推论（inference）是用训练好的模型处理新的输入、生成输出。你每点击一次提交，模型从读入提示词到生成最后一个 token，整段计算都是推论；权重等模型参数在这段时间固定不变，调整权重是训练的事。另一个常被混用的词是推理（reasoning），指模型多步推导的能力；本站用“推论”对应 inference、“推理”对应 reasoning，原因在文末说明。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本文用虚构的民宿预订助手，说明一次回答如何分为两个阶段、为什么输出越长通常耗时越久、两种延迟指标的区别，以及批处理、量化、缓存各自节省哪一部分。主要依据 Google 的术语表、两篇论文与各家官方文档；不列价格或速度数字，因为它们会随模型与硬件改变。"
+        },
+        {
+          "type": "heading",
+          "text": "推论和训练有什么区别",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 机器学习术语表的定义是：传统机器学习中，推论是把训练好的模型应用于未标记样本以进行预测；在大语言模型中，则是用训练好的模型针对输入提示生成回应。训练是确定模型参数（权重与偏置）的过程，系统读入示例并逐步调整参数。分界在于参数有没有被改动。术语表也注明，统计学中的 inference 含义略有不同；这里用的是机器学习中的含义。"
+        },
+        {
+          "type": "paragraph",
+          "text": "推论时，权重不会因为你的这一次提问而改变。在提示词里放几个示例，模型能按格式回答，但示例只是这次计算的输入。服务商是否保存对话、日后用于训练，是产品条款与设置的问题，不属于推论本身。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "维度",
+            "训练",
+            "推论"
+          ],
+          "rows": [
+            [
+              "权重",
+              "逐步调整",
+              "固定，只用于计算"
+            ],
+            [
+              "发生频率",
+              "集中在模型完成前，或更新版本时",
+              "每个请求都需要计算"
+            ],
+            [
+              "成本结构",
+              "模型完成前的计算与数据投入",
+              "随请求数量与长度累加"
+            ]
+          ],
+          "caption": "根据 Google 机器学习术语表与 Pope 等人的论文整理；核实于 2026 年 10 月。"
+        },
+        {
+          "type": "heading",
+          "text": "一次回答的两个阶段：读入提示，再逐个生成",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "大语言模型的一次推论分为两个阶段。第一阶段是读入提示（prefill）：提示词的 token 全部已知，可以一起并行处理，同时算出第一个新 token 的概率，并保存每个位置的中间结果（key 与 value，合称 KV 缓存）。vLLM 论文称这一阶段为提示阶段（prompt phase），Pope 等人称其为 prefill。"
+        },
+        {
+          "type": "paragraph",
+          "text": "第二阶段是逐个生成（decode）：每一步只把上一个新 token 送进模型、算出下一个，直到遇到结束符号或长度上限。前面 token 的 KV 缓存已保存好，每步只补算新的一个，但后一步要等前一步，无法并行。vLLM 论文指出，这一阶段不易充分利用 GPU 的计算能力、受内存读取限制，并占单个请求延迟的大部分。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这就是输出越长耗时越久的原因：token 越多，需要重复的步数越多，每步都要读取模型权重与 KV 缓存。输入变长则主要增加那一次 prefill 的计算负担，也让之后每步要读取的 KV 缓存变大。OpenAI 的延迟指南同样指出，生成 token 几乎总是延迟最高的一步，输入除非非常长，通常不是主因。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-inference/diagram-1-zh-cn.svg",
+          "alt": "时间轴图：排队与网络、读入提示（prefill）、逐个生成 token（decode），上方标示完整回答时间，下方标示首个 token 时间与生成时间",
+          "width": 1600,
+          "height": 900,
+          "caption": "完整回答时间等于首个 token 时间加上生成时间；输入长度主要影响前一阶段，输出长度主要影响后一阶段。",
+          "description": "时间轴图。请求先经过排队与网络，接着读入提示（prefill），整份提示一次并行处理，再进入逐个生成（decode），一步生成一个 token，直到结束。首个 token 时间涵盖排队与网络、读入提示；生成时间涵盖其后逐个生成的 token；两者相加是完整回答时间。输入越长，主要拉长首个 token 时间；输出越长，主要拉长生成时间；权重全程固定，不更新。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示例：民宿助手的两种问法",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下是示例，未经实测。问法 A：粘贴很长的入住须知，问“几点退房”，输入长、输出一句。问法 B：不粘贴资料，只要求写一篇很长的周边散步介绍，输入短、输出长。预计 A 的第一个字较晚出现，因为要先读完须知，但很快就能答完；B 的第一个字很快出现，完整回答时间却主要花在逐个生成大量 token 上。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果实测与预期不同，别硬套这个模型。首个 token 时间偏长，可能是排队、网络往返，或提示词比想象的长；生成很慢，可能是同时处理的请求多，或输出比预期长。NVIDIA 的文档指出，TTFT 通常包含排队、prefill 与网络延迟；要知道慢在哪里，需要分段测量。"
+        },
+        {
+          "type": "heading",
+          "text": "两种慢：首个 token 时间与完整回答时间",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "首个 token 时间（time to first token，TTFT）是从提交请求到收到第一个 token；完整回答时间（端到端延迟，end-to-end latency）计算到最后一个 token，NVIDIA 的文档将其写为 TTFT 加生成时间。Anthropic 的文档指出，TTFT 在流式输出时特别重要：流式输出让用户先看到开头，改善感受到的速度，但 token 总数没有变。"
+        },
+        {
+          "type": "paragraph",
+          "text": "吞吐量（throughput）看整个系统每秒能生成多少 token。NVIDIA 的文档说明，同时处理的请求变多，系统总吞吐量会上升，直到资源被充分利用，但每位用户各自的速度会下降。所以延迟与吞吐量之间需要权衡。"
+        },
+        {
+          "type": "callout",
+          "tone": "warning",
+          "title": "比较速度前，先统一测量方法",
+          "text": "各工具的测量方法不同，例如计算每个 token 的间隔时，是否把首个 token 算进去，就有分歧。NVIDIA 的文档提醒，定义一致才能比较。"
+        },
+        {
+          "type": "heading",
+          "text": "降低成本：批处理、量化与缓存",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "每次请求的成本，来自它占用多少硬件时间；Pope 等人以每个 token 的芯片时间或金额衡量。他们分析超大型 Transformer 在多颗加速芯片上的推论时指出，批次小，延迟可以较低，但每个 token 的成本较高；离线处理时增大批次通常最划算。常见的降本做法有三类，这里仅作列举："
+        },
+        {
+          "type": "list",
+          "items": [
+            "批处理（batching）：将多个请求合并计算。vLLM 论文指出，KV 缓存很大且动态增减，浪费的内存会限制批次大小，因此提出 PagedAttention。",
+            "量化（quantization）：用较低精度的数值表示权重，减少内存需求。Pope 等人的实验比较了 bfloat16 与量化为 int8 的权重。",
+            "缓存（caching）：复用已算好的结果，例如相同前缀的 KV 缓存，OpenAI 的指南建议把会变动的内容放在提示词后半部分。"
+          ],
+          "ordered": false
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "详见"
+            },
+            {
+              "type": "article",
+              "text": "量化（Quantization）",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            },
+            {
+              "type": "text",
+              "text": "与"
+            },
+            {
+              "type": "article",
+              "text": "提示词缓存（Prompt Caching）",
+              "kind": "life",
+              "slug": "ai-term-prompt-caching"
+            },
+            {
+              "type": "text",
+              "text": "；提示词缓存只节省读入提示阶段的时间，不缩短逐个生成阶段的时间。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "云端与本地：谁的硬件，谁在排队",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "云端推论在服务商的集群上执行，同时服务很多人：请求需要排队、可能与他人的请求合并为一个批次，还要经过网络往返，这些都算进你的等待时间。你能调整的多半是提示词与输出长度、是否使用流式输出、模型大小，Anthropic 与 OpenAI 的延迟文档都列出了这些。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本地推论通常少了网络往返与他人的请求，但计算资源与内存要自备，模型大小受设备限制。llama.cpp 项目自述以各种硬件上的本地与云端推论为目标，提供整数量化以降低内存用量。两边都有 prefill 与 decode，区别在于资源由谁提供、多少人共用。"
+        },
+        {
+          "type": "heading",
+          "text": "用语：推论、推理与推论时计算",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "繁体中文里，inference 与 reasoning 的译名并不统一。Google 机器学习术语表繁体中文版把 inference 译为推论，并以“推理”描述模型的推导；国家教育研究院乐词网的各学科词表则两种译法都有：统计学名词译为推论，电子计算机名词译为推理，inference engine 是“推理引擎”或“推理机”。所以“推论＝inference、推理＝reasoning”是本站为区分两件事而采用的用法，不是词典规定；读到“推理引擎”要看上下文。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "相关概念："
+            },
+            {
+              "type": "article",
+              "text": "推理模型（Reasoning Model）",
+              "kind": "life",
+              "slug": "ai-reasoning-models-explained"
+            },
+            {
+              "type": "text",
+              "text": "是针对多步问题设计的一类模型，回答时做的仍是推论；"
+            },
+            {
+              "type": "article",
+              "text": "推论时计算（Test-time Compute）",
+              "kind": "life",
+              "slug": "ai-term-test-time-compute"
+            },
+            {
+              "type": "text",
+              "text": "是在推论阶段投入更多算力的策略。其他术语见"
+            },
+            {
+              "type": "article",
+              "text": "AI 术语总索引",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Google：机器学习术语表（inference、training 等条目）",
+          "url": "https://developers.google.com/machine-learning/glossary",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Google：机器学习术语表（繁体中文版，inference 译为推论）",
+          "url": "https://developers.google.com/machine-learning/glossary?hl=zh-tw",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Kwon 等：利用 PagedAttention 实现大语言模型服务的高效内存管理（vLLM，SOSP 2023）",
+          "url": "https://arxiv.org/abs/2309.06180",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Pope 等：高效扩展 Transformer 推论（2022）",
+          "url": "https://arxiv.org/abs/2211.05102",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "NVIDIA：NIM LLMs 基准测试，指标（TTFT、ITL、吞吐量的定义）",
+          "url": "https://docs.nvidia.com/nim/benchmarking/llm/latest/metrics.html",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "Anthropic：降低延迟（官方文档）",
+          "url": "https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/reduce-latency",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "OpenAI：延迟优化（官方文档）",
+          "url": "https://platform.openai.com/docs/guides/latency-optimization",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "llama.cpp：项目说明（本地推论的官方实现文档）",
+          "url": "https://github.com/ggml-org/llama.cpp",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "国家教育研究院乐词网：inference 条目（各学科词表的译名对照）",
+          "url": "https://terms.naer.edu.tw/detail/8bc45e654bd178e8380ebefabc5e389b/",
+          "checked_on": "2026-10-03"
+        },
+        {
+          "title": "国家教育研究院乐词网：inference engine 精确检索结果（各词表译为推理引擎、推理机）",
           "url": "https://terms.naer.edu.tw/search/?query_term=inference+engine&query_field=title&query_op=&match_type=phrase",
           "checked_on": "2026-10-03"
         }

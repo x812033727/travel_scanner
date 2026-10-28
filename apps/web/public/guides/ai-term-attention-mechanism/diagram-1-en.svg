@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="title desc" font-family="'Noto Sans TC','Noto Sans JP','PingFang TC','Microsoft JhengHei','Hiragino Sans',system-ui,sans-serif">
+<title id="title">Attention: match, weigh, mix / Attention: match, weigh, mix</title>
+<desc id="desc">Using “it” as the query, compare it with the keys for Xiaoya, suitcase, trunk and other words, then apply softmax to obtain weights. The example weights are 0.10, 0.55, 0.25 and 0.10 respectively, summing to 1. Mix the values at each position according to these weights to obtain a new representation of “it,” with the suitcase's content contributing the most. The weights are a teaching example, not measurements.</desc>
+<rect width="1600" height="900" fill="#F7F1E8"></rect>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#0D6B68"></path></marker></defs>
+<text x="60" y="52" font-size="30" font-weight="700" fill="#102A2B">Attention: match, weigh, mix</text>
+<text x="60" y="84" font-size="18" fill="#5C6B6B">Attention: match, weigh, mix (example weights, not measured)</text>
+<text x="60" y="158" font-size="22" font-weight="700" fill="#102A2B">Current position</text>
+<text x="380" y="158" font-size="22" font-weight="700" fill="#102A2B">Positions compared</text>
+<text x="740" y="158" font-size="22" font-weight="700" fill="#102A2B">Weights after softmax</text>
+<text x="1250" y="158" font-size="22" font-weight="700" fill="#102A2B">Output</text>
+<rect x="60" y="194" width="240" height="496" rx="14" fill="#FFFFFF" stroke="#D97A2B" stroke-width="4"></rect>
+<text x="180" y="420" font-size="36" font-weight="700" fill="#102A2B" text-anchor="middle">“it”</text>
+<text x="180" y="468" font-size="26" fill="#102A2B" text-anchor="middle">query</text>
+<text x="180" y="506" font-size="22" fill="#5C6B6B" text-anchor="middle">What to look for</text>
+<rect x="1250" y="194" width="290" height="496" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"></rect>
+<text x="1395" y="384" font-size="21" font-weight="700" fill="#102A2B" text-anchor="middle" style="font-size: 21px;">New “it” representation</text>
+<text x="1395" y="436" font-size="24" fill="#102A2B" text-anchor="middle">＝values at each position</text>
+<text x="1395" y="472" font-size="24" fill="#102A2B" text-anchor="middle">averaged by weight</text>
+<text x="1395" y="540" font-size="24" font-weight="700" fill="#0D6B68" text-anchor="middle">Suitcase content</text>
+<text x="1395" y="576" font-size="24" font-weight="700" fill="#0D6B68" text-anchor="middle">contributes most</text>
+<path d="M 300 250 L 376 250" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<path d="M 660 250 L 736 250" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<path d="M 1140 250 L 1246 250" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<rect x="380" y="194" width="280" height="112" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"></rect>
+<text x="520" y="244" font-size="30" font-weight="400" fill="#102A2B" text-anchor="middle">Xiaoya</text>
+<text x="520" y="282" font-size="20" fill="#5C6B6B" text-anchor="middle">key, value</text>
+<rect x="740" y="228" width="400" height="44" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"></rect>
+<rect x="740" y="228" width="40" height="44" rx="8" fill="#2F6F9F"></rect>
+<text x="796" y="259" font-size="26" font-weight="700" fill="#102A2B">0.10</text>
+<path d="M 300 378 L 376 378" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<path d="M 660 378 L 736 378" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<path d="M 1140 378 L 1246 378" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<rect x="380" y="322" width="280" height="112" rx="14" fill="#E3F0EF" stroke="#0D6B68" stroke-width="4"></rect>
+<text x="520" y="372" font-size="30" font-weight="700" fill="#102A2B" text-anchor="middle">Suitcase</text>
+<text x="520" y="410" font-size="20" fill="#5C6B6B" text-anchor="middle">key, value</text>
+<rect x="740" y="356" width="400" height="44" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"></rect>
+<rect x="740" y="356" width="220" height="44" rx="8" fill="#0D6B68"></rect>
+<text x="976" y="387" font-size="26" font-weight="700" fill="#102A2B">0.55</text>
+<path d="M 300 506 L 376 506" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<path d="M 660 506 L 736 506" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<path d="M 1140 506 L 1246 506" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<rect x="380" y="450" width="280" height="112" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"></rect>
+<text x="520" y="500" font-size="30" font-weight="400" fill="#102A2B" text-anchor="middle">Trunk</text>
+<text x="520" y="538" font-size="20" fill="#5C6B6B" text-anchor="middle">key, value</text>
+<rect x="740" y="484" width="400" height="44" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"></rect>
+<rect x="740" y="484" width="100" height="44" rx="8" fill="#2F6F9F"></rect>
+<text x="856" y="515" font-size="26" font-weight="700" fill="#102A2B">0.25</text>
+<path d="M 300 634 L 376 634" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<path d="M 660 634 L 736 634" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<path d="M 1140 634 L 1246 634" fill="none" stroke="#0D6B68" stroke-width="4" marker-end="url(#arrow)"></path>
+<rect x="380" y="578" width="280" height="112" rx="14" fill="#E6F0F7" stroke="#2F6F9F" stroke-width="4"></rect>
+<text x="520" y="628" font-size="30" font-weight="400" fill="#102A2B" text-anchor="middle">Other words</text>
+<text x="520" y="666" font-size="20" fill="#5C6B6B" text-anchor="middle">key, value</text>
+<rect x="740" y="612" width="400" height="44" rx="8" fill="#FFFFFF" stroke="#5C6B6B" stroke-width="2"></rect>
+<rect x="740" y="612" width="40" height="44" rx="8" fill="#2F6F9F"></rect>
+<text x="796" y="643" font-size="26" font-weight="700" fill="#102A2B">0.10</text>
+<rect x="60" y="712" width="480" height="88" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"></rect>
+<circle cx="110" cy="756" r="26" fill="#0D6B68"></circle>
+<text x="110" y="764" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">01</text>
+<text x="152" y="765" font-size="24" fill="#102A2B">Score query against each key</text>
+<rect x="560" y="712" width="480" height="88" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"></rect>
+<circle cx="610" cy="756" r="26" fill="#0D6B68"></circle>
+<text x="610" y="764" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">02</text>
+<text x="652" y="765" font-size="24" fill="#102A2B">softmax: weights sum to 1</text>
+<rect x="1060" y="712" width="480" height="88" rx="14" fill="#FFFFFF" stroke="#0D6B68" stroke-width="4"></rect>
+<circle cx="1110" cy="756" r="26" fill="#0D6B68"></circle>
+<text x="1110" y="764" font-size="22" font-weight="700" fill="#FFFFFF" text-anchor="middle">03</text>
+<text x="1152" y="765" font-size="24" fill="#102A2B">Mix values by weight</text>
+<text x="1540" y="870" text-anchor="end" font-size="15" fill="#5C6B6B">© Mokaair graphic 2026</text>
+</svg>

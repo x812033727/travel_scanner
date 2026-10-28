@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "模型參數（Model Parameters）是什麼",
@@ -116,6 +119,7 @@
           "width": 1600,
           "height": 900,
           "caption": "數字只是教學算式，沒有對應任何真實模型效能。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -271,6 +275,1090 @@
         },
         {
           "title": "Google：Prompt design strategies",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Fedus 等：Switch Transformers",
+          "url": "https://arxiv.org/abs/2101.03961",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Are Model Parameters?",
+      "description": "Model parameters are values adjusted during training to map inputs to outputs, such as weights and biases. Simple equations show how they affect predictions and distinguish them from training hyperparameters, prompts and generation settings. Learn why parameter count, numerical precision and active parameters are different metrics, how to read model specs, why more parameters do not mean more individual facts, and why each chat does not mean retraining the model.",
+      "hero": {
+        "src": "/guides/ai-term-model-parameters/hero-en.jpg",
+        "alt": "Knobs form a panel of a model's internal values. An external input card passes through it to produce a result, illustrating how parameters differ from data for the current request.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Model parameters are numerical values used in a model's internal computations, such as neural network weights and biases. Many are adjusted during training, and together they determine how the model transforms inputs into outputs.",
+            "A model's parameter count mainly describes one aspect of its scale. It does not count the individual things it knows or directly measure intelligence.",
+            "Prompts and files are inputs for the current request. Temperature and output length are generation settings; learning rate is a training hyperparameter. Changing these operates at a different level from updating weights.",
+            "Parameter count is not storage size. Quantization changes numerical precision without necessarily changing the number of parameters. A mixture-of-experts model's total parameters and parameters active for a request must also be considered separately."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Model parameters are numerical values used in a model's internal computations. Many are adjusted during training, such as neural network weights and biases. Together, they determine how the model transforms inputs into outputs. A model's parameter count mainly describes one aspect of its scale. It does not count the individual things it knows or directly measure intelligence."
+        },
+        {
+          "type": "paragraph",
+          "text": "In software documentation, “parameter” can also broadly refer to request settings, which can cause confusion. Adjusting generation temperature, editing prompts and training weights are different actions. We will first build intuition with a simple, original equation, then explain how to read parameter information for large models. Information verified as of 2026-9-14."
+        },
+        {
+          "type": "heading",
+          "text": "Understanding Weights and Biases Through a Simple Model",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google's linear regression materials and PyTorch tutorials both explain model computations using weights, biases and parameter updates. Consider an equation used purely for teaching: output equals weight multiplied by input, plus bias. Set the weight to 2 and the bias to 1, and an input of 3 gives 7. These numbers are an original example and do not represent actual product prices, grades or model measurements."
+        },
+        {
+          "type": "paragraph",
+          "text": "In this small model, the input 3 is data for the current request; the weight 2 and bias 1 are the model parameters. The parameters can remain unchanged when a different input is supplied. Changing the weight, however, may change the result for the same input. This distinction helps explain why seeing new content during each use does not mean the model changes its learned internal values every time."
+        },
+        {
+          "type": "paragraph",
+          "text": "The parameters in large neural networks are far more complex than this equation. They may be distributed across components such as embeddings, attention and feed-forward networks, stored as matrices or other tensors. Each parameter cannot be labeled as a particular word or fact. Knowledge and capabilities are usually supported jointly by many values and computations; a single parameter rarely has an encyclopedic meaning that can be read directly."
+        },
+        {
+          "type": "heading",
+          "text": "How Training Changes These Values",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "During training, the model first makes predictions, then a loss function measures the gap between those predictions and the desired results. Backpropagation can calculate the gradients of the loss with respect to the parameters, and an optimization method uses them to update the parameters. This does not directly write the correct answer into a particular slot. Instead, many examples gradually adjust the overall numerical relationships so that errors tend to decrease for the specified objective."
+        },
+        {
+          "type": "paragraph",
+          "text": "Continuing with the equation example, if the data shows that the original predictions are too low, the training program may adjust the weight or bias. How it adjusts them depends on all the examples, the loss and the optimization settings. A mismatch on one example does not justify arbitrarily changing the model until it gets that example right. If memorizing a single input harms performance on other data, the model loses its ability to generalize to new situations."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Some adaptation methods update only certain parameters while keeping other weights fixed; others add a small number of trainable components. This differs from fully retraining the model. When reading about "
+            },
+            {
+              "type": "article",
+              "text": "fine-tuning",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": " methods, check which parameters change, which remain fixed and which cases are used to evaluate the update. Whether a parameter is trainable is part of the configuration and method; not every value necessarily updates at the same time."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Distinguishing Hyperparameters, Prompts and Generation Settings",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Training hyperparameters control the learning process, including the learning rate, batch arrangements and certain architectural choices. They are distinct from the set of weights learned directly through those parameter updates, although they can be selected separately through search or other methods. Lowering the learning rate changes how learning happens; updating weights changes the model's own numerical relationships. The two affect different levels."
+        },
+        {
+          "type": "paragraph",
+          "text": "Prompts and files are inputs for the current request. If you place a set of rules in the context, the model can answer based on them, but this usually does not update its weights. Generation settings affect the output process; for example, some models offer controls for sampling temperature or output length. Google's prompt design documentation also lists these as request settings. Support and recommendations vary by model and should not be treated as universal, fixed rules."
+        },
+        {
+          "type": "paragraph",
+          "text": "Lowering temperature does not rewrite incorrect facts into correct weights, and increasing output length does not increase model capacity. If the model lacks current information, provide relevant sources. If the output format is inconsistent, check the prompt and structural validation. First identify which level you are changing so that you do not try to solve a problem with an unrelated knob."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-model-parameters/diagram-1-en.svg",
+          "alt": "Original example: input 3 is multiplied by weight 2, then bias 1 is added, yielding output 7. Below, current input, learned parameters and request settings are distinguished.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The numbers are only a teaching example and do not represent any actual model's performance.",
+          "description": "Original example: input 3 is multiplied by weight 2, then bias 1 is added, yielding output 7. Below, current input, learned parameters and request settings are distinguished.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Parameter Count and Storage Size Are Different Measures",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Parameter count describes the number of numerical values. Storage requirements also depend on each value's precision and format. With the same number of parameters, different numerical representations can produce different file sizes. Quantization changes representation precision without necessarily changing parameter count. A smaller download therefore does not directly imply that the model's architecture has shrunk by the same proportion."
+        },
+        {
+          "type": "paragraph",
+          "text": "At runtime, caches, intermediate tensors, programs and other resources also require memory. Estimating actual requirements solely from model file size may overlook the effects of long contexts and concurrent requests. For local deployment, review the official model and execution engine requirements, then test with your intended inputs instead of checking only whether the downloaded weights will fit."
+        },
+        {
+          "type": "paragraph",
+          "text": "Mixture-of-experts models also require distinguishing total parameters from those active for a particular request. All the experts contained in the model and the portion that actually participates in a computation answer different questions. Activating fewer parameters does not make the remaining weights disappear or guarantee faster overall execution. Shared layers, routing and data movement can all affect actual resource use."
+        },
+        {
+          "type": "heading",
+          "text": "Interpreting Scale Through Task Evaluations",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "More parameters can offer different representational capacity, but quality also depends on data, training, architecture and the task. Two models with similar parameter counts may perform differently in language, format compliance or specific knowledge. Ranking models only by size is like judging a tool's usefulness solely by its number of parts while ignoring what it was designed to do."
+        },
+        {
+          "type": "paragraph",
+          "text": "When choosing a model to organize notes, test it on the same notes to see whether it preserves negations, dates and unresolved matters, then compare waiting times and device resource use. If a small model already meets your needs reliably, a larger model's extra capacity may not justify the additional cost. If complex situations repeatedly cause failures, making the prompt longer cannot fill every capability gap either."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Model parameters are an important starting point for understanding technical specifications, but a useful reading considers parameter count, precision, activation methods, data and "
+            },
+            {
+              "type": "article",
+              "text": "evaluations",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": " together. Once you can distinguish “changing the input,” “changing generation settings” and “changing weights,” you can describe problems more accurately and choose suitable improvements more easily, without calling every adjustment training "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "Item",
+            "What Changes",
+            "Examples"
+          ],
+          "rows": [
+            [
+              "Model parameters",
+              "The model's internal numerical relationships",
+              "Weights and biases"
+            ],
+            [
+              "Training hyperparameters",
+              "How the learning procedure is configured",
+              "Learning rate"
+            ],
+            [
+              "Prompts and generation settings",
+              "Materials for the current request or output controls",
+              "Files, temperature and output length"
+            ]
+          ],
+          "caption": "Roles of different parameters and settings (verified in 2026-9)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "First Ask Which Level You Are Changing",
+          "text": "Editing a prompt, lowering temperature and fine-tuning weights are different actions. First determine whether the problem concerns data, output control or capabilities, then choose the corresponding method."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Machine Learning?",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is a Mixture-of-Experts Model?",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Quantization: The Trade-offs of Running Models with Fewer Bits",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terms Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "PyTorch: Deep Learning with PyTorch",
+          "url": "https://docs.pytorch.org/tutorials/beginner/nlp/deep_learning_tutorial.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Linear regression",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Prompt design strategies",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Fedus et al.: Switch Transformers",
+          "url": "https://arxiv.org/abs/2101.03961",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "モデルパラメータ（Model Parameters）とは",
+      "description": "モデルパラメータは、入力を出力に変換するために学習時に調整される数値で、重みやバイアスなどがあります。この記事では簡単な式を使って、パラメータが予測にどう影響するかを説明し、モデルパラメータ、学習のハイパーパラメータ、プロンプト、生成設定を区別します。また、パラメータ数、数値精度、アクティブパラメータ数が異なる指標である理由も解説します。モデルの仕様をより正確に読み取り、パラメータが増えても知識が一件ずつ増えるわけではなく、チャットのたびにモデルを学習し直すわけでもないことを理解できます。",
+      "hero": {
+        "src": "/guides/ai-term-model-parameters/hero-ja.jpg",
+        "alt": "複数のつまみで構成されたモデル内部の数値パネルに、外部の入力カードを通すと結果が得られる図。パラメータとその都度のデータの違いを表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "モデルパラメータは、神経ネットワークの重みやバイアスなど、モデル内部の計算に使われる数値です。その多くは学習時に調整され、入力を出力に変換する方法を共同で決定します。",
+            "モデルのパラメータ数は、主に規模の一側面を表すもので、知っている事柄を一件ずつ数えた数でも、知能を直接測る指標でもありません。",
+            "プロンプトやファイルはその都度の入力、温度や出力の長さは生成設定、学習率は学習のハイパーパラメータです。これらの調整は、重みの更新とは異なる階層の操作です。",
+            "パラメータ数は保存容量とも異なります。量子化は数値の表現精度を変えますが、パラメータ数が変わるとは限りません。混合エキスパートモデルでは、総パラメータ数とその処理で有効化されるパラメータ数も分けて見る必要があります。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルパラメータとは、モデル内部の計算に使われる数値で、その多くは学習時に調整されます。神経ネットワークの重みやバイアスがその例です。これらが共同で、モデルが入力を出力に変換する方法を決定します。モデルのパラメータ数は、主に規模の一側面を表すもので、知っている事柄を一件ずつ数えた数でも、知能を直接測る指標でもありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ソフトウェアの文書では、「パラメータ」が呼び出し時の設定全般を指す場合もあるため、混同しやすくなっています。生成時の温度調整、プロンプトの変更、重みの学習は、それぞれ異なる操作です。以下では、まず独自の簡単な式で直感的に理解し、その後、大規模モデルのパラメータ情報の読み方を説明します。情報の確認日は 2026 年 9 月 14 日です。"
+        },
+        {
+          "type": "heading",
+          "text": "簡単なモデルで重みとバイアスを見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google の線形回帰教材と PyTorch のチュートリアルは、どちらも重み、バイアス、パラメータの更新を使ってモデルの計算を説明しています。説明のためだけに、出力は重みに入力を掛け、バイアスを足したものとする式を考えます。重みを 2、バイアスを 1 に設定すると、入力が 3 のとき出力は 7 になります。これらの数値は独自の例であり、実際の商品価格、成績、モデルの測定値に対応するものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "この小さなモデルでは、入力の 3 はその都度のデータであり、重みの 2 とバイアスの 1 がモデルパラメータです。別の入力に替えても、パラメータはそのままにできます。一方、重みを調整すると、同じ入力でも結果が変わる可能性があります。この違いを理解すると、モデルが使われるたびに新しい内容を見ても、そのたびに内部で学習した数値を変えているわけではないことが分かります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "大規模な神経ネットワークのパラメータは、この式よりはるかに複雑です。埋め込み、アテンション、フィードフォワードなどの構成要素に分散し、行列やその他のテンソルとして保存されることがあります。各パラメータを特定の単語や一つの事実として名付けることはできません。知識や能力は通常、多くの数値と計算によって支えられており、単独のパラメータに、そのまま読み取れる百科事典的な意味があることはまれです。"
+        },
+        {
+          "type": "heading",
+          "text": "学習はこれらの数値をどう変えるのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "学習時には、モデルがまず予測を生成し、損失関数を使って期待する結果との差を測ります。誤差逆伝播によってパラメータに対する損失の勾配を計算し、最適化手法がそれに基づいてパラメータを更新します。これは正解をどこかの空欄に直接書き込む操作ではありません。多くのサンプルを使って数値全体の関係を徐々に調整し、指定された目標に対する誤りが減る方向へ向かわせるものです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "先ほどの式の例で、元の予測が低すぎることをデータが示していれば、学習プログラムは重みやバイアスを調整する可能性があります。ただし、調整方法はすべてのサンプル、損失、最適化の設定に応じて決まります。一件のデータに合わないからといって、それに正しく答えるよう恣意的に変更してはいけません。一つの入力を記憶するために他のデータへの対応を損なえば、新しい状況に対応する汎化能力が失われます。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "適応手法の中には、一部のパラメータだけを更新し、他の重みは固定したままにするものや、少量の学習可能な構成要素を追加するものがあります。これは全体を学習し直すこととは異なります。"
+            },
+            {
+              "type": "article",
+              "text": "ファインチューニング",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "の手法を読む際は、どのパラメータが変わり、どれが変わらないのか、また更新後にどのような事例で検証するのかを確認してください。パラメータを学習対象にするかどうかは設定や手法の一部であり、すべての数値が必ず同時に更新されるわけではありません。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "ハイパーパラメータ、プロンプト、生成設定を区別する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "学習のハイパーパラメータは、学習率、バッチの設定、一部の構造上の選択など、学習過程を制御します。これらは、同じパラメータ更新のステップで直接学習される重みそのものではありませんが、探索などの方法で別途選ぶことはできます。学習率を下げるのは学び方を変える操作であり、重みの更新はモデル自体の数値関係を変える操作です。両者が影響する階層は異なります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "プロンプトやファイルは、その都度の入力です。規則をまとめた文書をコンテキストに入れると、モデルはそれに沿って回答できますが、通常、それによって重みが更新されるわけではありません。一方、生成設定は出力過程に影響します。例えば、一部のモデルではサンプリング温度や出力の長さを制御できます。Google のプロンプト設計文書でも、これらは呼び出し時の設定として扱われています。対応状況や推奨値はモデルによって異なるため、普遍的で固定された規則と考えてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "温度を下げても、誤った事実が正しい重みに書き換わるわけではありません。出力を長くしても、モデルの容量が増えるわけではありません。モデルに最新情報が足りなければ、適切な情報源を提供しましょう。出力形式が安定しなければ、プロンプトや構造の検証を確認できます。まず自分がどの階層を変えているのかを区別すれば、問題と無関係なつまみを回さずに済みます。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-model-parameters/diagram-1-ja.svg",
+          "alt": "独自の例として、入力 3 に重み 2 を掛け、バイアス 1 を足して出力 7 を得る図。下部では、その都度の入力、学習したパラメータ、呼び出し時の設定を区別しています。",
+          "width": 1600,
+          "height": 900,
+          "caption": "数値は説明用の式に使ったもので、実際のモデルの性能に対応するものではありません。",
+          "description": "独自の例として、入力 3 に重み 2 を掛け、バイアス 1 を足して出力 7 を得る図。下部では、その都度の入力、学習したパラメータ、呼び出し時の設定を区別しています。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "パラメータ数と保存容量は別の数値",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "パラメータ数は数値の個数を表しますが、保存に必要な容量は各数値の精度や形式にも左右されます。パラメータの個数が同じでも、数値の表現方法が異なればファイルサイズは変わる可能性があります。量子化は表現精度を変えますが、パラメータ数が変わるとは限りません。そのため、ダウンロードするファイルが小さくなっても、モデルの構造も同じ割合で小さくなったと直接推論することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実行時には、キャッシュ、中間テンソル、プログラム、その他のリソースにもメモリが必要です。モデルのファイルサイズだけで実際の必要量を見積もると、長いコンテキストや同時リクエストの影響を見落とす可能性があります。ローカル環境への導入を計画するなら、重みのダウンロード先に空き容量があるかだけで判断せず、モデルと実行エンジンの公式要件を確認し、想定する入力でテストしてください。"
+        },
+        {
+          "type": "paragraph",
+          "text": "混合エキスパートモデルでは、総パラメータ数と、その処理で有効化されるパラメータ数も区別する必要があります。モデルが含むすべてのエキスパートと、ある処理で実際に計算へ参加する部分は、それぞれ異なる問いへの答えです。有効化される数が少なくても、残りの重みが消えるわけではなく、全体が必ず高速になる保証もありません。共有層、ルーティング、データの移動はいずれも、実際のリソース使用量に影響する可能性があります。"
+        },
+        {
+          "type": "heading",
+          "text": "タスク評価を通じて規模を読み解く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "パラメータが多ければ表現容量は変わり得ますが、品質はデータ、学習、アーキテクチャ、タスクにも左右されます。パラメータ数が近いモデル同士でも、言語、形式への準拠、特定の知識では性能が異なる可能性があります。大きさだけで順位を付けるのは、工具の部品数だけで使いやすさを判断するようなもので、何をするために設計されたのかを見落としています。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ノートを整理するモデルを選ぶなら、同じノートを使い、否定表現、日付、未決事項を保持できるかをテストしてから、待ち時間や端末のリソース使用量を比較できます。小さなモデルがすでに要件を確実に満たせるなら、大きなモデルの追加容量は追加費用に見合わないかもしれません。複雑な状況で繰り返し失敗する場合も、プロンプトを長くするだけですべての能力不足を補えるわけではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "モデルパラメータは技術仕様を理解する重要な入り口ですが、実際に役立つ読み方は、パラメータ数、精度、有効化の仕組み、データと"
+            },
+            {
+              "type": "article",
+              "text": "評価",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "を併せて見ることです。「入力の変更」「生成設定の変更」「重みの変更」を区別できれば、問題をより正確に説明でき、適切な改善方法も選びやすくなります。あらゆる調整を「"
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "の学習」と呼ぶこともなくなります。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "項目",
+            "変わる部分",
+            "例"
+          ],
+          "rows": [
+            [
+              "モデルパラメータ",
+              "モデル内部の数値関係",
+              "重みとバイアス"
+            ],
+            [
+              "学習のハイパーパラメータ",
+              "学習プログラムの設定",
+              "学習率"
+            ],
+            [
+              "プロンプトと生成設定",
+              "その都度の資料や出力の制御",
+              "ファイル、温度、出力の長さ"
+            ]
+          ],
+          "caption": "各種パラメータと設定の役割（2026 年 9 月確認）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず、どの階層を変えるのかを考える",
+          "text": "プロンプトの変更、温度の引き下げ、重みのファインチューニングは同じ操作ではありません。まず問題の原因がデータ、出力の制御、能力のどこにあるかを確かめ、それに対応する方法を選びましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "機械学習（Machine Learning）とは",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合エキスパートモデル（Mixture of Experts）とは",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量子化（Quantization）：少ないビット数でモデルを動かす際のトレードオフ",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "PyTorch：PyTorch によるディープラーニング",
+          "url": "https://docs.pytorch.org/tutorials/beginner/nlp/deep_learning_tutorial.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：線形回帰",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：プロンプト設計の戦略",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Fedus ほか：Switch Transformers",
+          "url": "https://arxiv.org/abs/2101.03961",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "모델 매개변수(Model Parameters)란 무엇인가",
+      "description": "모델 매개변수는 학습 중 조정되며 입력을 출력으로 바꾸는 데 쓰이는 가중치와 편향 등의 수치입니다. 이 글은 간단한 수식 예시로 매개변수가 예측에 미치는 영향을 설명하고, 모델 매개변수와 학습 하이퍼파라미터, 프롬프트, 생성 설정을 구분합니다. 또한 매개변수 수, 수치 정밀도, 활성 매개변수가 서로 다른 지표인 이유를 설명합니다. 읽고 나면 모델 사양을 더 정확히 읽고, 매개변수 증가가 지식의 항목별 증가를 뜻하지 않으며 매번 대화할 때마다 모델을 다시 학습하는 것도 아님을 이해할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-model-parameters/hero-ko.jpg",
+        "alt": "여러 조절 손잡이로 구성된 모델 내부 수치 패널을 외부 입력 카드가 통과해 결과를 얻는 모습으로, 매개변수와 해당 입력 데이터의 차이를 상징합니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "모델 매개변수는 신경망의 가중치와 편향처럼 모델 내부 계산에 참여하는 수치입니다. 그중 상당수는 학습 중 조정되며, 함께 모델이 입력을 출력으로 바꾸는 방식을 결정합니다.",
+            "모델의 매개변수 수는 주로 규모의 한 측면을 나타냅니다. 모델이 아는 사실을 항목별로 센 값도, 지능을 직접 측정한 값도 아닙니다.",
+            "프롬프트와 파일은 해당 실행의 입력이고, 온도와 출력 길이는 생성 설정이며, 학습률은 학습 하이퍼파라미터입니다. 이들을 조정하는 것은 가중치를 갱신하는 것과 서로 다른 차원의 작업입니다.",
+            "매개변수 수는 저장 용량과도 다릅니다. 양자화는 수치 표현의 정밀도를 바꾸지만 매개변수 수까지 반드시 바꾸지는 않습니다. 혼합 전문가 모델의 전체 매개변수와 해당 실행에서 활성화되는 매개변수도 구분해야 합니다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "모델 매개변수는 모델 내부 계산에 참여하는 수치로, 신경망의 가중치와 편향처럼 그중 상당수는 학습 중 조정됩니다. 이 수치들이 함께 모델이 입력을 출력으로 바꾸는 방식을 결정합니다. 모델의 매개변수 수는 주로 규모의 한 측면을 나타냅니다. 모델이 아는 사실을 항목별로 센 값도, 지능을 직접 측정한 값도 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "소프트웨어 문서에서 ‘매개변수’는 호출 설정을 넓게 가리키기도 하므로 혼동하기 쉽습니다. 생성 온도 조정, 프롬프트 수정, 가중치 학습은 서로 다른 작업입니다. 아래에서는 직접 만든 간단한 수식으로 먼저 직관을 익힌 뒤, 대규모 모델의 매개변수 정보를 읽는 방법을 설명합니다. 자료 확인 기준일은 2026년 9월 14일입니다."
+        },
+        {
+          "type": "heading",
+          "text": "간단한 모델로 살펴보는 가중치와 편향",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google의 선형 회귀 교재와 PyTorch 튜토리얼은 모두 가중치, 편향, 매개변수 갱신을 통해 모델의 계산을 설명합니다. 교육만을 위한 수식 하나를 가정해 봅시다. 출력은 가중치에 입력을 곱한 뒤 편향을 더한 값입니다. 가중치를 2, 편향을 1로 설정하면 입력이 3일 때 결과는 7입니다. 이 숫자들은 직접 만든 예시이며, 실제 상품 가격이나 성적, 모델 측정값에 대응하지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 작은 모델에서 입력 3은 해당 실행의 데이터이고, 가중치 2와 편향 1이 모델 매개변수입니다. 입력을 다른 데이터로 바꿔도 매개변수는 그대로 유지할 수 있습니다. 반면 가중치를 조정하면 같은 입력에서도 결과가 달라질 수 있습니다. 이 차이를 통해 모델이 사용할 때마다 새로운 내용을 접한다고 해서 내부적으로 학습한 수치를 매번 바꾸는 것은 아니라는 점을 이해할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "대규모 신경망의 매개변수는 이 수식보다 훨씬 복잡하며, 임베딩, 어텐션, 순전파 등의 구성 요소에 분포하고 행렬이나 다른 텐서 형태로 저장될 수 있습니다. 각 매개변수를 특정 단어나 사실 하나에 대응시킬 수는 없습니다. 지식과 능력은 보통 수많은 수치와 연산이 함께 뒷받침하며, 개별 매개변수가 직접 읽어 낼 수 있는 백과사전식 의미를 지니는 경우는 드뭅니다."
+        },
+        {
+          "type": "heading",
+          "text": "학습은 이 수치들을 어떻게 바꾸는가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "학습할 때 모델은 먼저 예측을 생성한 다음 손실 함수로 예측과 기대 결과 사이의 차이를 측정합니다. 역전파로 매개변수에 대한 손실의 기울기를 계산하고, 최적화 방법이 이를 바탕으로 매개변수를 갱신합니다. 이는 정답을 특정 빈칸에 직접 써 넣는 것이 아니라, 많은 표본을 이용해 전체 수치 관계를 점진적으로 조정하여 지정된 목표에 대한 오류가 줄어들도록 하는 과정입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "앞의 수식 예시에서 데이터가 기존 예측이 낮다는 점을 보여 준다면, 학습 프로그램은 가중치나 편향을 조정할 수 있습니다. 다만 조정 방식은 전체 표본, 손실, 최적화 설정에 따라 달라집니다. 데이터 하나에 맞지 않는다는 이유만으로 정답이 나올 때까지 마음대로 바꿔서는 안 됩니다. 입력 하나를 기억하려고 다른 데이터에 대한 성능을 망가뜨리면 새로운 상황에 대응하는 일반화 능력을 잃게 됩니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "일부 적응 방법은 매개변수 일부만 갱신하고 다른 가중치는 고정하며, 일부는 학습 가능한 구성 요소를 소량 추가합니다. 이는 처음부터 전체를 다시 학습하는 것과 다릅니다. "
+            },
+            {
+              "type": "article",
+              "text": "미세 조정",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": " 방법을 살펴볼 때는 어떤 매개변수가 바뀌고 어떤 것은 바뀌지 않는지, 갱신 후 어떤 사례로 검증하는지 확인해야 합니다. 매개변수의 학습 가능 여부는 설정과 방법의 일부이며, 모든 수치가 반드시 동시에 갱신되는 것은 아닙니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "하이퍼파라미터, 프롬프트, 생성 설정 구분하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "학습 하이퍼파라미터는 학습률, 배치 구성, 일부 구조 선택처럼 학습 과정을 제어합니다. 이는 동일한 매개변수 갱신 단계에서 직접 학습되는 가중치들과는 다르지만, 별도의 탐색이나 다른 방법으로 선택할 수 있습니다. 학습률을 낮추는 것은 학습하는 방식을 바꾸는 것이고, 가중치를 갱신하는 것은 모델 자체의 수치 관계를 바꾸는 것입니다. 둘은 영향을 미치는 차원이 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "프롬프트와 파일은 해당 실행의 입력입니다. 규정 문서를 컨텍스트에 넣으면 모델이 이를 바탕으로 답할 수 있지만, 보통 그로 인해 가중치가 갱신되지는 않습니다. 생성 설정은 출력 과정에 영향을 줍니다. 예를 들어 일부 모델은 샘플링 온도나 출력 길이를 제어하는 기능을 제공합니다. Google의 프롬프트 설계 문서도 이를 호출 설정으로 분류합니다. 지원 여부와 권장 사항은 모델마다 다르므로 보편적으로 고정된 규칙으로 여겨서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "온도를 낮춘다고 잘못된 사실이 올바른 가중치로 바뀌지는 않으며, 출력 길이를 늘린다고 모델 용량이 커지는 것도 아닙니다. 모델에 최신 자료가 없다면 적절한 출처를 제공해야 합니다. 출력 형식이 불안정하다면 프롬프트와 구조 검증을 점검할 수 있습니다. 자신이 어느 차원을 바꾸고 있는지 먼저 구분해야 문제와 무관한 조절 손잡이를 돌리는 일을 피할 수 있습니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-model-parameters/diagram-1-ko.svg",
+          "alt": "직접 만든 예시로, 입력 3에 가중치 2를 곱하고 편향 1을 더해 출력 7을 얻습니다. 아래에서는 해당 입력, 학습한 매개변수, 호출 설정을 구분합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "숫자는 교육용 수식의 예시일 뿐, 실제 모델의 성능에 대응하지 않습니다.",
+          "description": "직접 만든 예시로, 입력 3에 가중치 2를 곱하고 편향 1을 더해 출력 7을 얻습니다. 아래에서는 해당 입력, 학습한 매개변수, 호출 설정을 구분합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "매개변수 수와 저장 용량은 서로 다른 값",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "매개변수 수는 수치의 개수를 나타내지만, 필요한 저장 용량은 각 수치의 정밀도와 형식에도 좌우됩니다. 매개변수 개수가 같아도 수치 표현 방식이 다르면 파일 크기가 달라질 수 있습니다. 양자화는 표현 정밀도를 바꾸지만 매개변수 수까지 반드시 바꾸지는 않습니다. 따라서 다운로드 파일이 작아졌다고 모델 구조도 같은 비율로 작아졌다고 바로 추론할 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실행할 때는 캐시, 중간 텐서, 프로그램, 그 밖의 자원에도 메모리가 필요합니다. 모델 파일 크기만으로 실제 요구량을 추정하면 긴 컨텍스트와 동시 요청의 영향을 놓칠 수 있습니다. 로컬 배포를 계획한다면 모델과 실행 엔진의 공식 요구 사항을 살펴보고 예정된 입력으로 테스트해야 합니다. 가중치 다운로드 파일을 저장할 공간이 있는지만 봐서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "혼합 전문가 모델에서는 전체 매개변수와 해당 실행에서 활성화되는 매개변수도 구분해야 합니다. 모델에 포함된 모든 전문가와 특정 실행에서 실제 계산에 참여하는 부분은 서로 다른 질문에 대한 답입니다. 활성화되는 매개변수가 적다고 나머지 가중치가 사라지는 것은 아니며, 전체 속도가 반드시 더 빠르다고 보장할 수도 없습니다. 공유 계층, 라우팅, 데이터 이동 모두 실제 자원 사용량에 영향을 줄 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "작업 평가로 모델 규모 해석하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "매개변수가 많으면 표현 용량이 달라질 수 있지만, 품질은 데이터, 학습, 아키텍처, 작업에도 좌우됩니다. 매개변수 수가 비슷한 두 모델도 언어, 형식 준수, 특정 지식에서 서로 다른 성능을 보일 수 있습니다. 크기만으로 순위를 매기는 것은 도구의 부품 수만 보고 쓰기 좋은지 판단하면서, 무엇을 하도록 설계되었는지는 무시하는 것과 같습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "노트 정리용 모델을 고른다면 같은 노트로 부정 표현, 날짜, 미결 사항을 보존하는지 테스트한 뒤 대기 시간과 기기 자원 사용량을 비교할 수 있습니다. 작은 모델이 이미 요구 사항을 안정적으로 처리한다면 큰 모델의 추가 용량이 추가 비용만큼의 가치가 없을 수 있습니다. 복잡한 상황에서 반복적으로 실패한다면 프롬프트를 길게 쓰는 것만으로 모든 능력 부족을 메울 수도 없습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "모델 매개변수는 기술 사양을 이해하는 중요한 출발점이지만, 실제로 유용하게 읽으려면 매개변수 수, 정밀도, 활성화 방식, 데이터와 "
+            },
+            {
+              "type": "article",
+              "text": "평가",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "를 함께 살펴봐야 합니다. ‘입력 변경’, ‘생성 설정 변경’, ‘가중치 변경’을 구분할 수 있으면 문제를 더 정확하게 설명하고 적절한 개선 방법도 더 쉽게 고를 수 있습니다. 또한 모든 조정을 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": " 학습이라고 부르는 일도 피할 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "항목",
+            "바뀌는 부분",
+            "예시"
+          ],
+          "rows": [
+            [
+              "모델 매개변수",
+              "모델 내부의 수치 관계",
+              "가중치와 편향"
+            ],
+            [
+              "학습 하이퍼파라미터",
+              "학습 프로그램의 진행 방식",
+              "학습률"
+            ],
+            [
+              "프롬프트와 생성 설정",
+              "해당 실행의 자료 또는 출력 제어",
+              "파일, 온도, 출력 길이"
+            ]
+          ],
+          "caption": "매개변수와 설정별 역할(2026년 9월 확인)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "어느 차원을 바꾸는지 먼저 확인하기",
+          "text": "프롬프트 수정, 온도 낮추기, 가중치 미세 조정은 서로 다른 작업입니다. 문제가 데이터, 출력 제어, 능력 중 어디에서 비롯되는지 먼저 확인한 뒤 그에 맞는 방법을 선택하세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "머신러닝(Machine Learning)이란 무엇인가",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "혼합 전문가 모델(Mixture of Experts)이란 무엇인가",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "양자화(Quantization): 더 적은 비트로 모델을 실행할 때의 절충점",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 총색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "PyTorch: PyTorch로 배우는 딥러닝",
+          "url": "https://docs.pytorch.org/tutorials/beginner/nlp/deep_learning_tutorial.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 선형 회귀",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 프롬프트 설계 전략",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Fedus 등: Switch Transformers",
+          "url": "https://arxiv.org/abs/2101.03961",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "模型参数（Model Parameters）是什么",
+      "description": "模型参数是训练时调整、用来把输入转成输出的数值，例如权重与偏置。本文用简单算式示例说明参数如何影响预测，区分模型参数、训练超参数、提示词与生成设置，并解释参数量、数值精度和激活参数为何是不同指标。读完能更准确地阅读模型规格，理解参数增加不等于知识逐条增加，也不代表每次聊天都在重新训练模型。",
+      "hero": {
+        "src": "/guides/ai-term-model-parameters/hero-zh-cn.jpg",
+        "alt": "多个旋钮组成模型内部数值面板，外部输入卡片通过面板得到结果，象征参数与本次数据的区别。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "模型参数是在模型内部参与计算的数值，例如神经网络的权重与偏置，其中许多会在训练时调整，共同决定模型如何把输入转成输出。",
+            "看到模型有多少参数，主要是在描述其规模的一个方面，并不是逐条统计它知道多少件事，也不是直接衡量智力。",
+            "提示词和文件是本次输入，温度与输出长度属于生成设置，学习率属于训练超参数，调整这些都和更新权重不在同一层面。",
+            "参数量也不等于存储大小，量化改变表示精度，不一定改变参数数量；混合专家模型的总参数与本次激活参数也要分开看。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "模型参数是在模型内部参与计算的数值，其中许多会在训练时调整，例如神经网络的权重与偏置。它们共同决定模型如何把输入转成输出。看到模型有多少参数，主要是在描述其规模的一个方面，并不是逐条统计它知道多少件事，也不是直接衡量智力。"
+        },
+        {
+          "type": "paragraph",
+          "text": "“参数”在软件文档里也可能泛指调用设置，因此容易混淆。调整生成温度、修改提示词与训练权重是不同操作。以下先用原创的小算式建立直觉，再说明如何阅读大型模型的参数信息。资料查证截至 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "从一个简单模型看权重与偏置",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Google 的线性回归教材与 PyTorch 教程都用权重、偏置及参数更新说明模型运算。假设有一个纯教学算式：输出等于权重乘以输入，再加偏置。把权重设为 2、偏置设为 1，输入 3 时得到 7。这些数字是原创示例，没有对应真实商品价格、成绩或模型测量结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "在这个小模型里，输入 3 是本次数据，权重 2 与偏置 1 才是模型参数。换一条输入，参数可以保持不变；调整权重，则相同输入的结果可能改变。这个差别能帮助理解：模型在每次使用中看到新内容，不等于它每次都改变内部学到的数值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "大型神经网络的参数远比这个算式复杂，可能分布在嵌入、注意力与前馈等组件中，以矩阵或其他张量形式存储。不能把每个参数命名为某个字或一条事实。知识与能力通常由许多数值及运算共同支持，单个参数很少具有可以直接读出的百科知识含义。"
+        },
+        {
+          "type": "heading",
+          "text": "训练如何改变这些数值",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "训练时，模型先产生预测，再使用损失函数衡量它和期望结果的差距。反向传播可计算损失对参数的梯度，优化方法再据此更新参数。这不是把正确答案直接写入某个空格，而是用许多样本逐步调整整体数值关系，使指定目标下的错误趋于减少。"
+        },
+        {
+          "type": "paragraph",
+          "text": "沿用算式示例，如果数据显示原本预测偏低，训练程序可能调整权重或偏置，但如何调整要依据所有样本、损失与优化设置。不能仅因一条数据不符合，就随意修改，直到它答对。若为了记住单条输入而破坏其他数据，便失去了面对新情况的泛化能力。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "有些适配方法只更新部分参数，其他权重保持固定；有些会新增少量可训练组件。这和完整重新训练不同。阅读"
+            },
+            {
+              "type": "article",
+              "text": "微调",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "方法时，要确认哪些参数会变、哪些不变，以及更新后用哪些案例检查。参数是否可训练是设置与方法的一部分，并不是所有数值都必然同时更新。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "超参数、提示词和生成设置要分开",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "训练超参数控制学习过程，例如学习率、批次安排或某些结构选择。它们不同于由同一个参数更新步骤直接学出的各项权重，虽然可以另外通过搜索或其他方法选择。把学习率调小，是改变如何学习；更新权重，则是模型本身的数值关系发生改变。两者影响的层次不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "提示词和文件是本次输入。你把一份规章放入上下文，模型可以依据它作答，但通常没有因此更新权重。生成设置则影响输出过程，例如某些模型提供采样温度或输出长度控制。Google 的提示设计文档也将这些列为调用设置，其支持情况与建议会因模型而异，不能当作普遍固定的规则。"
+        },
+        {
+          "type": "paragraph",
+          "text": "降低温度不会把错误事实改写成正确权重，增加输出长度也不等于增加模型容量。若模型缺少最新数据，应提供适用来源；若输出格式不稳定，可检查提示与结构验证。先分清楚自己改的是哪一层，才不会用不相关的旋钮处理问题。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-model-parameters/diagram-1-zh-cn.svg",
+          "alt": "原创示例输入 3，乘以权重 2 再加偏置 1，得到输出 7；下方区分本次输入、学到的参数与调用设置。",
+          "width": 1600,
+          "height": 900,
+          "caption": "数字只是教学算式，没有对应任何真实模型性能。",
+          "description": "原创示例输入 3，乘以权重 2 再加偏置 1，得到输出 7；下方区分本次输入、学到的参数与调用设置。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "参数量与存储大小不是同一个数字",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "参数量描述数值个数，存储需求还取决于每个数值的精度与格式。相同的参数个数，使用不同数值表示，文件大小可能不同。量化改变表示精度，不一定改变参数数量；因此下载文件变小，不能直接推断模型结构也缩小了相同比例。"
+        },
+        {
+          "type": "paragraph",
+          "text": "运行时还有缓存、中间张量、程序与其他资源需要内存。单纯用模型文件大小估计实际需求，可能漏掉长上下文与并发请求的影响。要安排本地部署，应查看官方模型和运行引擎的要求，再用预定输入测试，而不是只看权重下载后是否放得下。"
+        },
+        {
+          "type": "paragraph",
+          "text": "混合专家模型还需要区分总参数与本次激活参数。模型包含的全部专家和某次实际参与运算的部分，回答的是不同问题。激活较少不代表其余权重消失，也不保证整体速度必然更快。共享层、路由和数据搬运都可能影响实际资源使用。"
+        },
+        {
+          "type": "heading",
+          "text": "用任务评测解读规模",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "更多参数可以提供不同的表示容量，但质量也取决于数据、训练、架构与任务。两个参数量接近的模型，可能在语言、格式遵循或特定知识上有不同表现。只按大小排序，就像只看工具零件数决定好不好用，忽略了它被设计用来做什么。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果要挑选整理笔记的模型，可以用相同笔记测试是否保留否定、日期与未决事项，再比较等待时间及设备资源。若小模型已能可靠地处理需求，大模型多出的容量未必值得额外成本；若复杂情境反复失败，也不能只靠把提示词写长来弥补所有能力缺口。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "模型参数是理解技术规格的重要入口，但真正有用的阅读方式，是将参数量、精度、激活方式、数据与"
+            },
+            {
+              "type": "article",
+              "text": "评测",
+              "kind": "life",
+              "slug": "ai-term-evals"
+            },
+            {
+              "type": "text",
+              "text": "一起看。当你能分清楚“改输入”“改生成设置”和“改权重”，就能更准确地描述问题，也更容易选择合适的改进方法，而不会把所有调整都叫作训练 "
+            },
+            {
+              "type": "article",
+              "text": "AI",
+              "kind": "life",
+              "slug": "ai-term-artificial-intelligence"
+            },
+            {
+              "type": "text",
+              "text": "。"
+            }
+          ]
+        },
+        {
+          "type": "table",
+          "header": [
+            "项目",
+            "改变的部分",
+            "例子"
+          ],
+          "rows": [
+            [
+              "模型参数",
+              "模型内部数值关系",
+              "权重与偏置"
+            ],
+            [
+              "训练超参数",
+              "学习程序的安排",
+              "学习率"
+            ],
+            [
+              "提示与生成设置",
+              "本次材料或输出控制",
+              "文件、温度与输出长度"
+            ]
+          ],
+          "caption": "不同参数与设置的作用（2026 年 9 月查证）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先问改的是哪一层",
+          "text": "改提示词、降低温度和微调权重并非同一件事。先确定问题来自数据、输出控制还是能力，再选择对应方法。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "机器学习（Machine Learning）是什么",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合专家模型（Mixture of Experts）是什么",
+              "kind": "life",
+              "slug": "ai-term-mixture-of-experts"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "量化（Quantization）：用较少比特运行模型的取舍",
+              "kind": "life",
+              "slug": "ai-term-quantization"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "PyTorch：使用 PyTorch 进行深度学习",
+          "url": "https://docs.pytorch.org/tutorials/beginner/nlp/deep_learning_tutorial.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：线性回归",
+          "url": "https://developers.google.com/machine-learning/crash-course/linear-regression",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：提示设计策略",
           "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
           "checked_on": "2026-09-14"
         },

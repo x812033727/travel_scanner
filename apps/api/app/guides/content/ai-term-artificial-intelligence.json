@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "人工智慧（Artificial Intelligence）是什麼",
@@ -112,6 +115,7 @@
           "width": 1600,
           "height": 900,
           "caption": "會提出建議，不等於已獲授權替使用者執行行動。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -237,6 +241,934 @@
         },
         {
           "title": "NIST CSRC：Artificial intelligence glossary",
+          "url": "https://csrc.nist.gov/glossary/term/artificial_intelligence",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Artificial Intelligence?",
+      "description": "AI covers many technologies and uses; it is not synonymous with chatbots and need not generate text. Starting with the OECD system definition, this article uses photo classification and community resource recommendations to link inputs, inference, outputs and human goals, and explains AI's relationship to machine learning, deep learning and generative AI. Learn to ask concrete questions about what an AI feature does and distinguish capability, autonomy and trustworthiness.",
+      "hero": {
+        "src": "/guides/ai-term-artificial-intelligence/hero-en.jpg",
+        "alt": "Photos, sheets of text and route paths feed into a central computing circle, which produces results of different shapes, symbolizing AI's many uses.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Artificial intelligence (AI) is a broad field that studies and builds systems for reasoning, recognition, planning and other tasks. It can predict, recommend, classify or generate content; it is not limited to software that chats.",
+            "Machine learning is one key AI method; knowledge- and rule-based approaches are also part of AI's development. A simple scheduled reminder does not become AI just because it runs automatically.",
+            "Deep learning and generative AI describe different aspects of classification. A text generation model can belong to deep learning, machine learning and artificial intelligence at the same time.",
+            "A model can propose a plan, but whether it can execute it directly still depends on tools, permissions and product design. Fluent expression is not evidence that verification is complete."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Artificial intelligence, abbreviated AI, is a broad field that studies and builds systems capable of reasoning, recognition, planning and other tasks. It can predict, recommend, classify or generate content; it is not limited to software that chats. To understand an AI feature, start with what it receives, how it arrives at results and how those results affect people or the environment, rather than asking first whether it resembles a person."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article uses the OECD's explanation of AI systems as a practical starting point, while acknowledging that the term's scope varies across fields. The original examples of photo organization and community resource recommendations below break abstract terms down into observable processes. Information was verified through 2026-9-14."
+        },
+        {
+          "type": "heading",
+          "text": "Start with What the System Does",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The OECD definition emphasizes how a system, guided by objectives, infers predictions, content, recommendations or decisions from inputs and may influence physical or virtual environments. It also notes that systems differ in their levels of autonomy and adaptability after deployment. This offers a way to examine different applications without first assuming that a system has consciousness, emotions or human-like understanding."
+        },
+        {
+          "type": "paragraph",
+          "text": "The NIST glossary lists definitions of artificial intelligence from different documents and reminds readers to consult their respective contexts. This means that whether something counts as AI sometimes depends on the purpose of the discussion. Product copy, research papers and governance documents may draw different boundaries. Everyday users need not rush to assign every piece of software a single label; understanding its functions and limitations matters more."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, when a photo album sorts images into cats, dogs and landscapes, the input is images, and the output is categories or associated scores. A writing assistant receives a draft and instructions, then outputs revised text. Navigation route recommendations involve location, road networks and goal constraints. These products can contain AI components, but the complete product also needs interfaces, data, conventional programs and rules established by people."
+        },
+        {
+          "type": "heading",
+          "text": "AI Is More Than Learning from Data",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Machine learning is one key AI method. It trains models on data so they learn relationships that can be applied to new inputs. Knowledge- and rule-based approaches are also part of AI's development, such as solving problems using explicit knowledge and inference programs. Modern systems may combine several approaches, so the absence of a neural network does not necessarily mean that a system falls outside artificial intelligence."
+        },
+        {
+          "type": "paragraph",
+          "text": "On the other hand, a simple reminder triggered at a fixed time does not automatically become AI just because it runs automatically. Automation describes whether a task requires a person to trigger each execution; artificial intelligence describes inference or related technologies within a system. They overlap, but address different questions. When introducing a product, identify which part performs recognition, recommendation or generation instead of merely calling it \"fully automatic.\""
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Deep learning",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": " is a category of machine learning methods that typically learns representations through multilayer neural networks. Generative AI, by contrast, is classified by its ability to produce content. These terms classify different aspects, so they cannot all be arranged into completely separate, non-overlapping boxes. A text generation model can belong to deep learning, machine learning and artificial intelligence at the same time."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "An Example: Community Resource Recommendations",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The request in this original example is: \"Help new residents find suitable community activities.\" The system receives residents' self-reported interests and availability, along with activity data. It first filters out activities with incompatible times, then makes recommendations based on relevance. The intended output might be several activities and reasons for recommending them, rather than directly registering residents. Recommending activities and completing registration are different actions requiring different permissions."
+        },
+        {
+          "type": "paragraph",
+          "text": "If a resident says only that they enjoy the outdoors, the system might recommend gardening or walking, but this is merely an inference based on the information provided. It should not independently assume the resident's age, health status or other sensitive characteristics. Recommendation reasons should identify verifiable conditions, such as matching availability or activity content aligned with interests, giving users a chance to correct the system's understanding."
+        },
+        {
+          "type": "paragraph",
+          "text": "During testing, provide an input expressing a preference for evening activities and check whether early-morning activities still appear at the top. Then include a canceled activity to confirm that the system does not keep recommending it. If activity data is outdated, the problem may lie in data updates; if the data is correct but the ranking ignores availability, examine the rules or model. Breaking the issue down this way makes improvement easier than simply saying that the AI's recommendations are poor."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-artificial-intelligence/diagram-1-en.svg",
+          "alt": "Human goals and data enter a system together. It produces predictions, content or recommendations, and the usage workflow determines whether action follows.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Being able to make recommendations does not mean being authorized to act on the user's behalf.",
+          "description": "Human goals and data enter a system together. It produces predictions, content or recommendations, and the usage workflow determines whether action follows.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Assess Capability, Autonomy and Reliability Separately",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A system's ability to complete a task does not mean it has permission to take every related action on its own. An activity recommendation model may be excellent at matching needs but still be limited to offering suggestions; another system may be authorized to complete registration. The level of autonomy depends on how the entire application is designed, not just the model's size or how confidently it answers."
+        },
+        {
+          "type": "paragraph",
+          "text": "Whether a system learns after deployment is a separate question. Some models remain fixed and are updated only when a new version is released; some systems may adjust rankings or personalization settings based on feedback. When users add preferences during a conversation, this may only change the current input. It does not necessarily mean that the model's weights immediately learn about that person. This depends on how the product actually stores and uses data."
+        },
+        {
+          "type": "paragraph",
+          "text": "Reliability must be assessed for specific uses. A photo classifier that performs well on well-lit images may struggle with blurry night scenes; an activity recommender that finds popular options may fail to adequately account for uncommon needs. A single demonstration or overall score cannot support conclusions about every situation, and fluent expression should certainly not be treated as evidence that verification is complete."
+        },
+        {
+          "type": "heading",
+          "text": "Concrete Questions Everyday Users Can Ask",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When a feature is advertised as AI, start by asking: What data does it use? Is its output a prediction or a confirmed fact? Will it change an external state? Can mistakes be corrected? If the product cannot explain its data sources and operational boundaries, at least treat the results as suggestions that need checking. These questions have more impact on everyday use than debating whether it is \"truly intelligent.\""
+        },
+        {
+          "type": "paragraph",
+          "text": "When using a system, provide only the information the task actually needs. Organizing photos does not necessarily require making an entire family album public, and recommending activities does not necessarily require a full address and private records. Using less data, while keeping it relevant, can make results easier to explain. You must still examine the service's data handling rules rather than infer privacy protections from the feature's name alone."
+        },
+        {
+          "type": "paragraph",
+          "text": "AI can provide value by helping classify things, identify patterns or produce drafts; it does not need to replace people in every decision. Once you can clearly explain the inputs, inference process, outputs and verification method, you have a starting point for understanding most AI concepts. Reading about machine learning and generative AI next will make it easier to distinguish their respective roles within this broad field."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Term",
+            "Main Basis of Classification",
+            "Examples"
+          ],
+          "rows": [
+            [
+              "Artificial intelligence",
+              "A broad field of technologies and systems",
+              "Recognition, planning, recommendation and generation"
+            ],
+            [
+              "Machine learning",
+              "Methods for training models on data",
+              "Learning classification from historical examples"
+            ],
+            [
+              "Generative AI",
+              "The ability to generate content",
+              "Generating text or images as requested"
+            ]
+          ],
+          "caption": "Different terms classify different aspects (verified 2026-9)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Distinguish \"Can Do\" from \"Can Do Automatically\"",
+          "text": "A model can propose a plan, but whether the system can execute it directly still depends on tools, permissions and product design. After seeing a recommendation, first check whether the system is only answering or has already changed an external state."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Machine Learning?",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Generative AI?",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is an AI Agent? From Answering Questions to Completing Tasks",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OECD: AI system definition explanatory memorandum",
+          "url": "https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIST CSRC: Artificial intelligence glossary",
+          "url": "https://csrc.nist.gov/glossary/term/artificial_intelligence",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "人工知能（Artificial Intelligence）とは",
+      "description": "人工知能は、さまざまな技術や応用を含む総称で、チャットボットと同じではなく、必ず文章を生成するものでもありません。本記事ではOECDのシステム定義を出発点に、写真分類と地域資源の推薦を例として、入力、推論、出力、人の目標がどうつながるかを説明し、機械学習、深層学習、生成AIとの関係を整理します。具体的な問いからAI機能の働きを判断し、能力、自律性の程度、信頼性を区別できるようになります。",
+      "hero": {
+        "src": "/guides/ai-term-artificial-intelligence/hero-ja.jpg",
+        "alt": "写真、文字が書かれた紙、方向を示す経路が中央の演算用の円に集まり、さまざまな形の結果が外へ出ていくことで、人工知能の多様な用途を表しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "人工知能（AI）は、推論、認識、計画などを行うシステムを研究・構築する幅広い分野です。予測、推薦、分類、コンテンツ生成が可能で、会話するソフトウェアだけを指すものではありません。",
+            "機械学習はAIの重要な手法の一つで、知識やルールに基づく手法もAIの発展の一部です。単純な定時リマインダーは、自動で実行されるだけではAIにはなりません。",
+            "深層学習と生成AIでは分類の観点が異なり、一つの文章生成モデルが深層学習、機械学習、人工知能のすべてに属することがあります。",
+            "モデルが案を提示できても、そのまま実行できるかはツール、権限、製品設計によって決まります。流暢な表現も、事実確認が完了した証拠にはなりません。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "人工知能は、英語でArtificial Intelligence、略してAIといい、推論、認識、計画などを行うシステムを研究・構築する幅広い分野です。予測、推薦、分類、コンテンツ生成が可能で、会話するソフトウェアだけを指すものではありません。AIの機能を理解するには、人間に似ているかを最初に問うより、何を受け取り、どのように結果を得て、その結果が人や環境にどう影響するかから考えるとよいでしょう。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ここでは、OECDによるAIシステムの説明を実用的な出発点としつつ、分野によって用語の範囲に違いがあることも踏まえます。続いて、写真整理と地域資源の推薦という独自の例を使い、抽象的な用語を観察できる流れに分解します。情報の確認は2026年9月14日までのものです。"
+        },
+        {
+          "type": "heading",
+          "text": "まずシステムの働きを見る",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OECDの定義は、システムが目標に沿って入力から予測、コンテンツ、提案、意思決定を導き出し、物理的または仮想的な環境に影響を及ぼし得る点を重視しています。また、システムによって自律性の程度や導入後の適応度が異なることも指摘しています。これにより、システムに意識、感情、人間のような理解があると前提することなく、さまざまな用途に共通する観点から観察できます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一方、NISTの用語集ページは、異なる文書から人工知能の定義を掲載し、それぞれの文脈に立ち返るよう読者に促しています。つまり、「AIかどうか」は議論の目的によって決まる場合があります。製品の紹介文、研究論文、ガバナンス文書では、異なる範囲が使われることがあります。一般の利用者は、すべてのソフトウェアに唯一のラベルを急いで付けるより、機能と限界を把握することが大切です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば、写真アルバムが写真を猫、犬、風景に分類する場合、入力は画像で、出力は分類や関連するスコアです。メール作成アシスタントは下書きと要望を受け取り、修正後の文章を出力します。ナビゲーションによる経路推薦には、位置、道路網、目標の条件が関わります。これらにはAIの構成要素が含まれることがありますが、製品全体にはインターフェース、データ、通常のプログラム、人が定めたルールも必要です。"
+        },
+        {
+          "type": "heading",
+          "text": "人工知能はデータから学ぶものだけではない",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "機械学習はAIの重要な手法の一つです。データでモデルを訓練し、新しい入力に活用できる関係を学習させます。知識やルールに基づく手法もAIの発展の一部であり、例えば明示的な知識と推論プログラムを使って問題を処理します。現代のシステムは複数の手法を組み合わせることもあるため、ニューラルネットワークがないという理由だけで、人工知能ではないと断定することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一方、決まった時刻に作動する単純なリマインダーは、自動で実行されるだけでAIになるわけではありません。自動化は、作業のたびに人が起動する必要があるかを表します。人工知能は、システム内の推論や関連技術を表します。両者には重なる部分がありますが、同じ問いではありません。製品を紹介する際は、単に「全自動」と言うのではなく、どの部分が認識、推薦、生成を行っているかを示すべきです。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深層学習",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "は機械学習の手法の一種で、通常は多層のニューラルネットワークで表現を学習します。一方、生成AIはコンテンツを生み出す能力による分類です。これらの用語は分類の観点が異なるため、すべてを完全に重ならない箱に分けることはできません。一つの文章生成モデルが、深層学習、機械学習、人工知能のすべてに属することがあります。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "地域資源の推薦を例に分解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "独自に設定した要望は、「新しい住民に合う地域活動を探してほしい」です。システムは、住民が自ら提供した興味、参加可能な時間帯、活動データを受け取り、まず時間が合わない活動を除外し、その後に関連性に基づいて提案します。想定する出力は、いくつかの活動と推薦理由であり、住民に代わって直接申し込むことではありません。推薦と申し込みの実行は別の動作で、必要な権限も異なります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "住民が屋外の活動が好きだとだけ伝えた場合、システムは園芸やウォーキングを推薦するかもしれませんが、それは提供された情報に基づく推論にすぎません。住民の年齢、健康状態、その他のセンシティブな属性を勝手に決めつけるべきではありません。推薦理由には、時間帯が合う、活動内容が興味に近いなど、確認できる条件を示し、利用者がシステムの理解を修正できるようにする必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テストでは、夜間の活動を好むという入力を与え、それでも早朝の活動を上位に並べていないかを確認できます。さらに、中止済みの活動を加え、引き続き推薦しないことを確かめます。活動データが古ければ、問題はデータ更新にあるかもしれません。データが正しいのに順位付けが時間帯を無視している場合に、ルールやモデルを調べる必要があります。このように分解すると、単にAIの推薦が悪いと言うより改善しやすくなります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-artificial-intelligence/diagram-1-ja.svg",
+          "alt": "人の目標とデータが共にシステムに入り、システムが予測、コンテンツ、提案を生成した後、利用の流れに沿って行動するかを決めます。",
+          "width": 1600,
+          "height": 900,
+          "caption": "提案できることは、利用者に代わって行動する権限が与えられていることを意味しません。",
+          "description": "人の目標とデータが共にシステムに入り、システムが予測、コンテンツ、提案を生成した後、利用の流れに沿って行動するかを決めます。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "能力、自律性、信頼性を分けて考える",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "システムがあるタスクをこなせても、関連するすべての行動を自ら実行する権限があるとは限りません。活動を推薦するモデルは、要望との照合が得意でも、提案しかできない場合があります。一方、別のシステムには、申し込みを完了する権限が与えられているかもしれません。自律性の程度はアプリケーション全体の設計によって決まり、モデル自体の大きさや、回答の口調がどれほど自信に満ちているかだけで決まるものではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "導入後に学習するかどうかも、別の問題です。モデルによっては固定されたままで、新しいバージョンの公開時にだけ更新されます。一方、フィードバックに応じて順位付けやパーソナライズの状態を調整するシステムもあります。利用者が会話で好みを補足しても、その時の入力が変わっただけかもしれず、モデルの重みがその人について直ちに学習したとは限りません。製品が実際にどのようにデータを保存・利用するかを確認する必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "信頼性は、特定の用途ごとに確かめる必要があります。写真分類が明るい写真で良好に機能しても、ぼやけた夜景に対応できるとは限りません。活動推薦が人気の選択肢を見つけられても、まれな要望を適切に考慮できるとは限りません。一度のデモや一つの総合点から、あらゆる状況での性能を推測することはできません。まして、流暢な表現を事実確認が完了した証拠とするべきではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "一般の利用者が尋ねられる具体的な問い",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AIをうたう機能に出会ったら、まず次の点を尋ねられます。どのデータを使うのか。出力は予測なのか、確認済みの事実なのか。外部の状態を変更するのか。失敗したときに修正できるのか。製品がデータの出所や操作の範囲を説明できないなら、少なくとも結果は確認が必要な提案として扱うべきです。こうした問いは、「本当に賢い」のかを議論するより、日々の利用に影響します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "利用時には、タスクに本当に必要な情報を提供することも大切です。写真整理のために家族のアルバム全体を公開する必要があるとは限らず、活動推薦にも住所の全情報や私的な記録が必要とは限りません。システムに使わせるデータを、少量でも関連性のあるものにすれば、結果を説明しやすくなります。同時に、サービスのデータ処理ルールも確認する必要があり、機能名だけからプライバシー保護を推測することはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "人工知能の価値は、分類を助けたり、パターンを見つけたり、下書きを提供したりすることにあり、人に代わってすべての判断をする必要はありません。入力、推論の方法、出力、検証方法を明確に説明できれば、多くのAI概念を理解する出発点をつかんだことになります。そのうえで機械学習や生成AIについて読むと、この広い分野でそれぞれが何を担うのかを区別しやすくなります。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "名称",
+            "主な分類の観点",
+            "例"
+          ],
+          "rows": [
+            [
+              "人工知能",
+              "幅広い技術・システムの分野",
+              "認識、計画、推薦、生成"
+            ],
+            [
+              "機械学習",
+              "データからモデルを訓練する手法",
+              "過去のサンプルから分類を学ぶ"
+            ],
+            [
+              "生成AI",
+              "コンテンツを生成する能力",
+              "要望に応じて文章や画像を生成する"
+            ]
+          ],
+          "caption": "用語によって分類の観点は異なる（2026年9月確認）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "「できる」と「自動でできる」を分ける",
+          "text": "モデルが案を提示できても、システムがそのまま実行できるかはツール、権限、製品設計によって決まります。提案を見たら、現時点では回答しているだけなのか、すでに外部の状態を変更しているのかを、まず確認しましょう。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "機械学習（Machine Learning）とは",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成AI（Generative AI）とは",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AIエージェント（AI Agent）とは：質問への回答からタスクの完了へ",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI用語総索引：Loop Engineeringから生成AIまで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OECD：AIシステムの定義に関する解説覚書",
+          "url": "https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIST CSRC：人工知能の用語集",
+          "url": "https://csrc.nist.gov/glossary/term/artificial_intelligence",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "인공지능(Artificial Intelligence)이란 무엇인가",
+      "description": "인공지능은 여러 기술과 응용을 아우르는 말로, 챗봇과 같은 뜻이 아니며 반드시 글을 생성하는 것도 아니다. 이 글은 OECD의 시스템 정의에서 출발해 사진 분류와 지역사회 자원 추천을 예로 입력, 도출, 출력이 사람의 목표와 어떻게 연결되는지 설명하고, 머신러닝·딥러닝·생성형 AI와의 관계를 정리한다. 구체적인 질문으로 AI 기능이 하는 일을 파악하고 능력, 자율성 수준, 신뢰성을 구분할 수 있다.",
+      "hero": {
+        "src": "/guides/ai-term-artificial-intelligence/hero-ko.jpg",
+        "alt": "사진, 글이 적힌 종이, 방향을 나타내는 경로가 중앙의 원형 연산부로 모여들고, 바깥으로 다양한 모양의 결과가 생성되어 인공지능의 여러 용도를 상징한다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "인공지능(AI)은 추론, 인식, 계획 등의 작업을 수행할 수 있는 시스템을 연구하고 만드는 광범위한 분야다. 예측, 추천, 분류 또는 콘텐츠 생성이 가능하며, 대화하는 소프트웨어만을 가리키지 않는다.",
+            "머신러닝은 AI의 주요 방법 중 하나이며, 지식 및 규칙 기반 방법도 AI 발전의 일부다. 단순한 예약 알림은 자동으로 실행된다는 이유만으로 AI가 되지 않는다.",
+            "딥러닝과 생성형 AI는 분류 관점이 다르다. 하나의 텍스트 생성 모델이 딥러닝, 머신러닝, 인공지능에 동시에 속할 수 있다.",
+            "모델이 방안을 제시할 수 있어도 직접 실행할 수 있는지는 도구, 권한, 제품 설계에 달려 있다. 유창한 표현도 검증이 완료되었다는 증거는 아니다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "영어로 Artificial Intelligence, 줄여서 AI라고 하는 인공지능은 추론, 인식, 계획 등의 작업을 수행할 수 있는 시스템을 연구하고 만드는 광범위한 분야다. 예측, 추천, 분류 또는 콘텐츠 생성이 가능하며, 대화하는 소프트웨어만을 가리키지 않는다. AI 기능을 이해하려면 사람과 닮았는지부터 묻기보다 무엇을 입력받고, 어떻게 결과를 얻으며, 그 결과가 사람이나 환경에 어떤 영향을 미치는지부터 살펴보는 것이 좋다."
+        },
+        {
+          "type": "paragraph",
+          "text": "여기서는 OECD의 AI 시스템 설명을 실용적인 출발점으로 삼되, 분야마다 용어의 범위가 다를 수 있음을 인정한다. 이어서 직접 만든 사진 정리와 지역사회 자원 추천 사례를 통해 추상적인 용어를 관찰 가능한 과정으로 풀어본다. 자료 검증 기준일은 2026년 9월 14일이다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 시스템이 하는 일 살펴보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OECD의 정의는 시스템이 목표에 따라 입력으로부터 예측, 콘텐츠, 권고 또는 결정을 도출하고, 물리적 또는 가상 환경에 영향을 미칠 수 있다는 점을 중시한다. 또한 시스템마다 자율성 수준과 배포 후 적응 정도가 다르다고 설명한다. 이는 시스템에 의식, 감정 또는 인간과 같은 이해력이 있다고 전제하지 않고도 다양한 응용을 살펴볼 수 있는 관점을 제공한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST 용어집 페이지는 여러 문서에서 가져온 인공지능 정의를 나열하며, 각각의 맥락을 확인하라고 안내한다. 이는 때로는 논의 목적에 따라 ‘AI인지 아닌지’가 달라질 수 있다는 뜻이다. 제품 소개 문구, 연구 논문, 거버넌스 문서는 서로 다른 경계를 적용할 수 있다. 일반 사용자는 모든 소프트웨어에 서둘러 단 하나의 꼬리표를 붙이기보다 기능과 한계를 파악하는 것이 더 중요하다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 사진첩이 사진을 고양이, 개, 풍경으로 분류한다면 입력은 이미지이고 출력은 범주 또는 관련 점수다. 편지 작성 도우미는 초안과 요구사항을 받아 수정된 글을 출력한다. 내비게이션의 경로 추천에는 위치, 도로망, 목표 조건이 관여한다. 이런 기능에는 AI 구성 요소가 포함될 수 있지만, 제품 전체에는 인터페이스, 데이터, 일반 프로그램과 사람이 정한 규칙도 필요하다."
+        },
+        {
+          "type": "heading",
+          "text": "인공지능에는 데이터 학습만 있는 것이 아니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "머신러닝은 AI의 주요 방법 중 하나로, 데이터로 모델을 훈련해 새로운 입력에 적용할 수 있는 관계를 학습하게 한다. 지식 및 규칙 기반 방법도 AI 발전의 일부다. 예를 들어 명시적인 지식과 추론 프로그램으로 문제를 처리하는 방식이 있다. 현대의 시스템은 여러 방법을 혼합하기도 하므로, 신경망이 없다는 이유만으로 인공지능이 아니라고 단정할 수는 없다."
+        },
+        {
+          "type": "paragraph",
+          "text": "한편 정해진 시간에 작동하는 단순한 알림은 자동으로 실행된다는 이유만으로 AI가 되지 않는다. 자동화는 작업을 할 때마다 사람이 실행을 지시해야 하는지를 설명하고, 인공지능은 시스템의 추론이나 관련 기술을 설명한다. 둘은 겹치는 부분이 있지만 같은 문제는 아니다. 제품을 소개할 때는 ‘완전 자동’이라고만 하기보다 어느 부분이 인식, 추천 또는 생성을 담당하는지 밝혀야 한다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "딥러닝",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "은 머신러닝에 속하는 방법의 한 종류로, 일반적으로 여러 층의 신경망으로 표현을 학습한다. 반면 생성형 AI는 콘텐츠를 생성하는 능력을 기준으로 분류한다. 이 용어들은 분류 관점이 다르므로 모두 서로 완전히 겹치지 않는 상자처럼 나눌 수는 없다. 하나의 텍스트 생성 모델이 딥러닝, 머신러닝, 인공지능에 동시에 속할 수 있다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "지역사회 자원 추천 사례로 살펴보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "이 예시에서 직접 설정한 요구사항은 ‘새로 이사 온 주민에게 적합한 지역사회 활동을 찾아 달라’는 것이다. 시스템은 주민이 직접 제공한 관심사, 참여 가능한 시간대와 활동 정보를 받아 먼저 시간이 맞지 않는 활동을 걸러낸 뒤 관련성에 따라 추천한다. 예상 출력은 몇 가지 활동과 추천 이유일 수 있으며, 주민 대신 바로 참가 신청을 하는 것은 아니다. 추천과 참가 신청 실행은 서로 다른 동작이며 필요한 권한도 다르다."
+        },
+        {
+          "type": "paragraph",
+          "text": "주민이 야외 활동을 좋아한다고만 말했다면 시스템은 원예나 걷기 운동을 추천할 수 있지만, 이는 제공된 정보에 근거한 추론일 뿐이다. 주민의 나이, 건강 상태 또는 다른 민감한 특성을 임의로 단정해서는 안 된다. 추천 이유에는 시간대가 맞거나 활동 내용이 관심사와 비슷하다는 등 확인 가능한 조건을 밝혀, 사용자가 시스템의 이해를 바로잡을 기회를 제공해야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트할 때 저녁 활동을 선호한다는 입력을 넣어 새벽 활동을 여전히 앞순위에 두는지 확인하고, 취소된 활동도 넣어 계속 추천하지 않는지 확인할 수 있다. 활동 정보가 오래됐다면 데이터 갱신에 문제가 있을 수 있다. 데이터가 정확한데도 순위를 정할 때 시간대를 무시한다면 그때 규칙이나 모델을 점검해야 한다. 이렇게 나누어 살펴보면 단순히 AI의 추천이 나쁘다고 말하는 것보다 개선하기 쉽다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-artificial-intelligence/diagram-1-ko.svg",
+          "alt": "사람의 목표와 데이터가 함께 시스템에 입력되고, 시스템이 예측, 콘텐츠 또는 제안을 생성한 뒤, 이용 절차에 따라 행동 여부가 결정된다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "제안을 할 수 있다고 해서 사용자 대신 행동할 권한을 받은 것은 아니다.",
+          "description": "사람의 목표와 데이터가 함께 시스템에 입력되고, 시스템이 예측, 콘텐츠 또는 제안을 생성한 뒤, 이용 절차에 따라 행동 여부가 결정된다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "능력, 자율성, 신뢰성은 따로 살펴보기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "시스템이 어떤 작업을 수행할 수 있다고 해서 관련된 모든 행동을 스스로 실행할 권한이 있다는 뜻은 아니다. 활동 추천 모델은 요구사항을 매우 잘 대조하더라도 제안만 할 수 있고, 다른 시스템은 참가 신청을 완료할 권한을 부여받았을 수 있다. 자율성 수준은 응용 전체를 어떻게 설계했는지에 달려 있으며, 모델 자체의 크기나 답변 말투의 자신감만으로 결정되지 않는다."
+        },
+        {
+          "type": "paragraph",
+          "text": "배포 후 학습 여부도 별개의 문제다. 일부 모델은 고정된 상태를 유지하다 새 버전을 출시할 때만 갱신된다. 일부 시스템은 피드백에 따라 순위나 개인화 상태를 조정할 수 있다. 사용자가 대화 중 선호를 추가로 알려주는 것은 해당 입력만 바꾸는 것일 수 있으며, 모델이 가중치를 통해 그 사용자를 즉시 학습했다는 뜻은 아니다. 제품이 실제로 데이터를 어떻게 저장하고 사용하는지 살펴봐야 한다."
+        },
+        {
+          "type": "paragraph",
+          "text": "신뢰성은 특정 용도를 기준으로 점검해야 한다. 사진 분류가 밝은 사진에서 성능이 좋다고 해서 흐릿한 야경도 처리할 수 있는 것은 아니다. 활동 추천이 인기 있는 선택지를 찾는다고 해서 드문 요구까지 놓치지 않고 반영할 수 있는 것도 아니다. 단 한 번의 시연이나 하나의 종합 점수로 모든 상황을 판단할 수 없으며, 유창한 표현을 검증이 완료되었다는 증거로 삼아서는 더더욱 안 된다."
+        },
+        {
+          "type": "heading",
+          "text": "일반 사용자가 할 수 있는 구체적인 질문",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "AI를 내세우는 기능을 접하면 먼저 이렇게 물어볼 수 있다. 어떤 데이터를 사용하는가, 출력은 예측인가 확인된 사실인가, 외부 상태를 바꾸는가, 실패했을 때 수정할 수 있는가? 제품이 데이터 출처와 작동 범위를 설명하지 못한다면, 적어도 결과를 확인이 필요한 제안으로 보아야 한다. 이런 질문은 AI가 ‘정말 똑똑한지’를 논쟁하는 것보다 일상적인 사용에 더 큰 영향을 준다."
+        },
+        {
+          "type": "paragraph",
+          "text": "사용할 때도 작업에 실제로 필요한 정보를 제공해야 한다. 사진을 정리하는 데 가족 앨범 전체를 공개할 필요는 없을 수 있고, 활동을 추천받는 데도 전체 주소와 사적인 기록이 꼭 필요한 것은 아니다. 시스템이 더 적지만 관련성 있는 데이터를 사용하게 하면 결과를 더 쉽게 설명할 수 있다. 동시에 서비스의 데이터 처리 규칙도 살펴봐야 하며, 기능 이름만으로 개인정보 보호 수준을 판단해서는 안 된다."
+        },
+        {
+          "type": "paragraph",
+          "text": "인공지능의 가치는 분류를 돕고, 패턴을 찾거나 초안을 제공하는 데 있을 수 있으며, 모든 결정을 사람 대신 내릴 필요는 없다. 입력, 도출 방식, 출력과 검증 방법을 명확히 설명할 수 있다면 대부분의 AI 개념을 이해하기 위한 출발점을 이미 파악한 것이다. 이어서 머신러닝과 생성형 AI를 읽으면 이 넓은 범위 안에서 각각 어떤 역할을 하는지 더 쉽게 구분할 수 있다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "명칭",
+            "주요 분류 관점",
+            "예시"
+          ],
+          "rows": [
+            [
+              "인공지능",
+              "광범위한 기술 및 시스템 분야",
+              "인식, 계획, 추천 및 생성"
+            ],
+            [
+              "머신러닝",
+              "데이터로 모델을 훈련하는 방법",
+              "과거 표본으로 분류 학습"
+            ],
+            [
+              "생성형 AI",
+              "콘텐츠 생성 능력",
+              "요구에 따라 텍스트나 이미지 생성"
+            ]
+          ],
+          "caption": "용어마다 분류 관점이 다르다(2026년 9월 검증)"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "‘할 수 있음’과 ‘자동으로 할 수 있음’ 구분하기",
+          "text": "모델이 방안을 제시할 수 있어도 시스템이 직접 실행할 수 있는지는 도구, 권한, 제품 설계에 달려 있다. 제안을 보면 현재 답변만 하고 있는지, 이미 외부 상태를 바꾸었는지 먼저 확인하자."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "머신러닝(Machine Learning)이란 무엇인가",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "생성형 AI(Generative AI)란 무엇인가",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 에이전트(AI Agent)란 무엇인가: 질문에 답하기에서 작업 완료까지",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 총색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OECD: AI 시스템 정의 해설서",
+          "url": "https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIST CSRC: 인공지능 용어집",
+          "url": "https://csrc.nist.gov/glossary/term/artificial_intelligence",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "人工智能（Artificial Intelligence）是什么",
+      "description": "人工智能是涵盖多种技术与应用的总称，不等于聊天机器人，也不一定会生成文字。本文从 OECD 的系统定义出发，以照片分类和社区资源推荐为例，说明输入、推导、输出与人的目标如何关联，梳理它与机器学习、深度学习和生成式 AI 的关系。读完能用具体问题判断一项 AI 功能在做什么，并区分能力、自主程度与可信度。",
+      "hero": {
+        "src": "/guides/ai-term-artificial-intelligence/hero-zh-cn.jpg",
+        "alt": "照片、文字纸张与方向路径汇入中央运算圆，向外生成不同形状的结果，象征人工智能的多种用途。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "人工智能（AI）是研究与制作能进行推理、识别、规划等工作的系统的广泛领域，可以预测、推荐、分类或生成内容，不只指会聊天的软件。",
+            "机器学习是 AI 的重要方法之一，知识与规则导向的方法也是 AI 发展的一部分；简单的定时提醒不会因为自动执行就成为 AI。",
+            "深度学习与生成式 AI 的分类角度不同，一个文本生成模型可以同时属于深度学习、机器学习与人工智能。",
+            "模型能提出方案，是否可直接执行仍取决于工具、权限与产品设计，流畅表达也不是查证完成的证据。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "人工智能，英文 Artificial Intelligence、缩写 AI，是研究与制作能进行推理、识别、规划等工作的系统的广泛领域。它可以预测、推荐、分类或生成内容，并不只指会聊天的软件。理解一项 AI 功能，最好从它接收什么、如何得到结果，以及结果如何影响人或环境开始，而不是先问它像不像人。"
+        },
+        {
+          "type": "paragraph",
+          "text": "这里采用 OECD 对 AI 系统的说明作为实用起点，同时保留不同领域对用词范围的差异。接下来用照片整理与社区资源推荐的原创例子，把抽象名词拆成可观察的流程。资料查证截至 2026 年 9 月 14 日。"
+        },
+        {
+          "type": "heading",
+          "text": "先看系统做了什么",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "OECD 的定义强调系统根据目标，从输入推导出预测、内容、建议或决策，并可能影响实体或虚拟环境；也指出不同系统的自主程度与部署后适应程度并不相同。这提供了一种跨应用的观察方式，不需要先认定系统有意识、情感或人类般的理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "NIST 术语页面则列出来自不同文件的人工智能定义，并提醒读者回到各自语境。这表示“是不是 AI”有时取决于讨论目的。产品文案、研究论文与治理文件可能使用不同边界；普通用户不必急着给所有软件贴上唯一标签，更应弄清楚功能和限制。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如相册把照片分成猫、狗和风景，输入是图像，输出是类别或相关分数。写信助手接收草稿和要求，输出修改后的文字。导航推荐路线则涉及位置、路网和目标条件。它们可以包含 AI 组件，但整个产品还需要界面、数据、普通程序和人所制定的规则。"
+        },
+        {
+          "type": "heading",
+          "text": "人工智能不只有从数据中学习",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "机器学习是 AI 的重要方法之一，通过数据训练模型，让它学到可用于新输入的关系。知识与规则导向的方法也是 AI 发展的一部分，例如用明确的知识和推理程序处理问题。现代系统也可能混合多种方法，不能因为没有神经网络就断言它一定不属于人工智能。"
+        },
+        {
+          "type": "paragraph",
+          "text": "另一方面，一条在固定时间启动的简单提醒，不会因为自动执行就自动成为 AI。自动化描述工作是否需要人逐次触发；人工智能描述系统中的推理或相关技术。两者有交集，但不是相同问题。介绍产品时，应指出是哪个部分在识别、推荐或生成，而不是只说“全自动”。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "深度学习",
+              "kind": "life",
+              "slug": "ai-term-deep-learning"
+            },
+            {
+              "type": "text",
+              "text": "是机器学习中的一类方法，通常以多层神经网络学习表示；生成式 AI 则按生成内容的能力来分类。这些词有不同分类角度，因此不能一律排成完全不重叠的几个盒子。一个文本生成模型可以同时属于深度学习、机器学习与人工智能。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "用社区资源推荐拆解一个例子",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "原创需求是：“帮新住户找合适的社区活动。”系统收到住户自行提供的兴趣、可参加时段与活动数据，先筛掉时间不合的活动，再根据相关性提出建议。预期输出可以是几个活动及推荐理由，而不是替住户直接报名。推荐和执行报名是不同动作，所需权限也不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "如果住户只说喜欢户外，系统可能推荐园艺或健步走，但这只是根据所提供信息做出的推理。它不应擅自认定住户的年龄、健康状况或其他敏感特征。推荐理由应指出可核对的条件，例如时段相符、活动内容和兴趣相近，让用户有机会修正理解。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试时可以提供一条偏好晚间活动的输入，检查是否仍把清晨活动排在前面，再放入已取消的活动，确认它不会继续推荐。若活动数据已过期，问题可能出在数据更新；若数据正确而排序忽略时段，才需要检查规则或模型。这种拆解比单纯说 AI 推荐不好更容易改善。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-artificial-intelligence/diagram-1-zh-cn.svg",
+          "alt": "人的目标与数据共同进入系统，系统生成预测、内容或建议，再由使用流程决定是否采取行动。",
+          "width": 1600,
+          "height": 900,
+          "caption": "会提出建议，不等于已获授权替用户执行行动。",
+          "description": "人的目标与数据共同进入系统，系统生成预测、内容或建议，再由使用流程决定是否采取行动。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "能力、自主性和可靠性分开看",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "系统能完成某种任务，并不代表它有权自行采取所有相关行动。推荐活动的模型可能很擅长匹配需求，但仍只能提供建议；另一个系统可能得到授权完成报名。自主程度取决于整个应用如何设计，不只是模型本身有多大，也不是回答语气多有把握。"
+        },
+        {
+          "type": "paragraph",
+          "text": "部署后是否会学习也是另一个问题。有些模型保持固定，只在新版本发布时更新；有些系统可能根据反馈调整排序或个性化状态。用户在对话中补充偏好，可能只是改变当次输入，并不必然意味着模型权重立即针对这个人完成了学习。要看产品实际如何存储与使用数据。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可靠性则要在特定用途上检查。照片分类在光线充足的照片上表现良好，未必能处理模糊夜景；活动推荐能找到热门选项，未必能妥善保留少见需求。不能用单次演示或一个总分推断所有情境，更不应把流畅表达当作查证完成的证据。"
+        },
+        {
+          "type": "heading",
+          "text": "普通用户可以问的具体问题",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "面对标榜 AI 的功能，可以先问：它用哪些数据，输出是预测还是已确认事实，会不会改变外部状态，失败时能否修正？如果产品无法说明数据来源与操作边界，至少应把结果视为需要核对的建议。这些问题比争论它是否“真的聪明”更能影响日常使用。"
+        },
+        {
+          "type": "paragraph",
+          "text": "使用时也应提供任务真正需要的信息。照片整理不一定需要公开整个家庭相册，活动推荐也不一定需要完整住址与私人记录。让系统使用较少但相关的数据，能让结果更容易解释；同时仍须查看服务的数据处理规则，不能只凭功能名称推断隐私保障。"
+        },
+        {
+          "type": "paragraph",
+          "text": "人工智能的价值可以是协助分类、找出模式或提供草稿，并不需要取代人做所有决定。当你能说清楚输入、推导方式、输出及验证方法，就已经掌握理解多数 AI 概念的起点。接着再读机器学习与生成式 AI，会更容易分辨它们各自在这个大范围里负责什么。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "名称",
+            "主要分类角度",
+            "例子"
+          ],
+          "rows": [
+            [
+              "人工智能",
+              "广泛的技术与系统领域",
+              "识别、规划、推荐与生成"
+            ],
+            [
+              "机器学习",
+              "从数据中训练模型的方法",
+              "从历史样本中学习分类"
+            ],
+            [
+              "生成式 AI",
+              "生成内容的能力",
+              "根据要求生成文字或图像"
+            ]
+          ],
+          "caption": "不同名词不使用同一分类角度（2026 年 9 月查证）"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "把“能做”与“能自动做”分开",
+          "text": "模型能提出方案，系统是否可直接执行仍取决于工具、权限与产品设计。看到建议后，先确认它目前只在回答，还是已经改变外部状态。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "机器学习（Machine Learning）是什么",
+              "kind": "life",
+              "slug": "ai-term-machine-learning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "生成式 AI（Generative AI）是什么",
+              "kind": "life",
+              "slug": "ai-term-generative-ai"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 智能体（AI Agent）是什么：从回答问题到完成任务",
+              "kind": "life",
+              "slug": "ai-agents-explained"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 名词总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "OECD：AI 系统定义说明备忘录",
+          "url": "https://www.oecd.org/en/publications/explanatory-memorandum-on-the-updated-oecd-definition-of-an-ai-system_623da898-en.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "NIST CSRC：人工智能术语表",
           "url": "https://csrc.nist.gov/glossary/term/artificial_intelligence",
           "checked_on": "2026-09-14"
         }
