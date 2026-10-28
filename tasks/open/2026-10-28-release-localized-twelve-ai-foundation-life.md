@@ -57,8 +57,8 @@ persistent directory outside Git. Inspect release-safety CI with real PostgreSQL
 
 - PR #1911 merged as `2668668feda6aa158dff048e4655dbde5c21fd7b` after all
   22 checks passed on the exact approved head. The merge tree equals that head.
-- Release preparation on 2026-10-28 found live revision `4c4bf7fde`; the pending
-  range is PR #1912 (two unrelated task documents) and PR #1911 (this cohort).
+- Initial release preparation on 2026-10-28 found live revision `4c4bf7fde`;
+  the range at that time was PR #1912 (two task documents) and PR #1911 (this cohort).
   No application code, dependency, migration, Compose or Dockerfile changes are
   in that range. Deployment hold absent, deployment lock free, no active paid
   video stage job observed. These are preparation observations, not action-time
@@ -108,3 +108,20 @@ persistent directory outside Git. Inspect release-safety CI with real PostgreSQL
   authoring snapshot as current production state.
 - The owner's earlier eight-document release and PR #1906 receipt merge are
   separate completed cohorts. They do not publish these 48 new documents.
+- Security repair PR #1887 is now merged as
+  `911443f2d0fb102dbe501d265849746af185a787`. Its exact reviewed head had 22 green
+  CI checks, a successful enforcing Linux audit and unchanged API test counts
+  (8327 passed, 25 skipped). The merged tree equals the checked head; a second
+  enforcing audit on merged main also passed (run 40683551386).
+- The current approved deployment range adds only the six-package dependency
+  repair and its task record to the earlier content/task range: 166 paths total,
+  including 12 packs, 144 translated assets, two dependency files and eight task
+  files. There are no migrations, application-code, Compose or Dockerfile changes.
+- Fresh native host preflight at 11:50:31 UTC remained clear: clean `4c4bf7fde`,
+  no deployment hold/active lock/flagged release/running paid video work, 181 GB
+  free. A new immutable backup/deploy package is bound to the merged security
+  target and the owner's explicit backup/deploy/publish answer. Its final package
+  review is pending; no backup, deployment or publication is claimed here.
+- The four extra API shard warnings match the existing aiosqlite teardown family.
+  Follow-up task `2026-10-28-close-sqlite-test-engines-before-event` preserves that
+  test-quality work separately; no warning suppression is part of this release.
