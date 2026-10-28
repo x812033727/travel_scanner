@@ -1,0 +1,27 @@
+{
+  "kind": "native_pure_TH_metadata_body_and_sources_preview_without_chapter_timestamps",
+  "title": "เห็นแค่ 40 แถว? ใช้ DuckDB 2.0 ส่งรายการติดตามฉบับเต็ม｜ซับไทย",
+  "description": "ใช้ตารางฝึกเรื่องการจัดส่งชุดเดียวกัน แยกส่วนที่คำตอบละไว้ แล้วส่งรายการติดตามฉบับเต็ม\nสำหรับคนที่ใช้ AI ช่วยอ่าน CSV และอยากส่งทั้งคิวรีกับผลลัพธ์ครบชุดให้ผู้รับ\n\nใช้ข้อมูลการจัดส่งสมมติและโปรแกรมที่ผู้เขียนสร้างให้ทำงานตามกฎตายตัว ไม่ใช่ข้อมูลบริษัท ลูกค้า หรือสถิติสาธารณะจริง ไม่มีคำตอบจากผลิตภัณฑ์ AI หรือการทดสอบโมเดลก่อนและหลังอย่างอิสระ เมื่อวันที่ 2026-10-25 ใช้ไบนารี DuckDB 2.0.0 ตัวเดียวกันเปรียบเทียบ -agent กับ -no-agent ส่วน 40 แถวเป็นพรีวิวของข้อมูลเข้า 1,200 รายการ ส่วน 480 รายการคือผลลัพธ์ครบชุดที่ผ่านเงื่อนไขชัดเจน การละแถวบนจอไม่ได้แปลว่าคิวรีหรือข้อมูลที่จัดเก็บสูญหาย\n\nผู้เขียนจงใจเขียนชื่อฟิลด์ขาดหนึ่งตัวอักษรในการสาธิตข้อผิดพลาด stderr ของโหมด agent มีข้อความเริ่มต้นกับ JSON ที่ถูกต้องหนึ่งบรรทัด ต้องแยกอ่านตามบรรทัดข้อความ ไม่ใช่มองสตรีมผสมทั้งชุดเป็นเอกสาร JSON เดียว ไม่ได้อ้างว่า DuckDB สร้าง JSON เสีย หรือโปรแกรมผู้รับภายนอกขัดข้องจริง CSV, SQL, COPY และ Parquet เป็นความสามารถเดิม สิ่งใหม่คือโหมดแสดงผลสำหรับ agent ไม่ได้ทดสอบ token ค่าใช้จ่าย การให้เหตุผลของโมเดล โหมดเซิร์ฟเวอร์ หรือการอัปเกรดฐานข้อมูลเดิม\n\nชุดฝึกมีข้อมูลเข้าที่สร้างเอง SQL ครบชุด สคริปต์ทำซ้ำ CSV ครบ 480 รายการและ Parquet เนื้อหาเดียวกัน รายงาน HTML คำสั่งที่ใช้จริง และ SHA ของทุกไฟล์ ข้อมูล โปรแกรม และรายงานที่สร้างเองใช้ CC0-1.0 ส่วน DuckDB ใช้ MIT ข้อความทางการเป็นสิทธิ์ของผู้เขียนแต่ละราย\n\nชุดฝึกสาธารณะ (คำสั่งที่รันจริง 9 คำสั่ง): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nfixtures ZIP ฉบับเต็ม: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip\n\n📚 แหล่งข้อมูล\nDuckDB2.0正式公告: https://duckdb.org/2026/10/21/announcing-duckdb-200\nDuckDB CLI agent模式: https://duckdb.org/2026/10/09/agent-mode.html\nDuckDB2.0 CLI agent模式文件: https://duckdb.org/docs/2.0/clients/cli/agent_mode.html\nDuckDB2.0遷移條件: https://duckdb.org/docs/2.0/operations_manual/migration.html\nDuckDB2.0正式release與套件: https://github.com/duckdb/duckdb/releases/tag/v2.0.0\n\n#DuckDB #วเคราะหขอมลดวยAI #AI新聞拆解",
+  "tags": [
+    "DuckDB",
+    "วิเคราะห์ข้อมูลด้วย AI",
+    "โหมด agent",
+    "CSV",
+    "SQL",
+    "Parquet",
+    "คิวรีข้อมูล",
+    "รายการฉบับเต็ม"
+  ],
+  "untimed_chapter_titles": {
+    "parcel-table-start": "พรีวิวพัสดุเว้นช่วงกลาง",
+    "input-is-still-there": "ตารางอยู่ครบ แต่คำตอบย่อ",
+    "define-the-followup": "พัสดุ 3 ชิ้น ผ่านแค่ 1 ชิ้น",
+    "human-error": "ตัวอักษรหาย คิวรีหยุด",
+    "read-parquet-back": "เปิดไฟล์เทียบตารางเดิมทีละแถว",
+    "new-requirement-consequence": "รวมตรงเวลาพอดี โจทย์เปลี่ยน"
+  },
+  "problems": [],
+  "actual_timeline_used": false,
+  "estimated_timeline_used": false,
+  "actual_CC_or_audio_claimed": false
+}

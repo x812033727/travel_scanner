@@ -1,0 +1,144 @@
+{
+  "kind": "independent_actual_DuckDB_live_capture_append3_review",
+  "at": "2026-10-27T18:55:25.571433+00:00",
+  "reviewer": "/root/live_append_static",
+  "verdict": "CLEAR_SOURCE_COMPONENT_DELIVERY_ONLY",
+  "actual_root_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/ROOT-live-append-actual-exit.json",
+    "bytes": 485,
+    "sha256": "1329da47803743ec89440e3be87cf724dac58b7e81e2c78dc8044baa6bf82d2f"
+  },
+  "actual_completion": {
+    "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/upload-prep/run/completion.json",
+    "bytes": 2584,
+    "sha256": "b237d276be41430d3d9d3b9722068ba3b6018d572aa2a27c785c3b2b67faa895"
+  },
+  "actual_tool_session": 98456,
+  "actual_tool_exit": 0,
+  "actual_PID": 5100,
+  "started_at": "2026-10-27T18:51:11.429Z",
+  "finished_at": "2026-10-27T18:51:43.864Z",
+  "counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 3,
+    "review_POST": 1,
+    "file_GET": 3,
+    "denied": 0
+  },
+  "paid_TTS_ASR": 0,
+  "same_pending_script_id": "dd47b9a0-6456-4651-9456-32b320909338",
+  "same_script_SHA": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+  "original22_refs_exact": true,
+  "new3_refs_exact": true,
+  "total_refs": 25,
+  "exact_ReviewIn_SHA": "bffb1a6b354a9137ee2959bdf039962871e64f62723c38b428cc7aa417155e34",
+  "one_POST_intent_and_response_bound": true,
+  "actual_ACKs_complete_new3": true,
+  "whole_before_project_equals_original_and_prePOST": true,
+  "whole_after_equals_expected_only_new3_files_and_sync": true,
+  "whole_after_and_postbinary_project_equal": true,
+  "payload_status_choices_history_otherreviews_language_selection_unchanged": true,
+  "new3_actual_full_buffers": [
+    {
+      "role": "evidence_live_cli_capture",
+      "MIME": "video/mp4",
+      "actual_response_content_type": "video/mp4",
+      "local": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/live-demo.silent.mp4",
+        "bytes": 2509370,
+        "sha256": "5f8bbbbebfe3065f40b4a839c8f61b1e02a8c90e43d658f34687549b4f5d0448"
+      },
+      "downloaded": {
+        "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/upload-prep/run/readback/evidence_live_cli_capture.mp4",
+        "bytes": 2509370,
+        "sha256": "5f8bbbbebfe3065f40b4a839c8f61b1e02a8c90e43d658f34687549b4f5d0448"
+      },
+      "HTTP": 200,
+      "full_bytes_equal": true,
+      "ACK": {
+        "received": [
+          0
+        ],
+        "complete": true
+      }
+    },
+    {
+      "role": "evidence_live_cli_report",
+      "MIME": "text/plain",
+      "actual_response_content_type": "text/plain; charset=utf-8",
+      "local": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/live-demo-usage.txt",
+        "bytes": 1359,
+        "sha256": "39d6fe9176a350b1ec19bdc3cddf24706cfe0a49371ea7eba02a2b6e333c1832"
+      },
+      "downloaded": {
+        "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/upload-prep/run/readback/evidence_live_cli_report.txt",
+        "bytes": 1359,
+        "sha256": "39d6fe9176a350b1ec19bdc3cddf24706cfe0a49371ea7eba02a2b6e333c1832"
+      },
+      "HTTP": 200,
+      "full_bytes_equal": true,
+      "ACK": {
+        "received": [
+          0
+        ],
+        "complete": true
+      }
+    },
+    {
+      "role": "evidence_live_cli_manifest",
+      "MIME": "application/json",
+      "actual_response_content_type": "application/json",
+      "local": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/recording-manifest.json",
+        "bytes": 16787,
+        "sha256": "624261eb20a75cefc8ac62458e2a25d4915782d795349740d3f6f4e977762558"
+      },
+      "downloaded": {
+        "file": "/workspace/work/ai-tech-next/duckdb-live-capture-20261027/upload-prep/run/readback/evidence_live_cli_manifest.json",
+        "bytes": 16787,
+        "sha256": "624261eb20a75cefc8ac62458e2a25d4915782d795349740d3f6f4e977762558"
+      },
+      "HTTP": 200,
+      "full_bytes_equal": true,
+      "ACK": {
+        "received": [
+          0
+        ],
+        "complete": true
+      }
+    }
+  ],
+  "actual_media_signature_probe": {
+    "duration_seconds": 93.12,
+    "video_codec": "h264",
+    "width": 1920,
+    "height": 1080,
+    "pixel_format": "yuv420p",
+    "audio_streams": 0
+  },
+  "original_closed22_binaries_not_downloaded_or_retransmitted": true,
+  "original_E_files_exact": 850,
+  "original_W_file_set_and_bytes_exact": 948,
+  "held_records_exact": 4,
+  "full_inventory_rechecked_twice": true,
+  "native_project_lease_absent": true,
+  "actual_append_PID_absent": true,
+  "active_producer_or_ASR_found": [],
+  "source111_all8_and_quality_flags_original_bytes_preserved": true,
+  "foreign_checked_M4A": 0,
+  "actual_CC": 0,
+  "server_approval": false,
+  "full_film_or_audio_acceptance": false,
+  "limitations": [
+    "Offline physical audit of actual saved transport receipts and complete buffers; no new API request or packet-level trace.",
+    "Capture visual/full-row oracle acceptance was separately completed and is rebound by exact accepted MP4 and review hashes; this audit does not rerun capture or declare whole-film/listening acceptance.",
+    "Existing API has no atomic CAS; actual before/after whole-project equality demonstrates this observed append outcome."
+  ],
+  "audit_auth": 0,
+  "audit_network": 0,
+  "audit_paid": 0,
+  "audit_ASR": 0,
+  "audit_producer": 0
+}

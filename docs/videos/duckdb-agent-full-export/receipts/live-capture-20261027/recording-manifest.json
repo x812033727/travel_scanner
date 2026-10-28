@@ -1,0 +1,509 @@
+{
+  "kind": "actual_DuckDB_live_console_capture_v1",
+  "source_capture_date": "2026-10-27",
+  "original_fixture_date": "2026-10-25",
+  "started_at": "2026-10-27T18:41:49.464Z",
+  "finished_at": "2026-10-27T18:44:24.187Z",
+  "pid": 4317,
+  "source_sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8",
+  "script_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+  "source_lines": 111,
+  "ui_original_not_official": true,
+  "real_commands_during_recording": true,
+  "source_audio_or_narration_timing_claimed": false,
+  "audio_streams": 0,
+  "TTS": 0,
+  "ASR": 0,
+  "paid_calls": 0,
+  "external_requests_blocked": 0,
+  "video": {
+    "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/live-demo.silent.mp4",
+    "bytes": 2509370,
+    "sha256": "5f8bbbbebfe3065f40b4a839c8f61b1e02a8c90e43d658f34687549b4f5d0448"
+  },
+  "native_webm": {
+    "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/live-demo.raw.webm",
+    "bytes": 11680434,
+    "sha256": "d73d9fcf60f4efe1bb3e5e1256ced72b5a91f64d530f95fcf8d3ca5dfc466da2"
+  },
+  "ffprobe_mp4": {
+    "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/ffprobe-mp4.stdout",
+    "bytes": 2850,
+    "sha256": "5c9834484871c1e08ca01d00c093fca222d83cbfb375040f5c5921c17f238a15"
+  },
+  "actual_duration_seconds": 93.12,
+  "actual_avg_frame_rate": "25/1",
+  "actual_frame_count": 2328,
+  "no_speed_change": true,
+  "original_binary": {
+    "file": "/workspace/work/ai-tech-next/fifth-demo/bin/duckdb",
+    "bytes": 77526584,
+    "sha256": "c41f957db5645d545a9caef430994cf262d24fad9297fef70c691395aadb43fb"
+  },
+  "original_inputs": [
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/public-run/demo/setup.sql",
+      "bytes": 350,
+      "sha256": "27628b19c4093ce9cd3016d5b0da84eb5ba557c25b8a6b92bb447c2fc826c654"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/public-run/demo/preview.sql",
+      "bytes": 63,
+      "sha256": "bfa52885cb8b6795ff4ca062759031e0d4a22995f2e00807e6cf295adec8bfe9"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/public-run/demo/followup.sql",
+      "bytes": 849,
+      "sha256": "1ff8759b08b182478397070c6c7559649af6ccc82ca6c50229c496496e338c95"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/public-run/demo/readback.sql",
+      "bytes": 219,
+      "sha256": "1d486cc85df75283c6471b5b94fe5b6d6e32342f255a183fea958553c3788d2f"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/public-run/demo/variant.sql",
+      "bytes": 358,
+      "sha256": "8b03857aff59d94067a2805c80dd6ed3dc75e6581e9bcfd8c9c77a2a7372a1f6"
+    },
+    {
+      "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/public-run/demo/input/parcels.csv",
+      "bytes": 28850,
+      "sha256": "02d8fdef3bb5014189e139b8ad2f3a87f210bf68d0974da3158bbdf78b5b4ac4"
+    }
+  ],
+  "copied_inputs": [
+    {
+      "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/demo/setup.sql",
+      "bytes": 350,
+      "sha256": "27628b19c4093ce9cd3016d5b0da84eb5ba557c25b8a6b92bb447c2fc826c654"
+    },
+    {
+      "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/demo/preview.sql",
+      "bytes": 63,
+      "sha256": "bfa52885cb8b6795ff4ca062759031e0d4a22995f2e00807e6cf295adec8bfe9"
+    },
+    {
+      "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/demo/followup.sql",
+      "bytes": 849,
+      "sha256": "1ff8759b08b182478397070c6c7559649af6ccc82ca6c50229c496496e338c95"
+    },
+    {
+      "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/demo/readback.sql",
+      "bytes": 219,
+      "sha256": "1d486cc85df75283c6471b5b94fe5b6d6e32342f255a183fea958553c3788d2f"
+    },
+    {
+      "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/demo/variant.sql",
+      "bytes": 358,
+      "sha256": "8b03857aff59d94067a2805c80dd6ed3dc75e6581e9bcfd8c9c77a2a7372a1f6"
+    },
+    {
+      "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/demo/input/parcels.csv",
+      "bytes": 28850,
+      "sha256": "02d8fdef3bb5014189e139b8ad2f3a87f210bf68d0974da3158bbdf78b5b4ac4"
+    }
+  ],
+  "steps": [
+    {
+      "index": 0,
+      "title": "確認同一個執行工具",
+      "display": "./duckdb --version",
+      "executable": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/duckdb",
+      "argv": [
+        "--version"
+      ],
+      "cwd": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime",
+      "started_at": "2026-10-27T18:41:57.450Z",
+      "finished_at": "2026-10-27T18:41:57.530Z",
+      "actual_exit": 0,
+      "signal": null,
+      "stdout": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-0.stdout",
+        "bytes": 31,
+        "sha256": "1d730d9d69767729764eed09e3f390e8b80c0f2fc09bc49c006d3423b64e38fb"
+      },
+      "stderr": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-0.stderr",
+        "bytes": 124,
+        "sha256": "0e06b8e2fdbcb086c971022958384c43fdcc5db8a0b3b04d0abaf6e559878613"
+      },
+      "metrics": {
+        "inputRows": 1200
+      },
+      "rendered_stdout_equal": true,
+      "layout": {
+        "bodyWidth": 1920,
+        "viewport": 1920,
+        "command": 1640,
+        "commandWidth": 1640,
+        "terminal": 1814,
+        "terminalWidth": 1814
+      }
+    },
+    {
+      "index": 1,
+      "title": "一般模式：預覽不是完整檔案",
+      "display": "./duckdb -no-init -no-agent :memory: -f demo/preview.sql",
+      "executable": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/duckdb",
+      "argv": [
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/preview.sql"
+      ],
+      "cwd": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime",
+      "started_at": "2026-10-27T18:42:08.064Z",
+      "finished_at": "2026-10-27T18:42:08.308Z",
+      "actual_exit": 0,
+      "signal": null,
+      "stdout": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-1.stdout",
+        "bytes": 4232,
+        "sha256": "4f5894b0a8a55dab90029f479ba94fd515fe9735d3e4f77e92f4ae2318c5623b"
+      },
+      "stderr": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-1.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "metrics": {
+        "inputRows": 1200
+      },
+      "rendered_stdout_equal": true,
+      "layout": {
+        "bodyWidth": 1920,
+        "viewport": 1920,
+        "command": 1640,
+        "commandWidth": 1640,
+        "terminal": 1814,
+        "terminalWidth": 1814
+      }
+    },
+    {
+      "index": 2,
+      "title": "agent 模式：明示省略了多少資料",
+      "display": "./duckdb -no-init -agent :memory: -f demo/preview.sql",
+      "executable": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/duckdb",
+      "argv": [
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/preview.sql"
+      ],
+      "cwd": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime",
+      "started_at": "2026-10-27T18:42:21.927Z",
+      "finished_at": "2026-10-27T18:42:22.057Z",
+      "actual_exit": 0,
+      "signal": null,
+      "stdout": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-2.stdout",
+        "bytes": 1664,
+        "sha256": "3354a5c6100722b32b6ef06ee1c6fecd1827d84388e59d19b6076a8a3be77ab6"
+      },
+      "stderr": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-2.stderr",
+        "bytes": 63,
+        "sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+      },
+      "metrics": {
+        "inputRows": 1200,
+        "previewRows": "40 / 1,200"
+      },
+      "rendered_stdout_equal": true,
+      "layout": {
+        "bodyWidth": 1920,
+        "viewport": 1920,
+        "command": 1640,
+        "commandWidth": 1640,
+        "terminal": 1814,
+        "terminalWidth": 1814
+      }
+    },
+    {
+      "index": 3,
+      "title": "完整匯出：只取已送達且真正晚到",
+      "display": "./duckdb -no-init -agent :memory: -f demo/followup.sql",
+      "executable": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/duckdb",
+      "argv": [
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/followup.sql"
+      ],
+      "cwd": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime",
+      "started_at": "2026-10-27T18:42:37.731Z",
+      "finished_at": "2026-10-27T18:42:37.977Z",
+      "actual_exit": 0,
+      "signal": null,
+      "stdout": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-3.stdout",
+        "bytes": 593,
+        "sha256": "c0a0db1d7b3169aaeeb35f60493f4006e231a9398b80c59545d657fa3edd4e2d"
+      },
+      "stderr": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-3.stderr",
+        "bytes": 63,
+        "sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+      },
+      "metrics": {
+        "inputRows": 1200,
+        "strictRows": 480
+      },
+      "rendered_stdout_equal": true,
+      "layout": {
+        "bodyWidth": 1920,
+        "viewport": 1920,
+        "command": 1640,
+        "commandWidth": 1640,
+        "terminal": 1814,
+        "terminalWidth": 1814
+      }
+    },
+    {
+      "index": 4,
+      "title": "Parquet 讀回：確認完整檔案內容",
+      "display": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql",
+      "executable": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/duckdb",
+      "argv": [
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/readback.sql"
+      ],
+      "cwd": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime",
+      "started_at": "2026-10-27T18:42:50.467Z",
+      "finished_at": "2026-10-27T18:42:50.595Z",
+      "actual_exit": 0,
+      "signal": null,
+      "stdout": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-4.stdout",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "stderr": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-4.stderr",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "generated_file": {
+        "file": "demo/output/parquet-readback.csv",
+        "rows": 480,
+        "bytes": 7252,
+        "artifact": {
+          "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/demo/output/parquet-readback.csv",
+          "bytes": 7252,
+          "sha256": "7a09b5c5cd0477366bf3dd8897104540952572543487017b9f0d0e1f360624a5"
+        },
+        "equals_strict_csv": true
+      },
+      "metrics": {
+        "inputRows": 1200,
+        "strictRows": 480
+      },
+      "rendered_stdout_equal": true,
+      "layout": {
+        "bodyWidth": 1920,
+        "viewport": 1920,
+        "command": 1640,
+        "commandWidth": 1640,
+        "terminal": 1814,
+        "terminalWidth": 1814
+      }
+    },
+    {
+      "index": 5,
+      "title": "改需求：把剛好準時也列入",
+      "display": "./duckdb -no-init -agent :memory: -f demo/variant.sql",
+      "executable": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime/duckdb",
+      "argv": [
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/variant.sql"
+      ],
+      "cwd": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/runtime",
+      "started_at": "2026-10-27T18:43:01.157Z",
+      "finished_at": "2026-10-27T18:43:01.396Z",
+      "actual_exit": 0,
+      "signal": null,
+      "stdout": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-5.stdout",
+        "bytes": 42,
+        "sha256": "46691c468502755c2c78dc49f75dada27cb763793029f388a8e4c0160410b725"
+      },
+      "stderr": {
+        "file": "/workspace/work/videos/_duckdb-live-capture/duckdb-agent-full-export/logs/step-5.stderr",
+        "bytes": 63,
+        "sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8"
+      },
+      "metrics": {
+        "inputRows": 1200,
+        "strictRows": 480,
+        "inclusiveRows": 720
+      },
+      "rendered_stdout_equal": true,
+      "layout": {
+        "bodyWidth": 1920,
+        "viewport": 1920,
+        "command": 1640,
+        "commandWidth": 1640,
+        "terminal": 1814,
+        "terminalWidth": 1814
+      }
+    }
+  ],
+  "oracle": {
+    "input_rows": 1200,
+    "strict_rows": 480,
+    "inclusive_rows": 720,
+    "on_time_added": 240,
+    "all_rows_match": true,
+    "parquet_roundtrip_equal": true,
+    "strict_first": {
+      "parcel_id": "P0002",
+      "route": "R2",
+      "promised_days": "3",
+      "actual_days": "4",
+      "days_late": "1"
+    },
+    "strict_last": {
+      "parcel_id": "P1199",
+      "route": "R3",
+      "promised_days": "3",
+      "actual_days": "5",
+      "days_late": "2"
+    },
+    "strict_csv_sha256": "7a09b5c5cd0477366bf3dd8897104540952572543487017b9f0d0e1f360624a5"
+  },
+  "child_exit_codes": {
+    "duckdb_0": 0,
+    "duckdb_1": 0,
+    "duckdb_2": 0,
+    "duckdb_3": 0,
+    "duckdb_4": 0,
+    "duckdb_5": 0,
+    "oracle": 0,
+    "ffprobe_webm": 0,
+    "ffmpeg_encode": 0,
+    "ffprobe_mp4": 0,
+    "ffmpeg_decode": 0
+  },
+  "events": [
+    {
+      "at": "2026-10-27T18:41:50.316Z",
+      "kind": "recording_started"
+    },
+    {
+      "at": "2026-10-27T18:41:57.021Z",
+      "kind": "displayed_command_ready",
+      "index": 0
+    },
+    {
+      "at": "2026-10-27T18:41:57.090Z",
+      "kind": "CLI_start",
+      "index": 0,
+      "display": "./duckdb --version"
+    },
+    {
+      "at": "2026-10-27T18:41:57.532Z",
+      "kind": "CLI_end",
+      "index": 0,
+      "actual_exit": 0
+    },
+    {
+      "at": "2026-10-27T18:42:07.587Z",
+      "kind": "displayed_command_ready",
+      "index": 1
+    },
+    {
+      "at": "2026-10-27T18:42:07.652Z",
+      "kind": "CLI_start",
+      "index": 1,
+      "display": "./duckdb -no-init -no-agent :memory: -f demo/preview.sql"
+    },
+    {
+      "at": "2026-10-27T18:42:08.310Z",
+      "kind": "CLI_end",
+      "index": 1,
+      "actual_exit": 0
+    },
+    {
+      "at": "2026-10-27T18:42:21.671Z",
+      "kind": "displayed_command_ready",
+      "index": 2
+    },
+    {
+      "at": "2026-10-27T18:42:21.706Z",
+      "kind": "CLI_start",
+      "index": 2,
+      "display": "./duckdb -no-init -agent :memory: -f demo/preview.sql"
+    },
+    {
+      "at": "2026-10-27T18:42:22.059Z",
+      "kind": "CLI_end",
+      "index": 2,
+      "actual_exit": 0
+    },
+    {
+      "at": "2026-10-27T18:42:37.373Z",
+      "kind": "displayed_command_ready",
+      "index": 3
+    },
+    {
+      "at": "2026-10-27T18:42:37.424Z",
+      "kind": "CLI_start",
+      "index": 3,
+      "display": "./duckdb -no-init -agent :memory: -f demo/followup.sql"
+    },
+    {
+      "at": "2026-10-27T18:42:37.984Z",
+      "kind": "CLI_end",
+      "index": 3,
+      "actual_exit": 0
+    },
+    {
+      "at": "2026-10-27T18:42:50.166Z",
+      "kind": "displayed_command_ready",
+      "index": 4
+    },
+    {
+      "at": "2026-10-27T18:42:50.205Z",
+      "kind": "CLI_start",
+      "index": 4,
+      "display": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql"
+    },
+    {
+      "at": "2026-10-27T18:42:50.599Z",
+      "kind": "CLI_end",
+      "index": 4,
+      "actual_exit": 0
+    },
+    {
+      "at": "2026-10-27T18:43:00.730Z",
+      "kind": "displayed_command_ready",
+      "index": 5
+    },
+    {
+      "at": "2026-10-27T18:43:00.791Z",
+      "kind": "CLI_start",
+      "index": 5,
+      "display": "./duckdb -no-init -agent :memory: -f demo/variant.sql"
+    },
+    {
+      "at": "2026-10-27T18:43:01.411Z",
+      "kind": "CLI_end",
+      "index": 5,
+      "actual_exit": 0
+    },
+    {
+      "at": "2026-10-27T18:43:22.341Z",
+      "kind": "recording_finished"
+    }
+  ]
+}

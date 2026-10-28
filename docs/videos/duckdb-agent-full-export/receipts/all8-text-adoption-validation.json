@@ -1,0 +1,105 @@
+{
+  "kind": "all8_TEXT_adoption_documentation_actual_validation",
+  "at": "2026-10-26T09:35:33.541307+00:00",
+  "verdict": "PASS_PREPARED_ALL8_TEXT_DOCS_ONLY_WITH_PRESERVED_NATIVE_ADVISORIES",
+  "base_HEAD": "a090b585a674db0f1e0f2ef12771363bfa7596eb",
+  "tracked_prior_episode_and_task_files": 556,
+  "prior_tracked_Git_bytes_unchanged": 551,
+  "only_changed_prior_tracked_paths": [
+    "docs/videos/duckdb-agent-full-export/README.md",
+    "docs/videos/duckdb-agent-full-export/production-progress.json",
+    "docs/videos/duckdb-agent-full-export/receipts/README.md",
+    "docs/videos/duckdb-agent-full-export/result.md",
+    "tasks/open/2026-10-25-produce-video-duckdb-agent-full-export.md"
+  ],
+  "old_ES68_reconstructed_exactly": 68,
+  "old63_preserved_in_place": true,
+  "only_five_mutable_and_three_descriptors_archived": true,
+  "recursive_history_copy_performed": false,
+  "old_indices_includingES284_preserved_exact": true,
+  "protected_source_claims_script_all8_i18n_lexicon_native_files": 19,
+  "all_protected_bytes_unchanged": true,
+  "remaining4_author_root_batch_safe_copies_exact": 196,
+  "copy2_distinct_inodes_all": true,
+  "current_all8_index_entries": 525,
+  "current_all8_index_sha256": "95698bde23ac6dcd208c604686b092fc784feac9bd0c0beebaf47780738cc6dd",
+  "all_index_entries_SHA_and_bytes_current": true,
+  "native_pure_binding": "../localization/all8/documentation-native-binding.json",
+  "actual_native_CLI_lint": {
+    "actual_exit_code": 0,
+    "command": [
+      "node",
+      "--use-env-proxy",
+      "tools/video/cli.mjs",
+      "lint",
+      "--slug",
+      "duckdb-agent-full-export"
+    ],
+    "errors": 0,
+    "warnings": 2,
+    "exact_warnings": [
+      {
+        "path": "youtube/es",
+        "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      },
+      {
+        "path": "youtube/id",
+        "message": "id.title: 39 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "log": "documentation-native-cli-lint.log.txt",
+    "log_sha256": "3f9f884c991f8a1018b06aff43273089b4f970451febcc785fd9d0a87a3bee80",
+    "estimates_scope": "CLI source narration time and generic Azure cost estimates are not actual timing, actual selected provider, fit, invoice or audio acceptance."
+  },
+  "actual_tasks_check": {
+    "actual_exit_code": 0,
+    "command": [
+      "node",
+      "tools/tasks.mjs",
+      "check"
+    ],
+    "validated": 2183,
+    "log": "documentation-tasks-check.final-after-peer.log.txt",
+    "log_sha256": "adf901918b00fa522b659fa6629d89093b89cac0c838cdbec7a20e823bfb2ccd",
+    "run_after_final_generated_task_wording_corrections": true
+  },
+  "actual_new_or_changed_Markdown_files_checked": 21,
+  "actual_local_links_checked": 115,
+  "broken_local_links": [],
+  "validation_self_links_written_then_rechecked": 4,
+  "tracked_git_diff_check_exit_code": 0,
+  "frozen_TH_author_Markdown_hardbreak_whitespace_advisory": [
+    {
+      "path": "docs/videos/duckdb-agent-full-export/localization/th/author/README.md",
+      "actual_exit_code": 3,
+      "stdout": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/localization/th/author/README.md:8: trailing whitespace.\n+Entry point: **`th.draft.reviewed.final.todo.json`**  \n",
+      "stderr": "",
+      "is_exact_copy": true
+    }
+  ],
+  "source_frozen_proof_bytes_not_changed_to_silence_whitespace": true,
+  "initial_filename_assumptions_and_actual_exit1_logs_preserved": true,
+  "independent_peer_generated_wording_corrections_preserved": "../localization/all8/documentation-peer-wording-corrections.json",
+  "master_workdir_original_files_unchanged": 9,
+  "new_network_requests": 0,
+  "text_adopted_locales": [
+    "en",
+    "ja",
+    "ko",
+    "es",
+    "pt",
+    "id",
+    "vi",
+    "th"
+  ],
+  "text_count": 8,
+  "actual_CC_M4A_ASR_fit_meter_backend_complete": false,
+  "master_paid_TTS": 0,
+  "master_raw_WAVs": 0,
+  "master_actual_timeline_exists": false,
+  "source_R2_two_readers12of13_false_preserved": true,
+  "source_targets_voice_lexicon_data_edited": false,
+  "all_eight_media_DOD_or_overall_complete": false,
+  "git_stage_commit_push": false,
+  "root_independent_review_still_required": true
+}

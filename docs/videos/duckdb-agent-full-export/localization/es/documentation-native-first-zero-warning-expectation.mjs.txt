@@ -1,0 +1,55 @@
+// Documentation-only native pure binding. No CLI merge, timing, media, auth or API.
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {loadProject,lintProject} from '/workspace/work/travel-scanner-duckdb/tools/video/core/state.mjs';
+import {buildSheet,mergeSheet,translationContext,sheetTodo} from '/workspace/work/travel-scanner-duckdb/tools/video/i18n/cli.mjs';
+import {metadataStatus,thumbnailStatus} from '/workspace/work/travel-scanner-duckdb/tools/video/core/translations.mjs';
+import {speechHash} from '/workspace/work/travel-scanner-duckdb/tools/video/core/timeline.mjs';
+import {screenplay} from '/workspace/work/travel-scanner-duckdb/tools/video/core/screenplay.mjs';
+
+const ROOT='/workspace/work/travel-scanner-duckdb',EP=ROOT+'/docs/videos/duckdb-agent-full-export',BASE='/workspace/work/ai-tech-next/fifth-es-docs';
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8')),hash=b=>crypto.createHash('sha256').update(b).digest('hex'),sha=p=>hash(fs.readFileSync(p));
+globalThis.fetch=()=>{throw Error('No network in documentation pure checks');};
+const pins=read(BASE+'/protected-before.json');assert.equal(Object.keys(pins).length,15);
+for(const [file,pin]of Object.entries(pins)){assert.equal(sha(file),pin.sha256);assert.equal(fs.statSync(file).size,pin.bytes);}
+const p=loadProject({root:ROOT,slug:'duckdb-agent-full-export'}),lint=lintProject(p);
+assert.deepEqual(lint.errors,[]);assert.deepEqual(lint.warnings,[]);
+assert.equal(sha(p.file),'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa');
+assert.equal(speechHash(p.doc,p.lexicon),'38cf9292f6945199');assert.equal(hash(screenplay(p.doc)),'7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b');
+const author=read(EP+'/localization/es/author/es.draft.reviewed.todo.json'),root=read(EP+'/localization/es/root/es.root-reviewed.todo.json');
+const changed=[];assert.equal(author.lines.length,111);assert.equal(root.lines.length,111);
+for(let i=0;i<111;i++){const a=author.lines[i],r=root.lines[i];assert.equal(a.id,r.id);assert.deepEqual({...a,text:null},{...r,text:null});if(a.text!==r.text)changed.push(a.id);}
+assert.deepEqual(changed,['jd24']);assert.equal(root.chapters.length,6);assert.deepEqual(root.chapters,author.chapters);
+for(const k of ['title','tags','thumbnail'])assert.deepEqual(root[k],author[k]);
+assert.deepEqual({...root.description,text:null},{...author.description,text:null});
+const expected=structuredClone(author);expected.lines.find(x=>x.id==='jd24').text=root.lines.find(x=>x.id==='jd24').text;expected.description.text=root.description.text;assert.deepEqual(root,expected);
+const merged=mergeSheet(p.doc,root,null);assert.deepEqual(merged.problems,[]);assert.deepEqual(merged.notes,[]);
+assert.equal(fs.readFileSync(EP+'/i18n/es.json','utf8'),JSON.stringify(merged.translation,null,2)+'\n');
+const preview=read(EP+'/localization/es/root/native-pure-premerge.json');assert.deepEqual(merged.translation,preview.translation);assert.equal(preview.actual_or_estimated_timeline_used,false);
+assert.equal(sha(EP+'/i18n/es.json'),'2e8511e2456cf75c6455f205fcf6105613a5b867995ccd6079490b0349afa60c');
+assert.notEqual(sha(EP+'/i18n/es.json'),sha(EP+'/localization/es/author/es.native-pure-merge-preview.final.json'));
+const context=translationContext(p.doc,p.lexicon),locales={};
+for(const locale of ['en','ja','ko','es']){
+ const t=p.translations[locale],status=metadataStatus(p.doc,t);
+ for(const k of ['title','description','tags'])assert.equal(status[k],'current');
+ assert.equal(Object.keys(status.chapters).length,6);assert(Object.values(status.chapters).every(x=>x==='current'));assert.deepEqual(status.orphans,[]);
+ assert.equal(thumbnailStatus(p.doc,t),'current');assert.equal(Object.keys(t.lines).length,111);
+ const sheet=buildSheet(p.doc,t,locale,null,['metadata','captions'],context);
+ assert.equal(sheet.lines.length,111);assert(sheet.lines.every(x=>!x.todo&&!Object.hasOwn(x,'max_chars')));
+ assert.equal(sheetTodo(sheet),'0 of 111 lines, 0 of 6 chapters');
+ locales[locale]={translation_sha256:sha(EP+'/i18n/'+locale+'.json'),lines:111,chapters:6,metadata_status:status,thumbnail_status:'current',native_pure_current_worksheet_todo:sheetTodo(sheet)};
+}
+const w=read(BASE+'/workdir-before.json');assert.equal(w.raw_WAVs,0);assert.equal(w.M4As,0);assert.equal(w.actual_timeline_exists,false);
+for(const row of w.files){const file=w.path+'/'+row.path;assert.equal(sha(file),row.sha256);assert.equal(fs.statSync(file).size,row.bytes);}
+assert(!fs.existsSync(w.path+'/timeline.json'));
+const oldProgress=read(EP+'/history/before-ES-text-adoption-docs/production-progress.json'),progress=read(EP+'/production-progress.json');
+for(const k of ['source_video_sha256','claims_sha256','speech_hash','voice_unchanged','native_script_gate','fact_checks','native_narrative','TTS'])assert.deepEqual(progress[k],oldProgress[k]);
+assert.equal(progress.TTS.paid_syntheses,0);assert.equal(progress.TTS.current_raw_WAVs,0);assert.equal(progress.voice_unchanged.name,'Sulafat');
+assert.deepEqual(progress.localization_text.adopted_locales,['en','ja','ko','es']);assert.equal(progress.localization_text.adopted_count,4);
+assert.equal(progress.media.actual_timeline_exists,false);assert.equal(progress.media.main_film_complete,false);
+for(const row of Object.values(progress.media.foreign_languages))for(const k of ['metadata_delivered','CC_delivered','M4A_delivered','backend_readback'])assert.equal(row[k],false);
+const result={kind:'ES_documentation_native_pure_source_glossary_translation_binding',at:new Date().toISOString(),native_lint:lint,source_sha256:sha(p.file),speech_hash:speechHash(p.doc,p.lexicon),native_script_sha256:hash(screenplay(p.doc)),protected_input_files:Object.keys(pins).length,all_protected_bytes_unchanged:true,locales,ES_actual_equals_root_native_preview:true,ES_actual_does_not_equal_author_pre_root_preview:true,root_changed_line_ids:changed,other110_line_targets_unchanged:true,source_context_all_preserved:true,root_wording_before_audio_not_fit_shorten_reword_round:true,native_merge_problems:merged.problems,native_merge_notes:merged.notes,glossary:context.glossary,glossary_source_file_sha256:sha(ROOT+'/docs/videos/lexicon.json'),master_workdir_all_before_files_unchanged:true,actual_timeline_exists:false,estimated_or_actual_timestamps_generated:false,actual_CC_audio_or_backend_delivered:false,master_TTS_paid:0,CLI_merge_media_auth_API_paid_state_git_actions:0};
+const output=EP+'/localization/es/documentation-native-binding.json';fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx',mode:0o600});
+for(const [file,pin]of Object.entries(pins))assert.equal(sha(file),pin.sha256);
+console.log(JSON.stringify({ok:true,native_lint_errors:0,native_lint_warnings:0,lines:111,locales:['en','ja','ko','es'],ES_sha256:sha(EP+'/i18n/es.json'),glossary_unchanged:true,protected15_unchanged:true,output,output_sha256:sha(output)}));

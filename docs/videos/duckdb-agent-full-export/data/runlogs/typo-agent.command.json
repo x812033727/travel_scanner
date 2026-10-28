@@ -1,0 +1,16 @@
+{
+  "label": "typo-agent",
+  "argv": [
+    "./bin/duckdb",
+    "-no-init",
+    "-agent",
+    ":memory:",
+    "-c",
+    "SET autoinstall_known_extensions=false; SET autoload_known_extensions=false; SET threads=1; SET memory_limit='128MB'; CREATE TABLE parcels AS SELECT * FROM read_csv('input/parcels.csv',columns={'parcel_id':'VARCHAR','route':'VARCHAR','promised_days':'INTEGER','status':'VARCHAR','actual_days':'INTEGER'},header=true);\nSELECT parcel_id, actual_day FROM parcels LIMIT 1;"
+  ],
+  "started_at_utc": "2026-10-25T22:30:18.713289+00:00",
+  "seconds": 0.448483,
+  "exit_code": 1,
+  "stdout_bytes": 0,
+  "stderr_bytes": 318
+}

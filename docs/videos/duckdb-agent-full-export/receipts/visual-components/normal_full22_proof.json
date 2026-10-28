@@ -1,0 +1,699 @@
+{
+  "kind": "ROOT_DuckDB_normal_full22_binary_readback_proof_v1",
+  "recorded_at": "2026-10-27T09:47:51.329Z",
+  "slug": "duckdb-agent-full-export",
+  "review_id": "dd47b9a0-6456-4651-9456-32b320909338",
+  "review_status": "pending",
+  "source_sha256": "1c475c928a02a6f584dd224ecfed1c5fafd53aa4bf1795c7a3758699692a12c8",
+  "script_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+  "binary_count": 22,
+  "normal_native_args": [
+    "review-files",
+    "--slug",
+    "duckdb-agent-full-export",
+    "--gate",
+    "script",
+    "--out",
+    "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22"
+  ],
+  "normal_GET_counts": {
+    "project_GET": 1,
+    "file_GET": 22,
+    "denied": 0,
+    "paid_requests": 0,
+    "native_retry_dispatches": 0
+  },
+  "actual_native_result": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/native-process-result.json",
+    "bytes": 6953,
+    "sha256": "46231df878754c96f3b86cbd1b923145285e0c1a2dd5174ba0bae068b75b43d2"
+  },
+  "Root_normal_exec_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-normal-full22-exec-exit.json",
+    "bytes": 422,
+    "sha256": "e9d3191a0460918e0ef727b45792e0801feac695936d69ce5cf891b5962ea09e"
+  },
+  "normal_manifest": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/review-files.json",
+    "bytes": 8062,
+    "sha256": "0eb5707841d7d6ae53bacde721f92ce758d1ddd45cf6a0bc7676dc68fd47affc"
+  },
+  "actual_binary_rows": [
+    {
+      "index": 0,
+      "role": "evidence_thumbnail_zh_TW",
+      "locale": "zh-TW",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_zh_TW.jpg",
+        "bytes": 129665,
+        "sha256": "9cf4fe7a61b9d8acc128a178bb91e43ab53b56b594847d9264b0f844abccff8e"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnail.jpg",
+        "bytes": 129665,
+        "sha256": "9cf4fe7a61b9d8acc128a178bb91e43ab53b56b594847d9264b0f844abccff8e"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_zh_TW",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 129665,
+        "sha256": "9cf4fe7a61b9d8acc128a178bb91e43ab53b56b594847d9264b0f844abccff8e",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_zh_TW.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 1,
+      "role": "evidence_thumbnail_en",
+      "locale": "en",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_en.jpg",
+        "bytes": 126164,
+        "sha256": "47d8cbbd631def477ad2b4833cd245eb87ebc625068a85cd1df94e41a15d97a4"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnails/en.jpg",
+        "bytes": 126164,
+        "sha256": "47d8cbbd631def477ad2b4833cd245eb87ebc625068a85cd1df94e41a15d97a4"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_en",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 126164,
+        "sha256": "47d8cbbd631def477ad2b4833cd245eb87ebc625068a85cd1df94e41a15d97a4",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_en.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 2,
+      "role": "evidence_thumbnail_ja",
+      "locale": "ja",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_ja.jpg",
+        "bytes": 128225,
+        "sha256": "e9b14ebbdbebe675be51eee295a964d808450a14f686f83c9a14279020c71ffd"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnails/ja.jpg",
+        "bytes": 128225,
+        "sha256": "e9b14ebbdbebe675be51eee295a964d808450a14f686f83c9a14279020c71ffd"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_ja",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 128225,
+        "sha256": "e9b14ebbdbebe675be51eee295a964d808450a14f686f83c9a14279020c71ffd",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_ja.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 3,
+      "role": "evidence_thumbnail_ko",
+      "locale": "ko",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_ko.jpg",
+        "bytes": 127689,
+        "sha256": "1cf36161206549de0465e5098950d4329f38dab9d36858b77ad42584727451d9"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnails/ko.jpg",
+        "bytes": 127689,
+        "sha256": "1cf36161206549de0465e5098950d4329f38dab9d36858b77ad42584727451d9"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_ko",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 127689,
+        "sha256": "1cf36161206549de0465e5098950d4329f38dab9d36858b77ad42584727451d9",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_ko.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 4,
+      "role": "evidence_thumbnail_es",
+      "locale": "es",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_es.jpg",
+        "bytes": 127739,
+        "sha256": "ee9b10067883601a6b91dd85e5e8260b18537aabe9ca153fcd9737f7c91cbe7d"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnails/es.jpg",
+        "bytes": 127739,
+        "sha256": "ee9b10067883601a6b91dd85e5e8260b18537aabe9ca153fcd9737f7c91cbe7d"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_es",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 127739,
+        "sha256": "ee9b10067883601a6b91dd85e5e8260b18537aabe9ca153fcd9737f7c91cbe7d",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_es.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 5,
+      "role": "evidence_thumbnail_pt",
+      "locale": "pt",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_pt.jpg",
+        "bytes": 127014,
+        "sha256": "cd8c08a718d7e3bbfcdd7938c3b1104bf7063f68e1c50ac8e8720e618842fde0"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnails/pt.jpg",
+        "bytes": 127014,
+        "sha256": "cd8c08a718d7e3bbfcdd7938c3b1104bf7063f68e1c50ac8e8720e618842fde0"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_pt",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 127014,
+        "sha256": "cd8c08a718d7e3bbfcdd7938c3b1104bf7063f68e1c50ac8e8720e618842fde0",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_pt.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 6,
+      "role": "evidence_thumbnail_id",
+      "locale": "id",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_id.jpg",
+        "bytes": 125841,
+        "sha256": "5dcbfb2e4c9973213dac6d181c20fc467235925fb2ba990756cdf299a842cfb1"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnails/id.jpg",
+        "bytes": 125841,
+        "sha256": "5dcbfb2e4c9973213dac6d181c20fc467235925fb2ba990756cdf299a842cfb1"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_id",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 125841,
+        "sha256": "5dcbfb2e4c9973213dac6d181c20fc467235925fb2ba990756cdf299a842cfb1",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_id.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 7,
+      "role": "evidence_thumbnail_vi",
+      "locale": "vi",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_vi.jpg",
+        "bytes": 128278,
+        "sha256": "bf49c62b8116bcd43631040ab1aa12e512fbf74868ca9c6afbf40dccdaa534b8"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnails/vi.jpg",
+        "bytes": 128278,
+        "sha256": "bf49c62b8116bcd43631040ab1aa12e512fbf74868ca9c6afbf40dccdaa534b8"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_vi",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 128278,
+        "sha256": "bf49c62b8116bcd43631040ab1aa12e512fbf74868ca9c6afbf40dccdaa534b8",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_vi.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 8,
+      "role": "evidence_thumbnail_th",
+      "locale": "th",
+      "content_type": "image/jpeg",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_thumbnail_th.jpg",
+        "bytes": 121518,
+        "sha256": "5723747a8377d93babcc726e14fad7183e8df797d1149bea38b6c36101a4e94d"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/thumbnails/th.jpg",
+        "bytes": 121518,
+        "sha256": "5723747a8377d93babcc726e14fad7183e8df797d1149bea38b6c36101a4e94d"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_thumbnail_th",
+        "content_type": "image/jpeg",
+        "HTTP": 200,
+        "bytes": 121518,
+        "sha256": "5723747a8377d93babcc726e14fad7183e8df797d1149bea38b6c36101a4e94d",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_thumbnail_th.jpg",
+        "response_content_type": "image/jpeg"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 9,
+      "role": "contact_sheet",
+      "locale": "component",
+      "content_type": "image/png",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/contact_sheet.png",
+        "bytes": 1467486,
+        "sha256": "3955f79f18b4bfa9c876a9609d050638774eecd96c455343e672a60091b00f71"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/contact-sheet.png",
+        "bytes": 1467486,
+        "sha256": "3955f79f18b4bfa9c876a9609d050638774eecd96c455343e672a60091b00f71"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "contact_sheet",
+        "content_type": "image/png",
+        "HTTP": 200,
+        "bytes": 1467486,
+        "sha256": "3955f79f18b4bfa9c876a9609d050638774eecd96c455343e672a60091b00f71",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/contact_sheet.png",
+        "response_content_type": "image/png"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 10,
+      "role": "evidence_metadata_source_zh_TW",
+      "locale": "zh-TW",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_zh_TW.txt",
+        "bytes": 1532,
+        "sha256": "00c1cf6803453c154a50c8c46a4f69ca5bcc5f719fdd6fa1dad826b91db4a3bd"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/zh-TW.txt",
+        "bytes": 1532,
+        "sha256": "00c1cf6803453c154a50c8c46a4f69ca5bcc5f719fdd6fa1dad826b91db4a3bd"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_zh_TW",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 1532,
+        "sha256": "00c1cf6803453c154a50c8c46a4f69ca5bcc5f719fdd6fa1dad826b91db4a3bd",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_zh_TW.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 11,
+      "role": "evidence_metadata_source_en",
+      "locale": "en",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_en.txt",
+        "bytes": 2121,
+        "sha256": "982b8bd33ee809e9c1dd5a9007259a20e4f18de77de902705b700bfcb623132e"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/en.txt",
+        "bytes": 2121,
+        "sha256": "982b8bd33ee809e9c1dd5a9007259a20e4f18de77de902705b700bfcb623132e"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_en",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 2121,
+        "sha256": "982b8bd33ee809e9c1dd5a9007259a20e4f18de77de902705b700bfcb623132e",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_en.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 12,
+      "role": "evidence_metadata_source_ja",
+      "locale": "ja",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_ja.txt",
+        "bytes": 2506,
+        "sha256": "b156c90ac0ee89369c72045cb6724501e911e76d3c898406cf42aef59152aa31"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/ja.txt",
+        "bytes": 2506,
+        "sha256": "b156c90ac0ee89369c72045cb6724501e911e76d3c898406cf42aef59152aa31"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_ja",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 2506,
+        "sha256": "b156c90ac0ee89369c72045cb6724501e911e76d3c898406cf42aef59152aa31",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_ja.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 13,
+      "role": "evidence_metadata_source_ko",
+      "locale": "ko",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_ko.txt",
+        "bytes": 2353,
+        "sha256": "87847d6e90e747b1d3299ac8bca6b2f134667d85529f00ce98bb7d37d1ab50d8"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/ko.txt",
+        "bytes": 2353,
+        "sha256": "87847d6e90e747b1d3299ac8bca6b2f134667d85529f00ce98bb7d37d1ab50d8"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_ko",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 2353,
+        "sha256": "87847d6e90e747b1d3299ac8bca6b2f134667d85529f00ce98bb7d37d1ab50d8",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_ko.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 14,
+      "role": "evidence_metadata_source_es",
+      "locale": "es",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_es.txt",
+        "bytes": 2374,
+        "sha256": "8ea9d18459343d82cf8aaf54a38944c70ff1bd993c31574a57c5bf78ca7d1e77"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/es.txt",
+        "bytes": 2374,
+        "sha256": "8ea9d18459343d82cf8aaf54a38944c70ff1bd993c31574a57c5bf78ca7d1e77"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_es",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 2374,
+        "sha256": "8ea9d18459343d82cf8aaf54a38944c70ff1bd993c31574a57c5bf78ca7d1e77",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_es.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 15,
+      "role": "evidence_metadata_source_pt",
+      "locale": "pt",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_pt.txt",
+        "bytes": 2346,
+        "sha256": "5791f23385fb45abdbc0d9b937d64e9489ddbab2ad9aacf58e399cc9dfa98764"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/pt.txt",
+        "bytes": 2346,
+        "sha256": "5791f23385fb45abdbc0d9b937d64e9489ddbab2ad9aacf58e399cc9dfa98764"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_pt",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 2346,
+        "sha256": "5791f23385fb45abdbc0d9b937d64e9489ddbab2ad9aacf58e399cc9dfa98764",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_pt.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 16,
+      "role": "evidence_metadata_source_id",
+      "locale": "id",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_id.txt",
+        "bytes": 2134,
+        "sha256": "822d604bfe0ae9c16ca49c13484df99e7492e7525d8748a688a82e4a846ae6f2"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/id.txt",
+        "bytes": 2134,
+        "sha256": "822d604bfe0ae9c16ca49c13484df99e7492e7525d8748a688a82e4a846ae6f2"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_id",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 2134,
+        "sha256": "822d604bfe0ae9c16ca49c13484df99e7492e7525d8748a688a82e4a846ae6f2",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_id.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 17,
+      "role": "evidence_metadata_source_vi",
+      "locale": "vi",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_vi.txt",
+        "bytes": 2553,
+        "sha256": "a6e25e9fa7adc70c66019593de7bb3bdd608282a60396ef9aa98f6ab913047b8"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/vi.txt",
+        "bytes": 2553,
+        "sha256": "a6e25e9fa7adc70c66019593de7bb3bdd608282a60396ef9aa98f6ab913047b8"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_vi",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 2553,
+        "sha256": "a6e25e9fa7adc70c66019593de7bb3bdd608282a60396ef9aa98f6ab913047b8",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_vi.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 18,
+      "role": "evidence_metadata_source_th",
+      "locale": "th",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_metadata_source_th.txt",
+        "bytes": 4013,
+        "sha256": "43f3cd54876f18d17c897bd7be92600acf0d481f40558de23a54561e209e2a74"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/metadata-source/th.txt",
+        "bytes": 4013,
+        "sha256": "43f3cd54876f18d17c897bd7be92600acf0d481f40558de23a54561e209e2a74"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_metadata_source_th",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 4013,
+        "sha256": "43f3cd54876f18d17c897bd7be92600acf0d481f40558de23a54561e209e2a74",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_metadata_source_th.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 19,
+      "role": "evidence_native_frames_manifest",
+      "locale": "component",
+      "content_type": "application/json",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_native_frames_manifest.json",
+        "bytes": 55958,
+        "sha256": "f4789aaed0490136c243d2b01e2d9a658a96d490e649f5888b9133ecf3e8bfbb"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/videos/duckdb-agent-full-export/frames/manifest.json",
+        "bytes": 55958,
+        "sha256": "f4789aaed0490136c243d2b01e2d9a658a96d490e649f5888b9133ecf3e8bfbb"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_native_frames_manifest",
+        "content_type": "application/json",
+        "HTTP": 200,
+        "bytes": 55958,
+        "sha256": "f4789aaed0490136c243d2b01e2d9a658a96d490e649f5888b9133ecf3e8bfbb",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_native_frames_manifest.json",
+        "response_content_type": "application/json"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 20,
+      "role": "evidence_visual_component_report",
+      "locale": "component",
+      "content_type": "text/plain",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_visual_component_report.txt",
+        "bytes": 2600,
+        "sha256": "0744288c8308e909270366dcc0d56f8d1784e675b63dba7af3af8efa7f20a770"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/visual-component-report.txt",
+        "bytes": 2600,
+        "sha256": "0744288c8308e909270366dcc0d56f8d1784e675b63dba7af3af8efa7f20a770"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_visual_component_report",
+        "content_type": "text/plain",
+        "HTTP": 200,
+        "bytes": 2600,
+        "sha256": "0744288c8308e909270366dcc0d56f8d1784e675b63dba7af3af8efa7f20a770",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_visual_component_report.txt",
+        "response_content_type": "text/plain; charset=utf-8"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    },
+    {
+      "index": 21,
+      "role": "evidence_visual_board_mp4",
+      "locale": "component",
+      "content_type": "video/mp4",
+      "actual_normal_file": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22/script/evidence_visual_board_mp4.mp4",
+        "bytes": 5804846,
+        "sha256": "0c1f4c40b8b116eb08dd9f5779364464cb81fdf3e87b6cfb3127c6dd3972a0d8"
+      },
+      "actual_native_asset": {
+        "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/visual-board.silent.mp4",
+        "bytes": 5804846,
+        "sha256": "0c1f4c40b8b116eb08dd9f5779364464cb81fdf3e87b6cfb3127c6dd3972a0d8"
+      },
+      "actual_original_upload_fullreadback": {
+        "role": "evidence_visual_board_mp4",
+        "content_type": "video/mp4",
+        "HTTP": 200,
+        "bytes": 5804846,
+        "sha256": "0c1f4c40b8b116eb08dd9f5779364464cb81fdf3e87b6cfb3127c6dd3972a0d8",
+        "downloaded_file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/readback/evidence_visual_board_mp4.mp4",
+        "response_content_type": "video/mp4"
+      },
+      "full_buffers_equal": true,
+      "signature_or_UTF8_checked": true
+    }
+  ],
+  "project_before": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/project-normal-full22-before.private.json",
+    "bytes": 45892,
+    "sha256": "456a4c16badb0abd44e7183a6ffd0d547bfd28ca063998fa5a990704d95691e1"
+  },
+  "project_after": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/project-normal-full22-after.private.json",
+    "bytes": 45892,
+    "sha256": "456a4c16badb0abd44e7183a6ffd0d547bfd28ca063998fa5a990704d95691e1"
+  },
+  "before_GET": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/project-normal-full22-before-GET.json",
+    "bytes": 411,
+    "sha256": "fa71c009f4dc339b22532622208eb61d0630fd6d4401702cdfe8ffaa56bbe84b"
+  },
+  "after_GET": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/project-normal-full22-after-GET.json",
+    "bytes": 410,
+    "sha256": "0c6d796c1f8c9641e74c488c302f857cfcc014deb7c60dce85b7ecadfec06aeb"
+  },
+  "whole_project_payload_outline_choices_history_and_approvals_unchanged": true,
+  "same_existing_SCRIPT22_refs": true,
+  "all22_full_native_and_original_upload_and_normal_buffers_equal": true,
+  "complete111_source_targets_in9languages_preserved": true,
+  "nine_full_raw_title_description_drafts_equal": true,
+  "silent_board_auxiliary_seconds": 128,
+  "silent_board_actual_frames": 3840,
+  "silent_board_actual_audio_streams": 0,
+  "silent_board_minimum_SSIM": 0.99944,
+  "native_visual_proof": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-duckdb-body-remedial-visual-proof.json",
+    "bytes": 478867,
+    "sha256": "05920d414b7c49b2f33fcbe58feca7a68ca9f2296fe42a0d4d16a940289b6a47"
+  },
+  "actual73_visual_review": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-duckdb-visual-review.json",
+    "bytes": 66427,
+    "sha256": "e69cb6b2c950ad086f600893509716dffed9b155f7f4e5722ef359ea95e72f8d"
+  },
+  "original_upload_completion": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/delivery-prep/runs/duckdb-script22-visual-assets-20261027t093247/completion.json",
+    "bytes": 17140,
+    "sha256": "20d088d088aaa85ea54b9b2ad20f804581ad0ed3f313e8bb1c643b7ae8658acd"
+  },
+  "original_upload_Root_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/ROOT-script22-visual-assets-append-exec-exit.json",
+    "bytes": 469,
+    "sha256": "8d9790c61e1848871b642edf298a84ae286a7e2ad5e1dc3dd905197a6c9cee6a"
+  },
+  "new_backend_mutations_or_approvals": 0,
+  "new_paid_provider_requests": 0,
+  "new_TTS_ASR_fit_meter_QA_calls": 0,
+  "foreign_checked_M4A": 0,
+  "actual_CC": 0,
+  "actual_audio_timeline": false,
+  "official_animated_bookends": false,
+  "overall_production_completed": false,
+  "actual_execution_freeze": {
+    "file": "/workspace/work/ai-tech-next/duckdb-visual-production-20261027/normal-full22-prep/freeze.actual.json",
+    "bytes": 10486,
+    "sha256": "37b996b7d442d8bd0e2da9d47799744b9553c139c12717ac26df4ed0282c4bc7"
+  }
+}

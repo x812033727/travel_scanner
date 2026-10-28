@@ -1,0 +1,82 @@
+{
+  "kind": "Root-authorized two visual repairs; zero story rewrite",
+  "before_source": {
+    "sha256": "7d150fc4e8a818e80560c80e4a392e93699666571c3647d4471b4222bcfb0726",
+    "archive": "/workspace/work/ai-tech-next/fifth-visual-archives/before-visual-polish-7d",
+    "archive_manifest_sha256": "c19ce4845423d67bb9da328711518421ebdc00971ba5380b25dd9585a2ad7ab8"
+  },
+  "after_source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+  "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "authorized_source_changes": [
+    {
+      "op": "remove",
+      "scene_id": "input-columns",
+      "path": "data.key",
+      "value": "先認出五個欄位",
+      "reason": "Exact duplicate of title; remove optional key to free vertical space while preserving title,all5rows,source."
+    },
+    {
+      "op": "add",
+      "path": "thumbnail.data.asset",
+      "value": "docs/videos/duckdb-agent-full-export/assets/thumbnail-subject-9317157458b260ea.png",
+      "reason": "Original dedicated schematic in previously empty subject panel."
+    },
+    {
+      "op": "add",
+      "path": "assets[0]",
+      "value": {
+        "path": "docs/videos/duckdb-agent-full-export/assets/thumbnail-subject-9317157458b260ea.png",
+        "source": "本片原創教學示意｜虛構配送資料與本地2.0輸出｜非DuckDB官方UI",
+        "license": "CC0-1.0"
+      },
+      "reason": "Native required asset identity/source/license."
+    }
+  ],
+  "restoring_only_these_paths_recreates7d_exactly": true,
+  "all111_full_line_objects_text_say_say_for_emotion_unchanged": true,
+  "all_other_source_fields_exact": true,
+  "voice_style_chapters_claims_SQL_and_values_unchanged": true,
+  "native_speech_hash_before": "38cf9292f6945199",
+  "native_speech_hash_after": "38cf9292f6945199",
+  "native_visual_hash_before": "bac87ae2e9bebf70",
+  "native_visual_hash_after": "9f1673219982b59d",
+  "layout_all64states_and_thumbnail_problems": [],
+  "changed_card_recaptured_in_prior_visual350c": [
+    "input-columns"
+  ],
+  "final_thumbnail_labels_corrected": "同一份配送表／按條件另存完整結果",
+  "final64states_reused_exact_PNG_from_visual350c": true,
+  "unchanged63states_keys_and_PNG_SHA_equal": true,
+  "thumbnail_recaptured": true,
+  "author_actually_viewed": [
+    "input-columns-0.png",
+    "thumbnail-static.jpg",
+    "assets/thumbnail-subject.png"
+  ],
+  "preview_root": "/workspace/work/ai-tech-next/fifth-render-sample-final-ca1e",
+  "full_render_ASR_TTS_or_backend_POST": false,
+  "verify2_is_historical_7d_PASS": true,
+  "current_verify3_delta_pending": true,
+  "asset_identity": {
+    "assets/thumbnail-subject.svg": {
+      "bytes": 2385,
+      "sha256": "9213cc69a0c11e951d7da284c0000fe775c313951a23d3e37cb9612c84d50474"
+    },
+    "assets/thumbnail-subject.png": {
+      "bytes": 80989,
+      "sha256": "9317157458b260eae8f2a98503fa39c36a33024e5bdb2cd77d422995e90cb2de"
+    },
+    "assets/thumbnail-subject-9317157458b260ea.png": {
+      "bytes": 80989,
+      "sha256": "9317157458b260eae8f2a98503fa39c36a33024e5bdb2cd77d422995e90cb2de"
+    },
+    "assets/thumbnail-credit.json": {
+      "bytes": 222,
+      "sha256": "075087110c1f52b9abc8351637f0582833235c584a980022316cc3be050cc12b"
+    },
+    "assets/thumbnail-subject-provenance.json": {
+      "bytes": 1327,
+      "sha256": "aea40e22d1dfa0b2e9af8e7e9f4965cb4e42e4621b634a94604ef4501b0b5c64"
+    }
+  }
+}

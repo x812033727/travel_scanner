@@ -1,0 +1,60 @@
+{
+  "at": "2026-10-26T09:00:10.629640+00:00",
+  "kind": "VI full111 author second semantic pass",
+  "all111_source_pairs_read": true,
+  "full_metadata_six_chapters_read": true,
+  "line_edits": 7,
+  "description_edits": 1,
+  "changes": [
+    {
+      "field": "lines.4cr9",
+      "before": "Dòng này tách kích thước kết quả truy vấn khỏi kích thước phần thấy trên màn hình.",
+      "after": "Dòng này tách tổng số dòng của kết quả khỏi số dòng đang hiện trên màn hình.",
+      "reason": "Use explicit row counts rather than ambiguous size in bytes."
+    },
+    {
+      "field": "lines.g52d",
+      "before": "Các cột bàn giao giữ mã, tuyến, hai số ngày và chênh lệch vừa tính.",
+      "after": "Kết quả bàn giao giữ các cột mã, tuyến, hai số ngày và chênh lệch vừa tính.",
+      "reason": "Natural subject for the delivered columns; all original columns retained."
+    },
+    {
+      "field": "lines.nsc3",
+      "before": "Cùng phần chọn cột và thứ tự vẫn nằm trong ngoặc, để tiện so sánh sau đó.",
+      "after": "Phần chọn cột và thứ tự sắp xếp vẫn giữ nguyên trong ngoặc, để tiện so sánh sau đó.",
+      "reason": "Natural phrasing for unchanged select-list and ordering."
+    },
+    {
+      "field": "lines.mavj",
+      "before": "Cộng lại là 480 bản ghi như tệp đầy đủ, không có bản ghi nào bị bỏ ngoài bản tóm tắt.",
+      "after": "Tổng đó bằng 480 bản ghi của tệp đầy đủ; tất cả bản ghi đạt điều kiện đều đã được tính trong phần tóm tắt.",
+      "reason": "Clarify all480 qualified rows are counted by the summary, not individually listed in it."
+    },
+    {
+      "field": "lines.ezfg",
+      "before": "Một chương trình đơn giản khác đọc từng bản ghi gốc, rồi áp quy tắc ban đầu để tạo các mã đáng được chọn.",
+      "after": "Một chương trình đơn giản khác đọc từng bản ghi gốc, áp quy tắc ban đầu và tạo danh sách mã phải được chọn.",
+      "reason": "Avoid moral-deserving connotation in the expected IDs."
+    },
+    {
+      "field": "lines.ab37",
+      "before": "Không. Các kiện đến đúng bằng thời hạn cam kết từng bị loại giờ cũng phải được giữ.",
+      "after": "Không. Những kiện có hai số ngày bằng nhau từng bị loại giờ cũng phải được giữ lại.",
+      "reason": "Keep exact equality without ambiguous calendar phrasing."
+    },
+    {
+      "field": "lines.b5i9",
+      "before": "Nhóm mới thêm đến đúng bằng thời hạn cam kết, nên cả tệp phải gọi là đúng bằng hạn hoặc giao trễ.",
+      "after": "Các kiện mới thêm có số ngày bằng đúng cam kết, nên tên danh sách phải là giao đúng ngày hẹn hoặc trễ.",
+      "reason": "Explicit exact equality and natural name for the two populations."
+    },
+    {
+      "field": "description",
+      "before": "Từ cùng một bảng giao hàng thực hành, nhận ra phần bị lược trên màn hình và bàn giao danh sách theo dõi đầy đủ.\nDành cho bạn dùng AI hỗ trợ đọc CSV và muốn giao cả truy vấn lẫn toàn bộ kết quả.\n\nDữ liệu giao hàng giả lập và chương trình theo quy tắc cố định đều do tác giả tạo; không phải dữ liệu công ty, khách hàng hay thống kê công khai thực tế. Không có phản hồi từ sản phẩm AI hay phép thử mô hình độc lập trước và sau. Ngày 2026-10-25, phép so dùng cùng một tệp nhị phân DuckDB 2.0.0 với -agent và -no-agent. 40 dòng là bản xem trước của 1.200 bản ghi đầu vào; 480 bản ghi là toàn bộ kết quả đáp ứng điều kiện chọn rõ ràng. Dòng bị lược trên màn hình không có nghĩa truy vấn hay dữ liệu lưu trữ bị mất.\n\nTác giả cố ý viết thiếu một chữ trong tên cột để minh họa lỗi. Ở lần chạy này, stderr của chế độ agent có chữ lúc khởi động cùng một dòng JSON hợp lệ; cần phân tích theo từng dòng thông điệp, không coi cả luồng trộn là một tài liệu JSON duy nhất. Không khẳng định DuckDB sinh JSON hỏng hay một chương trình nhận dữ liệu bên ngoài đã thật sự gặp sự cố. CSV, SQL, COPY và Parquet đã có từ trước; tính năng mới là chế độ đầu ra cho agent. Không đo token, chi phí hay thử suy luận mô hình, chế độ máy chủ hoặc nâng cấp cơ sở dữ liệu có sẵn.\n\nBộ thực hành gồm đầu vào tự tạo, SQL đầy đủ, tập lệnh chạy lại, CSV đủ 480 bản ghi và Parquet cùng nội dung, báo cáo HTML, lệnh chính xác và SHA của từng tệp. Dữ liệu, chương trình và báo cáo tự tạo dùng CC0-1.0; DuckDB dùng MIT. Văn bản chính thức thuộc quyền của tác giả tương ứng.\n\nTài liệu công khai (9 lệnh đã chạy thực tế): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP fixtures đầy đủ: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+      "after": "Từ cùng một bảng giao hàng thực hành, nhận ra phần bị lược trên màn hình và bàn giao danh sách theo dõi đầy đủ.\nDành cho bạn dùng AI hỗ trợ đọc CSV và muốn giao cả truy vấn lẫn toàn bộ kết quả.\n\nDữ liệu giao hàng giả lập và chương trình theo quy tắc cố định đều do tác giả tạo; không phải dữ liệu công ty, khách hàng hay thống kê công khai thực tế. Không có phản hồi từ sản phẩm AI hay phép thử mô hình độc lập trước và sau. Ngày 2026-10-25, phép so dùng cùng một tệp nhị phân DuckDB 2.0.0 với -agent và -no-agent. 40 dòng là bản xem trước của 1.200 bản ghi đầu vào; 480 bản ghi là toàn bộ kết quả đáp ứng điều kiện chọn rõ ràng. Dòng bị lược trên màn hình không có nghĩa truy vấn hay dữ liệu lưu trữ bị mất.\n\nTác giả cố ý viết thiếu một chữ trong tên cột để minh họa lỗi. Ở lần chạy này, stderr của chế độ agent có chữ lúc khởi động cùng một dòng JSON hợp lệ; cần phân tích theo từng dòng thông điệp, không coi cả luồng trộn là một tài liệu JSON duy nhất. Không khẳng định DuckDB sinh JSON hỏng hay một chương trình nhận dữ liệu bên ngoài đã thật sự gặp sự cố. CSV, SQL, COPY và Parquet đã có từ trước; tính năng mới là chế độ đầu ra cho agent. Không đo lượng token hay chi phí, cũng không thử khả năng suy luận của mô hình, chế độ máy chủ hoặc nâng cấp cơ sở dữ liệu có sẵn.\n\nBộ thực hành gồm đầu vào tự tạo, SQL đầy đủ, tập lệnh chạy lại, CSV đủ 480 bản ghi và Parquet cùng nội dung, báo cáo HTML, lệnh chính xác và SHA của từng tệp. Dữ liệu, chương trình và báo cáo tự tạo dùng CC0-1.0; DuckDB dùng MIT. Văn bản chính thức thuộc quyền của tác giả tương ứng.\n\nTài liệu công khai (9 lệnh đã chạy thực tế): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP fixtures đầy đủ: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+      "reason": "Clarify token usage rather than tokens themselves, preserving all untested limits."
+    }
+  ],
+  "numbers_negations_conditions_and_public_URLs_preserved": true,
+  "no_fit_timing_or_audio_claim": true
+}

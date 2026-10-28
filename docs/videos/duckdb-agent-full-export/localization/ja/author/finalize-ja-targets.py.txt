@@ -1,0 +1,34 @@
+from pathlib import Path
+from datetime import datetime, timezone
+import json
+import hashlib
+
+BASE = Path('/workspace/work/ai-tech-next/fifth-ja-translation')
+draft_file = BASE / 'ja-targets.v1.json'
+draft = json.loads(draft_file.read_text())
+fixes = [
+    ('x88h', '同じバージョンの2つのモードで繰り返す助詞を整理し、新しい練習フォルダーと同一バージョンの両モードという条件を残します。', '新しい練習用フォルダーで、同じバージョンの両モードをこの表に使います。'),
+    ('pskv', 'AIモデル非内蔵、モデル正答率と料金を測らないという二つの否定を残して簡潔にします。', 'AIモデルは内蔵せず、今回の比較でもモデルの正答率や利用料金は測りません。'),
+    ('4cr9', '検索ではなく、他の行と同じクエリという語にそろえます。結果件数と表示件数の区別は維持します。', 'この1行で、クエリ結果の件数と表示件数を区別できます。'),
+    ('ntfj', '列名の1文字欠落という条件と、応答への問いを残して短くします。', '同じ条件を書けました。実際の日数の列名が1文字欠けると、どう返されますか。'),
+    ('xj3j', 'ここでは誤字を含むエラー用クエリを示します。「修正だけ」は修正済みと誤読し得るため「問題だけ」にし、作者が故意に入れた誤字でAIのミスではない点を維持します。', '列名の問題だけのクエリです。誤字は私がわざと入れ、AIのミスではありません。'),
+    ('i2fq', '正しい内容という意味と混同しないよう、構文的に有効なJSONの1行だと明示します。起動メッセージを先に除く順序も維持します。', 'まず今回の起動メッセージを除き、その後の有効なJSONの1行だけを解析します。'),
+    ('5qhj', '列順の照合と、IDとルートが逆になっていないという否定を残して簡潔にします。', '読み戻して選択時の列順と照らし、IDとルートが逆でないか確かめます。'),
+    ('ag8z', 'この実行で省略がファイルに持ち込まれなかったという観察に限定し、プレビューと出力コマンドを両方残します。', 'プレビューの省略は、この出力コマンドで保存ファイルに入りませんでした。'),
+    ('385u', '応答の変更と、遅延した荷物を増やして見つけたわけではないという否定を残して短くします。', '新モードが変えるのは応答で、遅延した荷物を多く見つけるわけではありません。'),
+    ('wznc', '「途中の1件ずつ」という不自然な係り方を直し、頭尾の位置確認と全件の中間確認を区別します。', '先頭と末尾で位置を確かめられますが、全件照合では途中も1件ずつ調べます。'),
+    ('jd24', '母体の重要な修正です。「全荷物」は入力1200件と誤読できるため、条件に該当する全480件を指す「対象全件」にします。摘要がその代わりにならない点は維持します。', 'この小さな集計は報告書に別記し、対象全件の一覧の代わりにはしません。'),
+    ('g738', '受取者が新しい条件を求める状況と、約束と同じ日数を含める点を残して短くします。', '約束と同じ日数の荷物も求められたら、検証済みの遅延一覧をそのまま渡せますか。'),
+    ('g7bc', '完全データ、対応クエリ、可読要約の三つを残して簡潔にします。', 'これで受け渡すセットに、全件データ、対応クエリ、読める要約がそろいました。'),
+    ('ddtv', '「完全な受け渡しファイル」という硬い表現を、条件と照合できる対象全件のファイルにします。入力全1200件を新たな交付対象だとはしません。', '冒頭のプレビューから、条件と照合できる対象全件のファイルにつながりました。'),
+]
+critique = []
+final = json.loads(json.dumps(draft))
+for line_id, reason, text in fixes:
+    critique.append({'id': line_id, 'problem_and_fix': reason, 'draft': draft['lines'][line_id], 'final': text})
+    final['lines'][line_id] = text
+assert len(final['lines']) == 111
+write = lambda name, value: (BASE / name).write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+write('ja-targets.final.json', final)
+write('pass2-critique.json', {'kind': 'author_self_critique_not_independent_review', 'at': datetime.now(timezone.utc).isoformat(), 'locale': 'ja', 'read_all_111_source_target_pairs': True, 'metadata_and_six_chapters_read': True, 'findings': critique, 'draft_preserved': 'ja-targets.v1.json', 'actual_audio_timing_or_fit_claimed': False, 'no_retake_or_shorten_round_consumed': True})
+print(json.dumps({'lines':len(final['lines']),'applied_fixes':len(critique),'over_approximate_40_chars': [{'id':k,'characters':len(v)}for k,v in final['lines'].items()if len(v)>40], 'final_targets_sha256':hashlib.sha256((BASE/'ja-targets.final.json').read_bytes()).hexdigest()},ensure_ascii=False))

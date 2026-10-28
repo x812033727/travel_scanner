@@ -1,0 +1,215 @@
+#!/usr/bin/env python3
+"""Same-author third semantic pass and immutable scratch evidence; no native CLI.
+
+The semantic notes below are editorial judgments after reading every pair, not
+ASR, timing, a model benchmark, server approval or root adoption. Structural and
+pin checks independently bind those notes to the actual complete final draft.
+"""
+from pathlib import Path
+from datetime import datetime, UTC
+import hashlib
+import json
+import re
+
+BASE=Path('/workspace/work/ai-tech-next/fifth-es-translation')
+REPO=Path('/workspace/work/travel-scanner-duckdb')
+EP=REPO/'docs/videos/duckdb-agent-full-export'
+def digest(p): return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def read(name): return json.loads((BASE/name).read_bytes())
+def write(name,value):
+    p=BASE/name
+    assert not p.exists(), 'Preserve earlier review history: '+name
+    p.write_text(json.dumps(value,ensure_ascii=False,indent=2)+'\n')
+
+assert digest(BASE/'es.draft.reviewed.todo.json')=='b4701d2b6693667399f06177286376906a2968c015e723aa4c07b5207551c3ff'
+assert digest(BASE/'independent-final-semantic-review.json')=='d72ec24111daabc56ba2afd8fb2c7bf25742f7c79de5c3079f201aaeed285c84'
+before=read('source-before.json')['protected_files']
+assert len(before)==14
+for p,pin in before.items():
+    assert digest(p)==pin['sha256'],p
+    assert Path(p).stat().st_size==pin['bytes'],p
+assert not (EP/'i18n/es.json').exists()
+assert not Path('/workspace/work/videos/duckdb-agent-full-export/timeline.json').exists()
+final=read('es.draft.reviewed.todo.json')
+mapping=read('source-target-complete-111.final.json')
+assert len(final['lines'])==len(mapping['source_target_pairs'])==111
+assert len(final['chapters'])==6
+assert all(l['todo'] is True for l in final['lines'])
+assert all('max_chars' not in l for l in final['lines'])
+targets={l['id']:l['text'] for l in final['lines']}
+
+notes={
+ 'dg2i':'The authors research date is25October2026 and the same computer, not a release-date claim.',
+ 'c7uh':'The task is a reopenable follow-up list, not a screenshot or all-parcels export.',
+ 'x6vr':'40 is the total displayed across beginning/end, not40at each end; omission remains explicit.',
+ 'iaiy':'The viewer asks whether records remain; no claim that original data were deleted.',
+ 'zni4':'The promised future typo concerns one letter in the actual-days field name.',
+ '3zp6':'The question is completeness of a separately saved list, not model correctness.',
+ 'a73b':'Compare the deliverable with the original table, whose full population remains1200.',
+ '8ex8':'The parcel fixture is author-created and fictional, with record-level checkability.',
+ 'ujmc':'9October introduction is distinct from21October formal2.0 release;2026context is retained.',
+ 'm4b3':'New compact agent output and omission markers, not new query/export capability.',
+ '6i9g':'Markers help a consuming program interpret this response; no real external incident is alleged.',
+ 'msj7':'CSV reading,SQL and full-file export explicitly predate this mode.',
+ 'x88h':'A fresh practice directory compares two modes of the same version, not old/new binaries.',
+ 'pskv':'No embedded AI model and no tested model accuracy or usage cost.',
+ 'yqnx':'Parcel ID,route and promised number of days are the original input fields.',
+ 'xbqa':'Status and actual delivery days are the fields needed for this follow-up requirement.',
+ 'yy8n':'An explicit ordinary-mode argument selects existing display behavior.',
+ '9gdj':'The command uses a temporary DB and skips the personal init file.',
+ 'xd25':'Only the mode argument changes; input and SQL remain the same.',
+ 'c6hy':'Explicit selection avoids confounding automatic environment detection.',
+ 'jm9m':'The hook asks where the omission marker appears in the two responses.',
+ 't4hj':'Create the same table,then sort by parcel identifier.',
+ 'zxhz':'No small-record restriction is added; the purpose is to inspect display coverage.',
+ 'h4gg':'Normal mode already reports total rows and displayed rows.',
+ '4cr9':'The corrected wording compares total result row count with visible row count,not screen area.',
+ 'uj2p':'Agent output explicitly omits1160of1200input rows while40total remain displayed.',
+ 'u5mp':'Omission is display-only,not a query or storage data loss.',
+ 'jumq':'The preview is an entry point for reading the response,not the finished deliverable.',
+ '7npx':'Select the relevant parcels from the full original table.',
+ 'v9hh':'Both conditions survive: already delivered AND actual duration greater than promised.',
+ 'fpcm':'In-transit rows remain in the original table and are excluded only from this list.',
+ 'qxv3':'Read ID,route and status as text; do not invent extra input fields.',
+ 'abty':'Read the two day values as integers for numeric comparison.',
+ 'm3tz':'The description command returns column names and data types.',
+ 'drd5':'Group counts by status to inspect the actual fixture population.',
+ '6i82':'Exactly960delivered and240in-transit records; fictional fixture only.',
+ 'ufbq':'NULL represents missing completed actual duration,not zero or the promised deadline.',
+ 'y43c':'Apply the existing selection rule to this specific already-delivered example.',
+ 'jbme':'Delivered example promises3days and actually takes4days.',
+ '8wey':'Exceeding the promise is why this delivered example qualifies.',
+ 'wg3d':'4minus3 equals1day late; not four days late.',
+ 'tqeh':'Write the difference to a new column for the recipient to inspect.',
+ '5rfa':'Apply the same delivered-status condition to the in-transit example.',
+ 'e77f':'The status test excludes it first and the empty value cannot be filled as zero.',
+ 'ewsi':'Encode the same eligibility rule in the filter expression.',
+ 'bhcv':'Compute the new subtraction in SELECT without changing original day values.',
+ 'g52d':'Deliver ID,route,promised/actual days and calculated difference.',
+ 'evdb':'Ascending parcel ID preserves the same order for reopening/comparison.',
+ '6r94':'3promised and3actual days yield zero late days.',
+ 's3h7':'Strict greater-than excludes that exactly-on-time row from the late list.',
+ 'ntfj':'The hook asks what a missing field-name letter does with the same prepared conditions.',
+ 'ak3j':'Missing-column response occurs before a query result is produced.',
+ 's9ca':'Ordinary mode already identifies the name error; not agent-only discovery.',
+ 'jsui':'The slide-backed deliberate typo is actual_day instead of actual_days,missing final s.',
+ 'xj3j':'The author intentionally constructed the typo; no AI mistake or real outside incident.',
+ 'i2fq':'Skip startup text and parse the following single valid JSON message line.',
+ 'yxh7':'The mixed text stream is not one JSON object; valid JSON itself is not called malformed.',
+ 'jngn':'Extract the misspelled name from the object and candidate columns from its message.',
+ 'cjm4':'Compare candidates with original columns to identify the correct trailing-letter spelling.',
+ '7g26':'Replace the query field with the actual confirmed original-table column name.',
+ '2d84':'Restore the same conditions,chosen columns and order for the same deliverable.',
+ 'rw48':'The question is whether display truncation affects the saved file.',
+ 'epd8':'The complete SQL belongs inside COPY parentheses.',
+ 'tdtg':'Eligibility and sorting remain inside; output destination is specified afterward.',
+ 'q6db':'No preview-row limit is inserted into export SQL; the qualification predicate still applies.',
+ 'n6c9':'Export the complete qualified result,not a few visible copied lines or all1200.',
+ 'kabz':'Destination locates the CSV; the header option preserves column names.',
+ '5qhj':'Reopen and compare selected-column order,including ID versus route positions.',
+ '6e4u':'For Parquet change only output format and destination filename.',
+ 'nsc3':'Keep the same selected columns and sorting for later content comparison.',
+ '7b9v':'The displayed command executes full SQL and writes both files to specified paths.',
+ '44a2':'Read the exported CSV itself to check truncation.',
+ 'j328':'Count data rows,excluding the header from parcel counts.',
+ 'ubxv':'480is the complete qualified follow-up list,not the full1200input population.',
+ 'ag8z':'This export command does not carry the display truncation into the file.',
+ '6da2':'Ordinary mode exports identical list content with the same query/version.',
+ '385u':'The mode changes the reply,not the count of eligible late parcels.',
+ 'zdyx':'Correct count alone is insufficient; ask whether the other format preserves content.',
+ 'qgqv':'Read Parquet and sort by the same ID for comparison.',
+ 'ineu':'Convert back to CSV to compare all result rows consistently.',
+ 'dgc2':'Read the delivered file without rewriting the original parcel table.',
+ 'xqkd':'Recall the specific4minus3parcel,not a newly invented case.',
+ 'xad9':'Full output retains that parcels route,original days and1day-late difference.',
+ '6u7e':'Qualified records near the original tail are also present.',
+ 'wznc':'Head/tail sampling locates records but does not replace full middle-row comparison.',
+ 'h579':'Route summary uses the same original eligibility rule.',
+ 'jd24':'A separately reported summary does not replace the full parcel list.',
+ 'rxjg':'R2andR3each contain240qualified rows under that rule.',
+ 'mavj':'The route groups sum to480,covering the same full qualified file.',
+ '3dwp':'The corrected wording compares the two files contents,not two software versions.',
+ 'dm84':'Compare IDs,field values and order in addition to row counts.',
+ 'ezfg':'A simple original-data program independently derives qualifying IDs from the rule.',
+ 'ubtk':'Those IDs match export results,closing the check against original input.',
+ 'g738':'The changed requirement adds exact-on-time rows; the existing late list cannot be reused unchanged.',
+ 'ab37':'Previously excluded exact-on-time rows must now be included; not all early/punctual deliveries.',
+ 'dyhh':'Keep the old file and save the changed query separately.',
+ '7th9':'Only the strict comparison becomes inclusive equality; unchanged SQL keeps delivered status.',
+ '98xj':'Use a different output filename to preserve the earlier list.',
+ 'g89b':'Execute the modified file and save the new result separately.',
+ 'u6gp':'Ask how many newly included records the changed operator produces and what they are.',
+ 'mkfw':'720in the variant includes240rows with zero late days.',
+ 'b5i9':'Name the whole file exactly-on-time OR late,not all late and not any early delivery.',
+ 'fqr6':'Recall the3versus3example that the strict rule excluded.',
+ 'me2p':'It now qualifies precisely because equality was added.',
+ 'ptfc':'The two lists answer different predicates and cannot substitute for each other.',
+ 'ha7h':'Keep both filenames and each corresponding SQL so the recipient selects the right requirement.',
+ 'g7bc':'The handoff includes full data files,matching queries and a readable summary.',
+ 's9qr':'The report locates complete outputs and supports changing the rule to reproduce a list.',
+ 'ddtv':'The opening preview is resolved by a complete deliverable traceable to its selection rule.',
+ 'wx5u':'The viewer is asked which data lists they most often hand off.',
+ 'v5pw':'The CTA retains learning AI tools from concrete outputs,not a tested model-performance promise.'
+}
+assert set(notes)==set(targets) and len(notes)==111
+all_text='\n'.join(targets.values())+'\n'+final['description']['text']+'\n'+final['title']['text']
+assert not re.search(r'\b(?:vosotros|vosotras|vuestro|vuestra|tenés|podés|hacé)\b',all_text,re.I)
+assert '25 de octubre de 2026' in targets['dg2i']
+assert '40' in targets['x6vr'] and 'total' in targets['x6vr']
+assert '1200' in targets['a73b'] and '1160' in targets['uj2p']
+assert '9 de octubre' in targets['ujmc'] and '21 de octubre' in targets['ujmc'] and '2.0' in targets['ujmc']
+assert all(s in targets['6i82'] for s in ['960','240'])
+assert 'NULL' in targets['ufbq'] and 'cero' in targets['e77f']
+assert 'actual_day en lugar de actual_days' in targets['jsui']
+assert all(s in targets['rxjg'] for s in ['R2','R3','240','cada una'])
+assert all(s in targets['mkfw'] for s in ['720','240','cero'])
+assert 'justo a tiempo o con retraso' in targets['b5i9']
+assert 'de seguimiento' in final['title']['text']
+desc=final['description']['text']
+for term in ['-agent','-no-agent','DuckDB 2.0.0','40','1200','480','CC0-1.0','MIT','stderr','una línea de JSON válida','tokens','costos','modo servidor']:
+    assert term in desc,term
+source=json.loads((EP/'video.json').read_bytes())
+URLs=re.findall(r'https://\S+',source['youtube']['description'])
+assert len(URLs)==2
+for url in URLs: assert url in desc
+native=read('native-pure-validation.final.json')
+assert native['native_merge_problems']==native['native_merge_notes']==native['metadata_field_problems']==[]
+assert native['all_14_protected_files_exact_before_after'] is True
+ledger={
+ 'pass':3,'kind':'Same-author complete final semantic read; native pure validation is separate',
+ 'at':datetime.now(UTC).isoformat(),'locale':'es','register':'Neutral Latin-American Spanish, viewer tú; no vosotros/voseo',
+ 'source_sha256':before[str(EP/'video.json')]['sha256'],
+ 'draft_sha256':digest(BASE/'es.draft.reviewed.todo.json'),
+ 'all_111_final_pairs_reread':True,
+ 'lines':[dict(pair,author_semantic_verdict='faithful_after_recorded_corrections',author_semantic_note=notes[pair['id']]) for pair in mapping['source_target_pairs']],
+ 'chapter_review':mapping['chapter_pairs'],
+ 'metadata_review':{
+  'title':'Adds complete follow-up scope,so it does not promise export of the entire1200row population.',
+  'description':'Preserves fictional author data/deterministic code,dated same2.0.0mode comparison,40preview versus480qualified,valid JSON-line stream,existing CSV/SQL/COPY/Parquet,noAI/token/cost/server/upgrade benchmarks,CC0/MIT and exact4106publicURLs.',
+  'tags':'All eight source topics retain official DuckDB/CSV/SQL/Parquet spellings with Spanish topical wording.',
+  'thumbnail':'Original three fields,one headline newline and ** emphasis kept; no rendered phone-fit claim.',
+  'chapter_precision':'Six original scenes retained; Parquet chapter restores original-table comparison and final chapter uses exact-on-time wording.',
+  'preview':'Native composeDescription has null timeline and untimed chapter titles only; no estimated or actual timestamps.'
+ },
+ 'advisories':{'count_over80':native['advisory_count'],'interpretation':'Readability advisories only. No current max_chars, timed CC, WAV,tempo,fit,meter or ASR exists. Facts were not cut to satisfy an imaginary slot.'},
+ 'native_pure_proof_file':'native-pure-validation.final.json',
+ 'native_pure_proof_sha256':digest(BASE/'native-pure-validation.final.json'),
+ 'independent_final_review_file':'independent-final-semantic-review.json',
+ 'independent_final_review_sha256':digest(BASE/'independent-final-semantic-review.json'),
+ 'root_review_approval_or_actual_i18n_merge_completed':False,
+ 'repo_audio_backend_or_other_project_changes':False
+}
+write('author-pass3-semantic-ledger.json',ledger)
+write('author-three-pass-review.json',{
+ 'kind':'ES author three semantic passes completed; independent critique separately attributed',
+ 'at':datetime.now(UTC).isoformat(),
+ 'pass1':{'artifact':'author-pass1-draft.json','sha256':digest(BASE/'author-pass1-draft.json'),'all111_drafted':True},
+ 'pass2':{'artifact':'author-pass2-critique-and-corrections.json','sha256':digest(BASE/'author-pass2-critique-and-corrections.json'),'actual_corrections':15,'lines':12,'chapters':2,'title':1},
+ 'pass3':{'artifact':'author-pass3-semantic-ledger.json','sha256':digest(BASE/'author-pass3-semantic-ledger.json'),'all111_final_pairs_read':True},
+ 'independent_v1_critique_sha256':digest(BASE/'independent-v1-critique.json'),
+ 'independent_final_semantic_review_sha256':digest(BASE/'independent-final-semantic-review.json'),
+ 'native_pure_merge_problems':0,'native_pure_merge_notes':0,
+ 'root_review_still_required':True,'actual_i18n_merge_CC_audio_fit_ASR_backend_claimed':False
+})
+for p,pin in before.items(): assert digest(p)==pin['sha256'],p
+print(json.dumps({'ok':True,'own_semantic_passes':3,'full_final_pairs':111,'corrections':15,'native_problems':0,'native_notes':0,'protected14_unchanged':True,'ledger_sha256':digest(BASE/'author-pass3-semantic-ledger.json')},ensure_ascii=False))

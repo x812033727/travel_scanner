@@ -1,0 +1,121 @@
+{
+  "kind": "actual_ES_documentation_check_receipts",
+  "at": "2026-10-26T08:35:51.247860+00:00",
+  "native_pure_check": {
+    "actual_exit_code": 0,
+    "actual_exec_session_id": 95192,
+    "command": [
+      "node",
+      "/workspace/work/ai-tech-next/check-fifth-es-text-docs.mjs"
+    ],
+    "log": "documentation-native-pure-check.log.txt",
+    "bytes": 509,
+    "sha256": "1ff23509d639cb0b86d328b29a476bff90c5c5bc68b48ebe5e7e206856b4c883"
+  },
+  "initial_native_pure_checker_failure_preserved": {
+    "actual_exit_code": 1,
+    "actual_exec_session_id": 65733,
+    "diagnostic": "documentation-initial-lint-warning-expectation-diagnostic.json",
+    "original_script": "documentation-native-first-zero-warning-expectation.mjs.txt",
+    "actual_output": "documentation-native-first-zero-warning-expectation.log.txt",
+    "scope": "Checker incorrectly expected no lint advisory; native reported one ES title phone-width advisory. No target/native threshold change."
+  },
+  "tasks_check": {
+    "actual_exit_code": 0,
+    "actual_exec_session_id": 10580,
+    "command": [
+      "node",
+      "tools/tasks.mjs",
+      "check"
+    ],
+    "validated_tasks": 2183,
+    "unrelated_existing_active_scope_warning_lines": 151,
+    "log": "documentation-tasks-check.log.txt",
+    "bytes": 27287,
+    "sha256": "544008d78a2a4ec42ed27cbff9da76857589d7b760d1a7c2192c15f817ee2319"
+  },
+  "actual_native_CLI_lint": {
+    "command": [
+      "node",
+      "tools/video/cli.mjs",
+      "lint",
+      "--slug",
+      "duckdb-agent-full-export"
+    ],
+    "actual_exec_session_id": 99123,
+    "actual_exit_code": 0,
+    "errors": 0,
+    "warnings": 1,
+    "exact_warnings": [
+      {
+        "path": "youtube/es",
+        "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+      }
+    ],
+    "advisory_not_audio_fit_failure": true,
+    "native_threshold_or_title_edited": false,
+    "log": "documentation-native-cli-lint.log.txt",
+    "bytes": 632,
+    "sha256": "ae8c34e069471c21ffca512e3c655f1616b248b2833ca902ca28b24af98f9b61"
+  },
+  "documentation_artifact_copy2_distinct_inodes": [
+    {
+      "source": "/workspace/work/ai-tech-next/prepare-fifth-es-text-docs.py",
+      "destination": "docs/videos/duckdb-agent-full-export/localization/es/documentation-prepare-script.py.txt",
+      "bytes": 21424,
+      "sha256": "6e7e0ed8d6c0582948ba3481968662db6a24e264b435c46e3eea748586dbb00a",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/check-fifth-es-text-docs.mjs",
+      "destination": "docs/videos/duckdb-agent-full-export/localization/es/documentation-native-check.mjs.txt",
+      "bytes": 7148,
+      "sha256": "acf8edecd92e0b42b9290c6f72f6f984dc038e4fb0a579b589cd0daf6e7314f1",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-es-docs/native-pure-check.log",
+      "destination": "docs/videos/duckdb-agent-full-export/localization/es/documentation-native-pure-check.log.txt",
+      "bytes": 509,
+      "sha256": "1ff23509d639cb0b86d328b29a476bff90c5c5bc68b48ebe5e7e206856b4c883",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-es-docs/native-cli-lint.log",
+      "destination": "docs/videos/duckdb-agent-full-export/localization/es/documentation-native-cli-lint.log.txt",
+      "bytes": 632,
+      "sha256": "ae8c34e069471c21ffca512e3c655f1616b248b2833ca902ca28b24af98f9b61",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-es-docs/tasks-check.log",
+      "destination": "docs/videos/duckdb-agent-full-export/localization/es/documentation-tasks-check.log.txt",
+      "bytes": 27287,
+      "sha256": "544008d78a2a4ec42ed27cbff9da76857589d7b760d1a7c2192c15f817ee2319",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-es-docs/native-pure-first-zero-warning-expectation.mjs",
+      "destination": "docs/videos/duckdb-agent-full-export/localization/es/documentation-native-first-zero-warning-expectation.mjs.txt",
+      "bytes": 6936,
+      "sha256": "e3fd83593d7693be0f3110aa97a8891854ad273ae819a89884b31492e1ef61a0",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-es-docs/native-pure-first-zero-warning-expectation.log",
+      "destination": "docs/videos/duckdb-agent-full-export/localization/es/documentation-native-first-zero-warning-expectation.log.txt",
+      "bytes": 992,
+      "sha256": "bc4bd757d73b20da4cf9ee309795e42d902965334dde2703cf450118f4eca4b8",
+      "distinct_inode": true
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-es-docs/initial-native-lint-warning-expectation-diagnostic.json",
+      "destination": "docs/videos/duckdb-agent-full-export/localization/es/documentation-initial-lint-warning-expectation-diagnostic.json",
+      "bytes": 1661,
+      "sha256": "5711cadf48cc5eef2223bc7c5e0467637fa247e5da50523dc0e744225ebc4e40",
+      "distinct_inode": true
+    }
+  ],
+  "source_or_targets_edited": false,
+  "paid_media_auth_API_state_stage_commit_push_actions": 0
+}

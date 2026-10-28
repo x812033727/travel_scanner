@@ -1,0 +1,27 @@
+{
+  "kind": "native_pure_PT_metadata_and_sources_preview_UNTIMED",
+  "title": "Só 40 linhas? Exporte a lista completa de acompanhamento com DuckDB 2.0｜Legendado",
+  "description": "Use a mesma tabela de prática de entregas para identificar linhas omitidas na tela e entregar uma lista completa de acompanhamento.\nPara quem usa IA como apoio ao ler CSV e quer entregar tanto a consulta quanto o resultado completo.\n\nOs dados de entregas são fictícios e originais, e os programas do autor são determinísticos. Não representam uma empresa, clientes nem estatísticas públicas. Não há respostas de um produto de IA nem testes independentes de um modelo antes e depois. Em 25 de outubro de 2026, foram comparados -agent e -no-agent com o mesmo binário do DuckDB 2.0.0. As 40 linhas são uma prévia dos 1200 registros de entrada; a entrega de 480 registros é o resultado completo de condições explícitas de seleção. Linhas omitidas na tela não significam perda de dados na consulta ou no armazenamento.\n\nO autor escreveu um nome de coluna incompleto de propósito para demonstrar o erro. Nesta execução, stderr do modo agente contém texto de inicialização e uma linha de JSON válida: é preciso analisar a linha da mensagem, sem tratar o fluxo misto como um único documento JSON. Não se afirma que o DuckDB produziu JSON inválido nem que houve uma falha real em um programa consumidor de terceiros. CSV, SQL, COPY e Parquet já existiam; a novidade é o modo de saída para agentes. Não foram testados consumo de tokens, custos, raciocínio de modelos, modo servidor nem atualização de uma base existente.\n\nO material inclui os dados originais de entrada, o SQL completo, scripts para reproduzir o exercício, o CSV completo com os 480 registros que passam pelo filtro, o mesmo conteúdo em Parquet, um relatório HTML, comandos exatos e o SHA de cada arquivo. Os dados, o código e o relatório originais usam CC0-1.0; o DuckDB usa MIT. Os textos oficiais pertencem aos respectivos autores.\n\nMaterial público (9 comandos executados): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP completo dos dados e arquivos do exercício: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip\n\n📚 Fontes\nDuckDB2.0正式公告: https://duckdb.org/2026/10/21/announcing-duckdb-200\nDuckDB CLI agent模式: https://duckdb.org/2026/10/09/agent-mode.html\nDuckDB2.0 CLI agent模式文件: https://duckdb.org/docs/2.0/clients/cli/agent_mode.html\nDuckDB2.0遷移條件: https://duckdb.org/docs/2.0/operations_manual/migration.html\nDuckDB2.0正式release與套件: https://github.com/duckdb/duckdb/releases/tag/v2.0.0\n\n#DuckDB #análisededadoscomIA #AI新聞拆解",
+  "tags": [
+    "DuckDB",
+    "análise de dados com IA",
+    "modo agente",
+    "CSV",
+    "SQL",
+    "Parquet",
+    "consultas de dados",
+    "lista completa"
+  ],
+  "untimed_chapter_titles": {
+    "parcel-table-start": "Falta um trecho na prévia de entregas",
+    "input-is-still-there": "A tabela está inteira; a resposta omite linhas",
+    "define-the-followup": "Três encomendas, só uma entra na lista",
+    "human-error": "Uma letra a menos interrompe a consulta",
+    "read-parquet-back": "Reabrir o arquivo e comparar cada registro com a tabela original",
+    "new-requirement-consequence": "Incluir entregas no prazo exato muda o que foi pedido"
+  },
+  "problems": [],
+  "actual_timeline_used": false,
+  "estimated_timeline_used": false,
+  "CC_or_M4A_or_dub_fit_claimed": false
+}

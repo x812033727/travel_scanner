@@ -1,0 +1,651 @@
+{
+  "kind": "fifth_episode_production_progress",
+  "schema_version": 1,
+  "updated_at_utc": "2026-10-26T09:19:55.989537+00:00",
+  "slug": "duckdb-agent-full-export",
+  "stage": "ALL8_local_text_adopted_master_TTS0_actual_CC_audio_and_backend_pending",
+  "overall_production_completed": false,
+  "source_import_complete": true,
+  "source_video_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "speech_hash": "38cf9292f6945199",
+  "voice_unchanged": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "native_script_gate": {
+    "file": "script.md",
+    "sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+    "distinct_from_video_json_SHA": true
+  },
+  "fact_checks": {
+    "current": "verify-4.md",
+    "current_verdict": "PASS",
+    "current_confirmed_claims": 21,
+    "scope": "Metadata-only public-link delta and current fixed dependency continuity; no new live official, narrative, audio or whole-production PASS.",
+    "history": [
+      {
+        "file": "verify-1.md",
+        "verdict": "REVISE"
+      },
+      {
+        "file": "verify-2.md",
+        "verdict": "PASS",
+        "source_sha256": "7d150fc4e8a818e80560c80e4a392e93699666571c3647d4471b4222bcfb0726"
+      },
+      {
+        "file": "verify-3.md",
+        "verdict": "PASS",
+        "source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf"
+      }
+    ],
+    "last_substantive_verified_report": {
+      "file": "verify-3.md",
+      "source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+      "verdict": "PASS",
+      "confirmed_claims": 21,
+      "scope": "visual delta plus current fixed dependency continuity; not audio or fresh narrative"
+    },
+    "current_source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+    "current_report_json": "reviews/fifth-verify-4.json",
+    "current_report_json_sha256": "292e77789e9c79a4fd851daf96d574bdb953045c5ff01319c21edaca91bd7afa",
+    "current_report_md_sha256": "c1b7af46f33dbc6fdd3a36ca562c5531bbdfb53d4dcd2f5a25dbffabd6ac4080"
+  },
+  "native_narrative": {
+    "historical_source_sha256": "1a267cb77e4d3eeddffc850dca6616c68a3c66afcaed38576b6e776a3ca62bf2",
+    "readers": [
+      {
+        "reader": 5,
+        "yes": 12,
+        "total": 13,
+        "passed": false,
+        "failed": [
+          "no_recap"
+        ]
+      },
+      {
+        "reader": 6,
+        "yes": 12,
+        "total": 13,
+        "passed": false,
+        "failed": [
+          "no_detour"
+        ]
+      }
+    ],
+    "root_accepted_tradeoffs": [
+      "retain necessary input3/4 and4−3 teaching calculation",
+      "retain one-sentence Oct9/Oct21 news/version context"
+    ],
+    "decision_receipt": "reviews/script-local-adoption.json",
+    "raw_and_native_unchanged": true,
+    "threshold_changed": false,
+    "new_fresh_score_created": false,
+    "current_native_panel_PASS_claimed": false
+  },
+  "static_visual": {
+    "scenes": 64,
+    "states": 64,
+    "all_static_states_and_thumbnail_recorded_layout_problems": 0,
+    "unchanged_state_PNG_and_key_count": 63,
+    "root_reported_actual_views": [
+      "all64 contact-sheet states",
+      "repaired input-columns card",
+      "final ca1e thumbnail"
+    ],
+    "independent_verify3_fresh_in_memory_captures": [
+      "input-columns",
+      "thumbnail"
+    ],
+    "independent_captures_layout_problems": 0,
+    "same_bitmap_bytes_as_frozen_samples": true,
+    "full_render_or_video_QA_completed": false,
+    "current_metadata_delta_changes_visuals": false,
+    "current_native_visual_hash": "9f1673219982b59d"
+  },
+  "source_gates": {
+    "kind": "current_fifth_source_gates_after_root_metadata_verify4",
+    "observed_at_utc": "2026-10-26T03:46:05.649960+00:00",
+    "source_video_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+    "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+    "speech_hash": "38cf9292f6945199",
+    "native_script_file": "script.md",
+    "native_script_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+    "normal_script_review": {
+      "id": "dd47b9a0-6456-4651-9456-32b320909338",
+      "status": "pending",
+      "created_at": "2026-10-26T01:46:46.925705Z",
+      "readback_at": "2026-10-26T01:51:27.193Z",
+      "http_status": 200,
+      "content_sha256_binds": "script.md",
+      "content_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+      "readback": "receipts/fifth-script-pending-readback.script-gate.json",
+      "raw_project_stage": "narration synthesized",
+      "raw_stage_label_is_not_synthesis_evidence": true,
+      "remote_status_not_refetched_by_documentation_editor": true
+    },
+    "native_local_script_adoption": {
+      "status": "approved",
+      "approved_at": "2026-10-26T01:48:28.930Z",
+      "file": "script.md",
+      "sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+      "safe_entry_receipt": "receipts/script-native-local-adoption.json",
+      "remote_or_user_UI_approval_claimed": false,
+      "original_ca1e_adoption_note_preserved_in_receipt": true
+    },
+    "native_TTS_dryrun": {
+      "completed": true,
+      "receipt": "receipts/fifth-tts-initial-dry-run.log",
+      "requests": 111,
+      "pending_requests": 111,
+      "estimated_billable_characters": 2508,
+      "provider": "gemini",
+      "voice": "Sulafat",
+      "server_config_ready_reported": true,
+      "server_reported_monthly_characters_left": 6244644,
+      "configuration_and_quota_are_not_provider_availability_or_billing_proof": true,
+      "paid_syntheses": 0
+    },
+    "readback_expectation_diagnostic": {
+      "preserved": "receipts/fifth-script-pending-readback.expectation-revise.json",
+      "original_tool_stderr_retained_in_session_not_invented_as_file": true,
+      "no_server_mutation_to_force_a_match": true
+    },
+    "paid_TTS_started": false,
+    "native_audio_completed": false,
+    "prior_source_video_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+    "native_script_sha256_still_matches_regenerated_file": true,
+    "current_source_rebinding_pending_root": false,
+    "root_independent_metadata_verification": {
+      "file": "reviews/fifth-verify-4.json",
+      "sha256": "292e77789e9c79a4fd851daf96d574bdb953045c5ff01319c21edaca91bd7afa",
+      "report": "verify-4.md",
+      "report_sha256": "c1b7af46f33dbc6fdd3a36ca562c5531bbdfb53d4dcd2f5a25dbffabd6ac4080",
+      "verdict": "PASS",
+      "checked_at_utc": "2026-10-26T03:41:58.900Z",
+      "only_source_leaf_changed": "/youtube/description",
+      "complete_111_line_objects_unchanged": true,
+      "all_64_scene_objects_unchanged": true,
+      "confirmed_claims_by_unchanged_dependency_continuity": 21,
+      "fresh_live_official_fact_check_claimed": false,
+      "new_narrative_or_audio_PASS_claimed": false
+    },
+    "original_historical_source_gates": {
+      "file": "receipts/current-source-gates.json",
+      "sha256": "7d2a5c77f2ad86e1228251c777945137d53a680b87ac51fb8d4919c23e3ab47f",
+      "unchanged": true
+    },
+    "new_remote_or_local_approval_created": false,
+    "existing_script_adoption_still_current_by_identical_script_bytes": true
+  },
+  "TTS": {
+    "paid_started": false,
+    "paid_syntheses": 0,
+    "current_raw_WAVs": 0,
+    "provider_or_voice_or_global_settings_changed": false,
+    "hold_receipt": "receipts/tts-deferral.json",
+    "root_decision": "defer new paid fifth TTS because actual shared Gemini speech busy/429 context; source gates and dry-run only",
+    "dryrun_requests": 111,
+    "dryrun_pending": 111,
+    "dryrun_billable_characters_estimate": 2508,
+    "configuration_ready_is_not_provider_available": true,
+    "provider_billing_audited": false,
+    "fifth_paid_release_granted": false,
+    "other_episode_scoped_recovery_is_fifth_release": false
+  },
+  "media": {
+    "audio_checked": false,
+    "measured_audio_seconds": null,
+    "actual_timeline_exists": false,
+    "M4A_complete": false,
+    "main_film_complete": false,
+    "full_QA_complete": false,
+    "official_bookend_animation_complete": false,
+    "all_eight_ready": false,
+    "foreign_languages": {
+      "en": {
+        "metadata_delivered": false,
+        "CC_delivered": false,
+        "M4A_delivered": false,
+        "backend_readback": false,
+        "metadata_local_current": true,
+        "caption_text_targets_current": true,
+        "dub_text_targets_current": true,
+        "CC_files_generated": false,
+        "fit_complete": false,
+        "meter_complete": false,
+        "ASR_complete": false,
+        "text_adoption_proof": "localization/en/actual-native-text-adoption.json"
+      },
+      "ja": {
+        "metadata_delivered": false,
+        "CC_delivered": false,
+        "M4A_delivered": false,
+        "backend_readback": false,
+        "metadata_local_current": true,
+        "caption_text_targets_current": true,
+        "dub_text_targets_current": true,
+        "CC_files_generated": false,
+        "fit_complete": false,
+        "meter_complete": false,
+        "ASR_complete": false,
+        "text_adoption_proof": "localization/ja/actual-native-text-adoption.json"
+      },
+      "ko": {
+        "metadata_delivered": false,
+        "CC_delivered": false,
+        "M4A_delivered": false,
+        "backend_readback": false
+      },
+      "es": {
+        "metadata_delivered": false,
+        "CC_delivered": false,
+        "M4A_delivered": false,
+        "backend_readback": false,
+        "metadata_local_current": true,
+        "caption_text_targets_current": true,
+        "dub_text_targets_current": true,
+        "CC_files_generated": false,
+        "fit_complete": false,
+        "meter_complete": false,
+        "ASR_complete": false,
+        "text_adoption_proof": "localization/es/actual-native-text-adoption.json"
+      },
+      "pt": {
+        "metadata_delivered": false,
+        "CC_delivered": false,
+        "M4A_delivered": false,
+        "backend_readback": false
+      },
+      "id": {
+        "metadata_delivered": false,
+        "CC_delivered": false,
+        "M4A_delivered": false,
+        "backend_readback": false
+      },
+      "vi": {
+        "metadata_delivered": false,
+        "CC_delivered": false,
+        "M4A_delivered": false,
+        "backend_readback": false
+      },
+      "th": {
+        "metadata_delivered": false,
+        "CC_delivered": false,
+        "M4A_delivered": false,
+        "backend_readback": false
+      }
+    },
+    "official_assets_available_in_isolated_base": {
+      "package_id": "mokaair-brand-package-v4-endscreen",
+      "registry_asset_hash": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+      "intro_seconds": 5,
+      "outro_seconds": 21,
+      "availability": "already fetched in isolated base; root supplied actual acquisition and fourth handoff locally read",
+      "fifth_applied": false,
+      "fifth_official_bookends_complete": false,
+      "historical_fourth_handoff_note": "root reported; root full post-confirmation still pending at handoff; not fifth acceptance"
+    }
+  },
+  "public_materials": {
+    "local_kit": "duckdb-public-fixtures.zip",
+    "local_README": "public-run/README.md",
+    "immutable_commit": "410633ab4addde4d4590dfecc0e138d48d072d3b",
+    "public_command_folder_URL": "https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run",
+    "public_fixture_ZIP_URL": "https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+    "description_links_added": true,
+    "root_public_GET_receipt": "receipts/fifth-public-artifacts-verification.json",
+    "root_public_GET_performed": true,
+    "root_public_GET_at": "2026-10-26T02:39:03.966Z",
+    "root_public_GET_verified_artifacts": [
+      "public-run/demo/input/parcels.csv",
+      "duckdb-public-fixtures.zip"
+    ],
+    "root_public_GET_status_each": 200,
+    "folder_page_separately_GET_checked": false,
+    "metadata_editor_new_GET_calls": 0,
+    "automatic_episode_GitHub_URL_generated": false,
+    "native_composed_metadata_check": "receipts/metadata-public-links-native-checks.json",
+    "scope": "own public CSV/42-entry fixture ZIP only; not video/audio/backend download proof"
+  },
+  "historical_source_freeze": {
+    "file": "episode-source-manifest.json",
+    "sha256": "febc17b61b32b9e2092f985714aeb739bee4aede628f9e9df38363d66badb3bb",
+    "files": 266,
+    "historical_only_not_current_tree_manifest": true,
+    "overwritten": false
+  },
+  "receipts_index": "receipts/all8-text-adoption-index.json",
+  "task": "2026-10-25-produce-video-duckdb-agent-full-export",
+  "task_status": "in-progress",
+  "docs_agent_actions": {
+    "paid_calls": 0,
+    "backend_calls": 0,
+    "git_commits": 0,
+    "video_source_modified_paths": [
+      "/youtube/description"
+    ],
+    "claims_assets_audio_data_modified": false,
+    "new_network_calls": 0,
+    "scope": "Historical metadata-preparation editor actions; original false git-commit count describes that preparation, not subsequent delegated commit."
+  },
+  "checks_receipt": "receipts/all8-text-adoption-validation.json",
+  "metadata_only_delta": {
+    "path": "/youtube/description",
+    "prior_source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+    "receipt": "receipts/metadata-public-links-delta.json",
+    "independent_verify4": {
+      "verdict": "PASS",
+      "file": "verify-4.md",
+      "json": "reviews/fifth-verify-4.json",
+      "checked_at_utc": "2026-10-26T03:41:58.900Z",
+      "scope": "Independent metadata-only public-link delta and complete unchanged dependency continuity; no new audio, narrative, whole-production or server-approval acceptance."
+    },
+    "current_source_rebinding": "complete: root independent continuity proof for40eb; native script gate remains exact7aac",
+    "native_script_regenerated": true,
+    "script_sha256_unchanged": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+    "existing_normal_gate_hash_unchanged": true,
+    "new_remote_or_local_approval_created": false,
+    "archive": "history/before-public-material-links-ca1e/identity.json",
+    "prepared_pending_documentation_archive": "history/before-root-verify4-adoption/identity.json"
+  },
+  "publication": {
+    "repository": "x812033727/travel_scanner",
+    "PR": 1861,
+    "PR_URL": "https://github.com/x812033727/travel_scanner/pull/1861",
+    "state": "draft",
+    "auto_merge_enabled": false,
+    "first_pushed_head": "410633ab4addde4d4590dfecc0e138d48d072d3b",
+    "provenance": "Root first-push/public-GET handoff and local410633ab HEAD checked; no new GitHub API or backend calls by docs editor. Scoped commit/push authorization belongs to root; resulting commit is recorded in external execution receipt.",
+    "metadata_update_state_at_documentation_snapshot": "root independently verified; this docs/source snapshot is prepared for a scoped same-branch commit"
+  },
+  "root_verify4_documentation_adoption": {
+    "agent": "/root/formal_docs_commit",
+    "at": "2026-10-26T03:46:05.649960+00:00",
+    "root_task_delegation_on_existing_claim": true,
+    "source_claims_voice_scenes_media_unchanged_by_this_editor": true,
+    "prior_prepared_records_archived_exact": "history/before-root-verify4-adoption/identity.json",
+    "author_freeze_preserved": "receipts/metadata-public-links-freeze.json",
+    "author_freeze_sha256": "6ebdb963b707598ad91a93cbb4ec57be3187e16c2ce52e7f94049fd8ee6f5f31",
+    "initial_failed_invocation_diagnostic": "receipts/root-verify4-initial-invocation-diagnostic.json",
+    "new_paid_media_backend_or_approval_actions": false,
+    "routine_scoped_git_commit_push_authorized_by_root": true
+  },
+  "localization_text": {
+    "expected_foreign_locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "adopted_locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "id",
+      "vi",
+      "th"
+    ],
+    "adopted_count": 8,
+    "required_count": 8,
+    "en": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/en.json",
+      "actual_native_merged_file_sha256": "faf5cb2f1c7fd536e012cd2a8191062ee4069d42ef46b8b8fbf8f10543f2cf4b",
+      "independent_text_review": "localization/en/root-independent-review.json",
+      "adoption_proof": "localization/en/actual-native-text-adoption.json",
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false
+    },
+    "scope": "All8localTEXT only: each111targets/sixchapters/fullmetadata; no actualCC/audio/backend product or fit/ASR acceptance.",
+    "ja": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/ja.json",
+      "actual_native_merged_file_sha256": "324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2",
+      "independent_text_review": "localization/ja/root/root-independent-review.json",
+      "adoption_proof": "localization/ja/actual-native-text-adoption.json",
+      "all_targets_preserved_without_root_edits": true,
+      "author_approximate_40char_advisories": [
+        {
+          "id": "ujmc",
+          "characters": 48
+        },
+        {
+          "id": "3dwp",
+          "characters": 44
+        }
+      ],
+      "actual_max_chars_or_fit_claimed": false,
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false
+    },
+    "ko": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/ko.json",
+      "actual_native_merged_file_sha256": "6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f",
+      "independent_text_review": "localization/ko/root/root-independent-review.json",
+      "adoption_proof": "localization/ko/actual-native-text-adoption.json",
+      "root_changed_line_ids": [
+        "jd24",
+        "g738"
+      ],
+      "other109_targets_unchanged": true,
+      "root_description_plain_wording_changes": 2,
+      "changes_before_audio_not_fit_retake_counters": true,
+      "actual_max_chars_or_fit_claimed": false,
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false
+    },
+    "es": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/es.json",
+      "actual_native_merged_file_sha256": "2e8511e2456cf75c6455f205fcf6105613a5b867995ccd6079490b0349afa60c",
+      "independent_text_review": "localization/es/root/root-independent-review.json",
+      "adoption_proof": "localization/es/actual-native-text-adoption.json",
+      "root_changed_line_ids": [
+        "jd24"
+      ],
+      "other110_targets_unchanged": true,
+      "root_description_token_usage_and_cost_not_measured_wording": true,
+      "changes_before_audio_not_fit_retake_counters": true,
+      "author_over80_character_readability_advisories": 77,
+      "actual_max_chars_or_fit_claimed": false,
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false,
+      "native_lint_title_phone_display_advisory": {
+        "path": "youtube/es",
+        "full_width_characters": 37.5,
+        "recommended_phone_width_limit": 36,
+        "native_errors": 0,
+        "native_warnings": 1,
+        "native_threshold_or_title_edited": false
+      }
+    },
+    "all_eight_text_adoption_complete": true,
+    "pt": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/pt.json",
+      "actual_native_merged_file_sha256": "f0696f7449489eb4c8536a0501fd24afed155ae0b6531c46e15c3181b84d3b07",
+      "independent_text_review": "localization/pt/root/root-independent-review.json",
+      "adoption_proof": "localization/pt/actual-native-text-adoption.json",
+      "root_wording_fields_changed_before_audio": 2,
+      "actual_max_chars_or_fit_claimed": false,
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false
+    },
+    "id": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/id.json",
+      "actual_native_merged_file_sha256": "1eefbda5e5253f143c0a4d27b9eca3d08453e28464ea688705b1773d3e7c9988",
+      "independent_text_review": "localization/id/root/root-independent-review.json",
+      "adoption_proof": "localization/id/actual-native-text-adoption.json",
+      "root_wording_fields_changed_before_audio": 0,
+      "actual_max_chars_or_fit_claimed": false,
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false
+    },
+    "vi": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/vi.json",
+      "actual_native_merged_file_sha256": "e9a22e9d92c524a6c492f97088913b7285f3c6ce28467c12b2d8125fa1002428",
+      "independent_text_review": "localization/vi/root/root-independent-review.json",
+      "adoption_proof": "localization/vi/actual-native-text-adoption.json",
+      "root_wording_fields_changed_before_audio": 0,
+      "actual_max_chars_or_fit_claimed": false,
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false
+    },
+    "th": {
+      "source_current": true,
+      "metadata_local_current": true,
+      "caption_line_targets": 111,
+      "dub_line_targets_same_as_caption_targets": 111,
+      "chapter_titles": 6,
+      "thumbnail_words_local_current": true,
+      "actual_native_merged_file": "i18n/th.json",
+      "actual_native_merged_file_sha256": "0af06dff9045602f026526516e3d7d10c1c689effa9c06c1a5d57d8eb257d544",
+      "independent_text_review": "localization/th/root/root-independent-review.json",
+      "adoption_proof": "localization/th/actual-native-text-adoption.json",
+      "root_wording_fields_changed_before_audio": 0,
+      "actual_max_chars_or_fit_claimed": false,
+      "actual_CC_generated": false,
+      "actual_M4A_exists": false,
+      "actual_fit_or_meter_or_ASR_done": false,
+      "backend_delivery": false
+    }
+  },
+  "English_text_documentation_update": {
+    "at": "2026-10-26T04:50:53.620390+00:00",
+    "root_authorized_same_task_team": true,
+    "source329_oldfiles_before_doc_mutation_all_verified": true,
+    "archive": "history/before-EN-text-adoption-docs/identity.json",
+    "original_author26_freeze_sha256": "be6732c5e0260654ba0e966d315f2b434698b29c836ca163a88feb28bb50b06a",
+    "first_pass3_expectation_error_preserved": true,
+    "source_claims_script_voice_lexicon_data_not_modified": true,
+    "i18n_en_already_merged_by_root_not_rewritten_by_docs_editor": true,
+    "new_paid_media_backend_or_approval_calls": 0,
+    "same_branch_scoped_commit_push_only_after_root_review": true
+  },
+  "Japanese_text_documentation_update": {
+    "at": "2026-10-26T06:18:23.313875+00:00",
+    "root_authorized_same_existing_task_team": true,
+    "editor": "/root/formal_branded_main_peer",
+    "before_existing_files_all_SHA_verified": 361,
+    "old325_protected_and_EN35_current_Git_blobs_verified": true,
+    "archive": "history/before-JA-text-adoption-docs/identity.json",
+    "author21_freeze_sha256": "0ecc87820a316cdc8c8d3d57c519826f85ce1dfc67f135c2aa00eba7d41e26af",
+    "author_first_URL_error_preserved": true,
+    "root_initial_sheetTodo_type_and_freeze_shape_errors_preserved": true,
+    "source_claims_script_voice_lexicon_data_and_EN_JA_targets_not_edited": true,
+    "paid_media_backend_approval_calls": 0,
+    "stage_commit_push_only_after_root_independent_review": true
+  },
+  "Korean_text_documentation_update": {
+    "at": "2026-10-26T07:37:11.644473+00:00",
+    "editor": "/root/branding_restore",
+    "root_authorized_same_existing_task_team": true,
+    "immutable_Git_anchor": "0d8852106276bc701e8aae712f4b65fc18b0b6e2",
+    "old_JA88_reconstruction": {
+      "unchanged_in_place": 83,
+      "actual_mutable_archives": 5,
+      "identity": "history/before-KO-text-adoption-docs/identity.json"
+    },
+    "previous_indexes31_61_90_171_preserved_in_place": true,
+    "recursive_previous_history_copies": 0,
+    "source_claims_script_voice_lexicon_data_EN_JA_KO_targets_not_edited": true,
+    "paid_media_backend_approval_calls": 0,
+    "stage_commit_push_only_after_root_independent_review": true
+  },
+  "Spanish_text_documentation_update": {
+    "at": "2026-10-26T08:30:58.031146+00:00",
+    "editor": "/root/branding_restore",
+    "root_authorized_same_existing_task_team": true,
+    "immutable_Git_anchor": "be172dcb1454800000a08a73b7ccc8aaae9f2cde",
+    "old_KO55_reconstruction": {
+      "unchanged_in_place": 50,
+      "actual_mutable_archives": 5,
+      "identity": "history/before-ES-text-adoption-docs/identity.json"
+    },
+    "previous_indexes31_61_90_171_221_preserved_in_place": true,
+    "recursive_previous_history_copies": 0,
+    "source_claims_script_voice_lexicon_data_EN_JA_KO_ES_targets_not_edited": true,
+    "paid_media_backend_approval_calls": 0,
+    "stage_commit_push_only_after_root_independent_review": true
+  },
+  "All8_text_documentation_update": {
+    "at": "2026-10-26T09:19:55.989537+00:00",
+    "editor": "/root/es_docs_commit",
+    "root_authorized_existing_task_scope": true,
+    "immutable_Git_anchor": "a090b585a674db0f1e0f2ef12771363bfa7596eb",
+    "old_ES68_reconstruction": {
+      "unchanged_in_place": 63,
+      "actual_mutable_archives": 5,
+      "identity": "history/before-all8-text-adoption-docs/identity.json"
+    },
+    "old556_Git_anchor_before_edit_all_exact": true,
+    "previous_indices_includingES284_preserved_in_place": true,
+    "recursive_previous_history_copies": 0,
+    "protected_source_core_lexicon_all8_i18n_files": 19,
+    "all_actual_targets_fixed_not_rewritten_by_docs_editor": true,
+    "exact_remaining4_author_root_batch_copies": 196,
+    "paid_media_backend_approval_calls": 0,
+    "stage_commit_push_only_after_root_independent_freeze_review": true
+  },
+  "all_eight_foreign_media_delivery_dod_complete": false
+}

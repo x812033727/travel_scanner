@@ -1,0 +1,43 @@
+{
+  "kind": "fifth_JA_actual_local_text_adoption_only",
+  "at": "2026-10-26T06:18:23.313875+00:00",
+  "source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "speech_hash": "38cf9292f6945199",
+  "actual_translation_file": "i18n/ja.json",
+  "actual_translation_sha256": "324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2",
+  "actual_translation_bytes": 22540,
+  "normal_native_command": [
+    "node",
+    "--use-env-proxy",
+    "/workspace/work/travel-scanner-duckdb/tools/video/cli.mjs",
+    "i18n-merge",
+    "--slug",
+    "duckdb-agent-full-export",
+    "--locale",
+    "ja",
+    "--workdir",
+    "/workspace/work/videos"
+  ],
+  "actual_process_exit_code": 0,
+  "root_review": "localization/ja/root/root-independent-review.json",
+  "root_review_sha256": "0d4f9ec34d241f7cca88721e4691d6cecc732be0d6caf1eef1dc90660509e775",
+  "actual_completion": "localization/ja/root/native-merge-completion.json",
+  "completion_sha256": "2248dfb3372b14b657234ce21ca82fcda5e6df06988c2be890b289612849b9e7",
+  "all111_targets_without_root_edits": true,
+  "equals_native_pure_merge_preview": true,
+  "text_adopted_locales": [
+    "en",
+    "ja"
+  ],
+  "text_count": 2,
+  "required_foreign": 8,
+  "actual_CC_files_or_M4A_or_fit_meter_ASR_or_backend_JA_delivered": false,
+  "master_paid_TTS": 0,
+  "master_raw_WAVs": 0,
+  "actual_timeline_exists": false,
+  "source_voice_lexicon_data_changed_by_docs_editor": false,
+  "author_URL_extractor_error_preserved_separately": true,
+  "root_sheetTodo_and_freeze_shape_errors_before_adoption_preserved_separately": true,
+  "native_or_audio_guard_failure_claimed_for_validator_errors": false,
+  "overall_production_completed": false
+}

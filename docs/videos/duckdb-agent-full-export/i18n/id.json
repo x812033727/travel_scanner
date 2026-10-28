@@ -1,0 +1,487 @@
+{
+  "title": "Hanya 40 baris terlihat? Ekspor daftar tindak lanjut lengkap dengan DuckDB 2.0",
+  "description": "Dari tabel latihan pengiriman yang sama, kenali baris yang tidak ditampilkan dan serahkan daftar tindak lanjut lengkap.\nUntuk Anda yang memakai AI untuk membantu membaca CSV dan ingin menyerahkan kueri beserta hasil lengkapnya.\n\nData pengiriman fiktif orisinal dan program deterministik buatan penulis, bukan data perusahaan, pelanggan, atau statistik publik nyata. Tidak ada respons produk AI atau pengujian model independen sebelum dan sesudah. Pada 2026-10-25, satu biner DuckDB 2.0.0 yang sama dibandingkan dengan -agent dan -no-agent. Empat puluh baris adalah pratinjau dari 1.200 catatan masukan; 480 catatan adalah hasil lengkap untuk paket yang sudah sampai dan memakan waktu lebih lama dari jumlah hari yang dijanjikan. Baris yang tidak ditampilkan bukan berarti data hilang dari kueri atau penyimpanan.\n\nContoh kesalahan dibuat penulis dengan sengaja menghilangkan satu huruf nama kolom. stderr mode agent memuat teks awal proses dan satu baris JSON yang valid; uraikan per baris pesan, jangan menganggap aliran campuran itu satu dokumen JSON. Tidak ada klaim bahwa DuckDB menghasilkan JSON rusak atau bahwa program konsumen pihak ketiga benar-benar gagal. CSV, SQL, COPY, dan Parquet adalah kemampuan yang sudah ada; fitur barunya adalah mode keluaran untuk agent. Token, biaya, penalaran model, mode server, dan peningkatan basis data lama tidak diuji.\n\nMateri mencakup masukan orisinal, SQL lengkap, skrip untuk mengulang proses, CSV lengkap 480 catatan dan Parquet dengan isi yang sama, laporan HTML, perintah persis, serta SHA tiap berkas. Data, program, dan laporan orisinal berlisensi CC0-1.0; DuckDB berlisensi MIT. Tulisan resmi tetap milik penulisnya.\n\nMateri publik, 9 perintah yang benar-benar dijalankan: https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP fixtures lengkap: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+  "tags": [
+    "DuckDB",
+    "analisis data AI",
+    "mode agent",
+    "CSV",
+    "SQL",
+    "Parquet",
+    "kueri data",
+    "daftar lengkap"
+  ],
+  "thumbnail": {
+    "tag": "DuckDB2.0",
+    "headline": "**Baris**\ntak tampil",
+    "sub": "Dari pratinjau ke hasil lengkap"
+  },
+  "chapters": {
+    "parcel-table-start": "Bagian tengah pratinjau pengiriman tidak ditampilkan",
+    "input-is-still-there": "Tabel asal tetap utuh; baris hanya tak tampil dalam balasan",
+    "define-the-followup": "Tiga paket, hanya satu yang terpilih",
+    "human-error": "Kurang satu huruf, kueri berhenti",
+    "read-parquet-back": "Buka ulang berkas dan cocokkan tiap catatan ke tabel asal",
+    "new-requirement-consequence": "Paket tepat waktu ditambahkan: kebutuhannya berubah"
+  },
+  "source_hashes": {
+    "chapters": {
+      "parcel-table-start": "5dedc4426054",
+      "input-is-still-there": "89669a63c2e9",
+      "define-the-followup": "02cfab5d51a6",
+      "human-error": "7f6f91d7d5d9",
+      "read-parquet-back": "0844094b2e3e",
+      "new-requirement-consequence": "cb43985eb088"
+    },
+    "title": "d2e2ff81dd4d",
+    "description": "da5af975538b",
+    "tags": "34a54f9c6d96",
+    "thumbnail": "492e00f069aa"
+  },
+  "lines": {
+    "dg2i": {
+      "source_hash": "f647e118cc32",
+      "text": "Pada dua puluh lima Oktober dua ribu dua puluh enam, saya menelusuri tabel pengiriman di komputer ini."
+    },
+    "c7uh": {
+      "source_hash": "2f41d77221a1",
+      "text": "Kita ingin mencari paket yang perlu ditindaklanjuti, lalu menyerahkan daftar yang bisa dibuka kembali."
+    },
+    "x6vr": {
+      "source_hash": "20f81890cd4e",
+      "text": "Layar hanya menampilkan total empat puluh baris dari bagian awal dan akhir, dengan penanda penghilangan di tengah."
+    },
+    "iaiy": {
+      "source_hash": "957a591d41f7",
+      "text": "Benarkah hanya catatan ini yang tersisa dalam tabel?"
+    },
+    "zni4": {
+      "source_hash": "75375ec98857",
+      "text": "Sebentar lagi, nama kolom jumlah hari sebenarnya akan kehilangan satu huruf."
+    },
+    "3zp6": {
+      "source_hash": "83272417d62d",
+      "text": "Kalau daftarnya disimpan sebagai berkas terpisah, bagaimana memastikan isinya lengkap?"
+    },
+    "a73b": {
+      "source_hash": "694dc8472b45",
+      "text": "Berkas yang diserahkan harus ditelusuri ke tabel asal, yang tetap berisi seribu dua ratus catatan."
+    },
+    "8ex8": {
+      "source_hash": "410123f679f7",
+      "text": "Ini tabel latihan pengiriman fiktif buatan sendiri. Setiap catatannya bisa diperiksa."
+    },
+    "ujmc": {
+      "source_hash": "936c125e4c95",
+      "text": "Mode agent DuckDB diperkenalkan pada sembilan Oktober, lalu resmi hadir bersama versi dua titik nol pada dua puluh satu Oktober."
+    },
+    "m4b3": {
+      "source_hash": "524b5fdd9c17",
+      "text": "Mode baru ini menyusun balasan alat dengan lebih ringkas dan menandai baris yang tidak ditampilkan."
+    },
+    "6i9g": {
+      "source_hash": "0c99d26d64ab",
+      "text": "Program yang membaca balasan itu bisa memakai penandanya untuk menafsirkan hasil."
+    },
+    "msj7": {
+      "source_hash": "cbf6f5260f4f",
+      "text": "Membaca CSV, menulis SQL, dan mengekspor berkas lengkap sudah bisa dilakukan sebelumnya."
+    },
+    "x88h": {
+      "source_hash": "aadf9e15fade",
+      "text": "Di direktori latihan baru, saya mengolah tabel ini dengan dua mode dari versi yang sama."
+    },
+    "pskv": {
+      "source_hash": "813fd8cbbbb5",
+      "text": "Mode ini tidak menyertakan model AI. Perbandingan ini juga tidak menguji akurasi model atau biaya pemakaian."
+    },
+    "yqnx": {
+      "source_hash": "514f0d49e250",
+      "text": "Setiap catatan punya ID paket, rute, dan jumlah hari yang dijanjikan untuk pengiriman."
+    },
+    "xbqa": {
+      "source_hash": "72b3b050e436",
+      "text": "Status dan jumlah hari sebenarnya adalah kolom lain yang diperlukan untuk aturan tindak lanjut ini."
+    },
+    "yy8n": {
+      "source_hash": "6e83828c81e1",
+      "text": "Parameter mode biasa memilih format tampilan semula secara eksplisit."
+    },
+    "9gdj": {
+      "source_hash": "59a3ba8c7df0",
+      "text": "Perintah ini memakai basis data sementara di memori dan melewati berkas inisialisasi pribadi."
+    },
+    "xd25": {
+      "source_hash": "65a9ba90e4db",
+      "text": "Ganti parameternya ke mode agent. Masukan dan kuerinya tetap sama."
+    },
+    "c6hy": {
+      "source_hash": "6aeb1441c25a",
+      "text": "Dengan memilih mode secara tegas, deteksi lingkungan otomatis tidak ikut memengaruhi perbandingan ini."
+    },
+    "jm9m": {
+      "source_hash": "e0b4597a4be5",
+      "text": "Kembali ke penanda penghilangan di awal tadi. Di mana masing-masing balasan menaruhnya?"
+    },
+    "t4hj": {
+      "source_hash": "0d42e837725d",
+      "text": "Kueri ini membuat tabel yang sama, lalu mengurutkannya menurut ID paket."
+    },
+    "zxhz": {
+      "source_hash": "0519aadfa157",
+      "text": "Tidak ada syarat yang hanya mengambil sedikit catatan, jadi kita bisa mengenali batas tampilan."
+    },
+    "h4gg": {
+      "source_hash": "76d69dd44a33",
+      "text": "Di bawah hasil mode biasa, jumlah seluruh baris dan jumlah yang ditampilkan sudah tercantum."
+    },
+    "4cr9": {
+      "source_hash": "7f9c13c4d80d",
+      "text": "Baris itu membedakan ukuran hasil kueri dari ukuran tampilan di layar."
+    },
+    "uj2p": {
+      "source_hash": "7a04836fa956",
+      "text": "Mode agent langsung menandai di tengah bahwa seribu seratus enam puluh baris tidak ditampilkan."
+    },
+    "u5mp": {
+      "source_hash": "933529e8d4db",
+      "text": "Itu bagian yang tidak terlihat, bukan data yang hilang dari kueri atau penyimpanan."
+    },
+    "jumq": {
+      "source_hash": "fd2192acdeb8",
+      "text": "Pratinjau di awal tadi baru cara membaca balasan, belum menjadi daftar yang siap diserahkan."
+    },
+    "7npx": {
+      "source_hash": "c9488745cb64",
+      "text": "Sekarang, dari tabel asal yang lengkap, paket mana yang perlu kita pertahankan?"
+    },
+    "v9hh": {
+      "source_hash": "26306fe6e051",
+      "text": "Daftar tindak lanjut ini hanya mencari paket yang sudah sampai dan memakan waktu lebih lama dari janji pengirimannya."
+    },
+    "fpcm": {
+      "source_hash": "26b7512804ca",
+      "text": "Catatan yang masih dalam perjalanan tetap ada di tabel asal, tetapi tidak termasuk kebutuhan ini."
+    },
+    "qxv3": {
+      "source_hash": "8d3bd93189c3",
+      "text": "Saat membuat tabel, baca ID, rute, dan status sebagai teks."
+    },
+    "abty": {
+      "source_hash": "2dac16f24b2a",
+      "text": "Baca kedua jumlah hari sebagai bilangan bulat, agar perbandingannya benar-benar membandingkan jumlah hari."
+    },
+    "m3tz": {
+      "source_hash": "30c4d95df4eb",
+      "text": "Perintah deskripsi ini menampilkan nama dan tipe setiap kolom."
+    },
+    "drd5": {
+      "source_hash": "0fd9ba09bc8d",
+      "text": "Kueri lain menghitung catatan per status, untuk melihat catatan apa saja yang perlu diperiksa."
+    },
+    "6i82": {
+      "source_hash": "a1c8a0f80a81",
+      "text": "Di sini ada sembilan ratus enam puluh catatan untuk paket yang sudah sampai, dan dua ratus empat puluh untuk paket yang masih dalam perjalanan."
+    },
+    "ufbq": {
+      "source_hash": "20b27ea07f52",
+      "text": "Kolom hari sebenarnya untuk paket yang masih di perjalanan kosong, karena pengirimannya belum selesai."
+    },
+    "y43c": {
+      "source_hash": "47bbddd0a9dc",
+      "text": "Dengan aturan tadi, apakah paket yang sudah sampai ini akan masuk?"
+    },
+    "jbme": {
+      "source_hash": "d1bad1852728",
+      "text": "Paket ini sudah sampai. Janjinya tiga hari, tetapi kenyataannya memakan empat hari."
+    },
+    "8wey": {
+      "source_hash": "8cf9a4dcec9f",
+      "text": "Karena melebihi waktu yang dijanjikan, paket ini masuk daftar tindak lanjut."
+    },
+    "wg3d": {
+      "source_hash": "13f6887ba51e",
+      "text": "Empat dikurangi tiga menghasilkan keterlambatan satu hari."
+    },
+    "tqeh": {
+      "source_hash": "9a694c58610e",
+      "text": "Perhitungan itu ditulis sebagai kolom baru, agar penerima hasil langsung melihat selisih harinya."
+    },
+    "5rfa": {
+      "source_hash": "833cb8b4805b",
+      "text": "Terapkan syarat status tadi pada catatan yang masih dalam perjalanan ini."
+    },
+    "e77f": {
+      "source_hash": "eab4635a6039",
+      "text": "Dengan syarat sudah sampai, catatan ini tersisih. Nilai kosongnya juga tidak boleh diisi nol hari."
+    },
+    "ewsi": {
+      "source_hash": "b2ca94efbf5b",
+      "text": "Tuliskan aturan pemilihan tadi dalam klausa penyaringan ini."
+    },
+    "bhcv": {
+      "source_hash": "473f428008b2",
+      "text": "Letakkan pengurangan sebagai kolom baru di bagian pemilihan kolom, tanpa mengubah jumlah hari aslinya."
+    },
+    "g52d": {
+      "source_hash": "e80a6815c443",
+      "text": "Pertahankan ID, rute, kedua jumlah hari, dan selisih yang baru dihitung sebagai kolom hasil."
+    },
+    "evdb": {
+      "source_hash": "19a4e8a8cb54",
+      "text": "Terakhir, urutkan ID paket dari kecil ke besar. Saat berkas dibuka lagi, urutannya sama untuk dibandingkan."
+    },
+    "6r94": {
+      "source_hash": "06f5d1f25238",
+      "text": "Paket ini dijanjikan tiga hari, dan waktu sebenarnya juga tiga hari. Selisihnya nol."
+    },
+    "s3h7": {
+      "source_hash": "f133fd8c361d",
+      "text": "Dengan syarat lebih besar tadi, paket ini tidak masuk daftar keterlambatan."
+    },
+    "ntfj": {
+      "source_hash": "1e728a75dfd6",
+      "text": "Syaratnya sudah sama. Kalau nama kolom jumlah hari sebenarnya kurang satu huruf, apa balasan alat ini?"
+    },
+    "ak3j": {
+      "source_hash": "6ddfa802b081",
+      "text": "Alat lebih dulu melaporkan bahwa kolom itu tidak ditemukan. Tidak ada hasil kueri."
+    },
+    "s9ca": {
+      "source_hash": "374b141bdcd3",
+      "text": "Mode biasa pun sudah bisa menunjukkan masalah nama ini."
+    },
+    "jsui": {
+      "source_hash": "89868e15adb6",
+      "text": "Huruf yang hilang sejak pembukaan tadi ada di ujung nama kolom jumlah hari sebenarnya."
+    },
+    "xj3j": {
+      "source_hash": "a9dc656d01b0",
+      "text": "Kueri ini khusus mengisolasi masalah nama kolom. Salah ketik itu sengaja saya buat, bukan kesalahan AI."
+    },
+    "i2fq": {
+      "source_hash": "1b2475ec3484",
+      "text": "Abaikan dahulu teks awal dari proses ini, lalu uraikan satu baris JSON yang valid sesudahnya."
+    },
+    "yxh7": {
+      "source_hash": "e14d3a789a15",
+      "text": "Seluruh aliran keluaran mencampur teks dengan JSON, jadi tidak bisa dianggap satu objek JSON."
+    },
+    "jngn": {
+      "source_hash": "f35924448505",
+      "text": "Ambil nama yang salah ketik dari objek, lalu cari usulan nama kolom dalam teks pesannya."
+    },
+    "cjm4": {
+      "source_hash": "4c9f36b95cc8",
+      "text": "Saya cocokkan usulan itu dengan tabel asal, lalu menemukan ejaan yang benar, lengkap dengan huruf terakhirnya."
+    },
+    "7g26": {
+      "source_hash": "619ca850aca9",
+      "text": "Masukkan nama kolom tabel asal yang baru kita pilih ke dalam kueri ini."
+    },
+    "2d84": {
+      "source_hash": "6555ca795916",
+      "text": "Sambungkan kembali syarat, kolom pilihan, dan urutan semula untuk mengekspor daftar yang sama."
+    },
+    "rw48": {
+      "source_hash": "644aec32f389",
+      "text": "Nama kolom sudah benar. Apakah balasan yang hanya menampilkan sedikit baris tadi juga memotong berkas simpanan?"
+    },
+    "epd8": {
+      "source_hash": "2b3972dcf131",
+      "text": "Masukkan kueri lengkap tadi ke dalam tanda kurung COPY."
+    },
+    "tdtg": {
+      "source_hash": "d642afc081fc",
+      "text": "Aturan pemilihan dan pengurutan tetap di dalam kurung. Lokasi berkas hasil ditentukan sesudahnya."
+    },
+    "q6db": {
+      "source_hash": "c0e291da58ad",
+      "text": "Dari tabel asal ke hasil ini, tidak ada pembatas jumlah baris tampilan yang ditambahkan."
+    },
+    "n6c9": {
+      "source_hash": "b774867df776",
+      "text": "Jadi, yang disimpan adalah hasil yang memenuhi syarat, bukan beberapa baris yang disalin dari balasan."
+    },
+    "kabz": {
+      "source_hash": "768bb934be86",
+      "text": "Lokasi ini menentukan tempat CSV ditulis. Opsi HEADER mempertahankan nama kolom."
+    },
+    "5qhj": {
+      "source_hash": "c829a73422ad",
+      "text": "Saat membacanya kembali, cocokkan urutan kolom dengan pilihan tadi, agar ID dan rute tidak tertukar."
+    },
+    "6e4u": {
+      "source_hash": "3eef724d4df0",
+      "text": "Simpan salinan lain sebagai Parquet. Cukup ubah format keluaran dan nama berkas tujuan."
+    },
+    "nsc3": {
+      "source_hash": "8e1c5a9c127e",
+      "text": "Kolom pilihan dan urutan yang sama tetap di dalam tanda kurung, untuk dibandingkan nanti."
+    },
+    "7b9v": {
+      "source_hash": "32e25cd0dfe3",
+      "text": "Jalankan kueri lengkap dengan perintah ini. Kedua format akan ditulis ke lokasi yang tadi ditentukan."
+    },
+    "44a2": {
+      "source_hash": "b7b6b47bdc06",
+      "text": "Untuk memeriksa apakah berkas terpotong, langsung baca kembali CSV hasil ekspornya."
+    },
+    "j328": {
+      "source_hash": "6c35c9eb3764",
+      "text": "Yang dihitung adalah baris data dalam berkas. Baris judul tidak dihitung sebagai paket."
+    },
+    "ubxv": {
+      "source_hash": "4981417cffcd",
+      "text": "Berkas tindak lanjut lengkap yang dibaca kembali kali ini berisi empat ratus delapan puluh catatan."
+    },
+    "ag8z": {
+      "source_hash": "93cf981eaefa",
+      "text": "Pemotongan pratinjau yang kita khawatirkan tidak ikut terbawa ke berkas lewat perintah ekspor ini."
+    },
+    "6da2": {
+      "source_hash": "b2fbd3bfe2d9",
+      "text": "Mode biasa yang menjalankan ekspor yang sama juga menghasilkan isi daftar yang sama."
+    },
+    "385u": {
+      "source_hash": "9bfe66d9eddf",
+      "text": "Langkah ini menunjukkan bahwa mode baru mengubah balasannya. Mode ini tidak menemukan paket terlambat tambahan."
+    },
+    "zdyx": {
+      "source_hash": "1daeab325144",
+      "text": "Apakah jumlah baris yang benar sudah cukup untuk diserahkan? Apakah format lain menyimpan isi setiap catatan yang sama?"
+    },
+    "qgqv": {
+      "source_hash": "046ad96245e4",
+      "text": "Untuk memeriksa format lainnya, baca kembali Parquet dan urutkan menurut ID paket yang sama."
+    },
+    "ineu": {
+      "source_hash": "7c4dd3058f62",
+      "text": "Simpan lagi sebagai CSV, agar kedua hasil lengkap bisa dibandingkan baris demi baris dengan cara yang sama."
+    },
+    "dgc2": {
+      "source_hash": "dfbc0d6cb8fa",
+      "text": "Jalankan kueri baca ulang ini. Datanya berasal dari berkas hasil, tanpa menulis ulang tabel pengiriman asal."
+    },
+    "xqkd": {
+      "source_hash": "3b69934ada6b",
+      "text": "Masih ingat paket dengan perhitungan empat dikurangi tiga tadi?"
+    },
+    "xad9": {
+      "source_hash": "887a876101ff",
+      "text": "Berkas lengkap menyimpan rutenya, jumlah hari asli, dan selisih terlambat satu hari."
+    },
+    "6u7e": {
+      "source_hash": "17a5eede43e7",
+      "text": "Ikuti urutan ID ke bawah. Catatan yang memenuhi syarat dekat bagian akhir tabel asal juga ada dalam berkas lengkap."
+    },
+    "wznc": {
+      "source_hash": "11146dca7ec3",
+      "text": "Memeriksa awal dan akhir membantu menemukan catatan. Perbandingan penuh tetap harus memeriksa setiap catatan di tengah."
+    },
+    "h579": {
+      "source_hash": "89508c6e8b9b",
+      "text": "Agar penerima hasil melihat sebarannya, gunakan aturan semula lalu hitung jumlah paket per rute."
+    },
+    "jd24": {
+      "source_hash": "96bbf548b81e",
+      "text": "Ringkasan kecil untuk paket yang memenuhi syarat ini dicantumkan terpisah dalam laporan. Ringkasan tidak menggantikan daftar lengkapnya."
+    },
+    "rxjg": {
+      "source_hash": "471faa6a1968",
+      "text": "Dengan pengelompokan menurut aturan semula tadi, rute dua dan rute tiga masing-masing berisi dua ratus empat puluh catatan."
+    },
+    "mavj": {
+      "source_hash": "225d65c77fea",
+      "text": "Jumlahnya empat ratus delapan puluh, sama seperti berkas lengkap tadi. Semua catatan yang memenuhi syarat itu tercakup dalam ringkasan."
+    },
+    "3dwp": {
+      "source_hash": "2db721c15c26",
+      "text": "Pertanyaan kelengkapan di awal kini terjawab baris demi baris: kedua berkas memiliki isi yang sama."
+    },
+    "dm84": {
+      "source_hash": "084c04996747",
+      "text": "Yang dibandingkan bukan hanya jumlahnya, tetapi juga setiap ID, nilai kolom, dan urutan baris."
+    },
+    "ezfg": {
+      "source_hash": "b1c6d1ce3355",
+      "text": "Secara terpisah, program sederhana membaca tabel asal satu per satu dan menerapkan aturan semula untuk menghasilkan ID yang semestinya terpilih."
+    },
+    "ubtk": {
+      "source_hash": "9af0d830415c",
+      "text": "Daftar ID itu juga cocok dengan hasil ekspor. Pemeriksaan pun kembali ke data asal."
+    },
+    "g738": {
+      "source_hash": "46eeff176903",
+      "text": "Jika penerima hasil kini meminta paket yang tiba persis tepat waktu ikut masuk, bolehkah daftar khusus keterlambatan yang sudah diperiksa ini langsung diserahkan?"
+    },
+    "ab37": {
+      "source_hash": "2705d2459ea3",
+      "text": "Tidak. Paket tepat waktu yang tadi dikeluarkan kini juga harus disertakan."
+    },
+    "dyhh": {
+      "source_hash": "23245ab0cc0e",
+      "text": "Simpan berkas lama, lalu tulis kebutuhan baru sebagai kueri terpisah."
+    },
+    "7th9": {
+      "source_hash": "630ebfcf60fa",
+      "text": "Ganti lebih besar menjadi lebih besar atau sama dengan, sehingga jumlah hari yang persis sama juga lolos."
+    },
+    "98xj": {
+      "source_hash": "6f0e39a20550",
+      "text": "Ganti juga nama berkas tujuan, agar kebutuhan baru tidak menimpa daftar semula."
+    },
+    "g89b": {
+      "source_hash": "771e378bd7a9",
+      "text": "Jalankan berkas yang telah diubah dengan perintah ini, dan simpan hasil barunya secara terpisah."
+    },
+    "u6gp": {
+      "source_hash": "ae9f917f9585",
+      "text": "Berapa paket tambahan yang dipertahankan oleh perubahan tanda tadi, dan catatan seperti apa yang ikut masuk?"
+    },
+    "mkfw": {
+      "source_hash": "7507295dd887",
+      "text": "Daftar baru berisi tujuh ratus dua puluh catatan. Dua ratus empat puluh di antaranya terlambat nol hari."
+    },
+    "b5i9": {
+      "source_hash": "8462f9b3960c",
+      "text": "Paket tambahan itu tiba persis tepat waktu. Jadi, ini daftar paket yang sudah sampai persis tepat waktu atau terlambat."
+    },
+    "fqr6": {
+      "source_hash": "c0084ec6fe90",
+      "text": "Masih ingat paket yang dijanjikan tiga hari dan ternyata juga memerlukan tiga hari, yang tadi tidak masuk daftar?"
+    },
+    "me2p": {
+      "source_hash": "52bcb91fb65b",
+      "text": "Paket itu sekarang masuk, tepat karena aturannya diubah untuk menyertakan nilai yang sama."
+    },
+    "ptfc": {
+      "source_hash": "4fdc81b585d6",
+      "text": "Kedua daftar dibuat dengan syarat masing-masing. Yang satu tidak bisa menggantikan yang lain."
+    },
+    "ha7h": {
+      "source_hash": "bfc426453313",
+      "text": "Simpan nama berkas lama dan baru bersama kueri masing-masing, agar penerima hasil memilih sesuai kebutuhannya."
+    },
+    "g7bc": {
+      "source_hash": "608097864003",
+      "text": "Paket serahan kini berisi berkas data lengkap, kueri yang sesuai, dan ringkasan yang mudah dibaca."
+    },
+    "s9qr": {
+      "source_hash": "e3e11dde80f6",
+      "text": "Penerima hasil bisa menemukan berkas lengkap dari laporan, atau mengubah syarat untuk membuat ulang daftar."
+    },
+    "ddtv": {
+      "source_hash": "13de3acb0766",
+      "text": "Pratinjau di awal kini punya berkas hasil lengkap yang bisa diperiksa kembali terhadap aturannya."
+    },
+    "wx5u": {
+      "source_hash": "906199dfca53",
+      "text": "Daftar data seperti apa yang paling sering perlu Anda serahkan?"
+    },
+    "v5pw": {
+      "source_hash": "e3b99fe15775",
+      "text": "Berlangganan untuk memahami alat AI lewat hasil yang kita buat."
+    }
+  }
+}

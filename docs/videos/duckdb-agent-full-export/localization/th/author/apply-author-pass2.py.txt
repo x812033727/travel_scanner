@@ -1,0 +1,22 @@
+from pathlib import Path
+import json,datetime
+B=Path('/workspace/work/ai-tech-next/fifth-th-translation');o=json.loads((B/'th-targets.v1.json').read_text());ledger=[]
+updates={
+ 'ujmc':('โหมด agent ของ DuckDB แนะนำเมื่อ 9 ตุลาคม และให้ใช้จริงกับรุ่น 2.0 วันที่ 21 ตุลาคม','Use introduced for9October, distinct from actualavailability21October; not an earlier release.'),
+ 'pskv':('มันไม่มีโมเดล AI มาให้ การเทียบนี้ก็ไม่วัดความแม่นยำหรือค่าใช้จ่ายของโมเดล','Keep both negative scope clauses and natural modelusagecost wording.'),
+ 'ufbq':('จำนวนวันจริงของพัสดุระหว่างทางว่างอยู่ เพราะยังไม่มีระยะเวลาจนส่งถึง','A blank actualduration is not a promiseddeadline orzero; keep completed-delivery-duration scope.'),
+ 'jsui':('ตัวที่บอกว่าจะหายตอนต้นคือ s ท้าย actual_days จึงเหลือ actual_day','Ground the missing final letter in exact on-screen fieldspellings, preventing ambiguity about a lost numeric day.'),
+ 'xj3j':('คิวรีนี้ดึงเฉพาะฟิลด์มาเช็ก ฉันจงใจพิมพ์ชื่อผิด ไม่ใช่ AI ทำผิด','Natural debug wording, retaining narratorintent and explicitnotAIerror.'),
+ 'ag8z':('การตัดแถวในพรีวิวที่กังวล ไม่ได้เกิดกับไฟล์ที่ส่งออกด้วยคำสั่งนี้','Remove awkward personification while preserving preview versus realexport distinction.'),
+ 'jd24':('สรุปสั้นนี้แยกไว้ในรายงาน ไม่แทนรายการพัสดุที่ผ่านเงื่อนไขฉบับเต็ม','Complete population is the qualifiedfollowup list, not all1200parcels.'),
+ 'mavj':('รวมได้ 480 รายการเท่ากับไฟล์ครบชุด สรุปจึงนับได้ครบตามไฟล์','Make it clear that summarycounts cover the fullqualifiedfile, not that every detail appears in the summary.'),
+ '3dwp':('คำถามเรื่องไฟล์ครบไหมตอนต้น มีคำตอบทีละแถวแล้วว่าไฟล์ทั้งสองมีเนื้อหาตรงกัน','Explicit twofiles rather than possible softwareversions; keep original hook and rowwiseequality.')}
+for k,(v,reason) in updates.items():ledger.append({'field':'line:'+k,'before':o['lines'][k],'after':v,'reason':reason});o['lines'][k]=v
+cs={
+ 'define-the-followup':('พัสดุ 3 ชิ้น ผ่านแค่ 1 ชิ้น','Makeparcel subject explicit in standalonechapter; preserve3and1.'),
+ 'read-parquet-back':('เปิดไฟล์เทียบตารางเดิมทีละแถว','Restoreoriginaltablescope omitted from short firstdraft chapter.'),
+ 'new-requirement-consequence':('รวมตรงเวลาพอดี โจทย์เปลี่ยน','Exact-on-time equality, not broadpunctualincl earlyarrivals; changingrequestedlistnotfixingoldresult.')}
+for k,(v,reason) in cs.items():ledger.append({'field':'chapter:'+k,'before':o['chapters'][k],'after':v,'reason':reason});o['chapters'][k]=v
+(B/'th-targets.final.json').write_text(json.dumps(o,ensure_ascii=False,indent=2)+'\n')
+(B/'pass2-critique.json').write_text(json.dumps({'pass':2,'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'reviewed_all_source_target_pairs':111,'chapters_reviewed':6,'complete_metadata_reviewed':True,'corrections':ledger,'correction_count':len(ledger),'meaning_number_negation_register_scope_and_clause_order_checked':True,'advisories_retained_not_fake_fit':True},ensure_ascii=False,indent=2)+'\n')
+print('Saved corrections',len(ledger))

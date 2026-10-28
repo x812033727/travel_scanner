@@ -1,0 +1,29 @@
+{
+  "changes": [
+    {
+      "field": "lines.jd24.text",
+      "before": "이 작은 요약은 보고서에 따로 넣으며, 전체 배송 건 목록을 대신하지 않습니다.",
+      "after": "이 작은 요약은 보고서에 따로 넣으며, 후속 조치 대상 전체 목록을 대신하지 않습니다.",
+      "reason": "Make the full qualified follow-up population explicit, rather than all 1200 parcels."
+    },
+    {
+      "field": "lines.g738.text",
+      "before": "그런데 인계받는 사람이 실제 소요 일수가 약속한 일수와 정확히 같은 건도 포함해 달라고 하면, 검증한 이 지연 목록을 그대로 줘도 될까요?",
+      "after": "받는 쪽이 약속 일수와 실제 일수가 같은 건도 원한다면, 검증한 지연 목록을 그대로 줘도 될까요?",
+      "reason": "Shorten the spoken question while retaining recipient, equal promised/actual days, verified delay list and conditional reuse."
+    },
+    {
+      "field": "description.text",
+      "before": "같은 배송 연습표에서 미리보기가 생략한 행을 확인하고, 전체 후속 조치 목록을 전달합니다.\nAI의 도움을 받아 CSV를 읽으며 쿼리와 전체 결과를 함께 전달하고 싶은 분을 위한 영상입니다.\n\n직접 만든 가상의 배송 데이터와 결정적으로 동작하는 작성자 프로그램을 사용합니다. 실제 회사·고객·공공 통계가 아니며, AI 제품의 응답이나 독립적인 모델 전후 비교 실험도 아닙니다. 2026-10-25에 같은 DuckDB 2.0.0 바이너리로 -agent와 -no-agent를 비교했습니다. 40행은 입력 1,200건의 미리보기이고, 480건은 명시한 조건으로 필터링한 전체 전달 결과입니다. 화면의 생략이 쿼리나 저장 데이터의 손실을 뜻하지는 않습니다.\n\n오류 예시는 작성자가 필드명에서 글자 하나를 일부러 빠뜨렸습니다. 에이전트 모드의 stderr에는 시작 안내 문구와 올바른 JSON 한 줄이 함께 나옵니다. 메시지 줄별로 파싱해야 하며, 텍스트가 섞인 스트림 전체를 하나의 JSON 문서로 취급하면 안 됩니다. DuckDB가 잘못된 JSON을 만들었다거나 실제 제3자 소비 프로그램이 고장 났다고 주장하지 않습니다. CSV·SQL·COPY·Parquet는 기존 기능이고, 새 기능은 에이전트 출력 모드입니다. 성능 벤치마크를 하지 않았으며, 토큰, 비용, 모델 추론, 서버 모드, 기존 데이터베이스 업그레이드도 테스트하지 않았습니다.\n\n학습 자료에는 직접 만든 입력 데이터, 전체 SQL, 재현 스크립트, 전체 480건 CSV와 같은 내용의 Parquet, HTML 보고서, 정확한 명령과 파일별 SHA가 들어 있습니다. 직접 만든 데이터·프로그램·보고서는 CC0-1.0, DuckDB는 MIT이며 공식 문서는 각 저작자의 권리를 따릅니다.\n\n공개 학습 자료(실제로 실행한 명령 9개): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\n전체 fixtures ZIP: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+      "after": "같은 배송 연습표에서 미리보기가 생략한 행을 확인하고, 전체 후속 조치 목록을 전달합니다.\nAI의 도움을 받아 CSV를 읽으며 쿼리와 전체 결과를 함께 전달하고 싶은 분을 위한 영상입니다.\n\n직접 만든 가상의 배송 데이터와, 정해진 규칙대로 동작하도록 작성한 프로그램을 사용합니다. 실제 회사·고객·공공 통계가 아니며, AI 제품의 응답이나 독립적인 모델 전후 비교 실험도 아닙니다. 2026-10-25에 같은 DuckDB 2.0.0 바이너리로 -agent와 -no-agent를 비교했습니다. 40행은 입력 1,200건의 미리보기이고, 480건은 명시한 조건으로 필터링한 전체 전달 결과입니다. 화면의 생략이 쿼리나 저장 데이터의 손실을 뜻하지는 않습니다.\n\n오류 예시는 작성자가 필드명에서 글자 하나를 일부러 빠뜨렸습니다. 에이전트 모드의 stderr에는 시작 안내 문구와 올바른 JSON 한 줄이 함께 나옵니다. 메시지 줄별로 파싱해야 하며, 텍스트가 섞인 스트림 전체를 하나의 JSON 문서로 취급하면 안 됩니다. DuckDB가 잘못된 JSON을 만들었다거나 실제 외부 프로그램이 고장 났다고 주장하지 않습니다. CSV·SQL·COPY·Parquet는 기존 기능이고, 새 기능은 에이전트 출력 모드입니다. 성능 벤치마크를 하지 않았으며, 토큰, 비용, 모델 추론, 서버 모드, 기존 데이터베이스 업그레이드도 테스트하지 않았습니다.\n\n학습 자료에는 직접 만든 입력 데이터, 전체 SQL, 재현 스크립트, 전체 480건 CSV와 같은 내용의 Parquet, HTML 보고서, 정확한 명령과 파일별 SHA가 들어 있습니다. 직접 만든 데이터·프로그램·보고서는 CC0-1.0, DuckDB는 MIT이며 공식 문서는 각 저작자의 권리를 따릅니다.\n\n공개 학습 자료(실제로 실행한 명령 9개): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\n전체 fixtures ZIP: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+      "reason": "Explain the deterministic authored program in plain Korean and call the downstream consumer an external program."
+    }
+  ],
+  "changed_line_ids": [
+    "jd24",
+    "g738"
+  ],
+  "unchanged_other_lines": 109,
+  "source_context_fields_unchanged": true,
+  "all_numbers_negations_dates_conditions_and_public_URLs_preserved": true
+}

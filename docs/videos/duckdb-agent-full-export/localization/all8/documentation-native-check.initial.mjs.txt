@@ -1,0 +1,49 @@
+// Documentation-only native pure binding. No CLI merge, timing generation, media, auth or API.
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import {loadProject,lintProject} from '/workspace/work/travel-scanner-duckdb/tools/video/core/state.mjs';
+import {buildSheet,mergeSheet,translationContext,sheetTodo} from '/workspace/work/travel-scanner-duckdb/tools/video/i18n/cli.mjs';
+import {metadataStatus,thumbnailStatus} from '/workspace/work/travel-scanner-duckdb/tools/video/core/translations.mjs';
+import {speechHash} from '/workspace/work/travel-scanner-duckdb/tools/video/core/timeline.mjs';
+import {screenplay} from '/workspace/work/travel-scanner-duckdb/tools/video/core/screenplay.mjs';
+import {composeDescription,withCaptionTag,checkYoutubeFields} from '/workspace/work/travel-scanner-duckdb/tools/video/core/metadata.mjs';
+const ROOT='/workspace/work/travel-scanner-duckdb',EP=ROOT+'/docs/videos/duckdb-agent-full-export',BASE='/workspace/work/ai-tech-next/fifth-all8-text-docs';
+const LOCALES=['en','ja','ko','es','pt','id','vi','th'],NEW=['pt','id','vi','th'];
+const read=p=>JSON.parse(fs.readFileSync(p,'utf8')),hash=b=>crypto.createHash('sha256').update(b).digest('hex'),sha=p=>hash(fs.readFileSync(p));
+globalThis.fetch=()=>{throw Error('No network in documentation native pure checks');};
+const pins=read(BASE+'/protected-before.json');assert.equal(Object.keys(pins).length,19);
+for(const[file,pin]of Object.entries(pins)){assert.equal(sha(file),pin.sha256);assert.equal(fs.statSync(file).size,pin.bytes);}
+const p=loadProject({root:ROOT,slug:'duckdb-agent-full-export'}),lint=lintProject(p);assert.deepEqual(lint.errors,[]);
+assert.equal(sha(p.file),'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa');assert.equal(speechHash(p.doc,p.lexicon),'38cf9292f6945199');assert.equal(hash(screenplay(p.doc)),'7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b');assert.equal(p.doc.voice.name,'Sulafat');
+const context=translationContext(p.doc,p.lexicon),locales={},newProofs={};
+for(const locale of LOCALES){
+ const t=p.translations[locale],status=metadataStatus(p.doc,t);for(const k of ['title','description','tags'])assert.equal(status[k],'current');
+ assert.equal(Object.keys(status.chapters).length,6);assert(Object.values(status.chapters).every(x=>x==='current'));assert.deepEqual(status.orphans,[]);assert.equal(thumbnailStatus(p.doc,t),'current');assert.equal(Object.keys(t.lines).length,111);
+ const sheet=buildSheet(p.doc,t,locale,null,['metadata','captions'],context);assert.equal(sheet.lines.length,111);assert(sheet.lines.every(x=>!x.todo&&!Object.hasOwn(x,'max_chars')));assert.equal(sheetTodo(sheet),'0 of 111 lines, 0 of 6 chapters');
+ const title=withCaptionTag(t.title,locale),description=composeDescription({body:t.description,timeline:null,sources:p.doc.sources,assets:p.doc.assets,locale,tags:t.tags,category:p.doc.category,campaign:p.doc.slug});assert.deepEqual(checkYoutubeFields({title,description,tags:t.tags},locale),[]);
+ for(const url of p.doc.youtube.description.match(/https:\/\/\S+/g)??[])assert(description.includes(url));
+ locales[locale]={translation_sha256:sha(EP+'/i18n/'+locale+'.json'),lines:111,chapters:6,metadata_status:status,thumbnail_status:'current',native_pure_current_worksheet_todo:sheetTodo(sheet),untimed_description_UTF8_bytes:Buffer.byteLength(description),native_title_characters:[...title].length,actual_or_estimated_timeline_used:false};
+}
+for(const locale of NEW){
+ const dir=EP+'/localization/'+locale,root=read(dir+'/root/'+locale+'.root-reviewed.todo.json'),author=read(dir+'/author/'+({pt:'pt.draft.reviewed.todo.json',id:'id.draft.reviewed.r2.todo.json',vi:'vi.draft.reviewed.final.todo.json',th:'th.draft.reviewed.final.todo.json'}[locale]));
+ const preview=read(dir+'/root/native-pure-premerge.json'),completion=read(dir+'/root/native-merge-completion.json'),review=read(dir+'/root/root-independent-review.json');assert.equal(root.lines.length,111);assert.equal(author.lines.length,111);
+ const changed=[];for(let i=0;i<111;i++){const a=author.lines[i],r=root.lines[i];assert.equal(a.id,r.id);assert.deepEqual({...a,text:null},{...r,text:null});if(a.text!==r.text)changed.push(a.id);}
+ assert.deepEqual(changed,locale==='pt'?['jd24']:[]);
+ if(locale==='pt'){
+  const expected=structuredClone(author);expected.lines.find(x=>x.id==='jd24').text=root.lines.find(x=>x.id==='jd24').text;expected.description.text=root.description.text;assert.deepEqual(root,expected);
+  const oldMap=fs.readFileSync(dir+'/author/source-target-complete-111.final.md','utf8'),corrected=fs.readFileSync(dir+'/author/source-target-complete-111.final.corrected.md','utf8');assert.equal((oldMap.match(/^ES: /gm)??[]).length,111);assert.equal((corrected.match(/^PT: /gm)??[]).length,111);assert.equal(corrected.replace(/^PT: /gm,'ES: '),oldMap);
+  assert.equal(sha(dir+'/author/FINAL-FREEZE.json'),'b75c7428d22bdbf26acf8f56a5d9c29c630d19107da60b78666a402437c31784');assert.equal(sha(dir+'/author/FINAL-FREEZE.v2.json'),'4fbeab4c9b02bea0851bdde08f57fa3cf14ce643e52613aee20a205da1c29750');
+ }else assert.deepEqual(root,author);
+ const merged=mergeSheet(p.doc,root,null);assert.deepEqual(merged.problems,[]);assert.deepEqual(merged.notes,[]);assert.deepEqual(merged.translation,preview.translation);assert.deepEqual(read(EP+'/i18n/'+locale+'.json'),preview.translation);assert.equal(preview.actual_or_estimated_timeline_used,false);
+ assert.equal(completion.actual_process_exit_code,0);assert.equal(completion.actual_repo_file_sha256,sha(EP+'/i18n/'+locale+'.json'));assert.equal(completion.root_semantic_review_sha256,sha(dir+'/root/root-independent-review.json'));assert.equal(completion.root_worksheet_sha256,sha(dir+'/root/'+locale+'.root-reviewed.todo.json'));
+ newProofs[locale]={actual_i18n_sha256:sha(EP+'/i18n/'+locale+'.json'),root_review_sha256:sha(dir+'/root/root-independent-review.json'),completion_sha256:sha(dir+'/root/native-merge-completion.json'),changed_line_ids:changed,root_wording_fields_changed:review.root_wording_fields_changed,native_pure_merge_problems:merged.problems,native_pure_merge_notes:merged.notes,source_context_all_preserved:true,root_wording_before_audio_not_fit_retake_round:true};
+}
+const intermediate=read(EP+'/localization/remaining-text-batch/native-PT-ID-TH-merge-result.json');assert.equal(intermediate.foreign_text_count,7);assert.equal(intermediate.profiles.length,3);assert.equal(sha(EP+'/localization/remaining-text-batch/native-PT-ID-TH-merge-result.json'),'56b00b156f9fefdc9e4cde996e01900c60bddb01e35dcfde156be7c1f926957e');
+const last=read(EP+'/localization/vi/root/native-merge-completion.json');assert.equal(last.foreign_text_count,8);assert.deepEqual(last.foreign_text_locales_adopted,LOCALES);
+const w=read(BASE+'/workdir-before.json');assert.equal(w.raw_WAVs,0);assert.equal(w.M4As,0);assert.equal(w.actual_timeline_exists,false);for(const[rel,pin]of Object.entries(w.files)){assert.equal(sha(w.path+'/'+rel),pin.sha256);assert.equal(fs.statSync(w.path+'/'+rel).size,pin.bytes);}assert(!fs.existsSync(w.path+'/timeline.json'));
+const oldProgress=read(EP+'/history/before-all8-text-adoption-docs/production-progress.json'),progress=read(EP+'/production-progress.json');for(const k of ['source_video_sha256','claims_sha256','speech_hash','voice_unchanged','native_script_gate','fact_checks','native_narrative','TTS','media','source_gates'])assert.deepEqual(progress[k],oldProgress[k]);
+assert.equal(progress.TTS.paid_syntheses,0);assert.equal(progress.TTS.current_raw_WAVs,0);assert.deepEqual(progress.localization_text.adopted_locales,LOCALES);assert.equal(progress.localization_text.adopted_count,8);assert.equal(progress.localization_text.all_eight_text_adoption_complete,true);assert.equal(progress.all_eight_foreign_media_delivery_dod_complete,false);assert.equal(progress.overall_production_completed,false);assert.equal(progress.media.actual_timeline_exists,false);assert.equal(progress.media.main_film_complete,false);for(const row of Object.values(progress.media.foreign_languages))for(const k of ['metadata_delivered','CC_delivered','M4A_delivered','backend_readback'])assert.equal(row[k],false);
+const result={kind:'all8_TEXT_documentation_native_pure_source_glossary_translation_binding',at:new Date().toISOString(),native_lint:lint,source_sha256:sha(p.file),speech_hash:speechHash(p.doc,p.lexicon),native_script_sha256:hash(screenplay(p.doc)),protected_input_files:19,all_protected_bytes_unchanged:true,locales,last_four_proofs:newProofs,intermediate7_batch_unchanged:true,VI_true_completion_proves8:true,all8_text_only:true,glossary:context.glossary,glossary_source_file_sha256:sha(ROOT+'/docs/videos/lexicon.json'),master_workdir_original_files_unchanged:Object.keys(w.files).length,actual_timeline_exists:false,estimated_or_actual_timestamps_generated:false,actual_CC_audio_or_backend_delivered:false,master_TTS_paid:0,CLI_merge_media_auth_API_paid_state_git_actions:0};
+const output=EP+'/localization/all8/documentation-native-binding.json';fs.writeFileSync(output,JSON.stringify(result,null,2)+'\n',{flag:'wx',mode:0o600});for(const[file,pin]of Object.entries(pins))assert.equal(sha(file),pin.sha256);
+console.log(JSON.stringify({ok:true,native_lint_errors:lint.errors.length,native_lint_warnings:lint.warnings,lines:111,locales:LOCALES,protected19_unchanged:true,output,output_sha256:sha(output)}));

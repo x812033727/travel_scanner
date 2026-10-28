@@ -1,0 +1,103 @@
+from pathlib import Path
+from datetime import datetime,timezone
+import json
+import hashlib
+import re
+import shutil
+import subprocess
+from urllib.parse import urlsplit,unquote
+
+ROOT=Path('/workspace/work/travel-scanner-duckdb')
+EP=ROOT/'docs/videos/duckdb-agent-full-export'
+BASE=Path('/workspace/work/ai-tech-next')
+TASK=ROOT/'tasks/open/2026-10-25-produce-video-duckdb-agent-full-export.md'
+HEAD='75d0b12dfba798829d1130e17cb8487c3dd88b2f'
+sha=lambda b:hashlib.sha256(b).hexdigest()
+read=lambda p:json.loads(p.read_bytes())
+def desc(p):
+    data=p.read_bytes();return {'bytes':len(data),'sha256':sha(data)}
+def put(p,data):
+    assert not p.exists(),p
+    p.write_text(json.dumps(data,ensure_ascii=False,indent=2)+'\n')
+def git(args,input=None,expected=(0,)):
+    r=subprocess.run(['git',*args],cwd=ROOT,capture_output=True,input=input)
+    assert r.returncode in expected,(args,r.returncode,r.stderr.decode())
+    return r.stdout
+assert git(['rev-parse','HEAD']).decode().strip()==HEAD
+assert not git(['diff','--cached','--name-only']).strip()
+before=read(BASE/'fifth-JA-text-docs-before.json')['files']
+mutable={'docs/videos/duckdb-agent-full-export/'+x for x in ['README.md','result.md','production-progress.json','receipts/README.md']}
+mutable.add(TASK.relative_to(ROOT).as_posix())
+for rel,v in before.items():
+    if rel not in mutable:assert desc(ROOT/rel)==v,rel
+oldvalidation=read(EP/'receipts/en-text-adoption-validation.json')
+for r in oldvalidation['original_protected_files']:assert desc(EP/r['path'])=={'bytes':r['bytes'],'sha256':r['sha256']},r['path']
+oldfreeze=read(BASE/'fifth-EN-text-docs-final-freeze.json')
+archive=read(EP/'history/before-JA-text-adoption-docs/identity.json')
+archiveBySource={x['original_file']:x for x in archive['files']}
+assert len(archive['files'])==39
+for r in oldfreeze['files']:
+    a=archiveBySource[str(ROOT/r['path'])];assert desc(EP/a['archive_path'])=={'bytes':r['bytes'],'sha256':r['sha256']},r['path']
+for a in archive['files']:assert desc(EP/a['archive_path'])=={'bytes':a['bytes'],'sha256':a['sha256']},a['archive_path']
+authorProtected=read(BASE/'fifth-ja-translation/protected-before-and-after.json')['protected_files']
+for file,v in authorProtected.items():assert desc(Path(file))==v,file
+assert len(authorProtected)==12
+copies=read(EP/'localization/ja/copy-identity.json')['files']
+for r in copies:assert desc(EP/r['public_copy'])=={'bytes':r['bytes'],'sha256':r['sha256']},r['public_copy']
+assert len(copies)==32
+
+previous=read(EP/'receipts/en-text-adoption-index.json')
+entries={x['path']:x for x in previous['entries']}
+assert len(entries)==90
+for rel,r in entries.items():assert desc(EP/rel)=={'bytes':r['bytes'],'sha256':r['sha256']},rel
+for folder in [EP/'history/before-JA-text-adoption-docs',EP/'localization/ja']:
+    for p in folder.rglob('*'):
+        if p.is_file():entries[p.relative_to(EP).as_posix()]={'path':p.relative_to(EP).as_posix(),**desc(p)}
+entries['i18n/ja.json']={'path':'i18n/ja.json',**desc(EP/'i18n/ja.json')}
+index={'kind':'current_EN_JA_text_adoption_evidence_index','at':datetime.now(timezone.utc).isoformat(),'source_video_sha256':'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa','claims_sha256':'cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191','speech_hash':'38cf9292f6945199','native_script_gate_sha256':'7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b','scope':'EN+JA2/8 local text adoption, complete safe author/root/native-merge proofs and exact prechange EN35 archives only. No actual timedCC/M4A/ASR/backend or production completion. Historical evidence keeps original scope.','entries':[entries[k]for k in sorted(entries)],'excluded_from_entries':['README.md','result.md','production-progress.json','receipts/README.md','receipts/ja-text-adoption-index.json','receipts/ja-text-adoption-validation.json'],'previous_current_index_preserved':'receipts/en-text-adoption-index.json','previous_current_index_sha256':desc(EP/'receipts/en-text-adoption-index.json')['sha256'],'previous_EN35_freeze_preserved':'history/before-JA-text-adoption-docs/previous-EN35-final-freeze.json','previous_EN35_freeze_sha256':'6b660e3b485516290503ec3ae7a819a9b180b3f01e25e893ae5d6c079025d33d','JA_author21_freeze_sha256':'0ecc87820a316cdc8c8d3d57c519826f85ce1dfc67f135c2aa00eba7d41e26af','actual_JA_translation_sha256':'324c6f070993c1fc1b08f18d5f9131527eb24278e8ff4f200dfb63c6db4b83f2','text_adopted_locales':['en','ja'],'text_count':2,'total_foreign':8,'actual_CC_or_M4A_or_backend_delivered':False,'self_hash_included':False,'overall_complete':False}
+put(EP/'receipts/ja-text-adoption-index.json',index)
+
+links=[];broken=[]
+def check_link(p,raw):
+    raw=raw.strip()
+    if raw.startswith('<')and'>'in raw:raw=raw[1:raw.index('>')]
+    else:raw=raw.split(' "',1)[0].split(" '",1)[0]
+    u=urlsplit(raw)
+    if u.scheme or raw.startswith(('#','//','/'))or not u.path:return
+    target=(p.parent/unquote(u.path)).resolve();r={'from':p.relative_to(ROOT).as_posix(),'target':raw,'resolved':str(target)}
+    links.append(r)
+    if not target.exists():broken.append(r)
+for p in EP.rglob('*'):
+    if p.suffix=='.md':
+        for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',p.read_text()):check_link(p,target)
+    elif p.suffix=='.html':
+        for target in re.findall(r'(?:href|src)\s*=\s*[\"\']([^\"\']+)[\"\']',p.read_text(),re.I):check_link(p,target)
+for target in re.findall(r'!?\[[^\]]*\]\(([^)]+)\)',TASK.read_text()):check_link(TASK,target)
+assert not broken,broken
+lint=read(BASE/'fifth-JA-text-docs-native-lint.json');binding=read(BASE/'fifth-JA-text-docs-native-binding.json')
+assert not lint['errors']and not lint['warnings'];assert binding['ok']
+tasklog=(BASE/'fifth-JA-text-docs-task-check.log').read_text();m=re.search(r'Validated (\d+) task file\(s\)\.',tasklog);assert m
+warnings=sum(x.startswith('warning:')for x in tasklog.splitlines())
+progress=read(EP/'production-progress.json');assert progress['localization_text']['adopted_count']==2 and progress['TTS']['paid_syntheses']==0 and progress['TTS']['current_raw_WAVs']==0
+assert progress['localization_text']['adopted_locales']==['en','ja']
+assert not progress['overall_production_completed']and not progress['media']['all_eight_ready']
+for r in progress['native_narrative']['readers']:assert r['yes']==12 and r['total']==13 and r['passed']is False
+validation={'kind':'fifth_EN_JA_text_only_documentation_validation','at':datetime.now(timezone.utc).isoformat(),'ok':True,'base_head_before_docs':HEAD,'scope':'Source/current text binding, immutable archives and documentation only; no media acceptance.','before_existing_episode_plus_task_file_count':len(before),'preexisting_unchanged_excluding_five_archived_mutable_docs':len(before)-len(mutable),'original325_protected_files_all_current_SHA_unchanged':True,'old_EN35_files_and_Git_blobs_verified_before_change':True,'all359_old_tracked_episode_Git_blobs_verified_before_change':True,'all39_archive_files_preserved_exact':True,'archive_identity_sha256':desc(EP/'history/before-JA-text-adoption-docs/identity.json')['sha256'],'safe_exact_author_root_copies':len(copies),'native_source_EN_script_lexicon_12files_unchanged':True,'source_video_sha256':desc(EP/'video.json')['sha256'],'claims_sha256':desc(EP/'claims.md')['sha256'],'speech_hash':'38cf9292f6945199','script_sha256':desc(EP/'script.md')['sha256'],'actual_EN_translation_sha256':desc(EP/'i18n/en.json')['sha256'],'actual_JA_translation_sha256':desc(EP/'i18n/ja.json')['sha256'],'JA111_root_targets_equal_author_and_native_preview':True,'root_actual_native_merge_exit':0,'root_no_target_edits':True,'native_binding_receipt_sha256':desc(BASE/'fifth-JA-text-docs-native-binding.json')['sha256'],'native_lint':{'exit':0,'errors':0,'warnings':0,'receipt_sha256':desc(BASE/'fifth-JA-text-docs-native-lint.json')['sha256']},'task_check':{'exit':0,'validated_files':int(m.group(1)),'existing_queue_warnings_retained':warnings,'log_sha256':desc(BASE/'fifth-JA-text-docs-task-check.log')['sha256']},'MD_HTML_relative_links_checked':len(links),'broken_relative_links':broken,'current_index_entry_count':len(entries),'current_index_sha256':desc(EP/'receipts/ja-text-adoption-index.json')['sha256'],'old_indexes_freezes_and_narrative_failures_preserved':True,'author_URL_error_and_two_root_validator_errors_preserved_separately':True,'validator_errors_are_not_audio_or_native_quality_failures':True,'text_adopted_locales':['en','ja'],'text_adopted_count':2,'foreign_required':8,'actual_CC_or_M4A_or_fit_meter_ASR_or_backend_JA_completed':False,'master_TTS_paid':0,'master_raw_WAVs':0,'actual_master_timeline_exists':False,'all_eight_ready':False,'overall_complete':False,'docs_editor_source_EN_JA_voice_lexicon_data_or_media_writes':False,'docs_editor_auth_API_paid_or_approval_actions':0,'git_stage_commit_push_performed':False,'root_independent_freeze_review_required_before_stage_commit_push':True}
+put(EP/'receipts/ja-text-adoption-validation.json',validation)
+put(BASE/'fifth-JA-text-docs-validation-result.json',validation)
+
+after={p.relative_to(ROOT).as_posix():desc(p)for p in EP.rglob('*')if p.is_file()};after[TASK.relative_to(ROOT).as_posix()]=desc(TASK)
+changed=[{'path':rel,**v}for rel,v in sorted(after.items())if rel not in before or before[rel]!=v]
+# Native JA was written before this docs-only baseline; include it without rewriting it.
+ja_rel='docs/videos/duckdb-agent-full-export/i18n/ja.json'
+if not any(x['path']==ja_rel for x in changed):changed.append({'path':ja_rel,**desc(ROOT/ja_rel)})
+changed.sort(key=lambda x:x['path'])
+assert all(x['path'].startswith('docs/videos/duckdb-agent-full-export/')or x['path']==TASK.relative_to(ROOT).as_posix()for x in changed)
+assert not any(x['path'].endswith('i18n/en.json')for x in changed)
+ignored=git(['check-ignore','--stdin'],input=('\n'.join(x['path']for x in changed)+'\n').encode(),expected=(0,1)).decode().splitlines()
+assert all(x.endswith('.log')and x.startswith('docs/videos/duckdb-agent-full-export/')for x in ignored)
+assert not git(['diff','--cached','--name-only']).strip()
+freeze={'kind':'fifth_JA_text_adoption_docs_final_freeze','at':datetime.now(timezone.utc).isoformat(),'ready_for_root_independent_review':True,'base_head':HEAD,'files':changed,'count':len(changed),'index_entry_count':len(entries),'validation_sha256':desc(EP/'receipts/ja-text-adoption-validation.json')['sha256'],'source_sha256':desc(EP/'video.json')['sha256'],'speech_hash':'38cf9292f6945199','actual_native_JA_sha256':desc(EP/'i18n/ja.json')['sha256'],'original325_protected_and_previous_EN35_archive_exact':True,'all359_old_episode_git_blobs_verified_before_edit':True,'JA_author21_freeze_unchanged':True,'scope':'JA actual local text adoption plus exact author/root/errors/history documentation only. EN+JA2/8text; actualmedia0. No stage/commit/push without root independent review.','text_locales_adopted':['en','ja'],'text_count':2,'actual_CC_or_audio_backend_delivered':False,'master_TTS_paid':0,'git_stage_commit_push_not_performed':True,'root_independent_review_required_before_commit_push':True,'ignored_exact_log_paths_require_explicit_force_after_authorization':ignored,'self_hash_included':False}
+put(BASE/'fifth-JA-text-docs-final-freeze.json',freeze)
+put(BASE/'fifth-JA-text-docs-staged-path-proposal.json',{'kind':'proposal_only_no_stage','base_head':HEAD,'freeze_sha256':desc(BASE/'fifth-JA-text-docs-final-freeze.json')['sha256'],'exact_paths':[x['path']for x in changed],'explicit_ignored_log_paths':ignored,'all_other_untracked_paths_excluded':['node_modules'],'root_review_required':True,'git_mutations_performed':0})
+print(json.dumps({'ok':True,'freeze_sha256':desc(BASE/'fifth-JA-text-docs-final-freeze.json')['sha256'],'count':len(changed),'index_entries':len(entries),'links_checked':len(links),'broken_links':len(broken),'native_lint':'0errors0warnings','task_files':int(m.group(1)),'task_warnings_retained':warnings,'ignored_exact_logs':ignored,'stage_commit_push':False},ensure_ascii=False))

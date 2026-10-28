@@ -1,0 +1,138 @@
+from pathlib import Path
+import json,hashlib,re,datetime
+D=Path('/workspace/work/ai-tech-next/fifth-id-translation');p=D/'source-target-complete-111.json';raw=p.read_bytes();H=lambda x:hashlib.sha256(x).hexdigest();assert H(raw)=='92d4dca7b1a38398f8f5df068fd199710c34ab486233dbbf18f5bda5152fe930';o=json.loads(raw)
+vpath=Path('/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json');vraw=vpath.read_bytes();v=json.loads(vraw);assert H(vraw)==o['source_sha256']=='40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa'
+source=[(sc['id'],li['id'],li['text']) for sc in v['scenes'] for li in sc.get('lines',[])];pairs=o['source_target_pairs'];assert len(source)==len(pairs)==111
+assert [(r['scene'],r['id'],r['source']) for r in pairs]==source
+chapters=[{'scene':s['id'],'source':s['chapter']} for s in v['scenes'] if s.get('chapter')];assert len(chapters)==6 and [{'scene':x['scene'],'source':x['source']} for x in o['chapter_pairs']]==chapters
+for k in ['title','description','tags']:assert o['metadata'][k]['source']==v['youtube'][k]
+assert all(o['metadata']['thumbnail']['source'][k]==v['thumbnail']['data'][k] for k in ['tag','headline','sub'])
+urls=lambda s:re.findall(r'https://[^\s]+',s)
+assert urls(o['metadata']['description']['source'])==urls(o['metadata']['description']['text']) and len(urls(o['metadata']['description']['text']))==2
+notes='''Date 25 October 2026 and local computer retained.
+Follow-up query and reopenable handoff retained.
+Total40 from beginning/end, omission marker middle retained.
+Opening question remains a question, not data-loss assertion.
+Deliberately forthcoming missing letter retained.
+Separate-file completeness question retained.
+Full original1200 records retained.
+Original fictional exercise and per-record checking retained.
+9October introduction versus21October2.0 release retained.
+Compact tool reply and explicit omissions retained.
+Consumer/program interpretation of markers retained.
+CSV/SQL/full export pre-existing capabilities retained.
+Fresh exercise directory and sameversion2modes retained.
+No bundled AI/modelaccuracy/cost measurement retained.
+PackageID/route/promised day count retained.
+Status/actual daycount as separate columns retained.
+Explicit ordinary-mode display retained.
+Temporary in-memoryDB and personalinit skipped; consistent with actualcommand.
+Mode parameter only changes; sameinput/query retained.
+Explicitmode avoids autodetection confound retained.
+Omission-location question for bothreplies retained.
+Same table and packageID sorting retained.
+No small-record filter and display-scope distinction retained.
+Ordinarymode total/displayed rowcounts retained.
+Query size versus screen size retained.
+1160 omittedrows retained.
+Not shown is not query/storage loss retained.
+Preview is not final deliverable retained.
+Fulloriginaltable supplies selection population retained.
+Delivered AND actualduration greater thanpromised retained.
+In-transit excluded but preserved original retained.
+ID/route/status text types retained.
+Both daycounts integer, numerical comparison retained.
+Describe names/types retained.
+Group/count bystatus retained.
+960 delivered+240 intransit counts correct; phrasing should attach status to parcels, notbare records.
+Blank actualdays for unfinished transit retained; nozero assumption.
+Apply defined rule to deliveredexample retained.
+Promised3/actual4 retained.
+4>3 qualifies retained.
+4minus3=1late retained.
+Computed difference asnewcolumn retained.
+Apply status condition to transitexample retained.
+Transit excluded and NULLnot0 retained without SQLpredicate evaluation-order promise.
+Filterclause translates rule retained.
+New arithmetic column not original rewrite retained.
+ID/route/twodaycounts/difference selected retained.
+AscendingID and reopenable sameorder retained.
+3=3 giveszero retained.
+Strict greater excludes equal3 retained.
+Missingletter toolresponse question retained.
+Missingcolumn error and no queryresult retained.
+Ordinary mode already diagnosesname retained.
+Deliberate missingfinalletter retained.
+Intentionalisolated typo not AI failure correct; final sentence needs natural Indonesian predicate.
+Skip startuptext, parse followingone validJSONline retained.
+Mixedtext+JSON stream notoneobject retained.
+Wrongname fromobject; suggestions frommessage text retained, no inventedstructured candidatesfield.
+Suggestions checkedagainstoriginalcolumn/finalletter retained.
+Use correct originalcolumn name retained.
+Restore originalpredicate/selection/order retained.
+Previewlimit versus savedfile completeness question retained.
+Full query insideCOPY parentheses retained.
+Selection/order inside and destinationafter retained.
+No displayrowlimit added retained.
+Save qualifyingresult ratherthan copy preview retained.
+CSVdestination andHEADER option retained.
+Verifyselectedcolumn order; ID/routenot swapped retained.
+Parquetcopy changesformat/destination only retained.
+Sameselection/order withinparentheses retained.
+Runfullquery writes bothformats todestinations retained.
+Read exportedCSV for completeness retained.
+Countdataboardrows excludesheader fromparcelcount retained.
+Fullqualified480 retained, notall1200.
+Previewtruncation doesnot truncateexport retained.
+Samemodecomparison sameexportcontent retained.
+Newmode changesreply, doesnot discoverextra lateparcels retained.
+Correctcount not enough; compareformatcontent retained.
+ReadParquet andsortsameID retained.
+CSVreadback enables complete rowwisecomparison retained.
+Readfromdeliverable without rewritingoriginal retained.
+Recall4minus3parcel retained.
+Route/originaldays/late1difference retained.
+Qualifyingtailrecords included retained.
+Head/tail spotcheck versusfullmiddle comparison retained.
+Originalrule groupedbyroute retained.
+Summary onlyqualifying population; doesnot replacefull480list retained.
+Route2+route3 each240 retained.
+240+240=480qualifiedtotal, not1200population retained.
+FullrowwiseCSV/Parquet contentequality retained.
+IDs/values/order beyondmere count retained.
+Independentdeterministic originalpredicate check retained.
+ExpectedIDs agreeexport; return tooriginaldata retained.
+Changedrequirement includes exactlyontime and asksnotdirectlyreuse oldlate-onlylist retained.
+No; previouslyexcludedontime parcels nowincluded retained.
+Preserveoldfile andseparate newquery retained.
+Greaterthan changes togreaterorequal; equalityqualifies retained.
+Newdestination prevents overwritingold retained.
+Runmodifiedquery storesnewresult separately retained.
+Howmanyadditional/whichpopulation question retained.
+720total includes240zero-daydifference retained; nextline says exactlyontime, no720late-only claim.
+New240exactlyontime correct; final clause should addrelativepronoun and repeatpersis for exactontime-orlate label.
+Recallpromised3/actual3 preserved; sentence needs natural relation clauses.
+Equalitychange causesnewinclusion retained.
+Differentpredicates mean listsnotinterchangeable retained.
+Preservebothfilenames/queries forcorrecthandoff retained.
+Handoff includes fullfiles/query/readablesummary retained.
+Reportfindfullfile andregenchangedpredicate retained.
+Openingpreview nowlinkedtofullrulecheckedoutput retained.
+Audiencequestion retained.
+SubscriptionCTA andAItools-through-artifacts scope retained.'''.splitlines()
+assert len(notes)==111
+fixes={36:{'id':'6i82','severity':'language-naturalness','reason':'catatan sudah sampai attaches arrival to records and lacks a clear relative clause; counts/facts remain correct.','suggested_full_text':'Di sini ada sembilan ratus enam puluh catatan untuk paket yang sudah sampai, dan dua ratus empat puluh untuk paket yang masih dalam perjalanan.'},55:{'id':'xj3j','severity':'language-naturalness','reason':'Salah ketiknya saya sengaja lacks a natural verbal predicate; the deliberate typo must remain explicit.','suggested_full_text':'Kueri ini khusus mengisolasi masalah nama kolom. Salah ketik itu sengaja saya buat, bukan kesalahan AI.'},102:{'id':'b5i9','severity':'naturalness-and-precision','reason':'daftar paket sudah sampai needs yang, and the full-list name should retain exactly-on-time rather than an everyday broad on-time sense.','suggested_full_text':'Paket tambahan itu tiba persis tepat waktu. Jadi, ini daftar paket yang sudah sampai persis tepat waktu atau terlambat.'},103:{'id':'fqr6','severity':'language-naturalness','reason':'paket tiga hari dijanjikan dan tiga hari sebenarnya is awkward; use relative clauses while keeping3promised/3actual/excludedoldlist.','suggested_full_text':'Masih ingat paket yang dijanjikan tiga hari dan ternyata juga memerlukan tiga hari, yang tadi tidak masuk daftar?'}}
+per=[]
+for i,(r,n) in enumerate(zip(pairs,notes),1):
+ item={'index':i,'id':r['id'],'source':r['source'],'Indonesian':r['text'],'verdict':'REVISE_WORDING_FACTS_RETAINED' if i in fixes else 'PASS','review_note':n}
+ if i in fixes:item['revision']=fixes[i]
+ per.append(item)
+protected=json.loads((D/'source-before.json').read_bytes());guard=[]
+for f,ref in protected['protected_files'].items():
+ d=Path(f).read_bytes();assert H(d)==ref['sha256'] and len(d)==ref['bytes'];guard.append({'file':f,'sha256':H(d),'bytes':len(d),'unchanged':True})
+assert len(guard)==14
+metadata_reviews=[{'field':'title','verdict':'PASS','note':'40-row preview, completefollow-up handoff andDuckDB2.0 retained; noall1200export inference.'},{'field':'description','verdict':'PASS','note':'Fullread. Originalfictional/deterministic/notrealstats/noAIresponse/noindependentbenchmark, exactdate/same2.0.0/-agent/-no-agent,40of1200vs480qualified, validJSONline/mixedstream/candidatesinmessage,existingCSVSQLCOPYParquet,no token/cost/model/server/upgrade measurement,480CSV/sameParquet,CC0/MIT,9actualcommands,exacttwoURLs preserved.'},{'field':'tags','verdict':'PASS','note':'Eight corresponding tech/topic tags, exactDuckDB/CSV/SQL/Parquet identifiers retained.'},{'field':'thumbnail','verdict':'PASS_TEXT_ONLY','note':'Still omitted/notdisplayedrows andpreview-to-complete meaning retained. No actual render/layout/timing claim.'}]
+proof={'kind':'FRESH_INDEPENDENT_FULL_111_CHINESE_TO_INDONESIAN_READER','reviewed_at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'reviewer':'/root/checked_caption_assets/forty_docs_fact_audit','verdict':'REVISE_FOUR_WORDING_LINES_BEFORE_FINAL_TEXT_PASS','input':{'file':str(p),'sha256':H(raw),'bytes':len(raw),'source_sha256':o['source_sha256']},'source_before_manifest':{'file':str(D/'source-before.json'),'sha256':H((D/'source-before.json').read_bytes()),'count':14},'authorship_separation':{'Indonesian_authored_by_this_reviewer':False,'author_pass_ledgers_read':False,'existing_EN_JA_KO_targets_read':False,'actual_source_video_read':True,'all111pairs_individually_read':True,'all6chapterpairs_read':True,'full_title_description_tags_thumbnail_read':True},'counts':{'source_target_pairs':111,'PASS':107,'REVISE_WORDING_FACTS_RETAINED':4,'source_ID_order_exact':True,'chapter_pairs':6,'metadata_parts':4},'critical_semantics':{'numbers_date_year_and_units':'PASS','1200_input_40_total_head_tail_preview_1160_omitted':'PASS','960delivered_240intransit':'PASS','delivered_AND_actual_gt_promised_480qualified_notall1200':'PASS','4minus3late1_3minus3zero_strictgt_excludes':'PASS','720includes240zero_exactontime_not720late':'PASS','NULLblank_not0_no_SQL_evaluation_order_promise':'PASS','intentionaltypo_notAI_failure':'PASS_FACTS_WORDING55_REVISE','validJSONmessage_line_notwholemixedstream_candidatesinmessage':'PASS','existingCSV_SQL_COPY_Parquet_notnewcapability':'PASS','no_bundledAI_or_model_cost_token_server_upgrade_benchmark_claim':'PASS','exact_two_public_URLs':urls(o['metadata']['description']['text']),'code_identifiers_preserved':'PASS_SOURCE_NATIVE_CODE_NOT_TRANSLATED_OR_MODIFIED'},'per111':per,'chapter_reviews':[dict(x,verdict='PASS',note='Read against fullsourcechapter context; no addednumber/date/condition or capabilityclaim.') for x in o['chapter_pairs']],'metadata_reviews':metadata_reviews,'protected14':guard,'scope':{'scratch_reader_files_only':True,'repo_source_media_state_cache_writes':False,'auth_API':False,'native_CLI_builder_rerun':False,'paid_TTS_ASR_Jev_QA':False,'Git':False,'actual_CC_M4A_fit_timeline_adoption_claim':False},'diagnostic_note':'One exploratory read first treated source-before.json asvideo JSON and printed itsmanifest keys then KeyError(scences); no file/API/production action. Reader subsequently read the actual40eb video identified by the14filemanifest. No source or target change was made by reviewer.'}
+# Write new reader-only artifacts; never replace author/native files or prior reader receipts.
+for name,data in [('independent-reader.initial-source-target-snapshot.json',raw),('independent-reader.initial-full-review.json',(json.dumps(proof,ensure_ascii=False,indent=2)+'\n').encode())]:
+ out=D/name;assert not out.exists();out.write_bytes(data);print(out.name,H(data),len(data))

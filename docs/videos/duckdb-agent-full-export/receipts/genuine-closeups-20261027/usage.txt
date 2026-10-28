@@ -1,0 +1,13 @@
+DuckDB 2.0：原始終端輸出近拍素材與畫面修訂
+
+兩個目標已換成原創操作視窗的無損原圖局部：一般模式完整頁尾1200 rows (40 shown)及5 columns；代理模式1160 rows omitted，位在P0020與P1181之間。原始操作重現日2026-10-27、虛構配送fixture2026-10-25；不是DuckDB官方UI、AI推理或效能測試。
+
+裁切素材本體沒有縮放、重畫、改數字或重新排版文字。來源02-scrolled截取x80/y700/w960/h250，來源03-scrolled截取x80/y425/w650/h220；兩個PNG由普通ffmpeg無損輸出，獨立PNG解碼逐像素比對原圖視窗，RGBA雜湊分別為c1daafc603f4bd7bbdec92f9fdc4acb927e67494975525ba558ce49fd3f1b2aa及7c6c8d91c638b11b10c25b14402132345251fb71794e5ce4cc27155ec15c878c。投影片使用原生screenshot版型放大顯示這兩份真實素材。
+
+本次實際製作22:23:57.664Z至22:24:09.514Z；6個ffmpeg子程序與native render皆exit0，64狀態新繪2／重用62。Root與獨立審查均實看兩張1920×1080輸出及480×270預覽，原始英文1200 rows (40 shown)、5 columns、1160 rows omitted與邊界P0020/P1181可讀。代理圖最上緣P0017局部被裁掉，不宣稱每一列完整顯示；此驗收僅限兩個目標證據，沒有完整成片視覺QA或音訊驗收。
+
+當前video.json SHA-256 1193f92cef36974643dca5027fe07e5b6d0256c20943b24f365120da6a84d998。原生script.md維持b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa，111句、八語全文、claims、聲音、speech38cf9292f6945199與narrativeffa6912398093790保持。只有兩景image/caption與兩份衍生素材來源新增；原3份asset、舊stock/frame/cache/核准、兩份12/13 false及失敗紀錄保留。舊本機script核准仍stale，worker script-check仍missing，未改為通過。
+
+本套件8份為2原始像素裁切PNG、2當前native畫面PNG、當前聯絡表、來源JSON、frames manifest及本說明；沿同一pending SCRIPT3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb追加，原32參照與payload/summary完整保留，預計40份。真實交付與完整下載結果另見實際收據；原32檔及不變的script不重傳或重下載。
+
+無新增TTS／ASR／付費模型請求或伺服器核准。繁中旁白與實際CC、第一章後官方5秒片頭及21秒片尾、至少480秒正文／完整QA，以及八語經當前音檔查核的M4A與CC仍待完成；已驗外語M4A仍0/8。原TTS累計4程序／12POST/raw0、逐句快取、未知紀錄及上限保持。沒有合併、部署、YouTube上傳或正式語言批次。

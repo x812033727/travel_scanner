@@ -1,0 +1,84 @@
+{
+  "pass": 2,
+  "at": "2026-10-26T08:21:19.695277+00:00",
+  "reviewed_all_source_target_pairs": 111,
+  "chapters_reviewed": 6,
+  "complete_metadata_reviewed": true,
+  "corrections": [
+    {
+      "field": "line:ujmc",
+      "before": "โหมด agent ของ DuckDB เปิดตัว 9 ตุลาคม และให้ใช้จริงกับรุ่น 2.0 วันที่ 21 ตุลาคม",
+      "after": "โหมด agent ของ DuckDB แนะนำเมื่อ 9 ตุลาคม และให้ใช้จริงกับรุ่น 2.0 วันที่ 21 ตุลาคม",
+      "reason": "Use introduced for9October, distinct from actualavailability21October; not an earlier release."
+    },
+    {
+      "field": "line:pskv",
+      "before": "มันไม่มีโมเดล AI มาให้ และการเทียบนี้ไม่วัดความแม่นยำหรือค่าใช้โมเดล",
+      "after": "มันไม่มีโมเดล AI มาให้ การเทียบนี้ก็ไม่วัดความแม่นยำหรือค่าใช้จ่ายของโมเดล",
+      "reason": "Keep both negative scope clauses and natural modelusagecost wording."
+    },
+    {
+      "field": "line:ufbq",
+      "before": "จำนวนวันจริงของรายการระหว่างทางว่างอยู่ เพราะยังไม่มีจำนวนวันที่ใช้จนส่งถึง",
+      "after": "จำนวนวันจริงของพัสดุระหว่างทางว่างอยู่ เพราะยังไม่มีระยะเวลาจนส่งถึง",
+      "reason": "A blank actualduration is not a promiseddeadline orzero; keep completed-delivery-duration scope."
+    },
+    {
+      "field": "line:jsui",
+      "before": "ตัวอักษรที่บอกว่าจะหายตอนต้น อยู่ท้ายชื่อฟิลด์จำนวนวันจริงนี่เอง",
+      "after": "ตัวที่บอกว่าจะหายตอนต้นคือ s ท้าย actual_days จึงเหลือ actual_day",
+      "reason": "Ground the missing final letter in exact on-screen fieldspellings, preventing ambiguity about a lost numeric day."
+    },
+    {
+      "field": "line:xj3j",
+      "before": "คิวรีนี้แยกฟิลด์มาแก้ข้อผิดพลาด ฉันจงใจพิมพ์ผิด ไม่ใช่ความผิดของ AI",
+      "after": "คิวรีนี้ดึงเฉพาะฟิลด์มาเช็ก ฉันจงใจพิมพ์ชื่อผิด ไม่ใช่ AI ทำผิด",
+      "reason": "Natural debug wording, retaining narratorintent and explicitnotAIerror."
+    },
+    {
+      "field": "line:ag8z",
+      "before": "พรีวิวที่กลัวว่าจะตัดแถว ไม่ได้ตามคำสั่งส่งออกนี้เข้าไปตัดไฟล์",
+      "after": "การตัดแถวในพรีวิวที่กังวล ไม่ได้เกิดกับไฟล์ที่ส่งออกด้วยคำสั่งนี้",
+      "reason": "Remove awkward personification while preserving preview versus realexport distinction."
+    },
+    {
+      "field": "line:jd24",
+      "before": "สรุปสั้นนี้แยกไว้ในรายงาน ไม่แทนรายการพัสดุฉบับเต็ม",
+      "after": "สรุปสั้นนี้แยกไว้ในรายงาน ไม่แทนรายการพัสดุที่ผ่านเงื่อนไขฉบับเต็ม",
+      "reason": "Complete population is the qualifiedfollowup list, not all1200parcels."
+    },
+    {
+      "field": "line:mavj",
+      "before": "รวมเป็น 480 รายการของไฟล์ครบชุดเมื่อกี้ ไม่มีรายการตกอยู่นอกสรุป",
+      "after": "รวมได้ 480 รายการเท่ากับไฟล์ครบชุด สรุปจึงนับได้ครบตามไฟล์",
+      "reason": "Make it clear that summarycounts cover the fullqualifiedfile, not that every detail appears in the summary."
+    },
+    {
+      "field": "line:3dwp",
+      "before": "คำถามเรื่องไฟล์ครบไหมตอนต้น มีคำตอบทีละแถวแล้วว่าเนื้อหาสองชุดตรงกัน",
+      "after": "คำถามเรื่องไฟล์ครบไหมตอนต้น มีคำตอบทีละแถวแล้วว่าไฟล์ทั้งสองมีเนื้อหาตรงกัน",
+      "reason": "Explicit twofiles rather than possible softwareversions; keep original hook and rowwiseequality."
+    },
+    {
+      "field": "chapter:define-the-followup",
+      "before": "สามชิ้น ผ่านแค่ชิ้นเดียว",
+      "after": "พัสดุ 3 ชิ้น ผ่านแค่ 1 ชิ้น",
+      "reason": "Makeparcel subject explicit in standalonechapter; preserve3and1."
+    },
+    {
+      "field": "chapter:read-parquet-back",
+      "before": "เปิดไฟล์เทียบกลับทีละแถว",
+      "after": "เปิดไฟล์เทียบตารางเดิมทีละแถว",
+      "reason": "Restoreoriginaltablescope omitted from short firstdraft chapter."
+    },
+    {
+      "field": "chapter:new-requirement-consequence",
+      "before": "เพิ่มตรงเวลา เงื่อนไขเปลี่ยน",
+      "after": "รวมตรงเวลาพอดี โจทย์เปลี่ยน",
+      "reason": "Exact-on-time equality, not broadpunctualincl earlyarrivals; changingrequestedlistnotfixingoldresult."
+    }
+  ],
+  "correction_count": 12,
+  "meaning_number_negation_register_scope_and_clause_order_checked": true,
+  "advisories_retained_not_fake_fit": true
+}

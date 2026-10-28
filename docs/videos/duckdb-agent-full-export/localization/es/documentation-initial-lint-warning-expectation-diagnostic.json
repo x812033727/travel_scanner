@@ -1,0 +1,35 @@
+{
+  "kind": "actual_initial_ES_documentation_checker_warning_expectation_error",
+  "at": "2026-10-26T08:33:21.414167+00:00",
+  "actual_exit_code": 1,
+  "actual_exec_session_id": 65733,
+  "where": "check-fifth-es-text-docs.mjs:17 lint warnings assertion before writing documentation binding",
+  "expected_by_initial_checker": [],
+  "actual_native_lint_errors": [],
+  "actual_native_lint_warnings": [
+    {
+      "path": "youtube/es",
+      "message": "es.title: 37.5 full-width characters wide (CJK 1, ASCII 0.5; the ｜series suffix counts), at most 36 before the phone list cuts it"
+    }
+  ],
+  "normal_CLI_lint_exit_code": 0,
+  "normal_CLI_lint_actual_errors": 0,
+  "normal_CLI_lint_actual_warnings": 1,
+  "resolution": "Preserve exact first script and actual redirected output; verify exact native warning in docs checker; report title display advisory without source/target/native threshold edits.",
+  "source_target_native_guard_changes": false,
+  "documentation_binding_written_by_failed_invocation": false,
+  "preserved_files": [
+    {
+      "source": "/workspace/work/ai-tech-next/check-fifth-es-text-docs.mjs",
+      "preserved": "/workspace/work/ai-tech-next/fifth-es-docs/native-pure-first-zero-warning-expectation.mjs",
+      "bytes": 6936,
+      "sha256": "e3fd83593d7693be0f3110aa97a8891854ad273ae819a89884b31492e1ef61a0"
+    },
+    {
+      "source": "/workspace/work/ai-tech-next/fifth-es-docs/native-pure-check.log",
+      "preserved": "/workspace/work/ai-tech-next/fifth-es-docs/native-pure-first-zero-warning-expectation.log",
+      "bytes": 992,
+      "sha256": "bc4bd757d73b20da4cf9ee309795e42d902965334dde2703cf450118f4eca4b8"
+    }
+  ]
+}

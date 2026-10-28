@@ -1,0 +1,16 @@
+from pathlib import Path
+import json,shutil,datetime,hashlib
+B=Path('/workspace/work/ai-tech-next/fifth-th-translation');p=B/'th-targets.final.json';archive=B/'th-targets.after-pass2.json';assert not archive.exists();shutil.copy2(p,archive);o=json.loads(p.read_text())
+new={
+'ab37':('ไม่ได้ค่ะ พัสดุตรงเวลาพอดีที่เคยถูกตัดออก ครั้งนี้ต้องเก็บไว้ด้วย','Independentreader plus ownpass3: exact-on-time, not early-or-on-time broadcategory.'),
+'ujmc':('DuckDB แนะนำโหมด agent เมื่อ 9 ตุลาคม และให้ใช้จริงกับรุ่น 2.0 วันที่ 21 ตุลาคม','Independentreader: natural activeThai subject while preservingintroduction9 vsavailability21.'),
+'x88h':('ครั้งนี้ในโฟลเดอร์ฝึกใหม่ ใช้สองโหมดของรุ่นเดียวกันกับตารางนี้','Ownpass3: keep sourceclauseorder directory first, then sameversiontwomodes; no measuredcueboundaries exist yet.')}
+changes=[]
+for k,(v,why) in new.items():changes.append({'field':'line:'+k,'before':o['lines'][k],'after':v,'reason':why});o['lines'][k]=v
+p.write_text(json.dumps(o,ensure_ascii=False,indent=2)+'\n')
+(B/'author-pass3-final-refinements.json').write_text(json.dumps({'pass':3,'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'full111_and_metadata_reread_completed':True,'changes':changes,'unchanged_source_context_and_other108_targets':True,'old_final_pass2_bytes_archive':'th-targets.after-pass2.json','old_native_artifacts_preserved_in_place':True,'native_guards_or_quality_limits_changed':False,'audio_or_actual_timing_claimed':False},ensure_ascii=False,indent=2)+'\n')
+s=(B/'build-native-th-draft.mjs').read_text();s=s.replace("write('th.native-empty.todo.json',empty);write('th.draft.v1.todo.json',draft);write('th.draft.reviewed.todo.json',final);","write('th.draft.reviewed.final.todo.json',final);")
+for a,b in [('protected-before-and-after.json','protected-before-and-after.final.json'),('th.native-pure-merge-preview.json','th.native-pure-merge-preview.final.json'),('th.metadata-compose-untimed-preview.json','th.metadata-compose-untimed-preview.final.json'),('source-target-complete-111.json','source-target-complete-111.final.json'),('source-target-complete-111.md','source-target-complete-111.final.md'),('author-pass3-native-pure.json','author-pass3-native-pure.final.json')]:s=s.replace(a,b)
+s=s.replace("sha(BASE+'/th.draft.reviewed.todo.json')","sha(BASE+'/th.draft.reviewed.final.todo.json')")
+(B/'build-native-th-final.mjs').write_text(s)
+print('Saved three final refinements; prior outputs preserved unchanged')

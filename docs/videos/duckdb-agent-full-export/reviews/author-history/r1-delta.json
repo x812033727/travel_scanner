@@ -1,0 +1,2158 @@
+{
+  "revision": "story R1 plus separately proven public-command normalization",
+  "before_source": {
+    "bytes": 60609,
+    "sha256": "cf4bb2ae8cb8496503ac55308b5fe91d7b8071c1b2117272f4a9808ce733fd0e"
+  },
+  "after_source": {
+    "bytes": 59480,
+    "sha256": "fc5c2b2dce69763905273e049f32290f613354cc8d068532e67086dcfd2a3da2"
+  },
+  "before_claims": {
+    "bytes": 9767,
+    "sha256": "4768284319dc295bf5cfb3d80bdc709ef9a88c67d6df9f798266f1faa86620ff"
+  },
+  "after_claims": {
+    "bytes": 10494,
+    "sha256": "02bcb6bc2bb7b540b2d5030f37e15fc54334d3f4063c15678e662f455f484dd7"
+  },
+  "story": {
+    "before_scenes": 68,
+    "after_scenes": 66,
+    "before_lines": 121,
+    "after_lines": 114,
+    "scene_order_before": [
+      "parcel-table-start",
+      "running-followup-task",
+      "forty-visible",
+      "missing-question",
+      "typo-question",
+      "export-question",
+      "one-running-task",
+      "input-is-still-there",
+      "input-columns",
+      "mode-role",
+      "force-human",
+      "force-agent",
+      "find-the-omission",
+      "same-preview",
+      "human-footer",
+      "agent-omitted",
+      "same-result-different-view",
+      "define-the-followup",
+      "explicit-input-types",
+      "inspect-columns",
+      "input-status-count",
+      "apply-both-conditions",
+      "read-one-parcel",
+      "compute-days-late",
+      "in-transit-example",
+      "where-is-complete",
+      "voice-the-rule",
+      "selection-and-order",
+      "strict-greater",
+      "on-time-example",
+      "field-name-question",
+      "intentional-typo",
+      "human-error",
+      "valid-json-fields",
+      "stderr-contract",
+      "consumer-expectation",
+      "repair-the-name",
+      "copy-csv-whole",
+      "copy-where",
+      "copy-destination",
+      "copy-parquet-whole",
+      "read-exported-count",
+      "actual-export-count",
+      "same-version-same-answer",
+      "handoff-question",
+      "read-parquet-back",
+      "first-delivered-late",
+      "tail-of-output",
+      "route-summary-query",
+      "route-summary-result",
+      "full-content-comparison",
+      "preview-versus-file",
+      "change-the-requirement",
+      "due-or-late-rule",
+      "variant-result",
+      "on-time-enters-variant",
+      "handoff-pack",
+      "upgrade-question",
+      "release-time",
+      "existing-file-tools",
+      "pick-the-tool",
+      "agent-mode-fit",
+      "lts-is-a-promise",
+      "storage-condition",
+      "bounded-choice",
+      "format-is-not-correctness",
+      "author-demo-scope",
+      "keep-the-rule"
+    ],
+    "scene_order_after": [
+      "parcel-table-start",
+      "running-followup-task",
+      "forty-visible",
+      "missing-question",
+      "typo-question",
+      "export-question",
+      "input-is-still-there",
+      "release-time",
+      "mode-role",
+      "existing-file-tools",
+      "bounded-choice",
+      "input-columns",
+      "force-human",
+      "force-agent",
+      "find-the-omission",
+      "same-preview",
+      "human-footer",
+      "agent-omitted",
+      "same-result-different-view",
+      "define-the-followup",
+      "explicit-input-types",
+      "inspect-columns",
+      "input-status-count",
+      "apply-both-conditions",
+      "read-one-parcel",
+      "compute-days-late",
+      "in-transit-example",
+      "where-is-complete",
+      "selection-and-order",
+      "on-time-example",
+      "field-name-question",
+      "human-error",
+      "intentional-typo",
+      "valid-json-fields",
+      "json-stream-question",
+      "stderr-contract",
+      "consumer-expectation",
+      "repair-the-name",
+      "copy-limit-question",
+      "copy-csv-whole",
+      "copy-where",
+      "copy-destination",
+      "copy-parquet-whole",
+      "run-followup",
+      "read-exported-count",
+      "actual-export-count",
+      "same-version-same-answer",
+      "handoff-question",
+      "read-parquet-back",
+      "run-readback",
+      "first-delivered-late",
+      "tail-of-output",
+      "route-summary-query",
+      "route-summary-result",
+      "full-content-comparison",
+      "source-predicate-check",
+      "change-the-requirement",
+      "new-requirement-consequence",
+      "due-or-late-rule",
+      "run-variant",
+      "variant-members-question",
+      "variant-result",
+      "on-time-enters-variant",
+      "different-deliveries",
+      "handoff-pack",
+      "keep-the-rule"
+    ],
+    "scenes_added": [
+      "json-stream-question",
+      "copy-limit-question",
+      "run-followup",
+      "run-readback",
+      "source-predicate-check",
+      "new-requirement-consequence",
+      "run-variant",
+      "variant-members-question",
+      "different-deliveries"
+    ],
+    "scenes_removed": [
+      "one-running-task",
+      "voice-the-rule",
+      "strict-greater",
+      "preview-versus-file",
+      "upgrade-question",
+      "pick-the-tool",
+      "agent-mode-fit",
+      "lts-is-a-promise",
+      "storage-condition",
+      "format-is-not-correctness",
+      "author-demo-scope"
+    ],
+    "line_edits": [
+      {
+        "id": "dg2i",
+        "before": {
+          "scene": "parcel-table-start",
+          "text": "十月二十五日，我用這份配送表執行查詢。"
+        },
+        "after": {
+          "scene": "parcel-table-start",
+          "text": "二〇二六年十月二十五日，我在這台電腦查配送表。"
+        }
+      },
+      {
+        "id": "c7uh",
+        "before": {
+          "scene": "running-followup-task",
+          "text": "查詢要從裡面找出需要跟進的包裹。"
+        },
+        "after": {
+          "scene": "running-followup-task",
+          "text": "查詢要找出需要跟進的包裹，交成一份能重開的清單。"
+        }
+      },
+      {
+        "id": "x6vr",
+        "before": {
+          "scene": "forty-visible",
+          "text": "螢幕留下前後四十列，中間出現省略標記。"
+        },
+        "after": {
+          "scene": "forty-visible",
+          "text": "螢幕只留下前後四十列，中間出現省略標記。"
+        }
+      },
+      {
+        "id": "a73b",
+        "before": {
+          "scene": "input-is-still-there",
+          "text": "剛剛被省略的是顯示內容，查詢仍處理完整資料。"
+        },
+        "after": {
+          "scene": "input-is-still-there",
+          "text": "那份交付檔必須回查原表；原表仍有一千兩百筆紀錄。"
+        }
+      },
+      {
+        "id": "8ex8",
+        "before": {
+          "scene": "input-is-still-there",
+          "text": "這份原創練習表，共有一千兩百筆虛構配送紀錄。"
+        },
+        "after": {
+          "scene": "input-is-still-there",
+          "text": "這是原創的虛構配送練習表，可以逐筆回查。"
+        }
+      },
+      {
+        "id": "ujmc",
+        "before": {
+          "scene": "release-time",
+          "text": "代理模式在十月九日介紹，隨十月二十一日的二點零正式提供。"
+        },
+        "after": {
+          "scene": "release-time",
+          "text": "DuckDB的代理模式十月九日介紹，十月二十一日隨二點零正式提供。"
+        }
+      },
+      {
+        "id": "m4b3",
+        "before": {
+          "scene": "mode-role",
+          "text": "DuckDB的代理模式，調整工具回覆的格式。"
+        },
+        "after": {
+          "scene": "mode-role",
+          "text": "這個新模式把工具回覆排得緊湊，並把省略標記放進結果。"
+        }
+      },
+      {
+        "id": "6i9g",
+        "before": {
+          "scene": "mode-role",
+          "text": "它自己不包含AI模型，也不會替你決定篩選條件。"
+        },
+        "after": {
+          "scene": "mode-role",
+          "text": "對要讀這份回覆的程式，這些標記就是判讀依據。"
+        }
+      },
+      {
+        "id": "msj7",
+        "before": {
+          "scene": "existing-file-tools",
+          "text": "讀CSV和用SQL匯出結果，則是原本就有的能力。"
+        },
+        "after": {
+          "scene": "existing-file-tools",
+          "text": "讀CSV、寫SQL和匯出完整檔，則是原本就有的能力。"
+        }
+      },
+      {
+        "id": "x88h",
+        "before": {
+          "scene": "bounded-choice",
+          "text": "想試代理模式，就先在新的練習目錄檢查自己的查詢。"
+        },
+        "after": {
+          "scene": "bounded-choice",
+          "text": "這次在新練習目錄，用同版的兩種模式處理這張表。"
+        }
+      },
+      {
+        "id": "pskv",
+        "before": {
+          "scene": "bounded-choice",
+          "text": "原本的工作是否升級，另按相容條件決定。"
+        },
+        "after": {
+          "scene": "bounded-choice",
+          "text": "它不帶AI模型；這個對照也不測模型正確率或使用費用。"
+        }
+      },
+      {
+        "id": "yqnx",
+        "before": {
+          "scene": "input-columns",
+          "text": "每筆都有包裹代號與路線，還有承諾天數。"
+        },
+        "after": {
+          "scene": "input-columns",
+          "text": "每筆都有包裹代號、路線，以及承諾完成的天數。"
+        }
+      },
+      {
+        "id": "xbqa",
+        "before": {
+          "scene": "input-columns",
+          "text": "狀態和實際天數，決定它是否需要跟進。"
+        },
+        "after": {
+          "scene": "input-columns",
+          "text": "狀態和實際天數，則是這份跟進需求要用的欄位。"
+        }
+      },
+      {
+        "id": "yy8n",
+        "before": {
+          "scene": "force-human",
+          "text": "加上一般模式參數，就能明確指定原本的顯示方式。"
+        },
+        "after": {
+          "scene": "force-human",
+          "text": "加上一般模式參數，就能指定原本的顯示方式。"
+        }
+      },
+      {
+        "id": "9gdj",
+        "before": {
+          "scene": "force-human",
+          "text": "這次只用臨時資料庫，並略過個人的初始化檔。"
+        },
+        "after": {
+          "scene": "force-human",
+          "text": "命令使用臨時資料庫，並略過個人的初始化檔。"
+        }
+      },
+      {
+        "id": "c6hy",
+        "before": {
+          "scene": "force-agent",
+          "text": "用明確參數比較，才不會把環境自動偵測混進來。"
+        },
+        "after": {
+          "scene": "force-agent",
+          "text": "明確選模式，就不會把環境自動偵測混進這個對照。"
+        }
+      },
+      {
+        "id": "jm9m",
+        "before": {
+          "scene": "find-the-omission",
+          "text": "同一條查詢的回覆，哪裡標出了省略？"
+        },
+        "after": {
+          "scene": "find-the-omission",
+          "text": "回到開場的省略標記：這兩份回覆，各把它放在哪裡？"
+        }
+      },
+      {
+        "id": "t4hj",
+        "before": {
+          "scene": "same-preview",
+          "text": "這份查詢先建立同一張表，再按包裹代號排列。"
+        },
+        "after": {
+          "scene": "same-preview",
+          "text": "這條查詢先建立同一張表，再按包裹代號排列。"
+        }
+      },
+      {
+        "id": "zxhz",
+        "before": {
+          "scene": "same-preview",
+          "text": "兩種模式使用的是這一份完整查詢。"
+        },
+        "after": {
+          "scene": "same-preview",
+          "text": "它沒有加只取少數紀錄的條件，所以能用來辨認顯示範圍。"
+        }
+      },
+      {
+        "id": "h4gg",
+        "before": {
+          "scene": "human-footer",
+          "text": "一般模式本來就會標出總列數和顯示列數。"
+        },
+        "after": {
+          "scene": "human-footer",
+          "text": "一般模式底下，已經列出總列數與顯示列數。"
+        }
+      },
+      {
+        "id": "4cr9",
+        "before": {
+          "scene": "human-footer",
+          "text": "看見對齊的表格，也要讀完底下那一行。"
+        },
+        "after": {
+          "scene": "human-footer",
+          "text": "這一行把查詢結果大小和畫面大小分開了。"
+        }
+      },
+      {
+        "id": "uj2p",
+        "before": {
+          "scene": "agent-omitted",
+          "text": "代理模式把省略的列數，放進結果中間。"
+        },
+        "after": {
+          "scene": "agent-omitted",
+          "text": "代理模式則在中間直接標出，一千一百六十列省略。"
+        }
+      },
+      {
+        "id": "u5mp",
+        "before": {
+          "scene": "agent-omitted",
+          "text": "這次省略一千一百六十列，不表示它們被刪除。"
+        },
+        "after": {
+          "scene": "agent-omitted",
+          "text": "那是沒有顯示的部分，不是查詢或儲存少掉資料。"
+        }
+      },
+      {
+        "id": "jumq",
+        "before": {
+          "scene": "same-result-different-view",
+          "text": "要交完整清單，就不能只複製眼前這段預覽。"
+        },
+        "after": {
+          "scene": "same-result-different-view",
+          "text": "開場那段預覽只是讀回覆的入口，還不是可交付的名單。"
+        }
+      },
+      {
+        "id": "7npx",
+        "before": {
+          "scene": "same-result-different-view",
+          "text": "我們還得把要找的紀錄，寫成明確條件。"
+        },
+        "after": {
+          "scene": "same-result-different-view",
+          "text": "現在要從完整原表決定，哪些包裹才該留下？"
+        }
+      },
+      {
+        "id": "fpcm",
+        "before": {
+          "scene": "define-the-followup",
+          "text": "仍在途的紀錄，先留在原表，不算進這份清單。"
+        },
+        "after": {
+          "scene": "define-the-followup",
+          "text": "仍在途的紀錄先留在原表，不算進這份需求。"
+        }
+      },
+      {
+        "id": "qxv3",
+        "before": {
+          "scene": "explicit-input-types",
+          "text": "建立表格時，先把代號和狀態讀成文字。"
+        },
+        "after": {
+          "scene": "explicit-input-types",
+          "text": "建立表格時，把代號、路線和狀態讀成文字。"
+        }
+      },
+      {
+        "id": "abty",
+        "before": {
+          "scene": "explicit-input-types",
+          "text": "承諾與實際天數讀成整數，才能直接比較。"
+        },
+        "after": {
+          "scene": "explicit-input-types",
+          "text": "兩種天數讀成整數，比較大小時才是在比較天數。"
+        }
+      },
+      {
+        "id": "m3tz",
+        "before": {
+          "scene": "inspect-columns",
+          "text": "先查看欄位，再數不同狀態各有多少紀錄。"
+        },
+        "after": {
+          "scene": "inspect-columns",
+          "text": "這條描述命令會列出欄位名稱與型別。"
+        }
+      },
+      {
+        "id": "drd5",
+        "before": {
+          "scene": "inspect-columns",
+          "text": "這能讓篩選前提和原始資料先對上。"
+        },
+        "after": {
+          "scene": "inspect-columns",
+          "text": "另一條查詢按狀態計數，確認這份表有哪些待判斷的紀錄。"
+        }
+      },
+      {
+        "id": "6i82",
+        "before": {
+          "scene": "input-status-count",
+          "text": "已送達的紀錄有實際天數，在途的欄位是空白。"
+        },
+        "after": {
+          "scene": "input-status-count",
+          "text": "這裡有九百六十筆已送達，兩百四十筆仍在途。"
+        }
+      },
+      {
+        "id": "ufbq",
+        "before": {
+          "scene": "input-status-count",
+          "text": "空白表示這裡沒有完成天數，不能當成零天。"
+        },
+        "after": {
+          "scene": "input-status-count",
+          "text": "在途的實際天數是空白，意思是還沒有完成天數。"
+        }
+      },
+      {
+        "id": "y43c",
+        "before": {
+          "scene": "apply-both-conditions",
+          "text": "把兩個條件一起套用，這筆已送達包裹會留下嗎？"
+        },
+        "after": {
+          "scene": "apply-both-conditions",
+          "text": "照剛剛的入選規則，這筆已送達包裹會留下嗎？"
+        }
+      },
+      {
+        "id": "8wey",
+        "before": {
+          "scene": "read-one-parcel",
+          "text": "實際天數比較大，因此要進跟進清單。"
+        },
+        "after": {
+          "scene": "read-one-parcel",
+          "text": "它超過承諾，所以要進跟進清單。"
+        }
+      },
+      {
+        "id": "wg3d",
+        "before": {
+          "scene": "compute-days-late",
+          "text": "把實際天數減掉承諾天數，就得到晚了幾天。"
+        },
+        "after": {
+          "scene": "compute-days-late",
+          "text": "用四減三，得到晚一天。"
+        }
+      },
+      {
+        "id": "tqeh",
+        "before": {
+          "scene": "compute-days-late",
+          "text": "這個差值會成為交付檔的一個新欄位。"
+        },
+        "after": {
+          "scene": "compute-days-late",
+          "text": "這個計算會寫成新欄位，接手的人能直接看見差了幾天。"
+        }
+      },
+      {
+        "id": "e77f",
+        "before": {
+          "scene": "in-transit-example",
+          "text": "它沒有符合已送達條件，所以留在原表。"
+        },
+        "after": {
+          "scene": "in-transit-example",
+          "text": "照剛剛的狀態條件，它留在原表；空白不能補成零天。"
+        }
+      },
+      {
+        "id": "ewsi",
+        "before": {
+          "scene": "where-is-complete",
+          "text": "完整規則同時保留已送達和超過承諾天數兩個條件。"
+        },
+        "after": {
+          "scene": "where-is-complete",
+          "text": "把剛剛的入選規則，寫進這一行篩選式。"
+        }
+      },
+      {
+        "id": "bhcv",
+        "before": {
+          "scene": "where-is-complete",
+          "text": "只改其中一個，就不再是剛剛定義的跟進清單。"
+        },
+        "after": {
+          "scene": "where-is-complete",
+          "text": "新欄位的相減式放在選欄部分，不會改寫原始天數。"
+        }
+      },
+      {
+        "id": "g52d",
+        "before": {
+          "scene": "selection-and-order",
+          "text": "選欄位讓接手的人知道每筆為什麼入選。"
+        },
+        "after": {
+          "scene": "selection-and-order",
+          "text": "交付欄位留下代號、路線、兩種天數和剛算出的差值。"
+        }
+      },
+      {
+        "id": "evdb",
+        "before": {
+          "scene": "selection-and-order",
+          "text": "按包裹代號升冪排列，重開檔案也容易逐筆對照。"
+        },
+        "after": {
+          "scene": "selection-and-order",
+          "text": "最後按包裹代號升冪排列，重開檔案便能用同一順序對照。"
+        }
+      },
+      {
+        "id": "6r94",
+        "before": {
+          "scene": "on-time-example",
+          "text": "同一份表裡，這筆實際和承諾天數相同。"
+        },
+        "after": {
+          "scene": "on-time-example",
+          "text": "這筆承諾與實際都是三天，相減得到零。"
+        }
+      },
+      {
+        "id": "s3h7",
+        "before": {
+          "scene": "on-time-example",
+          "text": "用原本的大於條件，它會被留在清單外。"
+        },
+        "after": {
+          "scene": "on-time-example",
+          "text": "套回剛剛的大於符號，它不進這張延遲清單。"
+        }
+      },
+      {
+        "id": "ntfj",
+        "before": {
+          "scene": "field-name-question",
+          "text": "條件已經寫清楚，欄位名稱少一個字母會怎樣？"
+        },
+        "after": {
+          "scene": "field-name-question",
+          "text": "同一套條件已寫好，實際天數欄位少個字母，工具會怎麼回覆？"
+        }
+      },
+      {
+        "id": "ak3j",
+        "before": {
+          "scene": "human-error",
+          "text": "一般模式會回覆，找不到這個欄位。"
+        },
+        "after": {
+          "scene": "human-error",
+          "text": "它先回覆找不到這個欄位，沒有產生查詢結果。"
+        }
+      },
+      {
+        "id": "s9ca",
+        "before": {
+          "scene": "human-error",
+          "text": "它沒有默默換成別的數字繼續查詢。"
+        },
+        "after": {
+          "scene": "human-error",
+          "text": "一般模式已經能指出這個名稱問題。"
+        }
+      },
+      {
+        "id": "jsui",
+        "before": {
+          "scene": "intentional-typo",
+          "text": "我故意把實際天數的欄位名稱，少寫了結尾的字母。"
+        },
+        "after": {
+          "scene": "intentional-typo",
+          "text": "開場預告少掉的那個字母，就在實際天數的欄位結尾。"
+        }
+      },
+      {
+        "id": "xj3j",
+        "before": {
+          "scene": "intentional-typo",
+          "text": "這是同一份需求裡，作者刻意安排的錯字示範。"
+        },
+        "after": {
+          "scene": "intentional-typo",
+          "text": "這是作者安排的排錯練習，不是觀察到的AI失誤。"
+        }
+      },
+      {
+        "id": "cjm4",
+        "before": {
+          "scene": "valid-json-fields",
+          "text": "錯誤類別和欄位名稱，都能各自取出來處理。"
+        },
+        "after": {
+          "scene": "valid-json-fields",
+          "text": "類別和錯字名稱有各自欄位，說明文字還列出候選名稱。"
+        }
+      },
+      {
+        "id": "i2fq",
+        "before": {
+          "scene": "stderr-contract",
+          "text": "這次的錯誤輸出，先有一行模式啟動說明。"
+        },
+        "after": {
+          "scene": "stderr-contract",
+          "text": "這份輸出的第一行，是模式啟動說明文字。"
+        }
+      },
+      {
+        "id": "yxh7",
+        "before": {
+          "scene": "stderr-contract",
+          "text": "後面的JSON行本身合法，要取出那一行再解析。"
+        },
+        "after": {
+          "scene": "stderr-contract",
+          "text": "後面的JSON行本身合法；解析物件前，要先辨認並取出那一行。"
+        }
+      },
+      {
+        "id": "imsp",
+        "before": {
+          "scene": "consumer-expectation",
+          "text": "如果讀取程式預期整串都只有JSON，預期就不一致。"
+        },
+        "after": {
+          "scene": "consumer-expectation",
+          "text": "剛剛的整串解析問題，卡在文字訊息和物件混在同一串。"
+        }
+      },
+      {
+        "id": "qdrd",
+        "before": {
+          "scene": "consumer-expectation",
+          "text": "這不是錯誤物件壞掉，而是要先分清訊息格式。"
+        },
+        "after": {
+          "scene": "consumer-expectation",
+          "text": "不一致的是讀取程式的預期，不能因此說它產生壞JSON。"
+        }
+      },
+      {
+        "id": "7g26",
+        "before": {
+          "scene": "repair-the-name",
+          "text": "回到欄位表，確認真正的實際天數名稱。"
+        },
+        "after": {
+          "scene": "repair-the-name",
+          "text": "錯誤裡的候選名稱，能和原表欄位逐字對上。"
+        }
+      },
+      {
+        "id": "2d84",
+        "before": {
+          "scene": "repair-the-name",
+          "text": "修正名稱後，保留原本的比較條件和排序。"
+        },
+        "after": {
+          "scene": "repair-the-name",
+          "text": "補回結尾字母後，原本的條件、選欄和排序都不必換。"
+        }
+      },
+      {
+        "id": "epd8",
+        "before": {
+          "scene": "copy-csv-whole",
+          "text": "把完整查詢放進COPY，就能把結果寫成表格檔。"
+        },
+        "after": {
+          "scene": "copy-csv-whole",
+          "text": "把剛剛那份完整查詢，放進COPY的括號裡。"
+        }
+      },
+      {
+        "id": "tdtg",
+        "before": {
+          "scene": "copy-csv-whole",
+          "text": "括號裡的條件和排序，仍是剛剛那份清單。"
+        },
+        "after": {
+          "scene": "copy-csv-whole",
+          "text": "括號保留入選規則與排序，後面才指定交付檔的位置。"
+        }
+      },
+      {
+        "id": "q6db",
+        "before": {
+          "scene": "copy-where",
+          "text": "這次從同一個表讀取，沒有在中途加入顯示列數限制。"
+        },
+        "after": {
+          "scene": "copy-where",
+          "text": "從原表到這個輸出，沒有加入顯示列數限制。"
+        }
+      },
+      {
+        "id": "n6c9",
+        "before": {
+          "scene": "copy-where",
+          "text": "所以存檔依據是查詢結果，不是螢幕可見的幾列。"
+        },
+        "after": {
+          "scene": "copy-where",
+          "text": "所以要存的是符合條件的結果，不是從回覆上複製幾行。"
+        }
+      },
+      {
+        "id": "kabz",
+        "before": {
+          "scene": "copy-destination",
+          "text": "輸出位置和標題列設定，也一起寫在命令裡。"
+        },
+        "after": {
+          "scene": "copy-destination",
+          "text": "這個位置決定CSV寫到哪裡，標題列選項則保留欄名。"
+        }
+      },
+      {
+        "id": "5qhj",
+        "before": {
+          "scene": "copy-destination",
+          "text": "接手的人打開CSV，第一列就能知道各欄的意思。"
+        },
+        "after": {
+          "scene": "copy-destination",
+          "text": "第一列有欄名，重新開啟時就能對回原來的選欄。"
+        }
+      },
+      {
+        "id": "6e4u",
+        "before": {
+          "scene": "copy-parquet-whole",
+          "text": "另一份改存Parquet，選欄、條件和排序都保持相同。"
+        },
+        "after": {
+          "scene": "copy-parquet-whole",
+          "text": "另一份改存Parquet，只換輸出格式與目的檔名。"
+        }
+      },
+      {
+        "id": "nsc3",
+        "before": {
+          "scene": "copy-parquet-whole",
+          "text": "這是同一份結果的另一種交付格式。"
+        },
+        "after": {
+          "scene": "copy-parquet-whole",
+          "text": "同一份選欄與排序仍留在括號內，方便稍後比對。"
+        }
+      },
+      {
+        "id": "44a2",
+        "before": {
+          "scene": "read-exported-count",
+          "text": "存好之後，直接讀回輸出的CSV並數資料列。"
+        },
+        "after": {
+          "scene": "read-exported-count",
+          "text": "要回答存檔有沒有被截短，這裡直接讀回輸出的CSV。"
+        }
+      },
+      {
+        "id": "j328",
+        "before": {
+          "scene": "read-exported-count",
+          "text": "不要用畫面顯示的列數，替代這個檔案檢查。"
+        },
+        "after": {
+          "scene": "read-exported-count",
+          "text": "計數對象是檔案中的資料列，不把標題列算成包裹。"
+        }
+      },
+      {
+        "id": "ag8z",
+        "before": {
+          "scene": "actual-export-count",
+          "text": "這是篩選後的結果，和原表的預覽列數不同。"
+        },
+        "after": {
+          "scene": "actual-export-count",
+          "text": "剛剛擔心的預覽截短，沒有跟著這條匯出指令進檔案。"
+        }
+      },
+      {
+        "id": "6da2",
+        "before": {
+          "scene": "same-version-same-answer",
+          "text": "一般模式跑相同條件，也得到相同的清單內容。"
+        },
+        "after": {
+          "scene": "same-version-same-answer",
+          "text": "一般模式執行同一份匯出，也得到相同清單內容。"
+        }
+      },
+      {
+        "id": "385u",
+        "before": {
+          "scene": "same-version-same-answer",
+          "text": "這個對照改變的是回覆方式，不是多找出延遲包裹。"
+        },
+        "after": {
+          "scene": "same-version-same-answer",
+          "text": "這一步說明新模式改的是回覆，沒有多找出延遲包裹。"
+        }
+      },
+      {
+        "id": "zdyx",
+        "before": {
+          "scene": "handoff-question",
+          "text": "清單已經存下來，怎麼確認另一種格式也保存同樣內容？"
+        },
+        "after": {
+          "scene": "handoff-question",
+          "text": "檔案筆數對了就能交嗎，另一種格式也保存同一筆內容嗎？"
+        }
+      },
+      {
+        "id": "qgqv",
+        "before": {
+          "scene": "read-parquet-back",
+          "text": "把Parquet重新讀出，按同一個包裹代號排序。"
+        },
+        "after": {
+          "scene": "read-parquet-back",
+          "text": "為了核對另一種格式，把Parquet讀回並按相同代號排序。"
+        }
+      },
+      {
+        "id": "ineu",
+        "before": {
+          "scene": "read-parquet-back",
+          "text": "再存成CSV，讓兩份結果可以逐列比較。"
+        },
+        "after": {
+          "scene": "read-parquet-back",
+          "text": "再存成CSV，兩份完整結果就有一致的逐列比較方式。"
+        }
+      },
+      {
+        "id": "xqkd",
+        "before": {
+          "scene": "first-delivered-late",
+          "text": "從完整檔挑這筆，仍能看見原本的兩種天數。"
+        },
+        "after": {
+          "scene": "first-delivered-late",
+          "text": "還記得剛剛四減三的那筆包裹嗎？"
+        }
+      },
+      {
+        "id": "xad9",
+        "before": {
+          "scene": "first-delivered-late",
+          "text": "晚了幾天的欄位，也和原來的相減結果一致。"
+        },
+        "after": {
+          "scene": "first-delivered-late",
+          "text": "完整檔保留了它的路線、原始天數，和晚一天的差值。"
+        }
+      },
+      {
+        "id": "6u7e",
+        "before": {
+          "scene": "tail-of-output",
+          "text": "完整檔還保留靠近表格末端、符合條件的紀錄。"
+        },
+        "after": {
+          "scene": "tail-of-output",
+          "text": "沿著代號往後，靠近原表末端的符合紀錄也在完整檔。"
+        }
+      },
+      {
+        "id": "wznc",
+        "before": {
+          "scene": "tail-of-output",
+          "text": "頭尾樣本可以幫你定位，仍不能代替全量核對。"
+        },
+        "after": {
+          "scene": "tail-of-output",
+          "text": "抽頭尾能定位內容；全量比對還要檢查中間每筆。"
+        }
+      },
+      {
+        "id": "h579",
+        "before": {
+          "scene": "route-summary-query",
+          "text": "需要小摘要時，沿用相同條件，再依路線分組。"
+        },
+        "after": {
+          "scene": "route-summary-query",
+          "text": "要讓接手者先掌握分布，這裡沿用原規則，按路線分組計數。"
+        }
+      },
+      {
+        "id": "jd24",
+        "before": {
+          "scene": "route-summary-query",
+          "text": "摘要是另一種閱讀方式，完整名單仍然保留。"
+        },
+        "after": {
+          "scene": "route-summary-query",
+          "text": "這個小摘要另列在報告裡，不會取代完整包裹名單。"
+        }
+      },
+      {
+        "id": "rxjg",
+        "before": {
+          "scene": "route-summary-result",
+          "text": "這次跟進資料分布在兩條虛構路線。"
+        },
+        "after": {
+          "scene": "route-summary-result",
+          "text": "剛剛分組的完整檔，路線二和路線三各有兩百四十筆。"
+        }
+      },
+      {
+        "id": "mavj",
+        "before": {
+          "scene": "route-summary-result",
+          "text": "摘要中的資料列加起來，要能對回完整跟進檔。"
+        },
+        "after": {
+          "scene": "route-summary-result",
+          "text": "加起來是剛才完整檔的四百八十筆，沒有漏在摘要之外。"
+        }
+      },
+      {
+        "id": "3dwp",
+        "before": {
+          "scene": "full-content-comparison",
+          "text": "這次兩種格式逐列比對，包裹代號和各欄內容一致。"
+        },
+        "after": {
+          "scene": "full-content-comparison",
+          "text": "開場問的存檔完整性，現在有逐列答案：兩份內容一致。"
+        }
+      },
+      {
+        "id": "dm84",
+        "before": {
+          "scene": "full-content-comparison",
+          "text": "獨立的簡單程式也依原始條件，核對完整名單。"
+        },
+        "after": {
+          "scene": "full-content-comparison",
+          "text": "比較的不只筆數，還包括每筆代號、欄位數值和排列順序。"
+        }
+      },
+      {
+        "id": "g738",
+        "before": {
+          "scene": "change-the-requirement",
+          "text": "如果需求改成包含剛好準時，這份查詢該改哪裡？"
+        },
+        "after": {
+          "scene": "change-the-requirement",
+          "text": "但若接手者改要包含剛好準時，這張核對過的延遲清單能直接交嗎？"
+        }
+      },
+      {
+        "id": "7th9",
+        "before": {
+          "scene": "due-or-late-rule",
+          "text": "把大於改成大於等於，就連剛好準時的一起保留。"
+        },
+        "after": {
+          "scene": "due-or-late-rule",
+          "text": "篩選式的大於改成大於等於，剛好相等的紀錄就能通過。"
+        }
+      },
+      {
+        "id": "98xj",
+        "before": {
+          "scene": "due-or-late-rule",
+          "text": "同時換一個檔名，避免把它叫作原本的延遲清單。"
+        },
+        "after": {
+          "scene": "due-or-late-rule",
+          "text": "同時換目的檔名，讓新需求不會蓋掉原本那份清單。"
+        }
+      },
+      {
+        "id": "mkfw",
+        "before": {
+          "scene": "variant-result",
+          "text": "變式清單有七百二十筆，其中包含剛好準時的紀錄。"
+        },
+        "after": {
+          "scene": "variant-result",
+          "text": "新清單有七百二十筆，其中兩百四十筆的晚到天數是零。"
+        }
+      },
+      {
+        "id": "b5i9",
+        "before": {
+          "scene": "variant-result",
+          "text": "改的是需求，所以名稱和查詢條件也要一起保存。"
+        },
+        "after": {
+          "scene": "variant-result",
+          "text": "這組新增紀錄剛好準時，所以整份檔要叫剛好準時或晚到。"
+        }
+      },
+      {
+        "id": "fqr6",
+        "before": {
+          "scene": "on-time-enters-variant",
+          "text": "剛剛那筆包裹，現在就會跟著新條件入選。"
+        },
+        "after": {
+          "scene": "on-time-enters-variant",
+          "text": "還記得三天對三天、被留在清單外的那筆嗎？"
+        }
+      },
+      {
+        "id": "g7bc",
+        "before": {
+          "scene": "handoff-pack",
+          "text": "資料包把完整檔、查詢和可讀報告放在一起。"
+        },
+        "after": {
+          "scene": "handoff-pack",
+          "text": "現在交付包裡，有完整資料檔、對應查詢和可讀摘要。"
+        }
+      },
+      {
+        "id": "s9qr",
+        "before": {
+          "scene": "handoff-pack",
+          "text": "想改需求的人，可以先改條件，再重新產生清單。"
+        },
+        "after": {
+          "scene": "handoff-pack",
+          "text": "接手的人能從報告找到全檔，也能修改條件重新產生名單。"
+        }
+      },
+      {
+        "id": "ddtv",
+        "before": {
+          "scene": "keep-the-rule",
+          "text": "保留全量檔，別把預覽當成完整清單。"
+        },
+        "after": {
+          "scene": "keep-the-rule",
+          "text": "開場那段預覽，如今有能對回規則的完整交付檔。"
+        }
+      }
+    ],
+    "lines_added": [
+      {
+        "id": "ys6z",
+        "scene": "json-stream-question",
+        "text": "但接手程式若只接受一個JSON物件，能直接解析整串錯誤輸出嗎？"
+      },
+      {
+        "id": "rw48",
+        "scene": "copy-limit-question",
+        "text": "欄位修好了；剛剛只顯示少數列的回覆，會把存檔也截短嗎？"
+      },
+      {
+        "id": "7b9v",
+        "scene": "run-followup",
+        "text": "用這條命令執行完整查詢，兩種格式就寫到剛才指定的位置。"
+      },
+      {
+        "id": "dgc2",
+        "scene": "run-readback",
+        "text": "執行這份讀回查詢，資料來自交付檔，原始配送表不會被改寫。"
+      },
+      {
+        "id": "ezfg",
+        "scene": "source-predicate-check",
+        "text": "另用簡單程式逐筆讀原表，依原規則產生應入選的代號。"
+      },
+      {
+        "id": "ubtk",
+        "scene": "source-predicate-check",
+        "text": "這份代號清單也和匯出結果相符，核對便回到了原始資料。"
+      },
+      {
+        "id": "ab37",
+        "scene": "new-requirement-consequence",
+        "text": "不能，剛才被排除的準時包裹，這次也得留下。"
+      },
+      {
+        "id": "dyhh",
+        "scene": "new-requirement-consequence",
+        "text": "先保留原檔，再把新需求另存一份查詢。"
+      },
+      {
+        "id": "g89b",
+        "scene": "run-variant",
+        "text": "用這條命令執行修改後的檔案，新的交付結果就另外保存。"
+      },
+      {
+        "id": "u6gp",
+        "scene": "variant-members-question",
+        "text": "剛剛改的符號，究竟多留下多少包裹，又是哪種紀錄？"
+      },
+      {
+        "id": "me2p",
+        "scene": "on-time-enters-variant",
+        "text": "它現在入選，正是剛才改成包含相等的結果。"
+      },
+      {
+        "id": "ptfc",
+        "scene": "different-deliveries",
+        "text": "這兩份清單都依各自條件產生，不能互相代交。"
+      },
+      {
+        "id": "ha7h",
+        "scene": "different-deliveries",
+        "text": "把新舊檔名和各自查詢一起保留，接手者才能選對需求。"
+      }
+    ],
+    "lines_removed": [
+      {
+        "id": "xgg8",
+        "scene": "one-running-task",
+        "text": "我把查詢和交付檔一起留下，讓每筆資料能回查規則。"
+      },
+      {
+        "id": "j46e",
+        "scene": "voice-the-rule",
+        "text": "只取狀態為已送達，而且實際天數大於承諾天數的紀錄。"
+      },
+      {
+        "id": "7jeu",
+        "scene": "voice-the-rule",
+        "text": "交付包裹代號、路線、兩種天數，以及晚了幾天。"
+      },
+      {
+        "id": "939c",
+        "scene": "strict-greater",
+        "text": "這裡用大於，剛好準時的紀錄不會入選。"
+      },
+      {
+        "id": "hder",
+        "scene": "strict-greater",
+        "text": "如果你的工作要包含準時，就要先改清楚需求。"
+      },
+      {
+        "id": "ikqt",
+        "scene": "preview-versus-file",
+        "text": "預覽幫你看懂格式，完整檔用來交付與核對。"
+      },
+      {
+        "id": "qb27",
+        "scene": "preview-versus-file",
+        "text": "兩者一起保留，接手的人才知道自己正在看哪一種。"
+      },
+      {
+        "id": "tfee",
+        "scene": "upgrade-question",
+        "text": "如果你原本的查詢已經能完成工作，需要為新模式立刻升級嗎？"
+      },
+      {
+        "id": "mdiw",
+        "scene": "pick-the-tool",
+        "text": "少量、一次性的篩選，可以沿用你熟悉的表格工具。"
+      },
+      {
+        "id": "cqse",
+        "scene": "pick-the-tool",
+        "text": "要反覆交付同一套規則，就把查詢和完整結果一起保存。"
+      },
+      {
+        "id": "7mth",
+        "scene": "agent-mode-fit",
+        "text": "當程式或代理讀取工具回覆，格式和省略標記就很重要。"
+      },
+      {
+        "id": "wfgn",
+        "scene": "agent-mode-fit",
+        "text": "選代理模式，是為了這一層輸出，不是換一套查詢答案。"
+      },
+      {
+        "id": "96nc",
+        "scene": "lts-is-a-promise",
+        "text": "二點零是長期支援版本，支援承諾至少到二〇二七年十月。"
+      },
+      {
+        "id": "xhbp",
+        "scene": "lts-is-a-promise",
+        "text": "這個日期說的是維護範圍，不能代替你的相容檢查。"
+      },
+      {
+        "id": "whmh",
+        "scene": "storage-condition",
+        "text": "如果多人用不同版本開同一資料庫，要先確認儲存格式。"
+      },
+      {
+        "id": "ah33",
+        "scene": "storage-condition",
+        "text": "新的預設格式，不能直接交給二點零以前的程式讀取。"
+      },
+      {
+        "id": "27ar",
+        "scene": "format-is-not-correctness",
+        "text": "模式對照使用同一個二點零版本，不是跨版本效能評比。"
+      },
+      {
+        "id": "bbte",
+        "scene": "format-is-not-correctness",
+        "text": "輸出更精簡，也不能直接換算成模型正確率或節省費用。"
+      },
+      {
+        "id": "722i",
+        "scene": "author-demo-scope",
+        "text": "這份虛構清單由固定規則產生，查詢也完整保存。"
+      },
+      {
+        "id": "v9mv",
+        "scene": "author-demo-scope",
+        "text": "它能支持這次的交付結果，不能替其他AI產品作保證。"
+      }
+    ],
+    "chapter_changes": [
+      {
+        "scene": "parcel-table-start",
+        "before": "配送清單只顯示一部分",
+        "after": "配送預覽中間少了一大段"
+      },
+      {
+        "scene": "input-is-still-there",
+        "before": "先看完整資料，再選輸出模式",
+        "after": "原表還在，省略出現在回覆裡"
+      },
+      {
+        "scene": "release-time",
+        "before": "把新模式放進合適的工作範圍",
+        "after": null
+      },
+      {
+        "scene": "define-the-followup",
+        "before": "把跟進需求寫成完整條件",
+        "after": "三筆包裹，只有一筆入選"
+      },
+      {
+        "scene": "human-error",
+        "before": null,
+        "after": "少一個字母，查詢先停了下來"
+      },
+      {
+        "scene": "intentional-typo",
+        "before": "讀懂錯誤，再把完整清單存下來",
+        "after": null
+      },
+      {
+        "scene": "read-parquet-back",
+        "before": "打開完整檔，核對每筆交付",
+        "after": "檔案重開後，逐筆對回原表"
+      },
+      {
+        "scene": "new-requirement-consequence",
+        "before": null,
+        "after": "準時包裹加入，清單換了需求"
+      }
+    ]
+  },
+  "claims": {
+    "columns_before_and_after": [
+      "ID／等級",
+      "主張／教學內容",
+      "證據",
+      "範圍",
+      "場景"
+    ],
+    "all_rows_have_all_five_columns": true,
+    "before_count": 23,
+    "after_count": 21,
+    "removed_unused_definitions": {
+      "c21": [
+        "c21｜CITED",
+        "2.0為LTS，官方支援承諾至少到2027年10月。",
+        "https://duckdb.org/2026/10/21/announcing-duckdb-200",
+        "維護承諾不是本地相容性測試；未外推精確終止日。",
+        "lts-is-a-promise"
+      ],
+      "c22": [
+        "c22｜CITED",
+        "2.0新預設格式不可給舊版讀；既有舊格式可由2.0讀寫並保留格式。",
+        "https://duckdb.org/docs/2.0/operations_manual/migration.html",
+        "未實測現有資料庫升級／回滾，不以LTS推立即升級。",
+        "storage-condition, bounded-choice"
+      ]
+    },
+    "added_definitions": {},
+    "row_changes": {
+      "c1": {
+        "before": [
+          "c1｜RUN／作者資料",
+          "原創1200筆虛構配送fixture、作者確定性程式；非公司／個資／公共統計或獨立產品回應。",
+          "demo/input/parcels.csv; ../fifth-demo/input/fixture-description.json; run_operations.py",
+          "不冒稱來源為真業務、AI失敗或站主職業經驗。",
+          "parcel-table-start, running-followup-task, one-running-task, input-is-still-there, input-columns, input-status-count, author-demo-scope"
+        ],
+        "after": [
+          "c1｜RUN／作者資料",
+          "原創1200筆虛構配送fixture、作者確定性程式；非公司／個資／公共統計或獨立產品回應。",
+          "demo/input/parcels.csv; ../fifth-demo/input/fixture-description.json; run_operations.py",
+          "不冒稱來源為真業務、AI失敗或站主職業經驗。",
+          "parcel-table-start, running-followup-task, input-is-still-there, input-columns, input-status-count"
+        ]
+      },
+      "c2": {
+        "before": [
+          "c2｜RUN",
+          "同一2.0查詢資料仍1200筆；一般與agent皆顯示前後40列，agent明列1160省略。",
+          "runlogs/human-preview.stdout.txt; runlogs/agent-preview.stdout.txt",
+          "顯示省略不是查詢／儲存資料遺失。一般模式也已有列數提示。",
+          "forty-visible, missing-question, input-is-still-there, find-the-omission, human-footer, agent-omitted, same-result-different-view, preview-versus-file"
+        ],
+        "after": [
+          "c2｜RUN",
+          "同一2.0查詢資料仍1200筆；一般與agent皆顯示前後40列，agent明列1160省略。",
+          "runlogs/human-preview.stdout.txt; runlogs/agent-preview.stdout.txt; public-run/public-run-results.json",
+          "顯示省略不是查詢／儲存資料遺失。一般模式也已有列數提示。",
+          "forty-visible, missing-question, input-is-still-there, find-the-omission, human-footer, agent-omitted, same-result-different-view, copy-limit-question"
+        ]
+      },
+      "c3": {
+        "before": [
+          "c3｜RUN／故意錯字",
+          "作者故意actual_day錯字；兩模式均報欄位不存在，agent錯誤物件列actual_days候選。",
+          "demo/typo.sql; runlogs/human-typo.stderr.txt; runlogs/agent-typo.stderr.txt",
+          "不是觀察到的AI失誤，也不是只有agent能發現錯誤。",
+          "typo-question, field-name-question, intentional-typo, human-error, valid-json-fields, repair-the-name"
+        ],
+        "after": [
+          "c3｜RUN／故意錯字",
+          "作者故意actual_day錯字；兩模式均報欄位不存在，agent錯誤物件列actual_days候選。",
+          "demo/typo.sql; runlogs/human-typo.stderr.txt; runlogs/agent-typo.stderr.txt; public-run/public-run-results.json",
+          "不是觀察到的AI失誤，也不是只有agent能發現錯誤。",
+          "typo-question, field-name-question, human-error, intentional-typo, valid-json-fields, repair-the-name"
+        ]
+      },
+      "c4": {
+        "before": [
+          "c4｜RUN",
+          "完整主清單480筆；獨立標準函式庫條件核對與Parquet讀回逐列相符。",
+          "demo/output/late-followup.csv; demo/output/parquet-readback.csv; demo/replay-results.json; ../fifth-demo/artifact-verification.json",
+          "僅支持本例交付完整性，不是任意查詢／AI正確性證書。",
+          "export-question, one-running-task, read-exported-count, actual-export-count, full-content-comparison, preview-versus-file"
+        ],
+        "after": [
+          "c4｜RUN",
+          "完整主清單480筆；獨立標準函式庫條件核對與Parquet讀回逐列相符。",
+          "demo/output/late-followup.csv; demo/output/parquet-readback.csv; demo/replay-results.json; ../fifth-demo/artifact-verification.json; public-run/public-run-results.json",
+          "僅支持本例交付完整性，不是任意查詢／AI正確性證書。",
+          "export-question, read-exported-count, actual-export-count, full-content-comparison, source-predicate-check"
+        ]
+      },
+      "c5": {
+        "before": [
+          "c5｜RUN／作者契約",
+          "主需求是status=delivered且actual_days>promised_days；在途不列為已送達延遲，空白不是零天。",
+          "demo/setup.sql; demo/followup.sql; demo/input/parcels.csv",
+          "不偷換成所有在途包裹狀態或真配送政策。",
+          "running-followup-task, input-columns, define-the-followup, explicit-input-types, inspect-columns, apply-both-conditions, where-is-complete, voice-the-rule, strict-greater"
+        ],
+        "after": [
+          "c5｜RUN／作者契約",
+          "主需求是status=delivered且actual_days>promised_days；在途不列為已送達延遲，空白不是零天。",
+          "demo/setup.sql; demo/followup.sql; demo/input/parcels.csv",
+          "不偷換成所有在途包裹狀態或真配送政策。",
+          "running-followup-task, input-columns, define-the-followup, explicit-input-types, inspect-columns, apply-both-conditions, where-is-complete"
+        ]
+      },
+      "c6": {
+        "before": [
+          "c6｜CITED＋本地呈現",
+          "agent模式調整CLI回覆：緊湊Markdown、明示省略／結果摘要和JSON錯誤；不內含AI模型。",
+          "https://duckdb.org/docs/2.0/clients/cli/agent_mode.html; runlogs/agent-preview.stdout.txt; runlogs/agent-typo.stderr.txt",
+          "本地沒有模型推理／產品前後測；機制卡標官方、實際輸出卡標RUN。",
+          "mode-role, force-human, force-agent, same-result-different-view, release-time, agent-mode-fit"
+        ],
+        "after": [
+          "c6｜CITED＋本地呈現",
+          "agent模式調整CLI回覆：緊湊Markdown、明示省略／結果摘要和JSON錯誤；不內含AI模型。",
+          "https://duckdb.org/docs/2.0/clients/cli/agent_mode.html; runlogs/agent-preview.stdout.txt; runlogs/agent-typo.stderr.txt",
+          "本地沒有模型推理／產品前後測；機制卡標官方、實際輸出卡標RUN。",
+          "release-time, mode-role, bounded-choice, force-human, force-agent, same-result-different-view"
+        ]
+      },
+      "c7": {
+        "before": [
+          "c7｜RUN",
+          "完整可讀SQL、-no-init、臨時資料庫與兩種模式命令；同一固定2.0 binary。",
+          "run_operations.py; demo/setup.sql; demo/preview.sql; runlogs/human-preview.command.json; runlogs/agent-preview.command.json",
+          "shell卡換行為可照寫形式，連續反斜線只作shell續行；沒有假終端輸出。",
+          "force-human, force-agent, same-preview, explicit-input-types"
+        ],
+        "after": [
+          "c7｜RUN",
+          "完整可讀SQL、-no-init、臨時資料庫與兩種模式命令；同一固定2.0 binary。",
+          "run_operations.py; demo/setup.sql; demo/preview.sql; runlogs/human-preview.command.json; runlogs/agent-preview.command.json; public-run/public-run-results.json",
+          "shell卡換行為可照寫形式，連續反斜線只作shell續行；沒有假終端輸出。",
+          "force-human, force-agent, same-preview, explicit-input-types, run-followup, run-readback, run-variant"
+        ]
+      },
+      "c8": {
+        "before": [
+          "c8｜RUN",
+          "本例960已送達、240在途；在途actual_days空白。",
+          "runlogs/followup.stdout.txt; demo/input/parcels.csv",
+          "虛構fixture規則，不推論真業務分布。",
+          "inspect-columns, input-status-count"
+        ],
+        "after": [
+          "c8｜RUN",
+          "本例960已送達、240在途；在途actual_days空白。",
+          "runlogs/followup.stdout.txt; demo/input/parcels.csv; public-run/public-run-results.json",
+          "虛構fixture規則，不推論真業務分布。",
+          "inspect-columns, input-status-count"
+        ]
+      },
+      "c9": {
+        "before": [
+          "c9｜RUN資料＋實算",
+          "P0002為3天承諾／4天實際／晚1天；P0005在途空白；P0001為3／3準時。",
+          "demo/input/parcels.csv; demo/output/late-followup.csv; demo/output/due-or-late.csv",
+          "手算與輸出同一筆，不另造外部案例。",
+          "read-one-parcel, compute-days-late, in-transit-example, on-time-example, first-delivered-late, on-time-enters-variant"
+        ],
+        "after": [
+          "c9｜RUN資料＋實算",
+          "P0002為3天承諾／4天實際／晚1天；P0005在途空白；P0001為3／3準時。",
+          "demo/input/parcels.csv; demo/output/late-followup.csv; demo/output/due-or-late.csv; public-run/public-run-results.json",
+          "手算與輸出同一筆，不另造外部案例。",
+          "read-one-parcel, compute-days-late, in-transit-example, on-time-example, first-delivered-late, on-time-enters-variant"
+        ]
+      },
+      "c10": {
+        "before": [
+          "c10｜RUN",
+          "主清單選parcel_id、route、兩種天數、days_late，按parcel_id升冪；COPY保留相同條件。",
+          "demo/followup.sql 第9–22行; demo/output/late-followup.csv",
+          "不把顯示列數上限塞進匯出查詢。",
+          "where-is-complete, voice-the-rule, selection-and-order, repair-the-name, copy-csv-whole, copy-where"
+        ],
+        "after": [
+          "c10｜RUN",
+          "主清單選parcel_id、route、兩種天數、days_late，按parcel_id升冪；COPY保留相同條件。",
+          "demo/followup.sql 第9–22行; demo/output/late-followup.csv; public-run/public-run-results.json",
+          "不把顯示列數上限塞進匯出查詢。",
+          "where-is-complete, selection-and-order, repair-the-name, copy-csv-whole, copy-where"
+        ]
+      },
+      "c11": {
+        "before": [
+          "c11｜RUN＋條件推導",
+          "嚴格大於排除剛好準時；大於等於代表另一個包含剛好準時的需求。",
+          "demo/followup.sql; demo/variant.sql; demo/variant-results.json",
+          "變式另命名，不能把720筆都稱晚到。",
+          "strict-greater, on-time-example"
+        ],
+        "after": [
+          "c11｜RUN＋條件推導",
+          "嚴格大於排除剛好準時；大於等於代表另一個包含剛好準時的需求。",
+          "demo/followup.sql; demo/variant.sql; demo/variant-results.json",
+          "變式另命名，不能把720筆都稱晚到。",
+          "on-time-example, new-requirement-consequence, different-deliveries"
+        ]
+      },
+      "c12": {
+        "before": [
+          "c12｜RUN／輸出契約",
+          "本次stderr為startup文字＋一行合法JSON錯誤；需取JSON行解析，整stream不符合單一JSON物件預期。",
+          "runlogs/agent-typo.stderr.txt; verification.json",
+          "consumer預期不同不等於DuckDB輸出壞JSON；沒有真第三方consumer故障主張。",
+          "valid-json-fields, stderr-contract, consumer-expectation, repair-the-name"
+        ],
+        "after": [
+          "c12｜RUN／輸出契約",
+          "本次stderr為startup文字＋一行合法JSON錯誤；需取JSON行解析，整stream不符合單一JSON物件預期。",
+          "runlogs/agent-typo.stderr.txt; verification.json; public-run/public-run-results.json",
+          "consumer預期不同不等於DuckDB輸出壞JSON；沒有真第三方consumer故障主張。",
+          "valid-json-fields, json-stream-question, stderr-contract, consumer-expectation, repair-the-name"
+        ]
+      },
+      "c13": {
+        "before": [
+          "c13｜RUN",
+          "COPY匯出完整480筆CSV；HEADER保留欄名；檔案讀回count=480。",
+          "demo/followup.sql; runlogs/followup.stdout.txt; demo/output/late-followup.csv",
+          "CSV／SQL／COPY是既有能力，非2.0首創。",
+          "copy-csv-whole, copy-where, copy-destination, copy-parquet-whole, read-exported-count, actual-export-count, first-delivered-late, tail-of-output"
+        ],
+        "after": [
+          "c13｜RUN",
+          "COPY匯出完整480筆CSV；HEADER保留欄名；檔案讀回count=480。",
+          "demo/followup.sql; runlogs/followup.stdout.txt; demo/output/late-followup.csv; public-run/public-run-results.json",
+          "CSV／SQL／COPY是既有能力，非2.0首創。",
+          "copy-limit-question, copy-csv-whole, copy-where, copy-destination, copy-parquet-whole, run-followup, read-exported-count, actual-export-count, first-delivered-late, tail-of-output"
+        ]
+      },
+      "c14": {
+        "before": [
+          "c14｜RUN",
+          "相同選欄／條件／排序匯出Parquet，再讀成CSV逐列一致。",
+          "demo/readback.sql; demo/output/late-followup.parquet; demo/output/parquet-readback.csv; demo/replay-results.json",
+          "沒有Parquet效能／壓縮比較，亦不假稱格式是新功能。",
+          "copy-parquet-whole, handoff-question, read-parquet-back, full-content-comparison"
+        ],
+        "after": [
+          "c14｜RUN",
+          "相同選欄／條件／排序匯出Parquet，再讀成CSV逐列一致。",
+          "demo/readback.sql; demo/output/late-followup.parquet; demo/output/parquet-readback.csv; demo/replay-results.json; public-run/public-run-results.json",
+          "沒有Parquet效能／壓縮比較，亦不假稱格式是新功能。",
+          "copy-parquet-whole, handoff-question, read-parquet-back, run-readback, full-content-comparison"
+        ]
+      },
+      "c15": {
+        "before": [
+          "c15｜RUN",
+          "同一2.0一般／agent模式，相同條件都得到480主清單；差在回覆方式。",
+          "runlogs/human-followup.stdout.txt; runlogs/followup.stdout.txt; demo/replay-results.json",
+          "不是2.0對1.5，沒有成本／速度或模型優劣基準。",
+          "same-version-same-answer, agent-mode-fit, format-is-not-correctness"
+        ],
+        "after": [
+          "c15｜RUN",
+          "同一2.0一般／agent模式，相同條件都得到480主清單；差在回覆方式。",
+          "runlogs/human-followup.stdout.txt; runlogs/followup.stdout.txt; demo/replay-results.json; public-run/public-run-results.json",
+          "不是2.0對1.5，沒有成本／速度或模型優劣基準。",
+          "bounded-choice, same-version-same-answer"
+        ]
+      },
+      "c16": {
+        "before": [
+          "c16｜RUN",
+          "主清單路線R2、R3各240；CSV末端包含P1191、1194、1198、1199及對應值。",
+          "runlogs/followup.stdout.txt; demo/output/late-followup.csv",
+          "頭尾／摘要不代替全量核對，數字只屬此fixture。",
+          "tail-of-output, route-summary-query, route-summary-result"
+        ],
+        "after": [
+          "c16｜RUN",
+          "主清單路線R2、R3各240；CSV末端包含P1191、1194、1198、1199及對應值。",
+          "runlogs/followup.stdout.txt; demo/output/late-followup.csv; public-run/public-run-results.json",
+          "頭尾／摘要不代替全量核對，數字只屬此fixture。",
+          "tail-of-output, route-summary-query, route-summary-result"
+        ]
+      },
+      "c17": {
+        "before": [
+          "c17｜RUN／產物",
+          "主CSV、Parquet、完整SQL及原創HTML／教材包均已存在，可交付並追條件。",
+          "demo/output/late-followup.csv; demo/output/late-followup.parquet; demo/followup.sql; ../fifth-demo/output/followup-report.html; ../fifth-demo/output/fifth-followup-kit.zip",
+          "尚未登記或公開上傳；正式下載URL由root完成後加入，不捏造連結。",
+          "preview-versus-file, handoff-pack, keep-the-rule"
+        ],
+        "after": [
+          "c17｜RUN／產物",
+          "主CSV、Parquet、完整SQL及原創HTML／教材包均已存在，可交付並追條件。",
+          "demo/output/late-followup.csv; demo/output/late-followup.parquet; demo/followup.sql; ../fifth-demo/output/followup-report.html; ../fifth-demo/output/fifth-followup-kit.zip; public-run/public-run-results.json",
+          "教材檔已存在，尚無本片公開下載URL；不捏造公開上傳或成片紀錄。",
+          "different-deliveries, handoff-pack, keep-the-rule"
+        ]
+      },
+      "c19": {
+        "before": [
+          "c19｜CITED",
+          "agent模式10/9介紹，10/21隨2.0正式release；CSV／SQL匯出為既有能力。",
+          "https://duckdb.org/2026/10/09/agent-mode.html; https://duckdb.org/2026/10/21/announcing-duckdb-200; sources/duckdb-release.json",
+          "不是首次能讀CSV，未測全部2.0新增功能。",
+          "upgrade-question, release-time, existing-file-tools"
+        ],
+        "after": [
+          "c19｜CITED",
+          "agent模式10/9介紹，10/21隨2.0正式release；CSV／SQL匯出為既有能力。",
+          "https://duckdb.org/2026/10/09/agent-mode.html; https://duckdb.org/2026/10/21/announcing-duckdb-200; sources/duckdb-release.json",
+          "不是首次能讀CSV，未測全部2.0新增功能。",
+          "release-time, existing-file-tools"
+        ]
+      },
+      "c20": {
+        "before": [
+          "c20｜編輯建議",
+          "一次性表格篩選／反覆交付固定查詢的取捨，先在新練習目錄試用。",
+          "brief.md; demo/replay-results.json",
+          "不是表格產品實測、速度優勢或全面升級建議。",
+          "pick-the-tool, agent-mode-fit, bounded-choice, keep-the-rule"
+        ],
+        "after": [
+          "c20｜編輯選擇／作者方法",
+          "這份練習在新目錄比較同版兩模式，不變更既有資料庫。",
+          "brief.md; demo/replay-results.json; run_operations.py",
+          "不是舊資料庫升級、表格產品比較或全面採用建議。",
+          "bounded-choice"
+        ]
+      },
+      "c23": {
+        "before": [
+          "c23｜方法範圍",
+          "作者固定fixture與確定性SQL；未測模型推理、token／費用、跨版效能、server或升級。",
+          "demo/replay-results.json; run_operations.py; ../fifth-demo/results.json",
+          "agent名稱不等於已運行AI模型；輸出bytes不換算成本。",
+          "format-is-not-correctness, author-demo-scope"
+        ],
+        "after": [
+          "c23｜方法範圍",
+          "作者固定fixture與確定性SQL；未測模型推理、token／費用、跨版效能、server或升級。",
+          "demo/replay-results.json; run_operations.py; ../fifth-demo/results.json",
+          "agent名稱不等於已運行AI模型；輸出bytes不換算成本。",
+          "bounded-choice"
+        ]
+      },
+      "c24": {
+        "before": [
+          "c24｜RUN需求變式",
+          "同資料將>改>=，另存剛好準時或晚到720筆，其中240筆days_late=0；P0001入選。",
+          "demo/variant.sql; demo/variant-results.json; demo/output/due-or-late.csv",
+          "這是明示新需求，不說原480錯，也不把720都叫延遲；檔名due-or-late的精確範圍仍是已送達且actual>=promised。",
+          "change-the-requirement, due-or-late-rule, variant-result, on-time-enters-variant"
+        ],
+        "after": [
+          "c24｜RUN需求變式",
+          "同資料將>改>=，另存剛好準時或晚到720筆，其中240筆days_late=0；P0001入選。",
+          "demo/variant.sql; demo/variant-results.json; demo/output/due-or-late.csv; public-run/public-run-results.json",
+          "這是明示新需求，不說原480錯，也不把720都叫延遲；檔名due-or-late的精確範圍仍是已送達且actual>=promised。",
+          "change-the-requirement, new-requirement-consequence, due-or-late-rule, run-variant, variant-members-question, variant-result, on-time-enters-variant, different-deliveries"
+        ]
+      }
+    },
+    "all_current_scene_references_exact": true
+  },
+  "assets": {
+    "external_asset_files_added": [],
+    "external_asset_files_modified": [],
+    "external_asset_files_removed": [],
+    "card_data_changes": {
+      "bounded-choice": {
+        "before": {
+          "text": "先在新練習目錄試",
+          "sub": "保留原本的工作與資料庫",
+          "kicker": "編輯建議｜未測既有資料庫升級",
+          "key": "保留原本的工作與資料庫"
+        },
+        "after": {
+          "text": "固定資料與版本",
+          "sub": "只比較回覆模式，不變更既有資料庫",
+          "kicker": "作者方法範圍｜2026-10-25",
+          "key": "同版模式對照"
+        }
+      },
+      "force-human": {
+        "before": {
+          "code": "../fifth-demo/bin/duckdb -no-init -no-agent \\\n  :memory: -f demo/preview.sql",
+          "caption": "可照寫命令｜同一固定DuckDB2.0二進位",
+          "key": "明確選擇一般模式"
+        },
+        "after": {
+          "code": "./duckdb -no-init -no-agent \\\n  :memory: -f demo/preview.sql",
+          "caption": "公開教材根目錄｜Linux2.0實跑｜反斜線為shell續行",
+          "key": "明確選擇一般模式"
+        }
+      },
+      "force-agent": {
+        "before": {
+          "code": "../fifth-demo/bin/duckdb -no-init -agent \\\n  :memory: -f demo/preview.sql",
+          "caption": "可照寫命令｜同一輸入與同一2.0版本",
+          "key": "只改模式，輸入與查詢不變"
+        },
+        "after": {
+          "code": "./duckdb -no-init -agent \\\n  :memory: -f demo/preview.sql",
+          "caption": "公開教材根目錄｜Linux2.0實跑｜反斜線為shell續行",
+          "key": "只改模式，輸入與查詢不變"
+        }
+      },
+      "human-footer": {
+        "before": {
+          "quote": "1200 rows (40 shown)                                 5 columns",
+          "source": "本地2.0一般模式輸出節錄｜runlogs/human-preview.stdout.txt",
+          "translation": "共1200列，顯示40列，5個欄位",
+          "key": "一般模式也標示顯示列數"
+        },
+        "after": {
+          "quote": "1200 rows (40 shown)                                 5 columns",
+          "source": "公開教材Linux2.0實跑｜runlogs/human-preview.stdout.txt",
+          "translation": "共1200列，顯示40列，5個欄位",
+          "key": "一般模式也標示顯示列數"
+        }
+      },
+      "agent-omitted": {
+        "before": {
+          "quote": "| … 1160 rows omitted … |",
+          "source": "本地2.0代理模式原文｜runlogs/agent-preview.stdout.txt",
+          "translation": "中間1160列沒有顯示",
+          "key": "省略標記位在結果之中"
+        },
+        "after": {
+          "quote": "| … 1160 rows omitted … |",
+          "source": "公開教材Linux2.0實跑｜runlogs/agent-preview.stdout.txt",
+          "translation": "中間1160列沒有顯示",
+          "key": "省略標記位在結果之中"
+        }
+      },
+      "where-is-complete": {
+        "before": {
+          "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+          "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+          "key": "完整內容與欄位一同保留",
+          "highlight": [
+            5
+          ]
+        },
+        "after": {
+          "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+          "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+          "key": "完整內容與欄位一同保留",
+          "highlight": [
+            3,
+            5
+          ]
+        }
+      },
+      "human-error": {
+        "before": {
+          "quote": "Binder Error: Referenced column \"actual_day\" not found in FROM clause!",
+          "source": "本地2.0一般模式stderr｜runlogs/human-typo.stderr.txt",
+          "translation": "找不到這個欄位名稱",
+          "key": "一般模式也會正確報錯"
+        },
+        "after": {
+          "quote": "Binder Error: Referenced column \"actual_day\" not found in FROM clause!",
+          "source": "公開教材Linux2.0實跑｜runlogs/human-typo.stderr.txt",
+          "translation": "找不到這個欄位名稱",
+          "key": "一般模式也會正確報錯"
+        }
+      },
+      "valid-json-fields": {
+        "before": {
+          "title": "代理模式的錯誤欄位",
+          "columns": [
+            "欄位",
+            "本次內容"
+          ],
+          "rows": [
+            [
+              "exception_type",
+              "Binder"
+            ],
+            [
+              "error_subtype",
+              "COLUMN_NOT_FOUND"
+            ],
+            [
+              "name",
+              "actual_day"
+            ]
+          ],
+          "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+          "key": "代理模式的錯誤欄位"
+        },
+        "after": {
+          "title": "代理模式的錯誤欄位",
+          "columns": [
+            "欄位",
+            "本次內容"
+          ],
+          "rows": [
+            [
+              "exception_type",
+              "Binder"
+            ],
+            [
+              "error_subtype",
+              "COLUMN_NOT_FOUND"
+            ],
+            [
+              "name",
+              "actual_day"
+            ],
+            [
+              "說明內的候選名稱",
+              "actual_days、parcel_id"
+            ]
+          ],
+          "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+          "key": "代理模式的錯誤欄位"
+        }
+      },
+      "actual-export-count": {
+        "before": {
+          "quote": "| 480 |",
+          "source": "本地2.0 exported_rows原文｜runlogs/followup.stdout.txt",
+          "translation": "完整匯出資料列為480筆",
+          "key": "這是篩選後的檔案筆數"
+        },
+        "after": {
+          "quote": "| 480 |",
+          "source": "公開教材Linux2.0實跑｜runlogs/agent-followup.stdout.txt",
+          "translation": "完整匯出資料列為480筆",
+          "key": "這是篩選後的檔案筆數"
+        }
+      },
+      "handoff-pack": {
+        "before": {
+          "title": "交出能重查的教材",
+          "columns": [
+            "檔案",
+            "接手者可以做什麼"
+          ],
+          "rows": [
+            [
+              "CSV",
+              "打開完整跟進紀錄"
+            ],
+            [
+              "Parquet",
+              "保留同內容的資料檔"
+            ],
+            [
+              "SQL",
+              "查看條件、選欄與排序"
+            ],
+            [
+              "HTML",
+              "讀摘要並找到完整檔"
+            ]
+          ],
+          "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+          "key": "交出能重查的教材"
+        },
+        "after": {
+          "title": "交出能重查的教材",
+          "columns": [
+            "檔案",
+            "接手者可以做什麼"
+          ],
+          "rows": [
+            [
+              "CSV",
+              "開啟完整名單"
+            ],
+            [
+              "Parquet",
+              "保存相同內容"
+            ],
+            [
+              "SQL",
+              "重做對應的需求"
+            ],
+            [
+              "HTML",
+              "讀摘要並找到全檔"
+            ]
+          ],
+          "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+          "key": "交出能重查的教材"
+        }
+      }
+    },
+    "new_card_data": {
+      "json-stream-question": {
+        "text": "錯誤物件有了，整串能直接解析嗎？",
+        "sub": "同一份錯誤輸出還包含另一種訊息",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份錯誤輸出還包含另一種訊息"
+      },
+      "copy-limit-question": {
+        "text": "預覽的省略，會跟進檔案嗎？",
+        "sub": "修好欄位後，完整查詢準備寫檔",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "修好欄位後，完整查詢準備寫檔"
+      },
+      "run-followup": {
+        "code": "./duckdb -no-init -agent :memory: -f demo/followup.sql",
+        "caption": "公開教材根目錄｜Linux2.0實際執行的完整命令",
+        "key": "固定同版CLI與臨時資料庫"
+      },
+      "run-readback": {
+        "code": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql",
+        "caption": "公開教材根目錄｜Linux2.0實際執行的完整命令",
+        "key": "固定同版CLI與臨時資料庫"
+      },
+      "source-predicate-check": {
+        "text": "再從原表重算名單",
+        "sub": "標準函式庫逐筆套條件，另核對全部代號",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "標準函式庫逐筆套條件，另核對全部代號"
+      },
+      "new-requirement-consequence": {
+        "text": "原本排除的紀錄，現在要留下",
+        "sub": "改的是交付需求，不是修正舊清單",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "改的是交付需求，不是修正舊清單"
+      },
+      "run-variant": {
+        "code": "./duckdb -no-init -agent :memory: -f demo/variant.sql",
+        "caption": "公開教材根目錄｜Linux2.0實際執行的完整命令",
+        "key": "固定同版CLI與臨時資料庫"
+      },
+      "variant-members-question": {
+        "text": "多出來的是哪一組？",
+        "sub": "同一份原表，只修改這個比較符號",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份原表，只修改這個比較符號"
+      },
+      "different-deliveries": {
+        "text": "兩份清單，各有一份需求",
+        "sub": "同一原表，完整結果隨需求改變",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一原表，完整結果隨需求改變"
+      }
+    },
+    "cards_rendered": false
+  },
+  "public_command_scope_separate": {
+    "proof": {
+      "bytes": 669,
+      "sha256": "531529e890843e77e751c2d11d9987249ea52ab34590c17360af6b3c68ba21b1"
+    },
+    "exact_card_commands": [
+      {
+        "scene": "force-human",
+        "before": "../fifth-demo/bin/duckdb -no-init -no-agent \\\n  :memory: -f demo/preview.sql",
+        "after": "./duckdb -no-init -no-agent \\\n  :memory: -f demo/preview.sql",
+        "actual_command": "./duckdb -no-init -no-agent :memory: -f demo/preview.sql",
+        "receipt": "public-run/runlogs/human-preview.command.json"
+      },
+      {
+        "scene": "force-agent",
+        "before": "../fifth-demo/bin/duckdb -no-init -agent \\\n  :memory: -f demo/preview.sql",
+        "after": "./duckdb -no-init -agent \\\n  :memory: -f demo/preview.sql",
+        "actual_command": "./duckdb -no-init -agent :memory: -f demo/preview.sql",
+        "receipt": "public-run/runlogs/agent-preview.command.json"
+      },
+      {
+        "scene": "run-followup",
+        "before": null,
+        "after": "./duckdb -no-init -agent :memory: -f demo/followup.sql",
+        "actual_command": "./duckdb -no-init -agent :memory: -f demo/followup.sql",
+        "receipt": "public-run/runlogs/agent-followup.command.json"
+      },
+      {
+        "scene": "run-readback",
+        "before": null,
+        "after": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql",
+        "actual_command": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql",
+        "receipt": "public-run/runlogs/readback.command.json"
+      },
+      {
+        "scene": "run-variant",
+        "before": null,
+        "after": "./duckdb -no-init -agent :memory: -f demo/variant.sql",
+        "actual_command": "./duckdb -no-init -agent :memory: -f demo/variant.sql",
+        "receipt": "public-run/runlogs/variant.command.json"
+      }
+    ],
+    "same_2_0_binary": "public-run/public-run-results.json",
+    "fixture_zip": {
+      "bytes": 26889,
+      "sha256": "74064ba70799606bf6c8fbc970109bfad26d0d8a02b73e2c5691534678b9fdf2"
+    },
+    "binary_and_symlink_not_bundled": true
+  },
+  "unchanged": {
+    "frozen_archive_manifest_files": 75,
+    "archive_bad": [],
+    "demo_runlogs_sources_files_bytes_unchanged": [
+      "demo/followup.sql",
+      "demo/input/parcels.csv",
+      "demo/output/due-or-late.csv",
+      "demo/output/late-followup.csv",
+      "demo/output/late-followup.parquet",
+      "demo/output/parquet-readback.csv",
+      "demo/preview.sql",
+      "demo/readback.sql",
+      "demo/replay-results.json",
+      "demo/setup.sql",
+      "demo/typo.sql",
+      "demo/variant-results.json",
+      "demo/variant.sql",
+      "runlogs/agent-preview.command.json",
+      "runlogs/agent-preview.stderr.txt",
+      "runlogs/agent-preview.stdout.txt",
+      "runlogs/agent-typo.command.json",
+      "runlogs/agent-typo.stderr.txt",
+      "runlogs/agent-typo.stdout.txt",
+      "runlogs/followup.command.json",
+      "runlogs/followup.stderr.txt",
+      "runlogs/followup.stdout.txt",
+      "runlogs/human-followup.command.json",
+      "runlogs/human-followup.stderr.txt",
+      "runlogs/human-followup.stdout.txt",
+      "runlogs/human-preview.command.json",
+      "runlogs/human-preview.stderr.txt",
+      "runlogs/human-preview.stdout.txt",
+      "runlogs/human-typo.command.json",
+      "runlogs/human-typo.stderr.txt",
+      "runlogs/human-typo.stdout.txt",
+      "runlogs/readback.command.json",
+      "runlogs/readback.stderr.txt",
+      "runlogs/readback.stdout.txt",
+      "runlogs/variant.command.json",
+      "runlogs/variant.stderr.txt",
+      "runlogs/variant.stdout.txt",
+      "sources/duckdb-agent-doc.html",
+      "sources/duckdb-agent-doc.txt",
+      "sources/duckdb-agent-news.html",
+      "sources/duckdb-agent-news.txt",
+      "sources/duckdb-migration.html",
+      "sources/duckdb-migration.txt",
+      "sources/duckdb-news.html",
+      "sources/duckdb-news.txt",
+      "sources/duckdb-release.json",
+      "sources/fact-freshness-check.json",
+      "sources/freshness-receipts.json"
+    ],
+    "metadata_voice_sources_top_level_unchanged": [
+      "schema_version",
+      "slug",
+      "format",
+      "theme",
+      "category",
+      "narration_locale",
+      "target_minutes",
+      "voice",
+      "subtitles",
+      "youtube",
+      "thumbnail",
+      "sources",
+      "assets"
+    ]
+  }
+}

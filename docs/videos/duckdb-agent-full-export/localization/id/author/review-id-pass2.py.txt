@@ -1,0 +1,25 @@
+import copy,datetime,json,pathlib
+B=pathlib.Path('/workspace/work/ai-tech-next/fifth-id-translation')
+draft=json.loads((B/'id-targets.v1.json').read_text());final=copy.deepcopy(draft)
+corrections=[
+ ('lines.pskv','Mode ini tidak menyertakan model AI. Perbandingan ini juga tidak menguji akurasi model atau biaya pemakaian.','Keep the no-bundled-AI-model claim scoped to the demonstrated mode, not every possible DuckDB extension.'),
+ ('lines.9gdj','Perintah ini memakai basis data sementara di memori dan melewati berkas inisialisasi pribadi.','Clarify the actual temporary in-memory database context; no persistent database upgrade benchmark.'),
+ ('lines.ufbq','Kolom hari sebenarnya untuk paket yang masih di perjalanan kosong, karena pengirimannya belum selesai.','Plain Indonesian for absent final actual-day count; empty/NULL is not zero or corruption.'),
+ ('lines.e77f','Dengan syarat sudah sampai, catatan ini tersisih. Nilai kosongnya juga tidak boleh diisi nol hari.','Express predicate exclusion without implying a guaranteed physical SQL evaluation order; preserve not-zero.'),
+ ('lines.6r94','Paket ini dijanjikan tiga hari, dan waktu sebenarnya juga tiga hari. Selisihnya nol.','Use exact three equals three; tiba dalam can ambiguously mean at most three.'),
+ ('lines.kabz','Lokasi ini menentukan tempat CSV ditulis. Opsi HEADER mempertahankan nama kolom.','Keep the actual SQL option spelling; this is an existing CSV capability.'),
+ ('lines.jd24','Ringkasan kecil untuk paket yang memenuhi syarat ini dicantumkan terpisah dalam laporan. Ringkasan tidak menggantikan daftar lengkapnya.','Explicitly bind the summarized population to the qualifying parcels, not all1200 source records.'),
+ ('lines.mavj','Jumlahnya empat ratus delapan puluh, sama seperti berkas lengkap tadi. Semua catatan yang memenuhi syarat itu tercakup dalam ringkasan.','Restrict no-missing claim to qualifying480 instead of the entire1200 input.'),
+ ('lines.g738','Jika penerima hasil kini meminta paket yang tiba persis tepat waktu ikut masuk, bolehkah daftar khusus keterlambatan yang sudah diperiksa ini langsung diserahkan?','Reduce stiffness while retaining recipient, exactly-on-time inclusion and already-verified late-only old list.'),
+ ('lines.b5i9','Paket tambahan itu tiba persis tepat waktu. Jadi, berkas ini adalah daftar paket sudah sampai yang tepat waktu atau terlambat.','All720 are delivered due-or-late; added240 exactly-on-time are not late720.'),
+]
+ledger=[]
+for field,after,reason in corrections:
+ section,key=field.split('.');before=final[section][key];assert before!=after;final[section][key]=after
+ ledger.append({'field':field,'before':before,'after':after,'reason':reason,'meaning_change_intended':False,'audio_retake_or_fit_round':False})
+before=final['description'];needle='480 catatan adalah hasil lengkap setelah penyaringan dengan syarat tertentu.';assert needle in before
+final['description']=before.replace(needle,'480 catatan adalah hasil lengkap untuk paket yang sudah sampai dan memakan waktu lebih lama dari jumlah hari yang dijanjikan.')
+ledger.append({'field':'description','before':before,'after':final['description'],'reason':'Spell out the480 qualifying population with both delivered AND strictly-over-promised conditions; do not equate480 output to1200 preview input.','meaning_change_intended':False,'audio_retake_or_fit_round':False})
+with (B/'id-targets.final.json').open('x') as f:f.write(json.dumps(final,ensure_ascii=False,indent=2)+'\n')
+with (B/'pass2-critique.json').open('x') as f:f.write(json.dumps({'pass':2,'author':'/root/checked_caption_assets','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'scope':'Second full semantic/naturalness reread over111source-target pairs,6chapters,complete metadata/thumbnail. Same author, not fresh independent review.','correction_count':len(ledger),'corrections':ledger,'unchanged_other_targets':101,'source_speech_Voice_core_14_inputs_not_modified':True,'literal_numbers_negations_full_qualified_population_NULL_and_existing_capability_limits_preserved':True,'not_audio_fit_or_retake_revision_counters':True},ensure_ascii=False,indent=2)+'\n')
+print('Pass2 full reread completed:10line corrections +one metadata population clarification; source unchanged.')

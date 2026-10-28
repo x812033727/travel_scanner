@@ -1,0 +1,75 @@
+{
+  "kind": "current_fifth_source_gates_after_root_metadata_verify4",
+  "observed_at_utc": "2026-10-26T03:46:05.649960+00:00",
+  "source_video_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "speech_hash": "38cf9292f6945199",
+  "native_script_file": "script.md",
+  "native_script_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+  "normal_script_review": {
+    "id": "dd47b9a0-6456-4651-9456-32b320909338",
+    "status": "pending",
+    "created_at": "2026-10-26T01:46:46.925705Z",
+    "readback_at": "2026-10-26T01:51:27.193Z",
+    "http_status": 200,
+    "content_sha256_binds": "script.md",
+    "content_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+    "readback": "receipts/fifth-script-pending-readback.script-gate.json",
+    "raw_project_stage": "narration synthesized",
+    "raw_stage_label_is_not_synthesis_evidence": true,
+    "remote_status_not_refetched_by_documentation_editor": true
+  },
+  "native_local_script_adoption": {
+    "status": "approved",
+    "approved_at": "2026-10-26T01:48:28.930Z",
+    "file": "script.md",
+    "sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+    "safe_entry_receipt": "receipts/script-native-local-adoption.json",
+    "remote_or_user_UI_approval_claimed": false,
+    "original_ca1e_adoption_note_preserved_in_receipt": true
+  },
+  "native_TTS_dryrun": {
+    "completed": true,
+    "receipt": "receipts/fifth-tts-initial-dry-run.log",
+    "requests": 111,
+    "pending_requests": 111,
+    "estimated_billable_characters": 2508,
+    "provider": "gemini",
+    "voice": "Sulafat",
+    "server_config_ready_reported": true,
+    "server_reported_monthly_characters_left": 6244644,
+    "configuration_and_quota_are_not_provider_availability_or_billing_proof": true,
+    "paid_syntheses": 0
+  },
+  "readback_expectation_diagnostic": {
+    "preserved": "receipts/fifth-script-pending-readback.expectation-revise.json",
+    "original_tool_stderr_retained_in_session_not_invented_as_file": true,
+    "no_server_mutation_to_force_a_match": true
+  },
+  "paid_TTS_started": false,
+  "native_audio_completed": false,
+  "prior_source_video_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+  "native_script_sha256_still_matches_regenerated_file": true,
+  "current_source_rebinding_pending_root": false,
+  "root_independent_metadata_verification": {
+    "file": "reviews/fifth-verify-4.json",
+    "sha256": "292e77789e9c79a4fd851daf96d574bdb953045c5ff01319c21edaca91bd7afa",
+    "report": "verify-4.md",
+    "report_sha256": "c1b7af46f33dbc6fdd3a36ca562c5531bbdfb53d4dcd2f5a25dbffabd6ac4080",
+    "verdict": "PASS",
+    "checked_at_utc": "2026-10-26T03:41:58.900Z",
+    "only_source_leaf_changed": "/youtube/description",
+    "complete_111_line_objects_unchanged": true,
+    "all_64_scene_objects_unchanged": true,
+    "confirmed_claims_by_unchanged_dependency_continuity": 21,
+    "fresh_live_official_fact_check_claimed": false,
+    "new_narrative_or_audio_PASS_claimed": false
+  },
+  "original_historical_source_gates": {
+    "file": "receipts/current-source-gates.json",
+    "sha256": "7d2a5c77f2ad86e1228251c777945137d53a680b87ac51fb8d4919c23e3ab47f",
+    "unchanged": true
+  },
+  "new_remote_or_local_approval_created": false,
+  "existing_script_adoption_still_current_by_identical_script_bytes": true
+}

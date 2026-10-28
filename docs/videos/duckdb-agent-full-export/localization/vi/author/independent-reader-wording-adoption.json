@@ -1,0 +1,48 @@
+{
+  "at": "2026-10-26T09:02:42.558330+00:00",
+  "reader_report_sha256": "2dceca4a66deacec149747a824c502d1ca9b17c66f01ff41f2465e9ba2329b85",
+  "changes": [
+    {
+      "field": "lines.c7uh",
+      "before": "Truy vấn cần tìm các kiện hàng phải theo dõi, rồi giao thành danh sách có thể mở lại.",
+      "after": "Truy vấn cần tìm các kiện hàng phải theo dõi, để bàn giao một danh sách có thể mở lại.",
+      "reason": "Use natural purpose wording for delivering a reopenable list; giao thành is awkward and suggests the query turns the parcels into the list.",
+      "independent_V1_before": "Truy vấn cần tìm các kiện hàng phải theo dõi, rồi giao thành danh sách có thể mở lại."
+    },
+    {
+      "field": "lines.ezfg",
+      "before": "Một chương trình đơn giản khác đọc từng bản ghi gốc, áp quy tắc ban đầu và tạo danh sách mã phải được chọn.",
+      "after": "Một chương trình đơn giản khác đọc từng bản ghi gốc, rồi áp quy tắc ban đầu để tạo danh sách mã phải được chọn.",
+      "reason": "đáng được chọn sounds like deserving selection; the source means the deterministic expected qualifying IDs.",
+      "independent_V1_before": "Một chương trình đơn giản khác đọc từng bản ghi gốc, rồi áp quy tắc ban đầu để tạo các mã đáng được chọn."
+    },
+    {
+      "field": "lines.ab37",
+      "before": "Không. Những kiện có hai số ngày bằng nhau từng bị loại giờ cũng phải được giữ lại.",
+      "after": "Không. Các kiện có số ngày thực tế bằng đúng cam kết từng bị loại giờ cũng phải được giữ.",
+      "reason": "Arriving đúng bằng thời hạn is an unnatural collocation. State equality of actual versus promised days explicitly and retain exclusion then inclusion.",
+      "independent_V1_before": "Không. Các kiện đến đúng bằng thời hạn cam kết từng bị loại giờ cũng phải được giữ."
+    },
+    {
+      "field": "lines.b5i9",
+      "before": "Các kiện mới thêm có số ngày bằng đúng cam kết, nên tên danh sách phải là giao đúng ngày hẹn hoặc trễ.",
+      "after": "Nhóm mới thêm có số ngày thực tế bằng đúng cam kết, nên cả tệp phải gọi là giao vừa đúng hạn hoặc giao trễ.",
+      "reason": "Retain the exact zero-late equality and whole-file label, replacing the unnatural đúng bằng hạn collocation.",
+      "independent_V1_before": "Nhóm mới thêm đến đúng bằng thời hạn cam kết, nên cả tệp phải gọi là đúng bằng hạn hoặc giao trễ."
+    },
+    {
+      "field": "chapters.new-requirement-consequence",
+      "before": "Thêm kiện đúng bằng hạn, yêu cầu danh sách đổi theo",
+      "after": "Thêm kiện giao vừa đúng hạn, yêu cầu danh sách đổi theo",
+      "reason": "Same exact-on-time wording correction; keep inclusion changing the requested list."
+    }
+  ],
+  "overlap_with_own_pass2": [
+    "ezfg",
+    "ab37",
+    "b5i9"
+  ],
+  "distinct_extra_line": "c7uh",
+  "source_numbers_conditions_negations_and_URLs_preserved": true,
+  "not_audio_retake_or_fit_reword_round": true
+}

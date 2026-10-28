@@ -1,0 +1,23 @@
+from pathlib import Path
+import json,hashlib,subprocess,datetime
+R=Path('/workspace/work/travel-scanner-duckdb');E=R/'docs/videos/duckdb-agent-full-export';B=Path('/workspace/work/ai-tech-next');D=B/'fifth-all8-text-docs';HEAD='a090b585a674db0f1e0f2ef12771363bfa7596eb'
+def read(p):return json.loads(Path(p).read_text())
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def desc(p):return {'bytes':Path(p).stat().st_size,'sha256':sha(p)}
+def write(p,o):assert not p.exists();p.write_text(json.dumps(o,ensure_ascii=False,indent=2)+'\n')
+assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()==HEAD
+assert not subprocess.check_output(['git','diff','--cached','--name-only'],cwd=R,text=True).strip()
+before=read(D/'before.json');v=read(E/'receipts/all8-text-adoption-validation.json');idx=read(E/'receipts/all8-text-adoption-index.json');assert v['text_count']==8 and not v['actual_CC_M4A_ASR_fit_meter_backend_complete'] and not v['broken_local_links']
+for p,d in before['protected19'].items():assert desc(p)==d
+for d in idx['entries']:assert desc(E/d['path'])=={'bytes':d['bytes'],'sha256':d['sha256']}
+files=[]
+for p in E.rglob('*'):
+ if p.is_file():
+  rel=str(p.relative_to(R));d=desc(p)
+  if rel not in before['all556_Git_blobs'] or before['all556_Git_blobs'][rel]!=d:files.append({'path':rel,**d})
+t=R/'tasks/open/2026-10-25-produce-video-duckdb-agent-full-export.md';files.append({'path':str(t.relative_to(R)),**desc(t)});files.sort(key=lambda x:x['path']);assert len({x['path'] for x in files})==len(files)
+ignored=[f'docs/videos/duckdb-agent-full-export/localization/{l}/root/native-i18n-merge.log' for l in ['id','pt','th','vi']]
+for p in ignored:assert (R/p).stat().st_size==113 and any(x['path']==p for x in files)
+proposal={'kind':'exact_all8_TEXT_docs_path_proposal_only','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'base_HEAD':HEAD,'paths':[d['path'] for d in files],'count':len(files),'ignored_exact_normal_merge_logs_require_explicit_force_after_root_authorization':ignored,'stage_commit_push_performed':False,'node_modules_excluded':True};prop=B/'fifth-all8-text-docs-path-proposal.json';write(prop,proposal)
+freeze={'kind':'all8_local_TEXT_adoption_docs_final_freeze_not_media_completion','at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'ready_for_root_independent_review':True,'base_head':HEAD,'files':files,'count':len(files),'index_entry_count':len(idx['entries']),'index_sha256':sha(E/'receipts/all8-text-adoption-index.json'),'validation_sha256':sha(E/'receipts/all8-text-adoption-validation.json'),'source_sha256':sha(E/'video.json'),'claims_sha256':sha(E/'claims.md'),'speech_hash':'38cf9292f6945199','native_script_sha256':sha(E/'script.md'),'actual_last_four_i18n_sha256':{l:sha(E/'i18n'/f'{l}.json') for l in ['pt','id','vi','th']},'text_locales_adopted':['en','ja','ko','es','pt','id','vi','th'],'text_count':8,'old_ES68_reconstruction':{'unchanged_in_place':63,'exact_archived':5},'old556_Git_anchor':{'unchanged_in_place':551,'exact_archived':5},'source_core_lexicon_all8_i18n_protected19_unchanged':True,'remaining4_author_root_batch_exact_copies':196,'native_lint_errors':0,'native_lint_warnings':v['actual_native_CLI_lint']['exact_warnings'],'tracked_git_diff_check_exit_code':0,'exact_frozen_TH_author_hardbreak_whitespace_advisory':v['frozen_TH_author_Markdown_hardbreak_whitespace_advisory'],'initial_preparation_and_pure_filename_assumptions_failed_before_success_outputs_and_preserved':True,'generated_peer_wording_corrections_no_source_change':True,'actual_local_links_checked':v['actual_local_links_checked'],'actual_CC_M4A_fit_meter_ASR_backend_complete':False,'master_paid_TTS':0,'master_raw_WAVs':0,'master_actual_timeline_exists':False,'all_eight_media_DOD_complete':False,'overall_production_completed':False,'git_stage_commit_push_not_performed':True,'root_independent_review_required_before_stage_commit_push':True,'ignored_exact_log_paths_require_explicit_force_after_authorization':ignored,'scope':'Combined final4 locale text adoption proofs and docs only; never all8audio/media or backend completion.','self_hash_included':False};p=B/'fifth-all8-text-docs-final-freeze.json';write(p,freeze)
+print(json.dumps({'ready_for_root_review':True,'count':len(files),'index_entries':len(idx['entries']),'freeze_file':str(p),'freeze_sha256':sha(p),'proposal_sha256':sha(prop),'links':v['actual_local_links_checked']}))

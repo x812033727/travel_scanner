@@ -1,0 +1,487 @@
+{
+  "title": "Chỉ hiện 40 dòng? Xuất danh sách theo dõi đầy đủ bằng DuckDB 2.0",
+  "description": "Từ cùng một bảng giao hàng thực hành, nhận ra phần bị lược trên màn hình và bàn giao danh sách theo dõi đầy đủ.\nDành cho bạn dùng AI hỗ trợ đọc CSV và muốn giao cả truy vấn lẫn toàn bộ kết quả.\n\nDữ liệu giao hàng giả lập và chương trình theo quy tắc cố định đều do tác giả tạo; không phải dữ liệu công ty, khách hàng hay thống kê công khai thực tế. Không có phản hồi từ sản phẩm AI hay phép thử mô hình độc lập trước và sau. Ngày 2026-10-25, phép so dùng cùng một tệp nhị phân DuckDB 2.0.0 với -agent và -no-agent. 40 dòng là bản xem trước của 1.200 bản ghi đầu vào; 480 bản ghi là toàn bộ kết quả đáp ứng điều kiện chọn rõ ràng. Dòng bị lược trên màn hình không có nghĩa truy vấn hay dữ liệu lưu trữ bị mất.\n\nTác giả cố ý viết thiếu một chữ trong tên cột để minh họa lỗi. Ở lần chạy này, stderr của chế độ agent có chữ lúc khởi động cùng một dòng JSON hợp lệ; cần phân tích theo từng dòng thông điệp, không coi cả luồng trộn là một tài liệu JSON duy nhất. Không khẳng định DuckDB sinh JSON hỏng hay một chương trình nhận dữ liệu bên ngoài đã thật sự gặp sự cố. CSV, SQL, COPY và Parquet đã có từ trước; tính năng mới là chế độ đầu ra cho agent. Đây không phải phép đo hiệu năng. Không đo lượng token hay chi phí, cũng không thử khả năng suy luận của mô hình, chế độ máy chủ hoặc nâng cấp cơ sở dữ liệu có sẵn.\n\nBộ thực hành gồm đầu vào tự tạo, SQL đầy đủ, tập lệnh chạy lại, CSV đủ 480 bản ghi và Parquet cùng nội dung, báo cáo HTML, lệnh chính xác và SHA của từng tệp. Dữ liệu, chương trình và báo cáo tự tạo dùng CC0-1.0; DuckDB dùng MIT. Văn bản chính thức thuộc quyền của tác giả tương ứng.\n\nTài liệu công khai (9 lệnh đã chạy thực tế): https://github.com/x812033727/travel_scanner/tree/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/public-run\nZIP fixtures đầy đủ: https://raw.githubusercontent.com/x812033727/travel_scanner/410633ab4addde4d4590dfecc0e138d48d072d3b/docs/videos/duckdb-agent-full-export/duckdb-public-fixtures.zip",
+  "tags": [
+    "DuckDB",
+    "phân tích dữ liệu AI",
+    "chế độ agent",
+    "CSV",
+    "SQL",
+    "Parquet",
+    "truy vấn dữ liệu",
+    "danh sách đầy đủ"
+  ],
+  "thumbnail": {
+    "tag": "DuckDB2.0",
+    "headline": "Vẫn còn\n**dòng bị lược**",
+    "sub": "Từ xem trước đến tệp đầy đủ"
+  },
+  "chapters": {
+    "parcel-table-start": "Bản xem trước giao hàng bị lược một đoạn giữa",
+    "input-is-still-there": "Bảng gốc vẫn đủ, chỉ phản hồi lược dòng",
+    "define-the-followup": "Ba kiện hàng, chỉ một kiện được chọn",
+    "human-error": "Thiếu một chữ, truy vấn dừng lại",
+    "read-parquet-back": "Mở lại tệp và so từng bản ghi với bảng gốc",
+    "new-requirement-consequence": "Thêm kiện giao vừa đúng hạn, yêu cầu danh sách đổi theo"
+  },
+  "source_hashes": {
+    "chapters": {
+      "parcel-table-start": "5dedc4426054",
+      "input-is-still-there": "89669a63c2e9",
+      "define-the-followup": "02cfab5d51a6",
+      "human-error": "7f6f91d7d5d9",
+      "read-parquet-back": "0844094b2e3e",
+      "new-requirement-consequence": "cb43985eb088"
+    },
+    "title": "d2e2ff81dd4d",
+    "description": "da5af975538b",
+    "tags": "34a54f9c6d96",
+    "thumbnail": "492e00f069aa"
+  },
+  "lines": {
+    "dg2i": {
+      "source_hash": "f647e118cc32",
+      "text": "Ngày 25 tháng 10 năm 2026, mình truy vấn bảng giao hàng trên máy này."
+    },
+    "c7uh": {
+      "source_hash": "2f41d77221a1",
+      "text": "Truy vấn cần tìm các kiện hàng phải theo dõi, để bàn giao một danh sách có thể mở lại."
+    },
+    "x6vr": {
+      "source_hash": "20f81890cd4e",
+      "text": "Màn hình chỉ giữ tổng cộng 40 dòng ở đầu và cuối, với dấu lược bỏ ở giữa."
+    },
+    "iaiy": {
+      "source_hash": "957a591d41f7",
+      "text": "Bảng này thật sự chỉ còn từng ấy bản ghi sao?"
+    },
+    "zni4": {
+      "source_hash": "75375ec98857",
+      "text": "Lát nữa, tên cột số ngày thực tế sẽ thiếu một chữ cái."
+    },
+    "3zp6": {
+      "source_hash": "83272417d62d",
+      "text": "Khi lưu danh sách thành tệp riêng, làm sao biết nội dung có đầy đủ?"
+    },
+    "a73b": {
+      "source_hash": "694dc8472b45",
+      "text": "Tệp bàn giao phải đối chiếu được với bảng gốc, vốn vẫn có 1.200 bản ghi."
+    },
+    "8ex8": {
+      "source_hash": "410123f679f7",
+      "text": "Đây là bảng giao hàng giả lập tự tạo để luyện tập, kiểm tra lại được từng bản ghi."
+    },
+    "ujmc": {
+      "source_hash": "936c125e4c95",
+      "text": "Chế độ agent của DuckDB được giới thiệu ngày 9 tháng 10, rồi phát hành chính thức cùng bản 2.0 ngày 21 tháng 10."
+    },
+    "m4b3": {
+      "source_hash": "524b5fdd9c17",
+      "text": "Chế độ mới trình bày phản hồi của công cụ gọn hơn, kèm dấu lược bỏ trong kết quả."
+    },
+    "6i9g": {
+      "source_hash": "0c99d26d64ab",
+      "text": "Chương trình đọc phản hồi này có thể dựa vào các dấu đó để diễn giải kết quả."
+    },
+    "msj7": {
+      "source_hash": "cbf6f5260f4f",
+      "text": "Đọc CSV, viết SQL và xuất tệp đầy đủ là những khả năng đã có từ trước."
+    },
+    "x88h": {
+      "source_hash": "aadf9e15fade",
+      "text": "Lần này, trong thư mục thực hành mới, mình dùng hai chế độ của cùng một phiên bản để xử lý bảng này."
+    },
+    "pskv": {
+      "source_hash": "813fd8cbbbb5",
+      "text": "Chế độ này không kèm mô hình AI; phép đối chiếu cũng không đo độ chính xác hay chi phí dùng mô hình."
+    },
+    "yqnx": {
+      "source_hash": "514f0d49e250",
+      "text": "Mỗi bản ghi có mã kiện hàng, tuyến và số ngày đã cam kết hoàn tất."
+    },
+    "xbqa": {
+      "source_hash": "72b3b050e436",
+      "text": "Trạng thái và số ngày thực tế là những cột cần dùng cho yêu cầu theo dõi này."
+    },
+    "yy8n": {
+      "source_hash": "6e83828c81e1",
+      "text": "Thêm tham số chế độ thường để chọn rõ cách hiển thị vốn có."
+    },
+    "9gdj": {
+      "source_hash": "59a3ba8c7df0",
+      "text": "Lệnh dùng cơ sở dữ liệu tạm và bỏ qua tệp khởi tạo cá nhân."
+    },
+    "xd25": {
+      "source_hash": "65a9ba90e4db",
+      "text": "Đổi tham số sang chế độ agent, còn đầu vào và truy vấn giữ nguyên."
+    },
+    "c6hy": {
+      "source_hash": "6aeb1441c25a",
+      "text": "Chọn rõ chế độ giúp việc tự nhận diện môi trường không xen vào phép đối chiếu này."
+    },
+    "jm9m": {
+      "source_hash": "e0b4597a4be5",
+      "text": "Quay lại dấu lược bỏ ở đầu video: mỗi phản hồi đặt nó ở đâu?"
+    },
+    "t4hj": {
+      "source_hash": "0d42e837725d",
+      "text": "Truy vấn này tạo cùng một bảng, rồi sắp theo mã kiện hàng."
+    },
+    "zxhz": {
+      "source_hash": "0519aadfa157",
+      "text": "Không có điều kiện chỉ lấy ít bản ghi, nên có thể dùng nó để phân biệt phạm vi hiển thị."
+    },
+    "h4gg": {
+      "source_hash": "76d69dd44a33",
+      "text": "Ở cuối kết quả, chế độ thường đã ghi tổng số dòng và số dòng được hiển thị."
+    },
+    "4cr9": {
+      "source_hash": "7f9c13c4d80d",
+      "text": "Dòng này tách tổng số dòng của kết quả khỏi số dòng đang hiện trên màn hình."
+    },
+    "uj2p": {
+      "source_hash": "7a04836fa956",
+      "text": "Chế độ agent ghi ngay ở giữa rằng 1.160 dòng đã được lược khỏi phần hiển thị."
+    },
+    "u5mp": {
+      "source_hash": "933529e8d4db",
+      "text": "Đó là phần không hiện ra, không phải dữ liệu bị mất trong truy vấn hay khi lưu trữ."
+    },
+    "jumq": {
+      "source_hash": "fd2192acdeb8",
+      "text": "Bản xem trước ở đầu chỉ giúp bắt đầu đọc phản hồi, chưa phải danh sách có thể bàn giao."
+    },
+    "7npx": {
+      "source_hash": "c9488745cb64",
+      "text": "Giờ cần dựa vào toàn bộ bảng gốc để quyết định giữ lại những kiện hàng nào?"
+    },
+    "v9hh": {
+      "source_hash": "26306fe6e051",
+      "text": "Danh sách theo dõi này chỉ lấy kiện đã giao và có số ngày thực tế lớn hơn số ngày cam kết."
+    },
+    "fpcm": {
+      "source_hash": "26b7512804ca",
+      "text": "Các bản ghi còn đang vận chuyển vẫn ở bảng gốc, nhưng không tính vào yêu cầu này."
+    },
+    "qxv3": {
+      "source_hash": "8d3bd93189c3",
+      "text": "Khi tạo bảng, đọc mã, tuyến và trạng thái dưới dạng văn bản."
+    },
+    "abty": {
+      "source_hash": "2dac16f24b2a",
+      "text": "Đọc cả hai số ngày dưới dạng số nguyên, để phép so sánh thật sự so số ngày."
+    },
+    "m3tz": {
+      "source_hash": "30c4d95df4eb",
+      "text": "Lệnh mô tả này liệt kê tên cột và kiểu dữ liệu."
+    },
+    "drd5": {
+      "source_hash": "0fd9ba09bc8d",
+      "text": "Một truy vấn khác đếm theo trạng thái, để biết bảng có những bản ghi nào cần xét."
+    },
+    "6i82": {
+      "source_hash": "a1c8a0f80a81",
+      "text": "Ở đây có 960 kiện đã giao và 240 kiện còn đang vận chuyển."
+    },
+    "ufbq": {
+      "source_hash": "20b27ea07f52",
+      "text": "Số ngày thực tế của kiện đang vận chuyển để trống, vì chưa có thời gian giao hoàn tất."
+    },
+    "y43c": {
+      "source_hash": "47bbddd0a9dc",
+      "text": "Theo quy tắc vừa chọn, kiện đã giao này có được giữ lại không?"
+    },
+    "jbme": {
+      "source_hash": "d1bad1852728",
+      "text": "Kiện này đã giao, cam kết 3 ngày nhưng thực tế mất 4 ngày."
+    },
+    "8wey": {
+      "source_hash": "8cf9a4dcec9f",
+      "text": "Vượt số ngày đã cam kết, nên nó vào danh sách theo dõi."
+    },
+    "wg3d": {
+      "source_hash": "13f6887ba51e",
+      "text": "Lấy 4 trừ 3, ta được chậm 1 ngày."
+    },
+    "tqeh": {
+      "source_hash": "9a694c58610e",
+      "text": "Phép tính này được ghi thành cột mới, để người nhận thấy ngay chênh lệch bao nhiêu ngày."
+    },
+    "5rfa": {
+      "source_hash": "833cb8b4805b",
+      "text": "Áp điều kiện trạng thái vừa rồi vào bản ghi đang vận chuyển này."
+    },
+    "e77f": {
+      "source_hash": "eab4635a6039",
+      "text": "Nó bị loại ngay bởi điều kiện đã giao; ô trống cũng không được đổi thành 0 ngày."
+    },
+    "ewsi": {
+      "source_hash": "b2ca94efbf5b",
+      "text": "Đưa quy tắc chọn vừa rồi vào điều kiện lọc ở dòng này."
+    },
+    "bhcv": {
+      "source_hash": "473f428008b2",
+      "text": "Phép trừ của cột mới nằm trong phần chọn cột, không ghi đè số ngày gốc."
+    },
+    "g52d": {
+      "source_hash": "e80a6815c443",
+      "text": "Kết quả bàn giao giữ các cột mã, tuyến, hai số ngày và chênh lệch vừa tính."
+    },
+    "evdb": {
+      "source_hash": "19a4e8a8cb54",
+      "text": "Cuối cùng, sắp mã kiện theo thứ tự tăng dần, để mở lại tệp rồi đối chiếu cùng thứ tự."
+    },
+    "6r94": {
+      "source_hash": "06f5d1f25238",
+      "text": "Kiện này có số ngày cam kết và thực tế đều là 3, nên hiệu bằng 0."
+    },
+    "s3h7": {
+      "source_hash": "f133fd8c361d",
+      "text": "Áp lại dấu lớn hơn, nó không vào danh sách giao trễ này."
+    },
+    "ntfj": {
+      "source_hash": "1e728a75dfd6",
+      "text": "Điều kiện đã viết xong. Nếu tên cột số ngày thực tế thiếu một chữ, công cụ sẽ trả lời thế nào?"
+    },
+    "ak3j": {
+      "source_hash": "6ddfa802b081",
+      "text": "Trước tiên nó báo không tìm thấy cột này, chứ chưa tạo kết quả truy vấn."
+    },
+    "s9ca": {
+      "source_hash": "374b141bdcd3",
+      "text": "Chế độ thường vốn đã chỉ ra được lỗi tên cột này."
+    },
+    "jsui": {
+      "source_hash": "89868e15adb6",
+      "text": "Chữ bị thiếu chính là s ở cuối actual_days, khiến tên thành actual_day."
+    },
+    "xj3j": {
+      "source_hash": "a9dc656d01b0",
+      "text": "Truy vấn này chỉ tách riêng lỗi cột để kiểm tra. Mình cố ý viết sai, không phải AI mắc lỗi."
+    },
+    "i2fq": {
+      "source_hash": "1b2475ec3484",
+      "text": "Bỏ qua phần chữ lúc khởi động lần này, rồi chỉ phân tích dòng JSON hợp lệ phía sau."
+    },
+    "yxh7": {
+      "source_hash": "e14d3a789a15",
+      "text": "Toàn bộ luồng đầu ra có lẫn văn bản, nên không thể coi là một đối tượng duy nhất."
+    },
+    "jngn": {
+      "source_hash": "f35924448505",
+      "text": "Lấy tên bị viết sai từ đối tượng, rồi tìm tên cột gợi ý trong phần giải thích."
+    },
+    "cjm4": {
+      "source_hash": "4c9f36b95cc8",
+      "text": "Mình đối chiếu các tên gợi ý với bảng gốc và tìm ra cách viết đúng, có thêm chữ cuối."
+    },
+    "7g26": {
+      "source_hash": "619ca850aca9",
+      "text": "Ghi lại tên cột vừa chọn từ bảng gốc vào truy vấn này."
+    },
+    "2d84": {
+      "source_hash": "6555ca795916",
+      "text": "Nối lại điều kiện, các cột chọn và thứ tự sắp xếp ban đầu, để xuất cùng danh sách."
+    },
+    "rw48": {
+      "source_hash": "644aec32f389",
+      "text": "Tên cột đã sửa xong. Phản hồi chỉ hiện ít dòng vừa rồi có làm tệp lưu cũng bị cắt ngắn không?"
+    },
+    "epd8": {
+      "source_hash": "2b3972dcf131",
+      "text": "Đặt toàn bộ truy vấn vừa rồi vào trong ngoặc của COPY."
+    },
+    "tdtg": {
+      "source_hash": "d642afc081fc",
+      "text": "Trong ngoặc vẫn giữ quy tắc chọn và thứ tự; phía sau mới chỉ định vị trí tệp bàn giao."
+    },
+    "q6db": {
+      "source_hash": "c0e291da58ad",
+      "text": "Từ bảng gốc đến đầu ra này, không thêm giới hạn số dòng hiển thị."
+    },
+    "n6c9": {
+      "source_hash": "b774867df776",
+      "text": "Vì thế, ta lưu kết quả đáp ứng điều kiện, không phải chép vài dòng từ phản hồi."
+    },
+    "kabz": {
+      "source_hash": "768bb934be86",
+      "text": "Vị trí này quyết định nơi ghi CSV, còn tùy chọn dòng tiêu đề giữ lại tên cột."
+    },
+    "5qhj": {
+      "source_hash": "c829a73422ad",
+      "text": "Khi đọc lại, đối chiếu thứ tự cột với phần đã chọn, để chắc mã và tuyến không bị đổi chỗ."
+    },
+    "6e4u": {
+      "source_hash": "3eef724d4df0",
+      "text": "Lưu bản khác thành Parquet, chỉ đổi định dạng đầu ra và tên tệp đích."
+    },
+    "nsc3": {
+      "source_hash": "8e1c5a9c127e",
+      "text": "Phần chọn cột và thứ tự sắp xếp vẫn giữ nguyên trong ngoặc, để tiện so sánh sau đó."
+    },
+    "7b9v": {
+      "source_hash": "32e25cd0dfe3",
+      "text": "Chạy toàn bộ truy vấn bằng lệnh này, hai định dạng sẽ được ghi vào các vị trí đã chỉ định."
+    },
+    "44a2": {
+      "source_hash": "b7b6b47bdc06",
+      "text": "Muốn biết tệp lưu có bị cắt ngắn không, ở đây ta đọc trực tiếp CSV đã xuất."
+    },
+    "j328": {
+      "source_hash": "6c35c9eb3764",
+      "text": "Đếm các dòng dữ liệu trong tệp, không tính dòng tiêu đề là một kiện hàng."
+    },
+    "ubxv": {
+      "source_hash": "4981417cffcd",
+      "text": "Tệp theo dõi đầy đủ vừa đọc lại có 480 bản ghi trong lần thực hành này."
+    },
+    "ag8z": {
+      "source_hash": "93cf981eaefa",
+      "text": "Việc bản xem trước bị cắt ngắn đã không đi vào tệp qua lệnh xuất này."
+    },
+    "6da2": {
+      "source_hash": "b2fbd3bfe2d9",
+      "text": "Chế độ thường chạy cùng lệnh xuất cũng cho nội dung danh sách giống hệt."
+    },
+    "385u": {
+      "source_hash": "9bfe66d9eddf",
+      "text": "Bước này cho thấy chế độ mới đổi phản hồi, chứ không tìm thêm kiện giao trễ."
+    },
+    "zdyx": {
+      "source_hash": "1daeab325144",
+      "text": "Đúng số bản ghi đã đủ để bàn giao chưa? Định dạng kia có giữ cùng nội dung từng bản ghi không?"
+    },
+    "qgqv": {
+      "source_hash": "046ad96245e4",
+      "text": "Để kiểm tra định dạng kia, đọc lại Parquet và sắp theo cùng mã kiện."
+    },
+    "ineu": {
+      "source_hash": "7c4dd3058f62",
+      "text": "Lưu lại thành CSV, để hai kết quả đầy đủ có cùng cách so từng dòng."
+    },
+    "dgc2": {
+      "source_hash": "dfbc0d6cb8fa",
+      "text": "Chạy truy vấn đọc lại này trên tệp bàn giao, không ghi đè bảng giao hàng gốc."
+    },
+    "xqkd": {
+      "source_hash": "3b69934ada6b",
+      "text": "Bạn còn nhớ kiện vừa lấy 4 trừ 3 không?"
+    },
+    "xad9": {
+      "source_hash": "887a876101ff",
+      "text": "Tệp đầy đủ giữ tuyến, số ngày gốc và chênh lệch chậm 1 ngày của kiện đó."
+    },
+    "6u7e": {
+      "source_hash": "17a5eede43e7",
+      "text": "Đi tiếp theo mã, các bản ghi đáp ứng điều kiện gần cuối bảng gốc cũng có trong tệp đầy đủ."
+    },
+    "wznc": {
+      "source_hash": "11146dca7ec3",
+      "text": "Xem đầu và cuối giúp xác định vị trí dữ liệu; muốn so toàn bộ phải kiểm tra từng bản ghi ở giữa."
+    },
+    "h579": {
+      "source_hash": "89508c6e8b9b",
+      "text": "Để người nhận nắm phân bố trước, ở đây giữ quy tắc gốc và đếm theo tuyến."
+    },
+    "jd24": {
+      "source_hash": "96bbf548b81e",
+      "text": "Bản tóm tắt nhỏ được đặt riêng trong báo cáo, không thay danh sách đầy đủ các kiện đáp ứng điều kiện."
+    },
+    "rxjg": {
+      "source_hash": "471faa6a1968",
+      "text": "Theo quy tắc gốc vừa dùng, tuyến R2 và R3 mỗi tuyến có 240 bản ghi."
+    },
+    "mavj": {
+      "source_hash": "225d65c77fea",
+      "text": "Tổng đó bằng 480 bản ghi của tệp đầy đủ; tất cả bản ghi đạt điều kiện đều đã được tính trong phần tóm tắt."
+    },
+    "3dwp": {
+      "source_hash": "2db721c15c26",
+      "text": "Câu hỏi về tệp đầy đủ ở đầu video giờ có câu trả lời từng dòng: hai tệp cùng nội dung."
+    },
+    "dm84": {
+      "source_hash": "084c04996747",
+      "text": "Không chỉ so số lượng, mà còn mã, giá trị các cột và thứ tự của từng bản ghi."
+    },
+    "ezfg": {
+      "source_hash": "b1c6d1ce3355",
+      "text": "Một chương trình đơn giản khác đọc từng bản ghi gốc, rồi áp quy tắc ban đầu để tạo danh sách mã phải được chọn."
+    },
+    "ubtk": {
+      "source_hash": "9af0d830415c",
+      "text": "Danh sách mã đó cũng khớp kết quả xuất, nên việc kiểm tra đã quay về dữ liệu gốc."
+    },
+    "g738": {
+      "source_hash": "46eeff176903",
+      "text": "Nhưng nếu người nhận muốn thêm kiện có số ngày thực tế bằng đúng cam kết, có thể giao ngay danh sách trễ đã kiểm tra này không?"
+    },
+    "ab37": {
+      "source_hash": "2705d2459ea3",
+      "text": "Không. Các kiện có số ngày thực tế bằng đúng cam kết từng bị loại giờ cũng phải được giữ."
+    },
+    "dyhh": {
+      "source_hash": "23245ab0cc0e",
+      "text": "Giữ tệp gốc trước, rồi lưu yêu cầu mới thành một truy vấn riêng."
+    },
+    "7th9": {
+      "source_hash": "630ebfcf60fa",
+      "text": "Đổi dấu lớn hơn thành lớn hơn hoặc bằng, để bản ghi có hai số ngày bằng nhau cũng qua."
+    },
+    "98xj": {
+      "source_hash": "6f0e39a20550",
+      "text": "Đổi cả tên tệp đích, để yêu cầu mới không ghi đè danh sách cũ."
+    },
+    "g89b": {
+      "source_hash": "771e378bd7a9",
+      "text": "Chạy tệp đã sửa bằng lệnh này, kết quả bàn giao mới sẽ được lưu riêng."
+    },
+    "u6gp": {
+      "source_hash": "ae9f917f9585",
+      "text": "Dấu vừa đổi giữ thêm bao nhiêu kiện, và đó là những bản ghi thuộc loại nào?"
+    },
+    "mkfw": {
+      "source_hash": "7507295dd887",
+      "text": "Danh sách mới có 720 bản ghi, trong đó 240 bản ghi có số ngày chậm bằng 0."
+    },
+    "b5i9": {
+      "source_hash": "8462f9b3960c",
+      "text": "Nhóm mới thêm có số ngày thực tế bằng đúng cam kết, nên cả tệp phải gọi là giao vừa đúng hạn hoặc giao trễ."
+    },
+    "fqr6": {
+      "source_hash": "c0084ec6fe90",
+      "text": "Còn nhớ kiện 3 ngày so với 3 ngày từng nằm ngoài danh sách không?"
+    },
+    "me2p": {
+      "source_hash": "52bcb91fb65b",
+      "text": "Giờ nó được chọn, chính là vì quy tắc vừa đổi đã bao gồm trường hợp bằng nhau."
+    },
+    "ptfc": {
+      "source_hash": "4fdc81b585d6",
+      "text": "Hai danh sách được tạo theo điều kiện riêng, không thể giao thay cho nhau."
+    },
+    "ha7h": {
+      "source_hash": "bfc426453313",
+      "text": "Giữ cả tên tệp mới, cũ và truy vấn của từng tệp, để người nhận chọn đúng yêu cầu."
+    },
+    "g7bc": {
+      "source_hash": "608097864003",
+      "text": "Bộ bàn giao giờ có tệp dữ liệu đầy đủ, truy vấn tương ứng và bản tóm tắt dễ đọc."
+    },
+    "s9qr": {
+      "source_hash": "e3e11dde80f6",
+      "text": "Người nhận có thể tìm tệp đầy đủ từ báo cáo, hoặc sửa điều kiện để tạo lại danh sách."
+    },
+    "ddtv": {
+      "source_hash": "13de3acb0766",
+      "text": "Bản xem trước ở đầu video giờ có tệp bàn giao đầy đủ, đối chiếu lại được với quy tắc."
+    },
+    "wx5u": {
+      "source_hash": "906199dfca53",
+      "text": "Bạn hay phải bàn giao loại danh sách dữ liệu nào nhất?"
+    },
+    "v5pw": {
+      "source_hash": "e3b99fe15775",
+      "text": "Đăng ký để hiểu công cụ AI qua những gì ta làm ra."
+    }
+  }
+}

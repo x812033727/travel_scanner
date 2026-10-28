@@ -1,0 +1,16 @@
+{
+  "kind": "documentation_builder_initial_report_generation_order_error",
+  "at": "2026-10-26T06:26:40.334960+00:00",
+  "actual_tool_chunk": "546808",
+  "actual_exit_code": 1,
+  "first_script_sha256": "c4aece32f203b37c312903760a7b74ef072be0aaddc5342dc462583e49cd4571",
+  "first_index_sha256": "95399fcc77891f37b310fee7f0e20eb45fbc1c12681888caa66c5ea146b7ac5d",
+  "observed_error": "AssertionError: two Markdown references to receipts/ja-text-adoption-validation.json were checked before that new validation report had been generated.",
+  "index_written_before_failure": true,
+  "validation_or_freeze_or_git_stage_created_before_failure": false,
+  "correction": "Validate all other links first; generate the actual validation report, then verify every collected link resolves before freezing. The first index and script remain exact archived bytes.",
+  "native_audio_or_quality_guard_failure": false,
+  "source_EN_JA_or_native_threshold_modified": false,
+  "auth_API_paid_or_media_actions": 0,
+  "raw_shell_stderr_log_claimed": false
+}

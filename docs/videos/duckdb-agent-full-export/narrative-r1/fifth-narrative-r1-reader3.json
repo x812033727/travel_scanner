@@ -1,0 +1,131 @@
+{
+  "scope": "purefreshreview：全新獨立敘事聽讀；僅讀指定video.json中的全部圖卡、114句口白與6個章名、repo根AGENTS.md，以及tools/video/core/narrative.mjs中的原生一般NARRATIVE_PANEL與JSON contract。未讀brief、claims、作者自評、其他review或修改理由。未查網路、後臺，未付費，未改source或repo。",
+  "source_file": "/workspace/work/ai-tech-next/fifth-draft/video.json",
+  "sourcefullSHA": "fc5c2b2dce69763905273e049f32290f613354cc8d068532e67086dcfd2a3da2",
+  "coverage": {
+    "chapters": 6,
+    "scenes_and_cards": 66,
+    "spoken_lines": 114
+  },
+  "panel": "native general NARRATIVE_PANEL; no tutorial or story-series overrides",
+  "timing_basis": "僅依口白文字每分鐘約240字估讀；忽略標點的文字量約2345字。鉤子間最長估讀段a73b→jm9m約299字／75秒；rw48→nsc3約43秒、nsc3→zdyx約42秒。沒有使用actualTTS時長，也沒有媒體觀影或實際聽音。圖卡閱讀與停頓時間未量測。",
+  "answers": [
+    {
+      "id": "scene_first",
+      "yes": true,
+      "evidence": "[dg2i]「二〇二六年十月二十五日，我在這台電腦查配送表。」第一句已有日期、操作者、電腦與查表動作；第四句才問紀錄是否真的只剩畫面所見。"
+    },
+    {
+      "id": "no_spoiler",
+      "yes": true,
+      "evidence": "[zni4]「實際天數的欄位，等一下會少一個字母。」第一章停在錯字將發生、紀錄是否減少及另存完整性的疑問，沒有交代報錯形式、匯出筆數或逐列核對結果。"
+    },
+    {
+      "id": "one_line",
+      "yes": true,
+      "evidence": "[rw48]「欄位修好了；剛剛只顯示少數列的回覆，會把存檔也截短嗎？」查預覽、定條件、排錯、寫檔、讀回、修改需求沿同一張配送表往前走；沒有重新完整演一遍已完成的階段。"
+    },
+    {
+      "id": "no_toc",
+      "yes": true,
+      "evidence": "[evdb]「最後按包裹代號升冪排列，重開檔案便能用同一順序對照。」此處的「最後」指查詢操作次序。通讀未見分章清單或宣告這支影片接下來怎麼講。"
+    },
+    {
+      "id": "chapters_link",
+      "yes": true,
+      "evidence": "[ab37]「不能，剛才被排除的準時包裹，這次也得留下。」直接回答前章「改要包含剛好準時」能否直接交舊單；其餘章首也分別承接交付檔、入選條件、欄位錯字及另一格式核對。"
+    },
+    {
+      "id": "open_loops",
+      "yes": true,
+      "evidence": "[ys6z]「但接手程式若只接受一個JSON物件，能直接解析整串錯誤輸出嗎？」另有省略位置、個別包裹判斷、存檔截短與新增紀錄等鉤子；按每分鐘約240字估讀，已辨認鉤子間最長約75秒，僅為文字估讀。"
+    },
+    {
+      "id": "payoffs",
+      "yes": true,
+      "evidence": "[3dwp]「開場問的存檔完整性，現在有逐列答案：兩份內容一致。」點名回收開場完整性問題並給新結果；錯字也以「開場預告少掉的那個字母」回呼，其他相鄰問題有新答案。"
+    },
+    {
+      "id": "no_recap",
+      "yes": false,
+      "evidence": "[5rfa]「另一筆仍在途，還沒有完成配送的天數。」此前[ufbq]已說「在途的實際天數是空白，意思是還沒有完成天數。」此句換成個別包裹再說同一事實，沒有點名回呼；依一般題的嚴格文字判NO。"
+    },
+    {
+      "id": "chapters_are_events",
+      "yes": true,
+      "evidence": "[ak3j]「它先回覆找不到這個欄位，沒有產生查詢結果。」相應章名「少一個字母，查詢先停了下來」是事件；其他章名也寫預覽少一段、原表仍在、包裹入選、讀回核對與需求改變。"
+    },
+    {
+      "id": "outro_no_next",
+      "yes": true,
+      "evidence": "[v5pw]「訂閱，用產物讀懂AI工具。」片尾三句是完整交付檔、觀眾常交什麼清單與訂閱邀請；片尾圖卡也沒有下一支影片預告。"
+    },
+    {
+      "id": "opening_hooks",
+      "yes": true,
+      "evidence": "[iaiy]「這份表真的只剩這些紀錄嗎？」[zni4]「實際天數的欄位，等一下會少一個字母。」[3zp6]「清單另外存成檔案，又怎麼確認內容完整？」開場查表場景之後有三個未交代結果的具體疑問／時刻。"
+    },
+    {
+      "id": "one_thread",
+      "yes": true,
+      "evidence": "[c7uh]「查詢要找出需要跟進的包裹，交成一份能重開的清單。」結尾[ddtv]「開場那段預覽，如今有能對回規則的完整交付檔。」可辨認的難題一直是這份清單的條件、完整性與交付。"
+    },
+    {
+      "id": "no_detour",
+      "yes": true,
+      "evidence": "[h579]「要讓接手者先掌握分布，這裡沿用原規則，按路線分組計數。」摘要仍服務同一份交付需求；模式背景、錯誤格式、匯出及變式也都回到同一表與規則，沒有整段無關清單。"
+    }
+  ],
+  "original13booleans": {
+    "scene_first": true,
+    "no_spoiler": true,
+    "one_line": true,
+    "no_toc": true,
+    "chapters_link": true,
+    "open_loops": true,
+    "payoffs": true,
+    "no_recap": false,
+    "chapters_are_events": true,
+    "outro_no_next": true,
+    "opening_hooks": true,
+    "one_thread": true,
+    "no_detour": true
+  },
+  "listener_findings": [
+    {
+      "kind": "重複",
+      "line_ids": [
+        "ufbq",
+        "5rfa",
+        "e77f"
+      ],
+      "detail": "在途紀錄沒有完成天數，先在狀態分布段解釋，再用另一筆包裹重說；後一句e77f已用「照剛剛的狀態條件」回呼，但5rfa本句沒有。這是本次no_recap判NO的具體依據；個別例子確實使規則更易懂，仍不能套用教學版的例外。"
+    },
+    {
+      "kind": "聽眾可能卡住",
+      "line_ids": [
+        "ntfj",
+        "jsui",
+        "2d84"
+      ],
+      "detail": "ntfj讓人以為在剛寫好的整套跟進條件中製造錯字；jsui的圖卡卻是SELECT parcel_id, actual_day FROM parcels LIMIT 1的縮小測試。到2d84又說原本條件、選欄和排序不必換，觀眾須自行補出「這只是把欄位錯誤抽出來測」的關係。主線仍可辨認，但這個縮小步驟沒有在口白明說。"
+    },
+    {
+      "kind": "局部破梗",
+      "line_ids": [
+        "y43c",
+        "8wey"
+      ],
+      "detail": "第三章章名「三筆包裹，只有一筆入選」在y43c詢問某筆會否留下之前，先交代了整組練習的入選數量。它弱化判斷題的懸念；它不在第一章，因此沒有拿來改判第一章no_spoiler。"
+    },
+    {
+      "kind": "主線銜接摩擦",
+      "line_ids": [
+        "a73b",
+        "ujmc",
+        "m4b3"
+      ],
+      "detail": "第二章先回答原表仍有資料，隨即插入新模式的兩個發表日期。觀眾要等到m4b3說明回覆格式，才更清楚為何配送清單故事突然進入版本資訊。這只有一句背景，仍與比較方式相關，沒有構成整段岔題，也沒有破壞章首承接。"
+    }
+  ]
+}

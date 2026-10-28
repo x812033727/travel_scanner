@@ -1,0 +1,14 @@
+{
+  "kind": "author_validator_first_local_URL_extraction_expectation_error",
+  "observed_at": "2026-10-26T05:59:39.254778+00:00",
+  "actual_tool_chunk": "f3bfd0",
+  "actual_exit_code": 1,
+  "initial_script_sha256": "9e1222b77a392b22658aeffbd3f94bdc7b36a5355d2b01b2769e3b6057befcd3",
+  "observed_tool_stderr_excerpt": "AssertionError at line65: assert len(urls)==2 and all(x in final[description][text] for x in urls)",
+  "cause": "The original source places URLs immediately after Chinese labels and a colon, so whitespace splitting does not yield tokens beginning with https://. This is a validator URL-extraction error, not a translation or URL mismatch.",
+  "correction": "Use regex https:// followed by non-whitespace, matching the already successful native pure check.",
+  "translation_or_source_modified_to_pass": false,
+  "new_paid_or_network_calls": 0,
+  "initial_script_and_tool_error_preserved": true,
+  "raw_shell_stderr_log_claimed": false
+}

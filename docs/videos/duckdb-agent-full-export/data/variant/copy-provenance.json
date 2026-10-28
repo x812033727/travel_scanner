@@ -1,0 +1,61 @@
+{
+  "original_recorded_cwd": "/workspace/work/ai-tech-next/fifth-draft",
+  "files": [
+    {
+      "original": "/workspace/work/ai-tech-next/fifth-draft/demo/variant.sql",
+      "copied": "variant.sql",
+      "sha256": "8b03857aff59d94067a2805c80dd6ed3dc75e6581e9bcfd8c9c77a2a7372a1f6",
+      "bytes": 358
+    },
+    {
+      "original": "/workspace/work/ai-tech-next/fifth-draft/demo/setup.sql",
+      "copied": "setup.sql",
+      "sha256": "27628b19c4093ce9cd3016d5b0da84eb5ba557c25b8a6b92bb447c2fc826c654",
+      "bytes": 350
+    },
+    {
+      "original": "/workspace/work/ai-tech-next/fifth-draft/demo/output/due-or-late.csv",
+      "copied": "output/due-or-late.csv",
+      "sha256": "fe709f321f03e1334e9ed1ee2b48ded4a5458382a8eff6c1d6af464ce105cf8c",
+      "bytes": 10852
+    },
+    {
+      "original": "/workspace/work/ai-tech-next/fifth-draft/demo/variant-results.json",
+      "copied": "variant-results.json",
+      "sha256": "781fb2ffa42eeab2e3d69927c07c7ec84510bf2f6e37ba9ccf223f49fc68819c",
+      "bytes": 316
+    },
+    {
+      "original": "/workspace/work/ai-tech-next/fifth-draft/runlogs/variant.command.json",
+      "copied": "runlogs/variant.command.json",
+      "sha256": "bdb3c41c69c30eecc9a671a5a0286918fe9ae9999d5c3804c22a6fa12c71ce2d",
+      "bytes": 259
+    },
+    {
+      "original": "/workspace/work/ai-tech-next/fifth-draft/runlogs/variant.stdout.txt",
+      "copied": "runlogs/variant.stdout.txt",
+      "sha256": "46691c468502755c2c78dc49f75dada27cb763793029f388a8e4c0160410b725",
+      "bytes": 42
+    },
+    {
+      "original": "/workspace/work/ai-tech-next/fifth-draft/runlogs/variant.stderr.txt",
+      "copied": "runlogs/variant.stderr.txt",
+      "sha256": "8cb8f3d80b51c08acfb75c217f1bbd8424be4b4530c58cd71956eb51f52c47a8",
+      "bytes": 63
+    },
+    {
+      "original": "/workspace/work/ai-tech-next/fifth-draft/run_variant.py",
+      "copied": "run_variant.py",
+      "sha256": "8cdedf36822f62ebd17aca1d0dbfbcaf4a0fecebf6a61cf8343bdf90814542b1",
+      "bytes": 2068
+    }
+  ],
+  "portable_sql": "variant-portable.sql",
+  "portable_changes": [
+    "input path demo/input -> input from episode data root",
+    "new output path demo/output -> variant/output; original 480 file is untouched",
+    "inline original setup instead of scratch .read path"
+  ],
+  "portable_sql_executed": false,
+  "new_DuckDB_execution": false
+}

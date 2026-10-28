@@ -1,0 +1,111 @@
+"""Root-authorized KO docs preparation only; no stage/commit/push or media/API."""
+from pathlib import Path
+import datetime,hashlib,json,os,shutil,subprocess
+R=Path('/workspace/work/travel-scanner-duckdb');REL=Path('docs/videos/duckdb-agent-full-export');E=R/REL
+B=Path('/workspace/work/ai-tech-next');A=B/'fifth-ko-translation';Q=B/'fifth-ko-root-review';S=B/'fifth-ko-docs'
+H=E/'history/before-KO-text-adoption-docs';K=E/'localization/ko';HEAD='0d8852106276bc701e8aae712f4b65fc18b0b6e2'
+TASK=Path('tasks/open/2026-10-25-produce-video-duckdb-agent-full-export.md')
+MUT=[REL/'README.md',REL/'result.md',REL/'production-progress.json',REL/'receipts/README.md',TASK]
+now=lambda:datetime.datetime.now(datetime.timezone.utc).isoformat()
+def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
+def sig(p):return {'bytes':Path(p).stat().st_size,'sha256':sha(p)}
+def save(p,d):
+ assert not p.exists(),str(p)+' already exists'
+ p.parent.mkdir(parents=True,exist_ok=True);p.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n');os.chmod(p,0o600)
+def copy(src,dst):
+ assert not dst.exists();dst.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(src,dst);assert sig(src)==sig(dst);assert (src.stat().st_dev,src.stat().st_ino)!=(dst.stat().st_dev,dst.stat().st_ino)
+ return {'source':str(src),'destination':str(dst.relative_to(R)),**sig(dst),'distinct_inode':True}
+assert subprocess.check_output(['git','rev-parse','HEAD'],cwd=R,text=True).strip()==HEAD
+assert not S.exists() and not H.exists() and not K.exists();S.mkdir(mode=0o700)
+oldfreeze=B/'fifth-JA-text-docs-final-freeze.json';old=json.loads(oldfreeze.read_text());assert len(old['files'])==88
+assert sha(oldfreeze)=='a7160c1ebf3adc6356f93447a044c8a0704475ccae4725cef6f3f476dc98d8f2'
+for x in old['files']:assert sig(R/x['path'])=={k:x[k] for k in ['bytes','sha256']}
+listing=subprocess.check_output(['git','ls-tree','-r','-z',HEAD,'--',str(REL),str(TASK)],cwd=R)
+gitrows=[]
+for raw in listing.split(b'\0'):
+ if not raw:continue
+ meta,path=raw.split(b'\t',1);mode,kind,oid=meta.decode().split();assert kind=='blob';gitrows.append({'path':path.decode(),'git_blob':oid})
+batch=subprocess.check_output(['git','cat-file','--batch'],cwd=R,input=''.join(x['git_blob']+'\n' for x in gitrows).encode());at=0
+for row in gitrows:
+ end=batch.index(b'\n',at);oid,kind,size=batch[at:end].decode().split();size=int(size);blob=batch[end+1:end+1+size];assert batch[end+1+size:end+2+size]==b'\n';at=end+2+size
+ assert oid==row['git_blob'] and kind=='blob';row.update(bytes=size,sha256=hashlib.sha256(blob).hexdigest());assert sig(R/row['path'])=={k:row[k] for k in ['bytes','sha256']}
+assert at==len(batch);gitmap={x['path']:x for x in gitrows}
+save(S/'tracked-before.json',{'head':HEAD,'tree_oid':subprocess.check_output(['git','rev-parse',HEAD+'^{tree}'],cwd=R,text=True).strip(),'files':gitrows,'all_worktree_bytes_equal_Git':True})
+protected=json.loads((A/'source-before.json').read_text())['protected_files'];protected[str(E/'i18n/ko.json')]=sig(E/'i18n/ko.json')
+assert protected[str(E/'i18n/ko.json')]['sha256']=='6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f'
+for f,pin in protected.items():assert sig(f)==pin
+save(S/'protected-before.json',protected)
+archive_names=['README.md.txt','result.md.txt','production-progress.json','receipts-README.md.txt',TASK.name+'.txt'];archived={}
+for rel,name in zip(MUT,archive_names):archived[str(rel)]=copy(R/rel,H/name)
+descriptors=[]
+for src,name,pin in [(oldfreeze,'previous-JA88-final-freeze.json','a7160c1ebf3adc6356f93447a044c8a0704475ccae4725cef6f3f476dc98d8f2'),(B/'fifth-JA-text-docs-root-independent-review.json','previous-JA88-root-independent-review.json','79087c58451a0e50fb324129585b8a0247b46d6f153083e5b617c8f01df1afb1'),(B/'fifth-JA-text-docs-commit-push-result.json','previous-JA88-commit-push-result.json','83736b2b8459f25414cb8115ebbe9945d30b75452331f4511d2da6e38a7561bd')]:
+ assert sha(src)==pin;descriptors.append(copy(src,H/name))
+reconstruction=[]
+for x in old['files']:
+ rel=x['path'];g=gitmap[rel];assert all(g[k]==x[k] for k in ['bytes','sha256']);loc=archived[rel]['destination'] if rel in archived else rel
+ assert sig(R/loc)=={k:x[k] for k in ['bytes','sha256']}
+ reconstruction.append({'original_path':rel,'reconstruction_path':loc,'storage':'five_mutable_archives' if rel in archived else 'unchanged_in_place',**{k:x[k] for k in ['bytes','sha256']},'git_blob_at_'+HEAD:g['git_blob']})
+save(H/'identity.json',{'kind':'incremental_KO_history_protection_only_five_actual_mutable_files','at':now(),'immutable_Git_anchor':HEAD,'all_tracked_episode_and_task_Git_files_verified':len(gitrows),'old_JA88':{'freeze_sha256':sha(oldfreeze),'count':88,'unchanged_in_place':83,'mutable_archives':5,'reconstruction':reconstruction},'five_mutable_files_copy2':archived,'previous_external_descriptors_copy2':descriptors,'recursive_prior_history_copy_performed':False,'old_indexes_preserved_in_place':{n:sig(E/'receipts'/n) for n in ['index.json','metadata-public-links-index.json','root-verify4-adoption-index.json','en-text-adoption-index.json','ja-text-adoption-index.json']}})
+authorfreeze=json.loads((A/'FINAL-FREEZE.json').read_text());assert sha(A/'FINAL-FREEZE.json')=='5df7e0955940a8433c93649b11df29784334ad7f134cd8311bace4184e2d6ff7'
+assert authorfreeze['file_count']==21
+copies=[]
+for name,pin in authorfreeze['files'].items():
+ src=A/name;assert sig(src)==pin;dst=K/'author'/(name+'.txt' if src.suffix in ['.py','.mjs','.log'] else name);copies.append(copy(src,dst))
+copies.append(copy(A/'FINAL-FREEZE.json',K/'author/FINAL-FREEZE.json'))
+for src in sorted(Q.iterdir()):
+ assert src.is_file();copies.append(copy(src,K/'root'/src.name))
+save(K/'copy-identity.json',{'kind':'safe_exact_KO_author_and_root_proof_copies','at':now(),'author_freeze_file_count':21,'author_freeze_sha256':sha(A/'FINAL-FREEZE.json'),'root_review_sha256':sha(Q/'root-independent-review.json'),'root_completion_sha256':sha(Q/'native-merge-completion.json'),'copy2_distinct_inodes_all':True,'files':copies,'script_and_author_log_text_suffix_does_not_change_bytes':True})
+completion=json.loads((Q/'native-merge-completion.json').read_text());review=json.loads((Q/'root-independent-review.json').read_text());delta=json.loads((Q/'root-wording-delta.json').read_text())
+assert completion['actual_process_exit_code']==0 and completion['actual_repo_file_sha256']==sha(E/'i18n/ko.json');assert delta['changed_line_ids']==['jd24','g738'] and delta['unchanged_other_lines']==109
+save(K/'actual-native-text-adoption.json',{'kind':'fifth_KO_actual_native_text_adoption_only','at':now(),'source_sha256':protected[str(E/'video.json')]['sha256'],'speech_hash':'38cf9292f6945199','native_script_sha256':protected[str(E/'script.md')]['sha256'],'author_freeze_sha256':sha(A/'FINAL-FREEZE.json'),'author_native_preview_sha256':sha(A/'ko.native-pure-merge-preview.json'),'root_review_sha256':sha(Q/'root-independent-review.json'),'root_sheet_sha256':sha(Q/'ko.root-reviewed.todo.json'),'root_preview_file':'root/native-pure-premerge.json','actual_translation':'../../i18n/ko.json','actual_translation_sha256':sha(E/'i18n/ko.json'),'actual_normal_merge_exit_code':0,'completion_file':'root/native-merge-completion.json','completion_sha256':sha(Q/'native-merge-completion.json'),'root_changes_before_any_audio':{'line_ids':['jd24','g738'],'description_terminology_improvements':2,'other109_targets_unchanged':True,'all_source_context_fields_unchanged':True,'not_native_audio_fit_shorten_or_reword_round':True},'metadata_and_6chapters_current':True,'foreign_text_locales_adopted':['en','ja','ko'],'foreign_text_count':3,'actual_CC_M4A_fit_meter_ASR_backend_complete':False,'master_paid_TTS':0,'master_actual_timeline_exists':False,'overall_complete':False})
+(K/'README.md').write_text('''# 韓文文字已正常採用，媒體仍未製作
+
+Root獨立讀完全部111組source→KO、六章、title／description／tags／縮圖詞後，正常`i18n-merge`真exit0。[當前KO JSON](../../i18n/ko.json) SHA `6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f` 等於root原生純preview，詳見[採用證據](actual-native-text-adoption.json)、[root獨審](root/root-independent-review.json)、[原始completion](root/native-merge-completion.json)及[log](root/native-i18n-merge.log)。
+
+Root只改`jd24`以明示符合條件的完整跟進母體、縮短`g738`問題而保留接手者／actual與promised相等／已驗的延遲名單；description把確定性作者程式與外部consumer改成白話。[完整delta](root/root-wording-delta.json)保留before／after。這些是任何音訊生成前的文字修訂，其他109句與全部source/context不變，不是native fit、shorten或reword回合。
+
+[作者21檔freeze](author/FINAL-FREEZE.json)、[111行映射](author/source-target-complete-111.json)、[三輪摘要](author/author-three-pass-review.json)、[十項作者修正](author/pass2-critique.json)、[完整語義ledger](author/author-pass3-semantic-ledger.json)保留原bytes。作者純preview的SHA是`df020642…a9687`，不等於root修文後actual KO；兩版本均保留，不將舊作者preview冒稱已採用版本。[精確copy身分](copy-identity.json)映射原腳本／log到安全文字後綴，bytes未變。
+
+Source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data、EN faf5與JA324c保持不變。日期、40/1200/1160顯示母體、960+240與NULL非0、嚴格480與含240準時的720、R2/R3各240、故意actual_day錯字、啟動文字加合法JSON、同2.0 binary、無模型／效能／token／成本測試、原創CC0與兩條4106 immutable URLs均由root全量審查保留。
+
+目前只是EN＋JA＋KO文字3/8；繁中master paid TTS0／raw0／actual timeline無。所有語言actual CC／SRT／VTT、M4A、fit／meter／ASR與後台交付仍0。Root的字數提示只是文字建議，無max_chars、實際時間槽或配音fit判定。此文件階段不付費、不查API、不改targets／source，也不stage／commit／push直到root審查精確freeze。
+''')
+current='''
+
+## 韓文已正常採用：外語文字3/8，媒體仍0
+
+Root全量獨立讀完111組source→KO、六章及metadata後，正常原生`i18n-merge`真exit0。[當前KO](i18n/ko.json) SHA `6b1e38d9b3e868a5cf312a1cb0180f88b43d5741aad0bb1959f9e9d0f8738d0f` 等於root修文後原生pure preview，見[採用證據](localization/ko/actual-native-text-adoption.json)、[獨審](localization/ko/root/root-independent-review.json)與[真merge log](localization/ko/root/native-i18n-merge.log)。
+
+Root只修兩行：`jd24`明示符合條件的完整跟進母體，`g738`縮短問句但保留接手者、相等條件與已驗延遲名單；description另有兩處白話用詞。[原始delta](localization/ko/root/root-wording-delta.json)與作者舊preview都保留，其他109句與source/context未改。這些是音訊生成前文字修訂，不是fit／shorten／reword回合。
+
+[作者21檔freeze](localization/ko/author/FINAL-FREEZE.json)、[完整111對照](localization/ko/author/source-target-complete-111.json)、[作者三輪](localization/ko/author/author-three-pass-review.json)和root完整收據各自原bytes保存。現在EN＋JA＋KO文字3/8，繁中paid TTS0／raw0／actual timeline無；actual CC、M4A、fit／meter／ASR和後台交付全部仍0，沒有配音fit或8語完成宣稱。
+
+本輪只先封存實際修改的五份doc／task與三份前輪描述檔；其餘83個舊JA檔案與歷史31／61／90／171索引留原位逐SHA核對。以Git `0d8852106276bc701e8aae712f4b65fc18b0b6e2` 為完整歷史anchor，[88檔重建映射](history/before-KO-text-adoption-docs/identity.json)可從83原位檔＋5快照精確復原，沒有遞迴複製既有history。當前使用[KO文字採用索引](receipts/ko-text-adoption-index.json)，舊JA171索引保持原文。
+
+Source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data、EN／JA actual targets與兩份敘事12/13 false均不改。只準備文件與精確路徑供root審查；尚未stage／commit／push，不啟媒體／paid／API／approval，也不開topic6。
+'''
+readme=E/'README.md';s=readme.read_text();s=s.replace('目前EN與JA各111句及metadata已經root獨立審查並正常merge，屬外語文字2/8','目前EN、JA與KO各111句及metadata已經root獨立審查並正常merge，屬外語文字3/8');s=s.replace('當前使用[JA文字採用索引](receipts/ja-text-adoption-index.json)','JA採用當時使用[171項索引](receipts/ja-text-adoption-index.json)，當前另用[KO文字採用索引](receipts/ko-text-adoption-index.json)');readme.write_text(s+current)
+result=E/'result.md';s=result.read_text().replace('# 第五片：當前來源複核與EN／JA文字採用2/8','# 第五片：當前來源複核與EN／JA／KO文字採用3/8').replace('[當前安全收據索引](receipts/ja-text-adoption-index.json)','[當前安全收據索引](receipts/ko-text-adoption-index.json)');result.write_text(s+current)
+rec=E/'receipts/README.md';rec.write_text(rec.read_text()+'''
+
+## KO正常文字採用後：EN＋JA＋KO 3/8
+
+當前另用[ko-text-adoption-index.json](ko-text-adoption-index.json)，舊JA171及更早31／61／90索引原位不改。[KO實際採用](../localization/ko/actual-native-text-adoption.json)綁root全111獨審、兩行／description白話修訂、真正常merge exit0與actual KO6b1e；[root完整delta](../localization/ko/root/root-wording-delta.json)不改109句或source/context，不是音訊重寫回合。作者21freeze＋root收據都有[exact copy proof](../localization/ko/copy-identity.json)，作者舊preview與root已採用版本分開保存。
+
+[五檔增量封存及舊88重建](../history/before-KO-text-adoption-docs/identity.json)使用0d885 Git anchor，83未變舊檔留原位，沒有再複製遞迴history。[當前驗證](ko-text-adoption-validation.json)記source／glossary／native lint／tasks／連結與hash。文字3/8不是實際字幕、M4A、fit或後台交付；master paid TTS0／raw0／actual timeline無，兩份敘事12/13 false保持原文。新freeze另列精確proposal，未stage／commit／push。
+''')
+progress=E/'production-progress.json';d=json.loads(progress.read_text());d['updated_at_utc']=now();d['stage']='EN_JA_KO_text_adopted_3of8_master_TTS0_actual_CC_audio_and_backend_pending';d['receipts_index']='receipts/ko-text-adoption-index.json';d['localization_text']['adopted_locales']=['en','ja','ko'];d['localization_text']['adopted_count']=3;d['localization_text']['scope']='EN+JA+KO are3/8 local text adoption only; all actual CC/audio/backend products remain0.'
+d['localization_text']['ko']={'source_current':True,'metadata_local_current':True,'caption_line_targets':111,'dub_line_targets_same_as_caption_targets':111,'chapter_titles':6,'thumbnail_words_local_current':True,'actual_native_merged_file':'i18n/ko.json','actual_native_merged_file_sha256':sha(E/'i18n/ko.json'),'independent_text_review':'localization/ko/root/root-independent-review.json','adoption_proof':'localization/ko/actual-native-text-adoption.json','root_changed_line_ids':['jd24','g738'],'other109_targets_unchanged':True,'root_description_plain_wording_changes':2,'changes_before_audio_not_fit_retake_counters':True,'actual_max_chars_or_fit_claimed':False,'actual_CC_generated':False,'actual_M4A_exists':False,'actual_fit_or_meter_or_ASR_done':False,'backend_delivery':False}
+d['Korean_text_documentation_update']={'at':now(),'editor':'/root/branding_restore','root_authorized_same_existing_task_team':True,'immutable_Git_anchor':HEAD,'old_JA88_reconstruction':{'unchanged_in_place':83,'actual_mutable_archives':5,'identity':'history/before-KO-text-adoption-docs/identity.json'},'previous_indexes31_61_90_171_preserved_in_place':True,'recursive_previous_history_copies':0,'source_claims_script_voice_lexicon_data_EN_JA_KO_targets_not_edited':True,'paid_media_backend_approval_calls':0,'stage_commit_push_only_after_root_independent_review':True};progress.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
+task=R/TASK;s=task.read_text();s=s.replace('EN與JA各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字2/8','EN、JA與KO各111句targets／六章／metadata／縮圖詞經作者三輪、root獨立全量語義審查後正常i18n-merge；目前為文字3/8');task.write_text(s+'''
+
+## KO文字正常採用與增量文件準備
+
+Root指定/root/branding_restore沿既有claim為本輪唯一FIFTH文件編輯。Root已全量獨立讀111組KO／六章／fullmetadata，僅修jd24、g738與description兩處白話用詞；109句及所有source/context不變。正常i18n-merge真exit0，actual KO6b1e等於root修文後nativepurepreview，不等同作者舊df020 preview。這是音訊前文字修訂，不重設native shorten／reword／retake回合。
+
+現為EN＋JA＋KO文字3/8，master paid TTS0／raw0／actual timeline無；全部actual CC／M4A／fit／meter／ASR／後台交付仍0。作者21freeze＋root審查／delta／preview／merge／log安全複本保留；只封存五份實際可變docs/task及三份前輪描述檔，83舊JA檔與31／61／90／171索引原位核對，以Git0d885及重建identity復原全部舊88，沒有遞迴再複製history。
+
+Source40eb／claimscc38／speech38cf／script7aac／voice／lexicon／data／ENJA與兩份敘事12/13 false固定。作者13保護輸入加root已採用KO共14檔核對，不改任何targets。只準備新KO index／驗證與精確freeze／path proposal；未stage／commit／push，須root獨立審查後另行授權，不開topic6或啟paid/media/API。
+''')
+save(S/'prepare-result.json',{'at':now(),'base_head':HEAD,'old88_reconstruction_count':88,'unchanged83_in_place':True,'actually_mutable_archived':5,'descriptors_archived':3,'author_copy_files':22,'root_copy_files':6,'source_KO_current_sha256':sha(E/'i18n/ko.json'),'mutable_paths':[str(x) for x in MUT],'old_tracked_Git_files':len(gitrows),'new_proof_copy_rows':len(copies),'stage_commit_push_media_API_paid_actions':0})
+print(json.dumps({'prepared':True,'old88_exact':True,'archived_only_mutable5':True,'old_tracked_git_files':len(gitrows),'new_proof_copies':len(copies),'scratch':str(S)}))

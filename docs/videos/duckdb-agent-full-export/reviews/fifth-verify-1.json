@@ -1,0 +1,3659 @@
+{
+  "verdict": "REVISE",
+  "review_id": "fifth-verify-1",
+  "checked_at_utc": "2026-10-26T00:37:01Z",
+  "scope": "Independent factual and technical evidence review of fifth R2 source/claims, full narration/card text, preserved official captures, deterministic local fixtures, SQL displays, public command receipts, and package identity. No narrative scoring, media review or production-ready approval.",
+  "fullsourceSHA": "1a267cb77e4d3eeddffc850dca6616c68a3c66afcaed38576b6e776a3ca62bf2",
+  "claimsSHA": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "conclusion": "核心數據、SQL、版本／官方日期、兩mode實跑收據、JSON契約、產物與新ZIP逐檔身分均有證據；一處資料來源措辭[rxjg]應窄修，因此此verify-1原始結論為REVISE。",
+  "counts": {
+    "claim_definitions": 21,
+    "nonempty_columns_per_claim": 5,
+    "defined_used_sets_equal": true,
+    "unused_claims": [],
+    "undefined_claims": [],
+    "claim_scene_references_exact": 21,
+    "spoken_quotes_reviewed": 111,
+    "scenes_reviewed": 64,
+    "chapters": 6,
+    "receipt_commands": 9,
+    "SQL_display_cards": 14,
+    "command_display_cards": 5,
+    "raw_quote_cards": 4
+  },
+  "findings": [
+    {
+      "id": "V1-F1",
+      "severity": "minor",
+      "status": "REVISE",
+      "category": "misdescribed_data_source",
+      "claim_id": "c16",
+      "scene_id": "route-summary-result",
+      "line_id": "rxjg",
+      "exact_quote": "剛剛分組的完整檔，路線二和路線三各有兩百四十筆。",
+      "source_location": "video.json:1550",
+      "evidence": [
+        "route-summary-query圖卡的完整SQL是SELECT route,count(*) AS delivered_late FROM parcels WHERE status=delivered AND actual_days>promised_days GROUP BY route ORDER BY route。",
+        "demo/followup.sql第5–8行在兩條COPY之前，來源是parcels原表；未從late-followup.csv或Parquet讀回GROUP BY。",
+        "獨立oracle核對R2/R3仍各240，所以本問題不是筆數或主篩選條件錯誤。"
+      ],
+      "why_it_matters": "教學在區分原表、查詢結果、交付檔及讀回核對；這一句把摘要實際讀取對象換成了交付檔，超出畫面及實跑證據。",
+      "minimal_correction": "建議只將此句改為「剛剛按原規則分組，路線二和路線三各有兩百四十筆。」保留原始SQL、數字與產物。",
+      "source_was_modified": false
+    }
+  ],
+  "claim_verifications": [
+    {
+      "id": "c1",
+      "five_columns": [
+        "c1｜RUN／作者資料",
+        "原創1200筆虛構配送fixture、作者確定性程式；非公司／個資／公共統計或獨立產品回應。",
+        "demo/input/parcels.csv; ../fifth-demo/input/fixture-description.json; run_operations.py",
+        "不冒稱來源為真業務、AI失敗或站主職業經驗。",
+        "parcel-table-start, running-followup-task, input-is-still-there, input-columns, input-status-count"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "獨立以fixture-description規則重建全部1200筆，逐列與原始CSV相等。run_demo.py:20–25明示作者生成，原創CC0與虛構標示一致。",
+        "evidence": [
+          "demo/input/parcels.csv",
+          "../fifth-demo/input/fixture-description.json",
+          "../fifth-demo/run_demo.py:20"
+        ],
+        "limits": "非公司／個資／真業務／公共統計，非獨立AI產品回應。"
+      }
+    },
+    {
+      "id": "c2",
+      "five_columns": [
+        "c2｜RUN",
+        "同一2.0查詢資料仍1200筆；一般與agent皆顯示前後40列，agent明列1160省略。",
+        "runlogs/human-preview.stdout.txt; runlogs/agent-preview.stdout.txt; public-run/public-run-results.json",
+        "顯示省略不是查詢／儲存資料遺失。一般模式也已有列數提示。",
+        "forty-visible, missing-question, input-is-still-there, find-the-omission, human-footer, agent-omitted, same-result-different-view, copy-limit-question"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "兩模式預覽均逐值匹配原表最前20及最後20筆，總40；一般footer為1200 rows (40 shown)，agent原樣標1160 omitted。1200−40=1160。",
+        "evidence": [
+          "public-run/runlogs/human-preview.stdout.txt",
+          "public-run/runlogs/agent-preview.stdout.txt"
+        ],
+        "limits": "僅顯示省略，不是查詢或儲存刪除。"
+      }
+    },
+    {
+      "id": "c3",
+      "five_columns": [
+        "c3｜RUN／故意錯字",
+        "作者故意actual_day錯字；兩模式均報欄位不存在，agent錯誤物件列actual_days候選。",
+        "demo/typo.sql; runlogs/human-typo.stderr.txt; runlogs/agent-typo.stderr.txt; public-run/public-run-results.json",
+        "不是觀察到的AI失誤，也不是只有agent能發現錯誤。",
+        "typo-question, field-name-question, human-error, intentional-typo, valid-json-fields, repair-the-name"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "typo.sql故意使用actual_day；兩條raw stdout空、exit1，human明示找不到欄位，agent合法物件name=actual_day且exception_message含actual_days及parcel_id候選。原始作者程式註解與旁白[xj3j]均明示故意。",
+        "evidence": [
+          "demo/typo.sql",
+          "public-run/runlogs/human-typo.stderr.txt",
+          "public-run/runlogs/agent-typo.stderr.txt",
+          "../fifth-demo/sql/02-intentional-typo.sql"
+        ],
+        "limits": "不是觀察到的AI失誤，也不是agent獨有報錯能力。"
+      }
+    },
+    {
+      "id": "c4",
+      "five_columns": [
+        "c4｜RUN",
+        "完整主清單480筆；獨立標準函式庫條件核對與Parquet讀回逐列相符。",
+        "demo/output/late-followup.csv; demo/output/parquet-readback.csv; demo/replay-results.json; ../fifth-demo/artifact-verification.json; public-run/public-run-results.json",
+        "僅支持本例交付完整性，不是任意查詢／AI正確性證書。",
+        "export-question, read-exported-count, actual-export-count, full-content-comparison, source-predicate-check"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "用標準函式庫從原CSV獨立重算全部480筆及5欄和順序，與main CSV及Parquet-readback CSV完全相等；兩CSV亦逐byte相等。",
+        "evidence": [
+          "demo/input/parcels.csv",
+          "demo/output/late-followup.csv",
+          "demo/output/parquet-readback.csv",
+          "public-run/runlogs/readback.command.json"
+        ],
+        "limits": "本例交付核對；本輪未重新執行SQL或解碼Parquet，讀回執行由固定raw receipt佐證。"
+      }
+    },
+    {
+      "id": "c5",
+      "five_columns": [
+        "c5｜RUN／作者契約",
+        "主需求是status=delivered且actual_days>promised_days；在途不列為已送達延遲，空白不是零天。",
+        "demo/setup.sql; demo/followup.sql; demo/input/parcels.csv",
+        "不偷換成所有在途包裹狀態或真配送政策。",
+        "running-followup-task, input-columns, define-the-followup, explicit-input-types, inspect-columns, apply-both-conditions, where-is-complete"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "主SQL完整使用status=delivered AND actual_days>promised_days；兩天數讀為INTEGER。240筆在途actual_days全部空白，raw預覽為NULL；無填零操作。",
+        "evidence": [
+          "demo/setup.sql:5",
+          "demo/followup.sql:7",
+          "demo/followup.sql:13",
+          "demo/input/parcels.csv"
+        ],
+        "limits": "是作者需求，並非真物流政策。"
+      }
+    },
+    {
+      "id": "c6",
+      "five_columns": [
+        "c6｜CITED＋本地呈現",
+        "agent模式調整CLI回覆：緊湊Markdown、明示省略／結果摘要和JSON錯誤；不內含AI模型。",
+        "https://duckdb.org/docs/2.0/clients/cli/agent_mode.html; runlogs/agent-preview.stdout.txt; runlogs/agent-typo.stderr.txt",
+        "本地沒有模型推理／產品前後測；機制卡標官方、實際輸出卡標RUN。",
+        "release-time, mode-role, bounded-choice, force-human, force-agent, same-result-different-view"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "官方2.0 agent文件與實際輸出支持compact Markdown、明示結果範圍、JSON錯誤及強制mode flags。CLI輸出供外部AI coding agent讀取；本例只有CLI+確定性SQL，沒有模型推理。",
+        "evidence": [
+          "sources/duckdb-agent-doc.txt:534",
+          "sources/duckdb-agent-doc.txt:544",
+          "public-run/runlogs/agent-preview.stdout.txt",
+          "public-run/runlogs/agent-typo.stderr.txt"
+        ],
+        "limits": "不把agent名稱當作內建模型／獨立AI產品測試。"
+      }
+    },
+    {
+      "id": "c7",
+      "five_columns": [
+        "c7｜RUN",
+        "完整可讀SQL、-no-init、臨時資料庫與兩種模式命令；同一固定2.0 binary。",
+        "run_operations.py; demo/setup.sql; demo/preview.sql; runlogs/human-preview.command.json; runlogs/agent-preview.command.json; public-run/public-run-results.json",
+        "shell卡換行為可照寫形式，連續反斜線只作shell續行；沒有假終端輸出。",
+        "force-human, force-agent, same-preview, explicit-input-types, run-followup, run-readback, run-variant"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "9條公開根目錄./duckdb命令逐argv、cwd、exit及stdout/stderr bytes+SHA核對。5張命令卡正規化shell續行後精確命中receipt；14張SQL卡均匹配標示檔案完整行範圍與總行數。",
+        "evidence": [
+          "public-run/README.md",
+          "public-run/runlogs/*.command.json",
+          "public-run/demo/*.sql"
+        ],
+        "limits": "只支持實跑Linux amd64 v2.0.0；未宣稱其他OS實測或本輪重跑。"
+      }
+    },
+    {
+      "id": "c8",
+      "five_columns": [
+        "c8｜RUN",
+        "本例960已送達、240在途；在途actual_days空白。",
+        "runlogs/followup.stdout.txt; demo/input/parcels.csv; public-run/public-run-results.json",
+        "虛構fixture規則，不推論真業務分布。",
+        "inspect-columns, input-status-count"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "獨立計數delivered=960、in_transit=240；在途actual_days全空白。raw followup狀態計數與圖卡一致。",
+        "evidence": [
+          "demo/input/parcels.csv",
+          "public-run/runlogs/agent-followup.stdout.txt"
+        ],
+        "limits": "此虛構fixture的分布。"
+      }
+    },
+    {
+      "id": "c9",
+      "five_columns": [
+        "c9｜RUN資料＋實算",
+        "P0002為3天承諾／4天實際／晚1天；P0005在途空白；P0001為3／3準時。",
+        "demo/input/parcels.csv; demo/output/late-followup.csv; demo/output/due-or-late.csv; public-run/public-run-results.json",
+        "手算與輸出同一筆，不另造外部案例。",
+        "read-one-parcel, compute-days-late, in-transit-example, on-time-example, first-delivered-late, on-time-enters-variant"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "逐原表確認P0002/R2為delivered、3→4、差1；P0005在途且實際空白；P0001/R1為3→3，主單排除而變式納入。相關圖卡與檔案一致。",
+        "evidence": [
+          "demo/input/parcels.csv",
+          "demo/output/late-followup.csv",
+          "demo/output/due-or-late.csv"
+        ],
+        "limits": "同一份表的個案與整體條件，沒有另造外部數據。"
+      }
+    },
+    {
+      "id": "c10",
+      "five_columns": [
+        "c10｜RUN",
+        "主清單選parcel_id、route、兩種天數、days_late，按parcel_id升冪；COPY保留相同條件。",
+        "demo/followup.sql 第9–22行; demo/output/late-followup.csv; public-run/public-run-results.json",
+        "不把顯示列數上限塞進匯出查詢。",
+        "where-is-complete, selection-and-order, repair-the-name, copy-csv-whole, copy-where"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "主SQL選parcel_id、route、promised_days、actual_days、days_late，差值在SELECT計算，CSV/Parquet兩段COPY都保留WHERE及ORDER BY parcel_id；無LIMIT或顯示列數設定。CSV欄序及全列順序逐項相同。",
+        "evidence": [
+          "demo/followup.sql:9",
+          "demo/followup.sql:16",
+          "demo/output/late-followup.csv"
+        ],
+        "limits": "新差值不改原天數；顯示限制不套入匯出。"
+      }
+    },
+    {
+      "id": "c11",
+      "five_columns": [
+        "c11｜RUN＋條件推導",
+        "嚴格大於排除剛好準時；大於等於代表另一個包含剛好準時的需求。",
+        "demo/followup.sql; demo/variant.sql; demo/variant-results.json",
+        "變式另命名，不能把720筆都稱晚到。",
+        "on-time-example, new-requirement-consequence, different-deliveries"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "主條件>排除差0；變式>=加入差0且排除負差值。在途仍由delivered條件排除；另目的檔不覆寫main。",
+        "evidence": [
+          "demo/followup.sql:13",
+          "demo/variant.sql:6",
+          "demo/output/due-or-late.csv"
+        ],
+        "limits": "需求變更，並非480筆原單錯誤。"
+      }
+    },
+    {
+      "id": "c12",
+      "five_columns": [
+        "c12｜RUN／輸出契約",
+        "本次stderr為startup文字＋一行合法JSON錯誤；需取JSON行解析，整stream不符合單一JSON物件預期。",
+        "runlogs/agent-typo.stderr.txt; verification.json; public-run/public-run-results.json",
+        "consumer預期不同不等於DuckDB輸出壞JSON；沒有真第三方consumer故障主張。",
+        "stderr-contract, valid-json-fields, repair-the-name"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "以json.loads實驗驗明raw stderr恰有兩個實體行：startup文字與一行合法JSON；單獨第二行可解析，整stream引發JSONDecodeError。候選名確實在exception_message，而非誤造獨立JSON key。",
+        "evidence": [
+          "public-run/runlogs/agent-typo.stderr.txt"
+        ],
+        "limits": "mixed stream不是單一JSON；不是DuckDB壞JSON或真第三方consumer故障。"
+      }
+    },
+    {
+      "id": "c13",
+      "five_columns": [
+        "c13｜RUN",
+        "COPY匯出完整480筆CSV；HEADER保留欄名；檔案讀回count=480。",
+        "demo/followup.sql; runlogs/followup.stdout.txt; demo/output/late-followup.csv; public-run/public-run-results.json",
+        "CSV／SQL／COPY是既有能力，非2.0首創。",
+        "copy-limit-question, copy-csv-whole, copy-where, copy-destination, copy-parquet-whole, run-followup, read-exported-count, actual-export-count, first-delivered-late, tail-of-output"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "CSV實際480資料列，header恰為5個交付欄名；raw讀回count為480。完整COPY保存條件，並非從40列預覽複製。",
+        "evidence": [
+          "demo/followup.sql:9",
+          "demo/followup.sql:23",
+          "demo/output/late-followup.csv",
+          "public-run/runlogs/agent-followup.stdout.txt"
+        ],
+        "limits": "CSV／SQL／COPY是既有能力；沒有宣稱2.0才首次能匯出。"
+      }
+    },
+    {
+      "id": "c14",
+      "five_columns": [
+        "c14｜RUN",
+        "相同選欄／條件／排序匯出Parquet，再讀成CSV逐列一致。",
+        "demo/readback.sql; demo/output/late-followup.parquet; demo/output/parquet-readback.csv; demo/replay-results.json; public-run/public-run-results.json",
+        "沒有Parquet效能／壓縮比較，亦不假稱格式是新功能。",
+        "copy-parquet-whole, handoff-question, read-parquet-back, run-readback, full-content-comparison"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "Parquet兩份原始bytes一致且PAR1頭尾正確；原生readback.sql確實按parcel_id讀回再存CSV，raw執行receipt exit0。讀回CSV與主CSV逐byte及獨立oracle全欄相同。",
+        "evidence": [
+          "demo/followup.sql:16",
+          "demo/readback.sql:3",
+          "demo/output/late-followup.parquet",
+          "demo/output/parquet-readback.csv",
+          "public-run/runlogs/readback.command.json"
+        ],
+        "limits": "沒有新跑Parquet decoder，沒有格式性能或壓縮比較。"
+      }
+    },
+    {
+      "id": "c15",
+      "five_columns": [
+        "c15｜RUN",
+        "同一2.0一般／agent模式，相同條件都得到480主清單；差在回覆方式。",
+        "runlogs/human-followup.stdout.txt; runlogs/followup.stdout.txt; demo/replay-results.json; public-run/public-run-results.json",
+        "不是2.0對1.5，沒有成本／速度或模型優劣基準。",
+        "bounded-choice, same-version-same-answer"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "public receipts的兩mode均同一./duckdb runtime及同一followup.sql；各mode執行後CSV SHA都為7a09b5c5cd0477366bf3dd8897104540952572543487017b9f0d0e1f360624a5。version raw及既有binary SHA相符。",
+        "evidence": [
+          "public-run/runlogs/agent-followup.command.json",
+          "public-run/runlogs/human-followup.command.json",
+          "public-run/runlogs/version.stdout.txt"
+        ],
+        "limits": "不是2.0對1.5，不提供模型／成本／時間效果。"
+      }
+    },
+    {
+      "id": "c16",
+      "five_columns": [
+        "c16｜RUN",
+        "主清單路線R2、R3各240；CSV末端包含P1191、1194、1198、1199及對應值。",
+        "runlogs/followup.stdout.txt; demo/output/late-followup.csv; public-run/public-run-results.json",
+        "頭尾／摘要不代替全量核對，數字只屬此fixture。",
+        "tail-of-output, route-summary-query, route-summary-result"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "REVISE",
+      "verification_status": "REVISE",
+      "independent_verification": {
+        "note": "R2與R3各240，末四筆P1191/1194/1198/1199與圖卡全部相符。唯一需修的是[rxjg]把原表套條件的GROUP BY稱為分組完整檔；目前圖卡SQL及原始followup.sql:5–8均是FROM parcels。",
+        "evidence": [
+          "demo/followup.sql:5",
+          "demo/output/late-followup.csv",
+          "video.json:1501",
+          "video.json:1550"
+        ],
+        "limits": "數字正確；資料來源描述需精確，等量摘要不能獨立證明全量內容。"
+      }
+    },
+    {
+      "id": "c17",
+      "five_columns": [
+        "c17｜RUN／產物",
+        "主CSV、Parquet、完整SQL及原創HTML／教材包均已存在，可交付並追條件。",
+        "demo/output/late-followup.csv; demo/output/late-followup.parquet; demo/followup.sql; ../fifth-demo/output/followup-report.html; ../fifth-demo/output/fifth-followup-kit.zip; public-run/public-run-results.json",
+        "教材檔已存在，尚無本片公開下載URL；不捏造公開上傳或成片紀錄。",
+        "different-deliveries, handoff-pack, keep-the-rule"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "主CSV、Parquet、完整SQL、原創HTML及原始教材ZIP均存在。HTML四個相對連結在本地可解析；原教材ZIP內相應HTML/CSV/Parquet/SQL bytes與原檔一致。新公開根目錄ZIP也已逐entry核對。",
+        "evidence": [
+          "demo/output/late-followup.csv",
+          "demo/output/late-followup.parquet",
+          "demo/followup.sql",
+          "../fifth-demo/output/followup-report.html",
+          "../fifth-demo/output/fifth-followup-kit.zip",
+          "duckdb-public-fixtures.zip"
+        ],
+        "limits": "教材為本地existing artifacts；沒有本片公開下載URL、公開上傳或成片聲明。新public ZIP不含HTML，HTML是既有原教材的產物。"
+      }
+    },
+    {
+      "id": "c19",
+      "five_columns": [
+        "c19｜CITED",
+        "agent模式10/9介紹，10/21隨2.0正式release；CSV／SQL匯出為既有能力。",
+        "https://duckdb.org/2026/10/09/agent-mode.html; https://duckdb.org/2026/10/21/announcing-duckdb-200; sources/duckdb-release.json",
+        "不是首次能讀CSV，未測全部2.0新增功能。",
+        "release-time, existing-file-tools"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "captured agent介紹日期2026-10-09，官方正式公告及non-prerelease API published_at為2026-10-21。官方文件明示2.0引入agent呈現模式；本片未宣稱CSV/SQL/Parquet是新增。",
+        "evidence": [
+          "sources/duckdb-agent-news.txt:27",
+          "sources/duckdb-agent-news.txt:68",
+          "sources/duckdb-news.txt:27",
+          "sources/duckdb-release.json"
+        ],
+        "limits": "本輪只讀10/25 capture，沒有今日live GET或重新下載。"
+      }
+    },
+    {
+      "id": "c20",
+      "five_columns": [
+        "c20｜編輯選擇／作者方法",
+        "這份練習在新目錄比較同版兩模式，不變更既有資料庫。",
+        "brief.md; demo/replay-results.json; run_operations.py",
+        "不是舊資料庫升級、表格產品比較或全面採用建議。",
+        "bounded-choice"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "真實命令cwd是新fifth-draft/public-run目錄，使用:memory:與-no-init；明確兩mode同版、固定輸入，沒有開既有資料庫檔。作者方法與實際收據相符。",
+        "evidence": [
+          "public-run/runlogs/human-preview.command.json",
+          "public-run/runlogs/agent-preview.command.json",
+          "demo/setup.sql"
+        ],
+        "limits": "不等於完成既有資料庫升級，也不構成全面採用建議。"
+      }
+    },
+    {
+      "id": "c23",
+      "five_columns": [
+        "c23｜方法範圍",
+        "作者固定fixture與確定性SQL；未測模型推理、token／費用、跨版效能、server或升級。",
+        "demo/replay-results.json; run_operations.py; ../fifth-demo/results.json",
+        "agent名稱不等於已運行AI模型；輸出bytes不換算成本。",
+        "bounded-choice"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "本地Python生成fixture、執行固定CLI+SQL；setup禁extension自動安裝/載入。原始results列未測AI reasoning、token/dollar、speed、server及migration；旁白、description與圖卡的界線相符。",
+        "evidence": [
+          "run_operations.py",
+          "demo/setup.sql:1",
+          "../fifth-demo/results.json"
+        ],
+        "limits": "不把輸出bytes、CLI執行時間或agent名稱換算成模型或成本收益。"
+      }
+    },
+    {
+      "id": "c24",
+      "five_columns": [
+        "c24｜RUN需求變式",
+        "同資料將>改>=，另存剛好準時或晚到720筆，其中240筆days_late=0；P0001入選。",
+        "demo/variant.sql; demo/variant-results.json; demo/output/due-or-late.csv; public-run/public-run-results.json",
+        "這是明示新需求，不說原480錯，也不把720都叫延遲；檔名due-or-late的精確範圍仍是已送達且actual>=promised。",
+        "change-the-requirement, new-requirement-consequence, due-or-late-rule, run-variant, variant-members-question, variant-result, on-time-enters-variant, different-deliveries"
+      ],
+      "scene_references_exact": true,
+      "definition_status": "PASS",
+      "attached_scene_wording_status": "PASS",
+      "verification_status": "PASS",
+      "independent_verification": {
+        "note": "獨立>= oracle逐列吻合720筆與全部5欄，恰240筆差值0，無負差值；主480檔及SHA保留。P0001進變式。SQL仍有delivered條件並另存due-or-late.csv；旁白稱剛好準時或晚到。",
+        "evidence": [
+          "demo/variant.sql",
+          "demo/output/due-or-late.csv",
+          "demo/output/late-followup.csv"
+        ],
+        "limits": "不是全部720都晚到，不含在途或早到；是明示新需求。"
+      }
+    }
+  ],
+  "line_quote_verifications": [
+    {
+      "line_id": "dg2i",
+      "quote": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+      "scene_id": "parcel-table-start",
+      "claims": [
+        "c1"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c1"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "c7uh",
+      "quote": "查詢要找出需要跟進的包裹，交成一份能重開的清單。",
+      "scene_id": "running-followup-task",
+      "claims": [
+        "c1",
+        "c5"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c1",
+        "c5"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "x6vr",
+      "quote": "螢幕只留下前後四十列，中間出現省略標記。",
+      "scene_id": "forty-visible",
+      "claims": [
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "iaiy",
+      "quote": "這份表真的只剩這些紀錄嗎？",
+      "scene_id": "missing-question",
+      "claims": [
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "zni4",
+      "quote": "實際天數的欄位，等一下會少一個字母。",
+      "scene_id": "typo-question",
+      "claims": [
+        "c3"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "3zp6",
+      "quote": "清單另外存成檔案，又怎麼確認內容完整？",
+      "scene_id": "export-question",
+      "claims": [
+        "c4"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "a73b",
+      "quote": "那份交付檔必須回查原表；原表仍有一千兩百筆紀錄。",
+      "scene_id": "input-is-still-there",
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "8ex8",
+      "quote": "這是原創的虛構配送練習表，可以逐筆回查。",
+      "scene_id": "input-is-still-there",
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ujmc",
+      "quote": "DuckDB的代理模式十月九日介紹，十月二十一日隨二點零正式提供。",
+      "scene_id": "release-time",
+      "claims": [
+        "c6",
+        "c19"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6",
+        "c19"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "m4b3",
+      "quote": "這個新模式把工具回覆排得緊湊，並把省略標記放進結果。",
+      "scene_id": "mode-role",
+      "claims": [
+        "c6"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "6i9g",
+      "quote": "對要讀這份回覆的程式，這些標記就是判讀依據。",
+      "scene_id": "mode-role",
+      "claims": [
+        "c6"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "msj7",
+      "quote": "讀CSV、寫SQL和匯出完整檔，則是原本就有的能力。",
+      "scene_id": "existing-file-tools",
+      "claims": [
+        "c19"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c19"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "x88h",
+      "quote": "這次在新練習目錄，用同版的兩種模式處理這張表。",
+      "scene_id": "bounded-choice",
+      "claims": [
+        "c6",
+        "c15",
+        "c20",
+        "c23"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6",
+        "c15",
+        "c20",
+        "c23"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "pskv",
+      "quote": "它不帶AI模型；這個對照也不測模型正確率或使用費用。",
+      "scene_id": "bounded-choice",
+      "claims": [
+        "c6",
+        "c15",
+        "c20",
+        "c23"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6",
+        "c15",
+        "c20",
+        "c23"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "yqnx",
+      "quote": "每筆都有包裹代號、路線，以及承諾完成的天數。",
+      "scene_id": "input-columns",
+      "claims": [
+        "c1",
+        "c5"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c1",
+        "c5"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "xbqa",
+      "quote": "狀態和實際天數，則是這份跟進需求要用的欄位。",
+      "scene_id": "input-columns",
+      "claims": [
+        "c1",
+        "c5"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c1",
+        "c5"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "yy8n",
+      "quote": "加上一般模式參數，就能指定原本的顯示方式。",
+      "scene_id": "force-human",
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6",
+        "c7"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "9gdj",
+      "quote": "命令使用臨時資料庫，並略過個人的初始化檔。",
+      "scene_id": "force-human",
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6",
+        "c7"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "xd25",
+      "quote": "把參數換成代理模式，其他輸入與查詢不變。",
+      "scene_id": "force-agent",
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6",
+        "c7"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "c6hy",
+      "quote": "明確選模式，就不會把環境自動偵測混進這個對照。",
+      "scene_id": "force-agent",
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c6",
+        "c7"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "jm9m",
+      "quote": "回到開場的省略標記：這兩份回覆，各把它放在哪裡？",
+      "scene_id": "find-the-omission",
+      "claims": [
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "t4hj",
+      "quote": "這條查詢先建立同一張表，再按包裹代號排列。",
+      "scene_id": "same-preview",
+      "claims": [
+        "c7"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c7"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "zxhz",
+      "quote": "它沒有加只取少數紀錄的條件，所以能用來辨認顯示範圍。",
+      "scene_id": "same-preview",
+      "claims": [
+        "c7"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c7"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "h4gg",
+      "quote": "一般模式底下，已經列出總列數與顯示列數。",
+      "scene_id": "human-footer",
+      "claims": [
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "4cr9",
+      "quote": "這一行把查詢結果大小和畫面大小分開了。",
+      "scene_id": "human-footer",
+      "claims": [
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "uj2p",
+      "quote": "代理模式則在中間直接標出，一千一百六十列省略。",
+      "scene_id": "agent-omitted",
+      "claims": [
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "u5mp",
+      "quote": "那是沒有顯示的部分，不是查詢或儲存少掉資料。",
+      "scene_id": "agent-omitted",
+      "claims": [
+        "c2"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "jumq",
+      "quote": "開場那段預覽只是讀回覆的入口，還不是可交付的名單。",
+      "scene_id": "same-result-different-view",
+      "claims": [
+        "c2",
+        "c6"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2",
+        "c6"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "7npx",
+      "quote": "現在要從完整原表決定，哪些包裹才該留下？",
+      "scene_id": "same-result-different-view",
+      "claims": [
+        "c2",
+        "c6"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2",
+        "c6"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "v9hh",
+      "quote": "這份跟進清單，只找已送達而且超過承諾天數的包裹。",
+      "scene_id": "define-the-followup",
+      "claims": [
+        "c5"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "fpcm",
+      "quote": "仍在途的紀錄先留在原表，不算進這份需求。",
+      "scene_id": "define-the-followup",
+      "claims": [
+        "c5"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "qxv3",
+      "quote": "建立表格時，把代號、路線和狀態讀成文字。",
+      "scene_id": "explicit-input-types",
+      "claims": [
+        "c5",
+        "c7"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5",
+        "c7"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "abty",
+      "quote": "兩種天數讀成整數，比較大小時才是在比較天數。",
+      "scene_id": "explicit-input-types",
+      "claims": [
+        "c5",
+        "c7"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5",
+        "c7"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "m3tz",
+      "quote": "這條描述命令會列出欄位名稱與型別。",
+      "scene_id": "inspect-columns",
+      "claims": [
+        "c5",
+        "c8"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5",
+        "c8"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "drd5",
+      "quote": "另一條查詢按狀態計數，確認這份表有哪些待判斷的紀錄。",
+      "scene_id": "inspect-columns",
+      "claims": [
+        "c5",
+        "c8"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5",
+        "c8"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "6i82",
+      "quote": "這裡有九百六十筆已送達，兩百四十筆仍在途。",
+      "scene_id": "input-status-count",
+      "claims": [
+        "c1",
+        "c8"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c1",
+        "c8"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ufbq",
+      "quote": "在途的實際天數是空白，意思是還沒有完成天數。",
+      "scene_id": "input-status-count",
+      "claims": [
+        "c1",
+        "c8"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c1",
+        "c8"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "y43c",
+      "quote": "照剛剛的入選規則，這筆已送達包裹會留下嗎？",
+      "scene_id": "apply-both-conditions",
+      "claims": [
+        "c5"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "jbme",
+      "quote": "這筆包裹已送達，承諾三天，實際用了四天。",
+      "scene_id": "read-one-parcel",
+      "claims": [
+        "c9"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "8wey",
+      "quote": "它超過承諾，所以要進跟進清單。",
+      "scene_id": "read-one-parcel",
+      "claims": [
+        "c9"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "wg3d",
+      "quote": "用四減三，得到晚一天。",
+      "scene_id": "compute-days-late",
+      "claims": [
+        "c9"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "tqeh",
+      "quote": "這個計算會寫成新欄位，接手的人能直接看見差了幾天。",
+      "scene_id": "compute-days-late",
+      "claims": [
+        "c9"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "5rfa",
+      "quote": "把剛剛的狀態條件，套到這筆在途紀錄。",
+      "scene_id": "in-transit-example",
+      "claims": [
+        "c9"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "e77f",
+      "quote": "它先被送達條件排除，空白也不能補成零天。",
+      "scene_id": "in-transit-example",
+      "claims": [
+        "c9"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ewsi",
+      "quote": "把剛剛的入選規則，寫進這一行篩選式。",
+      "scene_id": "where-is-complete",
+      "claims": [
+        "c5",
+        "c10"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5",
+        "c10"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "bhcv",
+      "quote": "新欄位的相減式放在選欄部分，不會改寫原始天數。",
+      "scene_id": "where-is-complete",
+      "claims": [
+        "c5",
+        "c10"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c5",
+        "c10"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "g52d",
+      "quote": "交付欄位留下代號、路線、兩種天數和剛算出的差值。",
+      "scene_id": "selection-and-order",
+      "claims": [
+        "c10"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c10"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "evdb",
+      "quote": "最後按包裹代號升冪排列，重開檔案便能用同一順序對照。",
+      "scene_id": "selection-and-order",
+      "claims": [
+        "c10"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c10"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "6r94",
+      "quote": "這筆承諾與實際都是三天，相減得到零。",
+      "scene_id": "on-time-example",
+      "claims": [
+        "c9",
+        "c11"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9",
+        "c11"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "s3h7",
+      "quote": "套回剛剛的大於符號，它不進這張延遲清單。",
+      "scene_id": "on-time-example",
+      "claims": [
+        "c9",
+        "c11"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9",
+        "c11"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ntfj",
+      "quote": "同一套條件已寫好，實際天數欄位少個字母，工具會怎麼回覆？",
+      "scene_id": "field-name-question",
+      "claims": [
+        "c3"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "ak3j",
+      "quote": "它先回覆找不到這個欄位，沒有產生查詢結果。",
+      "scene_id": "human-error",
+      "claims": [
+        "c3"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "s9ca",
+      "quote": "一般模式已經能指出這個名稱問題。",
+      "scene_id": "human-error",
+      "claims": [
+        "c3"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "jsui",
+      "quote": "開場預告少掉的那個字母，就在實際天數的欄位結尾。",
+      "scene_id": "intentional-typo",
+      "claims": [
+        "c3"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "xj3j",
+      "quote": "這條查詢只抽出欄位排錯，錯字是我刻意安排，不是AI失誤。",
+      "scene_id": "intentional-typo",
+      "claims": [
+        "c3"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "i2fq",
+      "quote": "先略過這次啟動文字，只解析後面那行合法JSON。",
+      "scene_id": "stderr-contract",
+      "claims": [
+        "c12"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c12"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "yxh7",
+      "quote": "整串輸出混有文字，不能當成單一物件。",
+      "scene_id": "stderr-contract",
+      "claims": [
+        "c12"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c12"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "jngn",
+      "quote": "從物件取出錯字名稱，再從說明文字找候選欄位。",
+      "scene_id": "valid-json-fields",
+      "claims": [
+        "c3",
+        "c12"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3",
+        "c12"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "cjm4",
+      "quote": "我把候選名稱對回原表，找到多了結尾字母的正確拼法。",
+      "scene_id": "valid-json-fields",
+      "claims": [
+        "c3",
+        "c12"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3",
+        "c12"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "7g26",
+      "quote": "把剛剛選出的原表欄位，寫回這份查詢。",
+      "scene_id": "repair-the-name",
+      "claims": [
+        "c3",
+        "c10",
+        "c12"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3",
+        "c10",
+        "c12"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "2d84",
+      "quote": "再接回原本的條件、選欄與排序，準備匯出同一張單。",
+      "scene_id": "repair-the-name",
+      "claims": [
+        "c3",
+        "c10",
+        "c12"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c3",
+        "c10",
+        "c12"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "rw48",
+      "quote": "欄位修好了；剛剛只顯示少數列的回覆，會把存檔也截短嗎？",
+      "scene_id": "copy-limit-question",
+      "claims": [
+        "c2",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c2",
+        "c13"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "epd8",
+      "quote": "把剛剛那份完整查詢，放進COPY的括號裡。",
+      "scene_id": "copy-csv-whole",
+      "claims": [
+        "c10",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c10",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "tdtg",
+      "quote": "括號保留入選規則與排序，後面才指定交付檔的位置。",
+      "scene_id": "copy-csv-whole",
+      "claims": [
+        "c10",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c10",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "q6db",
+      "quote": "從原表到這個輸出，沒有加入顯示列數限制。",
+      "scene_id": "copy-where",
+      "claims": [
+        "c10",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c10",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "n6c9",
+      "quote": "所以要存的是符合條件的結果，不是從回覆上複製幾行。",
+      "scene_id": "copy-where",
+      "claims": [
+        "c10",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c10",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "kabz",
+      "quote": "這個位置決定CSV寫到哪裡，標題列選項則保留欄名。",
+      "scene_id": "copy-destination",
+      "claims": [
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "5qhj",
+      "quote": "讀回時，把欄位順序對回剛才的選欄，確認代號和路線沒有互換。",
+      "scene_id": "copy-destination",
+      "claims": [
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "6e4u",
+      "quote": "另一份改存Parquet，只換輸出格式與目的檔名。",
+      "scene_id": "copy-parquet-whole",
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c13",
+        "c14"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "nsc3",
+      "quote": "同一份選欄與排序仍留在括號內，方便稍後比對。",
+      "scene_id": "copy-parquet-whole",
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c13",
+        "c14"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "7b9v",
+      "quote": "用這條命令執行完整查詢，兩種格式就寫到剛才指定的位置。",
+      "scene_id": "run-followup",
+      "claims": [
+        "c7",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c7",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "44a2",
+      "quote": "要回答存檔有沒有被截短，這裡直接讀回輸出的CSV。",
+      "scene_id": "read-exported-count",
+      "claims": [
+        "c4",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "j328",
+      "quote": "計數對象是檔案中的資料列，不把標題列算成包裹。",
+      "scene_id": "read-exported-count",
+      "claims": [
+        "c4",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ubxv",
+      "quote": "讀回的完整跟進檔，這次有四百八十筆。",
+      "scene_id": "actual-export-count",
+      "claims": [
+        "c4",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ag8z",
+      "quote": "剛剛擔心的預覽截短，沒有跟著這條匯出指令進檔案。",
+      "scene_id": "actual-export-count",
+      "claims": [
+        "c4",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "6da2",
+      "quote": "一般模式執行同一份匯出，也得到相同清單內容。",
+      "scene_id": "same-version-same-answer",
+      "claims": [
+        "c15"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c15"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "385u",
+      "quote": "這一步說明新模式改的是回覆，沒有多找出延遲包裹。",
+      "scene_id": "same-version-same-answer",
+      "claims": [
+        "c15"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c15"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "zdyx",
+      "quote": "檔案筆數對了就能交嗎，另一種格式也保存同一筆內容嗎？",
+      "scene_id": "handoff-question",
+      "claims": [
+        "c14"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c14"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "qgqv",
+      "quote": "為了核對另一種格式，把Parquet讀回並按相同代號排序。",
+      "scene_id": "read-parquet-back",
+      "claims": [
+        "c14"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c14"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ineu",
+      "quote": "再存成CSV，兩份完整結果就有一致的逐列比較方式。",
+      "scene_id": "read-parquet-back",
+      "claims": [
+        "c14"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c14"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "dgc2",
+      "quote": "執行這份讀回查詢，資料來自交付檔，原始配送表不會被改寫。",
+      "scene_id": "run-readback",
+      "claims": [
+        "c7",
+        "c14"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c7",
+        "c14"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "xqkd",
+      "quote": "還記得剛剛四減三的那筆包裹嗎？",
+      "scene_id": "first-delivered-late",
+      "claims": [
+        "c9",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9",
+        "c13"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "xad9",
+      "quote": "完整檔保留了它的路線、原始天數，和晚一天的差值。",
+      "scene_id": "first-delivered-late",
+      "claims": [
+        "c9",
+        "c13"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9",
+        "c13"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "6u7e",
+      "quote": "沿著代號往後，靠近原表末端的符合紀錄也在完整檔。",
+      "scene_id": "tail-of-output",
+      "claims": [
+        "c13",
+        "c16"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c13",
+        "c16"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "wznc",
+      "quote": "抽頭尾能定位內容；全量比對還要檢查中間每筆。",
+      "scene_id": "tail-of-output",
+      "claims": [
+        "c13",
+        "c16"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c13",
+        "c16"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "h579",
+      "quote": "要讓接手者先掌握分布，這裡沿用原規則，按路線分組計數。",
+      "scene_id": "route-summary-query",
+      "claims": [
+        "c16"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c16"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "jd24",
+      "quote": "這個小摘要另列在報告裡，不會取代完整包裹名單。",
+      "scene_id": "route-summary-query",
+      "claims": [
+        "c16"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c16"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "rxjg",
+      "quote": "剛剛分組的完整檔，路線二和路線三各有兩百四十筆。",
+      "scene_id": "route-summary-result",
+      "claims": [
+        "c16"
+      ],
+      "status": "REVISE",
+      "finding_ids": [
+        "V1-F1"
+      ],
+      "evidence_claim_ids": [
+        "c16"
+      ],
+      "note": "數值通過；FROM parcels被說成分組完整檔，見V1-F1。"
+    },
+    {
+      "line_id": "mavj",
+      "quote": "加起來是剛才完整檔的四百八十筆，沒有漏在摘要之外。",
+      "scene_id": "route-summary-result",
+      "claims": [
+        "c16"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c16"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "3dwp",
+      "quote": "開場問的存檔完整性，現在有逐列答案：兩份內容一致。",
+      "scene_id": "full-content-comparison",
+      "claims": [
+        "c4",
+        "c14"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4",
+        "c14"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "dm84",
+      "quote": "比較的不只筆數，還包括每筆代號、欄位數值和排列順序。",
+      "scene_id": "full-content-comparison",
+      "claims": [
+        "c4",
+        "c14"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4",
+        "c14"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ezfg",
+      "quote": "另用簡單程式逐筆讀原表，依原規則產生應入選的代號。",
+      "scene_id": "source-predicate-check",
+      "claims": [
+        "c4"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ubtk",
+      "quote": "這份代號清單也和匯出結果相符，核對便回到了原始資料。",
+      "scene_id": "source-predicate-check",
+      "claims": [
+        "c4"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c4"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "g738",
+      "quote": "但若接手者改要包含剛好準時，這張核對過的延遲清單能直接交嗎？",
+      "scene_id": "change-the-requirement",
+      "claims": [
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c24"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "ab37",
+      "quote": "不能，剛才被排除的準時包裹，這次也得留下。",
+      "scene_id": "new-requirement-consequence",
+      "claims": [
+        "c11",
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c11",
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "dyhh",
+      "quote": "先保留原檔，再把新需求另存一份查詢。",
+      "scene_id": "new-requirement-consequence",
+      "claims": [
+        "c11",
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c11",
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "7th9",
+      "quote": "篩選式的大於改成大於等於，剛好相等的紀錄就能通過。",
+      "scene_id": "due-or-late-rule",
+      "claims": [
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "98xj",
+      "quote": "同時換目的檔名，讓新需求不會蓋掉原本那份清單。",
+      "scene_id": "due-or-late-rule",
+      "claims": [
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "g89b",
+      "quote": "用這條命令執行修改後的檔案，新的交付結果就另外保存。",
+      "scene_id": "run-variant",
+      "claims": [
+        "c7",
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c7",
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "u6gp",
+      "quote": "剛剛改的符號，究竟多留下多少包裹，又是哪種紀錄？",
+      "scene_id": "variant-members-question",
+      "claims": [
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c24"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "mkfw",
+      "quote": "新清單有七百二十筆，其中兩百四十筆的晚到天數是零。",
+      "scene_id": "variant-result",
+      "claims": [
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "b5i9",
+      "quote": "這組新增紀錄剛好準時，所以整份檔要叫剛好準時或晚到。",
+      "scene_id": "variant-result",
+      "claims": [
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "fqr6",
+      "quote": "還記得三天對三天、被留在清單外的那筆嗎？",
+      "scene_id": "on-time-enters-variant",
+      "claims": [
+        "c9",
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9",
+        "c24"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "me2p",
+      "quote": "它現在入選，正是剛才改成包含相等的結果。",
+      "scene_id": "on-time-enters-variant",
+      "claims": [
+        "c9",
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c9",
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ptfc",
+      "quote": "這兩份清單都依各自條件產生，不能互相代交。",
+      "scene_id": "different-deliveries",
+      "claims": [
+        "c11",
+        "c17",
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c11",
+        "c17",
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ha7h",
+      "quote": "把新舊檔名和各自查詢一起保留，接手者才能選對需求。",
+      "scene_id": "different-deliveries",
+      "claims": [
+        "c11",
+        "c17",
+        "c24"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c11",
+        "c17",
+        "c24"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "g7bc",
+      "quote": "現在交付包裡，有完整資料檔、對應查詢和可讀摘要。",
+      "scene_id": "handoff-pack",
+      "claims": [
+        "c17"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c17"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "s9qr",
+      "quote": "接手的人能從報告找到全檔，也能修改條件重新產生名單。",
+      "scene_id": "handoff-pack",
+      "claims": [
+        "c17"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c17"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "ddtv",
+      "quote": "開場那段預覽，如今有能對回規則的完整交付檔。",
+      "scene_id": "keep-the-rule",
+      "claims": [
+        "c17"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c17"
+      ],
+      "note": "逐句對照相應claim的原始SQL、raw輸出、獨立oracle或官方capture；圖卡與使用範圍另核對。"
+    },
+    {
+      "line_id": "wx5u",
+      "quote": "你最常要交什麼資料清單？",
+      "scene_id": "keep-the-rule",
+      "claims": [
+        "c17"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c17"
+      ],
+      "note": "問題句；已核對其隱含前提與對應後續證據。"
+    },
+    {
+      "line_id": "v5pw",
+      "quote": "訂閱，用產物讀懂AI工具。",
+      "scene_id": "keep-the-rule",
+      "claims": [
+        "c17"
+      ],
+      "status": "PASS",
+      "finding_ids": [],
+      "evidence_claim_ids": [
+        "c17"
+      ],
+      "note": "CTA，沒有新增產品效果事實主張。"
+    }
+  ],
+  "scene_card_verifications": [
+    {
+      "scene_id": "parcel-table-start",
+      "claim_ids": [
+        "c1"
+      ],
+      "line_ids": [
+        "dg2i"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "running-followup-task",
+      "claim_ids": [
+        "c1",
+        "c5"
+      ],
+      "line_ids": [
+        "c7uh"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "forty-visible",
+      "claim_ids": [
+        "c2"
+      ],
+      "line_ids": [
+        "x6vr"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "missing-question",
+      "claim_ids": [
+        "c2"
+      ],
+      "line_ids": [
+        "iaiy"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "typo-question",
+      "claim_ids": [
+        "c3"
+      ],
+      "line_ids": [
+        "zni4"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "export-question",
+      "claim_ids": [
+        "c4"
+      ],
+      "line_ids": [
+        "3zp6"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "input-is-still-there",
+      "claim_ids": [
+        "c1",
+        "c2"
+      ],
+      "line_ids": [
+        "a73b",
+        "8ex8"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "release-time",
+      "claim_ids": [
+        "c6",
+        "c19"
+      ],
+      "line_ids": [
+        "ujmc"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "mode-role",
+      "claim_ids": [
+        "c6"
+      ],
+      "line_ids": [
+        "m4b3",
+        "6i9g"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "existing-file-tools",
+      "claim_ids": [
+        "c19"
+      ],
+      "line_ids": [
+        "msj7"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "bounded-choice",
+      "claim_ids": [
+        "c6",
+        "c15",
+        "c20",
+        "c23"
+      ],
+      "line_ids": [
+        "x88h",
+        "pskv"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "input-columns",
+      "claim_ids": [
+        "c1",
+        "c5"
+      ],
+      "line_ids": [
+        "yqnx",
+        "xbqa"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "force-human",
+      "claim_ids": [
+        "c6",
+        "c7"
+      ],
+      "line_ids": [
+        "yy8n",
+        "9gdj"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "force-agent",
+      "claim_ids": [
+        "c6",
+        "c7"
+      ],
+      "line_ids": [
+        "xd25",
+        "c6hy"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "find-the-omission",
+      "claim_ids": [
+        "c2"
+      ],
+      "line_ids": [
+        "jm9m"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "same-preview",
+      "claim_ids": [
+        "c7"
+      ],
+      "line_ids": [
+        "t4hj",
+        "zxhz"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "human-footer",
+      "claim_ids": [
+        "c2"
+      ],
+      "line_ids": [
+        "h4gg",
+        "4cr9"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "agent-omitted",
+      "claim_ids": [
+        "c2"
+      ],
+      "line_ids": [
+        "uj2p",
+        "u5mp"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "same-result-different-view",
+      "claim_ids": [
+        "c2",
+        "c6"
+      ],
+      "line_ids": [
+        "jumq",
+        "7npx"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "define-the-followup",
+      "claim_ids": [
+        "c5"
+      ],
+      "line_ids": [
+        "v9hh",
+        "fpcm"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "explicit-input-types",
+      "claim_ids": [
+        "c5",
+        "c7"
+      ],
+      "line_ids": [
+        "qxv3",
+        "abty"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "inspect-columns",
+      "claim_ids": [
+        "c5",
+        "c8"
+      ],
+      "line_ids": [
+        "m3tz",
+        "drd5"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "input-status-count",
+      "claim_ids": [
+        "c1",
+        "c8"
+      ],
+      "line_ids": [
+        "6i82",
+        "ufbq"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "apply-both-conditions",
+      "claim_ids": [
+        "c5"
+      ],
+      "line_ids": [
+        "y43c"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "read-one-parcel",
+      "claim_ids": [
+        "c9"
+      ],
+      "line_ids": [
+        "jbme",
+        "8wey"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "compute-days-late",
+      "claim_ids": [
+        "c9"
+      ],
+      "line_ids": [
+        "wg3d",
+        "tqeh"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "in-transit-example",
+      "claim_ids": [
+        "c9"
+      ],
+      "line_ids": [
+        "5rfa",
+        "e77f"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "where-is-complete",
+      "claim_ids": [
+        "c5",
+        "c10"
+      ],
+      "line_ids": [
+        "ewsi",
+        "bhcv"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "selection-and-order",
+      "claim_ids": [
+        "c10"
+      ],
+      "line_ids": [
+        "g52d",
+        "evdb"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "on-time-example",
+      "claim_ids": [
+        "c9",
+        "c11"
+      ],
+      "line_ids": [
+        "6r94",
+        "s3h7"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "field-name-question",
+      "claim_ids": [
+        "c3"
+      ],
+      "line_ids": [
+        "ntfj"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "human-error",
+      "claim_ids": [
+        "c3"
+      ],
+      "line_ids": [
+        "ak3j",
+        "s9ca"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "intentional-typo",
+      "claim_ids": [
+        "c3"
+      ],
+      "line_ids": [
+        "jsui",
+        "xj3j"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "stderr-contract",
+      "claim_ids": [
+        "c12"
+      ],
+      "line_ids": [
+        "i2fq",
+        "yxh7"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "valid-json-fields",
+      "claim_ids": [
+        "c3",
+        "c12"
+      ],
+      "line_ids": [
+        "jngn",
+        "cjm4"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "repair-the-name",
+      "claim_ids": [
+        "c3",
+        "c10",
+        "c12"
+      ],
+      "line_ids": [
+        "7g26",
+        "2d84"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "copy-limit-question",
+      "claim_ids": [
+        "c2",
+        "c13"
+      ],
+      "line_ids": [
+        "rw48"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "copy-csv-whole",
+      "claim_ids": [
+        "c10",
+        "c13"
+      ],
+      "line_ids": [
+        "epd8",
+        "tdtg"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "copy-where",
+      "claim_ids": [
+        "c10",
+        "c13"
+      ],
+      "line_ids": [
+        "q6db",
+        "n6c9"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "copy-destination",
+      "claim_ids": [
+        "c13"
+      ],
+      "line_ids": [
+        "kabz",
+        "5qhj"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "copy-parquet-whole",
+      "claim_ids": [
+        "c13",
+        "c14"
+      ],
+      "line_ids": [
+        "6e4u",
+        "nsc3"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "run-followup",
+      "claim_ids": [
+        "c7",
+        "c13"
+      ],
+      "line_ids": [
+        "7b9v"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "read-exported-count",
+      "claim_ids": [
+        "c4",
+        "c13"
+      ],
+      "line_ids": [
+        "44a2",
+        "j328"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "actual-export-count",
+      "claim_ids": [
+        "c4",
+        "c13"
+      ],
+      "line_ids": [
+        "ubxv",
+        "ag8z"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "same-version-same-answer",
+      "claim_ids": [
+        "c15"
+      ],
+      "line_ids": [
+        "6da2",
+        "385u"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "handoff-question",
+      "claim_ids": [
+        "c14"
+      ],
+      "line_ids": [
+        "zdyx"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "read-parquet-back",
+      "claim_ids": [
+        "c14"
+      ],
+      "line_ids": [
+        "qgqv",
+        "ineu"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "run-readback",
+      "claim_ids": [
+        "c7",
+        "c14"
+      ],
+      "line_ids": [
+        "dgc2"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "first-delivered-late",
+      "claim_ids": [
+        "c9",
+        "c13"
+      ],
+      "line_ids": [
+        "xqkd",
+        "xad9"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "tail-of-output",
+      "claim_ids": [
+        "c13",
+        "c16"
+      ],
+      "line_ids": [
+        "6u7e",
+        "wznc"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "route-summary-query",
+      "claim_ids": [
+        "c16"
+      ],
+      "line_ids": [
+        "h579",
+        "jd24"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "route-summary-result",
+      "claim_ids": [
+        "c16"
+      ],
+      "line_ids": [
+        "rxjg",
+        "mavj"
+      ],
+      "card_data_reviewed": true,
+      "status": "REVISE"
+    },
+    {
+      "scene_id": "full-content-comparison",
+      "claim_ids": [
+        "c4",
+        "c14"
+      ],
+      "line_ids": [
+        "3dwp",
+        "dm84"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "source-predicate-check",
+      "claim_ids": [
+        "c4"
+      ],
+      "line_ids": [
+        "ezfg",
+        "ubtk"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "change-the-requirement",
+      "claim_ids": [
+        "c24"
+      ],
+      "line_ids": [
+        "g738"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "new-requirement-consequence",
+      "claim_ids": [
+        "c11",
+        "c24"
+      ],
+      "line_ids": [
+        "ab37",
+        "dyhh"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "due-or-late-rule",
+      "claim_ids": [
+        "c24"
+      ],
+      "line_ids": [
+        "7th9",
+        "98xj"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "run-variant",
+      "claim_ids": [
+        "c7",
+        "c24"
+      ],
+      "line_ids": [
+        "g89b"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "variant-members-question",
+      "claim_ids": [
+        "c24"
+      ],
+      "line_ids": [
+        "u6gp"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "variant-result",
+      "claim_ids": [
+        "c24"
+      ],
+      "line_ids": [
+        "mkfw",
+        "b5i9"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "on-time-enters-variant",
+      "claim_ids": [
+        "c9",
+        "c24"
+      ],
+      "line_ids": [
+        "fqr6",
+        "me2p"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "different-deliveries",
+      "claim_ids": [
+        "c11",
+        "c17",
+        "c24"
+      ],
+      "line_ids": [
+        "ptfc",
+        "ha7h"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "handoff-pack",
+      "claim_ids": [
+        "c17"
+      ],
+      "line_ids": [
+        "g7bc",
+        "s9qr"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    },
+    {
+      "scene_id": "keep-the-rule",
+      "claim_ids": [
+        "c17"
+      ],
+      "line_ids": [
+        "ddtv",
+        "wx5u",
+        "v5pw"
+      ],
+      "card_data_reviewed": true,
+      "status": "PASS"
+    }
+  ],
+  "independent_stdlib_oracle": {
+    "input_rows": 1200,
+    "input_all_rows_match_declared_generation_rule": true,
+    "delivered": 960,
+    "in_transit": 240,
+    "in_transit_actual_days_all_blank": true,
+    "main_rows": 480,
+    "main_all480_rows_all5_columns_and_order_equal": true,
+    "route_counts": {
+      "R2": 240,
+      "R3": 240
+    },
+    "variant_rows": 720,
+    "variant_all720_rows_all5_columns_and_order_equal": true,
+    "variant_zero_days_late": 240,
+    "variant_no_negative_days_late": true,
+    "preview_both_modes_first20_last20_match_source": true,
+    "preview_displayed": [
+      40,
+      40
+    ],
+    "preview_omitted": 1160,
+    "parquet_readback_byte_equal": true,
+    "parquet_magic_valid": true,
+    "representative_parcels": [
+      {
+        "parcel_id": "P0001",
+        "route": "R1",
+        "promised_days": "3",
+        "status": "delivered",
+        "actual_days": "3"
+      },
+      {
+        "parcel_id": "P0002",
+        "route": "R2",
+        "promised_days": "3",
+        "status": "delivered",
+        "actual_days": "4"
+      },
+      {
+        "parcel_id": "P0005",
+        "route": "R1",
+        "promised_days": "3",
+        "status": "in_transit",
+        "actual_days": ""
+      }
+    ],
+    "main_tail": [
+      {
+        "parcel_id": "P1191",
+        "route": "R3",
+        "promised_days": "3",
+        "actual_days": "5",
+        "days_late": "2"
+      },
+      {
+        "parcel_id": "P1194",
+        "route": "R2",
+        "promised_days": "3",
+        "actual_days": "4",
+        "days_late": "1"
+      },
+      {
+        "parcel_id": "P1198",
+        "route": "R2",
+        "promised_days": "3",
+        "actual_days": "4",
+        "days_late": "1"
+      },
+      {
+        "parcel_id": "P1199",
+        "route": "R3",
+        "promised_days": "3",
+        "actual_days": "5",
+        "days_late": "2"
+      }
+    ]
+  },
+  "command_receipt_checks": [
+    {
+      "name": "version",
+      "argv": [
+        "./duckdb",
+        "--version"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:19.009788+00:00",
+      "exit_code": 0,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    },
+    {
+      "name": "human-preview",
+      "argv": [
+        "./duckdb",
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/preview.sql"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:19.163369+00:00",
+      "exit_code": 0,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    },
+    {
+      "name": "agent-preview",
+      "argv": [
+        "./duckdb",
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/preview.sql"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:19.290289+00:00",
+      "exit_code": 0,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    },
+    {
+      "name": "human-typo",
+      "argv": [
+        "./duckdb",
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/typo.sql"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:20.301638+00:00",
+      "exit_code": 1,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    },
+    {
+      "name": "agent-typo",
+      "argv": [
+        "./duckdb",
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/typo.sql"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:21.073028+00:00",
+      "exit_code": 1,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    },
+    {
+      "name": "agent-followup",
+      "argv": [
+        "./duckdb",
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/followup.sql"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:21.630306+00:00",
+      "exit_code": 0,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    },
+    {
+      "name": "human-followup",
+      "argv": [
+        "./duckdb",
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/followup.sql"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:21.991147+00:00",
+      "exit_code": 0,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    },
+    {
+      "name": "readback",
+      "argv": [
+        "./duckdb",
+        "-no-init",
+        "-no-agent",
+        ":memory:",
+        "-f",
+        "demo/readback.sql"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:22.248318+00:00",
+      "exit_code": 0,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    },
+    {
+      "name": "variant",
+      "argv": [
+        "./duckdb",
+        "-no-init",
+        "-agent",
+        ":memory:",
+        "-f",
+        "demo/variant.sql"
+      ],
+      "observed_at_utc": "2026-10-25T23:50:22.745662+00:00",
+      "exit_code": 0,
+      "raw_stdout_stderr_bytes_and_SHA_match": true
+    }
+  ],
+  "SQL_display_checks": [
+    {
+      "scene_id": "same-preview",
+      "file": "demo/preview.sql",
+      "first_line": 1,
+      "last_line": 3,
+      "total_lines": 3,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "explicit-input-types",
+      "file": "demo/setup.sql",
+      "first_line": 5,
+      "last_line": 9,
+      "total_lines": 9,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "inspect-columns",
+      "file": "demo/followup.sql",
+      "first_line": 1,
+      "last_line": 4,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "where-is-complete",
+      "file": "demo/followup.sql",
+      "first_line": 9,
+      "last_line": 15,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "selection-and-order",
+      "file": "demo/followup.sql",
+      "first_line": 9,
+      "last_line": 15,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "intentional-typo",
+      "file": "demo/typo.sql",
+      "first_line": 1,
+      "last_line": 3,
+      "total_lines": 3,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "copy-csv-whole",
+      "file": "demo/followup.sql",
+      "first_line": 9,
+      "last_line": 15,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "copy-where",
+      "file": "demo/followup.sql",
+      "first_line": 9,
+      "last_line": 15,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "copy-destination",
+      "file": "demo/followup.sql",
+      "first_line": 9,
+      "last_line": 15,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "copy-parquet-whole",
+      "file": "demo/followup.sql",
+      "first_line": 16,
+      "last_line": 22,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "read-exported-count",
+      "file": "demo/followup.sql",
+      "first_line": 23,
+      "last_line": 24,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "read-parquet-back",
+      "file": "demo/readback.sql",
+      "first_line": 3,
+      "last_line": 6,
+      "total_lines": 6,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "route-summary-query",
+      "file": "demo/followup.sql",
+      "first_line": 5,
+      "last_line": 8,
+      "total_lines": 24,
+      "exact_source_text": true
+    },
+    {
+      "scene_id": "due-or-late-rule",
+      "file": "demo/variant.sql",
+      "first_line": 2,
+      "last_line": 8,
+      "total_lines": 10,
+      "exact_source_text": true
+    }
+  ],
+  "command_card_checks": [
+    {
+      "scene_id": "force-human",
+      "displayed_command": "./duckdb -no-init -no-agent \\\n  :memory: -f demo/preview.sql",
+      "exact_receipted_command": "./duckdb -no-init -no-agent :memory: -f demo/preview.sql"
+    },
+    {
+      "scene_id": "force-agent",
+      "displayed_command": "./duckdb -no-init -agent \\\n  :memory: -f demo/preview.sql",
+      "exact_receipted_command": "./duckdb -no-init -agent :memory: -f demo/preview.sql"
+    },
+    {
+      "scene_id": "run-followup",
+      "displayed_command": "./duckdb -no-init -agent :memory: -f demo/followup.sql",
+      "exact_receipted_command": "./duckdb -no-init -agent :memory: -f demo/followup.sql"
+    },
+    {
+      "scene_id": "run-readback",
+      "displayed_command": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql",
+      "exact_receipted_command": "./duckdb -no-init -no-agent :memory: -f demo/readback.sql"
+    },
+    {
+      "scene_id": "run-variant",
+      "displayed_command": "./duckdb -no-init -agent :memory: -f demo/variant.sql",
+      "exact_receipted_command": "./duckdb -no-init -agent :memory: -f demo/variant.sql"
+    }
+  ],
+  "raw_quote_card_checks": [
+    {
+      "scene_id": "human-footer",
+      "quote": "1200 rows (40 shown)                                 5 columns",
+      "raw_source": "runlogs/human-preview.stdout.txt",
+      "exact_fragment": true
+    },
+    {
+      "scene_id": "agent-omitted",
+      "quote": "| … 1160 rows omitted … |",
+      "raw_source": "runlogs/agent-preview.stdout.txt",
+      "exact_fragment": true
+    },
+    {
+      "scene_id": "human-error",
+      "quote": "Binder Error: Referenced column \"actual_day\" not found in FROM clause!",
+      "raw_source": "runlogs/human-typo.stderr.txt",
+      "exact_fragment": true
+    },
+    {
+      "scene_id": "actual-export-count",
+      "quote": "| 480 |",
+      "raw_source": "runlogs/agent-followup.stdout.txt",
+      "exact_fragment": true
+    }
+  ],
+  "JSON_stderr_check": {
+    "stderr_lines": 2,
+    "startup_line": "duckdb agent mode on (-agent); .help agent explains the output",
+    "second_line_valid_json": true,
+    "whole_stream_single_json": false,
+    "json_object": {
+      "exception_type": "Binder",
+      "exception_message": "Referenced column \"actual_day\" not found in FROM clause!\nCandidate bindings: \"actual_days\", \"parcel_id\"",
+      "error_subtype": "COLUMN_NOT_FOUND",
+      "position": "18",
+      "location": "[18,10]",
+      "name": "actual_day"
+    }
+  },
+  "package_manifest_check": {
+    "validated_files": 41,
+    "files": [
+      "LICENSE-ORIGINAL.txt",
+      "README.md",
+      "demo/followup.sql",
+      "demo/input/parcels.csv",
+      "demo/output/due-or-late.csv",
+      "demo/output/late-followup.csv",
+      "demo/output/late-followup.parquet",
+      "demo/output/parquet-readback.csv",
+      "demo/preview.sql",
+      "demo/readback.sql",
+      "demo/setup.sql",
+      "demo/typo.sql",
+      "demo/variant.sql",
+      "public-run-results.json",
+      "runlogs/agent-followup.command.json",
+      "runlogs/agent-followup.stderr.txt",
+      "runlogs/agent-followup.stdout.txt",
+      "runlogs/agent-preview.command.json",
+      "runlogs/agent-preview.stderr.txt",
+      "runlogs/agent-preview.stdout.txt",
+      "runlogs/agent-typo.command.json",
+      "runlogs/agent-typo.stderr.txt",
+      "runlogs/agent-typo.stdout.txt",
+      "runlogs/human-followup.command.json",
+      "runlogs/human-followup.stderr.txt",
+      "runlogs/human-followup.stdout.txt",
+      "runlogs/human-preview.command.json",
+      "runlogs/human-preview.stderr.txt",
+      "runlogs/human-preview.stdout.txt",
+      "runlogs/human-typo.command.json",
+      "runlogs/human-typo.stderr.txt",
+      "runlogs/human-typo.stdout.txt",
+      "runlogs/readback.command.json",
+      "runlogs/readback.stderr.txt",
+      "runlogs/readback.stdout.txt",
+      "runlogs/variant.command.json",
+      "runlogs/variant.stderr.txt",
+      "runlogs/variant.stdout.txt",
+      "runlogs/version.command.json",
+      "runlogs/version.stderr.txt",
+      "runlogs/version.stdout.txt"
+    ],
+    "zip_entries": 42,
+    "zip_bytes": 26889,
+    "zip_sha256": "74064ba70799606bf6c8fbc970109bfad26d0d8a02b73e2c5691534678b9fdf2",
+    "all_entries_equal_public_files": true,
+    "no_binary_symlink_official_HTML_or_archive_in_new_zip": true
+  },
+  "additional_evidence_checks": {
+    "old_manifests": [
+      {
+        "manifest": "fixtures-manifest.json",
+        "files_checked": 40,
+        "all_bytes_and_sha_match": true
+      }
+    ],
+    "local_claim_evidence_paths_count": 31,
+    "local_claim_evidence_paths": [
+      "../fifth-demo/artifact-verification.json",
+      "../fifth-demo/input/fixture-description.json",
+      "../fifth-demo/output/fifth-followup-kit.zip",
+      "../fifth-demo/output/followup-report.html",
+      "../fifth-demo/results.json",
+      "brief.md",
+      "demo/followup.sql",
+      "demo/input/parcels.csv",
+      "demo/output/due-or-late.csv",
+      "demo/output/late-followup.csv",
+      "demo/output/late-followup.parquet",
+      "demo/output/parquet-readback.csv",
+      "demo/preview.sql",
+      "demo/readback.sql",
+      "demo/replay-results.json",
+      "demo/setup.sql",
+      "demo/typo.sql",
+      "demo/variant-results.json",
+      "demo/variant.sql",
+      "public-run/public-run-results.json",
+      "run_operations.py",
+      "runlogs/agent-preview.command.json",
+      "runlogs/agent-preview.stdout.txt",
+      "runlogs/agent-typo.stderr.txt",
+      "runlogs/followup.stdout.txt",
+      "runlogs/human-followup.stdout.txt",
+      "runlogs/human-preview.command.json",
+      "runlogs/human-preview.stdout.txt",
+      "runlogs/human-typo.stderr.txt",
+      "sources/duckdb-release.json",
+      "verification.json"
+    ],
+    "original_vs_public_raw_stream_files_equal": 16,
+    "numeric_table_cards": [
+      "input-status-count",
+      "read-one-parcel",
+      "compute-days-late",
+      "in-transit-example",
+      "on-time-example",
+      "first-delivered-late",
+      "tail-of-output",
+      "route-summary-result",
+      "variant-result",
+      "on-time-enters-variant"
+    ],
+    "original_HTML_kit_members_equal_local": true,
+    "source_sha256": "1a267cb77e4d3eeddffc850dca6616c68a3c66afcaed38576b6e776a3ca62bf2",
+    "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191"
+  },
+  "local_original_HTML_check": {
+    "path": "/workspace/work/ai-tech-next/fifth-demo/output/followup-report.html",
+    "all_relative_links_resolve": true,
+    "links": [
+      "late-followup.csv",
+      "late-followup.parquet",
+      "../sql/03-followup.sql",
+      "../results.json"
+    ]
+  },
+  "official_capture_checks": {
+    "captures": [
+      {
+        "id": "duckdb-news",
+        "url": "https://duckdb.org/2026/10/21/announcing-duckdb-200",
+        "final_url": "https://duckdb.org/2026/10/21/announcing-duckdb-200",
+        "retrieved_at_utc": "2026-10-25T23:05:58.419240+00:00",
+        "bytes": 577272,
+        "sha256": "a6b42354bea9180169fbfb0a323aaafbadf6ad6a10d39c556c1c6c58c2daa146",
+        "captured_HTTP_status": 200
+      },
+      {
+        "id": "duckdb-agent-news",
+        "url": "https://duckdb.org/2026/10/09/agent-mode.html",
+        "final_url": "https://duckdb.org/2026/10/09/agent-mode",
+        "retrieved_at_utc": "2026-10-25T23:05:59.521959+00:00",
+        "bytes": 553376,
+        "sha256": "efc708e83651355784e0f8170cebc77549d1b27a3c2e37bb38d5f2fb6a26140f",
+        "captured_HTTP_status": 200
+      },
+      {
+        "id": "duckdb-agent-doc",
+        "url": "https://duckdb.org/docs/2.0/clients/cli/agent_mode.html",
+        "final_url": "https://duckdb.org/docs/2.0/clients/cli/agent_mode",
+        "retrieved_at_utc": "2026-10-25T23:06:00.630718+00:00",
+        "bytes": 358168,
+        "sha256": "091aaa73784352e1c1d03a020b8cf2eded1aefaa6e7f30216d5e240a5372eefd",
+        "captured_HTTP_status": 200
+      },
+      {
+        "id": "duckdb-migration",
+        "url": "https://duckdb.org/docs/2.0/operations_manual/migration.html",
+        "final_url": "https://duckdb.org/docs/2.0/operations_manual/migration",
+        "retrieved_at_utc": "2026-10-25T23:06:01.730457+00:00",
+        "bytes": 377166,
+        "sha256": "5c86b9d1386bda0f66d612106155ec40820ecd04a99013f83979ac70b532346a",
+        "captured_HTTP_status": 200
+      },
+      {
+        "id": "duckdb-release",
+        "url": "https://api.github.com/repos/duckdb/duckdb/releases/tags/v2.0.0",
+        "final_url": "https://api.github.com/repos/duckdb/duckdb/releases/tags/v2.0.0",
+        "retrieved_at_utc": "2026-10-25T23:06:02.830654+00:00",
+        "bytes": 140951,
+        "sha256": "12d8a1c2490a9abdb5e5b0a36e10f137598ca9ef8b2fa04c26f93b6130bad323",
+        "captured_HTTP_status": 200
+      }
+    ],
+    "release": {
+      "tag_name": "v2.0.0",
+      "name": "DuckDB v2.0.0 \"Cyanoptera\"",
+      "published_at": "2026-10-21T12:49:12Z",
+      "draft": false,
+      "prerelease": false,
+      "target_commitish": "d54cbbe3df17e8e5ce68312f483b4155836112aa"
+    },
+    "asset": {
+      "name": "duckdb-cli-linux-amd64.tar.gz",
+      "size": 24424037,
+      "digest": "sha256:c6507206baf7793c6013dbd82368469a45f20dc0e17a6f92f204602f652ed2bc"
+    },
+    "existing_archive_sha256": "c6507206baf7793c6013dbd82368469a45f20dc0e17a6f92f204602f652ed2bc",
+    "binary_sha256": "c41f957db5645d545a9caef430994cf262d24fad9297fef70c691395aadb43fb",
+    "binary_bytes": 77526584,
+    "public_runtime_symlink_target": "/workspace/work/ai-tech-next/fifth-demo/bin/duckdb",
+    "license_bytes": 1072,
+    "license_sha256": "075c33400ffcb0c586dd106a029d3e733e9da3693f8fcb9cebfc651c8a2f14e3",
+    "network_requests_this_review": 0
+  },
+  "official_primary_evidence_notes": [
+    "duckdb-agent-news.txt:27與:68支持10/9介紹及ships with v2.0；duckdb-news.txt:27–30及release API支持10/21正式2.0。",
+    "duckdb-agent-doc.txt:534–556支持CLI供AI coding agent讀取的呈現模式、compact Markdown、明確結果limits、JSON errors及-agent/-no-agent flags。",
+    "captured release refresh與較早snapshot差異僅asset download_count等觀察值；本片沒有使用下載次數。既有官方asset digest與本地archive digest一致。",
+    "MIT條款由fifth-demo/sources/duckdb-license.raw完整保存；CC0原創授權明確排除DuckDB及官方文稿，兩者沒有混為同一授權。"
+  ],
+  "CLI_archive_stream_check": {
+    "performed_by": "delegated read-only official_capture_audit, in addition to this reviewer independently checking stored archive digest, present binary digest and capture bytes",
+    "archive_member": "duckdb",
+    "member_bytes": 77526584,
+    "member_sha256": "c41f957db5645d545a9caef430994cf262d24fad9297fef70c691395aadb43fb",
+    "method": "tarfile streaming hash only; no extract, copy or execute",
+    "original_archive_retrieval_utc": "2026-10-25T22:26:51.961566Z",
+    "original_license_retrieval_utc": "2026-10-25T22:25:40.515380Z"
+  },
+  "native_checks": {
+    "lint": {
+      "argv": [
+        "node",
+        "tools/video/cli.mjs",
+        "lint",
+        "--file",
+        "/workspace/work/ai-tech-next/fifth-draft/video.json",
+        "--json"
+      ],
+      "exit_code": 0,
+      "errors": [],
+      "warnings": [],
+      "summary": {
+        "minutes": 10.47,
+        "lines": 111,
+        "spoken_units": 2282,
+        "billable_characters": 8062,
+        "chapters": [
+          "00:00 配送預覽中間少了一大段",
+          "00:31 原表還在，省略出現在回覆裡",
+          "02:44 三筆包裹，只有一筆入選",
+          "04:38 少一個字母，查詢先停了下來",
+          "07:17 檔案重開後，逐筆對回原表",
+          "08:54 準時包裹加入，清單換了需求"
+        ]
+      }
+    },
+    "schema_and_memory_HTML_compose": {
+      "scope": "pure in-memory native schema and HTML composition only; no browser/image/media rendering or output files",
+      "video_sha256": "1a267cb77e4d3eeddffc850dca6616c68a3c66afcaed38576b6e776a3ca62bf2",
+      "schema_errors": [],
+      "template_problems": [],
+      "scenes": 64,
+      "states": 64,
+      "all_html_nonempty": true,
+      "thumbnail_html_nonempty": true,
+      "plan_text_sha256": "e19f6211333ed4442345eb2f7fa3c7bdc81551adb7144c94c5a5a324bf608a9e"
+    }
+  },
+  "limitations": [
+    "只讀既有official capture，本輪network requests=0；不聲稱2026-10-26今日live GET。",
+    "未重新執行SQL或CLI；9條實跑資訊屬2026-10-25既有public receipts，本輪逐bytes/identity核對。",
+    "Parquet未以全新decoder重新解碼；本輪核對現存PAR1原檔、原生讀回SQL/成功raw receipt及與main逐byte相同的readback CSV。",
+    "native 10.47分鐘是文字timeline estimate；未TTS、未聽音訊、未看成片、未量測實際media長度或圖卡可讀性。",
+    "原生HTML composition只在記憶體組字，不是browser、PNG、影片render或自然視覺驗收。",
+    "沒有模型、token／費用、跨版本性能、server或既有庫升級的獨立測試結論。",
+    "本地教材存在及links可解析，不等於本片公開下載URL或公開上傳。"
+  ],
+  "integrity_and_actions": {
+    "source_and_claims_match_assigned_SHA": true,
+    "source_claims_materials_not_modified": true,
+    "repo_not_modified": true,
+    "binary_not_copied_extracted_or_bundled": true,
+    "new_ZIP_not_repacked": true,
+    "paid_TTS_render_backend_model_calls": 0,
+    "network_calls": 0,
+    "narrative_scoring_performed": false,
+    "whole_production_ready_approved": false,
+    "root_fixture_PASS_not_used_as_substitute_for_own_oracle": true
+  },
+  "outputs": [
+    "/workspace/work/ai-tech-next/fifth-verify-1.json",
+    "/workspace/work/ai-tech-next/fifth-verify-1.md"
+  ]
+}

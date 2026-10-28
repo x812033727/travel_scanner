@@ -1,0 +1,132 @@
+import datetime,json,pathlib
+B=pathlib.Path('/workspace/work/ai-tech-next/fifth-id-translation')
+source=json.loads(pathlib.Path('/workspace/work/ai-tech-next/fifth-ko-translation/ko.native-empty.todo.json').read_text())
+text='''dg2i	Pada dua puluh lima Oktober dua ribu dua puluh enam, saya menelusuri tabel pengiriman di komputer ini.
+c7uh	Kita ingin mencari paket yang perlu ditindaklanjuti, lalu menyerahkan daftar yang bisa dibuka kembali.
+x6vr	Layar hanya menampilkan total empat puluh baris dari bagian awal dan akhir, dengan penanda penghilangan di tengah.
+iaiy	Benarkah hanya catatan ini yang tersisa dalam tabel?
+zni4	Sebentar lagi, nama kolom jumlah hari sebenarnya akan kehilangan satu huruf.
+3zp6	Kalau daftarnya disimpan sebagai berkas terpisah, bagaimana memastikan isinya lengkap?
+a73b	Berkas yang diserahkan harus ditelusuri ke tabel asal, yang tetap berisi seribu dua ratus catatan.
+8ex8	Ini tabel latihan pengiriman fiktif buatan sendiri. Setiap catatannya bisa diperiksa.
+ujmc	Mode agent DuckDB diperkenalkan pada sembilan Oktober, lalu resmi hadir bersama versi dua titik nol pada dua puluh satu Oktober.
+m4b3	Mode baru ini menyusun balasan alat dengan lebih ringkas dan menandai baris yang tidak ditampilkan.
+6i9g	Program yang membaca balasan itu bisa memakai penandanya untuk menafsirkan hasil.
+msj7	Membaca CSV, menulis SQL, dan mengekspor berkas lengkap sudah bisa dilakukan sebelumnya.
+x88h	Di direktori latihan baru, saya mengolah tabel ini dengan dua mode dari versi yang sama.
+pskv	DuckDB tidak menyertakan model AI. Perbandingan ini juga tidak menguji akurasi model atau biaya pemakaian.
+yqnx	Setiap catatan punya ID paket, rute, dan jumlah hari yang dijanjikan untuk pengiriman.
+xbqa	Status dan jumlah hari sebenarnya adalah kolom lain yang diperlukan untuk aturan tindak lanjut ini.
+yy8n	Parameter mode biasa memilih format tampilan semula secara eksplisit.
+9gdj	Perintah ini memakai basis data sementara dan melewati berkas inisialisasi pribadi.
+xd25	Ganti parameternya ke mode agent. Masukan dan kuerinya tetap sama.
+c6hy	Dengan memilih mode secara tegas, deteksi lingkungan otomatis tidak ikut memengaruhi perbandingan ini.
+jm9m	Kembali ke penanda penghilangan di awal tadi. Di mana masing-masing balasan menaruhnya?
+t4hj	Kueri ini membuat tabel yang sama, lalu mengurutkannya menurut ID paket.
+zxhz	Tidak ada syarat yang hanya mengambil sedikit catatan, jadi kita bisa mengenali batas tampilan.
+h4gg	Di bawah hasil mode biasa, jumlah seluruh baris dan jumlah yang ditampilkan sudah tercantum.
+4cr9	Baris itu membedakan ukuran hasil kueri dari ukuran tampilan di layar.
+uj2p	Mode agent langsung menandai di tengah bahwa seribu seratus enam puluh baris tidak ditampilkan.
+u5mp	Itu bagian yang tidak terlihat, bukan data yang hilang dari kueri atau penyimpanan.
+jumq	Pratinjau di awal tadi baru cara membaca balasan, belum menjadi daftar yang siap diserahkan.
+7npx	Sekarang, dari tabel asal yang lengkap, paket mana yang perlu kita pertahankan?
+v9hh	Daftar tindak lanjut ini hanya mencari paket yang sudah sampai dan memakan waktu lebih lama dari janji pengirimannya.
+fpcm	Catatan yang masih dalam perjalanan tetap ada di tabel asal, tetapi tidak termasuk kebutuhan ini.
+qxv3	Saat membuat tabel, baca ID, rute, dan status sebagai teks.
+abty	Baca kedua jumlah hari sebagai bilangan bulat, agar perbandingannya benar-benar membandingkan jumlah hari.
+m3tz	Perintah deskripsi ini menampilkan nama dan tipe setiap kolom.
+drd5	Kueri lain menghitung catatan per status, untuk melihat catatan apa saja yang perlu diperiksa.
+6i82	Di sini ada sembilan ratus enam puluh catatan sudah sampai, dan dua ratus empat puluh masih dalam perjalanan.
+ufbq	Jumlah hari sebenarnya untuk yang masih dalam perjalanan kosong, karena belum ada durasi pengiriman yang selesai.
+y43c	Dengan aturan tadi, apakah paket yang sudah sampai ini akan masuk?
+jbme	Paket ini sudah sampai. Janjinya tiga hari, tetapi kenyataannya memakan empat hari.
+8wey	Karena melebihi waktu yang dijanjikan, paket ini masuk daftar tindak lanjut.
+wg3d	Empat dikurangi tiga menghasilkan keterlambatan satu hari.
+tqeh	Perhitungan itu ditulis sebagai kolom baru, agar penerima hasil langsung melihat selisih harinya.
+5rfa	Terapkan syarat status tadi pada catatan yang masih dalam perjalanan ini.
+e77f	Syarat sudah sampai menyingkirkannya terlebih dahulu. Nilai kosong itu juga tidak boleh diisi nol hari.
+ewsi	Tuliskan aturan pemilihan tadi dalam klausa penyaringan ini.
+bhcv	Letakkan pengurangan sebagai kolom baru di bagian pemilihan kolom, tanpa mengubah jumlah hari aslinya.
+g52d	Pertahankan ID, rute, kedua jumlah hari, dan selisih yang baru dihitung sebagai kolom hasil.
+evdb	Terakhir, urutkan ID paket dari kecil ke besar. Saat berkas dibuka lagi, urutannya sama untuk dibandingkan.
+6r94	Paket ini dijanjikan tiga hari dan tiba dalam tiga hari. Selisihnya nol.
+s3h7	Dengan syarat lebih besar tadi, paket ini tidak masuk daftar keterlambatan.
+ntfj	Syaratnya sudah sama. Kalau nama kolom jumlah hari sebenarnya kurang satu huruf, apa balasan alat ini?
+ak3j	Alat lebih dulu melaporkan bahwa kolom itu tidak ditemukan. Tidak ada hasil kueri.
+s9ca	Mode biasa pun sudah bisa menunjukkan masalah nama ini.
+jsui	Huruf yang hilang sejak pembukaan tadi ada di ujung nama kolom jumlah hari sebenarnya.
+xj3j	Kueri ini khusus mengisolasi masalah nama kolom. Salah ketiknya saya sengaja, bukan kesalahan AI.
+i2fq	Abaikan dahulu teks awal dari proses ini, lalu uraikan satu baris JSON yang valid sesudahnya.
+yxh7	Seluruh aliran keluaran mencampur teks dengan JSON, jadi tidak bisa dianggap satu objek JSON.
+jngn	Ambil nama yang salah ketik dari objek, lalu cari usulan nama kolom dalam teks pesannya.
+cjm4	Saya cocokkan usulan itu dengan tabel asal, lalu menemukan ejaan yang benar, lengkap dengan huruf terakhirnya.
+7g26	Masukkan nama kolom tabel asal yang baru kita pilih ke dalam kueri ini.
+2d84	Sambungkan kembali syarat, kolom pilihan, dan urutan semula untuk mengekspor daftar yang sama.
+rw48	Nama kolom sudah benar. Apakah balasan yang hanya menampilkan sedikit baris tadi juga memotong berkas simpanan?
+epd8	Masukkan kueri lengkap tadi ke dalam tanda kurung COPY.
+tdtg	Aturan pemilihan dan pengurutan tetap di dalam kurung. Lokasi berkas hasil ditentukan sesudahnya.
+q6db	Dari tabel asal ke hasil ini, tidak ada pembatas jumlah baris tampilan yang ditambahkan.
+n6c9	Jadi, yang disimpan adalah hasil yang memenuhi syarat, bukan beberapa baris yang disalin dari balasan.
+kabz	Lokasi ini menentukan tempat CSV ditulis. Opsi header mempertahankan nama kolom.
+5qhj	Saat membacanya kembali, cocokkan urutan kolom dengan pilihan tadi, agar ID dan rute tidak tertukar.
+6e4u	Simpan salinan lain sebagai Parquet. Cukup ubah format keluaran dan nama berkas tujuan.
+nsc3	Kolom pilihan dan urutan yang sama tetap di dalam tanda kurung, untuk dibandingkan nanti.
+7b9v	Jalankan kueri lengkap dengan perintah ini. Kedua format akan ditulis ke lokasi yang tadi ditentukan.
+44a2	Untuk memeriksa apakah berkas terpotong, langsung baca kembali CSV hasil ekspornya.
+j328	Yang dihitung adalah baris data dalam berkas. Baris judul tidak dihitung sebagai paket.
+ubxv	Berkas tindak lanjut lengkap yang dibaca kembali kali ini berisi empat ratus delapan puluh catatan.
+ag8z	Pemotongan pratinjau yang kita khawatirkan tidak ikut terbawa ke berkas lewat perintah ekspor ini.
+6da2	Mode biasa yang menjalankan ekspor yang sama juga menghasilkan isi daftar yang sama.
+385u	Langkah ini menunjukkan bahwa mode baru mengubah balasannya. Mode ini tidak menemukan paket terlambat tambahan.
+zdyx	Apakah jumlah baris yang benar sudah cukup untuk diserahkan? Apakah format lain menyimpan isi setiap catatan yang sama?
+qgqv	Untuk memeriksa format lainnya, baca kembali Parquet dan urutkan menurut ID paket yang sama.
+ineu	Simpan lagi sebagai CSV, agar kedua hasil lengkap bisa dibandingkan baris demi baris dengan cara yang sama.
+dgc2	Jalankan kueri baca ulang ini. Datanya berasal dari berkas hasil, tanpa menulis ulang tabel pengiriman asal.
+xqkd	Masih ingat paket dengan perhitungan empat dikurangi tiga tadi?
+xad9	Berkas lengkap menyimpan rutenya, jumlah hari asli, dan selisih terlambat satu hari.
+6u7e	Ikuti urutan ID ke bawah. Catatan yang memenuhi syarat dekat bagian akhir tabel asal juga ada dalam berkas lengkap.
+wznc	Memeriksa awal dan akhir membantu menemukan catatan. Perbandingan penuh tetap harus memeriksa setiap catatan di tengah.
+h579	Agar penerima hasil melihat sebarannya, gunakan aturan semula lalu hitung jumlah paket per rute.
+jd24	Ringkasan kecil ini dicantumkan terpisah dalam laporan. Ringkasan tidak menggantikan daftar paket lengkap.
+rxjg	Dengan pengelompokan menurut aturan semula tadi, rute dua dan rute tiga masing-masing berisi dua ratus empat puluh catatan.
+mavj	Jumlahnya empat ratus delapan puluh, sama seperti berkas lengkap tadi. Tidak ada catatan yang tertinggal di luar ringkasan.
+3dwp	Pertanyaan kelengkapan di awal kini terjawab baris demi baris: kedua berkas memiliki isi yang sama.
+dm84	Yang dibandingkan bukan hanya jumlahnya, tetapi juga setiap ID, nilai kolom, dan urutan baris.
+ezfg	Secara terpisah, program sederhana membaca tabel asal satu per satu dan menerapkan aturan semula untuk menghasilkan ID yang semestinya terpilih.
+ubtk	Daftar ID itu juga cocok dengan hasil ekspor. Pemeriksaan pun kembali ke data asal.
+g738	Namun, jika penerima hasil meminta paket yang tiba persis tepat waktu ikut dimasukkan, bolehkah daftar keterlambatan yang sudah diperiksa ini langsung diserahkan?
+ab37	Tidak. Paket tepat waktu yang tadi dikeluarkan kini juga harus disertakan.
+dyhh	Simpan berkas lama, lalu tulis kebutuhan baru sebagai kueri terpisah.
+7th9	Ganti lebih besar menjadi lebih besar atau sama dengan, sehingga jumlah hari yang persis sama juga lolos.
+98xj	Ganti juga nama berkas tujuan, agar kebutuhan baru tidak menimpa daftar semula.
+g89b	Jalankan berkas yang telah diubah dengan perintah ini, dan simpan hasil barunya secara terpisah.
+u6gp	Berapa paket tambahan yang dipertahankan oleh perubahan tanda tadi, dan catatan seperti apa yang ikut masuk?
+mkfw	Daftar baru berisi tujuh ratus dua puluh catatan. Dua ratus empat puluh di antaranya terlambat nol hari.
+b5i9	Paket tambahan itu tiba persis tepat waktu. Jadi, seluruh berkas ini harus disebut daftar tepat waktu atau terlambat.
+fqr6	Masih ingat paket tiga hari dijanjikan dan tiga hari sebenarnya, yang tadi tidak masuk daftar?
+me2p	Paket itu sekarang masuk, tepat karena aturannya diubah untuk menyertakan nilai yang sama.
+ptfc	Kedua daftar dibuat dengan syarat masing-masing. Yang satu tidak bisa menggantikan yang lain.
+ha7h	Simpan nama berkas lama dan baru bersama kueri masing-masing, agar penerima hasil memilih sesuai kebutuhannya.
+g7bc	Paket serahan kini berisi berkas data lengkap, kueri yang sesuai, dan ringkasan yang mudah dibaca.
+s9qr	Penerima hasil bisa menemukan berkas lengkap dari laporan, atau mengubah syarat untuk membuat ulang daftar.
+ddtv	Pratinjau di awal kini punya berkas hasil lengkap yang bisa diperiksa kembali terhadap aturannya.
+wx5u	Daftar data seperti apa yang paling sering perlu Anda serahkan?
+v5pw	Berlangganan untuk memahami alat AI lewat hasil yang kita buat.'''
+lines=dict(line.split('\t',1) for line in text.splitlines())
+assert len(lines)==111 and set(lines)=={l['id'] for l in source['lines']}
+urls=source['description']['source'].split('公開教材（9條實跑命令）：',1)[1].split('\n完整fixtures ZIP：')
+description='''Dari tabel latihan pengiriman yang sama, kenali baris yang tidak ditampilkan dan serahkan daftar tindak lanjut lengkap.
+Untuk Anda yang memakai AI untuk membantu membaca CSV dan ingin menyerahkan kueri beserta hasil lengkapnya.
+
+Data pengiriman fiktif orisinal dan program deterministik buatan penulis, bukan data perusahaan, pelanggan, atau statistik publik nyata. Tidak ada respons produk AI atau pengujian model independen sebelum dan sesudah. Pada 2026-10-25, satu biner DuckDB 2.0.0 yang sama dibandingkan dengan -agent dan -no-agent. Empat puluh baris adalah pratinjau dari 1.200 catatan masukan; 480 catatan adalah hasil lengkap setelah penyaringan dengan syarat tertentu. Baris yang tidak ditampilkan bukan berarti data hilang dari kueri atau penyimpanan.
+
+Contoh kesalahan dibuat penulis dengan sengaja menghilangkan satu huruf nama kolom. stderr mode agent memuat teks awal proses dan satu baris JSON yang valid; uraikan per baris pesan, jangan menganggap aliran campuran itu satu dokumen JSON. Tidak ada klaim bahwa DuckDB menghasilkan JSON rusak atau bahwa program konsumen pihak ketiga benar-benar gagal. CSV, SQL, COPY, dan Parquet adalah kemampuan yang sudah ada; fitur barunya adalah mode keluaran untuk agent. Token, biaya, penalaran model, mode server, dan peningkatan basis data lama tidak diuji.
+
+Materi mencakup masukan orisinal, SQL lengkap, skrip untuk mengulang proses, CSV lengkap 480 catatan dan Parquet dengan isi yang sama, laporan HTML, perintah persis, serta SHA tiap berkas. Data, program, dan laporan orisinal berlisensi CC0-1.0; DuckDB berlisensi MIT. Tulisan resmi tetap milik penulisnya.
+
+Materi publik, 9 perintah yang benar-benar dijalankan: '''+urls[0]+'''
+ZIP fixtures lengkap: '''+urls[1]
+targets={'title':'Hanya 40 baris terlihat? Ekspor daftar tindak lanjut lengkap dengan DuckDB 2.0','description':description,'tags':['DuckDB','analisis data AI','mode agent','CSV','SQL','Parquet','kueri data','daftar lengkap'],'thumbnail':{'tag':'DuckDB2.0','headline':'Masih ada\n**baris tak tampil**','sub':'Dari pratinjau ke hasil lengkap'},'chapters':{'parcel-table-start':'Bagian tengah pratinjau pengiriman tidak ditampilkan','input-is-still-there':'Tabel asal tetap utuh; baris hanya tak tampil dalam balasan','define-the-followup':'Tiga paket, hanya satu yang terpilih','human-error':'Kurang satu huruf, kueri berhenti','read-parquet-back':'Buka ulang berkas dan cocokkan tiap catatan ke tabel asal','new-requirement-consequence':'Paket tepat waktu ditambahkan: kebutuhannya berubah'},'lines':lines}
+with (B/'id-targets.v1.json').open('x') as f:f.write(json.dumps(targets,ensure_ascii=False,indent=2)+'\n')
+with (B/'author-pass1-draft.json').open('x') as f:f.write(json.dumps({'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'author':'/root/checked_caption_assets','pass':1,'scope':'Full first author semantic translation of111ZH lines,6chapters,complete metadata/thumbnail to Indonesian. Text only; no timing/audio/CC/backend or independent-reader claim.','source_sha256':'40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa','lines':111,'chapters':6,'native_pure_validation_pending':True,'language':'id'},ensure_ascii=False,indent=2)+'\n')
+print('ID first full111 draft written; source metadata URLs preserved exactly.')

@@ -1,0 +1,61 @@
+{
+  "kind": "local_delegated_outline_adoption",
+  "observed_at": "2026-10-25T23:37:24.025Z",
+  "slug": "duckdb-agent-full-export",
+  "brief_sha256": "08b1efe36fee8260b1837de9a4793921fe610ab0b498939102d1980a5240347b",
+  "selected_option": "A",
+  "native_local_state": {
+    "status": "approved",
+    "entry": {
+      "gate": "outline",
+      "file": "brief.md",
+      "sha256": "08b1efe36fee8260b1837de9a4793921fe610ab0b498939102d1980a5240347b",
+      "approved_at": "2026-10-25T23:34:24.797Z",
+      "note": "依2026-10-25站主持續委派，由協調代理採用推薦A。本地outline採用理由：同一配送資料可追40列預覽、480筆完整交付，另以明確改需求的>=取得720筆並逐欄核對；六章含outro，估時與所有實跑界線明示。正常Jev實評A通過，P(A)=1.00、stance=0.88、demo=0.95、advice=0.02。此紀錄僅綁當前brief SHA；後臺outline ebe65265-7f4d-4372-94ab-eaf0ade2b799仍pending，不代表remote核准或使用者在UI點擊；也不是script/audio/final或八語驗收。"
+    },
+    "sha256": "08b1efe36fee8260b1837de9a4793921fe610ab0b498939102d1980a5240347b"
+  },
+  "remote_review_id": "ebe65265-7f4d-4372-94ab-eaf0ade2b799",
+  "remote_review_status": "pending",
+  "backend_stage": "outline",
+  "remote_or_user_UI_approval_claimed": false,
+  "authorization": "Root/user explicit ongoing delegation to follow recommendation or actual Jev qualified choice, 2026-10-25; local native adoption requested for this episode.",
+  "reason": "One CSV remains the protagonist; actual mode contrast, complete condition and full480 output, independent all-column720 changed-requirement contrast, six chapters including outro, planned duration clearly separated from measured media.",
+  "Jev_verdict": {
+    "status": "passed",
+    "pick": {
+      "choice": "A",
+      "probabilities": {
+        "A": 1,
+        "B": 0,
+        "C": 0
+      },
+      "options": {
+        "A": {
+          "stance": 0.88,
+          "demo": 0.95
+        },
+        "B": {
+          "stance": 0.87,
+          "demo": 0.84
+        },
+        "C": {
+          "stance": 0.87,
+          "demo": 0.85
+        }
+      },
+      "advice": 0.02,
+      "passed": true,
+      "note": "Jev 挑了 A（1.00）：符合立場 0.88、有示範 0.95、建議 0.02，依設定自動核准"
+    }
+  },
+  "raw_Jev_response": {
+    "status": 200,
+    "content_type": "application/json",
+    "file": "/workspace/work/ai-tech-next/duckdb-production/outline-jev-raw.08b1efe36fee8260b1837de9a4793921fe610ab0b498939102d1980a5240347b.json",
+    "sha256": "0f4fddc33bf2bc9bd5605cc137c1a3301cd752efdb2161f75a5ada96efc45e98",
+    "observed_at": "2026-10-25T23:31:57.895Z"
+  },
+  "media_started": false,
+  "auto_json_created": false
+}

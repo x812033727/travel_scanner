@@ -1,0 +1,2093 @@
+{
+  "schema_version": 1,
+  "slug": "duckdb-agent-full-export",
+  "format": "slides",
+  "theme": "paper",
+  "category": "ai-news",
+  "narration_locale": "zh-TW",
+  "target_minutes": [
+    9,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "Relaxed, conversational tech explainer talking to a friend, in Taiwan Mandarin with a natural Taiwanese accent. Natural rise and fall in intonation, light emphasis on key words, never flat or like reading a script. Medium-brisk pace."
+  },
+  "subtitles": {
+    "burn_in": false
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "表格只顯示40列？用DuckDB 2.0交出完整跟進清單",
+    "description": "從同一份配送練習表，辨識輸出省略並交出完整跟進清單。\n給會用AI協助讀CSV、希望把查詢與完整結果一起交付的人。\n\n原創虛構配送資料與確定性作者程式，非真實公司／客戶／公共統計；沒有AI產品回應或獨立模型前後測。2026-10-25以同一DuckDB2.0.0二進位比較-agent與-no-agent，40列是1200筆輸入的預覽，480筆是明確條件篩選後的完整交付。顯示省略不代表查詢或儲存遺失資料。\n\n錯誤示範由作者故意少寫欄位名稱，agent stderr含啟動文字和一行合法JSON；需要按訊息行解析，不把混合stream誤認成單一JSON文件。沒有聲稱DuckDB產生壞JSON或真實第三方consumer故障。CSV／SQL／COPY／Parquet是既有能力，新特性是代理輸出模式。沒有測token、費用、模型推理、伺服器模式或既有庫升級。\n\n教材含原創輸入、完整SQL、重做腳本、完整480筆CSV／同內容Parquet、HTML報告、精確指令及逐檔SHA。原創資料／程式／報告為CC0-1.0，DuckDB為MIT；官方文字另屬其作者。",
+    "tags": [
+      "DuckDB",
+      "AI資料分析",
+      "代理模式",
+      "CSV",
+      "SQL",
+      "Parquet",
+      "資料查詢",
+      "完整清單"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "headline": "還有\n**省略列**",
+      "tag": "DuckDB2.0",
+      "sub": "預覽到完整交付"
+    }
+  },
+  "sources": [
+    {
+      "title": "DuckDB2.0正式公告",
+      "url": "https://duckdb.org/2026/10/21/announcing-duckdb-200",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "DuckDB CLI agent模式",
+      "url": "https://duckdb.org/2026/10/09/agent-mode.html",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "DuckDB2.0 CLI agent模式文件",
+      "url": "https://duckdb.org/docs/2.0/clients/cli/agent_mode.html",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "DuckDB2.0遷移條件",
+      "url": "https://duckdb.org/docs/2.0/operations_manual/migration.html",
+      "checked_on": "2026-10-25"
+    },
+    {
+      "title": "DuckDB2.0正式release與套件",
+      "url": "https://github.com/duckdb/duckdb/releases/tag/v2.0.0",
+      "checked_on": "2026-10-25"
+    }
+  ],
+  "assets": [],
+  "scenes": [
+    {
+      "id": "parcel-table-start",
+      "template": "big",
+      "data": {
+        "text": "配送清單",
+        "sub": "原創虛構教學資料",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "原創虛構教學資料"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "dg2i",
+          "text": "十月二十五日，我用這份配送表執行查詢。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ],
+      "chapter": "配送清單只顯示一部分"
+    },
+    {
+      "id": "running-followup-task",
+      "template": "big",
+      "data": {
+        "text": "哪些包裹需要跟進",
+        "sub": "同一份練習表的查詢狀態",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份練習表的查詢狀態"
+      },
+      "claims": [
+        "c1",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "c7uh",
+          "text": "查詢要從裡面找出需要跟進的包裹。"
+        }
+      ]
+    },
+    {
+      "id": "forty-visible",
+      "template": "big",
+      "data": {
+        "text": "前後40列",
+        "sub": "顯示內容仍有省略",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "顯示內容仍有省略"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "x6vr",
+          "text": "螢幕留下前後四十列，中間出現省略標記。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "missing-question",
+      "template": "big",
+      "data": {
+        "text": "紀錄真的少了？",
+        "sub": "先分清資料與顯示",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "先分清資料與顯示"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "iaiy",
+          "text": "這份表真的只剩這些紀錄嗎？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        }
+      ]
+    },
+    {
+      "id": "typo-question",
+      "template": "big",
+      "data": {
+        "text": "少一個字母",
+        "sub": "相同欄位需求會收到什麼回覆",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "相同欄位需求會收到什麼回覆"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "zni4",
+          "text": "實際天數的欄位，等一下會少一個字母。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "export-question",
+      "template": "big",
+      "data": {
+        "text": "完整檔怎麼確認？",
+        "sub": "清單另存後，還要讀回",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "清單另存後，還要讀回"
+      },
+      "claims": [
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "3zp6",
+          "text": "清單另外存成檔案，又怎麼確認內容完整？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        }
+      ]
+    },
+    {
+      "id": "one-running-task",
+      "template": "big",
+      "data": {
+        "text": "查詢與交付同行",
+        "sub": "保留同一份清單的規則",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "保留同一份清單的規則"
+      },
+      "claims": [
+        "c1",
+        "c4"
+      ],
+      "lines": [
+        {
+          "id": "xgg8",
+          "text": "我把查詢和交付檔一起留下，讓每筆資料能回查規則。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "input-is-still-there",
+      "template": "big",
+      "data": {
+        "text": "資料仍有1200筆",
+        "sub": "省略的是顯示，不是紀錄",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "省略的是顯示，不是紀錄"
+      },
+      "claims": [
+        "c1",
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "a73b",
+          "text": "剛剛被省略的是顯示內容，查詢仍處理完整資料。"
+        },
+        {
+          "id": "8ex8",
+          "text": "這份原創練習表，共有一千兩百筆虛構配送紀錄。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ],
+      "chapter": "先看完整資料，再選輸出模式"
+    },
+    {
+      "id": "input-columns",
+      "template": "table",
+      "data": {
+        "title": "先認出五個欄位",
+        "columns": [
+          "欄位",
+          "意思"
+        ],
+        "rows": [
+          [
+            "parcel_id",
+            "包裹代號"
+          ],
+          [
+            "route",
+            "路線"
+          ],
+          [
+            "promised_days",
+            "承諾天數"
+          ],
+          [
+            "status",
+            "配送狀態"
+          ],
+          [
+            "actual_days",
+            "實際天數"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "先認出五個欄位"
+      },
+      "claims": [
+        "c1",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "yqnx",
+          "text": "每筆都有包裹代號與路線，還有承諾天數。"
+        },
+        {
+          "id": "xbqa",
+          "text": "狀態和實際天數，決定它是否需要跟進。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "mode-role",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "一般模式",
+          "points": [
+            "對齊的表格",
+            "保留型別與列數"
+          ]
+        },
+        "right": {
+          "heading": "代理模式",
+          "points": [
+            "緊湊Markdown",
+            "明列省略與結果摘要"
+          ]
+        },
+        "source": "官方agent文件｜2026-10-25",
+        "key": "同一份資料，逐項對回條件"
+      },
+      "claims": [
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "m4b3",
+          "text": "DuckDB的代理模式，調整工具回覆的格式。",
+          "say": "達克滴比的代理模式，調整工具回覆的格式。",
+          "say_for": "77644c7260a7"
+        },
+        {
+          "id": "6i9g",
+          "text": "它自己不包含AI模型，也不會替你決定篩選條件。",
+          "say": "它自己不包含A I模型，也不會替你決定篩選條件。",
+          "say_for": "cff024cbcf2a",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "force-human",
+      "template": "code",
+      "data": {
+        "code": "../fifth-demo/bin/duckdb -no-init -no-agent \\\n  :memory: -f demo/preview.sql",
+        "caption": "可照寫命令｜同一固定DuckDB2.0二進位",
+        "key": "明確選擇一般模式"
+      },
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "yy8n",
+          "text": "加上一般模式參數，就能明確指定原本的顯示方式。"
+        },
+        {
+          "id": "9gdj",
+          "text": "這次只用臨時資料庫，並略過個人的初始化檔。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "force-agent",
+      "template": "code",
+      "data": {
+        "code": "../fifth-demo/bin/duckdb -no-init -agent \\\n  :memory: -f demo/preview.sql",
+        "caption": "可照寫命令｜同一輸入與同一2.0版本",
+        "key": "只改模式，輸入與查詢不變"
+      },
+      "claims": [
+        "c6",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "xd25",
+          "text": "把參數換成代理模式，其他輸入與查詢不變。"
+        },
+        {
+          "id": "c6hy",
+          "text": "用明確參數比較，才不會把環境自動偵測混進來。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "find-the-omission",
+      "template": "big",
+      "data": {
+        "text": "哪裡標示省略？",
+        "sub": "從回覆中定位顯示範圍",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "從回覆中定位顯示範圍"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "jm9m",
+          "text": "同一條查詢的回覆，哪裡標出了省略？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        }
+      ]
+    },
+    {
+      "id": "same-preview",
+      "template": "code",
+      "data": {
+        "code": ".read demo/setup.sql\nSELECT * FROM parcels\nORDER BY parcel_id;",
+        "caption": "preview.sql 第1–3行／全3行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "claims": [
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "t4hj",
+          "text": "這份查詢先建立同一張表，再按包裹代號排列。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "zxhz",
+          "text": "兩種模式使用的是這一份完整查詢。"
+        }
+      ]
+    },
+    {
+      "id": "human-footer",
+      "template": "quote",
+      "data": {
+        "quote": "1200 rows (40 shown)                                 5 columns",
+        "source": "本地2.0一般模式輸出節錄｜runlogs/human-preview.stdout.txt",
+        "translation": "共1200列，顯示40列，5個欄位",
+        "key": "一般模式也標示顯示列數"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "h4gg",
+          "text": "一般模式本來就會標出總列數和顯示列數。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "4cr9",
+          "text": "看見對齊的表格，也要讀完底下那一行。"
+        }
+      ]
+    },
+    {
+      "id": "agent-omitted",
+      "template": "quote",
+      "data": {
+        "quote": "| … 1160 rows omitted … |",
+        "source": "本地2.0代理模式原文｜runlogs/agent-preview.stdout.txt",
+        "translation": "中間1160列沒有顯示",
+        "key": "省略標記位在結果之中"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "uj2p",
+          "text": "代理模式把省略的列數，放進結果中間。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "u5mp",
+          "text": "這次省略一千一百六十列，不表示它們被刪除。"
+        }
+      ]
+    },
+    {
+      "id": "same-result-different-view",
+      "template": "table",
+      "data": {
+        "title": "回覆格式變了",
+        "columns": [
+          "比較",
+          "一般模式",
+          "代理模式"
+        ],
+        "rows": [
+          [
+            "同一輸入",
+            "1200筆",
+            "1200筆"
+          ],
+          [
+            "顯示列數",
+            "前後40列",
+            "前後40列"
+          ],
+          [
+            "輸出形式",
+            "對齊表格",
+            "緊湊Markdown"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "回覆格式變了"
+      },
+      "claims": [
+        "c2",
+        "c6"
+      ],
+      "lines": [
+        {
+          "id": "jumq",
+          "text": "要交完整清單，就不能只複製眼前這段預覽。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "7npx",
+          "text": "我們還得把要找的紀錄，寫成明確條件。"
+        }
+      ]
+    },
+    {
+      "id": "define-the-followup",
+      "template": "big",
+      "data": {
+        "text": "只找已送達延遲",
+        "sub": "把需求寫成可執行條件",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "把需求寫成可執行條件"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "v9hh",
+          "text": "這份跟進清單，只找已送達而且超過承諾天數的包裹。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "fpcm",
+          "text": "仍在途的紀錄，先留在原表，不算進這份清單。"
+        }
+      ],
+      "chapter": "把跟進需求寫成完整條件"
+    },
+    {
+      "id": "explicit-input-types",
+      "template": "code",
+      "data": {
+        "code": "CREATE TABLE parcels AS\nSELECT * FROM read_csv('demo/input/parcels.csv',\n  columns={'parcel_id':'VARCHAR','route':'VARCHAR',\n           'promised_days':'INTEGER','status':'VARCHAR',\n           'actual_days':'INTEGER'},header=true);",
+        "caption": "setup.sql 第5–9行／全9行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "claims": [
+        "c5",
+        "c7"
+      ],
+      "lines": [
+        {
+          "id": "qxv3",
+          "text": "建立表格時，先把代號和狀態讀成文字。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "abty",
+          "text": "承諾與實際天數讀成整數，才能直接比較。"
+        }
+      ]
+    },
+    {
+      "id": "inspect-columns",
+      "template": "code",
+      "data": {
+        "code": ".read demo/setup.sql\nDESCRIBE parcels;\nSELECT status,count(*) AS records\nFROM parcels GROUP BY status ORDER BY status;",
+        "caption": "followup.sql 第1–4行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "claims": [
+        "c5",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "m3tz",
+          "text": "先查看欄位，再數不同狀態各有多少紀錄。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "drd5",
+          "text": "這能讓篩選前提和原始資料先對上。"
+        }
+      ]
+    },
+    {
+      "id": "input-status-count",
+      "template": "table",
+      "data": {
+        "title": "送達與在途先分開",
+        "columns": [
+          "狀態",
+          "本例筆數",
+          "實際天數"
+        ],
+        "rows": [
+          [
+            "delivered",
+            "960",
+            "已有整數"
+          ],
+          [
+            "in_transit",
+            "240",
+            "空白"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "送達與在途先分開"
+      },
+      "claims": [
+        "c1",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "6i82",
+          "text": "已送達的紀錄有實際天數，在途的欄位是空白。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "ufbq",
+          "text": "空白表示這裡沒有完成天數，不能當成零天。"
+        }
+      ]
+    },
+    {
+      "id": "apply-both-conditions",
+      "template": "big",
+      "data": {
+        "text": "把條件套回這筆資料",
+        "sub": "依同一份表逐項判斷",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "依同一份表逐項判斷"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "y43c",
+          "text": "把兩個條件一起套用，這筆已送達包裹會留下嗎？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        }
+      ]
+    },
+    {
+      "id": "read-one-parcel",
+      "template": "table",
+      "data": {
+        "title": "跟著一筆資料判斷",
+        "columns": [
+          "代號",
+          "狀態",
+          "承諾",
+          "實際"
+        ],
+        "rows": [
+          [
+            "P0002",
+            "delivered",
+            "3天",
+            "4天"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "跟著一筆資料判斷"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "jbme",
+          "text": "這筆包裹已送達，承諾三天，實際用了四天。"
+        },
+        {
+          "id": "8wey",
+          "text": "實際天數比較大，因此要進跟進清單。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "compute-days-late",
+      "template": "table",
+      "data": {
+        "title": "晚了幾天也寫出來",
+        "columns": [
+          "代號",
+          "計算",
+          "結果"
+        ],
+        "rows": [
+          [
+            "P0002",
+            "4−3",
+            "晚1天"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "晚了幾天也寫出來"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "wg3d",
+          "text": "把實際天數減掉承諾天數，就得到晚了幾天。"
+        },
+        {
+          "id": "tqeh",
+          "text": "這個差值會成為交付檔的一個新欄位。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "in-transit-example",
+      "template": "table",
+      "data": {
+        "title": "在途紀錄不進這張單",
+        "columns": [
+          "代號",
+          "狀態",
+          "實際天數"
+        ],
+        "rows": [
+          [
+            "P0005",
+            "in_transit",
+            "空白"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "在途紀錄不進這張單"
+      },
+      "claims": [
+        "c9"
+      ],
+      "lines": [
+        {
+          "id": "5rfa",
+          "text": "另一筆仍在途，還沒有完成配送的天數。"
+        },
+        {
+          "id": "e77f",
+          "text": "它沒有符合已送達條件，所以留在原表。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "where-is-complete",
+      "template": "code",
+      "data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          5
+        ]
+      },
+      "claims": [
+        "c5",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "ewsi",
+          "text": "完整規則同時保留已送達和超過承諾天數兩個條件。"
+        },
+        {
+          "id": "bhcv",
+          "text": "只改其中一個，就不再是剛剛定義的跟進清單。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "voice-the-rule",
+      "template": "big",
+      "data": {
+        "text": "已送達，而且晚了",
+        "sub": "兩個條件必須同時成立",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "兩個條件必須同時成立"
+      },
+      "claims": [
+        "c5",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "j46e",
+          "text": "只取狀態為已送達，而且實際天數大於承諾天數的紀錄。"
+        },
+        {
+          "id": "7jeu",
+          "text": "交付包裹代號、路線、兩種天數，以及晚了幾天。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "selection-and-order",
+      "template": "code",
+      "data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          2,
+          3,
+          6
+        ]
+      },
+      "claims": [
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "g52d",
+          "text": "選欄位讓接手的人知道每筆為什麼入選。"
+        },
+        {
+          "id": "evdb",
+          "text": "按包裹代號升冪排列，重開檔案也容易逐筆對照。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "strict-greater",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "本次條件",
+          "points": [
+            "實際天數大於承諾",
+            "剛好準時不入選"
+          ]
+        },
+        "right": {
+          "heading": "若改成大於等於",
+          "points": [
+            "會連剛好準時都包含",
+            "代表需求已經改變"
+          ]
+        },
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份資料，逐項對回條件"
+      },
+      "claims": [
+        "c5",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "939c",
+          "text": "這裡用大於，剛好準時的紀錄不會入選。"
+        },
+        {
+          "id": "hder",
+          "text": "如果你的工作要包含準時，就要先改清楚需求。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "on-time-example",
+      "template": "table",
+      "data": {
+        "title": "同一表中的準時紀錄",
+        "columns": [
+          "代號",
+          "承諾",
+          "實際",
+          "本次判定"
+        ],
+        "rows": [
+          [
+            "P0001",
+            "3天",
+            "3天",
+            "不進延遲清單"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一表中的準時紀錄"
+      },
+      "claims": [
+        "c9",
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "6r94",
+          "text": "同一份表裡，這筆實際和承諾天數相同。"
+        },
+        {
+          "id": "s3h7",
+          "text": "用原本的大於條件，它會被留在清單外。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "field-name-question",
+      "template": "big",
+      "data": {
+        "text": "欄位名稱也要對齊",
+        "sub": "條件寫對後，還得使用真正欄位",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "條件寫對後，還得使用真正欄位"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "ntfj",
+          "text": "條件已經寫清楚，欄位名稱少一個字母會怎樣？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        }
+      ]
+    },
+    {
+      "id": "intentional-typo",
+      "template": "code",
+      "data": {
+        "code": ".read demo/setup.sql\nSELECT parcel_id, actual_day\nFROM parcels LIMIT 1;",
+        "caption": "typo.sql 第1–3行／全3行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          2
+        ]
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "jsui",
+          "text": "我故意把實際天數的欄位名稱，少寫了結尾的字母。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "xj3j",
+          "text": "這是同一份需求裡，作者刻意安排的錯字示範。"
+        }
+      ],
+      "chapter": "讀懂錯誤，再把完整清單存下來"
+    },
+    {
+      "id": "human-error",
+      "template": "quote",
+      "data": {
+        "quote": "Binder Error: Referenced column \"actual_day\" not found in FROM clause!",
+        "source": "本地2.0一般模式stderr｜runlogs/human-typo.stderr.txt",
+        "translation": "找不到這個欄位名稱",
+        "key": "一般模式也會正確報錯"
+      },
+      "claims": [
+        "c3"
+      ],
+      "lines": [
+        {
+          "id": "ak3j",
+          "text": "一般模式會回覆，找不到這個欄位。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "s9ca",
+          "text": "它沒有默默換成別的數字繼續查詢。"
+        }
+      ]
+    },
+    {
+      "id": "valid-json-fields",
+      "template": "table",
+      "data": {
+        "title": "代理模式的錯誤欄位",
+        "columns": [
+          "欄位",
+          "本次內容"
+        ],
+        "rows": [
+          [
+            "exception_type",
+            "Binder"
+          ],
+          [
+            "error_subtype",
+            "COLUMN_NOT_FOUND"
+          ],
+          [
+            "name",
+            "actual_day"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "代理模式的錯誤欄位"
+      },
+      "claims": [
+        "c3",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "jngn",
+          "text": "代理模式把同一個問題整理成JSON錯誤物件。",
+          "say": "代理模式把同一個問題整理成J S O N錯誤物件。",
+          "say_for": "f457a2415473",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "cjm4",
+          "text": "錯誤類別和欄位名稱，都能各自取出來處理。"
+        }
+      ]
+    },
+    {
+      "id": "stderr-contract",
+      "template": "table",
+      "data": {
+        "title": "先辨識訊息，再解析",
+        "columns": [
+          "訊息順序",
+          "本次stderr"
+        ],
+        "rows": [
+          [
+            "第一行",
+            "模式啟動說明文字"
+          ],
+          [
+            "第二行",
+            "合法JSON錯誤物件"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "先辨識訊息，再解析"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "i2fq",
+          "text": "這次的錯誤輸出，先有一行模式啟動說明。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "yxh7",
+          "text": "後面的JSON行本身合法，要取出那一行再解析。",
+          "say": "後面的J S O N行本身合法，要取出那一行再解析。",
+          "say_for": "de4e3ba41c2e"
+        }
+      ]
+    },
+    {
+      "id": "consumer-expectation",
+      "template": "big",
+      "data": {
+        "text": "對齊讀取方式",
+        "sub": "混合訊息流，不是壞JSON",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "混合訊息流，不是壞JSON"
+      },
+      "claims": [
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "imsp",
+          "text": "如果讀取程式預期整串都只有JSON，預期就不一致。",
+          "say": "如果讀取程式預期整串都只有J S O N，預期就不一致。",
+          "say_for": "d341f67885db",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "qdrd",
+          "text": "這不是錯誤物件壞掉，而是要先分清訊息格式。"
+        }
+      ]
+    },
+    {
+      "id": "repair-the-name",
+      "template": "table",
+      "data": {
+        "title": "依原欄位修正",
+        "columns": [
+          "錯字",
+          "原表欄位"
+        ],
+        "rows": [
+          [
+            "actual_day",
+            "actual_days"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "依原欄位修正"
+      },
+      "claims": [
+        "c3",
+        "c10",
+        "c12"
+      ],
+      "lines": [
+        {
+          "id": "7g26",
+          "text": "回到欄位表，確認真正的實際天數名稱。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "2d84",
+          "text": "修正名稱後，保留原本的比較條件和排序。"
+        }
+      ]
+    },
+    {
+      "id": "copy-csv-whole",
+      "template": "code",
+      "data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "claims": [
+        "c10",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "epd8",
+          "text": "把完整查詢放進COPY，就能把結果寫成表格檔。",
+          "say": "把完整查詢放進C O P Y，就能把結果寫成表格檔。",
+          "say_for": "04b3ae4b761b",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "tdtg",
+          "text": "括號裡的條件和排序，仍是剛剛那份清單。"
+        }
+      ]
+    },
+    {
+      "id": "copy-where",
+      "template": "code",
+      "data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          4,
+          5,
+          6
+        ]
+      },
+      "claims": [
+        "c10",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "q6db",
+          "text": "這次從同一個表讀取，沒有在中途加入顯示列數限制。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "n6c9",
+          "text": "所以存檔依據是查詢結果，不是螢幕可見的幾列。"
+        }
+      ]
+    },
+    {
+      "id": "copy-destination",
+      "template": "code",
+      "data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.csv' (HEADER,DELIMITER ',');",
+        "caption": "followup.sql 第9–15行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          7
+        ]
+      },
+      "claims": [
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "kabz",
+          "text": "輸出位置和標題列設定，也一起寫在命令裡。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "5qhj",
+          "text": "接手的人打開CSV，第一列就能知道各欄的意思。",
+          "say": "接手的人打開C S V，第一列就能知道各欄的意思。",
+          "say_for": "c50760daaf4f"
+        }
+      ]
+    },
+    {
+      "id": "copy-parquet-whole",
+      "template": "code",
+      "data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>promised_days\n ORDER BY parcel_id\n) TO 'demo/output/late-followup.parquet' (FORMAT PARQUET);",
+        "caption": "followup.sql 第16–22行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "claims": [
+        "c13",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "6e4u",
+          "text": "另一份改存Parquet，選欄、條件和排序都保持相同。",
+          "say": "另一份改存帕凱，選欄、條件和排序都保持相同。",
+          "say_for": "a5b14de2e17f",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "nsc3",
+          "text": "這是同一份結果的另一種交付格式。"
+        }
+      ]
+    },
+    {
+      "id": "read-exported-count",
+      "template": "code",
+      "data": {
+        "code": "SELECT count(*) AS exported_rows\nFROM read_csv('demo/output/late-followup.csv');",
+        "caption": "followup.sql 第23–24行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "claims": [
+        "c4",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "44a2",
+          "text": "存好之後，直接讀回輸出的CSV並數資料列。",
+          "say": "存好之後，直接讀回輸出的C S V並數資料列。",
+          "say_for": "1aa762f855f5",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "j328",
+          "text": "不要用畫面顯示的列數，替代這個檔案檢查。"
+        }
+      ]
+    },
+    {
+      "id": "actual-export-count",
+      "template": "quote",
+      "data": {
+        "quote": "| 480 |",
+        "source": "本地2.0 exported_rows原文｜runlogs/followup.stdout.txt",
+        "translation": "完整匯出資料列為480筆",
+        "key": "這是篩選後的檔案筆數"
+      },
+      "claims": [
+        "c4",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "ubxv",
+          "text": "讀回的完整跟進檔，這次有四百八十筆。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "ag8z",
+          "text": "這是篩選後的結果，和原表的預覽列數不同。"
+        }
+      ]
+    },
+    {
+      "id": "same-version-same-answer",
+      "template": "big",
+      "data": {
+        "text": "相同條件，相同清單",
+        "sub": "模式改顯示，沒有改篩選答案",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "模式改顯示，沒有改篩選答案"
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "6da2",
+          "text": "一般模式跑相同條件，也得到相同的清單內容。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "385u",
+          "text": "這個對照改變的是回覆方式，不是多找出延遲包裹。"
+        }
+      ]
+    },
+    {
+      "id": "handoff-question",
+      "template": "big",
+      "data": {
+        "text": "檔案能重開，還要核對",
+        "sub": "確認內容，而不只看副檔名",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "確認內容，而不只看副檔名"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "zdyx",
+          "text": "清單已經存下來，怎麼確認另一種格式也保存同樣內容？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        }
+      ]
+    },
+    {
+      "id": "read-parquet-back",
+      "template": "code",
+      "data": {
+        "code": "COPY (\n SELECT * FROM 'demo/output/late-followup.parquet'\n ORDER BY parcel_id\n) TO 'demo/output/parquet-readback.csv' (HEADER,DELIMITER ',');",
+        "caption": "readback.sql 第3–6行／全6行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "claims": [
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "qgqv",
+          "text": "把Parquet重新讀出，按同一個包裹代號排序。",
+          "say": "把帕凱重新讀出，按同一個包裹代號排序。",
+          "say_for": "b4f3f400ec67"
+        },
+        {
+          "id": "ineu",
+          "text": "再存成CSV，讓兩份結果可以逐列比較。",
+          "say": "再存成C S V，讓兩份結果可以逐列比較。",
+          "say_for": "f5370d187899",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ],
+      "chapter": "打開完整檔，核對每筆交付"
+    },
+    {
+      "id": "first-delivered-late",
+      "template": "table",
+      "data": {
+        "title": "從完整檔抽一筆回查",
+        "columns": [
+          "欄位",
+          "P0002這一筆"
+        ],
+        "rows": [
+          [
+            "route",
+            "R2"
+          ],
+          [
+            "promised_days",
+            "3"
+          ],
+          [
+            "actual_days",
+            "4"
+          ],
+          [
+            "days_late",
+            "1"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "從完整檔抽一筆回查"
+      },
+      "claims": [
+        "c9",
+        "c13"
+      ],
+      "lines": [
+        {
+          "id": "xqkd",
+          "text": "從完整檔挑這筆，仍能看見原本的兩種天數。"
+        },
+        {
+          "id": "xad9",
+          "text": "晚了幾天的欄位，也和原來的相減結果一致。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "tail-of-output",
+      "template": "table",
+      "data": {
+        "title": "末端紀錄也在完整檔",
+        "columns": [
+          "代號",
+          "路線",
+          "晚幾天"
+        ],
+        "rows": [
+          [
+            "P1191",
+            "R3",
+            "2"
+          ],
+          [
+            "P1194",
+            "R2",
+            "1"
+          ],
+          [
+            "P1198",
+            "R2",
+            "1"
+          ],
+          [
+            "P1199",
+            "R3",
+            "2"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "末端紀錄也在完整檔"
+      },
+      "claims": [
+        "c13",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "6u7e",
+          "text": "完整檔還保留靠近表格末端、符合條件的紀錄。"
+        },
+        {
+          "id": "wznc",
+          "text": "頭尾樣本可以幫你定位，仍不能代替全量核對。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "route-summary-query",
+      "template": "code",
+      "data": {
+        "code": "SELECT route,count(*) AS delivered_late\nFROM parcels\nWHERE status='delivered' AND actual_days>promised_days\nGROUP BY route ORDER BY route;",
+        "caption": "followup.sql 第5–8行／全24行｜本地2.0",
+        "key": "完整內容與欄位一同保留"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "h579",
+          "text": "需要小摘要時，沿用相同條件，再依路線分組。"
+        },
+        {
+          "id": "jd24",
+          "text": "摘要是另一種閱讀方式，完整名單仍然保留。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "route-summary-result",
+      "template": "table",
+      "data": {
+        "title": "兩條路線的跟進紀錄",
+        "columns": [
+          "路線",
+          "本例資料列"
+        ],
+        "rows": [
+          [
+            "R2",
+            "240"
+          ],
+          [
+            "R3",
+            "240"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "兩條路線的跟進紀錄"
+      },
+      "claims": [
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "rxjg",
+          "text": "這次跟進資料分布在兩條虛構路線。"
+        },
+        {
+          "id": "mavj",
+          "text": "摘要中的資料列加起來，要能對回完整跟進檔。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "full-content-comparison",
+      "template": "big",
+      "data": {
+        "text": "逐列內容一致",
+        "sub": "CSV與Parquet讀回結果相符",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "CSV與Parquet讀回結果相符"
+      },
+      "claims": [
+        "c4",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "3dwp",
+          "text": "這次兩種格式逐列比對，包裹代號和各欄內容一致。"
+        },
+        {
+          "id": "dm84",
+          "text": "獨立的簡單程式也依原始條件，核對完整名單。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "preview-versus-file",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "預覽樣本",
+          "points": [
+            "方便快速看欄位",
+            "明列省略或取樣"
+          ]
+        },
+        "right": {
+          "heading": "完整交付",
+          "points": [
+            "保存全部符合條件的列",
+            "另附查詢與資料來源"
+          ]
+        },
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份資料，逐項對回條件"
+      },
+      "claims": [
+        "c2",
+        "c4",
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "ikqt",
+          "text": "預覽幫你看懂格式，完整檔用來交付與核對。"
+        },
+        {
+          "id": "qb27",
+          "text": "兩者一起保留，接手的人才知道自己正在看哪一種。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "change-the-requirement",
+      "template": "big",
+      "data": {
+        "text": "若要包含剛好準時",
+        "sub": "同一份資料，修改一個比較條件",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同一份資料，修改一個比較條件"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "g738",
+          "text": "如果需求改成包含剛好準時，這份查詢該改哪裡？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        }
+      ]
+    },
+    {
+      "id": "due-or-late-rule",
+      "template": "code",
+      "data": {
+        "code": "COPY (\n SELECT parcel_id,route,promised_days,actual_days,\n        actual_days-promised_days AS days_late\n FROM parcels\n WHERE status='delivered' AND actual_days>=promised_days\n ORDER BY parcel_id\n) TO 'demo/output/due-or-late.csv' (HEADER,DELIMITER ',');",
+        "caption": "variant.sql 第2–8行／全10行｜本地2.0",
+        "key": "完整內容與欄位一同保留",
+        "highlight": [
+          5,
+          7
+        ]
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "7th9",
+          "text": "把大於改成大於等於，就連剛好準時的一起保留。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "98xj",
+          "text": "同時換一個檔名，避免把它叫作原本的延遲清單。"
+        }
+      ]
+    },
+    {
+      "id": "variant-result",
+      "template": "table",
+      "data": {
+        "title": "需求變式：剛好準時或晚到",
+        "columns": [
+          "這次需求",
+          "完整筆數"
+        ],
+        "rows": [
+          [
+            "原本：嚴格晚到",
+            "480"
+          ],
+          [
+            "變式：剛好準時或晚到",
+            "720"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "需求變式：剛好準時或晚到"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "mkfw",
+          "text": "變式清單有七百二十筆，其中包含剛好準時的紀錄。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "b5i9",
+          "text": "改的是需求，所以名稱和查詢條件也要一起保存。"
+        }
+      ]
+    },
+    {
+      "id": "on-time-enters-variant",
+      "template": "table",
+      "data": {
+        "title": "剛好準時的紀錄入選",
+        "columns": [
+          "代號",
+          "晚幾天",
+          "新需求判定"
+        ],
+        "rows": [
+          [
+            "P0001",
+            "0",
+            "納入剛好準時或晚到"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "剛好準時的紀錄入選"
+      },
+      "claims": [
+        "c9",
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "fqr6",
+          "text": "剛剛那筆包裹，現在就會跟著新條件入選。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "handoff-pack",
+      "template": "table",
+      "data": {
+        "title": "交出能重查的教材",
+        "columns": [
+          "檔案",
+          "接手者可以做什麼"
+        ],
+        "rows": [
+          [
+            "CSV",
+            "打開完整跟進紀錄"
+          ],
+          [
+            "Parquet",
+            "保留同內容的資料檔"
+          ],
+          [
+            "SQL",
+            "查看條件、選欄與排序"
+          ],
+          [
+            "HTML",
+            "讀摘要並找到完整檔"
+          ]
+        ],
+        "source": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "交出能重查的教材"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "g7bc",
+          "text": "資料包把完整檔、查詢和可讀報告放在一起。"
+        },
+        {
+          "id": "s9qr",
+          "text": "想改需求的人，可以先改條件，再重新產生清單。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    },
+    {
+      "id": "upgrade-question",
+      "template": "big",
+      "data": {
+        "text": "需要為它升級嗎？",
+        "sub": "先選適合自己工作的用法",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "先選適合自己工作的用法"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "tfee",
+          "text": "如果你原本的查詢已經能完成工作，需要為新模式立刻升級嗎？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        }
+      ]
+    },
+    {
+      "id": "release-time",
+      "template": "table",
+      "data": {
+        "title": "新模式的發表與正式版",
+        "columns": [
+          "時間",
+          "當時的功能狀態"
+        ],
+        "rows": [
+          [
+            "2026-10-09",
+            "代理模式介紹"
+          ],
+          [
+            "2026-10-21",
+            "2.0正式release"
+          ]
+        ],
+        "source": "官方發表與release日期｜2026-10-25核對",
+        "key": "新模式的發表與正式版"
+      },
+      "claims": [
+        "c6",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "ujmc",
+          "text": "代理模式在十月九日介紹，隨十月二十一日的二點零正式提供。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ],
+      "chapter": "把新模式放進合適的工作範圍"
+    },
+    {
+      "id": "existing-file-tools",
+      "template": "big",
+      "data": {
+        "text": "既有資料能力",
+        "sub": "讀CSV、SQL查詢與匯出原本就有",
+        "kicker": "官方2.0公告｜既有能力與新模式分開",
+        "key": "讀CSV、SQL查詢與匯出原本就有"
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "msj7",
+          "text": "讀CSV和用SQL匯出結果，則是原本就有的能力。",
+          "say": "讀C S V和用S Q L匯出結果，則是原本就有的能力。",
+          "say_for": "fd89a9f7b782"
+        }
+      ]
+    },
+    {
+      "id": "pick-the-tool",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "一次性少量篩選",
+          "points": [
+            "沿用熟悉的表格工具",
+            "明確檢查選取條件"
+          ]
+        },
+        "right": {
+          "heading": "反覆交付相同清單",
+          "points": [
+            "保存查詢與完整輸出",
+            "讓接手者能重新產生"
+          ]
+        },
+        "source": "編輯選擇｜非表格工具比較實測",
+        "key": "同一份資料，逐項對回條件"
+      },
+      "claims": [
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "mdiw",
+          "text": "少量、一次性的篩選，可以沿用你熟悉的表格工具。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "cqse",
+          "text": "要反覆交付同一套規則，就把查詢和完整結果一起保存。"
+        }
+      ]
+    },
+    {
+      "id": "agent-mode-fit",
+      "template": "big",
+      "data": {
+        "text": "代理模式用在回覆層",
+        "sub": "給自動讀取者清楚的訊息",
+        "kicker": "官方機制＋本地2.0輸出對照",
+        "key": "給自動讀取者清楚的訊息"
+      },
+      "claims": [
+        "c6",
+        "c15",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "7mth",
+          "text": "當程式或代理讀取工具回覆，格式和省略標記就很重要。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "wfgn",
+          "text": "選代理模式，是為了這一層輸出，不是換一套查詢答案。"
+        }
+      ]
+    },
+    {
+      "id": "lts-is-a-promise",
+      "template": "big",
+      "data": {
+        "text": "LTS支援承諾",
+        "sub": "至少到2027年10月",
+        "kicker": "官方2.0公告｜2026-10-25核對",
+        "key": "至少到2027年10月"
+      },
+      "claims": [
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "96nc",
+          "text": "二點零是長期支援版本，支援承諾至少到二〇二七年十月。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "xhbp",
+          "text": "這個日期說的是維護範圍，不能代替你的相容檢查。"
+        }
+      ]
+    },
+    {
+      "id": "storage-condition",
+      "template": "table",
+      "data": {
+        "title": "既有資料庫先看格式",
+        "columns": [
+          "檔案情況",
+          "2.0文件所列條件"
+        ],
+        "rows": [
+          [
+            "2.0新預設格式",
+            "2.0以前版本不能讀"
+          ],
+          [
+            "既有舊格式",
+            "2.0可讀寫並保留格式"
+          ]
+        ],
+        "source": "官方2.0 migration文件｜2026-10-25",
+        "key": "既有資料庫先看格式"
+      },
+      "claims": [
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "whmh",
+          "text": "如果多人用不同版本開同一資料庫，要先確認儲存格式。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "ah33",
+          "text": "新的預設格式，不能直接交給二點零以前的程式讀取。"
+        }
+      ]
+    },
+    {
+      "id": "bounded-choice",
+      "template": "big",
+      "data": {
+        "text": "先在新練習目錄試",
+        "sub": "保留原本的工作與資料庫",
+        "kicker": "編輯建議｜未測既有資料庫升級",
+        "key": "保留原本的工作與資料庫"
+      },
+      "claims": [
+        "c20",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "x88h",
+          "text": "想試代理模式，就先在新的練習目錄檢查自己的查詢。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "pskv",
+          "text": "原本的工作是否升級，另按相容條件決定。"
+        }
+      ]
+    },
+    {
+      "id": "format-is-not-correctness",
+      "template": "big",
+      "data": {
+        "text": "格式清楚，條件仍要核對",
+        "sub": "同版模式對照不等於效能評比",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "同版模式對照不等於效能評比"
+      },
+      "claims": [
+        "c15",
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "27ar",
+          "text": "模式對照使用同一個二點零版本，不是跨版本效能評比。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "bbte",
+          "text": "輸出更精簡，也不能直接換算成模型正確率或節省費用。"
+        }
+      ]
+    },
+    {
+      "id": "author-demo-scope",
+      "template": "big",
+      "data": {
+        "text": "原創資料與確定性指令",
+        "sub": "沒有獨立模型或產品前後測",
+        "kicker": "本地操作2026-10-25｜DuckDB2.0｜虛構資料",
+        "key": "沒有獨立模型或產品前後測"
+      },
+      "claims": [
+        "c1",
+        "c23"
+      ],
+      "lines": [
+        {
+          "id": "722i",
+          "text": "這份虛構清單由固定規則產生，查詢也完整保存。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "v9mv",
+          "text": "它能支持這次的交付結果，不能替其他AI產品作保證。",
+          "say": "它能支持這次的交付結果，不能替其他A I產品作保證。",
+          "say_for": "54772869c8ae"
+        }
+      ]
+    },
+    {
+      "id": "keep-the-rule",
+      "template": "outro",
+      "data": {
+        "title": "完整清單，附上完整規則",
+        "cta": "訂閱｜用真實產物讀懂AI工具",
+        "key": "用檔案與規則承接交付"
+      },
+      "claims": [
+        "c17",
+        "c20"
+      ],
+      "lines": [
+        {
+          "id": "ddtv",
+          "text": "保留全量檔，別把預覽當成完整清單。",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        },
+        {
+          "id": "wx5u",
+          "text": "你最常要交什麼資料清單？",
+          "emotion": "語尾輕揚，留一點思考空間"
+        },
+        {
+          "id": "v5pw",
+          "text": "訂閱，用產物讀懂AI工具。",
+          "say": "訂閱，用產物讀懂A I工具。",
+          "say_for": "e3b99fe15775",
+          "emotion": "像對一個人說明，重點清楚，句尾自然收住"
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "iaiy",
+      "payoff": "a73b",
+      "what": "省略標記是否表示資料被刪掉"
+    },
+    {
+      "setup": "zni4",
+      "payoff": "jngn",
+      "what": "欄位少字母時的錯誤回覆"
+    },
+    {
+      "setup": "3zp6",
+      "payoff": "ubxv",
+      "what": "完整交付檔的筆數"
+    },
+    {
+      "setup": "7npx",
+      "payoff": "v9hh",
+      "what": "需要跟進的篩選條件"
+    },
+    {
+      "setup": "ntfj",
+      "payoff": "jngn",
+      "what": "讀懂並修正欄位名稱"
+    },
+    {
+      "setup": "zdyx",
+      "payoff": "qgqv",
+      "what": "另一格式如何讀回核對"
+    },
+    {
+      "setup": "g738",
+      "payoff": "mkfw",
+      "what": "改成包含準時的需求與新結果"
+    },
+    {
+      "setup": "tfee",
+      "payoff": "7mth",
+      "what": "新模式適合放在哪一層工作"
+    }
+  ]
+}

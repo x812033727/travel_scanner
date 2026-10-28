@@ -1,0 +1,87 @@
+{
+  "kind": "documentation_source_receipt_checks_only",
+  "status": "PASS_DOCUMENTATION_CHECKS",
+  "not_media_PASS": true,
+  "source_video_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+  "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "native_script_gate_file": "script.md",
+  "native_script_gate_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+  "native_lint": {
+    "exit_code": 0,
+    "errors": [],
+    "warnings": [],
+    "estimate_only_minutes": 10.47
+  },
+  "task_check": {
+    "command": "npm run check:tasks",
+    "exit_code": 0,
+    "validated_tasks": 2183,
+    "preexisting_global_warnings_present": true,
+    "out_of_scope_stale_claims_or_overlap_warnings_not_changed": true
+  },
+  "native_facts_parser": {
+    "latest_native_report": {
+      "name": "verify-3.md",
+      "round": 3
+    },
+    "native_facts": {
+      "ok": true,
+      "detail": "verify-3.md marks no claim NOT FOUND"
+    },
+    "current21_CONFIRMED_rows": 21,
+    "scope": "Native parser check only; substantive current-source fact conclusions are the unchanged verify3 report, not this parser result."
+  },
+  "relative_links_and_safe_scan": {
+    "relative_MD_HTML_links_checked": 159,
+    "broken_links": [],
+    "receipt_index_entries_verified": 31,
+    "index_hash_cycle": false,
+    "original266_manifest_bytes_preserved": true,
+    "historical266_changed_only_authorized_documentation": [
+      "README.md"
+    ],
+    "new_or_added_episode_paths": [
+      "production-progress.json",
+      "receipts/README.md",
+      "receipts/current-source-gates.json",
+      "receipts/documentation-freeze.json",
+      "receipts/fifth-script-local-native-adoption.log",
+      "receipts/fifth-script-pending-readback.expectation-revise.json",
+      "receipts/fifth-script-pending-readback.script-gate.json",
+      "receipts/fifth-tts-initial-dry-run.log",
+      "receipts/index.json",
+      "receipts/native-description-compose.json",
+      "receipts/script-native-local-adoption.json",
+      "receipts/tts-deferral.json",
+      "receipts/validation.json",
+      "result.md",
+      "reviews/fifth-verify-3.json",
+      "script.md",
+      "verify-1.md",
+      "verify-2.md",
+      "verify-3.md"
+    ],
+    "safe_scan_file_count": 19,
+    "safe_scan_issues": [],
+    "no_episode_symlinks": true,
+    "no_pairing_credentials_auto_json_or_binary_added": true,
+    "source_sha256": "ca1ef60f4e9fd98f7c2e336a7fc8ab339c58b94f557ba0a7f6b8fb7cc279e1bf",
+    "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+    "generated_script_sha256": "7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b",
+    "historical_manifest_sha256": "febc17b61b32b9e2092f985714aeb739bee4aede628f9e9df38363d66badb3bb"
+  },
+  "substantive_fact_report": {
+    "file": "verify-3.md",
+    "sha256": "fe6c4bfcd97b3253350caf2a464029c1c16b72b322fe7a1ec180d0cf63bd4e3b",
+    "JSON": "reviews/fifth-verify-3.json",
+    "JSON_sha256": "2401e4cdfd0a3735dfa4e20371bc3a5a59769ee56c123c571426a4b9d4449c71",
+    "current21_CONFIRMED": true,
+    "parser_only_is_not_substantive_fact_approval": true
+  },
+  "mutable_checks_and_freeze_outputs_not_in_receipt_index": true,
+  "source_claims_assets_audio_data_changed": false,
+  "paid_calls_by_docs_agent": 0,
+  "backend_calls_by_docs_agent": 0,
+  "git_commits_by_docs_agent": 0,
+  "checked_at_utc": "2026-10-26T02:06:29.544815+00:00"
+}

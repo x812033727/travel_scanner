@@ -1,0 +1,20 @@
+{
+  "at": "2026-10-26T00:50:10.903736+00:00",
+  "fact_report_sha256": "c75ee8c72de6cdfeacf1e8c45c6cc93993084ba2b8bbc9d4b3d312571a577642",
+  "source_before_sha256": "1a267cb77e4d3eeddffc850dca6616c68a3c66afcaed38576b6e776a3ca62bf2",
+  "source_after_sha256": "7d150fc4e8a818e80560c80e4a392e93699666571c3647d4471b4222bcfb0726",
+  "changes": [
+    {
+      "id": "rxjg",
+      "old": "剛剛分組的完整檔，路線二和路線三各有兩百四十筆。",
+      "text": "剛剛按原規則分組，路線二和路線三各有兩百四十筆。",
+      "reason": "Actual GROUP BY reads parcels with same predicate, not exportedCSV. State actual rule-based grouping; counts remainR2/R3each240."
+    }
+  ],
+  "all_other_source_fields_unchanged": true,
+  "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "code_commands_data_ZIP_unchanged": true,
+  "prior_R2_raw_narrative_results_preserved": true,
+  "paid_TTS": false,
+  "archive": "/workspace/work/ai-tech-next/fifth-story-archives/before-fact-clarification"
+}

@@ -1,0 +1,66 @@
+// Offline TH text production only. No CLI merge, credentials, network or audio.
+import fs from 'node:fs';
+import crypto from 'node:crypto';
+import assert from 'node:assert/strict';
+import child from 'node:child_process';
+import {syncBuiltinESMExports} from 'node:module';
+import {loadProject} from '/workspace/work/travel-scanner-duckdb/tools/video/core/state.mjs';
+import {buildSheet,translationContext,mergeSheet,sheetTodo} from '/workspace/work/travel-scanner-duckdb/tools/video/i18n/cli.mjs';
+import {metadataStatus,thumbnailStatus} from '/workspace/work/travel-scanner-duckdb/tools/video/core/translations.mjs';
+import {speechHash} from '/workspace/work/travel-scanner-duckdb/tools/video/core/timeline.mjs';
+import {screenplay} from '/workspace/work/travel-scanner-duckdb/tools/video/core/screenplay.mjs';
+import {composeDescription,withCaptionTag,checkYoutubeFields} from '/workspace/work/travel-scanner-duckdb/tools/video/core/metadata.mjs';
+
+const ROOT='/workspace/work/travel-scanner-duckdb',EP=ROOT+'/docs/videos/duckdb-agent-full-export';
+const BASE='/workspace/work/ai-tech-next/fifth-th-translation',WORK='/workspace/work/videos/duckdb-agent-full-export';
+const SOURCE='40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa';
+const digest=b=>crypto.createHash('sha256').update(b).digest('hex');
+const sha=f=>digest(fs.readFileSync(f)),read=f=>JSON.parse(fs.readFileSync(f,'utf8')),clone=x=>JSON.parse(JSON.stringify(x));
+const write=(name,data)=>fs.writeFileSync(BASE+'/'+name,typeof data==='string'?data:JSON.stringify(data,null,2)+'\n',{flag:'wx',mode:0o600});
+const before=read(BASE+'/source-before.json').protected_files; const protectedFiles=Object.keys(before); for(const [f,pin] of Object.entries(before)){assert.equal(sha(f),pin.sha256);assert.equal(fs.statSync(f).size,pin.bytes);}
+assert.equal(before[EP+'/video.json'].sha256,SOURCE);
+assert.equal(before[EP+'/claims.md'].sha256,'cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191');
+assert.equal(before[EP+'/i18n/en.json'].sha256,'faf5cb2f1c7fd536e012cd2a8191062ee4069d42ef46b8b8fbf8f10543f2cf4b');
+assert.ok(!fs.existsSync(EP+'/i18n/th.json'),'Do not overwrite another TH producer');
+assert.ok(!fs.existsSync(WORK+'/timeline.json'),'This no-timing profile must be reviewed if narration is now timed');
+const project=loadProject({root:ROOT,slug:'duckdb-agent-full-export'});
+assert.equal(speechHash(project.doc,project.lexicon),'38cf9292f6945199');
+assert.equal(digest(Buffer.from(screenplay(project.doc))),'7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b');
+const draftTargets=read(BASE+'/th-targets.v1.json'),finalTargets=read(BASE+'/th-targets.final.json');
+const counters={network:0,subprocess:0,native_pure_region_write_attempts:0};
+const oldFetch=globalThis.fetch,oldWrite=fs.writeFileSync,restore=[];
+globalThis.fetch=()=>{counters.network++;throw Error('Offline text production forbids fetch');};
+for(const key of ['exec','execSync','execFile','execFileSync','spawn','spawnSync','fork']){const fn=child[key];restore.push(()=>child[key]=fn);child[key]=()=>{counters.subprocess++;throw Error('Offline text production forbids subprocess');};}
+fs.writeFileSync=()=>{counters.native_pure_region_write_attempts++;throw Error('Native pure region must not write');};syncBuiltinESMExports();
+let empty,draft,final,merged,metadata,status,refreshed;
+try{
+ empty=buildSheet(project.doc,null,'th',null,['metadata','captions'],translationContext(project.doc,project.lexicon));
+ assert.equal(protectedFiles.length,14);assert.equal(empty.lines.length,111);assert.equal(empty.chapters.length,6);assert.ok(empty.lines.every(x=>x.todo===true&&!Object.hasOwn(x,'max_chars')));
+ const fill=targets=>{const s=clone(empty);for(const key of ['title','description','tags'])s[key].text=clone(targets[key]);s.thumbnail.text=clone(targets.thumbnail);for(const c of s.chapters){assert.ok(targets.chapters[c.scene]);c.text=targets.chapters[c.scene];}assert.deepEqual(Object.keys(targets.lines).sort(),s.lines.map(x=>x.id).sort());for(const l of s.lines)l.text=targets.lines[l.id];return s;};
+ draft=fill(draftTargets);final=fill(finalTargets);
+ const strip=s=>{const r=clone(s);for(const k of ['title','description','tags'])r[k].text=clone(empty[k].text);r.thumbnail.text=clone(empty.thumbnail.text);for(const c of r.chapters)c.text='';for(const l of r.lines)l.text='';return r;};
+ assert.deepEqual(strip(final),empty,'Only native worksheet text fields may change');
+ assert.ok(final.lines.every(l=>l.text.trim()&&/[\u0e00-\u0e7f]/u.test(l.text)));
+ merged=mergeSheet(project.doc,final,null);assert.deepEqual(merged.problems,[]);assert.deepEqual(merged.notes,[]);assert.equal(Object.keys(merged.translation.lines).length,111);
+ status=metadataStatus(project.doc,merged.translation);for(const k of ['title','description','tags'])assert.equal(status[k],'current');assert.ok(Object.values(status.chapters).every(v=>v==='current'));assert.equal(thumbnailStatus(project.doc,merged.translation),'current');
+ refreshed=buildSheet(project.doc,merged.translation,'th',null,['metadata','captions'],translationContext(project.doc,project.lexicon));
+ assert.ok(refreshed.lines.every(x=>!x.todo));assert.ok(refreshed.chapters.every(x=>!x.todo));for(const k of ['title','description','tags','thumbnail'])assert.equal(refreshed[k].todo,false);
+ const t=merged.translation;
+ const title=withCaptionTag(t.title,'th');
+ const description=composeDescription({body:t.description,timeline:null,sources:project.doc.sources,assets:project.doc.assets,locale:'th',tags:t.tags,category:project.doc.category,campaign:project.doc.slug});
+ const problems=checkYoutubeFields({title,description,tags:t.tags},'th');assert.deepEqual(problems,[]);
+ metadata={kind:'native_pure_TH_metadata_body_and_sources_preview_without_chapter_timestamps',title,description,tags:t.tags,untimed_chapter_titles:t.chapters,problems,actual_timeline_used:false,estimated_timeline_used:false,actual_CC_or_audio_claimed:false};
+ const urls=project.doc.youtube.description.match(/https:\/\/\S+/g);assert.equal(urls.length,2);for(const url of urls){assert.ok(t.description.includes(url));assert.ok(description.includes(url));}
+ assert.equal((t.thumbnail.headline.match(/\n/g)??[]).length,(empty.thumbnail.source.headline.match(/\n/g)??[]).length);assert.equal((t.thumbnail.headline.match(/\*\*/g)??[]).length,2);
+}finally{globalThis.fetch=oldFetch;fs.writeFileSync=oldWrite;for(const f of restore.reverse())f();syncBuiltinESMExports();}
+for(const [f,d]of Object.entries(before)){assert.equal(sha(f),d.sha256,'Protected file changed: '+f);assert.equal(fs.statSync(f).size,d.bytes);}
+assert.ok(!fs.existsSync(EP+'/i18n/th.json'));for(const v of Object.values(counters))assert.equal(v,0);
+write('protected-before-and-after.final.json',{source_sha256:SOURCE,speech_hash:'38cf9292f6945199',native_script_sha256:'7aac2017419c82a4b81fb40050f067c9e021312600e5d66ec70846b58946107b',protected_files:before,all_protected_bytes_unchanged:true,repo_TH_file_still_absent:true,work_timeline_still_absent:!fs.existsSync(WORK+'/timeline.json')});
+write('th.draft.reviewed.final.todo.json',final);
+write('th.native-pure-merge-preview.final.json',merged.translation);write('th.metadata-compose-untimed-preview.final.json',metadata);
+const mapping=final.lines.map((l,i)=>({index:i+1,id:l.id,scene:l.scene,source:l.source,text:l.text,characters:[...l.text].length,source_todo_preserved:l.todo,actual_audio_timing_available:false}));
+write('source-target-complete-111.final.json',{locale:'th',source_sha256:SOURCE,source_target_pairs:mapping,chapter_pairs:final.chapters.map(c=>({scene:c.scene,source:c.source,text:c.text})),metadata:{title:final.title,description:final.description,tags:final.tags,thumbnail:final.thumbnail}});
+write('source-target-complete-111.final.md','# DuckDB TH draft — author mapping, no audio or timing\n\n'+mapping.map(l=>`## ${l.index}. ${l.id}\n\nZH: ${l.source}\n\nTH: ${l.text}\n`).join('\n')+'\n## Untimed chapter titles\n\n'+final.chapters.map(c=>`- ${c.source} → ${c.text}`).join('\n')+'\n');
+const report={pass:3,kind:'same_author_full_semantic_review_and_native_pure_schema_validation_only',at:new Date().toISOString(),locale:'th',source_sha256:SOURCE,lines:111,chapters:6,all_ID_scene_source_todo_context_fields_preserved:true,all_111_targets_nonempty_Thai:true,metadata_status:status,thumbnail_status:'current',native_merge_problems:merged.problems,native_merge_notes:merged.notes,native_merged_preview_not_applied:true,source_hashes_only_generated_by_native_mergeSheet:true,fresh_sheet_after_pure_merge_todo:sheetTodo(refreshed),native_metadata_field_problems:metadata.problems,composed_title:metadata.title,composed_description_UTF8_bytes:Buffer.byteLength(metadata.description),raw_description_UTF8_bytes:Buffer.byteLength(final.description.text),no_actual_or_estimated_chapter_times_generated:true,character_counts_are_not_timing_or_fit_constraints:true,instrumented_counters:counters,paid_calls:0,credentials_read:false,CLI_merge_run:false,repo_or_existing_workdir_writes:false,CC_M4A_ASR_fit_meter_backend_delivery_claimed:false,independent_review_claimed:false,root_review_still_required:true};
+write('author-pass3-native-pure.final.json',report);
+console.log(JSON.stringify({ok:true,lines:111,chapters:6,sheet_sha256:sha(BASE+'/th.draft.reviewed.final.todo.json'),mapping_sha256:sha(BASE+'/source-target-complete-111.final.json'),merge_problems:merged.problems,merge_notes:merged.notes,composed_description_bytes:Buffer.byteLength(metadata.description),lines_without_timing_budget:111,counters},null,2));

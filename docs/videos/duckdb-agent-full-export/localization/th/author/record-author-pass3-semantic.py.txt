@@ -1,0 +1,124 @@
+from pathlib import Path
+import json,datetime,hashlib,re
+B=Path('/workspace/work/ai-tech-next/fifth-th-translation');m=json.loads((B/'source-target-complete-111.final.json').read_text());t=json.loads((B/'th-targets.final.json').read_text());rows=m['source_target_pairs']
+notes='''2026AD date, narrator firstperson and thiscomputer preserved.
+Query purpose remains followup parcels and reopenable listfile.
+40iscombinedheadtail, not40each; middleomission retained.
+Question remains whether tableactuallycontains onlyvisible rows.
+Upcoming missingletter belongs actualdurationfieldname, notnumericday.
+Exporttofile introduces completenessquestion, noansweradded.
+Originaltable remains1200; notclaiming filteredfilecontains1200.
+Originalfictional exercisefixture and perrecordtraceability retained.
+Introduction9Oct versus actual2.0availability21Oct distinct; activeThai subject.
+Compacttoolreply plus explicitomissionmarkers, notqueryupgrade.
+Programreadsmarker asinterpretationbasis, not modelcorrectnessproof.
+CSVreading/SQL/fullfileexport are existingcapabilities.
+Newexercisedirectory precedes sameversiontwomodecomparison as sourceclauseorder.
+No bundledAImodel and no accuracyorusagecost test.
+Parcelcode/route/promisedduration allpresent inoriginalorder.
+Status and actualduration required for requestedfollowup.
+Explicitnormalmode flag selects originaldisplay.
+Temporarydatabase and skip personalinitializationfile bothpreserved.
+Onlymodeflagchanges; inputandqueryremain unchanged.
+Explicitmode avoids mixing environmentalautodetection into comparison.
+Openingmarkerquestion returned for bothreplies.
+Create same table then order byparcelcode.
+Nofewrecordselectioncondition; distinguish displayextent.
+Normalmodealreadyreports totalandshownrows belowtable.
+Queryresultsize separated fromscreensize, not changeddata.
+Agentmiddlemarker explicitly1160omitted.
+Notshown doesnotmeanquery/storage dataloss.
+Openingpreview is entrytoreply, notdeliverablelist.
+Decisionuses completeoriginaltable toselectparcels.
+Requiredpredicate is delivered AND actualduration>promised.
+Intransit remains inoriginaltable and isoutsidecurrentrequest.
+Code/route/status parsedastext atcreation.
+Bothdurationfields parsedasintegers for numericdaycomparison.
+Describecommandlists columnnamesandtypes.
+Separatequerystatuscounts establish recordsunderconsideration.
+960delivered and240intransit preserved.
+Blankactualdurationmeansno completeddeliveryduration; not deadlineor0.
+Question applies existingselectionrule to deliveredparcel.
+Parcelalreadydelivered,promised3,actual4.
+Actualexceedspromise so includedfollowup.
+4minus3=1lateday preserved.
+Differenceasnewfield visible to recipient.
+Applysame statuscondition tointransitrecord.
+Excludedbydeliveredcondition; blankcannotbe replacedby0days.
+Selectionrule writtenintofilterexpression.
+Subtractioninselectednewfield doesnotrewrite originaldurations.
+Delivercode/route/bothdurations/calculateddifference allpresent.
+Ascendingparcelcode andsameorderwhenreopened retained.
+Promised3 actual3 subtractto0.
+Strictgreaterthan excludes equalcase fromlate-onlylist.
+Question combines sameconditions with missingfieldletter.
+Missingfield response comesbefore anyqueryresult; noresultgenerated.
+Normalmodealreadyidentifies namingproblem.
+Missingfinals explicitly grounds actual_days versus actual_day fromsourcevisual.
+Debugquery deliberateauthor typo, firstperson, explicitlynotAIerror.
+Skipstartuptext thenparseonevalidJSONline; no malformedJSONclaim.
+Mixedoutputstream cannotbe oneobject.
+Errornamefromobject then candidatefieldfromexplanation, sameorder.
+Narratorcomparescandidatewith originaltable; correctfieldhasfinalletter.
+Selectedoriginalfield writtenbackintoquery.
+Reconnectsameconditions/select/order toexportsamelist.
+Fixedfield then askif truncateddisplaycouldtruncate savedfile.
+Completequery inside COPYparentheses.
+Selectionrules/order remaininside; destinationcomesafter.
+No displayrowlimit added fromsource toexport.
+Saveallqualifyingresults ratherthancopyfewreplylines.
+CSVdestination andheaderpreservescolumnnames bothpresent.
+Readbackcolumnordercheckedagainstselection so code/route notswapped.
+OtherfileParquetchanges onlyformatanddestinationname.
+Selectionandorderingunchangedinsideparentheses forlatercomparison.
+Commandrunscompletequery, writesbothformats tospecifiedlocations.
+ReadexportedCSVdirectly tochecktruncation.
+Countdatarows; headerisnotparcel.
+Actualreadbackqualifiedfollowupfile480, notall1200.
+Previewtruncationdoesnotpropagate intothis exportedfile.
+Normalmode sameexport givessamelistcontent.
+Newmodechangesreply, findsnoadditional lateparcels.
+Correctcountalone notenough; askotherformatcontent equality.
+ReadParquetback sortedbysameparcelcodes.
+SaveCSV so twocompleteoutputs share rowcomparisonmethod.
+Readbackusesdeliveredfile, doesnotrewriteoriginaltable.
+Recall4minus3parcel, no newnumbers.
+Fullfilekeeps route/originaldurations/1latedaydifference.
+Qualifyingrecordsneartailalso in completefile.
+Headtailsamples locatecontent; fullcomparisonmustcheck everymiddle record.
+Sameoriginalrule groupscountsbyroute forrecipientdistribution.
+Summaryseparateinreport, neverreplaces completequalifiedfollowuplist.
+R2andR3each240, followingoriginalpredicate.
+Total480equalsfullfile; summarycountscoverwholequalifiedpopulation.
+Openingcompletenessansweredrowwise: twofiles contain samecontent.
+Compare countplus eachcode/fieldvalues/order.
+Separate simpleprogram readsoriginalrecords andappliesrule toexpectedIDs.
+ExpectedIDs equal export, verifiesbacktooriginaldata.
+Recipientchangesrequesttoinclude exact-on-time; asksreuseofverifiedlatelist.
+Cannotreuse; exact-on-time previouslyexcludedmustnowremain; พอดีexplicit.
+Preserveoldfile, save newrequest asseparatequery.
+Change>to>=; exactlyequalrecordsnowpass.
+Change destinationfilename so newrequestcannotoverwriteoldlist.
+Runmodifiedfile andpreserve newoutputseparately.
+Ask numberandtype of additionalparcels.
+New720includes240with0latedays, not720alllate.
+Addedgroup exactlyon-time, wholefilename exact-on-timeorlate.
+Recall3dayversus3dayrecord previouslyexcluded.
+Nowincluded preciselybecauseequality included.
+Eachlistbelongsowncondition; cannotdeliveroneforsameotherrequest.
+Preserveold/newfilenamesandqueries so recipientselectsrightrequirement.
+Packagehascompletefiles/matchingqueries/readablesummary.
+Reportlinksfullfile; recipientcanchangeconditionandregenerate.
+Openingpreviewnowhascompletefile auditablebacktorule.
+Viewerquestion only, noadditionaladvice.
+SubscriptionCTA: understandAItools viarealartifacts; notnextvideopreview.'''.splitlines()
+assert len(notes)==len(rows)==111
+for row,note in zip(rows,notes):row['author_pass3_editorial_note']=note;row['author_verdict']='meaning_and_visual_context_preserved'
+alltexts=list(t['lines'].values())+list(t['chapters'].values())+[t['title'],t['description']]+t['tags']+list(t['thumbnail'].values())
+assert not any(re.search(r'[\u3400-\u9fff\u3040-\u30ff\uac00-\ud7af]',v) for v in alltexts)
+assert not any('ครับ' in v for v in alltexts)
+marks=re.compile('[\u0e31\u0e34-\u0e3a\u0e47-\u0e4e]')
+advisories=[{'id':r['id'],'codepoints':len(r['text']),'characters_excluding_Thai_above_below_marks':len(marks.sub('',r['text'])),'approximate_recommendation':60,'hard_max_chars_present':False,'actual_duration_or_fit_known':False} for r in rows if len(marks.sub('',r['text']))>60]
+out={'kind':'same_author_final_full111_semantic_review_ledger','pass':3,'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'source_sha256':m['source_sha256'],'source_target_pairs':rows,'chapters_reviewed':m['chapter_pairs'],'complete_metadata_reviewed':True,'script_and_gender_register_check':{'foreign_Han_kana_Hangul_in_targets':False,'male_Thai_particle':False,'firstperson_preserved_ids':['dg2i','xj3j','cjm4'],'female_particles_sparse':True},'full_description_scope_review':['fictionaloriginals not realcompany/customer/statistics','deterministic authorprogram notAIproductresponse/independentprepostmodeltest','sameDuckDB2.0.0binary modecomparison2026-10-25','40previewof1200 versus480fullqualifiedresult','intentionalmissingfieldchar; startuptext plusonevalidJSONline','notmalformedJSON/notactualconsumerfailure','CSVSQLCOPYParquet existing; newagentoutputmode','token/cost/reasoning/server/upgrade nottested','originaldata/code/report CC0-1.0 versusDuckDBMIT; officialtextsseparaterights','bothpublic410633URLs unchanged and9executedcommands'],'glossary_renderings':{'AI':'AI','HTML':'HTML','JSON':'JSON','agent':'agent (โหมด agent for mode)','duckdb-agent-full-export':'duckdb-agent-full-export (literal slug inURLs)','no-agent':'no-agent (literal flag -no-agent)','stderr':'stderr','token':'token','DuckDB':'DuckDB','CSV':'CSV','SQL':'SQL','COPY':'COPY','Parquet':'Parquet'},'approximate_60_character_advisories_retained':advisories,'advisory_count':len(advisories),'line_max_chars_present':False,'actual_timeline_or_cue_times_available':False,'native_sheet_boundaries':{},'caption_files_audio_fit_meter_ASR_listening_acceptance_claimed':False,'own_review_is_not_independent_review':True,'root_review_required':True}
+(B/'author-pass3-semantic-ledger.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
+print(json.dumps({'ledger_entries':len(rows),'approximate_base60_advisories':len(advisories),'ledger_SHA':hashlib.sha256((B/'author-pass3-semantic-ledger.json').read_bytes()).hexdigest()}))

@@ -1,0 +1,134 @@
+{
+  "fullsourceSHA": "1a267cb77e4d3eeddffc850dca6616c68a3c66afcaed38576b6e776a3ca62bf2",
+  "source": "/workspace/work/ai-tech-next/fifth-draft/video.json",
+  "scope": "fresh narrative read only",
+  "reader": "fifth-narrative-r2-reader6",
+  "read_scope": {
+    "spoken_lines": 111,
+    "scenes": 64,
+    "chapters": 6,
+    "materials_read": [
+      "repository AGENTS.md",
+      "native general NARRATIVE_PANEL and JSON contract in tools/video/core/narrative.mjs",
+      "complete narration, chapter names, and native scene-card text in the source JSON"
+    ],
+    "excluded_materials": [
+      "brief",
+      "claims content",
+      "author explanations",
+      "historical reviews",
+      "other readers answers"
+    ]
+  },
+  "timing_note": "僅以約2266個不含一般標點的旁白單位估讀；若每分鐘約240至300字，純旁白約7.6至9.4分鐘，加停頓及程式圖卡閱讀時間可能約9至12分鐘。未聽音訊、未看實片，未把估讀當實測時長。",
+  "answers": [
+    {
+      "id": "scene_first",
+      "yes": true,
+      "evidence": "[dg2i]「二〇二六年十月二十五日，我在這台電腦查配送表。」前四句已具體到日期、這台電腦、我查配送表，以及畫面省略造成的疑問。"
+    },
+    {
+      "id": "no_spoiler",
+      "yes": true,
+      "evidence": "[3zp6]「清單另外存成檔案，又怎麼確認內容完整？」第一章停在原表是否缺資料、欄位錯字及存檔完整性的問題，未提前報出省略的答案、錯誤處理結果或匯出筆數。"
+    },
+    {
+      "id": "one_line",
+      "yes": true,
+      "evidence": "[2d84]「再接回原本的條件、選欄與排序，準備匯出同一張單。」從預覽疑問、辨認顯示、定義跟進條件、排除錯字、匯出核對，到需求改變另存新單，是同一份清單逐步完成的流程；回指先前條件有接續用途。"
+    },
+    {
+      "id": "no_toc",
+      "yes": true,
+      "evidence": "[epd8]「把剛剛那份完整查詢，放進COPY的括號裡。」這是操作同一份查詢的動作。全稿未把後續章節排成講述順序；先略過啟動文字等句也在處理眼前輸出，並非宣告片子結構。"
+    },
+    {
+      "id": "chapters_link",
+      "yes": true,
+      "evidence": "[qgqv]「為了核對另一種格式，把Parquet讀回並按相同代號排序。」直接接住上一章另一格式是否同內容的疑問。其餘章首分別接原表回查、哪些包裹入選、錯字如何回覆，以及新需求能否直接交舊單，均有具體承接。"
+    },
+    {
+      "id": "open_loops",
+      "yes": true,
+      "evidence": "[rw48]「欄位修好了；剛剛只顯示少數列的回覆，會把存檔也截短嗎？」正文持續以省略位置、入選判斷、錯字回覆、存檔、逐筆比對及改需求留下問題。依文字估讀，各段有前向或待驗證事項維持牽引；未核實成片秒數。"
+    },
+    {
+      "id": "payoffs",
+      "yes": true,
+      "evidence": "[3dwp]「開場問的存檔完整性，現在有逐列答案：兩份內容一致。」明確點回隔章問題並增加逐列結果；原表是否仍在、少字母的回覆、預覽會否截短匯出，以及加入準時件的數量與種類，也各有後續答案。"
+    },
+    {
+      "id": "no_recap",
+      "yes": true,
+      "evidence": "[xqkd]「還記得剛剛四減三的那筆包裹嗎？」後文重提個案及原數字時有具體回呼；四百八十筆以剛才完整檔接回，準時件以還記得接回。查詢條件重現用於修正、匯出或改需求，未另開一段重講既有結果。"
+    },
+    {
+      "id": "chapters_are_events",
+      "yes": true,
+      "evidence": "[ak3j]「它先回覆找不到這個欄位，沒有產生查詢結果。」所在章名「少一個字母，查詢先停了下來」就是發生的事；其餘章名也都是預覽缺段、原表仍在、包裹入選、檔案重開核對、準時包裹加入等事件。"
+    },
+    {
+      "id": "outro_no_next",
+      "yes": true,
+      "evidence": "[v5pw]「訂閱，用產物讀懂AI工具。」片尾以交付結果、觀眾常交的資料清單問題與訂閱理由收束，沒有下一支影片、下一集或下一份檔案。"
+    },
+    {
+      "id": "opening_hooks",
+      "yes": true,
+      "evidence": "[zni4]「實際天數的欄位，等一下會少一個字母。」第一景之後另有[iaiy]原表是否只剩畫面紀錄、這個少字母時刻，以及[3zp6]另外存檔如何確認完整，共三個尚未揭曉的具體問題或時刻。"
+    },
+    {
+      "id": "one_thread",
+      "yes": true,
+      "evidence": "[ddtv]「開場那段預覽，如今有能對回規則的完整交付檔。」開場的具體難題是把配送表做成可重開的跟進清單。各章始終處理同一表、相應查詢及交付結果，結尾需求改變也由同一清單延伸。"
+    },
+    {
+      "id": "no_detour",
+      "yes": false,
+      "evidence": "[ujmc]「DuckDB的代理模式十月九日介紹，十月二十一日隨二點零正式提供。」此完整段落轉去交代發表史，未推進開場資料是否缺失或清單能否完整交付的問題。版本範圍有用途，但兩個發表日期在此沒有後續用途。"
+    }
+  ],
+  "listener_issues": [
+    {
+      "line_ids": [
+        "s9ca",
+        "i2fq",
+        "jngn"
+      ],
+      "severity": "medium",
+      "issue": "一般模式報錯之後，旁白直接說略過啟動文字並解析JSON，沒有先說眼前已換成代理模式的錯誤輸出。下一景圖卡才明示代理模式，聽眾會短暫弄不清是同一份錯誤訊息自行變成JSON，還是已切換另一種模式。",
+      "listener_question": "「剛剛還是一般模式，這行JSON是哪個模式吐出來的？」"
+    },
+    {
+      "line_ids": [
+        "h579",
+        "rxjg"
+      ],
+      "severity": "medium",
+      "issue": "前句說沿用原規則按路線分組，圖卡SQL也是FROM parcels；後句卻稱剛剛分組的完整檔。原表經篩選的結果與已匯出完整檔在這裡變成同一稱呼，會妨礙聽眾分清是在核對原表、檔案，還是報告摘要。",
+      "listener_question": "「你現在分組的是原表查詢結果，還是剛才讀回的交付檔？」"
+    },
+    {
+      "line_ids": [
+        "ewsi",
+        "g52d",
+        "epd8",
+        "tdtg",
+        "q6db",
+        "kabz",
+        "6e4u"
+      ],
+      "severity": "medium",
+      "issue": "完整COPY程式卡在條件、選欄、匯出位置及格式等多景連續重現。旁白大多有接續用途，但聽眾需反覆在同一大段程式裡找本景的新重點，從定條件到真的寫檔的推進感偏慢。此為估讀圖卡與旁白的負擔，未據此更改no_recap原始判斷。",
+      "listener_question": "「這一景到底新增了哪一步？現在已經寫出檔案，還是在解釋同一段查詢？」"
+    },
+    {
+      "line_ids": [
+        "ujmc"
+      ],
+      "severity": "low",
+      "issue": "在原表仍有資料的答覆後，插入兩個發表日期。時間線未再用於操作或核對，短暫中斷配送清單的具體任務。",
+      "listener_question": "「這兩個發表日期，對眼前那段省略或完整存檔有什麼作用？」"
+    }
+  ]
+}

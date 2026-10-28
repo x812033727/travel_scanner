@@ -1,0 +1,42 @@
+{
+  "kind": "actual_documentation_check_receipts",
+  "at": "2026-10-26T07:41:15.169893+00:00",
+  "native_pure_check": {
+    "actual_exit_code": 0,
+    "command": [
+      "node",
+      "/workspace/work/ai-tech-next/check-fifth-ko-text-docs.mjs"
+    ],
+    "log": "documentation-native-pure-check.log.txt",
+    "bytes": 452,
+    "sha256": "fd820afb5604f656d1e94d7b9cee5d53fcd9648d51a4f286c82a1d2c292f67ff"
+  },
+  "tasks_check": {
+    "actual_exit_code": 0,
+    "command": [
+      "node",
+      "tools/tasks.mjs",
+      "check"
+    ],
+    "validated_tasks": 2183,
+    "unrelated_existing_active_scope_warning_lines": 151,
+    "log": "documentation-tasks-check.log.txt",
+    "bytes": 27287,
+    "sha256": "8417fe7f174a24828210cf2107ad7bed512261f89840d9e454bd10476b960cd3"
+  },
+  "source_or_targets_edited": false,
+  "paid_media_API_stage_commit_push_actions": 0,
+  "actual_native_CLI_lint": {
+    "command": [
+      "node",
+      "tools/video/cli.mjs",
+      "lint",
+      "--slug",
+      "duckdb-agent-full-export"
+    ],
+    "actual_exit_code": 0,
+    "log": "documentation-native-cli-lint.log.txt",
+    "bytes": 482,
+    "sha256": "2836b923fce68164f60e50a1cb55df672024d0bf63e71620652ef8d86d177602"
+  }
+}

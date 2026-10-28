@@ -1,0 +1,440 @@
+{
+  "kind": "independent_actual_DuckDB_closeup_same_SCRIPT_append_readback_review",
+  "at": "2026-10-27T22:35:37.438532+00:00",
+  "verdict": "CLEAR_EIGHT_ACTUAL_CLOSEUP_ARTIFACTS_DELIVERED_PENDING_SCRIPT_ONLY",
+  "root_actual_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/ROOT-delivery-actual-exit.json",
+    "bytes": 896,
+    "sha256": "751a5f1befc5b33ae048860646ac1a7e7201d5c26ed99099b0bff1f5090eea27"
+  },
+  "actual_completion": {
+    "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/completion.json",
+    "bytes": 5932,
+    "sha256": "cdf6ed8192ed9bd15d13e653eac4386ad274a2c1023134b6812fe2aed2822137"
+  },
+  "helper": {
+    "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/append-closeup.mjs",
+    "bytes": 32170,
+    "sha256": "bdc58442cbb276368f95f1f5ef22ace6e293562f22fc4f13315929057688b2f9"
+  },
+  "profile": {
+    "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/actual-profile.json",
+    "bytes": 571781,
+    "sha256": "c67018913b76b553e5e5d6696ac407604211f7875f94ecb65069c4eb51239f30"
+  },
+  "inputs": {
+    "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/delivery-inputs.json",
+    "bytes": 2864,
+    "sha256": "b8090935dcb34c4a837b54d465e64b4546cacb5aee93e328c7e82d2b7ffe629e"
+  },
+  "dispatch": {
+    "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/ROOT-delivery-dispatch.json",
+    "bytes": 1565,
+    "sha256": "d65c4cc39a3f78c827b3b858dec95c66c025d5b7825ec8cf54389e05267019cb"
+  },
+  "actual_counts": {
+    "auth_reads": 1,
+    "project_GET": 4,
+    "file_PUT": 8,
+    "review_POST": 1,
+    "file_GET": 8,
+    "denied": 0
+  },
+  "all21_actual_HTTP_raw_status_hash_size_checked": [
+    {
+      "file": "HTTP-file_GET-1.json",
+      "kind": "file_GET",
+      "index": 1,
+      "status": 200,
+      "bytes": 26822,
+      "sha256": "700aab7539fc48c86cbb5505566e398a503960bf0c5111d2fd432340b728a9fb",
+      "content_type": "image/png",
+      "role": "evidence_human_footer_lossless_crop"
+    },
+    {
+      "file": "HTTP-file_GET-2.json",
+      "kind": "file_GET",
+      "index": 2,
+      "status": 200,
+      "bytes": 24541,
+      "sha256": "42f408248be398cccb1857f5ee9672b07cd09fc3f13e9f96164366e8da605235",
+      "content_type": "image/png",
+      "role": "evidence_agent_omitted_lossless_crop"
+    },
+    {
+      "file": "HTTP-file_GET-3.json",
+      "kind": "file_GET",
+      "index": 3,
+      "status": 200,
+      "bytes": 225840,
+      "sha256": "b5b995f6b01186b6d32487ff8b7976ecea5bb108942ce943bd7167bedc38f60b",
+      "content_type": "image/png",
+      "role": "evidence_human_footer_closeup"
+    },
+    {
+      "file": "HTTP-file_GET-4.json",
+      "kind": "file_GET",
+      "index": 4,
+      "status": 200,
+      "bytes": 255433,
+      "sha256": "ffa83152af20a79d9f6298be2360be53329075944895bd6967d475584a12d178",
+      "content_type": "image/png",
+      "role": "evidence_agent_omitted_closeup"
+    },
+    {
+      "file": "HTTP-file_GET-5.json",
+      "kind": "file_GET",
+      "index": 5,
+      "status": 200,
+      "bytes": 1493769,
+      "sha256": "5add535926e10443eebe3f66a6caa41f6bc75dd940fe38a405abe11d44d75f48",
+      "content_type": "image/png",
+      "role": "contact_sheet_closeup"
+    },
+    {
+      "file": "HTTP-file_GET-6.json",
+      "kind": "file_GET",
+      "index": 6,
+      "status": 200,
+      "bytes": 59912,
+      "sha256": "1193f92cef36974643dca5027fe07e5b6d0256c20943b24f365120da6a84d998",
+      "content_type": "application/json",
+      "role": "evidence_closeup_video_source"
+    },
+    {
+      "file": "HTTP-file_GET-7.json",
+      "kind": "file_GET",
+      "index": 7,
+      "status": 200,
+      "bytes": 55770,
+      "sha256": "c41a5455f78e03292e0d28d5800ee72d097ce18ff1ef407dbceae932b6df6bef",
+      "content_type": "application/json",
+      "role": "evidence_closeup_frames_manifest"
+    },
+    {
+      "file": "HTTP-file_GET-8.json",
+      "kind": "file_GET",
+      "index": 8,
+      "status": 200,
+      "bytes": 2538,
+      "sha256": "ca2cca3aac85d8dafc418f1df0aafb4e407afa07b629572c57601c808887b2d8",
+      "content_type": "text/plain; charset=utf-8",
+      "role": "evidence_closeup_report"
+    },
+    {
+      "file": "HTTP-file_PUT-1.json",
+      "kind": "file_PUT",
+      "index": 1,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_human_footer_lossless_crop"
+    },
+    {
+      "file": "HTTP-file_PUT-2.json",
+      "kind": "file_PUT",
+      "index": 2,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_agent_omitted_lossless_crop"
+    },
+    {
+      "file": "HTTP-file_PUT-3.json",
+      "kind": "file_PUT",
+      "index": 3,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_human_footer_closeup"
+    },
+    {
+      "file": "HTTP-file_PUT-4.json",
+      "kind": "file_PUT",
+      "index": 4,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_agent_omitted_closeup"
+    },
+    {
+      "file": "HTTP-file_PUT-5.json",
+      "kind": "file_PUT",
+      "index": 5,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "contact_sheet_closeup"
+    },
+    {
+      "file": "HTTP-file_PUT-6.json",
+      "kind": "file_PUT",
+      "index": 6,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_closeup_video_source"
+    },
+    {
+      "file": "HTTP-file_PUT-7.json",
+      "kind": "file_PUT",
+      "index": 7,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_closeup_frames_manifest"
+    },
+    {
+      "file": "HTTP-file_PUT-8.json",
+      "kind": "file_PUT",
+      "index": 8,
+      "status": 200,
+      "bytes": 32,
+      "sha256": "7eb82bb5ed7c724a5f4cd80cd3554d37c2e631dbf24ada5bca2049d733076251",
+      "content_type": "application/json",
+      "role": "evidence_closeup_report"
+    },
+    {
+      "file": "HTTP-project_GET-1.json",
+      "kind": "project_GET",
+      "index": 1,
+      "status": 200,
+      "bytes": 76270,
+      "sha256": "632a1b3f383a043047c8a9ad2b2bcd5531852751a613eac64ff4594e7d398621",
+      "content_type": "application/json",
+      "role": null
+    },
+    {
+      "file": "HTTP-project_GET-2.json",
+      "kind": "project_GET",
+      "index": 2,
+      "status": 200,
+      "bytes": 76270,
+      "sha256": "632a1b3f383a043047c8a9ad2b2bcd5531852751a613eac64ff4594e7d398621",
+      "content_type": "application/json",
+      "role": null
+    },
+    {
+      "file": "HTTP-project_GET-3.json",
+      "kind": "project_GET",
+      "index": 3,
+      "status": 200,
+      "bytes": 77547,
+      "sha256": "55954767c11448f4f7af2151afa514a6887f453db49a73c951615d430fe166a2",
+      "content_type": "application/json",
+      "role": null
+    },
+    {
+      "file": "HTTP-project_GET-4.json",
+      "kind": "project_GET",
+      "index": 4,
+      "status": 200,
+      "bytes": 77547,
+      "sha256": "55954767c11448f4f7af2151afa514a6887f453db49a73c951615d430fe166a2",
+      "content_type": "application/json",
+      "role": null
+    },
+    {
+      "file": "HTTP-review_POST-1.json",
+      "kind": "review_POST",
+      "index": 1,
+      "status": 201,
+      "bytes": 31183,
+      "sha256": "fc1604fbe2c9ca213f5a463d8a2d1dd2802d4a2c19a0866c4814d0c898726ed2",
+      "content_type": "application/json",
+      "role": null
+    }
+  ],
+  "all8_upload_ACKs_complete_received0": true,
+  "outbound_compact_ReviewIn_sha256": "31807d0da1d7ce449a1bee794391dc43283b0e3054f04c351d66cbff4292ceec",
+  "exact_outbound_equals_prepared_profile_and_actual_POST_response": true,
+  "review": {
+    "id": "3e9ffc93-c0c3-4c08-8b30-61a93e3bc0cb",
+    "gate": "script",
+    "status": "pending",
+    "script_sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa",
+    "before_refs": 32,
+    "after_refs": 40,
+    "old32_fullobjects_order_metadata_preserved": true,
+    "summary_payload_choice_note_createdat_and_other_fields_exact": true
+  },
+  "whole_project_preservation": {
+    "before_equals_fresh_baseline": true,
+    "prePOST_equals_before": true,
+    "after_diff_only_same_review_files_and_sync": true,
+    "postbinary_equals_after": true,
+    "all_other_reviews_histories_choices_languages_qualities_exact": true,
+    "no_atomic_CAS_limitation": "Observed snapshots match; normal API has no atomic compare-and-swap, so this does not eliminate every race."
+  },
+  "eight_full_binary_readbacks": [
+    {
+      "role": "evidence_human_footer_lossless_crop",
+      "HTTP": 200,
+      "bytes": 26822,
+      "sha256": "700aab7539fc48c86cbb5505566e398a503960bf0c5111d2fd432340b728a9fb",
+      "content_type": "image/png",
+      "response_content_type": "image/png",
+      "actual_full_raw_saved_and_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/readback/evidence_human_footer_lossless_crop.png",
+        "bytes": 26822,
+        "sha256": "700aab7539fc48c86cbb5505566e398a503960bf0c5111d2fd432340b728a9fb"
+      }
+    },
+    {
+      "role": "evidence_agent_omitted_lossless_crop",
+      "HTTP": 200,
+      "bytes": 24541,
+      "sha256": "42f408248be398cccb1857f5ee9672b07cd09fc3f13e9f96164366e8da605235",
+      "content_type": "image/png",
+      "response_content_type": "image/png",
+      "actual_full_raw_saved_and_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/readback/evidence_agent_omitted_lossless_crop.png",
+        "bytes": 24541,
+        "sha256": "42f408248be398cccb1857f5ee9672b07cd09fc3f13e9f96164366e8da605235"
+      }
+    },
+    {
+      "role": "evidence_human_footer_closeup",
+      "HTTP": 200,
+      "bytes": 225840,
+      "sha256": "b5b995f6b01186b6d32487ff8b7976ecea5bb108942ce943bd7167bedc38f60b",
+      "content_type": "image/png",
+      "response_content_type": "image/png",
+      "actual_full_raw_saved_and_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/readback/evidence_human_footer_closeup.png",
+        "bytes": 225840,
+        "sha256": "b5b995f6b01186b6d32487ff8b7976ecea5bb108942ce943bd7167bedc38f60b"
+      }
+    },
+    {
+      "role": "evidence_agent_omitted_closeup",
+      "HTTP": 200,
+      "bytes": 255433,
+      "sha256": "ffa83152af20a79d9f6298be2360be53329075944895bd6967d475584a12d178",
+      "content_type": "image/png",
+      "response_content_type": "image/png",
+      "actual_full_raw_saved_and_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/readback/evidence_agent_omitted_closeup.png",
+        "bytes": 255433,
+        "sha256": "ffa83152af20a79d9f6298be2360be53329075944895bd6967d475584a12d178"
+      }
+    },
+    {
+      "role": "contact_sheet_closeup",
+      "HTTP": 200,
+      "bytes": 1493769,
+      "sha256": "5add535926e10443eebe3f66a6caa41f6bc75dd940fe38a405abe11d44d75f48",
+      "content_type": "image/png",
+      "response_content_type": "image/png",
+      "actual_full_raw_saved_and_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/readback/contact_sheet_closeup.png",
+        "bytes": 1493769,
+        "sha256": "5add535926e10443eebe3f66a6caa41f6bc75dd940fe38a405abe11d44d75f48"
+      }
+    },
+    {
+      "role": "evidence_closeup_video_source",
+      "HTTP": 200,
+      "bytes": 59912,
+      "sha256": "1193f92cef36974643dca5027fe07e5b6d0256c20943b24f365120da6a84d998",
+      "content_type": "application/json",
+      "response_content_type": "application/json",
+      "actual_full_raw_saved_and_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/readback/evidence_closeup_video_source.json",
+        "bytes": 59912,
+        "sha256": "1193f92cef36974643dca5027fe07e5b6d0256c20943b24f365120da6a84d998"
+      }
+    },
+    {
+      "role": "evidence_closeup_frames_manifest",
+      "HTTP": 200,
+      "bytes": 55770,
+      "sha256": "c41a5455f78e03292e0d28d5800ee72d097ce18ff1ef407dbceae932b6df6bef",
+      "content_type": "application/json",
+      "response_content_type": "application/json",
+      "actual_full_raw_saved_and_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/readback/evidence_closeup_frames_manifest.json",
+        "bytes": 55770,
+        "sha256": "c41a5455f78e03292e0d28d5800ee72d097ce18ff1ef407dbceae932b6df6bef"
+      }
+    },
+    {
+      "role": "evidence_closeup_report",
+      "HTTP": 200,
+      "bytes": 2538,
+      "sha256": "ca2cca3aac85d8dafc418f1df0aafb4e407afa07b629572c57601c808887b2d8",
+      "content_type": "text/plain",
+      "response_content_type": "text/plain; charset=utf-8",
+      "actual_full_raw_saved_and_local_bytes_equal": true,
+      "readback": {
+        "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/delivery-prep/run/readback/evidence_closeup_report.txt",
+        "bytes": 2538,
+        "sha256": "ca2cca3aac85d8dafc418f1df0aafb4e407afa07b629572c57601c808887b2d8"
+      }
+    }
+  ],
+  "all_E896_W1004_fullfileSet_hashes_preserved_during_append": true,
+  "source_after": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/video.json",
+    "bytes": 59912,
+    "sha256": "1193f92cef36974643dca5027fe07e5b6d0256c20943b24f365120da6a84d998"
+  },
+  "script_after": {
+    "file": "/workspace/work/travel-scanner-duckdb/docs/videos/duckdb-agent-full-export/script.md",
+    "bytes": 15260,
+    "sha256": "b9170870cb7cf5741ca46671553dd0a9e526173665184cb70de5a9a7ef7220aa"
+  },
+  "current_manifest": {
+    "file": "/workspace/work/videos/duckdb-agent-full-export/frames/manifest.json",
+    "bytes": 55770,
+    "sha256": "c41a5455f78e03292e0d28d5800ee72d097ce18ff1ef407dbceae932b6df6bef"
+  },
+  "current_independent_pixel_and_English480_review": {
+    "file": "/workspace/work/ai-tech-next/duckdb-closeup-20261027/peer/actual-closeup-review.json",
+    "bytes": 8997,
+    "sha256": "abfbee3a10e7c6440c512024bc7213000d542f6449aeb76e93addeac2af7709e"
+  },
+  "native_lease_absent_actualPID_gone": true,
+  "held4_exact": [
+    {
+      "file": "/workspace/work/ai-tech-next/forty-asr-coordination.json",
+      "bytes": 1104,
+      "sha256": "342d7b1aafbf751f0eddc60531a7fb4c42a2a4be74f8a03da777c179e1b74c9d"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/series-tts-service-hold.json",
+      "bytes": 5127,
+      "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384"
+    },
+    {
+      "file": "/workspace/work/videos/kimi-k31-3d-delivery/audio/speech-journal/dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7.json",
+      "bytes": 422,
+      "sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f"
+    },
+    {
+      "file": "/workspace/work/ai-tech-next/.global-check-audio-slot/LEASE",
+      "bytes": 292,
+      "sha256": "18b629d2f1ab8243977bc0bb0ce5a0cfdaab6306c72e46fad75678e66dc85764"
+    }
+  ],
+  "source_script_all111_all8_oldfalse_QA_attempts_unknowns_and_original_limits_preserved": true,
+  "scope_limit": "Exact backend binary delivery and project preservation only. Earlier independently verified lossless pixels and targeted original-English480 readability remain bound; no wholefilm/audio/CC/M4A/ASR/fit/meter/branding/languagebatch/serverapproval.",
+  "server_approval": false,
+  "fullfilm_or_audio_approval": false,
+  "foreign_checked_M4A": 0,
+  "peer_network_auth_media_ASR_TTS_canonical_task_Git_mutations": 0
+}

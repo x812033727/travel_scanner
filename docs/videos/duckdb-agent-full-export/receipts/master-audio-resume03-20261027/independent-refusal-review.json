@@ -1,0 +1,186 @@
+{
+  "kind": "independent_actual_duckdb_resume03_known_refusal_preservation_review",
+  "at": "2026-10-27T16:26:42.056145+00:00",
+  "reviewer": "/root/resume03_static",
+  "verdict": "CLEAR_FAILURE_EVIDENCE_ONLY",
+  "scope": "Physical completed refusal audit only; not synthesis, current-audio listening, QA, invoice, zerocharge or server approval.",
+  "completion": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/completion.json",
+    "bytes": 29193,
+    "sha256": "6d6c24dcb27c0900367633f06ea856a2ae6a5e38e8be5c13d8139cbdaa244b99"
+  },
+  "root_actual_tool_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/ROOT-resume03-actual-exit.json",
+    "bytes": 541,
+    "sha256": "c4d576ae5eadc5f562affcf4295fecdc9dbd612de2b21e31923df808fcdcc6f9"
+  },
+  "events": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/http-events.jsonl",
+    "bytes": 8725,
+    "sha256": "497ad1b456bc672cc2540f84959cbca451ba998327b0a3337b098fab17ab5da3"
+  },
+  "baseline": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/ROOT-before-inputs.json",
+    "bytes": 317230,
+    "sha256": "81a978cc1ed60d32e2201a0fbd5e8355aefb0ffcd0ffbaaffa9884fd9cb2a216"
+  },
+  "helper": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/prepare/resume-once.mjs",
+    "bytes": 23792,
+    "sha256": "3f82378a5be11afac3cdad6fdb51137c055c59766d475b114ae08b786011b720"
+  },
+  "plan": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/prepare/resume-plan.json",
+    "bytes": 202840,
+    "sha256": "9525df5f6fc6533c1f0f534d57e5cab3b78dc749483de56109a671ffb256dd07"
+  },
+  "actual_tool_session_id": 10397,
+  "actual_tool_exit_code": 4,
+  "actual_native_exit": 4,
+  "actual_pid": 1005,
+  "started_at": "2026-10-27T16:24:23.932Z",
+  "completed_at": "2026-10-27T16:25:20.126Z",
+  "counts": {
+    "status_GET": 1,
+    "speech_POST": 5,
+    "unique_body_dispatches": 1,
+    "successful_HTTP": 0,
+    "logical_successes": 0,
+    "HTTP429_responses": 5,
+    "denied": 0,
+    "returned_billable": 0,
+    "missing_billable_headers": 0,
+    "native_waits": 4,
+    "retry_waits_aborted": 0
+  },
+  "cumulative_initial_processes": 3,
+  "cumulative_speech_POST": 11,
+  "original_retake_round": 0,
+  "rewrite_rounds_used": 0,
+  "raw_WAVs": 0,
+  "ASR": 0,
+  "foreign_checked_M4A": 0,
+  "listening_completed": false,
+  "E_protected_files": 844,
+  "W_protected_files": 948,
+  "all_file_sets_and_bytes_match_baseline_in_two_physical_passes": true,
+  "held_records_exact": 3,
+  "prior_actual_receipts_exact": 10,
+  "native_MJS_pins_exact": 329,
+  "all111_full_intended_spoken_body_key_parts_equal_first_plan": true,
+  "dispatched_line_id": "dg2i",
+  "intended_literal": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+  "spoken_text": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+  "body_sha256": "f0f1e2466673301518f74eebc86d7f4b7bbc4bb354a096205a3e8257ac667075",
+  "logical_planned_native_characters": 23,
+  "physical_submitted_characters": 115,
+  "not_an_invoice": true,
+  "actual_native_wait_elapsed_ms": [
+    10306,
+    10124,
+    10005,
+    10024
+  ],
+  "receipts": [
+    {
+      "attempt": 1,
+      "sent": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/sent/dg2i.attempt-1.json",
+        "bytes": 853,
+        "sha256": "bd76a2f47335f1b177238e49ff09718955e9fa81ea292b0d2d7f4add956d5b3e"
+      },
+      "response": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/responses/dg2i.attempt-1.private.bin",
+        "bytes": 278,
+        "sha256": "aceab4af1cd7d2a6156ef76f4da1bdf2d57a0ff37e39064e65d3b8e700346d1e"
+      },
+      "request_id": "17fcdb36-6c33-425f-a078-e329fa22e260",
+      "waiting": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/waiting/dg2i.attempt-1.json",
+        "bytes": 1021,
+        "sha256": "193518faaf427fcd1ba5a213b87aa60e61397f6f1589531f8ad9ec5e69738b49"
+      }
+    },
+    {
+      "attempt": 2,
+      "sent": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/sent/dg2i.attempt-2.json",
+        "bytes": 853,
+        "sha256": "4d65c5281b07fd12ab32a09d066ffd214be505984e3a3c70564bbe7d32d8a0b6"
+      },
+      "response": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/responses/dg2i.attempt-2.private.bin",
+        "bytes": 278,
+        "sha256": "e4ea0427179d4ed91868ae68e0d7b38ed509ed4f128b7a1e72912c1df3dfb3f8"
+      },
+      "request_id": "17a9dfb7-2832-42e6-a776-11df40b7ec70",
+      "waiting": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/waiting/dg2i.attempt-2.json",
+        "bytes": 1021,
+        "sha256": "c191b07b7f5efe816e0ae27df4ce90f69dba0d7efb7e7c060dd4ab787aeeb147"
+      }
+    },
+    {
+      "attempt": 3,
+      "sent": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/sent/dg2i.attempt-3.json",
+        "bytes": 853,
+        "sha256": "51cfc144c8e68c5c05c841999989bd05a647907b5fa55df30f259bba2bdea86a"
+      },
+      "response": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/responses/dg2i.attempt-3.private.bin",
+        "bytes": 278,
+        "sha256": "cf386046f777e7b12d20b751f16b479c6e229a43c702532cabb09e2a74b88aba"
+      },
+      "request_id": "7d7a6bce-5946-4e1e-b58c-e2b4c21756b9",
+      "waiting": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/waiting/dg2i.attempt-3.json",
+        "bytes": 1021,
+        "sha256": "02f222a6a9a068e8c46cb1985a349119199f8a97aac24e0dee55d9f45211a8a3"
+      }
+    },
+    {
+      "attempt": 4,
+      "sent": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/sent/dg2i.attempt-4.json",
+        "bytes": 853,
+        "sha256": "bd1902f09ac76b21a172b7f3e637b81e5dc4fa2d3d5ec87fe3fc4810af3eddf2"
+      },
+      "response": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/responses/dg2i.attempt-4.private.bin",
+        "bytes": 278,
+        "sha256": "8f648689b79fbb5dcb78a2ab311ee6eb22a8d61fd97a64316ac7d3df073c38e9"
+      },
+      "request_id": "a451277f-46f9-44a3-9f8b-1a14ba7c61a3",
+      "waiting": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/waiting/dg2i.attempt-4.json",
+        "bytes": 1021,
+        "sha256": "07feab780ec800d2ff114b3531fc1d8b26a435c8069b549f776c2fdcd2dda947"
+      }
+    },
+    {
+      "attempt": 5,
+      "sent": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/sent/dg2i.attempt-5.json",
+        "bytes": 853,
+        "sha256": "9b997304512028e6aafb1597ac6775fd5fb61606e6126c4c0c159b4631803ad1"
+      },
+      "response": {
+        "file": "/workspace/work/ai-tech-next/duckdb-master-resume-03-20261027/resume-03/responses/dg2i.attempt-5.private.bin",
+        "bytes": 278,
+        "sha256": "e22334aa8705abc21615f6c770ca57cedef4efca2eefe543485d2c3952d90239"
+      },
+      "request_id": "f8d09cdb-0da9-41dd-b759-43c5ca02568e"
+    }
+  ],
+  "current_speech_journal_empty": true,
+  "native_lease_released": true,
+  "native_pid_absent": true,
+  "new_producer_or_ASR_processes_found": [],
+  "native_known_refusal_cleanup_not_manual_forget": true,
+  "unknown_records_and_quality_flags_unchanged": true,
+  "audit_auth": 0,
+  "audit_network": 0,
+  "audit_paid": 0,
+  "audit_producer_invocations": 0
+}

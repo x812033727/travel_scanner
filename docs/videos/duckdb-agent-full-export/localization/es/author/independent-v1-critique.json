@@ -1,0 +1,65 @@
+{
+  "review_type": "Independent semantic and neutral Latin-American Spanish critique",
+  "reviewed_draft_sha256": "aa4836af4009dfb6423404c3f13451109438be742d1d13688f43c16e5d784cc3",
+  "reviewed_pair_map_sha256": "142ace5023df18a5178c3727d732bd0798c227676fea26b075898c6dc9fbd230",
+  "canonical_source_sha256": "40eb4df54489ed6a8c82012ff028ed5608390fec2d614a75093c1426f6ae58aa",
+  "claims_sha256": "cc38eeb8634eaa45c2a46c981bb1f7b0c9fca034158647437c1de0de8fd79191",
+  "full_read": {
+    "source_target_pairs": 111,
+    "native_lines": 111,
+    "chapters": 6,
+    "metadata": [
+      "title",
+      "full_description",
+      "tags",
+      "thumbnail"
+    ],
+    "native_glossary_and_boundaries": true,
+    "affirmation": "Read every source and target line and all listed metadata. Canonical source lines exactly match all native source lines."
+  },
+  "findings": [
+    {
+      "id": "metadata.title",
+      "issue": "The source title explicitly names the complete follow-up list. Dropping de seguimiento leaves the headline open to being read as the complete input table rather than the complete qualified list.",
+      "current": "¿Solo ves 40 filas? Exporta la lista completa con DuckDB 2.0",
+      "suggested": "¿Solo ves 40 filas? Exporta la lista completa de seguimiento con DuckDB 2.0"
+    },
+    {
+      "id": "ufbq",
+      "issue": "Plazo denotes a promised or allowed deadline, whereas this line explains a missing completed actual duration. Plazo de entrega completado is also unnatural Spanish. Keep the field blank and tie it to the unfinished delivery.",
+      "current": "Los días reales de los que siguen en tránsito están vacíos: todavía no hay un plazo de entrega completado.",
+      "suggested": "El campo de días reales está vacío en los paquetes en tránsito: aún no se ha completado la entrega."
+    },
+    {
+      "id": "chapter:read-parquet-back",
+      "issue": "The source chapter explicitly says the reopened file is checked against the original table. The target keeps the row-by-row check but omits that reference point.",
+      "current": "Reabrir el archivo y cotejarlo registro por registro",
+      "suggested": "Reabrir el archivo y cotejar cada registro con la tabla original"
+    },
+    {
+      "id": "exact-equality-labels",
+      "issue": "Use justo a tiempo consistently for the records added by equality. Puntuales can denote deliveries by the deadline, including early deliveries, whereas this variant adds only actual_days = promised_days to the late records. The existing explicit justo a tiempo clauses and >= explanation are correct.",
+      "replacements": [
+        {
+          "id": "ab37",
+          "current": "No. Los paquetes puntuales que antes excluimos ahora también deben aparecer.",
+          "suggested": "No. Los paquetes que llegaron justo a tiempo y que antes excluimos ahora también deben aparecer."
+        },
+        {
+          "id": "b5i9",
+          "current": "Esos registros añadidos llegaron justo a tiempo; el archivo completo debe llamarse lista de entregas puntuales o retrasadas.",
+          "suggested": "Esos registros añadidos llegaron justo a tiempo; el archivo completo debe llamarse lista de entregas justo a tiempo o con retraso."
+        },
+        {
+          "id": "chapter:new-requirement-consequence",
+          "current": "Incluir entregas puntuales cambia lo que se pide",
+          "suggested": "Incluir entregas justo a tiempo cambia lo que se pide"
+        }
+      ]
+    }
+  ],
+  "preserved_meaning_checks": "The reviewed text preserves the 2026-10-25 research/run date; Oct 9 introduction and Oct 21 release; 40 shown in total of 1200 with 1160 omitted; separate 480 qualified result; 960 delivered and 240 in transit; blank not zero; delivered AND actual > promised; 4-3=1 and excluded 3-3=0; R2/R3 each 240; the changed >= variant of 720 including 240 zero-late records as a different request; intentional author typo and final-letter repair; startup text plus one valid JSON line; no bad-JSON, real consumer incident or AI-error claim; same-version mode comparison; old CSV/SQL/COPY/Parquet capabilities; no unsupported benchmark; fictional data; CC0-1.0/MIT; both exact 410633ab public URLs.",
+  "no_other_semantic_or_regional_fix_requested": true,
+  "timing_assessed": false,
+  "scope": "No repo, API, authentication, network, media or Git changes. No draft/native/lease modifications. Only this new critique report was written."
+}

@@ -1,0 +1,74 @@
+from pathlib import Path
+import json,datetime,hashlib,re
+B=Path('/workspace/work/ai-tech-next/fifth-vi-translation');v1=json.loads((B/'vi-targets.v1.json').read_text());final=json.loads((B/'vi-targets.final.json').read_text());m=json.loads((B/'source-target-complete-111.final.json').read_text());sheet=json.loads((B/'vi.draft.reviewed.todo.json').read_text());empty=json.loads((B/'vi.native-empty.todo.json').read_text())
+assert len(m['source_target_pairs'])==len(sheet['lines'])==111
+expected=['c7uh','4cr9','g52d','nsc3','mavj','ezfg','ab37','b5i9'];changed=[id for id in v1['lines'] if v1['lines'][id]!=final['lines'][id]];assert sorted(changed)==sorted(expected)
+assert final['title']==v1['title'] and final['tags']==v1['tags'] and final['thumbnail']==v1['thumbnail']
+assert [k for k in v1['chapters'] if v1['chapters'][k]!=final['chapters'][k]]==['new-requirement-consequence']
+notes={
+'dg2i':'Full2026-10-25 date and samecomputer firsthand scope.',
+'x6vr':'40totalhead+tail rows, not40each and notmissingstoreddata.',
+'a73b':'Originaltable still1200; deliveredfile musttieback.',
+'8ex8':'Originalfictionalexercise, notrealcustomerstatistics.',
+'ujmc':'Oct9introduction andOct21formal2.0release distinct.',
+'pskv':'NoincludedAImodel; noaccuracy orusage-costmeasurement.',
+'9gdj':'Temporarydatabase; personalinitfile skipped.',
+'xd25':'Onlymodeparameter changes; sameinput/query.',
+'zxhz':'Nofew-recordcondition introduced.',
+'h4gg':'Normalmodealreadyhas rowcount/displaycount.',
+'4cr9':'Clarifiedexactrowcounts, notbytesorlostdata.',
+'uj2p':'1160omittedfromdisplay; source1200-40.',
+'u5mp':'Negative preserved: notquery/storage dataloss.',
+'v9hh':'Conjunction deliveredANDactualdays>promiseddays.',
+'fpcm':'In-transitremaininsource, excludedfromthispurpose.',
+'abty':'Integerdays compareasdays.',
+'6i82':'960delivered+240intransit.',
+'ufbq':'Missingactualdurationbecause deliverynotfinished.',
+'jbme':'Delivered, promised3actual4.',
+'wg3d':'4-3=1daylate.',
+'e77f':'Deliveredconditionexcludestransit; missingnot0.',
+'bhcv':'Deriveddifferencecolumn doesnotrewriteoriginaldays.',
+'evdb':'AscendingsameIDorder reusedwhenreopening.',
+'6r94':'3-3=0.',
+'s3h7':'Strictgreaterthan excludesexactequality.',
+'ak3j':'Missingcolumnerror; noqueryresultproduced.',
+'jsui':'Literalactual_days versusactual_day missingfinals.',
+'xj3j':'Intentionalauthortypo, notAIerror.',
+'i2fq':'Startuptextskipped; onevalidJSONline parsed.',
+'yxh7':'Mixedtextstreamnotasingleobject.',
+'cjm4':'Authorchecks candidateagainstoriginalschema.',
+'q6db':'No preview-rowlimitaddedtoexportquery.',
+'ubxv':'480qualifiedcompletefollowup, not1200source.',
+'ag8z':'Previewtruncationnotcarriedintothisexport.',
+'385u':'Newmodechangesreply, notfindmorelateparcels.',
+'wznc':'Headtailspotchecknotcompleteintermediaterecordaudit.',
+'jd24':'Summaryseparate; fullqualifiedlist notreplaced.',
+'rxjg':'R2andR3each240 underoldpredicate.',
+'mavj':'480qualifiedrecordscountedbyroutesummary; nofalseper-ID listingclaim.',
+'dm84':'IDs,values,order comparednotonlycounts.',
+'ezfg':'Separateauthoredprogram computesexpectedIDsfromsource; noAItestclaim.',
+'g738':'Conditionalrequest includesactualdays=promiseddays; oldverifieddelaylistcannotbeusedunchanged.',
+'ab37':'Explicit equalitypopulation onceexcludednowincluded.',
+'7th9':'Change>to>=, equalrecordsnowpass.',
+'98xj':'Newdestinationpreservesoldfile.',
+'mkfw':'720total includes240zero-late; not720late.',
+'b5i9':'Newgroupactualdays=promise; wholefile calledexact-on-time-or-late.',
+'ptfc':'Distinctrequirements, twolistcannotsubstitute.',
+'ha7h':'Keepbothnamesandcorrespondingqueries.',
+'v5pw':'ChannelCTAtoolunderstandingthroughoutputs, notnewproductclaim.'
+}
+rows=[]
+for i,(p,l,native) in enumerate(zip(m['source_target_pairs'],sheet['lines'],empty['lines']),1):
+ assert p['id']==l['id']==native['id'] and p['source']==l['source']==native['source']
+ assert p['text']==l['text']==final['lines'][p['id']]
+ a=dict(l);b=dict(native);a.pop('text');b.pop('text');assert a==b
+ rows.append({'index':i,'id':p['id'],'source':p['source'],'target':p['text'],'author_semantic_verdict':'PASS_TEXT_ONLY','review_note':notes.get(p['id'],'Fullsource meaning, action, subject and any negation retained in natural Vietnamese; no extra result claimed.'),'source_context_unchanged':True,'original_todo_preserved':l['todo'],'audio_timing_available':False})
+assert len(rows)==111 and len({x['id'] for x in rows})==111
+for u in re.findall(r'https://\S+',sheet['description']['source']):assert u in sheet['description']['text']
+assert len(re.findall(r'^VI: ',(B/'source-target-complete-111.final.md').read_text(),re.M))==111
+assert not re.search(r'^ES: |^PT: ',(B/'source-target-complete-111.final.md').read_text(),re.M)
+o={'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'kind':'VI author third full111 semantic pass, not actualaudioacceptance','all111_pairs_reread':True,'all_sixchapters_fullmetadata_read':True,'per_line':rows,'v1_to_final_changed_line_ids':changed,'unchanged_other_lines':103,'changed_chapter_scenes':['new-requirement-consequence'],'metadata_changes':['description natural tokenusage phrasing and explicit nonperformancebenchmark limitation'],'title_tags_thumbnail_unchanged':True,'all_source_scene_id_todo_context_preserved':True,'all_numbers_dates_predicates_negations_and_two_public_URLs_preserved':True,'native_constraints_and_actual_sideeffect_proofs_separate':True,'soft_length_advisories_not_fit_budget':True,'no_actual_CC_SRT_VTT_M4A_ASR_fit_meter_backend_or_adoption_claim':True,'root_independent_full_review_still_required':True}
+(B/'author-pass3-semantic-ledger.json').write_text(json.dumps(o,ensure_ascii=False,indent=2)+'\n')
+summary={'at':datetime.datetime.now(datetime.timezone.utc).isoformat(),'author_own_fullsemantic_passes':3,'pass1':'Complete111source→VI draft,6/fullmetadata','pass2':'All111read, sevenlineclarifications andone descriptionfield','pass3':'All111final+6/fullmetadata reread; explicitnonperformance scope clarification supportedclaims c14/c23','own_pass2_correction_operations':8,'independent_reader_V1_line_verdicts':{'PASS':107,'REVISE_WORDING':4},'independent_reader_adopted_operations':5,'own_pass3_description_operation':1,'total_actual_correction_operations':14,'distinct_changed_fields':10,'distinct_changed_lines':8,'changed_chapters':1,'changed_description_fields':1,'no_fit_retake_shorten_or_reword_rounds_used_or_claimed':True,'native_pure_final_exit':0,'independent_final_reread_pending':True}
+(B/'author-three-pass-review.json').write_text(json.dumps(summary,ensure_ascii=False,indent=2)+'\n')
+print('authorpass3complete',len(rows),'changedlines',len(changed))

@@ -1,0 +1,118 @@
+{
+  "kind": "independent_actual_failed_DuckDB_initial_TTS_physical_review",
+  "reviewed_at": "2026-10-27T14:44:20.658460+00:00",
+  "actual_review_result": "CLEAR_for_truthful_failed_attempt_preservation_only",
+  "actual_production_result": "external_failure_no_generated_audio",
+  "actual_native_exit": 4,
+  "actual_wrapper_tool_exit": 4,
+  "root_observed_exit": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-audio-20261027/ROOT-initial-TTS-actual-exit.json",
+    "bytes": 700,
+    "sha256": "764504696ecd60c8d414f34d38dc783d8af2ba1bb0f423e200603b848c17f1e2"
+  },
+  "actual_completion": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-audio-20261027/initial-tts/completion.json",
+    "bytes": 1667,
+    "sha256": "ca96d712e4a7e7fba688d85acf0d58734551ffa0686827d3b7e5a01e56ec157b"
+  },
+  "actual_process": {
+    "PID": 381994,
+    "tool_session": 16864,
+    "started_at": "2026-10-27T14:37:21.434Z",
+    "completed_at": "2026-10-27T14:37:26.315Z"
+  },
+  "actual_transport": {
+    "status_GET": 1,
+    "speech_POST": 1,
+    "successful_speech_HTTP": 0,
+    "HTTP_status": 429,
+    "error_code": "video_speech_upstream_busy",
+    "retry_after_seconds": 10,
+    "request_id": "022951e6-33be-4a22-ae28-a0d6e65a3b8b",
+    "second_HTTP_dispatches": 0,
+    "actual_error_response": {
+      "file": "/workspace/work/ai-tech-next/duckdb-master-audio-20261027/initial-tts/response-1.private.bin",
+      "bytes": 278,
+      "sha256": "eeefa99162b4af7f2ebecc531c942b817e8d3467073efc918c1df8114a51f0e1"
+    }
+  },
+  "actual_first_request": {
+    "id": "dg2i",
+    "literal_intended": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+    "processed_spoken": "二〇二六年十月二十五日，我在這台電腦查配送表。",
+    "parts": [
+      {
+        "text": "二〇二六年十月二十五日，我在這台電腦查配送表。"
+      }
+    ],
+    "body_sha256": "f0f1e2466673301518f74eebc86d7f4b7bbc4bb354a096205a3e8257ac667075",
+    "planned_native_billable_character_bound": 23,
+    "real_native_sent_copy": {
+      "file": "/workspace/work/ai-tech-next/duckdb-master-audio-20261027/initial-tts/sent/f0f1e2466673301518f74eebc86d7f4b7bbc4bb354a096205a3e8257ac667075.json",
+      "bytes": 855,
+      "sha256": "1feb0f428aa64b43ad5ccd743db136496ab8c8c79e7d1356c3794533b79da3d7"
+    }
+  },
+  "protected": {
+    "baseline": {
+      "file": "/workspace/work/ai-tech-next/duckdb-master-audio-20261027/ROOT-before-inputs.json",
+      "bytes": 313305,
+      "sha256": "aff9bac3825798e35a75745fd17dc1391b9b887925824cfeab816558c6acf781"
+    },
+    "W_files_byte_exact": 948,
+    "EP_files_byte_exact": 835,
+    "W_file_set_exact": true,
+    "EP_file_set_exact": true,
+    "state_byte_exact": true,
+    "held_and_unknown_records_byte_exact": [
+      {
+        "file": "/workspace/work/ai-tech-next/forty-asr-coordination.json",
+        "bytes": 1104,
+        "sha256": "342d7b1aafbf751f0eddc60531a7fb4c42a2a4be74f8a03da777c179e1b74c9d"
+      },
+      {
+        "file": "/workspace/work/ai-tech-next/series-tts-service-hold.json",
+        "bytes": 5127,
+        "sha256": "ad19fab46b2044ba5ea34ffd14a2d980d195f363007e456cdb3a02694661c384"
+      },
+      {
+        "file": "/workspace/work/videos/kimi-k31-3d-delivery/audio/speech-journal/dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7.json",
+        "bytes": 422,
+        "sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f"
+      }
+    ],
+    "new_raw_WAVs": 0,
+    "narration_or_timeline_created": false,
+    "native_speech_journal_files": 0,
+    "native_lease_released": true,
+    "native_and_producer_sources_byte_exact_to_real_profile": true,
+    "token_patterns_in_actual_run_artifacts": 0
+  },
+  "journal_interpretation": "The actual native SpeechError path cleans this known-refused new sent entry under the unchanged native contract. Its exact pre-dispatch bytes remain preserved privately. No manual forget or old unknown journal change is used; empty native journal is not a provider invoice.",
+  "limits": {
+    "provider_invoice_audited": false,
+    "zero_charge_claimed": false,
+    "old_unknown_provider_outcomes_resolved": false,
+    "provider_availability_claimed": false,
+    "audio_listening_completed": false,
+    "ASR_performed": false,
+    "foreign_checked_M4A": 0,
+    "quality_gate_or_server_approval": false,
+    "retry_or_replay_authorized_by_this_review": false
+  },
+  "review_actions": {
+    "network": 0,
+    "auth": 0,
+    "subprocess": 0,
+    "ASR": 0,
+    "TTS": 0,
+    "repo_or_canonical_mutations": 0,
+    "observed_input_files": 2130,
+    "assertions_before_output": 22171
+  },
+  "review_script": {
+    "file": "/workspace/work/ai-tech-next/duckdb-master-audio-20261027/postverify-prepare/review-failed-attempt.py",
+    "bytes": 13732,
+    "sha256": "84d775476139d6545d5be76bbe329fc7b950b68e30834469f4cdb92e85492922"
+  }
+}
