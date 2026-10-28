@@ -39,7 +39,7 @@ must be explicitly corrected before translating the affected articles.
 
 ## Steps
 
-- [x] Read complete source documents, review primary references and inspect actual source images.
+- [ ] Finish complete source and primary-reference review; document/image inspection is complete but multimodal primary-reference review remains.
 - [x] Prepare four exact one-inline candidates outside Git without applying them to repository or production.
 - [ ] Integrate the zero-shot hero-description correction into its candidate and independently review the complete final delta.
 - [ ] Recheck ownership and source/target drift, claim this scope, apply reviewed candidates and run source-correction/content checks.
