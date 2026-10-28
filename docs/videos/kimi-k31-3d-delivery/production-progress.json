@@ -2180,5 +2180,120 @@
     "all114_listening_pending": true,
     "server_approval": false,
     "receipt": "receipts/production/concise-captions/README.md"
+  },
+  "future_voice_text_preparation_20261028": {
+    "at": "2026-10-28T04:33:07.119217+00:00",
+    "previous_commit": "88ec97b83a753802e505ae84b1dbda0d5ecc354b",
+    "scope": "Independently reviewed unadopted future-voice candidate text only; current targets/referenceCC/audio and all native rounds unchanged.",
+    "directory": "future-dub-text/README.md",
+    "index": "future-dub-text/index.json",
+    "candidates": "future-dub-text/candidates.json",
+    "initial_review": "future-dub-text/peer-review-v1.json",
+    "final_review": "future-dub-text/peer-review-final.json",
+    "summary": {
+      "entries": 18,
+      "selected_shorter": 17,
+      "same_as_current_for_fidelity": 1,
+      "original_codepoints": 1222,
+      "selected_codepoints": 1094,
+      "selected_within_original_estimate": 4,
+      "selected_still_above_original_estimate": 14,
+      "current_canonical_estimate_overages_still": 18,
+      "master_existing_synthesized_lines": 114,
+      "master_listening_pending": true,
+      "foreign_checked_M4A": 0,
+      "new_TTS_ASR_calls": 0
+    },
+    "first_review_revisions": 8,
+    "final_review_verdict": "CLEAR_PREP_ONLY_ALL18_SELECTED_TEXT_NOT_CANONICAL_AUDIO_OR_GATE_APPROVAL",
+    "canonical_i18n_adopted": false,
+    "current_canonical_estimate_overages_still": 18,
+    "current_caption_or_audio_changes": false,
+    "new_episode_native_CLI_TTS_ASR_Mokaair_calls": 0,
+    "new_backend_products": 0,
+    "master_existing_synthesized_lines": 114,
+    "master_listening_pending": true,
+    "foreign_checked_M4A": 0,
+    "old39_progress_values_preserved": true,
+    "server_approval": false,
+    "native_rounds_or_quality_thresholds_changed": false,
+    "all_foreign_delivery_goals_retained": true,
+    "actual_audio_fit_meter_ASR_or_language_batch_complete": false,
+    "ASR_delta_record": {
+      "file": "/workspace/work/ai-tech-next/resume-20261028c/asr-delta.json",
+      "bytes": 1576,
+      "sha256": "e52d89ae23258deff188c18c43c24aaafd559886380fdc25d4ce47b7ccd0eee6"
+    },
+    "Root_actual_docs_write": {
+      "chunk": "99ab00",
+      "exit": 0,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/kimi-future-voice-prep-20261028/ROOT-docs-write-actual.json",
+        "bytes": 5156,
+        "sha256": "eeb3de26fb8d79fe49f525a75ea204813bcae7052759969c82aaf762fc97393e"
+      }
+    },
+    "Root_actual_task_handoff": {
+      "session": 36804,
+      "chunk": "d3db13",
+      "exit": 0,
+      "receipt": {
+        "file": "/workspace/work/ai-tech-next/kimi-future-voice-prep-20261028/ROOT-task-handoff.json",
+        "bytes": 530,
+        "sha256": "bbd7fc89455059b631d180599768f9959db5f3dd6491535d1ffe1ee7e03e6140"
+      },
+      "status": "blocked",
+      "owner": null,
+      "claimed_at": null,
+      "same_responsibility_not_done_transferred": true
+    },
+    "Root_actual_checks": {
+      "docs_videos": {
+        "session": 47971,
+        "chunk": "1451e5",
+        "exit": 0,
+        "pass": 236,
+        "fail": 0,
+        "skip": 0,
+        "duration_ms": 28825.151098,
+        "exit_receipt": {
+          "file": "/workspace/work/ai-tech-next/kimi-future-voice-prep-20261028/checks/docs-videos.exit.json",
+          "bytes": 125,
+          "sha256": "b3d3c48a58e25a132a4940f70d62a3236f092f69a90ba25de94e7681a61b6f74"
+        },
+        "stdout": {
+          "file": "/workspace/work/ai-tech-next/kimi-future-voice-prep-20261028/checks/docs-videos.stdout",
+          "bytes": 19554,
+          "sha256": "4e014359fe2017697bc0b79270d62e012bad2ea54354fc83094b5457842508d0"
+        },
+        "stderr": {
+          "file": "/workspace/work/ai-tech-next/kimi-future-voice-prep-20261028/checks/docs-videos.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      },
+      "tasks": {
+        "chunk": "0f4f9c",
+        "exit": 0,
+        "files": 2197,
+        "existing_other_scope_warnings": 143,
+        "own_scope_warnings": 0,
+        "exit_receipt": {
+          "file": "/workspace/work/ai-tech-next/kimi-future-voice-prep-20261028/checks/tasks.exit.json",
+          "bytes": 120,
+          "sha256": "afd2d4984c01ae0df5b3c0b2d98da924af4a6a9dfa0db099641ce51154d0f26f"
+        },
+        "stdout": {
+          "file": "/workspace/work/ai-tech-next/kimi-future-voice-prep-20261028/checks/tasks.stdout",
+          "bytes": 25488,
+          "sha256": "8786e673b00a9c707358f9beb57ad1bb58a022cd6912624e801a680bf9b6b7de"
+        },
+        "stderr": {
+          "file": "/workspace/work/ai-tech-next/kimi-future-voice-prep-20261028/checks/tasks.stderr",
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      }
+    }
   }
 }
