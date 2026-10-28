@@ -7,10 +7,12 @@ DEFAULT_STATE_ROOT = Path("/var/lib/mokaair-ai-accounts")
 DEFAULT_CLAUDE_BIN = "/root/.local/bin/claude"
 DEFAULT_CODEX_BIN = "/usr/local/bin/codex"
 DEFAULT_AGY_BIN = "/root/.local/bin/agy"
+# google-colab-cli, installed with `uv tool install` for root (ops/ai-accounts/README.md).
+DEFAULT_COLAB_BIN = "/root/.local/bin/colab"
 # Installed by ops/ai-accounts/install.sh; runs statusline.py with the host python3.
 STATUSLINE_RECORDER = "/usr/local/lib/mokaair-ai-accounts/statusline-record"
 
-TOOLS: tuple[str, ...] = ("claude", "codex", "agy")
+TOOLS: tuple[str, ...] = ("claude", "codex", "agy", "colab")
 # Up to five accounts per tool; the page lists the signed-in ones and offers the next
 # free slot for another.
 SLOTS: tuple[str, ...] = ("a", "b", "c", "d", "e")
@@ -30,6 +32,7 @@ class AgentConfig:
     claude_command: tuple[str, ...] = (DEFAULT_CLAUDE_BIN,)
     codex_command: tuple[str, ...] = (DEFAULT_CODEX_BIN,)
     agy_command: tuple[str, ...] = (DEFAULT_AGY_BIN,)
+    colab_command: tuple[str, ...] = (DEFAULT_COLAB_BIN,)
     statusline_command: str = STATUSLINE_RECORDER
     # Accounts a login may end on. Empty means any; the host keeps this list, so a
     # compromised API container cannot sign root's CLIs into an account of its own.
@@ -44,6 +47,10 @@ class AgentConfig:
     codex_cache_seconds: float = 300.0
     # The Antigravity status comes from files, so it is cheap to read.
     agy_cache_seconds: float = 30.0
+    # `colab usage` asks Google for the balance and refreshes the account's OAuth token on the
+    # way; two CLIs refreshing one token at once is the Codex failure again, so read it rarely.
+    colab_cache_seconds: float = 300.0
+    colab_usage_timeout_seconds: float = 30.0
     # Claude usage comes from a short interactive session (see ClaudeAccounts.refresh_usage).
     # A page view starts one when the snapshot is older than max_age; the refresh button
     # can start one sooner, but never more than once per min_interval; a probe that found
@@ -109,7 +116,8 @@ class AgentConfig:
         claude_bin = os.environ.get("AI_ACCOUNTS_CLAUDE_BIN", DEFAULT_CLAUDE_BIN)
         codex_bin = os.environ.get("AI_ACCOUNTS_CODEX_BIN", DEFAULT_CODEX_BIN)
         agy_bin = os.environ.get("AI_ACCOUNTS_AGY_BIN", DEFAULT_AGY_BIN)
-        for binary in (claude_bin, codex_bin, agy_bin):
+        colab_bin = os.environ.get("AI_ACCOUNTS_COLAB_BIN", DEFAULT_COLAB_BIN)
+        for binary in (claude_bin, codex_bin, agy_bin, colab_bin):
             if not binary.startswith("/"):
                 raise RuntimeError(f"CLI paths must be absolute: {binary}")
         return cls(
@@ -117,5 +125,6 @@ class AgentConfig:
             claude_command=(claude_bin,),
             codex_command=(codex_bin,),
             agy_command=(agy_bin,),
+            colab_command=(colab_bin,),
             allowed_emails=parse_emails(os.environ.get("AI_ACCOUNTS_ALLOWED_EMAILS", "")),
         )

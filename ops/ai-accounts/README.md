@@ -1,16 +1,19 @@
 # AI accounts agent
 
-The owner runs Claude Code, the Codex CLI and Google's Antigravity CLI (`agy`) as root over
-SSH on the production host, billed to their subscriptions rather than API keys. This agent lets `/admin/ai-accounts` sign those
-CLIs in to up to five accounts per tool, pick the default one, and show each account's email,
-plan and remaining quota. No CLI, token or credential file ever enters a container.
+The owner runs Claude Code, the Codex CLI, Google's Antigravity CLI (`agy`) and Google's
+Colab CLI (`colab`) as root over SSH on the production host, billed to their subscriptions
+rather than API keys. This agent lets `/admin/ai-accounts` sign those CLIs in to up to five
+accounts per tool, pick the default one, and show each account's email, plan and remaining
+quota (Colab: compute units). No CLI, token or credential file ever enters a container, with
+one deliberate exception: a Colab account's token can be handed to a paired cloud session
+(see "Colab" below).
 
 Like the deployment agent (`ops/deployer/`), it is a host-only systemd service that answers a
 fixed set of HMAC-signed requests on a Unix socket, `/run/mokaair-ai-accounts/agent.sock`,
 which the API container can open through the `travel-api` group. Requests name a tool
-(`claude`, `codex`, `agy`) and a slot (`a`–`e`); the only free text it accepts is the sign-in
-code the owner pastes for Claude or Antigravity, limited to base64url characters, `#` (Claude)
-and `/` (Google).
+(`claude`, `codex`, `agy`, `colab`) and a slot (`a`–`e`); the only free text it accepts is the
+sign-in code the owner pastes for Claude, Antigravity or Colab, limited to base64url
+characters, `#` (Claude) and `/` (Google).
 
 ## Where things live
 
@@ -19,13 +22,14 @@ and `/` (Google).
 | `/var/lib/mokaair-ai-accounts/claude-a` … `claude-e` | One `CLAUDE_CONFIG_DIR` per account |
 | `/var/lib/mokaair-ai-accounts/codex-a` … `codex-e` | One `CODEX_HOME` per account |
 | `/var/lib/mokaair-ai-accounts/agy-a` … `agy-e` | One `HOME` per Antigravity account |
-| `/var/lib/mokaair-ai-accounts/default-claude`, `default-codex`, `default-agy` | The default slot letter |
+| `/var/lib/mokaair-ai-accounts/colab-a` … `colab-e` | One `HOME` per Colab account (`.config/colab-cli/token.json`, `mokaair-account.json`) |
+| `/var/lib/mokaair-ai-accounts/default-claude`, `default-codex`, `default-agy`, `default-colab` | The default slot letter |
 | `/var/lib/mokaair-ai-accounts/current-claude`, `current-codex` | The slot whose turn it is for each tool's prompt runs (see below) |
-| `/root/.claude`, `/root/.claude.json`, `/root/.codex`, `/root/.gemini/antigravity-cli` | Links to account A |
+| `/root/.claude`, `/root/.claude.json`, `/root/.codex`, `/root/.gemini/antigravity-cli`, `/root/.config/colab-cli` | Links to account A |
 | `/opt/mokaair-ai-accounts/ai_accounts_agent` | The agent (copied from `apps/api`) |
 | `/etc/travel-scanner/ai-accounts.env` | `AI_ACCOUNTS_AGENT_HMAC_KEY`, `AI_ACCOUNTS_ALLOWED_EMAILS` |
-| `/usr/local/bin/claude-a` … `agy-e` | Run the CLI on one named account |
-| `/etc/profile.d/mokaair-ai-accounts.sh` | `claude`, `codex` and `agy` shell functions that use the default |
+| `/usr/local/bin/claude-a` … `colab-e` | Run the CLI on one named account |
+| `/etc/profile.d/mokaair-ai-accounts.sh` | `claude`, `codex`, `agy` and `colab` shell functions that use the default |
 
 Accounts B–E link to A's `CLAUDE.md`, agents, commands, skills, plugins and `projects/`
 (Claude) and `AGENTS.md`, prompts, skills and `sessions/` (Codex), so a new account behaves
@@ -44,18 +48,26 @@ keyring would hold one login for every account, and without one agy keeps each l
 on its TUI, so "sign in again" on the page moves the saved login aside for the new sign-in
 and puts it back if that one does not finish.
 
+Colab is like Antigravity: google-colab-cli keeps its OAuth token at
+`~/.config/colab-cli/token.json` with no switch to move it, so each account is a home of its
+own and `colab-b` runs with `HOME=/var/lib/mokaair-ai-accounts/colab-b`. The wrappers and the
+shell function pass `--auth=oauth2` (the CLI's default, `adc`, would look for gcloud
+credentials). The CLI is installed for root with `uv tool install --python 3.12
+google-colab-cli` and must be at `/root/.local/bin/colab` (`AI_ACCOUNTS_COLAB_BIN` overrides).
+
 ## Using the accounts over SSH
 
 - `claude`, `codex` and `agy` in an interactive root shell use the default account. The account is
   chosen when the command starts, so a running session keeps its account when the default
   changes.
-- `claude-b`, `codex-c`, `agy-d` and so on always use that account, from any shell or script.
+- `claude-b`, `codex-c`, `agy-d`, `colab-e` and so on always use that account, from any shell
+  or script.
 - Anything that runs `/root/.local/bin/claude`, `/usr/local/bin/codex` or
   `/root/.local/bin/agy` directly without the functions, such as cron, `nohup` or a
   non-interactive `ssh host cmd`, gets account A through the `/root` links.
 - If the page cannot complete a login, for example after a CLI update changes its login
   screen, sign in on the host instead: `claude-b auth login`, `codex-b login --device-auth`,
-  or `agy-b` and pick Google OAuth.
+  `agy-b` and pick Google OAuth, or `colab-b usage` and paste Google's code.
 - The first time an Antigravity account starts, agy may show first-run pages (terms, colour
   scheme). The agent never answers those for the owner; run `agy-<slot>` once over SSH.
 
@@ -129,12 +141,34 @@ and puts it back if that one does not finish.
   into other tools. The agent only drives the official binary and never reads the token or
   calls Google with it; `/v1/runs` does not offer Antigravity.
 
+- **Colab:** `colab usage` prints the account's compute units ("Current balance", "Usage
+  rate", "Active assignments"); the agent runs it as the account's status check, so one call
+  proves the login and reads the balance, cached for five minutes (the call refreshes the
+  OAuth token, and two CLIs refreshing one token at once fail like Codex's). A saved token
+  the CLI no longer accepts (revoked, password changed) makes it print the sign-in URL
+  again; the page then shows the account signed out with "the saved sign-in no longer
+  works". The page shows the balance as units, not as a percentage: Colab has no window.
+- **Colab sign-in and email:** `colab --auth=oauth2 usage` without a token prints an
+  `accounts.google.com` URL and waits on stdin for the code Google's landing page shows
+  (the copy-and-paste flow of `gcloud auth application-default login`), so the agent drives
+  it over plain pipes, no terminal. Nothing the CLI prints names the account, and the token
+  file names it only sometimes (`account`), so the agent asks Google's userinfo endpoint once
+  with the access token and keeps the email in `mokaair-account.json`. Signing in again moves
+  the saved token aside first (with one the CLI would refresh it and print no URL) and puts it
+  back if the new sign-in does not finish.
+- **Colab credentials for a paired session:** `GET /v1/accounts/colab/<slot|default>/credentials`
+  returns the slot's `token.json`. The API exposes it only to a video tool token the owner
+  marked for Colab (`colab_access`, set when a pairing asked for it or on the admin card), at
+  `GET /api/video/colab-credentials?slot=…`, and audits every fetch against the token. The
+  token carries Google's `cloud-platform` scope, so pair accounts that hold nothing but a
+  Colab plan: no GCP projects, no billing. The skill `minimax-h3-colab` is the consumer.
+
 ## Install
 
 Before anything else, get the owner's approval: this changes root's CLI setup on the
 production host.
 
-1. Close every `claude`, `codex` and `agy` session on the host. The installer refuses to
+1. Close every `claude`, `codex`, `agy` and `colab` session on the host. The installer refuses to
    move the logins while one is running. agy itself is installed separately, as a single
    verified binary at `/root/.local/bin/agy` (see the rollout ticket); its installer's
    `agy install` step, which edits shell rc files, is not needed.
@@ -160,7 +194,8 @@ production host.
 systemctl status mokaair-ai-accounts
 # Unsigned requests are refused:
 curl -s --unix-socket /run/mokaair-ai-accounts/agent.sock http://agent/v1/accounts
-# A signed request lists every slot (emails masked):
+# A signed request lists every slot (emails masked); the Colab credentials route is the one
+# answer that carries a secret, so never run it in a transcript:
 set -a; . /etc/travel-scanner/ai-accounts.env; set +a
 cd /opt/mokaair-ai-accounts && python3 -m ai_accounts_agent.client GET /v1/accounts
 ```
@@ -223,7 +258,7 @@ text parser do not; a reader cannot wait for a CLI.
 ## Trust boundary
 
 - The agent runs as root with an empty capability set, `ProtectSystem=strict`, and write
-  access only to its state and socket directories. It starts nothing but the three CLIs,
+  access only to its state and socket directories. It starts nothing but the four CLIs,
   with fixed arguments and an environment built from scratch, so the HMAC key never
   reaches them.
 - Anyone holding `AI_ACCOUNTS_AGENT_HMAC_KEY` and the `travel-api` group can start and
@@ -234,19 +269,22 @@ text parser do not; a reader cannot wait for a CLI.
   prompts. A prompt can spend quota on the owner's accounts but can do nothing on the host:
   Claude Code and Codex run with no tools, in an empty folder, with a fresh environment.
 - The page never receives a token. It sees emails, plans, quota percentages, the sign-in
-  URL and the Codex device code, and the last two only while a login is open.
+  URL and the Codex device code, and the last two only while a login is open. The one route
+  that returns a credential, a Colab account's token file, answers only a video tool token
+  with `colab_access`, never a browser session.
 
 ## Undo
 
 ```bash
 systemctl disable --now mokaair-ai-accounts
-rm /root/.claude /root/.claude.json /root/.codex /root/.gemini/antigravity-cli   # links
+rm /root/.claude /root/.claude.json /root/.codex /root/.gemini/antigravity-cli /root/.config/colab-cli   # links
 mv /var/lib/mokaair-ai-accounts/claude-a/.claude.json /root/.claude.json
 mv /var/lib/mokaair-ai-accounts/claude-a /root/.claude
 mv /var/lib/mokaair-ai-accounts/codex-a /root/.codex
 mv /var/lib/mokaair-ai-accounts/agy-a/.gemini/antigravity-cli /root/.gemini/antigravity-cli
+mv /var/lib/mokaair-ai-accounts/colab-a/.config/colab-cli /root/.config/colab-cli
 rm /etc/profile.d/mokaair-ai-accounts.sh /usr/local/bin/claude-? /usr/local/bin/codex-? \
-  /usr/local/bin/agy-?
+  /usr/local/bin/agy-? /usr/local/bin/colab-?
 ```
 
 Remove the `# mokaair-ai-accounts` line from `/root/.bashrc`, and `statusLine` from

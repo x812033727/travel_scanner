@@ -11,7 +11,8 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 
 | 要做什麼 | 讀哪裡 |
 | --- | --- |
-| 權杖在哪、怎麼配、怎麼存成 secret、這個容器查過什麼、配額與價格的來源、上游怎麼釘 | `.agents/skills/minimax-h3-colab/references/cloud-pairing.md` |
+| 三條配對路線（跟後台配對、session 自己配、自己電腦配）、權杖在哪、這個容器查過什麼、配額與價格的來源、上游怎麼釘 | `.agents/skills/minimax-h3-colab/references/cloud-pairing.md` |
+| 後台「Google Colab」區與主機 agent 的安裝、信任邊界 | `ops/ai-accounts/README.md` |
 | 片段進產線：哪些作品收得進、每鏡的 manifest 欄位、收據與 `clips import` 的寫法 | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` |
 | 匯入程序本身（唯一的一份） | `.agents/skills/animation-production/references/stage-preconditions.md` 最後一節 |
 | 開拍前的鎖定包、每鏡秒數與定稿正文 | `.agents/skills/animation-preproduction/SKILL.md` |
@@ -19,7 +20,7 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 
 ## 不變的規矩
 
-1. **先配對，再談生成。** `bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh` 是每個新 session 的第一步：裝 CLI（0.7.5）、抓上游（釘 commit）、從 `COLAB_CLI_TOKEN_JSON` 還原 `~/.config/colab-cli/token.json`、`colab usage` 驗一次。以 4 結束就是沒配對或網路不通，不要自己想辦法繞。
+1. **先配對，再談生成。** `bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh` 是每個新 session 的第一步：裝 CLI（0.7.5）、抓上游（釘 commit）、拿到 `~/.config/colab-cli/token.json`、`colab usage` 驗一次。token 的來源照順序：secret `COLAB_CLI_TOKEN_JSON`，不然就**向站台要**（建議：站主在 `/admin/ai-accounts` 的「Google Colab」區登入帳號，session 用 `node tools/video/cli.mjs login --colab` 配對過的影片工具權杖取預設帳號的憑證；cloud-pairing.md §2）。以 4 結束就是沒配對或網路不通，不要自己想辦法繞。
 2. **權杖不進 chat、repo、manifest、log。** 只有站主要存 secret 時才跑 `pair.py export`，印出來那一行是 Google refresh token，當密碼看。那個權杖帶 `cloud-platform` scope：**用沒有 GCP 專案與帳單的 Google 帳號配對**（cloud-pairing.md §1）。
 3. **花 compute units 之前站主要點頭。** 每一批先 `h3.sh usage` 抄餘額，批完再抄一次；冷啟動要裝 ComfyUI 與抓模型，所以一批放同一個 manifest 共用 session，不要一鏡開一次。GPU 配不到（方案、餘額、A100 沒貨）就如實回報，試 `--no-high-mem` 或換 GPU 前先問。
 4. **目的地先查**：有 `series.production.profile` 的作品 `clips import` 以 3 拒絕，Colab 輸出 1344×768 也過不了原生 1080p 的檢查。這條路給沒有 profile 的 pilot 與作品（pipeline-handoff.md §1）。
@@ -32,7 +33,10 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 # 0. 開機（每個新 session）；沒 secret 時會說要先配對
 bash .agents/skills/minimax-h3-colab/scripts/bootstrap.sh
 
-# 1. 第一次配對（之後存成 COLAB_CLI_TOKEN_JSON 就不用再做）：
+# 1. 第一次配對。建議走後台（帳號由站主在 /admin/ai-accounts 管）：
+node tools/video/cli.mjs login --colab --name "Claude 雲端 session"  # 印驗證碼，站主在後台按允許
+#    之後每個 session 要有 MOKAAIR_VIDEO_TOKEN（環境 secret），bootstrap 的 token 步驟就會向站台拿
+#    另一條：session 自己配對再存成 COLAB_CLI_TOKEN_JSON（cloud-pairing.md §3）
 python3 .agents/skills/minimax-h3-colab/scripts/pair.py start      # 印網址，背景等驗證碼
 python3 .agents/skills/minimax-h3-colab/scripts/pair.py code '4/…'  # 站主貼回來的驗證碼
 python3 .agents/skills/minimax-h3-colab/scripts/pair.py export      # 站主存成環境 secret

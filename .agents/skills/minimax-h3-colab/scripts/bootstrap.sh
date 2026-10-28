@@ -4,14 +4,24 @@
 #
 #   bootstrap.sh            install + token + verify
 #   bootstrap.sh install    the Colab CLI (pinned) and the upstream skill (pinned commit)
-#   bootstrap.sh token      write the CLI token from the COLAB_CLI_TOKEN_JSON secret, if set
+#   bootstrap.sh token      write the CLI token: from the site (a video tool token with Colab
+#                           access fetches the account signed in on /admin/ai-accounts), or
+#                           from the COLAB_CLI_TOKEN_JSON secret
 #   bootstrap.sh verify     prove the pairing: `colab usage` must print the balance (exit 4 if not)
 #
 # Idempotent: re-running changes nothing that is already right. Nothing here needs sudo.
 # The upstream repository has no licence file, so it is not vendored: it is cloned at a
 # pinned commit into MINIMAX_H3_COLAB_HOME (default: ~/.cache/minimax-h3-colab-skill).
 # The cloud environment's setup script cannot read secrets, so `token` runs inside the
-# session, where the environment variable exists. Contains no credentials.
+# session, where the environment variables exist. Contains no credentials.
+#
+# Where the token comes from, in order:
+#   1. COLAB_CLI_TOKEN_JSON              the token.json itself (raw or base64), an environment secret
+#   2. the site, through the video tool token the session paired with
+#      (`node tools/video/cli.mjs login --colab`, allowed on the admin card): MOKAAIR_VIDEO_TOKEN
+#      or ~/.mokaair/video-tool.json, and MOKAAIR_SITE (default https://mokaair.com);
+#      COLAB_ACCOUNT_SLOT picks the account (a-e, default: the admin's default Colab account)
+#   3. a token already at ~/.config/colab-cli/token.json
 set -Eeuo pipefail
 
 UPSTREAM_REPO="${MINIMAX_H3_UPSTREAM_REPO:-https://github.com/killkli/minimax-h3-colab-skill.git}"
@@ -61,15 +71,76 @@ install_upstream() {
   say "upstream skill at $SKILL_HOME @ ${UPSTREAM_COMMIT:0:12}"
 }
 
+site_token() {
+  # The video tool token: the environment, or the file `node tools/video/cli.mjs login` wrote.
+  if [[ -n "${MOKAAIR_VIDEO_TOKEN:-}" ]]; then
+    printf '%s' "$MOKAAIR_VIDEO_TOKEN"
+    return
+  fi
+  local file="${MOKAAIR_VIDEO_TOOL_FILE:-$HOME/.mokaair/video-tool.json}"
+  [[ -s "$file" ]] || return 1
+  python3 -I -c 'import json, sys
+data = json.load(open(sys.argv[1], encoding="utf-8"))
+token = data.get("token")
+print(token) if isinstance(token, str) and token.startswith("mkv_") else sys.exit(1)' "$file"
+}
+
+site_url() {
+  if [[ -n "${MOKAAIR_SITE:-}" ]]; then
+    printf '%s' "${MOKAAIR_SITE%/}"
+    return
+  fi
+  local file="${MOKAAIR_VIDEO_TOOL_FILE:-$HOME/.mokaair/video-tool.json}"
+  if [[ -s "$file" ]]; then
+    python3 -I -c 'import json, sys
+site = json.load(open(sys.argv[1], encoding="utf-8")).get("site")
+print(site.rstrip("/")) if isinstance(site, str) and site.startswith("https://") else sys.exit(1)' "$file" && return
+  fi
+  printf 'https://mokaair.com'
+}
+
+fetch_from_site() {
+  # Prints the token.json the site hands a paired session, or returns 1 with the reason on stderr.
+  local token site slot url body status
+  token="$(site_token)" || return 1
+  site="$(site_url)"
+  slot="${COLAB_ACCOUNT_SLOT:-default}"
+  [[ "$slot" =~ ^([a-e]|default)$ ]] || die "COLAB_ACCOUNT_SLOT must be a-e or default" 2
+  url="$site/api/video/colab-credentials?slot=$slot"
+  body="$(curl -sS -m 30 -H "Authorization: Bearer $token" -H "Accept: application/json" -w '\n%{http_code}' "$url")" || { say "cannot reach $site" >&2; return 1; }
+  status="${body##*$'\n'}"
+  body="${body%$'\n'*}"
+  if [[ "$status" != "200" ]]; then
+    say "the site refused the Colab credentials (HTTP $status): $(printf '%s' "$body" | python3 -I -c 'import json, sys
+try:
+    data = json.load(sys.stdin)
+    print(data.get("code") or "", data.get("detail") or "")
+except ValueError:
+    print("not JSON")')" >&2
+    return 1
+  fi
+  printf '%s' "$body" | python3 -I -c 'import json, sys
+data = json.load(sys.stdin)
+credentials = data.get("credentials")
+if not isinstance(credentials, dict) or not credentials.get("refresh_token"):
+    sys.exit("the site answered without a usable token")
+print("[minimax-h3-colab] account slot " + str(data.get("slot")), file=sys.stderr)
+print(json.dumps(credentials))'
+}
+
 write_token() {
   local secret="${COLAB_CLI_TOKEN_JSON:-}"
+  local source="COLAB_CLI_TOKEN_JSON"
   if [[ -z "$secret" ]]; then
-    if [[ -s "$TOKEN_PATH" ]]; then
-      say "no COLAB_CLI_TOKEN_JSON in this shell; keeping the token already at $TOKEN_PATH"
+    if secret="$(fetch_from_site)"; then
+      source="the site (video tool token with Colab access)"
+    elif [[ -s "$TOKEN_PATH" ]]; then
+      say "no COLAB_CLI_TOKEN_JSON and no site pairing in this shell; keeping the token already at $TOKEN_PATH"
+      return
+    else
+      say "no token source: pair with the site (node tools/video/cli.mjs login --colab, then allow it on the admin card), set COLAB_CLI_TOKEN_JSON, or run scripts/pair.py start"
       return
     fi
-    say "no COLAB_CLI_TOKEN_JSON and no token at $TOKEN_PATH: pair first with scripts/pair.py start"
-    return
   fi
   local decoded
   if [[ "$secret" == \{* ]]; then
@@ -88,7 +159,7 @@ sys.exit("COLAB_CLI_TOKEN_JSON lacks " + ", ".join(missing) if missing else 0)' 
   printf '%s\n' "$decoded" > "$tmp"
   chmod 600 "$tmp"
   mv -f "$tmp" "$TOKEN_PATH"
-  say "token written to $TOKEN_PATH from COLAB_CLI_TOKEN_JSON"
+  say "token written to $TOKEN_PATH from $source"
 }
 
 verify() {

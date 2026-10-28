@@ -1,6 +1,6 @@
 #!/bin/sh
-# claude-a … claude-e, codex-a … codex-e and agy-a … agy-e: run the CLI signed in to that
-# account. install.sh links each name to this script; the name picks the account.
+# claude-a … claude-e, codex-a … codex-e, agy-a … agy-e and colab-a … colab-e: run the CLI
+# signed in to that account. install.sh links each name to this script; the name picks the account.
 set -eu
 name=$(basename "$0")
 root=/var/lib/mokaair-ai-accounts
@@ -20,8 +20,15 @@ case "$name" in
     export HOME="$root/$name" DBUS_SESSION_BUS_ADDRESS="unix:path=/dev/null/mokaair-no-keyring"
     exec "${MOKAAIR_AGY_BIN:-/root/.local/bin/agy}" "$@"
     ;;
+  colab-[a-e])
+    # The Colab CLI keeps its OAuth token under ~/.config/colab-cli with no switch to move it,
+    # so each account is a home of its own. --auth=oauth2 names the saved token (the CLI's
+    # default, adc, would look for gcloud credentials instead).
+    export HOME="$root/$name"
+    exec "${MOKAAIR_COLAB_BIN:-/root/.local/bin/colab}" --auth=oauth2 "$@"
+    ;;
   *)
-    echo "run this as claude-a … claude-e, codex-a … codex-e or agy-a … agy-e" >&2
+    echo "run this as claude-a … claude-e, codex-a … codex-e, agy-a … agy-e or colab-a … colab-e" >&2
     exit 2
     ;;
 esac

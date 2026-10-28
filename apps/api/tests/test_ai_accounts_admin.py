@@ -18,7 +18,8 @@ from app.auth.service import current_user
 from app.config import get_settings
 from app.db import get_session
 from app.main import app
-from app.models import AdminAuditLog, User
+from app.models import AdminAuditLog, User, VideoToolToken
+from app.video_speech.admin_api import video_tool
 
 KEY = "ai-accounts-key-with-at-least-32-chars"
 BASE = "/api/v1/admin/ai-accounts"
@@ -359,3 +360,111 @@ def test_the_workers_that_run_claude_reach_the_agent_and_nothing_else_on_the_hos
         assert f"{socket_dir}:{socket_dir}:ro" in block, service
         assert "group_add:" in block, service
         assert "travel-scanner-deployer" not in block, f"{service} must not reach the deployer"
+
+
+# --- Colab credentials for a paired session ----------------------------------------------
+
+CREDENTIALS = "/api/v1/video/colab-credentials"
+
+
+def _token(colab_access: bool) -> VideoToolToken:
+    return VideoToolToken(
+        id=uuid4(),
+        name="配對：雲端 session",
+        token_hash="0" * 64,
+        token_prefix="mkv_abcdef",
+        created_by_user_id=uuid4(),
+        colab_access=colab_access,
+    )
+
+
+@pytest.mark.asyncio
+async def test_colab_credentials_go_only_to_a_token_marked_for_colab(
+    ai_app: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    agent, session = ai_app["agent"], ai_app["session"]
+    token_file = {
+        "token": "ya29.x",
+        "refresh_token": "1//r",
+        "client_id": "c",
+        "client_secret": "s",
+    }
+    agent.routes[("GET", "/v1/accounts/colab/default/credentials")] = (
+        200,
+        {"tool": "colab", "slot": "b", "credentials": token_file},
+    )
+    agent.routes[("GET", "/v1/accounts/colab/c/credentials")] = (
+        404,
+        {"code": "colab_not_signed_in", "detail": "colab-c has no saved sign-in"},
+    )
+    limits: list[tuple[str, str]] = []
+
+    async def count_limit(namespace: str, identifier: str, **_: Any) -> None:
+        limits.append((namespace, identifier))
+
+    monkeypatch.setattr(router_module, "enforce_named_rate_limit", count_limit)
+    allowed = _token(colab_access=True)
+    app.dependency_overrides[video_tool] = lambda: allowed
+    async with _client() as client:
+        fetched = await client.get(CREDENTIALS)
+        assert fetched.status_code == 200
+        assert fetched.headers["cache-control"] == "no-store"
+        assert fetched.json() == {"tool": "colab", "slot": "b", "credentials": token_file}
+        missing = await client.get(CREDENTIALS, params={"slot": "c"})
+        assert (missing.status_code, missing.json()["code"]) == (404, "colab_not_signed_in")
+        assert (await client.get(CREDENTIALS, params={"slot": "z"})).status_code == 422
+        app.dependency_overrides[video_tool] = lambda: _token(colab_access=False)
+        refused = await client.get(CREDENTIALS)
+        assert (refused.status_code, refused.json()["code"]) == (403, "video_tool_token_no_colab")
+    assert agent.calls == [
+        ("GET", "/v1/accounts/colab/default/credentials", None),
+        ("GET", "/v1/accounts/colab/c/credentials", None),
+    ]
+    assert limits == [("video_tool_colab_credentials", str(allowed.id))] * 2
+    # One audit row per handed-out credential, naming the token and never the secret.
+    rows = session.audits()
+    assert [(row.action, row.target) for row in rows] == [
+        ("ai_account.colab_credentials_fetched", "ai-account:colab-b")
+    ]
+    assert rows[0].actor_user_id == allowed.created_by_user_id
+    assert rows[0].metadata_json == {"token": "mkv_abcdef", "requested_slot": "default"}
+    assert "1//r" not in json.dumps(rows[0].metadata_json)
+
+
+@pytest.mark.asyncio
+async def test_colab_credentials_need_the_agent_and_a_real_bearer_token(
+    ai_app: dict[str, Any], monkeypatch: pytest.MonkeyPatch
+) -> None:
+    # No override of the token dependency: the session's lookup finds nothing.
+    async with _client() as client:
+        bearer = {"Authorization": "Bearer mkv_" + "x" * 40}
+        anonymous = await client.get(CREDENTIALS, headers=bearer)
+        assert anonymous.status_code == 401
+        assert anonymous.json()["code"] == "video_tool_token_invalid"
+    app.dependency_overrides[video_tool] = lambda: _token(colab_access=True)
+    monkeypatch.setattr(get_settings(), "ai_accounts_enabled", False)
+    async with _client() as client:
+        disabled = await client.get(CREDENTIALS)
+        assert (disabled.status_code, disabled.json()["code"]) == (503, "ai_accounts_disabled")
+    assert ai_app["agent"].calls == []
+
+
+@pytest.mark.asyncio
+async def test_overview_carries_colab_compute_units(ai_app: dict[str, Any]) -> None:
+    usage = {
+        "source": "live",
+        "windows": [],
+        "compute_units": {"balance": 187.5, "rate_per_hour": 4.82, "active_assignments": 1},
+    }
+    ai_app["agent"].routes[("GET", "/v1/accounts")] = (
+        200,
+        {
+            "slots": [slot("colab", "a", logged_in=True, auth_method="google", usage=usage)],
+            "defaults": {"claude": "a", "codex": "a", "agy": "a", "colab": "a"},
+            "allowlist_configured": True,
+        },
+    )
+    async with _client() as client:
+        overview = (await client.get(BASE)).json()
+    assert overview["defaults"]["colab"] == "a"
+    assert overview["slots"][0]["usage"]["compute_units"] == usage["compute_units"]

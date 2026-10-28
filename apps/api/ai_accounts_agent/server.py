@@ -18,6 +18,7 @@ from ai_accounts_agent.antigravity import SUBSCRIPTION_METHOD as AGY_SUBSCRIPTIO
 from ai_accounts_agent.antigravity import AntigravityAccounts
 from ai_accounts_agent.claude import ClaudeAccounts, mark_onboarding_done
 from ai_accounts_agent.codex import CodexAccounts
+from ai_accounts_agent.colab import ColabAccounts
 from ai_accounts_agent.config import SLOTS, TOOLS, AgentConfig
 from ai_accounts_agent.runner import CliError
 from ai_accounts_agent.runs import (
@@ -145,6 +146,7 @@ class AgentApplication:
         claude: Accounts | None = None,
         codex: Accounts | None = None,
         agy: Accounts | None = None,
+        colab: Accounts | None = None,
         clock: Callable[[], float] = time.time,
     ) -> None:
         self.config = config
@@ -154,6 +156,7 @@ class AgentApplication:
             "claude": claude or ClaudeAccounts(config),
             "codex": codex or CodexAccounts(config),
             "agy": agy or AntigravityAccounts(config),
+            "colab": colab or ColabAccounts(config),
         }
         self.logins = LoginRegistry(config.login_ttl_seconds, clock)
         self.cache = StatusCache(clock)
@@ -198,6 +201,7 @@ class AgentApplication:
             "claude": self.config.claude_cache_seconds,
             "codex": self.config.codex_cache_seconds,
             "agy": self.config.agy_cache_seconds,
+            "colab": self.config.colab_cache_seconds,
         }[tool]
 
     def check(self, tool: str, slot: str) -> dict[str, Any]:
@@ -468,6 +472,29 @@ class AgentApplication:
         atomic_write_text(self.config.current_path(tool), f"{slot}\n", 0o600)
         return HTTPStatus.OK, {"defaults": {name: self.default_slot(name) for name in TOOLS}}
 
+    # --- Colab credentials for a paired session -------------------------------------
+
+    def credentials(self, tool: str, slot: str) -> Response:
+        """The saved Colab token file of one slot (`default` for the default account).
+
+        Only Colab hands its login out: a cloud session that generates video on Colab runs
+        the CLI itself, and the token is what the CLI needs. The API only reaches this route
+        for a video tool token the owner marked for Colab. Nothing here is cached or logged.
+        """
+        reader = getattr(self.accounts.get(tool), "credentials", None)
+        if reader is None:
+            return _problem(HTTPStatus.NOT_FOUND, "not_found", "endpoint not found")
+        chosen = self.default_slot(tool) if slot == "default" else slot
+        if self.logins.active_for(tool, chosen) is not None:
+            return _problem(
+                HTTPStatus.CONFLICT, "colab_login_in_progress", "a sign-in is open for this account"
+            )
+        try:
+            token = reader(chosen)
+        except CliError as exc:
+            return _problem(HTTPStatus.NOT_FOUND, "colab_not_signed_in", str(exc))
+        return HTTPStatus.OK, {"tool": tool, "slot": chosen, "credentials": token}
+
     # --- prompt runs (ai_accounts_agent.runs) ---------------------------------------
 
     def _claim_run_slot(self, request: RunRequest) -> str:
@@ -621,6 +648,9 @@ class AgentApplication:
             elif match := re.fullmatch(rf"/v1/accounts/{_TOOL_SLOT}/logout", route):
                 if method == "POST":
                     return self.logout(match.group(1), match.group(2))
+            elif match := re.fullmatch(r"/v1/accounts/(colab)/([a-e]|default)/credentials", route):
+                if method == "GET":
+                    return self.credentials(match.group(1), match.group(2))
             elif match := re.fullmatch(rf"/v1/logins/{_LOGIN_ID}", route):
                 if method == "GET":
                     session = self.logins.get(match.group(1))

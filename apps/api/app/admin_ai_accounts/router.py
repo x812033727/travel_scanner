@@ -1,6 +1,6 @@
-from typing import Annotated
+from typing import Annotated, Literal
 
-from fastapi import APIRouter, Depends, Request, status
+from fastapi import APIRouter, Depends, Request, Response, status
 from fastapi import Path as PathParam
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -12,13 +12,16 @@ from app.admin_ai_accounts.schemas import (
     AiLoginCodeRequest,
     AiLoginSession,
     AiLogoutResult,
+    ColabCredentials,
     Slot,
     Tool,
 )
 from app.auth.service import require_capability
 from app.db import get_session
 from app.infra import client_ip, enforce_named_rate_limit
-from app.models import User
+from app.models import AdminAuditLog, User, VideoToolToken
+from app.problems import AppError
+from app.video_speech.admin_api import video_tool
 
 router = APIRouter(prefix="/admin/ai-accounts", tags=["admin ai accounts"])
 Session = Annotated[AsyncSession, Depends(get_session)]
@@ -114,3 +117,49 @@ async def put_default(
         {"tool": tool, "slot": payload.slot},
     )
     return result
+
+
+# What a paired cloud session calls with its video tool token, through the web route
+# apps/web/app/api/video/colab-credentials (nginx exposes only the web app). No browser session
+# reaches it: the dependency takes a bearer token and nothing else.
+colab_tool_router = APIRouter(prefix="/video/colab-credentials", tags=["video tool"])
+CREDENTIAL_FETCHES_PER_HOUR = 30
+
+
+@colab_tool_router.get("", response_model=ColabCredentials)
+async def get_colab_credentials(
+    session: Session,
+    response: Response,
+    token: Annotated[VideoToolToken, Depends(video_tool)],
+    slot: Slot | Literal["default"] = "default",
+) -> ColabCredentials:
+    """The Colab CLI token file of one account the owner signed in on /admin/ai-accounts.
+
+    Only a video tool token the owner marked for Colab gets it (`colab_access`: a pairing that
+    asked for Colab and was allowed, or the box on the admin card). Every fetch is audited
+    against the token; the credentials themselves are never logged.
+    """
+    response.headers["Cache-Control"] = "no-store"
+    if not token.colab_access:
+        raise AppError(
+            403,
+            "video_tool_token_no_colab",
+            "這組影片工具權杖沒有 Colab 帳號權限；重新配對時要求 Colab，或在後台建立時勾選",
+        )
+    await enforce_named_rate_limit(
+        "video_tool_colab_credentials",
+        str(token.id),
+        limit=CREDENTIAL_FETCHES_PER_HOUR,
+        window_seconds=3_600,
+    )
+    credentials = await service.agent_client().colab_credentials(slot)
+    session.add(
+        AdminAuditLog(
+            actor_user_id=token.created_by_user_id,
+            action="ai_account.colab_credentials_fetched",
+            target=f"ai-account:colab-{credentials.slot}",
+            metadata_json={"token": token.token_prefix, "requested_slot": slot},
+        )
+    )
+    await session.commit()
+    return credentials

@@ -399,7 +399,7 @@ async def test_creating_a_token_shows_it_once_and_stores_only_its_hash(admin_cli
 
 @pytest.mark.asyncio
 async def test_token_count_is_capped_and_revoking_is_idempotent(admin_client: Any) -> None:
-    admin_client(TokenSession(active=10))
+    admin_client(TokenSession(active=admin_api.MAX_ACTIVE_TOKENS))
     async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as client:
         refused = await client.post(TOKENS, json={"name": "x"})
     assert refused.status_code == 409 and refused.json()["code"] == "video_tool_token_limit"

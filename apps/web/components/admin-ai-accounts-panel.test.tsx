@@ -5,13 +5,13 @@ import { AdminAiAccountsPanel, nextFreeSlot, visibleAccounts, type AiAccount, ty
 const NOW = Date.parse("2026-09-24T09:00:00Z");
 const seconds = (offset: number) => Math.round(NOW / 1000) + offset;
 
-function account(tool: "claude" | "codex" | "agy", slot: "a" | "b" | "c" | "d" | "e", values: Partial<AiAccount> = {}): AiAccount {
+function account(tool: "claude" | "codex" | "agy" | "colab", slot: "a" | "b" | "c" | "d" | "e", values: Partial<AiAccount> = {}): AiAccount {
   return { tool, slot, is_default: slot === "a", logged_in: false, ...values };
 }
 
 function overview(values: Partial<AiAccountsOverview> = {}): AiAccountsOverview {
-  const slots = (["claude", "codex", "agy"] as const).flatMap((tool) => (["a", "b", "c", "d", "e"] as const).map((slot) => account(tool, slot)));
-  return { enabled: true, agent_reachable: true, slots, defaults: { claude: "a", codex: "a", agy: "a" }, allowlist_configured: true, ...values };
+  const slots = (["claude", "codex", "agy", "colab"] as const).flatMap((tool) => (["a", "b", "c", "d", "e"] as const).map((slot) => account(tool, slot)));
+  return { enabled: true, agent_reachable: true, slots, defaults: { claude: "a", codex: "a", agy: "a", colab: "a" }, allowlist_configured: true, ...values };
 }
 
 function withSlots(...changes: AiAccount[]) {
@@ -204,6 +204,65 @@ describe("AdminAiAccountsPanel", () => {
     await waitFor(() => expect(within(dialog).getByText("正在驗證…")).toBeTruthy());
     const post = fetchMock.mock.calls.find(([input]) => String(input).endsWith("/code"));
     expect(JSON.parse(String(post?.[1]?.body))).toEqual({ code: "4/0AVGzR1Bq-example_code" });
+  });
+
+  it("shows a Colab account's compute units and takes its Google code", async () => {
+    vi.spyOn(Date, "now").mockReturnValue(NOW);
+    const google = "https://accounts.google.com/o/oauth2/auth?client_id=x&redirect_uri=https%3A%2F%2Fsdk.cloud.google.com%2Fapplicationdefaultauthcode.html";
+    const state = withSlots(
+      account("colab", "a", { logged_in: true, auth_method: "google", email: "colab@example.com", usage: { source: "live", windows: [], compute_units: { balance: 187.5, rate_per_hour: 4.82, active_assignments: 1 } } }),
+      account("colab", "b", { logged_in: false, usage_error: "the saved sign-in no longer works; sign in again" }),
+    );
+    const fetchMock = vi.fn((input: RequestInfo | URL) => {
+      const url = String(input);
+      if (url.endsWith("/admin/ai-accounts/colab/a/login")) return response(login({ tool: "colab", slot: "a", kind: "paste_code", url: google, user_code: null }), 201);
+      if (url.includes("/admin/ai-accounts")) return response(state);
+      throw new Error(`unexpected ${url}`);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminAiAccountsPanel />);
+    const section = await screen.findByRole("region", { name: "Google Colab" });
+    expect(within(section).getByText("在 SSH 輸入 colab 會用預設帳號；colab-a 到 colab-e 可以指定帳號。")).toBeTruthy();
+    const first = within(section).getByRole("article", { name: "Google Colab 帳號 A" });
+    expect(within(first).getByText("colab@example.com")).toBeTruthy();
+    expect(within(first).getByText("剩餘 187.5 compute units")).toBeTruthy();
+    expect(within(first).getByText("每小時用 4.8 · 執行中 1 個 runtime")).toBeTruthy();
+    // Live usage: no "not read yet" hint, no percentage bar, and no API-billing warning.
+    expect(within(first).queryByText(/還沒取得這個帳號的額度/)).toBeNull();
+    expect(within(first).queryByRole("progressbar")).toBeNull();
+    expect(within(first).queryByText("這個帳號走 API 計費，不是訂閱")).toBeNull();
+    // Slot B is signed out, so it is not shown; the free slot offered is B.
+    expect(within(section).queryByRole("article", { name: "Google Colab 帳號 B" })).toBeNull();
+    expect(within(section).getByText("會使用下一個空位：帳號 B")).toBeTruthy();
+
+    // Signing a card in again opens the Google code dialog with Colab's own title.
+    fireEvent.click(within(first).getByRole("button", { name: "重新登入" }));
+    const dialog = await screen.findByRole("dialog", { name: "登入 Google Colab（帳號 A）" });
+    expect(within(dialog).getByRole("link", { name: /開啟登入頁/ }).getAttribute("href")).toBe(google);
+  });
+
+  it("walks a Colab sign-in with Colab's own steps", async () => {
+    const google = "https://accounts.google.com/o/oauth2/auth?client_id=x";
+    const fetchMock = vi.fn((input: RequestInfo | URL, init?: RequestInit) => {
+      const url = String(input);
+      if (url.endsWith("/admin/ai-accounts/colab/a/login")) return response(login({ tool: "colab", slot: "a", kind: "paste_code", url: google, user_code: null }), 201);
+      if (url.endsWith("/code") && init?.method === "POST") return response(login({ tool: "colab", slot: "a", kind: "paste_code", status: "verifying", url: null, user_code: null }), 202);
+      if (url.includes("/admin/ai-accounts")) return response(overview());
+      throw new Error(`unexpected ${url}`);
+    });
+    vi.stubGlobal("fetch", fetchMock);
+    render(<AdminAiAccountsPanel />);
+    const card = await screen.findByRole("article", { name: "Google Colab 帳號 A" });
+    fireEvent.click(within(card).getByRole("button", { name: "登入" }));
+    const dialog = await screen.findByRole("dialog", { name: "登入 Google Colab（帳號 A）" });
+    expect(within(dialog).getByText(/選擇有 Colab 方案/)).toBeTruthy();
+    expect(within(dialog).getByRole("link", { name: /開啟登入頁/ }).getAttribute("href")).toBe(google);
+    const field = within(dialog).getByLabelText("完成後頁面會顯示一段授權碼（通常以 4/ 開頭），複製後貼在這裡：");
+    fireEvent.change(field, { target: { value: " 4/0AVGzR1Bq-colab_code " } });
+    fireEvent.click(within(dialog).getByRole("button", { name: "送出代碼" }));
+    await waitFor(() => expect(within(dialog).getByText("正在驗證…")).toBeTruthy());
+    const post = fetchMock.mock.calls.find(([input]) => String(input).endsWith("/code"));
+    expect(JSON.parse(String(post?.[1]?.body))).toEqual({ code: "4/0AVGzR1Bq-colab_code" });
   });
 
   it("asks before signing out and switches the default", async () => {
