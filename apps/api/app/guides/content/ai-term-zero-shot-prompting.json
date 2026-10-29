@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "零樣本提示（Zero-shot Prompting）是什麼：先把任務說清楚",
@@ -82,6 +85,7 @@
           "width": 1600,
           "height": 900,
           "caption": "文件是待處理資料；只有已完成的輸入輸出配對才是這裡所說的示範。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -247,6 +251,974 @@
         },
         {
           "title": "Google：Prompt design strategies",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is Zero-shot Prompting? Start by Defining the Task Clearly",
+      "description": "Zero-shot prompting asks a model to work from rules and new data without solved examples. It does not mean the model was never trained or that prompts cannot include data. Using appliance instructions, this article explains how to define output fields, handle missing information, and set the scope of judgment, and compares the uses of few-shot prompts and retrieved data. A comparison table and test procedure show when asking directly is enough and when examples are needed.",
+      "hero": {
+        "src": "/guides/ai-term-zero-shot-prompting/hero-en.jpg",
+        "alt": "An open manual has three gray lines on its left page and an orange circle on its right page. A blue arrow at the lower right points right.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Zero-shot prompting asks a model to process new input through instructions without including solved task examples, such as “Summarize the key points of this announcement.”",
+            "“Zero” refers to the number of examples provided in that prompt, not an absence of model training. The prompt can still include complete documents, classification rules, and output requirements.",
+            "Asking for a “step-by-step list” specifies the output format; it does not automatically make a prompt few-shot. Zero-shot prompts can also include retrieved documents.",
+            "If formatting remains inconsistent, add complete examples; doing so makes the prompt few-shot. If current information is missing, add source documents or retrieval. Examples cannot create missing facts."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Zero-shot prompting asks a model to process new input through instructions without including solved task examples in the prompt. “Summarize the key points of this announcement” is a common form. “Zero” refers to the number of examples provided in that prompt, not an absence of model training, nor a lack of any relevant knowledge."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can still include complete documents, classification rules, and output requirements. Having no examples is different from having no background information. The following appliance-manual scenario shows how to establish a clear zero-shot baseline, then use the errors to decide whether to add rules, add sources, or switch to few-shot examples."
+        },
+        {
+          "type": "heading",
+          "text": "Zero-shot Does Not Mean Learning Everything from Nothing",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Language models encounter many patterns during training, and some also undergo instruction "
+            },
+            {
+              "type": "article",
+              "text": "fine-tuning",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": " to learn to perform tasks from natural-language requests. The FLAN study by Wei et al. explores how instruction fine-tuning improves zero-shot performance on unseen task types. This research shows that zero-shot capabilities may be influenced by training methods. “No examples were provided this time” should not be interpreted as the model starting entirely from scratch."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Zero-shot results in research also depend on the evaluation setup: which tasks are unseen and how training data is arranged have specific definitions. When ordinary users describe a prompt as zero-shot, they usually mean that it contains no pairs of inputs and reference answers. These usages are related, but a chat interaction should not be treated as a rigorous research test."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, if you ask a model to summarize a manual, it may already be familiar with common instructional document formats, while what you provide today is the actual content for a particular machine. Writing in the style of instructions and faithfully summarizing this document are still different things. What needs checking is whether the model follows the source, not whether its answer reads fluently."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-zero-shot-prompting/diagram-1-en.svg",
+          "alt": "Task instructions and a manual are given to the model without solved examples. Conditions and formatting are checked separately after output.",
+          "width": 1600,
+          "height": 900,
+          "caption": "The document is data to be processed; only completed input-output pairs count as examples here.",
+          "description": "Task instructions and a manual are given to the model without solved examples. Conditions and formatting are checked separately after output.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Break the Task into Its Target, Action, and Deliverable Format",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Instead of simply saying “Take a look at this,” you could write: “Find the filter-cleaning steps in the following dehumidifier instructions and list them in operating order. Preserve the conditions for stopping use, and do not add anything that is not mentioned.” This prompt contains no completed examples, so it is still zero-shot, but it tells the model which data to examine, what to do, and how to format the output."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google’s prompt design documentation emphasizes clear instructions, constraints, and response formats. Applied to this case, first decide whether you want a summary of steps, extracted warnings, or an explanation for beginners. Asking for a comprehensive "
+            },
+            {
+              "type": "text",
+              "text": "evaluation"
+            },
+            {
+              "type": "text",
+              "text": ", troubleshooting, and purchasing advice all at once mixes different tasks, making it easier for the model to stray beyond the document."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Also define what to do when information is insufficient. Suppose the document says to clean regularly but gives no specific frequency. The expected output should retain “frequency not specified.” Insisting that every field be filled completely may encourage the model to supply numbers from general experience. A field with missing information is a useful result, not an answer defect to conceal."
+        },
+        {
+          "type": "heading",
+          "text": "Work Through a Complete Exercise with a Manual",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The following scenario is purely illustrative. Prepare an excerpt of machine instructions that you have permission to use and that contains no personal information. The text should cover switching off, unplugging, removing the filter, cleaning it using the manufacturer’s method, and reinstalling it after drying. Ask the model to list the sequence stated in the source, separately mark any prerequisites, and avoid adding cleaning tools not mentioned in the original."
+        },
+        {
+          "type": "paragraph",
+          "text": "The expected output should let you trace every step back to its source. Check whether unplugging was omitted, whether drying was replaced with an arbitrary duration, or whether a cleaning agent was added without support. This example teaches you to verify summary fidelity. Actual maintenance should still follow the manufacturer’s instructions for that machine; do not apply these illustrative steps to every appliance."
+        },
+        {
+          "type": "paragraph",
+          "text": "Next, prepare another passage with the sequence information in different locations, or add prohibitions such as “Do not wash with water.” If the model can only organize clearly bulleted text and misses constraints in prose, the prompt has a narrower range of use than you expected. This is evidence that the source organization or prompt needs adjustment, not grounds to immediately declare zero-shot prompting ineffective."
+        },
+        {
+          "type": "heading",
+          "text": "Classify Errors Before Deciding What to Add",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "If the model misses a condition you already provided, first clarify the task’s scope or place related passages together. If it consistently uses the wrong fields, a small number of complete examples may help. If it does not know about features in a new version that the document does not cover, provide the correct sources or a lookup tool. Few-shot formatting examples cannot create missing facts."
+        },
+        {
+          "type": "paragraph",
+          "text": "Zero-shot prompting is particularly useful as a starting point because the prompt is shorter, making it easier to see whether basic rules are sufficient. You then have a clear baseline for comparison when you add examples later. If you start by piling in many examples, role descriptions, and exceptions, it becomes harder to identify what improved and which part actually helped."
+        },
+        {
+          "type": "paragraph",
+          "text": "Do not respond to the model’s first mistake merely by adding “Be sure to be correct” or “Absolutely no mistakes.” These phrases do not identify the error. A more effective revision is: “List warning conditions separately; do not merge them into general cleaning steps,” followed by another check using the same data. This change addresses a specific error and is easier to maintain."
+        },
+        {
+          "type": "heading",
+          "text": "Understand Zero-shot, Few-shot, and Supplied Data Together",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Few-shot prompting includes examples, while zero-shot prompting does not; both can include retrieved documents. You can ask a model to answer from a retrieved operating manual without providing examples, so zero-shot prompting does not rule out retrieval-augmented generation. These concepts describe the arrangement of examples and the sources of facts, respectively. They are not mutually exclusive product categories."
+        },
+        {
+          "type": "paragraph",
+          "text": "Likewise, asking for a “step-by-step list” does not automatically make a prompt few-shot. It specifies the output format without showing a completed task answer. Understanding this distinction helps teams discuss prompts more precisely: should they add rule text, examples, or source data? Each change has different costs and uses."
+        },
+        {
+          "type": "paragraph",
+          "text": "Finally, retain a stable validation set containing ordinary documents, missing information, and prohibitions. Run it again after changing the rules or switching models, recording which cases improve and which regress. Zero-shot prompting is not an inferior approach. When the task is clear, the data is sufficient, and the results can be verified, a simple prompt may itself be an appropriate solution."
+        },
+        {
+          "type": "paragraph",
+          "text": "Validation records should also retain the version of the original text used at the time. If the manual has been updated, an old answer may no longer be correct. What needs checking again is the consistency between the source and the summary, rather than requiring the model to maintain its old account."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Problem",
+            "What to Improve First",
+            "Can It Remain Zero-shot?"
+          ],
+          "rows": [
+            [
+              "Request is too vague",
+              "Target, action, format",
+              "Yes"
+            ],
+            [
+              "Formatting remains inconsistent",
+              "Complete examples",
+              "Adding them makes it few-shot"
+            ],
+            [
+              "Current information is missing",
+              "Source documents or retrieval",
+              "Yes"
+            ]
+          ],
+          "caption": "Comparison of concepts and use cases; verified in 2026/9."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Zero-shot Can Include Plenty of Data",
+          "text": "The deciding factor is whether solved examples are included, not how long the prompt is."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Few-shot Prompting? Teach the Format Clearly with Examples",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Retrieval-Augmented Generation (RAG)? Give Answers Verifiable Support",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terms Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wei et al.: Finetuned Language Models Are Zero-Shot Learners",
+          "url": "https://arxiv.org/abs/2109.01652",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: Prompt design strategies",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ゼロショットプロンプティング（Zero-shot Prompting）とは：まずタスクを明確に伝える",
+      "description": "ゼロショットプロンプティングとは、解答例を示さず、ルールと新しいデータを使ってモデルに直接作業を依頼する方法です。ゼロショットは、モデルが未訓練であることや、プロンプトに資料を添えられないことを意味しません。本記事では家電の説明書を整理する例を通じて、出力項目、情報の欠落、判断範囲を明確にする書き方を説明し、フューショットプロンプティングと検索資料の用途の違いを比較します。比較表とテスト手順も掲載し、直接質問するだけで十分な場合と、例を追加すべき場合を解説します。",
+      "hero": {
+        "src": "/guides/ai-term-zero-shot-prompting/hero-ja.jpg",
+        "alt": "開いた説明書の左ページには三本の灰色の横線、右ページにはオレンジ色の円があり、右下の青い矢印が右を指しています。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "ゼロショットプロンプティングは、プロンプトに解答済みのタスク例を添えず、指示だけでモデルに新しい入力を処理させる方法です。例えば「このお知らせの要点をまとめて」という依頼が該当します。",
+            "ここでの「ゼロ」は、その回に与える例の数を指します。モデルが未訓練という意味ではなく、プロンプトには文書の全文、分類ルール、出力要件も添えられます。",
+            "「手順ごとに列挙して」という要求は出力形式の指定であり、それだけでフューショットになるわけではありません。ゼロショットでも検索で取得した文書を提供できます。",
+            "形式がいつも不統一なら、完全な例を追加できます。追加後はフューショットに該当します。最新情報が不足している場合は原資料や検索で補うべきであり、例では欠けている事実を生み出せません。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ゼロショットプロンプティング（Zero-shot Prompting）とは、プロンプトに解答済みのタスク例を示さず、指示によってモデルに新しい入力を処理させる方法です。「このお知らせの要点をまとめて」といった依頼が典型例です。ここでの「ゼロ」は、その回に与える例の数を指し、モデルが未訓練であることや、関連知識を何も持っていないことを意味しません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "文書の全文、分類ルール、出力要件を添えることはできます。例がないことと、背景資料がないことは別です。以下では家電の説明書を整理する場面を使い、まず明確なゼロショットの基準を作り、次に誤りに応じてルールや情報源を補うか、フューショットの例を使うかを判断する方法を説明します。"
+        },
+        {
+          "type": "heading",
+          "text": "ゼロショットは何もないところからすべてを学ぶことではない",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "言語モデルは訓練段階ですでに大量のパターンに触れており、中には指示に基づく"
+            },
+            {
+              "type": "article",
+              "text": "ファインチューニング",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "を受け、自然言語の要求に沿って作業を行うことを学んだものもあります。Wei らの FLAN 研究では、指示に基づくファインチューニングが、未経験のタスク種別に対するゼロショット性能をどう改善するかを検討しています。この研究は、ゼロショット能力が訓練方法の影響を受けうることを示しています。「今回は例を与えていない」を、モデルが完全にゼロから始めることだと解釈してはいけません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "研究におけるゼロショットも、評価設定を確認する必要があります。どのタスクが未経験なのか、訓練データをどう構成するのかには、それぞれ特定の定義があります。一般の利用者がプロンプト設計でゼロショットと言う場合、通常はそのプロンプトに入力と正解のペアを添えていないことだけを意味します。両者は関連していますが、チャットでの操作をそのまま厳密な研究上のテストとみなすべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えばモデルに説明書の整理を頼む場合、モデルは一般的な説明文書の形式をすでに知っているかもしれません。一方、今回あなたが提供するのは、ある機器の実際の説明内容です。使用説明らしい文体で書けることと、この文書を忠実に整理できることは、やはり別です。本当に確認すべきなのは、回答が流暢に見えるかではなく、情報源に従っているかどうかです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-zero-shot-prompting/diagram-1-ja.svg",
+          "alt": "タスクの指示と説明書を一緒にモデルへ渡し、解答例は添えません。出力後に条件と形式をそれぞれ確認します。",
+          "width": 1600,
+          "height": 900,
+          "caption": "文書は処理対象のデータです。ここでいう例とは、完成した入力と出力のペアだけを指します。",
+          "description": "タスクの指示と説明書を一緒にモデルへ渡し、解答例は添えません。出力後に条件と形式をそれぞれ確認します。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "タスクを対象・動作・納品形式に分ける",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「ちょっと見て」とだけ頼むより、次のように書けます。「以下の除湿機の説明からフィルター清掃の手順を見つけ、操作順に列挙してください。使用を中止する条件は残し、記載のない部分は補わないでください。」このプロンプトには完成した例がないため、依然としてゼロショットですが、どの資料を読み、何を行い、どう出力するかはモデルに伝えています。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google のプロンプト設計ドキュメントは、明確な指示、制約、回答形式を重視しています。この事例に当てはめるなら、まず必要なのが手順の要約、警告の抽出、初心者向けの解説のどれかを決めます。一度に総合的な"
+            },
+            {
+              "type": "text",
+              "text": "評価"
+            },
+            {
+              "type": "text",
+              "text": "、故障診断、購入のアドバイスまで求めると、異なるタスクが混在し、モデルが文書の範囲を逸脱しやすくなります。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "情報が不足している場合の対応も定義しましょう。文書に定期的な清掃とだけ書かれ、具体的な頻度がない場合、期待する出力では「頻度の記載なし」を残すべきです。すべての項目を必ず埋めるよう強く求めると、モデルが一般的な経験則で数値を補ってしまう可能性があります。情報が欠けた項目も有用な結果であり、隠すべき回答の欠陥ではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "説明書を使って一通り練習する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下は説明のための仮の場面です。使用する権利があり、個人情報を含まない機器の説明文を用意します。電源を切る、電源プラグを抜く、フィルターを取り出す、メーカー指定の方法で清掃する、乾燥後に取り付ける、という内容を含めます。モデルには原文にある順序を列挙させ、先に満たす必要がある条件を別途示すよう求めます。また、原文にない清掃道具を追加しないよう指示します。"
+        },
+        {
+          "type": "paragraph",
+          "text": "期待する出力は、各手順の根拠を原文で確認できるものであるべきです。電源プラグを抜く手順が抜けていないか、乾燥という条件を勝手な時間指定に変えていないか、洗剤を独自に追加していないかを確認します。この例の目的は、要約の忠実さを検証する方法を学ぶことです。実際の手入れは、その機器のメーカーの説明に従ってください。例示した手順をすべての家電に当てはめてはいけません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "さらに別の文章を用意し、順序に関する情報を異なる箇所に分散させたり、「水洗いしてはいけない」などの否定条件を加えたりします。モデルが明確な箇条書きしか整理できず、段落形式の説明では制約を落としてしまうなら、このプロンプトの適用範囲は想定より狭いということです。これは資料の構成やプロンプトを調整すべき証拠であり、ゼロショットという方法が無効だと即断する理由ではありません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず誤りを分類し、追加するものを決める",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "すでに提供した条件をモデルが落としてしまうなら、まず作業範囲をより明確に書くか、関連する段落をまとめます。いつも出力項目を間違えるなら、少数の完全な例を加えると役立つ可能性があります。文書に記載のない新バージョンの機能を知らない場合は、正しい情報源や検索ツールを補うべきです。フューショットの形式例では、欠けている事実を生み出せません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "ゼロショットは、プロンプトが短く、基本ルールだけで十分かを見極めやすいため、出発点に特に適しています。後から例を追加するときにも、明確な比較対象ができます。最初から大量の例、役割設定、例外条件を詰め込むと、何が改善したのか、どの部分が実際に効いているのかを、かえって確認しにくくなります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "モデルが最初に間違えたからといって、「必ず正確に」「絶対に間違えないで」とだけ追加しないでください。これらの言葉では、どこが間違っているのかが伝わりません。より効果的な修正は、「警告に関する条件は別に列挙し、通常の清掃手順にまとめないでください」と指示し、同じデータ群でもう一度確認することです。このような変更は具体的な誤りに対応しており、保守もしやすくなります。"
+        },
+        {
+          "type": "heading",
+          "text": "ゼロショット、フューショット、資料の添付を併せて理解する",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "フューショットプロンプティングには例を添え、ゼロショットには添えません。ただし、どちらも検索で取得した文書を提供できます。例を示さずに、検索で見つけた操作マニュアルに基づいて回答するようモデルに頼めるため、ゼロショットは検索拡張生成を排除しません。これらは例の構成と事実の情報源をそれぞれ表す概念であり、どれか一つしか選べない製品分類ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同様に、「手順ごとに列挙して」と求めるだけで、自動的にフューショットになるわけではありません。これは出力形式の指定であり、完成したタスクの解答を一組示しているわけではないからです。この違いを理解すれば、チームでプロンプトをより正確に議論できます。追加すべきなのはルールの文言か、例か、それとも原資料か。それぞれの変更はコストも用途も異なります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最後に、通常の文書、情報の欠落、否定条件を含む固定の検証セットを残します。ルールの改訂やモデルの変更後に再実行し、どのケースが改善し、どれが悪化したかを記録します。ゼロショットは初歩的な使い方というわけではありません。タスクが明確で、資料が十分にあり、結果を検証できるなら、単純なプロンプトそのものが適切な解決策になりえます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検証記録には、その時点の原文のバージョンも保存すべきです。マニュアルが更新されていれば、古い回答が今も正しいとは限りません。再び比較すべきなのは情報源と要約の整合性であり、モデルに以前の説明を維持させることではありません。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "問題",
+            "優先して補うもの",
+            "ゼロショットを維持できるか"
+          ],
+          "rows": [
+            [
+              "要求が曖昧すぎる",
+              "対象・動作・形式",
+              "できる"
+            ],
+            [
+              "形式がいつも不統一",
+              "完全な例",
+              "追加後はフューショット"
+            ],
+            [
+              "最新情報が不足",
+              "原資料または検索",
+              "できる"
+            ]
+          ],
+          "caption": "概念と利用場面の比較。2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "ゼロショットでも多くの資料を提供できる",
+          "text": "判断のポイントは解答例の有無であり、プロンプトの長さではありません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "フューショットプロンプティング（Few-shot Prompting）とは：例で形式を明確に伝える",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "検索拡張生成（RAG）とは：回答に確認できる根拠を添える",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wei ら：ファインチューニングされた言語モデルはゼロショット学習器である",
+          "url": "https://arxiv.org/abs/2109.01652",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：プロンプト設計の戦略",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "제로샷 프롬프팅(Zero-shot Prompting)이란: 먼저 과제를 명확히 설명하기",
+      "description": "제로샷 프롬프팅은 정답이 포함된 예시 없이 규칙과 새로운 자료만으로 모델에 작업을 요청하는 방식입니다. 제로샷은 모델이 학습한 적 없다는 뜻도, 프롬프트에 자료를 첨부할 수 없다는 뜻도 아닙니다. 이 글은 가전제품 설명서 정리를 예로 들어 출력 항목, 누락된 정보, 판단 범위를 명확히 지정하는 방법을 설명하고, 퓨샷 프롬프팅과 검색 자료의 용도를 비교합니다. 비교표와 테스트 절차를 통해 직접 질문하는 것만으로 충분한 경우와 예시를 추가해야 하는 경우를 알아봅니다.",
+      "hero": {
+        "src": "/guides/ai-term-zero-shot-prompting/hero-ko.jpg",
+        "alt": "펼친 설명서의 왼쪽 페이지에는 회색 가로선 세 개, 오른쪽 페이지에는 주황색 원이 있으며, 오른쪽 아래의 파란색 화살표는 오른쪽을 가리킵니다.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "제로샷 프롬프팅은 프롬프트에 정답이 포함된 과제 예시를 첨부하지 않고 지시만으로 새로운 입력을 처리하도록 요청하는 방식입니다. 예를 들면 “이 공지의 핵심 내용을 정리해 줘”와 같습니다.",
+            "여기서 ‘제로’는 이번 프롬프트에 제공한 예시의 수를 뜻하며, 모델이 학습하지 않았다는 의미가 아닙니다. 프롬프트에 전체 문서, 분류 규칙, 출력 요구 사항을 첨부할 수도 있습니다.",
+            "“단계별로 나열해 줘”라는 요구는 출력 형식을 지정하는 것이며, 자동으로 퓨샷 프롬프팅이 되는 것은 아닙니다. 제로샷에서도 검색한 문서를 제공할 수 있습니다.",
+            "형식이 계속 일관되지 않으면 완성된 예시를 추가할 수 있으며, 추가한 뒤에는 퓨샷에 해당합니다. 최신 정보가 부족하면 원문 문서나 검색으로 보완해야 합니다. 예시는 없는 사실을 만들어 낼 수 없습니다."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "제로샷 프롬프팅(Zero-shot Prompting)은 프롬프트에 정답이 포함된 과제 예시를 제공하지 않고 지시만으로 새로운 입력을 처리하도록 요청하는 방식입니다. “이 공지의 핵심 내용을 정리해 줘”가 흔한 형태입니다. 여기서 ‘제로’는 이번 프롬프트에 제공한 예시의 수를 뜻하며, 모델이 학습하지 않았다거나 관련 지식을 전혀 모른다는 의미가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전체 문서, 분류 규칙, 출력 요구 사항을 첨부해도 됩니다. 예시가 없는 것과 배경 자료가 없는 것은 서로 다릅니다. 아래에서는 가전제품 설명서를 정리하는 상황을 통해 먼저 명확한 제로샷 기준을 세우고, 오류에 따라 규칙이나 출처를 보완할지, 퓨샷 예시를 사용할지 결정하는 방법을 설명합니다."
+        },
+        {
+          "type": "heading",
+          "text": "제로샷은 아무 기반 없이 모든 것을 익힌다는 뜻이 아닙니다",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "언어 모델은 학습 단계에서 이미 수많은 패턴을 접했으며, 일부는 지시문 "
+            },
+            {
+              "type": "article",
+              "text": "미세 조정",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "을 거쳐 자연어 요청에 따라 작업을 수행하는 법을 학습합니다. Wei 등의 FLAN 연구는 지시문 미세 조정이 접해 보지 못한 유형의 과제에서 제로샷 성능을 어떻게 개선하는지 살펴봅니다. 이 연구는 제로샷 능력이 학습 방식의 영향을 받을 수 있음을 보여 줍니다. 따라서 ‘이번에 예시를 주지 않았다’를 모델이 완전히 처음부터 시작한다는 뜻으로 이해해서는 안 됩니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "연구에서 말하는 제로샷도 평가 설정을 살펴봐야 합니다. 어떤 과제를 접한 적 없는 것으로 보는지, 학습 자료를 어떻게 구성하는지에 각각 구체적인 정의가 있습니다. 일반 사용자가 프롬프트 설계에서 제로샷이라고 할 때는 보통 해당 프롬프트에 입력과 모범 답안의 쌍을 첨부하지 않았다는 뜻입니다. 두 용법은 관련이 있지만, 채팅에서의 사용을 엄격한 연구 테스트와 동일하게 보아서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 모델에 설명서를 정리하도록 요청하면, 모델은 이미 일반적인 설명 문서 형식에 익숙할 수 있습니다. 하지만 오늘 제공한 자료는 특정 기기의 실제 내용입니다. 사용 설명서 같은 문체로 쓰는 것과 이 문서를 충실히 정리하는 것은 여전히 별개의 문제입니다. 실제로 검증해야 할 것은 답변이 유창해 보이는지가 아니라 출처를 충실히 따랐는지입니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-zero-shot-prompting/diagram-1-ko.svg",
+          "alt": "정답이 포함된 예시 없이 과제 지시와 설명서를 모델에 함께 제공합니다. 출력 후에는 조건과 형식을 각각 확인합니다.",
+          "width": 1600,
+          "height": 900,
+          "caption": "문서는 처리할 자료입니다. 여기서 말하는 예시는 완성된 입력과 출력의 쌍만을 뜻합니다.",
+          "description": "정답이 포함된 예시 없이 과제 지시와 설명서를 모델에 함께 제공합니다. 출력 후에는 조건과 형식을 각각 확인합니다.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "과제를 대상, 동작, 결과물 형식으로 나누기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "“이것 좀 봐 줘”라고만 하기보다 이렇게 쓸 수 있습니다. “아래 제습기 설명에서 필터 청소 단계를 찾아 작업 순서대로 나열해 줘. 사용을 중단해야 하는 조건은 유지하고, 언급되지 않은 내용은 추가하지 마.” 이 프롬프트에는 완성된 예시가 없으므로 여전히 제로샷에 해당하지만, 어떤 자료를 보고 무엇을 하며 어떻게 출력할지 이미 모델에 알려 주었습니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google의 프롬프트 설계 문서는 명확한 지시, 제약 조건, 응답 형식을 강조합니다. 이 사례에 적용할 때는 먼저 원하는 것이 단계 요약인지, 경고 추출인지, 초보자를 위한 설명인지 정하세요. 한 번에 종합적인 "
+            },
+            {
+              "type": "text",
+              "text": "평가"
+            },
+            {
+              "type": "text",
+              "text": "와 고장 진단, 구매 조언까지 요구하면 서로 다른 과제가 뒤섞여 모델이 문서의 범위를 벗어나기 쉽습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "정보가 부족할 때 어떻게 처리할지도 정해야 합니다. 문서에 정기적으로 청소하라는 말만 있고 구체적인 주기가 없다면, 기대하는 출력에는 ‘주기가 명시되지 않음’이 남아 있어야 합니다. 모든 항목을 반드시 채우라고 요구하면 모델이 일반적인 경험에 근거해 숫자를 덧붙이도록 유도할 수 있습니다. 정보가 누락된 항목은 유용한 결과이지, 감춰야 할 답변의 결함이 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "설명서로 전체 과정 연습하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "다음 상황은 설명을 위한 가상 예시입니다. 사용할 권한이 있고 개인정보가 없는 기기 설명문을 준비하세요. 내용에는 기기 끄기, 전원 플러그 뽑기, 필터 꺼내기, 제조사의 방법에 따라 청소하기, 건조 후 다시 장착하기가 포함되어야 합니다. 모델에 원문에 나온 순서를 나열하고, 먼저 충족해야 할 조건을 별도로 표시하도록 요청하세요. 원문에 없는 청소 도구를 추가하지 말라는 요구도 넣으세요."
+        },
+        {
+          "type": "paragraph",
+          "text": "기대하는 출력은 각 단계의 출처를 다시 확인할 수 있어야 합니다. 전원 플러그 뽑기가 빠지지 않았는지, 건조 조건이 임의의 시간으로 바뀌지 않았는지, 세정제를 임의로 추가하지 않았는지 확인하세요. 이 예시는 요약의 충실도를 검증하는 방법을 설명하기 위한 것입니다. 실제 유지 관리는 해당 기기 제조사의 설명을 따라야 하며, 예시의 단계를 모든 가전제품에 적용해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "다른 글도 준비해 순서 정보를 서로 다른 위치에 배치하거나, ‘물로 씻으면 안 됨’ 같은 부정 조건을 추가해 보세요. 모델이 명확한 목록 형태만 정리할 수 있고 문단으로 서술된 글에서는 제약 조건을 누락한다면, 이 프롬프트의 적용 범위가 생각보다 좁다는 뜻입니다. 이는 원문 구성이나 프롬프트를 조정해야 한다는 근거이지, 곧바로 제로샷 방식이 실패했다고 선언할 이유는 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "먼저 오류를 분류한 뒤 무엇을 추가할지 결정하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "모델이 이미 제공한 조건을 누락했다면 먼저 작업 범위를 더 명확히 쓰거나 관련 문단을 한곳에 모으세요. 항목을 계속 잘못 사용한다면 완성된 예시를 소수 추가하는 것이 도움이 될 수 있습니다. 문서에 없는 새 버전의 기능을 모른다면 올바른 출처나 조회 도구를 제공해야 합니다. 퓨샷 형식 예시로 없는 사실을 만들어 낼 수는 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "제로샷은 프롬프트가 비교적 짧아 기본 규칙만으로 충분한지 파악하기 쉬우므로 출발점으로 특히 적합합니다. 나중에 예시를 추가할 때도 명확한 비교 기준이 생깁니다. 처음부터 많은 예시, 역할 설정, 예외 조건을 넣으면 무엇이 개선되었고 어느 부분이 실제로 효과가 있었는지 오히려 확인하기 어려워집니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "모델이 처음에 틀렸다고 해서 “반드시 정확하게”, “절대 틀리면 안 돼”만 추가하지 마세요. 이런 말은 어디가 틀렸는지 알려 주지 않습니다. “경고 조건은 별도로 나열하고 일반적인 청소 단계에 합치지 마”처럼 수정하고 같은 자료 묶음으로 다시 확인하는 편이 더 효과적입니다. 이런 변경은 구체적인 오류에 대응할 수 있고 유지 관리도 더 쉽습니다."
+        },
+        {
+          "type": "heading",
+          "text": "제로샷, 퓨샷, 자료 첨부를 함께 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "퓨샷 프롬프팅에는 예시를 첨부하고 제로샷에는 첨부하지 않습니다. 하지만 두 방식 모두 검색한 문서를 제공할 수 있습니다. 예시 없이도 검색한 사용 설명서에 근거해 답하도록 요청할 수 있으므로 제로샷은 검색 증강 생성을 배제하지 않습니다. 이 개념들은 각각 예시의 구성과 사실의 출처를 설명하는 것이며, 하나만 선택해야 하는 제품 범주가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마찬가지로 “단계별로 나열해 줘”라는 요구도 프롬프트를 자동으로 퓨샷으로 바꾸지는 않습니다. 이는 출력 형식을 정할 뿐, 완성된 과제 답안 한 세트를 보여 주는 것이 아니기 때문입니다. 이 차이를 이해하면 팀에서 프롬프트를 더 정확하게 논의할 수 있습니다. 규칙 문구를 늘릴지, 예시를 추가할지, 원자료를 보충할지에 따라 각각의 비용과 용도가 다릅니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "마지막으로 일반 문서, 정보 누락, 부정 조건을 포함하는 고정된 검증 세트를 남겨 두세요. 규칙을 개정하거나 모델을 바꾼 뒤 다시 실행하고, 어떤 사례가 개선되었고 어떤 사례가 나빠졌는지 기록하세요. 제로샷은 초보적인 사용법이 아닙니다. 과제가 명확하고 자료가 충분하며 결과를 검증할 수 있다면, 단순한 프롬프트 자체가 적합한 해법일 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검증 기록에는 당시의 원문 버전도 보관해야 합니다. 설명서가 업데이트되었다면 이전 답변이 여전히 맞는 것은 아닙니다. 다시 비교해야 하는 것은 출처와 요약의 일치 여부이며, 모델에 이전 설명을 유지하라고 요구하는 것이 아닙니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "문제",
+            "우선 보완할 사항",
+            "제로샷 유지 가능 여부"
+          ],
+          "rows": [
+            [
+              "요구가 너무 모호함",
+              "대상, 동작, 형식",
+              "가능"
+            ],
+            [
+              "형식이 계속 일관되지 않음",
+              "완성된 예시",
+              "추가하면 퓨샷에 해당"
+            ],
+            [
+              "최신 정보 부족",
+              "원문 문서 또는 검색",
+              "가능"
+            ]
+          ],
+          "caption": "개념과 사용 상황 비교. 2026년 9월 확인."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "제로샷에도 많은 자료를 넣을 수 있습니다",
+          "text": "판단의 핵심은 정답이 포함된 예시가 있는지이며, 프롬프트의 길이가 아닙니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "퓨샷 프롬프팅(Few-shot Prompting)이란: 예시로 형식을 명확히 가르치기",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "검색 증강 생성(RAG)이란: 답변에 확인 가능한 근거를 덧붙이기",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wei 외: 미세 조정된 언어 모델은 제로샷 학습자다",
+          "url": "https://arxiv.org/abs/2109.01652",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google: 프롬프트 설계 전략",
+          "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "零样本提示（Zero-shot Prompting）是什么：先把任务说清楚",
+      "description": "零样本提示是不提供已解答的示例，直接用规则与新数据请模型完成工作；零样本不表示模型从未训练，也不表示提示词不能附带资料。本文用整理家用电器说明的例子，说明如何写清输出字段、信息缺漏与判断范围，并比较少样本提示与检索资料的不同用途。附对照表及测试流程，让你知道什么时候直接提问就够，什么时候需要加例子。",
+      "hero": {
+        "src": "/guides/ai-term-zero-shot-prompting/hero-zh-cn.jpg",
+        "alt": "打开的手册左页有三条灰色横线，右页有橙色圆形，右下方的蓝色箭头指向右侧。",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "零样本提示是在提示中不附已解答的任务示例，直接用指令请模型处理新输入，例如“把这段公告整理成要点”。",
+            "这里的“零”指本次给出的示例数量，不代表模型没有训练，提示词也仍可附上完整文档、分类规则与输出要求。",
+            "要求“分步列出”是在规定输出形式，不会自动把提示变成少样本；零样本也能提供检索到的文档。",
+            "格式一直不一致时可加入完整示例，加入后就属于少样本；缺最新信息则应补充原始文档或检索，示例不能创造缺少的事实。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "零样本提示（Zero-shot Prompting）是在提示中没有提供已解答的任务示例，直接用指令请模型处理新输入。像“把这段公告整理成要点”就是常见形式。这里的“零”指本次给出的示例数量，不是模型没有训练，也不代表它不知道任何相关知识。"
+        },
+        {
+          "type": "paragraph",
+          "text": "你仍然可以附上完整文档、分类规则与输出要求。没有例子和没有背景资料，是两回事。以下用家用电器说明书的整理场景，教你先建立清楚的零样本基准，再根据错误决定要补规则、补来源，还是改用少样本示例。"
+        },
+        {
+          "type": "heading",
+          "text": "零样本并不是凭空学会一切",
+          "level": 2
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "语言模型在训练阶段已接触大量模式，有些还经过指令"
+            },
+            {
+              "type": "article",
+              "text": "微调",
+              "kind": "life",
+              "slug": "ai-term-fine-tuning"
+            },
+            {
+              "type": "text",
+              "text": "，学习按自然语言要求完成工作。Wei 等人的 FLAN 研究探讨指令微调如何改善未见任务类型的零样本表现。这项研究说明零样本能力可能受训练方式影响，不能把“这次没给例子”理解为模型完全从零开始。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "研究中的零样本也需要看评估设置：哪些任务未见过、训练数据如何安排，都有特定定义。一般用户在提示设计中说零样本，通常只是表示这份提示没有附输入与标准答案的配对。两种说法相关，但不应把聊天操作直接当成严格的研究测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如你要模型整理说明书，它可能已熟悉常见的说明文档形式；你今天提供的却是某台机器的实际内容。能写出像使用说明的语气，和能忠实整理这份文档，仍是两回事。真正需要核查的是它有没有遵循来源，而不是答案看起来是否流畅。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-zero-shot-prompting/diagram-1-zh-cn.svg",
+          "alt": "任务指令与说明书一起交给模型，没有附已解答的示例；输出后分别检查条件与格式。",
+          "width": 1600,
+          "height": 900,
+          "caption": "文档是待处理资料；只有已完成的输入输出配对才是这里所说的示例。",
+          "description": "任务指令与说明书一起交给模型，没有附已解答的示例；输出后分别检查条件与格式。",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "把任务拆成对象、动作与交付形式",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "比起只说“帮我看一下”，可以写成：“从以下除湿机说明中找出清洁滤网的步骤，按操作顺序列出；保留停止使用的条件，未提到的部分不要补充。”这份提示没有已完成的示例，所以仍属于零样本，但已告诉模型要看哪份资料、做什么及如何输出。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Google 的提示设计文档强调明确的指令、限制与回复格式。应用到这个案例时，先决定你要的是步骤摘要、警示提取，还是新手解说。若一次要求全面"
+            },
+            {
+              "type": "text",
+              "text": "评测"
+            },
+            {
+              "type": "text",
+              "text": "、故障诊断和购买建议，就把不同任务混在一起，容易让模型偏离文档范围。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "也要定义信息不足时怎么办。假设文档只说定期清洁，没有具体频率，预期输出应保留“未注明频率”。若你硬性要求每个字段一定填完整，可能诱使模型用一般经验补上数字。存在缺漏的字段是一项有用结果，不是需要掩饰的回答瑕疵。"
+        },
+        {
+          "type": "heading",
+          "text": "用说明书做一次完整练习",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "以下场景纯属示意。准备一段你有权使用、不含个人信息的机器说明，文字包含关机、拔除电源、取出滤网、按原厂方法清洁及干燥后装回。请模型列出原文提到的顺序，另外标明任何需先满足的条件，并要求不新增原文没有的清洁工具。"
+        },
+        {
+          "type": "paragraph",
+          "text": "预期输出应能让你回查每一步的来源。检查是否漏掉拔除电源、是否把干燥改成任意时间、是否自行加入清洁剂。这个例子是在教你验证摘要忠实度，实际维护仍以该机器原厂说明为依据；不要把示意步骤套用到所有电器。"
+        },
+        {
+          "type": "paragraph",
+          "text": "再准备另一段文字，把顺序信息写在不同位置，或加入“不得用水清洗”等否定条件。若模型只会整理明显的分条列举文本，遇到段落叙述就漏掉限制，表示这份提示的适用范围比你想象的小。这是需要调整来源组织方式或提示的证据，不是直接宣告零样本方法失效。"
+        },
+        {
+          "type": "heading",
+          "text": "先分类错误，再决定要加什么",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "若模型漏了你已提供的条件，先把工作范围写得更明确，或将相关段落放在一起。若它总是用错字段，加入少量完整示例可能有帮助。若它不知道文档没有提供的新版本功能，应补充正确来源或查询工具，少样本格式示例不能创造缺少的事实。"
+        },
+        {
+          "type": "paragraph",
+          "text": "零样本特别适合作为起点，因为提示较短，较容易看出基本规则是否足够。当你日后加入例子，才有清楚的比较对象。如果一开始就堆入大量示例、角色设定和例外条件，改进了什么、哪一段真正有作用，反而较难确认。"
+        },
+        {
+          "type": "paragraph",
+          "text": "不要因为模型第一次答错就只加“务必正确”“绝对不能错”。这些字没有指出错在哪里。更有效的修正是：“警告条件需另外列出，不要合并成一般清洁步骤”，并用同一批资料重新检查。这样的变更能对应具体错误，也比较容易维护。"
+        },
+        {
+          "type": "heading",
+          "text": "零样本、少样本与附带资料可以一起理解",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "少样本提示会附带示例，零样本则不附带；但两者都能提供检索到的文档。你可以在没有示例的情况下，请模型根据查到的操作手册回答，所以零样本并不排斥检索增强生成。这些概念分别描述示例配置与事实来源，并不是只能选一个的产品类别。"
+        },
+        {
+          "type": "paragraph",
+          "text": "同样地，要求“分步列出”也不会自动把提示变成少样本。它是在规定输出形式，没有展示一组已完成的任务答案。了解这个差别，可以让团队讨论提示时更精确：到底要增加规则文字、增加示例，还是增加原始资料，每一种改动的成本与用途都不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "最后保留稳定的验证集，包含普通文档、信息缺漏与否定条件。规则改版或模型更换后再运行一次，记录哪些案例改善、哪些退步。零样本不是低级用法；只要任务清楚、资料足够且结果可验证，简单的提示本身就可能是合适方案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "验证记录也应保留当时的原文版本。若手册已更新，旧答案不一定仍然正确；需要重新比较的是来源和摘要的一致性，而非要求模型维持旧说法。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "问题",
+            "优先补充",
+            "是否仍可使用零样本"
+          ],
+          "rows": [
+            [
+              "要求太模糊",
+              "对象、动作、格式",
+              "可以"
+            ],
+            [
+              "格式一直不一致",
+              "完整示例",
+              "加入后属于少样本"
+            ],
+            [
+              "缺最新信息",
+              "原始文档或检索",
+              "可以"
+            ]
+          ],
+          "caption": "概念与使用场景比较；查证于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "零样本可以有很多资料",
+          "text": "判断重点是有没有已解答的示例，不是提示词有多长。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "少样本提示（Few-shot Prompting）是什么：用例子讲清楚格式",
+              "kind": "life",
+              "slug": "ai-term-few-shot-prompting"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检索增强生成（RAG）是什么：让回答附上可查的依据",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Wei 等：经过微调的语言模型是零样本学习者",
+          "url": "https://arxiv.org/abs/2109.01652",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Google：提示设计策略",
           "url": "https://ai.google.dev/gemini-api/docs/prompting-strategies",
           "checked_on": "2026-09-14"
         }

@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "微調（Fine-tuning）：讓既有模型更適合你的任務",
@@ -104,6 +107,7 @@
           "width": 1600,
           "height": 900,
           "caption": "測試資料不能同時變成模型練習的答案。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -237,6 +241,954 @@
       "sources": [
         {
           "title": "Hugging Face：Fine-tuning",
+          "url": "https://huggingface.co/docs/transformers/training",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Howard、Ruder：ULMFiT",
+          "url": "https://arxiv.org/abs/1801.06146",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Fine-tuning: Adapting an Existing Model to Your Task",
+      "description": "Fine-tuning continues training an existing model to fit a task or domain. Using support email classification, this article covers data preparation, parameter updates, held-out test sets and version deployment; distinguishes full fine-tuning, LoRA, supervised fine-tuning and RAG; and explains why training gains can mask real-world decline. Learn to judge whether fine-tuning is worthwhile and check format consistency, unknown types, data leakage and loss of prior abilities.",
+      "hero": {
+        "src": "/guides/ai-term-fine-tuning/hero-en.jpg",
+        "alt": "An existing model network retains its blue structure with added orange adjustment nodes, while separate test documents check the updates.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Fine-tuning starts with a trained model and continues training it on more focused data to better suit a particular task or domain.",
+            "It updates some trainable parameters in the model, unlike putting examples in a prompt. If the issue is an order status just updated in a database, fine-tuning is also not a suitable channel for real-time updates.",
+            "Supervised fine-tuning determines the training signal; LoRA determines how the model is adjusted. They can be combined and are not mutually exclusive options.",
+            "Without a held-out test set, successful training only shows that the model handles practice material better; it does not demonstrate improvement on the actual task."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Fine-tuning starts with a trained model and continues training it on more focused data to better suit a particular task or domain. It builds on existing capabilities rather than starting over with random "
+            },
+            {
+              "type": "article",
+              "text": "parameters",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": ". For language models, fine-tuning may improve classification, produce consistent output formats, or support domain-specific document processing. What it can actually improve depends on the training objective and data; the label \"custom model\" alone does not establish those benefits."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "Fine-tuning updates some trainable parameters in the model, unlike putting examples in a prompt. This article uses a fictional support email classification task to explain design and acceptance criteria, distinguishing fine-tuning methods, training objectives, and external retrieval. Hugging Face's implementation documentation and the original ULMFiT research provide the foundations for continuing to train an existing model. The discussion below does not claim that any particular configuration has been tested successfully, nor does it guarantee a universally sufficient number of training examples."
+        },
+        {
+          "type": "heading",
+          "text": "First, Clarify What You Want to Change",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose a support team needs to classify emails into account, payment, and other categories. A general-purpose model understands the gist but often produces a lengthy explanation or uses inconsistent category names. Fine-tuning could aim to make classification and the required output format consistent. If the issue is an order status just updated in a database, fine-tuning is not a suitable channel for real-time updates. Instead, query a system you are authorized to access, then have the model process the results."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Fine-tuning is not limited to imitating a tone of voice. It can adapt a model for tasks such as classification, sequence "
+            },
+            {
+              "type": "text",
+              "text": "labeling"
+            },
+            {
+              "type": "text",
+              "text": ", and generation, but each requires suitable data and evaluation. The closer training data is to actual use, the better you can assess whether the goal has been met. If you collect only polished, standardized demonstrations, the model may be unreliable with typos, mixed requests, and ambiguous emails. Define success and failure conditions first to determine whether training is worthwhile."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Training Objectives and Update Methods Are Separate Choices",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Supervised fine-tuning learns from inputs and expected outputs, while preference optimization may use better and worse responses to the same question. This is a choice of training signal. Full fine-tuning updates most or all model parameters, while parameter-efficient methods such as LoRA update a smaller, added component. This is a choice of how to adjust the model. These two dimensions can be combined; SFT and LoRA should not be treated as mutually exclusive product options."
+        },
+        {
+          "type": "paragraph",
+          "text": "Training still requires handling data formats, tokenization, loss calculation, learning rates, and evaluation. Merely changing the model name or uploading data to an interface does not mean every step has been completed correctly. Data truncation may remove the expected answer, misaligned fields may teach the model the wrong objective, and duplicate content may overemphasize certain cases. Check these issues with a small sample before committing to a full, lengthy training run."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-fine-tuning/diagram-1-en.svg",
+          "alt": "An existing model is fine-tuned on training examples. Separate held-out emails are used only for evaluation; a deployable version is created only after it passes.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Test data must not also become answers the model practices on.",
+          "description": "An existing model is fine-tuned on training examples. Separate held-out emails are used only for evaluation; a deployable version is created only after it passes.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: Evaluating Support Email Classification",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "For an input such as \"I forgot my password, and the payment notification was sent to my old email address,\" you cannot arbitrarily assign a single category. First define the business rules: allow multiple categories, prioritize account issues, or route the email to a person. Then build demonstrations using consistent standards, holding out some emails from training for testing. Expected outputs should follow the rules and format, rather than merely making the model reproduce standard answers to training emails more closely."
+        },
+        {
+          "type": "paragraph",
+          "text": "As a baseline, first use the original model with clear prompts and a few examples, then compare it with the fine-tuned version on the same unseen emails. Record whether categories are correct, formats are valid, ambiguous cases remain assigned for human handling, and how errors are distributed across categories. If formatting improves but critical classifications get worse, an overall average alone cannot establish that fine-tuning succeeded. This is an evaluation design; the actual degree of improvement still requires testing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Also retain out-of-scope emails, such as requests for real-time updates on personal orders. A classification model can route them to the appropriate channel, but it must not invent order statuses from training memory. If the model increasingly sounds like a support agent but starts fabricating outcomes, its output behavior has exceeded the task boundaries. Adjust the demonstrations and acceptance criteria instead of treating fluency as good performance."
+        },
+        {
+          "type": "heading",
+          "text": "Why Good Training Scores Can Still Lead to Failure",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Overfitting occurs when a model fits the training data too closely but performs unreliably on new cases. Another problem is data leakage: different versions of the same email are split between training and testing, making scores look like evidence of generalization when they still largely reflect repeated practice. Split data by groups based on source, time, or the same underlying case, and check for near-duplicates. The split must reflect the new inputs the product will actually encounter."
+        },
+        {
+          "type": "paragraph",
+          "text": "Existing capabilities may also deteriorate after focused training. For example, the model may become limited to producing support categories and respond less naturally to questions it previously handled. Whether this is an acceptable trade-off depends on its deployment purpose; a dedicated classifier and a general-purpose assistant have different standards. Improvement on one set of tasks does not imply that every capability has improved. Keep tests for the capabilities that must be maintained, and record the differences before and after fine-tuning."
+        },
+        {
+          "type": "heading",
+          "text": "From Completed Training to a Usable Model",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "The training program finishing only means that a model state has been produced. You still need to verify loading, inference formats, latency, the deployment version, and rollback procedures. When using added parameters, ensure they are compatible with the specified base model. Prompts, the tokenizer, and the output parser can also affect results, so record the entire inference setup rather than saving only a weights filename."
+        },
+        {
+          "type": "paragraph",
+          "text": "Before starting, try improving prompts, providing clear examples, and fixing the data. If errors persist in stable behaviors the model can learn, then assess fine-tuning. For knowledge-based question answering where information changes frequently and sources are required, consider RAG first. The two can coexist: fine-tuning helps the model follow an answer format, while retrieval supplies current evidence. Base the choice on the cause of failure to avoid adding unnecessary maintenance merely for customization."
+        },
+        {
+          "type": "paragraph",
+          "text": "After deployment, spot-check new types of emails, especially when business rules change. If the old model continues using the old classifications, the issue may go beyond an unclear prompt: the training objective itself may be outdated. Preserve data and model versions, annotation rules, and evaluation results so you can determine whether to retrain, fix preprocessing, or simply update external workflows. Personal data in demonstrations should also be prepared according to the intended purpose, preventing unnecessary contact details from being learned as answer patterns. Whether data meets the conditions for training use is a separate question from whether it has appeared in a support system."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Focus",
+            "Considerations"
+          ],
+          "rows": [
+            [
+              "Prompts and examples",
+              "Change the current input",
+              "Usually leave parameters unchanged"
+            ],
+            [
+              "Fine-tuning",
+              "Continue training toward an objective",
+              "Requires data and version management"
+            ],
+            [
+              "RAG",
+              "Provide external evidence",
+              "Knowledge updates can be separate from the model"
+            ]
+          ],
+          "caption": "Concept comparison; sources checked: 2026/9."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Start with Unseen Test Data",
+          "text": "Without a held-out test set, successful training only shows that the model handles practice material better; it does not demonstrate improvement on the actual task."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Supervised Fine-tuning (SFT): Teaching Models to Complete Tasks with Good Demonstrations",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Low-Rank Adaptation (LoRA): How a Small Set of Trainable Parameters Adjusts a Model",
+              "kind": "life",
+              "slug": "ai-term-lora"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "What Is Retrieval-Augmented Generation (RAG)? Giving Answers Verifiable Evidence",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face: Fine-tuning",
+          "url": "https://huggingface.co/docs/transformers/training",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Howard, Ruder: ULMFiT",
+          "url": "https://arxiv.org/abs/1801.06146",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "ファインチューニング（Fine-tuning）：既存のモデルを自分のタスクに合わせる",
+      "description": "ファインチューニングは、既存のモデルに追加学習を行い、特定のタスクや分野に適するようにする手法です。本記事では、カスタマーサポートのメール分類を例に、データ整理、パラメータ更新、テストセットの確保、バージョンのデプロイを解説します。フルファインチューニング、LoRA、教師ありファインチューニング、RAG の違いと、学習成績が良くなっても実際の性能が下がる理由も説明します。読み終えると、ファインチューニングを行う価値がある問題かどうかを判断し、形式の一貫性、未知の種類、データリーク、既存の能力の低下を確認する方法がわかります。",
+      "hero": {
+        "src": "/guides/ai-term-fine-tuning/hero-ja.jpg",
+        "alt": "既存のモデルのネットワークは青い構造を保ち、オレンジ色の調整ノードが加わっている。隣には、更新結果を確認する独立したテスト用文書がある",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "ファインチューニング（Fine-tuning）は、学習済みのモデルを出発点に、対象を絞ったデータで追加学習を行い、特定のタスクや分野に適するようにする手法です。",
+            "モデル内の学習可能なパラメータの一部を更新するため、プロンプトに例を入れる方法とは異なります。また、データベースで更新されたばかりの注文状況を扱う場合、ファインチューニングはリアルタイム更新の適切な手段ではありません。",
+            "教師ありファインチューニングは学習信号の選択であり、LoRA はモデルの調整方法の選択です。両者は組み合わせることができ、互いに排他的な選択肢ではありません。",
+            "テストセットを別に確保していなければ、学習の成功が示すのは練習内容をよりうまく処理できるようになったことだけで、実際のタスクが改善したとは証明できません。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ファインチューニングは、英語で Fine-tuning といい、学習済みのモデルを出発点に、対象を絞ったデータで追加学習を行い、特定のタスクや分野に適するようにする手法です。既存の能力を引き継ぐもので、ランダムな"
+            },
+            {
+              "type": "article",
+              "text": "パラメータ",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "からやり直すわけではありません。言語モデルでは、分類、出力形式の固定、専門分野の文書処理などの改善に使われます。具体的に何を改善できるかは学習目標とデータに依存し、「カスタムモデル」という名前だけでは判断できません。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "ファインチューニングは、モデル内の学習可能なパラメータの一部を更新するため、プロンプトに例を入れる方法とは異なります。本記事では、架空のカスタマーサポートのメール分類を例に設計と受け入れ評価の方法を説明し、ファインチューニングの方式、学習目標、外部検索の違いを整理します。Hugging Face の実装ドキュメントと ULMFiT の原著論文は、既存のモデルに追加学習を行うための基礎を示しています。以下では、特定の設定が実測で成功したとは主張せず、どの場面にも通用する必要データ件数も保証しません。"
+        },
+        {
+          "type": "heading",
+          "text": "まず何を変えたいのかを明確にする",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "カスタマーサポートでメールをアカウント、支払い、その他に分類する必要があるとします。汎用モデルは大意を理解していても、長い説明を出力したり、分類名が一定しなかったりすることがあります。この場合、ファインチューニングの目標は、指定した形式で安定して分類できるようにすることです。一方、データベースで更新されたばかりの注文状況を扱う場合、ファインチューニングはリアルタイム更新の適切な手段ではありません。アクセス権限のあるシステムに問い合わせ、その結果をモデルに処理させるべきです。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "ファインチューニングは、口調をまねるためだけのものでもありません。分類、系列"
+            },
+            {
+              "type": "text",
+              "text": "ラベリング"
+            },
+            {
+              "type": "text",
+              "text": "、生成などのタスクに合わせて調整できますが、それぞれに対応するデータと評価が必要です。学習データが実際の利用場面に近いほど、目標を達成できたかを検証しやすくなります。整った定型的な例ばかりを集めると、誤字、複数の要望が混在するメール、曖昧なメールに対して性能が不安定になる可能性があります。まず成功と失敗の条件を明文化してこそ、学習を行う価値があるかを判断できます。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "目標と更新方法は別々に選ぶ",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "教師ありファインチューニングは、入力と期待する出力を使って学習します。一方、選好最適化では、同じ質問に対する、より良い回答とより悪い回答を使う場合があります。これは学習信号の選択です。フルファインチューニングは、モデルのパラメータの大部分またはすべてを更新します。LoRA などのパラメータ効率の高い手法は、追加した小さな部分を更新します。こちらはモデルをどう調整するかの選択です。両方の軸は組み合わせられるため、SFT と LoRA を互いに排他的な製品の選択肢として扱うことはできません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "学習では、データ形式、トークン化、損失計算、学習率、評価も扱う必要があります。モデル名を変えたり、何らかの画面にデータをアップロードしたりするだけでは、すべての手順を正しく完了したことにはなりません。データの切り詰めによって期待する回答が失われたり、フィールドのずれによって誤った目標を学習したり、重複内容によって特定の事例が過度に強化されたりする可能性があります。本格的な長時間の学習を始める前に、少量のサンプルでこうした問題を確認すべきです。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-fine-tuning/diagram-1-ja.svg",
+          "alt": "既存のモデルを学習用の例でファインチューニングし、別に確保したメール群は評価だけに使う。合格して初めてデプロイ可能なバージョンになる",
+          "width": 1600,
+          "height": 900,
+          "caption": "テストデータを、同時にモデルの練習用の正解にしてはいけません。",
+          "description": "既存のモデルを学習用の例でファインチューニングし、別に確保したメール群は評価だけに使う。合格して初めてデプロイ可能なバージョンになる",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "例：サポートメール分類の受け入れ評価",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「パスワードを忘れました。支払い通知も古いメールアドレスに届いています」という入力を設計する場合、勝手に単一のカテゴリを指定してはいけません。まず、複数カテゴリを認めるのか、アカウントを優先するのか、人の対応に回すのかという業務ルールを決めるべきです。そのうえで、一貫した基準で例を作成し、学習に使わないメールを一部テスト用に確保します。期待する出力はルールと形式に従うべきであり、単に学習用メールを暗記させ、模範解答に近づければよいわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "比較対象として、まず元のモデルに明確なプロンプトと少数の例を与え、ファインチューニング版と同じ未学習のメール群を処理させる方法があります。カテゴリが正しいか、形式が有効か、曖昧なケースを人の対応に回せるか、カテゴリごとの誤りの分布を記録します。形式だけが改善して重要な分類の性能が下がった場合、全体の平均だけでファインチューニングが成功したとはいえません。これは評価の設計であり、実際にどの程度改善するかはテストが必要です。"
+        },
+        {
+          "type": "paragraph",
+          "text": "対象範囲外のメールも確保しておく必要があります。たとえば、自分の注文の進捗をリアルタイムで照会したいという依頼です。分類モデルは適切な窓口に振り分けられますが、学習時の記憶だけで注文状況を作り上げてはいけません。回答が次第にサポート担当者らしくなっても、対応結果を捏造し始めたなら、出力の振る舞いがタスクの範囲を超えています。流暢さを良い成果と見なすのではなく、例と受け入れ評価を調整する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "学習スコアが良くても失敗する理由",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "過学習とは、モデルが学習データに適合しすぎて、新しい事例では不安定になることです。もう一つの問題はデータリークです。同じメールの異なる版が学習用とテスト用に分かれると、成績が汎化能力を示しているように見えても、実際には繰り返し練習に近い状態です。出所、時期、同一案件などでグループ分けして分割し、ほぼ重複している内容も確認するとよいでしょう。データの分け方は、製品が実際に受け取る新しい入力を反映している必要があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "対象を絞った学習の後に、既存の能力が低下することもあります。たとえば、サポート用のカテゴリしか出力しなくなり、以前は対応できていた質問への回答が不自然になる場合です。それが許容できるトレードオフかどうかは、デプロイ後の用途によります。専用の分類器と汎用アシスタントでは基準が異なります。一群のタスクでの改善から、すべての能力が向上したと判断することはできません。維持すべき能力のテストを残し、ファインチューニング前後の差を記録することが重要です。"
+        },
+        {
+          "type": "heading",
+          "text": "学習完了から使えるモデルになるまで",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "学習プログラムの終了が意味するのは、モデルの状態が一つ生成されたということだけです。その後も、読み込み、推論時の形式、遅延、デプロイするバージョン、ロールバック方法を検証する必要があります。追加パラメータを使う場合は、指定したベースモデルとの互換性も確認しなければなりません。プロンプト、tokenizer、出力パーサーも結果に影響する可能性があるため、重みファイルの名前だけを保存するのではなく、推論に使う構成全体をまとめて記録すべきです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "始める前に、プロンプトの改善、明確な例の提示、データの修正を試すことができます。学習可能で安定した振る舞いについて誤りが続くなら、ファインチューニングを検討します。データが頻繁に更新され、出典の提示も必要な知識に関する質問応答では、まず RAG を検討するとよいでしょう。両者は併用できます。ファインチューニングで回答形式を守らせ、検索でその時点の根拠を提供するという使い方です。選択は失敗の原因に基づいて行い、カスタマイズ自体を目的に不要な保守作業を増やさないようにします。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実際の運用開始後は、新しい種類のメールを抜き取り確認する必要があります。特に業務ルールが変わったときは重要です。古いモデルが従来どおりに分類し続ける場合、単にプロンプトが不明確なのではなく、学習目標そのものが古くなっている可能性があります。データとモデルのバージョン、アノテーションのルール、評価結果を残しておけば、再学習が必要なのか、前処理を修正すべきなのか、外部の業務フローだけを更新すればよいのかを判断できます。例示データに含まれる個人情報も、あらかじめ目的に沿って整理し、不要な連絡先情報を回答パターンとして学習させないようにすべきです。データを学習に利用できる条件と、そのデータがサポートシステムに存在したことがあるかどうかは、別の問題です。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "主に扱うこと",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "プロンプトと例",
+              "その回の入力を変える",
+              "通常はパラメータを変えない"
+            ],
+            [
+              "ファインチューニング",
+              "目標に合わせて追加学習する",
+              "データとバージョンの管理が必要"
+            ],
+            [
+              "RAG",
+              "外部の根拠を提供する",
+              "知識の更新をモデルから切り離せる"
+            ]
+          ],
+          "caption": "概念の比較。出典は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "まず未学習のテストデータを用意する",
+          "text": "テストセットを別に確保していなければ、学習の成功が示すのは練習内容をよりうまく処理できるようになったことだけで、実際のタスクが改善したとは証明できません。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "教師ありファインチューニング（SFT）：良い例でモデルにタスクの遂行を教える",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "低ランク適応（LoRA）：少数の学習可能なパラメータでモデルを調整する仕組み",
+              "kind": "life",
+              "slug": "ai-term-lora"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "検索拡張生成（RAG）とは：回答に確認可能な根拠を添える",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face：ファインチューニング",
+          "url": "https://huggingface.co/docs/transformers/training",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Howard、Ruder：ULMFiT",
+          "url": "https://arxiv.org/abs/1801.06146",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "파인튜닝(Fine-tuning): 기존 모델을 내 작업에 더 적합하게",
+      "description": "파인튜닝은 기존 모델의 학습을 이어가 특정 작업이나 분야에 더 적합하게 만드는 것입니다. 이 글은 고객 지원 메일 분류를 예로 데이터 정리, 매개변수 갱신, 테스트 세트 분리 보관과 버전 배포를 설명합니다. 전체 파인튜닝, LoRA, 지도 학습 기반 파인튜닝과 RAG를 구분하고, 학습 성적이 좋아져도 실제 성능은 떨어질 수 있는 이유를 살펴봅니다. 읽고 나면 파인튜닝을 적용할 만한 문제인지 판단하고, 형식 일관성, 알려지지 않은 유형, 데이터 누수와 기존 능력 저하를 점검할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-fine-tuning/hero-ko.jpg",
+        "alt": "기존 모델 네트워크의 파란 구조를 유지하면서 주황색 조정 노드를 추가하고, 옆의 독립된 테스트 문서로 갱신 결과를 점검하는 모습",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "파인튜닝(Fine-tuning)은 이미 학습된 모델에서 출발해, 특정 작업이나 분야에 더 적합하도록 초점을 좁힌 데이터로 학습을 이어가는 것입니다.",
+            "파인튜닝은 모델의 학습 가능한 매개변수 일부를 갱신하므로, 프롬프트에 예시를 넣는 것과 다릅니다. 데이터베이스에서 방금 갱신된 주문 상태가 문제라면, 파인튜닝은 적절한 실시간 갱신 수단이 아닙니다.",
+            "지도 학습 기반 파인튜닝은 학습 신호를 선택하는 것이고, LoRA는 모델 조정 방식을 선택하는 것입니다. 둘은 조합할 수 있으며 서로 배타적인 선택지가 아닙니다.",
+            "테스트 세트를 따로 남겨 두지 않았다면, 학습 성공은 모델이 연습한 내용을 더 잘 처리한다는 사실만 보여 줄 뿐, 실제 작업이 개선됐다는 증거가 되지 못합니다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "파인튜닝은 영어로 Fine-tuning이라 하며, 이미 학습된 모델에서 출발해 특정 작업이나 분야에 더 적합하도록 초점을 좁힌 데이터로 학습을 이어가는 것입니다. 기존 능력을 이어받는 것이며, 무작위로 정한 "
+            },
+            {
+              "type": "article",
+              "text": "매개변수",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "로 처음부터 다시 시작하는 것이 아닙니다. 언어 모델에서는 분류, 고정된 출력 형식, 특정 분야의 문서 처리를 개선하는 데 파인튜닝을 활용할 수 있습니다. 구체적으로 무엇을 개선할 수 있는지는 학습 목표와 데이터에 달려 있으며, ‘맞춤형 모델’이라는 이름만으로 단정할 수 없습니다."
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "파인튜닝은 모델의 학습 가능한 매개변수 일부를 갱신하므로, 프롬프트에 예시를 넣는 것과 다릅니다. 이 글은 가상의 고객 지원 메일 분류 사례로 설계와 검수 방법을 설명하고, 파인튜닝 방식, 학습 목표와 외부 검색을 구분합니다. Hugging Face의 구현 문서와 ULMFiT의 원 연구는 기존 모델의 학습을 이어가는 기초를 제공합니다. 아래 내용은 특정 설정이 실제 시험에서 성공했다고 주장하지 않으며, 필요한 데이터 건수를 보편적으로 보장하지도 않습니다."
+        },
+        {
+          "type": "heading",
+          "text": "무엇을 바꿀지 먼저 명확히 하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "고객 지원팀이 메일을 계정, 결제, 기타로 분류해야 한다고 가정해 봅시다. 범용 모델은 대략적인 의미를 이해하지만, 긴 설명을 출력하거나 일관되지 않은 분류명을 쓰곤 합니다. 이때 파인튜닝의 목표는 분류와 지정된 형식의 출력을 안정적으로 수행하는 것이 될 수 있습니다. 데이터베이스에서 방금 갱신된 주문 상태가 문제라면, 파인튜닝은 적절한 실시간 갱신 수단이 아닙니다. 접근 권한이 있는 시스템에 조회한 뒤 모델이 그 결과를 처리하도록 해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "파인튜닝은 말투를 흉내 내는 데만 쓰이는 것이 아닙니다. 분류, 시퀀스 "
+            },
+            {
+              "type": "text",
+              "text": "태깅"
+            },
+            {
+              "type": "text",
+              "text": ", 생성 등의 작업에 맞춰 조정할 수 있지만, 각각에 맞는 데이터와 평가가 필요합니다. 학습 데이터가 실제 사용 상황에 가까울수록 목표 달성 여부를 더 잘 검증할 수 있습니다. 보기 좋고 표준화된 예시만 모으면 오타, 복합적인 요청, 모호한 메일에서 모델의 성능이 불안정할 수 있습니다. 성공과 실패 조건을 먼저 명확히 적어야 학습할 가치가 있는지 알 수 있습니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "목표와 갱신 방식은 별개의 선택",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "지도 학습 기반 파인튜닝은 입력과 기대 출력을 사용해 학습하며, 선호도 최적화는 같은 질문에 대한 더 나은 답변과 더 나쁜 답변을 사용할 수 있습니다. 이는 학습 신호를 선택하는 것입니다. 전체 파인튜닝은 모델 매개변수의 대부분 또는 전부를 갱신하고, LoRA 같은 매개변수 효율적 기법은 더 작은 부가 부분을 갱신합니다. 이는 모델을 어떻게 조정할지 선택하는 것입니다. 이 두 차원은 조합할 수 있으므로 SFT와 LoRA를 서로 배타적인 제품 선택지로 취급해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "학습에는 여전히 데이터 형식, 토큰화, 손실 계산, 학습률과 평가를 다루는 과정이 필요합니다. 모델 이름만 바꾸거나 어떤 인터페이스에 데이터를 업로드했다고 해서 모든 단계가 올바르게 완료된 것은 아닙니다. 데이터가 잘리면 기대 답변이 사라질 수 있고, 필드가 어긋나면 모델이 잘못된 목표를 학습할 수 있으며, 중복 내용은 특정 사례를 지나치게 강화할 수 있습니다. 본격적인 장시간 학습 전에 소량의 샘플로 이런 문제를 먼저 점검해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-fine-tuning/diagram-1-ko.svg",
+          "alt": "학습 예시로 기존 모델을 파인튜닝하고, 따로 남겨 둔 메일은 평가에만 사용하며, 통과한 뒤에야 배포 가능한 버전을 만드는 과정",
+          "width": 1600,
+          "height": 900,
+          "caption": "테스트 데이터가 모델의 연습용 정답으로도 쓰여서는 안 됩니다.",
+          "description": "학습 예시로 기존 모델을 파인튜닝하고, 따로 남겨 둔 메일은 평가에만 사용하며, 통과한 뒤에야 배포 가능한 버전을 만드는 과정",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 고객 지원 메일 분류 검수하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "“비밀번호를 잊었는데, 결제 알림도 예전 이메일 주소로 왔어요”라는 입력을 설계할 때 임의로 하나의 분류만 지정해서는 안 됩니다. 여러 분류를 허용할지, 계정을 우선할지, 사람이 처리하게 할지 업무 규칙부터 정해야 합니다. 그런 다음 일관된 기준으로 예시를 만들고, 학습에 사용하지 않은 메일 일부를 테스트용으로 남겨 둡니다. 기대 출력은 규칙과 형식을 따라야 하며, 단지 모델이 학습용 메일을 외워 모범 답안에 더 가깝게 답하도록 만드는 것이어서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "비교 기준으로는 먼저 원래 모델에 명확한 프롬프트와 소량의 예시를 제공하고, 파인튜닝 버전과 동일한 미학습 메일 묶음을 처리하게 할 수 있습니다. 분류가 정확한지, 형식이 유효한지, 모호한 사례를 사람이 처리하도록 남겨 두는지, 분류별 오류 분포는 어떤지 기록합니다. 형식만 개선되고 핵심 분류 성능이 떨어졌다면 전체 평균만으로 파인튜닝이 성공했다고 말할 수 없습니다. 이는 평가 설계이며, 실제 개선 폭은 여전히 테스트로 확인해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "개인 주문의 실시간 진행 상황을 조회해 달라는 요청처럼 작업 범위를 벗어난 메일도 남겨 두어야 합니다. 분류 모델은 이를 적절한 처리 경로로 배정할 수 있지만, 학습한 기억에 의존해 주문 상태를 지어내서는 안 됩니다. 모델의 답변이 점점 고객 지원 담당자처럼 들리면서도 처리 결과를 꾸며 내기 시작한다면, 출력 행동이 작업 범위를 벗어났다는 뜻입니다. 유창함을 좋은 성과로 여기지 말고 예시와 검수 방식을 조정해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "학습 점수가 좋아도 실패할 수 있는 이유",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "과적합은 모델이 학습 데이터에 지나치게 맞춰져 새로운 사례에서는 불안정해지는 현상입니다. 또 다른 문제는 데이터 누수입니다. 같은 메일의 서로 다른 버전이 학습과 테스트에 나뉘어 들어가면, 성적이 일반화 능력을 보여 주는 것처럼 보이지만 실제로는 여전히 반복 연습에 가깝습니다. 출처, 시간 또는 동일 사례를 기준으로 묶어서 분할하고, 거의 중복되는 내용도 점검할 수 있습니다. 데이터 분할 방식은 제품이 실제로 접하게 될 새로운 입력을 반영해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "집중적인 학습 후에는 기존 능력이 저하될 수도 있습니다. 예를 들어 고객 지원 분류만 출력하게 되고, 원래 처리할 수 있던 질의응답에는 더 부자연스럽게 반응할 수 있습니다. 이를 허용 가능한 절충으로 볼지는 배포 용도에 달려 있습니다. 전용 분류기와 범용 도우미의 기준은 다릅니다. 한 작업군의 개선만으로 모든 능력이 향상됐다고 추정해서는 안 됩니다. 유지해야 할 능력의 테스트를 보존하고, 파인튜닝 전후의 차이를 기록하는 것이 중요합니다."
+        },
+        {
+          "type": "heading",
+          "text": "학습 완료에서 사용 가능한 모델까지",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "학습 프로그램이 끝났다는 것은 모델 상태 하나가 생성됐다는 뜻일 뿐입니다. 이후에는 모델 로딩, 추론 형식, 지연 시간, 배포 버전과 롤백 방법을 검증해야 합니다. 부가 매개변수를 사용한다면 지정된 기반 모델과 호환되는지도 확인해야 합니다. 프롬프트, 토크나이저와 출력 파서도 결과에 영향을 줄 수 있으므로, 가중치 파일 이름 하나만 저장할 것이 아니라 전체 추론 구성을 함께 기록해야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시작하기 전에 프롬프트 개선, 명확한 예시 제공, 데이터 수정을 먼저 시도할 수 있습니다. 학습 가능하고 안정적인 행동에서 오류가 계속 발생한다면 그때 파인튜닝을 검토합니다. 데이터가 자주 갱신되고 출처를 첨부해야 하는 지식 질의응답이라면 RAG를 먼저 고려할 수 있습니다. 둘은 함께 사용할 수 있습니다. 파인튜닝은 모델이 답변 형식을 따르도록 하고, 검색은 현재 시점의 근거를 제공합니다. 선택은 실패 원인에 근거해야 하며, 맞춤화 자체를 위해 불필요한 유지보수를 늘리지 않아야 합니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실제 서비스에 적용한 뒤에는 새로운 메일 유형을 표본 점검해야 하며, 특히 업무 규칙이 바뀔 때 중요합니다. 기존 모델이 여전히 예전 방식으로 분류한다면, 문제는 단순히 프롬프트가 불명확해서가 아니라 학습 목표 자체가 이미 낡았기 때문일 수 있습니다. 데이터와 모델 버전, 주석 규칙과 평가 결과를 보존해야 재학습이 필요한지, 전처리를 수정해야 하는지, 외부 절차만 갱신하면 되는지 판단할 수 있습니다. 예시 데이터의 개인정보도 먼저 목적에 맞게 정리해, 불필요한 연락처 정보를 정답 패턴으로 학습하지 않도록 해야 합니다. 데이터를 학습에 사용할 수 있는 조건은 그 데이터가 고객 지원 시스템에 등장한 적이 있는지와는 별개의 문제입니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "핵심 처리 내용",
+            "유의 사항"
+          ],
+          "rows": [
+            [
+              "프롬프트와 예시",
+              "해당 요청의 입력 변경",
+              "일반적으로 매개변수는 바꾸지 않음"
+            ],
+            [
+              "파인튜닝",
+              "목표에 맞춰 학습 지속",
+              "데이터 및 버전 관리 필요"
+            ],
+            [
+              "RAG",
+              "외부 근거 제공",
+              "지식 갱신을 모델과 분리 가능"
+            ]
+          ],
+          "caption": "개념 비교. 출처 확인: 2026년 9월."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "모델이 보지 못한 테스트 데이터부터 확보하기",
+          "text": "테스트 세트를 따로 남겨 두지 않았다면, 학습 성공은 모델이 연습한 내용을 더 잘 처리한다는 사실만 보여 줄 뿐, 실제 작업이 개선됐다는 증거가 되지 못합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "지도 학습 기반 파인튜닝(SFT): 좋은 예시로 모델에 작업 가르치기",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "저랭크 적응(LoRA): 소량의 학습 가능한 매개변수로 모델을 조정하는 방법",
+              "kind": "life",
+              "slug": "ai-term-lora"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "검색 증강 생성(RAG)이란: 답변에 확인 가능한 근거 달기",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face: 파인튜닝",
+          "url": "https://huggingface.co/docs/transformers/training",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Howard, Ruder: ULMFiT",
+          "url": "https://arxiv.org/abs/1801.06146",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "微调（Fine-tuning）：让现有模型更适合你的任务",
+      "description": "微调是在现有模型上继续训练，让它更适合特定任务或领域。本文以客服邮件分类说明数据整理、参数更新、保留测试集与版本部署，区分全量微调、LoRA、监督微调和 RAG，也解释训练成绩变好却实际退步的原因。读完能判断问题是否值得微调，以及如何检查格式一致性、未知类型、数据泄漏和原有能力退化。",
+      "hero": {
+        "src": "/guides/ai-term-fine-tuning/hero-zh-cn.jpg",
+        "alt": "现有模型网络保留蓝色结构，加入橙色调整节点，旁边以独立测试文档检查更新结果",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "微调（Fine-tuning）是从已训练的模型出发，用更聚焦的数据继续训练，使它更适合某种任务或领域。",
+            "它会更新模型中某些可训练参数，与在提示词里放例子不同；若问题是数据库刚更新的订单状态，微调也不是合适的实时更新渠道。",
+            "监督微调是在选择训练信号，LoRA 是在选择如何调整模型，两者可以组合，不是互斥的选项。",
+            "若没有保留测试集，训练成功只能证明模型更会处理练习内容，无法证明实际任务有改善。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "微调，英文 Fine-tuning，是从已训练的模型出发，使用更聚焦的数据继续训练，使它更适合某种任务或领域。它承接现有能力，而不是从随机"
+            },
+            {
+              "type": "article",
+              "text": "参数",
+              "kind": "life",
+              "slug": "ai-term-model-parameters"
+            },
+            {
+              "type": "text",
+              "text": "重新开始。对语言模型而言，微调可能用来改善分类、固定输出格式或领域文书处理；具体能改善什么，取决于训练目标与数据，不能只凭“定制模型”的名称推定。"
+            }
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "微调会更新模型中某些可训练参数，与在提示词里放例子不同。本篇以虚构的客服邮件分类说明如何设计与验收，并区分微调方式、训练目标和外部检索。Hugging Face 的实现文档与 ULMFiT 原始研究提供延续现有模型训练的基础；以下没有宣称某组设置已实测成功，也不提供通用的数据条数保证。"
+        },
+        {
+          "type": "heading",
+          "text": "先说清楚要改变什么",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设客服需要把邮件分成账号、付款和其他类别，通用模型虽理解大意，却常输出一长段说明，或使用不一致的类别名称。这时微调的目标可以是稳定完成分类与指定格式。若问题是数据库刚更新的订单状态，微调就不是合适的实时更新渠道，应该查询有权限访问的系统，再由模型处理结果。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "微调也不是只能模仿口吻。它可针对分类、序列"
+            },
+            {
+              "type": "text",
+              "text": "标注"
+            },
+            {
+              "type": "text",
+              "text": "、生成等任务调整，但每一种都需要对应的数据与评估。训练数据越贴近真正使用场景，越能检验目标是否达成；若只收集好看、标准化的示范，模型可能在错别字、混合需求与模糊邮件上表现不稳。先把成功和失败条件写清楚，才知道训练是否值得做。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "目标与更新方式是不同选择",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "监督微调使用输入及期望输出学习，偏好优化则可能使用同一问题下的较好与较差回答。这是在选择训练信号。全量微调更新大部分或全部模型参数，LoRA 等参数高效方法则更新较小的附加部分，这是在选择如何调整模型。两个维度可以组合，不能把 SFT 和 LoRA 当成彼此互斥的产品选项。"
+        },
+        {
+          "type": "paragraph",
+          "text": "训练仍需要处理数据格式、token 化、损失计算、学习率与评估。只更改模型名称或把数据上传到某个界面，不表示所有步骤已正确完成。数据截断可能让期望答案消失，字段错位可能让模型学错目标，重复内容则可能使某些案例被过度强化。这些问题应在正式长时间训练前，先用少量样本检查。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-fine-tuning/diagram-1-zh-cn.svg",
+          "alt": "现有模型以训练示范微调，另一组保留邮件只用于评估，通过后才形成可部署版本",
+          "width": 1600,
+          "height": 900,
+          "caption": "测试数据不能同时变成模型练习的答案。",
+          "description": "现有模型以训练示范微调，另一组保留邮件只用于评估，通过后才形成可部署版本",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示范：客服分类如何验收",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "设计输入“我忘记密码，付款通知又寄到旧邮箱”，不能随意指定唯一类别，应先决定业务规则：允许多类别、优先账号，或交人工处理。接着以一致的标准建立示范，保留一些未参与训练的邮件作测试。预期输出应遵守规则与格式，不是只让模型把训练邮件背得更像标准答案。"
+        },
+        {
+          "type": "paragraph",
+          "text": "对照方案可先用原模型加清楚提示词及少量例子，再与微调版处理同一批未见邮件。记录类别是否正确、格式是否有效、模糊题是否保留人工处理，以及各类别的错误分布。如果只是格式进步但关键分类退步，不能只用整体平均说微调成功。这是评估设计，实际改进幅度仍需要测试。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也要保留超出范围的邮件，例如要求查询个人订单实时进度。分类模型可将其分配到合适渠道，但不能凭训练记忆编造订单状态。若模型回答越来越像客服人员，却开始捏造处理结果，代表输出行为超出了任务边界，需要调整示范与验收，而不是把流畅当作好效果。"
+        },
+        {
+          "type": "heading",
+          "text": "为什么训练分数好看仍可能失败",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "过拟合是模型太贴近训练数据，遇到新案例却不稳。另一种问题是数据泄漏：同一封邮件的不同版本被分到训练与测试，使成绩看起来像泛化能力，实际上仍近似重复练习。可按来源、时间或相同案例分组划分，并检查近重复内容。数据划分方式必须反映产品真正会遇到的新输入。"
+        },
+        {
+          "type": "paragraph",
+          "text": "现有能力也可能在聚焦训练后退化，例如变得只会输出客服类别，对原本能处理的问答更不自然。是否属于可接受取舍，要看部署用途；专用分类器和通用助手的标准不同。不能用一组任务进步推定所有能力都进步。重要的是保留需要维持的能力测试，并记录微调前后的差异。"
+        },
+        {
+          "type": "heading",
+          "text": "从训练完成到可用模型",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "训练程序结束只表示产生一份模型状态，接下来还需验证加载、推理格式、延迟、部署版本与回退方式。使用附加参数时，还要确保它与指定基础模型兼容。提示词、tokenizer 与输出解析器也可能影响结果，因此应把整个推理组合一起记录，而不是只保存一个权重文件名。"
+        },
+        {
+          "type": "paragraph",
+          "text": "开始前可以先尝试改善提示词、提供清楚示例及修复数据；若错误持续出现在可学习且稳定的行为上，再评估微调。数据常更新且需附来源的知识问答，则可先考虑 RAG。两者能共存：微调让模型遵守回答格式，检索提供当下证据。选择应以失败原因为依据，避免为了定制化而增加不必要的维护。"
+        },
+        {
+          "type": "paragraph",
+          "text": "实际上线后要抽查新的邮件类型，尤其是业务规则改变时。旧模型若仍照旧分类，问题不只是提示词没写清楚，而可能是训练目标本身已过期。保留数据与模型版本、标注规则及评估结果，才能判断需要重新训练、修复预处理，或只更新外部流程。示范数据中的个人信息也应先按目的整理，避免把不必要的联系信息当作答案模式学进去。数据可用于训练的条件，与它是否曾出现在客服系统中，是不同问题。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "提示词与例子",
+              "改变当次输入",
+              "通常不改参数"
+            ],
+            [
+              "微调",
+              "针对目标继续训练",
+              "需要数据与版本管理"
+            ],
+            [
+              "RAG",
+              "提供外部依据",
+              "知识更新可与模型分离"
+            ]
+          ],
+          "caption": "概念对照；来源查证于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "先有未见过的测试数据",
+          "text": "若没有保留测试集，训练成功只能证明模型更会处理练习内容，无法证明实际任务有改善。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "监督微调（SFT）：用好示范教模型完成任务",
+              "kind": "life",
+              "slug": "ai-term-supervised-fine-tuning"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "低秩适应（LoRA）：少量可训练参数如何调整模型",
+              "kind": "life",
+              "slug": "ai-term-lora"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "检索增强生成（RAG）是什么：让回答附上可查的依据",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Hugging Face：微调",
           "url": "https://huggingface.co/docs/transformers/training",
           "checked_on": "2026-09-14"
         },

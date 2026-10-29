@@ -1,14 +1,14 @@
 ---
 id: 2026-10-28-correct-misleading-ai-concept-source-links
 title: Correct misleading AI concept source links and zero-shot image text
-status: review
+status: done
 priority: P2
 area: api
 owner: codex-next-source-readiness
 claimed_at: 2026-10-29T01:06:46Z
 created_at: 2026-10-28T13:45:32Z
-completed_at:
-branch: codex/ai-concept-source-corrections-20261029
+completed_at: 2026-10-29T04:44:45Z
+branch: codex/ai-source-corrections-closeout-20261029
 depends_on: []
 scope:
   - apps/api/app/guides/content/ai-term-fine-tuning.json
@@ -38,7 +38,7 @@ first use; this stays within the already scoped multimodal content pack.
 - [x] Multimodal expands OCR to 光學字元辨識（OCR） on first use without changing its conditional explanation.
 - [x] Zero-shot hero alternative text and matching SVG desc accurately describe its actual illustration; visible geometry and original JPEG remain preserved.
 - [x] An independent native source-correction review binds the complete old/new documents, current source/draft/published versions and all changed asset hashes.
-- [ ] Scoped content checks, candidate review and a source-fix PR pass; guarded publication and subsequent fresh localization baselines have explicit separate release evidence.
+- [x] Scoped content checks, candidate review and a source-fix PR pass; guarded publication and subsequent fresh localization baselines have explicit separate release evidence.
 
 ## Steps
 
@@ -46,7 +46,7 @@ first use; this stays within the already scoped multimodal content pack.
 - [x] Prepare four exact one-inline candidates outside Git without applying them to repository or production.
 - [x] Integrate the zero-shot hero-description correction into its candidate and independently review the complete final delta.
 - [x] Recheck ownership and source/target drift, claim this scope, apply reviewed candidates and run source-correction/content checks.
-- [ ] Prepare a separate guarded correction release before starting translations against the corrected sources.
+- [x] Prepare a separate guarded correction release before starting translations against the corrected sources.
 
 ## How to verify
 
@@ -135,3 +135,24 @@ Keep raw snapshots, documents, candidate files and reviewer evidence outside Git
   corrected-source localization baseline have their own evidence. The current
   two-article translation release grants no production authority for these four
   sources.
+
+- Source correction PR #1915 was independently reviewed and merged as
+  `a036679662030de86f00f0271f84a39265f55edd`. Its separately approved release
+  completed full backup/actual restore, deployment, same-image isolated rehearsal,
+  four source drafts and four source publications, followed by three zero-write
+  replays. All four public pages, twelve original assets and eight original
+  desktop/mobile captures passed with two independent visual reviews.
+- Both failed finalization attempts remain preserved. A distinct read-only
+  concurrency-reconciled finalization completed with a true worker exit 0:
+  another unpublished draft contributed exactly twelve new rows, while the four
+  selected sources and all original protected rows remained intact. The final
+  receipt explicitly reuses the earlier actual wrapped 11/0 verifier and records
+  new local health, runtime, journal, retention and absent-hold checks.
+- A later fresh source snapshot produced the independently verified exact-four
+  localization baseline: sixteen missing en/ja/ko/zh-CN targets, no source
+  differences and twelve preserved source assets. No translations or jobs were
+  created by this source closeout. Sanitized exact publication, failure,
+  reconciliation, snapshot and baseline hashes are recorded in
+  `docs/article-localization/source-corrections/20261028-ai-concept-links/publication-evidence.json`.
+  Earlier preparation notes above remain historical evidence; this actual release
+  and fresh baseline satisfy the final source-task requirements.
