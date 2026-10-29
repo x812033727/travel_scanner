@@ -35,6 +35,15 @@
 3. `narrative` 用快報措辭讀；沒過的題目改稿重讀，不改題目。
 4. 媒體檔放 repo 外（`<VIDEO_WORKDIR>/<slug>/`），只 commit `docs/videos/<slug>/` 的文字檔。
 5. 手動推送的片子每一關都等站主核准；交付時給後台審核連結與 `contact-sheet.png`。
+6. 成片品管的 policy 項不問「有示範」（站主 2026-10-29 定；`apps/api/app/video_automation/judge.py` 的 `is_daily_brief`）：快報只報新聞，第一集得 0.17。立場、建議、業配三項照常。
+
+第一集（`daily-ai-20261028`）學到的：
+
+- 盲讀一位讀者一次的結果不穩，同一題每次挑不同的句子；改稿後一定換新讀者重讀，`no_detour` 的快報措辭已放寬到單句帶出處的說法不算岔題。
+- 兩行的 `big` 卡不要放 `icon`，小字（`sub`）一行內講完，`steps` 的 `detail` 十個字左右；`render` 的版面檢查抓不到第二行被底列蓋住，要自己看聯絡表。
+- 刪掉一句有 `reveal` 的旁白時，同場景 `keys` 的數量要跟著減，否則 `render` 擋下。
+- Gemini 語音當天額度用完會回 429，台灣時間下午 3 點後重置；配音排在那之後最穩。
+- 雲端工作階段 render 前要讓 Playwright 找得到容器的 Chromium（版本對不上時，把 `PLAYWRIGHT_BROWSERS_PATH` 指到一個把期望版本名連到既有瀏覽器的目錄）；片頭片尾用 `branding --pull` 從站上拿。
 
 ## 五、試做後要量的
 

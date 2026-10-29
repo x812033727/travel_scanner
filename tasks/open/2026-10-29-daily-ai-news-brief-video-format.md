@@ -12,6 +12,8 @@ branch: claude/daily-news-brief
 depends_on: []
 scope:
   - tools/video/core/narrative.mjs
+  - apps/api/app/video_automation/judge.py
+  - apps/api/tests/test_video_judge.py
   - tools/video/core/narrative.test.mjs
   - .agents/skills/youtube-video
   - .claude/skills/youtube-video
