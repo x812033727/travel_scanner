@@ -53,6 +53,8 @@
 - 兩本筆記本共用一個 session：Qwen 筆記本先啟動的 ComfyUI 沒裝 VideoHelperSuite，H3 筆記本沿用它會缺 `VHS_VideoCombine`。session 一開先
   `colab exec` 把 ComfyUI 與 VHS clone 好，Qwen 啟動的 ComfyUI 就帶著 VHS。
 - 上游 runner 把 `output_name` 的「.」換成「_」再接 `_<id>.mp4`（`s10-t1.mp4` → `s10-t1_mp4_s10.mp4`）；直接寫 `output_path`。
+- **雲端剪接的面板全是方框**：`assemble-v4.mjs` 的字型寫死 Windows 的微軟正黑體，Linux 上 drawtext 退成沒有中文的字型；
+  現在非 Windows 用文泉驛正黑、`ZT_FONT` 可指定。剪完先看一格面板再送後台。
 - 影片工具權杖的配對碼存在主機 Redis、10 分鐘有效，部署會讓它失效；部署完重跑 `login --colab`。後台卡片叫「影片工具權杖」。
 
 ## 5. 錢與時間（一天的帳）
