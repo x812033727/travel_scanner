@@ -228,6 +228,30 @@ async def next_request(
         old.cancelled_at = moment
         old.updated_at = moment
         changed = True
+    # A day whose slug is a video already (made by hand before the worker took briefs over) is
+    # never made again, and the worker leaves it alone; queued, it would hold every later day
+    # behind it until it went stale.
+    made = (
+        await session.scalars(
+            select(VideoDailyBriefRequest)
+            .join(VideoProject, VideoProject.slug == VideoDailyBriefRequest.slug)
+            .where(VideoDailyBriefRequest.status == "queued")
+            .with_for_update(of=VideoDailyBriefRequest)
+        )
+    ).all()
+    for done in made:
+        done.status = "skipped"
+        done.skip_reason = f"{done.slug} 已經是一支影片，這天不再做快報"
+        done.updated_at = moment
+        session.add(
+            AdminAuditLog(
+                actor_user_id=None,
+                action="video_daily_brief_skipped",
+                target=f"video-daily-brief:{done.id}",
+                metadata_json={"news_date": done.news_date.isoformat(), "video_exists": True},
+            )
+        )
+        changed = True
     if changed:
         await session.commit()
     row = await session.scalar(
