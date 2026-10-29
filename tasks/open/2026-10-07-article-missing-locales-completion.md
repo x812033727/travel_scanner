@@ -235,3 +235,112 @@ must preserve eight existing non-editor aliases, article metadata/taxonomy and
 unrelated incoming links; the fresh four-source snapshot is clean and matches
 the reviewed original hashes. No source publication or new translation is
 inferred from this preparation.
+
+The four-source preparation became concrete and independently reviewed. At
+2026-10-29T02:39:00Z, the deployed API completed native READ ONLY
+capture/plan/capture with exit 0, identical selected/protected state, zero writes,
+four zh-TW updates, unchanged taxonomy and eight planned native operations.
+Runtime remained 7e380 and remote main remained a036; all 22 core checks also passed
+on the merged target. The complete 30-file source core, 21-file host lifecycle,
+public collector/QA tools and actual readonly execution have separate reviews.
+The owner-review plan is retained in the private source4 final-plan-v2 evidence set
+(SHA256 `cf853bdda12182f127d6c87999bb4fbe96bae54f5e8fdf9e95435fe2702eb72f`).
+Its companion evidence-index.json and preparation-complete.json preserve the
+exact inputs, actual readonly receipt and review hashes. At that checkpoint the
+execution package was disabled; source4 backup, deployment, writer rehearsal,
+publication and public acceptance had not yet occurred. The production decision
+remained separate from merge/preparation authorization, and the 16 translations
+awaited corrected public source baselines.
+
+The owner subsequently explicitly approved the complete four-source release
+plan, including fresh full backup/real restore, exact a036 deployment, same-image
+rehearsal, source publication, public QA and this release's owned hold only.
+Actual approval SHA256:
+`94df33da52513696fdbcb95b3129f15d3bb74d2a16a6fe9ae0fb346852c725cf`.
+The first prepare stopped before hold/backup on a stale origin/main tracking ref;
+the actual remote target had not moved. A four-lock guarded exact fetch changed
+only that ref, and the failed stage is preserved. A fresh r2 stage uses identical
+reviewed code. Its actual full backup is 573,867,816 bytes (SHA256
+`963de4b42ecd7aabeab15c721aa735fb9aa216185020cc7b56ec998232b46658`),
+and real restore/source-protection/schema checks passed with exit 0. Deployment
+to a036 completed at 2026-10-29T03:12:34Z with fresh API/web images, exact schema
+0142 and unchanged PostgreSQL identity. The new-image readonly binding also
+passed; at that checkpoint isolated writer rehearsal was in progress. These
+were deployment and backup milestones. Detailed
+active stage routing and actual receipt hashes are retained in the private
+source4 release checkpoint.
+
+At 2026-10-29T03:56:22Z, the authorized source4 release had passed same-image
+isolated writer rehearsal, fresh production dry-run, four native draft saves,
+four native publications and three zero-write replay checks. Exactly eight
+revisions/audit operations were verified; protected data remained unchanged.
+The actual publication gate SHA256 is
+`371a2293ccfb7da0078c63ca58477e531e8625439f880dcaf09f8997925f49fa`.
+Public acceptance passed for four zh-TW pages, 12 assets and eight original
+full-page screenshots, with two independent visual reviewers. The article
+collector recorded 67 HTTP 200 responses at intervals of at least 1,300 ms.
+Actual acceptance SHA256:
+`c1daf09951087cda660ee5e4dcf6219df7542cb92d03a62bf0493134b76df85b`.
+
+The original finalization worker stopped with exit 1 after its verified source
+readback and owned-hold clear. Its native host verifier lacked the expected SHA
+argument: the template replacement changed a comment example, leaving the
+active setting empty. The verifier reported 10 passes and this one failure;
+the root review had repeated the same replacement assumption. The original
+stopped state and failed worker receipt remain immutable. A separate read-only
+diagnostic with the explicit approved SHA produced 11 passes and zero failures.
+This diagnostic is not a replacement finalization receipt. A separately
+reviewed read-only recovery was then prepared. Corrected baseline creation and
+the 16 translation jobs awaited actual recovery completion at that checkpoint.
+
+The separately reviewed recovery's first readback and explicit-SHA host verifier
+passed. Its final readback correctly stopped on a later change in global guide
+tables: net additions of one article, one topic membership, five locale rows and
+five revisions. The four selected articles' entire state remained identical,
+including their final versions and document hashes. Both stopped attempts and
+their real exit 1 receipts remain preserved; no publication was repeated. A
+separate read-only diagnostic was started to check exact added IDs and whether
+excluding only those IDs restored all nine original protected-table fingerprints.
+
+A fresh metadata census at 2026-10-29T04:23:27.099582Z now observes 2,248 public
+articles, 1,476 complete and 772 incomplete; the missing-language count remains
+3,088. There are 120 draft identities excluded from the public coverage target.
+Census SHA256: `8c014c862c400b646ad8a5102e15cf8c616b577e337c09cc2c3c5f2f63c69eb8`.
+These newly observed article identities are separate from this source-only
+release and are not credited as translations completed by this task.
+
+The read-only diagnostic proved the exact 12 added rows belong to one unrelated
+unpublished draft; excluding only their exact IDs restored all nine original
+protected-table fingerprints. The selected source state remained identical.
+The independently reviewed concurrency closeout then completed with actual
+worker exit 0 at 2026-10-29T04:36:28.140350Z. It preserves both stopped attempts,
+accurately references the earlier wrapped 11/0 host verifier, and verifies fresh
+local health, runtime, installed files, QA, journal, backup and retained sandbox.
+The owned hold is absent. Final receipt SHA256:
+`72ce4ac15585a44974839273201eb329ced9306144026ea55a446e06b52cb03b`;
+real worker-exit SHA256:
+`9b877079910250988e9c6fc629a2c5f6199de54488ebce2e029af0de9828e506`.
+No deployment or publication was repeated during these read-only reconciliations.
+
+A fresh source snapshot was captured after completion at 04:36:53.004392Z.
+The native baseline builder produced exactly four corrected sources and 16
+missing translation targets, with zero source differences and all 12 assets
+verified. Baseline SHA256:
+`bb817bcf38290234de0969e6fcd39928a5f5c5a5fbd8c298154922db79c5367e`;
+binding SHA256:
+`25ed5ba7f159176f95ff7d262b26f6250df82495f994862b595ebcef083d2ac0`.
+Independent actual-baseline review SHA256:
+`e6ddfccc25169d6fa740687d867f4f41e65cf43e9aef62560fe57c75d8b9a9a6`.
+This completes the authorized four-source release. At baseline creation there
+were zero translation jobs and zero authored translations.
+
+The next task handoff is currently awaiting an explicit owner decision on one
+local file operation. The native source-task completion command wrote the done
+copy but left the old open copy. Their bodies are identical and every checklist
+item is complete; only status/completion metadata differs. Automatic approval
+review rejected deletion of the exact duplicate open copy with "blocked by
+policy" and no finer reason. The operation was not performed or bypassed. The
+owner has been asked to approve that exact file removal; no translation claim,
+job or authored translation has been created while that approval is pending.
+Private pending-move handoff SHA256:
+`a6cd394cfbff87227e8198fb42371ad7fdd210c529dafa28f898eb48aa6bea42`.
