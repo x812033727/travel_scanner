@@ -13,10 +13,11 @@ c3｜Vite `build.sourcemap` 預設 `false`｜https://vite.dev/config/build-optio
 c4｜Next.js 正式版 build 預設不產生瀏覽器 source map，原句 "During production builds, they are disabled to prevent you leaking your source on the client"｜https://nextjs.org/docs/app/api-reference/config/next-config-js/productionBrowserSourceMaps （`next-srcmap.html`）｜2026-10-28｜srcmap-quote
 c5｜Stripe："Only publishable keys are safe to expose outside your application's backend."；沙盒金鑰 publishable 以 `pk_test_`、secret 以 `sk_test_` 開頭，正式環境 `pk_live_`／`sk_live_`；publishable key 不敏感｜https://docs.stripe.com/keys （Protect your keys、`stripe.html`）｜2026-10-28｜public-keys、secret-keys、shop-three
 c6｜Firebase：設定符合指引時，只限 Firebase 服務的 API key 不必當祕密、可以放進程式碼；Firebase 提供的金鑰只用於 Firebase 相關 API，其他 API 用另一把、各自限制；原句 "never include the Gemini Developer API in the allowlist for a publicly accessible API key"；頁面 Last updated 2026-10-20｜https://firebase.google.com/docs/projects/api-keys （`firebase.html`）｜2026-10-28｜public-keys、firebase-quote、shop-three、restrict
-c7｜Supabase：publishable key「Anyone can read it, so it only reaches what Row Level Security allows」；secret key 會略過 RLS（"bypassing Row Level Security"）、只用在後端；anon、service_role 是舊版的 publishable、secret；"Supabase is deprecating the anon and service_role keys by the end of 2026"（淘汰日期只在卡片的「舊名」與說明欄，旁白在撰稿第 3 輪拿掉了）｜https://supabase.com/docs/guides/getting-started/api-keys （企劃寫的 /docs/guides/api/api-keys 會轉址到這裡；`supabase.html`）｜2026-10-28｜public-keys、secret-keys、restrict
-c8｜Google Maps Platform：API key 可加 application restriction，類型 Websites＝指定一個或多個 referrer 網站，之後只有這些來源的請求被允許；頁面 Last updated 2026-10-27（企劃記錄）｜https://developers.google.com/maps/api-security-best-practices （`maps.html`）｜2026-10-28｜public-keys、restrict
+c7｜Supabase：publishable key「Anyone can read it, so it only reaches what Row Level Security allows」；secret key 會略過 RLS（"bypassing Row Level Security"）、只用在後端；anon、service_role 是舊版的 publishable、secret；"Supabase is deprecating the anon and service_role keys by the end of 2026"（淘汰日期只在卡片的「舊名」與說明欄，旁白在撰稿第 3 輪拿掉了）；開 RLS 有原句："Row Level Security decides what this client can reach, so enable it on every table before you deploy."，Security reference 也寫 "You have enabled Row Level Security on all tables."（查核第 1 輪補）｜https://supabase.com/docs/guides/getting-started/api-keys （企劃寫的 /docs/guides/api/api-keys 會轉址到這裡；`supabase.html`）｜2026-10-28｜public-keys、secret-keys、restrict
+c8｜Google Maps Platform：API key 可加 application restriction，類型 Websites＝指定一個或多個 referrer 網站，之後只有這些來源的請求被允許；"Best practice is to always restrict your API keys with one type of application restrictions and one or more API restrictions."；放在網頁上的金鑰有原句 "if the key is publicly exposed on your web page"（Static Web API 一節），用戶端 SDK 一節 "you will always be able to apply proper restrictions to your API key"；頁面 Last updated 2026-10-28（查核第 1 輪 2026-10-28 抓到的；企劃記的是 10-27）｜https://developers.google.com/maps/api-security-best-practices （`maps.html`）｜2026-10-28｜public-keys、restrict
 c9｜OpenAI："Remember that your API key is a secret. Don't share it with others or expose it in any client-side code such as browsers or apps. Load API keys from an environment variable or key management service on the server."｜https://developers.openai.com/api/reference/overview （Authentication 一節；`openai-auth2.html`）｜2026-10-28｜secret-keys、shop-three、rotate
 c10｜Anthropic：API key 是帳戶的數位鑰匙，別人拿到就以你的名義產生費用；要保密（keep it confidential）；交給第三方時當加密 secret，"Never include it directly in your code or configuration files"｜https://support.claude.com/en/articles/9767949-api-key-best-practices-keep-your-keys-safe-and-secure （企劃寫的 keeping-… 網址會轉到這個 canonical；`anthropic.html`）｜2026-10-28｜secret-keys
+c10b｜Anthropic 講瀏覽器的原句在 TypeScript SDK 頁：Web browsers "disabled by default to avoid exposing your secret API credentials"；"Enabling the dangerouslyAllowBrowser option can be dangerous because it exposes your secret API credentials in the client-side code."（同頁列了內部工具、短期除錯兩種例外）。「或 App 裡」是 OpenAI 的原句，Anthropic 這邊靠說明中心的 "Never include it directly in your code" 撐｜https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/typescript （/docs/en/api/sdks/typescript 會轉到這裡）｜2026-10-29｜secret-keys
 c11｜Next.js："By default, environment variables are only available on the server. To expose an environment variable to the browser, it must be prefixed with NEXT_PUBLIC_."；`NEXT_PUBLIC_` 的值在 `next build` 時 inline 進送到瀏覽器的 JavaScript｜https://nextjs.org/docs/app/guides/environment-variables （`next-env.html`）｜2026-10-28｜next-env-quote
 c13｜Next.js Data Security：Server Components 的寫法 "it's possible to accidentally expose private data through how data is fetched or passed to components"（卡片引從 accidentally 開始的子句）｜https://nextjs.org/docs/app/guides/data-security （`next-datasec.html`）｜2026-10-28｜next-datasec
 c14｜Vite `define`："Entries will be defined as globals during dev and statically replaced during build"；`loadEnv` 第三個參數設 `''`「to load all env regardless of the `VITE_` prefix」（官方範例同樣把結果放進 `define`）｜https://vite.dev/config/shared-options （`vite-shared.html`）、https://vite.dev/config/ （`vite-config.html`，撰稿時補抓）｜2026-10-28｜define-table
@@ -24,6 +25,7 @@ c15｜Stripe："Rotating an API key revokes it and generates a replacement key t
 c16｜OpenAI："Revocations of an API key take effect within a few seconds."｜https://developers.openai.com/api/reference/overview｜2026-10-28｜rotate
 c17｜Anthropic：定期看 Console 的 Logs 與 Usage 頁；custom rate limit 的組織設 spend limits 與 workspace rate limits，"These limits act as a safeguard against unexpected usage due to leaked keys or errant scripts."；standard rate limit 的組織開 auto-reload 時 "Carefully consider auto-reload limits"｜https://support.claude.com/en/articles/9767949-api-key-best-practices-keep-your-keys-safe-and-secure｜2026-10-28｜limits
 c18｜Claude Code CLI：`--allowedTools` 是「Tools that execute without prompting for permission」；要限制有哪些工具可用，改用 `--tools`。旁白因此只說「不用問就能用的，只給讀取類的工具」，不說其他工具被拿掉｜https://code.claude.com/docs/en/cli-reference （`cc-cli.html`，撰稿時補抓）｜2026-10-28｜ai-trust、ai-run
+c18b｜Claude Code Tools reference：Read、Grep、Glob 的 Permission required 是 No（工作目錄外的路徑仍會問）；Agent、TodoWrite、Task 系列等也是 No；"Bash is marked Yes but runs a built-in set of read-only commands without prompting."；在 macOS、Linux、WSL 上 Glob、Grep 不在預設工具組，"naming either tool in --allowedTools restores both"。所以 `--allowedTools "Read,Grep,Glob"` 不是「不用問就能用的只有三個」：查核第 1 輪把 jkfs 改成「指令裡預先允許的只有三個」、ai-run 的 key 改成「預先允許：只列三個讀取類工具」、說明欄第 4 條改寫並補一句｜https://code.claude.com/docs/en/tools-reference｜2026-10-29｜ai-run、說明欄
 
 （c12 編號空著：原本給 next build 的靜態頁圖例，那一張卡在撰稿第 3 輪為了長度拿掉。）
 
@@ -65,18 +67,19 @@ r7｜run 7：`shop-chat-ai`，`src/main.js` 第 3 行 `const ADMIN = "demo-admin
 
 ## 我懷疑但沒動的事
 
-- ai-run 卡把 Claude Code 一行 134 欄的輸出照 78 欄折成兩行：字沒改，但折行位置是我依卡片寬度算的，不是實際終端機的寬度；查核覺得不妥，可改成只放 `table`（ai-table 已經有同一列）並把 ai-run 換成別的輸出列。
+- （查核第 1 輪：已解決，折行位置與 78 欄終端機自動折行相同，拿掉換行後跟 runlog 那一列逐字相同。）ai-run 卡把 Claude Code 一行 134 欄的輸出照 78 欄折成兩行：字沒改，但折行位置是我依卡片寬度算的，不是實際終端機的寬度；查核覺得不妥，可改成只放 `table`（ai-table 已經有同一列）並把 ai-run 換成別的輸出列。
 - ai-prompt 的要求句原檔是一行，`code` 卡依寬度換成三行；字沒改。
-- secret-keys 把 Anthropic 跟 OpenAI 放在同一列「不能出現在瀏覽器或 App 裡」：OpenAI 的原句就是這樣講；Anthropic 的說明頁講的是「要保密、別人拿到就以你的名義計費、不要直接寫進程式或設定檔」，沒有逐字講瀏覽器。查核若覺得太強，可把旁白改成「OpenAI 的 API 金鑰不能出現在瀏覽器或 App 裡，Anthropic 的也一樣要保密」。
+- （查核第 1 輪：已解決，見 c10b。）secret-keys 把 Anthropic 跟 OpenAI 放在同一列「不能出現在瀏覽器或 App 裡」：OpenAI 的原句就是這樣講；Anthropic 的說明頁講的是「要保密、別人拿到就以你的名義計費、不要直接寫進程式或設定檔」，沒有逐字講瀏覽器。查核若覺得太強，可把旁白改成「OpenAI 的 API 金鑰不能出現在瀏覽器或 App 裡，Anthropic 的也一樣要保密」。
 - 「別人的 AI 幾分鐘就讀完你整包 JavaScript」是站主觀點的原話，放在開場當利害句；r7 沒有計時，所以「幾分鐘」只有站主的說法撐。
-- restrict 卡的 Supabase「打開資料列層級的存取規則（RLS）」：來源頁說 publishable key 只碰得到 RLS 允許的資料，沒有逐字寫「要打開 RLS」；這是從那句推出來的動作。
-- public-keys 的 Google Maps 列標「設計上可以公開」：Maps 的安全頁是教怎麼限制放在用戶端的金鑰，沒有一句「可以公開」；分類是站主觀點（s1）加 c8。
+- （查核第 1 輪：已解決，Supabase 有原句，見 c7。）restrict 卡的 Supabase「打開資料列層級的存取規則（RLS）」：來源頁說 publishable key 只碰得到 RLS 允許的資料，沒有逐字寫「要打開 RLS」；這是從那句推出來的動作。
+- （查核第 1 輪：留著，見 c8 的原句；Maps 頁沒有「可以公開」一句，分類仍是站主觀點加 c8。）public-keys 的 Google Maps 列標「設計上可以公開」：Maps 的安全頁是教怎麼限制放在用戶端的金鑰，沒有一句「可以公開」；分類是站主觀點（s1）加 c8。
 - 估計 12.3 分鐘仍高於 10–12 的上緣；再砍就要動成果（define 的失敗、AI 檢查）或站主觀點，所以停在這裡，交協調者決定。
-- 說明欄第 2 條寫「-P 是 GNU grep 的選項」，沒有在 macOS 或 Windows 跑過；企劃要的 macOS／Windows 寫法沒寫，因為沒有執行紀錄。
+- （查核第 1 輪：GNU grep 手冊有 -P（要系統有 PCRE），FreeBSD 的 grep(1) 沒有 -P；說明欄的寫法成立，沒改。）說明欄第 2 條寫「-P 是 GNU grep 的選項」，沒有在 macOS 或 Windows 跑過；企劃要的 macOS／Windows 寫法沒寫，因為沒有執行紀錄。
 
 ## 進度
 
 - 全部 67 個場景寫完（open-title … closing），136 句，每句都有 id；`loops` 15 條；`sources` 16 個。
 - lint：0 errors、0 warnings；`render/plan.mjs` 的 typingProblems 與 renderProblems 都是空的。
 - 沒有 shorts.json（教學卡片沒有 shot）。
-- 待做：獨立查核（verify-1.md），然後 `tts`。
+- 獨立查核第 1 輪：`verify-1.md`（2026-10-28／29）；改了一個事實（`--allowedTools` 的範圍），lint 0 errors。
+- 待做：`tts`。

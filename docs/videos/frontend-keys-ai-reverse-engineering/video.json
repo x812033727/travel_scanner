@@ -22,7 +22,7 @@
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "金鑰沒推上 GitHub，網站上卻有三把：上線前用一行指令找出來",
-    "description": "金鑰沒推上 GitHub、repo 也搜不到，為什麼網站上還是有？這支教你上線前用一行指令搜 build 出來的檔案，把送進瀏覽器的金鑰找出來，分出哪些可以公開、哪些要搬到伺服器並換新。\n給用 Vite、Next.js 自己做網站的人，也給用 AI 工具寫前端、直接部署上線的人。\n\n示範專案 shop-chat 的金鑰全是假的（字串裡帶 FAKE），片中所有指令只在自己的示範專案與 localhost 上執行。執行日期 2026-10-28：Linux、Node.js v22.22.0、vite/8.3.4、Next.js 16.4.2（Turbopack）、GNU grep 3.11、curl 8.5.0、Claude Code 2.1.312。\n\n片中用到的指令\n1. 拿 .env 的每一個值，搜 build 出來的資料夾（dist/ 換成你的輸出資料夾）：\nsed -n 's/^[A-Z_]*=//p' .env | grep -rnoFf - dist/\n2. 照金鑰的開頭搜（-P 是 GNU grep 的選項；其他系統先用 grep --version 確認）：\ngrep -rnoP 'sk-[\\w-]+|pk_\\w+|AIza[\\w-]+' dist/\n3. Next.js：把網站跑起來，抓自己的首頁搜金鑰：\ncurl -s localhost:3000/ | grep -o 'apiKey[^}]*'\n4. 讓 Claude Code 只用讀取類工具讀 dist/（要求句放在 review-prompt.txt）：\nclaude -p \"$(cat review-prompt.txt)\" --allowedTools \"Read,Grep,Glob\"\n（--allowedTools 是不用問就能執行的工具；要把其他工具整個拿掉，Claude Code 的 CLI 說明是改用 --tools，片中執行的是 --allowedTools 這一行）\n5. 啟動 server.mjs（示範時上游換成本機的假服務；實際使用拿掉 UPSTREAM_URL 這一段）：\nUPSTREAM_URL=http://127.0.0.1:8788 node --env-file=.env server.mjs\n\nserver.mjs 全文 31 行在第 4 章的卡片上；Next.js 的 app/api/chat/route.js 全文 14 行：\nconst UPSTREAM = process.env.UPSTREAM_URL\n  ?? \"https://api.openai.com/v1/responses\";\n\nexport async function POST(req) {\n  const r = await fetch(UPSTREAM, {\n    method: \"POST\",\n    headers: {\n      \"Content-Type\": \"application/json\",\n      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,\n    },\n    body: await req.text(),\n  });\n  return new Response(await r.text(), { status: r.status });\n}\n\n分類：Stripe 的 publishable key、Firebase 只開 Firebase 服務的網頁金鑰、Supabase 的 publishable key、限制了網站來源的 Google Maps 金鑰，設計上可以放在前端，要做的是限制它；OpenAI、Anthropic 的 API key、Stripe 的 secret key、Supabase 的 secret key 不能出現在前端，搬到伺服器之後要換一把新的。Supabase 預計在 2026 年底前淘汰舊的 anon 與 service_role 金鑰。\n\nserver.mjs 只做到金鑰不在瀏覽器；誰能呼叫 /api/chat、能呼叫幾次，要另外做驗證、限流與用量上限。",
+    "description": "金鑰沒推上 GitHub、repo 也搜不到，為什麼網站上還是有？這支教你上線前用一行指令搜 build 出來的檔案，把送進瀏覽器的金鑰找出來，分出哪些可以公開、哪些要搬到伺服器並換新。\n給用 Vite、Next.js 自己做網站的人，也給用 AI 工具寫前端、直接部署上線的人。\n\n示範專案 shop-chat 的金鑰全是假的（字串裡帶 FAKE），片中所有指令只在自己的示範專案與 localhost 上執行。執行日期 2026-10-28：Linux、Node.js v22.22.0、vite/8.3.4、Next.js 16.4.2（Turbopack）、GNU grep 3.11、curl 8.5.0、Claude Code 2.1.312。\n\n片中用到的指令\n1. 拿 .env 的每一個值，搜 build 出來的資料夾（dist/ 換成你的輸出資料夾）：\nsed -n 's/^[A-Z_]*=//p' .env | grep -rnoFf - dist/\n2. 照金鑰的開頭搜（-P 是 GNU grep 的選項；其他系統先用 grep --version 確認）：\ngrep -rnoP 'sk-[\\w-]+|pk_\\w+|AIza[\\w-]+' dist/\n3. Next.js：把網站跑起來，抓自己的首頁搜金鑰：\ncurl -s localhost:3000/ | grep -o 'apiKey[^}]*'\n4. 讓 Claude Code 讀 dist/，預先允許的只列讀取類工具（要求句放在 review-prompt.txt）：\nclaude -p \"$(cat review-prompt.txt)\" --allowedTools \"Read,Grep,Glob\"\n（--allowedTools 是不用問就能執行的工具；Read、Grep、Glob 在工作目錄裡本來就不用問，其他免問的工具照樣能用；要把其他工具整個拿掉，Claude Code 的 CLI 說明是改用 --tools，片中執行的是 --allowedTools 這一行）\n5. 啟動 server.mjs（示範時上游換成本機的假服務；實際使用拿掉 UPSTREAM_URL 這一段）：\nUPSTREAM_URL=http://127.0.0.1:8788 node --env-file=.env server.mjs\n\nserver.mjs 全文 31 行在第 4 章的卡片上；Next.js 的 app/api/chat/route.js 全文 14 行：\nconst UPSTREAM = process.env.UPSTREAM_URL\n  ?? \"https://api.openai.com/v1/responses\";\n\nexport async function POST(req) {\n  const r = await fetch(UPSTREAM, {\n    method: \"POST\",\n    headers: {\n      \"Content-Type\": \"application/json\",\n      Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,\n    },\n    body: await req.text(),\n  });\n  return new Response(await r.text(), { status: r.status });\n}\n\n分類：Stripe 的 publishable key、Firebase 只開 Firebase 服務的網頁金鑰、Supabase 的 publishable key、限制了網站來源的 Google Maps 金鑰，設計上可以放在前端，要做的是限制它；OpenAI、Anthropic 的 API key、Stripe 的 secret key、Supabase 的 secret key 不能出現在前端，搬到伺服器之後要換一把新的。Supabase 預計在 2026 年底前淘汰舊的 anon 與 service_role 金鑰。\n\nserver.mjs 只做到金鑰不在瀏覽器；誰能呼叫 /api/chat、能呼叫幾次，要另外做驗證、限流與用量上限。",
     "tags": [
       "API key 外洩",
       "前端 金鑰",
@@ -121,6 +121,16 @@
       "title": "Claude Code Docs: CLI reference (--allowedTools, --tools)",
       "url": "https://code.claude.com/docs/en/cli-reference",
       "checked_on": "2026-10-28"
+    },
+    {
+      "title": "Claude Code Docs: Tools reference (permission required)",
+      "url": "https://code.claude.com/docs/en/tools-reference",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "Claude Docs: TypeScript SDK (browser usage)",
+      "url": "https://platform.claude.com/docs/en/cli-sdks-libraries/sdks/typescript",
+      "checked_on": "2026-10-29"
     },
     {
       "title": "YouTube 搜尋：REA 逆向工程（2026-10-28）",
@@ -995,7 +1005,7 @@
         "tool_version": "2.1.312 (Claude Code)",
         "typing": "human",
         "keys": [
-          "不用問的工具：只給三個讀取類",
+          "預先允許：只列三個讀取類工具",
           "多了 grep 漏掉的那一個"
         ]
       },
@@ -1006,7 +1016,7 @@
       "lines": [
         {
           "id": "jkfs",
-          "text": "不用問就能用的只有三個：讀取檔案、搜尋內容、照檔名找檔案；用不開對話的模式，跑一次就結束。",
+          "text": "指令裡預先允許的只有三個：讀取檔案、搜尋內容、照檔名找檔案；用不開對話的模式，跑一次就結束。",
           "emotion": "清楚，一個一個點名"
         },
         {
