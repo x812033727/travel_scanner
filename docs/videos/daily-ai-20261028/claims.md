@@ -44,7 +44,7 @@ c26｜卡片：約占微軟單季總營收 923 億美元的近 11%｜同上｜20
 c27｜兩家公司日益爭奪相同客戶，財務上仍緊密相連（TechCrunch）；開場改成「越來越像對手的 OpenAI」（verify-1 改）｜同上｜2026-10-29｜open-ms, ms-open
 c28｜這筆營收中有多少來自營收分成、多少來自 Azure，目前不清楚，TechCrunch 已詢問｜同上｜2026-10-28｜ms-what
 c29｜卡片：據報 20% 分成比例未獲兩家公司公開證實｜同上｜2026-10-28｜ms-what
-c30｜這是營收不是獲利；72 億美元應收帳款是 OpenAI 為過往交易所欠，不是額外營收｜同上｜2026-10-28｜ms-profit
+c30｜這是營收不是獲利；72 億美元應收帳款是 OpenAI 為過往交易所欠，不是額外營收（旁白 gx3u 依站主 2026-10-29 決定刪除，只留 ms-profit 卡片小字）｜同上｜2026-10-28｜ms-profit
 c31｜Windows OEM 與裝置營收下降 22%（微軟新聞稿）｜https://mokaair.com/zh-TW/life/ai-news-microsoft-q1-fy27-results-20261028 ; https://www.microsoft.com/en-us/Investor/earnings/FY-2027-Q1/press-release-webcast｜2026-10-28｜ms-pc
 c32｜卡片：Azure 營收年增 48%；成長主要來自雲端與 AI 基礎設施｜同上｜2026-10-28｜ms-pc
 c33｜OpenAI 仍有大量服務運行在微軟雲端上（TechCrunch）｜https://mokaair.com/zh-TW/life/ai-news-microsoft-q1-fy27-results-20261028 ; https://techcrunch.com/2026/10/28/microsoft-hits-10-quarters-of-record-breaking-revenue-in-a-row/｜2026-10-28｜ms-you
