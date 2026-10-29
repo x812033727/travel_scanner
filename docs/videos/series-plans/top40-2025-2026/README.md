@@ -86,8 +86,8 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2026-05-hongtang-jiangzhi` | 薑茶要趁熱 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-06-jinwu-cangjiao` | 她養的小白臉是世界冠軍 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-06-nuonuo-xiashan` | 小糰糰找哥哥 | **done**：5 季 300 集，validate 零錯誤 |
-| `2025-07-niannian-youci` | 我老公不說話，但我話很多 | outline（設定集與五季總綱已寫） |
-| `2026-07-yinshen-shiwei` | 保鏢只想吃飽 | setting（設定集已寫，總綱撰寫中） |
+| `2025-07-niannian-youci` | 我老公不說話，但我話很多 | outline；五季細綱代理撰寫中 |
+| `2026-07-yinshen-shiwei` | 保鏢只想吃飽 | outline；五季細綱代理撰寫中 |
 | 其餘 26 部 | 未定 | reference（套路拆解） |
 
 ## 每部怎麼做
