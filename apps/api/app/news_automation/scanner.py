@@ -12,8 +12,12 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.news_automation.evidence import evidence_excerpt
 from app.news_automation.feeds import (
+    follow_only,
+    github_star_count,
     parse_entries,
     read_article,
+    repository_min_stars,
+    repository_root,
     summary_article,
     summary_is_evidence,
 )
@@ -166,14 +170,20 @@ async def claim_due_sources(session: AsyncSession, *, limit: int = 20) -> list[U
             .with_for_update(skip_locked=True)
         )
     )
+    claimed: list[UUID] = []
     for row in rows:
         # Advance from "now", not the stale due time: after downtime each source is scanned
         # once and never floods the queue trying to replay every missed hour.
         row.next_scan_at = now + timedelta(minutes=row.scan_interval_minutes)
+        if follow_only(row):
+            # Only its host is used, by other sources' scans; moving its due time on keeps
+            # it from taking a slot in every claim.
+            continue
         row.scan_lock_until = now + timedelta(minutes=15)
         row.last_status = "queued"
+        claimed.append(row.id)
     await session.commit()
-    return [row.id for row in rows]
+    return claimed
 
 
 async def _enabled_sources(session: AsyncSession) -> list[NewsSource]:
@@ -404,7 +414,7 @@ async def scan_source(
 ) -> int:
     source = await session.get(NewsSource, source_id)
     settings = await settings_row(session)
-    if source is None or not source.enabled or not settings.enabled:
+    if source is None or not source.enabled or not settings.enabled or follow_only(source):
         return 0
     own_fetcher = fetcher is None
     fetcher = fetcher or SafeNewsFetcher()
@@ -551,8 +561,15 @@ async def scan_source(
             deferred = False
             if not exact_duplicate_id:
                 seen_urls = {canonical}
-                for link in links:
+                for found in links:
+                    link = found
                     linked_source = by_host.get(_host(link))
+                    minimum = repository_min_stars(linked_source)
+                    if minimum is not None:
+                        # A repository is one story: every link into it counts as its page.
+                        link = repository_root(link) or ""
+                        if not link:
+                            continue
                     if (
                         linked_source is None
                         or linked_source.role != "evidence"
@@ -576,6 +593,14 @@ async def scan_source(
                             deferred = True
                             break
                         continue
+                    if minimum is not None:
+                        stars = github_star_count(linked.body)
+                        if stars is None:
+                            # Reported, so a change to GitHub's markup shows on the source.
+                            skipped.append(f"{link} (star count not found)")
+                            continue
+                        if stars < minimum:
+                            continue
                     linked_page = read_article(
                         linked.body, linked.url, linked_source.config_json
                     )

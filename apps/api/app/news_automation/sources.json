@@ -677,6 +677,18 @@
       "scan_interval_minutes": 60,
       "config": {"include_title_keywords": ["AI", "ChatGPT", "OpenAI", "Gemini", "Claude", "Copilot", "Anthropic", "NVIDIA", "輝達", "GitHub", "開源", "模型", "LLM", "DeepSeek", "Grok", "Llama", "Codex", "Agent", "代理", "人工智慧", "資安", "漏洞", "駭客"], "max_entries_per_scan": 10, "article_tags": [], "article_classes": ["content-summary", "field-name-body"]},
       "note": "Taiwan IT and security news. A lead, never cited, read for the official pages it links to (Google's blog, vendors' advisories). The feed's entries carry no dates, so the first scan records them all as the baseline. The default article/main read takes in the page's rotating related-news lists, which would change the evidence hash on every fetch, so the body is read from content-summary and field-name-body only."
+    },
+    {
+      "name": "GitHub repositories (followed)",
+      "url": "https://github.com/ollama/ollama",
+      "format": "html",
+      "role": "evidence",
+      "vertical": "ai",
+      "is_first_party": false,
+      "enabled": true,
+      "scan_interval_minutes": 1440,
+      "config": {"follow_only": true, "repository_min_stars": 500, "article_tags": [], "article_classes": ["markdown-body"]},
+      "note": "Never scanned (follow_only): it only makes github.com a host whose pages count as evidence when another source's page links to them, so a repository is read only after a report (電腦王阿達, iThome, TechCrunch) has covered it. Any link into a repository is read as its root page, and counts only with 500 or more stars (owner decision 2026-10-29); a page whose star counter is not found is reported as skipped. Not first-party and not trusted alone, so a story with only a repository page waits for a person or the review judge. The URL is one repository page, which sources_cli validates as the kind of page this source is followed for. README text is read from markdown-body."
     }
   ]
 }

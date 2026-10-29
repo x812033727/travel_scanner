@@ -59,6 +59,16 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    posts link to x.com, GitHub or Reddit, none of them sources), it is closed at once as
    `rejected` (`news_lead_without_evidence`) instead of waiting in `needs_evidence`: no
    official page links back to a blog post, so nothing would ever attach to it.
+   A GitHub repository is evidence only through such a link (owner decision 2026-10-29):
+   the `GitHub repositories (followed)` source has `follow_only`, so it is never scanned
+   and only puts github.com among the hosts whose pages are followed. Any link into a
+   repository (`/tree/main`, a README anchor) is read as the repository's root page, and
+   that page counts only with at least `repository_min_stars` (500) stars, read from its
+   star counter; a page without the counter is reported as skipped on the linking source.
+   The repository source is neither first-party nor trusted alone, so a new-tool story
+   drafted from it waits for a person or the review judge. The writer may then report a
+   notable new tool, attributed to its README, with a "how to start" section limited to
+   the steps the README shows.
    Since the owner's decisions of 2026-09-25 (one evidence page drafts; a first-party page
    publishes on its own) and 2026-09-28 (so does a page from a trusted newsroom), a
    first-party candidate no longer waits for a second site, so nothing attaches one to a
