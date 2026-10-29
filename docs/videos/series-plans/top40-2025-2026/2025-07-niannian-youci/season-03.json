@@ -1,0 +1,4328 @@
+{
+  "number": 3,
+  "title": "白頁",
+  "theme": "先知用完了，她第一次要靠自己。",
+  "start_state": "首發會後默聲活了，老薛的案子排到年底。契約還剩五個月。書白了一大半：第四十章之後只剩零星幾頁有字，其中一頁是『阮多的心臟』，她看不懂。阮家：阮大富又賭、阮媽來老宅門口站著不敢按門鈴。",
+  "end_state": "書頁為什麼變白揭開（書是『如果她不在』的版本，她在就白）；筆記本寫什麼揭開（每天一句想對她說的話，第一頁『妳今天說了四千字，我數了』）。她話療了自己的家人：阮媽說出『妳不像妳』、阮小寶搬去錄音室打工、阮大富進戒賭班；聞小滿叫她『嫂子』；婆婆在飯桌上把她的位置換到自己旁邊。聞朗查出她『不是原來的阮多』——拿著原主的舊照與她的字跡對比。最後一集，書全白，只剩最後一頁一行字沒白：『第三百章：阮多死於——』後面是空的。她合上書，聞默在她身後寫：『契約到期那天，妳留不留？』她說：『你問我，還是書問我？』",
+  "guest_cast": [
+    {
+      "id": "s03-fudaoyuan",
+      "name": "戒賭班輔導員 林姊",
+      "role": "城南戒賭互助班的輔導員，聽過幾百個『這次真的戒』，只信出席簿",
+      "appearance": "東亞女性，四十六歲，短捲髮、圓框眼鏡、笑紋很深，米色針織外套配深色長褲，胸前掛一張名牌與一支原子筆，手裡永遠一本出席簿"
+    },
+    {
+      "id": "s03-pingshen",
+      "name": "畢製評審 嚴教授",
+      "role": "音樂學院影像系的畢業製作評審，業界退下來的老導演，最看不起『沒人要的錄音室』",
+      "appearance": "東亞男性，六十二歲，銀灰背頭、濃眉、鼻梁上一副細金框眼鏡，深灰立領外套，手杖擱在評審桌邊，評分表上只用紅筆打勾"
+    },
+    {
+      "id": "s03-zhangbei",
+      "name": "聞家三叔公",
+      "role": "家族會議的主席，聞老先生的叔輩，聞家股份的見證人，說話算數",
+      "appearance": "東亞男性，七十八歲，清瘦、白眉長垂、眼神仍銳，深藍中式對襟長衫，手拄一根烏木手杖，手腕一串老沉香"
+    },
+    {
+      "id": "s03-binglishi",
+      "name": "病歷室 小許",
+      "role": "城北醫院病歷室的櫃檯人員，規矩多、心很軟",
+      "appearance": "東亞女性，二十八歲，齊耳短髮、淡妝、藍色院內制服背心配識別證，桌上一疊申請單與一盆小多肉"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s03-t01",
+      "question": "阮媽在門口站三天，她知道多少？",
+      "setup_episode": 121,
+      "payoff_episode": 125
+    },
+    {
+      "id": "s03-t02",
+      "question": "阮小寶會不會留在默聲？",
+      "setup_episode": 123,
+      "payoff_episode": 127
+    },
+    {
+      "id": "s03-t03",
+      "question": "阮大富這次又欠了多少？",
+      "setup_episode": 122,
+      "payoff_episode": 130
+    },
+    {
+      "id": "s03-t04",
+      "question": "小滿為什麼確定她哥會留她？",
+      "setup_episode": 135,
+      "payoff_episode": 138
+    },
+    {
+      "id": "s03-t05",
+      "question": "小滿的畢製過不過得了嚴教授？",
+      "setup_episode": 132,
+      "payoff_episode": 136
+    },
+    {
+      "id": "s03-t06",
+      "question": "聞家飯桌上她會坐到哪？",
+      "setup_episode": 132,
+      "payoff_episode": 140
+    },
+    {
+      "id": "s03-t07",
+      "question": "她偷不偷看得到那本筆記本？",
+      "setup_episode": 141,
+      "payoff_episode": 147
+    },
+    {
+      "id": "s03-t08",
+      "question": "他為什麼不肯寫「留下」？",
+      "setup_episode": 148,
+      "payoff_episode": 149
+    },
+    {
+      "id": "s03-t09",
+      "question": "聞朗拿她的字跡在查什麼？",
+      "setup_episode": 126,
+      "payoff_episode": 150
+    },
+    {
+      "id": "s03-t10",
+      "question": "她不說話，書還會不會白？",
+      "setup_episode": 152,
+      "payoff_episode": 154
+    },
+    {
+      "id": "s03-t11",
+      "question": "牛皮紙袋要不要交給聞默？",
+      "setup_episode": 151,
+      "payoff_episode": 157
+    },
+    {
+      "id": "s03-t12",
+      "question": "聞朗的地契與鑑定擋不擋得住？",
+      "setup_episode": 161,
+      "payoff_episode": 168
+    },
+    {
+      "id": "s03-t13",
+      "question": "聞默怎麼會有兩本筆記本？",
+      "setup_episode": 163,
+      "payoff_episode": 168
+    },
+    {
+      "id": "s03-t14",
+      "question": "家族會議的三件事湊不湊得齊？",
+      "setup_episode": 162,
+      "payoff_episode": 167
+    },
+    {
+      "id": "s03-t15",
+      "question": "原主的病歷在哪裡？",
+      "setup_episode": 171,
+      "payoff_episode": 174
+    },
+    {
+      "id": "s03-t16",
+      "question": "阮大富為什麼連缺兩次戒賭班？",
+      "setup_episode": 165,
+      "payoff_episode": 175
+    },
+    {
+      "id": "s03-t17",
+      "question": "最後一頁還剩幾行字？",
+      "setup_episode": 176,
+      "payoff_episode": 180
+    },
+    {
+      "id": "s03-t18",
+      "question": "阮小寶的第一份薪水拿去做什麼？",
+      "setup_episode": 143,
+      "payoff_episode": 146
+    }
+  ],
+  "episodes": [
+    {
+      "number": 121,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "門口站著的女人",
+      "youtube_title": "首發會替啞巴老公說了三分鐘，隔天書只剩二十七頁有字，老宅門口站著原主的媽",
+      "duration_s": 115,
+      "logline": "首發會後的第一個早晨，阮多想好好過一天，卻發現書裡剩下的頁數不夠用，而老宅門口站著一個她不認識、原主卻欠了一輩子的女人。",
+      "hook": "她睜眼，半透明的書浮在床頭，頁角一個數字：「還有字的頁：二十七」。她對鏡頭：「昨天還三十一。」",
+      "hook_type": "image",
+      "mid_hook": "小滿咬著吐司站到窗邊：「那女人站兩天了。」窗外，圍裙瘦女人的手指停在門鈴前一公分，沒按下去。",
+      "extra_hooks": [
+        "她翻書找到一頁標題「阮多的心臟」，下面全是霧。她嘀咕：「給他的吧？好肉麻。」"
+      ],
+      "conflict": "阮多要搞清楚門口的女人是誰、原著這一章寫什麼，又不想被原主的家拖回去。",
+      "turn": "她以為是來討債的人，小滿一句「妳媽啊，妳不認得？」讓她發現那是原主的母親——原著裡從沒寫過阮媽來過老宅。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她翻到這一章：「阮多把母親推下台階。」抬頭，婆婆拄著佛珠從大門走向那個女人，傭人拿著掃帚跟在後面。",
+        "question": "婆婆要把阮媽趕走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "chuanshu",
+        "jiating"
+      ],
+      "spectacle": "晨光裡半透明的書浮在床頭，二十七這個數字像倒數計時一樣亮著；書頁一翻，窗外的老宅大門正好映在頁面上。",
+      "glamour_shot": "聞默站在三樓走廊盡頭，晨光從百葉窗切進來落在他低頭寫便條的側臉，筆尖一停，把便條貼在她門上：「早。」",
+      "setups": [
+        "s03-t01",
+        "m10",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "首發會後默聲接到老薛排到年底的案子，錄音室第一次有排程表"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-xiaoman",
+        "wen-furen",
+        "ruan-ma"
+      ],
+      "locations": [
+        "她的小陽台",
+        "聞家老宅大門",
+        "書頁"
+      ],
+      "state": {
+        "time": "契約剩約五個月，首發會隔天早上",
+        "knowledge": "書剩二十七頁有字；門口是原主的母親；原著這一章她把母親推下台階",
+        "carry_forward": "婆婆走向大門"
+      }
+    },
+    {
+      "number": 122,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "婆婆的傘",
+      "youtube_title": "惡婆婆走向門口要趕人，結果遞出一把傘；炮灰兒媳這才知道親爸又欠了一屁股債",
+      "duration_s": 110,
+      "logline": "阮多想知道阮媽為什麼來，卻先撞上阮大富的新債，原著第一百二十五章的字還在頁上等她照演。",
+      "hook": "婆婆走到門口，阮多三級一跳衝下樓梯。婆婆只把一把黑傘塞進阮媽手裡：「下雨了。」關門。",
+      "hook_type": "reversal",
+      "mid_hook": "手機響，陌生號碼：「阮大富的女兒？他欠三十萬，說聞家會還。」她手一鬆，手機摔在樓梯上。",
+      "conflict": "阮多要在不讓聞家被拖下水的前提下，弄清楚阮大富這次欠了多少、阮媽是不是來要錢的。",
+      "turn": "她以為阮媽是來替爸爸要錢；阮小寶第一次傳訊給她：「媽把戒指賣了，替爸還一半。她只是想看妳。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡下雨，陽台上她看見阮媽撐著婆婆的傘還站在門口；書頁自己翻開：「第一百二十五章：阮多把母親趕出門。」她手握著門把。",
+        "question": "她明天要不要開那扇門？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "chuanshu"
+      ],
+      "spectacle": "雨夜，老宅鐵門外一把黑傘一動不動，三樓陽台上的她與傘下的人隔著雨幕對望。",
+      "glamour_shot": "她在陽台上抱膝坐著，城市的燈在雨裡糊成一片，她說到一半忽然停住，眼睛映著門口那一點傘的黑。",
+      "setups": [
+        "s03-t03",
+        "m10"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她記下催收電話與三十萬的數字，先擋住對方打去聞家"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-furen",
+        "ruan-ma",
+        "ruan-xiaobao",
+        "wen-mo"
+      ],
+      "locations": [
+        "聞家老宅大門",
+        "老宅樓梯",
+        "她的小陽台"
+      ],
+      "state": {
+        "time": "阮媽站在門口第三天的夜裡",
+        "knowledge": "阮大富新欠三十萬、拿聞家的名字借；阮媽賣了戒指；契約寫明阮家的債到期一筆勾銷，新債會讓契約出事",
+        "carry_forward": "開不開門"
+      }
+    },
+    {
+      "number": 123,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "媽，上車",
+      "youtube_title": "原著寫她把親媽趕出門，她卻在門鈴響前開門：媽上車，我帶妳去一個能說話的地方",
+      "duration_s": 120,
+      "logline": "阮多開了門，卻不把阮媽帶進聞家，而是帶去默聲的錄音間，因為那是聲城唯一一個人人都會被聽完的地方。",
+      "hook": "第四天清晨，阮媽的手指剛碰到門鈴，門先開了。阮多拎著車鑰匙：「媽，上車。」",
+      "hook_type": "line",
+      "mid_hook": "錄音間紅燈亮起。阮多按下錄音：「說吧，多久都行。」阮媽坐在麥克風前，十分鐘，一個字也沒說。",
+      "conflict": "讓一個忍了一輩子的人開口，而且是對著一個她不再認得的女兒。",
+      "turn": "大家以為阮媽沉默是因為怕；阮小寶背著書包衝進來吼：「妳又想要媽幹嘛？」——原來在阮家，沉默是因為原主從不讓她說完。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第十一分鐘，阮媽對著麥克風開口，第一句就讓玻璃外的唐叔放下了茶：「妳十歲那年，就不跟我說話了。」",
+        "question": "原主十歲那年發生了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "zhiyu"
+      ],
+      "spectacle": "錄音間的紅燈下，一個圍裙女人坐在專業麥克風前，聲紋表一格不動，玻璃外三個人屏住呼吸。",
+      "glamour_shot": "阮多隔著玻璃對阮媽比了一個慢慢說的手勢，暖黃燈打在她的側臉，馬尾還在晃。",
+      "setups": [
+        "s03-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阮媽第一次進默聲；她沒讓阮家進聞家門，也沒讓阮媽在門口再站一天"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-ma",
+        "ruan-xiaobao",
+        "tang-shu"
+      ],
+      "locations": [
+        "聞家老宅大門",
+        "默聲錄音室",
+        "錄音間"
+      ],
+      "state": {
+        "time": "阮媽到老宅門口第四天早上",
+        "knowledge": "原著那一章「把母親趕出門」她沒照演；阮小寶對她滿是敵意",
+        "carry_forward": "阮媽要說十歲那年的事"
+      }
+    },
+    {
+      "number": 124,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "兩小時",
+      "youtube_title": "親媽在錄音間說了整整兩小時，最後一句讓穿書女主僵住：妳不像妳",
+      "duration_s": 130,
+      "logline": "阮多讓阮媽說，說了兩小時，原主為什麼變成原著裡那個人，一點一點被說出來。",
+      "hook": "計時器跳到 00:47:12，阮媽還在說：「那年他把房子輸掉，妳在門口看著。」",
+      "hook_type": "image",
+      "mid_hook": "主控台上唐叔悄悄按下第二軌的錄音鍵，嘟囔：「這段，留著。」阮多回頭，他裝作喝茶。",
+      "extra_hooks": [
+        "走廊上搬音箱的阮小寶停住，音箱抱在胸口，聽見媽說「她怪我沒走」。"
+      ],
+      "conflict": "聽完一個不屬於她的人生，還要接得住阮媽說出口的每一句。",
+      "turn": "她以為原主天生刻薄；兩小時說下來，原主恨的不是窮，是一個「只會忍」的媽媽，所以她長大以後誰都不聽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "01:58:40，阮媽抬起頭看著玻璃外的她：「妳不像妳。妳以前不聽我說話。」阮多手按在玻璃上，嘴張開。",
+        "question": "她要怎麼回答阮媽？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "jiating"
+      ],
+      "spectacle": "兩小時的聲紋在主控台螢幕上拉成一條長河，從平到起伏，最後一段高高拱起。",
+      "glamour_shot": "玻璃外的阮多第一次一句話都沒插，手托著下巴聽，眼眶在暖光裡一點一點紅起來。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐叔把兩小時錄成第二軌存了起來",
+        "她第一次知道原主變壞的來處"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-ma",
+        "tang-shu",
+        "ruan-xiaobao"
+      ],
+      "locations": [
+        "錄音間",
+        "默聲錄音室"
+      ],
+      "state": {
+        "time": "同一天中午",
+        "knowledge": "原主十歲看父親輸掉房子、恨母親只會忍；阮媽察覺女兒變了",
+        "carry_forward": "阮媽那句「妳不像妳」"
+      }
+    },
+    {
+      "number": 125,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "那我現在聽",
+      "youtube_title": "親媽當面問妳到底是誰，她沒回答，原著裡趕走母親的那一頁當場變白",
+      "duration_s": 120,
+      "logline": "阮多接住阮媽的質問，卻不能說出自己是誰；阮媽要的不是答案，是被聽見。",
+      "hook": "阮多推開錄音間的門，坐到阮媽對面：「那我現在聽。」阮媽的手在圍裙上擦了三次。",
+      "hook_type": "line",
+      "mid_hook": "阮媽盯著她：「妳是誰？」錄音間靜了。她眼前的書自己翻到「把母親趕出門」那一頁——字一行一行褪成白。",
+      "extra_hooks": [
+        "阮媽臨走回頭：「妳別跑樓梯，妳的心——」話沒說完，走廊「砰」一聲。"
+      ],
+      "conflict": "面對一個看穿她的母親，她要怎麼不說謊、又不說破。",
+      "turn": "她以為阮媽會逼她承認；阮媽卻說：「不管妳是誰，妳聽完了。」阮媽早就知道女兒換了個人，從她開門那一秒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "走廊上一台音箱倒在地上，阮小寶站在旁邊。唐叔一把揪住他的帽T：「摔壞的，你賠。」",
+        "question": "阮小寶賠得起那台音箱嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "chuanshu",
+        "jiating"
+      ],
+      "spectacle": "一頁書在她眼前從上往下褪白，像有人拿橡皮擦慢慢擦過，最後一行「趕出門」三個字最後消失；頁角數字跳成二十六。",
+      "glamour_shot": "她坐在阮媽對面，沒說話，第一次慢下來，燈從斜上方落在她垂下的睫毛。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s03-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阮媽說出「妳是誰」卻選擇留下；母女第一次對坐",
+        "書剩二十六頁有字"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-ma",
+        "ruan-xiaobao",
+        "tang-shu"
+      ],
+      "locations": [
+        "錄音間",
+        "默聲錄音室走廊",
+        "書頁"
+      ],
+      "state": {
+        "time": "同一天下午",
+        "knowledge": "阮媽知道她不是原來的女兒，但沒追問；阮媽提到她的心",
+        "carry_forward": "阮小寶摔壞音箱"
+      }
+    },
+    {
+      "number": 126,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "抓去搬",
+      "youtube_title": "叛逆弟弟摔壞錄音室最貴的音箱，被老錄音師抓去搬設備，結果修好了全場沒人找得到的雜音",
+      "duration_s": 105,
+      "logline": "阮小寶要替自己闖的禍負責，阮多想留住這個弟弟，而聞朗趁著恭喜首發會溜進了默聲。",
+      "hook": "阮小寶甩開唐叔的手：「我賠。用做的。」唐叔丟給他一捆線：「先繞好。」",
+      "hook_type": "line",
+      "mid_hook": "聞朗提著蛋糕來「恭喜首發」，笑著經過主控台，順手把一張她手寫的便條折起來塞進西裝內袋。",
+      "conflict": "讓阮小寶在默聲找到一個能待的位置，同時盯住突然熱心的聞朗。",
+      "turn": "大家以為阮小寶只會闖禍；他趴在地上半小時，找出唐叔追了三個月的接地雜音，唐叔第一次對他點頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "晚上她倒監視畫面：聞朗不只拿了便條，還舉手機拍下白板上她寫滿的排程——每一張都對準她的字。",
+        "question": "聞朗要她的字跡做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "一個高中生趴在錄音室地板，耳朵貼著線材一路爬，主控台的雜音波形在他拔起一根線的瞬間歸零。",
+      "glamour_shot": "聞默隔著錄音間玻璃摘下耳機，看著地上的阮小寶，嘴角極淡地動了一下，在便條上寫「他耳朵好」推給她。",
+      "setups": [
+        "s03-t09"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "默聲三個月的接地雜音解決",
+        "阮小寶在錄音室留到天黑"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-xiaobao",
+        "tang-shu",
+        "wen-lang",
+        "wen-mo",
+        "a-zhou"
+      ],
+      "locations": [
+        "默聲錄音室",
+        "主控台"
+      ],
+      "state": {
+        "time": "阮媽來的隔天",
+        "knowledge": "聞朗拍她的字、拿她的便條；阮小寶有一雙好耳朵",
+        "carry_forward": "聞朗在查什麼"
+      }
+    },
+    {
+      "number": 127,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "七點，遲到滾",
+      "youtube_title": "拿聞家名號借錢的親爸被債主找上門，叛逆弟弟清晨七點第一個站在錄音室門口",
+      "duration_s": 110,
+      "logline": "阮小寶決定留下打工，因為他要替爸爸還債；可債已經比他知道的還大。",
+      "hook": "清晨六點五十，唐叔開門，阮小寶已經坐在台階上，書包旁邊擺著一雙工作手套。",
+      "hook_type": "image",
+      "mid_hook": "阮小寶搬著線材說漏嘴：「爸借的那家說，找不到他就去找聞家。」小蕊的計算機停在半空。",
+      "conflict": "留下阮小寶，同時擋住債主別碰聞家。",
+      "turn": "她以為阮小寶留下是為了躲家裡；他是要自己還爸爸的債，不想姊姊「再嫁一次」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "默聲的電話響了，小蕊按下擴音：「阮大富說，聞家會還。今天下午三點，我們去老宅。」",
+        "question": "債主真的會闖進聞家嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "zhichang"
+      ],
+      "spectacle": "清晨空蕩的錄音室裡，一個少年把幾十條線材一條條繞成整齊的圈，晨光從百葉窗打成一道一道。",
+      "glamour_shot": "阮小寶敞開的校服下擺沾著灰，倚在門框上一句話「我明天還來」，眼神酷得像在逞強。",
+      "setups": [],
+      "payoffs": [
+        "s03-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阮小寶正式在默聲打工；書上「阮小寶輟學離家」那一頁變白，剩二十五頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-xiaobao",
+        "tang-shu",
+        "xiao-rui"
+      ],
+      "locations": [
+        "默聲錄音室"
+      ],
+      "state": {
+        "time": "隔天早上",
+        "knowledge": "債主要下午去老宅；阮小寶留下了",
+        "carry_forward": "聞家會不會被拖下水"
+      }
+    },
+    {
+      "number": 128,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "妳家？",
+      "youtube_title": "債主要闖豪門老宅，她說這是我家的事，啞巴老公只寫了兩個字讓她愣住：妳家？",
+      "duration_s": 115,
+      "logline": "阮多要在債主上門前擋下這件事，卻在飯桌上被聞默一張便條問住：她到底是哪一家的人。",
+      "hook": "下午兩點五十，她堵在老宅門口；書頁翻開：「阮多偷走聞默的錶抵債，契約提前終止。」她：「我偏不。」",
+      "hook_type": "danger",
+      "mid_hook": "晚飯，她坐在桌尾。婆婆放下筷子：「阮家的債，又來了？」原來催收電話早上已經打進佛堂。",
+      "conflict": "保住契約、不讓聞家替阮家還錢，也不讓婆婆再一次看見「嫁進來要錢的」。",
+      "turn": "聞默推來便條：「債我知道。不用妳管。」她脫口：「這是我家的事。」他寫：「妳家？」——她說的「家」是阮家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她在他的便條本上寫：「讓我自己來。」推回去。他的筆懸在紙上，墨點暈開一圈，全桌都在等。",
+        "question": "他會讓她自己處理阮大富嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "chuanshu",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "老宅鐵門前她一個人擋著三個催收的人，說了五分鐘，對方的頭頭把借據收回公事包轉身走了。",
+      "glamour_shot": "燈下飯桌，他低頭寫字的側臉與她撐著下巴的臉之間隔著一盤菜，便條在兩人手指間來回。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "催收的人被她說走，沒踏進老宅",
+        "婆婆第一次在飯桌上問她阮家的事，而不是罵"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-furen",
+        "wen-lao",
+        "wen-xiaoman"
+      ],
+      "locations": [
+        "聞家老宅大門",
+        "聞家飯桌"
+      ],
+      "state": {
+        "time": "當天晚上",
+        "knowledge": "債主暫時退了；她第一次把阮家叫作「我家」",
+        "carry_forward": "他給不給她自己處理"
+      }
+    },
+    {
+      "number": 129,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "第二軌",
+      "youtube_title": "賭鬼親爸衝進錄音室要錢，她沒報警，把他關進錄音間放了一段錄音",
+      "duration_s": 120,
+      "logline": "阮大富來默聲要錢，阮多要讓這個說過三次要戒的人，第一次聽見別人怎麼說他。",
+      "hook": "聞默的筆落下：「三天。」隔天一早，阮大富一腳踢開默聲的門：「女兒，借我！」",
+      "hook_type": "line",
+      "mid_hook": "書頁翻開：「阮多報警，阮大富被帶走，從此恨她。」她把電話放下，打開錄音間的門：「爸，進來。」",
+      "extra_hooks": [
+        "阮大富想走，阮小寶戴著工作手套擋在門口：「聽完。」"
+      ],
+      "conflict": "不報警、不給錢，讓阮大富自己坐下來聽。",
+      "turn": "大家以為她要罵他；她按下唐叔存的第二軌——阮媽說的兩小時。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "錄音放到一小時零二分，阮媽的聲音說：「他第一次賭，是替我借藥錢。」阮大富的手從扶手上滑下來，起身推門出去。",
+        "question": "阮大富走出去，是逃還是回頭？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "jiating"
+      ],
+      "spectacle": "錄音間裡一個鬆垮西裝的中年男人坐在麥克風前，耳機裡是妻子的聲音，他的臉在玻璃上一點一點垮下來。",
+      "glamour_shot": "阮多站在主控台後，戴著耳機監聽，一手按著推桿，眼神很靜，第一次像這間錄音室的主人。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "書上「報警」那一頁變白，剩二十四頁",
+        "阮小寶第一次站在姊姊這邊"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-dafu",
+        "ruan-xiaobao",
+        "tang-shu",
+        "wen-mo"
+      ],
+      "locations": [
+        "默聲錄音室",
+        "錄音間"
+      ],
+      "state": {
+        "time": "三天期限第一天",
+        "knowledge": "阮大富第一次賭是為了替阮媽借藥錢",
+        "carry_forward": "阮大富走出錄音間"
+      }
+    },
+    {
+      "number": 130,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "這次有人聽見",
+      "youtube_title": "賭了半輩子的親爸坐在樓梯上很久，說我去戒；她說你說過三次了，他回了一句讓全場安靜",
+      "duration_s": 140,
+      "logline": "阮多要讓阮大富說出那句話，而且是真的；她坐在樓梯上，等他自己開口。",
+      "hook": "門外樓梯上，阮大富坐著，手裡捏著一顆沒拆的檳榔。阮多在他上面兩級坐下，一句也沒說。",
+      "hook_type": "image",
+      "mid_hook": "阮大富從西裝內袋掏出一疊皺借據攤在台階上：三家、三十一萬。「我算過，還不完。」",
+      "extra_hooks": [
+        "樓梯底下，聞默不知何時站在那裡，手搭在扶手上，沒上來。"
+      ],
+      "conflict": "讓阮大富自己決定，不是被女兒罵、不是被債主逼。",
+      "turn": "她以為要說服他；她什麼都沒說，他自己把檳榔放回口袋——第一次，她靠的是閉嘴。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阮大富盯著台階很久：「我去戒。」她：「你說過三次了。」他抬頭：「這次有人聽見。」樓梯底下，聞默的手指在扶手上輕輕敲了三下。",
+        "question": "阮大富這次真的會戒嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "zhiyu",
+        "chuanshu"
+      ],
+      "spectacle": "老樓梯間的窗光斜斜落在一級一級台階上，一疊借據攤開，父女隔兩級坐著，樓梯底下一個高瘦的影子。",
+      "glamour_shot": "聞默靠在樓梯底的扶手，深綠開襟衫、喉上的淡疤在逆光裡，他抬頭看她，眼睛很靜。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s03-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阮大富交出三十一萬的借據，答應去戒賭班",
+        "書剩二十三頁有字；阮家三個人裡第一次有人自己說要改"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-dafu",
+        "wen-mo"
+      ],
+      "locations": [
+        "默聲錄音室外的樓梯"
+      ],
+      "state": {
+        "time": "三天期限第二天傍晚",
+        "knowledge": "阮大富欠三家共三十一萬，答應去戒；他敲的三下是「我在」",
+        "carry_forward": "戒賭班能不能撐下去"
+      }
+    },
+    {
+      "number": 131,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "家屬簽名",
+      "youtube_title": "陪賭鬼親爸報名戒賭班，家屬欄她一簽名就出事：這字跡跟原主完全不一樣",
+      "duration_s": 105,
+      "logline": "阮多陪阮大富去戒賭班報到，輔導員只信出席簿；同一天，最討厭她的小姑抱著一份沒人敢接的劇本來找她。",
+      "hook": "戒賭班門口，輔導員林姊把報名表推過來：「誰陪他來？」阮多：「我。」阮大富在後面縮了縮脖子。",
+      "hook_type": "question",
+      "mid_hook": "她在家屬欄簽下「阮多」，林姊看了一眼舊檔案：「妳去年簽的不是這樣。」她的筆停住。",
+      "conflict": "讓阮大富進得了戒賭班、也撐得過第一堂。",
+      "turn": "她以為最難的是讓爸爸開口；最難的是她自己的簽名——原主去年替爸爸簽過一次，字跡一筆都對不上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "回到默聲，聞小滿把一本劇本摔在主控台上：「我的畢製，沒人敢配。」封面寫著《收音機》，主角欄：一個從不說話的人。",
+        "question": "小滿的劇本為什麼沒人敢接？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "一圈折疊椅圍成的互助圈，中間一個鬆垮西裝的男人站起來，十幾張臉轉向他。",
+      "glamour_shot": "聞小滿短髮耳機、球鞋踩在主控台椅子上，劇本拍下去的瞬間髮尾一甩，臉上寫著「我不信妳」。",
+      "setups": [
+        "s03-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阮大富正式報名戒賭班、出席第一堂"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-dafu",
+        "s03-fudaoyuan",
+        "wen-xiaoman"
+      ],
+      "locations": [
+        "戒賭班教室",
+        "默聲錄音室"
+      ],
+      "state": {
+        "time": "戒賭第一天",
+        "knowledge": "她的簽名跟原主的舊簽名對不上；小滿的畢製沒人配",
+        "carry_forward": "《收音機》要怎麼配"
+      }
+    },
+    {
+      "number": 132,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "收音機",
+      "youtube_title": "刁鑽小姑的畢業製作沒人敢配，啞巴哥哥隔著玻璃當監製，第一句台詞就卡住",
+      "duration_s": 110,
+      "logline": "阮多接下小滿的畢製：阿宙配、聞默監製、她在玻璃外說；可這個劇本的難處不在聲音。",
+      "hook": "她翻完劇本：一個不說話的主角，和一台說個不停的收音機。她看向玻璃後的聞默：「這不就是——」小滿：「閉嘴。」",
+      "hook_type": "line",
+      "mid_hook": "小滿冷冷補一句：「評審是嚴教授。他說默聲是死掉的錄音室。」阿宙的劇本掉在地上。",
+      "extra_hooks": [
+        "晚飯她坐桌尾，婆婆的目光掃過自己右手邊空著的那個位子，又收回去。"
+      ],
+      "conflict": "兩週內交出一部能過嚴教授的畢製配音。",
+      "turn": "大家以為難的是收音機的台詞量；真正卡住的是聞默——他看到劇本第三頁，把筆放下，走出錄音室。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿宙試到第三遍破音，小滿一把搶回劇本：「你們也不行。」轉身要走，門把已經握在手上。",
+        "question": "小滿的畢製要飛了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhichang",
+        "jiating"
+      ],
+      "spectacle": "錄音間裡兩支麥克風、一張空椅子代表不說話的主角，玻璃外三個人、三種表情。",
+      "glamour_shot": "聞默隔著玻璃翻劇本，檯燈下長指停在第三頁，睫毛垂著，一動不動。",
+      "setups": [
+        "s03-t05",
+        "s03-t06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "默聲接下第一個不收錢的案子：小滿的畢製"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-xiaoman",
+        "a-zhou",
+        "wen-mo",
+        "wen-furen"
+      ],
+      "locations": [
+        "默聲錄音室",
+        "錄音間",
+        "聞家飯桌"
+      ],
+      "state": {
+        "time": "畢製交件前兩週",
+        "knowledge": "評審是嚴教授；聞默看了劇本第三頁走開",
+        "carry_forward": "小滿要走"
+      }
+    },
+    {
+      "number": 133,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "不說話的那三年",
+      "youtube_title": "小姑哭著說出寫劇本的原因，原來那個不說話的主角，是她三年沒開口跟哥哥說話的自己",
+      "duration_s": 125,
+      "logline": "阮多攔下小滿，用話療讓她說出《收音機》到底在寫誰。",
+      "hook": "阮多擋在門口：「劇本第三頁，寫的是妳哥？」小滿的手從門把上滑下來。",
+      "hook_type": "question",
+      "mid_hook": "小滿坐在空椅子上，一開口就停不下來：「他不說話以後，我也不跟他說了。我怕說錯。」",
+      "conflict": "讓小滿說出她跟哥哥之間的三年，劇本才配得下去。",
+      "turn": "大家以為主角是聞默；小滿說，不說話的主角是她自己——三年來不敢跟哥哥說話的那個人，收音機才是她想變成的樣子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "玻璃另一邊，聞默不知何時回來了，站在門外聽完。他在便條上寫了三年來第一句給小滿的話，貼在玻璃上：「我一直在等妳說。」小滿抬頭。",
+        "question": "小滿看到那張便條會怎麼做？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "jiating",
+        "tianchong"
+      ],
+      "spectacle": "隔音玻璃上貼著一張便條，玻璃一邊是哭的妹妹，一邊是站著的哥哥，中間是阮多的倒影。",
+      "glamour_shot": "小滿坐在錄音間空椅上，耳機掛脖，眼淚掉下來前先笑了一下，暖黃燈落在短髮上。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小滿說出劇本的真心；聞默三年來第一次寫字給妹妹",
+        "書上「小滿在畢業典禮揭穿原主」那一頁變白，剩二十二頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-xiaoman",
+        "wen-mo"
+      ],
+      "locations": [
+        "錄音間"
+      ],
+      "state": {
+        "time": "畢製前十二天",
+        "knowledge": "《收音機》的主角是小滿自己",
+        "carry_forward": "兄妹第一次隔著玻璃對話"
+      }
+    },
+    {
+      "number": 134,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "嫂子",
+      "youtube_title": "小姑第一次聽見自己寫的字被唸出來，哭著叫了一聲嫂子，整間錄音室安靜了一秒",
+      "duration_s": 120,
+      "logline": "《收音機》正式開錄，阿宙配收音機、聞默寫監製單、阮多在玻璃外說；小滿等著聽自己的劇本活過來。",
+      "hook": "小滿把便條摺好放進手機殼。下一秒紅燈亮：「《收音機》，第一場，開始。」",
+      "hook_type": "image",
+      "mid_hook": "錄到收音機那段獨白卡住，聞默在監製單上只寫了一行：「讓她說。」他指的是玻璃外的阮多。",
+      "conflict": "在一天內錄完畢製最難的獨白。",
+      "turn": "大家以為聞默會親自指點阿宙；他把位子讓給阮多，自己只在紙上打勾。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一句錄完，小滿摘下耳機，哭著看向玻璃外的阮多：「嫂子。」整間錄音室靜了整整一秒，小蕊的保溫杯停在嘴邊。",
+        "question": "小滿真的認她了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "zhichang",
+        "jiating"
+      ],
+      "spectacle": "錄音間的聲紋從平線起伏成一首歌，主控台三個人、玻璃後一個人，同時抬頭。",
+      "glamour_shot": "阿宙劉海往後一撥，閉著眼對麥克風說最後一句，帽T在燈下像另一個人。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "《收音機》獨白錄完；小滿第一次喊她「嫂子」"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-xiaoman",
+        "a-zhou",
+        "wen-mo",
+        "xiao-rui",
+        "tang-shu"
+      ],
+      "locations": [
+        "默聲錄音室",
+        "錄音間"
+      ],
+      "state": {
+        "time": "畢製前十天",
+        "knowledge": "小滿喊她嫂子；全錄音室都聽見了",
+        "carry_forward": "契約剩四個月的事被翻出來"
+      }
+    },
+    {
+      "number": 135,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "小滿，閉嘴",
+      "youtube_title": "小姑說我哥一定會留她，啞巴總裁當場寫下四個字，全錄音室第一次看他慌",
+      "duration_s": 105,
+      "logline": "一聲「嫂子」把契約翻上檯面，阮多想打哈哈帶過，小滿卻說得比誰都篤定。",
+      "hook": "小蕊放下保溫杯：「契約還有四個月，妳確定？」小滿擦著眼淚：「我哥會留她。」",
+      "hook_type": "line",
+      "mid_hook": "聞默把便條拍在玻璃上，字寫得又大又急：「小滿，閉嘴。」唐叔噗一聲把茶噴在主控台上。",
+      "conflict": "阮多要在不讓氣氛更尷尬的情況下，接住小滿那句話。",
+      "turn": "大家笑他慌了；阮多看到便條的背面透出另一行被劃掉的字，只看得清「我」。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "眾人散去，便條還貼在玻璃上。她伸手要撕下來看背面，聞默的手比她快一步按住。兩隻手隔著一張紙。",
+        "question": "她要不要硬撕那張便條？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "一張便條拍在隔音玻璃上，四個大字撞進每個人的視線，茶水在主控台上濺成一道弧。",
+      "glamour_shot": "聞默耳根紅了，背對眾人轉過身，高領下喉結動了一下，手還按在玻璃上。",
+      "setups": [
+        "s03-t04"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "書上一頁變白，剩二十一頁；默聲第一次有人敢笑老闆"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-xiaoman",
+        "xiao-rui",
+        "tang-shu",
+        "a-zhou"
+      ],
+      "locations": [
+        "默聲錄音室"
+      ],
+      "state": {
+        "time": "同一天",
+        "knowledge": "小滿篤定她哥會留她；便條背面有被劃掉的字",
+        "carry_forward": "那行字寫什麼"
+      }
+    },
+    {
+      "number": 136,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "評審的紅筆",
+      "youtube_title": "評審教授當眾說死掉的錄音室配不出好聲音，小姑站起來：那是我嫂子導的",
+      "duration_s": 130,
+      "logline": "《收音機》上評審台，嚴教授一開口就要把默聲判死，阮多只能坐在台下聽。",
+      "hook": "她鬆了手：「留著，等你自己給我。」隔週，音樂學院放映廳的燈暗下，大銀幕打出《收音機》。",
+      "hook_type": "image",
+      "mid_hook": "放映到一半，嚴教授舉手示意暫停：「收音機的聲音太溫柔。誰導的？默聲？那間死掉的？」",
+      "extra_hooks": [
+        "阮多在台下攥緊手，她第一次不能替人說話——這是小滿的台。"
+      ],
+      "conflict": "讓《收音機》過評審，而且要由小滿自己說服嚴教授。",
+      "turn": "大家以為阮多會起身吵；她沒動，小滿站起來說了三分鐘：為什麼收音機要溫柔，因為它在等一個人開口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "嚴教授的紅筆在評分表上停了很久，最後在「配音」一欄寫下滿分，抬頭：「默聲誰導的？我有個案子。」",
+        "question": "嚴教授的案子是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "放映廳裡大銀幕上一台舊收音機的光暈，觀眾席第一排一個女生站起來，背影擋住半個銀幕。",
+      "glamour_shot": "小滿站在銀幕前，光從背後把她的短髮勾出一圈亮邊，她說到最後一句回頭看了阮多一眼。",
+      "setups": [],
+      "payoffs": [
+        "s03-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "《收音機》畢製配音拿到滿分；嚴教授要找默聲做案子",
+        "書剩二十頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-xiaoman",
+        "s03-pingshen",
+        "a-zhou",
+        "wen-mo"
+      ],
+      "locations": [
+        "音樂學院放映廳"
+      ],
+      "state": {
+        "time": "畢製評審日",
+        "knowledge": "小滿過了評審；嚴教授對默聲改觀",
+        "carry_forward": "嚴教授有新案子"
+      }
+    },
+    {
+      "number": 137,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "出席簿",
+      "youtube_title": "畢製大獲全勝的晚上，戒賭班打來：妳爸今天沒來，出席簿上那一格是空的",
+      "duration_s": 100,
+      "logline": "小滿的勝利還沒慶祝完，阮大富那邊先出了狀況，阮多要分清是怕還是真的破戒。",
+      "hook": "慶功宴上嚴教授的名片還在桌上，阮多的手機震：「林姊：妳爸今天沒來。」",
+      "hook_type": "danger",
+      "mid_hook": "她帶著阮小寶衝到阮家，屋裡沒人，桌上一疊撲克牌被拆開過——阮小寶臉一白。",
+      "conflict": "在阮大富破戒前找到他。",
+      "turn": "大家以為他又去賭了；他在城北醫院門口的長椅上坐了一下午——阮媽今天回診，他不敢進去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她走近長椅，阮大富抬頭，眼睛紅著：「妳媽在裡面，醫生說要開刀。」——身後醫院的玻璃門一開一關。",
+        "question": "阮媽怎麼了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "傍晚的醫院門口，一張長椅上坐著一個鬆垮西裝的男人，玻璃門一開一關，把他的影子切成兩半。",
+      "glamour_shot": "她跑過醫院廣場，馬尾甩起，夕光打在她側臉，停下時大口喘氣，手按著胸口。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到阮大富，他沒賭"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-xiaobao",
+        "ruan-dafu",
+        "s03-fudaoyuan"
+      ],
+      "locations": [
+        "慶功宴的小館",
+        "阮家",
+        "城北醫院門口"
+      ],
+      "state": {
+        "time": "評審日當晚",
+        "knowledge": "阮大富沒賭，在醫院門口；阮媽要開刀",
+        "carry_forward": "阮媽的病"
+      }
+    },
+    {
+      "number": 138,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "每天晚上的走廊",
+      "youtube_title": "小姑終於說出為什麼確定哥哥會留她：每天晚上，他都坐在她陽台那面牆外面",
+      "duration_s": 115,
+      "logline": "阮媽的小手術讓阮家三個人第一次坐在一起；回到老宅，小滿說出一個她藏了半年的秘密。",
+      "hook": "護理師探頭：「阮太太的手是腱鞘，小刀，今天就能回家。」阮大富整個人軟在椅子上。",
+      "hook_type": "reversal",
+      "mid_hook": "回老宅的車上，小滿傳來訊息：「妳知道我為什麼說我哥會留妳？」後面跟著一張照片。",
+      "conflict": "阮多要安頓好阮家，再弄懂小滿那句話的根據。",
+      "turn": "大家以為小滿看過筆記本；她拍到的是每晚十一點，聞默坐在三樓走廊、背靠著她陽台那面牆，耳機掛在脖子上沒戴。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "夜裡十一點，她走到陽台，手掌貼牆，敲了三下。牆的另一邊，隔了兩秒，傳回兩下。",
+        "question": "兩下是什麼意思？她會說出口嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "jiating"
+      ],
+      "spectacle": "手機照片裡，昏黃走廊上一個人背靠著牆坐在地上，牆的另一邊是陽台與城市的燈。",
+      "glamour_shot": "她背靠陽台牆，城市的燈落在臉上，敲牆的手指停在磚上，嘴角先笑了，眼睛卻紅了。",
+      "setups": [],
+      "payoffs": [
+        "s03-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阮媽小手術平安；阮家三個人第一次一起吃了一頓飯",
+        "她知道他每晚隔牆聽她說話"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-ma",
+        "ruan-dafu",
+        "ruan-xiaobao",
+        "wen-xiaoman",
+        "wen-mo"
+      ],
+      "locations": [
+        "城北醫院走廊",
+        "她的小陽台",
+        "老宅三樓走廊"
+      ],
+      "state": {
+        "time": "隔天夜裡",
+        "knowledge": "兩下是「繼續」；他每晚在牆外聽",
+        "carry_forward": "婆婆的家宴"
+      }
+    },
+    {
+      "number": 139,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "明晚妳坐哪",
+      "youtube_title": "惡婆婆把她叫進佛堂，只問一句：明晚家宴妳坐哪？",
+      "duration_s": 110,
+      "logline": "聞老先生的壽宴前一晚，婆婆把阮多叫進佛堂；她以為是審問，其實是一道題。",
+      "hook": "牆的那頭又傳來兩下。她對著牆繼續說到半夜，說到最後一句才發現自己在說「留下」兩個字前停住了。",
+      "hook_type": "line",
+      "mid_hook": "隔天傭人傳話：「夫人叫妳去佛堂。」小滿把筷子一摔：「完了，上次叫進去的是原主。」",
+      "extra_hooks": [
+        "書頁翻開：「家宴上，聞夫人當眾宣布提前解約，阮多被請出聞家。」"
+      ],
+      "conflict": "阮多要過婆婆這一關，原著這一章她會被趕出去。",
+      "turn": "她以為婆婆要談解約；婆婆只把一串佛珠放在桌上，說：「明晚家宴，妳坐哪？」——不是威脅，是在等她自己說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "婆婆看著她：「說。」佛堂的檀香一縷往上，她張嘴，第一次不知道該說桌尾，還是說別的。",
+        "question": "她會說自己想坐哪？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "chuanshu",
+        "xiju"
+      ],
+      "spectacle": "佛堂裡一盞長明燈、一串佛珠、一個盤髮旗袍的女人與一個寬T馬尾的女孩隔著一張矮桌。",
+      "glamour_shot": "婆婆素色旗袍坐在燈下，撚佛珠的手停了，抬眼看她，臉上沒有多餘表情卻不冷。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "婆婆第一次問她想要什麼"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-furen",
+        "wen-xiaoman",
+        "wen-mo"
+      ],
+      "locations": [
+        "她的小陽台",
+        "佛堂"
+      ],
+      "state": {
+        "time": "家宴前一天",
+        "knowledge": "原著這章她被請出聞家；婆婆要她自己說座位",
+        "carry_forward": "家宴"
+      }
+    },
+    {
+      "number": 140,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "坐這",
+      "youtube_title": "原著寫她在家宴被趕出豪門，結果婆婆把她的碗從桌尾移到自己旁邊：坐這",
+      "duration_s": 150,
+      "logline": "家宴當晚，聞朗帶著禮來、聞家全員到齊，阮多帶著昨晚沒說出口的答案入座。",
+      "hook": "佛堂裡她終於說：「桌尾就好。」婆婆沒應。隔晚家宴，她的碗還擺在桌尾，聞朗笑著坐在她對面。",
+      "hook_type": "question",
+      "mid_hook": "聞朗舉杯：「聽說弟妹最近很忙，連字都變了。」他從西裝口袋抽出一張便條晃了晃——是她的字。",
+      "extra_hooks": [
+        "聞默在桌下把便條本推到她腿邊，只寫了一行：「別理他。」",
+        "小滿夾菜給她，大聲喊：「嫂子吃這個。」聞朗的笑停了半秒。"
+      ],
+      "conflict": "撐過一場聞朗等著看她出錯的家宴。",
+      "turn": "大家以為聞朗要當場揭她的底；婆婆先放下筷子，起身把阮多的碗從桌尾端起來，放在自己旁邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "婆婆：「坐這。」聞老先生放下報紙看了一眼：「早該了。」她坐下，眼前的書一口氣白了三頁。她對鏡頭：「書上這一章，我被趕出聞家。」",
+        "question": "聞朗手上那張便條要拿去做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "一張長飯桌的俯拍：一隻碗從桌尾被端起，穿過一桌菜，落在主位旁邊；空中的書嘩嘩翻過三頁白。",
+      "glamour_shot": "她坐到婆婆旁邊，桌燈落在她低頭笑的臉上；對面聞默把一張便條壓在她碗邊：「好位子。」",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s03-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在聞家飯桌上坐到婆婆旁邊",
+        "書剩十七頁有字；小滿當著全家喊嫂子"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-furen",
+        "wen-lao",
+        "wen-mo",
+        "wen-xiaoman",
+        "wen-lang"
+      ],
+      "locations": [
+        "聞家飯桌"
+      ],
+      "state": {
+        "time": "家宴當晚，契約剩約四個月",
+        "knowledge": "她坐到婆婆旁邊；聞朗手上有她的便條",
+        "carry_forward": "聞朗在對字跡"
+      }
+    },
+    {
+      "number": 141,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "每晚合上的那本",
+      "youtube_title": "坐上婆婆身邊的位子才一晚，她發現啞巴老公每晚寫一句的筆記本，寫完就鎖進抽屜",
+      "duration_s": 105,
+      "logline": "家宴之後一切變好，只剩兩件事讓阮多睡不著：聞朗口袋裡她的便條，與聞默每晚寫完就合上的那本筆記本。",
+      "hook": "家宴散後，聞朗在門口把那張便條收回內袋，對她眨眼：「字很好看，跟以前不一樣。」車門一關。",
+      "hook_type": "danger",
+      "mid_hook": "夜裡她敲牆三下，沒有回音。她探頭：聞默坐在書桌前，寫了一行，合上筆記本，鎖進抽屜，鑰匙放進襯衫口袋。",
+      "conflict": "阮多想知道筆記本寫什麼，又不想問——問了他就不會寫了。",
+      "turn": "她以為他在寫錄音室的事；小蕊說錄音室的帳都在電腦裡，那本「從首發會前就開始了，每天一頁」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她半夜摸到書桌前，手剛碰到抽屜，身後檯燈「啪」地亮了——聞默靠在門邊，便條已經舉起來：「找什麼？」",
+        "question": "她要怎麼解釋半夜在他書桌前？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "夜裡的書桌：一盞檯燈、一本墨綠封皮的筆記本合上的瞬間，鑰匙在燈下閃一下落進口袋。",
+      "glamour_shot": "檯燈亮起的那一秒，他倚在門框，黑色高領、半垂的眼，便條舉在胸前，像一張判決書。",
+      "setups": [
+        "s03-t07",
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她開始在飯桌上坐婆婆旁邊；婆婆第一次替她盛湯"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-lang",
+        "xiao-rui"
+      ],
+      "locations": [
+        "聞家老宅大門",
+        "聞默的房間"
+      ],
+      "state": {
+        "time": "家宴後當夜",
+        "knowledge": "筆記本每天一頁、鎖在抽屜；聞朗留著她的便條",
+        "carry_forward": "半夜被抓包"
+      }
+    },
+    {
+      "number": 142,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "偷看行動一號",
+      "youtube_title": "半夜偷看老公筆記本被當場抓包，她編了五個理由，他只回一個字",
+      "duration_s": 100,
+      "logline": "阮多被抓包後不死心，拉上小滿與阮小寶組成「偷看小組」，結果第一次行動比她的藉口更爛。",
+      "hook": "她連珠炮：「我夢遊、我找筆、我找鑰匙、我找你——」他寫：「嗯。」她：「嗯是什麼意思！」",
+      "hook_type": "line",
+      "mid_hook": "隔天小滿拉著阮小寶擠進陽台：「我負責引開我哥，你負責抽屜。」阮小寶：「我只是來搬音箱的。」",
+      "conflict": "三個人一起把一本筆記本從抽屜裡弄出來十分鐘。",
+      "turn": "他們以為鑰匙在他口袋；行動那晚抽屜一拉就開——裡面只有一張便條：「不在這。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她捏著那張「不在這」轉身，聞默正好走進來，手裡就拿著那本筆記本，舉到她眼前晃了晃，又收回口袋。她的手伸到一半。",
+        "question": "她要不要直接搶？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "三個人擠在一扇門後，一個手電筒、一張便條，抽屜拉開的瞬間三張臉同時垮下來。",
+      "glamour_shot": "他把筆記本在她眼前晃一下，嘴角第一次有一點壞，深綠開襟衫的口袋鼓著一角。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小滿與阮小寶第一次一起做一件事"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-xiaoman",
+        "ruan-xiaobao"
+      ],
+      "locations": [
+        "聞默的房間",
+        "她的小陽台"
+      ],
+      "state": {
+        "time": "家宴後第二天",
+        "knowledge": "他早知道她會偷看，把筆記本帶在身上",
+        "carry_forward": "要不要搶"
+      }
+    },
+    {
+      "number": 143,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "主控台是妳的",
+      "youtube_title": "老錄音師第一次把主控台整個交給她，叛逆弟弟領到人生第一份薪水卻藏起來不說",
+      "duration_s": 110,
+      "logline": "老薛臨時塞來一個急案，唐叔把主控台交給阮多一個人；阮小寶領到第一份薪水，轉身就藏。",
+      "hook": "她的手停在半空，收回來：「我等你自己給。」隔天一早，老薛衝進默聲：「今晚十二點交，三十秒廣告，配音員還沒到！」",
+      "hook_type": "danger",
+      "mid_hook": "唐叔把耳機掛到她脖子上，起身：「主控台，妳的。」整個錄音室看著她，她的手第一次放上推桿。",
+      "conflict": "一個人掌主控台，在半夜十二點前交出一支廣告。",
+      "turn": "大家以為她只會「說」；她十一點五十分剪完最後一刀，唐叔在後面說：「比我快。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "交件後她回頭，書浮在主控台上方自己翻開：剩下有字的十六頁裡，有一頁標題是「聞朗去了一所高中」。",
+        "question": "聞朗去高中做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "tianchong"
+      ],
+      "spectacle": "深夜的主控台，推桿一排排亮著，她一個人坐在中間，玻璃後的阿宙對她比了一個OK。",
+      "glamour_shot": "她戴著唐叔的大耳機、馬尾塞進衣領，盯著聲紋剪最後一刀，螢幕光映在專注的眼睛裡。",
+      "setups": [
+        "s03-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次獨立掌主控台交件；老薛加簽兩支廣告",
+        "書剩十六頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "tang-shu",
+        "lao-xue",
+        "a-zhou",
+        "ruan-xiaobao"
+      ],
+      "locations": [
+        "默聲錄音室",
+        "主控台"
+      ],
+      "state": {
+        "time": "家宴後第三天深夜",
+        "knowledge": "書預告聞朗去了一所高中；阮小寶藏起了薪水",
+        "carry_forward": "聞朗在高中做什麼"
+      }
+    },
+    {
+      "number": 144,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "原主的作文",
+      "youtube_title": "有人去原主高中借走她十年前的作文簿，親媽打來電話時聲音在抖",
+      "duration_s": 110,
+      "logline": "阮多想先一步弄清聞朗在原主的過去裡找什麼，卻發現他走得比她快。",
+      "hook": "隔天中午阮媽來電，聲音在抖：「高中老師說，有個姓聞的先生來借妳以前的作文。」",
+      "hook_type": "danger",
+      "mid_hook": "她衝到學校，老師翻出借閱登記：「聞朗」，還多借了一份——原主畢業紀念冊上的親筆留言。",
+      "conflict": "搶在聞朗之前，弄清原主留下了哪些字。",
+      "turn": "她以為聞朗想挖原主的醜事；老師說他只問了一句：「她以前的字，是不是很圓？」——他要的是字跡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "回程她翻開手機裡阮媽傳來的舊照：原主的字小、方、往右斜；她低頭看自己剛寫的便條——圓、大、往上翹。背後傳來聞朗的車喇叭。",
+        "question": "聞朗拿著兩種字跡要做什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "老高中走廊的玻璃櫃裡一排畢業紀念冊，一本被抽走後留下的空格，像缺了一顆牙。",
+      "glamour_shot": "她站在校門口的榕樹下，風把寬T吹得鼓起，她低頭對著兩張字跡，睫毛壓得很低。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道聞朗在收集原主的字跡，也知道原主的字長什麼樣"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-ma",
+        "wen-lang"
+      ],
+      "locations": [
+        "原主的高中",
+        "校門口"
+      ],
+      "state": {
+        "time": "家宴後第四天",
+        "knowledge": "聞朗借走原主的作文與畢冊留言",
+        "carry_forward": "聞朗的車停在她身後"
+      }
+    },
+    {
+      "number": 145,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "偷看行動二號",
+      "youtube_title": "堂哥的車攔在校門口要送她回家，她上車後說了十分鐘，堂哥一句話都沒套到",
+      "duration_s": 115,
+      "logline": "阮多上了聞朗的車，兩個人比誰的話藏得深；回到家，偷看小組準備第二次行動。",
+      "hook": "聞朗搖下車窗：「弟妹，順路。」她拉開車門坐進去：「好啊，我話多，你別嫌。」",
+      "hook_type": "line",
+      "mid_hook": "她從學校說到天氣說到菜價，聞朗三次想問字跡都被她截走；下車時他笑容掛不住：「妳以前沒這麼能說。」",
+      "conflict": "不讓聞朗套出一個字，也不讓偷看小組再失手。",
+      "turn": "她以為聞朗想嚇她；他下車前遞來一盒蛋糕：「給妳媽的。」——他已經去過阮家了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡她累癱在陽台，牆那邊傳來三下。她沒回，只說：「今天好累。」隔了很久，門縫塞進一張便條：「明天放假。我陪。」",
+        "question": "他說的放假要陪她做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "黑色轎車裡，副駕的她說個不停，駕駛座的聞朗握方向盤的指節一下一下收緊。",
+      "glamour_shot": "門縫下滑進一張便條，她蹲下撿起，陽台的夜燈落在她累得發亮的臉上，嘴角一點一點翹起來。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "聞朗沒從她嘴裡套到任何東西"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-lang",
+        "wen-mo",
+        "wen-xiaoman",
+        "ruan-xiaobao"
+      ],
+      "locations": [
+        "聞朗的車",
+        "她的小陽台",
+        "老宅三樓走廊"
+      ],
+      "state": {
+        "time": "同一天晚上",
+        "knowledge": "聞朗去過阮家；他明天陪她放假",
+        "carry_forward": "放假去哪"
+      }
+    },
+    {
+      "number": 146,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "阮家的戒指",
+      "youtube_title": "叛逆弟弟藏起來的第一份薪水終於拿出來了，親媽打開盒子當場哭成淚人",
+      "duration_s": 120,
+      "logline": "放假那天聞默陪她回阮家吃飯，阮小寶的薪水去向、阮大富戒賭的第四十天，在一張小飯桌上一起攤開。",
+      "hook": "他寫的「放假」，是陪她回阮家。她站在阮家鐵門外：「你確定？我家很吵。」他寫：「我想聽。」",
+      "hook_type": "line",
+      "mid_hook": "飯吃到一半，阮小寶從書包底層掏出一個小絨盒推到阮媽面前，耳朵通紅：「不是我買的，是音箱扣完剩的。」",
+      "conflict": "讓阮家第一次好好吃一頓飯，聞默也在。",
+      "turn": "大家以為阮小寶存錢是想跑；盒子裡是一枚素戒，和阮媽賣掉的那枚一模一樣，他照當鋪的單子找回來的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阮媽戴上戒指哭了，阮大富把戒賭班的第四十天貼紙拍在桌上。聞默在桌下把便條本推給她：「妳家很好。」下一頁空白，筆遞到她手裡。",
+        "question": "她要在那張空白上寫什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "阮家的小折疊桌，四菜一湯，一隻絨盒在桌心打開，一枚素戒在日光燈下亮了一下。",
+      "glamour_shot": "聞默坐在阮家小板凳上，長腿縮著，第一次被塞了一碗滿到冒尖的飯，眼睛彎了。",
+      "setups": [],
+      "payoffs": [
+        "s03-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阮小寶找回阮媽的戒指；阮大富戒賭四十天",
+        "書上「阮家散了」那一頁變白，剩十五頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "ruan-ma",
+        "ruan-dafu",
+        "ruan-xiaobao"
+      ],
+      "locations": [
+        "阮家"
+      ],
+      "state": {
+        "time": "放假那天",
+        "knowledge": "阮家第一次一起吃飯，聞默在場",
+        "carry_forward": "空白頁上她要寫什麼"
+      }
+    },
+    {
+      "number": 147,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "他洗澡的十五分鐘",
+      "youtube_title": "老公進浴室前把筆記本留在桌上，她翻開第一頁，整個人愣在原地",
+      "duration_s": 115,
+      "logline": "阮多在空白頁上寫了一句不敢給他看的話；回到老宅，那本筆記本終於攤在她面前。",
+      "hook": "她在空白頁寫下「你也是我家」，撕下來塞進自己口袋。他看著她，沒問。",
+      "hook_type": "image",
+      "mid_hook": "回老宅，他進浴室，水聲響起。書桌上，那本墨綠筆記本沒鎖、沒收，就擺在檯燈正下方。",
+      "extra_hooks": [
+        "她的手伸過去又縮回來三次，對鏡頭：「原著裡原主燒了他的帶子，我只是看本子。」"
+      ],
+      "conflict": "十五分鐘，看或不看。",
+      "turn": "她以為會看到錄音室的帳、或是給蘇清的話；封皮下面第一行，是她的名字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第一頁，日期是首發會前的某一天，只有一行：「妳今天說了四千字，我數了。」浴室的水聲還在。",
+        "question": "他後面每一頁都寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "檯燈下一本筆記本被翻開的特寫，墨綠封皮翻過去的那一瞬間，第一行字慢慢清楚。",
+      "glamour_shot": "她坐在他的書桌前，檯燈把她的側臉照得很軟，讀到第一行時呼吸停了一拍，手指壓在字上。",
+      "setups": [],
+      "payoffs": [
+        "s03-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她終於看到筆記本的第一頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo"
+      ],
+      "locations": [
+        "阮家",
+        "聞默的房間"
+      ],
+      "state": {
+        "time": "放假那晚",
+        "knowledge": "筆記本第一頁：「妳今天說了四千字，我數了」",
+        "carry_forward": "繼續翻"
+      }
+    },
+    {
+      "number": 148,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "四千字",
+      "youtube_title": "啞巴老公每天寫一句不敢說出口的話，翻到最新一頁，她的手開始發抖",
+      "duration_s": 140,
+      "logline": "阮多一頁一頁翻完那本筆記本，原來他每天一句想對她說的話，全寫在這裡。",
+      "hook": "她翻到第二頁：「三千八。妳生氣了。」第三頁：「妳說我聲音好聽。我不知道怎麼寫。」",
+      "hook_type": "image",
+      "mid_hook": "第五十二頁：「她又跑樓梯八次。喘。」她的手停住——他連她喘都數了。",
+      "extra_hooks": [
+        "最新一頁，第七十三頁：「契約還有一百二十天。我不會寫『留下』，妳要自己說。」"
+      ],
+      "conflict": "看完一個不說話的人寫給她的一整本。",
+      "turn": "她以為筆記本是他的秘密；她合上本子才看見封底內側貼著一張便條：「給阮多。」——這本本來就是要給她的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "浴室門開，他站在門口，頭髮滴水，看見她坐在桌邊、本子在她手裡。她：「我看了。」他拿起筆寫：「我知道妳會看。我放在那的。」",
+        "question": "他為什麼故意讓她看？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "七十三頁一頁一頁翻過，每頁只有一行字，鏡頭跟著她的指尖越翻越快，最後停在一個日期。",
+      "glamour_shot": "他站在浴室門口，頭髮還濕，黑T、眼睛很靜，手裡拿著筆，水珠從髮梢落在便條上。",
+      "setups": [
+        "s03-t08",
+        "m01"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "她知道筆記本每天一句、全是寫給她的",
+        "書上「阮多從未讀過他的字」那一頁變白，剩十四頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo"
+      ],
+      "locations": [
+        "聞默的房間"
+      ],
+      "state": {
+        "time": "同一夜，契約剩一百二十天",
+        "knowledge": "筆記本每天一句他想對她說的話；他故意放在桌上",
+        "carry_forward": "他為什麼不寫留下"
+      }
+    },
+    {
+      "number": 149,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "我不命令妳",
+      "youtube_title": "她問老公為什麼不肯寫留下兩個字，他寫了一整頁，最後一句讓她說不出話",
+      "duration_s": 120,
+      "logline": "阮多想知道他為什麼寧可每天數她的字，也不寫一句「留下」。",
+      "hook": "她把本子推回去：「為什麼不寫留下？兩個字而已。」他坐下，翻到新的一頁。",
+      "hook_type": "question",
+      "mid_hook": "他寫了滿滿一頁：契約是聞家逼她簽的，他不要她因為一張紙、一筆債、一個家留下。最後一行：「留下是命令。我不命令妳。」",
+      "extra_hooks": [
+        "她讀到一半，第七十四頁的日期是今天，他還沒寫今天那一句。"
+      ],
+      "conflict": "阮多要接住這一頁，決定要不要現在說。",
+      "turn": "她以為他不寫是不在乎；他是怕——原主簽約是被逼的，他不想她也是。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她張口：「我——」樓下傳來門鈴，小滿在樓梯口喊：「嫂子！堂哥找妳，在錄音室，說很急。」他的筆停在第七十四頁上。",
+        "question": "她要先說完，還是先下樓？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "一頁便條紙被字填滿的縮時，筆尖一行行往下，最後一行寫得特別慢、特別重。",
+      "glamour_shot": "他坐在床沿低頭寫字，濕髮垂在額前，筆停時抬眼看她，那個眼神比一整頁還長。",
+      "setups": [],
+      "payoffs": [
+        "s03-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道他不寫留下的原因：他不想用契約、債或家留她"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-xiaoman"
+      ],
+      "locations": [
+        "聞默的房間",
+        "老宅樓梯"
+      ],
+      "state": {
+        "time": "隔天早上",
+        "knowledge": "他把「留下」留給她自己說；聞朗在默聲等她",
+        "carry_forward": "聞朗要什麼"
+      }
+    },
+    {
+      "number": 150,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "牛皮紙袋",
+      "youtube_title": "堂哥笑著遞來一個牛皮紙袋，裡面是原主的作文和她這半年的便條：阮小姐，我該叫妳什麼？",
+      "duration_s": 150,
+      "logline": "聞朗把查了一整季的東西攤在阮多面前，她要決定怎麼接這一招。",
+      "hook": "她把「我」字吞回去，下樓：「說完再寫，等我。」默聲門口，聞朗笑著站在陽光裡，手裡一個牛皮紙袋。",
+      "hook_type": "image",
+      "mid_hook": "紙袋打開：原主高中作文、畢冊留言、契約上的簽名；另一疊是她這半年的便條。字跡攤成兩排，一排小方右斜，一排圓大上翹。",
+      "extra_hooks": [
+        "唐叔在主控台後慢慢站起來，阿宙把錄音間的門關上一半，小蕊按下計算機的歸零鍵。",
+        "聞朗笑：「這是原版的妳。我叫它原著。」"
+      ],
+      "conflict": "面對一份能證明她不是原主的東西，不慌、不讓、不認輸。",
+      "turn": "大家以為聞朗要爆料；她接過紙袋直接說：「叫我阮多。你想爆就爆。」——聞朗愣了一下，笑得更深。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "聞朗把紙袋留在她手裡，轉身前說：「我不爆。我換錄音室的地。」他的車開走，紙袋的封口在她手指間發出沙沙聲。",
+        "question": "她要拿默聲的地換自己的秘密嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "錄音室門口的長桌上兩排字跡一字排開，陽光把紙的影子拉長，像兩個人隔桌對峙。",
+      "glamour_shot": "她站在默聲門口的逆光裡，馬尾、寬T、手裡一個牛皮紙袋，抬下巴看著聞朗，第一次沒笑。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s03-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當面頂住聞朗，沒認、沒求"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-lang",
+        "tang-shu",
+        "a-zhou",
+        "xiao-rui"
+      ],
+      "locations": [
+        "默聲錄音室門口"
+      ],
+      "state": {
+        "time": "同一天，契約剩約一百一十九天",
+        "knowledge": "聞朗有原主與她的字跡對比，想換默聲的地",
+        "carry_forward": "紙袋怎麼辦；書剩十四頁"
+      }
+    },
+    {
+      "number": 151,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "陽台上的罐子",
+      "youtube_title": "拿著能拆穿她身分的牛皮紙袋，她第一次翻書找答案，結果那一頁是空白的",
+      "duration_s": 110,
+      "logline": "阮多想從書裡查聞朗下一步要做什麼，卻發現先知已經不夠用；紙袋她不敢給聞默，只能先藏。",
+      "hook": "她站在默聲門口，手裡的紙袋還在沙沙響。書翻到「聞朗換地」那一章——整頁是白的。她：「完了，我不知道了。」",
+      "hook_type": "danger",
+      "mid_hook": "夜裡她把紙袋塞進陽台那個裝過原件的鐵罐，蓋上。聞默經過陽台，看了罐子一眼，跟他當初看原件時一模一樣。",
+      "extra_hooks": [
+        "她對鏡頭：「給他看，等於告訴他我不是她。他知道，可他沒聽我說過。」"
+      ],
+      "conflict": "在不知道聞朗下一步的情況下，先保住紙袋、保住自己的秘密。",
+      "turn": "她以為書白是因為她改了事；她數了一遍，今天白掉的那頁——聞朗去高中那頁——是在她說出「叫我阮多」那一秒白的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把書攤在床上，用便條一頁頁標：二十六次變白，每一次，她都剛好開口說了一句話。",
+        "question": "書到底在記什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "chuanshu",
+        "xuanyi"
+      ],
+      "spectacle": "床上攤開一本半透明的書，二十六張黃色便條像羽毛一樣插在書頁間，十四頁有字的地方微微發亮。",
+      "glamour_shot": "她盤腿坐在床上，馬尾鬆了，咬著筆蓋一頁頁貼便條，檯燈把她專注的側臉照得很亮。",
+      "setups": [
+        "s03-t11",
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次把書變白的紀錄整理成表"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo"
+      ],
+      "locations": [
+        "默聲錄音室門口",
+        "她的小陽台",
+        "書頁"
+      ],
+      "state": {
+        "time": "拿到紙袋當晚，書剩十四頁",
+        "knowledge": "每次變白她都剛好說了話；紙袋藏在陽台鐵罐",
+        "carry_forward": "書在記什麼"
+      }
+    },
+    {
+      "number": 152,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "實驗計畫",
+      "youtube_title": "她懷疑書頁變白跟自己開口有關，決定做一個實驗：半天一個字都不說",
+      "duration_s": 105,
+      "logline": "阮多要證明「說話」和「白頁」的關係，代價是讓一個靠說話活著的人閉嘴半天。",
+      "hook": "早餐桌上她只說了一句「湯好喝」，婆婆的手一頓——她眼前的書立刻白了一頁。「十三。」她瞪大眼。",
+      "hook_type": "image",
+      "mid_hook": "她在白板寫：「明天上午，不說話。」小滿看到尖叫：「嫂子妳病了？」婆婆當晚就送來一碗薑湯。",
+      "conflict": "設計一個能分清「改事」與「說話」的實驗，又不讓全家嚇壞。",
+      "turn": "大家以為她跟聞默吵架、在賭氣；聞默看完白板，在下面寫了一行：「我陪妳不說。」——他本來就不說。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "實驗前一晚，阿宙傳來訊息：「明早十點嚴教授的試音，我只有妳。」她看著白板上「不說話」三個字。",
+        "question": "明天阿宙試音，她說還是不說？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "chuanshu",
+        "xiju"
+      ],
+      "spectacle": "老宅飯桌上一句「湯好喝」說出口，空中的書嘩地翻過一頁變白，婆婆的湯匙停在半空。",
+      "glamour_shot": "聞默站在白板前，長指拿著白板筆在她的字下寫了一行，回頭時嘴角極淡地揚了一下。",
+      "setups": [
+        "s03-t10"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "婆婆第一次親手給她煮湯；書剩十三頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-furen",
+        "wen-xiaoman",
+        "a-zhou"
+      ],
+      "locations": [
+        "聞家飯桌",
+        "她的房間"
+      ],
+      "state": {
+        "time": "實驗前一天",
+        "knowledge": "她說一句好話也會讓一頁白；明早要不說話",
+        "carry_forward": "阿宙的試音"
+      }
+    },
+    {
+      "number": 153,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "半天不說話",
+      "youtube_title": "話多女主整整半天不說一個字，錄音室全員崩潰，最怕的試音偏偏卡在她面前",
+      "duration_s": 120,
+      "logline": "阮多照計畫不說話，默聲第一次沒有她的聲音；而阿宙的試音偏偏在這半天。",
+      "hook": "早上九點，她拿著便條本走進默聲，對每個人舉一張：「今天我不說話。」唐叔的茶杯掉在地上。",
+      "hook_type": "image",
+      "mid_hook": "十點，嚴教授坐在玻璃外。阿宙開口第一句就卡住，臉一路白下去，手指揪著帽T的繩子。",
+      "conflict": "守住實驗，或救阿宙的試音。",
+      "turn": "大家以為聞默的字能代替她的話；阿宙要的不是內容，是聲音——一個人在玻璃外跟他說話的聲音。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她的書翻開在阿宙那一章：「阿宙試音失敗，退出配音圈。」嚴教授起身拿外套。她的手按在對講鍵上。",
+        "question": "她要為阿宙破掉實驗嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "chuanshu",
+        "zhichang"
+      ],
+      "spectacle": "整間錄音室只有翻便條的沙沙聲，玻璃上貼滿黃色便條，嚴教授的影子在後面站起來。",
+      "glamour_shot": "阿宙在錄音間裡低頭，劉海遮住眼睛，燈從頭頂打下來，整個人縮成一團又倔強地不肯走。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "整個上午她一個字沒說，書一頁都沒白"
+      ],
+      "characters": [
+        "ruan-duo",
+        "a-zhou",
+        "wen-mo",
+        "tang-shu",
+        "s03-pingshen",
+        "xiao-rui"
+      ],
+      "locations": [
+        "默聲錄音室",
+        "錄音間"
+      ],
+      "state": {
+        "time": "實驗當天上午十點",
+        "knowledge": "她不說話時書不白；阿宙快失敗了",
+        "carry_forward": "按不按對講"
+      }
+    },
+    {
+      "number": 154,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "一開口就白",
+      "youtube_title": "為了救崩潰的新人，她按下對講鍵說了一句話，書頁在她眼前瞬間變白",
+      "duration_s": 125,
+      "logline": "阮多破了自己的實驗救阿宙，卻也親眼看見書是怎麼在她開口的那一秒變白的。",
+      "hook": "她按下對講：「阿宙，看我。」嚴教授的手停在外套袖子裡。阿宙抬頭。",
+      "hook_type": "line",
+      "mid_hook": "她說到第三句，阿宙開口了；同一秒，書上「阿宙退出配音圈」整頁白掉，像被風吹熄。",
+      "extra_hooks": [
+        "嚴教授坐回去，簽下阿宙：「這孩子，下次還找妳。」"
+      ],
+      "conflict": "讓阿宙過試音，同時把實驗結果看清楚。",
+      "turn": "她以為書白是因為「改了阿宙的命」；她翻回那頁空白的頁緣，看到一行還沒褪乾淨的小字：「這天阮多不在默聲。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把那行小字湊到燈下：原著裡的這一天，她根本不在默聲——原著裡的她，從來沒來過這裡。",
+        "question": "原著裡的她，到底在哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "chuanshu",
+        "xuanyi"
+      ],
+      "spectacle": "她開口的瞬間，空中的書頁從她嘴邊那一側開始白，白一路蔓延到頁角，數字跳成十二。",
+      "glamour_shot": "她靠在對講前，聲音慢下來，眼睛只看著阿宙，暖黃燈照著她認真時突然很安靜的臉。",
+      "setups": [],
+      "payoffs": [
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿宙通過嚴教授的試音、簽下案子",
+        "她證明：她一開口，書就白"
+      ],
+      "characters": [
+        "ruan-duo",
+        "a-zhou",
+        "s03-pingshen",
+        "wen-mo",
+        "tang-shu"
+      ],
+      "locations": [
+        "默聲錄音室",
+        "錄音間",
+        "書頁"
+      ],
+      "state": {
+        "time": "實驗當天中午，書剩十二頁",
+        "knowledge": "書白在她開口；原著裡的她從沒來過默聲",
+        "carry_forward": "原著裡她在哪"
+      }
+    },
+    {
+      "number": 155,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "沒有我的那一桌",
+      "youtube_title": "她從頭重讀剩下的書頁，發現原著裡的聞家飯桌，桌尾那個位子從來沒有人坐",
+      "duration_s": 120,
+      "logline": "阮多把剩下的十二頁一字一字重讀，讀的不再是預言，而是一個她不在的世界。",
+      "hook": "深夜，她把書攤在陽台的小桌上，從第一頁有字的地方唸起：「聞家的飯桌坐五個人。」她數：「少一個。」",
+      "hook_type": "question",
+      "mid_hook": "她翻到原著第一章的第一行，以前沒注意過：「阮多到聞家的第一天，一句話也沒說。」",
+      "extra_hooks": [
+        "她一頁頁唸出聲：默聲關門、阿宙轉行、小滿三年沒跟哥哥說話——每一件她都改過。"
+      ],
+      "conflict": "弄懂書裡寫的到底是什麼世界。",
+      "turn": "她以為原主是話多又惡毒；原著裡的原主幾乎不說話，壞事都是安靜地做的——原著是一個沒有人在說話的世界。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最後一頁有字的頁上寫：「他每晚坐在走廊，牆的那一邊沒有人。」她抬頭，牆的這一邊，她的手已經貼在磚上。",
+        "question": "原著裡的他，一直是一個人嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chuanshu",
+        "xuanyi"
+      ],
+      "spectacle": "陽台夜色裡，半透明的書頁上浮出一張空蕩的飯桌，五張椅子、一個空位，城市的燈從書頁後面透過來。",
+      "glamour_shot": "她把臉貼在陽台冰涼的牆上，城市燈光落在半邊臉，眼淚流下來時她還在唸書上的字。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她看懂原著每一件被改掉的事都和她開口有關"
+      ],
+      "characters": [
+        "ruan-duo"
+      ],
+      "locations": [
+        "她的小陽台",
+        "書頁"
+      ],
+      "state": {
+        "time": "實驗當天深夜",
+        "knowledge": "原著裡沒有她說話的世界；原著裡的他每晚對著空牆",
+        "carry_forward": "她要怎麼看這本書"
+      }
+    },
+    {
+      "number": 156,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "如果她不在",
+      "youtube_title": "她終於懂了：這本書不是預言，是沒有她的版本，她每說一句話就殺掉一頁",
+      "duration_s": 135,
+      "logline": "阮多想通了書的規則，從此不再怕白頁；可她藏在罐子裡的秘密不見了。",
+      "hook": "牆那邊傳來兩下。她擦掉眼淚，對著牆說：「我懂了。」",
+      "hook_type": "line",
+      "mid_hook": "她對鏡頭：「書不是預言，是如果我不在的版本。我在，書就白。」空中的書嘩地翻過所有白頁，像在點頭。",
+      "extra_hooks": [
+        "她再對鏡頭：「所以我每說一句話，就殺掉一頁沒有我的世界。」她笑了：「那我要說很多。」"
+      ],
+      "conflict": "阮多要接受一件事：先知會用完，因為她在。",
+      "turn": "她一直以為白頁是失去；她現在知道，每一頁白都是她留下來的證據。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她走到陽台打開鐵罐——空的。牛皮紙袋不見了。樓下傳來聞默房間關門的聲音。",
+        "question": "紙袋被誰拿走了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "chuanshu",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "所有白頁在她眼前一起翻動，像一整群白鳥從書裡飛起又落回去，只剩十二頁還有字。",
+      "glamour_shot": "她站在陽台欄杆前，夜風把馬尾吹起來，對著城市第一次笑得一點都不怕。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [
+        "m07"
+      ],
+      "general_payoffs": [
+        "她懂了書的規則，不再怕白頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo"
+      ],
+      "locations": [
+        "她的小陽台",
+        "書頁"
+      ],
+      "state": {
+        "time": "同一夜",
+        "knowledge": "書是「如果她不在」的版本；鐵罐裡的紙袋不見了",
+        "carry_forward": "紙袋在誰手上"
+      }
+    },
+    {
+      "number": 157,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "妳是話很多的那個",
+      "youtube_title": "能拆穿她身分的紙袋在老公手上，她問：你想知道我是誰嗎？他寫了一句話",
+      "duration_s": 120,
+      "logline": "阮多以為秘密要被拆穿了，結果是她自己要不要開口。",
+      "hook": "她推開他的門。他坐在床沿，紙袋在膝上，封口完好。他寫：「它在罐子裡發出聲音。我沒打開。」",
+      "hook_type": "image",
+      "mid_hook": "她把紙袋撕開，兩排字跡攤在他床上：「這是聞朗查的。你想知道我是誰嗎？」",
+      "conflict": "把紙袋交給他，看他要不要知道。",
+      "turn": "她以為他會看字跡；他看都沒看，把紙袋推回她那邊，寫：「妳是話很多的那個。夠了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他撕下今天筆記本的那一頁遞給她：「第八十一頁：我不想知道妳從哪來。我想知道明天妳還在不在。」她抓著紙，說不出話。",
+        "question": "她明天還會在嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "兩排字跡攤滿床單，他的手把它們推成一疊，像把一段過去收起來。",
+      "glamour_shot": "他坐在床沿推回紙袋的那一刻，檯燈落在他低垂的眼與喉上的淡疤，安靜得像一句承諾。",
+      "setups": [],
+      "payoffs": [
+        "s03-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "紙袋交給聞默；他選擇不看",
+        "書上「聞默發現她是冒牌貨」那一頁變白，剩十一頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo"
+      ],
+      "locations": [
+        "聞默的房間"
+      ],
+      "state": {
+        "time": "隔天清晨",
+        "knowledge": "他不想知道她是誰，只想知道她會不會留",
+        "carry_forward": "筆記本第八十一頁"
+      }
+    },
+    {
+      "number": 158,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "另一支手機",
+      "youtube_title": "她夢見原來世界的宿舍，枕邊手機亮著室友的名字，醒來後她決定照原著過一整天",
+      "duration_s": 110,
+      "logline": "阮多夢見原來的世界，想知道「沒有她」的世界到底長什麼樣，決定照原著不說話過完一整天。",
+      "hook": "夢裡宿舍燈還亮著，她的舊手機在枕頭邊震動，螢幕上室友的名字，一則沒點開的訊息。",
+      "hook_type": "image",
+      "mid_hook": "她驚醒，對鏡頭：「書是沒有我的世界。那原來的世界，現在是不是也沒有我？」",
+      "extra_hooks": [
+        "她在白板寫：「明天，照原著，一整天不說話。」聞默在下面寫：「不要。」"
+      ],
+      "conflict": "她要親眼看一次沒有她聲音的聞家，也想知道他三年來每天是怎麼過的。",
+      "turn": "大家以為她又在做實驗；她說這次不是為了書，是為了他——「我想知道你每天怎麼過。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "聞默把「不要」劃掉，在旁邊寫：「那我也聽一整天。」她拿起白板擦，停在「一整天」三個字上。",
+        "question": "她真的要一整天不說話嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "chuanshu",
+        "ganren"
+      ],
+      "spectacle": "夢裡宿舍的上下鋪與老宅的木窗疊在一起，一支手機的光在兩個世界之間閃。",
+      "glamour_shot": "她剛醒，頭髮亂著抱著枕頭坐起，清晨的藍光從窗外落在她發怔的臉上。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她決定為了他照原著過一天"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "shiyou"
+      ],
+      "locations": [
+        "她的房間",
+        "夢裡的宿舍"
+      ],
+      "state": {
+        "time": "隔天",
+        "knowledge": "原世界的手機有一則沒點開的訊息；明天她一整天不說話",
+        "carry_forward": "沒有她聲音的一天"
+      }
+    },
+    {
+      "number": 159,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "沒有聲音的一天",
+      "youtube_title": "話多女主一整天不開口，豪門老宅瞬間回到三年前，連惡婆婆都坐不住",
+      "duration_s": 120,
+      "logline": "阮多照原著不說話一整天，聞家與默聲回到她來之前的樣子。",
+      "hook": "早上七點，飯桌上只有碗筷聲。公公翻報紙的聲音大得像打雷，小滿看看她、又看看哥哥，不敢開口。",
+      "hook_type": "image",
+      "mid_hook": "唐叔在默聲對阿宙嘆氣：「三年前，這裡就是這樣。」整間錄音室只聽得到空調。",
+      "extra_hooks": [
+        "婆婆在佛堂撚佛珠撚到一半停下，叫傭人：「去看看她。」"
+      ],
+      "conflict": "撐過一整天不說話，看清沒有她的世界。",
+      "turn": "她以為最難的是忍住不說；最難的是看見每個人都在等她開口，而她不能。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "傍晚她上樓，第八次跑到一半，胸口一緊，抓住扶手停下，想喊卻沒有出聲。樓梯頂端，聞默轉過頭。",
+        "question": "她的胸口怎麼了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "chuanshu"
+      ],
+      "spectacle": "老宅的樓梯間從上往下拍，扶手一圈圈盤旋，她停在中間一級，整棟房子安靜得能聽見鐘擺。",
+      "glamour_shot": "聞默站在樓梯頂端回頭，逆光裡高瘦的輪廓與喉上的疤，眼神在那一秒變了。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "整天她一個字沒說，書一頁都沒白"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-furen",
+        "wen-lao",
+        "wen-xiaoman",
+        "tang-shu",
+        "a-zhou"
+      ],
+      "locations": [
+        "聞家飯桌",
+        "默聲錄音室",
+        "佛堂",
+        "老宅樓梯"
+      ],
+      "state": {
+        "time": "不說話那天傍晚，書剩十一頁",
+        "knowledge": "沒有她，聞家與默聲都靜回三年前；她的胸口緊了一下",
+        "carry_forward": "晚飯"
+      }
+    },
+    {
+      "number": 160,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "嗯？",
+      "youtube_title": "她一天沒說話，晚飯時三年沒出聲的啞巴老公，對著她發出了一個聲音",
+      "duration_s": 150,
+      "logline": "不說話的一天走到最後一頓飯，所有人都在等，等的人卻不是她。",
+      "hook": "聞默三步併兩步衝下來，扶住她的手臂。她搖頭，比了一個「沒事」，自己走完剩下的台階。",
+      "hook_type": "danger",
+      "mid_hook": "晚飯，她坐在婆婆旁邊，全桌安靜得只剩碗筷。婆婆夾菜給她，她點頭；小滿咬著筷子，眼眶紅了。",
+      "extra_hooks": [
+        "她低頭扒飯，眼前的書十一頁一頁都沒動——世界正在照沒有她的樣子走。"
+      ],
+      "conflict": "撐完晚飯，結束這一天。",
+      "turn": "所有人以為會先開口的是忍不住的她；先出聲的是三年沒出聲的他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "聞默放下筷子，看著她，喉嚨動了一下，發出一個氣音：「嗯？」全桌轉頭看他。她哭了。他推來便條：「妳不說話，我才知道妳不說話有多可怕。」",
+        "question": "他還會再發出聲音嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "長飯桌的慢推：一桌人同時轉頭，筷子停在半空，燈下一張便條從桌的那頭推過來。",
+      "glamour_shot": "他看著她，喉結滾動，那一聲氣音從他唇間出來時燈光落在他眼裡，像一句很久的話。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三年來他第一次在飯桌上對人發出聲音",
+        "婆婆在桌下握住她的手"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-furen",
+        "wen-lao",
+        "wen-xiaoman"
+      ],
+      "locations": [
+        "老宅樓梯",
+        "聞家飯桌"
+      ],
+      "state": {
+        "time": "不說話那天晚上，契約剩約一百天",
+        "knowledge": "他發出了一個氣音；書剩十一頁",
+        "carry_forward": "聞朗的下一步"
+      }
+    },
+    {
+      "number": 161,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "地契影本",
+      "youtube_title": "啞巴老公在飯桌上出聲的隔天，堂哥帶著律師上門：他連話都不會說，錄音室該換人管",
+      "duration_s": 115,
+      "logline": "聞朗正式動手要錄音室的地，阮多手上的先知只剩十一頁，而原著這一章聞默會失去默聲。",
+      "hook": "她擦乾眼淚，在他的便條下寫：「再嗯一次。」他耳根一紅。隔天早餐，聞朗帶著律師坐在公公對面。",
+      "hook_type": "line",
+      "mid_hook": "律師攤開一份鑑定：「聞默先生無法以言語履行董事職務。」聞朗把默聲地契影本推到桌中央。",
+      "extra_hooks": [
+        "她翻書：剩下十一頁裡，這一頁還有字——「聞默失去默聲，錄音室改建成停車場。」"
+      ],
+      "conflict": "阻止聞朗用一份鑑定拿走默聲。",
+      "turn": "大家以為公公不會管；公公放下報紙：「要拿聞家的東西，就照聞家的規矩。」——他要開家族會議。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "公公翻開老黃曆：「七天後，請三叔公來主持。」聞朗笑著起身：「七天夠了。」律師把地契影本留在桌上。",
+        "question": "七天內，她擋得住聞朗嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "早餐桌上一份蓋著紅章的鑑定與一張地契影本攤開，晨光裡紙張邊緣反著冷光。",
+      "glamour_shot": "聞默坐在桌邊，黑高領一絲不亂，面對律師一句沒寫，只把筆擱在便條本上，眼神冷靜得像玻璃。",
+      "setups": [
+        "s03-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "公公把事情拉進家族會議，聞朗不能私下動手"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-lang",
+        "wen-lao",
+        "wen-furen"
+      ],
+      "locations": [
+        "聞家飯桌"
+      ],
+      "state": {
+        "time": "隔天早上，家族會議倒數七天",
+        "knowledge": "聞朗拿鑑定與地契要默聲；原著這章聞默失去默聲",
+        "carry_forward": "三件事要湊"
+      }
+    },
+    {
+      "number": 162,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "小蕊的帳",
+      "youtube_title": "七天要擋下堂哥奪錄音室，碎嘴會計翻出一年的帳，最後一頁有一行不該存在的字",
+      "duration_s": 110,
+      "logline": "阮多要在七天內湊齊三件證據，第一件是小蕊的帳，卻翻出聞朗藏在默聲裡的東西。",
+      "hook": "她在白板寫三行：「帳、合約、推薦信。」小蕊推了推眼鏡：「第一件，給我一晚。」",
+      "hook_type": "line",
+      "mid_hook": "天亮，小蕊把一疊帳本拍在桌上：「默聲今年轉虧為盈，淨賺四成。」全錄音室歡呼。",
+      "extra_hooks": [
+        "帳裡還有一筆：聞家每月轉給阮家的契約款，阮大富這三個月一毛沒領，全退回來了。"
+      ],
+      "conflict": "湊到第一件證據，並確定帳上沒有能被聞朗拿去用的破口。",
+      "turn": "大家以為帳只會證明默聲賺錢；小蕊翻到最後一頁停住——默聲的火險，去年被改過受益人，簽名是聞朗。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小蕊把那一頁轉過來，指著簽名欄：「這不是聞默的字。」整間錄音室的歡呼停了。",
+        "question": "聞朗為什麼要改默聲的保險？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "一夜的計算機紙條從桌上垂到地上，像一條白色的河，最後一張停在一個紅圈上。",
+      "glamour_shot": "小蕊摘下眼鏡揉眼睛，晨光從百葉窗打在她亂了的頭髮上，計算機還握在手裡，嘴角得意。",
+      "setups": [
+        "s03-t14",
+        "m09"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一件證據到手：默聲一年轉虧為盈",
+        "書剩十頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "xiao-rui",
+        "tang-shu",
+        "a-zhou"
+      ],
+      "locations": [
+        "默聲錄音室"
+      ],
+      "state": {
+        "time": "家族會議前六天",
+        "knowledge": "默聲轉虧為盈；火險受益人被聞朗改過；阮大富把契約款全退回",
+        "carry_forward": "第二件：老薛的合約"
+      }
+    },
+    {
+      "number": 163,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "黑色那本",
+      "youtube_title": "見風轉舵的經紀人說堂哥出兩倍價，她正要開口，發現老公在寫另一本筆記本",
+      "duration_s": 105,
+      "logline": "阮多去拿第二件證據，老薛卻開始待價而沽；而聞默手上多了一本她沒見過的黑色筆記本。",
+      "hook": "她把火險那頁影印三份收進文件夾。下午老薛翹著腳坐在默聲：「先說好，我很忙。」",
+      "hook_type": "image",
+      "mid_hook": "談到一半她瞄到旁邊：聞默低頭在寫，可那本是黑色的，不是她看過的墨綠那本。",
+      "conflict": "讓老薛的合約留在默聲，不被聞朗挖走。",
+      "turn": "她以為老薛來續約；老薛是來喊價的——聞朗私下開了兩倍，要他在家族會議前抽單。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老薛把合約推回來：「聞朗給我兩倍。妳給我什麼？」桌對面，聞默的黑色筆記本翻到新的一頁，筆尖停住。",
+        "question": "她拿什麼留住老薛？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "一張談判桌，兩份合約、兩支手機、兩本不同顏色的筆記本，光從窗外斜斜把桌面切成兩半。",
+      "glamour_shot": "聞默在桌邊寫黑色筆記本，長指壓著紙，深綠開襟衫的領口露出喉上的淡疤，抬眼掃了老薛一下。",
+      "setups": [
+        "s03-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "ruan-duo",
+        "lao-xue",
+        "wen-mo"
+      ],
+      "locations": [
+        "默聲錄音室"
+      ],
+      "state": {
+        "time": "家族會議前五天",
+        "knowledge": "老薛被聞朗開兩倍；聞默有第二本黑色筆記本",
+        "carry_forward": "留不留得住老薛"
+      }
+    },
+    {
+      "number": 164,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "推薦信",
+      "youtube_title": "經紀人被她十分鐘說到當場簽約，最後一件證據卻卡住：平台編輯說推薦信寫不了",
+      "duration_s": 115,
+      "logline": "阮多用一年的成績說服老薛，卻在第三件證據前撞上聞朗最狠的一手。",
+      "hook": "她把合約推回去：「我不給你兩倍。我給你一個問題：你那個怯場的新人，現在在哪錄？」老薛的笑卡住。",
+      "hook_type": "question",
+      "mid_hook": "老薛沉默十秒，拿筆簽了：「在這錄。聞朗那兩倍，是要我丟掉他。」",
+      "extra_hooks": [
+        "聞默在黑色筆記本記下：「老薛，續約。」推到她面前讓她簽見證。"
+      ],
+      "conflict": "湊齊三件事的最後一件：聽海周見的推薦信。",
+      "turn": "大家以為周見最穩；周見來電，聲音很低：聽海最大的投資方之一，是聞朗的公司。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "周見：「對不起，推薦信我寫不了。」電話那頭傳來關門聲。白板上「推薦信」三個字，她沒有劃掉。",
+        "question": "沒有推薦信，三件事還湊得齊嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "白板上三行字，「帳」「合約」被紅筆劃掉，「推薦信」在燈下孤零零地亮著。",
+      "glamour_shot": "她坐在主控台椅上轉一圈，說服老薛時眼睛亮得像舞台燈，手一直在比劃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老薛當場續約，合約排到年底",
+        "書剩九頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "lao-xue",
+        "wen-mo",
+        "ting-hai-bianji"
+      ],
+      "locations": [
+        "默聲錄音室"
+      ],
+      "state": {
+        "time": "家族會議前四天",
+        "knowledge": "老薛留下；周見被聞朗卡住",
+        "carry_forward": "推薦信怎麼辦"
+      }
+    },
+    {
+      "number": 165,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "凌晨三點的廂型車",
+      "youtube_title": "戒賭班打電話說親爸連缺兩次，凌晨三點她看見爸爸上了一台陌生廂型車",
+      "duration_s": 110,
+      "logline": "阮多忙著家族會議時，阮大富那邊出事了；她得決定要追還是要等。",
+      "hook": "她還盯著白板，手機響：「林姊：妳爸連缺兩次。出席簿上，空了兩格。」",
+      "hook_type": "danger",
+      "mid_hook": "阮媽在電話裡壓低聲音：「他每晚兩點出門，天亮才回來，問他，他說妳別管。」",
+      "conflict": "弄清阮大富是不是又去賭，又不能毀掉他好不容易說出口的承諾。",
+      "turn": "她以為要當場揪住他；她最後決定躲在巷口看，不衝出去——上次她靠閉嘴贏過一次。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "凌晨三點，巷口一台沒有標誌的廂型車停下，阮大富低頭鑽進去，車門拉上。她手裡的手機螢幕亮著林姊的號碼。",
+        "question": "阮大富上的是什麼車？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhichang"
+      ],
+      "spectacle": "凌晨的窄巷，一盞路燈，一台廂型車的尾燈把巷子染紅，再慢慢開遠。",
+      "glamour_shot": "她縮在巷口電線桿後，帽T戴起，路燈從斜上方打在她咬著下唇的側臉。",
+      "setups": [
+        "s03-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "戒賭班第三個月，林姊把出席簿拍給她"
+      ],
+      "characters": [
+        "ruan-duo",
+        "s03-fudaoyuan",
+        "ruan-ma",
+        "ruan-dafu"
+      ],
+      "locations": [
+        "戒賭班教室",
+        "阮家巷口"
+      ],
+      "state": {
+        "time": "家族會議前三天凌晨",
+        "knowledge": "阮大富每晚兩點出門、缺了兩堂課",
+        "carry_forward": "廂型車去哪"
+      }
+    },
+    {
+      "number": 166,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "母帶在哪",
+      "youtube_title": "平台編輯不敢寫推薦信，她放了一段錄音；同一天，堂哥在錄音室問母帶都放哪",
+      "duration_s": 120,
+      "logline": "阮多要拿回周見的推薦信；同一時間，聞朗在默聲做一件沒人看懂的事。",
+      "hook": "她沒撥林姊。天亮後她直接去聽海，坐在周見桌前，放下一支隨身碟：「聽完再拒絕我。」",
+      "hook_type": "image",
+      "mid_hook": "周見戴上耳機，是阿宙試音那天的錄音，從卡住到開口。周見摘下耳機，拿出信紙。",
+      "extra_hooks": [
+        "同一時間的默聲，聞朗笑著問唐叔：「保險要列清單，母帶都放哪？」唐叔帶他走進母帶室。"
+      ],
+      "conflict": "拿回推薦信，湊齊三件事。",
+      "turn": "大家以為周見怕丟工作；她怕的是寫了也沒用——阮多說：「妳不用替我寫，替阿宙寫。」周見寫了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "回到默聲，小蕊把手機遞給她：監視畫面裡，聞朗在母帶室裡一格一格拍，鏡頭最後停在電箱上。",
+        "question": "聞朗拍母帶室和電箱要幹嘛？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "默聲的母帶室：一整面牆的鐵架，幾百捲標著年份的母帶，聞朗的手機閃光一格一格亮。",
+      "glamour_shot": "周見摘下耳機的那一刻，俐落短髮落回耳後，黑框後的眼睛濕了一下又恢復專業。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周見寫下推薦信；三件事湊齊",
+        "書剩八頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ting-hai-bianji",
+        "wen-lang",
+        "tang-shu",
+        "xiao-rui"
+      ],
+      "locations": [
+        "聽海平台辦公室",
+        "默聲母帶室"
+      ],
+      "state": {
+        "time": "家族會議前兩天",
+        "knowledge": "三件事齊了；聞朗拍了母帶室與電箱",
+        "carry_forward": "家族會議"
+      }
+    },
+    {
+      "number": 167,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "三叔公",
+      "youtube_title": "家族會議上堂哥當眾嘲諷：他連話都不會說怎麼管公司？她把三件證據一字排開",
+      "duration_s": 130,
+      "logline": "家族會議開始，三叔公坐上主位，阮多要在聞家所有人面前替一個不說話的人辯護。",
+      "hook": "老宅大廳，三叔公的烏木手杖敲在地上一聲。聞朗起身：「我先說。」",
+      "hook_type": "image",
+      "mid_hook": "聞朗攤手：「他連話都不會說，怎麼管公司？」幾個遠房長輩點頭，婆婆的佛珠停了。",
+      "extra_hooks": [
+        "她一件件擺上桌：小蕊的帳、老薛的合約、周見的信。三叔公戴上老花眼鏡，一頁一頁翻。"
+      ],
+      "conflict": "在家族會議上讓聞默保住默聲。",
+      "turn": "大家以為三件事夠了；三叔公翻完放下：「東西是好東西。可我要聽他自己的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "三叔公轉向聞默：「聞默，你自己說。」大廳裡十幾雙眼睛同時看向他，聞默的手放在桌上，筆還沒拿起來。",
+        "question": "他要怎麼「自己說」？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhichang"
+      ],
+      "spectacle": "老宅大廳一張長會議桌，兩邊坐滿聞家長輩，主位上白眉長垂的老人與他手邊的三疊文件。",
+      "glamour_shot": "聞默坐得很直，黑色高領，所有目光壓過來時他只抬眼看了她一下，像在說「我在」。",
+      "setups": [],
+      "payoffs": [
+        "s03-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三件證據全部進了會議紀錄",
+        "書剩七頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-lang",
+        "wen-lao",
+        "wen-furen",
+        "s03-zhangbei",
+        "wen-xiaoman"
+      ],
+      "locations": [
+        "聞家老宅大廳"
+      ],
+      "state": {
+        "time": "家族會議當天",
+        "knowledge": "三件事都上桌；三叔公要聞默自己說",
+        "carry_forward": "他怎麼說"
+      }
+    },
+    {
+      "number": 168,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "他寫得比你說得清楚",
+      "youtube_title": "堂哥說啞巴不能管公司，她只回一句：他寫得比你說得清楚，啞巴老公把一年的筆記本放上桌",
+      "duration_s": 150,
+      "logline": "阮多替聞默說出那句話，聞默拿出他這一年真正的「話」。",
+      "hook": "她站起來：「他寫得比你說得清楚。」聞朗笑：「寫？」",
+      "hook_type": "line",
+      "mid_hook": "聞默從包裡拿出一疊黑色筆記本放上桌——十二本，一個月一本，全是默聲每一場會議的紀錄、每一個案子的決定。",
+      "extra_hooks": [
+        "三叔公翻開其中一本，念出一行：「三月九日：不接聞朗介紹的案子，價低、坑多。」聞朗的笑停了。"
+      ],
+      "conflict": "推翻那份鑑定，保住默聲。",
+      "turn": "大家以為鑑定是醫師簽的就沒法推翻；聞默寫下鑑定醫師的名字，周見的信裡附了一行：那位醫師從沒見過他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "聞朗把牛皮紙袋的影本拍上桌：「還有一件事——」三叔公推回去：「作文不是股份。」公公合上報紙：「散會。默聲的地，今天過戶給聞默。」聞朗的手停在紙袋上。",
+        "question": "地過戶給聞默，聞朗會怎麼做？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "十二本黑色筆記本在長桌上一字排開，三叔公的手杖點在其中一本上，滿廳長輩伸長脖子。",
+      "glamour_shot": "他把筆記本一本本放上桌，動作很慢，長指壓平封面，側臉在大廳的吊燈下冷靜得驚人。",
+      "setups": [],
+      "payoffs": [
+        "s03-t12",
+        "s03-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鑑定被推翻；默聲的地過戶給聞默",
+        "她知道兩本筆記本：黑的是會議、綠的是她",
+        "書上「聞默失去默聲」兩頁一起白，剩五頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "wen-lang",
+        "wen-lao",
+        "wen-furen",
+        "s03-zhangbei",
+        "wen-xiaoman"
+      ],
+      "locations": [
+        "聞家老宅大廳"
+      ],
+      "state": {
+        "time": "家族會議當天下午",
+        "knowledge": "默聲保住、地過戶；聞朗手上還有紙袋影本",
+        "carry_forward": "聞朗的下一步"
+      }
+    },
+    {
+      "number": 169,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "老闆娘",
+      "youtube_title": "保住錄音室的慶功宴上，老錄音師第一次叫她老闆娘，碎嘴會計卻翻出堂哥的爛帳",
+      "duration_s": 120,
+      "logline": "默聲開慶功宴，阮多第一次被這裡的人當自己人；小蕊卻在角落翻出聞朗的真面目。",
+      "hook": "聞朗沒說話，收起紙袋走了。晚上默聲的燈全開，唐叔舉起涼掉的茶：「敬老闆娘。」",
+      "hook_type": "line",
+      "mid_hook": "小蕊把她拉到角落：「我順著火險查，聞朗外面欠了三千萬。他要的不是錄音室，是地。」",
+      "extra_hooks": [
+        "阮小寶在角落學唐叔推桿，阿宙在錄音間裡偷偷錄下大家的笑聲。"
+      ],
+      "conflict": "阮多想好好過一個晚上，又不能裝作沒聽見小蕊的帳。",
+      "turn": "大家以為聞朗輸了就會退；小蕊算給她看：地過戶給聞默，聞朗只剩一條路——讓聞默自己賣。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "散場後聞默把墨綠那本翻開給她看：「第九十頁：她替我吵贏了。我想替她吵一次。」她抬頭，他已經轉過身去關燈。",
+        "question": "他想替她吵的，是哪一場？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "默聲所有的燈一起打開，玻璃、推桿、麥克風全亮，像一艘夜裡的船。",
+      "glamour_shot": "他背對她關燈，一盞一盞熄，最後一盞落在他回頭的側臉上，筆記本還攤在她手裡。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐叔第一次叫她老闆娘",
+        "小蕊查出聞朗欠三千萬、目標是地",
+        "書剩四頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "tang-shu",
+        "xiao-rui",
+        "a-zhou",
+        "ruan-xiaobao"
+      ],
+      "locations": [
+        "默聲錄音室"
+      ],
+      "state": {
+        "time": "家族會議當晚",
+        "knowledge": "聞朗欠三千萬，要逼聞默賣地",
+        "carry_forward": "聞朗最後的話"
+      }
+    },
+    {
+      "number": 170,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "第二百二十章",
+      "youtube_title": "堂哥臨走前在門口問她：阮小姐，妳有心臟病，原著寫了嗎？她當場愣住",
+      "duration_s": 135,
+      "logline": "阮多以為這一仗打完了，聞朗在門口留下一句話，她才發現有一件事連書都沒告訴她。",
+      "hook": "隔天她回老宅拿文件，聞朗靠在大門邊等她，手裡轉著那個牛皮紙袋：「弟妹，最後一句。」",
+      "hook_type": "danger",
+      "mid_hook": "聞朗壓低聲音：「阮小姐，妳有心臟病，原著寫了嗎？」——他口中的原著，是那袋原版的她。她愣住。",
+      "extra_hooks": [
+        "聞朗把一張舊掛號單的影本塞進她手裡就走：「城北醫院，十年前。」"
+      ],
+      "conflict": "阮多要弄清聞朗那句話是嚇她，還是真的。",
+      "turn": "她以為聞朗只是想嚇她；她想起阮媽沒說完的「妳的心——」，想起樓梯上那一下胸口的緊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她衝回房翻書：剩下三頁有字，其中一頁是她第一天看見的「阮多的心臟」，現在多了前半句：「第二百二十章：阮多的心臟——」後面是白的。",
+        "question": "第二百二十章，她的心臟會怎樣？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "三頁有字的書在她眼前展開，其中一頁的標題一個字一個字浮現，後面是一大片空白。",
+      "glamour_shot": "她站在老宅大門口，風吹起馬尾，聽完那句話整個人定住，陽光落在她忽然很白的臉上。",
+      "setups": [
+        "m10",
+        "m01"
+      ],
+      "payoffs": [
+        "s03-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿到聞朗給的十年前掛號單影本",
+        "書剩三頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-lang"
+      ],
+      "locations": [
+        "聞家老宅大門",
+        "她的房間",
+        "書頁"
+      ],
+      "state": {
+        "time": "家族會議隔天，契約剩約四十天",
+        "knowledge": "原主可能有心臟病；書上有一頁「第二百二十章：阮多的心臟——」",
+        "carry_forward": "她要不要查"
+      }
+    },
+    {
+      "number": 171,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "三十天",
+      "youtube_title": "豪門一切都好了，婆婆給座位、小姑叫嫂子、親爸戒賭三個月，她卻藏著一張十年前的掛號單",
+      "duration_s": 120,
+      "logline": "契約剩三十天，所有人都過得很好，只有阮多知道書上那一頁還沒白完。",
+      "hook": "她把書合上又打開，「第二百二十章：阮多的心臟——」還在。她對鏡頭：「書都不知道後面，我怎麼知道？」",
+      "hook_type": "line",
+      "mid_hook": "一組日常：阮小寶推桿、阮媽送菜來默聲、小滿一進門就喊嫂子、唐叔喊老闆娘、婆婆把雞腿夾到她碗裡——她每一聲都笑著應。",
+      "extra_hooks": [
+        "夜裡門縫塞進一頁筆記本：「三十天。」"
+      ],
+      "conflict": "阮多要在不驚動任何人的情況下，找出掛號單背後的病歷。",
+      "turn": "大家以為她累了才安靜；她每天晚上把那張掛號單拿出來看，上面的病歷號已經停用十年。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她打開手機，停在阮媽的號碼上，拇指懸在撥出鍵。牆那頭傳來三下，她沒回。",
+        "question": "她要問阮媽，還是自己扛？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "一組快剪：老宅飯桌、默聲主控台、阮家小桌、陽台；每一格裡她都在笑，最後一格她一個人看著掛號單。",
+      "glamour_shot": "她窩在陽台的舊藤椅上，夜燈落在手機螢幕與她的臉，表情從笑慢慢收住。",
+      "setups": [
+        "s03-t15",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阮大富戒賭第三個月、阮小寶在默聲打工、阮媽每週送菜",
+        "書剩兩頁：第二百二十章與最後一頁"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "ruan-xiaobao",
+        "ruan-ma",
+        "wen-xiaoman",
+        "tang-shu",
+        "wen-furen"
+      ],
+      "locations": [
+        "聞家飯桌",
+        "默聲錄音室",
+        "她的小陽台"
+      ],
+      "state": {
+        "time": "契約剩三十天",
+        "knowledge": "書剩兩頁；她手上有一張停用十年的掛號單",
+        "carry_forward": "問不問阮媽"
+      }
+    },
+    {
+      "number": 172,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "抽屜裡的卡",
+      "youtube_title": "她旁敲側擊問親媽小時候的事，親媽從抽屜深處拿出一張她十年前丟掉的病歷卡",
+      "duration_s": 110,
+      "logline": "阮多去阮家，想從阮媽嘴裡知道原主的身體，又不想讓阮媽擔心。",
+      "hook": "她按下撥出：「媽，我晚上回家吃飯。」阮媽在那頭愣了三秒：「妳說回家？」",
+      "hook_type": "line",
+      "mid_hook": "飯後她裝作隨口問：「我小時候是不是很常看醫生？」阮媽洗碗的手停在水裡。",
+      "conflict": "套出原主的病史，又不讓阮媽起疑。",
+      "turn": "她以為阮媽什麼都不知道；阮媽沒問她為什麼問，擦乾手走進房間——她一直在等女兒來問。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阮媽從抽屜最深處拿出一張泛黃的城北醫院病歷卡：「妳十四歲說不去了，把它丟進垃圾桶。我撿回來，留到現在。」",
+        "question": "病歷卡上寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "阮家窄小的房間，一個生鏽的鐵盒打開，裡面整整齊齊放著一個女兒的出生紙、獎狀與一張病歷卡。",
+      "glamour_shot": "阮媽站在昏黃燈下，粗手指捧著鐵盒遞過來，圍裙還沒解，眼神小心得像怕摔壞什麼。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次說「回家」吃飯；拿到原主的病歷卡"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-ma",
+        "ruan-dafu"
+      ],
+      "locations": [
+        "阮家"
+      ],
+      "state": {
+        "time": "契約剩二十九天；門縫的筆記本寫「二十九天」",
+        "knowledge": "原主十四歲中斷看診；她拿到病歷卡",
+        "carry_forward": "去醫院調病歷"
+      }
+    },
+    {
+      "number": 173,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "簽名不符",
+      "youtube_title": "拿著親媽留了十年的病歷卡去調病歷，櫃檯一看簽名：這不是妳的字",
+      "duration_s": 115,
+      "logline": "阮多一個人去城北醫院調原主的病歷，卻又撞上那個她改不掉的破綻：字跡。",
+      "hook": "病歷卡背面一行褪色的字：「心臟科，定期追蹤。」她把卡塞進口袋，對鏡頭：「一個人去，不告訴任何人。」",
+      "hook_type": "image",
+      "mid_hook": "病歷室的小許把申請單推回來：「身分證上的簽名，跟妳現在簽的不一樣。」",
+      "extra_hooks": [
+        "走廊盡頭的電子看板跳出「心臟科」三個字，她別過頭去。"
+      ],
+      "conflict": "在不暴露自己的情況下調出原主的病歷。",
+      "turn": "她以為身分證就夠了；她的字救了她半年，也在每一個要簽名的地方出賣她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小許拿起內線電話：「簽名不符，我請主任來。」她身後的候診椅上坐滿人，有人轉頭看她。",
+        "question": "她會在醫院被拆穿嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "醫院走廊一排冷白的燈，盡頭的電子看板一格一格跳號，她站在病歷室櫃檯前顯得很小。",
+      "glamour_shot": "她站在醫院櫃檯前，寬T與牛仔褲在一片藍色制服裡格格不入，捏著申請單的手指發白。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "ruan-duo",
+        "s03-binglishi"
+      ],
+      "locations": [
+        "城北醫院病歷室",
+        "醫院走廊"
+      ],
+      "state": {
+        "time": "契約剩二十八天",
+        "knowledge": "病歷室因簽名不符要叫主任",
+        "carry_forward": "她怎麼過這一關"
+      }
+    },
+    {
+      "number": 174,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "同一顆心",
+      "youtube_title": "簽名對不上被醫院攔下，她說：字會變，心臟不會；櫃檯小姐聽完把病歷遞給她",
+      "duration_s": 125,
+      "logline": "阮多要說服小許，不靠先知、不靠撒謊，只靠她最會的事：說話。",
+      "hook": "她按住小許的電話：「等一下，給我一分鐘。」小許的手停在話筒上。",
+      "hook_type": "line",
+      "mid_hook": "她說：「我出過事，字變了，人也變了。可是這顆心臟，是同一顆。」小許看了她很久，拿出指紋機。",
+      "extra_hooks": [
+        "病歷吐出來：先天，十四歲後未追蹤。她看不懂後面那串醫學名詞，只看懂了「先天」兩個字。"
+      ],
+      "conflict": "拿到病歷，並決定接下來要不要告訴誰。",
+      "turn": "大家以為主任會來拆穿她；小許掛掉電話，用指紋與照片比對，自己簽了「本人無誤」——這一次她說的每一句都是真話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她坐在走廊椅上，病歷在包裡，眼前書上「第二百二十章」那一頁整頁白掉，只剩最後一頁。手機亮：「二十七天。妳去哪了？」她打字：「買菜。」",
+        "question": "她要瞞他到什麼時候？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "冷白走廊裡空中的書頁無聲變白，最後只剩一頁還有字，在她頭頂微微發亮。",
+      "glamour_shot": "她坐在醫院長椅上低頭打字，走廊的光落在她睫毛上，打完「買菜」兩個字，咬住嘴唇。",
+      "setups": [
+        "m10",
+        "m01"
+      ],
+      "payoffs": [
+        "s03-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到原主的病歷：先天，十四歲後未追蹤",
+        "書只剩最後一頁有字"
+      ],
+      "characters": [
+        "ruan-duo",
+        "s03-binglishi",
+        "wen-mo"
+      ],
+      "locations": [
+        "城北醫院病歷室",
+        "醫院走廊",
+        "書頁"
+      ],
+      "state": {
+        "time": "契約剩二十七天",
+        "knowledge": "原主的心臟是先天的；她沒告訴任何人；書只剩最後一頁",
+        "carry_forward": "瞞不瞞"
+      }
+    },
+    {
+      "number": 175,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "還聞家",
+      "youtube_title": "戒賭三個月的親爸天沒亮站在豪門門口，手裡一個信封：這是我欠聞家的",
+      "duration_s": 125,
+      "logline": "阮大富缺課的謎底在天亮前出現在聞家門口，他要用自己的方式讓女兒選。",
+      "hook": "凌晨五點，她剛回老宅，大門口站著阮大富，工作背心沾著灰，手裡一個鼓鼓的牛皮信封。",
+      "hook_type": "image",
+      "mid_hook": "他說：「那台廂型車是物流倉的接駁車。我上大夜班，戒賭班林姊幫我換到週末。」",
+      "extra_hooks": [
+        "婆婆披著外套出現在門廊，佛珠在手：「這麼早，什麼事？」"
+      ],
+      "conflict": "讓阮大富親手把錢交出去，也讓阮家的債不再是她留在聞家的理由。",
+      "turn": "大家以為他缺課是破戒；他是在還債——他要女兒契約到期時不是被債綁著，是自己選。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "婆婆接過信封，沒拆，看著阮多：「契約到期，妳走，這錢我收；妳留，這錢給妳弟讀書。妳自己說。」阮大富屏住呼吸。",
+        "question": "她要怎麼回答婆婆？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "天剛亮的老宅門口，一個工作背心的男人與一個旗袍的老婦人隔著鐵門，中間一個牛皮信封。",
+      "glamour_shot": "婆婆披著外套站在門廊燈下，盤髮一絲不亂，接過信封時第一次對阮大富點頭。",
+      "setups": [],
+      "payoffs": [
+        "s03-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阮大富自己還了第一筆債；婆婆收下"
+      ],
+      "characters": [
+        "ruan-duo",
+        "ruan-dafu",
+        "wen-furen",
+        "s03-fudaoyuan"
+      ],
+      "locations": [
+        "聞家老宅大門"
+      ],
+      "state": {
+        "time": "契約剩約二十天",
+        "knowledge": "阮大富上大夜班還債；婆婆把選擇丟回給她",
+        "carry_forward": "她怎麼回答"
+      }
+    },
+    {
+      "number": 176,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "最後一頁的五行",
+      "youtube_title": "書只剩最後一頁五行字，她從第一行讀到第三行，那一句讓她整夜沒睡",
+      "duration_s": 115,
+      "logline": "阮多沒回答婆婆，回到房間讀最後一頁：五行，每一行都是一個沒有她的結局。",
+      "hook": "她對婆婆說：「媽，給我幾天。」婆婆只說：「好。」——她第一次叫婆婆「媽」，自己愣住。",
+      "hook_type": "line",
+      "mid_hook": "最後一頁攤開，五行字：「契約到期，阮多離開聞家。」「默聲賣給聞朗。」……最後一行是「第三百章：阮多死於——」",
+      "conflict": "看清最後一頁剩下什麼，決定要白掉哪幾行。",
+      "turn": "她以為最可怕的是第五行；讓她整夜睡不著的是第三行。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第三行：「聞默一生沒有再開口。」牆那邊傳來三下，她把手貼上牆，沒有敲回去。",
+        "question": "她能讓第三行變白嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "最後一頁特寫，五行字在半透明的白裡排成一列，第五行的「——」後面是一整片空白。",
+      "glamour_shot": "她靠著牆坐在地上，書浮在膝前，燈光從書頁背後透過來照亮她的臉，眼睛一眨不眨。",
+      "setups": [
+        "s03-t17",
+        "m01"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次叫婆婆「媽」"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-furen",
+        "wen-mo"
+      ],
+      "locations": [
+        "聞家老宅大門",
+        "她的房間",
+        "書頁"
+      ],
+      "state": {
+        "time": "契約剩約十天",
+        "knowledge": "最後一頁五行；第三行是他一生不開口",
+        "carry_forward": "哪一行先白"
+      }
+    },
+    {
+      "number": 177,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "老房子不耐用",
+      "youtube_title": "堂哥送來買地合約，限期契約到期那天，她當著全錄音室唸出來笑了：不賣",
+      "duration_s": 120,
+      "logline": "聞朗最後一次開價，阮多替聞默回答，卻收到一句讓唐叔臉色發白的回覆。",
+      "hook": "清晨，默聲門口夾著一封信：聞朗的買地合約，價錢高得離譜，期限寫著「契約到期當日」。",
+      "hook_type": "image",
+      "mid_hook": "她當著全錄音室把合約唸完，笑出來：「不賣。」最後一頁那行「默聲賣給聞朗」一下子白了。",
+      "conflict": "回絕聞朗、守住默聲，不讓這一招動搖任何人。",
+      "turn": "大家以為聞朗會再開價；他回的訊息裡沒有價錢。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "聞朗的訊息跳出來：「不賣，就別怪老房子不耐用。」唐叔看完，放下茶，轉頭看著母帶室那個舊電箱。",
+        "question": "聞朗說的不耐用是什麼意思？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "公告板上一份昂貴的合約被一個「不」字釘住，晨光照著那個字像一枚印章。",
+      "glamour_shot": "她站在主控台前唸合約，唸到「不賣」兩字時下巴一抬，馬尾晃了一下，全錄音室笑出聲。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "默聲回絕聞朗；最後一頁剩四行"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo",
+        "tang-shu",
+        "xiao-rui",
+        "a-zhou"
+      ],
+      "locations": [
+        "默聲錄音室",
+        "默聲母帶室"
+      ],
+      "state": {
+        "time": "契約剩七天",
+        "knowledge": "聞朗威脅「老房子不耐用」；最後一頁剩四行",
+        "carry_forward": "電箱"
+      }
+    },
+    {
+      "number": 178,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "原著女主的電話",
+      "youtube_title": "原著女主從外地打來：原著裡我嫁給了他，這一世我祝福你們",
+      "duration_s": 120,
+      "logline": "唐叔找人把電箱換新，阮多以為能喘口氣；蘇清的一通電話讓最後一頁又少一行。",
+      "hook": "唐叔叫來電工把母帶室的舊電箱整個換掉：「我老了，可我不傻。」電工舉起一條燒黑過的舊線。",
+      "hook_type": "danger",
+      "mid_hook": "夜裡蘇清來電，背景是車站廣播：「我接了外地的案子，明天走。原著裡，我嫁給他。」",
+      "extra_hooks": [
+        "阮多握著手機，第一次沒有話接。蘇清笑了：「這一世，我祝福你們。」"
+      ],
+      "conflict": "阮多要接住蘇清的告別，而且說得出真心話。",
+      "turn": "她以為蘇清是來宣戰；蘇清是來把原著裡屬於自己的那一行還給她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她說：「妳也要幸福。」最後一頁「蘇清嫁給了沉默的他」那一行白了。她掛掉電話，門縫裡塞進一頁：「三天。」",
+        "question": "剩三天，她要怎麼過？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "夜裡的車站，月台上一個長直髮白襯衫的背影拖著行李箱，廣播在空中回響。",
+      "glamour_shot": "蘇清在月台邊講電話，長直髮被列車帶起的風吹亂，她笑著閉了一下眼，得體又溫柔。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母帶室舊電箱被換掉",
+        "蘇清告別；最後一頁剩三行"
+      ],
+      "characters": [
+        "ruan-duo",
+        "su-qing",
+        "tang-shu",
+        "wen-mo"
+      ],
+      "locations": [
+        "默聲母帶室",
+        "她的小陽台",
+        "車站月台"
+      ],
+      "state": {
+        "time": "契約剩三天",
+        "knowledge": "電箱換了；蘇清去外地；最後一頁剩三行",
+        "carry_forward": "最後三天"
+      }
+    },
+    {
+      "number": 179,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "媽，謝謝",
+      "youtube_title": "契約到期前兩天，婆婆把一把老宅鑰匙放進她手心，她脫口一聲謝謝媽，書又白了一行",
+      "duration_s": 120,
+      "logline": "契約到期前兩天，婆婆用一把鑰匙問她要不要留下，阮多還沒準備好回答。",
+      "hook": "佛堂裡，婆婆把一把銅鑰匙放進她手心：「老宅大門的。原主沒有，妳有。」",
+      "hook_type": "image",
+      "mid_hook": "她握住鑰匙，脫口：「謝謝媽。」最後一頁第一行「契約到期，阮多離開聞家」一下子白了。",
+      "extra_hooks": [
+        "她的舊手機在夢裡又亮了一次，室友的訊息還是沒點開。"
+      ],
+      "conflict": "阮多要在契約到期前想清楚：她留下，是因為書、因為家、還是因為他。",
+      "turn": "大家以為那一行白了，她就決定了；她自己知道還沒有——她還沒對他說過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "晚上她握著鑰匙站在他門口，手舉起來要敲門，最後一頁只剩兩行在她眼前亮著。門裡的燈還開著。",
+        "question": "她敲不敲那扇門？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "佛堂長明燈下，一把老銅鑰匙從布滿皺紋的手落進年輕的手心，佛珠輕輕碰響。",
+      "glamour_shot": "她站在他門口的走廊燈下，握著鑰匙，手舉在半空，側臉的線條在暖光裡很安靜。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "婆婆給她老宅鑰匙；最後一頁剩兩行"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-furen",
+        "wen-mo",
+        "shiyou"
+      ],
+      "locations": [
+        "佛堂",
+        "老宅三樓走廊"
+      ],
+      "state": {
+        "time": "契約到期前兩天",
+        "knowledge": "最後一頁剩兩行：他一生不開口、第三百章",
+        "carry_forward": "敲不敲門"
+      }
+    },
+    {
+      "number": 180,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "你問我，還是書問我",
+      "youtube_title": "書全白了只剩最後一行：阮多死於——；啞巴老公在她身後寫下一句：契約到期那天，妳留不留？",
+      "duration_s": 160,
+      "logline": "契約到期前一天，阮多讓最後一頁剩下的字白到只剩一行，而他終於問了她一直在等的問題。",
+      "hook": "她沒敲，門自己開了。他站在門內，手裡是墨綠筆記本，翻到最新一頁：「一天。」",
+      "hook_type": "image",
+      "mid_hook": "她坐在他書桌前，看著他的眼睛：「你以後會說話的。我要第一個聽見。」最後一頁「聞默一生沒有再開口」那一行，慢慢白了。",
+      "extra_hooks": [
+        "她低頭，書上只剩一行。她對鏡頭：「最後一句，連書都沒寫完。」",
+        "他在筆記本這一頁的「一天」下面又寫了一行，她沒看見。"
+      ],
+      "conflict": "面對最後一行與契約到期，她要不要現在回答。",
+      "turn": "她以為最後要回答的是書上的結局；真正在問的人，一直站在她身後。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "書全白，只剩最後一頁一行字沒白：「第三百章：阮多死於——」後面是空的。她合上書，聞默在她身後寫：「契約到期那天，妳留不留？」她說：「你問我，還是書問我？」他寫：「我。」她說：「那我明天回答。」",
+        "question": "她明天會說留，還是走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "一整本半透明的書在她面前翻過所有白頁，最後一頁只剩一行字，「——」後面一片白，像一扇沒關的門。",
+      "glamour_shot": "他站在她身後，檯燈落在他低頭寫字的側臉與喉上的淡疤，便條遞到她肩旁，她回頭的那一秒兩人只隔一張紙。",
+      "setups": [
+        "m01",
+        "m10"
+      ],
+      "payoffs": [
+        "s03-t17",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "最後一頁只剩「第三百章：阮多死於——」",
+        "他第一次親筆問她留不留，她答應明天回答"
+      ],
+      "characters": [
+        "ruan-duo",
+        "wen-mo"
+      ],
+      "locations": [
+        "聞默的房間",
+        "書頁"
+      ],
+      "state": {
+        "time": "契約到期前一天夜裡",
+        "knowledge": "書只剩最後一行；他問「妳留不留」，是他問、不是書問",
+        "carry_forward": "明天的回答；她的心臟沒告訴任何人"
+      }
+    }
+  ]
+}
