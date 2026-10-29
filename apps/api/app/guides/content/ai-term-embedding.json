@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "嵌入向量（Embedding）是什麼：把內容放進可比較的空間",
@@ -75,6 +78,7 @@
           "width": 1600,
           "height": 900,
           "caption": "向量比較提供候選；原文才是核對條件的地方。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -213,6 +217,838 @@
         },
         {
           "title": "Sentence Transformers：Semantic Textual Similarity",
+          "url": "https://sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "What Is an Embedding? Mapping Content into a Space for Comparison",
+      "description": "Embeddings are numeric representations that models create from text and other content, often for semantic search, classification and clustering. Using “Where can I go when it rains?”, this article covers encoding, similarity and candidates; why vector distance does not indicate truth and dimensions may lack clear labels; and the effects of model versions, language ability and long-text truncation. Learn the distinct roles of embeddings, vector databases and answer generation.",
+      "hero": {
+        "src": "/guides/ai-term-embedding/hero-en.jpg",
+        "alt": "Geometric points in different clusters surround a query point, symbolizing content mapped to comparable vectors.",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "An embedding represents text, images or other content as a set of numbers, letting computers compare content by distance or similarity instead of checking only for exact wording.",
+            "Similarity measures closeness in a particular representation space. Nearby vectors do not mean all conditions are met, and vectors do not fact-check data. After retrieving candidates, return to the original text to check the constraints.",
+            "Meaning is carried by the representation as a whole; do not label a dimension just because its value increases. Even if two models output the same number of dimensions, their coordinate spaces may differ. Do not directly mix in an old index."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "An embedding represents text, images or other content as a set of numbers. These numbers let computers compare content by distance or similarity instead of checking only for exact wording. For example, “indoor activities on rainy days” and “where can I go when it rains?” use different words, but a suitable text embedding model may still place them close together. This is a learned representation, not a set of fixed coordinates assigned to each sentence by a dictionary."
+        },
+        {
+          "type": "paragraph",
+          "text": "This article focuses on text and distinguishes three steps: the model produces vectors, code compares them, and the application uses the comparison results. Vectors themselves neither speak nor fact-check data. The activity names and rankings in this article are illustrative, not measured scores from a particular model. When choosing a model, you need to test it with your own languages and tasks; the expectations in these examples are not performance guarantees."
+        },
+        {
+          "type": "heading",
+          "text": "How a Set of Numbers Represents Content",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A text model first processes the input tokens, then forms representations according to how it was trained. Sentence embeddings typically turn an entire sentence or passage into a fixed-length vector; these differ from the representations of individual tokens inside the model. The original Sentence-BERT study demonstrated a design that encodes sentences separately and then compares them using similarity, removing the need to feed every pair of sentences into a large model together. This is one representative embedding method, not an architecture used by all embeddings."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can think of it as a learned map of content, but the map analogy has limits. Actual vectors often have many dimensions, and an individual dimension does not necessarily represent “how suitable it is for indoor activities” or “ease of transportation.” Such meanings are carried by the representation as a whole. You cannot simply see a number increase and label it as emotion, quality or credibility. To understand what a model does well, examine its training objectives and task evaluations rather than guessing what its coordinates mean in words."
+        },
+        {
+          "type": "heading",
+          "text": "Similarity Must Match the Model",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Vectors can be compared using cosine similarity, dot products or distance measures. The official Sentence Transformers documentation provides different calculation methods and notes that the model configuration includes corresponding similarity options. These calculations measure closeness within a particular representation space, not a universally applicable relevance score. After changing the model, normalization method or distance function, you should not simply reuse the previous threshold."
+        },
+        {
+          "type": "paragraph",
+          "text": "Queries and data need compatible representations. Some retrieval models use different prompt prefixes or encoding entry points for questions and documents to help short questions match longer answer passages. Even if two models output the same number of dimensions, their coordinate spaces are not necessarily the same. Comparing old document vectors with queries encoded by a new model may still produce numbers, but those numbers may no longer have reliable meaning. When updating the model, you need to revalidate the pairing of the index and queries."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-embedding/diagram-1-en.svg",
+          "alt": "The question and documents are encoded into compatible vectors. After similarity is calculated, the original text is retrieved to check actual conditions.",
+          "width": 1600,
+          "height": 900,
+          "caption": "Vector comparison provides candidates; the original text is where conditions must be checked.",
+          "description": "The question and documents are encoded into compatible vectors. After similarity is calculated, the original text is retrieved to check actual conditions.",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: Finding Notes on Rainy-Day Activities",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose your notes include “the pottery studio is indoors,” “the riverside trail offers expansive views” and “the art museum can also be visited on rainy days.” After entering “where can I go when it rains?”, you first encode the question with the chosen model, then compare it with the note vectors to retrieve candidate passages. It is reasonable to expect notes about indoor activities to be easier to find. However, the actual ranking may differ if the model is unfamiliar with Taiwanese usage or the notes omit too much context."
+        },
+        {
+          "type": "paragraph",
+          "text": "After retrieving candidates, return to the original text to check the constraints. The pottery studio may require reservations, and the art museum may have days when it is closed; nearby vectors do not mean you can visit today. If the application needs to provide a complete itinerary, it must also retrieve opening information and organize it through a generation step. Simply recommending the nearest item confuses “discussing a relevant topic” with “meeting all conditions.”"
+        },
+        {
+          "type": "paragraph",
+          "text": "You can also test with a distractor sentence: “This venue is unsuitable for use on rainy days.” It contains the same vocabulary and topic, so its vector may still be close to a rainy-day query. If the system treats it as a suitable candidate, this does not mean the distance calculation is broken. It may mean the embedding is good at finding similar topics but less capable of making the final judgment about conditions. You can then add reranking or explicit condition checks; you do not necessarily need to abandon embeddings entirely."
+        },
+        {
+          "type": "heading",
+          "text": "What Information Can Be Lost in Compression?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When a long passage contains too many topics, a single vector may struggle to preserve every detail. Text exceeding the model's input limit may also be truncated. Dividing documents into meaningful passages while retaining titles and source information usually addresses the problem more directly than blindly increasing vector dimensions. Splitting text too finely, however, may lose the subject and conditions, so vector quality cannot be evaluated separately from document processing."
+        },
+        {
+          "type": "paragraph",
+          "text": "Specialized terms, rare place names, product codes and negative conditions also deserve targeted testing. A semantic model may find synonyms very well yet fail to distinguish different products with very similar names. Fields requiring precise identification can be supplemented with text-based or structured filters. For data security, vectors do not guarantee anonymization or encryption. Access permissions for the original text and requirements for handling sensitive data still apply; you cannot share vectors freely just because they look like numbers."
+        },
+        {
+          "type": "heading",
+          "text": "Understanding Descriptions of Embedding Features",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "When you see “supports embeddings,” first check the input types, supported languages, permitted length, model version and similarity method, then assess whether it supports your actual data. Cross-language search especially needs testing with wording that readers would actually use, not just neatly translated sentences. Evaluation queries should also include synonyms, antonyms, proper names and completely unrelated content to reveal the model's limits."
+        },
+        {
+          "type": "paragraph",
+          "text": "A practical small test is to manually label the notes that each question should retrieve, then check whether the candidates include them. If relevant notes never enter the candidate set, examine chunking and encoding. If they enter the set but rank low, consider reranking. If the ranking is correct but the answer is still wrong, the problem may lie in generation. Embeddings provide a comparable representation of content; the service's ultimate quality still depends on how that representation is used afterward."
+        },
+        {
+          "type": "paragraph",
+          "text": "If you want to use search results for automatic classification, you must also decide when to accept a result and when to send it for human review. Even the closest category may be completely unrelated to the input. A system that only picks the top option from existing choices will still force a choice when faced with a new type. Include “no suitable category” cases to check that the application is not mistaking the highest relative score for sufficient evidence."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Main Function",
+            "Points to Note"
+          ],
+          "rows": [
+            [
+              "Embedding model",
+              "Converts content into vectors",
+              "Training objectives shape the representation"
+            ],
+            [
+              "Vector database",
+              "Stores and queries vectors",
+              "Does not determine whether content is true"
+            ],
+            [
+              "Generative model",
+              "Produces text answers",
+              "Still needs to read reliable supporting evidence"
+            ]
+          ],
+          "caption": "Concept comparison; sources checked in 9/2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "The Same Number of Dimensions Does Not Mean the Same Space",
+          "text": "When changing embedding models, rebuild the document vectors or verify their compatibility with query vectors. Do not directly mix in an old index."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Vector Databases: How Similar Content Is Stored and Found",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Semantic Search: Finding Relevant Content with Different Wording",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Document Chunking: How Long Should Chunks Be to Avoid Splitting Answers?",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terminology Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Reimers, Gurevych: Sentence-BERT",
+          "url": "https://arxiv.org/abs/1908.10084",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sentence Transformers: Semantic Textual Similarity",
+          "url": "https://sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "埋め込みベクトル（Embedding）とは：内容を比較可能な空間に配置する",
+      "description": "埋め込みベクトルは、モデルがテキストなどの内容を数値の組に変換して表す方法で、意味検索、分類、クラスタリングによく使われます。本記事では「雨の日はどこに行ける」というクエリを使い、エンコード、類似度、候補の取得を解説します。ベクトル間の距離は真偽を示さず、各次元にも直接名前を付けられるとは限らないことを説明し、モデルのバージョン、言語能力、長文の切り捨てによる影響も紹介します。埋め込みベクトル、ベクトルデータベース、回答生成がそれぞれ何を担うのかを理解できます。",
+      "hero": {
+        "src": "/guides/ai-term-embedding/hero-ja.jpg",
+        "alt": "異なるクラスタの点がクエリの点を囲み、内容を比較可能なベクトルに写像する様子を表している",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "埋め込みベクトル（Embedding）は、テキスト、画像などの内容を数値の組に変換して表す方法です。コンピューターは文字列の完全一致だけでなく、距離や類似度で内容を比較できます。",
+            "類似度の計算で得られるのは、特定の表現空間における近さです。ベクトルが近くても、すべての条件を満たすとは限りません。ベクトル自体はデータの事実確認もしないため、候補を取得した後は原文に戻って制約を確認する必要があります。",
+            "ベクトルの意味は表現全体で成り立つため、ある次元の数値が大きくなっただけで勝手に名前を付けてはいけません。二つのモデルの出力次元数が同じでも、座標空間が同じとは限らないので、古いインデックスをそのまま混用しないでください。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "埋め込みベクトルは、英語で Embedding といい、テキスト、画像などの内容を数値の組に変換して表す方法です。この数値の組によって、コンピューターは文字列の完全一致だけでなく、距離や類似度で内容を比較できます。例えば「雨の日の屋内アクティビティ」と「雨の日はどこに行ける」は使う言葉が異なりますが、適切なテキスト埋め込みモデルなら、近い位置に配置する可能性があります。これは学習によって得られた表現であり、辞書が各文に割り当てた固定の座標ではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本記事ではテキストを中心に、モデルがベクトルを生成する、プログラムがベクトルを比較する、アプリケーションが比較結果を使うという三つのステップを区別して説明します。ベクトル自体が話したり、データの事実確認をしたりすることはありません。記事中のアクティビティ名や順位は例示であり、特定のモデルで実測したスコアではありません。実際にモデルを選ぶ際は、自分が使う言語とタスクでテストする必要があり、例で期待される結果を性能の保証とみなしてはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "数値の組で内容をどう表すのか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "テキストモデルは、まず入力のトークンを処理し、その学習方法に応じて表現を形成します。文の埋め込みは通常、文全体やひとまとまりのテキストを固定長のベクトルに変換するもので、モデル内部の各トークンの表現とは異なります。Sentence-BERT の原著論文では、文を個別にエンコードしてから類似度で比較する設計が示され、文のペアごとに大型モデルへまとめて入力する必要がなくなりました。これは埋め込み手法の代表例の一つにすぎず、すべての埋め込みが同じ構造を採用しているわけではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "学習によって作られた内容の地図と考えることもできますが、この地図のたとえには限界があります。実際のベクトルは多くの次元を持つことが多く、個々の次元が「屋内らしさ」や「交通の便利さ」を表すとは限りません。こうした意味は表現全体で成り立つため、数値が大きくなっただけで、感情、品質、信頼度などと勝手に名付けてはいけません。モデルの得意分野を知るには、座標に中国語の意味を当てはめて推測するのではなく、学習目標とタスクの評価を見る必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "類似度の計算はモデルに合わせる",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "ベクトルは、コサイン類似度、内積、距離などの方法で比較できます。Sentence Transformers の公式ドキュメントでは、さまざまな計算方法が紹介され、モデル設定に対応する類似度の選択肢があることも説明されています。これらの計算で得られるのは、特定の表現空間における近さであり、世界共通の関連性スコアではありません。モデル、正規化の方法、距離関数を変更した後は、以前のしきい値をそのまま使うべきではありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "クエリとデータには、互換性のある表現方法を使う必要があります。一部の検索モデルは、短い質問を長めの回答段落と対応させるために、質問と文書で異なるプロンプトの接頭辞やエンコード用の入力口を使います。二つのモデルの出力次元数が同じでも、座標空間が同じとは限りません。古い文書ベクトルと新しいモデルのクエリを混用すると、数値は計算できても、信頼できる意味を失う可能性があります。モデルを更新する際は、インデックスとクエリの組み合わせを再検証する必要があります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-embedding/diagram-1-ja.svg",
+          "alt": "質問と文書をそれぞれ互換性のあるエンコードでベクトルに変換し、類似度の計算後に原文を取得して、実際の条件を確認する",
+          "width": 1600,
+          "height": 900,
+          "caption": "ベクトルの比較で候補を得て、条件は原文で確認します。",
+          "description": "質問と文書をそれぞれ互換性のあるエンコードでベクトルに変換し、類似度の計算後に原文を取得して、実際の条件を確認する",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "実例：雨の日のアクティビティのメモを探す",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「陶芸工房は屋内にある」「川沿いの遊歩道は見晴らしがよい」「美術館は雨の日でも見学できる」というメモがあるとします。「雨の日はどこに行ける」と入力したら、まず選んだモデルで質問をエンコードし、メモのベクトルと比較して候補の段落を取得します。屋内に関するメモが見つかりやすいと期待するのは妥当ですが、モデルが台湾の表現に詳しくなかったり、メモで背景情報が省略されすぎていたりすると、実際の順位は異なる可能性があります。"
+        },
+        {
+          "type": "paragraph",
+          "text": "候補を取得した後は、原文に戻って制約を確認する必要があります。陶芸工房には予約が必要かもしれず、美術館には休館日があるかもしれません。ベクトルが近くても、今日行けるとは限りません。アプリケーションで旅程全体を回答するなら、営業情報も検索し、生成のステップで整理する必要があります。最も近い項目をそのままおすすめにすると、「関連する話題に触れている」ことと「すべての条件を満たしている」ことを混同してしまいます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "「この会場は雨天の利用には適していない」という紛らわしい文を加えてテストすることもできます。同じ語彙や話題を含むため、そのベクトルも雨の日についてのクエリに近くなる可能性があります。システムがこれを適切な候補として扱っても、距離の計算が壊れているとは限りません。埋め込みは話題の近さを捉えるのが得意でも、最後の条件判定は苦手なのかもしれません。この場合は再ランキングや明示的な条件チェックを追加でき、埋め込みを完全に捨てる必要があるとは限りません。"
+        },
+        {
+          "type": "heading",
+          "text": "圧縮によって失われやすい内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "長い段落に多くの話題が含まれると、単一のベクトルでは細部をすべて保持するのが難しくなります。また、モデルの入力制限を超えたテキストは切り捨てられる可能性があります。文書を意味のある段落に分け、見出しと出典情報を保持するほうが、むやみにベクトルの次元数を増やすよりも、通常は問題に即した対応になります。ただし、細かく分割しすぎると主語や条件が失われる可能性があるため、ベクトルの品質は文書の処理方法と切り離して評価できません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "専門用語、珍しい地名、製品コード、否定条件も、特にテストする価値があります。意味を扱うモデルは類義語をうまく見つけられても、名前がよく似た別の商品を区別できないことがあります。正確な識別が必要な項目には、テキストや構造化データによるフィルタリングを併用できます。データの安全性については、ベクトルであることは匿名化や暗号化の保証にはなりません。原文のアクセス権限や機微なデータの取り扱いには、引き続き元の要件を守る必要があり、単なる数値に見えるからといって自由に共有してはいけません。"
+        },
+        {
+          "type": "heading",
+          "text": "埋め込み関連機能の説明を読み解く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "「埋め込みに対応」と書かれていたら、まず入力の種類、対応言語、許容される長さ、モデルのバージョン、類似度の計算方法を確認し、実際に使うデータに対応できるかを見ます。特に言語をまたぐ検索では、きれいに翻訳された文だけでなく、読者が実際に質問するときの表現でテストする必要があります。評価用の質問にも、同義、反義、固有名称、まったく無関係な内容を含めてこそ、その限界が見えてきます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "実用的な小さなテストとして、各質問で見つかるべきメモを先に人手で指定し、候補にそれらが含まれているかを比べる方法があります。関連するメモが候補にまったく入らないなら、分割とエンコードを確認します。候補には入るものの順位が低いなら、再ランキングを検討できます。順位が正しいのに回答が間違っているなら、問題は生成にあるかもしれません。埋め込みは比較可能な内容表現を提供しますが、最終的なサービスの品質は、その後どう使うかに左右されます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "検索結果を自動分類に使う場合は、どの時点で判定を採用し、どの時点で人に確認を委ねるかも別途決める必要があります。最も近いカテゴリでも、入力とはまったく無関係な可能性があります。既存の選択肢から首位を選ぶだけのシステムは、新しい種類の入力に対しても無理に選んでしまいます。「適切なカテゴリがない」事例を加えてこそ、アプリケーションが相対的な最高スコアを十分な根拠と取り違えていないか確認できます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "主な処理",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "埋め込みモデル",
+              "内容をベクトルに変換",
+              "表現は学習目標の影響を受ける"
+            ],
+            [
+              "ベクトルデータベース",
+              "ベクトルの保存と検索",
+              "内容の真偽は判定しない"
+            ],
+            [
+              "生成モデル",
+              "テキストの回答を生成",
+              "信頼できる根拠の読み取りが必要"
+            ]
+          ],
+          "caption": "概念の比較。出典は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "次元数が同じでも、同じ空間とは限らない",
+          "text": "埋め込みモデルを変更する際は、文書ベクトルを再作成するか、クエリベクトルとの互換性を検証し、古いインデックスをそのまま混用しないでください。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ベクトルデータベース（Vector Database）：似た内容をどう保存し、どう探すか",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "意味検索（Semantic Search）：異なる表現で関連する内容を見つける",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文書の分割（Chunking）：答えを分断しない長さとは",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Reimers、Gurevych：Sentence-BERT",
+          "url": "https://arxiv.org/abs/1908.10084",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sentence Transformers：テキストの意味的類似度",
+          "url": "https://sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "임베딩 벡터(Embedding)란: 콘텐츠를 비교 가능한 공간에 배치하기",
+      "description": "임베딩 벡터는 모델이 텍스트 등의 콘텐츠를 일련의 수치로 변환해 표현하는 방식으로, 의미 검색, 분류, 군집화에 자주 쓰입니다. 이 글은 “비가 오면 어디에 갈 수 있을까”라는 질의를 통해 인코딩, 유사도, 후보 결과를 살펴봅니다. 벡터 간 거리는 참과 거짓을 뜻하지 않으며 각 차원에 직접 이름을 붙일 수 있는 것도 아니라는 점을 설명하고, 모델 버전, 언어 능력, 긴 글 잘림의 영향을 소개합니다. 읽고 나면 임베딩 벡터, 벡터 데이터베이스, 답변 생성이 각각 어떤 역할을 맡는지 구분할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-embedding/hero-ko.jpg",
+        "alt": "서로 다른 군집의 기하학적 점들이 질의점을 둘러싸고 있으며, 콘텐츠를 비교 가능한 벡터로 매핑하는 것을 상징합니다",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "임베딩 벡터(Embedding)는 텍스트, 이미지 또는 다른 콘텐츠를 일련의 수치로 변환해 표현하는 방식입니다. 컴퓨터가 표현이 글자 그대로 일치하는지만 확인하는 대신, 거리나 유사도로 콘텐츠를 비교할 수 있게 합니다.",
+            "유사도 계산으로 얻는 것은 특정 표현 공간에서 얼마나 가까운지입니다. 벡터가 가깝다고 모든 조건을 충족하는 것은 아니며, 벡터 자체가 자료의 사실 여부를 검증하지도 않습니다. 후보를 얻은 뒤에는 원문을 다시 읽고 제약 조건을 확인해야 합니다.",
+            "벡터의 의미는 표현 전체에 걸쳐 담겨 있으므로, 특정 차원의 수치가 커졌다고 임의로 이름을 붙여서는 안 됩니다. 두 모델의 출력 차원 수가 같아도 좌표 공간이 같다는 뜻은 아니므로 기존 인덱스를 그대로 혼용하지 마세요."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "임베딩 벡터는 영어로 Embedding이며, 텍스트, 이미지 또는 다른 콘텐츠를 일련의 수치로 변환해 표현하는 방식입니다. 이 수치들은 컴퓨터가 표현이 글자 그대로 일치하는지만 확인하는 대신, 거리나 유사도로 콘텐츠를 비교할 수 있게 합니다. 예를 들어 “비 오는 날의 실내 활동”과 “비가 오면 어디에 갈 수 있을까”는 사용하는 단어가 다르지만, 적절한 텍스트 임베딩 모델은 둘을 가까운 위치에 배치할 수 있습니다. 이는 학습으로 얻은 표현이지, 사전이 각 문장에 부여한 고정 좌표가 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "이 글은 텍스트를 중심으로 모델이 벡터를 생성하는 단계, 프로그램이 벡터를 비교하는 단계, 애플리케이션이 비교 결과를 사용하는 단계라는 세 가지를 구분해 설명합니다. 벡터 자체는 말을 하지 않으며, 자료의 사실 여부를 검증하지도 않습니다. 글에 나오는 활동 이름과 순위는 이해를 돕기 위한 예시이며, 특정 모델에서 실제로 측정한 점수가 아닙니다. 실제로 모델을 선택할 때는 자신이 사용하는 언어와 작업으로 시험해야 하며, 예시에서 기대하는 결과를 성능 보장으로 받아들여서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "일련의 수치는 어떻게 콘텐츠를 표현할까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "텍스트 모델은 먼저 입력 토큰을 처리한 뒤, 훈련 방식에 따라 표현을 형성합니다. 문장 임베딩은 보통 문장 전체나 텍스트 한 단락을 고정 길이 벡터로 변환하며, 모델 내부의 개별 토큰 표현과는 다릅니다. Sentence-BERT의 원 연구는 문장들을 각각 인코딩한 뒤 유사도로 비교하는 설계를 제시하여, 모든 문장 쌍을 대형 모델에 함께 입력할 필요를 없앴습니다. 이는 임베딩 방법의 대표적인 사례 중 하나일 뿐, 모든 임베딩이 같은 구조를 사용하는 것은 아닙니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "학습으로 만들어진 콘텐츠 지도라고 생각할 수 있지만, 지도라는 비유에는 한계가 있습니다. 실제 벡터는 차원이 많은 경우가 흔하며, 개별 차원이 반드시 “실내인 정도”나 “교통 편의성”을 나타내지는 않습니다. 이러한 의미는 표현 전체에 걸쳐 담겨 있으므로, 수치 하나가 커졌다고 임의로 감정, 품질, 신뢰도라는 이름을 붙여서는 안 됩니다. 모델이 무엇을 잘하는지 알려면 좌표의 의미를 중국어로 추측할 것이 아니라 훈련 목표와 작업 평가를 살펴봐야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "유사도 계산은 모델에 맞춰야 합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "벡터는 코사인 유사도, 내적, 거리 등의 방법으로 비교할 수 있습니다. Sentence Transformers 공식 문서는 여러 계산 방식을 제공하며, 모델 설정에 이에 대응하는 유사도 옵션이 있음을 안내합니다. 이러한 계산으로 얻는 것은 특정 표현 공간에서 얼마나 가까운지이지, 어디서나 통용되는 관련성 점수가 아닙니다. 모델, 정규화 방식 또는 거리 함수를 바꾼 뒤에는 기존 임계값을 그대로 사용해서는 안 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "질의와 자료에는 서로 호환되는 표현 방식을 사용해야 합니다. 일부 검색 모델은 질문과 문서에 서로 다른 프롬프트 접두어나 인코딩 경로를 사용하여, 짧은 질문이 더 긴 답변 단락과 연결되도록 합니다. 두 모델의 출력 차원 수가 같아도 좌표 공간이 같다는 뜻은 아닙니다. 기존 문서 벡터를 새 모델의 질의와 혼용하면 수치는 계산되더라도 신뢰할 만한 의미를 잃을 수 있습니다. 모델을 업데이트할 때는 인덱스와 질의의 조합을 다시 검증해야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-embedding/diagram-1-ko.svg",
+          "alt": "질문과 문서를 각각 호환되는 인코딩으로 벡터로 변환하고, 유사도를 계산한 뒤 원문을 가져와 실제 조건을 확인합니다",
+          "width": 1600,
+          "height": 900,
+          "caption": "벡터 비교는 후보를 제공합니다. 조건을 대조하고 확인할 곳은 원문입니다.",
+          "description": "질문과 문서를 각각 호환되는 인코딩으로 벡터로 변환하고, 유사도를 계산한 뒤 원문을 가져와 실제 조건을 확인합니다",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 비 오는 날의 활동 메모 찾기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "메모에 “도예 공방은 실내에 있다”, “강변 산책로는 시야가 탁 트여 있다”, “미술관은 비 오는 날에도 관람할 수 있다”라는 내용이 있다고 가정해 봅시다. “비가 오면 어디에 갈 수 있을까”를 입력하면, 먼저 선택한 모델로 질문을 인코딩한 뒤 메모 벡터와 비교하여 후보 단락을 얻습니다. 실내 관련 메모를 더 쉽게 찾을 것이라고 기대할 수 있지만, 모델이 대만에서 쓰는 표현에 익숙하지 않거나 메모에서 배경 정보가 너무 많이 생략되었다면 실제 순위는 달라질 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "후보를 얻은 뒤에는 원문을 다시 읽고 제약 조건을 확인해야 합니다. 도예 공방은 예약이 필요할 수 있고, 미술관에는 휴관일이 있을 수 있습니다. 벡터가 가깝다고 오늘 갈 수 있다는 뜻은 아닙니다. 애플리케이션이 전체 일정을 답하려면 영업 정보를 검색하고 생성 단계에서 정리해야 합니다. 가장 가까운 항목을 곧바로 추천하면 “관련 주제를 다룬다”는 것과 “모든 조건을 충족한다”는 것을 혼동하게 됩니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "“이 장소는 비 오는 날 이용하기에 적합하지 않다”라는 교란 문장을 넣어 시험할 수도 있습니다. 같은 어휘와 주제를 포함하므로 벡터는 여전히 비 오는 날에 관한 질의와 가까울 수 있습니다. 시스템이 이를 긍정적인 후보로 취급한다고 해서 거리 계산이 잘못되었다는 뜻은 아닙니다. 임베딩이 비슷한 주제를 찾는 데는 능숙하지만 최종적인 조건 판단에는 약하다는 뜻일 수 있습니다. 이때는 재순위화나 명시적인 조건 검사를 추가할 수 있으며, 반드시 임베딩을 완전히 포기해야 하는 것은 아닙니다."
+        },
+        {
+          "type": "heading",
+          "text": "어떤 내용이 압축 과정에서 사라지기 쉬울까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "긴 단락에 너무 많은 주제가 담겨 있으면 단일 벡터로 모든 세부 사항을 보존하기 어려울 수 있으며, 모델의 입력 한도를 넘는 텍스트는 잘릴 수도 있습니다. 문서를 의미 있는 단락으로 나누고 제목과 출처 정보를 보존하는 것이 보통 무작정 벡터 차원 수를 늘리는 것보다 문제에 더 적합한 접근입니다. 반대로 너무 잘게 나누면 주어나 조건을 잃을 수 있으므로, 벡터 품질은 문서 처리 방식과 분리하여 평가할 수 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "전문 용어, 드문 지명, 제품 코드, 부정 조건도 따로 시험할 필요가 있습니다. 의미 기반 모델은 유의어를 잘 찾으면서도 이름이 매우 비슷한 서로 다른 상품은 구분하지 못할 수 있습니다. 정확한 식별이 필요한 필드에는 텍스트 필터나 구조화된 필터를 보조적으로 사용할 수 있습니다. 데이터 보안 측면에서 벡터는 익명화나 암호화를 보장하지 않습니다. 원문 접근 권한과 민감한 데이터 처리에는 기존 요구 사항을 그대로 지켜야 하며, 단순한 숫자로 보인다고 임의로 공유해서는 안 됩니다."
+        },
+        {
+          "type": "heading",
+          "text": "임베딩 관련 기능 소개 이해하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "“임베딩 지원”이라는 설명을 보면 먼저 입력 유형, 지원 언어, 허용 길이, 모델 버전, 유사도 계산 방식을 확인하고, 실제로 자신의 데이터를 지원하는지 살펴볼 수 있습니다. 특히 언어 간 검색은 독자가 실제로 질문할 법한 표현으로 시험해야 하며, 깔끔하게 번역된 문장만 사용해서는 안 됩니다. 평가 질문에도 같은 의미, 반대 의미, 고유 명칭, 완전히 무관한 내용을 포함해야 모델의 한계를 볼 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "실용적인 간단한 시험 방법은 각 질문에서 찾아야 할 메모를 먼저 사람이 직접 표시한 뒤, 후보에 그 메모들이 포함되는지 비교하는 것입니다. 관련 메모가 후보에 아예 들어오지 않았다면 청킹과 인코딩을 점검하고, 후보에는 있지만 순위가 낮다면 재순위화를 검토할 수 있습니다. 순위가 올바른데도 답변이 틀린다면 생성 단계에 문제가 있을 수 있습니다. 임베딩은 비교 가능한 콘텐츠 표현을 제공하며, 최종 서비스 품질은 여전히 이를 이후에 어떻게 활용하는지에 달려 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "검색 결과를 자동 분류에 활용하려면 언제 결과를 받아들이고 언제 사람의 검토에 맡길지도 별도로 정해야 합니다. 가장 가까운 범주조차 입력과 완전히 무관할 수 있습니다. 기존 선택지에서 가장 높은 순위의 항목만 고르는 시스템은 새로운 유형을 만나도 억지로 하나를 선택합니다. “적합한 범주 없음” 사례를 추가해야 애플리케이션이 상대적으로 가장 높은 점수를 충분한 근거로 오인하지 않는지 확인할 수 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "핵심 역할",
+            "유의 사항"
+          ],
+          "rows": [
+            [
+              "임베딩 모델",
+              "콘텐츠를 벡터로 변환",
+              "표현은 훈련 목표의 영향을 받음"
+            ],
+            [
+              "벡터 데이터베이스",
+              "벡터 저장 및 검색",
+              "콘텐츠의 참과 거짓을 판정하지 않음"
+            ],
+            [
+              "생성 모델",
+              "텍스트 답변 생성",
+              "여전히 신뢰할 만한 근거를 읽어야 함"
+            ]
+          ],
+          "caption": "개념 비교. 출처는 2026년 9월에 검증했습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "차원 수가 같아도 같은 공간은 아닙니다",
+          "text": "임베딩 모델을 바꿀 때는 문서 벡터와 질의 벡터를 다시 구축하거나 호환성을 검증하고, 기존 인덱스를 그대로 혼용하지 마세요."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "벡터 데이터베이스(Vector Database): 비슷한 콘텐츠를 어떻게 저장하고 찾을까",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "의미 검색(Semantic Search): 다른 표현으로 관련 콘텐츠 찾기",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "문서 청킹(Chunking): 답변이 잘리지 않게 하려면 얼마나 길게 나눠야 할까",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 총색인: Loop Engineering부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Reimers, Gurevych: Sentence-BERT",
+          "url": "https://arxiv.org/abs/1908.10084",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sentence Transformers: 텍스트 의미 유사도",
+          "url": "https://sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "嵌入向量（Embedding）是什么：把内容放进可比较的空间",
+      "description": "嵌入向量是模型把文字等内容转换成一组数值的表示方式，常用于语义搜索、分类与聚类。本文用“下雨可以去哪里”的查询拆解编码、相似度与候选结果，说明向量距离不等于真假、每一维也未必能直接命名，并介绍模型版本、语言能力与长文截断的影响。读完能分清嵌入向量、向量数据库与生成答案各自负责什么。",
+      "hero": {
+        "src": "/guides/ai-term-embedding/hero-zh-cn.jpg",
+        "alt": "不同簇中的几何点围绕查询点，象征内容映射为可比较的向量",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "嵌入向量（Embedding）是把文字、图片或其他内容转换成一组数值的表示方式，让计算机可以用距离或相似度比较内容，而不必只检查字面是否完全一致。",
+            "相似度计算得到的是特定表示空间中的接近程度，向量接近不表示符合所有条件；向量本身也不会核实数据，获取候选结果后应查看原文确认限制。",
+            "向量的意义由整体表示共同承载，不能看到某一维数字变大就自行为它命名；即使两套模型输出的维度相同，也不代表坐标空间相同，不要直接混用旧索引。"
+          ]
+        },
+        {
+          "type": "paragraph",
+          "text": "嵌入向量，英文 Embedding，是把文字、图片或其他内容转换成一组数值的表示方式。这组数值让计算机可以用距离或相似度比较内容，而不必只检查字面是否完全一致。例如“雨天室内活动”与“下雨可以去哪里”用词不同，合适的文本嵌入模型可能仍把它们放到相近位置。这是学习得到的表示，不是字典为每个句子指定的固定坐标。"
+        },
+        {
+          "type": "paragraph",
+          "text": "本篇以文本为主，带读者区分三个步骤：模型生成向量、程序比较向量、应用程序使用比较结果。向量本身不会说话，也不会核实数据。文中的活动名称与排序是示意，不是某个模型的实测分数；真正选用模型时，需要用自己的语言与任务测试，不能把例子中的预期当成性能保证。"
+        },
+        {
+          "type": "heading",
+          "text": "一组数值如何表示内容",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "文本模型先处理输入的 token，再根据其训练方式形成表示。句子嵌入通常把整句或一段文字转换成固定长度向量；与模型内部每个 token 的表示有所不同。Sentence-BERT 的原始研究展示了让句子分别编码、再用相似度比较的设计，省去了将每一对句子一起送入大型模型的需求。这只是嵌入方法的一个代表，不是所有嵌入都采用同一架构。"
+        },
+        {
+          "type": "paragraph",
+          "text": "可以把它想成一张学习得到的内容地图，但地图比喻有其限度。实际向量常有很多维，单独某一维未必代表“室内程度”或“交通便利程度”。这些意义由整体表示共同承载，不能看到一个数字变大，就自行为它命名为情绪、质量或可信度。若想了解模型擅长什么，要看训练目标与任务评估，而不是猜坐标的中文意思。"
+        },
+        {
+          "type": "heading",
+          "text": "相似度需要与模型匹配",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "向量可以使用余弦相似度、内积或距离等方法比较。Sentence Transformers 官方文档提供不同计算方式，并提醒模型配置中有相应的相似度选项。这些计算得到的是在特定表示空间中的接近程度，不是全世界通用的相关性分数。换模型、改变归一化方式或更换距离函数后，不应直接沿用原来的阈值。"
+        },
+        {
+          "type": "paragraph",
+          "text": "查询和数据需要使用兼容的表示方式。某些检索模型对问题与文档使用不同的提示前缀或编码入口，目的是让简短的问题能匹配较长的答案段落。即使两套模型输出的维度相同，也不代表坐标空间相同；把旧文档向量混入新模型查询，可能仍能算出数字，却失去可靠意义。更新模型时需要重新验证索引与查询的搭配。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-embedding/diagram-1-zh-cn.svg",
+          "alt": "问题与文档分别通过兼容的编码转换成向量，计算相似度后取回原文，再检查实际条件",
+          "width": 1600,
+          "height": 900,
+          "caption": "向量比较提供候选结果；原文才是核对条件的地方。",
+          "description": "问题与文档分别通过兼容的编码转换成向量，计算相似度后取回原文，再检查实际条件",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "示范：找出雨天活动笔记",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设笔记有“陶艺工作室位于室内”、“河岸步道视野开阔”与“美术馆雨天也可参观”。输入“下雨可以去哪里”后，先用选定模型为问题编码，再与笔记向量比较，获取候选段落。合理预期是与室内相关的笔记更容易被找到，但若模型不熟悉台湾用语或笔记省略太多背景，实际排序仍可能不同。"
+        },
+        {
+          "type": "paragraph",
+          "text": "获取候选结果后，应查看原文确认限制。陶艺工作室可能需要预约，美术馆可能有闭馆日；向量接近不表示今天能去。若应用要回答完整行程，还得检索营业信息并由生成步骤整理。只把最接近的项目当成推荐，会把“谈到相关主题”和“符合所有条件”混为一谈。"
+        },
+        {
+          "type": "paragraph",
+          "text": "也可放入干扰句测试：“此场地不适合雨天使用”。它包含相同词汇和主题，向量可能仍与雨天查询接近。若系统把它当成正面候选结果，并不表示距离计算出了故障，而可能表示嵌入擅长识别主题相近的内容、不擅长最后的条件判断。这时可以加入重排序或明确的条件检查，不一定要完全舍弃嵌入。"
+        },
+        {
+          "type": "heading",
+          "text": "哪些内容容易被压缩掉",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "长段落包含太多主题时，单一向量可能难以保留每一个细节；超过模型输入限制的文字也可能被截断。把文档分成有意义的段落，并保留标题及来源信息，通常比盲目增加向量维度更切合问题。分块太细则可能失去主语与条件，因此向量质量不能脱离文档处理方式来评估。"
+        },
+        {
+          "type": "paragraph",
+          "text": "专有名词、罕见地名、产品代码与否定条件也值得特别测试。语义模型可能很擅长查找近义词，却分不清名称很接近的不同商品。需要精确识别的字段可以用文本或结构化筛选辅助。数据安全方面，向量不是匿名化或加密的保证；原文权限与敏感数据处理仍须遵守原本的要求，不能因为看起来只是数字便任意分享。"
+        },
+        {
+          "type": "heading",
+          "text": "读懂嵌入相关功能的介绍",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "看到“支持嵌入”时，可以先确认输入类型、适用语言、允许长度、模型版本与相似度方式，再看它是否支持你的实际数据。跨语言搜索尤其要用读者真正会问的说法测试，不能只用翻译得很工整的句子。评估问题也要包含同义、反义、专有名称与完全无关的内容，才能看出它的能力边界。"
+        },
+        {
+          "type": "paragraph",
+          "text": "一个实用的小测试是先人工标出每个问题应找到的笔记，再比较候选结果是否涵盖它们。若相关笔记根本没进入候选结果，就检查分块与编码；若已进入候选结果但排名靠后，可以评估重排序；若排名正确但答案仍错，问题可能在生成环节。嵌入提供一种可比较的内容表示，最终服务质量仍取决于后续如何使用它。"
+        },
+        {
+          "type": "paragraph",
+          "text": "若要把搜索结果用于自动分类，还需另外决定何时接受、何时交给人看。最相近的类别也可能与输入完全无关；一个只在已有选项里挑第一名的系统，面对新类型仍会强行选择。加入“无合适类别”案例，才能确认应用没有把相对最高分误当成足够的证据。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "嵌入模型",
+              "内容转换成向量",
+              "表示受训练目标影响"
+            ],
+            [
+              "向量数据库",
+              "存储与查询向量",
+              "不为内容判定真假"
+            ],
+            [
+              "生成模型",
+              "生成文本答案",
+              "仍需读取可靠依据"
+            ]
+          ],
+          "caption": "概念对照；来源核实于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "同维度不等于同一个空间",
+          "text": "更换嵌入模型时，重新建立或验证文档向量与查询向量的兼容性，不要直接混用旧索引。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "向量数据库（Vector Database）：相似内容怎么存、怎么找",
+              "kind": "life",
+              "slug": "ai-term-vector-database"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "语义搜索（Semantic Search）：用不同说法找到相关内容",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文档分块（Chunking）：切多长，才不会把答案切断",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Reimers、Gurevych：Sentence-BERT",
+          "url": "https://arxiv.org/abs/1908.10084",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Sentence Transformers：语义文本相似度",
           "url": "https://sbert.net/docs/sentence_transformer/usage/semantic_textual_similarity.html",
           "checked_on": "2026-09-14"
         }
