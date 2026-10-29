@@ -1,0 +1,304 @@
+{
+  "schema": "article-localization-reviewed-content-evidence-v1",
+  "status": "LOCAL_CONTENT_INSTALLED_REVIEWED_NOT_RELEASED",
+  "content_task": "2026-10-29-localize-four-corrected-ai-concepts",
+  "release_task": "2026-10-29-release-localized-four-corrected-ai-concepts",
+  "source_dependency": {
+    "pull_request": 1915,
+    "deployed_source_commit": "a036679662030de86f00f0271f84a39265f55edd",
+    "source_task_closeout_commit": "e82d73ca5a8a35367bfe44be9f244279fb98ba8f"
+  },
+  "scope": {
+    "articles": 4,
+    "documents": 20,
+    "new_target_documents": 16,
+    "target_locales": [
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ],
+    "source_corrections": 0,
+    "hubs": 0,
+    "new_assets": 48,
+    "preserved_original_assets": 12,
+    "installed_content_files": 52
+  },
+  "baseline_sha256": "bb817bcf38290234de0969e6fcd39928a5f5c5a5fbd8c298154922db79c5367e",
+  "baseline_binding_sha256": "25ed5ba7f159176f95ff7d262b26f6250df82495f994862b595ebcef083d2ac0",
+  "bundle_manifest_sha256": "2082d5e3bd35eaef49ea0d8ce96a2e0b415138bb77e752392eda13a656e88ddc",
+  "articles": [
+    {
+      "slug": "ai-term-fine-tuning",
+      "source_locale": "zh-TW",
+      "source_published_version": 10,
+      "source_document_sha256": "e835a8eaeff22d888b1f8090703c0b998849dcc477de010fb09cebc0d1939729",
+      "target_documents": {
+        "en": "9aaeedf93948058a4d364ebc02f98d3547e2865a9a143ce600cb56decc5c0716",
+        "ja": "d5f687e8dc64b067c612e13a926fd712614f330e2ade604414f6828b05c0782e",
+        "ko": "4c900628d5be485bb1002a2773784050223bcbebc4d84ee842fa72ab7303392f",
+        "zh-CN": "fc96494ef373d363d009309fd16f22d71a2b562b9f96a8d7d2379014205ccd7b"
+      },
+      "installed_pack_path": "apps/api/app/guides/content/ai-term-fine-tuning.json",
+      "installed_pack_sha256": "7bb681fd6165b3188a989784e7563188a5ccab826efa26b973276abb16710a79"
+    },
+    {
+      "slug": "ai-term-few-shot-prompting",
+      "source_locale": "zh-TW",
+      "source_published_version": 12,
+      "source_document_sha256": "f156b18dec9410b6c92f5b7e2866208b1eee4fb221f0c826261abf52c880e808",
+      "target_documents": {
+        "en": "92df49f9c776a3f41f11a70403354ed0d79d5ec30c924170b71f775c591048de",
+        "ja": "40a1b2afc1f4c7f7a35e21ded6ab377207cb2d0fac2c6e0acb365351e0247d08",
+        "ko": "27c7fc5c9af3592deb5228d7613b29873e72ed8fcb9d83e6e83b3f9a428c16d8",
+        "zh-CN": "472bd357fbae06bec9d7cb33f2eef8ec0f132976f42d4fe1995adc845fd14351"
+      },
+      "installed_pack_path": "apps/api/app/guides/content/ai-term-few-shot-prompting.json",
+      "installed_pack_sha256": "8eab37d1c44dd282601b69b859331da2420c9f69c935432a75e3c3ad9d599386"
+    },
+    {
+      "slug": "ai-term-multimodal-ai",
+      "source_locale": "zh-TW",
+      "source_published_version": 12,
+      "source_document_sha256": "0c13a13cfa8909d81533ca563f8f688b62f9a1a35410409f7445b1cb9571b961",
+      "target_documents": {
+        "en": "7cfba8c72f416f8fa27e29a7c1e6996d5e100f5cfc536295c24e3f210eabd0f5",
+        "ja": "02abbfe3e4ccc3e74aea2b091ce556a7561d7f19fe8b5879300d8aee071e4fed",
+        "ko": "f93d3c833d6b85be47eb019a8911363ae6e457214be1c2479dc3e9e46ce77482",
+        "zh-CN": "bbbb4f55b83486c2bf1edf86e3276ab50ec4fa0c84c8ad1c78f6f2b231bb0da7"
+      },
+      "installed_pack_path": "apps/api/app/guides/content/ai-term-multimodal-ai.json",
+      "installed_pack_sha256": "b5e965f683d697312db035a965f51a3db9617fa7a341dd7cc199beb2b3301f4e"
+    },
+    {
+      "slug": "ai-term-zero-shot-prompting",
+      "source_locale": "zh-TW",
+      "source_published_version": 12,
+      "source_document_sha256": "cdb0f81143fbdcf55694fab817fd25e73fc0867ae35f2db3dcc1c859fceb3eba",
+      "target_documents": {
+        "en": "2fa3a741cbd55761d761c49af328f4d396ed204535ee40dcde9e11b63670f578",
+        "ja": "855d5ccb33600af88b83950d5c04608120777bd1c8f5b14f6e9a1b382cb356c6",
+        "ko": "45cd4e668ac5934101ccf94b43f5b8d38fe5bd1d6b28ca4086b4b45b772eb583",
+        "zh-CN": "ddd86b51f584bc3928f362cd6ad1de1a3275eede442783302b670ab12c55d2df"
+      },
+      "installed_pack_path": "apps/api/app/guides/content/ai-term-zero-shot-prompting.json",
+      "installed_pack_sha256": "4670f8287736615bd61ff936fd55c2efb73b74a0594dce2621b70170de2ae801"
+    }
+  ],
+  "new_asset_sha256": {
+    "apps/web/public/guides/ai-term-few-shot-prompting/diagram-1-en.svg": "1f75a0a7544675288138f05971b773121164e414e7d2120aec56459552f9d859",
+    "apps/web/public/guides/ai-term-few-shot-prompting/diagram-1-ja.svg": "f12a3bf71ca9c2c76e82104330cdd14ccde38bb19a3915d76cbbe00509bd46d9",
+    "apps/web/public/guides/ai-term-few-shot-prompting/diagram-1-ko.svg": "b31a2911dc7df4a0166b74ae73de61aeb04885a82071bb19bd58fdf309491946",
+    "apps/web/public/guides/ai-term-few-shot-prompting/diagram-1-zh-cn.svg": "ac37d54c1ed3ead2b3cd2d8a1d06446bd1aacff5bbdd273faa54f338a3610645",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero-en.jpg": "30bd03665eb2d12d5c56c11449c1d3cd2404cab812ca1332d7df3fd2ca4f50fb",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero-en.svg": "48557cc6605b7970a381c8623610b3a4882ae071f2545e5e4ed535a70b4a1c34",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero-ja.jpg": "30bd03665eb2d12d5c56c11449c1d3cd2404cab812ca1332d7df3fd2ca4f50fb",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero-ja.svg": "1daf121bab362ed1ce3e27f9ea8e64999d26e5170dbb4d5ec88a6b9db25a7963",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero-ko.jpg": "30bd03665eb2d12d5c56c11449c1d3cd2404cab812ca1332d7df3fd2ca4f50fb",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero-ko.svg": "3c5588db7bd3a831790881e60c037e2053b2b749412cad4f18d9b827f0fd6dd3",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero-zh-cn.jpg": "30bd03665eb2d12d5c56c11449c1d3cd2404cab812ca1332d7df3fd2ca4f50fb",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero-zh-cn.svg": "7c3e81baf42488b014c1d7d2ba671642c8cd1704615927f2bda1a79ebeb69647",
+    "apps/web/public/guides/ai-term-fine-tuning/diagram-1-en.svg": "cd2d34fa6de865e96496b2d89273ec1bb9d2c02cf27d4ad729c403aa3d76444b",
+    "apps/web/public/guides/ai-term-fine-tuning/diagram-1-ja.svg": "2b4a76cc3618578e886e92be154ff097fef19e27e6fe86bd04afc8eecfb06a1c",
+    "apps/web/public/guides/ai-term-fine-tuning/diagram-1-ko.svg": "e0266ac7498b68365652c086fdbefc8325c75acc68f93d14ee4656d9d1a41105",
+    "apps/web/public/guides/ai-term-fine-tuning/diagram-1-zh-cn.svg": "1de48f64171405c71b419c1c5b1e3c40910aa1160115c981fcd98abd5df09041",
+    "apps/web/public/guides/ai-term-fine-tuning/hero-en.jpg": "c3fe0e927a7b7662455dd4b40525ec304240b1f2764e224f4d6e3befcc968373",
+    "apps/web/public/guides/ai-term-fine-tuning/hero-en.svg": "3c4798e0d359235953e42cfb5fa564534c0e27de5de2f9907073034083e63f9a",
+    "apps/web/public/guides/ai-term-fine-tuning/hero-ja.jpg": "c3fe0e927a7b7662455dd4b40525ec304240b1f2764e224f4d6e3befcc968373",
+    "apps/web/public/guides/ai-term-fine-tuning/hero-ja.svg": "63d1e3b2e8c62b7a8c90296738c0986f338d9198afc92ae6b3e722d5881c28f6",
+    "apps/web/public/guides/ai-term-fine-tuning/hero-ko.jpg": "c3fe0e927a7b7662455dd4b40525ec304240b1f2764e224f4d6e3befcc968373",
+    "apps/web/public/guides/ai-term-fine-tuning/hero-ko.svg": "9698677558d1db812cca9f5a8781970b301caca08720f933d45b27ab59cc13d5",
+    "apps/web/public/guides/ai-term-fine-tuning/hero-zh-cn.jpg": "c3fe0e927a7b7662455dd4b40525ec304240b1f2764e224f4d6e3befcc968373",
+    "apps/web/public/guides/ai-term-fine-tuning/hero-zh-cn.svg": "78866f92fe5f7e60377deabfdb07bd0aeac79e8241725d1707a7909cee6fa90f",
+    "apps/web/public/guides/ai-term-multimodal-ai/diagram-1-en.svg": "5e5f933df481285789e3278914d5845aecc41c4e1635ae965baff56c9070ec84",
+    "apps/web/public/guides/ai-term-multimodal-ai/diagram-1-ja.svg": "6fd14ee70e2cb2e3c9f17358bd84559881b21cbb1361fa313065c4cfdfb2e560",
+    "apps/web/public/guides/ai-term-multimodal-ai/diagram-1-ko.svg": "d7ce763cc93472820833a1c0e22e7e61ce428e08685cb5b7f062bf2a3dc717fb",
+    "apps/web/public/guides/ai-term-multimodal-ai/diagram-1-zh-cn.svg": "d8897eb51e0c280a44df65a16f461ab035da4932d90ff6fd039f8e03b76100df",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero-en.jpg": "41bf9e047ee3bebe57327c98efbc7d80988638fcb94a4dde9a88b856f76a3f75",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero-en.svg": "c3ff2c6fce093b97197a3dc3c5506e64dbfc20ebfbd75238810a6f60d1cfff58",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero-ja.jpg": "41bf9e047ee3bebe57327c98efbc7d80988638fcb94a4dde9a88b856f76a3f75",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero-ja.svg": "90576c269be536fee3e5bae9c155353a2673139601c178bfc988d03a4f588bc6",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero-ko.jpg": "41bf9e047ee3bebe57327c98efbc7d80988638fcb94a4dde9a88b856f76a3f75",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero-ko.svg": "582c11a3af2192529a2bc0513dc5cb9128fc06aa6b11b61252a487de737add80",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero-zh-cn.jpg": "41bf9e047ee3bebe57327c98efbc7d80988638fcb94a4dde9a88b856f76a3f75",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero-zh-cn.svg": "7021d455595c5ef67021cec2d94f04fc65c75035ccc4a92f245129d224e6652c",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/diagram-1-en.svg": "c9c08fe861bc9399f0b982781c14c2b22e7b5677d552db994abc6dcc5c9c9360",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/diagram-1-ja.svg": "f381d6b012d7758460836ff24b004d0bf8c972ca9bc799c503cb9d22d67504ea",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/diagram-1-ko.svg": "92d7a21d0210115e65ee1900ad99a0f9585ae848fc24ab87b3db23d44f0a0cb2",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/diagram-1-zh-cn.svg": "332c3d0d09cd53883dd60318070a046ea7e17214d54e912351771eb534827cf0",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero-en.jpg": "d927cf3a95b1877c4036261cfbc203912fb07a4d8905f01fcbb7cfce61e50cb0",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero-en.svg": "3a29c583083435ca389f3160cd9832d4604681c3ca83b915a3f7a3fda5937d24",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero-ja.jpg": "d927cf3a95b1877c4036261cfbc203912fb07a4d8905f01fcbb7cfce61e50cb0",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero-ja.svg": "9a0e5462050ca95c2a11e90307a51201d4d5184c8638243aa78bc847aa7ad4d6",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero-ko.jpg": "d927cf3a95b1877c4036261cfbc203912fb07a4d8905f01fcbb7cfce61e50cb0",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero-ko.svg": "d958b01ce4de2103a133b84ee61bbc778748075c65a600d236040778a6daeffb",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero-zh-cn.jpg": "d927cf3a95b1877c4036261cfbc203912fb07a4d8905f01fcbb7cfce61e50cb0",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero-zh-cn.svg": "2580038f00beee334ceeec167048d43d4701d84fb31d9c3ade0ea9937d7f4b0b"
+  },
+  "original_asset_sha256": {
+    "apps/web/public/guides/ai-term-fine-tuning/diagram-1.svg": "5ab91aee443377116125a069937738fb271ccb1dac991046ce2d4b3a3eab2e94",
+    "apps/web/public/guides/ai-term-fine-tuning/hero.jpg": "3129161e4fc6a4d7d98e776ec72612eef6a7517195c163e69b0155bdce0cb2fd",
+    "apps/web/public/guides/ai-term-fine-tuning/hero.svg": "45c0c7642aa79412b0b551be4edf23d74a3be339f23808828bd18039c5864af2",
+    "apps/web/public/guides/ai-term-few-shot-prompting/diagram-1.svg": "06732a98e7d40739e5a49882ca8dfdc30f2da3788624a74b6747d31c76304835",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero.jpg": "5a92b7bb11fb5b44985866e71190b580c846ca41a52d83a7c5c895eeea07d5d7",
+    "apps/web/public/guides/ai-term-few-shot-prompting/hero.svg": "eeffeffbea9ba7590914e1e0a445a340f17e0a6fe83be3cce44d0574b8b2166f",
+    "apps/web/public/guides/ai-term-multimodal-ai/diagram-1.svg": "b52f17c5f0ee23e6124481b66da88a79726d70d38e2044710d66277a830b66d9",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero.jpg": "11a6f7a66c6ecc7ef829e35887b185af8cae9cff3a8be04c377574c6fcfc85e3",
+    "apps/web/public/guides/ai-term-multimodal-ai/hero.svg": "5db0701ca04265cc30c8d2e3dd116559072cb932d89155d7b5cf2c2ca01e19f6",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/diagram-1.svg": "a0f2360d38e07e62fa290ea5685d517bdf0d919dd85914ac0c90efe18d1ac571",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero.jpg": "d109f6a2b4aae87fe489d20bf48918a602287a0dd9588d6989b64fd3e3a524f5",
+    "apps/web/public/guides/ai-term-zero-shot-prompting/hero.svg": "c031b4ea9fc29dcc36c6d5f991860a6353ee56cf064c2a3ebbeecb3e93dcf9f0"
+  },
+  "preservation": {
+    "normalized_zh_tw_canonical_documents_unchanged": true,
+    "effective_article_metadata_unchanged": true,
+    "twelve_original_asset_bytes_unchanged": true,
+    "raw_pack_bytes_unchanged": false,
+    "serialization_note": "Native serialization adds target locales, orders topics and emits existing empty/default aliases, related, news_date and image-description fields. Canonical source documents and effective metadata are preserved."
+  },
+  "authoring": {
+    "translator": "codex-cli",
+    "independently_reviewed_targets": 16,
+    "reviewer_role_separate_from_translator": true,
+    "original_attempts_preserved": true,
+    "original_runner_nonzero_retained": true,
+    "corrections": "Coordinator applied independent review corrections, re-rendered and obtained final reviews without additional model calls; original few-shot Japanese numeric-validation failure remains preserved.",
+    "fine_few_cohort_review_sha256": "b5a93f0fd3f43aa739e49d140b63ae4a4fd8d4fa19321d22a722ca7915e63bd7",
+    "multi_zero_cohort_review_sha256": "9b359b1afc1142cb4dcbfc08e1e8dd5b2f2eefbbf40a8dd747491a848d169361"
+  },
+  "private_bundle_verification": {
+    "receipt_sha256": "1a288e93f5c5a9075c0a4030434d56f147ab071699ddb340e6ac010773387441",
+    "independent_actual_review_sha256": "d61bce2ffe4123f5db0af2aaf195b619c0bffe721811bf059d679a1253cf7238"
+  },
+  "native_installation": {
+    "stage_receipt_sha256": "368ef209ce9535ec652eef258b601f76ebb4872c41e996783461822e6f202554",
+    "first_install": {
+      "exit_code": 0,
+      "stdout_sha256": "ded6d65193b5f2d77a358f54c2b67af763d92fede2c19bd975e9f341fc3c8313",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_receipt_sha256": "d87952c731fadca7c025d90310d7070ad6394d3d12a9dd467beda26059db013f"
+    },
+    "verification_receipt_sha256": "f730f4a4478a4b022703ac8976890273f2e417e7dd3a5e64c65541b6e1b207df",
+    "replay_receipt_sha256": "3a8153fb5ddded97644382c5684add0de2baaad4eea9f261159762bd73241043",
+    "journal_sha256": "7ed937156256135a89b7e5006c359cba815cd456792e0982797b1a169c33dc8b",
+    "article_receipt_sha256": {
+      "ai-term-fine-tuning": "530696ec5d27e2fbd0b25f966bdd5311724f67504ced915fdce898468893eb74",
+      "ai-term-few-shot-prompting": "d2904c456722f32d92f50214a900718d9fc006cd268520e9c6dbf097f7153227",
+      "ai-term-multimodal-ai": "6667e180424a32d488a770545f85dd4a2a233975d6d9b78dfc4cfac24b82c57c",
+      "ai-term-zero-shot-prompting": "7dd4119177624f8730516585e345bc2f90aedd90ff5db27fa615cc9d40213f58"
+    },
+    "native_admitted_jobs": 16,
+    "replay_content_sha_and_mtime_unchanged": 52,
+    "authoritative_and_mirrored_input_files_unchanged": 375,
+    "input_handling": "Byte-identical locally ignored native-relative mirror; original private baseline/jobs/bundle and all provenance strings preserved. Local mirror and installation state are excluded from Git.",
+    "independent_actual_review_sha256": "9a9c377bec8a7df70c8b7a4d61b780aa7ce3efc33b706d4bd741d7e9fe0454ef"
+  },
+  "local_checks": {
+    "tests": {
+      "artifact_layout": {
+        "exit_code": 0,
+        "stdout_sha256": "c6e71de19c9f60041340a8ae2eac43a070806017a4b9ea35c0f177cfe903e113",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit_receipt_sha256": "28bb1e0bba7318ebb5bc0c4741d28bf21166e3ad87cdc4541883916ceb3cfd55",
+        "passed": 25,
+        "failed": 0,
+        "skipped": 0
+      },
+      "localization_pipeline": {
+        "exit_code": 0,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "cca2826d43edd377ffed5eb4ba52025b2ae074915db38be4ae268fdcfdf48f1c",
+        "exit_receipt_sha256": "e562b9cc97bcd80260cef078f42fd08e6c55d09b5ef2ac09f7655c31534673e0",
+        "passed": 35,
+        "failed": 0,
+        "skipped": 0
+      },
+      "native_bundle_install_tooling": {
+        "exit_code": 0,
+        "stdout_sha256": "da8be98898f636aa1a350bae303b236018d690a2a13475c66d523bca67dd5403",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit_receipt_sha256": "3a7aff772e6fe3008c71d0746168ad249e12a908f6cada6db142cf4e00065130",
+        "passed": 68,
+        "failed": 0,
+        "skipped": 0
+      },
+      "packaged_content_and_life_lint": {
+        "exit_code": 0,
+        "stdout_sha256": "b0a378485d6189d7defdd202a33a96dabefc9cdf7add785f256d2215590829dc",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "exit_receipt_sha256": "65b3a1e99d42578e6189e4b902b64ff2bc80edce9ac4af514b32dba18f185869",
+        "passed": 2,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    "total_passed": 130,
+    "total_failed": 0,
+    "total_skipped": 0,
+    "installed_scoped_lint": {
+      "exit_code": 0,
+      "stdout_sha256": "446492c53463a8d3cd72bed66bee8b73f7cb9c104062f2b7fcdeef469289c927",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_receipt_sha256": "701095c7acacbc98312e9ab1ee938c00201d785187b3e7f17d6a6143844701e5",
+      "errors": 0,
+      "warnings": 4,
+      "advisories": [
+        {
+          "slug": "ai-term-few-shot-prompting",
+          "locale": "en",
+          "rule": "text_length",
+          "body_characters": 7120,
+          "guideline": "1500–6000",
+          "resolution": "Full reviewed translation retained; advisory only"
+        },
+        {
+          "slug": "ai-term-fine-tuning",
+          "locale": "en",
+          "rule": "text_length",
+          "body_characters": 7211,
+          "guideline": "1500–6000",
+          "resolution": "Full reviewed translation retained; advisory only"
+        },
+        {
+          "slug": "ai-term-multimodal-ai",
+          "locale": "en",
+          "rule": "text_length",
+          "body_characters": 7133,
+          "guideline": "1500–6000",
+          "resolution": "Full reviewed translation retained; advisory only"
+        },
+        {
+          "slug": "ai-term-zero-shot-prompting",
+          "locale": "en",
+          "rule": "text_length",
+          "body_characters": 6956,
+          "guideline": "1500–6000",
+          "resolution": "Full reviewed translation retained; advisory only"
+        }
+      ]
+    },
+    "translation_checks": {
+      "exit_code": 0,
+      "stdout_sha256": "9c463d8e29f53a43079b93ad31bc00ebc241668c994098b8497dd852134ca44c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exit_receipt_sha256": "85567ebd9f00ad27d8fe491a0a7e9b0440d3fc763c75f71f5ac87f5e371357f5",
+      "hits": 0
+    }
+  },
+  "independent_integration_review": {
+    "content_status": "PASS_CONTENT_FILES_ONLY",
+    "content_review_sha256": "1e7a4d5f7cbeadec4dc40f67581f7832d474a7189a347bad0dd7cf1bfe4f117b",
+    "documents_review_status": "pending"
+  },
+  "release_gates": {
+    "content_pr": "pending",
+    "exact_head_ci": "pending_new_pr_head",
+    "merged": false,
+    "deployed": false,
+    "target_locales_published": false,
+    "public_acceptance": "pending_after_separately_authorized_publication",
+    "new_action_time_release_authorization_required": true,
+    "earlier_source_release_approval_does_not_cover_these_translations": true
+  },
+  "privacy": "Raw snapshots, jobs, review previews, machine paths, actor identifiers and installation state remain outside Git."
+}
