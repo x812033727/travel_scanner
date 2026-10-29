@@ -1,7 +1,7 @@
 ---
 id: 2026-10-29-news-automation-reads-taiwan-tech-media
 title: News automation reads Taiwan tech media as lead-only sources
-status: in-progress
+status: review
 priority: P2
 area: api
 owner: claude-opus-5-5
