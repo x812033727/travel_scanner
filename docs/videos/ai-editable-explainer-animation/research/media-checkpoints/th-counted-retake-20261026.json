@@ -1,0 +1,107 @@
+{
+  "checked_at_utc": "2026-10-26T10:59:50.889686+00:00",
+  "source": "Actual permanent intent and exact native speech response/installed files, not voice acceptance",
+  "intent_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/service-retakes/80314efb1c9db5dbc40cfac786078904bf9e0711e5f0c7e8ff4ac9c9ab72ed41/intent.json",
+  "intent_sha256": "cd9d08a77b7fd37da246bf8918515112aa71eea2b39716035a3a3e12b32668a2",
+  "plan_file": "/workspace/work/ai-animation-01/th-service-retake-plan-20261026T1056.json",
+  "plan_sha256": "f69830e69fa536d145707228bbcd5997ca4cafea60e8f36889dcfefb4ea71b1c",
+  "outcome": {
+    "status": "applied",
+    "intent_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/service-retakes/80314efb1c9db5dbc40cfac786078904bf9e0711e5f0c7e8ff4ac9c9ab72ed41/intent.json",
+    "command": [
+      "dub",
+      "--slug",
+      "ai-editable-explainer-animation",
+      "--locale",
+      "th",
+      "--redo",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/service-retakes/80314efb1c9db5dbc40cfac786078904bf9e0711e5f0c7e8ff4ac9c9ab72ed41/retake-request.json",
+      "--line-by-line"
+    ],
+    "native_exit_code": 0,
+    "target_before_sha256": "2a80361b9d5bc05219a63221de8f9de5a9818720496d85d57a8d2f076cb6e650",
+    "target_after_sha256": "f662f9a863bdd2cdc59da1934221fe700c6f0ea7cfb0fb8b2981622d3f9ae00b",
+    "same_wav_bytes": false,
+    "confirmed_response": {
+      "request_sha256": "4a569d698ea81f25526c8a2592b9a00f4f601c988e874a11cf15b210250a245d",
+      "response_status": 200,
+      "response_sha256": "dbbe976e93db3790f51af0b7a1b92d040fea8c6dc41df7bdd98cbb896411423c",
+      "response_bytes": 240356,
+      "billable_characters_reported": "65",
+      "received_at": "2026-10-26T10:57:47.152Z"
+    },
+    "installed_raw_matches_response": true,
+    "retakes_before": 1,
+    "retakes_after": 2,
+    "voice_ready": false,
+    "check_stopped": true,
+    "asr_performed": false,
+    "next": "Use plain native makeDub/dub and real ASR/Jev. Never repeat this redo; all original caps/backoff remain."
+  },
+  "protected_evidence": [
+    {
+      "file": "audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json",
+      "sha256": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+      "unchanged": true
+    },
+    {
+      "file": "dubs/ko/skipped.json",
+      "sha256": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "unchanged": true
+    },
+    {
+      "file": "dubs/pt/skipped.json",
+      "sha256": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+      "unchanged": true
+    },
+    {
+      "file": "dubs/id/skipped.json",
+      "sha256": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+      "unchanged": true
+    },
+    {
+      "file": "final.mp4",
+      "sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+      "unchanged": true
+    },
+    {
+      "file": "approvals.json",
+      "sha256": "8fefeaec595d5ba964eb6c0712ce9b9c27d8db4f6d4524492027d3b8e3e21106",
+      "unchanged": true
+    },
+    {
+      "file": "timeline.json",
+      "sha256": "d34af3061326998b7b0cc843cf096323a15b39e313f99ad1a52124a1f27d240a",
+      "unchanged": true
+    },
+    {
+      "file": "checks.json",
+      "sha256": "47d29b73329991495bc2f7d6b90f6c1b1c43314f45a992606f67915a116b9637",
+      "unchanged": true
+    },
+    {
+      "file": "languages.json",
+      "sha256": "d0a0ee8e8b5f9198e7fd4a633a3d804ab8e98f0ea8ece966e2d637e116e305c9",
+      "unchanged": true
+    }
+  ],
+  "other_100_raw_clip_hashes_unchanged": true,
+  "native_th_rounds": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "defer_count": 6,
+  "deferred_until": "2026-10-26T10:07:17.313Z",
+  "new_raw_probe": {
+    "format": {
+      "duration": "4.420000"
+    }
+  },
+  "new_unknown_speech_journal": false,
+  "actual_journal_names": [
+    "0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json"
+  ],
+  "next": "Plain scoped languages.mjs dub-reviewed th, actual ASR/Jev; never repeat the retake driver redo."
+}

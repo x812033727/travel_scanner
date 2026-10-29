@@ -1,0 +1,2207 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T17:22:09.132746+00:00",
+  "primary_source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "original_claims_warning": "Historical report c10 was stale; actual published-source frames-only acceptance now available in materials/lab/frames-only-verification.json and current claims.md.",
+  "review_process": "Actual isolated Codex AI agents, separate from each locale author, reviewed101lines8chaptersallmetadataandthumbnail. This is not a claim of human, Claude, native verifier or Studio approval.",
+  "locales": [
+    {
+      "locale": "en",
+      "reviewer": {
+        "identity": "OpenAI Codex AI agent /root/review_latin",
+        "role": "independent translation reviewer",
+        "translator_of_this_locale": false,
+        "human": false,
+        "claude": false
+      },
+      "initial_review_verdict": "ready",
+      "post_fix_acceptance": null,
+      "corrections": [],
+      "accepted_base_translation_sha256": "2997c4e431afc8c790bd25953f11ca01a97c1fb795478e8181796806b0355deb",
+      "speech_qa": "pending",
+      "stage": "independent pre-dub translation review; later speech-fit rewrites need delta review"
+    },
+    {
+      "locale": "ja",
+      "reviewer": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+      "initial_review_verdict": "ready",
+      "post_fix_acceptance": null,
+      "corrections": [],
+      "accepted_base_translation_sha256": "ff49c9a91960201182c6b40099557e60f986e33f572ca137d057726944747300",
+      "speech_qa": "pending",
+      "stage": "independent pre-dub translation review; later speech-fit rewrites need delta review"
+    },
+    {
+      "locale": "ko",
+      "reviewer": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+      "initial_review_verdict": "ready after the fixes",
+      "post_fix_acceptance": {
+        "locale": "ko",
+        "slug": "ai-editable-explainer-animation",
+        "reviewer_identity": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+        "reviewer_type": "AI assistant",
+        "human_review": false,
+        "claude_review": false,
+        "reviewed_at_utc": "2026-10-25T17:18:24.657586+00:00",
+        "verdict": "ready",
+        "review_scope": "Actual fresh read of the two corrected lines against current source and worksheet; prior full review covers unchanged content.",
+        "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+        "translation_sha256": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+        "worksheet_sha256": "74e7f0504545baa3b88ec0c5444f3749e22e3c9cdb15b4b82dbf5e0311c62667",
+        "checks": [
+          {
+            "id": "e8b327",
+            "source": "用 AI 做的教學動畫，也能改字和改數字。",
+            "current_text": "AI 교육 애니메이션도 글자·숫자 수정이 됩니다.",
+            "current_chars": 27,
+            "max_chars": 28,
+            "worksheet_matches": true,
+            "verdict": "pass",
+            "reason": "Expresses the ability to modify letters and numbers rather than saying the animation itself corrects them."
+          },
+          {
+            "id": "9e738a",
+            "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+            "current_text": "설명 힘든 애니화 1순위, 댓글로 주십시오.",
+            "current_chars": 24,
+            "max_chars": 24,
+            "worksheet_matches": true,
+            "verdict": "pass",
+            "reason": "Acceptable compact CTA Korean with a formal imperative. 설명 힘든 explicitly keeps difficulty explaining; 애니화 1순위 identifies the topic the viewer most wants animated; 댓글로 주십시오 preserves the request for a comment. 문제 is naturally implicit in this caption-length object phrase and its immediate practice context. No further rewrite recommended under the strict 24-character cap."
+          }
+        ],
+        "fixes_remaining": 0,
+        "files_edited": "Only this post-fix review artifact."
+      },
+      "corrections": [
+        {
+          "kind": "line",
+          "id_or_field": "e8b327",
+          "before": "AI 교육 애니메이션도 글과 수를 고칩니다.",
+          "after": "AI 교육 애니메이션도 글자·숫자 수정이 됩니다.",
+          "reason": "The source says viewers can edit text and numbers in the resulting animation. The present subject plus 고칩니다 instead says the animation itself corrects text and numbers. Express editing capability. Suggested text is 27/28 characters."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "9e738a",
+          "before": "가장 애니로 풀고픈 난제, 댓글로 주십시오.",
+          "after": "설명 힘든 애니화 1순위, 댓글로 주십시오.",
+          "reason": "난제 alone describes a hard problem and drops the source restriction that the problem is hard to explain. Keep explanation difficulty explicit, use 1순위 for the animation the viewer most wants, and retain the invitation to comment. Suggested text is 24/24 characters."
+        }
+      ],
+      "accepted_base_translation_sha256": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+      "speech_qa": "pending",
+      "stage": "independent pre-dub translation review; later speech-fit rewrites need delta review"
+    },
+    {
+      "locale": "es",
+      "reviewer": {
+        "identity": "OpenAI Codex AI agent /root/review_latin",
+        "role": "independent translation reviewer",
+        "translator_of_this_locale": false,
+        "human": false,
+        "claude": false
+      },
+      "initial_review_verdict": "ready_after_fixes",
+      "post_fix_acceptance": {
+        "locale": "es",
+        "review_type": "actual_post_merge_reread",
+        "reviewed_at_utc": "2026-10-25T17:18:26.925676+00:00",
+        "reviewer": {
+          "identity": "OpenAI Codex AI agent /root/review_latin",
+          "independent_of_translator": true,
+          "human": false,
+          "claude": false
+        },
+        "verdict": "ready",
+        "translation_ready": true,
+        "new_fixes_needed": 0,
+        "scope": {
+          "changed_fields_actually_reread": 3,
+          "all_101_line_budgets_rechecked": true,
+          "prior_full_review": "/workspace/work/ai-animation-01/manual-i18n-reviews/es.reviewer.json"
+        },
+        "hashes": {
+          "video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+          "claims_md_sha256": "98d44b98a8b2e8de61bf3e76e31fcfac79d29de26454b00469d95aa18b2f0d91",
+          "translation_sha256": "a51751666a4fe1a237a53feef9901856d1003171cf9755e709a7cd5e72033dd3",
+          "worksheet_sha256": "a1217fbafe178e0d63e3ac138f29904bb6a1d1c7939fcb2c4ba8e0e9c4017c9e",
+          "accepted_corrections_sha256": "c49dbdd97aa114ae65f7d69300a07b1f49695ae1aa00ef3852ef2bed4b2632d3",
+          "lexicon_sha256": "9b06e91f344173f30cd415d17184b8346bfde07c81c7a5e55be8f20b9e0b0c05"
+        },
+        "changed_field_checks": [
+          {
+            "kind": "line",
+            "id_or_field": "c5a4b1",
+            "source": "如果你把題目換掉，亮起來的格子會一起改嗎？",
+            "actual_text": "Cambias la pregunta: ¿cambian las casillas iluminadas?",
+            "matches_worksheet": true,
+            "matches_accepted_correction": true,
+            "semantic_verdict": "pass",
+            "semantic_note": "Restores changing the question within the same dice topic; keeps the question of whether illuminated cells update.",
+            "chars": 54,
+            "max_chars": 55,
+            "budget_pass": true
+          },
+          {
+            "kind": "line",
+            "id_or_field": "a1f88a",
+            "source": "把資料裡的目標總和改成六，其他設定先保持原樣。",
+            "actual_text": "En los datos, fija la suma objetivo en seis; lo demás igual.",
+            "matches_worksheet": true,
+            "matches_accepted_correction": true,
+            "semantic_verdict": "pass",
+            "semantic_note": "Restores the data as the place to edit, target sum six, and retaining the other settings.",
+            "chars": 60,
+            "max_chars": 62,
+            "budget_pass": true
+          },
+          {
+            "kind": "line",
+            "id_or_field": "9e738a",
+            "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+            "actual_text": "¿Qué tema difícil quieres animar más? Comenta.",
+            "matches_worksheet": true,
+            "matches_accepted_correction": true,
+            "semantic_verdict": "pass",
+            "semantic_note": "Natural tú question order retains the difficult topic, strongest wish to animate it, and request to comment.",
+            "chars": 46,
+            "max_chars": 49,
+            "budget_pass": true
+          }
+        ],
+        "budget_checks": {
+          "all_lines_pass": true,
+          "line_count": 101,
+          "title_chars": 82,
+          "title_max_chars": 90,
+          "title_pass": true,
+          "per_line": [
+            {
+              "id": "e8b327",
+              "chars": 53,
+              "max_chars": 56,
+              "pass": true
+            },
+            {
+              "id": "00aeec",
+              "chars": 63,
+              "max_chars": 66,
+              "pass": true
+            },
+            {
+              "id": "c5a4b1",
+              "chars": 54,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "74eeac",
+              "chars": 47,
+              "max_chars": 48,
+              "pass": true
+            },
+            {
+              "id": "79a96a",
+              "chars": 72,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "aa0639",
+              "chars": 75,
+              "max_chars": 80,
+              "pass": true
+            },
+            {
+              "id": "c2d378",
+              "chars": 51,
+              "max_chars": 58,
+              "pass": true
+            },
+            {
+              "id": "47c7d2",
+              "chars": 52,
+              "max_chars": 52,
+              "pass": true
+            },
+            {
+              "id": "5a37fc",
+              "chars": 80,
+              "max_chars": 93,
+              "pass": true
+            },
+            {
+              "id": "56c197",
+              "chars": 77,
+              "max_chars": 79,
+              "pass": true
+            },
+            {
+              "id": "56ccfa",
+              "chars": 64,
+              "max_chars": 67,
+              "pass": true
+            },
+            {
+              "id": "1712ce",
+              "chars": 61,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "de0fb5",
+              "chars": 57,
+              "max_chars": 62,
+              "pass": true
+            },
+            {
+              "id": "2c063b",
+              "chars": 69,
+              "max_chars": 78,
+              "pass": true
+            },
+            {
+              "id": "5e5629",
+              "chars": 66,
+              "max_chars": 66,
+              "pass": true
+            },
+            {
+              "id": "4a14bd",
+              "chars": 63,
+              "max_chars": 73,
+              "pass": true
+            },
+            {
+              "id": "ea140a",
+              "chars": 64,
+              "max_chars": 66,
+              "pass": true
+            },
+            {
+              "id": "21c1bc",
+              "chars": 79,
+              "max_chars": 79,
+              "pass": true
+            },
+            {
+              "id": "8f5f2e",
+              "chars": 71,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "6b1614",
+              "chars": 59,
+              "max_chars": 64,
+              "pass": true
+            },
+            {
+              "id": "1832d2",
+              "chars": 49,
+              "max_chars": 52,
+              "pass": true
+            },
+            {
+              "id": "c141fc",
+              "chars": 52,
+              "max_chars": 52,
+              "pass": true
+            },
+            {
+              "id": "c5a99d",
+              "chars": 58,
+              "max_chars": 62,
+              "pass": true
+            },
+            {
+              "id": "719e7c",
+              "chars": 53,
+              "max_chars": 64,
+              "pass": true
+            },
+            {
+              "id": "f2c1f3",
+              "chars": 52,
+              "max_chars": 56,
+              "pass": true
+            },
+            {
+              "id": "475bb2",
+              "chars": 51,
+              "max_chars": 52,
+              "pass": true
+            },
+            {
+              "id": "8a3f5b",
+              "chars": 71,
+              "max_chars": 71,
+              "pass": true
+            },
+            {
+              "id": "520a3b",
+              "chars": 73,
+              "max_chars": 75,
+              "pass": true
+            },
+            {
+              "id": "9dd115",
+              "chars": 88,
+              "max_chars": 89,
+              "pass": true
+            },
+            {
+              "id": "0c086d",
+              "chars": 51,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "76fc63",
+              "chars": 66,
+              "max_chars": 77,
+              "pass": true
+            },
+            {
+              "id": "066452",
+              "chars": 65,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "7b0c6d",
+              "chars": 75,
+              "max_chars": 76,
+              "pass": true
+            },
+            {
+              "id": "1f3f10",
+              "chars": 54,
+              "max_chars": 58,
+              "pass": true
+            },
+            {
+              "id": "291f73",
+              "chars": 52,
+              "max_chars": 53,
+              "pass": true
+            },
+            {
+              "id": "60d6c7",
+              "chars": 84,
+              "max_chars": 86,
+              "pass": true
+            },
+            {
+              "id": "d27bc5",
+              "chars": 71,
+              "max_chars": 80,
+              "pass": true
+            },
+            {
+              "id": "976818",
+              "chars": 72,
+              "max_chars": 76,
+              "pass": true
+            },
+            {
+              "id": "b22122",
+              "chars": 71,
+              "max_chars": 79,
+              "pass": true
+            },
+            {
+              "id": "182fcd",
+              "chars": 70,
+              "max_chars": 78,
+              "pass": true
+            },
+            {
+              "id": "a2d3d8",
+              "chars": 73,
+              "max_chars": 75,
+              "pass": true
+            },
+            {
+              "id": "b13c3e",
+              "chars": 75,
+              "max_chars": 75,
+              "pass": true
+            },
+            {
+              "id": "5f446c",
+              "chars": 87,
+              "max_chars": 91,
+              "pass": true
+            },
+            {
+              "id": "f37b7f",
+              "chars": 68,
+              "max_chars": 74,
+              "pass": true
+            },
+            {
+              "id": "801093",
+              "chars": 85,
+              "max_chars": 91,
+              "pass": true
+            },
+            {
+              "id": "9aa7fd",
+              "chars": 72,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "2a7dbb",
+              "chars": 68,
+              "max_chars": 71,
+              "pass": true
+            },
+            {
+              "id": "d6ecd3",
+              "chars": 72,
+              "max_chars": 79,
+              "pass": true
+            },
+            {
+              "id": "5d4f54",
+              "chars": 69,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "cbba85",
+              "chars": 69,
+              "max_chars": 69,
+              "pass": true
+            },
+            {
+              "id": "1de727",
+              "chars": 61,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "0dd30b",
+              "chars": 71,
+              "max_chars": 73,
+              "pass": true
+            },
+            {
+              "id": "52cf29",
+              "chars": 110,
+              "max_chars": 112,
+              "pass": true
+            },
+            {
+              "id": "005752",
+              "chars": 94,
+              "max_chars": 103,
+              "pass": true
+            },
+            {
+              "id": "7bf8fb",
+              "chars": 90,
+              "max_chars": 93,
+              "pass": true
+            },
+            {
+              "id": "a1f88a",
+              "chars": 60,
+              "max_chars": 62,
+              "pass": true
+            },
+            {
+              "id": "07771e",
+              "chars": 66,
+              "max_chars": 67,
+              "pass": true
+            },
+            {
+              "id": "8eb4eb",
+              "chars": 58,
+              "max_chars": 58,
+              "pass": true
+            },
+            {
+              "id": "05bc8a",
+              "chars": 69,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "f6f6be",
+              "chars": 75,
+              "max_chars": 81,
+              "pass": true
+            },
+            {
+              "id": "7a42ba",
+              "chars": 85,
+              "max_chars": 88,
+              "pass": true
+            },
+            {
+              "id": "8c2bc9",
+              "chars": 70,
+              "max_chars": 74,
+              "pass": true
+            },
+            {
+              "id": "de08dd",
+              "chars": 66,
+              "max_chars": 69,
+              "pass": true
+            },
+            {
+              "id": "c7b43e",
+              "chars": 71,
+              "max_chars": 73,
+              "pass": true
+            },
+            {
+              "id": "7e3f75",
+              "chars": 83,
+              "max_chars": 83,
+              "pass": true
+            },
+            {
+              "id": "594e82",
+              "chars": 66,
+              "max_chars": 75,
+              "pass": true
+            },
+            {
+              "id": "c30642",
+              "chars": 64,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "1b4829",
+              "chars": 54,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "a49833",
+              "chars": 68,
+              "max_chars": 68,
+              "pass": true
+            },
+            {
+              "id": "1faa10",
+              "chars": 61,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "b4de26",
+              "chars": 79,
+              "max_chars": 79,
+              "pass": true
+            },
+            {
+              "id": "4df2bf",
+              "chars": 53,
+              "max_chars": 58,
+              "pass": true
+            },
+            {
+              "id": "c41135",
+              "chars": 63,
+              "max_chars": 64,
+              "pass": true
+            },
+            {
+              "id": "802a26",
+              "chars": 81,
+              "max_chars": 97,
+              "pass": true
+            },
+            {
+              "id": "bf54ca",
+              "chars": 80,
+              "max_chars": 83,
+              "pass": true
+            },
+            {
+              "id": "ba0179",
+              "chars": 72,
+              "max_chars": 76,
+              "pass": true
+            },
+            {
+              "id": "cab285",
+              "chars": 71,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "a6c28e",
+              "chars": 66,
+              "max_chars": 68,
+              "pass": true
+            },
+            {
+              "id": "0b06d1",
+              "chars": 87,
+              "max_chars": 93,
+              "pass": true
+            },
+            {
+              "id": "b919e0",
+              "chars": 55,
+              "max_chars": 64,
+              "pass": true
+            },
+            {
+              "id": "ee8b7c",
+              "chars": 63,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "b69ae1",
+              "chars": 55,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "481fba",
+              "chars": 69,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "18691a",
+              "chars": 72,
+              "max_chars": 79,
+              "pass": true
+            },
+            {
+              "id": "28a3eb",
+              "chars": 71,
+              "max_chars": 71,
+              "pass": true
+            },
+            {
+              "id": "203f1e",
+              "chars": 61,
+              "max_chars": 66,
+              "pass": true
+            },
+            {
+              "id": "7311eb",
+              "chars": 89,
+              "max_chars": 94,
+              "pass": true
+            },
+            {
+              "id": "75368c",
+              "chars": 79,
+              "max_chars": 79,
+              "pass": true
+            },
+            {
+              "id": "9d8939",
+              "chars": 76,
+              "max_chars": 80,
+              "pass": true
+            },
+            {
+              "id": "c38a5e",
+              "chars": 84,
+              "max_chars": 90,
+              "pass": true
+            },
+            {
+              "id": "a56276",
+              "chars": 79,
+              "max_chars": 81,
+              "pass": true
+            },
+            {
+              "id": "84576e",
+              "chars": 89,
+              "max_chars": 100,
+              "pass": true
+            },
+            {
+              "id": "ad1b2c",
+              "chars": 98,
+              "max_chars": 98,
+              "pass": true
+            },
+            {
+              "id": "d8b2ca",
+              "chars": 52,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "c90844",
+              "chars": 53,
+              "max_chars": 53,
+              "pass": true
+            },
+            {
+              "id": "f9399e",
+              "chars": 68,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "2506eb",
+              "chars": 65,
+              "max_chars": 74,
+              "pass": true
+            },
+            {
+              "id": "f064e3",
+              "chars": 91,
+              "max_chars": 91,
+              "pass": true
+            },
+            {
+              "id": "f576ae",
+              "chars": 55,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "9e738a",
+              "chars": 46,
+              "max_chars": 49,
+              "pass": true
+            },
+            {
+              "id": "ed8308",
+              "chars": 64,
+              "max_chars": 69,
+              "pass": true
+            }
+          ]
+        },
+        "metadata_checks": {
+          "chapters_count": 8,
+          "no_channel_name_in_title_or_tags": true,
+          "headline_emphasis_preserved": true
+        },
+        "historical_upstream_warning": {
+          "id": "005752",
+          "claim": "c10",
+          "translation_defect": false,
+          "status_at_review": "claims.md still contains the stale NOT FOUND entry; root reports a separate repair agent is reproducing the existing option and correcting the ledger. This post-fix translation review does not claim that reproduction is complete.",
+          "release_note": "Clear this upstream warning after repair proof and corrected claims.md are available; no primary narration change is required if the existing feature is reproduced."
+        }
+      },
+      "corrections": [
+        {
+          "kind": "line",
+          "id_or_field": "c5a4b1",
+          "before": "Si cambias de tema, ¿cambian las casillas iluminadas?",
+          "after": "Cambias la pregunta: ¿cambian las casillas iluminadas?",
+          "reason": "“Cambiar de tema” means changing the topic; this demonstration changes the question/target within the same dice topic. Preserve that narrower instruction and the following question."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "a1f88a",
+          "before": "Cambia la suma objetivo a seis; deja lo demás igual por ahora.",
+          "after": "En los datos, fija la suma objetivo en seis; lo demás igual.",
+          "reason": "Restore the source instruction to edit the target in the data, rather than merely changing the target without saying where."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "9e738a",
+          "before": "¿Qué tema difícil más quieres animar? Comenta.",
+          "after": "¿Qué tema difícil quieres animar más? Comenta.",
+          "reason": "The current question has unnatural Spanish adverb placement. Put “más” with the desired action while retaining the request to comment."
+        }
+      ],
+      "accepted_base_translation_sha256": "a51751666a4fe1a237a53feef9901856d1003171cf9755e709a7cd5e72033dd3",
+      "speech_qa": "pending",
+      "stage": "independent pre-dub translation review; later speech-fit rewrites need delta review"
+    },
+    {
+      "locale": "pt",
+      "reviewer": {
+        "identity": "OpenAI Codex AI agent /root/review_latin",
+        "role": "independent translation reviewer",
+        "translator_of_this_locale": false,
+        "human": false,
+        "claude": false
+      },
+      "initial_review_verdict": "ready_after_fixes",
+      "post_fix_acceptance": {
+        "locale": "pt",
+        "review_type": "actual_post_merge_reread",
+        "reviewed_at_utc": "2026-10-25T17:18:26.926970+00:00",
+        "reviewer": {
+          "identity": "OpenAI Codex AI agent /root/review_latin",
+          "independent_of_translator": true,
+          "human": false,
+          "claude": false
+        },
+        "verdict": "ready",
+        "translation_ready": true,
+        "new_fixes_needed": 0,
+        "scope": {
+          "changed_fields_actually_reread": 4,
+          "all_101_line_budgets_rechecked": true,
+          "prior_full_review": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.reviewer.json"
+        },
+        "hashes": {
+          "video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+          "claims_md_sha256": "98d44b98a8b2e8de61bf3e76e31fcfac79d29de26454b00469d95aa18b2f0d91",
+          "translation_sha256": "eb6129c3f5e71202b3f722b5b2ad8ecc2138c8962dc7726702418f280719ed0e",
+          "worksheet_sha256": "e05b7ca3c9d5fd6119f2bfcf2eebed6b794f9309be662a7beea3bb31bebd93a4",
+          "accepted_corrections_sha256": "1ea47141f71b9b91decb29331a2c7326902fb94165d8581319af7efc43fa6067",
+          "lexicon_sha256": "9b06e91f344173f30cd415d17184b8346bfde07c81c7a5e55be8f20b9e0b0c05"
+        },
+        "changed_field_checks": [
+          {
+            "kind": "line",
+            "id_or_field": "b13c3e",
+            "source": "範例的語言欄位目前只接受繁中，不能改代碼就自動完成翻譯。",
+            "actual_text": "Idioma: só chinês tradicional por ora; mudar o código não traduz.",
+            "matches_worksheet": true,
+            "matches_accepted_correction": true,
+            "semantic_verdict": "pass",
+            "semantic_note": "Preserves the sample language field current-only Traditional Chinese support and explicitly says changing the code does not translate it.",
+            "chars": 65,
+            "max_chars": 67,
+            "budget_pass": true
+          },
+          {
+            "kind": "line",
+            "id_or_field": "f6f6be",
+            "source": "還記得開頭那個問題嗎？亮格真的跟著改了，符合條件的變成五個格子。",
+            "actual_text": "Lembra da pergunta inicial? O realce mudou: cinco células válidas.",
+            "matches_worksheet": true,
+            "matches_accepted_correction": true,
+            "semantic_verdict": "pass",
+            "semantic_note": "Explicitly changes the highlighting, rather than physical cells, and preserves five matching cells.",
+            "chars": 66,
+            "max_chars": 72,
+            "budget_pass": true
+          },
+          {
+            "kind": "line",
+            "id_or_field": "8f5f2e",
+            "source": "一加六和六加一分開算，因為兩顆骰子的結果有順序。",
+            "actual_text": "Conte um mais seis e seis mais um à parte: a ordem importa.",
+            "matches_worksheet": true,
+            "matches_accepted_correction": true,
+            "semantic_verdict": "pass",
+            "semantic_note": "Preserves one plus six before six plus one, separate counting, and the reason that order matters.",
+            "chars": 59,
+            "max_chars": 64,
+            "budget_pass": true
+          },
+          {
+            "kind": "thumbnail",
+            "id_or_field": "tag",
+            "source": "AI 教學動畫",
+            "actual_text": "Animação didática AI",
+            "matches_worksheet": true,
+            "matches_accepted_correction": true,
+            "semantic_verdict": "pass",
+            "semantic_note": "Restores didactic/educational animation meaning and retains AI; remains a short 20-character tag.",
+            "chars": 20
+          }
+        ],
+        "budget_checks": {
+          "all_lines_pass": true,
+          "line_count": 101,
+          "title_chars": 77,
+          "title_max_chars": 90,
+          "title_pass": true,
+          "per_line": [
+            {
+              "id": "e8b327",
+              "chars": 50,
+              "max_chars": 50,
+              "pass": true
+            },
+            {
+              "id": "00aeec",
+              "chars": 55,
+              "max_chars": 59,
+              "pass": true
+            },
+            {
+              "id": "c5a4b1",
+              "chars": 48,
+              "max_chars": 49,
+              "pass": true
+            },
+            {
+              "id": "74eeac",
+              "chars": 37,
+              "max_chars": 42,
+              "pass": true
+            },
+            {
+              "id": "79a96a",
+              "chars": 57,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "aa0639",
+              "chars": 67,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "c2d378",
+              "chars": 49,
+              "max_chars": 52,
+              "pass": true
+            },
+            {
+              "id": "47c7d2",
+              "chars": 42,
+              "max_chars": 47,
+              "pass": true
+            },
+            {
+              "id": "5a37fc",
+              "chars": 62,
+              "max_chars": 82,
+              "pass": true
+            },
+            {
+              "id": "56c197",
+              "chars": 63,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "56ccfa",
+              "chars": 57,
+              "max_chars": 60,
+              "pass": true
+            },
+            {
+              "id": "1712ce",
+              "chars": 58,
+              "max_chars": 58,
+              "pass": true
+            },
+            {
+              "id": "de0fb5",
+              "chars": 55,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "2c063b",
+              "chars": 60,
+              "max_chars": 69,
+              "pass": true
+            },
+            {
+              "id": "5e5629",
+              "chars": 59,
+              "max_chars": 59,
+              "pass": true
+            },
+            {
+              "id": "4a14bd",
+              "chars": 61,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "ea140a",
+              "chars": 57,
+              "max_chars": 59,
+              "pass": true
+            },
+            {
+              "id": "21c1bc",
+              "chars": 65,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "8f5f2e",
+              "chars": 59,
+              "max_chars": 64,
+              "pass": true
+            },
+            {
+              "id": "6b1614",
+              "chars": 54,
+              "max_chars": 57,
+              "pass": true
+            },
+            {
+              "id": "1832d2",
+              "chars": 45,
+              "max_chars": 46,
+              "pass": true
+            },
+            {
+              "id": "c141fc",
+              "chars": 41,
+              "max_chars": 47,
+              "pass": true
+            },
+            {
+              "id": "c5a99d",
+              "chars": 51,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "719e7c",
+              "chars": 54,
+              "max_chars": 57,
+              "pass": true
+            },
+            {
+              "id": "f2c1f3",
+              "chars": 49,
+              "max_chars": 50,
+              "pass": true
+            },
+            {
+              "id": "475bb2",
+              "chars": 46,
+              "max_chars": 46,
+              "pass": true
+            },
+            {
+              "id": "8a3f5b",
+              "chars": 61,
+              "max_chars": 63,
+              "pass": true
+            },
+            {
+              "id": "520a3b",
+              "chars": 62,
+              "max_chars": 67,
+              "pass": true
+            },
+            {
+              "id": "9dd115",
+              "chars": 79,
+              "max_chars": 79,
+              "pass": true
+            },
+            {
+              "id": "0c086d",
+              "chars": 48,
+              "max_chars": 49,
+              "pass": true
+            },
+            {
+              "id": "76fc63",
+              "chars": 63,
+              "max_chars": 68,
+              "pass": true
+            },
+            {
+              "id": "066452",
+              "chars": 53,
+              "max_chars": 58,
+              "pass": true
+            },
+            {
+              "id": "7b0c6d",
+              "chars": 62,
+              "max_chars": 67,
+              "pass": true
+            },
+            {
+              "id": "1f3f10",
+              "chars": 52,
+              "max_chars": 52,
+              "pass": true
+            },
+            {
+              "id": "291f73",
+              "chars": 46,
+              "max_chars": 47,
+              "pass": true
+            },
+            {
+              "id": "60d6c7",
+              "chars": 72,
+              "max_chars": 77,
+              "pass": true
+            },
+            {
+              "id": "d27bc5",
+              "chars": 71,
+              "max_chars": 71,
+              "pass": true
+            },
+            {
+              "id": "976818",
+              "chars": 66,
+              "max_chars": 68,
+              "pass": true
+            },
+            {
+              "id": "b22122",
+              "chars": 63,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "182fcd",
+              "chars": 63,
+              "max_chars": 69,
+              "pass": true
+            },
+            {
+              "id": "a2d3d8",
+              "chars": 67,
+              "max_chars": 67,
+              "pass": true
+            },
+            {
+              "id": "b13c3e",
+              "chars": 65,
+              "max_chars": 67,
+              "pass": true
+            },
+            {
+              "id": "5f446c",
+              "chars": 77,
+              "max_chars": 81,
+              "pass": true
+            },
+            {
+              "id": "f37b7f",
+              "chars": 58,
+              "max_chars": 66,
+              "pass": true
+            },
+            {
+              "id": "801093",
+              "chars": 81,
+              "max_chars": 81,
+              "pass": true
+            },
+            {
+              "id": "9aa7fd",
+              "chars": 63,
+              "max_chars": 64,
+              "pass": true
+            },
+            {
+              "id": "2a7dbb",
+              "chars": 61,
+              "max_chars": 63,
+              "pass": true
+            },
+            {
+              "id": "d6ecd3",
+              "chars": 66,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "5d4f54",
+              "chars": 62,
+              "max_chars": 62,
+              "pass": true
+            },
+            {
+              "id": "cbba85",
+              "chars": 56,
+              "max_chars": 61,
+              "pass": true
+            },
+            {
+              "id": "1de727",
+              "chars": 56,
+              "max_chars": 58,
+              "pass": true
+            },
+            {
+              "id": "0dd30b",
+              "chars": 60,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "52cf29",
+              "chars": 94,
+              "max_chars": 100,
+              "pass": true
+            },
+            {
+              "id": "005752",
+              "chars": 83,
+              "max_chars": 91,
+              "pass": true
+            },
+            {
+              "id": "7bf8fb",
+              "chars": 81,
+              "max_chars": 83,
+              "pass": true
+            },
+            {
+              "id": "a1f88a",
+              "chars": 55,
+              "max_chars": 55,
+              "pass": true
+            },
+            {
+              "id": "07771e",
+              "chars": 58,
+              "max_chars": 60,
+              "pass": true
+            },
+            {
+              "id": "8eb4eb",
+              "chars": 43,
+              "max_chars": 52,
+              "pass": true
+            },
+            {
+              "id": "05bc8a",
+              "chars": 61,
+              "max_chars": 62,
+              "pass": true
+            },
+            {
+              "id": "f6f6be",
+              "chars": 66,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "7a42ba",
+              "chars": 68,
+              "max_chars": 78,
+              "pass": true
+            },
+            {
+              "id": "8c2bc9",
+              "chars": 60,
+              "max_chars": 66,
+              "pass": true
+            },
+            {
+              "id": "de08dd",
+              "chars": 58,
+              "max_chars": 61,
+              "pass": true
+            },
+            {
+              "id": "c7b43e",
+              "chars": 60,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "7e3f75",
+              "chars": 74,
+              "max_chars": 74,
+              "pass": true
+            },
+            {
+              "id": "594e82",
+              "chars": 60,
+              "max_chars": 67,
+              "pass": true
+            },
+            {
+              "id": "c30642",
+              "chars": 61,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "1b4829",
+              "chars": 45,
+              "max_chars": 49,
+              "pass": true
+            },
+            {
+              "id": "a49833",
+              "chars": 57,
+              "max_chars": 61,
+              "pass": true
+            },
+            {
+              "id": "1faa10",
+              "chars": 54,
+              "max_chars": 57,
+              "pass": true
+            },
+            {
+              "id": "b4de26",
+              "chars": 69,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "4df2bf",
+              "chars": 52,
+              "max_chars": 52,
+              "pass": true
+            },
+            {
+              "id": "c41135",
+              "chars": 55,
+              "max_chars": 57,
+              "pass": true
+            },
+            {
+              "id": "802a26",
+              "chars": 70,
+              "max_chars": 86,
+              "pass": true
+            },
+            {
+              "id": "bf54ca",
+              "chars": 63,
+              "max_chars": 74,
+              "pass": true
+            },
+            {
+              "id": "ba0179",
+              "chars": 62,
+              "max_chars": 67,
+              "pass": true
+            },
+            {
+              "id": "cab285",
+              "chars": 62,
+              "max_chars": 64,
+              "pass": true
+            },
+            {
+              "id": "a6c28e",
+              "chars": 60,
+              "max_chars": 61,
+              "pass": true
+            },
+            {
+              "id": "0b06d1",
+              "chars": 75,
+              "max_chars": 83,
+              "pass": true
+            },
+            {
+              "id": "b919e0",
+              "chars": 56,
+              "max_chars": 57,
+              "pass": true
+            },
+            {
+              "id": "ee8b7c",
+              "chars": 56,
+              "max_chars": 58,
+              "pass": true
+            },
+            {
+              "id": "b69ae1",
+              "chars": 46,
+              "max_chars": 49,
+              "pass": true
+            },
+            {
+              "id": "481fba",
+              "chars": 59,
+              "max_chars": 65,
+              "pass": true
+            },
+            {
+              "id": "18691a",
+              "chars": 66,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "28a3eb",
+              "chars": 62,
+              "max_chars": 63,
+              "pass": true
+            },
+            {
+              "id": "203f1e",
+              "chars": 58,
+              "max_chars": 59,
+              "pass": true
+            },
+            {
+              "id": "7311eb",
+              "chars": 82,
+              "max_chars": 84,
+              "pass": true
+            },
+            {
+              "id": "75368c",
+              "chars": 69,
+              "max_chars": 70,
+              "pass": true
+            },
+            {
+              "id": "9d8939",
+              "chars": 68,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "c38a5e",
+              "chars": 78,
+              "max_chars": 80,
+              "pass": true
+            },
+            {
+              "id": "a56276",
+              "chars": 68,
+              "max_chars": 72,
+              "pass": true
+            },
+            {
+              "id": "84576e",
+              "chars": 88,
+              "max_chars": 89,
+              "pass": true
+            },
+            {
+              "id": "ad1b2c",
+              "chars": 83,
+              "max_chars": 87,
+              "pass": true
+            },
+            {
+              "id": "d8b2ca",
+              "chars": 49,
+              "max_chars": 49,
+              "pass": true
+            },
+            {
+              "id": "c90844",
+              "chars": 46,
+              "max_chars": 47,
+              "pass": true
+            },
+            {
+              "id": "f9399e",
+              "chars": 57,
+              "max_chars": 64,
+              "pass": true
+            },
+            {
+              "id": "2506eb",
+              "chars": 66,
+              "max_chars": 66,
+              "pass": true
+            },
+            {
+              "id": "f064e3",
+              "chars": 76,
+              "max_chars": 81,
+              "pass": true
+            },
+            {
+              "id": "f576ae",
+              "chars": 48,
+              "max_chars": 49,
+              "pass": true
+            },
+            {
+              "id": "9e738a",
+              "chars": 43,
+              "max_chars": 43,
+              "pass": true
+            },
+            {
+              "id": "ed8308",
+              "chars": 56,
+              "max_chars": 62,
+              "pass": true
+            }
+          ]
+        },
+        "metadata_checks": {
+          "chapters_count": 8,
+          "no_channel_name_in_title_or_tags": true,
+          "headline_emphasis_preserved": true
+        },
+        "historical_upstream_warning": {
+          "id": "005752",
+          "claim": "c10",
+          "translation_defect": false,
+          "status_at_review": "claims.md still contains the stale NOT FOUND entry; root reports a separate repair agent is reproducing the existing option and correcting the ledger. This post-fix translation review does not claim that reproduction is complete.",
+          "release_note": "Clear this upstream warning after repair proof and corrected claims.md are available; no primary narration change is required if the existing feature is reproduced."
+        }
+      },
+      "corrections": [
+        {
+          "kind": "line",
+          "id_or_field": "b13c3e",
+          "before": "Campo idioma: só chinês tradicional por ora; código não traduz.",
+          "after": "Idioma: só chinês tradicional por ora; mudar o código não traduz.",
+          "reason": "“Código não traduz” makes a general claim about code; the source specifically says changing the sample language code does not translate the contents. Keep the current-only support condition and the code-changing limitation explicit."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "f6f6be",
+          "before": "Lembra da pergunta inicial? As células mudaram: cinco cumprem o alvo.",
+          "after": "Lembra da pergunta inicial? O realce mudou: cinco células válidas.",
+          "reason": "The source identifies the highlighted cells as changing. “As células mudaram” drops that distinction and can suggest that the grid cells themselves changed. State that the highlighting changed; retain the five valid outcomes."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "8f5f2e",
+          "before": "Conte um mais seis e seis mais um à parte: dois dados têm ordem.",
+          "after": "Conte um mais seis e seis mais um à parte: a ordem importa.",
+          "reason": "“Dois dados têm ordem” is unnatural and unclear. The mathematical distinction is that order matters when counting the outcomes; keep both ordered sums in the same order."
+        },
+        {
+          "kind": "thumbnail",
+          "id_or_field": "tag",
+          "before": "Animação com AI",
+          "after": "Animação didática AI",
+          "reason": "Restore the educational meaning of AI 教學動畫. The current tag only says animation with AI; adding didática remains short (20 characters)."
+        }
+      ],
+      "accepted_base_translation_sha256": "eb6129c3f5e71202b3f722b5b2ad8ecc2138c8962dc7726702418f280719ed0e",
+      "speech_qa": "pending",
+      "stage": "independent pre-dub translation review; later speech-fit rewrites need delta review"
+    },
+    {
+      "locale": "id",
+      "reviewer": {
+        "provider": "OpenAI",
+        "identity": "Codex (GPT-6 family; exact runtime model identifier not exposed)",
+        "agent": "/root/review_id_vi_th",
+        "human": false,
+        "independent_of_translation": true
+      },
+      "initial_review_verdict": "ready after fixes",
+      "post_fix_acceptance": {
+        "locale": "id",
+        "reviewer": {
+          "provider": "OpenAI",
+          "identity": "Codex (GPT-6 family; exact runtime model identifier not exposed)",
+          "agent": "/root/review_id_vi_th",
+          "human": false,
+          "independent_of_translation": true
+        },
+        "review_type": "Actual post-merge reread of all changed captions and all metadata/thumbnail plus computational checks over all 101 lines",
+        "verdict": "ready",
+        "verified_at_utc": "2026-10-25T17:18:42.250767+00:00",
+        "changed_lines_reread": [
+          {
+            "id": "ea140a",
+            "text_reread": "Video hanya menjawab mengapa peluang total mata dadu berbeda.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 61,
+            "max_chars": 66,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "291f73",
+            "text_reread": "Baca judul, target dari data; jangan hardcode angka.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 52,
+            "max_chars": 53,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "05bc8a",
+            "text_reread": "Target baru: sel menyala berganti, angka samping wajib diperbarui.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 66,
+            "max_chars": 70,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "c30642",
+            "text_reread": "Usai ganti bahasa, dengar durasi narasi jadi, baru atur lama gambar.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 68,
+            "max_chars": 72,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "9e738a",
+            "text_reread": "Soal apa sukar dijelaskan? Mau animasi? Komentar.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 49,
+            "max_chars": 49,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "8f5f2e",
+            "text_reread": "1+6 dan 6+1 dihitung terpisah: urutan hasil dadu penting.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 57,
+            "max_chars": 72,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "719e7c",
+            "text_reread": "Prompt: gambar semua pasangan berurutan dari dua dadu adil.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 59,
+            "max_chars": 64,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "aa0639",
+            "text_reread": "Bukan mengundi gambar bagus lagi; kamu mau betul-betul membetulkan salah ketik.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 79,
+            "max_chars": 80,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "8a3f5b",
+            "text_reread": "Linimasa bukan menjejali semua gambar; fokus muncul satu per satu.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 66,
+            "max_chars": 71,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "75368c",
+            "text_reread": "Syarat tak didukung: jelaskan lalu berhenti, jangan diam-diam ganti soal.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 73,
+            "max_chars": 79,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "801093",
+            "text_reread": "Cek data tanpa mengubah sumber; parameter: jumlah sel yang diharapkan. Lanjut jika cocok.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 89,
+            "max_chars": 91,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          },
+          {
+            "id": "203f1e",
+            "text_reread": "Cek awal dan akhir agar tak terpotong atau ada sisa bagian kosong.",
+            "matches_correction_and_worksheet": true,
+            "codepoints": 66,
+            "max_chars": 66,
+            "meaning_register_and_clause_order": "accepted after actual fresh reread against zh-TW source"
+          }
+        ],
+        "metadata_reread": {
+          "title": "Buat Animasi Pembelajaran dengan AI: Teks dan Angka Bisa Diedit",
+          "description": "Freshly reread; date, material URL, zh-TW-only practice, silent MP4, designed SRT timing, separate main-video audio/CC/eight-language dubbing and no Claude Motion demonstration claim retained",
+          "tags": [
+            "tutorial AI",
+            "animasi AI",
+            "video pembelajaran",
+            "animasi program",
+            "animasi bisa diedit",
+            "produksi video"
+          ],
+          "chapters": {
+            "opening": "Animasi bisa diedit?",
+            "route-begin": "Mengapa minta berkas sumber?",
+            "brief-goal": "Menulis kebutuhan animasi",
+            "build-start": "Memakai berkas dari AI",
+            "revise-start": "Apa akibat mengubah angka?",
+            "audio-start": "Menyelaraskan narasi dan gambar",
+            "check-start": "Kapan video siap diserahkan?",
+            "practice-start": "Mulai topikmu sendiri"
+          },
+          "thumbnail": {
+            "tag": "Animasi ajar AI",
+            "headline": "**Bisa diedit**",
+            "sub": "Simpan berkas sumber"
+          }
+        },
+        "checks": {
+          "all_12_corrections_exactly_applied": true,
+          "all_101_caption_texts_match_worksheet": true,
+          "all_metadata_and_thumbnail_match_worksheet": true,
+          "all_101_hard_codepoint_budgets_pass": true,
+          "over_budget": [],
+          "title_codepoints": 63,
+          "title_limit": 90,
+          "chapter_count": 8,
+          "forbidden_script_fields": [],
+          "channel_name_in_title_or_tags": false,
+          "new_meaning_number_name_condition_issues_found": [],
+          "source_clause_order_and_ordered_dice_concept": "Corrected lines freshly reread and accepted",
+          "postfix_scope_limit": "This supplements the prior full 101-line review; source/claims ledger repair is tracked by controller separately"
+        },
+        "sha256": {
+          "source_video": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+          "translation": "469789a451ce7867a55b72ba130123e352420bddff22718a8d8c835d3765b7a9",
+          "worksheet": "e3426b069a973bf10f5f1edd4fecc6d8984b3d01cc566d8b6acc7ca4148daac1",
+          "correction_list": "611984864927d3bf963bf31ac3560bcec404c75b5fe88140aa103aa4dadd28f3",
+          "claims_at_reread": "98d44b98a8b2e8de61bf3e76e31fcfac79d29de26454b00469d95aa18b2f0d91"
+        },
+        "source_ledger_note": "Controller identified stale claims c10 and is independently reproducing the existing published --frames-only option; no locale or narration change required.",
+        "mutations": "Only this post-fix acceptance receipt written; translation, source and worksheet left unchanged."
+      },
+      "corrections": [
+        {
+          "kind": "line",
+          "id_or_field": "ea140a",
+          "before": "Video ini hanya menjawab mengapa peluang jumlah dadu berbeda.",
+          "after": "Video hanya menjawab mengapa peluang total mata dadu berbeda.",
+          "reason": "Meaning: Jumlah dadu can mean the number of dice; the source specifically discusses probabilities of sums of dice pips. Say total mata dadu and retain hanya."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "291f73",
+          "before": "Baca judul, target dari data, bukan angka per gambar.",
+          "after": "Baca judul, target dari data; jangan hardcode angka.",
+          "reason": "Meaning: Bukan angka per gambar attaches to what is read and loses the instruction against writing a separate set of fixed numbers in each image. Restore the prohibition on hardcoding."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "05bc8a",
+          "before": "Target baru mengubah letak sel menyala; hitungan samping wajib ikut.",
+          "after": "Target baru: sel menyala berganti, angka samping wajib diperbarui.",
+          "reason": "Meaning: Mengubah letak sel menyala can imply moving the grid cells physically. The result changes which cells are highlighted, while the adjacent count updates too."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "c30642",
+          "before": "Usai ganti bahasa, dengar durasi narasi asli, baru atur durasi gambar.",
+          "after": "Usai ganti bahasa, dengar durasi narasi jadi, baru atur lama gambar.",
+          "reason": "Meaning: Narasi asli can be read as the original/source-language narration. The source requires listening to the actual finished narration after changing language before setting picture duration."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "9e738a",
+          "before": "Mau animasikan soal sulit apa? Beri komentar.",
+          "after": "Soal apa sukar dijelaskan? Mau animasi? Komentar.",
+          "reason": "Meaning: Soal sulit says the problem is difficult, whereas 不好解釋 says it is difficult to explain. Restore the explanatory difficulty while retaining animation and the request for comments within 49 codepoints."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "8f5f2e",
+          "before": "1+6 dan 6+1 dihitung terpisah: hasil kedua dadu berurutan.",
+          "after": "1+6 dan 6+1 dihitung terpisah: urutan hasil dadu penting.",
+          "reason": "Glossary: Hasil kedua dadu berurutan can suggest successive events in time. The mathematical condition is that the order/identity of the two dice results matters; keep both numeric examples."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "719e7c",
+          "before": "Tulis prompt: gambar semua hasil berurutan dari dua dadu adil.",
+          "after": "Prompt: gambar semua pasangan berurutan dari dua dadu adil.",
+          "reason": "Glossary: Semua hasil berurutan suggests a sequence of results. Pasangan berurutan is the standard mathematical term for ordered pairs; keep all outcomes and the two fair dice."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "aa0639",
+          "before": "Kamu ingin membetulkan salah ketik, bukan mengundi gambar bagus lagi.",
+          "after": "Bukan mengundi gambar bagus lagi; kamu mau betul-betul membetulkan salah ketik.",
+          "reason": "Cue order: The source and SRT state not obtaining another nice image before actually correcting the typo. Current text reverses the two contrast clauses; restore their order and the emphasis on actually fixing it."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "8a3f5b",
+          "before": "Linimasa munculkan fokus satu per satu, bukan jejalkan semua gambar.",
+          "after": "Linimasa bukan menjejali semua gambar; fokus muncul satu per satu.",
+          "reason": "Cue order: The source first rejects cramming all images together, then introduces points appearing one by one. Current text puts the positive clause first. Preserve the contrast order."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "75368c",
+          "before": "Syarat tak didukung: hentikan dan jelaskan, jangan diam-diam ganti soal.",
+          "after": "Syarat tak didukung: jelaskan lalu berhenti, jangan diam-diam ganti soal.",
+          "reason": "Cue order: The source says explain the reason and then stop. Current text says stop and explain, reversing the instruction sequence."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "801093",
+          "before": "Hanya baca data untuk cek; sumber tetap. Parameter jumlah sel harapan, lanjut jika cocok.",
+          "after": "Cek data tanpa mengubah sumber; parameter: jumlah sel yang diharapkan. Lanjut jika cocok.",
+          "reason": "Readability: Jumlah sel harapan is unnatural here and can be mistaken for a probabilistic expected value. Explicitly name the expected cell count while retaining read-only behavior and the only-proceed-if-correct condition."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "203f1e",
+          "before": "Cek awal dan akhir agar tak terpotong atau menyisakan ekor kosong.",
+          "after": "Cek awal dan akhir agar tak terpotong atau ada sisa bagian kosong.",
+          "reason": "Readability: Ekor kosong is a literal calque of the Chinese tail metaphor and is unnatural for a video ending. Say leftover blank section while retaining both the cut-off and blank-ending checks."
+        }
+      ],
+      "accepted_base_translation_sha256": "469789a451ce7867a55b72ba130123e352420bddff22718a8d8c835d3765b7a9",
+      "speech_qa": "pending",
+      "stage": "independent pre-dub translation review; later speech-fit rewrites need delta review"
+    },
+    {
+      "locale": "vi",
+      "reviewer": {
+        "provider": "OpenAI",
+        "agent": "Codex",
+        "model_family": "GPT-6",
+        "exact_runtime_model": "not exposed to the agent",
+        "task_name": "/root/review_id_vi_th/review_vi",
+        "is_human": false,
+        "is_claude": false
+      },
+      "initial_review_verdict": "ready_after_fixes",
+      "post_fix_acceptance": {
+        "schema_version": 1,
+        "locale": "vi",
+        "role": "independent_post_fix_reviewer",
+        "reviewer_identity": {
+          "provider": "OpenAI",
+          "agent": "Codex",
+          "model_family": "GPT-6",
+          "exact_runtime_model": "not exposed to the agent",
+          "task_name": "/root/review_id_vi_th/review_vi",
+          "is_human": false,
+          "is_claude": false
+        },
+        "reviewed_at_utc": "2026-10-25T17:18:30.215881+00:00",
+        "verdict": "ready",
+        "remaining_locale_fixes": [],
+        "fresh_read_scope": "All four changed caption lines and changed thumbnail tag were reread from current merged translation and worksheet against original zh-TW source. This follows the complete 101-line/eight-chapter/metadata review recorded in vi.reviewer.json.",
+        "changed_field_evidence": [
+          {
+            "kind": "line",
+            "id_or_field": "9e738a",
+            "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+            "translation_exact": "Muốn làm hoạt hình về vấn đề khó giải thích nào nhất? Bình luận.",
+            "worksheet_exact": "Muốn làm hoạt hình về vấn đề khó giải thích nào nhất? Bình luận.",
+            "matches_correction": true,
+            "unicode_codepoints": 64,
+            "max_chars": 64,
+            "verdict": "pass",
+            "fresh_read_finding": "Hard to explain, the strongest preference, animation and invitation to comment are retained. The implied audience subject is natural Vietnamese and does not conflict with bạn elsewhere."
+          },
+          {
+            "kind": "line",
+            "id_or_field": "aa0639",
+            "source": "你要的不是再抽一個好畫面，而是把錯字真的改掉。",
+            "translation_exact": "Bạn không cần thử vận may lấy hình đẹp khác, mà cần sửa được lỗi chữ thật sự.",
+            "worksheet_exact": "Bạn không cần thử vận may lấy hình đẹp khác, mà cần sửa được lỗi chữ thật sự.",
+            "matches_correction": true,
+            "unicode_codepoints": 77,
+            "max_chars": 105,
+            "verdict": "pass",
+            "fresh_read_finding": "The negative clause about obtaining another nice image precedes the positive clause about actually correcting the typo, matching the source/SRT order. Standard bạn register."
+          },
+          {
+            "kind": "line",
+            "id_or_field": "75368c",
+            "source": "輸入不支援的條件時，應該說明原因停下來，不能悄悄畫成別題。",
+            "translation_exact": "Nhập điều kiện không hỗ trợ thì phải nêu lý do rồi dừng, không âm thầm vẽ thành bài khác.",
+            "worksheet_exact": "Nhập điều kiện không hỗ trợ thì phải nêu lý do rồi dừng, không âm thầm vẽ thành bài khác.",
+            "matches_correction": true,
+            "unicode_codepoints": 89,
+            "max_chars": 103,
+            "verdict": "pass",
+            "fresh_read_finding": "Unsupported condition, explaining the reason then stopping, and not silently drawing a different problem are retained in source order."
+          },
+          {
+            "kind": "line",
+            "id_or_field": "1de727",
+            "source": "把預覽縮到手機寬度，看標題能不能讀，重點能不能找到。",
+            "translation_exact": "Thu bản xem trước về độ rộng điện thoại; xem tiêu đề đọc được, trọng tâm rõ không.",
+            "worksheet_exact": "Thu bản xem trước về độ rộng điện thoại; xem tiêu đề đọc được, trọng tâm rõ không.",
+            "matches_correction": true,
+            "unicode_codepoints": 82,
+            "max_chars": 85,
+            "verdict": "pass",
+            "fresh_read_finding": "Preview noun and phone width are explicit; title readability and finding the main point remain in source order."
+          },
+          {
+            "kind": "thumbnail",
+            "id_or_field": "tag",
+            "source": "AI 教學動畫",
+            "translation_exact": "Hoạt hình AI để dạy học",
+            "worksheet_exact": "Hoạt hình AI để dạy học",
+            "matches_correction": true,
+            "unicode_codepoints": 23,
+            "max_chars": null,
+            "verdict": "pass",
+            "fresh_read_finding": "Teaching purpose is restored while AI and animation remain; the 23-codepoint tag is short and natural."
+          }
+        ],
+        "checks": {
+          "all_five_expected_changes_present": true,
+          "worksheet_and_translation_strings_match": true,
+          "changed_meaning_and_clause_completeness": "pass",
+          "changed_source_clause_order": "pass",
+          "changed_Hanoi_Vietnamese_naturalness_and_register": "pass",
+          "changed_script_and_diacritics": "pass",
+          "all_101_current_caption_hard_budgets": "pass",
+          "over_budget_lines": [],
+          "budget_count_method": "Python len(str), actual Unicode codepoints",
+          "title_codepoints": 55,
+          "title_limit": 90,
+          "title_budget": "pass",
+          "thumbnail_headline_exact": "**Sửa được**",
+          "thumbnail_headline_emphasis_preserved": true,
+          "thumbnail_tag_brevity": "pass"
+        },
+        "sha256": {
+          "source_video_json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+          "translation_json": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6",
+          "worksheet_json": "b74b917b7d98cb9eb55389a0472aeeb7f60d9dfb4896426c699da57c9806f2a2"
+        },
+        "source_notes": "Source narration is unchanged. Parent reports the separate --frames-only reproduction and claims ledger repair; the stale source-only c10 ledger note is not a Vietnamese translation defect.",
+        "translation_source_or_worksheet_modified": false,
+        "paid_calls_used": false
+      },
+      "corrections": [
+        {
+          "kind": "line",
+          "id_or_field": "9e738a",
+          "before": "Bạn muốn làm hoạt hình câu hỏi khó nào nhất? Hãy bình luận.",
+          "after": "Muốn làm hoạt hình về vấn đề khó giải thích nào nhất? Bình luận.",
+          "reason": "Meaning: 不好解釋 means hard to explain; câu hỏi khó only says difficult. Restore that distinction, the strongest preference, the animation and comment request within 64 codepoints."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "aa0639",
+          "before": "Bạn cần sửa được lỗi chữ thật sự, chứ không phải thử vận may lấy hình đẹp khác.",
+          "after": "Bạn không cần thử vận may lấy hình đẹp khác, mà cần sửa được lỗi chữ thật sự.",
+          "reason": "Cue order: source and SRT put not generating another nice image before actually fixing the typo; the translation reverses those clauses."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "75368c",
+          "before": "Nhập điều kiện không hỗ trợ thì phải dừng và nêu lý do, không âm thầm vẽ thành bài khác.",
+          "after": "Nhập điều kiện không hỗ trợ thì phải nêu lý do rồi dừng, không âm thầm vẽ thành bài khác.",
+          "reason": "Cue order: source says explain the reason then stop, while the translation says stop then explain. Preserve the source instruction sequence."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "1de727",
+          "before": "Thu nhỏ xem trước bằng màn hình điện thoại; xem tiêu đề đọc được, trọng tâm rõ không.",
+          "after": "Thu bản xem trước về độ rộng điện thoại; xem tiêu đề đọc được, trọng tâm rõ không.",
+          "reason": "Readability and precision: thu nhỏ xem trước bằng màn hình điện thoại is an awkward fragment and omits the specified width; restore the preview noun and phone-width check."
+        },
+        {
+          "kind": "thumbnail",
+          "id_or_field": "tag",
+          "before": "Hoạt hình AI",
+          "after": "Hoạt hình AI để dạy học",
+          "reason": "Thumbnail: source AI 教學動畫 includes the teaching purpose; Hoạt hình AI omits it. Restore teaching in a short tag."
+        }
+      ],
+      "accepted_base_translation_sha256": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6",
+      "speech_qa": "pending",
+      "stage": "independent pre-dub translation review; later speech-fit rewrites need delta review"
+    },
+    {
+      "locale": "th",
+      "reviewer": {
+        "agent": "/root/review_id_vi_th/review_th",
+        "identity": "OpenAI Codex agent based on GPT-6; exact deployment identifier is not exposed",
+        "human": false,
+        "translated_this_locale": false
+      },
+      "initial_review_verdict": "ready_after_fixes",
+      "post_fix_acceptance": {
+        "locale": "th",
+        "review_type": "fresh_post_fix_reread",
+        "reviewer": {
+          "agent": "/root/review_id_vi_th/review_th",
+          "identity": "OpenAI Codex agent based on GPT-6; exact deployment identifier is not exposed",
+          "human": false,
+          "translated_this_locale": false
+        },
+        "reviewed_at_utc": "2026-10-25T17:18:39.740820+00:00",
+        "verdict": "ready",
+        "scope": "Reread the seven changed lines and changed thumbnail tag in the final translation and worksheet against current video.json; validated all 101 final line budgets and remaining metadata constraints. This is independent review of merged corrections, not a source implementation audit.",
+        "changed_fields_reviewed": [
+          {
+            "kind": "line",
+            "id": "719e7c",
+            "source": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+            "actual_translation": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+            "actual_worksheet_text": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+            "matches_proposed_correction": true,
+            "codepoints": 56,
+            "max_chars": 59,
+            "meaning_and_register": "pass",
+            "reread_evidence": "The ordered-outcome noun phrase is now explicit; both fair dice remain stated and the prompt instruction is retained."
+          },
+          {
+            "kind": "line",
+            "id": "291f73",
+            "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+            "actual_translation": "อ่านหัวเรื่องกับเป้าจากไฟล์ อย่าใส่เลขแยกแต่ละภาพ",
+            "actual_worksheet_text": "อ่านหัวเรื่องกับเป้าจากไฟล์ อย่าใส่เลขแยกแต่ละภาพ",
+            "matches_proposed_correction": true,
+            "codepoints": 49,
+            "max_chars": 49,
+            "meaning_and_register": "pass",
+            "reread_evidence": "The instruction now names a file as the shared source of title and target and prohibits per-image numeric entries."
+          },
+          {
+            "kind": "line",
+            "id": "c5a99d",
+            "source": "要求標題和圖例用真正的文字，之後能直接修改。",
+            "actual_translation": "หัวเรื่องกับคำอธิบายสัญลักษณ์ใช้ข้อความจริง แก้ได้โดยตรง",
+            "actual_worksheet_text": "หัวเรื่องกับคำอธิบายสัญลักษณ์ใช้ข้อความจริง แก้ได้โดยตรง",
+            "matches_proposed_correction": true,
+            "codepoints": 56,
+            "max_chars": 58,
+            "meaning_and_register": "pass",
+            "reread_evidence": "The legend is explicitly คำอธิบายสัญลักษณ์; actual text and direct editing remain."
+          },
+          {
+            "kind": "line",
+            "id": "066452",
+            "source": "如果主要給手機看，就說明文字要大，圖例不要靠邊。",
+            "actual_translation": "ถ้าเน้นมือถือ ให้ตัวอักษรใหญ่ คำอธิบายสัญลักษณ์อย่าชิดขอบ",
+            "actual_worksheet_text": "ถ้าเน้นมือถือ ให้ตัวอักษรใหญ่ คำอธิบายสัญลักษณ์อย่าชิดขอบ",
+            "matches_proposed_correction": true,
+            "codepoints": 57,
+            "max_chars": 61,
+            "meaning_and_register": "pass",
+            "reread_evidence": "The same explicit legend term is used; the mobile condition, large text and away-from-edge constraint remain in source order."
+          },
+          {
+            "kind": "line",
+            "id": "9e738a",
+            "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+            "actual_translation": "อยากใช้แอนิเมชันอธิบายโจทย์ยากไหน คอมเมนต์บอก",
+            "actual_worksheet_text": "อยากใช้แอนิเมชันอธิบายโจทย์ยากไหน คอมเมนต์บอก",
+            "matches_proposed_correction": true,
+            "codepoints": 45,
+            "max_chars": 45,
+            "meaning_and_register": "pass",
+            "reread_evidence": "The concise question now states using animation to explain a difficult problem and asks for a comment; it reads naturally in the closing CTA."
+          },
+          {
+            "kind": "line",
+            "id": "aa0639",
+            "source": "你要的不是再抽一個好畫面，而是把錯字真的改掉。",
+            "actual_translation": "คุณไม่ได้อยากสุ่มภาพสวยอีก แต่ต้องการแก้คำผิดจริง",
+            "actual_worksheet_text": "คุณไม่ได้อยากสุ่มภาพสวยอีก แต่ต้องการแก้คำผิดจริง",
+            "matches_proposed_correction": true,
+            "codepoints": 49,
+            "max_chars": 75,
+            "meaning_and_register": "pass",
+            "reread_evidence": "The random nice-image clause now precedes the contrast and actual typo correction, matching source order."
+          },
+          {
+            "kind": "line",
+            "id": "21c1bc",
+            "source": "那麼先擺好兩顆互不影響的公平骰子，一顆在橫軸，一顆在直軸。",
+            "actual_translation": "วางลูกเต๋าเที่ยงตรงสองลูกที่เป็นอิสระต่อกัน ลูกหนึ่งแกนนอน อีกลูกแกนตั้ง",
+            "actual_worksheet_text": "วางลูกเต๋าเที่ยงตรงสองลูกที่เป็นอิสระต่อกัน ลูกหนึ่งแกนนอน อีกลูกแกนตั้ง",
+            "matches_proposed_correction": true,
+            "codepoints": 72,
+            "max_chars": 73,
+            "meaning_and_register": "pass",
+            "reread_evidence": "Two fair dice are explicitly independent of each other; one horizontal-axis die and one vertical-axis die remain in order."
+          },
+          {
+            "kind": "thumbnail",
+            "field": "tag",
+            "source": "AI 教學動畫",
+            "actual_translation": "AI แอนิเมชันสอน",
+            "actual_worksheet_text": "AI แอนิเมชันสอน",
+            "matches_proposed_correction": true,
+            "meaning_and_phone_length": "pass",
+            "reread_evidence": "The short tag now explicitly identifies AI teaching animation."
+          }
+        ],
+        "checks": {
+          "exact_corrections_merged": 8,
+          "changed_line_budget_passes": 7,
+          "all_caption_lines_budget_checked": 101,
+          "budget_method": "Python len(str), actual Unicode code points including combining marks",
+          "line_budget_violations": [],
+          "natural_standard_bangkok_thai": true,
+          "female_narrator_register_consistent": true,
+          "male_particle_found": false,
+          "foreign_east_asian_script_found": false,
+          "title_codepoints": 49,
+          "title_maximum": 90,
+          "title_within_budget": true,
+          "channel_name_absent_from_title_and_tags": true,
+          "thumbnail_headline_emphasis_retained": true
+        },
+        "source_claims_note": "Earlier c10 finding concerns a stale source verifier ledger, not a Thai mismatch. Parent reports a separate agent is reproducing the existing --frames-only option and repairing claims.md; this post-fix review does not claim that external repair has completed. No Thai change is required for 005752.",
+        "sha256": {
+          "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+          "translation": "2849d400e062f2e603989cdae7b91cb325ece9025c55ac77a72c7814743e8ca4",
+          "worksheet": "46d3ea16079cf54ce1d84e1ce51a7db8cc64c0239ea4ee210b4145ff2d561a3f"
+        },
+        "changes_made": {
+          "translation": false,
+          "worksheet": false,
+          "source": false,
+          "paid_calls": false
+        }
+      },
+      "corrections": [
+        {
+          "kind": "line",
+          "id_or_field": "719e7c",
+          "before": "เขียนพรอมต์: วาดทุกผลเรียงลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+          "after": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+          "reason": "ผลเรียงลำดับ can mean results sorted into an order; the mathematical source means all ordered outcomes, counting die identity."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "291f73",
+          "before": "อ่านหัวเรื่องและเป้าจากข้อมูล อย่าแยกเลขแต่ละภาพ",
+          "after": "อ่านหัวเรื่องกับเป้าจากไฟล์ อย่าใส่เลขแยกแต่ละภาพ",
+          "reason": "อย่าแยกเลขแต่ละภาพ is ambiguous about separating numbers; the source instructs reading a shared data file instead of writing separate numeric values per image."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "c5a99d",
+          "before": "ขอหัวเรื่องและคำอธิบายเป็นข้อความจริง เพื่อแก้ได้โดยตรง",
+          "after": "หัวเรื่องกับคำอธิบายสัญลักษณ์ใช้ข้อความจริง แก้ได้โดยตรง",
+          "reason": "圖例 is the figure legend, not generic explanatory text; name the legend explicitly while retaining actual editable text."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "066452",
+          "before": "ถ้าเน้นดูบนมือถือ ให้ตัวอักษรใหญ่ คำอธิบายอย่าชิดขอบ",
+          "after": "ถ้าเน้นมือถือ ให้ตัวอักษรใหญ่ คำอธิบายสัญลักษณ์อย่าชิดขอบ",
+          "reason": "Use the same explicit Thai term for 圖例 (legend) here; generic คำอธิบาย can refer to any explanatory copy."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "9e738a",
+          "before": "อยากทำโจทย์ยากใดเป็นแอนิเมชัน คอมเมนต์บอก",
+          "after": "อยากใช้แอนิเมชันอธิบายโจทย์ยากไหน คอมเมนต์บอก",
+          "reason": "The source asks about a problem that is hard to explain; the current line asks only for a hard problem. Restore the explanatory purpose within the slot."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "aa0639",
+          "before": "คุณต้องการแก้คำผิดได้จริง ไม่ใช่สุ่มภาพสวยมาอีกภาพ",
+          "after": "คุณไม่ได้อยากสุ่มภาพสวยอีก แต่ต้องการแก้คำผิดจริง",
+          "reason": "The current contrast puts fixing a typo before drawing another nice image, reversing the source clause order; keep the first clause before the contrast."
+        },
+        {
+          "kind": "line",
+          "id_or_field": "21c1bc",
+          "before": "วางลูกเต๋าเที่ยงตรงอิสระสองลูก ลูกหนึ่งแกนนอน อีกลูกแกนตั้ง",
+          "after": "วางลูกเต๋าเที่ยงตรงสองลูกที่เป็นอิสระต่อกัน ลูกหนึ่งแกนนอน อีกลูกแกนตั้ง",
+          "reason": "เที่ยงตรงอิสระสองลูก compresses independent into an unnatural adjective pile; explicitly say the two fair dice are independent of each other and retain both axes."
+        },
+        {
+          "kind": "thumbnail",
+          "id_or_field": "tag",
+          "before": "AI ทำสื่อสอน",
+          "after": "AI แอนิเมชันสอน",
+          "reason": "The source tag identifies AI teaching animation. AI ทำสื่อสอน only says AI makes teaching material and loses the animation noun; the concise replacement restores it."
+        }
+      ],
+      "accepted_base_translation_sha256": "2849d400e062f2e603989cdae7b91cb325ece9025c55ac77a72c7814743e8ca4",
+      "speech_qa": "pending",
+      "stage": "independent pre-dub translation review; later speech-fit rewrites need delta review"
+    }
+  ]
+}

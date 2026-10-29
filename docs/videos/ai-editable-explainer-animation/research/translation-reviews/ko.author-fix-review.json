@@ -1,0 +1,27 @@
+{
+  "locale": "ko",
+  "slug": "ai-editable-explainer-animation",
+  "reviewer_identity": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+  "reviewer_type": "AI assistant",
+  "human_review": false,
+  "claude_review": false,
+  "reviewed_at_utc": "2026-10-25T20:13:48.014785+00:00",
+  "review_scope": "Actual fresh canonical and worksheet read of root-applied c141fc correction against zh-TW source. Unchanged content is covered by previous complete review. No audio or runtime-fit assessment of the new take.",
+  "verdict": "ready",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "current_translation_sha256": "7b7d43819e5b0460e689b6827c5e69e506f8bd3c875e9cc7d681df7b86e78c57",
+  "worksheet_sha256": "ebe58c0b3828ce0dc3064c2ac7280df9dc0af8f7f3767b0d8bb177cd734b0429",
+  "line": {
+    "id": "c141fc",
+    "source": "要求每個格子檢查兩個點數相加，符合條件才上色。",
+    "current_text": "칸마다 두 눈의 합이 목표여야 칠합니다.",
+    "chars": 22,
+    "worksheet_max_chars": 32,
+    "within_worksheet_max_chars": true,
+    "worksheet_matches_canonical": true,
+    "meaning_verdict": "pass",
+    "reason": "The explicit target comparator restores the omitted condition, while 여야 means the sum must meet that target before coloring. 칸마다 retains per-cell checking and 두 눈의 합 retains adding the two dice faces. Fairness, independence and ordered outcomes remain established in unchanged surrounding narration. The target-sum condition is the one used in this example; no extra condition is added. Source clause order is preserved."
+  },
+  "fixes_remaining": 0,
+  "mutations": "Only this review JSON. No source, worksheet, translation, state, audio, merge, git or paid API calls."
+}

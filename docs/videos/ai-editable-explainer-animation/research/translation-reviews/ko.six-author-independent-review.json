@@ -1,0 +1,168 @@
+{
+  "locale": "ko",
+  "slug": "ai-editable-explainer-animation",
+  "reviewer_identity": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+  "reviewer_type": "AI assistant",
+  "human_review": false,
+  "claude_review": false,
+  "independent_of_proposal_author": true,
+  "proposal_author_identity": "/root/compact_korean_six",
+  "reviewed_at_utc": "2026-10-25T20:41:04.391715+00:00",
+  "scope": "Actual independent review of all six free-author proposals against current canonical Korean, current zh-TW source and current worksheet caps; includes formal Korean, facts/numbers/conditions and source cue order. The exact six recommended texts below form a reviewable repair proposal only.",
+  "verdict": "approved_as_proposals_only",
+  "meaning_corrections_to_author_proposals": 0,
+  "recommended_minor_refinements": 1,
+  "minor_refinement_note": "719e7c uses literal 2개 within 38/39 characters. The actual canonical before uses 둘, so no ASCII-digit loss is alleged. The author proposal 두 is semantically correct; the recommended literal numeral aids explicit quantity preservation.",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "current_translation_sha256": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+  "author_proposal_sha256": "4f014633781cfd656bf8d19d8d5882a4f0ba2857e0e67d711735194a85397fbe",
+  "author_provenance_sha256": "c41187d5921abb33975e12bd011a351f50689106b2c87203dc2674aeeddecffb",
+  "worksheet_sha256": "49c58166a3fcb94a2b8c912debfb3d0f332dbd69fe04f79abd90a12744ebc638",
+  "input_sha256": {
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/ko.todo.json": "49c58166a3fcb94a2b8c912debfb3d0f332dbd69fe04f79abd90a12744ebc638",
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.six-author-proposals.json": "4f014633781cfd656bf8d19d8d5882a4f0ba2857e0e67d711735194a85397fbe",
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.six-author-provenance.json": "c41187d5921abb33975e12bd011a351f50689106b2c87203dc2674aeeddecffb"
+  },
+  "reviewed_lines": [
+    {
+      "id": "79a96a",
+      "source": "所以這次從一份需求做出教學短片，連修改的方法一起留下。",
+      "actual_current": "그래서 요구부터 교육 단편을 만들고 수정법도 남깁니다.",
+      "author_proposal": "이번에는 요구사항을 바탕으로 짧은 교육 영상을 만들고 수정 방법도 남깁니다.",
+      "author_proposal_chars": 42,
+      "recommended_text": "이번에는 요구사항을 바탕으로 짧은 교육 영상을 만들고 수정 방법도 남깁니다.",
+      "recommended_chars": 42,
+      "max_chars": 44,
+      "within_hard_cap": true,
+      "single_source_cue": true,
+      "verdict": "approved",
+      "checks": {
+        "meaning_and_core_clauses": "pass",
+        "facts_numbers_names_conditions": "pass",
+        "formal_korean": "pass",
+        "cue_order": "pass",
+        "hard_cap": "pass"
+      },
+      "reason": "Retains this episode making a short educational video from requirements and retaining the editing method. Explicit 요구사항 and 짧은 교육 영상 express the source more clearly than the previous compression. Omitting the discourse connective 그래서 does not remove a content clause."
+    },
+    {
+      "id": "2c063b",
+      "source": "你可以直接說，請交可修改的專案，文字與數值放資料檔。",
+      "actual_current": "수정 가능한 프로젝트, 글·값은 데이터 파일로 달라 합니다.",
+      "author_proposal": "글자와 숫자를 데이터 파일에 담은 수정 가능한 프로젝트를 요청합니다.",
+      "author_proposal_chars": 38,
+      "recommended_text": "글자와 숫자를 데이터 파일에 담은 수정 가능한 프로젝트를 요청합니다.",
+      "recommended_chars": 38,
+      "max_chars": 47,
+      "within_hard_cap": true,
+      "single_source_cue": true,
+      "verdict": "approved",
+      "checks": {
+        "meaning_and_core_clauses": "pass",
+        "facts_numbers_names_conditions": "pass",
+        "formal_korean": "pass",
+        "cue_order": "pass",
+        "hard_cap": "pass"
+      },
+      "reason": "Retains a request for an editable project whose text and numeric values are placed in a data file. Korean naturally places the data-file relative clause before the requested project noun. This is a single source cue and no named item, number or condition moves into another cue."
+    },
+    {
+      "id": "719e7c",
+      "source": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+      "actual_current": "공정한 주사위 둘의 모든 순서쌍을 그리라 씁니다.",
+      "author_proposal": "공정한 두 주사위의 모든 결과를 순서도 구분해 그려 달라고 합니다.",
+      "author_proposal_chars": 37,
+      "recommended_text": "공정한 주사위 2개의 모든 결과를 순서도 구분해 그려 달라고 합니다.",
+      "recommended_chars": 38,
+      "max_chars": 39,
+      "within_hard_cap": true,
+      "single_source_cue": true,
+      "verdict": "approved",
+      "checks": {
+        "meaning_and_core_clauses": "pass",
+        "facts_numbers_names_conditions": "pass",
+        "formal_korean": "pass",
+        "cue_order": "pass",
+        "hard_cap": "pass"
+      },
+      "reason": "Retains two fair dice, every outcome and the distinction between outcome orders. Distinguishing order preserves the earlier 1+6 versus 6+1 explanation; the independent-dice model remains explicit in unchanged 21c1bc. The author text 둘-to-두 wording preserves the value two; the recommended 2개 form makes that quantity machine-readable without changing meaning."
+    },
+    {
+      "id": "76fc63",
+      "source": "然後說明觀眾沒學過機率，先看組合，不要一開始就丟公式。",
+      "actual_current": "확률을 안 배운 시청자라 알리고 공식 전 조합부터 봅니다.",
+      "author_proposal": "시청자가 확률을 안 배웠다고 알리고 공식보다 조합을 먼저 보여 달라고 합니다.",
+      "author_proposal_chars": 43,
+      "recommended_text": "시청자가 확률을 안 배웠다고 알리고 공식보다 조합을 먼저 보여 달라고 합니다.",
+      "recommended_chars": 43,
+      "max_chars": 47,
+      "within_hard_cap": true,
+      "single_source_cue": true,
+      "verdict": "approved",
+      "checks": {
+        "meaning_and_core_clauses": "pass",
+        "facts_numbers_names_conditions": "pass",
+        "formal_korean": "pass",
+        "cue_order": "pass",
+        "hard_cap": "pass"
+      },
+      "reason": "Retains informing the AI that the viewer has not learned probability, then showing combinations before formulas. Requesting combinations before formulas preserves the source prohibition on starting with a formula."
+    },
+    {
+      "id": "594e82",
+      "source": "數字連動確認了，那換成另一種語言，版面還裝得下嗎？",
+      "actual_current": "숫자 연동은 확인했습니다. 그럼 다른 언어로 바꿔도 화면에 다 들어갈까요?",
+      "author_proposal": "숫자가 함께 바뀌는 것을 확인했습니다. 언어를 바꿔도 화면에 다 들어갑니까?",
+      "author_proposal_chars": 42,
+      "recommended_text": "숫자가 함께 바뀌는 것을 확인했습니다. 언어를 바꿔도 화면에 다 들어갑니까?",
+      "recommended_chars": 42,
+      "max_chars": 46,
+      "within_hard_cap": true,
+      "single_source_cue": true,
+      "verdict": "approved",
+      "checks": {
+        "meaning_and_core_clauses": "pass",
+        "facts_numbers_names_conditions": "pass",
+        "formal_korean": "pass",
+        "cue_order": "pass",
+        "hard_cap": "pass"
+      },
+      "reason": "Retains the completed confirmation that numbers change together, followed by the question whether content fits the layout after a language change. The question ending 들어갑니까 uses the requested formal register."
+    },
+    {
+      "id": "de08dd",
+      "source": "修改前後分別留一份，不要又出現真的最終版第二版。",
+      "actual_current": "수정 전후를 따로 남겨 '진짜 최종판 2판'을 피합니다.",
+      "author_proposal": "수정 전후를 따로 남겨 '진짜 최종 버전 2' 같은 이름을 피합니다.",
+      "author_proposal_chars": 38,
+      "recommended_text": "수정 전후를 따로 남겨 '진짜 최종 버전 2' 같은 이름을 피합니다.",
+      "recommended_chars": 38,
+      "max_chars": 42,
+      "within_hard_cap": true,
+      "single_source_cue": true,
+      "verdict": "approved",
+      "checks": {
+        "meaning_and_core_clauses": "pass",
+        "facts_numbers_names_conditions": "pass",
+        "formal_korean": "pass",
+        "cue_order": "pass",
+        "hard_cap": "pass"
+      },
+      "reason": "Retains separate copies before and after edits, and avoiding another confusing truly-final version-two filename. The numeral 2 remains explicit; 같은 이름 expresses the source filename joke without adding a new factual claim."
+    }
+  ],
+  "observed_current_native_flags": [
+    "79a96a",
+    "2c063b",
+    "719e7c",
+    "76fc63",
+    "de08dd",
+    "594e82"
+  ],
+  "native_flag_artifact_sha256": "45b0cc9d390767ee6de34c949ad639358ce180b7b333392652e63a91aa99d0f5",
+  "runtime_status": "These six recommended strings have not been applied or synthesized by this reviewer. Character-cap success is not a guarantee of runtime fit, pronunciation or ASR acceptance. Existing native give-up and retry counters are not modified or overridden.",
+  "authorization_status": "No owner retrial, budget reset, skip removal, new paid job or production action is authorized or performed by this review artifact. Root owns any later owner-approved retrial path.",
+  "mutations": "Only ko.six-author-independent-review.json. No changes to proposals, provenance, source, worksheet, translation, native state, audio, merge, counters, git or paid API calls."
+}

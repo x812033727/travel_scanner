@@ -1,0 +1,53 @@
+{
+  "locale": "ko",
+  "slug": "ai-editable-explainer-animation",
+  "reviewer_identity": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+  "reviewer_type": "AI assistant",
+  "human_review": false,
+  "claude_review": false,
+  "reviewed_at_utc": "2026-10-25T20:34:15.583479+00:00",
+  "scope": "Actual independent source-meaning review of the two accepted first-reword lines only, read from canonical translation and worksheet. Accepted base is included for comparison. No review or authorship of the other six pending proposals.",
+  "verdict": "ready",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "current_translation_sha256": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+  "accepted_base_translation_sha256": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+  "worksheet_sha256": "49c58166a3fcb94a2b8c912debfb3d0f332dbd69fe04f79abd90a12744ebc638",
+  "input_sha256": {
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations/ko.json": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/ko.todo.json": "49c58166a3fcb94a2b8c912debfb3d0f332dbd69fe04f79abd90a12744ebc638"
+  },
+  "changed_lines": [
+    {
+      "id": "b22122",
+      "source": "這份範例先用繪圖套件畫出影格，再用影片工具把影格接起來。",
+      "before": "예제는 그리기 패키지로 프레임을 그린 뒤 영상 도구로 잇습니다.",
+      "current": "이 예제는 그림 패키지로 프레임을 그린 뒤, 영상 도구로 프레임을 이어 붙입니다.",
+      "chars": 45,
+      "worksheet_max_chars": 48,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_current": true,
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "reason": "Preserves the example scope and sequence: use a drawing package to draw frames, then use a video tool to join the frames. The repeated 프레임 makes the same object explicit and adds no new operation."
+    },
+    {
+      "id": "594e82",
+      "source": "數字連動確認了，那換成另一種語言，版面還裝得下嗎？",
+      "before": "수의 연동은 확인했지만 다른 언어도 화면에 들어갑니까?",
+      "current": "숫자 연동은 확인했습니다. 그럼 다른 언어로 바꿔도 화면에 다 들어갈까요?",
+      "chars": 41,
+      "worksheet_max_chars": 46,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_current": true,
+      "meaning_verdict": "pass",
+      "source_clause_order": "pass",
+      "reason": "Preserves confirmed numerical linkage followed by the question whether the layout still accommodates the content after changing language. 다른 언어로 바꿔도 explicitly retains changing to another language; 화면에 다 들어갈까요 conveys fitting within the layout."
+    }
+  ],
+  "meaning_fixes_needed": 0,
+  "suggested_corrections": [],
+  "audio_fit_note": "This is meaning and worksheet-character review only. No new audio was listened to or synthesized, and no runtime-fit approval of pending takes is asserted.",
+  "mutations": "Only this review JSON. No source, worksheet, translation, state, audio, merge, git or paid API calls."
+}

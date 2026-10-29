@@ -1,0 +1,39 @@
+{
+  "schema_version": 1,
+  "checked_at_utc": "2026-10-25T23:04:56.239428+00:00",
+  "locale": "vi",
+  "status": "Current dub with actual native audio checks and independent final text review; not a Studio upload or publication",
+  "native_status": {
+    "locale": "vi",
+    "translation_ready": true,
+    "dub_status": "current",
+    "dub_note": "vi.m4a",
+    "dub_check_unfinished": false
+  },
+  "translation_file_sha256": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+  "track_sha256": "1913d2c5360cfcf741536cb37623f9fe8ec38c315598216f62124ddd86aec35c",
+  "track_path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi.m4a",
+  "ffprobe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "codec_name": "aac",
+        "sample_rate": "48000",
+        "channels": 2
+      }
+    ],
+    "format": {
+      "duration": "589.600000",
+      "size": "13341336"
+    }
+  },
+  "native_translation_hash": "6909b89ccab24226",
+  "native_speech_hash": "ab16df144b09176b",
+  "checked_lines": 101,
+  "unresolved_flags": [],
+  "over_windows": [],
+  "tempo_max": 1.15,
+  "independent_meaning_review": "research/translation-reviews/vi.final-dub-translation-review.json",
+  "native_small_overrun_rule": "Existing tools/video/dubs/plan.mjs MAX_TEMPO_OVERRUN=1.25 with its bounded small-overrun rules; configuration unchanged"
+}

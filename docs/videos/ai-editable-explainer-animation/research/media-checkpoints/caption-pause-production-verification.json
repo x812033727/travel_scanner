@@ -1,0 +1,1398 @@
+{
+  "schema_version": 1,
+  "verified_at_utc": "2026-10-26T00:11:42.888992+00:00",
+  "verifier": "OpenAI Codex /root/fix_caption_pause with independent actual-file read by /root/fix_caption_pause/review_pause_fix",
+  "scope": "Actual production caption rebuild verification, immutable before/after comparison, and unchanged existing checked audio-file fingerprints. No new audio, meaning, Studio or full-language-package approval.",
+  "actual_native_caption_rebuild_verified": true,
+  "all_nine_native_caption_mechanics_pass": true,
+  "unchanged_reading_limits": true,
+  "before_native_cue_warnings": 51,
+  "after_native_cue_warnings": 0,
+  "changed_lines": 45,
+  "retimed_cues": 59,
+  "all_text_cuts_order_and_per_line_first_starts_unchanged": true,
+  "all_changed_lines_within_every_strict_time_fence": true,
+  "new_bound_crossings": [],
+  "preexisting_unchanged_visual_holds": [
+    {
+      "locale": "en",
+      "id": "291f73",
+      "changed": false,
+      "start_ms": 184467,
+      "end_ms": 189300,
+      "old_end_ms": 189300,
+      "hard_end_ms": 188933,
+      "bounds_frames": {
+        "caller_line_end": 5679,
+        "next_line_start": 5679,
+        "total_frames": 17687,
+        "visual_window_end": 5668
+      },
+      "new_crossing_ms": 367,
+      "old_crossing_ms": 367,
+      "caption_times_identical_to_before": true,
+      "native_window_metadata": {
+        "scene": "build-ask",
+        "state": 0,
+        "start_frame": 5534,
+        "end_frame": 5668,
+        "lines": [
+          "291f73"
+        ],
+        "tempo": 1.15,
+        "slack_frames": -6,
+        "over": false,
+        "absorbed": "next-slack",
+        "overrun_seconds": 0.2
+      }
+    },
+    {
+      "locale": "ja",
+      "id": "47c7d2",
+      "changed": false,
+      "start_ms": 35967,
+      "end_ms": 40733,
+      "old_end_ms": 40733,
+      "hard_end_ms": 40400,
+      "bounds_frames": {
+        "caller_line_end": 1222,
+        "next_line_start": 1222,
+        "total_frames": 17687,
+        "visual_window_end": 1212
+      },
+      "new_crossing_ms": 333,
+      "old_crossing_ms": 333,
+      "caption_times_identical_to_before": true,
+      "native_window_metadata": {
+        "scene": "delivery-three",
+        "state": 0,
+        "start_frame": 1079,
+        "end_frame": 1212,
+        "lines": [
+          "47c7d2"
+        ],
+        "tempo": 1.15,
+        "slack_frames": -5,
+        "over": false,
+        "absorbed": "next-slack",
+        "overrun_seconds": 0.17
+      }
+    }
+  ],
+  "primary_SRT_and_VTT_byte_identical": true,
+  "existing_JA_ES_VI_checked_track_bytes_unchanged": true,
+  "full_language_package_ready": false,
+  "TH_audio_approval": false,
+  "caption_evidence_file": "/workspace/work/ai-animation-01/caption-pause-production-caption-verification.json",
+  "caption_evidence_sha256": "9db46e580fd353252063102403b5de06209c59d7856d0723572d306a3d710b67",
+  "audio_integrity_file": "/workspace/work/ai-animation-01/caption-pause-production-audio-integrity.json",
+  "audio_integrity_sha256": "53aa8ac7aae8b1bda83499b71f0e976ea9053effb2e9b72261389e36c21488a2",
+  "all_75_caption_inputs_rechecked_current_and_unchanged": true,
+  "caption_verification": {
+    "verified_at_utc": "2026-10-26T00:09:13.400Z",
+    "verifier": "OpenAI Codex /root/fix_caption_pause/review_pause_fix",
+    "scope": "Actual caption files after root native rebuild, compared to immutable before. This does not approve audio, meanings, Studio upload or a complete language package.",
+    "core_sha256": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+    "verdict": "actual_nine_locale_caption_mechanics_pass_with_preexisting_unchanged_bound_cases_explicitly_disclosed",
+    "actual_native_rebuild_verified": true,
+    "inputs_stable": true,
+    "counts": {
+      "changed_lines": 45,
+      "changed_cues": 59,
+      "before_native_warnings": 51,
+      "after_native_warnings": 0
+    },
+    "primary_two_files_byte_identical": true,
+    "changed_lines_all_within_strict_line_visual_next_content_intro_bounds": true,
+    "new_bound_crossings": [],
+    "preexisting_unchanged_bound_cases": [
+      {
+        "locale": "en",
+        "id": "291f73",
+        "changed": false,
+        "start_ms": 184467,
+        "end_ms": 189300,
+        "old_end_ms": 189300,
+        "hard_end_ms": 188933,
+        "bounds_frames": {
+          "caller_line_end": 5679,
+          "next_line_start": 5679,
+          "total_frames": 17687,
+          "visual_window_end": 5668
+        },
+        "new_crossing_ms": 367,
+        "old_crossing_ms": 367,
+        "caption_times_identical_to_before": true,
+        "native_window_metadata": {
+          "scene": "build-ask",
+          "state": 0,
+          "start_frame": 5534,
+          "end_frame": 5668,
+          "lines": [
+            "291f73"
+          ],
+          "tempo": 1.15,
+          "slack_frames": -6,
+          "over": false,
+          "absorbed": "next-slack",
+          "overrun_seconds": 0.2
+        }
+      },
+      {
+        "locale": "ja",
+        "id": "47c7d2",
+        "changed": false,
+        "start_ms": 35967,
+        "end_ms": 40733,
+        "old_end_ms": 40733,
+        "hard_end_ms": 40400,
+        "bounds_frames": {
+          "caller_line_end": 1222,
+          "next_line_start": 1222,
+          "total_frames": 17687,
+          "visual_window_end": 1212
+        },
+        "new_crossing_ms": 333,
+        "old_crossing_ms": 333,
+        "caption_times_identical_to_before": true,
+        "native_window_metadata": {
+          "scene": "delivery-three",
+          "state": 0,
+          "start_frame": 1079,
+          "end_frame": 1212,
+          "lines": [
+            "47c7d2"
+          ],
+          "tempo": 1.15,
+          "slack_frames": -5,
+          "over": false,
+          "absorbed": "next-slack",
+          "overrun_seconds": 0.17
+        }
+      }
+    ],
+    "preexisting_cases_are_not_new_fix_violations": true,
+    "bound_comparison": "Frame boundaries rounded to the same integer milliseconds as SRT clock serialization. Any genuine positive crossing is recorded, not silently waived.",
+    "locales": [
+      {
+        "locale": "zh-TW",
+        "timing": "primary-narration",
+        "cues": 107,
+        "before_native_warnings": 0,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [],
+        "changed_cues": 0,
+        "actual_before": {
+          "srt_sha256": "38b1829a8304abc84844ca325764c52ddcdaa9f4682784aa577d5b3f256b5c9b",
+          "vtt_sha256": "9d762c626a70dfe8f1f214840ee47febbdd385745a9cabb58c13f27cb62bfba3"
+        },
+        "actual_after": {
+          "srt_sha256": "38b1829a8304abc84844ca325764c52ddcdaa9f4682784aa577d5b3f256b5c9b",
+          "vtt_sha256": "9d762c626a70dfe8f1f214840ee47febbdd385745a9cabb58c13f27cb62bfba3"
+        },
+        "same_bytes": true,
+        "unchanged_reading_rules": {
+          "maxChars": 16,
+          "maxLines": 2,
+          "maxCps": 9,
+          "words": false
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 101,
+        "changed_line_bound_evidence": []
+      },
+      {
+        "locale": "en",
+        "timing": "current-dub",
+        "cues": 129,
+        "before_native_warnings": 0,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [],
+        "changed_cues": 0,
+        "actual_before": {
+          "srt_sha256": "1e3ab0412b7487af926bd96ecee3dcf9189568de2f4ab0dd2efbd6bbf4fef43f",
+          "vtt_sha256": "22964a753ef48ba9c2a7173594c68f59b28cdc6b90ff641bcc83d82ad7f7aaff"
+        },
+        "actual_after": {
+          "srt_sha256": "1e3ab0412b7487af926bd96ecee3dcf9189568de2f4ab0dd2efbd6bbf4fef43f",
+          "vtt_sha256": "22964a753ef48ba9c2a7173594c68f59b28cdc6b90ff641bcc83d82ad7f7aaff"
+        },
+        "same_bytes": true,
+        "unchanged_reading_rules": {
+          "maxChars": 42,
+          "maxLines": 2,
+          "maxCps": 20,
+          "words": true
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 101,
+        "changed_line_bound_evidence": []
+      },
+      {
+        "locale": "ja",
+        "timing": "current-dub",
+        "cues": 146,
+        "before_native_warnings": 0,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [],
+        "changed_cues": 0,
+        "actual_before": {
+          "srt_sha256": "e20c58bb4115b1aea304e71af6a9cf9bfb2f984fddc69826d325eebb2d30270c",
+          "vtt_sha256": "e0d4404d7c10a96b891cb58467bb40ec16c61c41f83e8f6dbb4a6aeb8ad69b10"
+        },
+        "actual_after": {
+          "srt_sha256": "e20c58bb4115b1aea304e71af6a9cf9bfb2f984fddc69826d325eebb2d30270c",
+          "vtt_sha256": "e0d4404d7c10a96b891cb58467bb40ec16c61c41f83e8f6dbb4a6aeb8ad69b10"
+        },
+        "same_bytes": true,
+        "unchanged_reading_rules": {
+          "maxChars": 16,
+          "maxLines": 2,
+          "maxCps": 8,
+          "words": false
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 101,
+        "changed_line_bound_evidence": []
+      },
+      {
+        "locale": "ko",
+        "timing": "current-dub",
+        "cues": 126,
+        "before_native_warnings": 0,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [],
+        "changed_cues": 0,
+        "actual_before": {
+          "srt_sha256": "32303cbe9549dc5d2f8d79ec017571ccd9956dddb2eea81ad2252b13c1f857ee",
+          "vtt_sha256": "acefe221f320c550f8fa2d8264f78e2f90086ce55efc87063d7f786d779c141c"
+        },
+        "actual_after": {
+          "srt_sha256": "32303cbe9549dc5d2f8d79ec017571ccd9956dddb2eea81ad2252b13c1f857ee",
+          "vtt_sha256": "acefe221f320c550f8fa2d8264f78e2f90086ce55efc87063d7f786d779c141c"
+        },
+        "same_bytes": true,
+        "unchanged_reading_rules": {
+          "maxChars": 18,
+          "maxLines": 2,
+          "maxCps": 12,
+          "words": true
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 101,
+        "changed_line_bound_evidence": []
+      },
+      {
+        "locale": "es",
+        "timing": "current-dub",
+        "cues": 117,
+        "before_native_warnings": 18,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [
+          "74eeac",
+          "aa0639",
+          "5a37fc",
+          "56c197",
+          "1712ce",
+          "5e5629",
+          "9dd115",
+          "5f446c",
+          "005752",
+          "7a42ba",
+          "bf54ca",
+          "a6c28e",
+          "0b06d1",
+          "18691a",
+          "7311eb",
+          "84576e",
+          "ad1b2c"
+        ],
+        "changed_cues": 24,
+        "actual_before": {
+          "srt_sha256": "8696c1ae82a3de9ce1b68c2edc3ef2319b63725d8157007f88e431e2f4c8e7bb",
+          "vtt_sha256": "3ae58bb3dbfc32259b6490b638757516f6344995715b993c88c5247ec9a059a9"
+        },
+        "actual_after": {
+          "srt_sha256": "1d38b9798c30a024e95365d0635df4e3a0e526c55c2ca03c5f138eb8f71599e1",
+          "vtt_sha256": "a069250fa9cddb2bcc6e35cdc0f4cc5f2f3f9e44e7df8f2458613c8e1899c134"
+        },
+        "same_bytes": false,
+        "unchanged_reading_rules": {
+          "maxChars": 42,
+          "maxLines": 2,
+          "maxCps": 17,
+          "words": true
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 84,
+        "changed_line_bound_evidence": [
+          {
+            "id": "74eeac",
+            "changed": true,
+            "start_ms": 14733,
+            "end_ms": 17439,
+            "old_end_ms": 17343,
+            "hard_end_ms": 18833,
+            "bounds_frames": {
+              "caller_line_end": 565,
+              "next_line_start": 565,
+              "total_frames": 17687,
+              "visual_window_end": 565
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "aa0639",
+            "changed": true,
+            "start_ms": 24700,
+            "end_ms": 29053,
+            "old_end_ms": 28920,
+            "hard_end_ms": 31133,
+            "bounds_frames": {
+              "caller_line_end": 934,
+              "next_line_start": 934,
+              "total_frames": 17687,
+              "visual_window_end": 934
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "5a37fc",
+            "changed": true,
+            "start_ms": 40400,
+            "end_ms": 45048,
+            "old_end_ms": 44550,
+            "hard_end_ms": 47700,
+            "bounds_frames": {
+              "caller_line_end": 1431,
+              "next_line_start": 1431,
+              "total_frames": 17687,
+              "visual_window_end": 1431
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "56c197",
+            "changed": true,
+            "start_ms": 47700,
+            "end_ms": 52171,
+            "old_end_ms": 52040,
+            "hard_end_ms": 54033,
+            "bounds_frames": {
+              "caller_line_end": 1621,
+              "next_line_start": 1621,
+              "total_frames": 17687,
+              "visual_window_end": 1621
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "1712ce",
+            "changed": true,
+            "start_ms": 59500,
+            "end_ms": 63030,
+            "old_end_ms": 62940,
+            "hard_end_ms": 64833,
+            "bounds_frames": {
+              "caller_line_end": 1945,
+              "next_line_start": 1945,
+              "total_frames": 17687,
+              "visual_window_end": 1945
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "5e5629",
+            "changed": true,
+            "start_ms": 76167,
+            "end_ms": 79991,
+            "old_end_ms": 79607,
+            "hard_end_ms": 81600,
+            "bounds_frames": {
+              "caller_line_end": 2448,
+              "next_line_start": 2448,
+              "total_frames": 17687,
+              "visual_window_end": 2448
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "9dd115",
+            "changed": true,
+            "start_ms": 150333,
+            "end_ms": 155663,
+            "old_end_ms": 155623,
+            "hard_end_ms": 157367,
+            "bounds_frames": {
+              "caller_line_end": 4721,
+              "next_line_start": 4721,
+              "total_frames": 17687,
+              "visual_window_end": 4721
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "5f446c",
+            "changed": true,
+            "start_ms": 232967,
+            "end_ms": 238601,
+            "old_end_ms": 238347,
+            "hard_end_ms": 240133,
+            "bounds_frames": {
+              "caller_line_end": 7204,
+              "next_line_start": 7204,
+              "total_frames": 17687,
+              "visual_window_end": 7204
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "005752",
+            "changed": true,
+            "start_ms": 302433,
+            "end_ms": 308269,
+            "old_end_ms": 307933,
+            "hard_end_ms": 310467,
+            "bounds_frames": {
+              "caller_line_end": 9314,
+              "next_line_start": 9314,
+              "total_frames": 17687,
+              "visual_window_end": 9314
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "7a42ba",
+            "changed": true,
+            "start_ms": 345467,
+            "end_ms": 351406,
+            "old_end_ms": 351137,
+            "hard_end_ms": 352433,
+            "bounds_frames": {
+              "caller_line_end": 10573,
+              "next_line_start": 10573,
+              "total_frames": 17687,
+              "visual_window_end": 10573
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "bf54ca",
+            "changed": true,
+            "start_ms": 427933,
+            "end_ms": 432964,
+            "old_end_ms": 432743,
+            "hard_end_ms": 434533,
+            "bounds_frames": {
+              "caller_line_end": 13036,
+              "next_line_start": 13036,
+              "total_frames": 17687,
+              "visual_window_end": 13036
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "a6c28e",
+            "changed": true,
+            "start_ms": 446433,
+            "end_ms": 450257,
+            "old_end_ms": 450163,
+            "hard_end_ms": 452000,
+            "bounds_frames": {
+              "caller_line_end": 13560,
+              "next_line_start": 13560,
+              "total_frames": 17687,
+              "visual_window_end": 13560
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "0b06d1",
+            "changed": true,
+            "start_ms": 452000,
+            "end_ms": 457001,
+            "old_end_ms": 456880,
+            "hard_end_ms": 459333,
+            "bounds_frames": {
+              "caller_line_end": 13780,
+              "next_line_start": 13780,
+              "total_frames": 17687,
+              "visual_window_end": 13780
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "18691a",
+            "changed": true,
+            "start_ms": 480400,
+            "end_ms": 484577,
+            "old_end_ms": 484550,
+            "hard_end_ms": 486733,
+            "bounds_frames": {
+              "caller_line_end": 14602,
+              "next_line_start": 14602,
+              "total_frames": 17687,
+              "visual_window_end": 14602
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "7311eb",
+            "changed": true,
+            "start_ms": 497900,
+            "end_ms": 503344,
+            "old_end_ms": 503290,
+            "hard_end_ms": 505300,
+            "bounds_frames": {
+              "caller_line_end": 15159,
+              "next_line_start": 15159,
+              "total_frames": 17687,
+              "visual_window_end": 15159
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "84576e",
+            "changed": true,
+            "start_ms": 531633,
+            "end_ms": 536805,
+            "old_end_ms": 536753,
+            "hard_end_ms": 539433,
+            "bounds_frames": {
+              "caller_line_end": 16183,
+              "next_line_start": 16183,
+              "total_frames": 17687,
+              "visual_window_end": 16183
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "ad1b2c",
+            "changed": true,
+            "start_ms": 539433,
+            "end_ms": 545568,
+            "old_end_ms": 545343,
+            "hard_end_ms": 547100,
+            "bounds_frames": {
+              "caller_line_end": 16413,
+              "next_line_start": 16413,
+              "total_frames": 17687,
+              "visual_window_end": 16413
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          }
+        ]
+      },
+      {
+        "locale": "pt",
+        "timing": "current-dub",
+        "cues": 104,
+        "before_native_warnings": 1,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [
+          "7b0c6d"
+        ],
+        "changed_cues": 1,
+        "actual_before": {
+          "srt_sha256": "eb6af8d801460414ffee0f76fd9069c3f9046bd47fde8ead37e9d24f4e0188dd",
+          "vtt_sha256": "b38d528c3937c2fb22794a55f364d3f54e11ce1c1508d5f98166d3c155a1057e"
+        },
+        "actual_after": {
+          "srt_sha256": "1f7dda75856a9f671d8eea3162b427b7090c95af2a01413f108d57d4c481ef2c",
+          "vtt_sha256": "d52389ebfbf55c9484c6f98b45112340a7130b2f7a86705e61251d28ed14e84e"
+        },
+        "same_bytes": false,
+        "unchanged_reading_rules": {
+          "maxChars": 42,
+          "maxLines": 2,
+          "maxCps": 17,
+          "words": true
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 100,
+        "changed_line_bound_evidence": [
+          {
+            "id": "7b0c6d",
+            "changed": true,
+            "start_ms": 173500,
+            "end_ms": 177089,
+            "old_end_ms": 176860,
+            "hard_end_ms": 179600,
+            "bounds_frames": {
+              "caller_line_end": 5388,
+              "next_line_start": 5388,
+              "total_frames": 17687,
+              "visual_window_end": 5388
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          }
+        ]
+      },
+      {
+        "locale": "id",
+        "timing": "primary-narration",
+        "cues": 114,
+        "before_native_warnings": 0,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [],
+        "changed_cues": 0,
+        "actual_before": {
+          "srt_sha256": "2ba8b3fc8a2867a11d5fbc1e7d36f66636bbc3adafa92f7096f7c4ca32f6f3db",
+          "vtt_sha256": "d24b11f2db11aa58c636d0585869881d58417272361e6808479fc62c784239bd"
+        },
+        "actual_after": {
+          "srt_sha256": "2ba8b3fc8a2867a11d5fbc1e7d36f66636bbc3adafa92f7096f7c4ca32f6f3db",
+          "vtt_sha256": "d24b11f2db11aa58c636d0585869881d58417272361e6808479fc62c784239bd"
+        },
+        "same_bytes": true,
+        "unchanged_reading_rules": {
+          "maxChars": 42,
+          "maxLines": 2,
+          "maxCps": 17,
+          "words": true
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 101,
+        "changed_line_bound_evidence": []
+      },
+      {
+        "locale": "vi",
+        "timing": "current-dub",
+        "cues": 119,
+        "before_native_warnings": 32,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [
+          "1712ce",
+          "de0fb5",
+          "5e5629",
+          "4a14bd",
+          "ea140a",
+          "8f5f2e",
+          "8a3f5b",
+          "76fc63",
+          "7b0c6d",
+          "182fcd",
+          "d6ecd3",
+          "1de727",
+          "52cf29",
+          "005752",
+          "a1f88a",
+          "7e3f75",
+          "c41135",
+          "ba0179",
+          "a6c28e",
+          "b919e0",
+          "18691a",
+          "28a3eb",
+          "203f1e",
+          "7311eb",
+          "75368c",
+          "84576e",
+          "f064e3"
+        ],
+        "changed_cues": 34,
+        "actual_before": {
+          "srt_sha256": "7ba6a1c8e7dac72d197d3bb1ba720fd121929c80d0f67504bfc7b0cae59eeee5",
+          "vtt_sha256": "7abb21d9519e3dae1aec329517250dac8c9df6016a0e085e92573b92c79357bf"
+        },
+        "actual_after": {
+          "srt_sha256": "f124aeecf00473d2152974556f02b97114bb1b9a6ccd905377047a69eab559d7",
+          "vtt_sha256": "cc84d961bc58ae4042d0ecfe6d7088955fcc86737fc96a437273cc37ffb77f72"
+        },
+        "same_bytes": false,
+        "unchanged_reading_rules": {
+          "maxChars": 42,
+          "maxLines": 2,
+          "maxCps": 17,
+          "words": true
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 74,
+        "changed_line_bound_evidence": [
+          {
+            "id": "1712ce",
+            "changed": true,
+            "start_ms": 59500,
+            "end_ms": 63148,
+            "old_end_ms": 63050,
+            "hard_end_ms": 64833,
+            "bounds_frames": {
+              "caller_line_end": 1945,
+              "next_line_start": 1945,
+              "total_frames": 17687,
+              "visual_window_end": 1945
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "de0fb5",
+            "changed": true,
+            "start_ms": 64833,
+            "end_ms": 69304,
+            "old_end_ms": 68993,
+            "hard_end_ms": 69933,
+            "bounds_frames": {
+              "caller_line_end": 2098,
+              "next_line_start": 2098,
+              "total_frames": 17687,
+              "visual_window_end": 2098
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "5e5629",
+            "changed": true,
+            "start_ms": 76167,
+            "end_ms": 80520,
+            "old_end_ms": 80207,
+            "hard_end_ms": 81600,
+            "bounds_frames": {
+              "caller_line_end": 2448,
+              "next_line_start": 2448,
+              "total_frames": 17687,
+              "visual_window_end": 2448
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "4a14bd",
+            "changed": true,
+            "start_ms": 81600,
+            "end_ms": 85130,
+            "old_end_ms": 85080,
+            "hard_end_ms": 87500,
+            "bounds_frames": {
+              "caller_line_end": 2625,
+              "next_line_start": 2625,
+              "total_frames": 17687,
+              "visual_window_end": 2625
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "ea140a",
+            "changed": true,
+            "start_ms": 87500,
+            "end_ms": 91265,
+            "old_end_ms": 91150,
+            "hard_end_ms": 92900,
+            "bounds_frames": {
+              "caller_line_end": 2787,
+              "next_line_start": 2787,
+              "total_frames": 17687,
+              "visual_window_end": 2787
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "8f5f2e",
+            "changed": true,
+            "start_ms": 99200,
+            "end_ms": 103495,
+            "old_end_ms": 103430,
+            "hard_end_ms": 105000,
+            "bounds_frames": {
+              "caller_line_end": 3150,
+              "next_line_start": 3150,
+              "total_frames": 17687,
+              "visual_window_end": 3150
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "8a3f5b",
+            "changed": true,
+            "start_ms": 138500,
+            "end_ms": 142971,
+            "old_end_ms": 142590,
+            "hard_end_ms": 144267,
+            "bounds_frames": {
+              "caller_line_end": 4328,
+              "next_line_start": 4328,
+              "total_frames": 17687,
+              "visual_window_end": 4328
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "76fc63",
+            "changed": true,
+            "start_ms": 161967,
+            "end_ms": 166732,
+            "old_end_ms": 166427,
+            "hard_end_ms": 168133,
+            "bounds_frames": {
+              "caller_line_end": 5044,
+              "next_line_start": 5044,
+              "total_frames": 17687,
+              "visual_window_end": 5044
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "7b0c6d",
+            "changed": true,
+            "start_ms": 173500,
+            "end_ms": 179259,
+            "old_end_ms": 179120,
+            "hard_end_ms": 179600,
+            "bounds_frames": {
+              "caller_line_end": 5388,
+              "next_line_start": 5388,
+              "total_frames": 17687,
+              "visual_window_end": 5388
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "182fcd",
+            "changed": true,
+            "start_ms": 214600,
+            "end_ms": 219829,
+            "old_end_ms": 219690,
+            "hard_end_ms": 220833,
+            "bounds_frames": {
+              "caller_line_end": 6625,
+              "next_line_start": 6625,
+              "total_frames": 17687,
+              "visual_window_end": 6625
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "d6ecd3",
+            "changed": true,
+            "start_ms": 264867,
+            "end_ms": 269044,
+            "old_end_ms": 268807,
+            "hard_end_ms": 271167,
+            "bounds_frames": {
+              "caller_line_end": 8135,
+              "next_line_start": 8135,
+              "total_frames": 17687,
+              "visual_window_end": 8135
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "1de727",
+            "changed": true,
+            "start_ms": 282467,
+            "end_ms": 287232,
+            "old_end_ms": 286847,
+            "hard_end_ms": 287800,
+            "bounds_frames": {
+              "caller_line_end": 8634,
+              "next_line_start": 8634,
+              "total_frames": 17687,
+              "visual_window_end": 8634
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "52cf29",
+            "changed": true,
+            "start_ms": 293733,
+            "end_ms": 301689,
+            "old_end_ms": 301323,
+            "hard_end_ms": 302433,
+            "bounds_frames": {
+              "caller_line_end": 9073,
+              "next_line_start": 9073,
+              "total_frames": 17687,
+              "visual_window_end": 9073
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "005752",
+            "changed": true,
+            "start_ms": 302433,
+            "end_ms": 307849,
+            "old_end_ms": 307723,
+            "hard_end_ms": 310467,
+            "bounds_frames": {
+              "caller_line_end": 9314,
+              "next_line_start": 9314,
+              "total_frames": 17687,
+              "visual_window_end": 9314
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "a1f88a",
+            "changed": true,
+            "start_ms": 317833,
+            "end_ms": 321951,
+            "old_end_ms": 321503,
+            "hard_end_ms": 322933,
+            "bounds_frames": {
+              "caller_line_end": 9688,
+              "next_line_start": 9688,
+              "total_frames": 17687,
+              "visual_window_end": 9688
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "7e3f75",
+            "changed": true,
+            "start_ms": 369933,
+            "end_ms": 374699,
+            "old_end_ms": 374313,
+            "hard_end_ms": 376533,
+            "bounds_frames": {
+              "caller_line_end": 11296,
+              "next_line_start": 11296,
+              "total_frames": 17687,
+              "visual_window_end": 11296
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "c41135",
+            "changed": true,
+            "start_ms": 415067,
+            "end_ms": 419362,
+            "old_end_ms": 419067,
+            "hard_end_ms": 420333,
+            "bounds_frames": {
+              "caller_line_end": 12610,
+              "next_line_start": 12610,
+              "total_frames": 17687,
+              "visual_window_end": 12610
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "ba0179",
+            "changed": true,
+            "start_ms": 434533,
+            "end_ms": 439777,
+            "old_end_ms": 439353,
+            "hard_end_ms": 440633,
+            "bounds_frames": {
+              "caller_line_end": 13219,
+              "next_line_start": 13219,
+              "total_frames": 17687,
+              "visual_window_end": 13219
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "a6c28e",
+            "changed": true,
+            "start_ms": 446433,
+            "end_ms": 451022,
+            "old_end_ms": 450273,
+            "hard_end_ms": 452000,
+            "bounds_frames": {
+              "caller_line_end": 13560,
+              "next_line_start": 13560,
+              "total_frames": 17687,
+              "visual_window_end": 13560
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "b919e0",
+            "changed": true,
+            "start_ms": 459333,
+            "end_ms": 462745,
+            "old_end_ms": 462633,
+            "hard_end_ms": 464567,
+            "bounds_frames": {
+              "caller_line_end": 13937,
+              "next_line_start": 13937,
+              "total_frames": 17687,
+              "visual_window_end": 13937
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "18691a",
+            "changed": true,
+            "start_ms": 480400,
+            "end_ms": 484989,
+            "old_end_ms": 484510,
+            "hard_end_ms": 486733,
+            "bounds_frames": {
+              "caller_line_end": 14602,
+              "next_line_start": 14602,
+              "total_frames": 17687,
+              "visual_window_end": 14602
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "28a3eb",
+            "changed": true,
+            "start_ms": 486733,
+            "end_ms": 491910,
+            "old_end_ms": 491383,
+            "hard_end_ms": 492467,
+            "bounds_frames": {
+              "caller_line_end": 14774,
+              "next_line_start": 14774,
+              "total_frames": 17687,
+              "visual_window_end": 14774
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "203f1e",
+            "changed": true,
+            "start_ms": 492467,
+            "end_ms": 495938,
+            "old_end_ms": 495807,
+            "hard_end_ms": 497900,
+            "bounds_frames": {
+              "caller_line_end": 14937,
+              "next_line_start": 14937,
+              "total_frames": 17687,
+              "visual_window_end": 14937
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "7311eb",
+            "changed": true,
+            "start_ms": 497900,
+            "end_ms": 502901,
+            "old_end_ms": 502760,
+            "hard_end_ms": 505300,
+            "bounds_frames": {
+              "caller_line_end": 15159,
+              "next_line_start": 15159,
+              "total_frames": 17687,
+              "visual_window_end": 15159
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "75368c",
+            "changed": true,
+            "start_ms": 505300,
+            "end_ms": 510419,
+            "old_end_ms": 510270,
+            "hard_end_ms": 511600,
+            "bounds_frames": {
+              "caller_line_end": 15348,
+              "next_line_start": 15348,
+              "total_frames": 17687,
+              "visual_window_end": 15348
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "84576e",
+            "changed": true,
+            "start_ms": 531633,
+            "end_ms": 538870,
+            "old_end_ms": 538703,
+            "hard_end_ms": 539433,
+            "bounds_frames": {
+              "caller_line_end": 16183,
+              "next_line_start": 16183,
+              "total_frames": 17687,
+              "visual_window_end": 16183
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          },
+          {
+            "id": "f064e3",
+            "changed": true,
+            "start_ms": 568000,
+            "end_ms": 574118,
+            "old_end_ms": 574080,
+            "hard_end_ms": 575167,
+            "bounds_frames": {
+              "caller_line_end": 17255,
+              "next_line_start": 17255,
+              "total_frames": 17687,
+              "visual_window_end": 17255
+            },
+            "new_crossing_ms": 0,
+            "old_crossing_ms": 0
+          }
+        ]
+      },
+      {
+        "locale": "th",
+        "timing": "current-dub",
+        "cues": 103,
+        "before_native_warnings": 0,
+        "after_native_warnings": 0,
+        "exact_native_SRT_and_VTT_bytes": true,
+        "text_cut_and_order_unchanged": true,
+        "per_line_first_starts_unchanged": true,
+        "changed_lines": [],
+        "changed_cues": 0,
+        "actual_before": {
+          "srt_sha256": "8c87a7370873484f3d477f21871f18781de62a50bd48dc499eabd031502f2c17",
+          "vtt_sha256": "f38e4fd08f62134965ce86818f4bd0dcfcb3b132a4dcbd602fd4e49f451e6bd4"
+        },
+        "actual_after": {
+          "srt_sha256": "8c87a7370873484f3d477f21871f18781de62a50bd48dc499eabd031502f2c17",
+          "vtt_sha256": "f38e4fd08f62134965ce86818f4bd0dcfcb3b132a4dcbd602fd4e49f451e6bd4"
+        },
+        "same_bytes": true,
+        "unchanged_reading_rules": {
+          "maxChars": 35,
+          "maxLines": 2,
+          "maxCps": 15,
+          "words": true,
+          "segmenter": "th"
+        },
+        "all_line_groups_examined": 101,
+        "unchanged_line_groups_examined": 101,
+        "changed_line_bound_evidence": []
+      }
+    ],
+    "input_sha256": {
+      "/workspace/travel_scanner/tools/video/core/captions.mjs": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+      "/workspace/travel_scanner/tools/video/core/stages.mjs": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "/workspace/travel_scanner/docs/videos/lexicon.json": "9b06e91f344173f30cd415d17184b8346bfde07c81c7a5e55be8f20b9e0b0c05",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/timeline.json": "d34af3061326998b7b0cc843cf096323a15b39e313f99ad1a52124a1f27d240a",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/checks.json": "47d29b73329991495bc2f7d6b90f6c1b1c43314f45a992606f67915a116b9637",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/manifest.json": "da5fca47a076cc8e9d25ed6065b94a632f83a6c55d00ec2b1cd71121359bad5f",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/languages.json": "d0a0ee8e8b5f9198e7fd4a633a3d804ab8e98f0ea8ece966e2d637e116e305c9",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/zh-TW.srt": "38b1829a8304abc84844ca325764c52ddcdaa9f4682784aa577d5b3f256b5c9b",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/zh-TW.vtt": "9d762c626a70dfe8f1f214840ee47febbdd385745a9cabb58c13f27cb62bfba3",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/zh-TW.srt": "38b1829a8304abc84844ca325764c52ddcdaa9f4682784aa577d5b3f256b5c9b",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/zh-TW.vtt": "9d762c626a70dfe8f1f214840ee47febbdd385745a9cabb58c13f27cb62bfba3",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/en.srt": "1e3ab0412b7487af926bd96ecee3dcf9189568de2f4ab0dd2efbd6bbf4fef43f",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/en.vtt": "22964a753ef48ba9c2a7173594c68f59b28cdc6b90ff641bcc83d82ad7f7aaff",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/en.srt": "1e3ab0412b7487af926bd96ecee3dcf9189568de2f4ab0dd2efbd6bbf4fef43f",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/en.vtt": "22964a753ef48ba9c2a7173594c68f59b28cdc6b90ff641bcc83d82ad7f7aaff",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/ja.srt": "e20c58bb4115b1aea304e71af6a9cf9bfb2f984fddc69826d325eebb2d30270c",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/ja.vtt": "e0d4404d7c10a96b891cb58467bb40ec16c61c41f83e8f6dbb4a6aeb8ad69b10",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ja.srt": "e20c58bb4115b1aea304e71af6a9cf9bfb2f984fddc69826d325eebb2d30270c",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ja.vtt": "e0d4404d7c10a96b891cb58467bb40ec16c61c41f83e8f6dbb4a6aeb8ad69b10",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/ko.srt": "32303cbe9549dc5d2f8d79ec017571ccd9956dddb2eea81ad2252b13c1f857ee",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/ko.vtt": "acefe221f320c550f8fa2d8264f78e2f90086ce55efc87063d7f786d779c141c",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ko.srt": "32303cbe9549dc5d2f8d79ec017571ccd9956dddb2eea81ad2252b13c1f857ee",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/ko.vtt": "acefe221f320c550f8fa2d8264f78e2f90086ce55efc87063d7f786d779c141c",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/es.srt": "8696c1ae82a3de9ce1b68c2edc3ef2319b63725d8157007f88e431e2f4c8e7bb",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/es.vtt": "3ae58bb3dbfc32259b6490b638757516f6344995715b993c88c5247ec9a059a9",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/es.srt": "1d38b9798c30a024e95365d0635df4e3a0e526c55c2ca03c5f138eb8f71599e1",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/es.vtt": "a069250fa9cddb2bcc6e35cdc0f4cc5f2f3f9e44e7df8f2458613c8e1899c134",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/pt.srt": "eb6af8d801460414ffee0f76fd9069c3f9046bd47fde8ead37e9d24f4e0188dd",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/pt.vtt": "b38d528c3937c2fb22794a55f364d3f54e11ce1c1508d5f98166d3c155a1057e",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/pt.srt": "1f7dda75856a9f671d8eea3162b427b7090c95af2a01413f108d57d4c481ef2c",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/pt.vtt": "d52389ebfbf55c9484c6f98b45112340a7130b2f7a86705e61251d28ed14e84e",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/id.srt": "2ba8b3fc8a2867a11d5fbc1e7d36f66636bbc3adafa92f7096f7c4ca32f6f3db",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/id.vtt": "d24b11f2db11aa58c636d0585869881d58417272361e6808479fc62c784239bd",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/id.srt": "2ba8b3fc8a2867a11d5fbc1e7d36f66636bbc3adafa92f7096f7c4ca32f6f3db",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/id.vtt": "d24b11f2db11aa58c636d0585869881d58417272361e6808479fc62c784239bd",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/vi.srt": "7ba6a1c8e7dac72d197d3bb1ba720fd121929c80d0f67504bfc7b0cae59eeee5",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/vi.vtt": "7abb21d9519e3dae1aec329517250dac8c9df6016a0e085e92573b92c79357bf",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/vi.srt": "f124aeecf00473d2152974556f02b97114bb1b9a6ccd905377047a69eab559d7",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/vi.vtt": "cc84d961bc58ae4042d0ecfe6d7088955fcc86737fc96a437273cc37ffb77f72",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/th.srt": "8c87a7370873484f3d477f21871f18781de62a50bd48dc499eabd031502f2c17",
+      "/workspace/work/ai-animation-01/caption-before-readable-pause/th.vtt": "f38e4fd08f62134965ce86818f4bd0dcfcb3b132a4dcbd602fd4e49f451e6bd4",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/th.srt": "8c87a7370873484f3d477f21871f18781de62a50bd48dc499eabd031502f2c17",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/captions/th.vtt": "f38e4fd08f62134965ce86818f4bd0dcfcb3b132a4dcbd602fd4e49f451e6bd4",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/en.json": "e6f09548e017a669aa6c7d8aa3c1705a318ad4384039ff03c38b5f2f4573ab57",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ja.json": "50e547580f142c405a667b426e92a2c7b91fe4b3c9ce7c7487e4444e5144aabd",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/es.json": "c14d83d73d72eda075fb16462548c2f07c564f7ce7a13d410ad92683814a2dca",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/pt.json": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/id.json": "261b3cccc47b5f5d93cf7e5aa53f21b1dc7f73038f72395ef224ddf23ab65801",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/vi.json": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/en/timeline.json": "6c537bb1155af8960dae1cfb26198a9feb055fe17ba8b2e221a8e4e0518abb52",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/en/fit.json": "5df288c80634f9ead957a56f3c59e864909b8c20f381663aeabd51474540871c",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/en/audio/cache.json": "8db29982f98bdf503a5397690722ffa811f0a75c4fc41a7a77dc12be8d1744ed",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/timeline.json": "933ead4161566cfb4245ab2e3b8c44c9f5d17d3aa5edf4dc77aba6df69bcf967",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/fit.json": "14d1b0f69cb6b41b4aaddffe974989dd940eec37ce3cfc0230fe9ce73a01b4a0",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja/audio/cache.json": "934877490409ca9f178c660be04ffdf81dee1260ad9316c60339223c2e0a75bf",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/timeline.json": "57c02fe3b314e732d854067314d29f90d8666dab7a0fc6ec055815876235d7d7",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/fit.json": "33eb6ed4da04ee95e3c3be3422062896054584c19e24081c6a703eb12379a6fd",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/audio/cache.json": "883fa1d54444ec67b32c98802d7b82408dd09c33606478b04c150c99b249d4b2",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/timeline.json": "b8c13a9650b42c550bae86a64344ac98d71189b3e823284af62d104d834af3c3",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/fit.json": "e478ead45aedc78c5216b3c507bc8c10481552dfe36ed2acfe383779eaa06f98",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es/audio/cache.json": "4a9c5bc76f73ed0c03d5ffb58bc51db6f81f151ab29cfe4cc15dc87163e0b92f",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/timeline.json": "c38ef501c1ed6b0bc6293a4a0cac33847214cf4634a86f88aa5e59f0482b5d21",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/fit.json": "d8e6b160960a7dbb330b96c989ac6d167281eb40cd76ed351f9e9c3dcd9c1c8c",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/pt/audio/cache.json": "dc4c0e7eddf678fd35d8d1bd2eb7104441422ab9eb86a1f6125fef49919fc55a",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/fit.json": "7e7234b1f834add429f1f4be0ab03a39faef829ad72a21df0f275897927b7c5b",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/audio/cache.json": "6b9ff1885643a27b77a8b0731b3a1652811186266dcaae675b39366877ab2b33",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/timeline.json": "b4d5b08e0bbf5c256234613610ade0c36daa190b4baeec202de466505d8a8e0b",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/fit.json": "70b346dee5cae83f234cf85c77a777336ed72332e032c13d4d176263bb2441b4",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi/audio/cache.json": "b198462b2785c7b6c695833783ca5688f804b87a8abbae62ac4b74d41a3304e8",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/timeline.json": "6bdd053eda196e46e87470da3b15b9f6584212641495c17a37f1ac3dafa2b744",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/fit.json": "ad3afb33005e516f4b44dd2bd72ddf52875279b26caef0a69ef441699a5836ba",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/audio/cache.json": "af06cffffa2ac255262f30eb7d8538859b793cd0f57895aaa01878a14f08ce35"
+    },
+    "network_or_provider_requests": 0,
+    "source_or_media_or_native_state_writes": 0,
+    "TH_audio_status": "Still service-deferred/unchecked as supplied by parent; these current caption bytes do not grant TH voice QA."
+  },
+  "existing_audio_integrity": {
+    "recorded_at_utc": "2026-10-26T00:06:03.122196+00:00",
+    "kind": "actual_existing_checked_audio_file_integrity_comparison_after_caption_rebuild",
+    "read_only": true,
+    "network_requests": 0,
+    "provider_requests": 0,
+    "audio_or_media_writes": 0,
+    "rows": [
+      {
+        "locale": "ja",
+        "track": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja.m4a",
+        "observed_sha256": "fa58e5c10148aaae354ec989422e457588d9402ef47b2159b344e94d4514fc96",
+        "recorded_checked_track_sha256": "fa58e5c10148aaae354ec989422e457588d9402ef47b2159b344e94d4514fc96",
+        "unchanged_from_existing_checked_native_proof": true,
+        "actual_bytes": 16883589,
+        "recorded_bytes": 16883589,
+        "actual_ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "589.600000",
+            "size": "16883589"
+          }
+        },
+        "existing_proof": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/ja.json",
+        "existing_proof_sha256": "383269548bf286d546ae9ce83ccbc34325f1dc348f69ed96c4bf6b16eb0041f0",
+        "audio_qa_or_approval_performed_by_this_comparison": false
+      },
+      {
+        "locale": "es",
+        "track": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es.m4a",
+        "observed_sha256": "123215f8e381ab05e7310e9b97b95a18734b872b1af895d5b0f75af2e9f6c277",
+        "recorded_checked_track_sha256": "123215f8e381ab05e7310e9b97b95a18734b872b1af895d5b0f75af2e9f6c277",
+        "unchanged_from_existing_checked_native_proof": true,
+        "actual_bytes": 13757029,
+        "recorded_bytes": 13757029,
+        "actual_ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "589.600000",
+            "size": "13757029"
+          }
+        },
+        "existing_proof": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/es.json",
+        "existing_proof_sha256": "3f2706d187c30666df454bb6eebaa50f08f2c874c1499d4e620953d5bb2d34cc",
+        "audio_qa_or_approval_performed_by_this_comparison": false
+      },
+      {
+        "locale": "vi",
+        "track": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi.m4a",
+        "observed_sha256": "1913d2c5360cfcf741536cb37623f9fe8ec38c315598216f62124ddd86aec35c",
+        "recorded_checked_track_sha256": "1913d2c5360cfcf741536cb37623f9fe8ec38c315598216f62124ddd86aec35c",
+        "unchanged_from_existing_checked_native_proof": true,
+        "actual_bytes": 13341336,
+        "recorded_bytes": 13341336,
+        "actual_ffprobe": {
+          "programs": [],
+          "stream_groups": [],
+          "streams": [
+            {
+              "codec_name": "aac",
+              "sample_rate": "48000",
+              "channels": 2
+            }
+          ],
+          "format": {
+            "duration": "589.600000",
+            "size": "13341336"
+          }
+        },
+        "existing_proof": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/vi.json",
+        "existing_proof_sha256": "c2ba3a64ba9cd06d4c0a977a8a044368803102cd6c162a2753fbb1cbaedb382e",
+        "audio_qa_or_approval_performed_by_this_comparison": false
+      }
+    ],
+    "all_compared_files_stable": true,
+    "scope": "Actual SHA/byte/ffprobe comparison only. It neither reruns ASR/Jev nor grants audio, Studio or full-package approval."
+  },
+  "network_requests": 0,
+  "provider_requests": 0,
+  "source_or_media_or_native_state_writes": 0,
+  "report_write_only": true
+}

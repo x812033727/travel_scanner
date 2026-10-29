@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "changed_at_utc": "2026-10-25T23:19:26.765100+00:00",
+  "scope": "Work-only inspector inventory/history wording update; QA conclusions and readiness predicates unchanged",
+  "before_script": "/workspace/work/ai-animation-01/audit-caption-readiness.before-id-inventory.20261025T231851Z.mjs",
+  "before_script_sha256": "f281ed4f8e6b5d75759e30bac43c8457183a20522107ee5e850fed14ec2bdc18",
+  "after_script": "/workspace/work/ai-animation-01/audit-caption-readiness.mjs",
+  "after_script_sha256": "d9d0c4acf3ad8ea34979d9781866e7767f0a95eb239dc73344db4e3d7c18febd",
+  "diff": "/workspace/work/ai-animation-01/caption-inspector-id-inventory.diff",
+  "diff_sha256": "fe6d3e9e05862981b2714ce7ac60135cc7b621cb47c11f81615c8f04534ad305",
+  "changes": [
+    "Inventory each locale final-caption-translation-review.json when actually present.",
+    "Label old ID89edb036 9e meaning hold as historical when current SHA differs; preserve exact old-SHA hold binding.",
+    "Read/inventory actual ID source-only correction receipt, without treating it as CC production or audio approval."
+  ],
+  "verification": {
+    "node_check_exit": 0,
+    "actual_read_only_report": "/workspace/work/ai-animation-01/caption-audit-after-id-source-correction.json",
+    "report_sha256": "e397bb057f4c77c4dc20300b460d11e74de362212d0a49188ba42c5534b17456",
+    "snapshot_stable": true,
+    "current_ID_translation_sha256": "261b3cccc47b5f5d93cf7e5aa53f21b1dc7f73038f72395ef224ddf23ab65801",
+    "old_hold_applies_to_current": false,
+    "ID_actual_cues": 0,
+    "ID_voice": "native_skipped",
+    "ID_checked_dub": false,
+    "meaning_approval_granted": false,
+    "full_language_package_ready": false
+  },
+  "API_requests": 0,
+  "paid_requests": 0,
+  "source_or_current_media_writes": 0,
+  "caption_build_executed": false,
+  "root_review_pending": true,
+  "root_review": {
+    "reviewed_at_utc": "2026-10-25T23:25:08.007346+00:00",
+    "reviewer": "OpenAI Codex root",
+    "actually_read": "full caption-inspector-id-inventory.diff",
+    "verdict": "allow inventory-only final-caption review and historical/source-correction receipt fields; native/audio/caption QA predicates unchanged",
+    "caption_build_or_audio_approval": false
+  }
+}

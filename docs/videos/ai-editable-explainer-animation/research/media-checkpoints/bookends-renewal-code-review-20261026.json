@@ -1,0 +1,46 @@
+{
+  "kind": "independent-position-aware-renewal-code-review",
+  "reviewed_at_utc": "2026-10-26T02:35:19.898134+00:00",
+  "reviewer": "OpenAI Codex independent review agent",
+  "verdict": "no_remaining_blocking_findings_in_reviewed_diff",
+  "files": {
+    "tools/video/review/renewal.mjs": "c839d16d387f26c623ae6b249c6682e0bb47ebc1fbd55b34d2158fd1a39a88ca",
+    "tools/video/review/renewal-handoff.mjs": "f0246fcc8ce2890ebecba9e214157e6cd4cdc06f8d712a764553e628527dd382",
+    "tools/video/review/renewal.test.mjs": "68a1e57dcf429ebc82a7bf0fa98bac5fe5b7ba8e1f0389c0e2df53ffcb9a25c4",
+    "tools/video/review/renewal-handoff.test.mjs": "7b76706c2f04958297f86194d3e5b253978ac20600660853738ffb3ee1fe4b5f"
+  },
+  "actually_read": "Full four-file diff plus surrounding original stage/renewal/activation and review submission code",
+  "findings_resolved": [
+    {
+      "finding": "Position-aware verifyHandoff did not compare receipt.source.body_timeline_sha256 to current approved bound.body_timeline_sha256",
+      "resolution": "Actual code adds equality and test mutates only receipt-source hash to assert refusal. Independently reread."
+    },
+    {
+      "finding": "After-first raw-identical branch must still require exact keyframes at both source/replacement body range starts",
+      "resolution": "Actual code now applies both-range keyframe check before raw-packet fast path; independently reread matching test."
+    }
+  ],
+  "guard_review": [
+    "Original producer done state, original approvals and upload protections remain unchanged.",
+    "Positioned staging requires real body timeline, derives second chapter scene boundary and rejects presented/overlapping/crossing/unbounded line clocks.",
+    "Current source/candidate/timeline identities remain bound through staging, owner receipt and handoff.",
+    "Only normal retained native-timeline mode gains after-first support; manual import/current-final range modes retain their prior start-only restrictions.",
+    "Owner manual-renewal endpoint is still required to supersede and retain old final/publish/language/dub history. No new code approves or publishes."
+  ],
+  "actual_native_real_media_exercise": {
+    "report": "/workspace/work/ai-animation-01/bookends-candidate-20261026/visual-qa/independent-native-retained-media.json",
+    "sha256": "ef4a7fab3a7e16c71cf1382e326e930cf84d71bf81bbe632f1eaa73ce02bc341",
+    "result": "17687 original body packets raw-exact through insertion at934; complete decode; sample-aligned body audio difference around-59.79dB"
+  },
+  "reported_author_tests": {
+    "passed": 113,
+    "failed": 0,
+    "skipped": 0,
+    "independently_rerun_test_suite": false,
+    "source": "renewal_position_support agent completion message; root should retain actual author test log"
+  },
+  "approval_claimed": false,
+  "audio_audition_claimed": false,
+  "production_review_mutations": 0,
+  "provider_requests": 0
+}

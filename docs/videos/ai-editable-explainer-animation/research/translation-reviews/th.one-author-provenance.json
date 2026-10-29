@@ -1,0 +1,41 @@
+{
+  "schema_version": 1,
+  "authored_at_utc": "2026-10-25T23:16:13.583079+00:00",
+  "author": "OpenAI Codex /root/compact_th_one",
+  "task": "Free original Thai source-faithful author candidates for291f73 after actual first-shortening review rejection",
+  "source_video_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "current_canonical_sha256": "1289b970131bc45a0516acc15ebde2f80e424f2cea5fe2912340f847859a928a",
+  "pre_dub_translation_sha256": "2849d400e062f2e603989cdae7b91cb325ece9025c55ac77a72c7814743e8ca4",
+  "actual_boundary_sha256": "add171c6631c8762663993825441287606916729127860a7eb036acc0081b42f",
+  "proposals_sha256": "4f18be01506bfb18fe25b5f41950e7fa6ff537bf0dcea87902d4819a0713074c",
+  "actual_files_read": [
+    "video.json nearby7b0c6d/1f3f10/291f73/60d6c7/d27bc5",
+    "actual i18n/th.json",
+    "pre-dub-translations/th.json",
+    "author-review-boundaries/th.shorten.json"
+  ],
+  "actual_original_fit_evidence": {
+    "original_chars": 49,
+    "original_seconds": 6.34,
+    "window_over_seconds": 1.17,
+    "adaptive_max_chars_estimate": 36
+  },
+  "reason_for_correction": "The actually accepted43-character shortened line removed แต่ละภาพ, losing the per-image prohibition; that accepted text must not be taken as approved for TTS.",
+  "authorship_note": "Both saved exact wordings are new author alternatives. Root supplied a separate unapproved brainstorming sentence using ใส่เลขเองรายภาพ; it was considered but is not copied as either saved exact proposal.",
+  "native_rounds_observed": {
+    "shorten": 1,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "counter_skip_receipts_or_source_changed": false,
+  "independent_review": "pending; neither candidate has approval yet",
+  "expected_route": "Original controller independently reviews and, only if approved, may apply a source correction under the real project lease before native new-take fit/check. This file neither performs that correction nor extends native caps.",
+  "provider_or_review_API_calls": 0,
+  "new_audio_generated": false,
+  "actual_new_fit_or_voice_approved": false,
+  "files_written": [
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/th.one-author-proposals.json",
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/th.one-author-provenance.json"
+  ]
+}

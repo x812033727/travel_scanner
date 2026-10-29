@@ -1,0 +1,123 @@
+{
+  "recorded_at_utc": "2026-10-26T08:07:51.561Z",
+  "controller": "OpenAI Codex /root/animation_th_resume",
+  "slug": "ai-editable-explainer-animation",
+  "command": [
+    "node",
+    "--use-env-proxy",
+    "/workspace/work/ai-animation-01/languages.mjs",
+    "dub-reviewed",
+    "th"
+  ],
+  "one_native_invocation_only": true,
+  "preflight_file": "/workspace/work/ai-animation-01/th-resume-20261026T080355-preflight.json",
+  "preflight_sha256": "57e5dab644cec760fe7cbab1714d8934930acdb74ce6e8fb49cfb4a46edd838d",
+  "process_result_file": "/workspace/work/ai-animation-01/th-resume-20261026T080536-process-result.json",
+  "wrapper_process_exit_code": 0,
+  "process_signal": null,
+  "native_log": "/workspace/work/ai-animation-01/th-resume-20261026T080536-native.log",
+  "native_log_sha256": "4acbfdd4d90f3a5ba468bfa385469c5a6f801c8cc53cca16ac4cfa23544b0dde",
+  "native_log_exact": "ai-editable-explainer-animation: th dub check could not finish (  cab285  Gemini 暫時無法轉寫（Gemini returned no transcript: AI 拒絕回應（OTHER））); deferred until 2026-10-26T10:07:17.313Z\n",
+  "native_quality_result": "unfinished_due_explicit_known_service_refusal_not_quality_ready",
+  "before_defer_count": 5,
+  "after_defer_count": 6,
+  "next_native_due_utc": "2026-10-26T10:07:17.313Z",
+  "native_defer_limit_unchanged": 6,
+  "due_does_not_auto_resume": true,
+  "before_TH_rounds": {
+    "shorten": 1,
+    "retakes": 1,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "after_TH_rounds": {
+    "shorten": 1,
+    "retakes": 1,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "partial_flags": [
+    "e8b327",
+    "719e7c",
+    "8eb4eb",
+    "ee8b7c",
+    "28a3eb",
+    "c38a5e",
+    "ad1b2c",
+    "f064e3"
+  ],
+  "partial_flags_count": 8,
+  "flags_are_final_quality_result": false,
+  "TH_source_sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+  "cab285_wav_sha256": "2a80361b9d5bc05219a63221de8f9de5a9818720496d85d57a8d2f076cb6e650",
+  "TH_source_changed": false,
+  "fit_over": [],
+  "fit_kept": [],
+  "dub_status": "current",
+  "dub_note": "th.m4a",
+  "protected_evidence": {
+    "audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json": {
+      "before_sha256": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+      "after_sha256": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+      "unchanged": true
+    },
+    "dubs/ko/skipped.json": {
+      "before_sha256": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "after_sha256": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "unchanged": true
+    },
+    "dubs/pt/skipped.json": {
+      "before_sha256": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+      "after_sha256": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+      "unchanged": true
+    },
+    "dubs/id/skipped.json": {
+      "before_sha256": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+      "after_sha256": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+      "unchanged": true
+    },
+    "final.mp4": {
+      "before_sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+      "after_sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+      "unchanged": true
+    },
+    "approvals.json": {
+      "before_sha256": "8fefeaec595d5ba964eb6c0712ce9b9c27d8db4f6d4524492027d3b8e3e21106",
+      "after_sha256": "8fefeaec595d5ba964eb6c0712ce9b9c27d8db4f6d4524492027d3b8e3e21106",
+      "unchanged": true
+    },
+    "timeline.json": {
+      "before_sha256": "d34af3061326998b7b0cc843cf096323a15b39e313f99ad1a52124a1f27d240a",
+      "after_sha256": "d34af3061326998b7b0cc843cf096323a15b39e313f99ad1a52124a1f27d240a",
+      "unchanged": true
+    },
+    "checks.json": {
+      "before_sha256": "47d29b73329991495bc2f7d6b90f6c1b1c43314f45a992606f67915a116b9637",
+      "after_sha256": "47d29b73329991495bc2f7d6b90f6c1b1c43314f45a992606f67915a116b9637",
+      "unchanged": true
+    },
+    "languages.json": {
+      "before_sha256": "d0a0ee8e8b5f9198e7fd4a633a3d804ab8e98f0ea8ece966e2d637e116e305c9",
+      "after_sha256": "d0a0ee8e8b5f9198e7fd4a633a3d804ab8e98f0ea8ece966e2d637e116e305c9",
+      "unchanged": true
+    }
+  },
+  "all_protected_unchanged": true,
+  "unresolved_speech_journals": [
+    {
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json",
+      "status": "sent",
+      "sha256": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf"
+    }
+  ],
+  "no_new_unknown_speech_journal": true,
+  "producer_pid": 89202,
+  "producer_pid_still_present": false,
+  "lease_present": false,
+  "STOP_present": false,
+  "TH_skipped_marker_created": false,
+  "TH_ready": false,
+  "new_model_review_boundaries": [],
+  "owner_retry_request_created_taken_or_consumed": false,
+  "continuation": "No automatic loop or next due retry. Root must read this actual outcome and keep existing service/native caps, EN unknown journal, skip markers and approval guards."
+}

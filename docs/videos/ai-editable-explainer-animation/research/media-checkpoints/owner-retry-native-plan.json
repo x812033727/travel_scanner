@@ -1,0 +1,237 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T22:27:08.294277+00:00",
+  "slug": "ai-editable-explainer-animation",
+  "status": "read_only_plan_only_no_retry_helper_implemented_no_owner_request_created_or_consumed",
+  "scope": {
+    "locales": [
+      "ko",
+      "pt",
+      "id"
+    ],
+    "one_actual_request_per_future_invocation": true,
+    "source_and_native_state_changed_by_this_plan": false,
+    "API_calls_by_this_plan": 0,
+    "paid_calls_by_this_plan": 0
+  },
+  "current_private_status_handoff": {
+    "review_id": "e21cc268-0855-45f2-8b3b-25a0a39ca81e",
+    "content_sha256": "cea21a881b41e37b04996c38e8f825f595440e280f2111f0aaeb7179520881a5",
+    "status": "pending",
+    "reported_dubs": {
+      "ko": "skipped",
+      "pt": "skipped",
+      "id": "skipped"
+    },
+    "retry_blockers": {
+      "ko": null,
+      "pt": null,
+      "id": null
+    },
+    "evidence_origin": "Actual submission/readback confirmed by root; this planning agent made no API call.",
+    "owner_retry_requests": "No actual requested/open owner request has been supplied; do not start a retry."
+  },
+  "actual_code_sources": [
+    {
+      "path": "/workspace/travel_scanner/tools/video/automation/flow.mjs",
+      "sha256": "167a1630f0c95886e7518cfd7a5e3110ebe234d860700b603b82d4d07750b7ee"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/i18n/cli.mjs",
+      "sha256": "7c18f3ae076be34ff4eee0979ed8f6e76044f6594ef8335b567b0d8791f8c9ea"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/dubs/cli.mjs",
+      "sha256": "32fa90b9ae4ca8979584319647cd2f89a29d6d0827abed3137cd18e77545b807"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/dubs/plan.mjs",
+      "sha256": "249dbbce09541ad1f843f39d7355b4de56b283830ff5bee357457e15b9765a2f"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/core/project-lease.mjs",
+      "sha256": "611e9403b68059fdf2bbb475e4795f02813f606b17ae4a5326a420054b434a98"
+    },
+    {
+      "path": "/workspace/travel_scanner/apps/api/app/video_reviews/dub_retry.py",
+      "sha256": "908f514c5d3b690a147495785582ace9b7314a0e0bddcaea82701cb51c012e6a"
+    }
+  ],
+  "native_call_paths": [
+    {
+      "method": "Automation.mergeDubLines(state, locale, reviewedEditsMap, how)",
+      "source": "/workspace/travel_scanner/tools/video/automation/flow.mjs",
+      "line": 4678,
+      "behavior": "Local captions-only i18n-sheet -> replace selected worksheet texts -> native i18n-merge. Null means success. It does not dispatch a translation model and does not enforce max_chars itself."
+    },
+    {
+      "method": "Automation.dubRetries(state, realProjectWithOnlySelectedActualRetryEntry)",
+      "source": "/workspace/travel_scanner/tools/video/automation/flow.mjs",
+      "line": 3991,
+      "behavior": "Native retry router; keeps actual request IDs and local taking/taken/sent/refused recovery behavior."
+    },
+    {
+      "method": "Automation.takeDubRetry(state, realProject, locale, actualRetry)",
+      "source": "/workspace/travel_scanner/tools/video/automation/flow.mjs",
+      "line": 4042,
+      "behavior": "Free preflight -> actual report/ACK of same request ID as taken -> only then native counter reset and local taking -> startDubRetry."
+    },
+    {
+      "method": "Automation.startDubRetry(state, locale, actualRequestId)",
+      "source": "/workspace/travel_scanner/tools/video/automation/flow.mjs",
+      "line": 4088,
+      "behavior": "Only native lifecycle removes skipped.json, records taken, and invokes makeDub."
+    },
+    {
+      "method": "Automation.makeDub(state, locale)",
+      "source": "/workspace/travel_scanner/tools/video/automation/flow.mjs",
+      "line": 4358,
+      "behavior": "Normal synthesis/fit/ASR/Jev, shortening/retake/reword limits, STOP, leases and uncertain/pending receipts remain in force."
+    },
+    {
+      "method": "dub_retry.close_on_batch",
+      "source": "/workspace/travel_scanner/apps/api/app/video_reviews/dub_retry.py",
+      "line": 251,
+      "behavior": "A reported skipped dub closes only a TAKEN request. Merely REQUESTED remains requested. A ready result can close a real open request, so ready must never be inferred from text review."
+    }
+  ],
+  "proposal_state": {
+    "ko": {
+      "ready_as_text_only": true,
+      "review": {
+        "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.six-author-independent-review.json",
+        "sha256": "ad6059939d28aef784c9b22f20fda97abee4aeafdbf79c91abb6e29810eae7bf"
+      },
+      "selection": "Use the six reviewed_lines[].recommended_text values, not blindly the author proposals. The reviewer refines 719e7c to literal 2개.",
+      "current_translation": {
+        "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json",
+        "sha256": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd"
+      },
+      "scope": "Six source-meaning-reviewed text proposals only, not audio approval."
+    },
+    "pt": {
+      "ready_as_text_only": true,
+      "review": {
+        "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/pt.retry-one-text-review.json",
+        "sha256": "5df89be7dfe0b34d4411d4b8915e95980df4ad59bb701850c846f1132bc0f229"
+      },
+      "selection": "Use actual_texts_read.owner_proposed_exact for 9e738a. The independently accepted candidate is 57 codepoints within cap 58.",
+      "current_translation": {
+        "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/pt.json",
+        "sha256": "a64b95fa97a2d2bf76e7c27cd38d089e0144a2a6561f9a1fa0f93a4971c68857"
+      },
+      "scope": "Comenta matching old ASR does not make the historical Comente-intended failed WAV a newly passing take."
+    },
+    "id": {
+      "ready_as_all_three": false,
+      "review": {
+        "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.three-author-independent-review.json",
+        "sha256": "e3d795a8df5ae21ac56f2f1f21cc1d95773e366c159a45d74ab7f52062a7eb5a"
+      },
+      "review_verdict": "not_ready_to_apply_all_three: 9e738a source-meaning condition unresolved",
+      "accepted_text_only_ids": [
+        "f576ae",
+        "ed8308"
+      ],
+      "rejected_id": "9e738a",
+      "rejected_reason": "rumit describes complexity and loses the explicit hard-to-explain source condition. No approved faithful in-cap text for this line exists in the reviewed set.",
+      "selection": "Do not label or apply the whole set as three approved. Wait for a separately reviewed faithful replacement for 9e738a; for ed8308 use the independent recommended_text with explicit buat.",
+      "current_translation": {
+        "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/id.json",
+        "sha256": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a"
+      },
+      "native_failed_baseline": {
+        "path": "/workspace/work/ai-animation-01/id-attempt1-before-retry.json",
+        "sha256": "98ab00afa339e6c4c15729e1b9fa489f0f49e533b0792495163d4ee6fd9a20ae"
+      },
+      "scope": "All current failed ID state and texts remain unchanged. No owner retry request can substitute for source-fidelity review."
+    }
+  },
+  "minimum_future_sequence": [
+    {
+      "step": 1,
+      "action": "Require a genuine owner request and the real project lease.",
+      "guards": [
+        "Actual fresh ProjectOut.dub_retries[locale] has the supplied same UUID, status=requested and open=true; do not synthesize or create a request from chat text or the status review.",
+        "Only ko/pt/id; exact saved eight-language choice; current remote final/publish identities approved and bound to genuine local final+QA. Preserve source speech, branding and actual status/evidence bindings.",
+        "Acquire the normal shared project lease without takeover. Re-read native state under it; honor STOP, blocked/dropped/tidied state, deferrals and existing receipts. Set flow.leases and actual ctx/env as existing helper does."
+      ]
+    },
+    {
+      "step": 2,
+      "action": "Validate the independently reviewed exact edit map before mutation.",
+      "guards": [
+        "Original canonical translation SHA, source video SHA, baseline skip/fit/check/take hashes and proposal/review hashes must match the actual files.",
+        "Each before string and source cue must match. Allowed changed IDs are precisely the selected independently accepted lines; no metadata, chapters, primary text, voice or other locale changes.",
+        "mergeDubLines does not enforce budgets. Check Unicode counts against the independently reviewed caps, fresh native worksheet caps and actual fit.over max_chars when present; use the strictest applicable cap.",
+        "ID fit caps are f576ae=48, 9e738a=46, ed8308=63. Fresh native worksheet estimates are looser (65/58/82), so they must not replace those actual failed-fit caps. ID remains held until its rejected line has a faithful independently accepted replacement."
+      ]
+    },
+    {
+      "step": 3,
+      "action": "Create a work-only request-ID-bound merge receipt and apply through the native local merge.",
+      "call": "await flow.mergeDubLines(state, locale, new Map(reviewedIdTextPairs), \"independently reviewed owner-retry proposal\")",
+      "guards": [
+        "Before the merge, save actual request ID and original bytes/SHA, selected exact reviewed texts, review/proposal hashes, final/publish/choice identities and original failure evidence hashes in work/.",
+        "The helper must fence/check lease+STOP around this merge. Do not call rewordDub or shortenDub to apply held text; those would dispatch another paid model.",
+        "Require native merge return null. Check normalized before/after difference is exactly intended texts on selected IDs. Native i18n-merge supplies source_hash values; never hand-compute or relabel them.",
+        "Record actual merged canonical SHA. Skip markers, counters, existing clips/cache, old failure flags/checks and primary final/QA remain untouched at this boundary."
+      ]
+    },
+    {
+      "step": 4,
+      "action": "Fresh-read the same owner request after the local merge, then use the native retry router.",
+      "call": "await flow.dubRetries(state, { ...freshRealProject, dub_retries: { [locale]: freshRealProject.dub_retries[locale] } })",
+      "guards": [
+        "The selected object is the actual backend entry, filtered only to choose one locale. Do not invent requested/open/taken fields or echo an unsupplied ID.",
+        "Require the same still-requested/open request ID and unchanged approved final/publish and saved choice; verify lease/STOP and merged SHA again.",
+        "If request vanished/expired/changed, stop before any take or paid work. Record merged-but-not-taken state; do not manufacture ACK, clear a skip or reset counters.",
+        "Let native takeDubRetry run packageRefusal, other ready/uploaded tracks checks, dry-run and missing-current-translation checks against the newly merged text. Native failures/refusals/deferrals keep their actual semantics."
+      ]
+    },
+    {
+      "step": 5,
+      "action": "Allow only the native taken ACK transition to reach paid production.",
+      "guards": [
+        "Native report must return the same real request ID with status=taken. Null/no matching ACK is not authorization to fall through to makeDub.",
+        "Only after that actual ACK may native takeDubRetry/startDubRetry reset its retry rounds, set check_stopped, remove skipped.json and invoke makeDub. The wrapper must not duplicate those writes.",
+        "Keep normal fit/shortening/retake/reword limits and current native audio checks. An owner retry restarts rounds through that native state transition, not through an independent edit."
+      ]
+    },
+    {
+      "step": 6,
+      "action": "Resume from exact native and work receipts without re-merging or resetting.",
+      "guards": [
+        "If canonical matches this request-bound merged receipt, verify it instead of blindly requiring/reapplying the old before SHA. A different source/output pauses for inspection.",
+        "Use dubRetries for native taking recovery: if skip still exists it repeats native guards/ACK; if skip is already gone it resumes native startDubRetry. Never recreate taking/taken markers manually.",
+        "For matching actual taken/open plus local taken and absent skip, dubRetries deliberately returns null; resume makeDub for the same request only when unfinished. Do not call takeDubRetry again to reset counters.",
+        "If a durable shortening/reword stage is pending, recover the exact saved job first using existing hash/GET-only recovery so an already-counted round is not incremented twice.",
+        "If a taken ACK response was lost before any local taking record, require the matching request-bound merge receipt and untouched original skip; let native retry handling reconfirm its actual ACK, never synthesize or create local state independently. Otherwise stop and inspect.",
+        "A current checked completed dub with its language round cleared needs no more synthesis; a new native skip also must not be retried again automatically. Both still need a truthful later language result batch."
+      ]
+    }
+  ],
+  "source_and_cache_effects": [
+    "Changing only target translated text through native merge does not change the zh-TW primary source/final approval; primary timeline speech_hash and local final/QA must still be verified unchanged.",
+    "The repaired target translation_hash and affected TTS request/cache keys change, intentionally making the old target assembled dub stale while its genuine skip remains until actual taken ACK.",
+    "Native takeDubRetry checks staleness of OTHER tracks that the server says ready/uploaded; target staleness itself is expected and is not a reason to bypass the native preflight.",
+    "Native dub reuses unaffected current takes and synthesizes changed request keys or recovers their exact genuine saved result. Old failed ASR/flags may not be relabeled as approval of amended text.",
+    "Dry-run may exit zero even while estimating overlong windows. Text length and estimates are not measured fit or audio quality; actual native synthesis, fit and ASR/Jev still decide."
+  ],
+  "result_batch_and_queue_risks": [
+    "Native retry remains taken/open until its truthful later language batch (or native refusal). Do not interpret a local successful track as an owner Studio upload.",
+    "Do not rerun the frozen failure-status helper after an owner retry has been taken: restating that locale as skipped would close a TAKEN request as skipped. The existing helper already refuses open retries.",
+    "A later partial language batch replacing the current pending three-locale status must preserve other locales' actual states; superseding the old review with only one locale can otherwise remove its skip state from the UI.",
+    "Never restate an old skip for another locale whose retry is currently taken. Wait for its real result or omit its dub while preserving actual working state; do not close it through a status-only update.",
+    "No full package/publish or native language auto-push is planned here while EN is held and other components remain unfinished. Existing unchecked EN material must not become ready through a native dubsForUpload shortcut."
+  ],
+  "prohibited_helper_actions": [
+    "Creating an owner retry request or substituting chat/status review for the actual queue entry",
+    "Direct skip removal, retry-counter reset/increment, or synthetic taken ACK",
+    "Applying the rejected ID 9e738a candidate or calling all ID3 approved",
+    "Changing primary source/voice/branding/gates, approving QA, recording Studio upload or publication",
+    "Treating a text review, old ASR wording, a dry-run estimate, or an existing failed WAV as a fresh passing audio result",
+    "Taking over an active project lease or bypassing STOP/durable uncertainty"
+  ],
+  "next_action": "Wait for actual owner request(s). Implement a narrowly scoped consumer only against supplied real request ID(s) and the then-current approved exact text set; no retry helper or API operation is authorized by writing this plan."
+}

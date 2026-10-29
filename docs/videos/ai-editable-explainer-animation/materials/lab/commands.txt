@@ -1,0 +1,8 @@
+python check_lesson.py --self-test
+python check_lesson.py lesson.json --expect-count 6
+python render_lesson.py lesson.json --output demo.mp4
+python check_lesson.py lesson-sum6.json --expect-count 5
+python render_lesson.py lesson-sum6.json --output demo-sum6.mp4 --frames-dir frames-sum6
+python check_lesson.py lesson-invalid.json  # expected exit 1
+python export_diagrams.py
+ffprobe -v error -show_entries format=duration:stream=codec_name,width,height,r_frame_rate,nb_frames -of json demo.mp4

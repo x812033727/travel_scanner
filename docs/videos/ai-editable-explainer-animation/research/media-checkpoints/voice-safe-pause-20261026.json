@@ -1,0 +1,89 @@
+{
+  "recorded_at_utc": "2026-10-26T00:21:39.692510+00:00",
+  "controller": "OpenAI Codex /root/voice_controller",
+  "slug": "ai-editable-explainer-animation",
+  "status": "Parent-requested safe pause after four known explicit service failures; do NOT auto-resume at due time",
+  "no_active_command": true,
+  "lease_present": false,
+  "stop_present": false,
+  "native_defer_count": 4,
+  "native_defer_limit": 6,
+  "native_deferred_until": "2026-10-26T00:58:22.470Z",
+  "locale": "th",
+  "native_rounds": {
+    "shorten": 1,
+    "retakes": 1,
+    "reword": 0,
+    "check_stopped": true
+  },
+  "partial_flags": [
+    "e8b327",
+    "719e7c",
+    "8eb4eb",
+    "ee8b7c",
+    "28a3eb",
+    "c38a5e",
+    "ad1b2c",
+    "f064e3"
+  ],
+  "partial_flags_count": 8,
+  "flags_are_final_quality_result": false,
+  "flags_file_sha256": "bba21c8279c989acb6bfeba0f8b0c93a353bd37a009422de66cd5dbc1514b5dc",
+  "source_sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+  "service_failure": {
+    "line": "cab285",
+    "reason": "Gemini returned no transcript: AI refusal OTHER (actual explicit responses, not lost result)"
+  },
+  "cab285_wav": {
+    "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th/audio/cab285.wav",
+    "bytes": 451244,
+    "sha256": "2a80361b9d5bc05219a63221de8f9de5a9818720496d85d57a8d2f076cb6e650",
+    "ffprobe": {
+      "programs": [],
+      "stream_groups": [],
+      "streams": [
+        {
+          "sample_rate": "48000",
+          "channels": 1
+        }
+      ],
+      "format": {
+        "duration": "4.700000"
+      }
+    },
+    "mean_rms_dbfs": -17.1,
+    "peak_dbfs": -0.0,
+    "measurement": "Read-only ffmpeg volumedetect; output discarded"
+  },
+  "owner_retry_observation": {
+    "observed_at_utc": "2026-10-26T00:19:06.571Z",
+    "method": "GET",
+    "slug": "ai-editable-explainer-animation",
+    "dropped_at": null,
+    "dub_retries": {
+      "ko": null,
+      "pt": null,
+      "id": null
+    },
+    "dub_retry_blocked": {
+      "ko": null,
+      "pt": null,
+      "id": null
+    },
+    "ko_retry": null,
+    "retry_taken_by_this_observer": false,
+    "English_retry_authorized_by_this_read": false
+  },
+  "unsettled_speech_journals": [
+    {
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json",
+      "sha256": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+      "status": "sent"
+    }
+  ],
+  "no_new_th_unknown_speech": true,
+  "th_ready": false,
+  "th_skip_created": false,
+  "th_audio_to_handoff": false,
+  "next_step": "Remain paused until root explicitly authorizes continuation or safe handoff; never clear defers/counters/skips/journals; if resumed after authorization use actual due + cache + dub-reviewed th with all-round review boundaries"
+}

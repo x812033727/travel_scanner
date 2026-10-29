@@ -1,0 +1,75 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-26T00:39:23.313976+00:00",
+  "scope": "Necessary increment to the root-approved base: independent completed metadata/CC delivery while exact TH known-service defer keeps all TH voice omitted; no audio QA waived",
+  "script": "/workspace/work/ai-animation-01/partial-handoff.mjs",
+  "script_sha256": "776235a20b3f887ba8068baebe7cc0605af068d1aa4e38f1900f04d4e9901087",
+  "base": "/workspace/work/ai-animation-01/partial-handoff.before-th-defer-policy.20261026T003313Z.mjs",
+  "base_sha256": "3ed30471d758126a4721506b071800ff3efc5702b84edff927d780539e7312ae",
+  "diff": "/workspace/work/ai-animation-01/partial-handoff.th-defer-policy.diff",
+  "diff_sha256": "170f4e48b9dc825551740d221f6749f4abf8846d23b393c60d8543e27df45a13",
+  "node_syntax_check": "passed; parsing only",
+  "helper_actions_executed": [],
+  "API_calls": 0,
+  "provider_requests": 0,
+  "source_or_current_media_writes": 0,
+  "root_review_required_before_actions": true,
+  "independent_review": {
+    "reviewer": "OpenAI Codex /root/audit_caption_package/review_validator",
+    "reviewed_script_sha256": "776235a20b3f887ba8068baebe7cc0605af068d1aa4e38f1900f04d4e9901087",
+    "verdict": "No substantive defect found in the increment. TH exact native pause/partial flags/actual stale ASR proof, full voice-field/audio omission, policy/production actual-byte binding and historical timing exceptions are preserved.",
+    "helper_actions_executed": false,
+    "API_calls": 0
+  },
+  "TH_omit_branch": {
+    "checkpoint_sha256": "63c8567f003da8b6dd65861a410b35f436c69f1fb03e4e6e5555af1d1109efd7",
+    "current_source_sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+    "current_final_caption_review_sha256": "43a1dfafc53571f5a41654ddb06e03e70b875df20200d9913ad9d511615aa397",
+    "native_deferred_until": "2026-10-26T00:58:22.470Z",
+    "rounds": {
+      "shorten": 1,
+      "retakes": 1,
+      "reword": 0,
+      "check_stopped": true
+    },
+    "native_defer_count": 4,
+    "partial_flags_count": 8,
+    "partial_flags_are_final_quality_result": false,
+    "dub_field": "entirely omitted",
+    "TH_audio": "entirely excluded from attachments",
+    "backend_dub_state_required": "working",
+    "auto_resume_authorized": false,
+    "evidence_scope": "Actual controller checkpoint and native defer history. Native settled refusal journal entries were cleared, so no four saved raw HTTP receipts are claimed.",
+    "protected": "checkpoint/progress/auto, TH source+current final-caption review, fit/timeline/check/flags/cache/current track/cab285 WAV, journal directory; only original EN unknown allowed."
+  },
+  "tested_caption_production_binding": {
+    "core_sha256": "545b7228201c4043d48d2d2dfc6bca1762dfe5ee7e300c359ce872a07cb978b1",
+    "actual_production_QA_sha256": "77a071d0f75beb0cabeefa782d502f07a9c422c385a76af512348d35d82f1466",
+    "all_nine_actual_current_SRT_and_VTT_hashes": "checked against actual production evidence and pinned fresh native inspector at runtime; no helper action has been executed by this agent",
+    "native_validation_modules_guarded": [
+      "core/stages.mjs",
+      "dubs/plan.mjs",
+      "tts/check.mjs",
+      "package/metadata.mjs"
+    ],
+    "old_reports_relabelled_or_overwritten": false
+  },
+  "native_timing_disclosure": {
+    "JA47c7d2": {
+      "absorbed": "next-slack",
+      "overrun_seconds": 0.17,
+      "tempo": 1.15
+    },
+    "JA60d6c7": {
+      "absorbed": "tempo",
+      "overrun_seconds": 0.13,
+      "tempo": 1.17
+    },
+    "ES_and_VI_adjustment_windows": [],
+    "preexisting_unchanged_caption_visual_holds_ms": {
+      "en291f73": 367,
+      "ja47c7d2": 333
+    },
+    "scope": "Original saved native fit values and old unchanged caption cases, not new tempo/cap modifications or a claim that every historical caption has zero visual crossing."
+  }
+}

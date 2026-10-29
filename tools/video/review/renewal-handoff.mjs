@@ -20,7 +20,7 @@ import { currentDub, dubsForUpload, localeCues, localeTexts } from "../core/stag
 import { measureCut, measureProblems } from "../import/import.mjs";
 import { checkPackage, listFiles, packageFiles } from "../package/check.mjs";
 import { composeMetadata } from "../package/metadata.mjs";
-import { renewedFinal } from "./renewal.mjs";
+import { renewedFinal, renewalPlacement } from "./renewal.mjs";
 
 const HASH = /^[a-f0-9]{64}$/;
 const UUID = /^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/i;
@@ -157,56 +157,87 @@ async function copyVerified(source, target, expected) {
 /** Compare every encoded body picture and its timestamp; then decode the complete cut and
  * measure the re-encoded audio difference against its retained mix. No acceptance booleans
  * from an old candidate receipt substitute for this verification. */
-export async function verifyRetainedPictures({ body, final, branding, bodyFrames, bodyStartFrames = 0, env = process.env, exec = runTool }) {
+function retainedRanges(branding, bodyFrames, at = 0) {
+  const afterFirst = branding.intro_at === "after_first_chapter";
+  requireThat(branding.intro_at === undefined || branding.intro_at === "start" || afterFirst, "retained media has an unknown intro placement");
+  requireThat(Number.isSafeInteger(bodyFrames) && bodyFrames > 0 && Number.isSafeInteger(at) && at >= 0 && at < bodyFrames && (afterFirst ? at > 0 : at === 0), "retained media needs its validated intro placement and body frames");
+  return at === 0 ? [{ source_frame: 0, replacement_frame: branding.intro.frames, frames: bodyFrames }] : [
+    { source_frame: 0, replacement_frame: 0, frames: at },
+    { source_frame: at, replacement_frame: at + branding.intro.frames, frames: bodyFrames - at },
+  ];
+}
+
+export async function verifyRetainedPictures({ body, final, branding, bodyFrames, bodyStartFrames = 0, introAtFrame = 0, env = process.env, exec = runTool }) {
+  const ranges = retainedRanges(branding, bodyFrames, introAtFrame);
   const tools = await locateFfmpeg(env);
   const packets = async (file) => JSON.parse((await exec(tools.ffprobe, ["-v", "error", "-select_streams", "v:0", "-show_packets", "-show_entries", "packet=pts_time,data_hash,flags", "-show_data_hash", "sha256", "-of", "json", file])).stdout).packets;
   const allOriginal = await packets(body), replacement = await packets(final);
-  const startSeconds = bodyStartFrames / 30;
-  const original = allOriginal?.filter((p) => Number(p.pts_time) >= startSeconds - 0.00001 && Number(p.pts_time) < startSeconds + bodyFrames / 30 - 0.00001);
-  const offset = branding.intro.frames / 30;
+  requireThat(Number.isSafeInteger(bodyStartFrames) && bodyStartFrames >= 0, "retained source start frame must be a non-negative integer");
+  const sourceStart = bodyStartFrames / 30;
+  const inside = (p, start, frames) => Number(p.pts_time) >= start - 0.00001 && Number(p.pts_time) < start + frames / 30 - 0.00001;
+  const original = allOriginal?.filter((p) => inside(p, sourceStart, bodyFrames));
   requireThat(original?.length === bodyFrames, "retained body packet count differs from its source timeline");
-  const first = Number(original[0].pts_time);
-  const selected = replacement.filter((p) => Number(p.pts_time) >= offset - 0.00001 && Number(p.pts_time) < offset + bodyFrames / 30 - 0.00001);
-  requireThat(selected.length === original.length && original.every((p, i) => Math.abs(Number(selected[i].pts_time) - (Number(p.pts_time) - first + offset)) < 0.0001), "the approved replacement does not preserve every retained body picture timestamp");
+  const selected = replacement.filter((p) => ranges.some((r) => inside(p, r.replacement_frame / 30, r.frames)));
+  // Packets are in decoder order (B-frames need not have sorted PTS). Map each real PTS,
+  // not its array index, through the insertion and preserve exactly that decoder order.
+  requireThat(selected.length === original.length && original.every((p, i) => {
+    const relative = Number(p.pts_time) - sourceStart;
+    const shifted = relative + (introAtFrame === 0 || relative >= introAtFrame / 30 - 0.00001 ? branding.intro.frames / 30 : 0);
+    return Math.abs(Number(selected[i].pts_time) - shifted) < 0.0001;
+  }), "the approved replacement does not preserve every retained body picture timestamp");
+  if (introAtFrame > 0) for (const range of ranges) {
+    const sourceAt = sourceStart + range.source_frame / 30, replacementAt = range.replacement_frame / 30;
+    requireThat(original.find((p) => Math.abs(Number(p.pts_time) - sourceAt) < 0.00001)?.flags?.includes("K") && selected.find((p) => Math.abs(Number(p.pts_time) - replacementAt) < 0.00001)?.flags?.includes("K"), "an inserted intro requires retained body ranges starting at exact keyframes");
+  }
   const rawIdentical = original.every((p, i) => p.data_hash === selected[i].data_hash);
   let videoProof = { kind: "raw-packet-exact", raw_packets_identical: true };
   if (!rawIdentical) {
-    // MP4 concat may inject the source SPS/PPS into each keyframe packet. Preserve
-    // every parameter set, SEI and encoded picture: compare the entire Annex-B
-    // byte stream produced by the SAME lossless bitstream filter on both ranges.
     const codec = async (file) => JSON.parse((await exec(tools.ffprobe, ["-v", "error", "-select_streams", "v:0", "-show_entries", "stream=codec_name", "-of", "json", file])).stdout).streams?.[0]?.codec_name;
-    requireThat(await codec(body) === "h264" && await codec(final) === "h264" && original[0].flags?.includes("K") && selected[0].flags?.includes("K"), "changed raw packets require H.264 body ranges starting at exact keyframes");
+    requireThat(await codec(body) === "h264" && await codec(final) === "h264", "changed raw packets require H.264 body ranges starting at exact keyframes");
     const temporary = mkdtempSync(path.join(os.tmpdir(), "renewal-body-bitstream-"));
+    const rangeProofs = [];
     try {
-      const extracted = [];
-      for (const [file, start] of [[body, first], [final, offset]]) {
-        const output = path.join(temporary, `${extracted.length}.h264`);
-        await exec(tools.ffmpeg, ["-v", "error", "-ss", String(start), "-i", file, "-map", "0:v:0", "-frames:v", String(bodyFrames), "-c:v", "copy", "-bsf:v", "h264_mp4toannexb", "-an", "-f", "h264", output]);
-        extracted.push({ sha256: await sha256File(output), bytes: statSync(output).size });
+      for (const [index, range] of ranges.entries()) {
+        const sourceAt = sourceStart + range.source_frame / 30, replacementAt = range.replacement_frame / 30;
+        const firstOriginal = original.find((p) => Math.abs(Number(p.pts_time) - sourceAt) < 0.00001);
+        const firstReplacement = selected.find((p) => Math.abs(Number(p.pts_time) - replacementAt) < 0.00001);
+        requireThat(firstOriginal?.flags?.includes("K") && firstReplacement?.flags?.includes("K"), "changed raw packets require H.264 body ranges starting at exact keyframes");
+        // Compare both uninterrupted ranges independently, with parameter sets and SEI intact.
+        const extracted = [];
+        for (const [file, start] of [[body, sourceAt], [final, replacementAt]]) {
+          const output = path.join(temporary, `${index}-${extracted.length}.h264`);
+          await exec(tools.ffmpeg, ["-v", "error", "-ss", String(start), "-i", file, "-map", "0:v:0", "-frames:v", String(range.frames), "-c:v", "copy", "-bsf:v", "h264_mp4toannexb", "-an", "-f", "h264", output]);
+          extracted.push({ sha256: await sha256File(output), bytes: statSync(output).size });
+        }
+        requireThat(extracted[0].bytes > 0 && isDeepStrictEqual(extracted[0], extracted[1]), "the approved replacement changes retained H.264 pictures or codec parameters");
+        rangeProofs.push({ ...range, source_start_frame: bodyStartFrames + range.source_frame, annexb_sha256: extracted[0].sha256, annexb_bytes: extracted[0].bytes });
       }
-      requireThat(extracted[0].bytes > 0 && isDeepStrictEqual(extracted[0], extracted[1]), "the approved replacement changes retained H.264 pictures or codec parameters");
-      videoProof = { kind: "h264-annexb-exact", raw_packets_identical: false, annexb_sha256: extracted[0].sha256, annexb_bytes: extracted[0].bytes, packets: bodyFrames, source_file_sha256: await sha256File(body), final_file_sha256: await sha256File(final), source_start_frame: bodyStartFrames, replacement_start_frame: branding.intro.frames, frames: bodyFrames, fps: 30, source_raw_packets_sha256: digest(JSON.stringify(original)), replacement_raw_packets_sha256: digest(JSON.stringify(selected)) };
+      const common = { kind: "h264-annexb-exact", raw_packets_identical: false, packets: bodyFrames, source_file_sha256: await sha256File(body), final_file_sha256: await sha256File(final), source_start_frame: bodyStartFrames, frames: bodyFrames, fps: 30, source_raw_packets_sha256: digest(JSON.stringify(original)), replacement_raw_packets_sha256: digest(JSON.stringify(selected)) };
+      videoProof = introAtFrame === 0
+        ? { ...common, annexb_sha256: rangeProofs[0].annexb_sha256, annexb_bytes: rangeProofs[0].annexb_bytes, replacement_start_frame: branding.intro.frames }
+        : { ...common, intro_at_frame: introAtFrame, ranges: rangeProofs };
     } finally {
       requireThat(isInside(temporary, os.tmpdir()), "temporary bitstream path escapes its scratch directory");
       rmSync(temporary, { recursive: true, force: true });
     }
   }
-  return { video_packets: original.length, packet_sha256: digest(JSON.stringify(original)), video_proof: videoProof };
+  return { video_packets: original.length, packet_sha256: digest(JSON.stringify(original)), video_proof: videoProof, ...(introAtFrame ? { intro_at_frame: introAtFrame } : {}) };
 }
 
-export async function verifyRetainedMedia({ body, final, branding, bodyFrames, bodyStartFrames = 0, env = process.env, exec = runTool }) {
+export async function verifyRetainedMedia({ body, final, branding, bodyFrames, bodyStartFrames = 0, introAtFrame = 0, env = process.env, exec = runTool }) {
+  const ranges = retainedRanges(branding, bodyFrames, introAtFrame);
   const tools = await locateFfmpeg(env);
-  const pictures = await verifyRetainedPictures({ body, final, branding, bodyFrames, bodyStartFrames, env, exec });
-  const offset = branding.intro.frames / 30, startSeconds = bodyStartFrames / 30;
+  const pictures = await verifyRetainedPictures({ body, final, branding, bodyFrames, bodyStartFrames, introAtFrame, env, exec });
   await exec(tools.ffmpeg, ["-v", "error", "-xerror", "-i", final, "-map", "0:v:0", "-map", "0:a:0", "-f", "null", "-"]);
-  const seconds = bodyFrames / 30;
-  // amix's negative weights do not invert samples; subtract channels explicitly after
-  // merging, otherwise identical narration would incorrectly fail as a doubled signal.
-  const { stderr } = await exec(tools.ffmpeg, ["-hide_banner", "-nostats", "-i", body, "-i", final, "-filter_complex", `[0:a]atrim=start=${startSeconds}:duration=${seconds},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo[a];[1:a]atrim=start=${offset}:duration=${seconds},asetpts=PTS-STARTPTS,aformat=sample_rates=48000:channel_layouts=stereo[b];[a][b]amerge=inputs=2,pan=stereo|c0=c0-c2|c1=c1-c3,astats=metadata=0:reset=0`, "-t", String(seconds), "-vn", "-f", "null", "-"]);
+  const seconds = bodyFrames / 30, samples = bodyFrames * 1600;
+  const source = `[0:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=start_sample=${bodyStartFrames * 1600}:end_sample=${bodyStartFrames * 1600 + samples},asetpts=PTS-STARTPTS[a]`;
+  const parts = ranges.map((r, i) => `[1:a]aformat=sample_rates=48000:channel_layouts=stereo,atrim=start_sample=${r.replacement_frame * 1600}:end_sample=${(r.replacement_frame + r.frames) * 1600},asetpts=PTS-STARTPTS[b${i}]`);
+  const joined = ranges.length > 1 ? `[b0][b1]concat=n=2:v=0:a=1[b]` : `[b0]anull[b]`;
+  const { stderr } = await exec(tools.ffmpeg, ["-hide_banner", "-nostats", "-i", body, "-i", final, "-filter_complex", `${source};${parts.join(";")};${joined};[a][b]amerge=inputs=2,pan=stereo|c0=c0-c2|c1=c1-c3,astats=metadata=0:reset=0`, "-t", String(seconds), "-vn", "-f", "null", "-"]);
   const values = [...stderr.matchAll(/RMS level dB:\s*(-?inf|[-\d.]+)/g)].map((m) => Number(m[1] === "-inf" ? -Infinity : m[1]));
   requireThat(values.length && values.every((v) => v <= -35), "replacement audio does not preserve the retained mix at the new intro offset");
   const measured = await measureCut(final, env), checked = measureProblems(measured.probe, measured.loudness);
-  requireThat(!checked.problems.length && Math.abs(checked.seconds - (offset + seconds + branding.outro.frames / 30)) <= 0.1, `replacement media verification failed: ${checked.problems.join("; ") || "duration differs"}`);
+  requireThat(!checked.problems.length && Math.abs(checked.seconds - (branding.intro.frames / 30 + seconds + branding.outro.frames / 30)) <= 0.1, `replacement media verification failed: ${checked.problems.join("; ") || "duration differs"}`);
   return { ...pictures, audio_difference_rms_db: values.map((v) => Number.isFinite(v) ? v : "-inf"), full_decode_ok: true, seconds: checked.seconds, loudness: measured.loudness };
 }
 
@@ -463,7 +494,7 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
   const final = approved(remote, slug); inactive(remote);
   const pin = validateBranding(readJson(branding), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin.hash === final.payload.branding_hash, "selected branding differs from the owner-approved final");
-  requireThat(!pin.intro_at, "a renewal handoff keeps the intro at the start; a pin with intro_at after_first_chapter needs assemble instead");
+  requireThat(!pin.intro_at || mode === "normal", "manual renewal handoff keeps the intro at the start");
   const bound = final.payload.renewal_candidate.source;
   const rangeSource = mode === "manual-import" && source.body_from_original === true;
   requireThat(await sha256File(source.original) === bound.final_sha256 && (rangeSource || await sha256File(source.body) === bound.body_sha256) && await sha256File(candidate) === final.content_sha256, "original, retained body or candidate differs from the owner-approved source binding");
@@ -471,6 +502,9 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
   const retained = mode === "normal" ? await fileInventory(source.workdir) : {};
   const bodyFrames = mode === "normal" ? readJson(path.join(source.workdir, "timeline.json")).total_frames : source.body_frames;
   requireThat(Number.isSafeInteger(bodyFrames) && bodyFrames > 0, "missing retained body frame proof");
+  const bodyTimeline = mode === "normal" ? readJson(path.join(source.workdir, "timeline.json")) : null;
+  const placement = renewalPlacement(pin, bodyTimeline);
+  if (placement) requireThat(await sha256File(path.join(source.workdir, "timeline.json")) === bound.body_timeline_sha256 && isDeepStrictEqual(final.payload.renewal_candidate.presentation, placement), "approved renewal body timeline or intro placement changed");
   const bodyStartFrames = rangeSource ? source.old_intro_frames : 0;
   requireThat(Number.isSafeInteger(bodyStartFrames) && bodyStartFrames >= 0 && bodyStartFrames <= 900, "an original-cut body range needs its verified old intro frame count");
   requireThat(!rangeSource || source.old_intro_ms === bodyStartFrames * 1000 / 30, "caption source offset does not match the original-cut body range");
@@ -483,8 +517,8 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
   }
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `${role} branding asset changed`);
   const bodyFile = rangeSource ? source.original : source.body;
-  const media = await verifyMedia({ body: bodyFile, final: candidate, branding: pin, bodyFrames, bodyStartFrames });
-  requireThat(media.full_decode_ok === true && media.video_packets === bodyFrames, "replacement media proof is incomplete");
+  const media = await verifyMedia({ body: bodyFile, final: candidate, branding: pin, bodyFrames, bodyStartFrames, ...(placement ? { introAtFrame: placement.intro_at_frame } : {}) });
+  requireThat(media.full_decode_ok === true && media.video_packets === bodyFrames && (!placement || media.intro_at_frame === placement.intro_at_frame), "replacement media proof is incomplete");
   mkdirSync(out);
   try {
     for (const [name, proof] of Object.entries(retained)) await copyVerified(path.join(source.workdir, name), path.join(out, name), proof.sha256);
@@ -506,7 +540,7 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
     let manual = null;
     if (mode === "normal") {
       const checks = readJson(path.join(source.workdir, "checks.json"));
-      save(path.join(out, "checks.json"), { ...checks, metrics: { ...checks.metrics, frames: bodyFrames + pin.intro.frames + pin.outro.frames, loudness: media.loudness }, branding: { hash: pin.hash, id: pin.id, intro_frames: pin.intro.frames, outro_frames: pin.outro.frames, body_frames: bodyFrames, body_file: "build/body.mp4", body_sha256: bound.body_sha256 }, renewal_media: media });
+      save(path.join(out, "checks.json"), { ...checks, metrics: { ...checks.metrics, frames: bodyFrames + pin.intro.frames + pin.outro.frames, loudness: media.loudness }, branding: { hash: pin.hash, id: pin.id, intro_frames: pin.intro.frames, outro_frames: pin.outro.frames, body_frames: bodyFrames, body_file: "build/body.mp4", body_sha256: bound.body_sha256, ...(placement ? { intro_at_frame: placement.intro_at_frame } : {}) }, renewal_media: media });
     } else {
       requireThat(!existsSync(path.join(out, "timeline.json")), "manual imports must not invent a narration timeline");
       manual = await prepareManualPackage({ workdir: out, remote, final, source: source.package, offsetMs: pin.intro.frames * 1000 / 30 - (source.old_intro_ms ?? 0) });
@@ -519,7 +553,7 @@ export async function prepareHandoff({ slug, canonical, out, source, candidate, 
       }
       save(path.join(out, "renewal-language-source.json"), { schema_version: 1, kind: "renewed-import-language-source", slug, source: { final: identity(final), original_final: { review_id: bound.final_review_id, content_sha256: bound.final_sha256 }, branding_hash: pin.hash, body: { kind: rangeSource ? "original-cut-range" : "retained-body-file", sha256: actualBodySha, file: bodyPath, start_frame: bodyStartFrames, frames: bodyFrames }, media }, choice: { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }, metadata: { file: "upload/metadata.json", sha256: await sha256File(path.join(out, "upload/metadata.json")) }, captions_zh_TW: { file: "upload/captions/zh-TW.srt", sha256: await sha256File(path.join(out, "upload/captions/zh-TW.srt")), original: manual.metadata.renewal_handoff.captions["zh-TW"] }, adapter, holds: manual.holds, adapter_requirement: "Only a retained real script/body timing adapter may translate or fit dubs; this contract does not fabricate narration/TTS evidence." });
     }
-    const receipt = { schema_version: 1, kind: "renewal-handoff", id: randomUUID(), slug, mode, prepared_at: now.toISOString(), canonical, snapshot: out, archive: `${canonical}.renewal-archive-${randomUUID()}`, owner_final: { ...identity(final), branding_hash: pin.hash, decided_at: final.decided_at }, source: { ...bound, body_frames: bodyFrames, ...(mode === "normal" ? { project: { doc_sha256: digest(JSON.stringify(project.doc)), lexicon_sha256: digest(JSON.stringify(project.lexicon)) } } : {}), body_proof: { kind: rangeSource ? "original-cut-range" : "retained-body-file", file: bodyPath, sha256: actualBodySha, start_frame: bodyStartFrames, frames: bodyFrames, ...(rangeSource ? { candidate_body_container_unavailable: true } : {}) }, canonical_files: canonicalBefore, retained_files: retained }, choice: { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }, media, holds: manual?.holds ?? [], files: await fileInventory(out, { exclude: [RECEIPT, "STOP"] }) };
+    const receipt = { schema_version: 1, kind: "renewal-handoff", id: randomUUID(), slug, mode, prepared_at: now.toISOString(), canonical, snapshot: out, archive: `${canonical}.renewal-archive-${randomUUID()}`, owner_final: { ...identity(final), branding_hash: pin.hash, decided_at: final.decided_at }, source: { ...bound, body_frames: bodyFrames, ...(placement ? { presentation: placement } : {}), ...(mode === "normal" ? { project: { doc_sha256: digest(JSON.stringify(project.doc)), lexicon_sha256: digest(JSON.stringify(project.lexicon)) } } : {}), body_proof: { kind: rangeSource ? "original-cut-range" : "retained-body-file", file: bodyPath, sha256: actualBodySha, start_frame: bodyStartFrames, frames: bodyFrames, ...(rangeSource ? { candidate_body_container_unavailable: true } : {}) }, canonical_files: canonicalBefore, retained_files: retained }, choice: { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }, media, holds: manual?.holds ?? [], files: await fileInventory(out, { exclude: [RECEIPT, "STOP"] }) };
     save(path.join(out, RECEIPT), receipt);
     requireThat(isDeepStrictEqual(canonicalBefore, await fileInventory(canonical)) && (mode !== "normal" || isDeepStrictEqual(retained, await fileInventory(source.workdir))), "source changed while preparing; preserve the snapshot and prepare afresh");
     return receipt;
@@ -537,6 +571,13 @@ export async function verifyHandoff({ receipt, workdir = receipt.snapshot, remot
   else requireThat(bodyProof.kind === "retained-body-file" && bodyProof.sha256 === bound.body_sha256 && bodyProof.file === "build/body.mp4" && bodyProof.start_frame === 0 || receipt.mode === "manual-import" && bodyProof.kind === "original-cut-range" && bodyProof.sha256 === bound.final_sha256 && bodyProof.file === "retained-source/body-original-cut.mp4" && bodyProof.candidate_body_container_unavailable === true && Number.isSafeInteger(bodyProof.start_frame) && bodyProof.start_frame >= 0, "invalid retained-body file/range proof");
   requireThat(isDeepStrictEqual(receipt.owner_final, receipt.mode === "approved-final-body-range" ? currentAuthority(final) : { ...identity(final), branding_hash: final.payload.branding_hash, decided_at: final.decided_at }) && isDeepStrictEqual(receipt.choice, { locales: normalizedChoices(remote.locales), decided_at: remote.locales_decided_at }), "owner final approval or language choice changed; keep both snapshots held");
   if (receipt.mode === "normal") requireThat(project && isDeepStrictEqual(receipt.source.project, { doc_sha256: digest(JSON.stringify(project.doc)), lexicon_sha256: digest(JSON.stringify(project.lexicon)) }), "source document or lexicon changed since prepare; keep the worker held");
+  if (receipt.mode === "normal") {
+    const pin = validateBranding(readJson(path.join(workdir, "branding.json")), { base: workdir });
+    const placement = renewalPlacement(pin, readJson(path.join(workdir, "timeline.json")));
+    requireThat(pin.hash === final.payload.branding_hash, "handoff branding differs from the current owner-approved final");
+    if (placement) requireThat(receipt.source.body_timeline_sha256 === bound.body_timeline_sha256 && await sha256File(path.join(workdir, "timeline.json")) === bound.body_timeline_sha256 && isDeepStrictEqual(placement, final.payload.renewal_candidate.presentation) && isDeepStrictEqual(placement, receipt.source.presentation) && receipt.media.intro_at_frame === placement.intro_at_frame && readJson(path.join(workdir, "checks.json")).branding.intro_at_frame === placement.intro_at_frame, "handoff body timeline or intro placement differs from the approved renewal");
+    else requireThat(!receipt.source.presentation && !final.payload.renewal_candidate.presentation, "unexpected handoff intro placement proof");
+  }
   requireThat(isDeepStrictEqual(receipt.files, await fileInventory(workdir, { exclude: [RECEIPT, "STOP"] })), "prepared snapshot bytes changed; keep both snapshots held");
   requireThat(receipt.files["final.mp4"]?.sha256 === final.content_sha256 && receipt.files[receipt.source.body_proof?.file]?.sha256 === receipt.source.body_proof?.sha256 && existsSync(path.join(workdir, "STOP")), "snapshot is not the stopped approved final and retained body");
   if (verifyCanonical) requireThat(isDeepStrictEqual(receipt.source.canonical_files, await fileInventory(receipt.canonical)), "canonical source changed since prepare; keep the worker held");

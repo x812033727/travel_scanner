@@ -1,0 +1,540 @@
+{
+  "schema_version": 1,
+  "locale": "vi",
+  "review_type": "final_source_only_review_of_all_actual_dub_text_deltas",
+  "reviewer_identity": {
+    "provider": "OpenAI",
+    "agent": "Codex",
+    "model_family": "GPT-6",
+    "exact_runtime_model": "not exposed to the agent",
+    "task_name": "/root/review_id_vi_th/review_vi",
+    "is_human": false,
+    "is_claude": false
+  },
+  "verdict": "ready_for_current_text_if_source_sha_unchanged",
+  "translation_sha256": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "pre_translation_sha256": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6",
+  "expected_translation_sha256": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+  "initial_snapshot_captured_at": "2026-10-25T23:03:09.879793+00:00",
+  "initial_snapshot_sha256": {
+    "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "translation": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+    "pre": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6",
+    "worksheet": "fa34cfbc26f0843d8a26bb55826e72c6dc64743783ff0e90bb0808169b05e2c7"
+  },
+  "source_only_text_review": true,
+  "independent_of_native_reworder_and_root_author": true,
+  "raw_native_answer_not_used_as_canonical": true,
+  "actual_current_canonical_diffed_against_pre": true,
+  "expected_changed_ids": [
+    "79a96a",
+    "7b0c6d",
+    "291f73",
+    "52cf29",
+    "b69ae1",
+    "28a3eb",
+    "84576e"
+  ],
+  "actual_changed_ids": [
+    "79a96a",
+    "7b0c6d",
+    "291f73",
+    "52cf29",
+    "b69ae1",
+    "28a3eb",
+    "84576e"
+  ],
+  "changed_narration_count": 7,
+  "unchanged_narration_count": 94,
+  "total_caption_count": 101,
+  "review_scope": "Freshly read all seven actual changed captions against the zh-TW source and two adjacent lines on each side, then compared exact strings to the prior shortening, author-correction and native reword receipts. The other 94 captions and all metadata remain identical to the independently reviewed PRE baseline.",
+  "per_line": [
+    {
+      "id": "79a96a",
+      "source": "所以這次從一份需求做出教學短片，連修改的方法一起留下。",
+      "source_hash": "1e28b1f36cfb",
+      "pre": "Lần này, từ yêu cầu làm ra video ngắn giảng dạy, giữ cả cách chỉnh sửa.",
+      "current": "Lần này, ta dựa vào một bản yêu cầu để làm video hướng dẫn ngắn và giữ cả cách sửa.",
+      "current_codepoints": 83,
+      "worksheet_max_chars": 101,
+      "worksheet_text_matches": true,
+      "context": [
+        {
+          "id": "c5a4b1",
+          "scene": "hook-question",
+          "source": "如果你把題目換掉，亮起來的格子會一起改嗎？",
+          "current": "Nếu bạn đổi bài toán, các ô sáng có đổi theo không?"
+        },
+        {
+          "id": "74eeac",
+          "scene": "hook-timing",
+          "source": "旁白換成另一種語言，畫面會不會已經跳走？",
+          "current": "Đổi ngôn ngữ lời dẫn, hình ảnh đã chuyển mất chưa?"
+        },
+        {
+          "id": "aa0639",
+          "scene": "hook-stakes",
+          "source": "你要的不是再抽一個好畫面，而是把錯字真的改掉。",
+          "current": "Bạn không cần thử vận may lấy hình đẹp khác, mà cần sửa được lỗi chữ thật sự."
+        },
+        {
+          "id": "c2d378",
+          "scene": "route-begin",
+          "source": "那到底要跟 AI 要什麼，它才不會只交出一段做好的影片？",
+          "current": "Vậy cần xin AI những gì để nó không chỉ giao một video làm sẵn?"
+        }
+      ],
+      "verdict": "ready_for_source_meaning_and_naturalness",
+      "source_meaning_complete": true,
+      "source_clause_order": "pass: requirements basis, short teaching video, retained editing method",
+      "naturalness_and_register": "Natural concise standard Vietnamese.",
+      "meaning_review": "One requirements brief leads to a short teaching video, with the editing method retained. ta is a normal contextual narrator/we; no product success guarantee is introduced.",
+      "names_numbers_conditions": "pass; no source number, name or condition omitted, changed or added",
+      "proof_reference_files": [
+        "vi.three-author-proposals.json",
+        "vi.three-author-independent-review.json",
+        "vi.three-author-applied.json"
+      ],
+      "source_text_sha256": "1e28b1f36cfb3bc0e09eefbafb08107177126f92fcfd060a11aa9bbc69eb058a",
+      "pre_text_sha256": "9f9ded27025c2b801c3ea3e23124bd762c841d1822e5ed052e666da3e44e1f54",
+      "current_text_sha256": "e7cbc9fbbd725eecbca77609d6c733c766d3dfa5c9cb1738abb8a6e5f4535fd6",
+      "current_text_codepoint_budget_pass": true,
+      "foreign_script_check_pass": true
+    },
+    {
+      "id": "7b0c6d",
+      "source": "先請它畫出格子上色那一幕，別一開始就要求整支完成。",
+      "source_hash": "7b0c6de91eaf",
+      "pre": "Xin cảnh tô màu ô trước, đừng yêu cầu hoàn thành cả video ngay từ đầu.",
+      "current": "Hãy nhờ AI vẽ trước cảnh tô màu các ô lưới, đừng ngay từ đầu đã yêu cầu hoàn thành cả video.",
+      "current_codepoints": 92,
+      "worksheet_max_chars": 106,
+      "worksheet_text_matches": true,
+      "context": [
+        {
+          "id": "76fc63",
+          "scene": "brief-second-prompt",
+          "source": "然後說明觀眾沒學過機率，先看組合，不要一開始就丟公式。",
+          "current": "Sau đó nói người xem chưa học xác suất: xem tổ hợp trước, đừng đưa công thức ngay."
+        },
+        {
+          "id": "066452",
+          "scene": "brief-dimension",
+          "source": "如果主要給手機看，就說明文字要大，圖例不要靠邊。",
+          "current": "Nếu chủ yếu xem trên điện thoại, yêu cầu chữ to, chú giải không sát mép."
+        },
+        {
+          "id": "1f3f10",
+          "scene": "build-start",
+          "source": "核心畫面有了，就請 AI 把它整理成能執行的專案。",
+          "current": "Có hình cốt lõi rồi, nhờ AI gom thành dự án chạy được."
+        },
+        {
+          "id": "291f73",
+          "scene": "build-ask",
+          "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+          "current": "Đọc tiêu đề, mục tiêu từ tệp; đừng ghi số riêng từng hình."
+        }
+      ],
+      "verdict": "ready_for_source_meaning_and_naturalness",
+      "source_meaning_complete": true,
+      "source_clause_order": "pass: pilot scene first, then the prohibition on requesting the entire completed video initially",
+      "naturalness_and_register": "Natural standard Vietnamese; ô lưới explicitly denotes grid cells.",
+      "meaning_review": "Ask AI to draw the cell-coloring scene first; do not request completion of the entire video at the outset. Explicit AI refers to the established context.",
+      "names_numbers_conditions": "pass; no source number, name or condition omitted, changed or added",
+      "proof_reference_files": [
+        "vi.reword-1-delta-review.json"
+      ],
+      "source_text_sha256": "7b0c6de91eafbd04915f065aaa6357bdb1e51907c5218513aebe8ee03c288b4c",
+      "pre_text_sha256": "f10cf69761df03b029a5d3a09a196fe0a8e6704f83498d09e6fcc22cd8e787bf",
+      "current_text_sha256": "881a937e9621a32891bfdb644326b467b211b87d915f36b8141d226faa555896",
+      "current_text_codepoint_budget_pass": true,
+      "foreign_script_check_pass": true
+    },
+    {
+      "id": "291f73",
+      "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+      "source_hash": "291f73fb2e95",
+      "pre": "Đọc tiêu đề, mục tiêu từ dữ liệu, đừng ghi số riêng ở từng hình.",
+      "current": "Đọc tiêu đề, mục tiêu từ tệp; đừng ghi số riêng từng hình.",
+      "current_codepoints": 58,
+      "worksheet_max_chars": 74,
+      "worksheet_text_matches": true,
+      "context": [
+        {
+          "id": "7b0c6d",
+          "scene": "brief-pilot",
+          "source": "先請它畫出格子上色那一幕，別一開始就要求整支完成。",
+          "current": "Hãy nhờ AI vẽ trước cảnh tô màu các ô lưới, đừng ngay từ đầu đã yêu cầu hoàn thành cả video."
+        },
+        {
+          "id": "1f3f10",
+          "scene": "build-start",
+          "source": "核心畫面有了，就請 AI 把它整理成能執行的專案。",
+          "current": "Có hình cốt lõi rồi, nhờ AI gom thành dự án chạy được."
+        },
+        {
+          "id": "60d6c7",
+          "scene": "build-ask",
+          "source": "請它附安裝、預覽和輸出的指令，並解釋每個檔案的用途。",
+          "current": "Xin lệnh cài đặt, xem trước, xuất video, và giải thích công dụng từng tệp."
+        },
+        {
+          "id": "d27bc5",
+          "scene": "build-ask",
+          "source": "另外寫一個檢查程式，從所有結果重新算出正確答案。",
+          "current": "Viết thêm chương trình kiểm tra, tính lại đáp án đúng từ mọi kết quả."
+        }
+      ],
+      "verdict": "ready_for_source_meaning_and_naturalness",
+      "source_meaning_complete": true,
+      "source_clause_order": "pass: file-reading instruction before the per-visual separate-number prohibition",
+      "naturalness_and_register": "Natural concise technical Vietnamese. Complete content is retained without the previously rejected loss of per-image scope.",
+      "meaning_review": "Read both title and target from the project data file, then prohibit independently writing numbers in each visual. tệp denotes the file being read in this project context; từng hình retains the essential per-visual scope.",
+      "names_numbers_conditions": "pass; no source number, name or condition omitted, changed or added",
+      "proof_reference_files": [
+        "vi.shorten-1-delta-review.json",
+        "vi.author-shortening-correction.json"
+      ],
+      "source_text_sha256": "291f73fb2e95ec69e81b872b2cb5dabe3505e7224bf1fb0b115d03b49b2c20c8",
+      "pre_text_sha256": "7e4c312e7a0ed21334e3098f5160c0974115d3b6e8525357c9b893d0790bf404",
+      "current_text_sha256": "231f6b87106875f8d8f656845018c6e2ada7badc3dd208260da6e3aeb7b0dddf",
+      "current_text_codepoint_budget_pass": true,
+      "foreign_script_check_pass": true
+    },
+    {
+      "id": "52cf29",
+      "source": "渲染會讀取同一份資料，輸出無聲影片和預覽影格；輸出名稱就是畫面上的設定，旁白要另外加。",
+      "source_hash": "659765acd649",
+      "pre": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và khung xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "current": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và các khung hình xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng.",
+      "current_codepoints": 136,
+      "worksheet_max_chars": 156,
+      "worksheet_text_matches": true,
+      "context": [
+        {
+          "id": "1de727",
+          "scene": "build-display",
+          "source": "把預覽縮到手機寬度，看標題能不能讀，重點能不能找到。",
+          "current": "Thu bản xem trước về độ rộng điện thoại; xem tiêu đề đọc được, trọng tâm rõ không."
+        },
+        {
+          "id": "0dd30b",
+          "scene": "build-handoff",
+          "source": "這時才請它輸出影片，別把等待完整轉檔當成驗證內容。",
+          "current": "Lúc này mới xuất video; đừng coi chờ chuyển đổi cả tệp là kiểm chứng nội dung."
+        },
+        {
+          "id": "005752",
+          "scene": "run-preview-stills",
+          "source": "如果只是想檢查圖形，使用只產生影格的選項，先看圖再做完整影片。",
+          "current": "Nếu chỉ kiểm tra hình, dùng tùy chọn chỉ tạo khung hình; xem hình rồi mới làm video đầy đủ."
+        },
+        {
+          "id": "7bf8fb",
+          "scene": "revise-start",
+          "source": "影片能播了，那麼開場那個問題來了：只改一個數字，畫面會跟著改嗎？",
+          "current": "Video phát được rồi. Trở lại câu hỏi đầu: chỉ đổi một số, hình có đổi theo không?"
+        }
+      ],
+      "verdict": "ready_for_source_meaning_and_naturalness",
+      "source_meaning_complete": true,
+      "source_clause_order": "pass: same data, silent output, preview frames, output naming, separate narration",
+      "naturalness_and_register": "Acceptable concise technical narration in the rendering-command context; các khung hình xem trước clearly denotes preview frames.",
+      "meaning_review": "Rendering reads the same data, outputs a silent video and preview frames; output names follow on-screen settings, and narration is added separately. All five source components remain explicit.",
+      "names_numbers_conditions": "pass; no source number, name or condition omitted, changed or added",
+      "proof_reference_files": [
+        "vi.three-author-proposals.json",
+        "vi.three-author-independent-review.json",
+        "vi.three-author-applied.json"
+      ],
+      "source_text_sha256": "659765acd649916f100832a4fc7174a6024b02691a5740237e5ebbb67edc947f",
+      "pre_text_sha256": "790ec942252c4220fd690f89ea814862d2e38216cf37d033d02e933ecbedfc25",
+      "current_text_sha256": "a772780fc1217bc9ce39eae80718521b7fa67aeedfb9823f8274723033e06d05",
+      "current_text_codepoint_budget_pass": true,
+      "foreign_script_check_pass": true
+    },
+    {
+      "id": "b69ae1",
+      "source": "畫面再看字有沒有超框，格子和顏色是不是容易辨認。",
+      "source_hash": "b69ae171f159",
+      "pre": "Xem chữ có tràn khung, ô và màu có dễ phân biệt không.",
+      "current": "Chữ tràn khung? Ô và màu dễ phân biệt?",
+      "current_codepoints": 38,
+      "worksheet_max_chars": 77,
+      "worksheet_text_matches": true,
+      "context": [
+        {
+          "id": "b919e0",
+          "scene": "check-start",
+          "source": "影片播完了，現在拿回一開始的需求，一條一條對。",
+          "current": "Video phát xong, lấy yêu cầu ban đầu ra đối chiếu từng mục."
+        },
+        {
+          "id": "ee8b7c",
+          "scene": "check-levels",
+          "source": "內容先看條件和計數，不能因為動畫很順就把數學錯誤放過去。",
+          "current": "Kiểm tra điều kiện và số đếm, đừng bỏ lỗi toán chỉ vì hoạt hình mượt."
+        },
+        {
+          "id": "481fba",
+          "scene": "check-levels",
+          "source": "最後確認影片能播放，聲音、字幕和原始檔都在交付包裡。",
+          "current": "Cuối cùng kiểm tra video phát được, gói bàn giao có tiếng, phụ đề và tệp gốc."
+        },
+        {
+          "id": "18691a",
+          "scene": "check-distribution",
+          "source": "檢查程式從點數組合重算答案，不讀畫面自己宣告的數字。",
+          "current": "Chương trình kiểm tra tính lại từ tổ hợp mặt xúc xắc, không đọc số hình tự nêu."
+        }
+      ],
+      "verdict": "ready_for_source_meaning_and_naturalness",
+      "source_meaning_complete": true,
+      "source_clause_order": "pass: text overflow before grid-cell/color recognition",
+      "naturalness_and_register": "Natural concise Vietnamese checklist questions. Both questions retain interrogative checking rather than asserting an overflow or an error.",
+      "meaning_review": "Checks text overflowing its frame and distinguishability of both grid cells and colors. The source grid-cell check omitted by the first native shortening is restored in the actual current text.",
+      "names_numbers_conditions": "pass; no source number, name or condition omitted, changed or added",
+      "proof_reference_files": [
+        "vi.shorten-1-delta-review.json",
+        "vi.author-shortening-correction.json"
+      ],
+      "source_text_sha256": "b69ae171f15971ad5699ad68ae2f2b24850f7abf9acbab28160d0cc27e4729d4",
+      "pre_text_sha256": "8648656edb16dbdb5d8b41ab43c0073ac1abed6c71a5e002f0b5175faf720b0a",
+      "current_text_sha256": "d489951aa16ad21ef72257470a46396ea6276120502fa7f72cc73c04cde2a286",
+      "current_text_codepoint_budget_pass": true,
+      "foreign_script_check_pass": true
+    },
+    {
+      "id": "28a3eb",
+      "source": "不過程式能核對格子，卻不會替你判斷這句解釋好不好懂。",
+      "source_hash": "55c13b8f6a34",
+      "pre": "Chương trình kiểm tra được ô, nhưng không đánh giá hộ bạn lời giải thích có dễ hiểu không.",
+      "current": "Chương trình kiểm tra ô lưới, nhưng không đánh giá hộ bạn câu giải thích có dễ hiểu không.",
+      "current_codepoints": 90,
+      "worksheet_max_chars": 99,
+      "worksheet_text_matches": true,
+      "context": [
+        {
+          "id": "481fba",
+          "scene": "check-levels",
+          "source": "最後確認影片能播放，聲音、字幕和原始檔都在交付包裡。",
+          "current": "Cuối cùng kiểm tra video phát được, gói bàn giao có tiếng, phụ đề và tệp gốc."
+        },
+        {
+          "id": "18691a",
+          "scene": "check-distribution",
+          "source": "檢查程式從點數組合重算答案，不讀畫面自己宣告的數字。",
+          "current": "Chương trình kiểm tra tính lại từ tổ hợp mặt xúc xắc, không đọc số hình tự nêu."
+        },
+        {
+          "id": "203f1e",
+          "scene": "check-firstlast",
+          "source": "你要看最前面和最後面，避免切到一半，或者還留著空白尾巴。",
+          "current": "Xem phần đầu và cuối để tránh cắt ngang hoặc còn đuôi trống."
+        },
+        {
+          "id": "7311eb",
+          "scene": "check-real-modify",
+          "source": "你可能會問，修改版還要檢查嗎？也要重新輸出，確認修改流程走得通。",
+          "current": "Phiên bản đã sửa cũng phải kiểm tra sao? Cũng xuất lại để chắc quy trình sửa chạy được."
+        }
+      ],
+      "verdict": "ready_for_source_meaning_and_naturalness",
+      "source_meaning_complete": true,
+      "source_clause_order": "pass: program grid checking before its limit on judging explanatory clarity",
+      "naturalness_and_register": "Natural standard Vietnamese with established bạn register; ô lưới is consistent with adjacent grid terminology.",
+      "meaning_review": "The program checks grid cells but does not judge for the viewer whether the explanatory sentence is easy to understand. In context, indicative checking describes the program's stated capability without adding a guarantee.",
+      "names_numbers_conditions": "pass; no source number, name or condition omitted, changed or added",
+      "proof_reference_files": [
+        "vi.three-author-proposals.json",
+        "vi.three-author-independent-review.json",
+        "vi.three-author-applied.json"
+      ],
+      "source_text_sha256": "55c13b8f6a34bcd90c12b485dbbe848bbf5027b3fdf7faae567d29183b9ffeff",
+      "pre_text_sha256": "9de3e064c1b1fec23bb83047b55f28bbacb4fb2fd08fb564f1840e6ced0968e5",
+      "current_text_sha256": "275476ceba2371cc62933d9f9f0c84ff47c3d602749b7ecbee5d33775be44dbe",
+      "current_text_codepoint_budget_pass": true,
+      "foreign_script_check_pass": true
+    },
+    {
+      "id": "84576e",
+      "source": "這份範例證明的是格子圖能重做，不是任何 AI 都能一次完成所有影片。",
+      "source_hash": "84576e7d6b40",
+      "pre": "Ví dụ chứng minh có thể làm lại sơ đồ ô, không phải AI nào cũng làm xong mọi video trong một lần.",
+      "current": "Ví dụ này cho thấy rằng sơ đồ ô lưới có thể làm lại được, chứ không có nghĩa AI nào cũng làm xong mọi video chỉ trong một lần.",
+      "current_codepoints": 126,
+      "worksheet_max_chars": 139,
+      "worksheet_text_matches": true,
+      "context": [
+        {
+          "id": "c38a5e",
+          "scene": "check-release-note",
+          "source": "交付時寫下這版改的是題目、數值還是時間，接手的人才知道先看哪裡。",
+          "current": "Khi giao, ghi phiên bản này đổi bài, số hay thời gian, để người nhận biết xem đâu trước."
+        },
+        {
+          "id": "a56276",
+          "scene": "check-source",
+          "source": "素材的來源和使用方式寫在交付說明，避免後面的人還得猜。",
+          "current": "Ghi nguồn và cách dùng tư liệu trong hướng dẫn bàn giao, để người sau khỏi phải đoán."
+        },
+        {
+          "id": "ad1b2c",
+          "scene": "practice-start",
+          "source": "骰子這一題做完了，把它換成你自己的題目，先挑一個能畫成前後變化的概念。",
+          "current": "Bài xúc xắc đã xong, đổi sang đề của bạn; trước hết chọn khái niệm vẽ được thay đổi trước và sau."
+        },
+        {
+          "id": "d8b2ca",
+          "scene": "practice-actions",
+          "source": "寫下觀眾看完要懂的那一句，刪掉跟這一句無關的內容。",
+          "current": "Viết câu người xem cần hiểu sau khi xem, bỏ nội dung không liên quan."
+        }
+      ],
+      "verdict": "ready_for_source_meaning_and_naturalness",
+      "source_meaning_complete": true,
+      "source_clause_order": "pass: demonstrated grid recreation before limitation on any AI/all videos/one attempt",
+      "naturalness_and_register": "Natural standard Vietnamese; no change to scope, certainty or product guarantees.",
+      "meaning_review": "The example demonstrates that the grid diagram can be recreated; it does not imply that any AI can finish all videos in one attempt. cho thấy rằng naturally conveys this demonstrated result and retains the source limitation.",
+      "names_numbers_conditions": "pass; no source number, name or condition omitted, changed or added",
+      "proof_reference_files": [
+        "vi.reword-1-delta-review.json",
+        "vi.reword-2-delta-review.json"
+      ],
+      "source_text_sha256": "84576e7d6b408641d94ab10d019285ae3d342e580b0648f7ed4215846d5620e9",
+      "pre_text_sha256": "4007d63f5370f34dd28c5eb93baa34f0af8b8eef5170218356062ee0ca3bea73",
+      "current_text_sha256": "54a5623bb3514cb80715111683d230156b1fef0b9bd0e1eb089fd080b6013ece",
+      "current_text_codepoint_budget_pass": true,
+      "foreign_script_check_pass": true
+    }
+  ],
+  "metadata_checks": {
+    "unchanged_from_pre": true,
+    "fields_compared": [
+      "title",
+      "description",
+      "tags",
+      "chapters",
+      "thumbnail"
+    ],
+    "chapters_compared": 8,
+    "title_exact": "Làm hoạt hình giảng dạy bằng AI: sửa được cả chữ lẫn số",
+    "title_codepoints": 55,
+    "title_limit": 90,
+    "title_and_tags_no_channel_name": true,
+    "title_no_angle_brackets": true,
+    "description_retains": [
+      "2026-10-25 confirmation date",
+      "Python and FFmpeg example written with AI",
+      "not a Claude Motion operation recording",
+      "no single-product one-pass completion claim",
+      "practice data fields only support zh-TW",
+      "intentionally silent MP4",
+      "SRT timing is designed storyboard timing, not measured narration alignment",
+      "independent main-video narration/CC/eight-language dub production",
+      "unchanged exact materials URL"
+    ],
+    "thumbnail_exact": {
+      "tag": "Hoạt hình AI để dạy học",
+      "headline": "**Sửa được**",
+      "sub": "Giữ cả tệp nguồn"
+    },
+    "thumbnail_emphasis_preserved": true,
+    "thumbnail_short_and_complete": true,
+    "metadata_source_meaning": "pass; unchanged approved metadata was rechecked against source"
+  },
+  "baseline_proof": {
+    "full_101_line_and_8_chapter_review": "vi.reviewer.json",
+    "all_initial_fixes_confirmed_before_dub": "vi.post-fix-review.json",
+    "baseline_translation_sha256": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6"
+  },
+  "proof_references": {
+    "vi.reviewer.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.reviewer.json",
+      "sha256": "57973a7c1496dcffe86b100e8c71b5cf8d0a1af9c0807c71f7426e99dd90bd26",
+      "recorded_verdict": "ready_after_fixes"
+    },
+    "vi.post-fix-review.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.post-fix-review.json",
+      "sha256": "b708d6d7e7b1ac217ed19797d6a9a6e5a65643af7d227d4a32e4f3a8dc0c1c3a",
+      "recorded_verdict": "ready"
+    },
+    "vi.shorten-1-delta-review.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.shorten-1-delta-review.json",
+      "sha256": "ce1a6a1891d4ef356f829e38ccd78a314a60eefb540e1c0e585299b268867c0f",
+      "recorded_verdict": "needs_author_correction"
+    },
+    "vi.three-author-proposals.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.three-author-proposals.json",
+      "sha256": "bc170d1da6565db052a027939a8ed77f1131a55fbfc143362d9bf5d6441a3027",
+      "recorded_verdict": null
+    },
+    "vi.three-author-provenance.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.three-author-provenance.json",
+      "sha256": "eb9ff945d91ad31bb337742161723ad2d6d9c5867adc6ee3f4123da2822153f4",
+      "recorded_verdict": null
+    },
+    "vi.three-author-independent-review.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.three-author-independent-review.json",
+      "sha256": "0d54e81363fab2426a011701bc92b2da2c782030a8c8a9963edcb668907f977c",
+      "recorded_verdict": "approved_for_text_merge_only; actual new TTS and audio/fit checks still required"
+    },
+    "vi.reword-1-delta-review.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.reword-1-delta-review.json",
+      "sha256": "54dbea3e19410151b011ea6e105b64cf349f69c418de5866a7fcfddc12b3dfdb",
+      "recorded_verdict": "pass_for_two_accepted_text_changes_only"
+    },
+    "vi.reword-2-delta-review.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.reword-2-delta-review.json",
+      "sha256": "ed3f6075f76cbb0e5bfb2e73e67b54e76a2e8bbb418bca62e36e7db4720fc001",
+      "recorded_verdict": "pass_text_meaning_naturalness_and_codepoint_budget"
+    },
+    "vi.author-shortening-correction.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.author-shortening-correction.json",
+      "sha256": "1de94262098fccd96d097b714480984e04213009b7cdd415e693fa7929dfc0ea",
+      "recorded_verdict": null
+    },
+    "vi.three-author-applied.json": {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.three-author-applied.json",
+      "sha256": "59cd13dd59672e3df1ef6c228c667fa9485b5f89fe2e657ac2b4a8dca900917c",
+      "recorded_verdict": null
+    }
+  },
+  "approval_limits": {
+    "native_voice_QA_is_independent": true,
+    "voice_approved": false,
+    "audio_auditioned": false,
+    "actual_audio_fit_approved": false,
+    "flags_cleared": false,
+    "new_synthesis_performed": false,
+    "API_or_paid_calls": false,
+    "counter_reset": false,
+    "source_native_media_or_state_edits": false
+  },
+  "files_modified": [
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/vi.final-dub-translation-review.json"
+  ],
+  "review_completed_at_utc": "2026-10-25T23:04:46.767285+00:00",
+  "source_meaning_and_naturalness_all_seven": "pass",
+  "text_review_pass": true,
+  "before_write_sha256": {
+    "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "translation": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+    "pre": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6"
+  },
+  "stable_before_write": true,
+  "after_write_sha256": {
+    "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "translation": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+    "pre": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6"
+  },
+  "stable_after_write": true,
+  "final_after_write_sha256": {
+    "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "translation": "b4529d2379c5c5498907cb3c343fce337c030fb8c83da27d295cb464a536d9db",
+    "pre": "0e0630d6aa0ce78a454ce5bf9761cd2c82c833f6a6e9ca2a97a479ea163368c6"
+  },
+  "stable_after_final_write": true
+}

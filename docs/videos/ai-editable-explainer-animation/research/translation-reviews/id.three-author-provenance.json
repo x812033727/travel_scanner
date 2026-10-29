@@ -1,0 +1,64 @@
+{
+  "created_at_utc": "2026-10-25T22:18:04.674634+00:00",
+  "author": {
+    "agent": "/root/compact_id_three",
+    "method": "Direct original Indonesian compact-text proposals from the actual Traditional Chinese source and saved failed fit evidence. No external API/model call or audio audition."
+  },
+  "locale": "id",
+  "slug": "ai-editable-explainer-animation",
+  "proposal_file": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.three-author-proposals.json",
+  "proposal_sha256": "394e85262278a1c2d6aa1675a077bd7008651257bd1687c21c2442d635d30731",
+  "source_files": [
+    {
+      "role": "repository_source_video",
+      "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+      "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806"
+    },
+    {
+      "role": "repository_canonical_translation",
+      "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/id.json",
+      "sha256": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a"
+    },
+    {
+      "role": "actual_failed_attempt_baseline",
+      "path": "/workspace/work/ai-animation-01/id-attempt1-before-retry.json",
+      "sha256": "98ab00afa339e6c4c15729e1b9fa489f0f49e533b0792495163d4ee6fd9a20ae"
+    },
+    {
+      "role": "native_skipped_marker",
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/skipped.json",
+      "sha256": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c"
+    },
+    {
+      "role": "actual_native_fit",
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/id/fit.json",
+      "sha256": "7e7234b1f834add429f1f4be0ab03a39faef829ad72a21df0f275897927b7c5b"
+    }
+  ],
+  "native_failed_baseline": {
+    "shorten": 1,
+    "retakes": 0,
+    "reword": 0,
+    "counter_entry_now": null,
+    "native_give_up_completed": true,
+    "fit_over_ids": [
+      "f576ae",
+      "9e738a",
+      "ed8308"
+    ],
+    "has_assembled_checked_track": false,
+    "has_ASR": false
+  },
+  "independent_review": {
+    "status": "Not yet performed; parent will assign a separate reviewer. Particular attention required for 9e738a contextual rumit paraphrase."
+  },
+  "application": {
+    "canonical_source_changed": false,
+    "audio_generated": false,
+    "counters_changed": false,
+    "skip_cleared": false,
+    "owner_retry_taken": false,
+    "quality_approval": false,
+    "required_before_any_voice": "Actual documented owner native retry request/handshake, separate source review, then new native synthesis/fit/audio QA; text length is not measured voice fit."
+  }
+}

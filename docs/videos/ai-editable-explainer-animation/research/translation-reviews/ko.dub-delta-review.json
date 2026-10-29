@@ -1,0 +1,59 @@
+{
+  "locale": "ko",
+  "slug": "ai-editable-explainer-animation",
+  "reviewer_identity": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+  "reviewer_type": "AI assistant",
+  "human_review": false,
+  "claude_review": false,
+  "reviewed_at_utc": "2026-10-25T20:11:17.158377+00:00",
+  "review_scope": "Independent actual meaning review of c141fc only against accepted pre-dub base, zh-TW source, current surrounding Korean narration and source slide context. No audio listening and no provider calls.",
+  "verdict": "ready after the fix",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "accepted_base_translation_sha256": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+  "current_translation_sha256": "f9e52edca2412494ea0fac8bfb65cb80c52e1431a5a384bb6f0d5d7391a419fd",
+  "input_sha256": {
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json": "f9e52edca2412494ea0fac8bfb65cb80c52e1431a5a384bb6f0d5d7391a419fd",
+    "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations/ko.json": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/ko.todo.json": "19ff6b216054dc9ee4c5be432e62bbd39cec706ed33c1fdcc157b26d241b3e44",
+    "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/fit.json": "8440ea8f7a5e17a6cbf79bff70c76586af98545779b4166c6a1954f54e87b38c"
+  },
+  "line": {
+    "id": "c141fc",
+    "source": "要求每個格子檢查兩個點數相加，符合條件才上色。",
+    "before": "칸마다 두 눈의 합이 조건에 맞아야 칠합니다.",
+    "after": "칸마다 두 눈의 합이 맞아야 칠합니다.",
+    "current_chars": 21,
+    "worksheet_max_chars": 32,
+    "within_worksheet_max_chars": true,
+    "worksheet_matches_current": true,
+    "meaning_verdict": "needs_fix",
+    "issue": "Dropping 조건에 leaves 합이 맞아야 without an explicit comparator. In Korean this can mean the arithmetic sum is correct, rather than the sum satisfies the specified condition. The stated matching condition is the reason only selected cells receive color, so it should remain explicit.",
+    "context_assessment": "The earlier line says to write conditions first, and a later prompt explicitly says to color cells whose sum matches the target; the current line itself still permits the arithmetic-correctness reading. Two dice, fairness, independence and ordered outcomes remain established by unchanged surrounding narration. This fix need not repeat those model assumptions.",
+    "native_fit_window": {
+      "scene": "brief-constraints",
+      "state": 1,
+      "start_frame": 3439,
+      "end_frame": 3572,
+      "lines": [
+        "c141fc"
+      ],
+      "tempo": 1,
+      "slack_frames": 51,
+      "over": false
+    }
+  },
+  "suggested_corrections": [
+    {
+      "kind": "line",
+      "id_or_field": "c141fc",
+      "before": "칸마다 두 눈의 합이 맞아야 칠합니다.",
+      "after": "칸마다 두 눈의 합이 목표여야 칠합니다.",
+      "chars": 22,
+      "max_chars": 32,
+      "reason": "Restores an explicit target for the per-cell two-dice sum and retains the necessary-condition wording 여야 for coloring. This project uses a target-sum condition; no extra mathematical assumption is added. The 22-character suggestion fits the current 32-character worksheet cap. It has not been synthesized or applied."
+    }
+  ],
+  "native_fit_over": [],
+  "mutations": "Only this review JSON. No source, worksheet, translation, state, audio, merge, git or paid API calls."
+}

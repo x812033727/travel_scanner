@@ -1,0 +1,432 @@
+{
+  "schema_version": 1,
+  "locale": "th",
+  "slug": "ai-editable-explainer-animation",
+  "review_type": "independent_native_reword_round_1_source_meaning_review",
+  "reviewed_at_utc": "2026-10-26T11:13:07.392682+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex agent based on GPT-6; exact deployment identifier is not exposed",
+    "agent": "/root/th_meaning_reword_1",
+    "role": "independent source-meaning reviewer",
+    "human": false,
+    "native_speaker_claimed": false,
+    "translator_or_native_proposal_author": false,
+    "audio_listener_approval_claimed": false
+  },
+  "passed": true,
+  "text_review_pass": true,
+  "verdict": "ready_for_current_TH_source_text_only",
+  "scope": "Fresh source/adjacent-context meaning review of all nine actual reword-round-1 proposals, with acceptance based only on the three actually applied canonical deltas. Other 98 line records and all metadata were checked for exact equality to the previously reviewed baseline; they were not retranslated. The one material problem in a rejected proposal does not exist in the current translation.",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "baseline_translation_sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+  "current_translation_sha256": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93",
+  "meaning_fixes_needed": 0,
+  "meaning_issue_count": 0,
+  "meaning_issues_found_in_current_deltas": [],
+  "suggested_corrections": [],
+  "file_evidence": {
+    "source": {
+      "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+      "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "bytes": 47678
+    },
+    "baseline_translation": {
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/service-retakes/80314efb1c9db5dbc40cfac786078904bf9e0711e5f0c7e8ff4ac9c9ab72ed41/before-translation.json",
+      "sha256": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+      "bytes": 29514
+    },
+    "current_translation": {
+      "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json",
+      "sha256": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93",
+      "bytes": 29562
+    },
+    "boundary": {
+      "path": "/workspace/work/ai-animation-01/author-review-boundaries/th.reword.json",
+      "sha256": "e85841845060655607166d676ff6a34c1f28764653c0f217f601a75ca28b1b6e",
+      "bytes": 1156
+    },
+    "archived_boundary": {
+      "path": "/workspace/work/ai-animation-01/author-review-boundaries/th.reword.round-1.2026-10-26T11-05-24-993Z.json",
+      "sha256": "e85841845060655607166d676ff6a34c1f28764653c0f217f601a75ca28b1b6e",
+      "bytes": 1156
+    },
+    "native_answer": {
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/answers/th-reword-round-1-author-review-2026-10-26T11-05-24-992Z.txt",
+      "sha256": "38056825470d647b80d294fe7c8b18ec695829570accd170c07e79ccec7fbe6d",
+      "bytes": 2376
+    },
+    "producer_handoff": {
+      "path": "/workspace/work/ai-animation-01/th-after-counted-retake-20261026T110402-review-handoff.json",
+      "sha256": "562ab04f0db9374f4028348425b90b2372c2342dc97bd8129979ff26d525942c",
+      "bytes": 23281
+    },
+    "current_worksheet": {
+      "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/th.todo.json",
+      "sha256": "5c835354a82253e3be8423bd2b2c98bc8a38085b38c343ef560fb21c3da9d4ca",
+      "bytes": 42497
+    },
+    "prior_baseline_caption_review": {
+      "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/translation-reviews/th.final-caption-translation-review.json",
+      "sha256": "43a1dfafc53571f5a41654ddb06e03e70b875df20200d9913ad9d511615aa397",
+      "bytes": 7707
+    }
+  },
+  "boundary_validation": {
+    "variant": "reword",
+    "round": 1,
+    "recorded_at": "2026-10-26T11:05:24.993Z",
+    "latest_equals_immutable_archive": true,
+    "current_translation_matches_boundary": true,
+    "native_answer_matches_boundary": true,
+    "native_rounds_exact": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 1,
+      "check_stopped": true
+    },
+    "actual_native_applied_ids": [
+      "e8b327",
+      "cab285",
+      "ad1b2c"
+    ],
+    "actual_native_dropped_reasons": [
+      "719e7c: over its budget (72 characters, at most 69)",
+      "8eb4eb: over its budget (64 characters, at most 63)",
+      "ee8b7c: over its budget (90 characters, at most 70)",
+      "28a3eb: over its budget (80 characters, at most 76)",
+      "c38a5e: over its budget (100 characters, at most 97)",
+      "f064e3: over its budget (107 characters, at most 98)"
+    ],
+    "round_counter_reset_or_override_performed": false
+  },
+  "canonical_diff_validation": {
+    "baseline_line_count": 101,
+    "current_line_count": 101,
+    "line_ids_and_order_equal": true,
+    "changed_line_ids": [
+      "e8b327",
+      "cab285",
+      "ad1b2c"
+    ],
+    "other_line_records_exactly_unchanged": 98,
+    "all_three_changed_source_hashes_unchanged": true,
+    "non_line_field_differences": [],
+    "metadata_chapters_thumbnail_and_non_line_source_hashes_exactly_unchanged": true,
+    "all_six_dropped_proposals_remain_exact_baseline_text": true,
+    "prior_baseline_review_binds_exact_baseline_and_same_primary_source": true
+  },
+  "proposals": [
+    {
+      "id": "e8b327",
+      "scene": "opening",
+      "source_zh_TW": "用 AI 做的教學動畫，也能改字和改數字。",
+      "baseline_th_exact": "แอนิเมชันสอนจาก AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "raw_native_proposal_exact": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "current_th_exact": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "applied_by_native": true,
+      "native_disposition": "applied",
+      "native_rejection_exact": null,
+      "source_hash_unchanged": true,
+      "proposal_equals_current": true,
+      "proposal_codepoints": 52,
+      "native_worksheet_max_chars": 61,
+      "proposal_within_character_budget": true,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "pass_current_applied_text",
+      "source_fidelity": {
+        "referent_and_capability": "แอนิเมชันสอนที่ทำด้วย AI identifies the teaching animation made using AI. ก็...แก้ข้อความและตัวเลขได้ preserves the source claim that its text and numbers can also be edited; Thai ได้ expresses capability and does not claim that the animation autonomously corrects content.",
+        "edit_targets": "ข้อความ and ตัวเลข explicitly preserve both text and numbers.",
+        "conditions_negation_steps_and_values": "The source has no condition, negation, numerical value or procedural sequence to lose or reverse. No factual claim is added; AI remains spelled exactly as in the source.",
+        "teaching_intent": "The opening promise remains editable instructional animation, matching the following computed dice-grid example."
+      },
+      "thai_register_and_readability": "Natural spoken Thai relative clause ที่ทำด้วย clarifies made using AI. A single female-narrator ค่ะ is appropriate; no ครับ or register shift.",
+      "required_source_fix": null,
+      "slot_assessment": "Within the recorded native character budget; no measured speech duration, tempo fit or audio acceptance is established by this count.",
+      "adjacent_context_directly_read": {
+        "previous_source": null,
+        "previous_th": null,
+        "source_slide_data": {
+          "tag": "AI 教學動畫｜可下載原始檔",
+          "title": "用 AI 做教學動畫",
+          "subtitle": "字能改，數字也能一起改",
+          "key": "做出能修改的教學動畫"
+        },
+        "following_source": "像這張骰子圖，每一個亮起來的格子，都是程式算出來的。",
+        "following_th": "อย่างภาพลูกเต๋านี้ ทุกช่องที่สว่างคำนวณด้วยโปรแกรม"
+      }
+    },
+    {
+      "id": "719e7c",
+      "scene": "brief-prompt-one",
+      "source_zh_TW": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+      "baseline_th_exact": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+      "raw_native_proposal_exact": "คำสั่งเขียนแบบนี้ ให้วาดผลลัพธ์ทุกแบบที่มีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+      "current_th_exact": "เขียนพรอมต์: วาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก",
+      "applied_by_native": false,
+      "native_disposition": "dropped_over_budget_current_remains_baseline",
+      "native_rejection_exact": "719e7c: over its budget (72 characters, at most 69)",
+      "source_hash_unchanged": true,
+      "proposal_equals_current": false,
+      "proposal_codepoints": 72,
+      "native_worksheet_max_chars": 69,
+      "proposal_within_character_budget": false,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "source_meaning_retained_in_unapplied_proposal",
+      "source_fidelity": "Keeps the prompt-writing instruction, all outcomes, ordered-result distinction and two fair dice. ผลลัพธ์ทุกแบบที่มีลำดับ carries all ordered outcomes; ลูกเต๋าเที่ยงตรงสองลูก retains the two fair dice.",
+      "thai_register_and_readability": "Understandable Thai; longer paraphrase is unnecessary to judge because native already rejected it for its budget.",
+      "required_source_fix": null
+    },
+    {
+      "id": "8eb4eb",
+      "scene": "revise-lock-prompt",
+      "source_zh_TW": "再補一句，保留配色、字體和片段順序。",
+      "baseline_th_exact": "เพิ่มว่า คงสี ฟอนต์ และลำดับช่วงไว้",
+      "raw_native_proposal_exact": "เพิ่มอีกประโยคว่า ให้คงสีตัวอักษร รูปแบบตัวอักษร และลำดับช่วงไว้",
+      "current_th_exact": "เพิ่มว่า คงสี ฟอนต์ และลำดับช่วงไว้",
+      "applied_by_native": false,
+      "native_disposition": "dropped_over_budget_current_remains_baseline",
+      "native_rejection_exact": "8eb4eb: over its budget (64 characters, at most 63)",
+      "source_hash_unchanged": true,
+      "proposal_equals_current": false,
+      "proposal_codepoints": 64,
+      "native_worksheet_max_chars": 63,
+      "proposal_within_character_budget": false,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "fail_unapplied_proposal_only",
+      "source_fidelity": "The Chinese 配色 means the animation color scheme/palette as a whole. สีตัวอักษร means text color and narrows that scope. รูปแบบตัวอักษร and ลำดับช่วง retain font/style and segment order, but they do not restore the lost whole-animation palette.",
+      "thai_register_and_readability": "Grammatical Thai, but the color restriction changes the instruction.",
+      "required_source_fix": "If a later native proposal is sought, retain the whole color scheme (for example the concept โทนสี or ชุดสี), together with font and segment order. Do not replace the current canonical line with this rejected proposal. Any replacement must pass the existing native validator; this review supplies no bypass or application."
+    },
+    {
+      "id": "cab285",
+      "scene": "audio-staging",
+      "source_zh_TW": "先把解釋亮起格子的那句話對準，再把同樣的方法用到其他段落。",
+      "baseline_th_exact": "จัดประโยคอธิบายช่องสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "raw_native_proposal_exact": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "current_th_exact": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "applied_by_native": true,
+      "native_disposition": "applied",
+      "native_rejection_exact": null,
+      "source_hash_unchanged": true,
+      "proposal_equals_current": true,
+      "proposal_codepoints": 71,
+      "native_worksheet_max_chars": 77,
+      "proposal_within_character_budget": true,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "pass_current_applied_text",
+      "source_fidelity": {
+        "specific_sentence_and_lit_cells": "ประโยคที่อธิบายช่องที่สว่าง identifies the particular sentence explaining the illuminated cells. Written ช่อง denotes the cell; ช่วงอื่น later denotes other segments. These referents are distinct and match the Chinese.",
+        "alignment_context": "จัด...ให้ตรง is an alignment instruction in the directly read context. The previous Thai line explicitly says the designed subtitle timing must be aligned with the finished audio file, so this line is not an instruction to rewrite the explanation.",
+        "sequence_and_method": "ให้ตรงก่อน then แล้วใช้วิธีเดียวกันกับช่วงอื่น preserves first aligning that one sentence and then applying the same method to other segments.",
+        "conditions_negation_steps_and_values": "No condition, negation, numeric value, product name or extra production step is introduced or dropped.",
+        "teaching_intent": "Start with one sentence aligned to the lit-grid explanation, then extend the method across the rest of the timeline."
+      },
+      "thai_register_and_readability": "The two relative clauses are grammatical and make the cell/sentence references explicit. ก่อน...แล้ว is natural procedural Thai. ความหมายของช่อง is assessed from the written text only.",
+      "required_source_fix": null,
+      "slot_assessment": "Within the recorded native character budget; no measured speech duration, tempo fit or audio acceptance is established by this count.",
+      "adjacent_context_directly_read": {
+        "previous_source": "教材裡的字幕先按設計時間切段，等旁白做好，還要再用音檔對齊。",
+        "previous_th": "ซับในสื่อแบ่งตามเวลาออกแบบ พอได้เสียงบรรยายต้องจัดให้ตรงไฟล์เสียงอีก",
+        "source_slide_data": {
+          "text": "先把一句對準",
+          "key": "先做好一段，再鋪開整條",
+          "icon": "gear"
+        },
+        "following_source": "先關掉影片的聲音，再看畫面能不能說明正在比較的內容。",
+        "following_th": "ปิดเสียงก่อน ดูว่าภาพอธิบายสิ่งที่กำลังเปรียบเทียบได้ไหม"
+      }
+    },
+    {
+      "id": "ee8b7c",
+      "scene": "check-levels",
+      "source_zh_TW": "內容先看條件和計數，不能因為動畫很順就把數學錯誤放過去。",
+      "baseline_th_exact": "ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะแอนิเมชันลื่น",
+      "raw_native_proposal_exact": "ตรวจเงื่อนไขและการนับก่อน อย่าปล่อยให้ข้อผิดพลาดทางคณิตศาสตร์ผ่านไป เพราะภาพเคลื่อนไหวลื่น",
+      "current_th_exact": "ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะแอนิเมชันลื่น",
+      "applied_by_native": false,
+      "native_disposition": "dropped_over_budget_current_remains_baseline",
+      "native_rejection_exact": "ee8b7c: over its budget (90 characters, at most 70)",
+      "source_hash_unchanged": true,
+      "proposal_equals_current": false,
+      "proposal_codepoints": 90,
+      "native_worksheet_max_chars": 70,
+      "proposal_within_character_budget": false,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "source_meaning_retained_in_unapplied_proposal",
+      "source_fidelity": "ตรวจเงื่อนไขและการนับก่อน preserves checking conditions and counting first. อย่าปล่อยให้ข้อผิดพลาดทางคณิตศาสตร์ผ่านไป เพราะภาพเคลื่อนไหวลื่น retains the prohibition on letting a math error pass because the animation is smooth; the negative polarity is not reversed.",
+      "thai_register_and_readability": "Natural full phrasing for the warning, but over the actual native line budget.",
+      "required_source_fix": null
+    },
+    {
+      "id": "28a3eb",
+      "scene": "check-no-guarantee",
+      "source_zh_TW": "不過程式能核對格子，卻不會替你判斷這句解釋好不好懂。",
+      "baseline_th_exact": "โปรแกรมตรวจช่องได้ แต่ตัดสินแทนคุณไม่ได้ว่าประโยคนี้เข้าใจง่ายไหม",
+      "raw_native_proposal_exact": "แต่โปรแกรมตรวจช่องได้ ส่วนจะตัดสินแทนคุณว่าประโยคอธิบายนี้เข้าใจง่ายไหม ทำไม่ได้",
+      "current_th_exact": "โปรแกรมตรวจช่องได้ แต่ตัดสินแทนคุณไม่ได้ว่าประโยคนี้เข้าใจง่ายไหม",
+      "applied_by_native": false,
+      "native_disposition": "dropped_over_budget_current_remains_baseline",
+      "native_rejection_exact": "28a3eb: over its budget (80 characters, at most 76)",
+      "source_hash_unchanged": true,
+      "proposal_equals_current": false,
+      "proposal_codepoints": 80,
+      "native_worksheet_max_chars": 76,
+      "proposal_within_character_budget": false,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "source_meaning_retained_in_unapplied_proposal",
+      "source_fidelity": "The program can check cells, but cannot decide for the viewer whether this explanation is easy to understand. ตรวจช่องได้ and ...ตัดสินแทนคุณ...ทำไม่ได้ retain both sides and the negation; no broader guarantee is added.",
+      "thai_register_and_readability": "The topic-fronted ส่วนจะ...ทำไม่ได้ is understandable, though heavier than the unchanged canonical line.",
+      "required_source_fix": null
+    },
+    {
+      "id": "c38a5e",
+      "scene": "check-release-note",
+      "source_zh_TW": "交付時寫下這版改的是題目、數值還是時間，接手的人才知道先看哪裡。",
+      "baseline_th_exact": "ตอนส่ง ระบุว่ารุ่นนี้แก้โจทย์ ค่า หรือเวลา คนรับจะได้รู้ว่าดูส่วนไหนก่อน",
+      "raw_native_proposal_exact": "ตอนส่งมอบ ให้เขียนว่ารุ่นนี้แก้ที่โจทย์ ที่ตัวเลข หรือที่เวลา คนรับช่วงต่อจะได้รู้ว่าควรดูตรงไหนก่อน",
+      "current_th_exact": "ตอนส่ง ระบุว่ารุ่นนี้แก้โจทย์ ค่า หรือเวลา คนรับจะได้รู้ว่าดูส่วนไหนก่อน",
+      "applied_by_native": false,
+      "native_disposition": "dropped_over_budget_current_remains_baseline",
+      "native_rejection_exact": "c38a5e: over its budget (100 characters, at most 97)",
+      "source_hash_unchanged": true,
+      "proposal_equals_current": false,
+      "proposal_codepoints": 100,
+      "native_worksheet_max_chars": 97,
+      "proposal_within_character_budget": false,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "source_meaning_retained_in_unapplied_proposal",
+      "source_fidelity": "Preserves handoff time, this version, the alternatives question/numeric values/timing and the purpose that the person taking over knows where to look first. ตัวเลข is numeric values in this dice-animation context, not a new count or number.",
+      "thai_register_and_readability": "Natural procedural Thai; รุ่นนี้ is understandable as this version. Native budget rejection remains decisive for adoption.",
+      "required_source_fix": null
+    },
+    {
+      "id": "ad1b2c",
+      "scene": "practice-start",
+      "source_zh_TW": "骰子這一題做完了，把它換成你自己的題目，先挑一個能畫成前後變化的概念。",
+      "baseline_th_exact": "จบโจทย์ลูกเต๋าแล้ว เปลี่ยนเป็นโจทย์คุณ เริ่มเลือกแนวคิดที่วาดการเปลี่ยนก่อนและหลังได้",
+      "raw_native_proposal_exact": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+      "current_th_exact": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+      "applied_by_native": true,
+      "native_disposition": "applied",
+      "native_rejection_exact": null,
+      "source_hash_unchanged": true,
+      "proposal_equals_current": true,
+      "proposal_codepoints": 89,
+      "native_worksheet_max_chars": 105,
+      "proposal_within_character_budget": true,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "pass_current_applied_text",
+      "source_fidelity": {
+        "completed_example": "จบโจทย์ลูกเต๋าแล้ว explicitly keeps completion of the dice exercise.",
+        "viewer_topic": "ลองเปลี่ยนเป็นโจทย์ของคุณเอง explicitly asks the viewer to substitute their own question/topic. คุณเอง is possessive personal reference, not a multiplication problem.",
+        "concept_selection_and_before_after_change": "โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้ asks for a concept that can be depicted in before-and-after images. In this ordinary Thai construction, the paired before/after views express the source before/after change. It does not reduce the instruction to drawing two unrelated pictures.",
+        "sequence": "Finishing the dice exercise comes first; changing to the viewer topic is done by selecting that drawable concept. โดยเลือก makes concept selection the entry action of the new exercise, preserving the source instruction to choose it first.",
+        "conditions_negation_steps_and_values": "ลอง is a natural softened instruction, not a new factual condition. The noun แนวคิด naturally denotes a concept without adding a quantity; there is no numerical value, negation or proper name to alter.",
+        "teaching_intent": "Retains transfer from the worked dice example to a viewer-selected concept with a visible before/after comparison. It adds no promise that every concept or every AI tool can do this."
+      },
+      "thai_register_and_readability": "Natural spoken Thai. ของคุณเอง resolves the earlier possessive ambiguity; ภาพก่อนและหลัง is a natural before/after visual expression.",
+      "required_source_fix": null,
+      "slot_assessment": "Within the recorded native character budget; no measured speech duration, tempo fit or audio acceptance is established by this count.",
+      "adjacent_context_directly_read": {
+        "previous_source": "這份範例證明的是格子圖能重做，不是任何 AI 都能一次完成所有影片。",
+        "previous_th": "ตัวอย่างพิสูจน์ว่าทำภาพตารางซ้ำได้ ไม่ใช่ AI ใดก็ทำทุกวิดีโอเสร็จได้ครั้งเดียว",
+        "source_slide_data": {
+          "text": "換成你的那個問題",
+          "key": "先挑能畫成前後變化的主題",
+          "icon": "book"
+        },
+        "following_source": "寫下觀眾看完要懂的那一句，刪掉跟這一句無關的內容。",
+        "following_th": "เขียนประโยคที่ผู้ชมต้องเข้าใจ ตัดส่วนที่ไม่เกี่ยว"
+      }
+    },
+    {
+      "id": "f064e3",
+      "scene": "practice-download",
+      "source_zh_TW": "教材包保留了需求、提示詞和程式，你可以從原樣開始，再換自己的內容。",
+      "baseline_th_exact": "ชุดสื่อเก็บข้อกำหนด พรอมต์ โปรแกรมไว้ คุณเริ่มจากต้นแบบ แล้วเปลี่ยนเป็นเนื้อหาคุณได้",
+      "raw_native_proposal_exact": "ชุดสื่อเก็บความต้องการ คำสั่งที่ใช้เขียน และโปรแกรมไว้ให้ คุณเริ่มจากต้นฉบับแล้วเปลี่ยนเป็นเนื้อหาของคุณได้",
+      "current_th_exact": "ชุดสื่อเก็บข้อกำหนด พรอมต์ โปรแกรมไว้ คุณเริ่มจากต้นแบบ แล้วเปลี่ยนเป็นเนื้อหาคุณได้",
+      "applied_by_native": false,
+      "native_disposition": "dropped_over_budget_current_remains_baseline",
+      "native_rejection_exact": "f064e3: over its budget (107 characters, at most 98)",
+      "source_hash_unchanged": true,
+      "proposal_equals_current": false,
+      "proposal_codepoints": 107,
+      "native_worksheet_max_chars": 98,
+      "proposal_within_character_budget": false,
+      "textual_slot_assessment_only": true,
+      "meaning_verdict": "core_source_meaning_retained_in_unapplied_proposal",
+      "source_fidelity": "Retains the teaching-material package, requirements, instructions used to write the work, the program, starting with the original and then replacing it with viewer content. คำสั่งที่ใช้เขียน is less direct than the canonical พรอมต์ for the source AI prompts, but remains understandable as the saved authoring instructions in this context.",
+      "thai_register_and_readability": "Understandable Thai. The original explicit term พรอมต์ remains in canonical text because the proposal was not adopted.",
+      "required_source_fix": null
+    }
+  ],
+  "unapplied_proposal_only_findings": {
+    "count": 1,
+    "ids": [
+      "8eb4eb"
+    ],
+    "not_a_current_translation_issue": true,
+    "no_dropped_proposal_is_authorized_for_adoption_by_this_report": true
+  },
+  "audio_and_production_limits": {
+    "review_is_source_text_only": true,
+    "audio_listened_to_by_reviewer": false,
+    "new_three_reworded_lines_recorded_by_reviewer": false,
+    "duration_or_tempo_fit_measured_by_reviewer": false,
+    "native_ASR_or_Jev_run_by_reviewer": false,
+    "CC_readability_approved": false,
+    "voice_or_whole_track_approved": false,
+    "native_READY_claimed": false,
+    "final_QA_or_Studio_upload_approved": false,
+    "flags_cleared": false,
+    "character_budget_is_audio_QA": false,
+    "existing_check_from_producer_handoff_only": {
+      "cab285": {
+        "scene": "audio-staging",
+        "clip": "f662f9a863bdd2cd",
+        "terms": [],
+        "heard": "จัดประโยคอธิบายช่วงสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "noul": 0.13,
+        "intended": "จัดประโยคอธิบายช่องสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "spoken_form": "จัดประโยคอธิบายช่องสว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "match_kind": null,
+        "match": false
+      },
+      "cab285_still_native_flagged": true,
+      "note": "This check concerns the older recorded wording. Its ช่อง-to-ช่วง confusion and match=false remain a real audio failure. Text fidelity of the new canonical wording is not audio acceptance."
+    }
+  },
+  "review_index_handoff": {
+    "new_report_automatically_discovered": false,
+    "languages_mjs_requireSourceReview_function_found": false,
+    "actual_reader": "/workspace/work/ai-animation-01/partial-handoff.mjs finalTextReview(); /workspace/work/ai-animation-01/audit-caption-readiness.mjs fileReview()",
+    "existing_index_to_refresh_by_root": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.final-caption-translation-review.json",
+    "existing_index_sha256": "43a1dfafc53571f5a41654ddb06e03e70b875df20200d9913ad9d511615aa397",
+    "existing_index_binds_old_baseline": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+    "required_refresh": "Preserve the historical baseline review and create a truthful current source-only final-caption index that references this report plus the prior baseline review and binds the current TH/source SHA. Do not label the new text as voiced, audio-passed, caption-rebuilt or native READY. This reviewer does not overwrite that index or the older source report."
+  },
+  "actions": {
+    "only_this_new_source_review_report_written": true,
+    "canonical_translation_edited": false,
+    "source_video_edited": false,
+    "worksheet_or_native_answer_edited": false,
+    "audio_media_edited": false,
+    "auto_counters_checks_receipts_or_skips_edited": false,
+    "API_or_paid_calls": 0,
+    "new_TTS": false,
+    "validator_bypassed": false,
+    "approval_granted": false
+  },
+  "hash_guards": {
+    "expected_before_review": {
+      "source": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "baseline_translation": "7dc3407313da987ed12d29649eda161af32084ca6198b3ca7a89146d990aa0f3",
+      "current_translation": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93",
+      "boundary": "e85841845060655607166d676ff6a34c1f28764653c0f217f601a75ca28b1b6e",
+      "native_answer": "38056825470d647b80d294fe7c8b18ec695829570accd170c07e79ccec7fbe6d",
+      "producer_handoff": "562ab04f0db9374f4028348425b90b2372c2342dc97bd8129979ff26d525942c"
+    },
+    "matched_before_report_write": true
+  }
+}

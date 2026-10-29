@@ -5,7 +5,7 @@ import os from "node:os";
 import path from "node:path";
 import test from "node:test";
 import { locateFfmpeg, runTool, ToolMissing } from "../assemble/ffmpeg.mjs";
-import { validateBranding } from "../core/branding.mjs";
+import { validateBranding, placeBranding } from "../core/branding.mjs";
 import { fixture as sourceFixture, fixtureLexicon, writeAudioFixture } from "../core/fixtures/load.mjs";
 import { speechHash, visualHash } from "../core/timeline.mjs";
 import { checkPackage, listFiles, packageFiles } from "../package/check.mjs";
@@ -216,6 +216,52 @@ test("normal handoff retains actual narration/timeline and rejects a new documen
   await assert.rejects(verifyHandoff({ receipt, remote: f.remote, project }), /document or lexicon changed/);
 });
 
+test("normal after-first handoff binds source-clock placement, checks and media while keeping originals", async (t) => {
+  const f = fixture(t), doc = sourceFixture(); doc.slug = f.slug;
+  const project = { doc, lexicon: fixtureLexicon() };
+  const timeline = writeAudioFixture({ fps: 30, total_frames: 600, speech_hash: speechHash(doc, project.lexicon), chapters: [{ start_frame: 0 }, { start_frame: 300 }], scenes: [{ start_frame: 0 }, { start_frame: 300 }], lines: [{ id: "aaaa", start_frame: 0, end_frame: 300, audio_samples: 480000 }, { id: "bbbb", start_frame: 300, end_frame: 600, audio_samples: 480000 }] }, f.old);
+  json(path.join(f.old, "checks.json"), { ok: true, speech_hash: timeline.speech_hash, visual_hash: visualHash(doc), narration_sha256: timeline.audio_evidence.narration_sha256, metrics: { frames: 600 } });
+  writeFileSync(path.join(f.old, "final.mp4"), "retained body");
+  const pin = placeBranding(JSON.parse(readFileSync(f.branding)), "after_first_chapter"); json(f.branding, pin);
+  f.final.payload.branding_hash = pin.hash;
+  f.final.payload.renewal_candidate.candidate.branding_hash = pin.hash;
+  f.final.payload.renewal_candidate.source.body_timeline_sha256 = sha(readFileSync(path.join(f.old, "timeline.json")));
+  f.final.payload.renewal_candidate.presentation = { intro_at: "after_first_chapter", intro_at_frame: 300, body_frames: 600 };
+  const config = { ...f.config, mode: "normal", source: { ...f.source, workdir: f.old }, project, verifyMedia: async (args) => {
+    assert.equal(args.introAtFrame, 300); return { full_decode_ok: true, video_packets: 600, intro_at_frame: 300, seconds: 28, loudness: { integrated: -14, truePeak: -0.8 } };
+  } };
+  const expectedTimelineSha = f.final.payload.renewal_candidate.source.body_timeline_sha256;
+  f.final.payload.renewal_candidate.source.body_timeline_sha256 = sha("wrong body timeline");
+  await assert.rejects(prepareHandoff(config), /body timeline or intro placement changed/);
+  assert.equal(existsSync(f.out), false);
+  f.final.payload.renewal_candidate.source.body_timeline_sha256 = expectedTimelineSha;
+  const verify = config.verifyMedia;
+  config.verifyMedia = async () => ({ full_decode_ok: true, video_packets: 600 });
+  await assert.rejects(prepareHandoff(config), /media proof is incomplete/);
+  assert.equal(existsSync(f.out), false); config.verifyMedia = verify;
+  const original = await fileInventory(f.old), receipt = await prepareHandoff(config);
+  assert.deepEqual(await fileInventory(f.old), original);
+  const checks = JSON.parse(readFileSync(path.join(f.out, "checks.json")));
+  assert.equal(checks.branding.intro_at_frame, 300);
+  assert.deepEqual(receipt.source.presentation, f.final.payload.renewal_candidate.presentation);
+  await verifyHandoff({ receipt, remote: f.remote, project });
+  receipt.source.body_timeline_sha256 = sha("tampered receipt timeline identity");
+  await assert.rejects(verifyHandoff({ receipt, remote: f.remote, project }), /intro placement differs/);
+  receipt.source.body_timeline_sha256 = expectedTimelineSha;
+  f.final.payload.renewal_candidate.presentation.intro_at_frame = 301;
+  await assert.rejects(verifyHandoff({ receipt, remote: f.remote, project }), /intro placement differs/);
+  f.final.payload.renewal_candidate.presentation.intro_at_frame = 300;
+  receipt.source.presentation.intro_at_frame = 301;
+  await assert.rejects(verifyHandoff({ receipt, remote: f.remote, project }), /intro placement differs/);
+});
+
+test("manual import renewal remains start-only rather than guessing a piecewise caption clock", async (t) => {
+  const f = fixture(t), pin = placeBranding(JSON.parse(readFileSync(f.branding)), "after_first_chapter"); json(f.branding, pin);
+  f.final.payload.branding_hash = pin.hash;
+  f.final.payload.renewal_candidate.candidate.branding_hash = pin.hash;
+  await assert.rejects(prepareHandoff(f.config), /manual renewal handoff/);
+});
+
 test("manual original-cut range records packet provenance without inventing a missing body container hash", async (t) => {
   const f = fixture(t, { choices: {} });
   const receipt = await prepareHandoff({ ...f.config, source: { ...f.source, body: undefined, body_from_original: true, old_intro_frames: 0, old_intro_ms: 0 } });
@@ -362,6 +408,21 @@ test("actual H.264 concat preserves every Annex-B byte and rejects altered pictu
     assert.equal(result.video_proof.source_file_sha256, sha(readFileSync(body))); assert.equal(result.video_proof.final_file_sha256, sha(readFileSync(final)));
     assert.match(result.video_proof.annexb_sha256, /^[a-f0-9]{64}$/); assert.ok(result.video_proof.annexb_bytes > 0);
   });
+  await t.test("after-first insertion preserves both real H.264 ranges and sample-aligned body audio", async () => {
+    const before = path.join(base, "body-before.mp4"), after = path.join(base, "body-after.mp4"), splitFinal = path.join(base, "split-final.mp4");
+    for (const [file, at] of [[before, 0], [after, 1]]) await runTool(tools.ffmpeg, ["-v", "error", "-ss", String(at), "-i", body, "-map", "0:v:0", "-frames:v", "30", "-c:v", "copy", "-an", file]);
+    const splitList = path.join(base, "split.ffconcat");
+    writeFileSync(splitList, `ffconcat version 1.0\n${[before, intro, after, outro].map((file) => `file '${file.replaceAll("\\", "/")}'`).join("\n")}\n`);
+    const audio = "[1:a]atrim=end_sample=48000,asetpts=PTS-STARTPTS[a];anullsrc=r=48000:cl=stereo,atrim=end_sample=48000,asplit=2[s0][s1];[1:a]atrim=start_sample=48000:end_sample=96000,asetpts=PTS-STARTPTS[b];[a][s0][b][s1]concat=n=4:v=0:a=1[out]";
+    await runTool(tools.ffmpeg, ["-v", "error", "-f", "concat", "-safe", "0", "-i", splitList, "-i", body, "-map", "0:v:0", "-filter_complex", audio, "-map", "[out]", "-c:v", "copy", "-c:a", "aac", "-b:a", "384k", "-ar", "48000", "-ac", "2", splitFinal]);
+    const splitConfig = { ...config, final: splitFinal, branding: { ...config.branding, intro_at: "after_first_chapter" }, introAtFrame: 30 };
+    const result = await verifyRetainedMedia(splitConfig);
+    assert.equal(result.full_decode_ok, true); assert.equal(result.intro_at_frame, 30); assert.equal(result.video_packets, 60);
+    assert.equal(result.video_proof.ranges.length, 2);
+    assert.deepEqual(result.video_proof.ranges.map(({ source_frame, replacement_frame, frames }) => ({ source_frame, replacement_frame, frames })), [{ source_frame: 0, replacement_frame: 0, frames: 30 }, { source_frame: 30, replacement_frame: 60, frames: 30 }]);
+    await assert.rejects(verifyRetainedPictures({ ...splitConfig, introAtFrame: 31 }), /picture timestamp|keyframes|parameters/);
+    await assert.rejects(verifyRetainedPictures({ ...splitConfig, introAtFrame: 0 }), /validated intro placement/);
+  });
   const raw = path.join(base, "original.h264");
   await runTool(tools.ffmpeg, ["-v", "error", "-i", body, "-map", "0:v:0", "-c:v", "copy", "-bsf:v", "h264_mp4toannexb", "-an", "-f", "h264", raw]);
   const original = readFileSync(raw), starts = [];
@@ -381,6 +442,25 @@ test("actual H.264 concat preserves every Annex-B byte and rejects altered pictu
     await runTool(tools.ffmpeg, ["-v", "error", "-itsoffset", "0.005", "-i", final, "-map", "0:v:0", "-c:v", "copy", "-copyts", changed]);
     await assert.rejects(verifyRetainedPictures({ ...config, final: changed }), /picture timestamp|packet count/);
   });
+});
+
+test("explicit legacy start placement is retained while unknown placement is refused before probing", async () => {
+  const body = "source.mp4", final = "replacement.mp4";
+  const original = Array.from({ length: 6 }, (_, i) => ({ pts_time: String(i / 30), data_hash: `frame-${i}`, flags: i === 0 ? "K__" : "___" }));
+  const replacement = original.map((p) => ({ ...p, pts_time: String(Number(p.pts_time) + 2 / 30) }));
+  let calls = 0;
+  const config = { body, final, branding: { intro_at: "start", intro: { frames: 2 }, outro: { frames: 2 } }, bodyFrames: 6, exec: async (_tool, args) => { calls++; return { stdout: JSON.stringify({ packets: args.at(-1) === body ? original : replacement }) }; } };
+  assert.equal((await verifyRetainedPictures(config)).video_packets, 6);
+  assert.equal(calls, 2); calls = 0;
+  await assert.rejects(verifyRetainedPictures({ ...config, branding: { ...config.branding, intro_at: "unknown" } }), /unknown intro placement/);
+  assert.equal(calls, 0);
+});
+
+test("raw-identical body packets at a non-keyframe insertion cannot claim preservation", async () => {
+  const body = "source.mp4", final = "replacement.mp4", at = 3;
+  const original = Array.from({ length: 6 }, (_, i) => ({ pts_time: String(i / 30), data_hash: `frame-${i}`, flags: i === 0 ? "K__" : "___" }));
+  const replacement = [...original.slice(0, at), ...[0, 1].map((i) => ({ pts_time: String((at + i) / 30), data_hash: `intro-${i}`, flags: "K__" })), ...original.slice(at).map((p) => ({ ...p, pts_time: String(Number(p.pts_time) + 2 / 30) }))];
+  await assert.rejects(verifyRetainedPictures({ body, final, branding: { intro_at: "after_first_chapter", intro: { frames: 2 }, outro: { frames: 2 } }, bodyFrames: 6, introAtFrame: at, exec: async (_tool, args) => ({ stdout: JSON.stringify({ packets: args.at(-1) === body ? original : replacement }) }) }), /exact keyframes/);
 });
 
 function rollbackDirectoryFixture(t) {

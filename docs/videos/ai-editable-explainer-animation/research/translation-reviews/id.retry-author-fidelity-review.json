@@ -1,0 +1,104 @@
+{
+  "locale": "id",
+  "line_id": "9e738a",
+  "reviewer": {
+    "provider": "OpenAI",
+    "identity": "Codex (GPT-6 family; exact runtime model identifier not exposed)",
+    "agent": "/root/review_id_vi_th",
+    "human": false,
+    "independent_of_root_authored_candidate": true
+  },
+  "review_type": "Final source-fidelity and spoken-naturalness author-revision text review; no native-shortening length gate",
+  "reviewed_at_utc": "2026-10-25T22:32:15.225901+00:00",
+  "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+  "current_canonical": "Soal apa sukar dijelaskan? Mau animasi? Komentar.",
+  "current_canonical_codepoints": 49,
+  "root_candidate": {
+    "text": "Soal sulit dijelaskan mana paling mau dianimasi? Komen.",
+    "unicode_codepoints": 55,
+    "source_semantics": "All core concepts are now present in context: which/mana, a hard-to-explain problem, strongest desire, animation and a comment request. Implicit kamu is normal in this viewer-facing outro.",
+    "naturalness_verdict": "not_approved_as_written",
+    "issues": [
+      "Soal sulit dijelaskan mana ... compresses the opening relative construction unnaturally; add yang after soal and after mana.",
+      "Use the idiomatic passive dianimasikan instead of dianimasi.",
+      "Komen is a conversational shortened comment request; Komentar preserves the previously established standard register."
+    ],
+    "not_rejected_for_length": true
+  },
+  "verdict": "approved_text_only_after_small_grammar_and_register_repairs",
+  "recommended_text": "Soal yang sulit dijelaskan mana yang paling mau dianimasikan? Komentar.",
+  "recommended_unicode_codepoints": 71,
+  "recommended_text_checks": {
+    "which_problem": "mana explicitly asks which problem.",
+    "hard_to_explain": "yang sulit dijelaskan preserves explanation difficulty specifically; no rumit/complexity substitution.",
+    "most_wanted": "yang paling mau preserves strongest viewer preference; the desiring viewer/kamu is normal implicit context here.",
+    "animation": "dianimasikan preserves turning that problem into an animation.",
+    "comment": "Komentar is the established viewer instruction to leave a comment; narrator/me is implicit in the channel outro.",
+    "clause_order": "One choice question about the desired hard-to-explain problem to animate, followed by the comment request; no event sequence or number is moved.",
+    "naturalness_and_register": "Acceptable everyday standard Indonesian question in this outro; the two relative connectors remove the compressed opening and passive animation verb is idiomatic."
+  },
+  "conversational_alternative": {
+    "text": "Soal yang sulit dijelaskan mana yang paling mau dianimasikan? Komen.",
+    "unicode_codepoints": 68,
+    "meaning_and_spoken_naturalness": "approved_text_only",
+    "register_note": "Komen is natural informal YouTube speech, but the 71-codepoint Komentar recommendation keeps the established standard register."
+  },
+  "length_and_route_disclosure": {
+    "estimated_previous_max_chars": 46,
+    "recommended_above_estimate_by": 25,
+    "recommended_longer_than_current_by": 22,
+    "native_shortening_pass_claimed": false,
+    "review_route": "Root-author revision to be merged after text review during a formally requested owner retry, not another shorten-model answer.",
+    "length_was_not_a_source_fidelity_gate": true,
+    "actual_new_TTS_and_native_shared_window_fit_required": true,
+    "fit_may_still_fail": true,
+    "main_video_duration_unchanged_by_reviewer": true,
+    "tempo_threshold_unchanged_by_reviewer": true
+  },
+  "adjacent_context_actually_reread": [
+    {
+      "scene": "practice-download",
+      "id": "f064e3",
+      "source": "教材包保留了需求、提示詞和程式，你可以從原樣開始，再換自己的內容。",
+      "current_translation": "Materi menyimpan kebutuhan, prompt, program; mulai dari aslinya, lalu ganti dengan isimu."
+    },
+    {
+      "scene": "outro",
+      "id": "f576ae",
+      "source": "把影片傳給別人時，也請附上能重新產生動畫的專案檔。",
+      "current_translation": "Kirim video bersama proyek pembuat ulang animasinya."
+    },
+    {
+      "scene": "outro",
+      "id": "9e738a",
+      "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+      "current_translation": "Soal apa sukar dijelaskan? Mau animasi? Komentar."
+    },
+    {
+      "scene": "outro",
+      "id": "ed8308",
+      "source": "訂閱這個頻道，跟著把 AI 用成拿得出來的作品。",
+      "current_translation": "Langganan kanal ini; ikuti cara memakai AI untuk karya layak tampil."
+    }
+  ],
+  "scope": {
+    "proposal_unapplied": true,
+    "text_only": true,
+    "no_voice_approval": true,
+    "no_audio_synthesized_heard_or_fit_measured": true,
+    "no_API_calls": true,
+    "source_canonical_worksheet_metadata_unchanged": true,
+    "native_failure_audio_fit_skip_counters_unchanged": true,
+    "no_track_or_ASR_created_or_claimed": true,
+    "prior_rumit_semantics_rejection_not_changed": true
+  },
+  "sha256": {
+    "source_video": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "canonical_before_unapplied_revision": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a",
+    "worksheet_before_unapplied_revision": "8b3c6b84e22af3c10720756caf331cb8b9d4e4015b18b54e097c10778f92b32f",
+    "native_failed_baseline": "98ab00afa339e6c4c15729e1b9fa489f0f49e533b0792495163d4ee6fd9a20ae",
+    "native_skip": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+    "native_fit": "7e7234b1f834add429f1f4be0ab03a39faef829ad72a21df0f275897927b7c5b"
+  },
+  "mutations": "Only id.retry-author-fidelity-review.json written; no proposal applied and no source, metadata, voice or native state changes."
+}

@@ -1,0 +1,188 @@
+{
+  "completed_at_utc": "2026-10-26T14:10:57.300372+00:00",
+  "status": "PyAV-compatibility-fixed-and-generated-PCM-decode-validated-not-film-ASR-tested",
+  "cause": "faster-whisper1.2.1 calls av.open(metadata_errors=...), removed by unconstrained PyAV19.0.2. The original model-load-only smoke did not exercise that API.",
+  "fix": "Only av19.0.2→av18.0.0 in the isolated runtime venv, --no-deps and exact public wheel SHA lock. No repository runner/code changes.",
+  "selected_package": "av==18.0.0",
+  "official_API_source": "https://raw.githubusercontent.com/PyAV-Org/PyAV/v18.0.0/av/container/core.py",
+  "official_API_source_sha256": "adde3cbf3bd601a86eb5d8eb7ad5969663275d71afaf2a6a3b0aaf87482e0dd2",
+  "public_wheel_url": "https://files.pythonhosted.org/packages/6d/b9/7708c43fed7ae28b4a1bad060b4221e3334cd827cec24f7165902a6ac1f4/av-18.0.0-cp311-abi3-manylinux_2_28_x86_64.whl",
+  "public_wheel_bytes": 35536910,
+  "public_wheel_sha256": "ae56b40b6f8b067a8ad2dac664fbfbabac7f7a55b9a7bb031eb99289252bc017",
+  "actual_freeze_diff": {
+    "removed": [
+      "av==19.0.2"
+    ],
+    "added": [
+      "av==18.0.0"
+    ]
+  },
+  "other_distributions_unchanged": true,
+  "pip_check_passed": true,
+  "faster_whisper_version": "1.2.1",
+  "ctranslate2_version": "4.8.4",
+  "model_alias": "medium",
+  "model_repository": "Systran/faster-whisper-medium",
+  "model_revision": "08e178d48790749d25932bbc082711ddcfdfbc4f",
+  "model_files_sha256_reverified": [
+    {
+      "path": "README.md",
+      "bytes": 2005,
+      "sha256": "a30144a6232423e5e4e9e17952b5a543a506dc0cb9de02fd9d875d7ec40fef83"
+    },
+    {
+      "path": "config.json",
+      "bytes": 2257,
+      "sha256": "3622a2ddc41ec0e0fd4e68c13c6830f03b90c38d89aaad184de02c8c642cf807"
+    },
+    {
+      "path": "model.bin",
+      "bytes": 1527906378,
+      "sha256": "9b45e1009dcc4ab601eff815b61d80e60ce3fd8c74c1a14f4a282258286b51ae"
+    },
+    {
+      "path": "tokenizer.json",
+      "bytes": 2203239,
+      "sha256": "fb7b63191e9bb045082c79fd742a3106a12c99513ab30df4a0d47fa6cb6fd0ab"
+    },
+    {
+      "path": "vocabulary.txt",
+      "bytes": 459861,
+      "sha256": "34ce3fe1c5041027b3f8d42912270993f986dbc4bb34cf27f951e34a1e453913"
+    }
+  ],
+  "actual_decode_smoke": {
+    "performed_at_utc": "2026-10-26T14:08:46.900164+00:00",
+    "passed": true,
+    "faster_whisper_version": "1.2.1",
+    "ctranslate2_version": "4.8.4",
+    "PyAV_version": "18.0.0",
+    "NumPy_version": "2.5.4",
+    "API_path": "faster_whisper.audio.decode_audio -> av.open(metadata_errors=\"ignore\") -> real frame decode/resample",
+    "generated_fixture": "/workspace/work/video-asr-runtime/compatibility/generated-440Hz-48000Hz-mono-PCM16.wav",
+    "fixture_bytes": 12044,
+    "fixture_sha256": "2e45c25590b64e7414f50c512b98c711b442a8991de5480525df870f436d546b",
+    "fixture_source_rate": 48000,
+    "fixture_source_samples": 6000,
+    "output_rate": 16000,
+    "output_samples": 2000,
+    "output_dtype": "float32",
+    "output_peak": 0.100006103515625,
+    "output_RMS": 0.07071441411972046,
+    "output_array_sha256": "884e08fcc200b340bcd73e1d37a87d24663381342ad6ef03c8eb7c77f43565ca",
+    "synthetic_audio_decode_calls": 1,
+    "video_audio_files_opened": 0,
+    "WhisperModel_instantiations": 0,
+    "transcribe_calls": 0,
+    "model_inferences": 0,
+    "paid_video_provider_or_owner_calls": 0,
+    "project_files_or_flags_changed": false
+  },
+  "actual_ordinary_constructor": {
+    "verified_at_utc": "2026-10-26T14:09:36.669965+00:00",
+    "exact_ordinary_constructor_succeeded": true,
+    "constructor": "WhisperModel(os.environ['WHISPER_MODEL'],device='cpu',compute_type='int8')",
+    "model_alias": "medium",
+    "actual_compute_type": "int8_float32",
+    "faster_whisper_version": "1.2.1",
+    "ctranslate2_version": "4.8.4",
+    "PyAV_version": "18.0.0",
+    "wall_seconds": 1.982,
+    "video_audio_opened": 0,
+    "transcribe_calls": 0,
+    "model_inferences": 0
+  },
+  "activation_environment_file": "/workspace/work/video-asr-runtime/native-second-asr-environment.compatible.json",
+  "activation_environment_values_unchanged": true,
+  "activation_environment_sha256": "e9736a50c1188c8c899d0d834822fd3e39f6c73591a53382fb8376bbc31e521d",
+  "preserved_original_ready_sha256": "9706d5e97bd1fc96d43db4c09dafed986219ee6317127ad9cd0b79df974acea1",
+  "preserved_original_environment_sha256": "e9736a50c1188c8c899d0d834822fd3e39f6c73591a53382fb8376bbc31e521d",
+  "preserved_original_TypeError_trace_sha256": "a7afc9372d68ab9cecd6bd18677be03d2f16f4489acfa80dbb00c1bfc5400272",
+  "prior_failed_real_video_diagnostic": "diagnostics/one-native-TH-diagnostic-outcome.json",
+  "video_audio_files_opened_during_this_repair": 0,
+  "generated_fixture_decode_calls": 1,
+  "transcribe_calls_during_this_repair": 0,
+  "model_inferences_during_this_repair": 0,
+  "paid_video_provider_or_owner_calls": 0,
+  "project_source_flags_caps_thresholds_journals_or_approvals_changed": false,
+  "billing_hold_resolved": false,
+  "native_project_ASR_retry_performed_by_installer": false,
+  "evidence": [
+    {
+      "path": "compatibility/actual-generated-PCM-decode-smoke.json",
+      "bytes": 1106,
+      "sha256": "6409265a02704e27994282925199443840065b163de906e50e8d0141220aa972"
+    },
+    {
+      "path": "compatibility/before-pyav-fix.json",
+      "bytes": 1036,
+      "sha256": "6070d67d83f4eed2a897180c2414033f05155653933615131acaf61a1959a918"
+    },
+    {
+      "path": "compatibility/decode-generated-PCM-smoke.py",
+      "bytes": 2557,
+      "sha256": "8fecee3e6c551245265e2a2594e12fd3bf423b98ec030fbf62b994beccf1724c"
+    },
+    {
+      "path": "compatibility/generated-440Hz-48000Hz-mono-PCM16.wav",
+      "bytes": 12044,
+      "sha256": "2e45c25590b64e7414f50c512b98c711b442a8991de5480525df870f436d546b"
+    },
+    {
+      "path": "compatibility/generated-PCM-smoke.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/generated-PCM-smoke.stdout.log",
+      "bytes": 1106,
+      "sha256": "6409265a02704e27994282925199443840065b163de906e50e8d0141220aa972"
+    },
+    {
+      "path": "compatibility/ordinary-constructor-compatible.json",
+      "bytes": 472,
+      "sha256": "8a840ee2b4e51fdeefed138eacd4a6ed1441c0dc1ecf39a8b83a03a25f323af4"
+    },
+    {
+      "path": "compatibility/ordinary-constructor-compatible.stderr.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "compatibility/ordinary-constructor-compatible.stdout.log",
+      "bytes": 472,
+      "sha256": "8a840ee2b4e51fdeefed138eacd4a6ed1441c0dc1ecf39a8b83a03a25f323af4"
+    },
+    {
+      "path": "compatibility/pip-check.log",
+      "bytes": 30,
+      "sha256": "9261363b733079a641c2e4cc9bc46ffa1d8336945a87f807b6cf68847dbc9b09"
+    },
+    {
+      "path": "compatibility/pip-freeze.after.txt",
+      "bytes": 384,
+      "sha256": "6c490695f598d83ba0adae54d09683df4bc61a60233ba03de1cb2c467d861538"
+    },
+    {
+      "path": "compatibility/pip-freeze.before.txt",
+      "bytes": 384,
+      "sha256": "d878e242e636386ebcd7f8afb8e5ba52618eb49122ab3dd5b7419e8e5e33170f"
+    },
+    {
+      "path": "compatibility/pip-pyav18-install.log",
+      "bytes": 550,
+      "sha256": "254d6001b3de490ccf3995c3c320e82bacf682628c9e6a2b019d25ba54ab082e"
+    },
+    {
+      "path": "compatibility/pip-pyav18-report.json",
+      "bytes": 5987,
+      "sha256": "e4aaa0b035bba7de99638a20f8f35d385395dfed427ddd68d94850cc37f6564b"
+    },
+    {
+      "path": "compatibility/requirements-pyav18.txt",
+      "bytes": 90,
+      "sha256": "2e14c0e2912b5a84c328e06eecdf6d3b9d5659fb81355154ab66bfd63463f28a"
+    }
+  ],
+  "next": "Root may run one genuine native project second-ASR after verifying project lease/STOP/current source/audio bindings. This real dependency/decode smoke is not a film transcript, voice pass or approval. Preserve old native failure and original readiness history."
+}

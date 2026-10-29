@@ -1,0 +1,485 @@
+{
+  "schema_version": 1,
+  "reviewed_at_utc": "2026-10-26T17:01:47.615Z",
+  "reviewer": "independent_actual_output_auditor",
+  "execution_gate": {
+    "root_confirmed_session": 98899,
+    "root_confirmed_exit_code": 0,
+    "independent_actual_review_began_after_confirmation": true
+  },
+  "status": "LOCAL REVIEW COMPLETE WITH EXACT-DURATION MISMATCH — TH VOICE FAILED / NOT FOR UPLOAD",
+  "all_requested_criteria_passed": false,
+  "non_duration_local_checks_passed": true,
+  "passed_scope": [
+    "native_current_text_caption_bytes_and_caption_mechanics",
+    "native_presentation_timeline_and_nine_locale_metadata",
+    "audio_shape_and_native_duration_tolerance",
+    "source_canonical_candidate_staged_renewal_and_implementation_protection"
+  ],
+  "not_passed_scope": [
+    "exact_615.566667_second_media_duration"
+  ],
+  "voice_ready": false,
+  "quality_approval_created": false,
+  "fullpackage_ready": false,
+  "complete_language_package": false,
+  "canonical_adoption_performed": false,
+  "final_renewal_submitted": false,
+  "uploaded": false,
+  "published": false,
+  "unresolved_voice_flags": [
+    "719e7c",
+    "8eb4eb",
+    "ee8b7c",
+    "28a3eb",
+    "c38a5e"
+  ],
+  "preserved_native_rounds": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 2,
+    "check_stopped": true
+  },
+  "new_synthesis_requests": 0,
+  "new_ASR_requests": 0,
+  "provider_calls": 0,
+  "review_actions": {
+    "network": false,
+    "TTS": false,
+    "ASR": false,
+    "check_audio": false,
+    "heavy_QA": false,
+    "media_generation": false,
+    "protected_source_or_task_mutation": false,
+    "scratch_mutation": false,
+    "write_destination": "/workspace/work/ai-animation-01/current-bookend-TH-overlay-independent-review.json"
+  },
+  "findings": [
+    {
+      "severity": "requested_exact_criterion_failed",
+      "subject": "audio duration",
+      "expected_seconds": 615.5666666666667,
+      "actual_seconds": 615.605,
+      "delta_ms": 38.33333333329847,
+      "native_helper_tolerance_passed": true,
+      "detail": "The actual format and stream duration is 615.605000 s, not 615.566667 s. The frozen output was not modified."
+    },
+    {
+      "severity": "production_blocker_preserved",
+      "subject": "Thai voice",
+      "detail": "Five current native failed-voice flags and 1/2/2 check-stopped caps remain. This experiment only wraps existing failed speech; voice, package and adoption remain false."
+    }
+  ],
+  "failed_check_names": [
+    "overlay_duration_exact615point566667_requested_criterion"
+  ],
+  "checks": {
+    "actual_result_matches_root_exit0_receipt": {
+      "passed": true
+    },
+    "executed_helper_hash": {
+      "passed": true
+    },
+    "protected_manifests_raw_byte_identical": {
+      "passed": true
+    },
+    "protected_manifests_deep_identical": {
+      "passed": true
+    },
+    "protected_manifest_digest": {
+      "passed": true
+    },
+    "current_tree_matches_both_manifests_canonical": {
+      "passed": true
+    },
+    "current_tree_matches_both_manifests_old_candidate": {
+      "passed": true
+    },
+    "current_tree_matches_both_manifests_staged_renewal": {
+      "passed": true
+    },
+    "current_tree_matches_both_manifests_film_source": {
+      "passed": true
+    },
+    "current_tree_matches_both_manifests_native_implementation": {
+      "passed": true
+    },
+    "extra_sources_match_both_manifests": {
+      "passed": true
+    },
+    "all_frozen_artifact_bytes_match_result": {
+      "passed": true
+    },
+    "scratch_inventory_has_only_frozen_artifacts_and_result": {
+      "passed": true
+    },
+    "no_source_scratch_candidate_or_stage_live_lease": {
+      "passed": true
+    },
+    "pin_primary_source": {
+      "passed": true
+    },
+    "pin_th_translation": {
+      "passed": true
+    },
+    "pin_canonical_final": {
+      "passed": true
+    },
+    "pin_old_candidate_final": {
+      "passed": true
+    },
+    "pin_staged_renewal_receipt": {
+      "passed": true
+    },
+    "pin_current_body_track": {
+      "passed": true
+    },
+    "body_source_current_speechhash_and_frames": {
+      "passed": true
+    },
+    "branding_exact_current_candidate": {
+      "passed": true
+    },
+    "native_currentDub_current_and_exact_body_track": {
+      "passed": true
+    },
+    "all101current_th_timeline_lines": {
+      "passed": true
+    },
+    "current_native_translation_and_fingerprint": {
+      "passed": true
+    },
+    "body_no_fit_over_no_kept_or_intro_crossings": {
+      "passed": true
+    },
+    "all101raw_current_checks_match_actual_rawbytes_and_intended": {
+      "passed": true
+    },
+    "all101raw_current_hashes_match_result": {
+      "passed": true
+    },
+    "all_native_speech_requests_cached": {
+      "passed": true
+    },
+    "nine_locale_current_texts_complete": {
+      "passed": true
+    },
+    "actual_overlay_timeline_equals_native_current_presentation": {
+      "passed": true
+    },
+    "native_file_field_is_only_preserved_source_reference": {
+      "passed": true,
+      "detail": {
+        "timeline_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th.m4a",
+        "actual_overlay_audio": "/workspace/work/ai-animation-01/current-bookend-TH-overlay-20261026/TH_FAILED_NOT_FOR_UPLOAD.presentation-only.m4a",
+        "interpretation": "timeline.file is the preserved native source path; the frozen artifact manifest maps the separate FAILED output. This is not a ready dub."
+      }
+    },
+    "actual_presentation_frames": {
+      "passed": true
+    },
+    "canonical104current_native_caption_bytes": {
+      "passed": true
+    },
+    "actual104srt_and_vtt_exact_native_current_expected_bytes": {
+      "passed": true
+    },
+    "actual104bytes_exact_native_shift_of_current_body": {
+      "passed": true
+    },
+    "actual_native_checkCues_zero": {
+      "passed": true,
+      "detail": []
+    },
+    "actual_cues_no_intro_or_outro_overlap": {
+      "passed": true,
+      "detail": {
+        "intro_start_ms": 31133,
+        "intro_end_ms": 36133,
+        "outro_start_ms": 594567,
+        "last_cue_end_ms": 592973
+      }
+    },
+    "actual_nine_locale_metadata_exact_native_current_composition": {
+      "passed": true
+    },
+    "actual_nine_locale_description_bytes_exact_native_composition": {
+      "passed": true
+    },
+    "actual_metadata_chapters_match_presented_timeline": {
+      "passed": true
+    },
+    "other8caption_references_match_preserved_candidate": {
+      "passed": true
+    },
+    "five_current_failed_voice_flags_remain": {
+      "passed": true
+    },
+    "native_1shorten_2retakes_2reword_check_stopped_preserved": {
+      "passed": true
+    },
+    "unknown_english_ASR_sent_hold_preserved": {
+      "passed": true
+    },
+    "all3native_skips_preserved": {
+      "passed": true
+    },
+    "all_output_readiness_and_adoption_claims_remain_false": {
+      "passed": true
+    },
+    "scratch_has_no_canonical_ready_roles": {
+      "passed": true
+    },
+    "actual_audio_stream_shape_AAC48k_stereo": {
+      "passed": true
+    },
+    "overlay_duration_within_native_0point1_second_tolerance": {
+      "passed": true,
+      "detail": {
+        "expected_from_frames_seconds": 615.5666666666667,
+        "actual_ffprobe_seconds": 615.605,
+        "delta_seconds": 0.03833333333329847,
+        "tolerance_seconds": 0.1
+      }
+    },
+    "overlay_duration_exact615point566667_requested_criterion": {
+      "passed": false,
+      "detail": {
+        "expected_rounded_seconds": "615.566667",
+        "actual_seconds": "615.605000",
+        "delta_ms": 38.33333333329847,
+        "conclusion": "Exact requested duration does not match. Native helper tolerates this 38.333 ms extension; no claim of exact duration is permitted."
+      }
+    },
+    "review_and_recorded_execution_network_attempts_zero": {
+      "passed": true
+    }
+  },
+  "evidence": {
+    "canonical": {
+      "directory": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation",
+      "files": 2588,
+      "total_bytes": 1292748718,
+      "manifest_digest": "fef8420bc0beb4164d1bf05930406ce0d36a5515ffafa95d7995ecde0387749e"
+    },
+    "old_candidate": {
+      "directory": "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation",
+      "files": 2595,
+      "total_bytes": 1356460154,
+      "manifest_digest": "f39bf87b323f514a0265ed07010387602e4eab5c925d0cba6aa42420a16feb90"
+    },
+    "staged_renewal": {
+      "directory": "/workspace/work/ai-animation-01/bookends-candidate-20261026/staged-renewal",
+      "files": 8,
+      "total_bytes": 66759982,
+      "manifest_digest": "99bbf262a1e23595f51922b3381ff605962b4e64afbb9b455946e21934992b89"
+    },
+    "film_source": {
+      "directory": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation",
+      "files": 210,
+      "total_bytes": 1748647,
+      "manifest_digest": "53eb7f546c19cb91bffbde183062c1baa1703992e34d9abb55f491f01e0f357b"
+    },
+    "native_implementation": {
+      "directory": "/workspace/travel_scanner/tools/video",
+      "files": 444,
+      "total_bytes": 8678036,
+      "manifest_digest": "20d956fc81c35909980428e03769ce6786c21f2aa38acf926169e5a2cc443495"
+    },
+    "scratch_artifacts": {
+      "ONE_USE_ADMISSION.NOT_ADOPTED.json": {
+        "sha256": "49fff3356cb7f622b73271826ab9b0a44077f533e8107da3f2b0bf6464171cd0",
+        "size": 617
+      },
+      "README.NOT_FOR_UPLOAD.txt": {
+        "sha256": "f3f0c927942181a65d193f5e3d0373e36b46e7a3ba285dc20c348a2c2d5800ae",
+        "size": 443
+      },
+      "TH_FAILED_NOT_FOR_UPLOAD.presentation-only.m4a": {
+        "sha256": "297931bd218d7c30e26543b0c9f57c5744e091905b83250fba7c7c2ecc81e95d",
+        "size": 15037830
+      },
+      "TH_FAILED_NOT_FOR_UPLOAD.timeline.json": {
+        "sha256": "856e12703cb14a160fd4adde9e470f2ab56804dad6b71bbf310a64a1e127ab14",
+        "size": 40132
+      },
+      "captions/th.srt": {
+        "sha256": "716cfa482873f46c86039ebfb471a013e692baac79129d8147906ff54023c4b6",
+        "size": 21035
+      },
+      "captions/th.vtt": {
+        "sha256": "916270c8a48826f3f721ae0036e2b26245f3a382fb1cc63353e917e3e7e39b2c",
+        "size": 20735
+      },
+      "metadata/description.en.NOT_ADOPTED.txt": {
+        "sha256": "30abf1e9726d7d927c6b5ed758616330fff4d7be0ccf41df44f0c052e4b737ce",
+        "size": 1897
+      },
+      "metadata/description.es.NOT_ADOPTED.txt": {
+        "sha256": "1e40382a66902fdba604fddc20a328de0453c376a29dc847ce43c51de3083774",
+        "size": 2014
+      },
+      "metadata/description.id.NOT_ADOPTED.txt": {
+        "sha256": "cb92e87e4d39f3fbb2f7102eb9df7bf9956de3e3b5339e6336e9db8af6e685f6",
+        "size": 1873
+      },
+      "metadata/description.ja.NOT_ADOPTED.txt": {
+        "sha256": "2216b6728b1f82a97f363349a903802507c290d6985c670b81e5561b62edd78e",
+        "size": 2172
+      },
+      "metadata/description.ko.NOT_ADOPTED.txt": {
+        "sha256": "7803a5cb48a8b373d9652c8603257e8c77ac76190f2ad0957ef3aa6db5b7001f",
+        "size": 2108
+      },
+      "metadata/description.pt.NOT_ADOPTED.txt": {
+        "sha256": "fd39871211207a7126a44e7b76516c7595ee01fac251b68dc7f1367913d0111f",
+        "size": 1967
+      },
+      "metadata/description.th.NOT_ADOPTED.txt": {
+        "sha256": "4dfdd01b496e3774fe3c03edbb9eec68b98a07c3a9690589b945beda56ec391c",
+        "size": 3697
+      },
+      "metadata/description.vi.NOT_ADOPTED.txt": {
+        "sha256": "e96c2a659bb133512aa4a3a586d6da1986b9bdd6bac4d68b32866ea60466fa4c",
+        "size": 2191
+      },
+      "metadata/description.zh-TW.NOT_ADOPTED.txt": {
+        "sha256": "3109fd723a5ccd1ed93318e39b7355be098da544e152acdbbddc03533f2a1e1d",
+        "size": 1656
+      },
+      "metadata/nine-locales.NOT_ADOPTED.json": {
+        "sha256": "a604bdd2aa443e98570c010a39da56c848a461468f6e6e2ff876f3e7320cde4a",
+        "size": 22281
+      },
+      "protected-after.json": {
+        "sha256": "6e0e44cdaa05da81430d799f4cab7b95f92e904ffec6081bed6b16ef2a790f52",
+        "size": 877323
+      },
+      "protected-before.json": {
+        "sha256": "6e0e44cdaa05da81430d799f4cab7b95f92e904ffec6081bed6b16ef2a790f52",
+        "size": 877323
+      },
+      "result.NOT_ADOPTED.json": {
+        "sha256": "59d3337f7c29a6dc1f9d589533f3696d4818e529b7d2628aa7f9ccac283082f6",
+        "size": 19564
+      }
+    },
+    "pins": {
+      "primary_source": {
+        "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+        "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806"
+      },
+      "th_translation": {
+        "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json",
+        "sha256": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93"
+      },
+      "canonical_final": {
+        "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/final.mp4",
+        "sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521"
+      },
+      "old_candidate_final": {
+        "path": "/workspace/work/ai-animation-01/bookends-candidate-20261026/media/ai-editable-explainer-animation/final.mp4",
+        "sha256": "77b542c9c1cb0e75680581d73d926db5f253e6dc5066bcbed26c0a54a061d076"
+      },
+      "staged_renewal_receipt": {
+        "path": "/workspace/work/ai-animation-01/bookends-candidate-20261026/staged-renewal/renewal-candidate.json",
+        "sha256": "2fcf936f6141ace9a38311a8efbf4b4885037e515975a4d04bad03497e85a83a"
+      },
+      "current_body_track": {
+        "path": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/th.m4a",
+        "sha256": "6070a20aa941268f31e093547fc25e01f0bb275dff1097bd818b8e51b96bcc1f"
+      }
+    },
+    "presented_chapters": [
+      {
+        "at": "00:00",
+        "title": "動畫能不能改得動？"
+      },
+      {
+        "at": "00:36",
+        "title": "為什麼先要原始檔？"
+      },
+      {
+        "at": "01:32",
+        "title": "需求要怎麼寫才畫得出來？"
+      },
+      {
+        "at": "03:04",
+        "title": "AI 產生的檔案怎麼用？"
+      },
+      {
+        "at": "05:15",
+        "title": "改一個數字會怎樣？"
+      },
+      {
+        "at": "06:27",
+        "title": "旁白和畫面怎麼對上？"
+      },
+      {
+        "at": "07:44",
+        "title": "怎麼知道影片可以交了？"
+      },
+      {
+        "at": "09:04",
+        "title": "換成自己的題目怎麼開始？"
+      }
+    ],
+    "native_skips": {
+      "ko": {
+        "reason": "Jev still hears 2c063b, 594e82, 719e7c, 76fc63, 79a96a, de08dd wrong after 2 retakes and 2 rewording rounds",
+        "at": "2026-10-25T20:33:30.516Z"
+      },
+      "pt": {
+        "reason": "Jev still hears 9e738a wrong after 2 retakes and 2 rewording rounds",
+        "at": "2026-10-25T21:54:23.854Z"
+      },
+      "id": {
+        "reason": "f576ae, 9e738a, ed8308 do not fit their windows even at 1.15x after 1 shortening round",
+        "at": "2026-10-25T22:06:26.156Z"
+      }
+    },
+    "actual_independent_ffprobe": {
+      "body": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "time_base": "1/48000",
+            "start_time": "0.000000",
+            "duration_ts": 28300800,
+            "duration": "589.600000"
+          }
+        ],
+        "format": {
+          "duration": "589.600000",
+          "size": "14168755"
+        }
+      },
+      "overlay": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "aac",
+            "codec_type": "audio",
+            "sample_rate": "48000",
+            "channels": 2,
+            "time_base": "1/48000",
+            "start_time": "0.000000",
+            "duration_ts": 29549040,
+            "duration": "615.605000"
+          }
+        ],
+        "format": {
+          "duration": "615.605000",
+          "size": "15037830"
+        }
+      }
+    }
+  },
+  "interpretation": "This report verifies local text/presentation artifacts and preservation only. A successful local preparation process and native caption check are not a voice pass, new approval, renewal, full package or adoption. The timeline.file native source reference is not the failed overlay output role."
+}

@@ -1,0 +1,705 @@
+{
+  "audited_at_utc": "2026-10-26T11:30:32.464350+00:00",
+  "reviewer": "OpenAI Codex /root/audit_th_final_boundary",
+  "purpose": "Independent actual file inspection, not audio approval or owner retry",
+  "handoff_file": "/workspace/work/ai-animation-01/th-reviewed-reword1-20261026T111831-outcome-review-handoff.json",
+  "handoff_sha256": "9cd6bb1190bd340ca550320fc18cb9f06ae3ed94bf89a58a8b687babfcd92938",
+  "checks": {
+    "current_TH_source_matches_handoff": true,
+    "primary_source_matches_handoff": true,
+    "actual_process_receipt_matches_handoff": true,
+    "native_log_matches_handoff": true,
+    "round2_boundary_matches_handoff": true,
+    "round2_zero_applied_six_overbudget": true,
+    "all_101_saved_ASR_hashes_match_current_raw": true,
+    "three_new_takes_exact_and_unflagged": true,
+    "six_native_flags_remain": true,
+    "rounds_shorten1_retakes2_reword2_check_stopped": true,
+    "nine_protected_unchanged": true,
+    "permanent_intent_unchanged_applied": true,
+    "actual_native_process_ended": true,
+    "LEASE_STOP_absent": true,
+    "TH_skip_absent": true,
+    "current_three_caption_texts_not_rebuilt": true
+  },
+  "all_audit_assertions_passed": true,
+  "TH_ready": false,
+  "auto_status": "done",
+  "actual_process_exit_code": 0,
+  "exit0_and_auto_done_are_not_TH_quality_pass": true,
+  "actual_native_flags": {
+    "slug": "ai-editable-explainer-animation",
+    "locale": "th",
+    "translation_hash": "ace2605a0d4fdc23",
+    "speech_hash": "ab16df144b09176b",
+    "flags": [
+      "719e7c",
+      "8eb4eb",
+      "ee8b7c",
+      "28a3eb",
+      "c38a5e",
+      "f064e3"
+    ],
+    "notes": {
+      "719e7c": "Jev 0.14: heard 「เขียนพร้อมวาดทุกผลแบบมีลำดับของลูกเต๋าเที่ยงตรงสองลูก」",
+      "8eb4eb": "Jev 0.09: heard 「เพื่อว่าคงสี font และลำดับช่วงไว้」",
+      "ee8b7c": "Jev 0.23: heard 「ตรวจเงื่อนไขและจำนวนก่อน อย่าปล่อยคณิตผิดเพราะ animation ลื่น」",
+      "28a3eb": "Jev 0.07: heard 「โปรแกรมตรวจ grammar ได้ แต่ตัดสินแทนคุณไม่ได้ว่า ประโยคเนี้ย เข้าใจง่ายไหม」",
+      "c38a5e": "Jev 0.06: heard 「ตอนส่งระบุว่ารุ่นนี้แก้โจทย์ค่ะ หรือว่าเวลาคนรับจะได้รู้ว่าดูส่วนไหนก่อน」",
+      "f064e3": "Jev 0.19: heard 「ชุดสื่อเก็บข้อกำหนดพร้อมโปรแกรมไว้ คุณเริ่มจากต้นแบบแล้วเปลี่ยนเป็นเนื้อหาคุณได้」"
+    }
+  },
+  "round2_boundary": {
+    "recorded_at": "2026-10-26T11:20:23.262Z",
+    "locale": "th",
+    "variant": "reword",
+    "round": 2,
+    "purpose": "Independent source-meaning review after a native model answer, not an approval or a retry reset",
+    "native_rounds": {
+      "shorten": 1,
+      "retakes": 2,
+      "reword": 2,
+      "check_stopped": true
+    },
+    "native_result": {
+      "ids": [],
+      "problems": [
+        "719e7c: over its budget (76 characters, at most 69)",
+        "8eb4eb: over its budget (75 characters, at most 63)",
+        "ee8b7c: over its budget (103 characters, at most 70)",
+        "28a3eb: over its budget (90 characters, at most 76)",
+        "c38a5e: over its budget (101 characters, at most 97)",
+        "f064e3: over its budget (112 characters, at most 98)"
+      ]
+    },
+    "native_answer_file": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/answers/th-reword-round-2-author-review-2026-10-26T11-20-23-262Z.txt",
+    "native_answer_sha256": "2879bc46763584425dc702ce272520b7056f2bdeb2fb19f7fecbafd057b25f00",
+    "translation_sha256": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93"
+  },
+  "three_current_exact_takes": {
+    "e8b327": {
+      "raw_sha256": "9880e018029e22f09c6900d6109214365133b98e5d4450c241e4751ff8ea01c5",
+      "saved_check": {
+        "scene": "opening",
+        "clip": "9880e018029e22f0",
+        "terms": [
+          "AI"
+        ],
+        "heard": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+        "noul": null,
+        "intended": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+        "spoken_form": "แอนิเมชันสอนที่ทำด้วย A I ก็แก้ข้อความและตัวเลขได้ค่ะ",
+        "match_kind": "exact",
+        "match": true
+      },
+      "not_flagged": true
+    },
+    "cab285": {
+      "raw_sha256": "1b777937330d9f10abaf5003fc12343cedb132786cbc9aa72717e43675a91758",
+      "saved_check": {
+        "scene": "audio-staging",
+        "clip": "1b777937330d9f10",
+        "terms": [],
+        "heard": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "noul": null,
+        "intended": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "spoken_form": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+        "match_kind": "exact",
+        "match": true
+      },
+      "not_flagged": true
+    },
+    "ad1b2c": {
+      "raw_sha256": "22e71c250725e2d0cd845223323ae1d07ca5965a250e8dd9a8ba3f99c3e4f714",
+      "saved_check": {
+        "scene": "practice-start",
+        "clip": "22e71c250725e2d0",
+        "terms": [],
+        "heard": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+        "noul": null,
+        "intended": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+        "spoken_form": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+        "match_kind": "exact",
+        "match": true
+      },
+      "not_flagged": true
+    }
+  },
+  "protected_evidence": {
+    "audio/speech-journal/0bff2c18b57e5a34d3ee05af4dee4aea1d5b7b1cd937b54c39c013bbaa16fad9.json": {
+      "actual_sha256": "2d5203fc96618af71cc8cb557b4c831556bc7b07af09be27a490c2840394c5bf",
+      "matches_before_and_after": true
+    },
+    "dubs/ko/skipped.json": {
+      "actual_sha256": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "matches_before_and_after": true
+    },
+    "dubs/pt/skipped.json": {
+      "actual_sha256": "51ced345c88dd85467c38d5db541e5632f77761fdfe954438fa1d13370e269ca",
+      "matches_before_and_after": true
+    },
+    "dubs/id/skipped.json": {
+      "actual_sha256": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+      "matches_before_and_after": true
+    },
+    "final.mp4": {
+      "actual_sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+      "matches_before_and_after": true
+    },
+    "approvals.json": {
+      "actual_sha256": "8fefeaec595d5ba964eb6c0712ce9b9c27d8db4f6d4524492027d3b8e3e21106",
+      "matches_before_and_after": true
+    },
+    "timeline.json": {
+      "actual_sha256": "d34af3061326998b7b0cc843cf096323a15b39e313f99ad1a52124a1f27d240a",
+      "matches_before_and_after": true
+    },
+    "checks.json": {
+      "actual_sha256": "47d29b73329991495bc2f7d6b90f6c1b1c43314f45a992606f67915a116b9637",
+      "matches_before_and_after": true
+    },
+    "languages.json": {
+      "actual_sha256": "d0a0ee8e8b5f9198e7fd4a633a3d804ab8e98f0ea8ece966e2d637e116e305c9",
+      "matches_before_and_after": true
+    }
+  },
+  "raw_ASR_bindings": [
+    {
+      "id": "e8b327",
+      "raw_sha256": "9880e018029e22f09c6900d6109214365133b98e5d4450c241e4751ff8ea01c5",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "00aeec",
+      "raw_sha256": "788d3d0628b0a25dd829e6d0da973bb5cb01590c903ee68a6812f4b4fba4917c",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c5a4b1",
+      "raw_sha256": "9fc9eb4771c0ddfe1c41ad10aa61662c263e169a16402efb10166ffd7c863b8f",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "74eeac",
+      "raw_sha256": "a02a325ea4571ead0c3dfdd9a0dcd506ae332d0e435ae42db70e5259c10227cf",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "79a96a",
+      "raw_sha256": "9c617e06e7fb10360109d1e0efdec313f0f6f402639a6dc448a7f5571a7444f3",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "aa0639",
+      "raw_sha256": "b64df37c3b41776868e6fc915f40245d181146643d56163a1b7cdc28af2858d6",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c2d378",
+      "raw_sha256": "51f42c49ea19c3efed37c2444f3fbf21c5da4aaaddc3ee4599c63ce5c8baccfe",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "47c7d2",
+      "raw_sha256": "a69e83ab4d4a038e3b3c43ee9fd104ff66088a94ca0e0202f6508d5b770cb23b",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "5a37fc",
+      "raw_sha256": "e0a6bf97a2309dcb1afb69dd1d88d7dad23be2c344c0226da6a1a04d390cb3ab",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "56c197",
+      "raw_sha256": "064fb13f318b506ee79e50714a7e2301e34ce2844b64cc604f4092c1b1b4c0a1",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "56ccfa",
+      "raw_sha256": "f1c206d033903f436f08dbe463e9e9a8ce7a2089bda046be23898c62a0624532",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "1712ce",
+      "raw_sha256": "bcf26333dc691c9675580b24ff17b20e1ce711fa17dd55d4fa4c82d2a85b2ab7",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "de0fb5",
+      "raw_sha256": "89f8405cba39207a96882967e8fc508afcdafb0c587bbb2259b091f0902d61a7",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "2c063b",
+      "raw_sha256": "4a4ab21f1da5c886150680831a766fe892f42919a3dd5952975f25db585a6458",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "5e5629",
+      "raw_sha256": "96490353ddcc2697404e1a28a9feced81e79b8626f6660bed96079320764813c",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "4a14bd",
+      "raw_sha256": "4d16155e47f616f4c78a386a096a9a83507fb67de905a7f01f4a7ea3902b1212",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "ea140a",
+      "raw_sha256": "3a9c03b9fdb91181333c6fa31d104f4923990b1551f39d03ea30f9e849c626c3",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "21c1bc",
+      "raw_sha256": "69d8832d6741438cfb8ba16e1129f908f85c3e9cf588ddea28e07c6c7a9ecda9",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "8f5f2e",
+      "raw_sha256": "5789241df67b9e13aeceb2d05531fb7ae30ceba79c16911dab10b43edd869359",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "6b1614",
+      "raw_sha256": "ecfcd20cd9caf13952c65a35d569afd2b8d0ca93d35315ed3cffaeb70d7d49fb",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "1832d2",
+      "raw_sha256": "6fce816503050a7c39c1fa7428a87dd04b338791756d4aee9ffa28e67baf11bd",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c141fc",
+      "raw_sha256": "b86b748c97e6511d82a34ea28b81fb3c45ea0e44548551db6f8b361829781544",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c5a99d",
+      "raw_sha256": "7cf28f9ba5086706dd2742328f5c70062ec366cce6c97a499f5ea6063026b5df",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "719e7c",
+      "raw_sha256": "b32035227b96223389abc45fe83d3a3f5862c2ff21e2c2bcc50392f638efd920",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "f2c1f3",
+      "raw_sha256": "b6a434bd02f34db7ff145e85a1fc4b65a5f922c3b86d91b13a46192c8fec76d8",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "475bb2",
+      "raw_sha256": "2c94134d26ea0879994854bcfb65f8c0bdfbcca325a09fb33cf3ae9c24e5c33d",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "8a3f5b",
+      "raw_sha256": "70764dcd47376e627df5881da49b18523c00f603835c80a0793193e4daf921d5",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "520a3b",
+      "raw_sha256": "bf8d841944550a149f68fe0032ee71f00096ea013e6f5d9b6df75f1c04dfb349",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "9dd115",
+      "raw_sha256": "f226357f9a0ea12bb633fcd624dc8ef4184af88945f551d1027d73a4d6d48a70",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "0c086d",
+      "raw_sha256": "e41ffb8f2d29c70891f0302c4adb512c97d1b4865df1f5d76ba3c049dd5fd092",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "76fc63",
+      "raw_sha256": "f25f0283cd5c3b0403916c1d9d4f78d70c4889d954a5edc9bc1ae5a2ea6064e4",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "066452",
+      "raw_sha256": "430f7ec68ff440bb985970817c2fb9802ea55c6c58ef6f03c8b6f44c1c8a7f9c",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "7b0c6d",
+      "raw_sha256": "f6d587df23472ef3fe4015905214ec7dfbed60b59eb6cee4ce8b1eacf9b490ac",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "1f3f10",
+      "raw_sha256": "50e3b013b9f6b4ce56171762f6930fde632458b76c0aa88f23c4ed6e40c09ba4",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "291f73",
+      "raw_sha256": "97df9b2ab7e1026ebf08fbf0aa113d248761df6ca04eaf049e4b9bebd7bc1bc8",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "60d6c7",
+      "raw_sha256": "d2f9e8eec7926a103e293d9d236d0c4910230a216864acce90aee2b13390ba6c",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "d27bc5",
+      "raw_sha256": "4cab931d6bf74966c41744dabed330a6946646b97cae56fcf4a059b78d70eacc",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "976818",
+      "raw_sha256": "cc981fcfdef7fc57493761e9f72e2a3b641db5cdeb221bf95a84cc13bd0d403e",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "b22122",
+      "raw_sha256": "60221122b57c1ac2cc5accaec7e29facf5b01e6dc16803661cad4db9ffa80985",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "182fcd",
+      "raw_sha256": "f62cb064276a9a02767faf43ed87d1677f66ff10cb2da91b4b4c36128da2bb4f",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "a2d3d8",
+      "raw_sha256": "17358a8a117db80e9f22ca346638ff8a6beb7b8c2ad4617818d1dd8504c5f667",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "b13c3e",
+      "raw_sha256": "585ca2abc0e944bb3747159575745b41216382835b4dbf1212a65ecc171700eb",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "5f446c",
+      "raw_sha256": "e9df452bd7495572d7f8fd0a6ff754d581599f906ba23c7ab4d380875a443f22",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "f37b7f",
+      "raw_sha256": "92993965bab05332381f821a24c4d584c307cb6f31b34378a317ac92474febfe",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "801093",
+      "raw_sha256": "2d3aa6219b3052b5891757d918852e8e878bfc98d0602a845e2f30791b4e43ad",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "9aa7fd",
+      "raw_sha256": "1853321a436eb624ada536b38c6ff508c53a30f35bbf2e0e6eb796a7b542b382",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "2a7dbb",
+      "raw_sha256": "956d51f85f3f3e73005d7383ec48d30d24c7d90a009c4208fab0b3bd07512a92",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "d6ecd3",
+      "raw_sha256": "1fdeacbdf94488ad60c9d38bc49507b18c416cb8310944abd84e9b6357344089",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "5d4f54",
+      "raw_sha256": "b57f49f6e3795a5b9a211bec3a3f2ba0c1b78683a98388cfc90d0c941015bf90",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "cbba85",
+      "raw_sha256": "d83cd5da642ae92ac95e0721ed1b55a032e8de518e87dfaf3b0004d818d27cbd",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "1de727",
+      "raw_sha256": "c85313ef6df3d8dc13579c9328bcac72762e673ecfe556234e988d372d2d01d9",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "0dd30b",
+      "raw_sha256": "d321fcfdf606427c4cd5c412b51857a124e0106acc7fbcc34741a69f3e884fe3",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "52cf29",
+      "raw_sha256": "b36c9447f2023feb9b21a199414d74ba122883ae3030cbca42a1c6a49a6f5e06",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "005752",
+      "raw_sha256": "94d1247a6e0a489f31a1a9eb7c90f41a5e1fc5f8169700164cf017b9713a20f1",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "7bf8fb",
+      "raw_sha256": "063120a05f614be6af9dc35d12a75a7891271eb679901759f3f82b8ef72d720e",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "a1f88a",
+      "raw_sha256": "69e231d02ecdf6145e567c857d1cb5730fdffc2c3eec9ddc0ae1a11d41037b3e",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "07771e",
+      "raw_sha256": "c20e2b784d6a5c1b6ce934624efb092ec40bdee09ad57d17b994a28f54fcc7a0",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "8eb4eb",
+      "raw_sha256": "7b8f82e6a3e43049d839e62041eb2c90d34dbc43798def6c0cea09f20e788413",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "05bc8a",
+      "raw_sha256": "cadeb9a767fee716948cec4c8c26d8f72e10b752f31f32420a220695c0e30507",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "f6f6be",
+      "raw_sha256": "c02e3d4d4afb4f4ad9abf51726703d3e433c119e8d876c00ecc4ba7334914611",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "7a42ba",
+      "raw_sha256": "0169cbb32c454420a229949e77da9f8619736f1626ead78b18b3f8b774448f90",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "8c2bc9",
+      "raw_sha256": "99a79275fd18c6505e9957826dac662eb6c93112d9145409a9b6ac00b43c06ce",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "de08dd",
+      "raw_sha256": "45efdf28664e4d7c8014b0495fc68d5ded26ad7fc7c1737de72ae16ff54eff25",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c7b43e",
+      "raw_sha256": "17fcdf3cf63be0eea5b0e00d04848815a38861f52f9c02a49198a9ef66f5c5c8",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "7e3f75",
+      "raw_sha256": "cb53f3a423d010b2a5c6364fa1bcb5eb2b6395973f8f6989a424de5fc9c351b0",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "594e82",
+      "raw_sha256": "928854c80eaa2b11b157b299b9a62f19298321a60988693d3a428f006c9a9505",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c30642",
+      "raw_sha256": "22f2b3077583cbde75937db0177be27cbd83ea2f066d71a4d60d5ba5a673afad",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "1b4829",
+      "raw_sha256": "cbf9bb16d2beecf35ef58f08f1e46e6b3aa678ad0ab2f2190dc9f42da544686d",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "a49833",
+      "raw_sha256": "9b704c5f9f62bcc5537c49b61eccc41efbdd633e399d47f33b389ae9255da4db",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "1faa10",
+      "raw_sha256": "b818405e8997d5c47ce9343ed3605e8095efba0baf670b46bb75beb2d58c2156",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "b4de26",
+      "raw_sha256": "6a26c38ad87ca463de811982d5f403c8f8caecd50c6e0fff03bd706e44443364",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "4df2bf",
+      "raw_sha256": "fc9fe8ba9cf15abcf983f7516b3cbed42538b347f4d7219b2111a5d7e6f479af",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c41135",
+      "raw_sha256": "de9032c1b1ea203d9722f4e864f9553438793c0e1ca2b39987403c60d26d27a2",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "802a26",
+      "raw_sha256": "fac1d28ac30b2cf3ebc6b5eeed425548bea98943ff2d3b02270a81fd84350fad",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "bf54ca",
+      "raw_sha256": "d2f8c897090e82d8a4c45910ba50d4d8f24891159120ceec72c81a62c8edb705",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "ba0179",
+      "raw_sha256": "efd3f4f62b1cde4d1a55c13445544a50aed3f72f7f03ffe92ff2576acc592a8d",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "cab285",
+      "raw_sha256": "1b777937330d9f10abaf5003fc12343cedb132786cbc9aa72717e43675a91758",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "a6c28e",
+      "raw_sha256": "ba83a8f80bb20cf263fc7bc314315a0ec3d6d9ca8ca6170ec0870075c2dcf04f",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "0b06d1",
+      "raw_sha256": "27471e8e49d1ffbfe98c1ac112ede4cee276632d955ab750f70f95bfc7aa7984",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "b919e0",
+      "raw_sha256": "6ca62a4d94d0ab30d1ca06c40c1db5847fbc3a92998003b7c85eeb5f1b0edf5e",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "ee8b7c",
+      "raw_sha256": "07c60e0976dd49508ec832bccf3532e7cb6a2860a320776f07dcd621a78d96ff",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "b69ae1",
+      "raw_sha256": "8713159a0ae84443b7022de8ab4fd321c3ca26d3eeb37547ebe3cfc278bd1b4b",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "481fba",
+      "raw_sha256": "8142102c672505506e82307fa6e97ab9a706ceeb50bf6051ae1dec8635064f1c",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "18691a",
+      "raw_sha256": "c0c1d71719b028974c0c991182c9bfe7906c10d4bd230c12293bdaa0d4762fe5",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "28a3eb",
+      "raw_sha256": "f2357dfbdbffdd0ff901c3998d62596b258e591ff9aeefc2af9988e58f17424e",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "203f1e",
+      "raw_sha256": "4e8ae534b7090a1f94ecfb3d1075666f9b01cc38b94bcc94e242c40e02bed1dc",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "7311eb",
+      "raw_sha256": "6e802cb1346f49cd7ab2d78fbc7d0fa9b4e10a07dcc86bccb403691f13afbff7",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "75368c",
+      "raw_sha256": "fdb6bb2e03d50ec14c5bdfcb1ff85d865331a5c132b76bee09836c2a5e5a0754",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "9d8939",
+      "raw_sha256": "978eddf7bf6bca34cff411f6e488ec21bf21638ad4344dfa3cf73b28ebacb583",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c38a5e",
+      "raw_sha256": "3dc6df1e7229840007d43dc772ecc7de55a8d7d392432b349aebedb6d4917880",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "a56276",
+      "raw_sha256": "28633638079663daab29893f751a59719a207a6ccd34c61cb6734495e76b571b",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "84576e",
+      "raw_sha256": "bd829eaac859b981b6f4cbe3cd000966c7c9ba96f31d7598fa17b35c1fa1a09b",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "ad1b2c",
+      "raw_sha256": "22e71c250725e2d0cd845223323ae1d07ca5965a250e8dd9a8ba3f99c3e4f714",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "d8b2ca",
+      "raw_sha256": "315cca20cdf468eaf648ec4b26951deb9b1f481bf65d6bc33af0fb377b81c61f",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "c90844",
+      "raw_sha256": "9e0b2f16986160ae41553e336ce8ebfa506682156288e2438a9fcc635ddb9f77",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "f9399e",
+      "raw_sha256": "5d5f089060a72b02faedf587619b59902b008d1c31aac35202598f8ee05f6bb6",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "2506eb",
+      "raw_sha256": "8579a9bc2eb892f35c9529def0adf50d9740a3619285250cb31a539c8f75ae24",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "f064e3",
+      "raw_sha256": "f290de27e913e3cbb28db1f976131b5b31da8d0ad88675326e75e9c5ba4e9597",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "f576ae",
+      "raw_sha256": "644c16dbe0b8c9f182e88e62413f0098bef22de402f848c8b4d6c06dbab9b2a1",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "9e738a",
+      "raw_sha256": "fe5e2eb91678b51b90f3ef032aabebd9cad1d668aa5dad6eebaa9ffe2caae37b",
+      "saved_check_matches_current_raw": true
+    },
+    {
+      "id": "ed8308",
+      "raw_sha256": "fb84fa80b894e4475f70528f61366fa3cb64674bc103d40eb478790d35d85fab",
+      "saved_check_matches_current_raw": true
+    }
+  ],
+  "caption_observations": {
+    "e8b327": {
+      "current_text": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "present_srt": false,
+      "present_vtt": false
+    },
+    "cab285": {
+      "current_text": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "present_srt": false,
+      "present_vtt": false
+    },
+    "ad1b2c": {
+      "current_text": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+      "present_srt": false,
+      "present_vtt": false
+    }
+  },
+  "caption_hashes": {
+    "th.srt": "8c87a7370873484f3d477f21871f18781de62a50bd48dc499eabd031502f2c17",
+    "th.vtt": "f38e4fd08f62134965ce86818f4bd0dcfcb3b132a4dcbd602fd4e49f451e6bd4"
+  },
+  "source_media_auto_marker_mutated": false,
+  "paid_calls_made": 0,
+  "owner_calls_made": 0,
+  "next": [
+    "Preserve six flags and rounds1/2/2; remain stopped without third canonical rewrite, counter reset, generic terminal-skip resume, or manual audio approval.",
+    "Further TH retry needs a genuine supported owner retry path; editorial permission already exists but does not supply the missing authenticated owner control channel.",
+    "Bookend renewal still needs genuine owner renewal submission/review and guarded adoption; no old approval may be repurposed.",
+    "EN unknown journal and KO/PT/ID native skips remain protected and unresolved.",
+    "Current Thai CC is stale after three accepted source edits; rebuild and check it in the normal ready flow.",
+    "Publishing remains owner-operated."
+  ]
+}

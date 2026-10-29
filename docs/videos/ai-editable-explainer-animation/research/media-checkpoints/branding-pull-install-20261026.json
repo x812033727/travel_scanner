@@ -1,0 +1,25 @@
+{
+  "observed_at_utc": "2026-10-26T02:19:02.357Z",
+  "runtime_merge_commit": "50a073cced2290ac87eb412e54139aff34a2d384",
+  "native_exit": 0,
+  "requests": [
+    {
+      "method": "GET",
+      "url": "https://mokaair.com/api/video/media/branding",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "https://mokaair.com/api/video/media/branding/files/50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d",
+      "status": 200
+    },
+    {
+      "method": "GET",
+      "url": "https://mokaair.com/api/video/media/branding/files/00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396",
+      "status": 200
+    }
+  ],
+  "stdout": "{\n  \"work_base\": \"/workspace/work/ai-animation-01/media\",\n  \"series\": null,\n  \"remote\": {\n    \"series\": null,\n    \"id\": \"mokaair-brand-package-v4-endscreen\",\n    \"hash\": \"416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88\",\n    \"installed_at\": \"2026-10-12T11:46:32.849Z\",\n    \"intro\": {\n      \"sha256\": \"50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d\",\n      \"frames\": 150,\n      \"size\": 2708408\n    },\n    \"outro\": {\n      \"sha256\": \"00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396\",\n      \"frames\": 630,\n      \"size\": 2054558\n    }\n  },\n  \"selection\": {\n    \"schema_version\": 1,\n    \"id\": \"mokaair-brand-package-v4-endscreen\",\n    \"intro\": {\n      \"file\": \"/workspace/work/ai-animation-01/media/_branding/416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/intro.mp4\",\n      \"sha256\": \"50a53efa54fe5158a166390c7f46518c052be1af005f99a5f3c57e530b0bb67d\",\n      \"frames\": 150\n    },\n    \"outro\": {\n      \"file\": \"/workspace/work/ai-animation-01/media/_branding/416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88/outro.mp4\",\n      \"sha256\": \"00eb9ccc8449fa8b47de0aab290b8aa7d55b09962c12a127e0f0c9c5f7834396\",\n      \"frames\": 630\n    },\n    \"hash\": \"416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88\"\n  },\n  \"installed\": true,\n  \"current\": false\n}\n",
+  "stderr": "",
+  "provider_requests": 0
+}

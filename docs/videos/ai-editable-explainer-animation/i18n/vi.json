@@ -1,0 +1,449 @@
+{
+  "title": "Làm hoạt hình giảng dạy bằng AI: sửa được cả chữ lẫn số",
+  "description": "Từ một câu hỏi, tạo hoạt hình giảng dạy có thể chỉnh sửa. Dùng sơ đồ gốc về hai xúc xắc để luyện viết yêu cầu, xin tệp có thể sửa, xem trước, đổi tham số, căn lời dẫn và nghiệm thu.\n\nTập này dùng ví dụ vẽ bằng Python và FFmpeg được viết cùng AI, không phải bản ghi thao tác Claude Motion, cũng không khẳng định một sản phẩm có thể làm xong mọi thứ trong một lần. Tài liệu kèm video có tệp dữ liệu, chương trình, lời nhắc có thể sao chép và cách kiểm tra.\n\nNgày xác nhận dữ liệu và sản xuất: 2026-10-25. Phần minh họa là dự án gốc được thực sự tạo ra cho tập này; video tham khảo công khai chỉ dùng để nghiên cứu chủ đề và cách trình bày.\n\nLưu ý tài liệu: các trường dữ liệu của ví dụ xúc xắc chỉ hỗ trợ zh-TW; MP4 mẫu cố ý không có tiếng, thời gian trong SRT mẫu là thiết kế phân cảnh, không phải kết quả căn theo lời dẫn đã đo thực tế. Lời dẫn, CC và lồng tiếng tám ngôn ngữ của video chính đi theo quy trình sản xuất riêng.\n\nTài liệu đầy đủ và lời nhắc có thể sao chép:\nhttps://github.com/x812033727/travel_scanner/tree/00bbe9bb09eb5cf3a8ea52a39570ef9d45b66620/docs/videos/ai-editable-explainer-animation/materials",
+  "tags": [
+    "hướng dẫn AI",
+    "hoạt hình AI",
+    "video giảng dạy",
+    "hoạt hình lập trình",
+    "hoạt hình có thể sửa",
+    "làm video"
+  ],
+  "chapters": {
+    "opening": "Hoạt hình có sửa được không?",
+    "route-begin": "Vì sao cần tệp nguồn?",
+    "brief-goal": "Viết yêu cầu để vẽ ra sao?",
+    "build-start": "Dùng tệp AI tạo thế nào?",
+    "revise-start": "Đổi một số thì sao?",
+    "audio-start": "Căn lời dẫn với hình ảnh",
+    "check-start": "Khi nào có thể giao video?",
+    "practice-start": "Bắt đầu chủ đề của bạn"
+  },
+  "source_hashes": {
+    "chapters": {
+      "opening": "610db70db83f",
+      "route-begin": "ba5cb23adc34",
+      "brief-goal": "f65d0ddccb91",
+      "build-start": "c276889fde4d",
+      "revise-start": "4552419aaf8d",
+      "audio-start": "f30bb42b979a",
+      "check-start": "721afa938b5b",
+      "practice-start": "45adfe913a3b"
+    },
+    "title": "4730c6b16c99",
+    "description": "203828ce423b",
+    "tags": "2faecd1e2eb8",
+    "thumbnail": "753fc0c73bc9"
+  },
+  "lines": {
+    "801093": {
+      "source_hash": "909ad2e6a076",
+      "text": "Lệnh chỉ đọc dữ liệu để kiểm tra, không sửa tệp gốc; tham số là số ô dự kiến, đúng mới làm tiếp."
+    },
+    "976818": {
+      "source_hash": "9768186346e6",
+      "text": "Tệp dữ liệu gom tiêu đề, mục tiêu và màu vào một chỗ để bạn dễ sửa."
+    },
+    "e8b327": {
+      "source_hash": "e8b3275841a3",
+      "text": "Hoạt hình giảng dạy bằng AI cũng sửa được chữ và số."
+    },
+    "00aeec": {
+      "source_hash": "39d3dceaa345",
+      "text": "Như sơ đồ xúc xắc này, mỗi ô sáng đều do chương trình tính ra."
+    },
+    "c5a4b1": {
+      "source_hash": "c5a4b186e71f",
+      "text": "Nếu bạn đổi bài toán, các ô sáng có đổi theo không?"
+    },
+    "74eeac": {
+      "source_hash": "74eeac02adc3",
+      "text": "Đổi ngôn ngữ lời dẫn, hình ảnh đã chuyển mất chưa?"
+    },
+    "79a96a": {
+      "source_hash": "1e28b1f36cfb",
+      "text": "Lần này, ta dựa vào một bản yêu cầu để làm video hướng dẫn ngắn và giữ cả cách sửa."
+    },
+    "aa0639": {
+      "source_hash": "aa06395c5889",
+      "text": "Bạn không cần thử vận may lấy hình đẹp khác, mà cần sửa được lỗi chữ thật sự."
+    },
+    "c2d378": {
+      "source_hash": "b38dfc83a70a",
+      "text": "Vậy cần xin AI những gì để nó không chỉ giao một video làm sẵn?"
+    },
+    "47c7d2": {
+      "source_hash": "47c7d244cfd7",
+      "text": "Đặt chữ và số vào tệp dữ liệu để lúc sửa bạn tìm được."
+    },
+    "5a37fc": {
+      "source_hash": "5a37fc4af4f2",
+      "text": "Cho chương trình khác đọc dữ liệu, sắp hình và thời gian lên màn hình."
+    },
+    "56c197": {
+      "source_hash": "56c197a80bcd",
+      "text": "Video chỉ là kết quả xuất; phải giữ cả tệp để làm lại nó."
+    },
+    "56ccfa": {
+      "source_hash": "d97745bb69a7",
+      "text": "Vì cần ô và số chính xác, ta chọn hoạt hình lập trình."
+    },
+    "1712ce": {
+      "source_hash": "2d49ec6ed918",
+      "text": "Nhưng nếu cần diễn xuất nhân vật, ví dụ lưới này không phù hợp."
+    },
+    "de0fb5": {
+      "source_hash": "98fa2d14fe2c",
+      "text": "Làm phiên bản xem được trước, chắc chắn giải thích rõ, rồi mới thêm chi tiết."
+    },
+    "2c063b": {
+      "source_hash": "2c063b151123",
+      "text": "Bạn có thể nói: giao dự án sửa được, đặt chữ và số vào tệp dữ liệu."
+    },
+    "5e5629": {
+      "source_hash": "3170e97467c8",
+      "text": "Trước khi sửa, hãy sao chép để phiên bản vất vả làm đúng không bị đổi theo."
+    },
+    "4a14bd": {
+      "source_hash": "4a14bd9a0197",
+      "text": "Đã chọn dạng tệp, nhưng bạn vẫn phải quyết định nó cần vẽ gì."
+    },
+    "ea140a": {
+      "source_hash": "ea140aed008f",
+      "text": "Video này chỉ trả lời vì sao xác suất các tổng xúc xắc khác nhau."
+    },
+    "21c1bc": {
+      "source_hash": "87e293632e89",
+      "text": "Đặt hai xúc xắc công bằng, độc lập: một ở trục ngang, một ở trục dọc."
+    },
+    "8f5f2e": {
+      "source_hash": "8f5f2e46e80e",
+      "text": "Tính riêng một cộng sáu và sáu cộng một, vì kết quả hai xúc xắc có thứ tự."
+    },
+    "6b1614": {
+      "source_hash": "6b16140f2bd5",
+      "text": "Viết điều kiện trước, đừng để AI vừa đoán sự thật vừa vẽ hình."
+    },
+    "1832d2": {
+      "source_hash": "1832d20fd272",
+      "text": "Yêu cầu vẽ đủ ô, đừng bỏ kết quả nào chỉ để đẹp hơn."
+    },
+    "c141fc": {
+      "source_hash": "c141fc78970c",
+      "text": "Yêu cầu mỗi ô kiểm tra tổng hai mặt, đúng điều kiện mới tô màu."
+    },
+    "c5a99d": {
+      "source_hash": "c5a99df6d3f7",
+      "text": "Yêu cầu tiêu đề và chú giải là chữ thật để sau sửa trực tiếp."
+    },
+    "719e7c": {
+      "source_hash": "719e7cc8c4c9",
+      "text": "Viết lời nhắc: vẽ mọi kết quả có thứ tự của hai xúc xắc công bằng."
+    },
+    "f2c1f3": {
+      "source_hash": "f2c1f3e153d2",
+      "text": "Trình bày bằng ô, tô màu ô có tổng bằng mục tiêu."
+    },
+    "475bb2": {
+      "source_hash": "475bb2cd6284",
+      "text": "Xem toàn bộ, rồi mục tiêu, cuối cùng so sánh hai kết quả."
+    },
+    "8a3f5b": {
+      "source_hash": "69ff2f26b4d0",
+      "text": "Dòng thời gian không nhồi mọi hình cùng lúc, mà cho từng trọng tâm xuất hiện."
+    },
+    "520a3b": {
+      "source_hash": "520a3be4c068",
+      "text": "Chọn nền trắng ngà, chữ tối và một màu nhấn để mắt có điểm dừng."
+    },
+    "9dd115": {
+      "source_hash": "8e0d4a5b1c3b",
+      "text": "Cần nhiều chuyển động sao? Các ô sáng lần lượt để bạn nhìn rõ tổ hợp."
+    },
+    "0c086d": {
+      "source_hash": "f52349faae8e",
+      "text": "Chuyển động nào không giúp hiểu, hãy yêu cầu AI bỏ đi."
+    },
+    "76fc63": {
+      "source_hash": "65be90259a60",
+      "text": "Sau đó nói người xem chưa học xác suất: xem tổ hợp trước, đừng đưa công thức ngay."
+    },
+    "066452": {
+      "source_hash": "066452e5805d",
+      "text": "Nếu chủ yếu xem trên điện thoại, yêu cầu chữ to, chú giải không sát mép."
+    },
+    "7b0c6d": {
+      "source_hash": "7b0c6de91eaf",
+      "text": "Hãy nhờ AI vẽ trước cảnh tô màu các ô lưới, đừng ngay từ đầu đã yêu cầu hoàn thành cả video."
+    },
+    "1f3f10": {
+      "source_hash": "1f3f1035868f",
+      "text": "Có hình cốt lõi rồi, nhờ AI gom thành dự án chạy được."
+    },
+    "291f73": {
+      "source_hash": "291f73fb2e95",
+      "text": "Đọc tiêu đề, mục tiêu từ tệp; đừng ghi số riêng từng hình."
+    },
+    "60d6c7": {
+      "source_hash": "60d6c7382915",
+      "text": "Xin lệnh cài đặt, xem trước, xuất video, và giải thích công dụng từng tệp."
+    },
+    "d27bc5": {
+      "source_hash": "d27bc5332ae2",
+      "text": "Viết thêm chương trình kiểm tra, tính lại đáp án đúng từ mọi kết quả."
+    },
+    "b22122": {
+      "source_hash": "1c08968692ef",
+      "text": "Ví dụ dùng gói vẽ tạo khung hình, rồi công cụ video ghép các khung lại."
+    },
+    "182fcd": {
+      "source_hash": "182fcdc8a235",
+      "text": "Tải tài liệu rồi giải nén thư mục, kiểm tra tệp dữ liệu và chương trình ở cùng chỗ."
+    },
+    "a2d3d8": {
+      "source_hash": "a2d3d89f20c8",
+      "text": "Cài gói vẽ theo hướng dẫn kèm video, kiểm tra có công cụ video và phông chữ Hoa."
+    },
+    "b13c3e": {
+      "source_hash": "b13c3efb91c3",
+      "text": "Trường ngôn ngữ hiện chỉ nhận chữ Hoa phồn thể; đổi mã không tự dịch xong."
+    },
+    "5f446c": {
+      "source_hash": "66f8cc7b60b8",
+      "text": "Vì nó đọc và ghi tệp, chỉ cho xử lý dự án thực hành này trước, đừng trộn tệp quan trọng."
+    },
+    "f37b7f": {
+      "source_hash": "f37b7f74705b",
+      "text": "Dòng này làm gì? Nhờ AI giải thích sẽ đọc gì, ghi gì."
+    },
+    "9aa7fd": {
+      "source_hash": "7ec50ea81a42",
+      "text": "Dấu thành công chỉ báo kiểm tra đã đạt, không có nghĩa video đã hoàn thành."
+    },
+    "2a7dbb": {
+      "source_hash": "2a7dbb6accb8",
+      "text": "Khi lỗi, dán nội dung lỗi, nhờ chỉ sửa phần để ví dụ xem trước được."
+    },
+    "d6ecd3": {
+      "source_hash": "d6ecd3e2aac3",
+      "text": "Kiểm tra đạt là giao video được sao? Hãy xem các khung hình chính trước."
+    },
+    "5d4f54": {
+      "source_hash": "1e1132806ccb",
+      "text": "Mỗi ô sáng lúc này phải là một cặp mặt xúc xắc đúng mục tiêu."
+    },
+    "cbba85": {
+      "source_hash": "cbba85933a61",
+      "text": "Khi so tổng khác, phải giữ nguyên kích thước ô và phạm vi toàn hình."
+    },
+    "1de727": {
+      "source_hash": "1de727b378d5",
+      "text": "Thu bản xem trước về độ rộng điện thoại; xem tiêu đề đọc được, trọng tâm rõ không."
+    },
+    "0dd30b": {
+      "source_hash": "0dd30b51e2a5",
+      "text": "Lúc này mới xuất video; đừng coi chờ chuyển đổi cả tệp là kiểm chứng nội dung."
+    },
+    "52cf29": {
+      "source_hash": "659765acd649",
+      "text": "Kết xuất đọc cùng dữ liệu, tạo video không tiếng và các khung hình xem trước; tên đầu ra theo cài đặt trên màn hình, lời dẫn thêm riêng."
+    },
+    "005752": {
+      "source_hash": "0057524ad324",
+      "text": "Nếu chỉ kiểm tra hình, dùng tùy chọn chỉ tạo khung hình; xem hình rồi mới làm video đầy đủ."
+    },
+    "7bf8fb": {
+      "source_hash": "79e29f08b614",
+      "text": "Video phát được rồi. Trở lại câu hỏi đầu: chỉ đổi một số, hình có đổi theo không?"
+    },
+    "a1f88a": {
+      "source_hash": "a1f88a5878fb",
+      "text": "Đổi tổng mục tiêu trong dữ liệu thành sáu, giữ nguyên các cài đặt khác."
+    },
+    "07771e": {
+      "source_hash": "07771e44e3fb",
+      "text": "Nói với AI: chỉ đổi tổng mục tiêu, tính lại ô sáng và chữ."
+    },
+    "8eb4eb": {
+      "source_hash": "8eb4ebe2e681",
+      "text": "Thêm câu: giữ nguyên phối màu, phông chữ và thứ tự các đoạn."
+    },
+    "05bc8a": {
+      "source_hash": "dc7ba812bb7f",
+      "text": "Đổi mục tiêu, vị trí ô sáng thay đổi, số đếm bên cạnh cũng phải cập nhật."
+    },
+    "f6f6be": {
+      "source_hash": "39ab63b6c885",
+      "text": "Nhớ câu hỏi đầu không? Ô sáng đã đổi theo, giờ có năm ô đúng điều kiện."
+    },
+    "7a42ba": {
+      "source_hash": "a911455415a1",
+      "text": "Nếu hình đổi mà tiêu đề còn số cũ, nhờ tìm chỗ ghi cứng số bị lặp."
+    },
+    "8c2bc9": {
+      "source_hash": "8c2bc98e7627",
+      "text": "Xin danh sách tệp đã sửa và lý do để biết có sửa sang chỗ khác không."
+    },
+    "de08dd": {
+      "source_hash": "de08ddd609ec",
+      "text": "Giữ riêng phiên bản trước và sau sửa, đừng lại có 'bản cuối thật sự lần hai'."
+    },
+    "c7b43e": {
+      "source_hash": "c7b43e868697",
+      "text": "Đổi tiêu đề theo cách hỏi của bạn, xem trước lại, đảm bảo chữ dài không tràn."
+    },
+    "7e3f75": {
+      "source_hash": "7e3f75e8a4f7",
+      "text": "Tiêu đề dài thì xin xuống dòng hợp lý, đừng thu nhỏ mọi chữ đến mức không đọc được."
+    },
+    "594e82": {
+      "source_hash": "00bc69ca66bf",
+      "text": "Số đã cập nhật đồng bộ. Đổi sang ngôn ngữ khác, bố cục còn chứa đủ không?"
+    },
+    "c30642": {
+      "source_hash": "c30642208449",
+      "text": "Đổi ngôn ngữ, nghe độ dài lời dẫn thực tế trước, rồi quyết định hình dừng bao lâu."
+    },
+    "1b4829": {
+      "source_hash": "1b48298c8391",
+      "text": "Chia lời dẫn thành câu ngắn hiểu độc lập, mỗi câu một trọng tâm."
+    },
+    "a49833": {
+      "source_hash": "a49833a85725",
+      "text": "Tổng hợp hoặc thu xong, đo thời gian tệp âm thanh thật, không dùng số giây ước tính."
+    },
+    "1faa10": {
+      "source_hash": "1faa1096aa9b",
+      "text": "Giữ hình ít nhất đến hết câu, rồi thêm chút thời gian đọc hình."
+    },
+    "b4de26": {
+      "source_hash": "b4de2640745f",
+      "text": "Đến lúc nói kết quả đúng điều kiện ô mới sáng, để tiếng và động tác khớp nhau."
+    },
+    "4df2bf": {
+      "source_hash": "d6fdd018eeef",
+      "text": "Nếu không vừa, đơn giản lời dẫn trước, đừng vội tăng tốc cả đoạn."
+    },
+    "c41135": {
+      "source_hash": "c4113583e176",
+      "text": "Giữ tiêu đề cần thiết trên hình, lời dẫn đầy đủ trong phụ đề bật tắt được."
+    },
+    "802a26": {
+      "source_hash": "802a2616273d",
+      "text": "Dịch phải giữ nghĩa, nhưng độ dài chữ, ngắt nghỉ và phát âm cần xem riêng từng ngôn ngữ."
+    },
+    "bf54ca": {
+      "source_hash": "bf54ca1ecbe3",
+      "text": "Nhất là số và tên riêng, nghe lại riêng một lần, đừng chỉ thấy chữ đúng là đủ."
+    },
+    "ba0179": {
+      "source_hash": "ba017974575f",
+      "text": "Phụ đề tài liệu chia theo thời gian thiết kế; lời dẫn xong còn phải căn theo tệp âm thanh."
+    },
+    "cab285": {
+      "source_hash": "040ee865a72e",
+      "text": "Căn câu giải thích ô sáng trước, rồi áp dụng cách đó cho các đoạn khác."
+    },
+    "a6c28e": {
+      "source_hash": "c125c333ada5",
+      "text": "Tắt tiếng video trước, xem hình có giải thích được nội dung đang so sánh không."
+    },
+    "0b06d1": {
+      "source_hash": "5baee97982b1",
+      "text": "Cuối cùng bật tiếng, đảm bảo lời dẫn giải thích hình, không tranh sự chú ý với hình."
+    },
+    "b919e0": {
+      "source_hash": "b919e084249d",
+      "text": "Video phát xong, lấy yêu cầu ban đầu ra đối chiếu từng mục."
+    },
+    "ee8b7c": {
+      "source_hash": "ee8b7c92ac39",
+      "text": "Kiểm tra điều kiện và số đếm, đừng bỏ lỗi toán chỉ vì hoạt hình mượt."
+    },
+    "b69ae1": {
+      "source_hash": "b69ae171f159",
+      "text": "Chữ tràn khung? Ô và màu dễ phân biệt?"
+    },
+    "481fba": {
+      "source_hash": "481fba412023",
+      "text": "Cuối cùng kiểm tra video phát được, gói bàn giao có tiếng, phụ đề và tệp gốc."
+    },
+    "18691a": {
+      "source_hash": "18691a3312cf",
+      "text": "Chương trình kiểm tra tính lại từ tổ hợp mặt xúc xắc, không đọc số hình tự nêu."
+    },
+    "28a3eb": {
+      "source_hash": "55c13b8f6a34",
+      "text": "Chương trình kiểm tra ô lưới, nhưng không đánh giá hộ bạn câu giải thích có dễ hiểu không."
+    },
+    "203f1e": {
+      "source_hash": "203f1ef738b1",
+      "text": "Xem phần đầu và cuối để tránh cắt ngang hoặc còn đuôi trống."
+    },
+    "7311eb": {
+      "source_hash": "7311eb218600",
+      "text": "Phiên bản đã sửa cũng phải kiểm tra sao? Cũng xuất lại để chắc quy trình sửa chạy được."
+    },
+    "75368c": {
+      "source_hash": "75368c340bf4",
+      "text": "Nhập điều kiện không hỗ trợ thì phải nêu lý do rồi dừng, không âm thầm vẽ thành bài khác."
+    },
+    "9d8939": {
+      "source_hash": "9d8939ad1e6a",
+      "text": "Đưa AI thông báo lỗi và dữ liệu bạn đã sửa, nhờ nói rõ điều kiện nào không được nhận."
+    },
+    "c38a5e": {
+      "source_hash": "c38a5ea1a53b",
+      "text": "Khi giao, ghi phiên bản này đổi bài, số hay thời gian, để người nhận biết xem đâu trước."
+    },
+    "a56276": {
+      "source_hash": "a56276207b17",
+      "text": "Ghi nguồn và cách dùng tư liệu trong hướng dẫn bàn giao, để người sau khỏi phải đoán."
+    },
+    "84576e": {
+      "source_hash": "84576e7d6b40",
+      "text": "Ví dụ này cho thấy rằng sơ đồ ô lưới có thể làm lại được, chứ không có nghĩa AI nào cũng làm xong mọi video chỉ trong một lần."
+    },
+    "ad1b2c": {
+      "source_hash": "054729100069",
+      "text": "Bài xúc xắc đã xong, đổi sang đề của bạn; trước hết chọn khái niệm vẽ được thay đổi trước và sau."
+    },
+    "d8b2ca": {
+      "source_hash": "d8b2cae88a9d",
+      "text": "Viết câu người xem cần hiểu sau khi xem, bỏ nội dung không liên quan."
+    },
+    "c90844": {
+      "source_hash": "c90844b472ac",
+      "text": "Chọn hình bắt buộc phải vẽ, xin AI bản xem trước sửa được."
+    },
+    "f9399e": {
+      "source_hash": "f9399e7f8738",
+      "text": "Đổi một tham số, xem hình, chữ và số đếm có cùng cập nhật không."
+    },
+    "2506eb": {
+      "source_hash": "2506ebb02002",
+      "text": "Trước khi giao, nhờ họ làm lại theo hướng dẫn, xem có bỏ sót bước nào không."
+    },
+    "f064e3": {
+      "source_hash": "f064e36f242e",
+      "text": "Gói tài liệu giữ yêu cầu, lời nhắc và chương trình; bạn bắt đầu từ nguyên mẫu rồi thay nội dung của mình."
+    },
+    "f576ae": {
+      "source_hash": "7449bd375c8e",
+      "text": "Gửi video cho người khác, nhớ kèm tệp dự án tạo lại hoạt hình."
+    },
+    "9e738a": {
+      "source_hash": "9e738a72de6e",
+      "text": "Muốn làm hoạt hình về vấn đề khó giải thích nào nhất? Bình luận."
+    },
+    "ed8308": {
+      "source_hash": "ed83087a94a1",
+      "text": "Đăng ký kênh, cùng dùng AI làm ra tác phẩm có thể đem giới thiệu."
+    }
+  },
+  "thumbnail": {
+    "tag": "Hoạt hình AI để dạy học",
+    "headline": "**Sửa được**",
+    "sub": "Giữ cả tệp nguồn"
+  }
+}

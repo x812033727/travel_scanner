@@ -1,0 +1,135 @@
+{
+  "verdict": "ready",
+  "approval_scope": "author text proposals only",
+  "review_type": "independent_PT_five_compact_author_proposals_review",
+  "reviewed_at_utc": "2026-10-25T21:49:10.279139+00:00",
+  "reviewer": {
+    "identity": "OpenAI Codex AI agent /root/review_latin",
+    "human": false,
+    "claude": false,
+    "original_locale_translator": false,
+    "proposal_author": "/root/compact_pt_five",
+    "review_input_note": "Reviewer suggested clarifying muting as Silencie before the separate author finalized the proposal; the exact final artifact was then reread independently against source."
+  },
+  "locale": "pt",
+  "hashes": {
+    "current_translation_sha256": "70cb1d1c1ab0f411ecc13e06a6db13772bb76ef1e792ee7f9c1abf4ae59da6d4",
+    "current_worksheet_sha256": "2179db53a9589991b6190b6c0180e80da538fb4703d8a557e12ed2a881610315",
+    "source_video_json_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "exact_proposal_file_sha256": "b5d7fd260a6163eb31b09d5e33be795d585fcff20a16049e5ab819ebe0c5b2a1",
+    "author_provenance_sha256": "3c069816920e21b3e839fc74558f2eab718d376d386dd5369bbac11967c33dc2"
+  },
+  "all_five_actual_proposals_reread": true,
+  "all_five_semantic_checks_pass": true,
+  "all_five_current_caps_pass": true,
+  "checks": [
+    {
+      "id": "8f5f2e",
+      "source": "一加六和六加一分開算，因為兩顆骰子的結果有順序。",
+      "current_before": "Conte um mais seis e seis mais um à parte: a ordem importa.",
+      "author_after_exact": "Na contagem, separe um mais seis de seis mais um: a ordem dos dois dados importa.",
+      "chars": 81,
+      "current_max_chars": 84,
+      "budget_pass": true,
+      "before_matches_canonical_and_worksheet": true,
+      "semantic_verdict": "pass",
+      "semantic_checks": {
+        "fidelity": "Na contagem explicitly fixes the counting context. separe um mais seis de seis mais um preserves separate ordered outcomes, both sums in source order, and the reason that the two dice order matters.",
+        "register": "Na contagem, separe is natural Brazilian Portuguese with the você imperative.",
+        "numbers": [
+          "one plus six",
+          "six plus one",
+          "two dice"
+        ],
+        "conditions": "Ordered outcomes remain separate; no mathematical condition changes."
+      },
+      "cue_order": "pass: single cue; source actions and clauses retain order",
+      "proposal_sha256": "f0f9f1b3a607b8fd96826ca6376cdd7219d03c6c6214b59f146df70405a28f38"
+    },
+    {
+      "id": "9aa7fd",
+      "source": "結果裡的成功標記，只表示這份檢查通過，不表示影片已經完成。",
+      "current_before": "Sucesso só diz que o teste passou; não que o vídeo está pronto.",
+      "author_after_exact": "A marca de sucesso só indica que o teste passou, não que o vídeo ficou pronto.",
+      "chars": 78,
+      "current_max_chars": 85,
+      "budget_pass": true,
+      "before_matches_canonical_and_worksheet": true,
+      "semantic_verdict": "pass",
+      "semantic_checks": {
+        "fidelity": "Success marker only means the test passed; it does not mean the video is finished. Both the only limitation and denial remain explicit.",
+        "register": "A marca de sucesso só indica ... não que ... ficou pronto is natural Brazilian Portuguese.",
+        "numbers": [],
+        "conditions": "The test-pass-versus-video-completion distinction is preserved."
+      },
+      "cue_order": "pass: single cue; source actions and clauses retain order",
+      "proposal_sha256": "d2f1bda5f3ddb93ba4dcf2fef5ddc9ed6eb3b47ae5b858d8a2a5a4a68a5a0a33"
+    },
+    {
+      "id": "1de727",
+      "source": "把預覽縮到手機寬度，看標題能不能讀，重點能不能找到。",
+      "current_before": "Reduza à largura do celular: título legível? Foco claro?",
+      "author_after_exact": "Reduza a prévia à largura do celular: veja se lê o título e encontra o foco.",
+      "chars": 76,
+      "current_max_chars": 77,
+      "budget_pass": true,
+      "before_matches_canonical_and_worksheet": true,
+      "semantic_verdict": "pass",
+      "semantic_checks": {
+        "fidelity": "Explicitly shrink the preview to phone width, then check title readability and whether the focus can be found, in source order.",
+        "register": "Reduza a prévia ... veja se lê ... encontra is natural você instruction; implicit você is clear.",
+        "numbers": [],
+        "conditions": "Phone-width viewing condition and both visual checks are retained."
+      },
+      "cue_order": "pass: single cue; source actions and clauses retain order",
+      "proposal_sha256": "367f0d54f340b1be787c7761f42b188a521c5d935cf00cd871a96cd14af21005"
+    },
+    {
+      "id": "a6c28e",
+      "source": "先關掉影片的聲音，再看畫面能不能說明正在比較的內容。",
+      "current_before": "Desligue o som; a imagem explica o que está sendo comparado?",
+      "author_after_exact": "Silencie o vídeo. Depois veja se a imagem explica o que se compara.",
+      "chars": 67,
+      "current_max_chars": 81,
+      "budget_pass": true,
+      "before_matches_canonical_and_worksheet": true,
+      "semantic_verdict": "pass",
+      "semantic_checks": {
+        "fidelity": "Silencie asks muting playback, then inspecting whether the image explains what is being compared. This preserves source action order without suggesting removing an audio track.",
+        "register": "Silencie ... Depois veja is natural Brazilian você instruction.",
+        "numbers": [],
+        "conditions": "First mute, then inspect the comparison visually."
+      },
+      "cue_order": "pass: single cue; source actions and clauses retain order",
+      "proposal_sha256": "d42c0b8912b022eeea6ab1367e50da17b3f6436150424d4fa572b5bdead38a12"
+    },
+    {
+      "id": "9e738a",
+      "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+      "current_before": "Que tema difícil mais quer animar? Comente.",
+      "author_after_exact": "Qual ideia difícil de explicar mais quer animar? Comente.",
+      "chars": 57,
+      "current_max_chars": 58,
+      "budget_pass": true,
+      "before_matches_canonical_and_worksheet": true,
+      "semantic_verdict": "pass",
+      "semantic_checks": {
+        "fidelity": "ideia difícil de explicar explicitly retains hard-to-explain, mais quer animar retains the idea the viewer most wants to animate, and Comente retains the final comment request.",
+        "register": "The implied você is natural in a direct question; no voseo or non-Brazilian plural form.",
+        "numbers": [],
+        "conditions": "The qualifier is difficulty explaining the idea, rather than generic difficulty; most-wanted animation and commenting remain."
+      },
+      "cue_order": "pass: single cue; source actions and clauses retain order",
+      "proposal_sha256": "c8d8a66218b99b7880bdbd7f6f5b0e3d94781560827abee090f077d5b85780d7"
+    }
+  ],
+  "audio_limits": {
+    "tts_approval": false,
+    "audio_quality_or_duration_independently_checked": false,
+    "paid_retake_or_reword_execution_performed": false,
+    "note": "These are source-fidelity, register, cue-order and character-budget approvals. They do not certify TTS pronunciation, ASR agreement, or measured fit. Reported prior hearing issues remain attributed to the author/root evidence."
+  },
+  "application_status": "Not applied by this reviewer; exact before strings matched current canonical and worksheet at review time.",
+  "additional_text_fixes_needed": 0,
+  "side_effects": "Only this independent review JSON was written. No source, worksheet, canonical translation, native receipt, retry counter, network or paid-call changes."
+}

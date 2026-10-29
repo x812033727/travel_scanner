@@ -1,0 +1,129 @@
+{
+  "recorded_at_utc": "2026-10-26T11:29:35.576687+00:00",
+  "reviewer": "OpenAI Codex /root",
+  "purpose": "Honest historical one-shot import-marker correction and root review of the actual second native continuation; no production action",
+  "original_executed_guard": {
+    "path": "/workspace/work/ai-animation-01/th-reviewed-reword1-20261026T111831-executed-guard.mjs",
+    "sha256": "7c1e733843ef7b0cd74003dab95b3d8fe576940ec29cce7f04ac7a995b19e720"
+  },
+  "original_marker_snapshot": {
+    "path": "/workspace/work/ai-animation-01/th-reviewed-reword1-20261026T111831-import-marker-observed.json",
+    "sha256": "8bed3e48b86cb9322e56a1e4c0088166cf56343c7a642b5c9cf61571f5b7303c"
+  },
+  "corrected_canonical_guard": {
+    "path": "/workspace/work/ai-animation-01/resume-th-reviewed-reword1.mjs",
+    "sha256": "d7b5fe31bdbb27a96f333b4b4d5916e5bff3cc20d68186cd3b43b2992b4ac5be",
+    "change": "Only marker labels: module import completion, unknown native outcome. Already consumed; do not rerun."
+  },
+  "corrected_marker": {
+    "path": "/workspace/work/ai-animation-01/th-reviewed-reword1-resume-started.json",
+    "sha256": "b82dcf2b60f1db9206058d378c3835f468ac21ca9300a022f7598fa41f6bd992",
+    "phase": "module_import_returned",
+    "native_exit_code": null,
+    "exists_as_permanent_one_use_fence": true
+  },
+  "actual_process_result": {
+    "path": "/workspace/work/ai-animation-01/th-reviewed-reword1-20261026T111831-process-result.json",
+    "sha256": "97a3e3cef8e97f0d30fbc9dc5210711e07d2d3e5a38aeecf0340799663112a32",
+    "exit_code": 0,
+    "signal": null,
+    "quality_pass": false
+  },
+  "actual_handoff": {
+    "path": "/workspace/work/ai-animation-01/th-reviewed-reword1-20261026T111831-outcome-review-handoff.json",
+    "sha256": "9cd6bb1190bd340ca550320fc18cb9f06ae3ed94bf89a58a8b687babfcd92938"
+  },
+  "current_TH_sha256": "088dd503ef0147735a68d757bcd8c8be98b3c283e0c8d084183a4b09658e9b93",
+  "native_rounds": {
+    "shorten": 1,
+    "retakes": 2,
+    "reword": 2,
+    "check_stopped": true
+  },
+  "current_raw_saved_ASR_count": 101,
+  "reviewed_three_new_takes": {
+    "e8b327": {
+      "scene": "opening",
+      "clip": "9880e018029e22f0",
+      "terms": [
+        "AI"
+      ],
+      "heard": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "noul": null,
+      "intended": "แอนิเมชันสอนที่ทำด้วย AI ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "spoken_form": "แอนิเมชันสอนที่ทำด้วย A I ก็แก้ข้อความและตัวเลขได้ค่ะ",
+      "match_kind": "exact",
+      "match": true,
+      "still_native_flagged": false
+    },
+    "cab285": {
+      "scene": "audio-staging",
+      "clip": "1b777937330d9f10",
+      "terms": [],
+      "heard": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "noul": null,
+      "intended": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "spoken_form": "จัดประโยคที่อธิบายช่องที่สว่างให้ตรงก่อน แล้วใช้วิธีเดียวกันกับช่วงอื่น",
+      "match_kind": "exact",
+      "match": true,
+      "still_native_flagged": false
+    },
+    "ad1b2c": {
+      "scene": "practice-start",
+      "clip": "22e71c250725e2d0",
+      "terms": [],
+      "heard": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+      "noul": null,
+      "intended": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+      "spoken_form": "จบโจทย์ลูกเต๋าแล้ว ลองเปลี่ยนเป็นโจทย์ของคุณเอง โดยเลือกแนวคิดที่วาดเป็นภาพก่อนและหลังได้",
+      "match_kind": "exact",
+      "match": true,
+      "still_native_flagged": false
+    }
+  },
+  "remaining_six_flags": [
+    "719e7c",
+    "8eb4eb",
+    "ee8b7c",
+    "28a3eb",
+    "c38a5e",
+    "f064e3"
+  ],
+  "round2_proposals_reviewed": [
+    {
+      "id": "719e7c",
+      "applied": false,
+      "native_reason": "719e7c: over its budget (76 characters, at most 69)"
+    },
+    {
+      "id": "8eb4eb",
+      "applied": false,
+      "native_reason": "8eb4eb: over its budget (75 characters, at most 63)"
+    },
+    {
+      "id": "ee8b7c",
+      "applied": false,
+      "native_reason": "ee8b7c: over its budget (103 characters, at most 70)"
+    },
+    {
+      "id": "28a3eb",
+      "applied": false,
+      "native_reason": "28a3eb: over its budget (90 characters, at most 76)"
+    },
+    {
+      "id": "c38a5e",
+      "applied": false,
+      "native_reason": "c38a5e: over its budget (101 characters, at most 97)"
+    },
+    {
+      "id": "f064e3",
+      "applied": false,
+      "native_reason": "f064e3: over its budget (112 characters, at most 98)"
+    }
+  ],
+  "source_edits_or_paid_requests_in_this_correction": false,
+  "protected_media_or_auto_edited": false,
+  "TH_ready": false,
+  "CC_rebuilt_for_current_TH": false,
+  "next": "Remain stopped at true native reword2/cap boundary. Never replay one-shot/retake intent or reset counters; use genuine supported owner retry/renewal capability when available. Continue independently authorized PDF production."
+}

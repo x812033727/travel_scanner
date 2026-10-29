@@ -1,0 +1,65 @@
+{
+  "recorded_at_utc": "2026-10-26T02:07:28.045541+00:00",
+  "slug": "ai-editable-explainer-animation",
+  "owner_requested": "Add intro and outro; may reference PR1860",
+  "reference_pr": "https://github.com/x812033727/travel_scanner/pull/1860",
+  "reference_merge_commit": "50a073cced2290ac87eb412e54139aff34a2d384",
+  "independent_reviewers": [
+    "OpenAI Codex /root/audit_intro_outro_reference",
+    "OpenAI Codex /root/audit_bookend_rebuild"
+  ],
+  "human_or_Claude_review_claimed": false,
+  "actual_current_final": {
+    "frames": 17687,
+    "ffprobe_duration_seconds": 589.6,
+    "sha256": "ead26bf5740e1a47499a7bf406c5820bd4b84fd31495d367c1dd83f551a5b521",
+    "has_branding_pin": false,
+    "has_branding_checks": false
+  },
+  "expected_only_not_rendered": {
+    "channel_intro_frames": 150,
+    "channel_outro_frames": 630,
+    "intro_at_body_frame": 934,
+    "intro_start_seconds": 31.133333333333333,
+    "second_chapter_start_seconds": 36.13333333333333,
+    "body_end_frame": 17837,
+    "total_video_frames": 18467,
+    "total_video_seconds": 615.5666666666667
+  },
+  "official_asset_requirement": "Pull current general Mokaair channel package. Do not use Curio, sothatswhy or self-drawn PNG substitutes. Verify SHA, frame count, video/audio formats through native installer.",
+  "blocker": {
+    "receipt": "/workspace/work/ai-animation-01/branding-pull-probe-20261026.json",
+    "http_status": 404,
+    "code": "video_media_route_unknown",
+    "route": "https://mokaair.com/api/video/media/branding",
+    "route_is_not_available_yet": true,
+    "deployment_needed_before_pull": true
+  },
+  "existing_dub_timeline_boundary_read": {
+    "locales": [
+      "en",
+      "ja",
+      "ko",
+      "es",
+      "pt",
+      "vi",
+      "th"
+    ],
+    "lines_crossing_frame_934": 0,
+    "pending_synthesis_preflight_completed": false
+  },
+  "continuation": [
+    "First confirm no active holder/LEASE/STOP and no unrecorded upload; GET the real project and owner retry queue. Keep original receipts and all old approval records.",
+    "Use PR1860 native runtime branding --pull --dry-run, then --pull with workdir /workspace/work/ai-animation-01/media; endpoint must actually return and validate official assets. Current attempt failed before assets downloaded or installed.",
+    "Preserve immutable pre-change final/checks/CC/upload/track snapshots outside git. Under real exclusive project lease, run existing native assemble --slug ai-editable-explainer-animation --workdir /workspace/work/ai-animation-01/media --intro-after-condensation. Do not add --adopt-branding or --force. No narration source/brief/approval or paid provider changes are required.",
+    "Independently preflight cached native JA/ES/VI requests before rewrap. Permit only GET speech/status and forbid every paid POST; no pending=0 claim has been established by this audit.",
+    "Rebuild all CC and composed chapter/description timecodes and inspect every warning. Stale unrewrapped EN/KO/PT/TH timelines trigger native stale-dub caption warnings; never delete timelines/skips or suppress warnings to claim a pass.",
+    "A purely free rewrap of unfinished EN/TH must never become voice approval. Generic final review dubsForUpload lacks completed-ASR enforcement, so do not attach or label these held tracks ready. Require a source-bound, independently audited final submission with explicitly held/omitted audio, and actual QA results.",
+    "New final bytes invalidate old final/publish/package bindings. Re-run actual QA, then submit manual-review final only when the exact output and truthful held-language status are reviewable. Do not approve new MP4 or fabricate Studio/publishing.",
+    "The old dcdcce partial manifest/helper is frozen to the old unbranded source. Never relax its guards or re-use it to claim a new branded package. After genuinely complete eight-language delivery, begin dependent PDF film."
+  ],
+  "film_reassembled": false,
+  "provider_requests": 0,
+  "new_final_qa_pass_claimed": false,
+  "approval_or_publication_performed": false
+}

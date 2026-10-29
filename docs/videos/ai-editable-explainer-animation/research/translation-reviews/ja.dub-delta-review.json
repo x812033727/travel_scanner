@@ -1,0 +1,72 @@
+{
+  "locale": "ja",
+  "slug": "ai-editable-explainer-animation",
+  "reviewer_identity": "OpenAI Codex assistant, independent review subagent /root/review_ja_ko",
+  "reviewer_type": "AI assistant",
+  "human_review": false,
+  "claude_review": false,
+  "reviewed_at_utc": "2026-10-25T19:36:35.173103+00:00",
+  "scope": "Independent fresh meaning review of narration lines changed from the pre-dub snapshot; no re-review of unchanged narration or metadata and no audio listening.",
+  "verdict": "pass",
+  "meaning_fixes_needed": 0,
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "before_translation_sha256": "ff49c9a91960201182c6b40099557e60f986e33f572ca137d057726944747300",
+  "current_translation_sha256": "b0adb7c6405dbb26e70707d6f2600637de16c3426c1cab7028697228b0e76bbf",
+  "worksheet_sha256": "a9cdb712338513ad49e1d42577b42e6ef893a8b0d88dd880c32306910650e2bc",
+  "native_fit_sha256": "0476d7f20c293b7c88bbd0c5b702d9aa8e757f8c74286a5455fe7664e85920a5",
+  "native_fit_translation_hash": "74e88416961a6e17",
+  "native_fit_over": [],
+  "changed_lines": [
+    {
+      "id": "291f73",
+      "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+      "before": "題名と目標はデータから読み、画面ごとに数値を直書きさせません。",
+      "after": "題名と目標はデータから読み、数値を画面ごとに書かせません。",
+      "meaning_verdict": "pass",
+      "reason": "Preserves reading the title and target from the data, followed by not writing separate numbers for each screen. The source does not explicitly use a technical hard-coding term, so dropping 直 from 直書き does not remove a required source clause. Source clause order is retained.",
+      "current_chars": 29,
+      "worksheet_max_chars": 27,
+      "within_worksheet_max_chars": false,
+      "worksheet_matches_current": true,
+      "native_fit_window": {
+        "scene": "build-ask",
+        "state": 0,
+        "start_frame": 5534,
+        "end_frame": 5668,
+        "lines": [
+          "291f73"
+        ],
+        "tempo": 1,
+        "slack_frames": 5,
+        "over": false
+      }
+    },
+    {
+      "id": "1b4829",
+      "source": "把旁白分成可以單獨理解的短句，每句只推進一個重點。",
+      "before": "ナレーションは単独で分かる短文に分け、1文1要点にします。",
+      "after": "ナレーションは単独で分かる短文にし、1文1要点にします。",
+      "meaning_verdict": "pass",
+      "reason": "Turning narration into independently understandable short sentences preserves the source instruction to split it into such sentences. The second clause still limits each sentence to one main point. Source clause order is retained.",
+      "current_chars": 28,
+      "worksheet_max_chars": 28,
+      "within_worksheet_max_chars": true,
+      "worksheet_matches_current": true,
+      "native_fit_window": {
+        "scene": "audio-order",
+        "state": 0,
+        "start_frame": 11654,
+        "end_frame": 11792,
+        "lines": [
+          "1b4829"
+        ],
+        "tempo": 1,
+        "slack_frames": 1,
+        "over": false
+      }
+    }
+  ],
+  "budget_note": "291f73 has 29 characters against current worksheet max_chars 27. Its actual native fit window reports over:false, tempo:1 and slack_frames:5. 1b4829 is 28/28 with over:false, tempo:1 and slack_frames:1. This artifact approves meaning preservation and records the worksheet/native-fit discrepancy; it does not silently certify all worksheet character caps. Root was notified.",
+  "suggested_corrections": [],
+  "mutations": "Only this review JSON. No source, worksheet, translation, audio, state, git, TTS or paid API changes."
+}

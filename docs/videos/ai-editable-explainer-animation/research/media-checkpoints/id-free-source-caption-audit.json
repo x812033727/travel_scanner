@@ -1,0 +1,135 @@
+{
+  "schema_version": 1,
+  "recorded_at_utc": "2026-10-25T23:12:40.719487+00:00",
+  "slug": "ai-editable-explainer-animation",
+  "locale": "id",
+  "status": "technical_read_only_audit_with_in_memory_simulation_only",
+  "execution_scope": {
+    "actual_source_merge_performed": false,
+    "actual_captions_build_performed": false,
+    "current_source_or_media_writes": 0,
+    "native_state_writes": 0,
+    "API_calls": 0,
+    "paid_requests": 0,
+    "only_this_work_audit_file_saved": true,
+    "simulation_fetch": "globalThis.fetch replaced by a throwing network denial before importing native functions"
+  },
+  "source_before_sha256": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a",
+  "primary_source_video_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "text_plan": {
+    "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.owner-retry-text-plan.json",
+    "sha256": "6e747daa5477d65c72547c3faed40c8235206a31ab8f7ec8302221e30e6f7bad"
+  },
+  "semantic_reviews": [
+    {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.three-author-independent-review.json",
+      "sha256": "e3d795a8df5ae21ac56f2f1f21cc1d95773e366c159a45d74ab7f52062a7eb5a"
+    },
+    {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.retry-source-fidelity-options-review.json",
+      "sha256": "5b991ab06d39c3e05a2b0173cf2fde77fe0741b3113ad405819ffa0035beb9fb"
+    },
+    {
+      "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.retry-author-fidelity-review.json",
+      "sha256": "db6f107274a6010b16e0d67f831928d9c0b02dcd2813943f2f3a0b83c32580bb"
+    }
+  ],
+  "native_code": [
+    {
+      "path": "/workspace/travel_scanner/tools/video/i18n/cli.mjs",
+      "sha256": "7c18f3ae076be34ff4eee0979ed8f6e76044f6594ef8335b567b0d8791f8c9ea"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/core/stages.mjs",
+      "sha256": "23ff3979e9e13a6ee68463caca1bb48fce3ee15309938a7dd413fce7224ecb6d"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/core/state.mjs",
+      "sha256": "00b7d17e1977805f859ce1df3aea6c566715bc4ad40192c057cb5fca081b7fcc"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/core/captions.mjs",
+      "sha256": "dfa1d116049d6e480dfe4eda5ee8f8651a006bc11e36286bc2a6c91b82dd0088"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/cli.mjs",
+      "sha256": "25d05ae14bb6b0d65bd3963b20bc5c8d894797ae1ea8f811632a362f09757b08"
+    },
+    {
+      "path": "/workspace/travel_scanner/tools/video/core/project-lease.mjs",
+      "sha256": "611e9403b68059fdf2bbb475e4795f02813f606b17ae4a5326a420054b434a98"
+    }
+  ],
+  "code_findings": [
+    {
+      "path": "tools/video/i18n/cli.mjs",
+      "line": 335,
+      "finding": "Direct native i18n-sheet/i18n-merge for --locale id --parts captions only write the ID worksheet and ID translation. They contain no provider/approval/retry/skip/cache/counter operations. CLI itself supplies no project lease/STOP wrapper; the caller must hold/check the real lease and STOP."
+    },
+    {
+      "path": "tools/video/core/state.mjs",
+      "line": 384,
+      "finding": "dubsStatus reads skipped.json first and returns skipped before translation/current-track checks; target text changes do not auto-clear or override it."
+    },
+    {
+      "path": "tools/video/core/stages.mjs",
+      "line": 146,
+      "finding": "dubsForUpload reads a saved skip first and never calls the track ready. With no ID timeline, currentDub returns null and there is no unchecked assembled ID track."
+    },
+    {
+      "path": "tools/video/core/stages.mjs",
+      "line": 224,
+      "finding": "runCaptions falls back to presented primary narration timing when no current target dub exists. It writes all chosen caption files plus shared caption manifest and state.json stage history, so it is separate from an ID-only source merge."
+    },
+    {
+      "path": "tools/video/automation/flow.mjs",
+      "line": 4678,
+      "finding": "Avoid Automation.mergeDubLines for this strictly source-only step because its error paths call block/retryLater and can change auto.json/report. Use direct native main i18n-sheet and i18n-merge under explicit outer guards."
+    }
+  ],
+  "simulation_not_deliverables": {
+    "native_functions": [
+      "buildSheet",
+      "mergeSheet",
+      "dubsStatus",
+      "currentDub",
+      "dubsForUpload",
+      "localeTexts",
+      "localeCues",
+      "checkCues",
+      "toSrt"
+    ],
+    "changed_IDs": [
+      "f576ae",
+      "9e738a",
+      "ed8308"
+    ],
+    "changed_metadata": false,
+    "merge_problems": [],
+    "prospective_native_serialized_translation_sha256": "261b3cccc47b5f5d93cf7e5aa53f21b1dc7f73038f72395ef224ddf23ab65801",
+    "corrected_text_codepoints": {
+      "f576ae": 45,
+      "9e738a": 71,
+      "ed8308": 60
+    },
+    "caption_timing": "primary narration",
+    "caption_cues": 114,
+    "checkCues_problems": [],
+    "prospective_srt_bytes": 10790,
+    "actual_caption_artifact_built": false,
+    "native_voice_status": "skipped",
+    "currentDub": null,
+    "ready_ID_tracks": 0,
+    "unchecked_ID_tracks": 0,
+    "native_skip_reason": "f576ae, 9e738a, ed8308 do not fit their windows even at 1.15x after 1 shortening round"
+  },
+  "source_fidelity_vs_voice_fit": "The 71-codepoint corrected sentence restores all source meaning. The old 46-character shared-window estimate and fresh 58-character worksheet estimate are not audio approvals. No native tempo/tolerance/limit changes are proposed; corrected text has no new TTS/fit/ASR/Jev result.",
+  "future_application_conditions": [
+    "Wait for the active TH process to exit, release the real project lease, and remain explicitly paused. TH need not have completed every later production step; never run this correction concurrently with its producer.",
+    "Use a real project lease, STOP checks and global/ctx fetch denial for direct ID-only native merge.",
+    "Save immutable original ID source and semantic-plan/review hashes. Snapshot auto.json, skipped/fit/cache, all 101 original WAVs and other ID WAVs, plus absent track/timeline/ASR, before and after.",
+    "Verify exactly three line-text changes and no metadata/source-hash/other-locale changes; confirm actual serialized source SHA rather than treating the simulated SHA as an executed result."
+  ],
+  "historical_attempt_handling": "Keep old ID failed source, 101 takes/cache/fit/skip and posted failure status/report as historical evidence. After canonical source changes, old failure-status helper guards should mismatch; do not relabel old evidence or rerun it by bypassing guards.",
+  "owner_retry_gate": "A free source/CC correction is within existing editorial task authorization and need not wait for an owner retry button. Actual paid native retry still requires a real owner requested/open queue entry and the native taken ACK; this audit does not create, consume, reset or approve one."
+}

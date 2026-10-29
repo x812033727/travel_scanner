@@ -1,0 +1,444 @@
+{
+  "schema_version": 1,
+  "locale": "ko",
+  "slug": "ai-editable-explainer-animation",
+  "review_type": "Fresh final source/caption all-delta review; no voice approval",
+  "reviewed_at_utc": "2026-10-25T23:32:06.006848+00:00",
+  "reviewer": {
+    "provider": "OpenAI",
+    "identity": "Codex based on GPT-6; exact deployment identifier not exposed",
+    "agent": "/root/review_ko_caption_final",
+    "human": false,
+    "claude": false,
+    "independent_of_translator_and_prior_native_reworder": true
+  },
+  "second_independent_text_read": {
+    "agent": "/root/review_ko_caption_final/second_ko_meaning",
+    "method": "Fresh direct read of actual canonical/PRE/Chinese source and adjacent context; no file writes or API calls",
+    "verdict": "All actual four deltas preserve source meaning, condition/clause order and naturalness. Metadata unchanged. The target-equality condition agrees with six ordered outcomes for target sum7 and five ordered outcomes for target sum6.",
+    "current_translation_sha256_observed": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd"
+  },
+  "verdict": "ready_for_current_caption_text_if_source_sha_unchanged",
+  "translation_sha256": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+  "source_sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+  "PRE_translation_sha256": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+  "actual_changed_ids": [
+    "c141fc",
+    "b22122",
+    "07771e",
+    "594e82"
+  ],
+  "changed_line_count": 4,
+  "unchanged_other_line_count": 97,
+  "total_line_count": 101,
+  "metadata_unchanged_from_PRE": true,
+  "metadata_fields_compared": [
+    "chapters",
+    "description",
+    "source_hashes",
+    "tags",
+    "thumbnail",
+    "title"
+  ],
+  "metadata_differences": [],
+  "changed_lines": [
+    {
+      "id": "c141fc",
+      "source_exact": "要求每個格子檢查兩個點數相加，符合條件才上色。",
+      "source_text_sha256": "c141fc78970c0daffa60850f0b01a91927c7dc4dacca53f5fb2298d6bee6ab26",
+      "canonical_source_hash": "c141fc78970c",
+      "source_hash_unchanged_from_PRE": true,
+      "PRE_exact": "칸마다 두 눈의 합이 조건에 맞아야 칠합니다.",
+      "PRE_text_sha256": "21681fa70d68c45d9333e6dcaf2afe21ea2f555b0fb0a1c7e1bb49c837997e82",
+      "current_exact": "칸마다 두 눈의 합이 목표여야 칠합니다.",
+      "current_text_sha256": "99c6df657c56fb2c6be868583faafa40d7b579853f288b5a0c93af82b391593a",
+      "current_unicode_codepoints": 22,
+      "current_worksheet_max_chars": 32,
+      "worksheet_text_matches_current": true,
+      "adjacent_context_actually_reread": [
+        {
+          "scene": "brief-reference",
+          "id": "6b1614",
+          "source": "你先把要講的條件寫好，不要讓 AI 邊猜事實邊畫圖。",
+          "current_ko": "조건부터 써서 AI가 사실을 추측하며 그리지 않게 합니다."
+        },
+        {
+          "scene": "brief-constraints",
+          "id": "1832d2",
+          "source": "要求畫出完整的格子，不能為了好看省掉某些結果。",
+          "current_ko": "모든 칸을 그려 미관상 결과를 빼지 않습니다."
+        },
+        {
+          "scene": "brief-constraints",
+          "id": "c141fc",
+          "source": "要求每個格子檢查兩個點數相加，符合條件才上色。",
+          "current_ko": "칸마다 두 눈의 합이 목표여야 칠합니다."
+        },
+        {
+          "scene": "brief-constraints",
+          "id": "c5a99d",
+          "source": "要求標題和圖例用真正的文字，之後能直接修改。",
+          "current_ko": "제목과 범례는 나중에 바로 고칠 실제 글자로 요청합니다."
+        },
+        {
+          "scene": "brief-prompt-one",
+          "id": "719e7c",
+          "source": "提示詞這樣寫，畫出兩顆公平骰子的所有有序結果。",
+          "current_ko": "공정한 주사위 둘의 모든 순서쌍을 그리라 씁니다."
+        }
+      ],
+      "meaning_review": {
+        "verdict": "pass_source_meaning_and_naturalness",
+        "meaning": "칸마다 retains checking for each cell; 두 눈의 합 retains the sum of the two dice faces; 목표여야 makes equality with the specified target a necessary condition for coloring. This restores the comparator lost in an intermediate native shortening.",
+        "condition_scope": "The source says meet the condition; in this original dice example the condition is sum==target_sum, so explicitly naming the target adds no new assumption. Fair dice and ordered pairs are established in the surrounding unchanged narration.",
+        "order": "per-cell two-face sum → target condition → coloring",
+        "naturalness": "Acceptable concise 합니다-register Korean; 목표 denotes the numeric target in the explicit dice/target context.",
+        "numbers_names": "No numeric value or named tool introduced or altered."
+      },
+      "scope": "Actual current canonical text only, not the six later unapplied owner-retry proposals."
+    },
+    {
+      "id": "b22122",
+      "source_exact": "這份範例先用繪圖套件畫出影格，再用影片工具把影格接起來。",
+      "source_text_sha256": "1c08968692ef5d20e0b3e27e5acaddae7b5b116cbacae79eb99769480ddace2a",
+      "canonical_source_hash": "1c08968692ef",
+      "source_hash_unchanged_from_PRE": true,
+      "PRE_exact": "예제는 그리기 패키지로 프레임을 그린 뒤 영상 도구로 잇습니다.",
+      "PRE_text_sha256": "4a2b1ff05482818dbeb07f306bca17a531da009579d643f54175078e608cf4e6",
+      "current_exact": "이 예제는 그림 패키지로 프레임을 그린 뒤, 영상 도구로 프레임을 이어 붙입니다.",
+      "current_text_sha256": "6562c645b1a3b143962a3057f2166430bf7ea4540b3056bf08a3e34667f7e740",
+      "current_unicode_codepoints": 45,
+      "current_worksheet_max_chars": 48,
+      "worksheet_text_matches_current": true,
+      "adjacent_context_actually_reread": [
+        {
+          "scene": "build-ask",
+          "id": "d27bc5",
+          "source": "另外寫一個檢查程式，從所有結果重新算出正確答案。",
+          "current_ko": "별도 검사 코드를 써 모든 결과에서 정답을 다시 계산합니다."
+        },
+        {
+          "scene": "build-config",
+          "id": "976818",
+          "source": "這份資料檔把標題、目標和色彩集中在同一處，方便你修改。",
+          "current_ko": "이 데이터 파일은 제목, 목표, 색을 한데 모아 고치기 쉽습니다."
+        },
+        {
+          "scene": "build-dependencies",
+          "id": "b22122",
+          "source": "這份範例先用繪圖套件畫出影格，再用影片工具把影格接起來。",
+          "current_ko": "이 예제는 그림 패키지로 프레임을 그린 뒤, 영상 도구로 프레임을 이어 붙입니다."
+        },
+        {
+          "scene": "build-unzip",
+          "id": "182fcd",
+          "source": "下載教材後先解開資料夾，確認資料檔和程式放在同一處。",
+          "current_ko": "교재를 받아 압축을 풀고 데이터 파일과 코드가 함께 있는지 봅니다."
+        },
+        {
+          "scene": "build-environment",
+          "id": "a2d3d8",
+          "source": "照隨片說明安裝繪圖套件，確認影片工具和中文字型都找得到。",
+          "current_ko": "안내대로 그리기 패키지를 깔고 영상 도구·중국어 글꼴을 찾습니다."
+        }
+      ],
+      "meaning_review": {
+        "verdict": "pass_source_meaning_and_naturalness",
+        "meaning": "The current sentence explicitly describes this example using a drawing package to draw frames first and a video tool to join those same frames afterward. Repeating 프레임 removes an implicit object and does not add another production operation.",
+        "condition_scope": "Preserves scope as this example, not a claim that all AI tools use this rendering method.",
+        "order": "drawing package → frames → video tool joining frames",
+        "naturalness": "Natural concise technical Korean; 그림 패키지 is understandable as the drawing package in the accompanying frame-drawing and installation context.",
+        "numbers_names": "No new tool name, installation claim, version or numeric fact."
+      },
+      "scope": "Actual current canonical text only, not the six later unapplied owner-retry proposals."
+    },
+    {
+      "id": "07771e",
+      "source_exact": "跟 AI 說，只改目標總和，重新計算亮格與文字。",
+      "source_text_sha256": "07771e44e3fb3f22bb257ba0cd2dc480ca00117fdf5722f64464ae99f15d740d",
+      "canonical_source_hash": "07771e44e3fb",
+      "source_hash_unchanged_from_PRE": true,
+      "PRE_exact": "AI에 목표 합만 바꾸고 밝은 칸과 글을 재계산하라 합니다.",
+      "PRE_text_sha256": "57265b58c09972e8fd92643c0368d7306859eadb404db4f1bca85a809536c597",
+      "current_exact": "AI에게 목표 합계만 바꾸고 밝은 칸과 글자를 다시 계산하라고 말합니다.",
+      "current_text_sha256": "20d9ad1a9ad0ed39093c325b7119f97b2f2d96ec675103a85a1dd920a74af0b8",
+      "current_unicode_codepoints": 40,
+      "current_worksheet_max_chars": 41,
+      "worksheet_text_matches_current": true,
+      "adjacent_context_actually_reread": [
+        {
+          "scene": "revise-start",
+          "id": "7bf8fb",
+          "source": "影片能播了，那麼開場那個問題來了：只改一個數字，畫面會跟著改嗎？",
+          "current_ko": "영상이 재생됩니다. 처음 질문으로 돌아가서, 수 하나만 고치면 화면도 바뀝니까?"
+        },
+        {
+          "scene": "revise-config",
+          "id": "a1f88a",
+          "source": "把資料裡的目標總和改成六，其他設定先保持原樣。",
+          "current_ko": "데이터의 목표 합을 6으로 바꾸고 나머지는 둡니다."
+        },
+        {
+          "scene": "revise-prompt",
+          "id": "07771e",
+          "source": "跟 AI 說，只改目標總和，重新計算亮格與文字。",
+          "current_ko": "AI에게 목표 합계만 바꾸고 밝은 칸과 글자를 다시 계산하라고 말합니다."
+        },
+        {
+          "scene": "revise-lock-prompt",
+          "id": "8eb4eb",
+          "source": "再補一句，保留配色、字體和片段順序。",
+          "current_ko": "색, 글꼴, 장면 순서는 유지하라고 덧붙입니다."
+        },
+        {
+          "scene": "revise-six",
+          "id": "05bc8a",
+          "source": "結果目標一換，亮格的位置就變了，旁邊的計數也必須跟著更新。",
+          "current_ko": "목표를 바꾸니 밝은 칸이 바뀌고 옆의 개수도 갱신돼야 합니다."
+        }
+      ],
+      "meaning_review": {
+        "verdict": "pass_source_meaning_and_naturalness",
+        "meaning": "AI에게 ... 말합니다 keeps addressing the AI; 목표 합계만 preserves changing only the target sum; 밝은 칸과 글자를 다시 계산 preserves recomputation of both highlighted cells and displayed text.",
+        "condition_scope": "Only modifies the target sum. The preceding unchanged line sets it to6 while the following unchanged line retains colors, fonts and scene order. The Korean does not promise a new arrangement of grid cells or a blind rerender without recomputation.",
+        "order": "tell AI → target sum only → recompute highlights and text",
+        "naturalness": "Natural standard 합니다-register; 합계 and 글자 clarify the original compact nouns without changing the instruction.",
+        "numbers_names": "AI retains official Latin spelling; no changed numeric target is introduced in this line."
+      },
+      "scope": "Actual current canonical text only, not the six later unapplied owner-retry proposals."
+    },
+    {
+      "id": "594e82",
+      "source_exact": "數字連動確認了，那換成另一種語言，版面還裝得下嗎？",
+      "source_text_sha256": "00bc69ca66bfa6724db8213775b6f5cc8ae4aef1ce4d7491d5c77cc7d8d69654",
+      "canonical_source_hash": "00bc69ca66bf",
+      "source_hash_unchanged_from_PRE": true,
+      "PRE_exact": "수의 연동은 확인했지만 다른 언어도 화면에 들어갑니까?",
+      "PRE_text_sha256": "58d323a48b8fc1c81b33632c01f614b93ed68a330319807100bac97bea66c659",
+      "current_exact": "숫자 연동은 확인했습니다. 그럼 다른 언어로 바꿔도 화면에 다 들어갈까요?",
+      "current_text_sha256": "a33c1e211bf96b23bc5ba3bc2b4545a336863d01b7b2ce733ffb6dfb83ebaac5",
+      "current_unicode_codepoints": 41,
+      "current_worksheet_max_chars": 46,
+      "worksheet_text_matches_current": true,
+      "adjacent_context_actually_reread": [
+        {
+          "scene": "revise-caption-text",
+          "id": "c7b43e",
+          "source": "把標題改成自己的問法，重新預覽，確認字變長也沒有超出範圍。",
+          "current_ko": "제목을 내 질문으로 바꿔 다시 보고 길어져도 안 넘치나 봅니다."
+        },
+        {
+          "scene": "revise-width",
+          "id": "7e3f75",
+          "source": "標題太長時請它合理換行，別為了塞進去，把所有字都縮得看不見。",
+          "current_ko": "긴 제목은 잘 줄 바꾸며 글자를 모두 안 보이게 줄여 넣진 않습니다."
+        },
+        {
+          "scene": "revise-next",
+          "id": "594e82",
+          "source": "數字連動確認了，那換成另一種語言，版面還裝得下嗎？",
+          "current_ko": "숫자 연동은 확인했습니다. 그럼 다른 언어로 바꿔도 화면에 다 들어갈까요?"
+        },
+        {
+          "scene": "audio-start",
+          "id": "c30642",
+          "source": "換語言後，先聽實際旁白有多長，再決定畫面停多久。",
+          "current_ko": "언어 바꾼 뒤 실제 해설 길이부터 듣고 화면 지속시간을 정합니다."
+        },
+        {
+          "scene": "audio-order",
+          "id": "1b4829",
+          "source": "把旁白分成可以單獨理解的短句，每句只推進一個重點。",
+          "current_ko": "해설은 독립된 짧은 문장에 요점 하나씩 둡니다."
+        }
+      ],
+      "meaning_review": {
+        "verdict": "pass_source_meaning_and_naturalness",
+        "meaning": "숫자 연동은 확인했습니다 keeps completed confirmation of linked numbers. 그럼 다른 언어로 바꿔도 explicitly retains switching language; 화면에 다 들어갈까요 asks whether the content still fits within the layout.",
+        "condition_scope": "Immediately preceding unchanged lines discuss longer titles and reasonable wrapping rather than shrinking everything; the following line measures narration length. The current question retains the layout-fit issue and does not claim foreign-language or phone testing was performed.",
+        "order": "number linkage confirmed → change language → ask whether all content fits",
+        "naturalness": "Natural standard polite Korean, preserving the source question and transition.",
+        "numbers_names": "No value, product claim or new capability added."
+      },
+      "scope": "Actual current canonical text only, not the six later unapplied owner-retry proposals."
+    }
+  ],
+  "mathematical_context_read": {
+    "source_files": [
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson.json",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson-sum6.json",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/check_lesson.py",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/render_lesson.py",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/verification.json"
+    ],
+    "source_condition": "first_die + second_die == target_sum; all36 ordered pairs are retained",
+    "original_target7_highlighted_count": 6,
+    "modified_target6_highlighted_count": 5,
+    "basis": "Read original code/data and existing recorded execution evidence; no new run, installation or media test claimed by this review.",
+    "no_changed_numerical_fact_in_the_four_Korean_deltas": true
+  },
+  "native_voice_status": {
+    "status": "SKIPPED_FAILED_NATIVE_AUDIO_ATTEMPT",
+    "actual_skip_exact": {
+      "reason": "Jev still hears 2c063b, 594e82, 719e7c, 76fc63, 79a96a, de08dd wrong after 2 retakes and 2 rewording rounds",
+      "at": "2026-10-25T20:33:30.516Z"
+    },
+    "actual_flags_exact": [
+      "79a96a",
+      "2c063b",
+      "719e7c",
+      "76fc63",
+      "de08dd",
+      "594e82"
+    ],
+    "flag_count": 6,
+    "flags_match_saved_timeline_translation_hash": true,
+    "flags_match_saved_timeline_speech_hash": true,
+    "saved_fit_over": [],
+    "local_counter_and_retry_entries": {
+      "language_counter_entry": null,
+      "local_retry_entry": null
+    },
+    "text_verdict_does_not_clear_audio_flags": true,
+    "six_future_author_proposals": "Still unapplied and reviewed as proposals only; not read as canonical text and not adopted by this report.",
+    "new_voice_generated_heard_or_approved_by_reviewer": false,
+    "actual_new_fit_approved_by_reviewer": false,
+    "owner_request_or_retry_grant_claimed": false,
+    "record_locale_proof_ko_executed": false
+  },
+  "prior_evidence_references": {
+    "ko.reviewer.json": {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reviewer.json",
+      "sha256": "2d144952ab13202804c260c74fecdffcde57f8fbad7b5b3c1e41b79d4d6fea94",
+      "verdict": "ready after the fixes",
+      "scope_limit": "Prior evidence only; does not grant new voice/fit approval."
+    },
+    "ko.post-fix-review.json": {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.post-fix-review.json",
+      "sha256": "b0715795fc1475a31f0abb3b7f0d2ccb4583f5d6f9266cddbb45ed234a0cf481",
+      "verdict": "ready",
+      "scope_limit": "Prior evidence only; does not grant new voice/fit approval."
+    },
+    "ko.dub-delta-review.json": {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.dub-delta-review.json",
+      "sha256": "e9412c98232c55a72488282ce6ee92558dda17644cdca2338a92640afe4a15f6",
+      "verdict": "ready after the fix",
+      "scope_limit": "Prior evidence only; does not grant new voice/fit approval."
+    },
+    "ko.author-fix-review.json": {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.author-fix-review.json",
+      "sha256": "53ea2c10977a712ea09bbcf514e719e944ba4e119f1e9e02a6b44309a5e3a825",
+      "verdict": "ready",
+      "scope_limit": "Prior evidence only; does not grant new voice/fit approval."
+    },
+    "ko.author-comparator-refinement.json": {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.author-comparator-refinement.json",
+      "sha256": "dd96d44292b615dc45f234ded6dfb74afa814934918fdd3385d2110f0921a05b",
+      "verdict": null,
+      "scope_limit": "Prior evidence only; does not grant new voice/fit approval."
+    },
+    "ko.reword-1-delta-review.json": {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reword-1-delta-review.json",
+      "sha256": "b767765a6e1e1b9fd4cbf04c99e54388d972514403b173d3f3c8fa21e68f9052",
+      "verdict": "ready",
+      "scope_limit": "Prior evidence only; does not grant new voice/fit approval."
+    },
+    "ko.six-author-independent-review.json": {
+      "file": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.six-author-independent-review.json",
+      "sha256": "ad6059939d28aef784c9b22f20fda97abee4aeafdbf79c91abb6e29810eae7bf",
+      "verdict": "approved_as_proposals_only",
+      "scope_limit": "Prior evidence only; does not grant new voice/fit approval."
+    }
+  },
+  "approval_limits": {
+    "approved_scope": "Current Korean source meaning/naturalness and caption text only",
+    "actual_SRT_VTT_generated_or_read_as_passed_by_this_review": false,
+    "cue_timing_readability_and_actual_caption_artifact_checks": "Separate native caption build/inspection still required",
+    "voice_or_audio_fit_approval": false,
+    "failed_audio_rebound_as_ready": false,
+    "new_TTS_ASR_or_provider_API_called": false,
+    "skip_flags_counters_native_state_or_approvals_changed": false,
+    "Studio_upload_or_publication_claimed": false,
+    "six_new_author_proposals_applied": false
+  },
+  "hash_guards": {
+    "read_before_report_write": {
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations/ko.json": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/ko.todo.json": "49c58166a3fcb94a2b8c912debfb3d0f332dbd69fe04f79abd90a12744ebc638",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/skipped.json": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.ko.json": "45b0cc9d390767ee6de34c949ad639358ce180b7b333392652e63a91aa99d0f5",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.ko.json": "4408ed87bdeda544b2cf1f3000d4f3d140f1c2484bc5bbe9b9736276444ffc0c",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/fit.json": "33eb6ed4da04ee95e3c3be3422062896054584c19e24081c6a703eb12379a6fd",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/timeline.json": "57c02fe3b314e732d854067314d29f90d8666dab7a0fc6ec055815876235d7d7",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson.json": "fdaea67590dc8d45b06e867951651f020da20e209292a8f2f16d0015e29e43e1",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson-sum6.json": "3b3d125a9acc2bcd74e45f307490cdaaa0bc91408ab4bcee7356cf08b837a873",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/check_lesson.py": "e76da1e4982c2db4a37ca793281b5b12ea2b7fc68ea0764cbcc4309ba23e4069",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/render_lesson.py": "a951176ea88ad3f1b88d1c1386a5c694b69d3155ec4099a76c50e2f5bf1a39a0",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/verification.json": "120cc852e92a08219c562a2e9bf668b822af73c578a790a9d32295233a762e13",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reviewer.json": "2d144952ab13202804c260c74fecdffcde57f8fbad7b5b3c1e41b79d4d6fea94",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.post-fix-review.json": "b0715795fc1475a31f0abb3b7f0d2ccb4583f5d6f9266cddbb45ed234a0cf481",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.dub-delta-review.json": "e9412c98232c55a72488282ce6ee92558dda17644cdca2338a92640afe4a15f6",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.author-fix-review.json": "53ea2c10977a712ea09bbcf514e719e944ba4e119f1e9e02a6b44309a5e3a825",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.author-comparator-refinement.json": "dd96d44292b615dc45f234ded6dfb74afa814934918fdd3385d2110f0921a05b",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reword-1-delta-review.json": "b767765a6e1e1b9fd4cbf04c99e54388d972514403b173d3f3c8fa21e68f9052",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.six-author-independent-review.json": "ad6059939d28aef784c9b22f20fda97abee4aeafdbf79c91abb6e29810eae7bf"
+    },
+    "before_report_write": {
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations/ko.json": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/ko.todo.json": "49c58166a3fcb94a2b8c912debfb3d0f332dbd69fe04f79abd90a12744ebc638",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/skipped.json": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.ko.json": "45b0cc9d390767ee6de34c949ad639358ce180b7b333392652e63a91aa99d0f5",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.ko.json": "4408ed87bdeda544b2cf1f3000d4f3d140f1c2484bc5bbe9b9736276444ffc0c",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/fit.json": "33eb6ed4da04ee95e3c3be3422062896054584c19e24081c6a703eb12379a6fd",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/timeline.json": "57c02fe3b314e732d854067314d29f90d8666dab7a0fc6ec055815876235d7d7",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson.json": "fdaea67590dc8d45b06e867951651f020da20e209292a8f2f16d0015e29e43e1",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson-sum6.json": "3b3d125a9acc2bcd74e45f307490cdaaa0bc91408ab4bcee7356cf08b837a873",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/check_lesson.py": "e76da1e4982c2db4a37ca793281b5b12ea2b7fc68ea0764cbcc4309ba23e4069",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/render_lesson.py": "a951176ea88ad3f1b88d1c1386a5c694b69d3155ec4099a76c50e2f5bf1a39a0",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/verification.json": "120cc852e92a08219c562a2e9bf668b822af73c578a790a9d32295233a762e13",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reviewer.json": "2d144952ab13202804c260c74fecdffcde57f8fbad7b5b3c1e41b79d4d6fea94",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.post-fix-review.json": "b0715795fc1475a31f0abb3b7f0d2ccb4583f5d6f9266cddbb45ed234a0cf481",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.dub-delta-review.json": "e9412c98232c55a72488282ce6ee92558dda17644cdca2338a92640afe4a15f6",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.author-fix-review.json": "53ea2c10977a712ea09bbcf514e719e944ba4e119f1e9e02a6b44309a5e3a825",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.author-comparator-refinement.json": "dd96d44292b615dc45f234ded6dfb74afa814934918fdd3385d2110f0921a05b",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reword-1-delta-review.json": "b767765a6e1e1b9fd4cbf04c99e54388d972514403b173d3f3c8fa21e68f9052",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.six-author-independent-review.json": "ad6059939d28aef784c9b22f20fda97abee4aeafdbf79c91abb6e29810eae7bf"
+    },
+    "inputs_stable_before_write": true,
+    "after_first_write": {
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/ko.json": "02cb830a188a3bbcfb6f8f8bd6aaee3d7f6ca81e8bb9995bb29c73ba457ee6dd",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/pre-dub-translations/ko.json": "4adf127e86d656d80582c322e07e64d3bb228d4aab36d737f674d5a5731f0dc3",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/i18n/ko.todo.json": "49c58166a3fcb94a2b8c912debfb3d0f332dbd69fe04f79abd90a12744ebc638",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/skipped.json": "f773249e7a2a4bc67fb2a99d351792d1ddc8ab55634fd329a195fa503d1d32dc",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check-flags.ko.json": "45b0cc9d390767ee6de34c949ad639358ce180b7b333392652e63a91aa99d0f5",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/review/check.ko.json": "4408ed87bdeda544b2cf1f3000d4f3d140f1c2484bc5bbe9b9736276444ffc0c",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/fit.json": "33eb6ed4da04ee95e3c3be3422062896054584c19e24081c6a703eb12379a6fd",
+      "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ko/timeline.json": "57c02fe3b314e732d854067314d29f90d8666dab7a0fc6ec055815876235d7d7",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson.json": "fdaea67590dc8d45b06e867951651f020da20e209292a8f2f16d0015e29e43e1",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/lesson-sum6.json": "3b3d125a9acc2bcd74e45f307490cdaaa0bc91408ab4bcee7356cf08b837a873",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/check_lesson.py": "e76da1e4982c2db4a37ca793281b5b12ea2b7fc68ea0764cbcc4309ba23e4069",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/render_lesson.py": "a951176ea88ad3f1b88d1c1386a5c694b69d3155ec4099a76c50e2f5bf1a39a0",
+      "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/materials/lab/verification.json": "120cc852e92a08219c562a2e9bf668b822af73c578a790a9d32295233a762e13",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reviewer.json": "2d144952ab13202804c260c74fecdffcde57f8fbad7b5b3c1e41b79d4d6fea94",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.post-fix-review.json": "b0715795fc1475a31f0abb3b7f0d2ccb4583f5d6f9266cddbb45ed234a0cf481",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.dub-delta-review.json": "e9412c98232c55a72488282ce6ee92558dda17644cdca2338a92640afe4a15f6",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.author-fix-review.json": "53ea2c10977a712ea09bbcf514e719e944ba4e119f1e9e02a6b44309a5e3a825",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.author-comparator-refinement.json": "dd96d44292b615dc45f234ded6dfb74afa814934918fdd3385d2110f0921a05b",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.reword-1-delta-review.json": "b767765a6e1e1b9fd4cbf04c99e54388d972514403b173d3f3c8fa21e68f9052",
+      "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.six-author-independent-review.json": "ad6059939d28aef784c9b22f20fda97abee4aeafdbf79c91abb6e29810eae7bf"
+    },
+    "inputs_stable_after_write": true,
+    "KO_counter_retry_substate_stable_after_write": true
+  },
+  "mutations": {
+    "only_this_review_report_written": "/workspace/work/ai-animation-01/manual-i18n-reviews/ko.final-caption-translation-review.json",
+    "source_metadata_worksheet_media_native_state_git_API_writes": 0,
+    "provider_requests": 0
+  },
+  "review_scope": "All four actual deltas were freshly read against Chinese source and adjacent Korean context; the other97 lines and metadata were verified unchanged from the independently reviewed PRE base."
+}

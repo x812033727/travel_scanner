@@ -1,0 +1,171 @@
+{
+  "locale": "id",
+  "line_id": "9e738a",
+  "reviewer": {
+    "provider": "OpenAI",
+    "identity": "Codex (GPT-6 family; exact runtime model identifier not exposed)",
+    "agent": "/root/review_id_vi_th",
+    "human": false,
+    "independent_of_root_candidate": true
+  },
+  "review_type": "Supplemental independent source-fidelity text review after verifying native shortening semantics",
+  "reviewed_at_utc": "2026-10-25T22:27:56.384513+00:00",
+  "source": "你最想把哪個不好解釋的問題畫成動畫，留言告訴我。",
+  "canonical_before": "Soal apa sukar dijelaskan? Mau animasi? Komentar.",
+  "canonical_before_codepoints": 49,
+  "verdict": "root48_candidate_not_approved; no natural fully faithful shorter-than49 standard option found",
+  "options": [
+    {
+      "text": "Paling mau animasi soal sulit dijelaskan? Komen.",
+      "unicode_codepoints": 48,
+      "before_codepoints": 49,
+      "shorter_than_before": true,
+      "estimated_target": 46,
+      "above_estimated_target_by": 2,
+      "native_shorten_length_predicate_would_pass": true,
+      "digits_unchanged": true,
+      "text_verdict": "rejected_naturalness_and_choice_question",
+      "assessment": "It retains strongest desire, animation, a hard-to-explain problem and a comment request in separate words. But Paling mau animasi soal ... is an unnatural compressed construction without a clear subject/choice frame; with no apa/mana, it reads as a yes/no request rather than asking which problem the viewer most wants animated. Komen is colloquial relative to the established standard Komentar. Being 48 rather than 46 is not the reason for rejection.",
+      "voice_fit_status": "untested; no new voice generated or heard"
+    },
+    {
+      "text": "Sulit dijelaskan? Paling mau animasi apa? Komen.",
+      "unicode_codepoints": 48,
+      "before_codepoints": 49,
+      "shorter_than_before": true,
+      "estimated_target": 46,
+      "above_estimated_target_by": 2,
+      "native_shorten_length_predicate_would_pass": true,
+      "digits_unchanged": true,
+      "text_verdict": "not_approved_as_full_standard_fidelity",
+      "assessment": "This 48-codepoint conversation option supplies apa and is clearer than the root sentence. However, the hard-to-explain qualifier is a detached fragment whose connection to the desired problem is only contextual; the question asks what animation without explicitly identifying the problem. It also uses colloquial Komen. It is a conditional/context-dependent alternative, not a full standard-register source approval.",
+      "voice_fit_status": "untested; no new voice generated or heard"
+    },
+    {
+      "text": "Sulit dijelaskan? Paling mau animasi apa? Komentar.",
+      "unicode_codepoints": 51,
+      "before_codepoints": 49,
+      "shorter_than_before": false,
+      "estimated_target": 46,
+      "above_estimated_target_by": 5,
+      "native_shorten_length_predicate_would_pass": false,
+      "digits_unchanged": true,
+      "text_verdict": "context_dependent_not_approved_for_native_shortening",
+      "assessment": "Using Komentar restores the established register. It remains a clipped context-dependent sequence, and at 51 it is not shorter than the canonical 49; native shortenDub would reject it on that condition even though 46 itself is not a hard acceptance limit.",
+      "voice_fit_status": "untested; no new voice generated or heard"
+    },
+    {
+      "text": "Dari soal yang sulit dijelaskan, mana yang paling ingin kamu animasikan? Komentar.",
+      "unicode_codepoints": 82,
+      "before_codepoints": 49,
+      "shorter_than_before": false,
+      "estimated_target": 46,
+      "above_estimated_target_by": 36,
+      "native_shorten_length_predicate_would_pass": false,
+      "digits_unchanged": true,
+      "text_verdict": "approved_source_meaning_and_naturalness_only_not_eligible_shortening",
+      "assessment": "Natural standard Indonesian. The opening filters specifically for problems difficult to explain; mana asks which one; paling ingin kamu retains the strongest viewer preference; animasikan retains making it an animation; Komentar requests the reply. This deliberately clear wording is 82, above the estimated target and above the current 49; it cannot be submitted as an accepted native shortening replacement. It is a fidelity reference option, not a fit or retry approval.",
+      "voice_fit_status": "untested; no new voice generated or heard"
+    }
+  ],
+  "prior_review_preserved": {
+    "path": "/workspace/work/ai-animation-01/manual-i18n-reviews/id.three-author-independent-review.json",
+    "sha256": "e3d795a8df5ae21ac56f2f1f21cc1d95773e366c159a45d74ab7f52062a7eb5a",
+    "unchanged": true,
+    "original_rumit_rejection_stands": "rumit means complicated and does not specifically retain hard-to-explain. This supplemental budget clarification does not reverse that meaning rejection.",
+    "budget_clarification": "The prior task supplied 46 as a hard review ceiling. Actual native code shows shrinkBudgets max_chars is a proportional guide from the shared measured window, not an independent hard rejection threshold in shortenDub. This supplement records the corrected native mechanism without rewriting the historical review."
+  },
+  "native_code_actually_read": {
+    "shortenDub": {
+      "path": "/workspace/travel_scanner/tools/video/automation/flow.mjs",
+      "line": 4559,
+      "observed_acceptance_checks": [
+        "id belongs to requested over-budget lines",
+        "nonempty trimmed text",
+        "actual Unicode codepoint count strictly less than before",
+        "digitsOf(after) equals digitsOf(before)"
+      ],
+      "no_max_chars_rejection": true
+    },
+    "shrinkBudgets": {
+      "path": "/workspace/travel_scanner/tools/video/dubs/plan.mjs",
+      "line": 411,
+      "observed_behavior": "Shared-window available/spoken frame ratio is applied proportionally to each current line character count with a margin; max_chars guides shortening. Actual fit is per window and short neighbours can lend room."
+    }
+  },
+  "shared_outro_window": {
+    "saved_actual_failed_window": {
+      "scene": "outro",
+      "state": 0,
+      "start_frame": 17255,
+      "end_frame": 17687,
+      "lines": [
+        "f576ae",
+        "9e738a",
+        "ed8308"
+      ],
+      "tempo": 1.15,
+      "slack_frames": -12,
+      "over": true
+    },
+    "line_specific_estimated_targets": {
+      "f576ae": 48,
+      "9e738a": 46,
+      "ed8308": 63
+    },
+    "current_text_codepoints": {
+      "f576ae": 52,
+      "9e738a": 49,
+      "ed8308": 68
+    },
+    "example_only_not_approved_bundle": {
+      "f576ae": 45,
+      "root_candidate_9e738a": 48,
+      "ed8308": 60,
+      "sum": 153,
+      "current_sum": 169,
+      "estimated_target_sum": 157,
+      "explanation": "The other two reductions could contribute room to the same shared window, but character sums do not establish spoken duration or fit. This numerical example does not approve the rejected 9e sentence."
+    },
+    "fit_verdict": "Unknown for any proposed bundle until actual new synthesis and native window-fit measurement; the saved failed baseline stays failed."
+  },
+  "other_two_text_options": {
+    "f576ae": {
+      "text": "Kirim video dan proyek pembuat ulang animasi.",
+      "codepoints": 45,
+      "before_codepoints": 52,
+      "text_approval_from_prior_review": true
+    },
+    "ed8308": {
+      "text": "Langganan kanal ini; ikut pakai AI, buat karya layak tampil.",
+      "codepoints": 60,
+      "before_codepoints": 68,
+      "text_approval_from_prior_review": true
+    },
+    "joint_audio_fit": "not tested or approved"
+  },
+  "no_mutations_or_audio": {
+    "proposal_unapplied": true,
+    "text_only": true,
+    "no_audio_generated_or_heard": true,
+    "no_audio_fit_approval": true,
+    "no_API_calls": true,
+    "source_canonical_worksheet_metadata_unchanged": true,
+    "native_failed_fit_skip_counters_unchanged": true,
+    "no_track_or_ASR_created_or_claimed": true,
+    "no_global_cap_change": true,
+    "no_owner_retry_taken": true
+  },
+  "sha256": {
+    "source_video": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "canonical_translation": "89edb03656efa96f614478ddcff15c594d4bbe09981167f1ae8ad3ea011c4b5a",
+    "worksheet": "8b3c6b84e22af3c10720756caf331cb8b9d4e4015b18b54e097c10778f92b32f",
+    "failed_native_attempt_baseline": "98ab00afa339e6c4c15729e1b9fa489f0f49e533b0792495163d4ee6fd9a20ae",
+    "native_skip": "e1ca99cd6f25b8fc74ad066634ca59ff1280adbad97f081dd8cfb247b2c1283c",
+    "native_fit": "7e7234b1f834add429f1f4be0ab03a39faef829ad72a21df0f275897927b7c5b",
+    "prior_independent_review": "e3d795a8df5ae21ac56f2f1f21cc1d95773e366c159a45d74ab7f52062a7eb5a",
+    "native_flow_source": "167a1630f0c95886e7518cfd7a5e3110ebe234d860700b603b82d4d07750b7ee",
+    "native_plan_source": "249dbbce09541ad1f843f39d7355b4de56b283830ff5bee357457e15b9765a2f"
+  },
+  "mutations": "Only id.retry-source-fidelity-options-review.json written; previous review is preserved. No source, translation, worksheet, metadata, native state or audio changes."
+}

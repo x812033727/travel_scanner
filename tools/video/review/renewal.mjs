@@ -4,10 +4,10 @@ import { createHash } from "node:crypto";
 import { closeSync, copyFileSync, existsSync, mkdirSync, openSync, readFileSync, readSync, realpathSync, statSync } from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { parseArgs } from "node:util";
+import { isDeepStrictEqual, parseArgs } from "node:util";
 
 import { sha256File } from "../core/approvals.mjs";
-import { appliedBranding, brandingCurrent, presentationTimeline, readBranding, validateBranding } from "../core/branding.mjs";
+import { appliedBranding, brandingCurrent, introAtFrame, linesAcrossIntro, presentationTimeline, readBranding, validateBranding } from "../core/branding.mjs";
 import { toSrt } from "../core/captions.mjs";
 import { isCompilation } from "../core/compilation.mjs";
 import { atomicWrite, isInside, readJson, UsageError } from "../core/paths.mjs";
@@ -89,6 +89,10 @@ export function validateCandidate(receipt, slug, site) {
   requireThat(new Set(review.files.map((file) => file.role)).size === review.files.length, "duplicate candidate file roles");
   for (const file of review.files) requireThat(HASH.test(file.sha256 ?? "") && Number.isSafeInteger(file.size) && file.size > 0, "invalid candidate file proof");
   requireThat(review.files.some((file) => file.role === "preview" && file.content_type === "video/mp4") && review.files.some((file) => file.role === "final" && file.content_type === "video/mp4" && file.sha256 === review.content_sha256 && file.size === receipt.candidate.final_bytes), "candidate needs its actual final and preview attachments");
+  const placement = review.payload?.renewal_candidate?.presentation;
+  if (placement) requireThat(isDeepStrictEqual(receipt.source, review.payload.renewal_candidate.source) && isDeepStrictEqual(receipt.candidate, review.payload.renewal_candidate.candidate), "positioned receipt source/candidate differs from its review payload");
+  if (placement) requireThat(placement.intro_at === "after_first_chapter" && Number.isSafeInteger(placement.intro_at_frame) && placement.intro_at_frame > 0 && Number.isSafeInteger(placement.body_frames) && placement.intro_at_frame < placement.body_frames && HASH.test(receipt.source.body_timeline_sha256 ?? "") && review.files.some((file) => file.role === "evidence_body_timeline" && file.content_type === "application/json" && file.sha256 === receipt.source.body_timeline_sha256), "after-first-chapter candidate needs its retained timeline and bounded placement proof");
+  else requireThat(!receipt.source.body_timeline_sha256, "retained body timeline proof has no intro placement");
   return receipt;
 }
 
@@ -108,8 +112,25 @@ export async function submitRenewal({ receipt, reason, request, site }) {
   return result;
 }
 
+/** Derive placement from the retained BODY clock, never from an untrusted applied offset. */
+export function renewalPlacement(pin, timeline) {
+  pin = validateBranding(pin);
+  requireThat(pin, "renewal placement requires a branding package");
+  if (!pin.intro_at) return null;
+  requireThat(timeline?.fps === FPS && Number.isSafeInteger(timeline.total_frames) && timeline.total_frames > 0 && !timeline.branding_hash, "an after-first-chapter renewal needs the actual retained body timeline");
+  requireThat(timeline.chapters?.[0]?.start_frame === 0, "renewal body timeline must begin with its first chapter");
+  const at = introAtFrame(pin, timeline);
+  requireThat(timeline.scenes?.some((scene) => scene.start_frame === at), "renewal intro must be at the second chapter's scene boundary");
+  let end = 0;
+  requireThat(Array.isArray(timeline.lines) && timeline.lines.length > 0 && timeline.lines.every((line) => {
+    const valid = Number.isSafeInteger(line.start_frame) && Number.isSafeInteger(line.end_frame) && line.start_frame >= end && line.end_frame > line.start_frame && line.end_frame <= timeline.total_frames;
+    end = line.end_frame; return valid;
+  }) && !linesAcrossIntro(timeline.lines, at).length, "renewal body lines must be ordered, bounded and must not cross the intro");
+  return { intro_at: pin.intro_at, intro_at_frame: at, body_frames: timeline.total_frames };
+}
+
 /** Snapshot only into a new directory. No approval, pin, package or canonical file is changed. */
-export async function stageRenewal({ from, out, original, body, branding, client, measure, encode, upload, env = process.env }) {
+export async function stageRenewal({ from, out, original, body, branding, timeline, client, measure, encode, upload, env = process.env }) {
   const sourceDir = realpathSync(from);
   const destination = path.resolve(out);
   requireThat(!existsSync(destination) && !isInside(destination, sourceDir), "out must be a new directory outside the candidate source");
@@ -128,8 +149,9 @@ export async function stageRenewal({ from, out, original, body, branding, client
   const bodySha = await sha256File(body);
   const pin = validateBranding(readJson(branding, null), { base: path.dirname(path.resolve(branding)) });
   requireThat(pin, "a branding package is required");
-  // A renewal joins the retained body after the intro; a pin placed after the first chapter needs a rebuild instead.
-  requireThat(!pin.intro_at, "a renewal keeps the intro at the start; a branding pin with intro_at after_first_chapter needs assemble instead");
+  const timelineFile = timeline ? path.resolve(timeline) : null;
+  const placement = renewalPlacement(pin, timelineFile ? readJson(timelineFile, null) : null);
+  const timelineSha = placement ? await sha256File(timelineFile) : null;
   for (const role of ["intro", "outro"]) requireThat(await sha256File(pin[role].file) === pin[role].sha256, `${role} bytes do not match the branding pin`);
   const final = path.join(sourceDir, "final.mp4");
   const finalSha = await sha256File(final);
@@ -138,6 +160,7 @@ export async function stageRenewal({ from, out, original, body, branding, client
   const candidateMeasurement = measureProblems(...await inspectArgs(inspect, final, env));
   const expectedSeconds = bodyMeasurement.seconds + (pin.intro.frames + pin.outro.frames) / FPS;
   requireThat(bodyMeasurement.seconds > 0 && Math.abs(candidateMeasurement.seconds - expectedSeconds) <= 0.1, "candidate duration does not match retained body plus the new bookends");
+  if (placement) requireThat(Math.abs(bodyMeasurement.seconds - placement.body_frames / FPS) <= 0.1, "retained body duration differs from its placement timeline");
   mkdirSync(destination, { recursive: true });
   const snapshot = path.join(destination, "final.mp4");
   copyFileSync(final, snapshot);
@@ -145,6 +168,12 @@ export async function stageRenewal({ from, out, original, body, branding, client
   const preview = path.join(destination, "preview.mp4");
   await (encode ?? encodePreview)(snapshot, preview, env);
   const files = [await send(site, meta.slug, snapshot, "final"), await send(site, meta.slug, preview, "preview")];
+  if (placement) {
+    const target = path.join(destination, "body-timeline.json");
+    copyFileSync(timelineFile, target);
+    requireThat(await sha256File(target) === timelineSha, "body timeline changed while snapshotting");
+    files.push(await send(site, meta.slug, target, "evidence_body_timeline"));
+  }
   const thumbnail = ["thumbnail.png", "thumbnail.jpg", "thumbnail.jpeg"].find((name) => existsSync(path.join(sourceDir, name)));
   for (const [name, role] of [...(thumbnail ? [[thumbnail, "thumbnail"]] : []), ["zh-TW.srt", "captions_zh-TW"]]) {
     const source = path.join(sourceDir, name);
@@ -153,10 +182,11 @@ export async function stageRenewal({ from, out, original, body, branding, client
     copyFileSync(source, target);
     files.push(await send(site, meta.slug, target, role));
   }
-  const source = { final_review_id: old.id, final_sha256: oldSha, body_sha256: bodySha };
+  requireThat(await sha256File(original) === oldSha && await sha256File(body) === bodySha && await sha256File(final) === finalSha && (!placement || await sha256File(timelineFile) === timelineSha), "source or retained body timeline changed during staging");
+  const source = { final_review_id: old.id, final_sha256: oldSha, body_sha256: bodySha, ...(placement ? { body_timeline_sha256: timelineSha } : {}) };
   const candidate = { final_sha256: finalSha, branding_hash: pin.hash, final_bytes: statSync(snapshot).size };
   const review = finalReview({ meta, sha256: finalSha, ...candidateMeasurement, captions: files.some((file) => file.role === "captions_zh-TW") });
-  review.payload = { ...review.payload, manual_review: true, branding_hash: pin.hash, renewal_candidate: { source, candidate, body_seconds: bodyMeasurement.seconds, intro_frames: pin.intro.frames, outro_frames: pin.outro.frames } };
+  review.payload = { ...review.payload, manual_review: true, branding_hash: pin.hash, renewal_candidate: { source, candidate, body_seconds: bodyMeasurement.seconds, intro_frames: pin.intro.frames, outro_frames: pin.outro.frames, ...(placement ? { presentation: placement } : {}) } };
   const receipt = { schema_version: 1, kind: "long-final-renewal", site: origin(site.site), slug: meta.slug, source, candidate, review: { ...review, files } };
   validateCandidate(receipt, meta.slug, site.site);
   atomicWrite(path.join(destination, "renewal-candidate.json"), `${JSON.stringify(receipt, null, 2)}\n`);
@@ -280,13 +310,13 @@ export async function bindRenewalSubmission({ body, remote, project, workdir, re
 
 export async function renewalMain(args, env = process.env) {
   const [command, ...rest] = args;
-  const { values } = parseArgs({ args: rest, options: Object.fromEntries(["from", "out", "original", "body", "branding", "receipt", "reason"].map((key) => [key, { type: "string" }])) });
+  const { values } = parseArgs({ args: rest, options: Object.fromEntries(["from", "out", "original", "body", "branding", "timeline", "receipt", "reason"].map((key) => [key, { type: "string" }])) });
   if (command === "stage") {
     for (const key of ["from", "out", "original", "body", "branding"]) requireThat(values[key], `stage requires --${key}`);
     const receipt = await stageRenewal({ ...values, env });
     return `${receipt.slug}: candidate staged; select ${path.resolve(values.out, "renewal-candidate.json")} on the owner page. No review was submitted.`;
   }
-  requireThat(command === "submit" && values.receipt && values.reason, "usage: renewal.mjs stage --from DIR --out NEW_DIR --original MP4 --body MP4 --branding JSON; or submit --receipt JSON --reason TEXT");
+  requireThat(command === "submit" && values.receipt && values.reason, "usage: renewal.mjs stage --from DIR --out NEW_DIR --original MP4 --body MP4 --branding JSON [--timeline BODY_TIMELINE_JSON]; or submit --receipt JSON --reason TEXT");
   const site = env.MOKAAIR_SITE ?? "https://mokaair.com";
   const receipt = readJson(values.receipt, null);
   const result = await submitRenewal({ receipt, reason: values.reason, site, request: ownerClient({ site, session: env.MOKAAIR_OWNER_SESSION }) });

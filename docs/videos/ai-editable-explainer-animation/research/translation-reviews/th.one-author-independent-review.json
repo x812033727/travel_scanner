@@ -1,0 +1,123 @@
+{
+  "locale": "th",
+  "line_id": "291f73",
+  "review_type": "independent_fresh_review_of_two_new_author_candidates",
+  "reviewed_at_utc": "2026-10-25T23:18:54.034243+00:00",
+  "reviewer": {
+    "agent": "/root/review_id_vi_th/review_th",
+    "identity": "OpenAI Codex agent based on GPT-6; exact deployment identifier is not exposed",
+    "human": false,
+    "authored_these_two_candidates": false
+  },
+  "provenance_verification": {
+    "author": "OpenAI Codex /root/compact_th_one",
+    "proposals_path": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.one-author-proposals.json",
+    "proposals_sha256": "4f18be01506bfb18fe25b5f41950e7fa6ff537bf0dcea87902d4819a0713074c",
+    "provenance_path": "/workspace/work/ai-animation-01/manual-i18n-reviews/th.one-author-provenance.json",
+    "provenance_sha256": "6575a4267c13bc65bcc9f010640bbf05e1041fac858c0dc903f32a0b7ca15f47",
+    "author_is_separate_agent": true,
+    "declared_source_canonical_boundary_hashes_verified": true
+  },
+  "source": {
+    "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/video.json",
+    "sha256": "e58ef664f7c6a27333e943fbafdbd5275cde396b53ced4009c8502ab48c8b806",
+    "exact_text": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+    "line_source_hash": "291f73fb2e95",
+    "contexts_directly_read": {
+      "preceding_source": "核心畫面有了，就請 AI 把它整理成能執行的專案。",
+      "preceding_thai": "ได้ภาพหลักแล้ว ขอ AI จัดเป็นโปรเจกต์ที่รันได้",
+      "current_slide_title": "把製作要求接在資料後面",
+      "current_slide_items": [
+        "使用資料檔",
+        "附執行說明",
+        "附獨立檢查"
+      ],
+      "current_slide_first_key": "同一個資料來源",
+      "following_build_config_JSON": "{\n  \"title\": \"兩顆骰子的總和，機率一樣嗎？\",\n  \"target_sum\": 7,\n  \"locale\": \"zh-TW\"\n}",
+      "following_source": "這份資料檔把標題、目標和色彩集中在同一處，方便你修改。",
+      "following_thai": "ไฟล์ข้อมูลรวมหัวเรื่อง เป้าหมาย และสีไว้ที่เดียว ให้คุณแก้ง่าย"
+    }
+  },
+  "current_canonical": {
+    "path": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/i18n/th.json",
+    "sha256": "1289b970131bc45a0516acc15ebde2f80e424f2cea5fe2912340f847859a928a",
+    "exact_text": "ให้อ่านหัวเรื่องกับเป้าจากไฟล์ ไม่ใส่เลขแยก",
+    "codepoints": 43,
+    "status": "Still the native shortening that omits per-image scope; neither author candidate is applied."
+  },
+  "candidate_reviews": [
+    {
+      "candidate": 1,
+      "author": "OpenAI Codex /root/compact_th_one",
+      "exact_text": "อ่านชื่อกับเป้าจากไฟล์ อย่าตั้งเลขแยกรายภาพ",
+      "text_sha256": "e5d0a9f6ee336f37c7c10163df05da2ea4f13f73c4ab330e791f07558cecded2",
+      "unicode_codepoints": 43,
+      "matches_declared_codepoints": true,
+      "source_clause_order": "pass: file source, title and target precede the per-image numeric-setting prohibition.",
+      "file_read": "pass: อ่าน...จากไฟล์ reads the fields; ดึง...จากไฟล์ naturally fetches the fields from the same established data file.",
+      "per_image_scope": "pass: อย่าตั้งเลขแยกรายภาพ explicitly prohibits setting numeric values independently per image.",
+      "no_same_values_requirement": "pass: the prohibition concerns separate per-image setting of values; it neither says every image must display the same result nor prohibits distinct mathematical results.",
+      "natural_thai_register": "pass: concise technical instruction, no male particles or script mismatch.",
+      "title_specificity": "not definitive: ชื่อ may mean title in the larger sequence, but the immediately preceding executable-project context also allows a project/file name. The current slide only says to use a data file; the explicit title field appears in the next build-config scene. Prior/following Thai consistently uses หัวเรื่อง, so the shortening introduces avoidable ambiguity.",
+      "verdict": "needs_author_correction_for_unambiguous_title",
+      "recommended": false,
+      "adaptive_guide_codepoints": 36,
+      "exceeds_adaptive_guide": true,
+      "current_worksheet_max_chars": 57,
+      "within_current_worksheet_max_chars": true,
+      "actual_voice_fit": "untested",
+      "applied": false
+    },
+    {
+      "candidate": 2,
+      "author": "OpenAI Codex /root/compact_th_one",
+      "exact_text": "ดึงหัวเรื่องกับเป้าจากไฟล์ อย่าตั้งเลขแยกรายภาพ",
+      "text_sha256": "45ca8869af3bbeca0102d832b5551727b8efeff9925f2bed24950ed5d2a4a2e7",
+      "unicode_codepoints": 47,
+      "matches_declared_codepoints": true,
+      "source_clause_order": "pass: file source, title and target precede the per-image numeric-setting prohibition.",
+      "file_read": "pass: อ่าน...จากไฟล์ reads the fields; ดึง...จากไฟล์ naturally fetches the fields from the same established data file.",
+      "per_image_scope": "pass: อย่าตั้งเลขแยกรายภาพ explicitly prohibits setting numeric values independently per image.",
+      "no_same_values_requirement": "pass: the prohibition concerns separate per-image setting of values; it neither says every image must display the same result nor prohibits distinct mathematical results.",
+      "natural_thai_register": "pass: concise technical instruction, no male particles or script mismatch.",
+      "title_specificity": "pass: หัวเรื่อง explicitly preserves 標題, consistent with nearby Thai and the on-screen title field.",
+      "verdict": "textpass",
+      "recommended": true,
+      "adaptive_guide_codepoints": 36,
+      "exceeds_adaptive_guide": true,
+      "current_worksheet_max_chars": 57,
+      "within_current_worksheet_max_chars": true,
+      "actual_voice_fit": "untested",
+      "applied": false
+    }
+  ],
+  "verdict": "textpass_for_explicit_47_codepoint_candidate_only",
+  "recommended_exact_text": "ดึงหัวเรื่องกับเป้าจากไฟล์ อย่าตั้งเลขแยกรายภาพ",
+  "recommended_unicode_codepoints": 47,
+  "recommendation_reason": "Retain explicit หัวเรื่อง because the shorter ชื่อ is not definitively title-specific at this point in the narration. The 47-codepoint alternative preserves both source clauses naturally and restores per-image scope without implying identical displayed values.",
+  "timing": "Both candidates exceed the adaptive 36-character estimate. That estimate is not a hard cap and does not justify omitting facts. No new speech or actual fit check has been produced.",
+  "native_boundary": {
+    "path": "/workspace/work/ai-animation-01/author-review-boundaries/th.shorten.json",
+    "sha256": "add171c6631c8762663993825441287606916729127860a7eb036acc0081b42f",
+    "shorten": 1,
+    "retakes": 0,
+    "reword": 0,
+    "check_stopped": true,
+    "native_counters_unchanged": true
+  },
+  "applied": false,
+  "voice_approved": false,
+  "actual_voice_fit_tested": false,
+  "actions": {
+    "source_edits": false,
+    "canonical_edits": false,
+    "worksheet_edits": false,
+    "media_edits": false,
+    "native_writes": false,
+    "API_calls": 0,
+    "only_this_review_written": true,
+    "retry_reset": false,
+    "voice_approval": false,
+    "flag_clearance": false
+  }
+}

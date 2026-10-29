@@ -1,0 +1,93 @@
+{
+  "recorded_at_utc": "2026-10-26T00:06:03.122196+00:00",
+  "kind": "actual_existing_checked_audio_file_integrity_comparison_after_caption_rebuild",
+  "read_only": true,
+  "network_requests": 0,
+  "provider_requests": 0,
+  "audio_or_media_writes": 0,
+  "rows": [
+    {
+      "locale": "ja",
+      "track": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/ja.m4a",
+      "observed_sha256": "fa58e5c10148aaae354ec989422e457588d9402ef47b2159b344e94d4514fc96",
+      "recorded_checked_track_sha256": "fa58e5c10148aaae354ec989422e457588d9402ef47b2159b344e94d4514fc96",
+      "unchanged_from_existing_checked_native_proof": true,
+      "actual_bytes": 16883589,
+      "recorded_bytes": 16883589,
+      "actual_ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "589.600000",
+          "size": "16883589"
+        }
+      },
+      "existing_proof": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/ja.json",
+      "existing_proof_sha256": "383269548bf286d546ae9ce83ccbc34325f1dc348f69ed96c4bf6b16eb0041f0",
+      "audio_qa_or_approval_performed_by_this_comparison": false
+    },
+    {
+      "locale": "es",
+      "track": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/es.m4a",
+      "observed_sha256": "123215f8e381ab05e7310e9b97b95a18734b872b1af895d5b0f75af2e9f6c277",
+      "recorded_checked_track_sha256": "123215f8e381ab05e7310e9b97b95a18734b872b1af895d5b0f75af2e9f6c277",
+      "unchanged_from_existing_checked_native_proof": true,
+      "actual_bytes": 13757029,
+      "recorded_bytes": 13757029,
+      "actual_ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "589.600000",
+          "size": "13757029"
+        }
+      },
+      "existing_proof": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/es.json",
+      "existing_proof_sha256": "3f2706d187c30666df454bb6eebaa50f08f2c874c1499d4e620953d5bb2d34cc",
+      "audio_qa_or_approval_performed_by_this_comparison": false
+    },
+    {
+      "locale": "vi",
+      "track": "/workspace/work/ai-animation-01/media/ai-editable-explainer-animation/dubs/vi.m4a",
+      "observed_sha256": "1913d2c5360cfcf741536cb37623f9fe8ec38c315598216f62124ddd86aec35c",
+      "recorded_checked_track_sha256": "1913d2c5360cfcf741536cb37623f9fe8ec38c315598216f62124ddd86aec35c",
+      "unchanged_from_existing_checked_native_proof": true,
+      "actual_bytes": 13341336,
+      "recorded_bytes": 13341336,
+      "actual_ffprobe": {
+        "programs": [],
+        "stream_groups": [],
+        "streams": [
+          {
+            "codec_name": "aac",
+            "sample_rate": "48000",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "589.600000",
+          "size": "13341336"
+        }
+      },
+      "existing_proof": "/workspace/travel_scanner/docs/videos/ai-editable-explainer-animation/research/media-checkpoints/vi.json",
+      "existing_proof_sha256": "c2ba3a64ba9cd06d4c0a977a8a044368803102cd6c162a2753fbb1cbaedb382e",
+      "audio_qa_or_approval_performed_by_this_comparison": false
+    }
+  ],
+  "all_compared_files_stable": true,
+  "scope": "Actual SHA/byte/ffprobe comparison only. It neither reruns ASR/Jev nor grants audio, Studio or full-package approval."
+}

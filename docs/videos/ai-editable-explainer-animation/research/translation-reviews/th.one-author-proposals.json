@@ -1,0 +1,50 @@
+[
+  {
+    "id": "291f73",
+    "rank": "recommended_for_independent_review",
+    "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+    "source_hash": "291f73fb2e95",
+    "before": "ให้อ่านหัวเรื่องกับเป้าจากไฟล์ ไม่ใส่เลขแยก",
+    "after": "อ่านชื่อกับเป้าจากไฟล์ อย่าตั้งเลขแยกรายภาพ",
+    "unicode_codepoints": 43,
+    "original_pre_codepoints": 49,
+    "native_shortened_current_codepoints": 43,
+    "original_fit_estimated_max_chars": 36,
+    "author": "OpenAI Codex /root/compact_th_one",
+    "applied": false,
+    "native_shortening_pass": false,
+    "new_TTS_or_actual_fit_approved": false,
+    "meaning_rationale": {
+      "file_read": "อ่าน...จากไฟล์ explicitly reads from the file; the alternative uses ดึง...จากไฟล์ as fetching the same fields. In this runnable-project context the file is the established data file.",
+      "title_and_target": "ชื่อกับเป้า names the title/name field and target in this established title-and-target context; หัวเรื่อง in the alternative keeps the explicit heading noun. The shorter ชื่อ requires independent contextual naturalness review.",
+      "per_image_independent_numbers": "อย่าตั้งเลขแยกรายภาพ prohibits setting separate numbers per image, rather than claiming that every image must show an identical numeric value.",
+      "source_order": "Read/fetch the title and target from the file first, then prohibit per-image independent numbers."
+    },
+    "naturalness_review_needed": true,
+    "timing_note": "A conciser wording choice intended to reduce spoken phrasing; no new speech has been generated. Character counts are not duration or fit evidence. Both candidates exceed the adaptive36-character estimate."
+  },
+  {
+    "id": "291f73",
+    "rank": "more_explicit_heading_alternative",
+    "source": "請它從資料檔讀取標題和目標，畫面不要各寫一套數字。",
+    "source_hash": "291f73fb2e95",
+    "before": "ให้อ่านหัวเรื่องกับเป้าจากไฟล์ ไม่ใส่เลขแยก",
+    "after": "ดึงหัวเรื่องกับเป้าจากไฟล์ อย่าตั้งเลขแยกรายภาพ",
+    "unicode_codepoints": 47,
+    "original_pre_codepoints": 49,
+    "native_shortened_current_codepoints": 43,
+    "original_fit_estimated_max_chars": 36,
+    "author": "OpenAI Codex /root/compact_th_one",
+    "applied": false,
+    "native_shortening_pass": false,
+    "new_TTS_or_actual_fit_approved": false,
+    "meaning_rationale": {
+      "file_read": "อ่าน...จากไฟล์ explicitly reads from the file; the alternative uses ดึง...จากไฟล์ as fetching the same fields. In this runnable-project context the file is the established data file.",
+      "title_and_target": "ชื่อกับเป้า names the title/name field and target in this established title-and-target context; หัวเรื่อง in the alternative keeps the explicit heading noun. The shorter ชื่อ requires independent contextual naturalness review.",
+      "per_image_independent_numbers": "อย่าตั้งเลขแยกรายภาพ prohibits setting separate numbers per image, rather than claiming that every image must show an identical numeric value.",
+      "source_order": "Read/fetch the title and target from the file first, then prohibit per-image independent numbers."
+    },
+    "naturalness_review_needed": true,
+    "timing_note": "A conciser wording choice intended to reduce spoken phrasing; no new speech has been generated. Character counts are not duration or fit evidence. Both candidates exceed the adaptive36-character estimate."
+  }
+]
