@@ -1,0 +1,252 @@
+{
+  "schema": "ai-concept-source-correction-summary-v1",
+  "scope": "Four Traditional Chinese sources only; no target-language changes",
+  "candidate_base_commit": "7e380b739645d942cf225c8c70ddb7290d253641",
+  "snapshot_captured_at": "2026-10-29T00:56:21.795830+00:00",
+  "fresh_snapshot_sha256": "54bdec3f6b4729a911ba430aa688e12e158ccdc0427b22af6671400bd42217ad",
+  "fresh_evaluation_sha256": "45044d2b5c6d3a8cb79114c081f24239e995593305cc7d107408910025376d96",
+  "delta_provenance_sha256": "c409a3d54d23960dea5a1bad7f640deaf5dab4fe415d5b36e1d9452e387a95d3",
+  "primary_refresh_sha256": "a2da6a958ac204a76a0fb277abde5d9e994ae0c6be3a65683cf84cf4aaa3e259",
+  "reviewed_sources": [
+    {
+      "slug": "ai-term-fine-tuning",
+      "locale": "zh-TW",
+      "article_version": 2,
+      "source_version": 8,
+      "published_version": 8,
+      "source_dirty": false,
+      "published_locales": [
+        "zh-TW"
+      ],
+      "from_document_sha256": "efa31d8961ea60c59c576ad28cbc0f39bd6a40d53d5571d1a669d908a7e3840d",
+      "to_document_sha256": "e835a8eaeff22d888b1f8090703c0b998849dcc477de010fb09cebc0d1939729",
+      "candidate_pack_sha256": "556825d7f79547825b0039f50b0e117a1b9239b8bb37bd7a33315ed62f4e9131",
+      "native_review_sha256": "aa64faf8db1cd7abb6a1cf1284fb8d2b7fbd2bcd7ba74760b969c5c71a44816a",
+      "full_source_audit_sha256": "e3c7fb00a9c5e1f686856feb28517992f078c343e11b6bfcab4a91182ef3749e",
+      "candidate_author": "main_audit_failure",
+      "independent_reviewer": "release48_preflight_package",
+      "changes": [
+        {
+          "pointer": "/blocks/5/inlines/1",
+          "before": {
+            "type": "article",
+            "text": "標記",
+            "kind": "life",
+            "slug": "ai-term-token"
+          },
+          "after": {
+            "type": "text",
+            "text": "標記"
+          }
+        }
+      ],
+      "assets": [
+        {
+          "path": "apps/web/public/guides/ai-term-fine-tuning/diagram-1.svg",
+          "before_sha256": "5ab91aee443377116125a069937738fb271ccb1dac991046ce2d4b3a3eab2e94",
+          "after_sha256": "5ab91aee443377116125a069937738fb271ccb1dac991046ce2d4b3a3eab2e94"
+        },
+        {
+          "path": "apps/web/public/guides/ai-term-fine-tuning/hero.jpg",
+          "before_sha256": "3129161e4fc6a4d7d98e776ec72612eef6a7517195c163e69b0155bdce0cb2fd",
+          "after_sha256": "3129161e4fc6a4d7d98e776ec72612eef6a7517195c163e69b0155bdce0cb2fd"
+        },
+        {
+          "path": "apps/web/public/guides/ai-term-fine-tuning/hero.svg",
+          "before_sha256": "45c0c7642aa79412b0b551be4edf23d74a3be339f23808828bd18039c5864af2",
+          "after_sha256": "45c0c7642aa79412b0b551be4edf23d74a3be339f23808828bd18039c5864af2"
+        }
+      ],
+      "native_verify_review": {
+        "from_published_sha256": "efa31d8961ea60c59c576ad28cbc0f39bd6a40d53d5571d1a669d908a7e3840d",
+        "to_document_sha256": "e835a8eaeff22d888b1f8090703c0b998849dcc477de010fb09cebc0d1939729"
+      },
+      "repository_pack_sha256": "e96889e1e4984543280063044afeb36dea24ee75fc11803a33e21632d0c77f72"
+    },
+    {
+      "slug": "ai-term-few-shot-prompting",
+      "locale": "zh-TW",
+      "article_version": 2,
+      "source_version": 10,
+      "published_version": 10,
+      "source_dirty": false,
+      "published_locales": [
+        "zh-TW"
+      ],
+      "from_document_sha256": "b7e1dabc0a145c8b66a91dccb427a55b0ed077d4fb228f5a25c167c75b09a69c",
+      "to_document_sha256": "f156b18dec9410b6c92f5b7e2866208b1eee4fb221f0c826261abf52c880e808",
+      "candidate_pack_sha256": "b980acf94d2f8e88581f5f20a67a7d3ceeca90af4a0738df238f9d4bd75ec834",
+      "native_review_sha256": "ca0dc7c62701f95af0b402b63e493e261fea05904bc826136c98962ebab69b26",
+      "full_source_audit_sha256": "3334fddafe6fdfadafd240f0ddac6c8f7fa38b1d3e984e78cf0dd36024709dda",
+      "candidate_author": "main_audit_failure",
+      "independent_reviewer": "release48_preflight_package",
+      "changes": [
+        {
+          "pointer": "/blocks/10/inlines/1",
+          "before": {
+            "type": "article",
+            "text": "標記",
+            "kind": "life",
+            "slug": "ai-term-token"
+          },
+          "after": {
+            "type": "text",
+            "text": "標記"
+          }
+        }
+      ],
+      "assets": [
+        {
+          "path": "apps/web/public/guides/ai-term-few-shot-prompting/diagram-1.svg",
+          "before_sha256": "06732a98e7d40739e5a49882ca8dfdc30f2da3788624a74b6747d31c76304835",
+          "after_sha256": "06732a98e7d40739e5a49882ca8dfdc30f2da3788624a74b6747d31c76304835"
+        },
+        {
+          "path": "apps/web/public/guides/ai-term-few-shot-prompting/hero.jpg",
+          "before_sha256": "5a92b7bb11fb5b44985866e71190b580c846ca41a52d83a7c5c895eeea07d5d7",
+          "after_sha256": "5a92b7bb11fb5b44985866e71190b580c846ca41a52d83a7c5c895eeea07d5d7"
+        },
+        {
+          "path": "apps/web/public/guides/ai-term-few-shot-prompting/hero.svg",
+          "before_sha256": "eeffeffbea9ba7590914e1e0a445a340f17e0a6fe83be3cce44d0574b8b2166f",
+          "after_sha256": "eeffeffbea9ba7590914e1e0a445a340f17e0a6fe83be3cce44d0574b8b2166f"
+        }
+      ],
+      "native_verify_review": {
+        "from_published_sha256": "b7e1dabc0a145c8b66a91dccb427a55b0ed077d4fb228f5a25c167c75b09a69c",
+        "to_document_sha256": "f156b18dec9410b6c92f5b7e2866208b1eee4fb221f0c826261abf52c880e808"
+      },
+      "repository_pack_sha256": "c93e40dac8908e2036ff451a60da512623c1a3b1d5aa9afeea3e12437725b6e1"
+    },
+    {
+      "slug": "ai-term-multimodal-ai",
+      "locale": "zh-TW",
+      "article_version": 2,
+      "source_version": 10,
+      "published_version": 10,
+      "source_dirty": false,
+      "published_locales": [
+        "zh-TW"
+      ],
+      "from_document_sha256": "cdc08be4a0558357349c1a38345ecd327f2f80c1ea0480b914c2491de9ab7389",
+      "to_document_sha256": "0c13a13cfa8909d81533ca563f8f688b62f9a1a35410409f7445b1cb9571b961",
+      "candidate_pack_sha256": "1ff6ebddad6f3ef304eac09e20ea8412b1c29a710fd97a6026cb449c98cd230c",
+      "native_review_sha256": "a64fe387361cf5e7854852a72247abd26dba70f2f854a43802923cc1a6158108",
+      "full_source_audit_sha256": "a675ad632e00b4b87386d795878f2bc3366e0ef2781cea727cdf9eda5bfbc2cd",
+      "candidate_author": "root",
+      "independent_reviewer": "visual_ai48_c",
+      "changes": [
+        {
+          "pointer": "/blocks/19/inlines/1",
+          "before": {
+            "type": "article",
+            "text": "標記",
+            "kind": "life",
+            "slug": "ai-term-token"
+          },
+          "after": {
+            "type": "text",
+            "text": "標記"
+          }
+        },
+        {
+          "pointer": "/blocks/0/items/2",
+          "before": "也有系統先把音訊轉成文字或先用 OCR 讀圖片文字再處理；照片若只轉成文字，空間位置可能沒有被完整保留，音訊轉成逐字稿也可能失去某些語氣與背景聲。",
+          "after": "也有系統先把音訊轉成文字或先用光學字元辨識（OCR）讀圖片文字再處理；照片若只轉成文字，空間位置可能沒有被完整保留，音訊轉成逐字稿也可能失去某些語氣與背景聲。"
+        }
+      ],
+      "assets": [
+        {
+          "path": "apps/web/public/guides/ai-term-multimodal-ai/diagram-1.svg",
+          "before_sha256": "b52f17c5f0ee23e6124481b66da88a79726d70d38e2044710d66277a830b66d9",
+          "after_sha256": "b52f17c5f0ee23e6124481b66da88a79726d70d38e2044710d66277a830b66d9"
+        },
+        {
+          "path": "apps/web/public/guides/ai-term-multimodal-ai/hero.jpg",
+          "before_sha256": "11a6f7a66c6ecc7ef829e35887b185af8cae9cff3a8be04c377574c6fcfc85e3",
+          "after_sha256": "11a6f7a66c6ecc7ef829e35887b185af8cae9cff3a8be04c377574c6fcfc85e3"
+        },
+        {
+          "path": "apps/web/public/guides/ai-term-multimodal-ai/hero.svg",
+          "before_sha256": "5db0701ca04265cc30c8d2e3dd116559072cb932d89155d7b5cf2c2ca01e19f6",
+          "after_sha256": "5db0701ca04265cc30c8d2e3dd116559072cb932d89155d7b5cf2c2ca01e19f6"
+        }
+      ],
+      "native_verify_review": {
+        "from_published_sha256": "cdc08be4a0558357349c1a38345ecd327f2f80c1ea0480b914c2491de9ab7389",
+        "to_document_sha256": "0c13a13cfa8909d81533ca563f8f688b62f9a1a35410409f7445b1cb9571b961"
+      },
+      "repository_pack_sha256": "13815565ebb6e54b084f9daaeba45ebd7fbe0aa1d01f2b529ac5ef82ccfaa82c"
+    },
+    {
+      "slug": "ai-term-zero-shot-prompting",
+      "locale": "zh-TW",
+      "article_version": 2,
+      "source_version": 10,
+      "published_version": 10,
+      "source_dirty": false,
+      "published_locales": [
+        "zh-TW"
+      ],
+      "from_document_sha256": "04fd518f34a204c01e6b6062d584eab23bcd2b41f89993d82417e9eebabb3b85",
+      "to_document_sha256": "cdb0f81143fbdcf55694fab817fd25e73fc0867ae35f2db3dcc1c859fceb3eba",
+      "candidate_pack_sha256": "696c4b1704fd3f7a56f1e7a4dd2cb5a706abf5a44cf963b8406b9b177b289355",
+      "native_review_sha256": "b1c8b852fc4af0143f39e4b1c4eef49d8ca0b42e48d936dbe70fecaf314ccf89",
+      "full_source_audit_sha256": "985a251ad31e06f6d699a59f49a2678c0c1d60b1c740e9f77f460f825dda5df0",
+      "candidate_author": "release48_preflight_package",
+      "independent_reviewer": "visual_ai48_c",
+      "changes": [
+        {
+          "pointer": "/blocks/10/inlines/1",
+          "before": {
+            "type": "article",
+            "text": "評測",
+            "kind": "life",
+            "slug": "ai-term-evals"
+          },
+          "after": {
+            "type": "text",
+            "text": "評測"
+          }
+        },
+        {
+          "pointer": "/hero/alt",
+          "before": "一本沒有範例答案的打開手冊，箭頭從問題標記直接指向待填寫的步驟卡。",
+          "after": "打開的手冊左頁有三條灰色橫線，右頁有橘色圓形，右下方的藍色箭頭指向右側。"
+        }
+      ],
+      "assets": [
+        {
+          "path": "apps/web/public/guides/ai-term-zero-shot-prompting/diagram-1.svg",
+          "before_sha256": "a0f2360d38e07e62fa290ea5685d517bdf0d919dd85914ac0c90efe18d1ac571",
+          "after_sha256": "a0f2360d38e07e62fa290ea5685d517bdf0d919dd85914ac0c90efe18d1ac571"
+        },
+        {
+          "path": "apps/web/public/guides/ai-term-zero-shot-prompting/hero.jpg",
+          "before_sha256": "d109f6a2b4aae87fe489d20bf48918a602287a0dd9588d6989b64fd3e3a524f5",
+          "after_sha256": "d109f6a2b4aae87fe489d20bf48918a602287a0dd9588d6989b64fd3e3a524f5"
+        },
+        {
+          "path": "apps/web/public/guides/ai-term-zero-shot-prompting/hero.svg",
+          "before_sha256": "38dcf0e5732162436075b4daf77ce344aa5e6d05d1554ed11b0e5936aa6705e5",
+          "after_sha256": "c031b4ea9fc29dcc36c6d5f991860a6353ee56cf064c2a3ebbeecb3e93dcf9f0"
+        }
+      ],
+      "native_verify_review": {
+        "from_published_sha256": "04fd518f34a204c01e6b6062d584eab23bcd2b41f89993d82417e9eebabb3b85",
+        "to_document_sha256": "cdb0f81143fbdcf55694fab817fd25e73fc0867ae35f2db3dcc1c859fceb3eba"
+      },
+      "repository_pack_sha256": "696c4b1704fd3f7a56f1e7a4dd2cb5a706abf5a44cf963b8406b9b177b289355"
+    }
+  ],
+  "native_verifier_path": "docs/article-localization/source_correction.py",
+  "native_verifier_sha256": "bdd5cf9ddfd3d1749e1d7e631325b88e2340db2ff66cfb2f201da2518b4052b7",
+  "native_verify_review_passes": 4,
+  "source_checked_on_preserved": "2026-09-14",
+  "target_locales_added": 0,
+  "production_writes": false,
+  "publication_authorized": false,
+  "raw_evidence_retained_outside_git": true,
+  "repository_file_hashes_use_git_blobs": true,
+  "candidate_file_hashes_bind_retained_original_bytes": true
+}
