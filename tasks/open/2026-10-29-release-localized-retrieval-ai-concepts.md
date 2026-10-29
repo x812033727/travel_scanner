@@ -1,14 +1,14 @@
 ---
 id: 2026-10-29-release-localized-retrieval-ai-concepts
 title: Release localized retrieval AI concepts
-status: open
+status: in-progress
 priority: P2
 area: docs
-owner:
-claimed_at:
+owner: codex-release-ai-retrieval-sixteen-20261029
+claimed_at: 2026-10-29T12:55:20Z
 created_at: 2026-10-29T12:25:43Z
 completed_at:
-branch:
+branch: codex/release-ai-retrieval-sixteen-20261029
 depends_on:
   - 2026-10-29-localize-four-retrieval-ai-concepts
 scope:
@@ -35,7 +35,7 @@ fresh release plan and explicit action-time authorization.
 
 ## Steps
 
-- [ ] Claim this release task only when the dependent content task is done and its PR merged.
+- [x] Claim this release task only when the dependent content task is done and its PR merged.
 - [ ] Read current deploy and article-localization skills; verify live runtime, holds, locks and source/target state.
 - [ ] Disclose all pending commits and migrations; prepare the exact image and same-image isolated rehearsal.
 - [ ] Run a fresh production read-only candidate dry-run for exactly sixteen new documents and zero source/hub changes.
@@ -61,9 +61,13 @@ fresh release plan and explicit action-time authorization.
 
 ## Notes
 
-- This task is deliberately open and unclaimed. It does not authorize a database
-  write, hold, deployment or publication. The content PR and its merge commit
-  must be resolved from current evidence before preparing a release.
+- The owner explicitly approved merging #1922 and preparing its release plan.
+  The exact approved head f9c9c6fafb2c5f88d05c3ddaf8d9f3f96dbc6eb2 passed
+  all 22 CI checks and independent review. It was squash-merged at
+  2026-10-29T12:52:47Z as f3895e9df12cf68698285a51bc4af8b8fedc718c;
+  the reviewed and merged Git trees are identical. This task was then claimed.
+  Backup, hold acquisition, deployment, migration and publication are not yet
+  authorized. Prepare the complete concrete plan before requesting approval.
 - Candidate manifest SHA-256:
   1be206c2bbdd0fbdebf45a9a3c1dcdb378304c498e93ca2a00ce31336dbabe5b.
   Baseline SHA-256:
@@ -75,9 +79,13 @@ fresh release plan and explicit action-time authorization.
   census remains 2,250 public articles, 1,482 complete in five languages, 768
   incomplete and 3,072 missing public locale documents; 120 draft-only rows were
   excluded. Do not reduce these counts for the current unpublished sixteen.
-- The last observed deployed head was 9dc9dca54; local main later included
-  #1917, #1918 and #1920. Recompute and disclose the entire current pending
-  range and migration scope, rather than assuming this content PR is the only
-  undeployed change. No new deployment authorization is implied.
+- Fresh native host preflight at 2026-10-29T12:57:32Z observed deployed checkout
+  2464ad1c9c0ee0e2a9f0b9e3bb435ffa706be4cc, a clean tree, no hold and a free
+  deploy lock. The exact-four READ ONLY snapshot completed at 12:58:55Z:
+  all sources remain zh-TW draft/public v8, article v2, and all sixteen target
+  rows are absent; API container/image identity stayed unchanged. Verify the
+  database migration revision and API/web identities before classifying the
+  actual deployment range. Historical 9dc9dca54-to-main differences alone do
+  not establish that migration 0143 is still pending.
 - Keep the all-article five-language task open until fresh production evidence
   establishes completion. Store only sanitized release receipts in Git.
