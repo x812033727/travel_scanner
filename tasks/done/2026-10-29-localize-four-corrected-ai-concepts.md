@@ -1,13 +1,13 @@
 ---
 id: 2026-10-29-localize-four-corrected-ai-concepts
 title: Localize four corrected AI concept articles
-status: in-progress
+status: done
 priority: P2
 area: api
 owner: codex-next4-localization
 claimed_at: 2026-10-29T06:04:45Z
 created_at: 2026-10-29T05:56:27Z
-completed_at:
+completed_at: 2026-10-29T06:29:52Z
 branch: codex/ai-concepts-locales-20261029
 depends_on:
   - 2026-10-28-correct-misleading-ai-concept-source-links
@@ -46,10 +46,10 @@ it does not restart the older prepared jobs or reuse their old source baseline.
 - [x] A postpublication baseline pins the four actual corrected source documents and sixteen missing locales, with no source differences.
 - [x] All sixteen private translations have independent text, visual and glyph reviews bound to the final documents, previews, assets and original CLI attempt evidence; no unresolved findings remain.
 - [x] The native private bundle passes exact twenty-document/sixteen-target validation, with forty-eight packaged assets, zero source corrections and zero hubs.
-- [ ] Install only the reviewed bundle through the native installer after this narrow claim; preserve all four zh-TW canonical documents, original assets and unrelated metadata.
-- [ ] Recheck the installed bytes, GuideDocument/ArticlePack schemas, scoped lint, translation advisories and applicable native tests; independently review the complete integration diff.
-- [ ] Record sanitized scope, document/asset/review/check hashes in the single scoped evidence JSON; open a content PR with no-auto-merge and verify its actual CI.
-- [ ] Close this translation task only when its content requirements are complete; create a separate release-localized task open and unclaimed, depending on this task.
+- [x] Install only the reviewed bundle through the native installer after this narrow claim; preserve all four normalized zh-TW canonical documents, original assets and effective article metadata.
+- [x] Recheck installed bytes, GuideDocument/ArticlePack schemas, scoped lint, translation advisories and applicable native tests; obtain independent content integration review.
+- [x] Record sanitized scope, document/asset/review/check hashes in the single scoped evidence JSON; hand off the content PR and real exact-head CI to the separate release ticket with no-auto-merge required.
+- [x] Complete the content requirements and create a separate release-localized task open and unclaimed, depending on this task.
 
 ## Steps
 
@@ -58,9 +58,9 @@ it does not restart the older prepared jobs or reuse their old source baseline.
 - [x] Apply independently requested corrections without extra model calls, re-materialize/re-render, and obtain final independent reviews for all sixteen documents.
 - [x] Assemble a new private native bundle and complete its independent verifier review and actual mechanical validation.
 - [x] Recheck open PR, remote-branch and local-worktree collisions; create this branch from the source task closeout commit and claim exactly the nine scoped paths.
-- [ ] Have the coordinator run the unchanged native installer with the exact bundle manifest, baseline and private work directory.
-- [ ] Verify installation and source preservation, run applicable checks, obtain independent integration review, record evidence, and prepare the content PR without automatic merge.
-- [ ] Open the separate release task after content completion; require new action-time approval before any deployment or publication of these sixteen translations.
+- [x] Have the coordinator run the unchanged native installer with the exact bundle manifest and byte-identical ignored mirrors of the private baseline and work directory.
+- [x] Verify installation and source preservation, run applicable checks, obtain independent content integration review and record evidence for the content PR.
+- [x] Open the separate release task after content completion; require new action-time approval before any deployment or publication of these sixteen translations.
 
 ## How to verify
 
@@ -129,21 +129,41 @@ it does not restart the older prepared jobs or reuse their old source baseline.
 - The four-source release approval does not authorize merge, deployment or
   publication of these sixteen translations. Keep the content PR labeled
   no-auto-merge; a draft alone does not prevent repository automation merging it.
-- Installation is currently held: the native installer's path helper requires
-  bundle, baseline and work beneath its repository root, while this batch's raw
-  evidence must remain private outside Git. The coordinator and an independent
-  reviewer are checking the existing external-input installation route. No
-  installation was attempted, no native guard was weakened, and private inputs
-  were not copied into the repository. Resolve this narrow integration step
-  before the installation checklist item can be completed.
-- The coordinator subsequently selected the existing native installation route:
-  an exact, locally ignored working copy of the private baseline/jobs/bundle.
-  The authoritative external files remain immutable. The seven added scope
-  entries are only local generated inputs, the native lock, this manifest's
-  journal/backups and four per-article admission receipts. They must be locally
-  ignored before creation, remain untracked, and never enter Git or the PR.
-  Full source/mirror inventories, original source bytes, twelve original assets
-  and native code are checked before and after. The unchanged native installer
-  owns content replacement and backups; replay must leave all fifty-two content
-  destinations unchanged in both bytes and mtime and preserve original/mirror
-  inputs. Preparing this route does not itself execute or approve an install.
+- The native relative-input requirement was resolved with a byte-identical,
+  locally ignored working-tree mirror of the authoritative private baseline,
+  jobs and bundle. The unchanged native installer then completed successfully.
+  Its lock, journal/backups, four admission receipts and mirror stay untracked
+  and must never enter Git or the PR. All 375 authoritative/mirrored input files
+  remained identical; their absolute preview and CLI provenance was not rewritten.
+- Actual native verification and replay passed with sixteen admitted jobs.
+  Replay preserved SHA and mtime for all fifty-two installed content files and
+  all twelve original assets. Native journal/admission-receipt bytes also stayed
+  unchanged. Independent actual-install review:
+  9a9c377bec8a7df70c8b7a4d61b780aa7ce3efc33b706d4bd741d7e9fe0454ef.
+  Verify receipt:
+  f730f4a4478a4b022703ac8976890273f2e417e7dd3a5e64c65541b6e1b207df.
+  Replay receipt:
+  3a8153fb5ddded97644382c5684add0de2baaad4eea9f261159762bd73241043.
+- Independent content integration review passed:
+  1e7a4d5f7cbeadec4dc40f67581f7832d474a7189a347bad0dd7cf1bfe4f117b.
+  This covers the fifty-two content files, sixteen review chains and twelve
+  originals. The normalized zh-TW canonical documents and effective metadata
+  are unchanged. Raw pack bytes necessarily differ: native serialization adds
+  target locales, orders topics and emits existing empty/default aliases,
+  related, news_date and image-description fields.
+- Local checks passed: artifact layout 25, pipeline 35, native bundle/install
+  tooling 68 and packaged content/life lint 2, for 130 passed and zero skipped.
+  Installed scoped lint reported zero errors and four English text_length
+  advisories; all full reviewed translations were retained. Translation checks
+  reported zero hits. All exact receipt hashes are in
+  docs/article-localization/reviews/20261029-ai-concepts-next4.json.
+- Pre-PR scope checks again found no active collision across forty-six open PRs
+  (10,264 filenames), seventy-six worktrees and the matching remote branch refs.
+  The related source-task copies in historical branches were identified by the
+  actual completed dependency; two inert incomplete checkouts were preserved.
+- This closes authored, reviewed and locally installed content only. Final
+  documentation review and the content PR's actual exact-head CI are pending
+  at this record; they are explicit gates in
+  2026-10-29-release-localized-four-corrected-ai-concepts, which is open and
+  unclaimed. No CI success, merge, deployment or publication is claimed for
+  these sixteen translations.
