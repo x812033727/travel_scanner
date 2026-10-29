@@ -103,7 +103,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2025-14-zhiwei-zhanyou` | 他只是我的光替 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-16-fuye-qingmei` | 八歲那年，我管過首富 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-18-renmian-taohua` | 他站在我身後三步 | outline；五季細綱代理撰寫中 |
-| `2026-14-jiefu` | 預報說我會嫁給他 | outline；五季細綱代理撰寫中 |
+| `2026-14-jiefu` | 預報說我會嫁給他 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-17-chouxiaoya` | 重生後，我裁掉了她的濾鏡 | outline；五季細綱代理撰寫中 |
 | `2025-17-qiushen` | 球王回來時九歲 | outline；五季細綱代理撰寫中 |
 | `2025-15-xingde-xiangyu` | 婚約到他判刑那天為止 | outline；五季細綱代理撰寫中 |
