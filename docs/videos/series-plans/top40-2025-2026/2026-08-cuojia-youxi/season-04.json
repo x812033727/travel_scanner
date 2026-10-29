@@ -1,0 +1,4429 @@
+{
+  "number": 4,
+  "title": "糧",
+  "theme": "三年前的瘟疫、今年的糧倉、蕭家的帳，是同一件事。",
+  "start_state": "她喝了一碗雪裡紅、心智約十四歲，說大人的話、記十歲後的事，忘了蕭承的臉；陸清和把第二碗藥收起來。蕭承每天來，蕭母在算盤上；周崇把糧倉的事壓下、開始查陸清和的底。大姐三個月沒消息，姜母每天跪尼庵。",
+  "end_state": "陸清和為什麼被調來河州揭開（密旨查糧案——周崇與蕭父把賑災糧換陳糧，三年前的瘟疫從陳糧起）；大姐去哪了揭開（情郎騙光首飾跑了，她在靜慈庵帶髮修行）。她在尼庵找到大姐；她在糧倉當著周崇聞出陳糧、認出黴；蕭承在父親的帳與她之間選了她——親手把蕭父送進衙門；周崇倒了；蕭母跑了。陸清和給她第二碗、第三碗藥：她約十七歲，忘了藥婆奶奶的歌，小禮唱給她聽。最後一集，糧案結了，陸清和升任知府；夜裡他在側廳寫一樣東西，寫完放進抽屜——放妻書，日期空著。她在門外看見，沒進去，第一次懂了一件大人的事：他在準備放她走。",
+  "guest_cast": [
+    {
+      "id": "s04-jingguan",
+      "name": "宋觀（宋御史）",
+      "role": "京裡來的官，奉旨來河州收糧案的御史；第五篇章攤開密旨",
+      "appearance": "東亞中年男性，四十五歲，清癯端正：長眉、目光沉靜、三綹短鬚修得整齊，膚色白淨，身形挺直；穿深青官袍、烏紗帽，腰間繫一塊素白玉牌，手裡常捧一只錦匣"
+    },
+    {
+      "id": "s04-cangli",
+      "name": "錢六",
+      "role": "倉吏，周崇在第一篇章換上來管糧倉的人；說謊時收袖子",
+      "appearance": "東亞男性，三十八歲，瘦長、細眼、八字鬍，膚色蠟黃；穿灰褐吏服、袖口過長總往裡收，腰間掛一串糧倉鑰匙與一本油亮的帳簿"
+    },
+    {
+      "id": "s04-xiangshen",
+      "name": "何守恆（何員外）",
+      "role": "河州鄉紳代表，開倉那天站在鄉紳最前面；三年前瘟疫死了一戶佃農",
+      "appearance": "東亞男性，六十歲，富態、方臉、花白長鬚，眉間一道豎紋，膚色紅潤；穿赭色緞面長袍、頭戴員外巾，拄一根棗木杖"
+    },
+    {
+      "id": "s04-gengfu",
+      "name": "老丁",
+      "role": "河州打更的更夫，庫房失火那夜比她晚一步聞到煙，也是那夜唯一看見有人搬油的人",
+      "appearance": "東亞老年男性，六十二歲，矮瘦、背微駝、滿臉風霜笑紋、灰白短鬚；穿打補丁的青布短襖、頭包布巾，一手提燈籠一手拿梆子與銅鑼"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "她救了知府周崇的孫兒，這份情周崇怎麼還？",
+      "setup_episode": 184,
+      "payoff_episode": 206
+    },
+    {
+      "id": "s04-t02",
+      "question": "被火燒掉的那半頁紀錄寫了什麼？",
+      "setup_episode": 190,
+      "payoff_episode": 221
+    },
+    {
+      "id": "s04-t03",
+      "question": "靜慈庵裡每次她經過就關窗的人是誰？",
+      "setup_episode": 182,
+      "payoff_episode": 197
+    },
+    {
+      "id": "s04-t04",
+      "question": "大姐鬢邊那朵金釵花去哪了？",
+      "setup_episode": 198,
+      "payoff_episode": 233
+    },
+    {
+      "id": "s04-t05",
+      "question": "新換上來的倉吏錢六是誰的人？",
+      "setup_episode": 183,
+      "payoff_episode": 218
+    },
+    {
+      "id": "s04-t06",
+      "question": "失火那夜，更夫看見誰往庫房搬油？",
+      "setup_episode": 189,
+      "payoff_episode": 209
+    },
+    {
+      "id": "s04-t07",
+      "question": "蕭家的帳送出河州，京裡會不會來人？",
+      "setup_episode": 214,
+      "payoff_episode": 221
+    },
+    {
+      "id": "s04-t08",
+      "question": "蕭母的三個金鐲子為什麼一個一個少？",
+      "setup_episode": 212,
+      "payoff_episode": 220
+    },
+    {
+      "id": "s04-t09",
+      "question": "鄉紳代表何員外為什麼起初不信她？",
+      "setup_episode": 202,
+      "payoff_episode": 208
+    },
+    {
+      "id": "s04-t10",
+      "question": "小禮夜裡一個人哼的是什麼調子？",
+      "setup_episode": 186,
+      "payoff_episode": 226
+    },
+    {
+      "id": "s04-t11",
+      "question": "陸清和收起來的第二碗藥，什麼時候給？",
+      "setup_episode": 181,
+      "payoff_episode": 222
+    },
+    {
+      "id": "s04-t12",
+      "question": "陸清和停職候查，怎麼收場？",
+      "setup_episode": 201,
+      "payoff_episode": 221
+    },
+    {
+      "id": "s04-t13",
+      "question": "蕭承在河州察覺到了什麼？",
+      "setup_episode": 186,
+      "payoff_episode": 210
+    },
+    {
+      "id": "s04-t14",
+      "question": "陸清和夜裡在側廳寫的是什麼？",
+      "setup_episode": 232,
+      "payoff_episode": 240
+    },
+    {
+      "id": "s04-t15",
+      "question": "她那一排字，最後一個會寫什麼？",
+      "setup_episode": 227,
+      "payoff_episode": 230
+    },
+    {
+      "id": "s04-t16",
+      "question": "糧案結了，京裡怎麼安排陸清和？",
+      "setup_episode": 228,
+      "payoff_episode": 231
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "十四歲的第一個早上",
+      "youtube_title": "傻姑娘喝了一碗藥醒來像換了個人，知府一句閒話卻讓她看出他在說謊",
+      "duration_s": 105,
+      "logline": "喝過第一碗雪裡紅、心智約十四歲的姜苓想弄懂陸清和昨夜在廊下怕什麼，卻被知府周崇一句客氣的閒話擋在大人的事外面。",
+      "hook": "梨樹下晨霧未散，她自己把頭髮紮正，回頭看廊下一夜沒睡的陸清和：「你昨晚怕什麼？」",
+      "hook_type": "question",
+      "mid_hook": "通判衙門側廳，周崇笑著問陸清和「吏部哪年補的缺」，她在桌邊抬頭：「他摸耳朵了。」",
+      "extra_hooks": [
+        "陸清和袖子裡那卷紅繩文書滑出一角，他按回去的手比平常快。"
+      ],
+      "conflict": "她想知道陸清和為什麼不給第二碗藥、為什麼在廊下站了一夜；他只說「等等」，周崇又在衙門裡繞著他問來歷。",
+      "turn": "大家以為周崇只是上司的客套，她卻當場看出周崇在說謊；陸清和第一次沒笑她說得直，而是把她拉到身後。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "知府後堂燭下，周崇拆開吏部回信，只看一行：「非調任，奉旨。」他吹熄燭火：「庫房鑰匙，換人。」",
+        "question": "周崇知道了，他要對陸清和做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "晨霧裡的梨樹與空鞦韆，她自己紮正頭髮的手特寫，鏡子裡十四歲的眼神。",
+      "glamour_shot": "陸清和在廊下晨光裡蹲下來，替她把歪掉的髮帶再繫一次，鬢角那絲早白在逆光裡發亮。",
+      "setups": [
+        "s04-t11",
+        "m10"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她不靠人幫，自己把頭髮紮正了一分",
+        "她當著周崇看穿他的試探，周崇第一次收起笑"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "zhou-chong",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府小院梨樹下",
+        "通判衙門側廳",
+        "知府後堂"
+      ],
+      "state": {
+        "time": "秋末，第一碗藥後第七天",
+        "knowledge": "她知道陸清和把第二碗收起來了，不知道為什麼；看出周崇在打聽他的來歷",
+        "carry_forward": "周崇查出陸清和是奉旨來的，庫房要換人"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "北坡與關上的窗",
+      "youtube_title": "全河州只有她認得救命的草，上山路過尼庵時，總有一扇窗在她面前關上",
+      "duration_s": 110,
+      "logline": "姜苓跟賀大夫上北坡採今年的雪裡紅，想問清楚第二碗藥為什麼要等，卻在路過靜慈庵時被一扇每次都關上的窗勾住了心。",
+      "hook": "北坡枯草裡一點雪白的葉子，她撥開石頭大喊：「在這！」賀大夫的藥簍差點掉了。",
+      "hook_type": "image",
+      "mid_hook": "賀大夫把一包曬好的雪裡紅收進最底層：「陸大人說，這包先放我這。」她問：「他說謊嗎？」賀大夫說：「他沒說原因。」",
+      "conflict": "雪裡紅一年只長一季，她要採夠；而陸清和託賀大夫收著藥，她想知道自己被等的是什麼。",
+      "turn": "她以為只是路過，靜慈庵那扇窗在她經過時又關了一次，她才發現這不是第一次，是每一次。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "庵後院晾衣竿上，在一排灰衣裡掛著一條石榴紅的綢裙，是河州最貴的那家料子。她停住腳。",
+        "question": "尼庵裡怎麼會有一條最貴的裙子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        2,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "gufeng",
+        "xuanyi",
+        "zhiyu",
+        "xiju"
+      ],
+      "spectacle": "北坡枯黃的坡面上一片雪白葉子在風裡翻動，遠處城牆與靜慈庵灰瓦一線。",
+      "glamour_shot": "她跪在坡上採藥抬頭的那一瞬，額前碎髮被風吹開，袖口草汁一片新綠。",
+      "setups": [
+        "s04-t03",
+        "m11"
+      ],
+      "payoffs": [
+        "m08",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "今年的雪裡紅採足一季的份",
+        "她記起北坡哪塊石頭下長得最好，賀大夫記進藥譜"
+      ],
+      "characters": [
+        "jiang-ling",
+        "he-daifu",
+        "chun-xing",
+        "jingci"
+      ],
+      "locations": [
+        "河州城外北坡",
+        "靜慈庵外牆",
+        "賀大夫藥鋪"
+      ],
+      "state": {
+        "time": "秋末，第一碗藥後第九天",
+        "knowledge": "她知道第二碗藥在賀大夫那，陸清和沒說為什麼等；靜慈庵裡有人每次見她就關窗",
+        "carry_forward": "庵後院的紅綢裙"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "兩種米味",
+      "youtube_title": "新來的倉吏說糧倉全是新米，她只聞一口就說：這裡有兩種米",
+      "duration_s": 115,
+      "logline": "姜苓跟陸清和去糧倉巡查，想替他看看新換上來的倉吏，卻被一本嶄新的帳簿和一句「全是新糧」擋住。",
+      "hook": "糧倉大門推開，舊倉吏的名牌被摘下扔進竹簍，換上一塊新漆的：「錢六」。",
+      "hook_type": "image",
+      "mid_hook": "她在穀堆前吸了一口氣：「這裡有兩種米味。」錢六的手往袖子裡一收：「全是新糧。」",
+      "extra_hooks": [
+        "陸清和低聲問她：「他說謊？」她點頭：「袖子收了兩次。」"
+      ],
+      "conflict": "周崇一夜之間換了倉吏、換了帳，陸清和要在帳被做平之前看出破綻。",
+      "turn": "觀眾以為她只是跟來玩，她卻用鼻子分出新舊兩種米，帳上卻只有一種。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡陸府的門被拍得震天響，周府的管家跪在門口：「小少爺燒糊塗了！」「夫人求陸夫人去！」",
+        "question": "知府家為什麼偏偏求她去？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "dalian"
+      ],
+      "spectacle": "高大糧倉裡穀堆如山，一束天窗光落在穀粒上，粉塵在光裡浮。",
+      "glamour_shot": "陸清和在糧倉天窗光下翻帳，側臉乾淨，抬眼看她時眉間的笑意。",
+      "setups": [
+        "s04-t05"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她聞出糧倉裡有新舊兩種米，陸清和記下錢六的帳號",
+        "她教陸清和看人收袖子"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "s04-cangli",
+        "fu-bo"
+      ],
+      "locations": [
+        "河州官倉",
+        "陸府大門"
+      ],
+      "state": {
+        "time": "秋末，第一碗藥後第十天夜",
+        "knowledge": "官倉換了倉吏錢六，帳上只有新糧，她聞到兩種米",
+        "carry_forward": "周府半夜來求她救孫兒"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "知府的孫兒",
+      "youtube_title": "知府罵她傻子懂什麼，她一口聞出參湯不對，天亮時他的孫兒退燒了",
+      "duration_s": 125,
+      "logline": "姜苓要救周崇高燒的孫兒，卻被周府的大夫與周崇一句「傻子懂什麼」擋在床邊。",
+      "hook": "周府內室燭火亂晃，她剛跨進門，周崇的聲音先到：「讓一個傻子來？」",
+      "hook_type": "line",
+      "mid_hook": "大夫端來一碗參湯，她湊近一聞，伸手按住碗：「這碗會更燒。」大夫的鬍子抖了。",
+      "conflict": "孩子燒了兩天，周府大夫要灌補湯，她說補錯了方向；周崇不信，孩子的母親在哭。",
+      "turn": "周崇以為她只會添亂，她換上金銀花與涼帕子守到天亮，孩子退燒、睜眼喊了一聲祖父。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她走後，周崇對著空院子說：「她不傻。她看得出人說謊。」幕僚問怎麼辦，他只說：「那就別讓她看見。」",
+        "question": "周崇要怎麼讓她看不見？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "gufeng",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "天亮時周府窗紙由青轉白，床上的孩子睜開眼，母親的淚落在被面上。",
+      "glamour_shot": "她在燭下一夜沒睡，替孩子換涼帕子的側臉，眼裡沒有一絲怕。",
+      "setups": [
+        "s04-t01"
+      ],
+      "payoffs": [
+        "m09",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周崇的孫兒退了燒",
+        "周府大夫當著周崇閉嘴，周崇欠下她一份情"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "zhou-chong"
+      ],
+      "locations": [
+        "知府周府內室",
+        "周府庭院"
+      ],
+      "state": {
+        "time": "秋末，第十一天清晨",
+        "knowledge": "周崇的孫兒是她救的；周崇看出她能辨謊",
+        "carry_forward": "周崇要防著她的眼睛"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "妳替我記著",
+      "youtube_title": "他把京裡的密旨交給被全城笑傻的妻子：妳不會說謊，那妳替我記著",
+      "duration_s": 120,
+      "logline": "陸清和知道周崇已經查到他頭上，要把密旨藏在一個誰也收買不了的地方，他選了她的記性。",
+      "hook": "側廳燈下，紅繩一解，一卷文書攤在她面前：「妳說妳不會說謊。」",
+      "hook_type": "line",
+      "mid_hook": "她問：「為什麼給我看？」他說：「誰都會被收買。」她認真想了想：「我會被糖收買。」",
+      "extra_hooks": [
+        "文書第一頁寫著一行大字，她不認得，但她認得那個「糧」的形狀，跟城西石碑上一樣。"
+      ],
+      "conflict": "密旨隨時可能被搶被燒，陸清和要她把十二頁的樣子一頁一頁記住；她識字不多，只能記形狀。",
+      "turn": "觀眾以為她記不住，她看一頁就閉眼用手指在空中把第一頁畫了出來，一筆不差。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她畫到第三頁，窗紙上一個人影停了一下，又走了。陸清和吹熄了燈。",
+        "question": "窗外偷看的人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tianchong",
+        "xiju",
+        "gufeng"
+      ],
+      "spectacle": "燈下紅繩散開，十二頁文書在桌上一字排開，她的指尖在空中描出墨跡的輪廓。",
+      "glamour_shot": "陸清和燭下側臉，低頭看她閉眼描字的樣子，嘴角一點藏不住的笑。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她記住密旨前三頁的樣子（3／12）",
+        "陸清和第一次把大人的事交給她"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "通判衙門側廳"
+      ],
+      "state": {
+        "time": "秋末，第十一天夜",
+        "knowledge": "她知道那卷紅繩文書是京裡的密旨，是為河州的糧來的；記住三頁",
+        "carry_forward": "窗外的人影"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "我以前十歲",
+      "youtube_title": "青梅竹馬天天送糖她卻認不出他的臉，他問一句，她答得他說不出話",
+      "duration_s": 115,
+      "logline": "蕭承照常來陸府送糖，想知道她為什麼變了，卻被她一句大人的回答擋在門外。",
+      "hook": "門口一包桂花糖遞過來，她沒看臉，先低頭聞那人腰間的香包：「是你。蕭將軍。」",
+      "hook_type": "reversal",
+      "mid_hook": "蕭承指著側廳燒了一夜的燈：「陸大人忙什麼？」她說：「大人的事。」他說：「妳以前不會這樣答。」她說：「我以前十歲。」",
+      "extra_hooks": [
+        "夜裡小禮房裡傳出一段很輕的哼聲，調子她好熟，卻想不起在哪聽過。"
+      ],
+      "conflict": "她認不出蕭承的臉，只能靠香包認人；蕭承察覺陸府有事，她不肯說。",
+      "turn": "蕭承以為她還是那個什麼都說的阿苓，她第一次守住一件事不說，而且說得一點不心虛。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她記完第六頁，抬頭看見小禮抱著布老虎站在門邊，嘴唇在動，沒出聲，像在唱什麼。",
+        "question": "小禮在唱什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "chengzhang",
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "黃昏的陸府門口，蕭承高大的影子落在門檻上，她低頭嗅香包的剪影。",
+      "glamour_shot": "蕭承便服站在門外夕照裡，臉上淺疤與曬黑的輪廓，聽到她那句話時眼神一軟又一澀。",
+      "setups": [
+        "s04-t10",
+        "s04-t13"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她記到密旨第六頁（6／12）",
+        "她第一次守住大人的事，說得清楚也不說謊"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-cheng",
+        "lu-xiaoli",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府大門",
+        "陸府小禮的房"
+      ],
+      "state": {
+        "time": "秋末，第十二天",
+        "knowledge": "她靠香包認蕭承；密旨記到第六頁",
+        "carry_forward": "小禮夜裡在哼一段調子"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "庫房裡的名字",
+      "youtube_title": "他假裝帶妻子去庫房畫畫，她一頁一頁記下三年前的賑災紀錄",
+      "duration_s": 120,
+      "logline": "陸清和要趕在周崇動手之前看一眼三年前的賑災紀錄，借她畫畫的名義進了府衙庫房，卻撞上錢六守在門口。",
+      "hook": "庫房門口錢六伸手一攔：「知府有令，閒人免入。」她舉起畫紙：「我來畫窗。」",
+      "hook_type": "line",
+      "mid_hook": "鑰匙串在錢六腰上換了一把新的。他說：「舊鎖壞了。」她說：「你摸鼻子了。」",
+      "conflict": "三年前的賑災紀錄只剩庫房一份，周崇換了庫房鑰匙；陸清和要她把紀錄的樣子記下來。",
+      "turn": "觀眾以為她真的在畫窗，她畫紙上畫的其實是紀錄每一頁的格子與印。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "紀錄某一頁的名字她認得，是城西石碑上那個刻著「陳糧」的名字，旁邊蓋著半個糧行的印。",
+        "question": "那半個印是哪一家的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "xiju"
+      ],
+      "spectacle": "府衙庫房一排排木架、成捆的舊卷宗，一束斜光照著她攤開的畫紙。",
+      "glamour_shot": "她坐在庫房高窗下低頭描印，窗格的影子落在她淺綠的衣袖上。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她記住賑災紀錄裡的十四頁格子與印",
+        "她認出城西石碑上的名字也在紀錄裡"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "s04-cangli"
+      ],
+      "locations": [
+        "府衙庫房"
+      ],
+      "state": {
+        "time": "初冬前，第十三天",
+        "knowledge": "賑災紀錄裡有石碑上的名字與半個糧行印",
+        "carry_forward": "那半個印"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "你在等我變笨嗎",
+      "youtube_title": "他把救命的第二碗藥藏起來，她蹲在他面前問：你在等我變笨嗎",
+      "duration_s": 110,
+      "logline": "姜苓想弄懂陸清和為什麼不給第二碗藥，他用「等等」擋住她；周崇也開始搬空庫房。",
+      "hook": "鞦韆停住，她從上面跳下來，直直站到陸清和面前：「你在等我變笨嗎？」",
+      "hook_type": "line",
+      "mid_hook": "福伯從衙門跑回來：「庫房要整理！」「三天後全搬走！」",
+      "conflict": "她要一個說法，他給不出；同時庫房的紀錄只剩三天。",
+      "turn": "她以為他是嫌她，他蹲下來說他怕的是她忘掉的東西裡有他捨不得的；她沒聽懂，但她看得出他沒說謊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陸清和看著她：「三天。妳記，我不抄。」她說：「抄了呢？」他說：「抄了就會被搶。」她伸出手：「那我記。」",
+        "question": "她三天記得完嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "chengzhang",
+        "xuanyi",
+        "zhiyu"
+      ],
+      "spectacle": "梨樹落盡最後一片葉，鞦韆在風裡空晃，兩人一高一低的影子。",
+      "glamour_shot": "陸清和蹲在鞦韆前抬頭看她，眼神溫而低，像在等她先開口。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她記完密旨十二頁（12／12）",
+        "陸清和承認第二碗是他攔著的"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "fu-bo",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府小院梨樹下"
+      ],
+      "state": {
+        "time": "初冬，第十四天",
+        "knowledge": "密旨十二頁全記住；庫房三天後要被搬走",
+        "carry_forward": "三天記完庫房紀錄"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "更夫說的油罐",
+      "youtube_title": "半夜睡不著的她跟更夫聊天，更夫隨口一句話，她的臉色變了",
+      "duration_s": 110,
+      "logline": "姜苓半夜睡不著，跟打更的老丁聊起庫房，想知道周崇搬東西搬到哪，卻聽到一句不該有的事。",
+      "hook": "三更的梆子聲在巷口停下，老丁的燈籠照見門檻上坐著一個姑娘：「陸夫人？這麼晚？」",
+      "hook_type": "question",
+      "mid_hook": "老丁說：「庫房搬進好幾罐油。」「說是點燈用。」她問：「庫房要點那麼多燈嗎？」",
+      "extra_hooks": [
+        "她說：「你沒說謊，你只是不知道。」老丁愣住，第一次有人這樣說他。"
+      ],
+      "conflict": "庫房紀錄還差兩天記完；她發現庫房裡多了不該有的油。",
+      "turn": "觀眾以為這只是閒聊，她把油罐、換鎖、三天搬空連成一件事，跑去敲陸清和的門。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她剛舉手要敲門，風從衙門那邊吹過來，她鼻子一皺：「煙。」老丁還沒聞到。",
+        "question": "衙門哪裡燒起來了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "xiju"
+      ],
+      "spectacle": "深夜河州的長巷，一盞更夫燈籠的光圈，遠處衙門屋脊上一縷極淡的白煙。",
+      "glamour_shot": "她坐在門檻上抱膝聽老丁說話，月光把她的側臉照得很亮。",
+      "setups": [
+        "s04-t06"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "庫房紀錄記到第二十二頁",
+        "她從更夫口中知道庫房多了油罐"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s04-gengfu",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府門口長巷"
+      ],
+      "state": {
+        "time": "初冬，第十五天三更",
+        "knowledge": "庫房裡搬進了好幾罐油；她聞到煙",
+        "carry_forward": "衙門方向的煙"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "我看過我記得",
+      "youtube_title": "三年前的賑災紀錄半夜失火，被笑傻的她第一個衝進去：小禮的娘死在那批米上",
+      "duration_s": 140,
+      "logline": "庫房起火，姜苓要去救那批紀錄，陸清和攔她，大火也不等人。",
+      "hook": "她赤腳跑過長巷大喊：「失火了！」老丁的銅鑼這才響起來。",
+      "hook_type": "danger",
+      "mid_hook": "陸清和一把拉住她：「別去。」她回頭：「小禮的娘，」「死在那批米上。」「我要去。」",
+      "extra_hooks": [
+        "阿牛帶著半條街的人挑水趕到，她站在井邊排人：「一個傳一個！」",
+        "火光裡錢六從庫房後門溜出去，手上沒有水桶。"
+      ],
+      "conflict": "紀錄一燒就沒有證據；火勢大，她要救、他要護她。",
+      "turn": "大家以為紀錄全沒了，火滅後只燒掉一半；而她記得被燒掉的那一半長什麼樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "焦黑的卷宗攤在雪地上，陸清和的手在抖。她蹲下來，指著燒掉的半頁：「我看過。我記得。」",
+        "question": "被燒掉的那半頁寫了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "ganren",
+        "gufeng"
+      ],
+      "spectacle": "夜裡府衙庫房的火光映紅半座河州，街坊一條人龍傳水，初雪落進火光裡化成霧。",
+      "glamour_shot": "火滅後她臉上一道煙灰、頭髮散了，在雪裡回頭看他，眼睛比火還亮。",
+      "setups": [
+        "s04-t02"
+      ],
+      "payoffs": [
+        "m04",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她比更夫早一步叫醒半條街，火沒燒到民宅",
+        "紀錄救下一半；她記得燒掉的那一半",
+        "阿牛與街坊第一次聽她指揮"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "a-niu",
+        "s04-gengfu",
+        "s04-cangli",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "河州長巷",
+        "府衙庫房",
+        "衙門前井邊"
+      ],
+      "state": {
+        "time": "初冬，第十五天夜到天亮",
+        "knowledge": "三年前的賑災紀錄燒了一半，她記得燒掉的半頁；看見錢六空手從後門走",
+        "carry_forward": "被燒掉的半頁與周崇的反應"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "半頁",
+      "youtube_title": "知府指著燒焦的庫房說是通判放的火，她低頭畫出了燒掉的那半頁",
+      "duration_s": 115,
+      "logline": "姜苓要把燒掉的半頁從記憶裡畫回來，周崇卻先一步把火賴到陸清和身上，姜家又傳來壞消息。",
+      "hook": "焦黑的庫房前，周崇用扇子點著陸清和：「通判半夜在庫房做什麼？」",
+      "hook_type": "question",
+      "mid_hook": "她在側廳桌上一筆一筆畫出燒掉的半頁，畫到一個印的時候停了：「這個字我不認得。」",
+      "conflict": "周崇要把夜燒庫房的罪名扣到陸清和頭上；她要趕在記憶淡掉前把半頁畫回來。",
+      "turn": "大家以為她畫的是亂線，陸清和拿燒剩的半頁一對，斷口的格子一格不差地接上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "春杏衝進側廳：「二小姐！」「夫人病倒了！」她看向那扇她十年沒走過的正門方向。",
+        "question": "她會回那個藏了她十年的家嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "gufeng"
+      ],
+      "spectacle": "燒焦的半頁與她手繪的半頁在桌上對接，斷口嚴絲合縫。",
+      "glamour_shot": "她伏案畫字的側臉，燈影在睫毛下，筆尖懸著不敢落。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把燒掉的半頁畫回七成",
+        "陸清和把燒剩的半頁與她的畫鎖進同一個匣子"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "zhou-chong",
+        "chun-xing"
+      ],
+      "locations": [
+        "府衙庫房廢墟",
+        "通判衙門側廳"
+      ],
+      "state": {
+        "time": "初冬，失火後第一天",
+        "knowledge": "半頁畫回七成，卡在一個不認得的印字；周崇說是通判放火",
+        "carry_forward": "姜母病倒"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "十年後的正門",
+      "youtube_title": "被藏在後院十年的二小姐第一次從正門回家，父親連看都不敢看她",
+      "duration_s": 120,
+      "logline": "姜苓回姜府看病倒的母親，想問大姐在哪，卻要先走過那道十年沒走過的正門。",
+      "hook": "姜府朱紅大門前，門房伸手要指後門，她自己推開正門走了進去。",
+      "hook_type": "image",
+      "mid_hook": "母親床前，她問：「大姐在哪？」姜母搖頭：「不知道。」她看了很久：「妳沒說謊。」",
+      "extra_hooks": [
+        "正廳上姜仲轉著玉扳指背過身去，她從他背後說：「爹，我回來了。從正門。」"
+      ],
+      "conflict": "母親病倒，大姐三個月沒消息；姜家上下沒人敢看她。",
+      "turn": "她以為母親是被大姐氣病的，卻在母親裙擺上看見一層香灰：母親每天都去跪尼庵。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "姜母抓住她的手，眼淚一下子掉下來：「妳……會說整句了？」",
+        "question": "母親十年沒聽過她說整句話？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "滿堂紅金的姜府正廳裡，一抹淺綠從正門筆直走進來。",
+      "glamour_shot": "她跨過姜府門檻那一步，裙角帶起院子裡的落葉，頭也不低。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次從正門進姜府",
+        "母親知道她會說完整的話了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-mu",
+        "jiang-zhong",
+        "chun-xing"
+      ],
+      "locations": [
+        "姜府正門",
+        "姜府正廳",
+        "姜母臥房"
+      ],
+      "state": {
+        "time": "初冬，失火後第二天",
+        "knowledge": "母親不知道大姐在哪；母親每天去跪尼庵",
+        "carry_forward": "母親看見她長大了"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "三千六百一",
+      "youtube_title": "她回到被關了十年的小屋，在三千六百個正字旁邊，親手多畫了一筆",
+      "duration_s": 110,
+      "logline": "姜苓走進後院那間藏了她十年的小屋，想知道父親到底在怕什麼，父親跟了進來。",
+      "hook": "後院小屋的門吱呀一聲開了，一整面牆的「正」字在她眼前。",
+      "hook_type": "image",
+      "mid_hook": "她拿起炭條在最後一個正字旁邊多畫一筆：「今天我是自己走進來的。」",
+      "conflict": "姜仲想道歉又怕丟臉，她要他說一句真話。",
+      "turn": "姜仲說「我是為妳好」，玉扳指轉了三圈；她說他說謊，他竟沒反駁，蹲下來哭了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "姜仲抹著臉說：「妳大姐……我們找了三個月。」她問：「娘跪的那個庵，你進去過？」姜仲愣住，搖頭。",
+        "question": "大姐會不會就在那個庵裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "昏暗小屋一整面刻滿正字的牆，窗縫一線光，她手中炭條畫下第三千六百零一筆。",
+      "glamour_shot": "她站在窗縫那道光裡回頭，光從髮梢落到臉上，十年後的她站得很直。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在小屋牆上畫下第三千六百零一筆",
+        "姜仲第一次對她說真話"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-zhong",
+        "jiang-mu"
+      ],
+      "locations": [
+        "姜府後院小屋"
+      ],
+      "state": {
+        "time": "初冬，失火後第二天黃昏",
+        "knowledge": "姜家找大姐三個月沒找到，沒人進過靜慈庵",
+        "carry_forward": "靜慈庵"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "跪在陸府門口",
+      "youtube_title": "藏了她十年的父親跪在通判府門口，求那個傻女兒去找他最疼的大女兒",
+      "duration_s": 115,
+      "logline": "姜仲跪在陸府門口求她找大姐，陸清和卻擔心她一出城就落進周崇眼裡。",
+      "hook": "一早福伯開門，姜仲穿著綢衫跪在門口的薄霜上：「求二丫頭……救她姐姐。」",
+      "hook_type": "image",
+      "mid_hook": "陸清和低聲說：「周崇的人在巷口。」「妳出城他就知道。」",
+      "conflict": "她要出城去尼庵，周崇正盯著陸府；姜仲跪著不起來。",
+      "turn": "觀眾以為她會急著走，她先把父親扶起來、讓福伯端薑湯，才想起每次路過靜慈庵都有人關窗。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把北坡那天的事說出口：「我每次經過，」「庵裡就關窗。」陸清和看著她：「妳想去？」她點頭。",
+        "question": "她要冒著周崇的眼睛出城嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xuanyi",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "清晨陸府門口薄霜上跪著一個穿綢衫的胖男人，梨樹枝的影子落在他背上。",
+      "glamour_shot": "陸清和站在門內，青灰長衫被晨風掀起一角，伸手替她把披風領子拉好。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她扶起跪著的父親，說「地上冷」",
+        "她把關窗的事和大姐連起來"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-zhong",
+        "lu-qinghe",
+        "fu-bo",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府大門",
+        "陸府小院"
+      ],
+      "state": {
+        "time": "初冬，失火後第三天",
+        "knowledge": "她懷疑關窗的人跟大姐有關；周崇的人盯著陸府",
+        "carry_forward": "去靜慈庵"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "師太沒說完",
+      "youtube_title": "尼庵師太說這裡沒有姜家大小姐，她一句話讓師太的念珠停在半空",
+      "duration_s": 115,
+      "logline": "姜苓帶春杏去靜慈庵找大姐，靜慈師太說沒有這個人。",
+      "hook": "庵門吱呀開一條縫，靜慈師太只露半張臉：「施主找誰？」",
+      "hook_type": "question",
+      "mid_hook": "師太說：「庵裡沒有姜家的人。」念珠停在一顆上沒動。她說：「妳沒說謊。妳只是沒說完。」",
+      "conflict": "師太護著一個人，不肯讓她進後院；那條紅綢裙也不見了。",
+      "turn": "她以為師太在騙她，看久了才明白師太不是在藏，是在等那個人自己願意見。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "庵外水槽邊卡著一條褪色的髮帶，上面歪歪扭扭繡著一個「嬈」。是她九歲那年繡給大姐的。",
+        "question": "髮帶怎麼會在這裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "gufeng"
+      ],
+      "spectacle": "灰瓦尼庵與冬日枯竹，庵門一條縫裡透出一盞長明燈。",
+      "glamour_shot": "她站在庵門外的竹影裡，雙手合十學師太行禮，眼神乾淨。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "師太答應她三天後再來",
+        "她知道後院藏著一個人"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jingci",
+        "chun-xing"
+      ],
+      "locations": [
+        "靜慈庵門口",
+        "靜慈庵外水槽"
+      ],
+      "state": {
+        "time": "初冬，失火後第四天",
+        "knowledge": "靜慈庵後院藏著一個人；髮帶是大姐的",
+        "carry_forward": "三天後再來"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "洗衣的手",
+      "youtube_title": "尼庵後院洗衣的女人凍紅了手，一轉身，是當年把她推進花轎的大姐",
+      "duration_s": 125,
+      "logline": "姜苓終於被師太帶進後院，想見那個每次關窗的人，那個人卻背對著她。",
+      "hook": "後院冷井邊，一雙凍得通紅的手在搓一件灰衣，洗衣盆旁堆著半人高的髒衣。",
+      "hook_type": "image",
+      "mid_hook": "女人轉過身，沒有胭脂、沒有金釵，是大姐姜嬈：「妳……妳怎麼會說話了？」她說：「我一直會。妳沒聽。」",
+      "extra_hooks": [
+        "春杏捂住嘴：「大小姐的手……」那雙手從前連茶杯都不端。"
+      ],
+      "conflict": "大姐不肯見人，她卻要把人認回來。",
+      "turn": "觀眾以為重逢會抱頭痛哭，大姐卻轉身就跑。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "大姐衝進禪房，門閂一落。門裡傳出壓著的哭聲，她站在門外，手放在門上沒敲。",
+        "question": "大姐為什麼不敢見她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "冬日尼庵後院，冷井冒白氣，堆成小山的灰衣，一個背影在搓洗。",
+      "glamour_shot": "姜嬈素衣不施脂粉回頭的一瞬，長眉依舊，眼裡的驕傲碎了一半。",
+      "setups": [],
+      "payoffs": [
+        "m11",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到失蹤三個月的大姐",
+        "大姐聽見她說完整的話"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-rao",
+        "jingci",
+        "chun-xing"
+      ],
+      "locations": [
+        "靜慈庵後院",
+        "禪房門外"
+      ],
+      "state": {
+        "time": "初冬，失火後第七天",
+        "knowledge": "大姐在靜慈庵後院洗衣，不肯見她",
+        "carry_forward": "門閂後的大姐"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "關窗的人",
+      "youtube_title": "每次她上山路過尼庵就有人關窗，原來那個人怕的不是她，是她身後的家",
+      "duration_s": 110,
+      "logline": "姜苓隔著門跟大姐說話，想知道她為什麼躲，大姐只肯隔著門回答。",
+      "hook": "禪房門縫下，她遞進去一顆桂花糖：「妳以前最愛吃。」",
+      "hook_type": "line",
+      "mid_hook": "門裡大姐說：「妳每次上山我都看見。」「我不敢讓妳看見。」她說：「所以是妳關的窗。」",
+      "conflict": "大姐怕被認出、怕回家、怕被河州笑；她要讓大姐自己開門。",
+      "turn": "她以為大姐恨她，大姐卻說每次關窗後都站在窗後看她走遠。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "門開了一條縫，大姐的眼睛紅著：「別告訴娘我在這。」她看著母親病倒的方向，沒答。",
+        "question": "她要對母親說謊，還是說出來？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "禪房門縫下一顆糖被慢慢推進去，門裡一隻手接住。",
+      "glamour_shot": "她靠著禪房門坐在地上說話，冬陽從屋簷落在她膝上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t03",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大姐開了門",
+        "她知道關窗的人是大姐"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-rao",
+        "chun-xing"
+      ],
+      "locations": [
+        "靜慈庵禪房門外"
+      ],
+      "state": {
+        "time": "初冬，失火後第七天黃昏",
+        "knowledge": "大姐一直在偷看她上山；大姐求她別告訴母親",
+        "carry_forward": "她不會說謊"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "金釵花",
+      "youtube_title": "大姐說金釵丟了還咬著嘴唇，而尼庵門外，知府的人已經跟了一路",
+      "duration_s": 115,
+      "logline": "姜苓想知道大姐身上的首飾都去哪了，大姐咬著嘴唇說丟了，周崇的人卻跟到了庵門口。",
+      "hook": "大姐鬢邊空空的，她伸手摸了摸那個位置：「金釵花呢？」",
+      "hook_type": "question",
+      "mid_hook": "大姐說：「丟了。」咬了一下嘴唇。她說：「妳咬嘴唇了。」大姐別過臉。",
+      "extra_hooks": [
+        "她對母親說不出謊，只好一個字也不說；春杏急得在旁邊轉圈。"
+      ],
+      "conflict": "大姐的事還沒問清，周崇的人已經盯上她為什麼常往尼庵跑。",
+      "turn": "她以為跟來的是姜家的人，庵門外站的卻是周崇的幕僚。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "庵門外周府的幕僚笑著拱手：「夫人常來尼庵，」「是要出家？」身後兩個衙役往後院張望。",
+        "question": "周崇的人看見大姐了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "庵門外冬日枯樹下，兩個衙役的影子斜斜壓進灰牆。",
+      "glamour_shot": "大姐側過臉咬唇，鬢邊空著，冬光把她的長眉描得很清楚。",
+      "setups": [
+        "s04-t04"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她守住了沒對母親說謊",
+        "她看出大姐的首飾不是丟的"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-rao",
+        "chun-xing",
+        "jingci"
+      ],
+      "locations": [
+        "靜慈庵禪房",
+        "靜慈庵門口"
+      ],
+      "state": {
+        "time": "初冬，失火後第九天",
+        "knowledge": "大姐的金釵花不是丟的；周崇的人跟到庵門",
+        "carry_forward": "庵門外的幕僚"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "雪裡的洗衣盆",
+      "youtube_title": "她陪大姐在雪裡洗衣，大姐把她凍紅的手捂進懷裡，這時家裡傳來急訊",
+      "duration_s": 115,
+      "logline": "姜苓陪大姐在雪裡洗衣，想讓她開口說出真相，家裡卻傳來母親病重的消息。",
+      "hook": "她對幕僚歪頭：「我來洗衣服。你要洗嗎？」幕僚被一盆冷水濺了一身。",
+      "hook_type": "reversal",
+      "mid_hook": "她的手凍紅了，大姐一把抓過去捂進自己懷裡：「傻丫頭，誰讓妳洗的。」說完兩個人都愣了。",
+      "conflict": "周崇的人走了但還會來；大姐還不肯說出三個月的事。",
+      "turn": "觀眾以為大姐還是那個嫌她丟人的人，大姐卻先護住了她的手。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "春杏一路跑上山：「夫人燒得認不得人了！」大姐手裡的洗衣棒掉進盆裡：「娘怎麼了？」",
+        "question": "大姐會為了母親回家嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xiju",
+        "zhiyu"
+      ],
+      "spectacle": "雪落在尼庵後院兩個洗衣盆上，兩雙手在同一盆冷水裡。",
+      "glamour_shot": "姜嬈把妹妹的手捂進懷裡，低頭時素衣上落了雪，她第一次笑得不帶刺。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "洗衣盆旁的髒衣堆洗完一半",
+        "大姐第一次叫她傻丫頭不是罵"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-rao",
+        "chun-xing"
+      ],
+      "locations": [
+        "靜慈庵後院"
+      ],
+      "state": {
+        "time": "初冬下雪，失火後第十天",
+        "knowledge": "大姐心裡還有母親；母親病重",
+        "carry_forward": "大姐要說出真相"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "我吃到飯了",
+      "youtube_title": "把妹妹推進花轎的大姐問她恨不恨，她只說了一句：妳推我進去，我吃到飯了",
+      "duration_s": 140,
+      "logline": "大姐終於說出這三個月去了哪裡，姜苓要帶她回家見病重的母親，大姐卻不敢跨出庵門。",
+      "hook": "大姐坐在雪裡的石階上：「我說。妳聽完再決定認不認我。」",
+      "hook_type": "line",
+      "mid_hook": "大姐說情郎騙光她的首飾跑了，她不敢回家、不敢見人，在庵裡帶髮修行三個月。「我把妳推進花轎。妳恨我嗎？」",
+      "extra_hooks": [
+        "她想了想：「妳推我進去，我吃到飯了。妳自己沒吃到。」大姐哭出了聲。"
+      ],
+      "conflict": "大姐羞於回家，母親病重等不了；周崇的人隨時會再來。",
+      "turn": "觀眾以為她會怨，她卻把那一推說成最好的事；靜慈師太在廊下合十。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "庵門口，她向大姐伸出手：「回家。娘病了。」大姐看著門檻外的雪路，腳停在半空。",
+        "question": "大姐敢跨出庵門回家嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xuanyi",
+        "chengzhang"
+      ],
+      "spectacle": "雪中尼庵石階，兩姐妹一坐一站，庵門外一條白茫茫的下山路。",
+      "glamour_shot": "她在雪裡伸出手，睫毛上沾著雪，眼神是十四歲的認真。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [
+        "m11"
+      ],
+      "general_payoffs": [
+        "大姐說出三個月的真相",
+        "大姐被妹妹原諒",
+        "髒衣堆洗完，大姐把灰衣疊好放在師太門口"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-rao",
+        "jingci",
+        "chun-xing"
+      ],
+      "locations": [
+        "靜慈庵石階",
+        "靜慈庵門口"
+      ],
+      "state": {
+        "time": "初冬雪夜，失火後第十天",
+        "knowledge": "大姐被情郎騙光首飾、在庵裡帶髮修行三個月",
+        "carry_forward": "大姐要不要回家"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "停職候查",
+      "youtube_title": "大姐剛回家，知府一道奏摺告到京裡：通判娶傻女、荒公務、夜燒庫房",
+      "duration_s": 120,
+      "logline": "大姐跨進家門的同一天，周崇上書參陸清和，姜苓想替他說話，卻連衙門都進不去。",
+      "hook": "姜府病床前，大姐跪下握住母親的手，母親睜眼：「嬈兒？」",
+      "hook_type": "image",
+      "mid_hook": "通判衙門前貼出告示：陸清和「娶傻女、荒公務、夜燒庫房」，停職候查。街上有人指著她：「傻女害了通判。」",
+      "conflict": "陸清和被停職，周崇要趁機坐實罪名；她想進衙門說話，被衙役擋在外面。",
+      "turn": "她以為停職是因為她，陸清和摘下官帽遞給福伯，平靜地說：「是因為我查對了。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "周崇站在衙門台階上宣布：「三日後開官倉。」「請鄉紳來看新糧。」他看向人群裡的她，笑得很慢。",
+        "question": "開倉那天周崇設了什麼局？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "jiating",
+        "gufeng"
+      ],
+      "spectacle": "衙門台階上一頂官帽被雙手捧下，台下河州百姓黑壓壓一片。",
+      "glamour_shot": "陸清和摘下官帽時的側臉，鬢角早白在冬陽裡，眼神一點也不慌。",
+      "setups": [
+        "s04-t12"
+      ],
+      "payoffs": [
+        "m11",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大姐回到姜府，母親醒了認得她",
+        "陸清和告訴她停職不是她的錯"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "jiang-rao",
+        "jiang-mu",
+        "zhou-chong",
+        "fu-bo"
+      ],
+      "locations": [
+        "姜母臥房",
+        "通判衙門前"
+      ],
+      "state": {
+        "time": "初冬，失火後第十一天",
+        "knowledge": "陸清和停職候查；周崇三日後開倉",
+        "carry_forward": "開倉"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "他在家的一天",
+      "youtube_title": "被停職的通判第一次整天在家，推鞦韆推到鄉紳上門說：傻女的話不能信",
+      "duration_s": 110,
+      "logline": "陸清和停職在家，姜苓想替他做點什麼，鄉紳代表何員外卻先放話不信她。",
+      "hook": "鞦韆被人從後面推高，她回頭，是一身便服的陸清和：「今天不用去衙門。」",
+      "hook_type": "reversal",
+      "mid_hook": "福伯回來說，何員外在茶樓說：「傻女的鼻子，比帳本還準？」滿樓的人笑。",
+      "extra_hooks": [
+        "小禮把自己的布老虎塞進陸清和懷裡，像在說：給你，別難過。"
+      ],
+      "conflict": "開倉那天鄉紳說了算，而鄉紳之首何員外不信她。",
+      "turn": "觀眾以為她會被笑退，她卻問福伯：「他說謊時摸哪裡？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她跳下鞦韆，對陸清和說：「開倉那天，我要去。」他沒攔，只問：「怕不怕被笑？」她說：「我被笑了十年。」",
+        "question": "她敢站到全河州面前嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "jiating",
+        "dalian",
+        "zhiyu"
+      ],
+      "spectacle": "冬日陸府小院，三個人與一個鞦韆，梨枝光禿、陽光很暖。",
+      "glamour_shot": "陸清和便服推鞦韆，衣袖被風灌滿，抬頭看她盪到最高處時笑了。",
+      "setups": [
+        "s04-t09"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和第一次陪她和小禮一整天",
+        "小禮把布老虎給了父親"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府小院",
+        "河州茶樓"
+      ],
+      "state": {
+        "time": "初冬，開倉前兩日",
+        "knowledge": "何員外帶頭不信她；她決定去開倉",
+        "carry_forward": "開倉那天"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "夜裡的糧車",
+      "youtube_title": "半夜一排糧車悄悄駛進官倉，她站在牆根聞了一下：上面全是新米",
+      "duration_s": 110,
+      "logline": "姜苓想弄清楚周崇開倉要給人看什麼，半夜被一股新米香引到官倉後牆。",
+      "hook": "二更天，阿牛趕著空擔子在陸府門口壓低聲音：「官倉後門，進了十車糧！」",
+      "hook_type": "danger",
+      "mid_hook": "她貼著官倉後牆吸氣：「新米。全是新米。」阿牛問：「新米不好嗎？」她說：「新米蓋在上面就不好。」",
+      "conflict": "周崇連夜把新糧鋪在倉頂，要讓鄉紳只看見上面。",
+      "turn": "觀眾以為這次周崇贏定了，她從麻袋縫掉出來的米粒裡，分出一粒舊的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "後門一開，錢六提燈出來：「誰在那？」燈光照到牆根，她和阿牛縮在一堆麻袋後面。",
+        "question": "她會被錢六發現嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "xiju"
+      ],
+      "spectacle": "夜色裡十輛糧車無聲駛進官倉後門，車輪包著布。",
+      "glamour_shot": "她蹲在牆根抬頭，月光在她眼裡，指間捏著一粒米對著月亮看。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道倉頂是新米、底下另有東西",
+        "阿牛成了她的眼線"
+      ],
+      "characters": [
+        "jiang-ling",
+        "a-niu",
+        "s04-cangli"
+      ],
+      "locations": [
+        "河州官倉後牆"
+      ],
+      "state": {
+        "time": "初冬，開倉前一夜",
+        "knowledge": "倉頂連夜鋪了新米；她撿到一粒舊米",
+        "carry_forward": "錢六的燈"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "員外的佃戶",
+      "youtube_title": "嘴上說傻女不可信的鄉紳，一提三年前的瘟疫就摸耳朵",
+      "duration_s": 115,
+      "logline": "姜苓去何員外府上，想讓他開倉那天聽她說一句，何員外卻擺明了不信。",
+      "hook": "錢六的燈晃過去，她抓起一把麻袋上的灰往阿牛臉上一抹：「學貓叫。」牆根傳出兩聲走調的貓叫。",
+      "hook_type": "reversal",
+      "mid_hook": "何員外說：「瘟疫是天災。」「跟糧無關。」說完摸了一下耳朵。她說：「你家死過人。」",
+      "conflict": "何員外是鄉紳之首，他不點頭沒人敢翻倉；他嘴上說天災，心裡不是這麼想。",
+      "turn": "大家以為何員外是周崇的人，她卻看出他是在怕：三年前他家一戶佃農全家死在城西。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "何員外拄杖的手一緊，從書房抽屜拿出一張發黃的賑糧條：「他們最後一袋米。」條上蓋的是半個糧行印。",
+        "question": "這半個印跟庫房那半個是不是同一家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "gufeng"
+      ],
+      "spectacle": "何府書房一盞孤燈，一張發黃的賑糧條在燈下展開。",
+      "glamour_shot": "她坐在何府客座上直視何員外，雙手放膝、背挺直，第一次像個大人在談事。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她躲過錢六",
+        "何員外拿出三年前的賑糧條"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s04-xiangshen",
+        "a-niu",
+        "s04-cangli",
+        "chun-xing"
+      ],
+      "locations": [
+        "官倉後牆",
+        "何員外府書房"
+      ],
+      "state": {
+        "time": "開倉當日清晨",
+        "knowledge": "何員外家的佃農死於瘟疫，手上有蓋半個糧行印的賑糧條",
+        "carry_forward": "兩個半印"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "開倉",
+      "youtube_title": "知府開倉請全城看新糧，傻姑娘站到最前面說：底下三層是陳糧",
+      "duration_s": 120,
+      "logline": "周崇當著全河州開倉，要用一倉新米洗清自己，姜苓站到最前面說出底下的東西。",
+      "hook": "官倉大門轟然推開，金黃的新米堆成小山，鄉紳一片叫好。",
+      "hook_type": "image",
+      "mid_hook": "她走到最前面：「底下三層是陳糧。黴味。」滿場先是一靜，接著哄堂大笑。",
+      "extra_hooks": [
+        "人群裡有人喊：「姜家丟人的那個！」她回頭看了那人一眼，那人先低了頭。"
+      ],
+      "conflict": "周崇要用倉頂的新米蓋住一切；她要全城看見倉底。",
+      "turn": "大家以為她會被笑走，她站著不動，又吸了一口氣：「第三層最重。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "周崇搖著扇子笑：「陸夫人的鼻子，比帳本準？」衙役往前一步，要「請」她回府。",
+        "question": "她會被當眾請走嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "gufeng",
+        "xuanyi"
+      ],
+      "spectacle": "高大官倉大門洞開，金黃米山，前面黑壓壓的鄉紳與百姓，一抹淺綠站在最前。",
+      "glamour_shot": "她在滿場笑聲裡站得筆直，冬風把她鬢邊碎髮吹起，眼神沒有躲。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當眾說出倉底是陳糧"
+      ],
+      "characters": [
+        "jiang-ling",
+        "zhou-chong",
+        "s04-xiangshen",
+        "s04-cangli",
+        "a-niu",
+        "xiao-cheng"
+      ],
+      "locations": [
+        "河州官倉前"
+      ],
+      "state": {
+        "time": "開倉當日",
+        "knowledge": "倉頂新米，她當眾說底下三層是陳糧，滿場笑",
+        "carry_forward": "周崇要請走她"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "救過你孫兒",
+      "youtube_title": "知府笑她鼻子比帳本準，她只回一句：我的鼻子救過你孫兒，全場安靜",
+      "duration_s": 115,
+      "logline": "周崇要把姜苓請下場，她用一件全河州都不知道的事讓他停住。",
+      "hook": "衙役的手快碰到她袖子，她開口：「我的鼻子救過你孫兒。」",
+      "hook_type": "line",
+      "mid_hook": "全場一靜。人群裡周府的管家低下頭，周崇的扇子停在半空。",
+      "extra_hooks": [
+        "蕭承從人群後面擠到前排，手按在腰上，盯著那兩個衙役。"
+      ],
+      "conflict": "周崇丟不起「忘恩」的臉，又不能讓人翻倉。",
+      "turn": "觀眾以為周崇會硬來，鄉紳隊伍裡最不信她的那個人先走了出來。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "何員外拄杖走出鄉紳隊伍，棗木杖往地上一頓：「讓她說。」",
+        "question": "最不信她的人為什麼站到她這邊？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "gufeng"
+      ],
+      "spectacle": "滿場寂靜，只有官倉頂上一群麻雀飛起。",
+      "glamour_shot": "蕭承一身便服擠到前排，臉上淺疤繃緊，站在她身後半步。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周崇當眾吞下這份情，衙役退下",
+        "何員外站出來"
+      ],
+      "characters": [
+        "jiang-ling",
+        "zhou-chong",
+        "s04-xiangshen",
+        "xiao-cheng",
+        "a-niu"
+      ],
+      "locations": [
+        "河州官倉前"
+      ],
+      "state": {
+        "time": "開倉當日",
+        "knowledge": "周崇被當眾提起欠她的情，何員外站到她這邊",
+        "carry_forward": "翻倉"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "第一層第二層",
+      "youtube_title": "倉吏死活不讓人翻倉，街市小販帶著半條街的扁擔衝了上來",
+      "duration_s": 115,
+      "logline": "姜苓要人往下翻，倉吏錢六擋在米山前，說翻壞了新糧誰賠。",
+      "hook": "錢六張開雙臂擋在米山前：「翻壞了，誰賠？」",
+      "hook_type": "danger",
+      "mid_hook": "她看著錢六：「你收袖子了。」阿牛扛著扁擔大喊：「街市的，跟我上！」",
+      "conflict": "沒人敢第一個動手翻知府的倉。",
+      "turn": "大家以為要鄉紳動，先動的卻是當年第一個笑她的阿牛。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第一層新、第二層新，阿牛的鐵鍬插進第三層，一股悶濕的氣味衝上來，前排的人捂住鼻子。",
+        "question": "第三層下面是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "gufeng",
+        "xiju"
+      ],
+      "spectacle": "十幾根扁擔與鐵鍬同時插進米山，金黃米粒像瀑布一樣往下滑。",
+      "glamour_shot": "她站在滑落的米瀑前不退一步，米粒落在她鞋邊。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿牛帶街市翻倉",
+        "翻到第三層"
+      ],
+      "characters": [
+        "jiang-ling",
+        "a-niu",
+        "s04-cangli",
+        "s04-xiangshen",
+        "zhou-chong"
+      ],
+      "locations": [
+        "河州官倉內"
+      ],
+      "state": {
+        "time": "開倉當日午後",
+        "knowledge": "第三層有異味",
+        "carry_forward": "第三層"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "黴",
+      "youtube_title": "翻到第三層全場捂鼻，那是三年前城西人家吃過的同一種黴",
+      "duration_s": 120,
+      "logline": "倉底的陳糧翻出來了，周崇要找人頂罪。",
+      "hook": "鐵鍬翻起一團灰綠結塊的米，賀大夫擠進來捏了一點，臉色變了：「跟三年前一樣。」",
+      "hook_type": "image",
+      "mid_hook": "何員外顫著手舉起那張賑糧條：「我的佃戶，吃的就是這個。」鄉紳一片嘩然。",
+      "extra_hooks": [
+        "她小聲說：「小禮的娘也是。」陸清和不在場，她替他說了這一句。"
+      ],
+      "conflict": "陳糧在全城眼前；周崇要把自己摘出去。",
+      "turn": "觀眾以為周崇完了，他卻搶先轉身指向錢六。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "周崇厲聲：「倉吏錢六私換官糧，拿下！」錢六腿一軟跪下，抬頭看著周崇，嘴張開又閉上。",
+        "question": "錢六會替周崇扛下一切嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "ganren",
+        "gufeng"
+      ],
+      "spectacle": "金黃米山被剖開，底下三層灰綠結塊的陳糧，冬陽照進倉裡粉塵翻飛。",
+      "glamour_shot": "賀大夫白鬍在光裡一顫，她站在他身邊，側臉沉靜。",
+      "setups": [],
+      "payoffs": [
+        "s04-t09",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "倉底三層陳糧當眾翻出",
+        "何員外與鄉紳站到她這邊",
+        "賀大夫作證黴與三年前相同"
+      ],
+      "characters": [
+        "jiang-ling",
+        "he-daifu",
+        "s04-xiangshen",
+        "zhou-chong",
+        "s04-cangli",
+        "a-niu"
+      ],
+      "locations": [
+        "河州官倉內"
+      ],
+      "state": {
+        "time": "開倉當日黃昏",
+        "knowledge": "倉底三層陳糧與三年前瘟疫同一種黴；周崇要錢六頂罪",
+        "carry_forward": "錢六"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "更夫的燈籠",
+      "youtube_title": "知府要倉吏一個人頂罪，打更的老頭舉著燈籠走出來：那夜我看見了",
+      "duration_s": 115,
+      "logline": "周崇要錢六一人扛下換糧與燒庫房，姜苓想讓人說出那夜的真相。",
+      "hook": "錢六跪在米堆前，她蹲下來看他：「你不想扛。你手在抖。」",
+      "hook_type": "line",
+      "mid_hook": "老丁提著燈籠擠進來：「失火那夜我看見了！」「錢倉吏搬油進庫房！」「說是知府要的燈油！」",
+      "conflict": "周崇咬定是錢六私自所為；要有人當眾說出那夜。",
+      "turn": "大家以為更夫只會打更，他卻記得每一個時辰誰從哪個門進出。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老丁的燈籠一抬，照亮倉角一只空麻袋，袋上印著四個紅字的一角。她走過去，把麻袋翻正。",
+        "question": "麻袋上印的是誰家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "gufeng"
+      ],
+      "spectacle": "昏暗倉內，更夫的燈籠一圈暖光照著跪地的倉吏與一地陳糧。",
+      "glamour_shot": "老丁燈籠的光照上她的臉，她轉頭看麻袋時髮尾一甩。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "夜燒庫房的罪名從陸清和身上洗掉一半",
+        "更夫當眾作證"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s04-gengfu",
+        "s04-cangli",
+        "zhou-chong",
+        "s04-xiangshen",
+        "xiao-cheng"
+      ],
+      "locations": [
+        "河州官倉內"
+      ],
+      "state": {
+        "time": "開倉當日入夜",
+        "knowledge": "更夫證實錢六替知府府上搬油進庫房",
+        "carry_forward": "麻袋上的印"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "你沒數東西",
+      "youtube_title": "陳糧麻袋上印著蕭家糧行，青梅竹馬臉色發白，她問：你早知道？",
+      "duration_s": 135,
+      "logline": "麻袋上的印指向蕭家，姜苓要知道蕭承是不是早就知道。",
+      "hook": "麻袋翻正，四個褪色的紅字：蕭家糧行。人群裡有人倒吸一口氣。",
+      "hook_type": "image",
+      "mid_hook": "蕭承站在人群裡，臉一下白了。她走過去：「你爹的。」蕭承說：「我知道。」",
+      "extra_hooks": [
+        "周崇在後面輕輕說了一句：「蕭將軍，令尊辛苦了。」聲音不大，剛好讓所有人聽見。"
+      ],
+      "conflict": "蕭家是她十歲時救過的人家；她要分清蕭承站在哪一邊。",
+      "turn": "大家以為蕭承早知道、一直在護家，她看了他很久，卻看出他沒說謊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她問：「你早知道？」蕭承：「我剛剛知道。」她看了他很久：「你沒說謊。你沒數東西。」蕭承的眼眶紅了。",
+        "question": "蕭承要怎麼面對自己的父親？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "ganren",
+        "gufeng"
+      ],
+      "spectacle": "倉內一只麻袋上的紅字「蕭家糧行」，燈籠光晃動，滿場的人轉頭看向一個高大的身影。",
+      "glamour_shot": "蕭承在燈籠光裡臉色發白、下頷繃緊，看她時那道淺疤在顫。",
+      "setups": [],
+      "payoffs": [
+        "s04-t13",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭家糧行與陳糧連上",
+        "她確認蕭承事先不知情"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-cheng",
+        "zhou-chong",
+        "s04-gengfu",
+        "a-niu"
+      ],
+      "locations": [
+        "河州官倉內"
+      ],
+      "state": {
+        "time": "開倉當日夜",
+        "knowledge": "陳糧出自蕭家糧行；蕭承剛剛才知道",
+        "carry_forward": "蕭承回家問父親"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "河州誰不這樣",
+      "youtube_title": "將軍回家質問父親，父親說河州誰不這樣，母親接著說出了全部的算盤",
+      "duration_s": 120,
+      "logline": "蕭承回家要父親一句實話，姜苓在陸府等著他選，蕭母卻先把自己的算盤攤開了。",
+      "hook": "蕭府正廳，蕭承把一把灰綠的陳糧撒在父親的算盤上：「這是你的？」",
+      "hook_type": "image",
+      "mid_hook": "蕭父撥著算盤珠子：「河州誰不這樣。」蕭母接話：「你娶了姜苓，陸清和就不會查蕭家。」",
+      "extra_hooks": [
+        "陸府燈下，她對陸清和說：「他會選。」陸清和問：「選誰？」她說：「選對的。」"
+      ],
+      "conflict": "蕭承要在父母與真相之間選一邊；蕭母這才說出求親背後的帳。",
+      "turn": "蕭承以為母親逼婚是為了他，原來是為了讓陸清和投鼠忌器。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蕭承在廳上站了很久，蕭母一個一個數著腕上三個金鐲子。他轉身，看向帳房那扇上鎖的門。",
+        "question": "蕭承會打開帳房嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "dalian",
+        "chengzhang",
+        "xuanyi"
+      ],
+      "spectacle": "蕭府金碧的正廳裡，一把灰綠陳糧落在烏木算盤上，珠子彈跳。",
+      "glamour_shot": "蕭承站在廳中逆光裡，便服下仍站得像兵，下頷繃緊。",
+      "setups": [],
+      "payoffs": [
+        "m10",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭母的算盤說出口",
+        "她看出蕭承會選對的那邊"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "xiao-fu",
+        "xiao-mu",
+        "jiang-ling",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "蕭府正廳",
+        "陸府側屋"
+      ],
+      "state": {
+        "time": "初冬，開倉後一日",
+        "knowledge": "蕭母求親是為了讓陸清和不查蕭家",
+        "carry_forward": "帳房的門"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "數鐲子的人",
+      "youtube_title": "蕭母提著金鐲上門求她嫁兒子，她只說：妳說謊的時候數鐲子",
+      "duration_s": 115,
+      "logline": "蕭母親自上陸府求姜苓嫁給蕭承，想用一個金鐲子買她一句好，被她當場拆穿。",
+      "hook": "陸府廳上，蕭母把一個金鐲子推到她面前：「好孩子，戴上。」",
+      "hook_type": "line",
+      "mid_hook": "蕭母說：「承兒是真心的。」右手把剩下兩個鐲子數了一遍。她說：「妳說謊的時候數鐲子。」",
+      "conflict": "蕭母要她點頭，好換蕭家平安；她不收、也不說好聽話。",
+      "turn": "蕭母以為她還好哄，她把鐲子推回去，像大人一樣說：「他的真心，」「不用妳來賣。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "蕭母出了陸府沒回家，轉進通往府衙後門的小巷。春杏躲在牆角，看見她腕上的鐲子在袖裡一閃。",
+        "question": "蕭母去府衙後門找誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "chengzhang"
+      ],
+      "spectacle": "陸府素淨的廳上，一只金鐲子在米白桌面上被推來推去。",
+      "glamour_shot": "她把鐲子推回去時的手與抬眼，第一次有大人的氣勢。",
+      "setups": [
+        "s04-t08"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭母當面碰了釘子",
+        "她看出蕭母腕上還有三個鐲子"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-mu",
+        "chun-xing",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府廳堂",
+        "府衙後巷"
+      ],
+      "state": {
+        "time": "初冬，開倉後兩日",
+        "knowledge": "蕭母三個鐲子都在；她往府衙後門去了",
+        "carry_forward": "府衙後門"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "帳房的鑰匙",
+      "youtube_title": "將軍半夜打開父親的帳房，在十年的帳裡找到了自己的名字",
+      "duration_s": 115,
+      "logline": "蕭承半夜打開蕭家帳房，想知道父親做了多少，卻在帳裡看見自己。",
+      "hook": "帳房鎖頭咔一聲開了，蕭承舉著燭台，一整面牆的帳冊。",
+      "hook_type": "image",
+      "mid_hook": "他翻到七年前一頁：「承兒入邊軍，打點，陳糧三百石之利。」他的手停住了。",
+      "extra_hooks": [
+        "同一夜，她在陸府替陸清和熬安神茶，忽然說：「他今晚不會睡。」"
+      ],
+      "conflict": "蕭承要拿走證據，就等於親手送父親進衙門；他的軍職也是那筆錢買的。",
+      "turn": "他以為只是父親的罪，翻到最後才知道自己這十年也在帳上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "燭火燒到底，蕭承把十年的帳冊一本一本裝進行軍包，手放在包上，沒有立刻背起來。",
+        "question": "他會把父親的帳送出去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "xuanyi"
+      ],
+      "spectacle": "深夜帳房一面牆的帳冊，一支燭台的光圈裡飄著紙灰。",
+      "glamour_shot": "蕭承燭下低頭翻帳的側臉，淺疤在火光裡，眼眶發紅卻不落淚。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承找到蕭家十年的帳"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "jiang-ling",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "蕭府帳房",
+        "陸府廚房"
+      ],
+      "state": {
+        "time": "初冬，開倉後兩日夜",
+        "knowledge": "蕭家十年帳在蕭承手上，他的軍職也在帳上",
+        "carry_forward": "行軍包"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "這次來對了",
+      "youtube_title": "將軍把父親十年的帳放在通判桌上：我爹的，我送來的",
+      "duration_s": 120,
+      "logline": "蕭承把蕭家十年的帳送到陸府，陸清和要他想清楚這一步的代價。",
+      "hook": "天剛亮，陸府門口一個行軍包重重落地：「我爹的。我送來的。」",
+      "hook_type": "line",
+      "mid_hook": "陸清和看著他：「你知道這代表什麼。」蕭承說：「代表我十年沒來，這次來對了。」",
+      "extra_hooks": [
+        "陸清和把帳和她記的十二頁並排：「要送進京。」「走知府管不到的路。」"
+      ],
+      "conflict": "陸清和停職，帳要送進京才算數；周崇隨時會發現帳不見了。",
+      "turn": "觀眾以為兩個男人會爭她，他們卻第一次站到同一張桌子前。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "蕭承轉過身看她，深吸一口氣：「還有一句，是對妳的。」她放下手裡的茶。",
+        "question": "蕭承要對她說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "dalian"
+      ],
+      "spectacle": "晨光裡陸府廳桌上，一疊帳冊與她手繪的十二頁並排，兩個男人隔桌對站。",
+      "glamour_shot": "陸清和晨光中的側臉，看蕭承時眼裡第一次有敬意。",
+      "setups": [
+        "s04-t07"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭家十年帳到了陸清和手上",
+        "陸清和與蕭承站到同一邊"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "lu-qinghe",
+        "jiang-ling"
+      ],
+      "locations": [
+        "陸府大門",
+        "陸府廳堂"
+      ],
+      "state": {
+        "time": "初冬，開倉後三日",
+        "knowledge": "帳在陸府，要找路送進京",
+        "carry_forward": "蕭承要對她說的話"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "我不娶妳了",
+      "youtube_title": "青梅竹馬對她說：我不娶妳了，妳不記得我，我記得妳就夠",
+      "duration_s": 115,
+      "logline": "蕭承要對姜苓說一句話，她不記得他的臉，卻聽懂了他的意思。",
+      "hook": "蕭承單膝蹲下，跟她平視：「我不娶妳了。」",
+      "hook_type": "line",
+      "mid_hook": "「妳不記得我，我記得妳就夠。」她看了他很久：「你是第一個說再見還說清楚的人。」",
+      "extra_hooks": [
+        "春杏衝進來壓低聲音：「蕭夫人在府衙後門！」「金鐲子塞給錢六了！」"
+      ],
+      "conflict": "蕭承要放下十年的念想；她要用大人的方式回應。",
+      "turn": "觀眾以為她會哭，她卻把舊香包裡的草換成新的，遞回去：「安神的。你今晚要睡。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "府衙裡錢六捏著金鐲子，周崇的幕僚衝進後堂：「蕭家的帳房空了！」周崇手裡的茶盞落地。",
+        "question": "周崇發現帳不見了，會怎麼做？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "xuanyi"
+      ],
+      "spectacle": "梨樹下蕭承單膝蹲下，冬陽穿過光禿的枝椏落在兩人之間。",
+      "glamour_shot": "她替香包換草時低頭的側臉，手指沾著新綠，神情像個大人。",
+      "setups": [],
+      "payoffs": [
+        "m06",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承放下求娶",
+        "她親手換了香包的草",
+        "知道蕭母把一個鐲子給了錢六"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-cheng",
+        "chun-xing",
+        "s04-cangli",
+        "zhou-chong"
+      ],
+      "locations": [
+        "陸府梨樹下",
+        "府衙後堂"
+      ],
+      "state": {
+        "time": "初冬，開倉後三日",
+        "knowledge": "蕭母腕上剩兩個鐲子，一個在錢六手上；周崇發現帳不見",
+        "carry_forward": "周崇要搜帳"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "搜府",
+      "youtube_title": "知府派人搜通判府找帳本，翻遍全屋，帳就在鞦韆底下",
+      "duration_s": 115,
+      "logline": "周崇派人搜陸府，要搶回蕭家的帳，姜苓要護住帳、還要找一條送帳進京的路。",
+      "hook": "衙役踹開陸府大門：「奉知府令！」「搜私藏公文！」",
+      "hook_type": "danger",
+      "mid_hook": "衙役翻遍書房、床底、灶間，她坐在鞦韆上晃腳：「要不要搜我？」衙役看了眼鞦韆，走了。",
+      "extra_hooks": [
+        "小禮抱緊布老虎站在她身邊，一聲不吭，眼睛一直看著衙役。"
+      ],
+      "conflict": "帳藏不久，官道上周崇設了卡，送不出河州。",
+      "turn": "大家以為帳在書房，其實她把帳拆成幾疊壓在鞦韆座板與雪裡紅藥簍底下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她對陸清和說：「官道走不了。」「走蕭將軍的軍驛。」「知府管不到。」陸清和看向蕭承。",
+        "question": "蕭承願意用軍驛送自己父親的帳嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "chengzhang",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "衙役翻得滿院狼藉，只有梨樹下的鞦韆與她紋絲不動。",
+      "glamour_shot": "她坐在鞦韆上晃腳，淺綠裙擺輕擺，看衙役的眼神像看一群迷路的鴨子。",
+      "setups": [],
+      "payoffs": [
+        "m10",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "帳沒被搜走",
+        "她想出走軍驛送帳"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "xiao-cheng",
+        "fu-bo",
+        "du-mama"
+      ],
+      "locations": [
+        "陸府小院",
+        "陸府書房"
+      ],
+      "state": {
+        "time": "初冬，開倉後四日",
+        "knowledge": "帳藏在鞦韆與藥簍底下；官道被卡",
+        "carry_forward": "軍驛"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "錢六的娘",
+      "youtube_title": "藥鋪裡咳了一冬的老婦人，是倉吏錢六的娘，她手腕上戴著蕭家的金鐲",
+      "duration_s": 115,
+      "logline": "姜苓在賀大夫藥鋪幫一個咳嗽的老婦人看病，想不到老婦人就是錢六的娘。",
+      "hook": "軍驛快馬出城的蹄聲還沒散，藥鋪裡一個老婦人咳得直不起腰，她蹲下來：「妳咳了一冬。」",
+      "hook_type": "image",
+      "mid_hook": "老婦人說：「我兒子在府衙當差。」「被關起來了。」她問：「妳兒子叫錢六？」老婦人點頭。",
+      "extra_hooks": [
+        "賀大夫照她說的抓藥，抓完低聲說：「她說對了，我差點用錯。」"
+      ],
+      "conflict": "錢六被周崇關著，是唯一能說出周崇怎麼下令的人；他娘在外面沒人管。",
+      "turn": "觀眾以為錢六死心塌地跟周崇，原來他是怕他娘沒人養。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老婦人從袖裡掏出一個金鐲子：「他託人送回來的。」「說夠我過一輩子。」那是蕭母的鐲子。",
+        "question": "錢六收鐲子，是要替誰閉嘴？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "gufeng",
+        "chengzhang"
+      ],
+      "spectacle": "暖褐色的藥鋪街，一面藥櫃百格抽屜，她蹲在老婦人面前。",
+      "glamour_shot": "她替老婦人順背時的側臉，袖口草汁新綠，神情溫柔。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "帳由蕭承的軍驛送出河州",
+        "錢六的娘咳嗽好轉",
+        "她找到蕭母那個鐲子的去處"
+      ],
+      "characters": [
+        "jiang-ling",
+        "he-daifu",
+        "xiao-cheng"
+      ],
+      "locations": [
+        "河州城門",
+        "賀大夫藥鋪"
+      ],
+      "state": {
+        "time": "初冬，開倉後五日",
+        "knowledge": "帳已送出；蕭母的鐲子到了錢六的娘手上",
+        "carry_forward": "錢六"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "倉吏開口",
+      "youtube_title": "替知府扛罪的倉吏聽見母親的咳嗽好了，終於開口說出是誰下的令",
+      "duration_s": 120,
+      "logline": "姜苓帶著錢六娘的消息去見被關的錢六，要他說出真相，周崇卻先出手了。",
+      "hook": "府衙偏房的木柵後，錢六抬頭，看見她手裡提著他娘的藥包：「妳……妳去看我娘了？」",
+      "hook_type": "question",
+      "mid_hook": "錢六說：「油是知府要的。陳糧是蕭家出的。鐲子是蕭夫人塞的。」何員外與孟先生在旁一字一字記下、按印。",
+      "conflict": "錢六怕周崇怕他娘沒人養，不敢說；周崇知道帳出了城，要先下手。",
+      "turn": "觀眾以為周崇會滅口，他卻轉身把罪全推給蕭父。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "周崇在後堂寫下令牌：「糧商蕭某私換官糧，即刻帶回。」他把令牌一扔：「讓他一個人扛。」",
+        "question": "蕭父會被推出來頂下所有罪嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "chengzhang"
+      ],
+      "spectacle": "府衙偏房木柵與一盞油燈，三個人影在燈下記供、按下鮮紅的手印。",
+      "glamour_shot": "孟先生摺扇收起提筆記供的手，她站在燈旁，眼神沉穩。",
+      "setups": [],
+      "payoffs": [
+        "s04-t05",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "錢六供出周崇下令與蕭家出糧",
+        "何員外與孟先生作證按印"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s04-cangli",
+        "s04-xiangshen",
+        "meng-xiansheng",
+        "zhou-chong"
+      ],
+      "locations": [
+        "府衙偏房",
+        "知府後堂"
+      ],
+      "state": {
+        "time": "初冬，開倉後六日",
+        "knowledge": "錢六供出周崇；周崇要蕭父頂罪",
+        "carry_forward": "衙役去蕭府"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "我陪你去",
+      "youtube_title": "知府要拿他父親頂罪，將軍對父親說：別讓他們來抓，我陪你去",
+      "duration_s": 115,
+      "logline": "衙役要去蕭府帶人，蕭承要親手把父親送進衙門，姜苓來給他送一樣東西。",
+      "hook": "蕭府後院，蕭父把一箱銀子推到兒子面前：「拿去打點，你是將軍。」",
+      "hook_type": "line",
+      "mid_hook": "蕭承把箱子推回去：「別讓他們來抓。我陪你去。」蕭父說：「我養你二十年。」蕭承說：「所以我陪你。」",
+      "extra_hooks": [
+        "她站在蕭府門口，把一個新縫的安神香包放進蕭承手心：「今天會很長。」"
+      ],
+      "conflict": "蕭父想用錢脫身，蕭承要他自己走進衙門。",
+      "turn": "觀眾以為蕭承會心軟放父親走，他卻替父親整好衣領、扶他起身。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "衙門的鼓聲從街口傳來，蕭父看著兒子：「你恨我嗎？」蕭承沒答，替他把帽子戴正。",
+        "question": "蕭承會怎麼回答父親？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "dalian"
+      ],
+      "spectacle": "蕭府後院一箱銀子在冬陽下反光，父子相對，遠處衙門的鼓。",
+      "glamour_shot": "蕭承替父親整衣領時低頭的側臉，眼神很硬，手很輕。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承決定親自送父親去衙門",
+        "她把新香包給了他"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "xiao-fu",
+        "jiang-ling",
+        "chun-xing"
+      ],
+      "locations": [
+        "蕭府後院",
+        "蕭府大門"
+      ],
+      "state": {
+        "time": "初冬，開倉後七日",
+        "knowledge": "蕭承要親自送父親去衙門",
+        "carry_forward": "衙役到門"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "是少兩個",
+      "youtube_title": "蕭母抱著包袱要從後門跑，丫鬟一句妳的鐲子掉了，她停下來數",
+      "duration_s": 140,
+      "logline": "衙役到了蕭府，蕭承扶著父親出門，蕭母抱著包袱從後門逃，姜苓與春杏守在後巷。",
+      "hook": "蕭府大門打開，蕭承扶著父親一步一步走向衙役，沒有一個人上鎖。",
+      "hook_type": "image",
+      "mid_hook": "後門一開，蕭母抱著包袱衝出來，春杏張開手堵在巷口：「夫人，妳的鐲子掉了。」",
+      "extra_hooks": [
+        "蕭母低頭數腕上的鐲子，數了一遍：「少一個。」她停住了，彎腰在雪裡找。"
+      ],
+      "conflict": "蕭母要帶走蕭家剩下的錢；她與春杏要拖住她。",
+      "turn": "大家以為蕭母只丟了一個鐲子，她卻知道另一個去了哪。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "ending",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "衙役的腳步到了巷口，蕭母還在雪裡摸。她站在一旁說：「妳數錯了，是少兩個。」「另一個在錢六他娘那。」",
+        "question": "蕭母這下還走得掉嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "ganren",
+        "chengzhang"
+      ],
+      "spectacle": "雪中蕭府前門父子並肩走向衙役，後巷蕭母跪在雪裡找鐲子，兩條線交錯。",
+      "glamour_shot": "她站在後巷雪裡雙手攏袖，平靜開口，雪落在她肩上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t08",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭父由兒子親手送進衙門",
+        "蕭母被堵在後巷",
+        "鐲子的去處成了錢六收賄的證據"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-mu",
+        "xiao-fu",
+        "xiao-cheng",
+        "chun-xing"
+      ],
+      "locations": [
+        "蕭府大門",
+        "蕭府後巷"
+      ],
+      "state": {
+        "time": "臘月初，開倉後七日",
+        "knowledge": "蕭父進了衙門；蕭母兩個鐲子都對上了去處",
+        "carry_forward": "京裡的回音與周崇"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "密旨攤開",
+      "youtube_title": "京裡的御史當堂攤開密旨，被笑傻的她一字不差背出被燒掉的那半頁",
+      "duration_s": 130,
+      "logline": "京裡來的宋御史要在府衙正堂把糧案對清，周崇還在笑，姜苓要把燒掉的半頁補上。",
+      "hook": "府衙正堂大門洞開，一個深青官袍的人捧著錦匣走進來：「奉旨，查河州糧案。」",
+      "hook_type": "image",
+      "mid_hook": "宋御史攤開密旨與戶部存底，缺了半頁。她走上前，閉眼一行一行說出那半頁的格子與印，宋御史一對：一字不差。",
+      "extra_hooks": [
+        "周崇的笑慢慢收住，手指在官袍袖口裡收了又收。她輕聲說：「你也會收袖子。」"
+      ],
+      "conflict": "周崇咬定一切是蕭父與錢六所為；燒掉的半頁才是周崇親筆批的換糧令。",
+      "turn": "大家以為證據燒了，她記得的那半頁正是周崇的批字與官印。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "周崇交出官印走下台階，經過她身邊停了一下：「妳醒了，他就留不住妳。」陸清和的手在袖裡握緊了木牌。",
+        "question": "周崇那句話，陸清和聽進去了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "ganren",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "府衙正堂上紅繩密旨與戶部存底並排攤開，堂下河州百姓擠滿門口。",
+      "glamour_shot": "陸清和重新戴上官帽的那一刻，青灰官服、鬢角早白，回頭看她一眼。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02",
+        "s04-t07",
+        "s04-t12",
+        "m04"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "密旨與燒掉的半頁對上，周崇交出官印",
+        "陸清和復職",
+        "三年前的瘟疫終於有了答案"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "s04-jingguan",
+        "zhou-chong",
+        "s04-cangli",
+        "s04-xiangshen"
+      ],
+      "locations": [
+        "府衙正堂"
+      ],
+      "state": {
+        "time": "臘月中",
+        "knowledge": "陸清和奉密旨來查糧案；周崇與蕭父把賑災糧換成陳糧，瘟疫從陳糧起；周崇倒了",
+        "carry_forward": "周崇那句話"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "第二碗",
+      "youtube_title": "他終於把第二碗藥拿出來，她問你之前為什麼不給，他說：我怕妳忘的是我",
+      "duration_s": 125,
+      "logline": "陸清和把收了一季的雪裡紅拿出來，姜苓要他先說清楚為什麼一直不給。",
+      "hook": "燈下一只藥碗推到她面前，藥香苦澀：「第二碗。」",
+      "hook_type": "image",
+      "mid_hook": "她問：「你之前為什麼不給？」他說：「我怕妳忘的是我。」她說：「你說過我是十歲後認識的。」他說：「我怕妳忘的是小禮叫娘那天。」",
+      "conflict": "這碗會讓她長大、也會讓她忘；他一直怕她忘掉的是陸家。",
+      "turn": "觀眾以為他是怕她醒了就走，原來他怕的是她忘了小禮第一次叫娘。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她喝完，抓著他袖子就睡著了。賀大夫按著她的脈，眉頭鎖緊：「這一碗，會忘得多一些。」",
+        "question": "她這次會忘掉什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "chengzhang",
+        "ganren"
+      ],
+      "spectacle": "燭火下一碗雪裡紅冒著白氣，她抓著他袖子睡去，燈花一跳。",
+      "glamour_shot": "陸清和燭下說出那句話時垂眼的側臉，睫毛的影子落在臉上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t11",
+        "m08",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她喝下第二碗",
+        "陸清和第一次說出他怕什麼"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "he-daifu"
+      ],
+      "locations": [
+        "陸府她的房"
+      ],
+      "state": {
+        "time": "臘月中，周崇倒後三日",
+        "knowledge": "陸清和停藥是怕她忘了小禮叫娘那天",
+        "carry_forward": "她睡著，不知會忘什麼"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "睡著的兩天",
+      "youtube_title": "她喝完藥睡了兩天兩夜，小禮守在床邊不肯走，蕭母趁夜跑了",
+      "duration_s": 115,
+      "logline": "姜苓睡了兩天，陸府上下等她醒；蕭家那邊，蕭母被放回家當夜就跑了。",
+      "hook": "床邊，小禮趴在被角上睡著，手裡還抓著她一根手指。",
+      "hook_type": "image",
+      "mid_hook": "春杏衝進來：「蕭夫人連夜跑了！」「只剩一個算盤！」",
+      "extra_hooks": [
+        "杜嬤嬤端來第三碗沒動過的粥，放在床頭：「醒了就吃。」"
+      ],
+      "conflict": "她遲遲不醒；蕭母的帳不在帳冊上，宋御史放她回家，她卻跑了。",
+      "turn": "觀眾以為蕭母還會回來鬧，她連最後一個鐲子都帶走了，只留下算盤。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第二天黃昏，她睜開眼，看著帳頂很久，開口的聲音比從前低：「我……十七了嗎？」",
+        "question": "醒來的她，還記得誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "chengzhang"
+      ],
+      "spectacle": "兩天兩夜的窗光由白到黑到白，床邊的小禮、陸清和、杜嬤嬤輪流換位。",
+      "glamour_shot": "她在夕光裡睜眼的那一格，睫毛輕顫，眼神比從前深。",
+      "setups": [],
+      "payoffs": [
+        "m05",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她醒了",
+        "蕭母跑了，蕭家只剩空宅"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "chun-xing",
+        "du-mama",
+        "xiao-mu"
+      ],
+      "locations": [
+        "陸府她的房",
+        "蕭府空宅"
+      ],
+      "state": {
+        "time": "臘月下旬",
+        "knowledge": "蕭母跑了；她醒來約十七歲",
+        "carry_forward": "她記得什麼、忘了什麼"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "十七歲",
+      "youtube_title": "她醒來像個大人，自己梳好頭、喊對了每個人，卻哼不出一個音",
+      "duration_s": 120,
+      "logline": "醒來約十七歲的姜苓要確認自己沒忘掉誰，一個一個叫名字，最後發現忘掉的是一首歌。",
+      "hook": "她坐起來，看著床邊的小孩：「小禮。」又看門口的人：「陸清和。」兩個都對。",
+      "hook_type": "reversal",
+      "mid_hook": "她走到梨樹下，想像從前那樣哼歌給小禮聽，張開嘴，一個音都哼不出來。",
+      "extra_hooks": [
+        "阿牛在街口看見她自己梳好的頭，愣了半天才說：「阿苓姑娘……像個夫人了。」"
+      ],
+      "conflict": "她以為自己什麼都沒忘，直到想唱那首歌。",
+      "turn": "觀眾以為她會忘了陸家的人，她全記得，忘的是藥婆奶奶的歌。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她在梨樹下一遍一遍張嘴，聲音是有的，調子沒了。她慢慢蹲下：「奶奶的歌，不見了。」",
+        "question": "藥婆奶奶的歌還找得回來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "冬日梨樹下，她自己梳好的髮髻、端正的衣領，鏡頭繞她一圈。",
+      "glamour_shot": "她第一次自己梳好頭髮從房裡走出來，冬陽照著她十七歲的臉。",
+      "setups": [],
+      "payoffs": [
+        "m08",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她記得小禮、記得陸清和、記得陸家每一個人",
+        "頭髮自己梳正了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "a-niu",
+        "yaopo"
+      ],
+      "locations": [
+        "陸府她的房",
+        "陸府梨樹下",
+        "河州街口"
+      ],
+      "state": {
+        "time": "臘月下旬",
+        "knowledge": "她約十七歲，記得陸家人，忘了藥婆奶奶的歌",
+        "carry_forward": "那首歌"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "歌沒了",
+      "youtube_title": "她坐在鞦韆上急得哭出來，三年沒說話的那個孩子走了過來",
+      "duration_s": 115,
+      "logline": "姜苓想把藥婆奶奶的歌找回來，越想越想不起，第一次在鞦韆上哭。",
+      "hook": "鞦韆上，她緊緊抓著繩子：「奶奶，妳怎麼唱的？」",
+      "hook_type": "question",
+      "mid_hook": "她問陸清和、問福伯、問賀大夫，沒有人會唱；那首歌從來只有她和奶奶知道。",
+      "conflict": "那首歌是奶奶留給她唯一的聲音，也是小禮第一夜睡著的歌；現在沒人能還給她。",
+      "turn": "大家以為這首歌就這樣沒了，一直站在旁邊的小禮慢慢走過來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小禮放下布老虎，站到鞦韆前，張開嘴——第一個音，是那首歌的第一個音。",
+        "question": "小禮怎麼會唱那首歌？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "jiating"
+      ],
+      "spectacle": "鞦韆在冬日微微晃動，她低頭哭的影子落在地上，一個小小的影子走近。",
+      "glamour_shot": "她在鞦韆上抬起淚眼的一瞬，睫毛濕，臉被冬陽照得透亮。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次把自己的難過說給全家聽"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "fu-bo",
+        "he-daifu",
+        "yaopo"
+      ],
+      "locations": [
+        "陸府梨樹下鞦韆"
+      ],
+      "state": {
+        "time": "臘月廿八",
+        "knowledge": "沒有人會唱那首歌",
+        "carry_forward": "小禮開口唱"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "小禮唱給她聽",
+      "youtube_title": "三年不說話的孩子為她唱完一整首歌，原來他每晚都在偷偷學",
+      "duration_s": 125,
+      "logline": "小禮把那首歌唱給姜苓聽，全家才知道他每晚一個人哼的是什麼。",
+      "hook": "小禮細細的嗓子在梨樹下唱出第一句，杜嬤嬤手裡的竹籃掉在地上。",
+      "hook_type": "image",
+      "mid_hook": "陸清和低聲說：「他每晚都在哼。三年，聽熟了。」她想起那夜門邊沒出聲的小嘴。",
+      "extra_hooks": [
+        "小禮唱完，拉著她的袖子：「娘，我教妳。」"
+      ],
+      "conflict": "她要把歌找回來，只能靠小禮；小禮要第一次為一個人唱一整首。",
+      "turn": "觀眾以為是她教小禮，這一次是小禮教她。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她跟著小禮一句一句學，唱到最後一句，小禮把頭靠在她肩上睡著了。她抬頭，陸清和在廊下紅了眼。",
+        "question": "她會為了留住更多，不再喝藥嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "tianchong",
+        "zhiyu"
+      ],
+      "spectacle": "黃昏梨樹下，一大一小坐在鞦韆上唱歌，福伯、杜嬤嬤、春杏站在廊下。",
+      "glamour_shot": "她低頭聽小禮唱歌時的側臉，眼淚還沒乾，嘴角已經笑了。",
+      "setups": [],
+      "payoffs": [
+        "s04-t10",
+        "m05",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮把藥婆的歌唱給她",
+        "她跟著小禮把歌學回來"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "du-mama",
+        "fu-bo",
+        "chun-xing",
+        "yaopo"
+      ],
+      "locations": [
+        "陸府梨樹下鞦韆",
+        "陸府廊下"
+      ],
+      "state": {
+        "time": "除夕前一日",
+        "knowledge": "歌是小禮三年聽熟的；她從小禮那學回來",
+        "carry_forward": "第三碗還要不要"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "認得的字",
+      "youtube_title": "她記了一季的密旨形狀，今天終於讀懂了上面寫的每一個字",
+      "duration_s": 115,
+      "logline": "姜苓跟孟先生重新學字，想知道自己記了一季的那些形狀到底寫著什麼。",
+      "hook": "孟先生攤開她憑記憶畫的十二頁：「夫人，妳念給我聽。」",
+      "hook_type": "line",
+      "mid_hook": "她一個字一個字念出來，念到「瘟起於陳糧」那一行停住了：「原來我一直背著這句。」",
+      "extra_hooks": [
+        "孟先生讓她寫「娘」，她寫得歪了一筆，自己擦掉重寫，寫對了。"
+      ],
+      "conflict": "她會的字還不夠，想把字全學會；第三碗是捷徑，也是代價。",
+      "turn": "觀眾以為她會怕再忘，她卻說想再長大一點，是為了自己讀得懂。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她放下筆，走去藥鋪，把手攤在賀大夫面前：「第三碗，給我。」賀大夫看向門口的陸清和。",
+        "question": "陸清和這次會攔她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "gufeng",
+        "tianchong"
+      ],
+      "spectacle": "側廳長桌上十二頁手繪的密旨攤開，她的手指一行一行滑過。",
+      "glamour_shot": "她在窗下念字的側臉，十七歲的聲音清而穩，孟先生摺扇停在半空。",
+      "setups": [
+        "s04-t15"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她讀懂自己記住的十二頁",
+        "她寫對了「娘」"
+      ],
+      "characters": [
+        "jiang-ling",
+        "meng-xiansheng",
+        "he-daifu",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "通判衙門側廳",
+        "賀大夫藥鋪"
+      ],
+      "state": {
+        "time": "正月初五",
+        "knowledge": "她讀懂了密旨；寫對了「娘」",
+        "carry_forward": "第三碗"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "第三碗",
+      "youtube_title": "這次是她自己伸手要藥：給我，我想把字全學會",
+      "duration_s": 120,
+      "logline": "姜苓自己要第三碗，賀大夫猶豫，陸清和要決定攔或不攔。",
+      "hook": "藥鋪裡賀大夫握著藥包沒鬆手：「陸大人？」陸清和說：「她自己選。」",
+      "hook_type": "line",
+      "mid_hook": "她接過碗：「給我。我想把字全學會。」一口喝完，把碗倒過來給他看。",
+      "conflict": "第三碗是她自己要的；陸清和要守住「他不逼」，也不攔。",
+      "turn": "觀眾以為陸清和會說「再等等」，他第一次只說了三個字：她自己選。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她睡著後，宋御史來陸府辭行，把一封吏部封印的信交給陸清和：「河州不能沒有知府。」",
+        "question": "京裡要怎麼安排陸清和？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "藥鋪百格藥櫃前，她仰頭喝藥，碗底倒扣在櫃上。",
+      "glamour_shot": "陸清和站在藥鋪門口逆光裡，說出「她自己選」時神情很靜。",
+      "setups": [
+        "s04-t16"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她自己選了第三碗",
+        "陸清和沒有替她決定"
+      ],
+      "characters": [
+        "jiang-ling",
+        "he-daifu",
+        "lu-qinghe",
+        "s04-jingguan"
+      ],
+      "locations": [
+        "賀大夫藥鋪",
+        "陸府廳堂"
+      ],
+      "state": {
+        "time": "正月初六",
+        "knowledge": "第三碗是她自己要的；吏部的信到了",
+        "carry_forward": "她醒來會怎樣"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "鏡子裡的大人",
+      "youtube_title": "喝完第三碗醒來，被全城笑了十年的傻姑娘，大姐說：妳比我像大人了",
+      "duration_s": 115,
+      "logline": "姜苓醒來看見鏡子裡的大人，想知道自己還是不是自己，大姐來看她。",
+      "hook": "銅鏡裡的人抬手摸自己的臉，鏡外的她也抬手：「這是我。」",
+      "hook_type": "image",
+      "mid_hook": "大姐提著糕點進門，看了她半天：「妳比我像大人了。」她說：「妳教的。妳推我進花轎那天。」",
+      "extra_hooks": [
+        "大姐笑著哭了一下，伸手替她插上一支素簪。"
+      ],
+      "conflict": "她要確認長大後的自己還記得自己要什麼。",
+      "turn": "觀眾以為長大了她會變得客氣，她說話還是一樣直，只是每一句都想好了才說。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "孟先生攤開紙筆：「今天教第三個字。」她拿起筆：「不用教。我會。」筆尖懸在紙上。",
+        "question": "她會寫下什麼字？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "chengzhang",
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "銅鏡裡十七歲的她與鏡外的她同時抬手，窗外梨枝冒出第一點芽。",
+      "glamour_shot": "她自己梳好髮髻、大姐替她插簪的那一刻，兩張臉在鏡裡並排。",
+      "setups": [],
+      "payoffs": [
+        "m02",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她認得鏡子裡的自己",
+        "姐妹和好"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-rao",
+        "meng-xiansheng",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府她的房",
+        "陸府側屋書桌"
+      ],
+      "state": {
+        "time": "正月初八",
+        "knowledge": "她像個大人了，說話還是直",
+        "carry_forward": "她要寫的字"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "我",
+      "youtube_title": "先生說要教她第三個字，她提筆寫了一整排，最後一個字寫了很久",
+      "duration_s": 135,
+      "logline": "姜苓要自己寫出會的所有字，孟先生要教，她說不用；最後一個字她寫了很久。",
+      "hook": "宣紙上第一筆落下：「姜苓。」孟先生的摺扇啪一聲收起來。",
+      "hook_type": "image",
+      "mid_hook": "她接著寫：「陸清和。」「小禮。」「娘。」小禮踮腳看，指著最後那個字：「我！」她笑：「這個是娘。」",
+      "extra_hooks": [
+        "陸清和站在門口沒進來，袖子裡那張舊的「清」被他握皺了。"
+      ],
+      "conflict": "她要寫出最後一個字，那個字她從沒學過。",
+      "turn": "觀眾以為最後一個字會是誰的名字，她寫的是她自己。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她的筆停了很久，最後落下一個字：「我。」她抬頭，看見門口的陸清和沒有笑。",
+        "question": "陸清和為什麼看著那個字不笑？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "tianchong",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "一張宣紙上一整排字：姜苓、陸清和、小禮、娘、我；墨還沒乾。",
+      "glamour_shot": "她提筆寫「我」時垂眼的側臉，十七歲的輪廓在窗光裡，一縷碎髮也沒有。",
+      "setups": [],
+      "payoffs": [
+        "s04-t15",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她自己寫出一整排字，最後一個是「我」",
+        "孟先生說她不用再學了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "meng-xiansheng",
+        "lu-xiaoli",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府側屋書桌"
+      ],
+      "state": {
+        "time": "正月十五",
+        "knowledge": "她會寫自己的「我」；陸清和看著那個字",
+        "carry_forward": "陸清和的心事"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "叫阿苓",
+      "youtube_title": "通判升任知府，滿城叫她知府夫人，被笑了十年的她只說：叫阿苓",
+      "duration_s": 115,
+      "logline": "陸清和升任河州知府，全城改口叫姜苓知府夫人，她卻要大家叫回她的名字。",
+      "hook": "府衙前鑼鼓一響，吏部文書高高展開：「陸清和，升任河州知府。」",
+      "hook_type": "image",
+      "mid_hook": "街市一路有人拱手：「知府夫人。」她停在阿牛的擔子前：「叫阿苓。」阿牛撓頭：「阿苓……夫人？」",
+      "extra_hooks": [
+        "當年在藥鋪街笑她最大聲的那個婦人，紅著臉送來一籃雞蛋，她收下，說：「妳那天沒說錯。」「我那時是真傻。」"
+      ],
+      "conflict": "身分變了，所有人對她的稱呼都變了；她要大家記得她是誰。",
+      "turn": "觀眾以為她會享受這聲夫人，她卻覺得這三個字把她和陸清和隔遠了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "宋御史留下的誥封要她親筆簽名，筆尖停在紙上：寫「陸姜氏」，還是寫「姜苓」？陸清和背過身去。",
+        "question": "她會簽下哪個名字？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "tianchong",
+        "gufeng"
+      ],
+      "spectacle": "早春的河州府衙前掛起新匾，鑼鼓與人群，梨枝上第一批花苞。",
+      "glamour_shot": "陸清和換上知府官服站在新匾下，回頭在人群裡找她，看見了才笑。",
+      "setups": [],
+      "payoffs": [
+        "s04-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和升任河州知府",
+        "街市的人改口叫她阿苓"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "a-niu",
+        "s04-jingguan",
+        "fu-bo"
+      ],
+      "locations": [
+        "河州府衙前",
+        "藥鋪街",
+        "陸府廳堂"
+      ],
+      "state": {
+        "time": "二月初，早春",
+        "knowledge": "陸清和升知府；誥封等她簽名",
+        "carry_forward": "她要簽哪個名字"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "側廳的燈",
+      "youtube_title": "他第一次對她說謊，摸著亡妻的木牌說那只是一份公文",
+      "duration_s": 115,
+      "logline": "姜苓在側廳看見陸清和夜裡寫一樣東西，她進門，他把紙蓋住了。",
+      "hook": "她在誥封上寫下兩個字：「姜苓。」然後在下面小小補了三個：「陸家的。」",
+      "hook_type": "reversal",
+      "mid_hook": "夜裡側廳燈亮，她推門，陸清和把一張紙翻過去壓在硯台下：「公文。」手指摸著腰間的木牌。",
+      "extra_hooks": [
+        "她站在門口沒動：「你摸木牌了。」他說：「早點睡。」"
+      ],
+      "conflict": "她看得出他說謊，而他從沒對她說過謊。",
+      "turn": "觀眾以為她會追問，她卻只說了一句「好」，把門關上。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "門關上後，她站在廊下回頭，燈影裡他把那張紙翻回來，提筆又寫了一行，寫完揉掉，重寫。",
+        "question": "他寫了又揉掉的是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "早春夜裡衙門側廳一扇亮著的窗，窗紙上一個伏案的影子。",
+      "glamour_shot": "陸清和燈下低頭寫字的側臉，鬢角早白，眉頭第一次鎖得那麼緊。",
+      "setups": [
+        "s04-t14"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她自己選了誥封上的名字"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府廳堂",
+        "府衙側廳",
+        "側廳外廊"
+      ],
+      "state": {
+        "time": "二月初",
+        "knowledge": "陸清和第一次對她說謊；他夜裡在寫一樣東西",
+        "carry_forward": "那張紙"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "金釵花回來了",
+      "youtube_title": "大姐當掉的金釵花擺在當鋪櫥窗，她用自己攢的月錢把它贖了回來",
+      "duration_s": 120,
+      "logline": "大姐回家安頓下來，姜苓想把她丟掉的東西還給她，金釵花就在一間當鋪的櫥窗裡。",
+      "hook": "阿牛氣喘吁吁跑來：「西街當鋪！」「有一朵金釵花！」",
+      "hook_type": "question",
+      "mid_hook": "當鋪掌櫃說：「年前一個書生當的。」「說是他娘子的。」她把攢了一季的月錢倒在櫃上：「她不是他娘子。」",
+      "extra_hooks": [
+        "姜府裡母親已經能下床，坐在廊下替大姐梳頭。"
+      ],
+      "conflict": "金釵花是大姐被騙走的最後一樣東西；她要用自己的錢贖回來。",
+      "turn": "觀眾以為大姐會戴上，大姐卻把金釵花插到她頭上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "大姐替她插好金釵花，輕聲說：「我不戴了。」「妳留著。」「等妳自己選了人，」「再戴。」她愣住：「我已經嫁了。」",
+        "question": "她已經嫁了，大姐為什麼這樣說？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "西街當鋪昏暗的櫥窗裡，一朵金釵花在一束光下發亮。",
+      "glamour_shot": "大姐替她插上金釵花，兩姐妹在姜府廊下的春光裡對望。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她用自己的錢贖回大姐的金釵花",
+        "姜母能下床了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-rao",
+        "jiang-mu",
+        "a-niu"
+      ],
+      "locations": [
+        "西街當鋪",
+        "姜府廊下"
+      ],
+      "state": {
+        "time": "二月中",
+        "knowledge": "大姐說要她「自己選了人」再戴；她想自己已經嫁了",
+        "carry_forward": "大姐那句話"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "姜父跪謝",
+      "youtube_title": "藏了她十年的父親再一次跪在知府府門口，這次是來謝她的",
+      "duration_s": 115,
+      "logline": "姜仲帶著一家人到陸府門口道謝，姜苓要他起來，他卻問了一句她答不出的話。",
+      "hook": "陸府門口，姜仲撲通跪下，玉扳指這次沒轉：「謝二丫頭，救了我們一家。」",
+      "hook_type": "image",
+      "mid_hook": "她沒去扶：「上次我扶你。這次你自己起來。」姜仲愣了愣，自己撐著膝蓋站了起來。",
+      "conflict": "姜家要補十年的虧欠；她要的不是補，是被當成一個人。",
+      "turn": "觀眾以為她會說原諒，她說的是：「以後走正門來。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "臨走姜仲回頭：「妳醒了……還回不回姜家？」她沒答。門內陸清和轉身進了屋。",
+        "question": "她會回姜家，還是留在陸家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "tianchong"
+      ],
+      "spectacle": "春日陸府門口，姜家四口人站在梨花初開的枝下，地上落了幾瓣。",
+      "glamour_shot": "她站在門檻上，春光從背後照來，鬢邊大姐給的金釵花一閃。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "姜仲自己站起來，姜家從此走正門來"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-zhong",
+        "jiang-mu",
+        "jiang-rao",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府大門"
+      ],
+      "state": {
+        "time": "二月下旬",
+        "knowledge": "姜家問她回不回去；陸清和轉身進屋",
+        "carry_forward": "陸清和的背影"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "妳救了我兩次",
+      "youtube_title": "將軍回邊軍前來看她最後一眼：妳不記得我，但妳救了我兩次",
+      "duration_s": 120,
+      "logline": "蕭承要回邊軍，走前來看姜苓一眼，她不記得他的臉，卻記得他的選擇。",
+      "hook": "陸府門口一匹戰馬，蕭承換回甲衣，手裡拿著那個新香包：「我要走了。」",
+      "hook_type": "line",
+      "mid_hook": "他說：「妳不記得我，但妳救了我兩次。十歲一次，這次一次。」她說：「第二次不是救你，是你自己選的。」",
+      "extra_hooks": [
+        "蕭承笑了一下：「妳現在說話，像個大人。」她說：「我本來就會長大。」"
+      ],
+      "conflict": "蕭承要放下她回邊關；她要讓他帶著自己的選擇走，不是帶著虧欠。",
+      "turn": "觀眾以為蕭承會再問一次要不要跟他走，他只問她記不記得他現在的樣子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她看著他的臉很久：「我記住了。這次是你自己的臉。」蕭承上馬，沒回頭，舉起手揮了一下。",
+        "question": "她這次會記住他的臉嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "tianchong"
+      ],
+      "spectacle": "早春城門口一騎甲衣，背後是梨花開滿的河州城，馬蹄揚起花瓣。",
+      "glamour_shot": "蕭承甲衣上馬回身揮手的一秒，臉上淺疤與笑都在陽光裡。",
+      "setups": [],
+      "payoffs": [
+        "m01",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承帶著自己的選擇回邊軍",
+        "她第一次說出記住了一張臉"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-cheng",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府大門",
+        "河州城門"
+      ],
+      "state": {
+        "time": "三月初",
+        "knowledge": "蕭承回邊軍",
+        "carry_forward": "最後一碗雪裡紅"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "最後一碗",
+      "youtube_title": "最後一碗藥就在藥鋪，她問喝了會忘什麼，大夫說了一句她沒想到的話",
+      "duration_s": 115,
+      "logline": "姜苓去問賀大夫最後一碗藥的事，想知道喝了會忘什麼，茶樓裡全城在賭她醒了選誰。",
+      "hook": "茶樓裡說書人一拍醒木：「知府夫人醒了！」「選將軍，還是知府？」滿樓下注。",
+      "hook_type": "line",
+      "mid_hook": "賀大夫把最後一包雪裡紅放在櫃上：「這一碗喝完，妳就二十了。」她問：「會忘什麼？」",
+      "extra_hooks": [
+        "春杏衝進茶樓搶了說書人的醒木：「她選她自己！」滿樓大笑。"
+      ],
+      "conflict": "最後一碗讓她完全醒，也會讓她忘掉十歲最重的一件事。",
+      "turn": "觀眾以為她會馬上喝，她聽完答案，把藥包推了回去：「先放你這。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "賀大夫說：「會忘十歲那年，」「妳為誰喝的那杯。」她手一停：她救過一個人，連這件事也會忘。",
+        "question": "她還要喝最後一碗嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju",
+        "chengzhang",
+        "gufeng"
+      ],
+      "spectacle": "河州茶樓滿座，說書人醒木一拍，窗外藥鋪街春雨初落。",
+      "glamour_shot": "她在藥鋪櫃前聽賀大夫說話，春雨在門外，她垂眼的側臉。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道最後一碗的代價",
+        "最後一碗由她自己決定什麼時候喝"
+      ],
+      "characters": [
+        "jiang-ling",
+        "he-daifu",
+        "chun-xing"
+      ],
+      "locations": [
+        "河州茶樓",
+        "賀大夫藥鋪"
+      ],
+      "state": {
+        "time": "三月初",
+        "knowledge": "最後一碗喝了她會二十歲、忘掉十歲為誰喝毒",
+        "carry_forward": "全城在等她選"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "布老虎裡的藥",
+      "youtube_title": "孩子聽見下人說娘醒了就會走，偷偷把最後一包藥藏進了布老虎",
+      "duration_s": 115,
+      "logline": "小禮聽見下人說「夫人醒了就會走」，偷偷把最後一包藥藏起來，姜苓要找回藥、也要讓他不怕。",
+      "hook": "賀大夫跑進陸府：「最後一包雪裡紅，不見了！」",
+      "hook_type": "danger",
+      "mid_hook": "她在小禮床上摸到布老虎肚子鼓鼓的，拆開一角，是那包藥。小禮抱住她的腿：「娘醒了會走。」",
+      "extra_hooks": [
+        "杜嬤嬤紅了臉：「是我在廚房說嘴……」"
+      ],
+      "conflict": "小禮怕她醒、怕她走；她要讓他相信醒著的她也會留下。",
+      "turn": "觀眾以為她會責備小禮，她卻把藥塞回布老虎：「那你替我收著。」「我要喝時跟你拿。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她蹲下來：「我現在就醒著。你看，我還在。」小禮看了她很久，伸手摸了摸她的臉，像在確認。",
+        "question": "小禮信了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "jiating",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "梨花滿樹的小院，一隻被拆開一角的布老虎，肚子裡露出一包草藥。",
+      "glamour_shot": "她蹲下讓小禮摸自己的臉，梨花瓣落在她髮上，笑得很輕。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "最後一包藥找到，由小禮收著",
+        "小禮第一次問出他的怕"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "he-daifu",
+        "du-mama",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府小院",
+        "小禮的房"
+      ],
+      "state": {
+        "time": "三月上旬",
+        "knowledge": "最後一包藥在小禮的布老虎裡",
+        "carry_forward": "陸清和聽見了這段話"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "給妳的鋪子",
+      "youtube_title": "他把一間藥鋪的房契寫上她的名字：妳懂草藥，該有自己的鋪子",
+      "duration_s": 115,
+      "logline": "陸清和送姜苓一間藥鋪，她以為是禮物，卻看出他每一句都在往後退。",
+      "hook": "桌上一張房契推到她面前，上面寫著：「姜苓」。",
+      "hook_type": "image",
+      "mid_hook": "他說：「妳懂草藥。」「該有自己的鋪子。」她問：「你不教我寫字了？」他說：「妳都會了。」手指又摸上木牌。",
+      "extra_hooks": [
+        "賀大夫來看鋪子，說：「這位置好。」「一個人住也夠。」她看了陸清和一眼。"
+      ],
+      "conflict": "他在給她能自己過日子的一切；她要知道為什麼。",
+      "turn": "觀眾以為他在寵她，她卻注意到房契上只有她的名字，沒有陸。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她翻到房契背面，陸清和的小字：「後院可住，井水甜。」她抬頭，他已經走了。",
+        "question": "他為什麼要她能一個人住？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xuanyi",
+        "gufeng"
+      ],
+      "spectacle": "藥鋪街一間新漆的小鋪，門楣空著等匾，後院一口井與一株小梨樹。",
+      "glamour_shot": "陸清和把房契推過去時垂眼，晨光落在他手背與袖口磨白的地方。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她有了自己的藥鋪"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "he-daifu",
+        "meng-xiansheng"
+      ],
+      "locations": [
+        "陸府廳堂",
+        "藥鋪街新鋪"
+      ],
+      "state": {
+        "time": "三月中",
+        "knowledge": "房契只有她的名字，後院能一個人住",
+        "carry_forward": "他在退"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "我在等妳選",
+      "youtube_title": "梨花樹下他推著她的鞦韆說：妳想去哪都可以，她問：你在趕我？",
+      "duration_s": 120,
+      "logline": "梨花開滿，陸清和推著鞦韆把話說到一半，姜苓要他說完。",
+      "hook": "梨花一陣落下，鞦韆被推高，他在身後說：「妳想去哪，都可以。」",
+      "hook_type": "line",
+      "mid_hook": "她讓鞦韆停下，回頭：「你在趕我？」他說：「我在等妳選。」",
+      "extra_hooks": [
+        "小禮在廊下抱著布老虎，一直盯著他們，沒有走開。"
+      ],
+      "conflict": "他把選擇全推給她，卻不說他自己想要什麼。",
+      "turn": "觀眾以為他會說留下，他只說「等」；她第一次看見他不敢看她的眼睛。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡他拿著一張新紙走進側廳，燈又亮了。她披衣走到廊口，停住：要不要過去？",
+        "question": "她要去看他寫什麼嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "xuanyi",
+        "zhiyu"
+      ],
+      "spectacle": "滿樹梨花的小院，鞦韆盪起時花瓣像雪一樣翻飛。",
+      "glamour_shot": "他推鞦韆時花瓣落在他肩頭與鬢角早白上；她盪到最高處回頭，梨花圍住她的臉。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他承認在等她選"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府梨樹下鞦韆",
+        "側廳外廊"
+      ],
+      "state": {
+        "time": "三月下旬，梨花盛開",
+        "knowledge": "他把選擇交給她；夜裡又在寫",
+        "carry_forward": "側廳那張紙"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "放妻書",
+      "youtube_title": "他升任知府的那個春天，她在抽屜裡看見一封寫好的放妻書，日期空著",
+      "duration_s": 150,
+      "logline": "姜苓走到側廳門外，終於看見陸清和夜夜在寫的東西，她要決定進不進去。",
+      "hook": "她沒過去，回房躺下；半夜醒來，側廳的燈還亮著，她赤腳走過梨花落滿的廊下。",
+      "hook_type": "image",
+      "mid_hook": "門縫裡，陸清和寫完最後一筆，把紙對折放進抽屜，沒有關嚴。他吹熄燈，從另一扇門走了。",
+      "extra_hooks": [
+        "她推門進去，抽屜露出一角，抬頭兩個字她認得：「放妻」。",
+        "日期那一格空著，只蓋好了他的私印。"
+      ],
+      "conflict": "他在準備放她走；她要第一次自己弄懂一件大人的事。",
+      "turn": "觀眾以為她會衝去質問，她把抽屜推回原樣，退出門外，像從沒來過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她在廊下站了很久，第一次懂了：他在準備放她走，等她醒的那天。她回房，把那張寫著「我」的紙放在枕頭下。",
+        "question": "她醒的那天，會走還是留？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tianchong",
+        "chengzhang"
+      ],
+      "spectacle": "月下梨花落滿長廊，一扇半掩的抽屜，紙角上「放妻書」三個字。",
+      "glamour_shot": "她站在月光的廊下，梨花落在肩上，十七歲的側臉第一次有大人的沉靜。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t14",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她自己看懂了放妻書",
+        "她把「我」放在枕頭下"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "側廳外廊",
+        "府衙側廳",
+        "陸府她的房"
+      ],
+      "state": {
+        "time": "三月末，梨花將謝",
+        "knowledge": "放妻書寫好在抽屜，日期空著；她懂了他在準備放她走",
+        "carry_forward": "最後一碗雪裡紅在小禮的布老虎裡，放妻書在抽屜"
+      }
+    }
+  ]
+}

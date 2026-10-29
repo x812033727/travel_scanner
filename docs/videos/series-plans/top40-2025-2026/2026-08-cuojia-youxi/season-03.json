@@ -1,0 +1,4500 @@
+{
+  "number": 3,
+  "title": "舊人",
+  "theme": "十年沒回來的人回來了，才知道她沒死。",
+  "start_state": "小禮叫她娘、河州叫她陸夫人、她會寫兩個字。賀大夫手上有雪裡紅，陸清和還沒決定讓不讓她解。糧倉的陳糧查到一半被周崇壓下。邊軍副將蕭承回河州省親。",
+  "end_state": "亡妻怎麼死的揭開（瘟疫，去城西照顧病人染上，他在衙門賑災沒趕上）；蕭承為什麼十年不來揭開（以為她死了，帶著她的香包）；寒毒能不能解揭開（能，雪裡紅，一季一分，會忘十歲的事）。蕭承在陸府門外看見她盪鞦韆、認出她；他要帶她走，她說『我吃飯的地方在這』；陸清和決定讓她解——第一碗雪裡紅她喝了，第一次說出完整的大人句子，也第一次忘了一件事：蕭承的臉。蕭母開始算姜家與陸家的錢。最後一集，蕭承站在梨樹下問她：『妳記得我嗎？』她看了很久，說：『我記得我救過一個人。我不記得他長什麼樣。』蕭承說：『我長這樣。』她說：『那你以後常來，我就記得了。』陸清和在廊下，第一次怕。",
+  "guest_cast": [
+    {
+      "id": "s03-wang-yuanwai",
+      "name": "王員外",
+      "role": "蕭家宴席的賓客，河州綢緞商，嘴碎、愛拿陸府的傻夫人當下酒話",
+      "appearance": "東亞中年男性，四十五歲，圓臉紅潤、八字鬍修得整齊、笑起來眼睛瞇成縫，穿醬紫色團花綢袍、腰繫金絲帶，手裡一把象牙骨摺扇"
+    },
+    {
+      "id": "s03-liu-taitai",
+      "name": "柳太太",
+      "role": "蕭家宴席的賓客，河州最會傳話的太太，宴上一句話第二天全城都知道",
+      "appearance": "東亞女性，四十歲，鵝蛋臉、細眉、薄施脂粉，髮髻上插一排珍珠簪，穿藕荷色褙子，手帕從不離手、說話前先掩嘴"
+    },
+    {
+      "id": "s03-zhao-qi",
+      "name": "趙七",
+      "role": "蕭承的邊軍親兵，十九歲，跟了他四年，話少腿快",
+      "appearance": "東亞男性，十九歲，瘦高、曬得黝黑、濃眉短髮紮成小髻，穿褪色的赭色軍便服、綁腿，腰間一把舊短刀，站姿筆直"
+    },
+    {
+      "id": "s03-men-gong",
+      "name": "鄭伯",
+      "role": "姜府後門的老門房，十年替後院小屋送飯，一句話說出了二小姐是活的",
+      "appearance": "東亞老年男性，六十八歲，瘦小、背微駝、灰白短鬚，穿洗舊的藏青短褂，手裡一盞燈籠和一串銅鑰匙"
+    },
+    {
+      "id": "s03-lao-qiao",
+      "name": "喬老",
+      "role": "城西石碑的守碑人，三年前瘟疫後自願住在空巷口，每天擦一遍碑上的名字",
+      "appearance": "東亞老年男性，七十歲，清瘦、白髮束成髻、眼神溫和，穿粗布灰長衫，肩上搭一條擦碑的白布，腳邊一把竹掃帚"
+    },
+    {
+      "id": "s03-tian-shen",
+      "name": "田嬸",
+      "role": "北坡村的採藥婦，起初笑陸夫人是『來挖草的傻子』",
+      "appearance": "東亞女性，四十二歲，結實、臉頰被山風吹得發紅，頭包藍印花布巾，背一個竹簍，穿厚棉短襖與綁腿"
+    },
+    {
+      "id": "s03-ya-ya",
+      "name": "丫丫",
+      "role": "田嬸的女兒，七歲，北坡上第一個跟著陸夫人找草的孩子",
+      "appearance": "東亞女童，七歲，紅撲撲的圓臉、兩條短辮、眼睛亮，穿碎花小棉襖，手裡抓一根樹枝"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s03-t01",
+      "question": "蕭承會不會知道她還活著？",
+      "setup_episode": 121,
+      "payoff_episode": 130
+    },
+    {
+      "id": "s03-t02",
+      "question": "陸清和為什麼不帶她去蕭家赴宴？",
+      "setup_episode": 122,
+      "payoff_episode": 128
+    },
+    {
+      "id": "s03-t03",
+      "question": "蕭母為什麼說她病死了？",
+      "setup_episode": 123,
+      "payoff_episode": 167
+    },
+    {
+      "id": "s03-t04",
+      "question": "河邊那束草的結，蕭承在哪見過？",
+      "setup_episode": 126,
+      "payoff_episode": 131
+    },
+    {
+      "id": "s03-t05",
+      "question": "蕭承會不會走進陸府的門？",
+      "setup_episode": 131,
+      "payoff_episode": 134
+    },
+    {
+      "id": "s03-t06",
+      "question": "她認不認得那個香包？",
+      "setup_episode": 133,
+      "payoff_episode": 135
+    },
+    {
+      "id": "s03-t07",
+      "question": "蕭承要帶她走，她走不走？",
+      "setup_episode": 137,
+      "payoff_episode": 140
+    },
+    {
+      "id": "s03-t08",
+      "question": "蕭承每天送來的糖，她要吃到哪一天？",
+      "setup_episode": 141,
+      "payoff_episode": 173
+    },
+    {
+      "id": "s03-t09",
+      "question": "碑下那只粥碗是誰留的？",
+      "setup_episode": 145,
+      "payoff_episode": 146
+    },
+    {
+      "id": "s03-t10",
+      "question": "碑上的「陳糧」是什麼意思？",
+      "setup_episode": 148,
+      "payoff_episode": 150
+    },
+    {
+      "id": "s03-t11",
+      "question": "她肯不肯喝那碗會忘事的藥？",
+      "setup_episode": 151,
+      "payoff_episode": 153
+    },
+    {
+      "id": "s03-t12",
+      "question": "她醒來會忘了什麼？",
+      "setup_episode": 155,
+      "payoff_episode": 160
+    },
+    {
+      "id": "s03-t13",
+      "question": "蕭母手上的婚約是真的嗎？",
+      "setup_episode": 162,
+      "payoff_episode": 167
+    },
+    {
+      "id": "s03-t14",
+      "question": "小禮為什麼不叫娘了？",
+      "setup_episode": 171,
+      "payoff_episode": 173
+    },
+    {
+      "id": "s03-t15",
+      "question": "陸清和為什麼不給第二碗藥？",
+      "setup_episode": 173,
+      "payoff_episode": 175
+    },
+    {
+      "id": "s03-t16",
+      "question": "蕭承的下一步是什麼？",
+      "setup_episode": 176,
+      "payoff_episode": 179
+    }
+  ],
+  "episodes": [
+    {
+      "number": 121,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "將軍回城",
+      "youtube_title": "傻夫人蹲在街邊拔草，十年前她拿命救過的少年騎著黑馬從她頭頂躍過，兩人誰也沒認出誰",
+      "duration_s": 115,
+      "logline": "阿苓想帶小禮上街看邊軍進城，卻不知道馬上那個副將就是她十歲那年替他喝下寒毒的人。",
+      "hook": "陸府飯桌上鋪滿紙，每張都寫著歪歪的「清」。阿苓舉起一張：「今天第一百張。」",
+      "hook_type": "image",
+      "mid_hook": "城門鑼響，一匹黑馬越過藥鋪門口；阿苓蹲著拔草，一抬頭，只看見馬上那人腰間晃著一個舊香包。",
+      "extra_hooks": [
+        "親兵趙七在馬上晃了兩晃，一頭栽下來；全街退開，只有阿苓抓著一把草衝過去。"
+      ],
+      "conflict": "邊軍進城、全街擠著看熱鬧，阿苓要護住小禮，也要救下中暑落馬的親兵，偏偏旁人都喊「傻子別碰」。",
+      "turn": "大家以為傻夫人在亂塞野草，賀大夫擠進來一看，草是對的；馬上的副將回頭道謝，她已經被小禮拉走了，兩人只差一個轉身。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蕭府的大紅帖子送進陸府，上寫「恭請通判攜眷」；陸清和看了很久，把「眷」那一角摺了起來。阿苓仰頭問：「有糖嗎？我能去嗎？」",
+        "question": "他會帶她去蕭家的宴嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "gufeng",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "河州城門大開，邊軍黑甲一列進城，藥鋪街兩旁的人群像潮水往後退，一匹黑馬從蹲著的淺綠身影頭頂躍過。",
+      "glamour_shot": "蕭承勒馬回頭，日光從城樓斜照在他曬黑的側臉與那道淺疤上，眼神在人群裡找了一下又收回。",
+      "setups": [
+        "s03-t01",
+        "m06"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她用藥婆教的草救醒了中暑落馬的親兵趙七，賀大夫當街點頭"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "xiao-cheng",
+        "s03-zhao-qi",
+        "he-daifu",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府飯廳",
+        "河州城門",
+        "藥鋪街"
+      ],
+      "state": {
+        "time": "第三季第一天，初冬傍晚",
+        "knowledge": "她只知道今天有個將軍進城；陸清和知道進城的是蕭家的兒子",
+        "carry_forward": "蕭家的帖子；他摺起的「眷」字"
+      }
+    },
+    {
+      "number": 122,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "人多",
+      "youtube_title": "他赴宴不帶傻妻只說人多，席上富商笑她連字都不會寫，他一句話讓滿桌閉嘴",
+      "duration_s": 120,
+      "logline": "陸清和要獨自赴蕭家的宴，把阿苓留在家裡；他擋得住席上的閒話，擋不住席上那個人身上的草味。",
+      "hook": "陸清和蹲下來替她把歪掉的髮帶紮好：「人多。妳在家等我。」她抓住他袖子：「那你帶糖回來。」",
+      "hook_type": "line",
+      "mid_hook": "王員外舉杯大笑：「陸通判娶了個傻子，聽說連字都不會寫？」滿席跟著笑，柳太太已經掩嘴準備傳話。",
+      "conflict": "陸清和要在蕭家的宴上替不在場的她守住名聲，又不能讓蕭家知道她跟這家人有過什麼。",
+      "turn": "大家等他難堪，他只淡淡說：「她會寫我的名字。員外會寫自己的嗎？」王員外的字是出了名的醜，滿席沒人再笑。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "遲到的蕭承入席，坐到陸清和身邊；一陣淡淡的草香飄過來，陸清和握杯的手停住：那是阿苓每晚塞進小禮枕頭的安神草。",
+        "question": "他身上為什麼有阿苓的草味？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "gufeng",
+        "xuanyi"
+      ],
+      "spectacle": "蕭府正廳點滿紅燈籠，二十桌宴席一字排開，酒氣裡一陣綠色的草香從一個武將的腰間飄過整張桌子。",
+      "glamour_shot": "陸清和蹲在廊下替她紮髮帶，燈籠的光落在他乾淨的眉眼與那一絲早白的鬢角上。",
+      "setups": [
+        "s03-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他當著全河州的富戶說她會寫字，王員外閉嘴"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "jiang-ling",
+        "xiao-mu",
+        "xiao-cheng",
+        "s03-wang-yuanwai",
+        "s03-liu-taitai",
+        "zhou-chong"
+      ],
+      "locations": [
+        "陸府廊下",
+        "蕭府正廳"
+      ],
+      "state": {
+        "time": "當晚宴席",
+        "knowledge": "陸清和認出蕭承香包裡是她的安神草",
+        "carry_forward": "香包從哪來；蕭母要開口說什麼"
+      }
+    },
+    {
+      "number": 123,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "病死了十年",
+      "youtube_title": "將軍在宴上問起兒時玩伴，親娘笑著說她病死十年了，鄰座的通判看見她數了三次鐲子",
+      "duration_s": 125,
+      "logline": "蕭承想問河州的舊人，蕭母要讓他以為那個人早死了；陸清和聽得出誰在說謊，卻選擇不開口。",
+      "hook": "蕭承放下杯子：「姜家那個小丫頭呢？」整桌靜了一拍。",
+      "hook_type": "question",
+      "mid_hook": "蕭母笑著說：「姜家二小姐，你小時候玩的那個，病死了十年了。」蕭承的杯子停在半空。",
+      "extra_hooks": [
+        "同一時刻的陸府，阿苓教小禮紮頭髮，紮得跟她自己一樣歪；小禮對著銅鏡笑出聲。"
+      ],
+      "conflict": "陸清和要決定：在這張桌上說出「她活著，在我家」，還是把話吞回去。",
+      "turn": "觀眾以為蕭母不知情，鏡頭給到桌下：她說「病死了」時手指在金鐲上數了三下——她知道，她是故意的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "蕭承起身，把整杯酒慢慢倒在廊下的地上：「這杯敬她。」陸清和的手按在腰間的木牌上，指節發白。",
+        "question": "陸清和會說出她還活著嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "zhiyu"
+      ],
+      "spectacle": "紅燈籠下，一杯酒從青石廊沿流下去，酒痕在地上慢慢畫成一條線，正好停在陸清和的鞋尖前。",
+      "glamour_shot": "蕭承仰頭飲盡前那一秒，燈籠的紅光把他臉上的疤照成一道細細的金線。",
+      "setups": [
+        "s03-t03",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和看穿蕭母說謊的小動作：數鐲子"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "xiao-mu",
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli",
+        "s03-liu-taitai"
+      ],
+      "locations": [
+        "蕭府正廳",
+        "蕭府廊下",
+        "小禮的房"
+      ],
+      "state": {
+        "time": "宴席散前",
+        "knowledge": "陸清和知道蕭承以為她死了，也知道蕭母在說謊",
+        "carry_forward": "他要不要告訴阿苓"
+      }
+    },
+    {
+      "number": 124,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "沒吃",
+      "youtube_title": "他從將軍府的宴上回來一口沒吃，傻妻熱了三次的那碗麵端到他面前，她問了一句他答不出的話",
+      "duration_s": 110,
+      "logline": "阿苓守著一碗熱了三次的麵等他回家；陸清和有一個名字到了嘴邊，卻沒說出口。",
+      "hook": "燈下，阿苓捧著碗衝到門口：「好吃嗎？」陸清和脫下外衫：「沒吃。」",
+      "hook_type": "line",
+      "mid_hook": "她一邊看他吃麵一邊問：「那個將軍好看嗎？比你好看嗎？」陸清和嗆了一口湯。",
+      "conflict": "他要問清楚她十歲那年救的是誰，又怕問出口，她就會想起什麼、要去找誰。",
+      "turn": "他以為她不記得，她卻張口就答：「阿承。他掉了一顆門牙，說話漏風。」她記得的是十歲的那個男孩，不是今天的將軍。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陸清和看著她笑出聲學阿承漏風，張了口——最後只說：「睡吧。」她走後，他把那張寫滿「清」的紙壓在木牌下面。",
+        "question": "他為什麼不告訴她阿承回來了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "一碗熱了三次的陽春麵在燈下冒著白氣，碗邊壓著一張寫歪的「清」字。",
+      "glamour_shot": "阿苓托著下巴看他吃麵，燭光在她圓圓的眼睛裡跳，頭髮歪在一邊。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她親口說出十歲那年救的是「阿承」，陸清和第一次知道這個名字"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府飯廳",
+        "陸府廊下"
+      ],
+      "state": {
+        "time": "宴後深夜",
+        "knowledge": "陸清和知道蕭承就是阿承；她不知道阿承回來了",
+        "carry_forward": "他瞞下的這件事"
+      }
+    },
+    {
+      "number": 125,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "別出門",
+      "youtube_title": "親娘偷偷上門叮囑傻女兒這幾天別出門，話還沒說完，女兒已經提著籃子去了河邊",
+      "duration_s": 115,
+      "logline": "姜母知道蕭承回來了，想讓女兒避開；蕭承先去了姜府，姜父咬死一句「後院塌了」。",
+      "hook": "姜府正廳，姜父的玉扳指轉得飛快：「二小姐？走了，走了十年了。」蕭承盯著他的手。",
+      "hook_type": "danger",
+      "mid_hook": "姜母一路小跑到陸府後門，攥著女兒的手：「這幾天別出門。」阿苓問：「為什麼？」姜母咬著嘴唇，說不出口。",
+      "extra_hooks": [
+        "蕭承告辭時看見通往後院的小門掛著一把新鎖，姜父擋在門前：「後院塌了，別去。」"
+      ],
+      "conflict": "姜家要繼續瞞住蕭承，姜母要護住女兒，可她不會對女兒說謊、也說不出真話。",
+      "turn": "阿苓看出娘在咬嘴唇，直接說：「娘說謊的時候咬嘴唇。」姜母只好說：「有個舊人回來了。」阿苓聽成「有個舊鞦韆壞了」，說要去河邊採草來修。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "姜母追到後門，門閂還在晃，院裡只剩那個鞦韆在擺；阿苓的籃子已經不見了，河邊的方向傳來馬蹄聲。",
+        "question": "她會在河邊撞見誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "xiju"
+      ],
+      "spectacle": "姜府正廳一片紅金，掛著大姐的畫像；淺綠衣角的阿苓從陸府後門跑出去，背後梨樹的枯枝一晃。",
+      "glamour_shot": "姜母握著女兒的手抬頭，眼下發紅，鬢上那支舊簪在冬陽裡閃了一下。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "姜母第一次主動上陸府看女兒"
+      ],
+      "characters": [
+        "jiang-zhong",
+        "xiao-cheng",
+        "jiang-mu",
+        "jiang-ling",
+        "s03-zhao-qi"
+      ],
+      "locations": [
+        "姜府正廳",
+        "陸府後門"
+      ],
+      "state": {
+        "time": "隔日午前",
+        "knowledge": "蕭承覺得姜家在藏什麼；阿苓不知道「舊人」是誰",
+        "carry_forward": "河邊"
+      }
+    },
+    {
+      "number": 126,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "這石頭是我的",
+      "youtube_title": "傻姑娘在河邊對陌生將軍說這石頭是我的，他笑了，因為十年前他也聽過一模一樣的話",
+      "duration_s": 130,
+      "logline": "阿苓到河邊採草，遇到坐在她兒時石頭上的陌生男人；兩人聊了一整個下午，誰也沒認出誰。",
+      "hook": "河邊大石頭上坐著一個高大的男人，阿苓叉腰站在他面前：「這石頭是我的。」",
+      "hook_type": "line",
+      "mid_hook": "她把一片葉子拍在他臉上的疤：「這個草貼三天，疤會淡。」他愣住——十年前也有個小丫頭這樣拍過他。",
+      "extra_hooks": [
+        "遠處小禮喊了一聲「娘」，阿苓拔腿就跑，籃子裡掉出一束紮得歪歪的草。"
+      ],
+      "conflict": "蕭承想一個人坐在舊地方記一個死去的人，偏偏被一個不怕生的姑娘纏住問東問西。",
+      "turn": "觀眾等他認出她，他卻只當她是陸府那個大家說的「傻夫人」，還好心勸她：「別讓人欺負妳。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "蕭承撿起那束草，草莖上的結打得歪歪扭扭——跟他腰間那個香包上的結，一模一樣。他抬頭，河岸上已經沒有人了。",
+        "question": "這個結為什麼跟她的香包一樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhiyu",
+        "gufeng"
+      ],
+      "spectacle": "冬日的河面泛著碎金，一塊大青石上坐著一個武將和一個抓著草的姑娘，兩個影子在水裡排在一起。",
+      "glamour_shot": "阿苓蹲在青石邊抬頭笑，風吹起她歪掉的髮帶，袖口沾著一抹草綠。",
+      "setups": [
+        "s03-t04"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她替蕭承的舊疤貼了草藥",
+        "蕭承在河州第一次笑"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-cheng",
+        "lu-xiaoli",
+        "s03-zhao-qi"
+      ],
+      "locations": [
+        "城外河邊",
+        "河邊大青石"
+      ],
+      "state": {
+        "time": "同日黃昏",
+        "knowledge": "蕭承手上有一束與香包同結的草；她只記得「一個好心的大個子」",
+        "carry_forward": "那個結"
+      }
+    },
+    {
+      "number": 127,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "蕭夫人上門",
+      "youtube_title": "將軍的娘帶著厚禮上門，笑傻夫人頭髮紮歪，傻夫人一句話指出她鐲子少了一個扣",
+      "duration_s": 120,
+      "logline": "蕭母聽說兒子在河邊遇見了陸府的傻夫人，帶禮上門，要陸清和把人看緊。",
+      "hook": "蕭母一進院子就笑出聲：「頂了大姐花轎的，就是她？」",
+      "hook_type": "line",
+      "mid_hook": "阿苓繞著蕭母走了一圈，指著她手腕：「妳的第三個鐲子少一個扣，會掉。」蕭母低頭，鐲子正好滑下來。",
+      "conflict": "蕭母要陸清和把阿苓關在家裡，不准她再去河邊；陸清和要在不逼阿苓的前提下回絕。",
+      "turn": "大家以為蕭母是來示好的，她屏退下人後只說一句：「我兒子要是知道她活著，你這個家就散了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蕭母把禮盒往前一推，盒裡壓著一張銀票：「讓她別出門。」陸清和把盒子推回去：「她出門是去採藥。」蕭母的笑一點一點收起來。",
+        "question": "蕭母會怎麼對付她？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "米白的陸府小院裡，蕭母三個金鐲子叮噹作響，一個鐲子掉在青石上滾到梨樹根下。",
+      "glamour_shot": "陸清和站在梨樹下替她擋在身前，青灰長衫袖口磨白，側臉平靜不動。",
+      "setups": [
+        "s03-t03"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和拒收蕭母的銀票",
+        "她當面指出蕭母鐲子要掉"
+      ],
+      "characters": [
+        "xiao-mu",
+        "jiang-ling",
+        "lu-qinghe",
+        "chun-xing",
+        "du-mama"
+      ],
+      "locations": [
+        "陸府小院",
+        "陸府正堂"
+      ],
+      "state": {
+        "time": "隔日",
+        "knowledge": "陸清和確定蕭母知道她活著、要瞞兒子",
+        "carry_forward": "蕭母的威脅"
+      }
+    },
+    {
+      "number": 128,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "誰帶得走我",
+      "youtube_title": "他終於說出不帶她赴宴的理由，傻妻聽完握起拳頭：誰敢帶走我，我就咬他",
+      "duration_s": 115,
+      "logline": "陸清和燈下教她寫「小禮」，說出了不帶她赴宴的真話；轉身，他去看了那盒鎖著的雪裡紅。",
+      "hook": "燭下，阿苓寫的「小」字三筆寫成了三隻螞蟻。陸清和憋著笑：「再一次。」",
+      "hook_type": "image",
+      "mid_hook": "她追問那天為什麼不帶她，他終於說：「我怕妳在那裡被人認出來，被帶走。」她舉起拳頭：「誰帶得走我？我會咬。」",
+      "extra_hooks": [
+        "深夜的藥鋪後堂，賀大夫打開一隻小木盒：兩株乾掉的雪裡紅，莖紅得像一根細線。"
+      ],
+      "conflict": "陸清和要不要讓她解毒：解了她會長大，可長大的她，可能就想走了。",
+      "turn": "觀眾以為他怕的是蕭承，賀大夫一句「解了，她會長大」讓他沉默——他怕的是她長大本身。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陸清和的手指放在雪裡紅木盒的鎖扣上，扣開了一半；他又把它扣回去：「再等等。」賀大夫嘆氣。",
+        "question": "他會讓她解毒嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "燭光下一張紙上歪歪的「小禮」二字，旁邊是藥鋪後堂木盒裡兩株紅莖白葉的乾草。",
+      "glamour_shot": "陸清和在燭下側身握著她的手教寫字，影子投在白牆上，他的側臉乾淨溫和。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [
+        "s03-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次寫出「小禮」兩個字，雖然像螞蟻",
+        "陸清和說出不帶她赴宴的真話"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "he-daifu"
+      ],
+      "locations": [
+        "陸府書房",
+        "藥鋪後堂"
+      ],
+      "state": {
+        "time": "當夜",
+        "knowledge": "陸清和知道雪裡紅就在賀大夫手上，他還沒決定",
+        "carry_forward": "那盒藥"
+      }
+    },
+    {
+      "number": 129,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "同一首歌",
+      "youtube_title": "將軍醉後哼起一首兒時的歌，同一刻陸府裡的傻夫人正唱著同一首哄孩子睡覺",
+      "duration_s": 120,
+      "logline": "蕭承越想越覺得姜家在藏東西，親兵打聽到姜府後院有一間鎖了十年、天天有人送飯的小屋。",
+      "hook": "蕭府屋頂，蕭承一個人喝酒，哼出一首調子歪的山歌。",
+      "hook_type": "image",
+      "mid_hook": "鏡頭一轉，陸府小禮的房裡，阿苓唱著同一首歌，一字不差；小禮的眼皮慢慢闔上。",
+      "conflict": "蕭承要查清姜家到底藏了什麼，又不能驚動母親。",
+      "turn": "趙七帶回的消息讓他手裡的酒罈停住：姜府後院那間屋子，十年來天天有人送飯——一個死了十年的人，為什麼要送飯？",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "三更，蕭承翻上姜府後牆，牆頭的碎瓦嘩一聲落下；巡夜的燈籠轉過來，照在他腳邊。",
+        "question": "他會被姜家當賊抓住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "zhiyu"
+      ],
+      "spectacle": "兩個畫面左右對切：屋頂月下喝酒的武將、燭下唱歌的姑娘，同一段旋律從左邊流到右邊。",
+      "glamour_shot": "阿苓坐在小禮床邊輕輕拍著他，燭光把她的側臉照得像一層暖紙。",
+      "setups": [
+        "s03-t01"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮在她的歌裡安穩睡著"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "s03-zhao-qi",
+        "jiang-ling",
+        "lu-xiaoli",
+        "yaopo"
+      ],
+      "locations": [
+        "蕭府屋頂",
+        "小禮的房",
+        "姜府後牆"
+      ],
+      "state": {
+        "time": "第五夜三更",
+        "knowledge": "蕭承知道姜府後院有一間天天送飯的空屋",
+        "carry_forward": "小屋裡有什麼"
+      }
+    },
+    {
+      "number": 130,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "三千六百畫",
+      "youtube_title": "將軍翻牆找到鎖了十年的小屋，牆上刻滿三千六百個正字，看門老人說：二小姐是活的",
+      "duration_s": 150,
+      "logline": "蕭承夜探姜府後院，想看那間鎖了十年的屋子；他看見的東西讓他知道了十年來最大的謊。",
+      "hook": "燈籠照過來，舉燈的是姜府老門房鄭伯，他看了蕭承很久：「是蕭家的小少爺？」",
+      "hook_type": "danger",
+      "mid_hook": "小屋窗上有一條縫，蕭承湊近：屋裡空的，四面牆上刻滿一排一排的「正」字，從牆角一直刻到房梁下。",
+      "extra_hooks": [
+        "他一個一個數，數到三千六百，手指停在最後一畫——十年，一天不少。"
+      ],
+      "conflict": "蕭承要知道這間屋子住過誰，鄭伯要守姜家的規矩，卻守了十年的良心。",
+      "turn": "觀眾以為鄭伯會照姜父的吩咐說「沒人」，他卻嘆了口氣，說出了全河州都知道、只有蕭承不知道的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "蕭承問：「這屋子誰住過？」鄭伯說：「二小姐。活的。嫁去陸府了。」蕭承手裡那束歪結的草，掉在三千六百個正字底下。",
+        "question": "他知道了，下一步會去哪？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "ganren"
+      ],
+      "spectacle": "燈籠照進窗縫，四面牆上密密麻麻的「正」字一排排亮起來，像一整面牆的雨。",
+      "glamour_shot": "蕭承站在窗外，燈籠的光從下往上照著他的臉，眼眶紅了卻一動不動。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t01",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承知道她活著、嫁進了陸府"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "s03-men-gong",
+        "jiang-ling"
+      ],
+      "locations": [
+        "姜府後院",
+        "後院小屋"
+      ],
+      "state": {
+        "time": "第五夜將盡",
+        "knowledge": "蕭承知道她活著，知道母親騙了他",
+        "carry_forward": "陸府的門"
+      }
+    },
+    {
+      "number": 131,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "門外一個時辰",
+      "youtube_title": "將軍在通判府門外站了一個時辰，看她在梨樹下盪鞦韆，小男孩在旁邊一聲聲叫她娘",
+      "duration_s": 120,
+      "logline": "蕭承天一亮就到了陸府門外，想見她一面；可門縫裡的她，有一個叫她娘的孩子。",
+      "hook": "天剛亮，陸府門縫外站著一個穿便服的高大男人，手裡攥著一束打了歪結的草。",
+      "hook_type": "image",
+      "mid_hook": "門縫裡，阿苓在梨樹下盪鞦韆，小禮在下面拍手：「娘！再高！」蕭承握草的手一緊。",
+      "extra_hooks": [
+        "他低頭看那束草，又看她鞦韆繩上的結——一樣的歪法；河邊那個姑娘，就是她。"
+      ],
+      "conflict": "蕭承要決定敲不敲這扇門：門裡的她活著，卻已經是別人的家。",
+      "turn": "觀眾以為他會衝進去，他卻在門外站成一根柱子，從日出站到日上三竿，連趙七都勸不動。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "福伯開門：「找誰？」蕭承說：「找姜苓。」福伯說：「陸夫人在。」蕭承沉默很久，把那束草放在門檻上，轉身走了。",
+        "question": "他還會再來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "從門縫往裡看：老梨樹、鞦韆、淺綠的身影一高一低；門外一個人的影子被日頭從長拉到短。",
+      "glamour_shot": "阿苓盪到最高點回頭大笑，梨樹枯枝在她身後像一幅墨畫，陽光穿過她歪掉的髮帶。",
+      "setups": [
+        "s03-t05",
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承確定河邊的姑娘就是她"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "jiang-ling",
+        "lu-xiaoli",
+        "fu-bo",
+        "s03-zhao-qi"
+      ],
+      "locations": [
+        "陸府門外",
+        "陸府小院"
+      ],
+      "state": {
+        "time": "第七日上午",
+        "knowledge": "蕭承知道她就是陸夫人；她不知道門外有人",
+        "carry_forward": "門檻上那束草"
+      }
+    },
+    {
+      "number": 132,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "他也想盪嗎",
+      "youtube_title": "傻夫人撿到門口一束草，問丈夫門外那人是不是也想盪鞦韆，鰥夫通判的回答讓全家沉默",
+      "duration_s": 115,
+      "logline": "阿苓撿到門檻上的草，追問門外那個人是誰；陸清和不說謊，也不替她決定。",
+      "hook": "阿苓舉著門檻上那束草跑進書房：「有人把我的結偷去用了！」",
+      "hook_type": "line",
+      "mid_hook": "她說：「門口那個人看我盪了好久，他也想盪嗎？」陸清和放下筆：「他是妳小時候認識的人。」",
+      "conflict": "陸清和要在說真話與保護這個家之間找一條路：他不想騙她，也不想替她開門或關門。",
+      "turn": "大家以為他會叫福伯以後別開門，他卻吩咐：「他再來，請他進來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿苓歪頭：「我小時候只認識阿承。」陸清和沒有回答，低頭把木牌翻了個面：「明天，妳自己看。」",
+        "question": "他為什麼要放這個人進門？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "書房窗外飄起今冬第一場細雪，落在梨樹枝與鞦韆繩上。",
+      "glamour_shot": "陸清和在書桌前抬頭看她，雪光映在他的側臉上，眉眼乾淨，嘴角有一點苦的笑。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和沒有瞞她：說了門外的人是她小時候認識的"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "fu-bo",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府書房",
+        "陸府小院"
+      ],
+      "state": {
+        "time": "第七日晚，初雪",
+        "knowledge": "她知道門外的人是小時候認識的；陸清和決定開門",
+        "carry_forward": "明天他會不會來"
+      }
+    },
+    {
+      "number": 133,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "火盆裡的香包",
+      "youtube_title": "母親當著兒子的面把香包丟進火盆，將軍徒手從火裡搶出來：妳說她死了，妳騙了我十年",
+      "duration_s": 125,
+      "logline": "蕭承要帶著十年前的香包去見她，蕭母要毀掉這個香包，讓他回邊關。",
+      "hook": "蕭府書房，十一歲的蕭承蹲在姜府牆根下，一個小丫頭把香包塞給他，結打得歪歪的——回憶只有一格。",
+      "hook_type": "image",
+      "mid_hook": "蕭承對母親說：「妳說她死了。」蕭母的手指在鐲子上數到第三下：「我也是聽姜家說的。」",
+      "extra_hooks": [
+        "春杏在街上被蕭家的丫鬟攔住，塞來一包碎銀：「陸府的事，多跟我們說說。」"
+      ],
+      "conflict": "蕭母要兒子回邊關、別碰陸家，蕭承要守住那個香包和他十年的念頭。",
+      "turn": "觀眾以為蕭母只是嘴硬，她卻一把搶過香包丟進火盆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "火舌捲上香包的一角，蕭承伸手探進火盆把它抓了出來；他攤開掌心，香包焦了一角，裡面的草屑還是綠的。",
+        "question": "香包還能交到她手上嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "炭火盆裡火光一跳，一隻手從火光裡抽出一個焦了角的小香包，草屑從破口飄出來。",
+      "glamour_shot": "回憶裡十歲的阿苓踮腳把香包塞給男孩，夕陽照在她紮歪的小辮子上。",
+      "setups": [
+        "s03-t06",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承搶回香包",
+        "春杏把蕭家塞的銀子扔回地上"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "xiao-mu",
+        "chun-xing",
+        "jiang-ling"
+      ],
+      "locations": [
+        "蕭府書房",
+        "河州街市"
+      ],
+      "state": {
+        "time": "第八日清晨",
+        "knowledge": "蕭承確定母親在說謊；蕭家想從春杏那裡打聽陸府",
+        "carry_forward": "焦了角的香包"
+      }
+    },
+    {
+      "number": 134,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "坐下吃飯",
+      "youtube_title": "情敵上門，鰥夫通判一句坐下吃飯，傻夫人替將軍盛了滿滿一碗，還把草藥貼在他臉上",
+      "duration_s": 120,
+      "logline": "蕭承走進陸府的門，陸清和請他吃飯；一張飯桌坐著四個人，每個人都在等別人先開口。",
+      "hook": "陸府大門一開，福伯讓出路：「將軍，請。」陸清和站在廊下：「坐下吃飯吧。」",
+      "hook_type": "line",
+      "mid_hook": "蕭承喊了一聲「阿苓」，她筷子停住：「你怎麼知道我叫阿苓？大家都叫我陸夫人。」",
+      "extra_hooks": [
+        "小禮躲在她身後，把布老虎塞進她懷裡，一雙眼睛死盯著蕭承。"
+      ],
+      "conflict": "蕭承想讓她認出自己，陸清和想讓這頓飯平平安安吃完，小禮想讓這個人快點走。",
+      "turn": "觀眾以為飯桌會冷場，阿苓卻把一片草葉拍上蕭承的疤：「你是河邊那個大個子！疤還沒好。」她記得昨天的他，不記得十年前的他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "蕭承從懷裡掏出那個焦了角的香包，輕輕放在她碗邊：「妳給我的。」飯桌上，連小禮都屏住了氣。",
+        "question": "她認不認得這個香包？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "陸府飯桌上四副碗筷，熱湯的白氣在四個人之間升起，正中間放著一個焦角的小香包。",
+      "glamour_shot": "蕭承在飯桌前坐得筆直，她伸手替他貼藥，他僵著不敢動，耳根紅了。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承進了陸府的門，吃了一頓飯"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府大門",
+        "陸府飯廳"
+      ],
+      "state": {
+        "time": "第八日午",
+        "knowledge": "她把蕭承當成河邊的大個子",
+        "carry_forward": "香包"
+      }
+    },
+    {
+      "number": 135,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "我不記得",
+      "youtube_title": "將軍拿出十年前的香包問她還記不記得，她聞了聞說這草安神，誰給你的？他說：妳",
+      "duration_s": 125,
+      "logline": "蕭承要她認出這個香包，阿苓只認得香包裡的草。",
+      "hook": "阿苓拿起香包聞了聞：「這個草是安神的。誰給你的？」",
+      "hook_type": "question",
+      "mid_hook": "蕭承說：「妳。」她搖頭：「我不記得。」蕭承放在桌上的手開始抖。",
+      "conflict": "蕭承十年的念想，撞上她「十歲後每天都是新的」的寒毒。",
+      "turn": "陸清和開口替她說了一句：「她十歲以後的事，每天都是新的。」蕭承這才明白：香包是她喝下毒酒之後給的，那一天她根本留不住。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "蕭承起身告辭，走到門口，阿苓追上來，拿過香包把鬆掉的繩子重新紮好——歪的，跟十年前一模一樣。「結鬆了。」蕭承看著那個結，說不出話。",
+        "question": "她的手記得，她的心會不會記得？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "zhiyu"
+      ],
+      "spectacle": "特寫：一雙沾著草汁的手把香包的繩子繞兩圈、打一個歪結，畫面疊上十年前一雙小手打同一個結。",
+      "glamour_shot": "阿苓低頭紮結，碎髮垂在臉側，門外雪光把她的睫毛照得透亮。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s03-t06",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承知道她不是不要他，是記不住"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-cheng",
+        "lu-qinghe",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府飯廳",
+        "陸府大門"
+      ],
+      "state": {
+        "time": "第八日午後",
+        "knowledge": "蕭承知道她十歲後的日子留不住",
+        "carry_forward": "香包上新紮的結"
+      }
+    },
+    {
+      "number": 136,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "我以為妳死了",
+      "youtube_title": "將軍終於說出十年不回河州的原因，傻夫人聽完只做了一件事，把舊香包換滿新草",
+      "duration_s": 130,
+      "logline": "蕭承第二天又來，對阿苓和陸清和說出這十年；姜家說的一句話，讓兩個孩子隔了十年。",
+      "hook": "梨樹下，蕭承把香包放在石桌上：「十年前，姜家說妳病死了。」",
+      "hook_type": "line",
+      "mid_hook": "他說他十一歲被送去邊軍，夜裡睡不著就聞這個香包，聞了十年；阿苓聽完，問：「那草都不香了吧？」",
+      "extra_hooks": [
+        "她把香包裡的舊草倒出來，從袖子裡掏出一把新拔的安神草，一根一根塞進去。"
+      ],
+      "conflict": "蕭承要把十年說清楚，也想從陸清和眼裡看出他有沒有資格帶她走。",
+      "turn": "大家以為阿苓會哭，她卻把香包塞回他手裡：「換好了。你晚上可以睡了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "蕭承走後直奔姜府質問：「當年是誰說她死了？」姜父轉著扳指，終於吐出一句：「你娘也知道她活著。」",
+        "question": "蕭母瞞了兒子十年，為了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "石桌上舊草倒成一小堆灰綠，旁邊一雙手把一根根鮮綠的新草塞進焦角的香包。",
+      "glamour_shot": "蕭承低頭看她換草，梨樹的影子落在他肩上，一身硬氣第一次鬆下來。",
+      "setups": [
+        "s03-t03"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [
+        "m06"
+      ],
+      "general_payoffs": [
+        "蕭承十年不回河州的原因揭開",
+        "香包換了新草"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "jiang-ling",
+        "lu-qinghe",
+        "jiang-zhong"
+      ],
+      "locations": [
+        "陸府梨樹下",
+        "姜府正廳"
+      ],
+      "state": {
+        "time": "第九日",
+        "knowledge": "蕭承知道姜家與母親合起來騙了他",
+        "carry_forward": "蕭母"
+      }
+    },
+    {
+      "number": 137,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "是不是忘了誰",
+      "youtube_title": "將軍質問親娘為何騙他十年，同一夜傻夫人抓著奶娘問：我是不是把一個人忘了",
+      "duration_s": 115,
+      "logline": "蕭承在蕭府逼問母親；陸府裡，阿苓第一次覺得自己少了什麼。",
+      "hook": "蕭府正堂，蕭承一句話：「妳知道她活著。」蕭母數鐲子的手停了。",
+      "hook_type": "danger",
+      "mid_hook": "蕭母冷笑：「活著也是傻的。你要娶一個傻子？」蕭承轉身：「明天我接她走。」",
+      "conflict": "蕭承要從母親手上奪回十年，阿苓要弄懂為什麼一個陌生人看她的眼神像她欠了他什麼。",
+      "turn": "觀眾以為她什麼都不在乎，她卻半夜跑去敲杜嬤嬤的門：「我是不是把一個人忘了？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "杜嬤嬤答不出來；小禮赤著腳從房裡跑出來，抓住她的袖子，三年不哭的孩子眼眶全紅：「娘別走。」",
+        "question": "小禮怎麼知道有人要帶她走？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "雪夜長廊，一個光腳的孩子從燈影裡跑出來，布老虎拖在地上。",
+      "glamour_shot": "阿苓蹲下抱住小禮，燈籠的暖光落在她的側臉上，她第一次露出大人一樣的神情。",
+      "setups": [
+        "s03-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "杜嬤嬤替她披上外衣，第一次叫她「夫人」而不是「二小姐」"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "xiao-mu",
+        "jiang-ling",
+        "du-mama",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "蕭府正堂",
+        "陸府長廊"
+      ],
+      "state": {
+        "time": "第九日夜",
+        "knowledge": "蕭承決定明天接她走；小禮聽見了大人說話",
+        "carry_forward": "明天的馬車"
+      }
+    },
+    {
+      "number": 138,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "將軍的馬車",
+      "youtube_title": "全河州押注將軍搶走陸夫人，賠率一比三，天一亮一輛馬車真的停在了通判府門口",
+      "duration_s": 115,
+      "logline": "河州街市傳開了：將軍要從通判手裡把夫人接回去；阿苓上街買糖，聽見全街在賭她跟誰。",
+      "hook": "茶館裡阿牛一拍桌子：「誰敢押陸夫人走，我跟誰急！」桌上的銅錢已經堆成兩座小山。",
+      "hook_type": "image",
+      "mid_hook": "阿苓擠進來問：「你們在賭什麼？」茶館一下靜了。阿牛紅著臉：「賭……賭今天下不下雪。」",
+      "extra_hooks": [
+        "她看著阿牛摸了兩次耳朵：「你說謊。你們在賭我。」"
+      ],
+      "conflict": "河州的眼光把她變成一場賭局，陸清和在衙門被知府提點「讓一讓」，她在街上被人指指點點。",
+      "turn": "大家等著看傻夫人出醜，她卻把自己買糖的銅錢放在中間：「我押我自己。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天剛亮，一輛掛著邊軍旗的馬車停在陸府門口，趙七掀開車簾，蕭承一身正裝下車：「我來接姜苓。」",
+        "question": "她會上那輛車嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "gufeng",
+        "xuanyi"
+      ],
+      "spectacle": "茶館桌上兩堆銅錢，一枚孤零零的銅錢被一根沾草汁的手指推到正中間。",
+      "glamour_shot": "阿苓站在茶館門口回頭笑，雪後的陽光照在她淺綠的衣角上，整條街都看著她。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿牛帶頭把押她走的銅錢退了回去"
+      ],
+      "characters": [
+        "jiang-ling",
+        "a-niu",
+        "lu-qinghe",
+        "zhou-chong",
+        "xiao-cheng",
+        "s03-zhao-qi"
+      ],
+      "locations": [
+        "河州茶館",
+        "通判衙門",
+        "陸府門口"
+      ],
+      "state": {
+        "time": "第十日清晨",
+        "knowledge": "全河州都知道將軍要接她；周崇暗示陸清和讓一讓",
+        "carry_forward": "門口的馬車"
+      }
+    },
+    {
+      "number": 139,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "十年前你在哪",
+      "youtube_title": "將軍說她是我的人，十年前她為我喝的毒；鰥夫通判只問一句：十年前你在哪",
+      "duration_s": 125,
+      "logline": "蕭承在陸府院子裡對陸清和攤牌；陸清和只問了一個問題。",
+      "hook": "梨樹下，蕭承直直看著陸清和：「她是我的人。」",
+      "hook_type": "line",
+      "mid_hook": "「十年前她為我喝的毒。」蕭承說完，院子裡只有鞦韆繩在風裡吱呀響。陸清和說：「十年前你在哪？」",
+      "conflict": "蕭承用十年前的債要人，陸清和用這十年的每一天守人；兩個男人都不能替她決定。",
+      "turn": "觀眾以為陸清和會說「她是我的妻子」，他卻說：「她在這十年，每天都是新的。你要帶她走，先問她。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陸清和轉身朝屋裡喊：「阿苓，出來一下。」門簾一掀，她抱著小禮的布老虎站在門口：「你們在吵架嗎？」",
+        "question": "她會跟誰走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "雪地上兩個男人隔著一個空鞦韆站著，鞦韆在兩人中間輕輕擺。",
+      "glamour_shot": "陸清和負手站在梨樹下，鬢角那一絲白在雪光裡很清楚，語氣溫溫的卻讓人不敢接話。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和把選擇交回她手上"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府梨樹下"
+      ],
+      "state": {
+        "time": "第十日上午",
+        "knowledge": "她要自己回答走不走",
+        "carry_forward": "她的答案"
+      }
+    },
+    {
+      "number": 140,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "我吃飯的地方",
+      "youtube_title": "將軍當著全府問她要不要跟他走，傻夫人想了很久，指著飯廳說了一句：我吃飯的地方在這",
+      "duration_s": 140,
+      "logline": "蕭承問阿苓要不要跟他走；她用十歲的話，給了全河州一個答案。",
+      "hook": "蕭承單膝蹲到她面前，跟她一樣高：「阿苓，跟我走，好不好？」",
+      "hook_type": "question",
+      "mid_hook": "她問：「去哪裡？那裡有鞦韆嗎？有小禮嗎？」蕭承答不出來，門外圍觀的街坊伸長脖子。",
+      "extra_hooks": [
+        "小禮躲在廊柱後面，手裡的布老虎被他捏得變了形，一聲不吭。"
+      ],
+      "conflict": "她要在一個記不起來的舊人和一個每天給她飯吃的家之間，說出自己要什麼。",
+      "turn": "大家以為她會被「十年前」打動，她卻說的是此刻：誰讓她吃飯、誰在等她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿苓牽起小禮，指著飯廳：「我吃飯的地方在這。」蕭承慢慢站起來，香包從他手裡滑到雪地上；廊下的陸清和閉了一下眼睛。",
+        "question": "蕭承會就此放手嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "jiating"
+      ],
+      "spectacle": "雪地上一個空著的馬車、一個蹲著的將軍、一個牽著孩子的姑娘，飯廳的窗透出一格暖黃的燈。",
+      "glamour_shot": "她牽著小禮站在飯廳門口，暖燈從背後照出她的輪廓，頭髮歪著，眼神很亮。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t07",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當著街坊說留在陸府",
+        "小禮鬆開了布老虎，改抓她的手"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "a-niu",
+        "s03-zhao-qi"
+      ],
+      "locations": [
+        "陸府小院",
+        "陸府飯廳門口"
+      ],
+      "state": {
+        "time": "第十日午",
+        "knowledge": "她選了留下；蕭承沒有帶走她",
+        "carry_forward": "蕭承還會不會來"
+      }
+    },
+    {
+      "number": 141,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "第一個大人的問題",
+      "youtube_title": "將軍被拒後每天送一盒糖到門口，傻夫人吃著糖，第一次問丈夫一個大人的問題",
+      "duration_s": 115,
+      "logline": "蕭承沒有離開河州，每天送糖；阿苓吃著糖，第一次問陸清和一件大人的事。",
+      "hook": "雪地裡，蕭承撿起香包，對著陸府緊閉的門說：「我明天再來。」",
+      "hook_type": "line",
+      "mid_hook": "第二天清晨，陸府門檻上放著一盒桂花糖，盒蓋上一個字也沒有；第三天又一盒，第四天又一盒。",
+      "extra_hooks": [
+        "阿苓把糖分成三份：小禮一份、福伯一份、第三份她包起來放進陸清和的書桌抽屜。"
+      ],
+      "conflict": "她心裡第一次有一個不是糖、不是草的問題，卻不知道大人的問題能不能問。",
+      "turn": "大家以為她要問那個送糖的人，她問的卻是：「小禮的娘，怎麼死的？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陸清和握著木牌坐了很久，抬頭說：「明天，我帶妳去一個地方。」小禮在門外聽見，手裡的糖掉在地上。",
+        "question": "他要帶她去哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "陸府門檻上一盒接一盒的糖盒，被雪蓋住又被掃開，一天比一天多一盒。",
+      "glamour_shot": "阿苓坐在書桌對面認真問話，燭光照著她難得不笑的臉，頭髮還是歪的。",
+      "setups": [
+        "s03-t08",
+        "m04"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把糖分給了全家",
+        "她問出了第一個大人的問題"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府門口",
+        "陸府書房"
+      ],
+      "state": {
+        "time": "第十四日夜",
+        "knowledge": "陸清和決定帶她去城西",
+        "carry_forward": "明天去哪"
+      }
+    },
+    {
+      "number": 142,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "別去",
+      "youtube_title": "三年不說話的孩子第一次大聲喊出兩個字，全府才知道他娘走的那夜發生了什麼",
+      "duration_s": 120,
+      "logline": "陸清和要帶阿苓去城西，小禮卻怕得發抖；全府的大人都不肯告訴她城西有什麼。",
+      "hook": "天沒亮，小禮堵在大門口，張開兩隻手。",
+      "hook_type": "image",
+      "mid_hook": "阿苓去問福伯城西有什麼，福伯摸了兩次耳朵：「沒什麼。」她說：「福伯，你說謊了。」",
+      "conflict": "她要弄懂這個家最痛的地方，可每個大人都替她擋著，連小禮都在擋。",
+      "turn": "觀眾以為小禮是捨不得她出門，其實他記得：娘最後一次出門，就是去城西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小禮抱住她的腿，用盡力氣喊：「別去！」——跟他娘那夜那句「別叫」一樣，是兩個字；杜嬤嬤捂住了嘴。",
+        "question": "小禮在怕什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "黎明的大門口，一個小孩張開雙臂擋住整扇門，背後是雪光，像一道小小的門閂。",
+      "glamour_shot": "陸清和蹲下來與兒子平視，晨光從門縫打在父子兩張相似的臉上。",
+      "setups": [
+        "m04"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮第一次說出比「娘」更長的話"
+      ],
+      "characters": [
+        "lu-xiaoli",
+        "jiang-ling",
+        "fu-bo",
+        "du-mama",
+        "lu-qinghe",
+        "lu-qi"
+      ],
+      "locations": [
+        "陸府大門",
+        "陸府廚房"
+      ],
+      "state": {
+        "time": "第十五日清晨",
+        "knowledge": "她知道小禮怕城西",
+        "carry_forward": "去不去"
+      }
+    },
+    {
+      "number": 143,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "城西的米行",
+      "youtube_title": "通判帶著兒子與傻妻要去城西，將軍提著糖在門口攔下，一句話讓兩個男人同時變了臉",
+      "duration_s": 120,
+      "logline": "阿苓答應小禮，一家三口一起去城西；出門時，蕭承提著糖站在門口。",
+      "hook": "阿苓蹲下勾住小禮的小指：「一起去。誰也不走丟。」",
+      "hook_type": "line",
+      "mid_hook": "門外，蕭承提著第六盒糖。他問去哪，陸清和說城西；蕭承說要護送，陸清和說不必。",
+      "extra_hooks": [
+        "阿苓把一顆糖塞進蕭承嘴裡：「一起吃，就不吵了。」兩個男人同時愣住。"
+      ],
+      "conflict": "陸清和要守住一家人的私事，蕭承要待在她身邊，阿苓要讓所有人都別吵。",
+      "turn": "大家以為蕭承是爭風吃醋，聽到「城西」兩個字，他臉上的醋意全變成了別的東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "蕭承壓低聲音：「城西那條街的米行，三年前是我爹的。」陸清和的手停在馬車簾上。",
+        "question": "蕭家的米行跟城西有什麼關係？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "陸府門口，一輛小驢車、一個抱糖盒的將軍、一家三口，四個人的影子在雪地上擠成一團。",
+      "glamour_shot": "蕭承含著糖不知所措，耳根發紅；陽光照在他硬朗的下巴線上。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮同意一家人一起去城西"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "xiao-cheng"
+      ],
+      "locations": [
+        "陸府門口"
+      ],
+      "state": {
+        "time": "第十五日上午",
+        "knowledge": "陸清和知道城西的米行三年前是蕭家的",
+        "carry_forward": "去城西"
+      }
+    },
+    {
+      "number": 144,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "空巷石碑",
+      "youtube_title": "他帶傻妻走進一條三年沒人住的空巷，盡頭一塊石碑刻滿名字，守碑老人一眼認出了他",
+      "duration_s": 125,
+      "logline": "陸清和帶阿苓與小禮走進城西的空巷；阿苓不認得碑上的字，卻認得他跪下去的樣子。",
+      "hook": "城西的巷子空得只聽見風，一扇扇門板釘著木條，門上還貼著三年前的褪色符紙。",
+      "hook_type": "image",
+      "mid_hook": "巷子盡頭一塊石碑，上面密密刻著名字；擦碑的喬老抬頭：「陸大人，三年了，你第一次來。」",
+      "extra_hooks": [
+        "阿苓踮腳找了半天：「我只認得兩個字，這上面沒有『苓』，也沒有『清』。」"
+      ],
+      "conflict": "陸清和要在她面前打開三年沒碰的傷，阿苓要在一塊看不懂的碑上找到小禮的娘。",
+      "turn": "觀眾以為他會說，他卻在碑前跪下，一個字也說不出來；是小禮伸手指著一個名字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陸清和的手指放在「陸門沈氏」四個字上，喉嚨動了很久，只說出一句：「她叫……」聲音斷了。",
+        "question": "她是怎麼走的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "gufeng"
+      ],
+      "spectacle": "一條沒有人的長巷，盡頭一塊灰白石碑，碑前一個跪著的男人、一個抱著布老虎的孩子、一個淺綠的背影。",
+      "glamour_shot": "陸清和跪在碑前，側臉低垂，風吹動他鬢角的白髮與青灰長衫的下擺。",
+      "setups": [
+        "m04"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和三年來第一次去城西石碑"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli",
+        "s03-lao-qiao",
+        "lu-qi"
+      ],
+      "locations": [
+        "城西空巷",
+        "城西石碑"
+      ],
+      "state": {
+        "time": "第十五日午",
+        "knowledge": "她知道小禮的娘名字刻在這裡",
+        "carry_forward": "他沒說完的話"
+      }
+    },
+    {
+      "number": 145,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "碑下的粥碗",
+      "youtube_title": "守碑老人從石碑底下拿出一只舊粥碗，通判看了一眼就跪不住了，那是他妻子最後一天留下的",
+      "duration_s": 120,
+      "logline": "陸清和說不下去，守碑的喬老替他說了一半；碑底下藏著他三年來不知道的東西。",
+      "hook": "阿苓蹲到他身邊，把他的手從碑上拿下來，包在自己手心裡：「冷。」",
+      "hook_type": "line",
+      "mid_hook": "喬老說：「夫人那年每天提粥來這條巷子。」陸清和抬頭：「她每天……來這裡？」",
+      "conflict": "陸清和要面對一件他不知道的事：他忙著賑災的那幾天，她在這條巷子裡做什麼。",
+      "turn": "他一直以為她是在家裡染上的，喬老卻說：她是自己走進城西的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "喬老從碑座底下摸出一只缺口的青瓷粥碗，碗底刻著一個「禮」字：「她最後一天留下的。說等陸大人來拿。」",
+        "question": "她為什麼要留這只碗給他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "老人從石碑底下抽出一只青瓷碗，碗底一個「禮」字在冬陽下發亮。",
+      "glamour_shot": "阿苓包著他的手抬頭看他，眼神一點也不像小孩，風吹起她的碎髮。",
+      "setups": [
+        "s03-t09"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "喬老說出亡妻每天送粥到城西"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli",
+        "s03-lao-qiao",
+        "lu-qi"
+      ],
+      "locations": [
+        "城西石碑"
+      ],
+      "state": {
+        "time": "第十五日午後",
+        "knowledge": "他知道妻子是自己去城西照顧病人的",
+        "carry_forward": "那只碗"
+      }
+    },
+    {
+      "number": 146,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "那你現在趕上了",
+      "youtube_title": "鰥夫通判說出亡妻怎麼死的，我沒趕上；傻妻只回一句話，讓他在石碑前哭出聲",
+      "duration_s": 140,
+      "logline": "陸清和捧著那只粥碗，終於把三年前的事說完；阿苓用十歲的話，替他把最後一句接上。",
+      "hook": "陸清和捧著碗，手在抖：「她去城西照顧病人，染上了。」",
+      "hook_type": "line",
+      "mid_hook": "「我在衙門賑災，三天沒回家。回家時人走了，小禮在床邊。」他停了一下：「我沒趕上。」",
+      "extra_hooks": [
+        "小禮把臉埋進布老虎裡；阿苓看見他的肩膀在一下一下地抖。"
+      ],
+      "conflict": "陸清和要把三年沒說出口的「沒趕上」說出來，在兒子面前，在她面前。",
+      "turn": "大家以為阿苓會說「不怪你」，她說的卻是：「那你現在趕上了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他問：「趕上什麼？」阿苓指著小禮：「小禮叫娘，你在。」陸清和把兒子和那只碗一起抱進懷裡，三年來第一次哭出聲。",
+        "question": "這個家會從這裡重新開始嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "空巷石碑前，一個男人抱著孩子跪著，懷裡一只青瓷碗；巷口的陽光正好照進來一格。",
+      "glamour_shot": "陸清和仰起濕了的臉，陽光落在他乾淨的眉眼上，抱著小禮的手臂很穩。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s03-t09",
+        "m03"
+      ],
+      "reveals": [
+        "m04"
+      ],
+      "general_payoffs": [
+        "亡妻怎麼死的揭開",
+        "陸清和在兒子面前說出「我沒趕上」"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli",
+        "s03-lao-qiao",
+        "lu-qi"
+      ],
+      "locations": [
+        "城西石碑",
+        "城西空巷"
+      ],
+      "state": {
+        "time": "第十五日傍晚",
+        "knowledge": "她知道小禮的娘是去城西照顧病人染病走的",
+        "carry_forward": "粥碗帶回了家"
+      }
+    },
+    {
+      "number": 147,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "碑該修了",
+      "youtube_title": "通判剛帶妻兒去城西祭拜，知府就下令：那塊碑該修了，衙役明天帶著鑿子進巷",
+      "duration_s": 115,
+      "logline": "陸府的飯桌第一次像一家人；可知府周崇知道陸清和去了城西，要把那塊碑「修一修」。",
+      "hook": "陸府飯桌上多了一只青瓷粥碗，小禮把第一口粥舀給阿苓：「娘先。」",
+      "hook_type": "image",
+      "mid_hook": "蕭承提著糖在門外，聽見屋裡三個人在笑；他舉起手要敲門，又放下，把糖盒輕輕放在門檻上。",
+      "extra_hooks": [
+        "衙門側廳，周崇慢慢喝茶：「陸通判昨日去了城西？」陸清和說：「祭拜亡妻。」周崇摸了一下耳垂。"
+      ],
+      "conflict": "這個家剛剛結痂，知府卻盯上了城西那塊碑。",
+      "turn": "觀眾以為周崇只是客套，他送走陸清和後對師爺說：「城西那塊碑舊了，該修了。字，磨平重刻。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第二天一早，喬老踉蹌跑進陸府：「衙役帶著鑿子進巷了！」阿苓放下碗就往外衝。",
+        "question": "那些名字會被磨掉嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "陸府飯桌正中一只缺口的青瓷碗，熱粥的白氣升起；窗外門檻上靜靜放著第七盒糖。",
+      "glamour_shot": "小禮舀粥給她時抬頭的那一眼，阿苓笑得眼睛彎成兩道月牙。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一家三口第一次在飯桌上一起笑"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "xiao-cheng",
+        "zhou-chong",
+        "s03-lao-qiao"
+      ],
+      "locations": [
+        "陸府飯廳",
+        "陸府門口",
+        "通判衙門側廳"
+      ],
+      "state": {
+        "time": "第十六日清晨",
+        "knowledge": "周崇要磨平碑上的字",
+        "carry_forward": "石碑"
+      }
+    },
+    {
+      "number": 148,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "鑿我",
+      "youtube_title": "衙役舉著鑿子要磨平瘟疫石碑，傻夫人一屁股坐上碑座：上面有小禮的娘，你們鑿我",
+      "duration_s": 125,
+      "logline": "阿苓趕到城西，用自己擋在碑前；陸清和帶著公文趕來，她卻在碑上看見了兩個陌生的字。",
+      "hook": "鑿子舉起來的那一刻，一個淺綠的身影坐上了碑座：「上面有小禮的娘。你們鑿我。」",
+      "hook_type": "danger",
+      "mid_hook": "衙役頭子罵「傻子讓開」，阿苓說：「你家阿婆的名字也在上面。第三行。」衙役頭子的鑿子垂下來。",
+      "extra_hooks": [
+        "陸清和帶著蓋了通判大印的公文趕到：「此碑由通判衙門看管，誰也不准動。」"
+      ],
+      "conflict": "衙役奉知府的命要磨碑，她只有一個身子和一句實話。",
+      "turn": "大家以為她只是胡鬧，原來她剛剛在碑上一個個找名字時，把每一行都記住了——她不識字，卻記得字的形狀。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "衙役退走後，她的手指停在一個名字旁：那裡刻著兩個小字，她不認得。喬老說：「有這兩個字的，不只這一個。」整面碑上，幾十個名字旁都有。",
+        "question": "那兩個小字是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "gufeng"
+      ],
+      "spectacle": "灰白石碑前，一排舉著鑿子的衙役，碑座上坐著一個抱膝的淺綠姑娘，碑上幾十個名字旁的小字在斜陽裡浮出來。",
+      "glamour_shot": "陸清和舉著公文快步穿過空巷，長衫下擺翻飛，眼神第一次帶著鋒。",
+      "setups": [
+        "s03-t10",
+        "m10"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "石碑保住了，由通判衙門看管",
+        "衙役頭子當眾向碑鞠了一躬"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "s03-lao-qiao",
+        "zhou-chong"
+      ],
+      "locations": [
+        "城西石碑"
+      ],
+      "state": {
+        "time": "第十六日上午",
+        "knowledge": "她發現碑上幾十個名字旁刻著同樣兩個字",
+        "carry_forward": "那兩個字"
+      }
+    },
+    {
+      "number": 149,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "孟先生的臉白了",
+      "youtube_title": "傻夫人把石碑上的兩個字照描下來拿去問先生，先生一看臉就白了，轉身關上了門",
+      "duration_s": 115,
+      "logline": "阿苓把碑上的兩個字照著形狀描在紙上，去問孟先生；她不知道，這張紙已經被人盯上了。",
+      "hook": "孟先生的書塾裡，阿苓把一張紙拍在桌上：「先生，這兩個字念什麼？」",
+      "hook_type": "question",
+      "mid_hook": "孟先生扶了扶眼鏡，看了一眼，臉色發白，起身把門關上：「這兩個字，妳去問陸大人。」",
+      "extra_hooks": [
+        "蕭承來接小禮下學，瞄見那張紙，整個人僵住——邊關的兵吃過這兩個字。"
+      ],
+      "conflict": "她只想知道兩個字怎麼念，卻一路碰上不敢念的大人。",
+      "turn": "觀眾以為孟先生是不識字，其實他認得太清楚；連蕭承都只說了一句「別給人看」就走了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她走出書塾，身後一個穿師爺袍的人撿起她落在窗台上的另一張描紙，摺好收進袖子，朝知府衙門的方向走去。",
+        "question": "知府知道了，會對她做什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "gufeng",
+        "xiju"
+      ],
+      "spectacle": "書塾窗下，一張描得歪歪的紙被風吹到窗台，一隻穿官袍袖子的手把它捏起來。",
+      "glamour_shot": "阿苓站在書塾門口仰頭等答案，冬陽照著她，手裡捏著那張紙，眼神固執。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她憑字形把兩個字原樣描了下來"
+      ],
+      "characters": [
+        "jiang-ling",
+        "meng-xiansheng",
+        "xiao-cheng",
+        "lu-xiaoli",
+        "zhou-chong"
+      ],
+      "locations": [
+        "孟先生書塾",
+        "書塾窗外"
+      ],
+      "state": {
+        "time": "第十六日午後",
+        "knowledge": "孟先生與蕭承都認得那兩個字；知府拿到了一張描紙",
+        "carry_forward": "去問陸大人"
+      }
+    },
+    {
+      "number": 150,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "陳糧",
+      "youtube_title": "傻夫人問丈夫石碑上那兩個字是什麼，他臉色大變：三年前那場瘟疫，是從城西的米開始的",
+      "duration_s": 145,
+      "logline": "阿苓拿著那張紙去問陸清和；他從袖子裡拿出一卷紅繩文書，第一次對她說了一句大人的話。",
+      "hook": "書房燭下，阿苓把描紙攤開：「孟先生說，這要問你。」",
+      "hook_type": "line",
+      "mid_hook": "陸清和看著那兩個字，臉色一點一點變了：「陳糧。」他說：「三年前的瘟疫，是從城西的米開始的。」",
+      "extra_hooks": [
+        "他從袖子裡拿出一卷紅繩繫著的文書，放在燭下——京裡的密旨，他就是為這個來河州的。"
+      ],
+      "conflict": "陸清和要護住一個不會說謊的人，她剛剛看見了全河州最危險的兩個字。",
+      "turn": "大家以為他會把她蒙在鼓裡，他卻把密旨的來處告訴了她——因為他知道她不會說謊，騙她只會讓她更危險。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸清和握住她的肩：「阿苓，別跟別人說妳看見這兩個字。」她說：「我不會說謊。」他說：「那別說話。」燭火一跳。",
+        "question": "她守得住這兩個字嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "燭下一張歪歪的描紙「陳糧」，旁邊一卷紅繩繫著的明黃文書，影子交疊在書桌上。",
+      "glamour_shot": "燭光下陸清和握著她肩的那一秒，他的眼神又溫又重，她第一次看懂大人的害怕。",
+      "setups": [
+        "m10",
+        "m08"
+      ],
+      "payoffs": [
+        "s03-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道「陳糧」兩個字的意思",
+        "陸清和第一次對她說出來河州的真正原因"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府書房"
+      ],
+      "state": {
+        "time": "第十六日夜",
+        "knowledge": "她知道三年前的瘟疫跟城西的米有關；陸清和要她別說話",
+        "carry_forward": "不說話的她"
+      }
+    },
+    {
+      "number": 151,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "不說話的一天",
+      "youtube_title": "丈夫叫她別說話，傻夫人就真的一整天一個字也沒說，三年不說話的孩子看懂了她的手勢",
+      "duration_s": 120,
+      "logline": "阿苓照陸清和的話一整天不說話；陸清和看著她，第一次知道沉默在一個孩子身上有多重。",
+      "hook": "早飯桌上，福伯問她要不要添粥，阿苓兩手捂住嘴，拚命搖頭。",
+      "hook_type": "image",
+      "mid_hook": "她跟小禮比手勢比了一整個上午，小禮全看得懂；杜嬤嬤說：「少爺那三年，就是這樣跟我們說話的。」",
+      "extra_hooks": [
+        "陸清和在廊下看著她憋得臉紅、眼眶也紅，手裡的公文一個字也沒看進去。"
+      ],
+      "conflict": "她用十歲的認真執行大人的一句話，把自己關進了小禮的三年；陸清和要決定，是讓她一直這樣，還是讓她長大到能自己守祕密。",
+      "turn": "大家以為她在玩，晚上她在紙上歪歪寫了一句「我想說話」，推到陸清和面前；他起身就去了藥鋪。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "藥鋪後堂，陸清和把三個問題一個一個問完：解了會怎樣、不解會怎樣、她會不會想解。賀大夫只回他三個字：「你問她。」",
+        "question": "他敢問她嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "一整天的陸府：她捂著嘴比手勢、小禮跟著比，兩人對著梨樹比出一場無聲的戲。",
+      "glamour_shot": "燈下她把紙推過去的那一刻，抬眼看他，眼眶紅著卻倔強地抿著嘴。",
+      "setups": [
+        "s03-t11",
+        "m08"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮第一次替她「翻譯」給大人聽"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "fu-bo",
+        "du-mama",
+        "lu-qinghe",
+        "he-daifu"
+      ],
+      "locations": [
+        "陸府飯廳",
+        "陸府廊下",
+        "藥鋪後堂"
+      ],
+      "state": {
+        "time": "第十七日夜",
+        "knowledge": "陸清和決定把解毒的事攤開來問她",
+        "carry_forward": "賀大夫的三個答案"
+      }
+    },
+    {
+      "number": 152,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "雪裡紅",
+      "youtube_title": "老大夫終於說出寒毒能不能解：一味只有她認得的草，一季解一分，代價是忘掉十歲的事",
+      "duration_s": 125,
+      "logline": "賀大夫把雪裡紅的規矩全攤在陸清和面前；能解，但每解一分，她就要放下一些十歲的東西。",
+      "hook": "賀大夫打開木盒，兩株紅莖白葉的乾草：「能解。」",
+      "hook_type": "line",
+      "mid_hook": "「一季一分，喝一碗長一截。可每長一截，十歲那年的事，就要放下一些。」陸清和握盒的手收緊。",
+      "conflict": "陸清和要在解與不解之間算清代價：她會長大，也會忘。",
+      "turn": "他以為藥就在眼前，賀大夫卻說：盒裡是乾的藥身，還缺一味藥引——北坡雪線下的新鮮根，只有她自己認得。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "賀大夫說：「這藥，得她自己上北坡去採。別人採的，不靈。」窗外，阿苓正蹲在院裡，一個字也不說地在雪上畫草。",
+        "question": "她得自己去採解自己的藥？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "ganren",
+        "gufeng"
+      ],
+      "spectacle": "木盒打開，兩株乾雪裡紅的紅莖細得像兩根絲線，在藥鋪昏黃的燈下發著光。",
+      "glamour_shot": "賀大夫身後的藥櫃一格格整齊，陸清和側身站在燈影裡，清瘦的輪廓像一筆淡墨。",
+      "setups": [
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "寒毒能不能解揭開：能，雪裡紅，一季一分，會忘十歲的事"
+      ],
+      "characters": [
+        "he-daifu",
+        "lu-qinghe",
+        "jiang-ling"
+      ],
+      "locations": [
+        "藥鋪後堂",
+        "陸府小院"
+      ],
+      "state": {
+        "time": "第十八日上午",
+        "knowledge": "陸清和知道了解毒的全部規矩",
+        "carry_forward": "問她"
+      }
+    },
+    {
+      "number": 153,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "會忘掉你嗎",
+      "youtube_title": "他蹲下來問她要不要喝會長大也會忘事的藥，她想了很久只問一句：會忘掉你嗎",
+      "duration_s": 125,
+      "logline": "陸清和用她聽得懂的話問她要不要解毒；她想得很久，只在乎一件事。",
+      "hook": "陸清和蹲到鞦韆前：「阿苓，可以說話了。」她吐出一口長氣：「憋死我了！」",
+      "hook_type": "line",
+      "mid_hook": "「有一碗藥，喝了妳會長大，也會忘掉一些小時候的事。要不要？」她盪鞦韆的腳停在雪地上。",
+      "extra_hooks": [
+        "她想了很久，久到小禮從屋裡跑出來站在她身邊，一手抓著她的袖子。"
+      ],
+      "conflict": "她要為自己做第一個大人的決定，而他不能替她選。",
+      "turn": "大家以為她會問痛不痛、苦不苦，她問的卻是：「會忘掉你嗎？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陸清和說：「不會。妳是十歲後認識我的。」她點頭：「那喝。」說完又拉住小禮：「也不會忘掉你。」小禮抱住她。",
+        "question": "喝了之後，她還是她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "chengzhang",
+        "ganren"
+      ],
+      "spectacle": "雪中梨樹下，鞦韆停著，一個蹲著的男人、一個坐著的姑娘、一個抓袖子的孩子。",
+      "glamour_shot": "陸清和蹲在鞦韆前仰頭看她，雪花落在他的睫毛上，眼神溫得像燈。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她自己決定喝藥"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府梨樹下"
+      ],
+      "state": {
+        "time": "第十八日午",
+        "knowledge": "她決定喝；要先上北坡採藥引",
+        "carry_forward": "北坡"
+      }
+    },
+    {
+      "number": 154,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "北坡雪線",
+      "youtube_title": "全村笑傻夫人上山挖草，她在雪線下一塊石頭底下挖出一根紅莖，順手救了發燒的小女孩",
+      "duration_s": 130,
+      "logline": "阿苓上北坡採雪裡紅的藥引，北坡村的人笑她是來挖草的傻子；她找到的不只是一根草。",
+      "hook": "北坡村口，田嬸背著竹簍大笑：「通判府的傻夫人，來我們這挖草？」",
+      "hook_type": "line",
+      "mid_hook": "她走到雪線下一塊大石邊，趴在雪地上扒開石縫：一根細細的紅莖，從雪裡探出頭。",
+      "extra_hooks": [
+        "田嬸的女兒丫丫燒得臉通紅，阿苓摘了一把路邊的草：「煮水，喝三碗。」"
+      ],
+      "conflict": "她要在一座全是雪的山上，找一根只有她認得的草，還要讓不信她的人閉嘴。",
+      "turn": "村人以為她在亂挖，田嬸採了二十年的藥都沒見過那根草；她挖了兩根：「一季一根。這根是明年的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她站起來的那一刻，腳下的雪坡一鬆，整片雪往下滑；一隻手從身後抓住她的手腕——是蕭承，他一路跟上了山。",
+        "question": "蕭承為什麼一路跟著她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "gufeng",
+        "zhiyu"
+      ],
+      "spectacle": "白茫茫的北坡上，雪線下一塊黑石，一根紅莖從雪裡探出，像雪地上的一滴胭脂。",
+      "glamour_shot": "阿苓趴在雪地裡抬頭，手裡捧著那根紅莖，臉頰凍得發紅，笑得像得了寶。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她採到兩根雪裡紅的藥引",
+        "丫丫的燒退了，田嬸改口叫她「陸夫人」"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s03-tian-shen",
+        "s03-ya-ya",
+        "xiao-cheng",
+        "fu-bo"
+      ],
+      "locations": [
+        "北坡村口",
+        "北坡雪線"
+      ],
+      "state": {
+        "time": "第十九日",
+        "knowledge": "藥引到手；蕭承知道她要解毒了",
+        "carry_forward": "蕭承的反應"
+      }
+    },
+    {
+      "number": 155,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "那是我",
+      "youtube_title": "將軍聽說她要喝解藥，衝進通判府：她喝了會忘掉十歲，十歲那年就是我",
+      "duration_s": 120,
+      "logline": "蕭承知道她喝了藥會忘十歲的事，要陸清和停手；陸清和還是那句話：問她。",
+      "hook": "藥爐上的雪裡紅剛冒出第一縷白氣，大門砰地被推開：「不能喝！」",
+      "hook_type": "danger",
+      "mid_hook": "蕭承對陸清和說：「她會忘了十歲。十歲那年，是我。」陸清和說：「先問她。」",
+      "extra_hooks": [
+        "阿苓守著藥爐搧火，頭也不抬：「你們誰再大聲，我就把藥倒了。」兩個男人同時閉嘴。"
+      ],
+      "conflict": "蕭承要守住她心裡唯一記得他的那一年，陸清和要守住她自己做的決定。",
+      "turn": "大家以為她會為蕭承猶豫，她卻對蕭承說：「我記得的，你都可以再告訴我一遍。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "藥熬好了，一碗暗紅的湯在她手上冒著熱氣；蕭承在門口、陸清和在廊下、小禮抓著她的裙角。她把碗舉到嘴邊。",
+        "question": "她會在他們面前喝下去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "陸府廚房，紅泥藥爐上一只陶罐，暗紅的藥湯翻著細泡，白氣升到房梁。",
+      "glamour_shot": "蕭承站在門口逆光，一身便服仍站得像兵，眼裡卻是求。",
+      "setups": [
+        "s03-t12",
+        "m12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她讓兩個大男人在廚房裡閉嘴"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli",
+        "he-daifu"
+      ],
+      "locations": [
+        "陸府廚房",
+        "陸府廊下"
+      ],
+      "state": {
+        "time": "第二十日傍晚",
+        "knowledge": "藥熬好了；蕭承答應把她忘的再說一遍",
+        "carry_forward": "那碗藥"
+      }
+    },
+    {
+      "number": 156,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "第一碗",
+      "youtube_title": "傻夫人喝下第一碗解藥，苦得笑出聲，下一秒碗從手裡滑落，孩子叫娘她再也沒應",
+      "duration_s": 120,
+      "logline": "阿苓喝下第一碗雪裡紅；藥很苦，她在笑，然後睡著了。",
+      "hook": "她一口氣喝完，皺成一團：「好苦！」然後咯咯笑起來：「比小禮的藥還苦。」",
+      "hook_type": "line",
+      "mid_hook": "福伯拿著梳子替她梳頭，梳到一半，她的頭慢慢靠在福伯的手臂上：「福伯，我好睏。」",
+      "conflict": "所有人都在等藥效，而藥效第一件事，是把她帶走一陣子。",
+      "turn": "大家以為她只是睏，賀大夫一摸脈，臉色一沉：「這一睡，至少一天一夜，誰也叫不醒。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "空碗從她手裡滑下，在地上滾了半圈；小禮撲過去搖她：「娘！娘！」她沒有應，呼吸又輕又長。",
+        "question": "她還會醒過來嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "jiating"
+      ],
+      "spectacle": "一只空藥碗在青磚地上慢慢滾，停在一雙小小的布鞋前。",
+      "glamour_shot": "福伯替她梳頭，她靠在老人的手臂上闔眼，燈下的側臉安靜得像一幅畫。",
+      "setups": [
+        "s03-t12"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一碗雪裡紅喝下了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "fu-bo",
+        "lu-xiaoli",
+        "he-daifu",
+        "lu-qinghe",
+        "du-mama"
+      ],
+      "locations": [
+        "陸府正房",
+        "陸府廚房"
+      ],
+      "state": {
+        "time": "第二十日夜",
+        "knowledge": "她睡了，一天一夜叫不醒",
+        "carry_forward": "等她醒"
+      }
+    },
+    {
+      "number": 157,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "牆裡牆外",
+      "youtube_title": "她喝了藥昏睡不醒，丈夫守在門內，將軍守在牆外雪地裡，牆外傳來一首只有她會唱的歌",
+      "duration_s": 115,
+      "logline": "第一夜，陸清和守在她房門外，蕭承守在陸府牆外；一面牆隔開兩個等她的人。",
+      "hook": "她房門外的廊下，陸清和搬了一張矮凳坐下，膝上攤著那張「清」，一盞燈。",
+      "hook_type": "image",
+      "mid_hook": "牆外雪地裡，蕭承靠著牆坐著，趙七遞上斗篷他也不披；他把香包貼在胸口。",
+      "extra_hooks": [
+        "杜嬤嬤端著熱湯出來，看看廊下，又看看牆頭露出的那一截斗篷，嘆氣：「兩個傻的。」"
+      ],
+      "conflict": "兩個男人都在等她，誰也不肯先走，誰也不知道她醒來會記得誰。",
+      "turn": "觀眾以為兩人會隔牆較勁，牆外卻輕輕傳來一首歌——藥婆的歌，她只唱給小禮聽過；原來十年前，她也唱給一個男孩聽過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陸清和在牆內聽著那首歌，手按在木牌上，跟著哼了半句，又停住。牆外的歌也停了。",
+        "question": "兩個人，她醒來先找誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "zhiyu"
+      ],
+      "spectacle": "俯拍：一堵白牆把畫面切成兩半，左邊廊下一盞燈一個人，右邊雪地裡一個人一件斗篷，歌聲從右飄到左。",
+      "glamour_shot": "陸清和在燈下低頭看那張「清」字，燈光把他的睫毛影子投在臉上，安靜又疲倦。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "杜嬤嬤給牆內牆外都送了熱湯"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "xiao-cheng",
+        "s03-zhao-qi",
+        "du-mama",
+        "yaopo"
+      ],
+      "locations": [
+        "陸府廊下",
+        "陸府牆外"
+      ],
+      "state": {
+        "time": "第二十日深夜",
+        "knowledge": "陸清和知道蕭承也會唱藥婆的歌",
+        "carry_forward": "天亮"
+      }
+    },
+    {
+      "number": 158,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "她在睡",
+      "youtube_title": "知府趁她昏睡派衙役上門要帶走通判夫人問話，丈夫與將軍第一次站在了同一邊",
+      "duration_s": 125,
+      "logline": "知府拿著那張描紙派人上門「請陸夫人問話」；她還在睡，兩個男人第一次並肩擋在門口。",
+      "hook": "天剛亮，衙役拍門：「知府有請陸夫人，問城西碑上的事。」",
+      "hook_type": "danger",
+      "mid_hook": "陸清和站在門內：「她在睡。」衙役頭子亮出那張描紙：「知府說了，叫醒也要帶走。」",
+      "extra_hooks": [
+        "牆外一聲甲葉響，蕭承換上了副將的甲，一個人站到陸清和身邊：「我也在。」"
+      ],
+      "conflict": "知府要趁她說不了話的時候把她帶走，陸府要守住一個睡著的人。",
+      "turn": "觀眾以為只能硬扛，陸清和卻翻出律條：通判家眷要問話，須通判在場、具文三日；蕭承則說：邊軍副將的救命恩人，誰帶走她，他就上書兵部。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "衙役退了，陸清和轉身回屋——床上的她還沒醒，臉色卻一下子白了，額上滲出冷汗。賀大夫按住她的脈：「熬過今晚。」",
+        "question": "她熬得過今晚嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "陸府大門口，一青衫一黑甲兩個男人並肩站著，面前一排衙役，晨光把兩人的影子拉在雪地上合成一個。",
+      "glamour_shot": "蕭承披甲站在陸清和身邊，晨光照在甲葉與他臉上的疤上，一身殺氣只為擋一扇門。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "衙役空手而回",
+        "陸清和與蕭承第一次站在同一邊"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "xiao-cheng",
+        "zhou-chong",
+        "he-daifu",
+        "jiang-ling"
+      ],
+      "locations": [
+        "陸府大門",
+        "陸府正房"
+      ],
+      "state": {
+        "time": "第二十一日清晨",
+        "knowledge": "周崇在找她；她還沒醒，脈象不穩",
+        "carry_forward": "今晚"
+      }
+    },
+    {
+      "number": 159,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "小禮唱歌",
+      "youtube_title": "她昏睡第二夜脈象不穩，三年不說話的孩子坐到床邊，唱起了她唱給他聽的那首歌",
+      "duration_s": 120,
+      "logline": "第二夜，她的脈一直不穩；小禮坐在床邊，把她教他的歌唱了一遍又一遍。",
+      "hook": "深夜，小禮抱著布老虎爬上床邊的矮凳，清了清嗓子。",
+      "hook_type": "image",
+      "mid_hook": "他唱出第一句——走調、斷斷續續，是藥婆的歌；屋裡的杜嬤嬤、福伯、陸清和全都不敢動。",
+      "conflict": "能做的大人都做完了，最後能叫她回來的，只剩一個六歲的孩子。",
+      "turn": "陸清和以為是他在等她，原來是小禮在叫她——她第一夜教他的歌，他三年沒出聲，一句都沒忘。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "唱到第三遍，她的手指動了一下，嘴唇也動了：「小禮……」陸清和從凳子上站起來，碰倒了燈。",
+        "question": "她醒來，還認得他們嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "chengzhang"
+      ],
+      "spectacle": "床邊一盞小燈，一個小孩坐在矮凳上唱歌，床上的人手指慢慢蜷起來，窗外的雪停了。",
+      "glamour_shot": "小禮唱歌時仰著小臉，燈光照得他的大眼睛發亮；床上她的側臉在燈下有了一點暖色。",
+      "setups": [
+        "s03-t12"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮第一次唱完一整首歌",
+        "她的脈穩下來了"
+      ],
+      "characters": [
+        "lu-xiaoli",
+        "jiang-ling",
+        "lu-qinghe",
+        "du-mama",
+        "fu-bo",
+        "yaopo"
+      ],
+      "locations": [
+        "陸府正房"
+      ],
+      "state": {
+        "time": "第二十一日深夜",
+        "knowledge": "她要醒了",
+        "carry_forward": "她醒來會說什麼"
+      }
+    },
+    {
+      "number": 160,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "我不記得他的臉",
+      "youtube_title": "傻夫人喝藥昏睡一天一夜醒來，開口第一句話讓全屋安靜，頭髮自己紮正了，卻忘了一張臉",
+      "duration_s": 150,
+      "logline": "阿苓醒了，說出第一句完整的大人話；她長大了一截，也放下了一樣東西。",
+      "hook": "天亮，她睜開眼睛，看著床邊一屋子的人，慢慢坐起來。",
+      "hook_type": "image",
+      "mid_hook": "她開口：「我睡了多久？小禮吃飯了嗎？」——句子完整、平穩，像個大人。全屋靜得聽得見雪從屋簷掉下來。",
+      "extra_hooks": [
+        "她走到銅鏡前，手自己動了起來，把頭髮攏起、繞兩圈、插好簪子——正的，十年來第一次是正的。"
+      ],
+      "conflict": "所有人都在等：醒來的她，是誰？",
+      "turn": "大家以為她會先找陸清和或小禮，她確實先問了小禮；可接下來她問的那句話，讓所有人明白她忘了什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她問春杏：「那個每天來送糖的人，長什麼樣？」春杏說：「蕭將軍。」她想了很久：「我記得他送糖。我不記得他的臉。」門外，蕭承手裡的糖盒停在半空。",
+        "question": "她忘了蕭承的臉，還會再記起來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "銅鏡裡，一雙手把歪了十年的頭髮一次紮正，簪子插進髮髻的那一刻，鏡中人的眼神跟著變了。",
+      "glamour_shot": "她在鏡前自己紮好頭髮回頭，晨光照在她第一次端正的髮髻與清亮的眼睛上，像換了一個人又還是她。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她醒了，心智長了一截，說話完整",
+        "她的頭髮第一次自己紮正"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "chun-xing",
+        "fu-bo",
+        "du-mama",
+        "xiao-cheng"
+      ],
+      "locations": [
+        "陸府正房",
+        "陸府門口"
+      ],
+      "state": {
+        "time": "第二十二日清晨",
+        "knowledge": "她心智約十四歲，記得十歲後的事，忘了蕭承的臉",
+        "carry_forward": "新的她"
+      }
+    },
+    {
+      "number": 161,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "謝謝蕭將軍",
+      "youtube_title": "傻夫人喝藥醒來像換了個人，將軍照常送糖，她客客氣氣一句謝謝蕭將軍，讓他當場紅了眼",
+      "duration_s": 120,
+      "logline": "醒來的阿苓說話像個大人了；蕭承照常送糖，她客氣地道謝，而蕭母在馬車裡看出了一筆帳。",
+      "hook": "陸府廚房，阿苓接過春杏的菜錢帳本翻了兩頁：「這筆多記了三文。妳買糖了。」",
+      "hook_type": "line",
+      "mid_hook": "陸清和照例蹲下來跟她說話，她低頭看他，忍不住笑：「你為什麼還蹲著？我現在比你的椅子還高了。」",
+      "extra_hooks": [
+        "蕭承照常提著糖來，她接過去，欠身行了個端端正正的禮：「謝謝蕭將軍。」蕭承手一鬆。"
+      ],
+      "conflict": "全府都要重新認識她，她也要重新認識全府；只有蕭承，連重新認識的機會都要從頭討。",
+      "turn": "大家以為最難過的是蕭承，鏡頭一轉，巷口一輛馬車的簾子掀開一角：蕭母看著頭髮紮正的阿苓，眼睛亮了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蕭母放下車簾，三個金鐲子撞出一聲：「傻的我不要。醒的，正好。」馬車掉頭往姜府去了。",
+        "question": "蕭母要去姜府做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "chengzhang"
+      ],
+      "spectacle": "同一個陸府小院，她第一次端正地站在梨樹下，頭髮整齊，跟三集前歪著頭盪鞦韆的她疊在一起。",
+      "glamour_shot": "她欠身行禮時抬眼，髮髻端正、眉眼清亮，冬陽照在她淺綠的衣襟上。",
+      "setups": [
+        "s03-t03"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她查出帳本多記的三文錢",
+        "陸清和第一次站著跟她說話"
+      ],
+      "characters": [
+        "jiang-ling",
+        "chun-xing",
+        "lu-qinghe",
+        "xiao-cheng",
+        "xiao-mu"
+      ],
+      "locations": [
+        "陸府廚房",
+        "陸府小院",
+        "陸府巷口"
+      ],
+      "state": {
+        "time": "第二十三日",
+        "knowledge": "蕭母看中醒了的她",
+        "carry_forward": "蕭母去姜府"
+      }
+    },
+    {
+      "number": 162,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "當年的婚約",
+      "youtube_title": "將軍的娘拿出十年前兩家的一句玩笑話當婚約，怕事的姜老爺轉了七圈扳指，舉起了印",
+      "duration_s": 120,
+      "logline": "蕭母到姜府談「當年的婚約」，要把已經嫁人的阿苓說回蕭家；姜父怕事，姜母擋不住。",
+      "hook": "姜府正廳，蕭母把一張紙拍在桌上：「十年前兩家說好的，你忘了？」",
+      "hook_type": "danger",
+      "mid_hook": "姜父轉著扳指：「那是酒桌上的玩笑……」蕭母笑：「玩笑也是說過的。你女兒嫁鰥夫，丟的是誰的臉？」",
+      "extra_hooks": [
+        "陸府書房裡，阿苓第一次自己讀完一整頁書，抬頭問孟先生：「『婚約』是什麼意思？」"
+      ],
+      "conflict": "蕭母要把一句玩笑變成一紙婚約，姜父要面子、怕事，姜母要護女兒。",
+      "turn": "觀眾以為姜父至少會猶豫，蕭母一句「陸家查糧倉，查到姜家米行也說不定」，他的臉就白了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "姜母一把按住姜父的手：「你蓋了，我就搬去陸府住。」姜父的印懸在紙上，抖了一下。",
+        "question": "姜父會為了面子蓋下這個印嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "chengzhang"
+      ],
+      "spectacle": "姜府滿堂紅金，正中一張發黃的紙、一方懸在紙上的印，三隻手擠在同一寸桌面上。",
+      "glamour_shot": "姜母按住丈夫的手抬頭，鬢上舊簪微顫，素淨的臉第一次那麼硬。",
+      "setups": [
+        "s03-t13",
+        "m10",
+        "m11"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "姜母第一次當面頂撞姜父",
+        "她第一次自己讀完一整頁書"
+      ],
+      "characters": [
+        "xiao-mu",
+        "jiang-zhong",
+        "jiang-mu",
+        "jiang-ling",
+        "meng-xiansheng"
+      ],
+      "locations": [
+        "姜府正廳",
+        "陸府書房"
+      ],
+      "state": {
+        "time": "第二十四日",
+        "knowledge": "蕭母手上有一紙「婚約」",
+        "carry_forward": "印蓋沒蓋"
+      }
+    },
+    {
+      "number": 163,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "她現在不傻",
+      "youtube_title": "將軍的娘帶花轎上門接人，說嫁傻子不算，陪嫁丫鬟堵在門口：她現在不傻，妳算什麼",
+      "duration_s": 125,
+      "logline": "蕭母帶著轎子來陸府「接二小姐回姜家待嫁」；第一個擋在門口的，是陪嫁丫鬟春杏。",
+      "hook": "陸府門口停著一頂青呢小轎，蕭母揚聲：「接二小姐回姜家待嫁！」",
+      "hook_type": "image",
+      "mid_hook": "春杏叉腰堵在門口：「陸夫人嫁過了。」蕭母冷笑：「嫁傻子不算。頂了大姐的轎，本來就不作數。」",
+      "extra_hooks": [
+        "春杏的聲音比蕭母還大：「她現在不傻，妳算什麼？」圍觀的街坊有人笑出聲。"
+      ],
+      "conflict": "蕭母要在全街面前把陸夫人說成「不作數」，春杏只有一張碎嘴和一身膽。",
+      "turn": "大家以為春杏會被蕭母的丫鬟拉開，門後的福伯和杜嬤嬤一左一右站了出來，三個人把門堵得死死的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "門裡傳來腳步聲。阿苓從屋裡走出來，頭髮端正、衣襟整齊，一步一步走到門口；滿街的人第一次看見這樣的陸夫人，全都靜了。",
+        "question": "醒了的她，會對蕭母說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "gufeng"
+      ],
+      "spectacle": "陸府門口一頂青呢轎子，門前三個下人排成一道牆，門後一個端正的淺綠身影慢慢走出來，街坊一層層圍著。",
+      "glamour_shot": "她從門裡走出來，冬陽從她背後打出一圈淡光，步子穩、下巴微抬。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "春杏、福伯、杜嬤嬤當街護住陸府的門"
+      ],
+      "characters": [
+        "xiao-mu",
+        "chun-xing",
+        "fu-bo",
+        "du-mama",
+        "jiang-ling",
+        "a-niu"
+      ],
+      "locations": [
+        "陸府門口"
+      ],
+      "state": {
+        "time": "第二十五日上午",
+        "knowledge": "全街看見醒了的她",
+        "carry_forward": "她開口"
+      }
+    },
+    {
+      "number": 164,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "數了三次鐲子",
+      "youtube_title": "醒過來的傻夫人第一次用大人的話對付將軍的娘：妳說謊的時候數鐲子，妳數了三次",
+      "duration_s": 125,
+      "logline": "阿苓第一次用大人的話對大人說話；蕭母當眾被拆穿，卻亮出了一張蓋了印的紙。",
+      "hook": "阿苓站定，看著蕭母的手：「蕭夫人，妳說謊的時候數鐲子。」",
+      "hook_type": "line",
+      "mid_hook": "「剛才妳說我『本來就不作數』，數了一次；說『為了姜家好』，數了一次；說『我兒子不知道』，又數了一次。妳數了三次。」",
+      "extra_hooks": [
+        "阿牛在人群裡帶頭喊：「陸夫人說得對！」整條街跟著喊。"
+      ],
+      "conflict": "蕭母要用輩分和「婚約」壓她，她要用一雙看得穿謊話的眼睛和一張不會說謊的嘴擋回去。",
+      "turn": "觀眾以為蕭母輸了，她卻從袖子裡抽出那張紙：上面蓋著姜家的大印。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "蕭母把婚約高高舉起，紅印在日頭下刺眼：「姜家親手蓋的印。三日後，花轎來接。」人群嘩然。",
+        "question": "姜父真的蓋了印？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "特寫：三個金鐲子在手腕上被手指一圈一圈撥動，下一格，一紙蓋紅印的婚約被高高舉起擋住太陽。",
+      "glamour_shot": "她開口時不急不慢，風吹動她端正的鬢髮，眼神清澈得讓蕭母不敢對視。",
+      "setups": [
+        "s03-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她當街拆穿蕭母三次說謊，全街替她喊話"
+      ],
+      "characters": [
+        "jiang-ling",
+        "xiao-mu",
+        "a-niu",
+        "chun-xing",
+        "s03-liu-taitai"
+      ],
+      "locations": [
+        "陸府門口"
+      ],
+      "state": {
+        "time": "第二十五日上午",
+        "knowledge": "蕭母手上的婚約蓋了姜家的印；三日後花轎來接",
+        "carry_forward": "姜父為什麼蓋印"
+      }
+    },
+    {
+      "number": 165,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "知府的交換",
+      "youtube_title": "知府開出條件：只要你放下糧倉的帳，我就判那紙婚約作廢，通判看著密旨陷入兩難",
+      "duration_s": 125,
+      "logline": "陸清和要拿律條撤掉那紙婚約，知府周崇卻開了一個價：拿糧倉的帳來換。",
+      "hook": "通判衙門側廳，陸清和翻開大宣律：「已成之婚，舊約不得追。」",
+      "hook_type": "line",
+      "mid_hook": "周崇慢慢走進來：「婚約在前，嫁娶在後。這案子，到本府手上，可以判作廢，也可以判有效。」",
+      "extra_hooks": [
+        "阿苓提著食盒來送午飯，站在側廳屏風後，看見周崇說話時摸了兩次耳垂。"
+      ],
+      "conflict": "陸清和要守住她，也要守住城西石碑上那幾十個名字；周崇要他二選一。",
+      "turn": "大家以為周崇在幫蕭家，他其實不在乎誰娶誰——他要的是陸清和袖子裡那捲密旨查不下去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "周崇把茶盞推到他面前：「糧倉的帳放下，婚約作廢。你自己選。」屏風後，阿苓手裡的食盒停在半空。",
+        "question": "他會拿糧案換她嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "tianchong"
+      ],
+      "spectacle": "青灰的衙門側廳，一張案几兩盞茶，屏風上映出一個提食盒的剪影。",
+      "glamour_shot": "陸清和端坐案前，青灰長衫、袖口發白，聽周崇開價時眼都沒抬。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她看穿周崇摸耳垂的說謊小動作"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "zhou-chong",
+        "jiang-ling"
+      ],
+      "locations": [
+        "通判衙門側廳"
+      ],
+      "state": {
+        "time": "第二十五日午",
+        "knowledge": "周崇要拿婚約換糧案",
+        "carry_forward": "他的選擇"
+      }
+    },
+    {
+      "number": 166,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "七圈扳指",
+      "youtube_title": "通判拒絕知府的交換，醒過來的她親自回娘家問父親：你蓋印的時候轉了七圈扳指",
+      "duration_s": 125,
+      "logline": "陸清和拒絕了交換，也把這件事原原本本告訴她；她決定自己回姜府問清楚。",
+      "hook": "陸清和推回茶盞：「她不是帳。」周崇的笑停住了。",
+      "hook_type": "line",
+      "mid_hook": "回家路上，她問：「你為什麼不先救我？」他說：「因為妳會不要我這樣救。」她想了想，點頭。",
+      "extra_hooks": [
+        "姜府正廳，她當著姜父的面坐下：「爹，你蓋印的時候，轉了七圈扳指。」"
+      ],
+      "conflict": "她要從怕事的父親嘴裡問出真話，這是她十年來第一次回這個家當面說話。",
+      "turn": "大家以為她會求父親撤印，她說的卻是：「你十年沒來看我。娘每天來。」姜父的扳指，第一次停了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "姜父招了：婚約從來沒寫過，只是酒桌上一句話。春杏把那張紙舉到窗前，對著光——紙裡浮出一個水印：蕭家紙行，今年的貨。",
+        "question": "蕭母的婚約，是今年才寫的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "姜府窗前，一張婚約對著日光，紙紋裡慢慢浮出一枚「蕭記」水印。",
+      "glamour_shot": "她坐在姜府那張她十年沒坐過的椅子上，脊背筆直，淺綠在一片紅金裡格外清楚。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和拒絕拿糧案換她",
+        "姜父承認婚約只是一句玩笑"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "zhou-chong",
+        "jiang-ling",
+        "jiang-zhong",
+        "jiang-mu",
+        "chun-xing"
+      ],
+      "locations": [
+        "通判衙門側廳",
+        "姜府正廳"
+      ],
+      "state": {
+        "time": "第二十六日",
+        "knowledge": "婚約是蕭母今年偽造的",
+        "carry_forward": "當眾拆穿"
+      }
+    },
+    {
+      "number": 167,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "春杏揭穿",
+      "youtube_title": "陪嫁丫鬟當著滿堂賓客揭穿將軍娘的假婚約，紙是今年的，墨還是新的，連印都是今天蓋的",
+      "duration_s": 130,
+      "logline": "蕭母帶著賓客到姜府「定日子」，春杏當眾拆穿那紙婚約；有一個人在門口，全聽見了。",
+      "hook": "姜府正廳擠滿賓客，柳太太掩著嘴：「今兒定蕭家的日子？」蕭母笑得像朵花。",
+      "hook_type": "image",
+      "mid_hook": "春杏舉起婚約對著窗：「十年前的紙，會有今年的水印？」她又刮了刮紅印：「印泥還沒乾透。」",
+      "extra_hooks": [
+        "姜父當著賓客把印收回袖子，沉著臉：「這印，是她昨天逼我蓋的。」"
+      ],
+      "conflict": "蕭母要用滿堂賓客把婚事做實，春杏要用一張紙讓她當眾下不了台。",
+      "turn": "大家以為最後拆穿的會是阿苓，她只是站在一旁點頭：「春杏說得對。」把整場勝利讓給了春杏。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "賓客散開的那一刻，所有人看見門口站著蕭承。他看著母親：「娘，十年前妳說她死了——也是算盤？」蕭母的鐲子，第一次一個也沒數。",
+        "question": "蕭承會怎麼對母親？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "姜府正廳，一屋子回頭的賓客，門框裡逆光站著一個武將，他身前地上落著一張撕成兩半的婚約。",
+      "glamour_shot": "春杏舉紙對窗的那一刻，雙丫髻在光裡翹著，圓臉上全是得意。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t13",
+        "s03-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "假婚約當眾作廢",
+        "春杏揭穿蕭母的算盤",
+        "姜父當著賓客收回了印"
+      ],
+      "characters": [
+        "chun-xing",
+        "xiao-mu",
+        "jiang-zhong",
+        "jiang-ling",
+        "s03-liu-taitai",
+        "s03-wang-yuanwai",
+        "xiao-cheng"
+      ],
+      "locations": [
+        "姜府正廳"
+      ],
+      "state": {
+        "time": "第二十七日",
+        "knowledge": "蕭承知道了母親的全部算盤",
+        "carry_forward": "蕭府"
+      }
+    },
+    {
+      "number": 168,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "第一次大聲",
+      "youtube_title": "將軍第一次對親娘大聲：妳騙了我十年，還要騙她；一旁算帳的父親只說了一句城西的帳別翻",
+      "duration_s": 120,
+      "logline": "蕭承回到蕭府，第一次對母親大聲；父親在一旁撥算盤，說了一句不該說的話。",
+      "hook": "蕭府正堂，蕭承把撕成兩半的婚約放在母親面前，一個字也不說。",
+      "hook_type": "image",
+      "mid_hook": "蕭承終於開口，聲音大到整個蕭府都聽見：「妳騙了我十年，還要騙她！」",
+      "extra_hooks": [
+        "蕭父撥著算盤，頭也不抬：「吵什麼。只要城西米行的舊帳別翻，娶誰都行。」"
+      ],
+      "conflict": "蕭承要母親收手，蕭母要兒子明白她是為他好，蕭父只要帳不出事。",
+      "turn": "觀眾以為這是一場家務事，蕭父一句「城西的舊帳」，讓蕭承第一次覺得自己的家也有東西在藏。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "蕭承把佩刀放在桌上，轉身出門；趙七牽來馬：「將軍，去哪？」他翻身上馬，往姜府的方向。",
+        "question": "他深夜去姜府要做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "ganren"
+      ],
+      "spectacle": "蕭府正堂，一半燈下是撕裂的婚約，一半燈下是一把被撥得飛快的算盤，中間一把刀。",
+      "glamour_shot": "蕭承立在正堂中央，燈光把他的影子投在整面牆上，臉上的疤在怒意裡更清楚。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承當面拒絕母親，不再聽她安排"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "xiao-mu",
+        "xiao-fu",
+        "s03-zhao-qi",
+        "jiang-ling"
+      ],
+      "locations": [
+        "蕭府正堂",
+        "蕭府門口"
+      ],
+      "state": {
+        "time": "第二十七日夜",
+        "knowledge": "蕭承聽見父親提城西米行的舊帳",
+        "carry_forward": "姜府"
+      }
+    },
+    {
+      "number": 169,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "等阿承來",
+      "youtube_title": "將軍深夜回到那間刻滿正字的小屋，她娘說出那三千六百畫的意思：她每天刻一畫，說等阿承來",
+      "duration_s": 125,
+      "logline": "蕭承回到姜府後院那間小屋；這次，姜母在裡面等他。",
+      "hook": "姜府後院小屋點著一盞燈，姜母坐在牆下，手指撫著那一排排「正」字。",
+      "hook_type": "image",
+      "mid_hook": "她說：「這屋子我每夜來。她睡了，我就數這面牆。」",
+      "conflict": "蕭承要知道這十年她怎麼過的，姜母要把十年的話一次說給一個人聽。",
+      "turn": "蕭承以為那三千六百畫是她在數關了多久，姜母卻說：那是她每天在等一個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "姜母的手停在最後一畫上：「她每天刻一畫。她說，等阿承來。」蕭承跪在那面牆前，額頭抵著冰冷的牆。",
+        "question": "她等了十年，他現在來得及嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "chengzhang"
+      ],
+      "spectacle": "燈下的小屋，三千六百個「正」字從牆根爬上房梁，一個男人的影子貼在整面牆上。",
+      "glamour_shot": "蕭承跪在牆前，燈光從側面照出他繃緊的下顎與泛紅的眼眶。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "姜母說出三千六百畫的意思"
+      ],
+      "characters": [
+        "jiang-mu",
+        "xiao-cheng",
+        "jiang-ling"
+      ],
+      "locations": [
+        "姜府後院小屋"
+      ],
+      "state": {
+        "time": "第二十七日深夜",
+        "knowledge": "蕭承知道她十年都在等他",
+        "carry_forward": "他要去陸府"
+      }
+    },
+    {
+      "number": 170,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "那你為什麼不來",
+      "youtube_title": "將軍求娶她：不是我娘的意思，是我的；她看著記不得的那張臉問，那你為什麼不來看一眼",
+      "duration_s": 140,
+      "logline": "蕭承到陸府當面求娶；阿苓記不得他的臉，卻問出了他十年都不敢問自己的話。",
+      "hook": "天剛亮，蕭承站在梨樹下，對著屋門：「阿苓，我有話說。」",
+      "hook_type": "line",
+      "mid_hook": "她走出來，他說：「不是我母親的意思，是我的。我想娶妳。」廊下的陸清和停住了腳步。",
+      "extra_hooks": [
+        "她回頭看陸清和：「你要我怎麼答？」陸清和說：「妳自己答。」"
+      ],
+      "conflict": "蕭承把十年的心捧出來，她要用一顆剛剛長大一截的心，自己回答。",
+      "turn": "大家以為她會說好或不好，她看著那張記不得的臉，問的卻是十年。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她說：「你十年沒來。」他說：「我以為妳死了。」她說：「那你為什麼不來看一眼？」蕭承張著嘴，一個字都說不出來。",
+        "question": "他為什麼不來看一眼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "清晨梨樹下，一個將軍、一個姑娘、廊下一個男人，三個人站成一個沒有說破的三角，樹枝上的雪一塊塊掉下來。",
+      "glamour_shot": "她站在梨樹下仰臉問他，晨光照在她端正的髮髻和清清楚楚的眼睛上。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承當面求娶",
+        "陸清和沒有替她回答"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "jiang-ling",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府梨樹下",
+        "陸府廊下"
+      ],
+      "state": {
+        "time": "第二十八日清晨",
+        "knowledge": "蕭承求娶；她問他為什麼不來看一眼",
+        "carry_forward": "他的答案"
+      }
+    },
+    {
+      "number": 171,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "姜姑娘",
+      "youtube_title": "河州人開始押陸夫人會不會改嫁將軍，三年才開口的孩子在飯桌上不叫娘了，改叫她姜姑娘",
+      "duration_s": 120,
+      "logline": "蕭承答不出那句話；河州分成兩邊議論她，小禮聽見了，悄悄把「娘」收了回去。",
+      "hook": "梨樹下，蕭承終於開口，聲音啞了：「我怕看見妳死了的樣子。」",
+      "hook_type": "line",
+      "mid_hook": "孟先生的書塾裡，幾個孩子圍著小禮：「你娘要嫁將軍了，你又沒娘了。」小禮把筆放下，一聲不吭。",
+      "extra_hooks": [
+        "茶館裡柳太太掩嘴：「醒了的陸夫人，配將軍才對。」阿牛拍桌：「陸夫人就是陸夫人！」"
+      ],
+      "conflict": "她剛學會自己回答大人的話，全河州卻開始替她回答；小禮聽到的，是最怕的那一種答案。",
+      "turn": "大家以為最受傷的是蕭承或陸清和，晚飯時小禮一開口，大家才知道是誰。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "晚飯桌上，小禮把菜夾進她碗裡，低著頭說：「姜姑娘，吃。」她手裡的筷子掉在桌上。",
+        "question": "小禮為什麼不叫娘了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "chengzhang"
+      ],
+      "spectacle": "陸府飯桌上三副碗筷，一雙筷子從她手裡落下，在桌面上彈了一下。",
+      "glamour_shot": "她愣住看著小禮，燈光照著她端正的髮髻與一下子紅了的眼眶。",
+      "setups": [
+        "s03-t14",
+        "m12"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承說出十年不敢來看的原因"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "jiang-ling",
+        "lu-xiaoli",
+        "meng-xiansheng",
+        "s03-liu-taitai",
+        "a-niu",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府梨樹下",
+        "孟先生書塾",
+        "河州茶館",
+        "陸府飯廳"
+      ],
+      "state": {
+        "time": "第二十八日夜",
+        "knowledge": "小禮改口叫她姜姑娘",
+        "carry_forward": "小禮在怕什麼"
+      }
+    },
+    {
+      "number": 172,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "樹下的糖盒",
+      "youtube_title": "孩子三天不肯叫娘，她半夜在梨樹下挖出二十三個糖盒，全是將軍送來、被孩子偷偷埋掉的",
+      "duration_s": 120,
+      "logline": "小禮三天不叫娘；阿苓試了所有辦法，最後在梨樹下找到他藏起來的東西。",
+      "hook": "第一天，她唱藥婆的歌，小禮捂住耳朵跑開了。",
+      "hook_type": "image",
+      "mid_hook": "第二天，她推鞦韆叫他上來，他搖頭；第三天，蕭承的糖盒照常放在門檻上，小禮一把抱走。",
+      "extra_hooks": [
+        "她跟著他的腳印走到梨樹下，看見一塊新翻的土。"
+      ],
+      "conflict": "她要把小禮的「娘」叫回來，可這次唱歌和鞦韆都不靈了。",
+      "turn": "她以為小禮在跟她賭氣，扒開土才知道：他不是在氣她，他在跟一盒一盒的糖打仗。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她扒開梨樹下的土：一個、兩個、十個……二十三個糖盒，盒蓋都沒開過，排得整整齊齊。小禮站在她身後，手裡抱著第二十四個。",
+        "question": "他為什麼要埋掉這些糖？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "月下梨樹根旁，二十三個糖盒從土裡露出來，排成一排，像一列站崗的小兵。",
+      "glamour_shot": "她跪在梨樹下扒土回頭，月光照著她沾泥的手與端正卻散了一縷的頭髮。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到小禮藏起來的二十三個糖盒"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "xiao-cheng",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府小院",
+        "陸府梨樹下"
+      ],
+      "state": {
+        "time": "第三十一日夜",
+        "knowledge": "她知道小禮在埋蕭承的糖",
+        "carry_forward": "問小禮"
+      }
+    },
+    {
+      "number": 173,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "我不只要糖了",
+      "youtube_title": "孩子哭著說怕她跟著糖走，喝了藥的她蹲下來說：我喝了藥，我不只要糖了",
+      "duration_s": 125,
+      "logline": "阿苓蹲下來問小禮在怕什麼；小禮的答案讓她笑了，也讓陸清和做了一個決定。",
+      "hook": "她學陸清和的樣子蹲下來，跟小禮一樣高：「你怕什麼？」",
+      "hook_type": "question",
+      "mid_hook": "小禮抱著糖盒，眼淚掉下來：「妳會跟糖走。」",
+      "extra_hooks": [
+        "她把糖盒拿過來放在地上：「我喝了藥。我不只要糖了。」小禮看著她：「那妳要什麼？」"
+      ],
+      "conflict": "她要用一個剛長大的心，回答一個六歲孩子最大的害怕。",
+      "turn": "大家以為她會說「我不走」，她卻說：「我要吃飯的地方，要你，要你爹。糖可以分給大家。」小禮撲進她懷裡：「娘。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "廊下，賀大夫把一個小紙包交給陸清和：「第二碗。季一轉，就能喝。」陸清和看著院子裡抱在一起的兩個人，把紙包收進袖子：「等等。」",
+        "question": "他為什麼不給她第二碗？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "chengzhang"
+      ],
+      "spectacle": "梨樹下二十四個糖盒圍成一圈，圈中間一個蹲著的姑娘抱著一個孩子。",
+      "glamour_shot": "她蹲著抱住小禮，月光照在她低頭的側臉上，像個大人，也像個姐姐。",
+      "setups": [
+        "s03-t15"
+      ],
+      "payoffs": [
+        "s03-t08",
+        "s03-t14",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮重新叫她娘",
+        "二十四盒糖第二天分給了整條街的孩子"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "he-daifu",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府梨樹下",
+        "陸府廊下"
+      ],
+      "state": {
+        "time": "第三十一日深夜",
+        "knowledge": "小禮叫回了娘；陸清和收起第二碗藥",
+        "carry_forward": "第二碗藥"
+      }
+    },
+    {
+      "number": 174,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "你收袖子了",
+      "youtube_title": "丈夫把第二碗解藥鎖進抽屜，她問藥呢，他說在大夫那裡，她第一次抓到他說謊：你收袖子了",
+      "duration_s": 115,
+      "logline": "陸清和把雪裡紅鎖進抽屜；長大了一截的阿苓，第一次看穿了他。",
+      "hook": "深夜書房，陸清和打開抽屜，把紙包放在木牌旁邊，上了鎖。",
+      "hook_type": "image",
+      "mid_hook": "第二天她問：「賀大夫說第二碗季一轉就能喝。藥呢？」陸清和說：「在賀大夫那裡。」",
+      "extra_hooks": [
+        "孟先生教她寫「小禮」，她一筆一畫寫得端端正正，寫完卻說：「先生，大人為什麼要說謊？」"
+      ],
+      "conflict": "她剛學會看大人，第一個讓她看出破綻的，就是她最信的那個人。",
+      "turn": "觀眾以為她看不出來，她卻盯著他的手：「你收袖子了。你說謊的時候收袖子。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸清和的手停在袖口。她沒有追問，只把寫好的「小禮」兩個字放在他桌上，轉身走了。紙上，最後一筆壓得很重。",
+        "question": "他為什麼要騙她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "書房抽屜裡，一塊木牌、一張「清」字、一個小紙包並排躺著，銅鎖扣上的聲音很輕。",
+      "glamour_shot": "她站在書桌前直視他，燈光照著她端正的眉眼，第一次不是仰頭看他，而是平視。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她把「小禮」兩個字寫得端端正正"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "jiang-ling",
+        "meng-xiansheng",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府書房",
+        "孟先生書塾"
+      ],
+      "state": {
+        "time": "第三十二日",
+        "knowledge": "她知道他藏了第二碗藥",
+        "carry_forward": "為什麼"
+      }
+    },
+    {
+      "number": 175,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "有我兒子",
+      "youtube_title": "老大夫追問通判為何不給她第二碗，他說出真話：她忘的不是將軍，是十歲，十歲裡有我兒子",
+      "duration_s": 125,
+      "logline": "賀大夫來衙門追問為什麼停藥；陸清和說出了他真正怕的事。",
+      "hook": "衙門側廳，賀大夫把藥箱重重放下：「為什麼？」",
+      "hook_type": "question",
+      "mid_hook": "陸清和說：「她每解一分就忘一分。她忘的不是蕭承，是十歲。」",
+      "extra_hooks": [
+        "他停了很久：「她十歲那年的事……有我兒子。小禮聽得見的，是十歲的她。」"
+      ],
+      "conflict": "陸清和要在她的長大與兒子的依靠之間做選擇，而這本來不該由他選。",
+      "turn": "賀大夫以為他是怕她變心，原來他怕的是：再長一截，小禮的那個「娘」會不會也一起被放下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "側廳的門被推開，阿苓提著食盒站在門口，臉上沒有表情：「你們在說我。」",
+        "question": "她聽到了多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "xuanyi"
+      ],
+      "spectacle": "青灰側廳裡一個藥箱、一張案、兩個男人，門被推開的一瞬間，冬陽整片灑進來。",
+      "glamour_shot": "陸清和說出那句話時低頭，鬢角的白髮在窗光裡很清楚，整個人第一次顯得疲倦。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "賀大夫知道了陸清和停藥的真正原因"
+      ],
+      "characters": [
+        "he-daifu",
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "通判衙門側廳"
+      ],
+      "state": {
+        "time": "第三十二日午",
+        "knowledge": "陸清和怕她再長大，小禮會失去那個娘",
+        "carry_forward": "她聽見了什麼"
+      }
+    },
+    {
+      "number": 176,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "你怕她不要你",
+      "youtube_title": "她說你叫我等我就等，將軍卻當面拆穿通判：你停藥，是怕她醒了就不要你",
+      "duration_s": 120,
+      "logline": "阿苓只聽見後半句；她選擇等，蕭承卻不肯等，當面把陸清和最怕的話說了出來。",
+      "hook": "阿苓把食盒放在案上，一樣一樣擺好：「我只聽到『有我兒子』。先吃飯。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「你說等等，我就等等。可你要告訴我等什麼。」陸清和說：「等我想清楚。」她點頭：「那你快點想。」",
+      "conflict": "她給了他時間，蕭承卻不給；兩個男人都在怕，只是怕的東西不一樣。",
+      "turn": "觀眾以為蕭承是來吵架的，他卻是來說一件事：他已經上書兵部，請調河州守城，不回邊關了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "衙門外，蕭承攔住陸清和：「你停藥，是怕她醒了就不要你。」陸清和腳步一頓，沒有回頭，也沒有否認。",
+        "question": "他真的怕她醒了就走嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "chengzhang",
+        "ganren"
+      ],
+      "spectacle": "衙門台階上，一青衫一黑衣兩個男人一上一下站著，兩人中間是一道長長的冬日陰影。",
+      "glamour_shot": "她替他擺碗筷時低頭的側臉，髮髻端正，動作穩而輕，像這個家的女主人。",
+      "setups": [
+        "s03-t16",
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她給了陸清和時間，沒有逼他"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "xiao-cheng",
+        "s03-zhao-qi"
+      ],
+      "locations": [
+        "通判衙門側廳",
+        "通判衙門台階"
+      ],
+      "state": {
+        "time": "第三十二日下午",
+        "knowledge": "蕭承請調河州；陸清和被說中最怕的事",
+        "carry_forward": "蕭承的調令"
+      }
+    },
+    {
+      "number": 177,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "阿承是誰",
+      "youtube_title": "姜母來陸府說起十年前女兒最喜歡的男孩叫阿承，醒過來的她想了很久：阿承，是送糖的那個人嗎",
+      "duration_s": 120,
+      "logline": "姜母來看女兒，說起大姐的下落與十年前的那個男孩；阿苓第一次把兩件事放在一起。",
+      "hook": "陸府門口，姜母膝蓋上沾著泥：「我又去尼庵跪了一天。妳姐姐，三個月沒消息了。」",
+      "hook_type": "image",
+      "mid_hook": "阿苓替娘擦膝蓋上的泥：「姐姐會回來吃飯的。」姜母哭了：「妳現在說話，像個大人了。」",
+      "extra_hooks": [
+        "姜母握著她的手：「妳十歲以前，最喜歡跟一個叫阿承的男孩玩。他掉了一顆門牙。」"
+      ],
+      "conflict": "她記得十歲前的男孩，記得每天送糖的將軍，卻怎麼也接不起來中間那張臉。",
+      "turn": "大家以為她早就知道蕭承就是阿承，原來忘了臉之後，那兩個人在她心裡一直是兩個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她慢慢抬頭：「阿承……是那個送糖的人嗎？」姜母點頭。門外，蕭承提著糖盒，剛好走到門檻前。",
+        "question": "她會認出他嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengzhang",
+        "jiating"
+      ],
+      "spectacle": "陸府門口，母女兩人坐在台階上，一雙沾泥的膝蓋、一塊乾淨的帕子，門檻外一雙軍靴停下。",
+      "glamour_shot": "她替母親擦膝蓋時低頭的側臉，端正、溫柔，冬陽照著她的耳垂與鬢角。",
+      "setups": [
+        "m11",
+        "m12"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母女第一次像大人一樣說話",
+        "她把阿承和送糖的人連了起來"
+      ],
+      "characters": [
+        "jiang-mu",
+        "jiang-ling",
+        "xiao-cheng",
+        "jiang-rao"
+      ],
+      "locations": [
+        "陸府門口"
+      ],
+      "state": {
+        "time": "第三十三日",
+        "knowledge": "她知道送糖的蕭承就是阿承，卻記不起那張臉",
+        "carry_forward": "明天他要來問她"
+      }
+    },
+    {
+      "number": 178,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "爹怕什麼",
+      "youtube_title": "通判深夜守著抽屜裡的解藥不睡，孩子問爹怕什麼，他答不出來，她替他披上一件外衣",
+      "duration_s": 120,
+      "logline": "陸清和一夜不睡守著那個抽屜；小禮和阿苓先後來到廊下，各問了他一句話。",
+      "hook": "深夜廊下，陸清和一手握著木牌，一手拿著那張「清」，抽屜的鑰匙掛在指間。",
+      "hook_type": "image",
+      "mid_hook": "小禮抱著布老虎走出來，靠著他坐下：「爹，你怕什麼？」陸清和張口，說不出來。",
+      "extra_hooks": [
+        "小禮把布老虎塞進他懷裡：「娘說，怕的時候抱這個。」"
+      ],
+      "conflict": "陸清和第一次發現，自己守著的不是一碗藥，是一個不敢說出口的心。",
+      "turn": "觀眾以為她睡了，她卻拿著他的外衣走出來，替他披上，坐在小禮另一邊：「你怎麼不睡？」他說：「等等。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她看著院子裡的梨樹：「明天蕭將軍說，要問我一句話。」陸清和握著木牌的手收緊了：「妳想好怎麼答了嗎？」她沒說話。",
+        "question": "她會怎麼回答蕭承？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "月下長廊，一個男人坐在中間，左邊一個孩子抱著布老虎，右邊一個姑娘替他披衣，三個影子在廊柱間連成一片。",
+      "glamour_shot": "她替他披外衣時俯身的那一刻，月光照著她的側臉，他抬頭看她，眼神第一次藏不住。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮把布老虎給了爹"
+      ],
+      "characters": [
+        "lu-qinghe",
+        "lu-xiaoli",
+        "jiang-ling"
+      ],
+      "locations": [
+        "陸府長廊"
+      ],
+      "state": {
+        "time": "第三十三日深夜",
+        "knowledge": "明天蕭承要問她一句話",
+        "carry_forward": "她的答案"
+      }
+    },
+    {
+      "number": 179,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "留河州",
+      "youtube_title": "兵部調令到了，將軍不回邊關、留守河州，全城擠在通判府門口，看他走到梨樹下問她",
+      "duration_s": 125,
+      "logline": "蕭承請調河州的文書批下來了；他帶著調令來陸府，全河州都跟著來看。",
+      "hook": "陸府門口，趙七高舉一封蓋著兵部大印的文書：「蕭副將，留河州守城！」",
+      "hook_type": "line",
+      "mid_hook": "門外擠滿了街坊，阿牛、柳太太、王員外都在，兩邊的人各站一邊，像在看一場戲。",
+      "extra_hooks": [
+        "蕭承手裡提著糖盒，走到梨樹下，卻沒有把糖遞給她，只是放在鞦韆上。"
+      ],
+      "conflict": "蕭承用一紙調令證明他不走了，全河州等著看陸夫人怎麼回應。",
+      "turn": "大家以為他是來搶人的，他卻先對陸清和行了一禮：「她說了算。我只要常來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "蕭承轉向她，喉嚨動了很久：「阿苓——」她站在梨樹下，小禮抓著她的袖子，廊下的陸清和一動不動。",
+        "question": "他要問她什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "gufeng"
+      ],
+      "spectacle": "陸府門外人山人海，門內老梨樹下一個鞦韆，鞦韆上放著一盒沒拆的糖。",
+      "glamour_shot": "蕭承一身正裝站在梨樹下，陽光從枝椏間灑在他臉上，疤痕旁的眼神第一次很軟。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s03-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蕭承調任河州守城",
+        "他當著全城說她說了算"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "s03-zhao-qi",
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "a-niu",
+        "s03-liu-taitai",
+        "s03-wang-yuanwai"
+      ],
+      "locations": [
+        "陸府門口",
+        "陸府梨樹下"
+      ],
+      "state": {
+        "time": "第三十四日上午",
+        "knowledge": "蕭承留在河州；全城等著她的回答",
+        "carry_forward": "那一句話"
+      }
+    },
+    {
+      "number": 180,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "那你以後常來",
+      "youtube_title": "將軍在梨樹下問她還記不記得他，她說記得救過一個人卻不記得他的臉，下一句讓廊下的丈夫第一次怕了",
+      "duration_s": 150,
+      "logline": "蕭承問阿苓記不記得他；她說了實話，也給了他一個誰都沒想到的答案。",
+      "hook": "梨樹下，蕭承問：「妳記得我嗎？」",
+      "hook_type": "question",
+      "mid_hook": "她看了他很久。風吹過梨樹，樹枝上的雪落在兩人之間。她說：「我記得我救過一個人。我不記得他長什麼樣。」",
+      "extra_hooks": [
+        "蕭承往前一步，讓她看清楚自己的臉、那道疤：「我長這樣。」"
+      ],
+      "conflict": "蕭承用十年換一個「記得」，她只有剛長大一截的誠實。",
+      "turn": "大家以為她會說「不記得就算了」，或者「我跟你走」；她兩個都沒說——她把一個忘了的人，重新請回了自己的日子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她說：「那你以後常來，我就記得了。」蕭承笑了，眼眶全紅。廊下，陸清和一手握著亡妻的木牌，一手捏著那張「清」，三十二年來第一次，怕了。",
+        "question": "他怕的，會成真嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "chengzhang"
+      ],
+      "spectacle": "老梨樹下，雪從枝頭落在一個將軍與一個姑娘之間；鏡頭拉遠，廊下一個握著木牌與一張紙的男人站在陰影裡。",
+      "glamour_shot": "她在梨樹下抬頭說「常來」的那一秒，髮髻端正、眼神清亮，雪落在她的睫毛上，笑得溫和而篤定。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m01",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她親口邀蕭承常來",
+        "她說出自己記得救過一個人"
+      ],
+      "characters": [
+        "xiao-cheng",
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府梨樹下",
+        "陸府廊下"
+      ],
+      "state": {
+        "time": "第三十四日上午",
+        "knowledge": "她不記得蕭承的臉，邀他常來；陸清和第一次怕她會走",
+        "carry_forward": "抽屜裡的第二碗藥；常來的蕭承；廊下的他"
+      }
+    }
+  ]
+}

@@ -1,0 +1,4479 @@
+{
+  "number": 1,
+  "title": "下來吃飯",
+  "theme": "花轎裡坐錯了人，他沒送她回去。",
+  "start_state": "河州通判陸清和續娶姜家大小姐的喜日：花轎到門，掀簾——裡面坐著一個抓著一把草、頭髮紮歪的姑娘，說『我姐姐讓我坐這裡等她』。姜家慌了，陸家靜了，全河州笑了。陸清和看了她三秒：『下來吃飯吧。』",
+  "end_state": "她為什麼心智停在十歲揭開（為救蕭承喝了毒酒）；花轎為什麼換了揭開（大姐自己換、跟情郎走了）；她為什麼記得所有草藥揭開（藥婆奶奶教的、寒毒沒鎖十歲前）。她在陸府住下來：福伯替她留碗、杜嬤嬤罰她別靠近小少爺、春杏替她梳頭；第一夜她在院子唱藥婆的歌，三年不睡整夜的小禮睡了；街市她指著一帖藥說『會死人』、全街笑、賀大夫臉白了；姜父來『接』她回去別丟人，陸清和說『她是我陸家的人』。最後一集，小禮第一次主動拉她的袖子、把布老虎塞進她手裡；她蹲下來說『你叫什麼？』；小禮沒說，但他張了嘴。陸清和在廊下看著，手握著亡妻的木牌。",
+  "guest_cast": [
+    {
+      "id": "s01-jiaofu",
+      "name": "老轎夫",
+      "role": "替姜家抬花轎的轎夫頭，知道花轎在城隍廟歇過腳",
+      "appearance": "東亞男性，四十五歲，黑瘦結實、肩上一道扁擔磨出的繭，粗布短褂、頭纏汗巾，說話前先搓手"
+    },
+    {
+      "id": "s01-xiangshen",
+      "name": "錢鄉紳",
+      "role": "來喝喜酒看熱鬧的河州鄉紳，第一個當眾笑她的人",
+      "appearance": "東亞男性，五十歲，富態、八字鬍、綢袍上繡團花，手裡一把玉骨扇，笑起來露一顆金牙"
+    },
+    {
+      "id": "s01-yaopu-furen",
+      "name": "王嫂",
+      "role": "藥鋪街買藥的婦人，被她攔下那帖配錯的藥",
+      "appearance": "東亞女性，三十五歲，清瘦、素布衣裙、頭包藍布巾，臂彎挎著竹籃，眉間總皺著"
+    },
+    {
+      "id": "s01-xuetu",
+      "name": "小石頭",
+      "role": "賀大夫的學徒，抓錯藥櫃抽屜的人",
+      "appearance": "東亞少年，十五歲，瘦小、圓眼、灰布短衣、袖口沾藥粉，說話時眼睛看地"
+    },
+    {
+      "id": "s01-aniu-niang",
+      "name": "阿牛娘",
+      "role": "阿牛的娘，高熱不退、街坊都說不行了",
+      "appearance": "東亞女性，五十五歲，瘦、灰白髮髻、粗布舊襖，躺在竹床上，手很粗"
+    },
+    {
+      "id": "s01-zhou-furen",
+      "name": "周夫人",
+      "role": "知府周崇的夫人，設宴請『陸夫人』等著看笑話",
+      "appearance": "東亞女性，四十八歲，端莊雍容、鵝蛋臉、高髻插金步搖，絳紫織錦褙子，腕上一串翡翠鐲子"
+    },
+    {
+      "id": "s01-zhou-sun",
+      "name": "周家小孫兒",
+      "role": "周夫人的孫兒，在花園摘了一片斷腸草的葉子",
+      "appearance": "東亞男童，五歲，圓臉、虎頭帽、紅綢小襖，手裡抓著一片綠葉"
+    },
+    {
+      "id": "s01-zulao",
+      "name": "姜家三叔公",
+      "role": "姜家族中長輩，跟著姜父來陸府要人",
+      "appearance": "東亞男性，七十歲，瘦長、白鬚垂胸、拄烏木杖，深褐長袍，眼皮半垂"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s01-t01",
+      "question": "他說有糖，糖在哪裡？",
+      "setup_episode": 1,
+      "payoff_episode": 3
+    },
+    {
+      "id": "s01-t02",
+      "question": "掀簾時她手裡那把草是什麼？",
+      "setup_episode": 1,
+      "payoff_episode": 6
+    },
+    {
+      "id": "s01-t03",
+      "question": "布老虎掉的那顆眼睛去哪了？",
+      "setup_episode": 3,
+      "payoff_episode": 59
+    },
+    {
+      "id": "s01-t04",
+      "question": "陸清和腰間的木牌刻的是誰？",
+      "setup_episode": 5,
+      "payoff_episode": 60
+    },
+    {
+      "id": "s01-t19",
+      "question": "花轎在城隍廟歇腳時發生了什麼？",
+      "setup_episode": 2,
+      "payoff_episode": 8
+    },
+    {
+      "id": "s01-t20",
+      "question": "姜家說『明早換人』是真的嗎？",
+      "setup_episode": 8,
+      "payoff_episode": 9
+    },
+    {
+      "id": "s01-t05",
+      "question": "夫人的鞦韆為什麼沒人坐？",
+      "setup_episode": 9,
+      "payoff_episode": 15
+    },
+    {
+      "id": "s01-t21",
+      "question": "三年不睡整夜的小禮，今夜睡得著嗎？",
+      "setup_episode": 6,
+      "payoff_episode": 10
+    },
+    {
+      "id": "s01-t06",
+      "question": "姜父在廳上等得到陸清和嗎？",
+      "setup_episode": 11,
+      "payoff_episode": 20
+    },
+    {
+      "id": "s01-t22",
+      "question": "陸清和清晨留下的字條寫了什麼？",
+      "setup_episode": 11,
+      "payoff_episode": 13
+    },
+    {
+      "id": "s01-t07",
+      "question": "春杏站哪一邊？",
+      "setup_episode": 12,
+      "payoff_episode": 19
+    },
+    {
+      "id": "s01-t10",
+      "question": "她怎麼知道人在說謊？",
+      "setup_episode": 12,
+      "payoff_episode": 16
+    },
+    {
+      "id": "s01-t08",
+      "question": "廚房那碗飯是誰吩咐留的？",
+      "setup_episode": 13,
+      "payoff_episode": 18
+    },
+    {
+      "id": "s01-t09",
+      "question": "杜嬤嬤會不會讓她靠近少爺？",
+      "setup_episode": 14,
+      "payoff_episode": 37
+    },
+    {
+      "id": "s01-t23",
+      "question": "她搶下婦人的藥包要做什麼？",
+      "setup_episode": 21,
+      "payoff_episode": 22
+    },
+    {
+      "id": "s01-t11",
+      "question": "賀大夫會不會認錯？",
+      "setup_episode": 23,
+      "payoff_episode": 28
+    },
+    {
+      "id": "s01-t12",
+      "question": "阿牛的娘怎麼了？",
+      "setup_episode": 23,
+      "payoff_episode": 29
+    },
+    {
+      "id": "s01-t24",
+      "question": "沒人敢去阿牛家，她會不會去？",
+      "setup_episode": 25,
+      "payoff_episode": 26
+    },
+    {
+      "id": "s01-t25",
+      "question": "小禮拉著她的袖子要去哪？",
+      "setup_episode": 31,
+      "payoff_episode": 32
+    },
+    {
+      "id": "s01-t17",
+      "question": "賀大夫說她脈裡的『寒』是什麼？",
+      "setup_episode": 33,
+      "payoff_episode": 35
+    },
+    {
+      "id": "s01-t18",
+      "question": "小禮比的那個『三』是什麼意思？",
+      "setup_episode": 39,
+      "payoff_episode": 40
+    },
+    {
+      "id": "s01-t13",
+      "question": "周夫人請她赴宴想做什麼？",
+      "setup_episode": 41,
+      "payoff_episode": 46
+    },
+    {
+      "id": "s01-t26",
+      "question": "她自己要不要去赴宴？",
+      "setup_episode": 41,
+      "payoff_episode": 42
+    },
+    {
+      "id": "s01-t14",
+      "question": "她要不要識字？",
+      "setup_episode": 43,
+      "payoff_episode": 53
+    },
+    {
+      "id": "s01-t27",
+      "question": "姜家族老要怎麼把她帶走？",
+      "setup_episode": 48,
+      "payoff_episode": 50
+    },
+    {
+      "id": "s01-t16",
+      "question": "門口的包袱是誰留的？",
+      "setup_episode": 52,
+      "payoff_episode": 56
+    },
+    {
+      "id": "s01-t15",
+      "question": "『苓』要寫幾遍才寫得對？",
+      "setup_episode": 53,
+      "payoff_episode": 57
+    }
+  ],
+  "episodes": [
+    {
+      "number": 1,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "花轎裡坐錯了人",
+      "youtube_title": "通判掀開喜轎，裡面不是新娘，是全城笑了十年的傻二小姐：「下來吃飯吧」",
+      "duration_s": 140,
+      "logline": "河州通判陸清和迎娶姜家大小姐，掀簾卻見一個抓著草、頭髮紮歪的姑娘；姜家要把她拉走，他卻要她先下來吃飯。",
+      "hook": "鼓樂一停，青灰袖口掀開大紅轎簾——一隻抓著一把青草的手伸出來，一個聲音：「你是誰？」",
+      "hook_type": "image",
+      "mid_hook": "姜父從人群後衝來，玉扳指轉得飛快，一把扣住她手腕要往轎裡塞：「回去！」陸清和開口：「別拉。」",
+      "extra_hooks": [
+        "圍觀的人先靜、後爆笑：「是姜家的傻女！」她轉頭看笑聲，不懂，只把草抓得更緊。"
+      ],
+      "conflict": "花轎裡坐錯了人，全河州在看；姜家要把她塞回轎裡遮醜，陸家門口要不要讓這個人下來。",
+      "turn": "所有人以為通判會當場退親，他卻彎下身子跟她平視，問的第一句是：「餓不餓？」辨謊：姜父說「她只是走錯了轎」時扳指轉了三圈，她小聲說：「爹又轉了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她提著裙角站在陸府門檻前，回頭看空蕩的街口：「姐姐回來找不到我怎麼辦？」陸清和伸出手，停在半空，等她自己決定。",
+        "question": "她會跨進陸家的門嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "gufeng"
+      ],
+      "spectacle": "陸府門口滿街紅綢，大紅轎簾掀開的一瞬，轎裡淺綠衣裳的姑娘抬頭，手裡的青草落下一片葉子，在鼓樂停下的寂靜裡飄到他靴邊。",
+      "glamour_shot": "掀簾的三秒：陸清和清瘦的側臉被轎裡的光照亮，鬢角一絲早白，他看著她沒眨眼；她圓臉大眼、頭髮歪紮一邊，抓著草抬頭。",
+      "setups": [
+        "m02",
+        "m03",
+        "m11",
+        "m01",
+        "s01-t01",
+        "s01-t02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和一句「別拉」擋下姜父，她沒被塞回轎裡",
+        "她問「有沒有糖」，他答「有」，她第一次對這個陌生人點頭"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "jiang-zhong",
+        "fu-bo",
+        "s01-jiaofu"
+      ],
+      "locations": [
+        "陸府門口",
+        "河州長街"
+      ],
+      "state": {
+        "time": "成親當日午時",
+        "knowledge": "她只知道姐姐讓她坐進轎子等；陸清和知道轎裡不是姜嬈，也知道全河州叫她傻女。",
+        "carry_forward": "她站在門檻前要不要進門；姜父說「明天送回去」；那把青草；他答應的糖"
+      }
+    },
+    {
+      "number": 2,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "拜堂免了開席",
+      "youtube_title": "傻新娘被滿堂賓客當笑話，她一句話讓笑最大聲的鄉紳當場捂嘴",
+      "duration_s": 120,
+      "logline": "她跨進陸家，喜堂裡滿座賓客等著看笑話；陸清和免了拜堂，要所有人先吃飯。",
+      "hook": "陸清和的手還停在半空，她把那把草換到左手，右手放進他掌心：「我先進去，姐姐來了你叫我。」",
+      "hook_type": "line",
+      "mid_hook": "錢鄉紳搖著玉骨扇大笑：「陸大人好福氣！」她走過去認真看他：「你笑的時候左邊牙在疼。」滿堂一靜。",
+      "conflict": "滿堂賓客把她當笑話，姜父要當眾聲明「這門親不算」；陸清和要讓這頓飯吃得下去。",
+      "turn": "大家以為她在說瘋話，錢鄉紳卻捂住了左臉——他的牙真的疼了三天。辨謊：錢鄉紳說「恭喜恭喜」時摸了兩次鬍子，她說：「你沒有恭喜。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "席散時老轎夫在後門拉住福伯，搓著手壓低聲：「轎子在城隍廟歇過腳……大小姐下過轎。」福伯手裡的鑰匙停了響。",
+        "question": "花轎在城隍廟出了什麼事？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "gufeng"
+      ],
+      "spectacle": "大紅喜堂裡賓客一桌接一桌回頭，她一身淺綠穿過紅綢與金燭，像一枝草走進一缸胭脂。",
+      "glamour_shot": "陸清和站在喜堂正中舉杯，青灰長衫被滿堂紅映出一層暖光，他只說一句「開席」，抬眼看向她時眼神很靜。",
+      "setups": [
+        "s01-t19",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和免了拜堂、直接開席，姜父「這門親不算」沒說出口",
+        "笑最大聲的錢鄉紳被她說中牙疼，捂著臉坐下"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "jiang-zhong",
+        "fu-bo",
+        "s01-xiangshen",
+        "s01-jiaofu"
+      ],
+      "locations": [
+        "陸府喜堂",
+        "陸府後門"
+      ],
+      "state": {
+        "time": "成親當日午後",
+        "knowledge": "她進了陸家；福伯聽說花轎在城隍廟停過、大小姐下過轎。",
+        "carry_forward": "城隍廟的事；她還在等糖"
+      }
+    },
+    {
+      "number": 3,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "糖在第二格",
+      "youtube_title": "傻新娘滿桌菜不吃只要糖，冷面通判親自去廚房翻了一個糖罐出來",
+      "duration_s": 110,
+      "logline": "她滿桌菜不碰，只問糖在哪；陸清和親自去廚房找糖，回來時廊下多了一個抱布老虎的孩子。",
+      "hook": "福伯轉身就要去找陸清和，她從席上探出頭：「糖呢？他說有。」",
+      "hook_type": "question",
+      "mid_hook": "廊柱後面，一個六歲的男孩抱著舊布老虎看她；杜嬤嬤一把抱起他：「少爺不看生人。」",
+      "conflict": "她只認「他說有糖」這一句，滿桌大人的客套她都聽不懂；陸清和要守住對她的第一個承諾。",
+      "turn": "大家以為通判會叫下人去拿，他自己捲了袖子進廚房，從櫥櫃第二格捧出一罐麥芽糖，蹲下來遞給她。辨謊：春聯鋪的掌櫃來賀喜說「我最疼小孩」時一直往後退，她把糖收進懷裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她追著說：「你的老虎掉了一顆眼睛。」被抱走的小禮在杜嬤嬤肩上，轉過頭，第一次直直看著一個人。",
+        "question": "三年不看人的小禮，為什麼看她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xiju"
+      ],
+      "spectacle": "陸清和蹲在廚房門口，打開陶罐，麥芽糖在午後的光裡拉出一條金色的絲，她伸手接住。",
+      "glamour_shot": "他捲起磨白的袖口蹲下，手裡捧著糖罐，抬頭看她的那一秒，鬢角那絲白被陽光照亮。",
+      "setups": [
+        "s01-t03",
+        "m05"
+      ],
+      "payoffs": [
+        "s01-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿到他答應的糖，第一次笑",
+        "小禮第一次轉頭看人"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "du-mama",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府喜堂",
+        "陸府廚房",
+        "陸府迴廊"
+      ],
+      "state": {
+        "time": "成親當日傍晚前",
+        "knowledge": "她知道陸府有一個抱布老虎、不說話的小孩；陸清和看見兒子回頭了。",
+        "carry_forward": "布老虎少了一顆眼睛；小禮的那一眼"
+      }
+    },
+    {
+      "number": 4,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "爹又轉扳指了",
+      "youtube_title": "親爹當眾說大女兒病了來換人，傻女兒一句「爹你又轉扳指」全廳安靜",
+      "duration_s": 120,
+      "logline": "姜父在偏廳跟陸清和談換人，說大女兒病了；她闖進來一句話拆了親爹的謊。",
+      "hook": "偏廳門縫裡，姜父的玉扳指一圈一圈地轉：「小女姜嬈急病，明早送來。」",
+      "hook_type": "image",
+      "mid_hook": "她抱著糖罐推門進來，看著父親的手：「爹，你轉扳指了。你轉扳指都在騙人。」",
+      "conflict": "姜父要把錯嫁說成「大女兒病了、明天換人」，好保住姜家的臉面與這門親事。",
+      "turn": "陸清和本來要客氣收下這個說法，她一句話讓偏廳靜了；姜父臉漲紅，說溜了「她不在家」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸清和蹲下問她：「妳姐姐去哪了？」她舔著糖想了想：「姐姐說，她要去很遠的地方吃糖，不回來了。」姜父的扳指掉在地上。",
+        "question": "大姐真的不回來了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "偏廳裡一枚玉扳指從桌邊滾下，在青磚上轉了三圈才停，三個人都低頭看它。",
+      "glamour_shot": "陸清和蹲下與她平視，燭光從側面勾出他乾淨的眉眼，聲音放得很低：「慢慢說。」",
+      "setups": [
+        "m11",
+        "m02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "姜父「大女兒病了」的說法當場破了",
+        "陸清和知道姜嬈是自己走的，不是病了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "jiang-zhong"
+      ],
+      "locations": [
+        "陸府偏廳"
+      ],
+      "state": {
+        "time": "成親當日黃昏",
+        "knowledge": "陸清和知道姜嬈說過「去很遠的地方、不回來」；姜父還不肯認。",
+        "carry_forward": "大姐的去向；今夜她睡哪裡"
+      }
+    },
+    {
+      "number": 5,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "這間給妳睡",
+      "youtube_title": "錯嫁的傻新娘被分到偏屋，通判把她帶去最好的一間：「我睡書房」",
+      "duration_s": 115,
+      "logline": "天黑了，杜嬤嬤要把她安排在柴房旁的偏屋，陸清和把東廂給了她，自己去睡書房。",
+      "hook": "扳指還在地上，杜嬤嬤端著燈進來：「夫人……這位姑娘，今晚住柴房邊上。」",
+      "hook_type": "line",
+      "mid_hook": "她看見他腰間一塊磨亮的木牌：「這上面刻的是誰？」他的手蓋上木牌，沒回答。",
+      "conflict": "她在陌生人家過第一夜；杜嬤嬤不想她住近小少爺，陸清和要給她一間屋又不越界。",
+      "turn": "大家以為新婚夜他會進新房，他把被子抱進東廂鋪好、把燈留給她，自己抱一床舊被去書房。辨謊：杜嬤嬤說「柴房邊上暖和」時捏著圍裙角，她說：「那邊不暖和。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她摸遍袖子與懷裡，臉一下白了：「奶奶的草不見了！」東廂門口只剩一路掉下的葉子，往小禮的房間去。",
+        "question": "那把草被誰拿走了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "東廂的窗推開，正對一株老梨樹，樹下一架舊鞦韆在晚風裡輕輕晃，沒有人坐。",
+      "glamour_shot": "他抱著被子站在東廂門口，燈從背後照出他清瘦的身影，他說「我在書房，喊一聲就到」，轉身時衣角很輕。",
+      "setups": [
+        "s01-t04",
+        "m04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她住進東廂，不是柴房",
+        "陸清和明說自己睡書房，她不用怕"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "du-mama"
+      ],
+      "locations": [
+        "陸府東廂",
+        "陸府迴廊"
+      ],
+      "state": {
+        "time": "成親當夜初更",
+        "knowledge": "她有了自己的屋；看見他腰間的木牌和窗外的鞦韆。",
+        "carry_forward": "那把草不見了，葉子掉向小禮的房"
+      }
+    },
+    {
+      "number": 6,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "讓人睡覺的草",
+      "youtube_title": "傻新娘的草被不說話的小少爺偷走，她說出那是什麼草，奶娘臉色變了",
+      "duration_s": 120,
+      "logline": "她順著葉子找到小禮房裡，三年不說話的孩子正抱著那把草在聞。",
+      "hook": "她順著一地葉子推開門，小禮坐在床上，把那把草捧在鼻子前面，眼睛閉著。",
+      "hook_type": "image",
+      "mid_hook": "她坐到床邊：「這是讓人睡覺的草，我拔給姐姐的。姐姐睡不著。」小禮把草往懷裡縮了一下。",
+      "conflict": "她要拿回奶奶教她認的草，可這是小禮三年來第一次自己伸手拿東西。",
+      "turn": "她本來要搶回來，看見小禮的黑眼圈，改口：「你也睡不著嗎？那給你。」小禮沒點頭，手卻不放。辨謊：門外的春聯小廝說「我沒看見誰進去」時腳尖朝外，她指了指門縫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "杜嬤嬤衝進來一把抱開小禮，聲音發抖：「妳給少爺吃了什麼？」草撒了一床，小禮伸手去抓，一片也沒抓到。",
+        "question": "杜嬤嬤會趕她出去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "昏黃的燈下，一張小床上散著一把青草，瘦小的孩子捧著草閉眼聞，窗外梨樹的影子在牆上搖。",
+      "glamour_shot": "她坐在床沿側著頭看小禮，燈光落在她歪紮的頭髮和圓臉上，眼睛很亮、很專心。",
+      "setups": [
+        "s01-t21",
+        "m05"
+      ],
+      "payoffs": [
+        "s01-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "那把草的來歷說清楚了：是給睡不著的姐姐拔的安神草",
+        "小禮第一次自己伸手要一樣東西"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "du-mama"
+      ],
+      "locations": [
+        "小禮的房"
+      ],
+      "state": {
+        "time": "成親當夜二更前",
+        "knowledge": "她知道小禮睡不著；杜嬤嬤以為她給少爺亂吃東西。",
+        "carry_forward": "杜嬤嬤的怒氣；那把草撒了一床"
+      }
+    },
+    {
+      "number": 7,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "奶奶教的",
+      "youtube_title": "奶娘要趕傻新娘出門，通判蹲下問一句草名，她答得比大夫還準",
+      "duration_s": 115,
+      "logline": "杜嬤嬤要她離小少爺遠一點，陸清和趕來，蹲下問她那是什麼草。",
+      "hook": "杜嬤嬤抱著小禮退到牆邊：「大人！這傻子給少爺餵草！」廊下的腳步聲停在門口。",
+      "hook_type": "danger",
+      "mid_hook": "陸清和撿起一片葉子，蹲下來問：「這叫什麼？」她說出草名，再說：「聞的，不是吃的。安神。」",
+      "extra_hooks": [
+        "他問：「誰教妳的？」她說：「奶奶。奶奶在我十歲前教的。」"
+      ],
+      "conflict": "杜嬤嬤認定她害少爺，要陸清和當場趕人；他要先弄清楚，不替任何一方下結論。",
+      "turn": "大家以為通判會站在奶娘那邊，他先蹲下聽她說，然後把那片葉子遞給杜嬤嬤聞——確是安神的草，一點毒都沒有。辨謊：杜嬤嬤說「我沒有不喜歡她」時下巴抬得很高，她說：「妳有一點。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "福伯把老轎夫領到廊下，轎夫搓著手：「出姜府時，轎裡坐的是大小姐。到陸府，換了人。」",
+        "question": "誰在半路換了轎裡的人？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "陸清和蹲在一地青草中間，捏起一片葉子對著燈看，葉脈透著光。",
+      "glamour_shot": "他蹲著抬頭聽她說話，燈光從上方落在他的眉眼與那一絲白鬢，神情專注得像在審案。",
+      "setups": [
+        "m09",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "杜嬤嬤親口聞過，承認那草沒有毒",
+        "陸清和知道她認得草，是「奶奶」教的"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "du-mama",
+        "lu-xiaoli",
+        "fu-bo",
+        "s01-jiaofu"
+      ],
+      "locations": [
+        "小禮的房",
+        "陸府迴廊"
+      ],
+      "state": {
+        "time": "成親當夜二更",
+        "knowledge": "陸清和知道她十歲前跟奶奶學草；轎夫說轎子是半路換人的。",
+        "carry_forward": "城隍廟歇腳那一段；奶奶是誰"
+      }
+    },
+    {
+      "number": 8,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "城隍廟歇腳",
+      "youtube_title": "轎夫說出花轎在城隍廟停了一炷香，出來時新娘的蓋頭換了顏色",
+      "duration_s": 120,
+      "logline": "陸清和連夜問轎夫，弄清楚花轎在城隍廟停過；回到飯桌，她讓小禮吃了三年不吃的胡蘿蔔。",
+      "hook": "陸清和問轎夫：「停了多久？」轎夫豎起一根指頭：「一炷香。新娘說要上香。」",
+      "hook_type": "question",
+      "mid_hook": "宵夜桌上，她把胡蘿蔔一塊一塊夾進小禮碗裡：「吃了眼睛亮，像老虎。」小禮咬了一口。",
+      "conflict": "陸清和要知道轎子怎麼換的人，也要讓這一屋子人吃上今天的第一頓安生飯。",
+      "turn": "轎夫說出細節：進廟的新娘蓋頭繡金鳳，出來的蓋頭是素紅的，腳步也慢了。杜嬤嬤看見小禮吃下胡蘿蔔，筷子掉了。辨謊：轎夫說「我們什麼都沒拿」時搓手搓得發紅，她說：「你拿了。」轎夫掏出一錠碎銀：大小姐給的封口錢。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門房跑進來，遞上一張姜家的帖子：「姜老爺說，大小姐找到了，明早來換人。」她手裡的筷子停在半空。",
+        "question": "明早真的要換人嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "宵夜桌上一盞燈、三副碗筷，她夾的胡蘿蔔在小禮碗裡堆成一座小山，小禮低頭咬下第一口。",
+      "glamour_shot": "燈下她把胡蘿蔔夾給小禮，偏著頭等他吃，臉上沾了一點糖渣；陸清和在對面放下筷子看著兩人。",
+      "setups": [
+        "s01-t20"
+      ],
+      "payoffs": [
+        "s01-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "轎夫交出封口銀，承認城隍廟換過人",
+        "小禮吃了三年不吃的胡蘿蔔"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "du-mama",
+        "fu-bo",
+        "s01-jiaofu"
+      ],
+      "locations": [
+        "陸府迴廊",
+        "陸府飯廳"
+      ],
+      "state": {
+        "time": "成親當夜三更前",
+        "knowledge": "陸清和知道大小姐在城隍廟自己下了轎、換了人、給了封口錢；姜家說明早換人。",
+        "carry_forward": "姜家的帖子；她要不要走"
+      }
+    },
+    {
+      "number": 9,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "你一直眨眼",
+      "youtube_title": "姜家派人來說大小姐找到了要換人，傻姑娘盯著來人：你一直眨眼睛",
+      "duration_s": 115,
+      "logline": "姜家的管事登門說大小姐找到了、明早換人；她看出來人在說謊，自己跑去後院找到了那架鞦韆。",
+      "hook": "姜家管事站在廳下：「大小姐昨夜就回府了。」她從陸清和身後探頭：「你一直眨眼睛。」",
+      "hook_type": "line",
+      "mid_hook": "福伯拉住要往後院去的她：「那是夫人的鞦韆，三年沒人坐。」她回頭：「夫人去哪了？」福伯沒答。",
+      "conflict": "姜家用「找到大小姐了」逼陸家明早交人；陸清和要分辨真假，她要知道自己還能不能留。",
+      "turn": "管事咬死說大小姐在家，陸清和問一句「那她今晚為何不來」，管事答不上，只好認了是姜老爺要他這麼說。辨謊：管事說話時連眨了七次眼，她一次一次數出聲。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "梨樹下她坐上了那架三年沒人坐的鞦韆；廊上的燈亮起，陸清和走出來，看著鞦韆上的她，停住腳步。",
+        "question": "他會叫她下來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "月下老梨樹，一架掛著舊麻繩的鞦韆，她坐上去，繩子吱呀一聲，梨葉落了一片在她膝上。",
+      "glamour_shot": "她坐在鞦韆上抬頭看月亮，月光把她的圓臉照得很白、歪紮的頭髮垂到肩上，裙角輕輕晃。",
+      "setups": [
+        "s01-t05",
+        "m04"
+      ],
+      "payoffs": [
+        "s01-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "姜家「明早換人」的說法被拆穿，大小姐根本沒找到",
+        "她找到了院子裡的鞦韆"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府正廳",
+        "陸府小院梨樹下"
+      ],
+      "state": {
+        "time": "成親當夜三更",
+        "knowledge": "大小姐沒找到；那架鞦韆是「夫人」的，三年沒人坐。",
+        "carry_forward": "她坐在鞦韆上；他站在廊下"
+      }
+    },
+    {
+      "number": 10,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "少爺睡了",
+      "youtube_title": "傻新娘在亡妻的鞦韆上唱了一首歌，三年不睡整夜的小少爺睡著了",
+      "duration_s": 150,
+      "logline": "她在鞦韆上唱起藥婆奶奶的歌，陸清和沒有攔她；歌唱完，三年不睡整夜的小禮睡著了。",
+      "hook": "陸清和沒有叫她下來，只靠著廊柱站著；她晃了兩下，小聲開口：「奶奶的歌，我唱給你聽。」",
+      "hook_type": "line",
+      "mid_hook": "小禮房裡，一直睜著眼的孩子轉頭看向窗外；杜嬤嬤手裡的扇子慢了，她聽見孩子的呼吸變長。",
+      "extra_hooks": [
+        "福伯端著留給她的一碗熱湯走到廊下，看見大人在聽歌，沒出聲，把碗放在廊邊。"
+      ],
+      "conflict": "第一夜的陸府誰都睡不著：她想姐姐、小禮三年沒睡過整夜、陸清和看著亡妻的鞦韆上坐了別人。",
+      "turn": "大家以為他會不高興有人坐亡妻的鞦韆，他卻站了一整首歌；歌停了，杜嬤嬤從小禮房裡跑出來，聲音發抖。辨謊：杜嬤嬤說「我沒哭」時一直抹眼角，她從鞦韆上看見了，沒說破，只說：「嬤嬤，喝湯。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "杜嬤嬤站在廊下，捂著嘴：「少爺——少爺睡了。」陸清和看著鞦韆上的她，手按在腰間的木牌上，什麼都沒說。",
+        "question": "他為什麼不送她回姜家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "月下梨樹、鞦韆輕晃，她的歌聲飄進一扇亮著燈的窗，窗裡的孩子慢慢閉上眼，燈芯也跟著暗了一點。",
+      "glamour_shot": "鞦韆上的她仰頭唱歌，月光勾出她的側臉；廊下他靠著柱子，半邊臉在燈裡、半邊在夜裡，眼神很軟。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s01-t21"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮三年來第一次睡了整夜",
+        "福伯第一次替她留了一碗湯",
+        "她在陸府過了第一夜"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "du-mama",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府小院梨樹下",
+        "小禮的房",
+        "陸府迴廊"
+      ],
+      "state": {
+        "time": "成親第一夜將盡",
+        "knowledge": "小禮聽她唱歌睡著了；陸清和沒說要送她回去。",
+        "carry_forward": "天亮後姜家會來接人；福伯的碗"
+      }
+    },
+    {
+      "number": 11,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "他說有糖",
+      "youtube_title": "親爹一早帶人來搶回傻女兒，她抱著糖罐不走：「他說有糖」",
+      "duration_s": 120,
+      "logline": "天一亮陸清和去了河堤，姜父帶著家丁來接人；她不走，因為她不懂為什麼要走。",
+      "hook": "天剛亮，陸府大門被拍得砰砰響，姜父的聲音：「把姜家的人交出來！」",
+      "hook_type": "danger",
+      "mid_hook": "她抱著糖罐站在梨樹下：「他說有糖。他還沒說我要走。」家丁伸手，福伯一串鑰匙橫在前面。",
+      "conflict": "陸清和不在，姜父要趁機把她帶回去；福伯一個老管家擋不擋得住。",
+      "turn": "姜父以為傻女兒好哄，她卻問他：「回去住哪？後院那間沒窗的嗎？」福伯說：「大人不在，誰也不能帶走夫人。」辨謊：姜父說「家裡給妳留了好吃的」時扳指又轉，她說：「沒有。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "姜父一屁股坐進正廳主位：「我就在這等他。」轉身把一個雙丫髻的丫鬟推出來：「春杏，妳跟著她，寸步不離。」",
+        "question": "姜父派來的丫鬟是來做什麼的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "dalian",
+        "gufeng"
+      ],
+      "spectacle": "清晨陸府門口，姜家的家丁排成一排，福伯駝著背、舉著一串叮噹響的鑰匙站在門檻上，像一棵老樹。",
+      "glamour_shot": "晨光裡她抱著糖罐站在梨樹下，頭髮比昨天更歪，眼睛卻很定，一字一句。",
+      "setups": [
+        "s01-t06",
+        "s01-t22",
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "福伯擋住家丁，她沒被帶走",
+        "她找到陸清和清晨壓在糖罐下的一張字條，看不懂，揣進懷裡"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-zhong",
+        "fu-bo",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府門口",
+        "陸府正廳",
+        "陸府小院梨樹下"
+      ],
+      "state": {
+        "time": "成親次日清晨",
+        "knowledge": "陸清和去河堤要天黑才回；姜父賴在正廳等他；春杏被派來看著她。",
+        "carry_forward": "懷裡的字條；正廳裡的姜父；春杏"
+      }
+    },
+    {
+      "number": 12,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "妳摸耳朵了",
+      "youtube_title": "姜家派丫鬟來盯傻二小姐，丫鬟剛開口就被她看穿：妳又摸耳朵了",
+      "duration_s": 110,
+      "logline": "春杏本該陪大姐出嫁，現在被派來盯著二小姐、勸她回家；她說的每一句好話都被看穿。",
+      "hook": "春杏擠出笑：「二小姐，姜府有桂花糕。」她看著春杏的手：「妳摸耳朵了。」",
+      "hook_type": "line",
+      "mid_hook": "春杏換了一套說法：「大小姐想妳。」她說：「妳又摸了。」春杏把手藏到背後，耳朵紅了。",
+      "conflict": "春杏要把她勸回姜府，回去才能交差；她只想等陸清和回來。",
+      "turn": "春杏以為傻二小姐聽什麼信什麼，結果每說一句謊她就點一下耳朵，最後春杏只剩一句真話：「我也不想回去。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "春杏蹲在廊下哭，她蹲到她旁邊：「我不懂妳為什麼哭。」遞過去一顆糖，春杏沒接，也沒走。",
+        "question": "春杏到底站哪邊？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "gufeng"
+      ],
+      "spectacle": "迴廊下兩個姑娘並排蹲著，一個哭、一個捧著糖看，梨樹的影子把兩人罩在一片碎光裡。",
+      "glamour_shot": "她蹲著側頭看春杏，陽光照在她頰邊的草汁印子上，認真得像在看一株沒見過的草。",
+      "setups": [
+        "s01-t07",
+        "s01-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "春杏勸不動她，第一次說了真話",
+        "她發現自己看得出人說謊，卻還說不出為什麼"
+      ],
+      "characters": [
+        "jiang-ling",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府迴廊",
+        "陸府小院"
+      ],
+      "state": {
+        "time": "成親次日上午",
+        "knowledge": "春杏一說謊就摸耳朵；春杏也不想回姜府。",
+        "carry_forward": "春杏的立場；正廳的姜父還在等"
+      }
+    },
+    {
+      "number": 13,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "灶上那碗",
+      "youtube_title": "親爹在廳上逼人，傻姑娘餓了一早上，老管家在灶上偷偷留了一碗",
+      "duration_s": 110,
+      "logline": "她一早被吵到沒吃飯，福伯在灶上給她留了一碗熱粥，還念出了陸清和字條上的字。",
+      "hook": "她的肚子咕嚕一響，正廳裡姜父喊：「午時前不交人，我去衙門告！」",
+      "hook_type": "danger",
+      "mid_hook": "福伯把她拉進廚房，掀開灶上的鍋蓋：一碗粥，上面臥著一顆蛋。「趁熱。」",
+      "extra_hooks": [
+        "她掏出懷裡的字條，福伯戴上老花眼鏡念：「等我回來。糖在第二格。」"
+      ],
+      "conflict": "姜父拿告官威脅，陸府上下慌；她餓著肚子，不知道那張字條寫了什麼。",
+      "turn": "她以為字條是要她走，福伯念出來是「等我回來」，她把字條貼在胸口吃完了整碗粥。辨謊：福伯說「這碗我自己要吃的」時咳了一聲，她說：「你不餓。這是給我的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "杜嬤嬤抱著小禮走進廚房，看見她，臉一沉：「少爺別過去。」小禮卻把手從嬤嬤懷裡伸向那碗粥。",
+        "question": "杜嬤嬤會讓少爺靠近她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "zhiyu"
+      ],
+      "spectacle": "灶膛的火光映著一口黑鍋，鍋蓋一掀，白氣冒上來，一碗粥上臥著一顆圓圓的蛋。",
+      "glamour_shot": "她雙手捧碗、鼻尖沾著熱氣，抬頭對福伯笑；福伯的白鬚在火光裡發亮。",
+      "setups": [
+        "s01-t08"
+      ],
+      "payoffs": [
+        "s01-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她吃上了今天的第一碗飯",
+        "字條的意思是「等我回來」，她決定等"
+      ],
+      "characters": [
+        "jiang-ling",
+        "fu-bo",
+        "du-mama",
+        "lu-xiaoli",
+        "jiang-zhong"
+      ],
+      "locations": [
+        "陸府廚房",
+        "陸府正廳"
+      ],
+      "state": {
+        "time": "成親次日近午",
+        "knowledge": "陸清和要她等；福伯每頓給她留一碗。",
+        "carry_forward": "杜嬤嬤擋著小禮；姜父說要告官"
+      }
+    },
+    {
+      "number": 14,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "我只是唱歌",
+      "youtube_title": "奶娘當眾說傻子會教壞小少爺，她只回了一句：「我沒教他，我唱歌」",
+      "duration_s": 115,
+      "logline": "杜嬤嬤要她離小禮遠一點，說她會教壞少爺；她問為什麼，問到杜嬤嬤答不上。",
+      "hook": "杜嬤嬤擋在她和小禮中間：「妳離少爺遠一點。」她問：「為什麼？」",
+      "hook_type": "question",
+      "mid_hook": "杜嬤嬤說：「妳會教壞他。」她說：「我沒教他什麼。我唱歌。」小禮在嬤嬤身後點了一下頭。",
+      "conflict": "杜嬤嬤把小禮看成命，怕一個傻子把少爺帶得更糟；她不懂大人的害怕，只會一直問。",
+      "turn": "杜嬤嬤以為她會哭會鬧，她只是退後三步、坐在廚房門檻上，小聲哼昨夜那首歌——小禮自己從嬤嬤身後走出兩步。辨謊：杜嬤嬤說「少爺從來不哭」時把圍裙擰成一團，她說：「他昨天哭了，在被子裡。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "杜嬤嬤一把把小禮抱回去，轉身時撞見春杏在門外偷聽，春杏手裡捏著一封姜府的信，信封上是大小姐的字。",
+        "question": "春杏手裡那封信是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "廚房門檻上她坐著哼歌，三步外的小禮從奶娘身後探出半張臉，兩人中間只有一地陽光。",
+      "glamour_shot": "她坐在門檻上仰頭哼歌，陽光從門框斜進來照亮她的側臉與亂紮的髮；小禮的大眼睛在陰影裡看她。",
+      "setups": [
+        "s01-t09",
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮自己朝她走了兩步",
+        "杜嬤嬤說不出她教壞了什麼"
+      ],
+      "characters": [
+        "jiang-ling",
+        "du-mama",
+        "lu-xiaoli",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府廚房",
+        "陸府迴廊"
+      ],
+      "state": {
+        "time": "成親次日午後",
+        "knowledge": "杜嬤嬤不讓她靠近小禮；春杏藏著一封大小姐的信。",
+        "carry_forward": "那封信；杜嬤嬤的防備"
+      }
+    },
+    {
+      "number": 15,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "夫人的鞦韆",
+      "youtube_title": "傻新娘天天坐的鞦韆，原來是亡妻留下的，三年來沒有一個人敢碰",
+      "duration_s": 120,
+      "logline": "她又去盪鞦韆，福伯終於告訴她：那是夫人的鞦韆，夫人三年前走了，從此沒人坐。",
+      "hook": "她追著春杏要看信，春杏一轉身躲進梨樹後面，撞上了那架鞦韆，鞦韆晃起來。",
+      "hook_type": "image",
+      "mid_hook": "福伯扶住鞦韆繩：「這是夫人的。夫人走了三年，沒人坐。」她問：「走去哪了？」",
+      "conflict": "她想知道鞦韆為什麼沒人坐、昨夜坐了會不會惹他生氣；福伯不知道能說多少。",
+      "turn": "她以為「走了」是出門，福伯說是「不在了」；她從鞦韆上下來，站在旁邊不坐了：「那我不坐了，等他說可以。」辨謊：福伯說「大人不在意」時不敢看鞦韆，她說：「他在意。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "春杏從樹後走出來，把信遞給她又縮回手：「二小姐，這封信……妳要我念嗎？念了，妳可能就回不去了。」",
+        "question": "信裡寫了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "jiating",
+        "xuanyi"
+      ],
+      "spectacle": "梨樹下空鞦韆輕輕晃，麻繩上綁著一條褪色的淡藍布條，福伯的手扶住繩子，晃動慢慢停下。",
+      "glamour_shot": "她站在鞦韆旁仰頭看麻繩上的布條，梨葉的光斑落滿她的臉，神情第一次很安靜。",
+      "setups": [
+        "m04"
+      ],
+      "payoffs": [
+        "s01-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道了鞦韆是亡故的夫人留下的",
+        "她自己決定不坐，等陸清和說可以"
+      ],
+      "characters": [
+        "jiang-ling",
+        "fu-bo",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府小院梨樹下"
+      ],
+      "state": {
+        "time": "成親次日午後",
+        "knowledge": "陸家夫人三年前走了，鞦韆是她的。",
+        "carry_forward": "春杏手上大小姐的信"
+      }
+    },
+    {
+      "number": 16,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "拖一天",
+      "youtube_title": "陪嫁丫鬟哭著說出真相：換花轎的就是大小姐，她讓傻妹妹替她拖一天",
+      "duration_s": 130,
+      "logline": "春杏被她一句「妳為什麼不喜歡我」問到崩潰，念出大小姐的信、說出城隍廟換轎的真相。",
+      "hook": "她看著春杏發抖的手：「妳為什麼不喜歡我？」春杏說：「我沒有不喜歡。」她說：「妳說謊會摸耳朵。」",
+      "hook_type": "line",
+      "mid_hook": "春杏哭著念信：「妹妹替我坐一天，我就走遠了。別找我。」——是大小姐的字。",
+      "extra_hooks": [
+        "春杏抹著眼淚說：「城隍廟裡，是大小姐自己脫的蓋頭，把妳按進轎裡的。」"
+      ],
+      "conflict": "春杏藏著換轎的真相，說出來姜家會恨她、不說她良心過不去；她要知道姐姐為什麼不回來。",
+      "turn": "大家以為是誰綁了大小姐、錯送了二小姐，原來是大小姐自己不嫁鰥夫，換了轎、跟情郎走了，讓妹妹「拖一天」。春杏問她怎麼看出來的，她說：「奶奶說，人說謊，身體先說。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "正廳的門被一腳踢開，姜父站在門口，臉色鐵青地盯著春杏手裡的信：「誰准妳念的？」",
+        "question": "姜父會把春杏怎麼樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "閃回一格：城隍廟煙霧繚繞，一隻戴金釵花的手把繡金鳳的紅蓋頭扔進香爐，火苗一下竄高。",
+      "glamour_shot": "閃回裡姜嬈回頭的一瞬，長眉紅唇、鬢邊金釵花在香火裡一閃；現實裡她聽信時睫毛一動不動。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "m02",
+        "s01-t10"
+      ],
+      "reveals": [
+        "m02"
+      ],
+      "general_payoffs": [
+        "花轎為什麼換了：大姐自己換轎私奔，讓她拖一天",
+        "她說出自己看得出謊話的原因：奶奶教的「身體先說」"
+      ],
+      "characters": [
+        "jiang-ling",
+        "chun-xing",
+        "jiang-rao",
+        "jiang-zhong"
+      ],
+      "locations": [
+        "陸府迴廊",
+        "城隍廟（閃回）"
+      ],
+      "state": {
+        "time": "成親次日下午",
+        "knowledge": "大姐自己換轎、跟情郎走了，叫她拖一天；春杏知道全部。",
+        "carry_forward": "姜父聽見了；大姐去了哪裡沒人知道"
+      }
+    },
+    {
+      "number": 17,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "爹你也知道",
+      "youtube_title": "親爹衝進來搶信，傻女兒一句話揭穿：爹，你早上就知道了",
+      "duration_s": 115,
+      "logline": "姜父要搶回信、罵春杏亂說；她看出父親早就知道大姐私奔，只是不肯說。",
+      "hook": "姜父伸手搶信，春杏抱著信縮到她身後；她張開雙手擋住：「不准搶，這是姐姐的。」",
+      "hook_type": "danger",
+      "mid_hook": "姜父吼：「胡說八道！大小姐是病了！」她看著他的手：「爹你也知道。你早上就知道了。」",
+      "conflict": "姜父要把私奔壓成「病了」，保姜家的臉面；春杏一個丫鬟扛不住老爺的怒氣。",
+      "turn": "姜父以為傻女兒什麼都不懂，她卻記得父親早上進門時袖口露出同一個信封的一角；姜父只能鬆手，坐回廳上。辨謊：姜父說「我今天才知道」時扳指轉得掉了，她把扳指撿起來還給他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "姜父握著扳指，第一次沒有罵她，低聲說：「妳懂什麼……姜家不能再丟一次人。」她問：「我是第一次嗎？」姜父答不出來。",
+        "question": "姜家第一次丟人是因為誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "正廳裡她雙手張開擋在丫鬟前面，身後是過大的紅木太師椅，父親的影子壓在她身上。",
+      "glamour_shot": "她張開雙手擋人的那一格，淺綠衣袖展開像兩片葉子，臉上沒有怕，只有認真。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她護住了春杏和那封信",
+        "姜父被拆穿早就知道大姐私奔"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-zhong",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府正廳"
+      ],
+      "state": {
+        "time": "成親次日傍晚前",
+        "knowledge": "姜父早上就知道大姐跑了；姜家怕「再丟一次人」。",
+        "carry_forward": "姜父仍坐在廳上；陸清和還沒回來"
+      }
+    },
+    {
+      "number": 18,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "大人吩咐的",
+      "youtube_title": "小少爺第一次自己走進廚房找她，老管家說出那碗飯是誰交代的",
+      "duration_s": 110,
+      "logline": "傍晚小禮趁嬤嬤不注意，自己走進廚房坐到她旁邊；福伯說出每頓留碗是陸清和天沒亮就交代的。",
+      "hook": "廚房門口一個小小的影子：小禮抱著布老虎，自己走了進來，站在她面前不動。",
+      "hook_type": "image",
+      "mid_hook": "她把碗裡的蛋分一半給他，福伯在灶邊說：「這碗，是大人天沒亮出門前交代的。每頓。」",
+      "conflict": "小禮第一次不靠大人自己走向一個人；她想知道是誰一直在照顧她。",
+      "turn": "她以為碗是福伯心疼她留的，原來是陸清和出門前特地交代；福伯只是自己多加了一顆蛋。辨謊：福伯說「蛋也是大人說的」時摸了摸鑰匙串，她笑：「蛋是你。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "杜嬤嬤找進廚房，看見少爺坐在傻子旁邊吃半顆蛋，愣在門口；春杏從後門跑進來：「老爺要我把二小姐的包袱收好，趁天黑前抬走！」",
+        "question": "姜父要趁天黑把她抬走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "zhiyu"
+      ],
+      "spectacle": "灶火邊一大一小並排坐在矮凳上，一碗粥裡半顆蛋，小禮的布老虎靠在碗邊，少了一顆眼睛。",
+      "glamour_shot": "她把半顆蛋放進小禮碗裡，低頭時亂髮垂下來，火光把她的笑染成暖橘色。",
+      "setups": [],
+      "payoffs": [
+        "s01-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮第一次自己走向她、吃了她分的蛋",
+        "她知道每頓那碗是陸清和交代的"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "fu-bo",
+        "du-mama",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府廚房"
+      ],
+      "state": {
+        "time": "成親次日黃昏",
+        "knowledge": "陸清和出門前交代每頓給她留碗；小禮願意坐在她身邊。",
+        "carry_forward": "姜父要趁天黑抬人；春杏被逼收包袱"
+      }
+    },
+    {
+      "number": 19,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "春杏站哪邊",
+      "youtube_title": "親爹逼丫鬟趁天黑把傻二小姐抬走，丫鬟抬到門口把轎槓一扔",
+      "duration_s": 120,
+      "logline": "姜父命春杏和家丁趁天黑把她塞進轎子；春杏得選：聽老爺的，還是聽自己的。",
+      "hook": "天色一暗，姜家的小轎停在後門，家丁壓低聲：「快，大人回來前抬走。」",
+      "hook_type": "danger",
+      "mid_hook": "春杏扶著她走到轎前，她問：「春杏，妳摸耳朵嗎？」春杏的手停在耳邊，沒摸下去。",
+      "conflict": "姜父要搶在陸清和回來前把人帶走；春杏是唯一能讓她乖乖上轎的人。",
+      "turn": "大家以為春杏會把她推進轎，春杏卻把包袱往地上一扔、喊「轎槓斷了」，把家丁的轎槓踢進水溝。辨謊：家丁說「二小姐自己願意的」時一直舔嘴唇，她說：「我沒有願意。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "姜父氣得舉起手要打春杏，後門外的巷子裡響起馬蹄聲，一盞衙門的燈籠照進來。",
+        "question": "陸清和趕得上嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "暮色裡後門窄巷，一根轎槓滾進水溝濺起一片水花，家丁們面面相覷，巷口一盞燈籠由遠而近。",
+      "glamour_shot": "春杏雙丫髻歪了一邊卻挺直腰站在她前面；她站在暮色裡看春杏的背影，眼睛很亮。",
+      "setups": [],
+      "payoffs": [
+        "s01-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "春杏選了她，不選姜家",
+        "她沒被抬上轎"
+      ],
+      "characters": [
+        "jiang-ling",
+        "chun-xing",
+        "jiang-zhong",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府後門窄巷"
+      ],
+      "state": {
+        "time": "成親次日入夜",
+        "knowledge": "春杏站在她這邊；姜父要硬來。",
+        "carry_forward": "馬蹄聲與燈籠：陸清和回來了"
+      }
+    },
+    {
+      "number": 20,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "你讓誰睡過一夜",
+      "youtube_title": "富商親爹罵女兒是傻子要帶回去關，通判一句「你讓誰睡過一夜」全廳安靜",
+      "duration_s": 150,
+      "logline": "陸清和回來，姜父在廳上等了一天要帶人回去；陸清和只問了他一句話。",
+      "hook": "燈籠照亮姜父舉起的手，陸清和下馬，聲音不高：「姜老爺，在我家打誰？」",
+      "hook_type": "line",
+      "mid_hook": "姜父拱手：「陸大人，這是姜家的醜事，我帶回去。」陸清和說：「花轎是姜家送來的，進了我陸家門。」",
+      "extra_hooks": [
+        "她躲在陸清和背後，拉了一下他的袖子：「你回來了。字條我等了。」他回頭點頭：「我知道。」"
+      ],
+      "conflict": "姜父要用「她是傻子」把人帶走，陸清和要留下她，又不能替她把話說死。",
+      "turn": "姜父以為「傻子」兩個字就夠了，陸清和卻轉頭先問她：「妳想回去嗎？」她搖頭。他才回身。辨謊：姜父說「我是為她好」時扳指轉了一整圈，她在他背後小聲數：「一。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "姜父吼：「她是傻子！」陸清和說：「她讓我兒子睡了一夜。姜老爺，你讓誰睡過一夜？」姜父的嘴張著，滿廳只剩燭芯的聲音。",
+        "question": "姜父還會再來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "正廳燭火通明，陸清和背著手站在中央，她從他背後探出半張臉，姜父的影子在牆上縮小。",
+      "glamour_shot": "他轉頭問她「妳想回去嗎」的那一秒，燭光照著他溫和的眉眼，跟回頭對姜父時的冷判若兩人。",
+      "setups": [
+        "m03",
+        "m07"
+      ],
+      "payoffs": [
+        "s01-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和當著姜父的面留下她，先問了她自己的意思",
+        "姜父啞口無言、空手離開"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "jiang-zhong",
+        "chun-xing",
+        "fu-bo",
+        "du-mama"
+      ],
+      "locations": [
+        "陸府正廳",
+        "陸府後門窄巷"
+      ],
+      "state": {
+        "time": "成親次日夜",
+        "knowledge": "陸清和留下她，理由是小禮睡了一夜；姜父走了。",
+        "carry_forward": "陸清和說要讓她看看河州；春杏留下來陪她"
+      }
+    },
+    {
+      "number": 21,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "讓她看看河州",
+      "youtube_title": "通判讓傻妻上街看看河州，全街小販圍著笑，她卻在藥鋪前停住了腳",
+      "duration_s": 115,
+      "logline": "陸清和讓春杏帶她上街看看河州；全街指指點點，她卻在一間藥鋪前搶下了一個婦人的藥包。",
+      "hook": "春杏替她梳頭，梳了三次還是歪的；陸清和在門口說：「歪的也好看。帶她看看河州。」",
+      "hook_type": "line",
+      "mid_hook": "街市上挑擔的阿牛大聲笑：「通判的傻媳婦出門啦！」半條街跟著笑，她回頭看他：「你在笑我嗎？」",
+      "conflict": "她第一次在河州街上走，全街把她當笑話；春杏想護著她快走，她卻一路停下來看。",
+      "turn": "大家以為她會被笑哭，她只是一攤一攤地看草藥，在賀家藥鋪前停住，鼻子一動。辨謊：糖人攤老闆說「足兩的糖」時把秤盤往下按，她說：「你的手指在秤上。」老闆紅著臉多給了一支。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "一個包藍頭巾的婦人提著藥包走出藥鋪，她衝上去一把抓住藥包：「這個不能吃。」婦人尖叫：「搶東西啊！」",
+        "question": "她為什麼搶人家的藥？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "gufeng",
+        "dalian",
+        "zhiyu"
+      ],
+      "spectacle": "河州藥鋪街，一整條街的藥幌在風裡晃，曬藥的竹匾一路排開，她一身淺綠站在一片暖褐色裡。",
+      "glamour_shot": "她走在長街中央回頭看笑聲，風吹起歪紮的頭髮，陽光把她圓臉上的認真照得清清楚楚。",
+      "setups": [
+        "s01-t23"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次上街，沒有躲",
+        "糖人攤老闆的秤被她說破"
+      ],
+      "characters": [
+        "jiang-ling",
+        "chun-xing",
+        "lu-qinghe",
+        "a-niu",
+        "s01-yaopu-furen"
+      ],
+      "locations": [
+        "陸府東廂",
+        "河州長街",
+        "藥鋪街"
+      ],
+      "state": {
+        "time": "成親第三日上午",
+        "knowledge": "春杏每天替她梳頭；她在藥鋪前聞出一帖藥不對。",
+        "carry_forward": "她抓著婦人的藥包"
+      }
+    },
+    {
+      "number": 22,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "這個會死人",
+      "youtube_title": "傻姑娘當街指著一帖藥說「會死人」，全街大笑，老大夫的臉卻白了",
+      "duration_s": 125,
+      "logline": "她攔下王嫂的藥說「這個會死人」，全街笑傻子懂什麼藥；賀大夫走出來，打開藥包，臉白了。",
+      "hook": "王嫂扯著藥包不放，她一個字一個字：「這個，會死人。」",
+      "hook_type": "line",
+      "mid_hook": "整條街哄堂大笑：「傻子懂什麼藥！」阿牛笑得擔子都抖了。賀大夫掀簾走出來：「誰說我的藥會死人？」",
+      "conflict": "她一個人對著全街的笑聲，要攔下一帖她聞出不對的藥；沒人肯聽一個傻子。",
+      "turn": "大家以為賀大夫會把她趕走，賀大夫冷著臉打開藥包，撥開兩片乾葉，手停住了。辨謊：王嫂說「我家那口子吃了三帖都好好的」時把竹籃換到另一手，她說：「他第三帖沒吃。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "賀大夫捏起一片葉子，對著光看了很久，臉一點一點白了，回頭厲聲：「小石頭！第三排抽屜誰動過？」",
+        "question": "藥真的配錯了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "藥鋪門口圍了半條街，賀大夫在眾目睽睽下打開紙包，一片乾葉在陽光下翻過來，整條街的笑聲斷在半空。",
+      "glamour_shot": "賀大夫白鬍子微顫、瘦高的身影背光而立；她仰頭看他，手還抓著藥包的一角，不鬆。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s01-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她搶藥包的理由說清楚了：她聞出藥裡有一味不對"
+      ],
+      "characters": [
+        "jiang-ling",
+        "he-daifu",
+        "a-niu",
+        "chun-xing",
+        "s01-yaopu-furen",
+        "s01-xuetu"
+      ],
+      "locations": [
+        "藥鋪街賀家藥鋪門口"
+      ],
+      "state": {
+        "time": "成親第三日近午",
+        "knowledge": "賀大夫發現藥可能配錯了。",
+        "carry_forward": "抽屜是誰動的；她能不能說出錯在哪"
+      }
+    },
+    {
+      "number": 23,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "一字不差",
+      "youtube_title": "傻姑娘說出配錯的藥名和該換的草，一字不差，老大夫問：誰教妳的？",
+      "duration_s": 120,
+      "logline": "學徒認了兩個抽屜放反了；她說出錯的那味藥與該換的草，一字不差，賀大夫問她誰教的。",
+      "hook": "學徒小石頭撲通跪下：「師父，我昨天把第三排兩個抽屜放反了。」",
+      "hook_type": "reversal",
+      "mid_hook": "賀大夫盯著她：「那妳說，該換什麼？」她說出兩個草名，一字不差。賀大夫半晌：「誰教妳的？」她說：「奶奶。」",
+      "extra_hooks": [
+        "王嫂抱著藥包愣住，忽然對她深深一拜，整條街沒人笑了。"
+      ],
+      "conflict": "賀大夫要確定是巧合還是真本事，也要在全街面前收這個錯。",
+      "turn": "大家以為傻子是瞎蒙的，她卻連該換哪一味都說得出來；賀大夫重新抓了藥，親手交給王嫂。辨謊：小石頭起先說「不是我」時一直看地上，她蹲下去看他的臉：「是你。沒關係。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "人群散開時，阿牛還在大聲嚷：「瞎貓碰上死耗子！」她走到他擔子前，聞了聞：「你身上有藥味。是你娘的。」阿牛的笑僵住。",
+        "question": "阿牛的娘怎麼了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "gufeng"
+      ],
+      "spectacle": "賀大夫拉開藥櫃一整排抽屜，百來個小格子在陽光下排開，他的手停在第三排，兩個抽屜換回原位。",
+      "glamour_shot": "她說出草名時眼睛很亮、語速很慢，陽光從藥鋪門口照在她沾草汁的袖口上；全街第一次安靜地看她。",
+      "setups": [
+        "s01-t11",
+        "s01-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "全街當眾看見她說對藥名，王嫂向她道謝",
+        "賀大夫重新配藥，學徒認錯"
+      ],
+      "characters": [
+        "jiang-ling",
+        "he-daifu",
+        "a-niu",
+        "s01-yaopu-furen",
+        "s01-xuetu",
+        "chun-xing"
+      ],
+      "locations": [
+        "藥鋪街賀家藥鋪"
+      ],
+      "state": {
+        "time": "成親第三日午時",
+        "knowledge": "她懂藥的事傳開了；她聞出阿牛身上有他娘的藥味。",
+        "carry_forward": "賀大夫肯不肯認；阿牛娘的病"
+      }
+    },
+    {
+      "number": 24,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "碰巧",
+      "youtube_title": "老大夫派學徒送謝禮卻說「只是碰巧」，傻姑娘：你說碰巧時一直看地上",
+      "duration_s": 110,
+      "logline": "回到陸府，陸清和聽說了藥鋪的事；賀大夫派學徒送來一包謝禮，卻要學徒說「只是碰巧」。",
+      "hook": "陸府門口，學徒小石頭捧著一包紅棗：「師父說，謝夫人。也說……只是碰巧。」",
+      "hook_type": "line",
+      "mid_hook": "陸清和蹲在梨樹下問她：「怎麼聞出來的？」她說：「奶奶說，那味草是苦的，這個是甜的。」",
+      "conflict": "賀大夫要面子不肯認一個傻子比自己準；陸清和想知道她的本事從哪來。",
+      "turn": "學徒照師父的話說「碰巧」，她卻看出那不是賀大夫的真心。陸清和沒有追問奶奶是誰，只說：「下次也說。」辨謊：小石頭說「師父說碰巧」時一直看地上，她說：「師父沒說碰巧。是你怕他不好意思。」小石頭撓頭笑了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡阿牛滿身汗衝到陸府門口，又停在台階下不敢敲門，來回走了三趟。她在牆內的鞦韆旁聽見腳步聲，站了起來。",
+        "question": "阿牛會敲這扇門嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "gufeng"
+      ],
+      "spectacle": "梨樹下一包紅棗攤在石桌上，陸清和蹲在她旁邊，兩人中間擺著她白天撿回來的兩片葉子，一甜一苦。",
+      "glamour_shot": "他蹲在梨樹下仰頭聽她說，月色打在他的鬢角；她舉著兩片葉子比給他看，臉上有一點得意。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和告訴她：看出來了，下次也說",
+        "賀大夫送來謝禮"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "s01-xuetu",
+        "a-niu"
+      ],
+      "locations": [
+        "陸府門口",
+        "陸府小院梨樹下"
+      ],
+      "state": {
+        "time": "成親第三日夜",
+        "knowledge": "賀大夫嘴上說碰巧；陸清和要她看出來就說。",
+        "carry_forward": "阿牛在門外徘徊"
+      }
+    },
+    {
+      "number": 25,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "沒人敢去",
+      "youtube_title": "笑她最大聲的小販半夜來求救，全河州的大夫都說他娘不行了",
+      "duration_s": 120,
+      "logline": "阿牛的娘高熱不退，街坊都說不行了、大夫夜裡不肯出診；他走投無路，站到了陸府門口。",
+      "hook": "她拉開門，阿牛滿臉汗站在台階下，張口是：「我沒來求妳。我路過。」",
+      "hook_type": "line",
+      "mid_hook": "阿牛終於說：「我娘燒了兩天，大夫說夜裡不出診，街坊說……不行了。」說完扭頭就走。",
+      "extra_hooks": [
+        "春杏追出來拉住她：「二小姐！他白天笑得最大聲！」她說：「他娘沒有笑我。」"
+      ],
+      "conflict": "阿牛白天當眾笑她，夜裡卻只剩她能求；她要不要去、陸府的人讓不讓她去。",
+      "turn": "大家以為她會記恨，她只問：「你娘咳不咳？手冷不冷？」阿牛一一答了，她已經往門外走。辨謊：阿牛說「我路過」時摸後腦勺，她說：「你不是路過。你走了三趟。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她跟著阿牛跑進黑巷，春杏追不上；巷口一盞燈籠攔住去路——是陸清和，披著外衣站在那裡。",
+        "question": "陸清和是來攔她的嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "夜裡河州窄巷，一個挑夫打扮的壯漢在前面跑，一個淺綠身影跟在後面，兩人的影子被一盞燈籠拉得很長。",
+      "glamour_shot": "巷口燈籠下的陸清和，外衣隨手披在肩上，青灰衣擺被夜風吹起，燈火映著他沉靜的眼。",
+      "setups": [
+        "s01-t24"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿牛開口求了她",
+        "她不記恨，直接動身"
+      ],
+      "characters": [
+        "jiang-ling",
+        "a-niu",
+        "chun-xing",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府門口",
+        "河州夜巷"
+      ],
+      "state": {
+        "time": "成親第三日深夜",
+        "knowledge": "阿牛的娘高熱兩天、大夫不肯夜診。",
+        "carry_forward": "陸清和在巷口"
+      }
+    },
+    {
+      "number": 26,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "讓她看看",
+      "youtube_title": "小販堵門說傻子別碰我娘，通判蹲下來只說一句：讓她看看",
+      "duration_s": 120,
+      "logline": "陸清和沒攔她，陪她到阿牛家；阿牛臨到門口又後悔，堵著門不讓傻子碰他娘。",
+      "hook": "她以為他要帶她回家，陸清和把燈籠遞給她：「我陪妳去。」",
+      "hook_type": "reversal",
+      "mid_hook": "阿牛張開手堵在破門口：「傻子別碰我娘！」陸清和蹲下來，與坐在門檻上發抖的阿牛平視：「讓她看看。」",
+      "conflict": "阿牛怕一個傻子把娘治壞，又沒有別人可找；她要進門，就得先讓阿牛信一次。",
+      "turn": "大家以為通判會擺官威，他只是蹲著等阿牛自己讓開；阿牛讓了。她摸了摸阿牛娘的手，說要哪幾樣草，春杏跑去藥鋪街敲門，開門的竟是白天的王嫂。辨謊：阿牛說「我不怕」時嘴唇在咬，她說：「我也怕。我們一起。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "竹床上的阿牛娘燒得說胡話，一把抓住她的手：「囡囡……」她沒抽開，坐到床邊，低聲哼起了奶奶的歌。阿牛站在門口，眼圈紅了。",
+        "question": "阿牛娘熬得過今夜嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "破屋裡一盞油燈，竹床邊她握著老婦人的手，門口陸清和蹲著和一個黑壯漢子平視，屋外夜色濃得化不開。",
+      "glamour_shot": "陸清和蹲在破門檻前，青灰長衫拖在泥地上也不在意，燈火映著他溫和的側臉；那一蹲讓阿牛低下了頭。",
+      "setups": [],
+      "payoffs": [
+        "s01-t24"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她進了阿牛家，阿牛自己讓開了門",
+        "王嫂連夜替她開藥鋪的門"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "a-niu",
+        "chun-xing",
+        "s01-aniu-niang",
+        "s01-yaopu-furen"
+      ],
+      "locations": [
+        "阿牛家破屋",
+        "藥鋪街"
+      ],
+      "state": {
+        "time": "成親第四日凌晨",
+        "knowledge": "阿牛娘高熱；草已經去拿了。",
+        "carry_forward": "一整夜的守候"
+      }
+    },
+    {
+      "number": 27,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "守一夜",
+      "youtube_title": "傻姑娘在小販家守了一整夜，一邊換帕子一邊唱，天快亮時燒退了一點",
+      "duration_s": 115,
+      "logline": "她在阿牛家守了一夜，換帕子、餵水、唱歌；陸清和坐在門外等。",
+      "hook": "雞叫頭遍，她還坐在床邊換第七條帕子；門外台階上，陸清和靠著牆，沒有睡。",
+      "hook_type": "image",
+      "mid_hook": "阿牛娘的手忽然鬆開，阿牛撲過來：「娘！」她伸手按住他：「別吵。她在睡。睡了就是好。」",
+      "conflict": "整夜高熱能不能退，她只有奶奶教的法子和一雙手；阿牛快撐不住了。",
+      "turn": "阿牛以為娘不行了，她卻摸了額頭說「涼了一點」；阿牛一個大漢蹲在地上捂臉。辨謊：阿牛說「我一點都不累」時打了第三個呵欠，她說：「你睡，我看著。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天亮前，巷口傳來馬車聲，賀大夫提著藥箱快步走進破屋，第一句話是：「誰給她用的藥？藥渣拿來！」",
+        "question": "賀大夫是來救人，還是來挑錯？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "gufeng"
+      ],
+      "spectacle": "破屋窗紙由黑轉藍，一盆清水裡漂著七條帕子，她趴在床邊打盹，手還搭在老婦人的額頭上。",
+      "glamour_shot": "天快亮時她趴在床沿睡著，歪紮的頭髮散了一半，晨光第一縷落在她臉上；門外陸清和回頭看了一眼。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿牛娘的燒退了一點",
+        "阿牛第一次聽她的話"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "a-niu",
+        "s01-aniu-niang",
+        "he-daifu"
+      ],
+      "locations": [
+        "阿牛家破屋"
+      ],
+      "state": {
+        "time": "成親第四日黎明",
+        "knowledge": "燒退了一點；賀大夫趕到。",
+        "carry_forward": "藥渣與賀大夫的判斷"
+      }
+    },
+    {
+      "number": 28,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "方子是對的",
+      "youtube_title": "老大夫翻遍藥渣要挑傻姑娘的錯，最後只說了一句：方子是對的",
+      "duration_s": 120,
+      "logline": "賀大夫連夜趕到，翻遍藥渣要挑錯；最後他當著陸清和的面認了。",
+      "hook": "賀大夫抓起一把藥渣，一根一根擺在桌上：「這味，誰教妳用的？」",
+      "hook_type": "question",
+      "mid_hook": "她答：「奶奶說，熱在裡面，要從外面散。」賀大夫的手停了，他摸了老婦人的脈，很久很久。",
+      "conflict": "賀大夫要親眼確認她不是亂來；認了，等於當著通判承認自己不如一個傻姑娘。",
+      "turn": "大家以為賀大夫會挑出毛病，他放下藥渣，對陸清和拱手：「方子是對的。比我昨夜不肯來好。」辨謊：賀大夫說「我昨夜出診了」時捋鬍子捋得太用力，她說：「你昨夜在家。」賀大夫一怔，點頭：「是。我怕。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "賀大夫收起藥箱時低聲問：「妳奶奶，是不是河州城南那個背藥簍的藥婆？」她點頭。賀大夫的臉色變了：「她教過我。」",
+        "question": "藥婆奶奶到底是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "gufeng",
+        "xuanyi"
+      ],
+      "spectacle": "破木桌上一排藥渣被擺成整齊的一列，晨光從破窗照進來，賀大夫的手指從第一根點到最後一根。",
+      "glamour_shot": "賀大夫的白鬍子在晨光裡發亮；她站在桌邊答話，臉上還有睡痕，語氣卻比誰都穩。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s01-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "賀大夫當眾認了她的方子對、也認了自己昨夜沒來",
+        "她知道奶奶也教過賀大夫"
+      ],
+      "characters": [
+        "jiang-ling",
+        "he-daifu",
+        "lu-qinghe",
+        "a-niu",
+        "s01-aniu-niang"
+      ],
+      "locations": [
+        "阿牛家破屋"
+      ],
+      "state": {
+        "time": "成親第四日清晨",
+        "knowledge": "賀大夫認錯；藥婆奶奶是城南背藥簍的藥婆，教過賀大夫。",
+        "carry_forward": "阿牛娘還沒醒；藥婆的事"
+      }
+    },
+    {
+      "number": 29,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "你摸後腦了",
+      "youtube_title": "小販的娘醒來問誰救了她，兒子說是大夫，娘一句話拆穿：你摸後腦了",
+      "duration_s": 115,
+      "logline": "阿牛娘醒了，問是誰救的；阿牛撒謊說是賀大夫，被親娘一眼看穿。",
+      "hook": "竹床上的老婦人睜開眼，第一句話：「我餓。」阿牛一個大漢哭出了聲。",
+      "hook_type": "line",
+      "mid_hook": "阿牛娘問：「誰救的我？」阿牛摸著後腦：「賀、賀大夫。」他娘說：「你一說謊就摸後腦。」",
+      "conflict": "阿牛拉不下臉承認是他笑過的傻子救了娘；他娘要知道恩人是誰。",
+      "turn": "大家以為阿牛會把功勞讓給大夫到底，賀大夫先開口：「是她。」阿牛娘轉頭看她，撐著要下床磕頭，她搶先扶住：「別下來，地涼。」辨謊這次輪到別人：她笑出聲：「你娘也看得出來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿牛扛起擔子衝出門，留下一句：「我去辦一件事！」巷口街坊探頭，看見他往陸府的方向跑，擔子兩頭是滿滿的菜。",
+        "question": "阿牛要去陸府做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xiju",
+        "dalian"
+      ],
+      "spectacle": "破屋門一推開，一整條巷的街坊擠在門口張望，晨光照進屋裡，竹床上的老婦人坐起來喝第一口粥。",
+      "glamour_shot": "她扶住老婦人的手，晨光照著兩人的側臉，她頭髮上還沾著一根草，笑得很慢很淺。",
+      "setups": [],
+      "payoffs": [
+        "s01-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿牛娘醒了，病好了大半",
+        "整條巷子知道是她救的人"
+      ],
+      "characters": [
+        "jiang-ling",
+        "a-niu",
+        "s01-aniu-niang",
+        "he-daifu",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "阿牛家破屋",
+        "河州小巷"
+      ],
+      "state": {
+        "time": "成親第四日上午",
+        "knowledge": "阿牛娘醒了；全巷知道是陸夫人救的。",
+        "carry_forward": "阿牛挑著菜往陸府去"
+      }
+    },
+    {
+      "number": 30,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "十歲後每天都是新的",
+      "youtube_title": "笑她最大聲的小販跪在通判家門口：我不會道歉，我只會送菜",
+      "duration_s": 150,
+      "logline": "阿牛在陸府門口跪了一下又站起來，留下一擔菜；夜裡陸清和問她怎麼懂藥，她說出了奶奶，也說出了十歲。",
+      "hook": "陸府大門一開，阿牛把擔子往門口一放，膝蓋一彎跪下去，又馬上站起來：「我不會道歉。」",
+      "hook_type": "image",
+      "mid_hook": "阿牛紅著臉喊：「我只會送菜！」放下一擔菜扭頭就跑；福伯數了數，白菜十二顆、蘿蔔一筐。",
+      "extra_hooks": [
+        "賀大夫托人送來一句話：藥婆是她的外祖母，十年前過世，河州半個藥鋪街都受過她的教。"
+      ],
+      "conflict": "她懂藥的本事全河州都看見了，陸清和卻想知道一個「傻姑娘」怎麼記得這麼多。",
+      "turn": "大家以為她懂藥是天生的，她說是奶奶從她會走路就帶她上山認草；他問十歲後呢，她的答案讓他停住。辨謊：福伯說「這菜我們吃不完」時一直搓手，她說：「吃得完。分給小禮。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "梨樹下他問：「十歲後呢？」她晃著腳：「十歲後每天都是新的。」他看著她，很久沒說話。",
+        "question": "她的十歲到底發生了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "dalian",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "陸府門口一擔滿滿的青菜蘿蔔，挑擔的漢子跑遠的背影，門裡福伯彎腰一顆一顆數白菜。",
+      "glamour_shot": "夜裡梨樹下她坐在石凳上晃腳，月光照著她仰起的臉；陸清和坐在她旁邊，側臉在燈裡，眼神沉下去。",
+      "setups": [
+        "m01",
+        "m08"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [
+        "m09"
+      ],
+      "general_payoffs": [
+        "她為什麼記得所有草藥揭開：外祖母藥婆從她會走路起教的，十歲後的日子留不住、十歲前的全在",
+        "阿牛不道歉，但送了一擔菜，從此是她的人"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "a-niu",
+        "fu-bo",
+        "yaopo",
+        "he-daifu"
+      ],
+      "locations": [
+        "陸府門口",
+        "陸府小院梨樹下",
+        "城南山坡（回憶）"
+      ],
+      "state": {
+        "time": "成親第四日夜",
+        "knowledge": "陸清和知道她十歲前的事都記得、十歲後每天像新的；藥婆是她外祖母。",
+        "carry_forward": "她的十歲發生了什麼；陸清和決定去查"
+      }
+    },
+    {
+      "number": 31,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "拉袖子",
+      "youtube_title": "通判上門查妻子十歲那年的事被擋在門外，回家發現兒子拉著她的袖子不放",
+      "duration_s": 115,
+      "logline": "陸清和去姜府問她十歲那年的事，姜父閉門不見；家裡，小禮開始一整天拉著她的袖子跟著走。",
+      "hook": "姜府大門在陸清和面前關上，門房隔著門縫：「老爺說，二小姐十歲的事，沒有事。」",
+      "hook_type": "line",
+      "mid_hook": "陸府院子裡，她走一步，身後一隻小手拉著她的袖角跟一步；她回頭，小禮不看她，也不放手。",
+      "conflict": "陸清和想弄清她的十歲，姜家把門關死；她不知道小禮為什麼一直跟著她。",
+      "turn": "大家以為小禮只是好奇，他卻拉著她一路往後院最深的角落走，那裡連福伯都三年沒去過。辨謊：姜府門房說「老爺出門了」時把門閂握得發白，陸清和只說：「替我問姜夫人好。」門縫裡的眼睛閃了一下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小禮推開後院一扇長滿青苔的竹門，門後是一片乾枯的藥圃，木牌上寫著一行褪色的小字。她蹲下來看，小禮第一次把她的手往前拉。",
+        "question": "這片藥圃是誰的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhiyu"
+      ],
+      "spectacle": "姜府朱紅大門在青灰長衫前緩緩合上；同一時刻，陸府院子裡一大一小兩個影子一前一後穿過梨樹。",
+      "glamour_shot": "她回頭看拉著袖角的小禮，低下頭的一瞬，歪紮的髮絲垂到小禮的手背上，她笑了。",
+      "setups": [
+        "s01-t25",
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮第一次主動帶一個人去一個地方",
+        "陸清和留了話給姜夫人"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "jiang-zhong"
+      ],
+      "locations": [
+        "姜府門口",
+        "陸府小院",
+        "陸府後院"
+      ],
+      "state": {
+        "time": "成親第七日",
+        "knowledge": "姜家不肯說她的十歲；小禮帶她到後院。",
+        "carry_forward": "枯藥圃與木牌；姜夫人那邊"
+      }
+    },
+    {
+      "number": 32,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "枯了三年的藥圃",
+      "youtube_title": "小少爺拉著傻後娘走進枯了三年的藥圃，她蹲下說：這些還活著",
+      "duration_s": 120,
+      "logline": "後院那片枯藥圃是亡故的夫人種的；小禮帶她來，她蹲下去一株一株看，說根還活著。",
+      "hook": "木牌上的字被雨水洗得很淡，她念不出來；小禮伸手，一筆一筆描著上面的字。",
+      "hook_type": "image",
+      "mid_hook": "她挖開一株枯草的根，根是白的：「還活著。澆水就會回來。」小禮蹲到她旁邊，第一次碰了泥土。",
+      "extra_hooks": [
+        "福伯站在竹門外，紅了眼：「這是夫人的藥圃。夫人走後，大人不讓人進來。」"
+      ],
+      "conflict": "她想救活這片草；可這是夫人的地方，陸清和不讓人進，她不知道能不能碰。",
+      "turn": "大家以為這片地早死了，她說根還活著；福伯以為大人會生氣，她先說：「我去問他。」辨謊：福伯說「荒了也好」時一直摸鑰匙串，她說：「你想讓它活。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "傍晚陸清和站在竹門口，看見她和小禮滿手泥坐在藥圃裡，木牌被擦乾淨了。她仰頭問：「我可以種嗎？」他的手握緊了腰間的木牌。",
+        "question": "他會讓她碰夫人的藥圃嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "枯黃的藥圃裡她撥開一株草根，泥土裡露出一截雪白的根，旁邊小小的手指也伸進泥裡。",
+      "glamour_shot": "夕光斜斜照進後院，她跪坐在藥圃裡回頭，臉上沾著泥點、眼睛很亮；竹門口的他背著光。",
+      "setups": [
+        "m04",
+        "m05"
+      ],
+      "payoffs": [
+        "s01-t25"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮帶她去的是母親的藥圃，她說根還活著",
+        "小禮第一次碰泥土、跟著她做一件事"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "fu-bo",
+        "lu-qinghe",
+        "lu-qi"
+      ],
+      "locations": [
+        "陸府後院藥圃"
+      ],
+      "state": {
+        "time": "成親第八日傍晚",
+        "knowledge": "藥圃是亡妻種的；陸清和不讓人進。",
+        "carry_forward": "他答不答應；夫人生前的事"
+      }
+    },
+    {
+      "number": 33,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "脈裡的寒",
+      "youtube_title": "老大夫上門替傻姑娘把脈，手指一搭臉色就變了：妳吞過什麼？",
+      "duration_s": 120,
+      "logline": "陸清和點頭讓她種藥圃；賀大夫上門道謝，她說手總是冷，賀大夫替她把脈，臉色變了。",
+      "hook": "陸清和鬆開木牌，蹲下來：「可以。種活了，帶我來看。」她舉起滿是泥的手：「打勾。」",
+      "hook_type": "line",
+      "mid_hook": "賀大夫三指搭上她的腕，眉頭一點一點皺起：「好寒的脈……姑娘小時候，是不是吞過什麼？」",
+      "conflict": "她只覺得手冷；賀大夫摸出一個河州大夫十年都沒見過的脈象，不知道該不該當著她說。",
+      "turn": "大家以為她只是身子虛，賀大夫說這是寒毒的脈——鎖在裡面十年；她問「能不能解」，賀大夫沉默。辨謊：賀大夫說「沒什麼大事」時把脈枕收得太快，她說：「有事。你說。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "賀大夫走後，春杏從門房拿進一張沒有署名的紙條，上面只有一行娟秀的字：「明日辰時，河邊茶亭，請陸大人一人來。」",
+        "question": "約陸清和的人是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhiyu"
+      ],
+      "spectacle": "三根手指搭在她纖細的手腕上，腕上浮著一層淡淡的青，賀大夫的手指在脈上停住，窗外梨葉落了一片。",
+      "glamour_shot": "陸清和蹲下來跟她打勾的那一格，他的小指勾住她沾泥的小指，又很快放開，嘴角有一點笑。",
+      "setups": [
+        "s01-t17",
+        "m08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和答應讓她種夫人的藥圃",
+        "賀大夫看出她體內有寒毒"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "he-daifu",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府後院藥圃",
+        "陸府東廂"
+      ],
+      "state": {
+        "time": "成親第九日",
+        "knowledge": "賀大夫說她十歲前後吞過寒毒；有人約陸清和明日在河邊茶亭。",
+        "carry_forward": "茶亭之約；寒毒能不能解"
+      }
+    },
+    {
+      "number": 34,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "河邊茶亭",
+      "youtube_title": "一個戴舊簪的婦人約通判河邊相見，開口第一句：她十歲那年，差點沒了",
+      "duration_s": 115,
+      "logline": "約陸清和的是姜母；她背著丈夫來，開口要說女兒十歲那年的事，又幾次停住。",
+      "hook": "河邊茶亭，一個鬢上插著舊簪的婦人摘下帷帽，眼圈是紅的：「陸大人，我是阿苓的娘。」",
+      "hook_type": "image",
+      "mid_hook": "姜母握著茶杯，手在抖：「她十歲那年……差點沒了。」說完這一句，她把茶杯放下，又拿起來。",
+      "conflict": "姜母要背著姜父說出藏了十年的事；她怕說了女兒更被人看不起，不說又怕陸家把女兒退回去。",
+      "turn": "陸清和以為姜母來要人回去，她卻說：「別送她回來。」辨謊：姜母說「我很少想她」時摸了一下鬢上的舊簪，陸清和看見了，沒說破，只替她添茶。同一時刻陸府裡，她把一株救活的苗指給小禮看。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "姜母終於抬頭：「那年，有人在一杯酒裡下了東西。那杯酒，本來不是給她的。」",
+        "question": "那杯酒本來是給誰的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "清晨河邊茶亭，水面起霧，一盞茶的白氣與河上的霧連成一片，婦人的帷帽放在桌角。",
+      "glamour_shot": "陸清和坐在茶亭裡傾身聽，晨霧把他青灰的身影洗得很淡，眉眼卻清楚；他替姜母添茶的手很穩。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "姜母親口要陸家別送她回去",
+        "藥圃第一株苗活了"
+      ],
+      "characters": [
+        "jiang-mu",
+        "lu-qinghe",
+        "jiang-ling",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "河邊茶亭",
+        "陸府後院藥圃"
+      ],
+      "state": {
+        "time": "成親第十日清晨",
+        "knowledge": "姜母背著姜父來見陸清和；那杯酒本來不是給阿苓的。",
+        "carry_forward": "酒是給誰的"
+      }
+    },
+    {
+      "number": 35,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "那杯酒",
+      "youtube_title": "十年前她搶過青梅竹馬手裡的毒酒一口喝下，從此心智停在十歲",
+      "duration_s": 135,
+      "logline": "姜母說出十年前的事：蕭家的仇人在酒裡下毒，十歲的阿苓搶過蕭家小子的酒喝了，寒毒鎖了她的心智。",
+      "hook": "姜母閉上眼：「是給蕭家那孩子的。」",
+      "hook_type": "line",
+      "mid_hook": "回憶一格：梨花樹下兩個孩子，一隻小手搶過另一隻手裡的酒杯，仰頭喝下——畫面停在杯子落地。",
+      "extra_hooks": [
+        "姜母說：「寒毒不要命，鎖了她的心。她一直十歲。」"
+      ],
+      "conflict": "陸清和要知道她為什麼停在十歲；姜母說到一半，另一半她不肯說。",
+      "turn": "陸清和以為是病，原來是她自己搶過去喝的——為了救一個人。姜母說：「之後蕭家把兒子送去邊軍，對外說二小姐病死了。」他問為什麼對外說死，姜母站起來，不答。辨謊：姜母說「不是姜家的主意」時手按住了簪子，陸清和看懂了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "姜母戴回帷帽，臨走回頭：「陸大人，你知道了。你還留她嗎？」河霧裡陸清和站起來，手裡的茶涼了。",
+        "question": "知道了真相，他還留不留她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "回憶一格：十年前的梨花紛飛，一隻青瓷酒杯從孩子手裡落下，在青石上摔成兩半，花瓣落進酒裡。",
+      "glamour_shot": "姜母問出那句話時，陸清和在河霧裡站起，鬢角那一絲白被晨光照亮，他的神情從平靜變得很沉。",
+      "setups": [
+        "m06",
+        "m07"
+      ],
+      "payoffs": [
+        "m01",
+        "s01-t17"
+      ],
+      "reveals": [
+        "m01"
+      ],
+      "general_payoffs": [
+        "她為什麼心智停在十歲揭開：十歲那年為救蕭家小子，搶過毒酒喝下，寒毒鎖了心智",
+        "賀大夫說的「寒」有了答案"
+      ],
+      "characters": [
+        "jiang-mu",
+        "lu-qinghe",
+        "jiang-ling"
+      ],
+      "locations": [
+        "河邊茶亭",
+        "姜府梨花院（回憶）"
+      ],
+      "state": {
+        "time": "成親第十日上午",
+        "knowledge": "陸清和知道她為救蕭家小子喝了毒酒；蕭家把兒子送去邊軍、對外說她病死；為什麼說死，姜母不說。",
+        "carry_forward": "姜母的問題；陸清和怎麼面對她"
+      }
+    },
+    {
+      "number": 36,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "可以坐",
+      "youtube_title": "知道妻子為救人喝下毒酒，通判回家第一件事：讓她坐上亡妻的鞦韆",
+      "duration_s": 120,
+      "logline": "陸清和回到家，看見她站在鞦韆旁不坐；他走過去，親口說了「可以坐」。",
+      "hook": "她站在空鞦韆旁，手扶著繩：「福伯說，要等你說可以。」",
+      "hook_type": "line",
+      "mid_hook": "陸清和走到鞦韆後面，扶住麻繩：「可以坐。」她坐上去，他輕輕推了第一下。",
+      "conflict": "他剛知道她為救人吞了毒、被藏了十年；回到家，她還在乖乖等一句許可。",
+      "turn": "大家以為他會不准別人碰亡妻的鞦韆，他親手推了她。她在鞦韆上問：「你今天去哪了？」他沒說謊，只說：「去聽一個故事。」辨謊：她看他：「你沒摸東西。你沒騙我。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "鞦韆盪高時他問：「妳記得十歲那年嗎？」她想了很久：「記得一杯酒。還有一個人，笑起來缺一顆牙。」鞦韆停住，她低頭：「他叫什麼，我忘了。」",
+        "question": "她救的那個人，還會回來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "梨樹下鞦韆第一次被人推起，麻繩上那條褪色淡藍布條在空中劃出一道弧，梨葉紛紛落下。",
+      "glamour_shot": "他站在鞦韆後推她的那一刻，風吹起她的裙角與歪髮，他低頭看著她的背影，眼裡有一點疼。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和准她坐亡妻的鞦韆，親手推了第一下",
+        "她記得那杯酒，忘了那個人的名字"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "陸府小院梨樹下"
+      ],
+      "state": {
+        "time": "成親第十日黃昏",
+        "knowledge": "她記得酒、記得缺牙的笑，不記得名字。",
+        "carry_forward": "那個人是誰；她的手越來越冷"
+      }
+    },
+    {
+      "number": 37,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "少爺發燒了",
+      "youtube_title": "小少爺半夜發燒，奶娘慌了手腳，最後一把拉住傻後娘：妳救救他",
+      "duration_s": 125,
+      "logline": "夜裡小禮發燒說不出難受，陸清和在衙門未歸；杜嬤嬤慌了，終於去敲她的門。",
+      "hook": "半夜東廂的門被拍響，杜嬤嬤的聲音在抖：「少爺燒起來了！大人還在衙門！」",
+      "hook_type": "danger",
+      "mid_hook": "她摸了小禮的額頭和手心，跑去後院藥圃，拔了自己剛救活的那一株，捏碎了放在小禮枕邊。",
+      "conflict": "小禮不會說哪裡不舒服，杜嬤嬤只能乾著急；她要救他，可杜嬤嬤一直不准她靠近。",
+      "turn": "杜嬤嬤以為傻子會手足無措，她卻一樣一樣吩咐：開窗、溫水、擦手心。燒退了一點，小禮在昏睡裡拉住她的袖子。辨謊：杜嬤嬤說「我不信妳」時人已經讓開了床邊，她說：「妳信了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "杜嬤嬤看著小禮拉住她的袖子不放，忽然跪坐在床邊哭出聲：「夫人走那晚，我也在。我沒顧好他。」她伸手，生硬地拍了拍嬤嬤的背。",
+        "question": "夫人走的那晚發生了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "深夜小禮的房，窗推開一條縫，月光照在枕邊一小撮碎草上，草香在燈裡飄起一縷看得見的白氣。",
+      "glamour_shot": "她坐在床邊低頭替小禮擦手心，燈從下往上照著她的臉，專注得不像一個十歲的孩子。",
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [
+        "s01-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "杜嬤嬤第一次讓她靠近少爺",
+        "小禮的燒退了，昏睡中拉住她"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "du-mama"
+      ],
+      "locations": [
+        "小禮的房",
+        "陸府後院藥圃"
+      ],
+      "state": {
+        "time": "成親第十二日夜",
+        "knowledge": "杜嬤嬤讓她照顧小禮；杜嬤嬤在夫人走那晚也在。",
+        "carry_forward": "杜嬤嬤的心結；陸清和還沒回來"
+      }
+    },
+    {
+      "number": 38,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "少爺要找她",
+      "youtube_title": "一直不准傻姑娘靠近少爺的奶娘，第二天親手把少爺牽到她門口",
+      "duration_s": 115,
+      "logline": "第二天一早，杜嬤嬤牽著小禮站在東廂門口：「少爺要找妳。」",
+      "hook": "東廂門一開，杜嬤嬤牽著小禮站在門外，板著臉：「少爺要找妳。不是我。」",
+      "hook_type": "line",
+      "mid_hook": "陸清和從衙門回來，聽福伯說了昨夜，快步走到東廂門口，看見小禮坐在她腳邊玩她的草。",
+      "conflict": "杜嬤嬤嘴硬，可她的態度變了；陸清和要謝她，又不知道怎麼說才不像施恩。",
+      "turn": "杜嬤嬤以為大人會怪她昨夜沒派人去衙門，陸清和卻先蹲下對她說：「謝謝妳。」她說：「我拍了嬤嬤的背。小禮拉我袖子。」辨謊：杜嬤嬤說「我只是順路」時圍裙繫錯了邊，她指了指：「嬤嬤，妳今天慌了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "福伯拿進一封邊關來的公文給陸清和，信封上寫著「邊軍」二字；陸清和拆開看了一眼，猛地合上，抬頭看鞦韆上的她。",
+        "question": "邊軍的信裡寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "東廂門檻上，小禮把她採的草排成一列，一株一株擺得筆直，晨光照著一大一小的影子。",
+      "glamour_shot": "陸清和蹲在東廂門口跟她說謝謝，晨光從背後照來，他低頭時眼神溫得像水。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "杜嬤嬤從「離遠一點」變成「少爺要找妳」",
+        "陸清和蹲下對她說謝謝"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "du-mama",
+        "fu-bo"
+      ],
+      "locations": [
+        "陸府東廂",
+        "陸府小院"
+      ],
+      "state": {
+        "time": "成親第十三日",
+        "knowledge": "杜嬤嬤接受她；陸清和收到一封邊軍公文。",
+        "carry_forward": "公文內容；他看她的眼神"
+      }
+    },
+    {
+      "number": 39,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "三是多久",
+      "youtube_title": "通判第一次告訴傻妻：兒子三年沒說話了。她問：三年是多久？",
+      "duration_s": 120,
+      "logline": "邊軍公文只是例行的兵冊，陸清和卻在上面看見一個河州籍、二十一歲的副將；他沒告訴她，只跟她說了小禮的事。",
+      "hook": "陸清和的指尖停在兵冊一行字上：「河州籍副將一名，年二十一——」他合上公文，放進抽屜，上了鎖。",
+      "hook_type": "image",
+      "mid_hook": "梨樹下他說：「小禮三年沒說話了。」她問：「三年是多久？」他伸出三根手指。她跟著伸出三根。",
+      "extra_hooks": [
+        "藥圃邊的小禮看見了，也慢慢伸出三根手指，對著她。她不懂，回他一個三。"
+      ],
+      "conflict": "陸清和看見一個可能是那個人的名字，要不要讓她知道；小禮的沉默他三年都解不開。",
+      "turn": "大家以為他會把那個名字告訴她，他只鎖進抽屜：她記不得的人，他不替她記。辨謊：春杏說「我什麼都沒看見」時摸耳朵，她說：「妳看見抽屜了。」春杏捂嘴退下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡她經過書房，門縫裡陸清和握著那塊木牌坐了很久，抽屜上的鎖在燈下發亮。她伸手要敲門，又收回來。",
+        "question": "抽屜裡鎖著什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "書房燈下一隻手把公文放進抽屜、扣上銅鎖，鎖舌咔一聲；窗外梨樹下，一大一小互相比著三根手指。",
+      "glamour_shot": "夜裡書房門縫透出的光照在他握木牌的手和低垂的側臉上，清瘦、安靜、一夜沒動。",
+      "setups": [
+        "s01-t18",
+        "m05",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道小禮三年沒說話",
+        "陸清和選擇不替她記那個名字"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府書房",
+        "陸府小院梨樹下"
+      ],
+      "state": {
+        "time": "成親第十四日夜",
+        "knowledge": "邊軍裡有個河州籍、二十一歲的副將，陸清和鎖起來了；小禮對她比三。",
+        "carry_forward": "小禮的三；抽屜"
+      }
+    },
+    {
+      "number": 40,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "那你比我早",
+      "youtube_title": "傻後娘坐在小少爺床邊說：我十歲救了一個人，你呢？孩子比了一個三",
+      "duration_s": 140,
+      "logline": "夜裡她坐在小禮床邊唱完歌，第一次說起自己十歲救過一個人；小禮用三根手指回答了她。",
+      "hook": "歌唱完，小禮還睜著眼；她小聲說：「我十歲的時候，救了一個人。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「他叫什麼，我忘了。」小禮看著她，把布老虎往她那邊推了一寸，又拉回去。",
+      "extra_hooks": [
+        "門外杜嬤嬤靠在牆上聽，捂住嘴；廊下陸清和停住腳步。"
+      ],
+      "conflict": "她想懂小禮為什麼不說話，小禮想懂她為什麼和別的大人不一樣；兩個人都只有一半的話。",
+      "turn": "大家以為她不懂大人的事，她卻問了三年來沒人敢問小禮的一句：「你也是十歲前就不說話了嗎？」小禮搖頭，伸出三根手指——原來白天那個三是他的答案。辨謊：她問「你想說話嗎」，小禮搖頭，手卻抓緊了被角；她說：「你想。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她看著三根手指：「三歲？」小禮點頭。她想了想，認真地說：「那你比我早。」小禮的眼睛第一次彎了一下。",
+        "question": "三歲那年，小禮看見了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "xuanyi"
+      ],
+      "spectacle": "夜裡小床邊一盞燈，一隻瘦小的手在被子外豎起三根手指，牆上映出三根細長的影子。",
+      "glamour_shot": "她側坐在床邊、雙手抱膝看著小禮，燈光柔柔地鋪在她的圓臉上；小禮的大眼睛第一次彎起來。",
+      "setups": [
+        "m05",
+        "m03"
+      ],
+      "payoffs": [
+        "s01-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮用手勢回答了她，三歲那年起不說話",
+        "小禮第一次對她笑了一下"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "du-mama",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "小禮的房",
+        "陸府迴廊"
+      ],
+      "state": {
+        "time": "成親第十四日深夜",
+        "knowledge": "小禮三歲起不說話；她十歲救過一個忘了名字的人。",
+        "carry_forward": "小禮的沉默與母親有關；河州開始傳她的事"
+      }
+    },
+    {
+      "number": 41,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "通判娶了傻子",
+      "youtube_title": "全河州都在笑通判娶了傻子，知府夫人突然送來請帖：請陸夫人赴宴",
+      "duration_s": 115,
+      "logline": "河州茶樓傳開「通判娶了傻子」；知府周崇的夫人送來請帖，點名請陸夫人赴宴。",
+      "hook": "茶樓說書人拍醒木：「話說通判掀開花轎——裡頭坐著個傻子！」滿樓大笑。",
+      "hook_type": "line",
+      "mid_hook": "福伯捧著一張描金請帖進門：「知府夫人設賞花宴，請陸夫人。」春杏臉一垮：「這是要看笑話。」",
+      "conflict": "全河州等著看陸夫人出醜；知府夫人的帖子不好推，去了又可能被當眾羞辱。",
+      "turn": "大家以為陸清和會替她推掉，他蹲下來把請帖放在她手上：「妳想去就去，不想就不去。妳決定。」她翻來覆去看那張帖：「有沒有吃的？」辨謊：說書人說「句句屬實」時一直拍醒木，她坐在茶樓角落說：「他拍桌子是怕人不信。」鄰桌的阿牛笑出聲。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "衙門裡，知府周崇慢慢撫著鬚對陸清和笑：「內人很想見見陸夫人。陸大人，可別讓她失望。」",
+        "question": "知府夫人到底想怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "gufeng",
+        "tianchong"
+      ],
+      "spectacle": "河州茶樓座無虛席，說書人一拍醒木，滿樓茶客齊齊仰頭大笑，角落裡一個淺綠身影捧著茶杯，認真地聽。",
+      "glamour_shot": "陸清和蹲下把請帖放進她手心，抬眼看她的那一秒，燈下的眉眼乾淨得像洗過；她低頭研究請帖上的金花。",
+      "setups": [
+        "s01-t13",
+        "s01-t26"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和把去不去交給她自己決定",
+        "阿牛在茶樓第一次替她笑說書人"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "fu-bo",
+        "chun-xing",
+        "a-niu",
+        "zhou-chong"
+      ],
+      "locations": [
+        "河州茶樓",
+        "陸府正廳",
+        "通判衙門"
+      ],
+      "state": {
+        "time": "成親後半個月",
+        "knowledge": "知府夫人請她赴宴；全城等著看笑話。",
+        "carry_forward": "她去不去；知府的那句話"
+      }
+    },
+    {
+      "number": 42,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "我要去",
+      "youtube_title": "全府都勸傻夫人別去知府家的鴻門宴，她只問一句：有吃的，我為什麼不去？",
+      "duration_s": 115,
+      "logline": "她自己決定去赴宴；春杏和杜嬤嬤替她打扮，福伯在她袖子裡塞了一包糖。",
+      "hook": "她把請帖舉到陸清和面前：「有吃的，我為什麼不去？我要去。」",
+      "hook_type": "line",
+      "mid_hook": "春杏捧來一支金步搖，她搖頭，自己挑了那件淺綠的：「這件是我的顏色。」杜嬤嬤沒說話，替她把頭髮重紮了一次——還是有點歪。",
+      "extra_hooks": [
+        "福伯偷偷往她袖子裡塞了一小包麥芽糖：「餓了就吃，別等人家請。」"
+      ],
+      "conflict": "全府的人都怕她去了受欺負，可她決定的事，陸清和說過不替她改。",
+      "turn": "大家以為她要靠一身金銀撐場面，她偏挑最素的淺綠；杜嬤嬤第一次替她梳頭。辨謊：春杏說「二小姐穿什麼都好看」時摸耳朵，她說：「妳覺得金的比較好。可我不要。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周府花園門一開，滿園錦衣的夫人小姐齊齊回頭，交頭接耳的聲音像一陣風；主位上的周夫人放下茶盞，笑得很慢。",
+        "question": "滿園的人準備怎麼看她笑話？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "陸府東廂銅鏡前，三個人圍著她：春杏捧首飾、杜嬤嬤拿梳子、福伯在門口探頭，鏡裡的她頭髮還是歪了一點。",
+      "glamour_shot": "她換上淺綠衣裙站在梨樹下回頭，陽光照在她素淨的臉上；陸清和站在廊下，看了很久才說：「好看。」",
+      "setups": [],
+      "payoffs": [
+        "s01-t26"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她自己決定赴宴、自己挑了衣裳",
+        "杜嬤嬤第一次替她梳頭"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "chun-xing",
+        "du-mama",
+        "fu-bo",
+        "s01-zhou-furen"
+      ],
+      "locations": [
+        "陸府東廂",
+        "周府花園"
+      ],
+      "state": {
+        "time": "赴宴當日午後",
+        "knowledge": "她自己決定去；袖子裡有福伯的糖。",
+        "carry_forward": "滿園的眼光；周夫人"
+      }
+    },
+    {
+      "number": 43,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "我不識字",
+      "youtube_title": "知府夫人當眾問傻新娘讀過什麼書，她答「我不識字」，滿園貴婦笑成一片",
+      "duration_s": 120,
+      "logline": "宴上周夫人問陸夫人讀過什麼書，她老實說不識字；滿園大笑，她反問了一句讓笑聲變得尷尬的話。",
+      "hook": "周夫人親切地拉著她的手：「陸夫人，平日讀些什麼書呀？」她說：「我不識字。」",
+      "hook_type": "line",
+      "mid_hook": "滿園笑成一片，她看著大家：「妳們笑什麼？識字的人都會這樣笑嗎？」笑聲一下子卡住了。",
+      "conflict": "周夫人要她在全河州的夫人面前出醜；她不懂羞辱，只會一句一句老實答。",
+      "turn": "大家以為她會羞得掉淚，她卻認真地問誰能教她；一個年輕小姐低頭紅了臉。辨謊：一位夫人說「我們沒有笑妳」時掩嘴，她說：「妳的手擋著嘴，就是在笑。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "周夫人笑著起身：「那陸夫人會什麼呢？總有一樣吧？」滿園的眼睛都在等她說「什麼都不會」。",
+        "question": "她會說自己會什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "周府花園牡丹盛開，十幾桌錦衣夫人一齊掩嘴笑，花影裡只有一身淺綠坐得筆直。",
+      "glamour_shot": "她坐在一片錦繡中間抬頭反問，下午的光照在她不施脂粉的臉上，眼神乾淨得讓人不敢直視。",
+      "setups": [
+        "s01-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她一句反問讓滿園笑聲卡住",
+        "她第一次說出想學字"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s01-zhou-furen",
+        "chun-xing"
+      ],
+      "locations": [
+        "周府花園"
+      ],
+      "state": {
+        "time": "赴宴當日申時",
+        "knowledge": "全場知道她不識字；她想學。",
+        "carry_forward": "周夫人的第二個問題"
+      }
+    },
+    {
+      "number": 44,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "會認草",
+      "youtube_title": "傻夫人說自己只會認草，知府夫人把她帶進花園考試：這株叫什麼？",
+      "duration_s": 115,
+      "logline": "她說自己會認草；周夫人把滿園的人帶進後花園，要她當眾一株一株認。",
+      "hook": "她站起來：「我會認草。」周夫人愣了一下，笑意更深：「那好，我們去後園考考。」",
+      "hook_type": "line",
+      "mid_hook": "她一路認過去：這是安神的、這是止咳的、這是不能碰的。夫人們從掩嘴笑，變成跟在後面聽。",
+      "conflict": "周夫人想用一場考試讓她露餡；她只要說錯一株，全場就有理由笑。",
+      "turn": "大家以為傻子只會胡說，她每一株都說得出名字和用處，連花匠都點頭；周夫人臉上的笑一點一點收起來。辨謊：周夫人說「我是真心請妳來的」時一直數腕上的翡翠鐲子，她說：「妳數鐲子了。三次。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周夫人指著石邊一株開小黃花的草：「那這株呢？」她沒看那株草，臉一下子白了，眼睛盯著草叢後面一個戴虎頭帽的小孩。",
+        "question": "她看見了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "gufeng"
+      ],
+      "spectacle": "周府後花園曲徑兩旁百草叢生，一群錦衣夫人跟在一個淺綠身影後面，像一條彩色的尾巴。",
+      "glamour_shot": "她彎腰撫過一株草、抬頭說出名字的那一刻，陽光從花葉間灑下來，照亮她認真的眼睛。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她當眾認對了滿園的草，連花匠都服"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s01-zhou-furen",
+        "s01-zhou-sun",
+        "chun-xing"
+      ],
+      "locations": [
+        "周府後花園"
+      ],
+      "state": {
+        "time": "赴宴當日申時末",
+        "knowledge": "她認草的本事全場看見；周夫人的孫兒在草叢後。",
+        "carry_forward": "那株小黃花；孩子"
+      }
+    },
+    {
+      "number": 45,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "斷腸草",
+      "youtube_title": "知府夫人考傻夫人認花，她說：這是斷腸草，妳孫兒剛剛摘了一片放進嘴裡",
+      "duration_s": 125,
+      "logline": "周夫人考她的那株草是斷腸草；她說出名字的同時，指出周夫人的孫兒剛把一片葉子放進了嘴裡。",
+      "hook": "她一個字一個字：「這是斷腸草。」周夫人笑：「胡說——」",
+      "hook_type": "danger",
+      "mid_hook": "她伸手指向草叢：「夫人的孫兒，剛剛摘了一片，放嘴裡了。」全場靜了一瞬，然後所有人都跑了起來。",
+      "extra_hooks": [
+        "周夫人提著裙子衝過去，金步搖甩掉在地上，喊不出聲。"
+      ],
+      "conflict": "孩子嘴裡含著一片毒葉，一屋子大人亂成一團，沒人知道該怎麼辦。",
+      "turn": "大家以為是傻子又在胡說，孩子嘴角真的露出一角綠葉；周夫人這才知道自己考她的，是全園最危險的東西。辨謊：奶娘說「小少爺一直在我身邊」時退了一步，她說：「他沒有。他在草裡。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小孫兒被一群大人圍住嚇得閉緊嘴巴，往後縮著搖頭；奶娘去掰他的嘴，他哭著咬得更緊。她撥開人群，蹲了下去。",
+        "question": "她能讓孩子把葉子吐出來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "一株開小黃花的草在風裡搖，鏡頭拉開，滿園錦衣夫人四散奔向草叢，一支金步搖落在石徑上彈了一下。",
+      "glamour_shot": "她說出「斷腸草」那一刻的特寫：圓臉沒有表情，眼睛很定，風吹起她額前的碎髮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一個發現孩子吞了毒葉"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s01-zhou-furen",
+        "s01-zhou-sun",
+        "chun-xing"
+      ],
+      "locations": [
+        "周府後花園"
+      ],
+      "state": {
+        "time": "赴宴當日酉時",
+        "knowledge": "孫兒含著斷腸草葉，嚇得不肯張嘴。",
+        "carry_forward": "孩子能不能吐出來"
+      }
+    },
+    {
+      "number": 46,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "吐出來換糖",
+      "youtube_title": "孩子含著毒葉死不張嘴，傻夫人蹲下掏出一包糖：吐出來，換糖",
+      "duration_s": 125,
+      "logline": "她蹲下來，掏出福伯塞的糖跟孩子換；孩子吐出了葉子，平安無事；周夫人的臉比賀大夫還白。",
+      "hook": "她蹲到孩子面前，不碰他，從袖子裡掏出一包麥芽糖：「吐出來，換糖。」",
+      "hook_type": "image",
+      "mid_hook": "孩子盯著糖，嘴慢慢張開，一片咬碎的綠葉掉在她掌心。她把糖放進他手裡：「乖。再漱口。」",
+      "conflict": "全場大人都在拉、在掰、在喊，越逼孩子越不張嘴；她得用十歲孩子的辦法。",
+      "turn": "大家以為要靠力氣，她用一包糖就換來了；孩子漱了口、吃了糖，笑了。周夫人坐在石徑上，臉白得像紙，說出實話：「我請妳來，是想讓大家笑妳。」辨謊：周夫人這次沒有數鐲子，她說：「這句是真的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "人群後面傳來一聲輕咳，知府周崇站在花園門口，慢慢撫著鬚：「陸夫人，好本事。」他的眼睛一直沒離開她手心那片葉子。",
+        "question": "知府為什麼那樣看她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "jiating",
+        "zhiyu"
+      ],
+      "spectacle": "她攤開的掌心裡一片咬碎的綠葉，旁邊是一小包麥芽糖，孩子的小手伸過來拿糖，一群錦衣夫人圍成一圈屏息看著。",
+      "glamour_shot": "她蹲著與孩子平視、把糖遞過去的那一格，夕陽從背後照來，給她歪紮的頭髮鑲了一圈金邊。",
+      "setups": [],
+      "payoffs": [
+        "s01-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周家孫兒平安吐出毒葉",
+        "周夫人當眾承認請她來是想看笑話",
+        "福伯塞的糖派上了用場"
+      ],
+      "characters": [
+        "jiang-ling",
+        "s01-zhou-furen",
+        "s01-zhou-sun",
+        "zhou-chong",
+        "chun-xing"
+      ],
+      "locations": [
+        "周府後花園"
+      ],
+      "state": {
+        "time": "赴宴當日酉時末",
+        "knowledge": "周夫人認了想羞辱她；知府看見了她的本事。",
+        "carry_forward": "知府的眼神；全河州會怎麼傳"
+      }
+    },
+    {
+      "number": 47,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "妳怕不怕",
+      "youtube_title": "宴上救了知府孫兒，回家馬車上通判只問一句：怕不怕？她說：怕，手冷",
+      "duration_s": 120,
+      "logline": "陸清和趕到周府接她；回程馬車上，他問她怕不怕，她第一次說了怕。",
+      "hook": "陸清和撥開周府門口的人群快步進來，第一句是：「她在哪？」",
+      "hook_type": "question",
+      "mid_hook": "馬車上他問：「怕不怕？」她把手伸出來：「怕。手冷。」他把自己的外袍解下來，蓋在她手上，沒有碰她。",
+      "conflict": "她在宴上救了人，可也被當眾羞辱過；陸清和想知道她心裡怎麼樣，又不想逼她說。",
+      "turn": "大家以為她不懂害怕，她其實一直在怕，只是先救人；他沒說「別怕」，只說：「下次怕了，先拉我袖子。」辨謊：周崇送到門口說「改日登門道謝」時嘴角先笑眼睛沒笑，她在車上說：「知府沒有要謝。」陸清和看了她一眼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "姜府祠堂裡燭火通明，族中長輩一字排開，三叔公把拐杖往地上一頓：「姜家的傻女在知府家出盡風頭——這是丟我姜家的人！」姜父跪在中間。",
+        "question": "姜家族老要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "jiating"
+      ],
+      "spectacle": "暮色裡一輛青篷馬車駛過河州石橋，車窗裡一件青灰外袍蓋在一雙手上，橋下燈火一盞盞亮起。",
+      "glamour_shot": "馬車裡他解下外袍蓋住她的手，車窗外的燈火一明一暗掠過他的側臉，溫、低、慢地說「下次先拉我袖子」。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次對他說出「怕」",
+        "他教她害怕時先拉他袖子"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "zhou-chong",
+        "jiang-zhong",
+        "s01-zulao"
+      ],
+      "locations": [
+        "周府門口",
+        "河州石橋",
+        "姜府祠堂"
+      ],
+      "state": {
+        "time": "赴宴當夜",
+        "knowledge": "她會怕，也會說；知府對她留了心；姜家族老要處置她。",
+        "carry_forward": "姜家祠堂的決定"
+      }
+    },
+    {
+      "number": 48,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "飯桌上的笑",
+      "youtube_title": "傻夫人在飯桌上講宴會的事，三年不笑的小少爺第一次笑出了聲音",
+      "duration_s": 115,
+      "logline": "陸府的晚飯桌上，她把宴會的事一件一件講給小禮聽；同一夜，姜家祠堂決定把她接回去關著。",
+      "hook": "陸府飯桌上她舉著筷子：「那個夫人的金步搖，啪，掉在地上，彈了一下。」",
+      "hook_type": "image",
+      "mid_hook": "小禮捂住嘴，肩膀一直抖——沒有聲音，但他在笑。杜嬤嬤的湯勺停在半空。",
+      "extra_hooks": [
+        "祠堂裡三叔公宣布：「明日一早，把二丫頭接回來，關回後院。」"
+      ],
+      "conflict": "陸府終於像一個家，三個人的飯桌有了笑聲；姜家卻要把這一切拿走。",
+      "turn": "大家以為小禮不會笑，他捂著嘴笑到眼淚出來；陸清和夾了一塊肉放進她碗裡：「今天妳贏了。」辨謊：杜嬤嬤說「我才沒有替她擔心一下午」時湯碗都端反了，她說：「嬤嬤，碗。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天剛亮，陸府門口停了三頂轎子，姜家族老拄著拐杖站在最前面，身後跟著一排家丁，手裡拿著繩子。",
+        "question": "姜家要硬把她綁回去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "陸府飯桌一盞燈三副碗筷，小禮捂嘴笑得肩膀發抖，燈影把三個人的影子投在牆上，像一家三口。",
+      "glamour_shot": "她舉著筷子比手畫腳、眼睛發亮；對面的陸清和低頭笑，燈光照著他眼角很淺的紋。",
+      "setups": [
+        "s01-t27"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮第一次笑",
+        "陸家的飯桌像一家三口"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "du-mama",
+        "jiang-zhong",
+        "s01-zulao"
+      ],
+      "locations": [
+        "陸府飯廳",
+        "姜府祠堂",
+        "陸府門口"
+      ],
+      "state": {
+        "time": "赴宴次日清晨",
+        "knowledge": "姜家族老帶人來陸府，要接她回去關著。",
+        "carry_forward": "門口的族老與繩子"
+      }
+    },
+    {
+      "number": 49,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "後院那間我住過",
+      "youtube_title": "姜家族老帶繩子來把傻女綁回去關著，她問：是後院那間嗎？我住過十年",
+      "duration_s": 120,
+      "logline": "姜父帶著族中長輩堵在陸府門口要接她回去關著；陸清和不在，她自己走出去問話。",
+      "hook": "三叔公拐杖一頓：「二丫頭丟人，姜家要接回去關著。」她從門裡走出來：「關著是什麼？」",
+      "hook_type": "question",
+      "mid_hook": "她看著族老：「是後院那間沒有窗的嗎？我住過。十年。」門口圍觀的街坊一下子安靜了。",
+      "conflict": "族規壓下來，福伯和春杏擋不住族老；她不懂族規，只知道那間屋子很黑。",
+      "turn": "族老以為她傻、聽不懂「關著」，她卻用最平的語氣說出姜家藏了她十年；圍觀的阿牛帶頭喊：「姜家關女兒！」辨謊：姜父說「家裡一直好好待她」時扳指轉個不停，她說：「爹，你又轉了。你每次來小屋都不進來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "三叔公臉色鐵青：「綁回去！」家丁拿著繩子上前，春杏被推倒在台階上；她背抵住門，回頭看門裡抱著布老虎的小禮，又看向繩子。",
+        "question": "她會自己跟他們走嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "陸府門口三頂轎子一排家丁，白鬚族老拄杖站在台階下，門檻上一個淺綠身影，街坊越圍越多。",
+      "glamour_shot": "她站在門檻上問「關著是什麼」，晨風吹起她的衣袖，臉上沒有怕，只有一個孩子的認真。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她當眾說出姜家把她關了十年，街坊站到她這邊"
+      ],
+      "characters": [
+        "jiang-ling",
+        "jiang-zhong",
+        "s01-zulao",
+        "chun-xing",
+        "fu-bo",
+        "a-niu"
+      ],
+      "locations": [
+        "陸府門口"
+      ],
+      "state": {
+        "time": "赴宴次日早晨",
+        "knowledge": "全街知道姜家關了她十年；家丁要動手。",
+        "carry_forward": "家丁的繩子；陸清和在哪"
+      }
+    },
+    {
+      "number": 50,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "就是可以吃飯的人",
+      "youtube_title": "族老要把傻女綁回去，通判第一次大聲：她是我陸家的人，要關誰先問我",
+      "duration_s": 150,
+      "logline": "家丁要綁人時陸清和趕回，第一次大聲；她在他身後問什麼是陸家的人，他回頭答了。",
+      "hook": "繩子剛碰到她的袖子，一隻手從後面握住繩子：「放下。」陸清和喘著氣站在台階上。",
+      "hook_type": "danger",
+      "mid_hook": "陸清和站到她前面，第一次大聲：「她是我陸家的人。姜老爺要關誰，先問河州通判。」",
+      "extra_hooks": [
+        "她在他身後拉了一下他的袖子——怕的時候先拉袖子，她記得。他沒回頭，手往後伸，讓她拉著。"
+      ],
+      "conflict": "族規要她回去，陸清和要留她；可他不能替她說「我要留下」，得她自己說。",
+      "turn": "族老以為通判只是礙於面子，陸清和卻轉身問她：「妳要回去，還是留在這裡？」她說：「這裡有飯。有小禮。有你。」族老與姜父只能上轎離開。辨謊：三叔公臨走說「我們是為姜家好」時拐杖點了三下，她說：「你是為你自己。」三叔公沒回頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "轎子走遠了，她在他身後問：「什麼是陸家的人？」陸清和回頭，蹲下來看著她：「就是可以吃飯的人。」她笑了，門口的街坊有人叫了一聲：「陸夫人！」",
+        "question": "河州從此會怎麼叫她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "jiating",
+        "tianchong"
+      ],
+      "spectacle": "陸府台階上，一根麻繩從家丁手中被抽走落地，青灰長衫擋在淺綠衣裙前，台階下三頂轎子一頂一頂退走。",
+      "glamour_shot": "他轉身蹲下說「就是可以吃飯的人」，晨光照著他汗濕的鬢角與那一絲白，眼神溫得像要化開。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s01-t27"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸清和當眾宣告她是陸家的人",
+        "她自己說要留下",
+        "姜家族老與姜父空手離開"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "jiang-zhong",
+        "s01-zulao",
+        "chun-xing",
+        "fu-bo",
+        "a-niu"
+      ],
+      "locations": [
+        "陸府門口"
+      ],
+      "state": {
+        "time": "赴宴次日上午",
+        "knowledge": "她自己選了留下；街坊開始叫她陸夫人。",
+        "carry_forward": "姜家不會再來了；河州的人怎麼叫她"
+      }
+    },
+    {
+      "number": 51,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "陸夫人",
+      "youtube_title": "全河州開始叫傻姑娘陸夫人，有人笑著叫、有人認真叫，她回答得一模一樣",
+      "duration_s": 110,
+      "logline": "姜家不來了；河州的人開始叫她陸夫人——鄉紳笑著叫、阿牛認真叫，她對每個人都一樣回答。",
+      "hook": "藥鋪街口，阿牛扯開大嗓門：「陸夫人早！」半條街回頭，有人跟著喊，有人在笑。",
+      "hook_type": "line",
+      "mid_hook": "錢鄉紳搖著扇子攔住她，拖長了聲音：「陸——夫——人——」她點頭：「錢老爺早。你的牙好了嗎？」",
+      "conflict": "「陸夫人」這三個字，有人是敬、有人是笑；她分不出客套，可分得出真假。",
+      "turn": "錢鄉紳想看她出醜，她卻記得他的牙；他捂著臉說好了，她說：「那你笑大聲一點也不疼了。」整條街這次笑的是他。辨謊：錢鄉紳說「我是誠心叫的」時搖扇子搖得太快，她說：「不是。沒關係，你多叫幾次就是了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸府門口站著一個戴眼鏡、拿摺扇的長衫先生，對福伯拱手：「在下孟某，受陸大人之託，來教小少爺認字。」她從他身後探頭：「認字？」",
+        "question": "她會跟著一起學字嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xiju"
+      ],
+      "spectacle": "清晨藥鋪街，一聲「陸夫人早」從街頭傳到街尾，曬藥的、挑擔的、開鋪的一個個抬頭，她一路點頭走過去。",
+      "glamour_shot": "她提著小藥籃走在晨光裡的長街，頭髮紮得比初來時正了一點點，回頭應聲時笑得很淺。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "河州人開始叫她陸夫人",
+        "錢鄉紳這次被她說得自己發笑"
+      ],
+      "characters": [
+        "jiang-ling",
+        "a-niu",
+        "s01-xiangshen",
+        "fu-bo",
+        "meng-xiansheng"
+      ],
+      "locations": [
+        "藥鋪街",
+        "陸府門口"
+      ],
+      "state": {
+        "time": "成親後一個月",
+        "knowledge": "河州叫她陸夫人；孟先生來教小禮認字。",
+        "carry_forward": "學字"
+      }
+    },
+    {
+      "number": 52,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "那是我",
+      "youtube_title": "塾師教不說話的小少爺認字，坐在旁邊的傻後娘指著一個字說：那是我",
+      "duration_s": 115,
+      "logline": "孟先生來教小禮認字，她搬了凳子坐在旁邊看；先生寫了一個字，她認出那是自己的姓。",
+      "hook": "孟先生在紙上寫下一個字，她指著問：「這是什麼字？」先生說：「姜。」她說：「那是我。」",
+      "hook_type": "line",
+      "mid_hook": "孟先生收起摺扇，挑眉看她：「夫人想學？識字可不是盪鞦韆。」小禮在桌下拉了拉她的袖子。",
+      "conflict": "孟先生只受託教小少爺；她想學，卻沒人說過她可以。",
+      "turn": "孟先生以為傻子只是湊熱鬧，她卻記住了「姜」字的每一筆，在桌上用手指描了一遍。辨謊：孟先生說「教夫人不在我的束脩裡」時推了推眼鏡，她說：「你想教。你剛剛笑了。」先生咳了一聲。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡門房敲窗：陸府門口放著一個藍布包袱，沒有留名；街角一盞燈籠一晃，轉進了巷子。春杏追出去，什麼都沒追到。",
+        "question": "門口的包袱是誰留的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "tianchong"
+      ],
+      "spectacle": "書桌上一張宣紙寫著一個濃墨的「姜」字，一根沾著草汁的手指在桌面上一筆一筆描著同一個字。",
+      "glamour_shot": "她托著腮坐在小禮旁邊看先生寫字，窗外的梨葉影子落在她臉上，眼睛跟著筆尖走。",
+      "setups": [
+        "s01-t16",
+        "m07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她認得了第一個字：姜",
+        "小禮主動拉她一起坐到書桌前"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "meng-xiansheng",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府書房",
+        "陸府門口"
+      ],
+      "state": {
+        "time": "成親後一個月又兩日",
+        "knowledge": "她想學字；門口有人留下一個包袱。",
+        "carry_forward": "包袱；她能不能學"
+      }
+    },
+    {
+      "number": 53,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "也教她",
+      "youtube_title": "通判對塾師說：也教她。傻夫人要學的第一個字，是她自己的名字",
+      "duration_s": 120,
+      "logline": "陸清和請孟先生也教她；她自己點頭說要學，第一個字是她名字裡的「苓」。",
+      "hook": "陸清和站在書房門口：「孟先生，也教她。」頓了頓，蹲下來看她：「如果妳想學的話。」",
+      "hook_type": "line",
+      "mid_hook": "她說：「我要學。」孟先生在紙上寫下一個字：「苓。妳的名字。草字頭，下面是命令的令。」",
+      "extra_hooks": [
+        "她看著那個字：「上面是草。我是草。」孟先生第一次笑出聲。"
+      ],
+      "conflict": "學字對十歲的心智很難，學不會會再被笑；陸清和只問她要不要，不替她答。",
+      "turn": "大家以為她會從簡單的字學起，她偏要學自己的名字；第一遍寫出來，像一株被風吹倒的草。辨謊：春杏說「很像了」時摸耳朵，她說：「不像。再來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她低頭看自己寫歪的第一個「苓」，又抬頭看先生寫的，安靜了很久，問：「要寫幾遍，才會一樣？」",
+        "question": "她寫得出自己的名字嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "chengzhang",
+        "zhiyu"
+      ],
+      "spectacle": "宣紙上兩個「苓」並排：一個端正如印，一個歪斜如草，窗外的光把兩個字的墨跡照得發亮。",
+      "glamour_shot": "陸清和在書房門口蹲下問她「如果妳想學的話」，午後的光從他背後照進來，他的眼神很耐心。",
+      "setups": [
+        "s01-t15"
+      ],
+      "payoffs": [
+        "s01-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她自己決定學字",
+        "她寫下第一個「苓」"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "meng-xiansheng",
+        "chun-xing",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府書房"
+      ],
+      "state": {
+        "time": "成親後一個月又三日",
+        "knowledge": "她在學寫「苓」，寫了第一遍。",
+        "carry_forward": "還要幾遍；包袱還沒打開"
+      }
+    },
+    {
+      "number": 54,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "第十遍",
+      "youtube_title": "傻夫人學寫自己的名字，一遍歪、十遍歪，塾師說：今天就到這裡吧",
+      "duration_s": 110,
+      "logline": "她一遍一遍寫「苓」，寫到第十遍還是歪的；孟先生要收課，她不肯停。",
+      "hook": "紙上一排歪歪的「苓」，她數著：「七、八、九——」筆一頓，第十個的「令」字寫斷了。",
+      "hook_type": "image",
+      "mid_hook": "孟先生收起摺扇：「今天就到這裡吧。」她按住紙：「還沒一樣。」",
+      "conflict": "寫不出來的挫折第一次落在她身上；她不會說累，只會一直寫。",
+      "turn": "孟先生以為她會哭著放棄，她把十張紙排成一列，指著說：「第三個的草頭最好，第七個的令最好。」先生愣住了——她在自己找對的筆畫。辨謊：小禮比手勢說「不累」，卻揉了眼睛；她說：「你累了。你去睡，我自己寫。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "天黑了，她還坐在書房裡，硯台的墨乾了，她用水化開繼續寫；手指凍得發紅，筆掉在地上。",
+        "question": "她的手還撐得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "zhiyu"
+      ],
+      "spectacle": "書桌上十張宣紙排成一列，每張一個歪斜的「苓」，從第一張到第十張，草頭一點一點立起來。",
+      "glamour_shot": "燈下她低頭寫字，歪紮的頭髮垂下一縷沾了墨，她用手背一抹，臉上多了一道黑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她學會自己找寫得對的筆畫",
+        "第十遍：草字頭寫正了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "meng-xiansheng",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府書房"
+      ],
+      "state": {
+        "time": "成親後一個月又三日夜",
+        "knowledge": "寫了十遍，草頭對了，令還歪。",
+        "carry_forward": "她凍紅的手；還差幾遍"
+      }
+    },
+    {
+      "number": 55,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "第二十遍",
+      "youtube_title": "傻夫人寫到手凍紅還不肯停，不說話的小少爺搬了凳子坐到她旁邊陪寫",
+      "duration_s": 115,
+      "logline": "她寫到手凍紅，陸清和端來炭盆；小禮也搬了小凳子坐到她旁邊，拿筆跟著寫。",
+      "hook": "一雙手撿起地上的筆，放回她手裡；陸清和把一個炭盆放在桌邊：「先烤手。」",
+      "hook_type": "image",
+      "mid_hook": "小禮抱著布老虎搬了小凳子過來，自己拿起一支筆，在她的紙旁邊也畫了一個歪歪的「苓」。",
+      "extra_hooks": [
+        "她看著小禮的字笑出聲：「你的比我還歪。」小禮皺眉，又寫了一個。"
+      ],
+      "conflict": "她寫累了、手也凍了，第一次露出想哭的樣子；陸清和想幫她，又不能替她寫。",
+      "turn": "大家以為陸清和會握著她的手教，他只在旁邊另鋪一張紙，自己慢慢寫一個給她看，一筆停一下。辨謊：她說「我不冷」時把手縮進袖子，他說：「妳也會說謊了。」她把手伸出來：「冷。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "春杏抱著那個藍布包袱衝進書房：「二小姐！包袱上的針腳，是夫人——是姜夫人的！」",
+        "question": "姜母送來的包袱裡裝了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "jiating",
+        "zhiyu"
+      ],
+      "spectacle": "書房燈下三張紙並排：一個大人寫的端正的苓、一個姑娘寫的歪苓、一個孩子寫的更歪的苓，炭盆的火光映在三張紙上。",
+      "glamour_shot": "燭下他教她寫字的側臉：他一筆一停地寫，她湊過來看，兩人中間隔著一張紙的距離，燭火輕輕晃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮第一次自己拿筆寫字",
+        "第二十遍：令字的一撇寫對了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "lu-xiaoli",
+        "chun-xing"
+      ],
+      "locations": [
+        "陸府書房"
+      ],
+      "state": {
+        "time": "成親後一個月又四日夜",
+        "knowledge": "寫了二十遍；包袱是姜母送的。",
+        "carry_forward": "包袱裡的東西；還差十遍"
+      }
+    },
+    {
+      "number": 56,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "藍布包袱",
+      "youtube_title": "親娘深夜在門口留下一個包袱沒進門，傻女兒打開，裡面是她十歲前的東西",
+      "duration_s": 120,
+      "logline": "包袱是姜母留的，裡面是她十歲前的衣裳、奶奶的藥簍繩、一罐她小時候收的黑扣子。",
+      "hook": "包袱一層一層打開，最上面是一件小小的淺綠襖子：她十歲時穿的。",
+      "hook_type": "image",
+      "mid_hook": "她從包袱底拿出一個陶罐，搖了搖，嘩啦響：一罐黑扣子。她說：「這是我的。我小時候撿的。」",
+      "conflict": "姜母不敢進門，只敢把女兒的舊東西送來；她記得十歲前的一切，卻不懂娘為什麼不進來。",
+      "turn": "大家以為包袱是姜家要她回去的信物，裡面卻沒有一個字，只有她的舊東西和一條磨舊的藥簍繩。辨謊：春杏說「夫人一定是路過」時摸耳朵，她說：「娘不是路過。娘在巷口站了很久。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把十歲的小襖子抱在懷裡，看著窗外的巷口：「娘為什麼不進來？」陸清和沒有答，只說：「下次她來，妳要開門嗎？」",
+        "question": "下次姜母來，她會開門嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "燈下攤開的藍布包袱裡，一件小小的淺綠襖子、一條磨白的藥簍繩、一罐黑扣子，陶罐傾倒，扣子滾了一桌。",
+      "glamour_shot": "她把小襖子貼在臉上，燈光照著她垂下的睫毛；陸清和在桌邊看著，沒有出聲。",
+      "setups": [
+        "m07"
+      ],
+      "payoffs": [
+        "s01-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿回十歲前的東西，認出是娘送的",
+        "那罐黑扣子回到她手上"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-qinghe",
+        "chun-xing",
+        "jiang-mu"
+      ],
+      "locations": [
+        "陸府書房",
+        "陸府外巷口（閃回）"
+      ],
+      "state": {
+        "time": "成親後一個月又五日",
+        "knowledge": "姜母夜裡來過門口沒進；她有了一罐黑扣子。",
+        "carry_forward": "苓字還差幾遍；黑扣子"
+      }
+    },
+    {
+      "number": 57,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "第三十遍",
+      "youtube_title": "傻夫人寫了整整三十遍自己的名字，第三十遍，塾師的扇子停了",
+      "duration_s": 125,
+      "logline": "她寫到第二十九遍還差一點；第三十遍落筆，孟先生的扇子停在半空。",
+      "hook": "孟先生搖著扇子數：「二十八、二十九——」她蘸墨，深吸一口氣，落下第三十筆。",
+      "hook_type": "image",
+      "mid_hook": "孟先生把她的第三十個「苓」和自己寫的並排放，扇子停了：「……一樣了。」",
+      "extra_hooks": [
+        "她看著兩個一樣的字，沒笑，只是很慢地說：「我會寫我了。」"
+      ],
+      "conflict": "她給自己定了「一樣」的標準，二十九遍都差一點；第三十遍能不能寫對。",
+      "turn": "大家以為她會跳起來，她只是把那張紙小心折好，第一個念頭不是給陸清和看，是給小禮。辨謊：孟先生說「也不算太好」時扇子搖得很快，她說：「你覺得很好。」先生大笑：「很好！」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她捧著那張紙跑過迴廊，在小禮房門口停住：房裡傳來杜嬤嬤的驚叫——「少爺！別把它拆了！」",
+        "question": "小禮在拆什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "tianchong",
+        "zhiyu"
+      ],
+      "spectacle": "書桌上三十張宣紙鋪滿地面，從歪斜到端正排成一條小路，最後一張的「苓」和先生的範字並排，一模一樣。",
+      "glamour_shot": "她雙手捧著那張紙站在書房門口，陽光從她身後照過來，頭髮依然有點歪，臉上那道墨痕還在，笑容很靜。",
+      "setups": [],
+      "payoffs": [
+        "s01-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第三十遍，她寫對了自己的名字「苓」",
+        "孟先生親口說「很好」"
+      ],
+      "characters": [
+        "jiang-ling",
+        "meng-xiansheng",
+        "du-mama",
+        "lu-xiaoli"
+      ],
+      "locations": [
+        "陸府書房",
+        "陸府迴廊"
+      ],
+      "state": {
+        "time": "成親後一個月又六日",
+        "knowledge": "她會寫「苓」了；小禮房裡出事。",
+        "carry_forward": "小禮在拆什麼"
+      }
+    },
+    {
+      "number": 58,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "布老虎",
+      "youtube_title": "傻後娘把寫對的名字拿給小少爺看，三年沒離手的布老虎被塞進她手裡",
+      "duration_s": 125,
+      "logline": "小禮在拆枕頭找東西；她把寫對的「苓」給他看，他從枕頭底下拿出布老虎，塞進她手裡。",
+      "hook": "她推開門：小禮把枕頭翻了過來，正在撕枕頭的縫線，杜嬤嬤攔也攔不住。",
+      "hook_type": "danger",
+      "mid_hook": "她把紙攤開：「你看，我會寫我了。」小禮停下手，看著那個字，很久。",
+      "conflict": "小禮慌著在找什麼，杜嬤嬤以為他鬧脾氣；她不知道他要做什麼。",
+      "turn": "大家以為小禮在撕東西，他是在找縫在枕頭裡的另一顆黑扣子——布老虎的眼睛；沒找到，他把三年沒離手的布老虎整個塞進她手裡。辨謊：杜嬤嬤說「少爺從來不讓人碰老虎」時聲音發抖，她說：「嬤嬤，他讓我碰了。妳別哭。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她捧著缺了一隻眼睛的布老虎，看著小禮：「這是你娘做的。我不能拿。」小禮搖頭，把她的手合起來，按住。",
+        "question": "小禮為什麼把布老虎給她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "小床上一個舊枕頭被拆開一角，蕎麥殼灑了一床，一隻瘦小的手把一隻褪色的布老虎放進她攤開的掌心。",
+      "glamour_shot": "她低頭看著手裡的布老虎，睫毛垂下，燈光把她的側臉照得很柔；小禮抬頭看她，眼睛很大很亮。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮把母親做的布老虎交到她手上",
+        "她把寫對的名字給小禮看"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "du-mama",
+        "lu-qi"
+      ],
+      "locations": [
+        "小禮的房"
+      ],
+      "state": {
+        "time": "成親後一個月又六日黃昏",
+        "knowledge": "小禮把布老虎給她；老虎還缺一隻眼睛。",
+        "carry_forward": "布老虎的眼睛；她能不能收"
+      }
+    },
+    {
+      "number": 59,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "老虎的眼睛",
+      "youtube_title": "布老虎缺了三年的一隻眼睛，傻後娘從親娘送來的扣子罐裡找到了一模一樣的",
+      "duration_s": 120,
+      "logline": "她從姜母送來的那罐黑扣子裡，找到一顆和布老虎眼睛一模一樣的，一針一針替它縫上。",
+      "hook": "她把布老虎舉到燈下，那隻空洞的眼窩對著她；她說：「我知道你的眼睛在哪。」",
+      "hook_type": "line",
+      "mid_hook": "陶罐倒在桌上，扣子嘩啦滾開，她一顆一顆比，捏起一顆：「這顆。一樣大。」",
+      "extra_hooks": [
+        "杜嬤嬤拿來針線，手抖得穿不過針，她接過來，一次就穿過了。"
+      ],
+      "conflict": "布老虎是亡妻做的，誰都不敢動；她要替小禮補回來，又怕補得不一樣。",
+      "turn": "大家以為那顆眼睛三年前就找不回來了，她從自己十歲的扣子罐裡找到一顆一樣的；縫好了，她把老虎還給小禮。辨謊：杜嬤嬤說「補不補都一樣」時針扎到自己的手，她說：「不一樣。妳想它好。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她把縫好的布老虎遞回去，小禮卻不接，往後退了一步，嘴唇抖著，眼睛紅了；杜嬤嬤慌了：「少爺？少爺怎麼了？」",
+        "question": "小禮為什麼不收回布老虎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "tianchong"
+      ],
+      "spectacle": "燈下一根針穿過布老虎的眼窩，一顆圓黑扣子被一針一針縫上，老虎的兩隻眼睛第一次一起映出燈光。",
+      "glamour_shot": "她低頭縫扣子，燈火在她專注的眼睛裡跳動；廊下的陸清和透過窗看著，手指輕輕碰了碰腰間的木牌。",
+      "setups": [],
+      "payoffs": [
+        "s01-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "布老虎缺了三年的眼睛補上了",
+        "杜嬤嬤看著她縫，哭著笑了"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "du-mama",
+        "lu-qinghe"
+      ],
+      "locations": [
+        "小禮的房"
+      ],
+      "state": {
+        "time": "成親後一個月又六日夜",
+        "knowledge": "布老虎補好了；小禮不肯收回。",
+        "carry_forward": "小禮的反應；他會怎麼做"
+      }
+    },
+    {
+      "number": 60,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "不急，我也慢",
+      "youtube_title": "三年不說話的小少爺拉住傻後娘的袖子，第一次張開了嘴",
+      "duration_s": 160,
+      "logline": "小禮第一次主動拉住她的袖子、把布老虎塞回她手裡；她蹲下問他叫什麼，他張了嘴；廊下的陸清和鬆開了亡妻的木牌。",
+      "hook": "小禮退了一步，又上前一步，一把拉住她的袖子，把布老虎重新按進她懷裡——這次不是借，是給。",
+      "hook_type": "image",
+      "mid_hook": "杜嬤嬤捂著嘴退到門邊；陸清和走到廊下，停在窗外，沒有進門，手握住了腰間亡妻刻的木牌。",
+      "extra_hooks": [
+        "小禮的手指在她的袖子上慢慢畫了一筆，又一筆——是「苓」的草字頭。她低頭看，屏住了氣。"
+      ],
+      "conflict": "小禮想說什麼，三年的沉默壓著他；她想聽，可她不催。",
+      "turn": "大家以為小禮會哭，他卻主動拉了她，用布老虎說了他說不出口的話；陸清和翻過木牌，背面是亡妻刻的一個「禮」字——他守了三年的，一直是兒子。辨謊：小禮搖頭說「沒事」，卻把她的袖子攥得發白；她說：「有事。你想說。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她蹲下來，跟小禮一樣高：「你叫什麼？」小禮看著她，張開了嘴——三年來第一次——沒有聲音。她等了很久，笑了：「不急，我也慢。」廊下的陸清和，握著木牌的手，慢慢鬆開了。",
+        "question": "小禮第一個字，會叫誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "zhiyu",
+        "jiating"
+      ],
+      "spectacle": "小禮的房裡一盞燈，她蹲著與孩子平視，孩子張開的嘴在燈下像一句沒說出的話；窗外廊下，一隻手從木牌上慢慢鬆開。",
+      "glamour_shot": "三個人的構圖：她蹲在燈下仰著圓臉等，小禮抱著她的袖子張嘴，窗外廊下陸清和半邊臉在燈裡，眼裡第一次有了鬆動。",
+      "setups": [
+        "m03",
+        "m05",
+        "m04"
+      ],
+      "payoffs": [
+        "s01-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禮主動拉她袖子、把布老虎給了她",
+        "小禮三年來第一次張嘴",
+        "木牌的謎收了：背面是亡妻刻的「禮」字，陸清和鬆開了它"
+      ],
+      "characters": [
+        "jiang-ling",
+        "lu-xiaoli",
+        "lu-qinghe",
+        "du-mama",
+        "lu-qi"
+      ],
+      "locations": [
+        "小禮的房",
+        "陸府迴廊"
+      ],
+      "state": {
+        "time": "成親後一個月又七日夜",
+        "knowledge": "小禮張了嘴還沒出聲；她會寫一個字「苓」；河州叫她陸夫人；陸清和鬆開了木牌。",
+        "carry_forward": "小禮的第一個字；姜母還會再來；賀大夫說的寒毒"
+      }
+    }
+  ]
+}

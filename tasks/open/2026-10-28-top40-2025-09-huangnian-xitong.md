@@ -1,11 +1,11 @@
 ---
 id: 2026-10-28-top40-2025-09-huangnian-xitong
 title: Top40 drama plan 2025-09: adapt the pattern of 荒年全村啃樹皮，我有系統滿倉肉 into a 300-episode original
-status: open
+status: in-progress
 priority: P3
 area: docs
-owner:
-claimed_at:
+owner: claude
+claimed_at: 2026-10-29T00:34:05Z
 created_at: 2026-10-28T14:03:04Z
 completed_at:
 branch:
@@ -55,4 +55,4 @@ npm run check:tasks
 ## Notes
 
 - 規則說明在 `docs/videos/series-plans/zhong-tian-qu-qi/authoring.md`（欄位）與 `README.md`（讓人停不下來的規則）；這套票唯二的差異是秒數 90–180 與可選的 `extra_hooks`。
-- 進度（每個 session 更新）：reference 階段。
+- 進度（每個 session 更新）：plan、setting 已寫；outline/README 進行中。

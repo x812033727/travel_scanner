@@ -1,0 +1,4313 @@
+{
+  "number": 4,
+  "title": "草稿",
+  "theme": "兩百一十三則沒發的訊息，她一則一則看完。",
+  "start_state": "舊泳池有三個股東、一個學員、一個敵人（趙總）。她白天國家隊、傍晚泳池、晚上回家。箱子裡那張紙讓她知道：三十四歲的她想回二十六歲——跟她醒來那夜想的一樣。膝蓋越來越痛，阿澄說要決定開不開刀。草稿還有一百九十三則沒看。",
+  "end_state": "手機草稿寫給誰揭開（全部寫給顧亦，最後一則是辭職那天『我把我們的錢拿去買泳池了。我不敢跟你說。』）；木工坊的箱子裝什麼揭開（她二十六歲的泳帽、八年的剪報、每一張她賣的房子的廣告）。她看完全部草稿，第一次替三十四歲的自己哭；她決定開刀；趙總在拆遷聽證會上被她用他教的話術擋掉；邱教練想接手泳池被老康趕走；母親在醫院走廊握住她的手；顧亦在手術室外第一次說『我愛妳』——對著門說的，她在裡面沒聽見，朵朵聽見了。最後一集，她術後醒來，朵朵在床邊說：『顧亦說了一句話，妳沒聽見。』她問什麼，朵朵說：『我不說，妳自己問。』她看著門口的顧亦，說：『你說了什麼？』他說：『妳問她。』她說：『我問你。』",
+  "guest_cast": [
+    {
+      "id": "s04-chair",
+      "name": "海寧區聽證會主席 方主委",
+      "role": "舊泳池拆遷聽證會的主席，只看證據不看人",
+      "appearance": "東亞女性，五十五歲，銀灰短髮、細框眼鏡、深灰套裝，手邊一支木槌；表情平、眼神銳利"
+    },
+    {
+      "id": "s04-lawyer",
+      "name": "趙總的律師 蕭律師",
+      "role": "宏達房仲的委任律師，負責評估報告與簽名鑑定",
+      "appearance": "東亞男性，四十歲，油頭、合身深藍西裝、金屬框眼鏡，公事包永遠拿在左手；說話有禮、笑不到眼睛"
+    },
+    {
+      "id": "s04-anesthetist",
+      "name": "麻醉師 杜醫師",
+      "role": "游夏膝蓋手術的麻醉師，術前問她今年幾歲",
+      "appearance": "東亞男性，四十五歲，綠色刷手服、手術帽、口罩拉到下巴，手拿板夾；溫和、說話慢"
+    },
+    {
+      "id": "s04-nurse",
+      "name": "護理師 小葉",
+      "role": "手術樓的護理師，推床、送同意書、宣布手術順利",
+      "appearance": "東亞女性，二十八歲，淺藍護理服、馬尾塞進手術帽、識別證夾在胸前；動作俐落、笑起來有酒窩"
+    },
+    {
+      "id": "s04-parent",
+      "name": "小學員家長代表 林爸爸",
+      "role": "舊泳池小學員的家長代表，從擔心安全到帶六個孩子報名",
+      "appearance": "東亞男性，三十八歲，上班族襯衫袖子捲起、背著女兒的卡通泳具包，戴黑框眼鏡；認真、容易感動"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "兩百多則草稿，三十四歲的她為什麼一則都沒發？",
+      "setup_episode": 181,
+      "payoff_episode": 190
+    },
+    {
+      "id": "s04-t02",
+      "question": "第一百則為什麼是空的，只有一個日期？",
+      "setup_episode": 183,
+      "payoff_episode": 187
+    },
+    {
+      "id": "s04-t03",
+      "question": "那十一個代簽的名字會不會反過來害她？",
+      "setup_episode": 192,
+      "payoff_episode": 223
+    },
+    {
+      "id": "s04-t04",
+      "question": "聽證會上趙總會怎麼反擊？",
+      "setup_episode": 196,
+      "payoff_episode": 198
+    },
+    {
+      "id": "s04-t05",
+      "question": "朵朵為什麼一直問開刀會不會變回三十四歲？",
+      "setup_episode": 201,
+      "payoff_episode": 209
+    },
+    {
+      "id": "s04-t06",
+      "question": "二十七歲那根手杖在哪？",
+      "setup_episode": 210,
+      "payoff_episode": 211
+    },
+    {
+      "id": "s04-t07",
+      "question": "邱教練為什麼回來要接手泳池？",
+      "setup_episode": 214,
+      "payoff_episode": 222
+    },
+    {
+      "id": "s04-t08",
+      "question": "三十四歲的她『當年沒說完的』是什麼？",
+      "setup_episode": 220,
+      "payoff_episode": 222
+    },
+    {
+      "id": "s04-t09",
+      "question": "小賀被趙總逼著補簽，他會怎麼選？",
+      "setup_episode": 216,
+      "payoff_episode": 221
+    },
+    {
+      "id": "s04-t10",
+      "question": "手術那天母親會不會來？",
+      "setup_episode": 225,
+      "payoff_episode": 231
+    },
+    {
+      "id": "s04-t11",
+      "question": "她術後醒來，會是哪一個游夏？",
+      "setup_episode": 229,
+      "payoff_episode": 240
+    },
+    {
+      "id": "s04-t12",
+      "question": "朵朵會不會把那三個字說出來？",
+      "setup_episode": 234,
+      "payoff_episode": 240
+    },
+    {
+      "id": "s04-t13",
+      "question": "開刀之後，國家隊的位置還在嗎？",
+      "setup_episode": 203,
+      "payoff_episode": 218
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "她也想回去",
+      "youtube_title": "她在舊泳池找到三十四歲的自己留的紙條，才發現那個把家搞砸的女人，也想逃回二十六歲",
+      "duration_s": 110,
+      "logline": "游夏知道三十四歲的自己也想回二十六歲，決定從一百九十三則沒看的草稿裡找她為什麼想走，卻連一則都不敢點開。",
+      "hook": "更衣室的日光燈閃了一下，她捏著那張紙回頭：「她想回去。」",
+      "hook_type": "line",
+      "mid_hook": "朵朵把手機推到她面前，螢幕右上角一行小字：草稿 20／213。「一天十則，看完要睡覺。」",
+      "conflict": "三十四歲的她留下一百九十三則沒看的草稿，二十六歲的她怕看完就會懂自己為什麼想逃。",
+      "turn": "她以為朵朵會攔她，朵朵卻替她定了規矩：一天十則，誰都不准偷看後面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她點開第二十一則，時間戳寫著凌晨三點十二分；往上一滑，每一則都在兩點到四點。她抬頭，顧亦站在房門口：「三點了。」",
+        "question": "他知道她半夜在寫嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "舊泳池更衣室裡一排生鏽鐵櫃，唯一開著的那格透出日光燈，父親的哨子在紙上壓出一道影子。",
+      "glamour_shot": "游夏蹲在更衣室門口，二十六歲的眼神在三十四歲的短髮臉上發亮，燈管閃一下照亮她的側臉。",
+      "setups": [
+        "s04-t01",
+        "m01",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她跟朵朵定下一天十則的看草稿規矩",
+        "她把父親的哨子掛回脖子上"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo",
+        "lao-kang"
+      ],
+      "locations": [
+        "舊泳池更衣室",
+        "顧家主臥"
+      ],
+      "state": {
+        "time": "箱子打開的當晚到凌晨三點",
+        "knowledge": "三十四歲的她也想回二十六歲；草稿 20／213，全寫在凌晨",
+        "carry_forward": "門口的顧亦與凌晨的時間戳"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "不准發",
+      "youtube_title": "她差點替三十四歲的自己按下送出，七歲女兒衝過來搶手機：那不是妳的！",
+      "duration_s": 100,
+      "logline": "游夏想替三十四歲的自己把草稿發給顧亦，卻被朵朵和一個『她到底想不想被看見』的問題擋住。",
+      "hook": "她問門口的人：「你知道她半夜寫？」顧亦只答一句：「我睡得淺。」",
+      "hook_type": "question",
+      "mid_hook": "第二十四則：「朵朵在肚子裡踢我。你在睡。」她的拇指停在藍色的送出鍵上。",
+      "extra_hooks": [
+        "國家隊晨練，她把手機塞進泳帽裡帶下水，林一一一句「手機會壞」把她嚇得衝上岸。"
+      ],
+      "conflict": "她看一則就想替三十四歲的自己說出口，可那些話不是她寫的。",
+      "turn": "她以為發出去是在幫忙，朵朵卻搶走手機：「她沒發，就是還不要。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第三十則：「你會不會覺得我變了。」她的拇指懸在送出鍵上，顧亦的腳步聲從走廊過來。",
+        "question": "她要替她發出去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "國家隊泳池的水面下，一頂泳帽裡透出手機螢幕的藍光，她倒退著游回池邊。",
+      "glamour_shot": "她出水甩頭、短髮的水珠在晨光裡散開，手忙腳亂地把手機從泳帽裡掏出來。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 30／213：第一年的十則看完",
+        "朵朵成了草稿的看守人"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo",
+        "lin-yiyi"
+      ],
+      "locations": [
+        "顧家主臥",
+        "國家隊訓練池",
+        "顧家廚房"
+      ],
+      "state": {
+        "time": "隔天晚上",
+        "knowledge": "第一年的草稿：第一間房子、懷著朵朵；她開始懂三十四歲的她怕他覺得她變了",
+        "carry_forward": "懸在送出鍵上的拇指"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "妳問哪一個",
+      "youtube_title": "她問老公：你覺得我變了嗎？他只回一句，她整晚睡不著",
+      "duration_s": 105,
+      "logline": "游夏不發草稿，改成自己問顧亦，卻被他一句『妳問哪一個妳』問倒。",
+      "hook": "她把手機扣到桌上，轉身問走進來的顧亦：「你覺得我變了嗎？」",
+      "hook_type": "question",
+      "mid_hook": "第二年的草稿只有十二則，第三年一口氣六十則；她數到一半手停了：那一年發生了什麼？",
+      "conflict": "她想知道三十四歲的她在他眼裡是什麼樣子，他卻不替任何一個游夏回答。",
+      "turn": "她以為他會說沒變或變了，他反問：「妳問哪一個妳。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她破了規矩往下一滑：第一百則是空白的，只有一行日期。朵朵在門口：「妳偷看！」",
+        "question": "第一百則為什麼是空的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "木工坊的牆上釘滿朵朵從一歲到七歲的照片，每一張抱著朵朵的都是他。",
+      "glamour_shot": "顧亦在木工坊刨木的側臉，袖子捲到手肘，抬頭看她的那一秒停住刨刀。",
+      "setups": [
+        "s04-t02"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 40／213：第二年的『朵朵會走了，你抱她的時候我在簽約』",
+        "她在木工坊找到朵朵學走路那天的照片"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "顧家廚房",
+        "顧亦的木工坊"
+      ],
+      "state": {
+        "time": "第三天",
+        "knowledge": "第二年她在簽約、他在抱朵朵；第三年的草稿暴增",
+        "carry_forward": "第一百則的空白日期"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "我媽在門口等",
+      "youtube_title": "三十四歲的她每天開車經過媽媽的早餐店都沒停，二十六歲的她這次踩了煞車",
+      "duration_s": 110,
+      "logline": "游夏守住規矩照順序看，第三年的草稿全是母親，她想去早餐店，卻被三年的沉默擋在門外。",
+      "hook": "她把手機還給朵朵：「我不偷看。照順序。」朵朵把空白那則用貼紙蓋住。",
+      "hook_type": "image",
+      "mid_hook": "第四十五則：「我媽的鐵板我找人修好了，她不知道是我。」她抬頭，鐵板就在店門口冒煙。",
+      "conflict": "母親賣房子的事她已經知道，可她不知道三十四歲的自己三年來怎麼繞過這間店。",
+      "turn": "她以為三十四歲的她不在乎，草稿裡卻寫著她每天繞路兩次只為了看一眼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "第五十則：「今天經過早餐店。我媽在門口等誰。我沒停。」她抬頭——母親就站在店門口，看著她的車。",
+        "question": "母親在等的是她嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "shenghuo"
+      ],
+      "spectacle": "清晨早餐店的鐵板蒸氣升起，車窗上起霧，霧後是母親圍裙的身影。",
+      "glamour_shot": "她在車裡摘下墨鏡，二十六歲的倔強與三十四歲的眼角細紋在晨光裡同框。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 50／213：第三年『我媽賣了房子。我不敢回去。』",
+        "她知道修鐵板的人是三十四歲的自己"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-duoduo",
+        "you-mu"
+      ],
+      "locations": [
+        "顧家廚房",
+        "游母的早餐店門口"
+      ],
+      "state": {
+        "time": "第四天清晨",
+        "knowledge": "三十四歲的她偷偷修過母親的鐵板，每天繞路看母親",
+        "carry_forward": "門口的母親"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "電話是趙總",
+      "youtube_title": "她在媽媽的早餐店吃第一口蛋餅，前老闆的電話就打來：聽證會，妳來不來？",
+      "duration_s": 100,
+      "logline": "游夏終於坐進早餐店，草稿卻把她拉回三十四歲替趙總收地的那一年。",
+      "hook": "母親轉身進店，卻沒拉下鐵捲門，留了半人高的縫。",
+      "hook_type": "image",
+      "mid_hook": "第五十八則：「我今天幫趙總收了泳池旁邊的地。我沒告訴你。」她手上的蛋餅掉回盤子。",
+      "extra_hooks": [
+        "她拿三十四歲的手機付錢，掃了三次才發現打開的是房仲的看屋App，母親哼了一聲：「妳又怎麼了。」"
+      ],
+      "conflict": "她想跟母親待一頓飯的時間，三十四歲的過去卻一直插進來。",
+      "turn": "她以為母親在趕她走，母親卻默默在她盤子裡多放了一顆蛋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "手機震動，來電顯示「趙總」：「游夏，泳池的拆遷聽證會，下個月三號。」",
+        "question": "她要一個人去面對趙總嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "鐵捲門半開的早餐店裡，一張小桌、一盤蛋餅、兩顆蛋，蒸氣隔開母女。",
+      "glamour_shot": "母親背對她翻蛋，游夏低頭吃第一口時嘴角藏不住的笑。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她三年來第一次坐進早餐店",
+        "草稿 60／213：她知道三十四歲的她親手幫趙總收過泳池周邊的地"
+      ],
+      "characters": [
+        "you-xia",
+        "you-mu",
+        "zhao-zong"
+      ],
+      "locations": [
+        "游母的早餐店"
+      ],
+      "state": {
+        "time": "第五天早上",
+        "knowledge": "聽證會訂在下個月三號；她曾是趙總收地的那隻手",
+        "carry_forward": "趙總的邀戰"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "她後悔了",
+      "youtube_title": "女兒從不叫她媽，她在草稿裡找到原因，三十四歲的她早就後悔了",
+      "duration_s": 115,
+      "logline": "游夏答應出席聽證會，同一晚卻在草稿裡讀到三十四歲的她最後悔的一句話，而那句話寫的是朵朵。",
+      "hook": "她對著電話說：「我去。站你對面。」趙總笑出聲，掛了。",
+      "hook_type": "line",
+      "mid_hook": "第六十六則：「朵朵叫我夏夏了。是我叫的。我後悔了。」朵朵正趴在旁邊看。",
+      "conflict": "她答應過朵朵不偷看，可這一則寫的就是朵朵，她不知道該不該唸給她聽。",
+      "turn": "她以為朵朵會難過，朵朵卻說：「我知道她後悔。她都偷偷叫我寶貝。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "朵朵抱著蠟筆盒抬頭：「她後悔，那她為什麼不跟我說？」",
+        "question": "為什麼她什麼都不說？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "陽台的畫牆前，手機螢幕的光照在朵朵畫的一排『夏夏』上。",
+      "glamour_shot": "游夏盤腿坐在陽台地上唸草稿，夜風吹亂短髮，聲音慢下來的那一秒。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 70／213",
+        "朵朵第一次說出三十四歲的她偷偷叫她寶貝"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-duoduo",
+        "zhao-zong"
+      ],
+      "locations": [
+        "顧家陽台畫牆"
+      ],
+      "state": {
+        "time": "第六天晚上",
+        "knowledge": "三十四歲的她後悔讓朵朵改口，卻從沒說",
+        "carry_forward": "朵朵的問題"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "第一百則",
+      "youtube_title": "兩百則草稿中間有一則是空的，只有一個日期，老公一句話她才知道那天自己缺席了",
+      "duration_s": 125,
+      "logline": "游夏照順序看到第一百則，那則空白的日期是父親的忌日，她要問出那天三十四歲的自己在哪。",
+      "hook": "門口的顧亦替朵朵答了一句：「她怕說了就是真的。」然後轉身去洗碗。",
+      "hook_type": "line",
+      "mid_hook": "三天的十則一路滑到第九十九則：「明天。我不去。我有一個簽約。」下一則，是那個日期。",
+      "extra_hooks": [
+        "她在房仲App裡找不到草稿資料夾，小賀遠端教她，她才知道三十四歲的手機有三個桌面。"
+      ],
+      "conflict": "第一百則什麼都沒寫，她只認得那個日期：父親的忌日。",
+      "turn": "她以為三十四歲的她那天在開會、完全沒去，顧亦卻說的不只這樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "顧亦說：「妳在開會。我帶朵朵去池邊放了一朵花。」他頓了一下：「那天半夜，妳也去了。」",
+        "question": "她半夜一個人去做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "三天的蒙太奇：國家隊、泳池、廚房，每晚十則，草稿數字從 71 跳到 100。",
+      "glamour_shot": "顧亦擦乾手站在廚房燈下，答完那一句後側臉轉開、眼睛裡有東西。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 100／213",
+        "她知道父親忌日那天顧亦帶朵朵去泳池放花"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo",
+        "xiao-he"
+      ],
+      "locations": [
+        "顧家廚房",
+        "國家隊訓練池",
+        "舊泳池"
+      ],
+      "state": {
+        "time": "第九天晚上",
+        "knowledge": "第一百則空白是父親的忌日；三十四歲的她半夜去過泳池",
+        "carry_forward": "半夜的泳池"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "她跟爸說話",
+      "youtube_title": "管理員說三十四歲的她在泳池邊坐到天亮，跟過世的爸爸說了一句話",
+      "duration_s": 105,
+      "logline": "游夏去舊泳池問老康那一夜的事，自己的膝蓋卻先在池邊替三十四歲的她付了代價。",
+      "hook": "深夜的舊泳池，她敲管理室的窗：「老康，那年忌日，我來過？」",
+      "hook_type": "question",
+      "mid_hook": "老康點菸又熄掉：「妳坐到天亮，跟妳爸說話。妳說，想回去。」",
+      "conflict": "她要知道三十四歲的她那一夜說了什麼，但老康記得的不多，她又站太久了。",
+      "turn": "她以為只是一句氣話，第一百零七則卻寫著：「膝蓋又痛了。不敢說，你會叫我休息。」——那一夜她是痛著坐到天亮的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她右膝一軟跪在濕磁磚上，手機滑出口袋，一路往池邊溜。",
+        "question": "手機會掉進水裡嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "chengzhang"
+      ],
+      "spectacle": "夜裡舊泳池只開一盞燈，褪色的藍水面倒映她跟老康的影子，池邊一圈乾掉的花。",
+      "glamour_shot": "她坐在泳池邊，雙腳泡水，燈光從水面反射到她臉上，二十六歲的倔強跟疼痛同時在眼裡。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 110／213",
+        "老康說出她那一夜說了『想回去』"
+      ],
+      "characters": [
+        "you-xia",
+        "lao-kang",
+        "you-fu"
+      ],
+      "locations": [
+        "舊泳池池邊",
+        "舊泳池管理室"
+      ],
+      "state": {
+        "time": "第十天深夜",
+        "knowledge": "三十四歲的她在忌日夜裡說想回去，膝蓋一直痛著不說",
+        "carry_forward": "滑向水面的手機"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "木屑救手機",
+      "youtube_title": "裝著兩百則祕密的手機掉進泳池，老公把它埋進一箱木屑，隔天她終於讀懂他們卡在哪",
+      "duration_s": 115,
+      "logline": "手機泡水，草稿可能全沒了；游夏要救回它，也在第一百一十五則讀懂她跟顧亦卡在哪。",
+      "hook": "手機落水的一瞬，一道小小的身影跳進池裡——是小魚，蛙鏡掛在額頭上。",
+      "hook_type": "danger",
+      "mid_hook": "手機在木屑箱裡亮了：草稿 110／213，一則沒少。顧亦拍掉手上的木屑，不說話。",
+      "extra_hooks": [
+        "第一百一十五則：「你今天又不問。你從來不問。我希望你問。」她看向等她問的那個人。"
+      ],
+      "conflict": "手機泡水開不了機，那是三十四歲的她唯一留下的聲音。",
+      "turn": "她以為草稿沒了，顧亦把手機埋進一整箱刨下來的木屑吸了一夜的水。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "朵朵把手機收走：「十則了。」她伸手：「今天再一則。」螢幕上下一則的編號：120。",
+        "question": "她要破例看第一百二十則嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "xuanyi",
+        "zhiyu"
+      ],
+      "spectacle": "木工坊裡一整箱淡金色的木屑，正中間埋著一支手機，螢幕慢慢亮起來。",
+      "glamour_shot": "顧亦在燈下把手機從木屑裡挖出來，木屑落在他捲起的手臂上，抬頭看她的那一秒。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小魚下水撈回手機",
+        "草稿保住；看到 119／213",
+        "她懂了：三十四歲的她等他問，他等她問"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo",
+        "xueyuan",
+        "lao-kang"
+      ],
+      "locations": [
+        "舊泳池池邊",
+        "顧亦的木工坊",
+        "顧家客廳"
+      ],
+      "state": {
+        "time": "第十一天晚上",
+        "knowledge": "三十四歲的她等他問，他在等她開口；草稿都是寫給他的",
+        "carry_forward": "第一百二十則"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "她覺得她不配",
+      "youtube_title": "她讀到三十四歲的自己寫給老公的那一句「我想離婚」，第一次替未來的自己哭了",
+      "duration_s": 140,
+      "logline": "游夏讀到第一百二十則，終於知道三十四歲的她為什麼一則都沒發，也第一次替她哭。",
+      "hook": "朵朵嘆氣，把手機還她：「只能一則。」她點開。",
+      "hook_type": "image",
+      "mid_hook": "「顧亦，我想離婚。不是不愛你，是我不配。」她把手機扣在桌上，眼淚掉下來——不是生氣，是懂了。",
+      "extra_hooks": [
+        "朵朵抱住她的頭，學大人拍背：「夏夏，她也在這裡哭過。」"
+      ],
+      "conflict": "她怕最後的答案是三十四歲的她不愛他，答案卻比那個更難受。",
+      "turn": "她以為自己會氣三十四歲的她，結果是她第一次跟她站在同一邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧亦進來，她說：「她覺得她不配。」他說：「她說過。我說她配。她不信。」",
+        "question": "這次換她，信不信？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xuanyi"
+      ],
+      "spectacle": "草稿一則一則往上滑的蒙太奇，從 1 到 120，每一則的時間都在凌晨，最後停在一個名字：顧亦。",
+      "glamour_shot": "她扣下手機、眼眶紅的那一秒，桌燈從側面照亮她的臉；門口顧亦停住的身影。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 120／213",
+        "她第一次替三十四歲的自己哭",
+        "她知道草稿沒發的原因：她覺得自己不配"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "顧家廚房"
+      ],
+      "state": {
+        "time": "第十二天深夜",
+        "knowledge": "三十四歲的她想離婚是因為覺得不配，他說過她配",
+        "carry_forward": "她要不要信他"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "那我信",
+      "youtube_title": "她剛說完「那我信」，門鈴一響：前老闆的律師送來泳池拆遷聽證會的通知",
+      "duration_s": 100,
+      "logline": "游夏剛決定信顧亦，趙總的律師就把聽證會通知與一份『公共安全評估』送上門，三天後開會。",
+      "hook": "她擦掉眼淚：「那我信。」顧亦還沒答，門鈴響了。",
+      "hook_type": "line",
+      "mid_hook": "律師翻開居民同意書：四十七個簽名，泳池周邊全部同意拆。老康瞇眼一看：「這一半的人早就搬走了。」",
+      "conflict": "三天後開聽證會，趙總有律師、評估報告、居民同意書，她只有一支三十四歲的手機。",
+      "turn": "她以為自己什麼都沒有，鄭檸一句話點醒她：三十四歲的她做過趙總每一份簡報。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "律師在泳池鐵門貼上封條：「聽證前，禁止使用。」小魚背著泳具站在封條另一邊。",
+        "question": "小魚的課怎麼辦？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "chengzhang"
+      ],
+      "spectacle": "舊泳池鐵門上新貼的白色封條在海風裡啪啪作響，鐵門後是褪色的藍色水面。",
+      "glamour_shot": "鄭檸妝容精緻地踩著高跟鞋走進顧家，把律師的名片彈回桌上的那一秒。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鄭檸以股東身分加入，說出三十四歲的她做過趙總的簡報",
+        "老康認出同意書上一半的人早已搬走"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "zheng-ning",
+        "lao-kang",
+        "xueyuan",
+        "s04-lawyer"
+      ],
+      "locations": [
+        "顧家門口",
+        "舊泳池鐵門"
+      ],
+      "state": {
+        "time": "聽證會前三天",
+        "knowledge": "趙總有評估、同意書與律師；同意書可能有問題",
+        "carry_forward": "被封的泳池與小魚"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "趙總簡報",
+      "youtube_title": "三十四歲的她手機裡藏著前老闆的每一份簡報，第一百三十七則草稿卻寫著一件更可怕的事",
+      "duration_s": 115,
+      "logline": "游夏在三十四歲的手機裡找趙總的簡報當武器，卻挖出她自己當年替趙總做過的事。",
+      "hook": "她把封條外的小魚抱上車：「今天去海邊上課。」小魚：「海裡有鯊魚嗎？」",
+      "hook_type": "image",
+      "mid_hook": "加密相簿裡一個資料夾叫『趙總』，三十二份簡報，每一份封面都署名：游夏。",
+      "extra_hooks": [
+        "她在海邊教小魚換氣，膝蓋泡在冷水裡一陣抽痛，她咬牙沒讓小魚看見。"
+      ],
+      "conflict": "她要在兩天內摸清趙總的每一招，但那些招都是三十四歲的她寫的。",
+      "turn": "她以為找到的是趙總的把柄，第一百三十七則草稿卻是她自己的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第一百三十七則：「今天替趙總簽了十一個名字。居民的。我覺得我髒了。」",
+        "question": "十一個簽名會不會反過來害她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "chengzhang",
+        "zhiyu"
+      ],
+      "spectacle": "黃昏的海邊淺灘，一大一小兩頂泳帽在浪裡起伏，遠處港口的木工坊亮著燈。",
+      "glamour_shot": "她從浪裡站起來、把泳鏡推上額頭，夕陽在她曬黑的肩線後面。",
+      "setups": [
+        "s04-t03"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小魚在海邊上完課，沒斷過一週",
+        "草稿 140／213；她拿到趙總的三十二份簡報"
+      ],
+      "characters": [
+        "you-xia",
+        "xueyuan",
+        "zheng-ning"
+      ],
+      "locations": [
+        "海寧港邊淺灘",
+        "顧家客廳"
+      ],
+      "state": {
+        "time": "聽證會前一天",
+        "knowledge": "居民同意書上有十一個簽名是三十四歲的她代簽的",
+        "carry_forward": "這個祕密要不要說"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "第七頁",
+      "youtube_title": "聽證會上前老闆放出泳池危險的簡報，她舉手了：這份是我做的，第七頁有問題",
+      "duration_s": 110,
+      "logline": "聽證會開始，趙總用一份漂亮的簡報說泳池危險，游夏發現那份簡報的骨架是三十四歲的她寫的。",
+      "hook": "聽證會場的投影一亮：「海寧第一泳池：公共安全評估」，趙總轉頭對她笑。",
+      "hook_type": "image",
+      "mid_hook": "第三頁的轉場、第五頁的數字字型、第七頁的照片角度——她低聲對鄭檸說：「這是我的模板。」",
+      "extra_hooks": [
+        "她像高中上課一樣把手舉得筆直，主席愣了：「這位女士，聽證會不用舉手。」"
+      ],
+      "conflict": "主席只看得懂漂亮的數字，她要在發言時間內讓所有人看見簡報底下的東西。",
+      "turn": "她以為只能跟趙總比誰說得好，卻發現他連順序都照著她當年教他的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "主席敲桌：「反方，三分鐘。」她站起來，手裡是手機，口袋裡是那十一個簽名的祕密。",
+        "question": "她要先說哪一個？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "區公所聽證會場：長桌、名牌、投影幕上泳池的照片被調成灰暗的濾鏡。",
+      "glamour_shot": "她換上三十四歲衣櫃裡唯一一件深藍西裝，配運動鞋站起來，背挺得像站上出發台。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她認出趙總的簡報是她的模板"
+      ],
+      "characters": [
+        "you-xia",
+        "zhao-zong",
+        "zheng-ning",
+        "lao-kang",
+        "s04-chair",
+        "s04-lawyer"
+      ],
+      "locations": [
+        "區公所聽證會場"
+      ],
+      "state": {
+        "time": "聽證會當天上午",
+        "knowledge": "趙總的評估簡報是照她的模板做的",
+        "carry_forward": "她的三分鐘"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "隔壁那間",
+      "youtube_title": "前老闆說泳池危險，她三分鐘拆完他的簡報：你放的照片，是隔壁那間",
+      "duration_s": 115,
+      "logline": "游夏用三分鐘拆趙總的簡報，每一招都是她教過的，但趙總也有下一招。",
+      "hook": "她把投影接到自己的手機：「第七頁，這張龜裂的牆，是隔壁那間。」",
+      "hook_type": "line",
+      "mid_hook": "她放出三十四歲的原始檔，同一個角度、同一道裂縫，旁邊的門牌寫著『二號』。全場轉頭看趙總。",
+      "conflict": "要讓主席相信泳池不危險，她得證明評估是做出來的。",
+      "turn": "觀眾以為她贏了，趙總不慌不忙地說：「請反方說明，居民同意書她有什麼意見。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "趙總把四十七個簽名的同意書推到主席面前：「全體居民同意。她要否認嗎？」",
+        "question": "她會說出那十一個簽名嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "chengzhang",
+        "xuanyi"
+      ],
+      "spectacle": "投影幕上兩張照片並排：灰暗的『泳池』裂牆與原始檔上鮮明的『二號』門牌。",
+      "glamour_shot": "她一隻手撐著長桌，語速快得像二十六歲在出發台上，眼睛直直盯著趙總。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "主席把『公共安全評估』第七頁列為待查",
+        "草稿 145／213"
+      ],
+      "characters": [
+        "you-xia",
+        "zhao-zong",
+        "s04-chair",
+        "lao-kang",
+        "zheng-ning"
+      ],
+      "locations": [
+        "區公所聽證會場"
+      ],
+      "state": {
+        "time": "聽證會當天上午十一點",
+        "knowledge": "評估的照片被拆穿，趙總轉攻同意書",
+        "carry_forward": "四十七個簽名"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "十一個是我簽的",
+      "youtube_title": "前老闆亮出全體居民同意書，她當眾說：其中十一個簽名，是我簽的",
+      "duration_s": 120,
+      "logline": "游夏選擇自己說出三十四歲的她代簽的十一個名字，用自己的錯拆掉趙總的同意書。",
+      "hook": "她把那份同意書翻到第三頁，手指點下去：「這一個，這一個，還有這九個。」",
+      "hook_type": "image",
+      "mid_hook": "「周邊居民同意書上有十一個簽名是我簽的——三十四歲的我，趙總教的。」全場靜到聽得見冷氣聲。",
+      "extra_hooks": [
+        "鄭檸在桌下狠踩她一腳，用口型說：「妳瘋了？」"
+      ],
+      "conflict": "說出來，同意書作廢；說出來，她也可能被告。",
+      "turn": "大家以為她會否認，她卻先認了，再把趙總拉進來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "趙總的律師站起來：「游小姐承認偽造。我方請求簽名鑑定。」趙總靠回椅背，笑了。",
+        "question": "鑑定會先咬到她自己嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "chengzhang",
+        "xuanyi"
+      ],
+      "spectacle": "同意書被她攤在長桌中央，十一個名字被她的指尖一個個點過，鏡頭從上往下俯拍整個會場。",
+      "glamour_shot": "她說完那句話時沒有低頭，燈管正上方打下來，三十四歲的臉上是二十六歲的不服輸。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "主席裁定居民同意書暫不採用",
+        "她親口替三十四歲的自己認錯"
+      ],
+      "characters": [
+        "you-xia",
+        "zhao-zong",
+        "zheng-ning",
+        "s04-chair",
+        "s04-lawyer"
+      ],
+      "locations": [
+        "區公所聽證會場"
+      ],
+      "state": {
+        "time": "聽證會當天中午",
+        "knowledge": "同意書暫不採用；律師要求鑑定",
+        "carry_forward": "簽名鑑定"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "順便鑑定",
+      "youtube_title": "律師要鑑定她的簽名，她把離婚協議也拍上桌：順便鑑定這份，我也簽過",
+      "duration_s": 105,
+      "logline": "趙總的律師要鑑定她的簽名，游夏不躲，把桌上最重的一份文件也交出去。",
+      "hook": "律師推來鑑定申請：「請游小姐配合。」她從包裡抽出一個牛皮紙袋。",
+      "hook_type": "danger",
+      "mid_hook": "「鑑定。順便鑑定這份離婚協議，我也簽過。」主席低頭看，眉毛挑起來。",
+      "conflict": "律師想把『偽造』扣在她頭上，讓她在聽證會上失去發言資格。",
+      "turn": "她以為趙總會怕，趙總卻在走廊打了一通電話，回來時多帶了一個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "主席宣布休息，趙總身後走進一位穿小學運動服的家長：「我代表小學員家長，有話要說。」",
+        "question": "家長會站在誰那邊？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "長桌上並排兩份文件：居民同意書與一份只簽了一邊的離婚協議，同一個簽名。",
+      "glamour_shot": "她把離婚協議推過桌面時抬下巴的那一秒，窗外的光打在她短髮的髮尾上。",
+      "setups": [
+        "s04-t04"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她的簽名與協議一起送鑑定，律師的『偽造』說法被反將"
+      ],
+      "characters": [
+        "you-xia",
+        "zhao-zong",
+        "s04-lawyer",
+        "s04-chair",
+        "s04-parent"
+      ],
+      "locations": [
+        "區公所聽證會場",
+        "聽證會場走廊"
+      ],
+      "state": {
+        "time": "聽證會午休",
+        "knowledge": "簽名與離婚協議都送鑑定；趙總帶來家長代表",
+        "carry_forward": "家長的話"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "便當",
+      "youtube_title": "律師說她可能被告偽造文書，老公什麼都沒問，只帶了一個便當坐到她旁邊",
+      "duration_s": 100,
+      "logline": "午休時律師暗示她可能吃上官司，游夏第一次怕了，顧亦什麼都不問，只坐下來。",
+      "hook": "走廊盡頭，律師壓低聲音：「偽造文書，最重三年。游小姐想清楚。」",
+      "hook_type": "danger",
+      "mid_hook": "顧亦拎著木頭便當盒坐到她旁邊，打開：煎蛋煎破了。「朵朵煎的。」",
+      "extra_hooks": [
+        "她讀休息時的十則，第一百四十七則：「我不想當趙總最好的作品。」"
+      ],
+      "conflict": "她怕的不是被告，是二十六歲的她替三十四歲的她扛下一個她不知道的錯。",
+      "turn": "她以為顧亦會叫她別逞強，他只說了一句：「妳說的那句，是對的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "家長代表走到她面前：「游教練，泳池真的不會塌嗎？我女兒在那裡上課。」身後站著六個家長。",
+        "question": "家長會把孩子帶走嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "chengzhang",
+        "xuanyi"
+      ],
+      "spectacle": "聽證會場外的長椅，一個木頭便當盒裡一顆煎破的蛋，後面是整排區公所的玻璃窗。",
+      "glamour_shot": "顧亦捲著袖子坐在她身邊打開便當盒，低頭不看她，耳朵卻是紅的。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 150／213",
+        "顧亦一句『妳說的那句是對的』"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo",
+        "s04-lawyer",
+        "s04-parent"
+      ],
+      "locations": [
+        "聽證會場走廊"
+      ],
+      "state": {
+        "time": "聽證會午休尾聲",
+        "knowledge": "她可能被告；家長代表要問泳池安不安全",
+        "carry_forward": "六個家長"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "請你們看她游",
+      "youtube_title": "前老闆找來家長說泳池危險，她只說一句：給我十分鐘，請你們看她游",
+      "duration_s": 115,
+      "logline": "趙總用家長的擔心反擊，游夏不辯解，把家長帶去看小魚在海邊游。",
+      "hook": "家長代表的手機上是一張泳池裂縫的照片：「這是趙先生傳給我們的。」",
+      "hook_type": "image",
+      "mid_hook": "她回頭看主席：「休息還有四十分鐘。給我十分鐘，請你們看她游。」",
+      "conflict": "家長要是撤走孩子，泳池就真的沒有理由留下。",
+      "turn": "大家以為她要講安全數據，她卻把家長帶到港邊，讓小魚自己證明。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小魚從浪裡站起來，對著岸上的家長大喊：「我們的泳池比這裡暖！」家長代表的眼眶紅了。",
+        "question": "家長會回會場替她說話嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhiyu",
+        "chengzhang"
+      ],
+      "spectacle": "港邊淺灘一排穿西裝與上班服的家長，看著一個九歲女孩游出一道筆直的水線。",
+      "glamour_shot": "她站在淺水裡替小魚計時，海風吹開西裝外套，哨子在胸前反光。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "家長代表收回撤班的念頭",
+        "趙總的家長牌被翻回來"
+      ],
+      "characters": [
+        "you-xia",
+        "xueyuan",
+        "s04-parent",
+        "zhao-zong",
+        "lao-kang"
+      ],
+      "locations": [
+        "海寧港邊淺灘",
+        "聽證會場走廊"
+      ],
+      "state": {
+        "time": "聽證會午休最後十分鐘",
+        "knowledge": "趙總的反擊是家長；家長被小魚說動",
+        "carry_forward": "回會場的家長"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "延期",
+      "youtube_title": "聽證會最後一刻家長站起來替她說話，主席宣布：延期，等鑑定",
+      "duration_s": 110,
+      "logline": "聽證會下半場，游夏要讓主席不當場核准拆遷，但鑑定沒出來前誰都贏不了。",
+      "hook": "會場門被推開，家長代表帶著六個家長走進來，坐到她身後。",
+      "hook_type": "image",
+      "mid_hook": "家長代表舉手：「孩子在那裡學游泳。請不要拆。」趙總第一次沒有笑。",
+      "extra_hooks": [
+        "主席問她：「游小姐今年幾歲？」她脫口：「二十——三十四。」鄭檸扶額。"
+      ],
+      "conflict": "主席要嘛當場核准，要嘛延期；趙總要的是今天。",
+      "turn": "她以為家長的發言會讓她贏，主席卻說簽名的事沒查清楚，誰都不能贏。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "主席敲槌：「延期，待鑑定結果。」趙總起身，從她身邊經過，停下：「走廊，聊兩句？」",
+        "question": "她要跟他出去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "會場裡她身後一排坐滿的家長，對面趙總身後只有律師一個人。",
+      "glamour_shot": "主席敲槌的那一秒，她回頭看身後的家長，嘴角繃不住地往上揚。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "聽證會延期，泳池今天沒被核准拆",
+        "家長代表公開表態"
+      ],
+      "characters": [
+        "you-xia",
+        "zhao-zong",
+        "zheng-ning",
+        "s04-chair",
+        "s04-parent",
+        "s04-lawyer"
+      ],
+      "locations": [
+        "區公所聽證會場"
+      ],
+      "state": {
+        "time": "聽證會當天下午",
+        "knowledge": "延期待鑑定；趙總要私下談",
+        "carry_forward": "走廊"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "三百五十萬",
+      "youtube_title": "前老闆說她在毀掉自己蓋的一切，她回：她蓋的是你的樓，我蓋我爸的泳池",
+      "duration_s": 135,
+      "logline": "延期後趙總在走廊想動搖她，游夏替三十四歲的自己回答了那句她沒說出口的話。",
+      "hook": "空蕩的走廊，趙總點了根菸又被保全制止，他把菸收回去：「游夏。」",
+      "hook_type": "line",
+      "mid_hook": "「妳在毀妳自己三十四歲蓋的一切。」她說：「她蓋的是你的樓。我蓋我爸的泳池。」",
+      "extra_hooks": [
+        "晚上回家，她把草稿看到一百五十則，朵朵在畫牆加了一張：一個人站在很多人前面。"
+      ],
+      "conflict": "趙總想讓她相信三十四歲的她是站在他那邊的。",
+      "turn": "趙總以為一句『妳三十四歲怎麼不說』能堵住她，她早就知道答案。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "趙總：「那妳三十四歲的時候怎麼不說？」她說：「她說了，用三百五十萬說的。」",
+        "question": "趙總的下一步是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "chengzhang",
+        "ganren"
+      ],
+      "spectacle": "區公所長走廊的盡頭，兩個人的影子被夕陽拉長，一個西裝筆挺、一個西裝配運動鞋。",
+      "glamour_shot": "她說完最後一句轉身走開，夕陽從她背後打來，運動鞋踩在磨石地上。",
+      "setups": [],
+      "payoffs": [
+        "m08",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她替三十四歲的自己說出買泳池的理由",
+        "草稿 150／213；朵朵的畫牆多一張"
+      ],
+      "characters": [
+        "you-xia",
+        "zhao-zong",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "聽證會場走廊",
+        "顧家陽台畫牆"
+      ],
+      "state": {
+        "time": "聽證會當晚",
+        "knowledge": "第一次聽證延期，泳池暫時保住",
+        "carry_forward": "趙總的反擊與膝蓋"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "開不開刀",
+      "youtube_title": "她剛在聽證會擋住前老闆，物理治療師就攤牌：膝蓋要開刀，不開就不能再游",
+      "duration_s": 115,
+      "logline": "趙總的下一步還沒來，游夏的膝蓋先撐不住了：阿澄要她決定開不開刀。",
+      "hook": "復健室的燈下，阿澄把一張核磁共振片拍上燈箱：「這是妳的下一步。」",
+      "hook_type": "danger",
+      "mid_hook": "「不開，就不能再教、更不能游。開了，半年復健，國家隊的位置會沒。」",
+      "extra_hooks": [
+        "她試著單腳跳上復健床，二十六歲的身體記憶跳起來、三十四歲的膝蓋把她摔回地上。"
+      ],
+      "conflict": "二十六歲的腦子說開，三十四歲的身體說開了也游不快了。",
+      "turn": "她以為這是她一個人的事，回家時朵朵已經在門口等，第一句就問到她心裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "朵朵抓著她的手：「開了妳會變回三十四歲嗎？」她答不出來，膝蓋又抽了一下。",
+        "question": "朵朵為什麼這樣問？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "燈箱上一張膝蓋的影像片，阿澄的手指沿著一道舊疤畫過去。",
+      "glamour_shot": "阿澄馬尾一甩把她從地上拉起來，游夏咬著下唇不肯喊痛的側臉。",
+      "setups": [
+        "s04-t05",
+        "m12"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿澄講清楚開與不開的代價",
+        "草稿 155／213"
+      ],
+      "characters": [
+        "you-xia",
+        "a-cheng",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "物理治療室",
+        "顧家門口"
+      ],
+      "state": {
+        "time": "聽證會後第二天",
+        "knowledge": "膝蓋要開刀，開了半年不能游、國家隊位置可能沒",
+        "carry_forward": "朵朵的問題"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "妳決定",
+      "youtube_title": "她問老公要不要開刀，他只回三個字，她氣到把木工坊的門甩上",
+      "duration_s": 100,
+      "logline": "游夏第一次把一個決定拿去問顧亦，他卻照樣把答案留給她。",
+      "hook": "她把影像片拍在木工坊的工作台上：「你說，開不開？」",
+      "hook_type": "question",
+      "mid_hook": "他放下刨刀：「妳決定。」她氣到發抖：「你每次都這樣！」",
+      "conflict": "她要一個人替她扛一次，他堅持不替她決定。",
+      "turn": "她以為他不在乎，走出去才看見工作台下一張畫好的圖：一根手杖，量好的尺寸是她的身高。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她回頭看那張圖，木工坊的燈熄了，他坐在黑暗裡沒追出來。",
+        "question": "他其實早就決定好了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "tianchong",
+        "jiating"
+      ],
+      "spectacle": "木工坊的工作台上，一張影像片壓著一張鉛筆畫的手杖設計圖，木屑落在兩張紙之間。",
+      "glamour_shot": "顧亦放下刨刀抬頭看她，額前一縷頭髮沾著木屑，眼神慢得像在等。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次把決定拿去問他",
+        "草稿 160／213"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi"
+      ],
+      "locations": [
+        "顧亦的木工坊"
+      ],
+      "state": {
+        "time": "同一晚",
+        "knowledge": "他不替她決定，卻已經在畫手杖",
+        "carry_forward": "那張設計圖"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "位置會沒",
+      "youtube_title": "她問國家隊總教練開刀後還能不能回來，對方只說：我不能答應妳",
+      "duration_s": 105,
+      "logline": "游夏去國家隊問林一一位置能不能等她，林一一不給承諾，卻多說了一句三十四歲的事。",
+      "hook": "國家隊池邊，她把助理教練的哨子放在林一一面前：「半年。妳等不等？」",
+      "hook_type": "line",
+      "mid_hook": "林一一：「我不能答應妳。」頓了頓：「三十四歲的妳，也問過我同一句。」",
+      "conflict": "開刀就是讓出位置，二十六歲的她最怕的就是再輸給林一一一次。",
+      "turn": "她以為林一一在拒絕她，林一一說的是：三十四歲的她七年前也為了膝蓋問過，然後沒開刀。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第一百六十八則：「醫生說可以再開一次。我說不要。我不游了。」日期是七年前。",
+        "question": "她那時為什麼不開？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "國家隊訓練池五十公尺的水道，一排選手同時出發，她站在池邊沒下水。",
+      "glamour_shot": "林一一穿國家隊外套站在出發台旁，游夏抬頭看她，兩個三十四歲的身體、一個二十六歲的眼神。",
+      "setups": [
+        "s04-t13"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 168／213",
+        "她知道三十四歲的她七年前放棄過一次開刀"
+      ],
+      "characters": [
+        "you-xia",
+        "lin-yiyi"
+      ],
+      "locations": [
+        "國家隊訓練池"
+      ],
+      "state": {
+        "time": "第三天",
+        "knowledge": "三十四歲的她七年前不開刀、選擇不游；林一一不答應等她",
+        "carry_forward": "國家隊的位置"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "那是妳的房子",
+      "youtube_title": "媽媽說開刀的錢她有，她說那是爸爸的房子，媽媽只回一句就讓她哭了",
+      "duration_s": 115,
+      "logline": "游夏去早餐店問母親，母親要出錢，她卻不想再欠一次。",
+      "hook": "早餐店收攤，她把影像片放上鐵板旁的桌子：「媽，我要不要開刀？」",
+      "hook_type": "question",
+      "mid_hook": "母親擦著鐵板頭也不抬：「開，錢我有。」她說：「妳的錢是我爸的房子。」",
+      "conflict": "母親賣了老家供她治過一次膝，她不想再拿一次。",
+      "turn": "她以為母親會吵，母親只說：「那是妳的房子。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "母親把抹布摔在鐵板上：「妳爸蓋那間房子，就是要給妳用的。」說完轉身進廚房，肩膀在抖。",
+        "question": "她要收下母親的錢嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "chengzhang"
+      ],
+      "spectacle": "收攤後的早餐店，鐵板的餘溫還在冒煙，一盞燈照著母女之間的一張摺疊桌。",
+      "glamour_shot": "她坐在早餐店的小凳上，膝蓋伸直，抬頭看母親背影時的眼眶。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母親第一次主動說要替她出錢",
+        "草稿 170／213"
+      ],
+      "characters": [
+        "you-xia",
+        "you-mu"
+      ],
+      "locations": [
+        "游母的早餐店"
+      ],
+      "state": {
+        "time": "第四天傍晚",
+        "knowledge": "母親的錢是父親的房子，母親說那本來就是她的",
+        "carry_forward": "母親在廚房裡發抖的肩膀"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "多打一顆蛋",
+      "youtube_title": "她沒收媽媽的錢，隔天早上卻在早餐店吃到兩顆蛋，第三顆是給女兒的",
+      "duration_s": 100,
+      "logline": "游夏不收錢也不走，留在早餐店幫母親開店，想找出母親沒說完的話。",
+      "hook": "清晨五點，鐵捲門拉起，母親看見她已經穿好圍裙站在門口。",
+      "hook_type": "image",
+      "mid_hook": "她打蛋打破了三顆，母親罵：「妳又怎麼了！」然後把她的手按在碗邊：「這樣敲。」",
+      "extra_hooks": [
+        "顧亦帶朵朵來吃早餐，朵朵指著鐵板：「外婆，我要夏夏打的那顆。」"
+      ],
+      "conflict": "她跟母親之間只會吵架，她要學會不用吵的方式說話。",
+      "turn": "她以為母親只是在教她打蛋，母親卻說出父親當年也在這張鐵板前問過開不開刀。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "母親把第三顆蛋放到朵朵盤裡，低聲說：「妳爸那年也沒開。後來就不能游了。」",
+        "question": "她會不會跟父親做一樣的選擇？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "shenghuo",
+        "xiju"
+      ],
+      "spectacle": "清晨的早餐店，鐵板上排著三顆蛋，蒸氣裡一家三口加一個外婆坐滿小桌。",
+      "glamour_shot": "顧亦把朵朵舉上高腳凳的那一秒，圍裙上的木屑落在早餐店的地板上。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她在早餐店幫了一早上的忙",
+        "母親說出父親當年沒開刀"
+      ],
+      "characters": [
+        "you-xia",
+        "you-mu",
+        "gu-yi",
+        "gu-duoduo",
+        "you-fu"
+      ],
+      "locations": [
+        "游母的早餐店"
+      ],
+      "state": {
+        "time": "第五天清晨",
+        "knowledge": "父親當年也沒開刀，後來不能游",
+        "carry_forward": "她的選擇"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "她也哭過",
+      "youtube_title": "她躲在樓梯間哭，婆婆剝著豆子說：三十四歲的妳，也在這裡哭過",
+      "duration_s": 110,
+      "logline": "游夏怕自己重走父親與三十四歲的路，躲進樓梯間，被顧奶奶撞見。",
+      "hook": "樓梯間的感應燈一亮一滅，她坐在台階上，把臉埋進膝蓋旁邊。",
+      "hook_type": "image",
+      "mid_hook": "顧奶奶端著一盆豆子坐到她下一階：「三十四歲的妳也哭過。」",
+      "conflict": "她覺得每個人都在等她選，選錯了就是第三個不能游的游家人。",
+      "turn": "她以為顧奶奶要勸她開刀，顧奶奶說的是三十四歲的她生朵朵那年在同一個台階上哭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧奶奶剝完最後一顆豆子：「那次她哭完，上樓簽了一份工作合約。妳哭完，要上樓做什麼？」",
+        "question": "她哭完要做什麼決定？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "shenghuo"
+      ],
+      "spectacle": "老公寓樓梯間的感應燈隨著兩個人的動作一亮一滅，一盆綠豆莢在台階上。",
+      "glamour_shot": "顧奶奶老花眼鏡掛在胸前，游夏紅著眼抬頭的那一秒，感應燈剛好亮起。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "顧奶奶第一次說出三十四歲的她哭過",
+        "草稿 175／213"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-nainai"
+      ],
+      "locations": [
+        "顧家樓梯間"
+      ],
+      "state": {
+        "time": "第五天晚上",
+        "knowledge": "三十四歲的她生朵朵那年在樓梯間哭完去簽約",
+        "carry_forward": "她哭完要做什麼"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "妳今天幾歲",
+      "youtube_title": "心理醫師又問她今天幾歲，她第一次答：二十六，但膝蓋三十四",
+      "duration_s": 105,
+      "logline": "游夏去吳醫師的診間，想知道該讓哪一個年紀的自己做決定。",
+      "hook": "吳醫師翻開筆記本：「妳今天幾歲？」她說：「二十六。但膝蓋三十四。」",
+      "hook_type": "line",
+      "mid_hook": "吳醫師：「三十四歲的妳最後一次來，說她想回到一個『還來得及』的年紀。」",
+      "conflict": "她不知道該聽二十六歲的衝動，還是三十四歲的疲憊。",
+      "turn": "她以為吳醫師會給她答案，吳醫師只問她：「如果是朵朵，妳會叫她開嗎？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她脫口：「會。」吳醫師闔上筆記本：「那妳已經知道了。」",
+        "question": "她真的知道答案了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "chengzhang",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "診間窗邊一盆綠蘿，針織衫的吳醫師在逆光裡，兩張椅子之間一盒面紙沒人動。",
+      "glamour_shot": "她坐在診間的沙發上，一條腿伸直，回答『會』的那一秒眼睛亮起來。",
+      "setups": [
+        "m01",
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她說出如果是朵朵她會叫她開刀"
+      ],
+      "characters": [
+        "you-xia",
+        "doctor-wu"
+      ],
+      "locations": [
+        "吳醫師的診間"
+      ],
+      "state": {
+        "time": "第六天",
+        "knowledge": "三十四歲的她想回到『還來得及』的年紀",
+        "carry_forward": "朵朵"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "兩個都要",
+      "youtube_title": "女兒每天問她開刀會不會變回三十四歲，她終於問：妳為什麼一直問這個？",
+      "duration_s": 110,
+      "logline": "游夏想把決定告訴朵朵，朵朵又問了那個問題，這次她要問出原因。",
+      "hook": "她把朵朵抱上廚房的高腳凳：「我想開刀。」朵朵第一句：「開了妳會變回去嗎？」",
+      "hook_type": "question",
+      "mid_hook": "朵朵從背包裡拿出一張畫：兩個短頭髮的女人，一個在泳池裡、一個在房子前面，中間是她。",
+      "extra_hooks": [
+        "她拿朵朵的蠟筆在畫上簽名，蠟筆斷了，朵朵心疼地撿起來：「那是夏夏專用的藍色。」"
+      ],
+      "conflict": "朵朵的問題後面有一個她沒說的願望。",
+      "turn": "她以為朵朵怕失去二十六歲的她，朵朵卻也在等三十四歲的那一個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "朵朵把畫翻過來，背面用注音寫著：「兩個夏夏都要回家。」她的手停住了。",
+        "question": "朵朵到底想要什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "廚房一張三個人的桌，一張蠟筆畫攤開，畫裡兩個游夏一左一右，朵朵在中間。",
+      "glamour_shot": "顧亦靠在廚房門框上看她們，手上的木屑還沒洗，嘴角只有眼睛在笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 180／213"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-duoduo",
+        "gu-yi"
+      ],
+      "locations": [
+        "顧家廚房"
+      ],
+      "state": {
+        "time": "第七天晚上",
+        "knowledge": "朵朵兩個夏夏都想要",
+        "carry_forward": "畫背面那行注音"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "我兩個都要",
+      "youtube_title": "七歲女兒說出她一直問的原因：妳回去，她就回來，我兩個都要",
+      "duration_s": 115,
+      "logline": "游夏要聽朵朵說完那個願望，答案讓她更難決定，也更確定。",
+      "hook": "她把畫翻回正面，蹲下來平視朵朵：「妳為什麼一直問？」",
+      "hook_type": "question",
+      "mid_hook": "朵朵：「因為妳回去，她就回來。我兩個都要。」",
+      "conflict": "朵朵把開刀當成兩個游夏交換的門，她不知道該怎麼回答一個她自己也不懂的事。",
+      "turn": "她以為要跟朵朵解釋不會換，最後是她承認：「我也不知道。但我會回家。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "朵朵把小指伸出來：「打勾勾。不管哪一個，都要回家。」她勾上去，顧亦在門口轉身擦眼睛。",
+        "question": "她答應的，做得到嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "陽台的畫牆前，一大一小兩根小指勾在一起，後面是滿牆的夏夏。",
+      "glamour_shot": "她蹲著跟朵朵勾手指，夜燈從上面打下來，捲髮跟短髮挨在一起。",
+      "setups": [],
+      "payoffs": [
+        "s04-t05",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她跟朵朵打勾勾：不管哪一個都要回家"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-duoduo",
+        "gu-yi"
+      ],
+      "locations": [
+        "顧家陽台畫牆"
+      ],
+      "state": {
+        "time": "第七天深夜",
+        "knowledge": "朵朵的願望：兩個夏夏都要",
+        "carry_forward": "她的決定"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "刻名字的手杖",
+      "youtube_title": "她決定開刀，老公做了一根刻她名字的木手杖，說二十七歲那根還在箱子裡",
+      "duration_s": 140,
+      "logline": "游夏決定開刀，日期跟第二次聽證會撞在前後兩天；顧亦用一根手杖回答了她沒問出口的事。",
+      "hook": "清晨她走進木工坊：「我開。」顧亦停下刨刀，抬頭。",
+      "hook_type": "line",
+      "mid_hook": "阿澄的電話：「手術排好了，十八號。」她看冰箱上的日曆：十七號，用紅筆圈著——第二次聽證會。",
+      "extra_hooks": [
+        "冰箱上多了一張倒數表：手術 D-18，朵朵在每一格畫一條魚。"
+      ],
+      "conflict": "手術與聽證會只隔一天，她要兩個都扛。",
+      "turn": "她以為他會勸她先處理聽證會，他遞過來一根木頭手杖，握把上刻著『游夏』。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "「我不要拐杖。」「二十七歲那年妳也這麼說，然後用了三個月。」「那根呢？」「在箱子裡。」她看向牆上那個箱子。",
+        "question": "箱子裡還有什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "tianchong",
+        "ganren"
+      ],
+      "spectacle": "木工坊的晨光裡，一根打磨好的淺色木手杖立在工作台上，握把刻著『游夏』兩個字，牆上高處掛著那個箱子。",
+      "glamour_shot": "顧亦用拇指抹過刻字上的木屑再遞給她，袖子捲到手肘，晨光照在手背的新傷口上。",
+      "setups": [
+        "s04-t06"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她決定開刀，手術訂在十八號",
+        "第二次聽證會十七號",
+        "顧亦做好刻名字的手杖"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "a-cheng",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "顧亦的木工坊",
+        "顧家廚房"
+      ],
+      "state": {
+        "time": "第八天清晨",
+        "knowledge": "手術十八號、聽證會十七號；二十七歲那根手杖在箱子裡",
+        "carry_forward": "牆上的箱子"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "第一層",
+      "youtube_title": "老公從牆上取下那個八年不給人看的箱子，她打開第一層，是她以為早就丟了的泳帽",
+      "duration_s": 120,
+      "logline": "游夏終於要打開木工坊的箱子，第一層就是她二十六歲那一夜的東西。",
+      "hook": "顧亦踩上木梯，把牆上的箱子抱下來，放在她面前：「妳開。」",
+      "hook_type": "image",
+      "mid_hook": "第一層：一根舊木手杖，握把被手磨得發亮；手杖下面，一頂藍色泳帽，側邊印著她二十六歲最後一場比賽的編號。",
+      "extra_hooks": [
+        "她把泳帽戴上，三十四歲的頭比二十六歲大了一圈，泳帽卡在額頭，朵朵笑到打嗝。"
+      ],
+      "conflict": "她怕打開箱子，就會知道他八年來到底在忍什麼。",
+      "turn": "她以為泳帽在落選那夜被她丟進垃圾桶，原來是他撿回來的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她捏著泳帽問：「那天晚上，你在？」他說：「我在看台最後一排。」",
+        "question": "他那一夜為什麼在？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "木工坊工作台上箱蓋掀開，一根磨亮的舊手杖與一頂褪色的藍泳帽在燈下並排。",
+      "glamour_shot": "顧亦站在木梯上抱著箱子低頭看她，燈從他背後打下來，木屑在光裡飄。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿回二十六歲最後一場比賽的泳帽",
+        "二十七歲住院三個月用的手杖找到了",
+        "手術 D-17"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "顧亦的木工坊"
+      ],
+      "state": {
+        "time": "手術前十七天",
+        "knowledge": "落選那夜他在看台；泳帽是他撿的",
+        "carry_forward": "箱子的下一層"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "八年的剪報",
+      "youtube_title": "箱子底下是八年的剪報和她賣掉的每一張房屋廣告，沒有一樣是他自己的",
+      "duration_s": 130,
+      "logline": "游夏翻到箱子的下一層，終於看見這八年在他眼裡的樣子。",
+      "hook": "「看台最後一排。」他說完就去燒水，她一個人把手伸進箱子底。",
+      "hook_type": "line",
+      "mid_hook": "一疊剪報：〈游夏宣布退役〉〈前國手出面作證〉〈宏達房仲年度冠軍〉；下面是幾十張房屋廣告，每一張角落都有她的照片。",
+      "extra_hooks": [
+        "最底下一張小卡紙：一個小小的腳印，旁邊寫著朵朵的出生日期。"
+      ],
+      "conflict": "她要知道箱子裝什麼，看完才發現裡面沒有一樣是他的。",
+      "turn": "她以為那是他的祕密，打開才知道那是她的八年，他替她存著。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把所有東西攤滿工作台：泳帽、手杖、剪報、廣告、腳印。她抬頭：「沒有一樣是你的。」",
+        "question": "他為什麼一樣都不留給自己？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "tianchong"
+      ],
+      "spectacle": "俯拍木工坊的工作台：八年的剪報、房屋廣告、一頂泳帽、一根手杖、一張小腳印，排成一條時間線。",
+      "glamour_shot": "她跪坐在工作台前，一張張翻剪報，燈下她讀到自己退役那篇時眼睛慢慢紅了。",
+      "setups": [],
+      "payoffs": [
+        "m11",
+        "m04"
+      ],
+      "reveals": [
+        "m11"
+      ],
+      "general_payoffs": [
+        "箱子揭開：泳帽、八年剪報、每一張她賣的房子廣告、朵朵的腳印"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi"
+      ],
+      "locations": [
+        "顧亦的木工坊"
+      ],
+      "state": {
+        "time": "手術前十七天晚上",
+        "knowledge": "箱子裝的全是她的八年",
+        "carry_forward": "他為什麼留"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "總要有人留",
+      "youtube_title": "她問老公為什麼留著她八年的東西，他說：妳不留，總要有人留",
+      "duration_s": 105,
+      "logline": "游夏追問顧亦為什麼留下這一切，他照樣只答一句，卻每一句都答了。",
+      "hook": "水壺響了，他端著兩杯茶回來，她攔住他：「你為什麼留這些？」",
+      "hook_type": "question",
+      "mid_hook": "「妳不留，總要有人留。」他把茶放在剪報旁邊，避開那張退役的。",
+      "extra_hooks": [
+        "她拿起一張房屋廣告，照片上三十四歲的她笑得很標準；她對著廣告學那個笑，學不出來。"
+      ],
+      "conflict": "她想要他多說一點，他只說一句。",
+      "turn": "她以為他會解釋八年，他只說那一句，然後等。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把廣告放下，吸一口氣：「你留了八年，等什麼？」他看著她，沒有馬上答。",
+        "question": "他等的是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "工作台上兩杯冒煙的茶，一杯壓著退役剪報的一角，另一杯旁邊是一張房屋廣告。",
+      "glamour_shot": "顧亦端茶靠在工作台邊，燈下的側臉，答完一句就低頭吹茶。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 185／213"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi"
+      ],
+      "locations": [
+        "顧亦的木工坊"
+      ],
+      "state": {
+        "time": "手術前十七天深夜",
+        "knowledge": "他說她不留總要有人留",
+        "carry_forward": "他等什麼"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "等妳問",
+      "youtube_title": "她問他留了八年在等什麼，他說：等妳問。她說我問了，他說那妳知道了",
+      "duration_s": 115,
+      "logline": "游夏終於問到最後一句，答案是她自己；隔天，舊泳池那邊傳來一個她不想聽到的名字。",
+      "hook": "他吹涼茶，抬頭：「等妳問。」",
+      "hook_type": "line",
+      "mid_hook": "「我問了。」「那妳知道了。」她把泳帽塞進他手裡：「那你也留著。」",
+      "conflict": "她要他說出口，他要她自己懂。",
+      "turn": "她以為這晚只剩甜，隔天老康打來說有人在泳池外拍照，是邱教練。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老康的電話：「邱教練來了，在鐵門外拍照，說要接手。」她手上的泳帽掉在地上。",
+        "question": "邱教練想做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "清晨的舊泳池鐵門外，一個戴金錶的男人舉著手機拍褪色的泳池招牌。",
+      "glamour_shot": "她把泳帽塞回他手裡、手指碰到他掌心木繭的那一秒，兩個人都沒鬆手。",
+      "setups": [
+        "s04-t07"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "泳帽回到他手上，這次是她給的",
+        "手術 D-16"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "lao-kang",
+        "qiu-jiaolian"
+      ],
+      "locations": [
+        "顧亦的木工坊",
+        "舊泳池鐵門"
+      ],
+      "state": {
+        "time": "手術前十六天",
+        "knowledge": "他等她問；邱教練出現在泳池外",
+        "carry_forward": "邱教練的目的"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "七個小學員",
+      "youtube_title": "邱教練的傳聞一出，家長代表帶著六個孩子走進舊泳池：我們要報名",
+      "duration_s": 105,
+      "logline": "邱教練要接手泳池的傳聞散開，游夏擔心學員跑光，家長代表卻帶來了更多孩子。",
+      "hook": "她衝到泳池，邱教練已經走了，鐵門外只剩一張名片：『邱氏私人游泳會館』。",
+      "hook_type": "image",
+      "mid_hook": "家長代表推開鐵門，身後六個穿連身泳衣的孩子：「聽證會那天，我們決定了。報名。」",
+      "extra_hooks": [
+        "她第一次一次點七個名字，把小魚叫成『小鯊』，小魚氣到鼓腮。"
+      ],
+      "conflict": "有人想把泳池變成會館，她得證明這裡有人在用。",
+      "turn": "她以為家長來是要退費，結果是六個新學員。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第一百九十二則：「邱的帳我還有一本。藏在泳池。我不敢拿出來。」她抬頭看更衣室的天花板。",
+        "question": "那本帳藏在哪？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "舊泳池重新放滿的水邊，一大六小七頂泳帽排成一排，老康吹哨。",
+      "glamour_shot": "她蹲在池邊替最小的學員調泳鏡，出水的小魚甩頭、水珠濺到她臉上，她笑出聲。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "學員從一個變成七個",
+        "草稿 192／213"
+      ],
+      "characters": [
+        "you-xia",
+        "xueyuan",
+        "s04-parent",
+        "lao-kang",
+        "qiu-jiaolian"
+      ],
+      "locations": [
+        "舊泳池池邊"
+      ],
+      "state": {
+        "time": "手術前十五天",
+        "knowledge": "邱教練想改私人會館；三十四歲的她藏了邱的一本帳",
+        "carry_forward": "那本帳"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "小賀的電話",
+      "youtube_title": "她帶出來的房仲徒弟半夜打電話：趙總要我補簽一份文件，我不敢",
+      "duration_s": 100,
+      "logline": "游夏還在找那本帳，小賀半夜來電，趙總要他重演三十四歲的她做過的事。",
+      "hook": "她站在更衣室的長凳上摸天花板，電話響：「師父……趙總要我補簽。」",
+      "hook_type": "danger",
+      "mid_hook": "小賀傳來一張照片：一份空白的居民同意書，旁邊寫著『十一個，照上次的』。",
+      "conflict": "趙總要在鑑定前補一套簽名蓋掉她的，小賀不敢說不。",
+      "turn": "她以為小賀打來是求救，他其實已經把照片存了三份。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她的膝蓋在長凳上一軟，整個人摔下來，手機那頭小賀在喊：「師父？」",
+        "question": "她摔傷了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju",
+        "dalian"
+      ],
+      "spectacle": "老舊更衣室，她站在長凳上推開天花板的一塊板，灰塵在手電筒光裡落下。",
+      "glamour_shot": "她踮腳摸天花板，手電筒光從下往上打亮她專注的臉。",
+      "setups": [
+        "s04-t09"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小賀拿到趙總要他補簽的證據"
+      ],
+      "characters": [
+        "you-xia",
+        "xiao-he",
+        "zhao-zong"
+      ],
+      "locations": [
+        "舊泳池更衣室"
+      ],
+      "state": {
+        "time": "手術前十四天深夜",
+        "knowledge": "趙總想補簽蓋掉證據；小賀存了照片",
+        "carry_forward": "她的膝蓋"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "手杖第一天",
+      "youtube_title": "膝蓋摔了一下，她第一次拄著老公刻名字的手杖去上課，學員們全看呆了",
+      "duration_s": 105,
+      "logline": "游夏摔傷後不得不用那根刻名字的手杖，二十六歲的面子跟三十四歲的膝蓋又吵起來。",
+      "hook": "她摔在地上，顧亦已經推開更衣室的門，手上拿著那根手杖。",
+      "hook_type": "image",
+      "mid_hook": "阿澄壓了壓她的膝蓋：「腫了。十八號之前，手杖不准放。」",
+      "extra_hooks": [
+        "她拄手杖站在池邊吹哨，七個孩子以為那是新的教具，一人拿一塊浮板舉起來。"
+      ],
+      "conflict": "她不想讓學員看見教練拄著拐杖。",
+      "turn": "她以為孩子會笑她，小魚說：「教練，好帥，像海盜。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "下課後她拄著手杖站在空池邊，一個人小聲說：「爸，我要開刀了。」身後有人：「我知道。」是母親。",
+        "question": "母親為什麼會來泳池？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "jiating"
+      ],
+      "spectacle": "褪色的藍色泳池邊，一根刻名字的木手杖靠在出發台上，七頂泳帽在水裡。",
+      "glamour_shot": "她拄著手杖站在池邊吹哨，陽光從天窗斜下來，短髮跟木頭的暖色同框。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她開始用刻名字的手杖",
+        "七個學員接受了拄手杖的教練"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "a-cheng",
+        "xueyuan",
+        "you-mu"
+      ],
+      "locations": [
+        "舊泳池更衣室",
+        "舊泳池池邊"
+      ],
+      "state": {
+        "time": "手術前十三天",
+        "knowledge": "膝蓋腫了，十八號前離不開手杖",
+        "carry_forward": "池邊的母親"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "位置我留著",
+      "youtube_title": "她以為開刀就會失去國家隊的位置，前隊友林一一走進舊泳池：我留著",
+      "duration_s": 110,
+      "logline": "母親來到泳池又不說話，游夏還沒弄懂，林一一也來了，帶著她以為已經沒了的位置。",
+      "hook": "母親把一袋包子塞到她手裡：「妳爸以前也在這裡自言自語。」轉身就走。",
+      "hook_type": "line",
+      "mid_hook": "林一一站在池邊看她教七個孩子，看完才開口：「國家隊的位置，我留著。」",
+      "conflict": "她以為開刀就等於把位置讓出去。",
+      "turn": "她以為林一一是來同情她，林一一說的是：「三十四歲的妳不開刀，我後悔沒勸。這次我勸。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "林一一轉身前說：「復健完，回來。我還要跟妳比一次。」她愣住——二十六歲那年的對手在等她。",
+        "question": "她還游得過林一一嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengzhang",
+        "jiating",
+        "zhiyu"
+      ],
+      "spectacle": "舊泳池邊站著一個穿國家隊外套的高個子，水裡七頂泳帽，遠處母親的背影走出鐵門。",
+      "glamour_shot": "林一一跟游夏並肩站在池邊，兩個三十四歲的運動員側臉，一個直、一個笑。",
+      "setups": [],
+      "payoffs": [
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "國家隊的位置留著",
+        "母親送來包子，說了一句父親"
+      ],
+      "characters": [
+        "you-xia",
+        "you-mu",
+        "lin-yiyi",
+        "xueyuan"
+      ],
+      "locations": [
+        "舊泳池池邊",
+        "舊泳池鐵門"
+      ],
+      "state": {
+        "time": "手術前十二天",
+        "knowledge": "林一一留位置等她復健",
+        "carry_forward": "邱教練與趙總"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "鐵門外兩個人",
+      "youtube_title": "她教老公做木工學到一半，抬頭看見前老闆和邱教練一起站在泳池外",
+      "duration_s": 100,
+      "logline": "游夏在木工坊學著替手杖上油，卻從小賀的照片裡看到趙總與邱教練站在一起。",
+      "hook": "木工坊裡，顧亦握著她的手，帶她用砂紙磨手杖的握把：「順著紋。」",
+      "hook_type": "image",
+      "mid_hook": "她第一次自己刨出一片完整的刨花，舉起來像拿獎牌：「我做到了！」顧亦說：「歪的。」",
+      "extra_hooks": [
+        "第一百九十七則：「你今天教朵朵刨木頭。我在門外看了很久。我也想學。」她看著他握著她的手。"
+      ],
+      "conflict": "她想在手術前多跟他待一點，外面的事卻不等她。",
+      "turn": "她以為趙總與邱教練是兩件事，照片上他們在同一張車裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小賀傳來照片：趙總跟邱教練坐在同一輛車裡，停在泳池鐵門外，車上放著一份『私人會館規劃』。",
+        "question": "他們聯手要做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "xuanyi",
+        "shenghuo"
+      ],
+      "spectacle": "木工坊午後，一片完整捲起的淺金色刨花被她高高舉起，窗外是港口。",
+      "glamour_shot": "顧亦從背後握著她的手帶她磨木頭，袖子捲到手肘，他低頭的那一秒很近。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她學會刨出一整片刨花",
+        "草稿 197／213"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "xiao-he",
+        "zhao-zong",
+        "qiu-jiaolian"
+      ],
+      "locations": [
+        "顧亦的木工坊",
+        "舊泳池鐵門"
+      ],
+      "state": {
+        "time": "手術前十一天",
+        "knowledge": "趙總與邱教練聯手；會館規劃",
+        "carry_forward": "邱教練的下一步"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "沒說完的",
+      "youtube_title": "邱教練說要把泳池改成私人會館，七個小學員衝出來把他團團圍住",
+      "duration_s": 135,
+      "logline": "邱教練親自上門要接手泳池，游夏拄著手杖擋在門口，老康吹了一聲哨。",
+      "hook": "鐵門被推開，邱教練笑得很熟：「小夏，聽說要拆，我接手，改私人會館。」",
+      "hook_type": "line",
+      "mid_hook": "老康把哨子塞進嘴裡，長長一聲——七個戴泳帽的孩子從池邊衝出來，手牽手圍住邱教練。",
+      "extra_hooks": [
+        "邱教練被圍在中間，金錶在陽光下閃，他想往外走，小魚張開雙手：「這是我們的。」"
+      ],
+      "conflict": "邱教練要接手泳池，她有手杖、沒有證據。",
+      "turn": "大家以為他被趕走了，他走前留下一句，讓她知道三十四歲的她跟他交過手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "邱教練：「妳三十四歲的時候跟我談過。」「她談什麼？」「她說：『你碰這裡，我就把當年沒說完的說完。』」",
+        "question": "當年沒說完的是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "舊泳池邊七個戴泳帽的孩子手牽手圍成一圈，中間站著一個戴金錶的男人，老康在外圍吹哨。",
+      "glamour_shot": "她拄著刻名字的手杖站在鐵門前，逆光，七個孩子在她身後，顧亦從遠處走過來。",
+      "setups": [
+        "s04-t08"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "邱教練被老康和七個學員趕出泳池",
+        "手術 D-8"
+      ],
+      "characters": [
+        "you-xia",
+        "qiu-jiaolian",
+        "lao-kang",
+        "xueyuan",
+        "gu-yi"
+      ],
+      "locations": [
+        "舊泳池池邊",
+        "舊泳池鐵門"
+      ],
+      "state": {
+        "time": "手術前八天",
+        "knowledge": "三十四歲的她握著邱教練的把柄沒說完",
+        "carry_forward": "沒說完的話"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "天花板上的帳",
+      "youtube_title": "她照三十四歲的草稿掀開泳池更衣室的天花板，掉下來一本藏了七年的帳",
+      "duration_s": 115,
+      "logline": "游夏要在第二次聽證會前找到『沒說完的』，同時她帶出來的徒弟小賀做了一個決定。",
+      "hook": "她拄著手杖站在更衣室中央，指著天花板：「顧亦，第三塊。」他爬上長凳。",
+      "hook_type": "image",
+      "mid_hook": "一個用塑膠袋包了三層的帳本掉下來，封面寫著『邱 二〇XX 學員費』，裡面夾著三十四歲的她手寫的便條：「等我不怕了再拿出來。」",
+      "extra_hooks": [
+        "小賀穿著太大的西裝站在泳池門口，手上一個紙箱：「師父，我辭職了。」"
+      ],
+      "conflict": "聽證會只剩三天，她需要證據，也需要證人。",
+      "turn": "她以為小賀被趙總嚇跑了，他是辭職後抱著趙總的整箱文件來投靠她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小賀打開紙箱：「趙總說，誰敢去聽證會作證，他就讓那個人在海寧賣不出一間房。」",
+        "question": "還有誰敢站出來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "更衣室天花板一塊板被推開，一個包著三層塑膠袋的本子在灰塵裡落進顧亦手中。",
+      "glamour_shot": "顧亦站在長凳上伸手接住帳本，手臂上的木屑跟灰塵一起落下，低頭看她的那一眼。",
+      "setups": [],
+      "payoffs": [
+        "s04-t09",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "找到邱教練的學員費帳本",
+        "小賀辭職帶來趙總的文件",
+        "草稿 200／213；手術 D-3"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "xiao-he",
+        "zhao-zong"
+      ],
+      "locations": [
+        "舊泳池更衣室",
+        "舊泳池鐵門"
+      ],
+      "state": {
+        "time": "手術前三天",
+        "knowledge": "有了邱的帳本與趙總的文件，缺證人",
+        "carry_forward": "趙總對證人的威脅"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "全員到齊",
+      "youtube_title": "前老闆威脅誰作證就讓誰賣不出房子，第二次聽證會她身後卻坐滿了人",
+      "duration_s": 125,
+      "logline": "第二次聽證會，趙總帶著邱教練的會館計畫要接收泳池，游夏要讓所有站出來的人被看見。",
+      "hook": "聽證會場的門一開，她身後走進來：老康、鄭檸、小賀、家長代表，和六個家長。",
+      "hook_type": "image",
+      "mid_hook": "趙總的律師推出『邱氏私人會館』計畫：「若泳池不拆，由專業人士接手經營。」邱教練在旁邊微笑。",
+      "extra_hooks": [
+        "主席問老康職業，老康答：「顧池子的。顧了四十年。」全場笑了一聲。"
+      ],
+      "conflict": "趙總換了招：不拆也行，交給邱教練經營。",
+      "turn": "趙總以為邱教練是他的王牌，她從包裡拿出那本塑膠袋包著的帳本。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把帳本推到主席面前：「這是當年沒說完的。學員費，挪用三年。」邱教練的笑停在臉上。",
+        "question": "邱教練會怎麼辯？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "聽證會場一邊是趙總、律師與邱教練三個人，另一邊是她身後坐滿兩排的老老少少。",
+      "glamour_shot": "她拄著刻名字的手杖站起來，深藍西裝配運動鞋，回頭看身後那兩排人時的一個笑。",
+      "setups": [],
+      "payoffs": [
+        "s04-t07",
+        "s04-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老康、鄭檸、小賀、家長全員出席",
+        "邱教練的帳本交到主席手上"
+      ],
+      "characters": [
+        "you-xia",
+        "lao-kang",
+        "zheng-ning",
+        "xiao-he",
+        "s04-parent",
+        "zhao-zong",
+        "qiu-jiaolian",
+        "s04-chair",
+        "s04-lawyer"
+      ],
+      "locations": [
+        "區公所聽證會場"
+      ],
+      "state": {
+        "time": "十七號上午，手術前一天",
+        "knowledge": "邱教練的會館計畫被帳本打穿",
+        "carry_forward": "鑑定結果"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "鑑定結果",
+      "youtube_title": "簽名鑑定出爐：十一個名字確實是她簽的，但指使的人坐在對面",
+      "duration_s": 120,
+      "logline": "鑑定報告當場打開，十一個簽名可能讓游夏自己被追究，也可能讓趙總進程序。",
+      "hook": "邱教練扯鬆領帶：「這帳是她偽造的！跟那十一個簽名一樣！」",
+      "hook_type": "danger",
+      "mid_hook": "主席唸出鑑定：「十一個簽名，確為游夏女士筆跡。」趙總的律師鬆一口氣——主席翻下一頁。",
+      "conflict": "鑑定證明是她簽的，她得證明是誰叫她簽的。",
+      "turn": "大家以為她輸了，下一頁是小賀提供的趙總手寫便條：『十一個，照上次的』，同一份補簽指示。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "主席：「鑑定附件顯示，簽名由趙先生指使。本案移送調查。」趙總站起來，又被律師按回椅子。",
+        "question": "泳池這樣就保住了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "投影幕上兩張便條並排：三十四歲那年的『十一個』與上週的『十一個，照上次的』，同一個筆跡。",
+      "glamour_shot": "小賀穿著太大的西裝站起來作證，聲音發抖卻沒停，她在旁邊對他點頭。",
+      "setups": [],
+      "payoffs": [
+        "s04-t03",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "趙總被移送調查",
+        "她的簽名被認定是受指使",
+        "小賀公開作證"
+      ],
+      "characters": [
+        "you-xia",
+        "zhao-zong",
+        "qiu-jiaolian",
+        "xiao-he",
+        "s04-chair",
+        "s04-lawyer"
+      ],
+      "locations": [
+        "區公所聽證會場"
+      ],
+      "state": {
+        "time": "十七號中午",
+        "knowledge": "趙總進了程序",
+        "carry_forward": "主席對泳池的裁定"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "泳池保住了",
+      "youtube_title": "主席宣布舊泳池保留，七個小學員在走廊尖叫，她的膝蓋卻在這一刻撐不住",
+      "duration_s": 110,
+      "logline": "泳池保住了，游夏想跟所有人一起慶祝，膝蓋卻把她拉回明天的手術。",
+      "hook": "主席敲槌：「海寧第一泳池，保留。」門外的七個孩子同時尖叫。",
+      "hook_type": "line",
+      "mid_hook": "老康吹哨，鄭檸哭花了妝，家長代表抱著小魚轉圈；她想跳，手杖從手裡滑掉。",
+      "extra_hooks": [
+        "趙總經過她身邊，什麼都沒說；邱教練被人從側門帶走時，看了她一眼。"
+      ],
+      "conflict": "她贏了聽證會，可是明天就要進手術室。",
+      "turn": "大家以為最難的已經過了，阿澄在走廊盡頭等她，臉色不對。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿澄扶住她，壓了一下膝蓋：「今天又腫了。明天，一刻都不能拖。」走廊的燈晃了一下。",
+        "question": "她撐得到明天嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        5,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "zhiyu"
+      ],
+      "spectacle": "區公所走廊上七個戴泳帽的孩子衝過來抱成一團，老康的哨子聲在走廊迴盪。",
+      "glamour_shot": "鄭檸哭花的眼妝下笑著罵她，游夏被孩子圍住、短髮被揉亂時的大笑。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舊泳池正式保留",
+        "趙總與邱教練離場"
+      ],
+      "characters": [
+        "you-xia",
+        "lao-kang",
+        "zheng-ning",
+        "xueyuan",
+        "s04-parent",
+        "a-cheng",
+        "zhao-zong",
+        "qiu-jiaolian",
+        "s04-chair"
+      ],
+      "locations": [
+        "區公所聽證會場",
+        "聽證會場走廊"
+      ],
+      "state": {
+        "time": "十七號下午",
+        "knowledge": "泳池保住；明天手術不能拖",
+        "carry_forward": "母親會不會來"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "明天我開店",
+      "youtube_title": "手術前一晚她去早餐店，媽媽只說一句：明天我開店",
+      "duration_s": 105,
+      "logline": "手術前一晚，游夏想問母親明天會不會來醫院，母親不給她答案。",
+      "hook": "她拄著手杖站在早餐店門口，鐵捲門拉到一半，母親在裡面刷鐵板。",
+      "hook_type": "image",
+      "mid_hook": "她說：「明天早上八點，第二醫院。」母親沒抬頭：「明天我開店。」",
+      "extra_hooks": [
+        "她在門口讀最後幾則前的一則，第二百零九則：「如果我開刀，我媽會來嗎。我不敢問。」"
+      ],
+      "conflict": "她想要母親在，卻問不出『妳會來嗎』。",
+      "turn": "她以為母親在拒絕，離開時發現鐵捲門上貼了一張紙：『十八號公休』，墨跡還沒乾。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她站在門口看著『十八號公休』，回頭——店裡的燈已經關了，母親沒出來。",
+        "question": "明天母親會來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "夜裡早餐店鐵捲門上一張手寫的『十八號公休』，路燈照著未乾的墨。",
+      "glamour_shot": "她拄著手杖站在路燈下看那張紙，嘴角慢慢揚起，眼睛是紅的。",
+      "setups": [
+        "s04-t10"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "草稿 212／213",
+        "母親貼出十八號公休"
+      ],
+      "characters": [
+        "you-xia",
+        "you-mu"
+      ],
+      "locations": [
+        "游母的早餐店門口"
+      ],
+      "state": {
+        "time": "十七號晚上八點",
+        "knowledge": "母親說開店，卻貼了公休；只剩最後一則草稿",
+        "carry_forward": "最後一則"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "第二百一十三則",
+      "youtube_title": "她看完三十四歲的自己最後一則沒發的草稿，終於知道那兩百一十三則全是寫給誰",
+      "duration_s": 140,
+      "logline": "手術前一晚，游夏讀最後一則草稿，終於知道三十四歲的她最怕的是什麼。",
+      "hook": "回到家，朵朵把手機交給她：「最後一則。我陪妳看。」",
+      "hook_type": "image",
+      "mid_hook": "第二百一十三則，日期是她辭職那天：「我把我們的錢拿去買泳池了。我不敢跟你說。」下面一行，游標還在閃：「你會走嗎？」",
+      "extra_hooks": [
+        "朵朵往上滑，一則一則唸收件人：「顧亦、顧亦、顧亦……」兩百一十三次。"
+      ],
+      "conflict": "她要知道三十四歲的她最後想說什麼。",
+      "turn": "她以為最後一則是告別，其實是一個問題，三十四歲的她到最後都沒問出口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把手機握緊，站起來，拄著手杖往門口走。朵朵：「去哪？」「替她問。」",
+        "question": "顧亦會怎麼回答？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "草稿匣從第一則一路滑到第兩百一十三則的蒙太奇，每一則的收件人都是同一個名字。",
+      "glamour_shot": "她坐在陽台畫牆前讀最後一則，手機的光照亮半張臉，朵朵靠在她肩上。",
+      "setups": [],
+      "payoffs": [
+        "m10",
+        "m08"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "草稿 213／213：全部看完",
+        "揭開兩百一十三則全寫給顧亦"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "顧家陽台畫牆"
+      ],
+      "state": {
+        "time": "十七號晚上十點",
+        "knowledge": "全部草稿寫給顧亦；最後一則是不敢說買泳池、問他會不會走",
+        "carry_forward": "去木工坊替她問"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "我替她問",
+      "youtube_title": "她把三十四歲的自己沒敢發的那則草稿拿到老公面前：她不敢問的，我問",
+      "duration_s": 110,
+      "logline": "游夏拄著手杖走到木工坊，要替三十四歲的自己問完那個問題。",
+      "hook": "深夜的木工坊亮著燈，她推開門，手杖敲在地上。顧亦抬頭。",
+      "hook_type": "image",
+      "mid_hook": "她把手機舉到他面前，螢幕上是最後一則：「她不敢問的，我問：你會走嗎？」",
+      "extra_hooks": [
+        "工作台上放著一頂泳帽，她給他的那頂，被他掛在檯燈上。"
+      ],
+      "conflict": "她要一個答案，他從不多說一句。",
+      "turn": "她以為他會躲，他放下刨刀，把手機接過去，讀了很久。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "他把手機還給她，看著她：「我沒走。」",
+        "question": "這算不算答案？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "深夜木工坊，檯燈上掛著一頂藍泳帽，燈光透過泳帽變成一圈藍色。",
+      "glamour_shot": "顧亦低頭讀手機，檯燈的藍光落在他睫毛上，抬頭的那一秒很慢。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她替三十四歲的自己問出那句話"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi"
+      ],
+      "locations": [
+        "顧亦的木工坊"
+      ],
+      "state": {
+        "time": "十七號晚上十一點",
+        "knowledge": "他說他沒走",
+        "carry_forward": "她要的不是這句"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "那不是答案",
+      "youtube_title": "老公說我沒走，她說那不是答案，他才指向家裡那個抽屜",
+      "duration_s": 105,
+      "logline": "游夏不接受『我沒走』，她要顧亦說一個她能拿在手上的答案。",
+      "hook": "「那不是答案。」她把手機拍在工作台上，泳帽晃了一下。",
+      "hook_type": "line",
+      "mid_hook": "他沉默很久，說：「協議在抽屜。妳簽的。我不簽。這是答案。」",
+      "conflict": "她要他說，他只會做。",
+      "turn": "她以為他又在逃避，他給的答案是三個多月來一直放在家裡的東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她轉身就走，手杖撞到門框，她沒回頭：「那我回去拿。」",
+        "question": "她拿協議要做什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "木工坊門口，她的影子跟手杖的影子被燈拉長到港邊的地上。",
+      "glamour_shot": "顧亦站在工作台後說完那句話，雙手撐在檯面上，眼神第一次沒躲。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他說出沒簽協議就是他的答案"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi"
+      ],
+      "locations": [
+        "顧亦的木工坊",
+        "港邊路"
+      ],
+      "state": {
+        "time": "十七號近午夜",
+        "knowledge": "不簽協議是他的答案",
+        "carry_forward": "家裡的抽屜"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "醒來還是夏夏嗎",
+      "youtube_title": "手術前一晚女兒半夜醒來問：明天妳醒來，還是夏夏嗎？",
+      "duration_s": 110,
+      "logline": "游夏回家要拿協議，朵朵醒著，問了一個她明天才能回答的問題。",
+      "hook": "她推開家門，客廳的小夜燈下，朵朵抱著蠟筆盒坐在抽屜前面。",
+      "hook_type": "image",
+      "mid_hook": "朵朵揉眼睛：「明天妳醒來，還是夏夏嗎？」她蹲下來：「我不知道。」",
+      "extra_hooks": [
+        "她從冰箱倒數表撕下最後一格『D-1』，朵朵在背面畫了一條很大的魚。"
+      ],
+      "conflict": "手術醒來的會是誰，她自己也不知道。",
+      "turn": "她以為朵朵要她保證，朵朵只說：「那妳先把今天的事做完。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "顧亦也回來了，站在門口。她的手放在抽屜把手上，回頭看他一眼。",
+        "question": "她要拉開那個抽屜嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "深夜客廳只亮一盞小夜燈，一個小女孩坐在電視櫃的抽屜前守著。",
+      "glamour_shot": "她蹲下來跟朵朵平視，小夜燈的暖光照在兩個人臉上，一個短髮、一個捲髮。",
+      "setups": [
+        "s04-t11",
+        "m12"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "倒數表撕到最後一格"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-duoduo",
+        "gu-yi"
+      ],
+      "locations": [
+        "顧家客廳"
+      ],
+      "state": {
+        "time": "十八號凌晨十二點",
+        "knowledge": "明天醒來是誰不知道",
+        "carry_forward": "抽屜裡的協議"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "所以我來了",
+      "youtube_title": "她拉開抽屜撕了那份離婚協議，老公說三十四歲的妳不會撕，她說：所以我來了",
+      "duration_s": 135,
+      "logline": "手術前幾小時，游夏要親手處理三十四歲的自己留下最重的那份文件。",
+      "hook": "她拉開抽屜，那份只簽了一邊的離婚協議躺在最上面，簽名是她的字。",
+      "hook_type": "image",
+      "mid_hook": "她把協議拿出來，看了顧亦一眼，從中間撕下去；再撕一次，再一次。朵朵捂住嘴。",
+      "extra_hooks": [
+        "碎紙落在地上，朵朵蹲下撿了一片，上面剛好是『游夏』兩個字，她偷偷塞進蠟筆盒。"
+      ],
+      "conflict": "協議是三十四歲的她簽的，撕掉它就是替她決定。",
+      "turn": "她以為他會阻止或高興，他只是看著碎紙，說了一句讓她更確定的話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "他看著碎紙：「三十四歲的妳不會撕。」她說：「所以我來了。」",
+        "question": "明天醒來，她還在嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "tianchong"
+      ],
+      "spectacle": "離婚協議的碎紙在小夜燈下飄落，像水面上的浮光，落在三個人之間的地板上。",
+      "glamour_shot": "她撕完最後一下抬頭看他，眼裡有淚但下巴是揚的；他站在門口，眼睛在笑。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "離婚協議撕了",
+        "朵朵留下一片寫著『游夏』的碎紙"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "顧家客廳"
+      ],
+      "state": {
+        "time": "十八號凌晨，手術前八小時",
+        "knowledge": "離婚協議撕了；他知道三十四歲的她不會撕",
+        "carry_forward": "手術"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "妳爸也是這間",
+      "youtube_title": "手術當天清晨，三年不跟她說話的媽媽已經坐在醫院走廊，握住她的手",
+      "duration_s": 120,
+      "logline": "手術日，游夏以為母親不會來，走廊上卻已經有人在等。",
+      "hook": "清晨的醫院走廊，日光燈一盞盞亮起，盡頭的長椅上坐著一個穿圍裙的人。",
+      "hook_type": "image",
+      "mid_hook": "母親握住她的手，粗糙、燙過的手掌：「妳爸也是這間醫院。」",
+      "extra_hooks": [
+        "母親從保溫袋裡拿出一個蛋餅：「不能吃，聞一下。」她真的低頭聞了。"
+      ],
+      "conflict": "她怕進手術室，更怕身邊沒有母親。",
+      "turn": "她以為母親來是因為擔心，母親說的是：父親最後那幾天，她一個人坐在同一條走廊。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "母親把她的手握得更緊：「那次我一個人坐。這次不要。」護理師推著輪椅過來：「游夏，換衣服了。」",
+        "question": "她準備好了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "shenghuo"
+      ],
+      "spectacle": "清晨醫院長走廊，日光燈從遠到近一盞盞亮起，長椅上母女的兩隻手握在一起。",
+      "glamour_shot": "她拄著刻名字的手杖站在走廊，晨光從窗邊打進來，母親抬頭看她的那一秒。",
+      "setups": [],
+      "payoffs": [
+        "s04-t10",
+        "m05",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母親來了醫院",
+        "母親說出父親過世前她一個人坐這條走廊"
+      ],
+      "characters": [
+        "you-xia",
+        "you-mu",
+        "gu-yi",
+        "gu-duoduo",
+        "s04-nurse"
+      ],
+      "locations": [
+        "第二醫院手術樓走廊"
+      ],
+      "state": {
+        "time": "十八號早上七點，手術 D-0",
+        "knowledge": "母親在；父親也在這間醫院走的",
+        "carry_forward": "換衣服、術前"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "妳今年幾歲",
+      "youtube_title": "麻醉師問她今年幾歲，她脫口說二十六，整間術前室安靜了",
+      "duration_s": 110,
+      "logline": "術前室裡游夏一緊張，二十六歲的她就露了餡，麻醉師的一句話讓手術更長了。",
+      "hook": "術前室，麻醉師拿著板夾：「姓名、年齡？」她說：「游夏，二十六。」",
+      "hook_type": "line",
+      "mid_hook": "麻醉師抬眼，她改口：「三十四。」又補一句：「心裡二十六。」顧亦在簾子外輕輕笑了一聲。",
+      "extra_hooks": [
+        "她對簾子外說：「如果我醒來是三十四歲的她，你別嚇到。」他說：「我不會。」"
+      ],
+      "conflict": "她想用玩笑撐過去，膝蓋的狀況卻比預想的糟。",
+      "turn": "她以為只要兩個小時，麻醉師看完片子說要延長。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "麻醉師翻到最後一張片子：「軟骨比上次更糟，預計四小時。」她握手杖的手指收緊。",
+        "question": "四小時裡會發生什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tianchong",
+        "jiating"
+      ],
+      "spectacle": "術前室的淺綠布簾，一邊是她坐在床沿、一邊是簾外顧亦的影子。",
+      "glamour_shot": "顧亦隔著布簾的側影，聽見她說『心裡二十六』時低頭笑，只有眼睛彎起來。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她跟顧亦說好醒來別嚇到"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "s04-anesthetist"
+      ],
+      "locations": [
+        "第二醫院術前室"
+      ],
+      "state": {
+        "time": "十八號早上八點",
+        "knowledge": "手術延長到四小時",
+        "carry_forward": "推進手術室"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "你會想我嗎",
+      "youtube_title": "推進手術室前她問老公：你會想我嗎？他沒答，門就關上了",
+      "duration_s": 115,
+      "logline": "推床停在手術室門口，游夏想帶一句話進去，顧亦沒給。",
+      "hook": "推床的輪子在走廊上滾，母親、朵朵、顧亦跟在旁邊，誰都沒說話。",
+      "hook_type": "image",
+      "mid_hook": "門口，她抓住他的袖子：「你會想我嗎？」他看著她，沒答。",
+      "extra_hooks": [
+        "朵朵把那片寫著『游夏』的碎紙塞進她手心：「拿著，回家要還我。」"
+      ],
+      "conflict": "她要他說一句，他從不在她進門前說。",
+      "turn": "她以為他又不答，他的手按住了她抓袖子的手，一直到護理師把推床往裡推。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "手術室的門慢慢闔上，最後一格是她握著碎紙的手，和他留在門縫外的手。",
+        "question": "他為什麼不答？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "手術室的兩扇門從兩邊往中間闔上，門上『手術中』的燈一亮。",
+      "glamour_shot": "推床上她仰頭看他，短髮散在白枕頭上；他低頭的臉在走廊燈下，嘴唇動了一下又沒說。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "朵朵把『游夏』碎紙交給她帶進去"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo",
+        "you-mu",
+        "s04-nurse"
+      ],
+      "locations": [
+        "第二醫院手術室門口"
+      ],
+      "state": {
+        "time": "十八號早上八點半",
+        "knowledge": "門關了，他沒答",
+        "carry_forward": "門外的他"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "對著門",
+      "youtube_title": "手術室的門關上了，他對著門說了三個字，只有女兒和岳母聽見",
+      "duration_s": 120,
+      "logline": "門關上之後，顧亦做了一件他在她面前從沒做過的事，只有兩個人聽見。",
+      "hook": "門上『手術中』的燈亮著，顧亦站在門前，沒有回長椅。",
+      "hook_type": "image",
+      "mid_hook": "他把額頭抵在門上，嘴唇動了，說了三個字；推床的輪聲從旁邊滾過，蓋住了聲音。",
+      "extra_hooks": [
+        "鏡頭不拍他的嘴，只拍朵朵睜大的眼睛，和母親慢慢轉過來的臉。"
+      ],
+      "conflict": "他對她說不出口的話，只能對一扇門說。",
+      "turn": "大家以為他會一直沉默，他說了，但她在門裡聽不見。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "朵朵拉著外婆的圍裙小聲說：「他說了！」母親把手指放在嘴唇上：「噓。」",
+        "question": "他說了哪三個字？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "手術室門上紅色的『手術中』燈牌，門前一個男人的額頭抵在門上，背影一動不動。",
+      "glamour_shot": "顧亦額頭抵著門的側臉，走廊冷白的燈下，眼睛閉著，手掌平貼在門上。",
+      "setups": [
+        "s04-t12"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他對著門說了三個字，朵朵與母親聽見"
+      ],
+      "characters": [
+        "gu-yi",
+        "gu-duoduo",
+        "you-mu",
+        "you-xia"
+      ],
+      "locations": [
+        "第二醫院手術室門口"
+      ],
+      "state": {
+        "time": "十八號早上九點，手術第一小時",
+        "knowledge": "他說了三個字，她沒聽見；朵朵與母親聽見",
+        "carry_forward": "朵朵會不會說"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "你跟她說過沒",
+      "youtube_title": "手術室外，岳母問女婿：你跟她說過那三個字沒？他只說了一個字",
+      "duration_s": 110,
+      "logline": "四小時的第一段，母親跟顧亦第一次單獨坐在一起，要把八年沒說的說一點。",
+      "hook": "母親坐到顧亦旁邊，盯著門：「你跟她說過沒？」",
+      "hook_type": "question",
+      "mid_hook": "顧亦：「沒。」母親哼了一聲：「跟她爸一樣。她爸也是在走廊才說。」",
+      "extra_hooks": [
+        "顧奶奶帶著一盆剝好的豆子來，三個大人加一個小孩擠在一張長椅上。"
+      ],
+      "conflict": "母親與女婿八年來沒好好說過話，現在只能坐在一起等。",
+      "turn": "大家以為母親要罵他，母親把保溫袋裡的蛋餅撕一半給他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "母親撕了一半蛋餅塞進他手裡：「她醒來，你自己跟她說。」他低頭咬了一口，沒抬頭。",
+        "question": "他會說嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "shenghuo"
+      ],
+      "spectacle": "醫院長椅上擠著四個人：母親、顧亦、顧奶奶、朵朵，一盆豆子跟一個撕成兩半的蛋餅。",
+      "glamour_shot": "顧亦捲著袖子低頭吃蛋餅，母親在旁邊側眼看他，嘴角藏著一點笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "母親與顧亦第一次單獨說話",
+        "母親分了他半個蛋餅"
+      ],
+      "characters": [
+        "gu-yi",
+        "you-mu",
+        "gu-nainai",
+        "gu-duoduo"
+      ],
+      "locations": [
+        "第二醫院手術樓走廊"
+      ],
+      "state": {
+        "time": "十八號早上十點，手術第二小時",
+        "knowledge": "母親要他醒來自己說",
+        "carry_forward": "手術的進度"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "家屬請簽名",
+      "youtube_title": "手術進行到一半護理師走出來：家屬請過來簽名，走廊上所有人都站了起來",
+      "duration_s": 110,
+      "logline": "手術過半，護理師突然出來找家屬，走廊上的人只能等一個答案。",
+      "hook": "手術室的門開了一條縫，護理師探出頭：「游夏的家屬？」四個人同時站起來。",
+      "hook_type": "danger",
+      "mid_hook": "護理師遞出一張同意書：「軟骨要多補一處，需要家屬再簽一次。」顧亦的筆停在紙上。",
+      "conflict": "多補一處就多一小時，他得替她決定一件事。",
+      "turn": "他以為自己能簽，筆卻停住——他從不替她決定；母親把筆接過去：「我是她媽，我簽。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門又關上，燈還亮著。時鐘從第二小時跳到第三小時，朵朵抓緊顧亦的褲管。",
+        "question": "多一小時，她還好嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "手術室門開一條縫，冷白光從裡面漏出來，只看得到護理師的帽子與一張同意書。",
+      "glamour_shot": "顧亦握筆停住的特寫，手背上的木屑傷口，抬頭看母親的那一秒。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母親替她簽下補軟骨的同意書"
+      ],
+      "characters": [
+        "gu-yi",
+        "you-mu",
+        "gu-nainai",
+        "gu-duoduo",
+        "s04-nurse"
+      ],
+      "locations": [
+        "第二醫院手術室門口"
+      ],
+      "state": {
+        "time": "十八號上午十一點，手術第三小時",
+        "knowledge": "手術多補一處、延長一小時",
+        "carry_forward": "朵朵的等待"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "兩個夏夏握手",
+      "youtube_title": "等手術的女兒畫了一張畫：兩個夏夏握手，她說她們已經說好了",
+      "duration_s": 115,
+      "logline": "第三小時，朵朵用蠟筆畫出她心裡的答案，大人們第一次聽懂她在怕什麼。",
+      "hook": "朵朵趴在長椅上，用斷掉的藍色蠟筆畫畫，誰都不准看。",
+      "hook_type": "image",
+      "mid_hook": "畫好了：兩個短頭髮的夏夏站在一個泳池邊，手握在一起。朵朵說：「她們說好了。」",
+      "extra_hooks": [
+        "顧奶奶問她們說好什麼，朵朵：「一個要回去，一個要回來。換好了，就都不哭。」"
+      ],
+      "conflict": "朵朵怕醒來的那個不是她要的，又兩個都要。",
+      "turn": "大家以為朵朵在怕，其實她畫的是她希望的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "朵朵在畫的角落寫上注音『媽媽』，又塗掉，改寫『夏夏』。顧亦看見了。",
+        "question": "朵朵什麼時候會叫媽？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "tianchong"
+      ],
+      "spectacle": "一張蠟筆畫在醫院長椅上攤開：褪色的藍泳池邊兩個短髮女人握手，一個穿泳衣、一個穿西裝。",
+      "glamour_shot": "顧亦蹲在長椅前看朵朵的畫，把她抱到腿上的那一秒，捲髮抵著他下巴。",
+      "setups": [
+        "m01",
+        "m12"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "朵朵畫好兩個夏夏握手"
+      ],
+      "characters": [
+        "gu-duoduo",
+        "gu-yi",
+        "gu-nainai",
+        "you-mu"
+      ],
+      "locations": [
+        "第二醫院手術樓走廊"
+      ],
+      "state": {
+        "time": "十八號中午，手術第四小時",
+        "knowledge": "朵朵心裡兩個夏夏說好了；她想叫媽",
+        "carry_forward": "燈什麼時候滅"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "燈滅了",
+      "youtube_title": "四個多小時後手術燈終於熄了，醫院走廊上所有人同時站起來",
+      "duration_s": 120,
+      "logline": "手術燈熄的那一刻，走廊上的每個人都在等一句話。",
+      "hook": "門上『手術中』的燈，啪一聲熄了。",
+      "hook_type": "image",
+      "mid_hook": "護理師走出來，拿下口罩：「很順利。」母親坐回長椅，用圍裙捂住臉。",
+      "extra_hooks": [
+        "老康、鄭檸、小賀、小魚擠在走廊轉角，小魚手上拿著七個學員一起寫的『教練加油』。"
+      ],
+      "conflict": "手術順利，可是醒來的是誰沒有人知道。",
+      "turn": "大家以為可以馬上進去看她，護理師說麻藥還沒退，要再等。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "顧亦隔著恢復室的玻璃看她睡著的臉，手放在玻璃上，跟早上放在門上一樣。",
+        "question": "她醒來會是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "zhiyu"
+      ],
+      "spectacle": "走廊轉角擠滿人：老康、鄭檸、小賀、小魚拿著七個小學員的卡片，所有人看向同一扇門。",
+      "glamour_shot": "顧亦站在恢復室玻璃前，玻璃映出他的臉和她睡著的側臉疊在一起。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "手術順利",
+        "老康、鄭檸、小賀、小魚都來了"
+      ],
+      "characters": [
+        "gu-yi",
+        "you-mu",
+        "gu-duoduo",
+        "lao-kang",
+        "zheng-ning",
+        "xiao-he",
+        "xueyuan",
+        "s04-nurse"
+      ],
+      "locations": [
+        "第二醫院手術室門口",
+        "恢復室玻璃窗外"
+      ],
+      "state": {
+        "time": "十八號下午一點",
+        "knowledge": "手術順利，麻藥未退",
+        "carry_forward": "她醒來是誰"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "朵朵發誓",
+      "youtube_title": "她麻藥還沒退，女兒對著外婆發誓：那三個字我不會說，要她自己問",
+      "duration_s": 115,
+      "logline": "她還在睡，朵朵替那三個字定了規矩；病床上的手指先動了。",
+      "hook": "朵朵爬上病房的椅子，舉起手：「外婆，我發誓不說。」",
+      "hook_type": "line",
+      "mid_hook": "母親問為什麼，朵朵：「他每次都等她問。這次她也要問。」",
+      "extra_hooks": [
+        "床頭靠著那根刻名字的手杖，顧亦把握把轉向床的那一邊。"
+      ],
+      "conflict": "朵朵想說又不能說，她要讓夏夏自己去問。",
+      "turn": "大家以為朵朵會憋不住，她把自己的嘴用一張貼紙貼起來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "病床上，她的手指動了一下，眼睛慢慢睜開。朵朵撕掉嘴上的貼紙，憋著氣不敢喊。",
+        "question": "醒來的是哪一個游夏？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "tianchong",
+        "xiju"
+      ],
+      "spectacle": "病房午後的光，床頭靠著刻名字的木手杖，窗台上擺著七個學員寫的卡片。",
+      "glamour_shot": "顧亦站在病房門口不進來，逆光裡的身影，手上還有早上門上的灰。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "朵朵發誓不說，讓她自己問"
+      ],
+      "characters": [
+        "gu-duoduo",
+        "you-mu",
+        "gu-yi",
+        "you-xia"
+      ],
+      "locations": [
+        "第二醫院病房"
+      ],
+      "state": {
+        "time": "十八號下午四點",
+        "knowledge": "朵朵不說，她要自己問",
+        "carry_forward": "她睜開眼"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "等妳出院",
+      "youtube_title": "術後醒來女兒說老公說了一句她沒聽見的話，她問他，他蹲下來只說：等妳出院",
+      "duration_s": 140,
+      "logline": "游夏術後醒來，想知道門外那句話，朵朵不說、顧亦也不說，她第一次堅持要他自己答。",
+      "hook": "她睜眼，第一眼是朵朵。朵朵說：「夏夏。」她說：「是我。」",
+      "hook_type": "line",
+      "mid_hook": "朵朵鬆一口氣，然後湊到她耳邊：「顧亦說了一句話，妳沒聽見。」",
+      "extra_hooks": [
+        "她問什麼，朵朵把嘴閉成一條線：「我不說，妳自己問。」母親在旁邊轉頭偷笑。"
+      ],
+      "conflict": "她要知道那句話，每個聽見的人都要她自己去問。",
+      "turn": "她以為問了他就會答，他把問題丟回給朵朵；她不讓，第一次說『我問你』。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她看向門口：「你說了什麼？」「妳問她。」「我問你。」他走過來，蹲在床邊，說：「等妳出院。」",
+        "question": "出院那天，他會說嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "病房裡一張床、一根刻名字的手杖、一個小女孩、一個母親，門口的男人走進來蹲下的那一格。",
+      "glamour_shot": "顧亦蹲在床邊與她平視，窗外的夕光打在他半邊臉上，眼睛在笑、嘴角沒動。",
+      "setups": [],
+      "payoffs": [
+        "s04-t11",
+        "s04-t12",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她醒來還是二十六歲的她",
+        "朵朵守住了那三個字",
+        "他答應出院再說"
+      ],
+      "characters": [
+        "you-xia",
+        "gu-yi",
+        "gu-duoduo",
+        "you-mu"
+      ],
+      "locations": [
+        "第二醫院病房"
+      ],
+      "state": {
+        "time": "十八號傍晚",
+        "knowledge": "手術成功；她知道他對門說了三個字，他說等出院再說",
+        "carry_forward": "出院那天與朵朵的畫"
+      }
+    }
+  ]
+}

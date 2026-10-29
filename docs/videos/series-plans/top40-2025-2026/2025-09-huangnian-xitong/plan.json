@@ -1,0 +1,44 @@
+{
+  "slug": "2025-09-huangnian-xitong",
+  "title": "全村餓肚子，我家飄肉香",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：系統從哪來揭開（原主臨死前的願，倉格是她餵飽過的人數）、糧案真相揭開、荒年結束（春雨）；石嶺村成了方圓百里唯一的糧村，她的四個孩子各有去處，霍青回來不走了；系統最後一格『倉滿』，消失。第 300 集最後一格，村口來了一個餓到走不動的小姑娘，手裡抓著一張跟她當年一樣的紙：『姐姐，我也有一個倉。』留第二部的口子。站主要收死的話，刪掉最後一格、cliffhanger 改 emotion 即可。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感架空古裝荒年種田喜劇：乾裂的田、灰黃的村、一間冒煙的土灶；唯一的顏色是她鍋裡的肉與第五季的綠。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是『餓』的畫面或食物特寫對比。",
+    "reuse": "固定場景：周家土屋與灶、村口老槐、村長家、縣衙、黑風寨的山口、第五季的新田。",
+    "voice": "國語；女主快、潑、帶現代詞但不出戲（她會自己改口）；孩子四種童聲；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "灶前文戲一張首格＋緩推可省五到七成；食物特寫每季拍一組重用；系統介面用字卡不用特效。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《荒年全村啃樹皮，我有系統滿倉肉》（2025 年紅果峰值熱度第 9，古裝穿越系統種田喜劇）",
+    "how": "只學套路：現代女穿到荒年成帶孩子的寡婦、系統有條件供給、憑空出現的肉要有說法、全村啃樹皮我家頓頓有肉的對比爽、極品親戚與惡鄰、護崽、從一家到一村的種田升級、收服村民、身分不簡單的男人、季末更大的外部勢力。世界（大荒、石嶺村）、系統的規則（『糧倉』、餵飽一人多一格、當天用完）、人物、四個孩子、糧案、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["全村餓肚子，我家飄肉香", "石嶺村的寡婦不缺糧", "荒年帶四個娃，我有一個倉"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}
