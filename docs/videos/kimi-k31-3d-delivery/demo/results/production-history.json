@@ -1,0 +1,57 @@
+{
+  "kind": "truthful_original_demo_authoring_failure_and_correction_history",
+  "at": "2026-10-26T11:17:46.561625+00:00",
+  "original_fixture_and_checker_bytes_unchanged": true,
+  "initial_layout": {
+    "observed_1920px_scroll_height": 1182,
+    "required_height": 1080,
+    "corrected_with_CSS_spacing_and_canvas_height": true,
+    "original_template_private_file": "viewer-initial-overflow.template.html",
+    "original_template_sha256": "01e968df85f790fae2fb85ccac76dc25be4039186a9cacb1f7e1dbb827058891",
+    "retention_limit": "The initial screenshot and JSON observation filenames were reused during the layout fix; their original binary bytes are not claimed retained. The initial template is retained and the actual initial tool output recorded scrollHeight 1182."
+  },
+  "source_peer_corrections": [
+    "Reject out-of-scope translated uploads rather than displaying fixed-axis conclusions.",
+    "Compute section loop/material labels from actual sections rather than slot names.",
+    "Download the actual currently loaded STL/spec bytes and remove preset-specific statements for custom files.",
+    "Neutralize default-only dimensions and identify red specification circle separately from actual mesh edges."
+  ],
+  "actual_browser_failures": [
+    {
+      "private_raw_receipt": "browser-verification-failure-1793012957582.json",
+      "sha256": "911ae32042737bf90bac7726c24139343598784e16e4f3b0c61ca476962dd21e",
+      "bytes": 2557,
+      "actual_error": "Error: locator.click: Error: strict mode violation: locator('[data-view=\"oblique\"]') resolved to 3 elements:\n    1) <button data-view=\"oblique\" aria-pressed=\"true\">立體・拖曳旋轉</button> aka getByRole('button', { name: '立體・拖曳旋轉' })\n    2) <canvas width=\"898\" class=\"mesh\" height=\"280\" id=\"mesh-ring\" data-view=\"oblique\" aria-label=\"有孔墊圈的實際三角網格\" data-section-segments=\"256\" data-rendered-triangles=\"512\"></canvas> aka getByLabel('有孔墊圈的實際三角網格')\n    3) <canvas width=\"898\" class=\"mesh\" height=\"280\" id=\"mesh-filled\" data-view=\"oblique\" aria-label=\"刻意填孔反例的實際三角網格\" data-section-segments=\"128\" data-rendered-triangles=\"256\"></canvas> aka getByLabel('刻意填孔反例的實際三角網格')\n\nCall log:\n\u001b[2m  - waiting for locator('[data-view=\"oblique\"]')\u001b[22m\n",
+      "checks_completed": 4,
+      "outer_process_exit_code": 1
+    },
+    {
+      "private_raw_receipt": "browser-verification-failure-1793013035085.json",
+      "sha256": "d26c241aa07c52b61397c54975a50f6106df4d2beebd953294c1a7cc7a69b24b",
+      "bytes": 3815,
+      "actual_error": "TimeoutError: page.waitForEvent: Timeout 30000ms exceeded while waiting for event \"download\"\n=========================== logs ===========================\nwaiting for event \"download\"\n============================================================",
+      "checks_completed": 10,
+      "outer_process_exit_code": 1
+    }
+  ],
+  "file_download_correction": "The normal file:// href download did not emit a Chromium download event; final offline viewer uses normal browser Blob downloads from exact embedded input bytes, with no external requests or security bypass.",
+  "canvas_clip_correction": {
+    "observed_by_actual_image_view": true,
+    "initial_top_and_section_geometry_touched_bottom_raster_edge": true,
+    "before_correction_figures_retained_privately_in": "pass2-pre-margin-figures/",
+    "final_scale_adds_64_pixel_vertical_margin": true,
+    "final_browser_assertion": "Both actual canvas colored-border pixel counts are zero in all four views."
+  },
+  "final_browser_check_count": 20,
+  "final_browser_true_exit_code": 0,
+  "all_private_error_receipts_retained_without_overwrite": true,
+  "no_model_paid_native_or_backend_work": true,
+  "bounded_last_visual_addition": {
+    "root_actual_narrative_finding": "All four original detailed views reveal check results too early.",
+    "resolution": "One extra neutral side-view source frame from the actual two STLs; no check result overlays.",
+    "new_frame": "figures/00-neutral-side-intro.png",
+    "new_frame_sha256": "569b6bd06455d340de64ad07c7bcea90a94ce5b51494f9ac2f63d90f6e5162ff",
+    "old_four_figure_hashes_unchanged": true,
+    "native_flags_results_or_raw_inputs_changed": false
+  }
+}

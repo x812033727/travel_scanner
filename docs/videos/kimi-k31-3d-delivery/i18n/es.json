@@ -1,0 +1,501 @@
+{
+  "title": "Kimi K3.1 Pro: ¿tu modelo 3D descargado sirve de verdad?",
+  "description": "Grabación/verificación: 2026-10-26 (Taipéi). Kimi K3.1 Pro destaca la creación 3D. ¿Cuándo puedes entregar lo descargado? Para usar modelos 3D de IA en exhibición, edición o entrega de piezas: comparamos dos STL de una arandela original, desde medidas y cierre hasta el agujero pasante y el paso libre mínimo.\n\nAmbos son material didáctico del equipo editorial. El relleno es deliberado, no un fallo de Kimi. Medidas nominales: exterior 40 mm, agujero 16 mm, espesor 5 mm. Con 64 segmentos, el paso libre mínimo real es aprox. 15.980727 mm: tener un agujero no garantiza un paso libre mínimo de al menos 16 mm.\n\nIncluye visor local, STL originales, especificación JSON y verificador Python. Descomprime todo en una carpeta y ejecuta en demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nNo probamos una cuenta de Kimi, no ejecutamos su modelo ni probamos la exportación o la impresión real. La descripción oficial consultada de recursos descargables para imprimir no especifica STL. Los pesos completos se prometen antes de 2026-11-04; no verificamos haber obtenido los nuevos pesos. BenchCAD 92.7 es VoxelIoU with-tools, no éxito de impresión.\n\nLa revisión local solo cubre el eje indicado, muestreo limitado, medidas exteriores, bordes y volumen. No cubre todos los agujeros, autointersecciones, espesor mínimo de pared, laminado, materiales, carga ni condiciones de fabricación. Aprobar no es una certificación de fabricación.\nEl verificador original no implementa este nuevo requisito de paso libre mínimo.\n\nMaterial didáctico original (CC0; no generado por Kimi): https://raw.githubusercontent.com/x812033727/travel_scanner/1738c9460205627a73b05917790af6ac89812e12/docs/videos/kimi-k31-3d-delivery/downloads/kimi-3d-demo.zip",
+  "tags": [
+    "Kimi K3.1 Pro",
+    "Kimi 3D Make",
+    "modelos 3D",
+    "STL",
+    "impresión 3D",
+    "entrega de modelos 3D",
+    "BenchCAD",
+    "noticias de IA",
+    "verificación de modelos",
+    "Mokaair"
+  ],
+  "chapters": {
+    "download-moment": "Una arandela, tres sorpresas",
+    "news-reaches-desk": "Nuevo modelo, ¿qué se exige?",
+    "spec-arrives": "Define un agujero comprobable",
+    "outer-bounds-pass": "Medidas y cierre no bastan",
+    "run-ring-command": "Dos archivos, un verificador",
+    "new-use-new-spec": "El uso cambia la aceptación"
+  },
+  "source_hashes": {
+    "chapters": {
+      "download-moment": "e51064b94360",
+      "news-reaches-desk": "a6a91f46b8b1",
+      "spec-arrives": "c6d07c8cbe01",
+      "outer-bounds-pass": "bd19e2e5a94c",
+      "run-ring-command": "6afd37a1fee0",
+      "new-use-new-spec": "16ff0f3eba91"
+    },
+    "title": "952836668e80",
+    "description": "343ab9aa8b2d",
+    "tags": "a542d0d7b55c",
+    "thumbnail": "bbc1db3e7add"
+  },
+  "lines": {
+    "2g58": {
+      "source_hash": "e5256c8698cd",
+      "text": "El 26 de octubre de 2026 abro en esta computadora dos arandelas didácticas que hice."
+    },
+    "2sc4": {
+      "source_hash": "6b3e49e3002f",
+      "text": "Kimi K3.1 Pro destaca el 3D descargable. ¿Cuándo puedo aceptar el archivo recibido?"
+    },
+    "4ran": {
+      "source_hash": "6b6bcd244689",
+      "text": "Paso a la vista lateral y espero la comparación de medidas exteriores y requisitos."
+    },
+    "pfy0": {
+      "source_hash": "d6c1972bf2c2",
+      "text": "Aún no se ve el resultado de malla cerrada. ¿Qué puede garantizar?"
+    },
+    "5jr1": {
+      "source_hash": "7477deec8160",
+      "text": "Al ver el corte del agujero, ¿su punto más estrecho cumplirá el requisito?"
+    },
+    "fv1i": {
+      "source_hash": "363986dce4f4",
+      "text": "En el mismo visor, mantengo ángulos comparables para los dos archivos que hice."
+    },
+    "6yl7": {
+      "source_hash": "7c930eebed4c",
+      "text": "Al juntar especificaciones, archivos originales y resultados, se ve la diferencia."
+    },
+    "b7uf": {
+      "source_hash": "d77b7a380bcc",
+      "text": "Con la misma especificación puedes decidir si aceptas o devuelves el archivo."
+    },
+    "gzek": {
+      "source_hash": "ff7586e4b01a",
+      "text": "¿Qué separa una bella vista previa 3D de una pieza útil?"
+    },
+    "q0p1": {
+      "source_hash": "ee0342a2d04b",
+      "text": "Abro la especificación de ambas muestras; pongo al lado medidas exigidas y datos del modelo."
+    },
+    "lqfp": {
+      "source_hash": "71bb6443e1d8",
+      "text": "La nueva versión de Kimi, del 24 de octubre, hora de Taipéi, ofrece 3D Make."
+    },
+    "h9gn": {
+      "source_hash": "86accf8a9884",
+      "text": "Con 3D Make puedes previsualizar y editar en línea, y descargar los recursos."
+    },
+    "zwa9": {
+      "source_hash": "1e53ebfc088d",
+      "text": "La impresión 3D es un uso oficial, pero no define la entrega de esta arandela."
+    },
+    "ekg8": {
+      "source_hash": "27bbc4fe7ee6",
+      "text": "Los pesos completos siguen prometidos antes del 4 de noviembre; no son el archivo de hoy."
+    },
+    "rw5b": {
+      "source_hash": "87acb7a3f2a8",
+      "text": "Confirma formato y uso de la arandela: que se pueda descargar no basta para aceptarla."
+    },
+    "0glu": {
+      "source_hash": "7383bb42dedf",
+      "text": "En una evaluación de reconstrucción 3D publicó una puntuación de 92.7."
+    },
+    "y868": {
+      "source_hash": "dbf451505279",
+      "text": "Con herramientas, se reconstruye la forma 3D desde imágenes de varios ángulos."
+    },
+    "0m8z": {
+      "source_hash": "dd57695117d3",
+      "text": "El grupo de modelos abiertos usó 1000 archivos elegidos al azar de un total de 17900."
+    },
+    "uyzf": {
+      "source_hash": "3f91305a67df",
+      "text": "La métrica mide cuánto se superponen la forma reconstruida y la forma objetivo."
+    },
+    "dzyw": {
+      "source_hash": "3f106761ae62",
+      "text": "No es la tasa de piezas útiles obtenida al imprimir 100 piezas."
+    },
+    "nc22": {
+      "source_hash": "2ee956ac1a58",
+      "text": "Volvamos a la arandela: antes de aceptarla, ¿qué requisito concreto te falta?"
+    },
+    "56w0": {
+      "source_hash": "4281a83e3340",
+      "text": "La varilla debe pasar por el centro y el anillo conservar la superficie de contacto."
+    },
+    "66ya": {
+      "source_hash": "e669ea11da26",
+      "text": "Si solo pides que parezca arandela, aunque se vea bien, cada parte puede esperar algo distinto."
+    },
+    "1ks6": {
+      "source_hash": "45b4c0ed3c38",
+      "text": "La diferencia quizá no se note en la vista previa; escrita como requisito, permite comparar."
+    },
+    "zmyw": {
+      "source_hash": "c93f45134595",
+      "text": "El diámetro exterior de 40 mm fija el espacio que ocupa esta arandela didáctica."
+    },
+    "1gex": {
+      "source_hash": "460f9a9a3d8f",
+      "text": "El agujero nominal de 16 mm es la meta al dibujar el círculo, no el paso libre mínimo medido."
+    },
+    "v5m0": {
+      "source_hash": "cf481634f945",
+      "text": "El espesor de 5 mm es la distancia entre la base y la cara superior."
+    },
+    "d0ap": {
+      "source_hash": "c6d0428004bd",
+      "text": "Entrega estos números en una especificación junto con los dos STL."
+    },
+    "tvz8": {
+      "source_hash": "935057a49210",
+      "text": "Unidad, diámetros exterior y del agujero, y altura tienen campo propio: no adivinas al editar."
+    },
+    "4sem": {
+      "source_hash": "883b702e3770",
+      "text": "Si cambias tus requisitos, el verificador debe leer esos mismos requisitos."
+    },
+    "9xjo": {
+      "source_hash": "dd54352d926b",
+      "text": "Si aquel 40 es solo una coordenada, ¿qué hace que signifique milímetros?"
+    },
+    "o3u0": {
+      "source_hash": "cc499784147c",
+      "text": "STL no lleva unidad: la especificación externa y la importación deben concordar."
+    },
+    "0sh9": {
+      "source_hash": "3d604fc183e1",
+      "text": "Una unidad errónea cambia toda la pieza; que quepa en pantalla no basta."
+    },
+    "fu17": {
+      "source_hash": "681e4677e461",
+      "text": "Los dos archivos abiertos aquí son STL con datos reales de triángulos."
+    },
+    "7gpn": {
+      "source_hash": "7bd9eb8835b8",
+      "text": "Ambos usan la misma orientación de coordenadas y esta especificación en milímetros."
+    },
+    "89zh": {
+      "source_hash": "faa9397391f4",
+      "text": "Con el mismo requisito de pieza, centramos la diferencia en el agujero pasante exigido."
+    },
+    "o8jk": {
+      "source_hash": "202437132685",
+      "text": "Rellené a propósito el centro de una muestra como contraejemplo para la entrega."
+    },
+    "dag4": {
+      "source_hash": "6bbd602a3a61",
+      "text": "No es un fallo al generar con Kimi: con igual forma exterior, vemos si revisamos el agujero."
+    },
+    "palv": {
+      "source_hash": "6de2fd7596f6",
+      "text": "Controlar ese relleno permite comparar de verdad la revisión de medidas exteriores."
+    },
+    "f84c": {
+      "source_hash": "a7144da00f0e",
+      "text": "Al recibir un modelo, quizá empiezas midiendo largo, ancho y alto con la regla."
+    },
+    "ipjt": {
+      "source_hash": "088d27c4283a",
+      "text": "Si bastara, rechazaría también el contraejemplo de centro lleno."
+    },
+    "0jfv": {
+      "source_hash": "ac4ff6aef353",
+      "text": "Ahora revisamos juntos los dos modelos con la misma forma exterior."
+    },
+    "ox5o": {
+      "source_hash": "6fbcd622aec8",
+      "text": "En la caja exterior indicada, los dos miden 40, 40 y 5."
+    },
+    "6skt": {
+      "source_hash": "5dd6b2d51ac5",
+      "text": "La caja abarca coordenadas extremas; el material en el centro no cambia su tamaño."
+    },
+    "z5jf": {
+      "source_hash": "e193a3118630",
+      "text": "La regla confirmó el exterior, pero aún no respondió por el agujero que queremos."
+    },
+    "boyv": {
+      "source_hash": "0ae2eb3df893",
+      "text": "¿Será más fiable comprobar si la malla está cerrada?"
+    },
+    "ljeg": {
+      "source_hash": "97c4d72b2e28",
+      "text": "Se comprueba si los bordes de los triángulos se unen bien a las caras vecinas."
+    },
+    "njr0": {
+      "source_hash": "3f58522ece93",
+      "text": "Ningún archivo tiene bordes abiertos; eso aún no dice si se puede entregar."
+    },
+    "q8wd": {
+      "source_hash": "7254d2396f8a",
+      "text": "La arandela puede tener agujero pasante y una superficie continua alrededor del hueco."
+    },
+    "ip0k": {
+      "source_hash": "e19fccd1f508",
+      "text": "La pared exterior se une a la cara superior, esta a la pared del agujero, y la base cierra el recorrido."
+    },
+    "pqc3": {
+      "source_hash": "487dfedb4993",
+      "text": "La malla cerrada no deja uniones abiertas en la superficie del material; no exige rellenar el centro."
+    },
+    "h0ab": {
+      "source_hash": "2f3eba2f0f6b",
+      "text": "La muestra perforada tiene 512 triángulos; el contraejemplo relleno, 256."
+    },
+    "ni1q": {
+      "source_hash": "bf0036038b4e",
+      "text": "El doble de caras solo muestra cómo se dividió esta malla; no puntúa su calidad."
+    },
+    "s8d7": {
+      "source_hash": "451202da75cb",
+      "text": "Ni la caja ni el cierre revisaron el paso central; hay que mirar en otra zona."
+    },
+    "qhwk": {
+      "source_hash": "b0ff2e117723",
+      "text": "El agujero exigido cruza el espesor por el centro, de la base a la cara superior."
+    },
+    "u98g": {
+      "source_hash": "db512fe298a2",
+      "text": "Un agujero en otro lugar o un círculo dibujado no sustituyen ese paso."
+    },
+    "rk1x": {
+      "source_hash": "3205fa814f4b",
+      "text": "En ambas muestras, la base está en cero y la cara superior en el espesor exigido."
+    },
+    "a6o8": {
+      "source_hash": "49bf205f8e52",
+      "text": "Descomprime todo en una carpeta y abre primero el visor incluido en el navegador."
+    },
+    "qqjh": {
+      "source_hash": "333693d1e7a9",
+      "text": "Alterna vista superior y lateral para separar medidas exteriores y paso central."
+    },
+    "wmo7": {
+      "source_hash": "5c7a312c0e0c",
+      "text": "Para revisar los originales, conserva la especificación; el mismo programa lee los triángulos."
+    },
+    "t7wu": {
+      "source_hash": "9f87381477f8",
+      "text": "Abre la terminal en la carpeta del material y pega el comando completo de la pantalla."
+    },
+    "zx72": {
+      "source_hash": "8c51ab90d083",
+      "text": "Leerá la muestra perforada y las especificaciones externas que acabamos de ver."
+    },
+    "a2bm": {
+      "source_hash": "0abb1a553b20",
+      "text": "El verificador coteja coordenadas y triángulos con la misma especificación externa."
+    },
+    "up0s": {
+      "source_hash": "65ec82799748",
+      "text": "Pega este comando para usar el contraejemplo que rellené a propósito."
+    },
+    "sfk4": {
+      "source_hash": "93119dc8199e",
+      "text": "Programa y especificación siguen iguales; solo cambia el modelo revisado."
+    },
+    "cmuz": {
+      "source_hash": "1e82e94e9dd2",
+      "text": "Así localizamos por qué coinciden las medidas pero difieren los resultados."
+    },
+    "x3p9": {
+      "source_hash": "f86d30a28a93",
+      "text": "El exterior pasa. ¿Hay triángulos que bloqueen el centro?"
+    },
+    "5len": {
+      "source_hash": "479cb6f41788",
+      "text": "El programa muestrea el agujero y calcula cruces con triángulos a lo largo del espesor."
+    },
+    "5fad": {
+      "source_hash": "d6dabac47d06",
+      "text": "El muestreo limitado cuenta las líneas bloqueadas; no garantiza cualquier forma de agujero."
+    },
+    "l8p2": {
+      "source_hash": "e6dc61221635",
+      "text": "Ninguna línea de observación de la muestra perforada toca material."
+    },
+    "it4f": {
+      "source_hash": "0ce141d0dbc6",
+      "text": "En el contraejemplo relleno, todas las líneas están bloqueadas."
+    },
+    "1b0m": {
+      "source_hash": "ee207c238450",
+      "text": "El archivo del inicio, de igual tamaño pero inaceptable, ya tiene un motivo de devolución."
+    },
+    "v4r0": {
+      "source_hash": "f687a7f69668",
+      "text": "A media altura, el corte de la muestra perforada deja dos contornos: interior y exterior."
+    },
+    "8q11": {
+      "source_hash": "130f601b6663",
+      "text": "El interno rodea un vacío; el contraejemplo solo tiene el externo y centro lleno."
+    },
+    "qlqs": {
+      "source_hash": "8aeebb645b6c",
+      "text": "A otras alturas persiste la diferencia entre centro vacío y relleno."
+    },
+    "2g8t": {
+      "source_hash": "02ebdaf48309",
+      "text": "El volumen de material también confirma, de otra manera, ese relleno central."
+    },
+    "dra2": {
+      "source_hash": "aa7e67a2faaa",
+      "text": "El contraejemplo relleno tiene más volumen, aunque conserva las mismas medidas exteriores."
+    },
+    "lxiq": {
+      "source_hash": "e4f3839fe9f8",
+      "text": "El contraejemplo bloqueado tampoco cumple el volumen exigido en la especificación."
+    },
+    "yxau": {
+      "source_hash": "f2adf91f7d7d",
+      "text": "Si el centro está vacío, ¿su punto más estrecho cumple siempre el diámetro nominal?"
+    },
+    "i9h8": {
+      "source_hash": "7ceb929b1c14",
+      "text": "Aproxima el círculo con 64 segmentos rectos y vértices en el radio indicado."
+    },
+    "b3ef": {
+      "source_hash": "c61874db21dd",
+      "text": "El segmento entre dos vértices queda más cerca del centro que el arco circular."
+    },
+    "pypq": {
+      "source_hash": "30f702a0cae8",
+      "text": "El diámetro más estrecho mide unos 15.98 mm, algo menos que el nominal."
+    },
+    "c8u0": {
+      "source_hash": "6e708932531d",
+      "text": "La diferencia es menor a 0.02 mm, pero está justo donde debe pasar la varilla."
+    },
+    "vlft": {
+      "source_hash": "fa124d1b1a03",
+      "text": "Compara el paso en su punto más estrecho; no basta con que exista un agujero."
+    },
+    "zzay": {
+      "source_hash": "ae6f973846c3",
+      "text": "Si el paso libre mínimo debe ser al menos el diámetro nominal, esta muestra se devuelve."
+    },
+    "c8hn": {
+      "source_hash": "a5125b7ff010",
+      "text": "La medición anterior muestra que el punto más estrecho no cumple el nuevo requisito."
+    },
+    "qqez": {
+      "source_hash": "ace04997aafb",
+      "text": "Si el uso de esta arandela exige más, no basta la aprobación limitada anterior."
+    },
+    "5m5q": {
+      "source_hash": "231a2969bad4",
+      "text": "¿Cómo escribes el nuevo paso libre mínimo en una frase que quien lo reciba pueda comprobar?"
+    },
+    "33ye": {
+      "source_hash": "cae95ccdd0eb",
+      "text": "Escribe en la entrega: paso libre mínimo de la pieza acabada de al menos 16 mm."
+    },
+    "edz9": {
+      "source_hash": "5f015817fad5",
+      "text": "Es un requisito añadido, no un campo ya implementado en la especificación original."
+    },
+    "f106": {
+      "source_hash": "1b822456cba9",
+      "text": "El verificador no probó esta nueva condición; su aprobación no responde al requisito."
+    },
+    "x4k6": {
+      "source_hash": "6753920eb84e",
+      "text": "Esta aprobación solo cubre eje indicado, medidas, bordes de malla y volumen."
+    },
+    "1cox": {
+      "source_hash": "b36327fd2aac",
+      "text": "Sin revisar: agujeros de cualquier forma, autointersecciones y grosor mínimo en toda la pared."
+    },
+    "6rli": {
+      "source_hash": "facfa20da921",
+      "text": "El laminado, material, carga y uso real de la pieza impresa siguen pendientes."
+    },
+    "3w3j": {
+      "source_hash": "b43310e0409c",
+      "text": "Volvamos a Kimi: este verificador solo lee STL de texto, no imágenes directamente."
+    },
+    "kwmv": {
+      "source_hash": "30c68da26eb2",
+      "text": "Para otro formato de malla, necesitas una herramienta que lo lea correctamente."
+    },
+    "cezr": {
+      "source_hash": "642a91565718",
+      "text": "Cambiar la extensión a STL no convierte el contenido en datos de triángulos."
+    },
+    "d7t1": {
+      "source_hash": "f7f807b51d7e",
+      "text": "Si quieres seguir modificando el agujero, ¿qué falta en la entrega además de esta malla?"
+    },
+    "t3r1": {
+      "source_hash": "45676ab928d3",
+      "text": "La vista previa muestra la forma general; la malla permite revisar la superficie real."
+    },
+    "rwiy": {
+      "source_hash": "9c68d5bc003f",
+      "text": "Para seguir cambiando el diámetro, pide también el archivo fuente que conserve cómo editarlo."
+    },
+    "ul11": {
+      "source_hash": "f80b707aa13b",
+      "text": "Una malla triangular como STL no conserva automáticamente cómo dibujaste aquel círculo."
+    },
+    "hrlr": {
+      "source_hash": "37b45190a2a2",
+      "text": "Aún no he probado qué extensiones puede exportar Kimi."
+    },
+    "vum2": {
+      "source_hash": "4a42896ae43f",
+      "text": "Anunciar descargas para imprimir no equivale a demostrar cómo exportar STL."
+    },
+    "cen6": {
+      "source_hash": "62a3c8bf0a8c",
+      "text": "Al probarlo, confirma permisos de cuenta y archivos recibidos; luego elige la herramienta."
+    },
+    "oe9l": {
+      "source_hash": "0384e3d51956",
+      "text": "Entregaré juntos los modelos que acabamos de ver, la especificación de su versión y los resultados."
+    },
+    "0gjn": {
+      "source_hash": "3e4a9688c27e",
+      "text": "Si cambia el original, ¿aún puedes entregarlo con estos resultados?"
+    },
+    "fxx4": {
+      "source_hash": "aa73b231996e",
+      "text": "Si cambia el original, los resultados solo valen para el archivo viejo; no se actualizan solos."
+    },
+    "3ro5": {
+      "source_hash": "48195b652435",
+      "text": "Quien entrega explica qué hizo y quien recibe tiene con qué comprobarlo de nuevo."
+    },
+    "usyf": {
+      "source_hash": "62e1f245b7ab",
+      "text": "Devuelve el contraejemplo relleno con sus resultados: así hay una base concreta para corregirlo."
+    },
+    "su1a": {
+      "source_hash": "f3778dfd1c3d",
+      "text": "Puedes entregar la muestra perforada y resultados limitados, pero no garantías de fabricación sin verificar."
+    },
+    "vw33": {
+      "source_hash": "68eabd430f3e",
+      "text": "Si quien recibe añade ese paso libre mínimo, incluye la comparación de mediciones independientes."
+    },
+    "nqza": {
+      "source_hash": "bdf61d6ed30f",
+      "text": "La belleza invita a descargar; un uso claro decide qué revisar después de la descarga."
+    },
+    "45nk": {
+      "source_hash": "513b82dd0b3b",
+      "text": "Solo si cumple tus requisitos y el resultado corresponde al archivo, puedes decir para qué sirve."
+    },
+    "70ym": {
+      "source_hash": "3d0791b9b4c7",
+      "text": "Esta arandela debe entregar una respuesta que quien la reciba pueda comprobar de nuevo."
+    }
+  },
+  "thumbnail": {
+    "tag": "Kimi K3.1 Pro",
+    "headline": "Archivo\n**¿Sirve?**",
+    "sub": "Demo propia\nNo creada por Kimi"
+  }
+}

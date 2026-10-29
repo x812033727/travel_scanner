@@ -1,0 +1,155 @@
+{
+  "schema_version": 1,
+  "episode": "kimi-k31-3d-delivery",
+  "kind": "preserved_production_history_index_not_current_stage_result",
+  "records": [
+    {
+      "stage": "isolated_initial_render",
+      "native_exit_code": 5,
+      "status": "failed",
+      "finding": "Default Playwright Chromium missing; no frames produced. Existing matching browser used only in subsequent command environment.",
+      "report": {
+        "file": "attempt-report.json",
+        "sha256": "a4d7ca317f0571a4d9774d151bbf57f4e92c0299a67d27633db0ccb413a11d0d",
+        "bytes": 1661
+      },
+      "freeze": {
+        "file": "freeze.json",
+        "sha256": "2d1dd2edb319d11e3517a3b5785fe159e1813d795e93f12a48ffab277510570b",
+        "bytes": 2637
+      },
+      "failure_not_erased": true
+    },
+    {
+      "stage": "canonical_render_after_all8_text_merge",
+      "outer_exit_code": 1,
+      "native_render_return_code": null,
+      "status": "failed_after_cache_created",
+      "finding": "Native contact-sheet screenshot exceeded30000ms;110stills and1008transitions retained; no timeout/template/source/quality change.",
+      "report": {
+        "file": "first-attempt-report.json",
+        "sha256": "67463d36759a1fa7317e2be023a780bc1a19052e91227d64216ef3944501b06b",
+        "bytes": 7065
+      },
+      "freeze": {
+        "file": "first-attempt-freeze.json",
+        "sha256": "fe7f40cbd0f84af0216d0138f0eeeaed0a080297647bc3fa4226849289fc9917",
+        "bytes": 4523
+      },
+      "failure_not_erased": true
+    },
+    {
+      "stage": "separately_authorized_cached_render_retry",
+      "native_exit_code": 0,
+      "drawn": 0,
+      "reused": 110,
+      "scene_count": 42,
+      "state_count": 110,
+      "result": {
+        "file": "result.json",
+        "sha256": "c9e3ccefa0077ca8e7fea59227b6719ccc74efbb1a55ea768b83dcd1980fa1b1",
+        "bytes": 12841
+      },
+      "freeze": {
+        "file": "freeze.json",
+        "sha256": "1500d9bc276a4b8347fa6c736032776105d0c29da0844780c8ef2cb1adb79f2d",
+        "bytes": 8875
+      },
+      "description": "Genuine native cached retry completed after the preceding true exit; earlier failures retained."
+    },
+    {
+      "stage": "metadata_only_ID_VI_thumbnail_correction_and_native_assembly",
+      "native_exit_code": 0,
+      "metadata_changes": [
+        "id.thumbnail.headline",
+        "vi.thumbnail.headline"
+      ],
+      "all114_body_translation_lines_unchanged": true,
+      "source_unchanged": true,
+      "foreign_thumbnails": 8,
+      "native_thumbnail_gaps": {},
+      "actual_visual_finding": "VI lowercase g descender clipping was observed despite native fit success; retained as a real finding. Separate uppercase correction has no result in this snapshot.",
+      "result": {
+        "file": "result.json",
+        "sha256": "a908116a9e58e993759e54de317ac9c150044676b421235d14b8fcb119d93567",
+        "bytes": 11998
+      },
+      "freeze": {
+        "file": "freeze.json",
+        "sha256": "0d92cd6196d5b27ebadbd39514f91fb6388c1ce4278e2cd6a49a00a2c6779522",
+        "bytes": 9731
+      },
+      "thumbnail_finding_receipt": {
+        "file": "actual-thumbnail-visual-review.json",
+        "sha256": "851841d4f29596b89780e0adac3f018360fc273e0e9820013059920c1708b74d",
+        "bytes": 1400
+      }
+    },
+    {
+      "stage": "separate_VI_headline_case_and_native_caption9",
+      "phase_completed_at": "2026-10-26T16:43:01.102Z",
+      "ROOT_inspection_at": "2026-10-26T16:44:04.197593+00:00",
+      "native_exit_code": 0,
+      "new_headline": "Tải về\n**DÙNG?**",
+      "all114body_translations_and_remaining_metadata_unchanged": true,
+      "previous_clipping_finding_preserved": true,
+      "ROOT_actual_VI_full_image_clip_resolved": true,
+      "captions_locales": 9,
+      "total_cues": 1364,
+      "speed_findings_preserved": 47,
+      "skipped": {},
+      "timing": "narration",
+      "foreign_checked_M4A": 0,
+      "receipt": "normal-caption9.json",
+      "ROOT_proof_sha256": "b4bbd0aee86d548dcba158f0ae978b901b215d5d9d0a376fabdf1b45e38fbccd",
+      "native_manifest_sha256": "87f6ec5985e2ddaa726b3faf5207b769c40eed73abfe985b86d7f2714d0bb95b",
+      "server_choice_save_approval_QA_backend_claimed": false
+    },
+    {
+      "stage": "normal_combined_manual_final_candidate_QA_and_first_pending",
+      "native_process_exit_code": 0,
+      "native_inline_QA_return_code": 1,
+      "QA_overall_ok": false,
+      "QA_passed": 10,
+      "QA_total": 11,
+      "QA_failed": [
+        "narration"
+      ],
+      "all47caption_and3thumbnail_warnings_preserved": true,
+      "policy_passed": true,
+      "policy_detail": "Jev：符合立場 0.87、有示範 0.91、建議 0.01、業配 0.05，通過",
+      "review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+      "status": "pending",
+      "serverapproval": false,
+      "metadata9_exact_values": true,
+      "native_review_files_three_fullbinary_verified": true,
+      "receipt": "backend-manual-candidate-main.json"
+    },
+    {
+      "stage": "same_pending_full1080_supplement",
+      "native_process_exit_code": 0,
+      "role": "evidence_main_1080p",
+      "old_three_refs_and_summary_payload_falseQA_history_choices_unchanged": true,
+      "uploaded_parts": 16,
+      "full_GET_bytes": 65490500,
+      "full_GET_sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+      "receipt": "backend-manual-candidate-main.json",
+      "followup_CC9_append_and_all13_disk_audit": "separate future verified result required"
+    }
+  ],
+  "source_narration_timeline_bindings": {
+    "source_sha256": "9686969c66cfd9329c28e0f75d62c22830930b609479560d896e3e087829958b",
+    "master_sha256": "2e2cf3db4758277b805c7f7e050bf4dce9c892f76689917c9832b971b8a9b6c1",
+    "timeline_sha256": "12287e1bb53102d5ab4f8cf3082aa4f08445007343955f569f4bc09d79387fba"
+  },
+  "other_history_preserved_in_existing_repo": [
+    "initial-check-interruption.json",
+    "all8-native-text-adoption.json",
+    "../source-review/index.json"
+  ],
+  "new_receipts_are_summaries_with_source_hashes_not_replacements_of_original_private_records": true,
+  "no_failure_pass_or_audio_approval_inferred": true,
+  "assembly_completed_at": "2026-10-26T16:26:01.228Z",
+  "ROOT_inspection_recorded_at": "2026-10-26T16:28:37.060952+00:00",
+  "documentation_prepared_at": "2026-10-26T16:38:38.351896+00:00"
+}

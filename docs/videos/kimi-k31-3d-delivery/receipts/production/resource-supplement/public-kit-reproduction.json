@@ -1,0 +1,36 @@
+{
+  "at": "2026-10-26T18:24:55.383037+00:00",
+  "input": "actual downloaded immutablepublicZIP",
+  "ZIP_sha256": "aa049f3c71407d5c9728f493dad7c79c8fce2116f85be9d71746077e3ce31b21",
+  "fresh_isolated_extraction": true,
+  "exact_documented_commands": [
+    {
+      "command": [
+        "python3",
+        "check.py",
+        "--stl",
+        "ring.stl",
+        "--spec",
+        "spec.json"
+      ],
+      "code": 0,
+      "accepted_for_this_limited_spec": true
+    },
+    {
+      "command": [
+        "python3",
+        "check.py",
+        "--stl",
+        "filled.stl",
+        "--spec",
+        "spec.json"
+      ],
+      "code": 0,
+      "accepted_for_this_limited_spec": false
+    }
+  ],
+  "both_exit0_mean_computation_not_acceptance": true,
+  "original_editorial_teaching_models_only": true,
+  "no_Kimi_model_export_print_or_manufacturing_test": true,
+  "original_minimum_clearance_16mm_gate_not_implemented": true
+}

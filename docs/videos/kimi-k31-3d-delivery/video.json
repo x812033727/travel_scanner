@@ -1,0 +1,1519 @@
+{
+  "schema_version": 1,
+  "slug": "kimi-k31-3d-delivery",
+  "format": "slides",
+  "theme": "paper",
+  "narration_locale": "zh-TW",
+  "category": "ai-news",
+  "target_minutes": [
+    9,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，台灣口音、咬字清楚，像拿著同一件小零件跟朋友把問題查到底。中速、自然有起伏，尺寸與小數放慢，反例揭曉平實，問句輕輕上揚。",
+    "model": "gemini-3.8-flash-tts"
+  },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "Kimi K3.1 Pro：漂亮3D，怎樣才算能用？",
+    "description": "錄製／查核：2026-10-26（台北）。Kimi K3.1 Pro把3D創作列為主打能力；模型下載後，怎樣才算能交付？\n給想拿AI三維作品做展示、改模型或交接零件的人：用同一枚原創墊圈，比較兩份STL，從外部尺寸、封閉表面走到中央通孔與最小淨空。\n\n兩份檔案都是編輯製作的教具，填孔是刻意反例，不是Kimi生成失誤。名義外徑40 mm、孔徑16 mm、厚5 mm；64段近似圓的實際最小淨空約15.980727 mm。有孔不等於滿足最小淨空至少16 mm的要求。\n\n教材含本地模型檢視頁、原始STL、JSON規格與Python檢查器。解壓至同一資料夾，在demo執行：\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\n本片未試用Kimi帳號、執行其模型、親測匯出或實際列印。官方可下載列印資產的已讀說明未指定STL副檔名；完整模型權重承諾2026-11-04前釋出，本輪未驗證新權重已取得。BenchCAD92.7是with-tools VoxelIoU，不是列印成功率。\n\n本地驗收只涵蓋指定軸向與有限取樣、外形尺寸、網格邊及體積；沒有驗完任意孔、自交、最小壁厚、切片、材料、承重或製造條件。通過不是製造認證。\n\n原創教具下載（CC0；非Kimi模型輸出）： https://raw.githubusercontent.com/x812033727/travel_scanner/1738c9460205627a73b05917790af6ac89812e12/docs/videos/kimi-k31-3d-delivery/downloads/kimi-3d-demo.zip",
+    "tags": [
+      "Kimi K3.1 Pro",
+      "Kimi 3D Make",
+      "3D模型",
+      "STL",
+      "三維列印",
+      "3D交付",
+      "BenchCAD",
+      "AI科技新聞",
+      "模型驗收",
+      "Mokaair"
+    ],
+    "video_id": null
+  },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "Kimi K3.1 Pro",
+      "headline": "下載\n**能用？**",
+      "sub": "原創示範\n非模型輸出",
+      "asset": "docs/videos/kimi-k31-3d-delivery/demo/figures/05-thumbnail-original-ring.png"
+    }
+  },
+  "sources": [
+    {
+      "title": "Kimi K3.1 Pro官方技術文章",
+      "url": "https://www.kimi.com/en/blog/kimi-k3-1-pro",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Kimi官方論壇首帖時間",
+      "url": "https://forum.moonshot.ai/t/kimi-k3-1-pro-has-launched-start-exploring-now/629.json",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Kimi K3.1 Pro Quickstart",
+      "url": "https://platform.kimi.ai/docs/guide/kimi-k3-1-pro-quickstart",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Kimi Code Models",
+      "url": "https://www.kimi.com/code/docs/en/kimi-code/models.html",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Autodesk Fusion：STL匯出與無單位三角表面",
+      "url": "https://help.autodesk.com/cloudhelp/ENU/Fusion-Model/files/SLD-3D-PRINT.htm",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Library of Congress：STL ASCII格式",
+      "url": "https://www.loc.gov/preservation/digital/formats/fdd/fdd000506.shtml",
+      "checked_on": "2026-10-26"
+    },
+    {
+      "title": "Library of Congress：STL格式家族",
+      "url": "https://www.loc.gov/preservation/digital/formats/fdd/fdd000504.shtml",
+      "checked_on": "2026-10-26"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "download-moment",
+      "template": "screenshot",
+      "data": {
+        "image": "docs/videos/kimi-k31-3d-delivery/demo/figures/00-neutral-side-intro.png",
+        "caption": "2026-10-26本機實際STL側視｜原創教具；結果尚未展開",
+        "credit": "Mokaair原創教具／CC0｜2026-10-26",
+        "highlight": {
+          "x": 74.5,
+          "y": 4,
+          "w": 23,
+          "h": 9
+        }
+      },
+      "claims": [
+        "c01",
+        "d01"
+      ],
+      "lines": [
+        {
+          "id": "2g58",
+          "text": "二零二六年十月二十六日，我在這台電腦打開兩份自製墊圈教具。"
+        },
+        {
+          "id": "2sc4",
+          "text": "Kimi K3.1 Pro主打三維下載，我想知道收到檔案後，怎樣才算能交差。",
+          "say": "奇米 K 三點一 Pro主打三維下載，我想知道收到檔案後，怎樣才算能交差。",
+          "say_for": "6b3e49e3002f",
+          "reveal": 1
+        }
+      ],
+      "chapter": "同一枚墊圈，三個說不通的結果"
+    },
+    {
+      "id": "three-unresolved",
+      "template": "bullets",
+      "data": {
+        "title": "檢查結果展開之前",
+        "items": [
+          "尺寸會對上規格嗎？",
+          "封閉標記能保證什麼？",
+          "剖面最窄處符合要求嗎？"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01",
+        "d02",
+        "d03",
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "4ran",
+          "text": "我在這個檢視頁切到側視，等外部尺寸跟規格對照的結果。",
+          "reveal": 1
+        },
+        {
+          "id": "pfy0",
+          "text": "封閉檢查的標記還沒展開，它到底能保證哪一部分？",
+          "reveal": 1
+        },
+        {
+          "id": "5jr1",
+          "text": "等畫面切到孔的剖面，最窄的位置又能不能符合要求？",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "one-delivery",
+      "template": "bullets",
+      "data": {
+        "title": "你收到的，必須是一份能查的檔案",
+        "items": [
+          "同一個檢視頁",
+          "同一份規格",
+          "同一對原始檔",
+          "結果還沒揭曉"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01",
+        "d07"
+      ],
+      "lines": [
+        {
+          "id": "fv1i",
+          "text": "同一個檢視頁裡，兩份自製檔案先保持在能比較的角度。",
+          "reveal": 1
+        },
+        {
+          "id": "6yl7",
+          "text": "把規格、原始檔和檢查結果放在一起，差別才看得出來。",
+          "reveal": 1
+        },
+        {
+          "id": "b7uf",
+          "text": "你也能用同一份規格，判斷收到的檔案該留下還是退回。",
+          "reveal": 1
+        },
+        {
+          "id": "gzek",
+          "text": "漂亮的三維預覽，離可用的零件還差哪一步？",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "news-reaches-desk",
+      "template": "bullets",
+      "data": {
+        "title": "新版本把3D帶到眼前",
+        "items": [
+          "台北10/24凌晨：官方論壇公告",
+          "Kimi K3.1 Pro",
+          "3D Make"
+        ],
+        "source": "Kimi官方論壇／技術文章｜2026-10-26確認"
+      },
+      "claims": [
+        "c01",
+        "c02"
+      ],
+      "lines": [
+        {
+          "id": "q0p1",
+          "text": "我打開兩份教具旁的規格檔，把要交付的尺寸和模型資料並排。",
+          "reveal": 1
+        },
+        {
+          "id": "lqfp",
+          "text": "台北時間十月二十四日發布的Kimi新版本，提供了3D Make。",
+          "reveal": 1,
+          "say": "台北時間十月二十四日發布的奇米新版本，提供了三維製作功能。",
+          "say_for": "71bb6443e1d8"
+        },
+        {
+          "id": "h9gn",
+          "text": "它的3D Make可以在線上預覽、編輯，還能下載資產。",
+          "say": "它的三維製作功能可以在線上預覽、編輯，還能下載資產。",
+          "say_for": "86accf8a9884",
+          "reveal": 1
+        }
+      ],
+      "chapter": "新模型來了，零件規格還沒人問"
+    },
+    {
+      "id": "download-is-not-weights",
+      "template": "bullets",
+      "data": {
+        "title": "兩種下載，拿到的東西不同",
+        "items": [
+          "3D資產：官方列出下載用途",
+          "模型權重：承諾11/4前釋出",
+          "本次查核日：10/26"
+        ],
+        "source": "Kimi官方技術文章｜未驗新權重或實際帳號"
+      },
+      "claims": [
+        "c02",
+        "c03"
+      ],
+      "lines": [
+        {
+          "id": "zwa9",
+          "text": "可供三維列印的資產是官方列出的用途，卻還沒替這枚墊圈決定交付規格。",
+          "reveal": 1
+        },
+        {
+          "id": "ekg8",
+          "text": "完整權重仍是十一月四日前釋出的承諾，不是今天要檢查的作品檔。",
+          "reveal": 1
+        },
+        {
+          "id": "rw5b",
+          "text": "這枚墊圈要先確認資產格式和用途，不能只憑下載兩個字驗收。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "one-benchmark",
+      "template": "bullets",
+      "data": {
+        "title": "92.7衡量的是什麼？",
+        "items": [
+          "BenchCAD：with tools／max effort",
+          "Voxel IoU：92.7",
+          "1000／17900檔案子集"
+        ],
+        "source": "Kimi BenchCAD註記｜Claude Code harness"
+      },
+      "claims": [
+        "c04"
+      ],
+      "lines": [
+        {
+          "id": "0glu",
+          "text": "它在一項三維重建評測，公布了九十二點七這個分數。",
+          "reveal": 1
+        },
+        {
+          "id": "y868",
+          "text": "條件是使用工具，從多個角度的圖，重建立體形狀。",
+          "reveal": 1
+        },
+        {
+          "id": "0m8z",
+          "text": "這次開放模型組的測試，從一萬七千九百份檔案中，隨機取出一千份。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "overlap-is-not-hole",
+      "template": "bullets",
+      "data": {
+        "title": "形狀對得上，問題還沒做完",
+        "items": [
+          "體素重疊：比較立體形狀",
+          "不是列印成功率",
+          "指定零件仍有自己的驗收"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "c04",
+        "d07"
+      ],
+      "lines": [
+        {
+          "id": "uyzf",
+          "text": "這個指標在比較重建形狀和目標形狀，重疊得有多好。",
+          "reveal": 1
+        },
+        {
+          "id": "dzyw",
+          "text": "它不是拿一百個零件去列印，有幾個能用的成功率。",
+          "reveal": 1
+        },
+        {
+          "id": "nc22",
+          "text": "回到這枚墊圈，驗收之前，你還缺哪一份具體要求？",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "washer-has-job",
+      "template": "bullets",
+      "data": {
+        "title": "這枚墊圈有一個很具體的工作",
+        "items": [
+          "中間要留通孔",
+          "外形要對尺寸",
+          "把要求寫在交付前"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01",
+        "d07"
+      ],
+      "lines": [
+        {
+          "id": "56w0",
+          "text": "你要讓一根棒子從中央穿過，又要讓外圈留住接觸面。",
+          "reveal": 1
+        },
+        {
+          "id": "66ya",
+          "text": "只說做得像墊圈，模型即使好看，雙方也可能在等不同的成品。",
+          "reveal": 1
+        },
+        {
+          "id": "1ks6",
+          "text": "這個差別在預覽裡不一定醒目，寫成規格就有了比較的依據。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "spec-arrives",
+      "template": "bullets",
+      "data": {
+        "title": "墊圈收到三個尺寸",
+        "items": [
+          "外徑：40 mm",
+          "名義孔徑：16 mm",
+          "厚度：5 mm"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01"
+      ],
+      "lines": [
+        {
+          "id": "zmyw",
+          "text": "這枚教學墊圈的外徑四十毫米，先固定它能占多大的位置。",
+          "reveal": 1
+        },
+        {
+          "id": "1gex",
+          "text": "中央名義孔徑十六毫米，是畫圓時指定的目標，還不是量過的最小淨空。",
+          "reveal": 1
+        },
+        {
+          "id": "v5m0",
+          "text": "厚度五毫米，則是從底面到頂面的距離。",
+          "reveal": 1
+        }
+      ],
+      "chapter": "把「有個洞」寫成能比較的要求"
+    },
+    {
+      "id": "spec-not-prompt",
+      "template": "bullets",
+      "data": {
+        "title": "外部規格，就是這份JSON",
+        "items": [
+          "declared_unit：mm",
+          "outer_diameter_mm：40",
+          "through_hole_diameter_mm：16",
+          "height_mm：5"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01",
+        "d04"
+      ],
+      "lines": [
+        {
+          "id": "d0ap",
+          "text": "這些數字放進一份規格檔，跟兩份STL一起交付。",
+          "say": "這些數字放進一份規格檔，跟兩份S T L一起交付。",
+          "say_for": "c6d0428004bd",
+          "reveal": 1
+        },
+        {
+          "id": "tvz8",
+          "text": "單位、外徑、孔徑和高度，各有自己的欄位，修改時不用猜。",
+          "reveal": 2
+        },
+        {
+          "id": "4sem",
+          "text": "你改的是自己的需求，檢查器讀的也必須是同一份需求。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "unit-is-outside",
+      "template": "bullets",
+      "data": {
+        "title": "STL裡的40，靠什麼變成毫米？",
+        "items": [
+          "三角形頂點只有座標",
+          "毫米由外部規格宣告",
+          "匯入軟體也要核對單位"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d04"
+      ],
+      "lines": [
+        {
+          "id": "9xjo",
+          "text": "剛剛的四十如果只是一個座標數字，要靠什麼變成毫米？",
+          "reveal": 1
+        },
+        {
+          "id": "o3u0",
+          "text": "STL本身沒附單位標籤，要靠外部規格和匯入設定，才有一致的意思。",
+          "reveal": 1,
+          "say": "S T L本身沒附單位標籤，要靠外部規格和匯入設定，才有一致的意思。",
+          "say_for": "cc499784147c"
+        },
+        {
+          "id": "0sh9",
+          "text": "單位對錯會改變整個零件的大小，不能只看畫面有沒有裝得下。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "same-files-opened",
+      "template": "bullets",
+      "data": {
+        "title": "兩份檔案，都用相同規格打開",
+        "items": [
+          "真實ASCII STL",
+          "同一座標與單位",
+          "獨立讀取三角形"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01",
+        "d02"
+      ],
+      "lines": [
+        {
+          "id": "fu17",
+          "text": "這裡打開的兩份，都是有實際三角形資料的STL檔。",
+          "say": "這裡打開的兩份，都是有實際三角形資料的S T L檔。",
+          "say_for": "681e4677e461",
+          "reveal": 1
+        },
+        {
+          "id": "7gpn",
+          "text": "兩份使用同一個座標方向，也都按這份毫米規格來量。",
+          "reveal": 1
+        },
+        {
+          "id": "89zh",
+          "text": "兩份資料量的是同一個零件要求，差距也就能對準那個指定的通孔。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "editorial-counterexample",
+      "template": "bullets",
+      "data": {
+        "title": "一份對照，讓漏掉的要求現形",
+        "items": [
+          "編輯製作：有孔墊圈",
+          "編輯製作：刻意填孔反例",
+          "不是Kimi生成紀錄"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01"
+      ],
+      "lines": [
+        {
+          "id": "o8jk",
+          "text": "我把其中一份教具的中央刻意填滿，留作交付時的反例。",
+          "reveal": 1
+        },
+        {
+          "id": "dag4",
+          "text": "這不是Kimi生成失誤，而是用同一個外形，測試我們有沒有問到孔。",
+          "say": "這不是奇米生成失誤，而是用同一個外形，測試我們有沒有問到孔。",
+          "say_for": "6bbd602a3a61",
+          "reveal": 1
+        },
+        {
+          "id": "palv",
+          "text": "把填孔這個差別控制住，外部尺寸的檢查才有真正的對照。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "outer-size-question",
+      "template": "bullets",
+      "data": {
+        "title": "只量長寬高，會放走哪一份？",
+        "items": [
+          "相同外形",
+          "相同單位",
+          "先跑你直覺會做的尺寸檢查"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d02"
+      ],
+      "lines": [
+        {
+          "id": "f84c",
+          "text": "你平常收到模型，最直接的做法，可能就是打開尺規量長寬高。",
+          "reveal": 1
+        },
+        {
+          "id": "ipjt",
+          "text": "如果這一步足夠，填滿中央的反例應該也會被擋住。",
+          "reveal": 1
+        },
+        {
+          "id": "0jfv",
+          "text": "兩份相同外形的模型，現在一起送進這項檢查。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "outer-bounds-pass",
+      "template": "bullets",
+      "data": {
+        "title": "尺規給了兩個相同答案",
+        "items": [
+          "X方向：40 mm",
+          "Y方向：40 mm",
+          "Z方向：5 mm"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d02"
+      ],
+      "lines": [
+        {
+          "id": "ox5o",
+          "text": "剛剛指定的外框，兩份都量到四十、四十、五。",
+          "reveal": 1
+        },
+        {
+          "id": "6skt",
+          "text": "外框只包住最外面的座標，中央有沒有材料，不會改變它的大小。",
+          "reveal": 1
+        },
+        {
+          "id": "z5jf",
+          "text": "所以尺規答對了外形，卻還沒回答我們要的那個洞。",
+          "reveal": 1
+        }
+      ],
+      "chapter": "尺寸與封閉都過了，反例仍留在桌上"
+    },
+    {
+      "id": "closed-mesh-check",
+      "template": "bullets",
+      "data": {
+        "title": "網格也有一道看起來可靠的檢查",
+        "items": [
+          "每條邊由兩面共用",
+          "沒有邊界邊",
+          "兩份都封閉"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d03"
+      ],
+      "lines": [
+        {
+          "id": "boyv",
+          "text": "那改看網格是不是封閉，會不會比較可靠？",
+          "reveal": 1
+        },
+        {
+          "id": "ljeg",
+          "text": "這項檢查會看三角形的邊，有沒有被相鄰的面正確接住。",
+          "reveal": 1
+        },
+        {
+          "id": "njr0",
+          "text": "兩份實檔都沒有邊界邊，光看這個結果，還是分不出能不能交。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "hole-has-walls",
+      "template": "bullets",
+      "data": {
+        "title": "有孔的零件，表面也能封閉",
+        "items": [
+          "外圈側壁",
+          "頂面與底面",
+          "孔內側也有牆"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d03"
+      ],
+      "lines": [
+        {
+          "id": "q8wd",
+          "text": "一枚有通孔的墊圈，中央的空間四周，還是可以接成完整表面。",
+          "reveal": 1
+        },
+        {
+          "id": "ip0k",
+          "text": "外壁接到頂面，頂面接到孔的內壁，再沿著底面接回去。",
+          "reveal": 1
+        },
+        {
+          "id": "pqc3",
+          "text": "因此封閉是在說材料表面有沒有漏接，並沒有規定中央一定要填實。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "triangles-not-meaning",
+      "template": "bullets",
+      "data": {
+        "title": "三角形比較多，不等於比較能用",
+        "items": [
+          "有孔教具：512面",
+          "填孔反例：256面",
+          "面數沒有寫用途"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d03",
+        "d05"
+      ],
+      "lines": [
+        {
+          "id": "h0ab",
+          "text": "有孔教具用了五百一十二個三角形，填孔反例用了兩百五十六個。",
+          "reveal": 1
+        },
+        {
+          "id": "ni1q",
+          "text": "面數差了一倍，只能告訴你這次網格怎麼切，不能直接當品質分數。",
+          "reveal": 1
+        },
+        {
+          "id": "s8d7",
+          "text": "剛剛的外框和封閉都沒查到中央的通道，這裡得換一個檢查位置。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "axis-not-anywhere",
+      "template": "bullets",
+      "data": {
+        "title": "把問題改成：指定位置有沒有通？",
+        "items": [
+          "孔軸：Z方向",
+          "中心：X=0、Y=0",
+          "從底面檢查到頂面"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01",
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "qhwk",
+          "text": "規格要的孔，在中心，沿著厚度方向從底面通到頂面。",
+          "reveal": 1
+        },
+        {
+          "id": "u98g",
+          "text": "模型別的地方有一個洞，或者表面畫了一圈，都不能替代這條路。",
+          "reveal": 1
+        },
+        {
+          "id": "rk1x",
+          "text": "對這兩份教具，底面都在零的位置，頂面則是規格指定的厚度。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "run-package",
+      "template": "bullets",
+      "data": {
+        "title": "讓檔案自己回答",
+        "items": [
+          "解壓教材；開啟index.html",
+          "切換俯視／側視／剖面",
+          "保留spec.json與原始STL"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d01",
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "a6o8",
+          "text": "把教材解壓到同一個資料夾，先在瀏覽器打開附的模型檢視頁。",
+          "reveal": 1
+        },
+        {
+          "id": "qqjh",
+          "text": "你可以切換俯視和側視，讓外部尺寸與中央通道分開看。",
+          "reveal": 1
+        },
+        {
+          "id": "wmo7",
+          "text": "想檢查原始檔案，就保留旁邊的規格檔，用同一份程式讀取三角形。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "run-ring-command",
+      "template": "code",
+      "data": {
+        "code": "python3 check.py --stl ring.stl --spec spec.json",
+        "caption": "在教材demo資料夾完整執行｜同源實檔已檢查"
+      },
+      "claims": [
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "t7wu",
+          "text": "在教材資料夾開啟終端機，貼上畫面這段完整指令。"
+        },
+        {
+          "id": "zx72",
+          "text": "它會讀取有孔教具，以及剛剛那份外部規格。"
+        }
+      ],
+      "chapter": "兩份實檔送進了同一個檢查器"
+    },
+    {
+      "id": "ring-read-triangles",
+      "template": "big",
+      "data": {
+        "kicker": "同一份規格與檢查器",
+        "text": "讀的是**三角形**",
+        "sub": "原創實檔的本地讀取；不靠視角猜測"
+      },
+      "claims": [
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "a2bm",
+          "text": "檢查器把檔案的座標與三角形，對照同一份外部規格。"
+        }
+      ]
+    },
+    {
+      "id": "run-filled-command",
+      "template": "code",
+      "data": {
+        "code": "python3 check.py --stl filled.stl --spec spec.json",
+        "caption": "在教材demo資料夾完整執行｜同源實檔已檢查"
+      },
+      "claims": [
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "up0s",
+          "text": "再貼上這段，把輸入換成刻意填孔的反例。"
+        },
+        {
+          "id": "sfk4",
+          "text": "程式和規格都留在原位，只有被檢查的模型換了一份。"
+        }
+      ]
+    },
+    {
+      "id": "same-spec-new-file",
+      "template": "big",
+      "data": {
+        "kicker": "同一份規格與檢查器",
+        "text": "同規格，**換實檔**",
+        "sub": "原創實檔的本地讀取；不靠視角猜測"
+      },
+      "claims": [
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "cmuz",
+          "text": "這樣尺寸相同卻結果不同，才找得到差別是從哪裡來。"
+        }
+      ]
+    },
+    {
+      "id": "rays-cross-center",
+      "template": "bullets",
+      "data": {
+        "title": "把孔的空間分成33條觀察線",
+        "items": [
+          "沿指定孔軸",
+          "孔內33個位置",
+          "計算三角形交點"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "x3p9",
+          "text": "檔案外面都過關，中央到底有沒有被三角形擋住？",
+          "reveal": 1
+        },
+        {
+          "id": "5len",
+          "text": "程式在孔內取樣，沿厚度方向計算它和三角形的交點。",
+          "reveal": 1
+        },
+        {
+          "id": "5fad",
+          "text": "這是有限取樣，結果會留下受阻的數量，不是對任意孔形的保證。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ray-results",
+      "template": "bullets",
+      "data": {
+        "title": "同樣33條線，阻擋數不同",
+        "items": [
+          "有孔教具：0條受阻",
+          "填孔反例：33條受阻",
+          "外部尺寸仍相同"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "l8p2",
+          "text": "有孔教具的觀察線，沒有一條碰到材料。",
+          "reveal": 1
+        },
+        {
+          "id": "it4f",
+          "text": "填孔反例的觀察線，則全部被擋住。",
+          "reveal": 1
+        },
+        {
+          "id": "1b0m",
+          "text": "開場那個尺寸相同卻不能交的檔案，終於有了具體的退回理由。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "section-reveals",
+      "template": "bullets",
+      "data": {
+        "title": "切到中間，差別變得看得見",
+        "items": [
+          "中高剖面：Z=2.5 mm",
+          "有孔：內外兩條封閉線",
+          "填孔：只有外面一條"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d06",
+        "d08"
+      ],
+      "lines": [
+        {
+          "id": "v4r0",
+          "text": "把模型切到一半高度，有孔教具留下內外兩圈輪廓。",
+          "reveal": 1
+        },
+        {
+          "id": "8q11",
+          "text": "內圈裡是空的；填孔反例只剩外圈，中心仍然有材料。",
+          "reveal": 1
+        },
+        {
+          "id": "qlqs",
+          "text": "沿著不同高度檢查，中央空著或填滿的差別也一直都在。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "volume-crosscheck",
+      "template": "bullets",
+      "data": {
+        "title": "另一個角度，量材料有多少",
+        "items": [
+          "有孔：5269.401 mm³",
+          "填孔：6273.097 mm³",
+          "同一零件要求，材料量不同"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d05",
+        "d06"
+      ],
+      "lines": [
+        {
+          "id": "2g8t",
+          "text": "材料的體積，也能從另一個角度，確認中央多出的那一塊。",
+          "reveal": 1
+        },
+        {
+          "id": "dra2",
+          "text": "填孔反例的體積明顯比較大，雖然外框仍是剛剛那個尺寸。",
+          "reveal": 1
+        },
+        {
+          "id": "lxiq",
+          "text": "剛剛中央被擋住的反例，也沒有符合這份規格的體積條件。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "polygon-not-circle",
+      "template": "bullets",
+      "data": {
+        "title": "真的有洞，還留著一個尺寸問題",
+        "items": [
+          "圓周由64段直邊近似",
+          "頂點位置符合名義半徑",
+          "邊中間往圓心靠近"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d09"
+      ],
+      "lines": [
+        {
+          "id": "yxau",
+          "text": "中央真的留出空間，最窄的位置就一定符合名義孔徑嗎？",
+          "reveal": 1
+        },
+        {
+          "id": "i9h8",
+          "text": "它用六十四段直邊近似圓周，頂點落在指定的半徑上。",
+          "reveal": 1
+        },
+        {
+          "id": "b3ef",
+          "text": "兩個頂點中間的那條直邊，會比圓弧更靠近中心。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "clearance-number",
+      "template": "screenshot",
+      "data": {
+        "image": "docs/videos/kimi-k31-3d-delivery/demo/figures/03-horizontal-section.png",
+        "caption": "實際STL水平剖面與最小淨空｜原創教具",
+        "credit": "Mokaair原創教具／CC0｜2026-10-26"
+      },
+      "claims": [
+        "d09"
+      ],
+      "lines": [
+        {
+          "id": "pypq",
+          "text": "最窄處量到的直徑，大約十五點九八毫米，比名義孔徑略小。"
+        }
+      ]
+    },
+    {
+      "id": "clearance-difference",
+      "template": "screenshot",
+      "data": {
+        "image": "docs/videos/kimi-k31-3d-delivery/demo/figures/02-top-view.png",
+        "caption": "實際STL俯視｜差值來自剖面計算，非目測",
+        "credit": "Mokaair原創教具／CC0｜2026-10-26"
+      },
+      "claims": [
+        "d09"
+      ],
+      "lines": [
+        {
+          "id": "c8u0",
+          "text": "差距還不到零點零二毫米，卻剛好卡在棒子要穿過的位置。"
+        }
+      ]
+    },
+    {
+      "id": "clearance-needs-purpose",
+      "template": "screenshot",
+      "data": {
+        "image": "docs/videos/kimi-k31-3d-delivery/demo/figures/04-side-view.png",
+        "caption": "實際STL側視｜外形尺寸不能代替配合要求",
+        "credit": "Mokaair原創教具／CC0｜2026-10-26"
+      },
+      "claims": [
+        "d09"
+      ],
+      "lines": [
+        {
+          "id": "vlft",
+          "text": "所以剛剛要的那個通孔，還得對照最窄的位置，不能只看有沒有洞。"
+        }
+      ]
+    },
+    {
+      "id": "new-use-new-spec",
+      "template": "bullets",
+      "data": {
+        "title": "原通過，不能回答新要求",
+        "items": [
+          "最窄處小於名義孔徑",
+          "若要求最小淨空達標：不符合",
+          "原有限檢查未驗此條件"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d09",
+        "d10"
+      ],
+      "lines": [
+        {
+          "id": "zzay",
+          "text": "交付要求改成最小淨空至少達到名義孔徑，這份教具就必須退回。",
+          "reveal": 1
+        },
+        {
+          "id": "c8hn",
+          "text": "因為剛剛的量測顯示，最窄處小於這個新要求。",
+          "reveal": 1
+        },
+        {
+          "id": "qqez",
+          "text": "同一枚墊圈的用途收緊，原來那個有限檢查的通過標記就不能直接沿用。",
+          "reveal": 1
+        }
+      ],
+      "chapter": "孔存在了，交付條件還要跟著用途走"
+    },
+    {
+      "id": "tolerance-is-purpose",
+      "template": "bullets",
+      "data": {
+        "title": "把新增要求寫成一句話",
+        "items": [
+          "成品最小淨空至少16 mm",
+          "另寫的要求，非已實作欄位",
+          "原檢查器的通過不能作答"
+        ],
+        "source": "編輯要求示例；未新增checker gate"
+      },
+      "claims": [
+        "d09",
+        "d10"
+      ],
+      "lines": [
+        {
+          "id": "5m5q",
+          "text": "這項新增的最小淨空要求，怎麼寫成接手者能核對的一句話？",
+          "reveal": 1
+        },
+        {
+          "id": "33ye",
+          "text": "在交付說明寫下：成品最小淨空至少十六毫米。"
+        },
+        {
+          "id": "edz9",
+          "text": "這句是另外寫下的要求，不是原來規格檔裡已經實作的欄位。",
+          "reveal": 1
+        },
+        {
+          "id": "f106",
+          "text": "剛剛的檢查器沒有驗這項新條件，它的通過不能替這條要求作答。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "limits-with-purpose",
+      "template": "bullets",
+      "data": {
+        "title": "通過的範圍，必須跟著檔案走",
+        "items": [
+          "有限軸向／尺寸／邊與體積檢查",
+          "未涵蓋自交、任意孔、最小壁厚",
+          "未驗切片、材料、承重與實際列印"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d07"
+      ],
+      "lines": [
+        {
+          "id": "x4k6",
+          "text": "這次的通過，只限指定軸向、尺寸、網格邊和體積這些檢查。",
+          "reveal": 1
+        },
+        {
+          "id": "1cox",
+          "text": "剛剛提過的任意孔形之外，自交與各處最小壁厚也還沒驗。",
+          "reveal": 1
+        },
+        {
+          "id": "6rli",
+          "text": "切片、材料、承重和真的印出來能不能用，仍然是後面的工作。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "source-and-model-separated",
+      "template": "bullets",
+      "data": {
+        "title": "下載格式，決定檢查工具",
+        "items": [
+          "文字版STL：本檢查器可讀",
+          "其他格式：使用相符工具",
+          "改副檔名，不等於轉換內容"
+        ],
+        "source": "實際check.py讀取範圍／LOC STL格式"
+      },
+      "claims": [
+        "c05",
+        "d04",
+        "d11"
+      ],
+      "lines": [
+        {
+          "id": "3w3j",
+          "text": "回到Kimi的下載情境，這份檢查器只讀文字版STL，不能直接接圖片。",
+          "say": "回到奇米的下載情境，這份檢查器只讀文字版S T L，不能直接接圖片。",
+          "say_for": "b43310e0409c",
+          "reveal": 1
+        },
+        {
+          "id": "kwmv",
+          "text": "如果拿到其他網格格式，也得換成能正確讀取它的工具。",
+          "reveal": 1
+        },
+        {
+          "id": "cezr",
+          "text": "把副檔名改成STL，並不會把原本的內容轉成三角形資料。",
+          "reveal": 1,
+          "say": "把副檔名改成S T L，並不會把原本的內容轉成三角形資料。",
+          "say_for": "642a91565718"
+        }
+      ]
+    },
+    {
+      "id": "actual-delivery-view",
+      "template": "screenshot",
+      "data": {
+        "image": "docs/videos/kimi-k31-3d-delivery/demo/figures/01-oblique-comparison.png",
+        "caption": "真實STL檢視頁｜預設教具，不是Kimi介面或輸出",
+        "credit": "Mokaair原創教具／CC0｜2026-10-26"
+      },
+      "claims": [
+        "d01",
+        "d11"
+      ],
+      "lines": [
+        {
+          "id": "d7t1",
+          "text": "如果想反覆改孔，除了手上這份網格，交付包還缺什麼？"
+        }
+      ]
+    },
+    {
+      "id": "format-question",
+      "template": "bullets",
+      "data": {
+        "title": "拿得到什麼檔案，也是一個條件",
+        "items": [
+          "預覽：先看整體形狀",
+          "網格：檢查實際表面",
+          "可編輯來源：留住修改方式"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d04",
+        "d11"
+      ],
+      "lines": [
+        {
+          "id": "t3r1",
+          "text": "預覽方便你看整體形狀，網格檔則讓你檢查實際的表面。",
+          "reveal": 1
+        },
+        {
+          "id": "rwiy",
+          "text": "如果還要反覆改孔徑，最好另外拿到保留修改方式的來源檔。",
+          "reveal": 1
+        },
+        {
+          "id": "ul11",
+          "text": "像STL這樣的三角形網格，沒有自動保留你原本怎麼畫那個圓。",
+          "say": "像S T L這樣的三角形網格，沒有自動保留你原本怎麼畫那個圓。",
+          "say_for": "f80b707aa13b",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "export-not-assumed",
+      "template": "bullets",
+      "data": {
+        "title": "Kimi實際匯出，先看你拿到的檔案",
+        "items": [
+          "官方寫可下載列印資產",
+          "已讀頁未指定STL副檔名",
+          "本片未親測帳號／匯出流程"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "c02",
+        "c05"
+      ],
+      "lines": [
+        {
+          "id": "hrlr",
+          "text": "至於Kimi實際能匯出什麼副檔名，我目前沒有親測。",
+          "say": "至於奇米實際能匯出什麼副檔名，我目前沒有親測。",
+          "say_for": "37b45190a2a2",
+          "reveal": 1
+        },
+        {
+          "id": "vum2",
+          "text": "可下載列印資產這個功能說明，不能直接當成已證實的STL匯出教學。",
+          "say": "可下載列印資產這個功能說明，不能直接當成已證實的S T L匯出教學。",
+          "say_for": "4a42896ae43f",
+          "reveal": 1
+        },
+        {
+          "id": "cen6",
+          "text": "你試用時，先對清楚帳號權限和實際拿到的檔案，再決定要用哪個工具接手。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "handoff-three-files",
+      "template": "bullets",
+      "data": {
+        "title": "交付的不只是一張預覽圖",
+        "items": [
+          "實際模型檔",
+          "同版本規格",
+          "能連回檔案的檢查結果"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d11"
+      ],
+      "lines": [
+        {
+          "id": "oe9l",
+          "text": "剛剛那組模型檔、同版本規格和檢查結果，我會一起交給接手的人。",
+          "reveal": 1
+        },
+        {
+          "id": "0gjn",
+          "text": "原始檔案改版後，這份檢查結果還能跟著一起交嗎？"
+        },
+        {
+          "id": "fxx4",
+          "text": "原始檔一改，舊結果就只屬於舊檔案，不跟著新檔案一起升級。",
+          "reveal": 1
+        },
+        {
+          "id": "3ro5",
+          "text": "這樣交出去的人能說清楚做了什麼，接手的人也有東西能重新確認。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "washer-decision",
+      "template": "bullets",
+      "data": {
+        "title": "這枚墊圈，現在能交到哪一步？",
+        "items": [
+          "填孔反例：退回",
+          "有孔教具：只交有限檢查結果",
+          "嚴格配合：另定最小淨空與製程要求"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d06",
+        "d07",
+        "d10"
+      ],
+      "lines": [
+        {
+          "id": "usyf",
+          "text": "剛剛退回的填孔反例，連同那次檢查結果交回去，才有具體的修改依據。",
+          "reveal": 1
+        },
+        {
+          "id": "su1a",
+          "text": "有孔教具可以連同有限檢查結果交付，卻不能附上一張沒有做過的製造保證。",
+          "reveal": 1
+        },
+        {
+          "id": "vw33",
+          "text": "如果接手者另加了這條最小淨空要求，就把獨立量測的比較結果一起交代。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "answer-in-file",
+      "template": "bullets",
+      "data": {
+        "title": "漂亮的3D，怎樣才算能用？",
+        "items": [
+          "用途寫成規格",
+          "對實際檔案驗收",
+          "把可用的範圍交清楚"
+        ],
+        "source": "原創墊圈教具與實檔檢查｜2026-10-26"
+      },
+      "claims": [
+        "d11"
+      ],
+      "lines": [
+        {
+          "id": "nqza",
+          "text": "漂亮讓你願意按下載，清楚的用途才決定下載後要驗什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "45nk",
+          "text": "檔案對上了你的規格，結果也能連回那個檔案，才有辦法說它能用到哪裡。",
+          "reveal": 1
+        },
+        {
+          "id": "70ym",
+          "text": "這枚墊圈真正要交出去的，是能被接手的人重新確認的答案。",
+          "reveal": 1
+        }
+      ]
+    }
+  ],
+  "loops": [
+    {
+      "setup": "4ran",
+      "payoff": "ox5o",
+      "what": "外部尺寸對照實際會得到什麼結果"
+    },
+    {
+      "setup": "pfy0",
+      "payoff": "pqc3",
+      "what": "封閉標記能保證到哪一部分"
+    },
+    {
+      "setup": "5jr1",
+      "payoff": "zzay",
+      "what": "孔的最窄位置是否符合名義尺寸"
+    },
+    {
+      "setup": "ipjt",
+      "payoff": "6skt",
+      "what": "外框尺寸檢查究竟看見了什麼"
+    },
+    {
+      "setup": "rk1x",
+      "payoff": "it4f",
+      "what": "固定孔軸後反例會給什麼答案"
+    },
+    {
+      "setup": "yxau",
+      "payoff": "pypq",
+      "what": "六十四段直邊造成多少最小淨空差距"
+    },
+    {
+      "setup": "qqez",
+      "payoff": "33ye",
+      "what": "新用途怎麼改變允收標準"
+    },
+    {
+      "setup": "x3p9",
+      "payoff": "it4f",
+      "what": "指定孔內的三角形會擋住哪一份檔案"
+    },
+    {
+      "setup": "5m5q",
+      "payoff": "33ye",
+      "what": "最小淨空要求的具體句子"
+    },
+    {
+      "setup": "d7t1",
+      "payoff": "rwiy",
+      "what": "要繼續修改孔徑時需保留什麼來源"
+    },
+    {
+      "setup": "yxau",
+      "payoff": "zzay",
+      "what": "有孔教具是否符合更嚴的實物配合要求"
+    }
+  ],
+  "assets": [
+    {
+      "path": "docs/videos/kimi-k31-3d-delivery/demo/figures/01-oblique-comparison.png",
+      "source": "Mokaair original offline STL viewer; actual Chromium capture2026-10-26; source meshes and capture evidence in demo/provenance.json and demo-handoff.md",
+      "license": "CC0-1.0; demo/LICENSE.txt",
+      "sha256": "3713cf79544d1fae0a79af8ee699fc58c41852d835df550a630c833bba90d22e"
+    },
+    {
+      "path": "docs/videos/kimi-k31-3d-delivery/demo/figures/02-top-view.png",
+      "source": "Mokaair original offline STL viewer; actual Chromium capture2026-10-26; source meshes and capture evidence in demo/provenance.json and demo-handoff.md",
+      "license": "CC0-1.0; demo/LICENSE.txt",
+      "sha256": "624dc84b89548fb163d68ce35a5f1fc4e5726f939af3ff115175b54ceb063115"
+    },
+    {
+      "path": "docs/videos/kimi-k31-3d-delivery/demo/figures/03-horizontal-section.png",
+      "source": "Mokaair original offline STL viewer; actual Chromium capture2026-10-26; source meshes and capture evidence in demo/provenance.json and demo-handoff.md",
+      "license": "CC0-1.0; demo/LICENSE.txt",
+      "sha256": "c672c7c82da8d0d304405ba28951a784551afbc8c19b0c873b97099c0bba29eb"
+    },
+    {
+      "path": "docs/videos/kimi-k31-3d-delivery/demo/figures/04-side-view.png",
+      "source": "Mokaair original offline STL viewer; actual Chromium capture2026-10-26; source meshes and capture evidence in demo/provenance.json and demo-handoff.md",
+      "license": "CC0-1.0; demo/LICENSE.txt",
+      "sha256": "85d284ed7e933d22dae85a11407d3f8114f272f7413e331678b584236767f378"
+    },
+    {
+      "path": "docs/videos/kimi-k31-3d-delivery/demo/figures/00-neutral-side-intro.png",
+      "source": "Mokaair actual Chromium neutral side-view capture2026-10-26; source meshes and capture evidence in demo",
+      "license": "CC0-1.0; demo/LICENSE.txt",
+      "sha256": "569b6bd06455d340de64ad07c7bcea90a94ce5b51494f9ac2f63d90f6e5162ff"
+    },
+    {
+      "path": "docs/videos/kimi-k31-3d-delivery/demo/figures/05-thumbnail-original-ring.png",
+      "source": "Mokaair original offline STL viewer; actual focused A browser capture2026-10-26; source fixture and capture-provenance.json identify512 actual triangles; NOT Kimi output or model test",
+      "license": "CC0-1.0; demo/LICENSE.txt",
+      "sha256": "886a5bbce7851a747a0946359f03735792ca246712c576df63b0dc5125b10610"
+    }
+  ]
+}

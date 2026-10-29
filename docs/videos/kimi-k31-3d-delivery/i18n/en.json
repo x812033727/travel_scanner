@@ -1,0 +1,501 @@
+{
+  "title": "Kimi K3.1 Pro: Beautiful 3D, but Is It Usable?",
+  "description": "Recorded/fact-checked: 2026-10-26 (Taipei). Kimi K3.1 Pro highlights 3D creation. When is a download ready to deliver?\nFor AI 3D previews, edits and part handoffs: compare two original washer STL files, from outer dimensions and closed surfaces to the through-hole and minimum clearance.\n\nBoth are our teaching models; the filled hole is deliberate, not a Kimi error. Nominal dimensions: 40 mm outer diameter, 16 mm hole, 5 mm thick. The 64-segment hole's measured minimum clearance is about 15.980727 mm. A hole does not guarantee clearance of at least 16 mm.\n\nIncludes a local viewer, original STL, JSON spec and Python checker. Unzip together; in demo run:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nWe did not try a Kimi account, run its model, test exports or print parts. The official printing-asset description we read specifies no STL extension. Full weights are promised before 2026-11-04; we have not verified obtaining them. BenchCAD 92.7 is with-tools VoxelIoU (max effort, Claude Code harness; open-model group: 1,000/17,900 random subset), not print success.\n\nChecks cover only the specified axis with finite sampling, outer dimensions, mesh edges and volume. Arbitrary holes, self-intersections, minimum wall thickness, slicing, materials, loads and manufacturing conditions remain unverified. Passing is not manufacturing certification. Minimum clearance of at least 16 mm is an added requirement, not an implemented spec/checker gate. CC0 covers our teaching materials, not Kimi assets.\n\nOriginal teaching kit (CC0; not Kimi output): https://raw.githubusercontent.com/x812033727/travel_scanner/1738c9460205627a73b05917790af6ac89812e12/docs/videos/kimi-k31-3d-delivery/downloads/kimi-3d-demo.zip",
+  "tags": [
+    "Kimi K3.1 Pro",
+    "Kimi 3D Make",
+    "3D models",
+    "STL",
+    "3D printing",
+    "3D asset delivery",
+    "BenchCAD",
+    "AI tech news",
+    "model acceptance",
+    "Mokaair"
+  ],
+  "chapters": {
+    "download-moment": "One washer, three puzzles",
+    "news-reaches-desk": "New model, missing part specs",
+    "spec-arrives": "Turn a hole into a requirement",
+    "outer-bounds-pass": "Size and closure both pass",
+    "run-ring-command": "Two files, the same checker",
+    "new-use-new-spec": "A hole must serve its purpose"
+  },
+  "source_hashes": {
+    "chapters": {
+      "download-moment": "e51064b94360",
+      "news-reaches-desk": "a6a91f46b8b1",
+      "spec-arrives": "c6d07c8cbe01",
+      "outer-bounds-pass": "bd19e2e5a94c",
+      "run-ring-command": "6afd37a1fee0",
+      "new-use-new-spec": "16ff0f3eba91"
+    },
+    "title": "952836668e80",
+    "description": "343ab9aa8b2d",
+    "tags": "a542d0d7b55c",
+    "thumbnail": "bbc1db3e7add"
+  },
+  "lines": {
+    "2g58": {
+      "source_hash": "e5256c8698cd",
+      "text": "On October 26, 2026, I opened two self-made washer teaching models on this computer."
+    },
+    "2sc4": {
+      "source_hash": "6b3e49e3002f",
+      "text": "Kimi K3.1 Pro promotes 3D downloads. I want to know when a file is ready to deliver."
+    },
+    "4ran": {
+      "source_hash": "6b6bcd244689",
+      "text": "I switch this viewer to side view, awaiting the dimensions-versus-spec result."
+    },
+    "pfy0": {
+      "source_hash": "d6c1972bf2c2",
+      "text": "The closed-mesh result is still folded away. What can it actually guarantee?"
+    },
+    "5jr1": {
+      "source_hash": "7477deec8160",
+      "text": "When the hole's section appears, will its narrowest point meet the requirement?"
+    },
+    "fv1i": {
+      "source_hash": "363986dce4f4",
+      "text": "In one viewer, I first put both self-made files at comparable angles."
+    },
+    "6yl7": {
+      "source_hash": "7c930eebed4c",
+      "text": "Put the spec, source files and check results together to see the difference."
+    },
+    "b7uf": {
+      "source_hash": "d77b7a380bcc",
+      "text": "Use the same spec to decide whether to keep a received file or send it back."
+    },
+    "gzek": {
+      "source_hash": "ff7586e4b01a",
+      "text": "What step separates a beautiful 3D preview from a usable part?"
+    },
+    "q0p1": {
+      "source_hash": "ee0342a2d04b",
+      "text": "I open the spec beside both teaching models, lining up required sizes and model data."
+    },
+    "lqfp": {
+      "source_hash": "71bb6443e1d8",
+      "text": "The new Kimi version, released October 24 in Taipei time, includes 3D Make."
+    },
+    "h9gn": {
+      "source_hash": "86accf8a9884",
+      "text": "Its 3D Make lets you preview and edit online, and download assets."
+    },
+    "zwa9": {
+      "source_hash": "1e53ebfc088d",
+      "text": "3D printing assets are an official use, but this washer's delivery spec is still unset."
+    },
+    "ekg8": {
+      "source_hash": "27bbc4fe7ee6",
+      "text": "Full weights are promised before November 4, separate from today's asset files."
+    },
+    "rw5b": {
+      "source_hash": "87acb7a3f2a8",
+      "text": "Check this washer's asset format and purpose; “downloadable” isn't acceptance."
+    },
+    "0glu": {
+      "source_hash": "7383bb42dedf",
+      "text": "It reported a score of 92.7 on a 3D reconstruction benchmark."
+    },
+    "y868": {
+      "source_hash": "dbf451505279",
+      "text": "That was with tools, reconstructing a 3D shape from images at several angles."
+    },
+    "0m8z": {
+      "source_hash": "dd57695117d3",
+      "text": "This open-model test randomly sampled 1,000 files from a set of 17,900."
+    },
+    "uyzf": {
+      "source_hash": "3f91305a67df",
+      "text": "The metric measures how well the reconstructed shape overlaps the target shape."
+    },
+    "dzyw": {
+      "source_hash": "3f106761ae62",
+      "text": "It isn't the share of usable parts after printing a hundred of them."
+    },
+    "nc22": {
+      "source_hash": "2ee956ac1a58",
+      "text": "Back to this washer: what specific requirement is missing before acceptance?"
+    },
+    "56w0": {
+      "source_hash": "4281a83e3340",
+      "text": "A rod must pass through the center; the outer ring must keep a contact surface."
+    },
+    "66ya": {
+      "source_hash": "e669ea11da26",
+      "text": "“Washer-like” can mean different parts to both sides, even if it looks good."
+    },
+    "1ks6": {
+      "source_hash": "45b4c0ed3c38",
+      "text": "That difference may hide in a preview. A written spec gives us a comparison."
+    },
+    "zmyw": {
+      "source_hash": "c93f45134595",
+      "text": "Its 40-millimeter outer diameter fixes the space this teaching washer occupies."
+    },
+    "1gex": {
+      "source_hash": "460f9a9a3d8f",
+      "text": "The nominal 16-millimeter hole is a design target, not measured minimum clearance."
+    },
+    "v5m0": {
+      "source_hash": "cf481634f945",
+      "text": "Its 5-millimeter thickness is the distance from the bottom surface to the top."
+    },
+    "d0ap": {
+      "source_hash": "c6d0428004bd",
+      "text": "These numbers go into a spec file, delivered with both STL files."
+    },
+    "tvz8": {
+      "source_hash": "935057a49210",
+      "text": "Units, outer diameter, hole diameter and height have fields for unambiguous edits."
+    },
+    "4sem": {
+      "source_hash": "883b702e3770",
+      "text": "You're changing your requirements. The checker must read the same ones."
+    },
+    "9xjo": {
+      "source_hash": "dd54352d926b",
+      "text": "If that 40 is just a coordinate value, what makes it millimeters?"
+    },
+    "o3u0": {
+      "source_hash": "cc499784147c",
+      "text": "STL has no unit label. The external spec and import settings fix its meaning."
+    },
+    "0sh9": {
+      "source_hash": "3d604fc183e1",
+      "text": "Wrong units resize the whole part. Fitting on screen isn't enough."
+    },
+    "fu17": {
+      "source_hash": "681e4677e461",
+      "text": "Both files opened here are STL files containing actual triangle data."
+    },
+    "7gpn": {
+      "source_hash": "7bd9eb8835b8",
+      "text": "Both use the same coordinate orientation and this millimeter spec."
+    },
+    "89zh": {
+      "source_hash": "faa9397391f4",
+      "text": "Both face the same part spec, letting us compare the specified through-hole."
+    },
+    "o8jk": {
+      "source_hash": "202437132685",
+      "text": "I deliberately filled one teaching model's center as a delivery counterexample."
+    },
+    "dag4": {
+      "source_hash": "6bbd602a3a61",
+      "text": "It's no Kimi generation error. The same outer shape tests if we asked about a hole."
+    },
+    "palv": {
+      "source_hash": "6de2fd7596f6",
+      "text": "Controlling the filled-hole difference makes an outer-size comparison possible."
+    },
+    "f84c": {
+      "source_hash": "a7144da00f0e",
+      "text": "When a model arrives, you may first measure its length, width and height."
+    },
+    "ipjt": {
+      "source_hash": "088d27c4283a",
+      "text": "If that were enough, it should reject the example with the filled center too."
+    },
+    "0jfv": {
+      "source_hash": "ac4ff6aef353",
+      "text": "We now put both models, with the same outer shape, through that check."
+    },
+    "ox5o": {
+      "source_hash": "6fbcd622aec8",
+      "text": "Both measure 40 by 40 by 5 for the bounding box we specified."
+    },
+    "6skt": {
+      "source_hash": "5dd6b2d51ac5",
+      "text": "Bounds enclose the outermost coordinates; central material won't resize them."
+    },
+    "z5jf": {
+      "source_hash": "e193a3118630",
+      "text": "The ruler got the outer size right, but hasn't answered our hole question."
+    },
+    "boyv": {
+      "source_hash": "0ae2eb3df893",
+      "text": "Would checking whether the mesh is closed be more reliable?"
+    },
+    "ljeg": {
+      "source_hash": "97c4d72b2e28",
+      "text": "This check asks whether neighboring faces correctly meet at each triangle edge."
+    },
+    "njr0": {
+      "source_hash": "3f58522ece93",
+      "text": "Neither file has boundary edges. That alone still can't decide acceptance."
+    },
+    "q8wd": {
+      "source_hash": "7254d2396f8a",
+      "text": "A washer can have a through-hole and still have a complete surface around that space."
+    },
+    "ip0k": {
+      "source_hash": "e19fccd1f508",
+      "text": "Outer wall joins top, top joins the hole's inner wall, then back along the bottom."
+    },
+    "pqc3": {
+      "source_hash": "487dfedb4993",
+      "text": "“Closed” means no surface gaps; it does not require a solid center."
+    },
+    "h0ab": {
+      "source_hash": "2f3eba2f0f6b",
+      "text": "The model with a hole uses 512 triangles; the filled-hole example uses 256."
+    },
+    "ni1q": {
+      "source_hash": "bf0036038b4e",
+      "text": "Having twice as many faces only tells us how this mesh was divided; it isn't a quality score."
+    },
+    "s8d7": {
+      "source_hash": "451202da75cb",
+      "text": "Bounds and closure missed the central passage. We need to check somewhere else."
+    },
+    "qhwk": {
+      "source_hash": "b0ff2e117723",
+      "text": "The specified central hole runs through the thickness, from bottom to top."
+    },
+    "u98g": {
+      "source_hash": "db512fe298a2",
+      "text": "A hole elsewhere, or a surface circle, can't replace that passage."
+    },
+    "rk1x": {
+      "source_hash": "3205fa814f4b",
+      "text": "Both teaching models have bottoms at zero and tops at the specified thickness."
+    },
+    "a6o8": {
+      "source_hash": "49bf205f8e52",
+      "text": "Unzip the teaching files together, then open the included viewer in a browser."
+    },
+    "qqjh": {
+      "source_hash": "333693d1e7a9",
+      "text": "Switch top and side views to view outer size and the central passage separately."
+    },
+    "wmo7": {
+      "source_hash": "5c7a312c0e0c",
+      "text": "Keep the spec beside the original files; read triangles with the same program."
+    },
+    "t7wu": {
+      "source_hash": "9f87381477f8",
+      "text": "Open a terminal in the teaching folder and paste the complete command on screen."
+    },
+    "zx72": {
+      "source_hash": "8c51ab90d083",
+      "text": "It reads the teaching model with a hole and the external spec we just saw."
+    },
+    "a2bm": {
+      "source_hash": "0abb1a553b20",
+      "text": "The checker compares the file's coordinates and triangles with the same spec."
+    },
+    "up0s": {
+      "source_hash": "65ec82799748",
+      "text": "Paste this command, switching input to the deliberately filled-hole example."
+    },
+    "sfk4": {
+      "source_hash": "93119dc8199e",
+      "text": "The program and spec stay put; only the model being checked changes."
+    },
+    "cmuz": {
+      "source_hash": "1e82e94e9dd2",
+      "text": "Equal sizes but different results let us trace the source of the difference."
+    },
+    "x3p9": {
+      "source_hash": "f86d30a28a93",
+      "text": "Both pass the external checks. Are triangles blocking the center?"
+    },
+    "5len": {
+      "source_hash": "479cb6f41788",
+      "text": "Inside the hole, the program samples triangle intersections along the thickness."
+    },
+    "5fad": {
+      "source_hash": "d6dabac47d06",
+      "text": "Finite samples give blocked-ray counts, not guarantees for arbitrary hole shapes."
+    },
+    "l8p2": {
+      "source_hash": "e6dc61221635",
+      "text": "Not one test ray in the teaching model with a hole hits material."
+    },
+    "it4f": {
+      "source_hash": "0ce141d0dbc6",
+      "text": "In the filled-hole counterexample, every test ray is blocked."
+    },
+    "1b0m": {
+      "source_hash": "ee207c238450",
+      "text": "The opening's same-sized but unusable file now has a specific rejection reason."
+    },
+    "v4r0": {
+      "source_hash": "f687a7f69668",
+      "text": "At half height, the model with a hole leaves an inner and an outer contour."
+    },
+    "8q11": {
+      "source_hash": "130f601b6663",
+      "text": "Inside is empty; the filled example has just the outer contour and a solid center."
+    },
+    "qlqs": {
+      "source_hash": "8aeebb645b6c",
+      "text": "At other heights, the same empty-versus-filled center difference remains."
+    },
+    "2g8t": {
+      "source_hash": "02ebdaf48309",
+      "text": "Material volume also confirms that extra piece in the center."
+    },
+    "dra2": {
+      "source_hash": "aa7e67a2faaa",
+      "text": "The filled-hole example has much more volume, yet its bounds stay the same size."
+    },
+    "lxiq": {
+      "source_hash": "e4f3839fe9f8",
+      "text": "That blocked-center example also fails this spec's volume condition."
+    },
+    "yxau": {
+      "source_hash": "f2adf91f7d7d",
+      "text": "Does an empty center mean its narrowest point meets the nominal hole diameter?"
+    },
+    "i9h8": {
+      "source_hash": "7ceb929b1c14",
+      "text": "64 straight segments approximate a circle, with vertices at the specified radius."
+    },
+    "b3ef": {
+      "source_hash": "c61874db21dd",
+      "text": "The edge between two vertices lies closer to the center than the circular arc."
+    },
+    "pypq": {
+      "source_hash": "30f702a0cae8",
+      "text": "The narrowest diameter is about 15.98 millimeters, slightly below the nominal size."
+    },
+    "c8u0": {
+      "source_hash": "6e708932531d",
+      "text": "The gap is under 0.02 millimeters, right where the rod must pass."
+    },
+    "vlft": {
+      "source_hash": "fa124d1b1a03",
+      "text": "Check the through-hole at its narrowest point; having a hole is not enough."
+    },
+    "zzay": {
+      "source_hash": "ae6f973846c3",
+      "text": "Require minimum clearance to reach the nominal hole diameter, and this model goes back."
+    },
+    "c8hn": {
+      "source_hash": "a5125b7ff010",
+      "text": "That measurement puts the narrowest point below the new requirement."
+    },
+    "qqez": {
+      "source_hash": "ace04997aafb",
+      "text": "Tighten this washer's purpose requirements, and its old limited pass won't carry over."
+    },
+    "5m5q": {
+      "source_hash": "231a2969bad4",
+      "text": "How do we state the added minimum clearance so the recipient can check it?"
+    },
+    "33ye": {
+      "source_hash": "cae95ccdd0eb",
+      "text": "Delivery notes: the finished part needs minimum clearance of at least 16 millimeters."
+    },
+    "edz9": {
+      "source_hash": "5f015817fad5",
+      "text": "That's a separate written requirement, not a field implemented in the original spec."
+    },
+    "f106": {
+      "source_hash": "1b822456cba9",
+      "text": "The checker didn't test this new condition. Its pass cannot answer it."
+    },
+    "x4k6": {
+      "source_hash": "6753920eb84e",
+      "text": "This pass covers only the specified axis, dimensions, mesh edges and volume."
+    },
+    "1cox": {
+      "source_hash": "b36327fd2aac",
+      "text": "Those arbitrary hole shapes, self-intersections and minimum wall thickness throughout: untested."
+    },
+    "6rli": {
+      "source_hash": "facfa20da921",
+      "text": "Slicing, materials, load capacity and whether a real print works remain ahead."
+    },
+    "3w3j": {
+      "source_hash": "b43310e0409c",
+      "text": "Back to Kimi downloads: this checker reads only text STL, not images directly."
+    },
+    "kwmv": {
+      "source_hash": "30c68da26eb2",
+      "text": "For another mesh format, you'll need a tool that can read it correctly."
+    },
+    "cezr": {
+      "source_hash": "642a91565718",
+      "text": "Renaming the extension STL doesn't convert the contents into triangle data."
+    },
+    "d7t1": {
+      "source_hash": "f7f807b51d7e",
+      "text": "To keep editing the hole, what else does the package need besides this mesh?"
+    },
+    "t3r1": {
+      "source_hash": "45676ab928d3",
+      "text": "Previews show the overall shape; mesh files let you inspect the actual surface."
+    },
+    "rwiy": {
+      "source_hash": "9c68d5bc003f",
+      "text": "To keep editing hole diameter, also get a source file preserving how to edit it."
+    },
+    "ul11": {
+      "source_hash": "f80b707aa13b",
+      "text": "A mesh like STL doesn't automatically retain how you originally drew the circle."
+    },
+    "hrlr": {
+      "source_hash": "37b45190a2a2",
+      "text": "I haven't tested which file extensions Kimi actually exports."
+    },
+    "vum2": {
+      "source_hash": "4a42896ae43f",
+      "text": "“Downloadable printing assets” isn't a verified STL export tutorial."
+    },
+    "cen6": {
+      "source_hash": "62a3c8bf0a8c",
+      "text": "First check account permissions and actual files, then choose the next tool."
+    },
+    "oe9l": {
+      "source_hash": "0384e3d51956",
+      "text": "I'll hand over the model files we just saw, the same-version spec and the check results together."
+    },
+    "0gjn": {
+      "source_hash": "3e4a9688c27e",
+      "text": "If the original file changes, can these check results still go with it?"
+    },
+    "fxx4": {
+      "source_hash": "aa73b231996e",
+      "text": "Change the source file, and old results stay with the old file, not the new one."
+    },
+    "3ro5": {
+      "source_hash": "48195b652435",
+      "text": "Senders can explain what they did; recipients have something to verify again."
+    },
+    "usyf": {
+      "source_hash": "62e1f245b7ab",
+      "text": "Return the filled-hole example with its results as concrete grounds for revision."
+    },
+    "su1a": {
+      "source_hash": "f3778dfd1c3d",
+      "text": "We can hand over the model with a hole and limited results, but no untested manufacturing guarantee."
+    },
+    "vw33": {
+      "source_hash": "68eabd430f3e",
+      "text": "If the recipient adds that minimum-clearance requirement, give the independent measurement comparison."
+    },
+    "nqza": {
+      "source_hash": "bdf61d6ed30f",
+      "text": "Good looks invite a download. A clear purpose decides what to check afterward."
+    },
+    "45nk": {
+      "source_hash": "513b82dd0b3b",
+      "text": "A file meeting your spec, with results traced to it, lets you say where it's usable."
+    },
+    "70ym": {
+      "source_hash": "3d0791b9b4c7",
+      "text": "This washer must deliver an answer the next person can verify."
+    }
+  },
+  "thumbnail": {
+    "tag": "Kimi K3.1 Pro",
+    "headline": "File\n**Usable?**",
+    "sub": "Original demo\nNot Kimi output"
+  }
+}

@@ -1,0 +1,142 @@
+{
+  "schema_version": 1,
+  "episode": "kimi-k31-3d-delivery",
+  "kind": "public_summary_of_genuine_native_assembly_not_full_QA_or_audio_acceptance",
+  "source_sha256": "9686969c66cfd9329c28e0f75d62c22830930b609479560d896e3e087829958b",
+  "native_exit_code": 0,
+  "source_result": {
+    "file": "result.json",
+    "sha256": "a908116a9e58e993759e54de317ac9c150044676b421235d14b8fcb119d93567",
+    "bytes": 11998
+  },
+  "closed_phase_freeze": {
+    "file": "freeze.json",
+    "sha256": "0d92cd6196d5b27ebadbd39514f91fb6388c1ce4278e2cd6a49a00a2c6779522",
+    "bytes": 9731
+  },
+  "all60_closed_phase_evidence_hashes_reverified_by_documentation_preparer": true,
+  "final": {
+    "bytes": 65490500,
+    "sha256": "3cbd02ebab8f50065bb8e7a19e9a3467c0f89488403281ee24e5ec3e2196bbaa",
+    "artifact": "final.mp4",
+    "frames": 22702,
+    "seconds": 756.7333333333333,
+    "width": 1920,
+    "height": 1080,
+    "fps": 30
+  },
+  "retained_body": {
+    "bytes": 59197077,
+    "sha256": "37848b2b9d5bc99af9ae99ca080a629134e749035fd12fb451c32948fd23b819",
+    "artifact": "build/body.mp4",
+    "frames": 21922,
+    "seconds": 730.7333333333333
+  },
+  "native_checks": {
+    "bytes": 36317,
+    "sha256": "a953eef3868b274a448c7d84784a2bbc623d85d5499cf2abeb79718812013823",
+    "artifact": "checks.json",
+    "ok": true,
+    "problems": [],
+    "scene_frame_PSNR_samples": 126,
+    "encoded_segments": 42,
+    "loudness": {
+      "integrated": -14.1,
+      "truePeak": -1.9
+    }
+  },
+  "branding": {
+    "id": "mokaair-brand-package-v4-endscreen",
+    "source_package_sha256": "416c8768d4d29f2e746a0c019d2d598ec367cbb66b0ff996841c523651a63e88",
+    "applied_hash": "39d34ab0d563aff4143d88518e178fe57e769747772084c7e9b05f42f6aeda64",
+    "intro_frames": 150,
+    "outro_frames": 630,
+    "intro_frame_range_half_open": [
+      1669,
+      1819
+    ],
+    "outro_frame_range_half_open": [
+      22072,
+      22702
+    ],
+    "normal_package_comparison_GETs": 1,
+    "package_comparison_HTTP": 200,
+    "matched_installed_package": true
+  },
+  "root_inspection": {
+    "file": "root-actual-assembly-inspection.json",
+    "sha256": "c12e20985b3905e9514eaea97e492e9e6955a64555b04e7dbf7373b4614cd199",
+    "bytes": 5377
+  },
+  "root_actually_viewed_seam_images": 7,
+  "protected_files_unchanged": 1409,
+  "audio_check": {
+    "complete": false,
+    "current_primary_entries": 105,
+    "total": 114,
+    "matched": 74,
+    "unmatched_unjudged": 31,
+    "unfinished_entries": 9,
+    "unknown_request_sha256": "dfa6a780d3183a4286a31c731a9a18dc57adb62c25fd09694d19ff65792f1fb7",
+    "unknown_journal_sha256": "7c8fad702b2c9fd656348a996badb5e2e503d1a57459346e0e27f8a28eb19b9f",
+    "status": "sent",
+    "provider_result": null,
+    "replay_forbidden": true
+  },
+  "full_film_listening_completed": false,
+  "normal_final_QA_executed": false,
+  "native_narrative_R4": {
+    "passed": false,
+    "failed": [
+      "no_recap",
+      "no_detour"
+    ],
+    "editorial_adoption_is_separate": true
+  },
+  "foreign_current_checked_M4A": 0,
+  "all_eight_languages_media_complete": false,
+  "server_approval": false,
+  "backend_binary_delivery_proven_by_this_summary": false,
+  "followup": {
+    "normal_VI_case_only_thumbnail_correction": "Completed later separate normal phase; see normal-caption9.json. Original clipping finding above is historical.",
+    "zhTW_plus8_normal_captions": "Completed later separate normal phase with all47speedfindings and narration timing preserved; see normal-caption9.json.",
+    "normal_manual_candidate_review_push": "future step; no backend media or policy/QA result claimed"
+  },
+  "assembly_completed_at": "2026-10-26T16:26:01.228Z",
+  "ROOT_inspection_recorded_at": "2026-10-26T16:28:37.060952+00:00",
+  "documentation_prepared_at": "2026-10-26T16:38:38.351896+00:00",
+  "completed_later_independent_followup": {
+    "kind": "normal_caption9_and_VI_case",
+    "phase_completed_at": "2026-10-26T16:43:01.102Z",
+    "ROOT_inspection_at": "2026-10-26T16:44:04.197593+00:00",
+    "receipt": "normal-caption9.json",
+    "native_exit_code": 0,
+    "captions": {
+      "locales": 9,
+      "cues": 1364,
+      "speed_warnings": 47,
+      "timing": "narration"
+    },
+    "VI_clip_resolved_in_actual_ROOT_view": true,
+    "foreign_checked_M4A": 0,
+    "no_QA_or_backend_success_inferred": true
+  },
+  "later_real_normal_QA_and_pending_main": {
+    "receipt": "backend-manual-candidate-main.json",
+    "native_QA_file": "native-final-QA.json",
+    "native_QA_sha256": "a85712a6897a5bdcd0e6e3acbb4f5b2d508d9347da0b5331ab5223ecbe2c08a6",
+    "native_QA_return_code": 1,
+    "native_QA_overall_ok": false,
+    "checks_passed": 10,
+    "checks_total": 11,
+    "failed_ids": [
+      "narration"
+    ],
+    "all47caption_and3thumbnail_warnings_preserved": true,
+    "same_pending_review_id": "b1893aaf-a60c-4d4f-a7fd-ef39a1de112e",
+    "full1080_binary_GET_verified": true,
+    "foreign_checked_M4A": 0,
+    "serverapproval": false,
+    "new_CC_backend_append_not_completed_in_this_snapshot": true
+  }
+}

@@ -1,0 +1,501 @@
+{
+  "title": "Kimi K3.1 Pro: 3D cantik, kapan bisa dipakai?",
+  "description": "Rekam/cek: 2026-10-26 (Taipei). Kimi K3.1 Pro menonjolkan 3D. Setelah unduh, kapan model layak diserahkan? Untuk pameran, revisi, atau penyerahan komponen: bandingkan dua STL ring asli, dari ukuran luar dan permukaan tertutup hingga lubang tembus dan bukaan minimum.\n\nKeduanya contoh buatan editor; lubang sengaja diisi sebagai pembanding, bukan kesalahan Kimi. Diameter luar nominal 40 mm, lubang 16 mm, tebal 5 mm. Dengan 64 sisi, bukaan minimum aktual sekitar 15.980727 mm, kurang dari syarat minimum 16 mm.\n\nMateri: penampil lokal, STL asli, spesifikasi JSON, pemeriksa Python. Ekstrak ke satu folder, jalankan di demo:\npython3 check.py --stl ring.stl --spec spec.json\npython3 check.py --stl filled.stl --spec spec.json\n\nKami tidak mencoba akun/model Kimi, menguji ekspor, atau mencetak. Keterangan resmi unduhan aset cetak yang dibaca tidak menyebut STL. Bobot lengkap dijanjikan sebelum 2026-11-04; perolehan bobot baru belum diverifikasi. BenchCAD 92.7 adalah with-tools VoxelIoU, bukan tingkat keberhasilan cetak; kelompok model terbuka memakai sampel acak 1000/17900 file.\n\nSyarat bukaan minimum baru belum diterapkan dalam pemeriksa awal. Pemeriksaan lokal hanya sumbu tertentu, sampel terbatas, ukuran luar, sisi mesh, dan volume. Belum mencakup semua bentuk lubang, perpotongan diri, tebal dinding minimum, slicing, bahan, beban, atau kondisi produksi. Lulus bukan sertifikasi produksi.\n\nMateri ajar buatan kami (CC0; bukan keluaran Kimi): https://raw.githubusercontent.com/x812033727/travel_scanner/1738c9460205627a73b05917790af6ac89812e12/docs/videos/kimi-k31-3d-delivery/downloads/kimi-3d-demo.zip",
+  "tags": [
+    "Kimi K3.1 Pro",
+    "Kimi 3D Make",
+    "model 3D",
+    "STL",
+    "cetak 3D",
+    "penyerahan model 3D",
+    "BenchCAD",
+    "berita teknologi AI",
+    "pemeriksaan model",
+    "Mokaair"
+  ],
+  "chapters": {
+    "download-moment": "Satu ring, tiga hasil ganjil",
+    "news-reaches-desk": "Model baru, spesifikasi belum",
+    "spec-arrives": "Lubang jadi syarat terukur",
+    "outer-bounds-pass": "Ukuran dan mesh tertutup lulus",
+    "run-ring-command": "Dua file, satu pemeriksa",
+    "new-use-new-spec": "Ada lubang, syarat ikut tujuan"
+  },
+  "source_hashes": {
+    "chapters": {
+      "download-moment": "e51064b94360",
+      "news-reaches-desk": "a6a91f46b8b1",
+      "spec-arrives": "c6d07c8cbe01",
+      "outer-bounds-pass": "bd19e2e5a94c",
+      "run-ring-command": "6afd37a1fee0",
+      "new-use-new-spec": "16ff0f3eba91"
+    },
+    "title": "952836668e80",
+    "description": "343ab9aa8b2d",
+    "tags": "a542d0d7b55c",
+    "thumbnail": "bbc1db3e7add"
+  },
+  "lines": {
+    "2g58": {
+      "source_hash": "e5256c8698cd",
+      "text": "Pada 26 Oktober 2026, saya membuka dua ring contoh buatan sendiri di komputer ini."
+    },
+    "2sc4": {
+      "source_hash": "6b3e49e3002f",
+      "text": "Kimi K3.1 Pro menonjolkan unduhan 3D. Saya ingin tahu kapan file layak diserahkan."
+    },
+    "4ran": {
+      "source_hash": "6b6bcd244689",
+      "text": "Di penampil ini saya pilih tampak samping, menunggu ukuran luar dibandingkan dengan spesifikasi."
+    },
+    "pfy0": {
+      "source_hash": "d6c1972bf2c2",
+      "text": "Tanda hasil pemeriksaan mesh tertutup belum dibuka. Apa yang dijaminnya?"
+    },
+    "5jr1": {
+      "source_hash": "7477deec8160",
+      "text": "Saat penampang lubang tampil, apakah bagian tersempitnya memenuhi syarat?"
+    },
+    "fv1i": {
+      "source_hash": "363986dce4f4",
+      "text": "Di penampil yang sama, kedua file buatan sendiri diposisikan agar bisa dibandingkan."
+    },
+    "6yl7": {
+      "source_hash": "7c930eebed4c",
+      "text": "Satukan spesifikasi, file asli, dan hasil pemeriksaan agar perbedaannya terlihat."
+    },
+    "b7uf": {
+      "source_hash": "d77b7a380bcc",
+      "text": "Pakai spesifikasi sama untuk memutuskan file diterima atau dikembalikan."
+    },
+    "gzek": {
+      "source_hash": "ff7586e4b01a",
+      "text": "Dari pratinjau 3D apik ke komponen layak pakai: langkah apa?"
+    },
+    "q0p1": {
+      "source_hash": "ee0342a2d04b",
+      "text": "Saya buka spesifikasi kedua contoh, menyandingkan ukuran pesanan dan data model."
+    },
+    "lqfp": {
+      "source_hash": "71bb6443e1d8",
+      "text": "Versi baru Kimi yang rilis 24 Oktober waktu Taipei menyediakan 3D Make."
+    },
+    "h9gn": {
+      "source_hash": "86accf8a9884",
+      "text": "3D Make bisa memberi pratinjau, mengedit, dan mengunduh aset online."
+    },
+    "zwa9": {
+      "source_hash": "1e53ebfc088d",
+      "text": "Aset cetak 3D adalah kegunaan resmi, tetapi belum menentukan spesifikasi ring ini."
+    },
+    "ekg8": {
+      "source_hash": "27bbc4fe7ee6",
+      "text": "Bobot lengkap baru dijanjikan sebelum 4 November, bukan file karya yang kita periksa hari ini."
+    },
+    "rw5b": {
+      "source_hash": "87acb7a3f2a8",
+      "text": "Pastikan format dan tujuan aset ring ini. Kata unduh saja belum cukup untuk diterima."
+    },
+    "0glu": {
+      "source_hash": "7383bb42dedf",
+      "text": "Dalam satu evaluasi rekonstruksi 3D, mereka mengumumkan skor 92.7."
+    },
+    "y868": {
+      "source_hash": "dbf451505279",
+      "text": "Ujinya memakai alat, merekonstruksi bentuk 3D dari gambar berbagai sudut."
+    },
+    "0m8z": {
+      "source_hash": "dd57695117d3",
+      "text": "Uji kelompok model terbuka ini mengambil 1000 file secara acak dari 17900 file."
+    },
+    "uyzf": {
+      "source_hash": "3f91305a67df",
+      "text": "Metrik ini menilai tumpang tindih bentuk rekonstruksi dengan bentuk target."
+    },
+    "dzyw": {
+      "source_hash": "3f106761ae62",
+      "text": "Bukan rasio layak pakai dari 100 komponen cetak."
+    },
+    "nc22": {
+      "source_hash": "2ee956ac1a58",
+      "text": "Kembali ke ring ini, syarat konkret apa yang masih kurang sebelum penerimaan?"
+    },
+    "56w0": {
+      "source_hash": "4281a83e3340",
+      "text": "Batang harus bisa menembus tengah, sementara cincin luar tetap menjadi bidang kontak."
+    },
+    "66ya": {
+      "source_hash": "e669ea11da26",
+      "text": "Hanya minta bentuk ring? Model cantik pun bisa berarti hasil berbeda bagi kedua pihak."
+    },
+    "1ks6": {
+      "source_hash": "45b4c0ed3c38",
+      "text": "Bedanya belum tentu jelas di pratinjau. Spesifikasi memberi dasar perbandingan."
+    },
+    "zmyw": {
+      "source_hash": "c93f45134595",
+      "text": "Diameter luar ring contoh ini 40 milimeter, menentukan ruang yang ditempatinya."
+    },
+    "1gex": {
+      "source_hash": "460f9a9a3d8f",
+      "text": "Diameter lubang nominal 16 milimeter adalah target gambar lingkaran, belum bukaan minimum terukur."
+    },
+    "v5m0": {
+      "source_hash": "cf481634f945",
+      "text": "Ketebalan 5 milimeter adalah jarak dari permukaan bawah ke atas."
+    },
+    "d0ap": {
+      "source_hash": "c6d0428004bd",
+      "text": "Masukkan angka ini ke file spesifikasi dan serahkan bersama kedua STL."
+    },
+    "tvz8": {
+      "source_hash": "935057a49210",
+      "text": "Satuan, diameter luar, diameter lubang, dan tinggi punya kolom sendiri: tak perlu menebak saat mengubah."
+    },
+    "4sem": {
+      "source_hash": "883b702e3770",
+      "text": "Kamu mengubah kebutuhanmu. Pemeriksa juga harus membaca kebutuhan yang sama."
+    },
+    "9xjo": {
+      "source_hash": "dd54352d926b",
+      "text": "Kalau 40 tadi hanya angka koordinat, apa yang membuatnya berarti milimeter?"
+    },
+    "o3u0": {
+      "source_hash": "cc499784147c",
+      "text": "STL tidak memuat label satuan. Spesifikasi luar dan setelan impor menyamakan artinya."
+    },
+    "0sh9": {
+      "source_hash": "3d604fc183e1",
+      "text": "Salah satuan mengubah ukuran seluruh komponen. Jangan hanya melihat muatnya di layar."
+    },
+    "fu17": {
+      "source_hash": "681e4677e461",
+      "text": "Kedua file yang dibuka di sini adalah STL berisi data segitiga sungguhan."
+    },
+    "7gpn": {
+      "source_hash": "7bd9eb8835b8",
+      "text": "Arah koordinatnya sama, diukur dengan spesifikasi milimeter yang sama."
+    },
+    "89zh": {
+      "source_hash": "faa9397391f4",
+      "text": "Kedua file dinilai dengan syarat komponen sama; selisihnya menyorot lubang tembus itu."
+    },
+    "o8jk": {
+      "source_hash": "202437132685",
+      "text": "Saya sengaja mengisi tengah satu contoh sebagai pembanding untuk penolakan saat penyerahan."
+    },
+    "dag4": {
+      "source_hash": "6bbd602a3a61",
+      "text": "Bukan kesalahan Kimi. Bentuk luar sama ini menguji apakah kita memeriksa lubang."
+    },
+    "palv": {
+      "source_hash": "6de2fd7596f6",
+      "text": "Kendalikan perbedaan isi lubang agar pemeriksaan ukuran luar punya pembanding nyata."
+    },
+    "f84c": {
+      "source_hash": "a7144da00f0e",
+      "text": "Saat menerima model, mungkin kamu langsung pakai penggaris mengukur panjang, lebar, tinggi."
+    },
+    "ipjt": {
+      "source_hash": "088d27c4283a",
+      "text": "Jika cukup, contoh tandingan berinti padat pun mestinya ditolak."
+    },
+    "0jfv": {
+      "source_hash": "ac4ff6aef353",
+      "text": "Kini dua model dengan bentuk luar sama diuji bersama."
+    },
+    "ox5o": {
+      "source_hash": "6fbcd622aec8",
+      "text": "Batas luar tadi terukur 40, 40, dan 5 pada kedua file."
+    },
+    "6skt": {
+      "source_hash": "5dd6b2d51ac5",
+      "text": "Batas luar hanya mencakup koordinat terluar. Bahan di tengah tak mengubah ukurannya."
+    },
+    "z5jf": {
+      "source_hash": "e193a3118630",
+      "text": "Penggaris menjawab bentuk luar, belum lubang yang kita butuhkan."
+    },
+    "boyv": {
+      "source_hash": "0ae2eb3df893",
+      "text": "Cek mesh tertutup, lebih andal?"
+    },
+    "ljeg": {
+      "source_hash": "97c4d72b2e28",
+      "text": "Uji ini melihat apakah sisi segitiga tersambung benar dengan bidang di sebelahnya."
+    },
+    "njr0": {
+      "source_hash": "3f58522ece93",
+      "text": "Kedua file tak punya sisi batas. Hasil ini saja belum menjawab kelayakan penyerahan."
+    },
+    "q8wd": {
+      "source_hash": "7254d2396f8a",
+      "text": "Ring berlubang tembus tetap bisa punya permukaan utuh di sekeliling ruang tengah."
+    },
+    "ip0k": {
+      "source_hash": "e19fccd1f508",
+      "text": "Dinding luar menyambung ke atas, lalu ke dinding lubang, dan kembali lewat bawah."
+    },
+    "pqc3": {
+      "source_hash": "487dfedb4993",
+      "text": "Tertutup berarti permukaan bahan tersambung utuh, bukan tengahnya harus padat."
+    },
+    "h0ab": {
+      "source_hash": "2f3eba2f0f6b",
+      "text": "Contoh berlubang memakai 512 segitiga; pembanding dengan lubang terisi memakai 256."
+    },
+    "ni1q": {
+      "source_hash": "bf0036038b4e",
+      "text": "Bidangnya dua kali lipat hanya menunjukkan pembagian mesh ini, bukan skor mutu."
+    },
+    "s8d7": {
+      "source_hash": "451202da75cb",
+      "text": "Batas luar dan mesh tertutup tadi belum memeriksa jalur tengah. Di sini posisi ujinya perlu diganti."
+    },
+    "qhwk": {
+      "source_hash": "b0ff2e117723",
+      "text": "Lubang yang diminta ada di tengah, menembus dari bawah ke atas searah ketebalan."
+    },
+    "u98g": {
+      "source_hash": "db512fe298a2",
+      "text": "Lubang di tempat lain atau lingkaran di permukaan tak menggantikan jalur ini."
+    },
+    "rk1x": {
+      "source_hash": "3205fa814f4b",
+      "text": "Kedua contoh beralas di nol, dengan puncak pada ketebalan sesuai spesifikasi."
+    },
+    "a6o8": {
+      "source_hash": "49bf205f8e52",
+      "text": "Ekstrak materi ke satu folder, lalu buka penampil model yang disertakan lewat browser."
+    },
+    "qqjh": {
+      "source_hash": "333693d1e7a9",
+      "text": "Ganti tampak atas dan samping agar ukuran luar dan jalur tengah terlihat terpisah."
+    },
+    "wmo7": {
+      "source_hash": "5c7a312c0e0c",
+      "text": "Untuk file asli, simpan spesifikasi di sampingnya; baca segitiga dengan program sama."
+    },
+    "t7wu": {
+      "source_hash": "9f87381477f8",
+      "text": "Buka terminal di folder materi, lalu tempel perintah lengkap pada layar."
+    },
+    "zx72": {
+      "source_hash": "8c51ab90d083",
+      "text": "Perintah ini membaca contoh berlubang dan spesifikasi luar tadi."
+    },
+    "a2bm": {
+      "source_hash": "0abb1a553b20",
+      "text": "Pemeriksa mencocokkan koordinat dan segitiga file dengan spesifikasi luar yang sama."
+    },
+    "up0s": {
+      "source_hash": "65ec82799748",
+      "text": "Tempel ini untuk mengganti masukan dengan contoh yang lubangnya sengaja diisi."
+    },
+    "sfk4": {
+      "source_hash": "93119dc8199e",
+      "text": "Program dan spesifikasi tetap sama. Hanya model yang diperiksa yang diganti."
+    },
+    "cmuz": {
+      "source_hash": "1e82e94e9dd2",
+      "text": "Saat ukuran sama tetapi hasil berbeda, sumber perbedaannya jadi bisa dilacak."
+    },
+    "x3p9": {
+      "source_hash": "f86d30a28a93",
+      "text": "Bagian luar sudah lulus. Apakah segitiga menghalangi bagian tengah?"
+    },
+    "5len": {
+      "source_hash": "479cb6f41788",
+      "text": "Program mengambil sampel di lubang, menghitung titik potong segitiga searah ketebalan."
+    },
+    "5fad": {
+      "source_hash": "d6dabac47d06",
+      "text": "Sampelnya terbatas. Hasil mencatat jumlah terhalang, bukan jaminan semua bentuk lubang."
+    },
+    "l8p2": {
+      "source_hash": "e6dc61221635",
+      "text": "Tak satu pun garis pengamatan contoh berlubang menyentuh bahan."
+    },
+    "it4f": {
+      "source_hash": "0ce141d0dbc6",
+      "text": "Contoh tandingan lubang terisi: semua garis uji terhalang."
+    },
+    "1b0m": {
+      "source_hash": "ee207c238450",
+      "text": "File di awal yang ukurannya sama tapi ditolak kini punya alasan penolakan konkret."
+    },
+    "v4r0": {
+      "source_hash": "f687a7f69668",
+      "text": "Potong pada setengah tinggi. Contoh berlubang punya dua kontur: dalam dan luar."
+    },
+    "8q11": {
+      "source_hash": "130f601b6663",
+      "text": "Kontur dalam kosong; contoh terisi hanya punya kontur luar, dengan bahan di tengah."
+    },
+    "qlqs": {
+      "source_hash": "8aeebb645b6c",
+      "text": "Di berbagai ketinggian, perbedaan tengah kosong dan terisi tetap terlihat."
+    },
+    "2g8t": {
+      "source_hash": "02ebdaf48309",
+      "text": "Volume bahan bisa memastikan dari sisi lain adanya tambahan bahan di tengah."
+    },
+    "dra2": {
+      "source_hash": "aa7e67a2faaa",
+      "text": "Volume contoh terisi jelas lebih besar, meski batas luarnya masih sama seperti tadi."
+    },
+    "lxiq": {
+      "source_hash": "e4f3839fe9f8",
+      "text": "Contoh yang tengahnya terhalang tadi juga gagal syarat volume spesifikasi ini."
+    },
+    "yxau": {
+      "source_hash": "f2adf91f7d7d",
+      "text": "Kalau tengah kosong, apa bagian tersempit pasti memenuhi diameter lubang nominal?"
+    },
+    "i9h8": {
+      "source_hash": "7ceb929b1c14",
+      "text": "Lingkaran didekati 64 sisi lurus, dengan titik sudut pada radius yang ditetapkan."
+    },
+    "b3ef": {
+      "source_hash": "c61874db21dd",
+      "text": "Sisi lurus antara dua titik sudut lebih dekat ke pusat daripada busur lingkaran."
+    },
+    "pypq": {
+      "source_hash": "30f702a0cae8",
+      "text": "Diameter tersempit terukur sekitar 15.98 milimeter, sedikit di bawah diameter lubang nominal."
+    },
+    "c8u0": {
+      "source_hash": "6e708932531d",
+      "text": "Selisihnya kurang dari 0.02 milimeter, tetapi tepat di jalur yang harus dilewati batang."
+    },
+    "vlft": {
+      "source_hash": "fa124d1b1a03",
+      "text": "Periksa lubang tembus tadi di bagian tersempit, jangan hanya melihat ada tidaknya lubang."
+    },
+    "zzay": {
+      "source_hash": "ae6f973846c3",
+      "text": "Jika syarat diubah: bukaan minimum setidaknya sebesar diameter nominal, contoh ini harus ditolak."
+    },
+    "c8hn": {
+      "source_hash": "a5125b7ff010",
+      "text": "Pengukuran tadi menunjukkan bagian tersempit lebih kecil dari syarat baru ini."
+    },
+    "qqez": {
+      "source_hash": "ace04997aafb",
+      "text": "Kegunaan ring yang sama diperketat? Tanda lulus uji terbatas tadi tak bisa langsung dipakai."
+    },
+    "5m5q": {
+      "source_hash": "231a2969bad4",
+      "text": "Bagaimana menulis syarat bukaan minimum baru ini agar bisa diperiksa penerima?"
+    },
+    "33ye": {
+      "source_hash": "cae95ccdd0eb",
+      "text": "Tulis saat penyerahan: bukaan minimum hasil akhir setidaknya 16 milimeter."
+    },
+    "edz9": {
+      "source_hash": "5f015817fad5",
+      "text": "Ini syarat terpisah, bukan kolom yang sudah diterapkan dalam file spesifikasi awal."
+    },
+    "f106": {
+      "source_hash": "1b822456cba9",
+      "text": "Pemeriksa tadi tak menguji syarat baru ini. Kelulusannya tak menjawab syarat tersebut."
+    },
+    "x4k6": {
+      "source_hash": "6753920eb84e",
+      "text": "Kelulusan ini hanya mencakup sumbu yang ditetapkan, ukuran, sisi mesh, dan volume."
+    },
+    "1cox": {
+      "source_hash": "b36327fd2aac",
+      "text": "Belum diuji: bentuk lubang sembarang, perpotongan diri, tebal minimum di tiap titik dinding."
+    },
+    "6rli": {
+      "source_hash": "facfa20da921",
+      "text": "Slicing, bahan, beban, dan kegunaan hasil cetak nyata masih harus diperiksa nanti."
+    },
+    "3w3j": {
+      "source_hash": "b43310e0409c",
+      "text": "Kembali ke unduhan Kimi, pemeriksa ini hanya membaca STL teks, bukan langsung gambar."
+    },
+    "kwmv": {
+      "source_hash": "30c68da26eb2",
+      "text": "Kalau mendapat format mesh lain, gunakan alat yang bisa membacanya dengan benar."
+    },
+    "cezr": {
+      "source_hash": "642a91565718",
+      "text": "Mengubah ekstensi menjadi STL tidak mengubah isi awal menjadi data segitiga."
+    },
+    "d7t1": {
+      "source_hash": "f7f807b51d7e",
+      "text": "Untuk mengubah lubang berkali-kali, apa yang kurang dari paket selain mesh ini?"
+    },
+    "t3r1": {
+      "source_hash": "45676ab928d3",
+      "text": "Pratinjau untuk bentuk keseluruhan; file mesh untuk memeriksa permukaan sebenarnya."
+    },
+    "rwiy": {
+      "source_hash": "9c68d5bc003f",
+      "text": "Untuk terus mengubah diameter lubang, minta juga file sumber yang menyimpan cara mengubahnya."
+    },
+    "ul11": {
+      "source_hash": "f80b707aa13b",
+      "text": "Mesh segitiga seperti STL tak otomatis menyimpan cara awal kamu menggambar lingkaran."
+    },
+    "hrlr": {
+      "source_hash": "37b45190a2a2",
+      "text": "Saya belum menguji sendiri ekstensi apa yang bisa diekspor Kimi."
+    },
+    "vum2": {
+      "source_hash": "4a42896ae43f",
+      "text": "Klaim unduhan aset cetak tak bisa dianggap tutorial ekspor STL yang sudah terbukti."
+    },
+    "cen6": {
+      "source_hash": "62a3c8bf0a8c",
+      "text": "Saat mencoba, pastikan hak akses akun dan file yang didapat, lalu pilih alat lanjutan."
+    },
+    "oe9l": {
+      "source_hash": "0384e3d51956",
+      "text": "Saya serahkan file model tadi, spesifikasi versi sama, dan hasil uji bersama kepada penerima."
+    },
+    "0gjn": {
+      "source_hash": "3e4a9688c27e",
+      "text": "Setelah file asli direvisi, bolehkah hasil pemeriksaan ini ikut diserahkan?"
+    },
+    "fxx4": {
+      "source_hash": "aa73b231996e",
+      "text": "File asli berubah? Hasil lama hanya untuk file lama, tak otomatis ikut versi baru."
+    },
+    "3ro5": {
+      "source_hash": "48195b652435",
+      "text": "Pengirim bisa menjelaskan tindakannya; penerima punya bahan untuk memeriksa ulang."
+    },
+    "usyf": {
+      "source_hash": "62e1f245b7ab",
+      "text": "Kembalikan contoh terisi tadi beserta hasil ujinya sebagai dasar revisi konkret."
+    },
+    "su1a": {
+      "source_hash": "f3778dfd1c3d",
+      "text": "Contoh berlubang boleh diserahkan dengan hasil uji terbatas, tetapi tak boleh diberi jaminan produksi yang belum diuji."
+    },
+    "vw33": {
+      "source_hash": "68eabd430f3e",
+      "text": "Jika penerima menambah syarat bukaan minimum ini, sertakan perbandingan pengukuran independen."
+    },
+    "nqza": {
+      "source_hash": "bdf61d6ed30f",
+      "text": "Cantik membuatmu ingin mengunduh. Tujuan jelas menentukan apa yang perlu diperiksa."
+    },
+    "45nk": {
+      "source_hash": "513b82dd0b3b",
+      "text": "File sesuai spesifikasi, hasil terlacak ke file itu: barulah batas kegunaannya bisa dijelaskan."
+    },
+    "70ym": {
+      "source_hash": "3d0791b9b4c7",
+      "text": "Yang diserahkan dari ring ini adalah jawaban yang bisa diperiksa ulang oleh penerima."
+    }
+  },
+  "thumbnail": {
+    "tag": "Kimi K3.1 Pro",
+    "headline": "Unduh\n**Bisa?**",
+    "sub": "Demo kami\nBukan dari Kimi"
+  }
+}
