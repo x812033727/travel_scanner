@@ -1,0 +1,4338 @@
+{
+  "number": 5,
+  "title": "再冬",
+  "theme": "第二個冬至，樹一年了。",
+  "start_state": "冬天又來了。日曆翻過來寫著樹高；他不劃、她每天寫；樹三十五公分、枯樹一片葉、花圃休、蘭等春；他左手二十五個音，每天彈給院子；謝之遠住這、謝朵量樹、小禾每週、吳伯五個杯。療養院取消了、苗圃撐住了。一年之約還有一個月，誰都沒提。",
+  "end_state": "倒數到期那天揭開（第二個冬至：他沒走、枯樹發芽、他在院子裡用左手彈完一首單手曲；兩人撕了一年之約換成『一年一棵樹』）。冬至前一個月他第一次問她『妳的約呢』、她說『樹活了』、他說『那我的約呢』、她說『你自己訂的你自己撕』；孟姐辦了院子裡的演奏——鄰居、老曾、阿鳳、許醫師、小宇、院長都來；他左手、小禾右手，母親那首譜右手的部分小禾補寫的；冬至當天早上枯樹的那片葉旁邊冒出一個芽；他把一年之約拿出來——兩張紙，他的與她的——當著全家撕了，寫了一張新的：『一年一棵樹。』第 300 集最後一格，她在苗圃收到一封信，另一個訂了倒數的人：『聽說妳種的樹會讓人活。』",
+  "guest_cast": [
+    {
+      "id": "s05-wang-taitai",
+      "name": "王太太",
+      "role": "隔壁搬來十年的鄰居，每天從牆外看院子荒了又綠；第一次走進院子的外人",
+      "appearance": "東亞女性，五十五歲，捲短髮、毛線背心、手裡抱一盆山茶，好奇又和氣的笑"
+    },
+    {
+      "id": "s05-tiaoyin-shi",
+      "name": "調音師老黎",
+      "role": "替謝家那台琴調了二十年音的調音師，說冬天的琴不能出門",
+      "appearance": "東亞男性，六十二歲，灰白平頭、圓框眼鏡、工具袋斜背，手指乾淨修長"
+    },
+    {
+      "id": "s05-jixin-ren",
+      "name": "寫信的人",
+      "role": "山上療養院院長提過的另一個訂了日期的人；第 300 集只以一封手寫信出現，留給第二部",
+      "appearance": "只拍一雙手與字：東亞成年人的手，指節分明，握著藍色鋼筆寫信，信紙上是工整而略顫的字"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s05-t01",
+      "question": "冬至前，誰會先提一年之約？",
+      "setup_episode": 241,
+      "payoff_episode": 250
+    },
+    {
+      "id": "s05-t02",
+      "question": "謝朵的月曆畫到冬至，畫的是什麼？",
+      "setup_episode": 242,
+      "payoff_episode": 249
+    },
+    {
+      "id": "s05-t03",
+      "question": "老曾替第二棵留的是哪一棵苗？",
+      "setup_episode": 244,
+      "payoff_episode": 285
+    },
+    {
+      "id": "s05-t04",
+      "question": "許醫師不來了，那誰算？",
+      "setup_episode": 246,
+      "payoff_episode": 299
+    },
+    {
+      "id": "s05-t05",
+      "question": "孟姐借院子要做什麼？",
+      "setup_episode": 248,
+      "payoff_episode": 258
+    },
+    {
+      "id": "s05-t06",
+      "question": "小禾藏的那疊譜紙是什麼？",
+      "setup_episode": 251,
+      "payoff_episode": 253
+    },
+    {
+      "id": "s05-t07",
+      "question": "他用左手改譜，三天改得完嗎？",
+      "setup_episode": 254,
+      "payoff_episode": 259
+    },
+    {
+      "id": "s05-t08",
+      "question": "冬至前一天會不會下雪？",
+      "setup_episode": 256,
+      "payoff_episode": 271
+    },
+    {
+      "id": "s05-t09",
+      "question": "謝朵的節目單畫了什麼？",
+      "setup_episode": 262,
+      "payoff_episode": 272
+    },
+    {
+      "id": "s05-t10",
+      "question": "一百盆花和五十張椅子放得下嗎？",
+      "setup_episode": 263,
+      "payoff_episode": 267
+    },
+    {
+      "id": "s05-t11",
+      "question": "鋼琴出得了琴房嗎？",
+      "setup_episode": 264,
+      "payoff_episode": 269
+    },
+    {
+      "id": "s05-t12",
+      "question": "院長說的另一個訂了日期的人是誰？",
+      "setup_episode": 268,
+      "payoff_episode": 300
+    },
+    {
+      "id": "s05-t13",
+      "question": "他說『後天說』，要說什麼？",
+      "setup_episode": 270,
+      "payoff_episode": 283
+    },
+    {
+      "id": "s05-t14",
+      "question": "第一首單手曲是彈給誰的？",
+      "setup_episode": 273,
+      "payoff_episode": 280
+    },
+    {
+      "id": "s05-t15",
+      "question": "院長說『我白等了』，等的是什麼？",
+      "setup_episode": 277,
+      "payoff_episode": 278
+    },
+    {
+      "id": "s05-t16",
+      "question": "枯樹皮下的那點綠會發芽嗎？",
+      "setup_episode": 265,
+      "payoff_episode": 281
+    },
+    {
+      "id": "s05-t17",
+      "question": "他敢不敢走進她的苗圃？",
+      "setup_episode": 287,
+      "payoff_episode": 290
+    },
+    {
+      "id": "s05-t18",
+      "question": "一年後，第二棵樹還活著嗎？",
+      "setup_episode": 291,
+      "payoff_episode": 292
+    },
+    {
+      "id": "s05-t19",
+      "question": "小禾一年一次的上台，在院子還是音樂廳？",
+      "setup_episode": 292,
+      "payoff_episode": 296
+    },
+    {
+      "id": "s05-t20",
+      "question": "謝之遠為什麼在院子邊蓋小屋？",
+      "setup_episode": 293,
+      "payoff_episode": 297
+    },
+    {
+      "id": "s05-t21",
+      "question": "第三棵樹要種在哪？",
+      "setup_episode": 297,
+      "payoff_episode": 300
+    },
+    {
+      "id": "s05-t22",
+      "question": "他左手的第三十個音練得成嗎？",
+      "setup_episode": 291,
+      "payoff_episode": 298
+    }
+  ],
+  "episodes": [
+    {
+      "number": 241,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "一個月",
+      "youtube_title": "一年之約只剩一個月，全家沒人敢提，七歲姪女卻在月曆上偷偷畫了一棵樹",
+      "duration_s": 110,
+      "logline": "阮晴想照常過冬至前的最後一個月，可家裡每個人都在偷偷數日子，沒有人肯先開口。",
+      "hook": "日曆背面一排樹高，她寫下新的一行：『35』。謝朵在背後問：『還剩幾天？』",
+      "hook_type": "question",
+      "mid_hook": "吳伯泡茶時，阮晴看見茶罐蓋上刻了一排細痕——不多不少，是天數。",
+      "extra_hooks": [
+        "謝之遠進門第一句不是早安：『今天彈了嗎？』"
+      ],
+      "conflict": "一年之約還剩一個月，誰都沒提；她要讓這個月跟平常一樣，不讓倒數長進飯桌。",
+      "turn": "她以為只有她在數；原來吳伯、謝之遠、謝朵全在數，只是各用各的方法藏著。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "謝朵的月曆翻到冬至那格：一棵樹，樹下一個背影，旁邊寫著『山』。",
+        "question": "謝朵知道叔叔的一年之約？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xijie",
+        "xiju",
+        "peijiao"
+      ],
+      "spectacle": "冬日灰色的院子，一棵三十五公分的樹包著麻布，枯樹枝頭一片孤零零的綠葉。",
+      "glamour_shot": "阮晴蹲在樹旁拿捲尺，短髮沾霜、回頭一笑，眼睛彎起來。",
+      "setups": [
+        "s05-t01",
+        "m12"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "樹高 35 公分寫上日曆背面",
+        "苗圃這個月第一次不靠匿名單也打平"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-duo",
+        "wu-bo",
+        "xie-zhiyuan",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "飯廳"
+      ],
+      "state": {
+        "time": "一大早｜進度：冬至倒數 30 天｜樹 35.0 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "家裡每個人都在暗中數冬至；謝朵在月曆上畫了東西",
+        "carry_forward": "謝朵月曆上冬至那格的背影"
+      }
+    },
+    {
+      "number": 242,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "月曆上的樹",
+      "youtube_title": "姪女捂住月曆不准大人看，管家卻拿出茶罐：這三十條刻痕，是老太太教我的",
+      "duration_s": 105,
+      "logline": "阮晴想看謝朵的月曆畫了什麼，謝朵死不給，吳伯的茶罐卻先洩了底。",
+      "hook": "謝朵一把捂住月曆：『不准看！』她把月曆藏進雨鞋裡。",
+      "hook_type": "line",
+      "mid_hook": "阮晴不追問，轉去幫吳伯擦茶罐，指腹摸到那排刻痕：『這是誰教的？』",
+      "conflict": "謝朵畫的『山』讓阮晴想知道孩子到底知道多少，但她的規矩是不問。",
+      "turn": "她以為月曆是秘密，結果謝朵只是怕『畫還沒畫完』；真正藏事的是吳伯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "吳伯把茶罐放回架上：『老太太教的。她也刻過。』刻痕旁邊，有一排更舊的。",
+        "question": "老太太當年在數什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "peijiao",
+        "xijie"
+      ],
+      "spectacle": "架上一排舊茶罐，每一個蓋子都刻著密密的痕，陽光從窗格斜照進來。",
+      "glamour_shot": "謝之衡站在琴房門口抱起謝朵，黑手套托著她的雨鞋，側臉在冬日窗光裡。",
+      "setups": [
+        "s05-t02"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "謝朵答應月曆畫完就給叔叔看",
+        "吳伯第一次說出老太太也刻過茶罐"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-duo",
+        "wu-bo",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "飯廳",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "上午｜進度：冬至倒數 29 天｜樹 35.0 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "老太太當年也刻茶罐數日子；謝朵的畫還沒畫完",
+        "carry_forward": "茶罐上更舊的那排刻痕"
+      }
+    },
+    {
+      "number": 243,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "今天彈了嗎",
+      "youtube_title": "哥哥每天只問一句『今天彈了嗎』，鋼琴家弟弟終於回嘴：你自己來聽",
+      "duration_s": 100,
+      "logline": "謝之遠每天追問弟弟彈琴，謝之衡嫌煩，阮晴乾脆把兩兄弟塞進同一間琴房。",
+      "hook": "謝之遠堵在琴房門口：『今天彈了嗎？』謝之衡：『第三十次了。』",
+      "hook_type": "line",
+      "mid_hook": "阮晴把一張椅子搬進琴房，擺在鋼琴旁：『你自己坐著聽。』",
+      "extra_hooks": [
+        "謝朵舉手：『我也要聽，我付五塊。』"
+      ],
+      "conflict": "謝之遠的關心只會用逼問的，謝之衡只會用冷臉擋；她要讓兩個人坐在同一個房間。",
+      "turn": "謝之遠以為弟弟每天都在敷衍；坐下來才知道他每天彈的是同一首，只是每天多一個音。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第二十五個音，左手小指按下去，停住，鍵沒有回彈。",
+        "question": "他的左手也開始了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "peijiao",
+        "xijie"
+      ],
+      "spectacle": "昏暗琴房裡只開一盞小燈，一架鋼琴，兩兄弟一坐一站，影子投在牆上。",
+      "glamour_shot": "謝之衡在燈下摘掉黑手套，左手長指懸在琴鍵上，睫毛垂著。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "謝之遠第一次坐著聽完弟弟彈琴",
+        "阮晴發現他每天多彈一個音"
+      ],
+      "characters": [
+        "xie-zhiyuan",
+        "xie-zhiheng",
+        "ruan-qing",
+        "xie-duo"
+      ],
+      "locations": [
+        "琴房"
+      ],
+      "state": {
+        "time": "午後｜進度：冬至倒數 28 天｜樹 35.1 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "他左手彈到第二十五個音",
+        "carry_forward": "左手小指卡住的那一下"
+      }
+    },
+    {
+      "number": 244,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "第二棵的苗",
+      "youtube_title": "左手小指突然按不下去，她沒說一句安慰，只遞上一個暖手袋",
+      "duration_s": 115,
+      "logline": "阮晴要分清楚他的左手是病還是冷，同時苗圃的老曾已經在替第二棵樹挑苗。",
+      "hook": "小指再按一次——鍵回彈了。她把一個暖手袋放在琴蓋上：『冷的。』",
+      "hook_type": "reversal",
+      "mid_hook": "苗圃裡，老曾把三排樹苗並在一起，草帽一推：『第二棵，挑哪一排？』",
+      "conflict": "左手一卡全家都屏住氣；她不談病，只處理冷，然後去苗圃辦第二棵樹的事。",
+      "turn": "大家以為那一下是左手要停了；原來是琴房太冷——她第二天就在琴房加了一盞暖燈。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老曾問：『種在哪？』她回頭想院子——只剩枯樹旁邊一小塊地。",
+        "question": "第二棵要種在枯樹旁邊嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xijie",
+        "peijiao",
+        "xiju"
+      ],
+      "spectacle": "苗圃塑膠棚裡三排樹苗整齊排開，冬陽穿過塑膠布變成一片霧白的光。",
+      "glamour_shot": "阮晴在樹苗中間蹲下撥土，手套一甩，回頭對老曾笑。",
+      "setups": [
+        "s05-t03"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "琴房加了暖燈",
+        "老曾留下三排候選苗"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng",
+        "lao-zeng",
+        "a-feng"
+      ],
+      "locations": [
+        "琴房",
+        "阮家苗圃"
+      ],
+      "state": {
+        "time": "隔天｜進度：冬至倒數 27 天｜樹 35.1 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "左手那一下是冷，不是病",
+        "carry_forward": "枯樹旁那塊空地"
+      }
+    },
+    {
+      "number": 245,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "冬天的量法",
+      "youtube_title": "冬天的樹一公分都不長，她照樣天天量；直到他下樓，把自己的圍巾綁上了樹",
+      "duration_s": 100,
+      "logline": "樹在冬天不長，阮晴照量不誤，阿鳳笑她白量，謝之衡在窗邊看了三天。",
+      "hook": "捲尺貼著樹幹，她念：『三十五點一。』阿鳳：『一毫米也量？』",
+      "hook_type": "line",
+      "mid_hook": "阮晴替樹包麻布，包到一半，麻布不夠了——阿鳳送錯了尺寸。",
+      "conflict": "冬天的進度條幾乎不動，她得讓量這件事繼續有意義。",
+      "turn": "阿鳳以為她是太緊張；她說冬天量的不是長多少，是有沒有少。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "他下樓，一句話沒說，解下自己的黑圍巾，綁在麻布不夠的那一截。",
+        "question": "他是在替樹保暖，還是替自己？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xijie",
+        "peijiao"
+      ],
+      "spectacle": "院子結霜，樹幹裹著一半麻布、一截黑圍巾，枯樹的那片葉上掛著霜。",
+      "glamour_shot": "謝之衡在院子裡彎腰綁圍巾，冷風吹亂額髮，黑手套的指節分明。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "樹高 35.1 公分",
+        "樹包好了，多了一截黑圍巾"
+      ],
+      "characters": [
+        "ruan-qing",
+        "a-feng",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前三週｜進度：冬至倒數 26 天｜樹 35.1 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "他第一次自己下樓護樹",
+        "carry_forward": "樹上那截黑圍巾"
+      }
+    },
+    {
+      "number": 246,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "我不來了",
+      "youtube_title": "主治醫師最後一次上門，看完他的手只說：我不來了，妳們不需要我",
+      "duration_s": 120,
+      "logline": "許醫師來做冬至前的檢查，阮晴等她說一個數字，許醫師卻說她不再來了。",
+      "hook": "許醫師看見樹上的黑圍巾，推了推眼鏡：『誰綁的？』他：『風。』",
+      "hook_type": "image",
+      "mid_hook": "許醫師收起聽診器：『我不來了。妳們不需要我。』",
+      "extra_hooks": [
+        "阮晴脫口：『那誰算？』許醫師指院子：『樹。』"
+      ],
+      "conflict": "許醫師是唯一說實話的人；她不來，等於家裡沒人能告訴他們還有多久。",
+      "turn": "阮晴以為許醫師不來是壞消息；許醫師說她算的數字已經沒用了，因為他早就不照她算。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "許醫師留下的病歷夾裡，夾著一張照片：一年前的荒院子，草比人高。",
+        "question": "她為什麼留著這張照片？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xijie",
+        "peijiao",
+        "ganren"
+      ],
+      "spectacle": "琴房裡許醫師握著他的左手看，窗外院子一格一格的綠被霜框住。",
+      "glamour_shot": "阮晴倚在琴房門框，曬痕的臉迎著窗光，雙手插在工作褲口袋。",
+      "setups": [
+        "s05-t04"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許醫師宣布不再出診",
+        "他的左手比她算的多十五個音"
+      ],
+      "characters": [
+        "doctor-xu",
+        "xie-zhiheng",
+        "ruan-qing"
+      ],
+      "locations": [
+        "琴房",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前二十五天｜進度：冬至倒數 25 天｜樹 35.2 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "許醫師不再來；剩下的由樹算",
+        "carry_forward": "去年那張荒院子的照片"
+      }
+    },
+    {
+      "number": 247,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "去年的照片",
+      "youtube_title": "一張一年前的照片擺在院子旁，鄰居探頭一句話，全家當場安靜了",
+      "duration_s": 105,
+      "logline": "阮晴把去年的照片和今天的院子並排，想讓他看見一年的差別，牆外的鄰居卻帶來一句傳言。",
+      "hook": "她把照片舉到院子前，荒草和今天的綠疊在一起。謝朵：『這是別人家？』",
+      "hook_type": "image",
+      "mid_hook": "牆頭冒出一張陌生的臉：『這宅子有人住？』是隔壁搬來十年的王太太。",
+      "conflict": "去年和今年擺在一起，是她給他看的帳；但外面的人只知道那個傳言。",
+      "turn": "王太太不是來找碴的，她十年來每天從牆外看這院子荒，最近才發現它綠了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "王太太壓低聲音：『聽說少爺冬至要搬走？』院子裡的剪刀聲停了。",
+        "question": "傳言是誰傳出去的？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xijie",
+        "xiju",
+        "peijiao"
+      ],
+      "spectacle": "一張舊照片在冬陽下與真實院子疊合，荒草漸漸換成整齊的花圃與樹。",
+      "glamour_shot": "謝之衡站在照片後方，半張臉被照片擋住，另半張看著院子出神。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "王太太第一次跟謝家說話"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-duo",
+        "s05-wang-taitai",
+        "wu-bo",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "院牆"
+      ],
+      "state": {
+        "time": "冬至前二十四天｜進度：冬至倒數 24 天｜樹 35.2 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "鄰居聽過『冬至搬走』的傳言",
+        "carry_forward": "院牆外的那句問話"
+      }
+    },
+    {
+      "number": 248,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "牆外的傳言",
+      "youtube_title": "鄰居問少爺是不是冬至要走，她只回一句『冬至我們種樹』，經紀人卻打來借院子",
+      "duration_s": 110,
+      "logline": "阮晴要回答牆外的傳言又不談那個約，偏偏經紀人孟姐這時打電話來，說要借院子。",
+      "hook": "謝之遠拉開院門：『誰說的？』王太太往後一縮。阮晴：『冬至我們種樹。』",
+      "hook_type": "line",
+      "mid_hook": "孟姐的電話打到她手機：『冬至前一天，院子借我。』",
+      "extra_hooks": [
+        "謝之衡從窗邊說：『不借。』孟姐：『沒問你。』"
+      ],
+      "conflict": "傳言要擋，但她不肯編謊；孟姐要借院子，卻不說要做什麼。",
+      "turn": "謝之遠以為傳言是外面的人造的；原來是去年搬家公司來估價，王太太看見的——他弟真的估過。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "孟姐：『借不借？妳說了算。』阮晴看向窗邊的他，他沒有轉開眼。",
+        "question": "院子借還是不借？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "peijiao",
+        "xijie"
+      ],
+      "spectacle": "院門大開，冬日的光把一院子綠與門外的灰巷子切成兩半。",
+      "glamour_shot": "謝之遠西裝外套沒扣，擋在院門口，眼下疲憊卻挺直了背。",
+      "setups": [
+        "s05-t05"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "王太太收到一包苗圃的冬菜",
+        "搬家公司的估價單被謝之遠撕了"
+      ],
+      "characters": [
+        "xie-zhiyuan",
+        "s05-wang-taitai",
+        "ruan-qing",
+        "meng-jie",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "院門",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前二十三天｜進度：冬至倒數 23 天｜樹 35.2 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "傳言來自去年的搬家估價；孟姐要借院子",
+        "carry_forward": "孟姐那通電話"
+      }
+    },
+    {
+      "number": 249,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "謝朵畫完了",
+      "youtube_title": "七歲姪女的月曆終於畫完，最後一頁讓冷淡的叔叔看了整整一分鐘",
+      "duration_s": 115,
+      "logline": "謝朵宣布月曆畫完了，要叔叔親自看，阮晴擔心那頁『山』會讓他想起約。",
+      "hook": "阮晴還沒回孟姐，謝朵衝進來高舉月曆：『畫完了！叔叔先看！』",
+      "hook_type": "image",
+      "mid_hook": "翻到冬至那格，那個背影旁的『山』被塗掉了，改成一棵比人高的樹。",
+      "conflict": "院子借不借還沒答，謝朵的月曆先把冬至擺到他眼前。",
+      "turn": "大家以為謝朵畫的是叔叔走；她畫的是叔叔走去樹那裡，不是山上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一頁：四個人站在樹下，叔叔坐在琴前，角落寫『明年』。",
+        "question": "他會答應孟姐嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xijie",
+        "peijiao"
+      ],
+      "spectacle": "一本手畫月曆一頁頁翻過，蠟筆的樹一格比一格高，最後一頁滿滿是人。",
+      "glamour_shot": "謝之衡蹲下跟謝朵平視，左手拇指輕撫蠟筆的樹，嘴角第一次鬆了一下。",
+      "setups": [],
+      "payoffs": [
+        "s05-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他答應院子先借給孟姐看場地",
+        "月曆掛上琴房的牆"
+      ],
+      "characters": [
+        "xie-duo",
+        "xie-zhiheng",
+        "ruan-qing"
+      ],
+      "locations": [
+        "琴房",
+        "飯廳"
+      ],
+      "state": {
+        "time": "冬至前二十二天｜進度：冬至倒數 22 天｜樹 35.3 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "謝朵把『山』改成了樹",
+        "carry_forward": "月曆角落的『明年』"
+      }
+    },
+    {
+      "number": 250,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "妳的約呢",
+      "youtube_title": "冬至前一個月，他第一次開口問她的約，她只回：我量到樹比你高",
+      "duration_s": 140,
+      "logline": "謝之衡終於第一次提起一年之約，阮晴要給一個不勸、不哭、卻讓他沒法走的答案。",
+      "hook": "月曆上的『明年』掛在牆上。他在樹旁停下：『妳的約呢？』",
+      "hook_type": "question",
+      "mid_hook": "她說：『樹活了。三十五公分。』他看著樹：『那我的約呢？』",
+      "extra_hooks": [
+        "她收起捲尺：『你自己訂的你自己撕。』"
+      ],
+      "conflict": "冬至前三週的晚上，誰先提誰就輸；他先提了，她得接住。",
+      "turn": "他以為她會說『別走』；她只說各人的約各人管，把撕不撕交還給他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他問：『我撕了妳就不量了？』她：『我量到樹比你高。』他：『……要很多年。』她：『對。』",
+        "question": "他會撕掉自己的約嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xijie",
+        "xiju",
+        "peijiao",
+        "qingxing"
+      ],
+      "spectacle": "冬夜院子只有一盞廊燈，兩人站在小樹兩側，樹影把他們的影子連在一起。",
+      "glamour_shot": "謝之衡在廊燈下回頭，黑衣領口立起，眼神第一次沒有結論。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s05-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次主動提起一年之約",
+        "她給了『量到樹比你高』的期限"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "ruan-qing"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前二十一天，夜｜進度：冬至倒數 21 天｜樹 35.3 公分｜枯樹 一葉零芽｜茶杯 5｜左手 25 音",
+        "knowledge": "兩個約都說出口了，誰都沒撕",
+        "carry_forward": "『要很多年』那句"
+      }
+    },
+    {
+      "number": 251,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "他拿起捲尺",
+      "youtube_title": "說完『要很多年』的隔天，冷淡的鋼琴家第一次自己蹲下來量樹",
+      "duration_s": 100,
+      "logline": "謝之衡第一次自己量樹，阮晴假裝沒看見；學生小禾來上課，書包裡藏著一疊不肯拿出來的紙。",
+      "hook": "清晨，捲尺被拉開的聲音。她從窗口看見他蹲在樹前，念：『三十五點二。』",
+      "hook_type": "image",
+      "mid_hook": "小禾進琴房，書包拉鍊卡著一疊譜紙，她一把按住：『這個不是作業。』",
+      "conflict": "他開始自己量樹，她得忍住不說話；小禾藏的東西她不問，但風不一定肯。",
+      "turn": "阮晴以為他是量給她看的；他量完把數字記在自己的手背上，不是日曆上。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "院子刮起一陣風，小禾的書包翻倒，譜紙飛滿院子，有幾張捲向枯樹。",
+        "question": "紙上寫了什麼不能讓人看？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xijie",
+        "peijiao",
+        "ganren"
+      ],
+      "spectacle": "冬晨院子裡白色譜紙被風捲起，一張張貼著枯樹的枝幹飄。",
+      "glamour_shot": "謝之衡蹲在小樹前，左手按著捲尺，晨光從側面照亮他低垂的睫毛。",
+      "setups": [
+        "s05-t06"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次自己量樹",
+        "左手 26 個音"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "ruan-qing",
+        "xiao-he"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "琴房"
+      ],
+      "state": {
+        "time": "冬至前二十天，清晨｜進度：冬至倒數 20 天｜樹 35.3 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "他開始自己量樹；小禾藏了一疊譜",
+        "carry_forward": "滿院子飛的譜紙"
+      }
+    },
+    {
+      "number": 252,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "撿譜",
+      "youtube_title": "一陣風吹散十四歲學生的譜紙，她撿起一張，看見的是他母親那首曲子",
+      "duration_s": 105,
+      "logline": "全家追著滿院的譜紙跑，阮晴撿到的那一張，標題是謝母的曲名。",
+      "hook": "謝朵穿著雨鞋追紙：『抓到一張！』老曾的草帽也被吹走了。",
+      "hook_type": "danger",
+      "mid_hook": "阮晴撿起枯樹下那張：標題是謝母的字跡抄下來的曲名，下面是陌生的音符。",
+      "conflict": "小禾急著要紙回來，阮晴手上那張卻不只是作業。",
+      "turn": "大家以為小禾在抄譜；那一張上面的右手部分是空譜上新寫的，不是抄的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "譜紙右手那一行，筆跡圓圓的、擦了又寫——十四歲的字。",
+        "question": "小禾在替誰寫右手？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "peijiao",
+        "xijie"
+      ],
+      "spectacle": "冬陽下全家在院子裡追譜紙，紙張像白鳥一樣繞著枯樹打轉。",
+      "glamour_shot": "阮晴在枯樹下彎腰撿紙，短髮被風吹亂，抬頭時鼻尖凍得發紅。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "譜紙全部撿回",
+        "老曾的草帽被謝朵找到"
+      ],
+      "characters": [
+        "xie-duo",
+        "lao-zeng",
+        "ruan-qing",
+        "xiao-he"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前十九天｜進度：冬至倒數 19 天｜樹 35.4 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "小禾在補寫謝母那首曲子的右手",
+        "carry_forward": "那張補寫的右手譜"
+      }
+    },
+    {
+      "number": 253,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "右手的部分",
+      "youtube_title": "十四歲學生補寫了他母親沒寫完的右手：老師右手沒了，我替老師寫",
+      "duration_s": 125,
+      "logline": "阮晴把那張譜交給謝之衡，他要決定這份補寫算不算數，小禾在門外等。",
+      "hook": "小禾臉紅到耳朵：『還我。』阮晴把紙遞給琴房裡的人：『給他。』",
+      "hook_type": "line",
+      "mid_hook": "他看了很久：『我媽留給我寫的。』小禾站在門口：『老師右手沒了，我替老師寫。』",
+      "extra_hooks": [
+        "小禾又補一句：『老師改。』"
+      ],
+      "conflict": "那是母親留給他的空白；被別人填了，他能不能接受。",
+      "turn": "大家以為他會生氣；他說母親留白是要人寫，只是他以為沒人會寫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他拿起鉛筆，左手——筆一滑，在譜上拖出一條歪線。",
+        "question": "他的左手寫得了字嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "peijiao",
+        "xijie"
+      ],
+      "spectacle": "琴房暖燈下，兩份譜並在琴架上：一份母親的左手、一份小禾的右手。",
+      "glamour_shot": "小禾辮子垂在肩上站在琴房門口，倔強抿嘴，眼睛卻亮。",
+      "setups": [],
+      "payoffs": [
+        "s05-t06",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他收下小禾補寫的右手",
+        "小禾正式成為這首曲子的共同作者"
+      ],
+      "characters": [
+        "xiao-he",
+        "ruan-qing",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "琴房"
+      ],
+      "state": {
+        "time": "冬至前十八天｜進度：冬至倒數 18 天｜樹 35.4 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "他要親手改小禾寫的右手",
+        "carry_forward": "那條歪掉的鉛筆線"
+      }
+    },
+    {
+      "number": 254,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "左手寫字",
+      "youtube_title": "鋼琴家用左手寫字歪成一團，七歲姪女搬來小板凳：叔叔我教你",
+      "duration_s": 110,
+      "logline": "謝之衡要用左手改完一整首譜，筆握不穩，阮晴給了他一支苗圃寫標籤的粗筆。",
+      "hook": "她把一支粗粗的標籤筆放在譜旁：『寫苗牌用的。不會滑。』",
+      "hook_type": "image",
+      "mid_hook": "謝朵搬小板凳坐到他旁邊，握住他的左手：『叔叔，ㄅ要這樣。』",
+      "conflict": "改譜要三天，他左手的字一行都寫不直。",
+      "turn": "他以為寫字是手的問題；謝朵一教，原來是他太用力，像在彈最後一個和弦。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她經過琴房，看見譜角他用歪歪的左手字寫了兩個字：『院子』。",
+        "question": "他把這首曲子給了誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xijie",
+        "ganren"
+      ],
+      "spectacle": "琴房地上散著練字的廢紙，一張比一張直，最後一張是整齊的音符。",
+      "glamour_shot": "謝之衡低頭寫字，左手握粗筆，額髮垂下，燈光在他側臉切出一道線。",
+      "setups": [
+        "s05-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他左手能寫音符了",
+        "謝朵自封寫字老師"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng",
+        "xie-duo"
+      ],
+      "locations": [
+        "琴房"
+      ],
+      "state": {
+        "time": "冬至前十七天｜進度：冬至倒數 17 天｜樹 35.4 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "改譜第一天",
+        "carry_forward": "譜角那兩個字"
+      }
+    },
+    {
+      "number": 255,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "改譜第二天",
+      "youtube_title": "經紀人突然殺到琴房，看了一眼譜就拍板：冬至前一天，在院子裡彈這首",
+      "duration_s": 115,
+      "logline": "改譜第二天全家都來送夜宵，孟姐也來了，她要的院子終於說出用途。",
+      "hook": "吳伯端茶進琴房，第五杯放在譜旁：『少爺，第二天。』",
+      "hook_type": "line",
+      "mid_hook": "謝之遠提著夜宵進門，看見孟姐已經坐在裡面：『妳怎麼在這？』",
+      "conflict": "改譜還沒完，孟姐的計畫卻等不及了。",
+      "turn": "大家以為孟姐要借院子拍照；她要的是一場演奏。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "孟姐抽走一張譜看完：『冬至前一天，在院子裡，彈這首。』",
+        "question": "他會答應在院子裡彈嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xijie",
+        "xiju"
+      ],
+      "spectacle": "深夜琴房擠滿人，琴上擺著五杯茶和一盒夜宵，牆上貼滿改過的譜。",
+      "glamour_shot": "孟姐一身黑衣站在燈下翻譜，俐落挽髮，眼神像在看一場售罄的票。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "改譜過半",
+        "孟姐說出借院子的用途"
+      ],
+      "characters": [
+        "wu-bo",
+        "xie-zhiyuan",
+        "meng-jie",
+        "xie-zhiheng",
+        "ruan-qing"
+      ],
+      "locations": [
+        "琴房"
+      ],
+      "state": {
+        "time": "冬至前十六天，夜｜進度：冬至倒數 16 天｜樹 35.5 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "孟姐要辦院子演奏",
+        "carry_forward": "孟姐那句提案"
+      }
+    },
+    {
+      "number": 256,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "冷",
+      "youtube_title": "經紀人要他在冬天院子裡開演奏，他只回一個字：冷",
+      "duration_s": 110,
+      "logline": "孟姐逼他答應演奏，他只說一個字，阮晴被兩邊同時盯著。",
+      "hook": "他頭也不抬：『冷。』孟姐把大衣一甩：『樹不怕冷。』",
+      "hook_type": "line",
+      "mid_hook": "孟姐轉向阮晴：『妳勸他。』全琴房都看著她。",
+      "conflict": "所有人都等她勸，可她的規矩是不勸。",
+      "turn": "孟姐以為阮晴站在她那邊；阮晴說院子借了，彈不彈是他的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "人散了。他叫住她：『妳要我彈嗎？』她：『我不勸。』他：『那妳要不要聽？』",
+        "question": "她會說要聽嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xijie",
+        "ganren"
+      ],
+      "spectacle": "寒夜院子空蕩，琴房一扇窗亮著，窗外的小樹裹著麻布與圍巾。",
+      "glamour_shot": "阮晴在琴房門口回身，工作褲上有泥，臉被走廊燈照得一半暖一半冷。",
+      "setups": [
+        "s05-t08"
+      ],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "孟姐承認演奏要等他點頭"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "meng-jie",
+        "ruan-qing"
+      ],
+      "locations": [
+        "琴房",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前十五天｜進度：冬至倒數 15 天｜樹 35.5 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "他沒答應也沒拒絕",
+        "carry_forward": "『要不要聽』那句"
+      }
+    },
+    {
+      "number": 257,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "不勸",
+      "youtube_title": "他問她要不要聽，她說我只量樹，隔天氣象預報卻說那天會下雪",
+      "duration_s": 105,
+      "logline": "阮晴給了一個不勸的答案，老曾卻帶來寒流的消息，院子演奏可能連天都不准。",
+      "hook": "她說：『我只量樹。』走了兩步回頭：『樹在院子裡。』",
+      "hook_type": "line",
+      "mid_hook": "老曾拿著收音機衝進院子，台語大喊：『寒流啦！冬至前要落雪！』",
+      "conflict": "她不勸也表了態；但天氣不聽任何人的。",
+      "turn": "他以為她是在推開問題；她的意思是：你在院子彈，我就在。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "氣象主播指著地圖：『冬至前一天，潭城可能降雪。』他看向窗外的樹。",
+        "question": "下雪的院子還能彈琴嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xijie",
+        "peijiao",
+        "xiju"
+      ],
+      "spectacle": "苗圃與院子同時在搭防寒網，白網在冬風裡鼓起像帆。",
+      "glamour_shot": "謝之衡在窗邊聽完預報，摘下手套又戴上，喉結動了一下。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老曾替院子拉起防寒網",
+        "他第一次說『那天的雪』"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng",
+        "lao-zeng",
+        "a-feng"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "阮家苗圃"
+      ],
+      "state": {
+        "time": "冬至前十四天｜進度：冬至倒數 14 天｜樹 35.6 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "預報冬至前一天會下雪",
+        "carry_forward": "那天的雪"
+      }
+    },
+    {
+      "number": 258,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "孟姐的名單",
+      "youtube_title": "經紀人攤開一張名單，第一行的名字讓她想起山上那一天",
+      "duration_s": 110,
+      "logline": "孟姐不管天氣，攤開早就寫好的賓客名單，第一行就是療養院院長。",
+      "hook": "孟姐把傘往桌上一放：『下雪就撐傘。』她從包裡抽出一張紙。",
+      "hook_type": "line",
+      "mid_hook": "名單上一行行名字：老曾、阿鳳、許醫師、小宇——孟姐從秋天就在寫。",
+      "conflict": "孟姐要辦，名單上的人卻多半還不知道。",
+      "turn": "大家以為孟姐是臨時起意；她說是去年冬至他說一年那天，她就開始寫了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "名單第一行，孟姐用紅筆圈著：『療養院院長』。阮晴的手停在紙上。",
+        "question": "孟姐為什麼要請院長？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "ganren",
+        "xijie"
+      ],
+      "spectacle": "一張手寫名單攤在石桌上，紅筆圈、藍筆劃，旁邊是院子的平面草圖。",
+      "glamour_shot": "阮晴低頭看名單，曬痕的側臉被冬陽勾一道金邊，指尖沾著土。",
+      "setups": [],
+      "payoffs": [
+        "s05-t05",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "演奏的賓客名單定稿"
+      ],
+      "characters": [
+        "meng-jie",
+        "ruan-qing",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前十三天｜進度：冬至倒數 13 天｜樹 35.6 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "孟姐去年冬至就開始準備",
+        "carry_forward": "名單上的院長"
+      }
+    },
+    {
+      "number": 259,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "第三天",
+      "youtube_title": "左手改完最後一頁，十四歲學生坐到右邊，兩隻手第一次合成一首曲子",
+      "duration_s": 120,
+      "logline": "改譜最後一天，謝之衡要和小禾第一次合奏，母親的曲子要靠兩個人的手完成。",
+      "hook": "孟姐說：『請院長是要他看清楚。』他把最後一頁譜放上琴架。",
+      "hook_type": "line",
+      "mid_hook": "小禾坐到他右邊。他左手先下，她右手跟上——第一小節就錯了。",
+      "conflict": "兩個人一個左手一個右手，要合成母親寫給一個人的曲子。",
+      "turn": "他以為錯的是小禾；其實是他改了自己那一半，沒告訴她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最後一個和弦落下，琴房門外，吳伯手裡的茶杯輕輕放回了盤子。",
+        "question": "吳伯聽過這首嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xijie",
+        "peijiao"
+      ],
+      "spectacle": "暗琴房裡兩個人並肩坐一架琴，一隻左手一隻右手在鍵上交錯。",
+      "glamour_shot": "謝之衡和小禾並肩坐，他左手、她右手，暖燈把兩人的手照成一幅畫。",
+      "setups": [],
+      "payoffs": [
+        "s05-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "譜改完了",
+        "第一次完整合奏",
+        "左手 26 個音"
+      ],
+      "characters": [
+        "meng-jie",
+        "xie-zhiheng",
+        "xiao-he",
+        "wu-bo"
+      ],
+      "locations": [
+        "琴房"
+      ],
+      "state": {
+        "time": "冬至前十二天｜進度：冬至倒數 12 天｜樹 35.6 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "曲子能合奏了；吳伯聽過這首",
+        "carry_forward": "吳伯放下的茶杯"
+      }
+    },
+    {
+      "number": 260,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "差一棵樹",
+      "youtube_title": "去年冬至他說一年，今年冬至前一天他說要彈：妳聽得出差別嗎？",
+      "duration_s": 135,
+      "logline": "謝之衡答應了演奏，阮晴問他為什麼，他給了一個她沒料到的算法。",
+      "hook": "吳伯低聲：『夫人以前也這樣彈。』他起身走到院子。",
+      "hook_type": "line",
+      "mid_hook": "他對孟姐說：『彈。』孟姐愣了三秒，才把手機收起來。",
+      "extra_hooks": [
+        "謝朵大叫：『我要做節目單！』"
+      ],
+      "conflict": "答應了就是把冬至前一天交出去；她想知道為什麼。",
+      "turn": "她以為是孟姐逼的、或是小禾；他說是因為今年和去年只差一天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她問為什麼。他：『去年冬至我說一年。今年前一天我彈。差別？』她：『差一天。』他：『差一棵樹。』",
+        "question": "一棵樹的差別，冬至那天算得清嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "peijiao",
+        "xijie"
+      ],
+      "spectacle": "夜院子裡一張演奏日期寫在紙上，貼在日曆背面樹高的那一行下面。",
+      "glamour_shot": "謝之衡站在小樹旁轉身，黑手套的手插在口袋，眼睛看著她。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他答應演奏",
+        "日曆背面多了一行：演奏，冬至前一天"
+      ],
+      "characters": [
+        "wu-bo",
+        "xie-zhiheng",
+        "meng-jie",
+        "xie-duo",
+        "ruan-qing"
+      ],
+      "locations": [
+        "琴房",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前十一天，夜｜進度：冬至倒數 11 天｜樹 35.7 公分｜枯樹 一葉零芽｜茶杯 5｜左手 26 音",
+        "knowledge": "演奏定在冬至前一天",
+        "carry_forward": "『差一棵樹』"
+      }
+    },
+    {
+      "number": 261,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "五十張椅子",
+      "youtube_title": "哥哥從公司調來一卡車椅子，結果五十張全卡在老宅門口進不去",
+      "duration_s": 100,
+      "logline": "謝之遠搶著出力，一口氣搬來五十張椅子，阮晴得在不傷院子的前提下讓它們進門。",
+      "hook": "一早，一輛卡車倒進巷子。謝之遠跳下車：『椅子到了！』",
+      "hook_type": "image",
+      "mid_hook": "椅子卡在院門口，橫著豎著都進不去。謝之遠脫了西裝外套親自扛。",
+      "conflict": "院門窄、院子是活的，五十張椅子不能踩壞她一年的花圃。",
+      "turn": "謝之遠以為搬進去就好；她說椅子要從牆外遞過去，一張一張放在她畫好的格子裡。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第三十張遞過牆頭，椅腳勾到枯樹最低那根枝，枝條嘎地彎下。",
+        "question": "枯樹的枝會斷嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "一卡車白色摺椅在灰巷子裡排成長龍，一張張從牆頭遞進院子。",
+      "glamour_shot": "謝之遠捲起襯衫袖子扛椅子，汗濕的額頭在冬陽裡發亮。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "五十張椅子進院"
+      ],
+      "characters": [
+        "xie-zhiyuan",
+        "ruan-qing",
+        "lao-zeng"
+      ],
+      "locations": [
+        "院門",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前十天｜進度：冬至倒數 10 天｜樹 35.7 公分｜枯樹 一葉零芽｜茶杯 5｜左手 27 音",
+        "knowledge": "椅子進院；枯樹一根枝被勾到",
+        "carry_forward": "彎下的枯枝"
+      }
+    },
+    {
+      "number": 262,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "節目單",
+      "youtube_title": "七歲姪女熬夜畫節目單，封面的那棵樹，讓全家愣住",
+      "duration_s": 105,
+      "logline": "枯枝撐住了，謝朵宣布由她做節目單，吳伯則要準備五十杯茶。",
+      "hook": "阮晴一把托住枯枝，枝條回彈——沒斷。她吐出一口氣。",
+      "hook_type": "danger",
+      "mid_hook": "吳伯從倉庫搬出一箱舊杯：『五十個。老太太辦壽那年的。』",
+      "extra_hooks": [
+        "謝朵關在房裡大喊：『節目單誰都不准看！』"
+      ],
+      "conflict": "演奏的細節一樣樣落地，謝朵的節目單卻神神秘秘。",
+      "turn": "大家以為謝朵在畫叔叔；她其實在畫她每天量的那棵枯樹。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "節目單封面：枯樹開滿了花，下面一行歪字——『給院子』。",
+        "question": "枯樹真的會開花嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "peijiao"
+      ],
+      "spectacle": "倉庫裡五十個舊瓷杯擺滿長桌，每個杯底都燒著同一個謝字。",
+      "glamour_shot": "阮晴抱著一箱瓷杯從倉庫走出來，冬陽在她頭頂打一圈光。",
+      "setups": [
+        "s05-t09"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "五十個杯找到了",
+        "節目單封面完成"
+      ],
+      "characters": [
+        "ruan-qing",
+        "wu-bo",
+        "xie-duo"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "倉庫"
+      ],
+      "state": {
+        "time": "冬至前九天｜進度：冬至倒數 9 天｜樹 35.7 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "節目單封面是開花的枯樹",
+        "carry_forward": "『給院子』三個字"
+      }
+    },
+    {
+      "number": 263,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "一百盆花",
+      "youtube_title": "苗圃工人一口氣搬來一百盆花，院子卻只剩一半位置：放花還是放椅子",
+      "duration_s": 110,
+      "logline": "老曾和阿鳳開著貨車載來一百盆花，院子塞了椅子就塞不下花。",
+      "hook": "喇叭響。老曾探出頭用台語喊：『一百盆！免錢！』",
+      "hook_type": "line",
+      "mid_hook": "阿鳳數完：『椅子五十、花一百，地只夠一半。』",
+      "conflict": "椅子和花搶同一塊地，誰都不肯讓。",
+      "turn": "老曾以為花是送來布置的；他說是苗圃這一年的客人一人一盆送的，不能退。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "院子塞滿了，她站在中間：『花留下，椅子撤一半。』謝之遠：『那人坐哪？』",
+        "question": "人要坐哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "一百盆冬花從貨車卸下，紅白黃一路排到院門口，把灰巷子染了色。",
+      "glamour_shot": "阿鳳口罩拉到下巴，抱著兩盆花跑，馬尾甩出一道弧線。",
+      "setups": [
+        "s05-t10"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "苗圃的客人一人送一盆花"
+      ],
+      "characters": [
+        "lao-zeng",
+        "a-feng",
+        "ruan-qing",
+        "xie-zhiyuan"
+      ],
+      "locations": [
+        "院門",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前八天｜進度：冬至倒數 8 天｜樹 35.8 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "花和椅子搶地",
+        "carry_forward": "撤掉的那一半椅子"
+      }
+    },
+    {
+      "number": 264,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "琴不能出門",
+      "youtube_title": "調音師一口回絕：冬天的鋼琴不能出門，他卻說這次一定要搬",
+      "duration_s": 110,
+      "logline": "鋼琴要從琴房搬進院子，調音師說冬天搬琴等於毀琴。",
+      "hook": "調音師敲了敲琴身：『冬天？院子？不行。』",
+      "hook_type": "line",
+      "mid_hook": "他說：『搬。』調音師：『音會跑。』他：『我只剩左手，跑一半。』",
+      "conflict": "琴是母親留下的那一台；出了琴房就可能壞。",
+      "turn": "大家以為他會讓步；他說這台琴十年沒出門，該出去了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "四個工人抬起琴，琴房門框太窄，琴角卡住，一根琴弦嗡地響了一聲。",
+        "question": "琴會不會在門口壞掉？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "一台黑色三角鋼琴被抬到琴房門口，背後是十年沒拉開的窗簾。",
+      "glamour_shot": "謝之衡站在琴旁拉開窗簾，第一束光落在他沒戴手套的右手上。",
+      "setups": [
+        "s05-t11"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他決定讓琴出琴房"
+      ],
+      "characters": [
+        "s05-tiaoyin-shi",
+        "xie-zhiheng",
+        "ruan-qing",
+        "xie-zhiyuan"
+      ],
+      "locations": [
+        "琴房"
+      ],
+      "state": {
+        "time": "冬至前七天｜進度：冬至倒數 7 天｜樹 35.8 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "琴卡在琴房門口",
+        "carry_forward": "那一聲琴弦"
+      }
+    },
+    {
+      "number": 265,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "枯樹的皮",
+      "youtube_title": "琴卡在門口先退回去，她卻在枯樹皮下摸到一個小小的鼓起",
+      "duration_s": 110,
+      "logline": "琴暫時退回琴房，阮晴去量枯樹散心，手指摸到了一個不該有的鼓包。",
+      "hook": "調音師按住弦：『沒斷。』琴退回琴房，他摸了摸門框。",
+      "hook_type": "danger",
+      "mid_hook": "阮晴替枯樹量周長，指腹在那片葉下方摸到一個米粒大的鼓起。",
+      "conflict": "琴搬不出去讓全家洩氣；她要讓大家還有別的盼頭。",
+      "turn": "她以為那是蟲；小心剝開一點皮——下面是綠的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她用指甲輕刮，鼓起底下透出一點嫩綠。她立刻收手，沒有告訴任何人。",
+        "question": "那是芽嗎？她為什麼不說？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "peijiao",
+        "ganren"
+      ],
+      "spectacle": "枯樹灰色樹皮的特寫，指甲輕刮處露出一線嫩綠，像一根針。",
+      "glamour_shot": "阮晴把臉貼近樹幹，呼出的白氣落在樹皮上，眼神專注。",
+      "setups": [
+        "s05-t16"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "琴毫髮無傷",
+        "枯樹皮下有綠"
+      ],
+      "characters": [
+        "s05-tiaoyin-shi",
+        "xie-zhiheng",
+        "ruan-qing"
+      ],
+      "locations": [
+        "琴房",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前六天｜進度：冬至倒數 6 天｜樹 35.8 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "枯樹可能有芽，她瞞著",
+        "carry_forward": "她的沉默"
+      }
+    },
+    {
+      "number": 266,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "最後的保養",
+      "youtube_title": "治療師替他做演奏前最後一次手部保養，七歲姪女也排隊要按摩",
+      "duration_s": 105,
+      "logline": "小宇來替左手做演奏前的保養，阮晴忍著不說枯樹的事。",
+      "hook": "謝朵拉她袖子：『妳在笑什麼？』她：『沒有。』嘴角收不住。",
+      "hook_type": "question",
+      "mid_hook": "小宇按著他的左手，抬頭說：『比去年秋天還靈。』",
+      "extra_hooks": [
+        "謝朵伸出手：『換我。』小宇認真替她按了五秒。"
+      ],
+      "conflict": "演奏只剩幾天，左手要撐完兩首曲子。",
+      "turn": "他以為小宇是安慰他；小宇給他看去年的紀錄，數字真的變好了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小宇收拾東西時說：『許醫師說她會來。』他沒抬頭，但左手握緊了一下。",
+        "question": "許醫師會來看他彈嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "peijiao"
+      ],
+      "spectacle": "窗邊一張小桌，熱毛巾冒著白氣，他的左手攤在毛巾上，窗外一院子花。",
+      "glamour_shot": "小宇運動服捲到手肘，笑著替他按手；他靠在椅背上閉眼，側臉安靜。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "左手比去年秋天還靈",
+        "許醫師答應出席"
+      ],
+      "characters": [
+        "xie-duo",
+        "ruan-qing",
+        "xiao-yu",
+        "xie-zhiheng",
+        "doctor-xu"
+      ],
+      "locations": [
+        "琴房"
+      ],
+      "state": {
+        "time": "冬至前五天｜進度：冬至倒數 5 天｜樹 35.9 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "左手狀態好；許醫師會來",
+        "carry_forward": "他握緊的左手"
+      }
+    },
+    {
+      "number": 267,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "荒過",
+      "youtube_title": "鄰居第一次走進這座老宅：這宅子不是荒的？她只回了兩個字",
+      "duration_s": 115,
+      "logline": "阮晴把一百盆花排成座位，王太太第一次進院子，問出所有鄰居都想問的話。",
+      "hook": "晨光裡，她把花排成一條條走道，椅子插在花之間。阿鳳：『像花田！』",
+      "hook_type": "image",
+      "mid_hook": "王太太站在院門口不敢進：『這宅子不是荒的？』她：『荒過。』",
+      "conflict": "花與椅子要同時放下，這是她這一年唯一一次為人設計院子。",
+      "turn": "阿鳳以為她會把花擠到牆邊；她讓人坐在花中間，花就是座位的牆。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "王太太從身後端出一盆自家種的山茶：『那我也要一個位子。』",
+        "question": "鄰居都要來了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "jiating",
+        "xiju",
+        "qingxing"
+      ],
+      "spectacle": "一百盆冬花排成一條條走道，五十張椅子藏在花裡，從高處看像一片花田。",
+      "glamour_shot": "阮晴站在花田中央插腰，曬痕的臉迎著晨光，泥點濺到下巴。",
+      "setups": [],
+      "payoffs": [
+        "s05-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "院子座位排好",
+        "王太太帶來自家的山茶"
+      ],
+      "characters": [
+        "ruan-qing",
+        "a-feng",
+        "s05-wang-taitai"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前四天｜進度：冬至倒數 4 天｜樹 35.9 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "院子變成花田；鄰居要來",
+        "carry_forward": "王太太那盆山茶"
+      }
+    },
+    {
+      "number": 268,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "院長的電話",
+      "youtube_title": "療養院院長說他也會來，掛電話前卻提起另一個訂了日期的人",
+      "duration_s": 110,
+      "logline": "院長打電話說要來聽演奏，順口提到山上還有一個人，問起他們的院子。",
+      "hook": "王太太的山茶擺上第一排。她手機響了：『謝太太？我是山上的。』",
+      "hook_type": "line",
+      "mid_hook": "院長說：『我會去。』停了一下：『還有一件事。』",
+      "conflict": "院長是山上那個日期的見證人；他要來，等於把那個地方帶進院子。",
+      "turn": "她以為院長要談預約；他談的是另一個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "院長：『山上有個人也訂了日期，問我你們的院子。我能給他妳的電話嗎？』",
+        "question": "她要不要給那個陌生人電話？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "院子一頭是花田，一頭她握著手機站在枯樹下，背後山的輪廓在霧裡。",
+      "glamour_shot": "阮晴背靠枯樹講電話，冷風掀起短髮，眼睛望向遠山。",
+      "setups": [
+        "s05-t12"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "院長確定出席"
+      ],
+      "characters": [
+        "s05-wang-taitai",
+        "ruan-qing",
+        "yuanzhang"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前四天，傍晚｜進度：冬至倒數 4 天｜樹 35.9 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "山上有另一個訂了日期的人",
+        "carry_forward": "院長的請求"
+      }
+    },
+    {
+      "number": 269,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "琴出琴房",
+      "youtube_title": "十年沒出門的鋼琴終於被抬進院子，就擺在他母親那棵枯樹旁",
+      "duration_s": 120,
+      "logline": "阮晴先答應院長『等冬至後』；然後全家拆下琴房門框，讓琴出門。",
+      "hook": "她回院長：『冬至後。』掛掉電話，轉頭對謝之遠：『拆門框。』",
+      "hook_type": "line",
+      "mid_hook": "門框拆下，琴一寸寸滑出琴房，第一次曬到太陽。",
+      "conflict": "上次卡住的地方，這次要拆掉老宅的一部分。",
+      "turn": "謝之遠以為拆門框弟弟會反對；他親手遞上螺絲起子。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡起風，琴罩被掀開一角，鋼琴在枯樹下露出黑亮的一面。",
+        "question": "琴會被凍壞嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "peijiao",
+        "xiju"
+      ],
+      "spectacle": "一台黑色鋼琴在冬陽下穿過花田，停在枯樹旁，琴面倒映著枯枝。",
+      "glamour_shot": "謝之衡在陽光下扶著琴身走，沒戴手套，一路看著琴面上的天空。",
+      "setups": [],
+      "payoffs": [
+        "s05-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鋼琴擺到枯樹旁",
+        "琴房的門框拆了"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiyuan",
+        "xie-zhiheng",
+        "s05-tiaoyin-shi"
+      ],
+      "locations": [
+        "琴房",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前三天｜進度：冬至倒數 3 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "琴在院子裡；她答應院長冬至後再說",
+        "carry_forward": "掀開的琴罩"
+      }
+    },
+    {
+      "number": 270,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "演奏前夜",
+      "youtube_title": "演奏前夜她一個人量樹，他下樓問：後天妳打算怎麼過？",
+      "duration_s": 140,
+      "logline": "演奏前夜阮晴照量樹，謝之衡下樓問她冬至怎麼過，兩個約都等在後天。",
+      "hook": "她把琴罩拉回、壓上兩盆花。轉身，捲尺貼上小樹：『三十六。』",
+      "hook_type": "image",
+      "mid_hook": "他下樓：『明天彈完，後天冬至。』她：『嗯。』",
+      "extra_hooks": [
+        "他問：『後天妳怎麼過？』她：『量樹。』"
+      ],
+      "conflict": "演奏前一夜，他想知道她冬至後有沒有打算；她想知道他的約。",
+      "turn": "他以為她冬至只會量樹；她說量完要種第二棵。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "他：『……那我陪妳種。』她：『那你的約——』他：『後天說。』",
+        "question": "後天他要說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "peijiao"
+      ],
+      "spectacle": "夜裡花田與鋼琴都蓋著布，只有小樹旁一盞燈，兩個人影站在燈下。",
+      "glamour_shot": "阮晴在燈下拉直捲尺，抬頭看他，霜落在睫毛上。",
+      "setups": [
+        "s05-t13"
+      ],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "樹高 36 公分",
+        "他說要陪她種第二棵"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前兩天，夜｜進度：冬至倒數 2 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 5（另備演奏 50 杯）｜左手 27 音",
+        "knowledge": "他要陪她種第二棵；約後天說",
+        "carry_forward": "『後天說』"
+      }
+    },
+    {
+      "number": 271,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "沒有下雪",
+      "youtube_title": "預報說冬至前一天會下雪，院子演奏當天早上，天卻亮了",
+      "duration_s": 110,
+      "logline": "演奏當天，阮晴天沒亮就起來看天，五十個人陸續到，主角卻還沒出琴房。",
+      "hook": "清晨，她掀開窗簾——沒有雪，只有一院子的霜在發亮。",
+      "hook_type": "image",
+      "mid_hook": "她一盆一盆抖掉花上的霜。院門口，老曾帶著苗圃的客人第一個到。",
+      "conflict": "天氣放過了他們，可五十個人到齊時，他還在琴房裡。",
+      "turn": "大家以為他臨陣退縮；吳伯說少爺在琴房換衣服，換了一小時。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "琴房門開了。他走出來，一身黑，兩隻手都沒戴手套。",
+        "question": "他要用右手做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xijie",
+        "ganren"
+      ],
+      "spectacle": "清晨霜光裡的花田，五十張椅子陸續坐滿人，白氣從每個人嘴裡冒出。",
+      "glamour_shot": "謝之衡從琴房走出，一身黑，雙手不戴手套，晨光落在他蒼白的手背上。",
+      "setups": [],
+      "payoffs": [
+        "s05-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "天晴",
+        "五十個人到齊"
+      ],
+      "characters": [
+        "ruan-qing",
+        "lao-zeng",
+        "wu-bo",
+        "xie-zhiheng",
+        "a-feng",
+        "s05-wang-taitai"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "琴房"
+      ],
+      "state": {
+        "time": "冬至前一天，早上｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "沒下雪；他不戴手套出場",
+        "carry_forward": "他光著的雙手"
+      }
+    },
+    {
+      "number": 272,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "給院子",
+      "youtube_title": "七歲姪女逐排發節目單，他坐上琴凳，整個院子等了他整整一分鐘",
+      "duration_s": 115,
+      "logline": "謝朵發節目單，曲名是『給院子』；他坐上琴凳，卻遲遲沒按下第一個音。",
+      "hook": "他經過她身邊，低聲：『不用藏了。』兩隻手插進口袋，又拿出來。",
+      "hook_type": "line",
+      "mid_hook": "謝朵一排一排發節目單，發到院長面前停住：『你是山上的人？』",
+      "extra_hooks": [
+        "院長接過節目單：『我是下山的人。』"
+      ],
+      "conflict": "節目單發完，該他了；可他坐在琴前一動不動。",
+      "turn": "大家以為他忘譜；其實他在等院子靜下來——等到連鳥都不叫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "左手放上琴鍵。一分鐘過去，院子連咳嗽都沒有，他還沒按下去。",
+        "question": "他按得下去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xiju",
+        "xijie"
+      ],
+      "spectacle": "五十份手畫節目單在人手上翻開，每一份封面都是開花的枯樹。",
+      "glamour_shot": "謝朵雙馬尾、雨鞋，抱著一疊節目單在花田裡跑，臉凍得紅撲撲。",
+      "setups": [],
+      "payoffs": [
+        "s05-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "節目單發完",
+        "院長說自己是下山的人"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "ruan-qing",
+        "xie-duo",
+        "yuanzhang"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，上午｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "他坐在琴前停住",
+        "carry_forward": "懸在鍵上的左手"
+      }
+    },
+    {
+      "number": 273,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "第一首",
+      "youtube_title": "他終於按下第一個音，單手曲彈給院子聽，最後一個音落下時枯樹動了",
+      "duration_s": 125,
+      "logline": "謝之衡彈第一首單手曲，阮晴站在最後一排，他說過這首是給誰的，她一直沒問。",
+      "hook": "一個音。低的、輕的。院子裡有人吸了一口氣。",
+      "hook_type": "image",
+      "mid_hook": "彈到一半，他抬頭看了一眼最後一排——她站著，沒坐。",
+      "conflict": "一首只用左手的曲子，要撐起一整個院子。",
+      "turn": "大家以為他會看小禾或孟姐；他只看最後一排。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最後一個音落下，枯樹枝頭的霜化成一滴水，落在琴蓋上。",
+        "question": "第一首到底是彈給誰的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xijie",
+        "peijiao"
+      ],
+      "spectacle": "冬陽下枯樹旁一架鋼琴，一隻左手在鍵上，五十個人在花之間屏息。",
+      "glamour_shot": "謝之衡左手在琴鍵上起落，側臉被冬陽照亮，眼睫抬向最後一排。",
+      "setups": [
+        "s05-t14"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一首單手曲彈完",
+        "左手 28 個音一個不漏"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "ruan-qing"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，近午｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "第一首彈完了",
+        "carry_forward": "琴蓋上那滴水"
+      }
+    },
+    {
+      "number": 274,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "讚",
+      "youtube_title": "一曲彈完全場安靜，苗圃老工人一聲台語打破沉默，十四歲學生走上前",
+      "duration_s": 105,
+      "logline": "第一首結束，院子不知道該不該拍手；老曾先開口，小禾要上台了。",
+      "hook": "院子靜得聽得見水滴。老曾用台語大喊：『讚啦！』",
+      "hook_type": "line",
+      "mid_hook": "小禾從人群裡站起來，雙手抱著譜，走向琴。",
+      "conflict": "小禾第一次在這麼多人面前彈，還是補寫的那一半。",
+      "turn": "大家以為老曾喊錯時機；他說阮父教的：花開了就要大聲說。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "小禾坐到他右邊，手指在發抖。他沒看她：『準備好了？』",
+        "question": "小禾敢不敢彈？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "院子裡五十人一起轉頭看老曾，草帽在花田中央舉得老高。",
+      "glamour_shot": "小禾辮子垂肩，抱譜走過花間走道，下巴抬著，眼眶卻紅。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老曾替院子喊出第一聲讚"
+      ],
+      "characters": [
+        "lao-zeng",
+        "xiao-he",
+        "xie-zhiheng",
+        "ruan-qing"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，正午｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "小禾上場",
+        "carry_forward": "她發抖的手"
+      }
+    },
+    {
+      "number": 275,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "第二首",
+      "youtube_title": "他左手、學生右手，母親留下的半首曲子彈到中間，右手突然停了",
+      "duration_s": 120,
+      "logline": "謝母的曲子第一次以兩隻手完整演出，小禾卻在中段忘了譜。",
+      "hook": "小禾吸一口氣：『好了。』他的左手先落下。",
+      "hook_type": "line",
+      "mid_hook": "右手跟上，母親的旋律第一次在院子裡完整——吳伯放下了茶壺。",
+      "conflict": "一半是母親，一半是十四歲的小禾，誰都不能斷。",
+      "turn": "大家以為合奏會順到底；中段小禾的右手停了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "小禾的右手懸在半空，譜翻錯了頁，院子裡響著只剩一隻左手的旋律。",
+        "question": "曲子會在這裡斷掉嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "peijiao",
+        "xijie"
+      ],
+      "spectacle": "兩雙手在一架琴上：左邊大人的長指，右邊少女的小手，背後是枯樹。",
+      "glamour_shot": "小禾與謝之衡並肩坐，冬陽把兩人的剪影投在花田上。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母親的曲子第一次以雙手演出"
+      ],
+      "characters": [
+        "xiao-he",
+        "xie-zhiheng",
+        "wu-bo",
+        "ruan-qing"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，午後｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "小禾忘譜，他一個人撐著",
+        "carry_forward": "斷掉的右手"
+      }
+    },
+    {
+      "number": 276,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "左手撐著",
+      "youtube_title": "學生忘了譜，他一隻左手撐住整首曲子，彈完的那一刻七歲姪女第一個拍手",
+      "duration_s": 130,
+      "logline": "小禾忘譜，謝之衡的左手繞著同一段等她，阮晴看見了該做的事。",
+      "hook": "他的左手沒停，把同一段又彈了一次——在等她。",
+      "hook_type": "reversal",
+      "mid_hook": "阮晴走到琴邊，伸手替小禾把譜翻回那一頁，退開。",
+      "conflict": "不能停也不能搶；他要讓小禾自己回來。",
+      "turn": "大家以為她要上前救場說話；她只翻了一頁譜，什麼都沒說。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最後一個和弦散在冷空氣裡。院子安靜。謝朵第一個站起來拍手，然後是所有人。許醫師摘下眼鏡擦。",
+        "question": "許醫師在擦什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xijie",
+        "peijiao"
+      ],
+      "spectacle": "五十個人從花田中一個個站起來鼓掌，掌聲把枯樹上的霜震落。",
+      "glamour_shot": "阮晴站在琴旁翻譜，短髮在冬風裡揚起，一個輕輕的點頭。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "曲子完整彈完",
+        "謝朵第一個拍手"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "ruan-qing",
+        "xiao-he",
+        "xie-duo",
+        "doctor-xu"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，午後｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "演奏完成",
+        "carry_forward": "許醫師的眼鏡"
+      }
+    },
+    {
+      "number": 277,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "白等了",
+      "youtube_title": "療養院院長聽完演奏只說一句：我白等了。然後從口袋拿出一把鑰匙",
+      "duration_s": 110,
+      "logline": "演奏後每個人都想說一句話，院長的那句讓阮晴愣住。",
+      "hook": "許醫師把眼鏡戴回去：『灰。』沒人信。孟姐已經在拿手機。",
+      "hook_type": "line",
+      "mid_hook": "孟姐走到琴前：『明年。』他說：『明年再說。』",
+      "extra_hooks": [
+        "院長最後一個走上前：『我白等了。』"
+      ],
+      "conflict": "每句話都在問明年，他只肯說『再說』。",
+      "turn": "大家以為院長是失落；他從口袋拿出一把鑰匙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "院長把一把舊鑰匙放上琴蓋：『山上那間房，我替你留了一年。』",
+        "question": "他為什麼要留那間房？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "peijiao",
+        "xiju"
+      ],
+      "spectacle": "琴蓋上一把舊銅鑰匙，倒映著枯樹與天空。",
+      "glamour_shot": "院長毛衣、白髮站在琴旁，溫和地笑；謝之衡低頭看鑰匙，睫毛垂下。",
+      "setups": [
+        "s05-t15"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "孟姐預約明年"
+      ],
+      "characters": [
+        "doctor-xu",
+        "meng-jie",
+        "xie-zhiheng",
+        "yuanzhang",
+        "ruan-qing"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，傍晚前｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "院長留了一年的房間",
+        "carry_forward": "那把鑰匙"
+      }
+    },
+    {
+      "number": 278,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "鑰匙",
+      "youtube_title": "院長留了一年的房間鑰匙還給他，哥哥卻在院子角落哭了",
+      "duration_s": 120,
+      "logline": "院長解釋『白等』的意思，謝之遠忍了一年的東西，在院子角落掉下來。",
+      "hook": "他沒碰鑰匙：『我取消了。』院長：『我知道。我等的是你不用它。』",
+      "hook_type": "line",
+      "mid_hook": "院長把鑰匙收回口袋：『白等，是好事。』",
+      "extra_hooks": [
+        "阮晴轉頭找謝之遠——他不在座位上。"
+      ],
+      "conflict": "鑰匙代表山上那一年；收下或還回都要有個說法。",
+      "turn": "謝之衡以為院長在怪他取消；院長說一年來他最怕的就是這把鑰匙被用到。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "院子角落，謝朵蹲在枯樹下大叫：『這裡！快來！』",
+        "question": "枯樹怎麼了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "peijiao"
+      ],
+      "spectacle": "院子角落，謝之遠背對人群站在牆邊，肩膀一下一下地抖。",
+      "glamour_shot": "謝之遠西裝背影在牆邊，夕光把他的影子拉長到花田裡。",
+      "setups": [],
+      "payoffs": [
+        "s05-t15",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "院長收回鑰匙",
+        "謝之遠在院子裡哭了一次"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "yuanzhang",
+        "ruan-qing",
+        "xie-zhiyuan",
+        "xie-duo"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，黃昏｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "鑰匙收回了；謝之遠哭過",
+        "carry_forward": "謝朵在枯樹下的喊聲"
+      }
+    },
+    {
+      "number": 279,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "散場",
+      "youtube_title": "姪女在枯樹下大叫，全場衝過去一看，原來是……；人散後他卻遲遲沒離開琴",
+      "duration_s": 110,
+      "logline": "謝朵的喊聲把全場拉到枯樹下；散場後，阮晴收花，他坐在琴前不走。",
+      "hook": "全場衝到枯樹下。謝朵指著樹根：『一朵花！』——是王太太的山茶掉下來。",
+      "hook_type": "reversal",
+      "mid_hook": "王太太抱回山茶：『明年我還要這個位子。』人群一個個說再見。",
+      "conflict": "一場演奏要散了；她要把一百盆花收好，也要讓每個人帶走點什麼。",
+      "turn": "大家以為是枯樹出事；只是一朵山茶。她偷看了一眼樹皮——那點綠還在。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "院子空了，花一盆盆排回牆邊。琴前，他還坐著，沒有要走。",
+        "question": "他在等什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "夕陽下散場的院子，人影從花間走道一一離開，椅子留下一排空位。",
+      "glamour_shot": "阮晴抱著兩盆花走過空椅子，夕光從背後打亮她的輪廓。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "王太太訂了明年的位子",
+        "苗圃客人各帶走一盆花"
+      ],
+      "characters": [
+        "xie-duo",
+        "s05-wang-taitai",
+        "ruan-qing",
+        "xie-zhiheng",
+        "lao-zeng",
+        "a-feng"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，日落｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "散場；枯樹那點綠還在",
+        "carry_forward": "坐著不走的他"
+      }
+    },
+    {
+      "number": 280,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "妳是院子",
+      "youtube_title": "散場後他只問一句：妳聽出來了嗎？她說右手是小禾的，他說不是這個",
+      "duration_s": 150,
+      "logline": "謝之衡要她聽懂第一首彈給誰，阮晴一直以為答案是院子。",
+      "hook": "她走近琴：『不冷？』他：『妳聽出來了嗎？』",
+      "hook_type": "question",
+      "mid_hook": "她：『右手是小禾的。』他：『不是這個。』",
+      "extra_hooks": [
+        "她：『那是什麼？』他：『我彈給妳的。』"
+      ],
+      "conflict": "他說了一整季『給院子』，現在要把話說清楚。",
+      "turn": "她以為他會收回；他說：妳就是院子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她：『你說是給院子的。』他：『妳是院子。』她手裡那盆花掉了，土灑在琴腳。",
+        "question": "明天冬至，兩個約怎麼辦？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xijie",
+        "peijiao"
+      ],
+      "spectacle": "夜色降下的院子，枯樹旁一架鋼琴，一盆花摔在琴腳，土散成一個圓。",
+      "glamour_shot": "謝之衡坐在琴凳上抬頭看她，廊燈在他眼裡亮成兩點。",
+      "setups": [],
+      "payoffs": [
+        "s05-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他說出第一首是彈給她的"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至前一天，夜｜進度：冬至倒數 1 天｜樹 36.0 公分｜枯樹 一葉零芽｜茶杯 演奏 50 杯／飯桌 5｜左手 28 音",
+        "knowledge": "她知道了那首是給她的",
+        "carry_forward": "摔在琴腳的那盆花"
+      }
+    },
+    {
+      "number": 281,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "芽",
+      "youtube_title": "第二個冬至的早上，七歲姪女一聲尖叫：枯了十年的樹，冒出了一個芽",
+      "duration_s": 125,
+      "logline": "冬至清晨，謝朵發現枯樹那片葉旁冒出一個芽，阮晴瞞了五天的事再也瞞不住。",
+      "hook": "清晨，琴腳那盆摔落的花還在霜裡。院子裡一聲尖叫：『芽！』",
+      "hook_type": "danger",
+      "mid_hook": "全家穿著睡衣站在枯樹前。那片葉旁邊，一個指甲大的芽，綠得發亮。",
+      "extra_hooks": [
+        "謝朵瞪著她：『妳早就知道！』她：『五天。』"
+      ],
+      "conflict": "冬至到了；枯樹給了答案，可沒有人知道該先說什麼。",
+      "turn": "大家以為她是剛看見；她五天前就摸到了，怕說了芽會不見。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他摘下手套，用不能動的右手，輕輕碰了一下那個芽。",
+        "question": "他要說的『後天』到了，他會說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xijie"
+      ],
+      "spectacle": "冬至晨光裡灰黑的枯樹，一片綠葉旁一個嫩芽，全家的白氣圍著它。",
+      "glamour_shot": "謝之衡在晨光裡摘下手套，右手指尖碰到芽的那一秒，眼眶發紅卻沒眨眼。",
+      "setups": [],
+      "payoffs": [
+        "s05-t16",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "枯樹發芽",
+        "她承認早就摸到了"
+      ],
+      "characters": [
+        "xie-duo",
+        "ruan-qing",
+        "xie-zhiheng",
+        "xie-zhiyuan",
+        "wu-bo"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至當天，清晨｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "枯樹發芽了；今天就是到期的那天",
+        "carry_forward": "他要說的話"
+      }
+    },
+    {
+      "number": 282,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "一年",
+      "youtube_title": "冬至當天她照樣量樹：三十六公分，剛好一年。他從口袋拿出兩張紙",
+      "duration_s": 115,
+      "logline": "阮晴在冬至當天量第一棵樹，一年整；謝之衡從口袋裡拿出兩張紙。",
+      "hook": "他收回右手。她已經蹲在小樹前拉開捲尺：『先量。』",
+      "hook_type": "line",
+      "mid_hook": "捲尺停在三十六。她說：『一年。』謝朵把數字寫上日曆背面最後一格。",
+      "conflict": "樹活了一年，她的約完成了；他的約還在他口袋裡。",
+      "turn": "大家以為她會等他開口；她量完就去廚房煮湯圓，像平常的冬至。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "湯圓上桌，他從口袋拿出兩張摺好的紙——他的一年之約、她的樹高紙。",
+        "question": "他要撕哪一張？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "qingxing",
+        "ganren"
+      ],
+      "spectacle": "飯桌上五碗湯圓冒著熱氣，桌中央放著兩張摺痕發白的紙。",
+      "glamour_shot": "阮晴端著湯圓從廚房出來，熱氣模糊了她的笑。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一棵樹一年，36 公分",
+        "日曆背面寫滿一年"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "ruan-qing",
+        "xie-duo",
+        "wu-bo",
+        "xie-zhiyuan"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "飯廳"
+      ],
+      "state": {
+        "time": "冬至當天，早上｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "兩張紙擺上飯桌",
+        "carry_forward": "他口袋裡的兩張紙"
+      }
+    },
+    {
+      "number": 283,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "撕",
+      "youtube_title": "冬至當天他當著全家撕了自己的一年之約，寫下一張新的：一年一棵樹",
+      "duration_s": 140,
+      "logline": "謝之衡要親手處理自己訂的約；阮晴說過：你自己訂的你自己撕。",
+      "hook": "他攤開第一張：『一年後，山上。』全桌沒人動筷子。",
+      "hook_type": "image",
+      "mid_hook": "他撕了。一下、兩下。紙片落進湯圓的熱氣裡。",
+      "extra_hooks": [
+        "他拿起第二張。她：『我的不撕。』他：『妳的留著。』"
+      ],
+      "conflict": "一年之約到期了：他沒走、預約早取消、樹活了；只差把話寫下來。",
+      "turn": "大家以為撕完就結束；他借了謝朵的蠟筆，寫一張新的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "新的紙上歪歪的左手字：『一年一棵樹。謝之衡、阮晴。』",
+        "question": "一年一棵樹，要種到哪一年？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "qingxing"
+      ],
+      "spectacle": "一張舊約在飯桌上被撕成碎片，旁邊一張新紙上蠟筆寫著『一年一棵樹』。",
+      "glamour_shot": "謝之衡低頭用左手寫字，冬至晨光從窗格落在他的手背與紙上。",
+      "setups": [],
+      "payoffs": [
+        "s05-t13"
+      ],
+      "reveals": [
+        "m12"
+      ],
+      "general_payoffs": [
+        "他撕了一年之約",
+        "新約：一年一棵樹"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "ruan-qing",
+        "xie-duo",
+        "xie-zhiyuan",
+        "wu-bo"
+      ],
+      "locations": [
+        "飯廳"
+      ],
+      "state": {
+        "time": "冬至當天，上午｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "一年之約撕了，換成一年一棵樹",
+        "carry_forward": "新約上的空白"
+      }
+    },
+    {
+      "number": 284,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "還有我",
+      "youtube_title": "新約只寫兩個名字，七歲姪女搶過蠟筆：還有我。管家卻拿出老太太的日曆",
+      "duration_s": 115,
+      "logline": "新約上的名字一個個加上去，吳伯拿出一張他藏了一年的紙。",
+      "hook": "謝朵搶過蠟筆：『還有我！』在兩個名字下面寫上『朵』。",
+      "hook_type": "line",
+      "mid_hook": "謝之遠接過蠟筆，寫上自己的名字，手在抖。吳伯：『我泡茶。』",
+      "conflict": "一張約變成一家人的約，每個人都要找到自己的位置。",
+      "turn": "大家以為吳伯只是開玩笑；他從背心口袋拿出一張舊日曆紙。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老太太日曆的最後一頁，孫子婚禮那格之後，她用顫抖的字寫：『慢一點。』",
+        "question": "老太太早就知道會這樣嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "新約上一個個名字疊上去，蠟筆的顏色每個人都不一樣。",
+      "glamour_shot": "謝朵趴在桌上寫名字，雙馬尾垂到紙上，舌頭吐一點。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "新約上有五個名字",
+        "老太太的最後一頁回到家裡"
+      ],
+      "characters": [
+        "xie-duo",
+        "xie-zhiyuan",
+        "wu-bo",
+        "xie-zhiheng",
+        "ruan-qing",
+        "xie-laotai"
+      ],
+      "locations": [
+        "飯廳"
+      ],
+      "state": {
+        "time": "冬至當天，近午｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "老太太留了『慢一點』",
+        "carry_forward": "第二棵要種在哪"
+      }
+    },
+    {
+      "number": 285,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "挖坑",
+      "youtube_title": "哥哥搶著替第二棵樹挖坑，一鏟下去，枯樹旁的土裡挖到一個生鏽的鐵盒",
+      "duration_s": 110,
+      "logline": "謝之遠搶著在枯樹旁替第二棵樹挖坑，阮晴指好位置，鏟子卻撞到了東西。",
+      "hook": "阮晴把『慢一點』貼在新約旁，拿起鏟子：『第二棵種這。』",
+      "hook_type": "image",
+      "mid_hook": "謝之遠搶過鏟子：『我來。』挖到第三鏟，鏘的一聲。",
+      "conflict": "枯樹旁那塊地她留了一個月；挖下去才知道底下有什麼。",
+      "turn": "大家以為是石頭；是一個生鏽的鐵盒，盒蓋上刻著兩個縮寫。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鐵盒鏽死了打不開，謝之遠拿起鏟子要撬，盒蓋上的縮寫是『阮』和『謝』。",
+        "question": "盒子裡是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "枯樹根旁一個新挖的土坑，坑底露出一角生鏽的鐵盒。",
+      "glamour_shot": "謝之遠捲著袖子挖土，額頭沾泥，第一次像個在院子玩的孩子。",
+      "setups": [],
+      "payoffs": [
+        "s05-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二棵的坑挖好了",
+        "挖到鐵盒"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiyuan",
+        "xie-zhiheng",
+        "xie-duo"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至當天，中午｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "鐵盒刻著阮與謝",
+        "carry_forward": "鏽死的盒蓋"
+      }
+    },
+    {
+      "number": 286,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "鐵盒",
+      "youtube_title": "鏽死的鐵盒終於撬開，裡面是她父親和他母親一起寫的一張紙條",
+      "duration_s": 120,
+      "logline": "鐵盒裡放著阮父與謝母種樹那年埋下的東西，阮晴要面對她小時候。",
+      "hook": "阮晴按住鏟子：『別撬。』她用修枝剪沿著縫一點點刮。",
+      "hook_type": "line",
+      "mid_hook": "盒蓋開了：一張發黃的紙條，兩種字跡——『樹活人就活。』",
+      "extra_hooks": [
+        "紙條下面一張照片：一個短髮小女孩坐在樹苗旁挖土。"
+      ],
+      "conflict": "這棵枯樹是阮父和謝母一起種的；盒子證明她小時候來過。",
+      "turn": "她以為照片裡挖土的是謝朵；是她自己，五歲。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "照片背面，謝母的字：『小晴，樹替妳看著他。』她拿著照片很久沒動。",
+        "question": "她小時候見過他嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "qingxing"
+      ],
+      "spectacle": "打開的鐵盒裡一張發黃紙條與一張老照片，冬陽照在兩種字跡上。",
+      "glamour_shot": "阮晴跪在土坑邊捧著照片，曬痕的臉被冬陽照亮，嘴唇緊抿。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "父親和謝母的紙條找到了",
+        "她五歲的照片回到院子"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng",
+        "ruan-fu",
+        "xie-mu"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "冬至當天，午後｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "鐵盒裡是兩位長輩的約；她五歲來過",
+        "carry_forward": "照片背面那句話"
+      }
+    },
+    {
+      "number": 287,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "去挑苗",
+      "youtube_title": "第二棵的坑挖好了，苗還在苗圃；他第一次說：我跟妳去",
+      "duration_s": 105,
+      "logline": "阮晴要去苗圃挑第二棵的苗，謝之衡說要跟去——他一年沒踏進苗圃一步。",
+      "hook": "他蹲到她身邊，看照片：『我見過妳。妳咬了我的手。』",
+      "hook_type": "line",
+      "mid_hook": "老曾打電話來，台語：『苗挑好了，阮頭家自己來看。』",
+      "extra_hooks": [
+        "他站起來拿外套：『我跟妳去。』謝朵：『我也——』謝之遠拉住她。"
+      ],
+      "conflict": "第二棵要從苗圃帶回來；他要第一次走進她的地方。",
+      "turn": "她以為他是陪她；他說苗圃是他買下一年的地方，他還沒看過。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "車停在苗圃門口。他手放在車門上，沒有推開。",
+        "question": "他敢走進苗圃嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "qingxing"
+      ],
+      "spectacle": "冬日下午的城郊路，車窗外一片片塑膠棚反著白光。",
+      "glamour_shot": "謝之衡坐在副駕，車窗光一格格掠過他的側臉，右手沒戴手套放在膝上。",
+      "setups": [
+        "s05-t17"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次去苗圃",
+        "兩人小時候見過"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "ruan-qing",
+        "lao-zeng",
+        "xie-duo",
+        "xie-zhiyuan"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "往苗圃的路上"
+      ],
+      "state": {
+        "time": "冬至當天，下午｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "他要進苗圃",
+        "carry_forward": "停在門口的車"
+      }
+    },
+    {
+      "number": 288,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "匿名的那位",
+      "youtube_title": "苗圃老工人一眼認出他：匿名的那位。他回：不匿名了",
+      "duration_s": 115,
+      "logline": "謝之衡第一次站在苗圃裡，老曾要當面跟這位匿名的大客戶算清楚。",
+      "hook": "她先下車，沒回頭。三秒後，身後的車門開了。",
+      "hook_type": "reversal",
+      "mid_hook": "老曾放下鏟子，上下打量他：『匿名的那位。』他說：『不匿名了。』",
+      "extra_hooks": [
+        "老曾：『那算你半個老闆。』他：『算我種樹的。』"
+      ],
+      "conflict": "苗圃靠他撐了一年；老曾要知道這個人到底想怎樣。",
+      "turn": "老曾以為他來查帳；他是來搬苗的，還自己捲了袖子。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他彎腰去搬一盆苗，右手使不上力，整盆往旁邊倒。",
+        "question": "他會被一盆苗難倒嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "peijiao",
+        "jiating",
+        "qingxing"
+      ],
+      "spectacle": "苗圃塑膠棚下一排排樹苗，兩個男人隔著一排苗對看。",
+      "glamour_shot": "謝之衡站在苗圃棚下捲起袖子，冬陽透過塑膠布在他臉上一片霧白。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他和老曾當面認了",
+        "苗圃不再有匿名單"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng",
+        "lao-zeng",
+        "a-feng"
+      ],
+      "locations": [
+        "阮家苗圃"
+      ],
+      "state": {
+        "time": "冬至當天，傍晚前｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "他在苗圃算『種樹的』",
+        "carry_forward": "倒向一旁的苗"
+      }
+    },
+    {
+      "number": 289,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "老曾留的苗",
+      "youtube_title": "苗圃老工人留了一年的那棵苗，原來是她父親從謝家枯樹收下的種子",
+      "duration_s": 120,
+      "logline": "盆苗倒下前被阿鳳接住；老曾帶他們去看他留了一整年的那棵苗。",
+      "hook": "阿鳳一個飛撲接住盆：『少爺，左手！』他換左手，抱穩了。",
+      "hook_type": "danger",
+      "mid_hook": "老曾帶他們走到棚子最裡面：一棵單獨一盆的苗，盆上貼著舊標籤。",
+      "conflict": "三排候選，老曾心裡早有答案，只是等她來。",
+      "turn": "她以為老曾挑的是最壯的；標籤是阮父的字——『謝家那棵的種』。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老曾用台語說：『頭家走前交代，等晴仔要種第二棵，就給她這棵。』",
+        "question": "父親早就算到第二棵？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "peijiao"
+      ],
+      "spectacle": "塑膠棚最深處一盆單獨的樹苗，舊標籤上褪色的手寫字。",
+      "glamour_shot": "阮晴蹲在那盆苗前，指尖摸過父親的字，肩膀輕輕一沉。",
+      "setups": [],
+      "payoffs": [
+        "s05-t03",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二棵的苗找到了：枯樹的種"
+      ],
+      "characters": [
+        "a-feng",
+        "xie-zhiheng",
+        "lao-zeng",
+        "ruan-qing",
+        "ruan-fu"
+      ],
+      "locations": [
+        "阮家苗圃"
+      ],
+      "state": {
+        "time": "冬至當天，黃昏｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "第二棵是枯樹的後代",
+        "carry_forward": "父親的交代"
+      }
+    },
+    {
+      "number": 290,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "這棵",
+      "youtube_title": "她在一排樹苗中間回頭，他站在那裡，右手沒戴手套，捧著一棵苗說：這棵",
+      "duration_s": 140,
+      "logline": "阮晴要在父親留的苗與自己挑的苗之間決定第二棵，回頭時，他已經替她拿好了。",
+      "hook": "她把父親的標籤貼回盆上：『爸。』老曾轉身去搬推車。",
+      "hook_type": "line",
+      "mid_hook": "她走過一排排苗，想替他挑一棵自己的；阿鳳在後面數：『這排、這排……』",
+      "extra_hooks": [
+        "老曾在棚外喊：『天要暗了！』"
+      ],
+      "conflict": "第二棵是父親的還是她的，她要親手選。",
+      "turn": "她以為要在兩棵之間選；他早把兩棵都抱上了推車。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她在一排樹苗中間回頭，他站在那裡，右手沒戴手套，懷裡捧著一棵苗：『這棵。』",
+        "question": "他抱的是哪一棵？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "qingxing"
+      ],
+      "spectacle": "黃昏苗圃裡一排排樹苗被夕光染金，他站在中間，像本來就長在那裡。",
+      "glamour_shot": "謝之衡站在樹苗中間，右手沒戴手套，懷裡一盆苗，夕光從背後打亮他的輪廓。",
+      "setups": [],
+      "payoffs": [
+        "s05-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二棵與第三棵的苗都帶回家"
+      ],
+      "characters": [
+        "ruan-qing",
+        "lao-zeng",
+        "a-feng",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "阮家苗圃"
+      ],
+      "state": {
+        "time": "冬至當天，黃昏｜進度：冬至當天（到期日）｜樹 36.0 公分｜枯樹 一葉一芽｜茶杯 5｜左手 28 音",
+        "knowledge": "他把兩棵苗都抱上車",
+        "carry_forward": "他懷裡那棵苗"
+      }
+    },
+    {
+      "number": 291,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "一年後",
+      "youtube_title": "一年後的冬天，第二棵樹已經三十五公分，一夜之間葉子黃了一半",
+      "duration_s": 115,
+      "logline": "一年過去，院子裡兩棵樹、一棵活了一半的枯樹；阮晴發現第二棵一夜黃了半邊。",
+      "hook": "那盆苗被放進土裡——畫面一轉，同一棵樹已經齊腰。字卡：一年後。",
+      "hook_type": "image",
+      "mid_hook": "院子全景：第一棵五十七公分、第二棵三十五、枯樹半邊長滿新葉；吳伯擺上六個杯。",
+      "conflict": "一年後的冬至前九天，第二棵樹突然變色，全家緊張。",
+      "turn": "大家以為新的一年就是平順的一年；第二棵的葉子一夜黃了一半。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "清晨，第二棵樹半邊的葉子全黃了，謝朵拿著換大的尺站在樹下發抖。",
+        "question": "第二棵樹要死了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "shuangxiang"
+      ],
+      "spectacle": "一年後的冬日院子：兩棵樹、一棵半綠的枯樹、牆邊一間新蓋的小木屋。",
+      "glamour_shot": "阮晴披著他的黑圍巾走進院子，短髮長了一點，曬痕還在。",
+      "setups": [
+        "s05-t18",
+        "s05-t22"
+      ],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二棵樹活過一年",
+        "左手 29 個音"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng",
+        "wu-bo",
+        "xie-duo",
+        "xie-zhiyuan"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "一年後，清晨｜進度：一年之約已撕；下一個冬至還有 9 天｜樹 第一棵 57.6、第二棵 35.6 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 29 音",
+        "knowledge": "第二棵黃了半邊；他左手 29 個音",
+        "carry_forward": "黃掉的葉子"
+      }
+    },
+    {
+      "number": 292,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "黃葉",
+      "youtube_title": "第二棵樹黃了一半，全家慌成一團，她蹲下摸土只說了四個字",
+      "duration_s": 105,
+      "logline": "阮晴要判斷第二棵是病是季節，而升上高中的小禾帶來今年冬至的問題。",
+      "hook": "她蹲下摸土，捏碎一撮：『它在睡。』謝朵：『睡覺會變黃？』",
+      "hook_type": "line",
+      "mid_hook": "她撥開黃葉：枝頭裹著一個個冬芽。『落葉種，冬天都這樣。』",
+      "extra_hooks": [
+        "小禾穿著高中制服推開院門：『老師，今年呢？』"
+      ],
+      "conflict": "第二棵是她父親留的種，她不能看錯。",
+      "turn": "全家以為樹要死；那是落葉樹過冬，去年的苗今年才第一次落葉。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "小禾：『今年冬至前一天，在院子還是在音樂廳？孟姐兩個都訂了。』",
+        "question": "他要選院子還是音樂廳？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "shuangxiang"
+      ],
+      "spectacle": "黃葉落滿樹下，枝頭一個個褐色冬芽在晨光裡發亮。",
+      "glamour_shot": "小禾高中制服、辮子剪短了，站在院門口抱譜，比去年高了一個頭。",
+      "setups": [
+        "s05-t19"
+      ],
+      "payoffs": [
+        "s05-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二棵只是過冬",
+        "小禾升上高中"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-duo",
+        "xiao-he",
+        "xie-zhiheng"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "一年後，冬至前八天｜進度：一年之約已撕；下一個冬至還有 8 天｜樹 第一棵 57.6、第二棵 35.6 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 29 音",
+        "knowledge": "今年的演奏地點未定",
+        "carry_forward": "兩張訂單"
+      }
+    },
+    {
+      "number": 293,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "看樹的",
+      "youtube_title": "哥哥在院子邊蓋了一間小屋住下，門牌上寫的三個字讓弟弟笑出聲",
+      "duration_s": 105,
+      "logline": "謝之衡選了院子；謝之遠的小屋落成，他要大家去看他的門牌。",
+      "hook": "他想都沒想：『院子。』小禾鬆一口氣，孟姐的電話馬上響了。",
+      "hook_type": "line",
+      "mid_hook": "謝之遠拉著全家到牆邊的小木屋：『落成典禮，鼓掌。』",
+      "extra_hooks": [
+        "謝朵量了小屋：『比叔叔的樹矮。』"
+      ],
+      "conflict": "謝之遠搬進院子邊一年，小屋終於蓋好，他要一個名字。",
+      "turn": "大家以為他會掛『謝宅』；門牌一翻過來，是三個字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "門牌翻過來，謝之遠的字：『看樹的。』謝之衡笑出了聲——一年來第一次大聲笑。",
+        "question": "哥哥要在這裡看多久？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "shuangxiang"
+      ],
+      "spectacle": "院子邊一間原木小屋，屋簷下掛著一塊翻面的木門牌，煙囪冒著白煙。",
+      "glamour_shot": "謝之衡在小屋前仰頭大笑，冬陽照在他臉上，眼角的紋都是亮的。",
+      "setups": [
+        "s05-t20"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "謝之遠的小屋落成",
+        "演奏定在院子"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "xiao-he",
+        "meng-jie",
+        "xie-zhiyuan",
+        "xie-duo",
+        "ruan-qing"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "小木屋"
+      ],
+      "state": {
+        "time": "一年後，冬至前七天｜進度：一年之約已撕；下一個冬至還有 7 天｜樹 第一棵 57.7、第二棵 35.7 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 29 音",
+        "knowledge": "謝之遠住在院子邊；演奏在院子",
+        "carry_forward": "門牌上的字"
+      }
+    },
+    {
+      "number": 294,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "六個杯",
+      "youtube_title": "管家今年擺上第六個杯，說老太太那年，也是六個",
+      "duration_s": 110,
+      "logline": "飯桌從五杯變六杯，阮晴想知道第六個是誰的，吳伯卻說起老太太。",
+      "hook": "謝之遠搬一張椅子到飯桌：『小屋太冷。』吳伯默默多擺一個杯。",
+      "hook_type": "image",
+      "mid_hook": "六個杯：他、她、謝之遠、謝朵、小禾、吳伯自己。吳伯第一次坐下來喝。",
+      "conflict": "吳伯三十年站著倒茶，今年第一次坐下。",
+      "turn": "大家以為第六個杯是給小禾；吳伯說是給他自己——老太太說過，滿六個他才准坐。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "吳伯捧著杯子：『老太太那年也是六個。後來一個一個少。』他看向他。",
+        "question": "這次會不會再少？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "shuangxiang",
+        "xiju"
+      ],
+      "spectacle": "一張長飯桌六個瓷杯冒著熱氣，窗外院子兩棵樹一棵半綠枯樹。",
+      "glamour_shot": "吳伯第一次坐在飯桌邊，背心整齊，捧杯微笑，窗光照在白髮上。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "吳伯第一次坐下喝茶",
+        "飯桌六個杯"
+      ],
+      "characters": [
+        "xie-zhiyuan",
+        "wu-bo",
+        "xie-zhiheng",
+        "ruan-qing",
+        "xie-duo",
+        "xiao-he"
+      ],
+      "locations": [
+        "飯廳"
+      ],
+      "state": {
+        "time": "一年後，冬至前六天｜進度：一年之約已撕；下一個冬至還有 6 天｜樹 第一棵 57.7、第二棵 35.7 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 29 音",
+        "knowledge": "六個杯，吳伯坐下了",
+        "carry_forward": "吳伯的那句『一個一個少』"
+      }
+    },
+    {
+      "number": 295,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "不虧了",
+      "youtube_title": "苗圃一年的帳攤開：第一次不虧；最後一頁卻有一張地址空白的訂單",
+      "duration_s": 115,
+      "logline": "阿鳳把苗圃一年的帳拿給阮晴看，數字第一次是黑的；帳本最後卻夾著一張怪訂單。",
+      "hook": "他放下杯：『不會少。』起身去琴前，按下一個音。吳伯低頭喝茶。",
+      "hook_type": "line",
+      "mid_hook": "苗圃裡，阿鳳翻帳翻得飛快：『不虧了！全靠聽說院子的人來訂樹！』",
+      "extra_hooks": [
+        "阮晴看見他也在旁邊翻帳，左手比她還快。"
+      ],
+      "conflict": "苗圃撐過了靠匿名單的一年，第二年要靠自己。",
+      "turn": "她以為客人是衝著他的名氣；客人備註寫的都是『想要那個院子的樹』。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "帳本最後一頁夾著一張訂單：一棵樹，付了訂金，地址欄空白，只寫『等我想好』。",
+        "question": "誰訂了樹卻不留地址？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shuangxiang",
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "苗圃辦公室堆滿訂單，牆上貼著一張張客人寄來的院子照片。",
+      "glamour_shot": "阮晴坐在苗圃辦公桌前翻帳，草帽掛在椅背，笑得眼睛彎起來。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "苗圃第一年不虧",
+        "他會看帳了"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "wu-bo",
+        "a-feng",
+        "ruan-qing",
+        "lao-zeng"
+      ],
+      "locations": [
+        "飯廳",
+        "阮家苗圃"
+      ],
+      "state": {
+        "time": "一年後，冬至前四天｜進度：一年之約已撕；下一個冬至還有 4 天｜樹 第一棵 57.8、第二棵 35.8 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 29 音",
+        "knowledge": "有人訂了樹沒留地址",
+        "carry_forward": "那張空白訂單"
+      }
+    },
+    {
+      "number": 296,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "一年一次",
+      "youtube_title": "十四歲的學生上了高中，冬至前一天又坐到他右邊：今年換我先",
+      "duration_s": 130,
+      "logline": "冬至前一天的院子演奏第二年，小禾要先下第一個音。",
+      "hook": "她把空白訂單夾進日曆背面：『等。』院子裡，琴已經搬出來了。",
+      "hook_type": "image",
+      "mid_hook": "這次只有家人和鄰居，二十個人。小禾坐下：『今年換我先。』",
+      "extra_hooks": [
+        "王太太抱著山茶坐回去年的位子：『我說了吧。』"
+      ],
+      "conflict": "去年是撐過一場，今年要彈得像一個習慣。",
+      "turn": "大家以為他會先下；小禾的右手先落，他左手接住。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "彈完，孟姐站起來：『明年音樂廳？』他看她，她低頭量樹，沒回。",
+        "question": "明年要不要走出院子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "shuangxiang",
+        "xiju"
+      ],
+      "spectacle": "一年後的冬日院子演奏，二十個人坐在兩棵樹之間，琴擺在半綠的枯樹下。",
+      "glamour_shot": "小禾與謝之衡並肩彈琴，這次她坐得很穩，他的左手從容。",
+      "setups": [],
+      "payoffs": [
+        "s05-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二年的院子演奏",
+        "王太太坐回她的位子"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xiao-he",
+        "xie-zhiheng",
+        "s05-wang-taitai",
+        "meng-jie"
+      ],
+      "locations": [
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "一年後，冬至前一天｜進度：一年之約已撕；下一個冬至還有 1 天｜樹 第一棵 57.8、第二棵 35.8 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 29 音",
+        "knowledge": "孟姐問明年要不要上音樂廳",
+        "carry_forward": "沒有回答的她"
+      }
+    },
+    {
+      "number": 297,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "小屋裡",
+      "youtube_title": "夜裡哥哥把弟弟叫進小屋，說出這一年每天都在做的一件事",
+      "duration_s": 110,
+      "logline": "演奏散場，謝之遠把弟弟叫進小屋；阮晴在院子收琴罩，聽見了一句。",
+      "hook": "她量完樹抬頭：『你自己訂。』他笑：『又是我自己。』",
+      "hook_type": "line",
+      "mid_hook": "小屋窗邊一把椅子，正對琴房的窗。謝之遠：『我每天坐這聽。』",
+      "extra_hooks": [
+        "謝之遠：『我白擔心了一年。』"
+      ],
+      "conflict": "謝之遠搬進院子的理由，他從沒說過。",
+      "turn": "謝之衡以為哥哥是為了謝朵住下；哥哥說他每天在數弟弟彈了幾個音。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "謝之遠從抽屜拿出一本筆記：『二十九個。』翻到最後一頁，昨天那格是空的。",
+        "question": "昨天他為什麼沒彈？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "shuangxiang",
+        "xiju"
+      ],
+      "spectacle": "小木屋窗邊一把椅子，正對院子另一頭亮著燈的琴房窗。",
+      "glamour_shot": "謝之遠在小屋燈下翻筆記，眼下仍疲憊，嘴角卻是軟的。",
+      "setups": [
+        "s05-t21"
+      ],
+      "payoffs": [
+        "s05-t20",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "謝之遠說出他每天在聽"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng",
+        "xie-zhiyuan"
+      ],
+      "locations": [
+        "小木屋",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "一年後，冬至前一天，夜｜進度：一年之約已撕；下一個冬至還有 1 天｜樹 第一棵 57.9、第二棵 35.9 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 29 音",
+        "knowledge": "謝之遠每天記音；昨天空了一格",
+        "carry_forward": "空的那一格"
+      }
+    },
+    {
+      "number": 298,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "第三十個音",
+      "youtube_title": "哥哥的筆記昨天空了一格，原來他前一晚在練第三十個音",
+      "duration_s": 115,
+      "logline": "空白的一格讓全家緊張，謝之衡說出他昨天在做什麼；阮晴聽見了第三十個音。",
+      "hook": "他看著空格：『昨天我在練一個新的。』謝之遠：『練成了嗎？』",
+      "hook_type": "reversal",
+      "mid_hook": "他走進琴房，左手放上去。謝朵趴在門口數：『二十八、二十九……』",
+      "conflict": "左手每年多一個音，第三十個卡了一個月。",
+      "turn": "大家以為空格是退步；他是在練一個卡了一個月的音，昨晚才練成。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "『三十！』謝朵大喊。他回頭看她，她站在院子裡，捲尺還沒收。",
+        "question": "第三十個音，是彈給誰的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "shuangxiang"
+      ],
+      "spectacle": "琴房的燈第一次整間亮著，窗外院子裡她站在兩棵樹之間。",
+      "glamour_shot": "謝之衡在亮燈的琴房回頭，左手還按在鍵上，笑意從眼睛先出來。",
+      "setups": [],
+      "payoffs": [
+        "s05-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "左手 30 個音"
+      ],
+      "characters": [
+        "xie-zhiheng",
+        "xie-zhiyuan",
+        "xie-duo",
+        "ruan-qing"
+      ],
+      "locations": [
+        "琴房",
+        "謝家老宅的院子"
+      ],
+      "state": {
+        "time": "一年後，冬至前一天，深夜｜進度：一年之約已撕；下一個冬至還有 1 天｜樹 第一棵 57.9、第二棵 35.9 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 30 音",
+        "knowledge": "左手 30 個音",
+        "carry_forward": "許醫師約的冬至複診"
+      }
+    },
+    {
+      "number": 299,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "複診",
+      "youtube_title": "一年後的冬至，醫師打電話要他來一趟，他看了看自己的左手",
+      "duration_s": 120,
+      "logline": "冬至早上，許醫師打電話約他複診；阮晴陪他去，但不進診間。",
+      "hook": "她收起捲尺：『量樹。』他：『我問的是音。』她：『也量。』",
+      "hook_type": "line",
+      "mid_hook": "手機響，許醫師：『冬至了，來一趟。』他看了一眼左手。",
+      "extra_hooks": [
+        "她把車鑰匙拋給他：『你開。』他接住——用右手。"
+      ],
+      "conflict": "一年沒見許醫師了，複診的結果誰都不敢猜。",
+      "turn": "她以為他會叫她進診間；他說：『妳在外面看樹。』診所門口種著一棵她苗圃的樹。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "診間門關上。許醫師翻開病歷，抬頭：『我有一句話要說。』",
+        "question": "許醫師要說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "shuangxiang",
+        "xiju"
+      ],
+      "spectacle": "冬至早晨的診所門口，一棵苗圃來的小樹掛著阮家苗圃的標籤。",
+      "glamour_shot": "阮晴坐在診所門口長椅，雙手插在大衣口袋，仰頭看那棵樹。",
+      "setups": [],
+      "payoffs": [
+        "s05-t04",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "右手能接住鑰匙"
+      ],
+      "characters": [
+        "ruan-qing",
+        "xie-zhiheng",
+        "doctor-xu"
+      ],
+      "locations": [
+        "謝家老宅的院子",
+        "許醫師的診間"
+      ],
+      "state": {
+        "time": "一年後，冬至當天，早上｜進度：一年之約已撕；第三個冬至當天｜樹 第一棵 58.0、第二棵 36.0 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 30 音",
+        "knowledge": "許醫師有話要說",
+        "carry_forward": "關上的診間門"
+      }
+    },
+    {
+      "number": 300,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "會讓人活的樹",
+      "youtube_title": "一年後的冬至，她在苗圃收到陌生人的信：聽說妳種的樹會讓人活",
+      "duration_s": 150,
+      "logline": "一年後的冬至，阮晴以為今年就是寫完日曆背面、種好樹；一封陌生的信送到了苗圃。",
+      "hook": "許醫師合上病歷：『我不算了。』他：『我也不算了。』",
+      "hook_type": "line",
+      "mid_hook": "回家，他在日曆背面寫：『第一棵 58、第二棵 36、第三棵——』她：『還沒種。』他：『先寫。』",
+      "extra_hooks": [
+        "阿鳳在苗圃門口揮著一個信封：『阮小姐的信！手寫的！』"
+      ],
+      "conflict": "第三棵的苗在苗圃等了一年，院子已經沒有地方種。",
+      "turn": "她以為第三棵要等很多年才找得到地方；信上的人，連訂金都付了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她讀信：『阮小姐，我也訂了一個日期。聽說妳種的樹會讓人活。』她對鏡頭：『第三棵有地方種了。』他：『我陪妳去。』",
+        "question": "寫信的人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "shuangxiang"
+      ],
+      "spectacle": "冬至的苗圃塑膠棚下，一封手寫信在她手裡，背後一排樹苗被夕光染金。",
+      "glamour_shot": "阮晴在苗圃裡抬頭對鏡頭一笑，眼睛彎起來；他站在她身後，沒戴手套。",
+      "setups": [],
+      "payoffs": [
+        "s05-t21",
+        "s05-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "許醫師不再算",
+        "日曆背面寫上第三棵",
+        "第三棵有了地方"
+      ],
+      "characters": [
+        "doctor-xu",
+        "xie-zhiheng",
+        "ruan-qing",
+        "a-feng",
+        "s05-jixin-ren"
+      ],
+      "locations": [
+        "許醫師的診間",
+        "謝家老宅的院子",
+        "阮家苗圃"
+      ],
+      "state": {
+        "time": "一年後，冬至當天，傍晚｜進度：一年之約已撕；第三個冬至當天｜樹 第一棵 58.0、第二棵 36.0 公分｜枯樹 活了一半、十來片新葉｜茶杯 6｜左手 30 音",
+        "knowledge": "另一個訂了日期的人寫信來；第三棵有了地方",
+        "carry_forward": "那封信與第二部"
+      }
+    }
+  ]
+}
