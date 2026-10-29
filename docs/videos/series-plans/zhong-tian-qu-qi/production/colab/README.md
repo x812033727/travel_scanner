@@ -29,9 +29,8 @@ e031 三鏡小樣（票 `2026-10-28-31-colab-h3`）量到：Qwen-Image-Edit 畫�
 
 ```bash
 node $C/ref2manifest.mjs $H/clips-dh-e031.json $H/ff-dh-e031.json 31 $M/ref        # 預設 1920×1088、每人兩張角度臉、20 鏡一份
-for m in $M/ref/ref-e031-part*.json; do
-  bash $K/h3.sh batch --manifest $m --output-dir $W/clips --progress ${m%.json}.progress.json --session zt31 --timeout 10800
-done
+# 整集用脫離式驅動（skill 的 lessons.md 第 3 節：`h3.sh batch` 掛著等 12 分鐘會被 1012 斷線整批放棄）
+setsid nohup python3 -I $K/h3_detached.py $M/ref/ref-e031-part1.json --session zt31 > $M/ref/detached.log 2>&1 < /dev/null & disown
 ```
 
 實測：1920×1088 一支 6 秒約 12 分鐘、約 1.5–2 CU（A100 高 RAM 6.77 CU/hr）；同一個 seed 換解析度構圖會變。`output_path` 直接寫

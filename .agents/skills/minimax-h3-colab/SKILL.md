@@ -16,6 +16,7 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 | 後台「Google Colab」區與主機 agent 的安裝、信任邊界 | `ops/ai-accounts/README.md` |
 | 片段進產線：哪些作品收得進、每鏡的 manifest 欄位、收據與 `clips import` 的寫法 | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` |
 | **首格也在 Colab 畫**（Qwen-Image-Edit-2509，吃定妝照與場景圖）：筆記本、`h3.sh images` 的 manifest、檢查器、跟 H3 共用 session | `.agents/skills/minimax-h3-colab/references/pipeline-handoff.md` §5；《種田》的轉檔與一集流程在 `docs/videos/series-plans/zhong-tian-qu-qi/production/colab/README.md` |
+| **第一次做整集踩到的坑**：Ref2VA 取代 Qwen 首格、正文要寫構圖與人數、1012 斷線的真相與脫離式驅動、工具時限 | `.agents/skills/minimax-h3-colab/references/lessons.md` |
 | 匯入程序本身（唯一的一份） | `.agents/skills/animation-production/references/stage-preconditions.md` 最後一節 |
 | 開拍前的鎖定包、每鏡秒數與定稿正文 | `.agents/skills/animation-preproduction/SKILL.md` |
 | H3 正文的官方外框、模型會誤讀什麼 | `.agents/skills/animation-camera/references/model-misreads.md` 第六節 |
@@ -30,6 +31,11 @@ kocpc 2026-10 介紹的做法是 Codex 裝 `killkli/minimax-h3-colab-skill`，�
 6. **送出前 `h3.sh check --manifest`**（`batch` 會自己先跑）：32 的倍數、`<Picture N>`、首格比例、秒數、`prompt_sha256` 對鎖定檔；有錯就不上傳。
 7. **取樣 profile 預設 `smooth`**（Ref2VA 換 8 步 LoRA）；顏值與身份鏡用 `H3_PROFILE=hero`（20 步、不掛 LoRA）另開一批；只看構圖才 `draft`。profile、seed、秒數寫進收據。
 8. **逾時不要盲目重試**：`colab exec` 逾時時遠端 kernel 可能還在跑，runner 會停掉自己開的 session 並把做完的記進 `progress.json`；重跑會重扣。
+
+9. **一支超過幾分鐘的片段不要掛著 `colab exec` 等**：Colab 的 runtime 代理會送 1012 把 WebSocket 切掉，上游 runner 就整批放棄、runtime 跟著閒置被關。
+   整集用 `.agents/skills/minimax-h3-colab/scripts/h3_detached.py`（筆記本當背景程序在 runtime 跑、短連線輪詢、完成才下載）；`h3.sh batch` 留給一兩支的小樣。
+10. **有 3D 定妝照的作品，片段走 Ref2VA、不畫首格**：Qwen-Image-Edit 的首格臉到不了定妝照的寫實 CG，H3 reference 模式直接吃定妝照就是。
+    正文要寫構圖（`Initial composition: …`）、人數（`the only person in the frame`）、畫外的人不給參考圖、夜景寫光線不變；理由與數字在 lessons.md。
 
 ## 一次完整的流程
 
@@ -65,6 +71,9 @@ H3_DURATION_SECONDS=5 bash .agents/skills/minimax-h3-colab/scripts/h3.sh single 
 # 5. 一批（共用一個 Colab session；先跑 check，有錯就停）
 bash .agents/skills/minimax-h3-colab/scripts/h3.sh batch --manifest <jobs.json> \
   --output-dir <outputs/> --progress <outputs/progress.json> --timeout 10800
+
+# 5b. 整集（一鏡一份 job 的清單，脫離式；worker 重啟後重跑同一行，會跳過已完成的）
+setsid nohup python3 -I .agents/skills/minimax-h3-colab/scripts/h3_detached.py <jobs.json> --session <NAME> > <log> 2>&1 < /dev/null & disown
 
 # 6. 進產線
 node tools/video/cli.mjs clips import --slug <SLUG> --shot <id> --file <out.mp4> \

@@ -9,7 +9,7 @@ are joined into one script, started on the runtime with nohup (ComfyUI becomes i
 survives kernel restarts), and the local side only polls with short execs and downloads the MP4.
 A dropped tunnel costs one poll, not the clip.
 
-  h3_detached.py <jobs.json> --session NAME [--only s01,s02] [--poll 60] [--max-wait 2700] [--attempts 3]
+  python3 -I scripts/h3_detached.py <jobs.json> --session NAME [--only s01,s02] [--poll 60] [--max-wait 2700] [--attempts 3]
 
 jobs.json is the h3.sh/runner manifest shape (id, inference_mode, reference_images, prompt_file
 or prompt, duration_seconds, width, height, seed, output_path). Each job: upload pictures and
@@ -33,7 +33,7 @@ from pathlib import Path
 
 HOME = Path(os.environ.get("MINIMAX_H3_COLAB_HOME") or Path.home() / ".cache" / "minimax-h3-colab-skill")
 NOTEBOOK = HOME / "assets" / "MiniMax_H3_Turbo_Colab.ipynb"
-H3SH = Path(os.environ.get("MINIMAX_H3_SKILL_SCRIPTS") or "/home/user/travel_scanner/.agents/skills/minimax-h3-colab/scripts") / "h3.sh"
+H3SH = Path(__file__).resolve().parent / "h3.sh"
 DONE = "H3_DETACHED_DONE"
 
 
