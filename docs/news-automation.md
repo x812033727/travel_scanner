@@ -52,6 +52,13 @@ retry, re-verify) wait in Redis until `news-worker` starts.
    allow-list and SSRF checks as every other page; a `lead_only` site's page never is. It
    is attached once: the next scan finds the report already seen and does nothing, and a
    later report linking to a story that has left `needs_evidence` files its own candidate.
+   A page from a `lead_only` *source* (電腦王阿達 and iThome since 2026-10-29: Taiwan tech
+   media that find new AI tools and features early) is read only for the evidence pages it
+   links to. With at least one, it files a candidate drafted from those pages, the post
+   itself kept as `lead_only` context that is never cited. With none (most of 電腦王阿達's
+   posts link to x.com, GitHub or Reddit, none of them sources), it is closed at once as
+   `rejected` (`news_lead_without_evidence`) instead of waiting in `needs_evidence`: no
+   official page links back to a blog post, so nothing would ever attach to it.
    Since the owner's decisions of 2026-09-25 (one evidence page drafts; a first-party page
    publishes on its own) and 2026-09-28 (so does a page from a trusted newsroom), a
    first-party candidate no longer waits for a second site, so nothing attaches one to a

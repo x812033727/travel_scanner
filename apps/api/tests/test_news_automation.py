@@ -816,6 +816,111 @@ async def test_scanner_skips_unreachable_pages_and_never_refetches_seen_entries(
 
 
 @pytest.mark.asyncio
+async def test_scanner_files_a_lead_only_page_only_when_it_links_to_evidence() -> None:
+    engine = create_async_engine("sqlite+aiosqlite://")
+    async with engine.begin() as connection:
+        await connection.run_sync(
+            lambda sync: Base.metadata.create_all(
+                sync,
+                tables=[
+                    NewsAutomationSettings.__table__,
+                    NewsSource.__table__,
+                    NewsCandidate.__table__,
+                    NewsEvidence.__table__,
+                ],
+            )
+        )
+    factory = async_sessionmaker(engine, expire_on_commit=False)
+    blog = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Taiwan tech blog",
+        url="https://blog.example/feed",
+        format="rss",
+        role="lead_only",
+        vertical="mixed",
+        enabled=True,
+    )
+    official = NewsSource(
+        last_scanned_at=SCANNED_BEFORE,
+        name="Official",
+        url="https://official.example/rss.xml",
+        format="rss",
+        role="evidence",
+        vertical="ai",
+        is_first_party=True,
+        enabled=True,
+    )
+    listing = b"<rss><channel>" + b"".join(
+        f"<item><title>Blog story {name}</title><link>https://blog.example/{name}</link></item>".encode()
+        for name in ("sourced", "tweet")
+    ) + b"</channel></rss>"
+    requested: list[str] = []
+
+    class Fetcher:
+        async def fetch(self, url: str, **_kwargs: object) -> FetchResult:
+            requested.append(url)
+            if url.endswith("/feed"):
+                return FetchResult(
+                    url=url, status_code=200, content_type="application/rss+xml", body=listing
+                )
+            if url == "https://official.example/launch":
+                body = "<html><main>Official launch of the new AI model.</main></html>"
+            elif url.endswith("/sourced"):
+                body = (
+                    "<html><main>The blog retells an AI launch."
+                    '<a href="https://official.example/launch">official</a></main></html>'
+                )
+            else:
+                # Linked only to a social post, which is no source at all.
+                body = (
+                    "<html><main>The blog retells a post on X."
+                    '<a href="https://x.com/someone/status/1">post</a></main></html>'
+                )
+            return FetchResult(
+                url=url, status_code=200, content_type="text/html", body=body.encode()
+            )
+
+        async def close(self) -> None:
+            return None
+
+    queued: list[UUID] = []
+
+    async def enqueue(candidate_id: UUID) -> None:
+        queued.append(candidate_id)
+
+    async with factory() as session:
+        session.add(NewsAutomationSettings(id=1, enabled=True))
+        session.add_all([blog, official])
+        await session.commit()
+        created = await scan_source(session, blog.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+        candidates = {
+            row.canonical_url: row for row in await session.scalars(select(NewsCandidate))
+        }
+        evidence = {
+            (row.candidate_id, row.url, row.role)
+            for row in await session.scalars(select(NewsEvidence))
+        }
+        requested.clear()
+        again = await scan_source(session, blog.id, enqueue, fetcher=Fetcher())  # type: ignore[arg-type]
+    sourced = candidates["https://blog.example/sourced"]
+    tweet = candidates["https://blog.example/tweet"]
+    assert created == 1
+    assert queued == [sourced.id]
+    assert (sourced.status, sourced.error_code) == ("discovered", None)
+    # The blog post is context for the writer; the official page it links to is the evidence.
+    assert evidence == {
+        (sourced.id, "https://blog.example/sourced", "lead_only"),
+        (sourced.id, "https://official.example/launch", "evidence"),
+    }
+    # A lead with nothing to draft from is recorded as seen, not left waiting for evidence.
+    assert (tweet.status, tweet.error_code) == ("rejected", "news_lead_without_evidence")
+    assert tweet.normalized_title == ""
+    assert again == 0
+    assert requested == ["https://blog.example/feed"]
+    await engine.dispose()
+
+
+@pytest.mark.asyncio
 async def test_scanner_keeps_a_refused_recent_page_as_a_feed_summary_lead() -> None:
     engine = create_async_engine("sqlite+aiosqlite://")
     async with engine.begin() as connection:

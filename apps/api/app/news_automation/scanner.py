@@ -63,6 +63,11 @@ ATTACHED = "news_attached_as_evidence"
 # seen without being fetched or drafted, so adding a source files only its news of the last
 # days. After that, an undated entry is one the listing did not show before, so it is read.
 BASELINE = "news_baseline"
+# A page from a lead-only source (a Taiwan tech blog read for the official pages it links to)
+# that links to no page of an evidence source. Nothing could be drafted from it, and no official
+# page will ever link back to a blog post, so it would wait in needs_evidence for good: it is
+# recorded as seen instead.
+LEAD_WITHOUT_EVIDENCE = "news_lead_without_evidence"
 # A feed keeps weeks or months of posts (OpenAI's 100 entries over 44 days, Hugging Face's 100
 # over five months). On every later scan, a dated entry older than the source's window is left
 # out before its page is fetched: it is old news whether the feed republished it, renamed its
@@ -284,6 +289,28 @@ def _baseline_candidate(
         policy_version=policy,
         error_code=BASELINE,
         error_detail="Listed when the source was first scanned; recorded as seen, not drafted.",
+    )
+
+
+def _unsupported_lead(
+    source: NewsSource, entry: Entry, url: str, title: str, prompt: str, policy: str
+) -> NewsCandidate:
+    """A lead-only page that linked to no evidence page, closed as seen. Like a baseline row,
+    its hashes are the URL's, so a later story never matches it as a duplicate."""
+    return NewsCandidate(
+        source_id=source.id,
+        vertical=source.vertical if source.vertical != "mixed" else "tech",
+        status="rejected",
+        canonical_url=url,
+        source_title=title[:500],
+        normalized_title="",
+        source_published_at=entry.published_at,
+        content_hash=content_fingerprint("lead", url),
+        idempotency_key=content_fingerprint("lead", url, "key"),
+        prompt_version=prompt,
+        policy_version=policy,
+        error_code=LEAD_WITHOUT_EVIDENCE,
+        error_detail="A lead-only page that links to no evidence source; recorded as seen.",
     )
 
 
@@ -576,6 +603,18 @@ async def scan_source(
                         )
                     )
             if deferred:
+                continue
+            if detail_source.role == "lead_only" and not linked_rows and not exact_duplicate_id:
+                session.add(
+                    _unsupported_lead(
+                        source,
+                        entry,
+                        canonical,
+                        title,
+                        settings.prompt_version,
+                        settings.policy_version,
+                    )
+                )
                 continue
             waiting = (
                 await _waiting_for(session, links, canonical)
