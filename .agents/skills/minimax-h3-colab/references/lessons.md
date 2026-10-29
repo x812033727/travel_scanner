@@ -43,6 +43,9 @@
 - 真的被 Colab 收走（session `not found`、`assignments` 空）就重開 session 接著跑；已下載的片會被跳過，不重扣。
 - **Hugging Face 下載會 429**（xet CDN「Too Many Requests」），筆記本的下載格一倒後面的格全是 NameError，整批 failed；
   重跑同一個 session 即可（抓到的檔留在 `/content/ComfyUI/models`）。`images.py`／runner 看到 429 應該自己重試一次（還沒做）。
+- **`colab exec` 也會無聲掛住**：Qwen 場景圖批次跑到第五張，CLI 收到一格的 execute_reply 之後就只剩每分鐘一次 ping（`~/.config/colab-cli/colab.log`），
+  等不到 idle 狀態，會一直等到 `--timeout`（30 分鐘）才倒。`refs.progress.json` 的 `updated_at` 超過 7 分鐘沒動就是這個：`kill` 那個 `colab … exec` 的 pid，
+  批次會把那張記 failed、其餘 cancelled 然後結束，再用 `--only <剩下的 id>` 同一個 session 重跑（約 2 分鐘一張，白扣的只有那一張）。
 - `colab restart-kernel` 會連 ComfyUI 一起殺（它是 kernel 的子程序）；中斷一支正在算的片用它最快。
 
 ## 4. 雲端 session 本身的限制
