@@ -1,0 +1,4390 @@
+{
+  "number": 5,
+  "title": "工作室",
+  "theme": "五條結全解了，她不留。",
+  "start_state": "執照回來了、唐承睡滿八小時、弟弟的手術下個月、數字還差八萬——她多接的客戶是老街的鄰居。唐家五個人全好了一半以上。阿貴姊開始問『妳走了誰管復健室』。",
+  "end_state": "弟弟的手術揭開（成功、五季薪水、一分沒拿施捨）；唐承什麼時候心動揭開（面試那天『薪水另算』）。手術那天全唐家在醫院走廊——她沒叫、他們自己來；老太爺在醫院走廊走了一百步給聶橋看；手術成功；她付清最後一筆、對鏡頭說『三百二十萬，五季』；她在老街另一頭租了一間店面『聶安物理治療工作室』，唐家是第一個客戶（老太爺每週三）；老太爺自己走到唐家門口送她——不要人扶；唐承在工作室門口問『妳回來嗎』，她說『不，你來。預約。』第 300 集最後一格，工作室門口一個拿著履歷的女孩：『聶老師，我想跟妳學。我家也有一個不肯復健的爺爺。』",
+  "guest_cast": [
+    {
+      "id": "s05-lao-cai",
+      "name": "老蔡",
+      "role": "老街豆漿店老闆，腰閃了十年，第一個付錢給她的鄰居客戶",
+      "appearance": "東亞男性，五十八歲，圓臉、平頭花白、白汗衫外繫一條沾豆漿的帆布圍裙，手臂粗、笑起來眼睛瞇成一條線，站在油鍋白煙裡"
+    },
+    {
+      "id": "s05-yueqin-yi",
+      "name": "月琴姨",
+      "role": "老街裁縫鋪老闆娘，手指握不住剪刀，付不起就分期",
+      "appearance": "東亞女性，六十二歲，銀灰短捲髮、細框老花眼鏡掛在胸前、素色碎花上衣與袖套，手腕上纏一條軟尺，舉止秀氣"
+    },
+    {
+      "id": "s05-a-tu-bo",
+      "name": "阿土伯",
+      "role": "老街騎樓下修鞋五十年的老人，膝蓋五十年，嘴硬不信她",
+      "appearance": "東亞男性，七十歲，黝黑、瘦、短白髮、灰色工作背心配修鞋皮圍裙，手指粗糙沾鞋油，坐在小板凳上眯眼看人"
+    },
+    {
+      "id": "s05-gao-yisheng",
+      "name": "高醫師",
+      "role": "安城醫院骨科主刀醫師，替聶橋開刀；話少、精確、承認她是同行",
+      "appearance": "東亞男性，四十五歲，清瘦、短髮、無框眼鏡、深藍刷手服外披白袍，眼神沉穩，手指修長，口罩常掛在下巴"
+    },
+    {
+      "id": "s05-chen-taitai",
+      "name": "陳太太",
+      "role": "老街店面與騎樓的房東，聽了藍院長的傳話不肯租給她，後來低頭",
+      "appearance": "東亞女性，五十五歲，盤髮、珍珠項鍊、米色針織開衫與燙直的長褲，手提一串店面鑰匙，嘴角習慣性往下"
+    },
+    {
+      "id": "s05-yu-xiaoman",
+      "name": "余小滿",
+      "role": "二十出頭的女孩，家裡有一個不肯復健的爺爺；在工作室窗外站了好幾天，最後拿著履歷站到門口",
+      "appearance": "東亞女性，二十二歲，清秀素顏、齊肩黑髮夾一個髮夾、白襯衫外套一件洗舊的牛仔外套，背一個磨白的帆布背包，眼神倔、手裡捏著一張摺過的履歷"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s05-t01",
+      "question": "八萬湊得到嗎？",
+      "setup_episode": 241,
+      "payoff_episode": 249
+    },
+    {
+      "id": "s05-t02",
+      "question": "阿貴姊肯不肯學？",
+      "setup_episode": 241,
+      "payoff_episode": 250
+    },
+    {
+      "id": "s05-t03",
+      "question": "修鞋的阿土伯信不信她？",
+      "setup_episode": 243,
+      "payoff_episode": 246
+    },
+    {
+      "id": "s05-t04",
+      "question": "豆漿店門口的紅紙是誰寫的？",
+      "setup_episode": 245,
+      "payoff_episode": 248
+    },
+    {
+      "id": "s05-t05",
+      "question": "阿土伯五十年的鞋攤保得住嗎？",
+      "setup_episode": 246,
+      "payoff_episode": 266
+    },
+    {
+      "id": "s05-t06",
+      "question": "手術那天，她一個人去嗎？",
+      "setup_episode": 249,
+      "payoff_episode": 257
+    },
+    {
+      "id": "s05-t07",
+      "question": "老太爺在醫院走得完一百步嗎？",
+      "setup_episode": 256,
+      "payoff_episode": 259
+    },
+    {
+      "id": "s05-t08",
+      "question": "手術完，她要告訴弟弟什麼？",
+      "setup_episode": 251,
+      "payoff_episode": 261
+    },
+    {
+      "id": "s05-t09",
+      "question": "是誰告訴唐家的？",
+      "setup_episode": 252,
+      "payoff_episode": 255
+    },
+    {
+      "id": "s05-t10",
+      "question": "陳太太肯不肯把店面租給她？",
+      "setup_episode": 261,
+      "payoff_episode": 266
+    },
+    {
+      "id": "s05-t11",
+      "question": "唐家那面老鏡子去哪了？",
+      "setup_episode": 269,
+      "payoff_episode": 270
+    },
+    {
+      "id": "s05-t12",
+      "question": "藍院長的調查結果是什麼？",
+      "setup_episode": 264,
+      "payoff_episode": 265
+    },
+    {
+      "id": "s05-t13",
+      "question": "聶橋走得到她的店嗎？",
+      "setup_episode": 262,
+      "payoff_episode": 279
+    },
+    {
+      "id": "s05-t14",
+      "question": "阿貴姊管得了唐家的復健室嗎？",
+      "setup_episode": 273,
+      "payoff_episode": 274
+    },
+    {
+      "id": "s05-t15",
+      "question": "唐薇見不見前夫？",
+      "setup_episode": 275,
+      "payoff_episode": 278
+    },
+    {
+      "id": "s05-t16",
+      "question": "她在唐家的房，留不留？",
+      "setup_episode": 276,
+      "payoff_episode": 280
+    },
+    {
+      "id": "s05-t17",
+      "question": "老太爺走得完兩公里嗎？",
+      "setup_episode": 280,
+      "payoff_episode": 285
+    },
+    {
+      "id": "s05-t18",
+      "question": "唐承那支停了的錶，什麼時候走的？",
+      "setup_episode": 286,
+      "payoff_episode": 288
+    },
+    {
+      "id": "s05-t19",
+      "question": "工作室的第二雙手會是誰？",
+      "setup_episode": 291,
+      "payoff_episode": 300
+    },
+    {
+      "id": "s05-t20",
+      "question": "阿貴姊在唐家客廳要招什麼人？",
+      "setup_episode": 294,
+      "payoff_episode": 298
+    },
+    {
+      "id": "s05-t21",
+      "question": "窗外那個女孩是誰？",
+      "setup_episode": 296,
+      "payoff_episode": 300
+    }
+  ],
+  "episodes": [
+    {
+      "number": 241,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "還差八萬",
+      "youtube_title": "執照回來了、弟弟手術還差八萬，她把客戶接到老街的豆漿店門口",
+      "duration_s": 110,
+      "logline": "手術下個月、還差八萬，聶安決定週末去老街接鄰居當客戶，可沒人信一個「唐家的傭人」。",
+      "hook": "筆記本最後一頁，她用紅筆寫下：還差 80,000。門外唐承說：「慢性病要複診。」",
+      "hook_type": "image",
+      "mid_hook": "豆漿店老蔡扶著腰卡在油鍋前，一排客人回頭：「妳？唐家請的那個月嫂？」",
+      "extra_hooks": [
+        "阿貴姊在走廊攔住她：「妳走了，誰管復健室？」"
+      ],
+      "conflict": "四週湊八萬，她只有週末，老街沒有人認得她。",
+      "turn": "大家以為老蔡會趕她走，他的腰當場閃到蹲不下——她兩分鐘讓他站直，排隊的人卻說「碰巧」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "「碰巧？」人群後面一根拐杖敲在地上：「她治好我的。」唐鶴年站在豆漿店門口。",
+        "question": "老太爺怎麼自己走到老街來了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "xiju",
+        "tuanchong"
+      ],
+      "spectacle": "清晨老街豆漿店，油鍋白煙裡一排客人同時回頭，看一個綁馬尾、穿運動褲的女孩。",
+      "glamour_shot": "聶安在豆漿店門口咬著髮圈綁緊馬尾，蹲下扶住老蔡的腰，晨光切過她的側臉。",
+      "setups": [
+        "s05-t01",
+        "s05-t02",
+        "m11"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "執照收進背包，第一次用治療師的名義收費",
+        "第一個鄰居客戶：老蔡，一次五百"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng",
+        "a-gui-jie",
+        "s05-lao-cai",
+        "tang-henian"
+      ],
+      "locations": [
+        "唐家復健室",
+        "老街豆漿店"
+      ],
+      "state": {
+        "time": "手術前四週・週六清晨",
+        "knowledge": "還差八萬；老街不信她",
+        "carry_forward": "老太爺出現在豆漿店門口"
+      }
+    },
+    {
+      "number": 242,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "鶴年伯的見證",
+      "youtube_title": "中風的老太爺走到老街替她作證，一整條街的鄰居排隊找她治腰",
+      "duration_s": 105,
+      "logline": "老太爺當眾替她擔保，可聶安要的是客戶，不是唐家的人情。",
+      "hook": "老太爺把拐杖往油鍋邊一靠：「八十年的招牌，替她擔保。」",
+      "hook_type": "line",
+      "mid_hook": "老福在巷口小聲說：老太爺凌晨四點自己走出門，沒叫任何人。",
+      "conflict": "鄰居信老太爺的招牌，不信她的手；她不想靠唐家的面子做生意。",
+      "turn": "大家以為老太爺是來替她拉客，他坐上矮凳排隊：「我也是客戶。」她說：「你的唐家付過了。下一位。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "裁縫月琴姨捧著一雙握不住剪刀的手：「五百太貴，我拿一件衣服換，行不行？」",
+        "question": "她收衣服，還是收錢？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "qingxing",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "老街騎樓下一長排矮凳，鄰居拿著號碼牌，一路排到唐記糕餅的招牌底下。",
+      "glamour_shot": "老太爺一身唐裝坐在矮凳上，她單膝蹲著替他量膝，陽光從屋簷斜切下來。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太爺第一次在老街當眾走路",
+        "筆記本：還差 77,000"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "lao-fu",
+        "s05-lao-cai",
+        "s05-yueqin-yi"
+      ],
+      "locations": [
+        "老街豆漿店",
+        "老街騎樓"
+      ],
+      "state": {
+        "time": "同日上午",
+        "knowledge": "老太爺不怕人看了；客人變多",
+        "carry_forward": "月琴姨想以物易物"
+      }
+    },
+    {
+      "number": 243,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "一件旗袍",
+      "youtube_title": "裁縫阿姨拿旗袍抵治療費被她拒絕，她開出的條件讓整條街安靜",
+      "duration_s": 100,
+      "logline": "月琴姨付不起，她不收東西抵；對面修鞋的阿土伯當眾說她騙人。",
+      "hook": "月琴姨把一件縫到一半的旗袍攤在矮凳上：「抵五百？」",
+      "hook_type": "question",
+      "mid_hook": "對面修鞋攤的阿土伯冷笑：「唐家的傭人治手？我膝蓋五十年，誰治得好？」",
+      "conflict": "她不收施捨，也不收抵押；可月琴姨真的付不起。",
+      "turn": "大家以為她會降價，她開了分期：「手好了，妳把這件縫完賣掉，再付我。」月琴姨第一次握穩剪刀。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿土伯一甩手站起來，膝蓋一軟往馬路倒——一台機車正轉進巷口。",
+        "question": "她來得及嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "xiju",
+        "zhiye"
+      ],
+      "spectacle": "裁縫鋪的老縫紉機旁，一把大剪刀「喀」一聲剪開布，月琴姨的手停在半空不抖。",
+      "glamour_shot": "她握著月琴姨的手腕慢慢轉，睫毛垂下，窗邊的布料把光染成淡粉。",
+      "setups": [
+        "s05-t03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "月琴姨分期付款",
+        "月琴姨重新握住剪刀"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-yueqin-yi",
+        "s05-a-tu-bo"
+      ],
+      "locations": [
+        "老街裁縫鋪",
+        "老街修鞋攤"
+      ],
+      "state": {
+        "time": "同日中午",
+        "knowledge": "月琴姨分期；阿土伯不信",
+        "carry_forward": "阿土伯倒向馬路"
+      }
+    },
+    {
+      "number": 244,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "廣告費不收",
+      "youtube_title": "她在機車前一把拉回修鞋老伯，大少爺開口要付廣告費卻被退回車窗",
+      "duration_s": 115,
+      "logline": "她救下阿土伯，唐承想用唐記的廣告費替她湊錢，她一張都不收。",
+      "hook": "她一把攬住阿土伯的腰往騎樓一帶，機車擦著鞋攤過去。",
+      "hook_type": "danger",
+      "mid_hook": "阿土伯坐在地上還嘴硬：「誰叫妳扶？我又不付錢。」她說：「扶不收錢，治才收。」",
+      "extra_hooks": [
+        "唐承的車停在巷口，車窗降下：「唐記可以付妳廣告費。」"
+      ],
+      "conflict": "阿土伯不信也不付；唐承想換個名目塞錢。",
+      "turn": "大家以為她會收廣告費好湊快一點，她把名片塞回車窗：「老太爺是見證，不是廣告。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "夜裡筆記本寫到 76,500，她翻下一頁——夾著一張弟弟畫的「姊的工作室」。",
+        "question": "弟弟什麼時候畫了這張？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "qingxing",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "黃昏騎樓，機車大燈掃過鞋攤，滿地的鞋楦被風吹得滾了一圈。",
+      "glamour_shot": "唐承在車窗後解開一顆袖扣，抬眼看她退回名片，眼下的黑在路燈裡很深。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "救下阿土伯",
+        "退回唐記的廣告費",
+        "筆記本：還差 76,500"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-a-tu-bo",
+        "tang-cheng"
+      ],
+      "locations": [
+        "老街修鞋攤",
+        "唐家二樓她的房"
+      ],
+      "state": {
+        "time": "第一個週六夜",
+        "knowledge": "唐家的錢不收；弟弟早就畫好了她的店",
+        "carry_forward": "弟弟的草圖"
+      }
+    },
+    {
+      "number": 245,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "紅紙",
+      "youtube_title": "豆漿店門口突然貼出一張毛筆紅紙，刁難她五季的管家竟然在偷學",
+      "duration_s": 105,
+      "logline": "一張不知誰寫的紅紙讓客人多了一倍，阿貴姊出現在隊伍裡。",
+      "hook": "週日清晨，豆漿店門口多了一張紅紙：「鶴年伯的治療師，週末在此。」——毛筆字。",
+      "hook_type": "image",
+      "mid_hook": "阿貴姊提著保溫壺擠到前面：「老太爺叫我來發號碼牌。」",
+      "extra_hooks": [
+        "秀姨在隊伍後面嘀咕：「我的豆漿比他好喝。」"
+      ],
+      "conflict": "客人多一倍，她一個人做不完，也不肯縮短每個人的時間。",
+      "turn": "大家以為阿貴姊是來盯她的，阿貴姊其實在偷學——她怎麼教老蔡扶腰，全記在號碼牌背面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "收攤時她撿到一張號碼牌，背面寫滿字：「扶腰——手放這裡」。阿貴姊一把搶回去：「看什麼！」",
+        "question": "阿貴姊在偷學什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "qingxing"
+      ],
+      "spectacle": "毛筆紅紙在晨風裡翻一角，隊伍從一排變兩排，繞過整個騎樓。",
+      "glamour_shot": "她在人群裡回頭找號碼，馬尾甩過肩，晨光把她的輪廓描了一圈金邊。",
+      "setups": [
+        "s05-t04"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "客人多一倍",
+        "阿貴姊第一次站在她這邊發號碼牌",
+        "筆記本：還差 72,000"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "xiu-yi",
+        "s05-lao-cai",
+        "s05-yueqin-yi"
+      ],
+      "locations": [
+        "老街豆漿店"
+      ],
+      "state": {
+        "time": "第一個週日",
+        "knowledge": "紅紙不知是誰寫的；阿貴姊在偷學",
+        "carry_forward": "號碼牌背面"
+      }
+    },
+    {
+      "number": 246,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "五十年的膝",
+      "youtube_title": "修鞋五十年的老伯賭她治不好，她一句實話讓老伯當場蹲了下去",
+      "duration_s": 110,
+      "logline": "阿土伯拿零錢賭她治不好；她說實話，可能失去整條街的口碑。",
+      "hook": "阿貴姊把號碼牌塞進口袋，矮凳上坐下一個人：阿土伯，膝上蓋著修鞋圍裙。",
+      "hook_type": "image",
+      "mid_hook": "阿土伯倒出一鞋盒零錢：「五十年的膝，五百治得好？治不好退錢。」",
+      "conflict": "五十年的膝不會一次好，她要不要為口碑誇口。",
+      "turn": "大家以為她會說「包好」，她說：「治不好。能讓你蹲下修鞋。」——他當場蹲下了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陳太太在騎樓柱子貼上「下月收回」；阿土伯蹲下去——膝不痛了——摸著鞋攤：「蹲得下，沒地方蹲了。」",
+        "question": "五十年的鞋攤要搬去哪？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "qingxing",
+        "dalian"
+      ],
+      "spectacle": "騎樓柱子上一張白色公告「下月收回」，下面是擺了五十年、磨得發亮的修鞋攤。",
+      "glamour_shot": "她蹲在阿土伯面前，手掌貼著他的膝，抬頭看他，眼神平靜不躲。",
+      "setups": [
+        "s05-t05"
+      ],
+      "payoffs": [
+        "s05-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿土伯成為客戶",
+        "阿土伯五十年來第一次蹲著修鞋不痛"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-a-tu-bo",
+        "s05-chen-taitai",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "老街修鞋攤",
+        "老街騎樓"
+      ],
+      "state": {
+        "time": "第一個週日傍晚",
+        "knowledge": "阿土伯信了；騎樓下月收回",
+        "carry_forward": "房東陳太太"
+      }
+    },
+    {
+      "number": 247,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "發薪日",
+      "youtube_title": "發薪日大少爺多塞一張加班費，她拿出工時表當面退了回去",
+      "duration_s": 115,
+      "logline": "唐家發薪，唐承多放一張「加班費」；夜裡醫院的電話讓她的鐘突然變快。",
+      "hook": "她扶起阿土伯，看了一眼柱子上的公告——房東欄只有一個字：陳。",
+      "hook_type": "image",
+      "mid_hook": "唐家發薪日，唐承把信封放在復健室桌上，比合約多了一張：「加班費。」",
+      "conflict": "薪水是她湊錢最大的一塊；唐承想多塞，她得算清楚。",
+      "turn": "大家以為她會收，她攤開自己的工時表：「週末在老街，不是唐家的班。」退回那一張。唐承：「妳算得比會計細。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜裡聶橋打來：「姊，醫師說手術提前兩週。」筆記本上還寫著 40,000。",
+        "question": "四萬，兩週湊得到嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "復健室桌上兩個信封並排，一個厚一個薄，她用兩根手指把薄的推回去。",
+      "glamour_shot": "唐承靠在復健室門框，袖子扣得一絲不苟，看她低頭對工時表，燈從上面落在她的髮旋。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "薪水入帳：還差 40,000",
+        "加班費退回"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng",
+        "s05-a-tu-bo",
+        "nie-qiao"
+      ],
+      "locations": [
+        "老街騎樓",
+        "唐家復健室"
+      ],
+      "state": {
+        "time": "第二週・發薪日夜",
+        "knowledge": "手術提前兩週",
+        "carry_forward": "只剩兩個週末"
+      }
+    },
+    {
+      "number": 248,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "毛筆字",
+      "youtube_title": "手術提前只剩兩週，她發現那張紅紙是中風老太爺半夜自己寫的",
+      "duration_s": 110,
+      "logline": "時間少了一半，老太爺要幫她，她只收客戶，不收錢。",
+      "hook": "她劃掉筆記本上的「四週」，寫上「兩週」。走廊燈亮——老太爺站在門外：「我聽見了。」",
+      "hook_type": "line",
+      "mid_hook": "老太爺不給錢，伸出右手：指頭上有墨。紅紙是他寫的。",
+      "conflict": "只剩兩個週末；老太爺想幫，她只收客戶。",
+      "turn": "大家以為老太爺要塞錢，他拿出第二張紅紙：「平日晚上也開。招牌字不是施捨。」她收了紙，沒收錢。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "唐承站在樓梯上：「平日晚上妳在老街——週三的預約呢？」預約本上，週三晚上那一格是他的名字。",
+        "question": "週三那一格要留給誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "深夜走廊一盞壁燈下，老太爺用左手壓紙、右手提筆，寫下「平日晚上也開」。",
+      "glamour_shot": "她站在樓梯半截回頭，手裡兩張紅紙，馬尾鬆了一縷落在頰邊。",
+      "setups": [],
+      "payoffs": [
+        "s05-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "紅紙是老太爺寫的",
+        "老街平日晚上也開"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "tang-cheng"
+      ],
+      "locations": [
+        "唐家二樓走廊",
+        "唐家樓梯"
+      ],
+      "state": {
+        "time": "第二週夜",
+        "knowledge": "紅紙是老太爺寫的；平日晚上也開",
+        "carry_forward": "週三那一格"
+      }
+    },
+    {
+      "number": 249,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "最後一號",
+      "youtube_title": "最後一個晚上還差兩千，最後一號掏出零錢包：我是客戶，不是唐家",
+      "duration_s": 110,
+      "logline": "最後一個晚上，最後兩千塊，最後一號是唐家的廚娘。",
+      "hook": "「週三九點，照舊。」她把老街的時間往前挪。唐承：「妳不睡？」「你睡就好。」",
+      "hook_type": "line",
+      "mid_hook": "隊伍最後一號站起來——秀姨解下圍裙：「站了三十年灶，腰也是腰。」",
+      "conflict": "最後兩千塊、最後一個晚上，她不能收唐家的錢湊數。",
+      "turn": "大家以為秀姨是唐家派來塞錢的，她掏出自己的零錢包一張一張數：「我是客戶，不是唐家。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "筆記本最後一行：還差 0。她盯著那個零，手機亮了：「手術確定：下週一早上八點。」",
+        "question": "下週一，她一個人去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "xiju",
+        "tuanchong"
+      ],
+      "spectacle": "老街路燈下矮凳空了一排，只剩最後一張，秀姨的鍋鏟靠在凳腳。",
+      "glamour_shot": "她在路燈下低頭寫下那個零，嘴角動了一下，沒有笑出來。",
+      "setups": [
+        "s05-t06"
+      ],
+      "payoffs": [
+        "s05-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "八萬湊齊：還差 0",
+        "手術日期確定"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng",
+        "xiu-yi",
+        "s05-lao-cai",
+        "s05-a-tu-bo"
+      ],
+      "locations": [
+        "唐家復健室",
+        "老街豆漿店"
+      ],
+      "state": {
+        "time": "第三週週三夜",
+        "knowledge": "八萬湊齊；手術下週一",
+        "carry_forward": "誰陪她去"
+      }
+    },
+    {
+      "number": 250,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "教客戶自理",
+      "youtube_title": "湊齊手術費那晚她把彈力帶發給全家，大少爺看穿她要走",
+      "duration_s": 140,
+      "logline": "手術前五天，聶安把自己會的一樣一樣教給唐家，因為她不會留下。",
+      "hook": "她闔上筆記本，對著空復健室說：「下週一。」門後阿貴姊的鑰匙響了一聲。",
+      "hook_type": "image",
+      "mid_hook": "她把彈力帶一條一條發下去：阿貴姊扶老太爺、秀姨配餐、唐薇替小年按摩、二少自己練、唐豆走字給同學。",
+      "extra_hooks": [
+        "阿貴姊手抖：「我五十二歲了，學這個？」她：「妳學會，我才走得了。」"
+      ],
+      "conflict": "她要走，這家人得自己會。",
+      "turn": "大家以為阿貴姊會拒絕，她第一個拿起彈力帶，手放在號碼牌背面寫過的位置——全對。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "唐承在門口看了很久：「妳在交接。」她把最後一條彈力帶放進他手裡：「我在教客戶自理。」",
+        "question": "交接完，她真的會走嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "zhiyu",
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "淺綠的復健室裡，唐家六個人各拉開一條不同顏色的彈力帶，像一面扇子。",
+      "glamour_shot": "她把彈力帶拉開到最長，手臂線條繃直，回頭看阿貴姊的那一秒。",
+      "setups": [],
+      "payoffs": [
+        "s05-t02",
+        "m06",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿貴姊學會扶老太爺",
+        "全家各拿到一條彈力帶"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "xiu-yi",
+        "tang-wei",
+        "xiao-nian",
+        "tang-xiao",
+        "tang-dou",
+        "tang-henian",
+        "tang-cheng"
+      ],
+      "locations": [
+        "唐家復健室"
+      ],
+      "state": {
+        "time": "手術前五天",
+        "knowledge": "全家學會自理的第一步",
+        "carry_forward": "下週一手術"
+      }
+    },
+    {
+      "number": 251,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "手術前夜",
+      "youtube_title": "手術前夜她是唯一的家屬，一個信封讓主刀醫師愣住：很少人一次備齊",
+      "duration_s": 115,
+      "logline": "聶安把唐家的鑰匙留下，一個人去醫院陪弟弟過手術前夜。",
+      "hook": "週日傍晚，她把唐家鑰匙放在玄關櫃上。阿貴姊說：「鑰匙放著，人回來。」",
+      "hook_type": "line",
+      "mid_hook": "高醫師把同意書推過來：「家屬簽名——只有妳？」她說：「只有我。」",
+      "extra_hooks": [
+        "聶橋拉住她的袖子：「姊，手術完，妳要告訴我一件事。」"
+      ],
+      "conflict": "她是唯一的家屬，什麼都要一個人扛。",
+      "turn": "大家以為她會跟醫院談分期，她把一個信封放在桌上：「手術費，明天全額繳。」高醫師一愣：「很少人一次備齊。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "同意書的風險欄寫著一行小字，她的筆停在簽名欄上方，沒落下去。",
+        "question": "她簽得下去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "冷白病房的窗外是老街的燈，病床邊一個背包、一個信封、一張同意書。",
+      "glamour_shot": "她坐在病床邊替弟弟把被子掖好，髮絲垂下來，側臉被床頭燈照得很柔。",
+      "setups": [
+        "s05-t08"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "手術費全額備齊",
+        "高醫師承認她是同行"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "nie-qiao",
+        "s05-gao-yisheng"
+      ],
+      "locations": [
+        "唐家玄關",
+        "安城醫院聶橋病房"
+      ],
+      "state": {
+        "time": "手術前夜",
+        "knowledge": "錢備齊；她是唯一的家屬",
+        "carry_forward": "明早八點"
+      }
+    },
+    {
+      "number": 252,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "第一個到的",
+      "youtube_title": "弟弟進手術室她一個人等，電梯門一開，中風的老太爺自己走了出來",
+      "duration_s": 110,
+      "logline": "手術開始，走廊只有她一張椅子；唐家不請自來。",
+      "hook": "筆落下，她簽完名。七點五十，手術室的門關上，走廊只剩她一張椅子。",
+      "hook_type": "image",
+      "mid_hook": "電梯門開：老福推著輪椅，老太爺一揮手：「推什麼，我自己走。」阿貴姊提著鑰匙跟在後面。",
+      "conflict": "她以為今天不需要任何人；唐家來了，她不知道怎麼接。",
+      "turn": "大家以為唐家是來付錢的，老太爺說：「妳弟手術，唐家不來？」——一毛錢都沒帶。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她問：「誰告訴你們的？」老太爺和阿貴姊同時看向電梯——樓層燈又停在這一層。",
+        "question": "誰告訴唐家的？下一個是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "空蕩的手術室走廊，「手術中」紅燈亮起，一張椅子變成三張。",
+      "glamour_shot": "她站起來的那一下，晨光從走廊盡頭的窗戶打在她臉上，眼眶是紅的但沒有掉。",
+      "setups": [
+        "s05-t09"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "走廊第一批：老太爺、老福、阿貴姊"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "lao-fu",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "安城醫院手術室走廊"
+      ],
+      "state": {
+        "time": "手術第 0 小時",
+        "knowledge": "唐家自己來了",
+        "carry_forward": "電梯又停了"
+      }
+    },
+    {
+      "number": 253,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "走樓梯的人",
+      "youtube_title": "一年不肯走路的二少爺，自己爬了七層樓來到她弟弟的手術室門口",
+      "duration_s": 105,
+      "logline": "電梯門開了沒人，樓梯間傳來腳步聲——二少走了七層樓。",
+      "hook": "電梯門開——裡面沒人。樓梯間傳來一步一步的腳步聲。",
+      "hook_type": "question",
+      "mid_hook": "唐驍從樓梯間出來，滿頭汗：「電梯太慢。七樓，我走上來的。」",
+      "conflict": "一年前連三十步都不走的人，今天的腿撐得住七層樓嗎。",
+      "turn": "大家以為他要被扶，他自己扶著扶手走完，坐下前說：「別誇我，我是來看手術燈的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "手術燈亮著，護理師推門出來喊：「聶橋家屬？」她站起來，腿一軟。",
+        "question": "護理師要說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "樓梯間一格一格的綠色安全燈，一雙球鞋一階一階踩上七樓。",
+      "glamour_shot": "唐驍在樓梯口把汗濕的長髮往後一撥，喘著氣笑，帽 T 的帽子還在晃。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二少自己走上七樓"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-xiao",
+        "tang-henian",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "醫院樓梯間",
+        "安城醫院手術室走廊"
+      ],
+      "state": {
+        "time": "手術第 1 小時",
+        "knowledge": "二少走了七樓",
+        "carry_forward": "護理師叫家屬"
+      }
+    },
+    {
+      "number": 254,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "換我陪妳",
+      "youtube_title": "三個月不出房的大小姐抱著嬰兒來醫院，用她教的方法反過來陪她",
+      "duration_s": 110,
+      "logline": "等待最難熬；唐薇抱著小年來了，反過來照顧她。",
+      "hook": "護理師說：「麻醉順利，開始了。」她坐回去，才發現手一直在抖。",
+      "hook_type": "line",
+      "mid_hook": "唐薇抱著小年走出電梯——三個月不出房的人，自己搭公車來：「小年說要來看舅舅。」",
+      "extra_hooks": [
+        "唐薇把她的手按住：「妳手抖，我陪妳數。」"
+      ],
+      "conflict": "她第一次不是能做事的那個人，手不知道要放哪。",
+      "turn": "大家以為唐薇需要人照顧，唐薇反過來教她呼吸——用的是第三季她教唐薇的那一套。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "唐薇數到十，輕聲說：「那時候妳陪我三十天。今天換我。」小年的小手抓住了她的指頭。",
+        "question": "她撐得到手術燈熄嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "tuanchong"
+      ],
+      "spectacle": "走廊塑膠椅上，嬰兒的小手攥著一根大人的手指，背景是亮著的手術燈。",
+      "glamour_shot": "唐薇素淨的臉、梳好的長髮，抱著小年側頭對她笑——三個月來第一次化了淡妝。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐薇第一次自己出門",
+        "她學會讓別人陪"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-wei",
+        "xiao-nian",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "安城醫院手術室走廊"
+      ],
+      "state": {
+        "time": "手術第 2 小時",
+        "knowledge": "唐薇用她教的方法陪她",
+        "carry_forward": "還有四小時"
+      }
+    },
+    {
+      "number": 255,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "聶老師",
+      "youtube_title": "六歲孩子在醫院走廊喊她聶老師，原來偷偷通知唐家的是兩個小孩",
+      "duration_s": 115,
+      "logline": "唐豆跑來，第一次喊她「聶老師」，也說出是誰通知唐家的。",
+      "hook": "小年攥著她的手指不放，走廊盡頭一個小人影抱著畫冊在跑：「聶老師！」",
+      "hook_type": "image",
+      "mid_hook": "唐豆翻開畫冊：一頁頁是聶橋傳給他的訊息——「是我告訴爺爺的。橋哥說他怕妳一個人。」",
+      "conflict": "她從不讓唐家知道她的難處；是弟弟和唐豆聯手。",
+      "turn": "大家以為是唐承安排的，原來是兩個小孩——聶橋用平板跟唐豆當筆友，字寫反了也看得懂。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "手術室的門開了一半，高醫師口罩沒拿下：「聶橋家屬，過來一下。」",
+        "question": "手術出了什麼事？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "畫冊一頁一頁翻過，歪歪扭扭的字和反著寫的字疊在一起，最後一頁畫著兩個火柴人牽手。",
+      "glamour_shot": "她蹲下接住撲過來的唐豆，把他抱起來的那一秒，馬尾在空中劃了一道弧。",
+      "setups": [],
+      "payoffs": [
+        "s05-t09",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐豆第一個叫她「聶老師」",
+        "知道是聶橋與唐豆通知唐家"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-dou",
+        "xiao-nian",
+        "tang-wei",
+        "tang-henian",
+        "a-gui-jie",
+        "tang-xiao",
+        "s05-gao-yisheng"
+      ],
+      "locations": [
+        "安城醫院手術室走廊"
+      ],
+      "state": {
+        "time": "手術第 3 小時",
+        "knowledge": "聶橋與唐豆是筆友",
+        "carry_forward": "醫師叫家屬"
+      }
+    },
+    {
+      "number": 256,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "延長兩小時",
+      "youtube_title": "手術要延長兩小時，走廊有人滑倒，她教過的管家一步接住",
+      "duration_s": 120,
+      "logline": "手術延長，她只能等；她教過的人在她面前做對了。",
+      "hook": "高醫師說：「骨頭比片子複雜，要延長兩小時。」她只問一句：「你有把握？」",
+      "hook_type": "danger",
+      "mid_hook": "走廊另一頭一個陌生阿公起身，腳一滑往後倒——阿貴姊一步過去，手放在她教的位置，穩穩接住。",
+      "extra_hooks": [
+        "秀姨提著兩層便當走出電梯：「等人要吃飯。」"
+      ],
+      "conflict": "手術延長，她什麼都不能做——五季來第一次不是做事的那個人。",
+      "turn": "大家以為她會衝去扶阿公，她沒動——阿貴姊已經接住了；她看著自己教的人做對，第一次放手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她夾不起便當裡的菜。老太爺撐著椅子站起來，把拐杖遞給阿貴姊：「拿著。我要走一百步。」",
+        "question": "老太爺為什麼要在這裡走一百步？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "tuanchong",
+        "ganren"
+      ],
+      "spectacle": "醫院走廊，阿貴姊單膝一跪托住陌生阿公，一串鑰匙甩出去在地上滑了很遠。",
+      "glamour_shot": "她坐在塑膠椅上抬頭看高醫師，下顎線繃緊，眼神一步不退。",
+      "setups": [
+        "s05-t07"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿貴姊在陌生人身上用對了她教的方法",
+        "秀姨送來低鹽便當"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-gao-yisheng",
+        "a-gui-jie",
+        "xiu-yi",
+        "tang-henian"
+      ],
+      "locations": [
+        "安城醫院手術室走廊"
+      ],
+      "state": {
+        "time": "手術第 4 小時",
+        "knowledge": "手術延長兩小時",
+        "carry_forward": "老太爺要走一百步"
+      }
+    },
+    {
+      "number": 257,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "最後一個到",
+      "youtube_title": "老太爺在醫院走廊當眾走一百步，家主推掉董事會最後一個趕到",
+      "duration_s": 115,
+      "logline": "老太爺當眾開始走；唐承最後一個到，帶來一份延期通知。",
+      "hook": "老太爺放開拐杖，第一步踩上走廊的白磁磚：「一。」",
+      "hook_type": "image",
+      "mid_hook": "第二十步，電梯開了——唐承最後一個到，西裝外套搭在手上：「董事會，我叫他們等。」",
+      "extra_hooks": [
+        "她開口：「你們怎麼都——」老太爺頭也不回：「二十一。」"
+      ],
+      "conflict": "七十八歲中風過的老人，在人來人往的醫院走廊當眾走一百步。",
+      "turn": "大家以為唐承是來處理錢的，他把一份董事會延期通知放在椅子上：「三年前那夜我在簽約。今天不簽。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第四十七步，老太爺左腳一拖，整個人往牆邊晃——阿貴姊伸手，老太爺吼：「不准扶！」",
+        "question": "老太爺撐得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "zhiyu"
+      ],
+      "spectacle": "長長的白色走廊，一個唐裝老人一步一步往手術燈走，兩邊病人家屬慢慢讓出一條路。",
+      "glamour_shot": "唐承從電梯走出來，一邊走一邊解開袖扣把袖子往上捲，眼下的黑比平常淡。",
+      "setups": [],
+      "payoffs": [
+        "s05-t06",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐家七個人全到走廊",
+        "唐承推掉董事會"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "tang-cheng",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "安城醫院手術室走廊"
+      ],
+      "state": {
+        "time": "手術第 5 小時",
+        "knowledge": "唐家七個人全到",
+        "carry_forward": "老太爺第四十七步"
+      }
+    },
+    {
+      "number": 258,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "讓他們拍",
+      "youtube_title": "最怕被人看見走不好的老太爺，在醫院走廊對陌生人說：讓他們拍",
+      "duration_s": 115,
+      "logline": "老太爺最怕被看見走不好，今天整條走廊的陌生人都在看。",
+      "hook": "老太爺的手撐在牆上，喘了三口氣，自己把腳拉回來：「四十八。」",
+      "hook_type": "line",
+      "mid_hook": "路過的家屬停下來，有人舉起手機——阿貴姊擋到前面：「不准拍。」老太爺說：「讓他們拍。」",
+      "conflict": "八十年的面子，和一個在手術室裡的孩子。",
+      "turn": "大家以為他會停，他說：「聶橋在裡面看不見。他會知道。」——繼續走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第九十九步，老太爺停在手術室門口，燈還亮著。他回頭看她：「最後一步，等他出來。」",
+        "question": "老太爺的第一百步，等得到嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "tuanchong"
+      ],
+      "spectacle": "十幾支手機的螢幕同時亮著，畫面裡都是同一個唐裝老人的背影。",
+      "glamour_shot": "她站在走廊中央看著老太爺，手垂在身側沒去扶，眼淚停在眼眶邊。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太爺讓陌生人看他走路",
+        "走到第九十九步"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "a-gui-jie",
+        "tang-cheng",
+        "tang-xiao"
+      ],
+      "locations": [
+        "安城醫院手術室走廊"
+      ],
+      "state": {
+        "time": "手術第 6 小時",
+        "knowledge": "第九十九步",
+        "carry_forward": "燈還亮著"
+      }
+    },
+    {
+      "number": 259,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "燈熄",
+      "youtube_title": "手術燈熄滅的那一秒，老太爺才踩下第一百步，正好停在主刀醫師腳前",
+      "duration_s": 120,
+      "logline": "燈熄到醫師開口之間，是她五季最長的十秒。",
+      "hook": "九十九步的老太爺站在門前，整條走廊沒人說話，只剩手術燈嗡嗡響。",
+      "hook_type": "image",
+      "mid_hook": "第八個小時，燈熄了。",
+      "extra_hooks": [
+        "唐豆小聲數：「九、十、九……」唐薇按住他的嘴。"
+      ],
+      "conflict": "她要等的不是一個數字，是一句話。",
+      "turn": "大家以為燈一熄老太爺就會坐下，他等門開那一秒才踩出第一百步——正好停在高醫師腳前。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "高醫師拉下口罩，看著她，停了一秒：「聶小姐——」",
+        "question": "手術，成功了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "「手術中」紅燈熄滅的特寫，下一格門開，一隻穿布鞋的腳踩在醫師的鞋尖前。",
+      "glamour_shot": "唐家七個人在走廊一排站起來，她在最前面，燈光從手術室門縫照在她臉上。",
+      "setups": [],
+      "payoffs": [
+        "s05-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太爺走完一百步"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "s05-gao-yisheng",
+        "tang-dou",
+        "tang-wei",
+        "xiao-nian",
+        "tang-xiao",
+        "tang-cheng",
+        "a-gui-jie",
+        "xiu-yi",
+        "lao-fu"
+      ],
+      "locations": [
+        "安城醫院手術室走廊"
+      ],
+      "state": {
+        "time": "手術第 8 小時",
+        "knowledge": "一百步走完",
+        "carry_forward": "醫師開口"
+      }
+    },
+    {
+      "number": 260,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "三百二十萬",
+      "youtube_title": "弟弟手術成功她沒哭，先去繳清最後一筆：三百二十萬，五季，一分沒拿施捨",
+      "duration_s": 150,
+      "logline": "手術成功，她付清五季的數字，回頭才看見一整排在等她的人。",
+      "hook": "「——很成功。他醒來會先喊餓。」走廊上七個人同時站起來，她沒動。",
+      "hook_type": "line",
+      "mid_hook": "她沒哭，轉身走去繳費櫃台，把最後一筆推進窗口：「付清。」收據印出來：三百二十萬。",
+      "extra_hooks": [
+        "她對鏡頭：「三百二十萬。五季。一分沒拿施捨。」"
+      ],
+      "conflict": "五季的數字到零的那一刻。",
+      "turn": "大家以為她會和大家抱在一起哭，她先去付錢；回到走廊，看見唐家七個人坐成一排在等她——她才哭，第一次。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她站在一排人面前哭得說不出話。唐承站起來，沒說話，遞過一張衛生紙。",
+        "question": "這張衛生紙，她會接嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "zhiyu",
+        "qingxing"
+      ],
+      "spectacle": "繳費櫃台吐出一張收據：「合計 3,200,000」，她的手指按在數字上。",
+      "glamour_shot": "她站在走廊燈下第一次哭，馬尾散了，唐承遞衛生紙的手停在她面前。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [
+        "m11"
+      ],
+      "general_payoffs": [
+        "聶橋手術成功",
+        "手術費三百二十萬付清，五季的薪水、一分沒拿唐家",
+        "她第一次在唐家人面前哭"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-gao-yisheng",
+        "tang-henian",
+        "tang-cheng",
+        "tang-xiao",
+        "tang-wei",
+        "xiao-nian",
+        "tang-dou",
+        "a-gui-jie",
+        "xiu-yi",
+        "lao-fu"
+      ],
+      "locations": [
+        "安城醫院手術室走廊",
+        "醫院繳費櫃台"
+      ],
+      "state": {
+        "time": "手術當天傍晚",
+        "knowledge": "弟弟的手術成功、錢付清",
+        "carry_forward": "那張衛生紙"
+      }
+    },
+    {
+      "number": 261,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "開自己的",
+      "youtube_title": "弟弟醒來問她治完唐家要去哪，她第一次替自己說了一個計畫",
+      "duration_s": 110,
+      "logline": "聶橋醒了；聶安第一次替自己做計畫，不是替別人的鐘。",
+      "hook": "她接過衛生紙：「這個我收。」唐承說：「免費。」她說：「我知道。」",
+      "hook_type": "line",
+      "mid_hook": "聶橋醒來第一句是「餓」，第二句是：「姊，妳說手術完要告訴我的事？」她說：「我要開自己的工作室。」",
+      "conflict": "唐家需要她，她卻要離開；她要先說服自己。",
+      "turn": "大家以為她會在唐家當一輩子治療師，她說：「唐家好了，我就走。」聶橋笑了：「我畫的那張，終於用得上。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她手機跳出一則租屋訊息：老街店面，騎樓第一格，房東——陳。",
+        "question": "那間店面，就是騎樓那間嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "qingxing",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "病房的晨光裡，聶橋把那張「姊的工作室」草圖舉高，紙背透出光。",
+      "glamour_shot": "她坐在弟弟床邊削蘋果，馬尾重新綁好，嘴角第一次放鬆。",
+      "setups": [
+        "s05-t10"
+      ],
+      "payoffs": [
+        "s05-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "聶橋醒來",
+        "她說出要開自己的工作室"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng",
+        "nie-qiao"
+      ],
+      "locations": [
+        "安城醫院手術室走廊",
+        "安城醫院聶橋病房"
+      ],
+      "state": {
+        "time": "術後第一天",
+        "knowledge": "她要開自己的工作室",
+        "carry_forward": "老街店面房東姓陳"
+      }
+    },
+    {
+      "number": 262,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "多一步另算",
+      "youtube_title": "弟弟術後吵著要多走幾步，她對親弟弟跟對客戶一樣兇：多一步另算",
+      "duration_s": 100,
+      "logline": "弟弟的復健她自己做；最懂的事，用在家人身上最難。",
+      "hook": "她把訊息放大：老街另一頭，騎樓第一格——阿土伯的鞋攤就在門口。",
+      "hook_type": "image",
+      "mid_hook": "聶橋術後第三天下床，她只准走五步：「多一步另算。」他說：「我要走到妳的店。」",
+      "conflict": "她得對自己的弟弟狠下心，不讓他逞強。",
+      "turn": "大家以為她會心軟，她跟對老太爺一樣嚴——五步就是五步；他笑著抹眼淚：「姊，妳對客戶都這麼兇？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第五步，聶橋的膝蓋一彎，她的手還沒到。",
+        "question": "聶橋會不會摔？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "冷白病房的地板上貼著五段藍色膠帶，一雙病號拖鞋一格一格踩過去。",
+      "glamour_shot": "她蹲在弟弟前面倒退著走，雙手虛張在他腰側，眼神只盯著他的膝。",
+      "setups": [
+        "s05-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "聶橋術後第一次下床走五步"
+      ],
+      "characters": [
+        "nie-an",
+        "nie-qiao"
+      ],
+      "locations": [
+        "安城醫院聶橋病房"
+      ],
+      "state": {
+        "time": "術後第三天",
+        "knowledge": "聶橋要走到她的店",
+        "carry_forward": "第五步"
+      }
+    },
+    {
+      "number": 263,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "被吊過照的",
+      "youtube_title": "她看中的店面房東一開口就是：被吊過照的，我不租給有糾紛的",
+      "duration_s": 110,
+      "logline": "陳太太聽過她的傳聞，不肯租；開出的條件是趕走阿土伯。",
+      "hook": "一隻手從後面撐住聶橋的腰——唐驍：「站好。我學了一年半。」",
+      "hook_type": "reversal",
+      "mid_hook": "老街店面門口，陳太太上下打量她：「被吊過照的？我不租給有糾紛的。」",
+      "conflict": "房東聽信傳聞；她要不要拿執照出來辯。",
+      "turn": "大家以為她會亮出執照，她只說：「下週再來。」轉身去替阿土伯做膝蓋——陳太太在樓上窗口看了一下午。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陳太太下樓，指著柱子上的收回公告：「店面和騎樓一起租——那攤修鞋的，妳負責請走。」",
+        "question": "租店面，就要趕走阿土伯？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "老街店面捲門拉起一半，裡面空蕩蕩一地灰，一道光斜進來。",
+      "glamour_shot": "她站在捲門底下抬頭看樓上，逆光的輪廓、馬尾與運動褲，跟陳太太的珍珠項鍊對望。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二少扶住了聶橋"
+      ],
+      "characters": [
+        "nie-an",
+        "nie-qiao",
+        "tang-xiao",
+        "s05-chen-taitai",
+        "s05-a-tu-bo"
+      ],
+      "locations": [
+        "安城醫院聶橋病房",
+        "老街店面"
+      ],
+      "state": {
+        "time": "術後一週",
+        "knowledge": "陳太太只肯整個騎樓一起租",
+        "carry_forward": "要請走阿土伯"
+      }
+    },
+    {
+      "number": 264,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "老街的傳話",
+      "youtube_title": "房東拿出藍院長的傳話羞辱她，老街的鄰居一個一個走出店門",
+      "duration_s": 115,
+      "logline": "藍院長停業調查中，還在老街散她的傳聞；鄰居站了出來。",
+      "hook": "「請走他，店面就是妳的。」陳太太把鑰匙放在柱子上。她沒拿。",
+      "hook_type": "line",
+      "mid_hook": "陳太太舉起手機：「藍院長親口說的——妳在他院裡弄傷過人。」",
+      "extra_hooks": [
+        "阿土伯在攤子後面用力敲鞋跟，假裝沒聽見。"
+      ],
+      "conflict": "被誣告的舊事被拿來壓租金，她說什麼都像辯解。",
+      "turn": "大家以為她要吞下去，老街的店一家家開門——老蔡、月琴姨走出來：「她治的是我們。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陳太太手機又震一下，她念出標題：「衛生局公告——藍院長調查結果。」手指停在螢幕上。",
+        "question": "藍院長的調查結果是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "qingxing",
+        "tuanchong"
+      ],
+      "spectacle": "老街一排店門同時拉開，豆漿店的白煙、裁縫鋪的布料、鞋攤的鞋油味一起湧到騎樓下。",
+      "glamour_shot": "她站在柱子旁不說話，下巴微抬，手插在運動外套口袋裡，眼神平。",
+      "setups": [
+        "s05-t12"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老街鄰居當眾替她作證"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-chen-taitai",
+        "s05-a-tu-bo",
+        "s05-lao-cai",
+        "s05-yueqin-yi"
+      ],
+      "locations": [
+        "老街店面騎樓"
+      ],
+      "state": {
+        "time": "術後一週",
+        "knowledge": "藍院長在老街放話",
+        "carry_forward": "衛生局結果"
+      }
+    },
+    {
+      "number": 265,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "停業一年",
+      "youtube_title": "散播傳聞的院長被吊照停業一年，房東當場低頭，她只回了一句",
+      "duration_s": 115,
+      "logline": "藍院長的結果出來，陳太太下不了台；條件卻還在。",
+      "hook": "陳太太念：「藍院長，吊照、停業一年。」騎樓下一片安靜。",
+      "hook_type": "line",
+      "mid_hook": "郵差送來一張卡，賀小姐的字：「恭喜妳。我爸道歉了。」",
+      "extra_hooks": [
+        "老蔡把豆漿往桌上一放：「傳話的人吊照了，陳太太，妳呢？」"
+      ],
+      "conflict": "傳聞翻了，陳太太的面子掛不住。",
+      "turn": "大家以為陳太太會甩手不租，她低頭：「我信錯人。」接著開價：「租金不降。」她說：「本來就不用降。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陳太太把鑰匙推過來：「騎樓那個條件還在。」身後，阿土伯默默開始收攤。",
+        "question": "她要店面，還是阿土伯？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "騎樓下所有人低頭看同一支手機，螢幕上的公告映在一張張臉上。",
+      "glamour_shot": "她拆開賀小姐的卡片，指尖停在「道歉」兩個字上，嘴角揚起一點。",
+      "setups": [],
+      "payoffs": [
+        "s05-t12",
+        "m10",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "藍院長吊照停業一年",
+        "陳太太認錯",
+        "賀小姐的父親道歉"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-chen-taitai",
+        "s05-lao-cai",
+        "s05-a-tu-bo",
+        "he-xiaojie"
+      ],
+      "locations": [
+        "老街店面騎樓"
+      ],
+      "state": {
+        "time": "術後十天",
+        "knowledge": "藍院長停業一年",
+        "carry_forward": "阿土伯在收攤"
+      }
+    },
+    {
+      "number": 266,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "騎樓第一格",
+      "youtube_title": "房東要她趕走修鞋老伯才肯租，她算了一筆帳，把騎樓整個租下來",
+      "duration_s": 110,
+      "logline": "她不趕阿土伯，把騎樓一起租下，用生意而不是善心算給房東看。",
+      "hook": "她按住阿土伯的鞋箱：「別收。」轉向陳太太：「騎樓我一起租。」",
+      "hook_type": "line",
+      "mid_hook": "陳太太：「那他呢？」她：「照舊付租金——付給我。我的客人等的時候，可以修鞋。」",
+      "conflict": "多租騎樓等於多一筆開銷，她得算得過來。",
+      "turn": "大家以為她在做善事，她攤開筆記本：阿土伯的租金加上候診客人，騎樓自己養自己——「這不是施捨，是生意。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "合約剛簽完，巷口一台黑頭車停下。唐承下車，手裡拿著一份「唐家投資意向書」。",
+        "question": "唐家要投資，她收不收？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "qingxing",
+        "xiju",
+        "dalian"
+      ],
+      "spectacle": "騎樓柱上的「收回」公告被撕下，阿土伯把鞋攤一件一件擺回第一格。",
+      "glamour_shot": "她低頭在合約上簽名，一縷頭髮落下來，她用簽字筆把它勾到耳後。",
+      "setups": [],
+      "payoffs": [
+        "s05-t05",
+        "s05-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "租下店面與騎樓",
+        "阿土伯的鞋攤保住"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-a-tu-bo",
+        "s05-chen-taitai",
+        "tang-cheng"
+      ],
+      "locations": [
+        "老街店面騎樓"
+      ],
+      "state": {
+        "time": "術後兩週",
+        "knowledge": "店面租下",
+        "carry_forward": "唐家的投資意向書"
+      }
+    },
+    {
+      "number": 267,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "出力收出錢不收",
+      "youtube_title": "豪門全家搶著出錢幫她開店，她只收了一樣：二少爺說我幫妳搬",
+      "duration_s": 110,
+      "logline": "唐家想用最好的東西幫她，她只要自己的招牌。",
+      "hook": "唐承遞來意向書：「唐家投資三成。」她連封面都沒翻：「不要。」",
+      "hook_type": "line",
+      "mid_hook": "老太爺下車：「唐記的招牌借妳掛。」「不借。」二少扛著一箱器材：「那我幫妳搬？」「這個可以。」",
+      "extra_hooks": [
+        "唐薇：「窗簾我縫。」唐豆：「地板我貼字。」"
+      ],
+      "conflict": "全部拒絕會不會傷了唐家的心。",
+      "turn": "大家以為她要一律拒絕，她接下所有的手——搬、縫、貼——退回所有的錢：「出力我收，出錢不收。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "二少扛起最重的那台器材往店裡走，她喊：「那台四十公斤！」",
+        "question": "二少的腿，扛得住四十公斤嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "xiju",
+        "tuanchong"
+      ],
+      "spectacle": "老街空店門口，一輛黑頭車、一台小貨車、一家人各拿一樣東西站成一排。",
+      "glamour_shot": "唐承站在店門口，看她把意向書原封不動推回來，嘴角很淡地動了一下。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐家出力不出錢"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng",
+        "tang-henian",
+        "tang-xiao",
+        "tang-wei",
+        "tang-dou"
+      ],
+      "locations": [
+        "老街店面"
+      ],
+      "state": {
+        "time": "術後兩週末",
+        "knowledge": "出力收、出錢不收",
+        "carry_forward": "二少扛四十公斤"
+      }
+    },
+    {
+      "number": 268,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "四十公斤",
+      "youtube_title": "車禍後不肯走路的二少爺扛起四十公斤器材，跨過門檻的那一步",
+      "duration_s": 105,
+      "logline": "裝修只有十天；二少想逞強，阿寬來監工。",
+      "hook": "二少扛著器材停在門檻前，腿抖了一下——然後跨過去：「走著搬的。」",
+      "hook_type": "danger",
+      "mid_hook": "阿寬拄著拐杖從巷口來：「我來監工。」二少：「你監什麼？」「監你有沒有逞強。」",
+      "conflict": "十天、一間空店、全家只有下班的時間。",
+      "turn": "大家以為二少會逞強到受傷，他放下第二台：「這台太重，我跟阿寬抬。」——他學會開口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "唐豆貼完最後一條彩色膠帶站起來：地板上拼出「聶安物理治療工作室」——「治」字貼反了。",
+        "question": "字貼反了，要撕掉重貼嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "tuanchong",
+        "qingxing"
+      ],
+      "spectacle": "空店地板上一整排彩色膠帶字母，從門口一路鋪到最裡面的牆。",
+      "glamour_shot": "唐驍扛著器材跨過門檻，帽 T 袖子捲到手肘，汗順著下頜滴下來。",
+      "setups": [],
+      "payoffs": [
+        "m04",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二少學會開口要人幫",
+        "阿寬來幫忙"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-xiao",
+        "tongxue",
+        "tang-dou"
+      ],
+      "locations": [
+        "老街店面"
+      ],
+      "state": {
+        "time": "裝修第三天",
+        "knowledge": "二少會開口了",
+        "carry_forward": "「治」貼反了"
+      }
+    },
+    {
+      "number": 269,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "貼反的字",
+      "youtube_title": "孩子把她招牌的字貼反了，她不讓撕：字反了，也能走到",
+      "duration_s": 105,
+      "logline": "店慢慢有了樣子，可牆上少了一樣東西。",
+      "hook": "「治」字反著躺在地板上，唐豆的臉紅了。她蹲下：「留著。」",
+      "hook_type": "image",
+      "mid_hook": "她說：「進來的人都會看到——字反了也能走到。」唐豆踩了那個字一下：「我的字會跳舞。」",
+      "extra_hooks": [
+        "秀姨的便當送到第五天，阿土伯也有一份。"
+      ],
+      "conflict": "一間店要像她，可是那面牆空著。",
+      "turn": "大家以為她缺的是招牌，她看著空牆說：「這裡少一面鏡子。」——阿貴姊的鑰匙響了一下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她說：「明天去買一面。」阿貴姊一把攔住：「不准買。」",
+        "question": "阿貴姊為什麼不准她買鏡子？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "zhiyu",
+        "qingxing"
+      ],
+      "spectacle": "黃昏的空店，一個反著的「治」字被夕陽拉出長長的影子。",
+      "glamour_shot": "她蹲在唐豆面前，跟他一起看那個反字，兩個人的側臉在夕陽裡一大一小。",
+      "setups": [
+        "s05-t11"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐豆不再為反字難過"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-dou",
+        "xiu-yi",
+        "s05-a-tu-bo",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "老街店面"
+      ],
+      "state": {
+        "time": "裝修第七天",
+        "knowledge": "牆上缺一面鏡子",
+        "carry_forward": "阿貴姊不准買"
+      }
+    },
+    {
+      "number": 270,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "第一季拆的",
+      "youtube_title": "管家抬來唐家那面老鏡子，第一季她拆下的，第五季在自己的店裡掛上",
+      "duration_s": 135,
+      "logline": "阿貴姊帶來第一季被拆下的鏡子——老太爺的答案。",
+      "hook": "「不准買。」阿貴姊轉身就走，鑰匙串響了一整條街。",
+      "hook_type": "line",
+      "mid_hook": "第十天，阿貴姊和老福抬著一個布包進門——掀開，是唐家那面老鏡子，第一季她從復健室拆下的那面。",
+      "extra_hooks": [
+        "阿貴姊：「老太爺說，妳現在可以掛了。他不怕人看了。」"
+      ],
+      "conflict": "鏡子是老太爺當年最怕的東西；把它送出唐家，是他的答案。",
+      "turn": "大家以為鏡子早丟了，阿貴姊收了一季又一季：「我就知道總有一天要掛回去。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把鏡子掛上牆，退一步，看見自己——馬尾、運動褲、一間自己的店。她對鏡頭：「第一季拆的，第五季掛。」",
+        "question": "鏡子裡，下一個走進來的會是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "xiju",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "布包落下，一面老木框鏡子映出整間店：唐家一家人、彩色地板字、門外的老街。",
+      "glamour_shot": "她站在鏡子前，鏡裡鏡外兩個她同時抬手把馬尾綁緊。",
+      "setups": [],
+      "payoffs": [
+        "s05-t11",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老鏡子掛上工作室的牆",
+        "店面裝修完成"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "lao-fu",
+        "tang-xiao",
+        "tang-dou",
+        "tang-wei",
+        "xiu-yi"
+      ],
+      "locations": [
+        "老街店面"
+      ],
+      "state": {
+        "time": "裝修第十天",
+        "knowledge": "鏡子掛回",
+        "carry_forward": "開幕"
+      }
+    },
+    {
+      "number": 271,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "第一號",
+      "youtube_title": "她的物理治療工作室開幕，第一號客戶是豪門老太爺，紅包被她退回",
+      "duration_s": 110,
+      "logline": "開幕日，第一個客戶是唐家；她要把唐家當客戶，不當恩人。",
+      "hook": "鏡子裡，她身後的門口站著一個人——老太爺，拐杖夾在腋下：「第一號。」",
+      "hook_type": "image",
+      "mid_hook": "招牌掛上去，字是她自己寫的，有點歪；老太爺說：「比我的醜。」她說：「是我的。」",
+      "extra_hooks": [
+        "老福把老太爺的預約卡收進白手套裡：「每週三，我載。」"
+      ],
+      "conflict": "唐家是她的第一個客戶，也是最想多給的客戶。",
+      "turn": "大家以為老太爺會免費，他掏出紅包：「開幕禮。」她退回：「預約費一次一千，開幕禮不收。」他改付一千，一張不多。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老太爺走後，門口已經排了第二個——老蔡，身後一整排老街鄰居，隊伍拐出巷口。",
+        "question": "一個人的工作室，接得住一條街嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "tuanchong",
+        "qingxing"
+      ],
+      "spectacle": "老街另一頭，一塊手寫的「聶安物理治療工作室」木招牌掛上門楣，鞭炮紙屑落在騎樓。",
+      "glamour_shot": "她站在梯子上扶正招牌，回頭往下看的那一秒，陽光從招牌邊緣漏下來。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "工作室開幕",
+        "第一個客戶：老太爺，每週三"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "lao-fu",
+        "s05-lao-cai"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "開幕日・週三",
+        "knowledge": "第一個客戶老太爺",
+        "carry_forward": "一條街在排隊"
+      }
+    },
+    {
+      "number": 272,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "一天十位",
+      "youtube_title": "開幕排隊排出巷口，她卻貼出一天只看十位，第三號摘下墨鏡",
+      "duration_s": 105,
+      "logline": "人太多，她只做得好十個；第三號是一個熟人。",
+      "hook": "隊伍拐出巷口，老蔡舉著號碼牌：「第二號，腰！」",
+      "hook_type": "line",
+      "mid_hook": "第三號摘下墨鏡——賀小姐：「我是證人。但我腰痛。」",
+      "conflict": "要不要為了錢塞進第十一個。",
+      "turn": "大家以為她會加班多賺，她在門口貼出：「一天十位，額滿明天。」老蔡：「妳不想賺？」她：「我想做好。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "賀小姐問：「上次妳說證人免費——現在呢？」她從抽屜拿出價目表。",
+        "question": "證人賀小姐，要不要付錢？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "xiju",
+        "qingxing"
+      ],
+      "spectacle": "工作室玻璃門上貼著手寫「一天十位，額滿明天」，門外的隊伍一路折回巷子。",
+      "glamour_shot": "賀小姐在診療床邊摘下墨鏡、把長髮撥到一側，和她相視一笑。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一天十位的規矩",
+        "第三號客戶賀小姐"
+      ],
+      "characters": [
+        "nie-an",
+        "s05-lao-cai",
+        "he-xiaojie"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "開幕第二天",
+        "knowledge": "一天十位",
+        "carry_forward": "賀小姐付不付"
+      }
+    },
+    {
+      "number": 273,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "阿貴姊的流程",
+      "youtube_title": "她回豪門驗收復健室，管家拿著自己寫的流程表：妳看，我做給妳看",
+      "duration_s": 110,
+      "logline": "唐家的復健室交給阿貴姊了；她得驗收，不能心軟。",
+      "hook": "「現在妳是客戶。一次一千。」賀小姐笑著掏卡：「我還以為妳會打折。」",
+      "hook_type": "line",
+      "mid_hook": "週三晚上她回唐家——阿貴姊站在復健室門口，手裡一張自己寫的流程表：「妳看，我做給妳看。」",
+      "conflict": "她要把唐家的復健室真正交出去。",
+      "turn": "大家以為阿貴姊會出錯，前面每一步都對；只有最後一步手放錯——她說：「這裡錯。」阿貴姊沒生氣：「再一次。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第二次，老太爺從墊上起身，阿貴姊的手一滑，老太爺整個人往後仰。",
+        "question": "阿貴姊接得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "淺綠復健室牆上貼滿阿貴姊手寫的流程表，一張比一張字更大。",
+      "glamour_shot": "她抱著手臂站在復健室門口驗收，燈從背後打出她的輪廓，表情平靜。",
+      "setups": [
+        "s05-t14"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "賀小姐付全額",
+        "阿貴姊自己寫了流程表"
+      ],
+      "characters": [
+        "nie-an",
+        "he-xiaojie",
+        "a-gui-jie",
+        "tang-henian"
+      ],
+      "locations": [
+        "聶安物理治療工作室",
+        "唐家復健室"
+      ],
+      "state": {
+        "time": "第一個週三夜",
+        "knowledge": "阿貴姊在學流程",
+        "carry_forward": "老太爺往後仰"
+      }
+    },
+    {
+      "number": 274,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "沒摔",
+      "youtube_title": "老太爺往後仰的瞬間她一步沒動，因為她要管家知道沒有她也接得住",
+      "duration_s": 105,
+      "logline": "放手讓阿貴姊自己接，比自己接難一百倍。",
+      "hook": "阿貴姊膝蓋一跪，雙手撐住老太爺的背——她的手停在半空，沒動。",
+      "hook_type": "danger",
+      "mid_hook": "老太爺坐穩了，罵：「妳要摔死我！」阿貴姊說：「沒摔。」老太爺愣了一下，笑了：「沒摔。」",
+      "conflict": "她要不要衝上去。",
+      "turn": "大家以為她會出手，她一步沒動——她要阿貴姊知道，沒有她也接得住。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "唐豆衝進復健室，揮著一張獎狀：「聶老師！學校叫我當走字小老師！」獎狀背面是老師寫給她的信。",
+        "question": "老師的信寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "tuanchong",
+        "ganren"
+      ],
+      "spectacle": "復健室墊子上，阿貴姊跪著托住老太爺，一串鑰匙落地，三個人同時笑出聲。",
+      "glamour_shot": "她站在門邊沒動，手指在身側握緊又鬆開，眼神裡有一點驕傲。",
+      "setups": [],
+      "payoffs": [
+        "s05-t14",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿貴姊獨立接住老太爺",
+        "唐豆當上走字小老師"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "tang-henian",
+        "tang-dou"
+      ],
+      "locations": [
+        "唐家復健室"
+      ],
+      "state": {
+        "time": "第一個週三夜",
+        "knowledge": "阿貴姊接住了",
+        "carry_forward": "老師的信"
+      }
+    },
+    {
+      "number": 275,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "自己付",
+      "youtube_title": "二少爺領了第一份打工薪水，第一件事是把自己的復健費放在她桌上",
+      "duration_s": 110,
+      "logline": "唐家每個人都在走自己的路；她要確定不是為了她才走。",
+      "hook": "獎狀背面老師寫：「謝謝讓他回來的人。他現在教全班。」唐豆念出來——「謝」念成「射」。",
+      "hook_type": "line",
+      "mid_hook": "二少穿著便利商店制服進門，把一張收據放在她桌上：「阿寬店裡的第一份薪水。我的復健費，自己付。」",
+      "extra_hooks": [
+        "唐薇在樓梯口：「我報了烘焙班。」"
+      ],
+      "conflict": "她不收唐家的錢——可這一次，是二少自己賺的。",
+      "turn": "大家以為二少是來塞錢的，那是他自己這個月的預約費，一千，一張不多——她收了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "唐薇抱著小年下樓，看著手機臉色一變：「他傳訊息來，說想看小年一次。」",
+        "question": "唐薇要不要讓前夫見小年？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "唐家客廳的茶几上並排放著一張獎狀、一張便利商店收據、一張烘焙班報名表。",
+      "glamour_shot": "唐驍穿著便利商店制服站在客廳，長髮紮起來，第一次看起來像個上班的人。",
+      "setups": [
+        "s05-t15"
+      ],
+      "payoffs": [
+        "m06",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐豆教全班認字",
+        "二少自己付復健費",
+        "唐薇報烘焙班"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-dou",
+        "tang-xiao",
+        "tang-wei",
+        "xiao-nian"
+      ],
+      "locations": [
+        "唐家客廳"
+      ],
+      "state": {
+        "time": "開幕第二週",
+        "knowledge": "唐豆、二少、唐薇各有去處",
+        "carry_forward": "前夫想見小年"
+      }
+    },
+    {
+      "number": 276,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "那是妳的決定",
+      "youtube_title": "大小姐問她要不要讓前夫見孩子，她說：我只管妳手抖不抖",
+      "duration_s": 110,
+      "logline": "唐薇要自己決定見不見前夫；她只陪呼吸，不替人做決定。",
+      "hook": "唐薇把手機扣在桌上：「妳說，我要見嗎？」她：「妳的決定。我只管妳手抖不抖。」",
+      "hook_type": "line",
+      "mid_hook": "她陪唐薇做完一次呼吸，唐薇自己回訊息：「一次。週六下午，工坊旁邊。」",
+      "conflict": "唐薇怕一見前夫，三個月的窗簾又會拉上。",
+      "turn": "大家以為唐薇會要她陪，唐薇說：「不用。妳現在不是我家的人——是我的治療師，週三再來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她回唐家二樓，自己的房門開著——阿貴姊站在裡面，一個一個搬著她的箱子。",
+        "question": "阿貴姊在搬她的東西？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "唐薇房裡的窗簾全開，午後的光鋪滿嬰兒床，手機螢幕上一行字：「一次。」",
+      "glamour_shot": "唐薇低頭打字，頭髮挽起、耳邊碎髮被光照亮，抱著小年的手很穩。",
+      "setups": [
+        "s05-t16"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐薇自己做決定"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-wei",
+        "xiao-nian",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "唐家客廳",
+        "唐家二樓她的房"
+      ],
+      "state": {
+        "time": "開幕第二週",
+        "knowledge": "唐薇自己決定見一次",
+        "carry_forward": "阿貴姊在搬她的箱子"
+      }
+    },
+    {
+      "number": 277,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "看過了",
+      "youtube_title": "豪門大小姐離婚後第一次見前夫，抱著女兒只說了三個字：看過了",
+      "duration_s": 115,
+      "logline": "唐薇自己面對前夫；聶安不在場，只能在工作室等。",
+      "hook": "阿貴姊把箱子拆開，一件件掛回衣櫃：「誰准妳打包的？」",
+      "hook_type": "reversal",
+      "mid_hook": "週六，工坊旁。前夫拿著一個嬰兒玩具躲著鏡頭；唐薇抱著小年走出來——自己走來的。",
+      "conflict": "唐薇面對前夫；她只能等一通電話。",
+      "turn": "大家以為唐薇會崩潰，她讓前夫抱了小年一次，然後收回：「看過了。走吧。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "前夫要把玩具留下，伸手遞過來。唐薇看著那個玩具——",
+        "question": "唐薇會收下前夫的東西嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "唐記工坊旁的老騎樓，麵粉白的光裡，一個嬰兒在兩個大人之間被交出去又抱回來。",
+      "glamour_shot": "唐薇一身米白、長髮披肩，抱著小年站在工坊門口，下巴微抬。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐薇讓前夫見了小年一次"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "tang-wei",
+        "xiao-nian",
+        "wei-qianfu"
+      ],
+      "locations": [
+        "唐家二樓她的房",
+        "唐記糕餅工坊"
+      ],
+      "state": {
+        "time": "開幕第三週・週六",
+        "knowledge": "唐薇見了前夫",
+        "carry_forward": "那個玩具"
+      }
+    },
+    {
+      "number": 278,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "她有了",
+      "youtube_title": "前夫遞玩具給女兒，大小姐推回去：她有了。她學會的是不收",
+      "duration_s": 110,
+      "logline": "唐薇學到了聶安的那一句「不收」，用在自己身上。",
+      "hook": "唐薇把玩具推回去：「她有了。」前夫的手在半空停了三秒，收回去。",
+      "hook_type": "line",
+      "mid_hook": "唐薇回工坊洗手揉麵：「我要在這裡開烘焙教室。」老太爺在旁邊：「鹽少一撮。」",
+      "conflict": "唐薇的結解了，她要往前走，不是回頭。",
+      "turn": "大家以為唐薇學的是抱孩子，她說：「聶安教我的不是抱孩子，是不收。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "那晚最後一個客戶走後，門口來了一個拄拐的少年——聶橋：「姊，我自己走來的。」拐杖在門檻前一滑。",
+        "question": "聶橋一個人走了多遠？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "tuanchong"
+      ],
+      "spectacle": "唐記工坊的大案板上，一團麵被揉開，麵粉在燈下揚起一陣白霧。",
+      "glamour_shot": "唐薇挽袖揉麵，額頭沾一點麵粉，回頭對老太爺笑。",
+      "setups": [],
+      "payoffs": [
+        "s05-t15",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "前夫離開",
+        "唐薇決定開烘焙教室"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-wei",
+        "wei-qianfu",
+        "tang-henian",
+        "nie-qiao",
+        "xiao-nian"
+      ],
+      "locations": [
+        "唐記糕餅工坊",
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "開幕第三週",
+        "knowledge": "唐薇要開教室",
+        "carry_forward": "聶橋在門口"
+      }
+    },
+    {
+      "number": 279,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "到了",
+      "youtube_title": "手術後的弟弟自己拄拐走到她的工作室，跨過門檻說：到了",
+      "duration_s": 115,
+      "logline": "弟弟走進她的工作室，是五季的終點之一。",
+      "hook": "拐杖一滑——她沒伸手，聶橋自己穩住，跨進門：「到了。」",
+      "hook_type": "danger",
+      "mid_hook": "聶橋看見地上反著的「治」，踩了一下：「唐豆貼的？」他拿出那張草圖——跟這間店只差一面鏡子；鏡子在牆上。",
+      "conflict": "她不能哭，他還在復健。",
+      "turn": "大家以為她會讓他坐，她遞過彈力帶：「來了就是客戶。姊姊價，一百。」「還收錢？」「親兄弟明算帳。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "聶橋看著她：「姊，妳在唐家的房，什麼時候退？」她手裡的彈力帶停住。",
+        "question": "她真的要搬出唐家嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "xiju"
+      ],
+      "spectacle": "工作室牆上的老鏡子裡，草圖和真店疊在一起，一模一樣。",
+      "glamour_shot": "她站在鏡子旁把彈力帶遞給弟弟，嘴角在笑，眼睛是紅的。",
+      "setups": [],
+      "payoffs": [
+        "s05-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "聶橋自己走到她的店"
+      ],
+      "characters": [
+        "nie-an",
+        "nie-qiao"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "開幕第三週夜",
+        "knowledge": "聶橋走進工作室",
+        "carry_forward": "唐家的房"
+      }
+    },
+    {
+      "number": 280,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "面試那天",
+      "youtube_title": "她要搬出豪門，管家說留著，大少爺站在房門口提起面試那天",
+      "duration_s": 135,
+      "logline": "搬出唐家是她自己選的；唐家要學會她不住在樓上。",
+      "hook": "「這週日。」她回到唐家二樓，把最後一個箱子封起來。",
+      "hook_type": "line",
+      "mid_hook": "阿貴姊：「留著。」她：「不留，我不是這家的人。」阿貴姊：「妳是這家的治療師。治療師不住這。」她：「對。」",
+      "extra_hooks": [
+        "老太爺在樓下喊：「週日我送。」全家安靜了一秒。"
+      ],
+      "conflict": "她要走，唐家要放手。",
+      "turn": "大家以為阿貴姊會哭，她說出五季最軟的一句：「這家沒妳不行——但妳教會了，就行。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "唐承站在房門口：「面試那天。」她：「什麼？」他：「妳說薪水另算那天。」她：「那天怎麼了？」他：「……下週三再說。」",
+        "question": "面試那天，唐承看見了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "ganren",
+        "tuanchong"
+      ],
+      "spectacle": "二樓空房間裡只剩兩個封好的紙箱，窗外是她每天上下三十次的那道樓梯。",
+      "glamour_shot": "唐承靠在門框，袖子扣到手腕，那支停了的錶在燈下反光，他第一次欲言又止。",
+      "setups": [
+        "s05-t17",
+        "m12"
+      ],
+      "payoffs": [
+        "s05-t16",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她決定搬出唐家",
+        "阿貴姊放手"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "tang-henian",
+        "tang-cheng"
+      ],
+      "locations": [
+        "唐家二樓她的房"
+      ],
+      "state": {
+        "time": "搬家前三天",
+        "knowledge": "房不留；老太爺說要送",
+        "carry_forward": "面試那天、下週三"
+      }
+    },
+    {
+      "number": 281,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "我送妳",
+      "youtube_title": "她搬出豪門那天，中風的老太爺關上車門：車載箱子，人我自己走",
+      "duration_s": 115,
+      "logline": "搬家那天，老太爺要用自己的腳送她。",
+      "hook": "週日早上八點，唐家門廳：七個人站成兩排，她的兩個箱子在中間。",
+      "hook_type": "image",
+      "mid_hook": "老太爺從餐桌站起來：「我送妳。」阿貴姊伸手要扶，老太爺：「不用。」",
+      "conflict": "她不想讓搬家變成送別；老太爺要用腳送。",
+      "turn": "大家以為他只送到門口，他跨過門檻：「工作室在哪？兩公里？走。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老福把車開到門口，老太爺把車門關上：「車載箱子。人，我自己走。」——兩公里，七十八歲，中風過。",
+        "question": "兩公里，老太爺走得到嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "tuanchong"
+      ],
+      "spectacle": "唐家老宅門廳，七個人分站兩排，中間兩個紙箱，門外是一條長長的老街。",
+      "glamour_shot": "她站在門廳中間，換上自己的外套，背好背包，對唐家七個人點頭。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐家全家送她出門"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "a-gui-jie",
+        "lao-fu",
+        "tang-cheng",
+        "tang-xiao",
+        "tang-wei",
+        "tang-dou",
+        "xiu-yi"
+      ],
+      "locations": [
+        "唐家門廳",
+        "唐家大門"
+      ],
+      "state": {
+        "time": "搬家當天早上",
+        "knowledge": "老太爺要走兩公里",
+        "carry_forward": "出門"
+      }
+    },
+    {
+      "number": 282,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "街口",
+      "youtube_title": "七十八歲的老太爺走到第一個街口，上學的孩子圍上來喊鶴年伯",
+      "duration_s": 105,
+      "logline": "她是治療師，知道他的極限在哪；她要決定什麼時候叫停。",
+      "hook": "車開走了，老太爺走在前面，她在旁邊半步——不扶，手準備著。",
+      "hook_type": "image",
+      "mid_hook": "第一個街口紅燈，老太爺停下喘氣，一群上學的孩子圍過來：「是鶴年伯！」他挺直了。",
+      "extra_hooks": [
+        "她看錶，在筆記本記下：五百公尺，十二分鐘。"
+      ],
+      "conflict": "走下去可能會跌，叫停會傷他的心。",
+      "turn": "大家以為她會叫停，她量了他的呼吸：「還可以。繼續。」——她信他，也信自己的判斷。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "一公里處，老太爺的左腳開始拖地。再走下去，可能會跌。",
+        "question": "她要叫停，還是讓他走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "老街的斑馬線上，一個唐裝老人被一群背書包的孩子圍著，綠燈亮起。",
+      "glamour_shot": "她走在老太爺身側半步，低頭看錶又抬頭看他，馬尾在晨風裡輕晃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老太爺走完一公里"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian"
+      ],
+      "locations": [
+        "老街街口"
+      ],
+      "state": {
+        "time": "搬家當天上午",
+        "knowledge": "一公里處左腳拖地",
+        "carry_forward": "叫停或繼續"
+      }
+    },
+    {
+      "number": 283,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "唐記門口",
+      "youtube_title": "老太爺走過自己八十年的糕餅鋪，摸著招牌說：今天換我送人",
+      "duration_s": 110,
+      "logline": "走過自己的一生；老太爺的腿與心都在這一公里。",
+      "hook": "她蹲下看他的腳三秒：「休息兩分鐘再走。」他：「妳不叫停？」「你沒到極限。」",
+      "hook_type": "line",
+      "mid_hook": "他停在唐記糕餅工坊門口，看著櫥窗裡的鹹酥餅：「她以前在這裡送我出門。」",
+      "conflict": "八十年的店就在眼前，進去休息很容易。",
+      "turn": "大家以為他要進店坐，他摸了一下招牌：「今天換我送人。」繼續走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老街兩邊的店一家一家開門，老蔡、月琴姨、阿土伯都站到門口——沒有人說話，看著他走過。",
+        "question": "一整條街看著，他還走得下去嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "tuanchong",
+        "zhiyu"
+      ],
+      "spectacle": "唐記糕餅八十年的木招牌下，櫥窗裡一盤鹹酥餅，玻璃映出一個老人的臉。",
+      "glamour_shot": "老太爺唐裝在晨光裡站直，伸手摸招牌，她在旁邊仰頭看他。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太爺走過唐記，不進去休息"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "tang-taitai",
+        "s05-lao-cai",
+        "s05-yueqin-yi",
+        "s05-a-tu-bo"
+      ],
+      "locations": [
+        "唐記糕餅工坊門口",
+        "老街"
+      ],
+      "state": {
+        "time": "搬家當天近午",
+        "knowledge": "一點五公里",
+        "carry_forward": "全街在看"
+      }
+    },
+    {
+      "number": 284,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "算我的",
+      "youtube_title": "最後的上坡管家衝上來要扶老太爺，她伸手攔住：他倒了算我的",
+      "duration_s": 110,
+      "logline": "最後的上坡最難，她要擔起他倒下的所有責任。",
+      "hook": "一整條街的人站在門口，老太爺抬起拖地的左腳，用力踩下去。",
+      "hook_type": "image",
+      "mid_hook": "最後三百公尺上坡，阿貴姊衝上來要扶，被她伸手攔住：「讓他。」",
+      "extra_hooks": [
+        "阿貴姊紅著眼瞪她：「他倒了算妳的！」她：「算我的。」"
+      ],
+      "conflict": "她攔下的是阿貴姊，扛下的是全部責任。",
+      "turn": "大家以為她硬心腸，她說：「第一季他凌晨走到門口，沒人看。今天全街看——他要自己走完。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "工作室門口還有十步，老太爺膝蓋一彎，整個人停住——拐杖還夾在腋下。",
+        "question": "最後十步，他會拿出拐杖嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "tuanchong"
+      ],
+      "spectacle": "老街盡頭的上坡，一個老人、一個綁馬尾的女孩、一個伸手被攔住的管家，三個影子拉得很長。",
+      "glamour_shot": "她伸手攔住阿貴姊，側臉堅定，額前碎髮被汗黏住。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太爺爬完上坡"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "老街上坡",
+        "聶安物理治療工作室門口"
+      ],
+      "state": {
+        "time": "搬家當天中午",
+        "knowledge": "最後十步",
+        "carry_forward": "拐杖"
+      }
+    },
+    {
+      "number": 285,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "八十年沒人送過我",
+      "youtube_title": "老太爺一個人走了兩公里送她到店門口：八十年沒人送過我，我送妳",
+      "duration_s": 120,
+      "logline": "兩公里結束；她怎麼收下這份送別，又不收成施捨。",
+      "hook": "老太爺把拐杖從腋下抽出來——遞給她：「拿著。」然後走完十步。",
+      "hook_type": "reversal",
+      "mid_hook": "他站在工作室門口喘著氣：「八十年沒人送過我。我送妳。」",
+      "extra_hooks": [
+        "她：「復健另計。」老太爺：「記帳。」"
+      ],
+      "conflict": "這是一份她無法退回的禮。",
+      "turn": "大家以為她會哭，她說「復健另計」——老太爺大笑：「記帳！」全街鼓掌。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老太爺走進店裡坐下，她低頭看手裡的拐杖，握把上刻著一行小字：「鹽少一撮，路多一步」。",
+        "question": "這行字是誰刻的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhiyu",
+        "xiju"
+      ],
+      "spectacle": "工作室門口，一個老人空著雙手站著，全街的人在他身後鼓掌，她手裡握著他的拐杖。",
+      "glamour_shot": "老太爺回頭大笑，白髮在陽光下發亮；她抱著拐杖，眼眶紅著也笑。",
+      "setups": [],
+      "payoffs": [
+        "s05-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太爺一個人走兩公里送她",
+        "「記帳」"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "s05-lao-cai",
+        "s05-yueqin-yi",
+        "s05-a-tu-bo",
+        "a-gui-jie"
+      ],
+      "locations": [
+        "聶安物理治療工作室門口"
+      ],
+      "state": {
+        "time": "搬家當天午後",
+        "knowledge": "兩公里走完",
+        "carry_forward": "拐杖上的字"
+      }
+    },
+    {
+      "number": 286,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "週三九點",
+      "youtube_title": "她搬走之後，大少爺照規矩到她的店預約：週三晚上九點，一次兩千",
+      "duration_s": 105,
+      "logline": "她不住唐家了，唐承也得像所有客戶一樣預約。",
+      "hook": "她摸著握把上的字，老福在門口說：「老太爺昨晚自己刻的，刻到兩點。」",
+      "hook_type": "line",
+      "mid_hook": "她翻開預約本，週三晚上九點那一格已經寫好名字——唐承，字很工整：「一次兩千。」",
+      "conflict": "唐承的失眠還在「慢性病」，可她不再住樓上。",
+      "turn": "大家以為唐承會叫她回唐家治，他自己來店裡登記：「妳的店，妳的時間。」她只說：「遲到一分鐘，算一次。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他簽完名，抬手看錶——那支停了三年的錶，秒針在走。",
+        "question": "那支停了的錶，什麼時候又走了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tianchong",
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "工作室的預約本攤開，週三那一欄只有一個名字，旁邊的錶面秒針一格一格跳。",
+      "glamour_shot": "唐承俯身在櫃台簽名，襯衫袖口露出那支錶，燈從上方落在他的眉骨。",
+      "setups": [
+        "s05-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐承成為正式預約客戶"
+      ],
+      "characters": [
+        "nie-an",
+        "lao-fu",
+        "tang-cheng"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "搬家後第二天",
+        "knowledge": "唐承約週三九點；錶在走",
+        "carry_forward": "錶什麼時候走的"
+      }
+    },
+    {
+      "number": 287,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "第三行",
+      "youtube_title": "她搬走第一晚老太爺就鬧著不做復健，管家打來求救，她不回去",
+      "duration_s": 110,
+      "logline": "她搬走第一晚，唐家就出狀況；回去就前功盡棄。",
+      "hook": "「錶？」她看他。他把袖子拉下來蓋住：「週三見。」",
+      "hook_type": "line",
+      "mid_hook": "晚上十點，阿貴姊打來：「老太爺不做肌力，說妳不在他不做！」",
+      "conflict": "唐家第一晚沒有她。",
+      "turn": "大家以為她會趕回去，她說：「阿貴姊，流程表第三行。他不做，就記帳——記他的帳。」電話那頭老太爺罵了一聲，做了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "半夜十二點電話又響，是唐豆，小小聲：「聶老師，爸爸還沒睡。他坐在復健室的墊子上。」",
+        "question": "她要回去，還是等週三？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiyu",
+        "tuanchong",
+        "xiju"
+      ],
+      "spectacle": "深夜唐家復健室，阿貴姊對著手機擴音念流程表，老太爺一邊罵一邊拉開彈力帶。",
+      "glamour_shot": "她坐在工作室的窗邊講電話，路燈的光落在她半邊臉上，聲音平穩。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐家自己撐過第一個晚上"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng",
+        "a-gui-jie",
+        "tang-henian",
+        "tang-dou"
+      ],
+      "locations": [
+        "聶安物理治療工作室",
+        "唐家復健室"
+      ],
+      "state": {
+        "time": "搬家後第一夜",
+        "knowledge": "唐家自己撐過來了",
+        "carry_forward": "唐承沒睡"
+      }
+    },
+    {
+      "number": 288,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "遲到算一次",
+      "youtube_title": "大少爺半夜失眠坐在復健室，她沒回去，只叫孩子轉達一句話",
+      "duration_s": 105,
+      "logline": "她不回去，是治療：他的睡眠不能靠她在不在家。",
+      "hook": "她對電話說：「唐豆，跟爸爸說——週三九點，遲到算一次。」然後掛掉。",
+      "hook_type": "line",
+      "mid_hook": "唐豆把話傳到，唐承看著那支錶笑了一聲，起身回房——唐豆在門縫看見他躺上床。",
+      "extra_hooks": [
+        "唐豆傳來訊息，字是反的：「了睡爸爸」。"
+      ],
+      "conflict": "她要忍住不回去。",
+      "turn": "大家以為她狠心，唐豆的第二則訊息來了：「爸爸說，妳搬走那天他上了發條。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "唐豆第三則訊息：「爸爸說，週三要跟妳說面試那天的事。」她盯著「面試」兩個字。",
+        "question": "面試那天，到底發生了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "xiju",
+        "tianchong"
+      ],
+      "spectacle": "手機螢幕上一行反著的字「了睡爸爸」，背景是工作室牆上那面老鏡子。",
+      "glamour_shot": "她看著手機笑出聲，又趕緊收住，靠著鏡子的側影映在玻璃裡。",
+      "setups": [],
+      "payoffs": [
+        "s05-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐承沒有她也睡著了",
+        "錶是她搬走那天上的發條"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-dou",
+        "tang-cheng"
+      ],
+      "locations": [
+        "唐家復健室",
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "搬家後第一夜",
+        "knowledge": "錶是她搬走那天上的發條",
+        "carry_forward": "週三"
+      }
+    },
+    {
+      "number": 289,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "應徵表",
+      "youtube_title": "大少爺準時赴約，治療結束後拿出一張他收了很久的應徵表",
+      "duration_s": 115,
+      "logline": "他要說面試那天的事；她只給治療的時間，不多一分。",
+      "hook": "週三晚上八點五十九分，工作室的門鈴響了。",
+      "hook_type": "image",
+      "mid_hook": "治療照常：呼吸、燈、時間；她寫紀錄，他付兩千。治完，他沒起身。",
+      "extra_hooks": [
+        "她：「九點五十。下一位是我下班。」"
+      ],
+      "conflict": "他要說的話，在她的時間表外面。",
+      "turn": "大家以為他要表白，他拿出一張摺得很舊的紙——面試那天她填的應徵表，薪資欄她寫的是：「另議」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他說：「三年沒人敢在這個家開價。」她手裡的筆停了。",
+        "question": "他要說的，是心動嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "工作室夜裡只開一盞燈，診療床旁的小桌上攤著一張泛黃的應徵表。",
+      "glamour_shot": "唐承坐在診療床邊扣回袖扣，睡過的臉沒了黑眼圈，抬眼看她。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐承準時赴約",
+        "應徵表一直在他那裡"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "第一個週三 21:50",
+        "knowledge": "應徵表在他手上",
+        "carry_forward": "那句話"
+      }
+    },
+    {
+      "number": 290,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "你來。預約。",
+      "youtube_title": "大少爺說出面試那天就動了心，她的回答讓他愣住：不。你來。預約。",
+      "duration_s": 150,
+      "logline": "唐承說出第一天就心動；他問她回不回唐家，她守住自己的門。",
+      "hook": "「妳說薪水另算，我就知道這個家要變了。」他把應徵表推回她面前。",
+      "hook_type": "line",
+      "mid_hook": "她問：「哪一天開始的？」他：「第一天。面試那一秒。」——應徵表角落，有一行他的筆跡：「錄取」。",
+      "conflict": "他問她回不回唐家；她要的是自己的門。",
+      "turn": "大家以為她會被打動回唐家，她說「不」——然後給了他一張預約卡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "「那是心動？」「那是客戶。」「那現在？」「現在是預約。妳回來嗎？」她把下週三的預約卡放進他手心：「不。你來。預約。」",
+        "question": "下週三，他會準時嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tianchong",
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "夜裡的工作室，一張應徵表與一張預約卡並排在燈下，牆上老鏡子映出兩個人隔著一張桌子。",
+      "glamour_shot": "她把預約卡放進唐承掌心，抬眼看他，嘴角一點笑意，不躲也不靠近。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [
+        "m12"
+      ],
+      "general_payoffs": [
+        "唐承說出面試那天就心動",
+        "她不回唐家；唐承每週三預約"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "第一個週三 22:00",
+        "knowledge": "唐承第一天就心動；她不回唐家",
+        "carry_forward": "每週三"
+      }
+    },
+    {
+      "number": 291,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "一年後",
+      "youtube_title": "一年後她的工作室一天十位排到巷口，大少爺的週三預約從沒缺過",
+      "duration_s": 110,
+      "logline": "一年了，工作室撐住了；一天十個已經是她一個人的極限。",
+      "hook": "預約卡一張一張翻過——第四十八個週三，八點五十九分，門鈴響。",
+      "hook_type": "image",
+      "mid_hook": "一天十個客戶排到巷口；阿土伯的鞋攤成了候診區，老蔡的豆漿是候診飲料。",
+      "extra_hooks": [
+        "唐承躺下前說：「一年，沒缺過。」她：「遲到過一次，算過錢。」"
+      ],
+      "conflict": "要做更多人，就要多一雙手；她從沒讓別人碰過她的工作。",
+      "turn": "大家以為她會擴張多賺，她拒絕第十一個：「一個人只能做十個——要更多，得有第二雙手。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她在牆上貼一張紙：「徵治療助理」。寫完，筆停在薪資欄。",
+        "question": "薪資欄，她要寫什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "zhiyu"
+      ],
+      "spectacle": "一年後的老街，工作室門口的隊伍、修鞋攤的候診椅、豆漿店的白煙連成一條街。",
+      "glamour_shot": "她站在工作室門口叫號，頭髮剪短了一點，馬尾更俐落，笑容比一年前多。",
+      "setups": [
+        "s05-t19"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "工作室一天十位",
+        "唐承一年預約沒缺過、每晚睡滿八小時"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-cheng",
+        "s05-a-tu-bo",
+        "s05-lao-cai"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "一年後・週三",
+        "knowledge": "一天十位已滿",
+        "carry_forward": "徵助理"
+      }
+    },
+    {
+      "number": 292,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "開學",
+      "youtube_title": "手術後的弟弟穿著高中制服走進她的店，說他也要念物理治療",
+      "duration_s": 105,
+      "logline": "聶橋想跟她一樣；她要他走自己的路。",
+      "hook": "薪資欄還空著，門口一聲：「姊！」聶橋穿著高中制服走進來——沒拐杖。",
+      "hook_type": "line",
+      "mid_hook": "他把成績單放在桌上：「我要念物理治療。學費我自己打工。」她：「好。另算。」",
+      "conflict": "她不想弟弟走她的苦路，也不想替他決定。",
+      "turn": "大家以為她會說「這行太辛苦」，她遞過一塊抹布：「先付學費——幫我擦器材一學期。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "唐豆的班導打來：「唐豆考了全年級第一，他點名要聶老師來頒獎。」",
+        "question": "聶老師要去頒獎嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "zhiyu",
+        "xiju"
+      ],
+      "spectacle": "工作室的鏡子裡，一個穿高中制服的少年不拄拐，穩穩站著擦器材。",
+      "glamour_shot": "她看著弟弟擦器材的背影，靠在櫃台邊，眼睛彎起來。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "聶橋高中開學、不用拐杖",
+        "聶橋要念物理治療"
+      ],
+      "characters": [
+        "nie-an",
+        "nie-qiao",
+        "tang-dou"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "一年後・九月",
+        "knowledge": "聶橋要念物理治療",
+        "carry_forward": "唐豆第一名"
+      }
+    },
+    {
+      "number": 293,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "台上是你的",
+      "youtube_title": "讀寫障礙的孩子考了全年級第一，上台前先跑下來拉她，她留在台下",
+      "duration_s": 110,
+      "logline": "唐豆要她上台；她不是家長，只是治療師。",
+      "hook": "學校禮堂，校長念：「三年級第一名——唐豆。」唐豆跑上台，又跑下來拉她：「聶老師先上來。」",
+      "hook_type": "image",
+      "mid_hook": "唐豆在台上說：「我的字會跳舞。是聶老師說的。」全禮堂的小孩學他用腳走字。",
+      "extra_hooks": [
+        "老太爺坐第一排，帶頭鼓掌：「我孫！」"
+      ],
+      "conflict": "上台是唐豆的時刻，不是她的。",
+      "turn": "大家以為她會上台，她留在台下：「你自己走上去的，台上是你的。」唐豆一個人站在台上，一個字都沒念反。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "頒獎完，唐豆把獎狀塞給她：「這張給妳——不是施捨，是學費。」她看著獎狀，第一次不知道怎麼退。",
+        "question": "唐豆的「學費」，她收不收？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "學校禮堂地板上一排排彩色膠帶字母，幾百個孩子同時用腳走字。",
+      "glamour_shot": "她站在禮堂後排鼓掌，逆光裡的笑臉，唐豆在台上朝她揮獎狀。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐豆三年級第一名",
+        "全校學走字"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-dou",
+        "tang-henian"
+      ],
+      "locations": [
+        "唐豆的學校禮堂"
+      ],
+      "state": {
+        "time": "一年後・十月",
+        "knowledge": "唐豆第一名",
+        "carry_forward": "獎狀學費"
+      }
+    },
+    {
+      "number": 294,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "照服員證",
+      "youtube_title": "二少爺考上照服員證問她缺不缺助理，她把人推出門：你去開自己的",
+      "duration_s": 105,
+      "logline": "二少想跟著她；她要他有自己的事。",
+      "hook": "她把獎狀收下：「這個收。掛在鏡子旁邊。」",
+      "hook_type": "line",
+      "mid_hook": "二少推門進來，丟下一張證書：「照服員，考過了。」然後問：「妳缺助理嗎？」",
+      "extra_hooks": [
+        "她：「缺。但不是你。你去阿寬的店旁邊開一間照服站。」"
+      ],
+      "conflict": "她缺人手，眼前就有一個現成的。",
+      "turn": "大家以為她會收二少，她把他推出去：「你走到阿寬家那天就不是我的病人了。現在也不是我的員工。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "二少出門前回頭：「對了，阿貴姊在唐家客廳擺了桌子——她要招人。」",
+        "question": "阿貴姊要招什麼人？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "zhiyu"
+      ],
+      "spectacle": "工作室的老鏡子旁掛上一張小學獎狀，鏡框邊上又多一張照服員證影本。",
+      "glamour_shot": "唐驍短髮了，穿襯衫站在門口晃證書，痞痞地笑。",
+      "setups": [
+        "s05-t20"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二少考上照服員",
+        "二少要開自己的照服站"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-xiao"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "一年後・十月",
+        "knowledge": "二少考上照服員",
+        "carry_forward": "阿貴姊要招人"
+      }
+    },
+    {
+      "number": 295,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "罰肌力",
+      "youtube_title": "沒有她的豪門自己轉了起來，管家拿著鑰匙罰每一個不做復健的人",
+      "duration_s": 115,
+      "logline": "唐家沒有她也在轉；她週三去驗收，得承認自己被取代了一半。",
+      "hook": "唐家客廳，阿貴姊一張桌子、一串鑰匙：「不做肌力的，罰！」第一個被罰的是唐承。",
+      "hook_type": "image",
+      "mid_hook": "唐薇的烘焙教室開在工坊旁，第一堂課教「鹽少一撮」；老太爺每天自己從唐家走到工坊看一次。",
+      "conflict": "她被需要的地方越來越少。",
+      "turn": "大家以為她會失落，她看著阿貴姊罰人笑了：「比我兇。」阿貴姊：「我學妳的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "烘焙教室門口，一個學員的爺爺腳一滑往後倒——唐薇、二少、阿貴姊同時衝過去。",
+        "question": "沒有她，他們接得住嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "tuanchong",
+        "zhiyu"
+      ],
+      "spectacle": "工坊旁新開的烘焙教室，一排學員在麵粉白的光裡揉麵，窗外老太爺慢慢走過。",
+      "glamour_shot": "唐薇圍著烘焙圍裙站在教室前面示範，頭髮挽起，說話時笑得很亮。",
+      "setups": [],
+      "payoffs": [
+        "m08",
+        "m05",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐薇的烘焙教室開張",
+        "阿貴姊管唐家的復健室",
+        "老太爺每天自己走到工坊"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "tang-cheng",
+        "tang-wei",
+        "tang-henian",
+        "tang-xiao"
+      ],
+      "locations": [
+        "唐家客廳",
+        "唐薇的烘焙教室"
+      ],
+      "state": {
+        "time": "一年後・十一月",
+        "knowledge": "唐家自己會了",
+        "carry_forward": "學員的爺爺滑倒"
+      }
+    },
+    {
+      "number": 296,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "三雙手",
+      "youtube_title": "沒有她在場，豪門三個人同時接住滑倒的老人，一個女孩看呆了",
+      "duration_s": 105,
+      "logline": "唐家人把她教的變成自己的；一個陌生女孩看見了。",
+      "hook": "三雙手同時托住——唐薇在頭、二少在腰、阿貴姊在膝，像她教的。",
+      "hook_type": "danger",
+      "mid_hook": "爺爺坐穩後，他的孫女衝進來，二十出頭，背著舊背包，盯著唐薇的手：「這是……誰教妳們的？」",
+      "extra_hooks": [
+        "老太爺在角落說：「我以前，也不肯。」"
+      ],
+      "conflict": "她不在場，她教的東西替她在場。",
+      "turn": "大家以為女孩是來道謝的，她問的是：「教妳們的人，在哪？」阿貴姊指了指老街另一頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "女孩看著爺爺扶著牆不肯站：「他三年不肯復健。」她攥緊背包帶，轉身往老街跑。",
+        "question": "那個女孩要去找誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "zhiyu",
+        "tuanchong"
+      ],
+      "spectacle": "烘焙教室門口，三雙手同時托住一個老人，麵粉從圍裙上揚起一圈白霧。",
+      "glamour_shot": "余小滿站在門口喘著氣，齊肩的頭髮被風吹亂，眼神倔強發亮。",
+      "setups": [
+        "s05-t21"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐家三個人沒有她也接住了陌生人"
+      ],
+      "characters": [
+        "tang-wei",
+        "tang-xiao",
+        "a-gui-jie",
+        "tang-henian",
+        "s05-yu-xiaoman"
+      ],
+      "locations": [
+        "唐薇的烘焙教室"
+      ],
+      "state": {
+        "time": "一年後・十一月",
+        "knowledge": "一個女孩知道了她",
+        "carry_forward": "女孩往老街跑"
+      }
+    },
+    {
+      "number": 297,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "窗外",
+      "youtube_title": "一個女孩連續三天站在她工作室窗外不進門，她說：門沒鎖",
+      "duration_s": 100,
+      "logline": "她注意到這個女孩，但不追——想進來的人要自己推門。",
+      "hook": "工作室玻璃窗外，一個背舊背包的女孩站著，捏著一張紙，很久沒進來。",
+      "hook_type": "image",
+      "mid_hook": "阿土伯在鞋攤後說：「那個查某囡仔來三天了，每天站一個鐘頭。」",
+      "conflict": "她要不要出去叫住她。",
+      "turn": "大家以為她沒發現，她早就在鏡子裡看見了：「門沒鎖。想進來的，會進來。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第四天，女孩的手放上門把——又縮回去。",
+        "question": "她會推開那扇門嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "zhiyu"
+      ],
+      "spectacle": "工作室的老鏡子裡映著玻璃窗，窗外站著一個捏著紙的女孩，鏡裡鏡外兩個人隔著一道門。",
+      "glamour_shot": "她背對窗戶替客人做治療，眼睛卻從鏡子裡看著窗外，嘴角很淡。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "nie-an",
+        "s05-a-tu-bo",
+        "s05-yu-xiaoman"
+      ],
+      "locations": [
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "一年後・十二月",
+        "knowledge": "女孩每天來站一小時",
+        "carry_forward": "門把"
+      }
+    },
+    {
+      "number": 298,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "記帳",
+      "youtube_title": "一週年豪門全家要謝她，老太爺遞上的不是禮物，是一本結清的帳",
+      "duration_s": 120,
+      "logline": "唐家要謝她，她不收禮；老太爺想到了她唯一會收的東西。",
+      "hook": "女孩的手縮回門把，轉身走了；她在鏡子裡看著那個背影，沒追。",
+      "hook_type": "image",
+      "mid_hook": "週三她回唐家驗收，全家在客廳等她。老太爺遞來一本帳本：「不是禮，是帳。」",
+      "extra_hooks": [
+        "秀姨端出低鹽鹹酥餅：「鹽少一撮，週年。」"
+      ],
+      "conflict": "唐家要謝她，她不收任何東西。",
+      "turn": "大家以為又是她要退的禮，打開是那本「記帳」——每一筆都結清；最後一頁老太爺寫：「欠妳的，付完了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "帳本最後夾著一張紙：明天唐家客廳「復健室助理應徵」，應徵人欄已經排了一排名字。",
+        "question": "唐家要招的助理，誰來選？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "ganren",
+        "zhiyu"
+      ],
+      "spectacle": "唐家客廳的長桌上，一本翻開的舊帳本，每一行都蓋著老太爺的紅印「清」。",
+      "glamour_shot": "她翻帳本的手停住，低頭笑，燈從老宅樓梯上灑下來落在她肩上。",
+      "setups": [],
+      "payoffs": [
+        "m08",
+        "s05-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老太爺的帳結清",
+        "唐家要招復健室助理"
+      ],
+      "characters": [
+        "nie-an",
+        "tang-henian",
+        "a-gui-jie",
+        "xiu-yi",
+        "tang-cheng",
+        "tang-wei",
+        "tang-xiao",
+        "tang-dou",
+        "xiao-nian",
+        "lao-fu"
+      ],
+      "locations": [
+        "聶安物理治療工作室",
+        "唐家客廳"
+      ],
+      "state": {
+        "time": "一年後・十二月",
+        "knowledge": "帳結清；唐家要招助理",
+        "carry_forward": "應徵日"
+      }
+    },
+    {
+      "number": 299,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "唐家選",
+      "youtube_title": "管家要她坐鎮唐家面試，她只留一張卡片：問她薪水怎麼算",
+      "duration_s": 115,
+      "logline": "唐家要學會自己選人；她得忍住不插手。",
+      "hook": "阿貴姊說：「妳來選。」她把表推回去：「唐家的人，唐家選。」",
+      "hook_type": "line",
+      "mid_hook": "第五十二個週三，一年整：唐承準時、付錢、睡著了二十分鐘。她讓他睡：「睡著的二十分鐘，另算。」",
+      "extra_hooks": [
+        "他醒來：「一年，五十二次。」她：「收據在這。」"
+      ],
+      "conflict": "她最懂的事，她要讓別人去做。",
+      "turn": "大家以為她會去唐家坐鎮，她只給阿貴姊一張卡片，上面一個問題：「問她薪水怎麼算。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "唐承臨走把應徵名單放在桌上，最後一個名字被圈起來——余小滿，備註：「爺爺不肯復健。」她看了一眼窗外。",
+        "question": "明天，她要去唐家看那個女孩嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "zhiyu"
+      ],
+      "spectacle": "一年份的預約卡疊成一疊，最上面一張寫著「第 52 次」，旁邊那支錶秒針在走。",
+      "glamour_shot": "唐承在診療床上醒來，第一個表情是笑，袖扣沒扣，那支錶在燈下走著。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐承一年預約五十二次",
+        "唐家自己選人"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "tang-cheng"
+      ],
+      "locations": [
+        "唐家客廳",
+        "聶安物理治療工作室"
+      ],
+      "state": {
+        "time": "一年後・第五十二個週三",
+        "knowledge": "唐家明天面試；女孩在名單上",
+        "carry_forward": "面試日"
+      }
+    },
+    {
+      "number": 300,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "另算？",
+      "youtube_title": "豪門招人的那天，一個女孩拿著履歷跑到她門口：聶老師，我想跟妳學",
+      "duration_s": 175,
+      "logline": "唐家第一次自己招人；那個女孩要的不是唐家的工作，是她。",
+      "hook": "唐家客廳，一排應徵的人坐在沙發上——她當年坐的同一張。阿貴姊敲桌：「復健室助理，治療師這邊填。」",
+      "hook_type": "image",
+      "mid_hook": "名單最後一個，余小滿，看了一眼表上的薪資欄，把表放下，背包一甩跑出門。",
+      "extra_hooks": [
+        "阿貴姊對著門口喊：「欸！還沒問妳薪水！」"
+      ],
+      "conflict": "唐家自己招人；那個女孩自己選了門。",
+      "turn": "大家以為她逃走了，她一路跑過老街、跑過唐記、跑過修鞋攤——停在工作室門口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "工作室門口，余小滿喘著氣遞上履歷：「聶老師，我想跟妳學。我家也有一個不肯復健的爺爺。」她看了履歷：「薪水？」女孩：「……另算？」她笑了：「進來。」",
+        "question": "下一個不肯復健的爺爺，治得好嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "tuanchong",
+        "xiju",
+        "zhiyu",
+        "ganren"
+      ],
+      "spectacle": "老街從唐家一路跑到工作室：糕餅鋪、豆漿店、修鞋攤一格一格掠過，停在手寫招牌底下。",
+      "glamour_shot": "她站在工作室門口接過履歷，抬眼一笑，背後老鏡子映出兩個綁頭髮的女孩。",
+      "setups": [],
+      "payoffs": [
+        "s05-t19",
+        "s05-t21",
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐家自己招到復健室助理",
+        "工作室收了第一個學徒"
+      ],
+      "characters": [
+        "nie-an",
+        "a-gui-jie",
+        "s05-yu-xiaoman",
+        "tang-henian",
+        "tang-cheng",
+        "s05-a-tu-bo"
+      ],
+      "locations": [
+        "唐家客廳",
+        "老街",
+        "聶安物理治療工作室門口"
+      ],
+      "state": {
+        "time": "一年後・應徵日",
+        "knowledge": "她有了第一個學徒",
+        "carry_forward": "第二部：女孩家不肯復健的爺爺"
+      }
+    }
+  ]
+}
