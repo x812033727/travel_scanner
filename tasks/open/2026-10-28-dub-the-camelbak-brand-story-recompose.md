@@ -54,3 +54,5 @@ the approved final has no burned subtitles (look at any frame).
 2026-10-28: filed from a cloud session with no SSH to the host, so nothing on the host was
 touched. The repo copy of `docs/videos/story-everyday-camelbak-c14/video.json` still says
 `burn_in: false`; it lags the host, which built the episode with burn-in.
+
+2026-10-29: the composer exception in Steps is probably the wrong fix. C14 was not composed by the host story worker: it was projected locally into a canonical `video.json` on 2026-10-24 (#1822, `category: "explainer"`, `subtitles.burn_in: false`), before the 10-25 burn-in default. The dub skip reason on the language panel (「成片照品牌故事新規則燒錄繁中字幕…」) appears nowhere in the code, so whoever pushed the language batch wrote it. `review-files --slug story-everyday-camelbak-c14` finds no review with files, so the site may hold this episode under another slug. Next: the owner checks one frame of the approved final for burned subtitles. Not burned → the skip reason is wrong; re-run the dubs, no recompose. Burned → re-assemble on the route that made it, with burn_in false. No PR opened.
