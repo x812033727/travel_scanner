@@ -1,0 +1,4552 @@
+{
+  "number": 5,
+  "title": "照她的規矩",
+  "theme": "他把帳攤開，照她的規矩重新來。",
+  "start_state": "秋。照寧報關行站穩了，有十二個固定客戶、四個夥計；溫照寧還陸氏的錢還到第六期。林會長握著沈默十年記錄的副本，準備在年度商會總會上扳倒陸氏，順手吞掉所有『跟陸氏有關』的商號——包括照寧。",
+  "end_state": "林會長手上的把柄揭開（沈默十年安排記錄的副本，他想一石二鳥）；他最後怎麼追回她揭開（不是追，是公開、交出、排號）。她先一步做選擇：沈默把正本交給她，她不拿來報復，而是交還陸既白：『你自己說，比別人替你說乾淨。』商會總會上，陸既白摘下眼鏡，唸出自己十年的每一筆布局，把恆通暗股與她家人名下所有『他給的』產權轉入公開信託，辭去商會副會長；林會長的把柄變成一份公開聲明，她再用帳證明林會長私下收購照寧債權，打臉收場。陸老太爺在兒子聲明前第一次沉默。她寫下三條約：不經她同意不替她安排；她的事她自己付；他要進她的門，跟所有客戶一樣排號。他簽了。最後一集，第十二期還款結清，他拿著號碼牌排在她櫃檯前，手裡第一次有一張真的單——一船自己的貨。她收下，按規矩收費，在新帳本扉頁寫下『陸既白，第一筆：自付』，說：『下一筆，再談。』最後一格：窗外一艘不屬於陸氏的新船進港，船東署名是她從前的學徒小滿。",
+  "guest_cast": [
+    {
+      "id": "s05-qi-mingyuan",
+      "name": "祁明遠",
+      "role": "林會長的機要兼帳房，替他抄錄、放話、用化名商號『恆裕記』收購照寧的債；沈默的鏡像",
+      "appearance": "東亞男性，四十歲，清瘦斯文，玳瑁圓框眼鏡、灰色長衫外罩黑色西裝背心，頭髮梳得一絲不苟，手裡永遠一本黑皮記事簿，說話前先推一下眼鏡"
+    },
+    {
+      "id": "s05-jia-zhanggui",
+      "name": "賈掌櫃",
+      "role": "通裕錢莊掌櫃，照寧周轉借款的債主之一，把債權轉賣給恆裕記後良心不安",
+      "appearance": "東亞男性，五十二歲，圓臉和氣，深棕綢長袍、金邊老花鏡掛在鼻尖、拇指一枚玉扳指，櫃檯後一把磨亮的大算盤"
+    },
+    {
+      "id": "s05-yugan",
+      "name": "魚乾小販",
+      "role": "照寧的老客戶，每天天沒亮就來排一號；陸既白排隊時總在他後面",
+      "appearance": "東亞男性，四十五歲，黝黑精瘦、竹斗笠、洗白的粗布短褂，肩上扁擔兩頭吊著魚乾簍，笑起來眼角全是紋"
+    },
+    {
+      "id": "s05-tao-laoban",
+      "name": "陶老闆",
+      "role": "茶行東家，照寧的固定客戶；聽信傳言撤單，總會後帶著三家茶行回來",
+      "appearance": "東亞男性，五十歲，微胖體面，墨綠綢緞馬褂、黑呢圓頂禮帽，手裡盤一只青花鼻煙壺"
+    },
+    {
+      "id": "s05-liang-gongzheng",
+      "name": "梁公證人",
+      "role": "瀾港公證處的公證人，總會上封存船錨私印、經辦公開信託",
+      "appearance": "東亞男性，五十六歲，灰白鬢角、黑呢大衣、銀框眼鏡，手提一只磨亮的牛皮公文箱，站得筆直"
+    },
+    {
+      "id": "s05-a-fu",
+      "name": "阿福",
+      "role": "顧家洋行跑報關單的夥計",
+      "appearance": "東亞男性，十九歲，圓臉憨直，白襯衫黑背心、袖子挽到手肘，腋下夾一疊報關單，跑得額頭冒汗"
+    },
+    {
+      "id": "s05-cai-chuna",
+      "name": "蔡出納",
+      "role": "陸氏輪船公司出納處的出納員，每月一號收溫照寧的還款，每次都被她盯著蓋章",
+      "appearance": "東亞男性，三十歲，瘦高拘謹，白襯衫配黑袖箍、黑框眼鏡、耳後夾一支鉛筆，桌上一方陸氏出納章"
+    },
+    {
+      "id": "s05-da-fu",
+      "name": "新船大副",
+      "role": "第 300 集那艘不屬於陸氏的新船上的大副，搭引水船先上岸辦報關",
+      "appearance": "東亞男性，三十二歲，膚色黝黑、輪廓分明，深藍呢水手外套、黑色船員帽壓低，手裡一個封著火漆的油布文件袋"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s05-t01",
+      "question": "林會長的請帖要談什麼？",
+      "setup_episode": 241,
+      "payoff_episode": 242
+    },
+    {
+      "id": "s05-t02",
+      "question": "林會長的清算裡，照寧算哪一邊？",
+      "setup_episode": 242,
+      "payoff_episode": 244
+    },
+    {
+      "id": "s05-t03",
+      "question": "樣張上『照寧：陸氏出資』那一行從哪來？",
+      "setup_episode": 243,
+      "payoff_episode": 253
+    },
+    {
+      "id": "s05-t04",
+      "question": "小滿說要有一條自己的船，是說笑嗎？",
+      "setup_episode": 244,
+      "payoff_episode": 300
+    },
+    {
+      "id": "s05-t05",
+      "question": "陶老闆為什麼撤單？",
+      "setup_episode": 245,
+      "payoff_episode": 246
+    },
+    {
+      "id": "s05-t06",
+      "question": "林會長要她簽的證詞藏了什麼？",
+      "setup_episode": 246,
+      "payoff_episode": 247
+    },
+    {
+      "id": "s05-t07",
+      "question": "撤單的陶老闆會不會回來？",
+      "setup_episode": 246,
+      "payoff_episode": 279
+    },
+    {
+      "id": "s05-t08",
+      "question": "林會長會不會在總會上唸那行假字？",
+      "setup_episode": 247,
+      "payoff_episode": 276
+    },
+    {
+      "id": "s05-t09",
+      "question": "陸既白會不會又替她去擋林會長？",
+      "setup_episode": 248,
+      "payoff_episode": 249
+    },
+    {
+      "id": "s05-t10",
+      "question": "沈默為什麼要把正本交出來？",
+      "setup_episode": 249,
+      "payoff_episode": 251
+    },
+    {
+      "id": "s05-t11",
+      "question": "正本裡寫著『未告知』的三筆是什麼？",
+      "setup_episode": 252,
+      "payoff_episode": 275
+    },
+    {
+      "id": "s05-t12",
+      "question": "她會不會把正本賣給林會長？",
+      "setup_episode": 254,
+      "payoff_episode": 255
+    },
+    {
+      "id": "s05-t13",
+      "question": "客戶走了快一半，第七期還得出來嗎？",
+      "setup_episode": 256,
+      "payoff_episode": 259
+    },
+    {
+      "id": "s05-t14",
+      "question": "他把十年的紙攤滿地板要做什麼？",
+      "setup_episode": 260,
+      "payoff_episode": 265
+    },
+    {
+      "id": "s05-t15",
+      "question": "溫母退回的節禮，他為什麼一封都沒拆？",
+      "setup_episode": 261,
+      "payoff_episode": 262
+    },
+    {
+      "id": "s05-t16",
+      "question": "錢莊突然提前收債，她拿什麼擋？",
+      "setup_episode": 262,
+      "payoff_episode": 264
+    },
+    {
+      "id": "s05-t17",
+      "question": "程硯肯不肯上總會作證？",
+      "setup_episode": 263,
+      "payoff_episode": 267
+    },
+    {
+      "id": "s05-t18",
+      "question": "三家錢莊的收據為什麼是同一個收款戶？",
+      "setup_episode": 264,
+      "payoff_episode": 277
+    },
+    {
+      "id": "s05-t19",
+      "question": "陸老太爺會不會在總會前撤掉兒子？",
+      "setup_episode": 265,
+      "payoff_episode": 266
+    },
+    {
+      "id": "s05-t20",
+      "question": "林會長的除名動議能不能把照寧趕出商會？",
+      "setup_episode": 269,
+      "payoff_episode": 278
+    },
+    {
+      "id": "s05-t21",
+      "question": "他說的『完整的話』是什麼？",
+      "setup_episode": 270,
+      "payoff_episode": 275
+    },
+    {
+      "id": "s05-t22",
+      "question": "林會長手上照寧的債權怎麼收場？",
+      "setup_episode": 278,
+      "payoff_episode": 279
+    },
+    {
+      "id": "s05-t23",
+      "question": "小滿什麼時候出師？",
+      "setup_episode": 281,
+      "payoff_episode": 294
+    },
+    {
+      "id": "s05-t24",
+      "question": "她寫了又劃掉的那一行是什麼？",
+      "setup_episode": 282,
+      "payoff_episode": 287
+    },
+    {
+      "id": "s05-t25",
+      "question": "連表格都填錯的他，自己的貨要怎麼報？",
+      "setup_episode": 283,
+      "payoff_episode": 297
+    },
+    {
+      "id": "s05-t26",
+      "question": "那張潮汐表要不要還給他？",
+      "setup_episode": 284,
+      "payoff_episode": 289
+    },
+    {
+      "id": "s05-t27",
+      "question": "他簽字前要先撤掉哪一筆？",
+      "setup_episode": 285,
+      "payoff_episode": 286
+    },
+    {
+      "id": "s05-t28",
+      "question": "個人戶頭只有三百二十塊，他要買什麼貨？",
+      "setup_episode": 291,
+      "payoff_episode": 292
+    },
+    {
+      "id": "s05-t29",
+      "question": "公共泊位排不到，他會不會開陸氏的泊位？",
+      "setup_episode": 292,
+      "payoff_episode": 293
+    },
+    {
+      "id": "s05-t30",
+      "question": "最後一期，是誰想替她免掉？",
+      "setup_episode": 293,
+      "payoff_episode": 294
+    },
+    {
+      "id": "s05-t31",
+      "question": "請吃飯要怎麼『另外排號』？",
+      "setup_episode": 298,
+      "payoff_episode": 300
+    }
+  ],
+  "episodes": [
+    {
+      "number": 241,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "第六期收據",
+      "youtube_title": "她把第六期還款推進陸氏窗口，回到自己的報關行，桌上多了一張商會會長的請帖",
+      "duration_s": 100,
+      "logline": "溫照寧的照寧報關行剛站穩、還陸氏的錢還到第六期，林會長卻送來一張請帖，裡面夾著一頁寫著她童年的紙。",
+      "hook": "陸氏出納窗口，她把第六期的一百六十塊推進去，盯著蔡出納的手：「蓋出納章。」「別的印不收。」",
+      "hook_type": "line",
+      "mid_hook": "照寧櫃檯上躺著一張描金請帖：「林會長請溫老闆喝茶」；她一翻開，裡面夾著一頁陌生的紙，第一行是她十二歲那年搬家的日子。",
+      "extra_hooks": [
+        "陸氏門廳裡，陸既白迎面走來，只側身讓路，沒說一個字；他袖口那只重新走了的舊錶，滴答聲比腳步還清楚。"
+      ],
+      "conflict": "照寧有十二個固定客戶、四個夥計，每月一號照付陸氏；任何跟陸氏沾邊的東西都可能把這份清白弄髒，可商會會長的請帖不能不接。",
+      "turn": "她以為林會長又要拿泊位試探她，夾在請帖裡的那頁紙卻說明：有人手上握著她從小到大的紀錄。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "望潮樓包廂的門在她身後關上，林會長把一疊紙推到她面前，最上面一行寫著：「溫照寧，十二歲。」",
+        "question": "林會長手上這疊紙是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "xuanyi",
+        "qingxing"
+      ],
+      "spectacle": "金色晨光的舊碼頭，照寧報關行門口排著挑擔、提箱的客人，門楣上手寫的招牌映著海面的反光。",
+      "glamour_shot": "她在自己的招牌下轉身，藍布旗袍外罩深色開衫，晨光從肩後打過來，耳邊的銅髮夾一閃。",
+      "setups": [
+        "s05-t01",
+        "m11",
+        "m12"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第六期還款準時交清，收據只蓋出納章",
+        "當場退回一張要抽兩成、附帶陸氏貨源的介紹單"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "s05-cai-chuna",
+        "lu-jibai",
+        "xiao-man",
+        "he-shifu",
+        "lin-huichang"
+      ],
+      "locations": [
+        "陸氏輪船公司出納處",
+        "照寧報關行",
+        "望潮樓包廂"
+      ],
+      "state": {
+        "time": "秋，十月一號（第六期還款日）傍晚",
+        "knowledge": "帳：還款 6／12 期・已還 610／1603 塊｜照寧客戶 12 家。林會長手上有一疊寫著她童年的紙",
+        "carry_forward": "包廂桌上那疊紙"
+      }
+    },
+    {
+      "number": 242,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "一百多次",
+      "youtube_title": "商會會長推來一疊抄本：陸氏掌舵人十年的安排條條有據，她翻兩頁就數出自己的名字一百多次",
+      "duration_s": 110,
+      "logline": "林會長要溫照寧拿陸既白十年的紀錄聯手清算陸氏，她要先弄清楚這份清算把照寧算在哪一邊。",
+      "hook": "林會長按住那疊紙：「陸既白十年，」「條條有據。」",
+      "hook_type": "line",
+      "mid_hook": "她指尖點著數，兩頁就十一個「溫照寧」；照頁數一乘，她抬頭：「一百多次。」林會長把一支鋼筆推到她手邊：「總會上，」「一次清算。」",
+      "conflict": "這疊抄本把陸既白的操控寫得清清楚楚，正是她吃過的苦；可林會長請她作證，從頭到尾沒提照寧。",
+      "turn": "她以為林會長要替她討公道，越翻越發現抄本的字跡不是沈默的——這是別人抄出來的，抄的人想要的不只是陸氏。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她問：「會長，這份清算裡，」「照寧算哪一邊？」林會長笑：「事後再說。」他身後的祁明遠在黑皮簿上寫下兩個字：照寧。",
+        "question": "林會長的「事後」要拿照寧怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "cengceng",
+        "xuanyi"
+      ],
+      "spectacle": "望潮樓包廂整面雕花窗對著港口，窗外一排輪船煙囪冒著白煙，桌上一疊抄本壓著一只青瓷茶盞。",
+      "glamour_shot": "她低頭數名字，睫毛一垂一抬，指尖的墨跡壓在抄本上，窗光把她半邊臉照成金色。",
+      "setups": [
+        "s05-t02"
+      ],
+      "payoffs": [
+        "s05-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "看清林會長手上是陸既白十年安排的抄本",
+        "當場不簽、不表態，把『照寧算哪一邊』逼到林會長面前"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lin-huichang",
+        "s05-qi-mingyuan",
+        "xiao-man"
+      ],
+      "locations": [
+        "望潮樓包廂"
+      ],
+      "state": {
+        "time": "十月一號夜",
+        "knowledge": "帳：6／12・610／1603｜客戶 12。抄本記著陸既白十年的安排，她的名字一百多次；林會長要她在總會上作證",
+        "carry_forward": "「事後再說」與祁明遠的黑皮簿"
+      }
+    },
+    {
+      "number": 243,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "新墨的一行",
+      "youtube_title": "會長塞給她三頁樣張，每一行都是真的，只有一行寫著她的報關行是陸氏出資",
+      "duration_s": 105,
+      "logline": "溫照寧把林會長給的三頁樣張帶回去對帳，要找出這份紀錄哪裡真、哪裡被動過手腳。",
+      "hook": "林會長把三頁抄本折好塞進她手裡：「帶回去，」「慢慢看。」",
+      "hook_type": "line",
+      "mid_hook": "綠罩燈下，升主帳那張蓋船錨印的條子、減半的房租，一條條都對得上；翻到第三頁，一行寫著：『照寧報關行：陸氏出資，沈默經手。』",
+      "conflict": "她開行的每一塊錢都是自己的，可這一行字只要上了總會，照寧就是陸氏的鋪子。",
+      "turn": "她以為整份抄本都是實錄，把燈罩壓低才看見：整頁墨色都舊了，只有這一行是新的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她把自己的開行帳本攤在樣張旁邊：第一頁「鋪面月租十二塊，自付」，墨已經舊了；樣張上那行「陸氏出資」，墨還亮著。",
+        "question": "這行假字是誰加的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "cengceng",
+        "xuanyi",
+        "qingxing"
+      ],
+      "spectacle": "綠罩燈下三頁泛黃的抄本攤開，旁邊是她自己的開行帳本，一新一舊兩種墨色在燈下分得清清楚楚。",
+      "glamour_shot": "綠罩燈下她撥了一下算盤抬眼，袖套上沾著墨點，齊耳短髮落下一縷。",
+      "setups": [
+        "s05-t03"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到三頁抄本樣張",
+        "找出樣張上唯一一行新墨：『照寧報關行：陸氏出資』"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lin-huichang",
+        "he-shifu",
+        "wen-zhaoan"
+      ],
+      "locations": [
+        "望潮樓門口",
+        "照寧報關行帳房"
+      ],
+      "state": {
+        "time": "十月二號深夜",
+        "knowledge": "帳：6／12・610／1603｜客戶 12。樣張上『照寧：陸氏出資』是新墨加上去的假字",
+        "carry_forward": "假字是誰加的"
+      }
+    },
+    {
+      "number": 244,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "一分和一角",
+      "youtube_title": "報童衝進門喊：會長要連妳一起吞！她翻開商會章程，才知道人家要的是她整間報關行",
+      "duration_s": 115,
+      "logline": "小滿聽見林會長的盤算，溫照寧要在總會前弄清楚，對方要用哪一條規矩把照寧吞下去。",
+      "hook": "天剛亮，小滿撞開玻璃門：「溫姊，」「他要連妳一起吞！」「消息費，」「我只收一分。」",
+      "hook_type": "line",
+      "mid_hook": "她翻開商會章程第十九條：凡查證為他商號暗設的關係商號，總會得議決除名，保結與泊位一併收回——沒有商會保結，海關一張單都不收。",
+      "extra_hooks": [
+        "她給了小滿一角：「這次值。」小滿把銅板丟進鐵罐：「我在存一條船，」「不靠陸氏的泊位。」"
+      ],
+      "conflict": "小滿在望潮樓隔壁桌賣報，聽見林會長說：陸氏倒了，沾邊的商號一起清，照寧那間鋪面便宜；她得在總會前找出對方要用的那一條規矩。",
+      "turn": "她本來只當那行假字是抹黑，對上章程才明白：假字加上第十九條，就是把照寧除名、再低價吞下的合法手續。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "商會的差役送來一張蓋大印的通知：「總會審查名單」，第七行寫著——照寧報關行。",
+        "question": "照寧會被商會除名嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "quanli",
+        "jiaren"
+      ],
+      "spectacle": "清晨照寧門口，小滿把一角錢舉到晨光下，叮一聲丟進一只裝滿銅板的鐵罐，遠處碼頭汽笛一聲接一聲。",
+      "glamour_shot": "她站在門口把一角錢放進小滿手心，藍旗袍外的開衫被海風掀起一角，笑時嘴角只動一邊。",
+      "setups": [
+        "s05-t04"
+      ],
+      "payoffs": [
+        "s05-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認林會長要一石二鳥：扳倒陸氏、順手吞照寧",
+        "找出對方要用的章程第十九條"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "xiao-man",
+        "he-shifu",
+        "wen-zhaoan",
+        "lin-huichang"
+      ],
+      "locations": [
+        "照寧報關行",
+        "望潮樓（回述）"
+      ],
+      "state": {
+        "time": "十月三號",
+        "knowledge": "帳：6／12・610／1603｜客戶 12。林會長要拿章程第十九條把照寧當陸氏關係商號除名；照寧已列總會審查名單第七",
+        "carry_forward": "審查名單第七行"
+      }
+    },
+    {
+      "number": 245,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "陶老闆撤單",
+      "youtube_title": "老客戶當面抽回報關單：外面都說妳是陸家的人！她一枚一枚把訂金數回去",
+      "duration_s": 100,
+      "logline": "傳言開始讓客戶離開，溫照寧要守住照寧的體面，也要找出把假字散出去的人。",
+      "hook": "茶行陶老闆把剛遞上的報關單又抽回去，鼻煙壺在櫃檯上一敲：「這單，」「我不報了。」",
+      "hook_type": "line",
+      "mid_hook": "陶老闆從袖裡掏出一張傳單：「照寧報關行，陸氏出資。」——一字不差，就是樣張上那行新墨。",
+      "conflict": "她不能求客戶留下，也不能讓一行假字變成全港都信的事。",
+      "turn": "她以為客戶是被審查名單嚇走的，傳單上的字說明：有人故意在總會之前，把『照寧是陸氏的』印成大家都知道的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "溫母從市場回來，手裡攥著一張傳單，聲音在抖：「隔壁不讓我縫了，」「說我們家，」「吃陸家的飯。」",
+        "question": "傳單是誰貼滿碼頭的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "cengceng",
+        "jiaren"
+      ],
+      "spectacle": "晨霧裡的碼頭公告欄貼滿一整排白色傳單，海風一吹，整面牆的紙同時翻動。",
+      "glamour_shot": "她把陶老闆的訂金一枚一枚數回去，指尖墨跡、袖套、低頭時銅髮夾的反光。",
+      "setups": [
+        "s05-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "連利息算到當天，把陶老闆的訂金原數退清，不求一句",
+        "認出傳單文字與樣張假字一字不差"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "s05-tao-laoban",
+        "wen-mu",
+        "xiao-man",
+        "wen-zhaoan"
+      ],
+      "locations": [
+        "照寧報關行",
+        "碼頭公告欄",
+        "舊碼頭邊的溫家小屋"
+      ],
+      "state": {
+        "time": "十月五號",
+        "knowledge": "帳：6／12・610／1603｜客戶 11（陶老闆撤單）。抄本裡的假字被印成傳單貼滿碼頭",
+        "carry_forward": "溫母手裡的傳單"
+      }
+    },
+    {
+      "number": 246,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "退件簿",
+      "youtube_title": "茶行公會逼她交代是不是陸家的人，她搬出一本退件簿，滿堂東家當場閉嘴",
+      "duration_s": 115,
+      "logline": "茶行公會要溫照寧當眾交代照寧跟陸氏的關係，她只帶兩本帳去。",
+      "hook": "紅木長桌前，她把一本退件簿拍在桌上：「要證據？」「這裡。」",
+      "hook_type": "image",
+      "mid_hook": "祁明遠從屏風後走出來，推了推眼鏡：「退件，」「也可以做給人看。」她翻開開行帳：「二十三塊起家，」「蘇先生擔保，」「月租十二，自付。」",
+      "extra_hooks": [
+        "顧明珠和陳船長同時起身：「我們的單，」「查過三遍，」「沒有船錨印。」"
+      ],
+      "conflict": "公會二十幾位東家等她一句話；只要她說不清，照寧剩下的客戶會一起走。",
+      "turn": "帳讓公會信了她，陶老闆卻還是不回來——他私下說，祁明遠放話：總會之後，用照寧報關的商號一律收回商會泊位。他怕的不是假字，是權力。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "散會時祁明遠遞來一只封好的信封：「會長請妳明天，」「去簽一份證詞，」「名單就撤。」",
+        "question": "證詞，她要不要去簽？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "cengceng",
+        "quanli"
+      ],
+      "spectacle": "茶行公會大廳兩排紅木太師椅，二十幾位東家同時低頭看她攤開的退件簿，每一頁都蓋著『退』字紅戳。",
+      "glamour_shot": "她把退件簿『啪』地闔上推回去，抬眼看祁明遠，綠呢桌面映出她藍旗袍的倒影。",
+      "setups": [
+        "s05-t06",
+        "s05-t07"
+      ],
+      "payoffs": [
+        "s05-t05",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "公會當眾看過退件簿與開行帳，不再提『陸氏出資』",
+        "顧家與陳船長當場表態留下",
+        "查明陶老闆撤單是怕商會收泊位"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "s05-tao-laoban",
+        "s05-qi-mingyuan",
+        "gu-mingzhu",
+        "chen-chuanzhang",
+        "he-shifu"
+      ],
+      "locations": [
+        "茶行公會大廳"
+      ],
+      "state": {
+        "time": "十月六號",
+        "knowledge": "帳：6／12・610／1603｜客戶 11。公會信了帳，陶老闆怕的是商會泊位；林會長要她明天簽證詞",
+        "carry_forward": "封好的證詞信封"
+      }
+    },
+    {
+      "number": 247,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "附件第三頁",
+      "youtube_title": "會長遞來鋼筆：簽了名單就撤。她把附件翻到第三頁，一行小字要把她的報關行交給商會代管",
+      "duration_s": 110,
+      "logline": "林會長拿撤銷審查換溫照寧一紙證詞，她要在落筆前把每一頁看完。",
+      "hook": "商會頂樓，林會長旋開鋼筆筆帽，推到她手邊：「簽這裡。」",
+      "hook_type": "danger",
+      "mid_hook": "證詞正文寫的都是真的：陸既白以資源操控她十年；可附件第三頁的小字寫著：『照寧報關行列為陸氏關係商號，總會後由商會代管。』",
+      "conflict": "簽，她就承認了陸既白的錯，也親手把照寧交出去；不簽，審查名單照舊。",
+      "turn": "林會長以為一份真話能換她的名字；她偏偏是會把附件讀到最後一頁的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她用自己的鋼筆在附件上劃一道直線：「證詞我不給，」「我不是誰的棋。」林會長摘下圓眼鏡：「總會那天，」「照寧那一頁，」「我親自唸。」",
+        "question": "林會長要在總會上唸那行假字？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "qingxing",
+        "xuanyi"
+      ],
+      "spectacle": "商會大樓頂樓辦公室，整面牆掛著歷任會長的油畫像，桌上一份證詞與一支金筆尖的鋼筆。",
+      "glamour_shot": "她用自己的鋼筆劃下一道直線，筆鋒利落，窗外晨光把她的影子投在會長的油畫上。",
+      "setups": [
+        "s05-t08"
+      ],
+      "payoffs": [
+        "s05-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "識破附件要把照寧交商會代管",
+        "拒簽，沒有落下任何名字"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lin-huichang",
+        "s05-qi-mingyuan"
+      ],
+      "locations": [
+        "瀾港商會大樓會長室"
+      ],
+      "state": {
+        "time": "十月七號上午",
+        "knowledge": "帳：6／12・610／1603｜客戶 10。證詞附件要把照寧交商會代管，她不簽；林會長要在總會唸照寧那一頁",
+        "carry_forward": "總會上的那行假字"
+      }
+    },
+    {
+      "number": 248,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "十七號沒帶單",
+      "youtube_title": "陸氏掌舵人拿著號碼牌排到櫃檯前，想替她擋下商會會長，她只回一句：不准替我安排",
+      "duration_s": 105,
+      "logline": "陸既白聽說林會長握著他的紀錄，排號來找溫照寧，想替她出手；她要他什麼都別做。",
+      "hook": "櫃檯後的何師傅喊：「十七號。」長凳上一身深灰三件式的陸既白站起來，手裡沒有單。",
+      "hook_type": "image",
+      "mid_hook": "他壓低聲音：「林會長手上，」「有我十年的紀錄。」她頭也不抬：「我知道。」她把樣張推過去：「這行字，」「是你記的嗎？」",
+      "extra_hooks": [
+        "他看了一眼就說：「我記的那一行，」「不是這樣寫。」——說到一半，停住。"
+      ],
+      "conflict": "他一句話就能讓林會長在港裡寸步難行；可那正是她最不要的東西。",
+      "turn": "他以為自己是來報信、來救場的，她卻比他早一步知道抄本，還多知道一行假字；他想說「我可以讓他閉嘴」，她先開口：「不經我同意，」「不准替我安排。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他走出照寧，沈默等在車邊，第一次沒替他開車門：「陸先生，」「抄本，」「是從我的紀錄抄出去的。」",
+        "question": "沈默要怎麼收拾這個局？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "pianzhi",
+        "qingxing"
+      ],
+      "spectacle": "照寧的長凳上坐滿挑夫和小商人，陸既白的深灰三件式夾在中間，手裡捏著一張號碼牌。",
+      "glamour_shot": "他在長凳上摘下金絲眼鏡擦了擦又戴上，腕上舊銅錶的秒針在晨光裡一格一格地走。",
+      "setups": [
+        "s05-t09"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她先一步讓他知道抄本有假字",
+        "立下『不經我同意，不准替我安排』的界線"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-jibai",
+        "shen-mo",
+        "s05-yugan",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行",
+        "照寧門外"
+      ],
+      "state": {
+        "time": "十月八號",
+        "knowledge": "帳：6／12・610／1603｜客戶 10。陸既白知道抄本，她不准他出手；沈默承認抄本是從他的紀錄抄出去的",
+        "carry_forward": "沈默的自責"
+      }
+    },
+    {
+      "number": 249,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "沈默不作證",
+      "youtube_title": "會長的人開價請陸氏秘書作證，他只說四個字；那一夜他把十年的記事本全裝進了木箱",
+      "duration_s": 110,
+      "logline": "林會長要沈默在總會上作證，陸既白要守住不出手的承諾；沈默得決定十年的紀錄該交給誰。",
+      "hook": "陸氏頂樓深夜，沈默打開上鎖的檀木櫃：十年份的黑皮記事本按年份排成一條線，第一冊的書脊寫著「溫」。",
+      "hook_type": "image",
+      "mid_hook": "陸氏門廳，祁明遠等在沈默必經的柱子邊：「總會那天，」「會長缺個證人。」沈默看都不看他：「我不作證，」「我交帳。」",
+      "extra_hooks": [
+        "碼頭調度跑上頂樓：「林會長的人，」「在逼照寧的客戶，」「要不要擋回去？」陸既白看著窗外：「不。」「她說不要。」"
+      ],
+      "conflict": "林會長缺一個證人，陸既白被一句話綁住手，照寧又少了一家客戶；而唯一知道每一筆底細的人，十年來從沒替自己做過決定。",
+      "turn": "沈默不是倒向林會長，也不是護著陸既白——他選的是被記的那個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "陸既白看見沈默把記事本一冊冊裝進木箱：「那是我的紀錄。」沈默扣上箱扣：「陸先生，」「那是她的十年。」",
+        "question": "沈默要把木箱送去哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "pianzhi",
+        "xuanyi",
+        "quanli"
+      ],
+      "spectacle": "陸氏頂樓深夜，一整面檀木櫃打開，十年的黑皮記事本排成一條線，窗外全港的燈火映在書脊的編號上。",
+      "glamour_shot": "陸既白站在落地窗前摘下眼鏡，全港燈火倒映在鏡片上，他一句話說到一半停住。",
+      "setups": [
+        "s05-t10"
+      ],
+      "payoffs": [
+        "s05-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸既白照她說的沒有出手",
+        "沈默拒絕替林會長作證",
+        "她把客戶少一家的帳也記上：『少一家，也得還。』"
+      ],
+      "characters": [
+        "shen-mo",
+        "lu-jibai",
+        "s05-qi-mingyuan",
+        "wen-zhaoning",
+        "wen-zhaoan"
+      ],
+      "locations": [
+        "陸氏輪船公司頂樓",
+        "陸氏大樓門廳",
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "十月九號深夜",
+        "knowledge": "帳：6／12・610／1603｜客戶 9。陸既白沒出手；沈默不作證，把十年記事本裝進木箱",
+        "carry_forward": "沈默的木箱"
+      }
+    },
+    {
+      "number": 250,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "被記的人",
+      "youtube_title": "她跑遍商會要撤掉審查，回到店門口，陸氏秘書抱著一只木箱等她：這是正本",
+      "duration_s": 135,
+      "logline": "溫照寧去商會遞異議、逼對方攤開程序；回到行裡，沈默把林會長那份把柄的正本交到她手上。",
+      "hook": "晨霧裡，沈默抱著一只木箱走出陸氏大樓，沒有上車，一路往舊碼頭走。",
+      "hook_type": "image",
+      "mid_hook": "商會審查處的書記收下她的異議書，翻到最後一頁才抬頭：「照寧的案子，」「總會當眾審。」",
+      "conflict": "她要讓照寧的審查攤在陽光下，而不是在誰的茶桌上被決定；可她手上只有自己的帳，沒有對方的底牌。",
+      "turn": "她一路在想抄本是從哪來的；走到自家招牌下，答案自己等在門口——抄本有正本，寫正本的人把它送來了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "照寧門口，沈默把木箱放在她腳邊：「這是正本。」「我替他記了十年，」「該交給被記的人。」她問：「林會長那份？」「從這裡抄的。」",
+        "question": "木箱裡十年的正本記了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "cengceng",
+        "xuanyi",
+        "quanli"
+      ],
+      "spectacle": "晨霧中的舊碼頭，沈默抱著木箱從霧裡走出來，背後一整排陸氏輪船的煙囪剛冒起第一縷煙。",
+      "glamour_shot": "她在照寧招牌下停步，看見門口的木箱，風吹起開衫的衣角，她抬手按住耳邊的銅髮夾。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [
+        "m11"
+      ],
+      "general_payoffs": [
+        "異議書成案，照寧的審查必須在總會當眾進行",
+        "拿到林會長那份把柄的正本"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "shen-mo",
+        "lin-huichang",
+        "s05-qi-mingyuan",
+        "he-shifu",
+        "wen-zhaoan"
+      ],
+      "locations": [
+        "舊碼頭",
+        "瀾港商會大樓審查處",
+        "照寧報關行門口"
+      ],
+      "state": {
+        "time": "十月十號傍晚",
+        "knowledge": "帳：6／12・610／1603｜客戶 9。林會長的把柄就是沈默十年安排紀錄的抄本，他要藉年底總會扳倒陸氏、順手吞照寧；正本現在在她腳邊",
+        "carry_forward": "木箱裡的十年"
+      }
+    },
+    {
+      "number": 251,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "第一冊",
+      "youtube_title": "她打開十年的正本，第一頁就是十二歲的自己；翻到最後才發現，連報童多賣的兩份報都是他買的",
+      "duration_s": 115,
+      "logline": "溫照寧要一筆一筆讀完陸既白十年的紀錄，才知道自己的人生被記成了什麼樣子。",
+      "hook": "後屋的燈下，她掀開木箱：第一冊第一頁，『觀察：溫照寧，十二歲，碼頭。教人看潮。』",
+      "hook_type": "image",
+      "mid_hook": "每一筆旁邊不是「安排」就是「觀察」；她拿起算盤邊讀邊撥：「安排，一百一十八。」「觀察，三百零六。」",
+      "extra_hooks": [
+        "沈默站在門邊：「我記的時候，」「以為是在辦事。」「抄本出去那天，」「才知道記的是一個人。」"
+      ],
+      "conflict": "她得把這一箱讀完，才知道自己還有哪一部分不是自己的。",
+      "turn": "她以為最痛的是那一百一十八筆安排；讀下去才知道，更多的是「觀察」——每一個靠近她的人都被寫了一行，連程硯、夜校同學、小滿都在裡面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小滿湊過來認字，念出一行：「觀察：報童小滿，」「替她跑腿。」「安排：每日多買兩份報。」他的臉一下子白了：「那兩份，」「是他買的？」",
+        "question": "連小滿也被安排了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "cengceng",
+        "qingxing",
+        "jiaren"
+      ],
+      "spectacle": "照寧後屋的地上，木箱打開，十本黑皮記事本一字排開，每一本的書脊寫著一年。",
+      "glamour_shot": "綠罩燈下她慢慢翻開第一冊，慢動作翻頁，燈光照著她指尖的墨，和一頁頁陌生的字。",
+      "setups": [],
+      "payoffs": [
+        "s05-t10",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈默說清楚交出正本的理由",
+        "她把十年紀錄算成兩個數：安排一百一十八、觀察三百零六"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "shen-mo",
+        "xiao-man",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行後屋"
+      ],
+      "state": {
+        "time": "十月十號夜",
+        "knowledge": "帳：6／12・610／1603｜客戶 9。正本：安排一百一十八筆、觀察三百零六筆；連小滿每天多賣的兩份報都是陸氏買的",
+        "carry_forward": "小滿發白的臉"
+      }
+    },
+    {
+      "number": 252,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "未告知",
+      "youtube_title": "報童把存錢罐倒在櫃檯要還錢，老帳房卻在正本裡翻出三筆『未告知』：他名下送了她家東西",
+      "duration_s": 110,
+      "logline": "小滿要學溫照寧把欠的還清，何師傅卻在正本裡翻出三筆連溫家都不知道的過戶。",
+      "hook": "小滿把鐵罐倒扣在櫃檯上，銅板嘩地滾了一桌：「這些，」「還他！」",
+      "hook_type": "line",
+      "mid_hook": "何師傅的手指停在一頁上：「這裡寫著『過戶』，」「後面三個字：」「未告知。」一共三筆，只寫代號：潮一、潮二、潮三。",
+      "conflict": "小滿以為自己也欠了陸家；她得分清楚什麼是買賣、什麼是人情——同時，她家可能握著三樣自己從沒答應收下的東西。",
+      "turn": "她攔住小滿：「報是真的，」「你沒欠。」可那三筆未告知說明：有些東西已經在她家名下，想還都不知道要還什麼。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "何師傅闔上冊子：「這一箱，」「夠讓陸氏倒。」弟弟一拍桌：「姊，」「拿去商會！」她的手按在箱蓋上，沒有動。",
+        "question": "她會拿正本去商會報仇嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "cengceng",
+        "qingxing"
+      ],
+      "spectacle": "鐵罐倒在櫃檯上，幾百枚銅板滾滿一整面帳桌，晨光從玻璃門照進來，每一枚都亮。",
+      "glamour_shot": "她蹲下來替小滿把銅板一枚枚撿回罐子，抬頭時嘴角只動一邊。",
+      "setups": [
+        "s05-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小滿明白自己賣的是真報、不欠誰",
+        "找出正本裡三筆『未告知』的過戶代號"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "xiao-man",
+        "he-shifu",
+        "wen-zhaoan",
+        "wen-mu"
+      ],
+      "locations": [
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "十月十一號",
+        "knowledge": "帳：6／12・610／1603｜客戶 9。正本裡有三筆『未告知』的過戶，代號潮一、潮二、潮三；何師傅說這箱夠讓陸氏倒",
+        "carry_forward": "拿去商會，還是不拿"
+      }
+    },
+    {
+      "number": 253,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "不介入",
+      "youtube_title": "全家逼她拿正本去報仇，她闔上箱子；回頭對帳，才發現那行假字在正本裡寫的是三個字：不介入",
+      "duration_s": 120,
+      "logline": "溫照寧不肯拿正本報仇，卻要用它對出抄本的假字從哪裡來。",
+      "hook": "她把箱蓋壓下：「拿它報仇，」「我就成了第二個他。」",
+      "hook_type": "line",
+      "mid_hook": "她翻到今年那一冊、照寧開張那一天，沈默的字寫著：『照寧報關行開張。她自己出資。觀察，不介入。』「不介入」底下被人畫了兩道線。",
+      "extra_hooks": [
+        "弟弟紅著眼：「他擺布我們十年！」她看著他：「所以，」「我不擺布他。」"
+      ],
+      "conflict": "家人要她用這箱紙討回十年，她不肯；可要洗掉照寧的假字，她又得用到這箱紙。",
+      "turn": "她以為正本只會證明她被操控，對帳之後才發現：在照寧這一格，他什麼都沒做——抄本那行『陸氏出資』，是抄的人自己加的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "「不介入」底下還有一行字，是陸既白的筆跡，墨很淡：「她不要。」「我學。」",
+        "question": "他真的在學嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "pianzhi",
+        "cengceng"
+      ],
+      "spectacle": "抄本樣張與正本並排攤在帳桌上，同一天的同一格，一邊寫『陸氏出資』，一邊寫『不介入』，燈下兩種墨色。",
+      "glamour_shot": "她把木箱的蓋子緩緩壓下，手掌平放在箱蓋上，抬眼看弟弟，綠罩燈在她眼裡一點光。",
+      "setups": [],
+      "payoffs": [
+        "s05-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "決定不拿正本報仇",
+        "對帳證明抄本的『陸氏出資』是假字，正本寫的是『不介入』"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "wen-zhaoan",
+        "he-shifu",
+        "wen-mu"
+      ],
+      "locations": [
+        "照寧報關行帳房"
+      ],
+      "state": {
+        "time": "十月十一號夜",
+        "knowledge": "帳：6／12・610／1603｜客戶 9。正本寫『她自己出資。觀察，不介入』，抄本那行是加上去的；底下他親筆：『她不要。我學。』",
+        "carry_forward": "正本要怎麼用"
+      }
+    },
+    {
+      "number": 254,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "五千塊",
+      "youtube_title": "會長的帳房被她請去排號，等了半天只為開價：五千塊，買那只木箱",
+      "duration_s": 100,
+      "logline": "林會長知道正本到了照寧，派祁明遠來買；溫照寧要守住正本，也要守住照寧的現金。",
+      "hook": "她剛闔上寫著「我學」的那一冊，祁明遠就推門直走到櫃檯前；何師傅頭也不抬：「先生，」「請拿號碼牌。」",
+      "hook_type": "line",
+      "mid_hook": "排了一個時辰，祁明遠才坐到她面前：「會長出五千塊，」「買那只木箱。」見她不動，他又壓低聲音：「照寧那三家錢莊，」「可能要重新考慮。」",
+      "conflict": "五千塊能把陸氏的債一次還清，還有剩；可一賣，正本裡那行『不介入』就會消失，照寧的清白也跟著消失。",
+      "turn": "她以為林會長要的是她的證詞，現在才懂：他要正本，是因為正本能拆穿他的假字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "祁明遠把一張五千塊的支票壓在櫃檯上：「支票留著，」「明天這個時辰，」「我來取箱子。」她瞥見支票抬頭——通裕錢莊，正是她的債主。",
+        "question": "五千塊的支票，收還是不收？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "xuanyi",
+        "qingxing"
+      ],
+      "spectacle": "照寧的長凳上，玳瑁眼鏡的祁明遠捏著號碼牌，坐在扛魚乾簍的小販旁邊，滿屋魚乾味。",
+      "glamour_shot": "她用兩根手指把支票推回櫃檯中線，指尖墨跡壓著支票上的金額，眼神不動。",
+      "setups": [
+        "s05-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "讓林會長的帳房照規矩排號",
+        "看出林會長要正本是為了湮滅『不介入』"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "s05-qi-mingyuan",
+        "s05-yugan",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "十月十二號",
+        "knowledge": "帳：6／12・610／1603｜客戶 8。林會長出五千買正本，拿她的三家錢莊周轉金當要脅",
+        "carry_forward": "櫃檯上的五千塊支票"
+      }
+    },
+    {
+      "number": 255,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "拒收",
+      "youtube_title": "五千塊支票被她釘在櫃檯上，旁邊兩個大字：拒收。她抱起木箱，直接走進陸氏大樓",
+      "duration_s": 105,
+      "logline": "溫照寧不賣正本，也不留正本；她要把它送回寫它的人手上。",
+      "hook": "隔天同一個時辰，祁明遠推門進來：五千塊的支票被一根圖釘釘在櫃檯上，底下壓著她蓋了照寧章的收據——「拒收。」",
+      "hook_type": "image",
+      "mid_hook": "祁明遠冷笑：「溫老闆以為，」「抱著正本就安全？」「會長要的票，」「夠了。」",
+      "extra_hooks": [
+        "他走後，她把支票號碼一字一字抄進帳本：「通裕錢莊，」「祁明遠經手。」"
+      ],
+      "conflict": "正本放在照寧，就是林會長下一個要拿的東西；交給商會，等於替他唸；燒掉，等於替陸既白滅證。",
+      "turn": "所有人都以為她會把正本當護身符；她把它抱起來，往陸氏大樓走。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸氏門廳的電梯門打開，陸老太爺拄著手杖走出來，目光落在她膝上的木箱：「沈默的箱子，」「怎麼在妳手上？」",
+        "question": "陸老太爺會讓她上樓嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "quanli",
+        "xuanyi"
+      ],
+      "spectacle": "陸氏大樓門廳的大理石地面映著她一個人抱著木箱的倒影，頭頂是三層樓高的黃銅吊燈。",
+      "glamour_shot": "她抱著木箱坐在門廳長椅上，背挺得筆直，晨光從旋轉門斜切進來，照亮藍旗袍的一角。",
+      "setups": [],
+      "payoffs": [
+        "s05-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "退回五千塊，留下支票號碼當證據",
+        "決定把正本送回陸氏"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "s05-qi-mingyuan",
+        "lu-lao",
+        "xiao-man"
+      ],
+      "locations": [
+        "照寧報關行",
+        "陸氏大樓門廳"
+      ],
+      "state": {
+        "time": "十月十三號上午",
+        "knowledge": "帳：6／12・610／1603｜客戶 8。支票拒收、號碼抄存；她抱著正本到陸氏",
+        "carry_forward": "陸老太爺看見了木箱"
+      }
+    },
+    {
+      "number": 256,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "上樓",
+      "youtube_title": "陸家老太爺伸手要她交出木箱，她只說一句：我只交給寫的人",
+      "duration_s": 110,
+      "logline": "陸老太爺要替兒子收下正本，溫照寧要親手交給寫它的人。",
+      "hook": "陸老太爺伸出手：「箱子給我，」「我替他收。」她抱緊木箱：「我只交給，」「寫的人。」",
+      "hook_type": "line",
+      "mid_hook": "電梯裡沈默低聲說：通裕錢莊昨天來問照寧的信用。她心裡一算——第七期只剩十八天，客戶已經走了快一半。",
+      "conflict": "在陸家，老太爺一句話就能讓她在門廳坐到天黑；她要上樓，卻不能求任何人。",
+      "turn": "老太爺以為陸家的規矩能壓住她，她說：「這不是陸家的帳，」「是我的十年。」沈默按下了上樓的電梯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "頂樓的門開了，她把木箱放上他的辦公桌：「你自己說，」「比別人替你說，」「乾淨。」",
+        "question": "他敢不敢自己說？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "pianzhi",
+        "quanli"
+      ],
+      "spectacle": "陸氏頂樓整面落地窗後是全港的船與吊臂，木箱放上寬大的胡桃木辦公桌，桌面映出窗外的海。",
+      "glamour_shot": "他站在落地窗前回頭，深灰三件式、金絲眼鏡反著窗光，看見木箱的那一秒，慢慢摘下眼鏡。",
+      "setups": [
+        "s05-t13"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沒有低頭，越過陸老太爺把正本親手送上頂樓"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-lao",
+        "shen-mo",
+        "lu-jibai"
+      ],
+      "locations": [
+        "陸氏大樓門廳",
+        "陸氏輪船公司頂樓"
+      ],
+      "state": {
+        "time": "十月十三號午後",
+        "knowledge": "帳：6／12・610／1603｜客戶 7。正本放回他的桌上；林會長在擠她的錢莊，第七期還有十八天",
+        "carry_forward": "他敢不敢自己說"
+      }
+    },
+    {
+      "number": 257,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "妳可以毀了我",
+      "youtube_title": "陸氏掌舵人摘下眼鏡：妳可以毀了我。她把夾滿紅藍紙條的十年紀錄推回去：你自己算清楚",
+      "duration_s": 115,
+      "logline": "陸既白以為溫照寧是來審判他的，她卻替他把十年的帳對好，要他自己唸。",
+      "hook": "他握著摘下的眼鏡：「妳可以，」「毀了我。」",
+      "hook_type": "line",
+      "mid_hook": "他翻開記事本，每一頁的頁緣都夾著她的小紙條：紅的寫「安排」，藍的寫「觀察」，三張黑的寫「未告知」。她說：「一百一十八筆，」「你自己唸。」",
+      "extra_hooks": [
+        "程硯那一筆夾著紅條，旁邊她只寫了三個字：「他選的。」"
+      ],
+      "conflict": "他有一整港的權力可以保住自己，也可以什麼都不做等林會長來；她要的是第三條路。",
+      "turn": "他等她發怒、等她報復，她說：「我不要毀你，」「我要你自己，」「算清楚。」——她給他的不是判決，是一張要他親手結的帳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她走到門口，沈默送進一份剛到的商會議程：「總會第一案：」「陸氏操控案。」「附：關係商號除名。」",
+        "question": "陸氏和照寧會在總會被一起清算嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "pianzhi",
+        "cengceng",
+        "qingxing"
+      ],
+      "spectacle": "打開的木箱裡，十本記事本的頁緣夾滿紅、藍、黑三色小紙條，像一排排潮汐刻度。",
+      "glamour_shot": "他握著摘下的金絲眼鏡低頭看她；她坐著不動，一張帳桌隔開兩人，桌上一張蓋船錨印的舊條子。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把十年紀錄對成一份帳交還：安排一百一十八、觀察三百零六、未告知三",
+        "說清楚她不報復、要他自己說"
+      ],
+      "characters": [
+        "lu-jibai",
+        "wen-zhaoning",
+        "shen-mo"
+      ],
+      "locations": [
+        "陸氏輪船公司頂樓"
+      ],
+      "state": {
+        "time": "十月十三號傍晚",
+        "knowledge": "帳：6／12・610／1603｜客戶 7。正本對好帳交回他手上；總會議程第一案就是陸氏，附帶除名",
+        "carry_forward": "總會議程"
+      }
+    },
+    {
+      "number": 258,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "七家鋪面",
+      "youtube_title": "商會除名名單一貼出來，整條舊碼頭街七家小鋪全在上面，她才看懂會長要的是一整條街",
+      "duration_s": 110,
+      "logline": "除名名單貼出來，溫照寧發現林會長要的不只是照寧，而是整條舊碼頭街。",
+      "hook": "小滿撕下商會公告欄上的名單一路跑：「溫姊，」「妳排第七！」",
+      "hook_type": "line",
+      "mid_hook": "米行老闆娘紅著眼說：祁明遠前天來過，說總會之前肯賣，給三成價；總會之後，一分都沒有。",
+      "conflict": "名單上另外六家都是小本生意，沒人會對帳、沒人敢說不；她自己的報關單也開始被卡。",
+      "turn": "她以為這是她跟陸既白的事，七家鋪面排在一起才看清：這是一場趁亂收購整條街的買賣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "海關窗口把她的報關單推了回來：「商會暫停妳的保結。」「總會之前，」「照寧的單，不收。」",
+        "question": "沒有保結，照寧還開得下去嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "quanli",
+        "cengceng"
+      ],
+      "spectacle": "舊碼頭街上七間小鋪面門口同時貼著商會的審查告示，風把告示的一角一齊掀起。",
+      "glamour_shot": "她站在米行門口替老闆娘把帳本一頁頁攤開，側臉被街口的晨霧與金光勾出一條線。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "教另外六家寫下自己的開行帳",
+        "米行老闆娘沒有賤賣鋪面"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "xiao-man",
+        "s05-qi-mingyuan",
+        "he-shifu"
+      ],
+      "locations": [
+        "舊碼頭街",
+        "瀾港海關大廳"
+      ],
+      "state": {
+        "time": "十月二十號",
+        "knowledge": "帳：6／12・610／1603｜客戶 7。除名名單有七家，全在舊碼頭街；照寧的保結被暫停，報關單送不出去",
+        "carry_forward": "第七期只剩十一天"
+      }
+    },
+    {
+      "number": 259,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "第四十二條",
+      "youtube_title": "商會停了她的保結想斷她生路，她翻開海關章程第四十二條，三家連保當場生效",
+      "duration_s": 115,
+      "logline": "保結被停、第七期將到，溫照寧要找到一條不靠商會、也不靠陸氏的路。",
+      "hook": "她把海關章程攤在窗口，指尖按著一行：「第四十二條。」",
+      "hook_type": "line",
+      "mid_hook": "無商會保結者，得以殷實商號三家連保代之——顧明珠第一個落款：「這次不是陸氏的泊位，」「是我自己的名字。」陳船長按了印，米行老闆娘按了手印。",
+      "conflict": "沒有保結就沒有收入，沒有收入就付不出第七期；她不能借陸氏一分，也不能讓林會長一紙通知就把照寧關掉。",
+      "turn": "林會長以為停了商會保結就停了照寧；章程裡本來就有一條不經商會的路，只是從沒人讀到那一頁。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "十一月一號，她在陸氏出納窗口付清第七期；走出門廳時沈默叫住她：「他三天，」「沒出頂樓。」",
+        "question": "他把自己關在頂樓做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "zhichang",
+        "cengceng"
+      ],
+      "spectacle": "海關大廳的長櫃檯前，三張連保書並排蓋上三種不同的印，沒有一枚是船錨。",
+      "glamour_shot": "她在海關窗口抬眼看關員，指尖按著章程第四十二條，銅髮夾在大廳吊燈下一閃。",
+      "setups": [],
+      "payoffs": [
+        "s05-t13",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "以三家連保代替商會保結，報關單恢復受理",
+        "第七期一百七十塊準時還清"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "gu-mingzhu",
+        "chen-chuanzhang",
+        "s05-cai-chuna",
+        "shen-mo"
+      ],
+      "locations": [
+        "瀾港海關大廳",
+        "陸氏輪船公司出納處"
+      ],
+      "state": {
+        "time": "十一月一號（第七期還款日）",
+        "knowledge": "帳：還款 7／12 期・已還 780／1603 塊｜客戶 7。三家連保代替商會保結；第七期準時還清；他三天沒出頂樓",
+        "carry_forward": "頂樓那盞燈"
+      }
+    },
+    {
+      "number": 260,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "攤滿地板",
+      "youtube_title": "陸氏掌舵人三天沒走出頂樓，把十年的紙攤滿整片地板，第一張是她十二歲寫的潮汐表",
+      "duration_s": 140,
+      "logline": "陸既白一個人照溫照寧夾的紙條，把十年的紀錄攤成一條線，要決定拿它做什麼。",
+      "hook": "頂樓的門推開一條縫：一地的紙，從門口鋪到落地窗，他站在中間，袖口捲到手肘。",
+      "hook_type": "image",
+      "mid_hook": "唐媽送來的飯菜已經涼了第三回；他問：「她十二歲那年，」「我回家怎麼說的？」唐媽說：「你說，」「有人教你等。」",
+      "extra_hooks": [
+        "他照她的紅條一筆筆數，數到程硯那一頁，停了很久，在空白處寫：「是我拿錢，」「替他出了題目。」"
+      ],
+      "conflict": "他可以等林會長在總會上替他念，也可以把這些紙燒了；她留給他的，是最難的那一條。",
+      "turn": "他一直以為這十年是在等她回來；攤成一條線才看見，每一筆都是他替她決定的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他把那張泛黃的手抄潮汐表擺在第一格，十年的紙從腳邊一路鋪到窗下；他拿起一張白紙，寫下第一行：「第一筆：」",
+        "question": "他要在總會上自己唸出來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "pianzhi",
+        "cengceng",
+        "qingxing"
+      ],
+      "spectacle": "頂樓落地窗前，十年的紙一張張鋪滿整片木地板，從一張泛黃的手抄潮汐表開始，一路鋪到窗下，晨光把整片紙照成金色。",
+      "glamour_shot": "他站在滿地的紙中間，深灰背心、捲起的白襯衫袖口，金絲眼鏡擱在窗台，腕上舊銅錶滴答地走。",
+      "setups": [
+        "s05-t14"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他照她的紙條把十年攤成一條線",
+        "她在照寧的帳本記下：『第七期：自付，一百七十。』"
+      ],
+      "characters": [
+        "lu-jibai",
+        "shen-mo",
+        "tang-ma",
+        "wen-zhaoning"
+      ],
+      "locations": [
+        "陸氏輪船公司頂樓",
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "十一月三號清晨",
+        "knowledge": "帳：7／12・780／1603｜客戶 7。他把十年攤成一條線，從潮汐表開始，寫下『第一筆』",
+        "carry_forward": "他要拿這些紙做什麼"
+      }
+    },
+    {
+      "number": 261,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "一盒信封",
+      "youtube_title": "他寫下第一筆之後，沒去商會，抱著一盒被退回的節禮信封，坐進了她家漏雨的小屋",
+      "duration_s": 105,
+      "logline": "陸既白要在總會前先把帳從溫家算起，帶著一年來被退回的節禮去見溫母。",
+      "hook": "寫完「第一筆」，他第一個去的不是商會——雨裡，漏水小屋的門開了，門外的陸既白捧著一只鐵皮盒：「伯母，」「這些我不該送。」",
+      "hook_type": "line",
+      "mid_hook": "溫母掀開盒蓋：一年來她退回的節禮一封不少，信封一封都沒拆，每一封背面都有他的小字——「退回。」「她母親不收。」",
+      "extra_hooks": [
+        "照寧櫃檯，小滿氣喘吁吁：「陸先生去妳家了！」她手上的算盤沒停：「我媽會處理。」"
+      ],
+      "conflict": "他可以送一整條街給溫家，卻不知道怎麼把一句道歉送進一扇小門。",
+      "turn": "他以為自己是來還東西的；坐在接雨的臉盆旁邊才看見，她們搬出閣樓、住進漏雨的小屋，就是為了不收他的東西。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "屋頂的水滴進他腳邊的臉盆，叮的一聲；溫母放下針線：「這屋子漏，」「可是是我們自己租的。」",
+        "question": "溫母會收下他的道歉嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "jiaren",
+        "pianzhi"
+      ],
+      "spectacle": "舊碼頭邊漏雨的小屋，屋簷下一排接雨的臉盆，一身深灰三件式的他坐在矮竹凳上，膝上一只鐵皮盒。",
+      "glamour_shot": "他在漏雨的屋簷下摘下金絲眼鏡，擦掉鏡片上的雨珠，鬢角濕了一縷。",
+      "setups": [
+        "s05-t15"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次不帶任何東西、只帶被退回的東西上門"
+      ],
+      "characters": [
+        "lu-jibai",
+        "wen-mu",
+        "wen-zhaoning",
+        "xiao-man"
+      ],
+      "locations": [
+        "舊碼頭邊的溫家小屋",
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "十一月五號，雨",
+        "knowledge": "帳：7／12・780／1603｜客戶 7。他把一年來被退回的節禮整盒帶到溫家，一封都沒拆",
+        "carry_forward": "溫母的回答"
+      }
+    },
+    {
+      "number": 262,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "有人收",
+      "youtube_title": "女主的母親把一盒信封推回去：你要的不是送出去，是有人收",
+      "duration_s": 115,
+      "logline": "溫母收不收陸既白的道歉，決定他能不能從溫家這一筆算起；雨夜裡，照寧又被錢莊逼上門。",
+      "hook": "溫母把鐵皮盒推回縫紉機的另一頭：「你別再送了。」",
+      "hook_type": "line",
+      "mid_hook": "她從抽屜拿出一本舊帳簿：每一封節禮哪天到、哪天退，她也記了一年；兩本帳的日子，一天都不差。",
+      "conflict": "他不知道怎麼被拒絕，她不知道怎麼收下一個大人物的低頭。",
+      "turn": "他以為一封都沒拆是種體面；溫母一句話拆穿：「孩子，」「你要的不是送出去，」「是有人收。」她收下道歉，信封要他自己帶走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "門口，溫照寧撐著傘回來，沒有把傘遞給他；小滿冒雨跑來，塞給她一封通裕錢莊的信：「照寧借款，」「十日內全數清償。」",
+        "question": "錢莊為什麼突然要她提前還？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "huozang",
+        "pianzhi"
+      ],
+      "spectacle": "雨夜漏水小屋的門口，屋裡縫紉機的燈與屋外的雨幕，兩把傘的影子落在泥地上，沒有交疊。",
+      "glamour_shot": "她撐著自己的油紙傘站在雨裡，傘沿的水珠串成線，她沒有把傘遞過去。",
+      "setups": [
+        "s05-t16"
+      ],
+      "payoffs": [
+        "s05-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "溫母收下道歉、退回信封",
+        "溫家自己的節禮帳與他的紀錄一天不差"
+      ],
+      "characters": [
+        "wen-mu",
+        "lu-jibai",
+        "wen-zhaoning",
+        "xiao-man"
+      ],
+      "locations": [
+        "舊碼頭邊的溫家小屋"
+      ],
+      "state": {
+        "time": "十一月五號夜，雨",
+        "knowledge": "帳：7／12・780／1603｜客戶 7。溫母收下道歉、退回信封；通裕錢莊要照寧十日內提前清償周轉借款",
+        "carry_forward": "錢莊的催款信"
+      }
+    },
+    {
+      "number": 263,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "再等等",
+      "youtube_title": "他去求前未婚夫上總會作證，對方只問一句：她知道你來嗎？你又在替她安排",
+      "duration_s": 110,
+      "logline": "陸既白要請程硯在總會上說出當年拿了什麼，卻被程硯一句話問住。",
+      "hook": "照寧帳房裡，她把催款信和通裕的借據並排攤在燈下，一條一條往下讀，讀到第七條，手指停住。",
+      "hook_type": "image",
+      "mid_hook": "程硯從講桌最底層摸出兩張紙：那張三百塊的收據，和沈默給他的措辭草稿。「我一直，」「不敢扔。」",
+      "extra_hooks": [
+        "黃昏的小學教室，程硯手裡的粉筆掉在地上：「陸、陸先生？」"
+      ],
+      "conflict": "程硯怕再被全港看一次笑話；陸既白習慣用錢讓人點頭，這次他什麼都不能給。",
+      "turn": "他忍住了，只說：「我不給你任何東西，」「只請你說真話。」程硯沒答應，反問他一句。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "程硯推了推圓框眼鏡：「她知道你來找我嗎？」「不知道。」程硯苦笑：「那你，」「又在替她安排。」",
+        "question": "請程硯作證，算不算又在安排？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "pianzhi",
+        "dalian"
+      ],
+      "spectacle": "黃昏的弄堂小學教室，黑板上還留著一個『誠』字，窗外晾衣竹竿一排排擋住夕陽。",
+      "glamour_shot": "他站在教室門口沒有進去，夕陽從背後打過來，金絲眼鏡反著光，手裡沒有任何禮物。",
+      "setups": [
+        "s05-t17"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一次求人卻不給任何好處",
+        "程硯拿出當年的收據與措辭草稿"
+      ],
+      "characters": [
+        "lu-jibai",
+        "cheng-yan",
+        "wen-zhaoning"
+      ],
+      "locations": [
+        "弄堂小學教室",
+        "照寧報關行帳房"
+      ],
+      "state": {
+        "time": "十一月六號黃昏",
+        "knowledge": "帳：7／12・780／1603｜客戶 7。程硯留著安家費收據與措辭草稿，還沒答應作證；程硯問他是不是又在替她安排",
+        "carry_forward": "算不算安排"
+      }
+    },
+    {
+      "number": 264,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "同一個收款戶",
+      "youtube_title": "三家不同的錢莊同時逼債，她把三張收據並排一看：底下蓋的是同一個收款戳",
+      "duration_s": 120,
+      "logline": "陸既白排號來報備他找過程硯；溫照寧要在錢莊的催款期限前，找出逼債的到底是誰。",
+      "hook": "何師傅喊號，陸既白站到櫃檯前：「沒有單。」「我來報備，」「我去找了程硯。」",
+      "hook_type": "line",
+      "mid_hook": "她把通裕、聚豐、德和三家錢莊這個月的利息收據並排釘上帳桌：三枚不同的錢莊章底下，蓋著同一個小小的收款戳——「恆裕記」。",
+      "extra_hooks": [
+        "她聽完只說：「那是你的證人，」「不是我的。」他鬆了一口氣，又被她下一句堵住。"
+      ],
+      "conflict": "十日期限一到，照寧拿不出全數就得關門；他就站在櫃檯前，一句話就能把債全買回來。",
+      "turn": "他說：「我可以把債買回來。」她說：「不經我同意，」「別替我安排。」然後她翻開借據第七條：提前清償，須三十日前書面通知——十日的催款，不算數。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她在商號登記冊裡翻到「恆裕記」：登記人那一欄，寫著三個字——祁明遠。",
+        "question": "林會長為什麼要買照寧的債？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "huozang",
+        "xuanyi"
+      ],
+      "spectacle": "三張不同錢莊的收據並排釘在帳桌上，三枚不同的錢莊章底下，蓋著同一個小小的『恆裕記』收款戳。",
+      "glamour_shot": "她把三張收據並排推到他面前，坐著抬眼；他站著，一張帳桌隔開兩人，綠罩燈落在三枚紅戳上。",
+      "setups": [
+        "s05-t18"
+      ],
+      "payoffs": [
+        "s05-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "用借據第七條讓十日催款失效",
+        "查出三家錢莊的債都轉到恆裕記，登記人祁明遠",
+        "他說了要做什麼，沒有做"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-jibai",
+        "s05-jia-zhanggui",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行",
+        "瀾港商會登記處"
+      ],
+      "state": {
+        "time": "十一月八號",
+        "knowledge": "帳：7／12・780／1603｜客戶 6。三家錢莊的債轉進同一個收款戶『恆裕記』，登記人祁明遠；借據第七條讓催款至少拖到總會之後",
+        "carry_forward": "林會長買她的債要做什麼"
+      }
+    },
+    {
+      "number": 265,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "陸家的臉",
+      "youtube_title": "老太爺沉聲問兒子陸家的臉往哪擺，兒子第一次頂回去：那是我用她的人生換的",
+      "duration_s": 115,
+      "logline": "陸既白告訴父親要在總會上自己說；陸老太爺要在他開口前，先把他從陸氏撤下來。",
+      "hook": "商會登記處，她翻出恆裕記的登記日——正是林會長拿到抄本的隔天。",
+      "hook_type": "image",
+      "mid_hook": "兒子答：「爸，陸家的臉，」「是我用她的人生換的，」「我得還。」老太爺的手杖頓在地上：「你上去之前，」「我可以先撤了你。」",
+      "extra_hooks": [
+        "陸府書房，陸老太爺把商會議程按在紫檀案上：「你上去說，」「陸家的臉，」「往哪擺？」"
+      ],
+      "conflict": "他要帶著陸氏掌舵人的身分上台，才能把陸氏名下的東西交出去；父親握著多數股份。",
+      "turn": "他以為擋路的是林會長，真正能讓他開不了口的，是教他『把路鋪到想要的東西腳下』的父親。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陸老太爺按鈴叫來沈默：「明天，」「開董事會。」「議題：」「撤換掌舵人。」",
+        "question": "陸老太爺要在總會前撤掉兒子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "pianzhi",
+        "jiaren",
+        "quanli"
+      ],
+      "spectacle": "陸府書房一整面牆的船模，從帆船到蒸汽輪，父子隔著一張紫檀大案對站，案上一份商會議程。",
+      "glamour_shot": "他在父親面前慢慢摘下眼鏡，折好放進胸袋，抬眼時第一次沒有低頭。",
+      "setups": [
+        "s05-t19"
+      ],
+      "payoffs": [
+        "s05-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次當面頂撞父親，說出要在總會上自己唸",
+        "她查到恆裕記登記在林會長拿到抄本的隔天"
+      ],
+      "characters": [
+        "lu-lao",
+        "lu-jibai",
+        "shen-mo",
+        "wen-zhaoning"
+      ],
+      "locations": [
+        "陸府書房",
+        "瀾港商會登記處"
+      ],
+      "state": {
+        "time": "十一月十號夜",
+        "knowledge": "帳：7／12・780／1603｜客戶 6。他要在總會上自己唸；陸老太爺明天開董事會撤他；恆裕記登記在林會長拿到抄本隔天",
+        "carry_forward": "明天的董事會"
+      }
+    },
+    {
+      "number": 266,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "董事會",
+      "youtube_title": "董事會七票已有四票要撤掉掌舵人，一個端茶的老傭人進門說了一句話，老太爺收回了動議",
+      "duration_s": 110,
+      "logline": "陸氏董事會要在總會前撤換陸既白；同一天，溫照寧要逼恆裕記亮出它在等什麼。",
+      "hook": "長桌盡頭攤著一份動議書：「撤換掌舵人」；七把高背椅上，已經有四隻手準備舉起來。",
+      "hook_type": "image",
+      "mid_hook": "唐媽端茶進來，沒退出去，低聲對老太爺說：「老爺，」「夫人當年，」「也是被路鋪走的。」",
+      "extra_hooks": [
+        "照寧櫃檯，她寫回信給恆裕記，只引一條：借據第七條；恆裕記的回條當天就到——「債權，總會次日到期。」"
+      ],
+      "conflict": "兒子一句不辯；父親只要點頭，他就以平常人的身分走上總會，什麼都交不出去。",
+      "turn": "老太爺以為擋住兒子是保住陸家；唐媽一句話讓他想起當年碼頭上那個提皮箱的背影——他在動議書上寫了四個字：改日再議。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "散會後，老太爺一個人拉開書桌最底層的抽屜：一張碼頭上的舊照片，背面一行褪色的字——「四點十分」。",
+        "question": "陸老太爺到了總會會說什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "pianzhi",
+        "jiaren",
+        "quanli"
+      ],
+      "spectacle": "陸氏董事會議室長桌兩側七把高背椅，窗外整排吊臂停在半空，桌上一份『撤換掌舵人』的動議書。",
+      "glamour_shot": "他坐在長桌末端不辯一句，指節輕敲舊銅錶的錶面，秒針的聲音在安靜的會議室裡很清楚。",
+      "setups": [],
+      "payoffs": [
+        "s05-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "撤換動議改日再議，他保住上總會的身分",
+        "逼出恆裕記的底：債權總會次日到期"
+      ],
+      "characters": [
+        "lu-lao",
+        "lu-jibai",
+        "tang-ma",
+        "shen-mo",
+        "wen-zhaoning"
+      ],
+      "locations": [
+        "陸氏董事會議室",
+        "陸府書房",
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "十一月十一號",
+        "knowledge": "帳：7／12・780／1603｜客戶 6。唐媽一句話讓陸老太爺收回撤換動議；恆裕記回條說債權總會次日到期",
+        "carry_forward": "陸老太爺抽屜裡的舊照片"
+      }
+    },
+    {
+      "number": 267,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "你自己算",
+      "youtube_title": "前未婚夫拿著號碼牌排到她面前問該不該作證，她只回一句：那是你的帳，你自己算",
+      "duration_s": 105,
+      "logline": "程硯拿號碼牌來問溫照寧該不該上總會作證，她不替任何人做決定。",
+      "hook": "陸府書房的燈亮了一夜；天亮時，陸老太爺把那張舊照片放回抽屜：「總會那天，」「我去。」",
+      "hook_type": "line",
+      "mid_hook": "程硯說，林會長的人前天找他，出二百塊，要他在總會上說她早就知道安家費的事。她問：「你收了嗎？」程硯抬頭：「這次，」「我沒考慮三天。」",
+      "conflict": "他想聽她一句『去吧』，好讓作證變成替她做的事；她偏不給。",
+      "turn": "她說：「那是你的帳，」「你自己算。」——程硯終於明白，上台不是為了她，是為了把自己那一筆說清楚。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "程硯在門口回頭：「總會那天，」「我會說我選了錢。」話音剛落，何師傅衝進來：「陶老闆的茶葉，」「被海關扣了！」",
+        "question": "她要不要接撤單客戶的爛攤子？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "dalian",
+        "qingxing"
+      ],
+      "spectacle": "照寧的長凳上，圓框眼鏡、洗白長衫的程硯握著號碼牌，跟挑擔的腳夫坐成一排。",
+      "glamour_shot": "她在櫃檯後聽程硯說話，手上的算盤沒停，抬眼的那一下乾淨俐落。",
+      "setups": [],
+      "payoffs": [
+        "s05-t17",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "程硯當場拒了林會長二百塊的假證詞",
+        "程硯答應總會上說出自己選了錢"
+      ],
+      "characters": [
+        "cheng-yan",
+        "wen-zhaoning",
+        "he-shifu",
+        "s05-tao-laoban",
+        "lu-lao"
+      ],
+      "locations": [
+        "陸府書房",
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "十一月十五號",
+        "knowledge": "帳：7／12・780／1603｜客戶 6。程硯拒了假證詞、答應作證；陶老闆換的報關行報錯稅則，茶葉被扣",
+        "carry_forward": "陶老闆的茶葉"
+      },
+      "extra_hooks": [
+        "長凳上，圓框眼鏡、洗白長衫的程硯攥著號碼牌站起來：「十二號，」「程硯。」"
+      ]
+    },
+    {
+      "number": 268,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "第八期",
+      "youtube_title": "撤單的老客戶冒雨回來求她救貨，她十分鐘改好稅則、照規矩收費，剛好湊齊第八期",
+      "duration_s": 115,
+      "logline": "陶老闆的茶葉被扣，第八期又到；溫照寧要照規矩接單，也要準時把帳還上。",
+      "hook": "雨裡，陶老闆摘下禮帽站在門口：「溫老闆，」「我的茶……」她指了指木匣：「請拿號碼牌。」",
+      "hook_type": "line",
+      "mid_hook": "十二月一號清早，四個夥計把工錢袋推回櫃檯：「這個月先欠著。」她一個一個推回去：「工錢，」「是你們的帳。」",
+      "extra_hooks": [
+        "海關倉庫裡，她翻開稅則簿，十分鐘就找出錯處：「茶葉報成了藥材。」一排紅色扣貨單一張張撕下來。"
+      ],
+      "conflict": "照寧只剩六家客戶，第八期和夥計工錢只夠付一樣；而回來求救的，正是第一個撤單的人。",
+      "turn": "她沒有給陶老闆一句冷話，也沒給他半點折扣；那筆照規矩收的手續費，加上顧家臨時加的一船單，剛好補上缺口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "陸氏出納窗口，蔡出納蓋好第八期的收據，壓低聲音：「林會長的人，」「來查過妳的還款紀錄。」——她準時還的每一筆，正被人拿去證明她是陸氏的債戶。",
+        "question": "還款紀錄也能被拿來證明她是陸氏的人？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "zhichang",
+        "qingxing"
+      ],
+      "spectacle": "海關倉庫裡一整排被扣的茶葉箱貼著紅色扣貨單，她拿著稅則簿走過箱子之間，一張張撕下扣貨單。",
+      "glamour_shot": "她在海關倉庫高窗下翻稅則簿，晨光從窗格斜照，一頁頁紙在光裡翻成金色。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陶老闆的茶葉放行，照規矩收費",
+        "第八期一百七十五塊準時還清，夥計工錢照發"
+      ],
+      "characters": [
+        "s05-tao-laoban",
+        "wen-zhaoning",
+        "wen-zhaoan",
+        "he-shifu",
+        "s05-cai-chuna",
+        "gu-mingzhu"
+      ],
+      "locations": [
+        "照寧報關行",
+        "瀾港海關倉庫",
+        "陸氏輪船公司出納處"
+      ],
+      "state": {
+        "time": "十二月一號（第八期還款日）",
+        "knowledge": "帳：還款 8／12 期・已還 955／1603 塊｜客戶 5。陶老闆的茶葉放行；第八期還清；林會長的人查過她的還款紀錄",
+        "carry_forward": "還款紀錄會被怎麼用"
+      }
+    },
+    {
+      "number": 269,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "三十一票",
+      "youtube_title": "會長手上三十一票、除名只要二十七票，她算完票數，只在紙上寫了一行字",
+      "duration_s": 110,
+      "logline": "林會長的票已經夠了；溫照寧要找的不是更多票，而是能讓票自己倒過來的帳。",
+      "hook": "她盯著還款收據忽然笑了：「照他的說法，」「欠誰錢，」「就是誰的人。」",
+      "hook_type": "line",
+      "mid_hook": "賈掌櫃在照寧後門等她，遞上一份契約抄本，手在抖：「債賣給恆裕記，」「三成價。」「老溫，」「我良心不安。」",
+      "extra_hooks": [
+        "顧家咖啡廳，顧明珠把一張名單推過來：「林會長有三十一票，」「除名只要二十七。」"
+      ],
+      "conflict": "林會長要用她的還款證明她是陸氏的人，用三十一票把七家鋪面一起清掉。",
+      "turn": "票數她贏不了，可她發現林會長自己的邏輯會倒回去咬他——照寧現在的債主，就是林會長。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "商會差役送來一張更動通知：「議程調整：」「除名案，」「提前至陸氏案之前表決。」",
+        "question": "照寧會在他開口前就被除名嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "cengceng",
+        "xuanyi"
+      ],
+      "spectacle": "顧家洋行咖啡廳的落地窗外是港口夕陽，桌上一張手抄的商會票數表，三十一個名字被紅筆圈起。",
+      "glamour_shot": "顧明珠捲髮披肩、珍珠耳墜，把票數表推給她；她低頭算票，睫毛在夕陽裡投下一道影子。",
+      "setups": [
+        "s05-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到恆裕記三成價收購債權的契約抄本",
+        "想通怎麼用林會長自己的說法反將他"
+      ],
+      "characters": [
+        "gu-mingzhu",
+        "wen-zhaoning",
+        "s05-jia-zhanggui",
+        "he-shifu"
+      ],
+      "locations": [
+        "顧家洋行咖啡廳",
+        "照寧報關行後門"
+      ],
+      "state": {
+        "time": "十二月十三號",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。林會長握三十一票、除名只要二十七；恆裕記用三成價吃下照寧的債；議程改成先表決除名",
+        "carry_forward": "總會前夜"
+      }
+    },
+    {
+      "number": 270,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "沒有印的信",
+      "youtube_title": "總會前夜，一封信從她店門縫底下塞進來：信封背面沒有那枚船錨印，只有他的名字",
+      "duration_s": 130,
+      "logline": "總會前夜，除名排到了陸氏案前面；陸既白決定站到最前面，溫家人替她把明天的衣領縫好。",
+      "hook": "頂樓，沈默念出更動通知：「會長把除名排在前面。」陸既白把外套穿上：「那我，」「就站在前面。」",
+      "hook_type": "line",
+      "mid_hook": "他寫了一夜的聲明，每寫完一張，手都習慣地伸向放私印的抽屜，又停在半空。",
+      "extra_hooks": [
+        "溫家小屋裡，溫母替她縫新領口，弟弟擦她的鞋；小滿把鐵罐推過去：「照寧要是倒了，」「我的罐子借妳。」她推回去：「你的罐子，」「是你的船。」"
+      ],
+      "conflict": "明天一早，照寧可能在他開口前就被除名；他能做的事，一件都不能替她做。",
+      "turn": "十年來他每一張紙都蓋船錨印，這一封他第一次只簽名——他不是替她安排明天，是告訴她明天他自己要做什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "深夜，綠罩燈下的她聽見門縫一響；地上躺著一封信，翻到背面——沒有船錨印，只有「陸既白」三個字。裡面一行：「明天我會說完整的話。」",
+        "question": "他說的完整的話，是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "pianzhi",
+        "huozang"
+      ],
+      "spectacle": "總會前夜的舊碼頭街，整條街只剩照寧一盞綠罩燈亮著，霧從海面漫上來，一個撐傘的身影在門口停了一下就離開。",
+      "glamour_shot": "綠罩燈下她拾起門縫裡的信封，翻到背面——沒有船錨印，只有他的簽名；她的側臉被燈照得很靜。",
+      "setups": [
+        "s05-t21"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他十年來第一封不蓋船錨印的信",
+        "溫家替她縫好明天的領口"
+      ],
+      "characters": [
+        "lu-jibai",
+        "shen-mo",
+        "wen-zhaoning",
+        "wen-mu",
+        "wen-zhaoan",
+        "xiao-man"
+      ],
+      "locations": [
+        "陸氏輪船公司頂樓",
+        "舊碼頭邊的溫家小屋",
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "十二月十四號深夜（總會前夜）",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。除名排在第一案；他留下一封沒有船錨印的信：『明天我會說完整的話』",
+        "carry_forward": "明天的大理石廳"
+      }
+    },
+    {
+      "number": 271,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "我自己唸",
+      "youtube_title": "商會總會上會長起身要宣讀他的罪證，他先一步站起來摘下眼鏡：正本在我手上，我自己唸",
+      "duration_s": 120,
+      "logline": "年度總會開場，林會長要先讀抄本再表決除名；陸既白要搶在他前面，自己把正本唸出來。",
+      "hook": "大理石廳，林會長舉起抄本：「表決之前，」「先讀證據。」話音未落，陸既白站起來，摘下眼鏡：「正本在我手上，」「我自己唸。」",
+      "hook_type": "reversal",
+      "mid_hook": "林會長的拐杖頓地：「程序上，」「被審的人，」「不能自讀證據！」秘書長翻開章程：會員在表決前得作聲明。",
+      "extra_hooks": [
+        "最後一排的門開了又關，陸老太爺拄著手杖坐下，一句話都沒說。"
+      ],
+      "conflict": "除名案排在前面，林會長只要讀幾頁抄本、喊表決，照寧就沒了；他得在那之前把話說出口。",
+      "turn": "林會長準備好挑著讀，連那行假字都準備好了；結果開口的是寫紀錄的人自己。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他翻開第一冊，念出第一行：「第一筆。」「十四年前，碼頭。」「一個女孩，」「教我看潮。」",
+        "question": "他要把十年全唸出來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "dalian",
+        "pianzhi"
+      ],
+      "spectacle": "商會大理石議事廳，三層環形座位坐滿船東與商號東家，穹頂的彩色玻璃把晨光灑成一片金。",
+      "glamour_shot": "他在議事廳中央站起來摘下金絲眼鏡，深灰三件式立在彩窗光裡，第一次把一句話說完。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "章程讓他在表決前取得聲明權",
+        "林會長挑著讀的計畫落空"
+      ],
+      "characters": [
+        "lu-jibai",
+        "lin-huichang",
+        "wen-zhaoning",
+        "s05-qi-mingyuan",
+        "lu-lao",
+        "gu-mingzhu",
+        "chen-chuanzhang"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳"
+      ],
+      "state": {
+        "time": "十二月十五號上午（年度總會）",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。他搶在林會長前面，親自唸正本，從潮汐表那一筆開始",
+        "carry_forward": "他要唸多少筆"
+      }
+    },
+    {
+      "number": 272,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "一個時辰",
+      "youtube_title": "他在全港船東面前一筆筆唸出自己的布局：升職、房租、學費，每一筆都蓋同一枚印",
+      "duration_s": 115,
+      "logline": "陸既白在總會上唸自己的十年，林會長要在他唸完前把表決搶回來。",
+      "hook": "大鐘敲了九下，他念：「安排：恆通洋行，」「升主帳。」「船錨印。」",
+      "hook_type": "image",
+      "mid_hook": "他念到：「安排：教育會外埠職缺，」「安家費三百，」「條件：自願退婚。」三層座位的人同時回頭，看向後排那件洗白的長衫。",
+      "conflict": "每唸一筆，就有一位東家想起自己也被陸氏的泊位綁過；林會長的子彈，被它的靶子自己一顆顆打掉。",
+      "turn": "全廳以為他要替陸氏辯護，他卻一條一條替林會長把罪名念完——只是唸的人換了，唸的意思也換了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "林會長的拐杖重重頓在大理石上：「夠了！」「這是拖延表決！」「現在就表決除名！」",
+        "question": "林會長能不能硬把除名先表決？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "huozang",
+        "cengceng"
+      ],
+      "spectacle": "議事廳的落地大鐘從九點走到十點，他手邊的記事本一冊冊疊高，彩窗的光一格格移過大理石地面。",
+      "glamour_shot": "他念到一半停下，手指壓著紙頁，抬眼看第七排的她——她沒有低頭，迎著他的目光。",
+      "setups": [],
+      "payoffs": [
+        "m01",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "升職條子、房租差額、學費、罷工，一筆筆由他本人當眾承認"
+      ],
+      "characters": [
+        "lu-jibai",
+        "lin-huichang",
+        "wen-zhaoning",
+        "cheng-yan",
+        "s05-qi-mingyuan"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳"
+      ],
+      "state": {
+        "time": "十二月十五號，總會第一個時辰",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。他已經唸到程硯那一筆；林會長要強行先表決除名",
+        "carry_forward": "後排的程硯"
+      }
+    },
+    {
+      "number": 273,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "我選了錢",
+      "youtube_title": "前未婚夫在總會上站起來：三百塊是我自己選的，她什麼都不知道，會長的臉當場白了",
+      "duration_s": 110,
+      "logline": "林會長要搶表決，程硯站起來作證；林會長的把柄開始變成陸既白自己的聲明。",
+      "hook": "後排，程硯站起來，聲音發抖：「會長，」「我有話要說。」",
+      "hook_type": "line",
+      "mid_hook": "林會長喝道：「你這是替陸氏開脫！」程硯把收據和措辭草稿舉高：「不，」「我是替自己認帳。」「信是我抄的，」「一個字沒改。」",
+      "conflict": "林會長原本要讓程硯說『她早就知道』，把她也拖下水；現在站起來的程硯，手上拿的是另一份東西。",
+      "turn": "秘書長裁定：證人陳述屬於聲明的一部分，表決順延——林會長準備好的那份把柄，一頁頁變成了陸既白自己的話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸既白念到最後一類：「以上每一筆，」「都蓋同一枚印。」他從胸袋取出一枚小小的船錨銅印，放在大理石講台上。",
+        "question": "他要把私印交給誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "huozang",
+        "quanli"
+      ],
+      "spectacle": "議事廳後排一個洗白長衫的身影站起來，三層座位的人同時回頭，三百塊的舊收據在他手裡發抖。",
+      "glamour_shot": "她在第七排靜靜看著程硯，下頜微抬，藍旗袍的領口是母親昨夜新縫的，眼神裡沒有一點勝利。",
+      "setups": [],
+      "payoffs": [
+        "m08",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "程硯當眾承認三百塊是自己選的，並說她不知情",
+        "表決順延，聲明繼續"
+      ],
+      "characters": [
+        "cheng-yan",
+        "lin-huichang",
+        "lu-jibai",
+        "wen-zhaoning"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳"
+      ],
+      "state": {
+        "time": "十二月十五號，總會第二個時辰",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。程硯當眾認了三百塊是自己選的、她不知情；林會長的把柄成了陸既白自己的聲明",
+        "carry_forward": "講台上的船錨印"
+      }
+    },
+    {
+      "number": 274,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "封印",
+      "youtube_title": "他把那枚蓋了十年的船錨私印交給公證人當場封存，會長卻拿出她的還款收據反咬一口",
+      "duration_s": 110,
+      "logline": "陸既白當眾交出船錨私印；林會長改拿溫照寧的還款，說照寧至今仍是陸氏的債戶。",
+      "hook": "他把船錨銅印推到公證人面前：「這枚印，」「從今天起作廢。」",
+      "hook_type": "image",
+      "mid_hook": "梁公證人把私印放進牛皮信封，滴上火漆、壓上公證處鋼印；祁明遠起身想接過去當證物，梁公證人把信封收進公文箱：「封存品，」「只歸公證處。」",
+      "conflict": "印交出去了，可林會長還握著最後一張牌：她每個月一號準時付給陸氏的錢。",
+      "turn": "她以為準時還債是她最乾淨的證明，林會長偏偏把它翻成最髒的罪名。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "林會長舉起一張收據抄本：「第八期，」「一百七十五塊！」「照寧到今天，」「都是陸氏的債戶！」",
+        "question": "她的還款會變成除名的證據嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "huozang",
+        "dalian"
+      ],
+      "spectacle": "大理石講台上一枚小小的船錨銅印，被公證人放進牛皮信封，火漆滴下，封口壓上公證處鋼印。",
+      "glamour_shot": "他看著自己的私印被封進信封，手指在講台邊緣停了一秒才放開，彩窗光落在他沒戴眼鏡的眼睛上。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "船錨私印當眾封存作廢，祁明遠拿不到"
+      ],
+      "characters": [
+        "lu-jibai",
+        "s05-liang-gongzheng",
+        "lin-huichang",
+        "s05-qi-mingyuan",
+        "wen-zhaoning"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳"
+      ],
+      "state": {
+        "time": "十二月十五號，總會第二個時辰末",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。船錨私印當眾封存作廢；林會長拿她的還款收據說照寧是陸氏的債戶",
+        "carry_forward": "還款收據"
+      }
+    },
+    {
+      "number": 275,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "公開信託",
+      "youtube_title": "會長說她還錢就是陸家的人，他當眾回答：欠的人是我，然後交出暗股、辭去副會長",
+      "duration_s": 125,
+      "logline": "陸既白要把『他給的』全部交出去，包括溫家自己都不知道的三筆，讓林會長的把柄再也咬不住她。",
+      "hook": "他看著林會長手上的收據：「她還的每一筆，」「是她不欠我。」「欠的人，」「是我。」",
+      "hook_type": "line",
+      "mid_hook": "他翻開那三張黑紙條：「潮一：倉棧股份一成，」「溫照安名下。」「潮二：弄堂閣樓房契，」「過戶溫照寧。」「潮三：一本存摺，」「溫周秀蘭名下。」旁聽席上，弟弟脫口而出：「我名下有倉棧？」",
+      "extra_hooks": [
+        "梁公證人宣讀：恆通暗股、瀾通置業名下產權、三筆未告知，全部轉入公開信託，由公證處與錢業公會共管。"
+      ],
+      "conflict": "林會長要用『欠債』把她綁在陸氏身上；能鬆開這條繩子的，只有把所有東西攤開的那個人。",
+      "turn": "全港以為陸氏掌舵人上台是要保住陸氏，他卻把陸氏伸進她生活的每一隻手，當眾一隻一隻收回來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "他取下西裝上的副會長徽章，放在封存的印旁邊：「副會長一職，」「我辭。」滿廳譁然，主席台上的林會長愣在原地。",
+        "question": "林會長的把柄，還剩什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "quanli",
+        "huozang",
+        "dalian"
+      ],
+      "spectacle": "議事廳中央長桌上一字排開：封存的船錨印、恆通暗股的股票、三份過戶文件、一枚副會長徽章，彩窗光從上方灑下。",
+      "glamour_shot": "他把副會長徽章取下放在桌上，扣好西裝最上面一顆扣子，轉身時背脊筆直。",
+      "setups": [],
+      "payoffs": [
+        "s05-t11",
+        "s05-t21",
+        "m03",
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三筆未告知揭開並轉入公開信託",
+        "恆通暗股、瀾通置業產權轉入公開信託",
+        "他辭去商會副會長"
+      ],
+      "characters": [
+        "lu-jibai",
+        "lin-huichang",
+        "s05-liang-gongzheng",
+        "wen-mu",
+        "wen-zhaoan",
+        "wen-zhaoning"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳"
+      ],
+      "state": {
+        "time": "十二月十五號，總會正午",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。三筆未告知：倉棧一成在弟弟名下、閣樓房契過戶給她、母親名下一本存摺；全部轉入公開信託；他辭去副會長",
+        "carry_forward": "愣住的林會長"
+      }
+    },
+    {
+      "number": 276,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "那一行假字",
+      "youtube_title": "會長當眾唸出『照寧陸氏出資』，她從第七排站起來：這頁是會長親手給我的，墨是新的",
+      "duration_s": 115,
+      "logline": "林會長只剩那行假字可以咬住照寧，溫照寧要當眾讓它露出新墨。",
+      "hook": "林會長抓起抄本：「就算如此——」「紀錄寫著：」「照寧，陸氏出資！」",
+      "hook_type": "line",
+      "mid_hook": "陸既白翻到今年那一冊：「正本這一格寫的是：」「她自己出資。」「觀察，不介入。」林會長冷笑：「正本是你的，」「誰知道你改沒改？」",
+      "extra_hooks": [
+        "她從第七排站起來，把那三頁樣張平舉：「這頁，」「是會長親手給我的。」"
+      ],
+      "conflict": "正本是陸既白的，林會長咬定他會改；她得拿出一份不屬於陸氏、也不屬於她的證據。",
+      "turn": "林會長以為那三頁樣張早被她扔了；她留著，而且第一天就看出墨色不對——梁公證人把樣張舉到彩窗下，整頁舊墨，只有那一行是新的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林會長漲紅了臉：「一行字算什麼！」「她欠陸氏的債，」「總是真的！」她點頭：「會長說得對，」「債是真的。」「所以，」「還有一筆。」",
+        "question": "她說的還有一筆是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "quanli",
+        "cengceng"
+      ],
+      "spectacle": "公證人把抄本樣張與正本同一頁並排舉到彩窗光下，三層座位的人看見兩種墨色在光裡分開。",
+      "glamour_shot": "她從第七排站起來，把樣張平舉在胸前，銅髮夾別在耳後，聲音一字一頓。",
+      "setups": [],
+      "payoffs": [
+        "s05-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林會長當眾唸出的假字被證明是新墨加的",
+        "照寧自己出資，當眾成立"
+      ],
+      "characters": [
+        "lin-huichang",
+        "lu-jibai",
+        "wen-zhaoning",
+        "s05-liang-gongzheng",
+        "s05-qi-mingyuan"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳"
+      ],
+      "state": {
+        "time": "十二月十五號，總會午後",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。抄本那行『陸氏出資』當眾被證明是新墨；照寧是她自己出資",
+        "carry_forward": "還有一筆"
+      }
+    },
+    {
+      "number": 277,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "還有一筆",
+      "youtube_title": "她把三張錢莊收據拍上講台：會長上個月用三成價買下我的債，照你的說法，我是你的人",
+      "duration_s": 120,
+      "logline": "溫照寧要用自己的帳，讓林會長的把柄反過來指著他自己。",
+      "hook": "她把三張收據排在講台上：「林會長上個月，」「透過三家錢莊，」「收購照寧的債權。」「戶頭在這裡。」",
+      "hook_type": "line",
+      "mid_hook": "祁明遠起身：「恆裕記，」「是我自己的生意。」她翻開帳本那一頁：「那五千塊的支票，」「也是你的生意？」——支票號碼、通裕錢莊、祁明遠經手，一字不差。",
+      "extra_hooks": [
+        "她轉向全廳：「照會長的說法，」「欠誰錢，」「就是誰的人。」「那照寧現在，」「是林會長的人。」廳裡先是安靜，然後有人笑出聲。"
+      ],
+      "conflict": "林會長要用『債』證明照寧屬於陸氏；她手上的帳證明，照寧的債早就被他自己買走了。",
+      "turn": "原告變成被告：口口聲聲要清算陸氏關係商號的人，正在用化名商號、三成價，收購他要除名的那間鋪子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "全廳的目光從她的收據移到主席台；林會長拄著拐杖站起來，聲音發緊：「我要求，」「立刻表決！」",
+        "question": "三十一票還會跟著林會長嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "quanli",
+        "qingxing"
+      ],
+      "spectacle": "議事廳三層座位上百雙眼睛，同時從她手上的收據，轉向主席台上的林會長。",
+      "glamour_shot": "她把三張收據按在大理石講台上一字排開，抬眼看主席台，彩窗的金光落在她指尖的墨跡上。",
+      "setups": [],
+      "payoffs": [
+        "s05-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "當眾證明林會長透過恆裕記以三成價收購照寧債權",
+        "祁明遠的五千塊支票對上恆裕記"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lin-huichang",
+        "s05-qi-mingyuan",
+        "s05-jia-zhanggui",
+        "lu-jibai"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳"
+      ],
+      "state": {
+        "time": "十二月十五號，總會午後",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。她當眾證明林會長用恆裕記三成價收購照寧債權；照他的說法，照寧反而是他的人",
+        "carry_forward": "立刻表決"
+      }
+    },
+    {
+      "number": 278,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "舉手",
+      "youtube_title": "會長喊表決要除名她的報關行，滿廳原本要舉的手一隻只放下，最後只剩三票",
+      "duration_s": 110,
+      "logline": "林會長硬喊表決，三十一票要不要跟他走，就看這一下。",
+      "hook": "秘書長念：「第一案：」「除名照寧等七家。」「贊成者，」「舉手。」",
+      "hook_type": "danger",
+      "mid_hook": "三隻手舉到一半又放下；顧明珠起身：「我提案：」「調查會長收購，」「會員債權。」陳船長第一個附議。",
+      "conflict": "林會長算好的票還在名單上，可每一位東家剛剛都聽見了恆裕記、三成價、還有那行新墨。",
+      "turn": "一個下午前他還有三十一票；現在主席台下只剩三隻手，另一個案子卻翻過來調查他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林會長從側門離開；祁明遠留下來，走到她面前低聲說：「恆裕記的債，」「會長要轉賣。」「三成價，」「賣給妳。」",
+        "question": "三成價買回自己的債，她要不要？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "quanli",
+        "cengceng"
+      ],
+      "spectacle": "議事廳表決，三層座位上原本要舉起的手一隻隻放下，最後只剩主席台上林會長一個人的影子。",
+      "glamour_shot": "顧明珠起身提案，珍珠耳墜在彩窗光裡一晃，捲髮披肩一甩，笑得爽利。",
+      "setups": [
+        "s05-t22"
+      ],
+      "payoffs": [
+        "s05-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "除名案只剩三票，不成立；照寧與另外六家全數保住",
+        "商會通過調查林會長收購會員債權"
+      ],
+      "characters": [
+        "lin-huichang",
+        "gu-mingzhu",
+        "chen-chuanzhang",
+        "s05-qi-mingyuan",
+        "wen-zhaoning",
+        "lu-jibai"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳"
+      ],
+      "state": {
+        "time": "十二月十五號，總會傍晚",
+        "knowledge": "帳：8／12・955／1603｜客戶 5。除名案不成立；商會改查林會長；祁明遠要用三成價把照寧的債賣給她",
+        "carry_forward": "三成價，要不要"
+      }
+    },
+    {
+      "number": 279,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "原價",
+      "youtube_title": "會長的人要三成價把債賣給她，她拒絕：我欠錢莊的，照原價還錢莊；走出門，老客戶排成一列",
+      "duration_s": 110,
+      "logline": "溫照寧不佔林會長的便宜，也不讓他的債再碰照寧；走出商會，離開的人一個個回來。",
+      "hook": "她看著祁明遠：「不要。」「我欠錢莊的，」「照原價還錢莊。」",
+      "hook_type": "line",
+      "mid_hook": "她當場寫下條件：恆裕記照它付的三成價，把債轉回三家錢莊；照寧照原借據，一分不少還錢莊。賈掌櫃在旁聽席上第一個點頭。",
+      "extra_hooks": [
+        "商會大門外的石階上，陶老闆捧著報關單站在最前面：「溫老闆，」「我能不能，」「重新排號？」"
+      ],
+      "conflict": "三成價能讓她省下七成的債，可那是林會長手上的東西；收了，照寧就又欠了一份不該欠的人情。",
+      "turn": "所有人以為她會趁勢撿便宜，她選了最貴的那條路——讓每一筆債回到它本來的主人手上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "人散得差不多了，議事廳的門半開著；最後一排還坐著一個人——陸老太爺，雙手按在手杖上，沒有起身。",
+        "question": "陸老太爺留下來要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "dalian",
+        "quanli"
+      ],
+      "spectacle": "商會大樓門外的石階上，十幾位東家拿著報關單排成一列，等她從大門出來。",
+      "glamour_shot": "她走出商會大門，冬日斜陽把她的藍旗袍與開衫鍍成金色，她在石階上停步回頭。",
+      "setups": [],
+      "payoffs": [
+        "s05-t22",
+        "s05-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "恆裕記照三成價把債轉回三家錢莊，照寧照原借據還錢莊",
+        "陶老闆帶著三家茶行回來排號"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "s05-qi-mingyuan",
+        "s05-jia-zhanggui",
+        "s05-tao-laoban",
+        "lu-jibai",
+        "lu-lao"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳",
+        "商會大樓門外石階"
+      ],
+      "state": {
+        "time": "十二月十五號，總會散場",
+        "knowledge": "帳：8／12・955／1603｜客戶 9（陶老闆帶三家茶行回來）。債轉回三家錢莊，她照原借據還",
+        "carry_forward": "最後一排的陸老太爺"
+      }
+    },
+    {
+      "number": 280,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "第一次沉默",
+      "youtube_title": "總會散場，教兒子『把路鋪到她腳下』的老太爺坐在最後一排，第一次一句話都沒說",
+      "duration_s": 130,
+      "logline": "溫家在側廳簽下三筆未告知的信託文件；陸既白抱著十年的紀錄走出議事廳，要從父親身邊經過。",
+      "hook": "空蕩的議事廳，林會長的座位空著，一把會長木槌擱在桌上；陸既白抱起十本記事本。",
+      "hook_type": "image",
+      "mid_hook": "側廳裡，溫母在存摺上簽名、弟弟在倉棧股份上按手印、她在房契上寫下自己的名字——三筆未告知，三個簽名，全部歸公。",
+      "conflict": "他把陸氏的每一隻手都收回來了，最後一關是那個教他伸手的人。",
+      "turn": "所有人都在等老太爺開口罵、開口護、開口要回陸家的臉；他一個字都沒有。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他抱著記事本從最後一排經過，父親沒有起身；老太爺的目光落在兒子腕上那只重新走著的舊錶上，停了很久。父子擦肩，誰都沒說話。",
+        "question": "陸老太爺的沉默，是認了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "pianzhi",
+        "jiaren",
+        "quanli"
+      ],
+      "spectacle": "散場後空蕩的大理石議事廳，三層座位只剩最後一排一個白鬚老人，夕陽從彩窗斜照成一條金色走道。",
+      "glamour_shot": "他抱著十本記事本從父親身邊走過，金絲眼鏡收在胸袋，腕上舊銅錶的秒針在寂靜裡走。",
+      "setups": [],
+      "payoffs": [
+        "m09",
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "溫家三人簽字，三筆未告知全部轉入公開信託",
+        "陸老太爺第一次沉默"
+      ],
+      "characters": [
+        "lu-jibai",
+        "lu-lao",
+        "wen-zhaoning",
+        "wen-mu",
+        "wen-zhaoan",
+        "s05-liang-gongzheng"
+      ],
+      "locations": [
+        "瀾港商會大理石議事廳",
+        "商會側廳"
+      ],
+      "state": {
+        "time": "十二月十五號傍晚",
+        "knowledge": "帳：8／12・955／1603｜客戶 9。三筆未告知簽進公開信託；陸老太爺第一次沉默",
+        "carry_forward": "大理石樓梯"
+      }
+    },
+    {
+      "number": 281,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "同一階",
+      "youtube_title": "當年他站在樓梯頂、她站在底；這一次，兩人停在大理石樓梯的同一階",
+      "duration_s": 105,
+      "logline": "總會散場，溫照寧與陸既白第一次站在同一個高度；全港都知道了，接下來只剩規矩。",
+      "hook": "大理石樓梯上，她往下走，他從議事廳出來往下走——兩人在同一階停住。",
+      "hook_type": "image",
+      "mid_hook": "樓梯口一群報童舉著號外：「陸既白自揭十年！」小滿擠在最前面，另一手舉著第二版：「照寧清白！」",
+      "extra_hooks": [
+        "小滿趁亂湊過來：「溫姊，」「我什麼時候出師？」她說：「等你的算盤，」「打得比我快。」"
+      ],
+      "conflict": "他說完了十年，她卻沒有說要原諒；從今天起，他們之間沒有任何一本藏起來的帳。",
+      "turn": "他說：「我說完了。」她說：「說完，」「才剛開始。」兩人並肩往下走，中間隔著一臂，誰都沒伸手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "樓梯口，他停步：「明天，」「我能去找妳嗎？」她頭也不回：「照寧的門，」「誰都能進。」「排號。」",
+        "question": "他明天會拿號碼牌來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "pianzhi",
+        "qingxing",
+        "jiaren"
+      ],
+      "spectacle": "商會大理石樓梯從穹頂吊燈下盤旋而下，兩個人影在同一階並肩往下走，樓梯口一群報童舉著號外。",
+      "glamour_shot": "兩人在同一級台階並肩，一臂之隔；她藍旗袍、他深灰三件式，夕陽從大門外照上樓梯。",
+      "setups": [
+        "s05-t23"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "號外登出他的聲明全文與照寧清白",
+        "她把話說清：要進照寧，排號"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-jibai",
+        "xiao-man"
+      ],
+      "locations": [
+        "瀾港商會大理石樓梯",
+        "商會大樓門口"
+      ],
+      "state": {
+        "time": "十二月十五號入夜",
+        "knowledge": "帳：8／12・955／1603｜客戶 11。號外登出他的聲明與照寧清白；她要他照所有人的規矩排號",
+        "carry_forward": "明天的號碼牌"
+      }
+    },
+    {
+      "number": 282,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "說一聲",
+      "youtube_title": "總會後全港都以為她能替人跟陸家說一聲，排第一的船東遞上名片，她原封推了回去",
+      "duration_s": 100,
+      "logline": "照寧一夜變成全港最熱的報關行，有人以為她現在握著陸既白的耳朵；溫照寧要讓規矩比人情先到。",
+      "hook": "天剛亮，照寧門口排到碼頭石階，隊伍裡沒有他；第一個是陌生船東，遞上燙金名片：「溫老闆，」「麻煩跟陸先生，」「說一聲。」",
+      "hook_type": "line",
+      "mid_hook": "小滿舉著報紙衝進來：「林會長辭了！」商會公告欄上貼著一紙辭呈，旁邊是調查委員會的名單。",
+      "extra_hooks": [
+        "賈掌櫃親自送回通裕的原借據：「債回來了，」「照原價。」她當場付了這個月的利息，一分不少。"
+      ],
+      "conflict": "總會讓照寧清白，也讓照寧成了眾人眼中『陸既白在乎的地方』；她最怕的那種好運，換了個樣子又來了。",
+      "turn": "大家以為她會趁勢收人情，她在門上新貼一張告示：『本行不代任何人，向任何人說一聲。』",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "打烊後，綠罩燈下，她在白紙上寫了四行，停了很久，把第四行劃掉。",
+        "question": "她劃掉的那一行寫什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "dalian",
+        "zhichang"
+      ],
+      "spectacle": "天剛亮，照寧門口的隊伍從櫃檯一路排到碼頭石階，挑擔的、提箱的、穿西裝的混在一起。",
+      "glamour_shot": "她把陌生船東的名片原封推回，抬手指了指門上新貼的告示，晨光照著告示上她自己的毛筆字。",
+      "setups": [
+        "s05-t24"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林會長辭去會長",
+        "通裕的債照原價回到錢莊",
+        "照寧固定客戶回到十二家"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "xiao-man",
+        "s05-jia-zhanggui",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行",
+        "商會公告欄"
+      ],
+      "state": {
+        "time": "十二月十八號",
+        "knowledge": "帳：8／12・955／1603｜客戶 12。林會長辭去會長；有人想托她跟陸既白說一聲，她不收；她寫了四行，劃掉一行",
+        "carry_forward": "劃掉的那一行"
+      }
+    },
+    {
+      "number": 283,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "第三欄",
+      "youtube_title": "曾經一句話調動全港的人，在公證處窗口連一張表格都填錯，被退件，她就排在他後面",
+      "duration_s": 110,
+      "logline": "新年第一天，溫照寧付第九期、去公證處辦信託手續，撞見陸既白第一次自己填表格。",
+      "hook": "那張劃掉一行的紙被她折好，夾進新帳本；一月一號，她帶著帳本走到陸氏出納窗口，蔡出納堆著笑：「新年快樂，」「溫老闆。」",
+      "hook_type": "line",
+      "mid_hook": "公證處窗口前，陸既白握著鋼筆對著表格發愣，身邊沒有沈默；梁公證人把表格推回去：「第三欄，」「填錯了。」",
+      "conflict": "他以前所有的紙都有人替他寫；現在連信託的表格都得自己填，她就在後面看著，不能幫、也不會幫。",
+      "turn": "她以為信託的事他都安排好了，梁公證人卻說：最後一份受益人同意書，他一個字都沒填。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "梁公證人把空白的同意書轉向她：「倉棧的收益怎麼用，」「他說，」「妳定。」",
+        "question": "信託的錢，她要怎麼用？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "qingxing",
+        "pianzhi"
+      ],
+      "spectacle": "新年第一天的公證處大廳掛著紅燈籠，一排木窗口前排滿辦契約的人，他站在窗口前拿著鋼筆對著表格發愣。",
+      "glamour_shot": "他低頭重填表格，金絲眼鏡滑到鼻樑，袖口沾了一點墨；她在後面排號，嘴角只動一邊。",
+      "setups": [
+        "s05-t25"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第九期一百八十塊準時還清",
+        "他第一次不靠沈默、自己填文件"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "s05-cai-chuna",
+        "lu-jibai",
+        "s05-liang-gongzheng"
+      ],
+      "locations": [
+        "陸氏輪船公司出納處",
+        "瀾港公證處"
+      ],
+      "state": {
+        "time": "一月一號（第九期還款日）",
+        "knowledge": "帳：還款 9／12 期・已還 1135／1603 塊｜客戶 12。他自己填信託表格被退件；信託收益怎麼用，交給她決定",
+        "carry_forward": "信託的錢怎麼用"
+      }
+    },
+    {
+      "number": 284,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "不准任何人指定",
+      "youtube_title": "信託的錢交給她決定，她只寫了一行字：夜校獎學金公開考試，不准任何人指定",
+      "duration_s": 115,
+      "logline": "溫照寧要決定信託的錢怎麼用；公證處退給她的信封裡，還有一樣不在信託裡的東西。",
+      "hook": "她在同意書上落筆：「倉棧收益：」「夜校獎學金，」「公開考試。」最後一行，一字一頓：「不准任何人指定。」",
+      "hook_type": "image",
+      "mid_hook": "梁公證人遞來一個牛皮信封：「這一件，」「陸先生說，」「不在信託裡。」裡面是那張泛黃的手抄潮汐表，附一張紙條：「這是妳的字。」",
+      "extra_hooks": [
+        "夜校教室，蘇先生在黑板上寫下『獎學金：公開考試』，回頭說：「從今年起，」「名單沒人指定。」"
+      ],
+      "conflict": "當年她的獎學金是有人指定的；現在錢在她手上，她最不能做的，就是也去指定別人。",
+      "turn": "她以為信託裡的每一樣都是他給的、她要還的；只有這張紙，是她十二歲給他的——他把它當成她的東西還回來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "綠罩燈下，她把潮汐表翻到背面：一行少年的字，筆畫還很生——「四點十分，退。」「十點，回來。」「我等。」",
+        "question": "潮汐表，她要留著還是還他？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "pianzhi",
+        "jiaren"
+      ],
+      "spectacle": "夜校教室的黑板上寫著『獎學金：公開考試』，底下坐滿提著油燈來上課的碼頭工人與店員。",
+      "glamour_shot": "綠罩燈下她把泛黃的潮汐表翻到背面，慢慢舉到燈前，眼睛在燈影裡亮了一下。",
+      "setups": [
+        "s05-t26"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "倉棧收益改作夜校獎學金，公開考試、不准指定",
+        "潮汐表回到她手上"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "su-xiansheng",
+        "s05-liang-gongzheng",
+        "wen-zhaoan"
+      ],
+      "locations": [
+        "瀾港公證處",
+        "夜校會計班教室",
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "一月三號夜",
+        "knowledge": "帳：9／12・1135／1603｜客戶 12。倉棧收益改作夜校公開考試獎學金；潮汐表當成『她的東西』退回，背面有少年寫的『我等』",
+        "carry_forward": "潮汐表"
+      }
+    },
+    {
+      "number": 285,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "三條",
+      "youtube_title": "他第三次排到她櫃檯前還是沒帶單，她遞來一張紙：三條，簽了你才能進我的門",
+      "duration_s": 115,
+      "logline": "陸既白排號來，什麼都沒帶；溫照寧把她要的規矩寫成三條，放在他面前。",
+      "hook": "潮汐表壓在帳本底下，露出一角；何師傅喊：「十七號。」他從長凳上站起來，兩手空空：「沒有單。」",
+      "hook_type": "image",
+      "mid_hook": "她把一張紙推過櫃檯：「三條。」「一，不經我同意，」「不替我安排任何事。」「二，我的事，」「我自己付。」「三，你要進我的門，」「跟所有客戶一樣排號。」",
+      "extra_hooks": [
+        "他看了三遍：「只有這樣？」她說：「只有這樣，」「最難。」"
+      ],
+      "conflict": "他習慣用一整港的資源回答一個問題；她給他的題目，一樣資源都用不上。",
+      "turn": "他以為會是懲罰、是考驗、是要他交出什麼；她給的是全港小販都在守的規矩——對他來說最難的那種。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他拿起筆，又放下：「簽之前，」「我得先撤掉一筆。」",
+        "question": "他還瞞著哪一筆安排？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "huozang",
+        "pianzhi"
+      ],
+      "spectacle": "照寧櫃檯上一張手寫的三條約，墨跡未乾，櫃檯外長凳上坐滿等號的客人，全都伸長脖子看。",
+      "glamour_shot": "她坐在櫃檯後把三條約推過去，他站著低頭讀，一張帳桌隔開兩人；晨光照著紙上她一字一頓的筆跡。",
+      "setups": [
+        "s05-t27"
+      ],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把追回的條件寫成三條約，交到他手上"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-jibai",
+        "he-shifu",
+        "s05-yugan",
+        "xiao-man"
+      ],
+      "locations": [
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "一月八號上午",
+        "knowledge": "帳：9／12・1135／1603｜客戶 13。三條約：不經同意不安排、她的事她自己付、要進門就排號；他說簽之前得先撤掉一筆",
+        "carry_forward": "瞞著的那一筆"
+      }
+    },
+    {
+      "number": 286,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "撤掉的一筆",
+      "youtube_title": "簽約前他自己招了：總會前替她的客戶留了泊位。她只說一個字：撤",
+      "duration_s": 105,
+      "logline": "陸既白要在簽下三條約之前，當著溫照寧的面撤掉最後一筆沒告訴她的安排。",
+      "hook": "他說：「總會前，」「我讓三號泊位，」「替照寧的客戶留了位。」她說：「撤。」",
+      "hook_type": "line",
+      "mid_hook": "他在她的櫃檯上寫撤令，交給小滿去送；小滿伸手：「跑腿費，」「一分。」陸氏的掌舵人從口袋裡摸出一分錢，放進一個孩子的手心。",
+      "extra_hooks": [
+        "顧明珠帶著阿福進門，聽說預留的泊位沒了，笑出聲：「排就排，」「我爸看了十年臉色，」「排隊算什麼。」"
+      ],
+      "conflict": "第一條約還沒簽，他就得先承認自己又做了一次；撤掉它，照寧的客戶也會少一個好位置。",
+      "turn": "他以為第一條約管的是以後；她要他先拆掉的，是已經做了的好意。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "沈默送回泊位表：「撤了。」「陸先生，」「這是最後一筆。」他提起筆，筆尖停在紙上：「我從沒在給妳的紙上，」「寫過自己的名字。」",
+        "question": "他會簽下自己的名字嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "pianzhi",
+        "qingxing"
+      ],
+      "spectacle": "三號泊位的潮汐牌下，調度員把一塊寫著『照寧預留』的木牌拿下來，換回一張按次序排的泊位表。",
+      "glamour_shot": "他在她的櫃檯上寫撤令，鋼筆、金絲眼鏡、捲起一折的白袖口；她坐著看，沒有遞任何東西。",
+      "setups": [],
+      "payoffs": [
+        "s05-t27",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "最後一筆預留泊位當面撤掉",
+        "顧家照次序排泊位"
+      ],
+      "characters": [
+        "lu-jibai",
+        "wen-zhaoning",
+        "xiao-man",
+        "shen-mo",
+        "gu-mingzhu",
+        "s05-a-fu"
+      ],
+      "locations": [
+        "照寧報關行",
+        "碼頭三號泊位"
+      ],
+      "state": {
+        "time": "一月八號午前",
+        "knowledge": "帳：9／12・1135／1603｜客戶 13。他當面撤掉最後一筆預留泊位；沈默說這是最後一筆",
+        "carry_forward": "他要簽名"
+      }
+    },
+    {
+      "number": 287,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "陸既白",
+      "youtube_title": "他第一次不蓋私印、一筆一畫簽下自己的名字，才看見三條約底下劃掉的第四條",
+      "duration_s": 110,
+      "logline": "陸既白簽下三條約；簽完他才發現，溫照寧寫過、又劃掉的第四條是什麼。",
+      "hook": "特寫：鋼筆在紙上寫下三個字——陸既白。沒有印。",
+      "hook_type": "image",
+      "mid_hook": "他把紙推回去時看見三行底下一道淡淡的劃線，透過墨認出來：『四、不准再對我好。』他抬頭：「為什麼劃掉？」",
+      "extra_hooks": [
+        "何師傅在見證人一欄落款，放下筆：「這張，」「帳不會騙人。」"
+      ],
+      "conflict": "他簽的是一張沒有任何好處的約；她留下的那道劃線，卻比三條都難懂。",
+      "turn": "他以為三條約是要把他推遠；她說：「對人好，」「不是錯。」「替人安排，」「才是。」——她從沒禁止他好，只禁止他做主。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她蓋上照寧自己的店章，把約收進客戶夾，順手撕下一張收據推給他：「簽約手續費，」「兩角。」",
+        "question": "他付得出這兩角嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "pianzhi",
+        "qingxing",
+        "huozang"
+      ],
+      "spectacle": "三條約的紙面特寫：三行墨字底下一道淡淡的劃線，旁邊『陸既白』三個字，沒有任何印。",
+      "glamour_shot": "他簽完名蓋上鋼筆，雙手把紙推回她面前；她低頭看那三個字，睫毛一動，抬眼。",
+      "setups": [],
+      "payoffs": [
+        "s05-t24",
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三條約簽成，只有簽名沒有印",
+        "何師傅作見證"
+      ],
+      "characters": [
+        "lu-jibai",
+        "wen-zhaoning",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "一月八號正午",
+        "knowledge": "帳：9／12・1135／1603｜客戶 13。他簽下自己的名字、沒有印；劃掉的第四行是『不准再對我好』",
+        "carry_forward": "兩角手續費"
+      }
+    },
+    {
+      "number": 288,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "兩角",
+      "youtube_title": "陸氏掌舵人身上只有支票簿，報關行不收，他只好去魚乾攤買下一整簍換零錢",
+      "duration_s": 105,
+      "logline": "陸既白要付清兩角手續費；溫照寧同時要在不靠任何人的情況下，替客戶墊上一筆保證金。",
+      "hook": "他翻遍口袋，只摸出一本陸氏支票簿。她說：「照寧不收支票，」「只收現錢。」",
+      "hook_type": "line",
+      "mid_hook": "他抱著一整簍魚乾回來找零時，陶老闆正急得冒汗：海關驗貨要一筆八十塊的保證金，一個時辰內交；照寧的錢匣裡，是下個月要還的那一期。",
+      "conflict": "他就站在旁邊，口袋裡剛換來一把零錢；照第一條約，他一個字都不能說。",
+      "turn": "他以為不出手就是旁觀；她當場寫借條，向通裕照正常利息借了八十塊，十分鐘辦完——借錢，也是自付。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他把兩枚一角放上櫃檯，抱起魚乾簍要走；她叫住他：「等等。」「還有一樣東西，」「要給你。」她從抽屜拿出一個牛皮信封。",
+        "question": "她要給他什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "qingxing",
+        "zhichang"
+      ],
+      "spectacle": "碼頭魚乾攤前，深灰三件式的陸既白抱著一整簍魚乾找零，身後一群挑夫笑成一片。",
+      "glamour_shot": "她把兩枚一角收進錢匣，低頭寫收據，算盤珠一撥，抬眼看他懷裡的魚乾簍，嘴角只動一邊。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他用自己換來的零錢付清兩角",
+        "她用正常利息的借款墊上陶老闆的保證金"
+      ],
+      "characters": [
+        "lu-jibai",
+        "wen-zhaoning",
+        "s05-yugan",
+        "s05-tao-laoban",
+        "s05-jia-zhanggui"
+      ],
+      "locations": [
+        "照寧報關行",
+        "碼頭魚乾攤"
+      ],
+      "state": {
+        "time": "一月八號午後",
+        "knowledge": "帳：9／12・1135／1603｜客戶 14。他用買魚乾換來的零錢付了兩角；她向通裕照利息借款墊上保證金",
+        "carry_forward": "牛皮信封"
+      }
+    },
+    {
+      "number": 289,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "潮會回來",
+      "youtube_title": "她把十四年前親手抄的潮汐表還給他：潮會回來，是因為它本來就會，不是你安排的",
+      "duration_s": 115,
+      "logline": "溫照寧決定那張潮汐表的去處，要讓它從此不再是一筆帳。",
+      "hook": "她把牛皮信封推過去，潮汐表滑出一角：「這個，」「還你。」",
+      "hook_type": "image",
+      "mid_hook": "他說：「這是妳的字。」她說：「所以由我決定，」「送給你。」「潮會回來，」「是因為它本來就會，」「不是你安排的。」",
+      "conflict": "這張紙讓他等了十四年，也讓他把『等』做成了『安排』；她要怎麼交出去，才不會又變成一筆人情？",
+      "turn": "他以為她是在退回最後一樣東西；她是在送出第一份沒有帳的禮物。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "四點十分，窗外的潮開始退；他把潮汐表收進從前放私印的胸袋，抬眼看她，嘴唇動了一下——那半句話，還沒出口。",
+        "question": "他要說的那半句是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "pianzhi",
+        "qingxing",
+        "huozang"
+      ],
+      "spectacle": "照寧的玻璃門外，三號泊位的潮汐牌指著四點十分，海水一寸一寸從石階上退下去。",
+      "glamour_shot": "他把潮汐表收進胸袋，手掌在胸前停了一下；四點十分的斜陽穿過玻璃門，照在他沒戴眼鏡的臉上。",
+      "setups": [],
+      "payoffs": [
+        "s05-t26",
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "潮汐表由她作主送給他，不再是一筆帳"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-jibai",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行",
+        "碼頭三號泊位"
+      ],
+      "state": {
+        "time": "一月八號下午四點十分",
+        "knowledge": "帳：9／12・1135／1603｜客戶 14。她把潮汐表當禮物送給他：潮會回來是它本來就會",
+        "carry_forward": "他沒說完的半句"
+      }
+    },
+    {
+      "number": 290,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "十七號，請早",
+      "youtube_title": "他想多說一句話，只好重新抽號從三十一號等到打烊；走到門口回頭，她只說四個字",
+      "duration_s": 135,
+      "logline": "陸既白想再跟溫照寧說一句話，照第三條約只能重新排號；他要學會等，也要學會把話說完。",
+      "hook": "他剛張口，小滿扯開嗓子：「十八號！」他把那半句吞回去，側身讓位。",
+      "hook_type": "line",
+      "mid_hook": "他走到門邊的木匣，抽了一張新號碼牌——三十一號。長凳上的魚乾小販往旁邊挪了挪：「陸先生，」「坐。」",
+      "extra_hooks": [
+        "陶老闆認出他：「陸先生也排隊？」他低頭看手裡的牌子：「我是，」「三十一號。」"
+      ],
+      "conflict": "第三條約說要進她的門就排號；他只是想多說一句話，也得從頭排起。",
+      "turn": "他以為排隊是懲罰；坐到打烊才發現，他第一次看見她怎麼一張張替別人把單子辦完。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "「三十一號。」他站起來，只說：「沒事了。」走到門口又回頭：「那我下次，」「帶單來。」她沒抬頭：「十七號，」「請早。」說完，才抬眼。",
+        "question": "他的第一張單，會是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "pianzhi",
+        "qingxing",
+        "jiaren"
+      ],
+      "spectacle": "照寧的玻璃門外，潮水從四點十分退到最低，又在黃昏一寸寸漲回石階；門裡長凳上的人一個換一個。",
+      "glamour_shot": "他在門口回頭，一手提著魚乾簍、胸袋露出潮汐表的一角；她在櫃檯後沒抬頭就說了那四個字，說完才抬眼。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他照規矩重新排號、等到打烊",
+        "他第一次把一句話說完"
+      ],
+      "characters": [
+        "lu-jibai",
+        "wen-zhaoning",
+        "xiao-man",
+        "s05-yugan",
+        "s05-tao-laoban",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "一月八號傍晚",
+        "knowledge": "帳：9／12・1135／1603｜客戶 14。他為了一句話重新排到三十一號；她叫他『十七號，請早』",
+        "carry_forward": "他的第一張單"
+      }
+    },
+    {
+      "number": 291,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "學費，自付",
+      "youtube_title": "弟弟用自己的工錢交了學費；陸氏掌舵人第一次開個人戶頭，存摺上只有三百二十塊",
+      "duration_s": 110,
+      "logline": "溫家一個個把日子變成自己付的；陸既白要湊出他的第一張單，才發現自己從沒有過自己的錢。",
+      "hook": "陸氏頂樓，他在一張空白訂貨單的貨主欄寫下：『陸既白（個人）』。",
+      "hook_type": "image",
+      "mid_hook": "沈默看了一眼：「陸先生，」「你沒有個人戶頭。」他拿起外套：「那就開一個。」",
+      "extra_hooks": [
+        "海關學堂會計窗口，弟弟把一疊皺巴巴的工錢推進去；收據上寫著：『學費：溫照安，自付。』",
+        "夜校公告欄貼出第一張公開考試的榜：獎學金，碼頭工人的女兒阿秀；榜單底下沒有任何人的印。"
+      ],
+      "conflict": "第三條約要他帶真的單來；可他名下的一切都是陸氏的，連一船貨都不知道用誰的錢買。",
+      "turn": "全港最有錢的人，扣掉陸氏，只剩自己這一年的薪俸。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "通裕錢莊，賈掌櫃把一本嶄新的存摺推出來，老花鏡差點掉下：「戶名：陸既白。」「餘額：」「三百二十塊。」",
+        "question": "三百二十塊，他要買什麼貨？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "zhichang",
+        "huozang"
+      ],
+      "spectacle": "海關學堂的鐘樓下，一群穿學生裝的青年湧進校門，弟弟逆光站在台階上，把報紙捲成一筒。",
+      "glamour_shot": "她站在學堂門口看弟弟進門，晨光的金落在藍旗袍的肩線上，她抬手把被風吹亂的短髮別到耳後。",
+      "setups": [
+        "s05-t28"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "弟弟用自己的工錢回學堂",
+        "第十期一百八十塊準時還清",
+        "夜校第一屆公開考試放榜，沒有人指定"
+      ],
+      "characters": [
+        "wen-zhaoan",
+        "wen-zhaoning",
+        "lu-jibai",
+        "shen-mo",
+        "s05-jia-zhanggui",
+        "su-xiansheng",
+        "s05-cai-chuna"
+      ],
+      "locations": [
+        "海關學堂",
+        "陸氏輪船公司頂樓",
+        "通裕錢莊",
+        "夜校會計班教室"
+      ],
+      "state": {
+        "time": "二月一號（第十期還款日）",
+        "knowledge": "帳：還款 10／12 期・已還 1315／1603 塊｜客戶 15。弟弟自付學費回學堂；他開了第一個個人戶頭，只有三百二十塊",
+        "carry_forward": "他要買的貨"
+      }
+    },
+    {
+      "number": 292,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "一船豆子",
+      "youtube_title": "他用自己的三百二十塊訂了一船咖啡豆，買家照市價一分不讓，公共泊位卻排到了下個月",
+      "duration_s": 105,
+      "logline": "溫照寧算出最後一期剛好是那個零頭；陸既白的第一船貨訂下了，卻卡在他從沒排過的泊位上。",
+      "hook": "三月一號，第十一期收據上的數字一加，她在帳本寫下：「還欠，」「一百零三。」——一千六百零三的那個零頭。",
+      "hook_type": "line",
+      "mid_hook": "顧家咖啡廳，顧明珠把合約推給他：「照市價，」「一分不讓。」簽完她才說：「公共泊位，」「下個月全滿了。」",
+      "conflict": "他的船三週後到港，公共泊位排滿；陸氏自己的三號泊位空著，只差他一句話。",
+      "turn": "他以前替別人決定誰先靠岸；現在輪到他排在所有小貨船後面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陸氏調度主任把一張泊位單放上他的桌：「三號泊位，」「陸先生一句話，」「就空出來。」",
+        "question": "他會不會開陸氏自己的泊位？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "huozang",
+        "qingxing"
+      ],
+      "spectacle": "顧家洋行咖啡廳一整面牆堆著麻布咖啡豆袋，窗外港口的公共泊位擠滿等著靠岸的小貨船。",
+      "glamour_shot": "顧明珠把合約推給他，珍珠耳墜一晃；他摘下眼鏡簽字，第一次在合約上寫『個人』兩個字。",
+      "setups": [
+        "s05-t29"
+      ],
+      "payoffs": [
+        "s05-t28"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第十一期一百八十五塊還清，只剩一百零三",
+        "他用個人戶頭訂下一船咖啡豆，照市價賣給顧家"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "s05-cai-chuna",
+        "lu-jibai",
+        "gu-mingzhu",
+        "shen-mo"
+      ],
+      "locations": [
+        "陸氏輪船公司出納處",
+        "顧家洋行咖啡廳",
+        "陸氏調度室"
+      ],
+      "state": {
+        "time": "三月一號（第十一期還款日）",
+        "knowledge": "帳：還款 11／12 期・已還 1500／1603 塊｜客戶 15。最後一期剛好一百零三；他的咖啡豆照市價賣給顧家，公共泊位排滿",
+        "carry_forward": "三號泊位的調度單"
+      }
+    },
+    {
+      "number": 293,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "停在港外",
+      "youtube_title": "陸氏的泊位空著，他的船卻在港外下錨乾等兩天；她準備付最後一期，陸氏卻說免了",
+      "duration_s": 110,
+      "logline": "陸既白讓自己的船照次序等；溫照寧準備好最後一百零三塊，陸氏那邊卻有人想替她省下。",
+      "hook": "他把調度單推回去，沒有簽：「照排。」",
+      "hook_type": "line",
+      "mid_hook": "他的小貨船在港外錨地一停兩天，滯期費一天一天從那本只有三百二十塊的存摺裡扣。",
+      "extra_hooks": [
+        "照寧帳房，她把一百零三塊點了三遍，裝進信封；蔡出納差人送來一張字條：「最後一期，」「上面交代，」「免收。」"
+      ],
+      "conflict": "他一句話就能省下滯期費；她一句『好』就能省下最後一期——兩個人都不肯。",
+      "turn": "她第一個念頭是：他破了第一條約；把字條翻過來，落款不是他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "字條角上壓著一枚老印，不是船錨，是四個篆字——『陸氏鴻銘』。",
+        "question": "陸老太爺為什麼要替她免掉最後一期？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "pianzhi",
+        "qingxing"
+      ],
+      "spectacle": "港外錨地上一艘小貨船孤零零地下著錨，遠處陸氏的三號泊位空著，晨光把兩者之間的海照成一片金。",
+      "glamour_shot": "他站在碼頭盡頭望著港外自己的船，風吹起三件式的下擺，他抬手看錶，秒針一格一格地走。",
+      "setups": [
+        "s05-t30"
+      ],
+      "payoffs": [
+        "s05-t29"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他不開陸氏泊位，自己付滯期費排公共泊位",
+        "她把最後一百零三塊準備好"
+      ],
+      "characters": [
+        "lu-jibai",
+        "shen-mo",
+        "wen-zhaoning",
+        "s05-cai-chuna"
+      ],
+      "locations": [
+        "陸氏調度室",
+        "瀾港外錨地",
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "三月二十八號",
+        "knowledge": "帳：11／12・1500／1603｜客戶 15。他的船在港外等公共泊位、自付滯期費；陸老太爺下條子要免她最後一期",
+        "carry_forward": "免收的條子"
+      }
+    },
+    {
+      "number": 294,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "結清",
+      "youtube_title": "老太爺親自守在出納窗口說最後一期免了，她把一百零三塊放下：這不是人情，是帳",
+      "duration_s": 125,
+      "logline": "最後一期還款日，陸老太爺要用陸家的方式道歉；溫照寧要用自己的方式把帳結清。",
+      "hook": "四月一號，陸氏出納窗口後面坐的不是蔡出納，是陸老太爺：「我說，」「免了。」",
+      "hook_type": "danger",
+      "mid_hook": "老太爺說：「我兒子為妳，」「把陸家攤在商會上。」「這一百零三，」「算陸家送的。」她把信封放下：「陸老太爺，」「這不是人情，」「是帳。」",
+      "extra_hooks": [
+        "晚上溫家小屋，小滿跟她比算盤，最後一顆珠子比她早落；她放下算盤：「學徒期滿。」「明天起，」「你是夥計。」"
+      ],
+      "conflict": "老人只會用鋪路來道歉；她不收任何送的東西，包括一句用錢說的對不起。",
+      "turn": "老太爺以為免掉最後一期是給她面子；她要他親手收下，才是給陸家面子。他沉默了很久，拿起出納章，在收據上親手蓋下『結清』：「妳的帳，」「乾淨。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "飯桌上，溫母舉起茶杯，手在抖：「這一年，」「我們不欠任何人了。」窗外港口最遠處，一盞陌生的桅燈慢慢靠近。",
+        "question": "港外那盞陌生的桅燈是誰的船？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiaren",
+        "qingxing",
+        "zhichang"
+      ],
+      "spectacle": "陸氏出納處的長窗口前，白鬚的陸老太爺親手把一張收據推出來，收據上紅色的『結清』二字蓋得端端正正。",
+      "glamour_shot": "她接過最後一張收據，指尖輕輕撫過『結清』兩個字，轉身走出陸氏大門，晨光從旋轉門外整片湧進來。",
+      "setups": [],
+      "payoffs": [
+        "s05-t30",
+        "s05-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第十二期一百零三塊還清，一千六百零三塊全數結清",
+        "陸老太爺親手蓋結清章",
+        "小滿出師，成了照寧的夥計"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-lao",
+        "s05-cai-chuna",
+        "wen-mu",
+        "wen-zhaoan",
+        "xiao-man",
+        "he-shifu"
+      ],
+      "locations": [
+        "陸氏輪船公司出納處",
+        "舊碼頭邊的溫家小屋"
+      ],
+      "state": {
+        "time": "四月一號（第十二期還款日）夜",
+        "knowledge": "帳：還款 12／12 期・已還 1603／1603 塊・結清｜客戶 15。陸老太爺親手蓋了結清章；小滿出師成了夥計",
+        "carry_forward": "港外那盞陌生的桅燈"
+      }
+    },
+    {
+      "number": 295,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "三號",
+      "youtube_title": "結清隔天天沒亮，他拿著第一張真單站在她門口，前面還排著賣魚乾的和顧家的夥計",
+      "duration_s": 100,
+      "logline": "溫照寧結清的隔天清早，陸既白第一次帶著真的單來排號，排在第三。",
+      "hook": "天亮時，港外那盞桅燈不見了；照寧的門還沒開，門口排著三個人：挑魚乾簍的小販、夾著單子的阿福、手裡拿著一張報關單的陸既白。",
+      "hook_type": "image",
+      "mid_hook": "魚乾小販回頭笑：「陸先生，」「我四點就來了。」又往旁邊讓：「您先請？」他搖頭：「不，」「我是三號。」",
+      "conflict": "她叫他請早，他天沒亮就來，還是排第三；兩個人都想讓他先，他得自己守住位置。",
+      "turn": "他以為『請早』是要他搶第一；站在晨光裡才懂，請早只是要他跟每個人一樣，自己來、自己等。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "門開了，小滿以夥計的身分第一次喊號：「一號！」她在櫃檯後抬眼，看見第三個人手裡那張單的抬頭——『貨主：陸既白（個人）。』",
+        "question": "他的第一張單，會不會被退？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "zhichang",
+        "jiaren"
+      ],
+      "spectacle": "天剛亮的舊碼頭街，照寧門口三個人排成一列：挑魚乾簍的小販、夾著單子的夥計、深灰三件式的陸既白，身後海面一片金。",
+      "glamour_shot": "他排在門口，手裡第一次拿著一張真的報關單，晨光把金絲眼鏡的鏡框照成一道細線。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他帶著第一張真的報關單排號，不肯插隊"
+      ],
+      "characters": [
+        "lu-jibai",
+        "s05-yugan",
+        "s05-a-fu",
+        "xiao-man",
+        "wen-zhaoning"
+      ],
+      "locations": [
+        "照寧報關行門口"
+      ],
+      "state": {
+        "time": "四月二號清晨",
+        "knowledge": "帳：結清｜客戶 15。他拿著第一張真的報關單排三號，不肯插隊",
+        "carry_forward": "三號的報關單"
+      }
+    },
+    {
+      "number": 296,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "退件重填",
+      "youtube_title": "他的第一張報關單遞上去，她紅筆一圈：第三欄填錯，退件重填，跟所有客戶一樣",
+      "duration_s": 105,
+      "logline": "陸既白的第一張單到了溫照寧手上，她照規矩一欄一欄審，錯一個字都不放。",
+      "hook": "她掃了一眼：「第三欄，」「稅則號填錯。」「退件，重填。」",
+      "hook_type": "line",
+      "mid_hook": "唐媽提著三層食盒進門，在長凳邊坐下：「少爺排隊，」「也得吃飯。」又小聲對她說：「他這一個月，」「天天夜裡練填單。」",
+      "conflict": "他練了一個月，還是填錯；全照寧的客戶都在看，她要是放水一欄，第三條約就是一張廢紙。",
+      "turn": "他重填完遞回來，這次一欄不錯；她撥完算盤報出數字，他打開錢夾——不夠。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "「稅款四十二塊六角，」「手續費兩塊。」他把錢夾裡的錢全攤在櫃檯上：四十四塊整。差六角。",
+        "question": "他差的六角，要怎麼付？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "zhichang",
+        "jiaren"
+      ],
+      "spectacle": "照寧的側桌上攤著一本厚厚的稅則簿，深灰三件式的他彎腰一行行對號，旁邊唐媽捧著三層食盒。",
+      "glamour_shot": "她用紅筆在第三欄畫一個圈，抬眼把單子推回去，袖套上的墨點、嘴角那一邊的笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她照規矩退件，沒有一欄放水",
+        "他重填後一欄不錯"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-jibai",
+        "he-shifu",
+        "tang-ma",
+        "s05-yugan"
+      ],
+      "locations": [
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "四月二號上午",
+        "knowledge": "帳：結清｜客戶 15。他的單第三欄填錯被退，重填後稅款加手續費四十四塊六角，他身上差六角",
+        "carry_forward": "差的六角"
+      }
+    },
+    {
+      "number": 297,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "十七號",
+      "youtube_title": "差六角他不肯賒，跑去錢莊領錢回來重新抽號，抽到的正是當年那張十七號",
+      "duration_s": 110,
+      "logline": "陸既白要照規矩把六角補齊；回來重新排號，他抽到了那個號碼。",
+      "hook": "他把錢收回錢夾：「我去錢莊領，」「回來再排。」魚乾小販伸手掏錢：「我借您！」他搖頭走出門。",
+      "hook_type": "line",
+      "mid_hook": "他從通裕錢莊跑回來，從木匣裡抽出一張號碼牌，翻過來——「十七」。",
+      "conflict": "差六角，任何一個人借他都行；可那樣，他就又欠了一筆不是自己付的。",
+      "turn": "四季以前，十七號是她把他擋在門外的號碼；今天，它只是他自己排到的位置。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她蓋下『照寧報關行・核訖』，收齊四十四塊六角，一分不少，撕下收據遞過去。他收好收據，沒有走，指節在櫃檯上敲了兩下：「我能不能——」",
+        "question": "他還想問她什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "zhichang",
+        "pianzhi"
+      ],
+      "spectacle": "照寧門口的號碼牌木匣，一隻手抽出一張寫著『十七』的牌子，背景是滿屋排隊的人與港口的桅杆。",
+      "glamour_shot": "他把銅板和紙鈔一枚枚數在櫃檯上，摘下眼鏡確認最後一枚；她蓋章的手腕一壓一提。",
+      "setups": [],
+      "payoffs": [
+        "s05-t25"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他自己填的報關單過件",
+        "他付清四十四塊六角，一分不少",
+        "多了一位照規矩登記的新客戶"
+      ],
+      "characters": [
+        "lu-jibai",
+        "s05-yugan",
+        "s05-jia-zhanggui",
+        "wen-zhaoning",
+        "xiao-man",
+        "he-shifu"
+      ],
+      "locations": [
+        "照寧報關行",
+        "通裕錢莊"
+      ],
+      "state": {
+        "time": "四月二號近午",
+        "knowledge": "帳：結清｜客戶 16。他去錢莊領錢回來重新排到十七號，付清四十四塊六角",
+        "carry_forward": "他沒說完的那句"
+      }
+    },
+    {
+      "number": 298,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "另外排號",
+      "youtube_title": "他付完報關費終於開口請她吃飯，她頭也不抬：這要另外排號，老帳房當場笑出聲",
+      "duration_s": 105,
+      "logline": "陸既白第一次把一句私話說完；溫照寧照樣用她的規矩回答。",
+      "hook": "他把那句話說完：「我能不能，」「請妳吃一頓飯？」",
+      "hook_type": "line",
+      "mid_hook": "她撥著算盤，頭也不抬：「這要另外排號。」何師傅在旁邊笑出聲，一口茶差點噴在帳本上。",
+      "extra_hooks": [
+        "小滿從櫃檯底下摸出一疊自己剪的紙板號碼牌：「私事號，」「一分一張！」陸既白真的掏了一分，拿到一張歪歪扭扭的「1」。"
+      ],
+      "conflict": "他什麼都照規矩做完了，這句話卻沒有任何規矩可以排。",
+      "turn": "滿屋子的人以為她會拒絕，她沒有說不——她只是把這件事，排在她的帳後面。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小滿剛跑出去送單，又一路衝回門口，扶著門框大喊：「溫姊，」「港口，」「來了一艘新船！」",
+        "question": "那是誰的船？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "jiaren",
+        "zhichang"
+      ],
+      "spectacle": "照寧滿屋排隊的客人同時轉頭看向櫃檯——陸既白手裡捏著一張小滿用紙板剪的手寫號碼牌『1』。",
+      "glamour_shot": "她低頭撥算盤，沒抬眼就說『另外排號』，說完才抬頭，嘴角那一邊慢慢揚起來。",
+      "setups": [
+        "s05-t31"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次把一句私話完整說出口",
+        "小滿的鐵罐又多了一分"
+      ],
+      "characters": [
+        "lu-jibai",
+        "wen-zhaoning",
+        "he-shifu",
+        "xiao-man",
+        "s05-yugan",
+        "s05-a-fu"
+      ],
+      "locations": [
+        "照寧報關行"
+      ],
+      "state": {
+        "time": "四月二號正午前",
+        "knowledge": "帳：結清｜客戶 16。他請她吃飯，她說另外排號；小滿喊港口來了新船",
+        "carry_forward": "新船"
+      }
+    },
+    {
+      "number": 299,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "不是陸氏的旗",
+      "youtube_title": "一艘不掛陸氏旗、沒登記的新船駛進港，所有人都看向他，她卻先開口：我知道不是你",
+      "duration_s": 115,
+      "logline": "一艘沒人認得的新船駛進瀾港，全照寧都懷疑是陸氏的又一步棋；溫照寧要先決定，她信不信那張只有簽名的約。",
+      "hook": "整間照寧的人擠到窗前：航道上一艘漆白的新輪船拉著長長的汽笛，桅頂的旗子，沒有一個人認得。",
+      "hook_type": "image",
+      "mid_hook": "何師傅翻遍船期表：「沒登記。」陳船長推門進來：「那條船，」「南洋新造的，」「船東不肯露名。」",
+      "extra_hooks": [
+        "小滿一聲不吭地擦著門上的玻璃，嘴角一直往上翹。"
+      ],
+      "conflict": "一條沒有來歷的大船直直開進瀾港，所有人的第一個念頭都是同一個名字。",
+      "turn": "滿屋的目光轉向陸既白，他說：「三條約第一條，」「不是我。」她比任何人都先開口：「我知道。」「但我還是，」「會查三遍。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "一艘引水船從新船邊上飛快駛向舊碼頭；一個穿深藍水手外套的人跳上石階，提著封火漆的油布文件袋，直直朝照寧走來。",
+        "question": "新船為什麼直接找上照寧？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "jiaren",
+        "xuanyi",
+        "huozang"
+      ],
+      "spectacle": "金色的港口，一艘漆成白色的新輪船拉著長長的汽笛駛進航道，桅頂一面誰都不認得的旗。",
+      "glamour_shot": "照寧的玻璃窗前擠滿了人，她站在最前面，側臉被港口的金光照亮，耳邊的銅髮夾一閃。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "她當著眾人信他一次：『我知道不是你』",
+        "查明新船是南洋新造、船東不具名"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-jibai",
+        "he-shifu",
+        "chen-chuanzhang",
+        "xiao-man",
+        "s05-da-fu"
+      ],
+      "locations": [
+        "照寧報關行",
+        "瀾港航道",
+        "舊碼頭石階"
+      ],
+      "state": {
+        "time": "四月二號正午",
+        "knowledge": "帳：結清｜客戶 16。一艘沒登記、不掛陸氏旗的新船進港；她當眾說『我知道不是你』；新船的大副往照寧走來",
+        "carry_forward": "油布文件袋"
+      }
+    },
+    {
+      "number": 300,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "第一筆：自付",
+      "youtube_title": "她在新帳本第一頁寫下他的名字和兩個字：自付；窗外那艘新船的船東，署的是她學徒的名字",
+      "duration_s": 170,
+      "logline": "溫照寧要把陸既白的第一筆記進新帳本，把這一季、這一部的帳收乾淨；而那艘新船的報關單，正排在他後面。",
+      "hook": "大副推門就往櫃檯走：「報關。」她指了指門邊的木匣：「請拿號碼牌。」他愣了一下，抽到十八號，在長凳上坐下。",
+      "hook_type": "line",
+      "mid_hook": "長凳上，大副膝上的油布袋封著火漆——印的不是船錨，是一隻小小的、折歪了的紙船。",
+      "extra_hooks": [
+        "她翻開一本全新的帳本，在扉頁寫下一行，把帳本轉過去給他看：『陸既白，第一筆：自付。』「下一筆，」「再談。」",
+        "她把手伸過櫃檯：「成交。」他看著那隻沾著墨的手，握了一下就放開——這是他們之間的第一次握手。"
+      ],
+      "conflict": "主線的帳全收完了：她還清了一千六百零三塊，他交出了印、交出了控制、照規矩付了錢；只剩這一筆要記，和一張排在他後面的單。",
+      "turn": "大家以為最後一個驚喜會是他；她把他的名字寫進新帳本、跟他握手成交之後，真正讓全屋安靜的，是排在他後面的十八號。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "「十八號。」大副把報關單攤在櫃檯上，門口的小滿壓了壓鴨舌帽。窗外，一艘不屬於陸氏的新船緩緩進港；她的指尖停在船東署名一欄——歪歪扭扭兩個字，是她從前的學徒：小滿。",
+        "question": "小滿的船，是誰付的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huozang",
+        "zhichang",
+        "jiaren"
+      ],
+      "spectacle": "照寧的窗框裡，一艘白色新輪船在金色的光裡緩緩駛進港口，汽笛聲壓過整條舊碼頭街。",
+      "glamour_shot": "她在新帳本扉頁落筆，鋼筆尖一提，抬眼看他；他站在櫃檯外，一張帳桌隔開兩人，桌上不再有任何船錨印。",
+      "setups": [],
+      "payoffs": [
+        "s05-t04",
+        "s05-t31",
+        "m12"
+      ],
+      "reveals": [
+        "m12"
+      ],
+      "general_payoffs": [
+        "新帳本第一筆：陸既白，自付",
+        "他成了照寧客戶名冊上的第十七號",
+        "請吃飯的事排進『下一筆，再談』",
+        "兩人第一次握手，以客戶與報關行成交"
+      ],
+      "characters": [
+        "wen-zhaoning",
+        "lu-jibai",
+        "s05-da-fu",
+        "xiao-man",
+        "he-shifu",
+        "s05-yugan",
+        "s05-a-fu",
+        "tang-ma"
+      ],
+      "locations": [
+        "照寧報關行",
+        "瀾港航道"
+      ],
+      "state": {
+        "time": "四月二號正午",
+        "knowledge": "帳：結清；新帳本第一筆『陸既白，自付』｜客戶 17（第十七號：陸既白）。主線收完；新船的船東署名是她從前的學徒小滿",
+        "carry_forward": "第二部：小滿的船是誰付的"
+      }
+    }
+  ]
+}
