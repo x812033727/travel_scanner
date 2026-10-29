@@ -21,8 +21,8 @@
     "category_id": 28,
     "made_for_kids": false,
     "default_language": "zh-TW",
-    "title": "你跟 AI 說的話誰看得到？關掉訓練，還有兩個開關開著",
-    "description": "關掉 AI 的訓練開關，你打進去的字就沒人看得到了嗎？這支用一份假履歷，帶你在 Gemini、Claude、ChatGPT 找到訓練、記憶、人工審查三個開關，算出你今天打的字最晚留到哪一天。\n給每天拿 AI 改履歷、回信、整理資料，已經照網路教學關掉訓練的人。\n\n本頻道使用 Claude 協助製作影片。\n\n設定位置（依各家官方說明頁，2026-10-29 查）\nGemini（電腦版 gemini.google.com）\n・保留活動記錄：設定與說明 → 活動記錄 → 畫面上方「開啟」→「關閉」或「關閉並刪除活動記錄」\n・自動刪除：同一頁的「選擇自動刪除選項」，3、18、36 個月或不自動刪除（預設 18 個月）\n・個人化記憶：設定與說明 → 個人化智慧服務 → 個人化記憶（要先開著保留活動記錄）\n・臨時對話：「新對話」旁邊的「臨時對話」\nClaude\n・訓練：Settings → Privacy → Help Improve our AI models\n・記憶：Settings → Your Claude → Memory from chats（Pause memory 暫停；Reset memory 全部刪除、無法復原）；刪單一條記憶：Your memory 旁邊的 Manage\n・只有這一次對話不用記憶：送出第一則訊息之前，在「+」選單關掉 Memory\n・Incognito：在專案外開新對話時，右上角的幽靈圖示\nChatGPT\n・記憶：Settings 裡的 Personalization（learn.chatgpt.com）\n・OpenAI 說明中心（help.openai.com）2026-10-29 用本頻道的工具讀取時回傳 403，所以片中沒有 ChatGPT 的訓練開關名稱、臨時對話的保留天數和人工審查的說明；請打開你自己的設定頁核對。\n\n保留期限實算：把官方頁寫的期限加到 2026-10-29 00:00 UTC，用 Node.js v22.22.0 執行 lifespan.mjs（2026-10-29）。Gemini「審查員讀過」那一列假設當天就被審查，官方頁沒有寫三年從哪一天起算。Claude 沒刪的一般對話沒有固定保留天數。\n\n片中的假履歷（林測試、0900-000-000）全部是編的。第 4 章「答不答得出來」是依官方說明的預期結果，沒有登入任何帳號實測；設定步驟全部引用官方說明頁，沒有錄任何人的帳號畫面。只談個人方案，不談企業版與 API。",
+    "title": "你跟 AI 說的話誰看得到？關掉訓練，人工審查還開著",
+    "description": "關掉 AI 的訓練開關，你打進去的字就沒人看得到了嗎？這支用一份假履歷，帶你在 Gemini、Claude 找到訓練、記憶、人工審查三個開關（ChatGPT 先標出記憶在哪），算出你今天打的字最晚留到哪一天。\n給每天拿 AI 改履歷、回信、整理資料，已經照網路教學關掉訓練的人。\n\n本頻道使用 Claude 協助製作影片。\n\n設定位置（依各家官方說明頁，2026-10-29 查）\nGemini（電腦版 gemini.google.com）\n・保留活動記錄：設定與說明 → 活動記錄 → 畫面上方「開啟」→「關閉」或「關閉並刪除活動記錄」\n・自動刪除：同一頁的「選擇自動刪除選項」，3、18、36 個月或不自動刪除（預設 18 個月）\n・個人化記憶：設定與說明 → 個人化智慧服務 → 個人化記憶（要先開著保留活動記錄）\n・臨時對話：「新的對話」旁邊的「臨時對話」\nClaude\n・訓練：Settings → Privacy → Help Improve our AI models\n・記憶：Settings → Your Claude → Memory from chats（Pause memory 暫停；Reset memory 全部刪除、無法復原）；刪單一條記憶：Your memory 旁邊的 Manage\n・只有這一次對話不用記憶：送出第一則訊息之前，在「+」選單關掉 Memory\n・Incognito：在專案外開新對話時，右上角的幽靈圖示\nChatGPT\n・記憶：Settings 裡的 Personalization（learn.chatgpt.com）\n・OpenAI 說明中心（help.openai.com）2026-10-29 用本頻道的工具讀取時回傳 403，所以片中沒有 ChatGPT 的訓練開關名稱、臨時對話的保留天數和人工審查的說明；請打開你自己的設定頁核對。\n\n保留期限實算：把官方頁寫的期限加到 2026-10-29 00:00 UTC，用 Node.js v22.22.0 執行 lifespan.mjs（2026-10-29）。Gemini「審查員讀過」那一列假設當天就被審查，官方頁沒有寫三年從哪一天起算。Claude 沒刪的一般對話沒有固定保留天數。\n\n片中的假履歷（林測試、0900-000-000）全部是編的。第 4 章「答不答得出來」是依官方說明的預期結果，沒有登入任何帳號實測；設定步驟全部引用官方說明頁，沒有錄任何人的帳號畫面。只談個人方案，不談企業版與 API。",
     "tags": [
       "AI 隱私設定",
       "ChatGPT 隱私",
@@ -712,7 +712,7 @@
           [
             "人工審查",
             "仍可能",
-            "被標記才看",
+            "回饋或被標記才看",
             "—"
           ],
           [
@@ -753,7 +753,7 @@
         },
         {
           "id": "yvka",
-          "text": "人工審查，Gemini 仍可能有人讀；Claude 要被安全系統標記，才會有人看。",
+          "text": "人工審查，Gemini 仍可能有人讀；Claude 要你送回饋或被安全系統標記，才會有人看。",
           "reveal": 1
         },
         {
@@ -1449,7 +1449,7 @@
           ]
         },
         "right": {
-          "heading": "臨時對話・Incognito",
+          "heading": "臨時對話・單次關記憶",
           "icon": "lock",
           "points": [
             "不用既有的記憶",
@@ -1465,7 +1465,7 @@
       "claims": [
         "e1",
         "c4",
-        "c29"
+        "c20"
       ],
       "lines": [
         {
@@ -1475,7 +1475,7 @@
         },
         {
           "id": "3nbs",
-          "text": "同一句改到臨時對話或 Incognito 裡問，它不用既有的記憶，應該答不出來。",
+          "text": "同一句改到臨時對話，或 Claude 單次關掉記憶的對話裡問，應該答不出來。",
           "reveal": 1
         }
       ]
@@ -2040,7 +2040,7 @@
         },
         {
           "id": "dtxb",
-          "text": "在 Gemini，想留記憶就別關，改成自動刪除三個月。"
+          "text": "在 Gemini 只能二選一：關掉，記憶跟著停；想留記憶，至少把自動刪除改成三個月。"
         },
         {
           "id": "ejk9",
