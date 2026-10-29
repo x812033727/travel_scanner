@@ -95,7 +95,7 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2025-10-banshu-laogong` | 契約第七條：不談感情 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-10-haomen-yuesao` | 住進唐家的治療師 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-11-yunmiao` | 茶館老闆娘活了兩千歲 | **done**：5 季 300 集，validate 零錯誤 |
-| `2026-11-nanian-dongzhi` | 冬至那天我嫁給了倒數的人 | outline；五季細綱代理撰寫中 |
+| `2026-11-nanian-dongzhi` | 冬至那天我嫁給了倒數的人 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-12-mantuoluo` | 瀾港的帳，一筆都不能是他給的 | outline；五季細綱代理撰寫中 |
 | `2026-13-zhouyi-jiye` | 四樓的燈整夜都亮 | outline；五季細綱代理撰寫中 |
 | `2025-12-zhaoyang-siwo` | 晨光落在第七張圖 | outline；五季細綱代理撰寫中 |
