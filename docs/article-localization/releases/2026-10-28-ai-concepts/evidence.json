@@ -1,0 +1,498 @@
+{
+  "schema": "ai-concepts-sanitized-release-evidence-v1",
+  "status": "released-and-accepted",
+  "target_sha": "7e380b739645d942cf225c8c70ddb7290d253641",
+  "manifest_sha256": "26e5a4626ea069118ea232383e15c20d149ff09246ce1ce7839caf4d45eeeffe",
+  "content_pr": "https://github.com/x812033727/travel_scanner/pull/1914",
+  "scope": {
+    "slugs": [
+      "ai-term-foundation-model",
+      "ai-term-tokenization"
+    ],
+    "new_locales": [
+      "en",
+      "ja",
+      "ko",
+      "zh-CN"
+    ],
+    "published_translations": 8,
+    "source_complete_rows_unchanged": 1,
+    "source_corrections": 1,
+    "overall_localization_backlog_complete": false
+  },
+  "backup": {
+    "bytes": 573479205,
+    "sha256": "47d29b0aa8a7ae00a104dabe47e74a40ffb707977f37cd23d5ee6729c13750c6",
+    "dump_exit": 0,
+    "restore_exit": 0,
+    "restore_verified": true,
+    "retained_on_host": true,
+    "full_dump_downloaded": false
+  },
+  "runtime": {
+    "deployment_performed_by_this_release": false,
+    "already_deployed_sha": "7e380b739645d942cf225c8c70ddb7290d253641",
+    "same_api_image_id": "sha256:c3a065c90b84b9f320581592368c5966521f66ee5c25d9ee5e018d798e62bc29",
+    "runtime_packs_verified": 2,
+    "runtime_asset_files_verified": 30
+  },
+  "isolated_rehearsal": {
+    "native_operations": [
+      9,
+      9,
+      0
+    ],
+    "protected_tables_unchanged": 167,
+    "whole_database_replay_tables_unchanged": 167,
+    "new_revisions": 18,
+    "new_audit_rows": 18
+  },
+  "publication": {
+    "completed_at": "2026-10-29T01:13:09.104042+00:00",
+    "native_operations": [
+      9,
+      9,
+      0
+    ],
+    "journal_sha256": "0b32ae1b42944fbbb42080a49e133cb1e5945f9c96ea0e521da91c2074e95dd1",
+    "database_readback_sha256": "0de858aef06d6a4c833df2bdebbfed50532516b3f588f6bc9a8edd2d1ab165fc",
+    "documents": [
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "zh-TW",
+        "published_version": 10,
+        "document_sha256": "7f3929a3d86875b27763e21c674da5729e68cd6e63f2c9f5bcbac9a2d67201e8"
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "144df57833a0491b6702e381521e268886b9b0c22f705b98e772cd983c4afc77"
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "93ad7e557bf8e33ff625dbe1a3ee93e45c42149a2d7200a2ef0774ceb2e50f8b"
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "0a74ada6de3856bb9a944f740c5b11f47ecf71f607efb5fb4d6196262904ff98"
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "f3075643714ff898a5af0a5ee4736e56a6139d6e725e06c94a6b962df20bb65d"
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "zh-TW",
+        "published_version": 12,
+        "document_sha256": "e7f4742aaacaba918503108e6b07cfbfd1dc24536f3a3dca6f2f7eeb7fc20364"
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "en",
+        "published_version": 2,
+        "document_sha256": "fb816d02e8ffd6cc9e14df87bb5d9c1d42d5b2023c47f19d060177dea0584b48"
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "ja",
+        "published_version": 2,
+        "document_sha256": "54966a696831a5ea8b7a51b4d54231e472d703087702073d3d85915e865990d9"
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "ko",
+        "published_version": 2,
+        "document_sha256": "923c9f31a2aa1ae3a7b2d4b7ecf315351af4924885cce90a25f1fe06cf3c5b8a"
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "zh-CN",
+        "published_version": 2,
+        "document_sha256": "d97c1ba683124c82ba19a65919cf260e01e414771e2b50f763c2863e61867ce6"
+      }
+    ],
+    "replay_no_changes": true
+  },
+  "source_correction": {
+    "slug": "ai-term-tokenization",
+    "locale": "zh-TW",
+    "from_published_version": 10,
+    "to_published_version": 12,
+    "pointers": [
+      "/hero/alt",
+      "/blocks/7/alt"
+    ],
+    "to_document_sha256": "e7f4742aaacaba918503108e6b07cfbfd1dc24536f3a3dca6f2f7eeb7fc20364",
+    "source_jpeg_unchanged": true,
+    "svg_visible_pixels_unchanged": true
+  },
+  "public_acceptance": {
+    "pages": 10,
+    "manifest_assets": 26,
+    "supplemental_original_images": 2,
+    "public_media": 28,
+    "screenshots": 20,
+    "independent_reviewers": 2,
+    "actual_http_requests": 113,
+    "http_200": 113,
+    "minimum_request_start_interval_ms": 1300.0,
+    "strict_configured_minimum_met": true,
+    "all_sitemap_children_read": true,
+    "screenshots_with_review_limitations": [
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "zh-TW",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-foundation-model/zh-TW-desktop.png",
+        "sha256": "8ef70b4ad2f49c54da6ae2d8ae7383a0dbebb5780b1920f9df60ae0fd518d550",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "zh-TW",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-foundation-model/zh-TW-mobile.png",
+        "sha256": "d5e2cd17b601aa5acb7031c7a9ad7500790decd5f82b4c53b1dd0b9c9540aa7e",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence.",
+          "The original mobile screenshot shows the initial left portion of the intentionally horizontal-scroll diagram. Captured DOM confirms overflow-x-auto and a 1180px diagram in a 390px scroller with no page-wide overflow. Off-screen diagram interaction is not visually proven by this static mobile screenshot; the complete diagram was visually inspected in the original desktop screenshot and its supplementary region.",
+          "The fixed mobile bottom navigation appears over a section of the full-page screenshot near the initial viewport bottom. No unobstructed view of those covered pixels or live scroll interaction is claimed."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "en",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-foundation-model/en-desktop.png",
+        "sha256": "9a486dd5596c082a238a8260a1093eabdfe4ac1a195ffe7d1597c098a195c519",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "en",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-foundation-model/en-mobile.png",
+        "sha256": "ee0de3c7a7570cf919df06d45e5cbcac909ee691b66ff1d0cab30227da6a35cd",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence.",
+          "The original mobile screenshot shows the initial left portion of the intentionally horizontal-scroll diagram. Captured DOM confirms overflow-x-auto and a 1180px diagram in a 390px scroller with no page-wide overflow. Off-screen diagram interaction is not visually proven by this static mobile screenshot; the complete diagram was visually inspected in the original desktop screenshot and its supplementary region.",
+          "The fixed mobile bottom navigation appears over a section of the full-page screenshot near the initial viewport bottom. No unobstructed view of those covered pixels or live scroll interaction is claimed."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "ja",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-foundation-model/ja-desktop.png",
+        "sha256": "ea07d3b04867d0326366126d642072fc97c5e40091f69817a6c531f3b43b3ce5",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "ja",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-foundation-model/ja-mobile.png",
+        "sha256": "fd47a1d4122314c943898c96b0a0709829d1fc150ab0130771e86b38d8047aeb",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence.",
+          "The original mobile screenshot shows the initial left portion of the intentionally horizontal-scroll diagram. Captured DOM confirms overflow-x-auto and a 1180px diagram in a 390px scroller with no page-wide overflow. Off-screen diagram interaction is not visually proven by this static mobile screenshot; the complete diagram was visually inspected in the original desktop screenshot and its supplementary region.",
+          "The fixed mobile bottom navigation appears over a section of the full-page screenshot near the initial viewport bottom. No unobstructed view of those covered pixels or live scroll interaction is claimed."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "ko",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-foundation-model/ko-desktop.png",
+        "sha256": "bcfa698ef145bf52b40a861dab3c492700cc64cd0212edad12a9bb629b7ba9c3",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "ko",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-foundation-model/ko-mobile.png",
+        "sha256": "6687b54df9ee8de6474994a9f5f8cd75429d3e4d8093b74907e5b394b1909eaf",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence.",
+          "The original mobile screenshot shows the initial left portion of the intentionally horizontal-scroll diagram. Captured DOM confirms overflow-x-auto and a 1180px diagram in a 390px scroller with no page-wide overflow. Off-screen diagram interaction is not visually proven by this static mobile screenshot; the complete diagram was visually inspected in the original desktop screenshot and its supplementary region.",
+          "The fixed mobile bottom navigation appears over a section of the full-page screenshot near the initial viewport bottom. No unobstructed view of those covered pixels or live scroll interaction is claimed."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "zh-CN",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-foundation-model/zh-CN-desktop.png",
+        "sha256": "3a89cf43a9d93f679c50a4b55a707acd35ae7dc7ba583c234cc8b7ba0c520282",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence."
+        ]
+      },
+      {
+        "slug": "ai-term-foundation-model",
+        "locale": "zh-CN",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-foundation-model/zh-CN-mobile.png",
+        "sha256": "858b50f53990d5f17a2a5980335a8103365f5af41b9b4db991d0297f0ca408cd",
+        "limitations": [
+          "Static original full-page PNG review only; no new live page requests, hover, keyboard, screen-reader or scrolling interaction was performed.",
+          "The image tool downscaled the original full-page image for display. Original-file region enlargements were also inspected for mobile title/body glyphs and complete desktop diagram labels; these supplements do not replace the original PNG evidence.",
+          "This is visual layout and rendered glyph review, not a new factual/editorial review of every sentence.",
+          "The original mobile screenshot shows the initial left portion of the intentionally horizontal-scroll diagram. Captured DOM confirms overflow-x-auto and a 1180px diagram in a 390px scroller with no page-wide overflow. Off-screen diagram interaction is not visually proven by this static mobile screenshot; the complete diagram was visually inspected in the original desktop screenshot and its supplementary region.",
+          "The fixed mobile bottom navigation appears over a section of the full-page screenshot near the initial viewport bottom. No unobstructed view of those covered pixels or live scroll interaction is claimed."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "zh-TW",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-tokenization/zh-TW-desktop.png",
+        "sha256": "9fe11a05832c8ee8f0c1a23adb815a00a77cca66485dacbc4c2456c0306c6ec1",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "zh-TW",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-tokenization/zh-TW-mobile.png",
+        "sha256": "0bc79d255570378bec4c0a7728777ef23d5f04f054229f410004d4691956309a",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states.",
+          "The full-width diagram is shown at its initial horizontal scroll position, so only its left portion appears in the mobile PNG. Saved DOM identifies an overflow-x-auto container with tabindex=0 and role=group; capture metrics record page width/scrollWidth 390/390, diagram parent width/scrollWidth 390/1200 and image width 1180. This is the existing horizontal scroller, not evidence of page clipping. Touch/keyboard horizontal scrolling was not exercised by this reviewer.",
+          "The fixed mobile navigation appears once at the initial viewport position within the full-page PNG and overlays a small part of the summary in that static image. This review did not interactively scroll the live page to inspect transient occlusion."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "en",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-tokenization/en-desktop.png",
+        "sha256": "5ce0b83cc0e35f1d08fa9693fded57fa0c3612c811fa182bbf9e9266b377d361",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "en",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-tokenization/en-mobile.png",
+        "sha256": "d2aae6ae4fdfae3d702f1f5c7546b7012f60a57a367536c02fa065a022fa9ca2",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states.",
+          "The full-width diagram is shown at its initial horizontal scroll position, so only its left portion appears in the mobile PNG. Saved DOM identifies an overflow-x-auto container with tabindex=0 and role=group; capture metrics record page width/scrollWidth 390/390, diagram parent width/scrollWidth 390/1200 and image width 1180. This is the existing horizontal scroller, not evidence of page clipping. Touch/keyboard horizontal scrolling was not exercised by this reviewer.",
+          "The fixed mobile navigation appears once at the initial viewport position within the full-page PNG and overlays a small part of the summary in that static image. This review did not interactively scroll the live page to inspect transient occlusion."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "ja",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-tokenization/ja-desktop.png",
+        "sha256": "5f42a7c923ad4c1b8a1d4606cf6b7a47625d2814117daed8f251a0b96231b762",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "ja",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-tokenization/ja-mobile.png",
+        "sha256": "323e0c1dada956822c4419e9d1a01e38449fd01ee2cf7fa94d2bbc8ca89b43e1",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states.",
+          "The full-width diagram is shown at its initial horizontal scroll position, so only its left portion appears in the mobile PNG. Saved DOM identifies an overflow-x-auto container with tabindex=0 and role=group; capture metrics record page width/scrollWidth 390/390, diagram parent width/scrollWidth 390/1200 and image width 1180. This is the existing horizontal scroller, not evidence of page clipping. Touch/keyboard horizontal scrolling was not exercised by this reviewer.",
+          "The fixed mobile navigation appears once at the initial viewport position within the full-page PNG and overlays a small part of the summary in that static image. This review did not interactively scroll the live page to inspect transient occlusion."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "ko",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-tokenization/ko-desktop.png",
+        "sha256": "ea8460b5a6be0ecd14fdb35d88d6f238776ce93500257d99045cc95ecaa98aa3",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "ko",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-tokenization/ko-mobile.png",
+        "sha256": "032a9bcf17661d498e979c199d0b33dfee20cfd77cc995a07f595baad2f31563",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states.",
+          "The full-width diagram is shown at its initial horizontal scroll position, so only its left portion appears in the mobile PNG. Saved DOM identifies an overflow-x-auto container with tabindex=0 and role=group; capture metrics record page width/scrollWidth 390/390, diagram parent width/scrollWidth 390/1200 and image width 1180. This is the existing horizontal scroller, not evidence of page clipping. Touch/keyboard horizontal scrolling was not exercised by this reviewer.",
+          "The fixed mobile navigation appears once at the initial viewport position within the full-page PNG and overlays a small part of the summary in that static image. This review did not interactively scroll the live page to inspect transient occlusion."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "zh-CN",
+        "viewport": "desktop",
+        "path": "screenshots/ai-term-tokenization/zh-CN-desktop.png",
+        "sha256": "e8a788822e7b267e8159d486ba40928aadeb8082c976b2f65eb42c95c42be87f",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states."
+        ]
+      },
+      {
+        "slug": "ai-term-tokenization",
+        "locale": "zh-CN",
+        "viewport": "mobile",
+        "path": "screenshots/ai-term-tokenization/zh-CN-mobile.png",
+        "sha256": "af0a46b3a6c538fa7f2b10dd38b29a6adedf2df3d0241fdd9d5d8ca1b941b0dd",
+        "limitations": [
+          "Visual-only review of each original full-page PNG from header through footer; the image viewing tool automatically scaled the display to 6000 px height. No crop or derived image replaced an original.",
+          "This static visual review does not repeat the independent translation/fact review or prove link navigation, interactive behavior, screen-reader output, or hover states.",
+          "The full-width diagram is shown at its initial horizontal scroll position, so only its left portion appears in the mobile PNG. Saved DOM identifies an overflow-x-auto container with tabindex=0 and role=group; capture metrics record page width/scrollWidth 390/390, diagram parent width/scrollWidth 390/1200 and image width 1180. This is the existing horizontal scroller, not evidence of page clipping. Touch/keyboard horizontal scrolling was not exercised by this reviewer.",
+          "The fixed mobile navigation appears once at the initial viewport position within the full-page PNG and overlays a small part of the summary in that static image. This review did not interactively scroll the live page to inspect transient occlusion."
+        ]
+      }
+    ],
+    "qa_sha256": "38f17a5afe6c7a177389a54a656eb01e582ed11bd02d6744ba19beddf28d9121",
+    "independent_review_sha256": "737d3d1f1829af3b7b58af18abbbfeab37cdf582898599dfedecc8918a13de7d",
+    "collector_manifest_sha256": "708f02aa85ed0dd2571c2c5561395a35f1cb608682bf54ab513f439de582a5e9"
+  },
+  "links": {
+    "new_unpublished_findings": 28,
+    "confirmed_plain_text_references": 28,
+    "unexpected_new_findings": 0,
+    "global_zero_findings_claimed": false
+  },
+  "finalization": {
+    "completed_at": "2026-10-29T01:29:26.944801+00:00",
+    "own_hold_cleared": true,
+    "host_verifier_pass": 11,
+    "host_verifier_fail": 0,
+    "host_verifier_sha256": "bc17bb2d93dbc05a6429e24c7f63b1f581fff9464f52079c50b2c59d480edcb0",
+    "backup_and_sandbox_retained": true
+  },
+  "native_progress": {
+    "stage_counts": {
+      "translated": 8,
+      "rendered": 8,
+      "reviewed": 8,
+      "assembled": 8,
+      "draft_imported": 8,
+      "published": 8,
+      "browser_verified": 8
+    },
+    "article_locale_issues": 0,
+    "evidence_errors": 0,
+    "live_database_checked": false,
+    "accounting_receipt_sha256": "72bc334d83de92da446d9c2ec7a9819c762ea2d43903321fd7acfc9511e04719",
+    "progress_sha256": "81424eaa3dd70a8b03aac7e90535666ef93362ce6fc2b04c7a0e7ec50fbeb6af"
+  },
+  "remaining_public_coverage": {
+    "captured_at": "2026-10-29T01:29:58.605851+00:00",
+    "census_sha256": "460d2c0a6a83842186a675fee09f85b9f03fb455df1bd122e6359814ce2f4948",
+    "read_only": true,
+    "isolation": "REPEATABLE READ",
+    "by_kind": {
+      "howto": {
+        "public_articles": 159,
+        "complete": 51,
+        "incomplete": 108,
+        "missing_documents": 432,
+        "missing_by_locale": {
+          "en": 108,
+          "ja": 108,
+          "ko": 108,
+          "zh-CN": 108
+        }
+      },
+      "intel": {
+        "public_articles": 23,
+        "complete": 11,
+        "incomplete": 12,
+        "missing_documents": 48,
+        "missing_by_locale": {
+          "en": 12,
+          "ja": 12,
+          "ko": 12,
+          "zh-CN": 12
+        }
+      },
+      "life": {
+        "public_articles": 2065,
+        "complete": 1413,
+        "incomplete": 652,
+        "missing_documents": 2608,
+        "missing_by_locale": {
+          "en": 652,
+          "ja": 652,
+          "ko": 652,
+          "zh-CN": 652
+        }
+      }
+    },
+    "totals": {
+      "public_articles": 2247,
+      "complete": 1475,
+      "incomplete": 772,
+      "missing_documents": 3088
+    },
+    "excluded_draft_articles": 119,
+    "census_limit": "Visibility and published pointers; full public body verification is scoped to this accepted cohort."
+  },
+  "receipt_sha256": {
+    "backup-restore": "9aa19a8810a6732f3c863c3062bdaa12bbc26b598269cb801e08064ebb23bd6b",
+    "mirror": "7b43065db1b33a94f101c5401b885f8456cb07d2163bab9f77f48d5bc51e5526",
+    "rehearse": "7c044926e6f936e4c061b997704ee2cdce0e06e0f8da01062e6f870774bd8494",
+    "live-dry-run": "23b2921ca8eae71e9e3b13380999d6ba76457eddfc50027e4ab3ac2c2a6021ac",
+    "drafts": "3ff04620cbda2f0779d8293a7c0265d1e20298f7d43db43f0ccc24ae0542b5b8",
+    "publish-articles": "da86897a775e849cac2cd20a970699832d596cb993ef04ad04da1125fe2d31d9",
+    "publish-hubs": "bdfa81afbba4b645c4fb410810925aa5c4ccdf127f4fb6188bd4060e8108f0cf",
+    "live-replay": "884f062203f9de20cee2d01f0408cfda062906beb0aff2ff6b9eb19f0bc6fc24",
+    "links": "fbb059d7c23237d848c27416db99da55359c405020931d068cbb795fa17d0b35",
+    "finalize": "f0b47ec36428cd91315f00eaaffc4d617637fd3ad004124cb968217080253113"
+  }
+}
