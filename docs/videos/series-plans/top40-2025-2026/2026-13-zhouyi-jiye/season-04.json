@@ -1,0 +1,4790 @@
+{
+  "number": 4,
+  "title": "交換",
+  "theme": "互相托住不是不欠，是欠了就還：一條線的人去救另一條線。",
+  "start_state": "冬天。以澄被反告、停職留薪；靜宜的監護權調解卡在財產申報；曼禾的合約剩三個月，陸崇山開始安排正式的聯姻對象見面；蘇浩的債主改找上門。",
+  "end_state": "陸崇山逼聯姻的原因揭開（m09：他自己當年也是聯姻，陸霽的母親在婚姻裡被逼走，他後悔三十年）；周啟明轉走的存款去向揭開（m10：轉進放貸給蘇浩的鴻利投資）。曼禾把蘇浩的借款文件交給靜宜的律師，成了周啟明轉移財產的證據（一條線救另一條）；程既白辭去駐點法務，以獨立律師身分代理以澄的反告訴訟；陸霽在董事會上拒絕父親安排的聯姻，被拿掉繼承順位。最後一集，曼禾在四樓收到陸霽寄來的一份文件——合約提前終止，違約金他自己付；她拿著文件衝下樓，雜貨店門口沒有人，只剩一盤下到一半的象棋。最後一格：曼禾坐在方阿嬤的藤椅上，把那盤棋替陸霽走完一步，抬頭看向巷口。",
+  "guest_cast": [
+    {
+      "id": "s04-qiao-nianzhen",
+      "name": "喬念真",
+      "role": "喬家千金，陸崇山替陸霽安排的世交聯姻對象；留學回來的策展人，自己也不想被安排",
+      "appearance": "東亞女性，三十歲，及肩黑直髮別在耳後、細長眉眼、珍珠白高領毛衣配駝色長大衣，手上只戴一只舊手錶；氣質安靜，笑的時候只動嘴角"
+    },
+    {
+      "id": "s04-ye-shuheng",
+      "name": "葉書蘅",
+      "role": "靜宜的家事律師，程既白的大學同學；說話慢、文件一頁一頁編號",
+      "appearance": "東亞女性，四十歲，短鮑伯頭、細框眼鏡、深藍套裝，抱著貼滿彩色索引標籤的卷宗；眼神銳利但語氣溫和"
+    },
+    {
+      "id": "s04-zou-bingheng",
+      "name": "鄒秉衡",
+      "role": "葛承峰的訴訟律師，擅長拖延與和解施壓",
+      "appearance": "東亞男性，五十歲，灰白側分油頭、銀框眼鏡、三件式西裝配口袋巾，公事包擦得發亮；笑起來很客氣，說話慢條斯理"
+    },
+    {
+      "id": "s04-luo-qiyao",
+      "name": "羅啟耀",
+      "role": "陸氏冷鏈物流董事兼倉儲事業部總經理；三年前把港區三號倉的冷凍庫租給鴻利投資",
+      "appearance": "東亞男性，五十五歲，圓臉、稀疏的頭髮往後梳、金色袖扣、深灰西裝略緊；說話時愛轉手上的玉戒"
+    },
+    {
+      "id": "s04-zhong-huiru",
+      "name": "鍾惠如",
+      "role": "澄港地方法院民事庭審判長，審理葛承峰告以澄洩密一案",
+      "appearance": "東亞女性，五十三歲，花白短髮、黑色法袍、老花眼鏡低掛鼻尖，翻卷宗的手很穩；表情少、聽得多"
+    },
+    {
+      "id": "s04-guo-xinhong",
+      "name": "郭信宏",
+      "role": "永和派出所的值班員警，受理蘇浩的報案",
+      "appearance": "東亞男性，三十八歲，平頭、深藍警察制服、肩上掛無線電，桌上一杯涼掉的豆漿；說話平實不催人"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "程既白辭職以後要做什麼？",
+      "setup_episode": 185,
+      "payoff_episode": 199
+    },
+    {
+      "id": "s04-t02",
+      "question": "以澄的停職令什麼時候解除？",
+      "setup_episode": 181,
+      "payoff_episode": 237
+    },
+    {
+      "id": "s04-t03",
+      "question": "葛承峰的反告哪一天開庭？",
+      "setup_episode": 182,
+      "payoff_episode": 216
+    },
+    {
+      "id": "s04-t04",
+      "question": "禾間撐得過這個冬天嗎？",
+      "setup_episode": 183,
+      "payoff_episode": 189
+    },
+    {
+      "id": "s04-t05",
+      "question": "陸崇山替陸霽排的聯姻對象是誰？",
+      "setup_episode": 186,
+      "payoff_episode": 201
+    },
+    {
+      "id": "s04-t06",
+      "question": "鴻利的人下一個會找上誰？",
+      "setup_episode": 181,
+      "payoff_episode": 211
+    },
+    {
+      "id": "s04-t07",
+      "question": "自己算的計算書，交出去也算洩密嗎？",
+      "setup_episode": 182,
+      "payoff_episode": 185
+    },
+    {
+      "id": "s04-t08",
+      "question": "曼禾這次會不會又替弟弟付錢？",
+      "setup_episode": 181,
+      "payoff_episode": 182
+    },
+    {
+      "id": "s04-t09",
+      "question": "合約第十二條，誰會先用？",
+      "setup_episode": 187,
+      "payoff_episode": 230
+    },
+    {
+      "id": "s04-t10",
+      "question": "陸崇山怎麼知道那是一份合約？",
+      "setup_episode": 187,
+      "payoff_episode": 188
+    },
+    {
+      "id": "s04-t11",
+      "question": "程既白的舊和解會不會讓他不能代理以澄？",
+      "setup_episode": 188,
+      "payoff_episode": 199
+    },
+    {
+      "id": "s04-t12",
+      "question": "以澄會不會用申訴換撤告？",
+      "setup_episode": 191,
+      "payoff_episode": 192
+    },
+    {
+      "id": "s04-t13",
+      "question": "安琪敢不敢上法庭作證？",
+      "setup_episode": 192,
+      "payoff_episode": 232
+    },
+    {
+      "id": "s04-t14",
+      "question": "鄒秉衡聲請程既白迴避，會不會成立？",
+      "setup_episode": 205,
+      "payoff_episode": 208
+    },
+    {
+      "id": "s04-t15",
+      "question": "周母知不知道兒子把錢轉走了？",
+      "setup_episode": 193,
+      "payoff_episode": 228
+    },
+    {
+      "id": "s04-t16",
+      "question": "周啟明會不會拿宋川反咬靜宜？",
+      "setup_episode": 193,
+      "payoff_episode": 224
+    },
+    {
+      "id": "s04-t17",
+      "question": "陸霽在查的那筆倉儲帳是什麼？",
+      "setup_episode": 196,
+      "payoff_episode": 218
+    },
+    {
+      "id": "s04-t18",
+      "question": "安琪雲端裡的原始檔保得住嗎？",
+      "setup_episode": 195,
+      "payoff_episode": 196
+    },
+    {
+      "id": "s04-t19",
+      "question": "曼禾會不會說出那個帳號？",
+      "setup_episode": 198,
+      "payoff_episode": 200
+    },
+    {
+      "id": "s04-t20",
+      "question": "陸宅書房裡蓋著的舊婚照是誰？",
+      "setup_episode": 205,
+      "payoff_episode": 207
+    },
+    {
+      "id": "s04-t21",
+      "question": "喬念真為什麼親自找上禾間？",
+      "setup_episode": 202,
+      "payoff_episode": 203
+    },
+    {
+      "id": "s04-t22",
+      "question": "喬念真站在哪一邊？",
+      "setup_episode": 203,
+      "payoff_episode": 209
+    },
+    {
+      "id": "s04-t23",
+      "question": "曼禾會不會先用第十二條退出？",
+      "setup_episode": 209,
+      "payoff_episode": 210
+    },
+    {
+      "id": "s04-t24",
+      "question": "曼禾交出的借款合約，法院能不能用？",
+      "setup_episode": 201,
+      "payoff_episode": 202
+    },
+    {
+      "id": "s04-t25",
+      "question": "給當時的公司法務看，算洩漏給外人嗎？",
+      "setup_episode": 208,
+      "payoff_episode": 233
+    },
+    {
+      "id": "s04-t26",
+      "question": "小桐想替自己的鑰匙挑什麼鑰匙圈？",
+      "setup_episode": 206,
+      "payoff_episode": 236
+    },
+    {
+      "id": "s04-t27",
+      "question": "以澄要不要告訴父親自己停職了？",
+      "setup_episode": 203,
+      "payoff_episode": 208
+    },
+    {
+      "id": "s04-t28",
+      "question": "陸崇山會不會鬆口？",
+      "setup_episode": 207,
+      "payoff_episode": 210
+    },
+    {
+      "id": "s04-t29",
+      "question": "蔡秀鳳會不會拿曼禾的存摺替兒子還債？",
+      "setup_episode": 212,
+      "payoff_episode": 215
+    },
+    {
+      "id": "s04-t30",
+      "question": "被鴻利找到住處的蘇浩，今晚睡哪？",
+      "setup_episode": 212,
+      "payoff_episode": 213
+    },
+    {
+      "id": "s04-t31",
+      "question": "鴻利說的「下週五」，蔡秀鳳安不安全？",
+      "setup_episode": 215,
+      "payoff_episode": 217
+    },
+    {
+      "id": "s04-t32",
+      "question": "葛承峰為什麼要傳安琪當他的證人？",
+      "setup_episode": 216,
+      "payoff_episode": 218
+    },
+    {
+      "id": "s04-t33",
+      "question": "陸氏董事羅啟耀跟鴻利是什麼關係？",
+      "setup_episode": 218,
+      "payoff_episode": 227
+    },
+    {
+      "id": "s04-t34",
+      "question": "鴻利租的冷凍庫，電費為什麼跟空倉一樣？",
+      "setup_episode": 218,
+      "payoff_episode": 225
+    },
+    {
+      "id": "s04-t35",
+      "question": "安琪的雲端備份，是誰叫她做的？",
+      "setup_episode": 218,
+      "payoff_episode": 223
+    },
+    {
+      "id": "s04-t36",
+      "question": "蘇浩敢不敢自己走進派出所？",
+      "setup_episode": 219,
+      "payoff_episode": 220
+    },
+    {
+      "id": "s04-t37",
+      "question": "董事會那天，陸霽會說什麼？",
+      "setup_episode": 221,
+      "payoff_episode": 228
+    },
+    {
+      "id": "s04-t38",
+      "question": "周啟明看到五份文件，會怎麼做？",
+      "setup_episode": 226,
+      "payoff_episode": 229
+    },
+    {
+      "id": "s04-t39",
+      "question": "小桐的暫時監護權會給誰？",
+      "setup_episode": 229,
+      "payoff_episode": 235
+    },
+    {
+      "id": "s04-t40",
+      "question": "失去繼承的陸霽，還會回永和巷嗎？",
+      "setup_episode": 229,
+      "payoff_episode": 240
+    },
+    {
+      "id": "s04-t41",
+      "question": "陸崇山會不會後悔？",
+      "setup_episode": 227,
+      "payoff_episode": 236
+    },
+    {
+      "id": "s04-t42",
+      "question": "陸霽的號碼為什麼停用了？",
+      "setup_episode": 231,
+      "payoff_episode": 236
+    },
+    {
+      "id": "s04-t43",
+      "question": "喬念真寫下的陸霽下落，曼禾要不要看？",
+      "setup_episode": 234,
+      "payoff_episode": 235
+    },
+    {
+      "id": "s04-t44",
+      "question": "那盤欠著的棋，曼禾會怎麼下？",
+      "setup_episode": 239,
+      "payoff_episode": 240
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "停職第一天",
+      "youtube_title": "被主管反告洩密當天，她的門禁卡亮紅燈；回到合租的四樓，她把整面家規牆拆下來重釘",
+      "duration_s": 110,
+      "logline": "被葛承峰反告洩密的以澄停職留薪，第一次白天待在四樓，閒不下來地替兩個室友整理人生，卻擋不住債主的字條貼上曼禾的店門。",
+      "hook": "恆構大廳閘門「嗶」一聲亮紅燈，鄭婕把信封遞過來：「反告期間，停職留薪。」以澄：「多久？」",
+      "hook_type": "danger",
+      "mid_hook": "上午十點，陽光第一次照進四樓長餐桌，以澄盯著家規牆看了三秒：「歪了一公分。」她拿出水平尺。",
+      "extra_hooks": [
+        "方阿嬤爬上四樓，拿紅筆在第六條「借了要還，幫了不用」畫了一個圈：「這季，看這條。」"
+      ],
+      "conflict": "以澄要證明自己沒洩密，卻連公司大門都進不去；停職令沒寫期限，她只能先把四樓整理成自己的戰情室。",
+      "turn": "大家以為停職會讓她垮，她一天內把家規牆釘直、把曼禾的帳和靜宜的財產申報都做成表格；曼禾下班進門愣住：「妳停職比上班還兇。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "曼禾衝進門舉起手機：禾間的鐵捲門上貼著一張手寫字條——「保證人蘇曼禾，月底見。」",
+        "question": "債主下一步會找到哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        2,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "anquan",
+        "richang"
+      ],
+      "spectacle": "冬天上午的斜陽照進四樓長餐桌，整面家規牆被拆成六張紙攤在桌上，以澄用水平尺一條條釘回去。",
+      "glamour_shot": "以澄捲起深灰西裝的袖子、單膝跪在餐椅上看水平尺的氣泡，無框眼鏡反光，回頭說：「直了。」",
+      "setups": [
+        "s04-t02",
+        "s04-t06",
+        "s04-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "家規牆釘直，方阿嬤圈起第六條當這一季的家規",
+        "以澄一天做完禾間的帳本表格與靜宜的財產申報表格"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "zheng-jie",
+        "su-manhe",
+        "han-jingyi",
+        "fang-yulan"
+      ],
+      "locations": [
+        "恆構建築師事務所大廳閘門",
+        "永和巷7號四樓客廳",
+        "禾間鐵捲門"
+      ],
+      "state": {
+        "time": "12月1日週一，停職第1天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：未提｜繼承：第一順位｜合約剩 90 天。以澄被反告洩密、停職留薪，期限未定；債主把字條貼到曼禾的店門",
+        "carry_forward": "禾間鐵捲門上的字條"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "證物一號",
+      "youtube_title": "債主把字條貼上她的店門，室友沒叫她快還錢，反而戴上手套把字條收進證物袋",
+      "duration_s": 105,
+      "logline": "曼禾想照老習慣先付錢讓債主閉嘴，以澄要她把字條當證物；同一晚，反告的起訴狀寄到四樓，附件裡是以澄自己的計算書。",
+      "hook": "以澄戴上手套，把字條收進夾鏈袋，標籤寫「證物一」。曼禾：「妳停職還辦案？」",
+      "hook_type": "image",
+      "mid_hook": "蘇浩來電，聲音甜得發膩：「姐，月底先繳五萬就好。」曼禾的拇指停在轉帳鍵上。",
+      "conflict": "曼禾的本能是付錢讓字條消失，以澄要她用紀錄代替轉帳，兩人第一次在長餐桌上吵起來。",
+      "turn": "曼禾以為以澄只是愛管，以澄翻出上一季撤銷訴訟的判決：借款還在，但貼字條催收本身就違法，字條就是證據。曼禾自己按掉轉帳：「你自己去談。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "方阿嬤把一封法院掛號拿上樓。起訴狀附件三，是以澄自己算的社宅計算書，旁邊一行字：「被洩漏之機密」。",
+        "question": "自己算的計算書，也算洩密？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "richang",
+        "anquan",
+        "duanshe",
+        "zhichang"
+      ],
+      "spectacle": "長餐桌上一邊是夾鏈袋裡的字條，一邊是法院的牛皮紙信封，暖黃燈下兩份「證物」並排。",
+      "glamour_shot": "曼禾的低丸子頭散了一綹，她咬著唇把手機螢幕按黑，抬眼對以澄挑眉：「好啦，聽妳的。」",
+      "setups": [
+        "s04-t03",
+        "s04-t07"
+      ],
+      "payoffs": [
+        "s04-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "曼禾按掉給蘇浩的五萬轉帳，第一次讓弟弟自己去面對債主",
+        "字條拍照、記時間、收進證物袋，成為違法催收的第一份紀錄"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "su-manhe",
+        "han-jingyi",
+        "su-hao",
+        "fang-yulan"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "方阿嬤的雜貨店"
+      ],
+      "state": {
+        "time": "12月2日，停職第2天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：未提｜繼承：第一順位｜合約剩 89 天。反告起訴狀送達，開庭日另定；葛承峰把以澄自己的計算書列為被洩漏的機密",
+        "carry_forward": "起訴狀附件三"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "帳本裡的弟弟",
+      "youtube_title": "停職的結構技師替室友算花店的帳，算到第三頁，算出她每個月都在替弟弟繳手機費",
+      "duration_s": 110,
+      "logline": "以澄一邊拆起訴狀，一邊替曼禾的禾間算帳，算出花店撐不住的真正原因；靜宜等不到周啟明交出存摺影本，決定自己上門。",
+      "hook": "清晨五點，以澄在附件三上畫紅圈：「這版是我算的。」曼禾端著兩碗麵：「先吃，再告。」",
+      "hook_type": "line",
+      "mid_hook": "禾間帳本第三頁，每月五號固定一筆一千九百九十九，備註「浩手機」。曼禾的筷子停在半空。",
+      "conflict": "禾間每個月都在虧，曼禾以為是冬天生意差，以澄要她看清楚錢到底流去哪裡。",
+      "turn": "不是生意差：親友價打七折、弟弟的手機費、兩場婚禮的尾款沒收；以澄只把數字排出來，刪哪一筆由曼禾自己畫。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "靜宜掛掉調解委員的電話——周啟明又申請延期。她把帆布袋背上肩：「我自己去周家拿。」",
+        "question": "靜宜敢一個人回周家嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "richang",
+        "anquan",
+        "duanshe"
+      ],
+      "spectacle": "禾間三年的單據攤滿長餐桌，以澄用便利貼排出一條從玄關延伸到窗邊的現金流。",
+      "glamour_shot": "以澄咬著鉛筆推眼鏡，晨光從側面打在她沾鉛筆灰的手指上，輕聲說：「找到了。」",
+      "setups": [
+        "s04-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "曼禾自己停掉蘇浩的手機費代繳、取消親友七折",
+        "以澄算出禾間每月真正的缺口只剩一萬二"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "su-manhe",
+        "han-jingyi"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "禾間花藝工作室"
+      ],
+      "state": {
+        "time": "12月3日，停職第3天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：未提｜繼承：第一順位｜合約剩 88 天。以澄確認附件三是她自己的版本、不是送審版；禾間每月缺口一萬二",
+        "carry_forward": "靜宜要獨自回周家拿存摺影本"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "周家的抽屜",
+      "youtube_title": "她回婆家要存摺影本被婆婆擋在門口，卻在丈夫書桌上瞄見一枚從沒看過的紅色公司章",
+      "duration_s": 115,
+      "logline": "靜宜回周家要調解需要的存摺影本，被周母擋在門口，臨走前看見周啟明書桌上一封蓋著紅章的信封；周啟明在停車場等著她。",
+      "hook": "周家門一開，周母的珍珠項鍊先堵住門縫：「還有臉回來？」靜宜：「不好意思，我拿東西。」",
+      "hook_type": "danger",
+      "mid_hook": "周母轉身接電話的十秒，靜宜看見書桌上一個牛皮信封，封口一枚紅章，只認得出一個「鴻」字。",
+      "conflict": "調解要財產申報，靜宜手上沒有一張周家的帳；周家不給，她也不能偷拿。",
+      "turn": "大家以為她會被空手趕出來，她什麼都沒拿，卻記住了那枚章；走到門口她第一次沒道歉：「我會請法院調。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大樓停車場，周啟明靠在車邊，手機面朝下：「資料我會報。小桐，妳想清楚。」",
+        "question": "周啟明要拿小桐當籌碼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "xuanyi",
+        "duanshe"
+      ],
+      "spectacle": "周家灰白得像樣品屋的客廳裡，牛皮信封上那枚紅章是整個畫面唯一的顏色。",
+      "glamour_shot": "靜宜米色針織衫、低馬尾，在周家玄關的穿衣鏡前第一次挺直背，鏡中的眼神很靜。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "靜宜第一次在周家沒道歉，說出「我會請法院調」",
+        "她記住了信封上的「鴻」字紅章，什麼都沒碰"
+      ],
+      "characters": [
+        "han-jingyi",
+        "zhou-mu",
+        "zhou-qiming",
+        "lin-yicheng"
+      ],
+      "locations": [
+        "周家",
+        "周家大樓停車場",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "12月4日，停職第4天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：未提｜繼承：第一順位｜合約剩 87 天。靜宜看見周啟明書桌上蓋「鴻」字紅章的信封；她決定聲請法院調閱帳戶",
+        "carry_forward": "周啟明用小桐的監護權施壓"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "交給人資不算外人",
+      "youtube_title": "被主管反告洩漏機密，停職的她聽室友隨口一句話就想通：我交出去的對象是人資，不是外人",
+      "duration_s": 120,
+      "logline": "靜宜帶著周啟明的威脅回到四樓，三人先泡茶；靜宜一句無心的話讓以澄找到反告的第一個破口；當晚程既白站在雜貨店門口，說了一句沒人想到的話。",
+      "hook": "靜宜一進門，第一句不是不好意思：「他拿小桐威脅我。」以澄和曼禾同時放下筷子。",
+      "hook_type": "line",
+      "mid_hook": "靜宜翻著起訴狀嘆氣：「妳又沒給外人，是給人資。」以澄抬起頭，鉛筆滾到桌下。",
+      "extra_hooks": [
+        "小桐打視訊來：「媽媽，週末能去四樓嗎？」靜宜把眼淚吞回去：「可以。」"
+      ],
+      "conflict": "周啟明拿監護權施壓，靜宜第一次怕到發抖；以澄的反告也卡在「交出計算書算不算洩密」。",
+      "turn": "以澄一直以為得證明計算書不是機密，靜宜一句話讓她換了方向：她只把計算書交給公司自己的申訴管道，從沒給過任何外人——內部申訴不是洩密。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "雜貨店的燈下，程既白手上沒有公文，只轉著那支舊鋼筆，抬頭對四樓的窗說：「林以澄，我要辭職。」",
+        "question": "程既白為什麼要辭職？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "anquan",
+        "zhichang"
+      ],
+      "spectacle": "長餐桌上三杯熱茶排成一列冒著白氣，起訴狀被三隻手同時壓平。",
+      "glamour_shot": "程既白白襯衫袖子捲兩折，站在雜貨店昏黃的燈下轉著舊鋼筆，抬頭看四樓亮著的窗。",
+      "setups": [
+        "s04-t01"
+      ],
+      "payoffs": [
+        "s04-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "以澄找到反告的第一個破口：計算書只交給公司人資，內部申訴不是洩密",
+        "三人照家規第二條先泡茶，接住被威脅的靜宜；靜宜答應小桐週末來四樓"
+      ],
+      "characters": [
+        "han-jingyi",
+        "lin-yicheng",
+        "su-manhe",
+        "zhou-xiaotong",
+        "cheng-jibai"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "方阿嬤的雜貨店門口"
+      ],
+      "state": {
+        "time": "12月5日，停職第5天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：口頭｜繼承：第一順位｜合約剩 86 天。以澄知道內部申訴不算洩密；程既白說他要辭職",
+        "carry_forward": "程既白那句「我要辭職」"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "辭了就沒有衝突",
+      "youtube_title": "毒舌法務站在樓下說要為她辭職，她衝下四樓第一句話就是：你瘋了？",
+      "duration_s": 105,
+      "logline": "以澄不肯讓任何人為她丟工作，衝下樓跟程既白吵；同一個週六，陸霽提早來下棋，告訴曼禾他父親開始替他排相親。",
+      "hook": "以澄踩著拖鞋衝下四樓：「你瘋了？」程既白：「辭了，就沒有利益衝突。」",
+      "hook_type": "line",
+      "mid_hook": "陸霽提早來了，替方阿嬤擺好棋盤，落子時沒抬頭：「我爸開始排人了。」",
+      "conflict": "以澄從不求人，更不肯讓人為她丟飯碗；程既白不肯收回，兩人在雜貨店門口吵成一團。",
+      "turn": "以澄以為他是為她犧牲，他卻說：「不為妳，為我那份和解。」切掉自己舊案的利益衝突是他自己選的，家規第五條，她不能替他決定。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陸霽把車推過河界：「下週六，他要我見第一個。」門口抱著花桶的曼禾停住腳。",
+        "question": "陸霽會去見那個人嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "zhichang",
+        "richang",
+        "cuowei",
+        "anquan"
+      ],
+      "spectacle": "冬日午後的永和巷，雜貨店門口一邊在吵架、一邊在下象棋，四樓窗口擠著三顆探出來的頭。",
+      "glamour_shot": "陸霽深藍大衣、腕錶，起身替抱著花桶的曼禾拉開雜貨店的紗門，自己退半步讓她先過。",
+      "setups": [
+        "s04-t05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "程既白說清楚辭職的理由：切掉自己舊案的利益衝突，是他自己選的",
+        "小桐週末住進四樓，在窗邊畫下樓下吵架的兩個叔叔"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "cheng-jibai",
+        "su-manhe",
+        "han-jingyi",
+        "zhou-xiaotong",
+        "lu-ji",
+        "fang-yulan"
+      ],
+      "locations": [
+        "方阿嬤的雜貨店門口",
+        "永和巷7號四樓窗邊"
+      ],
+      "state": {
+        "time": "12月6日週六，停職第6天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：口頭｜繼承：第一順位｜合約剩 85 天。程既白要辭恆構駐點法務，理由是切掉自己的利益衝突；陸崇山開始替陸霽排相親",
+        "carry_forward": "陸霽下週六要見第一個人選"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "合約剩幾天",
+      "youtube_title": "合約未婚夫要去相親，她嘴上說關我什麼事，一整把玫瑰卻全被她剪短了",
+      "duration_s": 110,
+      "logline": "曼禾嘴上不在乎陸霽相親，手上的花剪卻剪壞一整把玫瑰；以澄翻出一年合約，讀到誰都沒細看的第十二條；靜宜一個人去法院遞了聲請；夜裡陸崇山親自打來。",
+      "hook": "曼禾一刀剪短整把紅玫瑰的花梗：「見啊，關我什麼事。」靜宜默默蹲下去撿。",
+      "hook_type": "image",
+      "mid_hook": "以澄念出合約第十二條：「任一方得單方提前終止，付違約金即可。」她抬頭：「他隨時可以走。」",
+      "extra_hooks": [
+        "法院收狀窗口，靜宜把調閱帳戶的聲請推進去，手心全是汗，卻沒說不好意思。"
+      ],
+      "conflict": "曼禾堅持合約就是合約、陸霽見誰都與她無關，可她的手比嘴誠實；靜宜得在周啟明拖延前自己走完第一步。",
+      "turn": "大家以為合約能保護曼禾到期滿，第十二條卻寫著任何一方都能隨時付錢走人；曼禾第一次發現，自己一直在數日子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "夜裡曼禾的手機響，螢幕上是陌生號碼。陸崇山低沉的聲音：「蘇小姐，合約剩幾天？」",
+        "question": "陸崇山怎麼知道是合約？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "richang",
+        "anquan",
+        "xuanyi"
+      ],
+      "spectacle": "剪壞的紅玫瑰鋪滿長餐桌，花梗長短不一，像一張亂掉的長條圖。",
+      "glamour_shot": "曼禾抱著一大把玫瑰從禾間的冷藏櫃轉身，酒窩還在，眼眶卻有一點紅。",
+      "setups": [
+        "s04-t09",
+        "s04-t10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "靜宜一個人到法院遞出調閱帳戶的聲請",
+        "以澄找出合約第十二條：任一方可付違約金單方提前終止"
+      ],
+      "characters": [
+        "su-manhe",
+        "han-jingyi",
+        "lin-yicheng",
+        "lu-chongshan"
+      ],
+      "locations": [
+        "禾間花藝工作室",
+        "澄港地方法院收狀窗口",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "12月8日，停職第8天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：口頭｜繼承：第一順位｜合約剩 83 天。合約第十二條：任一方可付違約金單方提前終止；陸崇山知道這是合約；靜宜遞了調閱聲請",
+        "carry_forward": "陸崇山的深夜來電"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "陸家的律師",
+      "youtube_title": "合約未婚夫的父親約她喝茶，推來一張支票要她提前走人，她把支票轉了回去",
+      "duration_s": 115,
+      "logline": "曼禾獨自赴陸崇山的茶約，才知道陸家律師早把合約一字不漏報給董事長；當晚以澄在結構技師公會的年會走廊，遇上同樣停職的葛承峰。",
+      "hook": "電話那頭陸崇山只說一句：「明早十點，茶樓，一個人。」曼禾握著手機：「好。」",
+      "hook_type": "question",
+      "mid_hook": "圓桌轉盤上，陸崇山把一張支票轉到她面前：「違約金，我出。」",
+      "extra_hooks": [
+        "曼禾問他怎麼知道，陸崇山端起茶：「陸家的律師，也是我的。」"
+      ],
+      "conflict": "陸崇山要曼禾自己按下第十二條提前退出，好讓兒子乖乖接受安排；曼禾不能被買，也不能替陸霽決定。",
+      "turn": "曼禾以為合約是她和陸霽之間的祕密，原來當年替她看保證書的陸家律師一直在向董事長報告；她把支票轉回去：「合約是跟他簽的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "公會年會的走廊，葛承峰的金框眼鏡反光：「程既白辭了？他那份和解，還沒過期。」",
+        "question": "程既白的舊和解會害他嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "zhichang",
+        "duanshe",
+        "anquan"
+      ],
+      "spectacle": "茶樓包廂的紅木圓桌轉盤上，一張支票被轉到曼禾面前，又被她一指轉了回去。",
+      "glamour_shot": "曼禾戴著自己做的乾燥花耳環、米白大衣，在茶樓門口回頭對陸家司機說：「我自己走。」",
+      "setups": [
+        "s04-t11"
+      ],
+      "payoffs": [
+        "s04-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "曼禾沒收陸崇山的支票，當面說合約是跟陸霽簽的",
+        "她弄清楚陸家律師一直把合約報給董事長",
+        "曼禾一句「你怕的是他自己選」讓陸崇山沉默"
+      ],
+      "characters": [
+        "su-manhe",
+        "lu-chongshan",
+        "lin-yicheng",
+        "han-jingyi",
+        "ge-chengfeng"
+      ],
+      "locations": [
+        "港邊茶樓包廂",
+        "永和巷7號四樓客廳",
+        "澄港結構技師公會年會走廊"
+      ],
+      "state": {
+        "time": "12月10日，停職第10天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：口頭｜繼承：第一順位｜合約剩 81 天。陸崇山想付違約金讓曼禾提前退出；葛承峰拿程既白的舊和解放話",
+        "carry_forward": "「那份和解，還沒過期」"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "年花預購",
+      "youtube_title": "快倒的花店一晚接滿一百二十盆年花，最後一張訂單的署名，竟是合約未婚夫的父親",
+      "duration_s": 115,
+      "logline": "以澄把被葛承峰激起的火氣全倒進禾間的年花預購：她改價、靜宜手寫照顧卡、宋川把單子擺上診所櫃台；一晚訂單滿了，最後一張的署名讓曼禾手一抖。",
+      "hook": "公會門口的夜風裡，以澄打字給程既白：「那份和解會害你嗎？」三秒後回覆：「我的事。」",
+      "hook_type": "line",
+      "mid_hook": "巷尾診所裡，宋川抱著一隻橘貓抬頭，指著靜宜手寫的海報：「我的客人，能訂嗎？」",
+      "conflict": "禾間要靠春節年花撐過冬天，曼禾卻怕漲價把老客人嚇跑。",
+      "turn": "大家以為漲價會掉單，靜宜每盆附一張手寫照顧卡，反而讓客人一訂兩盆；一條線的人替另一條線把店救回來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一張訂單：訂購人陸崇山，送陸宅書房，備註欄一行字——「白色，跟三十年前一樣。」",
+        "question": "三十年前的白花，送給了誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "richang",
+        "huzhu",
+        "anquan"
+      ],
+      "spectacle": "長餐桌上堆成小山的預購單，牆上手畫的進度格被紅筆一格一格塗滿到一百二十。",
+      "glamour_shot": "宋川刷手服外罩一件舊毛衣，抱著橘貓從診療台後抬頭，靦腆地問能不能也訂兩盆。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "禾間春節年花預購一晚滿一百二十盆，冬天的缺口補上",
+        "靜宜的手寫照顧卡成了禾間的招牌，宋川的診所幫忙收單"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "su-manhe",
+        "han-jingyi",
+        "song-chuan",
+        "fang-yulan"
+      ],
+      "locations": [
+        "結構技師公會門口",
+        "巷尾動物醫院",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "12月12日，停職第12天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：口頭｜繼承：第一順位｜合約剩 79 天。禾間預購滿單；陸崇山訂了白花送書房，備註三十年前；程既白不肯談他的舊和解",
+        "carry_forward": "陸崇山的白花訂單"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "藤椅上的辭呈",
+      "youtube_title": "他把辭呈副本放在房東阿嬤的藤椅上就走，阿嬤看完只說一句，整棟四樓都安靜了",
+      "duration_s": 130,
+      "logline": "曼禾接下陸崇山的白花訂單；這個週六陸霽第一次沒來下棋；程既白不把辭呈交給以澄，而是放在方阿嬤的藤椅上，讓守家規的人決定他能不能進門。",
+      "hook": "曼禾捏著訂單念出送貨日：「十二月三十一日，陸宅。」以澄：「接。生意是生意。」",
+      "hook_type": "line",
+      "mid_hook": "週六下午三點，象棋擺好了，陸霽的小板凳空著。方阿嬤搖著扇：「伊今仔日去相親。」",
+      "extra_hooks": [
+        "辭呈副本的事由欄只有一行：「預防利益衝突，即日辭任，交接十日。」以澄看了三遍。"
+      ],
+      "conflict": "以澄不肯收程既白的人情；他乾脆不交給她，把辭呈副本放在方阿嬤的藤椅上——要不要讓這個男人進門，是房東的事。",
+      "turn": "以澄以為他會開口要她委任，他什麼都沒要，只讓守家規的人看；她第一次發現，被幫的人也可以不用急著還。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "方阿嬤戴上老花眼鏡讀完，抬頭看程既白：「這個男人，可以進門喝一杯茶。」樓梯口的以澄停住。",
+        "question": "程既白第一次上四樓，會怎樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "richang",
+        "zhichang",
+        "zixuan"
+      ],
+      "spectacle": "冬日斜陽裡，藤椅上一張辭呈副本被一顆橘子壓著；旁邊的象棋擺好了，對面的小板凳空著。",
+      "glamour_shot": "以澄站在四樓樓梯轉角，齊肩髮被樓梯間的風吹亂，推了推眼鏡沒說話，耳朵慢慢紅了。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "程既白辭任恆構駐點法務、交接十日，切掉他不能代理以澄的那份利益衝突",
+        "方阿嬤准程既白上四樓喝茶，家規第三條之外的第一個例外",
+        "禾間接下陸宅的白花訂單"
+      ],
+      "characters": [
+        "su-manhe",
+        "lin-yicheng",
+        "han-jingyi",
+        "cheng-jibai",
+        "fang-yulan"
+      ],
+      "locations": [
+        "方阿嬤的雜貨店",
+        "永和巷7號四樓樓梯口"
+      ],
+      "state": {
+        "time": "12月13日週六，停職第13天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：辭呈遞出（交接十日）｜繼承：第一順位｜合約剩 78 天。程既白正式辭任；陸霽去見了第一個人選；白花送貨日是十二月三十一日",
+        "carry_forward": "程既白第一次上四樓喝茶"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "一杯茶二十分鐘",
+      "youtube_title": "房東阿嬤准他上樓喝茶，只給二十分鐘；毒舌法務坐下第一句，就點出她證據牆少的那一張",
+      "duration_s": 110,
+      "logline": "程既白第一次上四樓，方阿嬤拿計時器只給一杯茶的時間；他一眼看出以澄的證據牆少了一張；下樓時，葛承峰的律師寄來一份和解提議。",
+      "hook": "方阿嬤跟在程既白身後爬上四樓，把蛋形計時器轉到二十：「一杯茶。」",
+      "hook_type": "image",
+      "mid_hook": "程既白盯著證據牆看了很久：「少一張：申訴規範。」以澄的筆停在半空。",
+      "conflict": "以澄要證明把計算書交給人資是公司指定的申訴管道，手上卻沒有恆構的申訴規範；她停職，進不了內網，程既白在交接期也不能替她拿任何公司文件。",
+      "turn": "程既白什麼都沒給，只問她入職時有沒有拿過紙本手冊；以澄從圖筒底翻出泛黃的員工手冊，申訴那頁寫著：「向人資主任提出。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "計時器一響，程既白準時下樓；雜貨店櫃台上躺著鄒秉衡律師的信：「撤回申訴，即撤告。」以澄捏著信站在樓梯口。",
+        "question": "以澄會用申訴換撤告嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "richang",
+        "zhichang"
+      ],
+      "spectacle": "長餐桌邊多了一張摺疊椅，蛋形計時器在桌上滴答走，貼滿便利貼的證據牆在暖黃燈下發亮。",
+      "glamour_shot": "程既白坐在摺疊椅上把襯衫袖子捲到第二折，低頭翻手冊時皺眉，舊鋼筆在指間轉了一圈。",
+      "setups": [
+        "s04-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "以澄翻出入職時的紙本員工手冊，申訴管道白紙黑字寫著人資主任",
+        "程既白第一次上四樓，喝滿一杯茶的二十分鐘就走"
+      ],
+      "characters": [
+        "cheng-jibai",
+        "fang-yulan",
+        "lin-yicheng",
+        "han-jingyi",
+        "su-manhe"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "方阿嬤的雜貨店櫃台"
+      ],
+      "state": {
+        "time": "12月14日週日，停職第14天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：交接中（第2天）｜繼承：第一順位｜合約剩 77 天。員工手冊證明人資是公司指定的申訴管道；葛承峰的律師提議撤回申訴換撤告",
+        "carry_forward": "鄒秉衡的和解信"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "不換",
+      "youtube_title": "對方律師開條件：撤回申訴就撤告，她把和解信釘上證據牆，旁邊只寫兩個字：不換",
+      "duration_s": 105,
+      "logline": "以澄拒絕用申訴換撤告；安琪說葛承峰的律師約她喝咖啡；靜宜的律師拿到周啟明的財產申報，以澄算完一遍，長餐桌安靜下來。",
+      "hook": "以澄把和解信用圖釘釘上證據牆，在旁邊寫兩個紅字：「不換。」",
+      "hook_type": "line",
+      "mid_hook": "安琪打來，聲音很小：「林姐，他律師約我……喝咖啡。」",
+      "extra_hooks": [
+        "靜宜把一疊影本放上長餐桌，視訊裡的葉律師翻了兩頁：「九年，就這樣？」",
+        "禾間的冷藏櫃前，曼禾的手機跳出陸霽的訊息：「週六的棋，還下嗎？」她打了一個字：「下。」"
+      ],
+      "conflict": "撤告的誘惑很實際，停職能早點結束；可撤回申訴，等於讓安琪簽下的陳述書白簽。",
+      "turn": "大家以為以澄會為了復職想一下，她一秒都沒有：「我撤了，安琪怎麼辦？」她回撥給安琪，第一句是：「妳可以不去。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "以澄把靜宜九年的薪資入帳加總，再對照周啟明申報的一百二十萬，抬起頭：「少了三分之二。」",
+        "question": "兩百四十萬去了哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "jiechuan",
+        "xuanyi",
+        "huzhu"
+      ],
+      "spectacle": "證據牆上的和解信被一根紅色圖釘釘穿，旁邊兩個紅字「不換」。",
+      "glamour_shot": "以澄在窗邊打電話，冬夜的玻璃映出她的側臉，她摘下眼鏡捏了捏鼻樑，聲音放得很輕。",
+      "setups": [
+        "s04-t13",
+        "m10"
+      ],
+      "payoffs": [
+        "s04-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "以澄拒絕和解，申訴不撤",
+        "安琪推掉對方律師的咖啡邀約",
+        "程既白介紹的家事律師葉書蘅接手靜宜的財產申報",
+        "曼禾一邊趕年花，一邊答應陸霽週六照常下棋"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "shen-anqi",
+        "han-jingyi",
+        "s04-ye-shuheng",
+        "su-manhe"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "永和巷7號四樓窗邊"
+      ],
+      "state": {
+        "time": "12月15日，停職第15天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：交接中（第3天）｜繼承：第一順位｜合約剩 76 天。周啟明只申報一百二十萬，比算出來的少兩百四十萬；鄒秉衡在接觸安琪",
+        "carry_forward": "消失的兩百四十萬"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "投資虧了",
+      "youtube_title": "調解室外的走廊，她輕聲問丈夫九年的存款去哪了，他只回四個字：投資虧了",
+      "duration_s": 115,
+      "logline": "出門前曼禾替靜宜綁好頭髮；第三輪調解，靜宜在調解室外的走廊當面問存款的去向，周啟明想用一句投資虧了帶過，葉律師要他拿出明細；離開前，他湊到靜宜耳邊說了一句話。",
+      "hook": "調解室外的走廊，靜宜：「不好意思，存款去哪了？」周啟明：「投資虧了。」",
+      "hook_type": "line",
+      "mid_hook": "葉律師翻開卷宗：「哪一檔？明細呢？」周母在長椅上冷笑：「他的錢，就是周家的。」",
+      "conflict": "靜宜要一個交代，周啟明要用「虧了」把九年的錢關進黑盒子，周母站在兒子那邊。",
+      "turn": "靜宜以為自己又會被一句話打發，葉律師一句「明細呢」讓周啟明第一次答不出來，他的律師只能聲請延到下一輪補件。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "擦身而過時，周啟明低聲說：「妳查我，我就查那個獸醫。」靜宜手裡的卷宗一緊。",
+        "question": "周啟明要拿宋川反咬她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiechuan",
+        "huzhu",
+        "anquan"
+      ],
+      "spectacle": "法院走廊的長窗把冬天的光切成一格一格，三個女人坐在一頭，周家母子站在另一頭。",
+      "glamour_shot": "靜宜米色針織衫、曼禾早上替她綁的低馬尾，在走廊的光格裡抬起頭，眼神第一次不閃。",
+      "setups": [
+        "s04-t15",
+        "s04-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "葉律師逼周啟明下一輪必須交出投資明細",
+        "靜宜當面問出口，問完沒有低頭",
+        "以澄和曼禾捧著熱豆漿坐在走廊盡頭，只坐在靜宜看得見的地方"
+      ],
+      "characters": [
+        "han-jingyi",
+        "zhou-qiming",
+        "s04-ye-shuheng",
+        "zhou-mu",
+        "lin-yicheng",
+        "su-manhe"
+      ],
+      "locations": [
+        "永和巷7號四樓玄關",
+        "澄港地方法院家事調解室外走廊"
+      ],
+      "state": {
+        "time": "12月16日，停職第16天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：交接中（第4天）｜繼承：第一順位｜合約剩 75 天。周啟明說存款投資虧了、拿不出明細；周母說兒子的錢就是周家的",
+        "carry_forward": "周啟明要查宋川"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "每個星期四",
+      "youtube_title": "她把結婚九年的家用帳攤滿一面牆，室友用紅點標出缺口，紅點全落在同一個星期幾",
+      "duration_s": 115,
+      "logline": "以澄把靜宜九年的手寫家用帳排成一條時間軸，缺口一個個標成紅點；宋川為了不讓她難做，主動說調解結束前不再來樓下；紅點連成了一條線。",
+      "hook": "靜宜一進門：「他要查宋川。」以澄頭也不抬：「讓他查。你們沒做錯事。」",
+      "hook_type": "line",
+      "mid_hook": "九本家用帳攤滿一面牆，以澄貼上第四十個紅點，退後一步：「全在星期四。」",
+      "extra_hooks": [
+        "曼禾在玄關月曆上劃掉一格，旁邊寫著七十四；她盯著那個數字，這一筆劃得特別用力。"
+      ],
+      "conflict": "「投資虧了」沒有明細，靜宜手上只有自己記了九年的家用帳；她得從菜錢和學費裡，找出消失的錢。",
+      "turn": "大家以為缺口是零散的大筆開銷，以澄排完才看清：每一筆都是星期四同一個時段的轉出，跟周啟明每週四不回家的晚上疊在一起。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "靜宜伸手碰最早的那個紅點：日期是小桐出生那個月的星期四。她的手停在牆上。",
+        "question": "那一年的星期四，他在哪？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "anquan",
+        "richang",
+        "jiechuan"
+      ],
+      "spectacle": "九本家用帳拆成一整面牆的時間軸，四十個紅點從牆角排到天花板，像一條慢慢爬高的線。",
+      "glamour_shot": "宋川站在診所門口的冬陽裡，手背有新的貓抓痕，遞出貓罐頭時退了一步，笑得有點笨。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "以澄把九年的家用帳排成時間軸，缺口全集中在星期四",
+        "宋川主動和靜宜保持距離，不給周啟明藉口",
+        "禾間第一批年花出貨，曼禾在月曆上劃掉合約的第七十四天"
+      ],
+      "characters": [
+        "han-jingyi",
+        "lin-yicheng",
+        "su-manhe",
+        "song-chuan"
+      ],
+      "locations": [
+        "永和巷7號四樓客廳",
+        "巷尾動物醫院門口"
+      ],
+      "state": {
+        "time": "12月17日，停職第17天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：交接中（第5天）｜繼承：第一順位｜合約剩 74 天。存款缺口全在星期四，從小桐出生那個月開始",
+        "carry_forward": "最早的那個紅點"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "有人登入過",
+      "youtube_title": "實習生是她唯一的證人，雲端存著被改前的原始計算書，半夜卻跳出一則異地登入通知",
+      "duration_s": 110,
+      "logline": "靜宜陪以澄去看被律師約談嚇壞的安琪，用帶三年級學生的方法讓她把害怕說出來，再把她帶回四樓吃飯；飯桌上，安琪的手機跳出一則雲端異地登入通知。",
+      "hook": "靜宜把那個紅點撕下來夾進帳本：「那年的事，調解再算。」她轉身拿外套：「安琪那邊，我陪妳。」",
+      "hook_type": "line",
+      "mid_hook": "安琪縮在懶骨頭上，靜宜不問案情，先問：「妳今天吃了嗎？」安琪一下子哭出來。",
+      "extra_hooks": [
+        "靜宜教她一招給三年級用的方法：把怕寫成三行，寫完摺起來交給老師。"
+      ],
+      "conflict": "安琪是唯一能證明原始計算書來源的人，怕到想刪掉一切；以澄越講法條，她越怕。",
+      "turn": "以澄以為要講道理，靜宜卻用帶小孩的方法讓安琪先把害怕寫下來；安琪寫完第三行抬頭：「我還是想作證。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "四樓長餐桌上，安琪的手機亮起：「您的雲端帳號於港區有一筆登入嘗試。」三個人同時看向螢幕。",
+        "question": "誰想登入安琪的雲端？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "安琪貼滿結構圖的租屋牆前，三個女人圍著懶骨頭坐在地上，中間放著一張摺成小方塊的紙。",
+      "glamour_shot": "靜宜跪坐在地毯上，低馬尾垂在肩頭，把一張便條紙對摺再對摺，抬眼對安琪溫溫一笑。",
+      "setups": [
+        "s04-t18"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "安琪決定作證，不刪任何檔案",
+        "安琪被帶回四樓吃晚飯——家規第四條，飯不能不吃"
+      ],
+      "characters": [
+        "han-jingyi",
+        "lin-yicheng",
+        "shen-anqi",
+        "su-manhe"
+      ],
+      "locations": [
+        "安琪的租屋處",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "12月18日，停職第18天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：交接中（第6天）｜繼承：第一順位｜合約剩 73 天。安琪願意作證；有人在港區嘗試登入她存原始計算書的雲端",
+        "carry_forward": "異地登入通知"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "也是未婚妻",
+      "youtube_title": "有人想登入證人的雲端，她連夜把原始檔送去公證；合約未婚夫相親回來只說：我說我有未婚妻",
+      "duration_s": 115,
+      "logline": "以澄搶在任何人碰到之前，把安琪雲端裡的原始計算書送去公證；同一個週六，陸霽坐回雜貨店的小板凳，說他在相親桌上提了曼禾，又丟出一筆三年對不上的帳。",
+      "hook": "安琪的手指已經按在刪除鍵上，以澄一把按住：「別刪。截圖。」",
+      "hook_type": "danger",
+      "mid_hook": "公證處的長桌上，原始檔的建立時間、修改紀錄和雜湊值一頁頁蓋上鋼印，安琪終於吐出一口氣。",
+      "extra_hooks": [
+        "雜貨店門口，曼禾端茶出來：「相親怎樣？」陸霽：「說我有未婚妻。」曼禾：「合約的。」他：「也是未婚妻。」"
+      ],
+      "conflict": "有人想動安琪的雲端，以澄得在檔案被改之前把它鎖死；曼禾則假裝不在乎陸霽的第一場相親。",
+      "turn": "以澄以為要等法院保全，公證人當天就能證明檔案存在與內容；曼禾以為陸霽會說對方不錯，他卻拿她當推掉的理由。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸霽落下一子，聲音壓低：「倉儲有筆帳，三年對不上。」方阿嬤的扇子停了。",
+        "question": "陸霽在查的是哪一筆帳？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "cuowei",
+        "richang",
+        "anquan"
+      ],
+      "spectacle": "公證處的長桌上，一疊列印出來的版本紀錄被一枚枚鋼印壓出凸痕。",
+      "glamour_shot": "曼禾端著兩杯熱茶從雜貨店走出來，捲髮被風吹到臉邊，對陸霽挑眉：「合約的。」",
+      "setups": [
+        "s04-t17"
+      ],
+      "payoffs": [
+        "s04-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "安琪雲端原始檔的版本紀錄與雜湊值完成公證，之後誰也改不了",
+        "陸霽在第一場相親上說自己有未婚妻",
+        "小桐週末在四樓，把公證處的鋼印畫成一朵花"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "shen-anqi",
+        "su-manhe",
+        "lu-ji",
+        "fang-yulan",
+        "han-jingyi",
+        "zhou-xiaotong"
+      ],
+      "locations": [
+        "澄港公證處",
+        "方阿嬤的雜貨店門口",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "12月20日週六，停職第20天",
+        "knowledge": "進度條：鴻利文件 0/5｜辭職：交接中（第8天）｜繼承：第一順位｜合約剩 71 天。安琪的原始檔已公證；陸霽說陸氏有一筆倉儲帳三年對不上",
+        "carry_forward": "對不上的倉儲帳"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "星期四的收款人",
+      "youtube_title": "丈夫說九年存款都是投資虧掉的，銀行明細一攤開，四十筆全匯進同一個帳戶",
+      "duration_s": 110,
+      "logline": "法院調來的銀行明細送到葉律師手上：周啟明星期四的四十筆轉出全進同一個帳戶；同一天程既白抱著紙箱走出恆構，葛承峰的律師等在門口。",
+      "hook": "曼禾追問：「什麼帳？」陸霽把棋子收進盒裡：「查完，第一個告訴妳。」",
+      "hook_type": "line",
+      "mid_hook": "葉律師把明細推過來，收款戶名欄只印得下四個字：「鴻利投…」靜宜拿紅筆圈住。",
+      "conflict": "靜宜要知道星期四的錢去了哪裡，銀行明細卻把戶名截掉一半；程既白離開恆構，對方律師盯上他。",
+      "turn": "周啟明口中的「投資虧了」根本不是投資：四十筆、四十個星期四、同一個收款帳號；葉律師當場打給對方律師：「這叫投資？」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "恆構大廳，程既白抱著紙箱走出閘門；鄒秉衡等在旋轉門邊：「你敢接，我就聲請迴避。」",
+        "question": "程既白還能當她的律師嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiechuan",
+        "xuanyi",
+        "zhichang",
+        "anquan"
+      ],
+      "spectacle": "四樓牆上四十個紅點旁各貼上一張銀行明細的小紙條，金額加起來正好兩百四十萬。",
+      "glamour_shot": "程既白抱著紙箱走出恆構的玻璃門，白襯衫袖子捲兩折，回頭看了一眼結構組的空位。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "法院調閱的明細證明：週四的四十筆轉出全進同一個帳戶",
+        "葉律師把「投資虧了」的說法當場頂回去"
+      ],
+      "characters": [
+        "su-manhe",
+        "lu-ji",
+        "han-jingyi",
+        "s04-ye-shuheng",
+        "lin-yicheng",
+        "cheng-jibai",
+        "s04-zou-bingheng"
+      ],
+      "locations": [
+        "方阿嬤的雜貨店門口",
+        "葉書蘅律師事務所",
+        "永和巷7號四樓客廳",
+        "恆構建築師事務所大廳"
+      ],
+      "state": {
+        "time": "12月22日，停職第22天",
+        "knowledge": "進度條：鴻利文件 1/5（轉帳明細，戶名「鴻利投…」）｜辭職：交接最後一天｜繼承：第一順位｜合約剩 69 天。週四四十筆轉出共兩百四十萬，全進同一個帳戶；鄒秉衡揚言聲請程既白迴避",
+        "carry_forward": "迴避聲請的威脅"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "同一個帳號",
+      "youtube_title": "她拿出弟弟的借款合約想請律師看，抬頭一看室友牆上的帳號，一個數字都沒差",
+      "duration_s": 110,
+      "logline": "程既白搶先向公會申報自己的舊和解；辭職生效的他答應幫曼禾看保證書，曼禾在長餐桌上整理蘇浩的借款文件，抬頭看見牆上的帳號，手停住了。",
+      "hook": "程既白在電話裡很平靜：「讓他聲請。我先自己申報。」",
+      "hook_type": "line",
+      "mid_hook": "曼禾攤開蘇浩的借款合約：貸與人「鴻利投資有限公司」。她抬頭，牆上那張明細寫著「鴻利投…」。",
+      "conflict": "曼禾發現自家的債主就是周啟明週四匯錢的對象；說出來，蘇家的債就要攤進靜宜的離婚案，母親不會原諒她；不說，就是看著靜宜卡住。",
+      "turn": "曼禾一直以為弟弟的債只是蘇家的爛帳，此刻它可能是靜宜唯一的鑰匙；靜宜提著菜進門喊「今天我煮」，曼禾把合約摺起來塞進圍裙口袋。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "靜宜在爐邊哼歌，曼禾的手按著圍裙口袋，看著牆上四十個紅點，一個字都沒說。",
+        "question": "曼禾為什麼不說出來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "huzhu",
+        "richang"
+      ],
+      "spectacle": "長餐桌上攤開借款合約，上方牆面是四十個紅點的時間軸，兩串一樣的帳號隔著一公尺對望。",
+      "glamour_shot": "曼禾低丸子頭、圍裙沾著花粉，指尖沿著帳號慢慢滑過去，臉上的笑一點一點收起來。",
+      "setups": [
+        "s04-t19"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "程既白主動向公會倫理委員會申報舊和解，搶在對方聲請迴避之前",
+        "曼禾發現蘇浩的債主帳號就是周啟明週四的收款帳號"
+      ],
+      "characters": [
+        "cheng-jibai",
+        "lin-yicheng",
+        "su-manhe",
+        "han-jingyi"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "永和巷7號四樓廚房"
+      ],
+      "state": {
+        "time": "12月23日，停職第23天",
+        "knowledge": "進度條：鴻利文件 1/5（第二份在曼禾的圍裙口袋）｜辭職：生效｜繼承：第一順位｜合約剩 68 天。程既白辭職生效、已向公會申報舊和解；曼禾知道兩個帳號相同，還沒說",
+        "carry_forward": "圍裙口袋裡的借款合約"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "委任狀",
+      "youtube_title": "平安夜她簽下委任狀，毒舌律師在下一欄簽名說：簽了不准退貨；同一晚室友被母親下最後通牒",
+      "duration_s": 115,
+      "logline": "平安夜，程既白把舊和解的來龍去脈親口說完，以澄簽下委任狀；曼禾決定把借款合約交出去，先去菜市場告訴母親，換來一句最後通牒。",
+      "hook": "頂樓的風把合約吹起一角，以澄端著兩杯茶上來：「不問。先喝。」",
+      "hook_type": "image",
+      "mid_hook": "委任狀簽名欄，以澄寫完名字頓了一下；程既白在下一欄簽名：「簽了，不准退貨。」",
+      "conflict": "以澄要確定程既白代理她不會被翻成把柄；曼禾要決定，要不要把蘇家的債攤到靜宜的案子裡。",
+      "turn": "程既白不等她問，把五年前那份封口和解的經過一句句說完，連自己後悔的地方都說；沒有祕密，就沒有把柄。以澄簽下名字：「照行情付。」他：「那我漲價。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "平安夜的滷味攤，蔡秀鳳把湯勺摔進鍋裡：「妳拿出去，就別回來。」曼禾手上的牛皮紙袋沒放下。",
+        "question": "曼禾會為了靜宜跟媽翻臉？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "zhichang",
+        "duanshe",
+        "huzhu"
+      ],
+      "spectacle": "平安夜的頂樓，港口的燈一串串亮著，曬衣繩上夾著一份被風吹得啪啪響的借款合約。",
+      "glamour_shot": "程既白在長餐桌前簽名，袖子捲兩折、舊鋼筆寫得很慢；以澄在一旁看著，嘴角忍住沒笑。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01",
+        "s04-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "程既白以獨立律師身分接下以澄的反告訴訟，委任狀簽好",
+        "舊和解全部攤開、向公會申報完畢，鄒秉衡的迴避聲請沒了著力點"
+      ],
+      "characters": [
+        "su-manhe",
+        "lin-yicheng",
+        "cheng-jibai",
+        "fang-yulan",
+        "cai-xiufeng"
+      ],
+      "locations": [
+        "永和巷7號頂樓曬衣場",
+        "永和巷7號四樓長餐桌",
+        "菜市場滷味攤"
+      ],
+      "state": {
+        "time": "12月24日平安夜，停職第24天",
+        "knowledge": "進度條：鴻利文件 1/5（第二份在曼禾手上）｜辭職：生效・已委任｜繼承：第一順位｜合約剩 67 天。程既白正式代理以澄的反告訴訟；曼禾要把借款合約交出去，母親放話翻臉",
+        "carry_forward": "蔡秀鳳那句「就別回來」"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "同一枚章",
+      "youtube_title": "她把弟弟的借款合約和室友丈夫的轉帳單並排，兩枚公司章連缺角都一樣：我弟的債能救妳",
+      "duration_s": 135,
+      "logline": "曼禾頂著母親的最後通牒回到四樓，把蘇浩的借款合約和周啟明的轉帳明細並排；程既白調出鴻利的公司登記，一家空殼、一個負責人、一枚章，把兩條線綁在一起。",
+      "hook": "曼禾抱著牛皮紙袋走出菜市場，沒回頭：「我會回來。先回四樓。」",
+      "hook_type": "line",
+      "mid_hook": "程既白把筆電轉過來：鴻利投資，資本額一百萬，負責人馮德茂，登記地址是港區一間空辦公室。",
+      "extra_hooks": [
+        "靜宜盯著合約上的紅章，聲音發抖：「就是這個章。」——周啟明書桌上那封信的封口。"
+      ],
+      "conflict": "交出借款合約，蘇家的債會被攤在法院；不交，靜宜的離婚案就差這一塊。",
+      "turn": "大家以為曼禾會把紙袋交回母親，她卻回到四樓自己打開；兩份文件一並排，周啟明九年的「投資」，就是借錢給曼禾弟弟的那家空殼公司。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "兩枚紅章在燈下並排，連缺角都一樣。曼禾把兩份文件推到靜宜面前：「我弟的債，可以救妳的離婚。」",
+        "question": "靜宜會收下曼禾家的文件嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiechuan",
+        "huzhu",
+        "xuanyi",
+        "zixuan",
+        "anquan"
+      ],
+      "spectacle": "長餐桌上兩份文件並排，燈下兩枚一模一樣的紅色公司章，連缺角的位置都對得上。",
+      "glamour_shot": "曼禾站在長餐桌前，捲髮散下來、酒窩不見了，把兩份文件推向靜宜時下巴抬得很高。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t19"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "轉帳明細、借款合約、公司登記三份並排：同一個帳號、同一個負責人、同一枚章",
+        "曼禾頂著母親的反對，把家裡的債拿出來救靜宜"
+      ],
+      "characters": [
+        "su-manhe",
+        "han-jingyi",
+        "lin-yicheng",
+        "cheng-jibai"
+      ],
+      "locations": [
+        "菜市場出口",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "12月25日，停職第25天",
+        "knowledge": "進度條：鴻利文件 3/5（轉帳明細、借款合約、公司登記）｜辭職：生效・已委任｜繼承：第一順位｜合約剩 66 天。周啟明週四轉走的兩百四十萬進了鴻利投資——放貸給蘇浩的空殼公司，負責人馮德茂",
+        "carry_forward": "曼禾推到靜宜面前的兩份文件"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "妳不能替我決定",
+      "youtube_title": "室友不肯收她家的文件怕連累她，她搬出家規第五條：要不要給，妳不能替我決定",
+      "duration_s": 105,
+      "logline": "靜宜不忍心讓曼禾的家被拖進自己的離婚案，想把文件推回去；曼禾搬出家規第五條；同一晚，陸家送來跨年家宴的正式請帖，陸霽的名字旁邊並列兩個女人。",
+      "hook": "靜宜把兩份文件推回去：「不好意思，我不能拿。」曼禾一掌按住：「家規第五條。」",
+      "hook_type": "line",
+      "mid_hook": "視訊裡的葉律師皺眉：「能不能用，要看誰提出。」",
+      "conflict": "靜宜不想欠曼禾家這個人情，更怕蘇家被攤上法院；曼禾堅持要不要給是她的事。",
+      "turn": "靜宜以為推回去是體貼，曼禾讓她看清：推回去就是替別人做決定。靜宜把文件收進帆布袋：「那我收。謝謝。」這一次沒有道歉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "燙金請帖打開：「十二月三十一日陸府家宴，喬家同席。」陸霽的名字旁並列兩行：喬念真、蘇曼禾（未婚妻）。",
+        "question": "曼禾要坐上那張桌嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "xuanyi",
+        "anquan",
+        "huzhu"
+      ],
+      "spectacle": "家規牆旁多了一張手寫清單「鴻利文件」，五個方格勾了三個，暖黃燈照著還沒乾的紅筆。",
+      "glamour_shot": "靜宜把文件收進帆布袋，抬頭對曼禾笑，眼角有一點淚光，嘴角卻很穩。",
+      "setups": [
+        "s04-t24"
+      ],
+      "payoffs": [
+        "s04-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "靜宜收下曼禾的文件，第一次沒說不好意思",
+        "四樓牆上有了看得見的「鴻利文件」清單，勾了三格",
+        "陸崇山替陸霽排的聯姻對象浮出來：喬家千金喬念真"
+      ],
+      "characters": [
+        "han-jingyi",
+        "su-manhe",
+        "lin-yicheng",
+        "s04-ye-shuheng",
+        "fang-yulan"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "方阿嬤的雜貨店櫃台"
+      ],
+      "state": {
+        "time": "12月26日，停職第26天",
+        "knowledge": "進度條：鴻利文件 3/5（牆上清單勾了三格）｜辭職：生效・已委任｜繼承：第一順位｜合約剩 64 天。靜宜收下文件；陸家跨年家宴喬家同席，曼禾被要求以未婚妻出席",
+        "carry_forward": "請帖上並列的兩個名字"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "我是喬念真",
+      "youtube_title": "她親手把弟弟的借款文件交給室友的律師，回到花店，一個陌生女人在冷藏櫃前等她",
+      "duration_s": 110,
+      "logline": "曼禾親手把借款文件交給葉律師，確認保證人本人提出可以用；以澄和程既白在四樓為答辯狀吵到計時器響；回到禾間，一個要買白花的陌生女人在冷藏櫃前等她。",
+      "hook": "曼禾盯著請帖：「我是花藝師，還是未婚妻？」以澄頭也不抬：「妳自己選。」",
+      "hook_type": "question",
+      "mid_hook": "葉律師一頁頁貼上編號：「本人提出，可以用。」她抬頭：「妳弟弟知道嗎？」曼禾愣住。",
+      "conflict": "文件交出去之前，曼禾得確定它真的幫得上靜宜；交出去之後，她才想到弟弟還被蒙在鼓裡。",
+      "turn": "保證人本人提出的文件可以當證據，可葉律師一句「妳弟弟知道嗎」讓曼禾發現，這份文件攤開的是蘇浩的人生，總有一天他得自己面對。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "禾間的冷藏櫃前，穿駝色大衣的女人轉過身：「我要白色海芋。我是喬念真。」",
+        "question": "喬念真為什麼親自找上門？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "xuanyi",
+        "zhichang",
+        "richang"
+      ],
+      "spectacle": "禾間冷藏櫃的霧氣裡，一整排白色海芋後面站著一個穿駝色大衣的陌生女人。",
+      "glamour_shot": "曼禾抱著一大把尤加利從冷藏櫃轉身，看見陌生女人時酒窩一收，眉毛挑了起來。",
+      "setups": [
+        "s04-t21"
+      ],
+      "payoffs": [
+        "s04-t24"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "曼禾親手把蘇浩的借款合約交給葉律師，確認可以當證據",
+        "以澄的答辯狀被程既白改掉一半，兩人吵到方阿嬤的計時器響"
+      ],
+      "characters": [
+        "su-manhe",
+        "s04-ye-shuheng",
+        "lin-yicheng",
+        "cheng-jibai",
+        "s04-qiao-nianzhen",
+        "fang-yulan"
+      ],
+      "locations": [
+        "葉書蘅律師事務所",
+        "永和巷7號四樓長餐桌",
+        "禾間花藝工作室"
+      ],
+      "state": {
+        "time": "12月27日週六，停職第27天",
+        "knowledge": "進度條：鴻利文件 3/5（借款合約已交葉律師）｜辭職：生效・已委任｜繼承：第一順位｜合約剩 63 天。文件到了靜宜的律師手上，可以用；蘇浩還不知道；喬念真找上禾間",
+        "carry_forward": "喬念真要白色海芋"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "伴娘的女兒",
+      "youtube_title": "聯姻對象親自來花店找她，沒有吵架，只說一句：三十年前，我媽是那場婚禮的伴娘",
+      "duration_s": 110,
+      "logline": "喬念真不是來示威的：她也不想被安排，只想先看看陸霽選的人，還說出白色海芋的來歷；同一晚，以澄又一次沒接父親的電話。",
+      "hook": "曼禾把花剪放下：「來看情敵？」喬念真：「來看同伴。」",
+      "hook_type": "line",
+      "mid_hook": "喬念真摸著海芋的花苞：「我媽是伴娘。新娘捧著這個，一路在哭。」",
+      "extra_hooks": [
+        "四樓客廳，以澄盯著手機上「爸」的來電，任它震到停，再把手機蓋在桌上。"
+      ],
+      "conflict": "曼禾以為來的是對手，喬念真卻是另一個被安排的人；兩個被安排的女人，能不能不替那個男人做決定。",
+      "turn": "喬念真說她也不想嫁，可她不會替陸霽說不：「要說，他自己說。」曼禾第一次在別人嘴裡聽見家規第五條。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "喬念真走到門口回頭：「他母親走那天，也是跨年。」禾間的鐵捲門落下一半。",
+        "question": "陸霽的母親為什麼在跨年走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "cuowei",
+        "xuanyi",
+        "richang",
+        "anquan"
+      ],
+      "spectacle": "禾間半落的鐵捲門下，冬夜的路燈把一整排白色海芋照成淡藍色。",
+      "glamour_shot": "曼禾靠在工作台邊，乾燥花耳環輕輕一晃，對喬念真挑眉：「同伴？」",
+      "setups": [
+        "s04-t22",
+        "s04-t27",
+        "m09"
+      ],
+      "payoffs": [
+        "s04-t21"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "曼禾和喬念真沒變成情敵，交換了電話",
+        "曼禾知道白色海芋是三十年前陸崇山婚禮的捧花"
+      ],
+      "characters": [
+        "su-manhe",
+        "s04-qiao-nianzhen",
+        "lin-yicheng",
+        "han-jingyi"
+      ],
+      "locations": [
+        "禾間花藝工作室",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "12月28日，停職第28天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：生效・已委任｜繼承：第一順位｜合約剩 62 天。喬念真也不想被安排；白色海芋是三十年前的婚禮捧花；陸霽的母親在某個跨年夜離開；以澄沒接父親的電話",
+        "carry_forward": "「他母親走的那天，也是跨年」"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "保證人交給誰了",
+      "youtube_title": "丈夫開條件：撤回調閱就讓她週末見女兒，她只回一句；當晚放貸公司打給她室友",
+      "duration_s": 105,
+      "logline": "方阿嬤說出陸霽唯一提過的母親；周啟明打給靜宜，要她撤回調閱換小桐的週末，被一句話擋回去；當晚放貸公司打給曼禾——他們已經知道文件交出去了。",
+      "hook": "曼禾問起陸霽的母親，方阿嬤搖著扇：「伊講，伊阿母無講再見。」",
+      "hook_type": "line",
+      "mid_hook": "放學後的空教室，周啟明在電話裡很溫柔：「撤回調閱，小桐週末歸妳。」",
+      "conflict": "周啟明拿女兒的週末換九年的帳；靜宜要守住調閱，又不能讓小桐變成談判桌上的東西。",
+      "turn": "靜宜以為自己會猶豫，話卻先出口：「小桐不是籌碼。」她先掛了電話；可周啟明一知道新文件，鴻利那頭也跟著知道了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "曼禾的手機響，陌生號碼，男聲客氣得發冷：「保證人，文件交給誰了？」",
+        "question": "鴻利會對曼禾家做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "duanshe",
+        "xuanyi",
+        "anquan"
+      ],
+      "spectacle": "放學後空掉的三年二班，黑板上還留著「誠實」兩個大字，靜宜站在講台邊講電話。",
+      "glamour_shot": "靜宜站在教室窗邊，夕陽把紅筆和她的側臉一起照亮，她握著手機，第一次先掛斷。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "靜宜拒絕周啟明的交換：不撤回調閱，不拿小桐談條件",
+        "以澄弄清楚消息怎麼傳出去：補充證據送達對方律師"
+      ],
+      "characters": [
+        "su-manhe",
+        "fang-yulan",
+        "han-jingyi",
+        "zhou-qiming",
+        "lin-yicheng"
+      ],
+      "locations": [
+        "方阿嬤的雜貨店",
+        "南區國小三年二班教室",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "12月29日，停職第29天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：生效・已委任｜繼承：第一順位｜合約剩 61 天。周啟明想用小桐換撤回調閱，被拒；鴻利已經知道借款文件交出去了",
+        "carry_forward": "鴻利的電話"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "蓋著的婚照",
+      "youtube_title": "跨年夜她以花藝師身分把白色海芋送進董事長書房，書架上蓋著一張舊婚照，新娘捧著同一種花",
+      "duration_s": 115,
+      "logline": "以澄把鴻利的來電錄音存證；程既白說鄒秉衡真的遞了迴避聲請；跨年夜下午，曼禾以花藝師身分走進陸宅書房，放花瓶的位置上蓋著一個相框。",
+      "hook": "以澄按下錄音筆，紅燈一亮。曼禾開擴音：「我聽不懂。」對方一秒掛斷。",
+      "hook_type": "image",
+      "mid_hook": "陸宅書房，訂單寫著「放書架第三層」，那個位置上躺著一個面朝下的相框。",
+      "extra_hooks": [
+        "程既白在電話裡笑了一聲：「鄒秉衡遞了迴避聲請。」以澄：「他急了。」"
+      ],
+      "conflict": "曼禾今天下午是花藝師、晚上是未婚妻；她只該把花放好，不該碰陸家的任何東西。",
+      "turn": "她以為白花是董事長的排場，移開相框放花瓶時才看見：三十年前的婚照，新娘捧的就是她今天插的花。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "泛黃的婚照裡，年輕的陸崇山身邊，新娘捧著白色海芋，眼睛是紅的——跟她剛插好的那瓶一模一樣。",
+        "question": "照片裡的新娘是陸霽的母親？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "xuanyi",
+        "zhichang"
+      ],
+      "spectacle": "陸宅書房一整面書牆，青瓷瓶裡的白色海芋旁，一個翻過來的相框露出泛黃的婚照。",
+      "glamour_shot": "曼禾綁緊工作圍裙、低丸子頭，雙手捧著一大瓶白色海芋走進書房，側臉在落地窗的冬光裡很乾淨。",
+      "setups": [
+        "s04-t14",
+        "s04-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "鴻利的來電錄音存證，違法催收的紀錄又多一筆",
+        "禾間的白色海芋準時送進陸宅書房"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "su-manhe",
+        "cheng-jibai"
+      ],
+      "locations": [
+        "永和巷7號四樓客廳",
+        "陸宅書房"
+      ],
+      "state": {
+        "time": "12月31日下午，停職第31天",
+        "knowledge": "進度條：鴻利文件 3/5（另有鴻利來電錄音）｜辭職：生效・已委任｜繼承：第一順位｜合約剩 59 天。陸宅書房有一張蓋著的舊婚照，新娘捧白色海芋；鄒秉衡聲請程既白迴避",
+        "carry_forward": "照片裡紅著眼的新娘"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "跨年家宴",
+      "youtube_title": "下午她是送花的花藝師，晚上換上長洋裝坐進陸家宴席，董事長舉杯要替兒子和別人訂日子",
+      "duration_s": 115,
+      "logline": "陸崇山撞見曼禾扶起婚照；五分鐘後她換下圍裙坐進跨年家宴，當著喬家，陸崇山舉杯要替陸霽和喬念真訂日子；四樓那頭，小桐問她的鑰匙能不能掛黃色的。",
+      "hook": "書房門被推開，陸崇山站在門口：「誰准妳碰的？」曼禾把相框扶正：「放花的位置。」",
+      "hook_type": "danger",
+      "mid_hook": "水晶燈下，陸崇山舉杯：「霽兒和念真，春天訂日子。」整桌安靜。",
+      "extra_hooks": [
+        "四樓的跨年夜，小桐捏著自己那把鑰匙：「媽媽，可以掛黃色的嗎？」"
+      ],
+      "conflict": "曼禾以合約未婚妻的身分坐在一張要替陸霽訂別人日子的桌上，她不能失態，也不能替陸霽開口。",
+      "turn": "大家以為陸霽會照舊沉默，他放下筷子：「爸，我有未婚妻。」喬念真只動了動嘴角，沒有拆穿。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "散席時陸崇山走過她身後，聲音很低：「蘇小姐，書房，一個人。」窗外的跨年倒數開始了。",
+        "question": "陸崇山要單獨跟她說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "duanshe",
+        "richang",
+        "anquan"
+      ],
+      "spectacle": "陸宅長長的宴席上水晶燈全亮，主位的陸崇山舉杯，兩個女人分坐陸霽左右，窗外港口等著跨年煙火。",
+      "glamour_shot": "曼禾五分鐘內換下圍裙、放下捲髮，一身墨綠長洋裝走進宴會廳，陸霽起身替她拉開椅子。",
+      "setups": [
+        "s04-t26"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "陸家的傭人發現送花的花藝師就是少爺的未婚妻",
+        "陸霽當著兩家人說「我有未婚妻」，喬念真沒有拆穿"
+      ],
+      "characters": [
+        "lu-chongshan",
+        "su-manhe",
+        "lu-ji",
+        "s04-qiao-nianzhen",
+        "han-jingyi",
+        "zhou-xiaotong",
+        "lin-yicheng"
+      ],
+      "locations": [
+        "陸宅書房門口",
+        "陸宅宴會廳",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "12月31日夜，停職第31天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：生效・已委任｜繼承：第一順位｜合約剩 59 天。陸崇山要在春天替陸霽和喬念真訂日子；陸霽當眾說自己有未婚妻",
+        "carry_forward": "陸崇山要她一個人進書房"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "簽了一輩子",
+      "youtube_title": "跨年煙火炸開那一刻，逼兒子聯姻的董事長對她說：我當年也簽了一份合約，簽了一輩子",
+      "duration_s": 120,
+      "logline": "跨年夜的書房裡，陸崇山第一次對外人說出三十年前的婚姻：他也是被安排的，陸霽的母親在那段婚姻裡被逼走；曼禾問了一句沒人敢問的話。",
+      "hook": "曼禾把高跟鞋提在手上，走進書房：「您說。」",
+      "hook_type": "image",
+      "mid_hook": "陸崇山把婚照立起來：「我當年也簽了一份合約。」窗外第一朵煙火炸開。",
+      "extra_hooks": [
+        "四樓頂樓，以澄在煙火下打字：「爸，我停職了。」看了很久，又一個字一個字刪掉。"
+      ],
+      "conflict": "曼禾面對一個想讓她消失的人；她只想知道，一個父親為什麼非要兒子走自己的路。",
+      "turn": "三十年前公司差點倒，他照父親的安排成婚；新娘捧著白色海芋哭了一路，幾年後在家族的壓力下被逼走，他選了公司。曼禾問：「那你為什麼要他再簽一次？」他沉默很久：「因為我只會這一種。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "書房門外，陸霽端著兩杯醒酒茶站在那裡，不知道站了多久。煙火一亮一暗照著他的臉。",
+        "question": "陸霽聽見了多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "xuanyi",
+        "anquan"
+      ],
+      "spectacle": "跨年煙火在陸宅書房的落地窗外一朵朵炸開，照亮書架上的舊婚照和青瓷瓶裡的白色海芋。",
+      "glamour_shot": "曼禾墨綠長洋裝、手提高跟鞋站在書房中央，煙火的光一陣一陣打在她仰起的臉上。",
+      "setups": [
+        "s04-t28"
+      ],
+      "payoffs": [
+        "s04-t20"
+      ],
+      "reveals": [
+        "m09"
+      ],
+      "general_payoffs": [
+        "曼禾聽陸崇山親口說出三十年前的合約婚姻與陸霽母親被逼走",
+        "陸崇山第一次在外人面前承認他後悔了三十年"
+      ],
+      "characters": [
+        "su-manhe",
+        "lu-chongshan",
+        "lu-ji",
+        "lin-yicheng",
+        "han-jingyi",
+        "zhou-xiaotong"
+      ],
+      "locations": [
+        "陸宅書房",
+        "永和巷7號頂樓曬衣場"
+      ],
+      "state": {
+        "time": "1月1日零時，停職第32天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：生效・已委任｜繼承：第一順位｜合約剩 58 天。陸崇山當年也是聯姻，陸霽的母親在那段婚姻裡被逼走，他後悔三十年，卻只會用同一種方法保住公司",
+        "carry_forward": "門外端著茶的陸霽"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "圖是對的嗎",
+      "youtube_title": "她終於接起父親的電話說自己停職了，父親只問一句：圖是對的嗎？",
+      "duration_s": 110,
+      "logline": "陸霽只對父親說了一句新年快樂；元旦後第一個上班日，以澄終於接起父親的電話；程既白帶來法院駁回迴避的裁定，同一個信封裡，對方的新書狀指名了一個人。",
+      "hook": "陸霽把醒酒茶放上書桌，只對父親說：「新年快樂。」轉身就走。",
+      "hook_type": "line",
+      "mid_hook": "以澄接起電話：「爸，我停職了。」林父沉默三秒：「圖是對的嗎？」",
+      "extra_hooks": [
+        "程既白把裁定放上長餐桌，紅章兩個字：「駁回。」以澄還沒笑，他抽出第二份書狀。"
+      ],
+      "conflict": "以澄一直不敢讓父親知道，怕他想起十五年前；對方律師聲請迴避失敗，立刻換一招。",
+      "turn": "她以為父親會擔心、會勸她算了，林父只問圖對不對；她說對，他說那就好。可對方的新書狀把洩密的對象寫成了程既白。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "書狀第七頁：「被告將機密計算書出示予外部人士程既白。」程既白看著自己的名字，第一次笑不出來。",
+        "question": "給公司法務看，也算洩密？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "anquan",
+        "xuanyi"
+      ],
+      "spectacle": "元旦後的四樓，冬陽照著長餐桌上兩份法院文件，一份蓋著鮮紅的「駁回」。",
+      "glamour_shot": "以澄窩在窗邊的椅子上接父親電話，毛衣袖子蓋住半個手掌，摘下眼鏡揉了揉眼睛，嘴角慢慢鬆開。",
+      "setups": [
+        "s04-t25"
+      ],
+      "payoffs": [
+        "s04-t14",
+        "s04-t27"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "法院駁回鄒秉衡聲請程既白迴避",
+        "以澄第一次親口告訴父親自己停職了，父親只問圖對不對"
+      ],
+      "characters": [
+        "lu-ji",
+        "lu-chongshan",
+        "lin-yicheng",
+        "lin-fu",
+        "cheng-jibai",
+        "su-manhe"
+      ],
+      "locations": [
+        "陸宅書房",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "1月2日，停職第33天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：生效・已委任｜繼承：第一順位｜合約剩 57 天。迴避聲請被駁回；對方改主張她把計算書給了「外部人士」程既白；父親知道她停職了",
+        "carry_forward": "書狀第七頁上程既白的名字"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "她站自己這邊",
+      "youtube_title": "聯姻對象對她說：我不嫁，但我不替他說不；當晚她收到一則訊息，喬家要帶戒指上桌",
+      "duration_s": 110,
+      "logline": "程既白翻出自己的駐點顧問合約，證明當時他是恆構的人；曼禾想著要不要先用第十二條退出，喬念真卻告訴她第三條路；靜宜的律師說，清單還差兩格。",
+      "hook": "程既白把書狀攤平：「那時候，我是恆構的人。」以澄：「拿出來。」",
+      "hook_type": "line",
+      "mid_hook": "禾間工作台前，喬念真挑了一枝白色海芋：「我會拒絕。但要他先說。」",
+      "extra_hooks": [
+        "四樓牆上的清單前，葉律師在視訊裡指著空格：「差兩格：錢的來路、去路。」"
+      ],
+      "conflict": "聽完陸崇山的故事，曼禾怕自己是陸霽和父親開戰的理由，想先按下第十二條走人。",
+      "turn": "曼禾以為退出是成全，喬念真讓她看清：先走，就是替陸霽做了決定。兩個女人都不替他說不，各自站在自己這邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "傍晚曼禾的手機亮起，喬念真的訊息只有一行：「我爸今晚會帶戒指。」",
+        "question": "喬家今晚要逼陸霽戴戒指？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "duanshe",
+        "xuanyi",
+        "zixuan"
+      ],
+      "spectacle": "禾間的工作台上橫放一枝白色海芋，兩個女人隔著它站著，窗外是一月灰藍的巷子。",
+      "glamour_shot": "曼禾抱著一大桶白色海芋從冷藏櫃轉身，霧氣散開，她對喬念真伸出手：「同伴。」",
+      "setups": [
+        "s04-t23"
+      ],
+      "payoffs": [
+        "s04-t22"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "程既白找出自己的駐點顧問合約：去年秋天他還是恆構的人",
+        "喬念真表態：她不嫁，但不替陸霽說不",
+        "宋川傳訊給靜宜：「小桐的貓打完疫苗了。」只有這一句"
+      ],
+      "characters": [
+        "cheng-jibai",
+        "lin-yicheng",
+        "su-manhe",
+        "s04-qiao-nianzhen",
+        "han-jingyi",
+        "s04-ye-shuheng"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "禾間花藝工作室"
+      ],
+      "state": {
+        "time": "1月3日週六，停職第34天",
+        "knowledge": "進度條：鴻利文件 3/5（葉律師：還差兩格）｜辭職：生效・已委任｜繼承：第一順位｜合約剩 56 天。程既白有駐點合約證明當時是內部人；喬念真不替陸霽說不；喬家今晚要帶戒指",
+        "carry_forward": "喬家的戒指"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "不熄火的車",
+      "youtube_title": "喬家把戒指盒推上桌，董事長卻親手闔上；回程合約未婚夫只說一句：合約到期，妳就自由了",
+      "duration_s": 130,
+      "logline": "喬家回請，喬父把戒指盒推到桌中央，陸崇山看了曼禾很久，親手把盒子闔上；回程的車上，陸霽說合約到期她就自由，曼禾問那你呢，他沒回答，車停在巷口不熄火。",
+      "hook": "包廂圓桌中央，喬父推出一個絲絨戒指盒：「趁今天，把日子定了。」",
+      "hook_type": "image",
+      "mid_hook": "陸崇山看了曼禾很久，伸手把戒指盒闔上：「春天再說。」喬父的笑僵在臉上。",
+      "conflict": "曼禾要撐住未婚妻的位置，又不能替陸霽開口；陸霽聽完父親的故事，開始替她算出口。",
+      "turn": "大家以為陸崇山會趁勢逼婚，他卻把戒指盒闔上；可陸霽在回程的車上說：「合約到期，妳就自由了。」曼禾：「那你呢？」他沒回答。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "車停在永和巷口沒有熄火，陸霽第一次沒有下車送她到雜貨店。曼禾站在巷口，車燈還亮著。",
+        "question": "陸霽為什麼不下車？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "xuanyi",
+        "anquan",
+        "zixuan"
+      ],
+      "spectacle": "永和巷口一台深藍轎車停著不熄火，車燈把巷子照成一條白線，雜貨店的燈在線的盡頭。",
+      "glamour_shot": "陸霽深藍大衣、雙手握著方向盤，側臉被儀表板的光照著，下顎線繃得很緊，始終沒有轉頭。",
+      "setups": [],
+      "payoffs": [
+        "s04-t23",
+        "s04-t28"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸崇山親手闔上喬家的戒指盒，把聯姻壓到春天",
+        "曼禾沒有先用第十二條退出：要走，由陸霽自己說",
+        "以澄和靜宜在四樓等門，一碗湯熱了第三次"
+      ],
+      "characters": [
+        "su-manhe",
+        "lu-ji",
+        "lu-chongshan",
+        "s04-qiao-nianzhen",
+        "lin-yicheng",
+        "han-jingyi"
+      ],
+      "locations": [
+        "港邊餐廳包廂",
+        "陸霽的車內",
+        "永和巷口",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "1月3日週六夜，停職第34天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：生效・已委任｜繼承：第一順位｜合約剩 56 天。陸崇山把聯姻壓到春天；陸霽說合約到期她就自由，卻不說自己",
+        "carry_forward": "巷口那台不熄火的車"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "子債母還",
+      "youtube_title": "她推著一車年花穿過菜市場，看見和她冷戰的媽媽正從攤子上撕下一張催債字條",
+      "duration_s": 105,
+      "logline": "陸霽那晚沒下車，方阿嬤說他欠一盤棋；禾間的年花開始出貨，曼禾推著花車經過母親的滷味攤，看見冷戰中的母親正從遮雨棚上撕下一張字條。",
+      "hook": "車燈走遠，曼禾一個人走到雜貨店，方阿嬤把棋子收進盒裡：「伊欠我一盤棋。」",
+      "hook_type": "line",
+      "mid_hook": "清晨的菜市場，曼禾推著一車蝴蝶蘭拐過轉角，看見母親踮腳撕下遮雨棚上的白字條，手在抖。",
+      "extra_hooks": [
+        "四樓長餐桌，葉律師傳來訊息：下一輪調解一月二十一日，鴻利文件要在那之前補齊。靜宜把日期圈在月曆上。"
+      ],
+      "conflict": "平安夜那句「就別回來」還橫在母女中間；鴻利拿不到曼禾，轉頭去逼她的母親。",
+      "turn": "曼禾本來打算低頭推車走過去，車輪卻停了；她把花車轉了一個方向，朝冷戰的母親走去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "曼禾走到攤前，蔡秀鳳把字條揉成一團，可曼禾已經看見了：「子債母還。蔡秀鳳，月底。」",
+        "question": "鴻利要逼蔡秀鳳替兒子還？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "duanshe",
+        "anquan",
+        "huzhu"
+      ],
+      "spectacle": "清晨的菜市場，一台載滿紅色蝴蝶蘭的推車停在滷味攤前，遮雨棚上還留著膠帶的白痕。",
+      "glamour_shot": "曼禾推著一車紅色蝴蝶蘭穿過菜市場，低丸子頭、鼻尖凍得發紅，看見母親時腳步一頓。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "禾間的一百二十盆年花開始出貨",
+        "曼禾推著花車回頭，走向和她冷戰的母親"
+      ],
+      "characters": [
+        "su-manhe",
+        "fang-yulan",
+        "cai-xiufeng",
+        "han-jingyi",
+        "s04-ye-shuheng"
+      ],
+      "locations": [
+        "方阿嬤的雜貨店",
+        "菜市場滷味攤",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "1月5日，停職第36天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業（程既白律師事務所）｜繼承：第一順位｜合約剩 54 天。鴻利改找蔡秀鳳，在滷味攤貼字條；下一輪調解一月二十一日",
+        "carry_forward": "「子債母還」的字條"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "證物二號",
+      "youtube_title": "冷戰的媽媽嘴硬說沒叫她回來，她只伸出手：字條給我，證物；當晚弟弟背著背包躲到她樓下",
+      "duration_s": 110,
+      "logline": "蔡秀鳳嘴硬，最後還是把字條交到曼禾手上；以澄比對出兩張催收字條出自同一隻手；深夜，被債主找到住處的蘇浩躲到永和巷，方阿嬤坐在樓梯口不讓他上。",
+      "hook": "蔡秀鳳把紙團塞進圍裙：「看什麼？又沒叫妳回來。」曼禾伸出手：「給我。證物。」",
+      "hook_type": "line",
+      "mid_hook": "以澄把揉皺的字條燙平收進夾鏈袋：「證物二。」再和證物一並排，兩個「月底」歪得一模一樣。",
+      "extra_hooks": [
+        "收攤後的攤子只剩一盞燈，蔡秀鳳拉開抽屜，拇指按在一本舊存摺上，封面寫著蘇曼禾。"
+      ],
+      "conflict": "蔡秀鳳不肯接受被她趕走的女兒幫忙，曼禾也不肯求；鴻利已經找到蘇浩的住處。",
+      "turn": "母女誰都沒說軟話，蔡秀鳳卻把紙團放進曼禾掌心——那是她能做到最接近「回來」的一句話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "深夜的永和巷，蘇浩背著背包縮在樓梯口；方阿嬤坐在第一階搖扇：「家規第六條，借了要還。」蘇浩抬頭看向樓梯轉角的曼禾。",
+        "question": "曼禾要下樓帶走弟弟嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "duanshe",
+        "anquan",
+        "xuanyi"
+      ],
+      "spectacle": "長餐桌上兩個夾鏈袋並排，兩張字條上同樣歪斜的「月底」，像同一隻手寫的雙胞胎。",
+      "glamour_shot": "曼禾站在四樓樓梯轉角往下看，捲髮散在肩上，手緊抓著欄杆，酒窩一點都不見。",
+      "setups": [
+        "s04-t29",
+        "s04-t30",
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蔡秀鳳把字條交到曼禾手上，母女冷戰鬆了一個口",
+        "以澄比對出兩張催收字條是同一個人的筆跡",
+        "方阿嬤擋在樓梯口時第一次提起五十年前：她也欠過人，一直還到現在"
+      ],
+      "characters": [
+        "cai-xiufeng",
+        "su-manhe",
+        "lin-yicheng",
+        "su-hao",
+        "fang-yulan"
+      ],
+      "locations": [
+        "菜市場滷味攤",
+        "永和巷7號四樓長餐桌",
+        "永和巷7號樓梯口"
+      ],
+      "state": {
+        "time": "1月6日深夜，停職第37天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業｜繼承：第一順位｜合約剩 53 天。兩張催收字條同一筆跡；蘇浩的住處被鴻利找到，他躲來永和巷，方阿嬤不讓他上樓",
+        "carry_forward": "樓梯口的蘇浩"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "超過三倍",
+      "youtube_title": "躲債的弟弟被獸醫收留睡診所，隔天律師一算：放貸公司的利率超過法定上限三倍",
+      "duration_s": 115,
+      "logline": "曼禾下樓，沒有帶蘇浩上去；宋川收留他睡診所的行軍床；隔天以澄帶他去程既白的新事務所，順手算了那間老樓的夾層，程既白則算出鴻利的利率。",
+      "hook": "曼禾走下樓，沒帶他上去，只把自己的圍巾繞上他脖子：「樓上不行。」",
+      "hook_type": "image",
+      "mid_hook": "巷尾走來剛下刀的宋川，手上提著貓籠：「我診所有行軍床。要掃貓砂。」",
+      "extra_hooks": [
+        "港邊老樓的事務所，以澄敲了敲夾層的木梁：「書最多兩櫃。」程既白：「收費嗎？」她：「抵律師費。」"
+      ],
+      "conflict": "蘇浩只想有人替他把債變不見；四樓不收他，母親那邊也不能去。",
+      "turn": "大家以為這筆債只能慢慢還，程既白把合約上的利息換算成年利率，數字超過法定上限三倍：鴻利是違法放貸，可要討回公道，得蘇浩自己開口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "程既白在計算紙上圈出一個數字：「年利率，超過法定三倍。」蘇浩手上的豆漿灑了一桌。",
+        "question": "鴻利的債根本不合法？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "anquan",
+        "richang"
+      ],
+      "spectacle": "港邊老樓二樓的小事務所，以澄敲了敲夾層的木梁，灰塵從梁上落下，窗外是緩緩轉動的貨櫃起重機。",
+      "glamour_shot": "程既白捲起袖子把一疊卷宗從夾層搬下來，回頭對以澄說：「聽妳的。」",
+      "setups": [],
+      "payoffs": [
+        "s04-t30"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "宋川收留蘇浩睡在診所的行軍床，條件是掃貓砂",
+        "以澄替程既白的新事務所算了夾層載重，抵一部分律師費",
+        "程既白算出鴻利的利率超過法定上限三倍"
+      ],
+      "characters": [
+        "su-manhe",
+        "su-hao",
+        "song-chuan",
+        "lin-yicheng",
+        "cheng-jibai",
+        "han-jingyi"
+      ],
+      "locations": [
+        "永和巷7號樓梯口",
+        "巷尾動物醫院",
+        "程既白律師事務所",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "1月7日，停職第38天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業｜繼承：第一順位｜合約剩 52 天。蘇浩睡在宋川的診所；鴻利的年利率超過法定上限三倍",
+        "carry_forward": "程既白要蘇浩自己去報案"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "沒人替你說",
+      "youtube_title": "律師叫欠債的弟弟自己去報案，他問姐姐能不能陪，律師只說兩個字，他轉身就跑",
+      "duration_s": 105,
+      "logline": "程既白要蘇浩自己去報案，沒人能替他說；蘇浩轉身就跑，曼禾忍住沒追；靜宜在校門口擋下想帶小桐出國的周母；深夜，蘇浩跑到母親的攤子前。",
+      "hook": "程既白：「你要自己去報案。自己說，沒人替你說。」蘇浩：「姐不能陪？」「不能。」",
+      "hook_type": "line",
+      "mid_hook": "蘇浩衝下樓梯，曼禾站在窗邊沒動：「讓他跑。」以澄看了她一眼，把外套放回椅背。",
+      "extra_hooks": [
+        "南區國小校門口，周母拎著名牌包：「寒假，我帶小桐去日本。」靜宜：「要問法院。」"
+      ],
+      "conflict": "蘇浩從小到大都有人替他收拾，這次程既白連陪都不准；曼禾得忍住不替弟弟做決定。",
+      "turn": "大家以為曼禾會追出去，她卻站在窗邊不動——家規第五條，報不報案是蘇浩自己的事；可蘇浩跑去的地方，是母親的抽屜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "收攤的滷味攤，蘇浩紅著眼：「媽，存摺給我。」蔡秀鳳的手按在抽屜上。",
+        "question": "蔡秀鳳會把存摺給他嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "duanshe",
+        "huzhu",
+        "anquan"
+      ],
+      "spectacle": "豆漿店蒸籠冒出的白煙裡，蘇浩從二樓衝下來，帽T的帽子被港風掀開。",
+      "glamour_shot": "靜宜在校門口的冬陽下站得很直，紅筆插在帆布袋邊，對周母說話時聲音輕，卻一步都不退。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "曼禾忍住沒追蘇浩，把選擇留給他自己",
+        "靜宜在校門口擋下周母：寒假出國要問法院"
+      ],
+      "characters": [
+        "cheng-jibai",
+        "su-hao",
+        "su-manhe",
+        "lin-yicheng",
+        "han-jingyi",
+        "zhou-mu",
+        "cai-xiufeng"
+      ],
+      "locations": [
+        "程既白律師事務所",
+        "南區國小校門口",
+        "永和巷7號四樓客廳",
+        "菜市場滷味攤"
+      ],
+      "state": {
+        "time": "1月8日，停職第39天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業｜繼承：第一順位｜合約剩 51 天。蘇浩不肯自己報案，跑去跟母親要存摺；周母想寒假帶小桐出國",
+        "carry_forward": "抽屜裡寫著曼禾名字的存摺"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "存摺上的名字",
+      "youtube_title": "偏心了一輩子的媽媽被兒子逼著交存摺，她卻把存摺收進圍裙：這本寫的是你姐的名字",
+      "duration_s": 110,
+      "logline": "蔡秀鳳第一次沒順著兒子，守住寫著曼禾名字的存摺；她撥給曼禾又掛斷，曼禾回撥、趕在收攤前到攤子，卻看見鐵捲門上多了一張新字條。",
+      "hook": "蔡秀鳳拉開抽屜，把存摺拿出來，卻塞進自己圍裙：「這本，寫的是你姐的名字。」",
+      "hook_type": "reversal",
+      "mid_hook": "四樓長餐桌上，曼禾的手機亮起「媽」，響一聲就斷了。曼禾盯著螢幕，靜宜默默把熱茶推過去。",
+      "conflict": "被逼到牆角的蔡秀鳳，第一次要在兒子和女兒之間選；曼禾看見未接來電，要不要回撥。",
+      "turn": "一輩子偏心的母親，這一次沒有犧牲女兒的存摺；曼禾回撥，只說一句：「媽，我在。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "收攤的鐵捲門拉下一半，燈泡下晃著一張新字條：「下週五晚上，我們來收。」",
+        "question": "鴻利下週五要來做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "duanshe",
+        "anquan",
+        "huzhu",
+        "xuanyi"
+      ],
+      "spectacle": "收攤後的滷味攤只剩一顆燈泡，鐵捲門拉下一半，一張新的白字條在燈下輕輕晃。",
+      "glamour_shot": "曼禾一路小跑穿過收攤的菜市場，圍巾掉了一半、捲髮散開，停在母親的攤子前喘著氣。",
+      "setups": [
+        "s04-t31"
+      ],
+      "payoffs": [
+        "s04-t29",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蔡秀鳳沒把存摺交給蘇浩，她說那是曼禾的",
+        "曼禾回撥母親的未接來電，收攤前趕到攤子",
+        "以澄和程既白開始為準備程序做模擬詰問"
+      ],
+      "characters": [
+        "cai-xiufeng",
+        "su-hao",
+        "su-manhe",
+        "han-jingyi",
+        "lin-yicheng",
+        "cheng-jibai"
+      ],
+      "locations": [
+        "菜市場滷味攤",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "1月9日週五，停職第40天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業｜繼承：第一順位｜合約剩 50 天。蔡秀鳳守住寫著曼禾名字的存摺；鴻利留字條說下週五晚上來收；準備程序在下週二",
+        "carry_forward": "「下週五晚上，我們來收」"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "對方的證人",
+      "youtube_title": "準備庭上法官排定開庭日，主管的律師遞出證人名單，第一個名字竟是她唯一的證人",
+      "duration_s": 115,
+      "logline": "曼禾把新字條收成證物三；以澄的反告進入準備程序，審判長排定言詞辯論日；走廊上葛承峰開口刺她；散庭前，對方的證人名單上出現一個不該出現的名字。",
+      "hook": "曼禾把新字條收進夾鏈袋，手很穩：「證物三。」以澄在標籤上寫下日期。",
+      "hook_type": "image",
+      "mid_hook": "準備程序庭，鍾惠如翻了翻日曆：「言詞辯論，二月四日。」",
+      "extra_hooks": [
+        "法院走廊，葉律師攔住來旁聽的靜宜：「周家要帶小桐出國。」"
+      ],
+      "conflict": "以澄第一次和葛承峰在法庭同一張長桌上；對方律師一路拖延，只想把她的停職拖成辭職。",
+      "turn": "走廊上葛承峰笑著問：「小林，停職好過嗎？」以澄：「跟你一樣。」她以為最難的是面對他，散庭前才發現，對方要搶的是她的證人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "鄒秉衡遞上證人名單，鍾惠如念出聲：「原告聲請傳喚：沈安琪。」以澄的筆停住。",
+        "question": "葛承峰為什麼要傳安琪？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "anquan",
+        "huzhu"
+      ],
+      "spectacle": "準備程序庭的長桌兩端，以澄和葛承峰隔著一整排卷宗對坐，審判長的筆停在日曆上。",
+      "glamour_shot": "以澄一身深灰西裝、頭髮夾到耳後，在法院走廊轉身面對葛承峰，推了推眼鏡：「跟你一樣。」",
+      "setups": [
+        "s04-t32"
+      ],
+      "payoffs": [
+        "s04-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "法院排定二月四日言詞辯論",
+        "以澄在走廊用一句「跟你一樣」頂回葛承峰",
+        "曼禾和靜宜坐在旁聽席最後一排陪她"
+      ],
+      "characters": [
+        "su-manhe",
+        "lin-yicheng",
+        "cheng-jibai",
+        "s04-zhong-huiru",
+        "ge-chengfeng",
+        "s04-zou-bingheng",
+        "han-jingyi",
+        "s04-ye-shuheng"
+      ],
+      "locations": [
+        "永和巷7號四樓玄關",
+        "澄港地方法院民事庭",
+        "澄港地方法院走廊"
+      ],
+      "state": {
+        "time": "1月13日，停職第44天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業｜繼承：第一順位｜合約剩 46 天。言詞辯論二月四日；葛承峰要傳安琪當原告的證人；周家聲請寒假帶小桐出國",
+        "carry_forward": "證人名單上的沈安琪"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "陪妳收攤",
+      "youtube_title": "放貸公司說週五晚上要來收，三個室友坐進她媽媽的滷味攤，一路吃到收攤",
+      "duration_s": 115,
+      "logline": "安琪被對方傳喚嚇壞了，以澄要她照實說；週五晚上，三個女人坐進蔡秀鳳的滷味攤一路吃到收攤；九點整電話響了；市場盡頭，蘇浩站在暗處看著。",
+      "hook": "安琪在電話裡發抖：「他們要我作證？」以澄：「去。說實話就好。」",
+      "hook_type": "question",
+      "mid_hook": "九點整，蔡秀鳳的手機響了，陌生號碼。三個女人同時放下筷子，以澄按下錄音筆。",
+      "extra_hooks": [
+        "靜宜替蔡秀鳳剝滷蛋，蔡秀鳳小聲問：「離婚的女人很辛苦。」靜宜：「不離更辛苦。」"
+      ],
+      "conflict": "鴻利說要來收，蔡秀鳳一個人顧攤；曼禾不能替她決定關不關店，只能陪。",
+      "turn": "大家以為今晚會有人上門，結果只有一通電話；以澄開擴音：「我們都在，你來。」對方掛了。巡邏車在市場口慢慢滑過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "收攤時，市場盡頭的暗處站著蘇浩。他看著母親被三個女人圍著笑，站了很久，轉身走掉。",
+        "question": "蘇浩看見了，會回頭嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "anquan",
+        "duanshe"
+      ],
+      "spectacle": "週五夜的菜市場只剩滷味攤一盞燈，四個女人圍著小桌吃滷味，巡邏車的燈在市場口緩緩滑過。",
+      "glamour_shot": "靜宜坐在攤子的塑膠凳上，低馬尾、針織衫袖口挽起，替蔡秀鳳剝一顆滷蛋，眼神溫溫的。",
+      "setups": [],
+      "payoffs": [
+        "s04-t31"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三個女人陪蔡秀鳳顧攤到收攤，鴻利只敢打電話",
+        "以澄錄下催收電話，派出所開始在市場口巡邏",
+        "蔡秀鳳第一次跟曼禾的室友坐在同一張桌子"
+      ],
+      "characters": [
+        "shen-anqi",
+        "lin-yicheng",
+        "su-manhe",
+        "han-jingyi",
+        "cai-xiufeng",
+        "s04-guo-xinhong",
+        "su-hao"
+      ],
+      "locations": [
+        "永和巷7號四樓客廳",
+        "菜市場滷味攤",
+        "菜市場出口"
+      ],
+      "state": {
+        "time": "1月16日週五夜，停職第47天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業｜繼承：第一順位｜合約剩 43 天。鴻利沒有現身，只打電話；派出所開始巡邏；安琪會出庭說實話",
+        "carry_forward": "轉身走掉的蘇浩"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "鴻利的冷凍庫",
+      "youtube_title": "合約未婚夫查了一年的爛帳終於攤開：放貸公司竟然租了他家物流的冷凍庫",
+      "duration_s": 115,
+      "logline": "蘇浩在診所掃完貓砂，說想再想一天；週六陸霽回來下棋，卻是來找以澄：他查了一年的那筆倉儲帳，承租人正是鴻利；程既白也弄懂了對方為什麼要傳安琪。",
+      "hook": "宋川看著掃得發亮的貓籠：「掃完了。要走了？」蘇浩低著頭：「再想一天。」",
+      "hook_type": "line",
+      "mid_hook": "陸霽把三號倉的平面圖攤在棋盤上，用棋子壓住四角：「鴻利，租了陸氏的冷凍庫。」",
+      "extra_hooks": [
+        "程既白來電：「他們要咬安琪偷備份。要把她也變成洩密的。」以澄的臉一沉。"
+      ],
+      "conflict": "陸霽要在董事會前把那筆帳查清，帳上卻只有租金、沒有貨；以澄的證人可能被對方反咬成共犯。",
+      "turn": "大家以為鴻利只是放貸的空殼，陸霽的帳讓它多了一個身分：它在陸氏自己的冷凍庫裡週轉錢。他把電費和載重紀錄推到以澄面前：「妳看得懂這個。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "租約最後一頁，陸氏的簽約代表：羅啟耀。陸霽盯著那個名字：「我叫他羅叔。」",
+        "question": "陸氏董事為什麼跟鴻利簽約？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "anquan",
+        "xuanyi",
+        "cuowei"
+      ],
+      "spectacle": "雜貨店的象棋被推到一邊，陸氏三號倉的平面圖攤在棋盤上，四顆棋子壓著四個角。",
+      "glamour_shot": "陸霽深藍大衣、袖口挽起，用一顆「帥」壓住平面圖一角，抬頭看曼禾，又很快移開眼。",
+      "setups": [
+        "s04-t33",
+        "s04-t34",
+        "s04-t35"
+      ],
+      "payoffs": [
+        "s04-t17",
+        "s04-t32"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸霽查了一年的帳攤開：鴻利租用陸氏港區三號倉的三間冷凍庫",
+        "以澄接下陸氏倉儲的電費與載重紀錄，要替陸霽讀",
+        "程既白弄懂對方傳安琪的目的"
+      ],
+      "characters": [
+        "song-chuan",
+        "su-hao",
+        "lu-ji",
+        "su-manhe",
+        "lin-yicheng",
+        "fang-yulan",
+        "cheng-jibai"
+      ],
+      "locations": [
+        "巷尾動物醫院",
+        "方阿嬤的雜貨店門口",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "1月17日週六，停職第48天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業｜繼承：第一順位｜合約剩 42 天。鴻利租了陸氏三號倉的冷凍庫，簽約的是陸氏董事羅啟耀；對方要咬安琪未經授權備份",
+        "carry_forward": "租約上羅啟耀的簽名"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "先寫三行",
+      "youtube_title": "欠債的弟弟終於說要去報案，小學老師遞給他一本作業簿：怕的時候，先寫三行",
+      "duration_s": 110,
+      "logline": "陸霽說董事會前會把羅叔的事查清；蘇浩走到四樓樓下說要去報案；靜宜教他把害怕寫成三行，以澄把每張字條排成時間軸；曼禾只陪到派出所門口。",
+      "hook": "陸霽把租約收進大衣：「羅叔看著我長大。董事會前，我查清楚。」",
+      "hook_type": "line",
+      "mid_hook": "靜宜遞給蘇浩一本作業簿：「先寫三行。」他歪歪扭扭寫：我借了錢。媽用姐的證件，我沒阻止。我怕。",
+      "extra_hooks": [
+        "派出所門口，曼禾在台階前停下，往後退了一步：「我在這裡等。」"
+      ],
+      "conflict": "蘇浩終於想自己面對，卻連第一句話都不知道怎麼說；曼禾想陪他進去，又知道不能。",
+      "turn": "大家以為蘇浩只是被嚇到，他寫下的第二行卻是他第一次承認：母親拿姐姐的證件時，他沒有說不。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "派出所的玻璃門前，蘇浩的手按在門把上，回頭看曼禾。曼禾站在人行道上，沒有動。",
+        "question": "蘇浩會自己推門進去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "duanshe",
+        "anquan"
+      ],
+      "spectacle": "冬日下午的派出所門口，玻璃門映出姐弟兩個人，一個在門前一步、一個在門外三步。",
+      "glamour_shot": "曼禾站在派出所外的人行道上，雙手插在大衣口袋、下巴埋進圍巾，眼睛一直看著那扇玻璃門。",
+      "setups": [
+        "s04-t36"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇浩用靜宜教的方法寫下三行：借錢、證件、害怕",
+        "以澄替蘇浩把每一張催收字條的日期排成時間軸",
+        "蘇浩第一次親口承認：母親拿曼禾的證件作保時，他沒有阻止"
+      ],
+      "characters": [
+        "lu-ji",
+        "su-manhe",
+        "su-hao",
+        "han-jingyi",
+        "lin-yicheng"
+      ],
+      "locations": [
+        "方阿嬤的雜貨店門口",
+        "永和巷7號四樓長餐桌",
+        "永和派出所門口"
+      ],
+      "state": {
+        "time": "1月18日週日，停職第49天",
+        "knowledge": "進度條：鴻利文件 3/5｜辭職：已開業｜繼承：第一順位｜合約剩 41 天。蘇浩寫好三行陳述、決定去報案；曼禾只陪到門口；陸霽要在董事會前查清羅啟耀",
+        "carry_forward": "玻璃門前的蘇浩"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "姐，對不起",
+      "youtube_title": "躲了一年債的弟弟自己走進派出所，出來第一次說姐對不起，她只回：不用跟我說，跟媽說",
+      "duration_s": 130,
+      "logline": "蘇浩自己推門進了派出所，把鴻利的利率、字條、電話一件件說出來；曼禾在門外等了兩個小時；四樓牆上的清單勾下第四格；玻璃門打開，弟弟第一次道歉。",
+      "hook": "蘇浩推門進去，值班的郭信宏從一杯涼掉的豆漿後抬頭：「報案？坐。」",
+      "hook_type": "image",
+      "mid_hook": "兩個小時，曼禾手上的豆漿涼了；門裡的印表機吐出筆錄，蘇浩簽名的手一直在抖。",
+      "conflict": "從小有人替他收拾的蘇浩，第一次一個人把整件事說完；曼禾站在門外，忍住不進去。",
+      "turn": "大家以為蘇浩出來會先求姐姐原諒，他也真的說了；可曼禾把他推向真正欠的人：家規第六條，借了要還，要還給媽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "玻璃門打開，蘇浩走出來，第一次說：「姐，對不起。」曼禾：「不用跟我說，跟媽說。」",
+        "question": "蘇浩敢回去跟媽說嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "huzhu",
+        "duanshe",
+        "anquan",
+        "zixuan"
+      ],
+      "spectacle": "派出所的玻璃門把姐弟隔成兩格畫面，門內是印表機吐出的筆錄，門外是一杯涼掉的豆漿。",
+      "glamour_shot": "曼禾隔著玻璃門看弟弟簽名，捲髮被夜風吹亂，眼眶紅了，下巴卻抬著，一步都沒往前。",
+      "setups": [],
+      "payoffs": [
+        "s04-t36"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇浩自己報案，筆錄記下鴻利的違法利率與催收字條",
+        "四樓的鴻利文件清單勾下第四格：蘇浩的報案筆錄",
+        "蘇浩第一次對曼禾說對不起"
+      ],
+      "characters": [
+        "su-hao",
+        "s04-guo-xinhong",
+        "su-manhe",
+        "lin-yicheng",
+        "han-jingyi",
+        "cheng-jibai"
+      ],
+      "locations": [
+        "永和派出所",
+        "永和派出所門口",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "1月18日夜，停職第49天",
+        "knowledge": "進度條：鴻利文件 4/5（蘇浩的報案筆錄）｜辭職：已開業｜繼承：第一順位｜合約剩 41 天。蘇浩自己報案，鴻利涉嫌違法放貸；蘇浩向曼禾道歉，曼禾要他去跟母親說",
+        "carry_forward": "曼禾那句「跟媽說」"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "帶念真來",
+      "youtube_title": "欠債的弟弟回到媽媽的攤子道歉，同一天董事長下最後通牒：董事會那天帶聯姻對象來，或者別來",
+      "duration_s": 105,
+      "logline": "蘇浩回到滷味攤跟母親道歉；陸霽拿到董事會通知，議程上寫著繼承人的董事席次；靜宜的調解被對方延到同一週；陸崇山打來，只給兒子一個選項。",
+      "hook": "清晨的滷味攤，蘇浩站在母親身後：「媽，對不起。」蔡秀鳳沒回頭，把刀遞給他：「拿好。」",
+      "hook_type": "line",
+      "mid_hook": "雜貨店的棋盤旁，陸霽攤開董事會通知：一月二十七日，議程第三案，繼承人董事席次。",
+      "extra_hooks": [
+        "四樓長餐桌，葉律師來電：對方聲請延期，調解改到一月二十八日。靜宜：「那就二十八號。」"
+      ],
+      "conflict": "陸霽要在董事會前決定帶什麼走進那間會議室；蘇浩要從道歉開始還。",
+      "turn": "大家以為蔡秀鳳會先罵一頓，她只是把刀遞給兒子；陸霽卻像什麼都沒聽見，一子一子地下完那盤棋。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陸霽的手機響，陸崇山的聲音很短：「二十七號。帶念真來，或者別來。」棋子落在棋盤上。",
+        "question": "陸霽二十七號會帶什麼去？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zixuan",
+        "cuowei",
+        "anquan",
+        "duanshe"
+      ],
+      "spectacle": "清晨的滷味攤冒著白煙，蘇浩第一次套上袖套站在母親旁邊切豆干，刀法笨得讓攤販都在笑。",
+      "glamour_shot": "陸霽坐在雜貨店的小板凳上看董事會通知，深藍大衣、腕錶反光，指節輕輕敲著棋盤邊。",
+      "setups": [
+        "s04-t37"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "蘇浩回到滷味攤跟母親道歉，開始幫忙備料",
+        "調解改到一月二十八日，跟董事會同一週"
+      ],
+      "characters": [
+        "su-hao",
+        "cai-xiufeng",
+        "lu-ji",
+        "su-manhe",
+        "fang-yulan",
+        "han-jingyi",
+        "s04-ye-shuheng",
+        "lu-chongshan"
+      ],
+      "locations": [
+        "菜市場滷味攤",
+        "方阿嬤的雜貨店門口",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "1月19日，停職第50天",
+        "knowledge": "進度條：鴻利文件 4/5｜辭職：已開業｜繼承：第一順位（董事會一月二十七日）｜合約剩 40 天。董事會要表決繼承人董事席次；陸崇山要陸霽帶喬念真去；調解改到一月二十八日",
+        "carry_forward": "「帶念真來，或者別來」"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "電表不會說謊",
+      "youtube_title": "她熬夜讀完三年的冷凍庫電費，發現帳上一直滿倉的貨，電表上一度電都沒多用",
+      "duration_s": 115,
+      "logline": "陸霽說他不會帶喬念真，他要帶的是一箱紀錄；以澄熬夜讀完三號倉三年的電費與載重，畫出兩條對不上的曲線；早上方阿嬤破例讓陸霽也上樓喝那杯二十分鐘的茶，他看懂了代價。",
+      "hook": "曼禾問：「那你帶什麼去？」陸霽把一個紙箱推到她面前：「這個。」",
+      "hook_type": "line",
+      "mid_hook": "凌晨三點，以澄把兩條曲線疊在牆上：「帳上滿倉，電表空倉。三年，一度電都沒多用。」",
+      "extra_hooks": [
+        "程既白傳來訊息：鄒秉衡聲請延後言詞辯論，被駁回。二月四日照開。以澄把日期圈得更粗。"
+      ],
+      "conflict": "鴻利的帳做得乾乾淨淨，陸霽需要一個會計師看不出來、物理騙不了的證據。",
+      "turn": "大家以為要查帳，以澄查的是電：滿倉的冷凍庫壓縮機會一直跑、樓板會吃重，可三年來電表和載重紀錄都跟空倉一樣——貨從來不存在，只有錢在轉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "計時器還剩三分鐘，陸霽看著牆上的曲線很久：「拿出來，我就沒有陸家了。」",
+        "question": "陸霽會拿家換真相嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiechuan",
+        "cuowei",
+        "richang",
+        "anquan"
+      ],
+      "spectacle": "四樓整面牆投影兩條曲線：一條是發票上的滿倉噸數一路往上爬，一條是電表平得像一條直線。",
+      "glamour_shot": "以澄熬到天亮，頭髮用鉛筆隨手盤起、眼鏡推到頭頂，指著牆上的曲線回頭：「數字不對。」",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "以澄讀完三年的電費與載重紀錄：鴻利的冷凍庫帳上滿倉、實際空倉",
+        "曼禾半夜煮麵，靜宜替曲線上色，四樓一起熬夜",
+        "對方聲請延後言詞辯論被駁回，二月四日照常開庭"
+      ],
+      "characters": [
+        "lu-ji",
+        "su-manhe",
+        "lin-yicheng",
+        "han-jingyi",
+        "fang-yulan"
+      ],
+      "locations": [
+        "方阿嬤的雜貨店門口",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "1月20日，停職第51天",
+        "knowledge": "進度條：鴻利文件 4/5｜辭職：已開業｜繼承：第一順位（董事會一月二十七日）｜合約剩 39 天。鴻利的冷凍庫三年帳上滿倉、電表空倉；陸霽知道拿出來就會失去陸家",
+        "carry_forward": "陸霽那句「我就沒有陸家了」"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "他自己叫的",
+      "youtube_title": "主管告實習生偷備份公司檔案，她翻出兩年前的群組：叫大家備份到雲端的，正是主管本人",
+      "duration_s": 110,
+      "logline": "陸霽把紀錄留在四樓；安琪抱著舊筆電來翻兩年前的實習生群組，靜宜教她用找聯絡簿的方法，翻出一則讓對方說不出話的訊息。",
+      "hook": "計時器響了，陸霽沒回答，只把紙箱留在長餐桌上：「先放妳這裡。」",
+      "hook_type": "line",
+      "mid_hook": "安琪越翻越慌，靜宜坐到她旁邊：「忘了作業，就翻聯絡簿。從第一天翻。」",
+      "conflict": "鄒秉衡要把安琪說成擅自備份公司檔案的人，讓她的證詞連她自己一起拖下水。",
+      "turn": "大家以為得證明備份是被允許的，結果備份根本是葛承峰自己下的命令。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "兩年前的群組訊息，發送人頭像是金框眼鏡：「實習生各自備份到雲端，週末在家改。」以澄按下截圖：「他自己叫的。」",
+        "question": "葛承峰要怎麼解釋這一則？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiechuan",
+        "zhichang",
+        "anquan",
+        "huzhu"
+      ],
+      "spectacle": "安琪的舊筆電螢幕往上滑了兩年，對話泡泡一格一格閃過，停在一個金框眼鏡的頭像上。",
+      "glamour_shot": "以澄坐在四樓地板上陪安琪滑訊息，齊肩髮夾在耳後，看見那則訊息時慢慢摘下眼鏡。",
+      "setups": [],
+      "payoffs": [
+        "s04-t35"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "安琪在兩年前的實習生群組裡找到葛承峰的訊息：雲端備份是他自己的指示",
+        "靜宜用找聯絡簿的方法帶安琪從第一天翻起"
+      ],
+      "characters": [
+        "lu-ji",
+        "lin-yicheng",
+        "shen-anqi",
+        "han-jingyi",
+        "cheng-jibai",
+        "su-manhe"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "永和巷7號四樓客廳地板"
+      ],
+      "state": {
+        "time": "1月21日，停職第52天",
+        "knowledge": "進度條：鴻利文件 4/5｜辭職：已開業｜繼承：第一順位（董事會一月二十七日）｜合約剩 38 天。雲端備份是葛承峰兩年前在群組裡下的指示；陸霽把倉儲紀錄留在四樓",
+        "carry_forward": "葛承峰的那則群組訊息"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "來客簿",
+      "youtube_title": "丈夫反咬她跟獸醫過從甚密，房東阿嬤把一本三年的來客簿摔在桌上：每個男人都記在這",
+      "duration_s": 115,
+      "logline": "周啟明在調解前遞狀反咬靜宜和宋川；靜宜手上的紅筆掉在地上；方阿嬤搬出她記了三年的來客簿；宋川寫下一份只寫事實的陳述書，最後一行卻不是事實。",
+      "hook": "程既白看完截圖：「這一則，夠了。」以澄把它釘上牆，旁邊寫三個字：「他叫的。」",
+      "hook_type": "line",
+      "mid_hook": "葉律師念出對方的書狀：「與獸醫過從甚密。」靜宜手上的紅筆掉在地上。",
+      "extra_hooks": [
+        "方阿嬤把一本泛黃的來客簿摔上長餐桌：「每個查埔攏記佇遮。」"
+      ],
+      "conflict": "周啟明自己的週四說不清，就把髒水潑向靜宜；她跟宋川什麼都沒做，卻得證明什麼都沒有。",
+      "turn": "大家以為只能各說各話，擋住三條感情線的家規第三條，這一刻變成靜宜的證據：三年來，宋川的每一筆都寫著「樓下」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "宋川的陳述書寫滿了日期與「樓下」，最後一行不是法律用語，只有兩個字：「我等。」靜宜把那張紙貼在額頭上。",
+        "question": "宋川等得到她自由嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiechuan",
+        "anquan",
+        "cuowei",
+        "huzhu"
+      ],
+      "spectacle": "方阿嬤把一本泛黃的手寫來客簿摔在長餐桌上，三年的日期、人名和「樓下」兩個字一頁一頁翻過去。",
+      "glamour_shot": "宋川在診所的燈下寫陳述書，平頭、舊毛衣，寫完最後一行停了很久，才把筆蓋上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "方阿嬤的來客簿證明宋川從沒上過四樓，周啟明的反咬落空",
+        "宋川寫了一份陳述書交給葉律師"
+      ],
+      "characters": [
+        "cheng-jibai",
+        "lin-yicheng",
+        "han-jingyi",
+        "s04-ye-shuheng",
+        "fang-yulan",
+        "song-chuan"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "巷尾動物醫院"
+      ],
+      "state": {
+        "time": "1月22日，停職第53天",
+        "knowledge": "進度條：鴻利文件 4/5｜辭職：已開業｜繼承：第一順位（董事會一月二十七日）｜合約剩 37 天。周啟明反咬靜宜和宋川，被來客簿和宋川的陳述書擋回去",
+        "carry_forward": "宋川的「我等」"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "帳上滿倉",
+      "youtube_title": "她在冷凍庫分析報告上簽下自己的名字交給他：我只算到這裡，剩下的你自己選",
+      "duration_s": 115,
+      "logline": "靜宜把宋川的陳述書收進卷宗，說調解完再回他；週六陸霽回到棋盤前，以澄把簽了名的三號倉分析交給他，清單五格全勾；曼禾說董事會她不去；當晚有人要動電表資料。",
+      "hook": "靜宜把陳述書夾進卷宗，沒有回訊息：「調解完，我再回他。」",
+      "hook_type": "line",
+      "mid_hook": "以澄在分析報告的簽名欄寫下「林以澄」，推到陸霽面前：「我只算到這裡。剩下的，你選。」",
+      "extra_hooks": [
+        "曼禾靠在門框上：「那天，我不去。」陸霽：「為什麼？」曼禾：「那是你要選的。」"
+      ],
+      "conflict": "陸霽手上終於有了證據，可證據一拿出來，他就沒有回頭路；以澄在停職中，還要把自己的名字簽上去。",
+      "turn": "陸霽以為以澄會勸他，她只把名字簽上：她用自己的技師身分替他擔保數字，選擇留給他。四樓牆上的清單，第五格勾下去。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "陸霽的手機響，三號倉的值班員壓低聲音：「少爺，電表今晚要送修。」",
+        "question": "證據今晚會被抹掉嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "cuowei",
+        "zixuan",
+        "jiechuan",
+        "anquan"
+      ],
+      "spectacle": "雜貨店的棋盤上，一份裝訂好的分析報告壓著一顆「帥」，封面的簽名欄寫著林以澄。",
+      "glamour_shot": "曼禾靠在雜貨店門框上，雙臂交叉、捲髮放下，對陸霽挑眉：「那是你要選的。」",
+      "setups": [],
+      "payoffs": [
+        "s04-t34"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "以澄完成三號倉電費與載重分析並簽名：鴻利三年帳上滿倉、實際空倉",
+        "四樓的鴻利文件清單五格全勾",
+        "曼禾把董事會的選擇留給陸霽自己"
+      ],
+      "characters": [
+        "han-jingyi",
+        "lu-ji",
+        "lin-yicheng",
+        "su-manhe",
+        "fang-yulan"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "方阿嬤的雜貨店門口"
+      ],
+      "state": {
+        "time": "1月24日週六，停職第55天",
+        "knowledge": "進度條：鴻利文件 5/5（三號倉電費與載重分析）｜辭職：已開業｜繼承：第一順位（董事會一月二十七日）｜合約剩 35 天。以澄簽名的分析證明鴻利空倉週轉；有人要把三號倉電表資料送修",
+        "carry_forward": "今晚要送修的電表資料"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "已經公證了",
+      "youtube_title": "有人連夜要把冷凍庫電表資料送修，她拿出一份公證書：週六就印好了；同一天五份文件遞進調解",
+      "duration_s": 110,
+      "logline": "電表資料被送修，但以澄週六就把它印出公證；葉律師把五份鴻利文件遞進調解，靜宜親手簽名；周啟明在銀行收到送達；董事會前一晚，陸霽傳來一句話。",
+      "hook": "以澄從資料夾抽出一疊蓋著鋼印的列印本：「週六就印好了，也公證了。」",
+      "hook_type": "reversal",
+      "mid_hook": "葉律師的收狀章蓋下去：「五份，遞進去了。」靜宜在補充證據狀上簽名，筆很穩。",
+      "conflict": "羅啟耀要讓證據在董事會前消失；靜宜要趕在調解前把五份文件送進卷裡。",
+      "turn": "大家以為送修就能抹掉三年的電表，以澄早就學會了：證據拿到手的那天，就先去公證。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "深夜，曼禾的手機亮起陸霽的訊息：「明天，我不看錶。」她打了「我知道」，又刪掉，把手機蓋在長餐桌上。",
+        "question": "陸霽明天會怎麼選？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiechuan",
+        "zixuan",
+        "anquan",
+        "cuowei"
+      ],
+      "spectacle": "葉律師的桌上五份文件一字排開，各貼一種顏色的索引標籤，一枚收狀章重重蓋下去。",
+      "glamour_shot": "靜宜在補充證據狀上簽名，低馬尾、針織衫袖子挽起，簽完放下筆的那隻手一點都不抖。",
+      "setups": [
+        "s04-t38"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三號倉電表資料早已公證，送修也抹不掉",
+        "葉律師把五份鴻利文件遞進調解，靜宜親手簽名"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "lu-ji",
+        "han-jingyi",
+        "s04-ye-shuheng",
+        "su-manhe",
+        "zhou-qiming"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "葉書蘅律師事務所",
+        "周啟明的銀行辦公室"
+      ],
+      "state": {
+        "time": "1月26日，停職第57天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業｜繼承：第一順位（明天董事會）｜合約剩 33 天。五份鴻利文件遞進調解，周啟明已收到；電表資料早已公證",
+        "carry_forward": "明天的董事會"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "董事會",
+      "youtube_title": "董事會上所有人等他宣布婚期，他卻摘下手錶，把一份冷凍庫報告推到父親面前",
+      "duration_s": 120,
+      "logline": "董事會上，所有人都在等陸霽宣布和喬家的婚期；他摘下手錶，拒絕聯姻，再把鴻利三年空倉週轉的證據推上長桌，揭穿看著他長大的羅叔；四樓那頭，三個女人在等。",
+      "hook": "陸霽在董事會長桌坐下，第一件事是摘下手錶，放在桌上。",
+      "hook_type": "image",
+      "mid_hook": "他把分析報告沿著長桌推到主位：「三年，帳上滿倉，電表空倉。」",
+      "extra_hooks": [
+        "羅啟耀手上的玉戒停住，陸霽看著他：「馮德茂，是羅叔的小舅子。」"
+      ],
+      "conflict": "章程要成家才能進董事會，陸崇山要兒子用一場聯姻換席次；陸霽要在所有人面前選自己的路。",
+      "turn": "大家以為陸霽會低頭宣布婚期，他先說不，再攤開一年查到的帳：陸氏的冷凍庫，被自己的董事借給空殼公司洗錢。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "主位上，陸崇山的拐杖點了一下地：「你要為了一個合約的女人，毀了繼承？」整張長桌安靜下來。",
+        "question": "陸霽要繼承，還是要自己選？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "jiechuan",
+        "zixuan",
+        "cuowei",
+        "anquan"
+      ],
+      "spectacle": "董事會長桌兩側十二張椅子，陸霽站在桌尾，一份分析報告沿著長桌滑到主位的陸崇山面前。",
+      "glamour_shot": "陸霽深藍西裝、沒戴錶的左手按在長桌上，從桌尾站起來，平靜地看著主位的父親。",
+      "setups": [
+        "s04-t41"
+      ],
+      "payoffs": [
+        "s04-t33",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸霽在董事會上拒絕聯姻，攤開鴻利三年的空倉週轉",
+        "羅啟耀被揭穿：鴻利的負責人馮德茂是他的小舅子",
+        "四樓的曼禾又把一把玫瑰剪短了，以澄和靜宜假裝沒看見"
+      ],
+      "characters": [
+        "lu-ji",
+        "lu-chongshan",
+        "s04-luo-qiyao",
+        "su-manhe",
+        "lin-yicheng",
+        "han-jingyi"
+      ],
+      "locations": [
+        "陸氏冷鏈物流董事會議室",
+        "永和巷7號四樓客廳"
+      ],
+      "state": {
+        "time": "1月27日，停職第58天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業｜繼承：董事會表決中｜合約剩 32 天。陸霽拒絕聯姻，揭穿羅啟耀與鴻利的空倉週轉；陸崇山問他是不是為了一個合約的女人",
+        "carry_forward": "陸崇山的那一問"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "自己選一次",
+      "youtube_title": "父親問他是不是為了一個合約的女人，他說：不是為了她，是為了我自己選一次",
+      "duration_s": 120,
+      "logline": "陸霽回答父親，董事會表決拿掉他的繼承順位，喬念真隨後也向家裡說了不；隔天的調解室外，周啟明看見五份鴻利文件，臉色發白，周母慢慢坐了下來。",
+      "hook": "陸霽看著父親：「不是為了她。是為了我自己選一次。」",
+      "hook_type": "line",
+      "mid_hook": "表決通過，陸霽不再列入繼承順位。他拿起桌上的錶，沒有戴上，放進口袋，走出會議室。",
+      "extra_hooks": [
+        "四樓的曼禾收到喬念真的訊息：「他說了。換我了。」"
+      ],
+      "conflict": "陸霽選了自己，代價是整個陸家；隔天輪到周啟明面對自己藏了九年的帳。",
+      "turn": "大家以為陸崇山會親手投下那一票，他卻始終沒舉手，只看著兒子留下的空椅；調解室外，周母聽完葉律師念出的鴻利兩個字，再也沒看兒子一眼。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "調解室外的長走廊，周母慢慢坐到長椅上，珍珠項鍊垂在手邊，什麼都沒說；周啟明手上那疊文件在發抖。",
+        "question": "周母知道了，會站哪邊？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zixuan",
+        "jiechuan",
+        "cuowei",
+        "anquan"
+      ],
+      "spectacle": "調解室外的長走廊，周母坐在長椅上，周啟明站在她旁邊，窗光把母子兩個人隔成兩格。",
+      "glamour_shot": "靜宜抱著卷宗站在走廊的窗光裡看周家母子，臉上沒有得意，只有一雙很靜的眼睛。",
+      "setups": [],
+      "payoffs": [
+        "s04-t37",
+        "s04-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸霽說出「我自己選一次」，被董事會拿掉繼承順位",
+        "喬念真等陸霽開口後，也向家裡說了不",
+        "周啟明看見五份鴻利文件，周母顯然不知道兒子轉走了錢"
+      ],
+      "characters": [
+        "lu-ji",
+        "lu-chongshan",
+        "s04-luo-qiyao",
+        "su-manhe",
+        "s04-qiao-nianzhen",
+        "han-jingyi",
+        "s04-ye-shuheng",
+        "zhou-qiming",
+        "zhou-mu"
+      ],
+      "locations": [
+        "陸氏冷鏈物流董事會議室",
+        "永和巷7號四樓客廳",
+        "澄港地方法院家事調解室外走廊"
+      ],
+      "state": {
+        "time": "1月28日，停職第59天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業｜繼承：已被拿掉｜合約剩 31 天。陸霽被拿掉繼承順位；周啟明看到五份文件臉色發白；周母不知道兒子轉錢",
+        "carry_forward": "坐在長椅上的周母"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "他搬出陸家",
+      "youtube_title": "丈夫被文件逼到牆角，轉頭聲請女兒的暫時監護；同一天她聽說，那個放棄繼承的男人搬出了家",
+      "duration_s": 110,
+      "logline": "周啟明不認，轉頭聲請小桐的暫時監護；恆構通知以澄停職延長到判決；靜宜先泡茶接住她；曼禾從喬念真口中聽到，陸霽搬出了陸家。",
+      "hook": "周啟明把文件夾闔上，聲音又溫柔起來：「我聲請暫時監護。」周母坐在長椅上，沒有抬頭。",
+      "hook_type": "danger",
+      "mid_hook": "四樓的以澄接到鄭婕的電話：「停職……延長到判決。」以澄：「我等判決。」",
+      "conflict": "周啟明被五份文件逼到牆角，就去搶最痛的地方：小桐；以澄的停職又被拉長。",
+      "turn": "大家以為周啟明會談和解，他卻聲請暫時監護；葉律師反而笑了：審理時，法官會先看那五份文件。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "禾間門口，喬念真沒有進來：「他搬出陸家了。只帶一個行李箱。」曼禾手上的海芋停在半空。",
+        "question": "陸霽去了哪裡？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zixuan",
+        "cuowei",
+        "anquan",
+        "xuanyi"
+      ],
+      "spectacle": "冬夜的四樓長餐桌上三杯茶冒著白氣，牆上的清單、時間軸和小桐的畫在燈下連成一片。",
+      "glamour_shot": "曼禾站在禾間的冷藏櫃前，手上一把白色海芋，霧氣裡的側臉一動不動。",
+      "setups": [
+        "s04-t39",
+        "s04-t40"
+      ],
+      "payoffs": [
+        "s04-t38"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "暫時監護權的審理排在二月六日",
+        "靜宜照家規第二條先泡茶，接住被延長停職的以澄"
+      ],
+      "characters": [
+        "zhou-qiming",
+        "zhou-mu",
+        "han-jingyi",
+        "s04-ye-shuheng",
+        "lin-yicheng",
+        "zheng-jie",
+        "su-manhe",
+        "s04-qiao-nianzhen"
+      ],
+      "locations": [
+        "澄港地方法院家事調解室外走廊",
+        "永和巷7號四樓長餐桌",
+        "禾間花藝工作室"
+      ],
+      "state": {
+        "time": "1月30日，停職第61天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業｜繼承：已被拿掉｜合約剩 29 天。周啟明聲請暫時監護，二月六日審理；以澄停職延長到判決；陸霽搬出陸家",
+        "carry_forward": "陸霽去了哪裡"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "違約金我付",
+      "youtube_title": "放棄繼承的他整整一週沒出現，再收到的是一份快遞：合約提前終止，違約金由我支付",
+      "duration_s": 130,
+      "logline": "週六陸霽第一次沒來下棋；法院要周啟明在監護審理前交出投資鴻利的證明；週日方阿嬤爬上四樓，送來一個快遞信封，寄件人是陸霽。",
+      "hook": "週六的棋盤擺到天黑，對面的小板凳一直空著。方阿嬤收起棋子：「伊無來。」",
+      "hook_type": "line",
+      "mid_hook": "方阿嬤喘著氣爬上四樓，把一個厚快遞信封放在鑰匙盤旁：寄件人，陸霽。",
+      "extra_hooks": [
+        "程既白看了一眼條文：「第十二條，他用了。」以澄把話吞回去，只替曼禾倒了一杯茶。"
+      ],
+      "conflict": "曼禾決定過不先走，要走由陸霽自己說；她等來的卻不是一句話，是一份文件。",
+      "turn": "大家以為陸霽丟下一切是在逃，他卻把第一次自己選的機會，拿來放她走，連違約金都自己扛下。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "終止通知最後一行是手寫的：「違約金由本人支付。妳不欠我任何東西。」署名陸霽。曼禾手上的紙慢慢垂下。",
+        "question": "他放她自由，她要怎麼選？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zixuan",
+        "cuowei",
+        "anquan",
+        "jiechuan"
+      ],
+      "spectacle": "四樓玄關的鑰匙盤旁放著一個厚厚的快遞信封，暖黃燈下，寄件人欄是一個熟悉的簽名。",
+      "glamour_shot": "曼禾坐在長餐桌一端拆信，捲髮披著、乾燥花耳環輕晃，讀到最後一行時睫毛垂了下來。",
+      "setups": [],
+      "payoffs": [
+        "s04-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸霽用合約第十二條提前終止，違約金自己付",
+        "法院要周啟明在監護審理前交出投資鴻利的證明"
+      ],
+      "characters": [
+        "fang-yulan",
+        "su-manhe",
+        "lin-yicheng",
+        "han-jingyi",
+        "cheng-jibai",
+        "s04-ye-shuheng"
+      ],
+      "locations": [
+        "方阿嬤的雜貨店門口",
+        "永和巷7號四樓玄關",
+        "永和巷7號四樓長餐桌"
+      ],
+      "state": {
+        "time": "2月1日週日，停職第63天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業｜繼承：已被拿掉｜合約：終止通知送達（原剩 27 天，違約金陸霽付）。陸霽用第十二條提前終止合約；週六他第一次沒來下棋",
+        "carry_forward": "那份終止通知"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "號碼停用",
+      "youtube_title": "收到合約終止通知的隔天，她照常開店紮花，打烊後終於撥出那個號碼，電話那頭卻說：已停用",
+      "duration_s": 110,
+      "logline": "曼禾把終止通知塞進圍裙，照常開店；程既白和以澄把後天的反詰問排成三題；小桐在視訊裡問法官會不會問她；打烊後，曼禾終於撥出那個號碼。",
+      "hook": "曼禾把終止通知摺好塞進圍裙口袋，拿起鑰匙：「我去上班。」",
+      "hook_type": "line",
+      "mid_hook": "長餐桌上，程既白豎起一根手指：「她是對方證人。我們只能問一次。」以澄：「一次就夠。」",
+      "conflict": "曼禾用工作把自己塞滿，不肯談那份通知；以澄要在兩天內把一場反詰問準備到不留縫。",
+      "turn": "大家以為曼禾會哭一場，她紮了一整天的情人節花束，一個字都沒提；直到打烊，她才拿出手機。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "冷藏櫃的藍光下，曼禾撥出那個號碼：「您撥的號碼已停用。」她再撥一次，還是同一句。",
+        "question": "陸霽為什麼停了號碼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "zixuan",
+        "huzhu",
+        "richang"
+      ],
+      "spectacle": "禾間打烊後只剩冷藏櫃的藍光，曼禾坐在一整排待包的情人節花束中間，手機的光照著她的臉。",
+      "glamour_shot": "曼禾在禾間一束一束紮情人節花束，捲髮紮高，手指被花刺扎了也不停，嘴抿得很緊。",
+      "setups": [
+        "s04-t42"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "程既白和以澄把反詰問排成三題",
+        "禾間的情人節訂單排到第二週"
+      ],
+      "characters": [
+        "su-manhe",
+        "lin-yicheng",
+        "cheng-jibai",
+        "han-jingyi",
+        "zhou-xiaotong"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "禾間花藝工作室"
+      ],
+      "state": {
+        "time": "2月2日，停職第64天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（二月四日出庭）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。陸霽的號碼停用；後天言詞辯論；二月六日監護審理",
+        "carry_forward": "停用的號碼"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "證人席",
+      "youtube_title": "對方律師逼問實習生是不是偷備份檔案，她看向旁聽席，小學老師比了一個三",
+      "duration_s": 120,
+      "logline": "言詞辯論當天，曼禾把手機收起來陪以澄出庭；鄒秉衡在證人席上逼問安琪，安琪看見旁聽席上靜宜比的手勢；程既白一則群組訊息讓對方改了目標。",
+      "hook": "法院走廊，曼禾最後看了一眼手機，沒有新訊息，收進口袋：「今天是以澄的。」",
+      "hook_type": "line",
+      "mid_hook": "鄒秉衡：「妳擅自備份公司檔案？」安琪的手在抖，她看向旁聽席，靜宜悄悄比了一個「三」。",
+      "extra_hooks": [
+        "程既白把群組訊息投上螢幕：「實習生各自備份到雲端。」鄒秉衡起身：「異議。」鍾惠如：「駁回。」"
+      ],
+      "conflict": "對方要把安琪從證人變成共犯，讓原始檔案的來源整個崩掉。",
+      "turn": "安琪照靜宜教的，先在心裡數三行，再開口：「是葛經理叫我們備份的。」對方準備好的陷阱，反過來夾住了自己。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "鄒秉衡合上卷宗，換了目標：「原告聲請，傳程律師作證。」以澄轉頭看程既白。",
+        "question": "程既白會被迫下場作證嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "huzhu",
+        "zixuan",
+        "anquan"
+      ],
+      "spectacle": "法庭的大螢幕投出一則兩年前的群組訊息，金框眼鏡的頭像放大到整面牆，旁聽席一陣低語。",
+      "glamour_shot": "程既白律師袍下的白襯衫袖口捲兩折，起身時順手扣好袍子，轉著舊鋼筆：「沒有問題了。」",
+      "setups": [],
+      "payoffs": [
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "安琪在證人席上說出備份是葛承峰的指示",
+        "對方「擅自備份」的說法被群組訊息當庭推翻",
+        "葉律師傳訊給靜宜：周啟明沒在期限內交出投資鴻利的證明"
+      ],
+      "characters": [
+        "su-manhe",
+        "han-jingyi",
+        "lin-yicheng",
+        "cheng-jibai",
+        "shen-anqi",
+        "s04-zou-bingheng",
+        "s04-zhong-huiru",
+        "ge-chengfeng",
+        "fang-yulan"
+      ],
+      "locations": [
+        "永和巷7號四樓玄關",
+        "澄港地方法院走廊",
+        "澄港地方法院民事庭"
+      ],
+      "state": {
+        "time": "2月4日上午，停職第66天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（出庭中）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。安琪作證：備份是葛承峰的指示；對方聲請傳程既白作證；周啟明交不出投資證明",
+        "carry_forward": "程既白要不要下場作證"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "原始檔案",
+      "youtube_title": "對方想把她的律師變成證人，他坐著不動，只遞出一份合約：當時，我就是你們公司的法務",
+      "duration_s": 120,
+      "logline": "程既白不用下場：一份駐點合約證明當時他就是恆構的法務；他把公證過的原始檔案、修改帳號和員工手冊連成一條線；審判長定了宣判日，葛承峰在走廊留下一句話。",
+      "hook": "程既白沒有起身，只遞出一份合約：「當時，我是恆構的法務。」",
+      "hook_type": "reversal",
+      "mid_hook": "螢幕左右並排兩份計算書，柱筋數字一紅一黑，右下角的修改帳號「GCF」被紅框圈起來。",
+      "conflict": "對方最後一招，是讓以澄的律師變成證人、被迫退場；以澄要證明她從沒把計算書交給任何外人。",
+      "turn": "審判長看完合約：「書證已足，無須傳喚。」給當時的公司法務看，是內部；交給人資，是員工手冊寫明的申訴管道。所謂洩密，從頭到尾都在公司裡面。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "散庭的走廊，葛承峰戴回金框眼鏡，對以澄笑了笑：「社宅那棟，妳證明不了。」",
+        "question": "社宅案的真相，誰來查？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "jiechuan",
+        "huzhu",
+        "zixuan",
+        "anquan"
+      ],
+      "spectacle": "法庭螢幕上兩份計算書並排，柱筋的數字一紅一黑，修改帳號「GCF」被紅框圈起，葛承峰在原告席慢慢摘下眼鏡。",
+      "glamour_shot": "以澄在被告席聽審判長宣布宣判日，深灰西裝、背脊挺直，推了推眼鏡，才慢慢呼出一口氣。",
+      "setups": [],
+      "payoffs": [
+        "s04-t25",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "程既白不必下場作證：駐點合約證明當時他就是恆構的法務",
+        "公證過的原始檔案、修改帳號 GCF 和員工手冊在法庭上連成一條線",
+        "審判長定二月十日宣判",
+        "方阿嬤爬上四樓煮了一鍋豬腳麵線，等以澄回家"
+      ],
+      "characters": [
+        "cheng-jibai",
+        "s04-zhong-huiru",
+        "lin-yicheng",
+        "ge-chengfeng",
+        "s04-zou-bingheng",
+        "shen-anqi",
+        "fang-yulan"
+      ],
+      "locations": [
+        "澄港地方法院民事庭",
+        "澄港地方法院走廊",
+        "永和巷7號四樓廚房"
+      ],
+      "state": {
+        "time": "2月4日下午，停職第66天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（辯論終結，二月十日宣判）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。給當時的公司法務看不算洩漏給外人；原始檔案與修改紀錄當庭出示；葛承峰說社宅案她證明不了",
+        "carry_forward": "「社宅那棟，妳證明不了」"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "要不要知道",
+      "youtube_title": "聯姻對象拿來一張紙條：他在哪，我寫在這裡，妳要看嗎",
+      "duration_s": 110,
+      "logline": "以澄明白這場官司只審洩密、不審社宅，開始寫社宅的鑑定申請；靜宜決定不替小桐準備答案；喬念真來到禾間，帶著一張寫著陸霽下落的紙條。",
+      "hook": "四樓長餐桌上，以澄吃完豬腳麵線，放下筷子：「他說得對。這案子不審社宅。」",
+      "hook_type": "line",
+      "mid_hook": "葉律師提醒：「法官會找人跟小桐談。妳不能先教。」靜宜：「我不教。她自己說。」",
+      "extra_hooks": [
+        "以澄在筆電上打下新文件的標題：「社會住宅結構安全鑑定申請書」，游標停在申請人那一欄。"
+      ],
+      "conflict": "以澄知道贏了官司也只贏一半；靜宜要忍住不替女兒選；曼禾要決定，要不要知道陸霽在哪。",
+      "turn": "大家以為喬念真是來勸曼禾放手，她卻把選擇整個交給曼禾：她只給資訊，不給答案。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "喬念真把一張摺成小方塊的紙條壓在白色海芋下：「他在哪，我寫在這。妳要看嗎？」",
+        "question": "曼禾要不要打開紙條？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zixuan",
+        "anquan",
+        "huzhu"
+      ],
+      "spectacle": "禾間的工作台上，一張摺成小方塊的紙條壓在一枝白色海芋下，兩個女人隔著它不說話。",
+      "glamour_shot": "曼禾盯著那張紙條，乾燥花耳環不再晃，手指在圍裙上擦了又擦。",
+      "setups": [
+        "s04-t43"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "以澄開始寫社宅結構安全鑑定的申請書",
+        "靜宜決定不替小桐準備答案，住哪裡讓她自己說"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "fang-yulan",
+        "su-manhe",
+        "s04-qiao-nianzhen",
+        "han-jingyi",
+        "s04-ye-shuheng"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "葉書蘅律師事務所",
+        "禾間花藝工作室"
+      ],
+      "state": {
+        "time": "2月5日，停職第67天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（二月十日宣判）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。反告只審洩密不審社宅，以澄開始寫社宅鑑定申請；喬念真知道陸霽在哪",
+        "carry_forward": "壓在海芋下的紙條"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "我說四樓",
+      "youtube_title": "暫時監護審理那天，婆婆沒有出現；女兒從社工身邊跑出來舉起一張畫：媽媽，我說四樓",
+      "duration_s": 120,
+      "logline": "曼禾沒打開紙條，請方阿嬤還給喬念真；小桐的暫時監護審理那天，周啟明身邊的位子空著；葉律師走出來說了結果；法院門口，小桐跑向靜宜。",
+      "hook": "四樓的早餐桌上，曼禾把紙條原封不動裝進信封，交給方阿嬤：「不要。他想說，自己會說。」",
+      "hook_type": "line",
+      "mid_hook": "家事庭外的走廊，周啟明坐在長椅上，身邊的位子一直空著——周母沒有來。",
+      "extra_hooks": [
+        "葉律師推門出來：「暫時監護，給妳。」靜宜點點頭：「謝謝。」這一次沒有不好意思。"
+      ],
+      "conflict": "周啟明想用監護權扳回一局；靜宜只能把答案留給法官，也留給小桐自己。",
+      "turn": "大家以為周母會來替兒子撐場，她始終沒出現；交不出鴻利投資證明的周啟明，連暫時監護也沒拿到。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "法院門口的台階，小桐從社工身邊跑過來，舉起一張畫：「媽媽，我說四樓。」靜宜蹲下去抱住她。",
+        "question": "小桐要住進四樓了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "zixuan",
+        "huzhu"
+      ],
+      "spectacle": "冬天午後的法院台階，一個穿黃色雨衣的小女孩舉著一張畫跑下來，畫裡是一棟亮著燈的老公寓。",
+      "glamour_shot": "靜宜蹲在法院台階上抱住小桐，低馬尾被風吹散，閉著眼睛笑，一句道歉都沒有。",
+      "setups": [],
+      "payoffs": [
+        "s04-t43",
+        "s04-t39"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "靜宜拿到小桐的暫時監護權",
+        "周母沒有出庭替兒子撐場",
+        "曼禾沒打開紙條：陸霽想說，要他自己說"
+      ],
+      "characters": [
+        "su-manhe",
+        "fang-yulan",
+        "han-jingyi",
+        "s04-ye-shuheng",
+        "zhou-qiming",
+        "zhou-xiaotong",
+        "lin-yicheng"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "澄港地方法院家事庭走廊",
+        "澄港地方法院門口台階"
+      ],
+      "state": {
+        "time": "2月6日，停職第68天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（二月十日宣判）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。靜宜拿到暫時監護權，小桐自己說要住四樓；周母沒有出庭",
+        "carry_forward": "小桐的那張畫"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "黃色鑰匙圈",
+      "youtube_title": "女兒拖著小行李箱住進四樓，掛上自己挑的黃色鑰匙圈；同一天逼婚的董事長第一次走進她的花店",
+      "duration_s": 115,
+      "logline": "小桐拖著行李箱住進四樓，在巷口文具店挑了一個黃色鑰匙圈；週六的棋盤又空著；陸崇山第一次走進禾間，不是來談條件，是來問兒子好不好。",
+      "hook": "小桐拖著小行李箱爬上四樓，站在鑰匙盤前：「我的鑰匙，要掛這裡。」",
+      "hook_type": "image",
+      "mid_hook": "禾間門口，陸崇山拄著拐杖站在一整排白色海芋前：「他……好嗎？」",
+      "conflict": "小桐要在四樓找到自己的位置；曼禾面對一個曾經想用支票買走她的父親。",
+      "turn": "大家以為陸崇山是來要人的，他卻說兒子退了他的支票，公司配的手機也還了，連那台車都賣了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "陸崇山的聲音很低：「他把車賣了。付妳的違約金。」曼禾手上的花剪掉在地上。",
+        "question": "陸霽為了違約金賣了車？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "richang",
+        "zixuan",
+        "cuowei"
+      ],
+      "spectacle": "玄關的鑰匙盤上，四把鑰匙之間多了一個鮮黃色的小鑰匙圈，在暖黃燈下特別亮。",
+      "glamour_shot": "曼禾抱著一大把白色海芋從冷藏櫃轉身，看見拄著拐杖站在門口的陸崇山，酒窩一下子收了起來。",
+      "setups": [],
+      "payoffs": [
+        "s04-t26",
+        "s04-t41",
+        "s04-t42",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小桐在四樓的鑰匙掛上自己挑的黃色鑰匙圈",
+        "陸崇山第一次走進禾間，問兒子好不好",
+        "停用的號碼是陸氏配的公司手機，陸霽連同車子一起還了"
+      ],
+      "characters": [
+        "zhou-xiaotong",
+        "han-jingyi",
+        "lin-yicheng",
+        "su-manhe",
+        "lu-chongshan",
+        "fang-yulan"
+      ],
+      "locations": [
+        "永和巷7號四樓玄關",
+        "永和巷口文具店",
+        "禾間花藝工作室",
+        "方阿嬤的雜貨店門口"
+      ],
+      "state": {
+        "time": "2月7日週六，停職第69天",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（二月十日宣判）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。小桐住進四樓；陸霽退了父親的支票、還了公司手機、賣車付違約金",
+        "carry_forward": "賣掉的那台車"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "贏了一半",
+      "youtube_title": "被主管反告洩密的官司一審勝訴，停職也解除了，她卻打給爸爸說：只贏了一半",
+      "duration_s": 120,
+      "logline": "曼禾說他連車都賣了；宣判那天，法院駁回葛承峰的訴，恆構解除以澄的停職；可社宅那棟樓還沒有人查，以澄把鑑定申請書投進郵筒，打給父親。",
+      "hook": "四樓長餐桌上，曼禾把終止通知放下：「他連車都賣了。」靜宜默默把茶推到她手邊。",
+      "hook_type": "line",
+      "mid_hook": "鍾惠如念出主文：「原告之訴駁回。」以澄沒有笑，只在桌下輕輕扯了一下程既白的袖子。",
+      "extra_hooks": [
+        "鄭婕來電，第一次沒有打官腔：「停職解除。年後回來。」"
+      ],
+      "conflict": "以澄贏了反告，可這場官司從頭到尾只審她有沒有洩密，那棟被減了柱筋的社宅，還沒有人去查。",
+      "turn": "大家以為判決下來就結束了，以澄走出法院第一件事，是把社宅結構安全鑑定申請書投進郵筒：另一半，她自己去要。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "郵筒前，以澄打給父親：「爸，贏了一半。」林父：「另一半呢？」她看著郵筒：「我自己去要。」",
+        "question": "社宅那一半，她要怎麼要？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zixuan",
+        "huzhu",
+        "anquan",
+        "zhichang"
+      ],
+      "spectacle": "宣判後的法院門口，以澄把一封厚厚的申請書投進郵筒，紅色郵筒被冬陽照得發亮。",
+      "glamour_shot": "宣判那一刻以澄沒有笑，只在桌下扯了一下程既白的袖子；他低頭看她，捲兩折的袖口被扯亂了。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "法院駁回葛承峰告以澄洩密，一審勝訴",
+        "恆構解除以澄的停職，年後復職",
+        "以澄寄出社宅結構安全鑑定申請"
+      ],
+      "characters": [
+        "su-manhe",
+        "han-jingyi",
+        "lin-yicheng",
+        "cheng-jibai",
+        "s04-zhong-huiru",
+        "ge-chengfeng",
+        "zheng-jie",
+        "lin-fu"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "澄港地方法院民事庭",
+        "澄港地方法院門口郵筒"
+      ],
+      "state": {
+        "time": "2月10日，停職解除（年後復職）",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（一審勝訴）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。反告一審駁回、停職解除；社宅案還沒人查，以澄寄出鑑定申請",
+        "carry_forward": "「另一半，我自己去要」"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "多一副碗筷",
+      "youtube_title": "除夕夜合租的四樓多擺了一副碗筷，女兒問那個空碗要不要收，整桌的人都看向她",
+      "duration_s": 120,
+      "logline": "林父說那棟樓他陪她；除夕，小桐在四樓過第一個年；程既白和宋川把年菜送到樓下就走；長餐桌上多擺了一副碗筷，曼禾把終止通知放在空碗旁邊。",
+      "hook": "電話那頭，林父停了很久：「那棟樓，爸陪妳。」以澄把手機貼在耳邊，沒有說話。",
+      "hook_type": "line",
+      "mid_hook": "雜貨店門口，程既白捧著一甕佛跳牆，宋川抱著一條魚；家規第三條，兩個男人把年菜交出去就走。",
+      "extra_hooks": [
+        "宋川走前回頭對靜宜說：「新年快樂。我等。」靜宜抱著那條魚笑出聲。"
+      ],
+      "conflict": "四樓第一次像一個家那樣圍爐，可曼禾的位子旁邊，有一副沒有人坐的碗筷。",
+      "turn": "大家以為曼禾會把那份通知收起來好好過年，她卻把它放在空碗旁邊，一口飯都沒動；方阿嬤看了一眼，往架上擺了三個小茶杯：「老姊妹的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "小桐捧著湯匙，指著那個空碗：「陸叔叔的碗，要收嗎？」整張長餐桌都看向曼禾。",
+        "question": "那個空碗，曼禾要收嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "richang",
+        "huzhu",
+        "zixuan"
+      ],
+      "spectacle": "除夕的四樓長餐桌擺滿年菜，六副碗筷裡有一副的碗是空的，窗外港口開始零星放煙火。",
+      "glamour_shot": "以澄和靜宜並肩站在雜貨店門口接年菜，程既白捧著佛跳牆、宋川抱著一條魚，四個人在路燈下都有點不好意思。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小桐在四樓過第一個除夕",
+        "程既白和宋川把年菜送到樓下就走，家規第三條照守",
+        "林父答應陪以澄去追社宅那棟樓"
+      ],
+      "characters": [
+        "lin-yicheng",
+        "lin-fu",
+        "fang-yulan",
+        "zhou-xiaotong",
+        "han-jingyi",
+        "su-manhe",
+        "cheng-jibai",
+        "song-chuan"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "方阿嬤的雜貨店門口"
+      ],
+      "state": {
+        "time": "除夕夜，停職已解除",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（一審勝訴）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。小桐在四樓過年；曼禾把終止通知放在多出來的空碗旁",
+        "carry_forward": "那個空碗"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "陪妳選",
+      "youtube_title": "除夕夜她拿著那份終止通知一整晚不說話，兩個室友沒有勸，只說：我們不能替妳選，但可以陪妳",
+      "duration_s": 120,
+      "logline": "曼禾說不收那個碗，然後整晚一句話都沒說；午夜三個人上頂樓看煙火，再回到長餐桌；方阿嬤下樓前說棋盤她擺著；以澄和靜宜沒有替她選，只說了兩句話。",
+      "hook": "曼禾把空碗往前推了推：「不收。」說完，她就再也沒開口。",
+      "hook_type": "line",
+      "mid_hook": "凌晨一點，曼禾一句話都沒說，以澄和靜宜也沒走，三杯茶換到第四輪。",
+      "extra_hooks": [
+        "方阿嬤扶著樓梯扶手下樓前回頭：「棋盤我擺著。伊欠我一盤。」"
+      ],
+      "conflict": "曼禾被選了一輩子：母親替她作保、陸家替她安排、連合約都是陸霽替她結束的；這一次她得自己選，卻不知道從哪裡開始。",
+      "turn": "大家以為朋友會勸她去追，或勸她放下；以澄說：「家規第五條，我們不能替妳選。」靜宜說：「不好意思。但我們可以陪妳選。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "曼禾抬起頭，眼淚掉在終止通知上，終於開口：「那陪我等天亮。」四樓的燈，亮了一整夜。",
+        "question": "天亮以後，曼禾會選什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "anquan",
+        "huzhu",
+        "zixuan",
+        "richang"
+      ],
+      "spectacle": "除夕午夜的頂樓，港口的煙火一朵朵炸開，三個女人並肩站著，中間那個手上捏著一張紙。",
+      "glamour_shot": "靜宜在燈下替曼禾把散下來的捲髮別到耳後，眼神溫溫的，說話很慢。",
+      "setups": [
+        "s04-t44",
+        "m12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "以澄和靜宜陪曼禾坐到天亮，沒有替她說一個字",
+        "方阿嬤把棋盤擺在樓下，說陸霽還欠她一盤"
+      ],
+      "characters": [
+        "su-manhe",
+        "lin-yicheng",
+        "han-jingyi",
+        "zhou-xiaotong",
+        "fang-yulan"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "永和巷7號頂樓曬衣場"
+      ],
+      "state": {
+        "time": "大年初一凌晨，停職已解除",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（一審勝訴）｜繼承：已被拿掉｜合約：終止通知已到（待公證）。以澄和靜宜不替曼禾選，只陪她；方阿嬤在樓下擺好了棋盤",
+        "carry_forward": "天亮"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "下到一半的棋",
+      "youtube_title": "合約正式結束的那天早上，她拿著終止書衝下樓，樓下沒有人，只剩一盤下到一半的象棋",
+      "duration_s": 150,
+      "logline": "大年初一的早上，方阿嬤爬上四樓，送來陸霽託她拿上來的文件：合約公證終止，違約金他已付清；曼禾拿著文件衝下樓，雜貨店門口沒有人，只剩一盤下到一半的象棋。",
+      "hook": "天亮了，三個女人趴在長餐桌上睡著。敲門聲，方阿嬤喘著氣站在門口：「伊佮我行半盤棋。叫我提上來。」",
+      "hook_type": "reversal",
+      "mid_hook": "信封裡是蓋了公證章的合約終止書，違約金欄寫著「已付清」，還有一張便條，只有一行：「棋還沒下完。」",
+      "extra_hooks": [
+        "曼禾衝下四樓，拖鞋掉了一隻也沒回頭；三樓、二樓，以澄和靜宜只是把椅子往後挪，讓出路。"
+      ],
+      "conflict": "合約正式結束了，曼禾再也不是誰的合約未婚妻；陸霽剛剛還在樓下，現在她得決定，這盤棋要不要就這樣停著。",
+      "turn": "大家以為這份文件是句點，那張便條卻把它變成邀請：他把位子留給她，連下一步都留給她。被選了一輩子的曼禾，第一次自己落子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "四樓的窗還亮著昨夜的燈。雜貨店門口沒有人，只剩一盤下到一半的象棋，棋盤邊壓著那支他不再看的錶。曼禾坐在方阿嬤的藤椅上，把那盤棋替陸霽走完一步，抬頭看向巷口。",
+        "question": "這一步，是她選了他嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zixuan",
+        "huzhu",
+        "anquan",
+        "cuowei"
+      ],
+      "spectacle": "大年初一清晨的永和巷，雜貨店門口的摺疊桌上擺著下到一半的象棋，藤椅空著，抬頭是四樓還亮著燈的窗。",
+      "glamour_shot": "曼禾一隻腳還穿著拖鞋，坐上方阿嬤的藤椅，捲髮亂著、眼睛紅著，拈起一顆棋子落下，抬頭看向巷口。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t40",
+        "s04-t44"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陸霽託方阿嬤送上公證完成的合約終止書：違約金已付清，合約正式結束",
+        "曼禾替陸霽走了那盤棋的下一步——她第一次自己下棋",
+        "以澄收到主管機關的系統回覆：社宅結構安全鑑定申請已收件",
+        "小桐一早把自己的黃色鑰匙掛上鑰匙盤，叮的一聲"
+      ],
+      "characters": [
+        "fang-yulan",
+        "su-manhe",
+        "lin-yicheng",
+        "han-jingyi",
+        "zhou-xiaotong"
+      ],
+      "locations": [
+        "永和巷7號四樓長餐桌",
+        "永和巷7號樓梯間",
+        "方阿嬤的雜貨店門口"
+      ],
+      "state": {
+        "time": "大年初一早上，停職已解除",
+        "knowledge": "進度條：鴻利文件 5/5（已遞進調解）｜辭職：已開業（一審勝訴）｜繼承：已被拿掉｜合約：提前終止（公證完成，違約金陸霽付清）。合約正式結束；陸霽來下了半盤棋就走，留下錶和「棋還沒下完」；曼禾替他走了一步",
+        "carry_forward": "巷口"
+      }
+    }
+  ]
+}
