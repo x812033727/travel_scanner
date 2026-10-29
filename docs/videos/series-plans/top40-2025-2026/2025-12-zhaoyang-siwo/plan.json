@@ -1,0 +1,44 @@
+{
+  "slug": "2025-12-zhaoyang-siwo",
+  "title": "晨光落在第七張圖",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": true,
+  "ending_note": "第五季收掉主線：她考上建築師、以設計人身分通過南濱課後閱讀室；陸知行與沈佩如接下衡間共同主持；兩人在南部早餐店見家長、堤防上一個擁抱。第 300 集最後一格是她替新人小禾寫下第一個紅字、桌角一杯他放的咖啡——是傳承的收尾，不留懸念；站主想留第二部口子的話，可把最後一格改成市府送來一份新的審議通知。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議；圖面、模型與會議室長桌適合橫幅。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感寫實職場：老港區倉庫改建的事務所、凌晨的模型室、工地、市府審議會；季色冷藍→鋼灰→雨與泥→秋夕橙→晨光金。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；內心獨白一律改成眼神特寫與道具（紅字、咖啡、工程筆、模型）；圖面與數字要拍得清楚但不需讀得出條文。",
+    "reuse": "固定場景：衡間長桌與退件之牆、模型室、主持人辦公室、頂樓加蓋、坡上眷村與芒果樹、工務所、市府十二樓審議會、南濱地下室。",
+    "voice": "國語（台灣口音）；女主清亮快；男主低慢、第一季幾乎不用問號；衡老師慢溫；老韓大嗓門；劉阿嬤台語夾國語；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲與固定場景為主，會議與模型室可用一張首格＋緩推省六到七成；工地與審議會各拍一組通用空景重複使用。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包，不是逐集分鏡劇本。",
+  "reference": {
+    "work": "《朝陽似我》（2025 年第 12 名，諮詢行業寫實職場＋克制雙向治癒，無金手指）",
+    "how": "只學套路：被裁新人靠推薦進頂級公司、沒有外掛、每個贏都要符合專業邏輯、職場線六成以上、冷面上司暗中鋪路不代出手、克制的雙向治癒、沒有反派只有制度與高標準。行業換成台灣型建築師事務所，城市（瀾港）、事務所（衡間）、坡上圖書館、南濱社宅、每個人物、劇情與台詞全部原創，不搬原劇任何情節。"
+  },
+  "title_candidates": ["晨光落在第七張圖", "紅字之後", "她把問題問到你煩"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}
