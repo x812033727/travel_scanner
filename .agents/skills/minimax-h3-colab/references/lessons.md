@@ -24,6 +24,11 @@
   of anyone appears.`（雙人寫 `Only these 2 people are in the frame…`）。
 - **參考圖裡的人就會被畫進畫面**：鏡裡「看著阿令走遠的許硯」若把阿令的定妝照也給了，模型可能先拍阿令遠景再切到許硯（鏡內出現切點）。
   畫外的人不給參考圖、正文寫 off screen。
+- **角度臉參考裁太緊會生出沒有身體的頭**：王二牛的角度臉只裁到頭部，Ref2VA 畫出一顆飄在溪床上的頭（s24）。角度臉要含肩膀，
+  正文點明 `his whole body from head to feet in the frame`，或乾脆只給全身定妝照。
+- **場景參照圖會壓過劇情**：斷流的溪給了有水的場景圖，前 1–2 秒溪裡有水、之後才龜裂（像縮時）。劇情改變場景狀態的鏡（乾、燒、塌）不給場景圖。
+- **分鏡裡的「畫邊一截肩膀」會被放大成主角**：寫了 `a strip of Xu Yan's shoulder at the frame edge`，出來是許硯的背影當主體。畫外的人連局部都別寫，
+  或寫成 `only a hand and a bowl enter from the edge`。
 - **夜景要寫光線不變**：錨句只保外觀與場景，6 秒內冷月光會漂成暖日光；motion 補 `the cold moonlight and deep blue night stay unchanged`。
 - 外貌段逐字放進錨句、放在動作之前，每鏡同一段字（domoai 的 H3 一致性指南）；`cast.json` 的 appearance 直接貼。
 
