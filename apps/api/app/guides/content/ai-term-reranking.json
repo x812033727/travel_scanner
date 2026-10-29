@@ -4,12 +4,15 @@
   "destination_id": null,
   "topics": [
     "ai",
-    "tutorial",
-    "ai-terms"
+    "ai-terms",
+    "tutorial"
   ],
   "valid_until": null,
+  "news_date": null,
   "featured": false,
   "display_order": 100,
+  "aliases": {},
+  "related": [],
   "locales": {
     "zh-TW": {
       "title": "重新排序（Reranking）：從找得到到把好答案排在前面",
@@ -106,6 +109,7 @@
           "width": 1600,
           "height": 900,
           "caption": "重新排序只能處理已取得的候選，無法補回漏查的原文。",
+          "description": "",
           "credit": {
             "author": "Mokaair",
             "license": "© Mokaair",
@@ -244,6 +248,962 @@
         },
         {
           "title": "Elastic：Ranking and reranking",
+          "url": "https://www.elastic.co/docs/solutions/search/ranking",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "en": {
+      "title": "Reranking: From Finding Results to Putting Good Answers First",
+      "description": "Reranking reassesses first-pass search candidates for relevance and is often used to improve search lists and RAG context quality. Using library loan rules, this article shows how retrievers and cross-encoders share the work and explains missing candidates, input truncation, and relevance scores versus truth checks. Learn when to broaden retrieval, fix chunks, or add reranking, and use suitable tests to avoid needless waiting for better rankings.",
+      "hero": {
+        "src": "/guides/ai-term-reranking/hero-en.jpg",
+        "alt": "The same documents swap positions along crossing paths, moving applicable rules to the front",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "Reranking adds a ranking step after the first search retrieves candidates to decide which items should come first. It spends more computation on fewer candidates to try to improve the relevance of the top few results.",
+            "A cross-encoder is one method for this role: it feeds the question and a candidate document into the model together to directly assess their relevance, though each candidate usually requires fresh computation.",
+            "Reranking is no guarantee of greater accuracy: a document missing from the candidates cannot be ranked back in.",
+            "Even scores that look like percentages are not probabilities of a correct answer; relevance does not mean truth or sufficient evidence."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Reranking means adding another ranking step after the first search retrieves candidates to decide which items should come first. It is often used in search and "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": ", letting a faster retriever narrow the scope before passing a limited set of candidates to a more thorough relevance model. This allocates resources in stages: first find the material, then spend effort deciding what to read first."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "Reranking is no guarantee of greater accuracy, and it is not limited to "
+            },
+            {
+              "type": "article",
+              "text": "large language models",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": ". Cross-encoders, learning-to-rank models, and other scoring methods can all serve this role. Based on Sentence Transformers' Retrieve and Re-Rank documentation and Elastic's explanation of ranking, this article uses fictional library rules to demonstrate the mechanism, clearly distinguishing expected behavior from actual test results."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "Why the Initial Ranking May Not Be Enough",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "First-pass retrieval often needs to find candidates quickly within large amounts of data, so it may use precomputed vectors or a full-text index. These methods are good at narrowing the scope, but fine details about applicability, who or what a rule concerns, and exceptions sometimes require careful comparison of the question and document together. Reranking spends more computation on fewer candidates to try to improve the relevance of the top few results, without expensively processing every document in the database."
+        },
+        {
+          "type": "paragraph",
+          "text": "For example, “Can I still renew loans if my student ID has expired?” is close in topic to the general question “How do I renew loans?”, so the first pass may rank ordinary renewal steps first. But the document actually needed may concern account eligibility and expiration restrictions. If that document is already among the candidates, reranking has a chance to move it up; if it was never retrieved, even the most sophisticated later scoring cannot create source text for a missing candidate."
+        },
+        {
+          "type": "heading",
+          "text": "How a Cross-Encoder Examines a Pair of Texts",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "A typical bi-encoder encodes the question and document separately, then compares their vectors. Document representations can be built in advance, avoiding the need to reprocess every pair at query time. A cross-encoder instead feeds the question and candidate document into the model together to directly assess the relevance of that pair of texts. It can use finer interactions between the two, but each candidate usually requires fresh computation, which is why it is often used in the second stage."
+        },
+        {
+          "type": "paragraph",
+          "text": "The output scores depend on the model and its training objective. Some are uncalibrated values; others are transformed to fall within a particular range. A score should not be treated as the probability of a correct answer merely because it looks like a percentage. The model may judge a passage highly relevant even though the source text is outdated, the user lacks permission to view it, or the content itself is incorrect. Relevance assessment and source quality need to be handled separately."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-reranking/diagram-1-en.svg",
+          "alt": "First-pass retrieval finds general renewal, hold-queue, and ID-expiration passages; scoring the question with each candidate moves expiration conditions to the front",
+          "width": 1600,
+          "height": 900,
+          "caption": "Reranking can only process retrieved candidates; it cannot recover source text that retrieval missed.",
+          "description": "First-pass retrieval finds general renewal, hold-queue, and ID-expiration passages; scoring the question with each candidate moves expiration conditions to the front",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "Example: Moving Expiration Rules to the Front",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Suppose the input is “My student ID has expired. Can I still renew my borrowed books online?” Candidates include general renewal steps, an explanation of hold queues, procedures for expired IDs, and an introduction to the library's collection. The reranker evaluates the question against each passage. A reasonable expectation is that it will move ID-expiration conditions and renewal-related rules to the front, so downstream readers or generative models first see the constraints that determine the answer. These candidates and results form a teaching scenario devised for this article."
+        },
+        {
+          "type": "paragraph",
+          "text": "A good final answer still needs to follow what the source text says. If the document on expired IDs only says that new borrowing is suspended, without stating whether this affects renewals of books already on loan, the answer should not invent a ban on renewals. In this case, reranking may have successfully found the most relevant document, yet the information remains insufficient. This example shows that improved search quality and a complete answer are two outcomes that need to be evaluated separately."
+        },
+        {
+          "type": "paragraph",
+          "text": "You can also deliberately exclude the correct rule from the candidates, then rerun the test for comparison. If the answer does not improve, that is a reasonable limit of the mechanism, not necessarily a sign of a poor reranking model. Conversely, if the correct passage is already among the candidates but consistently gets pushed down, you need to check input length, question format, language capabilities, and whether the model suits rule retrieval. Test design needs to distinguish these sources of failure."
+        },
+        {
+          "type": "heading",
+          "text": "Cost and Document Processing Matter Too",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "More candidates generally mean more computation across question–document pairs, increasing waiting time and computing requirements. Fewer candidates may mean missing the correct information, so applications need to find a suitable candidate count rather than copy someone else's fixed number. If the first pass already reliably ranks the answer near the top, adding reranking may offer little benefit while making every request take longer."
+        },
+        {
+          "type": "paragraph",
+          "text": "Overly long documents are another common obstacle. Reranking models have input length limits, so if a key exception falls beyond the truncation point, it is invisible to the scoring process. You can adjust chunking, retain document titles and necessary context, and then test the results. Treating an entire manual as one candidate is not necessarily better than using meaningful passages; splitting every sentence into tiny pieces may also prevent the model from identifying what a restriction applies to."
+        },
+        {
+          "type": "heading",
+          "text": "When Is This Extra Layer Worth Adding?",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "Start by checking candidate recall in the first search pass: is the correct information often already found, but poorly ranked? If so, reranking has clearer room for improvement. If it is not found at all, address the index, queries, chunking, or hybrid search first. During evaluation, keep the same candidate set and compare rankings before and after adding reranking, so improvements caused by changes to the candidate pool are not mistakenly attributed to the ranking model."
+        },
+        {
+          "type": "paragraph",
+          "text": "Test questions should include comparisons with similar topics but different conditions, such as expired IDs, overdue books, and books already on hold for someone else. Include unanswerable questions too, to check that the model does not present the closest-matching passage as sufficient evidence. For RAG, beyond examining rankings, check whether the final answer cites the correct rules and preserves what remains unknown. Upstream improvements only fulfill the service's goal when they reach the answer delivered to the reader."
+        },
+        {
+          "type": "paragraph",
+          "text": "The system can store candidate IDs, first-pass rankings, reranked positions, and model versions to support spot checks. If a model update makes a category of questions perform worse, you can return to the same data for further analysis. Reranking directs limited attention toward more relevant content; it strengthens the ranking stage without replacing data governance, access controls, fact-checking, or final human judgment. If the reranking service becomes temporarily unavailable, the application also needs to decide in advance whether to fall back to the original ranking and log which path each request took, so fallback results are not mistaken for the new model's performance. You should also check the actual span of text the ranking model received. If a long rule is truncated before input, its exceptions may never reach the model; in that case, a ranking error does not mean the model understood the text but judged it incorrectly. Recording the passages submitted and their truncation points helps distinguish whether to fix document chunking or candidate content, or change the ranking method."
+        },
+        {
+          "type": "table",
+          "header": [
+            "Method",
+            "Main Focus",
+            "What to Watch"
+          ],
+          "rows": [
+            [
+              "First-pass retrieval",
+              "Retrieve candidates quickly",
+              "Prioritize whether all relevant material was found"
+            ],
+            [
+              "Reranking",
+              "Carefully compare candidates with the question",
+              "Prioritize relevance among the top results"
+            ],
+            [
+              "Answer verification",
+              "Check claims against evidence",
+              "Relevance does not mean truth or sufficient evidence"
+            ]
+          ],
+          "caption": "Concept comparison; sources checked in 9/2026."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "Documents Missing from the Candidates Cannot Be Ranked Back In",
+          "text": "First confirm that the correct passage was retrieved. Missing candidates and ranking errors require different fixes."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Hybrid Search: Combining Exact Terms and Meaning",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Document Chunking: How Long Should Chunks Be to Avoid Cutting Answers Apart?",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "Semantic Search: Finding Relevant Content with Different Wording",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI Terms Index: From Loop Engineering to Generative AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers: Retrieve and Re-Rank",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elastic: Ranking and reranking",
+          "url": "https://www.elastic.co/docs/solutions/search/ranking",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ja": {
+      "title": "再ランキング（Reranking）：見つける段階から、良い回答を上位に並べる段階へ",
+      "description": "再ランキングは、初回検索で得た候補の関連性を改めて評価し、検索結果の一覧や RAG のコンテキストの品質を改善するためによく使われます。本記事では図書館の貸出規則を例に、検索器とクロスエンコーダーの役割分担を示し、候補の漏れ、入力の切り詰め、関連性スコアと真偽の判定の違いを説明します。検索範囲の拡大、チャンクの修正、再ランキングの追加のどれが必要かを見極め、適切なテストで順位改善のための不要な待ち時間を避けられるようになります。",
+      "hero": {
+        "src": "/guides/ai-term-reranking/hero-ja.jpg",
+        "alt": "同じ文書一覧が交差する経路で位置を入れ替え、適用される条文が上位に移動する",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "再ランキング（Reranking）は、初回検索で候補を取得した後、別の順位付けの工程でどの資料を上位に置くべきかを判断する処理です。少数の候補により多くの計算を割り当て、上位のいくつかの結果の関連性を高めようとします。",
+            "クロスエンコーダーは、この役割を担える手法の一つです。質問と候補文書を一緒にモデルへ入力し、この一対のテキストの関連性を直接評価します。ただし、通常は候補ごとに新たな計算が必要です。",
+            "再ランキングは精度向上を保証するボタンではありません。候補に入らなかった文書を順位付けで取り戻すことはできません。",
+            "スコアがパーセントのように見えても、正解である確率とは見なせません。関連性があっても、内容が真実であることや十分な根拠となることは保証されません。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "再ランキング、英語で Reranking とは、初回検索で候補を取得した後、別の順位付けの工程でどの資料を上位に置くべきかを判断することです。検索や "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": " でよく使われ、まず高速な検索器で範囲を絞り、その限られた候補を、関連性をより深く評価するモデルに渡します。これは段階的なリソース配分です。まず見つけ、次にどれから見るべきかの判断に計算を費やします。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "再ランキングは精度向上を保証するボタンではありません。また、"
+            },
+            {
+              "type": "article",
+              "text": "大規模言語モデル",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "だけを使うものでもありません。クロスエンコーダー、ランキング学習モデル、その他のスコアリング手法もこの役割を担えます。本記事は Sentence Transformers の「検索と再ランキング」のドキュメントと Elastic のランキングの解説をもとに、架空の図書館規則を使って仕組みを示します。期待される挙動と実際のテスト結果は明確に区別します。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "初回の順位付けでは不十分なことがある理由",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "初回の検索では、大量の資料から候補を素早く見つける必要があるため、事前計算したベクトルや全文検索インデックスが使われることがあります。こうした手法は範囲の絞り込みに優れていますが、細かな適用条件、主語、例外については、質問と文書を並べて慎重に比較する必要がある場合もあります。再ランキングは少数の候補により多くの計算を割り当て、上位のいくつかの結果の関連性を高めようとするものです。データベース全体の文書を一つずつ高コストで処理する必要はありません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例えば「学生証の有効期限が切れても貸出期間を延長できますか？」は、一般的な「貸出期間を延長する方法」と話題が近いため、初回検索では通常の延長手順が上位に並ぶかもしれません。しかし、本当に必要なのはアカウントの利用資格や期限切れに伴う制限についての文書かもしれません。後者がすでに候補に入っていれば、再ランキングで上位に押し上げられる可能性があります。一度も検索で取得されていなければ、後段の採点がどれほど精密でも、存在しない候補の原文を生み出すことはできません。"
+        },
+        {
+          "type": "heading",
+          "text": "クロスエンコーダーは一対のテキストをどう見るか",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "典型的なデュアルエンコーダーは、質問と文書をそれぞれ符号化してからベクトルを比較します。文書の表現は事前に作成でき、検索時にすべての組み合わせを処理し直す必要はありません。一方、クロスエンコーダーは質問と候補文書を一緒にモデルへ入力し、この一対のテキストの関連性を直接評価します。両者のより細かな相互作用を利用できますが、通常は候補ごとに新たな計算が必要です。そのため、二段階目に置かれることが多いのです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "出力スコアはモデルと学習目標によって決まり、未較正の数値の場合もあれば、変換されて一定の範囲に収まる場合もあります。パーセントのように見えるというだけで、正解である確率と見なしてはいけません。モデルがある段落を非常に的確だと判断しても、原文が古くなっていたり、利用者に閲覧権限がなかったり、内容自体が誤っていたりする可能性があります。関連性の判定と情報源の品質は別々に扱う必要があります。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-reranking/diagram-1-ja.svg",
+          "alt": "初回検索で一般的な貸出延長、予約待ち、証明書の期限切れの段落を取得し、質問と各候補を組にして採点した後、期限切れの条件を上位に並べる",
+          "width": 1600,
+          "height": 900,
+          "caption": "再ランキングで扱えるのは取得済みの候補だけで、検索から漏れた原文を補うことはできません。",
+          "description": "初回検索で一般的な貸出延長、予約待ち、証明書の期限切れの段落を取得し、質問と各候補を組にして採点した後、期限切れの条件を上位に並べる",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "実例：期限切れの規則を上位に置く",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "入力が「学生証の有効期限が切れています。借りている本の貸出期間をオンラインで延長できますか？」だとします。候補には一般的な貸出延長の手順、予約待ちの説明、証明書の期限切れへの対応、蔵書の紹介が含まれています。再ランキング器は質問と段落を一組ずつ評価します。証明書の期限切れに関する条件と貸出延長に関わる規則を上位に置き、その後の読者や生成モデルが回答を左右する制限を先に見られるようにする、というのが妥当な期待です。これらの候補と結果は、本記事のために作成した学習用のシナリオです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "良い最終回答は、あくまで原文の記述に従う必要があります。期限切れへの対応を説明する文書に、新規の貸出を停止するとしか書かれておらず、すでに借りている本の貸出延長に影響するかが書かれていないなら、勝手に延長禁止と補ってはいけません。この場合、再ランキングは最も関連性の高い文書を見つけることに成功していても、資料は依然として不十分です。この例が示すのは、検索品質の改善と回答の完全性は、それぞれ別に評価すべき結果だということです。"
+        },
+        {
+          "type": "paragraph",
+          "text": "正しい条文を意図的に候補から外し、もう一度実行して比較することもできます。回答が改善しなくても、それは仕組み上の妥当な限界であり、必ずしも再ランキングモデルの品質が低いわけではありません。逆に、正しい段落が候補に入っているのに常に下位へ下げられるなら、入力の長さ、質問の形式、言語処理能力、モデルが規則の検索に適しているかを確認する必要があります。テストは、こうした失敗の原因を区別できるように設計する必要があります。"
+        },
+        {
+          "type": "heading",
+          "text": "コストと文書処理も同じく重要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "候補が多いほど、通常は質問と文書の各ペアに対する計算量が増え、待ち時間や必要な計算資源も増加します。一方、候補が少ないと正しい資料を取りこぼす可能性があるため、他で使われている固定の数値をそのまままねるのではなく、アプリケーションに適した候補数の範囲を見つける必要があります。初回検索ですでに安定して回答を上位に置けているなら、再ランキングを追加しても効果はごく小さく、毎回の待ち時間だけが延びるかもしれません。"
+        },
+        {
+          "type": "paragraph",
+          "text": "長すぎる文書もよくある障害です。再ランキングモデルには入力長の制限があり、重要な例外が切り詰め位置より後にあると、採点時に参照できません。チャンク分割を調整し、文書のタイトルと必要なコンテキストを残してから、結果をテストできます。マニュアル全体を一つの候補にしても、意味のまとまりを持つ段落より良いとは限りません。一文ずつ細かく分けすぎると、どの対象に制限が適用されるのかをモデルが識別できなくなる可能性もあります。"
+        },
+        {
+          "type": "heading",
+          "text": "この工程を追加する価値がある場合",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "まず、初回検索で候補をどれだけ拾えているかを確認できます。正しい資料は多くの場合すでに見つかっているのに、順序だけが良くないのでしょうか。そうなら、再ランキングには明確な改善の余地があります。そもそも見つかっていないなら、先にインデックス、検索クエリ、チャンク分割、ハイブリッド検索を見直します。評価時には同じ候補群を維持して追加前後の順序を比較すれば、候補の範囲が変わったことによる改善を、ランキングモデルの効果と誤認せずに済みます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "テスト用の質問には、話題が近く条件が異なる比較例を含める必要があります。例えば、証明書の期限切れ、本の返却期限超過、すでに他の人が予約している場合です。答えのない質問も加え、最も似た段落をモデルが十分な根拠であるかのように扱わないことを確認します。RAG では順位だけでなく、最終回答が正しい条文を引用しているか、不明な点を不明なまま残しているかも確認する必要があります。前段の改善が読者に届く回答にまで反映されて初めて、サービスの目標を達成したと言えます。"
+        },
+        {
+          "type": "paragraph",
+          "text": "システムには候補の識別子、初回の順位、再ランキング後の順位、モデルのバージョンを保存しておくと、抜き取り確認がしやすくなります。モデル更新後に特定の種類の質問で性能が低下した場合も、同じ資料に戻って再分析できます。再ランキングの役割は、限られた注意をより関連性の高い内容に向けることです。補強するのは順位付けの段階であり、データガバナンス、権限管理、事実確認、最終的な人間の判断を置き換えるものではありません。再ランキングサービスが一時的に使えなくなった場合に元の順位へ戻すかどうかも、アプリケーション側で事前に決めておく必要があります。さらに、今回どの処理経路を通ったかを記録に明示すれば、縮退運転の結果を新モデルの性能と誤認せずに済みます。ランキングモデルが実際に読み取ったテキストの範囲も確認すべきです。長い条文が入力前に切り詰められていると、例外条項がそもそもモデルに渡っていない可能性があります。この場合、順位付けの誤りは、モデルが内容を理解したうえで判断に失敗したことを意味しません。入力した段落と切り詰め位置を記録してこそ、文書のチャンク分割や候補の内容を修正すべきなのか、順位付けの方法を変えるべきなのかを区別できます。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "手法",
+            "処理の重点",
+            "注意点"
+          ],
+          "rows": [
+            [
+              "初回検索",
+              "候補を素早く取得",
+              "まず必要な資料を漏れなく取得できたかに注目"
+            ],
+            [
+              "再ランキング",
+              "候補と質問を慎重に比較",
+              "まず上位結果の関連性に注目"
+            ],
+            [
+              "回答の検証",
+              "主張と証拠を照合",
+              "関連性があっても、真実性や根拠の十分さは保証されない"
+            ]
+          ],
+          "caption": "概念の比較。情報源は 2026 年 9 月に確認。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "候補に入らなかった文書は、順位付けでは取り戻せない",
+          "text": "まず正しい段落が検索で取得されていることを確認しましょう。候補の漏れと順位付けの失敗では、必要な修正が異なります。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "ハイブリッド検索（Hybrid Search）：正確な語句と意味の両方を捉える",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文書のチャンク分割（Chunking）：答えを分断しないための適切な長さとは",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "セマンティック検索（Semantic Search）：異なる表現で関連する内容を見つける",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 用語総索引：Loop Engineering から生成 AI まで",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers：検索と再ランキング",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elastic：ランキングと再ランキング",
+          "url": "https://www.elastic.co/docs/solutions/search/ranking",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "ko": {
+      "title": "재정렬(Reranking): 찾아내는 것을 넘어 좋은 답을 상위에 배치하기",
+      "description": "재정렬은 초기 검색으로 찾은 후보의 관련성을 다시 판단하며, 검색 목록과 RAG의 컨텍스트 품질을 개선하는 데 자주 쓰입니다. 이 글에서는 도서관 대출 규정을 예로 들어 검색기와 교차 인코더의 역할 분담을 보여 주고, 후보 누락, 입력 잘림, 관련성 점수와 사실 여부 판단의 차이를 설명합니다. 읽고 나면 검색 범위를 넓힐지, 문서 조각을 수정할지, 재정렬을 추가할지 구분하고, 적절한 테스트로 순위 개선을 위한 불필요한 대기 시간을 피할 수 있습니다.",
+      "hero": {
+        "src": "/guides/ai-term-reranking/hero-ko.jpg",
+        "alt": "같은 문서 목록이 교차 경로를 따라 위치를 바꾸며, 적용되는 조항이 앞으로 이동하는 모습",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "재정렬(Reranking)은 초기 검색으로 후보를 확보한 뒤 별도의 순위 지정 단계에서 어떤 자료를 앞에 놓을지 판단하는 과정입니다. 소수의 후보에 더 많은 연산을 투입해 상위 몇 개 결과의 관련성을 높이고자 합니다.",
+            "교차 인코더는 이 역할을 수행할 수 있는 방법 중 하나입니다. 질문과 후보 문서를 모델에 함께 입력해 두 텍스트의 관련성을 직접 평가하지만, 보통 후보마다 새로운 연산이 필요합니다.",
+            "재정렬은 더 높은 정확도를 보장하는 버튼이 아닙니다. 후보에 포함되지 않은 문서를 순위에 되살릴 수는 없습니다.",
+            "점수가 백분율처럼 보여도 정답일 확률로 해석해서는 안 됩니다. 관련성이 있다고 해서 사실이거나 근거가 충분한 것은 아닙니다."
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "재정렬은 영어로 Reranking이라고 하며, 초기 검색으로 후보를 확보한 뒤 별도의 순위 지정 단계에서 어떤 자료를 앞에 놓을지 판단하는 것을 뜻합니다. 검색과 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "에서 자주 사용되며, 빠른 검색기가 먼저 범위를 좁힌 다음 한정된 후보를 더 심층적으로 평가하는 관련성 모델에 넘깁니다. 이는 단계적으로 자원을 배분하는 방식입니다. 먼저 찾아낸 뒤, 무엇부터 볼지 판단하는 데 힘을 쏟는 것입니다."
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "재정렬은 더 높은 정확도를 보장하는 버튼이 아니며, "
+            },
+            {
+              "type": "article",
+              "text": "대규모 언어 모델",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "만 쓸 수 있는 것도 아닙니다. 교차 인코더, 학습 기반 순위화 모델과 다른 점수 평가 방법도 이 역할을 맡을 수 있습니다. 이 글은 Sentence Transformers의 검색 및 재정렬 문서와 Elastic의 순위 지정 설명을 바탕으로, 가상의 도서관 규정을 통해 작동 원리를 보여 줍니다. 예상되는 동작과 실제 테스트 성적은 명확히 구분합니다."
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "초기 순위만으로 부족할 수 있는 이유",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "초기 검색은 대량의 자료에서 후보를 빠르게 찾아야 하는 경우가 많아, 미리 계산한 벡터나 전문 검색 인덱스를 사용할 수 있습니다. 이런 방식은 범위를 좁히는 데 유용하지만, 세밀한 적용 조건이나 주어, 예외를 파악하려면 질문과 문서를 함께 놓고 꼼꼼히 비교해야 할 때가 있습니다. 재정렬은 소수의 후보에 더 많은 연산을 투입해 상위 몇 개 결과의 관련성을 높이고자 합니다. 따라서 데이터베이스 전체의 문서를 하나씩 고비용으로 처리할 필요가 없습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "예를 들어 “학생증이 만료되어도 대출을 연장할 수 있나요?”는 일반적인 “대출은 어떻게 연장하나요?”와 주제가 비슷하므로, 초기 검색에서 일반적인 연장 절차가 상위에 배치될 수 있습니다. 하지만 실제로 필요한 문서는 계정 자격과 만료에 따른 제한에 관한 것일 수 있습니다. 후자가 이미 후보에 있다면 재정렬로 앞으로 올릴 수 있습니다. 한 번도 검색되지 않았다면 후속 점수 평가가 아무리 정교해도 존재하지 않는 후보의 원문을 만들어 낼 수는 없습니다."
+        },
+        {
+          "type": "heading",
+          "text": "교차 인코더는 텍스트 쌍을 어떻게 보는가",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "일반적인 이중 인코더는 질문과 문서를 각각 인코딩한 뒤 벡터를 비교합니다. 문서 표현은 미리 만들어 둘 수 있어 검색할 때 모든 조합을 다시 처리할 필요가 없습니다. 반면 교차 인코더는 질문과 후보 문서를 모델에 함께 입력해 두 텍스트의 관련성을 직접 평가합니다. 둘 사이의 더 세밀한 상호작용을 활용할 수 있지만, 보통 후보마다 새로운 연산이 필요합니다. 이것이 두 번째 단계에 자주 배치되는 이유입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "출력 점수는 모델과 학습 목표에 따라 결정됩니다. 보정되지 않은 수치도 있고, 변환을 거쳐 특정 구간에 놓이는 수치도 있습니다. 점수가 백분율처럼 보인다는 이유만으로 정답일 확률로 해석해서는 안 됩니다. 모델이 어떤 문단을 매우 관련 있다고 판단하더라도 원문이 오래되었거나, 사용자에게 열람 권한이 없거나, 내용 자체가 틀릴 수 있습니다. 관련성 판단과 출처의 품질은 따로 다뤄야 합니다."
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-reranking/diagram-1-ko.svg",
+          "alt": "초기 검색으로 일반 대출 연장, 예약 대기, 증명서 만료 문단을 찾고, 질문과 각 후보를 함께 평가해 만료 조건을 상위에 배치하는 과정",
+          "width": 1600,
+          "height": 900,
+          "caption": "재정렬은 이미 확보한 후보만 처리할 수 있으며, 검색에서 누락된 원문을 되찾아 주지는 못합니다.",
+          "description": "초기 검색으로 일반 대출 연장, 예약 대기, 증명서 만료 문단을 찾고, 질문과 각 후보를 함께 평가해 만료 조건을 상위에 배치하는 과정",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "예시: 만료 규정을 앞으로 배치하기",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "입력이 “학생증이 만료되었는데, 빌린 책을 온라인으로 대출 연장할 수 있나요?”라고 가정해 보겠습니다. 후보에는 일반적인 대출 연장 절차, 예약 대기 안내, 증명서 만료 처리, 소장 자료 소개가 포함됩니다. 재정렬기는 질문과 문단을 하나씩 평가합니다. 증명서 만료 조건과 대출 연장 관련 규정을 앞에 배치해, 이후 독자나 생성 모델이 답을 결정하는 제한 사항을 먼저 보게 할 것이라고 합리적으로 기대할 수 있습니다. 이 후보와 결과는 이 글에서 설계한 교육용 상황입니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "좋은 최종 답변은 여전히 원문에 근거해 설명해야 합니다. 만료 처리 문서가 신규 대출을 중단한다고만 하고 이미 빌린 책의 대출 연장에 영향을 주는지는 설명하지 않았다면, 임의로 연장 금지라고 덧붙여서는 안 됩니다. 이때 재정렬은 가장 관련성 높은 문서를 찾는 데 성공했을 수 있지만, 자료는 여전히 부족합니다. 이 사례는 검색 품질 개선과 답변의 완전성이 별도로 검수해야 하는 두 가지 결과임을 보여 줍니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "올바른 조항을 일부러 후보에서 제외한 뒤 다시 실행해 비교할 수도 있습니다. 답변이 개선되지 않는다면 이는 작동 원리상 타당한 한계이며, 반드시 재정렬 모델의 품질이 낮다는 뜻은 아닙니다. 반대로 올바른 문단이 이미 후보에 있는데도 계속 뒤로 밀린다면 입력 길이, 질문 형식, 언어 처리 능력, 모델의 규정 검색 적합성을 점검해야 합니다. 테스트는 이런 실패 원인을 구분할 수 있도록 설계해야 합니다."
+        },
+        {
+          "type": "heading",
+          "text": "비용과 문서 처리도 중요합니다",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "후보가 많을수록 질문과 문서 쌍을 평가하는 전체 연산량이 대체로 늘어나며, 대기 시간과 연산 자원 요구량도 증가합니다. 반대로 후보가 적으면 올바른 자료를 놓칠 수 있으므로, 애플리케이션에 맞는 범위를 찾아야 합니다. 다른 곳의 고정된 수치를 그대로 따라서는 안 됩니다. 초기 검색만으로도 답을 안정적으로 상위에 배치할 수 있다면, 재정렬을 추가해 얻는 이점은 아주 작은데 매번 대기 시간만 길어질 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "지나치게 긴 문서도 흔한 장애물입니다. 재정렬 모델에는 입력 길이 제한이 있어 핵심 예외가 잘린 지점 뒤에 있으면 점수를 매길 때 볼 수 없습니다. 문서 제목과 필요한 문맥을 보존하면서 분할 방식을 조정한 뒤 결과를 테스트할 수 있습니다. 매뉴얼 한 권 전체를 하나의 후보로 삼는 것이 의미 단위로 나눈 문단보다 반드시 낫지는 않습니다. 각 문장을 너무 잘게 나눠도 모델이 제한 사항의 적용 대상을 식별하지 못할 수 있습니다."
+        },
+        {
+          "type": "heading",
+          "text": "어떤 경우에 이 단계를 추가할 만할까",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "먼저 초기 검색의 후보 재현율을 점검해 볼 수 있습니다. 올바른 자료를 이미 찾았는데 순서만 좋지 않은 경우가 잦은지 확인하는 것입니다. 그렇다면 재정렬로 개선할 여지가 비교적 명확합니다. 자료 자체를 찾지 못했다면 인덱스, 질의, 분할 방식 또는 하이브리드 검색부터 손봐야 합니다. 평가할 때는 동일한 후보 집합을 유지한 채 재정렬 추가 전후의 순서를 비교해야 합니다. 그래야 후보 범위가 달라져 생긴 개선을 순위 모델의 효과로 잘못 돌리지 않습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "테스트 질문에는 주제는 비슷하지만 조건이 다른 비교 사례가 있어야 합니다. 예를 들면 증명서 만료, 도서 연체, 다른 이용자의 예약이 있는 경우입니다. 답이 없는 질문도 포함해 모델이 가장 비슷한 문단을 충분한 근거인 것처럼 제시하지 않는지 확인해야 합니다. RAG에서는 순위뿐 아니라 최종 답변이 올바른 조항을 인용하는지, 알 수 없는 사항을 그대로 남겨 두는지도 점검해야 합니다. 앞단의 개선이 독자가 받는 답변에 실제로 반영되어야 서비스 목표를 달성했다고 할 수 있습니다."
+        },
+        {
+          "type": "paragraph",
+          "text": "시스템은 후보 식별자, 초기 순위, 재정렬 후 순위, 모델 버전을 저장해 표본 점검을 쉽게 할 수 있습니다. 모델 업데이트 후 특정 유형의 질문에서 성능이 떨어지면 같은 자료로 돌아가 다시 분석할 수 있습니다. 재정렬의 역할은 한정된 주의를 더 관련성 높은 내용에 집중시키는 것입니다. 보강하는 것은 순위 지정 단계이며, 데이터 거버넌스, 권한 관리, 사실 확인이나 최종적인 사람의 판단을 대체하지는 않습니다. 재정렬 서비스를 일시적으로 사용할 수 없을 때 원래 순위로 되돌아갈지도 애플리케이션에서 미리 결정해야 합니다. 또한 이번에 어떤 경로를 거쳤는지 기록에 표시해야 대체 경로의 결과를 새 모델의 성능으로 오인하지 않습니다. 순위 모델이 실제로 읽은 텍스트 범위도 점검해야 합니다. 긴 조항이 입력 전에 잘렸다면 예외 조항은 아예 모델에 들어가지 않았을 수 있습니다. 이때의 순위 오류는 모델이 내용을 읽고 이해했지만 판단에 실패한 경우가 아닙니다. 입력한 문단과 잘린 위치를 기록해야 문서 분할이나 후보 내용을 수정해야 하는지, 순위 지정 방법을 바꿔야 하는지 구분할 수 있습니다."
+        },
+        {
+          "type": "table",
+          "header": [
+            "방법",
+            "처리의 초점",
+            "유의할 점"
+          ],
+          "rows": [
+            [
+              "초기 검색",
+              "후보를 빠르게 확보",
+              "빠짐없이 찾았는지 우선 확인"
+            ],
+            [
+              "재정렬",
+              "후보와 질문을 꼼꼼히 비교",
+              "상위 결과의 관련성을 우선 확인"
+            ],
+            [
+              "답변 검증",
+              "주장과 근거를 대조",
+              "관련성이 사실 여부나 충분한 근거를 뜻하지는 않음"
+            ]
+          ],
+          "caption": "개념 비교. 출처는 2026년 9월에 확인했습니다."
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "후보에 없는 문서는 순위에 되살릴 수 없습니다",
+          "text": "먼저 올바른 문단이 검색되었는지 확인하세요. 후보 누락과 순위 오류는 서로 다른 방식으로 수정해야 합니다."
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "하이브리드 검색(Hybrid Search): 정확한 단어와 의미를 함께 고려하기",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "문서 분할(Chunking): 답이 잘리지 않게 하려면 얼마나 길게 나눠야 할까",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "의미 검색(Semantic Search): 다른 표현으로 관련 내용 찾기",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 용어 전체 색인: 루프 엔지니어링부터 생성형 AI까지",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers: 검색 및 재정렬",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elastic: 순위 지정 및 재정렬",
+          "url": "https://www.elastic.co/docs/solutions/search/ranking",
+          "checked_on": "2026-09-14"
+        }
+      ]
+    },
+    "zh-CN": {
+      "title": "重新排序（Reranking）：从找到内容到把好答案排在前面",
+      "description": "重新排序会对第一轮搜索找到的候选再次进行相关性判断，常用于改善搜索列表与 RAG 的上下文质量。本文用图书馆借阅规则演示检索器和交叉编码器如何分工，说明候选缺漏、输入截断、相关性分数与真假判断的差异。读完能辨别该扩大检索、修正文本块，还是增加重新排序，并用合适的测试避免为了改善排名付出不必要的等待。",
+      "hero": {
+        "src": "/guides/ai-term-reranking/hero-zh-cn.jpg",
+        "alt": "相同文档列表经交叉路径交换位置，适用的条文移到前面",
+        "width": 1600,
+        "height": 900,
+        "credit": {
+          "author": "Mokaair",
+          "license": "© Mokaair",
+          "source_url": null
+        }
+      },
+      "blocks": [
+        {
+          "type": "summary",
+          "items": [
+            "重新排序（Reranking）是在第一轮搜索取得候选后，再用另一个排序步骤判断哪些资料应放在前面，把更多计算投入少数候选，尝试改善最前面几个结果的相关程度。",
+            "交叉编码器是可承担这一角色的方法之一，会把问题和候选文档一起送入模型，直接评估这对文本的相关性，但每个候选通常都需要新的计算。",
+            "重新排序不是保证更准的按钮，没进入候选的文档排不回来。",
+            "分数即使看起来像百分比，也不能当作答案正确的概率；相关不代表真实或充分。"
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "重新排序，英文 Reranking，指在第一轮搜索取得候选之后，再用另一个排序步骤判断哪些资料应放在前面。它常用于搜索与 "
+            },
+            {
+              "type": "article",
+              "text": "RAG",
+              "kind": "life",
+              "slug": "ai-term-retrieval-augmented-generation"
+            },
+            {
+              "type": "text",
+              "text": "，让速度较快的检索器先缩小范围，再把有限的候选交给更深入的相关性模型。这是一种分阶段的资源分配：先找到，再花力气判断先看哪个。"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "text",
+              "text": "重新排序不是保证更准的按钮，也不只能使用"
+            },
+            {
+              "type": "article",
+              "text": "大语言模型",
+              "kind": "life",
+              "slug": "what-is-a-large-language-model"
+            },
+            {
+              "type": "text",
+              "text": "。交叉编码器、学习排序模型与其他评分方法都可能承担这一角色。本文以 Sentence Transformers 的《检索与重新排序》文档及 Elastic 的排序说明为基础，通过虚构的图书馆规则演示机制，将预期行为与实际测试成绩清楚区分开。"
+            }
+          ]
+        },
+        {
+          "type": "heading",
+          "text": "为什么第一轮排名可能还不够",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "第一轮检索常需要在大量资料中快速找出候选，因此可能使用预先计算的向量或全文索引。这些方式善于缩小范围，但细微的适用条件、主语与例外，有时需要把问题和文档放在一起仔细比较。重新排序把更多计算投入少数候选，尝试改善最前面几个结果的相关程度，而不必对整个数据库逐篇进行高成本处理。"
+        },
+        {
+          "type": "paragraph",
+          "text": "例如“学生证到期还能续借吗？”和一般的“如何续借”主题相近，第一轮可能把普通续借步骤排在前面。但真正需要的文档可能是账号资格与到期限制。若后者已在候选中，重新排序有机会把它推到前面；若它从未被检索到，后续评分再精细，也不能为不存在的候选创造原文。"
+        },
+        {
+          "type": "heading",
+          "text": "交叉编码器如何看一对文本",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "典型的双编码器把问题与文档分别编码，再比较向量；文档表示可预先建立，查询时不用重新处理所有组合。交叉编码器则把问题和候选文档一起送入模型，直接评估这对文本的相关性。它可以利用两者之间更细致的交互，但每个候选通常都需要新的计算，这就是它常被放在第二阶段的原因。"
+        },
+        {
+          "type": "paragraph",
+          "text": "输出分数由模型与训练目标决定，有些是未经校准的数值，有些经转换后落在某个区间。不能仅因分数看起来像百分比，就把它当作答案正确的概率。模型可能判断某段内容非常切题，但原文已过时、用户无权查看，或内容本身有误。相关性判断与来源质量需要分别处理。"
+        },
+        {
+          "type": "image",
+          "src": "/guides/ai-term-reranking/diagram-1-zh-cn.svg",
+          "alt": "第一轮找到一般续借、预约排队和证件到期段落，将问题与各候选配对评分后把到期条件排到前面",
+          "width": 1600,
+          "height": 900,
+          "caption": "重新排序只能处理已取得的候选，无法补回漏查的原文。",
+          "description": "第一轮找到一般续借、预约排队和证件到期段落，将问题与各候选配对评分后把到期条件排到前面",
+          "credit": {
+            "author": "Mokaair",
+            "license": "© Mokaair",
+            "source_url": null
+          }
+        },
+        {
+          "type": "heading",
+          "text": "演示：把到期规则放到前面",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "假设输入是“我的学生证已到期，借的书还能在线续借吗？”候选包含一般续借步骤、预约排队说明、证件到期处理及馆藏介绍。重新排序器逐一评估问题与段落，合理的预期是把证件到期条件和与续借相关的规则放在前面，让后续读者或生成模型先看到决定答案的限制。这些候选与结果是本文设计的教学情境。"
+        },
+        {
+          "type": "paragraph",
+          "text": "好的最终回答仍要依据原文描述。如果到期处理文档只说暂停新借，没有说是否影响已借图书的续借，就不应自行补成禁止续借。此时重新排序可能已成功找到最相关的文档，但资料仍然不足。这个案例说明搜索质量改善与答案完整，是两个需要分别验收的结果。"
+        },
+        {
+          "type": "paragraph",
+          "text": "还可以故意把正确条文放到候选之外，再重新运行并比较。若答案没有改善，这是合理的机制边界，不一定是重新排序模型质量差。相反，正确段落已在候选中却始终被降到后面，就需要检查输入长度、问题格式、语言能力及模型是否适合规章检索。测试设计要能区分这些失败原因。"
+        },
+        {
+          "type": "heading",
+          "text": "成本与文档处理同样重要",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "候选越多，问题与文档逐对计算的工作量通常越大，等待时间与计算资源需求也会增加。候选越少则可能漏掉正确资料，因此应用需要找出适合自己的范围，而不是照抄别人的固定数字。若第一轮已能稳定地把答案排在前面，增加重新排序可能带来的收益很小，却会延长每次等待。"
+        },
+        {
+          "type": "paragraph",
+          "text": "过长的文档也是常见障碍。重新排序模型有输入长度限制，若关键例外出现在截断位置之外，评分时就看不到它。可以调整分块，保留文档标题与必要上下文，再测试结果。把整本手册当作一个候选，不一定比有意义的段落更好；把每一句切得太碎，也可能让模型无法辨别限制适用于哪个对象。"
+        },
+        {
+          "type": "heading",
+          "text": "什么情况下值得增加这一层",
+          "level": 2
+        },
+        {
+          "type": "paragraph",
+          "text": "可以先检查第一轮搜索的候选召回：正确资料是否常常已经找到，只是顺序不好。若是，重新排序就有较明确的改善空间；若根本没找到，就先处理索引、查询、分块或混合搜索。评估时保留同一组候选，再比较加入重新排序前后的顺序，才不会把候选范围变动带来的提升错误归因于排序模型。"
+        },
+        {
+          "type": "paragraph",
+          "text": "测试问题应包含主题相近但条件不同的对照，例如证件到期、图书逾期与已有他人预约。也要加入无答案的问题，确认模型不会把最相似的段落包装成充分依据。对 RAG 而言，除了看排名，还需检查最终答案是否引用正确条文、是否保留未知事项。前面阶段的改善只有真正传递到读者得到的答案中，才算完成服务目标。"
+        },
+        {
+          "type": "paragraph",
+          "text": "系统可保存候选标识符、第一轮排名、重新排序后的排名及模型版本，方便抽查。若更新模型后某类问题的表现退步，就能回到同一份资料重新分析。重新排序的定位是把有限的注意力放在更相关的内容上；它加强的是排序阶段，并没有取代数据治理、权限、事实核查或最终的人工判断。若重新排序服务暂时无法使用，应用还需要事先决定是否退回原排序，并在记录中标明此次采用了哪条路径，才不会把降级结果误认为新模型的表现。还应检查排序模型实际读到的文本范围。长条文若在输入前被截断，例外条款可能根本没有进入模型；此时排序错误并不是模型已经读懂却判断失败。记录送入的段落与截断位置，才能辨别该修复文档分块、候选内容，还是更换排序方法。"
+        },
+        {
+          "type": "table",
+          "header": [
+            "方法",
+            "处理重点",
+            "需要留意"
+          ],
+          "rows": [
+            [
+              "第一轮检索",
+              "快速取得候选",
+              "优先关注是否找齐"
+            ],
+            [
+              "重新排序",
+              "仔细比较候选与问题",
+              "优先关注前列结果的相关性"
+            ],
+            [
+              "答案验证",
+              "核对主张与证据",
+              "相关不代表真实或充分"
+            ]
+          ],
+          "caption": "概念对照；来源核查于 2026 年 9 月。"
+        },
+        {
+          "type": "callout",
+          "tone": "tip",
+          "title": "没进入候选的文档，排不回来",
+          "text": "先确认正确段落已被检索到。候选缺漏和排名失误需要不同的修正方式。"
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "混合搜索（Hybrid Search）：兼顾精确词语与语义",
+              "kind": "life",
+              "slug": "ai-term-hybrid-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "文档分块（Chunking）：切多长，才不会把答案切断",
+              "kind": "life",
+              "slug": "ai-term-chunking"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "语义搜索（Semantic Search）：用不同说法找到相关内容",
+              "kind": "life",
+              "slug": "ai-term-semantic-search"
+            }
+          ]
+        },
+        {
+          "type": "rich_paragraph",
+          "inlines": [
+            {
+              "type": "article",
+              "text": "AI 术语总索引：从 Loop Engineering 到生成式 AI",
+              "kind": "life",
+              "slug": "ai-terms-index"
+            }
+          ]
+        }
+      ],
+      "sources": [
+        {
+          "title": "Sentence Transformers：检索与重新排序",
+          "url": "https://sbert.net/examples/sentence_transformer/applications/retrieve_rerank/README.html",
+          "checked_on": "2026-09-14"
+        },
+        {
+          "title": "Elastic：排序与重新排序",
           "url": "https://www.elastic.co/docs/solutions/search/ranking",
           "checked_on": "2026-09-14"
         }
