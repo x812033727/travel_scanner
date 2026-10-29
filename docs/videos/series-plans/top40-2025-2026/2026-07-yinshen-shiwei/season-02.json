@@ -1,0 +1,4418 @@
+{
+  "number": 2,
+  "title": "碼頭",
+  "theme": "魏家要的不是孩子，是地。",
+  "start_state": "監護權暫歸沈硯、魏家上訴中；倉庫裡出現過另一個『會走的』，只有小石頭與他知道。他能走二十步了，餓得更快，口袋從三個饅頭變成六個。老趙開始每天跟他下棋，不說話。",
+  "end_state": "前夫到底要什麼揭開（硯通名下的舊碼頭地）；能力為什麼用完會餓揭開（林醫師驗出血糖、老趙說『一步一碗』他見過）；老趙知道什麼揭開（沈父身邊那個會走的人，十年前同一夜沒了）。魏家從打人改成打公司：斷貨、挖客戶、碼頭地的產權官司；他第一次管他不懂的事——夜裡一步一步把被斷的貨從對手倉庫『搬』回來，吃掉二十個饅頭。沈家門口的鞋櫃多了一雙藍白拖。最後一集，碼頭地的現勘日，魏老爺子第一次親自出現，拄著杖看那塊地，對沈硯說：『妳爸十年前就該把這塊地給我。』沈硯問為什麼；一個灰西裝的人從魏老爺子身後走過來，走路沒有聲音，看了林大楠一眼：『因為底下有東西。』",
+  "guest_cast": [
+    {
+      "id": "s02-guo-laoban",
+      "name": "郭振發",
+      "role": "恆運倉儲老闆，硯通的對手倉庫；收魏家的錢『誤收』扣住硯通的貨，魏家欠帳不還後倒戈賣出簽收單",
+      "appearance": "東亞男性，五十歲，矮壯、啤酒肚、油亮的西裝頭、金框眼鏡；花色 POLO 衫紮進西裝褲、腰掛一大串鑰匙、手腕一支過大的金錶，笑起來露出一顆金牙"
+    },
+    {
+      "id": "s02-he-jingli",
+      "name": "何啟明",
+      "role": "硯通最大客戶永豐食品的採購經理；收了魏家兩倍價撤單，良心不安後偷偷向沈硯通風報信",
+      "appearance": "東亞男性，四十二歲，瘦高、斯文、細框眼鏡、頭頂微禿；淺藍襯衫配深灰西裝背心、識別證掛在胸前，講話時一直推眼鏡、手心冒汗"
+    },
+    {
+      "id": "s02-su-man",
+      "name": "蘇曼",
+      "role": "筆跡鑑定人員，沈硯請來鑑定合資協議上的簽名；做事只認紙不認人",
+      "appearance": "東亞女性，三十八歲，清瘦、齊耳短髮、圓框眼鏡；米色高領毛衣外罩白色實驗袍，手上一副白棉手套與一支放大鏡，說話前先把眼鏡推上額頭"
+    },
+    {
+      "id": "s02-chen-zhixing",
+      "name": "陳志遠",
+      "role": "港北地方法院執行處的執行人員，碼頭地現勘的主持人；照程序辦事，誰的面子都不給",
+      "appearance": "東亞男性，四十六歲，中等身材、平頭、國字臉、表情平板；深藍法院制服外套、胸前名牌、腋下夾一個硬殼資料夾與一捲地籍圖，皮鞋擦得發亮"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s02-t01",
+      "question": "二十步要付多少代價？",
+      "setup_episode": 61,
+      "payoff_episode": 62
+    },
+    {
+      "id": "s02-t02",
+      "question": "永豐撤單是誰指使的？",
+      "setup_episode": 62,
+      "payoff_episode": 63
+    },
+    {
+      "id": "s02-t03",
+      "question": "小石頭的畫為什麼有臉了？",
+      "setup_episode": 62,
+      "payoff_episode": 67
+    },
+    {
+      "id": "s02-t04",
+      "question": "夜市八十七攤的貨送得出去嗎？",
+      "setup_episode": 65,
+      "payoff_episode": 66
+    },
+    {
+      "id": "s02-t05",
+      "question": "他要怎麼把貨從對手倉庫搬回來？",
+      "setup_episode": 70,
+      "payoff_episode": 71
+    },
+    {
+      "id": "s02-t06",
+      "question": "天亮前一百箱搬得完嗎？",
+      "setup_episode": 71,
+      "payoff_episode": 75
+    },
+    {
+      "id": "s02-t07",
+      "question": "鐵哥會在倉庫裡逮到他嗎？",
+      "setup_episode": 72,
+      "payoff_episode": 75
+    },
+    {
+      "id": "s02-t08",
+      "question": "他的身體撐得住嗎？",
+      "setup_episode": 73,
+      "payoff_episode": 80
+    },
+    {
+      "id": "s02-t09",
+      "question": "警察會不會查到他？",
+      "setup_episode": 75,
+      "payoff_episode": 78
+    },
+    {
+      "id": "s02-t10",
+      "question": "紅外線拍到了什麼？",
+      "setup_episode": 76,
+      "payoff_episode": 77
+    },
+    {
+      "id": "s02-t11",
+      "question": "沈硯為什麼不問他怎麼做到的？",
+      "setup_episode": 76,
+      "payoff_episode": 79
+    },
+    {
+      "id": "s02-t12",
+      "question": "沈父身邊那個一步一碗的人叫什麼？",
+      "setup_episode": 82,
+      "payoff_episode": 85
+    },
+    {
+      "id": "s02-t13",
+      "question": "阿八是誰？",
+      "setup_episode": 85,
+      "payoff_episode": 90
+    },
+    {
+      "id": "s02-t14",
+      "question": "母親為什麼一聽阿八就掛電話？",
+      "setup_episode": 86,
+      "payoff_episode": 88
+    },
+    {
+      "id": "s02-t15",
+      "question": "畫裡第二個黑影是誰？",
+      "setup_episode": 87,
+      "payoff_episode": 101
+    },
+    {
+      "id": "s02-t16",
+      "question": "合資協議是真的嗎？",
+      "setup_episode": 91,
+      "payoff_episode": 112
+    },
+    {
+      "id": "s02-t17",
+      "question": "銀行會不會凍結硯通？",
+      "setup_episode": 93,
+      "payoff_episode": 95
+    },
+    {
+      "id": "s02-t18",
+      "question": "他一個人去碼頭會看到什麼？",
+      "setup_episode": 97,
+      "payoff_episode": 100
+    },
+    {
+      "id": "s02-t19",
+      "question": "小石頭為什麼要他帶著那張碼頭畫？",
+      "setup_episode": 97,
+      "payoff_episode": 99
+    },
+    {
+      "id": "s02-t20",
+      "question": "碼頭那塊新水泥是誰灌的？",
+      "setup_episode": 98,
+      "payoff_episode": 104
+    },
+    {
+      "id": "s02-t21",
+      "question": "沈父的舊錶為什麼停了？",
+      "setup_episode": 103,
+      "payoff_episode": 114
+    },
+    {
+      "id": "s02-t22",
+      "question": "魏寧在跟誰通電話？",
+      "setup_episode": 105,
+      "payoff_episode": 120
+    },
+    {
+      "id": "s02-t23",
+      "question": "探視那天會出什麼事？",
+      "setup_episode": 105,
+      "payoff_episode": 110
+    },
+    {
+      "id": "s02-t24",
+      "question": "誰叫人砸了夜市？",
+      "setup_episode": 106,
+      "payoff_episode": 107
+    },
+    {
+      "id": "s02-t25",
+      "question": "藍白拖去哪了？",
+      "setup_episode": 107,
+      "payoff_episode": 108
+    },
+    {
+      "id": "s02-t26",
+      "question": "鐵哥今天為什麼不打？",
+      "setup_episode": 115,
+      "payoff_episode": 117
+    },
+    {
+      "id": "s02-t27",
+      "question": "沈父十年前為什麼不肯給地？",
+      "setup_episode": 118,
+      "payoff_episode": 119
+    }
+  ],
+  "episodes": [
+    {
+      "number": 61,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "二十步",
+      "youtube_title": "攤販保鏢在倉庫數零錢，一眨眼站上二十步外的貨櫃頂，卻在灰塵裡看見一排不是他的皮鞋印",
+      "duration_s": 110,
+      "logline": "林大楠想弄清楚自己現在能走多遠，卻發現多出來的十步要多吃三個饅頭，還在貨櫃頂上撞見另一個人來過的痕跡。",
+      "hook": "深夜倉庫，他蹲在棧板上數零錢：「十七、十八……」下一格棧板上只剩一枚硬幣在轉，他人在對面貨櫃頂上：「咦？」",
+      "hook_type": "image",
+      "mid_hook": "口袋裡三個饅頭全吞了手還在抖，他從貨櫃頂一路滑下來，一屁股坐在阿麗的哨子前面。",
+      "extra_hooks": [
+        "阿麗吹哨：「洗廁所，一個月。」他抬頭：「有加班費嗎？」"
+      ],
+      "conflict": "他得知道二十步的代價；上一季的十步是三個饅頭，下一次救人他不能先暈在半路。",
+      "turn": "罰完他，阿麗把自己便當裡的三個饅頭塞進他口袋：「不准暈在我的倉庫。」從今天起，他口袋是六個。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他回貨櫃頂撿那枚硬幣，手電筒掃過灰塵：一排窄頭皮鞋印，只有去、沒有來，鞋尖對著二樓沈硯辦公室的窗。",
+        "question": "貨櫃頂那排皮鞋印是誰的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "dongzuo"
+      ],
+      "spectacle": "前一格他蹲在棧板上數錢，後一格棧板空著、硬幣還在轉，再一格他在二十步外的貨櫃頂上嚼饅頭。",
+      "glamour_shot": "他在貨櫃頂回頭，不合身的黑西裝被倉庫大風扇吹開，鈉燈從下往上打出曬黑的瘦削側臉，嘴角沾著饅頭屑。",
+      "setups": [
+        "s02-t01",
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "試出自己能走二十步",
+        "口袋從三個饅頭變成六個",
+        "阿麗成了第一個塞吃的給他的公司同事"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-li"
+      ],
+      "locations": [
+        "硯通物流倉庫"
+      ],
+      "state": {
+        "time": "第二季第 1 夜，凌晨一點",
+        "knowledge": "他能走二十步了，二十步至少要六個饅頭；貨櫃上的粉筆字之後，貨櫃頂又多了一排不是他的皮鞋印。",
+        "carry_forward": "皮鞋印朝著沈硯的窗；他還沒告訴任何人。"
+      }
+    },
+    {
+      "number": 62,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "你是硯通的人",
+      "youtube_title": "女總裁遞來門禁卡說你是硯通的人，攤販保鏢第一句問有沒有加薪，下一秒最大客戶撤單",
+      "duration_s": 105,
+      "logline": "沈硯第一次把他當自己人，硯通卻在同一天被最大客戶撤單、兩家供應商斷貨。",
+      "hook": "一張門禁卡推到他面前，沈硯：「你是硯通的人。」他咬著饅頭：「有加薪嗎？」",
+      "hook_type": "line",
+      "mid_hook": "韓小姐抱著電話衝進辦公室：「永豐撤單了。」話沒說完，桌上第二支電話也響了。",
+      "extra_hooks": [
+        "他把皮鞋印的照片給老趙看，老趙看了三秒，落下一顆棋：「皮鞋。很貴。」"
+      ],
+      "conflict": "最大客戶永豐撤單、兩家供應商同一天斷貨，硯通下週沒有貨可出，也沒有人說得出原因。",
+      "turn": "他聽不懂撤單，問阿蒙：「撤單會死人嗎？」阿蒙：「會餓死。」他把第六個饅頭放下：「那我懂。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "晚上送小石頭到樓下，小石頭把一張畫塞進他口袋：黑影第一次有了眼睛和嘴，嘴裡叼著饅頭。「叔叔，你今天有臉了。」",
+        "question": "畫裡的叔叔為什麼忽然有臉了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "韓小姐在鐵梯上絆倒、文件和咖啡一起飛起，下一格他站在梯子底下，一手接咖啡一手抱整疊文件，嘴裡還咬著饅頭。",
+      "glamour_shot": "沈硯在倉庫二樓窗前把門禁卡推過桌面，捲起袖子的白襯衫被夕陽切成一明一暗，眼下熬夜的影很淡。",
+      "setups": [
+        "s02-t02",
+        "s02-t03"
+      ],
+      "payoffs": [
+        "s02-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到硯通門禁卡，沈硯第一次說他是自己人",
+        "算清代價：二十步剛好六個饅頭，吃到第六個手才不抖"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "han-mishu",
+        "a-meng",
+        "lao-zhao",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "硯通物流二樓辦公室",
+        "硯通物流倉庫",
+        "沈家樓下"
+      ],
+      "state": {
+        "time": "第二季第 2 天傍晚",
+        "knowledge": "硯通被撤單、斷貨；二十步要六個饅頭是定數。",
+        "carry_forward": "小石頭的新畫裡，看不見的叔叔有了臉。"
+      }
+    },
+    {
+      "number": 63,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "桌墊下的名片",
+      "youtube_title": "跟女總裁去求大客戶，攤販保鏢吃光會議室餅乾，卻在經理桌墊下看見前夫妹妹的名片",
+      "duration_s": 120,
+      "logline": "林大楠陪沈硯去永豐挽回訂單，要找出是誰讓永豐撤單，回程的地下停車場卻有一台車在等他們。",
+      "hook": "車上他把小石頭的畫貼在擋風玻璃前，對著後照鏡比臉：「像嗎？」阿蒙：「畫比較帥。」",
+      "hook_type": "line",
+      "mid_hook": "何經理起身倒茶，桌墊底下壓著一張名片：魏寧律師，背面手寫「謝謝合作」。",
+      "extra_hooks": [
+        "何經理脫口：「有人出兩倍。」他舉手：「我才值三倍。」"
+      ],
+      "conflict": "永豐的何經理只說「公司決定」，硯通不知道對手是誰，就接不了招。",
+      "turn": "他把整盤招待餅乾倒進口袋時「不小心」掃開桌墊，名片滑到沈硯腳邊；何經理的臉一下白了：撤單是魏家花錢買的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "地下停車場，他們剛走到車邊，一台黑色休旅車熄著燈從柱子後面衝出來，引擎聲灌滿整層，車頭對準沈硯。",
+        "question": "熄燈衝來的車是誰派的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "dongzuo"
+      ],
+      "spectacle": "整盤奶油餅乾嘩啦倒進黑西裝口袋，兩邊口袋鼓成兩顆球；停車場裡休旅車在最後一秒開大燈，把沈硯的影子釘在水泥牆上。",
+      "glamour_shot": "沈硯在會議桌前翻開合約，低跟鞋輕點地面，一句廢話不說，眼神把何經理壓得坐直。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認永豐撤單是魏寧花兩倍價買的",
+        "何經理欠下沈硯一份人情"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "a-meng",
+        "s02-he-jingli"
+      ],
+      "locations": [
+        "永豐食品會議室",
+        "永豐食品地下停車場"
+      ],
+      "state": {
+        "time": "第二季第 3 天上午",
+        "knowledge": "撤單的背後是魏寧；他們今天來永豐只有硯通自己人知道，車卻已經在等。",
+        "carry_forward": "休旅車衝向沈硯。"
+      }
+    },
+    {
+      "number": 64,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "你在這，誰在那",
+      "youtube_title": "休旅車衝向女總裁，攤販一眨眼拔走車鑰匙，後座光頭卻舉起手機：你在這，誰在那",
+      "duration_s": 115,
+      "logline": "林大楠擋下衝向沈硯的車，對方卻拿小石頭的校門口逼他再跑一趟，他只剩幾步的力氣。",
+      "hook": "車頭離沈硯一公尺停住、引擎熄火；駕駛座窗邊，他一手捏車鑰匙一手捏餅乾：「熄火了。」",
+      "hook_type": "danger",
+      "mid_hook": "後座車窗降下，鐵哥舉起手機：小石頭校門口的即時畫面，一台廂型車正停過去。「你在這，誰在那？」",
+      "extra_hooks": [
+        "阿蒙連闖三個黃燈，他在後座吞第五個饅頭，手抖到撕不開塑膠袋，用牙咬開。"
+      ],
+      "conflict": "學校在四公里外，他只能走二十步，口袋只剩兩個饅頭。",
+      "turn": "他一步跨到廂型車門前，拉開門：裡面是魏承，抱著一台生日腳踏車。鐵哥要的不是孩子，是看他為了孩子會走幾步、餓成什麼樣。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小石頭抱著腳踏車貼著他耳朵：「沒有臉的叔叔也來了。」他指著對街，對街沒有人，只有公車站牌還在晃。",
+        "question": "小石頭看見的那個人是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dongzuo",
+        "jiating"
+      ],
+      "spectacle": "前一格休旅車衝來，後一格駕駛座的人手上空了，鑰匙已經在二十步外他的指間轉。",
+      "glamour_shot": "他在校門口把小石頭舉上肩，黑西裝鬆開的領帶被風吹到背後，嘴裡叼著最後一個饅頭，逆光的輪廓很利落。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈硯毫髮無傷",
+        "小石頭平安，知道魏家在量他的步數"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "tie-ge",
+        "a-meng",
+        "wei-cheng",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "永豐食品地下停車場",
+        "港北第一小學校門口"
+      ],
+      "state": {
+        "time": "第二季第 3 天下午",
+        "knowledge": "魏家在測他為了孩子走幾步、吃幾個；小石頭說另一個會走的人也到過學校。",
+        "carry_forward": "鐵哥手上有他的步數；對街那個人沒有留下影子。"
+      }
+    },
+    {
+      "number": 65,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "回夜市借貨",
+      "youtube_title": "被大客戶撤單的物流公司要倒了，攤販保鏢回夜市喊一聲，八十七個攤位的老闆全站起來",
+      "duration_s": 120,
+      "logline": "硯通斷了客戶與貨源，林大楠回北門夜市找林嬸，想用夜市的單補上永豐的缺。",
+      "hook": "棋盤前他說：「小石頭說有人在走。」老趙落下一子，終於開口：「你腳步太響。」",
+      "hook_type": "line",
+      "mid_hook": "林嬸捏著他的臉：「又瘦了。」轉頭對整排攤商喊：「誰的貨還在給大公司剝皮？」",
+      "conflict": "硯通下週沒單，沈硯不信一群夜市攤商撐得起一家物流公司。",
+      "turn": "林嬸站上攤車拿大聲公點名，八十七攤的進貨單疊起來，量是永豐的一半；老鄺默默把一串鑰匙放到他手上：「冷凍庫的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "那疊八十七攤的進貨單放到沈硯桌上，每一張都是夜市價、利潤薄得像蔥花。她的筆停在簽名欄上：「接了，就沒有回頭。」",
+        "question": "沈硯肯接夜市八十七攤的單嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "林嬸攤上的一疊碗被阿肥撞倒，前一格碗在半空，後一格他在三攤外抱著整疊碗，一個都沒破。",
+      "glamour_shot": "夜市第三排第七攤的鍋前，他換回圍裙替林嬸顧攤，油煙和霓虹裡的側臉，翻鍋的手腕很穩。",
+      "setups": [
+        "s02-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "夜市八十七攤願意把進貨交給硯通",
+        "老鄺把冷凍庫的鑰匙交給他"
+      ],
+      "characters": [
+        "lin-danan",
+        "lao-zhao",
+        "lin-shen",
+        "a-fei",
+        "lao-kuang",
+        "shen-yan"
+      ],
+      "locations": [
+        "硯通倉庫閣樓",
+        "北門夜市第三排",
+        "硯通物流二樓辦公室"
+      ],
+      "state": {
+        "time": "第二季第 4 天",
+        "knowledge": "老趙開始對他說話；夜市站到硯通這邊。",
+        "carry_forward": "沈硯要不要接夜市的薄利單，還沒簽。"
+      }
+    },
+    {
+      "number": 66,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "一條路的鑰匙",
+      "youtube_title": "八十七攤的貨車被光頭打手堵在夜市口，攤販保鏢一步拔一把鑰匙，對方數到第二十步傻眼",
+      "duration_s": 110,
+      "logline": "沈硯簽了夜市的單，林大楠要把第一批貨送出夜市，鐵哥的人用車把唯一的出口堵死。",
+      "hook": "她的筆落下，簽完推給他：「送出去。」他打了個嗝：「先吃飯。」",
+      "hook_type": "line",
+      "mid_hook": "鐵哥靠著車門，一邊看他拔鑰匙一邊數：「十四、十五、十六……」他每拔一把，鐵哥就在本子上畫一筆。",
+      "extra_hooks": [
+        "阿麗帶著倉庫的人推車，哨子一吹，沒鑰匙的堵路車一台一台被推到路邊。"
+      ],
+      "conflict": "夜市口被八台車堵住，貨送不出去，夜市的單第一天就要違約。",
+      "turn": "他不打人，只拔鑰匙；八把鑰匙串成一串掛在鐵哥耳朵上，車沒人開得動，阿麗的人把路推開。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最後一台貨車開出夜市，他坐在路邊，小石頭的畫從口袋掉出來被輪子捲走；他追了一步，第二十一步出不來，整個人跌在柏油路上。",
+        "question": "畫丟了，第二十一步為什麼出不來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dongzuo",
+        "xiju"
+      ],
+      "spectacle": "八台車之間，他前一格在第一台車窗邊，後一格在第八台車頂上，手裡一串鑰匙叮噹響。",
+      "glamour_shot": "他蹲在夜市口的霓虹招牌下吃最後一個饅頭，汗濕的短髮貼在額頭，抬眼看鐵哥時眼神很靜。",
+      "setups": [],
+      "payoffs": [
+        "s02-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "夜市第一批貨準時出車",
+        "鐵哥的人在全夜市面前沒動到一台貨車"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "tie-ge",
+        "a-li",
+        "lin-shen",
+        "a-fei"
+      ],
+      "locations": [
+        "硯通物流二樓辦公室",
+        "北門夜市出口"
+      ],
+      "state": {
+        "time": "第二季第 5 天清晨",
+        "knowledge": "二十步是極限，第二十一步出不來；鐵哥在本子上記他的步數。",
+        "carry_forward": "小石頭畫的有臉叔叔被貨車捲走了。"
+      }
+    },
+    {
+      "number": 67,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "有臉的叔叔",
+      "youtube_title": "保鏢弄丟了孩子畫的自己，八歲男孩盯他三秒拿出蠟筆，說出叔叔為什麼忽然有臉",
+      "duration_s": 120,
+      "logline": "林大楠弄丟了小石頭的畫，想賠一張，小石頭卻要他坐好讓自己重畫，順便說出畫裡的臉是怎麼來的。",
+      "hook": "沈家門口，他兩手空空：「畫丟了。」小石頭盯他三秒，拿出蠟筆：「坐好，再畫。」",
+      "hook_type": "line",
+      "mid_hook": "小石頭一邊畫一邊說：「以前你走完不回頭。現在你會回頭看我。」",
+      "extra_hooks": [
+        "沈硯第一次端給他一碗泡麵，他吃一口：「蔥太少。」她把整盒蔥倒進去。"
+      ],
+      "conflict": "他賠不出一張畫，也不懂一個八歲的孩子為什麼這麼在意一張紙。",
+      "turn": "臉不是畫技進步，是因為他回頭了：每次走完一步，他都回頭確認小石頭在不在，小石頭看見了那張臉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "沈硯的手機亮起，是何經理壓低的聲音：「沈總，最後那批大貨。」「被送錯倉庫了。」",
+        "question": "最後一批大貨送錯倉庫，是巧合嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "小石頭踩椅子要把畫貼上冰箱、椅子一歪，前一格他在玄關，後一格他在冰箱前接住孩子，畫正好貼上，冰箱門上多了一張有臉的叔叔。",
+      "glamour_shot": "沈硯靠在廚房門框看兩人畫畫，替兒子扣錯的校服鈕扣伸手又停住，低頭笑了一下，燈下的側臉很軟。",
+      "setups": [],
+      "payoffs": [
+        "s02-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小石頭重畫了有臉的叔叔，貼上沈家冰箱",
+        "沈硯第一次煮東西給他吃"
+      ],
+      "characters": [
+        "lin-danan",
+        "xiao-shitou",
+        "shen-yan",
+        "s02-he-jingli"
+      ],
+      "locations": [
+        "沈家客廳",
+        "沈家廚房"
+      ],
+      "state": {
+        "time": "第二季第 5 天晚上",
+        "knowledge": "畫裡的臉是因為他會回頭；何經理開始偷偷通風報信。",
+        "carry_forward": "硯通最後一批大貨被送去別的倉庫。"
+      }
+    },
+    {
+      "number": 68,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "誤收",
+      "youtube_title": "物流公司整批貨被對手倉庫誤收，老闆開口要保管費，攤販保鏢一句話讓他的打手自己撞成一團",
+      "duration_s": 115,
+      "logline": "沈硯帶他去恆運倉儲要回被誤收的貨，郭老闆一口咬定要三天才能清點。",
+      "hook": "恆運倉儲鐵門前，郭老闆剔著金牙：「誤收嘛，保管費一天十萬。」他：「十萬能買多少饅頭？」",
+      "hook_type": "line",
+      "mid_hook": "郭老闆一揮手，四個倉管推過來，前一格他站在沈硯身邊，後一格四個人撞成一團，他在他們身後吃饅頭。",
+      "conflict": "硯通這批貨是最後一個大客戶南港電子的，三天內交不出去，客戶就換人。",
+      "turn": "郭老闆接起電話，背過身壓低聲音：「魏小姐放心，三天。」他耳朵比誰都尖。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "南港電子的電話打進來，沈硯開了擴音：「三天沒貨，我們換人。」郭老闆在鐵門後笑著拉下鐵捲門。",
+        "question": "三天之內，貨要怎麼拿回來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dongzuo",
+        "xiju"
+      ],
+      "spectacle": "四個倉管同時撲上來，下一格四個人的頭撞在一起，他站在鐵門外的光裡，手上的饅頭只咬了一口。",
+      "glamour_shot": "沈硯站在恆運鐵門前，白襯衫捲袖、雙手抱胸，眼神比郭老闆的金錶還冷。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "確認誤收是魏家指使",
+        "郭老闆的人碰不到沈硯"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "s02-guo-laoban",
+        "a-meng"
+      ],
+      "locations": [
+        "恆運倉儲鐵門前"
+      ],
+      "state": {
+        "time": "第二季第 6 天",
+        "knowledge": "恆運扣貨是魏家的安排，期限三天。",
+        "carry_forward": "南港電子只給三天。"
+      }
+    },
+    {
+      "number": 69,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "撿零錢的人",
+      "youtube_title": "對手老闆把零錢撒在地上要保鏢撿，女總裁看不下去轉身走，沒人看見他邊撿邊在數什麼",
+      "duration_s": 120,
+      "logline": "報警與律師都來不及，郭老闆當著全倉庫的人把零錢撒在林大楠腳邊，他真的一枚一枚撿起來。",
+      "hook": "警察看完單據聳肩：「民事糾紛。」律師在電話裡說：「最快三週。」沈硯掛掉電話，倉庫一片安靜。",
+      "hook_type": "question",
+      "mid_hook": "郭老闆把一把硬幣撒在他腳邊：「撿啊，攤販。」他蹲下去，真的一枚一枚撿，沈硯轉身走了。",
+      "extra_hooks": [
+        "郭老闆說溜嘴：「魏家說了。」「碼頭倉位三天後騰空。」"
+      ],
+      "conflict": "法律救不了三天，沈硯第一次在員工面前沒有辦法。",
+      "turn": "他撿硬幣不是為了錢：每撿一枚往前挪一步，從鐵門撿到貨架，地上二十步，他全數過了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "深夜，沈硯站在倉庫二樓窗前：「三天後，硯通就沒了。」他站在門口，手心裡是那把撿來的零錢。",
+        "question": "他要拿那把零錢做什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "郭老闆撒出的硬幣在水泥地上滾成一條線，鏡頭跟著他撿的手從鐵門一路滑到貨架底下。",
+      "glamour_shot": "沈硯在倉庫二樓窗前的側影，父親的舊錶在窗光下反一點光，她沒有哭，只是把額頭靠在玻璃上。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "量出恆運鐵門到貨架二十步",
+        "知道魏家要的跟碼頭有關"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "s02-guo-laoban",
+        "han-mishu",
+        "a-li"
+      ],
+      "locations": [
+        "硯通物流倉庫",
+        "恆運倉儲倉庫",
+        "硯通物流二樓辦公室"
+      ],
+      "state": {
+        "time": "第二季第 7 天深夜",
+        "knowledge": "恆運的貨架離鐵門二十步；魏家要騰空的是碼頭倉位。",
+        "carry_forward": "沈硯以為他被一把零錢買走了尊嚴。"
+      }
+    },
+    {
+      "number": 70,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "饅頭準備二十個",
+      "youtube_title": "女總裁的公司只剩三天，攤販保鏢深夜站在對手倉庫外，叫司機準備二十個饅頭說要去搬貨",
+      "duration_s": 140,
+      "logline": "期限剩最後一夜，林大楠決定不靠法律、不靠打架，用自己的二十步把貨拿回來。",
+      "hook": "天沒亮，他把那把零錢倒在阿蒙的方向盤上：「去買饅頭。」阿蒙數了數：「這只夠十個。」他：「再加你的。」",
+      "hook_type": "line",
+      "mid_hook": "沈硯在辦公室問韓小姐：「他人呢？」韓小姐看了一眼行事曆：「今晚沒排班。」她的手機螢幕暗下去前，剛好傳出一則訊息。",
+      "extra_hooks": [
+        "老趙在閣樓下堵住他，把一包衛生紙塞進他口袋，什麼也沒說。"
+      ],
+      "conflict": "最後一夜，貨在恆運、恆運有守衛有鐵捲門，他一個保鏢能做的只剩他自己的腳。",
+      "turn": "他沒有要打進去：他站在恆運外牆，從牆數到貨架，二十步剛好；他要一步一步把貨『搬』出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "深夜他站在恆運外牆下，對阿蒙說：「你在車上等，饅頭準備二十個。」阿蒙：「你要幹嘛？」他綁緊鞋帶：「搬貨。」",
+        "question": "他真的要一個人把整批貨搬回來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dongzuo",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "恆運外牆下，他從牆腳一步一步數到二十，每數一步，鏡頭切一格牆裡的貨架，最後一格兩邊對齊。",
+      "glamour_shot": "鈉燈下他把黑西裝外套脫下來摺好放在車頂，白背心、鬆開的領帶，回頭對阿蒙笑了一下，嘴裡含著饅頭。",
+      "setups": [
+        "s02-t05",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蒙買齊二十個饅頭",
+        "老趙默默支持他今晚的行動"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-meng",
+        "shen-yan",
+        "han-mishu",
+        "lao-zhao"
+      ],
+      "locations": [
+        "硯通物流倉庫",
+        "恆運倉儲外牆"
+      ],
+      "state": {
+        "time": "第二季第 8 天深夜",
+        "knowledge": "他要用二十步把貨搬回來；韓小姐今晚傳出了一則訊息。",
+        "carry_forward": "二十個饅頭、一包衛生紙、一台卡車。"
+      }
+    },
+    {
+      "number": 71,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "第一箱",
+      "youtube_title": "凌晨兩點對手倉庫的監視器裡，貨箱一個接一個憑空消失，守衛伸手要按警報，按到一個饅頭",
+      "duration_s": 110,
+      "logline": "林大楠開始一步一箱把硯通的貨搬出恆運，每走一步就要從通風窗爬回去，而守衛室的人醒了。",
+      "hook": "凌晨兩點，恆運外牆下阿蒙抱著一大袋二十個饅頭發抖；他說：「數著。」下一格他不見了。",
+      "hook_type": "image",
+      "mid_hook": "監視器前的守衛揉眼睛：貨架上的箱子一疊一疊消失。他的手伸向紅色警報鈕，按下去——軟的，是一個饅頭。",
+      "extra_hooks": [
+        "走出來是一步，爬回去是十分鐘：他從通風窗倒栽蔥掉回倉庫，嘴裡還咬著饅頭。"
+      ],
+      "conflict": "一百箱，一步只能抱五箱，他只有二十步、二十個饅頭，守衛就在監視器前。",
+      "turn": "守衛看著警報鈕上的饅頭，臉色發白，雙手合十拜了三下；他在守衛背後把饅頭拿回來：「這是我的。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第五趟他抱著箱子出來，路燈下看清箱上的新標籤：恆運的字、魏家的章，「待運碼頭倉，早上六點出車」。",
+        "question": "貨六點就要被送走，來得及嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dongzuo",
+        "xiju"
+      ],
+      "spectacle": "監視器的黑白畫面裡，五箱一疊的貨一疊接一疊憑空消失，貨架一格一格空掉，沒有一個人影。",
+      "glamour_shot": "他第一趟出來，抱著五箱站在卡車旁回頭，白背心被汗貼住，路燈從頭頂打下來，下巴的線條像刀切的。",
+      "setups": [
+        "s02-t06"
+      ],
+      "payoffs": [
+        "s02-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "搬出二十五箱，饅頭吃掉五個",
+        "守衛以為倉庫鬧鬼，不敢按警報"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-meng"
+      ],
+      "locations": [
+        "恆運倉儲外牆",
+        "恆運倉儲倉庫",
+        "恆運守衛室"
+      ],
+      "state": {
+        "time": "第二季第 9 天凌晨兩點半",
+        "knowledge": "一步五箱，一百箱要二十步；貨早上六點要被送去碼頭倉。",
+        "carry_forward": "已搬二十五箱、剩七十五箱、饅頭剩十五個。"
+      }
+    },
+    {
+      "number": 72,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "少吃兩個",
+      "youtube_title": "為了趕在六點前把貨搬完，保鏢連吃饅頭的時間都省了，司機數完袋子臉色大變",
+      "duration_s": 105,
+      "logline": "林大楠為了趕在六點前搬完，開始跳過饅頭，阿蒙在卡車上數出不對，而恆運後門開了。",
+      "hook": "他看著標籤、看阿蒙的錶：四點十分。「還有十五步。」說完人已經不在了。",
+      "hook_type": "question",
+      "mid_hook": "阿蒙數袋子，數了兩遍臉色發白：「你少吃兩個！」第十趟出來的他嘴唇是灰的，手抖到箱子差點落地。",
+      "conflict": "時間只剩不到兩小時，他每少吃一個饅頭就省一分鐘，也離暈倒近一步。",
+      "turn": "阿蒙把兩個饅頭硬塞進他嘴裡、自己去抱箱子上車；膽小的司機第一次在半夜的對手倉庫外站直了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "監視器另一格，恆運後門被推開，鐵哥帶兩個人走進來，手電筒的光正好停在剩下的貨架前。",
+        "question": "鐵哥會在倉庫裡逮到他嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dongzuo",
+        "xiju"
+      ],
+      "spectacle": "他在卡車車斗上一步落地，五箱貨同時砸在車斗裡，下一格車斗上只剩他喘氣的影子，人又不見了。",
+      "glamour_shot": "阿蒙把饅頭塞進他嘴裡的那一秒，他抬眼，汗從眉骨滑下來，鈉燈的橘光把他累到發亮的眼睛照得很清楚。",
+      "setups": [
+        "s02-t07"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "搬到第十步、五十箱",
+        "阿蒙第一次在危險裡沒有逃"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-meng",
+        "tie-ge"
+      ],
+      "locations": [
+        "恆運倉儲外牆",
+        "恆運倉儲倉庫"
+      ],
+      "state": {
+        "time": "第二季第 9 天凌晨四點二十",
+        "knowledge": "一半的貨已在車上；鐵哥進了倉庫。",
+        "carry_forward": "剩五十箱、十步、饅頭剩九個。"
+      }
+    },
+    {
+      "number": 73,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "第十五步",
+      "youtube_title": "光頭打手拿手電筒在倉庫裡亂揮，貨箱卻在他背後一疊疊消失，第十五步保鏢仰頭撐不住了",
+      "duration_s": 115,
+      "logline": "鐵哥守在倉庫裡，林大楠得在他眼皮底下繼續搬，身體卻在第十五步開始出狀況。",
+      "hook": "手電筒掃過貨架，鐵哥轉身的那一秒，他背後的五箱不見了。鐵哥回頭：「誰？」",
+      "hook_type": "danger",
+      "mid_hook": "第十五步落地，他仰起頭，阿蒙手忙腳亂撕下一大截衛生紙按在他鼻子上，白背心的領口多了一團衛生紙。",
+      "extra_hooks": [
+        "鐵哥一拳揮在空氣裡，一疊貨箱倒下來砸在他自己的腳背上，他抱著腳跳了三下。"
+      ],
+      "conflict": "鐵哥站在倉庫正中間，他每一趟都要從鐵哥身邊經過，而身體開始用衛生紙提醒他了。",
+      "turn": "鐵哥沒追，他退到門口擋著，用手電筒照著剩下的貨架等：他不知道人在哪，但他知道人一定會回來。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿蒙抓住他的袖子：「不要再走了。」他把衛生紙塞好，仰頭吞下一個饅頭：「還有五步。」",
+        "question": "他的身體撐得住最後五步嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dongzuo",
+        "huzhu"
+      ],
+      "spectacle": "鐵哥的手電筒光柱在倉庫裡亂掃，光掃過的地方貨箱一疊疊消失，光柱裡只有灰塵在飄。",
+      "glamour_shot": "他靠在卡車邊仰頭，鼻子上壓著衛生紙，喉結滾動，路燈把他汗濕的脖子和亂髮照成金色。",
+      "setups": [
+        "s02-t08"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "搬到第十五步、七十五箱",
+        "鐵哥被自己撞倒的貨砸到腳"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-meng",
+        "tie-ge"
+      ],
+      "locations": [
+        "恆運倉儲倉庫",
+        "恆運倉儲外牆"
+      ],
+      "state": {
+        "time": "第二季第 9 天凌晨五點",
+        "knowledge": "第十五步開始要用衛生紙；鐵哥擋在門口等他。",
+        "carry_forward": "剩二十五箱、五步、饅頭剩五個。"
+      }
+    },
+    {
+      "number": 74,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "還有兩步",
+      "youtube_title": "漆黑倉庫裡傳來嚼東西的聲音，光頭打手拿手電筒一路照過去，照到一雙黑皮鞋",
+      "duration_s": 110,
+      "logline": "林大楠撐到第十八步，餓到坐在倉庫角落吃第十六個饅頭，鐵哥聽見了。",
+      "hook": "第十八步，他沒走出去，直接坐在貨架後的地上，撕開第十六個饅頭：「還有兩步。」",
+      "hook_type": "image",
+      "mid_hook": "倉庫太安靜，他嚼饅頭的聲音一下一下迴盪；門口的鐵哥慢慢轉頭：「誰在吃東西？」",
+      "extra_hooks": [
+        "阿蒙在外牆下對著手機計時：五點三十七分，搬貨的車已經在恆運停車場暖車。"
+      ],
+      "conflict": "他餓到站不起來，最後十箱就在眼前，碼頭倉的車已經到了。",
+      "turn": "他沒逃：他把饅頭咬在嘴裡，抱起最後十箱的其中五箱，等鐵哥走近，要拿鐵哥的手電筒當他看路的燈。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "手電筒的光沿著地上的饅頭屑一路照過去，停在一雙沾灰的黑皮鞋上；鞋的主人嘴裡還咬著半個饅頭。",
+        "question": "被照到的他，還走得掉嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dongzuo",
+        "xiju"
+      ],
+      "spectacle": "黑暗倉庫裡只有一束手電筒光，光順著一條饅頭屑的路線慢慢往前爬，像在追一隻看不見的動物。",
+      "glamour_shot": "他坐在貨架陰影裡仰頭吃饅頭，額前汗濕的頭髮垂下來，眼睛在黑暗裡很亮，嘴角居然在笑。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "搬到第十八步、九十箱"
+      ],
+      "characters": [
+        "lin-danan",
+        "tie-ge",
+        "a-meng"
+      ],
+      "locations": [
+        "恆運倉儲倉庫",
+        "恆運倉儲外牆"
+      ],
+      "state": {
+        "time": "第二季第 9 天凌晨五點四十",
+        "knowledge": "只剩兩步、十箱；碼頭倉的車已在暖車。",
+        "carry_forward": "鐵哥的手電筒照到了他的鞋。"
+      }
+    },
+    {
+      "number": 75,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "走回來的",
+      "youtube_title": "一夜之間一百箱貨從對手倉庫回到公司，倉庫大姐頭問怎麼來的，攤販保鏢說走回來的",
+      "duration_s": 120,
+      "logline": "林大楠要在被逮到的那一秒走完最後兩步，把一百箱貨在天亮前送回硯通。",
+      "hook": "手電筒照上鞋尖，下一格那裡只剩半個饅頭在地上轉，鐵哥的手電筒被人從手裡抽走了。",
+      "hook_type": "reversal",
+      "mid_hook": "第二十步落在卡車斗上，最後五箱砸下來，他整個人躺在箱子上：「開車。」天邊剛白。",
+      "extra_hooks": [
+        "鐵哥在空掉的貨架前撿起一張饅頭塑膠袋，捏在手裡看了很久，掏出手機。"
+      ],
+      "conflict": "最後兩步、最後十箱，鐵哥就站在他面前。",
+      "turn": "他用鐵哥的手電筒照鐵哥的眼睛、趁鐵哥閉眼走了第十九步，第二十步把手電筒放回鐵哥手上，光正好照著空貨架。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "貨還沒卸完，一台警車開進硯通，郭老闆從後座下來，指著那一車貨：「就是他們，小偷。」",
+        "question": "警察會不會查到他？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dongzuo",
+        "huzhu",
+        "xiju"
+      ],
+      "spectacle": "天亮時的硯通倉庫門口，一車整整齊齊的一百箱貨，阿麗手上的哨子掉在地上；車斗上躺著一個吃完二十個饅頭的人。",
+      "glamour_shot": "阿麗問「怎麼來的」，他從貨堆上坐起來，晨光從背後照過來，鬆垮的領帶掛在脖子上：「走回來的。」",
+      "setups": [
+        "s02-t09"
+      ],
+      "payoffs": [
+        "s02-t06",
+        "s02-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "一百箱貨在天亮前回到硯通",
+        "南港電子的訂單保住了"
+      ],
+      "characters": [
+        "lin-danan",
+        "tie-ge",
+        "a-meng",
+        "a-li",
+        "s02-guo-laoban"
+      ],
+      "locations": [
+        "恆運倉儲倉庫",
+        "硯通物流倉庫門口"
+      ],
+      "state": {
+        "time": "第二季第 9 天清晨六點半",
+        "knowledge": "貨全部回來，二十個饅頭吃完；鐵哥撿到了他的饅頭袋。",
+        "carry_forward": "郭老闆帶警察上門報竊盜。"
+      }
+    },
+    {
+      "number": 76,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "監視器裡沒有人",
+      "youtube_title": "對手老闆帶警察上門抓小偷，監視器播出來箱子自己飛走，女總裁拿出一張單據讓他閉嘴",
+      "duration_s": 120,
+      "logline": "郭老闆告硯通偷貨，警察要看監視器，沈硯要在沒有問過林大楠一句話的情況下替他擋。",
+      "hook": "警察指著那一車貨：「誰搬的？」全倉庫的人一起看向躺在貨上睡著的他。他打了一個呼。",
+      "hook_type": "image",
+      "mid_hook": "恆運的監視器畫面播出來：箱子一疊一疊消失，沒有人。年輕的警員往後退了一步：「這……是鬼吧。」",
+      "extra_hooks": [
+        "沈硯把南港電子的出貨單與恆運簽下的「誤收」單並排放上桌：「貨是我的，收錯的是他們。」"
+      ],
+      "conflict": "郭老闆咬定被偷，警察要一個搬貨的人，而那個人沒辦法解釋自己怎麼搬的。",
+      "turn": "郭老闆在全倉庫面前被自己簽的誤收單打臉，卻不肯走：「我還有一支紅外線的。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "警察：「紅外線拍到人，我就帶走。」沈硯回頭看他，他剛醒，嘴裡還有饅頭；她沒有問，只說：「放。」",
+        "question": "紅外線會拍到他嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "huzhu"
+      ],
+      "spectacle": "會議室投影幕上，黑白的箱子一疊一疊憑空消失，全倉庫的人擠在門口看，阿麗嘴裡的哨子慢慢掉下來。",
+      "glamour_shot": "沈硯站在投影光裡把兩張單據並排推出去，捲袖的手腕上父親的舊錶反一點光，一個字都沒多說。",
+      "setups": [
+        "s02-t10",
+        "s02-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "硯通用誤收單在警察面前站住腳"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "s02-guo-laoban",
+        "a-li",
+        "han-mishu"
+      ],
+      "locations": [
+        "硯通物流倉庫",
+        "硯通物流會議室"
+      ],
+      "state": {
+        "time": "第二季第 9 天上午",
+        "knowledge": "監視器只拍到箱子消失；沈硯一句都沒問他。",
+        "carry_forward": "郭老闆要放紅外線畫面。"
+      }
+    },
+    {
+      "number": 77,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "紅外線",
+      "youtube_title": "紅外線鏡頭沒拍到人，只拍到地上一個坐了三分鐘的熱印子，司機脫口一句話全場愣住",
+      "duration_s": 115,
+      "logline": "紅外線畫面一放，硯通要在警察面前解釋地上那個人形的熱印子，林大楠得裝作不關他的事。",
+      "hook": "紅外線畫面亮起：沒有人影，只有貨架後的地上，一塊人形的熱印子，坐了三分鐘才慢慢變涼。",
+      "hook_type": "image",
+      "mid_hook": "警察：「誰坐在那裡三分鐘？」阿蒙脫口：「吃饅頭！」全場安靜，他在後面把阿蒙的嘴塞上一個饅頭。",
+      "extra_hooks": [
+        "韓小姐抽出一份恆運的收款紀錄：魏家在誤收前一天匯了一筆錢給恆運。"
+      ],
+      "conflict": "熱印子證明有人進過恆運，郭老闆要警察查硯通每一個人那晚在哪。",
+      "turn": "韓小姐翻出的匯款紀錄讓警察轉頭問郭老闆收的是誰的錢；郭老闆臉一白，撤回報案：「誤會。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "停車場裡，鐵哥對著手機：「他會走，二十步，走完會抖。」電話那頭只說一句：「趁他抖，動她。」",
+        "question": "趁他抖，他們要對沈硯做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "huzhu"
+      ],
+      "spectacle": "紅外線的彩色畫面裡，一塊人形的橘紅色熱印子在地上慢慢褪成藍色，旁邊散著十幾個小小的熱點。",
+      "glamour_shot": "他站在人群最後面嚼饅頭裝沒事，被警察看了一眼，若無其事地抬頭看天花板，側臉被窗光切得很乾淨。",
+      "setups": [
+        "m04"
+      ],
+      "payoffs": [
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "郭老闆撤回報案",
+        "韓小姐找到魏家付錢給恆運的紀錄"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "a-meng",
+        "han-mishu",
+        "s02-guo-laoban",
+        "tie-ge"
+      ],
+      "locations": [
+        "硯通物流會議室",
+        "硯通物流停車場"
+      ],
+      "state": {
+        "time": "第二季第 9 天中午",
+        "knowledge": "警察看不懂熱印子；鐵哥把他的步數與代價報給電話那頭一個人。",
+        "carry_forward": "魏家要趁他餓的時候對沈硯下手。"
+      }
+    },
+    {
+      "number": 78,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "堆高機",
+      "youtube_title": "保鏢餓到連饅頭袋都撕不開，一台失控堆高機舉著鐵架衝向女總裁，他只剩三步",
+      "duration_s": 120,
+      "logline": "林大楠餓到手抖，一台堆高機在裝卸區失控衝向沈硯，他身上只剩三步的力氣。",
+      "hook": "裝卸區，他抖著手撕饅頭袋撕不開；背後一聲倒車警示音變成油門聲。",
+      "hook_type": "danger",
+      "mid_hook": "前一格堆高機的鐵架壓向沈硯頭頂，後一格他在駕駛座裡拉下了手煞車，鐵架停在她頭上一掌的地方。",
+      "extra_hooks": [
+        "警察打電話來結案：恆運的監視器「疑似故障」，案子不成立。他接完電話：「故障好，故障便宜。」"
+      ],
+      "conflict": "他只剩三步、口袋沒有饅頭，失控的堆高機舉著兩噸重的鐵架。",
+      "turn": "駕駛座上的臨時工跳車就跑；阿麗一哨子把人攔下，他口袋裡掉出一張恆運的派工單，還有一張硯通裝卸區的排班表。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "排班表上沈硯今天幾點到裝卸區、站哪一格都標好了，右下角是硯通內部系統的列印編號。",
+        "question": "硯通的排班表怎麼會在對方手上？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "huzhu",
+        "dongzuo"
+      ],
+      "spectacle": "兩噸鐵架懸在沈硯頭頂一掌，鏡頭從鐵架底下往上看，駕駛座裡是一個嘴邊壓著衛生紙、仰著頭的人。",
+      "glamour_shot": "沈硯從鐵架下走出來，沒有尖叫，先伸手扶住從駕駛座滑下來的他，白襯衫袖口沾了一塊機油。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s02-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈硯毫髮無傷",
+        "警察以監視器故障結案",
+        "抓到恆運派來的臨時工"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "a-li"
+      ],
+      "locations": [
+        "硯通物流裝卸區"
+      ],
+      "state": {
+        "time": "第二季第 10 天",
+        "knowledge": "警察不再追；對方拿得到硯通內部的排班表。",
+        "carry_forward": "他餓到要人扶，沈硯罰他兩天不准動。"
+      }
+    },
+    {
+      "number": 79,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "兩天不准動",
+      "youtube_title": "女總裁罰保鏢兩天不准動，還把他的床換成大一號，倉庫大姐頭拿哨子守在床邊",
+      "duration_s": 110,
+      "logline": "沈硯罰林大楠兩天不准動，他想問她為什麼從頭到尾不問他怎麼做到的。",
+      "hook": "閣樓裡他一睜眼，床大了一號；床尾坐著阿麗，哨子含在嘴裡：「不准動。」",
+      "hook_type": "image",
+      "mid_hook": "他終於問沈硯：「妳為什麼不問？」她把一碗粥放下：「不問，我就不用替你說謊。」",
+      "extra_hooks": [
+        "小石頭爬梯子送畫上來，畫裡的叔叔躺在一張很大的床上，旁邊堆著一百個箱子。"
+      ],
+      "conflict": "他整整兩天不能走一步，而所有人都在等他解釋那一夜。",
+      "turn": "沈硯不問，是因為她要在警察、客戶、董事面前替他擋；她知道越少，他越安全。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "小石頭臨走前趴在床邊小聲說：「叔叔，你睡覺的時候一直在發抖。」他把手縮進被子裡。",
+        "question": "他的身體還撐得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "huzhu"
+      ],
+      "spectacle": "小石頭在閣樓梯子上一腳踩空，前一格床上是空的，後一格他在梯子底下接住孩子，阿麗的哨子響徹倉庫：「動了！」",
+      "glamour_shot": "沈硯坐在閣樓床邊端粥，短髮別在耳後，窗外倉庫的燈一格一格打在她的側臉上，說話時沒看他。",
+      "setups": [],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "閣樓的床換成大一號",
+        "沈硯說出她不問的理由"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-li",
+        "shen-yan",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "硯通倉庫閣樓"
+      ],
+      "state": {
+        "time": "第二季第 11 天",
+        "knowledge": "沈硯不問是在保護他；小石頭看見他睡覺發抖。",
+        "carry_forward": "沈硯排了醫院的號。"
+      }
+    },
+    {
+      "number": 80,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "燒掉的不是饅頭",
+      "youtube_title": "女總裁硬把保鏢押進急診，女醫師看完檢驗數字愣住：你這種狀況，正常人早該倒了",
+      "duration_s": 135,
+      "logline": "沈硯把林大楠押進港北醫院，急診的林醫師要弄清楚一個吃了二十個饅頭的人為什麼還在掉體力。",
+      "hook": "急診室門口，他抓著門框不進去：「看醫生要錢。」沈硯：「我付。」他鬆手：「那我進去。」",
+      "hook_type": "line",
+      "mid_hook": "林醫師抽完血，看著螢幕上的數字愣住：「你走路來的？」他：「搭車。」",
+      "extra_hooks": [
+        "隔壁床推過來一台失控的點滴架，前一格它衝向沈硯，後一格點滴架停在牆邊，他坐在床上吃林醫師桌上的糖。"
+      ],
+      "conflict": "他不肯說那一夜做了什麼，林醫師的數字卻說他的身體在燒一樣東西。",
+      "turn": "林醫師：「你這個血糖，正常人該躺在地上。」他：「我吃了二十個饅頭。」她把報告翻過來：數字不是低，是低得不像活人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林醫師摘下口罩盯著他：「那你燒掉的，不是饅頭。」沈硯手上的繳費單停在半空。",
+        "question": "他燒掉的到底是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "huzhu",
+        "dongzuo"
+      ],
+      "spectacle": "急診室的點滴架滑向沈硯，下一格點滴架乖乖靠在牆邊，林醫師回頭只看見他坐在床上，嘴裡多了一顆她的糖。",
+      "glamour_shot": "林醫師白袍、馬尾，拿著報告站在燈下皺眉，一身不耐煩；他在病床上仰頭看她，黑西裝皺成一團，表情難得認真。",
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [
+        "s02-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林醫師驗出他走一步燒的是自己",
+        "沈硯拿到他第一份病歷"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "doctor-lin"
+      ],
+      "locations": [
+        "港北醫院急診室"
+      ],
+      "state": {
+        "time": "第二季第 13 天",
+        "knowledge": "他的血糖低到正常人會暈倒，林醫師說他燒掉的不是饅頭。",
+        "carry_forward": "檢驗報告在沈硯手上。"
+      }
+    },
+    {
+      "number": 81,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "一步一碗",
+      "youtube_title": "女醫師說保鏢燒掉的是他自己，回到倉庫老保鏢看完報告，終於開口說了四個字：一步一碗",
+      "duration_s": 125,
+      "logline": "林醫師說他走一步燒的是自己的體力，林大楠拿著報告回倉庫，第一次逼老趙開口。",
+      "hook": "「那我燒掉的是什麼？」林醫師的筆戳在他胸口：「你自己。」",
+      "hook_type": "line",
+      "mid_hook": "閣樓棋盤前，他把檢驗報告壓在棋子下面；老趙看了很久，手上的舊疤抽了一下：「一步一碗。」",
+      "extra_hooks": [
+        "林醫師開了一張單子：「一天五餐，不准跑。」他：「一步多少錢？」"
+      ],
+      "conflict": "他知道代價卻不知道原因；整個硯通只有老趙的眼神像是早就知道。",
+      "turn": "老趙說的不是比喻：一步燒的是他的體力，所以一步要一碗；這句話老趙以前聽人說過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "老趙把一顆棋推到他面前：「贏我一盤，我就說那個人。」他看了看棋盤，他從來沒贏過。",
+        "question": "他要怎麼贏老趙一盤棋？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "醫院走廊一台輪椅滑向沈硯，前一格他在診間門口，後一格輪椅停住，他坐在輪椅上啃林醫師給的蘇打餅。",
+      "glamour_shot": "老趙在閣樓昏黃燈下落子，白鬢、背挺直，手上那道舊疤被燈照得很清楚；他對面的林大楠第一次不嚼東西。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [
+        "m05"
+      ],
+      "general_payoffs": [
+        "林醫師的報告加上老趙的「一步一碗」：他知道餓是因為一步燒的是自己"
+      ],
+      "characters": [
+        "lin-danan",
+        "doctor-lin",
+        "lao-zhao",
+        "shen-yan"
+      ],
+      "locations": [
+        "港北醫院急診室",
+        "硯通倉庫閣樓"
+      ],
+      "state": {
+        "time": "第二季第 13 天晚上",
+        "knowledge": "一步燒的是他自己，所以一步一碗；老趙見過別人這樣。",
+        "carry_forward": "老趙要他贏一盤棋才肯說那個人。"
+      }
+    },
+    {
+      "number": 82,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "老闆車上的麵",
+      "youtube_title": "下棋贏不了老保鏢，攤販回夜市炒一盤麵請他，老人吃了一口放下筷子：這味道，一樣",
+      "duration_s": 120,
+      "logline": "林大楠下棋贏不了老趙，改用自己唯一會的東西換他開口：一盤夜市炒麵。",
+      "hook": "棋盤上他第七次被將死，他把棋子一推：「不下了，請你吃麵。」",
+      "hook_type": "line",
+      "mid_hook": "第三排第七攤的鍋子重新點火，林嬸探頭：「又瘦了。」老趙坐在塑膠椅上，看他翻鍋看了很久。",
+      "conflict": "老趙守了十年的話不會為一盤棋說，他只能換一種方式敲門。",
+      "turn": "老趙吃了第一口就停了：「老闆車上永遠有一鍋麵。」他問：「給誰吃？」老趙：「給一步一碗的人。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老趙放下筷子，看著盤子裡的蔥花：「這味道，一樣。」說完他站起來，沒付錢就走了。",
+        "question": "老趙說的「一樣」，是跟誰一樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "阿肥打翻一桶麵條，前一格麵條在半空散開，後一格他在三步外端著鍋，麵條全落回鍋裡，鍋子冒起一團白煙。",
+      "glamour_shot": "夜市鍋前他翻鍋的側臉，白背心、圍裙、藍白拖，油煙裡霓虹一閃一閃，手腕一抖麵全翻起來。",
+      "setups": [
+        "s02-t12"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老趙說出沈父車上永遠有一鍋麵",
+        "第七攤為老趙重新開火一晚"
+      ],
+      "characters": [
+        "lin-danan",
+        "lao-zhao",
+        "lin-shen",
+        "a-fei"
+      ],
+      "locations": [
+        "硯通倉庫閣樓",
+        "北門夜市第三排第七攤"
+      ],
+      "state": {
+        "time": "第二季第 14 天晚上",
+        "knowledge": "沈父車上有一鍋麵，給一步一碗的人吃；他的炒麵跟那鍋一個味。",
+        "carry_forward": "老趙沒說那個人是誰。"
+      }
+    },
+    {
+      "number": 83,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "同一夜",
+      "youtube_title": "老保鏢守了十年的秘密終於說出口：老闆身邊有一個會走一步的人，跟老闆同一夜沒了",
+      "duration_s": 130,
+      "logline": "林大楠追上老趙，要知道那鍋麵是給誰的；老趙在公車站說出了十年前的一半。",
+      "hook": "他追出夜市，喊：「跟誰一樣？」老趙在公車站停下，背對他：「跟他。」",
+      "hook_type": "question",
+      "mid_hook": "老趙捲起袖子，那道舊疤從手腕爬到手肘：「老闆身邊有一個人，會走。一步一碗。」",
+      "extra_hooks": [
+        "公車進站又開走，老趙沒上車，他把口袋裡最後一個饅頭掰一半給老趙。"
+      ],
+      "conflict": "老趙一直以為那種能力跟著那個人一起沒了，直到看見他摸貨櫃鎖的手。",
+      "turn": "那個人不是傳說：十年前他跟沈硯的父親形影不離，「他跟老闆同一夜沒了。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "公車站的燈下，沈硯站在他們身後，手裡拿著他忘在攤上的外套：「我爸那天晚上，不是一個人？」",
+        "question": "沈硯聽見了多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "公車站的燈管一閃一閃，老趙捲起袖子，舊疤在閃爍的光裡一下有一下沒有。",
+      "glamour_shot": "沈硯站在公車站燈下，手上搭著他的黑西裝外套，風把短髮吹亂，她沒有撥，眼睛只看著老趙。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "老趙說出他認得這種能力：沈父身邊那個人，跟老闆同一夜沒了"
+      ],
+      "characters": [
+        "lin-danan",
+        "lao-zhao",
+        "shen-yan"
+      ],
+      "locations": [
+        "北門夜市",
+        "夜市口公車站"
+      ],
+      "state": {
+        "time": "第二季第 14 天深夜",
+        "knowledge": "老趙見過會走一步的人，那人跟沈父同一夜沒了。",
+        "carry_forward": "沈硯聽見了。"
+      }
+    },
+    {
+      "number": 84,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "什麼都沒看見",
+      "youtube_title": "女總裁逼問跟了父親三十年的老保鏢那一夜看見什麼，老人只說：我在現場，什麼都沒看見",
+      "duration_s": 120,
+      "logline": "沈硯第一次逼問老趙父親死的那一夜，老趙只肯說一句，林大楠夾在兩人中間。",
+      "hook": "辦公室的門鎖上，沈硯把父親的照片放在老趙面前：「說。」",
+      "hook_type": "danger",
+      "mid_hook": "老趙站得筆直：「我在現場。」停了很久：「什麼都沒看見。」",
+      "extra_hooks": [
+        "小石頭推門進來，把一個饅頭放進外公的相框前：「外公也要吃。」"
+      ],
+      "conflict": "沈硯以為父親死於一場車禍，十年來沒人告訴她車上還有誰。",
+      "turn": "沈硯打開父親封了十年的辦公室：桌上的筆、椅背上的外套、桌角一個空的大保溫鍋，十年沒人動過。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她坐上父親的椅子，摸著那個空保溫鍋，對他說：「我爸每天帶一鍋麵出門。我以為是他自己吃的。」",
+        "question": "那鍋麵，十年前是給誰的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "小石頭踩著舊書架去拿外公的相框，書架一傾，前一格他在門口，後一格他抱著孩子、相框、和三本掉下來的帳簿站在書架前。",
+      "glamour_shot": "沈硯坐在父親的舊辦公椅上，夕陽從百葉窗切進來，一條一條落在她手腕上那支父親的舊錶上。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈硯打開父親封了十年的辦公室",
+        "那個空保溫鍋對上了老趙說的一鍋麵"
+      ],
+      "characters": [
+        "shen-yan",
+        "lao-zhao",
+        "lin-danan",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "硯通物流二樓辦公室",
+        "沈父的舊辦公室"
+      ],
+      "state": {
+        "time": "第二季第 15 天",
+        "knowledge": "老趙那一夜在現場，卻說什麼都沒看見；沈父每天帶一鍋麵。",
+        "carry_forward": "沈硯第一次懷疑父親不是死於單純的車禍。"
+      }
+    },
+    {
+      "number": 85,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "阿八",
+      "youtube_title": "老保鏢說出老闆身邊那個人的名字，夜市攤販手上的筷子停住了，他從小沒聽過父親的名字",
+      "duration_s": 120,
+      "logline": "老趙說出那個人的名字，林大楠發現自己對父親一無所知，決定打電話回老家。",
+      "hook": "老趙站在門口：「你想知道他的名字？」他嘴裡塞滿麵點頭。老趙：「老闆叫他阿八。」",
+      "hook_type": "line",
+      "mid_hook": "他放下筷子：母親從小叫他「小九的姪子」，家裡沒有一張父親的照片、一個父親的名字。",
+      "extra_hooks": [
+        "他問林嬸，林嬸搖頭：「你十六歲上來。」「你媽只交代一句。」「『讓他吃飽。』」"
+      ],
+      "conflict": "他想知道阿八是誰，能問的只有一個從不提父親的母親。",
+      "turn": "他翻出手機裡唯一一個南邊的號碼——老家雜貨店；十年來他只在過年打過三次。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "閣樓裡，他的拇指停在撥號鍵上，螢幕上寫著「林記雜貨」。窗外倉庫的燈一盞一盞熄掉。",
+        "question": "他敢不敢打這通電話？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "林嬸的油鍋前一隻野貓跳上攤車，前一格整盤臭豆腐要翻，後一格盤子穩穩在他手上，貓坐在他肩膀上。",
+      "glamour_shot": "閣樓窗邊他握著手機坐在地上，倉庫的燈一盞盞熄滅，最後一盞打在他臉上，第一次看起來像二十六歲。",
+      "setups": [
+        "s02-t13",
+        "m07",
+        "m01"
+      ],
+      "payoffs": [
+        "s02-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道沈父身邊的人叫阿八",
+        "林嬸說出母親送他上北邊時的交代"
+      ],
+      "characters": [
+        "lin-danan",
+        "lao-zhao",
+        "lin-shen"
+      ],
+      "locations": [
+        "硯通倉庫閣樓",
+        "北門夜市第三排"
+      ],
+      "state": {
+        "time": "第二季第 16 天晚上",
+        "knowledge": "那個人叫阿八；他從小不知道父親的名字。",
+        "carry_forward": "他要打電話回老家雜貨店。"
+      }
+    },
+    {
+      "number": 86,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "掛電話",
+      "youtube_title": "攤販打電話回老家問母親阿八是誰，母親一句話沒說就掛了，他連打七通換來一陣算盤聲",
+      "duration_s": 115,
+      "logline": "林大楠問母親阿八是誰，母親掛了電話，他一通接一通地打。",
+      "hook": "電話那頭算盤聲停了，母親：「吃飽沒？」他：「媽，阿八是誰？」喀，斷了。",
+      "hook_type": "question",
+      "mid_hook": "他打第二通、第三通……每打一通就吃一個饅頭，第七通響到自己斷掉，口袋裡六個饅頭全沒了。",
+      "extra_hooks": [
+        "阿蒙在閣樓下聽見他對著手機說「媽，我吃飽了」，悄悄把自己的便當放在梯子上。"
+      ],
+      "conflict": "母親從不掛他電話，這一次連一句話都不肯多說。",
+      "turn": "母親不是不知道：她是知道得太清楚；她掛電話的速度，比他走一步還快。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "第八通終於接通，電話那頭沒有人說話，只有算盤珠被一顆一顆撥回去的聲音，撥了很久。",
+        "question": "母親為什麼一聽阿八就掛電話？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "閣樓外貨櫃頂上一隻鴿子撞上鐵網掉下來，前一格他在電話旁，後一格他在二十步外的貨櫃頂接住鴿子，手機還在耳邊響。",
+      "glamour_shot": "南邊雜貨店裡，母親林秀坐在昏黃燈下，短髮、瘦削，手指按在算盤上一動不動，眼睛看著牆上一雙舊藍白拖。",
+      "setups": [
+        "s02-t14"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "阿蒙開始照顧他的三餐"
+      ],
+      "characters": [
+        "lin-danan",
+        "lin-xiu",
+        "a-meng"
+      ],
+      "locations": [
+        "硯通倉庫閣樓",
+        "南邊林記雜貨店"
+      ],
+      "state": {
+        "time": "第二季第 16 天深夜",
+        "knowledge": "母親一聽阿八就掛電話；雜貨店牆上掛著一雙舊藍白拖。",
+        "carry_forward": "第八通電話裡只有算盤聲。"
+      }
+    },
+    {
+      "number": 87,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "兩個黑影",
+      "youtube_title": "八歲男孩的新畫第一次出現兩個黑影，一個在媽媽身後，一個在很遠的地方，他說那個不會餓",
+      "duration_s": 120,
+      "logline": "小石頭交出新畫，畫裡多了第二個黑影，林大楠得弄懂那個很遠的黑影是誰。",
+      "hook": "小石頭把新畫攤在他面前：媽媽身後一個黑影，紙的最角落，還有一個。",
+      "hook_type": "image",
+      "mid_hook": "他指著角落那個：「這是誰？」小石頭咬著蠟筆：「他不會餓。他走完不吃東西。」",
+      "conflict": "畫裡的人只有小石頭看得見，而第二個黑影站的位置，離媽媽很遠卻一直面向她。",
+      "turn": "小石頭說角落那個黑影不是想像出來的：「他走沒有聲音。」「你走有。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "小石頭把畫翻過來，背面寫著日期，是上週三：「他那天站在我們家樓下。」",
+        "question": "畫裡第二個黑影是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "學校接送區一顆足球飛向小石頭的臉，前一格他在校門外，後一格他用一個饅頭擋下足球，饅頭扁了。",
+      "glamour_shot": "放學的校門口，他蹲下來跟小石頭平視，夕陽從背後照過來，黑西裝外套搭在肩上，認真看那張畫。",
+      "setups": [
+        "s02-t15",
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小石頭的畫第一次出現兩個黑影",
+        "他知道另一個會走的人不餓、沒有聲音"
+      ],
+      "characters": [
+        "lin-danan",
+        "xiao-shitou",
+        "shen-yan"
+      ],
+      "locations": [
+        "港北第一小學校門口",
+        "硯通物流二樓辦公室"
+      ],
+      "state": {
+        "time": "第二季第 17 天下午",
+        "knowledge": "另一個會走的人不餓、走路沒聲音，上週站在沈家樓下。",
+        "carry_forward": "他決定每晚守在沈家樓下。"
+      }
+    },
+    {
+      "number": 88,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "回撥",
+      "youtube_title": "半夜母親終於回撥，只說了兩句話：阿八的事不要問，問了你就回不了頭",
+      "duration_s": 120,
+      "logline": "林大楠守在沈家樓下過夜，母親在半夜回撥了電話。",
+      "hook": "凌晨一點，沈家樓下的長椅上他手機震動，螢幕：「林記雜貨」。",
+      "hook_type": "image",
+      "mid_hook": "母親的聲音很低：「阿八的事，不要問。」停了一下：「問了，回不了頭。」",
+      "extra_hooks": [
+        "他說：「媽，我在北邊吃得很飽。」母親沉默很久：「多吃點。」"
+      ],
+      "conflict": "他想問父親，母親想要他活著；兩件事在同一通電話裡打架。",
+      "turn": "母親掛電話不是生氣，是怕：她怕這個名字把他拉回一個她花了十年才逃出來的地方。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "電話一掛，他抬頭：沈家四樓的窗，燈忽然全熄了。",
+        "question": "沈家的燈為什麼忽然熄了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "路燈下長椅另一頭有一個身影，前一格他還坐著，後一格他站在二十步外的路燈下，那裡沒有人，只有長椅的另一頭還是溫的。",
+      "glamour_shot": "凌晨的長椅上，他把手機貼在耳邊，路燈把他的影子拉得很長，聽到「多吃點」的那一秒，他低頭笑了。",
+      "setups": [],
+      "payoffs": [
+        "s02-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "母親回撥，說出掛電話的原因：不要他回頭"
+      ],
+      "characters": [
+        "lin-danan",
+        "lin-xiu"
+      ],
+      "locations": [
+        "沈家樓下長椅",
+        "南邊林記雜貨店"
+      ],
+      "state": {
+        "time": "第二季第 18 天凌晨",
+        "knowledge": "母親不要他問阿八；有人坐過沈家樓下的長椅。",
+        "carry_forward": "沈家四樓的燈熄了。"
+      }
+    },
+    {
+      "number": 89,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "合照",
+      "youtube_title": "十年前的員工合照裡，老闆身邊只有一個人是糊的，放大一看，他腳上穿著一雙藍白拖",
+      "duration_s": 120,
+      "logline": "林大楠衝上四樓以為出事，隔天阿麗翻出十年前的員工合照，照片裡有一個人怎麼樣都拍不清楚。",
+      "hook": "他一口氣爬上四樓撞開門，手電筒下沈硯站在椅子上換保險絲：「保險絲。」",
+      "hook_type": "reversal",
+      "mid_hook": "阿麗從倉庫雜物間抱出一個舊相框：十年前的員工合照，沈父站在中間，身邊一個人糊成一團，像正在動。",
+      "extra_hooks": [
+        "沈硯從椅子上下來，把手電筒交給他：「你喘得好大聲。」「像我爸的舊冰箱。」"
+      ],
+      "conflict": "他想看見阿八，可是十年前的相機也看不見一個會走的人。",
+      "turn": "全照片三十個人都清楚，只有那一個是糊的：他在快門按下的那一刻走了一步，手裡還端著一個碗。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他把照片放大，糊掉的人看不清臉，只有腳是清楚的：一雙藍白拖，跟他腳上那雙一模一樣。",
+        "question": "照片裡那個穿藍白拖的人是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xuanyi",
+        "ganren"
+      ],
+      "spectacle": "舊合照在倉庫燈下被放大，三十張清楚的臉中間，一團端著碗的模糊人影，邊緣像被風吹散。",
+      "glamour_shot": "沈硯站在椅子上舉手換保險絲，手電筒光從下往上打在她臉上，她低頭看他，一臉「你在幹嘛」。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈家只是保險絲燒了",
+        "找到十年前唯一拍到阿八的照片"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "a-li"
+      ],
+      "locations": [
+        "沈家客廳",
+        "硯通倉庫雜物間"
+      ],
+      "state": {
+        "time": "第二季第 19 天",
+        "knowledge": "合照裡的阿八是糊的，腳上穿藍白拖。",
+        "carry_forward": "他把照片帶回閣樓。"
+      }
+    },
+    {
+      "number": 90,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "阿八也姓林",
+      "youtube_title": "攤販把阿八兩個字寫在閣樓牆上，老保鏢上樓看了很久，問他姓什麼，他手裡的饅頭掉了",
+      "duration_s": 130,
+      "logline": "林大楠把阿八寫在牆上想弄清楚這個人跟自己的關係，老趙上樓說出了最後一塊。",
+      "hook": "閣樓白牆上，他用炭筆寫下兩個大字：「阿八」，旁邊釘著那張糊掉的合照。",
+      "hook_type": "image",
+      "mid_hook": "他對著牆吃饅頭，把知道的寫上去：一步一碗、藍白拖、跟老闆同一夜、母親掛電話。箭頭全指向中間兩個字。",
+      "extra_hooks": [
+        "樓梯響了，老趙上來，站在牆前看了很久，手上的舊疤一直在抽。"
+      ],
+      "conflict": "所有線索都繞著阿八，他卻不敢寫下最後那個問號。",
+      "turn": "老趙不是來阻止他的：老趙看著照片上的藍白拖，又低頭看他的腳，臉色變了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "老趙問：「你姓林？」他：「是。」老趙：「阿八也姓林。」他手裡的饅頭掉在地上，滾到牆腳那兩個字下面。",
+        "question": "阿八跟他是什麼關係？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "閣樓白牆上一張手寫的關係圖，所有箭頭指向中間的「阿八」，一個饅頭從畫面上方掉下來，滾到牆腳停住。",
+      "glamour_shot": "他背對鏡頭站在白牆前，炭筆捏在指間，閣樓燈泡在頭頂晃，影子在牆上的「阿八」兩個字上一下大一下小。",
+      "setups": [],
+      "payoffs": [
+        "s02-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道阿八姓林"
+      ],
+      "characters": [
+        "lin-danan",
+        "lao-zhao"
+      ],
+      "locations": [
+        "硯通倉庫閣樓"
+      ],
+      "state": {
+        "time": "第二季第 20 天深夜",
+        "knowledge": "阿八姓林，穿藍白拖、一步一碗，跟沈父同一夜沒了。",
+        "carry_forward": "牆上的「阿八」從今天起不擦。"
+      }
+    },
+    {
+      "number": 91,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "一半是魏家的",
+      "youtube_title": "前夫妹妹帶著法院文件走進物流公司大廳：十年前的合資協議寫著，碼頭地一半是魏家的",
+      "duration_s": 115,
+      "logline": "魏家把監護權官司擱下，改提碼頭地的產權訴訟，林大楠第一次碰上打不到人的仗。",
+      "hook": "牆腳的饅頭還沒撿，樓下大廳傳來高跟鞋聲；魏寧把一疊文件拍在櫃檯：「碼頭地，一半是魏家的。」",
+      "hook_type": "danger",
+      "mid_hook": "文件最後一頁：十年前的「合資協議」，簽名欄寫著沈父的名字，日期是他出事前一個月。",
+      "extra_hooks": [
+        "一陣穿堂風把魏寧的文件吹散，前一格紙在飛，後一格他抱著整疊紙站在她面前，一張都沒看懂。"
+      ],
+      "conflict": "魏家改打公司，對手不是刀，是一張紙，他的二十步派不上用場。",
+      "turn": "員工圍過來竊竊私語，韓小姐的臉色比沈硯還白；魏寧要的不只是官司，是讓硯通的人心先散。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "魏寧收好文件，對沈硯笑：「撤告也行。我有條件。」魏承站在她身後，一直看著地板。",
+        "question": "魏寧的條件是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "硯通大廳一陣風把幾十張法律文件吹上半空，下一格紙全回到他懷裡，最後一張輕輕落在魏寧的高跟鞋前。",
+      "glamour_shot": "魏寧站在大廳中央，套裝、高跟、文件夾在手，挑眉看他的那一眼又冷又準；沈硯從樓梯上走下來，一步不急。",
+      "setups": [
+        "s02-t16"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈硯在全公司面前沒退"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "wei-ning",
+        "wei-cheng",
+        "han-mishu"
+      ],
+      "locations": [
+        "硯通物流大廳"
+      ],
+      "state": {
+        "time": "第二季第 21 天上午",
+        "knowledge": "魏家提了碼頭地的產權訴訟，憑一份沈父簽名的合資協議。",
+        "carry_forward": "魏寧要開條件。"
+      }
+    },
+    {
+      "number": 92,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "孩子不是籌碼",
+      "youtube_title": "前夫家族攤牌：監護權可以不要，碼頭地給我們，女總裁一句話讓前夫抬不起頭",
+      "duration_s": 125,
+      "logline": "魏寧開出條件，前夫魏承真正要的東西第一次擺上桌，沈硯得當場回答。",
+      "hook": "會議室裡魏寧推過一張紙：「監護權上訴，我們撤。」她點點第二行：「碼頭地，給魏家。」",
+      "hook_type": "reversal",
+      "mid_hook": "沈硯看向魏承：「你要的不是小石頭。」魏承的手指在桌下絞在一起，沒有抬頭。",
+      "extra_hooks": [
+        "他在旁邊剝橘子，剝得很大聲，魏寧瞪他，他遞過去一瓣：「要嗎？」"
+      ],
+      "conflict": "一邊是兒子的監護權，一邊是父親留下的地；魏家以為她會換。",
+      "turn": "她沒換：「我兒子不是籌碼。」魏家要的從頭到尾是那塊碼頭地，孩子只是拿來換地的手段。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "魏承走到門口停住，看了一眼辦公桌上小石頭的照片，很小聲：「對不起。」魏寧在走廊叫他，他低頭跟上。",
+        "question": "魏承到底是怕誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "魏寧的保鏢伸手要抓沈硯的手臂，前一格他還在剝橘子，後一格保鏢手裡多了一瓣橘子，他站在沈硯身前嚼。",
+      "glamour_shot": "沈硯坐在會議桌首，雙手交疊在那張條件書上，白襯衫的領口扣到最上面一顆，看魏承的眼神平靜得讓人發冷。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [
+        "m03"
+      ],
+      "general_payoffs": [
+        "揭開魏承要的是碼頭地，不是孩子",
+        "沈硯拒絕拿兒子換地"
+      ],
+      "characters": [
+        "shen-yan",
+        "wei-ning",
+        "wei-cheng",
+        "lin-danan"
+      ],
+      "locations": [
+        "硯通物流會議室"
+      ],
+      "state": {
+        "time": "第二季第 21 天下午",
+        "knowledge": "魏家要的是碼頭地，監護權只是籌碼。",
+        "carry_forward": "魏承在怕一個人；官司照打。"
+      }
+    },
+    {
+      "number": 93,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "文件櫃翻空",
+      "youtube_title": "女總裁一夜翻遍父親留下的所有文件，找不到那份合資協議，隔天銀行來信要凍結公司",
+      "duration_s": 120,
+      "logline": "沈硯要證明協議是假的，連夜翻遍父親的文件櫃，林大楠陪她翻到睡在紙堆裡。",
+      "hook": "凌晨三點，沈父的舊辦公室，十二個文件櫃全拉開，紙堆到膝蓋；他睡在紙堆裡，懷裡抱著一袋饅頭。",
+      "hook_type": "image",
+      "mid_hook": "最後一個櫃子也空了：沒有合資協議，沒有任何跟魏家的往來，連一張魏家的名片都沒有。",
+      "extra_hooks": [
+        "韓小姐抱著咖啡進來幫忙，在標著「碼頭」的資料夾前停了很久，手機螢幕亮了一下。"
+      ],
+      "conflict": "找不到協議不能證明它是假的；法院要她拿出反證。",
+      "turn": "父親生前跟魏家沒有任何往來紀錄，這份協議反而像是憑空多出來的；但這也讓銀行嗅到了風險。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "早上八點，韓小姐拿著一封掛號信進來：銀行通知，因產權爭議，硯通的授信三天後重審，可能凍結。",
+        "question": "銀行會不會凍結硯通？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "一個文件櫃整排倒向睡著的沈硯，前一格他在紙堆裡打呼，後一格他用背頂住櫃子，嘴裡還咬著半個饅頭。",
+      "glamour_shot": "凌晨的舊辦公室裡，沈硯坐在地上翻文件，眼鏡推到頭頂，熬夜的眼下發青，翻到父親的字時手停一下。",
+      "setups": [
+        "s02-t17",
+        "m10"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "確認沈父的文件裡沒有任何魏家往來"
+      ],
+      "characters": [
+        "shen-yan",
+        "lin-danan",
+        "han-mishu"
+      ],
+      "locations": [
+        "沈父的舊辦公室"
+      ],
+      "state": {
+        "time": "第二季第 22 天早上",
+        "knowledge": "找不到協議，父親跟魏家沒有往來；銀行三天後重審授信。",
+        "carry_forward": "韓小姐在碼頭資料夾前停留過。"
+      }
+    },
+    {
+      "number": 94,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "能吃多少碗麵",
+      "youtube_title": "攤販保鏢問碼頭地值多少，司機說了一個數字，他算了算：那能吃多少碗麵",
+      "duration_s": 115,
+      "logline": "林大楠第一次想弄懂公司的事，他要知道魏家為什麼非要那塊地不可。",
+      "hook": "阿蒙念出銀行信上的估價，他的饅頭停在嘴邊：「那能吃多少碗麵？」阿蒙：「你一輩子吃不完。」",
+      "hook_type": "line",
+      "mid_hook": "他走進沈硯辦公室，第一次問公司的事：「他們為什麼要那塊地？」沈硯：「我不知道。那塊地十年沒動過。」",
+      "extra_hooks": [
+        "他說：「那我去看看。」沈硯抬頭：「先陪我去銀行。」"
+      ],
+      "conflict": "他聽不懂產權、聽不懂授信，但他聽得懂一塊十年沒人碰的地，不該值這麼多人搶。",
+      "turn": "他的手機響了，是郭老闆：「魏家欠我的錢不還。」停了一下：「我有東西賣你。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "郭老闆在電話裡壓低聲音：「魏家付錢扣貨。」「簽收單正本在我這。」「銀行一定想看。」",
+        "question": "郭老闆手上的簽收單能救硯通嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "dalian"
+      ],
+      "spectacle": "阿蒙把一疊估價單丟上天花板算數，紙片落下前，他一步走到樓梯口接住滾下去的一個饅頭。",
+      "glamour_shot": "沈硯在窗前回頭說「十年沒動過」，倉庫的光從身後打過來，捲袖的手按在窗框上，父親的錶面朝外。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次主動問公司的事",
+        "郭老闆主動找上門"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-meng",
+        "shen-yan",
+        "s02-guo-laoban"
+      ],
+      "locations": [
+        "硯通物流倉庫",
+        "硯通物流二樓辦公室"
+      ],
+      "state": {
+        "time": "第二季第 22 天下午",
+        "knowledge": "魏家搶一塊十年沒動的地；郭老闆手上有魏家付錢扣貨的簽收單。",
+        "carry_forward": "明天銀行開會。"
+      }
+    },
+    {
+      "number": 95,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "帶攤販來談授信",
+      "youtube_title": "前夫妹妹在銀行嘲笑女總裁帶攤販來談授信，下一秒對手倉庫老闆走進來把一張單據拍在桌上",
+      "duration_s": 125,
+      "logline": "銀行授信會議上魏寧要當場把硯通打成高風險，林大楠帶著郭老闆遲到。",
+      "hook": "銀行會議室，魏寧看著他嚼饅頭走進來：「沈總，帶攤販來談授信？」經理們笑了。",
+      "hook_type": "line",
+      "mid_hook": "門再開，郭老闆擠進來，把一張簽收單拍在桌上：「魏家付我錢，扣硯通的貨。正本。」",
+      "extra_hooks": [
+        "郭老闆收完他的「車馬費」，他轉頭跟沈硯報帳：「饅頭四個，要報。」"
+      ],
+      "conflict": "銀行要判斷硯通是不是爛帳；魏寧的產權訴訟讓硯通看起來像一塊隨時會被搶走的地。",
+      "turn": "簽收單證明魏家先花錢扣貨、再告產權，是惡意打壓；經理們的笑停了，銀行決定授信照舊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "會議結束，沈硯走進全景玻璃電梯，三個穿黑西裝的男人跟著擠進去；門在他面前關上。",
+        "question": "電梯裡那三個人要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "銀行會議室長桌兩邊，十幾個經理同時低頭看那張簽收單，魏寧坐在桌尾，手上的鋼筆停在半空。",
+      "glamour_shot": "沈硯在銀行長桌前站起來，一身白襯衫黑長褲，把簽收單轉向經理那一側，動作很慢，像在收網。",
+      "setups": [],
+      "payoffs": [
+        "s02-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "銀行授信照舊",
+        "魏家惡意扣貨的證據交到銀行手上",
+        "魏寧在銀行面前丟臉"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "wei-ning",
+        "s02-guo-laoban"
+      ],
+      "locations": [
+        "港北銀行會議室",
+        "銀行全景電梯前"
+      ],
+      "state": {
+        "time": "第二季第 23 天上午",
+        "knowledge": "授信保住；魏家惡意的證據到了銀行。",
+        "carry_forward": "三個人跟沈硯進了電梯。"
+      }
+    },
+    {
+      "number": 96,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "玻璃電梯",
+      "youtube_title": "三個黑衣人把女總裁圍在電梯裡，門一關一開，只剩保鏢靠著牆在吃饅頭",
+      "duration_s": 110,
+      "logline": "沈硯被三個人困在下降的玻璃電梯裡，林大楠被關在門外，只能從外面看著。",
+      "hook": "玻璃電梯往下沉，他在門外看著三個人圍住沈硯，其中一個人舉起了一根伸縮棍。",
+      "hook_type": "danger",
+      "mid_hook": "電梯門一關一開，到了一樓：三個人坐在電梯外的地上揉手腕，伸縮棍不見了，他靠在牆上吃饅頭，沈硯站在他身後。",
+      "extra_hooks": [
+        "他把那根伸縮棍從饅頭袋裡抽出來，拿來戳開下一個饅頭的塑膠袋。"
+      ],
+      "conflict": "電梯是透明的，他看得見，所以走得進去；但電梯在動，他每一步都得重新算位置。",
+      "turn": "他從大廳挑高的玻璃外一層一層跟著電梯往下看，在電梯過三樓的那一秒走了一步。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "其中一人的手機掉在地上，螢幕上是一張截圖：今天沈硯到銀行的時間、電梯的樓層，傳送人是一個沒有名字的號碼。",
+        "question": "魏家怎麼知道沈硯今天幾點到銀行？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "全景玻璃電梯沿著銀行大廳往下滑，前一格他在大廳二樓的欄杆邊，後一格電梯裡多了一個嚼饅頭的黑西裝。",
+      "glamour_shot": "電梯門打開，他靠在玻璃上吃饅頭，鬆垮的領帶被電梯風扇吹起，沈硯站在他身後，第一次笑出聲。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈硯毫髮無傷",
+        "拿到對方行程截圖"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan"
+      ],
+      "locations": [
+        "港北銀行全景電梯",
+        "港北銀行大廳"
+      ],
+      "state": {
+        "time": "第二季第 23 天中午",
+        "knowledge": "對方拿得到沈硯的即時行程。",
+        "carry_forward": "他要去碼頭看那塊地。"
+      }
+    },
+    {
+      "number": 97,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "別一個人去",
+      "youtube_title": "保鏢說要一個人去看碼頭地，老保鏢只交代一句：那裡走路有聲音的，都不危險",
+      "duration_s": 115,
+      "logline": "林大楠決定一個人去碼頭看那塊地，老趙攔他、小石頭塞給他一張畫。",
+      "hook": "他把六個饅頭裝進口袋，又多塞兩個；老趙擋在樓梯口：「碼頭，別一個人去。」",
+      "hook_type": "danger",
+      "mid_hook": "他問為什麼，老趙：「走路有聲音的。」「都不危險。」說完自己先下樓了。",
+      "extra_hooks": [
+        "沈硯把碼頭鐵門的照片傳給他：「鎖換過，不是我換的。」"
+      ],
+      "conflict": "沈硯要他陪著跑法院跟銀行，老趙要他別去，他卻覺得只有那塊地會說實話。",
+      "turn": "小石頭塞給他一張畫：一個碼頭、一台吊車、地上一個紅圈，紅圈旁邊站著一個灰灰的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "傍晚，碼頭的鐵門前，他看著那把新鎖，再看看口袋裡的八個饅頭：「門鎖著，不算闖。」",
+        "question": "他要不要一個人走進碼頭？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "沈家樓梯上小石頭追下來送畫、一腳踩空，前一格他在一樓，後一格他在樓梯轉角接住孩子，畫平平地落在他手上。",
+      "glamour_shot": "他在沈家樓梯口蹲下接過畫，夕陽從樓梯窗照進來，黑西裝的口袋鼓成八個饅頭的形狀，他摸了摸孩子的頭。",
+      "setups": [
+        "s02-t18",
+        "s02-t19"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "小石頭給他一張畫了碼頭的圖"
+      ],
+      "characters": [
+        "lin-danan",
+        "lao-zhao",
+        "xiao-shitou",
+        "shen-yan"
+      ],
+      "locations": [
+        "硯通倉庫閣樓",
+        "沈家樓梯",
+        "舊碼頭鐵門前"
+      ],
+      "state": {
+        "time": "第二季第 24 天傍晚",
+        "knowledge": "老趙警告碼頭有走路沒聲音的東西；小石頭畫了碼頭和紅圈。",
+        "carry_forward": "他站在碼頭鐵門前。"
+      }
+    },
+    {
+      "number": 98,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "十年新的水泥",
+      "youtube_title": "攤販一步走進鎖了十年的碼頭，空倉庫、鏽吊車，地上一塊水泥比旁邊新，新了整整十年",
+      "duration_s": 120,
+      "logline": "林大楠一步跨進碼頭，要看看魏家搶的到底是什麼，地上有一塊不該在那裡的水泥。",
+      "hook": "鐵門的縫裡看得見碼頭那頭的吊車；前一格他在門外，後一格他站在吊車底下。",
+      "hook_type": "image",
+      "mid_hook": "一隻海鷗俯衝叼走他手上的饅頭，他追了三步，停在一塊顏色不一樣的水泥地上。",
+      "conflict": "整片碼頭都是舊的，只有這一塊方方正正的水泥是後來灌的；他不懂工程，但懂什麼叫刻意。",
+      "turn": "他蹲下用指甲刮開水泥角落的青苔：一行施工時壓上去的日期，十年前。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他拍下日期傳給沈硯，三秒後她回：「我爸走的前七天。」",
+        "question": "沈父出事前七天，為什麼要在碼頭灌水泥？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "夕陽下空曠的舊碼頭，一台鏽紅色的吊車，一隻海鷗叼著饅頭飛過他頭頂，他腳下的水泥灰白得刺眼。",
+      "glamour_shot": "他站在碼頭邊回頭，海風把黑西裝吹成一面旗，夕陽在他背後，嘴裡叼著最後半個饅頭，眼睛瞇起來。",
+      "setups": [
+        "s02-t20",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到碼頭上那塊十年前灌的水泥"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan"
+      ],
+      "locations": [
+        "舊碼頭"
+      ],
+      "state": {
+        "time": "第二季第 24 天黃昏",
+        "knowledge": "碼頭的新水泥是沈父出事前七天灌的。",
+        "carry_forward": "他蹲在水泥上，身後有聲音。"
+      }
+    },
+    {
+      "number": 99,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "一下在一下不在",
+      "youtube_title": "空無一人的碼頭，保鏢背後傳來腳步聲，一下在、一下不在，他手上那張童畫的紅圈對上了",
+      "duration_s": 115,
+      "logline": "林大楠在碼頭的水泥上找答案，身後響起一種他只在倉庫聽過的腳步聲。",
+      "hook": "他拿出小石頭的畫比對：紅圈畫的位置，就是他腳下這塊水泥。",
+      "hook_type": "image",
+      "mid_hook": "沈硯在電話裡說：「他照外公的圖畫的。」「我辦公室那張空照圖。」「那一圈，是我爸圈的。」",
+      "extra_hooks": [
+        "鏽吊車的鐵鉤被海風吹得甩過來，前一格他在水泥上，後一格他在十步外，鐵鉤砸在他剛剛蹲的地方。"
+      ],
+      "conflict": "沈父親手圈了這塊地，魏家要搶這塊地，而他一個人在這裡，快沒饅頭了。",
+      "turn": "紅圈不是孩子亂畫：沈父十年前就把這塊水泥標成重點，只是沒人看懂。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "他背後響起腳步聲：一下在、一下不在，每一聲之間沒有走路的聲音。腳步停在他身後兩步。",
+        "question": "身後那個走路沒聲音的人是誰？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi"
+      ],
+      "spectacle": "鏽紅吊車的鐵鉤在夕陽裡甩出一道弧，砸進他剛剛蹲的位置，水泥碎屑飛起，他在十步外啃最後一個饅頭。",
+      "glamour_shot": "他蹲在水泥上看畫的背影，西裝外套被風吹起，脖子上的汗反著夕陽的光，聽見腳步聲時肩膀僵住。",
+      "setups": [],
+      "payoffs": [
+        "s02-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道紅圈是沈父親手圈的"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan"
+      ],
+      "locations": [
+        "舊碼頭"
+      ],
+      "state": {
+        "time": "第二季第 24 天入夜",
+        "knowledge": "沈父親手圈了這塊水泥；口袋裡的饅頭只剩一個。",
+        "carry_forward": "身後兩步有一個走路沒聲音的人。"
+      }
+    },
+    {
+      "number": 100,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "門外的灰西裝",
+      "youtube_title": "保鏢在碼頭猛然回頭，背後空無一人，鐵門外卻站著一個灰西裝的人隔著門看他，然後不見了",
+      "duration_s": 145,
+      "logline": "林大楠要在碼頭轉身面對那個沒有聲音的人，卻發現對方比他想的還要遠，也還要近。",
+      "hook": "他吞下最後一口饅頭，猛然轉身——身後兩步，什麼都沒有。",
+      "hook_type": "reversal",
+      "mid_hook": "地上有兩個淺淺的鞋印，窄頭皮鞋，跟倉庫貨櫃頂上那排一模一樣，鞋尖對著他的背。",
+      "extra_hooks": [
+        "他手抖著翻口袋，八個饅頭全吃完了，只摸到小石頭那張畫。"
+      ],
+      "conflict": "那個人站過他身後兩步，卻沒有動手；他不知道對方要什麼，只知道自己快沒力氣了。",
+      "turn": "對方不是來殺他的，是來看他的：看他一步能走多遠、吃幾個、還剩幾步。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他抬頭：碼頭鐵門外站著一個灰西裝、灰頭髮的人，隔著鐵門看他，沒有表情。他眨了一下眼，門外沒有人了。",
+        "question": "那個灰西裝的人是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian",
+        "jiating"
+      ],
+      "spectacle": "鈉燈剛亮的碼頭鐵門外，一個灰西裝的人站在燈下，下一格燈下空了，只剩鐵門被風吹得輕輕晃。",
+      "glamour_shot": "他站在碼頭中央回頭的慢動作，鬆開的領帶在海風裡翻起，鈉燈的橘光從側面照亮他咬緊的下顎。",
+      "setups": [
+        "m11",
+        "m04"
+      ],
+      "payoffs": [
+        "s02-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "親眼看見另一個會走的人",
+        "確認貨櫃頂的皮鞋印就是這個人的"
+      ],
+      "characters": [
+        "lin-danan",
+        "lin-jiu"
+      ],
+      "locations": [
+        "舊碼頭",
+        "舊碼頭鐵門外"
+      ],
+      "state": {
+        "time": "第二季第 24 天夜",
+        "knowledge": "另一個會走的人穿灰西裝、灰頭髮，來看過他，沒有動手。",
+        "carry_forward": "饅頭吃完了，他還在碼頭裡。"
+      }
+    },
+    {
+      "number": 101,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "灰灰的那個",
+      "youtube_title": "保鏢從碼頭帶回一身冷汗，八歲男孩指著自己的畫說：就是他，灰灰的，女總裁當場拿出一把鑰匙",
+      "duration_s": 120,
+      "logline": "林大楠從碼頭回來，要弄清楚那個灰西裝跟小石頭畫裡的第二個黑影是不是同一個人。",
+      "hook": "他一步跨到鐵門外，路上空無一人，只有一片落葉還在原地打轉；他膝蓋一軟，阿蒙的車燈照過來。",
+      "hook_type": "image",
+      "mid_hook": "沈家樓下，小石頭舉起那張兩個黑影的畫，指著角落：「就是他。灰灰的。」",
+      "extra_hooks": [
+        "阿蒙在車上把便利商店的飯糰一個一個剝好遞給他，剝到第九個哭出來：「你下次帶我去。」"
+      ],
+      "conflict": "灰西裝的人來過倉庫、學校、沈家樓下、碼頭；他每晚守在樓下也守不住四個地方。",
+      "turn": "沈硯聽完，沒有叫他加班，也沒有叫老趙多派人，她做了一個他沒想到的決定。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "沈硯從包裡拿出一把鑰匙放在他手心：「搬來我家住。」他看著鑰匙：「房租怎麼算？」",
+        "question": "他要不要搬進沈家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "碼頭鐵門外的路上，一片落葉在原地轉圈，前一格門裡有他，後一格門外有他，葉子還在轉。",
+      "glamour_shot": "沈家樓下的路燈下，沈硯把鑰匙放進他手心，指尖碰了一下就收回去，她低頭看錶，耳朵有一點紅。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "s02-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認畫裡的第二個黑影就是灰西裝",
+        "沈硯給他沈家的鑰匙"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-meng",
+        "xiao-shitou",
+        "shen-yan"
+      ],
+      "locations": [
+        "舊碼頭鐵門外",
+        "沈家樓下"
+      ],
+      "state": {
+        "time": "第二季第 25 天",
+        "knowledge": "灰西裝就是小石頭畫裡那個不會餓的黑影。",
+        "carry_forward": "沈硯要他搬進沈家。"
+      }
+    },
+    {
+      "number": 102,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "藍白拖",
+      "youtube_title": "女總裁讓攤販保鏢搬進家裡的客房，他的行李只有三箱饅頭和一口炒鍋，門口鞋櫃多了一雙藍白拖",
+      "duration_s": 115,
+      "logline": "林大楠搬進沈家客房，要學會住在一個有規矩的家裡。",
+      "hook": "沈硯：「我兒子說，看不見的叔叔應該住看得見的地方。」小石頭在她背後拚命點頭。",
+      "hook_type": "line",
+      "mid_hook": "他的行李搬上四樓：三箱饅頭、一口炒鍋、一袋衣服；沈硯看著那口鍋：「我家有鍋。」他：「這口有味道。」",
+      "extra_hooks": [
+        "他把藍白拖放進門口鞋櫃，又拿出來，又放進去，第三次才放好。"
+      ],
+      "conflict": "他住過夜市攤後、倉庫閣樓，從沒住過一個有鞋櫃的家，連鞋要放哪一格都不知道。",
+      "turn": "鞋櫃最下面一格是空的，空了很久，沈硯說：「那格是我爸的。你放吧。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "晚上，小石頭偷偷把鞋櫃前的鞋排成一排：媽媽的低跟鞋、自己的布鞋、一雙藍白拖。「這樣才對。」",
+        "question": "他會在這個家住多久？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "搬家時一箱饅頭從四樓樓梯滾下去，前一格箱子在空中翻開，後一格他在一樓接住箱子，饅頭一個一個掉回箱裡。",
+      "glamour_shot": "沈家玄關暖黃的燈下，他蹲著把藍白拖放進最下面一格，沈硯靠在牆邊看，手裡拿著他那件不合身的西裝替他掛好。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他搬進沈家客房",
+        "沈家鞋櫃多了一雙藍白拖，放在沈父那一格"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "沈家玄關",
+        "沈家客房"
+      ],
+      "state": {
+        "time": "第二季第 26 天",
+        "knowledge": "他住進沈家，藍白拖放在沈父空了十年的那一格。",
+        "carry_forward": "明天第一次在沈家吃晚飯。"
+      }
+    },
+    {
+      "number": 103,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "五碗",
+      "youtube_title": "攤販保鏢第一次在女總裁家吃飯連吃五碗，八歲男孩在旁邊數，他看見飯桌上那支錶停了",
+      "duration_s": 120,
+      "logline": "林大楠第一次在沈家吃晚飯，想吃得像個客人，卻吃了五碗，還注意到一支停了的錶。",
+      "hook": "飯桌上小石頭舉著手指數：「三碗……四碗……」他把碗遞出去：「最後一碗。」",
+      "hook_type": "image",
+      "mid_hook": "沈硯把手腕上的舊錶解下來放在桌上洗碗，他看了一眼：「這錶停了。」她背對他：「十年了。」",
+      "extra_hooks": [
+        "小石頭宣布：「五碗！」沈硯：「我家的碗比較小。」他：「那再一碗。」"
+      ],
+      "conflict": "他第一次坐在別人的家裡吃飯，不知道該吃幾碗、該說什麼、該看哪裡。",
+      "turn": "那支錶十年前就停了，她每天戴著一支不走的錶上班，從沒拿去修。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大樓管理員打電話上來：「有個灰西裝的人。」「問妳住幾樓。」「我一抬頭，他就不見了。」",
+        "question": "灰西裝的人為什麼要找到沈家？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "小石頭的湯碗滑下桌緣，前一格他在夾菜，後一格碗在他手上，湯一滴沒灑，他順手把湯喝了。",
+      "glamour_shot": "沈硯在水槽前背對他洗碗，捲起的袖子露出手腕上那圈錶的白印，廚房的燈從她頭頂照下來，肩膀很瘦。",
+      "setups": [
+        "s02-t21"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第一次在沈家吃飯，吃了五碗",
+        "知道沈硯戴了十年一支停了的錶"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "沈家飯桌",
+        "沈家廚房"
+      ],
+      "state": {
+        "time": "第二季第 27 天晚上",
+        "knowledge": "沈父的錶停了十年；灰西裝找到沈家這棟樓。",
+        "carry_forward": "他今晚睡在客房門口。"
+      }
+    },
+    {
+      "number": 104,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "補地工單",
+      "youtube_title": "女總裁在父親的舊抽屜裡翻出一張十年前的碼頭補地工單，簽名是父親，日期是出事前七天",
+      "duration_s": 120,
+      "logline": "沈家第一個一起出門的早晨，沈硯在父親搬回家的舊抽屜裡找到了碼頭那塊水泥的來歷。",
+      "hook": "早上七點，他和小石頭並肩站在玄關，兩個人的鈕扣都扣錯了一顆。沈硯蹲下來，一個一個扣好。",
+      "hook_type": "image",
+      "mid_hook": "沈父的舊抽屜底下壓著一張工單：「碼頭東側補地，灌漿四十平方」，簽名是沈父，日期是他出事前七天。",
+      "extra_hooks": [
+        "韓小姐打電話來：「人事要登記。」「林先生的新地址。」"
+      ],
+      "conflict": "碼頭那塊水泥是誰灌的、為什麼灌，是證明魏家為什麼要地的第一條線。",
+      "turn": "灌水泥的是沈父自己：他在出事前七天，親手封住了那塊地。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "韓小姐在電話那頭等著：「新地址填哪？」他看向沈硯，沈硯正在替小石頭背書包，頭也沒抬：「填我家。」",
+        "question": "公司裡會有多少人知道他住進沈家？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "大樓門口一台機車衝出地下室，前一格他牽著小石頭，後一格他抱著小石頭站在花圃上，機車騎士嚇得熄火。",
+      "glamour_shot": "玄關晨光裡，沈硯蹲下替兒子和他扣鈕扣，短髮垂下來遮住半邊臉，扣到他那顆時手停了一下。",
+      "setups": [
+        "m10"
+      ],
+      "payoffs": [
+        "s02-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "找到沈父親簽的碼頭補地工單"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "xiao-shitou",
+        "han-mishu"
+      ],
+      "locations": [
+        "沈家玄關",
+        "沈家書房",
+        "沈家大樓門口"
+      ],
+      "state": {
+        "time": "第二季第 28 天早上",
+        "knowledge": "碼頭那塊水泥是沈父出事前七天親手叫人灌的。",
+        "carry_forward": "他的新地址登記在硯通的人事系統裡。"
+      }
+    },
+    {
+      "number": 105,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "他住進去了",
+      "youtube_title": "前夫來接孩子探視，在門口看見鞋櫃裡那雙藍白拖臉色大變，車上妹妹打電話：他住進去了",
+      "duration_s": 120,
+      "logline": "魏承照法院排的時間來接小石頭，在沈家門口看見了不該看見的東西。",
+      "hook": "門鈴響，他穿著藍白拖去開門，門外是一身訂製西裝的魏承。兩個男人對看三秒。",
+      "hook_type": "image",
+      "mid_hook": "魏承的視線落到鞋櫃最下面那格的藍白拖上，臉一點一點變白：「今天……改天好了。」",
+      "extra_hooks": [
+        "他對魏承舉了舉手上的饅頭：「吃嗎？」"
+      ],
+      "conflict": "魏承是來接兒子的，卻在前妻家看見另一個男人的拖鞋，而他背後還有一個要他回報的人。",
+      "turn": "魏承不是吃醋，是害怕：他下樓第一件事不是生氣，是打電話給車裡的妹妹。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "樓下車裡，魏寧接起電話：「他住進去了。」她撥出另一個號碼，電話那頭一個很平的聲音：「那就讓他出來。」",
+        "question": "電話那頭那個很平的聲音是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "門口魏承手上的禮物盒滑落，前一格盒子在半空，後一格盒子在他手上，他已經站回門內，藍白拖沒有挪動一寸。",
+      "glamour_shot": "魏承站在沈家門外，髮型一絲不亂、訂製西裝，笑得很累；門內的他穿白背心藍白拖，兩個人一冷一暖。",
+      "setups": [
+        "s02-t22",
+        "s02-t23",
+        "m04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "魏承這次的探視延到下週"
+      ],
+      "characters": [
+        "lin-danan",
+        "wei-cheng",
+        "wei-ning",
+        "shen-yan",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "沈家門口",
+        "沈家樓下魏家車內"
+      ],
+      "state": {
+        "time": "第二季第 29 天",
+        "knowledge": "魏家知道他住進沈家；有人要讓他離開那棟樓。",
+        "carry_forward": "下週六要探視。"
+      }
+    },
+    {
+      "number": 106,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "讓他出來",
+      "youtube_title": "深夜一通電話，夜市臭豆腐攤被砸了，保鏢得在女總裁家門口和半個媽之間選一個",
+      "duration_s": 110,
+      "logline": "夜市傳來林嬸攤子被砸的消息，林大楠必須離開沈家，而這正是對方要的。",
+      "hook": "晚上十點，阿肥在電話裡哭喊：「老大！林嬸的攤被砸了！」背景是玻璃碎掉的聲音。",
+      "hook_type": "danger",
+      "mid_hook": "沈硯已經把他的外套丟過來：「去。老趙在。」老趙站在門口，手上那道疤露在袖子外面。",
+      "extra_hooks": [
+        "阿蒙的車一路闖到夜市口，他在後座一口氣塞兩個饅頭，鼓著腮幫子說：「快。」"
+      ],
+      "conflict": "去夜市，沈家只剩老趙；不去，林嬸一個人在一群拿球棒的人中間。",
+      "turn": "他看著老趙，老趙點頭：這是他第一次把沈家交給別人守。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "夜市第三排，四個拿球棒的人圍著林嬸的攤車，林嬸張開雙手擋在油鍋前，球棒舉起來了。",
+        "question": "他來得及擋下那一棒嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "夜市口的人潮裡，前一格他在入口，後一格他站在第三排的招牌上，再一格他落在林嬸攤車前，二十步穿過整個夜市。",
+      "glamour_shot": "沈硯在玄關把外套丟給他，穿著居家毛衣、頭髮半乾，眼神卻跟在法院一樣穩：「去。」",
+      "setups": [
+        "s02-t24"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "老趙接下沈家的守衛"
+      ],
+      "characters": [
+        "lin-danan",
+        "a-fei",
+        "shen-yan",
+        "lao-zhao",
+        "a-meng",
+        "lin-shen"
+      ],
+      "locations": [
+        "沈家玄關",
+        "北門夜市第三排"
+      ],
+      "state": {
+        "time": "第二季第 30 天晚上",
+        "knowledge": "他離開沈家去夜市，老趙守門。",
+        "carry_forward": "球棒舉向林嬸。"
+      }
+    },
+    {
+      "number": 107,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "一個鐘頭",
+      "youtube_title": "四根球棒砸向臭豆腐攤，保鏢一眨眼全拿在手上，打手說出真相：上面只要你離開那棟樓一個鐘頭",
+      "duration_s": 120,
+      "logline": "林大楠趕到夜市擋下球棒，要知道是誰叫人砸了林嬸的攤。",
+      "hook": "球棒落下那一秒停住了：四根球棒全在他懷裡，他嘴裡叼著一塊林嬸的臭豆腐。",
+      "hook_type": "reversal",
+      "mid_hook": "鐵哥的手下被阿肥一屁股坐住：「不是我們要砸！上面說的！」「要你離開那棟樓！」「一個鐘頭就好！」",
+      "extra_hooks": [
+        "林嬸捏他的臉：「又瘦了。」然後拿鍋鏟追著打手跑了半條街。"
+      ],
+      "conflict": "砸夜市是假的，調虎離山才是真的；他離開沈家已經四十分鐘了。",
+      "turn": "他衝回沈家，一切安好：老趙坐在門口、沈硯在客廳、小石頭在睡覺，什麼都沒發生。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他喘著氣低頭：玄關鞋櫃最下面那一格空了，他的藍白拖不見了。",
+        "question": "藍白拖去哪了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "四根球棒同時砸下，下一格四個人手上都空了，球棒整整齊齊插在他身後的冰桶裡，他在吃臭豆腐。",
+      "glamour_shot": "他站在林嬸的攤車前回頭，夜市的霓虹打在汗濕的臉上，嘴角沾著辣醬，懷裡抱著四根球棒。",
+      "setups": [
+        "s02-t25"
+      ],
+      "payoffs": [
+        "s02-t24"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林嬸的攤保住了",
+        "知道砸攤是為了把他調離沈家"
+      ],
+      "characters": [
+        "lin-danan",
+        "lin-shen",
+        "a-fei",
+        "lao-zhao",
+        "shen-yan",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "北門夜市第三排",
+        "沈家玄關"
+      ],
+      "state": {
+        "time": "第二季第 30 天深夜",
+        "knowledge": "有人要他離開沈家一個鐘頭；沈家沒事。",
+        "carry_forward": "他的藍白拖不見了。"
+      }
+    },
+    {
+      "number": 108,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "穿了就會走",
+      "youtube_title": "保鏢的藍白拖從鞋櫃消失，他翻遍整個家，最後在八歲男孩的床底下找到，男孩說了一句話",
+      "duration_s": 120,
+      "logline": "林大楠要找出藍白拖是誰拿走的，答案比他以為的更讓他走不開。",
+      "hook": "他趴在地上找拖鞋，沈硯在沙發上翻文件：「你吵到我兒子了。」他：「我的拖鞋被偷了。」",
+      "hook_type": "question",
+      "mid_hook": "小石頭的床底下，一雙藍白拖被抱在懷裡；小石頭沒睡：「穿了拖鞋你就會走。」",
+      "extra_hooks": [
+        "他說：「我穿皮鞋走。拖鞋留著，我會回來穿。」小石頭想了想，把拖鞋推出來。"
+      ],
+      "conflict": "他每一次出門都穿著拖鞋跑，小石頭以為拖鞋不見了，他就不會走了。",
+      "turn": "拖鞋不是被偷，是被一個八歲的孩子藏起來，用來留人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "沈硯站在房門口，手裡拿著法院通知：「下週六。」「他得跟他爸走。」她看他：「你能跟著嗎？」",
+        "question": "他要怎麼守住探視那一天？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "小石頭床頭的檯燈倒下，前一格他在床底，後一格他在床頭接住燈，燈光正好照在床底那雙藍白拖上。",
+      "glamour_shot": "沈硯靠在兒子房門口，睡衣外披著開襟毛衣，看見床底那一幕時沒出聲，只用手背擦了一下眼角。",
+      "setups": [],
+      "payoffs": [
+        "s02-t25"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "藍白拖回到鞋櫃",
+        "他答應小石頭會回來穿拖鞋"
+      ],
+      "characters": [
+        "lin-danan",
+        "xiao-shitou",
+        "shen-yan"
+      ],
+      "locations": [
+        "沈家客廳",
+        "小石頭的房間"
+      ],
+      "state": {
+        "time": "第二季第 31 天",
+        "knowledge": "小石頭怕他走；探視在下週六。",
+        "carry_forward": "他要跟著探視。"
+      }
+    },
+    {
+      "number": 109,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "二十步外",
+      "youtube_title": "前夫帶孩子回豪宅探視，保鏢只能站在圍牆外二十步，從窗縫看見佛堂裡擺著一張碼頭照片",
+      "duration_s": 120,
+      "logline": "探視那天林大楠只能遠遠跟著，要確定小石頭在魏家大宅裡平安。",
+      "hook": "魏家大宅的鐵門關上，小石頭回頭揮手；他在對街，從圍牆數到窗台：二十步。",
+      "hook_type": "question",
+      "mid_hook": "他一步站上圍牆內的樹影，從佛堂的窗縫看進去：佛龕旁邊掛著一張碼頭空照圖，同一個地方畫著紅圈。",
+      "extra_hooks": [
+        "魏家的狼犬聞到饅頭味衝過來，他把半個饅頭丟過去，狗坐下來搖尾巴。"
+      ],
+      "conflict": "法院准許探視，他不能進門；小石頭在裡面，而魏家的佛堂裡擺著不該擺的東西。",
+      "turn": "魏家佛堂的碼頭圖上圈的位置，跟沈父辦公室那張一模一樣：魏家也知道那塊水泥底下的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "客廳裡魏承把一張紙放進小石頭手裡；小石頭抬頭，隔著窗看見樹影裡的他，偷偷對他比了一個饅頭的手勢。",
+        "question": "魏承給小石頭的那張紙是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "魏家冷白大理石的佛堂裡，佛龕旁一張泛黃的碼頭空照圖，紅圈在佛燈下像一隻眼睛。",
+      "glamour_shot": "他蹲在魏家圍牆內的樹影裡，黑西裝沾了葉子，月光穿過樹葉落在他半邊臉上，眼睛只盯著那扇窗。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小石頭在魏家平安",
+        "發現魏家佛堂也有圈著同一處的碼頭圖"
+      ],
+      "characters": [
+        "lin-danan",
+        "xiao-shitou",
+        "wei-cheng"
+      ],
+      "locations": [
+        "魏家大宅外圍牆",
+        "魏家大宅佛堂窗外"
+      ],
+      "state": {
+        "time": "第二季第 32 天",
+        "knowledge": "魏家也知道碼頭水泥的位置。",
+        "carry_forward": "魏承給了小石頭一張紙。"
+      }
+    },
+    {
+      "number": 110,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "這不是我爸的字",
+      "youtube_title": "孩子探視回來握著一張紙不說話，女總裁看了簽名說這不是我爸的字，保鏢卻說他媽的帳本上有",
+      "duration_s": 135,
+      "logline": "小石頭探視回來帶著魏承給的協議影本，沈家要看懂這張紙，林大楠在簽名裡看見了自己的家。",
+      "hook": "小石頭進門不說話，鞋也沒脫，把一張摺了四摺的紙交給媽媽。",
+      "hook_type": "image",
+      "mid_hook": "小石頭小聲：「爸爸說，媽媽的公司一半是爺爺的。」沈硯打開紙：合資協議的影本，沈父的簽名。",
+      "extra_hooks": [
+        "他從口袋掏出最後一個饅頭塞進小石頭手裡，小石頭掰一半還他。"
+      ],
+      "conflict": "魏承把官司的紙交給八歲的孩子帶回家，要沈硯在兒子面前輸。",
+      "turn": "沈硯看著簽名：「這不是我爸的字。」她認得父親的字，這個字太像，又不像。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他湊過去看那個簽名，臉色變了：「這個字，我媽店裡的帳本上有。」沈硯慢慢抬頭看他。",
+        "question": "協議上的字，為什麼會在他母親的帳本上？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "冰箱上的畫被開門的風吹落，前一格畫在飄，後一格他把畫按回冰箱上，畫裡兩個黑影、一個有臉。",
+      "glamour_shot": "沈硯蹲在玄關跟兒子平視，接過那張紙時先摸了摸兒子的頭，燈下她的側臉一半是溫柔一半是冷。",
+      "setups": [],
+      "payoffs": [
+        "s02-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小石頭平安回家",
+        "沈硯當場認出協議上不是父親的字"
+      ],
+      "characters": [
+        "xiao-shitou",
+        "shen-yan",
+        "lin-danan"
+      ],
+      "locations": [
+        "沈家玄關",
+        "沈家客廳"
+      ],
+      "state": {
+        "time": "第二季第 32 天晚上",
+        "knowledge": "協議簽名不是沈父的字，像他母親帳本上的字。",
+        "carry_forward": "他要問母親那本帳。"
+      }
+    },
+    {
+      "number": 111,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "那本帳",
+      "youtube_title": "保鏢打電話問母親店裡的帳本，母親說十年前就燒了，鑑定師第一眼看簽名就說：這是學出來的",
+      "duration_s": 120,
+      "logline": "林大楠問母親要帳本，沈硯請來筆跡鑑定師，兩條線同時碰上那個簽名。",
+      "hook": "他撥通雜貨店：「媽，店裡的帳本借我看。」電話那頭算盤聲停了：「那本帳，十年前就燒了。」",
+      "hook_type": "line",
+      "mid_hook": "鑑定師蘇曼戴上白手套，放大鏡停在簽名的第一筆：「這不是一個人的字。是學出來的。」",
+      "extra_hooks": [
+        "他把蘇曼桌上的一盒薄荷糖吃掉一半，蘇曼頭也不抬：「那盒要報帳。」他把剩下的推回去。"
+      ],
+      "conflict": "簽名是協議唯一的命脈，母親不肯給帳本，他只能靠一個陌生的鑑定師。",
+      "turn": "母親沒問他為什麼要帳本，直接說燒了；她連是哪一本都沒問，代表她知道他在問什麼。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "掛電話前母親停了很久：「那個字，你小時候見過。」喀。他握著手機，想不起來在哪見過。",
+        "question": "他小時候在哪見過那個字？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "shenshi"
+      ],
+      "spectacle": "鑑定室的燈箱上，協議簽名被放大十倍，每一筆的起筆都有一個小小的勾，像有人刻意練過。",
+      "glamour_shot": "蘇曼把眼鏡推上額頭，白手套捏著放大鏡俯身看紙，燈箱的冷光從下往上照亮她專注的臉。",
+      "setups": [
+        "m07",
+        "m01"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "鑑定師初判簽名是模仿的"
+      ],
+      "characters": [
+        "lin-danan",
+        "lin-xiu",
+        "shen-yan",
+        "s02-su-man"
+      ],
+      "locations": [
+        "沈家客房",
+        "蘇曼筆跡鑑定室",
+        "南邊林記雜貨店"
+      ],
+      "state": {
+        "time": "第二季第 33 天",
+        "knowledge": "簽名是學出來的；母親說帳本燒了，又說他小時候見過那個字。",
+        "carry_forward": "正式鑑定報告要兩天。"
+      }
+    },
+    {
+      "number": 112,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "鑑定報告",
+      "youtube_title": "筆跡鑑定報告出爐，合資協議上的簽名確定是假的，當天晚上鑑定室被人闖進去，原本不見了",
+      "duration_s": 120,
+      "logline": "鑑定報告確認協議是假的，魏家卻在報告送上法院前搶先一步。",
+      "hook": "蘇曼把報告推過桌面：「結論：非本人親筆。」沈硯的手按在報告上，指節發白。",
+      "hook_type": "line",
+      "mid_hook": "魏寧在電話裡冷笑：「我們也有鑑定，結論相反。法院見。」準備庭定在三天後。",
+      "extra_hooks": [
+        "他拿報告去影印，影印機卡紙，他把手伸進去拉，拉出一張熱騰騰的紙和一張饅頭的發票。"
+      ],
+      "conflict": "有了報告，沈硯第一次在產權官司裡站到上風，而魏家不會讓這張紙進法院。",
+      "turn": "協議是假的：簽名是有人照著沈父的字練出來的，練字的人有一個改不掉的起筆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "深夜蘇曼打來，聲音發抖：「鑑定室被闖了。」「原本不見了。」「報告也是。」",
+        "question": "沒有原本，準備庭還打得贏嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "鑑定室的監視器畫面裡，門開著，桌上的資料夾一個一個消失，沒有人影；畫面角落一雙窄頭皮鞋的影子一閃。",
+      "glamour_shot": "沈硯在辦公室裡讀報告，一手撐著額頭，窗外的雨打在玻璃上，她讀到「非本人親筆」時閉了一下眼睛。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "s02-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鑑定確認合資協議的簽名是偽造的"
+      ],
+      "characters": [
+        "shen-yan",
+        "s02-su-man",
+        "wei-ning",
+        "lin-danan"
+      ],
+      "locations": [
+        "蘇曼筆跡鑑定室",
+        "硯通物流二樓辦公室"
+      ],
+      "state": {
+        "time": "第二季第 35 天深夜",
+        "knowledge": "協議是假的；原本與報告正本被一個看不見的人拿走。",
+        "carry_forward": "準備庭三天後。"
+      }
+    },
+    {
+      "number": 113,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "準備庭",
+      "youtube_title": "前夫妹妹以為偷走鑑定原本就贏定了，鑑定師在法庭上打開電腦，法官當場要她的專家說實話",
+      "duration_s": 130,
+      "logline": "準備庭上魏寧以為對方拿不出報告，沈硯和鑑定師卻早一步留了後手。",
+      "hook": "法庭外魏寧對沈硯微笑：「聽說妳的報告不見了？」沈硯沒停步：「聽說妳很清楚。」",
+      "hook_type": "line",
+      "mid_hook": "蘇曼打開筆電：報告與高解析掃描檔，鑑定當天就上傳到法院的電子卷宗，時間戳在被闖之前。",
+      "extra_hooks": [
+        "他在旁聽席偷吃饅頭被法警瞪，他把饅頭藏進袖子，袖子鼓了一塊。"
+      ],
+      "conflict": "魏寧帶了自己的鑑定專家，要把假的說成真的。",
+      "turn": "法官問魏家的專家有沒有看過協議原本，專家支吾半天：「沒、沒有，只看過影本。」魏寧的筆掉在桌上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "法官敲槌：「下週一，碼頭地現勘。」魏寧收起文件，對沈硯說：「我爸會親自去。」",
+        "question": "魏老爺子親自去現勘，要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "法庭大螢幕上，簽名被放大到整面牆，每一個起筆的小勾都被紅框圈起來，旁聽席一片譁然。",
+      "glamour_shot": "沈硯在法庭上站起來，白襯衫黑西裝外套，低跟鞋在木地板上一聲，她只說一句話，全場安靜。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "魏家的專家在法官面前承認沒看過原本",
+        "法院採納蘇曼的鑑定"
+      ],
+      "characters": [
+        "shen-yan",
+        "wei-ning",
+        "s02-su-man",
+        "judge",
+        "lin-danan"
+      ],
+      "locations": [
+        "港北地方法院法庭"
+      ],
+      "state": {
+        "time": "第二季第 38 天",
+        "knowledge": "法院採信協議簽名是偽造的；下週一現勘碼頭地。",
+        "carry_forward": "魏老爺子要親自到場。"
+      }
+    },
+    {
+      "number": 114,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "十一點四十",
+      "youtube_title": "現勘前一夜女總裁拿出父親停了十年的錶，老保鏢一看指針臉色大變：老闆的車就是那個時間找到的",
+      "duration_s": 125,
+      "logline": "現勘前一夜，沈硯決定把父親的錶帶去碼頭，老趙看見指針停的位置，說出了一個時間。",
+      "hook": "沈家客廳，他一個一個把饅頭塞進西裝口袋：「七、八、九、十。」口袋鼓得像兩個枕頭。",
+      "hook_type": "image",
+      "mid_hook": "沈硯把父親的錶放在桌上，老趙低頭看了一眼，整個人僵住：指針停在十一點四十。",
+      "extra_hooks": [
+        "小石頭把一張新畫塞進他胸前的口袋：「現勘要帶護身符。」"
+      ],
+      "conflict": "明天要面對魏老爺子，沈硯想帶著父親去，可這支錶十年來沒人問過它為什麼停。",
+      "turn": "老趙開口：「十一點四十。」「老闆的車，那時找到的。」錶不是壞了，是在那一夜停的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "沈硯把錶扣回手腕，扣得很緊：「明天，我帶我爸去。」他站在她身後，口袋裡十個饅頭。",
+        "question": "明天的現勘會發生什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "shenshi"
+      ],
+      "spectacle": "停了十年的錶面在檯燈下特寫，秒針停在一格裂痕上，玻璃裡映著三個人低頭的臉。",
+      "glamour_shot": "沈硯在燈下把父親的錶扣回手腕，低頭的側臉線條很硬，睫毛垂著，扣錶帶的手指一點都沒抖。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s02-t21"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道錶停在沈父的車被找到的時間",
+        "口袋裝滿十個饅頭"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "lao-zhao",
+        "xiao-shitou"
+      ],
+      "locations": [
+        "沈家客廳"
+      ],
+      "state": {
+        "time": "第二季第 40 天晚上",
+        "knowledge": "沈父的錶停在十一點四十，車就是那時被找到的。",
+        "carry_forward": "明天現勘，十個饅頭、一張護身符畫。"
+      }
+    },
+    {
+      "number": 115,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "今天不打",
+      "youtube_title": "碼頭現勘日法院、前夫家族和物流公司全到齊，光頭打手走過來說今天不打，保鏢回他今天吃",
+      "duration_s": 120,
+      "logline": "現勘日一早，所有人到了碼頭，林大楠要護住沈硯，卻發現鐵哥今天不一樣。",
+      "hook": "碼頭鐵門大開，法院執行人員陳志遠夾著地籍圖：「今天只看，不碰。」一陣海風把地籍圖吹上天。",
+      "hook_type": "image",
+      "mid_hook": "鐵哥走到他面前，雙手插口袋：「今天不打。」他撕開第一個饅頭：「今天吃。」",
+      "extra_hooks": [
+        "阿麗帶著倉庫二十個人站在沈硯身後，一人一頂硯通的安全帽，排得像一堵牆。"
+      ],
+      "conflict": "法院、魏家、硯通全在一塊地上，誰先動手誰輸，而他看不懂鐵哥為什麼雙手插口袋。",
+      "turn": "鐵哥不是怕他，是有人交代了今天他不用出手：魏家的人站位都讓出了一條路，像在等誰。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "魏家第三台車的後車廂打開，四個工人抬出一台鑽地機；魏寧走在前面：「要驗地，就要打開看。」",
+        "question": "魏家要鑽開那塊水泥嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "dalian"
+      ],
+      "spectacle": "法院的地籍圖被海風吹上天，前一格陳志遠伸手撲空，後一格地籍圖平平整整攤在他手上，他已經站在二十步外。",
+      "glamour_shot": "沈硯站在碼頭鐵門口，黑長外套被海風吹起，手腕上父親的舊錶露出來，身後二十頂安全帽一字排開。",
+      "setups": [
+        "s02-t26"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "硯通的人全員到場撐沈硯"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "s02-chen-zhixing",
+        "tie-ge",
+        "a-li",
+        "wei-ning"
+      ],
+      "locations": [
+        "舊碼頭"
+      ],
+      "state": {
+        "time": "第二季第 41 天上午",
+        "knowledge": "鐵哥今天不出手，魏家像在等人。",
+        "carry_forward": "魏寧帶了鑽地機。"
+      }
+    },
+    {
+      "number": 116,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "只看不碰",
+      "youtube_title": "前夫妹妹要當場鑽開碼頭水泥，法院執行人員一句話擋回去，鏽吊車的鐵鏈卻突然斷了",
+      "duration_s": 120,
+      "logline": "魏寧要在現勘時鑽開那塊水泥，沈硯要守住父親封了十年的地。",
+      "hook": "鑽地機的鑽頭對準那塊灰白水泥，魏寧舉手：「開。」陳志遠擋在鑽頭前：「不行。」",
+      "hook_type": "danger",
+      "mid_hook": "陳志遠翻開裁定書，一字一字念：「只看現況。」「不得破壞地表。」魏寧的臉僵住。",
+      "extra_hooks": [
+        "他在旁邊小聲問阿蒙：「破壞地表是什麼？」阿蒙：「就是不能挖。」他：「那我懂。」"
+      ],
+      "conflict": "魏寧要讓底下的東西見光，沈硯不知道底下是什麼，卻知道父親不想讓人挖。",
+      "turn": "鏽吊車頂的鐵鏈突然斷了一節，鐵鉤朝沈硯掉下來；他走了一步把她拉開，旁邊的鐵哥從頭到尾沒有動。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "魏寧放下手，換了一張笑臉：「打開看一眼。」「官司我們撤。」所有人看向沈硯。",
+        "question": "沈硯會為了撤告讓他們挖開嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "鏽紅吊車的鐵鉤從十層樓高砸下，前一格沈硯站在鉤下，後一格鐵鉤砸進空地，水泥碎屑裡她已在二十步外，被他扶著。",
+      "glamour_shot": "陳志遠一身深藍法院制服擋在鑽頭前，國字臉沒有表情；他身後的沈硯第一次對一個陌生人點頭致意。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "法院擋下鑽地",
+        "沈硯在吊車下毫髮無傷"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "wei-ning",
+        "s02-chen-zhixing",
+        "tie-ge",
+        "a-meng"
+      ],
+      "locations": [
+        "舊碼頭"
+      ],
+      "state": {
+        "time": "第二季第 41 天上午",
+        "knowledge": "法院不准挖；鐵哥看著吊車砸下也不動。",
+        "carry_forward": "魏寧開出撤告換開挖。"
+      }
+    },
+    {
+      "number": 117,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "今天有客人",
+      "youtube_title": "女總裁拒絕前夫家族的交換條件，保鏢逼問光頭打手為什麼不動，光頭說：上面說今天有客人",
+      "duration_s": 120,
+      "logline": "沈硯拒絕撤告換開挖，林大楠要知道鐵哥今天為什麼站著不動。",
+      "hook": "沈硯看著魏寧：「我爸封起來的，我不開。」魏寧的笑收了回去。",
+      "hook_type": "line",
+      "mid_hook": "他走到鐵哥旁邊，遞一個饅頭過去：「你為什麼不動？」鐵哥接了，沒吃：「上面說，今天有客人。」",
+      "extra_hooks": [
+        "老趙站在人群最後面，那隻有疤的手一直插在口袋裡，口袋在抖。"
+      ],
+      "conflict": "魏家今天最重要的人還沒到，而他不知道對方是誰。",
+      "turn": "鐵哥今天不打不是休戰：是今天輪不到他，他只是來看那個客人怎麼對付他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "碼頭入口開進來一台黑色老賓士，車門打開，一根烏木拐杖先落在地上。魏家所有人同時站直。",
+        "question": "下車的人是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenshi",
+        "dalian"
+      ],
+      "spectacle": "碼頭入口一台黑色老賓士緩緩駛入，魏家二十個人往兩邊讓開一條路，海風把塵土吹成一道牆。",
+      "glamour_shot": "他跟鐵哥並肩站著，一個光頭厚頸一個瘦得西裝掛不住，他嚼饅頭、鐵哥捏著沒吃的饅頭，兩人同時轉頭看向入口。",
+      "setups": [
+        "m04"
+      ],
+      "payoffs": [
+        "s02-t26"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈硯拒絕撤告換開挖",
+        "知道魏家今天在等一個客人"
+      ],
+      "characters": [
+        "lin-danan",
+        "shen-yan",
+        "wei-ning",
+        "tie-ge",
+        "lao-zhao"
+      ],
+      "locations": [
+        "舊碼頭"
+      ],
+      "state": {
+        "time": "第二季第 41 天中午",
+        "knowledge": "鐵哥今天不出手，是因為上面說有客人要來。",
+        "carry_forward": "魏老爺子的車到了。"
+      }
+    },
+    {
+      "number": 118,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "早該給我",
+      "youtube_title": "魏家真正的主事者第一次親自出現，拄著拐杖看那塊地看了很久，對女總裁說：妳爸十年前就該給我",
+      "duration_s": 125,
+      "logline": "魏老爺子第一次親自出現在碼頭，沈硯要在所有人面前直面這個十年來只聽過名字的人。",
+      "hook": "唐裝、烏木杖，魏老爺子下了車，沒看任何人，一步一步走到那塊灰白水泥前停住。",
+      "hook_type": "image",
+      "mid_hook": "他看著那塊地看了很久，才轉頭對沈硯說：「妳爸十年前，就該把這塊地給我。」",
+      "extra_hooks": [
+        "他口袋裡的十個饅頭只剩七個，魏老爺子瞥了他一眼：「這就是那個攤販？」"
+      ],
+      "conflict": "魏老爺子要的不只是地，他在等沈硯問出他想回答的問題。",
+      "turn": "魏老爺子不是來打官司的：他說的是十年前，他跟沈父之間有一筆沒算完的帳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "沈硯往前一步，跟魏老爺子面對面：「為什麼？」魏老爺子的拐杖慢慢抬起來，指的不是她，是她身後的林大楠。",
+        "question": "魏老爺子的拐杖為什麼指著他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenshi",
+        "dalian"
+      ],
+      "spectacle": "海風裡魏老爺子拄杖站在灰白水泥中央，所有人圍成一個圈，鏡頭從吊車頂往下拍，像一盤下到一半的棋。",
+      "glamour_shot": "沈硯往前一步站到魏老爺子面前，黑長外套在海風裡翻起，抬著下巴，手腕上那支停了的錶露出來。",
+      "setups": [
+        "s02-t27",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "沈硯第一次正面對上魏老爺子"
+      ],
+      "characters": [
+        "wei-laoyezi",
+        "shen-yan",
+        "lin-danan",
+        "wei-ning",
+        "wei-cheng",
+        "tie-ge"
+      ],
+      "locations": [
+        "舊碼頭"
+      ],
+      "state": {
+        "time": "第二季第 41 天中午",
+        "knowledge": "魏老爺子說沈父十年前就該把地給他。",
+        "carry_forward": "他的拐杖指向林大楠。"
+      }
+    },
+    {
+      "number": 119,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "等人來拿",
+      "youtube_title": "魏家老爺子要買下保鏢開口隨他開價，攤販笑著拒絕，女總裁當眾念出父親留下的六個字",
+      "duration_s": 130,
+      "logline": "魏老爺子想先買走林大楠，沈硯要回答父親十年前為什麼不肯把地給魏家。",
+      "hook": "拐杖停在他胸前：「攤販，開個價。」他嚥下饅頭：「多少都行？」",
+      "hook_type": "question",
+      "mid_hook": "他笑了：「收了錢就做到底。我收的是她的。」魏家的人第一次看見魏老爺子臉上的皺紋動了一下。",
+      "extra_hooks": [
+        "他把魏老爺子遞來的支票摺成一個小紙船，放在水泥上：「這個也不夠買一碗麵。」"
+      ],
+      "conflict": "魏老爺子以為所有人都有價錢，沈硯以為父親只是固執；兩個人都要在今天知道答案。",
+      "turn": "沈硯從外套口袋拿出父親夾在補地工單後面的一張便條，當眾念：「碼頭不賣。等人來拿。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "魏老爺子的臉色第一次變了：「等誰？」話音剛落，老趙在人群最後面整個人僵住，他身後有一陣腳步，一下在、一下不在。",
+        "question": "老趙身後走過來的是誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "shenshi",
+        "xuanyi"
+      ],
+      "spectacle": "支票折成的小紙船被海風吹過灰白水泥，前一格它要掉進海裡，後一格它停在他的鞋尖上，他低頭撿起來放回魏老爺子手裡。",
+      "glamour_shot": "他站在魏老爺子面前笑，不合身的黑西裝被海風吹得鼓起，饅頭屑還在嘴角，眼神卻一點也不懶。",
+      "setups": [],
+      "payoffs": [
+        "s02-t27"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他當眾拒絕魏老爺子收買",
+        "沈硯說出父親不肯給地的理由：地是留給人來拿的"
+      ],
+      "characters": [
+        "lin-danan",
+        "wei-laoyezi",
+        "shen-yan",
+        "lao-zhao",
+        "wei-ning"
+      ],
+      "locations": [
+        "舊碼頭"
+      ],
+      "state": {
+        "time": "第二季第 41 天中午",
+        "knowledge": "沈父留下「碼頭不賣，等人來拿」；魏老爺子不知道在等誰。",
+        "carry_forward": "一個走路沒聲音的人正從魏家身後走過來。"
+      }
+    },
+    {
+      "number": 120,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "底下有東西",
+      "youtube_title": "灰西裝的人從魏家老爺子身後走出來，看了保鏢一眼，說出魏家要這塊地的真正原因",
+      "duration_s": 160,
+      "logline": "沈硯問魏家為什麼非要這塊地，答案從一個沒有腳步聲的人嘴裡說出來，林大楠第一次知道自己不是最快的。",
+      "hook": "老趙身後，一個灰西裝、灰頭髮的人從魏老爺子背後走出來，走路沒有聲音；魏家的人自動讓開。",
+      "hook_type": "image",
+      "mid_hook": "灰西裝看了林大楠一眼，就一眼，他手上的饅頭掉在地上，滾到那塊灰白水泥中央。",
+      "extra_hooks": [
+        "魏寧低頭看了一眼手機，又看灰西裝，臉色發白：那個平的聲音，就是電話那頭的人。",
+        "沈硯抓住他的袖子，他第一次發現自己的手在抖，卻不是因為餓。"
+      ],
+      "conflict": "魏家要地的理由終於要說出口，而說話的人是唯一一個比他更會走的人。",
+      "turn": "灰西裝說的不是給沈硯聽的：「因為底下有東西。」魏家要地，他要的是地底下的東西，而他今天來，是來看林大楠。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "灰西裝問他：「你走幾步了？」他說：「二十。」灰西裝說：「不夠。」轉身，下一格人在碼頭的另一頭，什麼都沒掉。",
+        "question": "這個不餓的人，到底能走幾步？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        5,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenshi",
+        "dalian"
+      ],
+      "spectacle": "灰西裝轉身，前一格他站在水泥中央，後一格碼頭盡頭的鈉燈下多了一個灰色的人，地上沒有饅頭、沒有衛生紙，什麼都沒掉。",
+      "glamour_shot": "林大楠站在掉落的饅頭旁的慢動作回頭，海風把黑西裝與鬆開的領帶吹到一邊，第一次沒有在嚼東西，眼神死死盯著碼頭的另一頭。",
+      "setups": [
+        "m11",
+        "m04"
+      ],
+      "payoffs": [
+        "s02-t22",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "魏家要碼頭地的真正原因說出口：底下有東西",
+        "他親眼看見另一個會走的人不掉任何東西"
+      ],
+      "characters": [
+        "lin-danan",
+        "lin-jiu",
+        "shen-yan",
+        "wei-laoyezi",
+        "wei-ning",
+        "lao-zhao",
+        "tie-ge"
+      ],
+      "locations": [
+        "舊碼頭"
+      ],
+      "state": {
+        "time": "第二季第 41 天下午",
+        "knowledge": "魏家要地，灰西裝要地底下的東西；那人會走、不餓、什麼都不掉，說他的二十步不夠。",
+        "carry_forward": "他要走得更遠：第三季，三十步。"
+      }
+    }
+  ]
+}
