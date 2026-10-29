@@ -4,9 +4,26 @@
   "format": "slides",
   "category": "tutorial",
   "theme": "paper",
-  "target_minutes": [
-    10,
-    12
-  ],
-  "scenes": []
+  "target_minutes": [10, 12],
+  "voice": { "provider": "gemini", "name": "Sulafat" },
+  "subtitles": { "burn_in": false },
+  "youtube": {
+    "category_id": 28,
+    "made_for_kids": false,
+    "default_language": "zh-TW",
+    "title": "你跟 AI 說的話誰看得到？關掉訓練，還有兩個開關開著",
+    "description": "骨架，稍後填寫。",
+    "tags": ["AI 隱私設定"],
+    "video_id": null
+  },
+  "scenes": [
+    { "id": "open-title", "chapter": "關掉 AI 訓練，就沒人看得到嗎？", "template": "title", "data": { "title": "骨架" }, "lines": [{ "id": "hw9f", "text": "骨架。" }] },
+    { "id": "ch1-resume", "chapter": "訓練、記憶、人工審查差在哪？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "bhtz", "text": "骨架。" }] },
+    { "id": "ch2-compare", "chapter": "關掉訓練之後，還開著什麼？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "ebiz", "text": "骨架。" }] },
+    { "id": "ch3-gemini-steps", "chapter": "Gemini、Claude、ChatGPT 隱私設定在哪？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "hsbb", "text": "骨架。" }] },
+    { "id": "ch4-canary-chat", "chapter": "怎麼知道 AI 有沒有記住你？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "gpgn", "text": "骨架。" }] },
+    { "id": "ch5-term1", "chapter": "刪掉的對話會留多久？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "m9se", "text": "骨架。" }] },
+    { "id": "ch6-actions", "chapter": "AI 隱私設定：今天先做這三件", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "emfq", "text": "骨架。" }] },
+    { "id": "closing", "template": "outro", "data": { "title": "骨架" }, "lines": [{ "id": "5hcs", "text": "骨架。" }] }
+  ]
 }
