@@ -1,0 +1,44 @@
+{
+  "slug": "2025-20-jiating-zhufu",
+  "title": "三年期滿，我收回岳家的風光",
+  "format": "drama",
+  "genre": "custom",
+  "retention": true,
+  "seasons": 5,
+  "episodes_per_season": 60,
+  "episodes_per_chapter": 10,
+  "planned_episodes": 300,
+  "episode_seconds": { "min": 90, "max": 180, "chapter_finale_min": 120 },
+  "hooks_per_episode": {
+    "min": 3,
+    "max": 5,
+    "why": "站主 2026-10-28：每集 3–5 個鉤子。每集寫 hook（前 3 秒）、mid_hook（片長一半）、cliffhanger（最後一格），可再加 extra_hooks 0–2 句；lib/validate.mjs 擋掉寫成同一件事的。"
+  },
+  "closed_ending": false,
+  "ending_note": "第五季收掉主線：邢度養大的冰風暴被搬上北嶺，她鎖葉順槳的風機扛了一整夜，峪城一盞燈沒滅；邢度的基金押在冰災上一夜清算，聽完三百年前的另一個版本；鞏雪眉交出冬生留給她的信；他要回無風頂再坐兩百年，她抱著自己煮的第三十七鍋湯上山，他喝完站起來，一號風場四十架風機重新轉起來，尚家的雪匣多了一片新的雪；兩人不說復婚，只說『明天的菜錢，我出』『好』。第 300 集最後一格，三年來從不回頭的他回頭了，一個一千年沒聽過的聲音叫他的本名『應長晝』，留第二部的口子。站主要收死的話，刪掉最後一格、收在那聲『好』與四十架轉起來的風機即可（cliffhanger 仍是 reversal：要回山上坐兩百年的人，站起來了）。",
+  "aspect": { "decided": null, "suggested": "16:9", "why": "照《種田娶妻打天下》的建議；天氣奇觀（停在半空的雨、雲開一個圓）需要橫式的天空。" },
+  "admin_mapping": "每一季在 /admin/videos 開一部作品（kind series、format drama、planned_episodes 60、episodes_per_chapter 10、genre custom）；target_minutes 填 2；每集實際秒數照 duration_s。",
+  "production": {
+    "provider": "海螺（MiniMax Hailuo）圖生影片，照《種田娶妻打天下》plan.json 的路線。",
+    "look": "真人電影感現代都市・天氣奇觀：河谷城、山嶺上的白色風機、高原光田；第一季晴得不真實的金與藍、第二季灰綠的雨、第三季雷雨夜的冷白、第四季秋風裡的黃草與白塔筒、第五季冬日的清光；廚房永遠是一盞暖黃的燈與一口冒氣的鍋。",
+    "shot_rules": "照 skill youtube-video 的 references/drama-craft.md；前 3 秒允許是潑湯羞辱與院牆外停在半空的暴雨的反差；天氣奇觀一律從他的臉切到天、再切回他的臉，他本人不做任何招式動作。",
+    "reuse": "固定場景：尚家大宅的廚房與前廳雪匣、無風頂一號風場、北嶺瞭望塔與她的風機、鞏家正廳與後院小屋、老城舊公寓與菜市場；天氣奇觀（停雨、雲圓、靜水、爬窗的霜）做成一組可跨集重用的合成層。",
+    "voice": "國語；易平低、慢、平，一句很少超過五個字；尚未晴清、冷、快；裘翠屏尖、碎；鞏雪眉老而亮；粥粥童聲；老廉粗、慢；第 1 集前要站主試聽核定。"
+  },
+  "cost_estimate": {
+    "basis": "同《種田娶妻打天下》plan.json。",
+    "per_episode": "平均約 120 秒一集 ≈ 3,000–3,800 點。",
+    "per_season": "60 集 ≈ 18–23 萬點；五季 ≈ 90–115 萬點。",
+    "levers": "文戲（廚房、飯桌、董事會、鞏家正廳）一張首格＋緩推可省六到七成；天氣奇觀做成可重用的合成層與空景，跨集重用；風場、北嶺與無風頂每季各拍一組全景。",
+    "owner_decision": true
+  },
+  "advertiser_safety": "見 setting.json advertiser_safety 與 glamour。",
+  "ready_for_import": false,
+  "why_not_ready": "這是企劃包（plan、設定集、五季總綱），不是逐集細綱或分鏡劇本；season-01.json～season-05.json 待寫。",
+  "reference": {
+    "work": "《家庭煮夫》（河馬劇場 2025 男頻短劇；DataEye 2025 年度熱力值百強第 5、5944.9 萬，本表 2025 第 20 名補位）",
+    "how": "只學套路：隱藏頂級實力、主動忍辱的贅婿；遺囑婚約與三年倒數；約期內不露身分、不還手、庇護暗中給，約滿一次收回；勢利岳家、看不起他的妻子、富二代情敵、最先察覺他不凡的閨蜜型配角；資源多米諾收回、大人物彎腰的身分揭露、換身分亮實力、追妻火葬場、妻子悔悟自立、開放式結局。力量的形式（天氣與『靜』，不是武力）、三年老湯、雪匣七家與不化的雪、無風頂與北嶺、一鍋湯換一輩子的風、風光能源集團與她的風機、峪城、人名、劇情與台詞全部原創，不搬原劇情節。"
+  },
+  "title_candidates": ["三年期滿，我收回岳家的風光", "他走的那天，岳家下雨了", "岳家晴了一千零九十五天"],
+  "title_decision": "未定；先用候選第一個，站主可改。"
+}
