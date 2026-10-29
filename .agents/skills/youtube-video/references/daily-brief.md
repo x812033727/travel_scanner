@@ -7,7 +7,7 @@
 ## 一、選題
 
 1. 跑 `node .agents/skills/youtube-video/scripts/daily_news_pick.mjs --date YYYY-MM-DD`（預設昨天，台北時間）。它讀站上公開的 `ai-news`、`tech-news` 列表，依 `news_date`（事件日，不是批次匯入的 `published_at`）篩出那一天的新聞，印出標題、摘要、網址與 slug。
-2. 從中挑 5–8 則，寫進 `docs/videos/daily-ai-YYYYMMDD/brief.md` 的〈選題〉表：每則一列，寫**排在這個位置的理由**（影響多少台灣使用者、能不能馬上用、錢、資安）。排序本身就是編輯判斷，YouTube 的「不真實內容」政策看的就是這種判斷，不能照時間或照來源順序排。
+2. 從中挑 5–8 則，寫進 `docs/videos/<slug>/brief.md`（slug 是 `daily-ai-YYYYMMDD`）的〈選題〉表：每則一列，寫**排在這個位置的理由**（影響多少台灣使用者、能不能馬上用、錢、資安）。排序本身就是編輯判斷，YouTube 的「不真實內容」政策看的就是這種判斷，不能照時間或照來源順序排。
 3. 同一件事的幾篇（例如 Google 財報與 Gemini 4 Carbon 發表）合成一則，用最完整的那篇當主來源。
 4. 不選：沒有官方來源的傳聞、純財報數字而跟觀眾無關的、站上文章標成需要人工審核還沒發布的。加密貨幣新聞照站上規則不談價格，快報裡也不講。
 
@@ -33,7 +33,7 @@
 1. `brief.md` 不出三個大綱：快報的「大綱」就是選題表，站主在 `review-push --gate outline` 看的是排序。
 2. 撰稿後 `lint` 要 0 錯誤，另派一個代理照 `prompts/verifier-video.md` 查核，每則的事實都對回站上文章與它的 `sources`。
 3. `narrative` 用快報措辭讀；沒過的題目改稿重讀，不改題目。
-4. 媒體檔放 repo 外（`~/mokaair-work/videos/daily-ai-YYYYMMDD/`），只 commit `docs/videos/daily-ai-YYYYMMDD/` 的文字檔。
+4. 媒體檔放 repo 外（`<VIDEO_WORKDIR>/<slug>/`），只 commit `docs/videos/<slug>/` 的文字檔。
 5. 手動推送的片子每一關都等站主核准；交付時給後台審核連結與 `contact-sheet.png`。
 
 ## 五、試做後要量的

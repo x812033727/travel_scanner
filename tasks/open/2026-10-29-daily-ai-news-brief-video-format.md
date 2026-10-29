@@ -55,5 +55,7 @@ node .agents/skills/youtube-video/scripts/daily_news_pick.mjs --date 2026-10-28
   once; the channel intro/outro package is not in git, so episodes made here have none
   unless `branding --install` can fetch it. Hand-pushed videos wait for the owner at every
   gate.
-- `npm run test:tools` has 82 failures on main in the cloud container (environment); this
-  change adds none.
+- Run `npm ci` at the root before `npm run test:tools` or `cli.mjs login`: without it the
+  tool tests fail by the dozen (missing `pinyin-pro` and others) and hide real failures.
+- `tools/skills.test.mjs` refuses repository paths that do not exist yet and machine paths
+  (`mokaair-work`): write `docs/videos/<slug>/` and `<VIDEO_WORKDIR>/<slug>/` in a skill.
