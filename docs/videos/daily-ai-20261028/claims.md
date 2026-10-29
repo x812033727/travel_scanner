@@ -17,7 +17,7 @@ c5｜Google 稱 Carbon 具最先進的網路安全與長時程任務能力；目
 c6｜卡片：排名與跑分皆為 Google 自述；Artificial Analysis Intelligence Index v5.0 59 分第一（未上卡，只在說明欄概括）｜同上 ; https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028｜2026-10-28｜c-open
 c7｜Google 說內部團隊看到 Carbon 連續運行數天，處理大型程式碼庫與底層系統中的複雜多步驟工程任務｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-long
 c8｜從本週起先提供給一部分網路防禦人員，再透過 Fairwind Program 逐步擴大到更多受信任的合作夥伴，之後才提供給開發者、企業與消費者｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-order
-c9｜卡片：Fairwind Program 全球超過 650 個參與夥伴（Google 2026-09-02 說法；DeepMind 頁描述的是 Argon 的存取）｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/ ; https://deepmind.google/fairwind-program/｜2026-10-28｜c-order
+c9｜卡片：Carbon 透過 Fairwind Program 逐步開放；650 多個是整個計畫的參與夥伴數（Google 2026-09-02 說法，DeepMind 頁今日仍寫 over 650；DeepMind 頁描述的是 Argon 的存取），不是 Carbon 已開放的夥伴數（verify-1 改）｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/ ; https://deepmind.google/fairwind-program/｜2026-10-28｜c-order
 c10｜一般人的開放日期沒有公布；Google 說先收集回饋、調整防護，再盡快開放｜https://mokaair.com/zh-TW/life/tech-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-when
 c11｜導入期價格與兩週前推出的 Argon 相同：每百萬輸入 token 2 美元、輸出 10 美元；導入期後輸入 4 美元、輸出 20 美元（旁白：都變成兩倍）｜https://mokaair.com/zh-TW/life/ai-news-gemini-4-carbon-20261028 ; https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-carbon/｜2026-10-28｜c-price
 c12｜財報電話會議上 Google 說 Gemini 應用程式達 10 億使用者；Alphabet 營收年增 25%、Google Cloud 營收成長 103%（自述，無第三方確認）｜https://mokaair.com/zh-TW/life/ai-news-alphabet-q3-earnings-gemini-carbon-20261028 ; https://blog.google/company-news/inside-google/message-ceo/alphabet-earnings-q3-2026/｜2026-10-28｜c-users
@@ -41,7 +41,7 @@ c24｜亮度、續航、「全球最佳筆電顯示器」都是 Apple 的說法�
 
 c25｜100 億美元來自微軟在監管文件中的揭露（TechCrunch 報導），包括 OpenAI 的營收分成付款｜https://mokaair.com/zh-TW/life/ai-news-microsoft-openai-revenue-20261028 ; https://techcrunch.com/2026/10/28/microsoft-recorded-10-billion-in-revenue-from-openai/｜2026-10-28｜ms-open, ms-what
 c26｜卡片：約占微軟單季總營收 923 億美元的近 11%｜同上｜2026-10-28｜ms-open
-c27｜兩家公司日益爭奪相同客戶，財務上仍緊密相連（TechCrunch）｜同上｜2026-10-28｜ms-open
+c27｜兩家公司日益爭奪相同客戶，財務上仍緊密相連（TechCrunch）；開場改成「越來越像對手的 OpenAI」（verify-1 改）｜同上｜2026-10-29｜open-ms, ms-open
 c28｜這筆營收中有多少來自營收分成、多少來自 Azure，目前不清楚，TechCrunch 已詢問｜同上｜2026-10-28｜ms-what
 c29｜卡片：據報 20% 分成比例未獲兩家公司公開證實｜同上｜2026-10-28｜ms-what
 c30｜這是營收不是獲利；72 億美元應收帳款是 OpenAI 為過往交易所欠，不是額外營收｜同上｜2026-10-28｜ms-profit
@@ -59,17 +59,17 @@ c38｜卡片：限時內付費 Copilot 方案使用者的 Fusion 模型費用享
 c39｜卡片：所有 Copilot 方案可在 VS Code、GitHub Copilot app、Copilot CLI、JetBrains IDE 使用；需先更新用戶端｜同上｜2026-10-28｜g-try, g-steps
 c40｜與 GitHub 或 Microsoft 客戶團隊合作的企業，每位 GitHub Enterprise 授權用戶可取得 Copilot，改為管理企業預算下的 AI 用量｜https://mokaair.com/zh-TW/life/ai-news-github-enterprise-includes-copilot-20261028 ; https://github.blog/changelog/2026-10-28-github-enterprise-now-includes-access-to-github-copilot/｜2026-10-28｜g-ent
 c41｜預算用盡不移除存取權；程式碼補全與下一步編輯建議無預算仍可用；Copilot Chat、程式碼審查、雲端 Copilot 需要可用預算｜同上｜2026-10-28｜g-budget
-c42｜自助訂閱客戶目前無法使用，GitHub 將分階段開放，並在未來數週公布日期｜同上 ; https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/｜2026-10-28｜g-steps
+c42｜「目前無法使用」只指自行管理訂閱的 GitHub Enterprise 客戶（changelog：If you manage your own subscription: Currently unavailable… Your current subscription is unaffected），不是個人 Copilot 訂閱；GitHub 將分階段開放，並在未來數週公布日期（verify-1 把 vrdm 與卡片改成「自助訂閱 Enterprise」）｜同上 ; https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/｜2026-10-28｜g-steps
 c43｜「先問 IT 帳戶轉換了沒有」：頻道建議，依 c40（需洽業務團隊設定新帳戶或轉換現有帳戶）｜https://mokaair.com/zh-TW/life/ai-news-github-enterprise-includes-copilot-20261028｜2026-10-28｜g-steps
 c44｜Octoverse：2026 年 3 月 17%、9 月超過 40% 的 pull request 由 AI 代理起草；代理偵測是下限（GitHub 平台資料）｜https://mokaair.com/zh-TW/life/tech-news-github-octoverse-2026-agents-20261028 ; https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/｜2026-10-28｜g-octo
-c45｜模型相關數字描述觀察到的使用情況，不是品質（GitHub）｜同上｜2026-10-28｜g-quality
+c45｜GitHub 的「Figures describe observed use, not model quality」是講模型選擇那一節的數字，不是代理起草 PR 的占比；卡片改引站上文章「不能直接推論程式品質」與 GitHub 的「agent signal 是下限」，旁白 gm5u 是頻道的推論（verify-1 改）｜https://mokaair.com/zh-TW/life/tech-news-github-octoverse-2026-agents-20261028 ; https://github.blog/news-insights/octoverse/octoverse-commits-pushes-reach-new-highs-in-2026-as-developers-build-with-agents/｜2026-10-29｜g-quality
 c46｜開發者負責方向與決定，並對上線內容負責；代理負責實作與驗證（GitHub Universe 的說法）｜https://mokaair.com/zh-TW/life/tech-news-github-universe-copilot-20261028 ; https://github.blog/news-insights/company-news/github-universe-2026-evolving-every-layer-of-the-stack/｜2026-10-28｜g-quality
 
 ## 5 Instagram
 
 c47｜The Verge 2026-10-28 報導 Adam Mosseri 在 Colin and Samir podcast 說：「It's not only getting worse, it's going to continue to get worse.」｜https://mokaair.com/zh-TW/life/ai-news-instagram-mosseri-ai-negativity-20261028 ; https://www.theverge.com/ai-artificial-intelligence/1021644/adam-mosseri-instagram-ai-negativity｜2026-10-28｜i-open
 c48｜Instagram 正開始要求 AI 帳號自我標示，讓人知道所看內容是真是假｜同上｜2026-10-28｜i-label
-c49｜Instagram 在研究怎麼處理 AI 假內容；Mosseri 本月稍早表示禁止 AI 內容不實際；稱不會對 AI 創作者另行排序｜同上｜2026-10-28｜i-limits
+c49｜Instagram 在研究怎麼處理 AI 假內容、禁止 AI 內容不實際：The Verge 寫明是 Mosseri 本月稍早的說法，不是這場 podcast；稱不會對 AI 創作者另行排序（podcast）。卡片來源改成「Mosseri 本月的說法」（verify-1 改）｜同上｜2026-10-29｜i-limits
 c50｜「Do we rank AI content as well as we rank non-AI content? Probably not.」｜同上｜2026-10-28｜i-rank
 c51｜名人深偽等誤導性 AI 內容在 Instagram 上仍是問題（The Verge）｜同上｜2026-10-28｜i-deepfake
 c52｜「看名人推薦影片先看標示；沒標示不能當成真人保證」：頻道建議，依 c48（標示是帳號自我標示）與 c51｜同上｜2026-10-28｜i-you, i-you2
@@ -78,7 +78,7 @@ c52｜「看名人推薦影片先看標示；沒標示不能當成真人保證�
 
 c53｜Chrome 強化自動填入 2026-10-28 起開始推出，填網路表單時建議 Gmail 裡的訂單編號、物流追蹤、航班訂位；由 Gemini 驅動｜https://mokaair.com/zh-TW/life/ai-news-chrome-autofill-gmail-20261028 ; https://blog.google/products-and-platforms/products/chrome/enhanced-autofill-gmail/｜2026-10-28｜ch-open
 c54｜先在美國的桌面、Android、iOS 推出，對象是已啟用 Personal Intelligence 的 Chrome 內 Gemini 使用者；台灣開放時間未公布｜同上｜2026-10-28｜ch-us
-c55｜Google 說敏感資料會加密；未來「即將」擴大到 Google 相簿圖庫中的圖片資訊（無日期）｜同上｜2026-10-28｜ch-mail
+c55｜Google 說敏感資料會加密、由使用者控制（As always, sensitive data is encrypted and you remain in control）。Google 相簿的擴大計畫 2026-10-29 已不在 Google 文章上（頁面 dateModified 2026-10-28T20:21Z，晚於站上文章），旁白與卡片刪掉（verify-1 改）｜同上｜2026-10-29｜ch-mail
 c56｜可在 Chrome 設定中管理是否啟用強化自動填入，以及它可存取的內容；Personal Intelligence 需使用者自行啟用｜同上｜2026-10-28｜ch-switch
 
 ## 7 南韓金融業
@@ -86,7 +86,7 @@ c56｜可在 Chrome 設定中管理是否啟用強化自動填入，以及它可
 c57｜TechCrunch 2026-10-28 報導南韓金融業新一波網路攻擊；引述當地新聞，大信證券 38,490 名客戶的姓名、電子郵件、手機號碼外洩｜https://mokaair.com/zh-TW/life/tech-news-south-korea-finance-cyberattacks-20261028 ; https://techcrunch.com/2026/10/28/south-koreas-financial-industry-hit-by-fresh-wave-of-cyberattacks/｜2026-10-28｜k-open
 c58｜未來資產環球投資與 Bithumb 於週三各自通報資安事件，都未證實客戶資料遭竊｜同上｜2026-10-28｜k-three
 c59｜約一個月前另一系列攻擊；研究人員把 9 月那波連到使用 AI 滲透測試工具 Artex 的疑似中國駭客；最新事件根本原因仍在調查｜同上｜2026-10-28｜k-bg, k-artex
-c60｜南韓金融監管機構呼籲加強資安，計畫對民間數十個資訊系統進行安全檢查｜同上｜2026-10-28｜k-reg
+c60｜南韓金融監管機構呼籲加強資安；計畫檢查民間數十個資訊系統的主詞是「The country」，不是監管機構，旁白與卡片改成「南韓也計畫…」（verify-1 改）｜同上｜2026-10-29｜k-reg
 c61｜大信證券已通知受影響客戶、配合當局調查｜同上｜2026-10-28｜k-reg
 c62｜「從官方管道確認通知」依站上文章的建議（留意正式通知、以官方管道確認）；「改密碼、同組密碼一起改、小心冒充訊息」是頻道的一般防護建議，卡片來源欄已標明｜https://mokaair.com/zh-TW/life/tech-news-south-korea-finance-cyberattacks-20261028｜2026-10-28｜k-you
 
@@ -117,4 +117,4 @@ c64｜片尾「今天能動手的三件」對應 c43、c52、c62｜—｜—｜c
 - [x] video.json 全部場景（開場、七則、我的看法、片尾）
 - [x] lint 0 錯誤 0 警告（2026-10-29，估計 11.1 分鐘）
 - [x] 每個卡片狀態估計 ≤ 15 秒（最長 14.0 秒，closing）
-- [ ] 查核代理逐條對回站上文章與官方來源
+- [x] 查核代理逐條對回站上文章與官方來源（verify-1.md，2026-10-29；改了 7 處，需要 verify-2）
