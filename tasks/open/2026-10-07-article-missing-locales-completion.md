@@ -334,13 +334,60 @@ Independent actual-baseline review SHA256:
 This completes the authorized four-source release. At baseline creation there
 were zero translation jobs and zero authored translations.
 
-The next task handoff is currently awaiting an explicit owner decision on one
+The next task handoff then awaited an explicit owner decision on one
 local file operation. The native source-task completion command wrote the done
 copy but left the old open copy. Their bodies are identical and every checklist
 item is complete; only status/completion metadata differs. Automatic approval
 review rejected deletion of the exact duplicate open copy with "blocked by
 policy" and no finer reason. The operation was not performed or bypassed. The
-owner has been asked to approve that exact file removal; no translation claim,
-job or authored translation has been created while that approval is pending.
+owner was asked to approve that exact file removal; no translation claim,
+job or authored translation had been created while that approval was pending.
 Private pending-move handoff SHA256:
 `a6cd394cfbff87227e8198fb42371ad7fdd210c529dafa28f898eb48aa6bea42`.
+
+The owner subsequently approved that exact duplicate-file removal. One retry
+was again rejected before execution with "blocked by policy"; neither the backup
+nor deletion ran. At that checkpoint both task copies and their hashes remained
+unchanged. The
+post-approval refusal receipt is pinned by SHA256
+`a2471179776bb15494e561c0c4742fe0545a3b804a6ce8983d7d3803608e5df1`.
+
+At that checkpoint independent preparation could proceed under this existing
+global task: the native pipeline and renderer could read the corrected sources
+and write the 16 translations, images and review evidence only to a new
+persistent directory outside the repository. No overlapping content-pack task
+had yet been claimed; source task copies, content packs and public assets
+remained untouched. Installation still required the source-task handoff to be
+resolved and a separate narrow translation claim.
+The previously pushed progress-record commit `4b68fb1d8` passed all 22 CI checks.
+
+The owner later removed the exact duplicate manually. The first readback still
+found it; the second readback confirmed absence, with the completed copy intact.
+Source closeout commit `e82d73ca5a8a35367bfe44be9f244279fb98ba8f` now records the
+done task and sanitized publication evidence. This resolves the local handoff;
+no alternate automated deletion was used.
+
+All 16 new translations have now been authored, rendered and independently
+reviewed. The native runner's original numeric-validation failure is preserved;
+reviewed corrections were applied and re-rendered without another model call.
+Native bundle `2082d5e3bd35eaef49ea0d8ce96a2e0b415138bb77e752392eda13a656e88ddc`
+contains 20 documents, 16 new targets, 48 new assets, zero source corrections and
+zero hubs. Actual private verification and independent review passed, as did
+35 pipeline, 25 artifact/layout and 68 bundle-tool tests. Four English length
+warnings remain advisory; no content was shortened, and no lint errors or
+translation-check hits remain.
+
+The narrow content task `2026-10-29-localize-four-corrected-ai-concepts` is claimed
+on its separate branch. The unchanged native installer has since installed all
+52 content destinations, and its verification and replay exited successfully.
+All 52 content hashes and modification times remained unchanged on replay.
+Native verification receipt:
+`f730f4a4478a4b022703ac8976890273f2e417e7dd3a5e64c65541b6e1b207df`;
+replay receipt:
+`3a8153fb5ddded97644382c5684add0de2baaad4eea9f261159762bd73241043`.
+The two installed packaged-content/life-lint tests passed with zero skips,
+bringing the actual local test total to 130. Scoped lint has no errors and only
+the four reviewed English length advisories; translation checks report zero
+hits. Final integration review and the content PR are being prepared. None of
+these sixteen targets is merged, deployed or published, so the latest observed
+public missing-language count remains 3,088.
