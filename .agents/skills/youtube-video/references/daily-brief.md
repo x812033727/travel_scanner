@@ -1,13 +1,13 @@
 # 每日 AI／科技快報（daily-ai-YYYYMMDD）
 
-站主 2026-10-29 定：每天一支約 10 分鐘的影片，把前一天全球 AI／科技新聞的重點講完。走全自動投影片路線（Gemini 台灣口音旁白、深色或 paper 版型、繁中 CC）。先試做一週（週一到週五五集），由代理在工作階段裡製作，站主在後台過每一關、自己上傳；試做的數據好再接主機工人。票是 `tasks/open/2026-10-29-daily-ai-news-brief-video-format.md`。
+站主 2026-10-29 定：每天一支約 10 分鐘的影片，把前一天全球 AI／科技新聞的重點講完。走全自動投影片路線（Gemini 台灣口音旁白、深色或 paper 版型、繁中 CC）。第一集（`daily-ai-20261028`）由代理在工作階段裡做；同一天站主決定交給主機工人全自動做（下面第四節），站主每天只做兩件事。格式的票是 `tasks/open/2026-10-29-daily-ai-news-brief-video-format.md`，主機工人那一半是 `tasks/open/2026-10-29-daily-brief-on-the-host-worker.md`。
 
 這是 SKILL.md 規矩 11「一支影片一個故事」的唯一例外：一集講 5–8 則新聞，一則一章，像新聞節目。把整集串起來的是**一個觀點**：每一則都回答「這對台灣的觀眾改變了什麼」，片尾「我的看法」用這個觀點收束。說故事關卡的十三題 id 與必答旗標不變，`daily-ai-` 開頭的 slug 會自動換成快報的措辭（`tools/video/core/narrative.mjs` 的 `DAILY_BRIEF_PANEL_QUESTIONS`）。其餘規矩照舊：8 分鐘以上、一個狀態不超過 15 秒、出處放卡片與說明欄、字卡 zh-TW。
 
 ## 一、選題
 
-1. 跑 `node .agents/skills/youtube-video/scripts/daily_news_pick.mjs --date YYYY-MM-DD`（預設昨天，台北時間）。它讀站上公開的 `ai-news`、`tech-news` 列表，依 `news_date`（事件日，不是批次匯入的 `published_at`）篩出那一天的新聞，印出標題、摘要、網址與 slug。
-2. 從中挑 5–8 則，寫進 `docs/videos/<slug>/brief.md`（slug 是 `daily-ai-YYYYMMDD`）的〈選題〉表：每則一列，寫**排在這個位置的理由**（影響多少台灣使用者、能不能馬上用、錢、資安）。排序本身就是編輯判斷，YouTube 的「不真實內容」政策看的就是這種判斷，不能照時間或照來源順序排。
+1. 候選是站上已發布的 `ai-news`、`tech-news` 文章，依 `news_date`（事件日，不是批次匯入的 `published_at`）取前一天的。主機上由伺服器在每天的請求裡給（最多 12 則，`apps/api/app/video_automation/daily_briefs.py`）；在工作階段裡手做時跑 `node .agents/skills/youtube-video/scripts/daily_news_pick.mjs --date YYYY-MM-DD`（預設昨天，台北時間），它印出同樣的標題、摘要、網址與 slug。
+2. 從中挑 5–8 則，寫進 `docs/videos/<slug>/brief.md`（slug 是 `daily-ai-YYYYMMDD`）的〈選題〉表：每則一列，寫**排在這個位置的理由**（影響多少台灣使用者、能不能馬上用、錢、資安）。排序本身就是編輯判斷，YouTube 的「不真實內容」政策看的就是這種判斷，不能照時間或照來源順序排。主機上這一步是企劃模型做的（variant `daily`），規矩與這裡相同。
 3. 同一件事的幾篇（例如 Google 財報與 Gemini 4 Carbon 發表）合成一則，用最完整的那篇當主來源。
 4. 不選：沒有官方來源的傳聞、純財報數字而跟觀眾無關的、站上文章標成需要人工審核還沒發布的。加密貨幣新聞照站上規則不談價格，快報裡也不講。
 
@@ -26,16 +26,21 @@
 - **我的看法（最後一章，3–5 句）**：今天最重要的是哪一則、為什麼；一句承認不確定；一個留言題。不提下一集。
 - 說明欄開頭揭露：旁白為 AI 合成語音、內容依官方來源整理。
 
-## 四、製作順序（代理在工作階段裡做）
+## 四、主機工人怎麼做（2026-10-29 起）
 
-照 `automated.md` 的指令，差別只有：
+全自動，跟其他教學影片走同一條產線（`automated.md`、`docs/videos/AUTOMATION.md` §每日 AI 快報），差別如下：
 
-1. `brief.md` 不出三個大綱：快報的「大綱」就是選題表，站主在 `review-push --gate outline` 看的是排序。
-2. 撰稿後 `lint` 要 0 錯誤，另派一個代理照 `prompts/verifier-video.md` 查核，每則的事實都對回站上文章與它的 `sources`。
-3. `narrative` 用快報措辭讀；沒過的題目改稿重讀，不改題目。
-4. 媒體檔放 repo 外（`<VIDEO_WORKDIR>/<slug>/`），只 commit `docs/videos/<slug>/` 的文字檔。
-5. 手動推送的片子每一關都等站主核准；交付時給後台審核連結與 `contact-sheet.png`。
-6. 成片品管的 policy 項不問「有示範」（站主 2026-10-29 定；`apps/api/app/video_automation/judge.py` 的 `is_daily_brief`）：快報只報新聞，第一集得 0.17。立場、建議、業配三項照常。
+1. **每天的請求**：設定分頁的「每日快報」開著時（`daily_brief_enabled`），到了台北時間 `daily_brief_hour`（預設 9 點），工人下一輪來問，伺服器就用前一天的文章開一筆請求；那天的文章少於 `daily_brief_min_stories`（預設 5）就記成跳過、寫原因，那天不出片。工人每一輪問一次，排在所有影片、請求與排程草稿之前；不受「等站主的草稿」上限擋，也不算進排程草稿的間隔與每月草稿數（企劃呼叫帶 variant `daily`）。
+2. **企劃**：工人讀當天每一篇文章，企劃模型照第一到三節挑 5–8 則、排序、寫 `brief.md`（多一節〈選題〉表），出兩個大綱（開場用哪一則、怎麼排各不同，附排序理由）。slug 固定是請求的 `daily-ai-YYYYMMDD`；影片記 `category: ai-news`，**不記 `source_guide`**：快報不算重講哪一篇文章，之後站主還可以把其中任何一篇排成教學影片。規劃完用 slug 認領請求。
+3. **關卡都是 Jev 與自動品管**：Jev 依頻道立場挑大綱（快報不問「有示範」）、聽旁白全對就核准、成片自動品管全過就核准、上傳包齊全就進「可以上架」。撰稿、查核、聽眾審稿都用 variant `daily` 的提示詞（`tools/video/automation/register.mjs` 的 `DAILY_BRIEF_RULES`），說故事關卡用快報措辭。退回大綱時重寫用同一天的文章、同一個 slug。
+4. **語言分兩步，由伺服器決定**（`docs/videos/LANGUAGES.md`）：成片核准時伺服器照 `daily_brief_locales` 勾好八種語言（en、ja、ko、es、pt、id、vi、th）的標題說明與 CC，配音先不勾；這一批不用站主，自己核准，影片很快就進「可以上架」。網站把影片送上 YouTube 之後，伺服器才把設定裡勾的配音打開，工人照「上架後再加語言」的做法補做。
+5. **站主每天兩件事**：
+   - 上午：在「可以上架」卡片按上傳，排在當天 12:00 公開。
+   - 下午：配音做好後，在 YouTube Studio 傳那 8 條配音音軌，回後台按「已上傳」。
+6. **Gemini 語音額度用完（429）就等**：旁白、配音或聽檢遇到 Gemini 忙碌或當天額度用完（`video_speech_upstream_busy`），工人把影片延後，不算進它自己被卡住前的次數（跟本月語音字數用完一樣，是大家的事），額度台灣時間下午 3 點左右重置後自己接著做。代價是那天公開時間往後延，站主接受（「沒額度就晚點發」）。
+7. 媒體檔放 repo 外（`<VIDEO_WORKDIR>/<slug>/`），工人只寫 `docs/videos/<slug>/` 的文字檔。
+
+在工作階段裡手做一集（補做、重做或試新規矩）時照 `automated.md` 的指令，`brief.md` 同樣只出〈選題〉表與兩個大綱，撰稿後 `lint` 0 錯誤，另派一個代理照 `prompts/verifier-video.md` 把每則的事實對回站上文章與它的 `sources`；手動推送的片子每一關都等站主（`docs/videos/HANDS-OFF.md`）。成片品管的 policy 項不問「有示範」（站主 2026-10-29 定；`apps/api/app/video_automation/judge.py` 的 `is_daily_brief`）：快報只報新聞，第一集得 0.17。立場、建議、業配三項照常。
 
 第一集（`daily-ai-20261028`）學到的：
 
@@ -47,4 +52,4 @@
 
 ## 五、試做後要量的
 
-上架七天後，把每集的平均觀看時長、CTR、留存曲線在第幾分鐘掉最多，寫回票的〈Notes〉；比較五集裡排第一則的類型（新模型、資安、價格）跟留存的關係，決定要不要常態化、要不要接主機工人（需要新的請求類型與每日排程）。
+上架七天後，把每集的平均觀看時長、CTR、留存曲線在第幾分鐘掉最多，寫回票的〈Notes〉；比較各集排第一則的類型（新模型、資安、價格）跟留存的關係，決定排序理由要不要改權重、開場要不要換寫法。公開時間被 429 往後延的那幾天另外標出來，別跟內容的影響混在一起。

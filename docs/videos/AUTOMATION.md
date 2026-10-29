@@ -52,7 +52,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 | 各階段常設指示 | `stage_instructions`：六個階段各一段（每格最多 4000 字），工人接在該階段提示詞之後；清空就是不加 | `drama_stage_instructions`：同樣六格，只給漫劇（單集與作品的每一集）；遷移時從教學的複製一份 | 「目前的提示詞」依格式與 variant 分開顯示（`video_stage_prompts`） |
 | 聲音 | `voice`：頻道聲音（Gemini Sulafat，沿用 `docs/videos/README.md`） | `drama_voice`：旁白，`null` 就跟教學一樣；角色聲音池 `character_voice_pool` | — |
 | 長度 | 目標長度 8–12 分鐘（`target_minutes_min`／`target_minutes_max`）：下限 8 是硬規定，上緣是撰稿瞄準的長度、不是上限，超過沒關係 | 每個請求與作品各自帶 `target_minutes` | — |
-| 語言預設 | `caption_locales`（en、ja、ko）：語言面板「照預設勾選」的預先勾選 | `drama_caption_locales`（預設空） | 工人不再讀這兩欄：每支影片做哪些語言由站主在成片核准後決定（[`LANGUAGES.md`](LANGUAGES.md)，下面「語言」） |
+| 語言預設 | `caption_locales`（預設八種全勾：en、ja、ko、es、pt、id、vi、th 的標題說明與 CC，站主 2026-10-20 定，migration 0136 寫進設定列；配音從不預先勾）：語言面板「照預設勾選」的預先勾選 | `drama_caption_locales`（同樣八種） | 工人不再讀這兩欄：每支影片做哪些語言由站主在成片核准後決定（[`LANGUAGES.md`](LANGUAGES.md)，下面「語言」） |
 | 流程上限 | 每支最多查核幾輪（3）、旁白最多重錄幾輪（2） | `drama_max_verify_rounds`（3）、`drama_max_retake_rounds`（2）、每鏡最多重做幾次、一支最多幾段片段、文件退回後最多重寫幾輪 `series_doc_rewrites`（2；討論出的新版本不算） | — |
 | 預算 | 每月最多幾支草稿（8） | 每月片段秒、圖片、judge 次數、音樂首數、單支美元上限、作品每月幾集 `series_episodes_per_month`、同時最多幾集在做 `series_max_in_flight`（1–2） | 每月模型 token 上限（百萬，只算 API 金鑰的呼叫，20）；旁白每月字數與 Jev 每日次數沿用既有欄位 |
 | 關卡 | 旁白 Jev 全過自動核准、Jev 挑大綱、自動品管全過核准成片與上架確認（都開） | `drama_auto_approve_audio`、`drama_auto_approve_final`（遷移時從教學的複製）、設定圖自動選 `auto_pick_look`（關）、分鏡自動核准 `auto_approve_storyboard`（關）、「劇本先給我看」`series_script_gate`（開；單集與作品的每一集） | — |
@@ -173,6 +173,22 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 **理財文章**：企劃提示詞的 `avoid` 照樣管怎麼講。理財或投資的文章講成資訊與查證方法，不建議買、賣或持有，不點名文章沒提到的公司、基金或產品，在「不做的事」寫明，結尾帶文章自己的免責說明。站主可以在備註再寫一次，例如「只講制度、資料怎麼查與風險，不推薦任何個股、ETF 或產品，不預測價格；結尾照文章說『資訊整理，不是投資建議』」。Jev 挑大綱的 `advice`（≤ 0.3）與成片品管的 `policy` 讓這類影片比較常停下來等站主，這是預期的。
 
+## 每日 AI 快報（2026-10-29 加，格式在 `.agents/skills/youtube-video/references/daily-brief.md`）
+
+每天一支約 10 分鐘的快報（slug `daily-ai-YYYYMMDD`），講前一天站上 `ai-news`、`tech-news` 文章裡的 5–8 則新聞。全自動，站主每天只做兩件事（上午在「可以上架」按上傳、排 12:00 公開；下午在 Studio 傳配音、回後台按已上傳）。
+
+**請求**：設定分頁「每日快報」開著時（`daily_brief_enabled`），到了台北時間 `daily_brief_hour`（預設 9），工人下一次問 `GET /api/v1/video/automation/daily-briefs/next`，伺服器就用前一天（`news_date`）已發布的文章開一筆請求（最多 12 則；少於 `daily_brief_min_stories` 記成跳過；排隊兩天沒人做就取消）。工人用請求自己的 slug `POST …/daily-briefs/{id}/start` 認領，上架確認後 `POST …/done`。工人經網站的 `/api/video/automation/daily-briefs/...` 轉送。
+
+**工人怎麼排**（`flow.mjs` 的 `dailyStep`、`draftDaily`）：
+- 一輪只問一次，在第一條 lane 的雜務（放棄、重試）之後、所有影片與請求之前：這是固定時間的工作，影片多的日子也不會被擠到晚上。
+- 不看「等站主的草稿」上限（`room()`），也不寫 `last_draft_at`（`markDrafted()`）：快報不取代、也不推遲排程草稿。
+- 企劃、撰稿、查核、聽眾審稿都帶 variant `daily`（`prompts.mjs` 的 `DAILY_INSTRUCTIONS`，規矩在 `register.mjs` 的 `DAILY_BRIEF_RULES`：教學專用的三段換成快報的，其餘照投影片）。有 variant，伺服器就不把企劃算進 `max_drafts_per_month`（`ai.py` 的 `new_draft`）。旁白照說書語氣設停頓（`usesRegister`）：頭條後一拍、每則結束一個較長的停頓。
+- slug 已經是一支影片（本機、`docs/videos` 或站上）就不碰，留給站主看。
+- 讀當天每一篇文章；一篇都讀不到就這一輪不做（不付費、不認領）。企劃的 `brief.md` 多一節〈選題〉，大綱一定兩個（Jev 照常挑）。slug 一律用請求的，`category: ai-news`，`source_guide` 是空的：快報不算重講哪一篇（`mainGuide`、`review/sync.mjs` 的 `sourceGuideOf` 都不回第一篇文章），之後同一篇文章仍可排成教學影片。`source_urls` 是企劃挑的文章在前、文章引的官方頁其次、當天其他文章最後，最多 12。
+- 認領回 409 `video_daily_brief_not_queued` 或 `video_daily_brief_slug_mismatch`：什麼都不留，這一輪繼續做別的。企劃兩次都寫不出、或回答遺失：照指定文章的做法認領並卡住，站主按重試就用同一天的文章、同一個 slug 再規劃一次（`unplanned: "daily"`）。退回大綱的重寫同樣用同一天的文章。
+- 語言由伺服器決定（`LANGUAGES.md`）：成片核准時照 `daily_brief_locales` 勾八語標題說明與 CC，那一批自己核准；送上 YouTube 之後才打開配音，工人照上架後加語言的做法補做。
+- 旁白、配音或聽檢遇到語音服務忙碌（`video_speech_upstream_busy`，Gemini 當天額度用完也是）延後但不算進卡住的次數（`flow.mjs` 的 `EVERYONE_CODES`：跟本月語音字數用完一樣，是大家共同的原因）：額度台灣時間下午 3 點左右恢復後自己接著做，公開時間跟著往後。
+
 ## 漫劇（2026-09-26 加，設計在 `DRAMA.md`）
 
 工人也會做 AI 漫劇。它不挑題：**站主在 `/admin/videos` 發起**（「新的漫劇」：故事前提或改編的文章、風格、長度；「新的作品」：前提、面向、集數）。漫劇設定（`?tab=settings&section=drama`）的 `drama_enabled` 要開著，否則表單被拒、工人也不問。語言與上架的順序在 [`LANGUAGES.md`](LANGUAGES.md)。
@@ -222,7 +238,7 @@ video-worker 容器（Node＋Chromium＋ffmpeg，compose profile video）
 
 ## 語言（2026-09-27 加，設計在 `LANGUAGES.md`）
 
-每支影片先只做繁體中文。成片核准後站主在 `/admin/videos` 的影片頁決定加哪些語言（en、ja、ko）、每種加什麼（標題與說明、CC、配音），或按「只出繁體中文」；`caption_locales` 只是面板的預先勾選。工人每一輪從影片清單（`ProjectSummary.locales`、`locales_decided_at`、`languages`）看每支成片已核准的影片：沒決定就什麼都不做；決定了，就把選擇抄成工作區的 `languages.json`（`captions`、`package`、`qa`、`review-push` 都從這個檔讀，本機手動跑也一樣），再對站上還標成「製作中」的部件做一件事：
+每支影片先只做繁體中文。成片核准後站主在 `/admin/videos` 的影片頁決定加哪些語言（en、ja、ko、es、pt、id、vi、th）、每種加什麼（標題與說明、CC、配音），或按「只出繁體中文」；`caption_locales` 只是面板的預先勾選。工人每一輪從影片清單（`ProjectSummary.locales`、`locales_decided_at`、`languages`）看每支成片已核准的影片：沒決定就什麼都不做；決定了，就把選擇抄成工作區的 `languages.json`（`captions`、`package`、`qa`、`review-push` 都從這個檔讀，本機手動跑也一樣），再對站上還標成「製作中」的部件做一件事：
 
 1. **翻譯**（一輪一個語言）：`i18n-sheet --locale <l> --parts <勾了的 metadata,captions>`（勾配音時每句帶 `max_chars`）→ 翻譯模型 → 字幕審稿模型 → `i18n-merge`。工作表沒有勾的部件就沒有那一段，merge 也不動它。翻譯模型一次呼叫做三段（2026-10-05 起，做法借自 VideoLingo 與 pyvideotrans 的「翻譯→反思→修訂」，沒有抄程式）：先翻出草稿，再以該語系觀眾的身分對照原文、詞彙表與規則自評，最後定稿，回 `{"draft": {"worksheet"}, "critique": [...], "final": {"worksheet"}}`；`prompts.mjs` 的 `parseAnswer` 只取 `final`，沒有 `critique` 的答案（或有草稿沒定稿）當成答非所問，跟其他不可用的答案一樣下一輪再問一次、兩次就卡住。**詞彙表**：影片的句子與標題說明用到的詞典條目（`docs/videos/lexicon.json`，以句子裡出現的形式列出，`core/lexicon.mjs` 的 `entriesUsed`）加 `video.json` 的 `sources` 標題，每個詞全片只用一種寫法、產品名照原廠拼法；**字幕切點**：每句 zh-TW 被切成幾段（`core/captions.mjs` 的 `cuePieces`：先切句末、再切逗號、數字與單位不分開），翻譯照原文的子句順序走，數字在觀眾聽到的那一段。兩者由 `tools/video/i18n/cli.mjs` 的 `translationContext(doc, lexicon)` 產生（`prompts.mjs` 轉出同一個函式）：`i18n-sheet` 寫進工作表（`glossary`、`boundaries`；只有 metadata 的工作表沒有 `boundaries`），工人每次呼叫翻譯與審稿模型都把它們放在 payload 頂層、送出的 `worksheet` 不重複帶（拆單位時句子單位只帶自己那幾句的切點、metadata 單位只帶詞彙表），`i18n-merge` 不讀這兩個欄位；單位的 key 仍是整張工作表的雜湊，所以詞彙表變了那個單位會重問一次。提示也說沒帶時（舊工作表）模型自己從句子裡的拉丁字詞與 `video.sources` 建表。字幕審稿模型對照同一份詞彙表與切點。翻譯的回答因此含草稿與定稿兩份工作表，輸出約是以前的兩倍，一個單位仍最多 24 句（`sheet-units.mjs`）。
 2. **配音**（一輪一個語言，`docs/videos/DUBS.md`）：`dub --locale <l>`；結束碼 1（有視窗加速到 1.15 倍仍塞不下）→ 翻譯模型的縮短模式（`translator:shorten`，只給 `fit.json` 的句子與預算；不縮短或改了數字的答案丟掉）→ captions-only 的工作表 → `i18n-merge` → 再 `dub`，最多 `MAX_DUB_SHORTEN_ROUNDS`（2）輪；做出音軌後 `check-audio --locale <l>` → 被標的句子 `dub --redo`，最多 `MAX_DUB_RETAKE_ROUNDS`（2）輪；重錄後句子變長、塞不回視窗時，回到縮短模式，不直接放棄。重錄完仍被標的句子多半是同音字（轉寫每次都聽成同一個詞，2026-09-29 當天 8 條配音都因此整條放棄），交給翻譯模型的改寫模式（`translator:reword`，帶轉寫聽到的字與預算；沒改、超過預算或改了數字的答案丟掉）→ 同樣走工作表與 `i18n-merge` → 再 `dub`（只重錄改過的句子）與 `check-audio`，最多 `MAX_DUB_REWORD_ROUNDS`（2）輪。仍不行、或 `dub` 說要站主（Azure 聲音、沒金鑰）就寫 `dubs/<l>/skipped.json` 記下原因，**不擋影片**；服務暫時掛掉（結束碼 4）這一輪結束、下一輪再試；`dub`、`dub --redo` 或 `check-audio --locale` 被 `STOP` 檔停下（結束碼 6）也是這一輪結束（不當成做好的音軌、不放棄、不擋影片），下一輪從快取把音軌重新排好、重新聽完再送。

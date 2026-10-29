@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import date, datetime
 from typing import Annotated, Any, Literal, Self, get_args
 from uuid import UUID
 
@@ -20,7 +20,7 @@ from app.video_automation.anime_policy import (
     AnimeRuntimeSpec,
     runtime_problem,
 )
-from app.video_automation.models import SLIDES_IMAGE_MODEL
+from app.video_automation.models import DEFAULT_DAILY_BRIEF_LOCALES, SLIDES_IMAGE_MODEL
 from app.video_media.catalog import MEDIA_VENDORS, find_model
 
 # "claude_code" and "codex" use the host's subscription accounts; the others use API keys.
@@ -286,11 +286,56 @@ class SlidesSettings(StrictModel):
         return _known_image_model(value)
 
 
+class DailyBriefLocale(StrictModel):
+    """What a daily brief's video is given of one language without the owner, in the shape of
+    ``video_projects.locales`` (app/video_reviews/schemas.py LocaleChoice). The dub is held
+    back until the video is on YouTube (app/video_reviews/admin_service.py
+    ``_decide_daily_brief_locales``)."""
+
+    metadata: bool = True
+    captions: bool = True
+    dub: bool = False
+
+    @model_validator(mode="after")
+    def _dub_needs_captions(self) -> Self:
+        if self.dub and not self.captions:
+            raise ValueError("a dub needs the captions")
+        return self
+
+
+class DailyBriefSettings(StrictModel):
+    """The daily AI and tech news brief (.agents/skills/youtube-video/references/daily-brief.md):
+    whether the server files a request each day, the Asia/Taipei hour from which it files the
+    previous day's, how many published stories that day needs, and the languages a brief's
+    video is given. Every field has a default, so a settings tab from before these existed,
+    which sends nothing of them, still validates and keeps what is stored."""
+
+    daily_brief_enabled: bool = False
+    daily_brief_hour: int = Field(default=9, ge=0, le=23)
+    daily_brief_min_stories: int = Field(default=5, ge=1, le=20)
+    daily_brief_locales: dict[CaptionLocale, DailyBriefLocale] = Field(
+        default_factory=lambda: {
+            locale: DailyBriefLocale(**DEFAULT_DAILY_BRIEF_LOCALES[locale])
+            for locale in CAPTION_LOCALES
+            if locale in DEFAULT_DAILY_BRIEF_LOCALES
+        }
+    )
+
+    @field_validator("daily_brief_locales")
+    @classmethod
+    def _in_page_order(
+        cls, value: dict[CaptionLocale, DailyBriefLocale]
+    ) -> dict[CaptionLocale, DailyBriefLocale]:
+        return {locale: value[locale] for locale in CAPTION_LOCALES if locale in value}
+
+
 class SettingsWrite(_SettingsFields):
     stage_models: dict[Stage, StageModel]
     drama: DramaSettings
     # Illustrated slides (docs/videos/ILLUSTRATED.md), beside the drama's object.
     slides: SlidesSettings = Field(default_factory=SlidesSettings)
+    # The daily news brief, beside the slides' object.
+    daily_brief: DailyBriefSettings = Field(default_factory=DailyBriefSettings)
     stage_instructions: dict[Stage, StandingText] = Field(default_factory=dict)
     # The hands-off switches (docs/videos/HANDS-OFF.md). The stance is what this channel
     # believes, at most 4,000 characters; while it is blank Jev does not choose outlines.
@@ -340,6 +385,7 @@ class SettingsSave(StrictModel):
     stage_models: dict[Stage, StageModel] | None = None
     drama: DramaSettings | None = None
     slides: SlidesSettings | None = None
+    daily_brief: DailyBriefSettings | None = None
     stage_instructions: dict[Stage, StandingText] | None = None
     channel_stance: StandingText | None = None
     auto_pick_outline: bool | None = None
@@ -359,17 +405,20 @@ class SettingsSave(StrictModel):
         """The stored values with the fields this save sent laid over them.
 
         ``current`` is ``SettingsWrite.model_dump()`` of what is stored. A field left out or sent
-        as null stays; ``drama`` and ``slides`` merge field by field, so a page from before one
-        of their fields existed cannot reset it by sending the object without it.
+        as null stays; ``drama``, ``slides`` and ``daily_brief`` merge field by field, so a page
+        from before one of their fields existed cannot reset it by sending the object without it.
         """
         sent = self.model_dump(exclude_unset=True)
         drama = sent.pop("drama", None)
         slides = sent.pop("slides", None)
+        daily_brief = sent.pop("daily_brief", None)
         values = {**current, **{key: value for key, value in sent.items() if value is not None}}
         if drama is not None:
             values["drama"] = {**current["drama"], **drama}
         if slides is not None:
             values["slides"] = {**(current.get("slides") or {}), **slides}
+        if daily_brief is not None:
+            values["daily_brief"] = {**(current.get("daily_brief") or {}), **daily_brief}
         return values
 
 
@@ -589,6 +638,46 @@ class SlidesRequestsOut(BaseModel):
 
 class NextSlidesRequestOut(BaseModel):
     request: SlidesRequestOut | None
+
+
+# The daily AI and tech news brief (app/video_automation/daily_briefs.py). "dropped" is what a
+# started request reads once the owner dropped its video; it is never stored.
+DailyBriefStatus = Literal["queued", "started", "done", "skipped", "cancelled", "dropped"]
+
+
+class DailyBriefStory(BaseModel):
+    """One published article of the day, as the site serves it now."""
+
+    slug: str
+    title: str
+    description: str
+    url: str
+    news_date: date
+
+
+class DailyBriefRequestOut(BaseModel):
+    id: UUID
+    news_date: date
+    # daily-ai-YYYYMMDD: the only slug the worker may start the request under.
+    slug: str
+    status: DailyBriefStatus
+    skip_reason: str | None
+    # The day's articles, newest first, as the site still serves them; ``source_guides`` is
+    # every slug filed with the request, an article unpublished since included.
+    source_guides: list[str]
+    stories: list[DailyBriefStory]
+    created_at: datetime
+    started_at: datetime | None
+    finished_at: datetime | None
+    cancelled_at: datetime | None
+
+
+class DailyBriefRequestsOut(BaseModel):
+    requests: list[DailyBriefRequestOut]
+
+
+class NextDailyBriefRequestOut(BaseModel):
+    request: DailyBriefRequestOut | None
 
 
 class StageRunIn(StrictModel):

@@ -18,12 +18,14 @@ from app.video_automation.judge import (
     QA_ITEMS,
     demo_asked_of,
     final_qa_passed,
+    is_daily_brief,
     outline_pick_passed,
     publish_package_passed,
     retention_required_for,
     script_check_passed,
 )
 from app.video_automation.models import (
+    DAILY_BRIEF_FIELDS,
     DRAMA_FIELDS,
     SLIDES_FIELDS,
     STYLE_PRESETS,
@@ -34,6 +36,7 @@ from app.video_automation.models import (
 from app.video_automation.schemas import (
     CAPTION_LOCALES,
     ApiProviderName,
+    DailyBriefSettings,
     DramaSettings,
     MediaOptionsView,
     MediaOptionView,
@@ -183,6 +186,23 @@ def slides_values(row: VideoAutomationSettings) -> SlidesSettings:
     )
 
 
+def daily_brief_values(row: VideoAutomationSettings) -> DailyBriefSettings:
+    """The daily news brief's settings (app/video_automation/daily_briefs.py); a row from before
+    migration 0143 reads the defaults for what it lacks, and a stored language the videos are no
+    longer made in is dropped rather than refused."""
+    values = {
+        field: value
+        for field in DAILY_BRIEF_FIELDS
+        if (value := getattr(row, field, None)) is not None
+    }
+    locales = values.get("daily_brief_locales")
+    if isinstance(locales, dict):
+        values["daily_brief_locales"] = {
+            locale: parts for locale, parts in locales.items() if locale in CAPTION_LOCALES
+        }
+    return DailyBriefSettings(**values)
+
+
 def slides_image_choice(row: VideoAutomationSettings) -> tuple[str, str]:
     """The vendor and model that draw an illustrated slides video's pictures: the slides' own
     image model on the vendor that has it (the settings' image vendor first), or the drama's
@@ -231,6 +251,7 @@ def settings_values(row: VideoAutomationSettings) -> SettingsWrite:
         auto_approve_audio=row.auto_approve_audio,
         drama=drama_values(row),
         slides=slides_values(row),
+        daily_brief=daily_brief_values(row),
         channel_stance=row.channel_stance or "",
         auto_pick_outline=row.auto_pick_outline,
         auto_approve_final=row.auto_approve_final,
@@ -395,10 +416,12 @@ async def stage_prompts(session: AsyncSession) -> list[StagePromptView]:
 
 
 def _flat(values: dict[str, Any]) -> dict[str, Any]:
-    """The drama and slides objects spread onto columns, for saving and the audit diff."""
-    flat = {key: value for key, value in values.items() if key not in {"drama", "slides"}}
-    flat.update(values.get("drama") or {})
-    flat.update(values.get("slides") or {})
+    """The drama, slides and daily brief objects spread onto columns, for saving and the audit
+    diff."""
+    nested = ("drama", "slides", "daily_brief")
+    flat = {key: value for key, value in values.items() if key not in nested}
+    for key in nested:
+        flat.update(values.get(key) or {})
     return flat
 
 
@@ -771,22 +794,34 @@ async def auto_approves_script(
     return script_check_passed(payload, retention_required=retention_required_for(series.genre))
 
 
+def outline_demo_wanted(category: str | None, slug: str | None = None) -> bool:
+    """Whether an outline pick of this video is held to a demonstration: not for one the site
+    files as an explainer or a story, nor for a daily news brief (``is_daily_brief``), which
+    only reports the news, whatever its row's category says."""
+    if slug is not None and is_daily_brief(slug):
+        return False
+    return demo_asked_of(category)
+
+
 async def auto_picks_outline(
-    session: AsyncSession, payload: dict[str, Any], category: str | None = None
+    session: AsyncSession,
+    payload: dict[str, Any],
+    category: str | None = None,
+    slug: str | None = None,
 ) -> bool:
     """Whether an outline review stands on Jev's pick (docs/videos/HANDS-OFF.md).
 
     The switch must be on and the stance written, so no video gets its viewpoint decided by
     the AI before the owner wrote one down; then the pick must clear the thresholds, the
     demonstration among them unless the video's own row (``category``) files it as an
-    explainer or a story.
+    explainer or a story, or its ``slug`` names a daily news brief (``outline_demo_wanted``).
     """
     row = await session.scalar(
         select(VideoAutomationSettings).where(VideoAutomationSettings.id == 1)
     )
     if row is None or not row.auto_pick_outline or not (row.channel_stance or "").strip():
         return False
-    return outline_pick_passed(payload, demo_asked_of(category))
+    return outline_pick_passed(payload, outline_demo_wanted(category, slug))
 
 
 async def auto_approves_final(

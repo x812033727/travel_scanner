@@ -27,6 +27,7 @@ import { atomicWrite, docDir, isInside, readJson, resolveWorkBase, resolveWorkdi
 import { chosenLocales, dubRole, dubsForUpload, LANGUAGES_FILE, metadataLocalesOf, readLanguages, uncheckedDubRole } from "../core/stages.mjs";
 import { ARTIFACTS, keyframeProblems, loadProject, pipelineStatus, undrawnCharacters } from "../core/state.mjs";
 import { TARGET_LOCALES, NARRATION_LOCALE, narrationLocale, VIDEO_CATEGORIES } from "../core/schema.mjs";
+import { isDailyBrief } from "../core/narrative.mjs";
 import { narrativeHash, scriptScenes, writeScreenplay } from "../core/screenplay.mjs";
 import { scriptCheckMatches } from "../core/script-check.mjs";
 import { estimateTimeline, formatClock, speechHash } from "../core/timeline.mjs";
@@ -286,8 +287,14 @@ export function guideSlugs(urls) {
   return [...new Set((urls ?? []).map((url) => GUIDE_URL.exec(String(url))?.[1]).filter(Boolean))];
 }
 
-/** The article a video retells: source_guide, or else the first site article it cites. */
+/**
+ * The article a video retells: source_guide, or else the first site article it cites. A daily news
+ * brief (a daily-ai- slug, core/narrative.mjs isDailyBrief) cites a whole day's articles and
+ * retells none: reported as the first, it would have the site refuse a later slides request for
+ * that article as used (automation/flow.mjs mainGuide is the worker's side of the same rule).
+ */
 export function sourceGuideOf(doc) {
+  if (isDailyBrief(doc)) return doc.source_guide || null;
   return doc.source_guide || guideSlugs((doc.sources ?? []).map((source) => source?.url))[0] || null;
 }
 
