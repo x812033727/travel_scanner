@@ -1,0 +1,4228 @@
+{
+  "number": 2,
+  "title": "那夜",
+  "theme": "他為什麼像機器人，她為什麼不剪那部片——是同一夜。",
+  "start_state": "結婚一個月；契約破了三條、沒人承認；棗棗睡到四點；她有一條叫『第七條』的時間線；他的週三空白她知道了沒問。社工家訪要來了；嚴母開始用律師。",
+  "end_state": "棗棗為什麼不睡揭開（周彤說『天亮前回來』）；嚴叙為什麼像機器人揭開（那夜他在塔台值班、照規定下了救援直升機延飛的指令）；溫苡為什麼不剪揭開（素材的最後一段是出發前一天）。社工第一次家訪、她把攝影機關了、他把日程表翻過來；她第一次上塔台看他工作、老鍾說了一半那夜的事；阿恪在訪談裡說了山上的事；棗棗在她的鏡頭前說出『媽媽說天亮前回來』；她打開了周彤的錄影檔——沒看完，哭了；他半夜回來看見她在哭，第一次破了第八條：『那夜我在塔台。』最後一集，他說完那夜，兩個人坐在廚房到天亮；棗棗出來看見天亮了、兩個大人都在，說：『你們沒睡？』他說：『保持。』棗棗第一次沒抱頭燈。",
+  "guest_cast": [
+    {
+      "id": "s02-fang-qi",
+      "name": "方啟",
+      "role": "雲港機場塔台的另一位管制員，那夜和嚴叙同一班，一直想替他說話",
+      "appearance": "東亞男性，四十歲，圓臉、平頭、黑框眼鏡，管制員制服袖口捲起，耳機掛在脖子上，總是一副欲言又止的表情"
+    },
+    {
+      "id": "s02-a-bu",
+      "name": "阿布",
+      "role": "機場地勤，帶溫苡穿過安檢與地勤通道上塔台的人，知道嚴叙替她辦了訪客證",
+      "appearance": "東亞男性，二十八歲，曬黑、寸頭、笑起來有虎牙，螢光反光背心、對講機別在胸前、手上一疊訪客證"
+    },
+    {
+      "id": "s02-su-su",
+      "name": "蘇蘇",
+      "role": "剪接室隔壁的錄音師，隔著一道薄牆聽見溫苡每晚放同一段聲音；借她耳機與收音麥克風",
+      "appearance": "東亞女性，三十四歲，及肩黑髮夾在耳後、大耳機掛脖、寬大針織衫、手指上貼著膠布，眼神安靜"
+    },
+    {
+      "id": "s02-xiao-nie",
+      "name": "小聶",
+      "role": "嚴琇律師事務所的助理，送起訴狀與開庭通知的人；身在敵營，卻對這個家有一點同情",
+      "appearance": "東亞男性，二十四歲，瘦、細框眼鏡、西裝稍大一號、抱著牛皮紙文件袋，說話前會先推眼鏡"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s02-t01",
+      "question": "社工林姐到底看出了多少？",
+      "setup_episode": 61,
+      "payoff_episode": 67
+    },
+    {
+      "id": "s02-t02",
+      "question": "兩個分開的牙刷杯會不會露餡？",
+      "setup_episode": 63,
+      "payoff_episode": 71
+    },
+    {
+      "id": "s02-t03",
+      "question": "「下次我不預約」的家訪會在哪一刻上門？",
+      "setup_episode": 66,
+      "payoff_episode": 86
+    },
+    {
+      "id": "s02-t04",
+      "question": "嚴叙看見她在塔台拍他了嗎？",
+      "setup_episode": 72,
+      "payoff_episode": 78
+    },
+    {
+      "id": "s02-t05",
+      "question": "老鍾知道那夜的什麼？",
+      "setup_episode": 74,
+      "payoff_episode": 81
+    },
+    {
+      "id": "s02-t06",
+      "question": "棗棗為什麼只肯對鏡頭說話，她什麼時候才不用等？",
+      "setup_episode": 81,
+      "payoff_episode": 120
+    },
+    {
+      "id": "s02-t07",
+      "question": "嚴母不讓棗棗回去，這一仗怎麼打？",
+      "setup_episode": 84,
+      "payoff_episode": 88
+    },
+    {
+      "id": "s02-t08",
+      "question": "那部紀錄片到底剪不剪？",
+      "setup_episode": 91,
+      "payoff_episode": 118
+    },
+    {
+      "id": "s02-t09",
+      "question": "她會開口問他那夜嗎？",
+      "setup_episode": 94,
+      "payoff_episode": 110
+    },
+    {
+      "id": "s02-t10",
+      "question": "他知道她已經知道塔台的事了嗎？",
+      "setup_episode": 95,
+      "payoff_episode": 101
+    },
+    {
+      "id": "s02-t11",
+      "question": "他的「例外」到底破了幾次？",
+      "setup_episode": 103,
+      "payoff_episode": 107
+    },
+    {
+      "id": "s02-t12",
+      "question": "監護權訴訟的第一庭在哪一天？",
+      "setup_episode": 101,
+      "payoff_episode": 119
+    },
+    {
+      "id": "s02-t13",
+      "question": "他會看到「第七條」那條時間線嗎？",
+      "setup_episode": 61,
+      "payoff_episode": 116
+    },
+    {
+      "id": "s02-t14",
+      "question": "三年沒請過假的人，會為了誰請一次？",
+      "setup_episode": 77,
+      "payoff_episode": 115
+    },
+    {
+      "id": "s02-t15",
+      "question": "剪接室隔壁的蘇蘇隔著牆聽見了什麼？",
+      "setup_episode": 87,
+      "payoff_episode": 108
+    },
+    {
+      "id": "s02-t16",
+      "question": "那張十二條契約要藏在哪裡才不會被看見？",
+      "setup_episode": 61,
+      "payoff_episode": 114
+    },
+    {
+      "id": "s02-t17",
+      "question": "林姐筆記本上的「二」是什麼意思？",
+      "setup_episode": 63,
+      "payoff_episode": 66
+    }
+  ],
+  "episodes": [
+    {
+      "number": 61,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "妳拍了什麼",
+      "youtube_title": "契約老公站在剪接室門口問她拍了什麼，她闔上螢幕，三天後社工就要上門看這個假家",
+      "duration_s": 110,
+      "logline": "溫苡要守住剛命名的「第七條」時間線，同時得在三天內把一個契約家演成真家，因為社工林姐週六要來家訪。",
+      "hook": "剪接室門口，嚴叙看著螢幕上的「第七條」三個字：「時間線叫什麼？」溫苡啪地闔上筆電：「工作。」",
+      "hook_type": "line",
+      "mid_hook": "手機響，林姐的聲音很溫和：「週六上午十點，家訪。」兩個人同時看向冰箱上那兩張分開的帳單。",
+      "extra_hooks": [
+        "他從口袋抽出一張紙，第一行寫著：「家訪演練清單」。"
+      ],
+      "conflict": "三天後社工要來，家裡的走廊兩扇門、兩個牙刷杯、兩張帳單，每一樣都在說這是契約。",
+      "turn": "她以為他會慌，他卻把家訪寫成塔台作業：檢查點、復誦、時間；清單最後一行只寫「棗棗：照常」——他比她更怕孩子被帶走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "棗棗抱著頭燈站在走廊，手裡捏著那張從他抽屜掉出來的十二條契約：「這張要給林姐看嗎？」",
+        "question": "契約會被棗棗拿給社工看嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "fancha",
+        "jiating"
+      ],
+      "spectacle": "冰箱上兩張帳單、走廊兩扇門、牆上精確到分的日程表，三個鏡頭像三張證物照。",
+      "glamour_shot": "剪接室凌晨的螢幕光照著溫苡從攝影機後抬起來的眼睛，短髮亂翹、嘴角壓著一個沒說出口的笑。",
+      "setups": [
+        "s02-t01",
+        "s02-t13",
+        "s02-t16",
+        "m02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "守住「第七條」時間線不讓他看",
+        "拿到家訪日期，兩人第一次一起列清單"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie"
+      ],
+      "locations": [
+        "剪接室",
+        "公寓廚房",
+        "公寓走廊"
+      ],
+      "state": {
+        "time": "結婚第五週，週三深夜",
+        "knowledge": "溫苡知道週六十點社工家訪；「第七條」時間線裡只有一段 00:42 的素材。",
+        "carry_forward": "契約在棗棗手上；兩個牙刷杯還隔得很開；棗棗照舊四點開頭燈。"
+      }
+    },
+    {
+      "number": 62,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "被六歲教演戲",
+      "youtube_title": "契約在小孩手上差點曝光，兩個大人演三輪夫妻都失敗，最後是六歲女兒示範怎麼當一家人",
+      "duration_s": 105,
+      "logline": "溫苡要在家訪前把夫妻演像，卻連叫對方的名字都不自然，而真正會演的只有六歲的棗棗。",
+      "hook": "兩隻手同時伸向棗棗手上的契約，紙停在半空；嚴叙：「保持。」溫苡：「保持你個頭。」",
+      "hook_type": "image",
+      "mid_hook": "演練第一輪：他扮林姐按門鈴，她開門笑得太大，他看錶：「重來。」第三輪她喊「老公」，他整個人僵住。",
+      "conflict": "家裡要演成一個家，兩人連一句「親愛的」都喊不出口，契約還差點落在孩子手上。",
+      "turn": "棗棗看不下去，自己示範：叫他「嚴叙」、叫她「苡苡」，給兩個人各倒一杯水——六歲的孩子比兩個大人更像一家人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "棗棗放下水杯，小聲問：「林姐會把我帶走嗎？」嚴叙蹲下：「不會。」溫苡看著他——他從不說沒把握的話。",
+        "question": "他憑什麼敢說「不會」？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        2,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "fancha"
+      ],
+      "spectacle": "契約被溫苡一把塞進攝影機包最底層，包裡的線材、電池、膠帶像一座山把它埋掉。",
+      "glamour_shot": "嚴叙蹲下與棗棗平視，襯衫最上一顆扣子繃著，側臉在廚房的黃燈下難得放軟。",
+      "setups": [],
+      "payoffs": [
+        "s02-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "契約藏進她的攝影機包",
+        "棗棗教會兩個大人怎麼叫對方"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓客廳",
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第五週，週四晚上",
+        "knowledge": "溫苡知道他對家訪的恐懼不比她少。",
+        "carry_forward": "演練失敗三次；牙刷杯還沒動；攝影機照常開著。"
+      }
+    },
+    {
+      "number": 63,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "週六上午十點",
+      "youtube_title": "社工按門鈴前一秒，契約老公把日程表翻到空白、她把攝影機關掉，社工卻一進門先看浴室",
+      "duration_s": 120,
+      "logline": "溫苡要撐過第一次家訪，可林姐一進門什麼都不問，只看。",
+      "hook": "09:59，嚴叙盯著手錶倒數，溫苡的手指懸在攝影機開關上。10:00 門鈴響，他：「關。」紅燈熄了。",
+      "hook_type": "danger",
+      "mid_hook": "林姐沒看客廳，先站在走廊看了很久——兩扇門，一扇貼著棗棗的畫，一扇什麼都沒貼。",
+      "extra_hooks": [
+        "他把牆上的日程表翻到背面，一片空白，像這個家沒人住。"
+      ],
+      "conflict": "第一次家訪，林姐在這間屋子裡看得多久，就看得多深。",
+      "turn": "林姐什麼都沒問，只借了廁所；兩人在門外聽見她停了很久——洗手台上兩個牙刷杯，一左一右，中間隔著一整條毛巾。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林姐從廁所出來，翻開筆記本寫了一個字。溫苡從她肩後瞄見——「二」。",
+        "question": "林姐筆記上那個「二」是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating"
+      ],
+      "spectacle": "日程表被翻面、攝影機紅燈熄掉、門鈴響，三個動作在同一秒完成。",
+      "glamour_shot": "溫苡開門時的笑，露出牙，寬褲換成了一條她自己都不習慣的裙子。",
+      "setups": [
+        "s02-t02",
+        "s02-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "撐過家訪開頭，沒有當場露餡"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie"
+      ],
+      "locations": [
+        "公寓走廊",
+        "公寓浴室"
+      ],
+      "state": {
+        "time": "結婚第五週，週六上午",
+        "knowledge": "溫苡知道林姐在看分開的東西。",
+        "carry_forward": "日程表翻在背面、攝影機關著；林姐的筆記本上寫了「二」。"
+      }
+    },
+    {
+      "number": 64,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "不准說保持",
+      "youtube_title": "社工坐在地上問六歲女孩晚上誰哄她睡，她嘴型已經出來了，兩個大人同時停止呼吸",
+      "duration_s": 115,
+      "logline": "溫苡要讓棗棗在社工面前照常，可棗棗被叮嚀過不要說的那個字，就是她每晚睡前聽的那個字。",
+      "hook": "林姐坐在地上陪棗棗疊積木：「晚上誰哄妳睡？」溫苡和嚴叙同時停止呼吸。",
+      "hook_type": "question",
+      "mid_hook": "棗棗嘴型都出來了——「保」——她看了嚴叙一眼，改口：「他說……躺好。」",
+      "conflict": "全家最不會演的是棗棗，而她被叮嚀不要說的，正是嚴叙哄她睡的那句話。",
+      "turn": "林姐問她睡到幾點，棗棗說「四點」；空氣停住，棗棗卻拿頭燈照向牆，三個大人和她的影子疊在一起：「這是我們家。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "林姐起身走向冰箱，伸手去拿冰箱上的兩張帳單——一張寫著「嚴」，一張寫著「溫」。",
+        "question": "分開的帳單會被林姐看見嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        3,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "頭燈的光把四個人的影子投在白牆上，大的小的疊成一團。",
+      "glamour_shot": "棗棗缺牙的笑在頭燈光裡，溫苡蹲在她身後，兩張臉被同一道光照亮。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗沒說出「保持」",
+        "林姐記下「睡到四點」"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie"
+      ],
+      "locations": [
+        "公寓客廳"
+      ],
+      "state": {
+        "time": "結婚第五週，週六上午十點半",
+        "knowledge": "溫苡知道林姐已經知道棗棗不睡。",
+        "carry_forward": "林姐的手伸向帳單。"
+      }
+    },
+    {
+      "number": 65,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "輪流付",
+      "youtube_title": "社工的手停在分開的帳單前一公分，契約夫妻同時開口，說出的竟然是同一個謊",
+      "duration_s": 100,
+      "logline": "溫苡要把分帳（第二條）圓成夫妻日常，而林姐的手已經碰到帳單。",
+      "hook": "林姐的手停在帳單前一公分，嚴叙一步跨過去：「水電。」溫苡同時接：「我們輪流付。」",
+      "hook_type": "line",
+      "mid_hook": "林姐笑了：「輪流好。我先生跟我也輪。」她把手收回去，兩人背後的襯衫都濕了一塊。",
+      "conflict": "冰箱上寫著兩個姓的帳單，是第二條分帳最明白的證據。",
+      "turn": "林姐沒追問，反而說起自己的婚姻，用的也是「輪流」——兩人反而更怕：她像是早就看穿，只是不說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "林姐指著冰箱上棗棗的畫：三個人、中間一盞燈。「這是誰畫的？」棗棗：「我。這是天亮。」",
+        "question": "棗棗畫的「天亮」是在等什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "fancha"
+      ],
+      "spectacle": "冰箱門上，兩張帳單和一張蠟筆畫並排，畫裡的燈比人還大。",
+      "glamour_shot": "嚴叙替她擋在冰箱前的背影，肩線筆直，左手無名指那枚沒刻字的戒在燈下一閃。",
+      "setups": [
+        "m02"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "分帳被圓成「輪流」"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第五週，週六上午十一點",
+        "knowledge": "溫苡知道兩人能在同一秒說同一個謊。",
+        "carry_forward": "棗棗的「天亮」畫被林姐記下；林姐準備離開。"
+      }
+    },
+    {
+      "number": 66,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "「二」",
+      "youtube_title": "社工臨走前打開筆記本給契約夫妻看，上面只有一個字，兩人以為露餡了，答案卻讓他們愣住",
+      "duration_s": 115,
+      "logline": "溫苡要弄清楚林姐的「二」是不是判決，林姐卻把答案攤開給她看。",
+      "hook": "林姐在門口翻開筆記本，指著那個字：「二。」溫苡乾笑：「二……什麼？」",
+      "hook_type": "question",
+      "mid_hook": "林姐：「棗棗說話時。你們兩個都蹲下了。」",
+      "extra_hooks": [
+        "溫苡的攝影機包拉鍊開了一角，契約的白邊露出一截，她用腳把包踢進鞋櫃。"
+      ],
+      "conflict": "兩人以為「二」是兩扇門、兩個牙刷杯、兩張帳單——所有分開的證據。",
+      "turn": "「二」是兩個大人同時蹲下：林姐看見的不是分開，是在一起。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林姐穿好鞋，回頭笑了一下：「下次我不預約。」門輕輕關上。",
+        "question": "不預約的家訪會在哪一刻上門？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        5,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "筆記本攤在門口的光裡，一整頁只有一個「二」。",
+      "glamour_shot": "溫苡在門口送客時回頭看嚴叙，眼睛亮得像剛拍到好鏡頭。",
+      "setups": [
+        "s02-t03"
+      ],
+      "payoffs": [
+        "s02-t17"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一次家訪過關",
+        "林姐記下兩個大人都蹲下"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie"
+      ],
+      "locations": [
+        "公寓玄關"
+      ],
+      "state": {
+        "time": "結婚第五週，週六中午",
+        "knowledge": "溫苡知道林姐看見的是「兩個人都蹲下」，也知道下次不會預約。",
+        "carry_forward": "家裡從此沒有後台；契約還在鞋櫃裡的攝影機包。"
+      }
+    },
+    {
+      "number": 67,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "她看出來了",
+      "youtube_title": "社工一走，契約老公靠著門說她看出來了，老婆問看出什麼，他只說了四個字",
+      "duration_s": 100,
+      "logline": "溫苡要知道嚴叙到底在怕什麼，他卻只肯用最少的字回答。",
+      "hook": "門一關，兩人背靠著門滑坐下來。嚴叙：「她看出來了。」溫苡：「看出什麼？」",
+      "hook_type": "line",
+      "mid_hook": "他沉默很久：「……兩個牙刷杯。」溫苡愣住——他也進了浴室看過。",
+      "extra_hooks": [
+        "他起身把日程表翻回正面，06:10 那一行重新對準牆上的鐘。"
+      ],
+      "conflict": "不預約的家訪隨時會來，家裡每一個「分開」都得重新想。",
+      "turn": "她以為他只在乎日程表，原來他把林姐看過的每一樣東西都記住了，連毛巾掛在哪一邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "溫苡拿起自己的牙刷杯，舉到他的杯子旁邊：「放一起？」嚴叙看著兩個杯子，沒有說話。",
+        "question": "牙刷杯要不要放在一起？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "fancha",
+        "jiating"
+      ],
+      "spectacle": "兩個人背靠同一扇門滑坐在地，門縫的光把影子切成一半一半。",
+      "glamour_shot": "嚴叙坐在玄關地上，第一次鬆開最上面那顆扣子，喉結動了一下。",
+      "setups": [],
+      "payoffs": [
+        "s02-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人第一次承認林姐看穿了"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "公寓玄關",
+        "公寓浴室"
+      ],
+      "state": {
+        "time": "結婚第五週，週六下午",
+        "knowledge": "溫苡知道他也注意到牙刷杯。",
+        "carry_forward": "日程表翻回正面；杯子還沒動。"
+      }
+    },
+    {
+      "number": 68,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "二十三公分",
+      "youtube_title": "契約老公說保持原狀，半夜卻拿捲尺量兩個牙刷杯的距離，還寫進了日程表背面",
+      "duration_s": 100,
+      "logline": "溫苡想知道嚴叙嘴上的「保持原狀」是不是真話，半夜卻撞見他在浴室做一件很奇怪的事。",
+      "hook": "嚴叙把她的杯子放回原位：「保持。」溫苡：「保持分開？」他：「保持原狀。」",
+      "hook_type": "line",
+      "mid_hook": "凌晨一點，她起來喝水，看見他拿著捲尺量兩個杯子的距離：二十三公分。",
+      "extra_hooks": [
+        "四點整，棗棗的頭燈準時亮了，光從門縫照到走廊。"
+      ],
+      "conflict": "他嘴上說保持，手上卻在量一個家該有的距離。",
+      "turn": "他不是在量杯子，是把家訪的每一個細節寫成報告——像塔台寫事故紀錄。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "日程表背面那片空白的第一行，多了他工整的字：「家訪 #1：杯距 23cm。待改。」",
+        "question": "「待改」要改成幾公分？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "fancha"
+      ],
+      "spectacle": "捲尺拉在兩個牙刷杯之間，刻度停在 23。",
+      "glamour_shot": "浴室燈下嚴叙半蹲量距離，睫毛垂著，認真得像在對準跑道。",
+      "setups": [],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "溫苡抓到他的「待改」"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓浴室",
+        "公寓走廊"
+      ],
+      "state": {
+        "time": "結婚第五週，週日凌晨",
+        "knowledge": "溫苡知道他把家訪當事故報告在寫。",
+        "carry_forward": "日程表背面有了第一行手寫；棗棗仍睡到四點。"
+      }
+    },
+    {
+      "number": 69,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "紅燈睡著了",
+      "youtube_title": "社工說不預約後她不敢開攝影機，女兒盯著熄掉的紅燈問它天亮會不會醒",
+      "duration_s": 105,
+      "logline": "溫苡要決定攝影機還開不開，因為不預約的家訪可能拍進任何一刻。",
+      "hook": "早上，溫苡伸手要開攝影機，手停在半空：「不預約……那我還能拍嗎？」",
+      "hook_type": "question",
+      "mid_hook": "棗棗盯著沒亮的紅燈：「它睡著了？」溫苡：「對。」棗棗：「那它天亮會醒嗎？」",
+      "extra_hooks": [
+        "嚴叙經過，看了一眼關著的攝影機，腳步慢了半拍。"
+      ],
+      "conflict": "攝影機關著，她的工作和「給棗棗留的」全停了，她像沒了一隻眼睛。",
+      "turn": "最反對拍廚房的人，背對著她說：「第五條。」——他在替她的攝影機說話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "嚴叙走到門口停住：「工作不干涉。」門關上。溫苡的手指放在開關上，紅燈還是暗的。",
+        "question": "她要為了林姐關掉攝影機嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        3,
+        3,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "richang"
+      ],
+      "spectacle": "攝影機放在餐桌正中，紅燈暗著，棗棗趴在桌上跟它對看。",
+      "glamour_shot": "溫苡沒有攝影機擋在臉前，晨光直接照在她的眼睛上，第一次看起來有點怕。",
+      "setups": [
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次替她的工作說話"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓廚房",
+        "公寓玄關"
+      ],
+      "state": {
+        "time": "結婚第六週，週一早上",
+        "knowledge": "溫苡知道他其實不要她關掉攝影機。",
+        "carry_forward": "攝影機還暗著；杯距二十三公分。"
+      }
+    },
+    {
+      "number": 70,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "第四條",
+      "youtube_title": "契約老公半夜把兩個牙刷杯放在一起說是演的，她把攝影機打開說是職業的，女兒一句話問倒兩個大人",
+      "duration_s": 140,
+      "logline": "溫苡要守住自己的工作，也要讓這個家在不預約的家訪前看起來是真的，而兩人都在替自己的越界找理由。",
+      "hook": "夜裡十一點，嚴叙拿著自己的牙刷杯走進浴室，放下——二十三公分變成零。",
+      "hook_type": "image",
+      "mid_hook": "溫苡站在門口：「演的？」他：「第四條。」她走回廚房，把攝影機紅燈按亮：「職業的。」",
+      "extra_hooks": [
+        "冰箱上多了林姐的名片，背面手寫兩個字：「隨時」。"
+      ],
+      "conflict": "不預約的家訪隨時會來，兩人得決定家裡哪些東西要一直演下去。",
+      "turn": "他說杯子是演的，她說攝影機是職業的——兩個人都給自己的越界找了理由，而且都知道對方在找理由。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "棗棗刷牙時看著擠在一起的杯子：「你們要用同一個了嗎？」嚴叙：「第四條。」棗棗：「什麼是第四條？」兩個大人同時：「大人的事。」",
+        "question": "棗棗會發現「第四條」是什麼嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "chengren"
+      ],
+      "spectacle": "洗手台上兩個牙刷杯貼在一起，鏡子裡映著門口的她和亮起的紅燈。",
+      "glamour_shot": "嚴叙放下杯子轉身，鏡中與她對上一眼，又若無其事移開。",
+      "setups": [],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "牙刷杯放在一起",
+        "攝影機重新打開",
+        "「第七條」時間線多了第二段：兩個杯子"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓浴室",
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第六週，週一夜",
+        "knowledge": "溫苡知道兩個人都在用契約替自己找藉口。",
+        "carry_forward": "杯子在一起、攝影機開著、日程表正面；「第七條」時間線兩段。"
+      }
+    },
+    {
+      "number": 71,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "三個杯子",
+      "youtube_title": "洗手台上突然多了第三個牙刷杯，她趁機申請上塔台拍契約老公上班，他只回了三個字",
+      "duration_s": 105,
+      "logline": "溫苡要進塔台拍嚴叙工作，嚴叙用規定擋她，棗棗卻搬出了第六條。",
+      "hook": "早上浴室，兩個貼在一起的杯子旁邊多了一個粉紅色小杯子。棗棗踮腳：「我也是大人的事。」",
+      "hook_type": "image",
+      "mid_hook": "早餐桌上溫苡推過去一張紙：「塔台參訪申請。」嚴叙沒抬頭：「不許可。」",
+      "extra_hooks": [
+        "棗棗咬著吐司：「第六條。一起決定。我想看嚴叙上班。」"
+      ],
+      "conflict": "她想拍塔台——說是給棗棗留的；他的工作是他最後一塊不准別人碰的地方。",
+      "turn": "最守規矩的人被規矩將了一軍：第五條擋她，第六條擋他，棗棗投了關鍵的一票。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他簽了申請表推回來。溫苡低頭——「與申請人關係」那一欄，他寫的是：「家屬」。",
+        "question": "他寫「家屬」是演的嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "fancha",
+        "xiju"
+      ],
+      "spectacle": "洗手台上兩大一小三個牙刷杯排成一排。",
+      "glamour_shot": "嚴叙低頭簽字，鋼筆停在「家屬」兩個字上一秒，睫毛不動。",
+      "setups": [],
+      "payoffs": [
+        "s02-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到塔台參訪許可",
+        "棗棗把自己的杯子放進大人的事"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓浴室",
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第六週，週二早上",
+        "knowledge": "溫苡知道他在申請表上寫了「家屬」。",
+        "carry_forward": "週四下午上塔台；三個牙刷杯；棗棗四點醒。"
+      }
+    },
+    {
+      "number": 72,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "訪客證",
+      "youtube_title": "地勤帶她走進機場最深處，說這位管制員三年來第一次帶人上塔台，電梯門一開所有人都轉過頭",
+      "duration_s": 100,
+      "logline": "溫苡要帶著攝影機穿過機場的層層關卡上到塔台，而每一道門都有不准拍的規矩。",
+      "hook": "安檢門嗶一聲，地勤阿布攔住她的攝影機：「塔台不准拍螢幕。」溫苡：「那拍人呢？」",
+      "hook_type": "danger",
+      "mid_hook": "走廊上阿布壓低聲音：「嚴管制員從不帶人上去。妳是第一個。」",
+      "conflict": "她要拍的地方處處是禁區，而帶她進去的人在門的另一邊等，一句話都沒傳下來。",
+      "turn": "她以為是自己磨來的許可，阿布卻說訪客證是嚴叙前一天親自跑來辦的——連她的攝影機型號都填好了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "電梯升到頂，門一開——一片藍光裡十幾個聲音同時在說話，所有人轉頭看向她的攝影機。",
+        "question": "塔台的人會讓她拍嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "fancha"
+      ],
+      "spectacle": "機場地底長廊一路往上，最後電梯門打開，滿室藍光撲出來。",
+      "glamour_shot": "溫苡在電梯門口舉起攝影機，藍光打在她的側臉和那條登山繩手環上。",
+      "setups": [
+        "s02-t04"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "進到塔台"
+      ],
+      "characters": [
+        "wen-yi",
+        "s02-a-bu",
+        "yan-xu"
+      ],
+      "locations": [
+        "雲港機場地勤通道",
+        "雲港機場塔台"
+      ],
+      "state": {
+        "time": "結婚第六週，週四下午",
+        "knowledge": "溫苡知道訪客證是他親自辦的。",
+        "carry_forward": "攝影機開著；塔台所有人在看她。"
+      }
+    },
+    {
+      "number": 73,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "藍光裡的保持",
+      "youtube_title": "契約老公在家像機器人，戴上耳機卻是整座塔台最穩的聲音，她鏡頭裡聽見一句熟悉的話",
+      "duration_s": 115,
+      "logline": "溫苡要在一小時裡拍下嚴叙工作的樣子，卻一句也聽不懂他在說什麼。",
+      "hook": "班長老鍾舉起保溫杯：「拍可以，別拍螢幕。」十幾顆頭又轉回去，溫苡吐出一口氣。",
+      "hook_type": "line",
+      "mid_hook": "嚴叙戴上耳機，聲音變了，平得像另一個人：「收到。保持。許可。」",
+      "extra_hooks": [
+        "新人小芊湊過來小聲說：「前輩從不說第二遍。」"
+      ],
+      "conflict": "這裡的話她一句都聽不懂，而他是這片聲音裡最平的那一個。",
+      "turn": "在家僵硬的人，在這裡是最穩的那一個；她第一次拍到他做一件他做得很好的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "取景框裡，他的側臉在藍光下，嘴唇動：「保持。」——和他半夜哄棗棗時一模一樣的語氣。",
+        "question": "他對飛機說的和對棗棗說的是同一句？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "zhichang",
+        "fancha"
+      ],
+      "spectacle": "塔台三百六十度的玻璃外是整片跑道，藍光螢幕一排排亮著，跑道燈一路延伸到天邊。",
+      "glamour_shot": "嚴叙在塔台藍光下的側臉，耳機壓著短髮，下顎線冷得像刀，只有嘴唇在動。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拍到他工作的第一個鏡頭"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "lao-zhong",
+        "xiao-qian"
+      ],
+      "locations": [
+        "雲港機場塔台"
+      ],
+      "state": {
+        "time": "結婚第六週，週四下午三點",
+        "knowledge": "溫苡知道「保持」在塔台是什麼意思：原地、等、安全。",
+        "carry_forward": "她還不知道他是否注意到她在拍。"
+      }
+    },
+    {
+      "number": 74,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "撕掉的一頁",
+      "youtube_title": "塔台新人拿出一本前輩語錄要幫她翻譯，翻到三年那一頁，紙被撕掉了",
+      "duration_s": 105,
+      "logline": "溫苡要聽懂塔台的話，新人小芊的筆記本幫了忙，卻也露出一個空洞。",
+      "hook": "溫苡的筆記本上滿頁問號。小芊把自己的本子推過來：「我幫妳翻。」封面寫著「嚴前輩語錄」。",
+      "hook_type": "image",
+      "mid_hook": "語錄第一頁：「前輩口頭禪：收到、保持、許可。從沒說過謝謝。」翻到後面，有一頁被整齊地撕掉了。",
+      "conflict": "她想聽懂他的語言，可每一本關於他的紀錄，都在同一個地方缺了一頁。",
+      "turn": "她以為是小芊怕被罵自己撕的，小芊卻搖頭：撕的人不是她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "小芊壓低聲音：「不是我撕的。」她偷瞄班長：「是老鍾。」老鍾正好轉頭，對她們舉了舉保溫杯。",
+        "question": "老鍾為什麼要撕掉那一頁？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "筆記本撕痕整齊的那一頁對著藍光，紙邊像一道被修剪過的跑道。",
+      "glamour_shot": "小芊馬尾一甩、眼睛瞪圓的碎嘴表情，溫苡在旁邊忍笑到露牙。",
+      "setups": [
+        "s02-t05",
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "學會塔台三個字"
+      ],
+      "characters": [
+        "wen-yi",
+        "xiao-qian",
+        "lao-zhong",
+        "yan-xu"
+      ],
+      "locations": [
+        "雲港機場塔台"
+      ],
+      "state": {
+        "time": "結婚第六週，週四下午三點半",
+        "knowledge": "溫苡知道關於他的紀錄被人刻意拿掉了一頁。",
+        "carry_forward": "老鍾看見她們在看。"
+      }
+    },
+    {
+      "number": 75,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "起霧",
+      "youtube_title": "跑道突然起大霧，一架小飛機要求立刻落地，整座塔台都在等契約老公開口",
+      "duration_s": 110,
+      "logline": "溫苡在塔台遇上一場霧，第一次看見嚴叙在壓力下做決定。",
+      "hook": "玻璃外，霧從跑道盡頭一口一口吞過來，跑道燈一盞一盞熄掉。小芊：「看不到了。」",
+      "hook_type": "danger",
+      "mid_hook": "另一位管制員方啟看了嚴叙一眼：「跟那夜一樣的霧。」嚴叙：「不一樣。」",
+      "conflict": "霧裡有飛機等著指令，而塔台裡有人提到了「那夜」。",
+      "turn": "她以為他沒聽見方啟，可他回答時快得像早就準備好——「那夜」這兩個字他每天都在聽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "對講裡一架小飛機：「請求現在落地。」所有人看他。他的手指停在按鍵上，一秒。",
+        "question": "他會許可，還是讓它等？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "大霧從跑道盡頭推過來，一排跑道燈依序被吞掉，塔台玻璃外只剩白。",
+      "glamour_shot": "嚴叙按住耳機的手、繃緊的下顎，藍光與白霧之間的一張側臉。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拍到方啟提起「那夜」"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "s02-fang-qi",
+        "xiao-qian",
+        "lao-zhong"
+      ],
+      "locations": [
+        "雲港機場塔台"
+      ],
+      "state": {
+        "time": "結婚第六週，週四下午四點",
+        "knowledge": "溫苡知道塔台裡的人都記得「那夜」。",
+        "carry_forward": "小飛機在等他的指令。"
+      }
+    },
+    {
+      "number": 76,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "桌下的手",
+      "youtube_title": "管制員一句不許可讓小飛機在霧裡等，聲音一點都沒抖，她回看素材卻發現桌下那隻手",
+      "duration_s": 110,
+      "logline": "溫苡要記下嚴叙做對決定的那一刻，卻在素材裡發現他沒讓任何人看見的那一面。",
+      "hook": "「不許可。保持。」嚴叙的聲音平得像尺。對講那頭沉默兩秒：「收到，保持。」",
+      "hook_type": "line",
+      "mid_hook": "霧散了，小飛機平安落地，小芊鬆一口氣：「前輩每次都對。」老鍾低聲：「對，不代表好受。」",
+      "conflict": "他每次都對，可沒人問過他對了之後怎麼過。",
+      "turn": "她以為自己拍到的是他最穩的一刻，回放時才看見：下令那一秒，他另一隻手在桌下握成拳。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "觀景窗放大：桌面上他的聲音很平，桌面下他的手握緊，指節發白——鏡頭剛好拍到。",
+        "question": "他在怕什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "霧從跑道上退開，小飛機的燈穿出白霧，平穩接地。",
+      "glamour_shot": "溫苡盯著觀景窗，螢幕的藍光映在她眼裡，她慢慢停止了呼吸。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "拍到他握拳的鏡頭"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "xiao-qian",
+        "lao-zhong"
+      ],
+      "locations": [
+        "雲港機場塔台"
+      ],
+      "state": {
+        "time": "結婚第六週，週四下午四點半",
+        "knowledge": "溫苡知道他在下「保持」時手在發抖。",
+        "carry_forward": "那段素材還在她的記憶卡裡。"
+      }
+    },
+    {
+      "number": 77,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "三年沒請假",
+      "youtube_title": "塔台班長端著保溫杯站到她旁邊，說契約老公三年沒請過假，那夜隔天也照常上班",
+      "duration_s": 115,
+      "logline": "溫苡想知道嚴叙為什麼握拳，班長老鍾知道答案，卻只肯給一半。",
+      "hook": "老鍾端著保溫杯站到她旁邊：「拍到了？」溫苡嚇一跳，啪地蓋上鏡頭蓋。",
+      "hook_type": "danger",
+      "mid_hook": "老鍾：「他三年沒請過假。」溫苡：「那夜呢？」老鍾：「隔天照上。」",
+      "extra_hooks": [
+        "老鍾瞥她的鏡頭：「妳問他。」溫苡：「第八條。」老鍾笑出聲：「你們還有條？」"
+      ],
+      "conflict": "答案就在旁邊這個人嘴裡，可她自己訂過不問的規矩。",
+      "turn": "老鍾以為她是來挖新聞的，聽到「第八條」反而放下戒心——她是第一個守著他不問的人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老鍾看著嚴叙的背影，聲音低下去：「那夜之後。病假都沒請。」",
+        "question": "那夜之後他為什麼不肯休息？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju",
+        "zhichang"
+      ],
+      "spectacle": "保溫杯的蒸氣在藍光裡升起來，背景是嚴叙一動不動的背影。",
+      "glamour_shot": "嚴叙在遠處摘下一邊耳機回頭查看跑道，慢動作的回頭，正好被她的鏡頭接住。",
+      "setups": [
+        "s02-t14",
+        "m03"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老鍾開始信任她"
+      ],
+      "characters": [
+        "wen-yi",
+        "lao-zhong",
+        "yan-xu"
+      ],
+      "locations": [
+        "雲港機場塔台"
+      ],
+      "state": {
+        "time": "結婚第六週，週四下午五點",
+        "knowledge": "溫苡知道他三年沒請過假，那夜隔天照常上班。",
+        "carry_forward": "交班時間快到了。"
+      }
+    },
+    {
+      "number": 78,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "四十分鐘",
+      "youtube_title": "交班時契約老公經過她身邊沒停下，只丟下一句妳拍了四十分鐘，原來他全都看見了",
+      "duration_s": 110,
+      "logline": "溫苡以為自己拍得很隱密，嚴叙卻從頭到尾都知道，還要她刪掉其中一段。",
+      "hook": "交班鈴響，嚴叙摘下耳機走過她身邊，沒停：「四十分鐘。」溫苡：「什麼？」他：「妳拍的。」",
+      "hook_type": "line",
+      "mid_hook": "他背對她：「桌下那個鏡頭。刪掉。」溫苡握緊攝影機——他連她拍到哪一格都知道。",
+      "conflict": "他看見了她拍的每一分鐘，也知道她拍到了他最不想被看見的一秒。",
+      "turn": "她以為他在命令，他卻沒等她回答就補了一句，語氣更低。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "他走到門口，停住，沒回頭：「或者，別讓我看見。」門關上。",
+        "question": "他到底要她刪，還是要她留？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fancha",
+        "zhichang"
+      ],
+      "spectacle": "交班的瞬間，十幾個人同時起身、換位、戴耳機，像一場安靜的舞。",
+      "glamour_shot": "嚴叙摘下耳機時解開最上面的扣子，走過她身邊帶起一陣風。",
+      "setups": [],
+      "payoffs": [
+        "s02-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道他從頭到尾都允許她拍"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "s02-fang-qi"
+      ],
+      "locations": [
+        "雲港機場塔台"
+      ],
+      "state": {
+        "time": "結婚第六週，週四傍晚",
+        "knowledge": "溫苡知道他一直知道她在拍。",
+        "carry_forward": "那段握拳的素材她還沒刪。"
+      }
+    },
+    {
+      "number": 79,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "交班",
+      "youtube_title": "她沒刪那段，把它拖進了第七條，交班時另一位管制員才開口提那夜，就被他兩個字打斷",
+      "duration_s": 105,
+      "logline": "溫苡決定留下那段素材，卻在交班時聽見塔台裡有人想替嚴叙說話。",
+      "hook": "溫苡的手指在刪除鍵上停了三秒，然後把那段素材拖進「第七條」時間線。第三段。",
+      "hook_type": "image",
+      "mid_hook": "交班時方啟拍了拍嚴叙的肩：「那夜的事……」嚴叙：「交班。」方啟的手停在半空。",
+      "extra_hooks": [
+        "方啟看了溫苡一眼，嘴張開又合上。"
+      ],
+      "conflict": "塔台裡每個人都想說那夜，只有他不准。",
+      "turn": "她以為方啟會被罵，嚴叙卻在交接本上替方啟補完一行漏寫的紀錄——他擋的不是人，是那兩個字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "嚴叙去換衣服，老鍾走過來，按住電梯的門：「我送妳下樓。」電梯裡沒有別人。「妳想知道，我就說。」",
+        "question": "她要不要聽老鍾說那夜？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "交接本上兩種筆跡並排，一行工整、一行潦草，最後被同一支筆補齊。",
+      "glamour_shot": "溫苡在剪接軟體的時間線前抬頭，筆電的光照著她的下巴和亮亮的眼睛。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」時間線第三段：握拳"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "s02-fang-qi",
+        "lao-zhong"
+      ],
+      "locations": [
+        "雲港機場塔台",
+        "塔台電梯口"
+      ],
+      "state": {
+        "time": "結婚第六週，週四傍晚六點",
+        "knowledge": "溫苡知道方啟想說那夜的事。",
+        "carry_forward": "老鍾在電梯口等她決定。"
+      }
+    },
+    {
+      "number": 80,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "電梯口",
+      "youtube_title": "塔台班長在電梯口說了一半，那夜值班、直升機、指令、照規定，電梯門就在這時關上了",
+      "duration_s": 150,
+      "logline": "溫苡在電梯口離答案只差一句，她得決定自己聽到哪裡為止。",
+      "hook": "溫苡走進電梯，老鍾一手擋著門：「山上的事，妳知道。」",
+      "hook_type": "line",
+      "mid_hook": "老鍾說了一半：「那夜他值班。救援的直升機……他下的指令。照規定。」電梯門合上。",
+      "extra_hooks": [
+        "電梯數字一層一層往下跳，攝影機的紅燈一直亮著。"
+      ],
+      "conflict": "她只聽到一半，剩下的一半在那個她答應過不問的人身上。",
+      "turn": "她可以上樓追問、可以去問方啟——她卻把鏡頭轉向自己，選擇把這一半留在第八條裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "電梯裡只有她和鏡頭。她看著紅燈：「第八條。我聽到了，我不問。」門開，大廳的光湧進來。",
+        "question": "她不問，他會自己說嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "zhichang",
+        "ganren"
+      ],
+      "spectacle": "電梯門在老鍾臉前緩緩合上，縫隙裡最後一條藍光消失。",
+      "glamour_shot": "電梯鏡面裡溫苡對著自己的攝影機，眼眶紅了一點，嘴唇抿成一條線。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "s02-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道那夜他在塔台、下過指令"
+      ],
+      "characters": [
+        "wen-yi",
+        "lao-zhong"
+      ],
+      "locations": [
+        "塔台電梯口",
+        "塔台電梯"
+      ],
+      "state": {
+        "time": "結婚第六週，週四晚上",
+        "knowledge": "溫苡知道那夜他值班、救援直升機的指令是他下的、照規定。",
+        "carry_forward": "她答應自己不問；回家他會在。"
+      }
+    },
+    {
+      "number": 81,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "對鏡頭說話",
+      "youtube_title": "六歲女兒不肯跟大人說話，卻對著攝影機的紅燈說了十分鐘，她終於懂了那顆鏡頭是誰",
+      "duration_s": 110,
+      "logline": "溫苡帶著那夜的一半回家，發現棗棗不對人說話，只對她的鏡頭說。",
+      "hook": "溫苡一進門，棗棗沒看她，對著桌上亮著紅燈的攝影機說：「今天許老師說我畫得好。」",
+      "hook_type": "image",
+      "mid_hook": "溫苡把攝影機留在桌上，自己躲到走廊。棗棗對著鏡頭說了十分鐘：老師、點心、嚴叙的領帶。",
+      "extra_hooks": [
+        "嚴叙夜班前經過，看見她蹲在走廊偷聽，也跟著停下腳步。"
+      ],
+      "conflict": "棗棗從不跟大人說爸媽，可她心裡的話總要有地方去。",
+      "turn": "她以為棗棗是喜歡鏡頭；她想起周彤以前一直拍棗棗——對棗棗來說，鏡頭後面曾經是媽媽。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "溫苡拿起攝影機，對準窗邊。她可以對著鏡頭問棗棗那個問題——她的手指停在錄影鍵上。",
+        "question": "她敢對著鏡頭問棗棗在等什麼嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "richang"
+      ],
+      "spectacle": "餐桌上的攝影機紅燈亮著，對面是一個捲髮小孩，中間隔著一碗沒吃完的飯。",
+      "glamour_shot": "溫苡蹲在走廊陰影裡，眼睛亮著，捂著嘴怕笑出聲，又怕哭出來。",
+      "setups": [
+        "s02-t06",
+        "m02"
+      ],
+      "payoffs": [
+        "s02-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "發現棗棗會對鏡頭說話"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-zaozao",
+        "yan-xu"
+      ],
+      "locations": [
+        "公寓廚房",
+        "公寓走廊"
+      ],
+      "state": {
+        "time": "結婚第六週，週四深夜",
+        "knowledge": "溫苡知道棗棗把鏡頭當成可以說話的地方。",
+        "carry_forward": "她決定今晚四點坐在鏡頭後。"
+      }
+    },
+    {
+      "number": 82,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "四點零一分",
+      "youtube_title": "凌晨四點女兒的頭燈亮起，她把攝影機架在窗邊問為什麼等天亮，答案說到一半走廊燈亮了",
+      "duration_s": 105,
+      "logline": "溫苡要問出棗棗為什麼不睡，卻只能透過鏡頭問，而且只有一次機會。",
+      "hook": "凌晨四點，喀一聲，頭燈亮了。溫苡已經把攝影機架在窗邊，自己坐在鏡頭後面的黑暗裡。",
+      "hook_type": "image",
+      "mid_hook": "溫苡輕聲問：「為什麼等天亮？」棗棗看著鏡頭，不看她，很久。",
+      "extra_hooks": [
+        "樓下有一輛車開過，車燈掃過天花板，棗棗跟著它轉頭。"
+      ],
+      "conflict": "這個問題問錯一次，棗棗就會再也不對鏡頭說話。",
+      "turn": "棗棗開口了——她不是不想說，是在等一個不會哭的人問。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "棗棗張口：「因為媽媽——」走廊燈突然亮了，夜班回來的嚴叙站在門口，手還按在開關上。",
+        "question": "被打斷的棗棗還會說下去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "richang"
+      ],
+      "spectacle": "窗邊的頭燈光照著玻璃，攝影機的紅點和窗外城市的燈同一個高度。",
+      "glamour_shot": "棗棗抱著頭燈坐在窗邊，捲髮被光鑲了一圈邊。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗第一次準備說"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-zaozao",
+        "yan-xu"
+      ],
+      "locations": [
+        "棗棗的房"
+      ],
+      "state": {
+        "time": "結婚第七週，週五凌晨四點",
+        "knowledge": "溫苡知道答案和媽媽有關。",
+        "carry_forward": "他站在門口，燈亮著。"
+      }
+    },
+    {
+      "number": 83,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "天亮前回來",
+      "youtube_title": "六歲女兒對著鏡頭說出不睡覺的原因：媽媽說天亮前回來，她說了就會",
+      "duration_s": 125,
+      "logline": "溫苡終於聽見棗棗為什麼每夜等天亮，她得決定用什麼接住這句話。",
+      "hook": "嚴叙看見攝影機，啪地關掉走廊燈，退後一步，在黑暗裡說：「繼續。」",
+      "hook_type": "line",
+      "mid_hook": "棗棗對著鏡頭：「媽媽說天亮前回來。她說了就會。」",
+      "extra_hooks": [
+        "溫苡懂了：棗棗睡著就看不到天亮，看不到天亮，媽媽就不算回來。"
+      ],
+      "conflict": "答案比問題更重，而她不能在棗棗面前哭。",
+      "turn": "她沒哭，她把鏡頭放下，抱著棗棗：「那我們一起等。等到妳不用等。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "棗棗在她懷裡抬頭，看向黑漆漆的走廊：「你也等？」黑暗裡嚴叙說：「復誦。一起等。」",
+        "question": "三個人一起等，棗棗就肯睡了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "攝影機的紅燈照著一個小女孩對它說話，背後窗外的天還是黑的。",
+      "glamour_shot": "溫苡把鏡頭放下抱住棗棗的那一秒，眼睛裡有光卻沒有掉下來。",
+      "setups": [],
+      "payoffs": [
+        "s02-t06"
+      ],
+      "reveals": [
+        "m02"
+      ],
+      "general_payoffs": [
+        "棗棗說出等天亮的理由",
+        "三個人約好一起等"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-zaozao",
+        "yan-xu"
+      ],
+      "locations": [
+        "棗棗的房",
+        "公寓走廊"
+      ],
+      "state": {
+        "time": "結婚第七週，週五凌晨四點十分",
+        "knowledge": "溫苡知道周彤出門前說「天亮前回來」。",
+        "carry_forward": "「第七條」時間線第四段：天亮前回來。"
+      }
+    },
+    {
+      "number": 84,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "一起等",
+      "youtube_title": "三個人坐在窗邊等天亮，最不會坐地板的契約老公背打得最直，婆婆卻在這時打來一通電話",
+      "duration_s": 110,
+      "logline": "溫苡陪棗棗等天亮，第一個晚上就被嚴母的一通電話打斷。",
+      "hook": "窗邊三個人：棗棗在中間，溫苡盤腿，嚴叙坐得最遠，背打得像在塔台。",
+      "hook_type": "image",
+      "mid_hook": "嚴母來電，聲音客氣：「週日別帶棗棗來了。孩子睡不好，是妳的錯。」",
+      "conflict": "三個人剛學會一起等，嚴母就把棗棗的睡不好算在溫苡頭上。",
+      "turn": "她以為嚴叙會說「第八條」不碰家裡的事，他卻伸手把手機轉成擴音放在地上，讓三個人都聽見。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "嚴母最後一句：「下週，我請律師來談。」電話掛斷，窗外的天剛灰了一點。",
+        "question": "嚴母要用律師做什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "richang"
+      ],
+      "spectacle": "三個人坐在窗邊的剪影，天邊從黑變成深藍。",
+      "glamour_shot": "嚴叙坐在地上，難得沒穿外套，捲起的袖口露出手錶。",
+      "setups": [
+        "s02-t07",
+        "m06"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "第一夜三人一起等"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "yan-mu"
+      ],
+      "locations": [
+        "棗棗的房"
+      ],
+      "state": {
+        "time": "結婚第七週，週五清晨",
+        "knowledge": "溫苡知道嚴母要請律師。",
+        "carry_forward": "棗棗靠著窗邊睡著前看到天灰。"
+      }
+    },
+    {
+      "number": 85,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "四點半",
+      "youtube_title": "女兒的頭燈晚了三十分鐘才亮，契約老公在日程表背面記下四點半，表姐卻傳來一句刺人的話",
+      "duration_s": 105,
+      "logline": "溫苡要撐住嚴母的指控，棗棗卻悄悄多睡了三十分鐘。",
+      "hook": "凌晨四點，沒有喀聲。四點半，頭燈才亮。嚴叙在日程表背面寫下：「4:30」。",
+      "hook_type": "image",
+      "mid_hook": "溫苡氣得在廚房摔鍋蓋，嚴叙：「第六條。」溫苡：「什麼？」他：「一起回去。」",
+      "conflict": "嚴母不讓棗棗回去，溫苡想吵，嚴叙想按規矩來。",
+      "turn": "她以為他要她忍，他說的是第六條——棗棗的事一起決定，所以週日他們一起去。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "表姐嚴琇傳來訊息：「媽問：拍夠了沒？」溫苡盯著手機，又抬頭看攝影機的紅燈。",
+        "question": "嚴母怕的是她的攝影機？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "richang",
+        "jiating"
+      ],
+      "spectacle": "日程表背面「杯距 23cm」底下多了一行「4:30」，字一樣工整。",
+      "glamour_shot": "溫苡在晨光裡摔完鍋蓋又笑出來，短髮亂翹，露出牙。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗多睡三十分鐘",
+        "決定週日一起去嚴母家"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "yan-xiu"
+      ],
+      "locations": [
+        "公寓走廊",
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第七週，週六",
+        "knowledge": "溫苡知道嚴母在意攝影機。",
+        "carry_forward": "棗棗睡到四點半；週日要去嚴母家。"
+      }
+    },
+    {
+      "number": 86,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "路過",
+      "youtube_title": "週二早上七點門鈴響了，沒有預約的社工站在門口說路過，浴室裡三個牙刷杯正擠在一起",
+      "duration_s": 115,
+      "logline": "溫苡要在毫無準備的早上迎接第一次不預約家訪。",
+      "hook": "週二早上七點，門鈴響。溫苡穿著睡衣開門，林姐站在門外：「路過。」",
+      "hook_type": "danger",
+      "mid_hook": "林姐看見餐桌上亮著紅燈的攝影機：「在拍？」溫苡：「給棗棗留的。」",
+      "extra_hooks": [
+        "浴室裡三個牙刷杯擠在一起，林姐看了一眼，筆記本沒打開。"
+      ],
+      "conflict": "沒有演練、沒有翻面的日程表，林姐看見的就是這個家真正的早上。",
+      "turn": "她以為沒準備就會露餡，棗棗卻搶先說：「我們一起等天亮。」林姐第一次在筆記本上寫了很多字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "林姐出門前看著嚴叙：「她在等，你也在等。」嚴叙沒回答，替她按了電梯。",
+        "question": "林姐說他在等什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "richang",
+        "xiju"
+      ],
+      "spectacle": "清晨的廚房：三個牙刷杯、一台亮紅燈的攝影機、日程表正面，林姐站在中間。",
+      "glamour_shot": "嚴叙剛下夜班還沒睡，襯衫扣子扣錯一顆，站在玄關替林姐開門。",
+      "setups": [],
+      "payoffs": [
+        "s02-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一次不預約家訪過關",
+        "林姐看見三個人一起等"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie"
+      ],
+      "locations": [
+        "公寓玄關",
+        "公寓廚房",
+        "公寓浴室"
+      ],
+      "state": {
+        "time": "結婚第八週，週二早上",
+        "knowledge": "溫苡知道林姐看見的是真的早上。",
+        "carry_forward": "週日嚴母不見棗棗的事還沒解。"
+      }
+    },
+    {
+      "number": 87,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "隔壁的牆",
+      "youtube_title": "剪接室隔壁的錄音師敲門說每晚聽見小孩的聲音，她低頭才看清那個她一直沒打開的檔名",
+      "duration_s": 110,
+      "logline": "溫苡在剪接室把棗棗那段剪進時間線，卻被隔壁的鄰居和一個檔名同時找上。",
+      "hook": "剪接室凌晨，溫苡把「天亮前回來」拖進時間線，牆那頭傳來三下敲擊。",
+      "hook_type": "danger",
+      "mid_hook": "隔壁錄音師蘇蘇站在門口：「妳每晚放同一段。小孩的聲音。牆很薄。」",
+      "conflict": "她以為剪接室是只有自己的地方，牆的另一邊卻一直有人在聽。",
+      "turn": "蘇蘇不是來抱怨，是來送一副隔音耳機——她說自己也有一段放不下的錄音。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她戴上耳機，順手打開硬碟，周彤的資料夾裡有一個她從沒點過的檔案：「給苡_出發前夜.mp4」。",
+        "question": "周彤出發前夜錄了什麼給她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "richang",
+        "ganren"
+      ],
+      "spectacle": "剪接室牆上兩台螢幕，一台是棗棗的臉，一台是一長串檔名，最下面一行在發亮。",
+      "glamour_shot": "溫苡在剪接室凌晨的燈下，耳機壓著短髮，螢幕光把她的臉照成藍白色。",
+      "setups": [
+        "s02-t15",
+        "m09",
+        "m05"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」時間線第五段",
+        "認識隔壁的蘇蘇"
+      ],
+      "characters": [
+        "wen-yi",
+        "s02-su-su"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第八週，週三凌晨",
+        "knowledge": "溫苡知道周彤留了一段出發前夜的錄影給她。",
+        "carry_forward": "檔案還沒打開；週日要去嚴母家。"
+      }
+    },
+    {
+      "number": 88,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "不是妳的錯",
+      "youtube_title": "婆婆在門口說孩子睡不好是她的錯，她第一次回嗆：不是我的錯，也不是妳的錯",
+      "duration_s": 120,
+      "logline": "溫苡帶著棗棗站在嚴母門口，被指著說是棗棗睡不好的原因。",
+      "hook": "週日，嚴母家的門開了一條縫：「孩子睡不好，是妳的錯。」溫苡牽著棗棗站在門外。",
+      "hook_type": "line",
+      "mid_hook": "溫苡第一次回嗆：「她睡不好是那夜之後的事。不是我的錯，也不是妳的錯。」",
+      "extra_hooks": [
+        "門縫裡，嚴澈的照片在走廊盡頭對著他們笑。"
+      ],
+      "conflict": "嚴母要把棗棗的不睡算成溫苡不適任的證據。",
+      "turn": "她以為嚴叙會站在母親那邊、或站在中間——他往前一步，站到了她旁邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "嚴母看向兒子：「你也這麼想？」嚴叙停了一秒：「……復誦。」嚴母的手帕停在半空。",
+        "question": "嚴母會怎麼回擊？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        5,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "老宅深色的門框裡，嚴母、溫苡、嚴叙三個人，棗棗的頭燈在中間亮著。",
+      "glamour_shot": "溫苡回嗆時抬起下巴，短髮掃過臉頰，眼睛一點都不躲。",
+      "setups": [
+        "m06"
+      ],
+      "payoffs": [
+        "s02-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第一次當面頂回嚴母",
+        "嚴叙當眾站在她這邊"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "yan-mu",
+        "yan-che"
+      ],
+      "locations": [
+        "嚴母的家"
+      ],
+      "state": {
+        "time": "結婚第八週，週日中午",
+        "knowledge": "溫苡知道嚴叙在母親面前選了她。",
+        "carry_forward": "嚴母沒讓他們進門；棗棗聽見了。"
+      }
+    },
+    {
+      "number": 89,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "五點",
+      "youtube_title": "女兒的頭燈第一次五點才亮，三個人看著天邊變灰，她卻在契約老公肩上睡著了",
+      "duration_s": 115,
+      "logline": "溫苡守著棗棗等天亮，棗棗卻在天亮前睡著了，三個人得決定要不要叫醒她。",
+      "hook": "凌晨五點，喀，頭燈才亮。嚴叙看錶，在日程表背面寫：「5:00」。",
+      "hook_type": "image",
+      "mid_hook": "五點四十，棗棗靠在嚴叙肩上睡著了，又猛地驚醒：「天亮了沒？」他：「還沒。我叫妳。」",
+      "extra_hooks": [
+        "棗棗又閉上眼，頭燈從她手裡滑下來，嚴叙伸手接住。"
+      ],
+      "conflict": "棗棗終於睏了，可她睡著就會錯過天亮。",
+      "turn": "她以為嚴叙會照規定把棗棗抱回床，他卻一動不動當她的枕頭，二十分鐘沒換姿勢。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "天邊第一道白光出現，棗棗在他肩上睡得很沉。嚴叙看溫苡，用嘴型問：叫不叫？",
+        "question": "要不要叫醒棗棗看天亮？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "richang",
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "天邊從深藍裂出一道白，窗玻璃上映著三個人和一盞被握住的頭燈。",
+      "glamour_shot": "嚴叙側頭看著肩上的棗棗，晨光打在他沒刮的下巴上，第一次像個累的人。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗睡到五點",
+        "嚴叙接住頭燈"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "棗棗的房"
+      ],
+      "state": {
+        "time": "結婚第八週，週一清晨",
+        "knowledge": "溫苡知道棗棗願意在他身上睡著。",
+        "carry_forward": "頭燈在嚴叙手裡；天快亮。"
+      }
+    },
+    {
+      "number": 90,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "苡——",
+      "youtube_title": "她第一次點開閨蜜出發前夜錄給她的影片，畫面裡閨蜜只說了一個字，她就按下暫停哭了",
+      "duration_s": 150,
+      "logline": "溫苡把棗棗的話剪進時間線後，終於打開周彤留給她的錄影，卻只撐了一個字。",
+      "hook": "嚴叙輕輕搖醒棗棗：「天亮了。」棗棗睜眼看了窗外很久：「媽媽沒回來。」又閉上眼。",
+      "hook_type": "line",
+      "mid_hook": "夜裡，嚴叙去上夜班，溫苡在廚房桌上把「天亮前回來」剪成第六段，游標移到那個檔案上。",
+      "extra_hooks": [
+        "她點開。周彤對著鏡頭，馬尾、登山繩手環，笑了一下：「苡——」"
+      ],
+      "conflict": "周彤的錄影就在那裡，她怕的不是內容，是看完就真的結束了。",
+      "turn": "她以為自己可以看完，周彤只叫了她的名字，她就按下了暫停。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "畫面停在周彤張口的那一格，進度條只走了三秒。溫苡坐在螢幕前哭了；旁邊三腳架上，她自己的攝影機紅燈亮著，拍著她。",
+        "question": "周彤錄影裡還說了什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "richang"
+      ],
+      "spectacle": "廚房桌上的筆電停在周彤張口的那一格，旁邊的攝影機紅燈對著哭的人。",
+      "glamour_shot": "螢幕光照著溫苡的臉，眼淚掛在下巴，手還按在空白鍵上。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "s02-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」時間線第六段",
+        "第一次打開周彤的錄影"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "zhou-tong"
+      ],
+      "locations": [
+        "棗棗的房",
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第八週，週一深夜",
+        "knowledge": "溫苡知道周彤留的錄影從「苡——」開始。",
+        "carry_forward": "錄影停在 00:03；攝影機拍下了她哭；嚴叙在夜班。"
+      }
+    },
+    {
+      "number": 91,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "第四次",
+      "youtube_title": "她刪掉自己哭的那段又按了復原，製片第四次上門逼她剪片，她開出一個條件",
+      "duration_s": 110,
+      "logline": "溫苡被製片高維第四次逼著剪片，她答應了，但只肯從一個人開始。",
+      "hook": "早上，溫苡回放攝影機：自己哭了四十分鐘。她按刪除，停一秒，又按了復原。",
+      "hook_type": "image",
+      "mid_hook": "高維推開剪接室的門，兩支手機都在響：「最後一次問。剪不剪？」溫苡：「剪。條件：重拍阿恪。」",
+      "conflict": "影展只剩半年，素材停在出發前一天，她每一次打開都停在同一個地方。",
+      "turn": "她以為自己是在拖，說出條件的那一刻才發現：她要的不是素材，是一個在山上的人親口說那天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "高維看手機：「阿恪要出國。只剩明天。」溫苡的錄音機還沒充電。",
+        "question": "一天之內她拍得到阿恪嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "ganren"
+      ],
+      "spectacle": "剪接室的時間線拉到最右邊，最後一格素材之後是一大片黑。",
+      "glamour_shot": "溫苡轉椅轉向高維，盤腿坐著，眼神從疲倦一下子變亮。",
+      "setups": [
+        "s02-t08",
+        "m05"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "答應剪片，條件是重拍阿恪"
+      ],
+      "characters": [
+        "wen-yi",
+        "gao-wei"
+      ],
+      "locations": [
+        "公寓廚房",
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第八週，週二",
+        "knowledge": "溫苡知道阿恪只剩明天有空。",
+        "carry_forward": "周彤的錄影仍停在「苡——」；她沒刪掉自己哭的那段。"
+      }
+    },
+    {
+      "number": 92,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "只說一次",
+      "youtube_title": "山難生還者坐在鏡頭前說他只說一次，閉上眼的第一句話是：那天雪是橫著下的",
+      "duration_s": 115,
+      "logline": "溫苡只有一天能拍阿恪，阿恪答應說，但只說一次，錯過就沒有了。",
+      "hook": "隔壁蘇蘇抱來一支收音麥克風：「借妳。只說一次的話。要收乾淨。」",
+      "hook_type": "line",
+      "mid_hook": "阿恪坐下，左腿伸直：「我說，但我只說一次。妳別喊停。」",
+      "extra_hooks": [
+        "溫苡把攝影機架好，自己的手在抖，紅燈亮起。"
+      ],
+      "conflict": "只有一次機會，任何一個技術失誤都會讓那天永遠沒被說出來。",
+      "turn": "她以為阿恪會從山難說起，他卻先說周彤出發前在登山口綁鞋帶時哼的歌——他要先讓她看見人，再說事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿恪閉上眼：「那天，雪是橫著下的。」畫面切到一片白茫茫的雪坡空景，沒有人。",
+        "question": "山上那天到底發生了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "zhichang"
+      ],
+      "spectacle": "訪談的兩盞燈之間，阿恪曬黑的臉，接著切進一片橫著飄雪的空山。",
+      "glamour_shot": "溫苡在攝影機後面露出的一隻眼睛，專注得像整個人只剩這一隻眼。",
+      "setups": [
+        "m01"
+      ],
+      "payoffs": [
+        "s02-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿恪開口",
+        "蘇蘇借她收音"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-ke",
+        "s02-su-su",
+        "zhou-tong"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第八週，週三",
+        "knowledge": "溫苡知道阿恪只說一次。",
+        "carry_forward": "訪談進行中，攝影機開著。"
+      }
+    },
+    {
+      "number": 93,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "岩縫",
+      "youtube_title": "生還者說兩個人把他推進岩縫，自己去找路，他們不是迷路，是去替他找訊號求救",
+      "duration_s": 115,
+      "logline": "溫苡聽阿恪說到兩人怎麼離開，答案和她三個月來以為的不一樣。",
+      "hook": "阿恪：「他們把我推進岩縫。用背包堵風。」溫苡握緊筆，沒寫字。",
+      "hook_type": "line",
+      "mid_hook": "阿恪：「我腿斷了。周彤說，等我。嚴澈說，我們很快。」",
+      "extra_hooks": [
+        "空景：岩縫口一個背包的剪影，雪一直下，鏡頭沒有往裡推。"
+      ],
+      "conflict": "她一直以為他們是在風雪裡迷路，可阿恪說的是另一件事。",
+      "turn": "他們不是迷路——他們是為了替受傷的阿恪找訊號、叫直升機，才走進風雪裡的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "阿恪睜開眼：「他們不是迷路。是去找訊號。替我叫直升機。」溫苡手裡的筆掉在地上。",
+        "question": "那通求救電話打出去了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "雪中的岩縫空景，一個登山背包堵在風口，風把雪吹成一條條白線。",
+      "glamour_shot": "阿恪說話時溫苡沒有擦淚，頭髮被訪談燈照出一圈金邊。",
+      "setups": [
+        "m03"
+      ],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道兩人是為了救阿恪離開"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-ke",
+        "zhou-tong",
+        "yan-che"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第八週，週三下午",
+        "knowledge": "溫苡知道周彤和嚴澈是去求救的。",
+        "carry_forward": "訪談還在繼續。"
+      }
+    },
+    {
+      "number": 94,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "第二天中午",
+      "youtube_title": "求救電話打通了，救援卻到第二天中午才來，生還者說到如果那夜能飛就停住了",
+      "duration_s": 110,
+      "logline": "溫苡在訪談裡離那夜只差一個問題，而那個問題可能指向她家裡的人。",
+      "hook": "阿恪：「電話打通了。周彤在風裡喊座標。」溫苡的呼吸停了。",
+      "hook_type": "line",
+      "mid_hook": "阿恪：「救援第二天中午才到。如果直升機那夜能飛——」他停住。",
+      "conflict": "下一個問題，答案可能是老鍾在電梯口說了一半的那一半。",
+      "turn": "她以為自己最怕的是聽見山上的事，原來她最怕的是聽見塔台的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "溫苡的手指放在錄音鍵旁。她可以問「那夜為什麼不能飛」——也可以說「今天到這」。",
+        "question": "她會問出那個問題嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "zhichang"
+      ],
+      "spectacle": "空景：夜裡的停機坪，一架直升機停著，旋翼不動，雪落在上面。",
+      "glamour_shot": "溫苡在鏡頭後抬眼看阿恪，眼眶紅著，嘴唇在動卻沒出聲。",
+      "setups": [
+        "s02-t09"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "wen-yi",
+        "a-ke",
+        "zhou-tong"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第八週，週三傍晚",
+        "knowledge": "溫苡知道救援晚了一夜，直升機那夜沒飛。",
+        "carry_forward": "那個問題她還沒問。"
+      }
+    },
+    {
+      "number": 95,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "塔台說不行",
+      "youtube_title": "她問了那夜直升機為什麼不能飛，生還者只說了五個字，她握著筆的手停住了",
+      "duration_s": 120,
+      "logline": "溫苡問出那個問題，答案讓她知道塔台裡坐的是誰。",
+      "hook": "溫苡開口：「那夜為什麼不能飛？」阿恪看著她：「天候。塔台說不行。」",
+      "hook_type": "line",
+      "mid_hook": "溫苡的手停在筆記本上。她知道那夜塔台裡是誰。",
+      "extra_hooks": [
+        "阿恪慢慢說：「我不怪塔台。我怪雪。」"
+      ],
+      "conflict": "她拍到了片子最重要的一句，也拍到了她家裡那個人最不想被說出的一句。",
+      "turn": "阿恪說他不怪塔台，接著說了一件沒人知道的事：那個管制員後來去醫院看過他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿恪：「那個管制員。來醫院看過我。坐了十分鐘。沒說話。沒留名字。」",
+        "question": "去醫院看阿恪的是嚴叙嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhichang",
+        "ganren"
+      ],
+      "spectacle": "訪談鏡頭推近：阿恪的嘴唇說出「塔台」兩個字，溫苡的筆尖在紙上戳出一個洞。",
+      "glamour_shot": "溫苡停住的手、手腕上那條周彤的登山繩手環在燈下發亮。",
+      "setups": [
+        "s02-t10"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到片子最關鍵的訪談"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-ke"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第八週，週三晚上",
+        "knowledge": "溫苡知道那夜塔台說不行，也知道有個管制員去醫院坐了十分鐘。",
+        "carry_forward": "她還沒問家裡的那個人。"
+      }
+    },
+    {
+      "number": 96,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "這條在剪誰",
+      "youtube_title": "剪接師看著她不敢放進片子的那段，問她第七條這條時間線到底在剪誰",
+      "duration_s": 105,
+      "logline": "溫苡把阿恪的訪談排上時間線，卻放不進「塔台說不行」那一段。",
+      "hook": "時間線上，「塔台說不行」那一段被她拖進去、拖出來、又拖進去。",
+      "hook_type": "image",
+      "mid_hook": "剪接師阿良咬著能量飲料的吸管：「那是你們家的事。不是片子的。」",
+      "extra_hooks": [
+        "阿良瞄到旁邊另一條時間線：「第七條，九段。這條在剪誰？」"
+      ],
+      "conflict": "片子需要這一段，可這一段一放進去，嚴叙就會被全世界看見。",
+      "turn": "阿良不是在逼她剪，是在提醒她：她剪片的時候，手一直停在同一個人身上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "溫苡拿起手機，打下「那夜——」，停了很久，一個字一個字刪掉。",
+        "question": "她會開口問嚴叙嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "zhichang",
+        "ganren"
+      ],
+      "spectacle": "剪接軟體上兩條時間線並排：一條叫「登山隊」，一條叫「第七條」，後者比前者還長。",
+      "glamour_shot": "溫苡咬著筆蓋看螢幕，短髮被耳機壓扁一邊，眼下是兩道青。",
+      "setups": [],
+      "payoffs": [
+        "s02-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」時間線九段",
+        "阿恪訪談排上時間線"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-liang"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第九週，週四",
+        "knowledge": "溫苡知道自己在剪的其實是他。",
+        "carry_forward": "訊息沒傳出去。"
+      }
+    },
+    {
+      "number": 97,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "那一週的日程表",
+      "youtube_title": "她在書架上找到契約老公保存的每一週日程表，翻到那夜那一週，那一格是空白的",
+      "duration_s": 115,
+      "logline": "溫苡守著第八條不問，卻在家裡找到了另一種答案。",
+      "hook": "書架最上層一排黑色資料夾，每一本背上都是日期。溫苡的手停在其中一本：那一週。",
+      "hook_type": "image",
+      "mid_hook": "那一週的日程表：其他格子密密麻麻，那夜只印著「夜班」，隔天下午手寫一行「醫院 14:00」。",
+      "conflict": "她答應過不問，可他的過去就整整齊齊排在書架上。",
+      "turn": "那一週隔天的「醫院」對上了阿恪的話——去醫院坐十分鐘的人就是他，而且是他整份日程表上唯一的手寫字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "資料夾從她手裡滑下來啪地落地。身後，嚴叙站在門口：「找什麼？」",
+        "question": "他看見她在翻那一週了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "richang"
+      ],
+      "spectacle": "一整排日期資料夾，其中一本攤開，所有印刷字中間只有一行手寫。",
+      "glamour_shot": "嚴叙在門口逆光的身影，夜班制服外套搭在手上，表情看不清。",
+      "setups": [],
+      "payoffs": [
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "確認去醫院的人是他"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "公寓書房"
+      ],
+      "state": {
+        "time": "結婚第九週，週五傍晚",
+        "knowledge": "溫苡知道那夜之後他去醫院看過阿恪。",
+        "carry_forward": "他在門口；資料夾在地上。"
+      }
+    },
+    {
+      "number": 98,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "電池",
+      "youtube_title": "契約老公問她在找什麼，她說找電池，他從抽屜精準拿出一顆，再把資料夾推回原位一公分",
+      "duration_s": 105,
+      "logline": "溫苡被撞見翻他的過去，只能說謊，而他什麼都不拆穿。",
+      "hook": "溫苡：「電池。」嚴叙走到第三個抽屜，拿出一顆，遞給她：「三號。」",
+      "hook_type": "line",
+      "mid_hook": "他彎腰撿起資料夾，放回書架，往裡推了一公分，和其他對齊。",
+      "extra_hooks": [
+        "凌晨五點，棗棗的頭燈亮起，房裡傳來：「天亮了沒？」兩個人同時回答：「還沒。」"
+      ],
+      "conflict": "兩人都知道她看了，誰都不能說，因為一說就是第八條。",
+      "turn": "她以為他會生氣，他只是把資料夾對齊——他用對齊代替說話，代表他知道她知道。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "深夜她走過書房，那一排黑色資料夾不見了。他的抽屜，第一次上了鎖。",
+        "question": "他為什麼要把過去鎖起來？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "fancha",
+        "xuanyi",
+        "richang"
+      ],
+      "spectacle": "書架上那一整排資料夾的位置空了一整格，只剩灰塵畫出的長方形。",
+      "glamour_shot": "嚴叙背對她對齊資料夾的手，手錶的錶面反著燈光。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓書房",
+        "公寓走廊"
+      ],
+      "state": {
+        "time": "結婚第九週，週六",
+        "knowledge": "溫苡知道他知道她看過。",
+        "carry_forward": "抽屜上鎖；棗棗睡到五點。"
+      }
+    },
+    {
+      "number": 99,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "高維說溜嘴",
+      "youtube_title": "製片在剪接室大聲稱讚那句塔台說不行超有力，門口來接女兒的契約老公停住了腳步",
+      "duration_s": 110,
+      "logline": "溫苡想把「塔台說不行」藏起來，高維卻在最不該說的時候說了出來。",
+      "hook": "高維在剪接室拍桌：「阿恪那段很好！但妳要給我時間表。」溫苡：「再給我一週。」",
+      "hook_type": "line",
+      "mid_hook": "高維逼問：「妳到底在等什麼？」溫苡答不出來，看向沙發上睡著的棗棗。",
+      "conflict": "高維要日期，她要時間；她不能說她在等的是一個人開口。",
+      "turn": "她以為只要不放進片子就沒事，高維卻把那句話大聲念了出來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "高維：「『塔台說不行』！超有力！」門口，來接棗棗的嚴叙停在那裡，手還扶著門把。",
+        "question": "嚴叙聽見了多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "剪接室門口一道走廊光切進來，光裡站著穿制服的他，影子落在螢幕的阿恪臉上。",
+      "glamour_shot": "嚴叙扶著門把的手、制服肩章、臉上一點表情都沒有。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "爭到一週"
+      ],
+      "characters": [
+        "wen-yi",
+        "gao-wei",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第九週，週日晚上",
+        "knowledge": "溫苡知道他聽見了。",
+        "carry_forward": "棗棗在沙發上睡著；回家的路會很長。"
+      }
+    },
+    {
+      "number": 100,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "你們在玩哪一條",
+      "youtube_title": "契約老公說妳拍了阿恪，她答第五條，他問他說了什麼，她答第八條，女兒走出來問你們在玩哪一條",
+      "duration_s": 140,
+      "logline": "溫苡和嚴叙都知道對方知道了什麼，卻只能用條號說話。",
+      "hook": "回家，嚴叙在廚房洗杯子。溫苡站在門口，看了他很久。",
+      "hook_type": "image",
+      "mid_hook": "他沒回頭：「妳拍了阿恪。」她：「第五條。」他：「他說了什麼？」她：「第八條。」",
+      "extra_hooks": [
+        "水龍頭一直開著，他手上的杯子早就洗乾淨了。"
+      ],
+      "conflict": "兩個人都站在那夜的門口，誰先開口誰就破了第八條。",
+      "turn": "她以為他會追問，他把水龍頭關掉，就站著——他在等她問，她在等他說。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "棗棗抱著頭燈從房裡出來，看看廚房裡站著不動的兩個人：「你們在玩哪一條？」",
+        "question": "誰會先破第八條？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "chengren"
+      ],
+      "spectacle": "廚房的黃燈下，兩個人隔著一張桌子站著，中間的流理台上兩個洗好的杯子在滴水。",
+      "glamour_shot": "溫苡靠在門框上，攝影機垂在身側沒舉起來，眼睛一直在他背上。",
+      "setups": [],
+      "payoffs": [
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人互知對方知道"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第九週，週日深夜",
+        "knowledge": "溫苡知道他知道她拍了阿恪；他知道她知道塔台。",
+        "carry_forward": "第八條兩邊都快撐不住了；嚴母的律師要來了。"
+      }
+    },
+    {
+      "number": 101,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "請簽收",
+      "youtube_title": "女兒問他們在玩哪一條的隔天，律師事務所助理按門鈴送來一份文件：監護權訴訟，請簽收",
+      "duration_s": 110,
+      "logline": "溫苡和嚴叙的第八條僵局還沒解，嚴母先把監護權訴訟送上門。",
+      "hook": "隔天早上，兩人同時開口要回答棗棗，門鈴響了。門外一個年輕人抱著文件：「嚴律師事務所，請簽收。」",
+      "hook_type": "danger",
+      "mid_hook": "助理小聶簽完字，壓低聲音：「嚴律師交代。社工每週來。不預約。」",
+      "conflict": "嚴母正式提告，從今天起這個家每個星期都要被看一次。",
+      "turn": "她以為小聶是來示威的，小聶臨走前卻說了一句：「我小時候也被搶過。加油。」——敵營的人站在了門口這一邊。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "起訴狀最後一頁的附件清單，第三項寫著：「被告溫苡持續拍攝未成年人之影像」。",
+        "question": "嚴母為什麼要攻擊她的攝影機？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "chengren"
+      ],
+      "spectacle": "牛皮紙袋倒在餐桌上，起訴狀一頁頁攤開，旁邊是攝影機和一碗棗棗的早餐。",
+      "glamour_shot": "嚴叙在玄關簽收，鋼筆一筆一畫寫自己的名字，下面一格寫了她的。",
+      "setups": [
+        "s02-t12",
+        "m06"
+      ],
+      "payoffs": [
+        "s02-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "敵營的助理小聶留下善意"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "s02-xiao-nie"
+      ],
+      "locations": [
+        "公寓玄關",
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第十週，週一",
+        "knowledge": "溫苡知道訴訟開始、社工每週不預約，嚴母瞄準的是她的攝影機。",
+        "carry_forward": "第八條的僵局被訴訟蓋過去；攝影機還開著。"
+      }
+    },
+    {
+      "number": 102,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "每週一次",
+      "youtube_title": "社工第二次不預約上門，看見她的攝影機一直開著，問她可不可以看，又說法院可能會調",
+      "duration_s": 115,
+      "logline": "溫苡要在每週一次的不預約家訪裡繼續工作，而攝影機變成了證物。",
+      "hook": "週三早上六點五十，門鈴。溫苡和嚴叙同時從各自的房門衝出來，在走廊撞個正著。",
+      "hook_type": "danger",
+      "mid_hook": "林姐看著餐桌上亮著紅燈的攝影機：「可以給我看嗎？」溫苡：「……給棗棗留的。」",
+      "extra_hooks": [
+        "林姐問棗棗睡到幾點，棗棗伸出五根手指：「五點。」"
+      ],
+      "conflict": "她拍了幾百小時的家，現在每一小時都可能被拿來證明她不適任。",
+      "turn": "林姐不是在搜證，是在提醒：法院會調，她要先想好哪些是給棗棗的。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "林姐收起筆記本：「法院可能會調這些影像。」她看著溫苡：「妳想清楚拍了什麼。」",
+        "question": "攝影機裡的東西會進法院嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        5,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "chengren",
+        "xuanyi"
+      ],
+      "spectacle": "早上的走廊，兩扇門同時打開，兩個人撞在中間，林姐在玄關看著。",
+      "glamour_shot": "嚴叙手忙腳亂扣扣子，扣到最上面一顆，頭髮第一次亂了一撮。",
+      "setups": [],
+      "payoffs": [
+        "m02",
+        "s02-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗睡到五點被林姐記下"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie"
+      ],
+      "locations": [
+        "公寓走廊",
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第十週，週三早上",
+        "knowledge": "溫苡知道她的影像可能進法院。",
+        "carry_forward": "攝影機開著；兩人在林姐面前越演越像。"
+      }
+    },
+    {
+      "number": 103,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "多一樣菜",
+      "youtube_title": "契約老公說是剩的，她打開便當卻發現多了一樣菜，正是她上週隨口說過喜歡的那道",
+      "duration_s": 105,
+      "logline": "溫苡被訴訟和剪片磨到吃不下飯，嚴叙用一個便當越過了一條線。",
+      "hook": "剪接室裡，溫苡的手機跳出小芊的訊息：「前輩今天帶了兩個便當？」",
+      "hook_type": "question",
+      "mid_hook": "嚴叙把便當放在她桌上：「剩的。」轉身就走。",
+      "extra_hooks": [
+        "蘇蘇從隔壁探頭：「剩的會用保溫袋裝？」"
+      ],
+      "conflict": "兩人越演越像，演到家裡也停不下來，誰都分不清哪一下是演的。",
+      "turn": "她以為是剩菜，打開才看見多了一樣她上週在飯桌上隨口說過喜歡的菜。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她夾起那道菜，咬了一口，又放下筷子，打開「第七條」時間線，加了一個標記：「便當」。",
+        "question": "這算第幾次例外？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "chengren",
+        "xiju"
+      ],
+      "spectacle": "便當蓋打開的俯拍：格子整整齊齊，多出來的那一格冒著熱氣。",
+      "glamour_shot": "溫苡咬著筷子笑出來，眼睛彎起來，馬上又裝作沒事。",
+      "setups": [
+        "s02-t11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "他記得她說過喜歡的菜"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "xiao-qian",
+        "s02-su-su"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第十週，週四",
+        "knowledge": "溫苡知道他記得她隨口說的話。",
+        "carry_forward": "「第七條」時間線開始標記他的例外。"
+      }
+    },
+    {
+      "number": 104,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "例外清單",
+      "youtube_title": "她在時間線上一個一個標出契約老公的例外，女兒說你每天都例外，她卻數出自己也有五個",
+      "duration_s": 105,
+      "logline": "溫苡想數清楚嚴叙破了幾次例外，結果數到自己身上。",
+      "hook": "時間線上一排小旗子：回握、牙刷杯、家屬、蹲下、便當。溫苡數到第五個。",
+      "hook_type": "image",
+      "mid_hook": "棗棗問：「例外是什麼？」嚴叙：「不常發生的事。」棗棗：「那你每天都例外。」",
+      "conflict": "她想拿例外當證據證明他越界，可每一個例外旁邊都有她自己。",
+      "turn": "她以為清單只有他的，一格一格看回去：她開門的笑、她回嗆嚴母、她坐在窗邊——她自己也有五個。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她換了一種顏色標記自己的：紅的五個、藍的五個，交錯排在同一條時間線上，像兩條航線。",
+        "question": "她自己也在越界？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "chengren"
+      ],
+      "spectacle": "時間線上紅藍兩色的小旗子交錯排開，從左邊一路延伸到右邊。",
+      "glamour_shot": "溫苡托著下巴看時間線，嘴角慢慢往上，又咬住下唇壓回去。",
+      "setups": [],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」時間線十一段、十個標記"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第十週，週五",
+        "knowledge": "溫苡知道兩個人的例外一樣多。",
+        "carry_forward": "她把清單藏在時間線裡；林姐下週還會來。"
+      }
+    },
+    {
+      "number": 105,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "毯子",
+      "youtube_title": "她剪片剪到趴在桌上睡著，夜班回來的契約老公第一次碰她，是把毯子蓋上，而且沒有收手",
+      "duration_s": 115,
+      "logline": "溫苡累到在廚房桌上睡著，醒來時嚴叙的手還在她肩上。",
+      "hook": "凌晨一點，溫苡趴在廚房桌上睡著了，螢幕上是周彤的臉，停在「苡——」。",
+      "hook_type": "image",
+      "mid_hook": "門開，夜班回來的嚴叙看見螢幕，停了很久，拿起沙發上的毯子，蓋在她肩上。",
+      "extra_hooks": [
+        "她醒了。他的手還在毯子上，沒有收回。"
+      ],
+      "conflict": "他第一次碰她，不是在外人面前。",
+      "turn": "她以為他會立刻縮手說「例外」，他沒動，手掌就停在她肩上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "溫苡沒回頭：「第七條。」嚴叙：「第七條是不談。」他停了一下：「我沒談。」",
+        "question": "沒談，就不算越界嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "ganren"
+      ],
+      "spectacle": "螢幕光裡，周彤停格的臉、溫苡睡著的側臉、一隻落在毯子上的手。",
+      "glamour_shot": "嚴叙低頭看她的那一秒，夜班的疲倦和廚房的黃燈一起落在他眼裡。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他第一次碰她"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "zhou-tong"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第十一週，週二凌晨",
+        "knowledge": "溫苡知道他看見了周彤的錄影。",
+        "carry_forward": "他的手還在她肩上。"
+      }
+    },
+    {
+      "number": 106,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "家裡沒外人",
+      "youtube_title": "她說你蓋毯子，他說第四條，她說家裡沒外人，他想了很久只吐出兩個字，門鈴卻在這時響了",
+      "duration_s": 110,
+      "logline": "溫苡逼嚴叙承認毯子不是演的，而下一個看見這一幕的人已經在門外。",
+      "hook": "溫苡：「你蓋毯子。」嚴叙：「第四條。」溫苡：「家裡沒外人。」",
+      "hook_type": "line",
+      "mid_hook": "他沉默了很久，手終於收回去：「……例外。」",
+      "extra_hooks": [
+        "她在時間線上加了一面藍旗：「毯子」。第六個。"
+      ],
+      "conflict": "她要他說出口，他只肯給她一個字。",
+      "turn": "她以為「例外」是在退，可這一次他說完沒有走，坐在她對面陪她剪到天快亮。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "早上七點門鈴響，林姐站在門口，看見溫苡身上的毯子、桌上兩杯咖啡、嚴叙的手還搭在椅背上。她低頭寫了一行字。",
+        "question": "林姐這次寫了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "xiju"
+      ],
+      "spectacle": "清晨的廚房：毯子、兩杯咖啡、一台開著的筆電，玄關站著林姐。",
+      "glamour_shot": "溫苡披著他的毯子開門，頭髮睡得翹起，眼睛還有昨晚的光。",
+      "setups": [],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他陪她剪到天亮"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "lin-jie"
+      ],
+      "locations": [
+        "公寓廚房",
+        "公寓玄關"
+      ],
+      "state": {
+        "time": "結婚第十一週，週二早上",
+        "knowledge": "溫苡知道他的「例外」不是退。",
+        "carry_forward": "林姐看見了毯子。"
+      }
+    },
+    {
+      "number": 107,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "七次",
+      "youtube_title": "表姐打來要契約老公出庭作證她不適任，她數著時間線上的例外，剛好第七個",
+      "duration_s": 115,
+      "logline": "溫苡的例外清單數到第七個，嚴家卻要嚴叙在法庭上親口說她不適任。",
+      "hook": "林姐走後，溫苡把筆記本攤開給他看：例外，第七個——「蹲下陪她剪片」。",
+      "hook_type": "image",
+      "mid_hook": "嚴琇打給嚴叙，擴音沒關：「媽要你出庭。說她不適任。」",
+      "conflict": "嚴家把嚴叙推到溫苡的對面，讓他在法庭上選邊。",
+      "turn": "她以為這通電話是衝著她，聽到最後才懂：嚴琇是在試，試他會不會為了母親背契約。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "嚴叙握著手機，看著她。嚴琇在那頭：「你只要說一句。」他的拇指停在掛斷鍵上。",
+        "question": "他會出庭說她不適任嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "chengren"
+      ],
+      "spectacle": "筆記本上七個例外排成一列，最後一個寫著「第七」，旁邊的手機螢幕亮著「嚴琇」。",
+      "glamour_shot": "嚴叙握著手機站在窗前，晨光從背後切出他的輪廓，下顎咬緊。",
+      "setups": [],
+      "payoffs": [
+        "s02-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "數到第七個例外"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-xiu"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "結婚第十一週，週二上午",
+        "knowledge": "溫苡知道嚴家要他出庭作證。",
+        "carry_forward": "他還沒回答嚴琇。"
+      }
+    },
+    {
+      "number": 108,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "牆很薄",
+      "youtube_title": "契約老公只回了表姐兩個字就掛斷，去剪接室接女兒時隔壁錄音師告訴他：她每晚都在哭",
+      "duration_s": 115,
+      "logline": "溫苡被保住了，嚴叙卻從隔壁的人那裡聽見了她從沒說的事。",
+      "hook": "嚴叙對手機說：「不去。」掛斷。溫苡看著他，筷子掉在桌上。",
+      "hook_type": "line",
+      "mid_hook": "傍晚他去剪接室接棗棗，蘇蘇在走廊攔住他：「她每晚都在哭。牆很薄。」",
+      "conflict": "他擋得住嚴家，擋不住她一個人在牆的那一邊。",
+      "turn": "他以為她哭是因為訴訟，蘇蘇說的是另一件事——她每晚放的是同一個女人的聲音。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "蘇蘇：「她每次都停在同一個字。」她模仿那個聲音：「苡——」嚴叙抱著棗棗的手緊了一下。",
+        "question": "她為什麼每次都停在那個字？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "dalian",
+        "xuanyi"
+      ],
+      "spectacle": "剪接室走廊兩扇門：一扇是錄音室的隔音門，一扇門縫透出螢幕的藍光。",
+      "glamour_shot": "嚴叙抱起沙發上睡著的棗棗，棗棗的頭靠在他肩上，頭燈垂在他胸前。",
+      "setups": [],
+      "payoffs": [
+        "s02-t15",
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他當面拒絕替嚴家作證",
+        "他知道她每晚在哭"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "s02-su-su",
+        "yan-xiu"
+      ],
+      "locations": [
+        "公寓廚房",
+        "剪接室走廊"
+      ],
+      "state": {
+        "time": "結婚第十一週，週二傍晚",
+        "knowledge": "溫苡知道他為她拒絕了嚴家；嚴叙知道她每晚停在「苡——」。",
+        "carry_forward": "錄影還停在 00:03。"
+      }
+    },
+    {
+      "number": 109,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "看了一半",
+      "youtube_title": "她第二次按下閨蜜的錄影，畫面裡閨蜜一句話都沒說，只是在替女兒的頭燈纏膠帶",
+      "duration_s": 115,
+      "logline": "溫苡第二次播周彤的錄影，往前走了一半，看見了一件誰都不知道的事。",
+      "hook": "剪接室凌晨，溫苡戴上蘇蘇的耳機，按下空白鍵。「苡——」這一次她沒停。",
+      "hook_type": "image",
+      "mid_hook": "周彤沒有再說話，低頭拿出一個小頭燈，在帶子上一圈一圈纏膠帶，寫上「棗」。",
+      "extra_hooks": [
+        "沙發上，棗棗抱著同一個頭燈睡著，膠帶的角已經磨白了。"
+      ],
+      "conflict": "她終於往前走了，卻不知道往前會看見什麼。",
+      "turn": "棗棗每晚抱著的頭燈，是周彤出發前夜親手做的——棗棗一直抱著的是媽媽的最後一件事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "進度條走到一半，周彤纏好膠帶，抬頭對著鏡頭吸一口氣，張口——溫苡的手按下了暫停。",
+        "question": "周彤接下來要對她說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "螢幕上周彤纏膠帶的手，和沙發上棗棗抱著的頭燈，同一個膠帶、同一個「棗」字。",
+      "glamour_shot": "回憶裡周彤馬尾垂在肩上，低頭纏膠帶的側臉，登山繩手環在燈下晃。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "知道頭燈是周彤做的"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-zaozao",
+        "zhou-tong"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第十二週，週五凌晨",
+        "knowledge": "溫苡知道頭燈是周彤出發前夜做給棗棗的。",
+        "carry_forward": "錄影停在一半；嚴叙夜班快結束。"
+      }
+    },
+    {
+      "number": 110,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "那夜我在塔台",
+      "youtube_title": "她在剪接室哭到停不下來，下夜班的契約老公站在門口很久，第一次破了第八條：那夜我在塔台",
+      "duration_s": 165,
+      "logline": "溫苡在剪接室崩潰，從不說過去的嚴叙在門口做了一個決定。",
+      "hook": "凌晨十二點半，溫苡在剪接室哭，聲音壓在手背裡。門口，嚴叙還穿著制服。",
+      "hook_type": "image",
+      "mid_hook": "他站在門口很久，沒有進來，也沒有走。棗棗在沙發上翻了個身，頭燈滾到地上。",
+      "extra_hooks": [
+        "他彎腰撿起頭燈，放回棗棗懷裡，轉身看著她：「那夜我在塔台。」"
+      ],
+      "conflict": "她不問，他不說；第八條把兩個人關在同一夜的兩邊。",
+      "turn": "她一直以為要她問他才會說，最後是他自己開口——第八條是他加的，也是他先破的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "嚴叙：「直升機要飛，天候不夠。我下了延飛。照規定，對的。」他停了很久：「我每天都在重算。」",
+        "question": "她聽完會怎麼回他？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengren",
+        "xuanyi"
+      ],
+      "spectacle": "剪接室的螢幕停在周彤張口的一格，門口一個穿制服的人，兩者之間是一整條黑暗的走道。",
+      "glamour_shot": "嚴叙在門口的側臉，藍色螢幕光與走廊的黃燈各照他半張臉，第一次說出不是航管的話。",
+      "setups": [],
+      "payoffs": [
+        "s02-t09"
+      ],
+      "reveals": [
+        "m03"
+      ],
+      "general_payoffs": [
+        "他第一次破了第八條"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "zhou-tong"
+      ],
+      "locations": [
+        "剪接室"
+      ],
+      "state": {
+        "time": "結婚第十二週，週五凌晨十二點半",
+        "knowledge": "溫苡知道那夜是他下了延飛的指令，照規定，而他每天都在重算。",
+        "carry_forward": "第八條破了；棗棗在沙發上睡著；這一夜還沒過完。"
+      }
+    },
+    {
+      "number": 111,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "回家",
+      "youtube_title": "契約老公說完那夜就不再開口，抱起沙發上睡著的女兒只說兩個字，三個人在凌晨一點回家",
+      "duration_s": 115,
+      "logline": "溫苡聽完那夜，不知道該說什麼，嚴叙也不再說話，可這一夜還沒結束。",
+      "hook": "溫苡抬起頭，滿臉淚痕。嚴叙沒有再說一個字，彎腰抱起沙發上的棗棗：「回家。」",
+      "hook_type": "image",
+      "mid_hook": "車上，紅燈一個一個過去。溫苡把攝影機從包裡拿出來，打開，放在儀表板上，紅燈對著前方的路。",
+      "extra_hooks": [
+        "到家，他把棗棗放上床，頭燈擺在她手邊，關燈前看了一眼錶：01:40。"
+      ],
+      "conflict": "話說出來了，兩個人卻不知道說完之後要怎麼當同一個屋簷下的人。",
+      "turn": "她以為他會躲回自己房間，像每一次一樣；他卻走進廚房，倒了兩杯水。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "廚房桌上兩杯水，他坐在一邊，把另一杯推到對面：「妳的。」溫苡看著那杯水，慢慢坐下。",
+        "question": "這一夜他們要說到哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "chengren"
+      ],
+      "spectacle": "凌晨的城市空路，車裡只有儀表板上攝影機的一點紅光。",
+      "glamour_shot": "嚴叙抱起熟睡的棗棗那一秒，棗棗的捲髮貼在他制服領口，他的動作輕得像在接一架降落的飛機。",
+      "setups": [
+        "s02-t13"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三個人一起回家"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "剪接室",
+        "車上",
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "第十二週，週五凌晨一點四十",
+        "knowledge": "溫苡知道那夜的全部。",
+        "carry_forward": "兩人坐在廚房；攝影機被她帶回家放在流理台上，紅燈亮著。"
+      }
+    },
+    {
+      "number": 112,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "我也在那夜",
+      "youtube_title": "凌晨兩點她對契約老公說：那夜我也在，在剪接室剪她的片，等她打電話來",
+      "duration_s": 110,
+      "logline": "溫苡要把自己的那一夜也說出來，因為他說了，她不能只拿不給。",
+      "hook": "溫苡握著那杯水：「那夜，我也在。」嚴叙抬眼。",
+      "hook_type": "line",
+      "mid_hook": "她說：「我在剪接室剪她的片。她說到了山屋會打給我。」嚴叙的手停在杯子上。",
+      "conflict": "他說了他那邊的，她那邊的一直鎖在硬碟裡，從沒對任何人說過。",
+      "turn": "原來那夜兩個人都醒著：一個在塔台看天候，一個在剪接室等電話，隔著半座城市。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把筆電轉向他，游標停在一個檔案上：「最後一段素材。你要看嗎？」",
+        "question": "他敢看周彤最後一段素材嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chengren"
+      ],
+      "spectacle": "廚房的黃燈下兩杯水、一台筆電，窗外的城市還是黑的，牆上鐘指著兩點。",
+      "glamour_shot": "溫苡說話時沒看他，看著杯裡的水，短髮遮住半邊臉，手環在杯沿輕輕碰出聲。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次說出自己的那一夜"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "第十二週，週六凌晨兩點",
+        "knowledge": "溫苡說出那夜自己在剪接室等電話。",
+        "carry_forward": "筆電上是最後一段素材。"
+      }
+    },
+    {
+      "number": 113,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "明天見",
+      "youtube_title": "她讓契約老公看了紀錄片的最後一段素材，閨蜜對鏡頭笑著說明天見，她說她三個月剪不下去",
+      "duration_s": 125,
+      "logline": "溫苡把剪不下去的理由攤在嚴叙面前，那是片子裡最後一段畫面。",
+      "hook": "嚴叙：「看。」溫苡按下播放。出發前一天，登山口，周彤背著背包對鏡頭笑：「明天見。」",
+      "hook_type": "image",
+      "mid_hook": "溫苡：「這是最後一段。剪完，就停在明天見。我三個月剪不下去。」",
+      "extra_hooks": [
+        "畫面裡嚴澈從周彤身後探頭，對鏡頭比了一個「OK」，畫面就結束了。"
+      ],
+      "conflict": "片子的結尾就是周彤最後一次對她笑，剪完就等於親手寫下結局。",
+      "turn": "她以為只有自己困在那一夜，他說：「妳剪不下去，我每天重算。」「我們在同一夜。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "溫苡擦掉眼淚：「第八條破了。」嚴叙看著她：「妳先破的。」",
+        "question": "第八條到底是誰先破的？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "chengren"
+      ],
+      "spectacle": "筆電螢幕上周彤與嚴澈在登山口的陽光裡笑，畫面定格在「明天見」的口型。",
+      "glamour_shot": "回憶裡周彤對鏡頭比手勢的笑，馬尾甩到肩後，陽光打在她的登山繩手環上。",
+      "setups": [],
+      "payoffs": [
+        "s02-t13"
+      ],
+      "reveals": [
+        "m05"
+      ],
+      "general_payoffs": [
+        "她說出剪不下去的原因",
+        "兩人知道彼此困在同一夜"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "zhou-tong",
+        "yan-che"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "第十二週，週六凌晨兩點半",
+        "knowledge": "溫苡知道兩人都停在同一夜。",
+        "carry_forward": "第八條破了，誰先破的還在爭。"
+      }
+    },
+    {
+      "number": 114,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "一起破",
+      "youtube_title": "她說我沒問你，契約老公想了很久，說出三個字，然後把契約攤在桌上要她一起簽",
+      "duration_s": 110,
+      "logline": "溫苡和嚴叙在爭誰先破第八條，爭到最後兩個人都不想贏。",
+      "hook": "嚴叙：「妳問阿恪。」溫苡：「我沒問你。」",
+      "hook_type": "line",
+      "mid_hook": "他沉默很久：「……一起破。」",
+      "extra_hooks": [
+        "她從攝影機包最底層抽出那張契約，攤在兩杯水中間。"
+      ],
+      "conflict": "第八條是兩人互相擋的牆，牆倒了總要有人算輸。",
+      "turn": "第十二條說先承認越界的算輸，他卻用「一起」讓誰都不算輸——這不是承認，是共犯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他在第八條旁邊寫了一個小字：「破」，簽上「嚴」，把筆推過去。溫苡在旁邊簽了「溫」。",
+        "question": "一起破之後，他們還剩幾條？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "chengren",
+        "jiating"
+      ],
+      "spectacle": "契約攤在廚房桌上，第八條旁邊兩個簽名並排，筆還沒放下。",
+      "glamour_shot": "溫苡簽完字抬頭，眼睛紅紅地笑了，露出牙。",
+      "setups": [],
+      "payoffs": [
+        "s02-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人一起在契約上註記第八條破了"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "第十二週，週六凌晨兩點五十",
+        "knowledge": "溫苡知道他不想讓她輸。",
+        "carry_forward": "契約攤在桌上；其他十一條還在。"
+      }
+    },
+    {
+      "number": 115,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "請假",
+      "youtube_title": "凌晨三點契約老公打給塔台班長，說出三年來第一次的兩個字，班長沉默很久才回他",
+      "duration_s": 115,
+      "logline": "溫苡看著嚴叙做一件他三年沒做過的事。",
+      "hook": "凌晨三點，嚴叙拿起手機撥號。對面接起來，聲音沙啞：「什麼事？」嚴叙：「明天。請假。」",
+      "hook_type": "line",
+      "mid_hook": "老鍾沉默了很久：「三年。准了。」又補一句：「你終於說了？」嚴叙：「說了。」",
+      "extra_hooks": [
+        "洗手台上那兩個貼在一起的牙刷杯，旁邊棗棗的小杯子歪了，溫苡起身把它扶正。"
+      ],
+      "conflict": "他的日程表三年沒有空過一天，那是他重算那一夜的方式。",
+      "turn": "她以為請假是為了休息，他看著她說的是：明天要陪棗棗——他把那夜之後第一個空白留給了家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "牆上的鐘走到四點。兩人同時停下來，看向走廊——棗棗的房門縫，這是頭燈每夜亮起的時間。",
+        "question": "棗棗的頭燈今晚會亮嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "chengren"
+      ],
+      "spectacle": "廚房牆上的鐘指著四點整，兩個人的臉同時轉向黑暗的走廊。",
+      "glamour_shot": "嚴叙講電話時低頭，手指無意識轉著無名指上那枚沒刻字的戒。",
+      "setups": [],
+      "payoffs": [
+        "s02-t14"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他三年來第一次請假"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "lao-zhong"
+      ],
+      "locations": [
+        "公寓廚房",
+        "公寓浴室"
+      ],
+      "state": {
+        "time": "第十二週，週六凌晨四點",
+        "knowledge": "溫苡知道他把第一個空白留給家。",
+        "carry_forward": "兩人在等走廊的喀聲。"
+      }
+    },
+    {
+      "number": 116,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "沒有喀聲",
+      "youtube_title": "四點整走廊沒有聲音，四點十分還是沒有，她把那條叫第七條的時間線第一次給契約老公看",
+      "duration_s": 120,
+      "logline": "溫苡在等棗棗的頭燈時，決定把「第七條」給嚴叙看。",
+      "hook": "四點整，走廊一片安靜。四點十分，還是沒有喀的一聲。溫苡用氣音：「她睡著了。」",
+      "hook_type": "question",
+      "mid_hook": "她把筆電轉過去：「第七條。」時間線上十四段，第一段是他半夜對棗棗說：「棗棗，收到。天亮了我叫妳。」",
+      "extra_hooks": [
+        "他看著螢幕上的自己，看了很久：「名字。」溫苡：「什麼？」他：「時間線的名字。」"
+      ],
+      "conflict": "她一直藏著的那條時間線，記的都是他沒說出口的話。",
+      "turn": "她以為他會要她刪，他只問了名字；聽到「第七條」，他說：「……不談。」——沒說不准。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "時間線最後一段的縮圖是正在錄的畫面：廚房、兩杯水、兩個人。流理台上的攝影機紅燈，從進門到現在一直亮著。",
+        "question": "今晚說的話全被錄下來了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "jiating"
+      ],
+      "spectacle": "時間線上十四段縮圖一路排開，最後一段是此刻：廚房裡的兩個人。",
+      "glamour_shot": "嚴叙看著螢幕上自己的臉，耳根慢慢紅起來，表情還是平的。",
+      "setups": [],
+      "payoffs": [
+        "s02-t13",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他看到「第七條」時間線",
+        "棗棗睡過了四點"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "第十二週，週六凌晨四點十分",
+        "knowledge": "溫苡知道他看過「第七條」也沒叫她刪。",
+        "carry_forward": "攝影機錄下了整夜；棗棗還在睡。"
+      }
+    },
+    {
+      "number": 117,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "保持錄影",
+      "youtube_title": "她伸手要關掉錄了一整夜的攝影機，契約老公按住她的手，說給棗棗留的",
+      "duration_s": 110,
+      "logline": "溫苡要決定這一夜要不要留下來，而這段影像有一天可能被法院調走。",
+      "hook": "溫苡伸手去按攝影機的開關。嚴叙的手先蓋了上去。",
+      "hook_type": "image",
+      "mid_hook": "嚴叙：「給棗棗留的。」溫苡愣住——這是她每次被問時說的話。",
+      "extra_hooks": [
+        "他的手蓋在她手上，跟毯子那晚一樣，沒有收回。"
+      ],
+      "conflict": "留下來，這一夜可能變成法庭上的證物；關掉，他第一次說的話就沒了。",
+      "turn": "她以為最怕被拍的人會要她刪，他卻用她的話留下了這一夜。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "紅燈在兩隻疊著的手底下亮著。溫苡：「法院會調。」嚴叙：「嗯。」她的手指還在開關上。",
+        "question": "這一夜要不要留給法院看見？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "chengren",
+        "ganren"
+      ],
+      "spectacle": "特寫：兩隻疊在一起的手壓著攝影機，指縫間透出一點紅光。",
+      "glamour_shot": "溫苡抬頭看他，廚房的燈在她眼裡，兩個人的距離只有一張桌子的一半。",
+      "setups": [],
+      "payoffs": [
+        "s02-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "這一夜被留了下來"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "第十二週，週六凌晨四點半",
+        "knowledge": "溫苡知道他願意讓這一夜被看見。",
+        "carry_forward": "攝影機繼續錄；窗外開始有鳥叫。"
+      }
+    },
+    {
+      "number": 118,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "半年",
+      "youtube_title": "清晨五點她傳訊息給製片只打了一個字：剪，製片秒回兩個字，契約老公說剪完給他看",
+      "duration_s": 115,
+      "logline": "溫苡在天亮前決定剪完那部片，也決定剪完要給誰看。",
+      "hook": "五點零五分，溫苡打開和高維的對話框，只打了一個字：「剪。」送出。",
+      "hook_type": "line",
+      "mid_hook": "手機馬上震動，高維秒回：「半年。」後面跟了一排驚嘆號。",
+      "extra_hooks": [
+        "嚴叙：「剪完，給我看。」溫苡：「第五條。」嚴叙：「家屬。」"
+      ],
+      "conflict": "片子停在「明天見」三個月了，剪完就要讓周彤真的走到結尾。",
+      "turn": "她以為剪完是一個人的事，他把她申請表上的那兩個字還給了她——家屬可以看。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她看著他，說不出話。窗外天邊開始一點一點變灰，廚房的燈顯得黃了。",
+        "question": "天亮時棗棗會在哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "chengren"
+      ],
+      "spectacle": "窗外的天從黑變成深藍，再變成灰，廚房的燈在對比裡越來越黃。",
+      "glamour_shot": "溫苡在晨光邊緣笑出來，眼淚還沒乾，牙齒露出來，手環在桌上輕輕敲。",
+      "setups": [],
+      "payoffs": [
+        "s02-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "決定剪完紀錄片，高維給半年"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "gao-wei"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "第十二週，週六清晨五點",
+        "knowledge": "溫苡決定剪片，剪完給他看。",
+        "carry_forward": "天快亮了；棗棗還沒出來。"
+      }
+    },
+    {
+      "number": 119,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "日程表的一行",
+      "youtube_title": "她打開律師助理寄來的信，第一庭定在下個月，契約老公把日程表翻過來，寫了一行手寫字",
+      "duration_s": 120,
+      "logline": "溫苡在天亮前知道了第一庭的日子，嚴叙用他的方式回應。",
+      "hook": "五點半，溫苡打開昨晚沒看的信，寄件人小聶：「第一次開庭：下個月十二日。」",
+      "hook_type": "danger",
+      "mid_hook": "嚴叙走到牆前，把日程表取下來，翻到背面，在「杯距 23cm」「4:30」「5:00」下面寫：「12 日。一起。」",
+      "extra_hooks": [
+        "他又把日程表翻回正面，在 06:10 那一行旁邊，用手寫加了兩個字：「天亮」。"
+      ],
+      "conflict": "訴訟有了日子，這個家每一行都得撐到那一天。",
+      "turn": "她以為他會把開庭排進印刷的格子裡，他用了手寫——他整張日程表上第二行手寫字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "五點五十，走廊傳來一聲輕響。棗棗的房門把，慢慢轉動。",
+        "question": "棗棗出來會看見什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "chengren"
+      ],
+      "spectacle": "日程表背面一行行手寫的紀錄，從「杯距 23cm」寫到「12 日。一起。」",
+      "glamour_shot": "嚴叙站在日程表前寫字的背影，襯衫袖子捲到手肘，晨光從窗邊照進來落在他肩上。",
+      "setups": [],
+      "payoffs": [
+        "s02-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "日程表多了手寫的「天亮」",
+        "知道第一庭的日子"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "s02-xiao-nie"
+      ],
+      "locations": [
+        "公寓廚房"
+      ],
+      "state": {
+        "time": "第十二週，週六清晨五點五十",
+        "knowledge": "溫苡知道第一庭在下個月十二日。",
+        "carry_forward": "棗棗的門把在轉。"
+      }
+    },
+    {
+      "number": 120,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "保持在這",
+      "youtube_title": "天亮了，女兒走出房間看見兩個大人都在廚房，問你們沒睡，契約老公只說了兩個字",
+      "duration_s": 165,
+      "logline": "溫苡和嚴叙守了一整夜，天亮時才知道，這一夜等天亮的人不是棗棗。",
+      "hook": "房門打開，棗棗抱著頭燈站在走廊，頭燈還亮著。窗外已經是白天。",
+      "hook_type": "image",
+      "mid_hook": "棗棗看看窗外，又看看廚房裡的兩個大人：「天亮了。」她愣了一下：「我睡到天亮了？」",
+      "extra_hooks": [
+        "溫苡看錶：06:10——日程表上寫著「天亮」的那一行。"
+      ],
+      "conflict": "棗棗每夜等天亮，怕睡著就看不到；今天她睡著了，天還是亮了，兩個大人也還在。",
+      "turn": "整夜守著等天亮的是兩個大人；棗棗第一次沒等，天亮還是來了——她要等的人，就坐在廚房裡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "棗棗：「你們沒睡？」嚴叙：「保持。」棗棗：「保持什麼？」溫苡：「保持在這。」棗棗看了看兩個人，按掉頭燈，把它放在桌上，第一次沒有抱著。",
+        "question": "棗棗不用再等天亮了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "chengren"
+      ],
+      "spectacle": "清晨的廚房：兩杯喝完的水、攤開的契約、亮著紅燈的攝影機，桌子正中間一盞剛被關掉的頭燈。",
+      "glamour_shot": "三個人的構圖：棗棗站在桌邊，兩個大人一左一右坐著，晨光從窗外打進來，嚴叙的臉第一次在白天裡放鬆。",
+      "setups": [],
+      "payoffs": [
+        "s02-t06",
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗第一次睡到天亮",
+        "頭燈關掉放在桌上",
+        "「第七條」時間線第十五段：天亮"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "公寓廚房",
+        "公寓走廊"
+      ],
+      "state": {
+        "time": "第十二週，週六清晨六點十分",
+        "knowledge": "溫苡知道這個家三個人都在同一夜裡走出來了。",
+        "carry_forward": "頭燈放在桌上；第八條破了；監護權訴訟第一庭下個月十二日；她要剪片；他的週三空白她還沒問。"
+      }
+    }
+  ]
+}

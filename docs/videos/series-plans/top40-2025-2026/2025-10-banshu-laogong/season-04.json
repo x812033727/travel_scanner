@@ -1,0 +1,4252 @@
+{
+  "number": 4,
+  "title": "法院",
+  "theme": "法院要判的是一個家，他們要先承認那是一個家。",
+  "start_state": "他在塔台說了『溫苡，保持』，沒承認；她說『收到』，也沒。監護權訴訟進第二庭、社工每週來；嚴母看完素材沒撤告；紀錄片剪了一半。阿恪送來的那箱裝備裡還有一樣東西沒開：周彤的錄影檔她只看了一半。",
+  "end_state": "周彤留了什麼揭開（錄影：『苡，如果我回不來，棗棗給妳。別一個人。』）；法院會怎麼判揭開（社工看出契約也看出別的、法官判棗棗留下、嚴琇說『契約也是婚姻』）。社工林姐要調她的影像、她交了『第七條』時間線；法庭上播了三分鐘——沒有人說話的三分鐘：他蓋毯子、她換熱咖啡、棗棗睡到天亮；嚴母在法院外說『我不是要搶，我是怕忘』、撤了告；他第一次在法庭上說了一句不是航管的話。最後一集，判決下來，三個人走出法院，棗棗問：『所以第十一條呢？』——法院結束就離婚。兩個大人同時停住。他說：『……改期。』她說：『改到什麼時候？』他說：『保持。』",
+  "guest_cast": [
+    {
+      "id": "s04-shuji",
+      "name": "蔡書記",
+      "role": "家事法庭的書記，收件、蓋章、打字；三庭都在，鍵盤停下的那一秒就是全場最靜的時候",
+      "appearance": "東亞女性，四十歲，短直髮夾在耳後、細框眼鏡、深色制服外套、袖口套著袖套，坐在法官席下方的電腦前，手指停在鍵盤上"
+    },
+    {
+      "id": "s04-jizhe",
+      "name": "范喬",
+      "role": "跑社會線的記者，在家事法庭外的走廊守山難遺孤的監護權新聞，想挖那夜的延飛",
+      "appearance": "東亞男性，三十三歲，平頭、深灰連帽外套、胸前掛記者證、單手舉手機錄影、另一手拿錄音筆，眼神很快"
+    },
+    {
+      "id": "s04-jianding",
+      "name": "杜衡",
+      "role": "法院委託的兒童鑑定人員，在兒童室用蠟筆和棗棗談家",
+      "appearance": "東亞男性，五十歲，花白短髮、圓框眼鏡、米色開襟毛衣、盤腿坐在兒童室的地墊上，手邊一盒蠟筆，說話很慢"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "她要不要把「第七條」時間線交給法院？",
+      "setup_episode": 1,
+      "payoff_episode": 10
+    },
+    {
+      "id": "s04-t02",
+      "question": "他知道她剪了一條叫「第七條」的時間線嗎？",
+      "setup_episode": 3,
+      "payoff_episode": 9
+    },
+    {
+      "id": "s04-t03",
+      "question": "第二庭法官要問什麼？",
+      "setup_episode": 5,
+      "payoff_episode": 29
+    },
+    {
+      "id": "s04-t04",
+      "question": "周彤的錄影要不要交給法院？",
+      "setup_episode": 15,
+      "payoff_episode": 25
+    },
+    {
+      "id": "s04-t05",
+      "question": "他看完錄影走出門，去了哪裡？",
+      "setup_episode": 16,
+      "payoff_episode": 17
+    },
+    {
+      "id": "s04-t06",
+      "question": "嚴琇手上有什麼證據？",
+      "setup_episode": 11,
+      "payoff_episode": 21
+    },
+    {
+      "id": "s04-t07",
+      "question": "記者會不會把那一夜寫出來？",
+      "setup_episode": 24,
+      "payoff_episode": 51
+    },
+    {
+      "id": "s04-t08",
+      "question": "林姐的報告寫了什麼？",
+      "setup_episode": 29,
+      "payoff_episode": 36
+    },
+    {
+      "id": "s04-t09",
+      "question": "嚴母走出法庭，要去哪裡？",
+      "setup_episode": 37,
+      "payoff_episode": 40
+    },
+    {
+      "id": "s04-t10",
+      "question": "他說得出一句自己的話嗎？",
+      "setup_episode": 41,
+      "payoff_episode": 47
+    },
+    {
+      "id": "s04-t11",
+      "question": "不用等天亮了，頭燈要放哪裡？",
+      "setup_episode": 42,
+      "payoff_episode": 48
+    },
+    {
+      "id": "s04-t12",
+      "question": "影展剩一個月，片尾放誰？",
+      "setup_episode": 53,
+      "payoff_episode": 59
+    },
+    {
+      "id": "s04-t13",
+      "question": "小芊的筆記本會數到幾次？",
+      "setup_episode": 6,
+      "payoff_episode": 59
+    },
+    {
+      "id": "s04-t14",
+      "question": "第十一條：法院判完，就離婚嗎？",
+      "setup_episode": 31,
+      "payoff_episode": 60
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "收到之後",
+      "youtube_title": "他在全塔台面前對她說保持，第二天早上兩個人卻同時裝作什麼都沒發生",
+      "duration_s": 110,
+      "logline": "溫苡要把塔台那句「溫苡，保持」裝成沒發生，卻被不預約上門的社工林姐撞見一杯換成熱的咖啡。",
+      "hook": "塔台電梯裡兩人並肩，她的攝影機紅燈還亮著。他看著樓層數字：「關機。」她：「收到。」",
+      "hook_type": "line",
+      "mid_hook": "門鈴響，林姐不預約的第五次家訪；她一眼看見桌上兩杯咖啡，只有溫苡那杯冒著熱氣。",
+      "conflict": "她要在社工面前演一對普通夫妻，可昨晚全塔台都聽見了那句話。",
+      "turn": "她以為林姐是來查昨晚的事，林姐卻一句沒問，只看了一眼她肩上的攝影機。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林姐闔上筆記本：「法院想看你們的日常。妳有攝影機。」她的手按住肩上的機身。",
+        "question": "她要把拍了一年的家交出去嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        2,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "xuanyi",
+        "richang"
+      ],
+      "spectacle": "清晨塔台的玻璃電梯從藍光降進城市的晨光，兩個人的倒影並排，中間隔一個攝影機的紅點。",
+      "glamour_shot": "嚴叙在電梯晨光裡把最上一顆扣子重新扣好，側臉一絲不亂，耳根卻是紅的。",
+      "setups": [
+        "s04-t01"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林姐在筆記本上記下「熱咖啡」三個字",
+        "兩人默契地不提塔台那句話，早餐照日程表準時開飯"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie",
+        "xiao-qian"
+      ],
+      "locations": [
+        "雲港機場塔台電梯",
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "第二庭前三週，週一早上",
+        "knowledge": "他說了「溫苡，保持」，她說了「收到」；法院可能要調她的影像",
+        "carry_forward": "林姐那句「妳有攝影機」"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "三百一十二",
+      "youtube_title": "法院想看他們的日常，她打開硬碟才發現自己偷偷剪了一年的不是孩子",
+      "duration_s": 100,
+      "logline": "溫苡要決定交什麼給法院，卻發現自己有兩條時間線，其中一條從來沒給任何人看過。",
+      "hook": "剪接室凌晨，螢幕上兩條時間線：「正片」與「第七條」。阿良咬著吸管：「交哪條？」",
+      "hook_type": "question",
+      "mid_hook": "她拉開「第七條」的縮圖牆：三百一十二個片段，第一格是登記那天，棗棗抱著頭燈站在兩人中間。",
+      "extra_hooks": [
+        "阿恪送來的箱子角落，一台小相機貼著周彤的字「給苡」，播放條停在 04:12。"
+      ],
+      "conflict": "正片是周彤的登山隊，交了法院不會懂；「第七條」是這個家，可是太私人。",
+      "turn": "她以為「第七條」只是給棗棗留的素材，阿良一格一格翻，翻到的全是同一個男人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿良：「交第七條，妳就承認了。」「承認什麼？」「妳拍了一年的不是棗棗。」",
+        "question": "她拍了一年的，到底是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "剪接室牆面大的螢幕上三百一十二個縮圖一格格亮起，像一整面窗。",
+      "glamour_shot": "溫苡凌晨在螢幕光裡把短髮往後一撥，眼睛被縮圖牆映得很亮。",
+      "setups": [
+        "m09"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她決定先把三百一十二個片段剪成一份能給人看的版本"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-liang"
+      ],
+      "locations": [
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "週一深夜",
+        "knowledge": "「第七條」時間線有三百一十二個片段；周彤的錄影她只看到 04:12",
+        "carry_forward": "阿良那句「不是棗棗」"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "他看見檔名",
+      "youtube_title": "她把一年的秘密存在一個資料夾裡，塔台管制員老公只瞄一眼就在日程表上多寫一行",
+      "duration_s": 95,
+      "logline": "溫苡想瞞著嚴叙先剪完再說，卻不知道他早已看見那個資料夾的名字。",
+      "hook": "凌晨兩點四十，走廊燈亮著，他靠在門邊看錶：「妳晚了四十分。」",
+      "hook_type": "line",
+      "mid_hook": "她筆電沒闔緊，他經過時視線在資料夾名「第七條」上停了一秒，什麼都沒問就進了房。",
+      "conflict": "交不交影像是棗棗的事，照第六條要兩個人一起決定，可她還沒準備好讓他看。",
+      "turn": "她以為他沒看見；第二天早上，日程表上多了一行他的手寫字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "日程表週四那格多了一行他的字：「影像——第六條。妳先剪，我等。」",
+        "question": "他到底知道多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "chengren",
+        "fancha"
+      ],
+      "spectacle": "牆上的日程表，一年來的手寫字一行行疊滿，最新一行墨水還沒乾。",
+      "glamour_shot": "嚴叙清晨站在日程表前寫字，袖口捲到手肘，筆尖落得極準。",
+      "setups": [
+        "s04-t02"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他用第六條把交影像變成兩個人的事，而不是她一個人扛"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "兩房公寓走廊",
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "週二清晨",
+        "knowledge": "他在日程表上寫了「影像——第六條」",
+        "carry_forward": "他是不是早就知道那個資料夾"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "三個人投票",
+      "youtube_title": "法院要看家裡的影片，六歲女兒舉手要投票，第一個條件就讓兩個大人臉紅",
+      "duration_s": 105,
+      "logline": "溫苡要照第六條跟嚴叙一起決定交影像，卻被聽懂了的棗棗搶走了主導權。",
+      "hook": "早餐桌，棗棗踮腳念日程表：「影像，第六條。」轉頭問：「影像是我嗎？」",
+      "hook_type": "question",
+      "mid_hook": "棗棗把湯匙一放：「有我就要問我。第六條是三個人。」兩個大人對看一眼。",
+      "extra_hooks": [
+        "棗棗：「可以給法官看。不能給阿嬤看哭。」"
+      ],
+      "conflict": "交影像是為了棗棗，但沒人問過棗棗要不要被看。",
+      "turn": "他們以為要說服孩子，結果是孩子給兩個大人開條件。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "棗棗舉手：「那叔叔也要投。」他放下筷子，看了溫苡很久：「……先看。」",
+        "question": "他看了，會同意交嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "chengren"
+      ],
+      "spectacle": "三個人的早餐桌上，三隻手一起舉起來，晨光把影子投在牆上的日程表上。",
+      "glamour_shot": "嚴叙低頭替棗棗剝蛋，睫毛壓得很低，嘴角動了一下。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗加入第六條，成了家裡的第三票",
+        "他答應先看那條時間線"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "週二早上",
+        "knowledge": "棗棗同意給法官看、不給阿嬤看哭；他答應先看",
+        "carry_forward": "她要剪出一個能三個人一起看的版本"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "一百八十",
+      "youtube_title": "她把一年的家從三百多段剪到一百八十段，剪著剪著停在一段自己完全沒印象的畫面",
+      "duration_s": 100,
+      "logline": "溫苡要把「第七條」剪成能交的長度，卻被太私人的片段一再絆住，還翻出一段她不記得拍過的畫面。",
+      "hook": "她按下刪除：他睡在沙發上，棗棗趴在他胸口。阿良：「刪這個？」她：「太私人。」",
+      "hook_type": "line",
+      "mid_hook": "阿良把剩下的片段排成一列：八十幾段裡都有同一個動作——他把她的咖啡換成熱的。",
+      "extra_hooks": [
+        "法院通知寄到剪接室：第二庭，三週後，請攜帶相關資料。"
+      ],
+      "conflict": "交得太少法院看不出家，交得太多就是把兩個人沒說出口的事攤開。",
+      "turn": "她以為最難刪的是棗棗，結果每一段刪不下手的都有他。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "剩一百八十段，她停在一段沒印象的畫面：凌晨三點，他站在剪接室門外，沒敲門，轉身走了。",
+        "question": "他那晚來剪接室做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xuanyi",
+        "chengren"
+      ],
+      "spectacle": "時間線上一百三十二段片段同時被選取、反白、刪除，螢幕上的計數從 312 跳到 180。",
+      "glamour_shot": "溫苡咬著筆蓋看螢幕，剪接室的檯燈從側面打亮她的眼睛。",
+      "setups": [
+        "s04-t03"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」從三百一十二段剪到一百八十段"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-liang"
+      ],
+      "locations": [
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "週二夜",
+        "knowledge": "第二庭三週後；剪接室監視畫面拍到他凌晨三點來過",
+        "carry_forward": "那一夜他為什麼沒敲門"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "凌晨三點",
+      "youtube_title": "她問塔台老公那天凌晨三點去哪，他說夜班交接，班長一句話當場拆穿他",
+      "duration_s": 105,
+      "logline": "溫苡要知道他那晚為什麼來剪接室，嚴叙用航管的話擋，卻擋不住塔台的班表。",
+      "hook": "她把畫面停在他的背影，撥電話：「三月十二號，凌晨三點。」他：「……夜班交接。」",
+      "hook_type": "line",
+      "mid_hook": "她帶著筆電殺到塔台休息室，老鍾瞄一眼班表：「那天他休假。」",
+      "extra_hooks": [
+        "小芊翻開筆記本，鄭重寫下：「例外五十一：說謊說成交接。」"
+      ],
+      "conflict": "他不會解釋，她要自己把那個夜晚拼起來。",
+      "turn": "她以為他是來看她剪什麼，記起那天早上門口多了一個保溫壺，她一直以為是阿良放的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她翻出那個保溫壺，壺底貼著一張航管班表的小格子：「03:00 送達。」",
+        "question": "他還做過多少她沒拍到的事？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "fancha",
+        "xiju"
+      ],
+      "spectacle": "塔台休息室牆上的班表被老鍾的手指一路滑下，停在一格空白的「休」。",
+      "glamour_shot": "嚴叙在塔台被拆穿時摘下耳機，面無表情地把保溫杯轉了半圈。",
+      "setups": [
+        "s04-t13"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拼出那一晚：他休假，半夜送熱水，放下就走",
+        "小芊的筆記本數到五十一"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "lao-zhong",
+        "xiao-qian"
+      ],
+      "locations": [
+        "溫苡的剪接室",
+        "雲港機場塔台休息室"
+      ],
+      "state": {
+        "time": "週三",
+        "knowledge": "那晚他休假，凌晨三點送熱水，壺底寫「03:00 送達」",
+        "carry_forward": "他沒拍到的一年"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "最不想交的",
+      "youtube_title": "社工直接走進她的剪接室：我不要九十段，我要妳最不想交的那一段",
+      "duration_s": 100,
+      "logline": "溫苡想自己挑一個安全的版本，林姐卻要看她最不想交的那一段。",
+      "hook": "林姐第六次家訪，沒進客廳，直接站在剪接室門口：「我能看嗎？」",
+      "hook_type": "question",
+      "mid_hook": "林姐看到一格停筆：棗棗睡在走廊兩扇門中間，兩個大人一人一邊坐在地上守著。",
+      "conflict": "她要保護那些私人的片段，又要讓法院看見這是一個家。",
+      "turn": "她以為林姐要檢查她剪了什麼，林姐卻說：「我不要九十個。我要妳最不想交的那一個。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她的游標停在一段上：碑前，他站著，她第一次跟去那天。「這段不行。」",
+        "question": "她最不想交的，為什麼是那一段？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "chengren",
+        "zhichang"
+      ],
+      "spectacle": "螢幕上九十個縮圖排成方陣，一格碑前的雪光比其他都亮。",
+      "glamour_shot": "溫苡站在螢幕前擋住那一格，回頭看林姐，眼神又倔又亮。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」從一百八十段剪到九十段",
+        "林姐看見走廊那一格，沒有記錄，只是點頭"
+      ],
+      "characters": [
+        "wen-yi",
+        "lin-jie",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "溫苡的剪接室",
+        "兩房公寓走廊"
+      ],
+      "state": {
+        "time": "週四上午",
+        "knowledge": "林姐要她最不想交的那一段；她最不想交碑前",
+        "carry_forward": "碑前那段要不要留"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "碑前那段",
+      "youtube_title": "她最不想交的是他在墓碑前的十分鐘，結果他本人第一次走進她的剪接室",
+      "duration_s": 105,
+      "logline": "溫苡在碑前那段上來回拖了七次，嚴叙第一次走進剪接室，她以為他會叫她刪。",
+      "hook": "她把碑前的片段拖出時間線，又拖回來。阿良：「第七次了。」",
+      "hook_type": "image",
+      "mid_hook": "門被敲了兩下，嚴叙拿著保溫壺站在門口：「交接。」他第一次走進剪接室，看見螢幕上的自己。",
+      "conflict": "碑前那十分鐘是他每週一個人的時間，交出去等於把他攤在法官面前。",
+      "turn": "她以為他會說刪掉，他只說：「第五條。妳的工作。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他走到門口停住：「留著那段。」她：「交法院？」他：「……留著。」門關上。",
+        "question": "他要她留著，是交還是不交？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "暗的剪接室裡，他站在螢幕前，螢幕裡的他也站著，兩個身影隔著一層光重疊。",
+      "glamour_shot": "嚴叙被螢幕光從下往上照亮的側臉，喉結動了一下才開口。",
+      "setups": [],
+      "payoffs": [
+        "m08",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」從九十段剪到四十一段",
+        "他第一次走進她的剪接室"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "a-liang"
+      ],
+      "locations": [
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "週四夜",
+        "knowledge": "他看過碑前那段，叫她留著",
+        "carry_forward": "「留著」是什麼意思"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "他早就知道",
+      "youtube_title": "她以為瞞了一整年，塔台老公拿出一本記錄本：妳拍了三百一十二次，我一次都沒攔",
+      "duration_s": 100,
+      "logline": "溫苡要問清楚他知道多久，嚴叙用航管員的記錄習慣回答了她一整年。",
+      "hook": "早餐，棗棗含著吐司問：「叔叔，留著是什麼意思？」他：「保持。」",
+      "hook_type": "line",
+      "mid_hook": "她直接問：「你知道第七條多久了？」他：「去年冬天。妳存檔時念了檔名。」",
+      "extra_hooks": [
+        "他從抽屜拿出一本藍色記錄本，像塔台的值班日誌，一行一行全是日期與時刻。"
+      ],
+      "conflict": "她要確定交出去的東西，他是不是真的同意。",
+      "turn": "她以為自己偷拍了一年，原來被拍的人一直知道，還在記錄。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "記錄本最後一行：「她拍。我知道。沒攔。第三百一十二次。」",
+        "question": "他為什麼一次都沒攔？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "fancha",
+        "chengren",
+        "xuanyi"
+      ],
+      "spectacle": "藍色記錄本一頁頁翻過，每一行都是攝影機紅燈亮起的時刻，翻到最後一頁停住。",
+      "glamour_shot": "溫苡讀完最後一行抬頭，笑到露牙又硬生生收住，眼眶卻紅了。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」剪到十二段",
+        "她知道他一整年都知道、都沒攔"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "週五早上",
+        "knowledge": "他從去年冬天就知道「第七條」，記了三百一十二次",
+        "carry_forward": "剪好的三分鐘還沒給他看"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "那交",
+      "youtube_title": "她把偷剪一年的三分鐘第一次放給他看，看完他只說兩個字，第七條差點破了",
+      "duration_s": 140,
+      "logline": "溫苡要讓嚴叙看完「第七條」三分鐘再一起決定交不交，看的時候兩個人都差點越界。",
+      "hook": "深夜客廳，筆電放在兩人中間的茶几上，進度條 00:00／03:00。她：「三分鐘。」",
+      "hook_type": "image",
+      "mid_hook": "畫面裡他坐在棗棗床邊守到天亮——他看見自己的臉，別過頭看窗外。",
+      "conflict": "交了，就是把一年的家攤給法官；不交，法院只看得見契約。",
+      "turn": "他以為她剪的是他，她說她剪的是棗棗的家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "「第十二條——」「我沒承認。我剪的是棗棗的家。」他看著黑掉的螢幕：「那交。」",
+        "question": "交出去的三分鐘，法院會怎麼看？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "茶几上的筆電是客廳唯一的光，三分鐘的畫面在兩個人臉上流過：毯子、咖啡、碑、天亮。",
+      "glamour_shot": "嚴叙在筆電微光裡解開最上一顆扣子，靠回沙發，閉眼一秒。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "「第七條」三百一十二段剪成三分鐘",
+        "兩個人照第六條一起決定交影像"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "兩房公寓客廳"
+      ],
+      "state": {
+        "time": "週五深夜",
+        "knowledge": "三分鐘剪好、他說「那交」",
+        "carry_forward": "交到法院的三分鐘"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "三分鐘交出去",
+      "youtube_title": "她把一家人的三分鐘交給法院，回家才發現好友留下的相機自己亮了",
+      "duration_s": 100,
+      "logline": "溫苡把三分鐘交出去，以為最難的已經過去，卻在走廊撞上嚴琇，回家又被周彤的相機叫住。",
+      "hook": "法院收件窗口，蔡書記蓋章：「影像一份，三分鐘。」她的手還壓在隨身碟上，沒放開。",
+      "hook_type": "image",
+      "mid_hook": "蔡書記抬頭：「原始素材也請保存，法院可能會調。」三百一十二段，一段都不能刪。",
+      "extra_hooks": [
+        "走廊上嚴琇擦身而過，看了一眼收據：「交了？那我也有東西要交。」"
+      ],
+      "conflict": "交了三分鐘，等於把剩下的一年也押上去；嚴琇顯然準備了別的。",
+      "turn": "她以為交完就能鬆一口氣，結果一回家，周彤的箱子先開了口。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "棗棗拖著阿恪送來的箱子：「媽媽的箱子在亮。」小相機的螢幕停在 04:12，周彤在笑。",
+        "question": "04:12 之後，周彤說了什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "法院收件章落下的特寫，紅色印泥在收據上暈開「三分鐘」三個字。",
+      "glamour_shot": "溫苡站在法院長廊的窗光裡，攝影機背帶斜過肩，回頭看嚴琇的那一眼很直。",
+      "setups": [
+        "s04-t06",
+        "m09"
+      ],
+      "payoffs": [
+        "s04-t01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三分鐘影像正式交到法院",
+        "棗棗把周彤的小相機找出來"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-zaozao",
+        "yan-xiu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法院收件窗口",
+        "家事法院長廊",
+        "兩房公寓客廳"
+      ],
+      "state": {
+        "time": "第二週週一",
+        "knowledge": "影像交了；嚴琇也要交東西；周彤的錄影停在 04:12",
+        "carry_forward": "那段錄影的後半"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "四分十二秒",
+      "youtube_title": "好友山難前一晚留下一段錄影，她看了一年只敢看到一半，今晚決定看完",
+      "duration_s": 115,
+      "logline": "溫苡要看完周彤的錄影，卻在 04:13 周彤叫出她名字的那一秒按下暫停。",
+      "hook": "大螢幕上周彤的臉停在 04:12，正在笑。阿良：「要我出去嗎？」她：「留下。」",
+      "hook_type": "question",
+      "mid_hook": "她按下播放，04:13，周彤對鏡頭：「苡——」她的手比腦子快，按了暫停。",
+      "conflict": "她可以剪一年別人的家，卻剪不動周彤的最後一夜。",
+      "turn": "她以為要人陪才看得下去，阿良卻收起耳機：「這段只能妳一個看。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿良走了，門外響起熟悉的兩下敲門。嚴叙的聲音：「我在外面。不進去。」",
+        "question": "她能一個人看完嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        3,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi"
+      ],
+      "spectacle": "暗的剪接室裡，大螢幕上周彤定格的笑臉比人還高。",
+      "glamour_shot": "周彤（回憶）在帳篷燈下對鏡頭笑，馬尾垂在登山外套上，手環晃了一下。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次越過 04:12"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-liang",
+        "yan-xu",
+        "zhou-tong"
+      ],
+      "locations": [
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "週一深夜",
+        "knowledge": "錄影停在 04:13；他坐在門外",
+        "carry_forward": "錄影剩下的五分鐘"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "別一個人",
+      "youtube_title": "好友在山上留給她最後一句話，聽完她笑出聲，下一句卻讓門外的人一夜沒走",
+      "duration_s": 140,
+      "logline": "溫苡一個人看完周彤的錄影，聽見周彤把棗棗交給她，也聽見一句跟門外那個男人有關的話。",
+      "hook": "她按下播放。帳篷燈下，周彤對鏡頭：「苡，如果我回不來——」",
+      "hook_type": "line",
+      "mid_hook": "「棗棗給妳。別一個人。」她沒哭，她對著螢幕笑出聲：「妳管真多。」",
+      "extra_hooks": [
+        "周彤：「妳一個人會剪到天亮。」剪接室的窗外剛好透出第一道灰白。"
+      ],
+      "conflict": "她以為周彤沒留下任何話，所以這一年她一直覺得棗棗是她搶來的。",
+      "turn": "她以為最後一句是給她的，畫面卻轉向帳篷外收裝備的嚴澈。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "周彤朝帳篷外喊：「阿澈，你弟明天值班吧？叫他看著天氣。」她轉頭——門縫下他的影子還在。",
+        "question": "這句話，要讓他聽嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "螢幕裡帳篷燈搖晃，鏡頭轉向門外：雪地上嚴澈的頭燈一明一滅收著繩子。",
+      "glamour_shot": "溫苡在螢幕光裡笑出聲的那一刻，露牙的笑和眼裡的光同時落下。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [
+        "m09"
+      ],
+      "general_payoffs": [
+        "她知道周彤把棗棗交給了她：「別一個人」",
+        "錄影從 04:12 看到最後 09:30"
+      ],
+      "characters": [
+        "wen-yi",
+        "zhou-tong",
+        "yan-che",
+        "yan-xu"
+      ],
+      "locations": [
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "週二天亮前",
+        "knowledge": "周彤留話「棗棗給妳，別一個人」，還叫嚴澈要弟弟看著天氣",
+        "carry_forward": "要不要讓他聽最後一句"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "坐了一夜",
+      "youtube_title": "她一個人看完遺言坐到天亮，打開門才發現那個塔台男人也在門外坐了一夜",
+      "duration_s": 100,
+      "logline": "溫苡看完錄影坐到天亮，想先自己消化最後那句，卻發現他在門外陪了一整夜。",
+      "hook": "天亮，她拉開剪接室的門——他靠著牆睡著了，手錶鬧鐘在 06:00 響起。",
+      "hook_type": "image",
+      "mid_hook": "他醒來第一句：「看完了？」「看完了。」「要我看嗎？」她：「……今天不行。」",
+      "conflict": "最後那句會把他拉回那一夜，她不知道他接不接得住。",
+      "turn": "她以為他會問，他只把保溫壺遞給她：「還熱。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "回家，棗棗把頭燈塞進她手裡：「媽媽給妳的，我也給妳。」她蹲下抱住棗棗，他站在門口沒動。",
+        "question": "她什麼時候讓他看最後一句？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "ganren",
+        "jiating",
+        "chengren"
+      ],
+      "spectacle": "清晨的走廊，一個人靠牆睡著，一個人站在門口，地上一只保溫壺冒著最後一點熱氣。",
+      "glamour_shot": "嚴叙在清晨灰光裡睜眼，頭髮第一次亂了一撮，他沒去理。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他在門外守了一夜，她沒一個人看",
+        "棗棗把頭燈借給她"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "溫苡的剪接室走廊",
+        "兩房公寓玄關"
+      ],
+      "state": {
+        "time": "週二早上",
+        "knowledge": "他陪了一夜，還沒聽最後一句",
+        "carry_forward": "最後一句什麼時候給他"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "穩贏的那段",
+      "youtube_title": "剪接師說交出這段遺言她穩贏監護權，她卻在信封上寫了兩個收件人",
+      "duration_s": 105,
+      "logline": "溫苡手上有一段能讓她穩贏的錄影，嚴琇也聽說了，她得決定那段話是給法院的還是給棗棗的。",
+      "hook": "阿良把錄影拷貝放上桌：「周彤親口說棗棗給妳。交這個，妳穩贏。」",
+      "hook_type": "line",
+      "mid_hook": "手機響，嚴琇：「聽說周彤留了東西？我會請法院一起調。」",
+      "extra_hooks": [
+        "阿恪來電，聲音很低：「是我跟嚴阿姨說的……對不起。」"
+      ],
+      "conflict": "錄影能贏官司，但周彤是對著棗棗和她說的，不是對著法官。",
+      "turn": "她以為敵人是嚴琇，最難的卻是自己想不想贏得這麼容易。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把拷貝放進信封，寫上「法院」，停了很久，又在下面加一行：「給棗棗」。",
+        "question": "錄影給法官，還是給棗棗？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        4
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "牛皮紙信封上兩個收件人，一個用印刷體，一個用她的手寫。",
+      "glamour_shot": "溫苡坐在剪接室窗台上咬著筆想事情，寬褲、光腳，陽光切過半張臉。",
+      "setups": [
+        "s04-t04"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道嚴家已經知道錄影的存在"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-liang",
+        "yan-xiu",
+        "a-ke"
+      ],
+      "locations": [
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "週二下午",
+        "knowledge": "嚴琇要調錄影；她還沒決定交不交",
+        "carry_forward": "最後一句還沒給他看"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "看完再吃",
+      "youtube_title": "她把遺言放在塔台老公的麵碗旁邊，他看到最後一句，第一次沒把椅子推回去",
+      "duration_s": 115,
+      "logline": "溫苡決定讓嚴叙看完錄影，卻沒想到最後一句會讓一個照規定活了三年的人走出門。",
+      "hook": "早上他煮了兩碗麵，她把小相機放在他碗旁：「看完再吃。」",
+      "hook_type": "image",
+      "mid_hook": "他看到「棗棗給妳」，點頭：「收到。」看到「別一個人」，筷子停在半空。",
+      "conflict": "那句「叫他看著天氣」直接點到他那一夜的指令，他從來不談。",
+      "turn": "她以為他會照第八條把相機推回來，他看完了，一秒都沒跳。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "「叫他看著天氣。」他站起來，椅子沒推回去——一年來第一次——門關上，麵還冒著熱氣。",
+        "question": "他會去哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "餐桌上兩碗麵、一台小相機、一張沒推回去的椅子，蒸氣慢慢散掉。",
+      "glamour_shot": "嚴叙看錄影時的側臉，晨光把他的睫毛照成淡金色，下顎線一點一點繃緊。",
+      "setups": [
+        "s04-t05"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他看完了周彤的錄影"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "zhou-tong"
+      ],
+      "locations": [
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "週三早上",
+        "knowledge": "他聽見「叫他看著天氣」，出了門",
+        "carry_forward": "他去了哪"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "椅子歪著",
+      "youtube_title": "照日程表活了三年的男人第一次失聯，塔台班長打電話來：他坐在三年前那個位子",
+      "duration_s": 100,
+      "logline": "溫苡要找到失聯的嚴叙，可他的日程表上這個時段寫著「睡眠」。",
+      "hook": "那張椅子歪在桌邊，她伸手要推回去，又停住。",
+      "hook_type": "image",
+      "mid_hook": "他手機關機；日程表上這個時段寫著「睡眠」。棗棗揉著眼出來：「叔叔去哪？」",
+      "conflict": "一個從不失聯的人失聯了，她得先安住棗棗，再去找他。",
+      "turn": "她以為他去了紀念碑，老鍾卻回撥了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老鍾壓低聲音：「他在塔台。坐在三年前那夜的位子上。」",
+        "question": "他回到那個位子要做什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "jiating"
+      ],
+      "spectacle": "牆上的日程表，第一次有一格是空的——不是空白時段，是他沒照著走。",
+      "glamour_shot": "溫苡把棗棗抱上流理台吃早餐，自己單手綁鞋帶，短髮亂翹。",
+      "setups": [],
+      "payoffs": [
+        "s04-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她安頓好棗棗，送去幼兒園",
+        "老鍾告訴她他在哪"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-zaozao",
+        "lao-zhong"
+      ],
+      "locations": [
+        "兩房公寓廚房",
+        "幼兒園門口"
+      ],
+      "state": {
+        "time": "週三上午",
+        "knowledge": "他在塔台那夜的位子上",
+        "carry_forward": "她要上塔台"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "家屬不能上去",
+      "youtube_title": "她衝到機場塔台被擋在門外，崇拜她老公的菜鳥管制員帶她闖了進去",
+      "duration_s": 105,
+      "logline": "溫苡要上塔台找他，門禁擋住了家屬，小芊拿自己的通行證當了一次例外。",
+      "hook": "塔台樓下，她的臨時證刷不過，警衛伸手：「家屬不能上去。」",
+      "hook_type": "danger",
+      "mid_hook": "小芊跑下樓，把自己的通行證拍上感應器：「我帶妳。這算例外五十二。」",
+      "conflict": "塔台有塔台的規矩，她不是管制員，連電梯都進不去。",
+      "turn": "她以為小芊會擋她，小芊卻比她還急。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "電梯門開，塔台的藍光裡，他背對她坐著，螢幕上是三年前那夜的雲圖，一格一格在播。",
+        "question": "她要怎麼開口？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "塔台三百六十度的玻璃外飛機起降，玻璃內一個背影對著一整面舊雲圖。",
+      "glamour_shot": "嚴叙的背影坐在塔台藍光裡，耳機掛在脖子上，肩線一動不動。",
+      "setups": [],
+      "payoffs": [
+        "m07",
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小芊帶她上塔台，筆記本數到五十二"
+      ],
+      "characters": [
+        "wen-yi",
+        "xiao-qian",
+        "yan-xu"
+      ],
+      "locations": [
+        "雲港機場塔台樓下",
+        "塔台電梯",
+        "塔台管制室"
+      ],
+      "state": {
+        "time": "週三中午",
+        "knowledge": "他在看三年前那夜的天氣回放",
+        "carry_forward": "她就站在他身後"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "讓他坐完",
+      "youtube_title": "她要走向坐在事故座位上的老公，塔台班長攔住她說出那夜他也坐到天亮",
+      "duration_s": 110,
+      "logline": "溫苡想走過去，老鍾擋在前面，先跟她講了那一夜之後的事。",
+      "hook": "她剛邁一步，老鍾的保溫杯擋在她胸前：「讓他坐完。」",
+      "hook_type": "line",
+      "mid_hook": "老鍾低聲：「那夜他下完延飛，就在這個位子坐到天亮。我也沒趕他。」",
+      "conflict": "她想立刻過去，可塔台的人比她更懂這個位子有多重。",
+      "turn": "她以為老鍾在擋她，老鍾卻把保溫杯塞進她手裡：「拿這個去。他不趕帶熱水的人。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她走到他椅背後一步停住。他沒回頭：「別拍。」她低頭——攝影機紅燈還亮著。",
+        "question": "她會關掉攝影機嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhichang",
+        "xuanyi"
+      ],
+      "spectacle": "塔台玻璃外天色從陰轉晴，玻璃內雲圖還停在三年前的暴風雪。",
+      "glamour_shot": "老鍾鬢白的側臉在藍光裡難得沒損人，把保溫杯推過去的手很穩。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老鍾把那一夜之後的事告訴她，也把位置讓給她"
+      ],
+      "characters": [
+        "wen-yi",
+        "lao-zhong",
+        "yan-xu"
+      ],
+      "locations": [
+        "塔台管制室"
+      ],
+      "state": {
+        "time": "週三午後",
+        "knowledge": "那夜他坐到天亮；今天他說「別拍」",
+        "carry_forward": "她的紅燈"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "對的最難",
+      "youtube_title": "她第一次在他面前關掉攝影機，聽他說出那夜的三句話，然後把手放上他的肩",
+      "duration_s": 145,
+      "logline": "溫苡關掉一年沒關過的攝影機，聽嚴叙說出那夜最短的版本。",
+      "hook": "她按掉紅燈——一年來第一次在他面前關機。他的肩動了一下。",
+      "hook_type": "image",
+      "mid_hook": "他看著雲圖：「他叫我看著天氣。我看了。我說不行。」",
+      "extra_hooks": [
+        "雲圖一格一格推進，暴風雪在 06:10 那格散開，天晴了。"
+      ],
+      "conflict": "第八條不談過去；他沒有談，他只是報告。",
+      "turn": "她以為要說很多安慰的話，最後只說了一句他早就知道的事。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她：「你說的是對的。」他：「我知道。對的最難。」她把手放在他肩上——他沒說例外。",
+        "question": "他沒說例外，那這算什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhichang",
+        "chengren"
+      ],
+      "spectacle": "塔台玻璃上映著舊雲圖散開的那一格，窗外真正的天空同時放晴，一架飛機穿過陽光起飛。",
+      "glamour_shot": "嚴叙低頭，她的手落在他肩上，他的手指在桌上停了很久才蜷起來，側臉被晴光打亮。",
+      "setups": [],
+      "payoffs": [
+        "m09",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次在他面前關機",
+        "她的手放在他肩上，他沒說例外"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "lao-zhong"
+      ],
+      "locations": [
+        "塔台管制室"
+      ],
+      "state": {
+        "time": "週三下午",
+        "knowledge": "他說了那夜的三句話；她說「你是對的」",
+        "carry_forward": "第二庭下週一"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "兩個牙刷杯",
+      "youtube_title": "第二庭前嚴家律師寄來三張照片，一張是浴室的兩個牙刷杯，一張是沒刻字的戒指",
+      "duration_s": 100,
+      "logline": "溫苡以為第二庭要拚的是誰帶得好，嚴琇卻寄來證據，要證明這段婚姻是假的。",
+      "hook": "塔台電梯往下，她的手還記得他肩膀的溫度。他看著樓層：「下週一，第二庭。」",
+      "hook_type": "line",
+      "mid_hook": "家門口一個牛皮紙袋，嚴琇的準備書狀，附件第一張照片：浴室裡兩個分開放的牙刷杯。",
+      "conflict": "社工第一次家訪拍下的照片，被嚴琇拿來證明他們從沒當過夫妻。",
+      "turn": "她以為嚴琇只會攻她的職業，嚴琇攻的是他們最想藏的契約。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "第三張照片：他左手無名指上的戒指，放大到看得見內圈——沒有刻字。便條：「為什麼？」",
+        "question": "沒刻字的戒指，要怎麼解釋？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "chengren",
+        "dalian"
+      ],
+      "spectacle": "三張照片在茶几上一字排開：牙刷杯、帳單、戒指內圈的特寫。",
+      "glamour_shot": "嚴叙低頭轉著左手的戒指，指節修長，燈光沿著素面戒圈滑了一圈。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他們提前知道了嚴琇的三樣證據"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "yan-xiu"
+      ],
+      "locations": [
+        "塔台電梯",
+        "兩房公寓玄關"
+      ],
+      "state": {
+        "time": "第二庭前五天",
+        "knowledge": "嚴琇手上有牙刷杯、分帳單、沒刻字的戒指",
+        "carry_forward": "要怎麼回應這三樣"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "分帳單",
+      "youtube_title": "律師說分帳就是假婚姻，她翻出一年的帳單才發現老公每個月都在偷偷作弊",
+      "duration_s": 100,
+      "logline": "溫苡要整理一年的分帳單回應嚴琇，卻在帳單裡翻出嚴叙偷偷作弊的痕跡。",
+      "hook": "冰箱上貼滿一年的分帳單，他一張張撕下來排好：「證據。」",
+      "hook_type": "line",
+      "mid_hook": "從第四個月起，她那欄的尿布、咖啡豆、硬碟都被他劃掉，旁邊一個小字：「免」。",
+      "conflict": "分帳是第二條，嚴琇要用它證明他們只是室友。",
+      "turn": "她以為帳單會證明他們分得多清楚，結果證明的是他算得多不清楚。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "最後一張帳單翻過來，背面是棗棗的蠟筆：三個人手牽手，上面寫「我們家」。",
+        "question": "這張要交給法院嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "chengren",
+        "xiju",
+        "fancha"
+      ],
+      "spectacle": "餐桌上十二個月的帳單排成一條長龍，一個個紅筆的「免」像一串腳印。",
+      "glamour_shot": "溫苡舉著帳單對他晃，笑到露牙；他別過臉喝水，耳朵慢慢紅。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她發現他從第四個月就在替她付",
+        "小芊的筆記本數到五十三"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "xiao-qian"
+      ],
+      "locations": [
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "第二庭前四天",
+        "knowledge": "帳單上有他的「免」，背面有棗棗的「我們家」",
+        "carry_forward": "法院的兒童鑑定"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "棗棗的畫",
+      "youtube_title": "法院的鑑定人員請六歲女孩畫她的家，她在兩扇門之間畫了一條誰都沒看懂的線",
+      "duration_s": 100,
+      "logline": "棗棗要接受法院的兒童鑑定，兩個大人只能在單面鏡後面看，什麼都不能幫。",
+      "hook": "法院兒童室，杜衡盤腿坐在地墊上，推過去一盒蠟筆：「畫妳的家。」",
+      "hook_type": "image",
+      "mid_hook": "棗棗畫了一條走廊、兩扇門、中間一個抱頭燈的小人，然後在兩扇門之間畫了一條線。",
+      "extra_hooks": [
+        "杜衡：「這條線是什麼？」棗棗：「叔叔半夜送熱水的路。」"
+      ],
+      "conflict": "孩子說的每一句都會進報告，大人不能教，也不能擋。",
+      "turn": "他們以為棗棗會畫三個人手牽手，她畫的是半夜大人以為沒人看見的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "杜衡：「門上要寫誰？」棗棗在一扇門寫「叔叔」，另一扇門握著筆停住——單面鏡後兩個大人同時往前一步。",
+        "question": "棗棗會在那扇門上寫什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "dalian",
+        "zhichang"
+      ],
+      "spectacle": "單面鏡兩側：一邊是蠟筆與地墊，一邊是兩個大人貼近玻璃的倒影。",
+      "glamour_shot": "嚴叙在單面鏡後彎腰看畫，手撐著窗框，襯衫袖口露出對準的手錶。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗的畫進了鑑定報告：一條半夜送熱水的路"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "s04-jianding"
+      ],
+      "locations": [
+        "家事法院兒童室",
+        "單面鏡觀察室"
+      ],
+      "state": {
+        "time": "第二庭前一天",
+        "knowledge": "棗棗在一扇門寫了「叔叔」，另一扇還沒寫",
+        "carry_forward": "另一扇門"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "寫了一個苡",
+      "youtube_title": "女兒在門上只寫了一個字，走出法院就被記者堵住，問的卻是他三年前那一夜",
+      "duration_s": 105,
+      "logline": "溫苡帶著棗棗離開兒童室，記者在走廊堵人，矛頭對準嚴叙最不能談的那一夜。",
+      "hook": "棗棗在第二扇門上寫下一個字：「苡」。不是阿姨，不是媽，就是她的名字。",
+      "hook_type": "reversal",
+      "mid_hook": "長廊轉角，記者范喬舉著手機衝上來：「溫導演，山難遺孤的監護權——」",
+      "extra_hooks": [
+        "他一步跨到她前面：「無可奉告。保持距離。」"
+      ],
+      "conflict": "家事庭不公開，但記者在走廊等的是新聞，不是規矩。",
+      "turn": "記者以為擋人的他是弱點，轉頭就問：「嚴管制員，那夜的延飛是你下的嗎？」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她跨到他前面，攝影機舉到記者面前，紅燈亮：「換我拍你。你剛剛那句，我錄了。」范喬退了一步。",
+        "question": "記者會把那一夜寫出來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "chengren"
+      ],
+      "spectacle": "法院長廊，兩支鏡頭對著彼此，中間是一個撐開手臂的男人和一個抱頭燈的孩子。",
+      "glamour_shot": "溫苡舉起攝影機的那一下，短髮甩開，眼神比鏡頭還準。",
+      "setups": [
+        "s04-t07"
+      ],
+      "payoffs": [
+        "m12",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當眾替他擋下那一夜的問題",
+        "棗棗在門上寫了「苡」"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "s04-jizhe",
+        "s04-jianding"
+      ],
+      "locations": [
+        "家事法院兒童室",
+        "家事法院長廊"
+      ],
+      "state": {
+        "time": "第二庭當天上午",
+        "knowledge": "記者盯上那一夜",
+        "carry_forward": "下午開庭"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "第二庭開庭",
+      "youtube_title": "第二庭開庭，對方律師把他們浴室的照片投上螢幕，還要求調出好友的遺言",
+      "duration_s": 115,
+      "logline": "第二庭開庭，嚴琇一樣樣亮出證據，還要調周彤的錄影，溫苡要守住那段話。",
+      "hook": "法官落座：「請坐。」嚴琇起身，牙刷杯的照片投上法庭的螢幕。",
+      "hook_type": "image",
+      "mid_hook": "嚴琇：「另請調周彤女士生前錄影。」她站起來：「那是給棗棗的。」",
+      "extra_hooks": [
+        "法官看了她三秒：「本庭不需要。」嚴琇的筆停了。"
+      ],
+      "conflict": "嚴琇要讓法官看見契約，也想看看周彤到底說了什麼。",
+      "turn": "她以為交出錄影才能贏，結果守住它反而讓法官抬頭看她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "嚴琇轉向他：「嚴先生，你們的婚姻，是不是契約？」蔡書記的鍵盤聲停了。",
+        "question": "他會說實話嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "dalian",
+        "chengren"
+      ],
+      "spectacle": "家事法庭的螢幕上，一張浴室照片被放大到整面牆，旁聽席只有嚴母一個人。",
+      "glamour_shot": "嚴琇套裝、冷笑，翻文件的手指像在數子彈；法袍下的法官抬眼。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周彤的錄影不交法院，留給棗棗"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-xiu",
+        "faguan",
+        "s04-shuji",
+        "yan-mu"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第二庭，下午兩點",
+        "knowledge": "錄影留給棗棗；嚴琇問他是不是契約",
+        "carry_forward": "他的回答"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "是。十二條。",
+      "youtube_title": "律師問他們的婚姻是不是契約，塔台管制員站起來說：是，十二條，我念給您聽",
+      "duration_s": 110,
+      "logline": "溫苡要在法庭上替兩人圓過去，嚴叙卻直接承認了契約。",
+      "hook": "他站起來，平得像報風向：「是。十二條。」",
+      "hook_type": "line",
+      "mid_hook": "她在桌下踢他，他沒停：「第一條，分房。」",
+      "conflict": "承認契約，嚴琇就贏了一半；不承認，就是對法官說謊。",
+      "turn": "她以為他在送分，法官卻沒皺眉，只說：「請繼續。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "嚴琇冷笑：「請全部念完。」他從西裝內袋拿出一張摺了一年的紙——契約正本。",
+        "question": "他要在法庭上念完十二條嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "chengren"
+      ],
+      "spectacle": "法庭中央一張被摺成四折、邊角磨白的紙，在燈下被一點一點攤平。",
+      "glamour_shot": "嚴叙站在法庭燈下，襯衫扣到最上一顆，攤開紙的手一點都沒抖。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他在法庭上沒說謊"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-xiu",
+        "faguan",
+        "yan-mu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第二庭",
+        "knowledge": "契約被當庭承認，正本就在他身上",
+        "carry_forward": "他要念完"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "一到六",
+      "youtube_title": "他在法庭上一條一條念契約，念到第六條，轉頭看她說了一句法官都摘下眼鏡",
+      "duration_s": 105,
+      "logline": "嚴叙一條條念契約，溫苡只能坐著聽，每一條都在逼兩人當庭交代。",
+      "hook": "他念：「第二條，分帳。第三條，週日一起吃飯。」法官：「有做到嗎？」",
+      "hook_type": "question",
+      "mid_hook": "蔡書記呈上鑑定報告附件：棗棗的畫，週日三個人的桌子。",
+      "extra_hooks": [
+        "他：「第五條，各自工作不干涉。」她小聲：「你干涉了我四十一次。」"
+      ],
+      "conflict": "每念一條，就要回答一次做到了沒。",
+      "turn": "她以為十二條會把他們念成室友，念到一半，法官開始點頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "「第六條，棗棗的事一起決定。」他看她：「這條，我們沒破過。」法官摘下眼鏡。",
+        "question": "法官摘眼鏡，是信了還是沒信？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "xiju",
+        "dalian"
+      ],
+      "spectacle": "法庭螢幕上棗棗的蠟筆畫和那張契約正本並排，一張彩色、一張黑白。",
+      "glamour_shot": "溫苡在原告席轉頭看他，眼睛裡的光一點一點亮起來，嘴角壓不住。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第六條當庭成立：一年沒破過"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "faguan",
+        "s04-shuji",
+        "yan-xiu"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第二庭",
+        "knowledge": "一到六條念完",
+        "carry_forward": "七到十二條"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "破了的條",
+      "youtube_title": "法官問十二條還在遵守嗎，他說第八條破了、第一條破了，第四條不確定",
+      "duration_s": 110,
+      "logline": "法官要知道契約還剩幾條，嚴叙照實報告，溫苡等著第七條落下。",
+      "hook": "法官戴回眼鏡：「還在遵守？」他：「第八條，破了。」",
+      "hook_type": "line",
+      "mid_hook": "「第一條，破了。」嚴琇：「分房破了？」他：「棗棗發燒那夜。三個人睡客廳。」",
+      "extra_hooks": [
+        "「第四條，對外演夫妻……不確定。」全場看他。"
+      ],
+      "conflict": "破了的條越多，越像真的家；可是有一條不能破。",
+      "turn": "嚴琇以為破掉的條是契約失敗，法官卻在本子上寫了一個字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "法官：「第七條？」他沉默。法庭牆上的秒針走了七格。",
+        "question": "他會怎麼回答第七條？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "zhichang"
+      ],
+      "spectacle": "法庭牆上的時鐘特寫，秒針一格一格走，七格之間沒有任何聲音。",
+      "glamour_shot": "嚴叙沉默時垂下的眼，睫毛在燈下投出一道影，喉結動了一次。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他當庭交代第八、第一條已破"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "faguan",
+        "yan-xiu",
+        "yan-mu"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第二庭",
+        "knowledge": "第七條懸在法庭上",
+        "carry_forward": "第七條的答案"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "我們沒談",
+      "youtube_title": "秒針走到第八格，她替他站起來：第七條還在，我們沒談，律師只問了一句",
+      "duration_s": 110,
+      "logline": "溫苡替他回答第七條，守住第十二條，也讓嚴琇抓到下一句。",
+      "hook": "秒針走到第八格，她站起來：「第七條還在。」",
+      "hook_type": "line",
+      "mid_hook": "「我們沒談。」嚴琇：「是沒談，還是不敢談？」",
+      "conflict": "說沒破，像在演；說破了，就是第十二條輸了。",
+      "turn": "嚴琇以為抓到破綻，法官卻把下一庭的重點放在社工身上。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "槌聲落下，她回頭——旁聽席上嚴母的手帕按在眼睛上，肩膀在抖。",
+        "question": "嚴母為什麼哭？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "dalian",
+        "zhichang"
+      ],
+      "spectacle": "法槌落下的慢鏡頭，旁聽席的嚴母在焦外，手帕一角在顫。",
+      "glamour_shot": "溫苡站起來說「第七條還在」時挺直的背，寬褲、短髮，聲音沒抖。",
+      "setups": [
+        "s04-t08"
+      ],
+      "payoffs": [
+        "s04-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第二庭結束：法官要聽社工報告、看三分鐘"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "faguan",
+        "yan-xiu",
+        "yan-mu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第二庭結束",
+        "knowledge": "第三庭要聽林姐的報告",
+        "carry_forward": "嚴母的眼淚"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "誓詞",
+      "youtube_title": "休庭後嚴家律師攔住她：妳老公剛剛在法庭上念的不是契約，是誓詞，妳沒聽出來",
+      "duration_s": 130,
+      "logline": "溫苡以為第二庭只是撐過去，嚴琇在走廊點破她沒聽懂的事。",
+      "hook": "法院長廊，嚴琇擋在她和電梯中間：「妳老公剛剛念了十二條。」",
+      "hook_type": "line",
+      "mid_hook": "嚴琇：「妳知道他在做什麼嗎？」她：「交代。」嚴琇笑了：「不是。」",
+      "conflict": "她一直以為那是他照規定的老實，嚴琇聽出了別的。",
+      "turn": "她以為嚴琇來挑釁，嚴琇其實是來報信的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "嚴琇：「他在把契約念成誓詞。妳沒聽出來？我阿姨聽出來了。她在哭。」電梯門關上又打開，她沒進去。",
+        "question": "她要怎麼面對他念的誓詞？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "chengren",
+        "zhichang"
+      ],
+      "spectacle": "法院長廊盡頭的電梯門關上、打開、關上，門縫裡她的臉一次比一次清楚。",
+      "glamour_shot": "嚴叙在長廊盡頭低頭簽字，窗光從背後勾出他瘦高的輪廓。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "嚴琇第一次站到她這邊說話"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xiu",
+        "yan-xu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法院長廊"
+      ],
+      "state": {
+        "time": "第二庭後",
+        "knowledge": "嚴琇說他在念誓詞；嚴母聽懂了",
+        "carry_forward": "第三庭"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "第十一條也念了",
+      "youtube_title": "他在法庭念完十二條，回家路上她才想起其中一條寫著：法院結束就離婚",
+      "duration_s": 100,
+      "logline": "溫苡想問他念的是不是誓詞，問出口的卻是那一條誰都不想碰的第十一條。",
+      "hook": "回家的車上，她看著他開車的側臉：「你今天念得很好。」他：「照本宣科。」",
+      "hook_type": "line",
+      "mid_hook": "後座的棗棗探出頭：「誓詞是什麼？」兩個大人同時看前方。",
+      "conflict": "誓詞兩個字說出口就是第十二條，她只能換一條問。",
+      "turn": "她以為他會躲，他只回了兩個字，比躲還難接。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她：「第十一條，你也念了。」他：「念了。」「判完呢？」綠燈亮，後面喇叭響，他踩下油門。",
+        "question": "法院判完，他們就要離婚嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "夜裡城市的紅綠燈從紅跳綠，車內三個人的臉被燈色染了一遍。",
+      "glamour_shot": "嚴叙夜裡開車的側臉，路燈一盞盞掠過，下顎線忽明忽暗。",
+      "setups": [
+        "s04-t14"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她第一次把第十一條說出口"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "回家的車上"
+      ],
+      "state": {
+        "time": "第二庭當晚",
+        "knowledge": "第十一條：法院結束就離婚——他記得",
+        "carry_forward": "判完之後"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "第二十六次",
+      "youtube_title": "社工最後一次家訪，問了孩子一句誰幫妳關頭燈，答案讓她報告寫完了",
+      "duration_s": 105,
+      "logline": "林姐最後一次家訪，溫苡想知道報告寫了什麼，卻在最後一秒選擇不問。",
+      "hook": "門鈴響，林姐站在門口：「第二十六次。最後一次。」",
+      "hook_type": "line",
+      "mid_hook": "林姐沒進客廳，站在日程表前數：一年來多出來的手寫行，她用筆尖一行行點過去。",
+      "extra_hooks": [
+        "林姐蹲下問棗棗：「晚上誰幫妳關頭燈？」棗棗：「我自己關。」"
+      ],
+      "conflict": "報告已經寫好，最後一次家訪看的不是家，是他們。",
+      "turn": "她以為林姐要找破綻，林姐問的全是棗棗晚上幾點睡。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "林姐在門口：「報告寫好了。想知道第一句嗎？」她搖頭。門關上——她後悔了，拉開門，電梯已經往下。",
+        "question": "林姐的報告第一句寫什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "ganren"
+      ],
+      "spectacle": "日程表上一年的手寫行被一支筆尖一行一行點亮，像跑道燈。",
+      "glamour_shot": "溫苡拉開門追出去，走廊燈下回頭的那一瞬，短髮被風帶起。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗自己關頭燈睡覺",
+        "林姐的二十六次家訪結束"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "lin-jie"
+      ],
+      "locations": [
+        "兩房公寓",
+        "公寓電梯間"
+      ],
+      "state": {
+        "time": "第三庭前一週",
+        "knowledge": "報告寫好了，她沒問",
+        "carry_forward": "週日嚴母家"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "週日的飯",
+      "youtube_title": "第三庭前的週日家宴多了律師，奶奶問孫女想住哪，孩子的回答讓她筷子掉了",
+      "duration_s": 105,
+      "logline": "溫苡照第三條帶著家人回嚴母家吃飯，嚴母趁飯桌問棗棗想住哪裡。",
+      "hook": "週日，嚴母家的圓桌，三副碗筷變成五副——嚴琇也在。",
+      "hook_type": "image",
+      "mid_hook": "嚴母替棗棗夾菜：「下週法官問妳想住哪，妳要說實話。」",
+      "extra_hooks": [
+        "他放下筷子：「媽。第六條。」嚴母：「我不在你的條裡。」"
+      ],
+      "conflict": "飯桌上誰都不能吵，第十條：吵架不過夜，可這不是吵，是審。",
+      "turn": "大人以為棗棗會被問倒，棗棗給的答案誰都沒準備。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "棗棗：「我想住有天亮的地方。」嚴母的筷子掉在桌上，牆上嚴澈的照片在燈下反光。",
+        "question": "嚴母聽懂了嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "dalian",
+        "ganren"
+      ],
+      "spectacle": "深色木的老宅圓桌，五個人、五副碗筷，牆上一排相框裡嚴澈在笑。",
+      "glamour_shot": "嚴叙在老宅燈下替母親盛湯，袖口捲起，動作慢而穩。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗在嚴母面前說出想住的地方"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "yan-mu",
+        "yan-xiu",
+        "yan-che"
+      ],
+      "locations": [
+        "嚴母的家"
+      ],
+      "state": {
+        "time": "第三庭前的週日",
+        "knowledge": "棗棗說想住有天亮的地方",
+        "carry_forward": "第三庭"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "第三庭",
+      "youtube_title": "第三庭開庭，律師反對播放剪過的影像，法官只說了一個字：播",
+      "duration_s": 110,
+      "logline": "第三庭要播她交的三分鐘，嚴琇想擋下來，溫苡要為自己剪的東西辯護。",
+      "hook": "法院洗手間鏡子前，她和嚴母並肩補妝，誰都沒說話，口紅同時蓋上。",
+      "hook_type": "image",
+      "mid_hook": "開庭，嚴琇起身：「剪接過的影像不能證明真實。」",
+      "extra_hooks": [
+        "她站起來：「我剪的是順序，不是事實。」法官看她一眼。"
+      ],
+      "conflict": "三分鐘是她一年的工作，也是對方最好攻的地方。",
+      "turn": "她以為要跟嚴琇吵一場，法官只抬手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "嚴琇：「反對——」法官：「駁回。播。」蔡書記關燈，螢幕亮起 00:00：凌晨四點，一條空的走廊。",
+        "question": "三分鐘裡，法官會看見什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "zhichang"
+      ],
+      "spectacle": "法庭燈一排排熄滅，只剩螢幕的白光照在每個人臉上。",
+      "glamour_shot": "溫苡在洗手間鏡前抿口紅、抬眼，跟鏡子裡的嚴母對上視線。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "三分鐘獲准當庭播放"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-mu",
+        "yan-xiu",
+        "faguan",
+        "s04-shuji",
+        "yan-xu",
+        "lin-jie"
+      ],
+      "locations": [
+        "家事法院洗手間",
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第三庭",
+        "knowledge": "三分鐘開始播",
+        "carry_forward": "法庭裡的反應"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "沒有人說話",
+      "youtube_title": "法庭關燈播了三分鐘，沒有一句台詞，連對方律師翻文件的手都停了",
+      "duration_s": 125,
+      "logline": "三分鐘在法庭播放，溫苡只能坐著看自己一年的家被所有人看。",
+      "hook": "00:12，畫面裡他抱著發燒的棗棗在走廊來回走——法庭裡沒有一個人出聲。",
+      "hook_type": "image",
+      "mid_hook": "01:30，他把她桌上冷掉的咖啡換成熱的；嚴琇翻文件的手停在半空。",
+      "conflict": "沒有旁白、沒有字卡，三分鐘得自己說話。",
+      "turn": "她以為看自己剪的東西會很冷靜，她第一次在別人的眼睛裡看見這個家。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "02:50，天亮的棗棗房，床上孩子睡著，床邊兩把椅子空著——鏡頭搖過去，兩個大人靠著門框睡著了。螢幕黑。",
+        "question": "播完了，誰先開口？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "黑暗的法庭裡一面螢幕，畫面的天光一點點把旁聽席的臉照亮。",
+      "glamour_shot": "螢幕裡嚴叙靠著門框睡著，晨光落在他鬆開的領口與安靜的側臉。",
+      "setups": [],
+      "payoffs": [
+        "m02",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三分鐘完整播完"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "faguan",
+        "yan-xiu",
+        "yan-mu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第三庭",
+        "knowledge": "三分鐘播完，螢幕黑了",
+        "carry_forward": "社工的意見"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "第十次之後",
+      "youtube_title": "家訪了二十六次的社工在法庭上作證：這段婚姻是契約開始的，但第十次之後不是",
+      "duration_s": 120,
+      "logline": "林姐在法庭上說出她的報告，溫苡等的是一句判斷，等到的是一個數字。",
+      "hook": "燈亮，法庭靜了七秒，蔡書記忘了打字。",
+      "hook_type": "image",
+      "mid_hook": "法官：「社工的意見？」林姐起身：「這對夫妻的婚姻，是契約開始的。」",
+      "extra_hooks": [
+        "林姐翻開筆記本：「我家訪了二十六次。」"
+      ],
+      "conflict": "林姐知道契約，說出來可能讓一切翻盤。",
+      "turn": "大家以為「契約」兩個字是判詞，林姐只是把它當成開頭。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林姐：「第十次之後，我看到的不是契約。」嚴琇的筆掉在地上，滾到法官席下。",
+        "question": "法官會採納林姐的話嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "dalian",
+        "jiating"
+      ],
+      "spectacle": "法庭靜止的全景，一支筆從原告席滾過地板，停在法官席下的陰影裡。",
+      "glamour_shot": "林姐針織衫、筆記本，溫和地抬頭說話；溫苡在席上聽著，眼睛慢慢濕了。",
+      "setups": [],
+      "payoffs": [
+        "s04-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林姐的報告當庭說出：第十次之後不是契約"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "lin-jie",
+        "faguan",
+        "yan-xiu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第三庭",
+        "knowledge": "林姐作證：第十次之後不是契約",
+        "carry_forward": "嚴琇的反問"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "第十次",
+      "youtube_title": "律師追問哪一次是第十次，社工說出那天他們在吵架，吵完他還是換了咖啡",
+      "duration_s": 110,
+      "logline": "嚴琇追問第十次，林姐說出的那一天，溫苡自己都記得。",
+      "hook": "嚴琇撿起筆：「哪一次是第十次？」",
+      "hook_type": "line",
+      "mid_hook": "林姐翻筆記本：「去年十一月，我沒預約。他們在吵棗棗看牙醫。」",
+      "conflict": "嚴琇要把第十次說成偶然，林姐要說明那為什麼不是。",
+      "turn": "大家以為吵架是破綻，林姐說的是吵完之後的事。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "林姐：「吵架的人不會換咖啡。演的人不會吵。」旁聽席上嚴母站起來，一個人走出法庭。",
+        "question": "嚴母要去哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "法庭門被推開又慢慢合上，走廊的光在旁聽席上劃過一道。",
+      "glamour_shot": "嚴叙在席上轉頭看門，下顎線繃緊，手按在桌沿。",
+      "setups": [
+        "s04-t09"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林姐的第十次站住了：吵完還換咖啡"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "lin-jie",
+        "yan-xiu",
+        "yan-mu",
+        "faguan"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第三庭",
+        "knowledge": "嚴母走出法庭",
+        "carry_forward": "嚴母在哪"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "追出去",
+      "youtube_title": "法官宣布休庭十分鐘，她不顧老公拉住，追出去找那個要搶孩子的婆婆",
+      "duration_s": 105,
+      "logline": "溫苡要追出去找嚴母，嚴叙用第五條拉住她，她用第六條回他。",
+      "hook": "法官：「休庭十分鐘。」她已經站起來，椅子往後滑。",
+      "hook_type": "line",
+      "mid_hook": "他拉住她手腕：「第五條。」她回頭：「第六條。棗棗的阿嬤。」",
+      "extra_hooks": [
+        "走廊上沒有嚴母，只有一條掉在地上的手帕，繡著一個「澈」字。"
+      ],
+      "conflict": "嚴母是對手，追出去可能讓官司更難看；不追，那個人就一個人。",
+      "turn": "她以為嚴母是生氣走的，撿起手帕才知道不是。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "法院外台階最低一階，嚴母坐著，看遠處登山口那座山。嚴母沒回頭：「妳來幹嘛？」",
+        "question": "她要對嚴母說什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "法院外長長的台階，最低一階坐著一個盤髮的老人，遠處的山頂還有雪。",
+      "glamour_shot": "溫苡握著手帕跑下台階，寬褲被風吹起，腳步在嚴母身後停住。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她撿回嚴母的手帕"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-mu"
+      ],
+      "locations": [
+        "家事法庭",
+        "家事法院長廊",
+        "法院外台階"
+      ],
+      "state": {
+        "time": "第三庭休庭",
+        "knowledge": "嚴母坐在台階上看山",
+        "carry_forward": "她要說什麼"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "坐在台階上",
+      "youtube_title": "她坐到婆婆身邊遞回手帕，婆婆說那三分鐘裡沒有她兒子，下一句卻笑了",
+      "duration_s": 110,
+      "logline": "溫苡坐到嚴母身邊，想說片子的事，嚴母先開了口。",
+      "hook": "她在嚴母旁邊坐下，把手帕遞過去。嚴母接了，沒擦眼睛。",
+      "hook_type": "image",
+      "mid_hook": "嚴母：「三分鐘裡，沒有我兒子。」",
+      "extra_hooks": [
+        "嚴母停了很久：「但我看見他了。」"
+      ],
+      "conflict": "她剪的是他們的家，可嚴母失去的那個人不在裡面。",
+      "turn": "她以為嚴母在怪她，嚴母說的是另一個人。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "嚴母：「嚴叙坐在床邊的樣子，跟他哥一樣。」她轉頭——嚴母在笑，三年來第一次。",
+        "question": "嚴母會撤告嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "台階上兩個女人並肩，背後法院的玻璃門映出整座山。",
+      "glamour_shot": "嚴母珍珠耳環在風裡輕晃，盤髮下笑出的皺紋；溫苡轉頭時眼睛很亮。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "嚴母在三分鐘裡看見了嚴澈"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-mu"
+      ],
+      "locations": [
+        "法院外台階"
+      ],
+      "state": {
+        "time": "第三庭休庭",
+        "knowledge": "嚴母說嚴叙像他哥",
+        "carry_forward": "撤不撤告"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "我是怕忘",
+      "youtube_title": "要搶孩子的婆婆在法院外說：我不是要搶，我是怕忘，然後走回去撤了告",
+      "duration_s": 140,
+      "logline": "嚴母要說出她一直沒說的話，溫苡要給她一個不會忘的保證。",
+      "hook": "嚴叙出現在台階頂，站著沒下來。嚴母沒回頭：「你也坐。」",
+      "hook_type": "line",
+      "mid_hook": "三個人坐在一階上。嚴母：「我不是要搶。我是怕忘。」",
+      "extra_hooks": [
+        "她：「阿姨，片子裡有他。等剪完妳看。」嚴母：「我等。」"
+      ],
+      "conflict": "嚴母要的從來不是棗棗，是嚴澈不被忘記；這個官司她怎麼收。",
+      "turn": "大家以為嚴母要回去繼續打，她站起來的方向是書記的桌子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "嚴母走回法庭，對蔡書記說：「我撤告。」蔡書記抬頭：「確定嗎？」嚴母：「確定。」",
+        "question": "撤告之後，案子就結束了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "dalian",
+        "jiating"
+      ],
+      "spectacle": "法院外台階上三個人坐成一排，從高處拍下去，像一個家的形狀。",
+      "glamour_shot": "嚴叙在台階上坐下，第一次在母親面前解開最上一顆扣子，側臉被午後光打亮。",
+      "setups": [],
+      "payoffs": [
+        "s04-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "嚴母撤告",
+        "嚴母答應等片子剪完"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-mu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "法院外台階",
+        "家事法庭"
+      ],
+      "state": {
+        "time": "第三庭當天",
+        "knowledge": "嚴母撤告",
+        "carry_forward": "法院還要不要開"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "還沒結束",
+      "youtube_title": "婆婆撤告了他們以為可以回家，書記追出來：法官要你們三個再來一次",
+      "duration_s": 100,
+      "logline": "溫苡以為撤告就結束了，法院卻要他們用自己的話說一次這個家。",
+      "hook": "台階上三個人剛站起來，蔡書記追出法院：「溫女士！法官請三位下週再來一次。」",
+      "hook_type": "line",
+      "mid_hook": "蔡書記解釋：撤告不等於結案——棗棗住哪裡、誰照顧，法官要親自問清楚。",
+      "conflict": "沒有對手了，剩下的是自己；法官要聽的不是證據，是他們的話。",
+      "turn": "她以為最後一庭是走過場，通知單上那一行字是給他的考題。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "通知單上一行：「請雙方以自己的話陳述家庭狀況。」他看了三遍，摺好：「收到。」她：「你要怎麼說？」",
+        "question": "他說得出自己的話嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "zhichang"
+      ],
+      "spectacle": "法院台階上一張通知單被風掀起一角，「以自己的話」五個字特寫。",
+      "glamour_shot": "嚴叙在台階上低頭看通知單，陽光從他肩後打下來，睫毛投影在紙上。",
+      "setups": [
+        "s04-t10"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "最後一庭定在下週",
+        "嚴母撤告後第一次跟他們一起走下台階"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "s04-shuji",
+        "yan-mu"
+      ],
+      "locations": [
+        "法院外台階",
+        "幼兒園門口"
+      ],
+      "state": {
+        "time": "第三庭後",
+        "knowledge": "最後一庭要用自己的話",
+        "carry_forward": "他的草稿"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "草稿一",
+      "youtube_title": "要在法庭用自己的話說家，塔台管制員寫了一整晚，第一張稿是天氣報告",
+      "duration_s": 100,
+      "logline": "嚴叙要寫一句自己的話，寫出來的全是航管用語，溫苡在一旁看他撕了一地。",
+      "hook": "凌晨廚房，他在便條紙上寫一張撕一張，地上已經七團紙。",
+      "hook_type": "image",
+      "mid_hook": "她撿起一團攤開：「家庭狀況：穩定。風向：無。能見度良好。」",
+      "conflict": "他照規定說了三年的話，現在要一句規定裡沒有的。",
+      "turn": "她以為他在寫給法官，第八團紙上只寫了她的名字，又被劃掉。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "棗棗站在走廊，把頭燈關掉，抱在胸前問：「我不用等了。那頭燈要睡哪裡？」",
+        "question": "不用等天亮了，頭燈放哪裡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "chengren",
+        "xiju",
+        "fancha"
+      ],
+      "spectacle": "廚房的黃燈下，地板上八團紙排成一條跑道，盡頭是一雙小腳。",
+      "glamour_shot": "嚴叙深夜伏案，襯衫鬆了第一顆扣子，眉頭皺著、筆停在半空。",
+      "setups": [
+        "s04-t11"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗第一次主動關掉頭燈"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "兩房公寓廚房",
+        "兩房公寓走廊"
+      ],
+      "state": {
+        "time": "最後一庭前五天",
+        "knowledge": "他寫不出自己的話；棗棗問頭燈睡哪",
+        "carry_forward": "頭燈的家"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "說一句人話",
+      "youtube_title": "塔台菜鳥逼學長說一句人話，他說了收到，直到一架飛機重飛，他停了一秒",
+      "duration_s": 105,
+      "logline": "嚴叙在塔台被小芊和老鍾逼著練人話，練不出來，卻在工作裡漏了一句。",
+      "hook": "塔台休息室，小芊舉著筆記本：「學長，說一句人話。」他：「收到。」",
+      "hook_type": "line",
+      "mid_hook": "老鍾：「你對塔台說話三年都對。對法官說一句錯的，會怎樣？」",
+      "extra_hooks": [
+        "小芊鄭重記下：「例外五十六：問我怎麼說人話。」"
+      ],
+      "conflict": "他不是不會說，是不敢說錯。",
+      "turn": "所有人以為要逼他說，他在對講裡自己停了一秒。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "窗外一架飛機重飛，他下指令：「重飛。許可。」中間停了一秒。老鍾：「那一秒，就是人話。」",
+        "question": "那一秒，他能在法庭上說出來嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhichang",
+        "xiju",
+        "chengren"
+      ],
+      "spectacle": "塔台玻璃外一架客機在跑道頭拉起重飛，機腹從整面窗前滑過。",
+      "glamour_shot": "嚴叙戴著耳機對麥克風說話，藍光下側臉，停頓的那一秒眼神鬆了一下。",
+      "setups": [],
+      "payoffs": [
+        "m03",
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小芊筆記本數到五十六",
+        "他在對講裡第一次停頓了一秒"
+      ],
+      "characters": [
+        "yan-xu",
+        "xiao-qian",
+        "lao-zhong"
+      ],
+      "locations": [
+        "塔台休息室",
+        "塔台管制室"
+      ],
+      "state": {
+        "time": "最後一庭前四天",
+        "knowledge": "老鍾說他那一秒的停頓就是人話",
+        "carry_forward": "她那邊的稿"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "她也卡住",
+      "youtube_title": "拍了一年家的紀錄片導演對著鏡頭練自己的話，第九次還是卡在同一個字",
+      "duration_s": 100,
+      "logline": "溫苡以為說話是她的強項，輪到說自己的家，她卡得比他還慘。",
+      "hook": "剪接室，她對著自己的攝影機：「我們的家——」卡住。第九次重來。",
+      "hook_type": "image",
+      "mid_hook": "阿良：「妳拍了一年，自己說不出來？」她：「我是拍的人，不是說的人。」",
+      "extra_hooks": [
+        "阿良：「妳拍的是嚴叙。妳說的，也會是他。」"
+      ],
+      "conflict": "她能剪別人的話，輪到自己就找不到第一個字。",
+      "turn": "她以為要寫稿，最後是兩部片的畫面替她開了口。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把正片最後一格——周彤比手勢——和「第七條」最後一格——棗棗天亮——並排：「兩部片，同一個結尾。」",
+        "question": "兩部片要怎麼收？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "zhichang",
+        "chengren",
+        "ganren"
+      ],
+      "spectacle": "剪接室兩面螢幕並排，左邊雪山上的周彤比手勢，右邊棗棗房的窗透進天光。",
+      "glamour_shot": "溫苡對著自己的鏡頭笑場，捂著臉從指縫裡看螢幕，凌晨的燈照著她的手環。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到兩部片共同的結尾"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-liang",
+        "zhou-tong"
+      ],
+      "locations": [
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "最後一庭前三天",
+        "knowledge": "她知道片子怎麼收",
+        "carry_forward": "最後一庭"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "最後一庭",
+      "youtube_title": "最後一庭沒有對手，婆婆換到他們身後坐，法官只問了一個問題",
+      "duration_s": 110,
+      "logline": "最後一庭沒有對手，溫苡和嚴叙要面對的只剩法官的一個問題。",
+      "hook": "法庭旁聽席只有嚴母一人——她換了位子，坐在他們正後方。",
+      "hook_type": "image",
+      "mid_hook": "法官：「撤告了。但孩子的事，我要聽你們自己說。」",
+      "conflict": "沒有證據可交，沒有條可念，只有自己的話。",
+      "turn": "她以為法官會先問她，法官先看向他。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "法官：「嚴先生，用你自己的話說，這是什麼樣的家。」他站起來，嘴張開，沒有聲音。",
+        "question": "他會說出什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "zhichang",
+        "ganren"
+      ],
+      "spectacle": "空曠的家事法庭，旁聽席一個人，原告席空著，只有他們這一側坐滿。",
+      "glamour_shot": "嚴叙在法庭中央站起，西裝筆挺，日光從高窗落在他肩上。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "嚴母從對面換到他們身後"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-mu",
+        "faguan",
+        "s04-shuji",
+        "yan-xiu"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "最後一庭",
+        "knowledge": "法官要他用自己的話",
+        "carry_forward": "他的第一句"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "想了很久",
+      "youtube_title": "法官要他用自己的話說家，塔台管制員沉默了二十秒，開口第一句全場笑了",
+      "duration_s": 120,
+      "logline": "嚴叙在法庭上站了很久，溫苡只能在桌下幫他一件小事。",
+      "hook": "十秒、二十秒，他站著沒說話；嚴琇低頭看錶。",
+      "hook_type": "image",
+      "mid_hook": "他開口：「本家庭——」停住。旁聽席有人笑出聲。",
+      "extra_hooks": [
+        "她在桌下把他的手錶轉過去，錶面朝下。"
+      ],
+      "conflict": "他每一句都想說對，越想說對越說不出來。",
+      "turn": "大家以為他要背稿，他摘下手錶放在桌上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "ending",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他把手錶摘下放在桌上，抬頭看法官：「一個孩子睡到天亮——」",
+        "question": "下半句是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "ganren",
+        "zhichang"
+      ],
+      "spectacle": "法庭桌面上一只錶面朝下的手錶，秒針的聲音被收音放大。",
+      "glamour_shot": "嚴叙摘錶時低頭的側臉，手腕上的錶痕一圈白，抬頭時眼神第一次不像在值班。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他放下了手錶"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "faguan",
+        "yan-xiu",
+        "yan-mu"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "最後一庭",
+        "knowledge": "他說了半句",
+        "carry_forward": "下半句"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "兩個大人沒睡",
+      "youtube_title": "他第一次說出一句不是航管的話，她接著說完，法官摘下眼鏡：夠了",
+      "duration_s": 125,
+      "logline": "嚴叙說出這輩子第一句不是航管的話，溫苡接著把她的家說完。",
+      "hook": "「——兩個大人沒睡的家。」他說完，坐下，耳朵通紅。",
+      "hook_type": "line",
+      "mid_hook": "法庭靜了。嚴母在他身後低頭笑；法官：「溫女士？」",
+      "conflict": "他說了，她要接得住，不能讓那一句只是一句。",
+      "turn": "大家以為她會說得漂亮，她說的是自己最不該做的事。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她站起來：「一個攝影機一直開著、拍到的都是不該拍的家。」法官摘下眼鏡：「夠了。」",
+        "question": "法官說夠了，是要判了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "ganren"
+      ],
+      "spectacle": "法庭高窗的光束裡，兩個人一前一後站起又坐下，法官的眼鏡放在卷宗上。",
+      "glamour_shot": "溫苡站起說話時的側臉，短髮別在耳後，攝影機背帶斜過肩，聲音很穩。",
+      "setups": [],
+      "payoffs": [
+        "s04-t10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他在法庭上說了全劇第一句不是航管的話",
+        "最後一庭結束，擇日宣判"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "faguan",
+        "yan-mu",
+        "yan-xiu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法庭"
+      ],
+      "state": {
+        "time": "最後一庭",
+        "knowledge": "擇日宣判；兩人都說了自己的話",
+        "carry_forward": "宣判"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "抽屜",
+      "youtube_title": "最後一庭結束回到家，女兒的頭燈不在枕邊，打開抽屜看見一張紙條",
+      "duration_s": 100,
+      "logline": "溫苡回家找棗棗的頭燈，找到的是孩子留給兩個大人的一句話。",
+      "hook": "回家，棗棗已經睡了，枕邊那盞從不離手的頭燈不見了。",
+      "hook_type": "question",
+      "mid_hook": "他找遍房間，她拉開書桌抽屜：頭燈關著，躺在裡面，旁邊一張紙：「晚安」。",
+      "extra_hooks": [
+        "他低聲：「報告：頭燈，入庫。」"
+      ],
+      "conflict": "頭燈是棗棗等天亮的東西；不等了，她要確定那是好事。",
+      "turn": "她以為「晚安」是給頭燈的，紙翻過來是給他們的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "紙條背面，棗棗歪歪的字：「明天判完，你們還要住在一起。」兩個人在抽屜前同時沒動。",
+        "question": "判完之後，他們還住在一起嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "ganren",
+        "jiating"
+      ],
+      "spectacle": "書桌抽屜拉開的俯拍：一盞關掉的登山頭燈，旁邊一張蠟筆紙條。",
+      "glamour_shot": "嚴叙蹲在棗棗床邊替她拉被子，檯燈從背後勾出他的肩線，動作輕得像怕吵醒雪。",
+      "setups": [],
+      "payoffs": [
+        "s04-t11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "頭燈收進抽屜：棗棗不等了"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "棗棗的房"
+      ],
+      "state": {
+        "time": "宣判前兩天",
+        "knowledge": "頭燈在抽屜；棗棗要他們繼續住一起",
+        "carry_forward": "宣判"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "誰都沒提",
+      "youtube_title": "宣判前一天三個人照常吃晚飯，誰都沒提明天，直到孩子問了一句",
+      "duration_s": 105,
+      "logline": "溫苡和嚴叙在宣判前一天把日子過得很正常，正常到誰都不敢提明天。",
+      "hook": "塔台交班時間未到，他已經摘下耳機。小芊：「例外五十九：提早下班。」",
+      "hook_type": "line",
+      "mid_hook": "她收到嚴琇的簡訊：「明天十點宣判。我也會到。」",
+      "conflict": "第十一條就在明天之後，兩個人都在等對方先提。",
+      "turn": "她以為他提早下班是要談，他只是回來做了三個人的晚飯。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "三個人的晚飯桌，誰都沒提明天。棗棗放下湯匙：「明天之後是什麼？」兩個大人同時夾菜。",
+        "question": "明天之後是什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "chengren",
+        "jiating",
+        "xiju"
+      ],
+      "spectacle": "牆上的日程表，明天那一格空白，是整張表唯一沒字的格子。",
+      "glamour_shot": "嚴叙繫著圍裙在廚房翻鍋，鍋氣裡回頭看她一眼又轉回去。",
+      "setups": [],
+      "payoffs": [
+        "m02",
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小芊筆記本數到五十九",
+        "他提早下班做了三個人的晚飯"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "xiao-qian",
+        "yan-xiu"
+      ],
+      "locations": [
+        "塔台管制室",
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "宣判前一天",
+        "knowledge": "日程表明天那格空白",
+        "carry_forward": "深夜的廚房"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "遵守最好的一條",
+      "youtube_title": "宣判前夜兩人在廚房，她問他怎麼不說第七條，他說：第七條是不談，我在遵守",
+      "duration_s": 140,
+      "logline": "宣判前夜，溫苡在廚房裡試著談第十一條，嚴叙用第七條回答她。",
+      "hook": "深夜廚房，她出來倒水，他已經坐在桌邊，兩杯水，一杯是熱的。",
+      "hook_type": "image",
+      "mid_hook": "她：「明天判完——」他：「第十一條。」她：「你記得。」他：「我記得每一條。」",
+      "conflict": "第十一條要說，第七條不能說；兩條撞在同一張桌上。",
+      "turn": "她以為他記得每一條是要照做，他說的是他最想守的那一條。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她：「那你怎麼不說第七條。」他：「第七條是不談。我在遵守。」她：「你遵守得最好的一條。」他沒接，把她的水換成熱的。",
+        "question": "明天判完，第十一條要照做嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "ganren",
+        "fancha"
+      ],
+      "spectacle": "深夜廚房的黃燈下，兩杯水一冷一熱，熱的那杯被推過桌面。",
+      "glamour_shot": "溫苡靠在流理台邊喝水，寬鬆的睡衣外套、光腳，燈下的眼睛直直看他。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩人第一次把第十一條和第七條放在同一張桌上"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "宣判前夜",
+        "knowledge": "第十一條明天生效，他說第七條在遵守",
+        "carry_forward": "宣判"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "宣判",
+      "youtube_title": "監護權宣判，孩子留在契約夫妻身邊，輸掉官司的律師在法院外說：契約也是婚姻",
+      "duration_s": 130,
+      "logline": "溫苡和嚴叙等宣判，判決之外，還有一個在法院外等著他們的記者和一個輸了的律師。",
+      "hook": "法官翻開判決：「本庭判決如下。」她的手在桌下找到他的手錶——他今天沒戴。",
+      "hook_type": "line",
+      "mid_hook": "「嚴棗棗由嚴叙、溫苡共同照顧，與兩人同住。」她的呼吸停了一拍。",
+      "extra_hooks": [
+        "「嚴母每週日探視。」嚴母在後排點頭，手帕沒拿出來。"
+      ],
+      "conflict": "判決落下前每一秒都長；判完走出去，記者還在台階上等。",
+      "turn": "范喬舉著手機衝上來問那一夜，攔住他的是輸了官司的嚴琇。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "嚴琇擋開記者：「家事庭，不公開。走。」轉身對他們：「契約也是婚姻。」走下台階前又一句：「我輸得不冤。」",
+        "question": "嚴琇這句話，他們聽進去了嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "chengren",
+        "ganren"
+      ],
+      "spectacle": "法院台階上，套裝的嚴琇一手擋住記者的鏡頭，背後兩個人並肩站在法院門口的光裡。",
+      "glamour_shot": "嚴琇轉身時文件夾一甩，冷笑變成真笑；嚴叙站在她身後，最上一顆扣子是開的。",
+      "setups": [],
+      "payoffs": [
+        "s04-t07"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "棗棗留在他們身邊，嚴母每週日探視",
+        "嚴琇替他們擋下記者，那一夜沒有被寫出來"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-mu",
+        "yan-xiu",
+        "faguan",
+        "s04-jizhe",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法庭",
+        "法院外台階"
+      ],
+      "state": {
+        "time": "宣判日上午",
+        "knowledge": "判決：棗棗留下，嚴母週日探視；判決書一週後領",
+        "carry_forward": "怎麼告訴棗棗"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "住原址",
+      "youtube_title": "判決下來他們衝去幼兒園告訴女兒，老師卻遞來一張要寫父母名字的表格",
+      "duration_s": 100,
+      "logline": "溫苡要親口告訴棗棗判決，卻被一張家庭表格搶了風頭。",
+      "hook": "幼兒園門口，棗棗衝出來撞進她懷裡：「判了嗎？我住哪？」",
+      "hook_type": "question",
+      "mid_hook": "他蹲下：「報告：住原址。」棗棗：「原址是哪？」她：「家。」",
+      "extra_hooks": [
+        "許老師遞來一張紙：「下週家長會，要填家庭表格。」"
+      ],
+      "conflict": "判決是大人的事，棗棗要的是一個她聽得懂的答案。",
+      "turn": "她以為最難的是解釋判決，最難的是表格上的兩個空格。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "表格上「父：＿＿　母：＿＿」。棗棗把它摺成四折塞進書包：「這個我要自己寫。」",
+        "question": "棗棗會在表格上寫誰？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "xiju",
+        "chengren"
+      ],
+      "spectacle": "幼兒園門口一個小孩撞進大人懷裡，背後的彩色圍牆畫著一排太陽。",
+      "glamour_shot": "嚴叙蹲下來和棗棗平視，陽光照在他沒戴錶的手腕上，嘴角很輕地動了。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "棗棗知道自己住原址：家"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "ban-dao"
+      ],
+      "locations": [
+        "幼兒園門口"
+      ],
+      "state": {
+        "time": "宣判日下午",
+        "knowledge": "棗棗收起家庭表格要自己寫",
+        "carry_forward": "表格寫什麼"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "剩一個月",
+      "youtube_title": "官司打完製片人立刻來電：影展收片剩一個月，片尾要放好友還是放他",
+      "duration_s": 100,
+      "logline": "溫苡要在一個月內剪完周彤的片子，卻發現兩條時間線分不開了。",
+      "hook": "剪接室裡她和阿良的手機同時響，高維：「影展收片，剩一個月。」",
+      "hook_type": "line",
+      "mid_hook": "高維：「片尾放誰？周彤？還是妳那條第七條？」",
+      "conflict": "片子是周彤的，可這一年拍下的每一格都有他。",
+      "turn": "她以為要二選一，阿良疊起來的畫面剛好接得上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她把「第七條」資料夾往正片拖，拖到一半，滑鼠沒放開。",
+        "question": "影展剩一個月，片尾放誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "jiating"
+      ],
+      "spectacle": "螢幕上兩條時間線疊合，雪山的白和走廊的黃在同一格裡交錯。",
+      "glamour_shot": "溫苡握著滑鼠的手停在半空，螢幕光打在她咬住下唇的側臉上。",
+      "setups": [
+        "s04-t12"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿良把兩條時間線接成一條"
+      ],
+      "characters": [
+        "wen-yi",
+        "a-liang",
+        "gao-wei"
+      ],
+      "locations": [
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "宣判後第二天",
+        "knowledge": "影展剩一個月",
+        "carry_forward": "片尾"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "一箱醃菜",
+      "youtube_title": "周彤的母親寄來一箱醃菜寫著給棗棗的媽，塔台老公在收件人旁邊多寫了三個字",
+      "duration_s": 100,
+      "logline": "溫苡收到周彤母親的醃菜，嚴叙在箱子上做了一件誰都沒叫他做的事。",
+      "hook": "門口一個紙箱，寄件人周彤的母親，箱上毛筆字：「給棗棗的媽」。",
+      "hook_type": "image",
+      "mid_hook": "周彤的母親打來，方言很慢：「判了？我就說。」",
+      "conflict": "「棗棗的媽」四個字，她還不知道能不能接。",
+      "turn": "她以為他會假裝沒看見那四個字，他拿起了筆。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "他搬箱子時看見收件人那行，停了一秒，拿筆在旁邊補上：「與嚴叙」。她在門口看見了。",
+        "question": "他補上那三個字，算例外嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "jiating",
+        "chengren",
+        "xiju"
+      ],
+      "spectacle": "紙箱上兩行字，一行毛筆「給棗棗的媽」，一行原子筆「與嚴叙」，工整得像班表。",
+      "glamour_shot": "嚴叙彎腰搬箱，襯衫袖子捲起，抬頭撞上她的視線又若無其事地走過。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "周彤的母親寄來醃菜祝賀",
+        "紙箱上多了「與嚴叙」"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "zhou-mu"
+      ],
+      "locations": [
+        "兩房公寓玄關"
+      ],
+      "state": {
+        "time": "宣判後第三天",
+        "knowledge": "他在箱上寫了「與嚴叙」",
+        "carry_forward": "契約"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "一年",
+      "youtube_title": "女兒從冰箱上拿下契約問這個日期是什麼，兩個大人才發現婚約只剩一個月",
+      "duration_s": 105,
+      "logline": "溫苡和嚴叙一直沒看契約的最後一行，被棗棗念了出來。",
+      "hook": "棗棗踮腳從冰箱上拿下契約影本，磁鐵掉了一地：「這個日期是什麼？」",
+      "hook_type": "question",
+      "mid_hook": "契約最後一行：「本契約為期一年，自登記日起。」——還剩一個月。",
+      "conflict": "第十一條之外還有一個日期，兩個人都記得，都沒提。",
+      "turn": "他們以為棗棗只會念字，她開始掰手指算。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她：「一個月。」他：「三十一天。」棗棗：「然後呢？」兩個人同時：「睡覺。」",
+        "question": "一年到期那天，誰會先開口？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "chengren"
+      ],
+      "spectacle": "冰箱前散落一地的磁鐵，中間一張契約，日期那行被小手指壓住。",
+      "glamour_shot": "溫苡靠在冰箱邊笑到彎腰，又在他看過來時立刻站直。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "契約的期限被說出來了：一年，剩一個月"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao"
+      ],
+      "locations": [
+        "兩房公寓廚房"
+      ],
+      "state": {
+        "time": "宣判後第四天",
+        "knowledge": "契約還剩一個月",
+        "carry_forward": "週日探視"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "第一個週日",
+      "youtube_title": "判決後第一個探視日，婆婆擺了四副碗筷，飯後只問了一句你們還住一起嗎",
+      "duration_s": 105,
+      "logline": "溫苡照判決送棗棗去探視，嚴母卻把探視變成了一頓四個人的飯。",
+      "hook": "週日，嚴母家的圓桌擺了四副碗筷。嚴母：「探視是看孫女。吃飯是吃飯。」",
+      "hook_type": "line",
+      "mid_hook": "嚴母拿出一本舊相簿給棗棗：嚴澈六歲，也缺一顆牙。",
+      "conflict": "官司結束了，這張桌子上的人要重新學怎麼當一家人。",
+      "turn": "她以為嚴母會冷淡地交接孩子，嚴母留他們吃到天黑。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "門口，嚴母替棗棗扣好外套，頭也沒抬：「判決書拿到那天，你們兩個還住一起嗎？」",
+        "question": "拿到判決書那天，第十一條要照做嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "chengren"
+      ],
+      "spectacle": "老宅圓桌上四副碗筷，一本舊相簿攤開，兩個六歲的缺牙笑臉隔著三十年並排。",
+      "glamour_shot": "嚴母在燈下替棗棗扣外套，珍珠耳環一晃；嚴叙在玄關等，背影挺直。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "嚴母第一次留他們吃飯",
+        "棗棗看見爸爸六歲的照片"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "yan-mu",
+        "yan-che"
+      ],
+      "locations": [
+        "嚴母的家"
+      ],
+      "state": {
+        "time": "宣判後第一個週日",
+        "knowledge": "嚴母問拿到判決書那天還住不住一起",
+        "carry_forward": "判決書"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "兩張空白紙",
+      "youtube_title": "印表機吐出一張空白的離婚協議書，她以為是他印的，打開抽屜卻看見自己那張",
+      "duration_s": 105,
+      "logline": "溫苡發現有人印了離婚協議書，以為他要照第十一條走，結果兩個人都印了、都沒簽。",
+      "hook": "印表機吐出一張紙，她以為是分鏡，拿起來——「離婚協議書」，空白。",
+      "hook_type": "reversal",
+      "mid_hook": "他站在走廊：「第十一條。照規定。」聲音平得聽不出任何東西。",
+      "extra_hooks": [
+        "簽名欄空著，日期欄他用鉛筆寫了兩個字：「待定」。"
+      ],
+      "conflict": "第十一條是寫好的，誰先照做，誰就是讓這個家散的人。",
+      "turn": "她以為只有他在準備，拉開抽屜才發現自己也一樣。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她拉開抽屜要放——頭燈旁邊躺著另一張一模一樣的紙，是她自己上週印的，也沒簽。",
+        "question": "兩張都沒簽，誰先撕？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chengren",
+        "xiju"
+      ],
+      "spectacle": "抽屜的俯拍：一盞關掉的頭燈，兩張空白的協議書疊在一起，一張寫著「待定」。",
+      "glamour_shot": "溫苡握著那張紙站在走廊燈下，眼神從受傷變成想笑，嘴角先投降。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩個人都印了協議書，都沒簽"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu"
+      ],
+      "locations": [
+        "兩房公寓走廊",
+        "棗棗的房"
+      ],
+      "state": {
+        "time": "宣判後第五天",
+        "knowledge": "兩張協議書都沒簽，放在頭燈旁邊",
+        "carry_forward": "誰先開口"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "我要罰錢",
+      "youtube_title": "判決後的塔台老公例外到停不下來，班長在管制台上擺了一個罰款罐",
+      "duration_s": 105,
+      "logline": "溫苡送便當上塔台，正好撞上整個塔台在算嚴叙這週的例外。",
+      "hook": "塔台，他交班時順手把小芊的咖啡換成熱的。小芊：「例外六十——對我？」",
+      "hook_type": "line",
+      "mid_hook": "她提著便當走出電梯，全塔台同時抬頭。老鍾：「判完了，整個塔台都知道。」",
+      "extra_hooks": [
+        "老鍾把一個空的茶葉罐放上管制台：「你們兩個再這樣，我要罰錢。」"
+      ],
+      "conflict": "塔台講規矩，他現在每天都在破。",
+      "turn": "她以為老鍾在損人，老鍾問的是正事。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老鍾壓低聲音：「第十一條，你們打算怎樣？」他戴上耳機：「頻率繁忙。」她在後面笑出聲。",
+        "question": "他到底要不要照第十一條？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "chengren",
+        "zhichang"
+      ],
+      "spectacle": "塔台管制台上一個寫著「罰款」的茶葉罐，背後整面玻璃外飛機排隊起飛。",
+      "glamour_shot": "嚴叙在藍光裡戴上耳機的動作，嘴角壓不住的弧度被她的鏡頭拍到。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小芊筆記本數到六十",
+        "她第一次光明正大上塔台送便當"
+      ],
+      "characters": [
+        "yan-xu",
+        "wen-yi",
+        "xiao-qian",
+        "lao-zhong"
+      ],
+      "locations": [
+        "塔台管制室"
+      ],
+      "state": {
+        "time": "宣判後第六天",
+        "knowledge": "整個塔台都在等第十一條",
+        "carry_forward": "明天領判決書"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "第一百次",
+      "youtube_title": "明天就要領判決書，塔台菜鳥傳來筆記本第一百次，她回製片人一句片尾放誰",
+      "duration_s": 125,
+      "logline": "領判決書前一天，溫苡把片子的結尾定了，第十一條卻還沒人定。",
+      "hook": "蔡書記來電：「判決書明天可以領，十點，三位都要到。」她看向他：「三位。」",
+      "hook_type": "line",
+      "mid_hook": "小芊傳來照片：筆記本一頁寫滿，最底下一行「第一百次」，旁邊畫了一個罰款罐。",
+      "extra_hooks": [
+        "高維：「一個月，交不交？」她：「交。片尾我知道放誰了。」"
+      ],
+      "conflict": "明天十點以後就是第十一條；今晚兩個人都要決定自己要怎麼走進法院。",
+      "turn": "她以為最難決定的是片尾，片尾她一秒就答了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "夜裡她拿著筆停在協議書的簽名欄上，他在門口：「明天十點。」她把筆蓋上：「收到。」",
+        "question": "明天走出法院，他們會說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "jiating",
+        "chengren"
+      ],
+      "spectacle": "小芊的筆記本一整頁「正」字，最後一行紅筆圈起「100」。",
+      "glamour_shot": "溫苡在剪接室窗邊講電話，夜色裡笑到露牙，手環在腕上晃。",
+      "setups": [],
+      "payoffs": [
+        "s04-t12",
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "片尾定了：棗棗天亮那一格",
+        "小芊的筆記本數到一百"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "xiao-qian",
+        "gao-wei",
+        "s04-shuji"
+      ],
+      "locations": [
+        "兩房公寓",
+        "溫苡的剪接室"
+      ],
+      "state": {
+        "time": "宣判後第七天夜",
+        "knowledge": "明天十點領判決書；協議書仍沒簽",
+        "carry_forward": "走出法院的那一刻"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "改期",
+      "youtube_title": "判決書到手三個人走出法院，女兒問第十一條呢，塔台老公說了兩個字：改期",
+      "duration_s": 150,
+      "logline": "溫苡和嚴叙帶棗棗回法院領判決書，第十一條在走出法院那一刻到期，被一個六歲的孩子問了出來。",
+      "hook": "法院窗口，蔡書記把判決書推出來：「結案了。」棗棗一手牽一個，踮腳看那疊紙。",
+      "hook_type": "image",
+      "mid_hook": "走廊上嚴琇遞來一個信封：「證物退還。」裡面是他們那份契約正本，第十一條朝上。",
+      "conflict": "法院結束就離婚——第十一條寫得清清楚楚，現在法院結束了。",
+      "turn": "兩個大人都在等對方先提，先提的是棗棗。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "三個人走下法院台階，棗棗：「所以第十一條呢？」兩個大人同時停住。他：「……改期。」她：「改到什麼時候？」他：「保持。」棗棗：「保持是幾天？」他：「保持是不改。」",
+        "question": "保持是不改——那第七條呢？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "jiating",
+        "chengren",
+        "xiju"
+      ],
+      "spectacle": "法院台階的長鏡頭：三個人一階一階走下來，中間的小孩突然停住，兩個大人跟著停在同一階。",
+      "glamour_shot": "嚴叙在台階上停住、側頭說「保持」的那一秒，陽光打在他沒扣最上一顆的領口和第一次不平的眼神上。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "s04-t14",
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "判決書到手，結案",
+        "第十一條改期：保持是不改"
+      ],
+      "characters": [
+        "wen-yi",
+        "yan-xu",
+        "yan-zaozao",
+        "yan-xiu",
+        "s04-shuji"
+      ],
+      "locations": [
+        "家事法院收件窗口",
+        "家事法院長廊",
+        "法院外台階"
+      ],
+      "state": {
+        "time": "宣判後第八天上午",
+        "knowledge": "第十一條改期，「保持是不改」；契約一年期限剩一個月",
+        "carry_forward": "契約到期日，誰先開口"
+      }
+    }
+  ]
+}

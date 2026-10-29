@@ -92,9 +92,11 @@ TOP20（同系列合併成一筆，去重後 16 部，第 17–20 名照同報�
 | `2026-08-cuojia-youxi` | 傻姑娘嫁對了人 | **done**：5 季 300 集，validate 零錯誤 |
 | `2025-09-huangnian-xitong` | 全村餓肚子，我家飄肉香 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-09-baling-laqi` | 鐵漢的便當太太 | **done**：5 季 300 集，validate 零錯誤 |
-| `2025-10-banshu-laogong` | 契約第七條：不談感情 | outline；五季細綱代理撰寫中 |
+| `2025-10-banshu-laogong` | 契約第七條：不談感情 | **done**：5 季 300 集，validate 零錯誤 |
 | `2026-10-haomen-yuesao` | 住進唐家的治療師 | outline；五季細綱代理撰寫中 |
-| 其餘 20 部 | 未定 | reference（套路拆解） |
+| `2025-11-yunmiao` | 茶館老闆娘活了兩千歲 | outline（設定集與五季總綱已寫） |
+| `2026-11-nanian-dongzhi` | 冬至那天我嫁給了倒數的人 | setting（設定集已寫，總綱撰寫中） |
+| 其餘 18 部 | 未定 | reference（套路拆解） |
 
 ## 每部怎麼做
 
