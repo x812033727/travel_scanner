@@ -608,3 +608,21 @@ test("a curio- or story- slug reads the panel in the viewer wording, with its ow
   // A verdict recorded against the story wording no longer matches a curio script: it is read again.
   assert.equal(narrativeReviewMatches(narrativeRecord(fixture(), verdict, 1), curio), false);
 });
+
+import { DAILY_BRIEF_PANEL_QUESTIONS, isDailyBrief } from "./narrative.mjs";
+
+test("a daily-ai- slug reads the panel in the daily brief wording, with its own contract hash; the ids and required flags do not move", () => {
+  assert.equal(isDailyBrief({ slug: "daily-ai-20261028" }), true);
+  assert.equal(isDailyBrief({ slug: "php2shell-ai-found-it-first" }), false);
+  const brief = { ...fixture(), slug: "daily-ai-20261028" };
+  const questions = panelQuestions(brief);
+  assert.deepEqual(questions.map((question) => question.id), NARRATIVE_PANEL.map((question) => question.id));
+  assert.deepEqual(questions.map((question) => question.required), NARRATIVE_PANEL.map((question) => question.required));
+  assert.deepEqual([...NARRATIVE_PANEL.map((question) => question.id)].filter((id) => !(id in DAILY_BRIEF_PANEL_QUESTIONS)), ["outro_no_next"]);
+  for (const id of Object.keys(DAILY_BRIEF_PANEL_QUESTIONS)) assert.equal(questions.find((question) => question.id === id).question, DAILY_BRIEF_PANEL_QUESTIONS[id], id);
+  assert.match(questions.find((question) => question.id === "one_thread").question, /台灣的觀眾/);
+  assert.notEqual(panelRulesSha256(brief), PANEL_RULES_SHA256);
+  assert.notEqual(panelRulesSha256(brief), panelRulesSha256({ ...fixture(), slug: "curio-h01-v2" }));
+  // A tutorial category still reads the tutorial wording, whatever its slug.
+  assert.equal(panelQuestions({ ...brief, category: "tutorial" }).find((question) => question.id === "no_toc").question, TUTORIAL_PANEL_QUESTIONS.no_toc);
+});

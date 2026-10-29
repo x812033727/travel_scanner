@@ -3,16 +3,16 @@
 import { useTranslations } from "next-intl";
 import { useState } from "react";
 import {
-  InstructionFields, LocaleDefaults, MEDIA_PROVIDERS, mediaProviderLabels, Panel, PromptsList, SaveRow, type SectionProps, settingsBody,
-  type SlidesSettings, StageModelList, tutorialBody, useSettingsSave, type VideoSettings, type Voice, VoiceFields,
+  type DailyBriefSettings, InstructionFields, LocaleDefaults, MEDIA_PROVIDERS, mediaProviderLabels, Panel, PromptsList, SaveRow, type SectionProps,
+  settingsBody, type SlidesSettings, StageModelList, tutorialBody, useSettingsSave, type VideoSettings, type Voice, VoiceFields,
 } from "@/components/admin-video-settings";
 import { fieldClass } from "@/components/community/ui";
 
 // The tutorial part of the settings tab (docs/videos/DRAMA-FLOW.md, section 1): the schedule and
 // topics, the stage models (read only), the standing instructions, the channel voice and the
-// video's shape, the illustrated slides' pictures (docs/videos/ILLUSTRATED.md), the budget and
-// rounds, the approvals, and the prompts last sent for a slides video. It saves only these fields;
-// the drama and the shared parts are their own components.
+// video's shape, the illustrated slides' pictures (docs/videos/ILLUSTRATED.md), the daily news brief,
+// the budget and rounds, the approvals, and the prompts last sent for a slides video. It saves only
+// these fields; the drama and the shared parts are their own components.
 const numberFields = {
   schedule: [["draft_interval_hours", 6, 720], ["topics_per_run", 1, 3], ["max_waiting_drafts", 1, 10]],
   // Every slides video runs at least eight minutes (apps/api migration 0117).
@@ -31,6 +31,8 @@ export function AdminVideoSettingsTutorial({ view, prompts, canManage, onSaved }
   const setVoice = (change: Partial<Voice>) => edit({ voice: { ...draft.voice, ...change } });
   const slides = draft.slides;
   const editSlides = (change: Partial<SlidesSettings>) => edit({ slides: { ...slides, ...change } });
+  const brief = draft.daily_brief;
+  const editBrief = (change: Partial<DailyBriefSettings>) => edit({ daily_brief: { ...brief, ...change } });
   // Every image model the catalog offers, whichever vendor serves it; "" follows the drama's choice.
   const imageModels = MEDIA_PROVIDERS.flatMap((provider) => (view.media_options?.images?.[provider] ?? []).map((option) => ({ ...option, provider })));
   const imageMissing = slides.slides_image_model !== null && !imageModels.some((option) => option.value === slides.slides_image_model);
@@ -94,6 +96,20 @@ export function AdminVideoSettingsTutorial({ view, prompts, canManage, onSaved }
       </div>
       <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={slides.slides_auto_approve_storyboard} disabled={disabled} onChange={(event) => editSlides({ slides_auto_approve_storyboard: event.target.checked })} />{t("fields.slides_auto_approve_storyboard")}</label>
       <p className="text-sm leading-6 text-[var(--muted)]">{t("slidesMediaHelp")}</p>
+    </Panel>
+
+    <Panel title={t("dailyBriefTitle")}>
+      <label className="flex min-h-11 items-center gap-2 font-semibold"><input type="checkbox" checked={brief.daily_brief_enabled} disabled={disabled} onChange={(event) => editBrief({ daily_brief_enabled: event.target.checked })} />{t("fields.daily_brief_enabled")}</label>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("dailyBriefHelp")}</p>
+      <div className="grid gap-3 md:grid-cols-2">
+        <label className="block text-sm font-semibold">{t("fields.daily_brief_hour")}
+          <input className={fieldClass} type="number" min={0} max={23} value={brief.daily_brief_hour} disabled={disabled} onChange={(event) => editBrief({ daily_brief_hour: Number(event.target.value) })} />
+        </label>
+        <label className="block text-sm font-semibold">{t("fields.daily_brief_min_stories")}
+          <input className={fieldClass} type="number" min={1} max={20} value={brief.daily_brief_min_stories} disabled={disabled} onChange={(event) => editBrief({ daily_brief_min_stories: Number(event.target.value) })} />
+        </label>
+      </div>
+      <p className="text-sm leading-6 text-[var(--muted)]">{t("dailyBriefLanguagesHelp")}</p>
     </Panel>
 
     <Panel title={t("budgetTitle")}>

@@ -999,3 +999,11 @@ async def _finish(
         )
         project.youtube_sync = state
         await session.commit()
+    if error is None:
+        # A daily news brief's dubs wait for this (admin_service._decide_daily_brief_locales).
+        # The run is over and recorded either way: a failure here must not mark it failed.
+        try:
+            async with factory() as session:
+                await reviews.decide_daily_brief_dubs(session, slug)
+        except Exception:
+            logger.exception("Could not decide the daily brief dubs of %s", slug)
