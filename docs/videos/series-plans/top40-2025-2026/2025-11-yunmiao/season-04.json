@@ -1,0 +1,4314 @@
+{
+  "number": 4,
+  "title": "尺",
+  "theme": "她知道第五件在哪了——老九早就知道。",
+  "start_state": "三件鎮物歸位、縫合三角；她一天說不到五句。阿璞手上有老九的半張帳『餘：燈』，沒給她看；林岸守茶館的夜班。第四件鎮物『尺』——鎮『量』的——在一間換命的醫院。老九開始不等了。",
+  "end_state": "老九是誰揭開（上一道縫裡出來的東西，披著當鋪老闆的皮）；第五件鎮物『燈』在哪揭開（就是她——茶館那盞燈是空的）；補縫的代價揭開（燈靈要回燈裡、從人間消失）。五個單元：換命的醫院、量人心的秤、一座只給一個人住的樓、被量過的孩子、老九自己——她第一次審老九，審不動：他沒說謊，他每一句都是真的。阿璞把帳給她看；她去摸茶館那盞燈：空的。她懂了。林岸問補縫的代價，她第一次全說。最後一集，尺放進縫、合第四角；只剩一角，剩的鎮物只有她。老九站在茶館門口，第一次不笑：『妳補上了，妳就沒了。妳不補，縫開了妳還在。妳選。』她說：『我等了三百年才等到一個肯問我選什麼的人。』然後她把茶館的燈關了——第一次。",
+  "guest_cast": [
+    {
+      "id": "s04-chen-jiashu",
+      "name": "陳家屬",
+      "role": "換命的醫院第三十個家屬，父親進去沒出來；單元一的證人",
+      "appearance": "台灣男性，三十五歲，工地夾克、眼下青黑，手裡捏著一張掛號單，寫實電影光"
+    },
+    {
+      "id": "s04-cheng-laoban",
+      "name": "秤老闆",
+      "role": "在老街口擺出量人心的秤的人，自稱只是代人看攤；單元二",
+      "appearance": "清瘦中年男子，灰長衫、圓框眼鏡，笑起來很客氣，站在一台老式黃銅磅秤旁，暖黃街燈"
+    },
+    {
+      "id": "s04-lou-zhu",
+      "name": "樓主",
+      "role": "一座三十層的樓只給他一個人住，每一戶是他不同年紀的自己；單元三",
+      "appearance": "同一張臉的多個年紀：三歲男孩、二十歲青年、五十歲西裝男、八十歲白髮老人；溫和眉眼、左耳一顆痣做為辨識"
+    },
+    {
+      "id": "s04-xiao-he",
+      "name": "小禾",
+      "role": "被醫院主任用尺量過的孩子，命被量短了；單元四",
+      "appearance": "八歲女孩，短髮、黃色雨衣，眼睛很亮，手裡抱著一本畫滿尺規刻度的作業簿"
+    },
+    {
+      "id": "s04-he-mama",
+      "name": "禾媽",
+      "role": "小禾的母親，單親，在老街開洗衣店",
+      "appearance": "三十歲女性，素顏、馬尾、圍裙口袋插著衣夾，疲憊但挺直，洗衣店日光燈"
+    },
+    {
+      "id": "s04-a-gui",
+      "name": "阿桂姨",
+      "role": "老街麵攤老闆娘，單元五第一個被縫邊漏出的東西附著、說不是自己的話的人",
+      "appearance": "五十多歲女性，捲髮、花圍裙，嗓門大，熱湯蒸氣後面的笑臉"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s04-t01",
+      "question": "尺在醫院頂樓，她怎麼拿到？",
+      "setup_episode": 181,
+      "payoff_episode": 190
+    },
+    {
+      "id": "s04-t02",
+      "question": "主任那句「我盡力了」到底哪裡是謊？",
+      "setup_episode": 182,
+      "payoff_episode": 189
+    },
+    {
+      "id": "s04-t03",
+      "question": "老九為什麼問她摸過茶館那盞燈沒有？",
+      "setup_episode": 183,
+      "payoff_episode": 192
+    },
+    {
+      "id": "s04-t04",
+      "question": "阿璞手上那半張帳什麼時候給她看？",
+      "setup_episode": 181,
+      "payoff_episode": 191
+    },
+    {
+      "id": "s04-t05",
+      "question": "秤說她不想回燈裡，是秤壞了還是真的？",
+      "setup_episode": 196,
+      "payoff_episode": 212
+    },
+    {
+      "id": "s04-t06",
+      "question": "小七畫的那張畫，老九的皮下面是什麼樣子？",
+      "setup_episode": 203,
+      "payoff_episode": 206
+    },
+    {
+      "id": "s04-t07",
+      "question": "三十層樓的最後一層住的是誰？",
+      "setup_episode": 207,
+      "payoff_episode": 210
+    },
+    {
+      "id": "s04-t08",
+      "question": "被量短的小禾，量得回來嗎？要付什麼？",
+      "setup_episode": 213,
+      "payoff_episode": 218
+    },
+    {
+      "id": "s04-t09",
+      "question": "老九撕皮撕到底，縫會開多大？",
+      "setup_episode": 216,
+      "payoff_episode": 229
+    },
+    {
+      "id": "s04-t10",
+      "question": "小七站哪邊？",
+      "setup_episode": 203,
+      "payoff_episode": 230
+    },
+    {
+      "id": "s04-t11",
+      "question": "林岸為什麼把林家家譜搬進茶館？",
+      "setup_episode": 232,
+      "payoff_episode": 233
+    },
+    {
+      "id": "s04-t12",
+      "question": "阿璞的符這次能不能全畫對？",
+      "setup_episode": 234,
+      "payoff_episode": 238
+    },
+    {
+      "id": "s04-t13",
+      "question": "老蔡說她的話本，結尾是什麼？",
+      "setup_episode": 236,
+      "payoff_episode": 239
+    }
+  ],
+  "episodes": [
+    {
+      "number": 181,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "醫院門口的掛號單",
+      "youtube_title": "茶館老闆娘去私人醫院掛號，主任笑著說：我們只收有錢人",
+      "duration_s": 150,
+      "logline": "三件鎮物歸位後，顏非得知第四件「尺」在一間換命的醫院，她決定當病人進去；阿璞藏著老九的半張帳不敢說。",
+      "hook": "茶館燈下，一張掛號單被風吹到櫃台，上面印著「恆壽醫院」。陳家屬撲進門：「我爸進去，沒出來。」",
+      "hook_type": "line",
+      "mid_hook": "林岸查了恆壽三年的出院名冊：有錢的出院時年輕了二十歲，沒錢的那一欄，一個名字都沒有。",
+      "extra_hooks": [
+        "阿璞摸著口袋裡那半張帳，手一抖，帳角露出「燈」字，他趕緊塞回去。"
+      ],
+      "conflict": "她要找到尺，卻不能硬闖：醫院沒人說謊，她無從審起。",
+      "turn": "大家以為她要讓林岸帶隊搜查，她卻拿起掛號單：「我去看病。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "恆壽醫院頂樓的窗子，一把看不見的尺影在玻璃上量過她的身長，櫃台護士說：「顏小姐，主任等妳很久了。」",
+        "question": "主任怎麼會知道她要來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chahuang",
+        "zhiguai"
+      ],
+      "spectacle": "茶館三件鎮物排在縫邊，鐘、鏡、印各亮一角，第四角是黑的。",
+      "glamour_shot": "她赤腳走過茶館地板，停在燈下抬眼，冷光從側臉滑過。",
+      "setups": [
+        "s04-t01",
+        "s04-t04"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳家屬留下父親的掛號單當證物"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "s04-chen-jiashu",
+        "lao-cai"
+      ],
+      "locations": [
+        "無事茶館",
+        "老街派出所",
+        "恆壽醫院門口"
+      ],
+      "state": {
+        "time": "第四季第一天夜",
+        "knowledge": "尺在恆壽醫院；醫院有人進去沒出來；縫合三角、她今天說了四句",
+        "carry_forward": "主任知道她要來；阿璞的半張帳"
+      }
+    },
+    {
+      "number": 182,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "她來看病",
+      "youtube_title": "活了兩千歲的女人掛號看病，醫生量完說：妳的壽命，量不出來",
+      "duration_s": 130,
+      "logline": "顏非以病人身分住進恆壽醫院，想見主任，卻先被一台量身機器擋下。",
+      "hook": "護士推著輪椅迎上來：「顏小姐，請坐。」她沒坐，赤腳站在大理石地上：「我站著。」",
+      "hook_type": "line",
+      "mid_hook": "量身機的螢幕跳了三次，最後顯示一行字：「壽：無刻度。」整個掛號大廳都回頭看她。",
+      "conflict": "她要見主任，醫院卻用一道道「流程」把她擋在外面。",
+      "turn": "大家以為主任在躲她，其實主任一直在單向玻璃後面看著她。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "單向玻璃的另一面，主任穿著白袍溫和地笑，手邊放著一把半透明的長尺，尺上刻的不是公分，是年。",
+        "question": "尺上刻的「年」是誰的年？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chahuang",
+        "shenzhang"
+      ],
+      "spectacle": "量身機螢幕上的數字瘋狂跳動，最後化成一道光，照不出刻度。",
+      "glamour_shot": "她坐在白色候診椅上，一動不動，周圍的人都在動，只有她像畫。",
+      "setups": [
+        "s04-t02"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿到病房、住進醫院"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "yiyuan-zhuren",
+        "lin-an"
+      ],
+      "locations": [
+        "恆壽醫院掛號大廳",
+        "主任辦公室單向玻璃"
+      ],
+      "state": {
+        "time": "第二天上午",
+        "knowledge": "尺用來量的是年壽；主任在看她",
+        "carry_forward": "主任手邊的尺；她今天說了三句"
+      }
+    },
+    {
+      "number": 183,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "主任從不說謊",
+      "youtube_title": "主任對每個家屬說的都是真話，她卻說：真話也能殺人",
+      "duration_s": 120,
+      "logline": "主任親自來查房，對顏非說的每一句都是真的；她審不動。",
+      "hook": "主任坐在她床邊，聲音很輕：「妳的身體很好，比所有人都好。」阿璞在門口小聲：「師父，真話。」",
+      "hook_type": "question",
+      "mid_hook": "她問主任一句：「頂樓有什麼？」主任笑：「我不能說。」——不能說，也不是謊。",
+      "extra_hooks": [
+        "窗外，老九的當鋪招牌在對街亮起，他在醫院對面開了分店。"
+      ],
+      "conflict": "審謊靠謊，主任不說謊，她的本事第一次沒處用。",
+      "turn": "大家以為主任是好人，阿璞卻看見主任身後跟著三十個淡淡的影子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "阿璞拉住她的袖子：「師父，影子在等妳。」她看著三十個影子，又看著主任溫和的背影：硬上頂樓，還是等他把話說完？",
+        "question": "她要硬上頂樓，還是繼續等？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "shenzhang"
+      ],
+      "spectacle": "主任身後三十個淡影在走廊日光燈下排成一列，誰也不嚇人，只是安靜站著。",
+      "glamour_shot": "她在病床上抬眼看主任，眼神不眨，像在念判詞。",
+      "setups": [
+        "s04-t03"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿璞確認三十個冤者在醫院"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "yiyuan-zhuren",
+        "yuanzhe",
+        "lao-jiu"
+      ],
+      "locations": [
+        "恆壽醫院病房",
+        "醫院走廊",
+        "對街當鋪分店"
+      ],
+      "state": {
+        "time": "第二天夜",
+        "knowledge": "主任不說謊卻有三十個冤者跟著；老九在對街",
+        "carry_forward": "她選擇等；老九的分店"
+      }
+    },
+    {
+      "number": 184,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "三十個影子",
+      "youtube_title": "醫院裡跟著三十個安靜的影子，小道士問：你們等的是什麼",
+      "duration_s": 140,
+      "logline": "阿璞在醫院走廊與三十個冤者說話，拼出他們進來時聽到的同一句話。",
+      "hook": "走廊盡頭的燈一盞一盞暗下，阿璞蹲下對第一個影子說：「你等什麼？」影子張口，沒聲音。",
+      "hook_type": "image",
+      "mid_hook": "林岸在派出所翻出三十份家屬筆錄：每一份最後一行都是同一句「主任說他盡力了」。",
+      "extra_hooks": [
+        "老蔡在茶館替冤者說話本：「話說恆壽醫院，有三十盞燈只亮進不亮出——」"
+      ],
+      "conflict": "冤者說不出話，案子人間那一半要靠林岸拼。",
+      "turn": "大家以為冤者在怨主任，原來他們等的是有人替他們問一句。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "第三十個影子終於開口，是陳家屬的父親，他只說一句：「我兒子還在繳錢嗎？」",
+        "question": "陳家屬的父親為什麼只問這個？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "chahuang"
+      ],
+      "spectacle": "三十個淡影在醫院長廊上，一個一個被燈光的邊緣照亮又隱去。",
+      "glamour_shot": "林岸捲著制服袖子，在派出所燈下翻筆錄，紅繩的手壓在紙上。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三十份筆錄串成同一句「我盡力了」"
+      ],
+      "characters": [
+        "a-pu",
+        "lin-an",
+        "yuanzhe",
+        "s04-chen-jiashu",
+        "lao-cai",
+        "yan-fei"
+      ],
+      "locations": [
+        "恆壽醫院長廊",
+        "老街派出所",
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第三天",
+        "knowledge": "三十個冤者都聽過「我盡力了」",
+        "carry_forward": "陳家屬還在繳錢"
+      }
+    },
+    {
+      "number": 185,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "繳不完的費",
+      "youtube_title": "家屬繳了三年的錢，帳單上的病人早就不在了",
+      "duration_s": 125,
+      "logline": "陳家屬三年來每月繳費給一個早已不在的父親，顏非決定在醫院大廳等主任對下一個家屬開口。",
+      "hook": "陳家屬把一疊繳費單摔在櫃台：「三年！我爸到底在哪？」護士只說：「請等主任。」",
+      "hook_type": "danger",
+      "mid_hook": "醫院保全把陳家屬架出大廳，林岸亮證件擋在門口：「警察。他留下。」",
+      "conflict": "醫院拿流程壓家屬，家屬沒有證據。",
+      "turn": "大家以為她會替陳家屬出手，她卻只是坐回大廳等候椅：「等。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "大廳廣播響起：「顏非小姐，請到頂樓。」電梯門打開，裡面沒有按鈕，只有一個往上的箭頭。",
+        "question": "頂樓在等她，還是在等她的年？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "chahuang"
+      ],
+      "spectacle": "醫院大廳的電梯門無聲打開，裡面全是白光，只有一個發亮的往上箭頭。",
+      "glamour_shot": "林岸擋在醫院大門前，逆光的制服輪廓與紅繩手腕。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林岸保下陳家屬；繳費單成了證據"
+      ],
+      "characters": [
+        "yan-fei",
+        "lin-an",
+        "s04-chen-jiashu",
+        "yiyuan-zhuren",
+        "a-pu"
+      ],
+      "locations": [
+        "恆壽醫院大廳",
+        "醫院電梯"
+      ],
+      "state": {
+        "time": "第三天下午",
+        "knowledge": "繳費單是證據；阿璞的帳還沒給",
+        "carry_forward": "頂樓的電梯；阿璞把帳又藏深一層"
+      }
+    },
+    {
+      "number": 186,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "頂樓的尺",
+      "youtube_title": "她走進醫院頂樓，看見一把正在量人的尺",
+      "duration_s": 140,
+      "logline": "顏非搭電梯上頂樓，第一次看見尺被用來量命，卻發現自己拿不起它。",
+      "hook": "電梯門開，頂樓是一整片白，一把半透明的長尺懸在空中，正慢慢量過一張空病床。",
+      "hook_type": "image",
+      "mid_hook": "她伸手要拿，尺往後退了一格——鎮物認主，這把尺現在認的是主任。",
+      "extra_hooks": [
+        "阿璞在樓梯間喊：「師父，帳——」他把話吞了回去。"
+      ],
+      "conflict": "尺在眼前，卻不是她能拿的。",
+      "turn": "大家以為頂樓是手術室，其實頂樓什麼都沒有，只有一把尺和一張空床。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "空病床上浮出一行刻度：「顏非：量不出。改量：林岸。」尺尖慢慢轉向樓梯口的林岸。",
+        "question": "尺為什麼要量林岸？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "shenzhang"
+      ],
+      "spectacle": "懸空的長尺在白色頂樓緩緩轉動，每一格刻度都發著淡光。",
+      "glamour_shot": "她站在尺影下，赤腳、黑髮被頂樓的風吹起一縷，不退。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她確認尺認主、得讓主任親口說謊才能取"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "yiyuan-zhuren"
+      ],
+      "locations": [
+        "恆壽醫院頂樓",
+        "樓梯間"
+      ],
+      "state": {
+        "time": "第三天夜",
+        "knowledge": "尺現在認主任；要等主任說謊尺才會鬆",
+        "carry_forward": "尺轉向林岸"
+      }
+    },
+    {
+      "number": 187,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "量林岸",
+      "youtube_title": "醫院的尺要量警察的命，老闆娘只說了兩個字",
+      "duration_s": 130,
+      "logline": "尺對準林岸，顏非用身體擋在他前面；林家守鐘的血讓尺量出了三百年。",
+      "hook": "尺尖停在林岸胸前一寸，她一步站進去：「量我。」",
+      "hook_type": "line",
+      "mid_hook": "尺量過林岸，量出的不是三十歲，是一道三百年的刻度——林家守縫的每一代都在上面。",
+      "extra_hooks": [
+        "林岸低聲：「前輩，我爺爺在上面。」"
+      ],
+      "conflict": "尺會不會把林岸的年量走？",
+      "turn": "大家以為尺要傷林岸，結果尺被林家三百年的刻度嚇退。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "尺退回頂樓角落，林岸看著刻度上奶奶的名字，第一次紅了眼：「她守了一輩子。」",
+        "question": "林家守的三百年，有人記得嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "chahuang"
+      ],
+      "spectacle": "尺上浮出一列淡金名字，從林岸一路往上排到三百年前。",
+      "glamour_shot": "林岸站在尺影下，眼眶發紅卻挺直，她站在他身前半步。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林岸平安；林家三百年的刻度被看見"
+      ],
+      "characters": [
+        "yan-fei",
+        "lin-an",
+        "a-pu",
+        "lin-laotai",
+        "yiyuan-zhuren"
+      ],
+      "locations": [
+        "恆壽醫院頂樓"
+      ],
+      "state": {
+        "time": "第四天凌晨",
+        "knowledge": "尺量不走林家；主任知道她護著林岸",
+        "carry_forward": "林家刻度；她今天兩句"
+      }
+    },
+    {
+      "number": 188,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "第二十九句",
+      "youtube_title": "主任今天對第二十九個家屬說：我盡力了",
+      "duration_s": 125,
+      "logline": "顏非坐在醫院大廳聽主任一句一句對家屬說「我盡力了」，數到第二十九句。",
+      "hook": "大廳裡第一個家屬哭著出來，主任扶著她：「我盡力了。」顏非在候診椅上豎起一根手指。",
+      "hook_type": "line",
+      "mid_hook": "第十五句時，阿璞發現每說一句，頂樓的尺就亮一格。",
+      "extra_hooks": [
+        "老九坐到她旁邊的候診椅：「妳在數什麼？」"
+      ],
+      "conflict": "真話裡藏的謊要等它說完。",
+      "turn": "大家以為她在發呆，其實她在數，而每一句都被尺記帳。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第二十九個家屬走出來，第三十個是陳家屬。老九低聲：「妳現在出手，還來得及救他爸剩下的年。」",
+        "question": "她要聽老九的提早出手嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chahuang",
+        "shenzhang"
+      ],
+      "spectacle": "大廳上方，每一句「我盡力了」化成一道光線，射向頂樓的尺。",
+      "glamour_shot": "她在候診椅上豎起手指，側臉在白色日光燈下沒有一點表情。",
+      "setups": [
+        "s04-t02"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她找到尺記帳的規律"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lao-jiu",
+        "yiyuan-zhuren",
+        "s04-chen-jiashu"
+      ],
+      "locations": [
+        "恆壽醫院大廳"
+      ],
+      "state": {
+        "time": "第四天",
+        "knowledge": "每句「我盡力了」都讓尺亮一格",
+        "carry_forward": "第三十句；老九的誘惑"
+      }
+    },
+    {
+      "number": 189,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "你盡的是誰的力",
+      "youtube_title": "主任說了第三十次我盡力了，茶館老闆娘站起來問：你盡的是誰的力",
+      "duration_s": 140,
+      "logline": "顏非不聽老九，等到第三十句；主任對陳家屬說「我盡力了」時，她站了起來。",
+      "hook": "她搖頭，手指放下。主任扶住陳家屬：「我盡力了。」她站起來：「你盡的是誰的力？」",
+      "hook_type": "line",
+      "mid_hook": "大廳靜了，主任第一次沒接話；頂樓的尺斷了一格光——謊說完了。",
+      "extra_hooks": [
+        "陳家屬抬頭：「我爸的年……給了誰？」"
+      ],
+      "conflict": "主任的謊在哪：他盡的是別人的命。",
+      "turn": "大家以為主任的謊是「沒救」，其實謊是「我」——盡的根本不是他的力。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "醫院所有的燈同時閃了一下，頂樓傳來一聲尺折斷的脆響，三十個影子同時抬頭看主任。",
+        "question": "三十個冤者要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "chahuang"
+      ],
+      "spectacle": "整間醫院的日光燈一起閃滅一次，大廳裡的人影全都定格。",
+      "glamour_shot": "她站起來的那一秒慢動作，黑髮落下，眼神對上主任。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "主任當眾被問倒；謊說完了"
+      ],
+      "characters": [
+        "yan-fei",
+        "yiyuan-zhuren",
+        "s04-chen-jiashu",
+        "yuanzhe",
+        "a-pu",
+        "lin-an"
+      ],
+      "locations": [
+        "恆壽醫院大廳"
+      ],
+      "state": {
+        "time": "第四天黃昏",
+        "knowledge": "主任的謊：他盡的是三十個人的命",
+        "carry_forward": "尺鬆了；三十個影子"
+      }
+    },
+    {
+      "number": 190,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "一夜量回來",
+      "youtube_title": "換命醫院的主任，一夜之間躺上自己的病床，身邊沒有一個醫生",
+      "duration_s": 160,
+      "logline": "謊說完，顏非上頂樓取尺，把主任量過的每一條命一夜量回去；老九在門口留下一句話。",
+      "hook": "三十個影子抬頭，她抬手：「別動。我來。」她走上頂樓，尺自己落進她手裡。",
+      "hook_type": "line",
+      "mid_hook": "她用尺一格一格量回去——陳家屬的父親在走廊盡頭睜開眼，年輕的病人一個個變回原來的年紀。",
+      "extra_hooks": [
+        "她手背上出現一道淡淡的刻痕——用一次尺，她少一分。"
+      ],
+      "conflict": "三十條命怎麼還回去，主任又落得什麼。",
+      "turn": "大家以為她要罰主任，她只是把不屬於他的量回去：主任躺在自己的病床上，沒有一個醫生。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "betrayer_punished"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "醫院門口，老九撐著黑傘：「妳還差一件。妳知道在哪。」她沒答。他笑：「妳摸過茶館那盞燈嗎？」",
+        "question": "茶館那盞燈有什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "zhiguai",
+        "chahuang"
+      ],
+      "spectacle": "頂樓的尺在她手裡一格格發光，三十道光從醫院窗口飛出，落回城市各處。",
+      "glamour_shot": "她握尺站在頂樓夜風裡，尺光映亮她不眨的眼。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "拿到第四件鎮物「尺」",
+        "三十個冤者的年量回去",
+        "陳家屬見到父親"
+      ],
+      "characters": [
+        "yan-fei",
+        "yiyuan-zhuren",
+        "lao-jiu",
+        "s04-chen-jiashu",
+        "yuanzhe",
+        "a-pu",
+        "lin-an"
+      ],
+      "locations": [
+        "恆壽醫院頂樓",
+        "醫院病房",
+        "醫院門口"
+      ],
+      "state": {
+        "time": "第五天清晨",
+        "knowledge": "尺到手；用一次少一分；老九問燈",
+        "carry_forward": "「妳摸過茶館那盞燈嗎？」"
+      }
+    },
+    {
+      "number": 191,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "半張帳",
+      "youtube_title": "小道士藏了一整季的帳，終於攤在師父面前：餘，燈",
+      "duration_s": 130,
+      "logline": "老九那句「妳摸過燈嗎」逼得阿璞撐不住，他把半張帳給顏非看。",
+      "hook": "茶館門一關，阿璞把一張撕角的紙拍在櫃台：「師父，老九的帳。我藏了一季。」",
+      "hook_type": "line",
+      "mid_hook": "帳上一行：「顏非：押名一樁。餘：燈。」她看完，沒說話，杯裡的茶沒動。",
+      "extra_hooks": [
+        "老蔡在角落收起醒木：「今天不說書。」"
+      ],
+      "conflict": "阿璞要坦白一季的謊，怕她生氣。",
+      "turn": "大家以為她會罵阿璞，她只把帳折好，放進燈座下面。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把帳壓在燈座下，抬頭看那盞從沒熄過的燈，第一次，她的手在抖。",
+        "question": "她為什麼不敢碰那盞燈？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenfen"
+      ],
+      "spectacle": "茶館二樓那盞燈的光，第一次在牆上投出一個人形的影子。",
+      "glamour_shot": "燈下她的側臉，手懸在燈座上方一寸，微微發抖。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿璞說了真話；帳回到她手上"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lao-cai",
+        "lin-an"
+      ],
+      "locations": [
+        "無事茶館櫃台",
+        "茶館二樓"
+      ],
+      "state": {
+        "time": "第五天夜",
+        "knowledge": "帳上寫「餘：燈」",
+        "carry_forward": "她不敢摸燈；今天說了零句"
+      }
+    },
+    {
+      "number": 192,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "燈是空的",
+      "youtube_title": "活了兩千歲的老闆娘第一次摸茶館的燈：裡面沒有油，亮的是她",
+      "duration_s": 150,
+      "logline": "顏非伸手摸了那盞永遠亮著的燈，發現燈是空的——第五件鎮物「燈」就是她自己。",
+      "hook": "她的手落在燈罩上，燈沒燙，冰的。阿璞在樓梯口屏住氣。",
+      "hook_type": "image",
+      "mid_hook": "她揭開燈罩：沒有油、沒有芯，燈座裡空空的——光是從她的指尖流進去的。",
+      "extra_hooks": [
+        "她縮手的那一刻，整條老街的燈都暗了半秒。"
+      ],
+      "conflict": "第五件鎮物在哪，答案比誰都近。",
+      "turn": "大家以為燈是茶館的寶物，原來燈是空殼，她才是燈。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她低頭看自己發光的手指，第一次開口說今天的第一句：「是我。」",
+        "question": "她是燈，那補縫要補上什麼？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenfen"
+      ],
+      "spectacle": "她指尖流出一縷金光進燈座，燈亮；她收手，整條老街的燈同時暗半秒。",
+      "glamour_shot": "燈下不眨的眼，金光從她指尖倒映在瞳仁裡。",
+      "setups": [],
+      "payoffs": [
+        "s04-t03",
+        "m01"
+      ],
+      "reveals": [
+        "m09"
+      ],
+      "general_payoffs": [
+        "第五件鎮物的下落揭開"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu"
+      ],
+      "locations": [
+        "茶館二樓",
+        "老街"
+      ],
+      "state": {
+        "time": "第五天深夜",
+        "knowledge": "第五件鎮物「燈」就是她；茶館那盞燈是空的",
+        "carry_forward": "今天一句：「是我。」"
+      }
+    },
+    {
+      "number": 193,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "燈下一夜",
+      "youtube_title": "她坐在空燈下一整夜，三百年的事一件件亮起來",
+      "duration_s": 120,
+      "logline": "顏非在燈下坐了一夜，回想上一任守縫人叫她去找鎮物的那一天。",
+      "hook": "天亮前，阿璞端茶上樓，看見她坐在燈下，影子比人淡：「師父，喝茶。」",
+      "hook_type": "question",
+      "mid_hook": "燈光裡浮出三百年前的畫面：上一任守縫人把她從燈裡請出來：「去找它們，找齊了再回來。」",
+      "conflict": "她要決定先告訴誰。",
+      "turn": "大家以為她在怕，她其實在記：每一個她碰過的人的名字。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "樓梯傳來林岸的腳步聲，她把燈罩蓋回去：告訴他，還是像三百年來一樣不說？",
+        "question": "她要不要對林岸說？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenfen"
+      ],
+      "spectacle": "燈罩上流過三百年前的光影：守縫人的背影、一條還沒有房子的老街。",
+      "glamour_shot": "晨光與燈光交疊在她側臉，她捧杯不喝。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她想起自己被請出燈的那天"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "shang-ren",
+        "lin-an"
+      ],
+      "locations": [
+        "茶館二樓"
+      ],
+      "state": {
+        "time": "第六天清晨",
+        "knowledge": "守縫人讓她出燈找鎮物",
+        "carry_forward": "林岸上樓"
+      }
+    },
+    {
+      "number": 194,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "我是燈",
+      "youtube_title": "警察叫她前輩，她說：我不是修仙的，我是燈",
+      "duration_s": 125,
+      "logline": "林岸上樓問她怎麼了，顏非第一次對他說出真相。",
+      "hook": "林岸推開門：「前輩，整條街昨晚停電半秒。」她抬眼：「第五件是我。」",
+      "hook_type": "line",
+      "mid_hook": "林岸愣了很久：「前輩——」她打斷：「我不是修仙的。我是燈。」",
+      "extra_hooks": [
+        "林岸摘下帽子放在桌上，坐下，沒走。"
+      ],
+      "conflict": "林岸接不接得住這個真相。",
+      "turn": "大家以為林岸會退開，他反而坐下來，開始記筆錄。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "林岸在筆錄本上寫下「顏非：燈」，又劃掉，改寫「顏非：茶館老闆娘」：「我只記這個。」",
+        "question": "林岸會怎麼守她？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xuanyi"
+      ],
+      "spectacle": "林岸的筆錄本攤在燈下，字被燈光照得透明。",
+      "glamour_shot": "林岸摘帽坐下，捲袖、紅繩手腕放在筆錄本上，抬頭看她。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林岸選擇留下"
+      ],
+      "characters": [
+        "yan-fei",
+        "lin-an",
+        "a-pu"
+      ],
+      "locations": [
+        "茶館二樓"
+      ],
+      "state": {
+        "time": "第六天上午",
+        "knowledge": "林岸知道她是燈",
+        "carry_forward": "她今天說了兩句"
+      }
+    },
+    {
+      "number": 195,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "鏡子裡",
+      "youtube_title": "小道士說他早就知道：師父，鏡子裡沒有妳",
+      "duration_s": 120,
+      "logline": "阿璞在樓梯口說他早知道——第二件鎮物鏡裡照不出她；兩人吵了第一架。",
+      "hook": "阿璞坐在樓梯口：「我早知道。鏡子裡。」她轉頭：「你撒謊撒了一季。」",
+      "hook_type": "reversal",
+      "mid_hook": "阿璞頂回去：「妳教的，等說完。」老蔡在樓下噗地笑出來，茶噴了一桌。",
+      "extra_hooks": [
+        "阿璞把鏡子拿上來：鏡裡只照得到一盞燈。"
+      ],
+      "conflict": "她氣阿璞瞞她，阿璞氣她從不說。",
+      "turn": "大家以為阿璞瞞是怕她，原來他是照她的規矩等她自己說完。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她看著鏡裡那盞燈，嘴角第一次動了一下：「學得好。」阿璞嚇得從樓梯滾下去。",
+        "question": "她剛剛是不是笑了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        2,
+        3,
+        4
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "鏡裡只有一盞燈的光，旁邊站著阿璞，她的位置空著。",
+      "glamour_shot": "她看鏡時微微偏頭，鏡外的臉是冷的，嘴角動了一分。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "師徒和好"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lao-cai"
+      ],
+      "locations": [
+        "茶館樓梯口"
+      ],
+      "state": {
+        "time": "第六天午後",
+        "knowledge": "阿璞從鏡子早知道",
+        "carry_forward": "她今天三句"
+      }
+    },
+    {
+      "number": 196,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "街口的秤",
+      "youtube_title": "老街口多了一台秤，站上去的人會說出心裡最不敢說的一句",
+      "duration_s": 130,
+      "logline": "老街口出現一台黃銅秤，人一站上去，秤就替他說出最不敢說的話。",
+      "hook": "老街口，賣菜的阿伯站上黃銅秤，秤盤一沉，他自己的聲音響起：「我其實不想退休。」",
+      "hook_type": "image",
+      "mid_hook": "秤老闆客氣地笑：「免費，量一次心。」隊伍從街口排到茶館門口。",
+      "conflict": "這台秤是誰放的，量了心會怎樣。",
+      "turn": "大家以為是好玩的攤子，林岸卻發現量過的人回家都不說話了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "茶館門口的隊伍裡，老蔡站上了秤，秤盤一沉——他的聲音說：「我說了一輩子書，沒一個是真的。」",
+        "question": "秤要把老街的心都量空嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi"
+      ],
+      "spectacle": "黃銅秤盤在街燈下一沉一浮，每量一個人，秤桿就亮起一行字。",
+      "glamour_shot": "她站在茶館門檻上，赤腳，抬眼看長長的隊伍。",
+      "setups": [
+        "s04-t05"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她發現秤是第二個單元"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "lao-cai",
+        "s04-cheng-laoban"
+      ],
+      "locations": [
+        "老街口",
+        "無事茶館門口"
+      ],
+      "state": {
+        "time": "第六天傍晚",
+        "knowledge": "秤會說出心裡最不敢說的一句",
+        "carry_forward": "老蔡被量；量過的人不說話"
+      }
+    },
+    {
+      "number": 197,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "說了一輩子書",
+      "youtube_title": "退休說書人被秤量出一句：我說的書，沒一個是真的",
+      "duration_s": 120,
+      "logline": "老蔡被秤說穿後關在家裡；顏非去他家，等他把話說完。",
+      "hook": "老蔡家門口，阿璞敲門：「蔡伯，出來喝茶。」門裡傳來：「沒臉喝。」",
+      "hook_type": "line",
+      "mid_hook": "她坐在門外台階上，一句不說；一個小時後，老蔡開門：「書是假的，我說的人是真的。」",
+      "extra_hooks": [
+        "秤老闆在街口擦秤，抬頭往這邊看了一眼。"
+      ],
+      "conflict": "秤說的是真話還是一半？",
+      "turn": "大家以為秤揭的是謊，原來秤只說一半——說書是假的，心是真的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老蔡把醒木交給她：「秤只量一半。另一半，它吃了。」阿璞往街口看：秤盤底下壓著一疊薄紙。",
+        "question": "秤吃掉的另一半去哪了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "shenfen"
+      ],
+      "spectacle": "老蔡家門口的台階上，她和老人並坐，暮色裡兩杯茶冒著白氣。",
+      "glamour_shot": "她坐在台階上的側影，赤腳收在裙下，安靜等。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老蔡回到茶館"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lao-cai",
+        "s04-cheng-laoban"
+      ],
+      "locations": [
+        "老蔡家門口",
+        "老街口"
+      ],
+      "state": {
+        "time": "第七天",
+        "knowledge": "秤只說一半，另一半被收走",
+        "carry_forward": "秤盤下的薄紙"
+      }
+    },
+    {
+      "number": 198,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "秤底下的紙",
+      "youtube_title": "量人心的秤底下壓著一疊紙，上面全是當鋪的印",
+      "duration_s": 125,
+      "logline": "阿璞夜裡去翻秤，發現被吃掉的那一半心被寫成紙，送進老九的當鋪。",
+      "hook": "夜裡阿璞趴在秤底，手電筒一照：一疊薄紙，每張蓋著「九」字當鋪印。",
+      "hook_type": "danger",
+      "mid_hook": "紙上寫的是每個人沒被說出口的那後半句——老九在收。",
+      "extra_hooks": [
+        "秤老闆在暗處說：「小道士，拿了要付錢的。」"
+      ],
+      "conflict": "秤是老九的嗎？",
+      "turn": "大家以為秤老闆是老九的人，他卻說：「我只是看攤的，主人不在這條街。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "秤老闆把秤推到茶館門口：「主人說，老闆娘若肯站上來，這疊紙全還。」",
+        "question": "她要不要站上秤？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "薄紙在手電筒光裡一張張透出字影，像一排沒寄出的信。",
+      "glamour_shot": "阿璞趴在秤底下的狼狽模樣，抬頭時眼睛被手電筒照亮。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿璞拿回一半的紙"
+      ],
+      "characters": [
+        "a-pu",
+        "s04-cheng-laoban",
+        "yan-fei",
+        "lao-jiu"
+      ],
+      "locations": [
+        "老街口",
+        "茶館門口"
+      ],
+      "state": {
+        "time": "第七天夜",
+        "knowledge": "秤吃下的半句心送進當鋪",
+        "carry_forward": "秤推到茶館門口"
+      }
+    },
+    {
+      "number": 199,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "阿璞攔不住",
+      "youtube_title": "小道士張開雙手擋在秤前：師父，妳不能上去",
+      "duration_s": 125,
+      "logline": "全街等她上秤；阿璞拚命攔，林岸也不贊成，她還是走向秤。",
+      "hook": "阿璞張開手擋在秤前：「師父！妳不能上去！」她看他一眼，他的手就放下了。",
+      "hook_type": "danger",
+      "mid_hook": "林岸低聲：「前輩，秤會說出妳最不想說的。」她說：「我知道。」",
+      "extra_hooks": [
+        "全街排隊的人都讓開一條路。"
+      ],
+      "conflict": "她上秤，會說出什麼？",
+      "turn": "大家以為她是去砸秤，她卻是真的要量。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她赤腳踏上秤盤，秤桿一路往上，黃銅發燙，整條街的燈跟著秤桿一盞盞亮起。",
+        "question": "秤會替她說出什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "xuanyi",
+        "shenfen"
+      ],
+      "spectacle": "她踏上秤盤，整條老街的燈隨秤桿一盞盞往上亮。",
+      "glamour_shot": "她赤腳踏上黃銅秤的慢動作特寫，裙擺輕晃。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "全街讓路"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "s04-cheng-laoban",
+        "lao-cai"
+      ],
+      "locations": [
+        "老街口"
+      ],
+      "state": {
+        "time": "第八天夜",
+        "knowledge": "她上了秤",
+        "carry_forward": "秤桿到頂"
+      }
+    },
+    {
+      "number": 200,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "我不想回燈裡",
+      "youtube_title": "量人心的秤替她說出一句：我不想回燈裡，全街靜了",
+      "duration_s": 150,
+      "logline": "秤說出了顏非心裡最不敢說的一句，全街聽見；她說秤壞了，沒人信。",
+      "hook": "秤桿到頂，一個比她更輕的聲音從秤盤裡傳出來：「我不想回燈裡。」",
+      "hook_type": "line",
+      "mid_hook": "全街靜了。秤老闆摘下眼鏡：「這句，主人收不起。」秤盤裂了一道縫。",
+      "extra_hooks": [
+        "阿璞衝上去抱住秤桿：「沒聽見！大家都沒聽見！」"
+      ],
+      "conflict": "她最不想說的被說出來了。",
+      "turn": "大家以為秤能收走她的半句，結果秤收不起，自己裂了，紙全還回各家。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她走下秤，對全街說：「秤壞了。」賣菜阿伯、老蔡、林岸，沒有一個人點頭。",
+        "question": "她真的不想回燈裡嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xuanyi",
+        "xiju"
+      ],
+      "spectacle": "黃銅秤盤裂開一道細縫，上千張薄紙像雪一樣飛回老街各家窗口。",
+      "glamour_shot": "她走下秤的那一步，背光，全街的人看著她的背影。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "秤裂，被收走的半句心全還回老街"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "s04-cheng-laoban",
+        "lao-cai"
+      ],
+      "locations": [
+        "老街口"
+      ],
+      "state": {
+        "time": "第八天深夜",
+        "knowledge": "全街聽見她不想回燈裡",
+        "carry_forward": "她說秤壞了，沒人信"
+      }
+    },
+    {
+      "number": 201,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "她去當鋪",
+      "youtube_title": "兩千歲老闆娘第一次主動走進對手的當鋪，坐下：說吧",
+      "duration_s": 130,
+      "logline": "秤裂之後，顏非第一次主動去審老九，在當鋪坐下等他說謊。",
+      "hook": "當鋪的鈴一響，老九抬頭，笑容僵了半秒：「稀客。」她坐下：「說。」",
+      "hook_type": "line",
+      "mid_hook": "老九倒茶，開口第一句：「我收謊三百年。」她手邊的鏡子沒有一絲波動——真的。",
+      "extra_hooks": [
+        "小七躲在帳架後面，手裡捏著一支炭筆。"
+      ],
+      "conflict": "她要等老九說謊，才能審他。",
+      "turn": "大家以為老九會狡辯，他卻一句一句說真話，像早就在等這一天。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老九拉開身後的帳架：三百年收的謊一排排疊到天花板，紙縫裡透出一絲風——縫的風。",
+        "question": "當鋪裡為什麼有縫的風？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "chahuang"
+      ],
+      "spectacle": "當鋪帳架一路疊到天花板，紙堆的縫隙透出幽藍的光。",
+      "glamour_shot": "她坐在當鋪的舊木椅上，背挺直，燈下抬眼看老九。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她坐進當鋪，局面由她開"
+      ],
+      "characters": [
+        "yan-fei",
+        "lao-jiu",
+        "xiao-qi"
+      ],
+      "locations": [
+        "老九的當鋪"
+      ],
+      "state": {
+        "time": "第九天夜",
+        "knowledge": "老九收謊三百年，帳架通著縫風",
+        "carry_forward": "今天她說了一句"
+      }
+    },
+    {
+      "number": 202,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "每一句都是真的",
+      "youtube_title": "對手說了一夜，鏡子沒動一次：他每一句都是真的",
+      "duration_s": 140,
+      "logline": "老九說了一夜，顏非帶去的鏡一次都沒照出謊。",
+      "hook": "帳架的縫風吹動燭火，老九說：「謊會開縫。我收謊，是為了開縫。」鏡面平靜。",
+      "hook_type": "line",
+      "mid_hook": "他說到天亮：他不是人、他沒有名字、他也被人請出來過——鏡子一次都沒動。",
+      "extra_hooks": [
+        "門外，阿璞和林岸守了一夜，林岸的手一直按在門把上。"
+      ],
+      "conflict": "她的審判從來靠謊，今夜沒有一句謊。",
+      "turn": "大家以為她會走，她反而又倒了一杯茶：「接著說。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "天亮時老九放下杯：「我從上一道縫裡出來的。」鏡面第一次亮——不是謊，是照出了他身後的影子。",
+        "question": "上一道縫是什麼時候開的？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhiguai"
+      ],
+      "spectacle": "鏡面映出老九身後一團不屬於他的光影，在當鋪牆上慢慢流動。",
+      "glamour_shot": "林岸在當鋪門外靠牆守夜，晨光照上他的側臉與紅繩。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她確定老九一句謊都沒說"
+      ],
+      "characters": [
+        "yan-fei",
+        "lao-jiu",
+        "xiao-qi",
+        "a-pu",
+        "lin-an"
+      ],
+      "locations": [
+        "老九的當鋪",
+        "當鋪門外"
+      ],
+      "state": {
+        "time": "第十天清晨",
+        "knowledge": "老九從上一道縫裡出來",
+        "carry_forward": "鏡照出他身後的影子"
+      }
+    },
+    {
+      "number": 203,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "那支炭筆",
+      "youtube_title": "老九的隨從躲在帳架後面，一直在畫一樣東西",
+      "duration_s": 120,
+      "logline": "顏非休息時，發現小七在帳架後面畫老九的影子；老九繼續說他三百年前的事。",
+      "hook": "她轉頭，帳架後的炭筆停了。小七低著頭，把畫紙藏到背後。",
+      "hook_type": "image",
+      "mid_hook": "老九說：「三百年前縫開過一次，我從那邊被擠出來，撿了一張皮。」小七的手在發抖。",
+      "conflict": "小七在畫什麼，她站哪邊？",
+      "turn": "大家以為小七是老九的眼線，她其實在偷偷記下老九真正的樣子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "小七把畫紙捏成一團要丟進火爐，她伸手停在半空：「留著。」小七看看老九，又看看她。",
+        "question": "小七要把畫交給誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "chahuang"
+      ],
+      "spectacle": "火爐邊小七的炭筆畫，紙上只有一團光與一片影交疊。",
+      "glamour_shot": "她在帳架間伸手的那一瞬，指尖停在紙團上方，燭光映側臉。",
+      "setups": [
+        "s04-t06",
+        "s04-t10"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她看見小七的心"
+      ],
+      "characters": [
+        "yan-fei",
+        "lao-jiu",
+        "xiao-qi"
+      ],
+      "locations": [
+        "老九的當鋪帳架後"
+      ],
+      "state": {
+        "time": "第十天上午",
+        "knowledge": "老九三百年前從縫裡被擠出來、撿了一張皮",
+        "carry_forward": "小七的畫"
+      }
+    },
+    {
+      "number": 204,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "披著皮的東西",
+      "youtube_title": "當鋪老闆攤牌：我是上一道縫裡出來的東西，披的是當鋪老闆的皮",
+      "duration_s": 150,
+      "logline": "老九說出自己是誰：上一道縫裡出來的東西，披著三百年前一個當鋪老闆的皮。",
+      "hook": "老九摸著自己的臉：「這張皮，原本的主人叫九叔，三百年前開這間當鋪。」",
+      "hook_type": "line",
+      "mid_hook": "他鬆開領口，皮下透出的不是血肉，是一縷縷光與影——像燭火後面的牆。",
+      "extra_hooks": [
+        "她手裡的鏡第一次照出完整的他：一團沒有形狀的光。"
+      ],
+      "conflict": "老九到底是什麼。",
+      "turn": "大家以為老九是修邪術的人，原來他和她一樣，都不是人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老九把領口扣回去，看她：「我收謊開縫，是因為縫開了，我就能回家。我也想回家。」",
+        "question": "老九想回家，有錯嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhiguai"
+      ],
+      "spectacle": "老九領口下透出的光影在當鋪牆上流動，像燭火後的一片水紋。",
+      "glamour_shot": "她握鏡的手與不眨的眼，鏡光反照在她下巴。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [
+        "m08"
+      ],
+      "general_payoffs": [
+        "老九的身分揭開"
+      ],
+      "characters": [
+        "yan-fei",
+        "lao-jiu",
+        "xiao-qi"
+      ],
+      "locations": [
+        "老九的當鋪"
+      ],
+      "state": {
+        "time": "第十天正午",
+        "knowledge": "老九是上一道縫裡出來的東西，披著當鋪老闆九叔的皮；他想回家",
+        "carry_forward": "「我也想回家。」"
+      }
+    },
+    {
+      "number": 205,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "妳跟我一樣",
+      "youtube_title": "老九問她：妳也不想回去，對吧",
+      "duration_s": 120,
+      "logline": "顏非問老九為什麼留燈的帳；老九的答案讓她第一次在審判中站起來走掉。",
+      "hook": "她問：「那你為什麼留下燈的帳？」老九看著她：「因為妳跟我一樣。」",
+      "hook_type": "question",
+      "mid_hook": "他說：「妳也不想回去。秤都替妳說了。」她的杯子在桌上轉了半圈。",
+      "extra_hooks": [
+        "小七把畫藏進袖子，跟著站起來。"
+      ],
+      "conflict": "她審不動老九，還被老九看穿。",
+      "turn": "大家以為她會反駁，她卻放下茶錢，第一次在審判中先走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她走到當鋪門口，背對老九：「茶錢。」把一枚舊銅錢放在門檻上——三百年前守縫人給她的那一枚。",
+        "question": "她為什麼留下那枚銅錢？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "chahuang"
+      ],
+      "spectacle": "當鋪門檻上一枚舊銅錢被晨光照得發亮。",
+      "glamour_shot": "她在當鋪門口的背影，赤腳踩上門檻，晨光從門框灌進來。",
+      "setups": [],
+      "payoffs": [
+        "s04-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她承認自己審不動老九"
+      ],
+      "characters": [
+        "yan-fei",
+        "lao-jiu",
+        "xiao-qi",
+        "a-pu",
+        "lin-an"
+      ],
+      "locations": [
+        "老九的當鋪門口"
+      ],
+      "state": {
+        "time": "第十天下午",
+        "knowledge": "老九知道她不想回燈裡",
+        "carry_forward": "銅錢；小七要追出來"
+      }
+    },
+    {
+      "number": 206,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "小七的畫",
+      "youtube_title": "老九的隨從追出來，塞給她一張畫：這是他皮下面的樣子",
+      "duration_s": 130,
+      "logline": "小七追上顏非，把畫給她：老九皮下真正的樣子——一團光和一片影。",
+      "hook": "老街轉角，小七跑得喘不過氣，把一張皺紙塞進她手心，轉身就跑。",
+      "hook_type": "image",
+      "mid_hook": "她攤開：炭筆畫的是一盞燈，燈罩裡沒有火，只有一團光和一片影交纏——跟她的燈一模一樣。",
+      "extra_hooks": [
+        "阿璞湊過來看：「師父，他……也是燈？」"
+      ],
+      "conflict": "老九和她到底差在哪。",
+      "turn": "大家以為老九的真身是怪物，畫裡只是一團光與影，像另一盞燈。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "畫的背面，小七寫了一行歪歪的字：「他晚上會哭。」",
+        "question": "老九為什麼晚上會哭？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xuanyi"
+      ],
+      "spectacle": "炭筆畫在她手裡亮起微光，紙上的光影慢慢旋轉。",
+      "glamour_shot": "她低頭看畫，風吹起她一縷黑髮擋住半張臉。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拿到老九真身的畫"
+      ],
+      "characters": [
+        "yan-fei",
+        "xiao-qi",
+        "a-pu"
+      ],
+      "locations": [
+        "老街轉角"
+      ],
+      "state": {
+        "time": "第十天傍晚",
+        "knowledge": "老九的真身是光與影，像另一盞燈",
+        "carry_forward": "畫背面「他晚上會哭」"
+      }
+    },
+    {
+      "number": 207,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "一個人住的樓",
+      "youtube_title": "一棟三十層的大樓只住了一個人，每一層都是他不同的年紀",
+      "duration_s": 130,
+      "logline": "第三個單元：林岸接到報案，一棟樓的三十戶住戶全長得一樣；顏非帶畫去看。",
+      "hook": "林岸把三十張住戶照片攤在茶館桌上：同一張臉，從三歲到八十歲。",
+      "hook_type": "image",
+      "mid_hook": "大樓管理員說：「三十年沒人搬進來，也沒人搬出去。」電梯只有往上的按鈕。",
+      "conflict": "這棟樓藏著誰？",
+      "turn": "大家以為是三十個人，其實是一個人把自己的每一年關起來。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她踏進大樓一樓，門在身後關上，樓梯間的燈亮到第三十層——頂上傳來一個小孩的哭聲。",
+        "question": "頂樓的孩子是誰？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "chahuang"
+      ],
+      "spectacle": "三十張同一張臉的照片在茶館桌上排成一條人生。",
+      "glamour_shot": "她站在大樓門口仰頭，三十層窗燈映在她眼裡。",
+      "setups": [
+        "s04-t07"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林岸把案子帶進茶館"
+      ],
+      "characters": [
+        "yan-fei",
+        "lin-an",
+        "a-pu",
+        "s04-lou-zhu"
+      ],
+      "locations": [
+        "無事茶館",
+        "三十層的樓"
+      ],
+      "state": {
+        "time": "第十一天",
+        "knowledge": "一棟樓住著同一個人的三十個年紀",
+        "carry_forward": "頂樓的哭聲"
+      }
+    },
+    {
+      "number": 208,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "第一到第十層",
+      "youtube_title": "她一層一層往上走，每一層的他都不肯老",
+      "duration_s": 125,
+      "logline": "顏非從一樓走到十樓，每一層跟一個年紀的樓主說話。",
+      "hook": "一樓的八十歲老人開門：「別往上走，上面的我會怕。」她已經在上樓梯。",
+      "hook_type": "danger",
+      "mid_hook": "五十歲的他守著第五層：「我只要不老，就不會失去。」她看著他：「你已經失去了。」",
+      "extra_hooks": [
+        "阿璞在樓下喊：「師父，樓在晃！」"
+      ],
+      "conflict": "每一層的他都在擋她。",
+      "turn": "大家以為樓主在害人，他其實只關了自己。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "第十層的二十歲青年擋在樓梯口：「妳再往上，樓會塌。」她的腳停在第十一階。",
+        "question": "她要不要冒著樓塌往上走？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "chahuang"
+      ],
+      "spectacle": "樓梯間每一層的燈顏色不同，從暖黃到冷白。",
+      "glamour_shot": "她在樓梯轉角回頭看下方，燈光從上方灑下。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她說服十個年紀的他讓路"
+      ],
+      "characters": [
+        "yan-fei",
+        "s04-lou-zhu",
+        "a-pu"
+      ],
+      "locations": [
+        "三十層的樓樓梯間"
+      ],
+      "state": {
+        "time": "第十一天夜",
+        "knowledge": "他怕老、怕失去",
+        "carry_forward": "第十一階"
+      }
+    },
+    {
+      "number": 209,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "第十一到二十九層",
+      "youtube_title": "她走到二十九層，每一層的燈都熄在她身後",
+      "duration_s": 130,
+      "logline": "顏非繼續往上；每過一層，那一年的他就放下一點。",
+      "hook": "她踏上第十一階，樓劇烈一晃，二十歲的他喊：「妳瘋了！」她沒停。",
+      "hook_type": "line",
+      "mid_hook": "第二十層的十歲男孩問：「妳不怕嗎？」她說：「怕。」——她第一次承認。",
+      "extra_hooks": [
+        "林岸在樓外撐住大門，派出所的同事拉起封鎖線。"
+      ],
+      "conflict": "樓越晃越厲害，她撐得到頂嗎？",
+      "turn": "大家以為她什麼都不怕，她在十歲的他面前說了「怕」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "第二十九層的燈一熄，頂樓的門自己開了，裡面黑得只聽見一個孩子在數：「一、二、三……」",
+        "question": "頂樓的孩子在數什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "chahuang"
+      ],
+      "spectacle": "她走過的每一層燈依序熄滅，像一條往上收的光。",
+      "glamour_shot": "她在樓梯上的背影，裙擺掃過台階，下方燈一盞盞熄。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "二十九個年紀的他放下"
+      ],
+      "characters": [
+        "yan-fei",
+        "s04-lou-zhu",
+        "lin-an",
+        "a-pu"
+      ],
+      "locations": [
+        "三十層的樓",
+        "樓外封鎖線"
+      ],
+      "state": {
+        "time": "第十二天凌晨",
+        "knowledge": "她說了「怕」",
+        "carry_forward": "頂樓的三歲孩子"
+      }
+    },
+    {
+      "number": 210,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "你不用一個人住",
+      "youtube_title": "她抱起三歲的他：你不用一個人住三十層",
+      "duration_s": 150,
+      "logline": "頂樓是三歲的樓主；她抱起他，樓塌了，一個八十歲的老人第一次老。",
+      "hook": "頂樓的三歲孩子數到三十停下，抬頭看她：「妳是來帶我走的嗎？」",
+      "hook_type": "line",
+      "mid_hook": "她蹲下，抱起他：「你不用一個人住三十層。」樓開始一層一層往下收。",
+      "extra_hooks": [
+        "她抱著孩子走出頂樓門，懷裡的孩子一路長大，從三歲到八十歲。"
+      ],
+      "conflict": "樓塌了，人會不會也沒了？",
+      "turn": "大家以為樓塌會壓死人，樓收成一片光，剩下一個好好的老人。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "ending",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "廢墟上，八十歲的老人摸著自己的皺紋，哭著笑：「我老了。」他轉頭問她：「妳呢？妳讓自己老嗎？」",
+        "question": "她會讓自己老嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "chahuang",
+        "xuanyi"
+      ],
+      "spectacle": "三十層的樓一層一層化成光往下收，最後只剩老人站在光裡。",
+      "glamour_shot": "她抱著孩子走下樓的慢動作，懷裡的人一路長大，她不眨眼。",
+      "setups": [],
+      "payoffs": [
+        "s04-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "樓主走出樓、第一次變老"
+      ],
+      "characters": [
+        "yan-fei",
+        "s04-lou-zhu",
+        "lin-an",
+        "a-pu",
+        "xiao-qi"
+      ],
+      "locations": [
+        "三十層的樓頂樓",
+        "樓的廢墟"
+      ],
+      "state": {
+        "time": "第十二天清晨",
+        "knowledge": "樓主第一次老；她被反問",
+        "carry_forward": "「妳讓自己老嗎？」"
+      }
+    },
+    {
+      "number": 211,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "補縫的代價",
+      "youtube_title": "警察問了全部：補縫的代價。她第一次全說了",
+      "duration_s": 150,
+      "logline": "林岸問補縫要付什麼；顏非第一次全部說出來：燈要歸位，她要回燈裡、從人間消失。",
+      "hook": "茶館打烊，林岸把帽子放在櫃台：「前輩，補縫的代價。全部。」",
+      "hook_type": "line",
+      "mid_hook": "她說：鎮物歸位，最後一角要燈；燈歸位，燈靈回燈——「我就不在了。」",
+      "extra_hooks": [
+        "阿璞手裡的茶壺掉在地上，碎了。"
+      ],
+      "conflict": "她要不要把最重的那句說出口。",
+      "turn": "大家以為代價是她受傷，原來代價是她從人間消失。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林岸問：「那妳為什麼走了三百年？」她說：「守縫人叫我找。我不想回去，是因為……」她停住了。",
+        "question": "她不想回去，是因為什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "xuanyi"
+      ],
+      "spectacle": "燈影裡浮出五件鎮物的輪廓：鐘、鏡、印、尺歸位，第五角是一個人形的光。",
+      "glamour_shot": "櫃台燈下她的正臉，第一次直視林岸說完一整段話。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [
+        "m10"
+      ],
+      "general_payoffs": [
+        "補縫的代價揭開"
+      ],
+      "characters": [
+        "yan-fei",
+        "lin-an",
+        "a-pu",
+        "shang-ren"
+      ],
+      "locations": [
+        "無事茶館櫃台"
+      ],
+      "state": {
+        "time": "第十二天夜",
+        "knowledge": "補縫要燈歸位，燈靈回燈、她從人間消失",
+        "carry_forward": "她話說到一半停住"
+      }
+    },
+    {
+      "number": 212,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "茶還沒喝完",
+      "youtube_title": "她不想回燈裡的原因只有一句：因為茶還沒喝完",
+      "duration_s": 130,
+      "logline": "林岸追問她停住的那半句；她的答案讓阿璞哭了。",
+      "hook": "林岸沒讓她停：「因為什麼？」她低頭看杯子：「因為茶還沒喝完。」",
+      "hook_type": "line",
+      "mid_hook": "阿璞蹲在碎壺邊，哭得說不出話：「秤……秤沒壞。」",
+      "extra_hooks": [
+        "老蔡從後院進來，默默掃起碎片，倒了第四杯茶。"
+      ],
+      "conflict": "秤說的那句是真的。",
+      "turn": "大家以為她冷，原來她三百年一直在等這壺茶喝完。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她把第四杯茶推到阿璞面前：「喝。」阿璞哭著喝，燙得直吐舌頭，她嘴角又動了一分。",
+        "question": "茶喝完的那天，她就會走嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xuanyi"
+      ],
+      "spectacle": "茶館四杯茶並排冒白氣，燈光在茶面晃。",
+      "glamour_shot": "她推茶的手與低垂的眼，燈光柔下來。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s04-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "師徒三人說開"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "lao-cai"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第十三天凌晨",
+        "knowledge": "秤沒壞；她因為茶還沒喝完不想回去",
+        "carry_forward": "今天三句"
+      }
+    },
+    {
+      "number": 213,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "被量過的孩子",
+      "youtube_title": "洗衣店的小女孩八歲，命卻被量得只剩一個月",
+      "duration_s": 130,
+      "logline": "第四個單元：禾媽抱著女兒小禾衝進茶館，小禾是醫院主任用尺量過的孩子，命被量短了。",
+      "hook": "禾媽撞開茶館門：「顏老闆！主任說小禾只剩一個月！」小禾抱著畫滿刻度的作業簿。",
+      "hook_type": "danger",
+      "mid_hook": "她拿出尺，尺一碰到小禾，刻度往回縮——一個月，只剩二十九天。",
+      "extra_hooks": [
+        "林岸查到：主任三年前收了一筆錢，把小禾的年量給了一個有錢人。"
+      ],
+      "conflict": "一夜量回來那晚，小禾沒在三十個裡。",
+      "turn": "大家以為主任的帳都清了，原來還漏了一個孩子。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "小禾的作業簿上，每一頁的尺規刻度都在自己變短，最後一頁寫著：「一天。」",
+        "question": "小禾只剩一天了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "shenfen"
+      ],
+      "spectacle": "作業簿上的鉛筆刻度一格格自己縮短，像被橡皮擦掉。",
+      "glamour_shot": "小禾黃雨衣、亮眼睛抬頭看她，她低頭與孩子對視。",
+      "setups": [
+        "s04-t08"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "禾媽把案子交給她"
+      ],
+      "characters": [
+        "yan-fei",
+        "s04-xiao-he",
+        "s04-he-mama",
+        "lin-an",
+        "a-pu"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第十三天",
+        "knowledge": "小禾的命三年前被量給別人",
+        "carry_forward": "作業簿最後一頁「一天」"
+      }
+    },
+    {
+      "number": 214,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "量給了誰",
+      "youtube_title": "小女孩的命被量給了一個富豪，富豪說：錢我付過了",
+      "duration_s": 125,
+      "logline": "林岸查到拿走小禾年壽的富豪；顏非去見他，他坦然說錢付過了。",
+      "hook": "豪宅門口，富豪穿著運動服跑步，看起來三十歲：「我付了錢，合法。」",
+      "hook_type": "reversal",
+      "mid_hook": "她不審他——他沒說謊。她只問一句：「你知道是誰的年嗎？」富豪第一次停下腳步。",
+      "conflict": "富豪沒說謊，她拿他沒辦法。",
+      "turn": "大家以為要從富豪身上量回來，她卻說：「他的年，他自己還。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "富豪看見小禾作業簿上的名字，臉一白：「她……是我女兒。」禾媽站在門口，一句話都沒說。",
+        "question": "富豪為什麼是小禾的爸爸？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "shenfen"
+      ],
+      "spectacle": "豪宅泳池倒映富豪的臉，一半三十歲，一半五十歲。",
+      "glamour_shot": "她站在豪宅鐵門外，赤腳踩在大理石台階上，抬眼。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "富豪知道真相"
+      ],
+      "characters": [
+        "yan-fei",
+        "s04-he-mama",
+        "s04-xiao-he",
+        "lin-an"
+      ],
+      "locations": [
+        "富豪豪宅"
+      ],
+      "state": {
+        "time": "第十三天下午",
+        "knowledge": "買小禾年壽的是她生父",
+        "carry_forward": "富豪的選擇"
+      }
+    },
+    {
+      "number": 215,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "要量多少",
+      "youtube_title": "尺可以量回孩子的命，代價是她少一分人",
+      "duration_s": 125,
+      "logline": "顏非決定用尺替小禾量回來；阿璞查到每用一次鎮物，她會少一分人。",
+      "hook": "阿璞翻爺爺的筆記：「師父，鎮物用一次，妳少一分。上次手背那道痕就是。」",
+      "hook_type": "question",
+      "mid_hook": "她看著手背上那道刻痕：比上次更深了。她說：「量。」",
+      "extra_hooks": [
+        "老九在茶館門外：「量一個孩子，換妳一天看不見。划算嗎？」"
+      ],
+      "conflict": "量回小禾，她要付什麼？",
+      "turn": "大家以為鎮物是她的武器，原來每一次都在拿她自己付。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "富豪跪在茶館門口：「量我的。我還。」她看著他，又看著小禾：量他的，還是用她自己的？",
+        "question": "她要用誰的年補回小禾？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "xuanyi"
+      ],
+      "spectacle": "她手背的刻痕在燈下發出淡金光，像一道尺的刻度。",
+      "glamour_shot": "她抬起手背在燈下看，側臉與金光刻痕。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道鎮物的代價"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lao-jiu",
+        "s04-xiao-he",
+        "s04-he-mama",
+        "lin-an"
+      ],
+      "locations": [
+        "無事茶館",
+        "茶館門口"
+      ],
+      "state": {
+        "time": "第十三天夜",
+        "knowledge": "鎮物每用一次，她少一分人",
+        "carry_forward": "富豪跪門口"
+      }
+    },
+    {
+      "number": 216,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "老九的皮",
+      "youtube_title": "老九來茶館喝茶，他的手腕裂了一道縫",
+      "duration_s": 120,
+      "logline": "老九來茶館，提醒她用尺的代價；他手腕的皮裂開一道縫，漏出光。",
+      "hook": "老九坐到她對面：「妳量吧。我等。」他伸手拿杯，袖口下的皮裂了一道細縫。",
+      "hook_type": "danger",
+      "mid_hook": "縫裡漏出的光讓茶館地板下那道縫震了一下。林岸按住地板：「它在響。」",
+      "extra_hooks": [
+        "小七站在門外，不敢進來，手裡捏著畫。"
+      ],
+      "conflict": "老九的皮撐不住了嗎？",
+      "turn": "大家以為老九在等她輸，原來他自己也快撐不住。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老九放下杯，袖口的裂縫又大了一分：「妳量完孩子，我就開始撕。」他走了，地板下的縫跟著響了一聲。",
+        "question": "老九撕皮會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenzhang"
+      ],
+      "spectacle": "老九袖口下的皮縫透出一線光，茶館地板的縫隨之亮了一下。",
+      "glamour_shot": "林岸單膝按在茶館地板上，紅繩手腕貼著木縫，抬頭。",
+      "setups": [
+        "s04-t09"
+      ],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道老九的皮快裂了"
+      ],
+      "characters": [
+        "yan-fei",
+        "lao-jiu",
+        "lin-an",
+        "xiao-qi"
+      ],
+      "locations": [
+        "無事茶館",
+        "茶館地板下的縫"
+      ],
+      "state": {
+        "time": "第十四天",
+        "knowledge": "老九的皮在裂；他要撕",
+        "carry_forward": "小七在門外"
+      }
+    },
+    {
+      "number": 217,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "他還",
+      "youtube_title": "富豪說：我還。她說：不夠",
+      "duration_s": 130,
+      "logline": "顏非讓富豪先還自己的那一份；富豪還了一半，剩下的還不夠。",
+      "hook": "她把尺放在富豪頭頂：「還。」尺量下去，富豪的頭髮一根根白了。",
+      "hook_type": "reversal",
+      "mid_hook": "富豪從三十歲變回五十歲，小禾的作業簿多了十年刻度——但還差一截。",
+      "extra_hooks": [
+        "禾媽第一次開口：「夠了，他還了。」"
+      ],
+      "conflict": "富豪還完，小禾還差多少？",
+      "turn": "大家以為量回富豪的年就夠，原來中間被主任抽走一成，沒人能還。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "尺停在小禾額頭，刻度顯示：還差三年。尺轉了個方向，對準她自己。",
+        "question": "差的三年，要從她身上量嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "shenfen"
+      ],
+      "spectacle": "尺在富豪頭頂一格格發光，他的黑髮從髮根一路白到髮梢。",
+      "glamour_shot": "她握尺的手穩穩懸在富豪頭頂，燈下眼神平如判詞。",
+      "setups": [],
+      "payoffs": [
+        "s04-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "富豪還了十年"
+      ],
+      "characters": [
+        "yan-fei",
+        "s04-xiao-he",
+        "s04-he-mama",
+        "lin-an",
+        "a-pu"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第十四天夜",
+        "knowledge": "還差三年",
+        "carry_forward": "尺對準她"
+      }
+    },
+    {
+      "number": 218,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "一天看不見",
+      "youtube_title": "她用自己的一分量回孩子三年，代價是一天看不見",
+      "duration_s": 140,
+      "logline": "顏非用尺量自己的一分補給小禾；小禾的命回來了，她一天看不見。",
+      "hook": "尺尖對準她，阿璞撲上來：「師父不要！」她輕輕推開他：「三年。」",
+      "hook_type": "line",
+      "mid_hook": "尺量過她，一縷光從她眼裡流進小禾的作業簿——刻度一格格長回來。",
+      "extra_hooks": [
+        "小禾的作業簿最後一頁從「一天」變成「很久很久」。"
+      ],
+      "conflict": "她付了，小禾得救。",
+      "turn": "大家以為代價是她的年，結果代價是她的眼。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "她眨了一下眼，茶館的燈在她眼裡熄了：「阿璞。」「在。」「我看不見了。」",
+        "question": "她看不見的這一天，誰來守茶館？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenzhang",
+        "xuanyi",
+        "shenfen"
+      ],
+      "spectacle": "她眼裡流出一縷金光，飄進作業簿，刻度如新芽一格格長出。",
+      "glamour_shot": "她閉眼又睜開，瞳仁失去光的那一秒慢動作。",
+      "setups": [],
+      "payoffs": [
+        "s04-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "小禾的命回來了"
+      ],
+      "characters": [
+        "yan-fei",
+        "s04-xiao-he",
+        "s04-he-mama",
+        "a-pu",
+        "lin-an"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第十五天清晨",
+        "knowledge": "用尺換一天看不見",
+        "carry_forward": "她看不見一天"
+      }
+    },
+    {
+      "number": 219,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "被人牽著走",
+      "youtube_title": "看不見的她，第一次被小道士牽著走老街",
+      "duration_s": 140,
+      "logline": "顏非看不見的一天，阿璞牽著她在老街走了一圈，林岸跟在後面。",
+      "hook": "阿璞伸出手又縮回，最後抓住她的袖子：「師父，我帶妳走。」",
+      "hook_type": "image",
+      "mid_hook": "老街的人一個個打招呼：「顏老闆。」「前輩。」「那個赤腳的。」她一個都看不見，卻都應了。",
+      "extra_hooks": [
+        "禾媽抱著小禾在洗衣店門口鞠躬，小禾大喊：「顏老闆，我畫了妳！」"
+      ],
+      "conflict": "她看不見，老街會不會趁機欺她？",
+      "turn": "大家以為她看不見會很脆弱，結果整條街都來扶她。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她停在老街中間：「我走了三百年，第一次被人牽著走。」阿璞的手抖了。",
+        "question": "她會為了這條街留下嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xuanyi"
+      ],
+      "spectacle": "整條老街的店家同時探出頭，燈籠一盞盞亮起送她走過。",
+      "glamour_shot": "阿璞牽她袖子走在老街，她閉著眼、赤腳，林岸在後面三步。",
+      "setups": [],
+      "payoffs": [
+        "s04-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老街認了她"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "s04-xiao-he",
+        "s04-he-mama",
+        "lao-cai"
+      ],
+      "locations": [
+        "老街"
+      ],
+      "state": {
+        "time": "第十五天",
+        "knowledge": "老街的人都認得她",
+        "carry_forward": "阿璞要開口問"
+      }
+    },
+    {
+      "number": 220,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "妳不補行不行",
+      "youtube_title": "小道士問：師父，妳不補行不行。她說：縫開了，他們都沒了",
+      "duration_s": 150,
+      "logline": "走完老街，阿璞求她不要補縫；她的答案讓林岸握緊了紅繩。",
+      "hook": "老街盡頭，阿璞停住：「師父，妳不補行不行。」她看不見，卻轉頭對著他。",
+      "hook_type": "line",
+      "mid_hook": "她說：「縫開了，他們都沒了。」她指的是整條街：阿桂姨、老蔡、小禾、禾媽。",
+      "extra_hooks": [
+        "林岸低聲：「前輩，林家守了三百年鐘，我們也能守妳。」"
+      ],
+      "conflict": "她選她自己，還是選老街？",
+      "turn": "大家以為她已經決定補，她卻沒說「補」，只說了後果。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "天黑，她的眼睛慢慢亮回來，第一眼看見的是阿璞哭花的臉：「我看見了。」阿璞：「那妳看我，再說一次——補不補？」",
+        "question": "她會說補還是不補？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "shenzhang",
+        "xuanyi"
+      ],
+      "spectacle": "她的瞳仁重新亮起，老街的燈籠倒映在她眼裡一盞盞清晰。",
+      "glamour_shot": "她恢復視力那一刻的正臉特寫，阿璞哭臉在她眼裡。",
+      "setups": [],
+      "payoffs": [
+        "s04-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她的眼睛回來了"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an"
+      ],
+      "locations": [
+        "老街盡頭"
+      ],
+      "state": {
+        "time": "第十五天夜",
+        "knowledge": "她說縫開了街就沒了",
+        "carry_forward": "阿璞要她答補不補"
+      }
+    },
+    {
+      "number": 221,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "他開始撕了",
+      "youtube_title": "老九撕下第一片皮，老街的路燈一盞一盞自己走路",
+      "duration_s": 130,
+      "logline": "她還沒答補不補，老九已經開始撕自己的皮；每撕一分，縫開一分。",
+      "hook": "阿璞的「補不補」還沒落地，茶館地板「喀」一聲，縫亮了：老九撕下了第一片皮。",
+      "hook_type": "danger",
+      "mid_hook": "老街的路燈影子離開燈柱，沿著街慢慢走——縫邊漏出來的東西，只是光與影。",
+      "extra_hooks": [
+        "林岸的對講機響個不停：「老街七號，影子進了民宅。」"
+      ],
+      "conflict": "縫在開，她還沒想好要不要補。",
+      "turn": "大家以為老九會來談條件，他直接動手，不再等。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "當鋪二樓的窗口，老九一手捏著半片皮，那片皮在風裡化成光，飄進茶館地板的縫。",
+        "question": "老九要撕到什麼程度？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "fansha"
+      ],
+      "spectacle": "老街的路燈影子脫離燈柱，排成一列在街上緩緩移動。",
+      "glamour_shot": "她站在茶館門口看著街，夜風吹動她的長髮，燈從背後照出輪廓。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她確認老九撕皮就是開縫"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "lao-jiu"
+      ],
+      "locations": [
+        "無事茶館",
+        "老街",
+        "當鋪二樓"
+      ],
+      "state": {
+        "time": "第十六天夜",
+        "knowledge": "老九撕皮開縫；漏出來的是光與影",
+        "carry_forward": "老九的半片皮"
+      }
+    },
+    {
+      "number": 222,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "一週三十案",
+      "youtube_title": "派出所一週接了三十個報案，每一案都說不是自己做的",
+      "duration_s": 125,
+      "logline": "林岸的派出所一週接了三十個怪案，案主都說自己被什麼附著了。",
+      "hook": "派出所門口排了長隊，第一個阿伯說：「我昨天罵了老婆，可那不是我的聲音。」",
+      "hook_type": "line",
+      "mid_hook": "林岸把三十份筆錄攤在茶館：沒有一案有謊——都說的是真話，說的卻不是自己的話。",
+      "conflict": "沒謊可審，她的本事又失效了。",
+      "turn": "大家以為能從案主身上找到謊，原來說話的根本不是他們。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "筆錄最後一份是阿桂姨的，她自己寫的字：「我今天說了一句三百年前的話。」",
+        "question": "阿桂姨說了什麼三百年前的話？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "xuanyi"
+      ],
+      "spectacle": "派出所長廊三十個人排隊，每人腳下的影子都慢半拍才跟上。",
+      "glamour_shot": "林岸在派出所燈下揉眉心，制服捲袖、紅繩手腕壓著筆錄。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "三十案串成一條線"
+      ],
+      "characters": [
+        "yan-fei",
+        "lin-an",
+        "a-pu",
+        "s04-a-gui"
+      ],
+      "locations": [
+        "老街派出所",
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第十七天",
+        "knowledge": "附著的人說真話，說的不是自己的話",
+        "carry_forward": "阿桂姨的筆錄"
+      }
+    },
+    {
+      "number": 223,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "阿桂姨的那句話",
+      "youtube_title": "麵攤老闆娘對著湯鍋說了一句三百年前的話：等我回來",
+      "duration_s": 125,
+      "logline": "第五個單元：老街本身；阿桂姨被縫邊漏出的東西附著，說出上一任守縫人的話。",
+      "hook": "麵攤熱氣裡，阿桂姨舀湯的手停住，用一個男人的聲音說：「等我回來。」",
+      "hook_type": "image",
+      "mid_hook": "她聽見那一句，杯子落地——是三百年前守縫人對她說的話。",
+      "extra_hooks": [
+        "小七在麵攤角落吃麵，把那一幕畫進本子裡。"
+      ],
+      "conflict": "縫邊漏出來的是三百年前的聲音。",
+      "turn": "大家以為附著的是邪物，原來是縫裡困著的舊話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "阿桂姨回過神，看見她站在湯鍋前，眼眶是紅的：「顏老闆，我……說了什麼？」",
+        "question": "她要怎麼面對守縫人的那句話？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xuanyi"
+      ],
+      "spectacle": "麵攤蒸氣裡浮出一個三百年前的男人背影，一晃就散。",
+      "glamour_shot": "她站在麵攤熱氣後，眼眶微紅，蒸氣模糊她的側臉。",
+      "setups": [],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她確定漏出來的是縫裡的舊話"
+      ],
+      "characters": [
+        "yan-fei",
+        "s04-a-gui",
+        "xiao-qi",
+        "shang-ren"
+      ],
+      "locations": [
+        "老街麵攤"
+      ],
+      "state": {
+        "time": "第十七天傍晚",
+        "knowledge": "縫裡困著三百年的話，附在老街人身上說出",
+        "carry_forward": "小七的本子"
+      }
+    },
+    {
+      "number": 224,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "三件一起",
+      "youtube_title": "她第一次三件鎮物一起用：鐘鎮聲、鏡鎮影、印鎮名",
+      "duration_s": 150,
+      "logline": "老街整夜出事，顏非第一次同時用鐘、鏡、印把漏出來的壓回去。",
+      "hook": "深夜，整條老街的人同時開口說不是自己的話，聲音疊成一片。她把鐘放上櫃台。",
+      "hook_type": "danger",
+      "mid_hook": "鐘響，聲停；鏡亮，影回；印落，每個人的名字回到自己身上——整條街靜了。",
+      "extra_hooks": [
+        "阿璞數著：「師父，三件，三分。」"
+      ],
+      "conflict": "一條街的人被附著，怎麼一次壓回去？",
+      "turn": "大家以為她一件一件來，她三件一起用，代價也三倍。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "街靜了，她扶著櫃台，手背上三道刻痕一起亮；她開口想說第四句，發不出聲。",
+        "question": "她的聲音去哪了？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "fansha"
+      ],
+      "spectacle": "鐘聲盪開的波紋、鏡光掃過的影子、印落下的金字，三層光同時壓過老街。",
+      "glamour_shot": "她站在櫃台後雙手各按一件鎮物，長髮被三層光吹起。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老街一夜靜下來"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "s04-a-gui",
+        "lao-jiu"
+      ],
+      "locations": [
+        "無事茶館",
+        "老街"
+      ],
+      "state": {
+        "time": "第十八天凌晨",
+        "knowledge": "三件一起用，她一天少說一句",
+        "carry_forward": "她暫時發不出聲"
+      }
+    },
+    {
+      "number": 225,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "她發不出聲",
+      "youtube_title": "老闆娘一句話都說不出來，老九卻在門口說：我來談",
+      "duration_s": 120,
+      "logline": "顏非暫時失聲，老九來茶館談條件，阿璞替她開口。",
+      "hook": "老九推開茶館門：「妳說不出話？那我說。」阿璞擋在櫃台前：「我替她說。」",
+      "hook_type": "line",
+      "mid_hook": "老九說：「別補。縫開了，妳回不了燈，我回得了家。兩全。」阿璞看她，她搖頭。",
+      "extra_hooks": [
+        "林岸站在門邊，手按著紅繩：「縫開了，老街沒了，這叫兩全？」"
+      ],
+      "conflict": "老九的「兩全」是陷阱還是真話？",
+      "turn": "大家以為老九在騙，他說的又全是真的——只是他沒算老街。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "她用手指沾茶，在櫃台寫了一個字：「不。」老九看著那個字：「那我撕快一點。」",
+        "question": "老九撕快，她撐得住嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "fansha"
+      ],
+      "spectacle": "櫃台上一個茶水寫的「不」字被燈照亮，慢慢蒸發。",
+      "glamour_shot": "她指尖沾茶寫字的特寫，抬眼看老九。",
+      "setups": [],
+      "payoffs": [
+        "s04-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她當面拒絕老九"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "lao-jiu"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第十八天",
+        "knowledge": "老九不算老街；她拒絕",
+        "carry_forward": "老九要撕快"
+      }
+    },
+    {
+      "number": 226,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "小七的本子",
+      "youtube_title": "老九的隨從把本子攤開：每一頁都是他撕下的皮",
+      "duration_s": 125,
+      "logline": "小七偷偷來茶館，把本子給阿璞：她把老九每一次撕皮都畫了下來。",
+      "hook": "茶館後門，小七把本子塞給阿璞，說了第一個字：「看。」",
+      "hook_type": "image",
+      "mid_hook": "本子裡，老九的畫像一頁比一頁淡——皮少了，光多了；最後一頁他快只剩一盞燈的形狀。",
+      "extra_hooks": [
+        "阿璞發現本子背後寫著：「謊在帳架上。燒了，縫停。」"
+      ],
+      "conflict": "小七到底站哪邊？",
+      "turn": "大家以為小七只是傳話，她已經想好怎麼救老街。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿璞抬頭：「妳要燒老九的帳？他會——」小七搖頭，指著畫上那盞燈：「他會回家。」",
+        "question": "燒了帳，老九真的會好嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xuanyi"
+      ],
+      "spectacle": "本子一頁頁翻過，老九的畫像從人形淡成一團光。",
+      "glamour_shot": "阿璞與小七在後門月光下對看，兩個少年的側影。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿璞知道小七的計畫"
+      ],
+      "characters": [
+        "a-pu",
+        "xiao-qi",
+        "yan-fei"
+      ],
+      "locations": [
+        "無事茶館後門"
+      ],
+      "state": {
+        "time": "第十八天夜",
+        "knowledge": "燒掉謊，縫就停",
+        "carry_forward": "小七的計畫"
+      }
+    },
+    {
+      "number": 227,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "她又能說了",
+      "youtube_title": "她恢復聲音，第一句說給小七：別一個人去",
+      "duration_s": 125,
+      "logline": "顏非恢復聲音，得知小七的計畫；她不准小七一個人去。",
+      "hook": "天亮，她咳了一聲，第一句話：「小七呢？」阿璞把本子遞上。",
+      "hook_type": "question",
+      "mid_hook": "她看完：「別一個人去。」阿璞一愣：「師父，妳今天只剩三句了。」",
+      "extra_hooks": [
+        "她的手背上，四道刻痕排成一把小尺。"
+      ],
+      "conflict": "小七一個人去燒帳太危險。",
+      "turn": "大家以為她會阻止小七，她其實是要陪。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "她對阿璞說了今天第二句：「你陪她。」又看林岸，第三句：「你守街。」然後她閉上嘴，一整天沒再開口。",
+        "question": "她把三句都用掉了，誰守她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "zhiguai"
+      ],
+      "spectacle": "她手背四道刻痕在晨光裡排成一把淡金小尺。",
+      "glamour_shot": "晨光裡她坐在櫃台後，低頭看手背刻痕，長睫毛垂下。",
+      "setups": [],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她把三句話分給三個人"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "xiao-qi"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第十九天",
+        "knowledge": "她一天只能說三句了",
+        "carry_forward": "阿璞陪小七"
+      }
+    },
+    {
+      "number": 228,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "縫開到老街口",
+      "youtube_title": "老九撕快了，縫從茶館一路開到老街口",
+      "duration_s": 130,
+      "logline": "老九撕得更快，漏出的影子漫到老街口；林岸帶派出所守街。",
+      "hook": "老街口的地磚一塊塊亮起，一道光縫從茶館一路爬到街口。林岸拉封鎖線：「後退！」",
+      "hook_type": "danger",
+      "mid_hook": "漏出的影子把整條街的人拉成同一句：「等我回來。」連禾媽也在說。",
+      "extra_hooks": [
+        "小禾躲在洗衣店裡，捂著耳朵畫畫：「不聽，不聽。」"
+      ],
+      "conflict": "林岸守得住一條街嗎？",
+      "turn": "大家以為只有她能壓，林岸拿出林家的紅繩，把整條街圍住。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "紅繩圍住老街，影子停在繩外；可縫的盡頭，當鋪的門開了，老九站在門口，皮只剩半張。",
+        "question": "老九的皮撕完會怎樣？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "fansha",
+        "zhiguai"
+      ],
+      "spectacle": "一道光縫在老街地磚下蜿蜒，紅繩把整條街圍成一圈。",
+      "glamour_shot": "林岸雙手拉緊紅繩站在街口，逆光的身影擋在光縫前。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林岸用紅繩守住老街"
+      ],
+      "characters": [
+        "lin-an",
+        "s04-he-mama",
+        "s04-xiao-he",
+        "lao-jiu",
+        "yan-fei"
+      ],
+      "locations": [
+        "老街口",
+        "洗衣店",
+        "當鋪門口"
+      ],
+      "state": {
+        "time": "第二十天夜",
+        "knowledge": "縫開到老街口；林岸守住",
+        "carry_forward": "老九只剩半張皮"
+      }
+    },
+    {
+      "number": 229,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "三件再用",
+      "youtube_title": "她第二次三件一起用，這次少的是她的溫度",
+      "duration_s": 140,
+      "logline": "縫要衝破紅繩，顏非第二次同時用三件鎮物；這次她付的是體溫。",
+      "hook": "紅繩一根根斷，林岸回頭：「前輩！」她已經走到街心，三件鎮物浮在身邊。",
+      "hook_type": "danger",
+      "mid_hook": "鐘、鏡、印一起落下，影子退回縫裡；她身上結了一層薄霜。",
+      "extra_hooks": [
+        "阿璞衝過來握她的手：「師父，好冰。」"
+      ],
+      "conflict": "再用三件，她撐得住嗎？",
+      "turn": "大家以為她又會失聲，這次她付的是溫度，像燈在變冷。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "霜從她手背蔓延到指尖，她對阿璞說：「去當鋪。」阿璞回頭：小七已經不見了。",
+        "question": "小七一個人去當鋪了嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "fansha",
+        "xuanyi"
+      ],
+      "spectacle": "三件鎮物在街心旋轉，光圈把影子一圈圈逼回地縫。",
+      "glamour_shot": "她站在街心、身上覆著薄霜，霜在燈下發亮。",
+      "setups": [],
+      "payoffs": [
+        "s04-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老街再一次壓住"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "lao-jiu",
+        "xiao-qi"
+      ],
+      "locations": [
+        "老街街心"
+      ],
+      "state": {
+        "time": "第二十一天凌晨",
+        "knowledge": "鎮物用一次她少一分；這次是溫度",
+        "carry_forward": "小七獨自去當鋪"
+      }
+    },
+    {
+      "number": 230,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "小七燒了謊",
+      "youtube_title": "老九撿來的孩子燒光了他三百年收的謊，縫停了",
+      "duration_s": 160,
+      "logline": "小七一個人在當鋪燒掉老九三百年收的謊；縫停了，小七走進茶館。",
+      "hook": "當鋪裡，小七站在帳架前，劃亮一根火柴。老九在樓上喊：「小七？」她沒回頭。",
+      "hook_type": "image",
+      "mid_hook": "帳架一排排燒起來，紙灰化成金光往上飄；老街的光縫一寸一寸合上。",
+      "extra_hooks": [
+        "老九衝進來，看著火，沒有攔。"
+      ],
+      "conflict": "小七燒謊，老九會怎麼對她？",
+      "turn": "大家以為老九會發怒，他只是看著，說：「妳是我撿的。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "first_clear"
+        },
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老九說：「妳是我撿的。」小七說了第二個字：「懂。」她走進茶館，坐在阿璞旁邊；老九站在茶館門口，第一次不笑。",
+        "question": "老九接下來要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "fansha",
+        "xuanyi"
+      ],
+      "spectacle": "當鋪帳架上千張謊紙化成金色灰燼，往上飄過老街夜空。",
+      "glamour_shot": "小七坐到阿璞旁邊的那一刻，她在櫃台後抬眼看門口的老九。",
+      "setups": [],
+      "payoffs": [
+        "s04-t10",
+        "s04-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "謊全燒了，縫停了",
+        "小七坐到這一邊"
+      ],
+      "characters": [
+        "xiao-qi",
+        "lao-jiu",
+        "a-pu",
+        "yan-fei",
+        "lin-an"
+      ],
+      "locations": [
+        "老九的當鋪",
+        "無事茶館門口"
+      ],
+      "state": {
+        "time": "第二十一天夜",
+        "knowledge": "謊沒了縫停了；小七選了這邊",
+        "carry_forward": "老九第一次不笑"
+      }
+    },
+    {
+      "number": 231,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "第四角",
+      "youtube_title": "尺放進縫，第四角合上：只剩一角，剩下的鎮物只有她",
+      "duration_s": 150,
+      "logline": "老九在門口不笑；顏非把尺放進縫，合上第四角。",
+      "hook": "老九的影子還在門口，她起身掀開茶館地板：「阿璞，燈。」阿璞舉燈照縫。",
+      "hook_type": "image",
+      "mid_hook": "尺沉進縫，第四角合上，縫只剩一道細細的口——剛好一盞燈的寬。",
+      "extra_hooks": [
+        "林岸盯著那道口：「最後一角，就是妳。」"
+      ],
+      "conflict": "四件歸位，最後一角怎麼辦。",
+      "turn": "大家以為放進尺會鬆一口氣，結果只把最後的選擇推到她面前。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老九在門口開口：「縫的口，剛好是一盞燈的寬。妳量過了吧？」她手背上的刻痕全亮了。",
+        "question": "她要親手把自己放進縫嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "zhiguai"
+      ],
+      "spectacle": "尺沉進地板下的縫，四道光從四角收攏，只剩一道燈寬的口。",
+      "glamour_shot": "她跪在縫邊放尺的那一秒，燈光從下往上照亮她的臉。",
+      "setups": [],
+      "payoffs": [
+        "s04-t01",
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "第四件鎮物歸位、縫合四角"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "lao-jiu",
+        "xiao-qi"
+      ],
+      "locations": [
+        "茶館地板下的縫",
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十二天夜",
+        "knowledge": "縫只剩一角，是燈的寬",
+        "carry_forward": "老九還在門口"
+      }
+    },
+    {
+      "number": 232,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "不到三句",
+      "youtube_title": "她一天說不到三句，整個茶館都在數",
+      "duration_s": 120,
+      "logline": "合上第四角後，顏非一天說不到三句；阿璞、林岸、小七輪流猜她要說什麼。",
+      "hook": "早上阿璞端茶：「師父早。」她點頭。阿璞對小七比了個「零」。",
+      "hook_type": "question",
+      "mid_hook": "茶館裡沒人說話，只有老蔡在角落敲醒木，敲了三下就停。",
+      "extra_hooks": [
+        "林岸在門口抱進一個大木箱，上面寫著「林」。"
+      ],
+      "conflict": "她說的話越來越少，大家怕哪天一句都沒了。",
+      "turn": "大家以為她在生氣，其實她把話省下來，要留給最後一句。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "茶館的燈閃了一下，暗了一分；她抬頭看燈，阿璞發現她的影子也淡了一分。",
+        "question": "她的話少了，人也在淡嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xuanyi"
+      ],
+      "spectacle": "茶館的燈暗下一分，所有人的影子在牆上一起晃。",
+      "glamour_shot": "她坐在燈下不語，燈光微暗，她的影子比別人淡。",
+      "setups": [
+        "s04-t11"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "大家學會不靠她說話也能分工"
+      ],
+      "characters": [
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "xiao-qi",
+        "lao-cai"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十三天",
+        "knowledge": "她一天說不到三句；燈和她一起淡",
+        "carry_forward": "林家的木箱"
+      }
+    },
+    {
+      "number": 233,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "林家家譜",
+      "youtube_title": "警察把林家三百年的家譜搬進茶館：從今天起守妳",
+      "duration_s": 140,
+      "logline": "林岸把林家三百年家譜搬進茶館，宣告林家從守鐘改成守她。",
+      "hook": "林岸打開木箱，一冊冊家譜疊上櫃台：「林家守的是鐘。」",
+      "hook_type": "line",
+      "mid_hook": "他翻到最新一頁，在自己名字下寫一行：「從今天起守妳。」她看著那行字，久久不動。",
+      "extra_hooks": [
+        "家譜第一頁，三百年前那一代的名字旁，畫著一盞燈。"
+      ],
+      "conflict": "林家守了三百年，換一個守的東西行不行？",
+      "turn": "大家以為家譜是要還給她歷史，原來林家三百年前就在守這盞燈。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "林老太的聲音從家譜裡那張舊照片傳出來似的，林岸念出奶奶寫在邊上的字：「燈不是鎮物，是客人。」",
+        "question": "林老太為什麼說燈是客人？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xuanyi"
+      ],
+      "spectacle": "一冊冊泛黃家譜在櫃台上攤開，第一頁畫著一盞燈。",
+      "glamour_shot": "林岸捲袖提筆寫字，紅繩的手腕在燈下。",
+      "setups": [],
+      "payoffs": [
+        "s04-t11",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "林家家譜搬進茶館"
+      ],
+      "characters": [
+        "yan-fei",
+        "lin-an",
+        "lin-laotai",
+        "a-pu"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十四天",
+        "knowledge": "林家三百年前就在守燈；林老太：燈是客人",
+        "carry_forward": "「燈是客人」"
+      }
+    },
+    {
+      "number": 234,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "爺爺的符",
+      "youtube_title": "小道士要把爺爺的符全畫一遍：這次一張都不能錯",
+      "duration_s": 125,
+      "logline": "阿璞決定把爺爺所有的符重畫一遍，想替師父多守一角。",
+      "hook": "阿璞把爺爺的符本攤開：「九十九張，我一張張畫。」他畫第一張就錯了。",
+      "hook_type": "image",
+      "mid_hook": "小七坐在旁邊幫他磨墨，看一張錯一張，在錯處輕輕點一下——她看得見錯在哪。",
+      "extra_hooks": [
+        "她在櫃台後看著，沒說話，只把燈往阿璞那邊移了一寸。"
+      ],
+      "conflict": "阿璞的符從來畫不對。",
+      "turn": "大家以為阿璞手笨，原來他每次都畫錯同一筆——他怕師父走。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "first_clear"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "畫到第九十八張，阿璞停筆：「畫對了，就能守一角。守了一角，她就要去補。」他的筆懸在第九十九張上。",
+        "question": "阿璞要不要畫對最後一張？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenfen"
+      ],
+      "spectacle": "九十八張符在燈下一張張發出淡光，第九十九張還是空的。",
+      "glamour_shot": "阿璞咬筆桿的特寫，小七在旁磨墨，燈被移近一寸。",
+      "setups": [
+        "s04-t12"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "九十八張符畫對"
+      ],
+      "characters": [
+        "a-pu",
+        "xiao-qi",
+        "yan-fei"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十四天夜",
+        "knowledge": "阿璞怕畫對了她就會走",
+        "carry_forward": "第九十九張"
+      }
+    },
+    {
+      "number": 235,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "燈是客人",
+      "youtube_title": "林老太留下一句話：燈不是鎮物，是客人",
+      "duration_s": 125,
+      "logline": "顏非讀林家家譜，找到三百年前守縫人和林家的約：燈是客人，客人可以選走或留。",
+      "hook": "她翻家譜，手停在一頁：三百年前的字跡寫著「燈為客，去留由燈」。",
+      "hook_type": "line",
+      "mid_hook": "林岸念出旁邊的註：守縫人寫的——「她若不想回，就別逼她。」",
+      "extra_hooks": [
+        "老九在門外聽，臉色第一次變了。"
+      ],
+      "conflict": "補縫一定要她回燈嗎？",
+      "turn": "大家以為規矩只有一條，原來守縫人三百年前就給了她選。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "她合上家譜，手按在上面，對林岸說今天第一句：「他給過我選。」",
+        "question": "守縫人給的選，是什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenfen"
+      ],
+      "spectacle": "家譜那一頁的舊墨在燈下浮起一行金字：「去留由燈」。",
+      "glamour_shot": "她雙手按在家譜上，抬眼，燈光把睫毛影子投在臉上。",
+      "setups": [],
+      "payoffs": [
+        "s04-t11",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她知道自己可以選"
+      ],
+      "characters": [
+        "yan-fei",
+        "lin-an",
+        "lao-jiu",
+        "shang-ren"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十五天",
+        "knowledge": "守縫人留話：燈為客，去留由燈",
+        "carry_forward": "老九在門外"
+      }
+    },
+    {
+      "number": 236,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "話說渡城",
+      "youtube_title": "老說書人要說一段新書，主角是茶館老闆娘",
+      "duration_s": 130,
+      "logline": "老蔡在櫃台邊開說新話本，說的是她；她聽著，第一次怕結尾。",
+      "hook": "老蔡一拍醒木：「話說渡城有一間茶館——」滿座茶客回頭，她的杯子停在半空。",
+      "hook_type": "line",
+      "mid_hook": "老蔡說到「老闆娘赤腳走過三百年」，茶館的燈亮了一分。",
+      "extra_hooks": [
+        "小禾舉手：「蔡爺爺，結局是什麼？」"
+      ],
+      "conflict": "話本的結尾會說她走還是留？",
+      "turn": "大家以為老蔡在說舊事，他在替她寫還沒發生的事。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "老蔡說到「最後，老闆娘把燈——」茶館地板下的縫猛地一震，最後一角的口開大了一指。",
+        "question": "縫為什麼又開了？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "zhiguai"
+      ],
+      "spectacle": "老蔡拍醒木的瞬間，茶館的燈亮了一分，地板下的縫跟著震。",
+      "glamour_shot": "滿座茶客看向她，她在櫃台後端杯，燈下不眨的眼。",
+      "setups": [
+        "s04-t13"
+      ],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "茶館滿座聽她的話本"
+      ],
+      "characters": [
+        "lao-cai",
+        "yan-fei",
+        "s04-xiao-he",
+        "a-pu",
+        "lin-an",
+        "xiao-qi"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十六天",
+        "knowledge": "話本要說到她的結局；縫又開一指",
+        "carry_forward": "「老闆娘把燈——」"
+      }
+    },
+    {
+      "number": 237,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "最後半張皮",
+      "youtube_title": "老九把最後半張皮撕了，站在茶館門口的只剩一團光",
+      "duration_s": 130,
+      "logline": "縫震開，是老九撕下了最後半張皮；他以光與影的樣子站在茶館門口。",
+      "hook": "門口的影子拉長，老九走進燈光：皮沒了，只剩一團溫和的光，像小七畫的那張畫。",
+      "hook_type": "image",
+      "mid_hook": "小七把畫舉起來對照：一模一樣。老九說：「我不撕了。撕完了。」",
+      "extra_hooks": [
+        "縫邊漏出來的不是東西，是光——和老九同色的光。"
+      ],
+      "conflict": "老九撕完皮，要做什麼？",
+      "turn": "大家以為撕完皮他會攻進來，他只是站在門口，等她說話。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "那團光開口，聲音很輕：「三百年，沒人問過我想不想回家。」小七走過去，牽住那團光。",
+        "question": "老九想不想回家，誰來問？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        2,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "zhiguai",
+        "xuanyi"
+      ],
+      "spectacle": "茶館門口站著一團人形的光與影，溫和、不嚇人，像一盞燈。",
+      "glamour_shot": "小七牽住那團光的手，她在櫃台後抬頭看。",
+      "setups": [],
+      "payoffs": [
+        "s04-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老九真身與小七的畫對上"
+      ],
+      "characters": [
+        "lao-jiu",
+        "xiao-qi",
+        "yan-fei",
+        "a-pu",
+        "lin-an"
+      ],
+      "locations": [
+        "無事茶館門口"
+      ],
+      "state": {
+        "time": "第二十六天夜",
+        "knowledge": "老九撕完皮，真身是光與影",
+        "carry_forward": "「沒人問過我想不想回家。」"
+      }
+    },
+    {
+      "number": 238,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "第九十九張",
+      "youtube_title": "小道士畫完最後一張符：師父，這次全對了",
+      "duration_s": 140,
+      "logline": "阿璞畫對第九十九張符，爺爺的符第一次全對；符陣替她守住最後一角一晚。",
+      "hook": "阿璞落筆，最後一筆收鋒，九十九張符一起亮：「師父！全對了！」",
+      "hook_type": "line",
+      "mid_hook": "符陣鋪滿茶館地板，壓住縫的最後一角——她今天不用去補。",
+      "extra_hooks": [
+        "她看著阿璞，說了今天唯一一句：「你爺爺畫錯過三張。」"
+      ],
+      "conflict": "阿璞畫對了，她是不是就要去補？",
+      "turn": "大家以為畫對了是送她走，結果符陣是替她多留一天。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "符陣的光照著老九和小七，老九說：「明天符會淡。她得選。」阿璞握著筆，看她：「師父，妳選什麼？」",
+        "question": "她明天會選什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xuanyi",
+        "shenfen"
+      ],
+      "spectacle": "九十九張符在茶館地板排成一圈，同時亮起金光，壓住縫口。",
+      "glamour_shot": "阿璞舉筆歡呼的慢動作，她在燈下看他，嘴角動了一分。",
+      "setups": [],
+      "payoffs": [
+        "s04-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "阿璞的符第一次全對",
+        "縫多守一夜"
+      ],
+      "characters": [
+        "a-pu",
+        "yan-fei",
+        "xiao-qi",
+        "lao-jiu",
+        "lin-an"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十七天夜",
+        "knowledge": "符陣守一夜，明天要選",
+        "carry_forward": "「師父，妳選什麼？」"
+      }
+    },
+    {
+      "number": 239,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "別說完",
+      "youtube_title": "老說書人要說話本的結局，她只說了三個字：別說完",
+      "duration_s": 130,
+      "logline": "最後一晚前，老蔡要說完話本；顏非阻止他說結局。",
+      "hook": "老蔡拍醒木：「今天說完——話說老闆娘最後把燈——」她開口：「別說完。」",
+      "hook_type": "line",
+      "mid_hook": "滿座靜下。老蔡放下醒木，笑了：「好，不說完。說書的留一句，客人才會再來。」",
+      "extra_hooks": [
+        "符陣的光一張張淡下去，縫口又亮了。"
+      ],
+      "conflict": "結局要不要先說？",
+      "turn": "大家以為她怕聽結局，她是要自己選結局。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "最後一張符熄了，縫口的光衝上來照亮整間茶館；門口那團光重新凝成老九的樣子，第一次不笑地看著她。",
+        "question": "老九要她現在就選嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "zhiguai"
+      ],
+      "spectacle": "最後一張符熄滅，縫口的光柱從地板衝上天花板。",
+      "glamour_shot": "她站起來的那一刻，光柱從她背後衝上去，赤腳站在光邊。",
+      "setups": [],
+      "payoffs": [
+        "s04-t13"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她留住了自己的結局"
+      ],
+      "characters": [
+        "lao-cai",
+        "yan-fei",
+        "a-pu",
+        "lin-an",
+        "xiao-qi",
+        "lao-jiu"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十八天夜",
+        "knowledge": "符熄了，縫口要她選",
+        "carry_forward": "老九在門口"
+      }
+    },
+    {
+      "number": 240,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "燈不亮我也在",
+      "youtube_title": "老九問她：補上妳就沒了，不補縫開了妳還在。她把茶館的燈關了",
+      "duration_s": 180,
+      "logline": "縫口全亮，老九站在門口要顏非選：補上，她消失；不補，縫開她還在。她第一次把燈關了。",
+      "hook": "光柱照著老九，他站在門口沒有笑：「妳補上了，妳就沒了。妳不補，縫開了妳還在。妳選。」",
+      "hook_type": "line",
+      "mid_hook": "阿璞、林岸、小七、老蔡都看著她。她走到燈前，手放在開關上。",
+      "extra_hooks": [
+        "林岸低聲：「前輩，林家守妳。不管妳選什麼。」",
+        "她說：「我等了三百年才等到一個肯問我選什麼的人。」"
+      ],
+      "conflict": "補，還是不補。",
+      "turn": "大家以為她要把自己放進縫，她卻把茶館那盞三百年沒熄過的燈關了——燈靈不在燈裡，在人間。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "茶館的燈第一次熄了，縫口的光也跟著暗下去，一片黑。阿璞在黑裡說：「師父？」她說：「在。燈不亮我也在。」",
+        "question": "燈關了，縫和她會怎樣？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        5,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xuanyi",
+        "zhiguai"
+      ],
+      "spectacle": "三百年不滅的茶館燈熄滅，縫口的光柱同時收回地板，整條老街的燈跟著暗下一秒。",
+      "glamour_shot": "她伸手關燈的慢動作特寫，最後一縷光掠過她不眨的眼。",
+      "setups": [
+        "m12",
+        "m01"
+      ],
+      "payoffs": [
+        "s04-t13",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她親手關燈，燈靈第一次不在燈裡"
+      ],
+      "characters": [
+        "yan-fei",
+        "lao-jiu",
+        "a-pu",
+        "lin-an",
+        "xiao-qi",
+        "lao-cai"
+      ],
+      "locations": [
+        "無事茶館"
+      ],
+      "state": {
+        "time": "第二十八天深夜",
+        "knowledge": "老九的選擇擺在面前；她關了燈，人還在",
+        "carry_forward": "黑暗裡的「燈不亮我也在」；縫只剩一角"
+      }
+    }
+  ]
+}
