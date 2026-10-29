@@ -220,9 +220,18 @@ their historical receipts. Coverage and the scoped release README/evidence.json
 record the actual result; the global task is still unfinished.
 
 Next-source corrections for fine-tuning, few-shot prompting, multimodal and
-zero-shot prompting are isolated in draft PR #1915. Their 16 translations are not
-authored. Source publication requires its own concrete release scope and owner
-decision; this eight-translation approval does not cover that next cohort.
+zero-shot prompting were merged in PR #1915 under a separate explicit owner
+decision to merge and prepare the release plan. The merged target is
+`a036679662030de86f00f0271f84a39265f55edd`, whose tree equals the independently
+reviewed head. All 22 PR head checks passed. Their 16 translations are not
+authored. Fresh host readback remains at 7e380; deployment and source publication
+require their own concrete release scope and owner decision.
 The native translation bundle requires all five locales and refuses these four
 zh-TW-only packs. A separate guarded source-release plan is being prepared;
 the original baselines and compatibility refusal remain preserved externally.
+The new native adapter is scoped to existing save_draft/publish_locale kernels
+with pinned expected versions and durable intent/readback reconciliation. It
+must preserve eight existing non-editor aliases, article metadata/taxonomy and
+unrelated incoming links; the fresh four-source snapshot is clean and matches
+the reviewed original hashes. No source publication or new translation is
+inferred from this preparation.
