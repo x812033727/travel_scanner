@@ -4,26 +4,2092 @@
   "format": "slides",
   "category": "tutorial",
   "theme": "paper",
-  "target_minutes": [10, 12],
-  "voice": { "provider": "gemini", "name": "Sulafat" },
-  "subtitles": { "burn_in": false },
+  "target_minutes": [
+    10,
+    12
+  ],
+  "voice": {
+    "provider": "gemini",
+    "name": "Sulafat",
+    "style": "標準國語，咬字清楚，台北人平常說話的語調。像一位每天用 AI 的朋友，坐在你旁邊一起打開設定頁：平穩、實在、不嚇人，帶一點乾乾的幽默。英文的產品名與設定名稱照英文唸。替觀眾問的疑問上揚，答案接得乾脆。絕不像在念稿。",
+    "performance": "開場壓低放慢，「三年」前停半拍；替觀眾問的疑問上揚，答案乾脆；設定步驟一步一頓，選單名唸清楚；年份與天數放慢、一個日期一口氣；「我的看法是」放慢放穩；「我查不到」放輕；留言題輕輕收。"
+  },
+  "subtitles": {
+    "burn_in": false
+  },
   "youtube": {
     "category_id": 28,
     "made_for_kids": false,
     "default_language": "zh-TW",
     "title": "你跟 AI 說的話誰看得到？關掉訓練，還有兩個開關開著",
-    "description": "骨架，稍後填寫。",
-    "tags": ["AI 隱私設定"],
+    "description": "關掉 AI 的訓練開關，你打進去的字就沒人看得到了嗎？這支用一份假履歷，帶你在 Gemini、Claude、ChatGPT 找到訓練、記憶、人工審查三個開關，算出你今天打的字最晚留到哪一天。\n給每天拿 AI 改履歷、回信、整理資料，已經照網路教學關掉訓練的人。\n\n本頻道使用 Claude 協助製作影片。\n\n設定位置（依各家官方說明頁，2026-10-29 查）\nGemini（電腦版 gemini.google.com）\n・保留活動記錄：設定與說明 → 活動記錄 → 畫面上方「開啟」→「關閉」或「關閉並刪除活動記錄」\n・自動刪除：同一頁的「選擇自動刪除選項」，3、18、36 個月或不自動刪除（預設 18 個月）\n・個人化記憶：設定與說明 → 個人化智慧服務 → 個人化記憶（要先開著保留活動記錄）\n・臨時對話：「新對話」旁邊的「臨時對話」\nClaude\n・訓練：Settings → Privacy → Help Improve our AI models\n・記憶：Settings → Your Claude → Memory from chats（Pause memory 暫停；Reset memory 全部刪除、無法復原）；刪單一條記憶：Your memory 旁邊的 Manage\n・只有這一次對話不用記憶：送出第一則訊息之前，在「+」選單關掉 Memory\n・Incognito：在專案外開新對話時，右上角的幽靈圖示\nChatGPT\n・記憶：Settings 裡的 Personalization（learn.chatgpt.com）\n・OpenAI 說明中心（help.openai.com）2026-10-29 用本頻道的工具讀取時回傳 403，所以片中沒有 ChatGPT 的訓練開關名稱、臨時對話的保留天數和人工審查的說明；請打開你自己的設定頁核對。\n\n保留期限實算：把官方頁寫的期限加到 2026-10-29 00:00 UTC，用 Node.js v22.22.0 執行 lifespan.mjs（2026-10-29）。Gemini「審查員讀過」那一列假設當天就被審查，官方頁沒有寫三年從哪一天起算。Claude 沒刪的一般對話沒有固定保留天數。\n\n片中的假履歷（林測試、0900-000-000）全部是編的。第 4 章「答不答得出來」是依官方說明的預期結果，沒有登入任何帳號實測；設定步驟全部引用官方說明頁，沒有錄任何人的帳號畫面。只談個人方案，不談企業版與 API。",
+    "tags": [
+      "AI 隱私設定",
+      "ChatGPT 隱私",
+      "Gemini 活動記錄",
+      "Claude 隱私設定",
+      "AI 訓練 關閉",
+      "臨時對話",
+      "Incognito",
+      "AI 記憶",
+      "Gemini 個人化記憶",
+      "人工審查"
+    ],
     "video_id": null
   },
+  "thumbnail": {
+    "template": "thumb",
+    "data": {
+      "tag": "AI 隱私設定",
+      "headline": "還剩兩個\n**開關**",
+      "sub": "關掉訓練之後",
+      "capture": "open-hub"
+    }
+  },
+  "sources": [
+    {
+      "title": "Gemini Apps Privacy Hub（Google，Last updated October 26, 2026）",
+      "url": "https://support.google.com/gemini/answer/13594961?hl=en",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "Gemini 應用程式隱私權專區（Google，繁中）",
+      "url": "https://support.google.com/gemini/answer/13594961?hl=zh-Hant",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "管理及刪除 Gemini 系列應用程式活動記錄（Google）",
+      "url": "https://support.google.com/gemini/answer/13278892?hl=zh-Hant",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "根據 Gemini 對話記錄提供個人化體驗（Google）",
+      "url": "https://support.google.com/gemini/answer/16598469?hl=zh-Hant",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "Start a temporary chat（Gemini Apps Help）",
+      "url": "https://support.google.com/gemini/answer/13275745?hl=en",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "Is my data used for model training?（Anthropic Privacy Center，March 16, 2026）",
+      "url": "https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "How long do you store my data?（Anthropic Privacy Center，July 1, 2026）",
+      "url": "https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "How do I change my model improvement privacy settings?（Anthropic Privacy Center，August 3, 2026）",
+      "url": "https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "How does Anthropic protect the personal data of Claude users?（Anthropic Privacy Center，March 16, 2026）",
+      "url": "https://privacy.claude.com/en/articles/10458704-how-does-anthropic-protect-the-personal-data-of-claude-users",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "Use incognito chats（Claude Help Center）",
+      "url": "https://support.claude.com/en/articles/12260368-use-incognito-chats",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "Use Claude’s chat search and memory to build on previous context（Claude Help Center）",
+      "url": "https://support.claude.com/en/articles/11817273-use-claude-s-chat-search-and-memory-to-build-on-previous-context",
+      "checked_on": "2026-10-29"
+    },
+    {
+      "title": "Memories（learn.chatgpt.com）",
+      "url": "https://learn.chatgpt.com/docs/customization/memories.md",
+      "checked_on": "2026-10-29"
+    }
+  ],
+  "loops": [
+    {
+      "setup": "qhe7",
+      "payoff": "r8j6",
+      "what": "我不是已經把訓練關掉了嗎"
+    },
+    {
+      "setup": "5fhw",
+      "payoff": "7kgs",
+      "what": "審查過的那段會留到哪一天"
+    },
+    {
+      "setup": "5zuf",
+      "payoff": "hsbb",
+      "what": "三個開關各在哪裡"
+    },
+    {
+      "setup": "5zuf",
+      "payoff": "gpgn",
+      "what": "那一次測試怎麼做"
+    },
+    {
+      "setup": "y52u",
+      "payoff": "m9se",
+      "what": "你打的字最晚留到哪一天"
+    },
+    {
+      "setup": "xi6h",
+      "payoff": "8yh7",
+      "what": "薄荷綠那句怎麼驗記憶"
+    },
+    {
+      "setup": "n5t7",
+      "payoff": "haan",
+      "what": "關掉訓練填了四格裡的幾格"
+    },
+    {
+      "setup": "mfee",
+      "payoff": "6neu",
+      "what": "Gemini 的記憶為什麼跟著停"
+    },
+    {
+      "setup": "3ige",
+      "payoff": "m999",
+      "what": "都用臨時模式行不行"
+    },
+    {
+      "setup": "8rrd",
+      "payoff": "8yh7",
+      "what": "怎麼知道它真的沒記住"
+    },
+    {
+      "setup": "xci3",
+      "payoff": "tqwm",
+      "what": "刪掉了總該不在了吧"
+    },
+    {
+      "setup": "tr79",
+      "payoff": "5hcs",
+      "what": "關掉的那個開關到底關了什麼"
+    }
+  ],
   "scenes": [
-    { "id": "open-title", "chapter": "關掉 AI 訓練，就沒人看得到嗎？", "template": "title", "data": { "title": "骨架" }, "lines": [{ "id": "hw9f", "text": "骨架。" }] },
-    { "id": "ch1-resume", "chapter": "訓練、記憶、人工審查差在哪？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "bhtz", "text": "骨架。" }] },
-    { "id": "ch2-compare", "chapter": "關掉訓練之後，還開著什麼？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "ebiz", "text": "骨架。" }] },
-    { "id": "ch3-gemini-steps", "chapter": "Gemini、Claude、ChatGPT 隱私設定在哪？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "hsbb", "text": "骨架。" }] },
-    { "id": "ch4-canary-chat", "chapter": "怎麼知道 AI 有沒有記住你？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "gpgn", "text": "骨架。" }] },
-    { "id": "ch5-term1", "chapter": "刪掉的對話會留多久？", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "m9se", "text": "骨架。" }] },
-    { "id": "ch6-actions", "chapter": "AI 隱私設定：今天先做這三件", "template": "big", "data": { "text": "骨架" }, "lines": [{ "id": "emfq", "text": "骨架。" }] },
-    { "id": "closing", "template": "outro", "data": { "title": "骨架" }, "lines": [{ "id": "5hcs", "text": "骨架。" }] }
+    {
+      "id": "open-hub",
+      "chapter": "關掉 AI 訓練，就沒人看得到嗎？",
+      "template": "screencast",
+      "data": {
+        "caption": "support.google.com｜Gemini 應用程式隱私權專區｜2026-10-29 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://support.google.com/gemini/answer/13594961?hl=zh-Hant"
+          },
+          {
+            "action": "wait",
+            "selector": "a#keep_activity_setting"
+          },
+          {
+            "action": "click",
+            "selector": "a#keep_activity_setting"
+          },
+          {
+            "action": "wait",
+            "selector": "li:has-text(\"刪除活動記錄並不會刪除服務供應商審查過的對話\")"
+          },
+          {
+            "action": "capture",
+            "focus": "li:has-text(\"刪除活動記錄並不會刪除服務供應商審查過的對話\")",
+            "zoom": 1.4
+          }
+        ],
+        "key": "審查過的對話：刪了也留最多 3 年"
+      },
+      "claims": [
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "hw9f",
+          "text": "你在 Gemini 把保留活動記錄關掉，再把紀錄全部刪光。",
+          "emotion": "開場壓低放慢，像在講一件小事"
+        },
+        {
+          "id": "5fhw",
+          "text": "可是只要有一段被審查員讀過，它不會跟著刪，最多還會留三年。",
+          "emotion": "「三年」前停半拍，壓低"
+        }
+      ]
+    },
+    {
+      "id": "open-naive",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會想",
+        "text": "我不是已經\n**關掉訓練**了嗎？",
+        "key": "我不是已經關掉訓練了嗎？"
+      },
+      "lines": [
+        {
+          "id": "qhe7",
+          "text": "你可能會想：我不是已經把訓練關掉了嗎？",
+          "emotion": "替觀眾問，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "open-answer",
+      "template": "big",
+      "data": {
+        "kicker": "關掉的只有訓練",
+        "text": "還會被**記住**\n被**讀到**、被**留下來**",
+        "key": "記住、讀到、留下來：另外的開關"
+      },
+      "claims": [
+        "c2",
+        "c15",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "r8j6",
+          "text": "關掉的只是訓練；你打進去的字，還會被記住、被人讀到、被留下來。",
+          "emotion": "答得乾脆，三個動詞一個一頓"
+        },
+        {
+          "id": "vyz4",
+          "text": "這幾件事各接在不同的開關上，而且每一家的接法都不一樣。"
+        }
+      ]
+    },
+    {
+      "id": "open-promise",
+      "template": "bullets",
+      "data": {
+        "title": "同一份假履歷",
+        "items": [
+          {
+            "text": "三個開關，各自找到",
+            "icon": "gear"
+          },
+          {
+            "text": "一次測試，驗它記不記得",
+            "icon": "chat"
+          },
+          {
+            "text": "一張表，算到哪一天",
+            "icon": "clock"
+          }
+        ],
+        "keys": [
+          "你貼的字，走同一條路",
+          "三個開關、一次測試",
+          "一張表：最晚留到哪天"
+        ]
+      },
+      "lines": [
+        {
+          "id": "r9y8",
+          "text": "你貼進去的履歷、客戶的信、家裡的事，走的都是同一條路。"
+        },
+        {
+          "id": "5zuf",
+          "text": "用一份假履歷，教你把三個開關各自找到，做一次測試；",
+          "reveal": 2
+        },
+        {
+          "id": "y52u",
+          "text": "最晚留到哪一天，也排成一張表，從今天算給你看。",
+          "reveal": 1
+        },
+        {
+          "id": "tr79",
+          "text": "那你當初關掉的那個開關，到底關掉了什麼？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "ch1-resume",
+      "chapter": "訓練、記憶、人工審查，差在哪？",
+      "template": "code",
+      "data": {
+        "title": "同一段字，貼進三家",
+        "code": "請幫我把這份履歷改得適合投行政職：\n姓名：林測試\n電話：0900-000-000\n地址：某市某路 0 號\n經歷：在小公司做了三年行政\n備註：我最喜歡的顏色是薄荷綠，代號 MINT-42",
+        "highlight": [
+          6
+        ],
+        "caption": "示範用的假履歷：姓名、電話、地址都是編的",
+        "keys": [
+          "假履歷：林測試",
+          "最後一行：薄荷綠"
+        ]
+      },
+      "lines": [
+        {
+          "id": "bhtz",
+          "text": "這份假履歷，現在要貼進 Gemini、Claude 和 ChatGPT 的一般對話。"
+        },
+        {
+          "id": "39e3",
+          "text": "名字叫林測試，電話是一串零，一眼就看得出是假的，這正是重點。",
+          "emotion": "輕鬆，帶一點笑"
+        },
+        {
+          "id": "xi6h",
+          "text": "最後一行藏了一句測試：我最喜歡的顏色是薄荷綠；等一下要靠它，驗它記不記得你。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch1-table",
+      "template": "table",
+      "data": {
+        "columns": [
+          "這段字會…",
+          "Gemini",
+          "Claude",
+          "ChatGPT"
+        ],
+        "rows": [
+          [
+            "拿去訓練？",
+            "？",
+            "？",
+            "？"
+          ],
+          [
+            "被記住？",
+            "？",
+            "？",
+            "？"
+          ],
+          [
+            "被人讀到？",
+            "？",
+            "？",
+            "？"
+          ],
+          [
+            "留到哪天？",
+            "？",
+            "？",
+            "？"
+          ]
+        ],
+        "keys": [
+          "貼進去，問四個問題",
+          "會不會拿去訓練",
+          "下週還記不記得",
+          "有沒有人讀到",
+          "最晚留到哪一天"
+        ]
+      },
+      "lines": [
+        {
+          "id": "kbyd",
+          "text": "貼進去之後，每一家都要回答同樣四個問題。"
+        },
+        {
+          "id": "wvmd",
+          "text": "它會不會被拿去訓練模型？",
+          "reveal": 1,
+          "emotion": "問句，輕"
+        },
+        {
+          "id": "kj5w",
+          "text": "下週開新對話，它還記不記得你在找工作？",
+          "reveal": 1
+        },
+        {
+          "id": "7iqw",
+          "text": "會不會有人讀到這份履歷？",
+          "reveal": 1
+        },
+        {
+          "id": "g52n",
+          "text": "還有，它最晚會留到哪一天？",
+          "reveal": 1,
+          "emotion": "放慢，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ch1-three",
+      "template": "big",
+      "data": {
+        "kicker": "前三個問題",
+        "numeral": "3",
+        "text": "個開關",
+        "sub": "訓練・記憶・人工審查",
+        "key": "三個開關，不是一個"
+      },
+      "lines": [
+        {
+          "id": "wsa9",
+          "text": "前三個問題，各對應一個開關：訓練、記憶、人工審查。",
+          "emotion": "三個詞一個一頓"
+        },
+        {
+          "id": "526i",
+          "text": "第四個問題的答案，要看前三個你怎麼按。"
+        }
+      ]
+    },
+    {
+      "id": "ch1-flow",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "回答你",
+            "detail": "三家都一樣",
+            "icon": "chat"
+          },
+          {
+            "title": "可能被記住",
+            "detail": "記憶開著時",
+            "icon": "book"
+          },
+          {
+            "title": "可能拿去改良",
+            "detail": "訓練開著時",
+            "icon": "gear"
+          },
+          {
+            "title": "可能有人讀",
+            "detail": "審查員或安全團隊",
+            "icon": "person"
+          }
+        ],
+        "source": "Gemini、Claude 官方說明頁 2026-10-29",
+        "keys": [
+          "送出之後：先回答你",
+          "記憶開著：可能被記住",
+          "訓練開著：可能拿去改良",
+          "還有一條：有人讀到"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c6",
+        "c15",
+        "c16"
+      ],
+      "lines": [
+        {
+          "id": "2uzy",
+          "text": "一句話送出去，第一件事是回答你，三家都一樣。",
+          "reveal": 1
+        },
+        {
+          "id": "bnp3",
+          "text": "記憶開著，它可能被記下來，帶到下一次對話；",
+          "reveal": 1
+        },
+        {
+          "id": "cdi4",
+          "text": "訓練開著，它可能被拿去改良模型；",
+          "reveal": 1
+        },
+        {
+          "id": "suyd",
+          "text": "另外還有一條路，是被人讀到：審查員，或安全團隊。",
+          "reveal": 1,
+          "emotion": "轉折，壓低"
+        }
+      ]
+    },
+    {
+      "id": "ch1-defaults",
+      "template": "table",
+      "data": {
+        "columns": [
+          "開關",
+          "你什麼都不做時"
+        ],
+        "rows": [
+          [
+            "Gemini 保留活動記錄",
+            "滿 18 歲預設開啟"
+          ],
+          [
+            "Claude 記憶",
+            "Free、Pro、Max 預設開啟"
+          ],
+          [
+            "Claude 搜尋過去對話",
+            "付費方案，推出後預設開啟"
+          ]
+        ],
+        "source": "Gemini、Claude 說明頁 2026-10-29",
+        "keys": [
+          "什麼都不做：大多開著",
+          "Gemini：滿 18 歲預設開",
+          "Claude 記憶：預設開",
+          "搜尋過去對話：預設開"
+        ]
+      },
+      "claims": [
+        "c7",
+        "c19",
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "b9cr",
+          "text": "而且你什麼都不做，這些開關大多是開著的："
+        },
+        {
+          "id": "6quk",
+          "text": "Gemini 的保留活動記錄，滿十八歲就預設開啟；",
+          "reveal": 1
+        },
+        {
+          "id": "8ya3",
+          "text": "Claude 的記憶，Free、Pro、Max 方案預設開啟；",
+          "reveal": 1
+        },
+        {
+          "id": "ntiw",
+          "text": "Claude 付費方案搜尋過去對話的功能，推出後也是預設開著。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch1-gemini-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Gemini 隱私權專區",
+        "quote": "即使關閉「保留活動記錄」設定或使用臨時對話……過程中可能會借助人工審查",
+        "source": "support.google.com · Gemini 隱私權專區 · 2026-10-29",
+        "key": "關掉紀錄，仍可能有人工審查"
+      },
+      "claims": [
+        "c2"
+      ],
+      "lines": [
+        {
+          "id": "ihcc",
+          "text": "那份履歷，會不會被人讀到？Gemini 這邊，就算關掉紀錄、改用臨時對話，"
+        },
+        {
+          "id": "jjhj",
+          "text": "它仍會用你的對話來保護 Google、使用者和大眾，過程可能有人工審查。",
+          "emotion": "清楚，「人工審查」放慢"
+        }
+      ],
+      "chapter": "誰讀得到你的 AI 對話？"
+    },
+    {
+      "id": "ch1-claude-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Anthropic 隱私中心",
+        "quote": "By default, Anthropic employees cannot access your conversations unless…",
+        "translation": "預設情況下，Anthropic 員工無法存取你的對話，除非……",
+        "source": "privacy.claude.com · 2026-03-16 版 · 2026-10-29 查",
+        "keys": [
+          "Claude：員工預設看不到",
+          "例外：回饋，或安全審查"
+        ]
+      },
+      "claims": [
+        "c15"
+      ],
+      "lines": [
+        {
+          "id": "w3tx",
+          "text": "Claude 這邊，員工預設看不到你的對話；"
+        },
+        {
+          "id": "agxq",
+          "text": "例外有兩個：你送出回饋，或是對話要做安全審查，",
+          "reveal": 1
+        },
+        {
+          "id": "9pw6",
+          "text": "這時只有信任與安全團隊的指定成員看得到。"
+        }
+      ]
+    },
+    {
+      "id": "ch1-disclose",
+      "template": "big",
+      "data": {
+        "kicker": "先講清楚",
+        "text": "這個頻道的影片\n用 **Claude** 做",
+        "key": "Claude 這邊，照樣查、照樣關"
+      },
+      "claims": [
+        "s1"
+      ],
+      "lines": [
+        {
+          "id": "icn2",
+          "text": "先講清楚，這個頻道的影片是用 Claude 做的；",
+          "emotion": "坦白，平穩"
+        },
+        {
+          "id": "5zq8",
+          "text": "所以 Claude 這邊，我照樣查、照樣關，不替它說好話。"
+        },
+        {
+          "id": "n5t7",
+          "text": "那照網路教學關掉訓練的人，這四格到底填了幾格？",
+          "emotion": "問句輕輕上揚"
+        }
+      ]
+    },
+    {
+      "id": "ch2-compare",
+      "chapter": "關掉訓練之後，還開著什麼？",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "網路教學說的",
+          "icon": "lock",
+          "points": [
+            "關掉訓練",
+            "就沒人看得到"
+          ]
+        },
+        "right": {
+          "heading": "實際還開著的",
+          "icon": "warning",
+          "points": [
+            "記憶",
+            "人工審查",
+            "保留期限"
+          ]
+        },
+        "source": "Gemini、Claude 官方說明頁 2026-10-29",
+        "keys": [
+          "網路教學：關掉訓練就好",
+          "還開著：記憶、審查、保留"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c19",
+        "c22"
+      ],
+      "lines": [
+        {
+          "id": "ebiz",
+          "text": "網路上一招關掉 AI 訓練的教學，你大概也存過幾篇，存了就算做了，對吧？",
+          "reveal": 1,
+          "emotion": "帶一點笑"
+        },
+        {
+          "id": "5uq9",
+          "text": "假設你三家都照做，把訓練關掉了。"
+        },
+        {
+          "id": "haan",
+          "text": "這個做法只回答了四個問題裡的一個；記憶、審查、保留，都還沒動。",
+          "reveal": 1,
+          "emotion": "轉折，壓低"
+        }
+      ]
+    },
+    {
+      "id": "ch2-table",
+      "template": "table",
+      "data": {
+        "columns": [
+          "關掉訓練之後",
+          "Gemini",
+          "Claude",
+          "ChatGPT"
+        ],
+        "rows": [
+          [
+            "記憶",
+            "跟著停用",
+            "照樣開著",
+            "Settings > Personalization"
+          ],
+          [
+            "人工審查",
+            "仍可能",
+            "被標記才看",
+            "—"
+          ],
+          [
+            "保留",
+            "72 小時",
+            "刪除後 30 天",
+            "—"
+          ]
+        ],
+        "source": "Gemini、Claude 官方頁 2026-10-29；ChatGPT 只列選單位置",
+        "keys": [
+          "關掉訓練後，剩下三格",
+          "記憶：三家三種",
+          "審查：Gemini 仍可能",
+          "保留：72 小時、30 天"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c3",
+        "c5",
+        "c15",
+        "c19",
+        "c22",
+        "c30",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "s7pc",
+          "text": "關掉訓練之後，先看記憶這一格，三家分成三種。"
+        },
+        {
+          "id": "aj4i",
+          "text": "Gemini 的記憶跟著停了，Claude 的記憶照樣開著；",
+          "reveal": 1
+        },
+        {
+          "id": "yvka",
+          "text": "人工審查，Gemini 仍可能有人讀；Claude 要被安全系統標記，才會有人看。",
+          "reveal": 1
+        },
+        {
+          "id": "2gun",
+          "text": "保留時間，Gemini 關掉紀錄後是 72 小時；",
+          "reveal": 1
+        },
+        {
+          "id": "gsps",
+          "text": "Claude 刪掉的對話，要 30 天內才從後端刪除。"
+        },
+        {
+          "id": "sdjw",
+          "text": "ChatGPT 的保留天數我沒查到，先別拿另外兩家的數字去套。",
+          "emotion": "放輕，坦白"
+        }
+      ]
+    },
+    {
+      "id": "ch2-memory-page",
+      "template": "screencast",
+      "data": {
+        "caption": "support.google.com｜根據 Gemini 對話記錄提供個人化體驗｜2026-10-29 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://support.google.com/gemini/answer/16598469?hl=zh-Hant"
+          },
+          {
+            "action": "wait",
+            "selector": "li:has-text(\"如關閉此設定，就無法使用這項功能\")"
+          },
+          {
+            "action": "capture",
+            "focus": "li:has-text(\"如關閉此設定，就無法使用這項功能\")",
+            "zoom": 1.5
+          }
+        ],
+        "key": "個人化記憶：保留活動記錄要開著"
+      },
+      "claims": [
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "mfee",
+          "text": "為什麼 Gemini 的記憶會跟著停？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "6neu",
+          "text": "因為它的個人化記憶，要先開著保留活動記錄；這個設定一關，就不能用。"
+        }
+      ]
+    },
+    {
+      "id": "ch2-tied",
+      "template": "big",
+      "data": {
+        "kicker": "Gemini 的接法",
+        "text": "想被記得\n就得讓它**拿去改良**",
+        "key": "Gemini：記憶和訓練綁在一起"
+      },
+      "claims": [
+        "c6",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "hxei",
+          "text": "換句話說，在 Gemini，想讓它記得你，"
+        },
+        {
+          "id": "p5hz",
+          "text": "保留活動記錄就得開著，對話也會被拿去改良服務，包括訓練模型。",
+          "emotion": "「也會」加重"
+        }
+      ]
+    },
+    {
+      "id": "ch2-claude-separate",
+      "template": "big",
+      "data": {
+        "kicker": "Claude 剛好相反",
+        "text": "訓練和記憶\n**兩個開關**",
+        "key": "Claude：訓練和記憶分開"
+      },
+      "claims": [
+        "c17",
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "tsau",
+          "text": "Claude 剛好相反：訓練和記憶，是兩個分開的開關。",
+          "emotion": "轉折，亮起來"
+        }
+      ]
+    },
+    {
+      "id": "ch2-temp-q",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會問",
+        "text": "那我都用\n**臨時模式**不就好了？",
+        "key": "都用臨時模式，不就好了？"
+      },
+      "lines": [
+        {
+          "id": "3ige",
+          "text": "那你可能會問：我每次都開臨時模式，不就好了？",
+          "emotion": "替觀眾問，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ch2-temp-compare",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Gemini 臨時對話",
+          "icon": "clock",
+          "points": [
+            "保留 72 小時",
+            "不用於訓練",
+            "不能用 Gem、個人化"
+          ]
+        },
+        "right": {
+          "heading": "Claude Incognito",
+          "icon": "lock",
+          "points": [
+            "保留 30 天",
+            "不用於訓練",
+            "仍讀得到個人偏好"
+          ]
+        },
+        "source": "Gemini、Claude 官方說明頁 2026-10-29",
+        "keys": [
+          "Gemini 臨時對話：72 小時",
+          "Claude Incognito：30 天"
+        ]
+      },
+      "claims": [
+        "c4",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "c9sx",
+          "text": "Gemini 的臨時對話，留的時間跟關掉紀錄一樣，也不拿去訓練；",
+          "reveal": 1
+        },
+        {
+          "id": "pvzn",
+          "text": "代價是不能用 Gem，也沒有個人化回覆。"
+        },
+        {
+          "id": "m999",
+          "text": "Claude 的 Incognito 一樣不訓練、不進記憶，卻要留 30 天，是十倍。",
+          "reveal": 1,
+          "emotion": "「十倍」前停半拍"
+        },
+        {
+          "id": "v4nx",
+          "text": "而且在 Incognito 裡，它照樣讀得到你在設定裡寫的個人偏好。",
+          "emotion": "轉折，壓低"
+        }
+      ]
+    },
+    {
+      "id": "ch2-rule",
+      "template": "table",
+      "data": {
+        "columns": [
+          "你不想要的",
+          "要動的"
+        ],
+        "rows": [
+          [
+            "被拿去訓練",
+            "關訓練"
+          ],
+          [
+            "被記住",
+            "關記憶，或開臨時模式"
+          ],
+          [
+            "被任何人讀到",
+            "別貼"
+          ]
+        ],
+        "source": "依 Gemini、Claude 官方說明頁整理 2026-10-29",
+        "keys": [
+          "看你最不想要哪一件",
+          "不想被訓練：關訓練",
+          "不想被記住：關記憶",
+          "不想被讀到：別貼"
+        ]
+      },
+      "claims": [
+        "c2",
+        "c15",
+        "c21"
+      ],
+      "lines": [
+        {
+          "id": "rnju",
+          "text": "所以要選，就看你最不想要哪一件："
+        },
+        {
+          "id": "f43m",
+          "text": "不想被拿去訓練，關訓練；",
+          "reveal": 1
+        },
+        {
+          "id": "7xpz",
+          "text": "不想被記住，關記憶，或開臨時模式；",
+          "reveal": 1
+        },
+        {
+          "id": "4as9",
+          "text": "不想被任何人讀到，那就別貼；",
+          "reveal": 1,
+          "emotion": "壓低，「別貼」加重"
+        },
+        {
+          "id": "p89k",
+          "text": "Gemini 和 Claude，都沒有開關能完全關掉這一條。"
+        },
+        {
+          "id": "fv4b",
+          "text": "那這三個開關，在每一家的哪裡？",
+          "emotion": "問句輕輕收"
+        }
+      ]
+    },
+    {
+      "id": "ch3-gemini-steps",
+      "chapter": "Gemini、Claude、ChatGPT 隱私設定在哪？",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "設定與說明",
+            "detail": "電腦版 gemini.google.com",
+            "icon": "gear"
+          },
+          {
+            "title": "活動記錄",
+            "detail": "Gemini 應用程式活動記錄",
+            "icon": "clock"
+          },
+          {
+            "title": "開啟 → 關閉",
+            "detail": "或「關閉並刪除活動記錄」",
+            "icon": "lock"
+          },
+          {
+            "title": "自動刪除",
+            "detail": "3、18、36 個月或不刪",
+            "icon": "checklist"
+          }
+        ],
+        "source": "support.google.com 管理及刪除活動記錄 2026-10-29",
+        "keys": [
+          "Gemini：設定與說明",
+          "再點活動記錄",
+          "開啟 → 關閉",
+          "想留記憶：改自動刪除"
+        ]
+      },
+      "claims": [
+        "c8",
+        "c9",
+        "c10"
+      ],
+      "lines": [
+        {
+          "id": "hsbb",
+          "text": "知道要動哪幾格了，從 Gemini 開始：在電腦版點設定與說明，",
+          "reveal": 1
+        },
+        {
+          "id": "dpty",
+          "text": "再點活動記錄，進到你的 Gemini 應用程式活動記錄。",
+          "reveal": 1
+        },
+        {
+          "id": "gpm4",
+          "text": "畫面上方的開啟，改成關閉；要連舊的一起清，選關閉並刪除活動記錄。",
+          "reveal": 1,
+          "emotion": "一步一頓，選單名唸清楚"
+        },
+        {
+          "id": "imd7",
+          "text": "想留著記憶，就別關，改成自動刪除：預設十八個月，可以改成三個月。",
+          "reveal": 1
+        },
+        {
+          "id": "hb6y",
+          "text": "一關掉它，連 Workspace 這類連結的應用程式，也會一起停用。",
+          "emotion": "提醒，平穩"
+        }
+      ]
+    },
+    {
+      "id": "ch3-gemini-page",
+      "template": "screencast",
+      "data": {
+        "caption": "support.google.com｜管理及刪除 Gemini 系列應用程式活動記錄｜2026-10-29 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://support.google.com/gemini/answer/13278892?hl=zh-Hant"
+          },
+          {
+            "action": "wait",
+            "selector": "li:has-text(\"關閉並刪除活動記錄\")"
+          },
+          {
+            "action": "capture",
+            "focus": "li:has-text(\"關閉並刪除活動記錄\")",
+            "zoom": 1.4
+          }
+        ],
+        "key": "關掉之後：新對話不進活動記錄"
+      },
+      "claims": [
+        "c3",
+        "c8"
+      ],
+      "lines": [
+        {
+          "id": "mbuz",
+          "text": "怎麼知道關好了？之後的新對話，不會再出現在活動記錄裡。",
+          "emotion": "問句，答得乾脆"
+        }
+      ]
+    },
+    {
+      "id": "ch3-claude-steps",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Settings",
+            "detail": "從你的名字選單進去",
+            "icon": "person"
+          },
+          {
+            "title": "Privacy",
+            "detail": "隱私設定",
+            "icon": "lock"
+          },
+          {
+            "title": "Help Improve our AI models",
+            "detail": "切到關",
+            "icon": "gear"
+          }
+        ],
+        "source": "privacy.claude.com、support.claude.com 2026-10-29",
+        "keys": [
+          "Claude：Settings → Privacy",
+          "Help Improve 切到關"
+        ]
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "jym8",
+          "text": "Claude 的訓練開關，在 Settings 裡的 Privacy；",
+          "reveal": 2
+        },
+        {
+          "id": "f9n8",
+          "text": "名稱是 Help Improve our AI models，切到關就好。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch3-claude-past",
+      "template": "big",
+      "data": {
+        "kicker": "那以前聊過的呢",
+        "text": "之後的訓練**不再用**\n訓練好的模型**收不回**",
+        "key": "已經訓練好的，收不回來"
+      },
+      "claims": [
+        "c18"
+      ],
+      "lines": [
+        {
+          "id": "xkc5",
+          "text": "那以前聊過的那些呢？",
+          "emotion": "替觀眾問，輕"
+        },
+        {
+          "id": "c7h3",
+          "text": "關掉之後，新的和舊的對話，都不會再用在之後的訓練；"
+        },
+        {
+          "id": "fj5x",
+          "text": "但已經開始的訓練、已經訓練好的模型，收不回來。",
+          "emotion": "壓低，「收不回來」放慢"
+        }
+      ]
+    },
+    {
+      "id": "ch3-claude-page",
+      "template": "screencast",
+      "data": {
+        "caption": "privacy.claude.com｜模型改良設定的步驟｜2026-08-03 版｜2026-10-29 擷取",
+        "steps": [
+          {
+            "action": "goto",
+            "url": "https://privacy.claude.com/en/articles/12109829-how-do-i-change-my-model-improvement-privacy-settings"
+          },
+          {
+            "action": "wait",
+            "selector": "li:has-text(\"Under Help Improve our AI models\") >> nth=0"
+          },
+          {
+            "action": "capture",
+            "focus": "li:has-text(\"Under Help Improve our AI models\") >> nth=0",
+            "zoom": 1.4
+          }
+        ],
+        "key": "手機版：同樣幾步，同一個開關"
+      },
+      "claims": [
+        "c17"
+      ],
+      "lines": [
+        {
+          "id": "k7h3",
+          "text": "手機上也一樣：你的名字、Settings、Privacy，同一個開關。"
+        }
+      ]
+    },
+    {
+      "id": "ch3-claude-memory",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Your Claude",
+            "detail": "在 Settings 裡",
+            "icon": "person"
+          },
+          {
+            "title": "Memory from chats",
+            "detail": "切到關",
+            "icon": "book"
+          },
+          {
+            "title": "Pause／Reset",
+            "detail": "暫停，或全部刪除",
+            "icon": "warning"
+          }
+        ],
+        "source": "support.claude.com 記憶說明 2026-10-29",
+        "keys": [
+          "記憶：Your Claude",
+          "Reset：無法復原"
+        ]
+      },
+      "claims": [
+        "c19"
+      ],
+      "lines": [
+        {
+          "id": "33zp",
+          "text": "記憶在另一頁：Settings 裡的 Your Claude，找 Memory from chats。",
+          "reveal": 2
+        },
+        {
+          "id": "b4rg",
+          "text": "關的時候有兩個選項：Pause 是暫停、舊的留著；Reset 是全部刪掉，無法復原。",
+          "emotion": "「無法復原」加重",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch3-claude-single",
+      "template": "table",
+      "data": {
+        "columns": [
+          "你想要的",
+          "怎麼開"
+        ],
+        "rows": [
+          [
+            "這一次不進記憶",
+            "送出第一句前：＋ 選單，Memory 關掉"
+          ],
+          [
+            "連對話歷史都不留",
+            "專案外，右上角幽靈圖示：Incognito"
+          ],
+          [
+            "不讓它翻舊對話",
+            "Your Claude：Search and reference chats 關掉"
+          ]
+        ],
+        "source": "support.claude.com 記憶與 Incognito 說明 2026-10-29",
+        "keys": [
+          "這一次不進記憶：＋ → Memory",
+          "不留歷史：幽靈圖示",
+          "不翻舊對話：Search 關掉"
+        ]
+      },
+      "claims": [
+        "c20",
+        "c21",
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "vwvq",
+          "text": "只想讓這一次不進記憶，在送出第一句之前，點加號選單，把 Memory 關掉；",
+          "reveal": 1
+        },
+        {
+          "id": "z4x7",
+          "text": "連對話歷史都不想留，就點右上角的幽靈圖示，開 Incognito，它只在專案外面有。",
+          "reveal": 1
+        },
+        {
+          "id": "ghcz",
+          "text": "不想讓它翻舊對話，同一頁還有 Search and reference chats，一樣關掉。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch3-chatgpt-steps",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "Settings",
+            "detail": "ChatGPT 設定",
+            "icon": "gear"
+          },
+          {
+            "title": "Personalization",
+            "detail": "管理 ChatGPT 的記憶",
+            "icon": "book"
+          }
+        ],
+        "source": "learn.chatgpt.com；說明中心 2026-10-29 無法讀取",
+        "key": "記憶：Personalization"
+      },
+      "claims": [
+        "c30",
+        "c31"
+      ],
+      "lines": [
+        {
+          "id": "mak3",
+          "text": "那 ChatGPT 呢？",
+          "emotion": "問句，輕",
+          "reveal": 2
+        },
+        {
+          "id": "wz26",
+          "text": "ChatGPT 的記憶，從 Settings 進到 Personalization 管理。"
+        },
+        {
+          "id": "npzc",
+          "text": "訓練開關和臨時對話的細節，打開它的設定頁，照這四個問題對一次。"
+        }
+      ]
+    },
+    {
+      "id": "ch3-my-way",
+      "template": "bullets",
+      "data": {
+        "title": "我的設法",
+        "items": [
+          {
+            "text": "訓練：關掉",
+            "icon": "lock"
+          },
+          {
+            "text": "記憶：留著，每月看一次",
+            "icon": "book"
+          },
+          {
+            "text": "Gemini：兩件綁在一起",
+            "icon": "warning"
+          }
+        ],
+        "source": "第 1、2 項站主做法；第 3 項依 Gemini 說明頁",
+        "keys": [
+          "三個開關，分開按",
+          "訓練：關掉",
+          "記憶：每月看一次",
+          "Gemini：只能二選一"
+        ]
+      },
+      "claims": [
+        "s1",
+        "c5"
+      ],
+      "lines": [
+        {
+          "id": "qhms",
+          "text": "我的看法是，三個開關要分開按。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "9jk6",
+          "text": "訓練，我關掉；",
+          "reveal": 1
+        },
+        {
+          "id": "8v8d",
+          "text": "記憶，我留著，但每個月自己打開來看一次，它記了什麼。",
+          "reveal": 1
+        },
+        {
+          "id": "8qxa",
+          "text": "這在 Claude 做得到；在 Gemini，這兩件綁在一起，只能二選一。",
+          "reveal": 1,
+          "emotion": "轉折，「二選一」放慢"
+        },
+        {
+          "id": "8rrd",
+          "text": "設完了，你怎麼知道它真的沒記住？",
+          "emotion": "替觀眾問，問句上揚"
+        }
+      ]
+    },
+    {
+      "id": "ch4-canary-chat",
+      "chapter": "怎麼知道 AI 有沒有記住你？",
+      "template": "chat",
+      "data": {
+        "title": "一句測試，兩個地方問",
+        "messages": [
+          {
+            "side": "right",
+            "name": "一般對話",
+            "text": "（貼上履歷）我最喜歡的顏色是薄荷綠，代號 MINT-42"
+          },
+          {
+            "side": "right",
+            "name": "新的對話",
+            "text": "我最喜歡的顏色代號是什麼？"
+          }
+        ],
+        "keys": [
+          "先在一般對話貼履歷",
+          "再開新對話問一次"
+        ]
+      },
+      "claims": [
+        "e1"
+      ],
+      "lines": [
+        {
+          "id": "gpgn",
+          "text": "三家都設好了，現在用履歷最後那一句來測。",
+          "reveal": 1
+        },
+        {
+          "id": "v676",
+          "text": "先在一般對話裡，貼上有薄荷綠那一句的履歷；"
+        },
+        {
+          "id": "ezcu",
+          "text": "再開一個新的一般對話，問它：我最喜歡的顏色代號是什麼？",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch4-expect",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "記憶開著",
+          "icon": "book",
+          "points": [
+            "可能答出那個代號",
+            "答得出＝它記住了"
+          ]
+        },
+        "right": {
+          "heading": "臨時對話・Incognito",
+          "icon": "lock",
+          "points": [
+            "不用既有的記憶",
+            "應該答不出來"
+          ]
+        },
+        "source": "依官方說明的預期結果｜Gemini、Claude 2026-10-29",
+        "keys": [
+          "記憶開著：可能答得出",
+          "臨時模式：應該答不出"
+        ]
+      },
+      "claims": [
+        "e1",
+        "c4",
+        "c29"
+      ],
+      "lines": [
+        {
+          "id": "8yh7",
+          "text": "記憶開著，它就可能答得出那個代號；答得出來，就是它記住了。",
+          "reveal": 1
+        },
+        {
+          "id": "3nbs",
+          "text": "同一句改到臨時對話或 Incognito 裡問，它不用既有的記憶，應該答不出來。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch4-ask",
+      "template": "chat",
+      "data": {
+        "title": "Gemini：直接問它",
+        "messages": [
+          {
+            "side": "right",
+            "name": "你",
+            "text": "你是否使用過往對話中的任何資訊？"
+          },
+          {
+            "side": "right",
+            "name": "你",
+            "text": "你知道我哪些事？"
+          }
+        ],
+        "keys": [
+          "問它：用了過往對話嗎",
+          "問它：你知道我哪些事"
+        ]
+      },
+      "claims": [
+        "c11"
+      ],
+      "lines": [
+        {
+          "id": "mhre",
+          "text": "在 Gemini，還可以直接問它：你是否使用過往對話中的任何資訊？",
+          "reveal": 1
+        },
+        {
+          "id": "3ieu",
+          "text": "想看它把你整理成什麼，就問：你知道我哪些事？",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch4-marks",
+      "template": "bullets",
+      "data": {
+        "title": "看畫面就知道",
+        "items": [
+          {
+            "text": "Gemini：上方臨時對話圖示",
+            "icon": "clock"
+          },
+          {
+            "text": "Claude：黑框和 Incognito 標籤",
+            "icon": "lock"
+          },
+          {
+            "text": "單次關記憶：劃掉的記憶圖示",
+            "icon": "book"
+          },
+          {
+            "text": "翻舊對話：出現工具呼叫",
+            "icon": "search"
+          }
+        ],
+        "source": "Gemini、Claude 說明頁 2026-10-29",
+        "keys": [
+          "不用問：看畫面",
+          "Gemini：臨時對話圖示",
+          "Claude：黑框",
+          "劃掉的記憶圖示",
+          "翻舊對話：工具呼叫"
+        ]
+      },
+      "claims": [
+        "c12",
+        "c20",
+        "c21",
+        "c28"
+      ],
+      "lines": [
+        {
+          "id": "94cb",
+          "text": "還有不用問的檢查，看畫面就知道自己在哪種模式。"
+        },
+        {
+          "id": "8h3j",
+          "text": "Gemini 的臨時對話，畫面上方會有臨時對話的圖示；",
+          "reveal": 1
+        },
+        {
+          "id": "66ii",
+          "text": "Claude 的 Incognito，畫面有黑色外框，左上角寫著 Incognito chat；",
+          "reveal": 1
+        },
+        {
+          "id": "t6g7",
+          "text": "單次關掉記憶的對話，送出第一句之後，標題旁有劃掉的記憶圖示；",
+          "reveal": 1
+        },
+        {
+          "id": "mu6r",
+          "text": "Claude 付費方案去翻舊對話時，畫面上會出現一次工具呼叫。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch4-delete",
+      "template": "compare",
+      "data": {
+        "left": {
+          "heading": "Gemini",
+          "icon": "file",
+          "points": [
+            "刪掉含那句話的每段對話",
+            "刪完會有一小段延遲"
+          ]
+        },
+        "right": {
+          "heading": "Claude",
+          "icon": "book",
+          "points": [
+            "刪對話，記憶不跟著刪",
+            "Your Claude → Manage 刪那條"
+          ]
+        },
+        "source": "Gemini、Claude 說明頁 2026-10-29",
+        "keys": [
+          "測完，把薄荷綠清掉",
+          "Gemini：刪掉每一段對話",
+          "Claude：刪對話不刪記憶"
+        ]
+      },
+      "claims": [
+        "c13",
+        "c27"
+      ],
+      "lines": [
+        {
+          "id": "ny5m",
+          "text": "測完要把薄荷綠清掉，兩家的刪法剛好相反。",
+          "emotion": "轉折"
+        },
+        {
+          "id": "y6nv",
+          "text": "Gemini 要刪掉含有那句話的每一段對話，它才會停止拿來個人化。",
+          "reveal": 1
+        },
+        {
+          "id": "7ixk",
+          "text": "Claude 刪掉對話，從那段對話產生的記憶不會跟著刪；",
+          "reveal": 1,
+          "emotion": "壓低，「不會」加重"
+        },
+        {
+          "id": "98am",
+          "text": "要到 Your Claude 按 Manage，把那一條刪掉。"
+        },
+        {
+          "id": "ir7k",
+          "text": "它不記得了，那份履歷就不在伺服器上了嗎？",
+          "emotion": "問句輕輕收"
+        }
+      ]
+    },
+    {
+      "id": "ch5-term1",
+      "chapter": "刪掉的對話會留多久？",
+      "template": "terminal",
+      "data": {
+        "title": "從今天起算：第 1–5 行（共 10 行）",
+        "command": "node _tools/lifespan.mjs",
+        "output": [
+          "start 2026-10-29 00:00 UTC",
+          "Gemini Keep Activity off / Temporary chat              2026-11-01 00:00\nGemini Keep Activity on, auto-delete default           2028-04-29 00:00",
+          "Gemini Keep Activity on, auto-delete 3 months          2027-01-29 00:00\nGemini reviewed by human reviewers (from review day)   2029-10-29 00:00"
+        ],
+        "ran_on": "2026-10-29",
+        "tool_version": "v22.22.0 (Node.js)",
+        "typing": "human",
+        "keys": [
+          "我把期限寫進小程式",
+          "關紀錄：11 月 1 日",
+          "改 3 個月：明年 1 月"
+        ]
+      },
+      "claims": [
+        "r1",
+        "c3",
+        "c4",
+        "c9",
+        "c1"
+      ],
+      "lines": [
+        {
+          "id": "m9se",
+          "text": "我把兩家的期限寫進一支小程式，從今天，二〇二六年十月二十九日起算。",
+          "reveal": 1,
+          "emotion": "平穩，日期一口氣"
+        },
+        {
+          "id": "rq75",
+          "text": "Gemini 關掉紀錄或用臨時對話，十一月一日就清掉；",
+          "reveal": 1
+        },
+        {
+          "id": "uevg",
+          "text": "那開著不動呢？",
+          "emotion": "問句上揚，答得平穩"
+        },
+        {
+          "id": "pskv",
+          "text": "要到二〇二八年四月。"
+        },
+        {
+          "id": "8qtx",
+          "text": "自動刪除改成三個月，是明年一月底。",
+          "reveal": 1
+        }
+      ]
+    },
+    {
+      "id": "ch5-reviewed",
+      "template": "big",
+      "data": {
+        "kicker": "還記得開頭那三年",
+        "text": "審查過的\n最晚 **2029 年 10 月**",
+        "sub": "實算 2026-10-29｜假設當天就被審查",
+        "key": "審查過的：最晚 2029 年 10 月"
+      },
+      "claims": [
+        "c1",
+        "r1"
+      ],
+      "lines": [
+        {
+          "id": "7kgs",
+          "text": "還記得開頭那三年嗎？審查過的對話，會先跟你的帳戶斷開連結，",
+          "emotion": "停半拍，壓低"
+        },
+        {
+          "id": "j56c",
+          "text": "所以你刪活動記錄刪不到它；假設今天就被讀到，最晚留到二〇二九年十月。"
+        }
+      ]
+    },
+    {
+      "id": "ch5-unknown",
+      "template": "big",
+      "data": {
+        "kicker": "我查不到的",
+        "text": "三年從**哪一天**算起",
+        "key": "三年的起算日：頁面沒寫"
+      },
+      "claims": [
+        "s2"
+      ],
+      "lines": [
+        {
+          "id": "xpvk",
+          "text": "三年從哪一天算起，我查不到，所以這一列先假設今天就被讀到。",
+          "emotion": "放輕，坦白"
+        }
+      ]
+    },
+    {
+      "id": "ch5-term2",
+      "template": "terminal",
+      "data": {
+        "title": "同一次執行：第 6–10 行",
+        "command": "node _tools/lifespan.mjs",
+        "output": [
+          "Claude deleted chat / Incognito chat                   2026-11-28 00:00",
+          "Claude model improvement on (de-identified)            2031-10-29 00:00\nClaude flagged: inputs and outputs                     2028-10-29 00:00",
+          "Claude flagged: classification scores                  2033-10-29 00:00\nClaude thumbs up/down feedback                         2031-10-29 00:00"
+        ],
+        "ran_on": "2026-10-29",
+        "tool_version": "v22.22.0 (Node.js)",
+        "keys": [
+          "Claude：刪掉的 11 月 28 日",
+          "開著改良：2031 年",
+          "標記與回饋：2033、2031"
+        ]
+      },
+      "claims": [
+        "r1",
+        "c21",
+        "c22",
+        "c23",
+        "c24",
+        "c25",
+        "c26"
+      ],
+      "lines": [
+        {
+          "id": "x3b4",
+          "text": "Claude 這邊，刪掉的對話和 Incognito，十一月二十八日清掉；",
+          "reveal": 1
+        },
+        {
+          "id": "7zax",
+          "text": "你沒刪的一般對話，則沒有固定的保留天數。"
+        },
+        {
+          "id": "9nng",
+          "text": "那開著改良模型的開關呢？",
+          "reveal": 1,
+          "emotion": "問句上揚"
+        },
+        {
+          "id": "6qvm",
+          "text": "去識別化的資料，最多留到二〇三一年；"
+        },
+        {
+          "id": "p3y5",
+          "text": "被安全系統標記的對話，內容最多留到二〇二八年；"
+        },
+        {
+          "id": "6jde",
+          "text": "標記留下的分類分數，最多到二〇三三年；",
+          "reveal": 1
+        },
+        {
+          "id": "d6ys",
+          "text": "按過讚或倒讚的整段對話，留到二〇三一年。"
+        }
+      ]
+    },
+    {
+      "id": "ch5-who",
+      "template": "table",
+      "data": {
+        "columns": [
+          "期限",
+          "誰決定",
+          "你管得到嗎"
+        ],
+        "rows": [
+          [
+            "72 小時、30 天",
+            "關紀錄、刪對話、臨時模式",
+            "管得到"
+          ],
+          [
+            "3 到 18 個月",
+            "Gemini 自動刪除",
+            "管得到"
+          ],
+          [
+            "5 年",
+            "按讚或倒讚",
+            "按之前管得到"
+          ],
+          [
+            "3 年",
+            "審查員讀過",
+            "管不到"
+          ],
+          [
+            "2 年、7 年",
+            "安全系統標記",
+            "管不到"
+          ]
+        ],
+        "source": "lifespan.mjs 實算 2026-10-29｜Gemini、Claude 官方頁",
+        "keys": [
+          "照誰決定排一次",
+          "72 小時、30 天：你決定",
+          "3 到 18 個月：你選的",
+          "5 年：按之前還在你手上",
+          "3 年：審查員讀過",
+          "2 年、7 年：關不掉"
+        ]
+      },
+      "claims": [
+        "r1",
+        "c1",
+        "c3",
+        "c9",
+        "c22",
+        "c24",
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "a8jv",
+          "text": "把這些期限照誰決定排一次，就看得出你能動的是哪幾格。"
+        },
+        {
+          "id": "3a7t",
+          "text": "前面那幾個短的，是你關紀錄、刪對話、開臨時模式換來的；",
+          "reveal": 1
+        },
+        {
+          "id": "v2j5",
+          "text": "自動刪除那幾個月，是你自己選的；",
+          "reveal": 1
+        },
+        {
+          "id": "58m6",
+          "text": "五年那一格，在你按下讚或倒讚之前，都還在你手上；",
+          "reveal": 1
+        },
+        {
+          "id": "sznn",
+          "text": "三年，是被審查員讀過；",
+          "reveal": 1
+        },
+        {
+          "id": "6f2b",
+          "text": "兩年和七年，是安全系統的標記，沒有一個開關關得掉。",
+          "reveal": 1,
+          "emotion": "壓低，「沒有一個開關」放慢"
+        }
+      ]
+    },
+    {
+      "id": "ch5-big7",
+      "template": "big",
+      "data": {
+        "kicker": "最長的那一格",
+        "numeral": "7",
+        "text": "年",
+        "sub": "Claude：被標記的分類分數",
+        "key": "最長的期限，跟訓練開關無關"
+      },
+      "claims": [
+        "c24"
+      ],
+      "lines": [
+        {
+          "id": "zad2",
+          "text": "最長的那一格是七年，跟你的訓練開關一點關係都沒有。",
+          "emotion": "停半拍，「七年」放慢"
+        }
+      ]
+    },
+    {
+      "id": "ch5-deleted-q",
+      "template": "big",
+      "data": {
+        "kicker": "你可能會問",
+        "text": "我刪掉了\n總該**不在**了吧？",
+        "key": "刪掉了，總該不在了吧？"
+      },
+      "claims": [
+        "c25"
+      ],
+      "lines": [
+        {
+          "id": "xci3",
+          "text": "那你可能會問：我把對話刪掉，總該不在了吧？",
+          "emotion": "替觀眾問，問句上揚"
+        },
+        {
+          "id": "tqwm",
+          "text": "刪掉，管的是你自己那份紀錄；按過回饋的那一段，另外存了一份。",
+          "emotion": "答得乾脆"
+        }
+      ],
+      "chapter": "刪掉的對話、按過的讚，還留著什麼？"
+    },
+    {
+      "id": "ch5-feedback-quote",
+      "template": "quote",
+      "data": {
+        "kicker": "Claude：按讚或倒讚之後",
+        "quote": "we will store the entire related conversation … for up to 5 years",
+        "translation": "我們會儲存整段相關對話……最多 5 年",
+        "source": "privacy.claude.com · 模型訓練 · 2026-10-29",
+        "keys": [
+          "整段對話，存最多 5 年",
+          "使用前，先拿掉帳號識別"
+        ]
+      },
+      "claims": [
+        "c25",
+        "c14"
+      ],
+      "lines": [
+        {
+          "id": "ezqj",
+          "text": "按下讚或倒讚，整段相關的對話，連同你設的風格和偏好，會存最多五年；"
+        },
+        {
+          "id": "83s7",
+          "text": "使用之前，會先拿掉能對應到你帳號的識別資料。",
+          "reveal": 1
+        },
+        {
+          "id": "th6g",
+          "text": "Gemini 也一樣，審查過的回饋和相關對話，最多留三年。"
+        }
+      ]
+    },
+    {
+      "id": "ch5-my-feedback",
+      "template": "big",
+      "data": {
+        "kicker": "我的做法",
+        "text": "有個資的對話\n**不按讚也不按倒讚**",
+        "key": "有個資的對話，不按回饋鍵"
+      },
+      "claims": [
+        "s1"
+      ],
+      "lines": [
+        {
+          "id": "7n3g",
+          "text": "所以有別人個資的對話，我不按讚也不按倒讚；"
+        },
+        {
+          "id": "m3j7",
+          "text": "按下去，那一段留得比我關掉的任何一個開關都久。",
+          "emotion": "放慢放穩"
+        },
+        {
+          "id": "ui8p",
+          "text": "那今天回去，先做哪三件事？",
+          "emotion": "問句輕輕收"
+        }
+      ]
+    },
+    {
+      "id": "ch6-actions",
+      "chapter": "AI 隱私設定：今天先做這三件",
+      "template": "steps",
+      "data": {
+        "steps": [
+          {
+            "title": "關掉訓練",
+            "detail": "Gemini 要跟記憶一起決定",
+            "icon": "lock"
+          },
+          {
+            "title": "打開記憶看一次",
+            "detail": "刪掉不該在的那一條",
+            "icon": "book"
+          },
+          {
+            "title": "別人的個資不貼",
+            "detail": "臨時模式也一樣",
+            "icon": "warning"
+          }
+        ],
+        "source": "站主做法；設定位置見第 3 章",
+        "keys": [
+          "一、關掉訓練",
+          "二、記憶打開看一次",
+          "三、別人的個資不貼"
+        ]
+      },
+      "claims": [
+        "s1"
+      ],
+      "lines": [
+        {
+          "id": "emfq",
+          "text": "假履歷測完了，回到你自己的帳號，先把訓練關掉；",
+          "reveal": 1
+        },
+        {
+          "id": "dtxb",
+          "text": "在 Gemini，想留記憶就別關，改成自動刪除三個月。"
+        },
+        {
+          "id": "ejk9",
+          "text": "再把記憶打開來看一次，不該在的那一條，現在就刪；",
+          "reveal": 1
+        },
+        {
+          "id": "8biq",
+          "text": "最後，別人的電話地址、公司還沒公開的東西，不貼進聊天框；",
+          "reveal": 1
+        },
+        {
+          "id": "5irf",
+          "text": "這一條，我連臨時模式也照做。",
+          "emotion": "放慢，收穩"
+        }
+      ]
+    },
+    {
+      "id": "closing",
+      "template": "outro",
+      "data": {
+        "title": "關一個開關\n只關**一格**",
+        "lines": [
+          "訓練、記憶、審查：各自按",
+          "別人的個資：不貼"
+        ],
+        "cta": "訂閱：每支給你一個今天能做的設定",
+        "key": "你的記憶開著嗎？"
+      },
+      "claims": [
+        "s1"
+      ],
+      "lines": [
+        {
+          "id": "5hcs",
+          "text": "關掉訓練，只填了四格裡的一格。",
+          "emotion": "答案，放慢"
+        },
+        {
+          "id": "ae89",
+          "text": "你的記憶現在開著嗎？留言告訴我。",
+          "emotion": "輕輕收，問句"
+        },
+        {
+          "id": "tnqt",
+          "text": "訂閱，每支都給你一個今天能做的設定。",
+          "emotion": "輕快收"
+        }
+      ]
+    }
   ]
 }
