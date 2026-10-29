@@ -41,6 +41,8 @@
   也不死），本機每 60 秒用幾秒的短 exec 讀 log 與 pid，看到 `H3_DETACHED_DONE` 就 `colab download`。斷一次連線只損失一次輪詢。
   一整集用它連跑 36 鏡，每支 14–21 分鐘（含偶爾一次輪詢逾時）。
 - 真的被 Colab 收走（session `not found`、`assignments` 空）就重開 session 接著跑；已下載的片會被跳過，不重扣。
+- **Hugging Face 下載會 429**（xet CDN「Too Many Requests」），筆記本的下載格一倒後面的格全是 NameError，整批 failed；
+  重跑同一個 session 即可（抓到的檔留在 `/content/ComfyUI/models`）。`images.py`／runner 看到 429 應該自己重試一次（還沒做）。
 - `colab restart-kernel` 會連 ComfyUI 一起殺（它是 kernel 的子程序）；中斷一支正在算的片用它最快。
 
 ## 4. 雲端 session 本身的限制
