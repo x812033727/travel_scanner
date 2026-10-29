@@ -1,0 +1,4537 @@
+{
+  "number": 5,
+  "title": "新約",
+  "theme": "兩半銅牌合在橋墩上；她寫下一份沒有期限、雙方都能說不的合約。",
+  "start_state": "聯姻宴後的颱風夜。賀亭當眾退婚，賀敬川在董事會發難要撤他總工程師；宋紹謙加速重建標案；許檢查員收到沈晏的翻案申請。",
+  "end_state": "揭開：當年的澆置紀錄在哪裡（m11：老高藏了五年，沈玥的原始檔案證明送審版是宋紹謙改的）；另一半銅牌在哪裡（m12：在賀老爺子的測量尺手杖裡，兩半合上的 HJ-07 就是步道橋第一根橋墩，賀亭的父親設計了它）。聽證會翻案、宋紹謙退出標案、賀敬川被解職、沈父道歉、江諾考上建築系、兩人簽新約。最後一格：第 300 集黃昏，重建的步道橋上兩人在新約上各簽一次；他問：『這次第一條寫什麼？』她：『雙方都可以說不。』他：『那我說——不走。』兩人並肩走下橋，鏡頭停在橋墩下一個新的牛皮紙信封：『沈技師，我也想簽一份合約。』",
+  "guest_cast": [
+    {
+      "id": "s05-wei-kezhang",
+      "name": "魏課長",
+      "role": "宋氏建設工務課長；颱風夜帶夜班鑽機到橋下取心舊基樁，之後又帶拖車到報廢料場想拆掉老貨櫃",
+      "appearance": "東亞男性，四十五歲，平頭、黝黑方臉、濃眉，宋氏灰色工務外套外罩反光背心，安全帽壓得很低，手上永遠捏著一疊許可文件"
+    },
+    {
+      "id": "s05-fang-dong",
+      "name": "方董事（方以寧）",
+      "role": "恆基營造獨立董事、退休的土木系教授；董事會唯一不站隊的一票，名字被賀敬川冒簽在委託書上",
+      "appearance": "東亞女性，六十二歲，銀灰短髮梳得整齊、細長眼、深藍套裝，老花眼鏡用細鍊掛在頸上，說話前先把資料翻到正確的那一頁"
+    },
+    {
+      "id": "s05-gao-xiaowen",
+      "name": "高曉雯",
+      "role": "老高的女兒，宋氏建設工務部助理；翻案受理隔天被調去報廢料場，從小戴著父親給的一把小鑰匙",
+      "appearance": "東亞女性，三十歲，清秀素顏、低馬尾、眼神倔強，宋氏灰色制服外套，頸上一條細銀鍊，常抱著一箱私人物品或一疊料場清冊"
+    },
+    {
+      "id": "s05-deng-lawyer",
+      "name": "鄧律師",
+      "role": "宋氏建設的委任律師；在直播與聽證會上主張鐵盒紀錄是偽造、要求賀亭不得作證",
+      "appearance": "東亞男性，五十歲，油頭梳得一絲不亂、無框眼鏡、黑色三件式西裝，翻頁前先把袖扣轉正，語氣永遠客氣"
+    },
+    {
+      "id": "s05-cai-kuaiji",
+      "name": "蔡會計",
+      "role": "預拌混凝土廠做了三十年的老會計，把該銷毀的出貨存根全收在倉庫紙箱裡，聽證會上捧著紙箱作證",
+      "appearance": "東亞女性，五十八歲，燙捲短髮、圓臉、碎花襯衫外套著深藍袖套，老花眼鏡推在額頭上，懷裡抱著用橡皮筋捆好的一疊疊複寫聯"
+    }
+  ],
+  "threads": [
+    {
+      "id": "s05-t01",
+      "question": "第七條（颱風天）還算數嗎？",
+      "setup_episode": 241,
+      "payoff_episode": 245
+    },
+    {
+      "id": "s05-t02",
+      "question": "宋氏的夜班鑽機停得下來嗎？",
+      "setup_episode": 242,
+      "payoff_episode": 243
+    },
+    {
+      "id": "s05-t03",
+      "question": "那台舊貨車是誰留下來的？",
+      "setup_episode": 241,
+      "payoff_episode": 248
+    },
+    {
+      "id": "s05-t04",
+      "question": "他為什麼回來？",
+      "setup_episode": 245,
+      "payoff_episode": 246
+    },
+    {
+      "id": "s05-t05",
+      "question": "賀敬川那五張委託書是真的嗎？",
+      "setup_episode": 251,
+      "payoff_episode": 254
+    },
+    {
+      "id": "s05-t06",
+      "question": "唐婉希要怎麼拿到會所的帳單？",
+      "setup_episode": 252,
+      "payoff_episode": 257
+    },
+    {
+      "id": "s05-t07",
+      "question": "方董事那一票投給誰？",
+      "setup_episode": 253,
+      "payoff_episode": 259
+    },
+    {
+      "id": "s05-t08",
+      "question": "恆基會不會跟宋氏聯合投標她的橋？",
+      "setup_episode": 243,
+      "payoff_episode": 260
+    },
+    {
+      "id": "s05-t09",
+      "question": "高曉雯為什麼被調去報廢料場？",
+      "setup_episode": 261,
+      "payoff_episode": 264
+    },
+    {
+      "id": "s05-t10",
+      "question": "老高鐵盒的鑰匙在哪裡？",
+      "setup_episode": 265,
+      "payoff_episode": 267
+    },
+    {
+      "id": "s05-t11",
+      "question": "沈玥會交出原始檔案嗎？",
+      "setup_episode": 262,
+      "payoff_episode": 269
+    },
+    {
+      "id": "s05-t12",
+      "question": "婚前協議第六條能壓住沈玥嗎？",
+      "setup_episode": 262,
+      "payoff_episode": 263
+    },
+    {
+      "id": "s05-t13",
+      "question": "老高的紀錄是不是偽造？",
+      "setup_episode": 268,
+      "payoff_episode": 276
+    },
+    {
+      "id": "s05-t14",
+      "question": "賀亭還能不能在聽證會作證？",
+      "setup_episode": 270,
+      "payoff_episode": 274
+    },
+    {
+      "id": "s05-t15",
+      "question": "宋氏會退出重建標案嗎？",
+      "setup_episode": 273,
+      "payoff_episode": 279
+    },
+    {
+      "id": "s05-t16",
+      "question": "手杖要怎麼打開？",
+      "setup_episode": 281,
+      "payoff_episode": 283
+    },
+    {
+      "id": "s05-t17",
+      "question": "江諾考上建築系了嗎？",
+      "setup_episode": 282,
+      "payoff_episode": 286
+    },
+    {
+      "id": "s05-t18",
+      "question": "他為什麼總走在她左邊？",
+      "setup_episode": 244,
+      "payoff_episode": 298
+    },
+    {
+      "id": "s05-t19",
+      "question": "父親圖角那行小字寫了什麼？",
+      "setup_episode": 283,
+      "payoff_episode": 285
+    },
+    {
+      "id": "s05-t20",
+      "question": "陳覓會簽下合夥人合約嗎？",
+      "setup_episode": 291,
+      "payoff_episode": 295
+    },
+    {
+      "id": "s05-t21",
+      "question": "新約的第一條寫什麼？",
+      "setup_episode": 290,
+      "payoff_episode": 300
+    },
+    {
+      "id": "s05-t22",
+      "question": "唐婉希的下一份合約是什麼？",
+      "setup_episode": 292,
+      "payoff_episode": 296
+    },
+    {
+      "id": "s05-t23",
+      "question": "抽屜裡那頂舊安全帽去哪了？",
+      "setup_episode": 295,
+      "payoff_episode": 299
+    }
+  ],
+  "episodes": [
+    {
+      "number": 241,
+      "season_episode": 1,
+      "chapter": 1,
+      "title": "第七條還算數嗎",
+      "youtube_title": "退婚當晚他問她第七條還算不算數，警報一響她拿起安全帽就走",
+      "duration_s": 125,
+      "logline": "颱風夜，沈晏要趕去封閉的步道橋看監測警報，卻被留在剛退婚的聯姻宴上：賀敬川當場發出撤換賀亭的董事會通知，宋紹謙在等她出錯。",
+      "hook": "宴會廳的颱風警報還沒停，她的手機也震了：「一號橋墩，測點超標。」她把那杯不加糖的咖啡推回他手邊，沒回答第七條。",
+      "hook_type": "danger",
+      "mid_hook": "賀敬川讓秘書當眾發下一張紙：臨時董事會通知，議案只有一行——撤換總工程師賀亭。",
+      "extra_hooks": [
+        "賀亭把通知翻到背面，傳真抬頭印著一行小字：宋氏建設法務室。"
+      ],
+      "conflict": "她得在封路前趕到橋邊；滿場的人等著看退婚的賀家長孫和「停權過的女人」怎麼收場，賀敬川要他留下來處理董事會。",
+      "turn": "所有人以為賀亭會留下來保位置；他把董事會通知摺好交給阿凱，從口袋拿出一把纏著舊膠帶的貨車鑰匙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "地下停車場，她的車旁停著那台藍色舊貨車；他把一件雨衣放上副駕，沒有催：「第七條，妳說了算。」",
+        "question": "她會坐上他的貨車嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "zhongquan",
+        "qiyue",
+        "dalian"
+      ],
+      "spectacle": "水晶燈宴會廳的落地窗外，颱風雨橫著打在玻璃上，整座澄港的燈在雨裡晃。",
+      "glamour_shot": "賀亭深色西裝穿過散場的人群，單手鬆開領帶，掏出那把舊鑰匙；水晶燈的光從他肩上滑過。",
+      "setups": [
+        "s05-t01",
+        "s05-t03"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "當眾點破董事會通知是從宋氏法務室傳真出來的，賀敬川的笑停住",
+        "賀亭把總工程師的位置先放一邊，去履行第七條"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "he-jingchuan",
+        "song-shaoqian",
+        "shen-yue",
+        "he-laoyezi",
+        "ah-kai"
+      ],
+      "locations": [
+        "宋氏宴會廳",
+        "宋氏大樓地下停車場"
+      ],
+      "state": {
+        "time": "颱風夜 22:10｜進度：合約 舊約過期五年，第七條待她回答｜銅牌 半枚（他的鑰匙圈）｜翻案證據 2/4",
+        "knowledge": "賀敬川要在董事會撤他；通知是宋氏傳真的；一號橋墩的測點在報警",
+        "carry_forward": "副駕上的雨衣與第七條"
+      }
+    },
+    {
+      "number": 242,
+      "season_episode": 2,
+      "chapter": 1,
+      "title": "我在這，妳看",
+      "youtube_title": "五年後同一條封鎖線，他替她拉好雨衣帽子：我在這，妳看",
+      "duration_s": 118,
+      "logline": "沈晏要在颱風最強的時段看清一號橋墩的讀數，到了封鎖線卻發現宋氏的夜班鑽機已經架在橋下。",
+      "hook": "她拉開副駕的門坐進去，自己扣好安全帶：「開車。」儀表板上還是那個五年前的杯架。",
+      "hook_type": "image",
+      "mid_hook": "車燈掃過封鎖線，一號橋墩下亮著工作燈，一台鑽機在雨裡轉，機身印著「宋氏建設」。",
+      "extra_hooks": [
+        "置物箱一推就開，露出一角五年前的便條紙；他伸手把它關上。"
+      ],
+      "conflict": "颱風天沒有人該在橋下施工；她已經不是這座橋的簽證人，攔不攔得住，要看她手上有什麼紙。",
+      "turn": "她以為宋氏是來搶修；賀亭用手電筒照鑽頭——鑽的是一號橋墩的舊基樁取心，那裡封著五年前那晚的混凝土。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "魏課長把一張許可證舉在雨裡：「有市府許可。」鑽機重新啟動，鑽頭壓上舊基樁。",
+        "question": "舊基樁裡的證據會被鑽掉嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "zhongquan",
+        "qingxing"
+      ],
+      "spectacle": "颱風夜的封閉步道橋，封鎖燈一盞一盞在雨裡閃，橋下鑽機的工作燈把雨絲照成一條條白線。",
+      "glamour_shot": "他在封鎖線邊替她拉好雨衣帽子，雨從他的眉骨滴下：「我在這，妳看。」她抬眼的那一秒。",
+      "setups": [
+        "s05-t02"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他把五年前那句「我在這，妳看」原封不動還給她",
+        "認出宋氏在取心的是藏著改數字證據的舊基樁"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "s05-wei-kezhang"
+      ],
+      "locations": [
+        "江亭的藍色舊貨車",
+        "河濱步道橋封鎖線"
+      ],
+      "state": {
+        "time": "颱風夜 23:05｜進度：合約 第七條他在照做，她還沒答｜銅牌 半枚｜翻案證據 2/4",
+        "knowledge": "宋氏趁颱風夜取心舊基樁，手上有一張許可證",
+        "carry_forward": "壓上舊基樁的鑽頭"
+      }
+    },
+    {
+      "number": 243,
+      "season_episode": 3,
+      "chapter": 1,
+      "title": "錯的橋墩",
+      "youtube_title": "宋氏颱風夜偷鑽舊橋墩，她只看了許可證一眼：你們鑽錯根了",
+      "duration_s": 122,
+      "logline": "沈晏要讓鑽機停下來保住舊基樁，可她沒有簽證權，只能從魏課長那張許可證裡找漏洞。",
+      "hook": "她走到封鎖線前，沒有跨進去，只伸出手：「許可證，第三欄。」",
+      "hook_type": "line",
+      "mid_hook": "她撥出一通深夜電話，許檢查員竟然接了：「妳的申請，」「我今天收到。」",
+      "conflict": "鑽頭已經壓上舊基樁，魏課長咬定颱風緊急、停權過的人無權過問。",
+      "turn": "許可證第三欄的施工範圍寫的是「二號橋墩」，鑽的卻是一號——許檢查員在電話裡下令停工、封存；觀眾以為宋氏輸了這一局，宋紹謙的電話打了進來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "宋紹謙在擴音裡輕輕一笑：「晏晏，下週一，」「宋氏和恆基一起投。」賀亭低頭看口袋裡那張董事會通知。",
+        "question": "恆基怎麼會跟宋氏一起投標？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "chongyuan",
+        "dalian"
+      ],
+      "spectacle": "雨裡一隻手把許可證壓在貨車引擎蓋上，車頭燈把第三欄的字照得發白。",
+      "glamour_shot": "沈晏摘下沾滿雨水的眼鏡，在車燈下瞇眼讀許可證，濕髮貼在頰邊，眼神像在審圖。",
+      "setups": [
+        "s05-t08"
+      ],
+      "payoffs": [
+        "s05-t02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "鑽機停工、舊基樁封存",
+        "許檢查員確認收到翻案申請"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "s05-wei-kezhang",
+        "xu-jiancha",
+        "song-shaoqian"
+      ],
+      "locations": [
+        "河濱步道橋封鎖線",
+        "江亭的藍色舊貨車"
+      ],
+      "state": {
+        "time": "颱風夜 23:40｜進度：合約 第七條待答｜銅牌 半枚｜翻案證據 2/4（舊基樁封存）",
+        "knowledge": "宋紹謙要拉恆基聯合投標，前提是賀敬川先撤掉賀亭",
+        "carry_forward": "下週一的聯合投標"
+      }
+    },
+    {
+      "number": 244,
+      "season_episode": 4,
+      "chapter": 1,
+      "title": "零點零",
+      "youtube_title": "颱風夜她走上封閉的橋量裂縫，五年前的紀錄卡多了六十格別人的字",
+      "duration_s": 128,
+      "logline": "沈晏得親手讀完一號橋墩的裂縫計，確認橋沒有新的裂縫；她怕高，檢查步道又窄又貼著暴漲的河。",
+      "hook": "賀亭把董事會通知對著車燈：「先撤我，才能一起投。」他把紙塞回口袋：「先看橋。」",
+      "hook_type": "line",
+      "mid_hook": "裂縫計上掛著她五年前手寫的紀錄卡，底下多了六十格——每個月一格，從沒斷過。",
+      "extra_hooks": [
+        "檢查步道只容一人寬，他一句話沒說，走到她左邊、靠河的那一側。"
+      ],
+      "conflict": "警報要有人到現場讀數；檢查步道貼著橋側、風大，她怕高，卻堅持自己量。",
+      "turn": "讀數零點零，橋沒有新裂縫，警報是感測器進水；觀眾以為這一夜可以收了，她卻發現有人五年來每個月替她量。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "最後一格的日期是今天，簽名只有一個字：「高」。她轉頭，對岸堤防上一件反光背心正在走遠。",
+        "question": "五年來替她量裂縫的是老高？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "zhongquan",
+        "qingxing",
+        "chongyuan"
+      ],
+      "spectacle": "颱風夜的橋側檢查步道，兩盞安全帽頭燈在雨幕裡一前一後移動，兩人的安全帶都扣在扶手鋼索上。",
+      "glamour_shot": "風把她的頭髮從安全帽下吹起，她一手扶欄杆、一手讀裂縫計；他在外側替她擋風的側臉。",
+      "setups": [
+        "s05-t18",
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "確認橋沒有新裂縫",
+        "找到有人五年來每月替她讀裂縫計的紀錄卡"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "lao-gao"
+      ],
+      "locations": [
+        "河濱步道橋檢查步道",
+        "一號橋墩"
+      ],
+      "state": {
+        "time": "颱風夜 01:20｜進度：合約 第七條待答｜銅牌 半枚｜翻案證據 2/4",
+        "knowledge": "橋沒有新裂縫；署名「高」的人五年來每月替她量",
+        "carry_forward": "對岸走遠的反光背心"
+      }
+    },
+    {
+      "number": 245,
+      "season_episode": 5,
+      "chapter": 1,
+      "title": "這次不睡",
+      "youtube_title": "五年前她在他車上睡著，這次颱風夜她撐著眼睛，只問他一句話",
+      "duration_s": 112,
+      "logline": "沈晏想在天亮前問清楚五年的空白，可「不准問」是她自己定的規矩，先開口的人就是先在乎的人。",
+      "hook": "堤防上只剩一支紅筆，筆身刻著宋氏的舊標；她握緊：「是老高。」",
+      "hook_type": "image",
+      "mid_hook": "回到車上，他從皮夾抽出一張摺得發軟的紙——五年前那份舊合約，第七條上還是她的字。",
+      "extra_hooks": [
+        "他看她一眼：「妳上次在這睡著。」她：「這次不睡。」"
+      ],
+      "conflict": "她想知道他為什麼回來，舊合約第一條卻是她寫的「不准問過去」；他只說海外待過七個工地，其他一個字也沒多講。",
+      "turn": "觀眾以為她要拿合約擋話題、劃掉第七條；她只在第七條旁邊寫了一個字：「算。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "雨刷停了一下，她終於轉頭：「為什麼回來？」他握著方向盤，看著她。",
+        "question": "他會怎麼回答她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "qiyue",
+        "zhongquan"
+      ],
+      "spectacle": "停在封鎖線外的藍色貨車，車頂被雨打得像鼓，擋風玻璃外是一整排閃爍的封鎖燈。",
+      "glamour_shot": "儀表板的暖光照著她摘下眼鏡的側臉，她低頭在舊合約第七條旁寫字，筆尖停了一秒。",
+      "setups": [
+        "s05-t04"
+      ],
+      "payoffs": [
+        "s05-t01",
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她承認第七條還算數",
+        "確定署名「高」的人就在附近",
+        "他第一次講起海外的七個工地"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting"
+      ],
+      "locations": [
+        "河濱堤防",
+        "江亭的藍色舊貨車"
+      ],
+      "state": {
+        "time": "颱風夜 02:40｜進度：合約 舊約第七條旁寫了「算」｜銅牌 半枚｜翻案證據 2/4",
+        "knowledge": "他把舊合約帶在身上五年；她承認第七條還算數",
+        "carry_forward": "她問出口的「為什麼回來」"
+      }
+    },
+    {
+      "number": 246,
+      "season_episode": 6,
+      "chapter": 1,
+      "title": "不代表我同意",
+      "youtube_title": "她問他為什麼回來，他只說合約到期不代表我同意，她第一次笑出聲",
+      "duration_s": 115,
+      "logline": "賀亭要回答她五年來最想問的問題，又不能讓她覺得他是回來討債的；天亮前，江家老公寓的電話打了進來。",
+      "hook": "他看著她：「合約到期，不代表我同意。」三秒後，她第一次笑出聲。",
+      "hook_type": "line",
+      "mid_hook": "他從後座拿出一頂安全帽，是五年前她放在他座位上的那頂；帽緣用奇異筆寫滿七個工地的名字。",
+      "extra_hooks": [
+        "林小蔓的訊息連跳三則：「你們在哪？」「新聞說他退婚！」「不准在車上簽東西！」"
+      ],
+      "conflict": "他要讓她知道回來不是為了五年前那筆帳；她笑完了，下一句卻不知道怎麼接。",
+      "turn": "以為兩人終於要把話說開，她的手機響了——江諾在電話裡喊：老公寓五樓的窗框被風吹歪，奶奶不肯下樓。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "電話那頭玻璃嘎嘎作響，江諾喊：「哥，窗框歪了，奶奶不走！」他已經發動貨車。",
+        "question": "奶奶家的窗撐得到他們趕到嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "zhongquan",
+        "xiju"
+      ],
+      "spectacle": "颱風夜的駕駛座裡，一頂寫滿七個異國工地名字的舊安全帽放在兩人中間的置物格上。",
+      "glamour_shot": "她笑出聲那一刻，他偏頭看她，嘴角慢慢揚起；車窗上的雨痕在他臉上流過。",
+      "setups": [],
+      "payoffs": [
+        "s05-t04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "他說出為什麼回來",
+        "她五年來第一次笑出聲",
+        "她看見他五年走過的七個工地"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "lin-xiaoman",
+        "jiang-nuo"
+      ],
+      "locations": [
+        "江亭的藍色舊貨車"
+      ],
+      "state": {
+        "time": "颱風夜 03:15｜進度：合約 第七條「算」，他說到期不代表同意｜銅牌 半枚｜翻案證據 2/4",
+        "knowledge": "他回來，是因為他從沒同意過那個結束",
+        "carry_forward": "老公寓歪掉的窗框"
+      }
+    },
+    {
+      "number": 247,
+      "season_episode": 7,
+      "chapter": 1,
+      "title": "換我照",
+      "youtube_title": "沒電梯的五樓樓梯燈又壞了，這一次換她拿著手機走在前面",
+      "duration_s": 120,
+      "logline": "兩人要在颱風最強時撐住奶奶家的窗；樓梯燈壞了，他扛著木條和膠帶，騰不出手。",
+      "hook": "樓梯間一片黑，他兩手扛著木條；她打開手機手電筒，走在他前面：「這次換我照。」",
+      "hook_type": "image",
+      "mid_hook": "窗框不是膠條鬆，是整片往內推了三公分；她量完：「這窗只剩一小時。」",
+      "extra_hooks": [
+        "江諾抱著作品集擋在窗前：「這是我重考的圖！」「誰都不准濕！」"
+      ],
+      "conflict": "窗框被風壓變形，七十九歲的奶奶捨不得她的菜籃和這間屋子；他們只有木條、膠帶和一個晚上。",
+      "turn": "以為得硬把奶奶勸下樓，沈晏看一眼窗框，教江諾用一根斜撐把力傳進牆裡——十分鐘，窗不晃了；奶奶從菜籃底下抽出一疊繳費收據，付款人欄每一張都寫著同一個信託，然後拉住她的手。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "奶奶握著她的手，摸到她指節上的繭：「五年的藥錢，是妳吧。」",
+        "question": "她會在奶奶面前承認嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "zhongquan",
+        "xiju"
+      ],
+      "spectacle": "五樓舊窗前，一根木條斜撐把變形的窗框頂回原位，窗外整條巷子的鐵皮招牌在風裡晃。",
+      "glamour_shot": "他扛著木條上樓時回頭，手機光從下往上照亮他的臉，雨水沿著下顎滴落。",
+      "setups": [],
+      "payoffs": [
+        "m10"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "窗框撐住了，奶奶和江諾的作品集都沒事",
+        "她在當年那座樓梯間替他照路"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "jiang-nainai",
+        "jiang-nuo"
+      ],
+      "locations": [
+        "江家老公寓樓梯間",
+        "江家老公寓五樓"
+      ],
+      "state": {
+        "time": "颱風夜 04:00｜進度：合約 第七條「算」｜銅牌 半枚｜翻案證據 2/4",
+        "knowledge": "奶奶早就猜到五年的藥錢是誰付的",
+        "carry_forward": "奶奶那句「是妳吧」"
+      }
+    },
+    {
+      "number": 248,
+      "season_episode": 8,
+      "chapter": 1,
+      "title": "誰留的貨車",
+      "youtube_title": "搬家公司老闆凌晨送沙包，順口說出這台舊貨車五年來是誰留的",
+      "duration_s": 118,
+      "logline": "沈晏要回答奶奶又不想讓他覺得欠她；周叔和阿凱扛著沙包上樓，順口說出舊貨車是怎麼回來的。",
+      "hook": "她沒有抽回手：「是我。」奶奶拍拍她的手背：「那妳也是我們家的。」",
+      "hook_type": "line",
+      "mid_hook": "周叔把沙包往門口一放：「車我留了五年。」「第一份技師薪水，」「他拿來贖車。」",
+      "extra_hooks": [
+        "阿凱打開置物箱，抽出那張舊便條唸：「下次說得更短一點。」「老大，這是情書吧？」"
+      ],
+      "conflict": "她付了五年的錢，他用一台舊貨車還一個五年前的位置；兩個人都不肯先說破誰欠誰。",
+      "turn": "大家以為貨車是周叔替他留的念想；周叔說溜了嘴：五年前那個雨夜，是沈晏打電話來拜託「車別賣」，停車費也是她付的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "阿凱的手機跳出推播：「停權技師颱風夜闖封閉工地，宋氏報案」，配圖是她站在封鎖線前的背影。",
+        "question": "宋氏要怎麼拿這張照片咬她？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "xiju",
+        "zhongquan"
+      ],
+      "spectacle": "天快亮的巷口，兩台搬家貨車並排卸沙包，一排工人頂著風把沙包一包一包傳上五樓。",
+      "glamour_shot": "他接住周叔拋來的沙包扛上肩，回頭對她一笑，襯衫袖子捲到手肘，巷燈在他背後。",
+      "setups": [],
+      "payoffs": [
+        "s05-t03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "奶奶說她也是江家的人",
+        "揭開舊貨車是她五年前拜託周叔留下的"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "jiang-nainai",
+        "zhou-shu",
+        "ah-kai",
+        "jiang-nuo"
+      ],
+      "locations": [
+        "江家老公寓五樓",
+        "老公寓巷口"
+      ],
+      "state": {
+        "time": "颱風夜 05:10｜進度：合約 第七條「算」｜銅牌 半枚｜翻案證據 2/4",
+        "knowledge": "貨車是她留的；宋氏把她在封鎖線的照片寫成闖工地",
+        "carry_forward": "那則新聞與宋氏的報案"
+      }
+    },
+    {
+      "number": 249,
+      "season_episode": 9,
+      "chapter": 1,
+      "title": "早八分鐘",
+      "youtube_title": "宋氏報警說她闖工地，檢查員一對時間：報案比她上橋還早八分鐘",
+      "duration_s": 125,
+      "logline": "沈晏要在天亮前回橋邊做最後一次讀數，也要洗掉宋氏的報案；許檢查員親自到了封鎖線。",
+      "hook": "她把新聞配圖放大到最角落：「看腳下。」照片裡她站在封鎖線外，膠帶一寸沒斷。",
+      "hook_type": "image",
+      "mid_hook": "許檢查員撐傘站在封鎖線前，手上是宋氏的報案單：「報案時間，一點十二分。」",
+      "conflict": "宋氏把她寫成闖進封閉工地的人；報案一旦成立，她的翻案申請會先被擱下。",
+      "turn": "報案寫一點十二分「發現有人闖入」，她的檢查紀錄卻是一點二十才扣上安全帶走上步道——宋氏在她上橋前八分鐘就報了案；許檢查員翻著那張六十格的紀錄卡：「第 14 頁的頁碼，」「我五年前就覺得怪。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "許檢查員把紀錄卡還她：「申請，我受理。」他頓了一下：「但證據還差兩樣。」",
+        "question": "還差的兩樣證據在哪裡？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "chongyuan",
+        "dalian"
+      ],
+      "spectacle": "天光從河面亮起，封鎖線前三個人一把傘，背後是被雨洗過、一根裂縫也沒多的步道橋。",
+      "glamour_shot": "黎明前她站在封鎖線外，安全帽夾在臂彎，把手機遞給許檢查員，風衣下擺被風掀起。",
+      "setups": [
+        "m11"
+      ],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "宋氏的報案被時間戳打穿",
+        "許檢查員正式受理翻案申請",
+        "六十格紀錄卡交給調查小組影印存檔"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "xu-jiancha"
+      ],
+      "locations": [
+        "河濱步道橋封鎖線"
+      ],
+      "state": {
+        "time": "颱風過境，清晨 05:50｜進度：合約 第七條「算」｜銅牌 半枚｜翻案證據 2/4（缺澆置紀錄、原始檔）",
+        "knowledge": "翻案受理；還缺那晚的澆置紀錄與原始檔案",
+        "carry_forward": "還差的兩樣證據"
+      }
+    },
+    {
+      "number": 250,
+      "season_episode": 10,
+      "chapter": 1,
+      "title": "要問就問",
+      "youtube_title": "颱風過後她遞給他一張紙：以後要問就問，他只問了五年前那一夜",
+      "duration_s": 150,
+      "logline": "天亮了，沈晏要把五年前推開他的理由說出口；說了，他就會知道宋紹謙拿什麼逼過她。",
+      "hook": "許檢查員的車走遠，她看著對岸：「一樣在老高手上。」「一樣在沈玥手上。」",
+      "hook_type": "line",
+      "mid_hook": "她從安全帽內襯抽出一張摺好的紙遞給他：「以後要問，就問。」",
+      "extra_hooks": [
+        "河面第一道陽光照上橋墩，監測燈一盞一盞從紅轉綠。"
+      ],
+      "conflict": "一張「要問就問」交到他手上，他第一個問題就會是她最怕的那個；她答了，就等於承認五年前的不續約不是因為合約到期。",
+      "turn": "他以為答案只是「宋紹謙」三個字；她說出的是細節——江諾的推薦入學、奶奶的單人病房、信託的五年期限，還有她在續約欄寫字時，手抖了兩次。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "他問：「妳五年前，為什麼推開我？」她說了：「他拿諾諾和奶奶逼我。」最後一句很輕：「我選了你們。」他把紙摺好，看向對岸宋氏大樓的燈。",
+        "question": "知道真相的他，會怎麼做？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "ganren",
+        "qiyue"
+      ],
+      "spectacle": "颱風過後的清晨，整座步道橋被雨洗得發亮，第一道陽光沿著橋面一路照到一號橋墩。",
+      "glamour_shot": "晨光裡她摘下安全帽，頭髮被風吹散，把那張紙遞給他；兩隻手在紙的兩端停了一秒。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舊合約第一條被她劃掉，改成「要問就問」",
+        "他第一次從她口中聽到五年前的真相"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting"
+      ],
+      "locations": [
+        "河濱步道橋封鎖線"
+      ],
+      "state": {
+        "time": "颱風後清晨 06:30｜進度：合約 舊約第一條改「要問就問」、第七條「算」｜銅牌 半枚｜翻案證據 2/4",
+        "knowledge": "他知道了五年前不續約的真相：宋紹謙的威脅與她的信託",
+        "carry_forward": "九點的恆基董事會"
+      }
+    },
+    {
+      "number": 251,
+      "season_episode": 11,
+      "chapter": 2,
+      "title": "九點董事會",
+      "youtube_title": "叔叔要當場撤掉他這個繼承人，他只翻開章程第十二條：今天不能表決",
+      "duration_s": 125,
+      "logline": "賀亭要保住總工程師的位置，才能擋住恆基跟宋氏聯合投標她的橋；賀敬川要當場撤他，手上已經有五張委託書。",
+      "hook": "八點五十九分，恆基董事會的門打開；他看一眼手機，她只回了三個字：「用文件。」",
+      "hook_type": "image",
+      "mid_hook": "賀敬川把五張委託書排上長桌：「七天後表決，」「我已經有五票。」",
+      "extra_hooks": [
+        "「他為了一個停權過的女人退婚，」賀敬川敲著桌面，「損害公司。」"
+      ],
+      "conflict": "賀敬川要當場撤換他，再讓恆基跟宋氏聯合投標步道橋；賀亭手上只有一本章程和一個晚上沒睡的腦袋。",
+      "turn": "他翻開章程第十二條：撤換總工程師須七日前書面通知——當場表決作廢；觀眾以為他贏到時間，賀敬川早有準備：五張委託書，公證章全出自宋氏大樓十二樓同一間事務所。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "秘書念出第二案：「恆基與宋氏，聯合投標步道橋重建。」賀敬川：「七天後，一起表決。」",
+        "question": "七天內他翻得過五張委託書嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "daozhuan",
+        "qingxing"
+      ],
+      "spectacle": "恆基總部石材灰的董事會議室，二十公尺長桌兩側坐滿董事，盡頭老爺子的手杖橫在膝上。",
+      "glamour_shot": "賀亭起身扣上西裝釦子，修長的手指翻開章程，背後落地窗外是颱風後灰藍的河。",
+      "setups": [
+        "s05-t05"
+      ],
+      "payoffs": [
+        "m06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "擋下當場表決，爭到七天",
+        "看出五張委託書的公證章都出自宋氏大樓"
+      ],
+      "characters": [
+        "jiang-ting",
+        "he-jingchuan",
+        "he-laoyezi",
+        "s05-fang-dong",
+        "shen-yan"
+      ],
+      "locations": [
+        "恆基營造總部董事會議室",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "颱風後第一天 09:00｜進度：合約 舊約第一條「要問就問」、第七條「算」｜銅牌 半枚｜翻案證據 2/4｜表決倒數 7 天",
+        "knowledge": "賀敬川手上五張委託書，公證章出自宋氏大樓；第二案是聯合投標",
+        "carry_forward": "七天與五張委託書"
+      }
+    },
+    {
+      "number": 252,
+      "season_episode": 12,
+      "chapter": 2,
+      "title": "第五條",
+      "youtube_title": "前聯姻對象拿出反聯姻合約第五條：該我還你了，他們每月見面的帳在我家",
+      "duration_s": 118,
+      "logline": "賀亭需要證明賀敬川和宋紹謙私下勾結；唐婉希手上有路，可那條路要經過她母親——宋家的表姐。",
+      "hook": "恆基大廳，唐婉希把反聯姻合約翻到第五條：「雙方互為證人。」「該我還了。」",
+      "hook_type": "line",
+      "mid_hook": "唐婉希壓低聲音：「他們每月見面的會所，」「帳戶掛在我家名下。」",
+      "extra_hooks": [
+        "林小蔓抱著卷宗衝進來：「五年不見叫我退婚，」「現在叫我查帳？」"
+      ],
+      "conflict": "會所帳單每月寄到唐婉希母親家；她母親是宋家的表姐，開口要，等於先通知宋紹謙。",
+      "turn": "以為只能偷偷拿，林小蔓翻出會員章程：家族帳戶的共同持有人有權書面調閱——可申請書要母親副署。沈晏看著唐婉希：「別為他敲門，為妳自己。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "唐家大宅門口，她的手停在門鈴上：「我媽一定會告訴宋家。」",
+        "question": "唐婉希會去敲母親的門嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "daozhuan",
+        "xiju",
+        "qiyue"
+      ],
+      "spectacle": "林小蔓的事務所裡，反聯姻合約和那份舊的一年合約並排攤在桌上，兩份都出自同一支紅筆。",
+      "glamour_shot": "唐婉希白色套裝、珍珠耳環，在唐家大宅門前回頭，短直髮被風吹起一角。",
+      "setups": [
+        "s05-t06"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐婉希用反聯姻合約第五條站到他們這邊",
+        "找到調閱會所帳單的合法路徑"
+      ],
+      "characters": [
+        "tang-wanxi",
+        "jiang-ting",
+        "lin-xiaoman",
+        "shen-yan"
+      ],
+      "locations": [
+        "恆基營造總部大廳",
+        "林小蔓律師事務所",
+        "唐家大宅門口"
+      ],
+      "state": {
+        "time": "颱風後第二天｜進度：合約 反聯姻合約第五條啟用｜銅牌 半枚｜翻案證據 2/4｜表決倒數 6 天",
+        "knowledge": "會所帳戶掛在唐家名下，調閱要唐母副署",
+        "carry_forward": "唐家大宅的門鈴"
+      }
+    },
+    {
+      "number": 253,
+      "season_episode": 13,
+      "chapter": 2,
+      "title": "我只替橋說話",
+      "youtube_title": "董事來找她要技術意見：妳替他說話？她只翻到附件第六頁：我只替橋說話",
+      "duration_s": 122,
+      "logline": "方董事是董事會唯一沒表態的人，來找沈晏要一個不偏任何一方的意見；她只要多誇賀亭一句，就成了「為了男人」的證人。",
+      "hook": "門開了，唐母看著那張調閱單：「為了賀家那孩子？」唐婉希：「為了我自己。」",
+      "hook_type": "line",
+      "mid_hook": "方董把聯合投標提案攤在沈晏桌上；沈晏只翻到附件第六頁：「這頁數據，是送審版。」",
+      "conflict": "方董要知道舊基樁能不能沿用；沈晏得把話說得只剩數字，不能有一個字像在替賀亭拉票。",
+      "turn": "方董問：「妳替他說話？」她答：「我只替橋說話。」一頁數據就讓方董收起提案；觀眾以為方董要轉向了，她的手機卻跳出董事會秘書寄來的委託書清單。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "清單第三張委託書，簽名欄寫著「方以寧」。方董盯著自己的名字：「我沒簽過。」",
+        "question": "誰替方董簽了這張委託書？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "daozhuan",
+        "dalian"
+      ],
+      "spectacle": "晏衡事務所整面牆的步道橋圖前，兩個女人隔著長桌，中間是那份聯合投標提案。",
+      "glamour_shot": "沈晏摘下眼鏡，用鏡腳點著附件第六頁，抬眼看方董的那一秒，夕陽在鏡片上一閃。",
+      "setups": [
+        "s05-t07"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐母答應副署調閱",
+        "方董收起聯合投標提案",
+        "發現方董名下有一張她沒簽過的委託書"
+      ],
+      "characters": [
+        "shen-yan",
+        "s05-fang-dong",
+        "tang-wanxi",
+        "chen-mi"
+      ],
+      "locations": [
+        "唐家大宅",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "颱風後第二天傍晚｜進度：合約 她說「只替橋說話」｜銅牌 半枚｜翻案證據 2/4｜表決倒數 6 天",
+        "knowledge": "聯合投標提案附的是送審版數據；方董的委託書可能是假的",
+        "carry_forward": "那張署名「方以寧」的委託書"
+      }
+    },
+    {
+      "number": 254,
+      "season_episode": 14,
+      "chapter": 2,
+      "title": "簽名那天",
+      "youtube_title": "委託書上簽著董事的名字，她把護照影本並排一放：簽名那天她人在國外",
+      "duration_s": 120,
+      "logline": "沈晏要證明那張委託書是假的，又不能讓方董覺得自己被誰拿來當棋子。",
+      "hook": "沈晏把委託書影本和方董的護照影本並排：「公證那天，」「她在新加坡。」",
+      "hook_type": "line",
+      "mid_hook": "方董親筆寫下撤回書，連同出入境紀錄送進秘書室：「五票，」「現在是四票。」",
+      "extra_hooks": [
+        "林小蔓嘆氣：「我們律師沒看出來，」「被技師看出來。」"
+      ],
+      "conflict": "一張假委託書能讓賀敬川少一票，也可能讓整件事變成「恆基內鬥」上新聞，方董最討厭被當成誰的人。",
+      "turn": "以為方董就此倒向賀亭，她撤回委託書，卻只說：「我不投給任何人，」「我投給數據。」",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "秘書室的門一關，賀敬川的電話就到了：「老爺子不會投，」「四票就夠了。」",
+        "question": "老爺子真的會棄權嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "dalian",
+        "xiju"
+      ],
+      "spectacle": "護照影本上的新加坡入境章，和委託書上的公證章，被兩根手指同時按在同一個日期上。",
+      "glamour_shot": "方董在秘書室門口戴上用細鍊掛著的老花眼鏡，親筆簽下撤回書，銀灰短髮一絲不亂。",
+      "setups": [],
+      "payoffs": [
+        "s05-t05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "揭穿假委託書，賀敬川剩四票",
+        "方董以書面撤回並附出入境紀錄"
+      ],
+      "characters": [
+        "shen-yan",
+        "lin-xiaoman",
+        "s05-fang-dong",
+        "jiang-ting",
+        "he-jingchuan"
+      ],
+      "locations": [
+        "晏衡結構事務所",
+        "恆基營造總部董事會秘書室"
+      ],
+      "state": {
+        "time": "颱風後第三天｜進度：合約 舊約第一、七條已改｜銅牌 半枚｜翻案證據 2/4｜表決倒數 5 天",
+        "knowledge": "賀敬川剩四票；方董只投給數據；賀敬川算準老爺子會棄權",
+        "carry_forward": "老爺子那一票"
+      }
+    },
+    {
+      "number": 255,
+      "season_episode": 15,
+      "chapter": 2,
+      "title": "刻到七",
+      "youtube_title": "爺爺的測量尺手杖刻度到七就斷了，握把上的家徽和他身上那半枚一模一樣",
+      "duration_s": 120,
+      "logline": "老爺子請沈晏去看颱風後的老宅；賀亭開車送她，想要爺爺那一票，又不想用孫子的身分去討。",
+      "hook": "老宅走廊，老爺子用手杖一格一格量著牆，頭也不回：「你要我的票？」",
+      "hook_type": "question",
+      "mid_hook": "手杖的刻度到「07」就斷了，握把上刻著一個完整的家徽——跟他鑰匙圈上那半個，同一道紋。",
+      "extra_hooks": [
+        "老爺子摸著手杖：「你父親小時候，」「也問過這把尺。」"
+      ],
+      "conflict": "老爺子二十年沒在董事會開過口；賀亭要他的票，卻不肯拿身世去換。",
+      "turn": "以為老爺子會被親情說動，他只說：「董事會上，」「我不替任何人出頭。」——那是她舊合約裡的一條；賀亭轉頭看她，沈晏正蹲在牆角，確認她補強過的牆一根裂縫也沒多。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老爺子把手杖往地上一頓：「要我開口，」「拿證據來。」轉身前，他的拇指在那個家徽上停了一下。",
+        "question": "老爺子在等哪一份證據？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "ganren",
+        "daozhuan"
+      ],
+      "spectacle": "颱風後的賀家老宅，走廊盡頭一面補強過的老牆，一把測量尺手杖沿著牆面一格一格往上量。",
+      "glamour_shot": "沈晏在老宅窗邊蹲下看牆角，耳後的碎髮滑下來，她用安全帽的帽緣把它推回去。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她補強的老宅颱風後無損",
+        "看見手杖握把上那個完整的家徽"
+      ],
+      "characters": [
+        "jiang-ting",
+        "he-laoyezi",
+        "shen-yan"
+      ],
+      "locations": [
+        "賀家老宅"
+      ],
+      "state": {
+        "time": "颱風後第四天｜進度：合約 「不替任何人出頭」出現在老爺子嘴裡｜銅牌 半枚（手杖上有同一個家徽）｜翻案證據 2/4｜表決倒數 4 天",
+        "knowledge": "手杖的刻度到 07 就斷；握把家徽和銅牌同紋；老爺子要證據才開口",
+        "carry_forward": "老爺子要的證據"
+      }
+    },
+    {
+      "number": 256,
+      "season_episode": 16,
+      "chapter": 2,
+      "title": "他又來了",
+      "youtube_title": "前未婚夫又拿同一招逼她放手，這一次她當著他的面按下擴音：他又來了",
+      "duration_s": 125,
+      "logline": "宋紹謙聽到帳單的風聲，來事務所用五年前那一招逼沈晏；這一次她要做的不是推開誰，而是不再一個人扛。",
+      "hook": "唐婉希傳來一張照片：一疊印著會所燙金字的信封，「帳單到了。」下一秒，宋紹謙推開了事務所的門。",
+      "hook_type": "image",
+      "mid_hook": "宋紹謙放下一份撤回翻案申請書，連她的名字都替她打好了：「簽了，」「我讓他保住位置。」",
+      "conflict": "宋紹謙要她撤回翻案，換賀亭在董事會安全下莊；五年前她就是這樣被逼著做了選擇。",
+      "turn": "以為她會像五年前一樣自己扛下來，她當著他的面撥出電話、按下擴音：「他又來了。」電話那頭，賀亭的聲音：「我知道，」「我在樓下。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "reversal"
+        },
+        {
+          "beat": "second_half",
+          "type": "counter_kill"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "宋紹謙收起笑，放下另一份文件：「那包帳單，」「明天就是竊取個資。」律師函上的收件人是唐婉希。",
+        "question": "唐婉希會被律師函嚇退嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "chongyuan",
+        "daozhuan"
+      ],
+      "spectacle": "事務所玻璃窗外是澄港夜景，窗內一張桌上隔著兩份文件：一份撤回翻案申請書，一份律師函。",
+      "glamour_shot": "她拿起手機按下擴音的那一刻，眼鏡後的眼神冷得像在審圖，西裝外套的肩線筆直不動。",
+      "setups": [],
+      "payoffs": [
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她拒絕宋紹謙用同一招逼她推開他",
+        "撤回申請書的日期是昨天——他早就打算好了",
+        "會所帳單已經寄到唐婉希手上"
+      ],
+      "characters": [
+        "shen-yan",
+        "song-shaoqian",
+        "jiang-ting",
+        "tang-wanxi"
+      ],
+      "locations": [
+        "晏衡結構事務所",
+        "事務所樓下貨車停車位"
+      ],
+      "state": {
+        "time": "颱風後第五天夜｜進度：合約 「要問就問」——她第一次當面用出來｜銅牌 半枚｜翻案證據 2/4｜表決倒數 3 天",
+        "knowledge": "宋紹謙知道帳單的事，拿律師函壓唐婉希",
+        "carry_forward": "給唐婉希的律師函"
+      }
+    },
+    {
+      "number": 257,
+      "season_episode": 17,
+      "chapter": 2,
+      "title": "十四個月",
+      "youtube_title": "十四個月的包廂帳單攤滿一桌，第九張背面一行鉛筆字讓全場安靜",
+      "duration_s": 122,
+      "logline": "唐婉希要把帳單交出來而不被律師函拖垮；帳單只能證明吃飯，他們要的是證明談了什麼。",
+      "hook": "唐婉希把律師函對摺，丟進回收箱：「收件人是我，」「我說不怕。」",
+      "hook_type": "line",
+      "mid_hook": "十四個月的包廂帳單攤滿一桌，簽帳人全是賀敬川，同行人欄寫著同一個縮寫：S.S.Q.",
+      "extra_hooks": [
+        "阿凱數到第十四張大叫：「每月第二個禮拜四！」「比我回家看我媽還準！」"
+      ],
+      "conflict": "帳單證明他們見過面，證明不了談過什麼；董事們只會說「吃飯而已」。",
+      "turn": "林小蔓用會員章程第九條把律師函打回去——共同持有人調閱，合法；以為帳單也就到此為止，沈晏把第九張翻到背面：一行鉛筆字，字跡是賀敬川的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "沈晏把第九張舉到燈下：「持股 8%，」「標案後交割。」賀亭看著那行字：「這不是吃飯。」",
+        "question": "這張帳單能在董事會翻盤嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "xiju",
+        "qingxing"
+      ],
+      "spectacle": "一張長桌鋪滿十四個月的會所帳單，檯燈下，第九張的背面透出一行鉛筆字。",
+      "glamour_shot": "唐婉希把律師函丟進回收箱時頭也不回，珍珠耳環一晃，白色套裝的背影走進燈光裡。",
+      "setups": [],
+      "payoffs": [
+        "s05-t06"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "律師函被會員章程打回去",
+        "拿到十四個月的會所帳單",
+        "找到賀敬川親筆寫的「持股 8%，標案後交割」"
+      ],
+      "characters": [
+        "tang-wanxi",
+        "shen-yan",
+        "jiang-ting",
+        "lin-xiaoman",
+        "ah-kai"
+      ],
+      "locations": [
+        "林小蔓律師事務所"
+      ],
+      "state": {
+        "time": "颱風後第六天｜進度：合約 反聯姻合約第五條兌現｜銅牌 半枚｜翻案證據 2/4｜表決倒數 2 天",
+        "knowledge": "賀敬川與宋紹謙十四個月每月私會，談的是恆基持股",
+        "carry_forward": "第九張帳單背面的字"
+      }
+    },
+    {
+      "number": 258,
+      "season_episode": 18,
+      "chapter": 2,
+      "title": "第三頁太長",
+      "youtube_title": "凌晨一點她拿紅筆改他的董事會簡報：第三頁太長，跟五年前改考卷一樣",
+      "duration_s": 118,
+      "logline": "表決前夜，賀亭要把十四張帳單講成董事們聽得懂的一句話；賀敬川卻在議程上動了手腳。",
+      "hook": "凌晨一點，事務所只剩一盞燈；她拿紅筆在他的簡報上畫一條線：「第三頁太長。」",
+      "hook_type": "image",
+      "mid_hook": "陳覓把第十四次見面的日期圈起來：「就在假委託書」「公證的前一天。」",
+      "extra_hooks": [
+        "他抬頭：「五年前妳也這樣寫。」她沒抬眼：「你也沒改。」"
+      ],
+      "conflict": "帳單有十四張，董事只會聽一句話；他得把十四個月講成一個數字。",
+      "turn": "簡報砍到一頁一個數字，觀眾以為他準備好了；董事會秘書的新議程這時寄到，第一案被換掉了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "新議程第一案：「章程修正：名譽董事不得表決。」她算了一遍：「過了，四比四，」「代理董事長投最後一票。」",
+        "question": "老爺子的票會被拿掉嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "daozhuan",
+        "zhongquan",
+        "dalian"
+      ],
+      "spectacle": "深夜事務所，整面橋圖牆上貼滿十四張帳單影本，一條紅線把日期連到一張委託書上。",
+      "glamour_shot": "他捲起襯衫袖子站在證據牆前講簡報，她坐在桌邊抬頭看他，檯燈只照亮兩人之間那一段。",
+      "setups": [],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "簡報砍成一頁一個數字",
+        "第十四次私會就在假委託書公證前一天"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "chen-mi"
+      ],
+      "locations": [
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "表決前夜 01:00｜進度：合約 她改他的簡報，像五年前改他的考卷｜銅牌 半枚｜翻案證據 2/4｜表決倒數 1 天",
+        "knowledge": "賀敬川要先修章程拿掉老爺子的票，再以代理董事長身分投最後一票",
+        "carry_forward": "第一案章程修正"
+      }
+    },
+    {
+      "number": 259,
+      "season_episode": 19,
+      "chapter": 2,
+      "title": "表決",
+      "youtube_title": "叔叔在董事會說他為了女人退婚，他把十四張帳單推上長桌：你們談的是持股",
+      "duration_s": 135,
+      "logline": "表決日，賀亭要在賀敬川修掉老爺子那一票之前，讓整張長桌看見十四個月的帳；沈晏留在樓下。",
+      "hook": "第一案剛念完，方董舉手：「章程修正，」「要三分之二出席同意。」她把章程翻到那一頁。",
+      "hook_type": "line",
+      "mid_hook": "賀亭把第九張帳單投上螢幕：「你和宋紹謙每月見面，」「談的是恆基的持股。」",
+      "extra_hooks": [
+        "開會前他在樓下問她：「要上去嗎？」她搖頭：「這是你的會。」"
+      ],
+      "conflict": "賀敬川當眾說：「他為了一個停權過的女人退婚，損害公司。」只要撤換案過，恆基就跟宋氏一起去投她的橋。",
+      "turn": "章程修正被方董一句話擋下，撤換案四票對五票沒過；觀眾以為這樣就結束了，二十年沒在董事會開口的老爺子，敲了一下手杖。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "老爺子的手杖敲在石材地板上：「表決。」滿桌以為是撤換案，他接著說：「解除賀敬川，」「代理董事。」",
+        "question": "賀敬川會被拉下來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "daozhuan",
+        "shenfen"
+      ],
+      "spectacle": "長桌盡頭的投影幕上，一張會所帳單的背面被放大成一整面牆：「持股 8%，標案後交割」。",
+      "glamour_shot": "賀亭把帳單影本一張一張推到董事面前，深色西裝口袋露出半枚銅牌的鑰匙圈。",
+      "setups": [],
+      "payoffs": [
+        "s05-t07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "章程修正被擋下，老爺子的票保住",
+        "撤換賀亭四票對五票不通過",
+        "帳單當眾坐實賀敬川與宋紹謙私談恆基持股"
+      ],
+      "characters": [
+        "jiang-ting",
+        "he-jingchuan",
+        "he-laoyezi",
+        "s05-fang-dong",
+        "shen-yan"
+      ],
+      "locations": [
+        "恆基營造總部董事會議室",
+        "恆基總部樓下"
+      ],
+      "state": {
+        "time": "表決日 09:40｜進度：合約 她在樓下、他在樓上——並肩，不擋在前面｜銅牌 半枚｜翻案證據 2/4｜表決進行中",
+        "knowledge": "方董投下反對撤換；老爺子二十年來第一次提案",
+        "carry_forward": "解除賀敬川的表決"
+      }
+    },
+    {
+      "number": 260,
+      "season_episode": 20,
+      "chapter": 2,
+      "title": "手杖裡的東西",
+      "youtube_title": "叔叔被董事會拉下台，爺爺散會後只把手杖交給他：裡面有你父親留的東西",
+      "duration_s": 145,
+      "logline": "賀敬川下台了，宋紹謙還在外面等；老爺子當眾留下賀亭，卻一句也沒說他要孫子做什麼。",
+      "hook": "舉起的手一隻一隻抬高，秘書念：「解除賀敬川代理董事，」「七票贊成。」",
+      "hook_type": "image",
+      "mid_hook": "秘書接著宣布：第二案「恆基與宋氏聯合投標」，提案人去職，撤案。",
+      "extra_hooks": [
+        "樓下貨車裡，她收到他兩個字：「過了。」她把手機握在手心，三秒沒動。"
+      ],
+      "conflict": "賀敬川收拾公事包時撂下一句「宋紹謙不會罷手」；恆基退出了，宋氏還能單獨去投她的橋。",
+      "turn": "以為老爺子要把董事長的位置交給孫子；散會後空蕩蕩的會議室裡，他只把那把測量尺手杖遞過去。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "老爺子把手杖放進他手裡：「這裡面有一樣東西，」「你父親留的。」「等你準備好，再打開。」",
+        "question": "手杖裡藏著父親的什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "shenfen",
+        "ganren"
+      ],
+      "spectacle": "散會後的長桌盡頭，一把舊測量尺手杖從一雙布滿老斑的手，交到一雙年輕的手上；窗外是整條河。",
+      "glamour_shot": "樓下貨車裡，她收到訊息後把手機握在手心，側臉靠著車窗，嘴角慢慢揚起。",
+      "setups": [
+        "m12"
+      ],
+      "payoffs": [
+        "s05-t08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "賀敬川被解除代理董事",
+        "恆基撤回與宋氏的聯合投標",
+        "老爺子把手杖交給賀亭"
+      ],
+      "characters": [
+        "jiang-ting",
+        "he-laoyezi",
+        "he-jingchuan",
+        "s05-fang-dong",
+        "shen-yan"
+      ],
+      "locations": [
+        "恆基營造總部董事會議室",
+        "恆基總部樓下貨車"
+      ],
+      "state": {
+        "time": "表決日 11:00｜進度：合約 舊約第一、七條已改｜銅牌 半枚＋手杖（未開）｜翻案證據 2/4｜董事會：賀敬川解職",
+        "knowledge": "賀敬川下台、聯合投標撤回；手杖裡有父親留的東西",
+        "carry_forward": "沒打開的手杖"
+      }
+    },
+    {
+      "number": 261,
+      "season_episode": 21,
+      "chapter": 3,
+      "title": "不要替我出頭",
+      "youtube_title": "工地主任的女兒抱著紙箱上門：我被調走了，我爸只傳來一句不要替我出頭",
+      "duration_s": 115,
+      "logline": "翻案還缺那晚的澆置紀錄；老高的女兒高曉雯抱著紙箱找上事務所，她被宋氏調走了，父親卻不肯接她電話。",
+      "hook": "貨車裡，他把手杖用那件藍色搬家外套包好，放到後座：「還沒準備好。」她只說：「那就等。」",
+      "hook_type": "image",
+      "mid_hook": "高曉雯把調職令放上桌：宋氏報廢料場，生效日——許檢查員受理翻案的隔天。",
+      "extra_hooks": [
+        "陳覓小聲碎念：「料場？那裡連冷氣都沒有。」"
+      ],
+      "conflict": "高曉雯想知道自己為什麼被調走；沈晏需要老高手上的紀錄，卻不能讓一個女兒覺得自己被拿來當餌。",
+      "turn": "以為高曉雯是來討公道的，她其實是來求沈晏「別再找我爸」——直到她拿出父親昨晚傳來的唯一一則訊息。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "高曉雯把手機推過來，螢幕上只有一句：「不要替我出頭。」沈晏看著那六個字，那是她寫進舊合約的話。",
+        "question": "老高到底在怕什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "事務所的證據牆上空著兩格，一個女人抱著寫有「宋氏建設」的紙箱站在牆前。",
+      "glamour_shot": "沈晏推了一下細框眼鏡，接過調職令的一瞬抬眼，夕陽從百葉窗斜切過她的臉。",
+      "setups": [
+        "s05-t09",
+        "m11"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到老高的女兒",
+        "看出調職令的生效日落在翻案受理的隔天"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "s05-gao-xiaowen",
+        "chen-mi"
+      ],
+      "locations": [
+        "江亭的藍色舊貨車",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "表決後第二天｜進度：合約 舊約第一、七條已改；「不要替我出頭」出現在老高的訊息裡｜銅牌 半枚＋手杖（未開）｜翻案證據 2/4",
+        "knowledge": "高曉雯被調去報廢料場；老高躲著女兒",
+        "carry_forward": "老高那句「不要替我出頭」"
+      }
+    },
+    {
+      "number": 262,
+      "season_episode": 22,
+      "chapter": 3,
+      "title": "婚前協議第六條",
+      "youtube_title": "妹妹想交出原始檔案，父親撂下狠話，前未婚夫只傳一句：記得第六條",
+      "duration_s": 120,
+      "logline": "沈玥手上有送審檔的原始備份，交出去，父親不認她、宋紹謙要她背；她還在等一個不用選的辦法。",
+      "hook": "沈晏把手機還給高曉雯：「他不是怕自己，」「是怕妳。」",
+      "hook_type": "line",
+      "mid_hook": "沈家客廳，沈父的茶杯重重放下：「妳交出去，」「沈家就沒有妳。」",
+      "conflict": "沈玥想交出原始檔案，卻還想留住父親；宋紹謙的婚前協議把所有外洩的責任都寫在她名下。",
+      "turn": "深夜沈玥站在事務所門口，手裡握著一支隨身碟，最後卻說「讓我再想一晚」；以為沈晏會逼她，沈晏只說：「想多久都行。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "沈玥走到電梯口，手機亮了，宋紹謙只傳一行字：「婚前協議第六條，」「妳記得吧。」",
+        "question": "第六條寫了什麼，能把她壓住？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "qingxing",
+        "daozhuan"
+      ],
+      "spectacle": "沈家客廳的紅木茶几上，一杯打翻的茶慢慢流到一份婚前協議的邊角。",
+      "glamour_shot": "沈玥長捲髮散在肩上，站在事務所玻璃門外，隨身碟在指間轉了一圈又握緊。",
+      "setups": [
+        "s05-t11",
+        "s05-t12"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "高曉雯明白父親是在護她",
+        "沈玥第一次帶著原始檔案走到姐姐門口"
+      ],
+      "characters": [
+        "shen-yan",
+        "s05-gao-xiaowen",
+        "shen-yue",
+        "shen-fu",
+        "song-shaoqian"
+      ],
+      "locations": [
+        "晏衡結構事務所",
+        "沈家客廳"
+      ],
+      "state": {
+        "time": "表決後第三天夜｜進度：合約 宋紹謙的婚前協議第六條｜銅牌 半枚＋手杖（未開）｜翻案證據 2/4",
+        "knowledge": "沈玥有原始檔案，卻被父親和婚前協議兩頭壓著",
+        "carry_forward": "婚前協議第六條"
+      }
+    },
+    {
+      "number": 263,
+      "season_episode": 23,
+      "chapter": 3,
+      "title": "五年前的搬家單",
+      "youtube_title": "律師一眼看穿婚前協議第六條無效，他翻出五年前的搬家單找到失蹤的工地主任",
+      "duration_s": 122,
+      "logline": "要找老高，只有一條線：五年前賀亭替他搬過家；周叔的搬家公司從不丟單。",
+      "hook": "林小蔓把婚前協議翻到第六條，紅筆一圈：「要人替犯罪保密，」「這條無效。」",
+      "hook_type": "line",
+      "mid_hook": "周叔從鐵櫃底拖出一個鞋盒，抽出一張泛黃的單子：「五年前，高先生，」「搬到河口。」",
+      "extra_hooks": [
+        "阿凱把一疊舊單子當扇子搧：「老大，你連這都記得？」"
+      ],
+      "conflict": "老高換過兩次地址，電話停用；他們只有一張五年前的搬家單，和他每月替她量裂縫留下的筆跡。",
+      "turn": "照著搬家單找到河口，老高又搬走了；以為線斷了，鄰居阿婆說：他每個月有一天，天沒亮就提著紅筆出門。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "阿婆想了想：「每個月十五號。」賀亭看向牆上的月曆——明天就是十五號。",
+        "question": "明天天亮前，老高會出現嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "ganren",
+        "qingxing"
+      ],
+      "spectacle": "搬家公司倉庫的鐵櫃裡，十幾年的搬家單用橡皮筋捆成一疊疊，像一面紙做的牆。",
+      "glamour_shot": "賀亭蹲在鐵櫃前一張張翻舊單子，西裝外套脫了搭在紙箱上，袖子捲起，側臉專注。",
+      "setups": [],
+      "payoffs": [
+        "s05-t12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "婚前協議第六條被認定無效，沈玥少了一道枷鎖",
+        "用五年前的搬家單追到老高的去向"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "lin-xiaoman",
+        "zhou-shu",
+        "ah-kai"
+      ],
+      "locations": [
+        "林小蔓律師事務所",
+        "搬家公司倉庫",
+        "河口老街"
+      ],
+      "state": {
+        "time": "表決後第四天｜進度：合約 婚前協議第六條無效；五年前的搬家單｜銅牌 半枚＋手杖（未開）｜翻案證據 2/4",
+        "knowledge": "老高每月十五號天亮前到橋邊量裂縫",
+        "carry_forward": "十五號的清晨"
+      }
+    },
+    {
+      "number": 264,
+      "season_episode": 24,
+      "chapter": 3,
+      "title": "十五號天亮前",
+      "youtube_title": "調職令生效日正好是翻案受理隔天，她在橋下等了一夜，等到五年不見的人",
+      "duration_s": 118,
+      "logline": "十五號清晨，沈晏、賀亭和高曉雯守在一號橋墩的裂縫計旁，等一個五年來只在天亮前出現的人。",
+      "hook": "清晨四點五十，橋下起霧，裂縫計上那張紀錄卡還空著今天的格子。",
+      "hook_type": "image",
+      "mid_hook": "林小蔓來電：宋氏人資系統的簽核紀錄調到了——調職令是收到受理通知後兩小時簽的。",
+      "conflict": "老高若看見女兒在這裡，可能轉身就走；可高曉雯堅持要親眼見父親。",
+      "turn": "調職令坐實是報復，高曉雯可以去申訴；以為今天等不到人，霧裡走來一件反光背心，停在裂縫計前，手上的紅筆掉在地上。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老高看著女兒，張了張嘴：「我躲了五年。」他轉向沈晏，聲音啞了。",
+        "question": "老高要對她說什麼？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "ganren",
+        "zhongquan"
+      ],
+      "spectacle": "黎明前的霧裡，一號橋墩下三個人影守著一具裂縫計，河面上的霧一層層退開。",
+      "glamour_shot": "他把自己的外套披到她肩上，她沒推開，只把安全帽的帽帶扣好，霧在兩人之間流動。",
+      "setups": [],
+      "payoffs": [
+        "s05-t09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "調職令被證實是報復，高曉雯取得申訴依據",
+        "等到了老高"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "s05-gao-xiaowen",
+        "lao-gao",
+        "lin-xiaoman"
+      ],
+      "locations": [
+        "一號橋墩",
+        "河濱步道橋封鎖線"
+      ],
+      "state": {
+        "time": "十五號清晨 05:20｜進度：合約 調職令簽核紀錄｜銅牌 半枚＋手杖（未開）｜翻案證據 2/4",
+        "knowledge": "宋氏在收到受理通知兩小時後調走高曉雯；老高出現了",
+        "carry_forward": "老高那句「我躲了五年」"
+      }
+    },
+    {
+      "number": 265,
+      "season_episode": 25,
+      "chapter": 3,
+      "title": "我都看到了",
+      "youtube_title": "工地主任終於開口：妳每天在封鎖線外量裂縫，我都看到了，證據就在我手上",
+      "duration_s": 125,
+      "logline": "老高要把五年的愧疚說出口，可他每多說一個字，女兒在宋氏的工作就少一分保障。",
+      "hook": "老高看著沈晏：「妳那時候每天在封鎖線外量裂縫，」「我都看到了。」",
+      "hook_type": "line",
+      "mid_hook": "他望著對岸：「那晚對岸站著一個老人，」「拄著一把尺，看了一整夜。」",
+      "extra_hooks": [
+        "高曉雯紅著眼：「爸，你每個月都來？」老高沒答，把紀錄卡上今天那格補上。"
+      ],
+      "conflict": "老高終於承認紀錄還在，可他仍怕出面；沈晏不逼，只想知道紀錄在哪裡、保不保得住。",
+      "turn": "以為老高點頭就能拿到紀錄；他說盒子在家，鑰匙在哪，他五年前寫在那晚的反光背心裡——他不想讓自己記得，背心留在工地貨櫃。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "高曉雯臉色一變：「工地貨櫃，」「全拉到報廢料場了。」她看著手機上的排程：「這週五清空。」",
+        "question": "鑰匙能在貨櫃被拆掉前拿回來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shenfen",
+        "qingxing"
+      ],
+      "spectacle": "晨光照上一號橋墩，裂縫計的紀錄卡上，第六十一格被一支紅筆補上。",
+      "glamour_shot": "沈晏摘下安全帽，向老高微微低頭，晨風把她的頭髮吹過鏡框，眼神平靜。",
+      "setups": [
+        "s05-t10"
+      ],
+      "payoffs": [
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "老高親口承認五年來一直在看",
+        "確認那晚的紀錄還在",
+        "老高說出那晚對岸有個拄尺的老人"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "lao-gao",
+        "s05-gao-xiaowen"
+      ],
+      "locations": [
+        "一號橋墩"
+      ],
+      "state": {
+        "time": "十五號清晨 06:00｜進度：合約 老高說「我不能再躲」｜銅牌 半枚＋手杖（未開）｜翻案證據 2/4（紀錄在鐵盒，鑰匙在貨櫃）",
+        "knowledge": "紀錄鎖在鐵盒；鑰匙在報廢料場的舊貨櫃；那晚對岸有個拄尺的老人",
+        "carry_forward": "週五就要清空的貨櫃"
+      }
+    },
+    {
+      "number": 266,
+      "season_episode": 26,
+      "chapter": 3,
+      "title": "料場歸我管",
+      "youtube_title": "宋氏把她調去報廢料場，結果拆貨櫃的單子少了一個簽名：主管就是她",
+      "duration_s": 120,
+      "logline": "要拿鑰匙，得趕在宋氏拆掉舊貨櫃之前進料場；高曉雯才報到三天，魏課長是她上級的上級。",
+      "hook": "高曉雯舉起剛領到的識別證：「料場現在，」「歸我管。」",
+      "hook_type": "line",
+      "mid_hook": "魏課長帶著拖車開進料場，揮著一張報廢單：「今天就拆。」",
+      "extra_hooks": [
+        "阿凱開著舊貨車跟在後面：「第一次搬貨櫃裡的東西，」「不收錢。」"
+      ],
+      "conflict": "宋氏想搶在他們之前把老貨櫃拆掉；拖車吊鉤已經掛上，櫃門還鎖著。",
+      "turn": "報廢單第四欄「料場主管簽章」是空的——主管就是她；她不簽，拖車一步也動不了。觀眾以為鑰匙到手了，貨櫃裡那件反光背心的口袋卻是空的。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "背心口袋裡沒有鑰匙，只有一張摺成小方塊的紙條，老高的字：「鑰匙，」「給了最不會丟東西的人。」",
+        "question": "誰是最不會丟東西的人？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "報廢料場裡鏽色貨櫃疊成一面牆，一台拖車的吊鉤懸在其中一個貨櫃上方，停住。",
+      "glamour_shot": "沈晏戴著安全帽站在櫃門前，陽光從櫃頂的縫隙打下來，她舉起手電筒照進櫃裡。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "高曉雯用料場主管的簽章擋下拆貨櫃",
+        "找到老高那晚穿的反光背心"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "s05-gao-xiaowen",
+        "s05-wei-kezhang",
+        "ah-kai"
+      ],
+      "locations": [
+        "宋氏報廢料場"
+      ],
+      "state": {
+        "time": "十五號下午｜進度：合約 報廢單第四欄空白｜銅牌 半枚＋手杖（未開）｜翻案證據 2/4",
+        "knowledge": "鑰匙不在背心裡，老高把它給了「最不會丟東西的人」",
+        "carry_forward": "那張紙條"
+      }
+    },
+    {
+      "number": 267,
+      "season_episode": 27,
+      "chapter": 3,
+      "title": "鐵盒",
+      "youtube_title": "女兒脖子上戴了二十年的小鑰匙，打開了藏了五年的鐵盒，撕掉的那一半在裡面",
+      "duration_s": 130,
+      "logline": "老高終於帶著鐵盒出門；紙放了五年，要成為證據，每一張都得對上時間、車號和簽名。",
+      "hook": "高曉雯從領口拉出一條細鍊，鍊上掛著一把小銅鑰匙：「這把？」「我戴了二十年。」",
+      "hook_type": "image",
+      "mid_hook": "夜裡老高抱著生鏽的鐵盒走進事務所，沈晏站起來：「謝謝你願意出來。」盒蓋打開。",
+      "extra_hooks": [
+        "盒底壓著一張舊照片：澆置那晚的一號橋墩，旁邊基點 HJ-07 的蓋子是打開的。"
+      ],
+      "conflict": "老高把五年的愧疚放上桌；沈晏得在他反悔之前，讓每一張紙都說得出自己是真的。",
+      "turn": "澆置紀錄寫明那晚第三車、第七車比圖說低一級，試體送驗單的原始強度也對得上，角落還有宋紹謙的批示「以送審版為準」；觀眾以為這就是全部，林小蔓拿出沈晏那張撕過的影本。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "林小蔓把撕過的影本疊上送驗單，撕痕剛好接上：「撕掉的那一半，」「在這裡。」",
+        "question": "這一盒能讓她翻案嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shenfen",
+        "qingxing"
+      ],
+      "spectacle": "檯燈下鐵盒打開，五年前的出貨單、送驗單一張張攤開，紙邊還留著鏽色的指印。",
+      "glamour_shot": "沈晏戴上白手套一張張翻紙本紀錄，鏡片映著檯燈，指尖停在一個數字上。",
+      "setups": [],
+      "payoffs": [
+        "s05-t10",
+        "m02"
+      ],
+      "reveals": [
+        "m11"
+      ],
+      "general_payoffs": [
+        "拿到那晚的澆置紀錄與試體送驗單",
+        "撕過的影本終於接上另一半",
+        "送驗單上有宋紹謙「以送審版為準」的親筆批示"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "lao-gao",
+        "s05-gao-xiaowen",
+        "lin-xiaoman",
+        "chen-mi"
+      ],
+      "locations": [
+        "宋氏報廢料場",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "十五號深夜｜進度：合約 送驗單批示「以送審版為準」｜銅牌 半枚＋手杖（未開）｜翻案證據 3/4",
+        "knowledge": "那晚送到的是低一級的混凝土；送審版是事後改高的，批示的人是宋紹謙",
+        "carry_forward": "還差沈玥的原始檔案"
+      }
+    },
+    {
+      "number": 268,
+      "season_episode": 28,
+      "chapter": 3,
+      "title": "偽造",
+      "youtube_title": "宋氏律師上直播說鐵盒是偽造，她只把出貨單翻到右上角：偽造得了這一聯嗎",
+      "duration_s": 118,
+      "logline": "宋氏搶在聽證前把鐵盒說成偽造，老高開始動搖；沈晏要守住這一盒，還得把最後一份證據等進門。",
+      "hook": "證據牆第三格釘上鐵盒的影本，陳覓在旁邊寫下：3/4。",
+      "hook_type": "image",
+      "mid_hook": "新聞直播，鄧律師對著鏡頭：「所謂鐵盒紀錄，」「是事後偽造。」",
+      "extra_hooks": [
+        "老高盯著電視，手在抖：「他們會告我。」"
+      ],
+      "conflict": "宋氏要搶先定調；只要老高退一步，鐵盒就只剩一堆舊紙。",
+      "turn": "以為她會去搶麥克風，沈晏只把出貨單翻到右上角：每一張都印著預拌廠的流水號，「偽造得了紙，」「偽造不了廠裡那一聯。」——可預拌廠的存根，照規定五年前就該銷毀了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "沈玥站在林小蔓事務所樓下，手機亮起宋紹謙的訊息：「妳交出去，」「我就說，」「信箱是妳一個人用的。」",
+        "question": "沈玥還敢上樓嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        3,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "ganren",
+        "daozhuan"
+      ],
+      "spectacle": "電視裡宋氏記者會的白光和事務所昏黃的證據牆擠在同一個畫面，一冷一暖。",
+      "glamour_shot": "沈晏關掉電視轉身，西裝外套下擺一甩，背後證據牆的紅線像一張攤開的圖說。",
+      "setups": [
+        "s05-t13"
+      ],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "證據來到 3/4",
+        "找到驗真的路：預拌廠的流水號",
+        "她對老高說：「這次你不是一個人。」"
+      ],
+      "characters": [
+        "shen-yan",
+        "lao-gao",
+        "chen-mi",
+        "s05-deng-lawyer",
+        "shen-yue",
+        "song-shaoqian"
+      ],
+      "locations": [
+        "晏衡結構事務所",
+        "林小蔓律師事務所樓下"
+      ],
+      "state": {
+        "time": "十六號｜進度：合約 宋氏聲明「偽造」｜銅牌 半枚＋手杖（未開）｜翻案證據 3/4",
+        "knowledge": "宋氏要把鐵盒打成偽造；預拌廠的存根若還在就能驗真",
+        "carry_forward": "樓下的沈玥"
+      }
+    },
+    {
+      "number": 269,
+      "season_episode": 29,
+      "chapter": 3,
+      "title": "交出去",
+      "youtube_title": "父親守在大廳要她回家，妹妹還是簽下了交付收據，轉身對父親的背影彎腰",
+      "duration_s": 125,
+      "logline": "沈玥要交出原始檔案，父親就守在樓下；她簽下收據，就同時得罪宋紹謙和沈家。",
+      "hook": "沈玥關掉手機，推開林小蔓的門：「我來交東西。」",
+      "hook_type": "line",
+      "mid_hook": "大樓大廳，沈父從沙發站起來：「玥玥，」「回家。」",
+      "extra_hooks": [
+        "林小蔓把交付收據推過去：「簽這裡，」「之後誰都改不了。」"
+      ],
+      "conflict": "她從小拿走姐姐的一切，只為了讓父親看她一眼；今天她要做的事，會讓父親轉身。",
+      "turn": "以為她會在父親面前退回去，她把隨身碟放進林小蔓手心、簽好收據；原始檔的第 14 頁打開，數字和鐵盒一模一樣。沈晏趕到大廳，父女三人第一次站在同一個地方，沈父卻轉過身。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "沈玥走過大廳，對著父親的背影彎下腰：「爸，對不起。」她沒有停，走進門外的雨裡。",
+        "question": "沈父會回頭嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "qingxing",
+        "daozhuan"
+      ],
+      "spectacle": "挑高的大理石大廳，父親站在中央，兩個女兒一前一後，三個人之間隔著一整片反光。",
+      "glamour_shot": "沈玥卸了半邊妝、長捲髮紮起，在收據上簽名時手很穩，抬頭的眼神第一次像她姐姐。",
+      "setups": [],
+      "payoffs": [
+        "s05-t11",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈玥交出原始檔案並簽下交付收據",
+        "原始檔第 14 頁的數字和鐵盒紀錄一致"
+      ],
+      "characters": [
+        "shen-yue",
+        "lin-xiaoman",
+        "shen-fu",
+        "shen-yan"
+      ],
+      "locations": [
+        "林小蔓律師事務所",
+        "事務所大樓大廳"
+      ],
+      "state": {
+        "time": "十六號夜｜進度：合約 沈玥簽下交付收據｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4",
+        "knowledge": "原始檔與鐵盒對上；沈父沒有回頭",
+        "carry_forward": "兩份證據要排在一起"
+      }
+    },
+    {
+      "number": 270,
+      "season_episode": 30,
+      "chapter": 3,
+      "title": "夠了",
+      "youtube_title": "律師把鐵盒和原始檔案排在一起只說兩個字：夠了，聽證會定在下個月",
+      "duration_s": 150,
+      "logline": "證據齊了，沈晏要讓調查小組在宋氏的「偽造」聲明底下排出聽證會；每晚一天，宋氏的標案就近一天。",
+      "hook": "雨裡沈父沒有回頭；追出來的是沈晏，把一杯熱可可塞進沈玥手裡：「妳的，」「加糖。」",
+      "hook_type": "image",
+      "mid_hook": "林小蔓把鐵盒紀錄和原始檔案排在一起，推了推紅框眼鏡：「夠了。」",
+      "extra_hooks": [
+        "陳覓把第四張卡釘上證據牆，四格全滿。"
+      ],
+      "conflict": "宋氏的「偽造」聲明還掛在新聞上；補充證據送進市府，要等調查小組點頭才排得出聽證。",
+      "turn": "許檢查員隔天就回了公文；以為只是排期，林小蔓翻到第二頁：宋氏提出動議，要求賀亭不得作證，證人名單上還多了一個名字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "林小蔓念出公文：「聽證會，下個月十二號。」翻到第二頁，她的笑停住：「宋氏的證人，」「第一位是沈玥。」",
+        "question": "宋紹謙為什麼要沈玥替他作證？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "林小蔓的長桌上，一個生鏽的鐵盒和一支隨身碟並排，中間是那張接回另一半的影本。",
+      "glamour_shot": "雨夜騎樓下，姐妹各捧一杯熱飲，沈晏的西裝外套披在沈玥肩上，兩人望著同一個方向。",
+      "setups": [
+        "s05-t14"
+      ],
+      "payoffs": [
+        "m11",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "兩份證據排在一起，證據 4/4",
+        "聽證會排定下個月十二號",
+        "姐妹第一次並肩站在雨裡"
+      ],
+      "characters": [
+        "shen-yan",
+        "shen-yue",
+        "lin-xiaoman",
+        "chen-mi",
+        "xu-jiancha"
+      ],
+      "locations": [
+        "事務所大樓騎樓",
+        "林小蔓律師事務所"
+      ],
+      "state": {
+        "time": "十七號｜進度：合約 聽證通知與宋氏動議｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4｜聽證倒數 26 天",
+        "knowledge": "聽證會下月十二號；宋氏把沈玥列為證人，並要求賀亭不得作證",
+        "carry_forward": "宋氏的證人名單與動議"
+      }
+    },
+    {
+      "number": 271,
+      "season_episode": 31,
+      "chapter": 4,
+      "title": "證人名單",
+      "youtube_title": "宋氏要求他不得作證，理由只有一張截圖：他說過自己有一份沒到期的合約",
+      "duration_s": 118,
+      "logline": "聽證會還有二十五天，宋氏一手把沈玥列成自己的證人，一手要讓賀亭失去作證資格。",
+      "hook": "林小蔓摘下紅框眼鏡：「他要她當著所有人，」「承認信箱是她的。」",
+      "hook_type": "line",
+      "mid_hook": "鄧律師的動議附件只有一張新聞截圖：聯姻宴上，他說「我已經有一份沒到期的合約」。",
+      "extra_hooks": [
+        "阿凱念標題念到一半卡住：「恆基長孫……有一份……」「老大，你很會下標耶。」"
+      ],
+      "conflict": "宋氏說賀亭和沈晏之間有「沒到期的合約」，是利害關係人，證詞不能採；少了他，沒有人能把四樣證據一頁頁講清楚。",
+      "turn": "以為可以說那只是一句氣話，林小蔓搖頭：要讓他作證，只有一條路——白紙黑字證明那份合約真的到期了。模擬問答裡，沈晏把當年僱他的理由說得只剩一句：「他先救圖，不是救自己。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林小蔓把具結書推到賀亭面前：「寫一句：合約，」「五年前就到期了。」他沒拿筆，先看向沈晏。",
+        "question": "他肯親手寫下「合約已到期」嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "daozhuan",
+        "xiju"
+      ],
+      "spectacle": "白板上畫著聽證會的長桌，一邊是四樣證據，一邊是宋氏的證人名單，中間一個紅圈圈住「利害關係人」。",
+      "glamour_shot": "賀亭坐在會議桌一角，把新聞截圖翻過去蓋住，抬眼看她，襯衫領口鬆開一顆釦子。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "看穿宋紹謙要沈玥在聽證會上自認信箱",
+        "沈晏把當年僱他的理由講成一句話"
+      ],
+      "characters": [
+        "lin-xiaoman",
+        "jiang-ting",
+        "shen-yan",
+        "ah-kai",
+        "s05-deng-lawyer"
+      ],
+      "locations": [
+        "林小蔓律師事務所"
+      ],
+      "state": {
+        "time": "聽證前 25 天｜進度：合約 宋氏拿「沒到期的合約」當武器｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4",
+        "knowledge": "宋氏主張他是利害關係人；唯一的解法是證明舊約已經到期",
+        "carry_forward": "具結書上那一句"
+      }
+    },
+    {
+      "number": 272,
+      "season_episode": 32,
+      "chapter": 4,
+      "title": "這次你決定",
+      "youtube_title": "混凝土廠說存根五年前就銷毀了，老會計推推眼鏡：銷毀單是我寫的，紙箱還在",
+      "duration_s": 120,
+      "logline": "宋氏咬定鐵盒是偽造，唯一能驗真的是預拌廠的出貨存根；廠方的銷毀證明卻寫著「五年前已銷毀」。",
+      "hook": "他問她：「妳要我寫嗎？」她把筆放到他手邊：「這次，」「你自己決定。」",
+      "hook_type": "line",
+      "mid_hook": "預拌廠倉庫，蔡會計把老花眼鏡推上額頭：「銷毀單是我寫的，」「紙箱還在。」",
+      "extra_hooks": [
+        "陳覓被一箱箱複寫聯嗆得直咳：「三十年……」「一張都沒丟？」"
+      ],
+      "conflict": "沒有預拌廠的那一聯，鐵盒就只是老高一個人的說法；廠長拿出蓋了章的銷毀證明，請他們離開。",
+      "turn": "以為存根真的燒了，蔡會計說她當年只在銷毀單上簽名，紙箱一箱也沒動；可她只肯把紙箱交給調查小組，不交給任何一方。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "hidden_power"
+        },
+        {
+          "beat": "second_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "林小蔓接起電話，臉色一變：「補件截止，」「是明天下午五點。」",
+        "question": "存根趕得上截止前送進調查小組嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "daozhuan",
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "預拌廠倉庫深處，一排排紙箱貼著年份標籤，從地板疊到天花板，手電筒光一格一格掃過去。",
+      "glamour_shot": "沈晏站在倉庫的鋁梯上抽出標著五年前的紙箱，安全帽下幾縷頭髮滑落，回頭把箱子遞給陳覓。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找到預拌廠沒燒掉的出貨存根",
+        "她把要不要具結交給他自己決定"
+      ],
+      "characters": [
+        "jiang-ting",
+        "shen-yan",
+        "s05-cai-kuaiji",
+        "chen-mi",
+        "lin-xiaoman"
+      ],
+      "locations": [
+        "林小蔓律師事務所",
+        "預拌混凝土廠倉庫"
+      ],
+      "state": {
+        "time": "聽證前 24 天｜進度：合約 具結書還沒簽｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4（驗真靠預拌廠存根）",
+        "knowledge": "存根還在，蔡會計只交給調查小組；補件明天五點截止",
+        "carry_forward": "明天下午五點"
+      }
+    },
+    {
+      "number": 273,
+      "season_episode": 33,
+      "chapter": 4,
+      "title": "待證事項",
+      "youtube_title": "父親衝進事務所要她放過妹妹，她只推過去一張證人名單：你自己看最後一欄",
+      "duration_s": 122,
+      "logline": "存根趕上了截止，宋紹謙卻在記者會上說宋氏不退標；沈父衝進事務所，以為是大女兒把小女兒拖下水。",
+      "hook": "下午四點五十二分，許檢查員在調閱函上蓋章；林小蔓看錶：「早八分鐘。」",
+      "hook_type": "image",
+      "mid_hook": "宋紹謙站在宋氏大樓前，對著一排麥克風微笑：「宋氏不會退出標案，」「聽證會上見。」",
+      "conflict": "沈父拍桌要沈晏「別把妹妹拖進來」；他認定是她為了翻案，把沈玥推上證人席。",
+      "turn": "以為姐妹又要被父親分兩邊站，沈晏等他吼完，只把宋氏的證人名單推到他面前，指著最右邊那一欄。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "沈父戴上老花眼鏡，念出「待證事項」：「證明外包信箱，」「由沈玥一人使用。」他手上的茶杯晃了一下。",
+        "question": "沈父會站在哪一邊？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "daozhuan",
+        "ganren"
+      ],
+      "spectacle": "宋氏大樓前一排麥克風對著宋紹謙的笑；同一時間，市府辦公室裡一枚章重重蓋在調閱函上。",
+      "glamour_shot": "沈晏站在證據牆前沒有回頭，等父親吼完才轉身，把名單推過去，眼鏡後的眼神平靜。",
+      "setups": [
+        "s05-t15"
+      ],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "預拌廠存根以調閱函送進調查小組",
+        "沈父親眼看見宋紹謙要沈玥一個人背"
+      ],
+      "characters": [
+        "xu-jiancha",
+        "lin-xiaoman",
+        "song-shaoqian",
+        "shen-fu",
+        "shen-yan"
+      ],
+      "locations": [
+        "市府調查小組辦公室",
+        "宋氏大樓前",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "聽證前 23 天｜進度：合約 宋氏證人名單的「待證事項」｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4＋預拌廠存根",
+        "knowledge": "宋紹謙不退標；他要沈玥在聽證會上一個人認下信箱",
+        "carry_forward": "沈父的選擇"
+      }
+    },
+    {
+      "number": 274,
+      "season_episode": 34,
+      "chapter": 4,
+      "title": "到期的是那一份",
+      "youtube_title": "要作證就得親口說合約到期了，他在具結書上簽名，只多說了一句話",
+      "duration_s": 128,
+      "logline": "準備程序上，賀亭得當著沈晏的面說那份合約結束了——那正是他五年來不肯承認的事。",
+      "hook": "沈父沒有回答，把證人名單摺好放進唐裝內袋，走了；桌上那杯茶還在晃。",
+      "hook_type": "image",
+      "mid_hook": "林小蔓遞出一張五年前的紙：不續約通知，續約欄裡的三個字，是沈晏的筆跡。",
+      "extra_hooks": [
+        "鄧律師推了推眼鏡：「賀先生，」「請你親口說。」"
+      ],
+      "conflict": "宋氏要他親口否認那份合約，好讓所有人看見他退一步；不說，他就上不了證人席。",
+      "turn": "鄧律師以為逼他放下了最在乎的東西；賀亭在具結書上簽名，只多說一句：「到期的，」「是那一份。」許檢查員駁回動議——他可以作證。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "second_half",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "走廊上她捏著不續約通知的影本；他說：「妳五年前寫的三個字，」「今天救了我。」她把影本摺好：「下次，」「我寫別的字。」走廊盡頭，鄧律師把一疊新文件交到宋紹謙手上。",
+        "question": "宋紹謙明天還藏著什麼牌？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "daozhuan",
+        "qingxing",
+        "chongyuan"
+      ],
+      "spectacle": "準備程序的小會議室，白光下五年前的不續約通知被投到牆上，「不續約」三個字放大成一整面牆。",
+      "glamour_shot": "他在具結書上簽名，筆鋒俐落，簽完把筆帽扣上，抬頭看她的那一眼很長。",
+      "setups": [],
+      "payoffs": [
+        "s05-t14",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "宋氏要求賀亭不得作證的動議被駁回",
+        "五年前的不續約通知反過來成了他的證明"
+      ],
+      "characters": [
+        "jiang-ting",
+        "shen-yan",
+        "lin-xiaoman",
+        "s05-deng-lawyer",
+        "xu-jiancha",
+        "shen-fu"
+      ],
+      "locations": [
+        "晏衡結構事務所",
+        "市府聽證準備會議室"
+      ],
+      "state": {
+        "time": "聽證前一天｜進度：合約 舊約法律上到期；他具結「到期的，是那一份」｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4",
+        "knowledge": "賀亭取得作證資格；她說下次要寫別的字",
+        "carry_forward": "她說的「別的字」與明天的聽證"
+      }
+    },
+    {
+      "number": 275,
+      "season_episode": 35,
+      "chapter": 4,
+      "title": "第十四頁",
+      "youtube_title": "聽證會上他以結構技師身分作證，把送審版第十四頁放大：兩點十三分",
+      "duration_s": 132,
+      "logline": "聽證會開始，宋氏咬定鐵盒偽造、海外報告不可信；賀亭要用結構技師的身分，一頁一頁把四樣證據講成一條線。",
+      "hook": "聽證會場白光一照，長桌兩端各一排麥克風；許檢查員：「開始。」鄧律師第一句：「紀錄是偽造。」",
+      "hook_type": "image",
+      "mid_hook": "賀亭把送審版第 14 頁投上螢幕，放大右下角：「最後修改，」「送審前一晚兩點十三分。」",
+      "extra_hooks": [
+        "申請人席上她坐著，他坐在她旁邊的證人席——兩張椅子並排，不是一前一後。"
+      ],
+      "conflict": "鄧律師說他是「被感情影響的技師」；賀亭每說一個數字，都得當場拿得出出處。",
+      "turn": "修改時間一出，滿場安靜；觀眾以為宋氏要垮，鄧律師卻順著時間往下翻：修改者帳號是「外包信箱」。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "鄧律師微笑：「外包信箱的使用人，」「是沈玥經理。」全場的目光轉向後排的沈玥。",
+        "question": "沈玥會被當成改數字的人嗎？"
+      },
+      "lead_arc": "suffers",
+      "tension": [
+        4,
+        4,
+        4,
+        3,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "qingxing",
+        "daozhuan"
+      ],
+      "spectacle": "市府聽證會場的白光長桌，一排麥克風，投影幕上第 14 頁右下角的「02:13」被放大到一整面牆。",
+      "glamour_shot": "賀亭起身宣誓，深色西裝在白光下輪廓分明，西裝領口別著結構技師的徽章，舉手的動作很慢。",
+      "setups": [],
+      "payoffs": [
+        "m02"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "賀亭以結構技師身分宣誓作證",
+        "送審版第 14 頁的修改時間當庭公開"
+      ],
+      "characters": [
+        "jiang-ting",
+        "shen-yan",
+        "xu-jiancha",
+        "s05-deng-lawyer",
+        "song-shaoqian",
+        "shen-yue"
+      ],
+      "locations": [
+        "市府聽證會場"
+      ],
+      "state": {
+        "time": "聽證日 09:30｜進度：合約 兩張椅子並排｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4（第 1 樣已當庭說明）",
+        "knowledge": "修改時間 02:13；修改者是外包信箱，宋氏把矛頭轉向沈玥",
+        "carry_forward": "後排的沈玥"
+      }
+    },
+    {
+      "number": 276,
+      "season_episode": 36,
+      "chapter": 4,
+      "title": "一張都沒燒",
+      "youtube_title": "宋氏律師說鐵盒是偽造，混凝土廠老會計抱著一箱複寫聯上台：三十年一張都沒燒",
+      "duration_s": 125,
+      "logline": "鄧律師要把鐵盒打成偽造；只要出貨單的流水號對不上，老高躲的五年就白費了。",
+      "hook": "賀亭沒有看後排：「信箱是誰在用，」「等一下說。先看混凝土。」",
+      "hook_type": "line",
+      "mid_hook": "蔡會計抱著一箱用橡皮筋捆好的複寫聯走上證人席：「三十年，」「我一張也沒燒。」",
+      "extra_hooks": [
+        "鄧律師：「妳違反公司銷毀規定！」蔡會計：「所以今天才帶得來。」"
+      ],
+      "conflict": "宋氏要讓所有人相信鐵盒是事後做的；能反駁的，只有預拌廠留在廠裡的那一聯。",
+      "turn": "流水號一張張念，第三車、第七車，和鐵盒裡的分毫不差；以為宋氏要認了，鄧律師改口：「紀錄是真的，」「但改數字的不是宋紹謙。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "midpoint",
+          "type": "face_slap"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "鄧律師舉起一張登入紀錄：「信箱每一次登入，」「都在公關部。」後排的沈玥臉一下白了。",
+        "question": "信箱真的是沈玥在用嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "qingxing",
+        "xiju"
+      ],
+      "spectacle": "證人席上一個紙箱打開，一捆捆泛黃的複寫聯堆成小山，每捆的橡皮筋上夾著年份。",
+      "glamour_shot": "沈晏在申請人席翻開鐵盒影本，跟著蔡會計念出的流水號一張張對照，筆尖輕點，嘴角幾乎看不出地動了一下。",
+      "setups": [],
+      "payoffs": [
+        "s05-t13",
+        "m11"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "預拌廠存根證明鐵盒紀錄是真的",
+        "老高的澆置紀錄正式成為證據"
+      ],
+      "characters": [
+        "jiang-ting",
+        "shen-yan",
+        "s05-cai-kuaiji",
+        "s05-deng-lawyer",
+        "lao-gao",
+        "shen-yue"
+      ],
+      "locations": [
+        "市府聽證會場"
+      ],
+      "state": {
+        "time": "聽證日 10:40｜進度：合約 預拌廠的複寫聯｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4（第 3 樣已當庭驗真）",
+        "knowledge": "鐵盒是真的；宋氏改口把責任推給信箱的使用人",
+        "carry_forward": "公關部的登入紀錄"
+      }
+    },
+    {
+      "number": 277,
+      "season_episode": 37,
+      "chapter": 4,
+      "title": "只是推測",
+      "youtube_title": "四樣證據全攤在桌上，前未婚夫只說一句只是推測，後排一張椅子往後一推",
+      "duration_s": 125,
+      "logline": "四樣證據都上了桌，宋紹謙只需要一句話把它們變成巧合：沒有人看見他動手。",
+      "hook": "賀亭：「登入在公關部，」「不代表登入的是她。」他翻到下一頁。",
+      "hook_type": "line",
+      "mid_hook": "海外實驗室的重測報告投上螢幕：一號橋墩的原始試體，差一級。",
+      "extra_hooks": [
+        "旁聽席上老高握緊安全帽，對女兒低聲說：「那晚，」「就差這一級。」"
+      ],
+      "conflict": "第 14 頁的時間、外包信箱、澆置紀錄、海外重測全擺好了；少的是一個人，親口說出信箱是誰在用。",
+      "turn": "宋紹謙終於靠近麥克風，溫和、客氣：「這些都只是推測。」以為這句話要讓聽證會僵住，後排一張椅子往後一推。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "沈玥站了起來，所有麥克風轉向她；宋紹謙看著她，笑容沒變：「玥玥，」「想清楚。」",
+        "question": "沈玥要替誰作證？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "daozhuan",
+        "qingxing"
+      ],
+      "spectacle": "投影幕上四樣證據排成一列：第 14 頁的時間、外包信箱、澆置紀錄、海外重測，白光下像一張完整的圖說。",
+      "glamour_shot": "沈玥站起來的那一秒，長捲髮滑過肩，下巴抬高，眼神第一次沒有看任何人的臉色。",
+      "setups": [],
+      "payoffs": [
+        "m08"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "四樣證據全部當庭攤開",
+        "海外重測坐實一號橋墩差一級"
+      ],
+      "characters": [
+        "jiang-ting",
+        "song-shaoqian",
+        "shen-yue",
+        "shen-yan",
+        "lao-gao",
+        "s05-gao-xiaowen"
+      ],
+      "locations": [
+        "市府聽證會場"
+      ],
+      "state": {
+        "time": "聽證日 11:20｜進度：合約 宋紹謙說「推測」｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4 全部當庭",
+        "knowledge": "四樣證據齊了，缺一個人說出信箱是誰在用",
+        "carry_forward": "站起來的沈玥"
+      }
+    },
+    {
+      "number": 278,
+      "season_episode": 38,
+      "chapter": 4,
+      "title": "密碼是他設的",
+      "youtube_title": "妹妹在聽證會上站起來：那個信箱是我的，密碼是他設的，前未婚夫的笑停住了",
+      "duration_s": 130,
+      "logline": "沈玥承認信箱是她的，就等於承認自己用過；不說，宋紹謙就能把所有罪推給她一個人。",
+      "hook": "沈玥看著宋紹謙：「那個信箱是我的，」「密碼是他設的。」",
+      "hook_type": "line",
+      "mid_hook": "她把手機接上投影：五年前的一封信，寄件人宋紹謙，內文只有一行——新信箱的密碼。",
+      "extra_hooks": [
+        "鄧律師伸手拉宋紹謙的袖子，他第一次沒有笑。"
+      ],
+      "conflict": "一封密碼信只能證明他知道密碼；鄧律師馬上起身：「知道密碼，不等於修改。」",
+      "turn": "以為又要卡在「推測」；賀亭把兩個時間並排：密碼信 02:11 寄出，第 14 頁 02:13 被改——相隔兩分鐘，同一個 IP 位址，登記在宋紹謙的辦公室。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "identity_reveal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "投影幕上兩行並排：「02:11 寄出密碼」「02:13 修改第 14 頁」，後面的 IP 位址一模一樣。宋紹謙的笑停在臉上。",
+        "question": "許檢查員會怎麼判？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        5,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "qingxing",
+        "ganren"
+      ],
+      "spectacle": "白光下的投影幕，兩行時間戳上下並排，相隔兩分鐘，後面跟著同一串 IP 位址。",
+      "glamour_shot": "沈晏在申請人席側過臉看著妹妹，白光勾出她的側臉，眼眶紅了一圈，背卻挺得筆直。",
+      "setups": [],
+      "payoffs": [
+        "m04",
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "沈玥當庭作證：信箱是她的，密碼是宋紹謙設的",
+        "密碼信與第 14 頁修改相隔兩分鐘、同一個 IP"
+      ],
+      "characters": [
+        "shen-yue",
+        "song-shaoqian",
+        "jiang-ting",
+        "shen-yan",
+        "xu-jiancha",
+        "s05-deng-lawyer"
+      ],
+      "locations": [
+        "市府聽證會場"
+      ],
+      "state": {
+        "time": "聽證日 11:45｜進度：合約 沈玥的證詞｜銅牌 半枚＋手杖（未開）｜翻案證據 4/4＋沈玥證詞",
+        "knowledge": "改第 14 頁的人就是宋紹謙",
+        "carry_forward": "許檢查員的決定"
+      }
+    },
+    {
+      "number": 279,
+      "season_episode": 39,
+      "chapter": 4,
+      "title": "撤銷",
+      "youtube_title": "檢查員當庭宣布撤銷她的失職認定，宋氏律師低聲十秒後站起來：退出標案",
+      "duration_s": 135,
+      "logline": "翻案只是第一步；宋氏的標案還在，宋紹謙的律師當場主張「標案與本案無關」。",
+      "hook": "許檢查員闔上卷宗，白光下整個會場只剩他翻頁的聲音。",
+      "hook_type": "image",
+      "mid_hook": "許檢查員：「撤銷沈晏的失職認定，」「送審文件移送調查。」",
+      "extra_hooks": [
+        "林小蔓在桌下緊緊抓著陳覓的手，兩個人都憋著不出聲。"
+      ],
+      "conflict": "她的名字洗清了，橋卻可能還是交給宋氏重建；鄧律師要把標案從聽證會裡切出去。",
+      "turn": "以為標案要另外打一場仗；許檢查員念完最後一頁——宋氏的投標文件引用的，正是被移送調查的送審版數據。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "鄧律師和宋紹謙低聲說了十秒，站起來：「宋氏建設，」「退出步道橋重建標案。」宋紹謙的鋼筆滾到地上。",
+        "question": "翻案之後，誰會先對她開口？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "dalian",
+        "qingxing",
+        "daozhuan"
+      ],
+      "spectacle": "聽證會長桌盡頭，許檢查員面前的麥克風亮著紅燈，整排旁聽席同時站起來的剪影。",
+      "glamour_shot": "宣布的那一刻她沒有動，只慢慢摘下眼鏡、閉了一下眼；他在旁邊的證人席，手放在桌上，離她的手一個掌寬。",
+      "setups": [],
+      "payoffs": [
+        "s05-t15"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "撤銷沈晏的失職認定",
+        "送審文件移送調查",
+        "宋氏建設退出步道橋重建標案"
+      ],
+      "characters": [
+        "xu-jiancha",
+        "shen-yan",
+        "jiang-ting",
+        "song-shaoqian",
+        "s05-deng-lawyer",
+        "lin-xiaoman",
+        "chen-mi"
+      ],
+      "locations": [
+        "市府聽證會場"
+      ],
+      "state": {
+        "time": "聽證日 12:30｜進度：合約 失職認定撤銷公文｜銅牌 半枚＋手杖（未開）｜翻案：完成｜重建標：宋氏退出",
+        "knowledge": "她翻案了；宋氏退出標案；送審文件移送調查",
+        "carry_forward": "走廊上等著的人"
+      }
+    },
+    {
+      "number": 280,
+      "season_episode": 40,
+      "chapter": 4,
+      "title": "我知道了",
+      "youtube_title": "翻案後偏心了二十年的父親在走廊叫住她，停了很久，說出第一聲對不起",
+      "duration_s": 150,
+      "logline": "翻案了，宋紹謙在記者的閃光燈裡離開；走廊盡頭，有一個她等了二十年的人。",
+      "hook": "散場的走廊，閃光燈追著宋紹謙；他經過她身邊停下：「晏晏。」她沒有停。",
+      "hook_type": "image",
+      "mid_hook": "宋紹謙追了一句：「妳以為贏了？」她回頭：「我沒在比，」「我在審圖。」",
+      "extra_hooks": [
+        "他把一杯不加糖的咖啡遞到她手上：「那個別的字，」「想好了嗎？」她：「還沒。」"
+      ],
+      "conflict": "她的名字洗清了，二十年的偏心卻沒有任何公文能撤銷；她以為父親是來接沈玥的。",
+      "turn": "以為父親站在走廊盡頭是在等小女兒，他看見她走近，往前跨了一步。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "villain_humbled"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "沈父叫住她，停了很久：「晏晏，」「對不起。」她點頭：「我知道了。」他手裡捏著那張摺皺的證人名單。",
+        "question": "一句對不起，換得回二十年嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "ganren",
+        "dalian"
+      ],
+      "spectacle": "市府長廊盡頭一扇高窗，午後的光斜切在大理石地上，父女兩個人影隔著一道光。",
+      "glamour_shot": "她邊走邊喝那杯不加糖的咖啡，西裝外套搭在臂彎，步子和他一樣快，長廊的光一格一格掠過她的臉。",
+      "setups": [],
+      "payoffs": [
+        "m05"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "宋紹謙在走廊叫她，她沒有停下",
+        "沈父第一次對大女兒說對不起"
+      ],
+      "characters": [
+        "shen-yan",
+        "shen-fu",
+        "song-shaoqian",
+        "jiang-ting",
+        "shen-yue"
+      ],
+      "locations": [
+        "市府聽證會場走廊"
+      ],
+      "state": {
+        "time": "聽證日午後｜進度：合約 舊約已到期，她說要寫「別的字」｜銅牌 半枚＋手杖（未開）｜翻案：完成｜重建標：重新招標",
+        "knowledge": "父親道歉了；她還沒想好要寫的字",
+        "carry_forward": "還沒打開的手杖"
+      }
+    },
+    {
+      "number": 281,
+      "season_episode": 41,
+      "chapter": 5,
+      "title": "游標鎖",
+      "youtube_title": "爺爺留下的測量尺手杖怎麼都轉不開，她拿放大鏡一看：鎖要用基點的數字開",
+      "duration_s": 118,
+      "logline": "翻案了，賀亭說他準備好打開父親留下的手杖；握把卻轉不動，刻度上的銅游標卡住了。",
+      "hook": "父親的背影走遠，她低頭看著手上的咖啡：「換不回來，」「但夠了。」",
+      "hook_type": "line",
+      "mid_hook": "隔天他把手杖放上她的繪圖桌：「我準備好了。」「妳陪我開。」",
+      "extra_hooks": [
+        "林小蔓把重新招標公告拍在桌上：「宋氏退了，」「全城的營造廠都在磨刀。」"
+      ],
+      "conflict": "手杖的握把轉不動、銅游標卡住了，硬撬可能毀掉裡面的東西；老爺子只說「等你準備好」，沒說怎麼開。",
+      "turn": "以為要找鎖匠，沈晏看出手杖本來就是一把能讀數的測量尺，銅游標就是鎖；她把游標旁磨平的地方對著燈——那裡刻著一行小字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "燈下那行小字浮出來：「HJ-07 高程」。老爺子在電話裡說：「他的鎖，」「要用他的數字開。」",
+        "question": "HJ-07 的高程是多少？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "ganren",
+        "xiju"
+      ],
+      "spectacle": "繪圖桌的燈下，一把舊測量尺手杖橫在藍圖上，銅游標在刻度「07」旁邊閃了一下。",
+      "glamour_shot": "她俯身拿放大鏡看手杖上的刻字，眼鏡推到頭頂，檯燈把她的睫毛影子投在臉頰上。",
+      "setups": [
+        "s05-t16"
+      ],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "她對二十年的偏心說出「但夠了」",
+        "看出手杖的銅游標就是鎖"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "lin-xiaoman",
+        "he-laoyezi"
+      ],
+      "locations": [
+        "市府聽證會場走廊",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "聽證後第一天｜進度：合約 她要寫的「別的字」未定｜銅牌 半枚＋手杖（游標上鎖）｜重建標：重新招標",
+        "knowledge": "手杖要用 HJ-07 的高程才打得開",
+        "carry_forward": "HJ-07 的高程"
+      }
+    },
+    {
+      "number": 282,
+      "season_episode": 42,
+      "chapter": 5,
+      "title": "泡水的那一格",
+      "youtube_title": "妹妹留著五年前的舊基點圖，攤開才發現最重要的那一格被水漬糊掉了",
+      "duration_s": 120,
+      "logline": "要開手杖得知道 HJ-07 的高程；唯一的紀錄是五年前的影本，市府也查不到。",
+      "hook": "江諾抱著一捲舊基點圖的影本衝進來：「我留著！」攤開，HJ-07 那一格被水漬糊掉了。",
+      "hook_type": "image",
+      "mid_hook": "陳覓查完市府資料庫，推推圓眼鏡：「HJ-07 是私人基點，」「市府沒登錄。」",
+      "extra_hooks": [
+        "江諾每十分鐘刷一次手機：「錄取名單後天中午公布，」「我手在抖。」"
+      ],
+      "conflict": "唯一的數字泡了水，市府沒有，恆基的舊檔案要翻好幾週；要知道高程，只剩自己量。",
+      "turn": "以為只能等，沈晏和賀亭同時開口：「自己量。」——可最近的市府水準點在對岸，要一站一站引測三公里。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "氣象預報跳出來：明早鋒面到，河水會淹過橋下的基點座。賀亭扛起水準儀：「今晚量完。」",
+        "question": "三公里，一個晚上量得完嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "xiju",
+        "chongyuan"
+      ],
+      "spectacle": "攤開的舊基點圖上，一圈褐色水漬正好吞掉 HJ-07 旁邊那一格數字。",
+      "glamour_shot": "賀亭把水準儀的腳架扛上肩，回頭對她偏了一下頭，像五年前扛紙箱上五樓那樣。",
+      "setups": [
+        "s05-t17"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "找回五年前的舊基點圖影本",
+        "決定今晚自己引測 HJ-07 的高程"
+      ],
+      "characters": [
+        "jiang-nuo",
+        "shen-yan",
+        "jiang-ting",
+        "chen-mi"
+      ],
+      "locations": [
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "聽證後第二天｜進度：合約 未定｜銅牌 半枚＋手杖（游標上鎖）｜重建標：重新招標",
+        "knowledge": "HJ-07 的高程只能自己量；明早河水會淹過基點座",
+        "carry_forward": "三公里的夜間測量"
+      }
+    },
+    {
+      "number": 283,
+      "season_episode": 43,
+      "chapter": 5,
+      "title": "三公里",
+      "youtube_title": "兩個技師連夜從對岸量了三公里，游標一轉，爺爺的手杖喀一聲打開了",
+      "duration_s": 130,
+      "logline": "三公里、二十幾站，誤差不能超過幾公釐；河水一直在漲，最後一站離水面只剩一個手掌。",
+      "hook": "夜裡的河堤，阿凱扛著三公尺標尺跑在最前面：「第二次當科學家！」",
+      "hook_type": "image",
+      "mid_hook": "最後一站在橋下，十字絲對上標尺，她讀數、他記錄，兩人同時念出同一個數字。",
+      "extra_hooks": [
+        "每換一站他都走到她左邊靠河那側；阿凱：「老大，」「你連走位都排好了？」"
+      ],
+      "conflict": "量錯一站就得從頭再來；河水漲得比預報快，橋下的基點座隨時會被淹。",
+      "turn": "引測閉合，誤差兩公釐；游標轉到那個數字，「喀」一聲握把鬆了。以為裡面就是另一半銅牌，先抽出來的卻是一捲發黃的圖紙。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "圖紙在頭燈下攤開：「河濱步道橋，第一號橋墩」，設計人簽名是一個賀字；圖角一行鉛筆小字看不清，杖底還有東西在響。",
+        "question": "手杖裡還藏著什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "chongyuan",
+        "xiju"
+      ],
+      "spectacle": "夜裡的河堤，一台水準儀和一根標尺一站一站往橋下移，城市的燈倒映在漲起來的河面上。",
+      "glamour_shot": "頭燈下她俯身對著目鏡讀數，夜風吹起頭髮；他站在她身邊拿著記錄板，筆停在半空等她開口。",
+      "setups": [
+        "s05-t19"
+      ],
+      "payoffs": [
+        "s05-t16"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "引測出 HJ-07 的高程，誤差兩公釐",
+        "打開手杖，取出父親的手繪圖"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "ah-kai",
+        "jiang-nuo"
+      ],
+      "locations": [
+        "河濱堤防",
+        "一號橋墩下"
+      ],
+      "state": {
+        "time": "聽證後第二天夜 23:40｜進度：合約 未定｜銅牌 半枚＋手杖（已開）｜重建標：重新招標",
+        "knowledge": "手杖裡有父親設計第一號橋墩的手繪圖，杖底還有東西",
+        "carry_forward": "杖底的東西與圖角的小字"
+      }
+    },
+    {
+      "number": 284,
+      "season_episode": 44,
+      "chapter": 5,
+      "title": "合上",
+      "youtube_title": "爺爺手杖裡藏著另一半銅牌，兩人在橋墩下把兩半合上，岸上傳來一句話",
+      "duration_s": 140,
+      "logline": "銅牌要合上、還要放回實地基點才算數；基點座在橋墩根部，河水已經漲到只差一個手掌。",
+      "hook": "杖底滑出一個布包，裡面是半枚銅牌和一張發黃的基點登記卡；斷口的紋路在頭燈下亮了一下。",
+      "hook_type": "image",
+      "mid_hook": "兩隻手各拿半枚，一起放進基點座——斷口對上，「HJ-07」四個字第一次完整。",
+      "extra_hooks": [
+        "岸上一束手電筒光照下來，老爺子拄著一把普通的拐杖站在堤防上，不知道看了多久。"
+      ],
+      "conflict": "他想一個人合上，又想讓她在；她怕高、怕水，橋墩根部的平台窄得只容兩個人蹲下，兩人的安全繩都扣在橋墩爬梯上。",
+      "turn": "合上的那一刻，基點座裡完整的家徽和編號一起露出來；以為這只是一個身世的證明，老爺子的聲音從岸上傳下來。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "first_clear"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "老爺子在岸上看著他們：「你父親設計了這座橋。」停了很久：「車禍那天，」「他正要來看它完工。」",
+        "question": "父親沒走完的路，他要怎麼走？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        4,
+        5,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "ganren",
+        "chongyuan"
+      ],
+      "spectacle": "橋墩根部的基點座裡，兩半銅牌的斷口對上，頭燈照著完整的「HJ-07」和一個完整的家徽。",
+      "glamour_shot": "兩人蹲在基點座前，她的手在下、他的手在上，一起按住合上的銅牌，頭燈的光圈裡只有兩隻手。",
+      "setups": [],
+      "payoffs": [
+        "m03"
+      ],
+      "reveals": [
+        "m12"
+      ],
+      "general_payoffs": [
+        "兩半銅牌在基點 HJ-07 合上",
+        "知道父親設計了這座橋，車禍那天正要來看它完工"
+      ],
+      "characters": [
+        "jiang-ting",
+        "shen-yan",
+        "he-laoyezi",
+        "ah-kai",
+        "jiang-nuo"
+      ],
+      "locations": [
+        "一號橋墩下基點座",
+        "河濱堤防"
+      ],
+      "state": {
+        "time": "聽證後第三天凌晨 00:30｜進度：合約 未定｜銅牌 一枚（合在 HJ-07）｜重建標：重新招標",
+        "knowledge": "另一半銅牌在手杖裡；HJ-07 就是第一號橋墩的基點；父親設計了它",
+        "carry_forward": "父親的手繪圖"
+      }
+    },
+    {
+      "number": 285,
+      "season_episode": 45,
+      "chapter": 5,
+      "title": "九十二公分",
+      "youtube_title": "父親設計圖的角落有一行鉛筆小字，天亮後看清楚，整個堤防的人都安靜了",
+      "duration_s": 120,
+      "logline": "合上的銅牌讓 HJ-07 重新成為有效的基點；可重新招標的條件裡，有一條是衝著她來的。",
+      "hook": "賀亭沒有回頭：「我替他走完。」他把手繪圖捲好，夾在臂彎。",
+      "hook_type": "line",
+      "mid_hook": "天亮後攤開手繪圖，圖角那行鉛筆小字看清了：「亭，九十二公分。」旁邊一道短短的刻線。",
+      "extra_hooks": [
+        "江諾湊過來：「哥，你小時候這麼矮？」老爺子笑出聲，二十年來第一次。"
+      ],
+      "conflict": "市府測量隊來驗基點，確認 HJ-07 有效；同一天公告的招標條件，要求簽證技師與原案「無利害關係」。",
+      "turn": "以為小字是工程註記，原來是父親在設計圖邊角量了三歲兒子的身高；大家還沒緩過來，林小蔓念出招標條件第九條。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林小蔓念完第九條，看著沈晏：「妳是原案的簽證人。」恆基的投標名單上，簽證技師那一欄還空著。",
+        "question": "恆基要換掉她，還是替她爭？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "shenfen",
+        "xiju"
+      ],
+      "spectacle": "晨光下攤開的手繪圖，第一號橋墩的線條旁邊，一道鉛筆刻線標著一個孩子的身高。",
+      "glamour_shot": "賀亭低頭看著圖角那道刻線，手指輕輕碰了一下，晨光把他的側臉照得很軟。",
+      "setups": [],
+      "payoffs": [
+        "s05-t19"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "市府測量隊確認 HJ-07 恢復有效",
+        "看清圖角的小字：父親量過他的身高"
+      ],
+      "characters": [
+        "jiang-ting",
+        "shen-yan",
+        "he-laoyezi",
+        "jiang-nuo",
+        "lin-xiaoman"
+      ],
+      "locations": [
+        "河濱堤防",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "聽證後第三天清晨｜進度：合約 未定｜銅牌 一枚（HJ-07 恢復有效）｜重建標：招標條件第九條",
+        "knowledge": "父親在設計圖上量過他；招標要求簽證技師與原案無利害關係",
+        "carry_forward": "第九條"
+      }
+    },
+    {
+      "number": 286,
+      "season_episode": 46,
+      "chapter": 5,
+      "title": "錄取",
+      "youtube_title": "重考兩年的妹妹在橋頭階梯按下重新整理，衝下來大喊，錄取通知第二頁寫著她的名字",
+      "duration_s": 125,
+      "logline": "江諾重考第二年，所有人都假裝不在意、都在看錶；招標第九條的質疑也還壓在沈晏身上。",
+      "hook": "賀亭把第九條圈起來：「換人？」「不換。」",
+      "hook_type": "line",
+      "mid_hook": "中午十二點，橋頭階梯上的江諾按下重新整理，螢幕跳出她的名字。",
+      "extra_hooks": [
+        "林小蔓翻出聽證決定書：「受害人不是利害關係人，」「第九條擋不住她。」"
+      ],
+      "conflict": "江諾怕自己又差一點；沈晏怕自己的名字又一次拖累別人。",
+      "turn": "以為她會哭，江諾從橋頭階梯一路衝下來大喊：「我考上了！」奶奶在堤防上拍著菜籃笑；觀眾以為這就是全部，她把錄取通知翻到第二頁。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "counter_kill"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "錄取通知第二頁的推薦人欄寫著「沈晏」；江諾抬頭：「五年前，」「他們拿掉我的推薦，」「妳替我寫回來了。」",
+        "question": "她什麼時候寫的推薦信？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "ganren",
+        "chongyuan",
+        "xiju"
+      ],
+      "spectacle": "中午的橋頭階梯，一個女孩從最上面一路衝到河堤，手機高舉，整排人從堤防上回頭看她。",
+      "glamour_shot": "沈晏站在階梯底下張開手接住衝下來的江諾，眼鏡被撞歪，她扶正眼鏡的那一下在笑。",
+      "setups": [],
+      "payoffs": [
+        "s05-t17",
+        "m07"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "江諾考上建築系",
+        "聽證決定書擋下招標第九條的質疑",
+        "江諾的推薦人是沈晏"
+      ],
+      "characters": [
+        "jiang-nuo",
+        "shen-yan",
+        "jiang-ting",
+        "lin-xiaoman",
+        "jiang-nainai"
+      ],
+      "locations": [
+        "河濱步道橋橋頭階梯",
+        "河濱堤防"
+      ],
+      "state": {
+        "time": "聽證後第四天 12:00｜進度：合約 未定｜銅牌 一枚｜重建標：第九條質疑已解",
+        "knowledge": "江諾考上了；推薦人是沈晏",
+        "carry_forward": "推薦信是什麼時候寫的"
+      }
+    },
+    {
+      "number": 287,
+      "season_episode": 47,
+      "chapter": 5,
+      "title": "深四公尺",
+      "youtube_title": "恆基的投標草案還寫著沿用舊樁，他攤開父親二十年前的手繪圖：原本要深四公尺",
+      "duration_s": 120,
+      "logline": "恆基要投標，財務長要沿用原基樁省錢；沈晏堅持第一號橋墩照父親的手繪圖重做。",
+      "hook": "沈晏看著錄取通知上自己的名字：「五年前，」「第一個月就寫好了。」",
+      "hook_type": "line",
+      "mid_hook": "恆基的投標草案攤開，第一號橋墩寫著「沿用原基樁」——賀敬川時代留下的版本。",
+      "extra_hooks": [
+        "江諾把錄取通知貼上事務所證據牆的正中間：「這格空著，」「剛好。」"
+      ],
+      "conflict": "財務長說沿用原基樁才標得到；她說原基樁就是讓這座橋封了五年的那幾根。",
+      "turn": "以為是工程師和財務的老戲碼，賀亭把父親的手繪圖壓在宋氏的竣工圖上：原設計的基樁比宋氏蓋的深四公尺——宋氏當年連樁都偷了。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "identity_reveal"
+        },
+        {
+          "beat": "second_half",
+          "type": "hidden_power"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "財務長把計算機轉過來：「照這張圖，」「預算超出百分之八。」「這標拿不到。」",
+        "question": "百分之八，要從哪裡省回來？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "shenfen",
+        "ganren",
+        "qingxing"
+      ],
+      "spectacle": "長桌上，父親二十年前的手繪圖和宋氏的竣工圖疊在一起，透著燈看，兩根樁的長度差了一截。",
+      "glamour_shot": "賀亭俯身把手繪圖攤平，手掌壓住圖角，抬頭看她，眼神在問「妳看呢」。",
+      "setups": [],
+      "payoffs": [
+        "m10",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "推薦信五年前第一個月就寫好",
+        "父親的原設計證明宋氏當年把基樁做短了"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "jiang-nuo",
+        "s05-fang-dong"
+      ],
+      "locations": [
+        "晏衡結構事務所",
+        "恆基營造總部會議室"
+      ],
+      "state": {
+        "time": "聽證後第五天｜進度：合約 未定｜銅牌 一枚｜重建標：恆基投標草案（超支 8%）",
+        "knowledge": "原設計的樁比宋氏做的深四公尺；照原設計要多 8% 預算",
+        "carry_forward": "百分之八"
+      }
+    },
+    {
+      "number": 288,
+      "season_episode": 48,
+      "chapter": 5,
+      "title": "三加五",
+      "youtube_title": "財務長說超支百分之八拿不到標，她在預算表畫兩條紅線再拉一張工期表：剛好八",
+      "duration_s": 125,
+      "logline": "投標截止是後天中午；預算要壓回去，又不能動第一號橋墩一公分。",
+      "hook": "沈晏在預算表畫兩條紅線：「臨時基點、重新測量——」「HJ-07 合上了，」「這兩筆不用花。」",
+      "hook_type": "image",
+      "mid_hook": "她把工期表往前拉四個月：「改預鑄節塊，」「間接費省五個點。」財務長算了三遍：「……剛好八。」",
+      "extra_hooks": [
+        "阿凱在門外偷聽，小聲：「三加五等於八，」「這我也會。」"
+      ],
+      "conflict": "每省一筆都得說得出出處；評審會一頁一頁問，任何一個數字對不上，標書就作廢。",
+      "turn": "標書準時送出，以為只剩等結果；陳覓帶回另一家投標廠商公開的設計摘要，第一號橋墩那一欄也寫著「沿用原基樁」。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "摘要最後一頁的計算署名被塗掉了，圖框角落卻留著一個沒刪乾淨的代號：「宋氏-14」。",
+        "question": "宋紹謙換了個殼又回來了？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "chongyuan",
+        "xiju"
+      ],
+      "spectacle": "白板上一張預算表被兩條紅線劃過，旁邊的工期甘特圖整條往左挪了四格。",
+      "glamour_shot": "她站在白板前用手背推了一下眼鏡，馬克筆在白板上拉出一條長線，他靠在桌邊看她。",
+      "setups": [],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "預算省回八個百分點，標書準時送出",
+        "發現另一家廠商的設計出自宋氏的舊圖"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "s05-fang-dong",
+        "chen-mi",
+        "ah-kai"
+      ],
+      "locations": [
+        "恆基營造總部會議室"
+      ],
+      "state": {
+        "time": "投標截止日｜進度：合約 未定｜銅牌 一枚（HJ-07 省下重測費）｜重建標：恆基標書已送出",
+        "knowledge": "對手的設計是宋氏的舊圖，沿用原基樁",
+        "carry_forward": "評審會"
+      }
+    },
+    {
+      "number": 289,
+      "season_episode": 49,
+      "chapter": 5,
+      "title": "簽證要獨立",
+      "youtube_title": "評審會上她只問對手一句引用哪一版，散會後董事遞來技術長聘書，他只等她選",
+      "duration_s": 125,
+      "logline": "評審會上，宋氏的舊圖換了個殼回來；散會後，方董遞給沈晏一份讓她跟他站在同一邊的聘書。",
+      "hook": "評審會上，沈晏只問對手一句：「你們的試體強度，」「引用的是哪一版？」",
+      "hook_type": "line",
+      "mid_hook": "對手的技師翻了三頁答不出來；評審主席翻開聽證決定書：「送審版，」「已移送調查。」",
+      "conflict": "對手被當場問倒，評審會延到明天宣布；方董的聘書寫著「恆基總部技術長」，薪水是她事務所一年的營收。",
+      "turn": "以為她會順勢進恆基、從此跟他站在同一邊；她看著聘書很久——簽證技師如果是營造廠的人，就不能替這座橋簽證。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "face_slap"
+        },
+        {
+          "beat": "midpoint",
+          "type": "villain_humbled"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "聘書放在桌上，旁邊是晏衡那枚舊簽證章；賀亭站在門口，沒有開口勸，只等她選。",
+        "question": "她要進恆基，還是守住晏衡？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qingxing",
+        "chongyuan",
+        "daozhuan"
+      ],
+      "spectacle": "市府評審會的圓桌，一份對手的設計摘要被推到桌中央，上面壓著那份聽證決定書。",
+      "glamour_shot": "她拿起晏衡的舊簽證章在掌心轉了一圈，窗外黃昏的光落在章面上。",
+      "setups": [],
+      "payoffs": [
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "對手引用送審版數據被評審點破",
+        "方董以恆基技術長延攬她"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "s05-fang-dong"
+      ],
+      "locations": [
+        "市府評審會議室",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "評審會當天｜進度：合約 方董的聘書｜銅牌 一枚｜重建標：明天宣布",
+        "knowledge": "對手的設計站不住；她得選：進恆基，或守住簽證的獨立",
+        "carry_forward": "桌上的聘書"
+      }
+    },
+    {
+      "number": 290,
+      "season_episode": 50,
+      "chapter": 5,
+      "title": "這次一起簽",
+      "youtube_title": "停權五年的橋重新招標，公告上兩個名字並排：總工程師賀亭，簽證技師沈晏",
+      "duration_s": 150,
+      "logline": "得標了，她卻要在契約書上再簽一次名字——上一次在這座橋上簽名，換來五年停權。",
+      "hook": "她把聘書推回給方董，拿起晏衡的簽證章：「簽證要獨立，」「我留在晏衡。」",
+      "hook_type": "line",
+      "mid_hook": "市府公告投上大螢幕：「步道橋重建：恆基營造得標。」",
+      "extra_hooks": [
+        "公告第二行：總工程師賀亭，簽證技師沈晏（晏衡結構事務所）——兩個名字並排在同一行。"
+      ],
+      "conflict": "她守住了獨立，也就得一個人扛起簽證的責任；這座橋上次讓她失去一切，這次的簽名欄就在眼前。",
+      "turn": "以為她會在簽證欄前猶豫，她停了一秒，把筆遞給他：「你先。」他搖頭，打開自己那支筆。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "契約書上兩個簽名欄並排，兩支筆同時落下；她說：「這次，」「我們一起簽。」窗外，封閉五年的橋，封鎖燈一盞一盞熄掉。",
+        "question": "重建完工那天，他們會簽下什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "shenfen",
+        "ganren"
+      ],
+      "spectacle": "窗外封閉五年的步道橋，封鎖燈從橋頭到橋尾一盞一盞熄滅，工程車的燈一盞一盞亮起。",
+      "glamour_shot": "兩人並肩站在簽約桌前，她摘下眼鏡低頭簽名，他側頭看她，夕陽從兩人中間穿過。",
+      "setups": [
+        "s05-t21"
+      ],
+      "payoffs": [
+        "m12"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "恆基得標，總工程師賀亭、簽證技師沈晏",
+        "她守住簽證的獨立，第二次在這座橋上簽名"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "s05-fang-dong",
+        "he-laoyezi",
+        "lin-xiaoman",
+        "chen-mi"
+      ],
+      "locations": [
+        "晏衡結構事務所",
+        "恆基營造總部簽約室"
+      ],
+      "state": {
+        "time": "評審會隔天｜進度：合約 重建契約上兩個簽名並排｜銅牌 一枚（HJ-07 為重建基點）｜重建：開工",
+        "knowledge": "恆基得標；這次兩人一起簽",
+        "carry_forward": "重建完工那天"
+      }
+    },
+    {
+      "number": 291,
+      "season_episode": 51,
+      "chapter": 6,
+      "title": "十四個月後",
+      "youtube_title": "重建的橋只差最後一段欄杆，她把合夥人合約推給唯一沒走的助理，出資欄寫著五年",
+      "duration_s": 120,
+      "logline": "十四個月後，重建只差最後一段欄杆；沈晏想先把一份欠了五年的合約交出去，對方卻開了條件。",
+      "hook": "字卡「十四個月後」。重建的步道橋只差最後一段欄杆，橋頭的倒數牌翻到：「完工倒數 7 天」。",
+      "hook_type": "image",
+      "mid_hook": "沈晏把一份合約推到陳覓面前：「合夥人合約。」陳覓插在頭髮上的筆掉了下來。",
+      "extra_hooks": [
+        "林小蔓翻白眼：「這間事務所，」「合約比員工多。」"
+      ],
+      "conflict": "陳覓是五年前唯一沒走的人；沈晏要把她的名字掛上門牌，她卻一直覺得自己只是「剩下的那個」。",
+      "turn": "以為陳覓會開心地簽，她翻到最後一頁，出資欄寫著：「沈晏：事務所全部設備。陳覓：五年。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "陳覓把合約推回去，聲音很小：「我不簽。」她看向窗外橋上的賀亭：「除非妳先簽一份。」",
+        "question": "沈晏會先簽她自己那一份嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qiyue",
+        "xiju",
+        "chongyuan"
+      ],
+      "spectacle": "黃昏的河面上，重建的步道橋只差最後一段欄杆，吊車把最後一節欄杆吊在半空。",
+      "glamour_shot": "沈晏站在事務所窗前，看著吊車把欄杆吊上橋，夕陽把她的側臉鍍成金色。",
+      "setups": [
+        "s05-t20"
+      ],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "重建只差最後一段欄杆",
+        "沈晏給陳覓合夥人合約，出資欄寫著「五年」"
+      ],
+      "characters": [
+        "shen-yan",
+        "chen-mi",
+        "lin-xiaoman",
+        "jiang-ting"
+      ],
+      "locations": [
+        "重建中的步道橋",
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "十四個月後｜進度：合約 陳覓的合夥人合約待簽、新約未起草｜銅牌 一枚（HJ-07 為重建基點）｜重建：完工倒數 7 天",
+        "knowledge": "陳覓要她先簽自己那一份",
+        "carry_forward": "還沒起草的新約"
+      }
+    },
+    {
+      "number": 292,
+      "season_episode": 52,
+      "chapter": 6,
+      "title": "我自己的合約",
+      "youtube_title": "財團千金又被安排相親，她推來一份空白合約：幫我寫一份，我自己的",
+      "duration_s": 115,
+      "logline": "宋氏倒了，唐家要唐婉希再嫁一次；她需要一份比婚約更早生效的合約。",
+      "hook": "沈晏把合夥人合約收進抽屜：「先放著。」陳覓：「放到妳簽為止。」",
+      "hook_type": "line",
+      "mid_hook": "唐婉希推門進來，放下一份空白合約：「幫我寫一份，」「我自己的。」",
+      "extra_hooks": [
+        "唐母的訊息跳出來：「下週六，再見一個。」唐婉希把手機蓋在桌上。"
+      ],
+      "conflict": "唐婉希簽過一份反聯姻合約，擋得住一次婚事，擋不住一輩子；她要的是一個自己的位置。",
+      "turn": "以為她是來找林小蔓再寫一份反聯姻合約；她把空白合約的僱主欄填好，推到沈晏面前。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "僱主欄寫著「晏衡結構事務所」。唐婉希：「我要來上班。」林小蔓和陳覓同時轉頭看沈晏。",
+        "question": "小事務所請得起財團千金嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qiyue",
+        "xiju",
+        "daozhuan"
+      ],
+      "spectacle": "事務所的長桌上，一份空白合約的僱主欄，一支鋼筆寫下「晏衡結構事務所」七個字。",
+      "glamour_shot": "唐婉希白色套裝、珍珠耳環，把空白合約推過桌面時抬眼一笑，短直髮的髮尾掃過下巴。",
+      "setups": [
+        "s05-t22"
+      ],
+      "payoffs": [
+        "m09"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "唐婉希拒絕再被安排相親",
+        "唐婉希要到晏衡上班"
+      ],
+      "characters": [
+        "shen-yan",
+        "chen-mi",
+        "tang-wanxi",
+        "lin-xiaoman"
+      ],
+      "locations": [
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "十四個月後第二天｜進度：合約 唐婉希的空白合約｜銅牌 一枚｜重建：完工倒數 6 天",
+        "knowledge": "唐婉希要來晏衡上班",
+        "carry_forward": "付不付得起"
+      }
+    },
+    {
+      "number": 293,
+      "season_episode": 53,
+      "chapter": 6,
+      "title": "八台貨車",
+      "youtube_title": "新橋載重試驗沒有租重機，八台搬家貨車載滿沙包開上橋，領頭的是那台舊貨車",
+      "duration_s": 125,
+      "logline": "載重試驗沒過就不能完工；沈晏是簽證技師，報告要她親手簽。",
+      "hook": "沈晏把薪資欄指給唐婉希看：「我付不起妳。」唐婉希：「那就付我一頂安全帽。」",
+      "hook_type": "line",
+      "mid_hook": "八台搬家貨車載滿沙包，一台接一台開上新橋；領頭那台是藍色舊貨車，駕駛座上是周叔。",
+      "extra_hooks": [
+        "周叔在租車合約上蓋了一個比手掌還大的章：「搬家公司，」「第一次搬一座橋。」"
+      ],
+      "conflict": "第一號橋墩是照父親的圖重做的，所有人都在等它的第一個數字；讀數超過容許值，完工就要延期。",
+      "turn": "八台車停定位，讀數一格一格跳；以為很快就會穩，一號橋墩的讀數卻一直往上爬。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "first_half",
+          "type": "rescue"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "對講機裡陳覓念讀數：「十二、十四、十六……」容許值是十八，螢幕上的數字還在動。",
+        "question": "讀數會衝過十八嗎？"
+      },
+      "lead_arc": "mixed",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "xiju",
+        "chongyuan",
+        "qingxing"
+      ],
+      "spectacle": "八台載滿沙包的搬家貨車排成兩列停在新橋上，橋面在黃昏裡發亮，岸邊一排人仰頭看。",
+      "glamour_shot": "她戴著安全帽站在橋頭，對講機貼在耳邊，風把頭髮吹到鏡框前，眼睛一直盯著平板上的讀數。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "唐婉希的薪水是一頂安全帽",
+        "周叔的車隊支援載重試驗"
+      ],
+      "characters": [
+        "shen-yan",
+        "tang-wanxi",
+        "zhou-shu",
+        "ah-kai",
+        "jiang-ting",
+        "chen-mi"
+      ],
+      "locations": [
+        "重建的步道橋"
+      ],
+      "state": {
+        "time": "十四個月後第三天黃昏｜進度：合約 周叔的租車合約｜銅牌 一枚｜重建：完工倒數 5 天（載重試驗）",
+        "knowledge": "一號橋墩的讀數在逼近容許值",
+        "carry_forward": "還在跳的數字"
+      }
+    },
+    {
+      "number": 294,
+      "season_episode": 54,
+      "chapter": 6,
+      "title": "十六點五",
+      "youtube_title": "讀數停在十六點五，載重試驗過了，第一台開過新橋的車是當年那台搬家貨車",
+      "duration_s": 125,
+      "logline": "試驗過了，車隊散了；那台藍色舊貨車卻沒走，停在新橋正中間。",
+      "hook": "讀數停在十六點五，不再動；沈晏放下對講機：「穩了。」岸上的人一起吐了一口氣。",
+      "hook_type": "image",
+      "mid_hook": "試驗報告有兩個簽名欄；她拿起筆，總工程師那欄已經簽好，日期旁邊畫了一台小貨車。",
+      "extra_hooks": [
+        "阿凱從車窗探出頭：「十六點五！」「比我考駕照那天還穩！」"
+      ],
+      "conflict": "她簽完報告，橋就能完工；可她還欠他一個回答，欠了十四個月。",
+      "turn": "以為他要把車開走，他搖下車窗：「上車。」她坐進副駕——新橋上第一台開過去的車，是當年那台搬家貨車。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "emotion",
+        "text": "車開到橋中央，他說：「第一個開過新橋的，」「是妳的司機。」她：「你早就不是了。」他轉頭：「那我是什麼？」",
+        "question": "他現在是她的什麼人？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        4,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "xiju",
+        "qiyue"
+      ],
+      "spectacle": "黃昏的新橋上，一台藍色舊貨車獨自從橋頭開向橋尾，橋下的河把夕陽拉成一條金線。",
+      "glamour_shot": "他單手轉方向盤，夕陽從擋風玻璃照進來；她側頭看他，風從車窗吹亂她的頭髮。",
+      "setups": [],
+      "payoffs": [
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "載重試驗通過，讀數十六點五",
+        "舊貨車成為第一台開過新橋的車"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "ah-kai",
+        "chen-mi",
+        "zhou-shu"
+      ],
+      "locations": [
+        "重建的步道橋",
+        "江亭的藍色舊貨車"
+      ],
+      "state": {
+        "time": "十四個月後第三天，日落｜進度：合約 載重試驗報告，兩人各簽一欄｜銅牌 一枚｜重建：完工倒數 5 天（試驗通過）",
+        "knowledge": "橋過了；他問她，他現在是什麼",
+        "carry_forward": "她還沒給的答案"
+      }
+    },
+    {
+      "number": 295,
+      "season_episode": 55,
+      "chapter": 6,
+      "title": "出資：五年",
+      "youtube_title": "助理終於簽下合夥人合約，新門牌掛上兩個名字，她拉開抽屜卻發現那頂舊安全帽不見了",
+      "duration_s": 118,
+      "logline": "沈晏答應完工那天給答案；陳覓先簽了，可她要把合約收進抽屜時，發現少了一樣東西。",
+      "hook": "她看著前方的橋尾：「答案寫在合約裡。」「完工那天給你。」",
+      "hook_type": "line",
+      "mid_hook": "陳覓在合夥人合約上簽名，筆一放：「我先簽，」「等妳。」新門牌掛上：「晏衡・陳覓結構技師事務所」。",
+      "extra_hooks": [
+        "江諾暑假來實習，第一件工作是替新門牌鎖螺絲：「懸臂我會算，」「螺絲我也會鎖。」"
+      ],
+      "conflict": "合夥人合約簽了、門牌換了；沈晏要把簽好的合約收進那個放了六年舊安全帽的抽屜。",
+      "turn": "以為抽屜裡一切照舊，她拉開——那頂舊安全帽不見了。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "public_vindication"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "抽屜裡只剩一張沒署名的便條，畫著一台歪歪的小貨車：「借走，」「完工那天還。」",
+        "question": "他借走舊安全帽要做什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qiyue",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "事務所門口，新門牌「晏衡・陳覓結構技師事務所」在晨光裡掛上，舊門牌靠在牆角。",
+      "glamour_shot": "沈晏站在新門牌下雙手抱臂看江諾鎖螺絲，嘴角壓不住，細框眼鏡反著晨光。",
+      "setups": [
+        "s05-t23"
+      ],
+      "payoffs": [
+        "s05-t20"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "陳覓簽下合夥人合約",
+        "事務所換上兩個名字的新門牌"
+      ],
+      "characters": [
+        "shen-yan",
+        "chen-mi",
+        "jiang-nuo",
+        "jiang-ting"
+      ],
+      "locations": [
+        "晏衡結構事務所"
+      ],
+      "state": {
+        "time": "十四個月後第四天｜進度：合約 陳覓合夥合約已簽；新約答應完工那天給｜銅牌 一枚｜重建：完工倒數 4 天",
+        "knowledge": "舊安全帽被他借走了",
+        "carry_forward": "完工那天要還的帽子與答案"
+      }
+    },
+    {
+      "number": 296,
+      "season_episode": 56,
+      "chapter": 6,
+      "title": "起訴書",
+      "youtube_title": "前未婚夫被起訴的新聞播出那天，她關掉電視，在新員工的合約上簽了名",
+      "duration_s": 125,
+      "logline": "宋紹謙的起訴書上了新聞，所有人都在看沈晏看不看；她只想把手上的合約一份一份簽完。",
+      "hook": "她傳訊息：「帽子？」他秒回：「完工那天，」「連本帶利還。」",
+      "hook_type": "line",
+      "mid_hook": "唐婉希上班第一天就把晏衡五年的帳攤開：「這五年，」「妳沒給自己發過獎金。」",
+      "extra_hooks": [
+        "林小蔓的事務所裡，沈玥在解除婚約協議上簽名，把戒指放進信封：「這次，」「我自己決定。」"
+      ],
+      "conflict": "新聞同一天播出宋紹謙被起訴偽造文書；沈晏不想看，滿屋子的人都在偷看她。",
+      "turn": "以為她會停下來看宋紹謙的畫面，她把電視關掉，在唐婉希的合約上簽名：「歡迎來上班。」",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "betrayer_punished"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "danger",
+        "text": "氣象快報插播：颱風路徑北偏，完工典禮那天可能擦過澄港。橋頭的倒數牌在風裡轉了半圈。",
+        "question": "完工那天，颱風會來嗎？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        3,
+        4,
+        5
+      ],
+      "tones": [
+        "qiyue",
+        "xiju",
+        "ganren"
+      ],
+      "spectacle": "事務所的電視上，宋紹謙被起訴的新聞標題一閃而過；螢幕一黑，映出一屋子回頭的人。",
+      "glamour_shot": "沈晏關掉電視轉身，在唐婉希的合約上簽名，細框眼鏡後的眼神很平靜，嘴角帶一點笑。",
+      "setups": [],
+      "payoffs": [
+        "s05-t22",
+        "m04"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "宋紹謙被起訴偽造文書",
+        "唐婉希簽下在晏衡的工作合約",
+        "沈玥簽下解除婚約協議"
+      ],
+      "characters": [
+        "shen-yan",
+        "tang-wanxi",
+        "shen-yue",
+        "lin-xiaoman",
+        "song-shaoqian",
+        "jiang-ting"
+      ],
+      "locations": [
+        "晏衡結構事務所",
+        "林小蔓律師事務所"
+      ],
+      "state": {
+        "time": "十四個月後第五天｜進度：合約 唐婉希工作合約已簽、沈玥解除婚約｜銅牌 一枚｜重建：完工倒數 3 天（颱風警報）",
+        "knowledge": "宋紹謙被起訴；完工那天颱風可能擦過",
+        "carry_forward": "颱風"
+      }
+    },
+    {
+      "number": 297,
+      "season_episode": 57,
+      "chapter": 6,
+      "title": "我在這，你看",
+      "youtube_title": "完工前夜颱風擦過新橋，這一次換她開那台舊貨車，替他拉好雨衣帽子",
+      "duration_s": 130,
+      "logline": "完工前夜颱風擦過澄港；第一號橋墩是他父親的圖，他比誰都怕，卻不肯說。",
+      "hook": "新橋的監測警報第一次響起，他還在找外套，她已經拿起貨車鑰匙：「這次我開。」",
+      "hook_type": "line",
+      "mid_hook": "監測站螢幕上，一號橋墩的讀數：零點零。新橋的第一個颱風夜，一根裂縫也沒有。",
+      "extra_hooks": [
+        "阿凱在群組狂刷：「老大被載了！」「歷史性的一刻！」",
+        "置物箱裡那份摺軟的舊合約還在，第七條旁那個「算」字，被他用原子筆描過一遍。"
+      ],
+      "conflict": "他是總工程師，整座橋是他簽的；她是簽證技師，可她知道他今晚需要的不是另一個技師。",
+      "turn": "以為她是來驗收讀數的；讀完零點零，她站在施工圍籬邊，伸手替他拉好雨衣帽子。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "reversal"
+        },
+        {
+          "beat": "midpoint",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "她替他拉好帽子：「我在這，」「你看。」他愣了三秒，笑出聲——跟她五年後第一次笑時一模一樣。",
+        "question": "完工那天，她要給他什麼答案？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "qiyue",
+        "xiju"
+      ],
+      "spectacle": "颱風擦過的夜裡，新落成的步道橋整排橋燈在雨中亮著，橋下的河漲得很高，橋面一動不動。",
+      "glamour_shot": "她握著舊貨車的方向盤，雨刷來回，他坐在副駕看她，儀表板的暖光落在兩人中間。",
+      "setups": [],
+      "payoffs": [],
+      "reveals": [],
+      "general_payoffs": [
+        "新橋撐過第一個颱風夜，讀數零點零",
+        "她把「我在這，妳看」換個方向還給他"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "ah-kai"
+      ],
+      "locations": [
+        "江亭的藍色舊貨車",
+        "重建的步道橋施工圍籬"
+      ],
+      "state": {
+        "time": "完工前夜 23:00｜進度：合約 第七條（颱風天）這次換她照顧他｜銅牌 一枚｜重建：完工倒數 1 天（颱風擦過）",
+        "knowledge": "新橋撐過第一個颱風；她答應完工那天給答案",
+        "carry_forward": "完工那天"
+      }
+    },
+    {
+      "number": 298,
+      "season_episode": 58,
+      "chapter": 6,
+      "title": "第一條空白",
+      "youtube_title": "完工那天律師帶來一份新合約：沒有期限，沒有違約金，第一條你們自己寫",
+      "duration_s": 135,
+      "logline": "颱風過了，橋頭站滿了人；新約攤在摺疊桌上，第一條空著，她答應的答案還沒說。",
+      "hook": "颱風過後的早晨，天空洗得發亮，新橋的封條在風裡飄，橋頭站滿了人。",
+      "hook_type": "image",
+      "mid_hook": "林小蔓把一份新合約放上橋頭的摺疊桌：「沒有期限，沒有違約金，」「第一條你們自己寫。」",
+      "extra_hooks": [
+        "江諾指著哥哥：「你為什麼永遠走她左邊？」他：「她怕高，」「靠河那邊我走。」"
+      ],
+      "conflict": "一份沒有期限的合約，比一年的那份更難簽；她習慣把一切寫成條款，這一次第一條得她自己想。",
+      "turn": "以為大家等的是剪綵，阿凱、周叔、陳覓、江諾、唐婉希、奶奶全圍到摺疊桌邊，眼睛盯著那一行空白。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reveal",
+        "text": "人群讓開，他從貨車上拿下一頂安全帽——抽屜裡那頂舊的，重新上過漆，帽緣多了一行字。",
+        "question": "帽緣那行字寫了什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qiyue",
+        "xiju",
+        "chongyuan"
+      ],
+      "spectacle": "颱風過後的晴空下，重建的步道橋掛滿彩帶，橋頭一張摺疊桌攤著一份新合約，四周站滿了人。",
+      "glamour_shot": "她站在橋頭，晨風把頭髮吹起，回頭看見他拿著那頂舊安全帽走過來，眼鏡後的眼神亮了一下。",
+      "setups": [],
+      "payoffs": [
+        "s05-t18"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "步道橋完工，所有人到齊橋頭",
+        "新約沒有期限、沒有違約金",
+        "他說出為什麼總走她左邊"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "lin-xiaoman",
+        "ah-kai",
+        "zhou-shu",
+        "chen-mi",
+        "jiang-nuo",
+        "tang-wanxi",
+        "jiang-nainai"
+      ],
+      "locations": [
+        "重建的步道橋橋頭"
+      ],
+      "state": {
+        "time": "完工日早上｜進度：合約 新約：沒有期限、沒有違約金、第一條空白｜銅牌 一枚｜重建：完工",
+        "knowledge": "新約只等第一條；舊安全帽回來了",
+        "carry_forward": "帽緣的那行字"
+      }
+    },
+    {
+      "number": 299,
+      "season_episode": 59,
+      "chapter": 6,
+      "title": "舊安全帽",
+      "youtube_title": "他把當年那頂舊安全帽戴回她頭上，帽緣多了一行字，檢查員在竣工書上蓋下章",
+      "duration_s": 140,
+      "logline": "橋通了、人到齊了，第一條還空著；她答應過要給答案，可一寫下去，就是沒有期限的事。",
+      "hook": "他把舊安全帽戴回她頭上、扣好帽帶；帽緣那行字剛好落在她眼前：「第一頂，妳給的。」",
+      "hook_type": "image",
+      "mid_hook": "許檢查員在竣工查驗書上簽名、蓋章：「步道橋，」「准予通行。」",
+      "extra_hooks": [
+        "她抱了他一下，一秒就放開；阿凱帶頭起鬨，被奶奶一個眼神瞪回去。"
+      ],
+      "conflict": "五年前那紙一年合約是她開的價，這一次沒有價錢；她怕的不是寫錯，是寫了之後不能收回。",
+      "turn": "以為她會把筆交給他、像五年前一樣讓別人先開口；林小蔓把筆放在兩人中間，她先伸了手。",
+      "satisfaction": [
+        {
+          "beat": "first_half",
+          "type": "public_vindication"
+        },
+        {
+          "beat": "second_half",
+          "type": "level_up"
+        }
+      ],
+      "cliffhanger": {
+        "type": "choice",
+        "text": "林小蔓把筆放在兩人中間：「第一條，」「誰寫？」她的手先碰到筆，他沒有搶，只往她左邊靠河那側站了一步。",
+        "question": "她會在第一條寫下什麼？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        4,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "chongyuan",
+        "xiju",
+        "qiyue"
+      ],
+      "spectacle": "竣工的步道橋剪下彩帶，第一群行人從橋頭走向橋尾，彩帶碎片在午後的風裡飛。",
+      "glamour_shot": "他替她扣帽帶時低頭，兩人只隔一頂安全帽的帽緣，她抬眼看他，睫毛上落著午後的光。",
+      "setups": [],
+      "payoffs": [
+        "s05-t23"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "舊安全帽回到她頭上",
+        "竣工查驗通過，步道橋准予通行",
+        "她先拿起了寫第一條的筆"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "xu-jiancha",
+        "lin-xiaoman",
+        "ah-kai",
+        "jiang-nainai",
+        "zhou-shu",
+        "chen-mi",
+        "jiang-nuo",
+        "tang-wanxi"
+      ],
+      "locations": [
+        "重建的步道橋"
+      ],
+      "state": {
+        "time": "完工日午後｜進度：合約 新約待寫第一條｜銅牌 一枚｜重建：竣工查驗通過、准予通行",
+        "knowledge": "橋准予通行；她先拿起了筆",
+        "carry_forward": "第一條"
+      }
+    },
+    {
+      "number": 300,
+      "season_episode": 60,
+      "chapter": 6,
+      "title": "新約",
+      "youtube_title": "一年合約換成沒有期限的新約，第一條只有一句，橋墩下卻多了一個牛皮紙信封",
+      "duration_s": 180,
+      "logline": "黃昏的新橋上，兩個人要簽一份任何一方都能隨時說不的合約；簽下它，就得相信對方不會走。",
+      "hook": "黃昏，她低頭在第一條寫字，用手擋著不讓他看。",
+      "hook_type": "image",
+      "mid_hook": "簽名欄只有兩行，沒有甲方，也沒有乙方；她先簽，他接著簽。",
+      "extra_hooks": [
+        "林小蔓收起卷宗：「我寫過最短的合約。」陳覓：「也是最貴的。」"
+      ],
+      "conflict": "五年前的合約寫滿了「不准」；這一份只有一條，而那一條得讓兩個人都放心把離開的權利交出去。",
+      "turn": "以為第一條會寫「不准走」或「永遠」，她寫的是把說不的權利還給雙方——而他用那個權利，說了另一個字。",
+      "satisfaction": [
+        {
+          "beat": "opening",
+          "type": "level_up"
+        },
+        {
+          "beat": "midpoint",
+          "type": "reversal"
+        },
+        {
+          "beat": "ending",
+          "type": "reversal"
+        }
+      ],
+      "cliffhanger": {
+        "type": "reversal",
+        "text": "黃昏的新橋上，兩人在新約上各簽一次。他問：「這次第一條寫什麼？」她：「雙方都可以說不。」他：「那我說——不走。」兩人並肩走下橋，鏡頭停在橋墩下一個新的牛皮紙信封：「沈技師，我也想簽一份合約。」",
+        "question": "誰想跟沈技師簽一份合約？"
+      },
+      "lead_arc": "wins",
+      "tension": [
+        3,
+        3,
+        4,
+        4,
+        5
+      ],
+      "tones": [
+        "qiyue",
+        "chongyuan",
+        "xiju"
+      ],
+      "spectacle": "黃昏金色裡的重建步道橋，兩個人影並肩從橋中央走向橋頭，橋墩下的基點 HJ-07 在夕陽裡反光。",
+      "glamour_shot": "她戴著那頂舊安全帽，他走在她左邊靠河的外側，夕陽把兩人的影子拉得很長，像同一張合約上的兩個簽名。",
+      "setups": [],
+      "payoffs": [
+        "s05-t21",
+        "m01"
+      ],
+      "reveals": [],
+      "general_payoffs": [
+        "新約生效：沒有期限、沒有違約金，第一條「雙方都可以說不」",
+        "他用說不的權利說了「不走」"
+      ],
+      "characters": [
+        "shen-yan",
+        "jiang-ting",
+        "lin-xiaoman",
+        "chen-mi",
+        "ah-kai",
+        "zhou-shu",
+        "jiang-nuo",
+        "tang-wanxi",
+        "jiang-nainai"
+      ],
+      "locations": [
+        "重建的步道橋",
+        "一號橋墩下"
+      ],
+      "state": {
+        "time": "完工日黃昏｜進度：合約 新約第一條「雙方都可以說不」，各簽一次｜銅牌 一枚（HJ-07）｜重建：完工通行",
+        "knowledge": "新約生效，沒有期限；橋墩下多了一封寫給沈技師的牛皮紙信封",
+        "carry_forward": "第二部：信封裡想簽的那份合約"
+      }
+    }
+  ]
+}
