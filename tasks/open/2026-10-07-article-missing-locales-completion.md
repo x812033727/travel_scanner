@@ -8,7 +8,7 @@ owner:
 claimed_at:
 created_at: 2026-10-07T04:49:38Z
 completed_at:
-branch: codex/article-locales-wave3-20261007
+branch: codex/article-locales-completion-20261029
 depends_on: []
 scope:
   - docs/article-localization/coverage-20261007.md
@@ -173,6 +173,24 @@ Release this coverage-only scope when waiting for exact owner deployment choice.
 Continue next-wave source audits externally without adding them to the fixed14
 cohort. Do not mark this global task complete until a fresh public census is zero.
 
+### 2026-10-29 complete public cohort refresh
+
+A fresh read-only REPEATABLE READ database census at 00:39:08 UTC observes
+2,247 public articles: 1,473 have all five languages and 774 lack four target
+languages each (3,096 documents). Breakdown: howto 108 incomplete/432 documents,
+intel 12/48, life 654/2,616. Another 119 draft article identities remain outside
+publication scope. Snapshot SHA256:
+`cf3761f5482c29fc0c1e347c14ed846c692c13066b23241c3092260babb41bbd`.
+
+The October 28 sitemap count of 2,664 was limited to intel and life; it omitted
+the howto cohort. The full count is recorded in the coverage file without
+rewriting historical receipts or inferring publication from repository packs.
+The already accepted 48-translation AI foundation release is recorded in merged
+PR #1913. PR #1914 adds eight reviewed translations for foundation-model and
+tokenization; this census confirms they are still absent from the public locale
+rows. Its exact release remains owned by its separate release task. No article
+content was written by this inventory refresh.
+
 ### Approved publication of 32 articles
 
 The owner approved PR #1370 head `403d8204c27fd89653990cb1b8e624a1f87c5bcc`; all 21 checks passed. It was merged and normally deployed as `7524c25995d59f3826227e693d52f2ef5b3a19a2`. The guarded publisher completed 128 missing-language documents and two independently reviewed source corrections, backed by a full recoverable database backup, isolated restore/publication rehearsal and idempotent production replay. Public verification confirmed 160 five-language pages and 320 actual desktop/mobile screenshots. The original release driver completed with exit 0 at 15:40:06 UTC and cleared its own hold.
@@ -180,3 +198,31 @@ The owner approved PR #1370 head `403d8204c27fd89653990cb1b8e624a1f87c5bcc`; all
 The full production snapshot captured at 14:17:26 UTC has 1,259 eligible public articles; 830 remain incomplete and 3,320 language documents remain missing. Counts are intel 13/52, howto 108/432 and life 709/2,836, with 830 gaps in each of en/ja/ko/zh-CN. The original 862 queue rows and historical 3,448 observation remain retained; the durable ledger now appends the verified 32/128 publication and actual census. Coverage and four scoped sanitized release records preserve these states and outstanding unpublished related-link targets. Release-record draft PR: https://github.com/x812033727/travel_scanner/pull/1373.
 
 The next twelve web-design/SEO life articles have 48 staged translations. Four Korean token spelling repairs retained the original attempts; official materialization and all 48 renders passed. Independent target reviews are in progress, with source corrections separately reviewed and bound. That cohort has no production publication yet. This global ticket stays open until a later fresh census reports zero eligible missing language documents.
+
+### 2026-10-29 accepted AI concept release and remaining work
+
+The owner's exact eight-translation release is now complete. Foundation-model
+and tokenization have five public languages; the independently reviewed
+tokenization zh-TW image descriptions are corrected. Fresh full backup and actual
+restore, same-runtime rehearsal, native 9/9/0 publication phases and idempotent
+replay, ten-document/28-media public acceptance and 20 independent screenshot
+reviews all passed. The original driver cleared only its own hold; final host
+verification returned 11 PASS, 0 FAIL. No additional deployment was invoked.
+All seven native progress stages are 8/8, with zero evidence errors.
+
+The fresh atomic metadata census at 2026-10-29T01:29:58.605851+00:00 directly
+observes 2,247 public articles, 1,475 complete and 772 incomplete, with 3,088
+missing language documents: howto 432, intel 48, life 2,608. Another 119 draft
+identities remain excluded. Census SHA256:
+`460d2c0a6a83842186a675fee09f85b9f03fb455df1bd122e6359814ce2f4948`.
+This supersedes the earlier current-state observations above without rewriting
+their historical receipts. Coverage and the scoped release README/evidence.json
+record the actual result; the global task is still unfinished.
+
+Next-source corrections for fine-tuning, few-shot prompting, multimodal and
+zero-shot prompting are isolated in draft PR #1915. Their 16 translations are not
+authored. Source publication requires its own concrete release scope and owner
+decision; this eight-translation approval does not cover that next cohort.
+The native translation bundle requires all five locales and refuses these four
+zh-TW-only packs. A separate guarded source-release plan is being prepared;
+the original baselines and compatibility refusal remain preserved externally.
